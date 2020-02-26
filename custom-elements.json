@@ -1,0 +1,19 @@
+{
+  "version": "experimental",
+  "tags": [
+    {
+      "name": "vivid-button",
+      "path": "./packages/button/vid-button.js",
+      "properties": [
+        {
+          "name": "selected"
+        }
+      ],
+      "events": [
+        {
+          "name": "selectionChanged"
+        }
+      ]
+    }
+  ]
+}

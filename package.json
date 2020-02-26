@@ -1,0 +1,21 @@
+{
+  "name": "vonage",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "start:vivid": "lerna run start --scope @vonage/vivid",
+    "build:vivid": "lerna run build --scope @vonage/vivid",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@storybook/web-components": "^5.3.13",
+    "babel-loader": "^8.0.6",
+    "lerna": "^3.16.4"
+  },
+  "dependencies": {}
+}
