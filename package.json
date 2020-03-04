@@ -5,9 +5,7 @@
     "packages/*"
   ],
   "scripts": {
-    "bootstrap": "lerna bootstrap",
-    "start:volta": "lerna run start --scope @vonage/volta",
-    "build:volta": "lerna run build --scope @vonage/volta"
+    "bootstrap": "lerna bootstrap"
   },
   "devDependencies": {
     "lerna": "^3.16.4"
