@@ -8,6 +8,7 @@
     "bootstrap": "lerna bootstrap"
   },
   "devDependencies": {
-    "lerna": "^3.16.4"
+    "lerna": "^3.16.4",
+    "snowpack": "^1.5.1"
   }
 }
