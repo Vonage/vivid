@@ -1,7 +1,28 @@
-node_modules/
-lerna-debug.log
-npm-debug.log
-packages/*/lib
-.idea
-# Local Netlify folder
-.netlify
+## editors
+/.idea
+/.vscode
+
+## system files
+.DS_Store
+
+## npm
+/node_modules/
+/npm-debug.log
+
+## testing
+/coverage/
+
+## temp folders
+/.tmp/
+
+# build
+/_site/
+/dist/
+
+
+/packages/**/*.js
+/packages/**/*.js.map
+/packages/**/*.d.ts
+/packages/*/src/*.css.ts
+/packages/*/package-lock.json
+**/*.tsbuildinfo*
