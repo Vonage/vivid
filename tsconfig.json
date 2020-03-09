@@ -21,7 +21,9 @@
       "@vivid/vivid-*": ["./*/src"]
     },
     "composite": true,
-    "importHelpers": true
+    "importHelpers": true,
+    "allowSyntheticDefaultImports":true,
+    "esModuleInterop":true
   },
   "include": ["custom_typings/**/*.ts", "src/*.ts"],
   "exclude": [],
