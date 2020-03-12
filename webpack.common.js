@@ -1,12 +1,11 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  // devtool:"none",
+  devtool: 'none',
   entry: {
-    ['vivid-button']: './packages/button/src/button.ts',
-    ['vivid-button-copy']: './packages/button/src/button.ts',
+    'vivid-button': './packages/button/src/button.ts',
+    'vivid-button-copy': './packages/button/src/button.ts',
     // ['vivid-button-copy']: './packages/button copy/src/button.ts',
   },
   optimization: { splitChunks: { chunks: 'all' } },
@@ -29,6 +28,11 @@ module.exports = {
       {
         test: /\.tsx?$/,
         use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.js$/,
+        type: 'javascript/esm',
         exclude: /node_modules/,
       },
     ],
