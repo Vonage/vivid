@@ -1200,6 +1200,38 @@
     whatwg-fetch "^3.0.0"
     whatwg-url "^7.0.0"
 
+"@open-wc/building-utils@^2.16.0":
+  version "2.16.0"
+  resolved "https://registry.yarnpkg.com/@open-wc/building-utils/-/building-utils-2.16.0.tgz#ff57a5fa4753e581fa2ef988d1aab00f79b0ef41"
+  integrity sha512-vhU65I0lq3/FMmu1yQL2Q8RFQ8ElLP0Trlwn267sdvA+XKJ2TV5ulHGwVggizVnS6f8O1cu2jLUdmK2SmznsYg==
+  dependencies:
+    "@babel/core" "^7.8.3"
+    "@babel/plugin-syntax-dynamic-import" "^7.8.3"
+    "@webcomponents/shadycss" "^1.9.4"
+    "@webcomponents/webcomponentsjs" "^2.4.0"
+    arrify "^2.0.1"
+    browserslist "^4.9.1"
+    chokidar "^3.0.0"
+    clean-css "^4.2.1"
+    clone "^2.1.2"
+    core-js-bundle "^3.6.0"
+    deepmerge "^3.2.0"
+    es-module-shims "^0.4.6"
+    html-minifier "^4.0.0"
+    lru-cache "^5.1.1"
+    minimatch "^3.0.4"
+    parse5 "^5.1.1"
+    path-is-inside "^1.0.2"
+    regenerator-runtime "^0.13.3"
+    resolve "^1.11.1"
+    rimraf "^3.0.0"
+    shady-css-scoped-element "^0.0.2"
+    systemjs "^4.0.0"
+    terser "^4.6.4"
+    valid-url "^1.0.9"
+    whatwg-fetch "^3.0.0"
+    whatwg-url "^7.0.0"
+
 "@open-wc/chai-dom-equals@^0.12.36":
   version "0.12.36"
   resolved "https://registry.yarnpkg.com/@open-wc/chai-dom-equals/-/chai-dom-equals-0.12.36.tgz#ed0eb56b9e98c4d7f7280facce6215654aae9f4c"
@@ -2517,7 +2549,7 @@ browserslist-useragent@^3.0.2:
     semver "^6.3.0"
     useragent "^2.3.0"
 
-browserslist@^4.0.0, browserslist@^4.6.6, browserslist@^4.7.2, browserslist@^4.8.3, browserslist@^4.8.5:
+browserslist@^4.0.0, browserslist@^4.6.6, browserslist@^4.7.2, browserslist@^4.8.3, browserslist@^4.8.5, browserslist@^4.9.1:
   version "4.9.1"
   resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.9.1.tgz#01ffb9ca31a1aef7678128fc6a2253316aa7287c"
   integrity sha512-Q0DnKq20End3raFulq6Vfp1ecB9fh8yUNV55s8sekaDDeqBaCtWlRHCUdaWyUeSSBJM7IbM6HcsyaeYqgeDhnw==
@@ -2700,6 +2732,11 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001008, caniuse-lite@^1.0.30001030:
   version "1.0.30001031"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001031.tgz#76f1bdd39e19567b855302f65102d9a8aaad5930"
   integrity sha512-DpAP5a1NGRLgYfaNCaXIRyGARi+3tJA2quZXNNA1Du26VyVkqvy2tznNu5ANyN1Y5aX44QDotZSVSUSi2uMGjg==
+
+caniuse-lite@^1.0.30001033:
+  version "1.0.30001035"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001035.tgz#2bb53b8aa4716b2ed08e088d4dc816a5fe089a1e"
+  integrity sha512-C1ZxgkuA4/bUEdMbU5WrGY4+UhMFFiXrgNAfxiMIqWgFTWfv/xsZCS2xEHT2LMq7xAZfuAnu6mcqyDl0ZR6wLQ==
 
 capture-exit@^2.0.0:
   version "2.0.0"
@@ -3737,7 +3774,7 @@ es-abstract@^1.17.0, es-abstract@^1.17.0-next.1, es-abstract@^1.17.2:
     string.prototype.trimleft "^2.1.1"
     string.prototype.trimright "^2.1.1"
 
-es-dev-server@^1.42.0, es-dev-server@^1.5.0:
+es-dev-server@^1.42.0:
   version "1.42.0"
   resolved "https://registry.yarnpkg.com/es-dev-server/-/es-dev-server-1.42.0.tgz#9392542c8fc8201f468eba633c6f62335ac2ee10"
   integrity sha512-CISpdU5Q1megOx3IRDrybhppAF6/Bip6zwWICufEsEUvLo8/T0SdZc6J7WbeqSHdmHGQ7qKuRQtC571hy8gI5A==
@@ -3782,6 +3819,56 @@ es-dev-server@^1.42.0, es-dev-server@^1.5.0:
     parse5 "^5.1.1"
     path-is-inside "^1.0.2"
     polyfills-loader "^1.3.0"
+    portfinder "^1.0.21"
+    strip-ansi "^5.2.0"
+    useragent "^2.3.0"
+    whatwg-url "^7.0.0"
+
+es-dev-server@^1.44.0:
+  version "1.44.0"
+  resolved "https://registry.yarnpkg.com/es-dev-server/-/es-dev-server-1.44.0.tgz#8546988697eaca3c3234f1ac797187e7b1ba223c"
+  integrity sha512-Jn83muIAilhQz6carR1adQZQKR1L3jqm4//asm0HISw09GpeYfyP19FjPzcjhmQbBxGCrSFpCIt1rzOf3/a/HA==
+  dependencies:
+    "@babel/core" "^7.8.3"
+    "@babel/plugin-proposal-dynamic-import" "^7.8.3"
+    "@babel/plugin-proposal-nullish-coalescing-operator" "^7.8.3"
+    "@babel/plugin-proposal-optional-chaining" "^7.8.3"
+    "@babel/plugin-syntax-class-properties" "^7.8.3"
+    "@babel/plugin-syntax-import-meta" "^7.8.3"
+    "@babel/plugin-syntax-nullish-coalescing-operator" "^7.8.3"
+    "@babel/plugin-syntax-numeric-separator" "^7.8.3"
+    "@babel/plugin-syntax-optional-chaining" "^7.8.3"
+    "@babel/plugin-transform-template-literals" "^7.8.3"
+    "@babel/preset-env" "^7.8.3"
+    "@open-wc/building-utils" "^2.16.0"
+    "@rollup/plugin-node-resolve" "^6.1.0"
+    "@rollup/pluginutils" "^3.0.0"
+    "@types/minimatch" "^3.0.3"
+    browserslist "^4.9.1"
+    browserslist-useragent "^3.0.2"
+    builtin-modules "^3.1.0"
+    camelcase "^5.3.1"
+    caniuse-api "^3.0.0"
+    caniuse-lite "^1.0.30001033"
+    chokidar "^3.0.0"
+    command-line-args "^5.0.2"
+    command-line-usage "^6.1.0"
+    debounce "^1.2.0"
+    deepmerge "^3.2.0"
+    es-module-lexer "^0.3.13"
+    get-stream "^5.1.0"
+    is-stream "^2.0.0"
+    isbinaryfile "^4.0.2"
+    koa "^2.7.0"
+    koa-compress "^3.0.0"
+    koa-etag "^3.0.0"
+    koa-static "^5.0.0"
+    lru-cache "^5.1.1"
+    minimatch "^3.0.4"
+    opn "^5.4.0"
+    parse5 "^5.1.1"
+    path-is-inside "^1.0.2"
+    polyfills-loader "^1.4.2"
     portfinder "^1.0.21"
     strip-ansi "^5.2.0"
     useragent "^2.3.0"
@@ -7482,6 +7569,26 @@ polyfills-loader@^1.3.0:
     terser "^4.6.4"
     whatwg-fetch "^3.0.0"
 
+polyfills-loader@^1.4.2:
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/polyfills-loader/-/polyfills-loader-1.4.2.tgz#b5f7cbf3ad20c6c47fb61c73087e356546020b3f"
+  integrity sha512-nn7EUnKWS2SMjBWP09OdFGxlFVzRFiRBhx/z9d2Hs+08mBXV5V9xdDtbMVFTZToscpCR2IfMefCdeVspxOn1jQ==
+  dependencies:
+    "@babel/core" "^7.8.3"
+    "@open-wc/building-utils" "^2.16.0"
+    "@webcomponents/webcomponentsjs" "^2.4.0"
+    core-js-bundle "^3.6.0"
+    deepmerge "^3.2.0"
+    dynamic-import-polyfill "^0.1.1"
+    es-module-shims "^0.4.6"
+    html-minifier "^4.0.0"
+    intersection-observer "^0.7.0"
+    parse5 "^5.1.1"
+    regenerator-runtime "^0.13.3"
+    systemjs "^4.0.0"
+    terser "^4.6.4"
+    whatwg-fetch "^3.0.0"
+
 popper.js@^1.14.4, popper.js@^1.14.7:
   version "1.16.1"
   resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.16.1.tgz#2a223cb3dc7b6213d740e40372be40de43e65b1b"
@@ -8638,6 +8745,11 @@ shady-css-scoped-element@^0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/shady-css-scoped-element/-/shady-css-scoped-element-0.0.1.tgz#e386ff2228bb3677376985a34d65101372ed66dc"
   integrity sha512-86NPanHuXXTayw0psXbqMBU11rptlhAU17N3ZVxWYm6/KxMc02M/l6gGAEUb2Jff7W3Ur/ARWufPKmm/nNOU2g==
+
+shady-css-scoped-element@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/shady-css-scoped-element/-/shady-css-scoped-element-0.0.2.tgz#c538fcfe2317e979cd02dfec533898b95b4ea8fe"
+  integrity sha512-Dqfl70x6JiwYDujd33ZTbtCK0t52E7+H2swdWQNSTzfsolSa6LJHnTpN4T9OpJJEq4bxuzHRLFO9RBcy/UfrMQ==
 
 shallow-equal@^1.1.0:
   version "1.2.1"
