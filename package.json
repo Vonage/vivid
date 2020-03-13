@@ -24,7 +24,7 @@
     "postinstall": "npm run bootstrap",
     "build": "rimraf dist && rollup -c rollup.config.js",
     "start": "npm run dev:server",
-    "dev:server": "es-dev-server --app-index demo/index.html --node-resolve --preserve-symlinks --watch --http2",
+    "dev:server": "es-dev-server --config es-dev-server.config.js",
     "build:typescript": "tsc --build",
     "watch": "node scripts/watcher.js"
   },

@@ -1,15 +1,15 @@
 import { customElement } from 'lit-element';
 
-import { ButtonBase } from '@vivid/vwc-button/src/vwc-button.base';
-import { style } from './vivid-button.css';
+import { ButtonBase } from './vwc-button.base';
+import { style } from './vwc-button.css';
 
-@customElement('vivid-button')
+@customElement('vwc-button')
 export class Button extends ButtonBase {
   static styles = style;
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vivid-button': Button;
+    'vwc-button': Button;
   }
 }

@@ -26,40 +26,16 @@ self.addEventListener('message', (event) => {
  */
 self.__precacheManifest = [
   {
-    "url": "iframe.html",
-    "revision": "bf7e7e3dd3c8278e94ef56ecaa3c725f"
-  },
-  {
     "url": "index.html",
     "revision": "399f1ca05e0f7fbeb9db3041c064fa3f"
-  },
-  {
-    "url": "inline-entry.0-09f1e98a.js",
-    "revision": "164516c9c0c8c613280b5b527442cff3"
-  },
-  {
-    "url": "legacy/inline-entry.0-3ddd2a0b.js",
-    "revision": "1c87af9678bb3c61d196624de7a08d13"
-  },
-  {
-    "url": "legacy/lit-html-4835365c.js",
-    "revision": "e7d319277a9cb4807096e3678cffb81a"
   },
   {
     "url": "legacy/manager-048dc424.js",
     "revision": "4565329816e5847f7968f2913f7e8619"
   },
   {
-    "url": "legacy/storybook-73d55478.js",
-    "revision": "3c69ca0791f94328a10eeaaddc1e1245"
-  },
-  {
     "url": "legacy/storybook-b9a36b2f.js",
     "revision": "e68b9ff4841dbe0806eb7ee81fe92c6b"
-  },
-  {
-    "url": "lit-html-72aa662a.js",
-    "revision": "bbee302e0c07909036c5ca61f4ebe3b4"
   },
   {
     "url": "manager-129abf2a.js",
@@ -96,10 +72,6 @@ self.__precacheManifest = [
   {
     "url": "storybook-35ea0fcf.js",
     "revision": "2087ff1313fea3c39ce9d1a0bd6d59b9"
-  },
-  {
-    "url": "storybook-86416036.js",
-    "revision": "2ef642ad6a8284fd3514327e29774d47"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
