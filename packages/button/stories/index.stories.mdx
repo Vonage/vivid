@@ -1,11 +1,11 @@
 import { Story, Preview, Meta, Props, html } from '@open-wc/demoing-storybook';
 
-import '../vivid-button.js';
+import '../vwc-button.js';
 
 <Meta
   title="VividButton"
   parameters={{
-    component: "vivid-button",
+    component: "vwc-button",
     options: { selectedPanel: "storybookjs/knobs/panel" }
   }}
 />
@@ -25,24 +25,24 @@ A component for...
 ### Installation
 
 ```bash
-yarn add vivid-button
+yarn add vwc-button
 ```
 
 ```js
-import 'vivid-button/vivid-button.js';
+import 'vwc-button/vwc-button.js';
 ```
 
 <Preview withToolbar>
   <Story name="Simple">
     {html`
-      <vivid-button></vivid-button>
+      <vwc-button></vwc-button>
     `}
   </Story>
 </Preview>
 
 ## API
 
-<Props of="vivid-button" />
+<Props of="vwc-button" />
 
 ## Variations
 
@@ -50,6 +50,6 @@ import 'vivid-button/vivid-button.js';
 
 <Story name="Custom Title">
   {html`
-    <vivid-button .title=${'Hello World'}></vivid-button>
+    <vwc-button .title=${'Hello World'}></vwc-button>
   `}
 </Story>

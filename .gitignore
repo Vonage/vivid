@@ -27,3 +27,5 @@ package-lock.json
 /packages/*/src/*.css.ts
 /packages/*/package-lock.json
 **/*.tsbuildinfo*
+
+storybook-static
