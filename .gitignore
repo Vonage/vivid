@@ -1,0 +1,31 @@
+## editors
+/.idea
+/.vscode
+
+## system files
+.DS_Store
+
+## npm
+/node_modules/
+/npm-debug.log
+
+## testing
+/coverage/
+
+## temp folders
+/.tmp/
+
+# build
+/_site/
+/dist/
+
+package-lock.json
+
+/packages/**/*.js
+/packages/**/*.js.map
+/packages/**/*.d.ts
+/packages/*/src/*.css.ts
+/packages/*/package-lock.json
+**/*.tsbuildinfo*
+
+storybook-static
