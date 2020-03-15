@@ -21,7 +21,7 @@
     "test:bs": "karma start karma.bs.config.js --coverage",
     "storybook:build": "build-storybook",
     "start:build": "cd dist && es-dev-server --open",
-    "postinstall": "npm run bootstrap",
+    "postinstall": "yarn bootstrap",
     "bootstrap": "lerna bootstrap",
     "build": "rimraf dist && rollup -c rollup.config.js",
     "start": "npm run dev:server",
