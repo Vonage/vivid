@@ -29,3 +29,5 @@ package-lock.json
 **/*.tsbuildinfo*
 
 storybook-static
+
+.cache
