@@ -19,19 +19,19 @@ jobs:
       - name: Checkout
       - uses: actions/checkout@develop
 
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
+#       - name: Use Node.js ${{ matrix.node-version }}
+#         uses: actions/setup-node@v1
+#         with:
+#           node-version: ${{ matrix.node-version }}
 
-      - name: install yarn globally
-      - run: npm install -g yarn
+#       - name: install yarn globally
+#       - run: npm install -g yarn
 
-      - name: install packages with yarn, build, and test
-        run: yarn
+#       - name: install packages with yarn, build, and test
+#         run: yarn
 
-      - name: build
-        run: yarn storybook:build
+#       - name: build
+#         run: yarn storybook:build
       # - name: test
       #     yarn test
 
