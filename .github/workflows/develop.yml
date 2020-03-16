@@ -13,17 +13,35 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x]
+        node-version: [12.x]
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+      - uses: actions/checkout@develop
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+
+      - name: install yarn globally
       - run: npm install -g yarn
-      - name: yarn install, build, and test
-        run: |
-          yarn
-          yarn storybook:build
-          # yarn test
+
+      - name: install packages with yarn, build, and test
+        run: yarn
+
+      - name: build
+        run: yarn storybook:build
+      # - name: test
+      #     yarn test
+
+      - name: install ZEIT Now globally
+        uses: yarn global add now
+
+      - name: ZEIT Now Deployment
+        uses: amondnet/now-deployment@v2.0.1
+        with:
+          zeit-token: ${{secrets.ZEIT_TOKEN}}
+          now-org-id: "example_org_id" #Required
+          now-project-id: "example_project_id" #Required
+          working-directory: ./storybook-static
