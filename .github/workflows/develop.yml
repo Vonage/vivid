@@ -35,13 +35,13 @@ jobs:
       # - name: test
       #     yarn test
 
-      - name: install ZEIT Now globally
-        run: yarn global add now
+#       - name: install ZEIT Now globally
+#         run: yarn global add now
 
-      - name: ZEIT Now Deployment
-        uses: amondnet/now-deployment@v2.0.1
-        with:
-          zeit-token: ${{secrets.ZEIT_TOKEN}}
-          now-org-id: "example_org_id" #Required
-          now-project-id: "example_project_id" #Required
-          working-directory: ./storybook-static
+#       - name: ZEIT Now Deployment
+#         uses: amondnet/now-deployment@v2.0.1
+#         with:
+#           zeit-token: ${{secrets.ZEIT_TOKEN}}
+#           now-org-id: "example_org_id" #Required
+#           now-project-id: "example_project_id" #Required
+#           working-directory: ./storybook-static
