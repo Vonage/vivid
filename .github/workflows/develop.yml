@@ -36,7 +36,7 @@ jobs:
       #     yarn test
 
       - name: install ZEIT Now globally
-        uses: yarn global add now
+        run: yarn global add now
 
       - name: ZEIT Now Deployment
         uses: amondnet/now-deployment@v2.0.1
