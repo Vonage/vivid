@@ -31,3 +31,19 @@ jobs:
 
       - name: build
         run: yarn build
+        
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+      
+    steps:
+      - name: build storybook
+        run: yarn storybook:build
+
+      - name: ZEIT Now Deployment
+        uses: amondnet/now-deployment@v2.0.1
+        with:
+          zeit-token: ${{secrets.ZEIT_TOKEN}}
+          now-org-id: "team_OZGLAGZ967yUKWH9tzPPqvXU"
+          now-project-id: "QmUZW4mrtAmBeJcn1z7LwuisiifypgPCE2EAPD18qfNp9H"
+          working-directory: ./storybook-static
