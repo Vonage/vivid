@@ -23,7 +23,7 @@
     "start:build": "cd dist && es-dev-server --open",
     "postinstall": "yarn bootstrap",
     "bootstrap": "lerna bootstrap",
-    "build": "rimraf dist && rollup -c rollup.config.js",
+    "build": "yarn run build:typescript",
     "start": "npm run dev:server",
     "dev:server": "es-dev-server --config es-dev-server.config.js",
     "build:typescript": "tsc --build",
