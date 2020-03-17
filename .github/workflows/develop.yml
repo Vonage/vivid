@@ -5,7 +5,7 @@ on:
     branches: [develop]
 
 jobs:
-  build:
+  build-and-deploy-storybook:
     runs-on: ubuntu-latest
 
     strategy:
@@ -32,10 +32,6 @@ jobs:
       - name: build
         run: yarn build
         
-  build-deploy-storybook:
-    needs: build
-      
-    steps:
       - name: build storybook
         run: yarn storybook:build
 
