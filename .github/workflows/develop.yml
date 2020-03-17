@@ -21,13 +21,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-
       - name: install yarn globally
       - run: npm install -g yarn
-
       - name: install packages with yarn
         run: yarn
-
 #       - name: build
 #         run: yarn storybook:build
 
