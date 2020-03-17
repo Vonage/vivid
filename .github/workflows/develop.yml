@@ -28,19 +28,19 @@ jobs:
       - name: install packages with yarn
         run: yarn
 
-      - name: build
-        run: yarn storybook:build
+#       - name: build
+#         run: yarn storybook:build
 
-      # - name: test
-      #   run: yarn test
+#       # - name: test
+#       #   run: yarn test
 
-      - name: install ZEIT Now globally
-        run: yarn global add now
+#       - name: install ZEIT Now globally
+#         run: yarn global add now
 
-      - name: ZEIT Now Deployment
-        uses: amondnet/now-deployment@v2.0.1
-        with:
-          zeit-token: ${{secrets.ZEIT_TOKEN}}
-          now-org-id: "team_OZGLAGZ967yUKWH9tzPPqvXU"
-          now-project-id: "QmUZW4mrtAmBeJcn1z7LwuisiifypgPCE2EAPD18qfNp9H"
-          working-directory: ./storybook-static
+#       - name: ZEIT Now Deployment
+#         uses: amondnet/now-deployment@v2.0.1
+#         with:
+#           zeit-token: ${{secrets.ZEIT_TOKEN}}
+#           now-org-id: "team_OZGLAGZ967yUKWH9tzPPqvXU"
+#           now-project-id: "QmUZW4mrtAmBeJcn1z7LwuisiifypgPCE2EAPD18qfNp9H"
+#           working-directory: ./storybook-static
