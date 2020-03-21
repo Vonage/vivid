@@ -1,0 +1,35 @@
+{
+  "name": "@vivid/vwc-anchor",
+  "version": "0.0.2",
+  "description": "> TODO: description",
+  "author": "yinonov <yinon@hotmail.com>",
+  "homepage": "https://github.com/Vonage/Vivid#readme",
+  "license": "ISC",
+  "main": "lib/button.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vonage/Vivid.git",
+    "directory": "packages/anchor"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/Vonage/Vivid/issues"
+  },
+  "dependencies": {
+    "lit-element": "^2.2.1",
+    "lit-html": "^1.1.2",
+    "tslib": "^1.11.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
