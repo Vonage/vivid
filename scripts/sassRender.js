@@ -11,7 +11,7 @@ sass.render(
     outputStyle: 'compressed',
     fiber: Fiber,
   },
-  function(err, result) {
+  (err, result) => {
     if (result) {
       const css = result.css.toString();
       const template = `
