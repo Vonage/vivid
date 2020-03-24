@@ -22,10 +22,14 @@
     },
     "composite": true,
     "importHelpers": true,
-    "allowSyntheticDefaultImports":true,
-    "esModuleInterop":true
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true
   },
   "include": ["custom_typings/**/*.ts", "src/*.ts"],
   "exclude": [],
-  "references": [{ "path": "packages/button" }]
+  "references": [
+    { "path": "packages/scheme" },
+    { "path": "packages/anchor" },
+    { "path": "packages/button" }
+  ]
 }

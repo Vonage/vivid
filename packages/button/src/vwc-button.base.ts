@@ -1,5 +1,7 @@
-import { html, LitElement } from 'lit-element';
-import { buttonMachine } from './vwc-button.machine';
+import { Button as MwcButton } from '@material/mwc-button';
+// import { html } from 'lit-element';
+
+// import { buttonMachine } from './vwc-button.machine';
 // import { interpret } from 'xstate';
 
 // Machine instance with internal state
@@ -14,20 +16,18 @@ import { buttonMachine } from './vwc-button.machine';
 // toggleService.send('TOGGLE');
 // => 'inactive'
 
-export class ButtonBase extends LitElement {
+export class ButtonBase extends MwcButton {
   // static machineService = interpret(buttonMachine)
   //   .onTransition(state => console.log(state.value))
   //   .start();
-
-  protected createRenderRoot() {
-    return this.attachShadow({ mode: 'open', delegatesFocus: true });
-  }
-
-  protected render() {
-    console.log(buttonMachine);
-    // console.log(this.machineService);
-    return html`
-      <button>lorem ipsum</button>
-    `;
-  }
+  // protected createRenderRoot() {
+  //   return this.attachShadow({ mode: 'open', delegatesFocus: true });
+  // }
+  // protected render() {
+  //   // console.log(buttonMachine);
+  //   // console.log(this.machineService);
+  //   return html`
+  //     <button>lorem ipsum</button>
+  //   `;
+  // }
 }
