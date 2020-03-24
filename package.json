@@ -26,7 +26,7 @@
     "build": "yarn build:styles && yarn build:typescript",
     "build:styles": "sh ./scripts/build-styles.sh",
     "build:typescript": "tsc --build",
-    "start": "yarn dev:server",
+    "start": "yarn build && yarn dev:server",
     "dev:server": "es-dev-server --config es-dev-server.config.js",
     "watch": "node scripts/watcher.js"
   },
@@ -39,10 +39,11 @@
     "@open-wc/testing-karma": "^3.0.0",
     "@open-wc/testing-karma-bs": "^1.0.0",
     "@rollup/plugin-typescript": "^4.0.0",
+    "@webcomponents/webcomponentsjs": "^2.4.3",
     "command-line-args": "^5.1.1",
     "command-line-usage": "^6.1.0",
     "deepmerge": "^4.2.2",
-    "es-dev-server": "^1.44.0",
+    "es-dev-server": "^1.27.1",
     "eslint": "^6.1.0",
     "fibers": "^4.0.2",
     "husky": "^1.0.0",
@@ -55,7 +56,7 @@
     "rollup": "^1.15.4",
     "sass": "^1.26.3",
     "snowpack": "^1.5.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.4.1"
   },
   "eslintConfig": {
     "extends": [

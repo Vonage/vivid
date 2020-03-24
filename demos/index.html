@@ -4,12 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script type="module" src="../node_modules/@material/mwc-button/mwc-button.js"></script>
-    <script type="module" src="../node_modules/@vivid/vwc-button/vwc-button.js"></script>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+    <!-- <script type="module" src="../node_modules/@material/mwc-button/mwc-button.js"></script> -->
+    <!-- <script type="module" src="../node_modules/@vivid/vwc-button/vwc-button.js"></script> -->
   </head>
   <body>
-    <mwc-button outlined label="outlined"></mwc-button>
+    <mwc-button disabled outlined label="outlined"></mwc-button>
 
     <vwc-button raised>Hello</vwc-button>
+
+    <script type="module">
+      // Importing this module registers <mwc-button> as an element that you
+      // can use in this page.
+      //
+      // Note this import is a bare module specifier, so it must be converted
+      // to a path using a server such as es-dev-server.
+      import '@material/mwc-button';
+      import '@vivid/vwc-button';
+    </script>
   </body>
 </html>

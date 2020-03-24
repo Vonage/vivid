@@ -20,10 +20,9 @@
   },
   "dependencies": {
     "@material/mwc-button": "^0.14.1",
-    "lit-element": "^2.3.0",
-    "lit-html": "^1.1.2",
+    "lit-element": "^2.3.1",
+    "lit-html": "^1.2.1",
     "tslib": "^1.11.1",
-    "xstate": "^4.8.0",
     "@vivid/scheme": "^0.0.2"
   },
   "publishConfig": {
