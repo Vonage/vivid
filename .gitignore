@@ -8,6 +8,11 @@
 ## npm
 node_modules
 npm-debug.log
+package-lock.json
+
+## yarn
+yarn.lock
+yarn-error.log
 
 ## testing
 /coverage/
@@ -19,7 +24,6 @@ npm-debug.log
 /_site/
 /dist/
 
-package-lock.json
 
 /packages/**/*.js
 /packages/**/*.js.map
