@@ -14,7 +14,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-        
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -22,16 +22,16 @@ jobs:
 
       - name: install yarn globally
         run: npm install -g yarn
-        
-      - name: install packages with yarn
+
+      - name: install components with yarn
         run: yarn
-    
-#       - name: test
-#         run: yarn test
+
+      #       - name: test
+      #         run: yarn test
 
       - name: build
         run: yarn build
-        
+
       - name: build storybook
         run: yarn storybook:build
 

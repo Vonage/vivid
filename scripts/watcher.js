@@ -21,7 +21,7 @@ const watchOptions = {
   // },
 };
 
-watch('packages', watchOptions, onChange);
+watch(['common', 'components'], watchOptions, onChange);
 
 let inProgress = false;
 

@@ -16,9 +16,9 @@
     "strict": true,
     "noImplicitAny": false,
     "outDir": "./",
-    "baseUrl": "./packages",
+    "baseUrl": "./",
     "paths": {
-      "@vivid/vivid-*": ["./*/src"]
+      "@vivid/vwc-*": ["./*/src"]
     },
     "composite": true,
     "importHelpers": true,
@@ -28,8 +28,8 @@
   "include": ["custom_typings/**/*.ts", "src/*.ts"],
   "exclude": [],
   "references": [
-    { "path": "packages/scheme" },
-    { "path": "packages/anchor" },
-    { "path": "packages/button" }
+    { "path": "common/scheme" },
+    { "path": "components/anchor" },
+    { "path": "components/button" }
   ]
 }

@@ -25,11 +25,16 @@ yarn-error.log
 /dist/
 
 
-/packages/**/*.js
-/packages/**/*.js.map
-/packages/**/*.d.ts
-/packages/*/src/*.css.ts
-/packages/*/package-lock.json
+/common/**/*.js
+/common/**/*.js.map
+/common/**/*.d.ts
+/common/*/src/*.css.ts
+
+/components/**/*.js
+/components/**/*.js.map
+/components/**/*.d.ts
+/components/*/src/*.css.ts
+
 **/*.tsbuildinfo*
 
 storybook-static

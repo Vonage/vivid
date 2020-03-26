@@ -5,7 +5,8 @@
   "author": "Vonage",
   "license": "MIT",
   "workspaces": [
-    "packages/*"
+    "components/*",
+    "common/*"
   ],
   "scripts": {
     "lint:eslint": "eslint --ext .js,.html . --ignore-path .gitignore",
@@ -22,7 +23,6 @@
     "storybook:build": "build-storybook",
     "postinstall": "yarn bootstrap",
     "bootstrap": "lerna bootstrap",
-    "start:build": "cd dist && es-dev-server --open",
     "build": "yarn build:styles && yarn build:typescript",
     "build:styles": "sh ./scripts/build-styles.sh",
     "build:typescript": "tsc --build",

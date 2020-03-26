@@ -2,7 +2,7 @@
 
 set -e
 
-sassfiles=(`find packages -name "*.scss"`)
+sassfiles=(`find components common -name "*.scss"`)
 
 for sassfile in ${sassfiles[@]}; do
   # skip partials
