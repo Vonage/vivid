@@ -1,15 +1,16 @@
 {
-  "name": "@vivid/theme",
+  "name": "@vivid/vwc-textfield",
   "version": "0.0.2",
-  "description": "theme coordinator",
+  "description": "> TODO: description",
   "author": "yinonov <yinon@hotmail.com>",
   "homepage": "https://github.com/Vonage/Vivid#readme",
   "license": "ISC",
-  "main": "theme.js",
-  "module": "theme.js",
+  "main": "vwc-textfield.js",
+  "module": "vwc-textfield.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Vonage/Vivid.git"
+    "url": "git+https://github.com/Vonage/Vivid.git",
+    "directory": "packages/textfield"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
@@ -18,9 +19,12 @@
     "url": "https://github.com/Vonage/Vivid/issues"
   },
   "dependencies": {
+    "@material/mwc-textfield": "^0.14.1",
+    "lit-element": "^2.3.1",
+    "lit-html": "^1.2.1",
     "tslib": "^1.11.1"
   },
   "publishConfig": {
-    "access": "private"
+    "access": "public"
   }
 }

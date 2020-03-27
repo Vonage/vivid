@@ -1,8 +1,8 @@
 body {
-  background-color: yellow;
+  background-color: black;
 }
 
-:host {
-  --mdc-theme-primary: magenta;
-  --mdc-theme-on-primary: beige;
+:root {
+  --mdc-theme-primary: rgb(132, 168, 143);
+  --mdc-theme-on-primary: black;
 }

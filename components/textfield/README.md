@@ -1,11 +1,11 @@
-# `scheme`
+# `button`
 
 > TODO: description
 
 ## Usage
 
 ```
-const vwcScheme = require('scheme');
+const button = require('button');
 
 // TODO: DEMONSTRATE API
 ```

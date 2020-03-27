@@ -1,3 +1,8 @@
 body {
-  background-color: blue;
+  background-color: c1c1c1;
+}
+
+:root {
+  --mdc-theme-primary: rgb(26, 128, 22);
+  --mdc-theme-on-primary: beige;
 }
