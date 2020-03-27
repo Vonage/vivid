@@ -55,8 +55,7 @@
     "rimraf": "^2.6.3",
     "rollup": "^1.15.4",
     "sass": "^1.26.3",
-    "snowpack": "^1.5.1",
-    "typescript": "^3.4.1"
+    "typescript": "^3.8.3"
   },
   "eslintConfig": {
     "extends": [

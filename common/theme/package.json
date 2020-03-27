@@ -1,12 +1,12 @@
 {
-  "name": "@vivid/scheme",
+  "name": "@vivid/theme",
   "version": "0.0.2",
-  "description": "scheme coordinator",
+  "description": "theme coordinator",
   "author": "yinonov <yinon@hotmail.com>",
   "homepage": "https://github.com/Vonage/Vivid#readme",
   "license": "ISC",
-  "main": "scheme.js",
-  "module": "scheme.js",
+  "main": "theme.js",
+  "module": "theme.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Vonage/Vivid.git"

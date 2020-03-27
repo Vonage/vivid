@@ -1,12 +1,12 @@
 {
-  "name": "@vivid/vwc-button",
+  "name": "@vivid/scheme-loader",
   "version": "0.0.2",
   "description": "> TODO: description",
   "author": "yinonov <yinon@hotmail.com>",
   "homepage": "https://github.com/Vonage/Vivid#readme",
   "license": "ISC",
-  "main": "vwc-button.js",
-  "module": "vwc-button.js",
+  "main": "scheme-loader.js",
+  "module": "scheme-loader.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Vonage/Vivid.git",
@@ -19,11 +19,8 @@
     "url": "https://github.com/Vonage/Vivid/issues"
   },
   "dependencies": {
-    "@material/mwc-button": "^0.14.1",
-    "lit-element": "^2.3.1",
-    "lit-html": "^1.2.1",
-    "tslib": "^1.11.1",
-    "@vivid/theme": "^0.0.2"
+    "ramda": "^0.27.0",
+    "tslib": "^1.11.1"
   },
   "publishConfig": {
     "access": "public"

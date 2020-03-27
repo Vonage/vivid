@@ -1,0 +1,8 @@
+body {
+  background-color: yellow;
+}
+
+:host {
+  --mdc-theme-primary: magenta;
+  --mdc-theme-on-primary: beige;
+}
