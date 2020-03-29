@@ -1,6 +1,6 @@
 {
-  "name": "@vivid/vwc-button",
-  "version": "0.0.3",
+  "name": "@vonage/vwc-button",
+  "version": "0.0.5",
   "description": "> TODO: description",
   "author": "yinonov <yinon@hotmail.com>",
   "homepage": "https://github.com/Vonage/Vivid#readme",
@@ -9,7 +9,7 @@
   "module": "vwc-button.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Vonage/Vivid.git",
+    "url": "ssh://github.com/Vonage/Vision.git",
     "directory": "packages/button"
   },
   "scripts": {
@@ -25,6 +25,7 @@
     "tslib": "^1.11.1"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/"
   }
 }
