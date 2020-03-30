@@ -1,9 +1,9 @@
 {
-  "name": "@vivid/vwc-anchor",
-  "version": "0.0.2",
+  "name": "@vonage/vwc-anchor",
+  "version": "0.0.6",
   "description": "> TODO: description",
   "author": "yinonov <yinon@hotmail.com>",
-  "homepage": "https://github.com/Vonage/Vivid#readme",
+  "homepage": "https://github.com/Vonage/vision/tree/master/components/anchor#readme",
   "license": "ISC",
   "main": "lib/button.js",
   "directories": {
@@ -15,14 +15,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Vonage/Vivid.git",
-    "directory": "packages/anchor"
+    "url": "ssh://github.com/vonage/vision.git",
+    "directory": "components/anchor"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
-    "url": "https://github.com/Vonage/Vivid/issues"
+    "url": "https://github.com/Vonage/vision/issues"
   },
   "dependencies": {
     "lit-element": "^2.2.1",
@@ -30,6 +30,7 @@
     "tslib": "^1.11.1"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/"
   }
 }

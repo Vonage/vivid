@@ -1,7 +1,3 @@
-## vwc-button
-
-host on [github packages](https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-npm-for-use-with-github-packages#installing-a-package)
-
 <p align="center">
   <img width="200" src="https://open-wc.org/hero.png"></img>
 </p>

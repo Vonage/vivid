@@ -2,5 +2,10 @@
   "packages": ["common/*", "components/*"],
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "version": "0.0.2"
+  "version": "0.0.6",
+  "command": {
+    "publish": {
+      "registry": "https://npm.pkg.github.com"
+    }
+  }
 }
