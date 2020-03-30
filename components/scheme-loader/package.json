@@ -1,28 +1,29 @@
 {
-  "name": "@vivid/scheme-loader",
-  "version": "0.0.3",
+  "name": "@vonage/scheme-loader",
+  "version": "0.0.6",
   "description": "> TODO: description",
   "author": "yinonov <yinon@hotmail.com>",
-  "homepage": "https://github.com/Vonage/Vivid#readme",
+  "homepage": "https://github.com/Vonage/vision/tree/master/components/scheme-loader#readme",
   "license": "ISC",
   "main": "scheme-loader.js",
   "module": "scheme-loader.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Vonage/Vivid.git",
-    "directory": "packages/button"
+    "url": "ssh://github.com/vonage/vision.git",
+    "directory": "components/scheme-loader"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
-    "url": "https://github.com/Vonage/Vivid/issues"
+    "url": "https://github.com/Vonage/vision/issues"
   },
   "dependencies": {
     "ramda": "^0.27.0",
     "tslib": "^1.11.1"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/"
   }
 }

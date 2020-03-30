@@ -1,13 +1,14 @@
-import { Button as MwcButton } from '@material/mwc-button';
+import { ButtonBase as MwcButtonBase } from '@material/mwc-button/mwc-button-base';
+import { style } from '@material/mwc-button/mwc-button-css.js';
 import { customElement } from 'lit-element';
 
 // import { theme } from '@vivid/theme';
 
 @customElement('vwc-button')
-// @ts-ignore: Unreachable code error
-export class Button extends MwcButton {
+export class Button extends MwcButtonBase {
   static get styles() {
-    return [super.styles /*, theme*/];
+    // return [super.styles /*, theme*/];
+    return [style /*, theme*/];
   }
 }
 

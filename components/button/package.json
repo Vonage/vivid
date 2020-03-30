@@ -1,22 +1,22 @@
 {
   "name": "@vonage/vwc-button",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "> TODO: description",
   "author": "yinonov <yinon@hotmail.com>",
-  "homepage": "https://github.com/Vonage/Vivid#readme",
+  "homepage": "https://github.com/Vonage/vision/tree/master/components/button#readme",
   "license": "ISC",
   "main": "vwc-button.js",
   "module": "vwc-button.js",
   "repository": {
     "type": "git",
-    "url": "ssh://github.com/Vonage/Vision.git",
-    "directory": "packages/button"
+    "url": "ssh://github.com/vonage/vision.git",
+    "directory": "components/button"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
-    "url": "https://github.com/Vonage/Vivid/issues"
+    "url": "https://github.com/Vonage/vision/issues"
   },
   "dependencies": {
     "@material/mwc-button": "^0.14.1",
