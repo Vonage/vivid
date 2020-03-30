@@ -1,22 +1,22 @@
 {
-  "name": "@vivid/vwc-textfield",
-  "version": "0.0.3",
+  "name": "@vonage/vwc-textfield",
+  "version": "0.0.6",
   "description": "> TODO: description",
   "author": "yinonov <yinon@hotmail.com>",
-  "homepage": "https://github.com/Vonage/Vivid#readme",
+  "homepage": "https://github.com/Vonage/vision/tree/master/components/textfield#readme",
   "license": "ISC",
   "main": "vwc-textfield.js",
   "module": "vwc-textfield.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Vonage/Vivid.git",
-    "directory": "packages/textfield"
+    "url": "ssh://github.com/vonage/vision.git",
+    "directory": "components/textfield"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
-    "url": "https://github.com/Vonage/Vivid/issues"
+    "url": "https://github.com/Vonage/vision/issues"
   },
   "dependencies": {
     "@material/mwc-textfield": "^0.14.1",
@@ -25,6 +25,7 @@
     "tslib": "^1.11.1"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/"
   }
 }
