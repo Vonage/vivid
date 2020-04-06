@@ -28,9 +28,11 @@
   "include": ["custom_typings/**/*.ts", "src/*.ts"],
   "exclude": [],
   "references": [
+    { "path": "components/scheme-loader" },
     { "path": "components/anchor" },
     { "path": "components/button" },
     { "path": "components/textfield" },
-    { "path": "components/scheme-loader" }
+    { "path": "components/list" },
+    { "path": "components/select" }
   ]
 }

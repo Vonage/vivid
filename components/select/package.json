@@ -1,0 +1,31 @@
+{
+  "name": "@vonage/vwc-select",
+  "version": "0.0.6",
+  "description": "> TODO: description",
+  "author": "yinonov <yinon@hotmail.com>",
+  "homepage": "https://github.com/Vonage/vision/tree/master/components/select#readme",
+  "license": "ISC",
+  "main": "vwc-select.js",
+  "module": "vwc-select.js",
+  "repository": {
+    "type": "git",
+    "url": "ssh://github.com/vonage/vision.git",
+    "directory": "components/select"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/Vonage/vision/issues"
+  },
+  "dependencies": {
+    "@material/mwc-select": "^0.14.1",
+    "lit-element": "^2.3.1",
+    "lit-html": "^1.2.1",
+    "tslib": "^1.11.1"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/"
+  }
+}

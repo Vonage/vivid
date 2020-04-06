@@ -1,0 +1,47 @@
+import { Story, Preview, Meta, Props, html } from '@open-wc/demoing-storybook';
+
+import '../vwc-textfield.js';
+
+<Meta
+  title="VividTextField"
+  parameters={{
+    component: 'vwc-textfield',
+    options: { selectedPanel: 'storybookjs/knobs/panel' },
+  }}
+/>
+
+# VividTextField
+
+A component for...
+
+## Features:
+
+- a
+- b
+- ...
+
+## How to use
+
+### Installation
+
+```bash
+yarn add vwc-textfield
+```
+
+```js
+import 'vwc-textfield/vwc-textfield.js';
+```
+
+<Preview withToolbar>
+  <Story name="Simple">
+    {html`
+      <vwc-textfield>TextField</vwc-textfield>
+    `}
+  </Story>
+</Preview>
+
+## API
+
+<Props of="vwc-textfield" />
+
+## Variations
