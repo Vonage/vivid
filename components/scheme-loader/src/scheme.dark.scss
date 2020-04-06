@@ -5,4 +5,12 @@ body {
 :root {
   --mdc-theme-primary: rgb(132, 168, 143);
   --mdc-theme-on-primary: black;
+
+  // TODO // create a mutual function / mixin to recieve all properties
+  // TODO // in argument parameters and throw error if props missing
+  // TODO --vwc prefix
+  --vwc-outlined-idle-border-color: lightblue;
+  --vwc-outlined-hover-border-color: blue;
+  --vwc-label-ink-color: yellow;
+  --vwc-ink-color: yellow;
 }

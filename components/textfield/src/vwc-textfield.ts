@@ -1,8 +1,8 @@
+import { TextField as MwcTextField } from '@material/mwc-textfield/mwc-textfield';
 import { customElement } from 'lit-element';
-import { TextFieldBase as MwcTextFieldBase } from '@material/mwc-textfield/mwc-textfield-base';
-import { style } from '@material/mwc-textfield/mwc-textfield-css';
+import { style as customStyle } from './vwc-textfield-cutom.css';
 
-export { TextFieldType as MwcTextFieldType } from '@material/mwc-textfield/mwc-textfield-base';
+export { TextFieldType as MwcTextFieldType } from '@material/mwc-textfield/mwc-textfield';
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -11,8 +11,9 @@ declare global {
 }
 
 @customElement('vwc-textfield')
-export class TextField extends MwcTextFieldBase {
+//  @ts-ignore
+export class TextField extends MwcTextField {
   static get styles() {
-    return [style];
+    return [super.styles, customStyle];
   }
 }

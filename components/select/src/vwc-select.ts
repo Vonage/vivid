@@ -1,5 +1,5 @@
-import { SelectBase as MwcSelectBase } from '@material/mwc-select/mwc-select-base';
-import { style } from '@material/mwc-select/mwc-select-css.js';
+import { Select as MwcSelect } from '@material/mwc-select/mwc-select';
+// import { style } from '@material/mwc-select/mwc-select-css.js';
 import { customElement } from 'lit-element';
 
 // import { theme } from '@vivid/theme';
@@ -11,13 +11,13 @@ declare global {
 }
 
 @customElement('vwc-select')
-export class Select extends MwcSelectBase {
-  static get styles() {
-    // return [super.styles /*, theme*/];
-    return [style /*, theme*/];
-  }
-  constructor() {
-    super();
-    console.log(super.render);
-  }
+export class Select extends MwcSelect {
+  // static get styles() {
+  //   // return [super.styles /*, theme*/];
+  //   return [style /*, theme*/];
+  // }
+  // constructor() {
+  //   super();
+  //   console.log(super.render);
+  // }
 }

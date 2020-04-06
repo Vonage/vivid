@@ -1,17 +1,17 @@
-import { Button as MwcButton } from '@material/mwc-button/mwc-button';
-// import { style } from '@material/mwc-button/mwc-button-css.js';
+import { ListItem as MwcListItem } from '@material/mwc-list/mwc-list-item';
+// import { style } from '@material/mwc-list/mwc-list-css.js';
 import { customElement } from 'lit-element';
 
 // import { theme } from '@vivid/theme';
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vwc-button': Button;
+    'vwc-list-item': ListItem;
   }
 }
 
-@customElement('vwc-button')
-export class Button extends MwcButton {
+@customElement('vwc-list-item')
+export class ListItem extends MwcListItem {
   // static get styles() {
   //   // return [super.styles /*, theme*/];
   //   return [style /*, theme*/];
