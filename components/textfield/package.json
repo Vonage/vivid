@@ -3,20 +3,20 @@
   "version": "0.0.6",
   "description": "> TODO: description",
   "author": "yinonov <yinon@hotmail.com>",
-  "homepage": "https://github.com/Vonage/vision/tree/master/components/textfield#readme",
+  "homepage": "https://github.com/Vonage/vivid/tree/master/components/textfield#readme",
   "license": "ISC",
   "main": "vwc-textfield.js",
   "module": "vwc-textfield.js",
   "repository": {
     "type": "git",
-    "url": "ssh://github.com/vonage/vision.git",
+    "url": "ssh://github.com/vonage/vivid.git",
     "directory": "components/textfield"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
-    "url": "https://github.com/Vonage/vision/issues"
+    "url": "https://github.com/Vonage/vivid/issues"
   },
   "dependencies": {
     "@material/mwc-textfield": "^0.14.1",
