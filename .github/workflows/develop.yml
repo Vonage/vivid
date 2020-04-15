@@ -40,5 +40,5 @@ jobs:
         with:
           zeit-token: ${{secrets.ZEIT_TOKEN}}
           now-org-id: "team_OZGLAGZ967yUKWH9tzPPqvXU"
-          now-project-id: "QmUZW4mrtAmBeJcn1z7LwuisiifypgPCE2EAPD18qfNp9H"
+          now-project-id: "QmRRAhPzCqLo1i3YDa6YPuRjm9KGrkPJc7ApSfXK5thydr"
           working-directory: ./storybook-static
