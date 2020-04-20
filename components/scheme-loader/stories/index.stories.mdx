@@ -1,5 +1,8 @@
 import { Story, Preview, Meta, Props, html } from '@open-wc/demoing-storybook';
 
+// import '../vvd-scheme-loader.js';
+import '../../button/vwc-button.js';
+
 <Meta
   title="VividSchemeLoader"
   parameters={{
@@ -20,13 +23,24 @@ A component for automatically load user prefered scheme (currently light/dark)
 
 ## How to use
 
+<Preview withToolbar>
+  <Story name="Simple">
+    {html`
+      <vwc-button>Button</vwc-button>
+    `}
+  </Story>
+</Preview>
+
 ### Installation
 
 ```bash
 yarn add vwc-scheme-loader
 ```
 
-place module reference in the head of your html to apply relevant styling for your application and the vivid web components
+place module reference in the head of your html to apply vivid styling for your application and to the vivid web components
+either by a plain old script tag (with no defer/async).
+or by the following 'modulepreload' approach where supported
+our goal is to make sure the script gets high priority
 
 ```
 <script rel="modulepreload" src="../node_modules/@vonage/scheme-loader/scheme-loader.js"></script>

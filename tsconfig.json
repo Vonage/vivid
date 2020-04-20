@@ -33,6 +33,7 @@
     { "path": "components/button" },
     { "path": "components/textfield" },
     { "path": "components/list" },
-    { "path": "components/select" }
+    { "path": "components/select" },
+    { "path": "components/switch" }
   ]
 }
