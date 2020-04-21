@@ -42,4 +42,5 @@ jobs:
           now-org-id: "team_OZGLAGZ967yUKWH9tzPPqvXU"
           now-project-id: "QmRRAhPzCqLo1i3YDa6YPuRjm9KGrkPJc7ApSfXK5thydr"
           working-directory: ./storybook-static,
-          args: --prod
+          now-args: "--prod" #Optional
+
