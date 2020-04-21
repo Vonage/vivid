@@ -39,7 +39,7 @@ jobs:
         uses: amondnet/now-deployment@v2.0.1
         with:
           zeit-token: ${{secrets.ZEIT_TOKEN}}
-          now-org-id: ${{ secrets.ORG_ID}}
-          now-project-id: ${{ secrets.PROJECT_ID}}
+          now-org-id: ${{ secrets.ZEIT_ORG_ID}}
+          now-project-id: ${{ secrets.ZEIT_PROJECT_ID}}
           working-directory: ./storybook-static,
           now-args: "--prod" #Optional
