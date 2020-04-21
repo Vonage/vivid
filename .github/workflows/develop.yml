@@ -42,4 +42,4 @@ jobs:
           now-org-id: ${{secrets.ZEIT_ORG_ID}}
           now-project-id: ${{secrets.ZEIT_PROJECT_ID}}
           working-directory: ./storybook-static
-          now-args: "--prod" #Optional
+          # now-args: "--prod" #Optional
