@@ -2168,6 +2168,17 @@
     lit-html "^1.1.2"
     tslib "^1.10.0"
 
+"@material/mwc-switch@^0.14.1":
+  version "0.14.1"
+  resolved "https://registry.yarnpkg.com/@material/mwc-switch/-/mwc-switch-0.14.1.tgz#15c58cdc4561deeadaf4e356c627abfe2c1ea8b1"
+  integrity sha512-v6KOEyj5rxNudE33TA4BDObaYLIQ2hnawxHu/c6fYdbv2/jxSn0Aft7SpYYWJYq9cHbTbn+tlL9tFEkJvf8xWg==
+  dependencies:
+    "@material/mwc-base" "^0.14.1"
+    "@material/mwc-ripple" "^0.14.1"
+    "@material/switch" "=6.0.0-canary.35a32aaea.0"
+    lit-element "^2.3.0"
+    tslib "^1.10.0"
+
 "@material/mwc-textfield@^0.14.1":
   version "0.14.1"
   resolved "https://registry.yarnpkg.com/@material/mwc-textfield/-/mwc-textfield-0.14.1.tgz#05214158f780785c88e7d7649ebf99b524eca733"
@@ -2258,6 +2269,22 @@
   dependencies:
     "@material/feature-targeting" "6.0.0-canary.35a32aaea.0"
     "@material/rtl" "6.0.0-canary.35a32aaea.0"
+
+"@material/switch@=6.0.0-canary.35a32aaea.0":
+  version "6.0.0-canary.35a32aaea.0"
+  resolved "https://registry.yarnpkg.com/@material/switch/-/switch-6.0.0-canary.35a32aaea.0.tgz#bc8e9aeadc2ee1a08cf7b057f9f1d1b2282c9ca1"
+  integrity sha512-tyMX2VBoXJtSbi6w+jk7RMZSA9hzvM1hDH9i+Mz5EQSj+mtzqPBQTBNFlRGmglMSZi6WQ/4x04OBZxjpZOHLAg==
+  dependencies:
+    "@material/animation" "6.0.0-canary.35a32aaea.0"
+    "@material/base" "6.0.0-canary.35a32aaea.0"
+    "@material/density" "6.0.0-canary.35a32aaea.0"
+    "@material/dom" "6.0.0-canary.35a32aaea.0"
+    "@material/elevation" "6.0.0-canary.35a32aaea.0"
+    "@material/feature-targeting" "6.0.0-canary.35a32aaea.0"
+    "@material/ripple" "6.0.0-canary.35a32aaea.0"
+    "@material/rtl" "6.0.0-canary.35a32aaea.0"
+    "@material/theme" "6.0.0-canary.35a32aaea.0"
+    tslib "^1.9.3"
 
 "@material/textfield@=6.0.0-canary.35a32aaea.0":
   version "6.0.0-canary.35a32aaea.0"

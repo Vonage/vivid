@@ -1,3 +1,14 @@
+# Vivid UI components
+
+### Get up and running
+* Clone the repo
+* Do `yarn install` to bring all the dependencies
+* Do `yarn start` to build the components and start a local dev server (you'll see the port in the console)
+* Navigate to `https://localhost:5424/demos/index.html` (replace the port if needed) and start hacking with the components in the browser
+* Welcome! :)
+
+---
+
 <p align="center">
   <img width="200" src="https://open-wc.org/hero.png"></img>
 </p>
