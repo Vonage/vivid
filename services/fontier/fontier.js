@@ -1,6 +1,4 @@
-export { prepareFont };
-
-function prepareFont(options) {
+export function prepareFont(options) {
 	//	TODO: resolve custom fonts origin in the options
 	const variantSupported = CSS.supports('font-variation-settings', '"wdth" 9');
 	const ds = document.createElement('style');
