@@ -1,6 +1,9 @@
 # VVD Fonts loading
 
-We provide 2 approaches to get the standard Vonage fonts into your application: `CSS` based and `JS/TS` based ones.
+As part of the One Vonage unified branding and look'n'feel experience, we are to provide a common Web fonts set.
+There are two supported approaches to get the standard Vonage fonts into your application:
+* `CSS` based
+* `JS/TS` based ones.
 
 ---
 
