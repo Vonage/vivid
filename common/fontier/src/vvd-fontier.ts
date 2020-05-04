@@ -1,5 +1,10 @@
 export {
-	prepareFont
+	prepareFont,
+	InitOptions
+}
+
+interface InitOptions {
+
 }
 
 async function resolveFontResources(variant: boolean): Promise<string> {
@@ -12,7 +17,7 @@ async function resolveFontResources(variant: boolean): Promise<string> {
 	return css.style.cssText;
 }
 
-async function prepareFont(options: Object): Promise<void> {
+async function prepareFont(options: InitOptions): Promise<void> {
 	if (options) {
 		//	TODO: resolve custom fonts origins / binary in the options
 	}
