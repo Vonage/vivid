@@ -1,86 +1,88 @@
-/*
-	regular
-*/
-@font-face {
-	font-family: 'VonageMain';
-	src: url('fonts/static/WorkSans-Regular.woff2') format('woff2');
-	font-style: normal;
-	font-weight: 400;
-}
+@supports not (font-variation-settings: 'wdth' 9) {
+	/*
+		regular
+	*/
+	@font-face {
+		font-family: 'VonageMain';
+		src: url('fonts/static/WorkSans-Regular.woff2') format('woff2');
+		font-style: normal;
+		font-weight: 400;
+	}
 
-@font-face {
-	font-family: 'VonageMain';
-	src: url('fonts/static/WorkSans-RegularItalic.woff2') format('woff2');
-	font-style: italic;
-	font-weight: 400;
-}
+	@font-face {
+		font-family: 'VonageMain';
+		src: url('fonts/static/WorkSans-RegularItalic.woff2') format('woff2');
+		font-style: italic;
+		font-weight: 400;
+	}
 
-/*
-	light
-*/
-@font-face {
-	font-family: 'VonageMain';
-	src: url('fonts/static/WorkSans-Light.woff2') format('woff2');
-	font-style: normal;
-	font-weight: 300;
-}
+	/*
+		light
+	*/
+	@font-face {
+		font-family: 'VonageMain';
+		src: url('fonts/static/WorkSans-Light.woff2') format('woff2');
+		font-style: normal;
+		font-weight: 300;
+	}
 
-@font-face {
-	font-family: 'VonageMain';
-	src: url('fonts/static/WorkSans-LightItalic.woff2') format('woff2');
-	font-style: italic;
-	font-weight: 300;
-}
+	@font-face {
+		font-family: 'VonageMain';
+		src: url('fonts/static/WorkSans-LightItalic.woff2') format('woff2');
+		font-style: italic;
+		font-weight: 300;
+	}
 
-/*
-	extra light
-*/
-@font-face {
-	font-family: 'VonageMain';
-	src: url('fonts/static/WorkSans-ExtraLight.woff2') format('woff2');
-	font-style: normal;
-	font-weight: 100;
-}
+	/*
+		extra light
+	*/
+	@font-face {
+		font-family: 'VonageMain';
+		src: url('fonts/static/WorkSans-ExtraLight.woff2') format('woff2');
+		font-style: normal;
+		font-weight: 100;
+	}
 
-@font-face {
-	font-family: 'VonageMain';
-	src: url('fonts/static/WorkSans-ExtraLightItalic.woff2') format('woff2');
-	font-style: italic;
-	font-weight: 100;
-}
+	@font-face {
+		font-family: 'VonageMain';
+		src: url('fonts/static/WorkSans-ExtraLightItalic.woff2') format('woff2');
+		font-style: italic;
+		font-weight: 100;
+	}
 
-/*
-	bold
-*/
-@font-face {
-	font-family: 'VonageMain';
-	src: url('fonts/static/WorkSans-Bold.woff2') format('woff2');
-	font-style: normal;
-	font-weight: 600;
-}
+	/*
+		bold
+	*/
+	@font-face {
+		font-family: 'VonageMain';
+		src: url('fonts/static/WorkSans-Bold.woff2') format('woff2');
+		font-style: normal;
+		font-weight: 600;
+	}
 
-@font-face {
-	font-family: 'VonageMain';
-	src: url('fonts/static/WorkSans-BoldItalic.woff2') format('woff2');
-	font-style: italic;
-	font-weight: 600;
-}
+	@font-face {
+		font-family: 'VonageMain';
+		src: url('fonts/static/WorkSans-BoldItalic.woff2') format('woff2');
+		font-style: italic;
+		font-weight: 600;
+	}
 
-/*
-	extra bold
-*/
-@font-face {
-	font-family: 'VonageMain';
-	src: url('fonts/static/WorkSans-ExtraBold.woff2') format('woff2');
-	font-style: normal;
-	font-weight: 800;
-}
+	/*
+		extra bold
+	*/
+	@font-face {
+		font-family: 'VonageMain';
+		src: url('fonts/static/WorkSans-ExtraBold.woff2') format('woff2');
+		font-style: normal;
+		font-weight: 800;
+	}
 
-@font-face {
-	font-family: 'VonageMain';
-	src: url('fonts/static/WorkSans-ExtraBoldItalic.woff2') format('woff2');
-	font-style: italic;
-	font-weight: 800;
+	@font-face {
+		font-family: 'VonageMain';
+		src: url('fonts/static/WorkSans-ExtraBoldItalic.woff2') format('woff2');
+		font-style: italic;
+		font-weight: 800;
+	}
 }
 
 @supports (font-variation-settings: 'wdth' 9) {
