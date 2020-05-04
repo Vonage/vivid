@@ -14,6 +14,8 @@ It is highly advised to link this resource eagerly.
 
 > Note: this approach will block the site's contents rendering until the fonts are fully fetched.
 
+> Note: for IE11 support use `vvd-fontier-ie11.css` instead.
+
 ---
 
 #### `JS/TS` driven loading
