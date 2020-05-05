@@ -2168,6 +2168,17 @@
     lit-html "^1.1.2"
     tslib "^1.10.0"
 
+"@material/mwc-switch@^0.14.1":
+  version "0.14.1"
+  resolved "https://registry.yarnpkg.com/@material/mwc-switch/-/mwc-switch-0.14.1.tgz#15c58cdc4561deeadaf4e356c627abfe2c1ea8b1"
+  integrity sha512-v6KOEyj5rxNudE33TA4BDObaYLIQ2hnawxHu/c6fYdbv2/jxSn0Aft7SpYYWJYq9cHbTbn+tlL9tFEkJvf8xWg==
+  dependencies:
+    "@material/mwc-base" "^0.14.1"
+    "@material/mwc-ripple" "^0.14.1"
+    "@material/switch" "=6.0.0-canary.35a32aaea.0"
+    lit-element "^2.3.0"
+    tslib "^1.10.0"
+
 "@material/mwc-textfield@^0.14.1":
   version "0.14.1"
   resolved "https://registry.yarnpkg.com/@material/mwc-textfield/-/mwc-textfield-0.14.1.tgz#05214158f780785c88e7d7649ebf99b524eca733"
@@ -2258,6 +2269,22 @@
   dependencies:
     "@material/feature-targeting" "6.0.0-canary.35a32aaea.0"
     "@material/rtl" "6.0.0-canary.35a32aaea.0"
+
+"@material/switch@=6.0.0-canary.35a32aaea.0":
+  version "6.0.0-canary.35a32aaea.0"
+  resolved "https://registry.yarnpkg.com/@material/switch/-/switch-6.0.0-canary.35a32aaea.0.tgz#bc8e9aeadc2ee1a08cf7b057f9f1d1b2282c9ca1"
+  integrity sha512-tyMX2VBoXJtSbi6w+jk7RMZSA9hzvM1hDH9i+Mz5EQSj+mtzqPBQTBNFlRGmglMSZi6WQ/4x04OBZxjpZOHLAg==
+  dependencies:
+    "@material/animation" "6.0.0-canary.35a32aaea.0"
+    "@material/base" "6.0.0-canary.35a32aaea.0"
+    "@material/density" "6.0.0-canary.35a32aaea.0"
+    "@material/dom" "6.0.0-canary.35a32aaea.0"
+    "@material/elevation" "6.0.0-canary.35a32aaea.0"
+    "@material/feature-targeting" "6.0.0-canary.35a32aaea.0"
+    "@material/ripple" "6.0.0-canary.35a32aaea.0"
+    "@material/rtl" "6.0.0-canary.35a32aaea.0"
+    "@material/theme" "6.0.0-canary.35a32aaea.0"
+    tslib "^1.9.3"
 
 "@material/textfield@=6.0.0-canary.35a32aaea.0":
   version "6.0.0-canary.35a32aaea.0"
@@ -3037,6 +3064,13 @@
   version "15.7.3"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
   integrity sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw==
+
+"@types/ramda@^0.27.4":
+  version "0.27.4"
+  resolved "https://registry.yarnpkg.com/@types/ramda/-/ramda-0.27.4.tgz#816002c95e54cf3f3d5d7e8e014998450934d992"
+  integrity sha512-uE1OSffeRZoFjVah2RjR4pAyptzqN6T+fEsWr06biuUstR2IBIzKhSGwKxzISAoy4SC+JkJv8y99Hm3cJ/TDOQ==
+  dependencies:
+    ts-toolbelt "^6.3.3"
 
 "@types/reach__router@^1.2.3":
   version "1.3.1"
@@ -11997,6 +12031,11 @@ ts-map@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/ts-map/-/ts-map-1.0.3.tgz#1c4d218dec813d2103b7e04e4bcf348e1471c1ff"
   integrity sha512-vDWbsl26LIcPGmDpoVzjEP6+hvHZkBkLW7JpvwbCv/5IYPJlsbzCVXY3wsCeAxAUeTclNOUZxnLdGh3VBD/J6w==
+
+ts-toolbelt@^6.3.3:
+  version "6.6.2"
+  resolved "https://registry.yarnpkg.com/ts-toolbelt/-/ts-toolbelt-6.6.2.tgz#2e1681ff654bf0ab24636d2ff1cbc802316b391f"
+  integrity sha512-P0fN4yv9rkTmKsu/Xew8heopmQ3fDnCF5tY4CV1ZMAUeBHJA6QsJhMEdxtWNdgV7dnKKAAw+A12azm2cONQ6NQ==
 
 tslib@^1.10.0, tslib@^1.11.1, tslib@^1.9.0, tslib@^1.9.3:
   version "1.11.1"

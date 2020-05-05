@@ -1,3 +1,4 @@
+import '@vonage/vvd-core';
 import { Select as MwcSelect } from '@material/mwc-select/mwc-select';
 // import { style } from '@material/mwc-select/mwc-select-css.js';
 import { customElement } from 'lit-element';

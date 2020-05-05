@@ -1,3 +1,4 @@
+import '@vonage/vvd-core';
 import { List as MwcList } from '@material/mwc-list/mwc-list';
 // import { style } from '@material/mwc-list/mwc-list-css.js';
 import { customElement } from 'lit-element';

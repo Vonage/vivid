@@ -44,8 +44,8 @@ function getSchemeModule(schemeType: SchemeType) {
   return module;
 }
 
-async function getStyleSheet(module: ModuleType) {
-  return (await module).style;
+async function getStyleSheet(ModulePromise: Promise<ModuleType>) {
+  return (await ModulePromise).style;
 }
 
 async function updateScheme(resultPromise: Promise<CSSResult>) {

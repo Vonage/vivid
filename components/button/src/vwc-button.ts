@@ -1,3 +1,4 @@
+import '@vonage/vvd-core';
 import { Button as MwcButton } from '@material/mwc-button/mwc-button';
 // import { style } from '@material/mwc-button/mwc-button-css.js';
 import { customElement } from 'lit-element';

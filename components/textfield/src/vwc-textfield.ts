@@ -1,3 +1,4 @@
+import '@vonage/vvd-core';
 import { TextField as MwcTextField } from '@material/mwc-textfield/mwc-textfield';
 import { customElement } from 'lit-element';
 import { style as customStyle } from './vwc-textfield-cutom.css';
@@ -11,7 +12,7 @@ declare global {
 }
 
 @customElement('vwc-textfield')
-//  @ts-ignore
+// @ts-ignore
 export class TextField extends MwcTextField {
   static get styles() {
     return [super.styles, customStyle];

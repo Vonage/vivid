@@ -1,3 +1,4 @@
+import '@vonage/vvd-core';
 import { Switch as MwcSwitch } from '@material/mwc-switch/mwc-switch';
 // import { style } from '@material/mwc-switch/mwc-switch-css.js';
 import { customElement } from 'lit-element';

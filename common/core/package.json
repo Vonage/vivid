@@ -1,16 +1,16 @@
 {
-  "name": "@vonage/scheme-loader",
+  "name": "@vonage/vvd-core",
   "version": "0.0.6",
   "description": "> TODO: description",
   "author": "yinonov <yinon@hotmail.com>",
-  "homepage": "https://github.com/Vonage/vivid/tree/master/components/scheme-loader#readme",
+  "homepage": "https://github.com/Vonage/vivid/tree/master/components/core#readme",
   "license": "ISC",
-  "main": "scheme-loader.js",
-  "module": "scheme-loader.js",
+  "main": "vvd-core.js",
+  "module": "vvd-core.js",
   "repository": {
     "type": "git",
     "url": "ssh://github.com/vonage/vivid.git",
-    "directory": "components/scheme-loader"
+    "directory": "components/core"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
@@ -19,7 +19,7 @@
     "url": "https://github.com/Vonage/vivid/issues"
   },
   "dependencies": {
-    "ramda": "^0.27.0",
+    "@vonage/vvd-scheme": "^0.0.6",
     "tslib": "^1.11.1"
   },
   "publishConfig": {
