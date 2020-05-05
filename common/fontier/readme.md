@@ -3,7 +3,15 @@
 As part of the One Vonage unified branding and look'n'feel experience, we are to provide a common Web fonts set.
 There are two supported approaches to get the standard Vonage fonts into your application:
 * `CSS` based
-* `JS/TS` based ones.
+* `JS/TS` based ones
+
+To use Vivid fonts in your application please apply the following `CSS` rule:
+```
+body {
+	font-family: 'VonageMain';	/* IE11 fallback
+	font-family: var(--vvd-font);
+}
+```
 
 ---
 
@@ -16,8 +24,6 @@ It is highly advised to link this resource eagerly.
 ```
 
 > Note: this approach will block the site's contents rendering until the fonts are fully fetched.
-
-> Note: for IE11 support use `vvd-fontier-ie11.css` instead.
 
 ---
 
