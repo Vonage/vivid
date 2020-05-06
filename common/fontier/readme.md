@@ -51,4 +51,4 @@ prepareFonts().then(() => {
 });
 ```
 
-> Note: this approach won't block site's contents rendering, so you'll most likely experience FOUC behaviour unless employing some kind of loading vilon on start up.
+> Note: this approach won't block site's contents rendering, so you'll most likely to experience FOUC behaviour unless employing some kind of loading vilon on start up.
