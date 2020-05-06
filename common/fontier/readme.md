@@ -1,13 +1,13 @@
-# Vivid Fonts loading
+# Vivid Fonts
 
-As part of the One Vonage unified branding and look'n'feel experience, we are to provide a common Web fonts set.
+As part of the One Vonage unified branding and look'n'feel experience, we are providing a common Web fonts set.
 Our font loading service will load a [variable fonts](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/Variable_Fonts_Guide) for any supporting platform, while falling back to the static fonts on the non-supporting ones.
 
-There are two API approaches to get init the fonts in your application:
-* `CSS` driven - reference a single `CSS` stylesheet
+There are two API approaches to init the fonts in your application:
+* `CSS` driven - link a single `CSS` stylesheet to rule them all
 * `JS/TS` driven - import our module and invoke the API method
 
-See more details about each of those approaces down below.
+See more details about each of those approaches down below.
 
 To use Vivid fonts in your application please apply the following `CSS` rule:
 ```
@@ -28,7 +28,7 @@ variable fonts | ✔ 62+ | ✔ 62+ | ✔ 17+ | ✔ 49+ | ✔ 11+ |
 
 ---
 
-#### `CSS` driven font loading
+#### `CSS` driven initialization
 In order to get fonts into your application import the `vvd-fontier.css` from the location you've put our library.
 It is highly advised to link this resource eagerly.
 
@@ -40,7 +40,7 @@ It is highly advised to link this resource eagerly.
 
 ---
 
-#### `JS/TS` driven loading
+#### `JS/TS` driven initialization
 If the `JS/TS` approach is taken, do as in the following example:
 
 ```
