@@ -1,5 +1,5 @@
 export {
-	prepareFont,
+	prepareFonts,
 	InitOptions
 }
 
@@ -17,7 +17,8 @@ async function resolveFontResources(variant: boolean): Promise<string> {
 	return css.style.cssText;
 }
 
-async function prepareFont(options: InitOptions): Promise<void> {
+async function prepareFonts(options: InitOptions): Promise<void> {
+	const st = performance.now();
 	if (options) {
 		//	TODO: resolve custom fonts origins / binary in the options
 	}
@@ -27,4 +28,5 @@ async function prepareFont(options: InitOptions): Promise<void> {
 	ds.type = 'text/css';
 	ds.innerHTML = css;
 	document.body.appendChild(ds);
+	console.info(`Vivid Fonts initialization took ${Math.floor(performance.now() - st)}ms`);
 }

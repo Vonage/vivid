@@ -29,14 +29,14 @@ variable fonts | ✔ 62+ | ✔ 62+ | ✔ 17+ | ✔ 49+ | ✔ 11+ |
 ---
 
 #### `CSS` driven initialization
-In order to get fonts into your application import the `vvd-fontier.css` from the location you've put our library.
-It is highly advised to link this resource eagerly.
+Link the `vvd-fontier.css` from the location you've put our library in.
+It is highly advised to link this resource early in the application lifecycle (for example, up in the `head`).
 
 ```
 <link rel="stylesheet" href="common/fontier/vvd-fontier.css" />
 ```
 
-> Note: this approach will block the site's contents rendering until the fonts are fully fetched.
+> Note: this approach will block the site's contents rendering until the fonts are fully fetched, yet no FOUC (flash of unstyled content) expected.
 
 ---
 
@@ -44,11 +44,11 @@ It is highly advised to link this resource eagerly.
 If the `JS/TS` approach is taken, do as in the following example:
 
 ```
-import { prepareFont } from 'common/fontier/vvd-fontier.js';
+import { prepareFonts } from 'common/fontier/vvd-fontier.js';
 ...
-prepareFont().then(() => {
+prepareFonts().then(() => {
 	//	do some actions, that you'd defer until fonts are ready
 });
 ```
 
-> Note: this approach won't block site's contents rendering, so you'll most likely experience Flash Of Unstyled Content behaviour unless employing some kind of loading vilon on start up.
+> Note: this approach won't block site's contents rendering, so you'll most likely experience FOUC behaviour unless employing some kind of loading vilon on start up.
