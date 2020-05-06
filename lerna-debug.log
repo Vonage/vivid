@@ -1,0 +1,21 @@
+0 silly argv {
+0 silly argv   _: [ 'create' ],
+0 silly argv   lernaVersion: '3.20.2',
+0 silly argv   '$0': '/usr/local/bin/lerna',
+0 silly argv   name: 'core'
+0 silly argv }
+1 notice cli v3.20.2
+2 verbose rootPath /Users/yoved/Repos/vivid
+3 error Error: canceled
+3 error     at Interface.<anonymous> (/Users/yoved/Repos/vivid/node_modules/read/lib/read.js:66:13)
+3 error     at Interface.emit (events.js:311:20)
+3 error     at Interface._ttyWrite (readline.js:893:16)
+3 error     at ReadStream.onkeypress (readline.js:198:10)
+3 error     at ReadStream.emit (events.js:311:20)
+3 error     at emitKeys (internal/readline/utils.js:438:14)
+3 error     at emitKeys.next (<anonymous>)
+3 error     at ReadStream.onData (readline.js:1160:36)
+3 error     at ReadStream.emit (events.js:311:20)
+3 error     at addChunk (_stream_readable.js:294:12)
+3 error     at readableAddChunk (_stream_readable.js:275:11)
+3 error     at ReadStream.Readable.push (_stream_readable.js:209:10)
