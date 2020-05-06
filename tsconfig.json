@@ -30,6 +30,8 @@
   "references": [
     { "path": "common/scheme" },
     { "path": "common/core" },
+    { "path": "common/base-style" },
+    { "path": "components/app" },
     { "path": "components/anchor" },
     { "path": "components/button" },
     { "path": "components/textfield" },
