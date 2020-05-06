@@ -24,7 +24,7 @@ yarn-error.log
 # build
 /_site/
 /dist/
-
+*.log
 
 /common/**/*.js
 /common/**/*.js.map
