@@ -1,0 +1,23 @@
+@mixin base {
+  color: #333;
+  margin: 4vh;
+  font-size: 4vh;
+  line-height: 1.1;
+
+  text-rendering: optimizeLegibility; /* emphasizes in legibility over rendering speed */
+  -webkit-font-smoothing: antialiased; /* apply font anti-aliasing */
+  -moz-osx-font-smoothing: grayscale; /* optimize font rendering */
+
+  -moz-font-feature-settings: 'kern' 1; /* turn on kerning, highly recomened */
+  -ms-font-feature-settings: 'kern' 1; /* turn on kerning, highly recomened */
+  -o-font-feature-settings: 'kern' 1; /* turn on kerning, highly recomened */
+  -webkit-font-feature-settings: 'kern' 1; /* turn on kerning, highly recomened */
+  font-feature-settings: 'kern' 1; /* turn on kerning, highly recomened */
+  font-kerning: normal; /* turn on kerning, highly recomened */
+
+  font-feature-settings: 'liga' off; /* ligatures: on or off */
+  font-feature-settings: 'dlig' off; /* discretionary-ligatures: on or off */
+  font-feature-settings: 'tnum' off; /* tabular figures: on or off */
+  font-feature-settings: 'onum' off; /* old-style-figures: on or off */
+  font-feature-settings: 'ss01' off; /* alternate glyphs (stylistic Set): on or off */
+}
