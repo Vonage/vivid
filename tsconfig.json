@@ -29,6 +29,7 @@
   "exclude": [],
   "references": [
     { "path": "common/scheme" },
+		{	"path": "common/fonts" },
     { "path": "common/core" },
     { "path": "components/app" },
     { "path": "components/anchor" },
@@ -36,7 +37,6 @@
     { "path": "components/textfield" },
     { "path": "components/list" },
     { "path": "components/select" },
-		{ "path": "components/switch" },
-		{	"path": "common/fontier" }
+		{ "path": "components/switch" }
   ]
 }

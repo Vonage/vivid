@@ -29,11 +29,11 @@ variable fonts | ✔ 62+ | ✔ 62+ | ✔ 17+ | ✔ 49+ | ✔ 11+ |
 ---
 
 #### `CSS` driven initialization
-Link the `vvd-fontier.css` from the location you've put our library in.
+Link the `vvd-fonts.css` from the location you've put our library in.
 It is highly advised to link this resource early in the application lifecycle (for example, up in the `head`).
 
 ```
-<link rel="stylesheet" href="common/fontier/vvd-fontier.css" />
+<link rel="stylesheet" href="common/fonts/vvd-fonts.css" />
 ```
 
 > Note: this approach will block the site's contents rendering until the fonts are fully fetched, yet no FOUC (flash of unstyled content) expected.
@@ -44,7 +44,7 @@ It is highly advised to link this resource early in the application lifecycle (f
 If the `JS/TS` approach is taken, do as in the following example:
 
 ```
-import { prepareFonts } from 'common/fontier/vvd-fontier.js';
+import { prepareFonts } from 'common/fontier/vvd-fonts.js';
 ...
 prepareFonts().then(() => {
 	//	do some actions, that you'd defer until fonts are ready

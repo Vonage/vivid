@@ -1,16 +1,16 @@
 {
-	"name": "@vonage/vvd-core",
-	"version": "0.0.6",
-	"description": "> TODO: description",
-	"author": "yinonov <yinon@hotmail.com>",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/common/core#readme",
+	"name": "@vonage/vvd-fonts",
+	"version": "0.0.1",
+	"description": "Vivid fonts initialisation service",
+	"author": "Yuri Guller <gullerya@gmail.com>",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/common/fonts",
 	"license": "ISC",
-	"main": "vvd-core.js",
-	"module": "vvd-core.js",
+	"main": "vvd-fonts.js",
+	"module": "vvd-fonts.js",
 	"repository": {
 		"type": "git",
 		"url": "ssh://github.com/vonage/vivid.git",
-		"directory": "common/core"
+		"directory": "commmon/fonts"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"
@@ -19,8 +19,6 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@vonage/vvd-scheme": "^0.0.6",
-		"@vonage/vvd-fonts": "^0.0.1",
 		"tslib": "^1.11.1"
 	},
 	"publishConfig": {

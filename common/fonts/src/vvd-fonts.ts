@@ -17,7 +17,7 @@ async function resolveFontResources(variant: boolean): Promise<string> {
 	return css.style.cssText;
 }
 
-async function prepareFonts(options: InitOptions): Promise<void> {
+async function prepareFonts(options?: InitOptions): Promise<void> {
 	const st = performance.now();
 	if (options) {
 		//	TODO: resolve custom fonts origins / binary in the options

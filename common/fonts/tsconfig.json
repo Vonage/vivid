@@ -4,8 +4,7 @@
 		"module": "ESNext",
 		"composite": true,
 		"rootDir": "src",
-		"outDir": ".",
-		"tsBuildInfoFile": ".tsbuildinfo"
+		"outDir": "."
 	},
 	"include": [
 		"src/*.ts"
