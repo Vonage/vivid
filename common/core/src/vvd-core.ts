@@ -1,4 +1,2 @@
 import '@vonage/vvd-scheme';
-import { prepareFonts } from '@vonage/vvd-fonts';
-
-prepareFonts();
+import '@vonage/vvd-fonts';
