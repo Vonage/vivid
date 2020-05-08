@@ -2,27 +2,28 @@
 
 import { CSSResult } from 'lit-element';
 import { pipe } from 'ramda';
+import { onUserSelect } from './scheme-change-listener';
 
 const style = document.createElement('style');
 style.type = 'text/css';
 document.head.appendChild(style);
 
-if (window.matchMedia('(prefers-color-scheme: dark)').media === 'not all') {
-  getSchemeModule('light');
-} else {
-  const autoSetScheme = pipe(getSchemeType, getSchemeModule, getStyleSheet, updateScheme);
+// if (window.matchMedia('(prefers-color-scheme: dark)').media === 'not all') {
+//   getSchemeModule('light');
+// } else {
+//   const autoSetScheme = pipe(getSchemeType, getSchemeModule, getStyleSheet, updateScheme);
 
-  var pcs = window.matchMedia('(prefers-color-scheme: dark)');
-  pcs.addListener(autoSetScheme);
+//   var pcs = window.matchMedia('(prefers-color-scheme: dark)');
+//   pcs.addListener(autoSetScheme);
 
-  autoSetScheme();
-}
+//   autoSetScheme();
+// }
 
-type SchemeType = 'light' | 'dark';
+export type SchemeType = 'light' | 'dark';
 
-function getSchemeType(): SchemeType {
+function getSchemeType(schemeType?: SchemeType): SchemeType {
   // return from storage first if exist
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  return schemeType || window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 
 type ModuleType = typeof import('./scheme.dark.css') | typeof import('./scheme.light.css'); // This is the import type!
@@ -31,6 +32,7 @@ function getSchemeModule(schemeType: SchemeType) {
   console.log(`set ${schemeType} scheme`);
 
   let module: Promise<ModuleType>;
+  console.log(schemeType);
 
   switch (schemeType) {
     case 'dark':
@@ -50,5 +52,8 @@ async function getStyleSheet(ModulePromise: Promise<ModuleType>) {
 
 async function updateScheme(resultPromise: Promise<CSSResult>) {
   const { cssText } = await resultPromise;
+  console.log(cssText);
   style.innerHTML = cssText || '';
 }
+
+onUserSelect(pipe(getSchemeType, getSchemeModule, getStyleSheet, updateScheme));

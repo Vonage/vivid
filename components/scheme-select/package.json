@@ -1,16 +1,16 @@
 {
-  "name": "@vonage/vvd-scheme",
+  "name": "@vonage/vwc-scheme-select",
   "version": "0.0.6",
   "description": "> TODO: description",
   "author": "yinonov <yinon@hotmail.com>",
-  "homepage": "https://github.com/Vonage/vivid/tree/master/components/scheme#readme",
+  "homepage": "https://github.com/Vonage/vivid/tree/master/components/scheme-select#readme",
   "license": "ISC",
-  "main": "vvd-scheme.js",
-  "module": "vvd-scheme.js",
+  "main": "vwc-scheme-select.js",
+  "module": "vwc-scheme-select.js",
   "repository": {
     "type": "git",
     "url": "ssh://github.com/vonage/vivid.git",
-    "directory": "components/scheme"
+    "directory": "components/scheme-select"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
@@ -19,12 +19,10 @@
     "url": "https://github.com/Vonage/vivid/issues"
   },
   "dependencies": {
-    "@vonage/vwc-scheme-select": "^0.0.6",
-    "ramda": "^0.27.0",
+    "@vonage/vvd-scheme": "^0.0.6",
+    "lit-element": "^2.3.1",
+    "lit-html": "^1.2.1",
     "tslib": "^1.11.1"
-  },
-  "devDependencies": {
-    "@types/ramda": "^0.27.4"
   },
   "publishConfig": {
     "access": "public",
