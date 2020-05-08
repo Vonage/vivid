@@ -1,5 +1,5 @@
 import { customElement, html, LitElement } from 'lit-element';
-import { SchemeType } from '@vonage/vvd-scheme';
+import { SchemeType } from '@vonage/vvd-scheme/src/vvd-scheme';
 
 export const SCHEME_SELECTION = 'vvd-scheme-selection';
 

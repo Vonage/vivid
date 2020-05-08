@@ -4,6 +4,9 @@ import { CSSResult } from 'lit-element';
 import { pipe } from 'ramda';
 import { onUserSelect } from './scheme-change-listener';
 
+export type SchemeType = 'light' | 'dark';
+type ModuleType = typeof import('./scheme.dark.css') | typeof import('./scheme.light.css'); // This is the import type!
+
 const style = document.createElement('style');
 style.type = 'text/css';
 document.head.appendChild(style);
@@ -19,14 +22,14 @@ document.head.appendChild(style);
 //   autoSetScheme();
 // }
 
-export type SchemeType = 'light' | 'dark';
+function getPreferedColorScheme() {
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
 
 function getSchemeType(schemeType?: SchemeType): SchemeType {
   // return from storage first if exist
-  return schemeType || window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  return schemeType || getPreferedColorScheme();
 }
-
-type ModuleType = typeof import('./scheme.dark.css') | typeof import('./scheme.light.css'); // This is the import type!
 
 function getSchemeModule(schemeType: SchemeType) {
   console.log(`set ${schemeType} scheme`);

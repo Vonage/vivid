@@ -1,6 +1,7 @@
-import { SCHEME_SELECTION } from '@vonage/vwc-scheme-select';
 import { SchemeType } from './vvd-scheme';
 import { tryCatch } from 'ramda';
+
+export const SCHEME_SELECTION = 'vvd-scheme-selection';
 
 export function onUserSelect(fn: (schemeType: SchemeType) => any): void {
   document.addEventListener(
