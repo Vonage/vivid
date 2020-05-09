@@ -1,9 +1,9 @@
-import { SchemeOptions } from './vvd-scheme';
+import { SchemeOption } from './vvd-scheme';
 import { tryCatch } from 'ramda';
 
 export const SCHEME_SELECTION = 'vvd-scheme-selection';
 
-export function onSchemeChange(fn: (schemeType: SchemeOptions) => any): void {
+export function onSchemeChange(fn: (schemeType: SchemeOption) => any): void {
   document.addEventListener(
     SCHEME_SELECTION,
     e => {

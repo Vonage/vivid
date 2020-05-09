@@ -10,13 +10,19 @@
 
     <!-- module to apply relevant styling for our application and vivid web components
       preloading the scheme is important as it is a critical styling resource -->
-    <!-- <script src="../node_modules/@vonage/vvd-scheme/vvd-scheme.js" rel="modulepreload"></script> -->
-    <script type="module">
+    <link rel="modulepreload" href="../node_modules/@vonage/vvd-scheme/vvd-scheme.js" />
+    <script type="module" async>
       import { init } from '../node_modules/@vonage/vvd-scheme/vvd-scheme.js';
 
       init();
     </script>
-
+    <style>
+      /* POC for waiting for scheme to load */
+      /* ! should reside in our global css */
+      body:not(.scheme-loaded) {
+        display: none;
+      }
+    </style>
     <script
       type="module"
       src="../node_modules/@vonage/vwc-scheme-select/vwc-scheme-select.js"

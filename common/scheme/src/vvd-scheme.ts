@@ -1,24 +1,22 @@
-'use strict';
+// 'use strict'; // Modules have strict mode enabled by default.
 
 import { CSSResult } from 'lit-element';
 import { pipe } from 'ramda';
 import { onSchemeChange } from './scheme-change-listener';
 import { pcs, getPreferedColorScheme, prefersColorSchemeSupported } from './os-sync.utils';
 
-export type PredefinedSchemes = 'light' | 'dark';
-export type SchemeOptions = 'syncWithOSSettings' | PredefinedSchemes;
+document.body.classList.add('scheme-loaded');
+
+export type PredefinedScheme = 'light' | 'dark';
+export type SchemeOption = 'syncWithOSSettings' | PredefinedScheme;
 type ModuleType = typeof import('./scheme.dark.css') | typeof import('./scheme.light.css'); // This is the import type!
 
-const getSchemeCssText: (x: SchemeOptions) => Promise<CSSResult['cssText']> = pipe(
-  getSchemeModule,
-  getStyleSheet,
-  getCssText,
-);
+const getSchemeCssText = pipe(getSchemeModule, getStyleSheet, getCssText);
 
-let _selectedScheme: PredefinedSchemes;
+let _selectedScheme: PredefinedScheme;
 export const getSelectedScheme = () => _selectedScheme;
 
-let _selectedSchemeOption: SchemeOptions;
+let _selectedSchemeOption: SchemeOption;
 export const getSelectedSchemeOption = () => _selectedSchemeOption;
 
 const style = mountStyle();
@@ -30,7 +28,7 @@ function mountStyle() {
   return style;
 }
 
-function schemeDefault(): SchemeOptions {
+function schemeDefault(): SchemeOption {
   // if no scheme chosen try 'prefers-color-scheme' and if not supported just return 'light
   return prefersColorSchemeSupported() ? 'syncWithOSSettings' : 'light';
 }
@@ -40,7 +38,7 @@ function schemeDefault(): SchemeOptions {
 //   return schemeType || getPreferedColorScheme();
 // }
 
-function getSchemeModule(schemeType: SchemeOptions) {
+function getSchemeModule(schemeType: SchemeOption) {
   console.log(`set ${schemeType} scheme`);
 
   let module: Promise<ModuleType>;
@@ -74,9 +72,9 @@ async function syncWithOSSettings() {
   updateStyleCssText(await getSchemeCssText(getPreferedColorScheme()));
 }
 
-async function setScheme(scheme: SchemeOptions = schemeDefault()) {
+async function setScheme(scheme: SchemeOption = schemeDefault()) {
   _selectedSchemeOption = scheme;
-  let nextScheme: PredefinedSchemes;
+  let nextScheme: PredefinedScheme;
 
   if (scheme == 'syncWithOSSettings') {
     // observe preference changes
@@ -94,9 +92,9 @@ async function setScheme(scheme: SchemeOptions = schemeDefault()) {
   updateStyleCssText(await getSchemeCssText(nextScheme));
 }
 
-export async function init(scheme?: SchemeOptions) {
+export async function init(scheme?: SchemeOption) {
   // listen to selection change
-  onSchemeChange(async (scheme: SchemeOptions) => {
+  onSchemeChange(async (scheme: SchemeOption) => {
     setScheme(scheme);
   });
   setScheme(scheme);
@@ -105,3 +103,4 @@ export async function init(scheme?: SchemeOptions) {
 //TODO add the following tests:
 //!scheme init with/without arguments
 //!scheme change event
+//!add / remove Listener when toggling 'syncWithOSSettings' selected option
