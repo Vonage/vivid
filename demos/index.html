@@ -10,11 +10,12 @@
 
     <!-- module to apply relevant styling for our application and vivid web components
       preloading the scheme is important as it is a critical styling resource -->
-    <!-- <script
-      rel="modulepreload"
-      src="../node_modules/@vonage/scheme/scheme.js"
-    ></script> -->
-    <!-- <script type="module" src="../node_modules/@vonage/vvd-core/vvd-core.js"></script> -->
+    <!-- <script src="../node_modules/@vonage/vvd-scheme/vvd-scheme.js" rel="modulepreload"></script> -->
+    <script type="module">
+      import { init } from '../node_modules/@vonage/vvd-scheme/vvd-scheme.js';
+
+      init();
+    </script>
 
     <script
       type="module"
