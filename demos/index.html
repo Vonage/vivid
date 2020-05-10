@@ -14,13 +14,26 @@
     <script type="module" async>
       import { init } from '../node_modules/@vonage/vvd-scheme/vvd-scheme.js';
 
-      init();
+      (async () => {
+        await init();
+        document.body.classList.add('scheme-loaded');
+      })();
     </script>
     <style>
+      :root {
+        --mdc-theme-text-primary-on-background: var(--vwc-color-foreground);
+      }
+
       /* POC for waiting for scheme to load */
       /* ! should reside in our global css */
       body:not(.scheme-loaded) {
         display: none;
+      }
+
+      /* ! actual core styles should move to a style module */
+      body {
+        background-color: var(--vwc-color-background);
+        color: var(--vwc-color-foreground);
       }
     </style>
     <script

@@ -5,8 +5,6 @@ import { pipe } from 'ramda';
 import { onSchemeChange } from './scheme-change-listener';
 import { pcs, getPreferedColorScheme, prefersColorSchemeSupported } from './os-sync.utils';
 
-document.body.classList.add('scheme-loaded');
-
 export type PredefinedScheme = 'light' | 'dark';
 export type SchemeOption = 'syncWithOSSettings' | PredefinedScheme;
 type ModuleType = typeof import('./scheme.dark.css') | typeof import('./scheme.light.css'); // This is the import type!
@@ -97,7 +95,7 @@ export async function init(scheme?: SchemeOption) {
   onSchemeChange(async (scheme: SchemeOption) => {
     setScheme(scheme);
   });
-  setScheme(scheme);
+  return setScheme(scheme);
 }
 
 //TODO add the following tests:
