@@ -40,6 +40,20 @@
       type="module"
       src="../node_modules/@vonage/vwc-scheme-select/vwc-scheme-select.js"
     ></script>
+    <script>
+      // Developers should ensure that the component is
+      // defined by using the whenDefined method of the
+      // custom element registry before attempting to call
+      // public methods.
+
+      (async () => {
+        await customElements.whenDefined('vwc-scheme-select');
+        const todoListElement = document.querySelector('vwc-scheme-select');
+        todoListElement.addEventListener('vvd-scheme-select', ({ detail: { scheme } }) =>
+          console.log(`vwc-scheme-select output is: ${scheme}`),
+        );
+      })();
+    </script>
     <script type="module" src="../node_modules/@vonage/vwc-app/vwc-app.js"></script>
     <script type="module" src="../node_modules/@vonage/vwc-button/vwc-button.js"></script>
     <script type="module" src="../node_modules/@vonage/vwc-textfield/vwc-textfield.js"></script>

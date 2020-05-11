@@ -1,11 +1,11 @@
 import { customElement, html, LitElement } from 'lit-element';
 import { SchemeOption } from '@vonage/vvd-scheme/src/vvd-scheme';
 
-export const SCHEME_SELECTION = 'vvd-scheme-selection';
+export const SCHEME_SELECT = 'vvd-scheme-select';
 
-const createSelectionCustomEvent = (schemeType: SchemeOption) =>
-  new CustomEvent(SCHEME_SELECTION, {
-    detail: { schemeType },
+const createSelectionCustomEvent = (scheme: SchemeOption) =>
+  new CustomEvent(SCHEME_SELECT, {
+    detail: { scheme },
     bubbles: true, // needed for bubbling up the shadow DOM
     composed: true, // needed for bubbling up the shadow DOM
   });
@@ -25,9 +25,7 @@ export class SchemeSelect extends LitElement {
       ${this.schemes.map(
         scheme =>
           html`
-            <button
-              @click="${document.dispatchEvent.bind(this, createSelectionCustomEvent(scheme))}"
-            >
+            <button @click="${this.dispatchEvent.bind(this, createSelectionCustomEvent(scheme))}">
               ${scheme}
             </button>
           `,

@@ -31,17 +31,12 @@ function schemeDefault(): SchemeOption {
   return prefersColorSchemeSupported() ? 'syncWithOSSettings' : 'light';
 }
 
-// function getSchemeType(schemeType?: SchemeType): SchemeType {
-//   // return from storage first if exist
-//   return schemeType || getPreferedColorScheme();
-// }
-
-function getSchemeModule(schemeType: SchemeOption) {
-  console.log(`set ${schemeType} scheme`);
+function getSchemeModule(schemeOption: SchemeOption) {
+  // console.log(`set ${schemeOption} scheme`);
 
   let module: Promise<ModuleType>;
 
-  switch (schemeType) {
+  switch (schemeOption) {
     case 'dark':
       module = import('./scheme.dark.css');
       break;
