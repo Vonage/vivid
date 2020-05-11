@@ -36,6 +36,7 @@
     { "path": "components/button" },
     { "path": "components/textfield" },
     { "path": "components/list" },
+    { "path": "components/Menu" },
     { "path": "components/select" },
     { "path": "components/switch" }
   ]
