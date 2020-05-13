@@ -59,6 +59,7 @@
     <script type="module" src="../node_modules/@vonage/vwc-textfield/vwc-textfield.js"></script>
     <script type="module" src="../node_modules/@vonage/vwc-select/vwc-select.js"></script>
     <script type="module" src="../node_modules/@vonage/vwc-list/vwc-list-item.js"></script>
+    <script type="module" src="../node_modules/@vonage/vwc-menu/vwc-menu.js"></script>
     <script type="module" src="../node_modules/@vonage/vwc-drawer/vwc-drawer.js"></script>
   </head>
   <body>
@@ -99,6 +100,9 @@
       <mwc-list-item value="2">Item 2</mwc-list-item>
       <mwc-list-item value="3">Item 3</mwc-list-item>
     </vwc-select>
+    <div style="position: relative;">
+      <mwc-button id="button" raised label="Open Menu"></mwc-button>
+      <mwc-menu id="menu">
     <mwc-drawer hasHeader>
       <span slot="title">Drawer Title</span>
       <span slot="subtitle">subtitle</span>
@@ -107,6 +111,15 @@
         <mwc-list-item>Item 1</mwc-list-item>
         <mwc-list-item>Item 2</mwc-list-item>
         <mwc-list-item>Item 3</mwc-list-item>
+      </mwc-menu>
+    </div>
+    <script type="module">
+        menu.anchor = button;
+      
+        button.addEventListener('click', function (e) {
+          menu.open = true;
+        });
+    </script>
       </vwc-list>
     </mwc-drawer>
   </body>
