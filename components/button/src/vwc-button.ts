@@ -1,12 +1,12 @@
 import '@vonage/vvd-core';
-import { Button as MwcButton } from '@material/mwc-button/mwc-button';
 import { customElement } from 'lit-element';
+import { Button as MwcButton } from '@material/mwc-button/mwc-button';
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vwc-button': Button;
+    'vwc-button': VwcButton;
   }
 }
 
 @customElement('vwc-button')
-export class Button extends MwcButton { }
+export class VwcButton extends MwcButton { }
