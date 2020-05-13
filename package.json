@@ -21,6 +21,7 @@
     "test:prune-snapshots": "karma start --prune-snapshots",
     "test:bs": "karma start karma.bs.config.js --coverage",
     "storybook:build": "build-storybook",
+    "storybook:start": "concurrently --kill-others --names tsc,storybook \"npm run watch\" \"start-storybook -s storybook-static --node-resolve --watch -p 9384\"",
     "postinstall": "yarn bootstrap",
     "bootstrap": "lerna bootstrap",
     "build": "yarn build:styles && yarn build:typescript",
@@ -32,7 +33,7 @@
   },
   "devDependencies": {
     "@open-wc/building-rollup": "^0.21.0",
-    "@open-wc/demoing-storybook": "^1.0.1",
+    "@open-wc/demoing-storybook": "^2.0.0",
     "@open-wc/eslint-config": "^2.0.0",
     "@open-wc/prettier-config": "^0.1.10",
     "@open-wc/testing": "^2.0.0",
@@ -75,5 +76,8 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "dependencies": {
+    "concurrently": "^5.2.0"
   }
 }
