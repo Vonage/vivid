@@ -1,10 +1,10 @@
-// ! actual core styles should move to a style module
-body {
-  background-color: black;
-  color: white;
-}
-
 :root {
+  // common
+  --vwc-color-background: black;
+  --vwc-color-foreground: white;
+
+  /////////
+  // override mwc
   --mdc-theme-primary: rgb(132, 168, 143);
   --mdc-theme-on-primary: black;
 

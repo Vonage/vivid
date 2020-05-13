@@ -1,9 +1,8 @@
-// ! actual core styles should move to a style module
-body {
-  background-color: #c1c1c1;
-}
-
 :root {
+  //common
+  --vwc-color-background: #c1c1c1;
+  --vwc-color-foreground: black;
+  /////////
   --mdc-theme-primary: rgb(26, 128, 22);
   --mdc-theme-on-primary: beige;
 }
