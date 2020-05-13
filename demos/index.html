@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- polyfill for webcomponents -->
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+
+    <!-- module to apply relevant styling for our application and vivid web components
+      preloading the scheme is important as it is a critical styling resource -->
+    <link rel="modulepreload" href="../node_modules/@vonage/vvd-scheme/vvd-scheme.js" />
+    <script type="module" async>
+      import { init } from '../node_modules/@vonage/vvd-scheme/vvd-scheme.js';
+
+      (async () => {
+        await init();
+        document.body.classList.add('scheme-loaded');
+      })();
+    </script>
+    <style>
+      :root {
+        --mdc-theme-text-primary-on-background: var(--vwc-color-foreground);
+      }
+
+      /* POC for waiting for scheme to load */
+      /* ! should reside in our global css */
+      body:not(.scheme-loaded) {
+        display: none;
+      }
+
+      /* ! actual core styles should move to a style module */
+      body {
+        background-color: var(--vwc-color-background);
+        color: var(--vwc-color-foreground);
+      }
+    </style>
+    <script
+      type="module"
+      src="../node_modules/@vonage/vwc-scheme-select/vwc-scheme-select.js"
+    ></script>
+    <script>
+      // Developers should ensure that the component is
+      // defined by using the whenDefined method of the
+      // custom element registry before attempting to call
+      // public methods.
+
+      (async () => {
+        await customElements.whenDefined('vwc-scheme-select');
+        const todoListElement = document.querySelector('vwc-scheme-select');
+        todoListElement.addEventListener('vvd-scheme-select', ({ detail: { scheme } }) =>
+          console.log(`vwc-scheme-select output is: ${scheme}`),
+        );
+      })();
+    </script>
+    <script type="module" src="../node_modules/@vonage/vwc-app/vwc-app.js"></script>
+    <script type="module" src="../node_modules/@vonage/vwc-button/vwc-button.js"></script>
+    <script type="module" src="../node_modules/@vonage/vwc-textfield/vwc-textfield.js"></script>
+    <script type="module" src="../node_modules/@vonage/vwc-select/vwc-select.js"></script>
+    <script type="module" src="../node_modules/@vonage/vwc-list/vwc-list-item.js"></script>
+    <script type="module" src="../node_modules/@vonage/vwc-menu/vwc-menu.js"></script>
+    <script type="module" src="../node_modules/@vonage/vwc-drawer/vwc-drawer.js"></script>
+  </head>
+  <body>
+    <vwc-scheme-select></vwc-scheme-select>
+    <vwc-app
+      ><p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur quibusdam, eius
+        delectus, officia quae repellat, iure ullam amet voluptate tempora suscipit dignissimos
+        error. Maxime explicabo dolorum cumque commodi alias culpa!
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur quibusdam, eius
+        delectus, officia quae repellat, iure ullam amet voluptate tempora suscipit dignissimos
+        error. Maxime explicabo dolorum cumque commodi alias culpa!
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur quibusdam, eius
+        delectus, officia quae repellat, iure ullam amet voluptate tempora suscipit dignissimos
+        error. Maxime explicabo dolorum cumque commodi alias culpa!
+      </p></vwc-app
+    >
+    <vwc-button>Default Button</vwc-button>
+    <vwc-button raised>Raised Button</vwc-button>
+    <vwc-button outlined>Outlined Button</vwc-button>
+    <br />
+    <br />
+    <vwc-textfield outlined label="My Textfield"></vwc-textfield>
+    <vwc-list>
+      <mwc-list-item>Item 0</mwc-list-item>
+      <mwc-list-item>Item 1</mwc-list-item>
+      <mwc-list-item>Item 2</mwc-list-item>
+      <mwc-list-item>Item 3</mwc-list-item>
+    </vwc-list>
+    <vwc-select label="filled">
+      <mwc-list-item></mwc-list-item>
+      <mwc-list-item value="0">Item 0</mwc-list-item>
+      <mwc-list-item value="1">Item 1</mwc-list-item>
+      <mwc-list-item value="2">Item 2</mwc-list-item>
+      <mwc-list-item value="3">Item 3</mwc-list-item>
+    </vwc-select>
+    <div style="position: relative;">
+      <mwc-button id="button" raised label="Open Menu"></mwc-button>
+      <mwc-menu id="menu">
+    <mwc-drawer hasHeader>
+      <span slot="title">Drawer Title</span>
+      <span slot="subtitle">subtitle</span>
+      <vwc-list>
+        <mwc-list-item>Item 0</mwc-list-item>
+        <mwc-list-item>Item 1</mwc-list-item>
+        <mwc-list-item>Item 2</mwc-list-item>
+        <mwc-list-item>Item 3</mwc-list-item>
+      </mwc-menu>
+    </div>
+    <script type="module">
+        menu.anchor = button;
+      
+        button.addEventListener('click', function (e) {
+          menu.open = true;
+        });
+    </script>
+      </vwc-list>
+    </mwc-drawer>
+  </body>
+</html>
