@@ -82,5 +82,13 @@ router
         root,
       );
     },
+    'drawer': function() {
+      render(
+        html`
+          <drawer-route></drawer-route>
+        `,
+        root,
+      );
+    },
   })
   .resolve();
