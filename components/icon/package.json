@@ -2,7 +2,6 @@
   "name": "@vonage/vwc-icon",
   "version": "0.0.6",
   "description": "Vivid icon web component",
-  "author": "Yuri Guller <gullerya@gmail.com>",
   "homepage": "https://github.com/Vonage/vivid/tree/master/components/icon#readme",
   "license": "ISC",
   "main": "vwc-icon.js",
