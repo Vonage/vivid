@@ -4,6 +4,6 @@ module.exports = {
   http2: true,
   nodeResolve: true,
   preserveSymlinks: true,
-  appIndex: 'demos/index.html',
+  appIndex: 'index.html',
   moduleDirs: ['node_modules', 'web_modules'],
 };

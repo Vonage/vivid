@@ -48,7 +48,7 @@
     "command-line-args": "^5.1.1",
     "command-line-usage": "^6.1.0",
     "deepmerge": "^4.2.2",
-    "es-dev-server": "^1.45.3",
+    "es-dev-server": "^1.49.0",
     "eslint": "^6.1.0",
     "fibers": "^4.0.2",
     "husky": "^1.0.0",
