@@ -1,11 +1,11 @@
 import { SchemeOption } from './vvd-scheme';
 import { tryCatch } from 'ramda';
-import { SCHEME_SELECT as eventName } from '../../../components/scheme-select';
-const SCHEME_SELECT: typeof eventName = 'vvd-scheme-select';
+import { SCHEME_SELECT as eventName } from '@vonage/vwc-scheme-select/src';
+// const SCHEME_SELECT: typeof eventName = 'vvd-scheme-select';
 
 export function onSchemeChange(fn: (scheme: SchemeOption) => any): void {
   document.addEventListener(
-    SCHEME_SELECT,
+    eventName,
     e => {
       tryCatch(
         () => {
