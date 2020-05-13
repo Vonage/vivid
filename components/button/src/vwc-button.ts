@@ -1,5 +1,8 @@
 import '@vonage/vvd-core';
-import { Button as MwcButton } from '@material/mwc-button/mwc-button';
+import '@vonage/vwc-icon';
+import { customElement, html } from 'lit-element';
+import { ButtonBase } from '@material/mwc-button/mwc-button-base';
+import { style } from '@material/mwc-button/mwc-button-css';
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -7,4 +10,11 @@ declare global {
   }
 }
 
-export class VwcButton extends MwcButton { }
+@customElement('vwc-button')
+export class VwcButton extends ButtonBase {
+  static styles = style;
+
+  protected renderIcon(icon: string) {
+    return html`<vwc-icon class="mdc-button__icon">${icon}</vwc-icon>`;
+  }
+}

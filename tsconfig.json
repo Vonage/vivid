@@ -34,9 +34,10 @@
     { "path": "components/scheme-select" },
     { "path": "components/anchor" },
     { "path": "components/button" },
-    { "path": "components/textfield" },
+    { "path": "components/icon" },
     { "path": "components/list" },
     { "path": "components/select" },
-    { "path": "components/switch" }
+    { "path": "components/switch" },
+    { "path": "components/textfield" }
   ]
 }

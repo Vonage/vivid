@@ -1,6 +1,6 @@
 import { SchemeOption } from './vvd-scheme';
 import { tryCatch } from 'ramda';
-import { SCHEME_SELECT as eventName } from '@vonage/vwc-scheme-select/src';
+import { SCHEME_SELECT as eventName } from '@vonage/vwc-scheme-select';
 // const SCHEME_SELECT: typeof eventName = 'vvd-scheme-select';
 
 export function onSchemeChange(fn: (scheme: SchemeOption) => any): void {
