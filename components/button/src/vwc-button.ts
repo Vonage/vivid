@@ -14,7 +14,7 @@ declare global {
 export class VwcButton extends ButtonBase {
   static styles = style;
 
-  protected renderIcon(icon: string) {
-    return html`<vwc-icon class="mdc-button__icon">${icon}</vwc-icon>`;
+  protected renderIcon() {
+    return html`<vwc-icon class="mdc-button__icon">${this.icon}</vwc-icon>`;
   }
 }
