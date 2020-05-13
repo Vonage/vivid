@@ -9,5 +9,9 @@
   },
   "include": ["src/*.ts"],
   "exclude": ["src/test/*.ts"],
-  "references": []
+  "references": [
+    {
+      "path": "../../common/scheme"
+    }
+  ]
 }
