@@ -1,7 +1,6 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "module": "ESNext",
     "composite": true,
     "rootDir": "src",
     "outDir": ".",
@@ -9,9 +8,5 @@
   },
   "include": ["src/*.ts"],
   "exclude": ["src/test/*.ts"],
-  "references": [
-    {
-      "path": "../../common/scheme"
-    }
-  ]
+  "references": []
 }

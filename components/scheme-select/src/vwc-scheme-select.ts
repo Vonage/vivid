@@ -1,10 +1,9 @@
 import { customElement, html, LitElement } from 'lit-element';
-import { SchemeOption } from '@vonage/vvd-scheme/src/vvd-scheme';
-
-export const SCHEME_SELECT = 'vvd-scheme-select';
+import { SchemeOption } from '@vonage/vvd-scheme/vvd-scheme.js';
+import { SCHEME_SELECT_EVENT_TYPE } from '@vonage/vvd-scheme/scheme-change-listener.js';
 
 const createSelectionCustomEvent = (scheme: SchemeOption) =>
-  new CustomEvent(SCHEME_SELECT, {
+  new CustomEvent(SCHEME_SELECT_EVENT_TYPE, {
     detail: { scheme },
     bubbles: true, // needed for bubbling up the shadow DOM
     composed: true, // needed for bubbling up the shadow DOM
