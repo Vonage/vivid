@@ -1,4 +1,4 @@
-import Router from 'https://unpkg.com/navigo@6.0.2/src/index.js';
+import Router from 'navigo';
 import { html, render } from 'lit-html';
 
 import * as components from './components/index.js';

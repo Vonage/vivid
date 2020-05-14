@@ -23,6 +23,14 @@ body {
 }
 
 .topnav a.active {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
+}
+
+dl{
+  max-width: 680px;
+}
+
+dd {
+  margin: 0;
 }

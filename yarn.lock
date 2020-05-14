@@ -959,6 +959,13 @@
   resolved "https://registry.yarnpkg.com/@import-maps/resolve/-/resolve-0.2.5.tgz#79adb52373173d0348b3a05d39b8478031a913c1"
   integrity sha512-hOr6opOCvDX8M1tdxqoZoKKJvmrzPtANuhzhh3fLsu+3Pzv34Xl3uwA54L6S0lpHAfn/zhHshq+ztD7Dm28Z1A==
 
+"@kuscamara/code-sample@^3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@kuscamara/code-sample/-/code-sample-3.0.2.tgz#97172820571572ad00f9c520db6259bce2c13932"
+  integrity sha512-jt+87xkwHXzBvA5x2XgQcll/Tvwj/bCuw2aNMs9xhKcydr/xuT2pa+7+waVcsNtWL6tNucoMheDJ7w5Wr3BIyg==
+  dependencies:
+    "@polymer/polymer" "^3.0.0"
+
 "@lerna/add@3.20.0":
   version "3.20.0"
   resolved "https://registry.yarnpkg.com/@lerna/add/-/add-3.20.0.tgz#bea7edf36fc93fb72ec34cb9ba854c48d4abf309"
@@ -2577,6 +2584,13 @@
     mocha "^6.2.2"
     sinon-chai "^3.3.0"
 
+"@polymer/polymer@^3.0.0":
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/@polymer/polymer/-/polymer-3.4.1.tgz#333bef25711f8411bb5624fb3eba8212ef8bee96"
+  integrity sha512-KPWnhDZibtqKrUz7enIPOiO4ZQoJNOuLwqrhV2MXzIt3VVnUVJVG5ORz4Z2sgO+UZ+/UZnPD0jqY+jmw/+a9mQ==
+  dependencies:
+    "@webcomponents/shadycss" "^1.9.1"
+
 "@rollup/plugin-node-resolve@^6.1.0":
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/@rollup/plugin-node-resolve/-/plugin-node-resolve-6.1.0.tgz#0d2909f4bf606ae34d43a9bc8be06a9b0c850cf0"
@@ -2952,7 +2966,7 @@
   dependencies:
     "@types/node" "*"
 
-"@webcomponents/shadycss@^1.9.4":
+"@webcomponents/shadycss@^1.9.1", "@webcomponents/shadycss@^1.9.4":
   version "1.9.6"
   resolved "https://registry.yarnpkg.com/@webcomponents/shadycss/-/shadycss-1.9.6.tgz#a8c5db867e49200a05cf8d5008029c09b7861979"
   integrity sha512-5fFjvP0jQJZoXK6YzYeYcIDGJ5oEsdjr1L9VaYLw5yxNd4aRz4srMpwCwldeNG0A6Hvr9igbG7fCsBeiiCXd7A==
@@ -4775,6 +4789,11 @@ domhandler@^2.3.0:
   integrity sha512-JiK04h0Ht5u/80fdLMCEmV4zkNh2BcoMFBmZ/91WtYZ8qVXSKjiw7fXMgFPnHcSZgOo3XdinHvmnDUeMf5R4wA==
   dependencies:
     domelementtype "1"
+
+dompurify@^2.0.11:
+  version "2.0.11"
+  resolved "https://registry.yarnpkg.com/dompurify/-/dompurify-2.0.11.tgz#cd47935774230c5e478b183a572e726300b3891d"
+  integrity sha512-qVoGPjIW9IqxRij7klDQQ2j6nSe4UNWANBhZNLnsS7ScTtLb+3YdxkRY8brNTpkUiTtcXsCJO+jS0UCDfenLuA==
 
 domutils@^1.5.1:
   version "1.7.0"
@@ -8252,6 +8271,11 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
+
+navigo@^7.1.2:
+  version "7.1.2"
+  resolved "https://registry.yarnpkg.com/navigo/-/navigo-7.1.2.tgz#f543098ae5cbc5763b926742b5047ffb68a187e2"
+  integrity sha512-OlhxHxhLM62X0Sjbkp5wlm1V6GpOIKShFu7dS/fDS3cVqzMHYS880LT5tu6JjGkrSYQbtCNDADmRIP47MoVGlA==
 
 negotiator@0.6.2:
   version "0.6.2"

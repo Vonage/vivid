@@ -7,7 +7,7 @@ export default class Home extends Element {
     return html`
       <vwc-button>Default Button</vwc-button>
       <vwc-button raised>Raised Button</vwc-button>
-      <vwc-button outlined>Outlined Button</vwc-button>
+      <vwc-button outlined icon="code">Outlined Button</vwc-button>
     `;
   }
 }
