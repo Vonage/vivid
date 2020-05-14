@@ -1,0 +1,26 @@
+{
+  "name": "@vonage/vwc-icon",
+  "version": "0.0.6",
+  "description": "Vivid icon web component",
+  "homepage": "https://github.com/Vonage/vivid/tree/master/components/icon#readme",
+  "license": "ISC",
+  "main": "vwc-icon.js",
+  "module": "vwc-icon.js",
+  "repository": {
+    "type": "git",
+    "url": "ssh://github.com/vonage/vivid.git",
+    "directory": "components/icon"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/Vonage/vivid/issues"
+  },
+  "dependencies": {
+    "@vonage/vvd-core": "^0.0.6",
+    "@material/mwc-icon": "^0.15.0",
+    "lit-element": "^2.3.1",
+    "tslib": "^1.12.0"
+  }
+}

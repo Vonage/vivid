@@ -12,7 +12,7 @@ export class Button extends ButtonBase {
 }
 
 @customElement('vwc-button')
-export class VWCButton extends Button {}
+export class VWCButton extends Button { }
 
 declare global {
   interface HTMLElementTagNameMap {
