@@ -35,6 +35,10 @@
     "powerwash": "yarn powerwash:ts & yarn powerwash:styling && rm -rf node_modules",
     "watch": "node scripts/watcher.js"
   },
+  "dependencies": {
+    "lit-html": "^1.2.1",
+    "navigo": "^7.1.2"
+  },
   "devDependencies": {
     "@open-wc/building-rollup": "^0.21.0",
     "@open-wc/demoing-storybook": "^2.0.0",
@@ -55,8 +59,6 @@
     "lerna": "^3.20.2",
     "@kuscamara/code-sample": "^3.0.2",
     "concurrently": "^5.2.0",
-    "lit-html": "^1.2.1",
-    "navigo": "^7.1.2",
     "lint-staged": "^8.0.0",
     "node-sass": "^4.13.1",
     "node-sass-import": "^2.0.1",
