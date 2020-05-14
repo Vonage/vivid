@@ -10,17 +10,17 @@ import { customElement, html } from 'lit-element';
 export class Button extends ButtonBase {
   static styles = style;
 
-  protected renderIcon(icon: string) {
+  protected renderIcon() {
     return html`
       <vwc-icon class="mdc-button__icon">
-        ${icon}
+        ${this.icon}
       </vwc-icon>
     `;
   }
 }
 
 @customElement('vwc-button')
-export class VWCButton extends Button {}
+export class VWCButton extends Button { }
 
 declare global {
   interface HTMLElementTagNameMap {
