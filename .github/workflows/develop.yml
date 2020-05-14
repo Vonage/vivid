@@ -23,7 +23,7 @@ jobs:
       - name: install yarn globally
         run: npm install -g yarn
 
-      - name: install components with yarn
+      - name: install packages with yarn
         run: yarn
 
       #       - name: test
