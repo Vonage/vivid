@@ -1,20 +1,29 @@
 import '@vonage/vvd-core';
-import '@vonage/vwc-icon';
-import { customElement, html } from 'lit-element';
 import { ButtonBase } from '@material/mwc-button/mwc-button-base';
-import { style } from '@material/mwc-button/mwc-button-css';
+import { style } from '@material/mwc-button/mwc-button-css.js';
+import { customElement, html } from 'lit-element';
 
-declare global {
-  interface HTMLElementTagNameMap {
-    'vwc-button': VwcButton;
+// if customization is need, it must be done in the mwc
+// component scope as some components integrate other
+// mwc components
+@customElement('mwc-button')
+export class Button extends ButtonBase {
+  static styles = style;
+
+  protected renderIcon(icon: string) {
+    return html`
+      <vwc-icon class="mdc-button__icon">
+        ${icon}
+      </vwc-icon>
+    `;
   }
 }
 
 @customElement('vwc-button')
-export class VwcButton extends ButtonBase {
-  static styles = style;
+export class VWCButton extends Button {}
 
-  protected renderIcon() {
-    return html`<vwc-icon class="mdc-button__icon">${this.icon}</vwc-icon>`;
+declare global {
+  interface HTMLElementTagNameMap {
+    'vwc-button': VWCButton;
   }
 }
