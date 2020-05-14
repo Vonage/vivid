@@ -8,11 +8,17 @@ declare global {
   }
 }
 
-@customElement('vwc-icon')
-export class VwcIcon extends LitElement {
+// if customization is need, it must be done in the mwc
+// component scope as some components integrate other
+// mwc components
+@customElement('mwc-icon')
+export class MwcIcon extends LitElement {
   static styles = style;
 
   protected render() {
     return html`<slot></slot>`;
   }
 }
+
+@customElement('vwc-icon')
+export class VwcIcon extends MwcIcon { }
