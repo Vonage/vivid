@@ -1,18 +1,18 @@
 import '@vonage/vvd-core';
-import { List as MwcList } from '@material/mwc-list/mwc-list';
-// import { style } from '@material/mwc-list/mwc-list-css.js';
+import { Menu as MwcMenu } from '@material/mwc-menu/mwc-menu';
+// import { style } from '@material/mwc-menu/mwc-menu-css.js';
 import { customElement } from 'lit-element';
 
 // import { theme } from '@vivid/theme';
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vwc-list': List;
+    'vwc-menu': Menu;
   }
 }
 
-@customElement('vwc-list')
-export class List extends MwcList {
+@customElement('vwc-menu')
+export class Menu extends MwcMenu {
   // static get styles() {
   //   // return [super.styles /*, theme*/];
   //   return [style /*, theme*/];

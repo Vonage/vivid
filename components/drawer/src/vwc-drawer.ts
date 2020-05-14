@@ -1,18 +1,18 @@
 import '@vonage/vvd-core';
-import { List as MwcList } from '@material/mwc-list/mwc-list';
-// import { style } from '@material/mwc-list/mwc-list-css.js';
+import { Drawer as MwcDrawer } from '@material/mwc-drawer/mwc-drawer';
+// import { style } from '@material/mwc-drawer/mwc-drawer-css.js';
 import { customElement } from 'lit-element';
 
 // import { theme } from '@vivid/theme';
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vwc-list': List;
+    'vwc-drawer': Drawer;
   }
 }
 
-@customElement('vwc-list')
-export class List extends MwcList {
+@customElement('vwc-drawer')
+export class Drawer extends MwcDrawer {
   // static get styles() {
   //   // return [super.styles /*, theme*/];
   //   return [style /*, theme*/];

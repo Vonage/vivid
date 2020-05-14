@@ -1,16 +1,16 @@
 {
-  "name": "@vonage/vwc-textfield",
+  "name": "@vonage/vwc-drawer",
   "version": "0.0.6",
   "description": "> TODO: description",
   "author": "yinonov <yinon@hotmail.com>",
-  "homepage": "https://github.com/Vonage/vivid/tree/master/components/textfield#readme",
+  "homepage": "https://github.com/Vonage/vivid/tree/master/components/drawer#readme",
   "license": "ISC",
-  "main": "vwc-textfield.js",
-  "module": "vwc-textfield.js",
+  "main": "vwc-drawer.js",
+  "module": "vwc-drawer.js",
   "repository": {
     "type": "git",
     "url": "ssh://github.com/vonage/vivid.git",
-    "directory": "components/textfield"
+    "directory": "components/drawer"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@vonage/vvd-core": "^0.0.6",
-    "@material/mwc-textfield": "^0.14.1",
+    "@material/mwc-drawer": "^0.14.1",
     "lit-element": "^2.3.1",
     "lit-html": "^1.2.1",
     "tslib": "^1.11.1"
