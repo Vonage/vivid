@@ -1,5 +1,5 @@
 import { html } from 'lit-html';
-import Element from '../modules/Element.js';
+import Element from '../modules/element.js';
 import '@vonage/vwc-drawer';
 import '@vonage/vwc-button';
 import '@vonage/vwc-menu';

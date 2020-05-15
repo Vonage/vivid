@@ -1,20 +1,21 @@
 import '@vonage/vvd-core';
-import { TextField as MwcTextField } from '@material/mwc-textfield/mwc-textfield';
+import { style as vwcTextFieldStyle } from './vwc-textfield.css';
+import { style as mwcTextFieldStyle } from '@material/mwc-textfield/mwc-textfield-css.js';
+import { TextFieldBase } from '@material/mwc-textfield/mwc-textfield-base.js';
 import { customElement } from 'lit-element';
-import { style as customStyle } from './vwc-textfield-cutom.css';
 
-export { TextFieldType as MwcTextFieldType } from '@material/mwc-textfield/mwc-textfield';
+export { TextFieldType } from '@material/mwc-textfield/mwc-textfield-base.js';
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vwc-textfield': TextField;
+    'vwc-textfield': VwcTextField;
   }
 }
 
-@customElement('vwc-textfield')
-// @ts-ignore
-export class TextField extends MwcTextField {
-  static get styles() {
-    return [super.styles, customStyle];
-  }
+@customElement('mwc-textfield')
+class MwcTextField extends TextFieldBase {
+  static styles = [mwcTextFieldStyle, vwcTextFieldStyle];
 }
+
+@customElement('vwc-textfield')
+export class VwcTextField extends MwcTextField { }
