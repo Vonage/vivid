@@ -1,0 +1,30 @@
+{
+  "name": "@vonage/vwc-checkbox",
+  "version": "0.0.6",
+  "description": "> TODO: description",
+  "homepage": "https://github.com/Vonage/vivid/tree/master/components/checkbox#readme",
+  "license": "ISC",
+  "main": "vwc-checkbox.js",
+  "module": "vwc-checkbox.js",
+  "repository": {
+    "type": "git",
+    "url": "ssh://github.com/vonage/vivid.git",
+    "directory": "components/checkbox"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/Vonage/vivid/issues"
+  },
+  "dependencies": {
+    "@vonage/vvd-core": "^0.0.6",
+    "@material/mwc-checkbox": "^0.15.0",
+    "lit-element": "^2.3.1",
+    "tslib": "^1.12.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/"
+  }
+}

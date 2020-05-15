@@ -50,6 +50,22 @@ router
         root,
       );
     },
+    'checkbox': function () {
+      render(
+        html`
+          <checkbox-route></checkbox-route>
+        `,
+        root,
+      );
+    },
+    'formfield': function () {
+      render(
+        html`
+          <formfield-route></formfield-route>
+        `,
+        root,
+      );
+    },
     'textarea': function () {
       render(
         html`

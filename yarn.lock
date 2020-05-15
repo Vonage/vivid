@@ -1755,6 +1755,19 @@
     "@material/typography" "7.0.0-canary.d92d8c93e.0"
     tslib "^1.9.3"
 
+"@material/form-field@=7.0.0-canary.d92d8c93e.0":
+  version "7.0.0-canary.d92d8c93e.0"
+  resolved "https://registry.yarnpkg.com/@material/form-field/-/form-field-7.0.0-canary.d92d8c93e.0.tgz#1ebe0866ba81bf5c155a753d3741f0490cdf9320"
+  integrity sha512-/F9jAGYCX5m1hNuyTgXUUdTqQDuYRirkZ8vIDcgPImCb/a/LiYI8KuIhUjXsS8vuiVmTgQTPxYMJ4QPoiFoI3Q==
+  dependencies:
+    "@material/base" "7.0.0-canary.d92d8c93e.0"
+    "@material/feature-targeting" "7.0.0-canary.d92d8c93e.0"
+    "@material/ripple" "7.0.0-canary.d92d8c93e.0"
+    "@material/rtl" "7.0.0-canary.d92d8c93e.0"
+    "@material/theme" "7.0.0-canary.d92d8c93e.0"
+    "@material/typography" "7.0.0-canary.d92d8c93e.0"
+    tslib "^1.9.3"
+
 "@material/line-ripple@7.0.0-canary.d92d8c93e.0", "@material/line-ripple@=7.0.0-canary.d92d8c93e.0":
   version "7.0.0-canary.d92d8c93e.0"
   resolved "https://registry.yarnpkg.com/@material/line-ripple/-/line-ripple-7.0.0-canary.d92d8c93e.0.tgz#4176859ae6c74c04539e7fc5445d84c12e95cc71"
@@ -1866,6 +1879,17 @@
   integrity sha512-yfNk/vK+5ujdw/1AP+K4hhgJTzm/lR2jZpNr4zEq9v9uEDT3D+Q1PQ7jUpwKGKr/bZSU4jFUKeyksafE79YCCA==
   dependencies:
     "@material/floating-label" "=7.0.0-canary.d92d8c93e.0"
+    lit-element "^2.3.0"
+    lit-html "^1.1.2"
+    tslib "^1.10.0"
+
+"@material/mwc-formfield@^0.15.0":
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/@material/mwc-formfield/-/mwc-formfield-0.15.0.tgz#ff06babe3c6aa522e33daf2e9dc507f18896a819"
+  integrity sha512-LLzG9/35LrHW1rx5pVUmOmpvSZRw8yD3H7HkQvYeTUbEKP7quRj7v+VMFRQkvznYIWMqEudgTFhNyUAD9DrUPQ==
+  dependencies:
+    "@material/form-field" "=7.0.0-canary.d92d8c93e.0"
+    "@material/mwc-base" "^0.15.0"
     lit-element "^2.3.0"
     lit-html "^1.1.2"
     tslib "^1.10.0"

@@ -4,6 +4,8 @@ export { default as button } from './button.js';
 export { default as list } from './list.js';
 export { default as select } from './select.js';
 export { default as vwcapp } from './vwc-app.js';
+export { default as checkbox } from './checkbox.js';
 export { default as drawer } from './drawer.js';
+export { default as formfield } from './formfield.js';
 export { default as textarea } from './textarea.js';
 export { default as textfield } from './textfield.js';
