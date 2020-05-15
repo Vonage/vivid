@@ -90,5 +90,13 @@ router
         root,
       );
     },
+    'checkbox': function() {
+      render(
+        html`
+          <checkbox-route></checkbox-route>
+        `,
+        root,
+      );
+    },
   })
   .resolve();
