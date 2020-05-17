@@ -19,7 +19,7 @@
     "url": "https://github.com/Vonage/vivid/issues"
   },
   "dependencies": {
-    "@material/mwc-menu": "^0.14.1",
+    "@material/mwc-menu": "^0.15.0",
     "lit-element": "^2.3.1",
     "lit-html": "^1.2.1",
     "tslib": "^1.11.1"
