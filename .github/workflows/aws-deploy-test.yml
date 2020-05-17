@@ -15,31 +15,31 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: setup NodeJS ${{ matrix.node-version }}
+      - name: Setup NodeJS ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: install yarn
+      - name: Install yarn
         run: npm install -g yarn
 
-      - name: install packages
+      - name: Install packages
         run: yarn
 
-      - name: build code
+      - name: Build code
         run: yarn build
 
-      - name: build storybook
+      - name: Build storybook
         run: yarn storybook:build
 
-      - name: deploy storybook to S3
+      - name: Deploy storybook
         uses: jakejarvis/s3-sync-action@v0.5.1
         with:
           args: --delete
         env:
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_SECRET }}
           AWS_REGION: 'us-east-2'
-          SOURCE_DIR: ./storybook-static
-          DEST_DIR: /storybook
+          SOURCE_DIR: './storybook-static'
+          DEST_DIR: '/storybook'
