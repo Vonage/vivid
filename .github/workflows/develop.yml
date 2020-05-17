@@ -2,7 +2,7 @@ name: develop build
 
 on:
   push:
-    branches: [develop]
+    branches: [develop, viv-*]
 
 jobs:
   build-and-deploy-storybook:

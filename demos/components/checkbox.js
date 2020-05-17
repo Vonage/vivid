@@ -1,11 +1,13 @@
 import { html } from 'lit-html';
 import Element from '../modules/element.js';
-import '@vonage/vwc-textfield';
+import '@vonage/vwc-checkbox';
 
 export default class Home extends Element {
   async getHtml() {
     return html`
-      <vwc-textfield outlined label="My Textfield"></vwc-textfield>
+      <mwc-checkbox></mwc-checkbox>
+      <mwc-checkbox checked></mwc-checkbox>
+      <mwc-checkbox indeterminate></mwc-checkbox>
     `;
   }
 }

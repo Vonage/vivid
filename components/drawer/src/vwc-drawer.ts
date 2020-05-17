@@ -1,20 +1,21 @@
 import '@vonage/vvd-core';
-import { Drawer as MwcDrawer } from '@material/mwc-drawer/mwc-drawer';
-// import { style } from '@material/mwc-drawer/mwc-drawer-css.js';
+import { DrawerBase } from '@material/mwc-drawer/mwc-drawer-base';
+import { style } from '@material/mwc-drawer/mwc-drawer-css.js';
 import { customElement } from 'lit-element';
 
-// import { theme } from '@vivid/theme';
-
-declare global {
-  interface HTMLElementTagNameMap {
-    'vwc-drawer': Drawer;
-  }
+// if customization is need, it must be done in the mwc
+// component scope as some components integrate other
+// mwc components
+@customElement('mwc-drawer')
+export class Drawer extends DrawerBase {
+  static styles = style;
 }
 
 @customElement('vwc-drawer')
-export class Drawer extends MwcDrawer {
-  // static get styles() {
-  //   // return [super.styles /*, theme*/];
-  //   return [style /*, theme*/];
-  // }
+export class VWCDrawer extends Drawer {}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'vwc-drawer': VWCDrawer;
+  }
 }
