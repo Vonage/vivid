@@ -1,0 +1,59 @@
+import { Story, Preview, Meta, Props, html } from '@open-wc/demoing-storybook';
+
+import '../vwc-checkbox.js';
+
+<Meta
+  title="Vivid Checkbox"
+  parameters={{
+    component: "vwc-checkbox",
+    options: { selectedPanel: "storybookjs/knobs/panel" }
+  }}
+/>
+
+# VividCheckbox
+
+A component for...
+
+## Features:
+
+- a
+- b
+- ...
+
+## How to use
+
+### Installation
+
+```bash
+yarn add vwc-checkbox
+```
+
+```js
+import 'vwc-checkbox/vwc-checkbox.js';
+```
+
+<Preview withToolbar>
+  <Story name="Simple">
+    {html`
+      <mwc-checkbox></mwc-checkbox>
+      <mwc-checkbox checked></mwc-checkbox>
+      <mwc-checkbox indeterminate></mwc-checkbox>
+    `}
+  </Story>
+</Preview>
+
+## API
+
+<Props of="vwc-checkbox" />
+
+## Variations
+
+###### Disabled
+
+<Story name="Disabled">
+  {html`
+    <mwc-checkbox disabled></mwc-checkbox>
+    <mwc-checkbox disabled checked></mwc-checkbox>
+    <mwc-checkbox disabled indeterminate></mwc-checkbox>
+  `}
+</Story>
