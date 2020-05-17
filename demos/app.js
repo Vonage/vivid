@@ -18,7 +18,7 @@ for (const key in components) {
 const root = document.querySelector('#root');
 router
   .on({
-    '/': function() {
+    '/': function () {
       render(
         html`
           <home-route></home-route>
@@ -26,7 +26,7 @@ router
         root,
       );
     },
-    'home': function() {
+    'home': function () {
       render(
         html`
           <home-route></home-route>
@@ -34,7 +34,7 @@ router
         root,
       );
     },
-    'scheme': function() {
+    'scheme': function () {
       render(
         html`
           <scheme-route></scheme-route>
@@ -42,7 +42,7 @@ router
         root,
       );
     },
-    'button': function() {
+    'button': function () {
       render(
         html`
           <button-route></button-route>
@@ -50,7 +50,31 @@ router
         root,
       );
     },
-    'textfield': function() {
+    'checkbox': function () {
+      render(
+        html`
+          <checkbox-route></checkbox-route>
+        `,
+        root,
+      );
+    },
+    'formfield': function () {
+      render(
+        html`
+          <formfield-route></formfield-route>
+        `,
+        root,
+      );
+    },
+    'textarea': function () {
+      render(
+        html`
+          <textarea-route></textarea-route>
+        `,
+        root,
+      );
+    },
+    'textfield': function () {
       render(
         html`
           <textfield-route></textfield-route>
@@ -58,7 +82,7 @@ router
         root,
       );
     },
-    'vwcapp': function() {
+    'vwcapp': function () {
       render(
         html`
           <vwcapp-route></vwcapp-route>
@@ -66,7 +90,7 @@ router
         root,
       );
     },
-    'list': function() {
+    'list': function () {
       render(
         html`
           <list-route></list-route>
@@ -74,7 +98,7 @@ router
         root,
       );
     },
-    'select': function() {
+    'select': function () {
       render(
         html`
           <select-route></select-route>
@@ -82,7 +106,7 @@ router
         root,
       );
     },
-    'drawer': function() {
+    'drawer': function () {
       render(
         html`
           <drawer-route></drawer-route>

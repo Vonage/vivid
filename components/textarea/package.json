@@ -1,16 +1,15 @@
 {
-  "name": "@vonage/vwc-textfield",
+  "name": "@vonage/vwc-textarea",
   "version": "0.0.6",
   "description": "> TODO: description",
-  "author": "yinonov <yinon@hotmail.com>",
-  "homepage": "https://github.com/Vonage/vivid/tree/master/components/textfield#readme",
+  "homepage": "https://github.com/Vonage/vivid/tree/master/components/textarea#readme",
   "license": "ISC",
-  "main": "vwc-textfield.js",
-  "module": "vwc-textfield.js",
+  "main": "vwc-textarea.js",
+  "module": "vwc-textarea.js",
   "repository": {
     "type": "git",
     "url": "ssh://github.com/vonage/vivid.git",
-    "directory": "components/textfield"
+    "directory": "components/textarea"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
@@ -20,7 +19,7 @@
   },
   "dependencies": {
     "@vonage/vvd-core": "^0.0.6",
-    "@material/mwc-textfield": "^0.15.0",
+    "@material/mwc-textarea": "^0.15.0",
     "lit-element": "^2.3.1",
     "tslib": "^1.12.0"
   },

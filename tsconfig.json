@@ -30,17 +30,18 @@
   "references": [
     { "path": "common/scheme" },
     { "path": "common/core" },
-    { "path": "components/app" },
-    { "path": "components/scheme-select" },
     { "path": "components/anchor" },
+    { "path": "components/app" },
     { "path": "components/button" },
     { "path": "components/checkbox" },
     { "path": "components/drawer" },
-    { "path": "components/textfield" },
+    { "path": "components/formfield" },
     { "path": "components/list" },
     { "path": "components/menu" },
+    { "path": "components/scheme-select" },
     { "path": "components/select" },
     { "path": "components/switch" },
+    { "path": "components/textarea" },
     { "path": "components/textfield" }
   ]
 }
