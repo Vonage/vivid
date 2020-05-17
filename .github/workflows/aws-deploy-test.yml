@@ -1,8 +1,8 @@
-name: develop build
+name: Deploy Storybook
 
 on:
   push:
-    branches: [viv-25]
+    branches: [viv-25*]
 
 jobs:
   build-and-deploy-storybook:
