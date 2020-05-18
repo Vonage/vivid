@@ -34,6 +34,7 @@
     { "path": "components/app" },
     { "path": "components/button" },
     { "path": "components/checkbox" },
+    { "path": "components/chip" },
     { "path": "components/drawer" },
     { "path": "components/formfield" },
     { "path": "components/list" },

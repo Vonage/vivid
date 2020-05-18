@@ -1,0 +1,47 @@
+import { Story, Preview, Meta, Props, html } from '@open-wc/demoing-storybook';
+
+import '../vwc-chip.js';
+
+<Meta
+  title="VWC Chip"
+  parameters={{
+    component: 'vwc-chip',
+    options: { selectedPanel: 'storybookjs/knobs/panel' },
+  }}
+/>
+
+# VividChip
+
+A component for...
+
+## Features:
+
+- a
+- b
+- ...
+
+## How to use
+
+### Installation
+
+```bash
+yarn add vwc-chip
+```
+
+```js
+<script type="module">import 'vwc-menu/vwc-chip.js';</script>
+```
+
+<Preview withToolbar>
+  <Story name="Simple">
+    {html`
+        <vwc-chip-set>
+          <vwc-chip>Chip</vwc-chip>
+        </vwc-chip-set>
+    `}
+  </Story>
+</Preview>
+
+## API
+
+<Props of="vwc-chip" />

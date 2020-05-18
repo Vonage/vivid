@@ -122,5 +122,13 @@ router
         root,
       );
     },
+    'chip': function() {
+      render(
+        html`
+          <chip-route></chip-route>
+        `,
+        root,
+      );
+    },
   })
   .resolve();

@@ -1,0 +1,31 @@
+{
+  "name": "@vonage/vwc-chip",
+  "version": "0.0.6",
+  "description": "> TODO: description",
+  "author": "yinonov <yinon@hotmail.com>",
+  "homepage": "https://github.com/Vonage/vivid/tree/master/components/menu#readme",
+  "license": "ISC",
+  "main": "vwc-chip.js",
+  "module": "vwc-chip.js",
+  "repository": {
+    "type": "git",
+    "url": "ssh://github.com/vonage/vivid.git",
+    "directory": "components/chip"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/Vonage/vivid/issues"
+  },
+  "dependencies": {
+    "@material/chips": "^6.0.0",
+    "lit-element": "^2.3.1",
+    "lit-html": "^1.2.1",
+    "tslib": "^1.11.1"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/"
+  }
+}

@@ -1,6 +1,7 @@
 export { default as home } from './home.js';
 export { default as scheme } from './scheme.js';
 export { default as button } from './button.js';
+export { default as chip } from './chip.js';
 export { default as textfield } from './textfield.js';
 export { default as list } from './list.js';
 export { default as select } from './select.js';
