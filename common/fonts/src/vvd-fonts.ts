@@ -1,22 +1,20 @@
-async function resolveFontResources(variant: boolean): Promise<string> {
-	let css;
-	if (variant) {
-		css = await import('./vari-fonts.css');
-	} else {
-		css = await import('./stat-fonts.css');
-	}
-	return css.style.cssText;
+async function resolveVariantFontsCSS(): Promise<string> {
+	return (await import('./vari-fonts.css')).style.cssText;
+}
+
+async function resolveStaticFontsCSS(): Promise<string> {
+	return (await import('./stat-fonts.css')).style.cssText;
 }
 
 async function prepareFonts() {
 	const st = performance.now();
 	const variantSupported = CSS.supports && CSS.supports('font-variation-settings', '"wdth" 9');
-	const css = await resolveFontResources(variantSupported);
+	const cssText = await (variantSupported ? resolveVariantFontsCSS() : resolveStaticFontsCSS());
 	const ds = document.createElement('style');
 	ds.type = 'text/css';
-	ds.innerHTML = css;
+	ds.innerHTML = cssText;
 	document.body.appendChild(ds);
-	console.info(`Vivid Fonts initialization took ${Math.floor(performance.now() - st)}ms`);
+	console.info(`Vivid Fonts (${variantSupported ? 'variant' : 'static'}) initialization took ${Math.floor(performance.now() - st)}ms`);
 }
 
 prepareFonts();
