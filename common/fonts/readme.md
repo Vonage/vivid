@@ -41,14 +41,18 @@ It is highly advised to link this resource early in the application lifecycle (f
 ---
 
 #### `JS/TS` driven initialization
-If the `JS/TS` approach is taken, do as in the following example:
+If the `JS/TS` approach is taken, you have again 2 choices: import from your own module or import from `HTML`. See the following examples:
 
 ```
-import { prepareFonts } from 'common/fontier/vvd-fonts.js';
-...
-prepareFonts().then(() => {
-	//	do some actions, that you'd defer until fonts are ready
-});
+//	import from JS/TS
+import 'common/fonts/vvd-fonts.js';
 ```
+
+```
+<!-- import from HTML -->
+<script type="module" src="common/fonts/vvd-fonts.js"></script>
+```
+
+The module will auto-load an appropiate asset/s upon importing (aka importing module for a side-effect).
 
 > Note: this approach won't block site's contents rendering, so you'll most likely to experience FOUC behaviour unless employing some kind of loading vilon on start up.
