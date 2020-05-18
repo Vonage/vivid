@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Fonties fetcher demo</title>
+
+	<!-- <link rel="stylesheet" href="../vvd-fonts.css" /> -->
+	<!-- <link rel="stylesheet"
+		href="https://s3.console.aws.amazon.com/s3/object/vivid-test/assets/common/fonts/vvd-fonts.css?region=eu-west-2" /> -->
+
+</head>
+
+<body>
+
+	<input type="file" onchange="base64convert(this.files)">
+	<script>
+		function base64convert(files) {
+			console.clear()
+			const reader = new FileReader()
+			reader.onload = (e) => {
+				console.log(e.target.result)
+			}
+			reader.readAsDataURL(files[0])
+		}
+	</script>
+
+	<script type="module">
+		import { Fonts } from '../vvd-fonts.js';
+
+		Fonts.init();
+	</script>
+
+	<div style="font-family: var(--vvd-font);">
+		Upright text to see <span style="font-weight: bold;">(also some bold one)</span> the font effect ...
+	</div>
+
+	<div style="font-family: var(--vvd-font); font-style: italic;">
+		Italic text to see <span style="font-weight: bolder;">(also some bold one)</span> the font effect...
+	</div>
+
+</body>
+
+</html>
