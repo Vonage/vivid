@@ -1,30 +1,29 @@
 {
-	"name": "@vonage/vvd-core",
-	"version": "0.0.6",
-	"description": "> TODO: description",
-	"author": "yinonov <yinon@hotmail.com>",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/common/core#readme",
-	"license": "ISC",
-	"main": "vvd-core.js",
-	"module": "vvd-core.js",
-	"repository": {
-		"type": "git",
-		"url": "ssh://github.com/vonage/vivid.git",
-		"directory": "common/core"
-	},
-	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1"
-	},
-	"bugs": {
-		"url": "https://github.com/Vonage/vivid/issues"
-	},
-	"dependencies": {
-		"@vonage/vvd-scheme": "^0.0.6",
-		"@vonage/vvd-fonts": "^0.0.1",
-		"tslib": "^1.11.1"
-	},
-	"publishConfig": {
-		"access": "public",
-		"registry": "https://npm.pkg.github.com/"
-	}
+  "name": "@vonage/vvd-core",
+  "version": "0.0.6",
+  "description": "> TODO: description",
+  "author": "yinonov <yinon@hotmail.com>",
+  "homepage": "https://github.com/Vonage/vivid/tree/master/components/core#readme",
+  "license": "ISC",
+  "main": "vvd-core.js",
+  "module": "vvd-core.js",
+  "repository": {
+    "type": "git",
+    "url": "ssh://github.com/vonage/vivid.git",
+    "directory": "components/core"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/Vonage/vivid/issues"
+  },
+  "dependencies": {
+    "@vonage/vvd-scheme": "^0.0.6",
+    "tslib": "^1.12.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/"
+  }
 }
