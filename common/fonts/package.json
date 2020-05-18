@@ -1,16 +1,15 @@
 {
-	"name": "@vonage/vwc-menu",
+	"name": "@vonage/vvd-fonts",
 	"version": "0.0.6",
-	"description": "> TODO: description",
-	"author": "yinonov <yinon@hotmail.com>",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/menu#readme",
+	"description": "Vivid fonts initialisation service",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/common/fonts",
 	"license": "ISC",
-	"main": "vwc-menu.js",
-	"module": "vwc-menu.js",
+	"main": "vvd-fonts.js",
+	"module": "vvd-fonts.js",
 	"repository": {
 		"type": "git",
 		"url": "ssh://github.com/vonage/vivid.git",
-		"directory": "components/menu"
+		"directory": "commmon/fonts"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"
@@ -19,9 +18,6 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@material/mwc-menu": "^0.15.0",
-		"lit-element": "^2.3.1",
-		"lit-html": "^1.2.1",
 		"tslib": "^2.0.0"
 	},
 	"publishConfig": {

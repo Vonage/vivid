@@ -1,63 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Demos</title>
 
-    <!-- polyfill for webcomponents -->
-    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Material+Icons&display=block" rel="stylesheet">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Demos</title>
 
-    <!-- module to apply relevant styling for our application and vivid web components
+	<!-- polyfill for webcomponents -->
+	<script src="./node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+
+	<!-- marerail design icons font -->
+	<link href="https://fonts.googleapis.com/css?family=Material+Icons&display=block" rel="stylesheet">
+
+	<!-- module to apply relevant styling for our application and vivid web components
       preloading the scheme is important as it is a critical styling resource -->
-    <link rel="modulepreload" href="../node_modules/@vonage/vvd-scheme/vvd-scheme.js" />
-    <script type="module" async>
-      import { init } from '../node_modules/@vonage/vvd-scheme/vvd-scheme.js';
+	<link rel="modulepreload" href="../node_modules/@vonage/vvd-scheme/vvd-scheme.js" />
+	<script type="module" async>
+		import { init } from '../node_modules/@vonage/vvd-scheme/vvd-scheme.js';
+		import { Fonts } from '../node_modules/@vonage/vvd-fonts/vvd-fonts.js';
 
-      (async () => {
-        await init();
-        document.body.classList.add('scheme-loaded');
-      })();
-    </script>
-    <style>
-      :root {
-        --mdc-theme-text-primary-on-background: var(--vwc-color-foreground);
-      }
+		(async () => {
+			await Promise.all([init(), Fonts.init()]);
+			document.body.classList.add('scheme-loaded');
+		})();
+	</script>
+	<style>
+		:root {
+			--mdc-theme-text-primary-on-background: var(--vwc-color-foreground);
+		}
 
-      /* POC for waiting for scheme to load */
-      /* ! should reside in our global css */
-      body:not(.scheme-loaded) {
-        display: none;
-      }
+		/* POC for waiting for scheme to load */
+		/* ! should reside in our global css */
+		body:not(.scheme-loaded) {
+			display: none;
+		}
 
-      /* ! actual core styles should move to a style module */
-      body {
-        background-color: var(--vwc-color-background);
-        color: var(--vwc-color-foreground);
-      }
-    </style>
+		/* ! actual core styles should move to a style module */
+		body {
+			background-color: var(--vwc-color-background);
+			color: var(--vwc-color-foreground);
+		}
+	</style>
 
-    <script type="module" src="node_modules/@kuscamara/code-sample/code-sample.js"></script>
-    <script type="module" src="./demos/app.js"></script>
-    <link rel="stylesheet" href="demos/styles/index.css" />
-  </head>
-  <body>
-    <nav class="topnav">
-      <a href="/home" data-navigo>home</a>
-      <a href="/scheme" data-navigo>scheme</a>
-      <a href="/button" data-navigo>button</a>
-      <a href="/vwcapp" data-navigo>app</a>
-      <a href="/list" data-navigo>list</a>
-      <a href="/select" data-navigo>select</a>
-      <a href="/checkbox" data-navigo>checkbox</a>
-      <a href="/drawer" data-navigo>drawer</a>
-      <a href="/formfield" data-navigo>formfield</a>
-      <a href="/textarea" data-navigo>textarea</a>
-      <a href="/textfield" data-navigo>textfield</a>
-      <a href="/checkbox" data-navigo>checkbox</a>
-    </nav>
+	<script type="module" src="node_modules/@kuscamara/code-sample/code-sample.js"></script>
+	<script type="module" src="./demos/app.js"></script>
+	<link rel="stylesheet" href="demos/styles/index.css" />
+</head>
 
-    <div id="root"></div>
-  </body>
+<body>
+	<nav class="topnav">
+		<a href="/home" data-navigo>home</a>
+		<a href="/scheme" data-navigo>scheme</a>
+		<a href="/button" data-navigo>button</a>
+		<a href="/vwcapp" data-navigo>app</a>
+		<a href="/list" data-navigo>list</a>
+		<a href="/select" data-navigo>select</a>
+		<a href="/checkbox" data-navigo>checkbox</a>
+		<a href="/drawer" data-navigo>drawer</a>
+		<a href="/formfield" data-navigo>formfield</a>
+		<a href="/textarea" data-navigo>textarea</a>
+		<a href="/textfield" data-navigo>textfield</a>
+		<a href="/checkbox" data-navigo>checkbox</a>
+	</nav>
+
+	<div id="root"></div>
+</body>
+
 </html>

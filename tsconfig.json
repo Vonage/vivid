@@ -29,6 +29,7 @@
   "exclude": [],
   "references": [
     { "path": "common/scheme" },
+		{	"path": "common/fonts" },
     { "path": "common/core" },
     { "path": "components/anchor" },
     { "path": "components/app" },
