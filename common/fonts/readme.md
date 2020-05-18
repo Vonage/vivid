@@ -4,8 +4,8 @@ As part of the One Vonage unified branding and look'n'feel experience, we are pr
 Our font loading service will load a [variable fonts](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/Variable_Fonts_Guide) for any supporting platform, while falling back to the static fonts on the non-supporting ones.
 
 There are two API approaches to init the fonts in your application:
-* `CSS` driven - link a single `CSS` stylesheet to rule them all
 * `JS/TS` driven - import our module and invoke the API method
+* `CSS` driven - link a single `CSS` stylesheet to rule them all
 
 See more details about each of those approaches down below.
 
@@ -28,6 +28,20 @@ variable fonts | ✔ 62+ | ✔ 62+ | ✔ 17+ | ✔ 49+ | ✔ 11+ |
 
 ---
 
+#### `JS/TS` driven initialization
+If the `JS/TS` approach is taken, you should follow the example below:
+
+```
+import { Fonts } from 'common/fonts/vvd-fonts.js';
+...
+Fonts.init().then(() =>
+	//	do post init stuff here
+);
+```
+
+> Note: this approach won't block site's contents rendering, so you'll most likely to experience FOUC behaviour unless employing some kind of loading vilon on start up.
+---
+
 #### `CSS` driven initialization
 Link the `vvd-fonts.css` from the location you've put our library in.
 It is highly advised to link this resource early in the application lifecycle (for example, up in the `head`).
@@ -37,22 +51,3 @@ It is highly advised to link this resource early in the application lifecycle (f
 ```
 
 > Note: this approach will block the site's contents rendering until the fonts are fully fetched, yet no FOUC (flash of unstyled content) expected.
-
----
-
-#### `JS/TS` driven initialization
-If the `JS/TS` approach is taken, you have again 2 choices: import from your own module or import from `HTML`. See the following examples:
-
-```
-//	import from JS/TS
-import 'common/fonts/vvd-fonts.js';
-```
-
-```
-<!-- import from HTML -->
-<script type="module" src="common/fonts/vvd-fonts.js"></script>
-```
-
-The module will auto-load an appropiate asset/s upon importing (aka importing module for a side-effect).
-
-> Note: this approach won't block site's contents rendering, so you'll most likely to experience FOUC behaviour unless employing some kind of loading vilon on start up.

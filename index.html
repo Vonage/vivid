@@ -12,16 +12,15 @@
 	<!-- marerail design icons font -->
 	<link href="https://fonts.googleapis.com/css?family=Material+Icons&display=block" rel="stylesheet">
 
-	<link rel="stylesheet" href="./node_modules/@vonage/vvd-fonts/vvd-fonts.css" />
-
 	<!-- module to apply relevant styling for our application and vivid web components
       preloading the scheme is important as it is a critical styling resource -->
 	<link rel="modulepreload" href="../node_modules/@vonage/vvd-scheme/vvd-scheme.js" />
 	<script type="module" async>
 		import { init } from '../node_modules/@vonage/vvd-scheme/vvd-scheme.js';
+		import { Fonts } from '../node_modules/@vonage/vvd-fonts/vvd-fonts.js';
 
 		(async () => {
-			await init();
+			await Promise.all([init(), Fonts.init()]);
 			document.body.classList.add('scheme-loaded');
 		})();
 	</script>

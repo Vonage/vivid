@@ -6,9 +6,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>Fonties fetcher demo</title>
 
-	<!-- <base href=".." /> -->
 	<!-- <link rel="stylesheet" href="../vvd-fonts.css" /> -->
-	<script type="module" src="../vvd-fonts.js"></script>
+	<!-- <link rel="stylesheet"
+		href="https://s3.console.aws.amazon.com/s3/object/vivid-test/assets/common/fonts/vvd-fonts.css?region=eu-west-2" /> -->
 
 </head>
 
@@ -24,6 +24,12 @@
 			}
 			reader.readAsDataURL(files[0])
 		}
+	</script>
+
+	<script type="module">
+		import { Fonts } from '../vvd-fonts.js';
+
+		Fonts.init();
 	</script>
 
 	<div style="font-family: var(--vvd-font);">
