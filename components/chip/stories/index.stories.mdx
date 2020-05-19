@@ -1,6 +1,7 @@
 import { Story, Preview, Meta, Props, html } from '@open-wc/demoing-storybook';
 
 import '../vwc-chip.js';
+import '../vwc-chip-set.js';
 
 <Meta
   title="VWC Chip"
@@ -29,15 +30,16 @@ yarn add vwc-chip
 ```
 
 ```js
-<script type="module">import 'vwc-menu/vwc-chip.js';</script>
+<script type="module">import 'vwc-menu/vwc-chip.js'; import 'vwc-menu/vwc-chip-set.js';</script>
 ```
 
 <Preview withToolbar>
   <Story name="Simple">
     {html`
-        <vwc-chip-set>
-          <vwc-chip>Chip</vwc-chip>
-        </vwc-chip-set>
+      <vwc-chip-set>
+        <vwc-chip label="Chip"></vwc-chip>
+        <vwc-chip label="Leading Icon" icon="fingerprint"></vwc-chip>
+      </vwc-chip-set>
     `}
   </Story>
 </Preview>

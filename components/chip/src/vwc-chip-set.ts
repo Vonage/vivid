@@ -1,14 +1,28 @@
 import '@vonage/vvd-core';
-import { ChipSet } from '@vonage/vwc-chip/mwc-chip/mwc-chip-set';
-import { customElement } from 'lit-element';
-
-// if customization is need, it must be done in the mwc
-// component scope as some components integrate other
-// mwc components
-// Chip.styles = ...
+import { customElement, html, LitElement, property } from 'lit-element';
+import { classMap } from 'lit-html/directives/class-map.js';
+import { style } from './mwc-chip.css.js'; // split to mwc-chip-set
 
 @customElement('vwc-chip-set')
-export class VWCChipSet extends ChipSet {}
+export class VWCChipSet extends LitElement {
+  @property({type: String}) type = '';
+
+  static styles = style;
+
+  render() {
+    const classes = {
+      'mdc-chip-set--choice': this.type === 'choice',
+      'mdc-chip-set--filter': this.type === 'filter',
+      'mdc-chip-set--input': this.type === 'input'
+    };
+
+    return html`
+      <div class="mdc-chip-set ${classMap(classes)}" role="grid">
+        <slot></slot>
+      </div>
+    `;
+  }
+}
 
 declare global {
   interface HTMLElementTagNameMap {

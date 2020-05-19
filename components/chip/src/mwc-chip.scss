@@ -1,0 +1,13 @@
+@import '@material/chips/chip/mdc-chip.scss';
+@import '@material/mwc-icon/src/_mwc-icon.scss';
+
+@include mdc-ripple-common(mdc-feature-all());
+
+:host {
+  /* See mwc-icon-button.scss for explanation. */
+  vertical-align: top;
+}
+
+.material-icons {
+  @extend %material-icons;
+}

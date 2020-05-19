@@ -6,16 +6,11 @@ import '@vonage/vwc-chip/vwc-chip-set';
 export default class Home extends Element {
   async getHtml() {
     return html`
-      <vwc-chip-set>
-        <vwc-chip label="Chip"></vwc-chip>
-        <vwc-chip label="Leading Icon" icon="fingerprint"></vwc-chip>
-      </vwc-chip-set>
-
       <h3>choice</h3>
 
       <vwc-chip-set type="choice">
         <vwc-chip label="A"></vwc-chip>
-        <vwc-chip label="B" icon="fingerprint"></vwc-chip>
+        <vwc-chip label="B" icon="fingerprint" selected></vwc-chip>
         <vwc-chip label="C" icon="language"></vwc-chip>
       </vwc-chip-set>
 
