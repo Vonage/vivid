@@ -1,0 +1,8 @@
+props:
+  button_background:
+    value: "{!primary_color}"
+imports:
+  - ./aliases.yml
+global:
+  type: color
+  category: buttons

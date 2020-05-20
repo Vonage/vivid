@@ -1,0 +1,28 @@
+{
+  "name": "@vonage/vvd-design-tokens",
+  "version": "0.0.6",
+  "description": "> TODO: description",
+  "author": "yinonov <yinon@hotmail.com>",
+  "homepage": "https://github.com/Vonage/vivid/tree/master/components/design-tokens#readme",
+  "license": "ISC",
+  "main": "vvd-design-tokens.js",
+  "module": "vvd-design-tokens.js",
+  "repository": {
+    "type": "git",
+    "url": "ssh://github.com/vonage/vivid.git",
+    "directory": "components/design-tokens"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/Vonage/vivid/issues"
+  },
+  "dependencies": {
+    "theo": "^8.1.5"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/"
+  }
+}
