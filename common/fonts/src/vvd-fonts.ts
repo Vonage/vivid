@@ -3,11 +3,11 @@ export const Fonts = Object.freeze({
 });
 
 async function resolveVariableFontsCSS(): Promise<string> {
-	return (await import('./vari-fonts.css')).style.cssText;
+	return (await import('./fonts-variable.css')).style.cssText;
 }
 
 async function resolveStaticFontsCSS(): Promise<string> {
-	return (await import('./stat-fonts.css')).style.cssText;
+	return (await import('./fonts-static.css')).style.cssText;
 }
 
 async function init(): Promise<void> {
