@@ -13,7 +13,7 @@ To use Vivid fonts in your application please apply the following `CSS` rule:
 ```
 body {
 	font-family: 'VonageMain';	/* for IE11 only, omit this line if not relevant
-	font-family: var(--vvd-font);
+	font-family: var(--vvd-font-family-spezia);
 }
 ```
 

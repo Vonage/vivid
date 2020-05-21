@@ -1,8 +1,7 @@
 {
-  "name": "@vonage/vwc-chip",
-  "version": "0.0.6",
+  "name": "@vonage/vwc-chips",
+  "version": "0.0.7",
   "description": "> TODO: description",
-  "author": "yinonov <yinon@hotmail.com>",
   "homepage": "https://github.com/Vonage/vivid/tree/master/components/menu#readme",
   "license": "ISC",
   "main": "vwc-chip.js",
@@ -19,10 +18,10 @@
     "url": "https://github.com/Vonage/vivid/issues"
   },
   "dependencies": {
-    "@material/chips": "^6.0.0",
+    "@vonage/vvd-core": "^0.0.7",
+    "@material/mwc-chips": "^0.12.0",
     "lit-element": "^2.3.1",
-    "lit-html": "^1.2.1",
-    "tslib": "^1.11.1"
+    "tslib": "^2.0.0"
   },
   "publishConfig": {
     "access": "public",

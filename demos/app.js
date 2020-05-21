@@ -5,16 +5,17 @@ import * as components from './components/index.js';
 
 const router = new Router();
 
-for (const key in components) {
-  components[key].prototype.router = router;
-  customElements.define(`${key}-route`, components[key]);
-}
+Object.keys(components).forEach(key => {
+	components[key].prototype.router = router;
+	customElements.define(`${key}-route`, components[key]);
+});
 
 // router.on('/post/:id', params => {
 //   const element = HTML`<post-element></post-element>`;
 //   element.post = params.id;
 //   document.querySelector('#root').replaceWith(element);
 // });
+
 const root = document.querySelector('#root');
 router
   .on({
