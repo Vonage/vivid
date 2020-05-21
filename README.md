@@ -33,3 +33,11 @@ npm init @open-wc
 - `build` builds your app and outputs it in your `dist` directory
 - `test` runs your test suite with Karma
 - `lint` runs the linter for your project
+
+
+
+## Issues
+
+We use GitHub Issues as the official bug tracker for the **Liva Theme.** Please Search [existing issues](https://github.com/vonage/vivid/issues). It’s possible someone has already reported the same problem.
+
+If your problem or idea is not addressed yet, [open a new issue](https://github.com/vonage/vivid/issues/new)
