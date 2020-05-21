@@ -43,3 +43,5 @@ storybook-static
 .cache
 
 .now
+
+lerna-debug.log

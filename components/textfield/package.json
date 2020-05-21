@@ -1,6 +1,6 @@
 {
   "name": "@vonage/vwc-textfield",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "> TODO: description",
   "author": "yinonov <yinon@hotmail.com>",
   "homepage": "https://github.com/Vonage/vivid/tree/master/components/textfield#readme",
@@ -19,11 +19,10 @@
     "url": "https://github.com/Vonage/vivid/issues"
   },
   "dependencies": {
-    "@vonage/vvd-core": "^0.0.6",
-    "@material/mwc-textfield": "^0.14.1",
+    "@material/mwc-textfield": "^0.15.0",
+    "@vonage/vvd-core": "^0.0.7",
     "lit-element": "^2.3.1",
-    "lit-html": "^1.2.1",
-    "tslib": "^1.11.1"
+    "tslib": "^2.0.0"
   },
   "publishConfig": {
     "access": "public",

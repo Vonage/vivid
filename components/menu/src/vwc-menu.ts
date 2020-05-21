@@ -1,20 +1,17 @@
 import '@vonage/vvd-core';
-import { Menu as MwcMenu } from '@material/mwc-menu/mwc-menu';
-// import { style } from '@material/mwc-menu/mwc-menu-css.js';
+import { Menu } from '@material/mwc-menu';
 import { customElement } from 'lit-element';
 
-// import { theme } from '@vivid/theme';
+// if customization is need, it must be done in the mwc
+// component scope as some components integrate other
+// mwc components
+// Menu.styles = ...
+
+@customElement('vwc-menu')
+export class VWCMenu extends Menu {}
 
 declare global {
   interface HTMLElementTagNameMap {
-    'vwc-menu': Menu;
+    'vwc-menu': VWCMenu;
   }
-}
-
-@customElement('vwc-menu')
-export class Menu extends MwcMenu {
-  // static get styles() {
-  //   // return [super.styles /*, theme*/];
-  //   return [style /*, theme*/];
-  // }
 }

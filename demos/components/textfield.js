@@ -1,5 +1,5 @@
 import { html } from 'lit-html';
-import Element from '../modules/Element.js';
+import Element from '../modules/element.js';
 import '@vonage/vwc-textfield';
 
 export default class Home extends Element {

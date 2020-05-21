@@ -1,6 +1,6 @@
 {
   "name": "@vonage/vwc-anchor",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "> TODO: description",
   "author": "yinonov <yinon@hotmail.com>",
   "homepage": "https://github.com/Vonage/vivid/tree/master/components/anchor#readme",
@@ -27,7 +27,7 @@
   "dependencies": {
     "lit-element": "^2.2.1",
     "lit-html": "^1.1.2",
-    "tslib": "^1.11.1"
+    "tslib": "^2.0.0"
   },
   "publishConfig": {
     "access": "public",

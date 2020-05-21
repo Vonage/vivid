@@ -3,7 +3,7 @@
   "private": true,
   "description": "Web components based on branded design system by Vonage. following open-wc recommendations",
   "author": "Vonage",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "workspaces": [
     "components/*",
     "common/*"
@@ -32,7 +32,7 @@
     "dev:server": "es-dev-server --config es-dev-server.config.js",
     "powerwash:ts": "rm components/*/*.js & rm components/*/*.js.map & rm components/*/*.d.ts & rm components/*/.tsbuildinfo && rm common/*/*.js & rm common/*/*.js.map & rm common/*/*.d.ts & rm common/*/.tsbuildinfo ",
     "powerwash:styling": "rm components/*/src/*.css.ts & rm common/*/src/*.css.ts",
-    "powerwash": "yarn powerwash:ts & yarn powerwash:styling && rm -rf node_modules",
+    "powerwash": "yarn powerwash:ts && yarn powerwash:styling && rm -rf node_modules",
     "watch": "node scripts/watcher.js"
   },
   "dependencies": {

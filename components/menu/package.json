@@ -1,31 +1,31 @@
 {
-  "name": "@vonage/vwc-menu",
-  "version": "0.0.6",
-  "description": "> TODO: description",
-  "author": "yinonov <yinon@hotmail.com>",
-  "homepage": "https://github.com/Vonage/vivid/tree/master/components/menu#readme",
-  "license": "ISC",
-  "main": "vwc-menu.js",
-  "module": "vwc-menu.js",
-  "repository": {
-    "type": "git",
-    "url": "ssh://github.com/vonage/vivid.git",
-    "directory": "components/menu"
-  },
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
-  },
-  "bugs": {
-    "url": "https://github.com/Vonage/vivid/issues"
-  },
-  "dependencies": {
-    "@material/mwc-menu": "^0.14.1",
-    "lit-element": "^2.3.1",
-    "lit-html": "^1.2.1",
-    "tslib": "^1.11.1"
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://npm.pkg.github.com/"
-  }
+	"name": "@vonage/vwc-menu",
+	"version": "0.0.7",
+	"description": "> TODO: description",
+	"author": "yinonov <yinon@hotmail.com>",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/menu#readme",
+	"license": "ISC",
+	"main": "vwc-menu.js",
+	"module": "vwc-menu.js",
+	"repository": {
+		"type": "git",
+		"url": "ssh://github.com/vonage/vivid.git",
+		"directory": "components/menu"
+	},
+	"scripts": {
+		"test": "echo \"Error: run tests from root\" && exit 1"
+	},
+	"bugs": {
+		"url": "https://github.com/Vonage/vivid/issues"
+	},
+	"dependencies": {
+		"@material/mwc-menu": "^0.15.0",
+		"lit-element": "^2.3.1",
+		"lit-html": "^1.2.1",
+		"tslib": "^2.0.0"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://npm.pkg.github.com/"
+	}
 }
