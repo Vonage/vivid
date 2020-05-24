@@ -1,31 +1,31 @@
 {
-  "name": "@vonage/vwc-switch",
-  "version": "0.0.7",
-  "description": "> TODO: description",
-  "author": "yinonov <yinon@hotmail.com>",
-  "homepage": "https://github.com/Vonage/vivid/tree/master/components/switch#readme",
-  "license": "ISC",
-  "main": "vwc-switch.js",
-  "module": "vwc-switch.js",
-  "repository": {
-    "type": "git",
-    "url": "ssh://github.com/vonage/vivid.git",
-    "directory": "components/switch"
-  },
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
-  },
-  "bugs": {
-    "url": "https://github.com/Vonage/vivid/issues"
-  },
-  "dependencies": {
-    "@material/mwc-switch": "^0.15.0",
-    "lit-element": "^2.3.1",
-    "lit-html": "^1.2.1",
-    "tslib": "^2.0.0"
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://npm.pkg.github.com/"
-  }
+	"name": "@vonage/vwc-switch",
+	"version": "0.0.7",
+	"description": "> TODO: description",
+	"author": "yinonov <yinon@hotmail.com>",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/switch#readme",
+	"license": "ISC",
+	"main": "vwc-switch.js",
+	"module": "vwc-switch.js",
+	"repository": {
+		"type": "git",
+		"url": "ssh://github.com/vonage/vivid.git",
+		"directory": "components/switch"
+	},
+	"scripts": {
+		"test": "echo \"Error: run tests from root\" && exit 1"
+	},
+	"bugs": {
+		"url": "https://github.com/Vonage/vivid/issues"
+	},
+	"dependencies": {
+		"@material/mwc-switch": "^0.15.0",
+		"@vonage/vvd-core": "^0.0.7",
+		"lit-element": "^2.3.1",
+		"tslib": "^2.0.0"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://npm.pkg.github.com/"
+	}
 }

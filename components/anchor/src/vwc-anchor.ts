@@ -1,3 +1,4 @@
+import '@vonage/vvd-core';
 import { customElement } from 'lit-element';
 
 import { AnchorBase } from './vwc-anchor.base';
@@ -5,12 +6,12 @@ import { AnchorBase } from './vwc-anchor.base';
 
 @customElement('vwc-anchor')
 export class Anchor extends AnchorBase {
-  // static styles = style;
+	// static styles = style;
 }
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'vwc-anchor': Anchor;
-  }
+	interface HTMLElementTagNameMap {
+		'vwc-anchor': Anchor;
+	}
 }
 // !TODO protect using the _blank noreferer loophole

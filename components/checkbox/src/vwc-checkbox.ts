@@ -1,18 +1,12 @@
 import '@vonage/vvd-core';
-import { style as mwcCheckboxStyle } from '@material/mwc-checkbox/mwc-checkbox-css.js';
-import { CheckboxBase } from '@material/mwc-checkbox/mwc-checkbox-base.js';
 import { customElement } from 'lit-element';
+import { Checkbox as MWCCheckbox } from '@material/mwc-checkbox';
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'vwc-checkbox': VwcCheckbox;
-  }
-}
-
-@customElement('mwc-checkbox')
-class MwcCheckbox extends CheckboxBase {
-  static styles = mwcCheckboxStyle;
+	interface HTMLElementTagNameMap {
+		'vwc-checkbox': VWCCheckbox;
+	}
 }
 
 @customElement('vwc-checkbox')
-export class VwcCheckbox extends MwcCheckbox { }
+export class VWCCheckbox extends MWCCheckbox { }
