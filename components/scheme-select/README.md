@@ -13,10 +13,10 @@ A recommended (but optional) web component controling the app's current selected
 <vwc-scheme-select></vwc-scheme-select>
 ```
 
-
 It's possible to observe the component selection changes by listening to the `vvdschemeselect` event on the `vwc-scheme-select` component.
+
 ```
-(async () => { 
+(async () => {
 	await customElements.whenDefined('vwc-scheme-select');
 	const schemeSelect = document.querySelector('vwc-scheme-select');
 	schemeSelect.addEventListener('vvdschemeselect',

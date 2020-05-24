@@ -1,9 +1,16 @@
+<p align="center">
+  <img height="64px" src="./vvd-logo.svg"></img>
+</p>
+
 # Vivid UI components
 
 ### Get up and running
 * Clone the repo
-* Do `yarn install` to bring all the dependencies
-* Do `yarn start` to build the components and start a local dev server (you'll see the port in the console)
+* Run `yarn install` in order to build the repo once / bring the dependencies
+* Run the following steps as the normal build-and-see flow:
+	* `yarn build` - builds `css` from `scss`, compiles `ts` into `js`
+	* `yarn dev:server` - runs dev server on `localhost` in order to see the demo pages
+	* OR `yarn start` - is a shortcut for `build` and `dev:server`, for your convenience
 * Navigate to `https://localhost:5424/demos/index.html` (replace the port if needed) and start hacking with the components in the browser
 * Welcome! :)
 

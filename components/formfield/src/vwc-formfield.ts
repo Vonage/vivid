@@ -1,18 +1,12 @@
 import '@vonage/vvd-core';
-import { style as mwcFormfieldStyle } from '@material/mwc-formfield/mwc-formfield-css.js';
-import { FormfieldBase } from '@material/mwc-formfield/mwc-formfield-base.js';
 import { customElement } from 'lit-element';
+import { Formfield as MWCFormfield } from '@material/mwc-formfield';
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'vwc-formfield': VwcFormfield;
-  }
-}
-
-@customElement('mwc-formfield')
-class MwcFormfield extends FormfieldBase {
-  static styles = mwcFormfieldStyle;
+	interface HTMLElementTagNameMap {
+		'vwc-formfield': VWCFormfield;
+	}
 }
 
 @customElement('vwc-formfield')
-export class VwcFormfield extends MwcFormfield { }
+export class VWCFormfield extends MWCFormfield { }
