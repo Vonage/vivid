@@ -1,5 +1,5 @@
 <p align="center">
-  <img height="64px" src="./vvd-logo.svg"></img>
+  <img src="./assets/images/vivid-hero.png"></img>
 </p>
 
 # Vivid UI components
