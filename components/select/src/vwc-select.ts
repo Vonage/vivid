@@ -1,24 +1,12 @@
 import '@vonage/vvd-core';
-import { Select as MwcSelect } from '@material/mwc-select/mwc-select';
-// import { style } from '@material/mwc-select/mwc-select-css.js';
 import { customElement } from 'lit-element';
-
-// import { theme } from '@vivid/theme';
+import { Select as MWCSelect } from '@material/mwc-select';
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'vwc-select': Select;
-  }
+	interface HTMLElementTagNameMap {
+		'vwc-select': VWCSelect;
+	}
 }
 
 @customElement('vwc-select')
-export class Select extends MwcSelect {
-  // static get styles() {
-  //   // return [super.styles /*, theme*/];
-  //   return [style /*, theme*/];
-  // }
-  // constructor() {
-  //   super();
-  //   console.log(super.render);
-  // }
-}
+export class VWCSelect extends MWCSelect { }
