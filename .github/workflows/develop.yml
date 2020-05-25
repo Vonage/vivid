@@ -1,4 +1,4 @@
-name: build ${GITHUB_REF##*/}
+name: build & test
 
 on:
   push:
