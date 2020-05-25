@@ -1,4 +1,4 @@
-name: build & test ${{github.ref}}
+name: build & test ${{ github.ref }}
 
 on:
   push:
