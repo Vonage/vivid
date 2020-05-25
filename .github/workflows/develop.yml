@@ -2,7 +2,7 @@ name: develop build
 
 on:
   push:
-    branches: [develop, viv-*]
+    branches: [develop, viv-*, iss-*]
 
 jobs:
   build-and-deploy-storybook:
@@ -15,31 +15,31 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Setup NodeJS ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: install yarn globally
+      - name: Install yarn
         run: npm install -g yarn
 
-      - name: install packages with yarn
+      - name: Install dependencies
         run: yarn
 
-      #       - name: test
-      #         run: yarn test
-
-      - name: build
+      - name: Build
         run: yarn build
 
-      - name: build storybook
-        run: yarn storybook:build
+      - name: test
+			  run: yarn test
 
-      - name: ZEIT Now Deployment
-        uses: amondnet/now-deployment@v2.0.1
-        with:
-          zeit-token: ${{secrets.ZEIT_TOKEN}}
-          now-org-id: ${{secrets.ZEIT_ORG_ID}}
-          now-project-id: ${{secrets.ZEIT_PROJECT_ID}}
-          working-directory: ./storybook-static
-          # now-args: "--prod" #Optional
+      #  - name: build storybook
+      #    run: yarn storybook:build
+
+      # - name: ZEIT Now Deployment
+      #   uses: amondnet/now-deployment@v2.0.1
+      #     with:
+      #       zeit-token: ${{secrets.ZEIT_TOKEN}}
+      #       now-org-id: ${{secrets.ZEIT_ORG_ID}}
+      #       now-project-id: ${{secrets.ZEIT_PROJECT_ID}}
+      #       working-directory: ./storybook-static
+      #       # now-args: "--prod" #Optional
