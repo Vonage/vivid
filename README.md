@@ -32,3 +32,7 @@
 We use GitHub Issues as the official bug tracker for **Vivid** Please Search [existing issues](https://github.com/vonage/vivid/issues). It’s possible someone has already reported the same problem.
 
 If your problem or idea is not addressed yet, [open a new issue](https://github.com/vonage/vivid/issues/new)
+
+## Suggestions
+
+Go through the [board](https://github.com/vonage/vivid/projects/1) to search for existing feedbacks and share yours if not already addressed.

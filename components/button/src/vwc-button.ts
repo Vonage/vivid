@@ -1,5 +1,5 @@
 import '@vonage/vvd-core';
-import { customElement, css } from 'lit-element';
+import { customElement } from 'lit-element';
 import { Button as MWCButton } from '@material/mwc-button';
 
 declare global {

@@ -5,7 +5,9 @@
     "composite": true,
     "rootDir": "src",
     "outDir": ".",
-    "tsBuildInfoFile": ".tsbuildinfo"
+    "tsBuildInfoFile": ".tsbuildinfo",
+    "allowJs": true,
+    "target": "ES6"
   },
   "include": ["src/*.ts"],
   "exclude": ["src/test/*.ts"],
