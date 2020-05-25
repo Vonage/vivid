@@ -30,11 +30,13 @@ yarn-error.log
 /common/**/*.js.map
 /common/**/*.d.ts
 /common/*/src/*.css.ts
+!/common/**/test/**/*.test.js
 
 /components/**/*.js
 /components/**/*.js.map
 /components/**/*.d.ts
 /components/*/src/*.css.ts
+!/components/**/test/**/*.test.js
 
 **/*.tsbuildinfo*
 

@@ -12,6 +12,7 @@ declare global {
 	}
 }
 
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 MWCTextField.styles = [mwcTextFieldStyle, vwcTextFieldStyle];
 
