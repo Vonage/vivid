@@ -7,7 +7,8 @@ describe('test vwc-button', () => {
   });
 
   it('vwc-button has internal contents', async () => {
-    const docFragContainer = htmlToDom('<mwc-button id="button-a">Button Text</mwc-button>');
+    await customElements.whenDefined('vwc-button');
+    const docFragContainer = htmlToDom('<vwc-button id="button-a">Button Text</vwc-button>');
     const actualButton = docFragContainer.firstElementChild;
     document.body.appendChild(docFragContainer);
     assert.equal(document.querySelector('#button-a'), actualButton);
