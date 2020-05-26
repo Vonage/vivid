@@ -70,8 +70,8 @@
     "node-sass-import": "^2.0.1",
     "node-watch": "^0.6.4",
     "rollup": "^2.10.9",
-		"typescript": "^3.9.3",
-		"tslib": "^2.0.0"
+    "typescript": "^3.9.3",
+    "tslib": "^2.0.0"
   },
   "eslintConfig": {
     "extends": [
