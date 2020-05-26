@@ -115,14 +115,6 @@ router
         root,
       );
     },
-    'checkbox': function() {
-      render(
-        html`
-          <checkbox-route></checkbox-route>
-        `,
-        root,
-      );
-    },
     'chip': function() {
       render(
         html`
