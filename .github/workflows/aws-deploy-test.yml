@@ -24,15 +24,15 @@ jobs:
         run: npm install -g yarn
 
       - name: Install packages
-        run: yarn
+        run: yarn install
 
-      - name: Build code
+      - name: Build sources
         run: yarn build
 
-      - name: Build storybook
-        run: yarn storybook:build
+      - name: Build demo
+        run: echo TBD
 
-      - name: Deploy storybook
+      - name: Deploy demo
         uses: jakejarvis/s3-sync-action@v0.5.1
         with:
           args: --delete
