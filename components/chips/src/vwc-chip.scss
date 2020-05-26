@@ -1,0 +1,24 @@
+@use '@material/chips';
+
+$height-default: 26px;
+$border-radius-default: 26px;
+$fill-color-default: #871fff;
+$ink-color-default: #ffffff;
+$horizontal-padding-default: 12px;
+$leading-icon-color-default: #ffffff;
+$trailing-icon-color-default: #ffffff;
+$trailing-icon-size-default: 16px;
+$font-size-default: 12px;
+// $font-size-default: var(...);
+
+.mdc-chip {
+  @include chips.height($height-default);
+  @include chips.shape-radius($border-radius-default);
+  @include chips.fill-color($fill-color-default);
+  @include chips.ink-color($ink-color-default);
+  @include chips.leading-icon-color($leading-icon-color-default);
+  @include chips.trailing-icon-color($trailing-icon-color-default, 1);
+  @include chips.horizontal-padding($horizontal-padding-default);
+  @include chips.trailing-icon-size($trailing-icon-size-default);
+  font-size: $font-size-default;
+}

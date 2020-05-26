@@ -1,18 +1,12 @@
 import '@vonage/vvd-core';
-import { style } from '@material/mwc-chips/mwc-chip-set.css.js';
-import { ChipSetBase } from '@material/mwc-chips/mwc-chip-set-base.js';
 import { customElement } from 'lit-element';
+import { ChipSet as MWCChipSet } from '@material/mwc-chips/mwc-chip-set';
 
 declare global {
 	interface HTMLElementTagNameMap {
-		'vwc-chip-set': VwcChipSet;
+		'vwc-chip-set': VWCChipSet;
 	}
 }
 
-@customElement('mwc-chip-set')
-class MwcChipSet extends ChipSetBase {
-	static styles = style;
-}
-
 @customElement('vwc-chip-set')
-export class VwcChipSet extends MwcChipSet { }
+export class VWCChipSet extends MWCChipSet { }

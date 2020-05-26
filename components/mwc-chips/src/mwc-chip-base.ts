@@ -193,9 +193,7 @@ export class ChipBase extends BaseElement {
 				<div class="mdc-chip__ripple"></div>
 				${this.renderThumbnail()}
 				${this.renderCheckmark()}
-				<span role="gridcell">
-					${this.renderPrimaryAction()}
-				</span>
+				${this.renderPrimaryAction()}
 				${this.renderRemoveIcon()}
 			</div>
       	`;
