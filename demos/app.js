@@ -15,113 +15,112 @@ Object.keys(components).forEach(key => {
 //   element.post = params.id;
 //   document.querySelector('#root').replaceWith(element);
 // });
-
-const root = document.querySelector('#root');
+const componentDemoContainer = document.querySelector('.comp-demo');
 router
-  .on({
-    '/': function () {
-      render(
-        html`
+	.on({
+		'/': function () {
+			render(
+				html`
           <home-route></home-route>
         `,
-        root,
-      );
-    },
-    'home': function () {
-      render(
-        html`
-          <home-route></home-route>
-        `,
-        root,
-      );
-    },
-    'scheme': function () {
-      render(
-        html`
-          <scheme-route></scheme-route>
-        `,
-        root,
-      );
-    },
-    'button': function () {
-      render(
-        html`
+				componentDemoContainer,
+			);
+		},
+		'button': function () {
+			render(
+				html`
           <button-route></button-route>
         `,
-        root,
-      );
-    },
-    'checkbox': function () {
-      render(
-        html`
+				componentDemoContainer,
+			);
+		},
+		'checkbox': function () {
+			render(
+				html`
           <checkbox-route></checkbox-route>
         `,
-        root,
-      );
-    },
-    'formfield': function () {
-      render(
-        html`
-          <formfield-route></formfield-route>
-        `,
-        root,
-      );
-    },
-    'textarea': function () {
-      render(
-        html`
-          <textarea-route></textarea-route>
-        `,
-        root,
-      );
-    },
-    'textfield': function () {
-      render(
-        html`
-          <textfield-route></textfield-route>
-        `,
-        root,
-      );
-    },
-    'vwcapp': function () {
-      render(
-        html`
-          <vwcapp-route></vwcapp-route>
-        `,
-        root,
-      );
-    },
-    'list': function () {
-      render(
-        html`
-          <list-route></list-route>
-        `,
-        root,
-      );
-    },
-    'select': function () {
-      render(
-        html`
-          <select-route></select-route>
-        `,
-        root,
-      );
-    },
-    'drawer': function () {
-      render(
-        html`
-          <drawer-route></drawer-route>
-        `,
-        root,
-      );
-    },
-    'chip': function() {
-      render(
-        html`
+				componentDemoContainer,
+			);
+		},
+		'chip': function () {
+			render(
+				html`
           <chip-route></chip-route>
         `,
-        root,
-      );
-    },
-  })
-  .resolve();
+				componentDemoContainer,
+			);
+		},
+		'drawer': function () {
+			render(
+				html`
+          <drawer-route></drawer-route>
+        `,
+				componentDemoContainer,
+			);
+		},
+		'formfield': function () {
+			render(
+				html`
+          <formfield-route></formfield-route>
+        `,
+				componentDemoContainer,
+			);
+		},
+		'home': function () {
+			render(
+				html`
+          <home-route></home-route>
+        `,
+				componentDemoContainer,
+			);
+		},
+		'list': function () {
+			render(
+				html`
+          <list-route></list-route>
+        `,
+				componentDemoContainer,
+			);
+		},
+		'scheme': function () {
+			render(
+				html`
+          <scheme-route></scheme-route>
+        `,
+				componentDemoContainer,
+			);
+		},
+		'select': function () {
+			render(
+				html`
+          <select-route></select-route>
+        `,
+				componentDemoContainer,
+			);
+		},
+		'textarea': function () {
+			render(
+				html`
+          <textarea-route></textarea-route>
+        `,
+				componentDemoContainer,
+			);
+		},
+		'textfield': function () {
+			render(
+				html`
+          <textfield-route></textfield-route>
+        `,
+				componentDemoContainer,
+			);
+		},
+		'vwcapp': function () {
+			render(
+				html`
+          <vwcapp-route></vwcapp-route>
+        `,
+				componentDemoContainer,
+			);
+		}
+	})
+	.resolve();

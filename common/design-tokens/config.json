@@ -1,0 +1,13 @@
+{
+  "source": ["properties/**/*.json"],
+  "platforms": {
+    "scss": {
+      "transformGroup": "scss",
+      "buildPath": "src/",
+      "files": [{
+        "destination": "scheme.scss",
+        "format": "scss/variables"
+      }]
+    }
+  }
+}

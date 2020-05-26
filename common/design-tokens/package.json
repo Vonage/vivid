@@ -1,16 +1,16 @@
 {
-  "name": "@vonage/vvd-scheme",
+  "name": "@vonage/vvd-design-tokens",
   "version": "0.0.7",
   "description": "> TODO: description",
   "author": "yinonov <yinon@hotmail.com>",
-  "homepage": "https://github.com/Vonage/vivid/tree/master/components/scheme#readme",
+  "homepage": "https://github.com/Vonage/vivid/tree/master/components/design-tokens#readme",
   "license": "ISC",
-  "main": "vvd-scheme.js",
-  "module": "vvd-scheme.js",
+  "main": "vvd-design-tokens.js",
+  "module": "vvd-design-tokens.js",
   "repository": {
     "type": "git",
     "url": "ssh://github.com/vonage/vivid.git",
-    "directory": "components/scheme"
+    "directory": "components/design-tokens"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
@@ -19,12 +19,7 @@
     "url": "https://github.com/Vonage/vivid/issues"
   },
   "dependencies": {
-		"@vonage/vvd-design-tokens": "^0.0.7",
-    "ramda": "^0.27.0",
-    "tslib": "^2.0.0"
-  },
-  "devDependencies": {
-    "@types/ramda": "^0.27.4"
+    "style-dictionary": "^2.10.0"
   },
   "publishConfig": {
     "access": "public",
