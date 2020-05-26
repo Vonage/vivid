@@ -23,10 +23,10 @@
     <link rel="modulepreload" href="../node_modules/@vonage/vvd-scheme/vvd-scheme.js" />
     <script type="module" async>
       import scheme from '../node_modules/@vonage/vvd-scheme/vvd-scheme.js';
-      import { Fonts } from '../node_modules/@vonage/vvd-fonts/vvd-fonts.js';
+      import fonts from '../node_modules/@vonage/vvd-fonts/vvd-fonts.js';
 
       (async () => {
-        await Promise.all([scheme.init(), Fonts.init()]);
+        await Promise.all([scheme.init(), fonts.init()]);
         document.body.classList.add('scheme-loaded');
       })();
     </script>
