@@ -1,2 +1,2 @@
-'use strict';
 import '@vonage/vvd-scheme';
+import '@vonage/vvd-fonts';

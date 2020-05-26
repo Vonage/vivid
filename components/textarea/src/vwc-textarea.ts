@@ -1,20 +1,14 @@
 import '@vonage/vvd-core';
-import { style as mwcTextAreaStyle } from '@material/mwc-textarea/mwc-textarea-css.js';
-import { TextAreaBase } from '@material/mwc-textarea/mwc-textarea-base.js';
 import { customElement } from 'lit-element';
+import { TextArea as MWCTextArea } from '@material/mwc-textarea';
 
-export { TextFieldType } from '@material/mwc-textfield/mwc-textfield-base.js';
+export { TextFieldType } from '@material/mwc-textfield';
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'vwc-textarea': VwcTextArea;
-  }
-}
-
-@customElement('mwc-textarea')
-class MwcTextArea extends TextAreaBase {
-  static styles = mwcTextAreaStyle;
+	interface HTMLElementTagNameMap {
+		'vwc-textarea': VWCTextArea;
+	}
 }
 
 @customElement('vwc-textarea')
-export class VwcTextArea extends MwcTextArea { }
+export class VWCTextArea extends MWCTextArea { }

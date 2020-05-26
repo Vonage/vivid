@@ -1,6 +1,6 @@
 {
   "name": "@vonage/vvd-core",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "> TODO: description",
   "author": "yinonov <yinon@hotmail.com>",
   "homepage": "https://github.com/Vonage/vivid/tree/master/components/core#readme",
@@ -19,8 +19,8 @@
     "url": "https://github.com/Vonage/vivid/issues"
   },
   "dependencies": {
-    "@vonage/vvd-scheme": "^0.0.6",
-    "tslib": "^1.12.0"
+    "@vonage/vvd-scheme": "^0.0.7",
+    "tslib": "^2.0.0"
   },
   "publishConfig": {
     "access": "public",
