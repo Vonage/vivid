@@ -1,11 +1,18 @@
+
 <p align="center">
   <img src="./assets/images/vivid-hero.png"></img>
 </p>
 
 # Vivid UI components
 
+### Roadmap
+| Package | Status | Issues |
+|--|--|--|
+| [`<vwc-button>`](https://github.com/Vonage/vivid/packages/165931) | [![GitHub Package Registry version](https://img.shields.io/github/release/github/learning-lab-components.svg?label=GPR&logo=github)](https://github.com/github/Vonage/vivid/packages/165931) |
+|--|--|
+
 ### Get up and running
-* Clone the monorepo
+* Clone the repo
 * Run `yarn` (repo relies on yarn workspaces) in order to build the repo once / bring the dependencies
 * Run the following steps as the normal build-and-see flow:
 	* `yarn build` - builds `css` from `scss`, compiles `ts` into `js`
