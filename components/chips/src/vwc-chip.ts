@@ -13,7 +13,7 @@ declare global {
 export class VWCChip extends MWCChip {
 	// TODO: discuss prop names
 	@property({type: String}) size = '';
-	@property({type: Boolean}) outline = false;
+	@property({type: Boolean}) outlined = false;
 	@property({type: Boolean}) pill = false;
 	@property({type: String}) theme = '';
 	@property({type: Boolean}) transparent = false;
@@ -27,7 +27,7 @@ export class VWCChip extends MWCChip {
 
 	updated() {
 		const classes = [
-			this.outline ? 'outline' : '',
+			this.outlined ? 'outlined' : '',
 			this.pill ? 'pill' : '',
 			this.size ? `${this.size}` : '',
 			this.theme ? `${this.theme}` : '',

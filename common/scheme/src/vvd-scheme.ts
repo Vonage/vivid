@@ -65,34 +65,37 @@ async function syncWithOSSettings() {
   updateStyleCssText(await getSchemeCssText(getPreferedColorScheme()));
 }
 
+async function init(scheme?: SchemeOption) {
+  // listen to selection change event
+  onSchemeChange(async (scheme: SchemeOption) => {
+    set(scheme);
+  });
+  return await set(scheme);
+}
+
+async function set(scheme: SchemeOption = schemeDefault()) {
+  _selectedSchemeOption = scheme;
+  let nextScheme: PredefinedScheme;
+
+  if (scheme == 'syncWithOSSettings') {
+    // observe preference changes
+    pcs.addListener(syncWithOSSettings);
+    nextScheme = getPreferedColorScheme();
+  } else {
+    // stop observing preference changes
+    pcs.removeListener(syncWithOSSettings);
+    nextScheme = scheme;
+  }
+  if (_selectedScheme === nextScheme) {
+    return;
+  }
+  _selectedScheme = nextScheme;
+  updateStyleCssText(await getSchemeCssText(nextScheme));
+}
+
 export default Object.freeze({
-  init: async function(scheme?: SchemeOption) {
-    // listen to selection change event
-    onSchemeChange(async (scheme: SchemeOption) => {
-      this.set(scheme);
-    });
-    return await this.set(scheme);
-  },
-
-  set: async function(scheme: SchemeOption = schemeDefault()) {
-    _selectedSchemeOption = scheme;
-    let nextScheme: PredefinedScheme;
-
-    if (scheme == 'syncWithOSSettings') {
-      // observe preference changes
-      pcs.addListener(syncWithOSSettings);
-      nextScheme = getPreferedColorScheme();
-    } else {
-      // stop observing preference changes
-      pcs.removeListener(syncWithOSSettings);
-      nextScheme = scheme;
-    }
-    if (_selectedScheme === nextScheme) {
-      return;
-    }
-    _selectedScheme = nextScheme;
-    updateStyleCssText(await getSchemeCssText(nextScheme));
-  },
+  init,
+  set,
 });
 
 //TODO add the following tests:

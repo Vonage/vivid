@@ -78,7 +78,7 @@
   }
 }
 
-:host(.outline) {
+:host(.outlined) {
   .mdc-chip {
     @include chips.fill-color(transparent);
     @include chips.ink-color(primary);
