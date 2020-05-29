@@ -66,16 +66,16 @@ export default class Home extends Element {
         <vwc-chip label="Chip" theme="yellow" transparent></vwc-chip>
       </vwc-chip-set>
       
-      <h3>Hollow</h3>
+      <h3>Outline</h3>
       <vwc-chip-set>
-        <vwc-chip label="Chip" theme="black" hollow></vwc-chip>
-        <vwc-chip label="Chip" theme="blue" hollow></vwc-chip>
-        <vwc-chip label="Chip" theme="green" hollow></vwc-chip>
-        <vwc-chip label="Chip" theme="indigo" hollow></vwc-chip>
-        <vwc-chip label="Chip" theme="orange" hollow></vwc-chip>
-        <vwc-chip label="Chip" theme="purple" hollow></vwc-chip>
-        <vwc-chip label="Chip" theme="red" hollow></vwc-chip>
-        <vwc-chip label="Chip" theme="yellow" hollow></vwc-chip>
+        <vwc-chip label="Chip" theme="black" outline></vwc-chip>
+        <vwc-chip label="Chip" theme="blue" outline></vwc-chip>
+        <vwc-chip label="Chip" theme="green" outline></vwc-chip>
+        <vwc-chip label="Chip" theme="indigo" outline></vwc-chip>
+        <vwc-chip label="Chip" theme="orange" outline></vwc-chip>
+        <vwc-chip label="Chip" theme="purple" outline></vwc-chip>
+        <vwc-chip label="Chip" theme="red" outline></vwc-chip>
+        <vwc-chip label="Chip" theme="yellow" outline></vwc-chip>
       </vwc-chip-set>
 
       <hr/>
