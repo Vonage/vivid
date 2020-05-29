@@ -25,9 +25,11 @@ npm install @vonage/vwc-chips
 <!-- ![](images/image.png) -->
 
 ```html
-<vwc-chip small label="small"></vwc-chip>
-<vwc-chip label="default"></vwc-chip>
-<vwc-chip large label="large"></vwc-chip>
+<vwc-chip-set>
+  <vwc-chip small label="small"></vwc-chip>
+  <vwc-chip label="default"></vwc-chip>
+  <vwc-chip large label="large"></vwc-chip>
+</vwc-chip-set>
 ```
 
 ### Theme
@@ -35,8 +37,10 @@ npm install @vonage/vwc-chips
 <!-- ![](images/image.png) -->
 
 ```html
-<vwc-chip theme="black" label="black"></vwc-chip>
-<vwc-chip theme="red" label="red"></vwc-chip>
+<vwc-chip-set>
+  <vwc-chip theme="black" label="black"></vwc-chip>
+  <vwc-chip theme="red" label="red"></vwc-chip>
+</vwc-chip-set>
 ```
 
 ### Pill
@@ -117,6 +121,7 @@ npm install @vonage/vwc-chips
 | `orange`
 | `purple`
 | `red`
+| `white`
 | `yellow`
 
 ## Additional references

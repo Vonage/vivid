@@ -1,11 +1,19 @@
 @use '@material/chips';
 @use './variables';
 
-//TODO: move out hex/rgb codes
+/*
+TODO: 
+  - add volta combined badges?
+  - remove hover/focus background?
+  - remove hover pointer?
+  - move out hex/rgb codes
+*/
+
 :host {
   --mdc-theme-primary: #871fff;
   --mdc-theme-primary-rgb: 135, 31, 255;
-  --mdc-theme-on-primary: #fff;
+  --mdc-theme-on-primary: #ffffff;
+  --mdc-theme-on-primary-rgb: 255, 255, 255;
 }
 
 :host(.black) {
@@ -43,20 +51,27 @@
   --mdc-theme-primary-rgb: 232, 69, 69;
 }
 
+:host(.white) {
+  --mdc-theme-primary: #ffffff;
+  --mdc-theme-primary-rgb: 255, 255, 255;
+  --mdc-theme-on-primary: #131415;
+  --mdc-theme-on-primary-rgb: 19, 20, 21;
+}
+
 :host(.yellow) {
   --mdc-theme-primary: #ffc100;
   --mdc-theme-primary-rgb: 255, 193, 0;
 }
 
+
 .mdc-chip {
   @include chips.fill-color(var(--mdc-theme-primary));
   @include chips.ink-color(on-primary);
-  @include chips.leading-icon-color(var(--mdc-theme-on-primary));
-  @include chips.trailing-icon-color(var(--mdc-theme-on-primary), 1);
+  @include chips.trailing-icon-color(var(--mdc-theme-on-primary-rgb), variables.$trailing-icon-opacity, variables.$trailing-icon-opacity-hover);
   @include chips.height(map-get(variables.$height, default));
   @include chips.horizontal-padding(map-get(variables.$horizontal-padding, default));
   @include chips.shape-radius(map-get(variables.$shape-radius, default));
-  @include chips.trailing-icon-margin(variables.$trailing-icon-margin);
+  @include chips.trailing-icon-margin(variables.$trailing-icon-margin-left);
   @include chips.trailing-icon-size(variables.$trailing-icon-size);
   font-size: map-get(variables.$font-size, default);
   font-weight: variables.$font-weight;
@@ -83,7 +98,7 @@
     @include chips.fill-color(transparent);
     @include chips.ink-color(primary);
     @include chips.outline(1px, solid, primary);
-    @include chips.trailing-icon-color(var(--mdc-theme-on-primary), 1);
+    @include chips.trailing-icon-color(var(--mdc-theme-primary-rgb), variables.$trailing-icon-opacity, variables.$trailing-icon-opacity-hover);
   }
 }
 
@@ -97,6 +112,6 @@
   .mdc-chip {
     background-color: rgba(var(--mdc-theme-primary-rgb), 0.2);
     @include chips.ink-color(primary);
-    @include chips.trailing-icon-color(var(--mdc-theme-on-primary), 1);
+    @include chips.trailing-icon-color(var(--mdc-theme-primary-rgb), variables.$trailing-icon-opacity, variables.$trailing-icon-opacity-hover);
   }
 }

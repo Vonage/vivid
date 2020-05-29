@@ -15,6 +15,7 @@ export default class Home extends Element {
         <vwc-chip label="Chip" theme="orange" size="small"></vwc-chip>
         <vwc-chip label="Chip" theme="purple" size="small"></vwc-chip>
         <vwc-chip label="Chip" theme="red" size="small"></vwc-chip>
+        <vwc-chip label="Chip" theme="white" size="small"></vwc-chip>
         <vwc-chip label="Chip" theme="yellow" size="small"></vwc-chip>
       </vwc-chip-set>
 
@@ -27,6 +28,7 @@ export default class Home extends Element {
         <vwc-chip label="Chip" theme="orange"></vwc-chip>
         <vwc-chip label="Chip" theme="purple"></vwc-chip>
         <vwc-chip label="Chip" theme="red"></vwc-chip>
+        <vwc-chip label="Chip" theme="white"></vwc-chip>
         <vwc-chip label="Chip" theme="yellow"></vwc-chip>
       </vwc-chip-set>
 
@@ -39,6 +41,7 @@ export default class Home extends Element {
         <vwc-chip label="Chip" theme="orange" size="large"></vwc-chip>
         <vwc-chip label="Chip" theme="purple" size="large"></vwc-chip>
         <vwc-chip label="Chip" theme="red" size="large"></vwc-chip>
+        <vwc-chip label="Chip" theme="white" size="large"></vwc-chip>
         <vwc-chip label="Chip" theme="yellow" size="large"></vwc-chip>
       </vwc-chip-set>
 
@@ -51,6 +54,7 @@ export default class Home extends Element {
         <vwc-chip label="Chip" theme="orange" pill></vwc-chip>
         <vwc-chip label="Chip" theme="purple" pill></vwc-chip>
         <vwc-chip label="Chip" theme="red" pill></vwc-chip>
+        <vwc-chip label="Chip" theme="white" pill></vwc-chip>
         <vwc-chip label="Chip" theme="yellow" pill></vwc-chip>
       </vwc-chip-set>
       
@@ -63,6 +67,7 @@ export default class Home extends Element {
         <vwc-chip label="Chip" theme="orange" transparent></vwc-chip>
         <vwc-chip label="Chip" theme="purple" transparent></vwc-chip>
         <vwc-chip label="Chip" theme="red" transparent></vwc-chip>
+        <vwc-chip label="Chip" theme="white" transparent></vwc-chip>
         <vwc-chip label="Chip" theme="yellow" transparent></vwc-chip>
       </vwc-chip-set>
       
@@ -75,28 +80,16 @@ export default class Home extends Element {
         <vwc-chip label="Chip" theme="orange" outlined></vwc-chip>
         <vwc-chip label="Chip" theme="purple" outlined></vwc-chip>
         <vwc-chip label="Chip" theme="red" outlined></vwc-chip>
+        <vwc-chip label="Chip" theme="white" outlined></vwc-chip>
         <vwc-chip label="Chip" theme="yellow" outlined></vwc-chip>
       </vwc-chip-set>
 
-      <hr/>
-      <h3>Choice</h3>
-      <vwc-chip-set type="choice">
-        <vwc-chip label="A"></vwc-chip>
-        <vwc-chip label="B" icon="fingerprint"></vwc-chip>
-        <vwc-chip label="C" icon="language"></vwc-chip>
-      </vwc-chip-set>
-
-      <h3>Filter</h3>
-      <vwc-chip-set type="filter">
-        <vwc-chip label="1"></vwc-chip>
-        <vwc-chip label="2" icon="fingerprint"></vwc-chip>
-        <vwc-chip label="3" icon="language"></vwc-chip>
-      </vwc-chip-set>
-
-      <h3>Input</h3>
-      <vwc-chip-set type="input">
-        <vwc-chip label="Foo" removable></vwc-chip>
-        <vwc-chip label="Bar" removable removeiconfocusable></vwc-chip>
+      <h3>Removable</h3>
+      <vwc-chip-set>
+        <vwc-chip label="Chip" removable></vwc-chip>
+        <vwc-chip label="Chip" removable transparent></vwc-chip>
+        <vwc-chip label="Chip" removable outlined></vwc-chip>
+        <vwc-chip label="Chip" removable pill></vwc-chip>
       </vwc-chip-set>
     `;
   }
