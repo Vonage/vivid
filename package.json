@@ -1,95 +1,100 @@
 {
-	"name": "@vivid/root",
-	"private": true,
-	"description": "Web components based on branded design system by Vonage. following open-wc recommendations",
-	"author": "Vonage",
-	"license": "Apache-2.0",
-	"workspaces": [
-		"components/*",
-		"common/*"
-	],
-	"scripts": {
-		"lint:eslint": "eslint --ext .js,.html . --ignore-path .gitignore",
-		"format:eslint": "eslint --ext .js,.html . --fix --ignore-path .gitignore",
-		"lint:prettier": "prettier \"**/*.js\" --check --ignore-path .gitignore",
-		"format:prettier": "prettier \"**/*.js\" --write --ignore-path .gitignore",
-		"lint": "yarn lint:eslint && yarn lint:prettier",
-		"format": "yarn format:eslint && yarn format:prettier",
-		"test": "karma start --coverage",
-		"test:watch": "karma start --auto-watch=true --single-run=false",
-		"test:update-snapshots": "karma start --update-snapshots",
-		"test:prune-snapshots": "karma start --prune-snapshots",
-		"test:bs": "karma start karma.bs.config.js --coverage",
-		"prepack": "yarn build",
-		"postinstall": "yarn bootstrap",
-		"bootstrap": "lerna bootstrap",
-		"storybook:build": "build-storybook",
-		"storybook:start": "concurrently --kill-others --names tsc,storybook \"yarn watch\" \"start-storybook -s storybook-static --node-resolve --watch -p 9384\"",
-		"build": "yarn build:styles && yarn build:typescript",
-		"build:styles": "./scripts/build-styles.sh",
-		"build:typescript": "tsc --build",
+  "name": "@vivid/root",
+  "private": true,
+  "description": "Web components based on branded design system by Vonage. following open-wc recommendations",
+  "author": "Vonage",
+  "license": "Apache-2.0",
+  "workspaces": [
+    "components/*",
+    "common/*"
+  ],
+  "scripts": {
+    "lint:eslint": "eslint --ext .js,.html . --ignore-path .gitignore",
+    "format:eslint": "eslint --ext .js,.html . --fix --ignore-path .gitignore",
+    "lint:prettier": "prettier \"**/*.js\" --check --ignore-path .gitignore",
+    "format:prettier": "prettier \"**/*.js\" --write --ignore-path .gitignore",
+    "lint": "yarn lint:eslint && yarn lint:prettier",
+    "format": "yarn format:eslint && yarn format:prettier",
+    "test": "karma start --coverage",
+    "test:watch": "karma start --auto-watch=true --single-run=false",
+    "test:update-snapshots": "karma start --update-snapshots",
+    "test:prune-snapshots": "karma start --prune-snapshots",
+    "test:bs": "karma start karma.bs.config.js --coverage",
+    "prepack": "yarn build",
+    "postinstall": "yarn bootstrap",
+    "bootstrap": "lerna bootstrap",
+    "storybook:build": "build-storybook",
+    "storybook:start": "concurrently --kill-others --names tsc,storybook \"yarn watch\" \"start-storybook -s storybook-static --node-resolve --watch -p 9384\"",
+    "build": "yarn compile && rimraf dist && tsc && rollup -c rollup.config.js",
+    "start:build": "yarn build && es-dev-server --root-dir dist --app-index index.html --open --compatibility none",
+		"compile": "yarn compile:styles && yarn compile:typescript",
+    "compile:styles": "./scripts/build-styles.sh",
+		"compile:typescript": "tsc --build",
+		"prestart": "yarn compile",
 		"start": "yarn build && yarn dev:server",
-		"dev:server": "es-dev-server --config es-dev-server.config.js",
-		"powerwash:ts": "rm components/*/*.js & rm components/*/*.js.map & rm components/*/*.d.ts & rm components/*/.tsbuildinfo && rm common/*/*.js & rm common/*/*.js.map & rm common/*/*.d.ts & rm common/*/.tsbuildinfo ",
-		"powerwash:styling": "rm components/*/src/*.css.ts & rm common/*/src/*.css.ts",
-		"powerwash": "yarn powerwash:ts && yarn powerwash:styling && rm -rf node_modules",
-		"watch": "node scripts/watcher.js"
-	},
-	"dependencies": {
-		"lit-html": "^1.2.1",
-		"navigo": "^7.1.2"
-	},
-	"devDependencies": {
-		"@open-wc/demoing-storybook": "^2.3.0",
-		"@open-wc/eslint-config": "^2.0.6",
-		"@open-wc/prettier-config": "^1.1.0",
-		"@open-wc/testing": "^2.5.16",
-		"@open-wc/testing-karma": "^3.3.30",
-		"@open-wc/testing-karma-bs": "^1.3.73",
-		"@rollup/plugin-typescript": "^4.1.2",
-		"@rollup/plugin-babel": "^5.0.2",
-		"@webcomponents/webcomponentsjs": "^2.4.3",
-		"command-line-args": "^5.1.1",
-		"command-line-usage": "^6.1.0",
-		"deepmerge": "^4.2.2",
-		"es-dev-server": "^1.50.8",
-		"eslint": "^7.1.0",
-		"eslint-plugin-wc": "^1.2.0",
-		"eslint-plugin-lit": "^1.2.0",
-		"eslint-plugin-babel": "^5.3.0",
-		"eslint-plugin-import": "^2.20.2",
-		"lint-staged": "^10.2.6",
-		"fibers": "^5.0.0",
-		"husky": "^4.2.5",
-		"lerna": "^3.21.0",
-		"@kuscamara/code-sample": "^3.0.2",
-		"concurrently": "^5.2.0",
-		"sass": "^1.26.5",
-		"node-sass": "^4.14.1",
-		"node-sass-import": "^2.0.1",
-		"node-watch": "^0.6.4",
-		"rimraf": "^3.0.2",
-		"rollup": "^2.10.9",
-		"typescript": "^3.9.3",
-		"tslib": "^2.0.0"
-	},
-	"eslintConfig": {
-		"extends": [
-			"@open-wc/eslint-config",
-			"eslint-config-prettier"
-		]
-	},
-	"prettier": "@open-wc/prettier-config/prettier.config.js",
-	"husky": {
-		"hooks": {
-			"pre-commit": "lint-staged"
-		}
-	},
-	"lint-staged": {
-		"*.js": [
-			"eslint --fix",
-			"prettier --write",
-			"git add"
-		]
-	}
+    "dev:server": "es-dev-server --config es-dev-server.config.js",
+    "powerwash:ts": "rm components/*/*.js & rm components/*/*.js.map & rm components/*/*.d.ts & rm components/*/.tsbuildinfo && rm common/*/*.js & rm common/*/*.js.map & rm common/*/*.d.ts & rm common/*/.tsbuildinfo ",
+    "powerwash:styling": "rm components/*/src/*.css.ts & rm common/*/src/*.css.ts",
+    "powerwash": "yarn powerwash:ts && yarn powerwash:styling && rm -rf node_modules",
+    "watch": "node scripts/watcher.js"
+  },
+  "dependencies": {
+    "lit-html": "^1.2.1",
+    "navigo": "^7.1.2"
+  },
+  "devDependencies": {
+    "@kuscamara/code-sample": "^3.0.2",
+    "@open-wc/building-rollup": "^1.0.0",
+    "@open-wc/demoing-storybook": "^2.3.0",
+    "@open-wc/eslint-config": "^2.0.6",
+    "@open-wc/prettier-config": "^1.1.0",
+    "@open-wc/testing": "^2.5.16",
+    "@open-wc/testing-karma": "^3.3.30",
+    "@open-wc/testing-karma-bs": "^1.3.73",
+    "@rollup/plugin-babel": "^5.0.2",
+    "@rollup/plugin-typescript": "^4.1.2",
+    "@webcomponents/webcomponentsjs": "^2.4.3",
+    "command-line-args": "^5.1.1",
+    "command-line-usage": "^6.1.0",
+    "concurrently": "^5.2.0",
+    "deepmerge": "^4.2.2",
+    "es-dev-server": "^1.50.8",
+    "eslint": "^7.1.0",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-lit": "^1.2.0",
+    "eslint-plugin-wc": "^1.2.0",
+    "fibers": "^5.0.0",
+    "husky": "^4.2.5",
+    "lerna": "^3.21.0",
+    "lint-staged": "^10.2.6",
+    "node-sass": "^4.14.1",
+    "node-sass-import": "^2.0.1",
+    "node-watch": "^0.6.4",
+    "rimraf": "^2.6.3",
+    "rollup": "^2.3.4",
+    "rollup-plugin-copy": "^3.3.0",
+    "sass": "^1.26.5",
+    "tslib": "^2.0.0",
+    "typescript": "^3.9.3"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@open-wc/eslint-config",
+      "eslint-config-prettier"
+    ]
+  },
+  "prettier": "@open-wc/prettier-config/prettier.config.js",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "prettier --write",
+      "git add"
+    ]
+  }
 }

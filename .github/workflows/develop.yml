@@ -32,8 +32,8 @@ jobs:
       - name: build
         run: yarn build
 
-      - name: build storybook
-        run: yarn storybook:build
+      # - name: build storybook
+      #   run: yarn storybook:build
 
       - name: ZEIT Now Deployment
         uses: amondnet/now-deployment@v2.0.1
@@ -41,5 +41,6 @@ jobs:
           zeit-token: ${{secrets.ZEIT_TOKEN}}
           now-org-id: ${{secrets.ZEIT_ORG_ID}}
           now-project-id: ${{secrets.ZEIT_PROJECT_ID}}
-          working-directory: ./storybook-static
-          # now-args: "--prod" #Optional
+          # working-directory: ./storybook-static
+          working-directory: ./dist
+          now-args: "--prod" #Optional
