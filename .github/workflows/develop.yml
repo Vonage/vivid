@@ -36,11 +36,11 @@ jobs:
       #   run: yarn storybook:build
 
       - name: ZEIT Now Deployment
-        uses: amondnet/now-deployment@v2.0.1
+        uses: amondnet/vercel-action@v19
         with:
-          zeit-token: ${{secrets.ZEIT_TOKEN}}
-          now-org-id: ${{secrets.ZEIT_ORG_ID}}
-          now-project-id: ${{secrets.ZEIT_PROJECT_ID}}
+          vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
+          vercel-args: '--prod' #Optional
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}  #Required
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}} #Required
           # working-directory: ./storybook-static
           working-directory: ./dist
-          now-args: "--prod" #Optional
