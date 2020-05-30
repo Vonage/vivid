@@ -45,3 +45,5 @@ storybook-static
 .now
 
 lerna-debug.log
+
+.vercel

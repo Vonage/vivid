@@ -7,7 +7,7 @@
 
     <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
     <link rel="alternate icon" href="/assets/images/favicon.ico" />
-    <link rel="mask-icon" href="/assets/images/safari-pinned-tab.svg" color="#ff8a01" />
+    <!-- <link rel="mask-icon" href="/assets/images/safari-pinned-tab.svg" color="#ff8a01" /> -->
 
     <!-- polyfill for webcomponents -->
     <script src="./node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
@@ -20,10 +20,10 @@
 
     <!-- module to apply relevant styling for our application and vivid web components
       preloading the scheme is important as it is a critical styling resource -->
-    <link rel="modulepreload" href="../node_modules/@vonage/vvd-scheme/vvd-scheme.js" />
+    <link rel="modulepreload" href="./node_modules/@vonage/vvd-scheme/vvd-scheme.js" />
     <script type="module" async>
-      import scheme from '../node_modules/@vonage/vvd-scheme/vvd-scheme.js';
-      import fonts from '../node_modules/@vonage/vvd-fonts/vvd-fonts.js';
+      import scheme from './node_modules/@vonage/vvd-scheme/vvd-scheme.js';
+      import fonts from './node_modules/@vonage/vvd-fonts/vvd-fonts.js';
 
       (async () => {
         await Promise.all([scheme.init(), fonts.init()]);
@@ -50,7 +50,7 @@
 
     <script type="module" src="node_modules/@kuscamara/code-sample/code-sample.js"></script>
     <script type="module" src="./demos/app.js"></script>
-    <link rel="stylesheet" href="demos/styles/index.css" />
+    <link rel="stylesheet" href="./demos/styles/index.css" />
   </head>
 
   <body>
