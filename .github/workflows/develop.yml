@@ -43,4 +43,4 @@ jobs:
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}} #Required
           # working-directory: ./storybook-static
           working-directory: ./dist
-          vercel-args: '--prod' #Optional
+          # vercel-args: '--prod' #Optional
