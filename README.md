@@ -3,7 +3,7 @@
   <img src="./assets/images/vivid-hero.png"></img>
 </p>
 
-# Vivid UI components
+# Vivid UI components [![develop build](https://github.com/Vonage/vivid/workflows/develop%20build/badge.svg?branch=develop)](https://vivid.vonage.com) 
 
 ### Roadmap
 | Package | Status | Issues |
