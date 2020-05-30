@@ -5,7 +5,7 @@ on:
     branches: [develop, viv-*]
 
 jobs:
-  build-and-deploy-storybook:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     strategy:
