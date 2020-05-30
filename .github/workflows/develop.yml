@@ -20,27 +20,27 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: install yarn globally
+      - name: Install yarn globally
         run: npm install -g yarn
 
-      - name: install packages with yarn
+      - name: Install packages with yarn
         run: yarn
 
       #       - name: test
       #         run: yarn test
 
-      - name: build
+      - name: Build
         run: yarn build
 
       # - name: build storybook
       #   run: yarn storybook:build
 
-      - name: ZEIT Now Deployment
+      - name: Vercel deployment
         uses: amondnet/vercel-action@v19
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
-          vercel-args: '--prod' #Optional
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}  #Required
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}} #Required
           # working-directory: ./storybook-static
           working-directory: ./dist
+          vercel-args: '--prod' #Optional
