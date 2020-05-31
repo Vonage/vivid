@@ -33,7 +33,8 @@
 
 | Component | Package | Status | Issues |
 |--|--|--|--|
-| [`<vwc-dialer>`]() | | Planned | 
+| `<vwc-dialer>` | - | Planned | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+dialer) |
+| `<vwc-video>` | - | Planned | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+video+player+videoplayer) |
 
 
 ### Get up and running
