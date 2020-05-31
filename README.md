@@ -1,4 +1,3 @@
-
 <p align="center">
   <img src="./assets/images/vivid-hero.png"></img>
 </p>
@@ -7,10 +6,35 @@
 [vivid.vonage.com for demos](https://vivid.vonage.com) 
 
 ### Roadmap
-| Package | Status | Issues |
-|--|--|--|
-| [`<vwc-button>`](https://github.com/Vonage/vivid/packages/165931) | [![GitHub Package Registry version](https://img.shields.io/github/release/github/learning-lab-components.svg?label=GPR&logo=github)](https://github.com/github/Vonage/vivid/packages/165931) |
-|--|--|
+
+##### Common
+
+| Component | Package | Status | Issues |
+|--|--|--|--|
+| `vvd-fonts` | [![GPR](https://img.shields.io/static/v1?label=vvd-fonts&message=0.0.7&color=green&logo=github)](https://github.com/github/Vonage/vivid/packages/235315) | Ready | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+font+fonts) |
+| `vvd-scheme` | [![GPR](https://img.shields.io/static/v1?label=vvd-scheme&message=0.0.7&color=green&logo=github)](https://github.com/github/Vonage/vivid/packages/235300) | Ready | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+scheme+schema+theme) |
+| `vwc-scheme-select` | [![GPR](https://img.shields.io/static/v1?label=vvd-scheme-select&message=0.0.7&color=green&logo=github)](https://github.com/github/Vonage/vivid/packages/235304) | Ready | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+scheme+schema+theme+select) |
+
+
+##### Generic/Atomic components
+
+| Component | Package | Status | Issues |
+|--|--|--|--|
+| `<vwc-button>` | [![GPR](https://img.shields.io/static/v1?label=vwc-button&message=0.0.7&color=green&logo=github)](https://github.com/github/Vonage/vivid/packages/165931) | Ready | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+button) |
+| `<vwc-chip>` | - | In progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+chip+chips) |
+| `<vwc-formfield>` | [![GPR](https://img.shields.io/static/v1?label=vwc-formfield&message=0.0.7&color=green&logo=github)](https://github.com/github/Vonage/vivid/packages/235309) | Ready | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+formfield) |
+| `<vwc-checkbox>` | [![GPR](https://img.shields.io/static/v1?label=vwc-checkbox&message=0.0.7&color=green&logo=github)](https://github.com/github/Vonage/vivid/packages/235311) | Ready | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+checkbox) |
+| `<vwc-select>` | [![GPR](https://img.shields.io/static/v1?label=vwc-select&message=0.0.7&color=green&logo=github)](https://github.com/github/Vonage/vivid/packages/235301) | Ready | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+select) |
+| `<vwc-textfield>` | [![GPR](https://img.shields.io/static/v1?label=vwc-textfield&message=0.0.7&color=green&logo=github)](https://github.com/github/Vonage/vivid/packages/166369) | In progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+textfield) |
+| `<vwc-textarea>` | [![GPR](https://img.shields.io/static/v1?label=vwc-textarea&message=0.0.7&color=green&logo=github)](https://github.com/github/Vonage/vivid/packages/235308) | In progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+textarea) |
+
+
+##### High level Vonage specific components
+
+| Component | Package | Status | Issues |
+|--|--|--|--|
+| [`<vwc-dialer>`]() | | Planned | 
+
 
 ### Get up and running
 * Clone the repo
@@ -28,8 +52,8 @@
 
 ## Scripts
 
+- `compile` builds your app for development
 - `start` runs your app for development after it has been built using the build command, reloading on file changes
-- `build` builds your app
 - `test` runs your test suite with Karma
 - `lint` runs the linter for your project
 
@@ -37,10 +61,10 @@
 
 ## Issues
 
-We use GitHub Issues as the official bug tracker for **Vivid** Please Search [existing issues](https://github.com/vonage/vivid/issues). It’s possible someone has already reported the same problem.
+We use GitHub Issues as the official bug tracker for **Vivid** Please Search [existing issues](https://github.com/vonage/vivid/issues), probably someone has already reported the same problem.
 
-If your problem or idea is not addressed yet, [open a new issue](https://github.com/vonage/vivid/issues/new)
+If your problem or idea is not addressed yet, [open a new issue](https://github.com/vonage/vivid/issues/new).
 
 ## Suggestions
 
-Go through the [board](https://github.com/vonage/vivid/projects/1) to search for existing feedbacks and share yours if not already addressed.
+Go through the [board](https://github.com/vonage/vivid/projects/1) to search for an existing feedbacks and share yours if not already addressed.
