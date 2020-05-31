@@ -31,7 +31,7 @@
     "compile:styles": "./scripts/build-styles.sh",
 		"compile:typescript": "tsc --build",
 		"prestart": "yarn compile",
-		"start": "yarn build && yarn dev:server",
+		"start": "yarn dev:server",
     "dev:server": "es-dev-server --config es-dev-server.config.js",
     "powerwash:ts": "rm components/*/*.js & rm components/*/*.js.map & rm components/*/*.d.ts & rm components/*/.tsbuildinfo && rm common/*/*.js & rm common/*/*.js.map & rm common/*/*.d.ts & rm common/*/.tsbuildinfo ",
     "powerwash:styling": "rm components/*/src/*.css.ts & rm common/*/src/*.css.ts",
