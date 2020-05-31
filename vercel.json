@@ -3,5 +3,6 @@
     "enabled": false
   },
   "version": 2,
+	"builds": [{ "src": "./public/**", "use": "@now/static" }],
   "routes": [{ "handle": "filesystem" }, { "src": "/.*", "dest": "/index.html" }]
 }
