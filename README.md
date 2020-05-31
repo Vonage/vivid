@@ -24,9 +24,15 @@
 | `<vwc-chip>` | - | In progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+chip+chips) |
 | `<vwc-formfield>` | [![GPR](https://img.shields.io/static/v1?label=vwc-formfield&message=0.0.7&color=green&logo=github)](https://github.com/github/Vonage/vivid/packages/235309) | Ready | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+formfield) |
 | `<vwc-checkbox>` | [![GPR](https://img.shields.io/static/v1?label=vwc-checkbox&message=0.0.7&color=green&logo=github)](https://github.com/github/Vonage/vivid/packages/235311) | Ready | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+checkbox) |
+| `<vwc-radio>` | - | Planned | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+radio) |
 | `<vwc-select>` | [![GPR](https://img.shields.io/static/v1?label=vwc-select&message=0.0.7&color=green&logo=github)](https://github.com/github/Vonage/vivid/packages/235301) | Ready | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+select) |
 | `<vwc-textfield>` | [![GPR](https://img.shields.io/static/v1?label=vwc-textfield&message=0.0.7&color=green&logo=github)](https://github.com/github/Vonage/vivid/packages/166369) | In progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+textfield) |
 | `<vwc-textarea>` | [![GPR](https://img.shields.io/static/v1?label=vwc-textarea&message=0.0.7&color=green&logo=github)](https://github.com/github/Vonage/vivid/packages/235308) | In progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+textarea) |
+| `<vwc-dropdown>` | - | Planned | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+dropdown) |
+| `<vwc-callout>` | - | Planned | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+callout) |
+| `<vwc-banner>` | - | Planned | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+banner) |
+| `<vwc-modal>` | - | Planned | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+modal) |
+| `<vwc-table>` | - | Planned | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+table) |
 
 
 ##### High level Vonage specific components
