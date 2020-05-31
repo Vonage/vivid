@@ -36,12 +36,12 @@ jobs:
       #   run: yarn storybook:build
 
       - name: Vercel deployment
-        # uses: amondnet/vercel-action@v19
-        uses: amondnet/now-deployment@v2
+        uses: amondnet/vercel-action@v19
+#         uses: amondnet/now-deployment@v2
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}  #Required
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}} #Required
           # working-directory: ./storybook-static
           working-directory: ./dist
-          # vercel-args: '--prod' #Optional
+          vercel-args: '--prod' #Optional
