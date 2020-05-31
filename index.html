@@ -8,26 +8,11 @@
 
 	<link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg" />
 	<link rel="alternate icon" href="/assets/images/favicon.ico" />
-	<link rel="mask-icon" href="/assets/images/safari-pinned-tab.svg" color="#ff8a01" />
+	<!-- <link rel="mask-icon" href="/assets/images/safari-pinned-tab.svg" color="#ff8a01" /> -->
 
-	<!-- polyfill for webcomponents -->
-	<script src="./node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-
-	<!-- marerail design icons font -->
+	<!-- material design icons font -->
 	<link href="https://fonts.googleapis.com/css?family=Material+Icons&display=block" rel="stylesheet" />
 
-	<!-- module to apply relevant styling for our application and vivid web components
-      preloading the scheme is important as it is a critical styling resource -->
-	<link rel="modulepreload" href="./node_modules/@vonage/vvd-scheme/vvd-scheme.js" />
-	<script type="module" async>
-		import scheme from './node_modules/@vonage/vvd-scheme/vvd-scheme.js';
-		import { Fonts } from './node_modules/@vonage/vvd-fonts/vvd-fonts.js';
-
-		(async () => {
-			await Promise.all([scheme.init(), Fonts.init()]);
-			document.body.classList.add('scheme-loaded');
-		})();
-	</script>
 	<style>
 		:root {
 			--mdc-theme-text-primary-on-background: var(--vwc-color-foreground);
@@ -46,11 +31,12 @@
 		}
 	</style>
 
-	<script type="module" src="./node_modules/@kuscamara/code-sample/code-sample.js"></script>
-	<!-- <script type="module" src="./demos/app.js"></script> -->
-	<script type="module" src="./dist/5c30c068.js"></script>
+	<!-- polyfill for webcomponents -->
+	<script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.4.3/webcomponents-loader.js"></script>
 
-	<link rel="stylesheet" href="demos/styles/index.css" />
+	<script type="module" src="node_modules/@kuscamara/code-sample/code-sample.js"></script>
+	<script type="module" src="./demos/app.js"></script>
+	<link rel="stylesheet" href="./demos/styles/index.css" />
 </head>
 
 <body>
@@ -80,12 +66,12 @@
 			<path fill-rule="evenodd" clip-rule="evenodd"
 				d="M48.6752 105.992H119.152C119.586 105.983 120.007 105.954 120.415 105.906C120.439 105.909 120.465 105.91 120.491 105.91C124.598 105.91 128.92 103.71 130.906 102.096C133.794 99.7489 135.507 98.073 137.36 94.6148C134.04 100.42 130.603 100.127 128.118 93.2946C128.01 92.9962 127.89 92.7479 127.76 92.546C127.711 92.4017 127.66 92.2569 127.606 92.1115L101.774 22.4752C101.578 21.9476 101.356 21.4269 101.108 20.9146H80.0168C72.8525 20.9146 64.8873 26.7234 62.2292 33.8878L40.2933 93.0183C40.1888 93.2999 40.0941 93.5793 40.009 93.8564C37.5031 100.08 34.507 100.157 31.2108 94.4527C33.1236 97.986 34.8919 99.6983 37.8741 102.096C39.9244 103.745 44.3859 105.993 48.6262 105.993C48.6428 105.993 48.6592 105.992 48.6752 105.992Z"
 				fill="url(#paint2_linear)" />
-			<g style="mix-blend-mode:hard-light" opacity="0.4">
+			<g style="mix-blend-mode: hard-light;" opacity="0.4">
 				<path fill-rule="evenodd" clip-rule="evenodd"
 					d="M49.1314 105.994H119.061C119.472 105.994 119.873 105.976 120.262 105.941C120.314 105.954 120.371 105.96 120.431 105.96C124.538 105.96 128.86 103.76 130.846 102.146C133.735 99.7993 135.447 98.1234 137.3 94.6652C134.146 100.182 130.885 100.191 128.436 94.3157C128.284 93.5977 128.071 92.8613 127.792 92.111L98.6202 14.1703C95.7774 6.50432 87.2547 0.287598 79.5887 0.287598H9.66184C1.99291 0.287598 -1.91489 6.50432 0.927951 14.1703L30.0999 92.111C32.9427 99.777 41.4654 105.994 49.1314 105.994Z"
 					fill="url(#paint3_linear)" />
 			</g>
-			<g style="mix-blend-mode:hard-light" opacity="0.15">
+			<g style="mix-blend-mode: hard-light;" opacity="0.15">
 				<path fill-rule="evenodd" clip-rule="evenodd"
 					d="M80.1074 21.0015H151.853C159.018 21.0015 162.673 26.8104 160.015 33.9747L138.079 93.1052C135.421 100.27 127.456 106.078 120.292 106.078H48.7743C48.7555 106.08 48.7363 106.08 48.7167 106.08C48.6415 106.08 48.5662 106.08 48.4909 106.078C47.5203 106.074 46.6147 105.963 45.7809 105.757C42.5474 105.076 39.5421 103.452 37.9646 102.184C34.9824 99.7858 33.2141 98.0734 31.3013 94.5402C34.5974 100.245 37.5934 100.168 40.0993 93.9442C40.1845 93.6668 40.2793 93.3871 40.3839 93.1052L62.3198 33.9747C64.9778 26.8104 72.9431 21.0015 80.1074 21.0015Z"
 					fill="url(#paint4_linear)" />
@@ -126,7 +112,6 @@
 				</linearGradient>
 			</defs>
 		</svg>
-
 	</header>
 
 	<main class="content">

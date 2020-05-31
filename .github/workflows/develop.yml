@@ -1,11 +1,11 @@
-name: develop build
+name: Develop build
 
 on:
   push:
     branches: [develop, viv-*]
 
 jobs:
-  build-and-deploy-storybook:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     strategy:
@@ -20,26 +20,27 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: install yarn globally
+      - name: Install yarn globally
         run: npm install -g yarn
 
-      - name: install packages with yarn
+      - name: Install packages with yarn
         run: yarn
 
       #       - name: test
       #         run: yarn test
 
-      - name: build
+      - name: Build
         run: yarn build
 
-      - name: build storybook
-        run: yarn storybook:build
+      # - name: build storybook
+      #   run: yarn storybook:build
 
-      - name: ZEIT Now Deployment
-        uses: amondnet/now-deployment@v2.0.1
+      - name: Vercel deployment
+        uses: amondnet/vercel-action@v19
         with:
-          zeit-token: ${{secrets.ZEIT_TOKEN}}
-          now-org-id: ${{secrets.ZEIT_ORG_ID}}
-          now-project-id: ${{secrets.ZEIT_PROJECT_ID}}
-          working-directory: ./storybook-static
-          # now-args: "--prod" #Optional
+          vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}  #Required
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}} #Required
+          # working-directory: ./storybook-static
+          working-directory: ./dist
+          # vercel-args: '--prod' #Optional
