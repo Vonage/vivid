@@ -3,7 +3,8 @@
 </p>
 
 # Vivid UI components ![develop build](https://github.com/Vonage/vivid/workflows/develop%20build/badge.svg?branch=develop)
-[vivid.vonage.com for demos](https://vivid.vonage.com) 
+
+[vivid.vonage.com for demos](https://vivid.vonage.com)
 
 ### Roadmap
 
@@ -53,8 +54,8 @@ The system contains these aspects:
 
 | Component | Package | Status | Issues |
 |--|--|--|--|
-| `<vwc-dialer>` | - | Planned | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+dialer) |
-| `<vwc-video>` | - | Planned | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+video+player+videoplayer) |
+| `<vwc-dialer>` | - | planned | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+dialer) |
+| `<vwc-video>` | - | planned | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+video+player+videoplayer) |
 
 
 ### Get up and running
