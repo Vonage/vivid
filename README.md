@@ -8,7 +8,7 @@
 
 ### Roadmap
 
-Vivid project is set to deliver Vonage's own design system for the company project's front-ends.
+Vivid project is set to deliver Vonage's own design system for its projects' front-ends.
 
 The system contains these aspects:
 - general services/facilities like fonts management, scheme management and alike
