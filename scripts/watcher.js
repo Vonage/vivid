@@ -1,47 +1,51 @@
-const watch = require('node-watch');
+// const watch = require('node-watch');
+const chokidar = require('chokidar');
 const { promisify } = require('util');
 const exec = promisify(require('child_process').exec);
 
-const watchOptions = {
-	recursive: true,
-	filter: f => !/node_modules/.test(f) && /src/.test(f) && /.(?:js|ts|scss)$/.test(f),
-
-	//   path => {
-	//   if (
-	//     path.contains('node_modules') ||
-	//     !path.contains('src')
-	//     ) { return false; }
-	//     if (path.indexOf('node_modules') > -1) {
-	//       return false;
-	//     }
-	//   if (path.indexOf('src') === -1) {
-	//     return false;
-	//   }
-	//   return /.(?:ts|scss)$/.test(path);
-	// },
-};
-
-watch(['common', 'components'], watchOptions, onChange);
+function getRelevantJobPromise(path) {
+  if (path.includes('design-tokens') && path.endsWith('json')) {
+    return exec('yarn compile:design-tokens');
+  }
+  return path.endsWith('ts') ? exec('yarn compile:typescript') : exec('npm run compile:styles');
+}
 
 let inProgress = false;
+const watchFileExtenstions = ['ts', 'scss', 'json'];
+async function onChange(path) {
+  if (watchFileExtenstions.every(s => !path.endsWith(`.${s}`))) {
+    return;
+  }
 
-async function onChange(evt, name) {
-	if (inProgress) {
-		return;
-	}
-	inProgress = true;
+  if (inProgress) {
+    return;
+  }
+  inProgress = true;
 
-	console.log('%s changed.', name);
+  console.log('%s changed.', path);
 
-	// only typescript or style & typescript
-	const jobPromise = name.endsWith('ts') ? exec('npm run build:typescript') : exec('npm run build');
+  try {
+    await getRelevantJobPromise(path);
+  } catch (err) {
+    console.log(err);
+  }
 
-	try {
-		await jobPromise;
-	} catch (err) {
-		console.log(err);
-	}
-
-	console.log('done');
-	inProgress = false;
+  console.log('done');
+  inProgress = false;
 }
+
+const watchPath = [
+  'common/design-tokens/properties/**/*.json',
+  'common/**/src/**',
+  'components/**/src/**',
+];
+
+// Initialize watcher.
+const watcher = chokidar.watch(watchPath, {
+  ignored: ['**/node_modules/**/*', '**/.git/**/*'],
+  persistent: true,
+  ignoreInitial: true,
+  followSymlinks: true,
+});
+// Add event listeners.
+watcher.on('add', onChange).on('change', onChange).on('unlink', onChange);

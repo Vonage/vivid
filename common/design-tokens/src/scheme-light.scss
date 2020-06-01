@@ -1,16 +1,24 @@
+/**
+ * Do not edit directly
+ * Generated on Sun, 31 May 2020 13:28:59 GMT
+ */
 
-// Do not edit directly
-// Generated on Mon, 25 May 2020 20:07:50 GMT
-
-$color-base-gray-light: #cccccc;
-$color-base-gray-medium: #999999;
-$color-base-gray-dark: #111111;
-$color-base-red: #ff0000;
-$color-base-green: #00ff00;
-$color-font-base: #ff0000;
-$color-font-secondary: #00ff00;
-$color-font-tertiary: #cccccc;
-$size-font-small: 0.75rem; // the small size of the font
-$size-font-medium: 1rem; // the medium size of the font
-$size-font-large: 2rem; // the large size of the font
-$size-font-base: 1rem; // the base size of the font
+:root {
+  --vvd-color-base-background: #c1c1c1;
+  --vvd-color-base-foreground: black;
+  --vvd-color-base-black: #000000;
+  --vvd-color-base-gray-light: #cccccc;
+  --vvd-color-base-gray-medium: #999999;
+  --vvd-color-base-gray-dark: #111111;
+  --vvd-color-base-red: #ff0000;
+  --vvd-color-base-green: #00ff00;
+  --vvd-color-primary: #13B966;
+  --vvd-color-secondary: #254EDB;
+  --vvd-color-action-primary: #13B966;
+  --vvd-color-action-secondary: #254EDB;
+  --vvd-color-action-tertiary: #999999;
+  --vvd-color-font-base: #000000;
+  --vvd-color-font-primary: #13B966;
+  --vvd-color-font-secondary: #254EDB;
+  --vvd-color-font-tertiary: #cccccc;
+}

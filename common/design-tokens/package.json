@@ -5,8 +5,6 @@
   "author": "yinonov <yinon@hotmail.com>",
   "homepage": "https://github.com/Vonage/vivid/tree/master/components/design-tokens#readme",
   "license": "ISC",
-  "main": "vvd-design-tokens.js",
-  "module": "vvd-design-tokens.js",
   "repository": {
     "type": "git",
     "url": "ssh://github.com/vonage/vivid.git",
