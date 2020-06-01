@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-anchor",
-	"version": "0.0.8-alpha.0",
+	"version": "0.0.9-alpha.0",
 	"description": "> TODO: description",
 	"author": "yinonov <yinon@hotmail.com>",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/anchor#readme",
@@ -25,7 +25,7 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@vonage/vvd-core": "^0.0.8-alpha.0",
+		"@vonage/vvd-core": "^0.0.9-alpha.0",
 		"lit-element": "^2.3.1",
 		"tslib": "^2.0.0"
 	},
