@@ -50,6 +50,14 @@ router
 				componentDemoContainer,
 			);
 		},
+		'fonts': function () {
+			render(
+				html`
+          <fonts-route></fonts-route>
+        `,
+				componentDemoContainer,
+			);
+		},
 		'formfield': function () {
 			render(
 				html`

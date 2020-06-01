@@ -8,5 +8,6 @@ export { default as slider } from './slider.js';
 export { default as vwcapp } from './vwc-app.js';
 export { default as checkbox } from './checkbox.js';
 export { default as drawer } from './drawer.js';
+export { default as fonts } from './fonts.js';
 export { default as formfield } from './formfield.js';
 export { default as textarea } from './textarea.js';
