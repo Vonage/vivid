@@ -12,11 +12,11 @@ declare global {
 @customElement('vwc-chip')
 export class VWCChip extends MWCChip {
 	// TODO: discuss prop names
-	@property({type: String}) size = '';
-	@property({type: Boolean}) outlined = false;
-	@property({type: Boolean}) pill = false;
-	@property({type: String}) theme = '';
-	@property({type: Boolean}) transparent = false;
+	@property({ type: String }) size = '';
+	@property({ type: Boolean }) outlined = false;
+	@property({ type: Boolean }) pill = false;
+	@property({ type: String }) theme = '';
+	@property({ type: Boolean }) transparent = false;
 
 	static get styles() {
 		return css`
