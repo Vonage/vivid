@@ -32,9 +32,9 @@ variable fonts | ✔ 62+ | ✔ 62+ | ✔ 17+ | ✔ 49+ | ✔ 11+ |
 If the `JS/TS` approach is taken, you should follow the example below:
 
 ```
-import { Fonts } from 'common/fonts/vvd-fonts.js';
+import fonts from 'common/fonts/vvd-fonts.js';
 ...
-Fonts.init().then(() =>
+fonts.init().then(() =>
 	//	do post init stuff here
 );
 ```

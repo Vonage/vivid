@@ -31,7 +31,7 @@ export class VWCChip extends MWCChip {
 			this.pill ? 'pill' : '',
 			this.size ? `${this.size}` : '',
 			this.theme ? `${this.theme}` : '',
-			this.transparent ? 'transparent' : '',
+			this.transparent ? 'transparent' : ''
 		];
 
 		var filteredClasses = classes.filter(e => e !== '');

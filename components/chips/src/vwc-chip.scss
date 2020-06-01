@@ -4,8 +4,9 @@
 /*
 TODO: 
   - add volta combined badges?
-  - remove hover/focus background?
+  - remove hover/focus/active background?
   - remove hover pointer?
+  - add trailing icon color transition 
   - move out hex/rgb codes
 */
 
@@ -110,7 +111,7 @@ TODO:
 
 :host(.transparent) {
   .mdc-chip {
-    background-color: rgba(var(--mdc-theme-primary-rgb), 0.2);
+    background-color: rgba(var(--mdc-theme-primary-rgb), variables.$transparent-background-opacity);
     @include chips.ink-color(primary);
     @include chips.trailing-icon-color(var(--mdc-theme-primary-rgb), variables.$trailing-icon-opacity, variables.$trailing-icon-opacity-hover);
   }
