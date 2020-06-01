@@ -41,7 +41,8 @@
     { "path": "components/list" },
     { "path": "components/menu" },
     { "path": "components/scheme-select" },
-    { "path": "components/select" },
+		{ "path": "components/select" },
+		{ "path": "components/slider" },
     { "path": "components/switch" },
     { "path": "components/textarea" },
     { "path": "components/textfield" }
