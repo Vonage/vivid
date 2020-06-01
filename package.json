@@ -29,7 +29,7 @@
     "compile": "yarn compile:design-tokens && yarn compile:styles && yarn compile:typescript",
     "compile:styles": "./scripts/build-styles.sh",
     "compile:typescript": "tsc --build",
-    "compile:design-tokens": "node common/design-tokens/renderers/render-tokens-schemes.js",
+    "compile:design-tokens": "lerna run build --scope=\"@vonage/vvd-design-tokens\"",
     "prestart": "yarn compile",
     "start": "yarn dev:server",
     "build": "yarn compile && rimraf dist && tsc && rollup -c rollup.config.js",
