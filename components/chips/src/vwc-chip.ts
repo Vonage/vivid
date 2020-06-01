@@ -13,6 +13,7 @@ declare global {
 export class VWCChip extends MWCChip {
 	// TODO: discuss prop names
 	@property({type: String}) size = '';
+	@property({type: Boolean}) outlined = false;
 	@property({type: Boolean}) pill = false;
 	@property({type: String}) theme = '';
 	@property({type: Boolean}) transparent = false;
@@ -22,5 +23,20 @@ export class VWCChip extends MWCChip {
 			${super.styles}
 			${style}
 		`;
+	}
+
+	updated() {
+		const classes = [
+			this.outlined ? 'outlined' : '',
+			this.pill ? 'pill' : '',
+			this.size ? `${this.size}` : '',
+			this.theme ? `${this.theme}` : '',
+			this.transparent ? 'transparent' : ''
+		];
+
+		var filteredClasses = classes.filter(e => e !== '');
+
+		this.classList.remove(...this.classList);
+		this.classList.add(...filteredClasses);
 	}
 }
