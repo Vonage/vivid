@@ -26,5 +26,6 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://npm.pkg.github.com/"
-  }
+  },
+  "gitHead": "80b5f1d712327c3bfd82353c2de9a460548a68bd"
 }
