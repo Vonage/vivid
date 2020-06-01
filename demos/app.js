@@ -58,6 +58,14 @@ router
 				componentDemoContainer,
 			);
 		},
+		'fonts': function () {
+			render(
+				html`
+          <fonts-route></fonts-route>
+        `,
+				componentDemoContainer,
+			);
+		},
 		'formfield': function () {
 			render(
 				html`
@@ -94,6 +102,14 @@ router
 			render(
 				html`
           <select-route></select-route>
+        `,
+				componentDemoContainer,
+			);
+		},
+		'slider': function () {
+			render(
+				html`
+          <slider-route></slider-route>
         `,
 				componentDemoContainer,
 			);

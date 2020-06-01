@@ -7,7 +7,8 @@ import { pcs, getPreferedColorScheme, prefersColorSchemeSupported } from './os-s
 
 export type PredefinedScheme = 'light' | 'dark';
 export type SchemeOption = 'syncWithOSSettings' | PredefinedScheme;
-type ModuleType = typeof import('./scheme.dark.css') | typeof import('./scheme.light.css'); // This is the import type!
+
+type ModuleType = typeof import('@vonage/vvd-design-tokens/scheme-dark.css') | typeof import('@vonage/vvd-design-tokens/scheme-light.css'); // This is the import type!
 
 const getSchemeCssText = pipe(getSchemeModule, getStyleSheet, getCssText);
 
@@ -38,11 +39,11 @@ function getSchemeModule(schemeOption: SchemeOption) {
 
   switch (schemeOption) {
     case 'dark':
-      module = import('./scheme.dark.css');
+      module = import('@vonage/vvd-design-tokens/scheme-dark.css');
       break;
     case 'light':
     default:
-      module = import('./scheme.light.css');
+      module = import('@vonage/vvd-design-tokens/scheme-light.css');
   }
 
   return module;
@@ -65,34 +66,37 @@ async function syncWithOSSettings() {
   updateStyleCssText(await getSchemeCssText(getPreferedColorScheme()));
 }
 
+async function init(scheme?: SchemeOption) {
+  // listen to selection change event
+  onSchemeChange(async (scheme: SchemeOption) => {
+    set(scheme);
+  });
+  return await set(scheme);
+}
+
+async function set(scheme: SchemeOption = schemeDefault()) {
+  _selectedSchemeOption = scheme;
+  let nextScheme: PredefinedScheme;
+
+  if (scheme == 'syncWithOSSettings') {
+    // observe preference changes
+    pcs.addListener(syncWithOSSettings);
+    nextScheme = getPreferedColorScheme();
+  } else {
+    // stop observing preference changes
+    pcs.removeListener(syncWithOSSettings);
+    nextScheme = scheme;
+  }
+  if (_selectedScheme === nextScheme) {
+    return;
+  }
+  _selectedScheme = nextScheme;
+  updateStyleCssText(await getSchemeCssText(nextScheme));
+}
+
 export default Object.freeze({
-  init: async function(scheme?: SchemeOption) {
-    // listen to selection change event
-    onSchemeChange(async (scheme: SchemeOption) => {
-      this.set(scheme);
-    });
-    return await this.set(scheme);
-  },
-
-  set: async function(scheme: SchemeOption = schemeDefault()) {
-    _selectedSchemeOption = scheme;
-    let nextScheme: PredefinedScheme;
-
-    if (scheme == 'syncWithOSSettings') {
-      // observe preference changes
-      pcs.addListener(syncWithOSSettings);
-      nextScheme = getPreferedColorScheme();
-    } else {
-      // stop observing preference changes
-      pcs.removeListener(syncWithOSSettings);
-      nextScheme = scheme;
-    }
-    if (_selectedScheme === nextScheme) {
-      return;
-    }
-    _selectedScheme = nextScheme;
-    updateStyleCssText(await getSchemeCssText(nextScheme));
-  },
+  init,
+  set,
 });
 
 //TODO add the following tests:
