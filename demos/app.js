@@ -90,6 +90,14 @@ router
 				componentDemoContainer,
 			);
 		},
+		'slider': function () {
+			render(
+				html`
+          <slider-route></slider-route>
+        `,
+				componentDemoContainer,
+			);
+		},
 		'textarea': function () {
 			render(
 				html`

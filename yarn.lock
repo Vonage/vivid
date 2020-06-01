@@ -2663,6 +2663,17 @@
     lit-html "^1.1.2"
     tslib "^1.10.0"
 
+"@material/mwc-slider@^0.15.0":
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/@material/mwc-slider/-/mwc-slider-0.15.0.tgz#b8707fa65721d48900d1a1ea2e99138b763c21ca"
+  integrity sha512-35858xrxTNSJkP8EfgGF+SJRHkYgjXlrMzwVFXYXqqIpVu50V8CJ10qI58/FRVhaB9bsK0D4lOLOlZPE5ReACA==
+  dependencies:
+    "@material/mwc-base" "^0.15.0"
+    "@material/slider" "=7.0.0-canary.d92d8c93e.0"
+    lit-element "^2.3.0"
+    lit-html "^1.1.2"
+    tslib "^1.10.0"
+
 "@material/mwc-switch@^0.15.0":
   version "0.15.0"
   resolved "https://registry.yarnpkg.com/@material/mwc-switch/-/mwc-switch-0.15.0.tgz#f9f24e57d53df92bd2fd4a65ebde89a8ea4aa177"
@@ -2778,6 +2789,20 @@
   dependencies:
     "@material/feature-targeting" "7.0.0-canary.d92d8c93e.0"
     "@material/rtl" "7.0.0-canary.d92d8c93e.0"
+
+"@material/slider@=7.0.0-canary.d92d8c93e.0":
+  version "7.0.0-canary.d92d8c93e.0"
+  resolved "https://registry.yarnpkg.com/@material/slider/-/slider-7.0.0-canary.d92d8c93e.0.tgz#d01370dd022895233ca8f9232c2d8e44ac422476"
+  integrity sha512-oj+OcoGr1M4TQUNzAwBv56yKD0cHUvd/cxtGxjIuMCXby6fH1VrbY0FZu+t901Rtx6puEM9Tm2hkwvGRtmzs7w==
+  dependencies:
+    "@material/animation" "7.0.0-canary.d92d8c93e.0"
+    "@material/base" "7.0.0-canary.d92d8c93e.0"
+    "@material/dom" "7.0.0-canary.d92d8c93e.0"
+    "@material/feature-targeting" "7.0.0-canary.d92d8c93e.0"
+    "@material/rtl" "7.0.0-canary.d92d8c93e.0"
+    "@material/theme" "7.0.0-canary.d92d8c93e.0"
+    "@material/typography" "7.0.0-canary.d92d8c93e.0"
+    tslib "^1.9.3"
 
 "@material/switch@=7.0.0-canary.d92d8c93e.0":
   version "7.0.0-canary.d92d8c93e.0"
