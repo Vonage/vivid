@@ -10,7 +10,7 @@ declare global {
 }
 
 @customElement('vwc-chip-set')
-export class VWCChipSet extends MWCChipSet { 
+export class VWCChipSet extends MWCChipSet {
 	static get styles() {
 		return css`
 			${super.styles}
