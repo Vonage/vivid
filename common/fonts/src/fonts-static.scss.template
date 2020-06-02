@@ -2,6 +2,9 @@
   --vvd-font-family-spezia: 'Spezia';
 }
 
+/*
+	regular
+*/
 @font-face {
   font-family: 'Spezia';
   src: url('static/WorkSans-Regular.woff2') format('woff2');
