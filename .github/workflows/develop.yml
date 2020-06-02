@@ -20,14 +20,8 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-
-      - name: Checkout submodules using a PAT
-        run: |
-          git config --file .gitmodules --get-regexp url | while read url; do
-            git config --file=.gitmodules $(echo "$url" | sed -E "s/git@github.com:|https:\/\/github.com\//https:\/\/${{ secrets.CI_PAT }}:${{ secrets.CI_PAT }}@github.com\//")
-          done
-          git submodule sync
-          git submodule update --init --recursive --remote
+      - name: Checkout submodules
+        uses: textbook/git-checkout-submodule-action@master
 
       - name: Install yarn globally
         run: npm install -g yarn
