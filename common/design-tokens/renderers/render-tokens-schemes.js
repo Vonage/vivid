@@ -10,12 +10,13 @@ const StyleDictionaryPackage = require('style-dictionary');
 // HAVE THE STYLE DICTIONARY CONFIG DYNAMICALLY GENERATED
 const format = 'css/variables';
 const buildPath = `${__dirname}/../src/`;
+console.log(`${__dirname}/../properties/`)
 function getStyleDictionaryConfig(scheme, platform) {
   return {
     source: [
-      `${__dirname}/properties/schemes/${scheme}/*.json`,
-      `${__dirname}/properties/globals/**/*.json`,
-      `${__dirname}/properties/platforms/${platform}/*.json`,
+      `${__dirname}/../properties/schemes/${scheme}/*.json`,
+      `${__dirname}/../properties/globals/**/*.json`,
+      `${__dirname}/../properties/platforms/${platform}/*.json`,
     ],
     platforms: {
       web: {

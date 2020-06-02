@@ -5,6 +5,7 @@ import '@vonage/vwc-list/vwc-list-item';
 import '@vonage/vwc-button';
 
 export default class Home extends Element {
+	// eslint-disable-next-line class-methods-use-this
 	async getHtml() {
 		return html`
       <vwc-select label="filled">
@@ -18,5 +19,5 @@ export default class Home extends Element {
         </vwc-list-item>
       </vwc-select>
     `;
-	};
+  }
 }
