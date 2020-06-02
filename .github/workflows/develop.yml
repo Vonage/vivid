@@ -15,11 +15,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          ref: develop
+#        with:
+#          ref: develop
 #           repository: my-org/my-private-tools
 #           token: ${{ secrets.CI_PAT }}
-          ssh-key: ${{ secrets.SSH_KEY }}
+#          ssh-key: ${{ secrets.SSH_KEY }}
 #          submodules: true
 
       - name: Use Node.js ${{ matrix.node-version }}
