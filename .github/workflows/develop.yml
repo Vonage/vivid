@@ -20,10 +20,7 @@ jobs:
 #           repository: my-org/my-private-tools
 #           token: ${{ secrets.CI_PAT }}
 #           ssh-key: ${{ secrets.SSH_KEY }}
-          submodules: recursive
-
-      - name: Checkout private tools
-        uses: actions/checkout@v2
+          submodules: true
 
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
