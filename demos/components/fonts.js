@@ -60,7 +60,7 @@ export default class Home extends Element {
 					</div>
 					<div class="resizer">
 						<span>weight:</span>
-						<vwc-slider class="weight selector" min="100" max="900" value="400" step="100" pin></vwc-slider>
+						<vwc-slider class="weight selector" min="100" max="900" value="400" step="10" pin></vwc-slider>
 					</div>
 				</div>
 			</div>
