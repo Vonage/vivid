@@ -13,7 +13,7 @@ To use Vivid fonts in your application please apply the following `CSS` rule:
 ```
 body {
 	font-family: 'VonageMain';	/* for IE11 only, omit this line if not relevant
-	font-family: var(--vvd-font);
+	font-family: var(--vvd-font-family-spezia);
 }
 ```
 
@@ -32,9 +32,9 @@ variable fonts | ✔ 62+ | ✔ 62+ | ✔ 17+ | ✔ 49+ | ✔ 11+ |
 If the `JS/TS` approach is taken, you should follow the example below:
 
 ```
-import { Fonts } from 'common/fonts/vvd-fonts.js';
+import fonts from 'common/fonts/vvd-fonts.js';
 ...
-Fonts.init().then(() =>
+fonts.init().then(() =>
 	//	do post init stuff here
 );
 ```

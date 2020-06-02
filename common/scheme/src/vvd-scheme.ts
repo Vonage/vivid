@@ -7,7 +7,8 @@ import { pcs, getPreferedColorScheme, prefersColorSchemeSupported } from './os-s
 
 export type PredefinedScheme = 'light' | 'dark';
 export type SchemeOption = 'syncWithOSSettings' | PredefinedScheme;
-type ModuleType = typeof import('./scheme.dark.css') | typeof import('./scheme.light.css'); // This is the import type!
+
+type ModuleType = typeof import('@vonage/vvd-design-tokens/scheme-dark.css') | typeof import('@vonage/vvd-design-tokens/scheme-light.css'); // This is the import type!
 
 const getSchemeCssText = pipe(getSchemeModule, getStyleSheet, getCssText);
 
@@ -38,11 +39,11 @@ function getSchemeModule(schemeOption: SchemeOption) {
 
   switch (schemeOption) {
     case 'dark':
-      module = import('./scheme.dark.css');
+      module = import('@vonage/vvd-design-tokens/scheme-dark.css');
       break;
     case 'light':
     default:
-      module = import('./scheme.light.css');
+      module = import('@vonage/vvd-design-tokens/scheme-light.css');
   }
 
   return module;
