@@ -19,7 +19,7 @@ jobs:
           ref: develop
 #           repository: my-org/my-private-tools
 #           token: ${{ secrets.CI_PAT }}
-#           ssh-key: ${{ secrets.SSH_KEY }}
+          ssh-key: ${{ secrets.SSH_KEY }}
           submodules: true
 
       - name: Use Node.js ${{ matrix.node-version }}
