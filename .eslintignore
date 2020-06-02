@@ -3,3 +3,5 @@
 **/*.js
 **/*.js.map
 **/*.tsbuildinfo
+**/storybook-static
+**/coverage
