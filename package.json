@@ -9,8 +9,8 @@
 		"common/*"
 	],
 	"scripts": {
-		"lint:eslint": "eslint --ext .js,.html . --ignore-path .gitignore",
-		"format:eslint": "eslint --ext .js,.html . --fix --ignore-path .gitignore",
+		"lint:eslint": "eslint --ext .js,.html . --ignore-path .eslintignore",
+		"format:eslint": "eslint --ext .js,.html . --fix --ignore-path .eslintignore",
 		"lint:prettier": "prettier \"**/*.js\" --check --ignore-path .gitignore",
 		"format:prettier": "prettier \"**/*.js\" --write --ignore-path .gitignore",
 		"lint": "yarn lint:eslint && yarn lint:prettier",
@@ -27,7 +27,7 @@
 		"storybook:build": "build-storybook",
 		"storybook:start": "concurrently --kill-others --names tsc,storybook \"yarn watch\" \"start-storybook -s storybook-static --node-resolve --watch -p 9384\"",
 		"compile": "yarn compile:design-tokens && yarn compile:styles && yarn compile:typescript",
-		"compile:styles": "./scripts/build-styles.sh",
+		"compile:styles": "node ./common/fonts/build/embed-fonts.js && ./scripts/build-styles.sh",
 		"compile:typescript": "tsc --build",
 		"compile:design-tokens": "lerna run build --scope=\"@vonage/vvd-design-tokens\"",
 		"prestart": "yarn compile",
