@@ -21,9 +21,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Checkout submodules
-        uses: srt32/git-actions@v0.0.3
+        uses: actions/checkout@v1
         with:
-          args: git submodule update --init --recursive
+          token: ${{ secrets.CI_PAT }}
+          submodules: true
 
       - name: Install yarn globally
         run: npm install -g yarn
