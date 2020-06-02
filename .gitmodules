@@ -1,3 +1,3 @@
 [submodule "common/design-tokens/properties"]
 	path = common/design-tokens/properties
-	url = git@github.com:Vonage/vivid-design-tokens-properties.git
+	url = https://github.com/Vonage/vivid-design-tokens-properties.git
