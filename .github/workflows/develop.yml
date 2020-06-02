@@ -18,7 +18,7 @@ jobs:
         with:
           ref: develop
 #           repository: my-org/my-private-tools
-          token: ${{ secrets.CI_PAT }}
+#           token: ${{ secrets.CI_PAT }}
           ssh-key: ${{ secrets.SSH_KEY }}
           submodules: recursive
 
