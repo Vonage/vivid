@@ -5,8 +5,8 @@ import '@vonage/vwc-list/vwc-list-item';
 import '@vonage/vwc-button';
 
 export default class Home extends Element {
-  getHtml = async function getHtml() {
-    return html`
+	async getHtml() {
+		return html`
       <vwc-select label="filled">
         <vwc-list-item></vwc-list-item>
         <vwc-list-item value="0">Item 0</vwc-list-item>
@@ -18,5 +18,5 @@ export default class Home extends Element {
         </vwc-list-item>
       </vwc-select>
     `;
-  };
+	};
 }
