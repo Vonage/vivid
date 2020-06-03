@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es2017",
-    "module": "es2015",
+    "module": "es2017",
     "moduleResolution": "node",
     "lib": ["es2017", "dom", "dom.iterable"],
     "declaration": true,
@@ -18,7 +18,8 @@
     "outDir": "./",
     "baseUrl": "./",
     "paths": {
-      "@vivid/vwc-*": ["./*/src"]
+			"@vivid/vvd-*": ["./*.src"],
+			"@vivid/vwc-*": ["./*/src"]
     },
     "composite": true,
     "importHelpers": true,

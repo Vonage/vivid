@@ -12,18 +12,18 @@ package-lock.json
 .npmrc
 
 ## yarn
-yarn.lock
 yarn-error.log
 
 ## testing
-/coverage/
+/coverage
 
 ## temp folders
 /.tmp/
 
 # build
-/_site/
-/dist/
+/build
+/_site
+/dist
 *.log
 
 /common/**/*.js
