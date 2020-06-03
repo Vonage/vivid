@@ -33,10 +33,10 @@ jobs:
       - name: Install dependencies
         run: yarn
 
-      - name: Lint
+      - name: Run lint
         run: yarn lint
 
-      - name: Test
+      - name: Run test
         run: yarn test
 
       - name: Build
