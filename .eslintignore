@@ -5,3 +5,5 @@
 **/*.tsbuildinfo
 **/storybook-static
 **/coverage
+
+components/mwc-chips/src/*.ts
