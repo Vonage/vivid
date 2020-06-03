@@ -1,5 +1,5 @@
 import '@vonage/vvd-core';
-import { css, customElement, property } from 'lit-element';
+import { css, customElement, property, CSSResult } from 'lit-element';
 import { Chip as MWCChip } from '@material/mwc-chips/mwc-chip';
 import { style } from './vwc-chip.css';
 
@@ -18,14 +18,14 @@ export class VWCChip extends MWCChip {
 	@property({ type: String }) theme = '';
 	@property({ type: Boolean }) transparent = false;
 
-	static get styles() {
+	static get styles(): CSSResult {
 		return css`
 			${super.styles}
 			${style}
 		`;
 	}
 
-	updated() {
+	updated(): void {
 		const classes = [
 			this.outlined ? 'outlined' : '',
 			this.pill ? 'pill' : '',
@@ -34,9 +34,11 @@ export class VWCChip extends MWCChip {
 			this.transparent ? 'transparent' : ''
 		];
 
-		var filteredClasses = classes.filter(e => e !== '');
+		const filteredClasses = classes.filter(e => e !== '');
 
+		/* eslint-disable wc/no-self-class */
 		this.classList.remove(...this.classList);
+		/* eslint-disable wc/no-self-class */
 		this.classList.add(...filteredClasses);
 	}
 }

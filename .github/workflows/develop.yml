@@ -1,4 +1,4 @@
-name: Develop build
+name: compile & test & build
 
 on:
   push:
@@ -22,19 +22,22 @@ jobs:
 #           ssh-key: ${{ secrets.SSH_KEY }}
           submodules: true
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Setup NodeJS ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Install yarn globally
+      - name: Install yarn
         run: npm install -g yarn
 
-      - name: Install packages with yarn
-        run: yarn
+      - name: Install dependencies
+        run: yarn install
 
-      #       - name: test
-      #         run: yarn test
+      #- name: Lint
+      #  run: yarn lint
+
+      - name: Test
+        run: yarn test
 
       - name: Build
         run: yarn build

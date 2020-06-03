@@ -1,5 +1,5 @@
 import '@vonage/vvd-core';
-import { css, customElement } from 'lit-element';
+import { css, customElement, CSSResult } from 'lit-element';
 import { ChipSet as MWCChipSet } from '@material/mwc-chips/mwc-chip-set';
 import { style } from './vwc-chip-set.css';
 
@@ -11,7 +11,7 @@ declare global {
 
 @customElement('vwc-chip-set')
 export class VWCChipSet extends MWCChipSet {
-	static get styles() {
+	static get styles(): CSSResult {
 		return css`
 			${super.styles}
 			${style}
