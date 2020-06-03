@@ -1,6 +1,9 @@
 build
 node_modules
 src
+*.map
+*.tgz
 .gitignore
 .tsbuildinfo
+readme.md
 tsconfig.json

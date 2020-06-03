@@ -24,6 +24,7 @@ yarn-error.log
 /build
 /_site
 /dist
+*.tgz
 *.log
 
 /common/**/*.js
