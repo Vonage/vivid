@@ -10,31 +10,6 @@ Demos, tutorials and living examples are at [vivid.vonage.com](https://vivid.von
 
 Contributor guidance is [here](docs/contributing.md).
 
-#### Development and TDD/Demo
-In order to see/debug your changes during the ongoing work do the following:
-* In one terminal run `yarn start` - this will build your repo and start the dev server, so that you can see a demo page at `http://localhost:5452/index.html`
-* Do your awesome changes to the code, be careful not break other peoples' stuff :)
-* When willing to see the changes, run in another terminal `yarn build` - this will rebuild your repo and the demo page will be auto refreshed
-* Rinse and repeat...
-
-#### Testing
-There are several tools, that we've set up to ensure the ongoing quality of the product:
-* lint - `eslint` performs a static code analysis
-* test - `karma` tool is used
-* coverage - `istanbul` is here (set up within the `karma` runner)
-
-All those are running in the CI, so if the code is pushed and the CI will run over it, it will fail if not tested locally :)
-
-In order to do a __lint__ verification, execute
-`npm run lint:eslint` or `yarn lint:eslint`.
-
-To run the tests do `npm run test:dev` or `yarn test:dev`. Running tests in `dev` mode will open a Chrome browser managed by `karma`, so that you'll be able to see an ongoing tests execution and debug the code directly in the browser. This instance of Chrome will be reloaded each time you save the sources (either the product or the test files).
-> When running tests in a `dev` mode, no coverage is collected.
-
-After you being happy with the implementation and test are looks good to you, please run `npm run:test` or `yarn test`, this will rerun tests in headless Chrome and will collect coverage.
-Review the report to see that the threshold is not broken.
-If it is, you can inspect the UI report of the coverage in the `coverage` folder and see where you can improve.
-
 ---
 
 #### Consumption
