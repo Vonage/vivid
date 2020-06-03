@@ -42,10 +42,26 @@ router
 				componentDemoContainer,
 			);
 		},
+		'chip': function () {
+			render(
+				html`
+          <chip-route></chip-route>
+        `,
+				componentDemoContainer,
+			);
+		},
 		'drawer': function () {
 			render(
 				html`
           <drawer-route></drawer-route>
+        `,
+				componentDemoContainer,
+			);
+		},
+		'fonts': function () {
+			render(
+				html`
+          <fonts-route></fonts-route>
         `,
 				componentDemoContainer,
 			);
@@ -86,6 +102,14 @@ router
 			render(
 				html`
           <select-route></select-route>
+        `,
+				componentDemoContainer,
+			);
+		},
+		'slider': function () {
+			render(
+				html`
+          <slider-route></slider-route>
         `,
 				componentDemoContainer,
 			);

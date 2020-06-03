@@ -5,7 +5,7 @@ on:
     branches: [develop, viv-*, iss-*]
 
 jobs:
-  build-and-deploy-storybook:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     strategy:
@@ -13,7 +13,14 @@ jobs:
         node-version: [12.x]
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: develop
+#           repository: my-org/my-private-tools
+#           token: ${{ secrets.CI_PAT }}
+#           ssh-key: ${{ secrets.SSH_KEY }}
+          submodules: true
 
       - name: Setup NodeJS ${{ matrix.node-version }}
         uses: actions/setup-node@v1
@@ -26,23 +33,22 @@ jobs:
       - name: Install dependencies
         run: yarn
 
+			- name: Test
+				run: yarn lint && yarn test
+
       - name: Build
         run: yarn build
 
-      - name: Lint
-        run: yarn lint:eslint
+      # - name: build storybook
+      #   run: yarn storybook:build
 
-      - name: Test
-        run: yarn test
-
-      #  - name: build storybook
-      #    run: yarn storybook:build
-
-      # - name: ZEIT Now Deployment
-      #   uses: amondnet/now-deployment@v2.0.1
-      #     with:
-      #       zeit-token: ${{secrets.ZEIT_TOKEN}}
-      #       now-org-id: ${{secrets.ZEIT_ORG_ID}}
-      #       now-project-id: ${{secrets.ZEIT_PROJECT_ID}}
-      #       working-directory: ./storybook-static
-      #       # now-args: "--prod" #Optional
+      - name: Vercel deployment
+        uses: amondnet/vercel-action@v19
+#         uses: amondnet/now-deployment@v2
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}  #Required
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}} #Required
+          # working-directory: ./storybook-static
+          working-directory: ./dist
+          vercel-args: '--prod' #Optional

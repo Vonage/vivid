@@ -12,18 +12,19 @@ package-lock.json
 .npmrc
 
 ## yarn
-yarn.lock
 yarn-error.log
 
 ## testing
-/coverage/
+/coverage
 
 ## temp folders
 /.tmp/
 
 # build
-/_site/
-/dist/
+/build
+/_site
+/dist
+*.tgz
 *.log
 
 /common/**/*.js
@@ -47,3 +48,5 @@ storybook-static
 .now
 
 lerna-debug.log
+
+.vercel
