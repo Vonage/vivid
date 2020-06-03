@@ -1,7 +1,7 @@
 {
 	"name": "@vivid/root",
 	"private": true,
-	"description": "Web components based on branded design system by Vonage. following open-wc recommendations",
+	"description": "Web Components based on branded design system by Vonage, following open-wc recommendations",
 	"author": "Vonage",
 	"license": "Apache-2.0",
 	"workspaces": [
