@@ -11,8 +11,8 @@
 	"scripts": {
 		"lint:eslint": "eslint components/* common/* --ignore-path .eslintignore --config .eslintrc.yaml",
 		"format:eslint": "eslint --ext .js,.html . --fix --ignore-path .eslintignore",
-		"lint:prettier": "prettier \"**/*.js\" --check --ignore-path .gitignore",
-		"format:prettier": "prettier \"**/*.js\" --write --ignore-path .gitignore",
+		"lint:prettier": "prettier \"**/*.js\" --check --ignore-path .eslintignore",
+		"format:prettier": "prettier \"**/*.js\" --write --ignore-path .eslintignore",
 		"lint": "yarn lint:eslint && yarn lint:prettier",
 		"format": "yarn format:eslint && yarn format:prettier",
 		"test": "karma start --coverage",
