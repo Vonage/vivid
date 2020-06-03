@@ -20,7 +20,7 @@ Please visit [Vivid packages page](https://github.com/Vonage/vivid/packages) to 
 
 GitHub packages may be consumed via various build systems, please refer to [this documentation](https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem) for more details.
 
-Obviously, most likely Vivid products will be consumed as **npm** dependencies in **package.json**, specific documentation on that found [here](https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-npm-for-use-with-github-packages#installing-a-package).
+Obviously, most likely Vivid products will be consumed as **npm** dependencies in **package.json**, specific documentation on that is located [here](https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-npm-for-use-with-github-packages#installing-a-package).
 
 ---
 
