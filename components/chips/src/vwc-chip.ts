@@ -34,8 +34,8 @@ export class VWCChip extends MWCChip {
 			this.transparent ? 'vwc-chip--transparent' : '',
 		];
 		
-		var customClasses = Array.from(this.classList).filter(e => !e.includes('vwc-chip'));
-		var filteredClasses = classes.filter(e => e !== '');
+		let customClasses = Array.from(this.classList).filter(e => !e.includes('vwc-chip'));
+		let filteredClasses = classes.filter(e => e !== '');
 
     /* eslint-disable wc/no-self-class */
 		this.className = '';
