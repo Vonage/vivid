@@ -30,6 +30,7 @@ We won't promise that everything will be fixed as we are opinionated people as w
 ###### Getting up and running
 
 * clone the repo
+	* see note below about the SSH keys
 * run `yarn` (repo relies on yarn workspaces) in order to build the repo once / bring the dependencies
 * run the following steps as the normal build-and-see flow:
 	* `yarn compile` - builds `css` from `scss`, compiles `ts` into `js`
@@ -59,6 +60,7 @@ Done! Well, there probably will be some exchange of comments and fixes, but even
 
 ---
 
+> Git usage note: in order to be able to push you code into the repo you need to have/setup an SSH keys. [This documentation](https://help.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account) makes it a breeze.
 
 #### Useful scripts
 
