@@ -17,6 +17,8 @@ jobs:
         uses: actions/checkout@v2
         with:
           path: main
+          token: ${{ secrets.PAT }} # `GitHub_PAT` is a secret that contains your PAT
+          submodules: true
 
       - name: Checkout private tools
         uses: actions/checkout@v2
