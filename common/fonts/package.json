@@ -4,8 +4,8 @@
 	"description": "Vivid fonts initialisation service",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/common/fonts",
 	"license": "ISC",
-	"main": "vvd-fonts.js",
-	"module": "vvd-fonts.js",
+	"main": "dist/vvd-fonts.js",
+	"module": "dist/vvd-fonts.js",
 	"files": [
 		"dist"
 	],
