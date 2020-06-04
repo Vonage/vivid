@@ -8,7 +8,9 @@ import { pcs, getPreferedColorScheme, prefersColorSchemeSupported } from './os-s
 export type PredefinedScheme = 'light' | 'dark';
 export type SchemeOption = 'syncWithOSSettings' | PredefinedScheme;
 
-type ModuleType = typeof import('@vonage/vvd-design-tokens/scheme-dark.css') | typeof import('@vonage/vvd-design-tokens/scheme-light.css'); // This is the import type!
+type ModuleType =
+  | typeof import('@vonage/vvd-design-tokens/scheme-dark.css')
+  | typeof import('@vonage/vvd-design-tokens/scheme-light.css'); // This is the import type!
 
 const getSchemeCssText = pipe(getSchemeModule, getStyleSheet, getCssText);
 
@@ -32,21 +34,15 @@ function schemeDefault(): SchemeOption {
   return prefersColorSchemeSupported() ? 'syncWithOSSettings' : 'light';
 }
 
-function getSchemeModule(schemeOption: SchemeOption) {
+function getSchemeModule(schemeOption: SchemeOption): Promise<ModuleType> {
   // console.log(`set ${schemeOption} scheme`);
-
-  let module: Promise<ModuleType>;
-
   switch (schemeOption) {
     case 'dark':
-      module = import('@vonage/vvd-design-tokens/scheme-dark.css');
-      break;
+      return import('@vonage/vvd-design-tokens/scheme-dark.css');
     case 'light':
     default:
-      module = import('@vonage/vvd-design-tokens/scheme-light.css');
+      return import('@vonage/vvd-design-tokens/scheme-light.css');
   }
-
-  return module;
 }
 
 async function getStyleSheet(ModulePromise: Promise<ModuleType>) {
