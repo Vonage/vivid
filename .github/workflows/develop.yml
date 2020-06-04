@@ -19,21 +19,12 @@ jobs:
           token: ${{ secrets.PAT }} # `GitHub_PAT` is a secret that contains your PAT
           submodules: true
 
-      - name: Checkout private tools
-        uses: actions/checkout@v2
-        with:
-          repository: Vonage/vivid-design-tokens-properties
-          token: ${{ secrets.PAT }} # `GitHub_PAT` is a secret that contains your PAT
-          path: vivid-design-tokens-properties
-          submodules: true
-
-#       - name: Checkout
+#       - name: Checkout submodules
 #         uses: actions/checkout@v2
 #         with:
-#           ref: develop
-# #           repository: my-org/my-private-tools
-#           token: ${{ secrets.CI_PAT }}
-# #           ssh-key: ${{ secrets.SSH_KEY }}
+#           repository: Vonage/vivid-design-tokens-properties
+#           token: ${{ secrets.PAT }} # `GitHub_PAT` is a secret that contains your PAT
+#           path: vivid-design-tokens-properties
 #           submodules: true
 
       - name: Setup NodeJS ${{ matrix.node-version }}
