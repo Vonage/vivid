@@ -27,18 +27,19 @@ export class VWCChip extends MWCChip {
 
 	updated(): void {
 		const classes = [
-			this.outlined ? 'outlined' : '',
-			this.pill ? 'pill' : '',
-			this.size ? `${this.size}` : '',
-			this.theme ? `${this.theme}` : '',
-			this.transparent ? 'transparent' : ''
+			this.outlined ? 'vwc-chip--outlined' : '',
+			this.pill ? 'vwc-chip--pill' : '',
+			this.size ? `vwc-chip--${this.size}` : '',
+			this.theme ? `vwc-chip--${this.theme}` : '',
+			this.transparent ? 'vwc-chip--transparent' : '',
 		];
-
+		
+		const customClasses = Array.from(this.classList).filter(e => !e.includes('vwc-chip'));
 		const filteredClasses = classes.filter(e => e !== '');
 
-		/* eslint-disable wc/no-self-class */
-		this.classList.remove(...this.classList);
-		/* eslint-disable wc/no-self-class */
-		this.classList.add(...filteredClasses);
+    /* eslint-disable wc/no-self-class */
+		this.className = '';
+    /* eslint-disable wc/no-self-class */
+		this.classList.add(...customClasses, ...filteredClasses);
 	}
 }
