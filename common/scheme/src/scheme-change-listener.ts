@@ -3,7 +3,7 @@ import { tryCatch } from 'ramda';
 
 export const SCHEME_SELECT_EVENT_TYPE = 'vvdschemeselect';
 
-export function onSchemeChange(fn: (scheme: SchemeOption) => any): void {
+export function onSchemeChange(fn: (scheme: SchemeOption) => void): void {
   document.addEventListener(
     SCHEME_SELECT_EVENT_TYPE,
     e => {
