@@ -1,6 +1,6 @@
 {
   "name": "@vonage/vvd-design-tokens",
-  "version": "0.0.9-alpha.0",
+  "version": "0.0.10-alpha.0",
   "description": "> TODO: description",
   "author": "yinonov <yinon@hotmail.com>",
   "homepage": "https://github.com/Vonage/vivid/tree/master/components/design-tokens#readme",
@@ -11,8 +11,8 @@
     "directory": "components/design-tokens"
   },
   "scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1",
-		"build":"node renderers/render-tokens-schemes.js"
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build": "node renderers/render-tokens-schemes.js"
   },
   "bugs": {
     "url": "https://github.com/Vonage/vivid/issues"

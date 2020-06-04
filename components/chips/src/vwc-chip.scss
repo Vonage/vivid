@@ -3,10 +3,7 @@
 
 /*
 TODO: 
-  - add volta combined badges?
-  - remove hover/focus/active background?
-  - remove hover pointer?
-  - add trailing icon color transition 
+  - add volta combined badges
   - move out hex/rgb codes
 */
 
@@ -17,53 +14,52 @@ TODO:
   --mdc-theme-on-primary-rgb: 255, 255, 255;
 }
 
-:host(.black) {
+:host(.vwc-chip--black) {
   --mdc-theme-primary: #131415;
   --mdc-theme-primary-rgb: 19, 20, 21;
 }
 
-:host(.blue) {
+:host(.vwc-chip--blue) {
   --mdc-theme-primary: #669fc4;
   --mdc-theme-primary-rgb: 102, 159, 196;
 }
 
-:host(.green) {
+:host(.vwc-chip--green) {
   --mdc-theme-primary: #06ba77;
   --mdc-theme-primary-rgb: 6, 186, 119;
 }
 
-:host(.indigo) {
+:host(.vwc-chip--indigo) {
   --mdc-theme-primary: #d6219c;
   --mdc-theme-primary-rgb: 214, 33, 156;
 }
 
-:host(.orange) {
+:host(.vwc-chip--orange) {
   --mdc-theme-primary: #fa7454;
   --mdc-theme-primary-rgb: 250, 116, 84;
 }
 
-:host(.purple) {
+:host(.vwc-chip--purple) {
   --mdc-theme-primary: #871fff;
   --mdc-theme-primary-rgba: 135, 31, 255;
 }
 
-:host(.red) {
+:host(.vwc-chip--red) {
   --mdc-theme-primary: #e84545;
   --mdc-theme-primary-rgb: 232, 69, 69;
 }
 
-:host(.white) {
+:host(.vwc-chip--white) {
   --mdc-theme-primary: #ffffff;
   --mdc-theme-primary-rgb: 255, 255, 255;
   --mdc-theme-on-primary: #131415;
   --mdc-theme-on-primary-rgb: 19, 20, 21;
 }
 
-:host(.yellow) {
+:host(.vwc-chip--yellow) {
   --mdc-theme-primary: #ffc100;
   --mdc-theme-primary-rgb: 255, 193, 0;
 }
-
 
 .mdc-chip {
   @include chips.fill-color(var(--mdc-theme-primary));
@@ -74,11 +70,22 @@ TODO:
   @include chips.shape-radius(map-get(variables.$shape-radius, default));
   @include chips.trailing-icon-margin(variables.$trailing-icon-margin-left);
   @include chips.trailing-icon-size(variables.$trailing-icon-size);
+  
+  cursor: auto;
   font-size: map-get(variables.$font-size, default);
   font-weight: variables.$font-weight;
+
+  .mdc-chip__ripple {
+    display: none;
+  }
+
+  .mdc-chip__icon--trailing {
+    cursor: pointer;
+    transition: color variables.$color-animation-duration linear;
+  }
 }
 
-:host(.small) {
+:host(.vwc-chip--small) {
   .mdc-chip {
     @include chips.height(map-get(variables.$height, small));
     @include chips.horizontal-padding(map-get(variables.$horizontal-padding, small));
@@ -86,7 +93,7 @@ TODO:
   }
 }
 
-:host(.large) {
+:host(.vwc-chip--large) {
   .mdc-chip {
     @include chips.height(map-get(variables.$height, large));
     @include chips.horizontal-padding(map-get(variables.$horizontal-padding, large));
@@ -94,7 +101,7 @@ TODO:
   }
 }
 
-:host(.outlined) {
+:host(.vwc-chip--outlined) {
   .mdc-chip {
     @include chips.fill-color(transparent);
     @include chips.ink-color(primary);
@@ -103,13 +110,13 @@ TODO:
   }
 }
 
-:host(.pill) {
+:host(.vwc-chip--pill) {
   .mdc-chip {
     @include chips.shape-radius(map-get(variables.$shape-radius, pill));
   }
 }
 
-:host(.transparent) {
+:host(.vwc-chip--transparent) {
   .mdc-chip {
     background-color: rgba(var(--mdc-theme-primary-rgb), variables.$transparent-background-opacity);
     @include chips.ink-color(primary);
