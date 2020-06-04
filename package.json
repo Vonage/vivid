@@ -90,10 +90,11 @@
 		"style-dictionary": "^2.10.0",
 		"rimraf": "^3.0.2",
 		"rollup": "^2.12.0",
+		"rollup-plugin-copy": "^3.3.0",
+		"rollup-plugin-terser": "^6.1.0",
 		"typescript": "^3.9.3",
 		"tslib": "^2.0.0",
 		"node-watch": "^0.6.4",
-		"rollup-plugin-copy": "^3.3.0",
 		"prettier": "^2.0.5"
 	},
 	"eslintConfig": {

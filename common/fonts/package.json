@@ -7,10 +7,7 @@
 	"main": "vvd-fonts.js",
 	"module": "vvd-fonts.js",
 	"files": [
-		"fonts",
-		"*.js",
-		"*.css",
-		"*.d.ts"
+		"dist"
 	],
 	"repository": {
 		"type": "git",
