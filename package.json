@@ -113,7 +113,8 @@
 	"lint-staged": {
 		"*.ts": [
 			"eslint --fix",
-			"prettier --write --single-quote"
+			"prettier --write --single-quote",
+			"git add"
 		]
 	}
 }
