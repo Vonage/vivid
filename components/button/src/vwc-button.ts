@@ -1,6 +1,7 @@
 import '@vonage/vvd-core';
-import { customElement } from 'lit-element';
+import { css, CSSResult, customElement } from 'lit-element';
 import { Button as MWCButton } from '@material/mwc-button';
+import { style } from './vwc-button.css';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -9,4 +10,11 @@ declare global {
 }
 
 @customElement('vwc-button')
-export class VWCButton extends MWCButton { }
+export class VWCButton extends MWCButton { 
+	static get styles(): CSSResult {
+		return css`
+			${super.styles}
+			${style}
+		`;
+	}
+}
