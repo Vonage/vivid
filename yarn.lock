@@ -10783,6 +10783,13 @@ rollup-plugin-babel@^5.0.0-alpha.1:
     "@babel/helper-module-imports" "^7.7.4"
     rollup-pluginutils "^2.8.2"
 
+rollup-plugin-cleaner@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-cleaner/-/rollup-plugin-cleaner-1.0.0.tgz#9f2d7226327fca9109b68c18fea77b427e33c193"
+  integrity sha512-q+Zf9estkFwGede9QzmbkhKeuXzlliOvcICVNzBHAs5xYPPs1XLtfin5TMU2tC2EYjmfaF97saY9MnQM6Og4eA==
+  dependencies:
+    rimraf "^2.6.3"
+
 rollup-plugin-copy@^3.3.0:
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/rollup-plugin-copy/-/rollup-plugin-copy-3.3.0.tgz#5ba230047f86b9f703a29288f242948a5580e7b9"
