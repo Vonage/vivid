@@ -3,6 +3,7 @@ import { terser } from 'rollup-plugin-terser';
 import copy from 'rollup-plugin-copy';
 
 export default {
+	external: ['lit-element'],
 	plugins: [
 		cleaner({
 			targets: ['common/fonts/dist']
@@ -10,6 +11,7 @@ export default {
 		terser(),
 		copy({
 			targets: [
+				{ src: 'common/fonts/vvd-fonts.d.ts', dest: 'common/fonts/dist' },
 				{ src: 'common/fonts/src/fonts', dest: 'common/fonts/dist' },
 				{ src: 'common/fonts/src/vvd-fonts.css', dest: 'common/fonts/dist' }
 			]
