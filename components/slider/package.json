@@ -4,8 +4,11 @@
 	"description": "slider component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/slider#readme",
 	"license": "ISC",
-	"main": "vwc-slider.js",
-	"module": "vwc-slider.js",
+	"main": "dist/vwc-slider.js",
+	"module": "dist/vwc-slider.js",
+	"files": [
+		"dist"
+	],
 	"repository": {
 		"type": "git",
 		"url": "ssh://github.com/vonage/vivid.git",
