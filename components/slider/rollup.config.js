@@ -1,7 +1,11 @@
+import cleaner from 'rollup-plugin-cleaner';
 import { terser } from 'rollup-plugin-terser';
 
 export default {
 	plugins: [
+		cleaner({
+			targets: ['components/slider/dist']
+		}),
 		terser()
 	],
 	input: [
