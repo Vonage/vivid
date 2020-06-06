@@ -1,6 +1,6 @@
 import { html } from 'lit-html';
 import Element from '../modules/element.js';
-import '@vonage/vwc-slider/dist/vwc-slider.js';
+import '@vonage/vwc-slider/vwc-slider.js';
 
 export default class Home extends Element {
 	async getHtml() {

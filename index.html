@@ -30,7 +30,7 @@
 		/>
 		<script type="module" async>
 			import scheme from "./node_modules/@vonage/vvd-scheme/vvd-scheme.js";
-			import fonts from "./node_modules/@vonage/vvd-fonts/dist/vvd-fonts.js";
+			import fonts from "./node_modules/@vonage/vvd-fonts/vvd-fonts.js";
 
 			(async () => {
 				await Promise.all([scheme.init(), fonts.init()]);
@@ -38,21 +38,17 @@
 			})();
 		</script>
 		<style>
+			/* ! actual core styles should move to a style module */
+			body {
+				background-color: var(--vvd-color-base-background);
+				color: var(--vvd-color-base-foreground);
+			}
+
 			:root {
 				/* // override mwc */
-				--mdc-theme-primary: var(--vvd-color-primary);
-				--mdc-theme-on-primary:var(--vvd-color-primary-on);
+				--mdc-theme-primary: var(--vvd-color-primary-background);
+				--mdc-theme-on-primary: var(--vvd-color-primary-foreground);
 				--mdc-theme-text-primary-on-background: cyan;
-			}
-
-			/* POC for waiting for scheme to load */
-			/* ! should reside in our global css */
-			body:not(.scheme-loaded) {
-				display: none;
-			}
-
-			:root {
-
 				/* // TODO // create a mutual function / mixin to recieve all properties */
 				/* // TODO // in argument parameters and throw error if props missing */
 				/* // TODO --vwc prefix */
@@ -62,10 +58,10 @@
 				--vwc-ink-color: yellow;
 			}
 
-			/* ! actual core styles should move to a style module */
-			body {
-				background-color: var(--vvd-color-background-base);
-				color: var(--vvd-color-foreground-base);
+			/* POC for waiting for scheme to load */
+			/* ! should reside in our global css */
+			body:not(.scheme-loaded) {
+				display: none;
 			}
 		</style>
 

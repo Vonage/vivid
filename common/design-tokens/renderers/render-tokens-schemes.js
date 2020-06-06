@@ -101,7 +101,7 @@ console.log("Build started...");
 
 // PROCESS THE DESIGN TOKENS FOR THE DIFFERENT SCHEMES AND PLATFORMS
 
-["scheme-light"].map(function (scheme) {
+["scheme-light", "scheme-dark"].map(function (scheme) {
 	["web" /*, 'ios', 'android'*/].map(function (platform) {
 		console.log("\n==============================================");
 		console.log(`\nProcessing: [${platform}] [${scheme}]`);
