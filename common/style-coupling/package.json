@@ -1,16 +1,16 @@
 {
-  "name": "@vonage/vwc-button",
+  "name": "@vonage/vvd-style-coupling",
   "version": "0.0.12-alpha.0",
   "description": "> TODO: description",
   "author": "yinonov <yinon@hotmail.com>",
-  "homepage": "https://github.com/Vonage/vivid/tree/master/components/button#readme",
+  "homepage": "https://github.com/Vonage/vivid/tree/master/components/style-coupling#readme",
   "license": "ISC",
-  "main": "vwc-button.js",
-  "module": "vwc-button.js",
+  "main": "vvd-style-coupling.css.js",
+  "module": "vvd-style-coupling.css.js",
   "repository": {
     "type": "git",
     "url": "ssh://github.com/vonage/vivid.git",
-    "directory": "components/button"
+    "directory": "components/style-coupling"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
@@ -19,10 +19,7 @@
     "url": "https://github.com/Vonage/vivid/issues"
   },
   "dependencies": {
-    "@material/mwc-button": "^0.15.0",
-    "@vonage/vvd-style-coupling": "^0.0.12-alpha.0",
-    "@vonage/vwc-icon": "^0.0.12-alpha.0",
-    "lit-element": "^2.3.1",
+    "@vonage/vvd-scheme": "^0.0.12-alpha.0",
     "tslib": "^2.0.0"
   },
   "publishConfig": {

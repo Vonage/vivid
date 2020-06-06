@@ -7,7 +7,11 @@ export default class Home extends Element {
     return html`
       <mwc-checkbox></mwc-checkbox>
       <mwc-checkbox checked></mwc-checkbox>
-      <mwc-checkbox indeterminate></mwc-checkbox>
+			<mwc-checkbox indeterminate></mwc-checkbox>
+			<hr>
+      <mwc-checkbox disabled></mwc-checkbox>
+      <mwc-checkbox disabled checked></mwc-checkbox>
+      <mwc-checkbox disabled indeterminate></mwc-checkbox>
     `;
   }
 }
