@@ -33,13 +33,6 @@ jobs:
       - name: Build demo
         run: yarn build
 
-      # - name: Configure AWS Credentials
-      #   uses: aws-actions/configure-aws-credentials@v1
-      #   with:
-      #     aws-access-key-id:
-      #     aws-secret-access-key:
-      #     aws-region: us-west-2
-
       - name: Deploy demo app
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
