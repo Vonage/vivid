@@ -38,13 +38,13 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
+      - name: Lint sources
+				run: yarn lint
+
       - name: Build components
-        run: yarn build:prod
+        run: yarn compile
 
-      - name: Lint
-        run: yarn lint
-
-      - name: Test
+      - name: Test components
         run: yarn test
 
       - name: Build
