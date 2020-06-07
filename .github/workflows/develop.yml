@@ -48,7 +48,7 @@ jobs:
         run: yarn test
 
       - name: Build
-        run: yarn build
+        run: yarn build:demo
 
       # - name: build storybook
       #   run: yarn storybook:build
