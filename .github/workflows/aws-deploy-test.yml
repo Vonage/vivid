@@ -53,4 +53,6 @@ jobs:
           aws-region: us-west-2
 
       - name: Deploy demo app
-        run: aws s3 sync ./dist/ s3://vivid-demo --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+        run: aws s3 sync ./dist/ s3://${{ secrets.AWS_S3_BUCKET }} --delete
