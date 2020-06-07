@@ -50,6 +50,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_ACCESS_KEY_SECRET }}
+          aws-region: us-west-2
 
       - name: Deploy demo app
         run: aws s3 sync ./dist/ s3://vivid-demo --delete
