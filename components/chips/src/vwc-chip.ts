@@ -1,5 +1,5 @@
 import '@vonage/vvd-core';
-import { css, customElement, property } from 'lit-element';
+import { css, customElement, property, CSSResult } from 'lit-element';
 import { Chip as MWCChip } from '@material/mwc-chips/mwc-chip';
 import { style } from './vwc-chip.css';
 
@@ -18,25 +18,30 @@ export class VWCChip extends MWCChip {
 	@property({ type: String }) theme = '';
 	@property({ type: Boolean }) transparent = false;
 
-	static get styles() {
+	static get styles(): CSSResult {
 		return css`
 			${super.styles}
 			${style}
 		`;
 	}
 
-	updated() {
+	updated(): void {
 		const classes = [
-			this.outlined ? 'outlined' : '',
-			this.pill ? 'pill' : '',
-			this.size ? `${this.size}` : '',
-			this.theme ? `${this.theme}` : '',
-			this.transparent ? 'transparent' : ''
+			this.outlined ? 'vwc-chip--outlined' : '',
+			this.pill ? 'vwc-chip--pill' : '',
+			this.size ? `vwc-chip--${this.size}` : '',
+			this.theme ? `vwc-chip--${this.theme}` : '',
+			this.transparent ? 'vwc-chip--transparent' : '',
 		];
 
-		var filteredClasses = classes.filter(e => e !== '');
+		const customClasses = Array.from(this.classList).filter(
+			(e) => !e.includes('vwc-chip')
+		);
+		const filteredClasses = classes.filter((e) => e !== '');
 
-		this.classList.remove(...this.classList);
-		this.classList.add(...filteredClasses);
+		/* eslint-disable wc/no-self-class */
+		this.className = '';
+		/* eslint-disable wc/no-self-class */
+		this.classList.add(...customClasses, ...filteredClasses);
 	}
 }

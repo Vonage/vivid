@@ -32,7 +32,7 @@ variable fonts | ✔ 62+ | ✔ 62+ | ✔ 17+ | ✔ 49+ | ✔ 11+ |
 If the `JS/TS` approach is taken, you should follow the example below:
 
 ```
-import fonts from 'common/fonts/vvd-fonts.js';
+import fonts from '@vonage/vvd-fonts/vvd-fonts.js';
 ...
 fonts.init().then(() =>
 	//	do post init stuff here
@@ -47,7 +47,7 @@ Link the `vvd-fonts.css` from the location you've put our library in.
 It is highly advised to link this resource early in the application lifecycle (for example, up in the `head`).
 
 ```
-<link rel="stylesheet" href="common/fonts/vvd-fonts.css" />
+<link rel="stylesheet" href="@vonage/vvd-fonts/vvd-fonts.css" />
 ```
 
 > Note: this approach will block the site's contents rendering until the fonts are fully fetched, yet no FOUC (flash of unstyled content) expected.

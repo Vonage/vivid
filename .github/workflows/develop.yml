@@ -1,8 +1,8 @@
-name: Develop build
+name: compile & test & build
 
 on:
   push:
-    branches: [develop, viv-*]
+    branches: [develop, viv-*, iss-*]
 
 jobs:
   build-and-deploy:
@@ -13,21 +13,39 @@ jobs:
         node-version: [12.x]
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PAT }} # `GitHub_PAT` is a secret that contains your PAT
+          submodules: true
 
-      - name: Use Node.js ${{ matrix.node-version }}
+#       - name: Checkout submodules
+#         uses: actions/checkout@v2
+#         with:
+#           repository: Vonage/vivid-design-tokens-properties
+#           token: ${{ secrets.PAT }} # `GitHub_PAT` is a secret that contains your PAT
+#           path: vivid-design-tokens-properties
+#           submodules: true
+
+      - name: Setup NodeJS ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Install yarn globally
+      - name: Install yarn
         run: npm install -g yarn
 
-      - name: Install packages with yarn
-        run: yarn
+      - name: Install dependencies
+        run: yarn install
 
-      #       - name: test
-      #         run: yarn test
+      - name: Build components
+        run: yarn build:prod
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Test
+        run: yarn test
 
       - name: Build
         run: yarn build

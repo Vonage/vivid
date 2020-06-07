@@ -12,8 +12,9 @@ declare global {
 	}
 }
 
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 MWCTextField.styles = [mwcTextFieldStyle, vwcTextFieldStyle];
 
 @customElement('vwc-textfield')
-export class VWCTextField extends MWCTextField { }
+export class VWCTextField extends MWCTextField {}

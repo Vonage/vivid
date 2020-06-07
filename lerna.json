@@ -1,14 +1,14 @@
 {
-  "packages": [
-    "common/**",
-    "components/**"
-  ],
-  "npmClient": "yarn",
-  "useWorkspaces": true,
-  "version": "0.0.9-alpha.0",
-  "command": {
-    "publish": {
-      "registry": "https://npm.pkg.github.com"
-    }
-  }
+	"packages": [
+		"common/**",
+		"components/**"
+	],
+	"npmClient": "yarn",
+	"useWorkspaces": true,
+	"version": "0.0.12-alpha.0",
+	"command": {
+		"publish": {
+			"registry": "https://npm.pkg.github.com"
+		}
+	}
 }

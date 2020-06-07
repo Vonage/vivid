@@ -12,29 +12,34 @@ package-lock.json
 .npmrc
 
 ## yarn
-yarn.lock
 yarn-error.log
 
 ## testing
-/coverage/
+/coverage
 
 ## temp folders
 /.tmp/
 
 # build
-/_site/
-/dist/
+/build
+/_site
+**/dist
+*.tgz
 *.log
 
 /common/**/*.js
 /common/**/*.js.map
 /common/**/*.d.ts
 /common/*/src/*.css.ts
+!/common/**/test/**/*.test.js
+!**/rollup.config.js
 
 /components/**/*.js
 /components/**/*.js.map
 /components/**/*.d.ts
 /components/*/src/*.css.ts
+!/components/**/test/**/*.test.js
+!**/rollup.config.js
 
 **/*.tsbuildinfo*
 
