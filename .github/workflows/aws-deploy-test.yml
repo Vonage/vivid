@@ -33,14 +33,23 @@ jobs:
       - name: Build demo
         run: yarn build
 
-      - name: Deploy demo
-        uses: jakejarvis/s3-sync-action@v0.5.1
+      # - name: Deploy demo
+      #   uses: jakejarvis/s3-sync-action@v0.5.1
+      #   with:
+      #     args: --delete
+      #   env:
+      #     AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_SECRET }}
+      #     AWS_REGION: 'us-east-2'
+      #     SOURCE_DIR: './dist'
+      #     DEST_DIR: '/'
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          args: --delete
-        env:
-          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_SECRET }}
-          AWS_REGION: 'us-east-2'
-          SOURCE_DIR: './dist'
-          DEST_DIR: '/'
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_ACCESS_KEY_SECRET }}
+
+      - name: Deploy demo app
+        run: aws s3 sync ./dist/ s3://vivid-demo --delete
