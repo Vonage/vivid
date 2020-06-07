@@ -13,7 +13,11 @@ jobs:
         node-version: [12.x]
 
     steps:
-      - uses: actions/checkout@v2
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PAT }}
+          submodules: true
 
       - name: Setup NodeJS ${{ matrix.node-version }}
         uses: actions/setup-node@v1
@@ -26,11 +30,8 @@ jobs:
       - name: Install packages
         run: yarn install
 
-      - name: Build sources
-        run: yarn build
-
       - name: Build demo
-        run: echo TBD
+        run: yarn build
 
       - name: Deploy demo
         uses: jakejarvis/s3-sync-action@v0.5.1
@@ -41,5 +42,5 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_SECRET }}
           AWS_REGION: 'us-east-2'
-          SOURCE_DIR: './storybook-static'
-          DEST_DIR: '/storybook'
+          SOURCE_DIR: './dist'
+          DEST_DIR: '/'
