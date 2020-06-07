@@ -36,7 +36,7 @@
 		"build:prod": "yarn compile && rimraf dist && rollup -c rollup.components.config.js",
 		"start:build": "yarn build:prod && es-dev-server --root-dir dist --app-index index.html --open --compatibility none",
 		"dev:server": "es-dev-server --config es-dev-server.config.js",
-		"git:clean": "git clean -xdf",
+		"git:clean": "git clean -dfX",
 		"watch": "node scripts/watcher.js"
 	},
 	"dependencies": {
