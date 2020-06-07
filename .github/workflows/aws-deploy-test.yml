@@ -1,4 +1,4 @@
-name: Deploy Storybook
+name: Build & Deploy Demo
 
 on:
   push:
