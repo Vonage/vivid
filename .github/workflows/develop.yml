@@ -1,8 +1,6 @@
 name: Compile & Test
 
-on:
-  push:
-    branches: *
+on: push
 
 jobs:
   build-and-deploy:
