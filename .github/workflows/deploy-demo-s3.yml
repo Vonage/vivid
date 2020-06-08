@@ -1,16 +1,15 @@
 name: Build & Deploy Demo
 
 on:
-  push:
-    branches: [viv-25*]
+  pull_request:
+    types: [closed]
+    branches:
+      - viv-25*
 
 jobs:
   build-and-deploy-demo:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.x]
+		if: github.event.pull_request.merged
 
     steps:
       - name: Checkout
@@ -19,10 +18,10 @@ jobs:
           token: ${{ secrets.PAT }}
           submodules: true
 
-      - name: Setup NodeJS ${{ matrix.node-version }}
+      - name: Setup NodeJS 12
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 12
 
       - name: Install yarn
         run: npm install -g yarn
