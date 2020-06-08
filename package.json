@@ -39,9 +39,7 @@
 		"git:clean": "git clean -xdf",
 		"watch": "node scripts/watcher.js",
 		"playroom:start": "playroom start",
-		"playroom:build": "playroom build",
-		"react": "^16.13.1",
-		"react-dom": "^16.13.1"
+		"playroom:build": "playroom build"
 	},
 	"dependencies": {
 		"lit-html": "^1.2.1",
@@ -100,6 +98,8 @@
 		"sass": "^1.26.5",
 		"style-dictionary": "^2.10.0",
 		"tslib": "^2.0.0",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1",
 		"typescript": "^3.9.3"
 	},
 	"eslintConfig": {
