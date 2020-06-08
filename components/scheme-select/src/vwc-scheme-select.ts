@@ -24,7 +24,7 @@ export class SchemeSelect extends LitElement {
       ${this.schemes.map(
 			scheme =>
 				html`
-            <vwc-button raised @click="${this.dispatchEvent.bind(this, createSelectionCustomEvent(scheme))}">
+            <vwc-button unelevated @click="${this.dispatchEvent.bind(this, createSelectionCustomEvent(scheme))}">
               ${scheme}
             </vwc-button>
           `,

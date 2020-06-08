@@ -1,6 +1,6 @@
 @use '@material/button';
 
-$mdc-theme-primary: #871fff;
+$mdc-theme-primary: #871fff; // for darken/rgba functions
 
 :host {
   --mdc-theme-primary: #871fff;
@@ -16,7 +16,7 @@ $mdc-theme-primary: #871fff;
   @include button.ink-color(var(--mdc-theme-primary));
   @include button.disabled-ink-color(var(--mdc-button-disabled-ink-color));
   
-  border-radius: 20px;
+  border-radius: 6px;
   font-weight: 600;
   letter-spacing: normal;
   text-transform: none;
