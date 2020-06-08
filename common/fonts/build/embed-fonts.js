@@ -3,7 +3,7 @@ const path = require('path');
 
 const baseDir = 'common/fonts/';
 const srcDir = baseDir + 'src/';
-const fontBinariesDir = srcDir + 'fonts/';
+const fontBinariesDir = baseDir + 'fonts/';
 
 const templateFiles = fs.readdirSync(srcDir).filter(fn => fn.match(/^.*\.scss\.template$/));
 console.info(`embed-fonts: found templates ${templateFiles}`);
