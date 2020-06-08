@@ -6,8 +6,6 @@ export class AnchorBase extends LitElement {
 	}
 
 	protected render(): TemplateResult {
-		return html`
-      <button>lorem ipsum</button>
-    `;
+		return html` <button>lorem ipsum</button> `;
 	}
 }

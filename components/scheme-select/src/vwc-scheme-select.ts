@@ -21,14 +21,20 @@ export class SchemeSelect extends LitElement {
 
 	render(): TemplateResult {
 		return html`
-      ${this.schemes.map(
-			scheme =>
-				html`
-            <vwc-button raised @click="${this.dispatchEvent.bind(this, createSelectionCustomEvent(scheme))}">
-              ${scheme}
-            </vwc-button>
-          `,
-		)}
-    `;
+			${this.schemes.map(
+				(scheme) =>
+					html`
+						<vwc-button
+							raised
+							@click="${this.dispatchEvent.bind(
+								this,
+								createSelectionCustomEvent(scheme)
+							)}"
+						>
+							${scheme}
+						</vwc-button>
+					`
+			)}
+		`;
 	}
 }
