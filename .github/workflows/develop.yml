@@ -43,7 +43,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies
-        # if: steps.node-modules-cache.outputs.chache-hit != 'true'
+        if: steps.yarn-cache.outputs.chache-hit != 'true'
         run: yarn install
 
       - name: Build components
