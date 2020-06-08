@@ -1,0 +1,6 @@
+:host {
+	--mdc-checkbox-unchecked-color: var(--vvd-color-base-foreground);
+	/* Required for unchecked focus ripple */
+	--mdc-checkbox-disabled-color: var(--vvd-color-base-dim);
+	--mdc-checkbox-mark-color: var(--vvd-color-secondary-foreground);
+}

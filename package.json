@@ -32,13 +32,10 @@
 		"compile:design-tokens": "lerna run build --scope=\"@vonage/vvd-design-tokens\"",
 		"prestart": "yarn compile",
 		"start": "yarn dev:server",
-		"build": "yarn compile && rimraf dist && tsc && rollup -c rollup.config.js",
-		"start:build": "yarn build && es-dev-server --root-dir dist --app-index index.html --open --compatibility none",
+		"build:demo": "yarn compile && rimraf dist && rollup -c rollup.demo.config.js",
+		"start:build": "yarn build:prod && es-dev-server --root-dir dist --app-index index.html --open --compatibility none",
 		"dev:server": "es-dev-server --config es-dev-server.config.js",
-		"git:clean": "git clean -xdf",
-		"powerwash:ts": "rm components/*/*.js & rm components/*/*.js.map & rm components/*/*.d.ts & rm components/*/.tsbuildinfo && rm common/*/*.js & rm common/*/*.js.map & rm common/*/*.d.ts & rm common/*/.tsbuildinfo ",
-		"powerwash:styling": "rm components/*/src/*.css.ts & rm common/*/src/*.css.ts",
-		"powerwash": "yarn powerwash:ts && yarn powerwash:styling && rm -rf node_modules",
+		"git:clean": "git clean -dfX",
 		"watch": "node scripts/watcher.js"
 	},
 	"dependencies": {
@@ -90,10 +87,12 @@
 		"style-dictionary": "^2.10.0",
 		"rimraf": "^3.0.2",
 		"rollup": "^2.12.0",
+		"rollup-plugin-cleaner": "^1.0.0",
+		"rollup-plugin-terser": "^6.1.0",
+		"rollup-plugin-copy": "^3.3.0",
 		"typescript": "^3.9.3",
 		"tslib": "^2.0.0",
 		"node-watch": "^0.6.4",
-		"rollup-plugin-copy": "^3.3.0",
 		"prettier": "^2.0.5"
 	},
 	"eslintConfig": {
@@ -102,16 +101,15 @@
 			"eslint-config-prettier"
 		]
 	},
-	"prettier": "@open-wc/prettier-config/prettier.config.js",
 	"husky": {
 		"hooks": {
 			"pre-commit": "lint-staged"
 		}
 	},
 	"lint-staged": {
-		"*.js": [
+		"*.ts": [
 			"eslint --fix",
-			"prettier --write",
+			"prettier --write --single-quote",
 			"git add"
 		]
 	}

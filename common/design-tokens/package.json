@@ -1,28 +1,29 @@
 {
-  "name": "@vonage/vvd-design-tokens",
-  "version": "0.0.10-alpha.0",
-  "description": "> TODO: description",
-  "author": "yinonov <yinon@hotmail.com>",
-  "homepage": "https://github.com/Vonage/vivid/tree/master/components/design-tokens#readme",
-  "license": "ISC",
-  "repository": {
-    "type": "git",
-    "url": "ssh://github.com/vonage/vivid.git",
-    "directory": "components/design-tokens"
-  },
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1",
-    "build": "node renderers/render-tokens-schemes.js"
-  },
-  "bugs": {
-    "url": "https://github.com/Vonage/vivid/issues"
-  },
-  "dependencies": {
-    "style-dictionary": "^2.10.0"
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://npm.pkg.github.com/"
-  },
-  "gitHead": "80b5f1d712327c3bfd82353c2de9a460548a68bd"
+	"name": "@vonage/vvd-design-tokens",
+	"version": "0.0.13-alpha.0",
+	"description": "> TODO: description",
+	"author": "yinonov <yinon@hotmail.com>",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/design-tokens#readme",
+	"license": "ISC",
+	"repository": {
+		"type": "git",
+		"url": "ssh://github.com/vonage/vivid.git",
+		"directory": "components/design-tokens"
+	},
+	"private": true,
+	"scripts": {
+		"test": "echo \"Error: run tests from root\" && exit 1",
+		"build": "node renderers/render-tokens-schemes.js"
+	},
+	"bugs": {
+		"url": "https://github.com/Vonage/vivid/issues"
+	},
+	"dependencies": {
+		"style-dictionary": "^2.10.0"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://npm.pkg.github.com/"
+	},
+	"gitHead": "61bd9079acd55916dc8f96fbaef8c3eaa61c5ade"
 }

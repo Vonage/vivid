@@ -17,4 +17,4 @@ declare global {
 MWCTextField.styles = [mwcTextFieldStyle, vwcTextFieldStyle];
 
 @customElement('vwc-textfield')
-export class VWCTextField extends MWCTextField { }
+export class VWCTextField extends MWCTextField {}
