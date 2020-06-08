@@ -1,4 +1,3 @@
-import '@vonage/vvd-core';
 import { css, customElement, CSSResult } from 'lit-element';
 import { ChipSet as MWCChipSet } from '@material/mwc-chips/mwc-chip-set';
 import { style } from './vwc-chip-set.css';

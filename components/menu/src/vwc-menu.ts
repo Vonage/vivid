@@ -1,4 +1,3 @@
-import '@vonage/vvd-core';
 import { Menu } from '@material/mwc-menu';
 import { customElement } from 'lit-element';
 
@@ -11,7 +10,7 @@ import { customElement } from 'lit-element';
 export class VWCMenu extends Menu {}
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'vwc-menu': VWCMenu;
-  }
+	interface HTMLElementTagNameMap {
+		'vwc-menu': VWCMenu;
+	}
 }

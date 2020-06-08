@@ -1,22 +1,25 @@
+const { createDefaultConfig } = require('@open-wc/building-webpack');
+
 module.exports = {
-	components: "./components/button/vwc-button",
+	components: "./components/button/vwc-button.js",
 	outputPath: "./dist/playroom",
 
 	// Optional:
 	title: "My Awesome Library",
-	snippets: "./playroom/snippets.js",
 	widths: [320, 375, 768, 1024],
 	port: 9000,
-	openBrowser: true,
+	openBrowser: false,
 	paramType: "search", // default is 'hash'
 	exampleCode: `
-    <Button>
+    <vwc-button>
       Hello World!
-    </Button>
+    </vwc-button>
   `,
-	baseUrl: "/playroom/",
-	webpackConfig: () => ({
-		// Custom webpack config goes here...
-	}),
+	baseUrl: "/",
 	iframeSandbox: "allow-scripts",
+	snippets: "./playroom/snippets.js",
+	typeScriptFiles: [
+    './components/**/src/*.{ts,tsx}',
+    '!**/node_modules'
+  ]
 };

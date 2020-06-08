@@ -1,11 +1,11 @@
 export default [
   {
     group: 'Button',
-    name: 'Strong',
+    name: 'Raised',
     code: `
-      <Button weight="strong">
+      <vwc-button raised>
         Button
-      </Button>
+      </vwc-button>
     `
-  },
+	}
 ];

@@ -1,4 +1,3 @@
-import '@vonage/vvd-core';
 import { customElement } from 'lit-element';
 import { TextArea as MWCTextArea } from '@material/mwc-textarea';
 
@@ -11,4 +10,4 @@ declare global {
 }
 
 @customElement('vwc-textarea')
-export class VWCTextArea extends MWCTextArea { }
+export class VWCTextArea extends MWCTextArea {}

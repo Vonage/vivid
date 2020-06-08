@@ -2,7 +2,7 @@
   "version": 2,
   "tags": [
     {
-      "name": "vivid-checkbox",
+      "name": "vivid",
       "description": "An application with a title and an action counter",
       "properties": [
         {

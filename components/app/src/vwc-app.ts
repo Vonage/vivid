@@ -1,5 +1,10 @@
-import '@vonage/vvd-core';
-import { customElement, LitElement, html, TemplateResult, CSSResult } from 'lit-element';
+import {
+	customElement,
+	LitElement,
+	html,
+	TemplateResult,
+	CSSResult,
+} from 'lit-element';
 import { style } from './vwc-app.css';
 
 declare global {
@@ -19,8 +24,6 @@ export class App extends LitElement {
 	}
 
 	render(): TemplateResult {
-		return html`
-      <slot></slot>
-    `;
+		return html` <slot></slot> `;
 	}
 }

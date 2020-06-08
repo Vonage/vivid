@@ -1,4 +1,3 @@
-import '@vonage/vvd-core';
 import { customElement } from 'lit-element';
 import { Select as MWCSelect } from '@material/mwc-select';
 
@@ -9,4 +8,4 @@ declare global {
 }
 
 @customElement('vwc-select')
-export class VWCSelect extends MWCSelect { }
+export class VWCSelect extends MWCSelect {}
