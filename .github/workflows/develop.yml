@@ -1,41 +1,39 @@
-name: compile & test & build
+name: Compile & Test
 
 on:
   push:
-    branches: [develop, viv-*, iss-*]
+    branches: [*]
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [12.x]
-
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          token: ${{ secrets.PAT }} # `GitHub_PAT` is a secret that contains your PAT
+          token: ${{ secrets.PAT }}
           submodules: true
 
-#       - name: Checkout submodules
-#         uses: actions/checkout@v2
-#         with:
-#           repository: Vonage/vivid-design-tokens-properties
-#           token: ${{ secrets.PAT }} # `GitHub_PAT` is a secret that contains your PAT
-#           path: vivid-design-tokens-properties
-#           submodules: true
-
-      - name: Setup NodeJS ${{ matrix.node-version }}
+      - name: Setup NodeJS 12
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 12
 
       - name: Install yarn
         run: npm install -g yarn
 
+      - name: Get node_modules cache
+        id: node-modules-cache
+        uses: actions/cache@v2
+        with:
+          path: |
+					   node-modules
+						 */*/node-modules
+          key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+
       - name: Install dependencies
+        if: steps.node-modules-cache.outputs.chache-hit != 'true'
         run: yarn install
 
       - name: Build components
@@ -46,20 +44,3 @@ jobs:
 
       - name: Test components
         run: yarn test
-
-      - name: Build
-        run: yarn build:demo
-
-      # - name: build storybook
-      #   run: yarn storybook:build
-
-      - name: Vercel deployment
-        uses: amondnet/vercel-action@v19
-#         uses: amondnet/now-deployment@v2
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID}}  #Required
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID}} #Required
-          # working-directory: ./storybook-static
-          working-directory: ./dist
-          vercel-args: '--prod' #Optional
