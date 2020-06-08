@@ -42,7 +42,7 @@ jobs:
         run: yarn install
 
       - name: Build demo
-        run: yarn build
+        run: yarn build:demo
 
       - name: Deploy demo app
         env:
