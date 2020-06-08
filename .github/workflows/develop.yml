@@ -42,7 +42,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-			- name: Install dependencies
+      - name: Install dependencies
         # if: steps.node-modules-cache.outputs.chache-hit != 'true'
         run: yarn install
 
