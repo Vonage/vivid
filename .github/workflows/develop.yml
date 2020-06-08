@@ -26,8 +26,8 @@ jobs:
         uses: actions/cache@v2
         with:
           path: |
-					   node-modules
-						 */*/node-modules
+            node-modules
+            */*/node-modules
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install dependencies
