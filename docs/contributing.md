@@ -9,7 +9,7 @@ As with any other platform-like case, responsibility for a stable and quality co
 
 It might also be helpful to read the following docs as well:
 * [Architectural approach](./architecture.md)
-* [Build process](./build-process.md)
+* [Dev/Ops process](./dev-ops-process.md)
 
 ---
 
