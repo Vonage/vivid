@@ -1,4 +1,4 @@
-# Build flows
+# Dev/Build process
 
 In order to build, test and deploy our product we use [GitHub actions](https://help.github.com/en/actions), aka workflows.
 
@@ -39,3 +39,7 @@ Upon PR merge, `master` branch won't run the quality checks, but will do its own
 `develop` branch is responsible for deploying the __Demo__ application (may change in the future).
 
 `master` branch is responsible for deploying the packages - publishing.
+
+Chart below is a rough representation of the Vivid's DevOps flow.
+
+![DevOps flow](../assets/images/vivid-devops-flow.svg)
