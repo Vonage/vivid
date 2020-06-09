@@ -3,7 +3,10 @@ import { addParameters, setCustomElements } from '@open-wc/demoing-storybook';
 addParameters({
   docs: {
     iframeHeight: '200px',
-  }
+	}
+	backgrounds: [
+		{name:"Default theme", value:"#ffffff",default:true}
+	]
 });
 
 async function run() {
