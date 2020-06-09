@@ -42,6 +42,9 @@ router
     home: function () {
       render(html` <home-route></home-route> `, componentDemoContainer);
     },
+    linearprogress: function () {
+      render(html` <linearprogress-route></linearprogress-route> `, componentDemoContainer);
+    },
     list: function () {
       render(html` <list-route></list-route> `, componentDemoContainer);
     },
