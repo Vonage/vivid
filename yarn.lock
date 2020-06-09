@@ -2086,6 +2086,18 @@
     "@material/theme" "7.0.0-canary.d92d8c93e.0"
     tslib "^1.9.3"
 
+"@material/linear-progress@=7.0.0-canary.d92d8c93e.0":
+  version "7.0.0-canary.d92d8c93e.0"
+  resolved "https://registry.yarnpkg.com/@material/linear-progress/-/linear-progress-7.0.0-canary.d92d8c93e.0.tgz#ffb7d4c0cf2af62e65ed19656cee0c5e057591af"
+  integrity sha512-K/fBvBOECG/Adkuudj9juma5pJ/cRubtxF0c3rS7EQHo06rebNunbbHeqmXbRB1daWAA23avaxLO5NKjsvhNOQ==
+  dependencies:
+    "@material/animation" "7.0.0-canary.d92d8c93e.0"
+    "@material/base" "7.0.0-canary.d92d8c93e.0"
+    "@material/feature-targeting" "7.0.0-canary.d92d8c93e.0"
+    "@material/progress-indicator" "7.0.0-canary.d92d8c93e.0"
+    "@material/theme" "7.0.0-canary.d92d8c93e.0"
+    tslib "^1.9.3"
+
 "@material/list@7.0.0-canary.d92d8c93e.0", "@material/list@=7.0.0-canary.d92d8c93e.0":
   version "7.0.0-canary.d92d8c93e.0"
   resolved "https://registry.yarnpkg.com/@material/list/-/list-7.0.0-canary.d92d8c93e.0.tgz#fbc46ddc860c67dc4fe466b872abfa90e13d1514"
@@ -2218,6 +2230,16 @@
     "@material/line-ripple" "=7.0.0-canary.d92d8c93e.0"
     lit-element "^2.3.0"
     lit-html "^1.1.2"
+    tslib "^1.10.0"
+
+"@material/mwc-linear-progress@^0.15.0":
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/@material/mwc-linear-progress/-/mwc-linear-progress-0.15.0.tgz#107443ab0cc83a3b272a815e71699974ecfdd204"
+  integrity sha512-poBT3NZTqNpRtNSpvOfriguuU1rEYD2sLbSTwYO5DZt/f3OELbZE8C1AUZP37CUnfVyw8pwXjAURti7v2GZIog==
+  dependencies:
+    "@material/linear-progress" "=7.0.0-canary.d92d8c93e.0"
+    "@material/mwc-base" "^0.15.0"
+    lit-element "^2.3.0"
     tslib "^1.10.0"
 
 "@material/mwc-list@^0.15.0":
@@ -2373,6 +2395,13 @@
     "@material/rtl" "7.0.0-canary.d92d8c93e.0"
     "@material/shape" "7.0.0-canary.d92d8c93e.0"
     "@material/theme" "7.0.0-canary.d92d8c93e.0"
+    tslib "^1.9.3"
+
+"@material/progress-indicator@7.0.0-canary.d92d8c93e.0":
+  version "7.0.0-canary.d92d8c93e.0"
+  resolved "https://registry.yarnpkg.com/@material/progress-indicator/-/progress-indicator-7.0.0-canary.d92d8c93e.0.tgz#e49e3d22ed594f53624eae5c8b82b19fa13e93d8"
+  integrity sha512-ibwqKAKd8xJqN2SceGo7fsjwdy7E2yjmP8V3ASUqUnK+MXepKoxdjfj+pXBAuCwNy8ehx1b4HzYq7LA20PKWKw==
+  dependencies:
     tslib "^1.9.3"
 
 "@material/radio@=7.0.0-canary.d92d8c93e.0":
