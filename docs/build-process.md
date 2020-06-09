@@ -1,4 +1,4 @@
-# Build flows
+# Dev/Build process
 
 In order to build, test and deploy our product we use [GitHub actions](https://help.github.com/en/actions), aka workflows.
 
