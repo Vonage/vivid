@@ -62,6 +62,14 @@ Done! Well, there probably will be some exchange of comments and fixes, but even
 
 > Git usage note: in order to be able to push you code into the repo you need to have/setup an SSH keys. [This documentation](https://help.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account) makes it a breeze.
 
+---
+
+#### CI/CD and workflow
+
+TBD
+
+---
+
 #### Useful scripts
 
 - `build` builds demo app for production

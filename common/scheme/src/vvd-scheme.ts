@@ -3,14 +3,18 @@
 import { CSSResult } from 'lit-element';
 import { pipe } from 'ramda';
 import { onSchemeChange } from './scheme-change-listener';
-import { pcs, getPreferedColorScheme, prefersColorSchemeSupported } from './os-sync.utils';
+import {
+	pcs,
+	getPreferedColorScheme,
+	prefersColorSchemeSupported,
+} from './os-sync.utils';
 
 export type PredefinedScheme = 'light' | 'dark';
 export type SchemeOption = 'syncWithOSSettings' | PredefinedScheme;
 
 type ModuleType =
-  | typeof import('@vonage/vvd-design-tokens/scheme-dark.css')
-  | typeof import('@vonage/vvd-design-tokens/scheme-light.css'); // This is the import type!
+	| typeof import('@vonage/vvd-design-tokens/scheme-dark.css')
+	| typeof import('@vonage/vvd-design-tokens/scheme-light.css'); // This is the import type!
 
 const getSchemeCssText = pipe(getSchemeModule, getStyleSheet, getCssText);
 
@@ -18,7 +22,8 @@ let _selectedScheme: PredefinedScheme;
 export const getSelectedScheme = (): PredefinedScheme => _selectedScheme;
 
 let _selectedSchemeOption: SchemeOption;
-export const getSelectedSchemeOption = (): SchemeOption => _selectedSchemeOption;
+export const getSelectedSchemeOption = (): SchemeOption =>
+	_selectedSchemeOption;
 
 const style = mountStyle();
 
@@ -35,21 +40,23 @@ function schemeDefault(): SchemeOption {
 }
 
 function getSchemeModule(schemeOption: SchemeOption): Promise<ModuleType> {
-  // console.log(`set ${schemeOption} scheme`);
-  switch (schemeOption) {
-    case 'dark':
-      return import('@vonage/vvd-design-tokens/scheme-dark.css');
-    case 'light':
-    default:
-      return import('@vonage/vvd-design-tokens/scheme-light.css');
-  }
+	// console.log(`set ${schemeOption} scheme`);
+	switch (schemeOption) {
+		case 'dark':
+			return import('@vonage/vvd-design-tokens/scheme-dark.css');
+		case 'light':
+		default:
+			return import('@vonage/vvd-design-tokens/scheme-light.css');
+	}
 }
 
 async function getStyleSheet(ModulePromise: Promise<ModuleType>) {
 	return (await ModulePromise).style;
 }
 
-async function getCssText(resultPromise: Promise<CSSResult>): Promise<CSSResult['cssText']> {
+async function getCssText(
+	resultPromise: Promise<CSSResult>
+): Promise<CSSResult['cssText']> {
 	const { cssText } = await resultPromise;
 	return cssText;
 }
@@ -59,7 +66,9 @@ function updateStyleCssText(newCssText: CSSResult['cssText']) {
 }
 
 async function syncWithOSSettings() {
-	updateStyleCssText(await getSchemeCssText(getPreferedColorScheme() as SchemeOption));
+	updateStyleCssText(
+		await getSchemeCssText(getPreferedColorScheme() as SchemeOption)
+	);
 }
 
 async function init(scheme?: SchemeOption) {

@@ -32,7 +32,7 @@ variable fonts | ✔ 62+ | ✔ 62+ | ✔ 17+ | ✔ 49+ | ✔ 11+ |
 If the `JS/TS` approach is taken, you should follow the example below:
 
 ```
-import fonts from '@vonage/vvd-fonts/vvd-fonts.js';
+import fonts from '@vonage/vvd-fonts';
 ...
 fonts.init().then(() =>
 	//	do post init stuff here

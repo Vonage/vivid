@@ -1,5 +1,4 @@
 import merge from 'deepmerge';
-// use createSpaConfig for bundling a Single Page App
 import { createSpaConfig } from '@open-wc/building-rollup';
 import copy from 'rollup-plugin-copy';
 
