@@ -8,7 +8,9 @@ Vivid provides a Design System comprised of ready-to-use web components and serv
 
 Demos, tutorials and living examples are at [vivid.vonage.com](https://vivid.vonage.com).
 
-Contributor guidance is [here](docs/contributing.md).
+Our architectural approach in general is [here](./docs/architecture.md).
+
+Contributor guidance is [here](./docs/contributing.md).
 
 ---
 
