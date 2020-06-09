@@ -46,6 +46,6 @@ In the future we may consider providing a (hopefully) thin binding layer for a f
 
 Below is the chart, that roughtly outlines the source code transformations from the white list, via the productized Vivid packages, to the end-using application (common case):
 
-
+![Code transformation flow](../assets/images/vivid-code-transformation-flow.svg)
 
 Higher level flow, CI/CD perspective of the things is motion, is outlined in the [Dev/Ops process documentation](./dev-ops-process.md).
