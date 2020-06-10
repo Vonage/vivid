@@ -23,6 +23,7 @@ yarn-error.log
 # build
 /build
 /_site
+/.out
 **/dist
 *.tgz
 *.log
@@ -46,8 +47,6 @@ yarn-error.log
 storybook-static
 
 .cache
-
-.now
 
 lerna-debug.log
 

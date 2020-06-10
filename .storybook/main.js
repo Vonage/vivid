@@ -1,7 +1,6 @@
 module.exports = {
 	stories: [
-		'../common/*/stories/*.stories.{js,mdx}',
-		'../components/*/stories/*.stories.{js,mdx}'
+		'../components/**/stories/*.stories.js'
 	],
 	addons: [
 		'@storybook/addon-a11y/register.js',
@@ -9,10 +8,5 @@ module.exports = {
 		'@storybook/addon-knobs/register.js',
 		'@storybook/addon-viewport/register.js',
 		'storybook-addon-playroom/register.js'
-	],
-	esDevServer: {
-		nodeResolve: true,
-		watch: true,
-		open: true,
-	},
+	]
 };
