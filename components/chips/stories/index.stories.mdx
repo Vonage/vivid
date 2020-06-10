@@ -26,19 +26,20 @@ A component for...
 ### Installation
 
 ```bash
-yarn add vwc-chip
+yarn add vwc-chips
 ```
 
 ```js
-<script type="module">import 'vwc-menu/vwc-chip.js'; import 'vwc-menu/vwc-chip-set.js';</script>
+import 'vwc-chips/vwc-chip.js'; 
+import 'vwc-chips/vwc-chip-set.js';
 ```
 
 <Preview withToolbar>
   <Story name="Simple">
     {html`
       <vwc-chip-set>
-        <vwc-chip label="Chip"></vwc-chip>
-        <vwc-chip label="Leading Icon" icon="fingerprint"></vwc-chip>
+        <vwc-chip label="Default"></vwc-chip>
+        <vwc-chip label="Removable" removable></vwc-chip>
       </vwc-chip-set>
     `}
   </Story>
