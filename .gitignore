@@ -51,4 +51,4 @@ storybook-static
 
 lerna-debug.log
 
-.vercel
+custom-elements.json

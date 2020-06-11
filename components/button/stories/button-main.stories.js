@@ -1,10 +1,10 @@
-import { VWCButton } from '@vonage/vwc-button/vwc-button.js';
-import { html } from 'lit-element';
+import { VWCButton } from "@vonage/vwc-button/vwc-button.js";
+import { html } from "lit-element";
 
 export default {
-	title: 'Atomic/Button',
-	component: VWCButton
-}
+	title: "Atomic/Button",
+	component: "vwc-button",
+};
 
 export const unelevated = () => html`
 	<vwc-button unelevated>Unelevated</vwc-button>
@@ -16,7 +16,7 @@ export const outlined = () => html`
 	<vwc-button outlined icon="code">Outlined</vwc-button>
 `;
 
-export const disabled = () => `
+export const disabled = () => html`
 	<vwc-button disabled unelevated icon="code">Disabled</vwc-button>
 	<vwc-button disabled outlined icon="code">Disabled</vwc-button>
 `;
