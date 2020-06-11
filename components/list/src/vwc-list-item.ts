@@ -1,4 +1,3 @@
-import '@vonage/vvd-core';
 import { customElement } from 'lit-element';
 import { ListItem as MWCListItem } from '@material/mwc-list/mwc-list-item';
 
@@ -9,5 +8,4 @@ declare global {
 }
 
 @customElement('vwc-list-item')
-export class VWCListItem extends MWCListItem {
-}
+export class VWCListItem extends MWCListItem {}

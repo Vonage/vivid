@@ -1,4 +1,3 @@
-import '@vonage/vvd-core';
 import { customElement } from 'lit-element';
 import { Icon as MWCIcon } from '@material/mwc-icon';
 
@@ -9,4 +8,4 @@ declare global {
 }
 
 @customElement('vwc-icon')
-export class VWCIcon extends MWCIcon { }
+export class VWCIcon extends MWCIcon {}

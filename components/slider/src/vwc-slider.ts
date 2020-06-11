@@ -1,4 +1,3 @@
-import '@vonage/vvd-core';
 import { customElement } from 'lit-element';
 import { Slider as MWCSlider } from '@material/mwc-slider';
 
@@ -9,4 +8,4 @@ declare global {
 }
 
 @customElement('vwc-slider')
-export class VWCSlider extends MWCSlider { }
+export class VWCSlider extends MWCSlider {}

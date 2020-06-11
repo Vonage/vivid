@@ -100,7 +100,7 @@ function getStyleDictionaryConfig(scheme, platform) {
 console.log("Build started...");
 
 // PROCESS THE DESIGN TOKENS FOR THE DIFFERENT SCHEMES AND PLATFORMS
-
+// TODO: [VIV-41] add accessible colors scheme
 ["scheme-light", "scheme-dark"].map(function (scheme) {
 	["web" /*, 'ios', 'android'*/].map(function (platform) {
 		console.log("\n==============================================");

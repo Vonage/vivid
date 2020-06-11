@@ -1,4 +1,3 @@
-import '@vonage/vvd-core';
 import { customElement } from 'lit-element';
 import { Formfield as MWCFormfield } from '@material/mwc-formfield';
 
@@ -9,4 +8,4 @@ declare global {
 }
 
 @customElement('vwc-formfield')
-export class VWCFormfield extends MWCFormfield { }
+export class VWCFormfield extends MWCFormfield {}

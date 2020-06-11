@@ -1,4 +1,3 @@
-import '@vonage/vvd-core';
 import { customElement } from 'lit-element';
 import { Drawer as MWCDrawer } from '@material/mwc-drawer';
 
@@ -9,4 +8,4 @@ declare global {
 }
 
 @customElement('vwc-drawer')
-export class VWCDrawer extends MWCDrawer { }
+export class VWCDrawer extends MWCDrawer {}

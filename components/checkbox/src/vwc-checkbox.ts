@@ -1,4 +1,3 @@
-import '@vonage/vvd-core';
 import { customElement } from 'lit-element';
 import { Checkbox as MWCCheckbox } from '@material/mwc-checkbox';
 import { style as vwcCheckboxStyle } from './vwc-checkbox.css';

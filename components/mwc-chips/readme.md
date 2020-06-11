@@ -1,4 +1,4 @@
-# vwc-chip-set
+# mwc-chip-set
 
 ## Properties
 
@@ -11,7 +11,7 @@
 | `type`                    |           | `"action" \| "input" \| "choice" \| "filter" \| undefined` |
 
 
-# vwc-chip
+# mwc-chip
 
 ## Properties
 
@@ -22,17 +22,12 @@
 | `iconClass`               | `string`                                         |
 | `label`                   | `string`                                         |
 | `lineRippleFoundation`    | `MDCLineRippleFoundation \| undefined`           |
-| `outlined`                | `boolean`                                        |
-| `pill`                    | `boolean`                                        |
 | `removable`               | `boolean`                                        |
 | `removeIcon`              | `string`                                         |
 | `removeIconClass`         | `string`                                         |
 | `removeIconFocusable`     | `boolean`                                        |
 | `ripple`                  | `unknown`                                        |
 | `selected`                | `boolean`                                        |
-| `size`                    | `string`                                         |
-| `theme`                   | `string`                                         |
-| `transparent`             | `boolean`                                        |
 | `type`                    | `"action" \| "input" \| "choice" \| "filter" \| undefined` |
 
 ## Methods
