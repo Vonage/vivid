@@ -45,6 +45,7 @@ yarn-error.log
 **/*.tsbuildinfo*
 
 storybook-static
+!**/stories/**/*.js
 
 .cache
 
