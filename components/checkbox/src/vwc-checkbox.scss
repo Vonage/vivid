@@ -1,6 +1,50 @@
 :host {
-	--mdc-checkbox-unchecked-color: var(--vvd-color-base-foreground);
-	/* Required for unchecked focus ripple */
-	--mdc-checkbox-disabled-color: var(--vvd-color-base-dim);
-	--mdc-checkbox-mark-color: var(--vvd-color-secondary-foreground);
+	--mdc-theme-secondary: #131415;
+	--mdc-checkbox-unchecked-color: rgba(194, 196, 204, 1);
+	--mdc-checkbox-disabled-color: rgba(19, 20, 21, 0.3);
+	--mdc-checkbox-mark-color: white;
+}
+
+.mdc-checkbox {
+	padding: 0;
+
+	&:hover,
+	.mdc-checkbox__native-control:focus + .mdc-checkbox__background {
+		--mdc-checkbox-unchecked-color: rgba(155, 157, 163, 1);
+	}
+
+	&,
+	.mdc-checkbox__background,
+	.mdc-checkbox__native-control {
+		height: 22px;
+		width: 22px;
+	}
+
+	.mdc-checkbox__background {
+		border-radius: 4px;
+		border-width: 1px;
+		left: 0;
+		top: 0;
+		transition: border-color 0.2s !important;
+	}
+	
+	.mdc-checkbox__checkmark {
+		height: 14px;
+		left: 3px;
+		top: 3px;
+		width: 14px
+	}
+	
+	.mdc-checkbox__mixedmark {
+		width: 12px;
+	}
+
+	.mdc-checkbox__native-control[disabled]:not(:checked):not(:indeterminate):not([data-indeterminate="true"]) ~ .mdc-checkbox__background {
+		--mdc-checkbox-disabled-color: rgba(225, 226, 230, 1);
+		background-color: #f3f3f5;
+	}
+}
+
+mwc-ripple {
+	display: none;
 }
