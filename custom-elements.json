@@ -576,6 +576,7 @@
     {
       "name": "vwc-menu",
       "path": "./components/menu/vwc-menu.d.ts",
+      "description": "This component is an extension of [<mwc-menu>](https://github.com/material-components/material-components-web-components/tree/master/packages/menu)",
       "properties": [
         {
           "name": "slotElement",
@@ -705,6 +706,7 @@
     {
       "name": "vwc-select",
       "path": "./components/select/vwc-select.d.ts",
+      "description": "This component is an extension of [<mwc-select>](https://github.com/material-components/material-components-web-components/tree/master/packages/select)",
       "properties": [
         {
           "name": "disabled",
