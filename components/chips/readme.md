@@ -1,5 +1,7 @@
 # vwc-chip-set
 
+This component is an extension of [<mwc-chip-set>](https://github.com/material-components/material-components-web-components/tree/master/packages/chips)
+
 ## Properties
 
 | Property                  | Modifiers | Type                                             |
@@ -11,6 +13,8 @@
 
 
 # vwc-chip
+
+This component is an extension of [<mwc-chip>](https://github.com/material-components/material-components-web-components/tree/master/packages/chips)
 
 ## Properties
 
