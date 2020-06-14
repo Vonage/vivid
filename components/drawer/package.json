@@ -1,7 +1,7 @@
 {
 	"name": "@vonage/vwc-drawer",
 	"version": "0.0.12-alpha.0",
-	"description": "> TODO: description",
+	"description": "drawer component",
 	"author": "yinonov <yinon@hotmail.com>",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/drawer#readme",
 	"license": "ISC",

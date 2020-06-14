@@ -1,5 +1,7 @@
 # vwc-textarea
 
+This component is an extension of [<mwc-textarea>](https://github.com/material-components/material-components-web-components/tree/master/packages/textarea)
+
 ## Properties
 
 | Property                  | Modifiers | Type                                             | Description                                      |
