@@ -123,17 +123,6 @@
       "description": "Here is a description of my web component.\nThis component is an extension of [<mwc-button>](https://github.com/material-components/material-components-web-components/tree/master/packages/button)",
       "attributes": [
         {
-          "name": "color",
-          "description": "This is a description of a property with an attribute with exactly the same name: \"color\".",
-          "type": "\"red\"|\"green\"|\"blue\""
-        },
-        {
-          "name": "my-prop",
-          "description": "This is a description of a property with an attribute called \"my-prop\".",
-          "type": "number",
-          "deprecated": true
-        },
-        {
           "name": "disabled",
           "description": "This jsdoc tag documents an attribute.",
           "type": "Boolean"
@@ -150,17 +139,9 @@
       ],
       "properties": [
         {
-          "name": "color",
-          "attribute": "color",
-          "description": "This is a description of a property with an attribute with exactly the same name: \"color\".",
-          "type": "\"red\"|\"green\"|\"blue\""
-        },
-        {
           "name": "myProp",
-          "attribute": "my-prop",
-          "description": "This is a description of a property with an attribute called \"my-prop\".",
-          "type": "number",
-          "deprecated": true
+          "description": "You can use this jsdoc tag to document properties.",
+          "type": "String"
         },
         {
           "name": "value"
@@ -264,17 +245,6 @@
       "description": "Here is a description of my web component.\nThis component is an extension of [<mwc-button>](https://github.com/material-components/material-components-web-components/tree/master/packages/button)",
       "attributes": [
         {
-          "name": "color",
-          "description": "This is a description of a property with an attribute with exactly the same name: \"color\".",
-          "type": "\"red\"|\"green\"|\"blue\""
-        },
-        {
-          "name": "my-prop",
-          "description": "This is a description of a property with an attribute called \"my-prop\".",
-          "type": "number",
-          "deprecated": true
-        },
-        {
           "name": "disabled",
           "description": "This jsdoc tag documents an attribute.",
           "type": "Boolean"
@@ -291,17 +261,9 @@
       ],
       "properties": [
         {
-          "name": "color",
-          "attribute": "color",
-          "description": "This is a description of a property with an attribute with exactly the same name: \"color\".",
-          "type": "\"red\"|\"green\"|\"blue\""
-        },
-        {
           "name": "myProp",
-          "attribute": "my-prop",
-          "description": "This is a description of a property with an attribute called \"my-prop\".",
-          "type": "number",
-          "deprecated": true
+          "description": "You can use this jsdoc tag to document properties.",
+          "type": "String"
         },
         {
           "name": "value"

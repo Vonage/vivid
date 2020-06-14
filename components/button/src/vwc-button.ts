@@ -41,27 +41,25 @@ MWCButton.styles = [styleCoupling, mwcButtonStyle, vwcButtonStyle];
  */
 @customElement('vwc-button')
 export class VWCButton extends MWCButton {
-	static get observedAttributes() {
-		return [
-			/**
-			 * The header text of this element
-			 */
-			'header',
-		];
-	}
-
-	/**
-	 * This is a description of a property with an attribute with exactly the same name: "color".
-	 * @type {"red"|"green"|"blue"}
-	 * @attr
-	 */
-	color = 'red';
-
-	/**
-	 * This is a description of a property with an attribute called "my-prop".
-	 * @type {number}
-	 * @deprecated
-	 * @attr my-prop
-	 */
-	myProp = 10;
+	// static get observedAttributes() {
+	// 	return [
+	// 		/**
+	// 		 * The header text of this element
+	// 		 */
+	// 		'header',
+	// 	];
+	// }
+	// /**
+	//  * This is a description of a property with an attribute with exactly the same name: "color".
+	//  * @type {"red"|"green"|"blue"}
+	//  * @attr
+	//  */
+	// color = 'red';
+	// /**
+	//  * This is a description of a property with an attribute called "my-prop".
+	//  * @type {number}
+	//  * @deprecated
+	//  * @attr my-prop
+	//  */
+	// myProp = 10;
 }
