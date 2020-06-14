@@ -22,5 +22,7 @@ export const basic = () => html`
 
 function anchorClickHandler(event) {
 	const menu = event.target.parentNode.querySelector('#menu');
+	menu.anchor = event.target;
+	menu.corner = 'BOTTOM_START';
 	menu.open = true;
 }
