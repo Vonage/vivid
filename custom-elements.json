@@ -319,6 +319,49 @@
       ]
     },
     {
+      "name": "vwc-fab",
+      "path": "./components/fab/vwc-fab.d.ts",
+      "description": "This component is an extension of [<mwc-fab>](https://github.com/material-components/material-components-web-components/tree/master/packages/fab)",
+      "properties": [
+        {
+          "name": "mini",
+          "type": "boolean"
+        },
+        {
+          "name": "exited",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "extended",
+          "type": "boolean"
+        },
+        {
+          "name": "showIconAtEnd",
+          "type": "boolean"
+        },
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "floatingLabelFoundation",
+          "type": "MDCFloatingLabelFoundation | undefined"
+        },
+        {
+          "name": "lineRippleFoundation",
+          "type": "MDCLineRippleFoundation | undefined"
+        }
+      ]
+    },
+    {
       "name": "vwc-formfield",
       "path": "./components/formfield/vwc-formfield.d.ts",
       "properties": [
