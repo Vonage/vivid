@@ -1,4 +1,3 @@
-import '@vonage/vvd-core';
 import {
 	customElement,
 	LitElement,

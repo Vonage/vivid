@@ -1,14 +1,12 @@
 module.exports = {
-  stories: ['../components/*/stories/*.stories.{js,mdx}'],
-  addons: [
-    'storybook-prebuilt/addon-knobs/register.js',
-    'storybook-prebuilt/addon-docs/register.js',
-    'storybook-prebuilt/addon-viewport/register.js',
-  ],
-  esDevServer: {
-    // custom es-dev-server options
-    nodeResolve: true,
-    watch: true,
-    open: true,
-  },
+	stories: [
+		'../components/**/stories/*.stories.js',
+		'../common/**/stories/*.stories.js'
+	],
+	addons: [
+		'@storybook/addon-a11y',
+		'@storybook/addon-docs',
+		'@storybook/addon-knobs',
+		'@storybook/addon-viewport'
+	]
 };

@@ -1,4 +1,3 @@
-import '@vonage/vvd-core';
 import { customElement } from 'lit-element';
 import { Button as MWCButton } from '@material/mwc-button';
 import { style as vwcButtonStyle } from './vwc-button.css';
@@ -15,5 +14,8 @@ declare global {
 // @ts-ignore
 MWCButton.styles = [styleCoupling, mwcButtonStyle, vwcButtonStyle];
 
+/**
+ * This component is an extension of [<mwc-button>](https://github.com/material-components/material-components-web-components/tree/master/packages/button)
+ */
 @customElement('vwc-button')
 export class VWCButton extends MWCButton {}

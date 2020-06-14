@@ -1,11 +1,23 @@
-# `checkbox`
+# vwc-checkbox
 
-> TODO: description
+This component is an extension of [<mwc-checkbox>](https://github.com/material-components/material-components-web-components/tree/master/packages/checkbox)
 
-## APIs
+## Properties
 
-> TODO: usage
+| Property                  | Modifiers | Type                                      | Description                                      |
+|---------------------------|-----------|-------------------------------------------|--------------------------------------------------|
+| `checked`                 |           | `boolean`                                 |                                                  |
+| `disabled`                |           | `boolean`                                 |                                                  |
+| `floatingLabelFoundation` |           | `MDCFloatingLabelFoundation \| undefined` |                                                  |
+| `indeterminate`           |           | `boolean`                                 |                                                  |
+| `isRippleActive`          | readonly  | `boolean`                                 |                                                  |
+| `lineRippleFoundation`    |           | `MDCLineRippleFoundation \| undefined`    |                                                  |
+| `ripple`                  |           | `Promise<Ripple \| null>`                 | Implement ripple getter for Ripple integration with mwc-formfield |
+| `value`                   |           | `string`                                  |                                                  |
 
-## Example
+## Methods
 
-> TODO: usage example
+| Method         | Type                    |
+|----------------|-------------------------|
+| `click`        | `(): void`              |
+| `setAriaLabel` | `(label: string): void` |

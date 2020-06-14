@@ -23,6 +23,7 @@ yarn-error.log
 # build
 /build
 /_site
+/.out
 **/dist
 *.tgz
 *.log
@@ -44,11 +45,10 @@ yarn-error.log
 **/*.tsbuildinfo*
 
 storybook-static
+!**/stories/**/*.js
 
 .cache
 
-.now
-
 lerna-debug.log
 
-.vercel
+custom-elements.json

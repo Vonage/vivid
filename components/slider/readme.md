@@ -1,15 +1,26 @@
-# `vwc-slider`
+# vwc-slider
 
-`vwc-slider` is an input kind component, allowing to select a value on the range.
+This component is an extension of [<mwc-slider>](https://github.com/material-components/material-components-web-components/tree/master/packages/slider)
 
-## APIs
+## Properties
 
-`vwc-slider` as a module does not provide any APIs for direct consumption. It is required to import the module for a 'side-effect' - component definition:
+| Property                  | Modifiers | Type                                             | Description                                      |
+|---------------------------|-----------|--------------------------------------------------|--------------------------------------------------|
+| `disabled`                |           | `boolean`                                        |                                                  |
+| `floatingLabelFoundation` |           | `MDCFloatingLabelFoundation \| undefined`        |                                                  |
+| `lineRippleFoundation`    |           | `MDCLineRippleFoundation \| undefined`           |                                                  |
+| `markers`                 |           | `boolean`                                        |                                                  |
+| `max`                     |           | `number`                                         |                                                  |
+| `min`                     |           | `number`                                         |                                                  |
+| `pin`                     |           | `boolean`                                        |                                                  |
+| `ripple`                  | readonly  | `RippleInterface \| Promise<RippleInterface \| null> \| undefined` | Implement ripple getter for Ripple integration with mwc-formfield |
+| `step`                    |           | `number`                                         |                                                  |
+| `value`                   |           | `number`                                         |                                                  |
 
-`import '@vonage/vwc-slider';`
+## Methods
 
-TODO: document a component's APIs - properties, methods, events and customization
-
-## Examples
-
-`<vwc-slider value="10" min="0" max="70" step="10" markers></vwc-slider>`
+| Method         | Type                    | Description                                      |
+|----------------|-------------------------|--------------------------------------------------|
+| `click`        | `(): void`              |                                                  |
+| `layout`       | `(): void`              | Layout is called on mousedown / touchstart as the dragging animations of<br />slider are calculated based off of the bounding rect which can change<br />between interactions with this component, and this is the only location<br />in the foundation that udpates the rects. e.g. scrolling horizontally<br />causes adverse effects on the bounding rect vs mouse drag / touchmove<br />location. |
+| `setAriaLabel` | `(label: string): void` |                                                  |

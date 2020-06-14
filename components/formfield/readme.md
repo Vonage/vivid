@@ -1,11 +1,12 @@
-# `formfield`
+# vwc-formfield
 
-> TODO: description
+## Properties
 
-## APIs
-
-> TODO: usage
-
-## Example
-
-> TODO: usage example
+| Property                  | Type                                      |
+|---------------------------|-------------------------------------------|
+| `alignEnd`                | `boolean`                                 |
+| `floatingLabelFoundation` | `MDCFloatingLabelFoundation \| undefined` |
+| `label`                   | `string`                                  |
+| `lineRippleFoundation`    | `MDCLineRippleFoundation \| undefined`    |
+| `nowrap`                  | `boolean`                                 |
+| `spaceBetween`            | `boolean`                                 |

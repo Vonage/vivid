@@ -1,15 +1,18 @@
-# `button`
+# vwc-switch
 
-## vwc-button
+## Properties
 
-hosted on [github packages](https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-npm-for-use-with-github-packages#installing-a-package) at @vonage/vwc-button
+| Property                  | Modifiers | Type                                      | Description                                      |
+|---------------------------|-----------|-------------------------------------------|--------------------------------------------------|
+| `checked`                 |           | `boolean`                                 |                                                  |
+| `disabled`                |           | `boolean`                                 |                                                  |
+| `floatingLabelFoundation` |           | `MDCFloatingLabelFoundation \| undefined` |                                                  |
+| `lineRippleFoundation`    |           | `MDCLineRippleFoundation \| undefined`    |                                                  |
+| `ripple`                  | readonly  | `RippleInterface \| undefined`            | Implement ripple getter for Ripple integration with mwc-formfield |
 
-> TODO: description
+## Methods
 
-## Usage
-
-```
-const button = require('button');
-
-// TODO: DEMONSTRATE API
-```
+| Method         | Type                    |
+|----------------|-------------------------|
+| `click`        | `(): void`              |
+| `setAriaLabel` | `(label: string): void` |

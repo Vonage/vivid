@@ -1,4 +1,3 @@
-import '@vonage/vvd-core';
 import { css, customElement, property, CSSResult } from 'lit-element';
 import { Chip as MWCChip } from '@material/mwc-chips/mwc-chip';
 import { style } from './vwc-chip.css';
@@ -9,6 +8,9 @@ declare global {
 	}
 }
 
+/**
+ * This component is an extension of [<mwc-chip>](https://github.com/material-components/material-components-web-components/tree/master/packages/chips)
+ */
 @customElement('vwc-chip')
 export class VWCChip extends MWCChip {
 	// TODO: discuss prop names
