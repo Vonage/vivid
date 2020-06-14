@@ -1,5 +1,7 @@
 # vwc-slider
 
+This component is an extension of [<mwc-slider>](https://github.com/material-components/material-components-web-components/tree/master/packages/slider)
+
 ## Properties
 
 | Property                  | Modifiers | Type                                             | Description                                      |
