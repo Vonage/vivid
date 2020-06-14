@@ -2,18 +2,18 @@
 
 ## Properties
 
-| Property                  | Type                                             | Description                                      |
-|---------------------------|--------------------------------------------------|--------------------------------------------------|
-| `disabled`                | `boolean`                                        |                                                  |
-| `floatingLabelFoundation` | `MDCFloatingLabelFoundation \| undefined`        |                                                  |
-| `lineRippleFoundation`    | `MDCLineRippleFoundation \| undefined`           |                                                  |
-| `markers`                 | `boolean`                                        |                                                  |
-| `max`                     | `number`                                         |                                                  |
-| `min`                     | `number`                                         |                                                  |
-| `pin`                     | `boolean`                                        |                                                  |
-| `ripple`                  | `RippleInterface \| Promise<RippleInterface \| null> \| undefined` | Implement ripple getter for Ripple integration with mwc-formfield |
-| `step`                    | `number`                                         |                                                  |
-| `value`                   | `number`                                         |                                                  |
+| Property                  | Modifiers | Type                                             | Description                                      |
+|---------------------------|-----------|--------------------------------------------------|--------------------------------------------------|
+| `disabled`                |           | `boolean`                                        |                                                  |
+| `floatingLabelFoundation` |           | `MDCFloatingLabelFoundation \| undefined`        |                                                  |
+| `lineRippleFoundation`    |           | `MDCLineRippleFoundation \| undefined`           |                                                  |
+| `markers`                 |           | `boolean`                                        |                                                  |
+| `max`                     |           | `number`                                         |                                                  |
+| `min`                     |           | `number`                                         |                                                  |
+| `pin`                     |           | `boolean`                                        |                                                  |
+| `ripple`                  | readonly  | `RippleInterface \| Promise<RippleInterface \| null> \| undefined` | Implement ripple getter for Ripple integration with mwc-formfield |
+| `step`                    |           | `number`                                         |                                                  |
+| `value`                   |           | `number`                                         |                                                  |
 
 ## Methods
 

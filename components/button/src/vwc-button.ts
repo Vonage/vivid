@@ -15,14 +15,7 @@ declare global {
 MWCButton.styles = [styleCoupling, mwcButtonStyle, vwcButtonStyle];
 
 /**
- * Here is a description of my web component.
  * This component is an extension of [<mwc-button>](https://github.com/material-components/material-components-web-components/tree/master/packages/button)
- *
- * @element vwc-button
- *
- * @attr {Boolean} unelevated - default state (background)
- * @attr {Boolean} outlined - outlined flavor (border, no background)
- * @attr {Boolean} disabled - disabled view
  */
 @customElement('vwc-button')
 export class VWCButton extends MWCButton {}

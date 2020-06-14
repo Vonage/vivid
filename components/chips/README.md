@@ -7,7 +7,6 @@
 | `chips`                   | readonly  | `readonly ChipBase[]`                            |
 | `floatingLabelFoundation` |           | `MDCFloatingLabelFoundation \| undefined`        |
 | `lineRippleFoundation`    |           | `MDCLineRippleFoundation \| undefined`           |
-| `ripple`                  |           | `unknown`                                        |
 | `type`                    |           | `"action" \| "input" \| "choice" \| "filter" \| undefined` |
 
 
@@ -28,7 +27,6 @@
 | `removeIcon`              | `string`                                         |
 | `removeIconClass`         | `string`                                         |
 | `removeIconFocusable`     | `boolean`                                        |
-| `ripple`                  | `unknown`                                        |
 | `selected`                | `boolean`                                        |
 | `size`                    | `string`                                         |
 | `theme`                   | `string`                                         |

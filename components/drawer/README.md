@@ -8,5 +8,4 @@
 | `hasHeader`               | `boolean`                                 |
 | `lineRippleFoundation`    | `MDCLineRippleFoundation \| undefined`    |
 | `open`                    | `boolean`                                 |
-| `ripple`                  | `unknown`                                 |
 | `type`                    | `string`                                  |

@@ -16,7 +16,7 @@
 | `naturalMenuWidth`        |           | `boolean`                                        |                                                  |
 | `outlined`                |           | `boolean`                                        |                                                  |
 | `required`                |           | `boolean`                                        |                                                  |
-| `ripple`                  |           | `RippleInterface \| Promise<RippleInterface \| null> \| undefined` | Implement ripple getter for Ripple integration with mwc-formfield |
+| `ripple`                  | readonly  | `RippleInterface \| Promise<RippleInterface \| null> \| undefined` | Implement ripple getter for Ripple integration with mwc-formfield |
 | `selected`                | readonly  | `ListItemBase \| null`                           |                                                  |
 | `validateOnInitialRender` |           | `boolean`                                        |                                                  |
 | `validationMessage`       |           | `string`                                         |                                                  |

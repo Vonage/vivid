@@ -43,7 +43,6 @@
 | `lineRippleFoundation`    |           | `MDCLineRippleFoundation \| undefined`    |
 | `multi`                   |           | `boolean`                                 |
 | `noninteractive`          |           | `boolean`                                 |
-| `ripple`                  |           | `unknown`                                 |
 | `rootTabbable`            |           | `boolean`                                 |
 | `selected`                | readonly  | `ListItemBase \| ListItemBase[] \| null`  |
 | `wrapFocus`               |           | `boolean`                                 |

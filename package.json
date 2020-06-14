@@ -38,8 +38,8 @@
 		"dev:server": "es-dev-server --config es-dev-server.config.js",
 		"git:clean": "git clean -xdf",
 		"watch": "node scripts/watcher.js",
-		"wca:readme": "web-component-analyzer analyze \"components/**/*.{js,ts}\" --outFiles {dir}/readme.md",
-		"wca:custom-elements": "web-component-analyzer analyze components/**/*.{js,ts} --outFile custom-elements.json"
+		"wca:readme": "yarn compile && wca analyze components/**/*.d.ts --outFiles {dir}/readme.md",
+		"wca:custom-elements": "yarn compile && wca analyze components/**/*.d.ts --outFile custom-elements.json"
 	},
 	"dependencies": {
 		"lit-html": "^1.2.1",

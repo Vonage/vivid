@@ -12,7 +12,6 @@
 | `lineRippleFoundation`    | `MDCLineRippleFoundation \| undefined`    |
 | `progress`                | `number`                                  |
 | `reverse`                 | `boolean`                                 |
-| `ripple`                  | `unknown`                                 |
 
 ## Methods
 

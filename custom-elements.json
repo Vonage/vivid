@@ -2,6 +2,132 @@
   "version": "experimental",
   "tags": [
     {
+      "name": "vwc-anchor",
+      "path": "./components/anchor/vwc-anchor.d.ts",
+      "properties": [
+        {
+          "name": "floatingLabelFoundation",
+          "type": "MDCFloatingLabelFoundation | undefined"
+        },
+        {
+          "name": "lineRippleFoundation",
+          "type": "MDCLineRippleFoundation | undefined"
+        }
+      ]
+    },
+    {
+      "name": "vwc-app",
+      "path": "./components/app/vwc-app.d.ts",
+      "properties": [
+        {
+          "name": "floatingLabelFoundation",
+          "type": "MDCFloatingLabelFoundation | undefined"
+        },
+        {
+          "name": "lineRippleFoundation",
+          "type": "MDCLineRippleFoundation | undefined"
+        }
+      ]
+    },
+    {
+      "name": "vwc-button",
+      "path": "./components/button/vwc-button.d.ts",
+      "description": "This component is an extension of [<mwc-button>](https://github.com/material-components/material-components-web-components/tree/master/packages/button)",
+      "properties": [
+        {
+          "name": "raised",
+          "type": "boolean"
+        },
+        {
+          "name": "unelevated",
+          "type": "boolean"
+        },
+        {
+          "name": "outlined",
+          "type": "boolean"
+        },
+        {
+          "name": "dense",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "trailingIcon",
+          "type": "boolean"
+        },
+        {
+          "name": "fullwidth",
+          "type": "boolean"
+        },
+        {
+          "name": "icon",
+          "type": "string"
+        },
+        {
+          "name": "label",
+          "type": "string"
+        },
+        {
+          "name": "buttonElement",
+          "type": "HTMLElement"
+        },
+        {
+          "name": "ripple",
+          "type": "Promise<Ripple | null>"
+        },
+        {
+          "name": "floatingLabelFoundation",
+          "type": "MDCFloatingLabelFoundation | undefined"
+        },
+        {
+          "name": "lineRippleFoundation",
+          "type": "MDCLineRippleFoundation | undefined"
+        }
+      ]
+    },
+    {
+      "name": "vwc-checkbox",
+      "path": "./components/checkbox/vwc-checkbox.d.ts",
+      "properties": [
+        {
+          "name": "checked",
+          "type": "boolean"
+        },
+        {
+          "name": "indeterminate",
+          "type": "boolean"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean"
+        },
+        {
+          "name": "value",
+          "type": "string"
+        },
+        {
+          "name": "isRippleActive",
+          "type": "boolean"
+        },
+        {
+          "name": "ripple",
+          "description": "Implement ripple getter for Ripple integration with mwc-formfield",
+          "type": "Promise<Ripple | null>"
+        },
+        {
+          "name": "floatingLabelFoundation",
+          "type": "MDCFloatingLabelFoundation | undefined"
+        },
+        {
+          "name": "lineRippleFoundation",
+          "type": "MDCLineRippleFoundation | undefined"
+        }
+      ]
+    },
+    {
       "name": "mwc-chip-set",
       "path": "./components/mwc-chips/mwc-chip-set.d.ts",
       "properties": [
@@ -14,8 +140,26 @@
           "type": "readonly ChipBase[]"
         },
         {
-          "name": "ripple",
-          "type": "unknown"
+          "name": "floatingLabelFoundation",
+          "type": "MDCFloatingLabelFoundation | undefined"
+        },
+        {
+          "name": "lineRippleFoundation",
+          "type": "MDCLineRippleFoundation | undefined"
+        }
+      ]
+    },
+    {
+      "name": "vwc-chip-set",
+      "path": "./components/chips/vwc-chip-set.d.ts",
+      "properties": [
+        {
+          "name": "type",
+          "type": "\"action\" | \"input\" | \"choice\" | \"filter\" | undefined"
+        },
+        {
+          "name": "chips",
+          "type": "readonly ChipBase[]"
         },
         {
           "name": "floatingLabelFoundation",
@@ -66,355 +210,6 @@
         {
           "name": "removeIconFocusable",
           "type": "boolean"
-        },
-        {
-          "name": "ripple",
-          "type": "unknown"
-        },
-        {
-          "name": "floatingLabelFoundation",
-          "type": "MDCFloatingLabelFoundation | undefined"
-        },
-        {
-          "name": "lineRippleFoundation",
-          "type": "MDCLineRippleFoundation | undefined"
-        }
-      ]
-    },
-    {
-      "name": "vwc-anchor",
-      "path": "./components/anchor/vwc-anchor.d.ts",
-      "properties": [
-        {
-          "name": "ripple",
-          "type": "unknown"
-        },
-        {
-          "name": "floatingLabelFoundation",
-          "type": "MDCFloatingLabelFoundation | undefined"
-        },
-        {
-          "name": "lineRippleFoundation",
-          "type": "MDCLineRippleFoundation | undefined"
-        }
-      ]
-    },
-    {
-      "name": "vwc-app",
-      "path": "./components/app/vwc-app.d.ts",
-      "properties": [
-        {
-          "name": "ripple",
-          "type": "unknown"
-        },
-        {
-          "name": "floatingLabelFoundation",
-          "type": "MDCFloatingLabelFoundation | undefined"
-        },
-        {
-          "name": "lineRippleFoundation",
-          "type": "MDCLineRippleFoundation | undefined"
-        }
-      ]
-    },
-    {
-      "name": "vwc-button",
-      "path": "./components/button/vwc-button.d.ts",
-      "description": "Here is a description of my web component.\nThis component is an extension of [<mwc-button>](https://github.com/material-components/material-components-web-components/tree/master/packages/button)",
-      "attributes": [
-        {
-          "name": "disabled",
-          "description": "This jsdoc tag documents an attribute.",
-          "type": "Boolean"
-        },
-        {
-          "name": "switch",
-          "description": "Here is an attribute with either the \"on\" or \"off\" value.",
-          "type": "on|off"
-        },
-        {
-          "name": "my-attr",
-          "default": "\"default value\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "myProp",
-          "description": "You can use this jsdoc tag to document properties.",
-          "type": "String"
-        },
-        {
-          "name": "value"
-        },
-        {
-          "name": "raised",
-          "type": "boolean"
-        },
-        {
-          "name": "unelevated",
-          "type": "boolean"
-        },
-        {
-          "name": "outlined",
-          "type": "boolean"
-        },
-        {
-          "name": "dense",
-          "type": "boolean"
-        },
-        {
-          "name": "disabled",
-          "attribute": "disabled",
-          "description": "This jsdoc tag documents an attribute.",
-          "type": "Boolean"
-        },
-        {
-          "name": "trailingIcon",
-          "type": "boolean"
-        },
-        {
-          "name": "fullwidth",
-          "type": "boolean"
-        },
-        {
-          "name": "icon",
-          "type": "string"
-        },
-        {
-          "name": "label",
-          "type": "string"
-        },
-        {
-          "name": "buttonElement",
-          "type": "HTMLElement"
-        },
-        {
-          "name": "ripple",
-          "type": "Promise<Ripple | null>"
-        },
-        {
-          "name": "floatingLabelFoundation",
-          "type": "MDCFloatingLabelFoundation | undefined"
-        },
-        {
-          "name": "lineRippleFoundation",
-          "type": "MDCLineRippleFoundation | undefined"
-        }
-      ],
-      "events": [
-        {
-          "name": "change",
-          "description": "This jsdoc tag makes it possible to document events."
-        },
-        {
-          "name": "submit"
-        }
-      ],
-      "slots": [
-        {
-          "name": "",
-          "description": "This is an unnamed slot (the default slot)"
-        },
-        {
-          "name": "start",
-          "description": "This is a slot named \"start\"."
-        },
-        {
-          "name": "end"
-        }
-      ],
-      "cssProperties": [
-        {
-          "name": "--main-bg-color",
-          "description": "This jsdoc tag can be used to document css custom properties."
-        },
-        {
-          "name": "--main-color",
-          "default": "\"red\""
-        }
-      ],
-      "cssParts": [
-        {
-          "name": "container"
-        }
-      ]
-    },
-    {
-      "name": "my-element",
-      "path": "./components/button/vwc-button.d.ts",
-      "description": "Here is a description of my web component.\nThis component is an extension of [<mwc-button>](https://github.com/material-components/material-components-web-components/tree/master/packages/button)",
-      "attributes": [
-        {
-          "name": "disabled",
-          "description": "This jsdoc tag documents an attribute.",
-          "type": "Boolean"
-        },
-        {
-          "name": "switch",
-          "description": "Here is an attribute with either the \"on\" or \"off\" value.",
-          "type": "on|off"
-        },
-        {
-          "name": "my-attr",
-          "default": "\"default value\""
-        }
-      ],
-      "properties": [
-        {
-          "name": "myProp",
-          "description": "You can use this jsdoc tag to document properties.",
-          "type": "String"
-        },
-        {
-          "name": "value"
-        },
-        {
-          "name": "raised",
-          "type": "boolean"
-        },
-        {
-          "name": "unelevated",
-          "type": "boolean"
-        },
-        {
-          "name": "outlined",
-          "type": "boolean"
-        },
-        {
-          "name": "dense",
-          "type": "boolean"
-        },
-        {
-          "name": "disabled",
-          "attribute": "disabled",
-          "description": "This jsdoc tag documents an attribute.",
-          "type": "Boolean"
-        },
-        {
-          "name": "trailingIcon",
-          "type": "boolean"
-        },
-        {
-          "name": "fullwidth",
-          "type": "boolean"
-        },
-        {
-          "name": "icon",
-          "type": "string"
-        },
-        {
-          "name": "label",
-          "type": "string"
-        },
-        {
-          "name": "buttonElement",
-          "type": "HTMLElement"
-        },
-        {
-          "name": "ripple",
-          "type": "Promise<Ripple | null>"
-        },
-        {
-          "name": "floatingLabelFoundation",
-          "type": "MDCFloatingLabelFoundation | undefined"
-        },
-        {
-          "name": "lineRippleFoundation",
-          "type": "MDCLineRippleFoundation | undefined"
-        }
-      ],
-      "events": [
-        {
-          "name": "change",
-          "description": "This jsdoc tag makes it possible to document events."
-        },
-        {
-          "name": "submit"
-        }
-      ],
-      "slots": [
-        {
-          "name": "",
-          "description": "This is an unnamed slot (the default slot)"
-        },
-        {
-          "name": "start",
-          "description": "This is a slot named \"start\"."
-        },
-        {
-          "name": "end"
-        }
-      ],
-      "cssProperties": [
-        {
-          "name": "--main-bg-color",
-          "description": "This jsdoc tag can be used to document css custom properties."
-        },
-        {
-          "name": "--main-color",
-          "default": "\"red\""
-        }
-      ],
-      "cssParts": [
-        {
-          "name": "container"
-        }
-      ]
-    },
-    {
-      "name": "vwc-checkbox",
-      "path": "./components/checkbox/vwc-checkbox.d.ts",
-      "properties": [
-        {
-          "name": "checked",
-          "type": "boolean"
-        },
-        {
-          "name": "indeterminate",
-          "type": "boolean"
-        },
-        {
-          "name": "disabled",
-          "type": "boolean"
-        },
-        {
-          "name": "value",
-          "type": "string"
-        },
-        {
-          "name": "isRippleActive",
-          "type": "boolean"
-        },
-        {
-          "name": "ripple",
-          "description": "Implement ripple getter for Ripple integration with mwc-formfield",
-          "type": "Promise<Ripple | null>"
-        },
-        {
-          "name": "floatingLabelFoundation",
-          "type": "MDCFloatingLabelFoundation | undefined"
-        },
-        {
-          "name": "lineRippleFoundation",
-          "type": "MDCLineRippleFoundation | undefined"
-        }
-      ]
-    },
-    {
-      "name": "vwc-chip-set",
-      "path": "./components/chips/vwc-chip-set.d.ts",
-      "properties": [
-        {
-          "name": "type",
-          "type": "\"action\" | \"input\" | \"choice\" | \"filter\" | undefined"
-        },
-        {
-          "name": "chips",
-          "type": "readonly ChipBase[]"
-        },
-        {
-          "name": "ripple",
-          "type": "unknown"
         },
         {
           "name": "floatingLabelFoundation",
@@ -487,10 +282,6 @@
           "type": "boolean"
         },
         {
-          "name": "ripple",
-          "type": "unknown"
-        },
-        {
           "name": "floatingLabelFoundation",
           "type": "MDCFloatingLabelFoundation | undefined"
         },
@@ -515,10 +306,6 @@
         {
           "name": "type",
           "type": "string"
-        },
-        {
-          "name": "ripple",
-          "type": "unknown"
         },
         {
           "name": "floatingLabelFoundation",
@@ -549,10 +336,6 @@
         {
           "name": "label",
           "type": "string"
-        },
-        {
-          "name": "ripple",
-          "type": "unknown"
         },
         {
           "name": "floatingLabelFoundation",
@@ -593,10 +376,6 @@
           "type": "string"
         },
         {
-          "name": "ripple",
-          "type": "unknown"
-        },
-        {
           "name": "floatingLabelFoundation",
           "type": "MDCFloatingLabelFoundation | undefined"
         },
@@ -610,6 +389,10 @@
       "name": "vwc-list-item",
       "path": "./components/list/vwc-list-item.d.ts",
       "properties": [
+        {
+          "name": "ripple",
+          "type": "Promise<Ripple | null>"
+        },
         {
           "name": "value",
           "type": "string"
@@ -653,10 +436,6 @@
         {
           "name": "text",
           "type": "string"
-        },
-        {
-          "name": "ripple",
-          "type": "Promise<Ripple | null>"
         },
         {
           "name": "floatingLabelFoundation",
@@ -724,10 +503,6 @@
         {
           "name": "index",
           "type": "MWCListIndex"
-        },
-        {
-          "name": "ripple",
-          "type": "unknown"
         },
         {
           "name": "floatingLabelFoundation",
@@ -835,10 +610,6 @@
           "type": "MenuSurface"
         },
         {
-          "name": "ripple",
-          "type": "unknown"
-        },
-        {
           "name": "floatingLabelFoundation",
           "type": "MDCFloatingLabelFoundation | undefined"
         },
@@ -871,10 +642,6 @@
         {
           "name": "schemes",
           "type": "SchemeOption[]"
-        },
-        {
-          "name": "ripple",
-          "type": "unknown"
         },
         {
           "name": "floatingLabelFoundation",

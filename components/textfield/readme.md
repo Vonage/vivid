@@ -27,7 +27,7 @@
 | `prefix`                  |           | `string`                                         |                                                  |
 | `readOnly`                |           | `boolean`                                        |                                                  |
 | `required`                |           | `boolean`                                        |                                                  |
-| `ripple`                  |           | `RippleInterface \| Promise<RippleInterface \| null> \| undefined` | Implement ripple getter for Ripple integration with mwc-formfield |
+| `ripple`                  | readonly  | `RippleInterface \| Promise<RippleInterface \| null> \| undefined` | Implement ripple getter for Ripple integration with mwc-formfield |
 | `selectionEnd`            | readonly  | `number \| null`                                 |                                                  |
 | `selectionStart`          | readonly  | `number \| null`                                 |                                                  |
 | `size`                    |           | `number \| null`                                 |                                                  |

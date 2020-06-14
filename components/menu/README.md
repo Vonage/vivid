@@ -21,7 +21,6 @@
 | `multi`                   |           | `boolean`                                        |                                                  |
 | `open`                    |           | `boolean`                                        |                                                  |
 | `quick`                   |           | `boolean`                                        |                                                  |
-| `ripple`                  |           | `unknown`                                        |                                                  |
 | `selected`                | readonly  | `ListItemBase \| ListItemBase[] \| null`         |                                                  |
 | `slotElement`             |           | `HTMLSlotElement \| null`                        |                                                  |
 | `wrapFocus`               |           | `boolean`                                        |                                                  |

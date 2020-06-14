@@ -6,5 +6,4 @@
 |---------------------------|-------------------------------------------|
 | `floatingLabelFoundation` | `MDCFloatingLabelFoundation \| undefined` |
 | `lineRippleFoundation`    | `MDCLineRippleFoundation \| undefined`    |
-| `ripple`                  | `unknown`                                 |
 | `schemes`                 | `SchemeOption[]`                          |

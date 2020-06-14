@@ -14,5 +14,8 @@ declare global {
 // @ts-ignore
 MWCCheckbox.styles = [styleCoupling, mwcCheckboxStyle, vwcCheckboxStyle];
 
+/**
+ * This component is an extension of [<mwc-checkbox>](https://github.com/material-components/material-components-web-components/tree/master/packages/checkbox)
+ */
 @customElement('vwc-checkbox')
 export class VWCCheckbox extends MWCCheckbox {}

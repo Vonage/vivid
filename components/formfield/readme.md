@@ -9,5 +9,4 @@
 | `label`                   | `string`                                  |
 | `lineRippleFoundation`    | `MDCLineRippleFoundation \| undefined`    |
 | `nowrap`                  | `boolean`                                 |
-| `ripple`                  | `unknown`                                 |
 | `spaceBetween`            | `boolean`                                 |

@@ -2,13 +2,13 @@
 
 ## Properties
 
-| Property                  | Type                                      | Description                                      |
-|---------------------------|-------------------------------------------|--------------------------------------------------|
-| `checked`                 | `boolean`                                 |                                                  |
-| `disabled`                | `boolean`                                 |                                                  |
-| `floatingLabelFoundation` | `MDCFloatingLabelFoundation \| undefined` |                                                  |
-| `lineRippleFoundation`    | `MDCLineRippleFoundation \| undefined`    |                                                  |
-| `ripple`                  | `RippleInterface \| undefined`            | Implement ripple getter for Ripple integration with mwc-formfield |
+| Property                  | Modifiers | Type                                      | Description                                      |
+|---------------------------|-----------|-------------------------------------------|--------------------------------------------------|
+| `checked`                 |           | `boolean`                                 |                                                  |
+| `disabled`                |           | `boolean`                                 |                                                  |
+| `floatingLabelFoundation` |           | `MDCFloatingLabelFoundation \| undefined` |                                                  |
+| `lineRippleFoundation`    |           | `MDCLineRippleFoundation \| undefined`    |                                                  |
+| `ripple`                  | readonly  | `RippleInterface \| undefined`            | Implement ripple getter for Ripple integration with mwc-formfield |
 
 ## Methods
 
