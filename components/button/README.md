@@ -1,6 +1,7 @@
 # vwc-button
 
 Here is a description of my web component.
+This component is an extension of [<mwc-button>](https://github.com/material-components/material-components-web-components/tree/master/packages/button)
 
 ## Attributes
 
@@ -14,7 +15,6 @@ Here is a description of my web component.
 | Property                  | Attribute  | Type                                      | Description                                      |
 |---------------------------|------------|-------------------------------------------|--------------------------------------------------|
 | `buttonElement`           |            | `HTMLElement`                             |                                                  |
-| `color`                   | `color`    | `"red"\|"green"\|"blue"`                  | This is a description of a property with an attribute with exactly the same name: "color". |
 | `dense`                   |            | `boolean`                                 |                                                  |
 | `disabled`                | `disabled` | `Boolean`                                 | This jsdoc tag documents an attribute.           |
 | `floatingLabelFoundation` |            | `MDCFloatingLabelFoundation \| undefined` |                                                  |
@@ -22,7 +22,7 @@ Here is a description of my web component.
 | `icon`                    |            | `string`                                  |                                                  |
 | `label`                   |            | `string`                                  |                                                  |
 | `lineRippleFoundation`    |            | `MDCLineRippleFoundation \| undefined`    |                                                  |
-| `myProp`                  | `my-prop`  | `number`                                  | This is a description of a property with an attribute called "my-prop". |
+| `myProp`                  |            | `String`                                  | You can use this jsdoc tag to document properties. |
 | `outlined`                |            | `boolean`                                 |                                                  |
 | `raised`                  |            | `boolean`                                 |                                                  |
 | `ripple`                  |            | `Promise<Ripple \| null>`                 |                                                  |
@@ -69,6 +69,7 @@ Here is a description of my web component.
 # my-element
 
 Here is a description of my web component.
+This component is an extension of [<mwc-button>](https://github.com/material-components/material-components-web-components/tree/master/packages/button)
 
 ## Attributes
 
@@ -82,7 +83,6 @@ Here is a description of my web component.
 | Property                  | Attribute  | Type                                      | Description                                      |
 |---------------------------|------------|-------------------------------------------|--------------------------------------------------|
 | `buttonElement`           |            | `HTMLElement`                             |                                                  |
-| `color`                   | `color`    | `"red"\|"green"\|"blue"`                  | This is a description of a property with an attribute with exactly the same name: "color". |
 | `dense`                   |            | `boolean`                                 |                                                  |
 | `disabled`                | `disabled` | `Boolean`                                 | This jsdoc tag documents an attribute.           |
 | `floatingLabelFoundation` |            | `MDCFloatingLabelFoundation \| undefined` |                                                  |
@@ -90,7 +90,7 @@ Here is a description of my web component.
 | `icon`                    |            | `string`                                  |                                                  |
 | `label`                   |            | `string`                                  |                                                  |
 | `lineRippleFoundation`    |            | `MDCLineRippleFoundation \| undefined`    |                                                  |
-| `myProp`                  | `my-prop`  | `number`                                  | This is a description of a property with an attribute called "my-prop". |
+| `myProp`                  |            | `String`                                  | You can use this jsdoc tag to document properties. |
 | `outlined`                |            | `boolean`                                 |                                                  |
 | `raised`                  |            | `boolean`                                 |                                                  |
 | `ripple`                  |            | `Promise<Ripple \| null>`                 |                                                  |

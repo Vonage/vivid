@@ -8,17 +8,16 @@ export default {
 	decorators: [withA11y]
 }
 
-export const unelevated = () => html`
+export const basic = () => html`
+	<h3>Unelevated</h3>
 	<vwc-button unelevated>Unelevated</vwc-button>
 	<vwc-button unelevated icon="code">Unelevated</vwc-button>
-`;
 
-export const outlined = () => html`
+	<h3>Outlined</h3>
 	<vwc-button outlined>Outlined</vwc-button>
 	<vwc-button outlined icon="code">Outlined</vwc-button>
-`;
 
-export const disabled = () => html`
+	<h3>Disabled</h3>
 	<vwc-button disabled unelevated icon="code">Disabled</vwc-button>
 	<vwc-button disabled outlined icon="code">Disabled</vwc-button>
 `;
