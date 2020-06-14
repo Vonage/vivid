@@ -8,6 +8,9 @@ declare global {
 	}
 }
 
+/**
+ * This component is an extension of [<mwc-chip-set>](https://github.com/material-components/material-components-web-components/tree/master/packages/chips)
+ */
 @customElement('vwc-chip-set')
 export class VWCChipSet extends MWCChipSet {
 	static get styles(): CSSResult {

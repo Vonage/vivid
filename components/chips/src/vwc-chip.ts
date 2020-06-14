@@ -8,6 +8,9 @@ declare global {
 	}
 }
 
+/**
+ * This component is an extension of [<mwc-chip>](https://github.com/material-components/material-components-web-components/tree/master/packages/chips)
+ */
 @customElement('vwc-chip')
 export class VWCChip extends MWCChip {
 	// TODO: discuss prop names
