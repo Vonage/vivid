@@ -1,5 +1,7 @@
 # vwc-checkbox
 
+This component is an extension of [<mwc-checkbox>](https://github.com/material-components/material-components-web-components/tree/master/packages/checkbox)
+
 ## Properties
 
 | Property                  | Modifiers | Type                                      | Description                                      |
