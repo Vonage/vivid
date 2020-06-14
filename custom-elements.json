@@ -435,6 +435,7 @@
     {
       "name": "vwc-list-item",
       "path": "./components/list/vwc-list-item.d.ts",
+      "description": "This component is an extension of [<mwc-list-item>](https://github.com/material-components/material-components-web-components/tree/master/packages/list)",
       "properties": [
         {
           "name": "ripple",
@@ -506,6 +507,7 @@
     {
       "name": "vwc-list",
       "path": "./components/list/vwc-list.d.ts",
+      "description": "This component is an extension of [<mwc-list>](https://github.com/material-components/material-components-web-components/tree/master/packages/list)",
       "properties": [
         {
           "name": "activatable",
@@ -808,6 +810,7 @@
     {
       "name": "vwc-slider",
       "path": "./components/slider/vwc-slider.d.ts",
+      "description": "This component is an extension of [<mwc-slider>](https://github.com/material-components/material-components-web-components/tree/master/packages/slider)",
       "properties": [
         {
           "name": "min",

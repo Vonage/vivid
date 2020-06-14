@@ -1,5 +1,7 @@
 # vwc-menu
 
+This component is an extension of [<mwc-menu>](https://github.com/material-components/material-components-web-components/tree/master/packages/menu)
+
 ## Properties
 
 | Property                  | Modifiers | Type                                             | Description                                      |
