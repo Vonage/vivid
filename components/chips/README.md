@@ -20,59 +20,70 @@ npm install @vonage/vwc-chips
 <vwc-chip label="Chip"></vwc-chip>
 ```
 
-### Size
+### Chip Sets
 
 <!-- ![](images/image.png) -->
 
 ```html
+<vwc-chip-set>
+  <vwc-chip label="Chip One"></vwc-chip>
+  <vwc-chip label="Chip Two"></vwc-chip>
+</vwc-chip-set>
+```
+
+<!-- ### Size -->
+
+<!-- ![](images/image.png) -->
+
+<!-- ```html
 <vwc-chip-set>
   <vwc-chip small label="small"></vwc-chip>
   <vwc-chip label="default"></vwc-chip>
   <vwc-chip large label="large"></vwc-chip>
 </vwc-chip-set>
-```
+``` -->
 
-### Theme
+<!-- ### Theme -->
 
 <!-- ![](images/image.png) -->
 
-```html
+<!-- ```html
 <vwc-chip-set>
   <vwc-chip theme="black" label="black"></vwc-chip>
   <vwc-chip theme="red" label="red"></vwc-chip>
 </vwc-chip-set>
-```
+``` -->
 
-### Pill
+<!-- ### Pill -->
 
 <!-- ![](images/image.png) -->
 
-```html
+<!-- ```html
 <vwc-chip pill label="pill"></vwc-chip>
-```
+``` -->
 
-### Outlined
+<!-- ### Outlined -->
 
 <!-- ![](images/image.png) -->
 
-```html
+<!-- ```html
 <vwc-chip outlined label="outlined"></vwc-chip>
-```
+``` -->
 
-### Transparent
+<!-- ### Transparent -->
 
 <!-- ![](images/image.png) -->
 
-```html
+<!-- ```html
 <vwc-chip transparent label="transparent"></vwc-chip>
-```
+``` -->
 
 ### Removable
 
 <!-- ![](images/image.png) -->
 
 ```html
-<vwc-chip removable label="removable"></vwc-chip>
+<vwc-chip removable label="Removable"></vwc-chip>
 ```
 
 ## API
@@ -86,12 +97,13 @@ npm install @vonage/vwc-chips
 | Name | Type | Default | Description
 | ---- | ---- | ------- | -----------
 | `label` | `string` | `''` | Label to display for the chip.
-| `size` | `string` | `''` | Changes size of chip text and container.
-| `theme` | `string` | `''` | Changes theme of chip.
-| `pill` | `boolean` | `false` | creates a chip with 50% rounded corners.
 | `removable` | `boolean` | `false` | When `true`, a close icon will display after `label` and the chip will be removable by the delete or backspace key.
-| `outlined` | `boolean` | `false` | Creates an outlined chip.
-| `transparent` | `boolean` | `false` | Creates a transparent chip.
+
+<!-- | `size` | `string` | `''` | Changes size of chip text and container.
+| `theme` | `string` | `''` | Changes theme of chip.
+| `pill` | `boolean` | `false` | creates a chip with 50% rounded corners. -->
+<!-- | `outlined` | `boolean` | `false` | Creates an outlined chip.
+| `transparent` | `boolean` | `false` | Creates a transparent chip. -->
 
 ### Methods
 *None*
@@ -100,17 +112,18 @@ npm install @vonage/vwc-chips
 
 | Event Name | Target | Detail | Description
 | ---------- | ------ | ------ | -----------
-| `MDCChip:selection` | `vwc-chip` | chipId, selected, shouldIgnore | Fired chip selected.
-| `MDCChip:removal` | `vwc-chip` | chipId, key, source | Fired chip remove.
+| `MDCChip:removal` | `vwc-chip` | chipId | Fired chip remove.
 
-#### Size values
+<!-- | `MDCChip:selection` | `vwc-chip` | chipId | Fired chip selected. -->
+
+<!-- #### Size values
 
 | Size
 | ----
 | `small`
-| `large`
+| `large` -->
 
-#### Theme values
+<!-- #### Theme values
 
 | Theme
 | -----
@@ -122,7 +135,7 @@ npm install @vonage/vwc-chips
 | `purple`
 | `red`
 | `white`
-| `yellow`
+| `yellow` -->
 
 ## Additional references
 
