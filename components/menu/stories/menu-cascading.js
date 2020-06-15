@@ -5,13 +5,13 @@ export const cascading = () => html`
 		<vwc-fab id="context-menu-anchor" style="display: inline-flex" mini icon="more_vert" @click="${anchorAClickHandler}"></vwc-fab>
 		<vwc-menu id="context-menu-base">
 			<vwc-list-item>Root menu item A</vwc-list-item>
-			<vwc-list-item>Root menu item B</vwc-list-item>
+			<vwc-list-item disabled>Root menu item B</vwc-list-item>
 			<vwc-list-item>Root menu item C</vwc-list-item>
 			<li divider role="separator"></li>
-			<vwc-list-item id="nested-menu-anchor" @click="${anchorBClickHandler}">Root menu item D ...</vwc-list-item>
+			<vwc-list-item id="nested-menu-anchor" @click="${anchorBClickHandler}" cascader>Root menu item D ...</vwc-list-item>
 			<vwc-list-item>Root menu item E</vwc-list-item>
 		</vwc-menu>
-		<vwc-menu id="context-menu-nested">
+		<vwc-menu id="context-menu-nested" fixed>
 			<vwc-list-item graphic="icon" twoline>
 				Nested menu item A
 				<span slot="secondary">Secondary line</span>
@@ -46,8 +46,4 @@ function anchorBClickHandler(event) {
 	menu.anchor = anchor;
 	menu.corner = 'TOP_END';
 	menu.open = true;
-	console.dir(event);
-	event.preventDefault();
-	event.stopPropagation();
-	return false;
 }

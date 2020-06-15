@@ -1,3 +1,4 @@
+import { ActionDetail } from '@material/mwc-list/mwc-list-foundation.js';
 import { Menu as MWCMenu } from '@material/mwc-menu';
 import { customElement } from 'lit-element';
 //import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
@@ -17,4 +18,11 @@ MWCMenu.styles = [mwcMenuStyle];
  * This component is an extension of [<mwc-menu>](https://github.com/material-components/material-components-web-components/tree/master/packages/menu)
  */
 @customElement('vwc-menu')
-export class VWCMenu extends MWCMenu {}
+export class VWCMenu extends MWCMenu {
+	protected onAction(evt: CustomEvent<ActionDetail>) {
+		const hitItem = (evt.target as MWCMenu).items[evt.detail.index];
+		if (!hitItem || !hitItem.hasAttribute('cascader')) {
+			super.onAction(evt);
+		}
+	}
+}
