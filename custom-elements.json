@@ -373,6 +373,21 @@
       ]
     },
     {
+      "name": "vwc-icon",
+      "path": "./components/icon/vwc-icon.d.ts",
+      "description": "This component is an extension of [<mwc-icon>](https://github.com/material-components/material-components-web-components/tree/master/packages/icon)",
+      "properties": [
+        {
+          "name": "floatingLabelFoundation",
+          "type": "MDCFloatingLabelFoundation | undefined"
+        },
+        {
+          "name": "lineRippleFoundation",
+          "type": "MDCLineRippleFoundation | undefined"
+        }
+      ]
+    },
+    {
       "name": "vwc-linear-progress",
       "path": "./components/linear-progress/vwc-linear-progress.d.ts",
       "properties": [

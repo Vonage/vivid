@@ -12,15 +12,21 @@ export const cascading = () => html`
 			<vwc-list-item>Root menu item E</vwc-list-item>
 		</vwc-menu>
 		<vwc-menu id="context-menu-nested">
-			<vwc-list-item>
+			<vwc-list-item graphic="icon" twoline>
 				Nested menu item A
-			</vwc-list-item>
+				<span slot="secondary">Secondary line</span>
+				<vwc-icon slot="graphic">folder</vwc-icon>
+			</vwc-list-item graphic="icon" twoline>
 			<li divider role="separator"></li>
-			<vwc-list-item>
+			<vwc-list-item graphic="icon" twoline>
 				Nested menu item B
+				<span slot="secondary">Secondary line</span>
+				<vwc-icon slot="graphic">folder</vwc-icon>
 			</vwc-list-item>
-			<vwc-list-item>
+			<vwc-list-item graphic="icon" twoline>
 				Nested menu item C
+				<span slot="secondary">Secondary line</span>
+				<vwc-icon slot="graphic">folders</vwc-icon>
 			</vwc-list-item>
 		</vwc-menu>
 	</div>
