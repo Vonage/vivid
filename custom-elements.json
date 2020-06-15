@@ -153,7 +153,6 @@
     {
       "name": "vwc-chip-set",
       "path": "./components/chips/vwc-chip-set.d.ts",
-      "description": "This component is an extension of [<mwc-chip-set>](https://github.com/material-components/material-components-web-components/tree/master/packages/chips)",
       "properties": [
         {
           "name": "type",
@@ -226,28 +225,7 @@
     {
       "name": "vwc-chip",
       "path": "./components/chips/vwc-chip.d.ts",
-      "description": "This component is an extension of [<mwc-chip>](https://github.com/material-components/material-components-web-components/tree/master/packages/chips)",
       "properties": [
-        {
-          "name": "size",
-          "type": "string"
-        },
-        {
-          "name": "outlined",
-          "type": "boolean"
-        },
-        {
-          "name": "pill",
-          "type": "boolean"
-        },
-        {
-          "name": "theme",
-          "type": "string"
-        },
-        {
-          "name": "transparent",
-          "type": "boolean"
-        },
         {
           "name": "label",
           "type": "string"
