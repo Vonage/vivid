@@ -12,24 +12,25 @@ export default {
 }
 
 export const basic = () => html`
-	<vwc-button id="button" label="Open Menu" @click="${anchorAClickHandler}"></vwc-button>
-	<vwc-menu id="menu">
-		<vwc-list-item>Item 0</vwc-list-item>
-		<vwc-list-item>Item 1</vwc-list-item>
-		<vwc-list-item>Item 2</vwc-list-item>
-		<vwc-list-item>Item 3</vwc-list-item>
+	<vwc-button id="basic-button" unelevated label="Open menu" @click="${anchorAClickHandler}"></vwc-button>
+	<vwc-menu id="basic-menu">
+		<vwc-list-item>Basic item 1</vwc-list-item>
+		<vwc-list-item>Basic item 2</vwc-list-item>
+		<vwc-list-item>Basic item 3</vwc-list-item>
+		<vwc-list-item>Basic item 4</vwc-list-item>
 	</vwc-menu>
 `;
 
-function anchorAClickHandler(event) {
-	const menu = event.target.parentNode.querySelector('#menu');
-	menu.anchor = event.target;
+function anchorAClickHandler() {
+	const anchor = document.querySelector('#basic-button');
+	const menu = document.querySelector('#basic-menu');
+	menu.anchor = anchor;
 	menu.corner = 'BOTTOM_START';
 	menu.open = true;
 }
 
 export const cascading = () => html`
-	<vwc-fab mini icon="more_vert" @click="${anchorBClickHandler}"></vwc-fab>
+	<vwc-fab style="position:relative" mini icon="more_vert" @click="${anchorBClickHandler}"></vwc-fab>
 	<vwc-menu id="context-menu-base">
 		<vwc-list-item>Root menu item A</vwc-list-item>
 		<vwc-list-item>Root menu item B</vwc-list-item>
