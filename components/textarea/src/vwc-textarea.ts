@@ -1,6 +1,8 @@
 import { customElement } from 'lit-element';
 import { TextArea as MWCTextArea } from '@material/mwc-textarea';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
+import { style as vwcTextfieldStyle } from '@vonage/vwc-textfield/vwc-textfield.css';
+import { style as vwcTextareaStyle } from './vwc-textarea.css';
 import { style as mwcTextareaStyle } from '@material/mwc-textarea/mwc-textarea-css.js';
 
 export { TextFieldType } from '@material/mwc-textfield';
@@ -13,7 +15,7 @@ declare global {
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-MWCTextArea.styles = [styleCoupling, mwcTextareaStyle];
+MWCTextArea.styles = [styleCoupling, mwcTextareaStyle, vwcTextfieldStyle, vwcTextareaStyle];
 
 /**
  * This component is an extension of [<mwc-textarea>](https://github.com/material-components/material-components-web-components/tree/master/packages/textarea)

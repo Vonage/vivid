@@ -1,6 +1,27 @@
 :host {
-  --mdc-text-field-outlined-idle-border-color: var(--vwc-outlined-idle-border-color);
-  --mdc-text-field-outlined-hover-border-color: var(--vwc-outlined-hover-border-color);
-  --mdc-text-field-label-ink-color: var(--vwc-label-ink-color);
-  --mdc-text-field-ink-color: var(--vwc-ink-color);
+  --mdc-theme-primary: #131415;
+	--mdc-theme-error: #e84545;
+	--mdc-text-field-filled-border-radius: 6px; 
+	--mdc-text-field-outlined-idle-border-color:	rgb(194, 196, 204);
+	--mdc-text-field-outlined-hover-border-color:	rgb(19, 20, 21);
+  --mdc-text-field-outlined-disabled-border-color:	rgb(225, 226, 230);
+  --mdc-text-field-label-ink-color: #616266;
+  --mdc-text-field-ink-color: var(--mdc-theme-primary);
+  --mdc-text-field-disabled-ink-color: #9b9da3;
+}
+
+:host(:not([disabled])) {
+  .mdc-text-field {
+    &.mdc-text-field--focused {
+      mwc-notched-outline {
+        --mdc-notched-outline-stroke-width: 1px;
+      }
+		}
+	}
+}
+
+:host([disabled]) {
+  .mdc-text-field {
+    background-color: #f3f3f5;
+	}
 }
