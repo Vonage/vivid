@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Create deploy timestamp
-			  id: time
+        id: time
         run: echo '::set-output name=timestamp::$(date +"%y-%m-%d-%H-%M-%S")'
 
       - name: Test timestamp
