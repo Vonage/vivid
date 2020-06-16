@@ -69,9 +69,12 @@ The overall roadmap may be split into the the following:
 | `<vwc-chip>` | - | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+chip+chips) |
 | `<vwc-drawer>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235307) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+drawer) |
 | `<vwc-dropdown>` | - | planned | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+dropdown) |
+| `<vwc-fab>` | - | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+fab) |
+| `<vwc-formfield>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235309) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+formfield) |
+| `<vwc-icon>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235306) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+icon) |
+| `<vwc-linear-progress>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.12-alpha.0&color=green&logo=github)](https://github.com/Vonage/vivid/packages/267584) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+linear+progress) |
 | `<vwc-list>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235303) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+list) |
 | `<vwc-menu>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235299) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+menu) |
-| `<vwc-formfield>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235309) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+formfield) |
 | `<vwc-modal>` | - | planned | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+modal) |
 | `<vwc-radio>` | - | planned | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+radio) |
 | `<vwc-scheme-select>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235304) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+scheme+schema+theme+select) |
