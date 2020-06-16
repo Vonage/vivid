@@ -1,0 +1,15 @@
+@use '@vonage/vwc-textfield/src/vwc-textfield';
+
+.mdc-text-field {
+	height: 100%;
+}
+
+.mdc-text-field--textarea {	
+	&.mdc-text-field--outlined {
+		.mdc-text-field__input {
+			margin-bottom: 12px;
+			margin-top: 12px;
+			padding: 0;
+		}
+	}		
+}

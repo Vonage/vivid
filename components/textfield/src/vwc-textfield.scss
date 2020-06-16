@@ -1,27 +1,71 @@
 :host {
   --mdc-theme-primary: #131415;
-	--mdc-theme-error: #e84545;
+  --mdc-theme-error: #e84545;
 	--mdc-text-field-filled-border-radius: 6px; 
-	--mdc-text-field-outlined-idle-border-color:	rgb(194, 196, 204);
-	--mdc-text-field-outlined-hover-border-color:	rgb(19, 20, 21);
-  --mdc-text-field-outlined-disabled-border-color:	rgb(225, 226, 230);
   --mdc-text-field-label-ink-color: #616266;
   --mdc-text-field-ink-color: var(--mdc-theme-primary);
   --mdc-text-field-disabled-ink-color: #9b9da3;
+  --mdc-text-field-outlined-idle-border-color: #c2c4cc;
+  --mdc-text-field-outlined-hover-border-color:	var(--mdc-theme-primary);
+  --mdc-text-field-outlined-disabled-border-color: #e1e2e6;
 }
 
-:host(:not([disabled])) {
-  .mdc-text-field {
-    &.mdc-text-field--focused {
-      mwc-notched-outline {
-        --mdc-notched-outline-stroke-width: 1px;
+:host([disabled]) .mdc-text-field {
+  background-color: #f3f3f5;
+}
+
+:host(:not([disabled])) .mdc-text-field.mdc-text-field--focused mwc-notched-outline {
+  --mdc-notched-outline-stroke-width: 1px;
+}
+
+.mdc-text-field {
+  &--outlined {
+    align-items: flex-end;
+    height: 48px;
+    padding: 0 14px;
+
+    .mdc-text-field__input {
+      --mdc-typography-subtitle1-font-size: 0.875rem;
+
+      height: 32px;
+    }
+
+    .mdc-floating-label {
+      left: 2px;
+      padding-right: 8px;
+      transition: transform 0.15s, font-size 0.15s;
+    }
+    
+    .mdc-floating-label--float-above {
+      --mdc-theme-primary: var(--mdc-text-field-label-ink-color);
+
+      transform: translateY(-95%);
+    }
+  }
+
+  // cover gap in notched outline
+  &:before {
+    background-color: var(--mdc-text-field-outlined-idle-border-color);
+    content: '';
+    height: 1px;
+    left: 12px;
+    position: absolute;
+    right: 6px;
+    top: 0;
+  }
+
+  &:hover,
+  &--focused {
+    &:not(.mdc-text-field--invalid) {
+      &:before {
+        background-color: var(--mdc-theme-primary);
       }
-		}
-	}
-}
+    }
+  }
 
-:host([disabled]) {
-  .mdc-text-field {
-    background-color: #f3f3f5;
-	}
+  &--invalid {
+    &:before {
+      background-color: var(--mdc-theme-error);
+    }
+  }
 }
