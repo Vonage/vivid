@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Create deploy timestamp
-        env:
-          SB_VERSION: date +'%y-%m-%d-%H-%M-%S'
         run: echo '::set-env name=SB_VERSION::(date +"%y-%m-%d-%H-%M-%S")'
-        run: echo ${{ SB_VERSION }}
+
+      - name: Test timestamp
+        run: export SB_VERSION
