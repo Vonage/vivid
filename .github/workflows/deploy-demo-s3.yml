@@ -44,15 +44,17 @@ jobs:
       - name: Build storybook
         run: yarn storybook:build
 
-      - name: Deploy storybook
+      - name: Create deploy timestamp/version
+        run: echo ::set-env name=STORYBOOK_DEPLOY_VERSION::$(date +'%y-%m-%d-%H-%M-%S')
+
+      - name: Deploy storybook versioned as '${{ env.STORYBOOK_DEPLOY_VERSION }}'
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_SECRET }}
-        run: aws s3 sync ./.out/ s3://${{ secrets.AWS_S3_BUCKET }} --delete
+        run: aws s3 sync ./.out/ s3://${{ secrets.AWS_S3_BUCKET }}/${{ env.STORYBOOK_DEPLOY_VERSION }}
 
-      # TODO: before enabling the following should have a secret for
-      # - name: Update CloudFront to the last version
-      #   env:
-      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_SECRET }}
-      # 	run: aws cloudfront update-distribution --id ${{ secrets.AWS_CF_DISTRIBUTION_ID }} --default-root-object index.html
+      - name: Update default CloudFront distribution to version '${{ env.STORYBOOK_DEPLOY_VERSION }}'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_SECRET }}
+        run: aws cloudfront update-distribution --id ${{ secrets.AWS_CF_DISTRIBUTION_ID }} --default-root-object ${{ env.STORYBOOK_DEPLOY_VERSION }}/index.html
