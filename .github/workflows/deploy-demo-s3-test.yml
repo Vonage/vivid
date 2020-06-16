@@ -11,10 +11,7 @@ jobs:
 
     steps:
       - name: Create deploy timestamp
-        id: time
-        run: echo '::set-output name=timestamp::$(date +"%y-%m-%d-%H-%M-%S")'
+        run: echo ::set-env name=STORYBOOK_DEPLOY_VERSION::$(echo date +'%y-%m-%d-%H-%M-%S')
 
       - name: Test timestamp
-        env:
-          TEST: ${{ steps.time.outputs.timestamp }}
-        run: export TEST
+        run: echo $STORYBOOK_DEPLOY_VERSION
