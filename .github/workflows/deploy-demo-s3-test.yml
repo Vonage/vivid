@@ -1,4 +1,4 @@
-name: Build & Deploy Demo
+name: AWS TEST
 
 on:
   push:
