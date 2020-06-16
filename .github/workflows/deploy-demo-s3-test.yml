@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Prepare env (create deploy timestamp/version)
-				run: echo ::set-env name=STORYBOOK_DEPLOY_VERSION::$(date +'%y-%m-%d-%H-%M-%S')
+        run: echo ::set-env name=STORYBOOK_DEPLOY_VERSION::$(date +'%y-%m-%d-%H-%M-%S')
 
       - name: Checkout
         uses: actions/checkout@v2
