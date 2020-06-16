@@ -10,5 +10,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-			- name: Create deploy timestamp
-				run: echo '::set-env name=AWS_S3_::(date +"%y-%m-%d-%H-%M-%S")'
+      - name: Create deploy timestamp
+        run: echo '::set-env name=AWS_S3_::(date +"%y-%m-%d-%H-%M-%S")'
