@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Create deploy timestamp
-        run: echo ::set-env name=STORYBOOK_DEPLOY_VERSION::$(echo date +'%y-%m-%d-%H-%M-%S')
+        run: echo ::set-env name=STORYBOOK_DEPLOY_VERSION::$(date +'%y-%m-%d-%H-%M-%S')
 
       - name: Test timestamp
         run: echo $STORYBOOK_DEPLOY_VERSION
