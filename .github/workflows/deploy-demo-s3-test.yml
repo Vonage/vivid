@@ -15,4 +15,4 @@ jobs:
         run: echo '::set-output name=timestamp::$(date +"%y-%m-%d-%H-%M-%S")'
 
       - name: Test timestamp
-        run: echo ${{ steps.time.outputs.timestamp }}
+        run: ${{ steps.time.outputs.timestamp }}
