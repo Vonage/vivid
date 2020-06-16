@@ -11,4 +11,7 @@ jobs:
 
     steps:
       - name: Create deploy timestamp
-        run: echo '::set-env name=AWS_S3_::(date +"%y-%m-%d-%H-%M-%S")'
+        env:
+          SB_VERSION: date +'%y-%m-%d-%H-%M-%S'
+        run: echo '::set-env name=SB_VERSION::(date +"%y-%m-%d-%H-%M-%S")'
+        run: echo ${{ SB_VERSION }}
