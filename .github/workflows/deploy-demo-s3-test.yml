@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Prepare env (create deploy timestamp/version)
+				run: echo ::set-env name=STORYBOOK_DEPLOY_VERSION::$(date +'%y-%m-%d-%H-%M-%S')
+
       - name: Checkout
         uses: actions/checkout@v2
         with:
@@ -29,9 +32,6 @@ jobs:
 
       - name: Build storybook
         run: yarn storybook:build
-
-      - name: Create deploy timestamp
-        run: echo ::set-env name=STORYBOOK_DEPLOY_VERSION::$(date +'%y-%m-%d-%H-%M-%S')
 
       - name: Deploy storybook versioned as ${{ env.STORYBOOK_DEPLOY_VERSION }}
         env:
