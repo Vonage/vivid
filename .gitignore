@@ -25,6 +25,7 @@ yarn-error.log
 /_site
 /.out
 **/dist
+#custom-elements.json
 *.tgz
 *.log
 
