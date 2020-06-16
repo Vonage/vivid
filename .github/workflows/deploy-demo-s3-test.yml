@@ -1,4 +1,4 @@
-name: AWS TEST
+name: Build & Deploy Demo
 
 on:
   push:
@@ -8,6 +8,7 @@ on:
 jobs:
   build-and-deploy-demo:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
 
     steps:
       - name: Checkout
@@ -16,24 +17,38 @@ jobs:
           token: ${{ secrets.PAT }}
           submodules: true
 
+      - name: Setup NodeJS 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Install yarn
+        run: npm install -g yarn
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build storybook
+        run: yarn storybook:build
+
       - name: Create deploy timestamp/version
         run: echo ::set-env name=STORYBOOK_DEPLOY_VERSION::$(date +'%y-%m-%d-%H-%M-%S')
 
-      - name: Create distributions config file
+      - name: Update CloudFront distribution to $STORYBOOK_DEPLOY_VERSION
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_SECRET }}
           AWS_CF_DISTRIBUTION_ID: ${{ secrets.AWS_CF_DISTRIBUTION_ID }}
         run: sh ./scripts/update-cf-distribution-config.sh
-
-      # - name: Deploy storybook versioned as '${{ env.STORYBOOK_DEPLOY_VERSION }}'
-      #   env:
-      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_SECRET }}
-      #   run: aws s3 sync ./.out/ s3://${{ secrets.AWS_S3_BUCKET }}/${{ env.STORYBOOK_DEPLOY_VERSION }}
-
-      # - name: Update default CloudFront distribution to version '${{ env.STORYBOOK_DEPLOY_VERSION }}'
-      #   env:
-      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_SECRET }}
-      #   run: aws cloudfront update-distribution --id ${{ secrets.AWS_CF_DISTRIBUTION_ID }} --default-root-object ${{ env.STORYBOOK_DEPLOY_VERSION }}/index.html
