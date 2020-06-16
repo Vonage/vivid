@@ -16,8 +16,9 @@ jobs:
       - name: Create distributions config file
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_SECRET }}
-        run: aws cloudfront update-distribution --id ${{ secrets.AWS_CF_DISTRIBUTION_ID }} --distribution-config
+					AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_SECRET }}
+					AWS_CF_DISTRIBUTION_ID: ${{ secrets.AWS_CF_DISTRIBUTION_ID }}
+        run: .github/update-cf-distribution-config.sh
 
       # - name: Deploy storybook versioned as '${{ env.STORYBOOK_DEPLOY_VERSION }}'
       #   env:
