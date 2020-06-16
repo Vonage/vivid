@@ -10,6 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PAT }}
+          submodules: true
+
       - name: Create deploy timestamp/version
         run: echo ::set-env name=STORYBOOK_DEPLOY_VERSION::$(date +'%y-%m-%d-%H-%M-%S')
 
