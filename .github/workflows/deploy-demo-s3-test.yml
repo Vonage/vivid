@@ -1,0 +1,14 @@
+name: Build & Deploy Demo Versioned Deploy
+
+on:
+  push:
+    branches:
+      - viv-44-iss-43-storybook
+
+jobs:
+  build-and-deploy-demo:
+    runs-on: ubuntu-latest
+
+    steps:
+			- name: Create deploy timestamp
+				run: echo '::set-env name=AWS_S3_::(date +"%y-%m-%d-%H-%M-%S")'
