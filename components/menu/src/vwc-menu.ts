@@ -19,7 +19,7 @@ MWCMenu.styles = [mwcMenuStyle];
  */
 @customElement('vwc-menu')
 export class VWCMenu extends MWCMenu {
-	protected onAction(evt: CustomEvent<ActionDetail>) {
+	protected onAction(evt: CustomEvent<ActionDetail>): void {
 		const hitItem = (evt.target as MWCMenu).items[evt.detail.index];
 		if (!hitItem || !hitItem.hasAttribute('cascader')) {
 			super.onAction(evt);

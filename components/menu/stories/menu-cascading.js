@@ -8,7 +8,7 @@ export const cascading = () => html`
 			<vwc-list-item disabled>Root menu item B</vwc-list-item>
 			<vwc-list-item>Root menu item C</vwc-list-item>
 			<li divider role="separator"></li>
-			<vwc-list-item id="nested-menu-anchor" @click="${anchorBClickHandler}" cascader>Root menu item D ...</vwc-list-item>
+			<vwc-list-item id="nested-menu-anchor" @click="${anchorBClickHandler}" cascader>Root menu item D &#x25BA;</vwc-list-item>
 			<vwc-list-item>Root menu item E</vwc-list-item>
 		</vwc-menu>
 		<vwc-menu id="context-menu-nested" fixed>
