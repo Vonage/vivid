@@ -34,5 +34,10 @@ jobs:
           git config user.name "Vivid CI" &&
           git add --all &&
           git commit -m "bumping the version to 0.0.3" &&
-          git push &&
-          hub pull-request -b master
+          git push
+
+      - name: create PR to the master
+        uses: peter-evans/create-pull-request@v2
+        with:
+          token: ${{ secrets.PAT }}
+          branch: master
