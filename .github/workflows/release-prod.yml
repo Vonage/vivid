@@ -27,14 +27,14 @@ jobs:
       - name: Build components
         run: yarn compile
 
-      - name: Lint sources
-        run: yarn lint
+      #- name: Lint sources
+      #  run: yarn lint
 
-      - name: Test components
-        run: yarn test
+      #- name: Test components
+      #  run: yarn test
 
       - name: Test tree
-        run: git status
+        run: git diff
 
       - name: Publish components
         run: yarn lerna publish from-package --registry https://npm.pkg.github.com --no-git-tag-version --no-push --yes
