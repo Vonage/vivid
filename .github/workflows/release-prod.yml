@@ -19,7 +19,7 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
 
       - name: Install yarn
-        run: npm install yarn
+        run: npm install -g yarn
 
       - name: Install dependencies
         run: yarn install
