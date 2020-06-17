@@ -26,7 +26,7 @@ jobs:
         run: yarn compile
 
       - name: bump version
-        run: yarn lerna version 0.0.3 --no-git-tag-version --no-private --yes
+        run: yarn lerna version 0.0.4 --no-git-tag-version --no-private --yes
 
       - name: commit and push the new version
         run: >
@@ -35,4 +35,4 @@ jobs:
           git add --all &&
           git commit -m "bumping the version to 0.0.3" &&
           git push &&
-          git request-pull master ./
+          hub pull-request -b master
