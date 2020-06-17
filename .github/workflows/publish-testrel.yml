@@ -26,14 +26,14 @@ jobs:
         run: yarn compile
 
       - name: bump version
-        run: yarn lerna version 0.0.4 --no-git-tag-version --no-private --yes
+        run: yarn lerna version 0.0.5 --no-git-tag-version --no-private --yes
 
       - name: commit and push the new version
         run: >
           git config user.email "vivid.ci@vonage.com" &&
           git config user.name "Vivid CI" &&
           git add --all &&
-          git commit -m "bumping the version to 0.0.3" &&
+          git commit -m "bumping the version to 0.0.5" &&
           git push
 
       - name: create PR to the master
