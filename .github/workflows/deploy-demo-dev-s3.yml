@@ -1,13 +1,12 @@
-name: Build & Deploy Demo
+name: Build & Deploy Demo Dev
 
 on:
   pull_request:
     types: [closed]
-    branches:
-      - develop
+    branches: [develop]
 
 jobs:
-  build-and-deploy-demo:
+  build-and-deploy-demo-dev:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true
 

@@ -1,6 +1,6 @@
 {
   "name": "@vonage/vwc-formfield",
-  "version": "0.0.12-alpha.0",
+  "version": "0.0.13",
   "description": "> TODO: description",
   "homepage": "https://github.com/Vonage/vivid/tree/master/components/formfield#readme",
   "license": "ISC",
@@ -21,10 +21,5 @@
     "@material/mwc-formfield": "^0.15.0",
     "lit-element": "^2.3.1",
     "tslib": "^2.0.0"
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://npm.pkg.github.com/"
-  },
-  "gitHead": "0d7636be37fdd33647e16d14b10b98627d074f5f"
+  }
 }
