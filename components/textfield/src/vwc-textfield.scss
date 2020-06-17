@@ -26,6 +26,12 @@
     height: 48px;
     padding: 0;
 
+    &.mdc-text-field--no-label {
+      .mdc-text-field__input {
+        height: 48px;
+      }
+    }
+
     .mdc-text-field__input {
       --mdc-typography-subtitle1-font-size: 0.875rem;
 
