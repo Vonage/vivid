@@ -21,10 +21,5 @@
   "dependencies": {
     "@vonage/vvd-scheme": "^0.0.13",
     "tslib": "^2.0.0"
-  },
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://npm.pkg.github.com/"
-  },
-  "gitHead": "0d7636be37fdd33647e16d14b10b98627d074f5f"
+  }
 }

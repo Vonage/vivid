@@ -22,10 +22,5 @@
 		"@material/mwc-switch": "^0.15.0",
 		"lit-element": "^2.3.1",
 		"tslib": "^2.0.0"
-	},
-	"publishConfig": {
-		"access": "public",
-		"registry": "https://npm.pkg.github.com/"
-	},
-	"gitHead": "0d7636be37fdd33647e16d14b10b98627d074f5f"
+	}
 }
