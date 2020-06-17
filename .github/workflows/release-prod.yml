@@ -36,6 +36,6 @@ jobs:
       - name: Test components
         run: yarn test
 
-      - run: npm publish
+      - run: lerna publish from-package
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
