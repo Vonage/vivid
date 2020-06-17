@@ -8,6 +8,7 @@
 	"version": "0.0.13",
 	"command": {
 		"publish": {
+			"conventionalCommits": true,
 			"registry": "https://npm.pkg.github.com"
 		}
 	}
