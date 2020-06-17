@@ -28,6 +28,6 @@ jobs:
       - name: bump version
         run: yarn lerna version 0.0.1 --no-git-tag-version --no-private --yes
 
-			- name: commit and push the new version
+      - name: commit and push the new version
         run: git config user.email "vivid.ci@vonage.com" && git config user.name "Vivid CI Botico" && /
           git commit -m "bumping the version to 0.0.1" && git push && git request-pull master ${{ env.GITHUB_REF }}
