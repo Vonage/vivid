@@ -1,9 +1,9 @@
 name: Release Vivid Components
 
 on:
-	pull_request:
-	  types: [closed]
-		branches: [master]
+  pull_request:
+    types: [closed]
+    branches: [master]
   push:
     branches: [master]
 
