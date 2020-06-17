@@ -24,6 +24,9 @@ router
     button: function () {
       render(html` <button-route></button-route> `, componentDemoContainer);
     },
+    carousel: function () {
+      render(html` <carousel-route></carousel-route> `, componentDemoContainer);
+    },
     checkbox: function () {
       render(html` <checkbox-route></checkbox-route> `, componentDemoContainer);
     },
