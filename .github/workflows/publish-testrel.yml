@@ -17,7 +17,7 @@ jobs:
           node-version: 12
 
       - name: install yarn globally
-        run: npm install yarn
+        run: npm install -g yarn
 
       - name: install packages with yarn (will run lerna bootstrap postinstall)
         run: yarn install
