@@ -35,4 +35,4 @@ jobs:
           git add --all &&
           git commit -m "bumping the version to 0.0.1" &&
           git push &&
-          git request-pull master oigin
+          git request-pull master ./
