@@ -34,6 +34,6 @@ jobs:
         run: yarn test
 
       - name: Publish components
-			  run: yarn lerna publish from-package --registry https://npm.pkg.github.com --yes
+        run: yarn lerna publish from-package --registry https://npm.pkg.github.com --yes
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
