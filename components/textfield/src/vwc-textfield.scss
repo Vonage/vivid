@@ -8,6 +8,8 @@
   --mdc-text-field-outlined-idle-border-color: #c2c4cc;
   --mdc-text-field-outlined-hover-border-color:	var(--mdc-theme-primary);
   --mdc-text-field-outlined-disabled-border-color: #e1e2e6;
+
+  display: block;
 }
 
 :host([disabled]) .mdc-text-field {
@@ -22,12 +24,14 @@
   &--outlined {
     align-items: flex-end;
     height: 48px;
-    padding: 0 14px;
+    padding: 0;
 
     .mdc-text-field__input {
       --mdc-typography-subtitle1-font-size: 0.875rem;
 
       height: 32px;
+      padding: 0 14px;
+      width: 100%;
     }
 
     .mdc-floating-label {
@@ -43,7 +47,7 @@
     }
   }
 
-  // cover gap in notched outline
+  // Todo: change notched outline
   &:before {
     background-color: var(--mdc-text-field-outlined-idle-border-color);
     content: '';
