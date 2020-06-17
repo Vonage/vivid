@@ -33,7 +33,7 @@
 			import fonts from "./node_modules/@vonage/vvd-fonts/vvd-fonts.js";
 
 			(async () => {
-				await Promise.all([scheme.init(), fonts.init()]);
+				await Promise.all([scheme.init('light'), fonts.init()]);
 				document.body.classList.add("scheme-loaded");
 			})();
 		</script>
@@ -210,6 +210,7 @@
 				<a href="/home" data-navigo>home</a>
 				<a href="/vwcapp" data-navigo>app</a>
 				<a href="/button" data-navigo>button</a>
+				<a href="/carousel" data-navigo>carousel</a>
 				<a href="/checkbox" data-navigo>checkbox</a>
 				<a href="/chip" data-navigo>chip</a>
 				<a href="/drawer" data-navigo>drawer</a>

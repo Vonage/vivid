@@ -13,3 +13,4 @@ export { default as drawer } from './drawer.js';
 export { default as fonts } from './fonts.js';
 export { default as formfield } from './formfield.js';
 export { default as textarea } from './textarea.js';
+export { default as carousel } from './carousel.js';
