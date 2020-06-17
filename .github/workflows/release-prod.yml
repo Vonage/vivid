@@ -27,11 +27,11 @@ jobs:
       - name: Build components
         run: yarn compile
 
-      #- name: Lint sources
-      #  run: yarn lint
+      - name: Lint sources
+        run: yarn lint
 
-      #- name: Test components
-      #  run: yarn test
+      - name: Test components
+        run: yarn test
 
       - name: Test tree
         run: git diff
