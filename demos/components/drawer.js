@@ -10,7 +10,7 @@ export default class Home extends Element {
   async getHtml() {
     return html`
       <div style="position: relative;">
-        <vwc-button id="button" raised label="Open Menu" @click="${this.handleClick}"></vwc-button>
+        <vwc-button id="button" unelevated label="Open Menu" @click="${this.handleClick}"></vwc-button>
         <vwc-menu id="menu">
           <vwc-drawer hasHeader>
             <span slot="title">Drawer Title</span>

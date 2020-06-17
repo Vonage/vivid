@@ -1,0 +1,30 @@
+{
+  "name": "@vonage/vvd-style-coupling",
+  "version": "0.0.13",
+  "description": "> TODO: description",
+  "author": "yinonov <yinon@hotmail.com>",
+  "homepage": "https://github.com/Vonage/vivid/tree/master/components/style-coupling#readme",
+  "license": "ISC",
+  "main": "vvd-style-coupling.css.js",
+  "module": "vvd-style-coupling.css.js",
+  "repository": {
+    "type": "git",
+    "url": "ssh://github.com/vonage/vivid.git",
+    "directory": "components/style-coupling"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/Vonage/vivid/issues"
+  },
+  "dependencies": {
+    "@vonage/vvd-scheme": "^0.0.13",
+    "tslib": "^2.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "gitHead": "0d7636be37fdd33647e16d14b10b98627d074f5f"
+}

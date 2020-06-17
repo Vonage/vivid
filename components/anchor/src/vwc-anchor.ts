@@ -1,4 +1,3 @@
-import '@vonage/vvd-core';
 import { customElement } from 'lit-element';
 
 import { AnchorBase } from './vwc-anchor.base';

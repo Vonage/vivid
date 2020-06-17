@@ -2,16 +2,21 @@ import { html } from 'lit-html';
 import Element from '../modules/element.js';
 import '@vonage/vwc-select';
 import '@vonage/vwc-list/vwc-list-item';
+import '@vonage/vwc-button';
 
 export default class Home extends Element {
-  async getHtml() {
-    return html`
+	// eslint-disable-next-line class-methods-use-this
+	async getHtml() {
+		return html`
       <vwc-select label="filled">
-        <mwc-list-item></mwc-list-item>
-        <mwc-list-item value="0">Item 0</mwc-list-item>
-        <mwc-list-item value="1">Item 1</mwc-list-item>
-        <mwc-list-item value="2">Item 2</mwc-list-item>
-        <mwc-list-item value="3">Item 3</mwc-list-item>
+        <vwc-list-item></vwc-list-item>
+        <vwc-list-item value="0">Item 0</vwc-list-item>
+        <vwc-list-item value="1">Item 1</vwc-list-item>
+        <vwc-list-item value="2">Item 2</vwc-list-item>
+        <vwc-list-item value="3">Item 3</vwc-list-item>
+        <vwc-list-item noninteractive>
+          <vwc-button raised style="cursor: inherit; pointer-events: auto;">Click me</vwc-button>
+        </vwc-list-item>
       </vwc-select>
     `;
   }

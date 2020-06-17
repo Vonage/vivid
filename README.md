@@ -4,16 +4,34 @@
 
 # Vivid UI components ![develop build](https://github.com/Vonage/vivid/workflows/develop%20build/badge.svg?branch=develop)
 
-[vivid.vonage.com for demos](https://vivid.vonage.com)
+Vivid provides a Design System comprised of ready-to-use web components and services, aligned with the Vonage's design guidelines, providing well-thought APIs and striving to stick to the best practices in every possible aspect.
 
-### Roadmap
+Demos, tutorials and living examples are at [vivid.vonage.com](https://vivid.vonage.com).
 
-Vivid project is set to deliver Vonage's own design system for its projects' front-ends.
+Our architectural approach in general is [here](./docs/architecture.md).
+
+Contributor guidance is [here](./docs/contributing.md).
+
+---
+
+#### Consumption
+
+Our deliveries are available as GitHub packages, they are privately accessible within Vonage organization.
+
+Please visit [Vivid packages page](https://github.com/Vonage/vivid/packages) to enlist our latest releases. You may further drill into each package to read its specific documentation, review previous versions etc.
+
+GitHub packages may be consumed via various build systems, please refer to [this documentation](https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem) for more details.
+
+Obviously, most likely Vivid products will be consumed as **npm** dependencies in **package.json**, specific documentation on that is located [here](https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-npm-for-use-with-github-packages#installing-a-package).
+
+---
+
+#### Roadmap
 
 The system contains these aspects:
-- general services/facilities like fonts management, scheme management and alike
+- general services/facilities (fonts management, scheme management etc)
 - atomic/generic components
-- high level business specific components
+- high level business-logic specific components
 
 The overall roadmap may be split into the the following:
 * alpha (0.0.x versions; alpha-romeo :)) - initial release (month to few months?), deliverables of this release are likely to have breaking changes
@@ -51,13 +69,17 @@ The overall roadmap may be split into the the following:
 | `<vwc-chip>` | - | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+chip+chips) |
 | `<vwc-drawer>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235307) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+drawer) |
 | `<vwc-dropdown>` | - | planned | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+dropdown) |
+| `<vwc-fab>` | - | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+fab) |
+| `<vwc-formfield>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235309) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+formfield) |
+| `<vwc-icon>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235306) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+icon) |
+| `<vwc-linear-progress>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.12-alpha.0&color=green&logo=github)](https://github.com/Vonage/vivid/packages/267584) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+linear+progress) |
 | `<vwc-list>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235303) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+list) |
 | `<vwc-menu>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235299) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+menu) |
-| `<vwc-formfield>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235309) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+formfield) |
 | `<vwc-modal>` | - | planned | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+modal) |
 | `<vwc-radio>` | - | planned | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+radio) |
 | `<vwc-scheme-select>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235304) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+scheme+schema+theme+select) |
 | `<vwc-select>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235301) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+select) |
+| `<vwc-slider>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/251037) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+slider) |
 | `<vwc-switch>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235302) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+switch) |
 | `<vwc-table>` | - | planned | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+table) |
 | `<vwc-textfield>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/166369) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+textfield) |
@@ -71,39 +93,16 @@ The overall roadmap may be split into the the following:
 | `<vwc-dialer>` | - | planned | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+dialer) |
 | `<vwc-video>` | - | planned | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+video+player+videoplayer) |
 
-
-### Get up and running
-
-* Clone the repo
-* Run `yarn` (repo relies on yarn workspaces) in order to build the repo once / bring the dependencies
-* Run the following steps as the normal build-and-see flow:
-	* `yarn compile` - builds `css` from `scss`, compiles `ts` into `js`
-	* `yarn dev:server` - runs dev server on `localhost` in order to see the demo pages
-	* OR `yarn start` - is a shortcut for `compile` and `dev:server`, for your convenience
-	* AND `yarn watch` - observes & compiles scss / ts files in src folders. Run it in a separate terminal window in order to watch changes occur while editing files.
-* Navigate to `https://localhost:5424/index.html` (replace the port if needed) and start hacking with the components in the browser
-* Welcome! :)
-
 ---
 
-
-## Scripts
-
-- `yarn` does initial installation of the dependencies (yarn is preferred here for a fast resolution)
-- `compile` compiles typescript, scss etc
-- `start` runs demo app for development (will auto trigger `compile` command beforehand), reloading on file changes
-- `test` runs test suite with Karma
-- `lint` runs the linter for your project
-- `build` builds demo app for production
-
-
-## Issues
+#### Issues
 
 We use GitHub Issues as the official bug tracker for **Vivid** Please check the [existing issues](https://github.com/vonage/vivid/issues). It's possible someone has already reported the same problem.
 
 If your problem or idea is not addressed yet, [open a new issue](https://github.com/vonage/vivid/issues/new).
 
+---
 
-## Suggestions
+#### Suggestions
 
 Go through the [board](https://github.com/vonage/vivid/projects/1) to search for existing feedbacks and share yours if not already addressed.

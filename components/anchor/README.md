@@ -1,11 +1,8 @@
-# `button`
+# vwc-anchor
 
-> TODO: description
+## Properties
 
-## Usage
-
-```
-const button = require('button');
-
-// TODO: DEMONSTRATE API
-```
+| Property                  | Type                                      |
+|---------------------------|-------------------------------------------|
+| `floatingLabelFoundation` | `MDCFloatingLabelFoundation \| undefined` |
+| `lineRippleFoundation`    | `MDCLineRippleFoundation \| undefined`    |

@@ -1,0 +1,8 @@
+:host {
+	/* // override mwc */
+	--mdc-theme-primary: var(--vvd-color-primary-background);
+	--mdc-theme-on-primary: var(--vvd-color-primary-foreground);
+	--mdc-theme-text-primary-on-background: var(--vvd-color-primary-foreground);
+	--mdc-theme-secondary: var(--vvd-color-secondary-background);
+	--mdc-theme-on-surface: var(--vvd-color-surface-foreground);
+}

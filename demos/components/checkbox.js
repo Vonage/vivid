@@ -5,9 +5,15 @@ import '@vonage/vwc-checkbox';
 export default class Home extends Element {
   async getHtml() {
     return html`
-      <mwc-checkbox></mwc-checkbox>
-      <mwc-checkbox checked></mwc-checkbox>
-      <mwc-checkbox indeterminate></mwc-checkbox>
+      <h3>Default</h3>
+      <vwc-checkbox></vwc-checkbox>
+      <vwc-checkbox checked></vwc-checkbox>
+			<vwc-checkbox indeterminate></vwc-checkbox>
+      
+      <h3>Disabled</h3>
+      <vwc-checkbox disabled></vwc-checkbox>
+      <vwc-checkbox disabled checked></vwc-checkbox>
+      <vwc-checkbox disabled indeterminate></vwc-checkbox>
     `;
   }
 }

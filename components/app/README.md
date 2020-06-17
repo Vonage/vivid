@@ -1,11 +1,8 @@
-# `vvd-app`
+# vwc-app
 
-> TODO: description
+## Properties
 
-## Usage
-
-```
-const vvdApp = require('vvd-app');
-
-// TODO: DEMONSTRATE API
-```
+| Property                  | Type                                      |
+|---------------------------|-------------------------------------------|
+| `floatingLabelFoundation` | `MDCFloatingLabelFoundation \| undefined` |
+| `lineRippleFoundation`    | `MDCLineRippleFoundation \| undefined`    |

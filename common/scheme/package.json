@@ -1,6 +1,6 @@
 {
   "name": "@vonage/vvd-scheme",
-  "version": "0.0.9-alpha.0",
+  "version": "0.0.13",
   "description": "> TODO: description",
   "author": "yinonov <yinon@hotmail.com>",
   "homepage": "https://github.com/Vonage/vivid/tree/master/components/scheme#readme",
@@ -19,7 +19,7 @@
     "url": "https://github.com/Vonage/vivid/issues"
   },
   "dependencies": {
-    "@vonage/vvd-design-tokens": "^0.0.9-alpha.0",
+    "@vonage/vvd-design-tokens": "^0.0.13-alpha.0",
     "ramda": "^0.27.0",
     "tslib": "^2.0.0"
   },
@@ -30,5 +30,5 @@
     "access": "public",
     "registry": "https://npm.pkg.github.com/"
   },
-  "gitHead": "80b5f1d712327c3bfd82353c2de9a460548a68bd"
+  "gitHead": "0d7636be37fdd33647e16d14b10b98627d074f5f"
 }

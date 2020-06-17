@@ -1,13 +1,11 @@
-import { html, LitElement } from 'lit-element';
+import { html, LitElement, TemplateResult } from 'lit-element';
 
 export class AnchorBase extends LitElement {
-  protected createRenderRoot() {
-    return this.attachShadow({ mode: 'open', delegatesFocus: true });
-  }
+	protected createRenderRoot(): ShadowRoot {
+		return this.attachShadow({ mode: 'open', delegatesFocus: true });
+	}
 
-  protected render() {
-    return html`
-      <button>lorem ipsum</button>
-    `;
-  }
+	protected render(): TemplateResult {
+		return html` <button>lorem ipsum</button> `;
+	}
 }
