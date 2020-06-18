@@ -24,12 +24,12 @@ jobs:
       # - name: Install dependencies
       #   run: yarn install
 
-      - name: Show GITHUB_REF
-        run: echo ${GITHUB_REF#refs/heads/release-}
-
       - name: Extract release version
         id: releaseVersion
         run: echo "::set-output name=version::$(echo ${GITHUB_REF#refs/heads/release-})"
+
+      - name: Show extracted version
+        run: echo ${{ steps.releaseVersion.output.version }}
 
       # - name: Bump version to ${{ steps.releaseVersion.output.version }}
       #   run: yarn lerna version ${{ steps.releaseVersion.output.version }} --no-git-tag-version --no-private --yes
