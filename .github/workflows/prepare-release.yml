@@ -31,6 +31,7 @@ jobs:
 
       - name: Push changes
         run: >
+          get fetch &&
           git config user.email "vivid.ci@vonage.com" &&
           git config user.name "Vivid CI" &&
           git add --all &&
