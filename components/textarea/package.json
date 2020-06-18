@@ -6,6 +6,12 @@
 	"license": "ISC",
 	"main": "vwc-textarea.js",
 	"module": "vwc-textarea.js",
+	"files": [
+		"src",
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
 	"repository": {
 		"type": "git",
 		"url": "ssh://github.com/vonage/vivid.git",

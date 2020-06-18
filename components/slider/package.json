@@ -6,6 +6,12 @@
 	"license": "ISC",
 	"main": "vwc-slider.js",
 	"module": "vwc-slider.js",
+	"files": [
+		"src",
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
 	"repository": {
 		"type": "git",
 		"url": "ssh://github.com/vonage/vivid.git",

@@ -7,6 +7,12 @@
 	"license": "ISC",
 	"main": "vwc-button.js",
 	"module": "vwc-button.js",
+	"files": [
+		"src",
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
 	"repository": {
 		"type": "git",
 		"url": "ssh://github.com/vonage/vivid.git",

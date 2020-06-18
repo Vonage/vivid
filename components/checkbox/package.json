@@ -5,7 +5,13 @@
   "homepage": "https://github.com/Vonage/vivid/tree/master/components/checkbox#readme",
   "license": "ISC",
   "main": "vwc-checkbox.js",
-  "module": "vwc-checkbox.js",
+	"module": "vwc-checkbox.js",
+	"files": [
+		"src",
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
   "repository": {
     "type": "git",
     "url": "ssh://github.com/vonage/vivid.git",
