@@ -7,6 +7,12 @@
 	"license": "ISC",
 	"main": "vwc-select.js",
 	"module": "vwc-select.js",
+	"files": [
+		"src",
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
 	"repository": {
 		"type": "git",
 		"url": "ssh://github.com/vonage/vivid.git",

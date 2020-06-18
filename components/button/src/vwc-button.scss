@@ -3,10 +3,8 @@
 $mdc-theme-primary: #871fff; // for darken/rgba functions
 
 :host {
-  --mdc-theme-primary: #871fff;
-  --mdc-theme-on-primary: white;
   --mdc-button-horizontal-padding: 14px;
-  --mdc-button-disabled-fill-color: rgba(194, 196, 204, 0.5);
+  --mdc-button-disabled-fill-color: #e1e2e6;
   --mdc-button-disabled-ink-color: #9b9da3;
 }
 
@@ -15,7 +13,7 @@ $mdc-theme-primary: #871fff; // for darken/rgba functions
   @include button.horizontal-padding(var(--mdc-button-horizontal-padding));
   @include button.ink-color(var(--mdc-theme-primary));
   @include button.disabled-ink-color(var(--mdc-button-disabled-ink-color));
-  
+
   border-radius: 6px;
   font-weight: 600;
   letter-spacing: normal;
@@ -53,4 +51,8 @@ $mdc-theme-primary: #871fff; // for darken/rgba functions
   &:active {
     @include button.container-fill-color(rgba($mdc-theme-primary, 0.2));
   }
+}
+
+.mdc-button--pill {
+	border-radius: 40px;
 }
