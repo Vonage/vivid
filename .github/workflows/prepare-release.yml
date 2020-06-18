@@ -25,7 +25,7 @@ jobs:
       #   run: yarn install
 
       - name: Show GITHUB_REF
-        run: echo ${GITHUB_REF}
+        run: echo ${GITHUB_REF#refs/heads/release-}
 
       - name: Extract release version
         id: releaseVersion
