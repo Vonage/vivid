@@ -38,7 +38,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Sync 'develop' with 'master'
+      - name: Sync 'develop' from 'master'
         run: >
           git fetch &&
           git switch develop &&
