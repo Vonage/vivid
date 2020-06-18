@@ -4,7 +4,7 @@ on:
   create:
     branches: [release-*]
   push:
-    brancher: [release-*]
+    branches: [release-*]
 
 jobs:
   build:
