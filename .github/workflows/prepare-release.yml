@@ -11,33 +11,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-      # - name: Use Node.js 12
-      #   uses: actions/setup-node@v1
-      #   with:
-      #     node-version: 12
+      - name: Use Node.js 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
 
-      # - name: Install yarn
-      #   run: npm install -g yarn
+      - name: Install yarn
+        run: npm install -g yarn
 
-      # - name: Install dependencies
-      #   run: yarn install
+      - name: Install dependencies
+        run: yarn install
 
       - name: Extract release version
         id: releaseVersion
         run: echo "::set-output name=version::$(echo ${GITHUB_REF##*/release-})"
 
-      - name: Show extracted version
-        run: echo ${{ steps.releaseVersion.outputs.version }}
+      - name: Bump version to ${{ steps.releaseVersion.outputs.version }}
+        run: yarn lerna version ${{ steps.releaseVersion.outputs.version }} --no-git-tag-version --no-private --yes
 
-      # - name: Bump version to ${{ steps.releaseVersion.output.version }}
-      #   run: yarn lerna version ${{ steps.releaseVersion.output.version }} --no-git-tag-version --no-private --yes
-
-      # - name: Push changes
-      #   run: >
-      #     git config user.email "vivid.ci@vonage.com" &&
-      #     git config user.name "Vivid CI" &&
-      #     git add --all &&
-      #     git commit -m "bumping the version to 0.0.6" &&
-      #     git push
+      - name: Push changes
+        run: >
+          git config user.email "vivid.ci@vonage.com" &&
+          git config user.name "Vivid CI" &&
+          git add --all &&
+          git commit -m "bumping the version to 0.0.6" &&
+          git push
