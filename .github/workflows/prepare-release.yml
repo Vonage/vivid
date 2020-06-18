@@ -1,6 +1,8 @@
 name: Prepare release
 
 on:
+  push:
+    branches: [testrel-branch]
   create:
     branches: [release-*]
 
