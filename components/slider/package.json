@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-slider",
-	"version": "0.0.5",
+	"version": "0.0.13",
 	"description": "slider component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/slider#readme",
 	"license": "ISC",
@@ -19,13 +19,8 @@
 	},
 	"dependencies": {
 		"@material/mwc-slider": "^0.15.0",
-		"@vonage/vvd-style-coupling": "^0.0.5",
+		"@vonage/vvd-style-coupling": "^0.0.13",
 		"lit-element": "^2.3.1",
 		"tslib": "^2.0.0"
-	},
-	"publishConfig": {
-		"access": "public",
-		"registry": "https://npm.pkg.github.com/"
-	},
-	"gitHead": "0d7636be37fdd33647e16d14b10b98627d074f5f"
+	}
 }

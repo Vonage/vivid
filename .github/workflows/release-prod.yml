@@ -1,0 +1,42 @@
+name: Release Vivid Components
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  build-test-and-publish-prod:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup NodeJS 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: 'https://npm.pkg.github.com'
+
+      - name: Install yarn
+        run: npm install -g yarn
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build components
+        run: yarn compile
+
+      - name: Lint sources
+        run: yarn lint
+
+      - name: Test components
+        run: yarn test
+
+      - name: Test tree
+        run: git diff
+
+      - name: Publish components
+        run: yarn lerna publish from-package --registry https://npm.pkg.github.com --no-git-tag-version --no-push --yes
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
