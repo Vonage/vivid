@@ -26,10 +26,10 @@ jobs:
 
       - name: Extract release version
         id: releaseVersion
-        run: echo "::set-output name=version::$(echo ${GITHUB_REF#refs/heads/release-})"
+        run: echo "::set-output name=version::$(echo ${GITHUB_REF##*/release-})"
 
       - name: Show extracted version
-        run: echo ${{ steps.releaseVersion.output.version }}
+        run: echo ${{ steps.releaseVersion.outputs.version }}
 
       # - name: Bump version to ${{ steps.releaseVersion.output.version }}
       #   run: yarn lerna version ${{ steps.releaseVersion.output.version }} --no-git-tag-version --no-private --yes
