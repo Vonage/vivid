@@ -12,4 +12,5 @@ export { default as checkbox } from './checkbox.js';
 export { default as drawer } from './drawer.js';
 export { default as fonts } from './fonts.js';
 export { default as formfield } from './formfield.js';
+export { default as radio } from './radio.js';
 export { default as textarea } from './textarea.js';

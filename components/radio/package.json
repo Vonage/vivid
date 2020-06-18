@@ -1,0 +1,26 @@
+{
+	"name": "@vonage/vwc-radio",
+	"version": "0.0.15",
+	"description": "radio component",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/radio#readme",
+	"license": "ISC",
+	"main": "vwc-radio.js",
+	"module": "vwc-radio.js",
+	"repository": {
+		"type": "git",
+		"url": "ssh://github.com/vonage/vivid.git",
+		"directory": "components/radio"
+	},
+	"scripts": {
+		"test": "echo \"Error: run tests from root\" && exit 1"
+	},
+	"bugs": {
+		"url": "https://github.com/Vonage/vivid/issues"
+	},
+	"dependencies": {
+		"@material/mwc-radio": "^0.15.0",
+		"@vonage/vvd-style-coupling": "^0.0.15",
+		"lit-element": "^2.3.1",
+		"tslib": "^2.0.0"
+	}
+}
