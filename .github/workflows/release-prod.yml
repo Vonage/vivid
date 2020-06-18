@@ -40,6 +40,7 @@ jobs:
 
       - name: Sync 'develop' from 'master'
         run: >
+          git config pull.ff only &&
           git fetch &&
           git switch develop &&
           git pull origin master &&
