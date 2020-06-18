@@ -44,4 +44,12 @@ export const basic = () => html`
 		<vwc-button unelevated icon="code">With icon</vwc-button>
 		<vwc-button unelevated disabled icon="code">Disabled</vwc-button>
 	</div>
+
+	<h3>Pill shape</h3>
+	<div class="container">
+		<vwc-button outlined shape="pill" icon="code">Outlined</vwc-button>
+		<vwc-button outlined disabled shape="pill">Disabled</vwc-button>
+		<vwc-button unelevated shape="pill" icon="code">Unelevated</vwc-button>
+		<vwc-button unelevated disabled shape="pill">Disabled</vwc-button>
+	</div>
 `;
