@@ -26,7 +26,7 @@ jobs:
 
       - name: Extract release version
         id: releaseVersion
-        run: echo "::set-output name=version::$(echo ${GITHUB_REF#refs/heads/release-})"
+        run: echo "::set-output name=version::${GITHUB_REF#refs/heads/release-}"
 
       - name: Show extracted version
         run: echo ${{ steps.releaseVersion.output.version }}
