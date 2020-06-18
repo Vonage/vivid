@@ -1,8 +1,6 @@
 name: Prepare release
 
 on:
-  push:
-    branches: [release-*]
   create:
     branches: [release-*]
 
@@ -36,5 +34,5 @@ jobs:
           git config user.email "vivid.ci@vonage.com" &&
           git config user.name "Vivid CI" &&
           git add --all &&
-          git commit -m "bumping the version to 0.0.6" &&
+          git commit -m "set release candidate version to ${{ steps.releaseVersion.outputs.version }}" &&
           git push
