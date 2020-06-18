@@ -33,9 +33,6 @@ jobs:
       - name: Test components
         run: yarn test
 
-      - name: Test tree
-        run: git diff
-
       - name: Publish components
         run: yarn lerna publish from-package --registry https://npm.pkg.github.com --no-git-tag-version --no-push --yes
         env:
