@@ -1,6 +1,81 @@
 :host {
-  --mdc-text-field-outlined-idle-border-color: var(--vwc-outlined-idle-border-color);
-  --mdc-text-field-outlined-hover-border-color: var(--vwc-outlined-hover-border-color);
-  --mdc-text-field-label-ink-color: var(--vwc-label-ink-color);
-  --mdc-text-field-ink-color: var(--vwc-ink-color);
+  --mdc-theme-primary: #131415;
+  --mdc-theme-error: #e84545;
+	--mdc-text-field-filled-border-radius: 6px; 
+  --mdc-text-field-label-ink-color: #616266;
+  --mdc-text-field-ink-color: var(--mdc-theme-primary);
+  --mdc-text-field-disabled-ink-color: #9b9da3;
+  --mdc-text-field-outlined-idle-border-color: #c2c4cc;
+  --mdc-text-field-outlined-hover-border-color:	var(--mdc-theme-primary);
+  --mdc-text-field-outlined-disabled-border-color: #e1e2e6;
+
+  display: block;
+}
+
+:host([disabled]) .mdc-text-field {
+  background-color: #f3f3f5;
+}
+
+:host(:not([disabled])) .mdc-text-field.mdc-text-field--focused mwc-notched-outline {
+  --mdc-notched-outline-stroke-width: 1px;
+}
+
+.mdc-text-field {
+  &--outlined {
+    align-items: flex-end;
+    height: 48px;
+    padding: 0;
+
+    &.mdc-text-field--no-label {
+      .mdc-text-field__input {
+        height: 48px;
+      }
+    }
+
+    .mdc-text-field__input {
+      --mdc-typography-subtitle1-font-size: 0.875rem;
+
+      height: 32px;
+      padding: 0 14px;
+      width: 100%;
+    }
+
+    .mdc-floating-label {
+      left: 2px;
+      padding-right: 8px;
+      transition: transform 0.15s, font-size 0.15s;
+    }
+    
+    .mdc-floating-label--float-above {
+      --mdc-theme-primary: var(--mdc-text-field-label-ink-color);
+
+      transform: translateY(-95%);
+    }
+  }
+
+  // Todo: change notched outline
+  &:before {
+    background-color: var(--mdc-text-field-outlined-idle-border-color);
+    content: '';
+    height: 1px;
+    left: 12px;
+    position: absolute;
+    right: 6px;
+    top: 0;
+  }
+
+  &:hover,
+  &--focused {
+    &:not(.mdc-text-field--invalid) {
+      &:before {
+        background-color: var(--mdc-theme-primary);
+      }
+    }
+  }
+
+  &--invalid {
+    &:before {
+      background-color: var(--mdc-theme-error);
+    }
+  }
 }
