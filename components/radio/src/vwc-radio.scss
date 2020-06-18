@@ -1,0 +1,42 @@
+:host {
+	--mdc-theme-secondary: #131415;
+	--mdc-radio-unchecked-color: #c2c4cc;
+	--mdc-radio-disabled-color: #e1e2e6;
+}
+
+.mdc-radio {
+	padding: 0;
+
+	&:hover,
+	&__native-control:focus + .mdc-radio__background .mdc-radio__outer-circle{
+		--mdc-radio-unchecked-color: var(--mdc-theme-secondary);
+
+		border-color: var(--mdc-theme-secondary);
+	}
+
+	&,
+	.mdc-radio__native-control,
+	.mdc-radio__background {
+		height: 22px;
+		width: 22px;
+	}
+
+	&--disabled {
+		.mdc-radio__outer-circle {
+			background-color: #f3f3f5;
+		}
+	}
+}
+
+.mdc-radio__outer-circle {
+	transition-duration: 0.2s;
+}
+
+.mdc-radio__inner-circle {
+	border-width: 11px;
+}
+
+.mdc-radio__ripple,
+.mdc-radio__background:before  {
+	display: none;
+}

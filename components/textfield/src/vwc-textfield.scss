@@ -43,13 +43,14 @@
     .mdc-floating-label {
       left: 2px;
       padding-right: 8px;
+      top: 24px;
       transition: transform 0.15s, font-size 0.15s;
     }
     
     .mdc-floating-label--float-above {
       --mdc-theme-primary: var(--mdc-text-field-label-ink-color);
 
-      transform: translateY(-95%);
+      transform: translateY(-100%);
     }
   }
 
