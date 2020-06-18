@@ -38,6 +38,13 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Notify slack
+        uses: rtCamp/action-slack-notify@v2.0.2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_MESSAGE: Hey!!! We've just released new version, welcome to get and hack around!!!
+          SLACK_TITLE: Vivid Release Notice
+
       - name: Sync 'develop' from 'master'
         run: >
           git fetch &&
