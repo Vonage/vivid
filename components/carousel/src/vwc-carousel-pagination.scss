@@ -1,0 +1,16 @@
+.swiper-pagination-bullet {
+	background-clip: content-box;
+    background-color: #C2C4CC;
+	border: 0;
+	border-radius: 0;
+	display: inline-block;
+	font-size: 0;
+	height: 3px;
+	margin: 0 6px;
+	transition: transform 0.1s;
+    width: 24px;
+
+    &-active {
+        background-color: #871FFF;
+    }
+}
