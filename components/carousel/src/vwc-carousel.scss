@@ -6,6 +6,14 @@ ol {
 	margin: 0;
 	padding: 0;
 }
+.swiper-slide {
+	text-align: center;
+	font-size: 18px;
+	background: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 
 @import ".../../../node_modules/swiper/scss/functions";
 

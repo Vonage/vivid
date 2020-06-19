@@ -78,12 +78,15 @@ export class VWCCarousel extends LitElement {
   }
 
   render(): TemplateResult {
+    var slides = Array.from(this.children);
+    slides.forEach(e => e.classList.add('swiper-slide'));
+
     return html`<!-- Slider main container -->
       <div class="swiper-container">
         <!-- Additional required wrapper -->
         <ol class="swiper-wrapper">
           <!-- Slides -->
-          <slot></slot>
+          ${[...slides]}
         </ol>
         <!-- If we need pagination -->
         <div class="swiper-pagination"></div>
@@ -93,7 +96,7 @@ export class VWCCarousel extends LitElement {
         <div class="swiper-button-next"></div>
 
         <!-- If we need scrollbar -->
-        <!--     <div class="swiper-scrollbar"></div> -->
+        <!-- <div class="swiper-scrollbar"></div> -->
       </div>`;
   }
 }
