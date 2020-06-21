@@ -17,6 +17,7 @@ This component is an extension of [<mwc-button>](https://github.com/material-com
 | `outlined`                | `boolean`                                 |
 | `raised`                  | `boolean`                                 |
 | `ripple`                  | `Promise<Ripple \| null>`                 |
+| `shape`                   | `ButtonShape`                             |
 | `trailingIcon`            | `boolean`                                 |
 | `unelevated`              | `boolean`                                 |
 

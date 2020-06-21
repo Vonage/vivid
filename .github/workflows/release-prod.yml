@@ -33,10 +33,21 @@ jobs:
       - name: Test components
         run: yarn test
 
-      - name: Test tree
-        run: git diff
-
       - name: Publish components
         run: yarn lerna publish from-package --registry https://npm.pkg.github.com --no-git-tag-version --no-push --yes
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Notify slack
+        uses: rtCamp/action-slack-notify@v2.0.2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_MESSAGE: Hey!!! We've just released new version, welcome to get and hack around!!!
+          SLACK_TITLE: Vivid Release Notice
+
+      - name: Sync 'develop' from 'master'
+        run: >
+          git fetch &&
+          git checkout develop &&
+          git merge origin master &&
+          git push

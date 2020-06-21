@@ -1,28 +1,34 @@
 {
-  "name": "@vonage/vwc-linear-progress",
-  "version": "0.0.15",
-  "description": "> TODO: description",
-  "author": "yinonov <yinon@hotmail.com>",
-  "homepage": "https://github.com/Vonage/vivid/tree/master/components/linear-progress#readme",
-  "license": "ISC",
-  "main": "vwc-linear-progress.js",
-  "module": "vwc-linear-progress.js",
-  "repository": {
-    "type": "git",
-    "url": "ssh://github.com/vonage/vivid.git",
-    "directory": "components/linear-progress"
-  },
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
-  },
-  "bugs": {
-    "url": "https://github.com/Vonage/vivid/issues"
-  },
-  "dependencies": {
-    "@material/mwc-linear-progress": "^0.15.0",
-    "@vonage/vvd-style-coupling": "^0.0.15",
-    "@vonage/vwc-icon": "^0.0.15",
-    "lit-element": "^2.3.1",
-    "tslib": "^2.0.0"
-  }
+	"name": "@vonage/vwc-linear-progress",
+	"version": "0.0.16",
+	"description": "> TODO: description",
+	"author": "yinonov <yinon@hotmail.com>",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/linear-progress#readme",
+	"license": "ISC",
+	"main": "vwc-linear-progress.js",
+	"module": "vwc-linear-progress.js",
+	"files": [
+		"src",
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
+	"repository": {
+		"type": "git",
+		"url": "ssh://github.com/vonage/vivid.git",
+		"directory": "components/linear-progress"
+	},
+	"scripts": {
+		"test": "echo \"Error: run tests from root\" && exit 1"
+	},
+	"bugs": {
+		"url": "https://github.com/Vonage/vivid/issues"
+	},
+	"dependencies": {
+		"@material/mwc-linear-progress": "^0.15.0",
+		"@vonage/vvd-style-coupling": "^0.0.16",
+		"@vonage/vwc-icon": "^0.0.16",
+		"lit-element": "^2.3.1",
+		"tslib": "^2.0.0"
+	}
 }

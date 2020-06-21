@@ -1,12 +1,18 @@
 {
 	"name": "@vonage/vwc-switch",
-	"version": "0.0.15",
+	"version": "0.0.16",
 	"description": "> TODO: description",
 	"author": "yinonov <yinon@hotmail.com>",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/switch#readme",
 	"license": "ISC",
 	"main": "vwc-switch.js",
 	"module": "vwc-switch.js",
+	"files": [
+		"src",
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
 	"repository": {
 		"type": "git",
 		"url": "ssh://github.com/vonage/vivid.git",
