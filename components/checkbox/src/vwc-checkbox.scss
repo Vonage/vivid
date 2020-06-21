@@ -1,5 +1,4 @@
 :host {
-	--mdc-theme-secondary: #131415;
 	--mdc-checkbox-unchecked-color: rgba(194, 196, 204, 1);
 	--mdc-checkbox-disabled-color: rgba(19, 20, 21, 0.3);
 	--mdc-checkbox-mark-color: white;
@@ -27,14 +26,14 @@
 		top: 0;
 		transition: border-color 0.2s !important;
 	}
-	
+
 	.mdc-checkbox__checkmark {
 		height: 14px;
 		left: 3px;
 		top: 3px;
 		width: 14px
 	}
-	
+
 	.mdc-checkbox__mixedmark {
 		width: 12px;
 	}
