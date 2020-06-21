@@ -20,11 +20,11 @@ jobs:
           MSG_MINIMAL: true
           SLACK_ICON_EMOJI: ':vivid:'
           SLACK_TITLE: Vivid Release Notice
-          SLACK_MESSAGE: test test test
+          SLACK_MESSAGE: test test test 1
 
       - name: Sync 'test-slack' from 'master'
         run: >
-          git fetch upstream &&
+          git fetch origin &&
           git checkout test-slack &&
-          git merge upstream/master &&
+          git merge origin/master &&
           git push
