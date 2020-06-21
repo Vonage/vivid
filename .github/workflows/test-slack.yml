@@ -27,4 +27,5 @@ jobs:
           git fetch origin &&
           git checkout test-slack &&
           git merge origin/master --allow-unrelated-histories &&
+          git config --global user.email "vivid.ci@vonage.com" && git config --global user.name "Vivid CI" &&
           git push
