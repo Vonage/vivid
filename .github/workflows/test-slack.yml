@@ -26,5 +26,5 @@ jobs:
         run: >
           git fetch &&
           git checkout test-slack &&
-          git merge origin master &&
+          git merge origin/master &&
           git push
