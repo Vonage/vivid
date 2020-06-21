@@ -18,13 +18,13 @@ jobs:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_CHANNEL: '@yuri.guller'
           MSG_MINIMAL: true
-          SLACK_ICON_EMOJI: v
+          SLACK_ICON_EMOJI: ':vivid:'
           SLACK_TITLE: Vivid Release Notice
           SLACK_MESSAGE: test test test
 
       - name: Sync 'test-slack' from 'master'
         run: >
-          git fetch &&
+          git fetch upstream &&
           git checkout test-slack &&
-          git merge origin/master &&
+          git merge upstream/master &&
           git push
