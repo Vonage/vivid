@@ -1,0 +1,24 @@
+name: Release Vivid Components
+
+on:
+  push:
+    branches: [test-slack]
+
+jobs:
+  build-test-and-publish-prod:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Notify slack
+        uses: rtCamp/action-slack-notify@v2.0.2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_MESSAGE: test test test
+          SLACK_TITLE: Vivid Release Notice
+
+      - name: Sync 'test-slack' from 'master'
+        run: >
+          git fetch &&
+          git checkout test-slack &&
+          git merge origin master &&
+          git push
