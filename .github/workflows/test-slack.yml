@@ -19,13 +19,15 @@ jobs:
           SLACK_CHANNEL: '@yuri.guller'
           MSG_MINIMAL: true
           SLACK_ICON_EMOJI: ':vivid:'
+          SLACK_USERNAME: Vivid CI
           SLACK_TITLE: Vivid Release Notice
           SLACK_MESSAGE: test test test 2
 
       - name: Sync 'test-slack' from 'master'
         run: >
+          git config --global user.email "vivid.ci@vonage.com" &&
+          git config --global user.name "Vivid CI" &&
           git fetch origin &&
           git checkout test-slack &&
           git merge origin/master --allow-unrelated-histories &&
-          git config --global user.email "vivid.ci@vonage.com" && git config --global user.name "Vivid CI" &&
           git push
