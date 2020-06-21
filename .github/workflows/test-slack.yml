@@ -9,11 +9,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
       - name: Notify slack
         uses: rtCamp/action-slack-notify@v2.0.2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_MESSAGE: test test test
+          SLACK_CHANNEL: @yuri.guller
           SLACK_TITLE: Vivid Release Notice
 
       - name: Sync 'test-slack' from 'master'
