@@ -44,7 +44,7 @@ jobs:
         run: yarn storybook:build
 
       - name: Create deploy timestamp/version
-        run: echo ::set-env name=STORYBOOK_DEPLOY_VERSION::$(jq -r '.timestamp' cfd-config-source.json)
+        run: echo ::set-env name=STORYBOOK_DEPLOY_VERSION::$(jq -r '.timestamp' ./.storybook/static/build-details.json)
 
       - name: Deploy storybook versioned as ${{ env.STORYBOOK_DEPLOY_VERSION }}
         env:
