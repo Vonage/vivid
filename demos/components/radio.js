@@ -6,12 +6,12 @@ export default class Home extends Element {
   async getHtml() {
     return html`
       <h3>Default</h3>
-      <mwc-radio name="myGroupA" value="value1"></mwc-radio>
-      <mwc-radio name="myGroupA" value="value2" checked></mwc-radio>
+      <vwc-radio name="myGroupA" value="value1"></vwc-radio>
+      <vwc-radio name="myGroupA" value="value2" checked></vwc-radio>
       
       <h3>Disabled</h3>
-      <mwc-radio name="myGroupB" value="value1" disabled></mwc-radio>
-      <mwc-radio name="myGroupB" value="value2" disabled checked></mwc-radio>
+      <vwc-radio name="myGroupB" value="value1" disabled></vwc-radio>
+      <vwc-radio name="myGroupB" value="value2" disabled checked></vwc-radio>
     `;
   }
 }
