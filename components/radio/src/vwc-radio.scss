@@ -6,13 +6,17 @@
 .mdc-radio {
 	padding: 0;
 
-	.mdc-radio__native-control:enabled:checked + .mdc-radio__background .mdc-radio__outer-circle {
-		border-color: var(--mdc-radio-unchecked-color);
-	}
-
-	&:hover,
-	&__native-control:focus + .mdc-radio__background .mdc-radio__outer-circle {
-		--mdc-radio-unchecked-color: var(--mdc-theme-secondary);
+	.mdc-radio__native-control:enabled {
+		&:checked + .mdc-radio__background .mdc-radio__outer-circle {
+			border-color: var(--mdc-radio-unchecked-color);
+		}
+		
+		&:hover,
+		&:focus {
+			+ .mdc-radio__background .mdc-radio__outer-circle {
+				border-color: var(--mdc-theme-secondary);
+			}
+		}
 	}
 
 	&,
