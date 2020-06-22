@@ -1,8 +1,1 @@
-:root {
-  //common
-  --vwc-color-background: #c1c1c1;
-  --vwc-color-foreground: black;
-  /////////
-  --mdc-theme-primary: rgb(26, 128, 22);
-  --mdc-theme-on-primary: beige;
-}
+@forward '/design-tokens/build/scheme.light.scss';
