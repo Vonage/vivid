@@ -13,8 +13,8 @@ export type PredefinedScheme = 'light' | 'dark';
 export type SchemeOption = 'syncWithOSSettings' | PredefinedScheme;
 
 type ModuleType =
-	| typeof import('@vonage/vvd-design-tokens/scheme-dark.css')
-	| typeof import('@vonage/vvd-design-tokens/scheme-light.css'); // This is the import type!
+	| typeof import('./scheme.dark.css')
+	| typeof import('./scheme.light.css'); // This is the import type!
 
 const getSchemeCssText = pipe(getSchemeModule, getStyleSheet, getCssText);
 
