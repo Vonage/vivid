@@ -30,7 +30,7 @@
 		"compile": "yarn compile:design-tokens && yarn compile:styles && yarn compile:typescript",
 		"compile:styles": "node ./common/fonts/build/embed-fonts.js && ./scripts/build-styles.sh",
 		"compile:typescript": "tsc --build",
-		"compile:design-tokens": "node design-tokens/renderers/render-tokens-schemes.js",
+		"compile:design-tokens": "node ./design-tokens/renderers/render-tokens-schemes.js",
 		"prestart": "yarn compile",
 		"start": "yarn dev:server",
 		"start:build": "yarn build:prod && es-dev-server --root-dir dist --app-index index.html --open --compatibility none",
