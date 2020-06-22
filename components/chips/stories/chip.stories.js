@@ -3,7 +3,7 @@ import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Atomic/Chip',
+	title: 'Atoms/Chip',
 	component: 'vwc-chip',
 	decorators: [withA11y]
 }

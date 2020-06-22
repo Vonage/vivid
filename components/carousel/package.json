@@ -1,12 +1,17 @@
 {
 	"name": "@vonage/vwc-carousel",
-	"version": "0.0.12-alpha.0",
+	"version": "0.0.16",
 	"description": "carousel component",
-	"author": "yinonov <yinon@hotmail.com>",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/carousel#readme",
 	"license": "ISC",
 	"main": "vwc-carousel.js",
 	"module": "vwc-carousel.js",
+	"files": [
+		"src",
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
 	"repository": {
 		"type": "git",
 		"url": "ssh://github.com/vonage/vivid.git",
@@ -20,15 +25,11 @@
 	},
 	"dependencies": {
 		"lit-element": "^2.3.1",
+		"@vonage/vwc-fab": "^0.0.16",
 		"swiper": "^5.4.5",
 		"tslib": "^2.0.0"
 	},
 	"devDependencies": {
 		"@types/swiper": "^5.3.2"
-	},
-	"publishConfig": {
-		"access": "public",
-		"registry": "https://npm.pkg.github.com/"
-	},
-	"gitHead": "0d7636be37fdd33647e16d14b10b98627d074f5f"
+	}
 }

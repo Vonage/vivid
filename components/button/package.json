@@ -2,7 +2,6 @@
 	"name": "@vonage/vwc-button",
 	"version": "0.0.16",
 	"description": "button component",
-	"author": "yinonov <yinon@hotmail.com>",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/button#readme",
 	"license": "ISC",
 	"main": "vwc-button.js",

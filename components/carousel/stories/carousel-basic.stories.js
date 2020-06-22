@@ -1,23 +1,31 @@
-import '@vonage/vwc-button/vwc-button.js';
+import '@vonage/vwc-carousel/vwc-carousel.js';
+import '@vonage/vwc-carousel/vwc-carousel-item.js';
 import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Atomic/Button',
-	component: 'vwc-button',
+	title: 'Cells/Carousel',
+	component: 'vwc-carousel',
 	decorators: [withA11y]
 }
 
 export const basic = () => html`
-	<h3>Unelevated</h3>
-	<vwc-button unelevated>Unelevated</vwc-button>
-	<vwc-button unelevated icon="code">Unelevated</vwc-button>
+	<style>
+		.item {
+			max-width: 100%;
+			object-fit: cover;
+		}
+	</style>
 
-	<h3>Outlined</h3>
-	<vwc-button outlined>Outlined</vwc-button>
-	<vwc-button outlined icon="code">Outlined</vwc-button>
-
-	<h3>Disabled</h3>
-	<vwc-button disabled unelevated icon="code">Disabled</vwc-button>
-	<vwc-button disabled outlined icon="code">Disabled</vwc-button>
+	<vwc-carousel style="width:500px;height: 200px;">
+		<vwc-carousel-item>
+			<img class="item"	src="https://source.unsplash.com/IUPiWRNKNm8"/>
+		</vwc-carousel-item>
+		<vwc-carousel-item>
+			<img class="item" src="https://source.unsplash.com/q_M6B9_cajM"/>
+		</vwc-carousel-item>
+		<vwc-carousel-item>
+			<img class="item"	src="https://source.unsplash.com/CVBQdww5JZU"/>
+		</vwc-carousel-item>
+	</vwc-carousel>
 `;

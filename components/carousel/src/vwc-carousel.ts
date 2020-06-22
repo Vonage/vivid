@@ -1,18 +1,18 @@
 import {
-  customElement,
-  LitElement,
-  html,
-  query,
-  CSSResult,
-  TemplateResult,
+	customElement,
+	LitElement,
+	html,
+	query,
+	CSSResult,
+	TemplateResult,
 } from 'lit-element';
 import { style } from './vwc-carousel.css';
-import Swiper from 'swiper';
+import Swiper, { SwiperOptions } from 'swiper';
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'vwc-carousel': VWCCarousel;
-  }
+	interface HTMLElementTagNameMap {
+		'vwc-carousel': VWCCarousel;
+	}
 }
 
 /**
@@ -20,83 +20,77 @@ declare global {
  */
 @customElement('vwc-carousel')
 export class VWCCarousel extends LitElement {
-  static get styles(): CSSResult {
-    return style;
-  }
+	static get styles(): CSSResult {
+		return style;
+	}
 
-  @query('.swiper-container')
-  private swiperContainer?: Element;
+	@query('.swiper-container')
+	private swiperContainer?: Element;
 
-  @query('.swiper-button-next')
-  private swiperButtonNext?: Element;
+	@query('.swiper-button-next')
+	private swiperButtonNext?: Element;
 
-  @query('.swiper-button-prev')
-  private swiperButtonPrev?: Element;
+	@query('.swiper-button-prev')
+	private swiperButtonPrev?: Element;
 
-  @query('.swiper-pagination')
-  private swiperPagination?: Element;
+	@query('.swiper-pagination')
+	private swiperPagination?: Element;
 
-  firstUpdated(): void {
-    try {
-      // const mySwiper =
-      this.swiperize(this.swiperContainer as HTMLElement, this.swiperOptions);
-    } catch (e) {
-      console.log(e);
-    }
-  }
+	firstUpdated(): void {
+		try {
+			this.swiperize(this.swiperContainer as HTMLElement, this.swiperOptions);
+		} catch (e) {
+			console.log(e);
+		}
+	}
 
-  private get swiperOptions(): any {
-    return {
-      // Optional parameters
-      // direction: "horizontal",
-      loop: true,
+	private get swiperOptions(): SwiperOptions {
+		return {
+			loop: true,
 
-      autoplay: {
-        delay: 2500,
-        disableOnInteraction: true,
-      },
+			autoplay: {
+				delay: 2500,
+				disableOnInteraction: true,
+			},
 
-      cssMode: true,
-      navigation: {
-        nextEl: this.swiperButtonNext as HTMLElement,
-        prevEl: this.swiperButtonPrev as HTMLElement,
-      },
-      pagination: {
-        el: this.swiperPagination as HTMLElement,
-        clickable: true,
-        renderBullet: function (index: number, className: string) {
-          return `<span class="${className}">${index + 1}</span>`;
-        },
-      },
-      mousewheel: true,
-      keyboard: true,
-    };
-  }
+			cssMode: false,
+			navigation: {
+				nextEl: this.swiperButtonNext as HTMLElement,
+				prevEl: this.swiperButtonPrev as HTMLElement,
+			},
+			pagination: {
+				el: this.swiperPagination as HTMLElement,
+				clickable: true,
+				renderBullet: function (index: number, className: string) {
+					return `<span class="${className} ${index}"></span>`;
+				},
+			},
+			mousewheel: true,
+			keyboard: true,
+		};
+	}
 
-  private swiperize(el: HTMLElement, options: any) {
-    return new Swiper(el, options);
-  }
+	private swiperize(el: HTMLElement, options: SwiperOptions) {
+		return new Swiper(el, options);
+	}
 
-  render(): TemplateResult {
-    var slides = Array.from(this.children);
-    slides.forEach(e => e.classList.add('swiper-slide'));
+	render(): TemplateResult {
+		const slides = Array.from(this.children);
+		slides.forEach(e => e.classList.add('swiper-slide'));
 
-    return html`<!-- Slider main container -->
-      <div class="swiper-container">
-        <!-- Additional required wrapper -->
-        <ol class="swiper-wrapper">
-          <!-- Slides -->
-          ${[...slides]}
-        </ol>
-        <!-- If we need pagination -->
-        <div class="swiper-pagination"></div>
+		return html`
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+					${[...slides]}
+				</div>
+				<div class="swiper-pagination"></div>
 
-        <!-- If we need navigation buttons -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
+				<vwc-fab class="swiper-button-prev" mini icon="navigate_before"></vwc-fab>
+				<vwc-fab class="swiper-button-next" mini icon="navigate_next"></vwc-fab>
 
-        <!-- If we need scrollbar -->
-        <!-- <div class="swiper-scrollbar"></div> -->
-      </div>`;
-  }
+				<!-- If we need scrollbar -->
+				<!-- <div class="swiper-scrollbar"></div> -->
+			</div>
+    `;
+	}
 }
