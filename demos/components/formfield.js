@@ -10,9 +10,9 @@ export default class Home extends Element {
         <vwc-checkbox></vwc-checkbox>
       </vwc-formfield>
 
-      <mwc-formfield label="Vwc formfield around radio">
-        <mwc-radio name="myGroup" value="value1"></mwc-radio>
-      </mwc-formfield>
+      <vwc-formfield label="Vwc formfield around radio">
+        <vwc-radio name="myGroup" value="value1"></vwc-radio>
+      </vwc-formfield>
     `;
   }
 }
