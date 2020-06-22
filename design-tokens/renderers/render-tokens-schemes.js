@@ -9,7 +9,7 @@ const StyleDictionaryPackage = require("style-dictionary");
 
 // HAVE THE STYLE DICTIONARY CONFIG DYNAMICALLY GENERATED
 const format = "css/variables";
-const buildPath = `${__dirname}/../src/`;
+const buildPath = `${__dirname}/../build/`;
 console.log(`${__dirname}/../properties/`);
 function getStyleDictionaryConfig(scheme, platform) {
 	return {
@@ -101,7 +101,7 @@ console.log("Build started...");
 
 // PROCESS THE DESIGN TOKENS FOR THE DIFFERENT SCHEMES AND PLATFORMS
 // TODO: [VIV-41] add accessible colors scheme
-["scheme-light", "scheme-dark"].map(function (scheme) {
+["scheme.light", "scheme.dark"].map(function (scheme) {
 	["web" /*, 'ios', 'android'*/].map(function (platform) {
 		console.log("\n==============================================");
 		console.log(`\nProcessing: [${platform}] [${scheme}]`);
