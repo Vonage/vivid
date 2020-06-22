@@ -2,9 +2,8 @@ name: Prepare release
 
 on:
   create:
-    branches: [release-*]
-  push:
-    branches: [release-*]
+    branches:
+      - 'release-*'
 
 jobs:
   build:
