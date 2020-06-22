@@ -43,10 +43,10 @@ function getSchemeModule(schemeOption: SchemeOption): Promise<ModuleType> {
 	// console.log(`set ${schemeOption} scheme`);
 	switch (schemeOption) {
 		case 'dark':
-			return import('@vonage/vvd-design-tokens/scheme-dark.css');
+			return import('./scheme.dark.css');
 		case 'light':
 		default:
-			return import('@vonage/vvd-design-tokens/scheme-light.css');
+			return import('./scheme.light.css');
 	}
 }
 

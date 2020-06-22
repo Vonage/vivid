@@ -3,7 +3,7 @@ const
 	path = require('path');
 
 const
-	OUT_PATH = './.out',
+	OUT_PATH = './.storybook/static',
 	OUT_FILE = 'build-details.json';
 
 //	execution part
@@ -28,7 +28,7 @@ function buildDetails() {
 	const externalDescriptorPath = './lerna.json';
 	const externalDescription = JSON.parse(fs.readFileSync(externalDescriptorPath, { encoding: 'utf8' }));
 	const result = Object.freeze({
-		time: new Date().toISOString(),
+		timestamp: new Date().toISOString(),
 		version: externalDescription.version
 	});
 	return result;
