@@ -25,23 +25,19 @@ export class VWCCarousel extends LitElement {
 	}
 
 	@query('.swiper-container')
-	private swiperContainer?: Element;
+	private swiperContainer?: HTMLElement;
 
 	@query('.swiper-button-next')
-	private swiperButtonNext?: Element;
+	private swiperButtonNext?: HTMLElement;
 
 	@query('.swiper-button-prev')
-	private swiperButtonPrev?: Element;
+	private swiperButtonPrev?: HTMLElement;
 
 	@query('.swiper-pagination')
-	private swiperPagination?: Element;
+	private swiperPagination?: HTMLElement;
 
 	firstUpdated(): void {
-		try {
-			this.swiperize(this.swiperContainer as HTMLElement, this.swiperOptions);
-		} catch (e) {
-			console.log(e);
-		}
+		this.swiperize(this.swiperContainer as HTMLElement, this.swiperOptions);
 	}
 
 	private get swiperOptions(): SwiperOptions {
@@ -55,14 +51,14 @@ export class VWCCarousel extends LitElement {
 
 			cssMode: false,
 			navigation: {
-				nextEl: this.swiperButtonNext as HTMLElement,
 				prevEl: this.swiperButtonPrev as HTMLElement,
+				nextEl: this.swiperButtonNext as HTMLElement,
 			},
 			pagination: {
 				el: this.swiperPagination as HTMLElement,
 				clickable: true,
-				renderBullet: function (index: number, className: string) {
-					return `<span class="${className} ${index}"></span>`;
+				renderBullet: function (_index: number, className: string) {
+					return `<span class="${className}"></span>`;
 				},
 			},
 			mousewheel: true,
@@ -87,9 +83,6 @@ export class VWCCarousel extends LitElement {
 
 				<vwc-fab class="swiper-button-prev" mini icon="navigate_before"></vwc-fab>
 				<vwc-fab class="swiper-button-next" mini icon="navigate_next"></vwc-fab>
-
-				<!-- If we need scrollbar -->
-				<!-- <div class="swiper-scrollbar"></div> -->
 			</div>
     `;
 	}
