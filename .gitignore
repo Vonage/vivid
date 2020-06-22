@@ -46,6 +46,7 @@ custom-elements.json
 **/*.tsbuildinfo*
 
 storybook-static
+.storybook/static/build-details.json
 !**/stories/**/*.js
 
 .cache
