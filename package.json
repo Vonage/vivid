@@ -26,7 +26,7 @@
 		"build": "yarn compile:design-tokens && yarn compile:styles && yarn compile:typescript",
 		"build:demo": "yarn compile && rimraf dist && rollup -c rollup.demo.config.js",
 		"storybook:build": "yarn wca:custom-elements && build-storybook -c .storybook -o .out -s ./.storybook/static && node scripts/prepare-sb-details.js",
-		"storybook:start": "yarn wca:custom-elements && start-storybook -s ./.storybook/static -p 9000 && node scripts/prepare-sb-details.js",
+		"storybook:start": "node scripts/prepare-sb-details.js && yarn wca:custom-elements && start-storybook -s ./.storybook/static -p 9000",
 		"compile": "yarn compile:design-tokens && yarn compile:styles && yarn compile:typescript",
 		"compile:styles": "node ./common/fonts/build/embed-fonts.js && ./scripts/build-styles.sh",
 		"compile:typescript": "tsc --build",
