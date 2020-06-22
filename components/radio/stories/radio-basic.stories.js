@@ -9,6 +9,11 @@ export default {
 }
 
 export const basic = () => html`
-	<vwc-radio name="myGroup" value="value1"></vwc-radio>
-	<vwc-radio name="myGroup" value="value2" checked></vwc-radio>
+	<h3>Pre-selected</h3>
+	<vwc-radio name="group-a" value="value1"></vwc-radio>
+	<vwc-radio name="group-a" value="value2" checked></vwc-radio>
+
+	<h3>Non-selected</h3>
+	<vwc-radio name="group-b" value="value1"></vwc-radio>
+	<vwc-radio name="group-b" value="value2"></vwc-radio>
 `;
