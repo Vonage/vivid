@@ -1,5 +1,3 @@
-// 'use strict'; // Modules have strict mode enabled by default.
-
 import { CSSResult } from 'lit-element';
 import { pipe } from 'ramda';
 import { onSchemeChange } from './scheme-change-listener';
