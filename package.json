@@ -9,7 +9,7 @@
 		"common/*"
 	],
 	"scripts": {
-		"lint:eslint": "eslint components/* common/* --ignore-path .eslintignore --config .eslintrc.yaml",
+		"lint:eslint": "eslint components/** common/** --no-error-on-unmatched-pattern --ignore-path .eslintignore --config .eslintrc.yaml",
 		"format:eslint": "eslint --ext .js,.html . --fix --ignore-path .eslintignore",
 		"lint:prettier": "prettier \"**/*.js\" --check --ignore-path .eslintignore",
 		"format:prettier": "prettier \"**/*.js\" --write --ignore-path .eslintignore",
