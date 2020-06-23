@@ -48,6 +48,9 @@ router
     list: function () {
       render(html` <list-route></list-route> `, componentDemoContainer);
     },
+    radio: function () {
+      render(html` <radio-route></radio-route> `, componentDemoContainer);
+    },
     scheme: function () {
       render(html` <scheme-route></scheme-route> `, componentDemoContainer);
     },

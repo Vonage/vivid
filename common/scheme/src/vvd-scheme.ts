@@ -1,5 +1,3 @@
-// 'use strict'; // Modules have strict mode enabled by default.
-
 import { CSSResult } from 'lit-element';
 import { pipe } from 'ramda';
 import { onSchemeChange } from './scheme-change-listener';
@@ -13,8 +11,8 @@ export type PredefinedScheme = 'light' | 'dark';
 export type SchemeOption = 'syncWithOSSettings' | PredefinedScheme;
 
 type ModuleType =
-	| typeof import('@vonage/vvd-design-tokens/scheme-dark.css')
-	| typeof import('@vonage/vvd-design-tokens/scheme-light.css'); // This is the import type!
+	| typeof import('./scheme.dark.css')
+	| typeof import('./scheme.light.css'); // This is the import type!
 
 const getSchemeCssText = pipe(getSchemeModule, getStyleSheet, getCssText);
 
@@ -43,10 +41,10 @@ function getSchemeModule(schemeOption: SchemeOption): Promise<ModuleType> {
 	// console.log(`set ${schemeOption} scheme`);
 	switch (schemeOption) {
 		case 'dark':
-			return import('@vonage/vvd-design-tokens/scheme-dark.css');
+			return import('./scheme.dark.css');
 		case 'light':
 		default:
-			return import('@vonage/vvd-design-tokens/scheme-light.css');
+			return import('./scheme.light.css');
 	}
 }
 
