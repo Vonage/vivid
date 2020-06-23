@@ -6,5 +6,7 @@
 **/storybook-static
 **/coverage
 
+common/design-tokens
+
 components/mwc-chips/src/*.ts
 !components/mwc-chips/src/mwc-chip.ts
