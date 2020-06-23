@@ -12,10 +12,5 @@
 	],
 	"exclude": [
 		"src/test/*.ts"
-	],
-	"references": [
-		{
-			"path": "../design-tokens"
-		}
 	]
 }

@@ -29,7 +29,6 @@
   "include": ["custom_typings/**/*.ts", "src/*.ts"],
   "exclude": [],
   "references": [
-    { "path": "common/design-tokens" },
     { "path": "common/style-coupling" },
     { "path": "common/scheme" },
 		{	"path": "common/fonts" },
@@ -47,6 +46,7 @@
     { "path": "components/linear-progress" },
     { "path": "components/list" },
     { "path": "components/menu" },
+    { "path": "components/radio" },
     { "path": "components/scheme-select" },
 		{ "path": "components/select" },
 		{ "path": "components/slider" },

@@ -1,17 +1,16 @@
 {
 	"name": "@vonage/vwc-anchor",
-	"version": "0.0.16",
+	"version": "0.0.17",
 	"description": "> TODO: description",
 	"author": "yinonov <yinon@hotmail.com>",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/anchor#readme",
 	"license": "ISC",
 	"main": "lib/button.js",
-	"directories": {
-		"lib": "lib",
-		"test": "__tests__"
-	},
 	"files": [
-		"lib"
+		"src",
+		"*.js",
+		"*.ts",
+		"*.map"
 	],
 	"repository": {
 		"type": "git",

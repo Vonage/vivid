@@ -1,25 +1,31 @@
 {
-  "name": "@vonage/vwc-formfield",
-  "version": "0.0.16",
-  "description": "> TODO: description",
-  "homepage": "https://github.com/Vonage/vivid/tree/master/components/formfield#readme",
-  "license": "ISC",
-  "main": "vwc-formfield.js",
-  "module": "vwc-formfield.js",
-  "repository": {
-    "type": "git",
-    "url": "ssh://github.com/vonage/vivid.git",
-    "directory": "components/formfield"
-  },
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
-  },
-  "bugs": {
-    "url": "https://github.com/Vonage/vivid/issues"
-  },
-  "dependencies": {
-    "@material/mwc-formfield": "^0.15.0",
-    "lit-element": "^2.3.1",
-    "tslib": "^2.0.0"
-  }
+	"name": "@vonage/vwc-formfield",
+	"version": "0.0.17",
+	"description": "> TODO: description",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/formfield#readme",
+	"license": "ISC",
+	"main": "vwc-formfield.js",
+	"module": "vwc-formfield.js",
+	"files": [
+		"src",
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
+	"repository": {
+		"type": "git",
+		"url": "ssh://github.com/vonage/vivid.git",
+		"directory": "components/formfield"
+	},
+	"scripts": {
+		"test": "echo \"Error: run tests from root\" && exit 1"
+	},
+	"bugs": {
+		"url": "https://github.com/Vonage/vivid/issues"
+	},
+	"dependencies": {
+		"@material/mwc-formfield": "^0.15.0",
+		"lit-element": "^2.3.1",
+		"tslib": "^2.0.0"
+	}
 }

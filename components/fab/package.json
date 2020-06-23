@@ -1,11 +1,17 @@
 {
 	"name": "@vonage/vwc-fab",
-	"version": "0.0.16",
+	"version": "0.0.17",
 	"description": "fab component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/fab#readme",
 	"license": "ISC",
 	"main": "vwc-fab.js",
 	"module": "vwc-fab.js",
+	"files": [
+		"src",
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
 	"repository": {
 		"type": "git",
 		"url": "ssh://github.com/vonage/vivid.git",
@@ -19,7 +25,7 @@
 	},
 	"dependencies": {
 		"@material/mwc-fab": "^0.15.0",
-		"@vonage/vvd-style-coupling": "^0.0.16",
+		"@vonage/vvd-style-coupling": "^0.0.17",
 		"lit-element": "^2.3.1",
 		"tslib": "^2.0.0"
 	}

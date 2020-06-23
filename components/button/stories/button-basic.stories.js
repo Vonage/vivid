@@ -9,15 +9,47 @@ export default {
 }
 
 export const basic = () => html`
-	<h3>Unelevated</h3>
-	<vwc-button unelevated>Unelevated</vwc-button>
-	<vwc-button unelevated icon="code">Unelevated</vwc-button>
+	<style>
+		.container {
+			display: inline-block;
+			padding: 24px;
+		}
+
+		.outstanding {
+			background-color: #E5E5E5;
+		}
+
+		.inverted {
+			background-color: #131414;
+		}
+	</style>
+
+	<h3>Standard</h3>
+	<div class="container">
+		<vwc-button>Basic</vwc-button>
+		<vwc-button icon="code">With icon</vwc-button>
+		<vwc-button disabled icon="code">Disabled</vwc-button>
+	</div>
 
 	<h3>Outlined</h3>
-	<vwc-button outlined>Outlined</vwc-button>
-	<vwc-button outlined icon="code">Outlined</vwc-button>
+	<div class="container">
+		<vwc-button outlined>Basic</vwc-button>
+		<vwc-button outlined icon="code">With icon</vwc-button>
+		<vwc-button outlined disabled icon="code">Disabled</vwc-button>
+	</div>
 
-	<h3>Disabled</h3>
-	<vwc-button disabled unelevated icon="code">Disabled</vwc-button>
-	<vwc-button disabled outlined icon="code">Disabled</vwc-button>
+	<h3>Unelevated</h3>
+	<div class="container">
+		<vwc-button unelevated>Basic</vwc-button>
+		<vwc-button unelevated icon="code">With icon</vwc-button>
+		<vwc-button unelevated disabled icon="code">Disabled</vwc-button>
+	</div>
+
+	<h3>Pill shape</h3>
+	<div class="container">
+		<vwc-button outlined shape="pill" icon="code">Outlined</vwc-button>
+		<vwc-button outlined disabled shape="pill">Disabled</vwc-button>
+		<vwc-button unelevated shape="pill" icon="code">Unelevated</vwc-button>
+		<vwc-button unelevated disabled shape="pill">Disabled</vwc-button>
+	</div>
 `;

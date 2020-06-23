@@ -1,6 +1,6 @@
 {
   "name": "@vonage/vvd-scheme",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "description": "> TODO: description",
   "author": "yinonov <yinon@hotmail.com>",
   "homepage": "https://github.com/Vonage/vivid/tree/master/components/scheme#readme",
@@ -19,7 +19,6 @@
     "url": "https://github.com/Vonage/vivid/issues"
   },
   "dependencies": {
-    "@vonage/vvd-design-tokens": "^0.0.13-alpha.0",
     "ramda": "^0.27.0",
     "tslib": "^2.0.0"
   },

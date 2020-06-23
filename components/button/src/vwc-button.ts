@@ -1,4 +1,4 @@
-import { customElement } from 'lit-element';
+import { customElement, property } from 'lit-element';
 import { Button as MWCButton } from '@material/mwc-button';
 import { style as vwcButtonStyle } from './vwc-button.css';
 import { style as mwcButtonStyle } from '@material/mwc-button/mwc-button-css.js';
@@ -14,8 +14,18 @@ declare global {
 // @ts-ignore
 MWCButton.styles = [styleCoupling, mwcButtonStyle, vwcButtonStyle];
 
+export type ButtonShape = 'rounded' | 'pill';
+
 /**
  * This component is an extension of [<mwc-button>](https://github.com/material-components/material-components-web-components/tree/master/packages/button)
  */
 @customElement('vwc-button')
-export class VWCButton extends MWCButton {}
+export class VWCButton extends MWCButton {
+	@property({ type: String, reflect: true }) shape: ButtonShape = 'rounded';
+
+	protected updated(): void {
+		const innerButton = this.shadowRoot?.querySelector('.mdc-button');
+		innerButton?.classList[this.shape === 'pill' ? 'add' : 'remove']('mdc-button--pill');
+		innerButton?.classList[this.shape === 'rounded' ? 'add' : 'remove']('mdc-button--rounded');
+	}
+}
