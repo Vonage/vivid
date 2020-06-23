@@ -26,18 +26,16 @@
 
   &:not(.mdc-switch--disabled) {
     &:hover {
-      // look into opacity/hsl vars for hover states
+      // look into opacity for hover states
       @include switch.toggled-off-track-color(#616266);
       @include switch.toggled-on-track-color(#616266);
-
-      .mdc-switch__thumb {
-        @include switch.toggled-off-thumb-color(#f3f3f5);
-        @include switch.toggled-on-thumb-color(#f3f3f5);
-      }
+      @include switch.toggled-off-thumb-color(#f3f3f5);
+      @include switch.toggled-on-thumb-color(#f3f3f5);
     }
   }
 
   &__track,
+  &__thumb,
   &__thumb-underlay {
     transition-duration: 0.4s;
   }
@@ -51,7 +49,6 @@
 
   &__thumb {
     box-shadow: none;
-    transition: opacity 0.4s;
   }
 }
 
