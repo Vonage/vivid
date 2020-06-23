@@ -1,3 +1,11 @@
-::slotted(vwc-checkbox) {
-  margin-right: 6px;
+:host {
+  display: block;
+}
+
+.mdc-form-field {
+  padding: 8px 0;
+}
+
+.mdc-form-field > label {
+  padding-left: 10px;
 }
