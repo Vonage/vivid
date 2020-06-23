@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-scheme-select",
-	"version": "0.0.16",
+	"version": "0.0.17",
 	"description": "> TODO: description",
 	"author": "yinonov <yinon@hotmail.com>",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/scheme-select#readme",
@@ -25,7 +25,7 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@vonage/vvd-scheme": "^0.0.16",
+		"@vonage/vvd-scheme": "^0.0.17",
 		"lit-element": "^2.3.1",
 		"lit-html": "^1.2.1",
 		"tslib": "^2.0.0"
