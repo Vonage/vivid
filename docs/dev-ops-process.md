@@ -2,17 +2,19 @@
 
 In order to build, test and deploy our product we use [GitHub actions](https://help.github.com/en/actions), aka workflows.
 
-Most of the processes may and should be run locally to save the time and the resouces of both the developer/contributor self and the CI.
+Most of the processes may and should be run locally to save the time and the resouces of both the developer/contributor self and the CI system.
 
 ##### Git flow
 
-Our code is stored and managed by Git, hosted in GitHub.
+Our code is stored and managed with Git, hosted in GitHub.
 
 We apply a Git flow approach, as it outlined, for example, [here](https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow):
 * `develop` is our main (default) working branch receiving content from a feature branches and upstreaming it to the master as per release
 * custom 'feature branches' are created from `develop` upon each new feature/functionality development and are merged back into it upon finalization via Pull Requests
 	* non-inter-organizational contributors should __fork__ the repo/branch and work on their fork
-* `master` branch is used to hold a releases points of code, that is merged into it from the `develop` branch only (or hotfixes in exceptional cases)
+* when we decide to cut the release, we open a release branch (named `release-<version>`, for example `release-0.5.2`) from `develop`
+* release branch is pushed and running some automation, then PRed and merged to the `master`
+* `master` branch, once received a merge from from `release`, publishes the packages
 
 ##### Quality
 
@@ -34,12 +36,8 @@ Further, when the content of release is closed, `develop` branch will PR to the 
 
 Upon PR merge, `master` branch won't run the quality checks, but will do its own deploy.
 
-##### Deploy
+##### Full flow visualization
 
-`develop` branch is responsible for deploying the __Demo__ application (may change in the future).
-
-`master` branch is responsible for deploying the packages - publishing.
-
-Chart below is a rough representation of the Vivid's DevOps flow.
+Chart below serves as a visualization of the Vivid's dev cycle flow.
 
 ![DevOps flow](../assets/images/vivid-devops-flow.svg)
