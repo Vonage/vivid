@@ -1,0 +1,27 @@
+<style>
+	.build-details {
+		opacity: 0.7;
+		margin: 8px 8px 48px;
+		text-align: center;
+		font-size: 0.75em;
+	}
+
+	.build-detail {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+</style>
+
+<template id="vivid-version-template">
+	<div class="build-details">
+		<div class="build-detail">
+			<span>Version:</span>
+			<span class="build-version"></span>
+		</div>
+		<div class="build-detail">
+			<span>From:</span>
+			<span class="build-timestamp"></span>
+		</div>
+	</div>
+</template>

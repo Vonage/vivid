@@ -1,12 +1,11 @@
 {
-	"name": "@vonage/vwc-switch",
+	"name": "@vonage/vwc-radio",
 	"version": "0.0.17",
-	"description": "> TODO: description",
-	"author": "yinonov <yinon@hotmail.com>",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/switch#readme",
+	"description": "radio component",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/radio#readme",
 	"license": "ISC",
-	"main": "vwc-switch.js",
-	"module": "vwc-switch.js",
+	"main": "vwc-radio.js",
+	"module": "vwc-radio.js",
 	"files": [
 		"src",
 		"*.js",
@@ -16,7 +15,7 @@
 	"repository": {
 		"type": "git",
 		"url": "ssh://github.com/vonage/vivid.git",
-		"directory": "components/switch"
+		"directory": "components/radio"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"
@@ -25,7 +24,8 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@material/mwc-switch": "^0.15.0",
+		"@material/mwc-radio": "^0.15.0",
+		"@vonage/vvd-style-coupling": "^0.0.17",
 		"lit-element": "^2.3.1",
 		"tslib": "^2.0.0"
 	}
