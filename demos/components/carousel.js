@@ -2,6 +2,7 @@ import { html } from "lit-html";
 import Element from "../modules/element.js";
 import "@vonage/vwc-carousel";
 import "@vonage/vwc-carousel/vwc-carousel-item";
+import "@vonage/vwc-icon";
 
 export default class Carousel extends Element {
 	async getHtml() {

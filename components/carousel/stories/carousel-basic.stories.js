@@ -19,13 +19,13 @@ export const basic = () => html`
 
 	<vwc-carousel style="width:500px;height: 200px;">
 		<vwc-carousel-item>
-			<img class="item"	src="https://source.unsplash.com/IUPiWRNKNm8"/>
+			<img class="item" src="https://source.unsplash.com/IUPiWRNKNm8"/>
 		</vwc-carousel-item>
 		<vwc-carousel-item>
 			<img class="item" src="https://source.unsplash.com/q_M6B9_cajM"/>
 		</vwc-carousel-item>
 		<vwc-carousel-item>
-			<img class="item"	src="https://source.unsplash.com/CVBQdww5JZU"/>
+			<img class="item" src="https://source.unsplash.com/CVBQdww5JZU"/>
 		</vwc-carousel-item>
 	</vwc-carousel>
 `;

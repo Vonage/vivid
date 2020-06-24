@@ -81,8 +81,8 @@ export class VWCCarousel extends LitElement {
 				</div>
 				<div class="swiper-pagination"></div>
 
-				<vwc-fab class="swiper-button-prev" mini icon="navigate_before"></vwc-fab>
-				<vwc-fab class="swiper-button-next" mini icon="navigate_next"></vwc-fab>
+				<div class="swiper-button-prev"><vwc-icon>navigate_before</vwc-icon></div>
+				<div class="swiper-button-next"><vwc-icon>navigate_next</vwc-icon></div>
 			</div>
     `;
 	}
