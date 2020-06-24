@@ -1,37 +1,17 @@
+@use './variables';
+
 .swiper-container {
 	width: inherit;
 	height: inherit;
-	--swiper-navigation-size: 56px;
 
-	.swiper-button-prev,
-	.swiper-button-next {
-		width: var(--swiper-navigation-size);
-	}
-
-	.swiper-button-prev::after,
-	.swiper-container-rtl .swiper-button-next::after {
-		content: "";
-	}
-
-	.swiper-button-next::after,
-	.swiper-container-rtl .swiper-button-prev::after {
-		content: "";
+	&.swiper-container-horizontal {
+		padding: 0 variables.$navigation-width variables.$pagination-height;
 	}
 }
 
 .swiper-wrapper {
 	margin: 0;
 	padding: 0;
-}
-
-
-.swiper-slide {
-	text-align: center;
-	font-size: 18px;
-	background: #fff;
-	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 
 $themeColor: #00ff9d !default;
@@ -66,4 +46,6 @@ $colors: (
 @import "../../../node_modules/swiper/components/zoom/zoom";
 
 //IMPORT PAGINATION
+@import "./vwc-carousel-item";
+@import "./vwc-carousel-navigation";
 @import "./vwc-carousel-pagination";

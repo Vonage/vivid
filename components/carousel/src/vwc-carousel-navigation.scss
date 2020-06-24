@@ -1,0 +1,38 @@
+@use './variables';
+
+$pagination-height: variables.$pagination-height;
+
+.swiper-button-prev,
+.swiper-button-next {
+	background-color: #ffffff;
+    height: calc(100% - #{$pagination-height});
+    top: 0;
+	margin-top: 0;
+	width: variables.$navigation-width;
+	
+	&:after {
+		color: #616266;
+		font-size: 16px;
+	}
+}
+
+.swiper-button-prev {
+	left: 0;
+	border-top-left-radius: 6px;
+	border-bottom-left-radius: 6px;
+}
+.swiper-button-next {
+	right: 0;
+	border-top-right-radius: 6px;
+	border-bottom-right-radius: 6px;
+}
+
+.swiper-button-prev::after,
+.swiper-container-rtl .swiper-button-next::after {
+	content: "";
+}
+
+.swiper-button-next::after,
+.swiper-container-rtl .swiper-button-prev::after {
+	content: "";
+}

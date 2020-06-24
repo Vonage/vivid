@@ -49,7 +49,7 @@ export class VWCCarousel extends LitElement {
 				disableOnInteraction: true,
 			},
 
-			cssMode: false,
+			cssMode: true,
 			navigation: {
 				prevEl: this.swiperButtonPrev as HTMLElement,
 				nextEl: this.swiperButtonNext as HTMLElement,
