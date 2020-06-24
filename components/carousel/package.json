@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-carousel",
-	"version": "0.0.16",
+	"version": "0.0.17",
 	"description": "carousel component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/carousel#readme",
 	"license": "ISC",
@@ -25,7 +25,7 @@
 	},
 	"dependencies": {
 		"lit-element": "^2.3.1",
-		"@vonage/vwc-fab": "^0.0.16",
+		"@vonage/vwc-fab": "^0.0.17",
 		"swiper": "^5.4.5",
 		"tslib": "^2.0.0"
 	},

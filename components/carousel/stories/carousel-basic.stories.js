@@ -10,14 +10,8 @@ export default {
 }
 
 export const basic = () => html`
-	<style>
-		.item {
-			max-width: 100%;
-			object-fit: cover;
-		}
-	</style>
 
-	<vwc-carousel style="width:500px;height: 200px;">
+	<vwc-carousel style="width:500px;height:200px;">
 		<vwc-carousel-item>
 			<img class="item"	src="https://source.unsplash.com/IUPiWRNKNm8"/>
 		</vwc-carousel-item>
