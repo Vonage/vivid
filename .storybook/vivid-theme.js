@@ -14,6 +14,6 @@ export default create({
 	barSelectedColor: 'black',
 
 	brandTitle: 'Vivid, the Vonage Design System',
-	brandImage: './assets/vvd-logo.svg',
+	brandImage: './assets/images/vvd-logo.svg',
 	brandUrl: 'https://vivid.vonage.com'
 });
