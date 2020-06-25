@@ -1,6 +1,7 @@
 @use '@material/button';
 
-$mdc-theme-primary: #871fff; // for darken/rgba functions
+// TODO - add hsl/step vars to replace darken/rgba functions
+$mdc-theme-primary: #871fff;
 
 :host {
   --mdc-button-horizontal-padding: 14px;
