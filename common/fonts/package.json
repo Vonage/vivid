@@ -8,7 +8,7 @@
 	"module": "vvd-fonts.js",
 	"repository": {
 		"type": "git",
-		"url": "ssh://github.com/vonage/vivid.git",
+		"url": "https://github.com/vonage/vivid.git",
 		"directory": "commmon/fonts"
 	},
 	"scripts": {

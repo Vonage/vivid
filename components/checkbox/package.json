@@ -14,7 +14,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "ssh://github.com/vonage/vivid.git",
+    "url": "https://github.com/vonage/vivid.git",
     "directory": "components/checkbox"
   },
   "scripts": {
