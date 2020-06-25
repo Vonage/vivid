@@ -1,19 +1,12 @@
 @use '@material/button';
 
-// TODO - add hsl/step vars to replace darken/rgba functions
-$mdc-theme-primary: #871fff;
-
 :host {
-  --mdc-button-horizontal-padding: 14px;
   --mdc-button-disabled-fill-color: #e1e2e6;
   --mdc-button-disabled-ink-color: #9b9da3;
 }
 
 .mdc-button {
   @include button.height(40px);
-  @include button.horizontal-padding(var(--mdc-button-horizontal-padding));
-  @include button.ink-color(var(--mdc-theme-primary));
-  @include button.disabled-ink-color(var(--mdc-button-disabled-ink-color));
 
   border-radius: 6px;
   font-weight: 600;
@@ -29,26 +22,26 @@ $mdc-theme-primary: #871fff;
   @include button.disabled-container-fill-color(var(--mdc-button-disabled-fill-color));
   @include button.disabled-ink-color(var(--mdc-button-disabled-ink-color));
 
-  &:hover,
-  &:focus {
-    @include button.container-fill-color(darken($mdc-theme-primary, 10));
-  }
+  // &:hover,
+  // &:focus {
+  //   @include button.container-fill-color(darken($mdc-theme-primary, 10));
+  // }
 
-  &:active {
-    @include button.container-fill-color(darken($mdc-theme-primary, 15));
-  }
+  // &:active {
+  //   @include button.container-fill-color(darken($mdc-theme-primary, 15));
+  // }
 }
 
-.mdc-button--outlined {
-  &:hover,
-  &:focus {
-    @include button.container-fill-color(rgba($mdc-theme-primary, 0.1));
-  }
+// .mdc-button--outlined {
+//   &:hover,
+//   &:focus {
+//     @include button.container-fill-color(rgba($mdc-theme-primary, 0.1));
+//   }
 
-  &:active {
-    @include button.container-fill-color(rgba($mdc-theme-primary, 0.2));
-  }
-}
+//   &:active {
+//     @include button.container-fill-color(rgba($mdc-theme-primary, 0.2));
+//   }
+// }
 
 .mdc-button--pill {
 	border-radius: 40px;
