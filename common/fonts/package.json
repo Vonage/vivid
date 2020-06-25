@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vvd-fonts",
-	"version": "0.0.17",
+	"version": "0.0.18",
 	"description": "Vivid fonts initialisation service",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/common/fonts",
 	"license": "ISC",
