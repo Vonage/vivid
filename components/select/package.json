@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-select",
-	"version": "0.0.17",
+	"version": "0.0.18",
 	"description": "> TODO: description",
 	"author": "yinonov <yinon@hotmail.com>",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/select#readme",
@@ -15,7 +15,7 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "ssh://github.com/vonage/vivid.git",
+		"url": "https://github.com/vonage/vivid.git",
 		"directory": "components/select"
 	},
 	"scripts": {
@@ -26,7 +26,7 @@
 	},
 	"dependencies": {
 		"@material/mwc-select": "^0.15.0",
-		"@vonage/vvd-style-coupling": "^0.0.17",
+		"@vonage/vvd-style-coupling": "^0.0.18",
 		"lit-element": "^2.3.1",
 		"tslib": "^2.0.0"
 	}

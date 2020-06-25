@@ -1,6 +1,6 @@
 {
   "name": "@vonage/vvd-core",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "> TODO: description",
   "author": "yinonov <yinon@hotmail.com>",
   "homepage": "https://github.com/Vonage/vivid/tree/master/components/core#readme",
@@ -9,7 +9,7 @@
   "module": "vvd-core.js",
   "repository": {
     "type": "git",
-    "url": "ssh://github.com/vonage/vivid.git",
+    "url": "https://github.com/vonage/vivid.git",
     "directory": "components/core"
   },
   "scripts": {
@@ -19,7 +19,7 @@
     "url": "https://github.com/Vonage/vivid/issues"
   },
   "dependencies": {
-    "@vonage/vvd-scheme": "^0.0.17",
+    "@vonage/vvd-scheme": "^0.0.18",
     "tslib": "^2.0.0"
   }
 }
