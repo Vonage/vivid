@@ -22,7 +22,7 @@ yarn-error.log
 
 # build
 /build
-/design-tokens/build
+#/design-tokens/build
 /_site
 /.out
 **/dist
