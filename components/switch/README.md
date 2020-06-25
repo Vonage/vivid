@@ -1,5 +1,7 @@
 # vwc-switch
 
+This component is an extension of [<mwc-switch>](https://github.com/material-components/material-components-web-components/tree/master/packages/switch)
+
 ## Properties
 
 | Property                  | Modifiers | Type                                      | Description                                      |
