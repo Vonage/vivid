@@ -1,5 +1,4 @@
 import '@vonage/vwc-carousel/vwc-carousel.js';
-import '@vonage/vwc-carousel/vwc-carousel-item.js';
 import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
@@ -18,14 +17,11 @@ export const basic = () => html`
 	</style>
 
 	<vwc-carousel class="carousel">
-		<vwc-carousel-item>
-			<img class="item" src="https://source.unsplash.com/IUPiWRNKNm8"/>
-		</vwc-carousel-item>
-		<vwc-carousel-item>
-			<img class="item" src="https://source.unsplash.com/q_M6B9_cajM"/>
-		</vwc-carousel-item>
-		<vwc-carousel-item>
-			<img class="item" src="https://source.unsplash.com/CVBQdww5JZU"/>
-		</vwc-carousel-item>
+		<img class="item" style="object-fit:cover" src="https://source.unsplash.com/IUPiWRNKNm8"/>
+		<div class="item text" style="background-color:rgba(100,100,255,0.6);padding:24px">
+			Some textual explanation of what's going on here...
+		</div>
+		<img class="item" style="object-fit:cover" src="https://source.unsplash.com/q_M6B9_cajM"/>
+		<img class="item" style="object-fit:cover" src="https://source.unsplash.com/CVBQdww5JZU"/>
 	</vwc-carousel>
 `;

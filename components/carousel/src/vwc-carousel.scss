@@ -26,6 +26,12 @@
 	flex: 0 0 29px;
 }
 
+.swiper-slide {
+	contain: strict;
+	overflow: hidden;
+	display: flex;
+}
+
 $themeColor: #00ff9d !default;
 $colors: (
 	"white": #ffffff,
@@ -50,6 +56,5 @@ $colors: (
 @import "../../../node_modules/swiper/components/zoom/zoom";
 
 //IMPORT PAGINATION
-@import "./vwc-carousel-item";
 @import "./vwc-carousel-navigation";
 @import "./vwc-carousel-pagination";

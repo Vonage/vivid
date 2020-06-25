@@ -8,6 +8,7 @@ import {
 } from 'lit-element';
 import { style } from './vwc-carousel.css';
 import Swiper, { SwiperOptions } from 'swiper';
+import '@vonage/vwc-icon/vwc-icon.js';
 
 declare global {
 	interface HTMLElementTagNameMap {
