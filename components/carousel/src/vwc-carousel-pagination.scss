@@ -3,13 +3,13 @@
 }
 
 .swiper-pagination-bullet {
-	display: inline-block;
-  width: 24px;
-	height: 3px;
-	font-size: 0;
+  	background-color: #C2C4CC;
 	border-radius: 0;
-  background-color: #C2C4CC;
+	display: inline-block;
+	font-size: 0;
+	height: 3px;
 	transition: transform 0.1s;
+	width: 24px;
 
 	&-active {
 			background-color: #871FFF;
