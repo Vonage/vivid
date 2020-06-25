@@ -1,5 +1,6 @@
 import '@vonage/vwc-chips/vwc-chip.js';
 import '@vonage/vwc-chips/vwc-chip-set.js';
+import '@storybook/addon-console';
 import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
@@ -11,7 +12,7 @@ export default {
 
 export const basic = () => html`
 	<h3>Default</h3>
-	<vwc-chip-set>
+	<vwc-chip-set id="test">
 		<vwc-chip label="Chip One"></vwc-chip>
 		<vwc-chip label="Chip Two"></vwc-chip>
 		<vwc-chip label="Chip Three"></vwc-chip>
@@ -19,9 +20,20 @@ export const basic = () => html`
 	</vwc-chip-set>
 
 	<h3>Removable</h3>
-	<vwc-chip-set>
+	<vwc-chip-set @MDCChip:removal="${(e) => logRemoval(e)}">
 		<vwc-chip label="Chip One" removable></vwc-chip>
 		<vwc-chip label="Chip Two" removable></vwc-chip>
 		<vwc-chip label="Chip Three" removable></vwc-chip>
 	</vwc-chip-set>
 `;
+
+function logRemoval(e) {
+	let payload = {
+		type: 'MDCChip:removal',
+		detail: {
+			chipId: e.detail.chipId
+		}
+	}
+
+	console.log('MDCChip:removal fired', payload);
+}
