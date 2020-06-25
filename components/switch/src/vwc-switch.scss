@@ -1,0 +1,84 @@
+@use "@material/switch" with (
+  $track-height: 30px,
+  $track-width: 50px,
+  $thumb-diameter: 24px,
+  $thumb-offset: -3px
+);
+
+@include switch.without-ripple();
+
+:host {
+  display: inline-flex;
+  outline: none;
+}
+
+.mdc-switch {
+  @include switch.toggled-on-track-color(var(--mdc-theme-secondary));
+  @include switch.toggled-off-track-color(#9b9da3);
+  @include switch.toggled-on-thumb-color(var(--mdc-theme-surface));
+  @include switch.toggled-off-thumb-color(var(--mdc-theme-surface));
+
+  &--disabled {
+    @include switch.toggled-on-track-color(#9b9da3);
+    
+    opacity: 0.5;
+  }
+
+  &:not(.mdc-switch--disabled) {
+    &:hover {
+      // look into opacity for hover states
+      @include switch.toggled-off-track-color(#616266);
+      @include switch.toggled-on-track-color(#616266);
+      @include switch.toggled-off-thumb-color(#f3f3f5);
+      @include switch.toggled-on-thumb-color(#f3f3f5);
+    }
+  }
+
+  &__track,
+  &__thumb,
+  &__thumb:after,
+  &__thumb-underlay {
+    transition-duration: 0.4s;
+  }
+
+  &__track {
+    &,
+    .mdc-switch--checked & {
+      opacity: 1;
+    }
+  }
+
+  &__thumb {
+    box-shadow: none;
+  }
+}
+
+.mdc-switch__thumb:after {
+  border-radius: 15px;
+  box-shadow: 0 0 0 0;
+  content: '';
+  height: 30px;
+  left: 9px;
+  opacity: 0.3;
+  position: absolute;
+  top: 9px;
+  transition-property: box-shadow, transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  width: 50px;
+
+  .mdc-switch--checked & {
+    transform: translateX(-20px);
+  }
+
+  .mdc-ripple-upgraded--background-focused & {
+    box-shadow: 0 0 0 5px #9b9da3;
+  
+    .mdc-switch--checked & {
+      box-shadow: 0 0 0 5px var(--mdc-theme-secondary);
+    }
+    
+    .mdc-switch--disabled & {
+      display: none;
+    }
+  }
+}

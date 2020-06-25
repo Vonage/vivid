@@ -60,6 +60,9 @@ router
     slider: function () {
       render(html` <slider-route></slider-route> `, componentDemoContainer);
     },
+    switch: function () {
+      render(html` <switch-route></switch-route> `, componentDemoContainer);
+    },
     textarea: function () {
       render(html` <textarea-route></textarea-route> `, componentDemoContainer);
     },
