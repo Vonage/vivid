@@ -9,5 +9,9 @@ export default {
 }
 
 export const basic = () => html`
-	<vwc-textarea outlined label="Vwc textarea"></vwc-textarea>
+	<vwc-textarea outlined label="Vwc textarea" @keydown=${handleKeyDown}></vwc-textarea>
 `;
+
+function handleKeyDown(e) {
+	e.stopPropagation();
+}
