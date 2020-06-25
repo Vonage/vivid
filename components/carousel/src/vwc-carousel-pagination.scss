@@ -1,15 +1,17 @@
-.swiper-container-horizontal > .swiper-pagination-bullets {
-	bottom: 0;
+.swiper-pagination {
+	position: initial;
 }
 
 .swiper-pagination-bullet {
-  	background-color: #C2C4CC;
-	border-radius: 0;
 	display: inline-block;
-	font-size: 0;
-	height: 3px;
-	transition: transform 0.1s;
 	width: 24px;
+	height: 3px;
+	outline: none;
+	margin: 0 3px;
+	border-radius: 0;
+	font-size: 0;
+  background-color: #C2C4CC;
+	transition: transform 0.1s;
 
 	&-active {
 			background-color: #871FFF;

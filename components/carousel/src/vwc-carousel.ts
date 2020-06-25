@@ -37,7 +37,13 @@ export class VWCCarousel extends LitElement {
 	private swiperPagination?: HTMLElement;
 
 	firstUpdated(): void {
-		this.swiperize(this.swiperContainer as HTMLElement, this.swiperOptions);
+		const swiper = new Swiper(this.swiperContainer as HTMLElement, this.swiperOptions);
+		this.addEventListener('mouseenter', () => {
+			swiper.autoplay?.stop();
+		});
+		this.addEventListener('mouseleave', () => {
+			swiper.autoplay?.start();
+		});
 	}
 
 	private get swiperOptions(): SwiperOptions {
@@ -49,7 +55,7 @@ export class VWCCarousel extends LitElement {
 				disableOnInteraction: true,
 			},
 
-			cssMode: true,
+			cssMode: false,
 			navigation: {
 				prevEl: this.swiperButtonPrev as HTMLElement,
 				nextEl: this.swiperButtonNext as HTMLElement,
@@ -66,24 +72,21 @@ export class VWCCarousel extends LitElement {
 		};
 	}
 
-	private swiperize(el: HTMLElement, options: SwiperOptions) {
-		return new Swiper(el, options);
-	}
-
 	render(): TemplateResult {
 		const slides = Array.from(this.children);
 		slides.forEach(e => e.classList.add('swiper-slide'));
 
 		return html`
-			<div class="swiper-container">
-				<div class="swiper-wrapper">
-					${[...slides]}
+			<div class="upper-pane">
+				<div class="swiper-nav swiper-button-prev"><vwc-icon>navigate_before</vwc-icon></div>
+				<div class="swiper-container">
+					<div class="swiper-wrapper">
+						${[...slides]}
+					</div>
 				</div>
-				<div class="swiper-pagination"></div>
-
-				<div class="swiper-button-prev"><vwc-icon>navigate_before</vwc-icon></div>
-				<div class="swiper-button-next"><vwc-icon>navigate_next</vwc-icon></div>
+				<div class="swiper-nav swiper-button-next"><vwc-icon>navigate_next</vwc-icon></div>
 			</div>
+			<div class="lower-pane swiper-pagination"></div>
     `;
 	}
 }

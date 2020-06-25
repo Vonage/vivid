@@ -1,15 +1,13 @@
-@use './variables';
-
-$pagination-height: variables.$pagination-height;
-
 .swiper-button-prev,
 .swiper-button-next {
+	position: initial;
+	left: initial;
+	right: initial;
+	top: 0;
+	height: 100%;
 	background-color: #ffffff;
-	box-shadow: inset 0 0 1px #E1E2E6;
-  height: calc(100% - #{$pagination-height});
-  top: 0;
-	margin-top: 0;
-	width: variables.$navigation-width;
+	border: 1px solid #E1E2E6;
+	box-sizing: border-box;
 	outline: none;
 
 	&:after {
@@ -19,12 +17,10 @@ $pagination-height: variables.$pagination-height;
 }
 
 .swiper-button-prev {
-	left: 0;
 	border-top-left-radius: 6px;
 	border-bottom-left-radius: 6px;
 }
 .swiper-button-next {
-	right: 0;
 	border-top-right-radius: 6px;
 	border-bottom-right-radius: 6px;
 }
