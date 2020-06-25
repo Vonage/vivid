@@ -94,7 +94,7 @@
 
 	@font-face {
 		font-family: 'VonageMainVariable';
-		src:  url('./fonts/variable/Spezia_Web_Complete_Upright_Trial.woff2') format('woff2-variations');
+		src:  url('./fonts/variable/Spezia_Web_Complete_Upright.woff2') format('woff2-variations');
 		font-style: normal;
 		font-weight: 1 1000;
 		font-stretch: 20 250;
@@ -102,7 +102,7 @@
 
 	@font-face {
 		font-family: 'VonageMainVariable';
-		src:  url('./fonts/variable/Spezia_Web_Complete_Italic_Trial.woff2') format('woff2-variations');
+		src:  url('./fonts/variable/Spezia_Web_Complete_Italic.woff2') format('woff2-variations');
 		font-style: italic;
 		font-weight: 1 1000;
 		font-stretch: 20 250;
