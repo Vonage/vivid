@@ -12,7 +12,7 @@ export default {
 
 export const basic = () => html`
 	<h3>Default</h3>
-	<vwc-chip-set id="test">
+	<vwc-chip-set id="chipSetA">
 		<vwc-chip label="Chip One"></vwc-chip>
 		<vwc-chip label="Chip Two"></vwc-chip>
 		<vwc-chip label="Chip Three"></vwc-chip>
@@ -20,7 +20,7 @@ export const basic = () => html`
 	</vwc-chip-set>
 
 	<h3>Removable</h3>
-	<vwc-chip-set @MDCChip:removal="${(e) => logRemoval(e)}">
+	<vwc-chip-set id="chipSetB" @MDCChip:removal="${(e) => logRemoval(e)}">
 		<vwc-chip label="Chip One" removable></vwc-chip>
 		<vwc-chip label="Chip Two" removable></vwc-chip>
 		<vwc-chip label="Chip Three" removable></vwc-chip>
@@ -35,5 +35,6 @@ function logRemoval(e) {
 		}
 	}
 
-	console.log('MDCChip:removal fired', payload);
+	console.log('chipSetB.chips method', chipSetB.chips);
+	console.log('MDCChip:removal event', payload);
 }
