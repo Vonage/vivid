@@ -34,4 +34,5 @@ export const basic = () => html`
 
 function handleClick() {
 	drawer.open = !drawer.open;
+	this.textContent = `${drawer.open ? 'Close' : 'Open'} Drawer`;
 }
