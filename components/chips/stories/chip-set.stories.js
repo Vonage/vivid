@@ -20,14 +20,14 @@ export const basic = () => html`
 	</vwc-chip-set>
 
 	<h3>Removable</h3>
-	<vwc-chip-set id="chipSetB" @MDCChip:removal="${(e) => logRemoval(e)}">
+	<vwc-chip-set id="chipSetB" @MDCChip:removal="${handleRemoval}">
 		<vwc-chip label="Chip One" removable></vwc-chip>
 		<vwc-chip label="Chip Two" removable></vwc-chip>
 		<vwc-chip label="Chip Three" removable></vwc-chip>
 	</vwc-chip-set>
 `;
 
-function logRemoval(e) {
+function handleRemoval(e) {
 	let payload = {
 		type: 'MDCChip:removal',
 		detail: {
