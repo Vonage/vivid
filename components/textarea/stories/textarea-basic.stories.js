@@ -3,7 +3,7 @@ import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Atomic/Textarea',
+	title: 'Atoms/Textarea',
 	component: 'vwc-textarea',
 	decorators: [withA11y]
 }

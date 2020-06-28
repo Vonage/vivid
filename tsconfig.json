@@ -36,6 +36,7 @@
     { "path": "components/anchor" },
     { "path": "components/app" },
     { "path": "components/button" },
+    { "path": "components/carousel" },
     { "path": "components/checkbox" },
     { "path": "components/chips" },
     { "path": "components/mwc-chips" },
