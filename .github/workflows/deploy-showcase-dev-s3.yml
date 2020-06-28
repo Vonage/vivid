@@ -1,4 +1,4 @@
-name: Build & Deploy Demo Dev
+name: Build & Deploy Showcase (Dev)
 
 on:
   pull_request:
@@ -34,7 +34,7 @@ jobs:
       - name: Create deploy timestamp/version
         run: echo ::set-env name=STORYBOOK_DEPLOY_VERSION::$(jq -r '.timestamp' ./.storybook/static/build-details.json)
 
-      - name: Deploy storybook versioned as ${{ env.STORYBOOK_DEPLOY_VERSION }}
+      - name: Deploy showcase versioned as ${{ env.STORYBOOK_DEPLOY_VERSION }}
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_B }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_SECRET_B }}
@@ -47,7 +47,7 @@ jobs:
           AWS_CF_DISTRIBUTION_ID: ${{ secrets.AWS_CF_DISTRIBUTION_ID_B }}
         run: sh ./scripts/update-cf-distribution-config.sh
 
-      - name: Invalidate root object cache
+      - name: Invalidate CloudFront cache
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_B }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_SECRET_B }}
