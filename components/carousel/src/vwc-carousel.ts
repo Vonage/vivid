@@ -8,6 +8,7 @@ import {
 } from 'lit-element';
 import { style } from './vwc-carousel.css';
 import Swiper, { SwiperOptions } from 'swiper';
+import './vwc-carousel-item.js';
 import '@vonage/vwc-icon/vwc-icon.js';
 
 declare global {
@@ -75,7 +76,11 @@ export class VWCCarousel extends LitElement {
 
 	render(): TemplateResult {
 		const slides = Array.from(this.children);
-		slides.forEach(e => e.classList.add('swiper-slide'));
+		slides.forEach(s => {
+			if (s.nodeName.toLowerCase() === 'vwc-carousel-item') {
+				s.classList.add('swiper-slide');
+			}
+		});
 
 		return html`
 			<div class="upper-pane">

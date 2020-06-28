@@ -5,12 +5,14 @@
 	overflow: hidden;
 	display: inline-flex;
 	flex-direction: column;
+	user-select: none;
 }
 
 .upper-pane {
 	flex: 1;
 	display: flex;
 	flex-direction: row;
+	overflow: hidden;
 }
 
 .lower-pane {
@@ -30,6 +32,10 @@
 	contain: strict;
 	overflow: hidden;
 	display: flex;
+}
+
+::slotted(:not(.swiper-slide)) {
+	display: none;
 }
 
 $themeColor: #00ff9d !default;
