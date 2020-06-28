@@ -1,6 +1,6 @@
 # vwc-carousel-item
 
-This component is a carousel
+This component is a carousel's item wrapper
 
 ## Properties
 
