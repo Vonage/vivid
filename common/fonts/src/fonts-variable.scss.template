@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: 'Spezia-vf';
-  src: url('variable/Spezia_Web_Complete_Upright_Trial.woff2') format('woff2-variations');
+  src: url('variable/Spezia_Web_Complete_Upright.woff2') format('woff2-variations');
   font-style: normal;
   font-weight: 1 1000;
   font-stretch: 50 150;
@@ -12,7 +12,7 @@
 
 @font-face {
   font-family: 'Spezia-vf';
-  src: url('variable/Spezia_Web_Complete_Italic_Trial.woff2') format('woff2-variations');
+  src: url('variable/Spezia_Web_Complete_Italic.woff2') format('woff2-variations');
   font-style: italic;
   font-weight: 1 1000;
   font-stretch: 50 150;

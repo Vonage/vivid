@@ -89,7 +89,6 @@ fonts.init().then(() => {});
 			<pre>
 				<code class="css">
 body {
-	font-family: 'VonageMain';	/* for IE11 only, omit this line if not relevant */
 	font-family: var(--vvd-font-family-spezia);
 }
 				</code>

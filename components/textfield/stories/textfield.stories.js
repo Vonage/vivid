@@ -9,5 +9,9 @@ export default {
 }
 
 export const basic = () => html`
-	<vwc-textfield outlined label="VWC textfield"></vwc-textfield>
+	<vwc-textfield outlined label="VWC textfield" @keydown=${handleKeyDown}></vwc-textfield>
 `;
+
+function handleKeyDown(e) {
+	e.stopPropagation();
+}
