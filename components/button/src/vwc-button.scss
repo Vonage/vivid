@@ -6,7 +6,8 @@
 }
 
 .mdc-button {
-  @include button.height(40px);
+	@include button.height(40px);
+	@include button.ink-color(var(--vvd-color-base-foregroung));
 
   border-radius: 6px;
   font-weight: 600;
@@ -17,31 +18,16 @@
 
 .mdc-button--raised,
 .mdc-button--unelevated {
-  @include button.container-fill-color(var(--mdc-theme-primary));
-  @include button.ink-color(var(--mdc-theme-on-primary));
+  @include button.container-fill-color(var(--vvd-color-alternate-primary-background));
+  @include button.ink-color(var(--vvd-color-alternate-primary-foreground));
   @include button.disabled-container-fill-color(var(--mdc-button-disabled-fill-color));
   @include button.disabled-ink-color(var(--mdc-button-disabled-ink-color));
-
-  // &:hover,
-  // &:focus {
-  //   @include button.container-fill-color(darken($mdc-theme-primary, 10));
-  // }
-
-  // &:active {
-  //   @include button.container-fill-color(darken($mdc-theme-primary, 15));
-  // }
 }
 
-// .mdc-button--outlined {
-//   &:hover,
-//   &:focus {
-//     @include button.container-fill-color(rgba($mdc-theme-primary, 0.1));
-//   }
-
-//   &:active {
-//     @include button.container-fill-color(rgba($mdc-theme-primary, 0.2));
-//   }
-// }
+.mdc-button--outlined {
+	@include button.outline-color(var(--vvd-color-base-foregroung));
+  @include button.disabled-outline-color(var(--mdc-button-disabled-ink-color));
+}
 
 .mdc-button--pill {
 	border-radius: 40px;
