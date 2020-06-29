@@ -34,10 +34,6 @@
 	display: flex;
 }
 
-::slotted(:not(.swiper-slide)) {
-	display: none;
-}
-
 $themeColor: #00ff9d !default;
 $colors: (
 	"white": #ffffff,

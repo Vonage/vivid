@@ -17,6 +17,8 @@ declare global {
 	}
 }
 
+
+
 /**
  * This component is a carousel
  */
@@ -87,7 +89,7 @@ export class VWCCarousel extends LitElement {
 				<div class="swiper-nav swiper-button-prev"><vwc-icon>navigate_before</vwc-icon></div>
 				<div class="swiper-container">
 					<div class="swiper-wrapper">
-						${[...slides]}
+						<slot></slot>
 					</div>
 				</div>
 				<div class="swiper-nav swiper-button-next"><vwc-icon>navigate_next</vwc-icon></div>
