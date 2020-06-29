@@ -52,7 +52,6 @@
 		{ "path": "components/slider" },
     { "path": "components/switch" },
     { "path": "components/textarea" },
-    { "path": "components/textfield" },
-    { "path": "components/icon-button" }
+    { "path": "components/textfield" }
   ]
 }

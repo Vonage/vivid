@@ -7,7 +7,6 @@
 	"main": "vwc-relative-time.js",
 	"module": "vwc-relative-time.js",
 	"files": [
-		"src",
 		"*.js",
 		"*.ts",
 		"*.map"
@@ -15,7 +14,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/relativer-time"
+		"directory": "components/relative-time"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"
@@ -24,9 +23,6 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@material/mwc-radio": "^0.15.0",
-		"@vonage/vvd-style-coupling": "^0.0.18",
-		"lit-element": "^2.3.1",
-		"tslib": "^2.0.0"
+		"kefir": "^3.8.7"
 	}
 }
