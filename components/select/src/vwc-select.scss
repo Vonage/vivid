@@ -1,0 +1,82 @@
+@use '@material/select';
+
+:host {
+  --mdc-theme-primary: var(--vvd-color-alternate-primary-background);
+  --mdc-select-outlined-idle-border-color: #c2c4cc;
+  --mdc-select-outlined-hover-border-color: var(--mdc-theme-primary);
+  --mdc-select-outlined-disabled-border-color: #e1e2e6;
+  --mdc-select-ink-color: var(--mdc-theme-primary);
+  --mdc-select-label-ink-color: #616266;
+  --mdc-select-focused-label-color: var(--mdc-select-label-ink-color);
+  --mdc-select-disabled-ink-color: #9b9da3;
+  --mdc-select-dropdown-icon-color: var(--mdc-theme-primary);
+  --mdc-select-focused-dropdown-icon-color: var(--mdc-theme-primary);
+  --mdc-select-disabled-dropdown-icon-color: var(--mdc-select-disabled-ink-color);
+  --mdc-select-error-dropdown-icon-color: var(--mdc-select-error-color);
+}
+
+:host(:not([disabled])) .mdc-select.mdc-select--focused {
+  mwc-notched-outline {
+    --mdc-notched-outline-stroke-width: 1px;
+    --mdc-notched-outline-notch-offset: 1px;
+  }
+
+  &:not(.mdc-select--invalid) mwc-notched-outline {
+    --mdc-notched-outline-border-color: var(--mdc-select-outlined-hover-border-color);
+  }
+}
+
+.mdc-select {
+  &--outlined {
+    .mdc-select__anchor {
+      height: 48px;
+      padding-left: 14px;
+
+      .mdc-select__selected-text {
+        --mdc-typography-subtitle1-font-size: 0.875rem;
+
+        padding: 22px 0 6px;
+      }
+
+      .mdc-floating-label {
+        display: inline-block;
+        left: 2px;
+        padding-right: 8px;
+        top: 24px;
+        transition: transform 0.15s, font-size 0.15s;
+      }
+      
+      .mdc-floating-label--float-above {
+        --mdc-theme-primary: var(--mdc-select-label-ink-color);
+
+        transform: translateY(-100%);
+      }
+    }
+  }
+
+  // Todo: change notched outline
+  &:before {
+    background-color: var(--mdc-select-outlined-idle-border-color);
+    content: '';
+    height: 1px;
+    left: 12px;
+    position: absolute;
+    right: 6px;
+    top: 0;
+  }
+
+  &:hover,
+  &--focused {
+    &:not(.mdc-select--invalid) {
+      &:before {
+        background-color: var(--mdc-theme-primary);
+      }
+    }
+  }
+
+  &--invalid {
+    &:before {
+      background-color: var(--mdc-theme-error);
+    }
+  }
+}
