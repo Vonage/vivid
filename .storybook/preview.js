@@ -1,4 +1,5 @@
 import './vivid-storybook-utils.js';
+import '@storybook/addon-console';
 import { addParameters, setCustomElements } from '@storybook/web-components';
 import customElements from '../custom-elements.json';
 

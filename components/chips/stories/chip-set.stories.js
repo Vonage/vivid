@@ -1,6 +1,5 @@
 import '@vonage/vwc-chips/vwc-chip.js';
 import '@vonage/vwc-chips/vwc-chip-set.js';
-import '@storybook/addon-console';
 import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
