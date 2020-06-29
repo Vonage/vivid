@@ -1,6 +1,6 @@
 {
   "color": {
-    "root": {
+    "alternate": {
       "base": {
         "background": { "value": "{alias.color.scheme.base.background.value}" },
         "foreground": { "value": "{alias.color.scheme.base.foreground.value}" },

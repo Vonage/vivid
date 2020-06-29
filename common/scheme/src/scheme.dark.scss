@@ -1,1 +1,5 @@
-@forward '../../../design-tokens/build/scheme.dark.scss';
+@use '../../../design-tokens/build/scheme.dark/root' as *;
+
+:root {
+	@include scheme-variables;
+}

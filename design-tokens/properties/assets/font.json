@@ -1,0 +1,10 @@
+{
+  "asset": {
+    "font": {
+      "materialicons": {
+        "ttf"  : { "value": "assets/fonts/MaterialIcons-Regular.ttf" },
+        "woff2": { "value": "assets/fonts/MaterialIcons-Regular.woff2" }
+      }
+   }
+  }
+}
