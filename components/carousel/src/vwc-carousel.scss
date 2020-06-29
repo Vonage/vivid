@@ -1,4 +1,4 @@
-:host {
+vwc-carousel {
 	width: 300px;
 	height: 200px;
 	contain: strict;
@@ -18,6 +18,9 @@
 .lower-pane {
 	flex: 0 0 15px;
 	overflow: hidden;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
 }
 
 .swiper-container {
@@ -26,6 +29,8 @@
 
 .swiper-nav {
 	flex: 0 0 29px;
+	display: flex;
+	align-items: center;
 }
 
 .swiper-slide {
@@ -34,11 +39,7 @@
 	display: flex;
 }
 
-$themeColor: #00ff9d !default;
-$colors: (
-	"white": #ffffff,
-	"black": #000000,
-) !default;
+$themeColor: var(--vvd-color-surface-foreground) !default;
 
 @import ".../../../node_modules/swiper/scss/functions";
 @import "../../../node_modules/swiper/components/core/core";
@@ -51,8 +52,6 @@ $colors: (
 @import "../../../node_modules/swiper/components/effect-fade/effect-fade";
 @import "../../../node_modules/swiper/components/effect-flip/effect-flip";
 @import "../../../node_modules/swiper/components/lazy/lazy";
-@import "../../../node_modules/swiper/components/navigation/navigation";
-@import "../../../node_modules/swiper/components/pagination/pagination";
 @import "../../../node_modules/swiper/components/scrollbar/scrollbar";
 @import "../../../node_modules/swiper/components/thumbs/thumbs";
 @import "../../../node_modules/swiper/components/zoom/zoom";

@@ -1,19 +1,11 @@
 .swiper-button-prev,
 .swiper-button-next {
-	position: initial;
-	left: initial;
-	right: initial;
-	top: 0;
-	height: 100%;
+	color: var(--vvd-color-surface-foreground);
 	background-color: #ffffff;
 	border: 1px solid #E1E2E6;
 	box-sizing: border-box;
+	overflow: hidden;
 	outline: none;
-
-	&:after {
-		color: #616266;
-		font-size: 16px;
-	}
 }
 
 .swiper-button-prev {
@@ -23,14 +15,4 @@
 .swiper-button-next {
 	border-top-right-radius: 6px;
 	border-bottom-right-radius: 6px;
-}
-
-.swiper-button-prev::after,
-.swiper-container-rtl .swiper-button-next::after {
-	content: "";
-}
-
-.swiper-button-next::after,
-.swiper-container-rtl .swiper-button-prev::after {
-	content: "";
 }

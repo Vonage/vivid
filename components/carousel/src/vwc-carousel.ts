@@ -17,7 +17,7 @@ declare global {
 	}
 }
 
-
+const CAROUSEL_STYLE_ID = 'vwc-carousel-style-id';
 
 /**
  * This component is a carousel
@@ -48,6 +48,25 @@ export class VWCCarousel extends LitElement {
 		this.addEventListener('mouseleave', () => {
 			swiper.autoplay?.start();
 		});
+	}
+
+	createRenderRoot() {
+		return this;
+	}
+
+	connectedCallback() {
+		super.connectedCallback();
+		this.ensureStyleApplied();
+	}
+
+	private ensureStyleApplied() {
+		if (!document.head.querySelector(`#${CAROUSEL_STYLE_ID}`)) {
+			const cs = document.createElement('style');
+			cs.id = CAROUSEL_STYLE_ID;
+			cs.type = 'text/css';
+			cs.innerHTML = VWCCarousel.styles.cssText;
+			document.head.appendChild(cs);
+		}
 	}
 
 	private get swiperOptions(): SwiperOptions {
@@ -89,7 +108,7 @@ export class VWCCarousel extends LitElement {
 				<div class="swiper-nav swiper-button-prev"><vwc-icon>navigate_before</vwc-icon></div>
 				<div class="swiper-container">
 					<div class="swiper-wrapper">
-						<slot></slot>
+						${slides}
 					</div>
 				</div>
 				<div class="swiper-nav swiper-button-next"><vwc-icon>navigate_next</vwc-icon></div>
