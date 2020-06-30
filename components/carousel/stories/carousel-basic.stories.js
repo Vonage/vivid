@@ -16,16 +16,15 @@ export const basic = () => html`
 			max-width: 800px;
 			margin: 0;
 		}
+
+		.image {
+			object-fit: cover;
+			min-width: 100%;
+			min-height: 100%;
+		}
 	</style>
 
 	<vwc-carousel class="carousel">
-		<style>
-			.image {
-				object-fit: cover;
-				min-width: 100%;
-				min-height: 100%;
-			}
-		</style>
 		<vwc-carousel-item>
 			<img class="image" src="https://source.unsplash.com/IUPiWRNKNm8"/>
 		</vwc-carousel-item>
