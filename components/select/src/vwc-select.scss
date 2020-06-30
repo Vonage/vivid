@@ -15,26 +15,25 @@
   --mdc-select-error-dropdown-icon-color: var(--mdc-select-error-color);
 }
 
-:host(:not([disabled])) .mdc-select.mdc-select--focused {
-  mwc-notched-outline {
-    --mdc-notched-outline-stroke-width: 1px;
-    --mdc-notched-outline-notch-offset: 1px;
-  }
+mwc-notched-outline,
+:host(:not([disabled])) .mdc-select.mdc-select--focused mwc-notched-outline {
+  --mdc-notched-outline-stroke-width: 1px;
+  --mdc-notched-outline-notch-offset: 0px;
+}
 
-  &:not(.mdc-select--invalid) mwc-notched-outline {
-    --mdc-notched-outline-border-color: var(--mdc-select-outlined-hover-border-color);
-  }
+:host(:not([disabled])) .mdc-select.mdc-select--focused:not(.mdc-select--invalid) mwc-notched-outline {
+  --mdc-notched-outline-border-color: var(--mdc-select-outlined-hover-border-color);
 }
 
 .mdc-select {
   &--outlined {
     .mdc-select__anchor {
+      border-radius: 6px;
       height: 48px;
       padding-left: 14px;
 
       .mdc-select__selected-text {
-        --mdc-typography-subtitle1-font-size: 0.875rem;
-
+        font-size: var(--mdc-typography-subtitle2-font-size, 0.875rem);
         padding: 22px 0 6px;
       }
 
@@ -47,9 +46,13 @@
       }
       
       .mdc-floating-label--float-above {
-        --mdc-theme-primary: var(--mdc-select-label-ink-color);
-
+        color: var(--mdc-select-label-ink-color);
         transform: translateY(-100%);
+      }
+
+      + .mdc-select-helper-text {
+        font-size: var(--mdc-typography-caption-font-size, 0.75rem);
+        margin: 3px 0 0;
       }
     }
   }
@@ -63,6 +66,7 @@
     position: absolute;
     right: 6px;
     top: 0;
+    z-index: 1;
   }
 
   &:hover,
@@ -74,7 +78,21 @@
     }
   }
 
+  &--disabled {
+    &.mdc-select--outlined .mdc-select__anchor {
+      background-color: #f3f3f5;
+    }
+
+    &:before {
+      background-color: var(--mdc-select-outlined-disabled-border-color);
+    }
+  }
+  
   &--invalid {
+    &.mdc-select--outlined .mdc-select__anchor {
+      background-color: #fdecec;
+    }
+
     &:before {
       background-color: var(--mdc-theme-error);
     }

@@ -11,7 +11,8 @@ export default {
 }
 
 export const basic = () => html`
-	<vwc-select outlined label="VWC Select">
+	<h3>Outlined</h3>
+	<vwc-select outlined label="VWC Select" helper="Helper Text">
 		<vwc-list-item></vwc-list-item>
 		<vwc-list-item value="0">Item 0</vwc-list-item>
 		<vwc-list-item value="1">Item 1</vwc-list-item>
@@ -20,5 +21,23 @@ export const basic = () => html`
 		<vwc-list-item noninteractive>
 			<vwc-button unelevated style="cursor: inherit; pointer-events: auto;">Click me</vwc-button>
 		</vwc-list-item>
+	</vwc-select>
+	
+	<h3>Disabled</h3>
+	<vwc-select disabled outlined label="VWC Select" helper="Helper Text">
+		<vwc-list-item></vwc-list-item>
+		<vwc-list-item value="0" selected>Item 0</vwc-list-item>
+		<vwc-list-item value="1">Item 1</vwc-list-item>
+		<vwc-list-item value="2">Item 2</vwc-list-item>
+		<vwc-list-item value="3">Item 3</vwc-list-item>
+	</vwc-select>
+	
+	<h3>Required</h3>
+	<vwc-select required outlined label="VWC Select" validationMessage="This Field is Required">
+		<vwc-list-item></vwc-list-item>
+		<vwc-list-item value="0">Item 0</vwc-list-item>
+		<vwc-list-item value="1">Item 1</vwc-list-item>
+		<vwc-list-item value="2">Item 2</vwc-list-item>
+		<vwc-list-item value="3">Item 3</vwc-list-item>
 	</vwc-select>
 `;
