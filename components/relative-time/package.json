@@ -1,0 +1,28 @@
+{
+	"name": "@vonage/relative-time",
+	"version": "0.0.18",
+	"description": "A web component for displaying a timestamp relative to the current time",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/relative-time#readme",
+	"license": "ISC",
+	"main": "vwc-relative-time.js",
+	"module": "vwc-relative-time.js",
+	"files": [
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/vonage/vivid.git",
+		"directory": "components/relative-time"
+	},
+	"scripts": {
+		"test": "echo \"Error: run tests from root\" && exit 1"
+	},
+	"bugs": {
+		"url": "https://github.com/Vonage/vivid/issues"
+	},
+	"dependencies": {
+		"kefir": "^3.8.7"
+	}
+}
