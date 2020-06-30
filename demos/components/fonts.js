@@ -84,7 +84,6 @@ export default class Home extends Element {
 			<code-sample type="css" copy-clipboard-button>
 				<template preserve-content>
 					body {
-						font-family: 'VonageMain';	/* for IE11 only, omit this line if not relevant */
 						font-family: var(--vvd-font-family-spezia);
 					}
 				</template>

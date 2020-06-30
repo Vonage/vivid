@@ -38,7 +38,6 @@ function schemeDefault(): SchemeOption {
 }
 
 function getSchemeModule(schemeOption: SchemeOption): Promise<ModuleType> {
-	// console.log(`set ${schemeOption} scheme`);
 	switch (schemeOption) {
 		case 'dark':
 			return import('./scheme.dark.css');
