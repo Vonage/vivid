@@ -15,7 +15,7 @@ const
 /**
  * Displays a timestamp relative to current time in human readable language
  *
- * @element relative-time
+ * @element vwc-relative-time
  *
  * @prop {Boolean} live - When set to `true`, the component will automatically update.
  * @prop {integer} datetime - The target timestamp in milliseconds since epoch.
@@ -118,5 +118,5 @@ class RelativeTimeElement extends HTMLElement {
 	}
 }
 
-window.customElements.define('relative-time', RelativeTimeElement);
+window.customElements.define('vwc-relative-time', RelativeTimeElement);
 export { RelativeTimeElement as RelativeTime };
