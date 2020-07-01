@@ -1,18 +1,26 @@
 vwc-carousel {
 	width: 300px;
 	height: 200px;
-	contain: strict;
-	overflow: hidden;
 	display: inline-flex;
 	flex-direction: column;
 	user-select: none;
+	outline: none;
 }
 
 .upper-pane {
+	position: relative;
 	flex: 1;
 	display: flex;
 	flex-direction: row;
+	border-radius: 6px;
 	overflow: hidden;
+}
+
+vwc-carousel:focus-within,
+vwc-casousel:active {
+	.upper-pane {
+		box-shadow: 0 0 5px 1px #e1e2e6;
+	}
 }
 
 .lower-pane {
@@ -31,6 +39,18 @@ vwc-carousel {
 	flex: 0 0 29px;
 	display: flex;
 	align-items: center;
+	color: var(--vvd-color-unchecked);
+	background-color: var(--vvd-color-base-background);
+	border: 1px solid #E1E2E6;
+	box-sizing: border-box;
+	overflow: hidden;
+	outline: none;
+	cursor: pointer;
+	transition: color 0.2s;
+}
+
+.swiper-nav:hover {
+	color: var(--vvd-color-surface-foreground);
 }
 
 .swiper-slide {

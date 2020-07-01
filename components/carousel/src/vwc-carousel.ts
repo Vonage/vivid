@@ -1,12 +1,14 @@
 import {
 	customElement,
-	LitElement,
-	html,
+	property,
 	query,
+	html,
+	LitElement,
 	CSSResult,
 	TemplateResult,
 } from 'lit-element';
 import { style } from './vwc-carousel.css';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import Swiper, { SwiperOptions } from 'swiper';
 import './vwc-carousel-item.js';
 import '@vonage/vwc-icon/vwc-icon.js';
@@ -24,9 +26,11 @@ const CAROUSEL_STYLE_ID = 'vwc-carousel-style-id';
  */
 @customElement('vwc-carousel')
 export class VWCCarousel extends LitElement {
-	static get styles(): CSSResult {
-		return style;
+	static get styles(): CSSResult[] {
+		return [style, styleCoupling];
 	}
+
+	@property({ type: Boolean, reflect: true, converter: v => v && v === 'false' ? false : true }) autoplay = true;
 
 	@query('.swiper-container')
 	private swiperContainer?: HTMLElement;
@@ -43,40 +47,48 @@ export class VWCCarousel extends LitElement {
 	firstUpdated(): void {
 		const swiper = new Swiper(this.swiperContainer as HTMLElement, this.swiperOptions);
 		this.addEventListener('mouseenter', () => {
-			swiper.autoplay?.stop();
+			if (this.autoplay) {
+				swiper.autoplay?.stop();
+			}
 		});
 		this.addEventListener('mouseleave', () => {
-			swiper.autoplay?.start();
+			if (this.autoplay) {
+				swiper.autoplay?.start();
+			}
 		});
 	}
 
-	createRenderRoot() {
+	protected createRenderRoot(): HTMLElement {
 		return this;
 	}
 
-	connectedCallback() {
+	connectedCallback(): void {
 		super.connectedCallback();
 		this.ensureStyleApplied();
+		this.tabIndex = 0;
 	}
 
 	private ensureStyleApplied() {
-		if (!document.head.querySelector(`#${CAROUSEL_STYLE_ID}`)) {
-			const cs = document.createElement('style');
-			cs.id = CAROUSEL_STYLE_ID;
-			cs.type = 'text/css';
-			cs.innerHTML = VWCCarousel.styles.cssText;
-			document.head.appendChild(cs);
-		}
+		VWCCarousel.styles.forEach((style, index) => {
+			const tmpId = `${CAROUSEL_STYLE_ID}-${index}`;
+			if (!document.head.querySelector(`#${tmpId}`)) {
+				const cs = document.createElement('style');
+				cs.id = tmpId;
+				cs.type = 'text/css';
+				cs.innerHTML = style.cssText;
+				document.head.appendChild(cs);
+			}
+		});
 	}
 
 	private get swiperOptions(): SwiperOptions {
 		return {
 			loop: true,
 
-			autoplay: {
+			autoplay: this.autoplay ? {
 				delay: 2500,
 				disableOnInteraction: true,
-			},
+			} : false,
 
 			cssMode: false,
 			navigation: {
