@@ -12,6 +12,7 @@
 	--vvd-color-alternate-primary-foreground: #ffffff;
 	--vvd-color-alternate-secondary-background: #ffffff;
 	--vvd-color-alternate-secondary-foreground: #131415;
+	--vvd-color-error: #e84545;
 }
 
 :host {
@@ -23,4 +24,5 @@
 	--mdc-theme-on-secondary: var(--vvd-color-secondary-foreground);
 	--mdc-theme-surface: var(--vvd-color-surface-background);
 	--mdc-theme-on-surface: var(--vvd-color-surface-foreground);
+	--mdc-theme-error: var(--vvd-color-error);
 }
