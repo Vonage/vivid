@@ -124,7 +124,6 @@ export class VWCCarousel extends LitElement {
 					</div>
 				</div>
 				<div class="swiper-nav swiper-button-next"><vwc-icon>navigate_next</vwc-icon></div>
-				<div class="focus-feedback"></div>
 			</div>
 			<div class="lower-pane swiper-pagination"></div>
     `;

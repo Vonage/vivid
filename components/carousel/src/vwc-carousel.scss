@@ -1,8 +1,6 @@
 vwc-carousel {
 	width: 300px;
 	height: 200px;
-	contain: strict;
-	overflow: hidden;
 	display: inline-flex;
 	flex-direction: column;
 	user-select: none;
@@ -14,26 +12,14 @@ vwc-carousel {
 	flex: 1;
 	display: flex;
 	flex-direction: row;
+	border-radius: 6px;
 	overflow: hidden;
 }
 
-.upper-pane .focus-feedback {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	border: 1px solid transparent;
-	border-radius: 6px;
-	transition: border-color 0.2s;
-	pointer-events: none;
-	z-index: 1;
-}
-
-vwc-carousel:focus,
+vwc-carousel:focus-within,
 vwc-casousel:active {
-	.upper-pane .focus-feedback {
-		border-color: var(--vvd-color-base-foreground);
+	.upper-pane {
+		box-shadow: 0 0 5px 1px #e1e2e6;
 	}
 }
 
@@ -60,6 +46,7 @@ vwc-casousel:active {
 	overflow: hidden;
 	outline: none;
 	cursor: pointer;
+	transition: color 0.2s;
 }
 
 .swiper-nav:hover {
