@@ -6,13 +6,35 @@ vwc-carousel {
 	display: inline-flex;
 	flex-direction: column;
 	user-select: none;
+	outline: none;
 }
 
 .upper-pane {
+	position: relative;
 	flex: 1;
 	display: flex;
 	flex-direction: row;
 	overflow: hidden;
+}
+
+.upper-pane .focus-feedback {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	border: 1px solid transparent;
+	border-radius: 6px;
+	transition: border-color 0.2s;
+	pointer-events: none;
+	z-index: 1;
+}
+
+vwc-carousel:focus,
+vwc-casousel:active {
+	.upper-pane .focus-feedback {
+		border-color: var(--vvd-color-base-foreground);
+	}
 }
 
 .lower-pane {
@@ -31,6 +53,17 @@ vwc-carousel {
 	flex: 0 0 29px;
 	display: flex;
 	align-items: center;
+	color: var(--vvd-color-unchecked);
+	background-color: var(--vvd-color-base-background);
+	border: 1px solid #E1E2E6;
+	box-sizing: border-box;
+	overflow: hidden;
+	outline: none;
+	cursor: pointer;
+}
+
+.swiper-nav:hover {
+	color: var(--vvd-color-surface-foreground);
 }
 
 .swiper-slide {

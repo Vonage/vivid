@@ -24,7 +24,7 @@ export const basic = () => html`
 		}
 	</style>
 
-	<vwc-carousel class="carousel">
+	<vwc-carousel class="carousel" autoplay="false">
 		<vwc-carousel-item>
 			<img class="image" src="https://source.unsplash.com/IUPiWRNKNm8"/>
 		</vwc-carousel-item>
