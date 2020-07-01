@@ -50,11 +50,11 @@ export class VWCCarousel extends LitElement {
 		});
 	}
 
-	createRenderRoot() {
+	createRenderRoot(): HTMLElement {
 		return this;
 	}
 
-	connectedCallback() {
+	connectedCallback(): void {
 		super.connectedCallback();
 		this.ensureStyleApplied();
 	}
