@@ -6,10 +6,10 @@
 	margin: 0 3px;
 	border-radius: 0;
 	font-size: 0;
-  background-color: #C2C4CC;
+  background-color: var(--vvd-color-unchecked);
 	transition: transform 0.1s;
 
 	&-active {
-			background-color: #871FFF;
+			background-color: var(--vvd-color-base-foreground);
 	}
 }
