@@ -50,7 +50,7 @@ export class VWCCarousel extends LitElement {
 		});
 	}
 
-	createRenderRoot(): HTMLElement {
+	protected createRenderRoot(): HTMLElement {
 		return this;
 	}
 
