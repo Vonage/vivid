@@ -1,1 +1,0 @@
-# vivid-design-tokens
