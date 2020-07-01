@@ -1,3 +1,4 @@
+import { html } from 'lit-element';
 import { withA11y } from '@storybook/addon-a11y';
 import { RelativeTime } from '@vonage/relative-time';
 
@@ -8,5 +9,7 @@ export default {
 }
 
 export const basic = ()=> {
-	return `<relative-time live='true' datetime='${Date.now()}'></relative-time>`
+
+	return html`<vwc-relative-time live='true' datetime='${Date.now()}'></vwc-relative-time>`;
+
 }

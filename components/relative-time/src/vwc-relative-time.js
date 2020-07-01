@@ -12,7 +12,16 @@ const
 		SYMBOL_PROPERTY_TARGET_SET
 	] = ["connect", "disconnect", "property-live", "property-live-set", "property-target", "property-target-set"].map((name)=> Symbol(name));
 
-const RelativeTimeElement = class extends HTMLElement {
+/**
+ * Displays a timestamp relative to current time in human readable language
+ *
+ * @element vwc-relative-time
+ *
+ * @prop {Boolean} live - When set to `true`, the component will automatically update.
+ * @prop {integer} datetime - The target timestamp in milliseconds since epoch.
+ *
+ */
+class RelativeTimeElement extends HTMLElement {
 
 	constructor() {
 		super();
@@ -109,5 +118,5 @@ const RelativeTimeElement = class extends HTMLElement {
 	}
 }
 
-window.customElements.define('relative-time', RelativeTimeElement);
+window.customElements.define('vwc-relative-time', RelativeTimeElement);
 export { RelativeTimeElement as RelativeTime };
