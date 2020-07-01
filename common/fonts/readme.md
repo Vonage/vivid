@@ -12,7 +12,6 @@ See more details about each of those approaches down below.
 To use Vivid fonts in your application please apply the following `CSS` rule:
 ```
 body {
-	font-family: 'VonageMain';	/* for IE11 only, omit this line if not relevant
 	font-family: var(--vvd-font-family-spezia);
 }
 ```
@@ -21,9 +20,9 @@ body {
 
 #### Support matrix
 
-| | ![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_32x32.png) | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_32x32.png) | ![Edge](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_32x32.png) | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_32x32.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_32x32.png) | IE11
-| - | - | - | - | - | - | - |
-regular fonts | ✔ | ✔ | ✔ | ✔ | ✔ | ✔ |
+| | ![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_32x32.png) | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_32x32.png) | ![Edge](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_32x32.png) | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_32x32.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_32x32.png) |
+| - | - | - | - | - | - |
+regular fonts | ✔ | ✔ | ✔ | ✔ | ✔ |
 variable fonts | ✔ 62+ | ✔ 62+ | ✔ 17+ | ✔ 49+ | ✔ 11+ | 
 
 ---
