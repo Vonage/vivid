@@ -25,7 +25,7 @@ export class VWCButton extends MWCButton {
 
 	protected updated(): void {
 		const innerButton = this.shadowRoot?.querySelector('.mdc-button');
-		innerButton?.classList[this.shape === 'pill' ? 'add' : 'remove']('mdc-button--pill');
-		innerButton?.classList[this.shape === 'rounded' ? 'add' : 'remove']('mdc-button--rounded');
+		innerButton?.classList[this.shape === 'pill' ? 'add' : 'remove']('vwc-button--pill');
+		innerButton?.classList[this.shape === 'rounded' ? 'add' : 'remove']('vwc-button--rounded');
 	}
 }
