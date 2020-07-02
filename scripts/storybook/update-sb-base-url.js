@@ -3,9 +3,9 @@ const
 	path = require('path');
 
 const
-	STORYBOOK_PATH = './.storybook',
-	BUILD_DETAILS_PATH = 'static/build-details.json',
-	MANAGER_HEAD_PATH = 'manager-head.html',
+	STORYBOOK_PATH = './.out',
+	BUILD_DETAILS_PATH = 'build-details.json',
+	MANAGER_HEAD_PATH = 'index.html',
 	UTF8_ENCODING = 'utf-8';
 
 //	execution part
@@ -30,6 +30,6 @@ function obtainTimestamp() {
 function updateBaseUrl(baseUrl) {
 	const htmlFilePath = path.resolve(STORYBOOK_PATH, MANAGER_HEAD_PATH);
 	const managerHeadHtml = fs.readFileSync(htmlFilePath, UTF8_ENCODING);
-	const output = managerHeadHtml.replace('<!--BASE-URL-PLACEHOLDER-->', `<base href='/${baseUrl}'>`);
+	const output = managerHeadHtml.replace('<base href="/">', `<base href="/${baseUrl}">`);
 	fs.writeFileSync(htmlFilePath, output, UTF8_ENCODING);
 }
