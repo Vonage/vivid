@@ -14,7 +14,7 @@
   text-transform: none;
 	transition: background-color 0.3s;
 
-	--mdc-theme-primary: var(--vvd-color-base-foregroung);
+	--mdc-theme-primary: var(--vvd-color-base-foreground);
 }
 
 .mdc-button--raised,
@@ -27,7 +27,7 @@
 }
 
 .mdc-button--outlined {
-	@include button.outline-color(var(--vvd-color-base-foregroung));
+	@include button.outline-color(var(--vvd-color-base-foreground));
   @include button.disabled-outline-color(var(--vvd-button-disabled-ink-color));
 }
 

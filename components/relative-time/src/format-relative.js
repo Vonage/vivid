@@ -1,4 +1,5 @@
-export default ({ templateSet = "default", templateSetOptions: { intlOptions = {}, dayCount = 7, justNowSecondCount = 5, justNowCaption = "Just now" } = {}} = {})=> {
+import { formatRelative } from 'date-fns';
+export default ({ templateSet = "date-fns", templateSetOptions: { intlOptions = {}, dayCount = 7, justNowSecondCount = 5, justNowCaption = "Just now" } = {}} = {})=> {
 	const
 		SECOND = 1000,
 		MINUTE = 60 * SECOND,
@@ -6,6 +7,7 @@ export default ({ templateSet = "default", templateSetOptions: { intlOptions = {
 		DAY = 24 * HOUR;
 
 	const TEMPLATE_SET = Object.entries({
+		"date-fns":  { [Number.MAX_VALUE]: (ts, dt)=> formatRelative(dt, new Date()) },
 		"default": (function(){
 			const
 				relativeFormatter = new Intl.RelativeTimeFormat(intlOptions),

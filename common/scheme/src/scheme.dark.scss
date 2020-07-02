@@ -1,1 +1,10 @@
-@forward '../../../design-tokens/build/scheme.dark.scss';
+@use '../../../design-tokens/build/scss/schemes/dark/base.scss';
+@use '../../../design-tokens/build/scss/schemes/dark/alternate.scss';
+
+.vvd-theme-dark-base {
+	@include base.variables;
+}
+
+.vvd-theme-dark-alternate {
+	@include base.variables;
+}

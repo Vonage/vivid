@@ -1,39 +1,50 @@
 const StyleDictionaryPackage = require("style-dictionary");
+const fs = require("fs");
+const _ = require("lodash");
+const R = require("ramda");
 
 // StyleDictionaryPackage.registerFilter({
-//   name: 'filter-alias',
-//   matcher: function (prop) {
-//     return prop.attributes.category !== 'alias';
-//   },
+// 	name: "filter-alias",
+// 	matcher: function (prop) {
+// 		console.log(prop.attributes);
+// 		return prop.attributes.category !== "alias";
+// 	},
 // });
 
+StyleDictionaryPackage.registerFormat({
+	name: "custom/format/scss",
+	formatter: _.template(
+		fs.readFileSync(__dirname + "/../templates/web-scss.template")
+	),
+});
+
 // HAVE THE STYLE DICTIONARY CONFIG DYNAMICALLY GENERATED
-const format = "css/variables";
-const buildPath = `${__dirname}/../build/`;
-console.log(`${__dirname}/../properties/`);
-function getStyleDictionaryConfig(scheme, platform) {
+// const format = "css/variables";
+
+// console.log(`${__dirname}/../properties/`);
+function getStyleDictionaryConfig(scheme, scope) {
 	return {
 		source: [
-			`${__dirname}/../properties/schemes/${scheme}/*.json`,
 			`${__dirname}/../properties/globals/**/*.json`,
-			`${__dirname}/../properties/platforms/${platform}/*.json`,
+			`${__dirname}/../properties/scheme/${scheme}/color.json`,
+			// `${__dirname}/../properties/platforms/palette.json`,
 		],
 		platforms: {
 			web: {
 				prefix: "vvd",
 				transformGroup: "css", // 'web'
-				buildPath,
-				// template: "custom-template",
+				buildPath: `${__dirname}/../build/scss/`,
 				files: [
 					{
-						destination: `${scheme}.scss`,
-						format,
+						destination: `schemes/${scheme}/${scope}.scss`,
+						format: "custom/format/scss",
 						filter: {
 							attributes: {
 								category: "color",
+								// type: "root",
 							},
 						},
-						// filter: 'filter-alias',
+						// filter: "filter-alias",
 					},
 					// {
 					//   destination: '_sizes.scss',
@@ -64,7 +75,6 @@ function getStyleDictionaryConfig(scheme, platform) {
 					// },
 				],
 			},
-
 			// android: {
 			//   transformGroup: 'android',
 			//   buildPath: `${__dirname}/dist/android/${scheme}/`,
@@ -97,24 +107,20 @@ function getStyleDictionaryConfig(scheme, platform) {
 	};
 }
 
-console.log("Build started...");
+const curriedGetStyleDictionaryConfig = R.curry(getStyleDictionaryConfig);
+const baseConfig = curriedGetStyleDictionaryConfig(R.__, "base");
+const alternateConfig = curriedGetStyleDictionaryConfig(R.__, "alternate");
 
 // PROCESS THE DESIGN TOKENS FOR THE DIFFERENT SCHEMES AND PLATFORMS
 // TODO: [VIV-41] add accessible colors scheme
-["scheme.light", "scheme.dark"].map(function (scheme) {
-	["web" /*, 'ios', 'android'*/].map(function (platform) {
+exports.render = () => {
+	["light", "dark"].forEach(function (scheme) {
 		console.log("\n==============================================");
-		console.log(`\nProcessing: [${platform}] [${scheme}]`);
+		console.log(`\nProcessing: [${scheme}]`);
 
-		const StyleDictionary = StyleDictionaryPackage.extend(
-			getStyleDictionaryConfig(scheme, platform)
-		);
-
-		StyleDictionary.buildPlatform(platform);
+		StyleDictionaryPackage.extend(baseConfig(scheme)).buildPlatform("web");
+		StyleDictionaryPackage.extend(alternateConfig(scheme)).buildPlatform("web");
 
 		console.log("\nEnd processing");
 	});
-});
-
-console.log("\n==============================================");
-console.log("\nBuild completed!");
+};

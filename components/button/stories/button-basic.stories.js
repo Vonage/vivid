@@ -24,12 +24,12 @@ export const basic = () => html`
 		}
 	</style>
 
-	<h3>Standard</h3>
+	<!--h3>Standard</h3>
 	<div class="container">
 		<vwc-button>Basic</vwc-button>
 		<vwc-button icon="code">With icon</vwc-button>
 		<vwc-button disabled icon="code">Disabled</vwc-button>
-	</div>
+	</div-->
 
 	<h3>Outlined</h3>
 	<div class="container">
