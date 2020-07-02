@@ -2,7 +2,7 @@ name: Build & Deploy Showcase (Dev)
 
 on:
   push:
-    branches: [issue/gix-gray]
+    branches: [issue/fix-gray]
   pull_request:
     types: [closed]
     branches: [develop]
