@@ -30,7 +30,7 @@ function buildDetails() {
 	const externalDescriptorPath = './lerna.json';
 	const externalDescription = JSON.parse(fs.readFileSync(externalDescriptorPath, { encoding: 'utf8' }));
 	const result = Object.freeze({
-		timestamp: new Date().toISOString(),
+		timestamp: new Date().getTime(),
 		version: externalDescription.version
 	});
 	console.info('\tbuild details constructed');
