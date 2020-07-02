@@ -26,7 +26,7 @@ export const basic = () => html`
 
 	<vwc-carousel class="carousel">
 		<vwc-carousel-item>
-			<img class="image" src="https://source.unsplash.com/IUPiWRNKNm8"/>
+			<img class="image" src="https://source.unsplash.com/IUPiWRNKNm8" alt="slide 1"/>
 		</vwc-carousel-item>
 		<vwc-carousel-item>
 			<div class="item text" style="padding:24px;background-color:lightblue;width:100%;">
@@ -34,13 +34,13 @@ export const basic = () => html`
 			</div>
 		</vwc-carousel-item>
 		<vwc-carousel-item>
-			<img class="image" src="https://source.unsplash.com/q_M6B9_cajM"/>
+			<img class="image" src="https://source.unsplash.com/q_M6B9_cajM" alt="slide 2"/>
 		</vwc-carousel-item>
 		<vwc-carousel-item>
-			<img class="image" src="https://source.unsplash.com/CVBQdww5JZU"/>
+			<img class="image" src="https://source.unsplash.com/CVBQdww5JZU" alt="slide 3"/>
 		</vwc-carousel-item>
 		<vwc-carousel-item>
-			<img class="image" src="assets/images/carousel-slide-example.png"/>
+			<img class="image" src="assets/images/carousel-slide-example.png" alt="slide 4"/>
 		</vwc-carousel-item>
 	</vwc-carousel>
 `;
