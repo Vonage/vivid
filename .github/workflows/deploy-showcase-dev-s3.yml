@@ -42,20 +42,13 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_SECRET_B }}
         run: aws s3 sync ./.out/ s3://${{ secrets.AWS_S3_BUCKET_B }}/${{ env.STORYBOOK_DEPLOY_TIMESTAMP }}
 
-      # - name: Update CloudFront distribution to version ${{ env.STORYBOOK_DEPLOY_VERSION }}
-      #   env:
-      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_B }}
-      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_SECRET_B }}
-      #     AWS_CF_DISTRIBUTION_ID: ${{ secrets.AWS_CF_DISTRIBUTION_ID_B }}
-      #   run: sh ./scripts/update-cf-distribution-config.sh
-
-      - name: Update CloudFront distribution to version ${{ env.STORYBOOK_DEPLOY_TIMESTAMP }}
+      - name: Update CloudFront distribution root object ${{ env.STORYBOOK_DEPLOY_TIMESTAMP }}
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_B }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_SECRET_B }}
         run: aws cloudfront update-distribution --id ${{ secrets.AWS_CF_DISTRIBUTION_ID_B }} --default-root-object ${{ env.STORYBOOK_DEPLOY_TIMESTAMP }}/index.html
 
-      - name: Invalidate CloudFront cache
+      - name: Invalidate CloudFront distribution root object's cache
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_B }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_SECRET_B }}
