@@ -40,7 +40,7 @@ We can't promise that everything will be fixed as we are opinionated people as w
 
 * clone the repo
 	* see note below about the SSH keys
-* run `yarn` (repo relies on yarn workspaces) in order to build the repo once / bring the dependencies
+* run `yarn` in order to build the repo once / bring the dependencies
 * run the following steps as the normal build-and-see flow:
 	* `yarn compile` - builds `css` from `scss`, compiles `ts` into `js`
 	* `yarn dev:server` - runs dev server on `localhost` in order to see the demo pages
