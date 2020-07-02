@@ -14,27 +14,29 @@ It might also be helpful to read the following docs as well:
 
 ---
 
-#### Process
+## Process
 
-##### Feature request
+### Feature request
 
 When a team needs new service or component, we suggest first to see if anything similar is already available. [Packages](https://github.com/Vonage/vivid/packages) and [demo page](vivid.vonage.com) are the best places to start with.
 
-If nothing suitable found, please consult with an [issues](https://github.com/Vonage/vivid/issues) and [features](https://github.com/Vonage/vivid/projects), it is possible something is already in the pipe.
+If nothing suitable found, please search the [issues](https://github.com/Vonage/vivid/issues) and [features](https://github.com/Vonage/vivid/projects), it is possible something is already in the pipe.
 
 If yet nothing found, create a new feature request / issue. Of course, everyone is more than welcome to contact Vivid team directly too.
 
 Once the action items lands on our table, we'll contact you, do an initial triage of the requirements and the functional spec and some high level archiectural design review.
 
-> Important! We do ask to follow this process even if the one is going to implement the feature her/himself.
+> Important! We do ask to follow this process even if the one whp is going to implement the feature is the reporter.
 
-##### Coding time
+### Coding time
 
-Have you decided to implement something cool as part of the Vivid project? Great! We'd like to help you with that, so that your dev-experience would be excellent.
-Below are few intros, but most important - if something doesn't feel right, please talk to us.
-We won't promise that everything will be fixed as we are opinionated people as well, but we'll definitely listen carefully and try to make things right.
+Have you decided to implement something cool as part of the Vivid project? Great! 
 
-###### Getting up and running
+Below you will find the steps to get you started with a local development environment.
+We'd like to help you, so that your dev-experience would be excellent. If something doesn't feel right, please talk to us.
+We can't promise that everything will be fixed as we are opinionated people as well, but we'll definitely listen carefully and try to make things right.
+
+#### Getting up and running
 
 * clone the repo
 	* see note below about the SSH keys
@@ -49,7 +51,7 @@ We won't promise that everything will be fixed as we are opinionated people as w
 * just before getting into the change, please make sure to branch out from the `develop` branch, giving your branch some good and descriptive name
 * during the coding time, it is best to sync with `develop` rather frequently, we'll do our best to keep it evergreen
 
-###### Coded, looks okay, now quality time
+#### Coded, looks okay, now quality time
 
 In order to ensure certain level of quality we rely on automation. Our CI will run the checks on each of your pushes to remote, reflecting the current feature queality status.
 But even before you code hits the CI you can run some preliminary checks locally:
@@ -60,7 +62,7 @@ But even before you code hits the CI you can run some preliminary checks locally
 
 > See [here](./dev-ops-process.md) more details about the full 'fork-push-pullrequest-merge-release' flow.
 
-###### All good, let's deliver
+#### All good, let's deliver
 
 When you happy with what you've done, please open a PR back to the `develop` branch.
 You may specify reviewer if relevant.
@@ -73,12 +75,12 @@ Done! Well, there probably will be some exchange of comments and fixes, but even
 
 ---
 
-#### CI/CD and workflow
+## CI/CD and workflow
 
 Automation is a heart of any vibrant and quickly evolving project, especially when it's a community oriented one. [Here](./dev-ops-process.md) you can see a more technical and detailed description of the full 'requirement-to-production' flow from an automation perspective.
 
 ---
 
-#### Useful scripts
+## Useful scripts
 
 - `build` builds demo app for production
