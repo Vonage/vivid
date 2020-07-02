@@ -30,6 +30,6 @@ function obtainTimestamp() {
 function updateBaseUrl(baseUrl) {
 	const htmlFilePath = path.resolve(STORYBOOK_PATH, MANAGER_HEAD_PATH);
 	const managerHeadHtml = fs.readFileSync(htmlFilePath, UTF8_ENCODING);
-	const output = managerHeadHtml.replace('<base href="/">', `<base href="/${baseUrl}">`);
+	const output = managerHeadHtml.replace('<base href="/">', `<base href="/${baseUrl}/">`);
 	fs.writeFileSync(htmlFilePath, output, UTF8_ENCODING);
 }
