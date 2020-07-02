@@ -12,6 +12,7 @@ package-lock.json
 .npmrc
 
 ## yarn
+yarn.lock
 yarn-error.log
 
 ## testing

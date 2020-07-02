@@ -5,7 +5,7 @@ import '../vwc-keypad.js';
 
 describe('VwcKeypad', () => {
   it('has a default no-asterisk false, no-hash false, no-display false, actionText "Enter", cancelText "Cancel"', async () => {
-    const el: VwcKeypad = await fixture(html`
+    const el = await fixture(html`
       <vwc-keypad></vwc-keypad>
     `);
 
@@ -17,22 +17,22 @@ describe('VwcKeypad', () => {
   });
 
   it('keypad buttons clicks add digits to display', async () => {
-    const el: VwcKeypad = await fixture(html`
+    const el = await fixture(html`
       <vwc-keypad></vwc-keypad>
     `);
 
-    const digit1: HTMLElement = el.shadowRoot!.getElementById('1-digit') as HTMLElement;
-    const digit2: HTMLElement = el.shadowRoot!.getElementById('2-digit') as HTMLElement;
-    const digit3: HTMLElement = el.shadowRoot!.getElementById('3-digit') as HTMLElement;
-    const digit4: HTMLElement = el.shadowRoot!.getElementById('4-digit') as HTMLElement;
-    const digit5: HTMLElement = el.shadowRoot!.getElementById('5-digit') as HTMLElement;
-    const digit6: HTMLElement = el.shadowRoot!.getElementById('6-digit') as HTMLElement;
-    const digit7: HTMLElement = el.shadowRoot!.getElementById('7-digit') as HTMLElement;
-    const digit8: HTMLElement = el.shadowRoot!.getElementById('8-digit') as HTMLElement;
-    const digit9: HTMLElement = el.shadowRoot!.getElementById('9-digit') as HTMLElement;
-    const digit0: HTMLElement = el.shadowRoot!.getElementById('0-digit') as HTMLElement;
-    const digitAsterisk: HTMLElement = el.shadowRoot!.getElementById('asterisk-digit') as HTMLElement;
-    const digitHash: HTMLElement = el.shadowRoot!.getElementById('hash-digit') as HTMLElement;
+    const digit1 = el.shadowRoot.getElementById('1-digit');
+    const digit2 = el.shadowRoot.getElementById('2-digit');
+    const digit3 = el.shadowRoot.getElementById('3-digit');
+    const digit4 = el.shadowRoot.getElementById('4-digit');
+    const digit5 = el.shadowRoot.getElementById('5-digit');
+    const digit6 = el.shadowRoot.getElementById('6-digit');
+    const digit7 = el.shadowRoot.getElementById('7-digit');
+    const digit8 = el.shadowRoot.getElementById('8-digit');
+    const digit9 = el.shadowRoot.getElementById('9-digit');
+    const digit0 = el.shadowRoot.getElementById('0-digit');
+    const digitAsterisk = el.shadowRoot.getElementById('asterisk-digit');
+    const digitHash = el.shadowRoot.getElementById('hash-digit');
     digit1.click();
     digit2.click();
     digit3.click();
@@ -50,37 +50,37 @@ describe('VwcKeypad', () => {
   });
 
   it('no-asterisk attribute removes * button', async () => {
-    const el: VwcKeypad = await fixture(html`
+    const el = await fixture(html`
       <vwc-keypad no-asterisk></vwc-keypad>
     `);
-    const asteriskButton = el.shadowRoot!.querySelector('#asterisk-digit')!;
+    const asteriskButton = el.shadowRoot.querySelector('#asterisk-digit');
 
     expect(el.noAsterisk).to.equal(true);
     expect(asteriskButton).to.equal(null);
   });
 
   it('no-hash attribute removes # button', async () => {
-    const el: VwcKeypad = await fixture(html`
+    const el = await fixture(html`
       <vwc-keypad no-hash></vwc-keypad>
     `);
-    const hashButton = el.shadowRoot!.querySelector('#hash-digit')!;
+    const hashButton = el.shadowRoot.querySelector('#hash-digit');
 
     expect(el.noHash).to.equal(true);
     expect(hashButton).to.equal(null);
   });
 
   it('no-display attribute removes display input', async () => {
-    const el: VwcKeypad = await fixture(html`
+    const el = await fixture(html`
       <vwc-keypad no-display></vwc-keypad>
     `);
-    const digitsDisplay = el.shadowRoot!.querySelector('#digits-display')!;
+    const digitsDisplay = el.shadowRoot.querySelector('#digits-display');
 
     expect(el.noDisplay).to.equal(true);
     expect(digitsDisplay).to.equal(null);
   });
 
   it('called createAction method sets actionStarted to true', async () => {
-    const el: VwcKeypad = await fixture(html`
+    const el = await fixture(html`
       <vwc-keypad></vwc-keypad>
     `);
 
@@ -89,23 +89,23 @@ describe('VwcKeypad', () => {
   });
 
   it('end action and clear digits on cancel button click', async () => {
-    const el: VwcKeypad = await fixture(html`
+    const el = await fixture(html`
       <vwc-keypad></vwc-keypad>
     `);
 
-    const digit1: HTMLElement = el.shadowRoot!.getElementById('1-digit') as HTMLElement;
-    const digit2: HTMLElement = el.shadowRoot!.getElementById('2-digit') as HTMLElement;
-    const digit3: HTMLElement = el.shadowRoot!.getElementById('3-digit') as HTMLElement;
+    const digit1 = el.shadowRoot.getElementById('1-digit');
+    const digit2 = el.shadowRoot.getElementById('2-digit');
+    const digit3 = el.shadowRoot.getElementById('3-digit');
     digit1.click();
     digit2.click();
     digit3.click();
 
-    const actionButton: HTMLElement = el.shadowRoot!.getElementById('action-button') as HTMLElement;
+    const actionButton = el.shadowRoot.getElementById('action-button');
     actionButton.click();
 
     el.createAction();
     await elementUpdated(el);
-    const cancelButton: HTMLElement = el.shadowRoot!.getElementById('cancel-button') as HTMLElement;
+    const cancelButton = el.shadowRoot.getElementById('cancel-button');
     cancelButton.click();
 
     expect(el.digits).to.equal('');
@@ -113,23 +113,23 @@ describe('VwcKeypad', () => {
   });
 
   it('can change Action button text via attribute', async () => {
-    const el: VwcKeypad = await fixture(html`
-      <vwc-keypad .actionText=${"Start"}></vwc-keypad>
+    const el = await fixture(html`
+      <vwc-keypad actionText='Start'></vwc-keypad>
     `);
 
     expect(el.actionText).to.equal('Start');
   });
 
   it('can change Cancel button text via attribute', async () => {
-    const el: VwcKeypad = await fixture(html`
-      <vwc-keypad .cancelText=${"Stop"}></vwc-keypad>
+    const el = await fixture(html`
+      <vwc-keypad cancelText='Stop'></vwc-keypad>
     `);
 
     expect(el.cancelText).to.equal('Stop');
   });
 
   it('passes the a11y audit', async () => {
-    const el: VwcKeypad = await fixture(html`
+    const el = await fixture(html`
       <vwc-keypad></vwc-keypad>
     `);
 

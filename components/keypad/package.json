@@ -23,6 +23,7 @@
   "dependencies": {
     "@vonage/vwc-button": "0.0.18",
     "@vonage/vwc-textfield": "0.0.18",
+    "@open-wc/testing": "^2.0.0",
     "lit-element": "^2.2.1",
     "lit-html": "^1.1.2"
   },
@@ -42,7 +43,6 @@
     "lint-staged": "^8.0.0",
     "@open-wc/testing-karma": "^3.0.0",
     "deepmerge": "^3.2.0",
-    "@open-wc/testing": "^2.0.0",
     "@open-wc/demoing-storybook": "^2.0.0"
   },
   "eslintConfig": {
