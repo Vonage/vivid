@@ -1,0 +1,139 @@
+import { html, fixture, expect, elementUpdated } from '@open-wc/testing';
+
+import {VwcKeypad} from '../src/VwcKeypad.js';
+import '../vwc-keypad.js';
+
+describe('VwcKeypad', () => {
+  it('has a default no-asterisk false, no-hash false, no-display false, actionText "Enter", cancelText "Cancel"', async () => {
+    const el: VwcKeypad = await fixture(html`
+      <vwc-keypad></vwc-keypad>
+    `);
+
+    expect(el.noAsterisk).to.equal(false);
+    expect(el.noHash).to.equal(false);
+    expect(el.noDisplay).to.equal(false);
+    expect(el.actionText).to.equal('Enter');
+    expect(el.cancelText).to.equal('Cancel');
+  });
+
+  it('keypad buttons clicks add digits to display', async () => {
+    const el: VwcKeypad = await fixture(html`
+      <vwc-keypad></vwc-keypad>
+    `);
+
+    const digit1: HTMLElement = el.shadowRoot!.getElementById('1-digit') as HTMLElement;
+    const digit2: HTMLElement = el.shadowRoot!.getElementById('2-digit') as HTMLElement;
+    const digit3: HTMLElement = el.shadowRoot!.getElementById('3-digit') as HTMLElement;
+    const digit4: HTMLElement = el.shadowRoot!.getElementById('4-digit') as HTMLElement;
+    const digit5: HTMLElement = el.shadowRoot!.getElementById('5-digit') as HTMLElement;
+    const digit6: HTMLElement = el.shadowRoot!.getElementById('6-digit') as HTMLElement;
+    const digit7: HTMLElement = el.shadowRoot!.getElementById('7-digit') as HTMLElement;
+    const digit8: HTMLElement = el.shadowRoot!.getElementById('8-digit') as HTMLElement;
+    const digit9: HTMLElement = el.shadowRoot!.getElementById('9-digit') as HTMLElement;
+    const digit0: HTMLElement = el.shadowRoot!.getElementById('0-digit') as HTMLElement;
+    const digitAsterisk: HTMLElement = el.shadowRoot!.getElementById('asterisk-digit') as HTMLElement;
+    const digitHash: HTMLElement = el.shadowRoot!.getElementById('hash-digit') as HTMLElement;
+    digit1.click();
+    digit2.click();
+    digit3.click();
+    digit4.click();
+    digit5.click();
+    digit6.click();
+    digit7.click();
+    digit8.click();
+    digit9.click();
+    digit0.click();
+    digitAsterisk.click();
+    digitHash.click();
+
+    expect(el.digits).to.equal('1234567890*#');
+  });
+
+  it('no-asterisk attribute removes * button', async () => {
+    const el: VwcKeypad = await fixture(html`
+      <vwc-keypad no-asterisk></vwc-keypad>
+    `);
+    const asteriskButton = el.shadowRoot!.querySelector('#asterisk-digit')!;
+
+    expect(el.noAsterisk).to.equal(true);
+    expect(asteriskButton).to.equal(null);
+  });
+
+  it('no-hash attribute removes # button', async () => {
+    const el: VwcKeypad = await fixture(html`
+      <vwc-keypad no-hash></vwc-keypad>
+    `);
+    const hashButton = el.shadowRoot!.querySelector('#hash-digit')!;
+
+    expect(el.noHash).to.equal(true);
+    expect(hashButton).to.equal(null);
+  });
+
+  it('no-display attribute removes display input', async () => {
+    const el: VwcKeypad = await fixture(html`
+      <vwc-keypad no-display></vwc-keypad>
+    `);
+    const digitsDisplay = el.shadowRoot!.querySelector('#digits-display')!;
+
+    expect(el.noDisplay).to.equal(true);
+    expect(digitsDisplay).to.equal(null);
+  });
+
+  it('called createAction method sets actionStarted to true', async () => {
+    const el: VwcKeypad = await fixture(html`
+      <vwc-keypad></vwc-keypad>
+    `);
+
+    el.createAction();
+    expect(el.actionStarted).to.equal(true);
+  });
+
+  it('end action and clear digits on cancel button click', async () => {
+    const el: VwcKeypad = await fixture(html`
+      <vwc-keypad></vwc-keypad>
+    `);
+
+    const digit1: HTMLElement = el.shadowRoot!.getElementById('1-digit') as HTMLElement;
+    const digit2: HTMLElement = el.shadowRoot!.getElementById('2-digit') as HTMLElement;
+    const digit3: HTMLElement = el.shadowRoot!.getElementById('3-digit') as HTMLElement;
+    digit1.click();
+    digit2.click();
+    digit3.click();
+
+    const actionButton: HTMLElement = el.shadowRoot!.getElementById('action-button') as HTMLElement;
+    actionButton.click();
+
+    el.createAction();
+    await elementUpdated(el);
+    const cancelButton: HTMLElement = el.shadowRoot!.getElementById('cancel-button') as HTMLElement;
+    cancelButton.click();
+
+    expect(el.digits).to.equal('');
+    expect(el.actionStarted).to.equal(false);
+  });
+
+  it('can change Action button text via attribute', async () => {
+    const el: VwcKeypad = await fixture(html`
+      <vwc-keypad .actionText=${"Start"}></vwc-keypad>
+    `);
+
+    expect(el.actionText).to.equal('Start');
+  });
+
+  it('can change Cancel button text via attribute', async () => {
+    const el: VwcKeypad = await fixture(html`
+      <vwc-keypad .cancelText=${"Stop"}></vwc-keypad>
+    `);
+
+    expect(el.cancelText).to.equal('Stop');
+  });
+
+  it('passes the a11y audit', async () => {
+    const el: VwcKeypad = await fixture(html`
+      <vwc-keypad></vwc-keypad>
+    `);
+
+    await expect(el).shadowDom.to.be.accessible();
+  });
+
+});
