@@ -1,10 +1,12 @@
 # vwc-relative-time
 
-Show relative time to `datetime`
+Displays a timestamp relative to current time in human readable language
 
 ## Properties
 
-| Property                  | Modifiers | Type                                      | Description                                      |
-|---------------------------|-----------|-------------------------------------------|--------------------------------------------------|
-| `live`                    |           | `boolean`                                 | When set to `true`, the component will automatically update |
-| `datetime`                |           | `integer`                                 |  The target timestamp in milliseconds since epoch |
+| Property                  | Type                                      | Description                                      |
+|---------------------------|-------------------------------------------|--------------------------------------------------|
+| `datetime`                | `integer`                                 | The target timestamp in milliseconds since epoch. |
+| `floatingLabelFoundation` | `MDCFloatingLabelFoundation \| undefined` |                                                  |
+| `lineRippleFoundation`    | `MDCLineRippleFoundation \| undefined`    |                                                  |
+| `live`                    | `Boolean`                                 | When set to `true`, the component will automatically update. |

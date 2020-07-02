@@ -5,11 +5,11 @@
 | Property                  | Modifiers | Type                                             | Description                                      |
 |---------------------------|-----------|--------------------------------------------------|--------------------------------------------------|
 | `autoValidate`            |           | `boolean`                                        |                                                  |
-| `charCounter`             |           | `boolean`                                        |                                                  |
+| `autocapitalize`          |           | `string`                                         |                                                  |
+| `charCounter`             |           | `boolean \| "external" \| "internal"`            |                                                  |
 | `disabled`                |           | `boolean`                                        |                                                  |
 | `endAligned`              |           | `boolean`                                        |                                                  |
 | `floatingLabelFoundation` |           | `MDCFloatingLabelFoundation \| undefined`        |                                                  |
-| `fullWidth`               |           | `boolean`                                        |                                                  |
 | `helper`                  |           | `string`                                         |                                                  |
 | `helperPersistent`        |           | `boolean`                                        |                                                  |
 | `icon`                    |           | `string`                                         |                                                  |
@@ -21,6 +21,7 @@
 | `maxLength`               |           | `number`                                         |                                                  |
 | `min`                     |           | `string \| number`                               |                                                  |
 | `minLength`               |           | `number`                                         |                                                  |
+| `name`                    |           | `string`                                         |                                                  |
 | `outlined`                |           | `boolean`                                        |                                                  |
 | `pattern`                 |           | `string`                                         |                                                  |
 | `placeholder`             |           | `string`                                         |                                                  |

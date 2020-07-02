@@ -38,6 +38,8 @@ export class VWCCarousel extends LitElement {
 	@query('.swiper-button-next')
 	private swiperButtonNext?: HTMLElement;
 
+	private something?: boolean;
+
 	@query('.swiper-button-prev')
 	private swiperButtonPrev?: HTMLElement;
 
@@ -59,6 +61,9 @@ export class VWCCarousel extends LitElement {
 	}
 
 	protected createRenderRoot(): HTMLElement {
+		if (this.something) {
+			return this;
+		}
 		return this;
 	}
 

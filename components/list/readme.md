@@ -13,6 +13,7 @@ This component is an extension of [<mwc-list-item>](https://github.com/material-
 | `group`                   |           | `string \| null`                          |
 | `hasMeta`                 |           | `boolean`                                 |
 | `lineRippleFoundation`    |           | `MDCLineRippleFoundation \| undefined`    |
+| `multipleGraphics`        |           | `boolean`                                 |
 | `noninteractive`          |           | `boolean`                                 |
 | `ripple`                  |           | `Promise<Ripple \| null>`                 |
 | `selected`                |           | `boolean`                                 |
@@ -35,35 +36,39 @@ This component is an extension of [<mwc-list>](https://github.com/material-compo
 
 ## Properties
 
-| Property                  | Modifiers | Type                                      |
-|---------------------------|-----------|-------------------------------------------|
-| `activatable`             |           | `boolean`                                 |
-| `floatingLabelFoundation` |           | `MDCFloatingLabelFoundation \| undefined` |
-| `index`                   | readonly  | `MWCListIndex`                            |
-| `innerAriaLabel`          |           | `string \| null`                          |
-| `innerRole`               |           | `string \| null`                          |
-| `itemRoles`               |           | `string \| null`                          |
-| `items`                   | readonly  | `ListItemBase[]`                          |
-| `lineRippleFoundation`    |           | `MDCLineRippleFoundation \| undefined`    |
-| `multi`                   |           | `boolean`                                 |
-| `noninteractive`          |           | `boolean`                                 |
-| `rootTabbable`            |           | `boolean`                                 |
-| `selected`                | readonly  | `ListItemBase \| ListItemBase[] \| null`  |
-| `wrapFocus`               |           | `boolean`                                 |
+| Property                  | Modifiers | Type                                           |
+|---------------------------|-----------|------------------------------------------------|
+| `activatable`             |           | `boolean`                                      |
+| `floatingLabelFoundation` |           | `MDCFloatingLabelFoundation \| undefined`      |
+| `index`                   | readonly  | `MWCListIndex`                                 |
+| `innerAriaLabel`          |           | `string \| null`                               |
+| `innerRole`               |           | `string \| null`                               |
+| `itemRoles`               |           | `string \| null`                               |
+| `items`                   | readonly  | `ListItemBase[]`                               |
+| `layout`                  |           | `(updateItems?: boolean \| undefined) => void` |
+| `lineRippleFoundation`    |           | `MDCLineRippleFoundation \| undefined`         |
+| `multi`                   |           | `boolean`                                      |
+| `noninteractive`          |           | `boolean`                                      |
+| `rootTabbable`            |           | `boolean`                                      |
+| `selected`                | readonly  | `ListItemBase \| ListItemBase[] \| null`       |
+| `wrapFocus`               |           | `boolean`                                      |
 
 ## Methods
 
-| Method   | Type                                             |
-|----------|--------------------------------------------------|
-| `blur`   | `(): void`                                       |
-| `focus`  | `(): void`                                       |
-| `layout` | `(updateItems?: boolean \| undefined): void`     |
-| `select` | `(index: MWCListIndex): void`                    |
-| `toggle` | `(index: number, force?: boolean \| undefined): void` |
+| Method                | Type                                             |
+|-----------------------|--------------------------------------------------|
+| `blur`                | `(): void`                                       |
+| `focus`               | `(): void`                                       |
+| `focusItemAtIndex`    | `(index: number): void`                          |
+| `getFocusedItemIndex` | `(): number`                                     |
+| `layout`              | `(updateItems?: boolean \| undefined): void`     |
+| `select`              | `(index: MWCListIndex): void`                    |
+| `toggle`              | `(index: number, force?: boolean \| undefined): void` |
 
 ## Events
 
-| Event      | Description      |
-|------------|------------------|
-| `action`   | {ActionDetail}   |
-| `selected` | {SelectedDetail} |
+| Event           | Description      |
+|-----------------|------------------|
+| `action`        | {ActionDetail}   |
+| `items-updated` |                  |
+| `selected`      | {SelectedDetail} |
