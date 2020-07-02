@@ -1,8 +1,6 @@
 name: Build & Deploy Showcase (Dev)
 
 on:
-  push:
-    branches: [issue/cd-impr]
   pull_request:
     types: [closed]
     branches: [develop]
@@ -10,7 +8,7 @@ on:
 jobs:
   build-and-deploy-demo-dev:
     runs-on: ubuntu-latest
-    # if: github.event.pull_request.merged == true
+    if: github.event.pull_request.merged == true
 
     steps:
       - name: Checkout
