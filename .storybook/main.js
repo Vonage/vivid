@@ -12,8 +12,6 @@ module.exports = {
 	],
 	webpackFinal: config => {
 		config.output.hashDigestLength = 4;
-		config.output.chunkFilename = '[name].[contenthash].bld.js';
-		config.output.filename = '[name].[contenthash].bdl.js';
 		return config;
 	}
 };
