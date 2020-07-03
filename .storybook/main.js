@@ -9,9 +9,5 @@ module.exports = {
 		'@storybook/addon-docs',
 		'@storybook/addon-knobs',
 		'@storybook/addon-viewport'
-	],
-	webpackFinal: config => {
-		config.output.hashDigestLength = 4;
-		return config;
-	}
+	]
 };

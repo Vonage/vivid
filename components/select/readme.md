@@ -8,7 +8,6 @@ This component is an extension of [<mwc-select>](https://github.com/material-com
 |---------------------------|-----------|--------------------------------------------------|--------------------------------------------------|
 | `disabled`                |           | `boolean`                                        |                                                  |
 | `floatingLabelFoundation` |           | `MDCFloatingLabelFoundation \| undefined`        |                                                  |
-| `fullwidth`               |           | `boolean`                                        |                                                  |
 | `helper`                  |           | `string`                                         |                                                  |
 | `icon`                    |           | `string`                                         |                                                  |
 | `index`                   | readonly  | `number`                                         |                                                  |
