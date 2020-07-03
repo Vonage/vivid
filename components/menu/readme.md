@@ -20,6 +20,7 @@ This component is an extension of [<mwc-menu>](https://github.com/material-compo
 | `items`                   | readonly  | `ListItemBase[]`                                 |                                                  |
 | `lineRippleFoundation`    |           | `MDCLineRippleFoundation \| undefined`           |                                                  |
 | `mdcRoot`                 |           | `MenuSurface`                                    | Root element for MDC Foundation usage.<br /><br />Define in your component with the `@query` decorator |
+| `menuCorner`              |           | `MenuCorner`                                     |                                                  |
 | `multi`                   |           | `boolean`                                        |                                                  |
 | `open`                    |           | `boolean`                                        |                                                  |
 | `quick`                   |           | `boolean`                                        |                                                  |
@@ -31,18 +32,21 @@ This component is an extension of [<mwc-menu>](https://github.com/material-compo
 
 ## Methods
 
-| Method   | Type                                         |
-|----------|----------------------------------------------|
-| `close`  | `(): void`                                   |
-| `layout` | `(updateItems?: boolean \| undefined): void` |
-| `select` | `(index: MWCListIndex): void`                |
-| `show`   | `(): void`                                   |
+| Method                | Type                                         |
+|-----------------------|----------------------------------------------|
+| `close`               | `(): void`                                   |
+| `focusItemAtIndex`    | `(index: number): void`                      |
+| `getFocusedItemIndex` | `(): number`                                 |
+| `layout`              | `(updateItems?: boolean \| undefined): void` |
+| `select`              | `(index: MWCListIndex): void`                |
+| `show`                | `(): void`                                   |
 
 ## Events
 
-| Event      | Description      |
-|------------|------------------|
-| `action`   | {ActionDetail}   |
-| `closed`   |                  |
-| `opened`   |                  |
-| `selected` | {SelectedDetail} |
+| Event           | Description      |
+|-----------------|------------------|
+| `action`        | {ActionDetail}   |
+| `closed`        |                  |
+| `items-updated` |                  |
+| `opened`        |                  |
+| `selected`      | {SelectedDetail} |
