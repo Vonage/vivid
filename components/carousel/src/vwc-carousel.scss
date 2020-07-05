@@ -39,6 +39,7 @@ vwc-casousel:active {
 	flex: 0 0 29px;
 	display: flex;
 	align-items: center;
+	justify-content: center;
 	color: #9b9da3;
 	background-color: var(--vvd-color-base-background);
 	border: 1px solid #ced0d7;
@@ -49,8 +50,9 @@ vwc-casousel:active {
 	transition: color 0.2s;
 }
 
-.swiper-nav > vwc-icon {
-	font-size: 29px;
+.swiper-nav > .icon {
+	width: 1em;
+	height: auto;
 }
 
 .swiper-nav:hover {
