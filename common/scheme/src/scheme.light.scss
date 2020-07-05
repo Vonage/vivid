@@ -1,1 +1,10 @@
-@forward '../../../design-tokens/build/scheme.light.scss';
+@use '../../../design-tokens/build/scss/schemes/light/base.scss';
+@use '../../../design-tokens/build/scss/schemes/light/alternate.scss';
+
+.vvd-theme-light-base {
+	@include base.variables;
+}
+
+.vvd-theme-light-alternate {
+	@include base.variables;
+}

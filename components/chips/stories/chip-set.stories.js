@@ -4,14 +4,14 @@ import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Atomic/ChipSet',
+	title: 'Atoms/ChipSet',
 	component: 'vwc-chip-set',
 	decorators: [withA11y]
 }
 
 export const basic = () => html`
 	<h3>Default</h3>
-	<vwc-chip-set>
+	<vwc-chip-set id="chipSetA">
 		<vwc-chip label="Chip One"></vwc-chip>
 		<vwc-chip label="Chip Two"></vwc-chip>
 		<vwc-chip label="Chip Three"></vwc-chip>
@@ -19,9 +19,21 @@ export const basic = () => html`
 	</vwc-chip-set>
 
 	<h3>Removable</h3>
-	<vwc-chip-set>
+	<vwc-chip-set id="chipSetB" @MDCChip:removal="${handleRemoval}">
 		<vwc-chip label="Chip One" removable></vwc-chip>
 		<vwc-chip label="Chip Two" removable></vwc-chip>
 		<vwc-chip label="Chip Three" removable></vwc-chip>
 	</vwc-chip-set>
 `;
+
+function handleRemoval(e) {
+	let payload = {
+		type: 'MDCChip:removal',
+		detail: {
+			chipId: e.detail.chipId
+		}
+	}
+
+	console.log('chipSetB.chips method', chipSetB.chips);
+	console.log('MDCChip:removal event', payload);
+}

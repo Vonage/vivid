@@ -12,6 +12,7 @@ This component is an extension of [<mwc-checkbox>](https://github.com/material-c
 | `indeterminate`           |           | `boolean`                                 |                                                  |
 | `isRippleActive`          | readonly  | `boolean`                                 |                                                  |
 | `lineRippleFoundation`    |           | `MDCLineRippleFoundation \| undefined`    |                                                  |
+| `reducedTouchTarget`      |           | `boolean`                                 |                                                  |
 | `ripple`                  |           | `Promise<Ripple \| null>`                 | Implement ripple getter for Ripple integration with mwc-formfield |
 | `value`                   |           | `string`                                  |                                                  |
 

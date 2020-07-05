@@ -20,6 +20,7 @@ This component is an extension of [<mwc-radio>](https://github.com/material-comp
 | Method         | Type                    |
 |----------------|-------------------------|
 | `click`        | `(): void`              |
+| `focus`        | `(): void`              |
 | `focusNative`  | `(): void`              |
 | `setAriaLabel` | `(label: string): void` |
 

@@ -7,12 +7,12 @@ This component is an extension of [<mwc-textarea>](https://github.com/material-c
 | Property                  | Modifiers | Type                                             | Description                                      |
 |---------------------------|-----------|--------------------------------------------------|--------------------------------------------------|
 | `autoValidate`            |           | `boolean`                                        |                                                  |
-| `charCounter`             |           | `boolean`                                        |                                                  |
+| `autocapitalize`          |           | `string`                                         |                                                  |
+| `charCounter`             |           | `boolean \| "external" \| "internal"`            |                                                  |
 | `cols`                    |           | `number`                                         |                                                  |
 | `disabled`                |           | `boolean`                                        |                                                  |
 | `endAligned`              |           | `boolean`                                        |                                                  |
 | `floatingLabelFoundation` |           | `MDCFloatingLabelFoundation \| undefined`        |                                                  |
-| `fullWidth`               |           | `boolean`                                        |                                                  |
 | `helper`                  |           | `string`                                         |                                                  |
 | `helperPersistent`        |           | `boolean`                                        |                                                  |
 | `icon`                    |           | `string`                                         |                                                  |
@@ -24,6 +24,7 @@ This component is an extension of [<mwc-textarea>](https://github.com/material-c
 | `maxLength`               |           | `number`                                         |                                                  |
 | `min`                     |           | `string \| number`                               |                                                  |
 | `minLength`               |           | `number`                                         |                                                  |
+| `name`                    |           | `string`                                         |                                                  |
 | `outlined`                |           | `boolean`                                        |                                                  |
 | `pattern`                 |           | `string`                                         |                                                  |
 | `placeholder`             |           | `string`                                         |                                                  |

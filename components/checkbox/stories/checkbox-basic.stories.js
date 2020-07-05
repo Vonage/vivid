@@ -1,25 +1,38 @@
 import '@vonage/vwc-checkbox/vwc-checkbox.js';
+import '@vonage/vwc-formfield/vwc-formfield.js';
 import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Atomic/Checkbox',
+	title: 'Atoms/Checkbox',
 	component: 'vwc-checkbox',
 	decorators: [withA11y]
 }
 
 export const basic = () => html`
 	<h3>Regular</h3>
-	<vwc-checkbox></vwc-checkbox>
+	<vwc-formfield label="Use email">
+		<vwc-checkbox></vwc-checkbox>
+	</vwc-formfield>
 
 	<h3>Checked</h3>
-	<vwc-checkbox checked></vwc-checkbox>
+	<vwc-formfield label="SMS auth enabled">
+		<vwc-checkbox checked></vwc-checkbox>
+	</vwc-formfield>
 
 	<h3>Indeterminate</h3>
-	<vwc-checkbox indeterminate></vwc-checkbox>
+	<vwc-formfield label="Phone number publicly visible">
+		<vwc-checkbox indeterminate></vwc-checkbox>
+	</vwc-formfield>
 
 	<h3>Disabled</h3>
-	<vwc-checkbox disabled></vwc-checkbox>
-	<vwc-checkbox disabled checked></vwc-checkbox>
-	<vwc-checkbox disabled indeterminate></vwc-checkbox>
+	<vwc-formfield label="London">
+		<vwc-checkbox disabled></vwc-checkbox>
+	</vwc-formfield>
+	<vwc-formfield label="Moscow">
+		<vwc-checkbox disabled checked></vwc-checkbox>
+	</vwc-formfield>
+	<vwc-formfield label="Tel Aviv">
+		<vwc-checkbox disabled indeterminate></vwc-checkbox>
+	</vwc-formfield>
 `;

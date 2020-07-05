@@ -75,20 +75,33 @@ export class ChipBase extends BaseElement {
 	protected createAdapter(): MDCChipAdapter {
 		return {
 			...addHasRemoveClass(this.mdcRoot),
-			getAttribute: (attrName: string) => {
-				return this.mdcRoot.getAttribute(attrName);
-			},
 			addClassToLeadingIcon: (className: string) => {
 				if (this.leadingIconElement) {
 					this.leadingIconElement.classList.add(className);
 				}
 			},
-			removeClassFromLeadingIcon: (className) => {
-				if (this.leadingIconElement) {
-					this.leadingIconElement.classList.remove(className);
+			eventTargetHasClass: (target: HTMLElement, className: string) => target ? (target as Element).classList.contains(className) : false,
+			focusPrimaryAction: () => {
+				if (this.primaryActionElement) {
+					this.primaryActionElement.focus();
 				}
 			},
-			eventTargetHasClass: (target, className) => target ? (target as Element).classList.contains(className) : false,
+			focusTrailingAction: () => {
+				if (this.trailingActionElement) {
+					this.trailingActionElement.focus();
+				}
+			},
+			getAttribute: (attrName: string) => {
+				return this.mdcRoot.getAttribute(attrName);
+			},
+			getCheckmarkBoundingClientRect: () => this.checkmarkElement && this.checkmarkElement.getBoundingClientRect(),
+			getComputedStyleValue: (propertyName) => getComputedStyle(this.mdcRoot).getPropertyValue(propertyName),
+			getRootBoundingClientRect: () => this.mdcRoot.getBoundingClientRect(),
+			hasLeadingIcon: () => !!this.leadingIconElement,
+			isRTL: () => getComputedStyle(this.mdcRoot).getPropertyValue('direction') === 'rtl',
+			isTrailingActionNavigable: () => {
+				return this.trailingActionElement && (this.trailingActionElement as any).isNavigable();
+			},
 			notifyInteraction: () => {
 				const detail: MDCChipInteractionEventDetail = { chipId: this.id };
 				this.dispatchEvent(new CustomEvent(MDCChipFoundation.strings.INTERACTION_EVENT, {
@@ -97,6 +110,15 @@ export class ChipBase extends BaseElement {
 					composed: true
 				}));
 			},
+			notifyNavigation: (key, source) => {
+				const detail: MDCChipNavigationEventDetail = { chipId: this.id, key, source };
+				this.dispatchEvent(new CustomEvent(MDCChipFoundation.strings.NAVIGATION_EVENT, {
+					detail,
+					bubbles: true,
+					composed: true
+				}));
+			},
+			notifyRemoval: () => this.dispatchRemovalEvent(),
 			notifySelection: (selected, shouldIgnore) => {
 				const detail: MDCChipSelectionEventDetail = { chipId: this.id, selected, shouldIgnore };
 				this.dispatchEvent(new CustomEvent(MDCChipFoundation.strings.SELECTION_EVENT, {
@@ -113,43 +135,24 @@ export class ChipBase extends BaseElement {
 					composed: true
 				}));
 			},
-			notifyRemoval: () => this.dispatchRemovalEvent(),
-			notifyNavigation: (key, source) => {
-				const detail: MDCChipNavigationEventDetail = { chipId: this.id, key, source };
-				this.dispatchEvent(new CustomEvent(MDCChipFoundation.strings.NAVIGATION_EVENT, {
-					detail,
-					bubbles: true,
-					composed: true
-				}));
+			notifyEditStart: () => { },
+			notifyEditFinish: () => { },
+			removeClassFromLeadingIcon: (className: string) => {
+				if (this.leadingIconElement) {
+					this.leadingIconElement.classList.remove(className);
+				}
 			},
-			getComputedStyleValue: (propertyName) => getComputedStyle(this.mdcRoot).getPropertyValue(propertyName),
-			setStyleProperty: (propertyName, value) => this.mdcRoot.style.setProperty(propertyName, value),
-			hasLeadingIcon: () => !!this.leadingIconElement,
-			getRootBoundingClientRect: () => this.mdcRoot.getBoundingClientRect(),
-			getCheckmarkBoundingClientRect: () => this.checkmarkElement && this.checkmarkElement.getBoundingClientRect(),
-			setPrimaryActionAttr: (attr, value) => {
+			removeTrailingActionFocus: () => {
+				if (this.trailingActionElement) {
+					(this.trailingActionElement as any).removeFocus();
+				}
+			},
+			setPrimaryActionAttr: (attr: string, value: string) => {
 				if (this.primaryActionElement) {
 					this.primaryActionElement.setAttribute(attr, value);
 				}
 			},
-			focusPrimaryAction: () => {
-				if (this.primaryActionElement) {
-					this.primaryActionElement.focus();
-				}
-			},
-			hasTrailingAction: () => !!this.trailingActionElement,
-			setTrailingActionAttr: (attr, value) => {
-				if (this.trailingActionElement) {
-					this.trailingActionElement.setAttribute(attr, value);
-				}
-			},
-			focusTrailingAction: () => {
-				if (this.trailingActionElement) {
-					this.trailingActionElement.focus();
-				}
-			},
-			isRTL: () => getComputedStyle(this.mdcRoot).getPropertyValue('direction') === 'rtl',
-
+			setStyleProperty: (propertyName, value) => this.mdcRoot.style.setProperty(propertyName, value),
 		};
 	}
 
@@ -269,20 +272,19 @@ export class ChipBase extends BaseElement {
 		}));
 	}
 
-	private handleInteraction(e: MouseEvent | KeyboardEvent) {
-		this.mdcFoundation.handleInteraction(e);
+	private handleInteraction(_e: MouseEvent | KeyboardEvent) {
+		this.mdcFoundation.handleClick();
 	}
 
 	private handleTransitionEnd(e: TransitionEvent) {
 		this.mdcFoundation.handleTransitionEnd(e);
 	}
 
-	private handleTrailingIconInteraction(e: MouseEvent | KeyboardEvent) {
-		this.mdcFoundation.handleTrailingIconInteraction(e);
+	private handleTrailingIconInteraction(_e: MouseEvent | KeyboardEvent) {
+		this.mdcFoundation.handleTrailingActionInteraction();
 	}
 
 	private handleKeydown(e: KeyboardEvent) {
-		this.handleInteraction(e);
 		this.mdcFoundation.handleKeydown(e);
 	}
 }

@@ -1,10 +1,10 @@
 name: Compile & Test
 
 on:
-  push:
-    branches-ignore:
-      - develop
+  pull_request:
+    branches:
       - master
+      - develop
 
 jobs:
   compile-and-test:

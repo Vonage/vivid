@@ -33,9 +33,9 @@
     { "path": "common/scheme" },
 		{	"path": "common/fonts" },
     { "path": "common/core" },
-    { "path": "components/anchor" },
     { "path": "components/app" },
     { "path": "components/button" },
+    { "path": "components/carousel" },
     { "path": "components/checkbox" },
     { "path": "components/chips" },
     { "path": "components/mwc-chips" },
@@ -52,6 +52,7 @@
 		{ "path": "components/slider" },
     { "path": "components/switch" },
     { "path": "components/textarea" },
-    { "path": "components/textfield" }
+    { "path": "components/textfield" },
+    { "path": "components/relative-time" }
   ]
 }
