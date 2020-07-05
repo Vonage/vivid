@@ -38,18 +38,17 @@ We can't promise that everything will be fixed as we are opinionated people as w
 
 #### Getting up and running
 
-* Ask to be added to the Vonage github organization (if you are already there, skip this part) from a `onestack` member
+* Ask to be added to the Vonage github organization (if you are already there, skip this part) from `githubowners@vonage.com` or fill i [this form](https://jira.vonage.com/servicedesk/customer/portal/16/create/96).
+* Ask access to the `vivid` repo from a `onestack` member
 * Authentication - you can choose one of the following:
     * Generate a token in github [Click here to see how](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)
-    * Setup SSH - [This documentation](https://help.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account) makes it a breeze.
 * clone the repository
 	* `git clone https://github.com/Vonage/vivid.git`
-	* If you did not setup SSH:
-	    * When asked for username enter the token you have created
-	    * When asked for password, leave blank
-	    * If you are not asked for credentials, [read this](https://docs.github.com/en/github/using-git/updating-credentials-from-the-osx-keychain)
-        * Set the project's token so you would not need to add it manually every time:
-            * [Read this](https://docs.github.com/en/github/using-git/updating-credentials-from-the-osx-keychain)
+    * When asked for username enter the token you have created
+    * When asked for password, leave blank
+    * If you are not asked for credentials, [read this](https://docs.github.com/en/github/using-git/updating-credentials-from-the-osx-keychain)
+    * Set the project's token so you would not need to add it manually every time:
+        * [Read this](https://docs.github.com/en/github/using-git/updating-credentials-from-the-osx-keychain)
 * run `yarn` in order to build the repo once / bring the dependencies
 * run the following steps as the normal build-and-see flow:
 	* `yarn compile` - builds `css` from `scss`, compiles `ts` into `js`
@@ -74,7 +73,7 @@ But even before you code hits the CI you can run some preliminary checks locally
 
 #### All good, let's deliver
 
-When you happy with what you've done, push your branch to your fork and open a PR back to the `develop` branch.
+When you happy with what you've done, push your branch to and open a PR back to the `develop` branch.
 You may specify a reviewer if relevant.
 
 ## CI/CD and workflow
