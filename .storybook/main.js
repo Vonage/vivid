@@ -1,7 +1,7 @@
 module.exports = {
 	stories: [
-		'../components/**/stories/*.stories.js',
-		'../common/**/stories/*.stories.js'
+		'../common/**/stories/*.stories.js',
+		'../components/**/stories/*.stories.js'
 	],
 	addons: [
 		'@storybook/addon-a11y',
