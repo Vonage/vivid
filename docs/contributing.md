@@ -39,7 +39,7 @@ We can't promise that everything will be fixed as we are opinionated people as w
 #### Getting up and running
 
 * Ask to be added to the Vonage github organization (if you are already there, skip this part)
-* If you did not already, generate a token in github
+* If you did not already, generate a token in github [Click here to see how](./tokens.md)
 * clone the repo
 	* see note below about the SSH keys
 * run `yarn` in order to build the repo once / bring the dependencies
