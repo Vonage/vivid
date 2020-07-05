@@ -38,10 +38,18 @@ We can't promise that everything will be fixed as we are opinionated people as w
 
 #### Getting up and running
 
-* Ask to be added to the Vonage github organization (if you are already there, skip this part)
-* If you did not already, generate a token in github [Click here to see how](./tokens.md)
-* clone the repo
-	* see note below about the SSH keys
+* Ask to be added to the Vonage github organization (if you are already there, skip this part) from a `onestack` member
+* Authentication - you can choose one of the following:
+    * Generate a token in github [Click here to see how](./tokens.md)
+    * Setup SSH - [This documentation](https://help.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account) makes it a breeze.
+* clone the repository
+	* `git clone https://github.com/Vonage/vivid.git`
+	* If you did not setup SSH:
+	    * When asked for username enter the token you have created
+	    * When asked for password, leave blank
+	    * If you are not asked for credentials, [read this](https://docs.github.com/en/github/using-git/updating-credentials-from-the-osx-keychain)
+        * Set the project's token so you would not need to add it manually every time:
+            * [Read this](https://docs.github.com/en/github/using-git/updating-credentials-from-the-osx-keychain)
 * run `yarn` in order to build the repo once / bring the dependencies
 * run the following steps as the normal build-and-see flow:
 	* `yarn compile` - builds `css` from `scss`, compiles `ts` into `js`
@@ -66,16 +74,8 @@ But even before you code hits the CI you can run some preliminary checks locally
 
 #### All good, let's deliver
 
-When you happy with what you've done, please open a PR back to the `develop` branch.
-You may specify reviewer if relevant.
-
-Done! Well, there probably will be some exchange of comments and fixes, but eventually your PR will be merged into the `develop` branch, which will eventually be taken to release branch and finally pushed to production.
-
----
-
-> Git usage note: in order to be able to push you code into the repo you need to have/setup an SSH keys. [This documentation](https://help.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account) makes it a breeze.
-
----
+When you happy with what you've done, push your branch to your fork and open a PR back to the `develop` branch.
+You may specify a reviewer if relevant.
 
 ## CI/CD and workflow
 
