@@ -26,7 +26,7 @@ If yet nothing found, create a new feature request / issue. Of course, everyone 
 
 Once the action items lands on our table, we'll contact you, do an initial triage of the requirements and the functional spec and some high level archiectural design review.
 
-> Important! We do ask to follow this process even if the one whp is going to implement the feature is the reporter.
+> Important! We do ask to follow this process even if the one who is going to implement the feature is the reporter.
 
 ### Coding time
 
@@ -38,6 +38,8 @@ We can't promise that everything will be fixed as we are opinionated people as w
 
 #### Getting up and running
 
+* Ask to be added to the Vonage github organization (if you are already there, skip this part)
+* If you did not already, generate a token in github
 * clone the repo
 	* see note below about the SSH keys
 * run `yarn` in order to build the repo once / bring the dependencies
