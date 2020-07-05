@@ -40,7 +40,7 @@ We can't promise that everything will be fixed as we are opinionated people as w
 
 * Ask to be added to the Vonage github organization (if you are already there, skip this part) from a `onestack` member
 * Authentication - you can choose one of the following:
-    * Generate a token in github [Click here to see how](./tokens.md)
+    * Generate a token in github [Click here to see how](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)
     * Setup SSH - [This documentation](https://help.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account) makes it a breeze.
 * clone the repository
 	* `git clone https://github.com/Vonage/vivid.git`
