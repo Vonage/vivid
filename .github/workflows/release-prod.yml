@@ -48,3 +48,11 @@ jobs:
           SLACK_USERNAME: Vivid CI
           SLACK_TITLE: Vivid Release Notice
           SLACK_MESSAGE: Hey!!! We've just released a new version!!!
+
+      - name: Update downstream ('develop')
+        run: >
+          git config user.email "vivid.ci@vonage.com" && git config user.name "Vivid CI" &&
+          git fetch origin &&
+          git checkout develop &&
+          git merge origin/master --allow-unrelated-histories &&
+          git push
