@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/relative-time",
-	"version": "0.0.18",
+	"version": "0.0.20",
 	"description": "A web component for displaying a timestamp relative to the current time",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/relative-time#readme",
 	"license": "ISC",
