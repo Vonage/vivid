@@ -122,8 +122,8 @@ export class VWCCarousel extends LitElement {
 		return html`
 			<div class="upper-pane">
 				<div class="swiper-nav swiper-button-prev">
-					<svg class="icon" viewBox="0 0 32 32">
-						<path style="fill:none;stroke:currentColor;stroke-width:4px" d="M22 4 10 16 22 28"/>
+					<svg class="icon" viewBox="0 0 24 24">
+						<path d="M14.5 4.5L8.5 12L14.5 19.5"/>
 					</svg>
 				</div>
 				<div class="swiper-container">
@@ -132,8 +132,8 @@ export class VWCCarousel extends LitElement {
 					</div>
 				</div>
 				<div class="swiper-nav swiper-button-next">
-					<svg class="icon" viewBox="0 0 32 32">
-  					<path style="fill:none;stroke:currentColor;stroke-width:4px" d="M10 4 22 16 10 28"/>
+					<svg class="icon" viewBox="0 0 24 24">
+						<path d="M9.5 4.5L15.5 12L9.5 19.5"/>
 					</svg>
 				</div>
 			</div>

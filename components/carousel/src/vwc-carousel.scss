@@ -51,8 +51,13 @@ vwc-casousel:active {
 }
 
 .swiper-nav > .icon {
-	width: 1em;
+	width: 1.2em;
 	height: auto;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 3;
+	stroke-linecap: round;
+	stroke-linejoin: round;
 }
 
 .swiper-nav:hover {
