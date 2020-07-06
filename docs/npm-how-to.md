@@ -18,9 +18,7 @@ always-auth=true
 
 ; Vonage (GitHub packages)
 registry = https://npm.pkg.github.com/Vonage
-_auth = ${GITHUB_ACCESS_TOKEN}
-email = ${USER}@vonage.com
-
+_authToken = ${GITHUB_ACCESS_TOKEN}
 ```
 
 > Developers must set `GITHUB_ACCESS_TOKEN` environment variable and be aware of access token configuration. See [Adjusting your GitHub personal access token](#adjusting-your-github-personal-access-token) below.
