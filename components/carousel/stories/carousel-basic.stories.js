@@ -24,14 +24,14 @@ export const basic = () => html`
 		}
 	</style>
 
-	<vwc-carousel class="carousel">
+	<vwc-carousel class="carousel" autoplay="false">
 		<vwc-carousel-item>
-			<img class="image" src="https://source.unsplash.com/IUPiWRNKNm8" alt="slide 1"/>
-		</vwc-carousel-item>
-		<vwc-carousel-item>
-			<div class="item text" style="padding:24px;background-color:lightblue;width:100%;">
+			<div class="item text" style="padding:24px;background-color:lightblue;width:100%;" @click="${onClick}">
 				Some textual explanation of what's going on here...
 			</div>
+		</vwc-carousel-item>
+		<vwc-carousel-item>
+			<img class="image" src="https://source.unsplash.com/IUPiWRNKNm8" alt="slide 1"/>
 		</vwc-carousel-item>
 		<vwc-carousel-item>
 			<img class="image" src="https://source.unsplash.com/q_M6B9_cajM" alt="slide 2"/>
@@ -44,3 +44,7 @@ export const basic = () => html`
 		</vwc-carousel-item>
 	</vwc-carousel>
 `;
+
+function onClick() {
+	console.log('something');
+}

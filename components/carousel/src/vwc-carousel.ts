@@ -45,18 +45,30 @@ export class VWCCarousel extends LitElement {
 	@query('.swiper-pagination')
 	private swiperPagination?: HTMLElement;
 
+	private swiper?: Swiper;
+
+	private nativeSlideNext?: (speed?: number, runCallbacks?: boolean) => void;
+
+	private nativeSlidePrev?: (speed?: number, runCallbacks?: boolean) => void;
+
 	firstUpdated(): void {
-		const swiper = new Swiper(this.swiperContainer as HTMLElement, this.swiperOptions);
+		this.swiper = new Swiper(this.swiperContainer as HTMLElement, this.swiperOptions);
+		this.nativeSlideNext = this.swiper.slideNext;
+		this.nativeSlidePrev = this.swiper.slidePrev;
+		this.swiper.slideNext = this.slideNext.bind(this);
+		this.swiper.slidePrev = this.slidePrev.bind(this);
 		this.addEventListener('mouseenter', () => {
 			if (this.autoplay) {
-				swiper.autoplay?.stop();
+				this.swiper?.autoplay?.stop();
 			}
 		});
 		this.addEventListener('mouseleave', () => {
 			if (this.autoplay) {
-				swiper.autoplay?.start();
+				this.swiper?.autoplay?.start();
 			}
 		});
+		this.swiper.allowSlideNext = true;
+		this.swiper.allowSlidePrev = true;
 	}
 
 	protected createRenderRoot(): HTMLElement {
@@ -85,10 +97,21 @@ export class VWCCarousel extends LitElement {
 		});
 	}
 
+	private slideNext() {
+		if (this.nativeSlideNext) {
+			this.nativeSlideNext.call(this.swiper);
+		}
+	}
+
+	private slidePrev() {
+		if (this.nativeSlidePrev) {
+			this.nativeSlidePrev.call(this.swiper);
+		}
+	}
+
 	private get swiperOptions(): SwiperOptions {
 		return {
-			loop: true,
-
+			loop: false,
 			autoplay: this.autoplay ? {
 				delay: 2500,
 				disableOnInteraction: true,
