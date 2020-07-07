@@ -100,12 +100,26 @@ export class VWCCarousel extends LitElement {
 	private slideNext() {
 		if (this.nativeSlideNext) {
 			this.nativeSlideNext.call(this.swiper);
+			setTimeout(() => {
+				if (this.swiper?.isEnd) {
+					const first = this.swiper?.slides[0];
+					this.swiper?.removeSlide(0);
+					this.swiper.appendSlide(first);
+				}
+			}, 500);
 		}
 	}
 
 	private slidePrev() {
 		if (this.nativeSlidePrev) {
 			this.nativeSlidePrev.call(this.swiper);
+			setTimeout(() => {
+				if (this.swiper?.isBeginning) {
+					const last = this.swiper?.slides[this.swiper?.slides.length - 1];
+					this.swiper?.removeSlide(this.swiper?.slides.length - 1);
+					this.swiper.prependSlide(last);
+				}
+			}, 500);
 		}
 	}
 

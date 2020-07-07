@@ -24,7 +24,7 @@ export const basic = () => html`
 		}
 	</style>
 
-	<vwc-carousel class="carousel" autoplay="false">
+	<vwc-carousel class="carousel">
 		<vwc-carousel-item>
 			<div class="item text" style="padding:24px;background-color:lightblue;width:100%;" @click="${onClick}">
 				Some textual explanation of what's going on here...
@@ -47,4 +47,45 @@ export const basic = () => html`
 
 function onClick() {
 	console.log('something');
+}
+
+export const events = () => html`
+	<style>
+		.carousel {
+			width: 60%;
+			height: 200px;
+			max-width: 800px;
+			margin: 0;
+		}
+	</style>
+
+	<vwc-carousel class="carousel" autoplay="false">
+		<vwc-carousel-item>
+			<div class="item text" style="padding:24px;background-color:lightblue;width:100%;" @click="${onClick1}">
+				Slide 1
+			</div>
+		</vwc-carousel-item>
+		<vwc-carousel-item>
+			<div class="item text" style="padding:24px;background-color:lightblue;width:100%;" @click="${onClick2}">
+				Slide 2
+			</div>
+		</vwc-carousel-item>
+		<vwc-carousel-item>
+			<div class="item text" style="padding:24px;background-color:lightblue;width:100%;" @click="${onClick3}">
+				Slide 3
+			</div>
+		</vwc-carousel-item>
+	</vwc-carousel>
+`;
+
+function onClick1() {
+	console.log('Click 1');
+}
+
+function onClick2() {
+	console.log('Click 2');
+}
+
+function onClick3() {
+	console.log('Click 3');
 }
