@@ -47,16 +47,8 @@ export class VWCCarousel extends LitElement {
 
 	private swiper?: Swiper;
 
-	private nativeSlideNext?: (speed?: number, runCallbacks?: boolean) => void;
-
-	private nativeSlidePrev?: (speed?: number, runCallbacks?: boolean) => void;
-
 	firstUpdated(): void {
 		this.swiper = new Swiper(this.swiperContainer as HTMLElement, this.swiperOptions);
-		this.nativeSlideNext = this.swiper.slideNext;
-		this.nativeSlidePrev = this.swiper.slidePrev;
-		this.swiper.slideNext = this.slideNext.bind(this);
-		this.swiper.slidePrev = this.slidePrev.bind(this);
 		this.addEventListener('mouseenter', () => {
 			if (this.autoplay) {
 				this.swiper?.autoplay?.stop();
@@ -97,29 +89,19 @@ export class VWCCarousel extends LitElement {
 		});
 	}
 
-	private slideNext() {
-		if (this.nativeSlideNext) {
-			this.nativeSlideNext.call(this.swiper);
-			setTimeout(() => {
-				if (this.swiper?.isEnd) {
-					const first = this.swiper?.slides[0];
-					this.swiper?.removeSlide(0);
-					this.swiper.appendSlide(first);
-				}
-			}, 500);
+	private postSlideToNext(): void {
+		if (this.swiper && this.swiper.isEnd) {
+			const first = this.swiper.slides[0];
+			this.swiper.removeSlide(0);
+			this.swiper.appendSlide(first);
 		}
 	}
 
-	private slidePrev() {
-		if (this.nativeSlidePrev) {
-			this.nativeSlidePrev.call(this.swiper);
-			setTimeout(() => {
-				if (this.swiper?.isBeginning) {
-					const last = this.swiper?.slides[this.swiper?.slides.length - 1];
-					this.swiper?.removeSlide(this.swiper?.slides.length - 1);
-					this.swiper.prependSlide(last);
-				}
-			}, 500);
+	private postSlideToPrev(): void {
+		if (this.swiper && this.swiper.isBeginning) {
+			const last = this.swiper.slides[this.swiper.slides.length - 1];
+			this.swiper.removeSlide(this.swiper.slides.length - 1);
+			this.swiper.prependSlide(last);
 		}
 	}
 
@@ -139,12 +121,16 @@ export class VWCCarousel extends LitElement {
 			pagination: {
 				el: this.swiperPagination as HTMLElement,
 				clickable: true,
-				renderBullet: function (_index: number, className: string) {
+				renderBullet: (_index: number, className: string) => {
 					return `<span class="${className}"></span>`;
 				},
 			},
 			mousewheel: true,
 			keyboard: true,
+			on: {
+				slideNextTransitionEnd: this.postSlideToNext.bind(this),
+				slidePrevTransitionEnd: this.postSlideToPrev.bind(this)
+			}
 		};
 	}
 
