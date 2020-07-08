@@ -24,6 +24,8 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
+      - name: Generate readme docs
+        run: yarn wca:readme
+
       - name: Ensure all committed
-        run: >
-          git status --untracked-files=no --porcelain
+        run: sh ./sripts/ensure-all-committed.sh
