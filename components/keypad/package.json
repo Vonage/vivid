@@ -1,70 +1,34 @@
 {
-  "name": "vwc-keypad",
+  "name": "@vonage/vwc-keypad",
   "version": "0.0.0",
   "description": "Web Component vwc-keypad following open-wc recommendations for Vonage Vivid",
   "author": "Dwane <Dwane.Hemmings@vonage.com>",
-  "license": "MIT",
-  "main": "index.js",
-  "module": "index.js",
-  "scripts": {
-    "start": "concurrently --kill-others --names tsc,es-dev-server \"npm run tsc:watch\" \"es-dev-server --app-index demo/index.html --node-resolve --open --watch\"",
-    "tsc:watch": "tsc --watch",
-    "lint:eslint": "eslint --ext .ts,.html . --ignore-path .gitignore",
-    "format:eslint": "eslint --ext .ts,.html . --fix --ignore-path .gitignore",
-    "lint:prettier": "prettier \"**/*.js\" \"**/*.ts\" --check --ignore-path .gitignore",
-    "format:prettier": "prettier \"**/*.js\" \"**/*.ts\" --write --ignore-path .gitignore",
-    "lint": "npm run lint:eslint && npm run lint:prettier",
-    "format": "npm run format:eslint && npm run format:prettier",
-    "test": "tsc && karma start --coverage",
-    "test:watch": "concurrently --kill-others --names tsc,karma \"npm run tsc:watch\" \"karma start --auto-watch=true --single-run=false\"",
-    "storybook": "concurrently --kill-others --names tsc,storybook \"npm run tsc:watch\" \"start-storybook --node-resolve --watch --open\"",
-    "storybook:build": "build-storybook"
-  },
-  "dependencies": {
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/keypad#readme",
+  "license": "ISC",
+  "main": "vwc-keypad.js",
+  "module": "vwc-keypad.js",
+	"files": [
+		"src",
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/vonage/vivid.git",
+		"directory": "components/keypad"
+	},
+	"scripts": {
+		"test": "echo \"Error: run tests from root\" && exit 1"
+	},
+	"bugs": {
+		"url": "https://github.com/Vonage/vivid/issues"
+	},
+	"dependencies": {
     "@vonage/vwc-button": "0.0.18",
     "@vonage/vwc-textfield": "0.0.18",
-    "@open-wc/testing": "^2.0.0",
-    "lit-element": "^2.2.1",
-    "lit-html": "^1.1.2"
-  },
-  "devDependencies": {
-    "@types/node": "13.11.1",
-    "es-dev-server": "^1.23.0",
-    "typescript": "~3.8.2",
-    "concurrently": "^5.1.0",
-    "tslib": "^1.11.0",
-    "eslint": "^6.1.0",
-    "@open-wc/eslint-config": "^2.0.0",
-    "@typescript-eslint/eslint-plugin": "^2.20.0",
-    "@typescript-eslint/parser": "^2.20.0",
-    "prettier": "^2.0.4",
-    "eslint-config-prettier": "^6.11.0",
-    "husky": "^1.0.0",
-    "lint-staged": "^8.0.0",
-    "@open-wc/testing-karma": "^3.0.0",
-    "deepmerge": "^3.2.0",
-    "@open-wc/demoing-storybook": "^2.0.0"
-  },
-  "eslintConfig": {
-    "extends": [
-      "@open-wc/eslint-config",
-      "eslint-config-prettier"
-    ]
-  },
-  "prettier": {
-    "singleQuote": true,
-    "arrowParens": "avoid"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.ts": [
-      "eslint --fix",
-      "prettier --write",
-      "git add"
-    ]
+		"@vonage/vvd-style-coupling": "^0.0.20",
+		"lit-element": "^2.3.1",
+		"tslib": "^2.0.0"
   }
 }
