@@ -1,65 +1,20 @@
-import { html, css, LitElement, property } from 'lit-element';
+import {html, LitElement, property, customElement} from 'lit-element';
 import '@vonage/vwc-button/vwc-button';
 import '@vonage/vwc-textfield/vwc-textfield';
+import { style as vwcKeypadStyle } from './vwc-keypad.css';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling';
 
-export class VwcKeypad extends LitElement {
-	static styles = css`
-		:host {
-			display: block;
-			padding: 25px;
-			color: var(--vwc-keypad-text-color, #000);
-		}
-		.large {
-			font-size: 200%;
-		}
+declare global {
+	interface HTMLElementTagNameMap {
+		'vwc-keypad': VWCKeypad;
+	}
+}
 
-		.span {
-			width: 4rem;
-			display: inline-block;
-			text-align: center;
-		}
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-ignore
 
-		.btn {
-			width: 64px;
-			height: 64px;
-			border: none;
-			border-radius: 10px;
-			background-color: seagreen;
-			color: white;
-			margin: 10px;
-			cursor: pointer;
-		}
-
-		.btn:disabled {
-			background-color: gray;
-		}
-
-		#container {
-			width: 75vw;
-			max-width: 300px;
-		}
-
-		.button-row {
-			display: flex;
-			justify-content: space-evenly;
-		}
-
-		.full-width {
-			width: 100%;
-		}
-
-		#hangup {
-			background-color: red;
-		}
-
-		vwc-button {
-			margin: 10px;
-		}
-
-		vwc-textfield {
-			width: 100%;
-		}
-	`;
+@customElement('vwc-keypad')
+export class VWCKeypad extends LitElement {
 
 	@property({ attribute: 'no-asterisk', type: Boolean }) noAsterisk = false;
 
@@ -225,3 +180,4 @@ export class VwcKeypad extends LitElement {
 		`;
 	}
 }
+VWCKeypad.styles = [styleCoupling, vwcKeypadStyle];
