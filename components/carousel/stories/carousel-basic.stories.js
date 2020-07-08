@@ -59,7 +59,7 @@ export const events = () => html`
 		}
 	</style>
 
-	<vwc-carousel class="carousel" autoplay="false">
+	<vwc-carousel class="carousel" autoplay="true">
 		<vwc-carousel-item>
 			<div class="item text" style="padding:24px;background-color:lightblue;width:100%;" @click="${onClick1}">
 				Slide 1

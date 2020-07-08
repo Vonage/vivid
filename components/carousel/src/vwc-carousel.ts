@@ -49,6 +49,7 @@ export class VWCCarousel extends LitElement {
 
 	firstUpdated(): void {
 		this.swiper = new Swiper(this.swiperContainer as HTMLElement, this.swiperOptions);
+		this.postInit();
 		this.addEventListener('mouseenter', () => {
 			if (this.autoplay) {
 				this.swiper?.autoplay?.stop();
@@ -59,8 +60,6 @@ export class VWCCarousel extends LitElement {
 				this.swiper?.autoplay?.start();
 			}
 		});
-		this.swiper.allowSlideNext = true;
-		this.swiper.allowSlidePrev = true;
 	}
 
 	protected createRenderRoot(): HTMLElement {
@@ -89,20 +88,28 @@ export class VWCCarousel extends LitElement {
 		});
 	}
 
-	private postSlideToNext(): void {
-		if (this.swiper && this.swiper.isEnd) {
-			const first = this.swiper.slides[0];
-			this.swiper.removeSlide(0);
-			this.swiper.appendSlide(first);
+	private postInit(): void {
+		this.postSlideToNext();
+		this.postSlideToPrev();
+		if (this.autoplay) {
+			this.swiper?.autoplay?.start();
 		}
 	}
 
+	private postSlideToNext(): void {
+		// if (this.swiper && this.swiper.slides.length > 2 && this.swiper.isEnd) {
+		// 	const first = this.swiper.slides[0];
+		// 	this.swiper.removeSlide(0);
+		// 	this.swiper.appendSlide(first);
+		// }
+	}
+
 	private postSlideToPrev(): void {
-		if (this.swiper && this.swiper.isBeginning) {
-			const last = this.swiper.slides[this.swiper.slides.length - 1];
-			this.swiper.removeSlide(this.swiper.slides.length - 1);
-			this.swiper.prependSlide(last);
-		}
+		// if (this.swiper && this.swiper.slides.length > 2 && this.swiper.isBeginning) {
+		// 	const last = this.swiper.slides[this.swiper.slides.length - 1];
+		// 	this.swiper.removeSlide(this.swiper.slides.length - 1);
+		// 	this.swiper.prependSlide(last);
+		// }
 	}
 
 	private get swiperOptions(): SwiperOptions {
@@ -121,8 +128,8 @@ export class VWCCarousel extends LitElement {
 			pagination: {
 				el: this.swiperPagination as HTMLElement,
 				clickable: true,
-				renderBullet: (_index: number, className: string) => {
-					return `<span class="${className}"></span>`;
+				renderBullet: (index: number, className: string) => {
+					return `<span class="${className}">${index}</span>`;
 				},
 			},
 			mousewheel: true,
