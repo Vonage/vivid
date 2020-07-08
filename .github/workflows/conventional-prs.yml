@@ -12,4 +12,4 @@ jobs:
 
     steps:
       - name: Lint Pull Request Title
-        uses: YonatanKra/simple-conventional-pr-title-gitaction@v1.1.1
+        uses: YonatanKra/simple-conventional-pr-title-gitaction@v1.1.2
