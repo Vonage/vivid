@@ -3,3 +3,7 @@
 ::slotted(vwc-chip) {
   margin: variables.$chip-set-gap-size;
 }
+
+::slotted([type="filter"]) {
+  cursor: pointer;
+}
