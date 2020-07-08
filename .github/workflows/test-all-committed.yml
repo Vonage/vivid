@@ -26,8 +26,4 @@ jobs:
 
       - name: Ensure all committed
         run: >
-          git config user.email "vivid.ci@vonage.com" && git config user.name "Vivid CI" &&
-          git fetch origin &&
-          git checkout develop &&
-          git merge origin/master --allow-unrelated-histories &&
-          git push
+          git status --untracked-files=no --porcelain
