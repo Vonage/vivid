@@ -28,4 +28,4 @@ jobs:
         run: yarn wca:readme
 
       - name: Ensure all committed
-        run: sh ./sripts/ensure-all-committed.sh
+        run: sh ./scripts/ensure-all-committed.sh
