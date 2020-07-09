@@ -21,7 +21,7 @@ describe('test vwc-carousel', () => {
 		assert.equal(actualElement.querySelectorAll('*').length, 11);
 	});
 
-	it('vwc-carousel with slides', async () => {
+	it('vwc-carousel with slides, autoplay = false', async () => {
 		await customElements.whenDefined(VWC_CAROUSEL);
 		const docFragContainer = htmlToDom(`
 			<${VWC_CAROUSEL} id="carousel-b" autoplay="false">
@@ -35,5 +35,27 @@ describe('test vwc-carousel', () => {
 		await waitNextTask();
 		assert.equal(document.querySelector('#carousel-b'), actualElement);
 		assert.equal(actualElement.querySelectorAll('*').length, 17);
+
+		//	ensure slide A is visible
+		const slideA = document.querySelector('#carousel-b-slide-a');
+		const slideABoundingRect = slideA.getBoundingClientRect();
+		const slidesViewportBoundingRect = slideA.parentNode.getBoundingClientRect();
+		console.info(slideABoundingRect.x, slideABoundingRect.y, slideABoundingRect.width, slideABoundingRect.height);
+		console.info(slidesViewportBoundingRect.x, slidesViewportBoundingRect.y, slidesViewportBoundingRect.width, slidesViewportBoundingRect.height);
+	});
+
+	it('vwc-carousel with slides, autoplay = true', async () => {
+		await customElements.whenDefined(VWC_CAROUSEL);
+		const docFragContainer = htmlToDom(`
+			<${VWC_CAROUSEL} id="carousel-c" autoplay="true">
+				<${VWC_CAROUSEL_ITEM} id="carousel-c-slide-a">Slide A</${VWC_CAROUSEL_ITEM}>
+				<${VWC_CAROUSEL_ITEM} id="carousel-c-slide-b">Slide B</${VWC_CAROUSEL_ITEM}>
+			</${VWC_CAROUSEL}>
+		`);
+		const actualElement = docFragContainer.firstElementChild;
+		document.body.appendChild(docFragContainer);
+		await waitNextTask();
+		assert.equal(document.querySelector('#carousel-c'), actualElement);
+		assert.equal(actualElement.querySelectorAll('*').length, 15);
 	});
 });
