@@ -1,34 +1,12 @@
 @use '@material/button';
 
-:host {
-  --vvd-button-disabled-fill-color: #e1e2e6;
-	--vvd-button-disabled-ink-color: #9b9da3;
-}
-
 .mdc-button {
-	@include button.height(40px);
+  @include button.height(40px);
 
   border-radius: 6px;
   font-weight: 600;
   letter-spacing: normal;
   text-transform: none;
-	transition: background-color 0.3s;
-
-	--mdc-theme-primary: var(--vvd-color-base-foreground);
-}
-
-.mdc-button--raised,
-.mdc-button--unelevated {
-  @include button.container-fill-color(var(--vvd-color-alternate-primary-background));
-  @include button.disabled-container-fill-color(var(--vvd-button-disabled-fill-color));
-  @include button.disabled-ink-color(var(--vvd-button-disabled-ink-color));
-
-	--mdc-theme-primary: var(--vvd-color-alternate-primary-foreground);
-}
-
-.mdc-button--outlined {
-	@include button.outline-color(var(--vvd-color-base-foreground));
-  @include button.disabled-outline-color(var(--vvd-button-disabled-ink-color));
 }
 
 .vwc-button--pill {
