@@ -37,8 +37,6 @@ export class VWCCarousel extends LitElement {
 	@query('.swiper-button-next')
 	private swiperButtonNext?: HTMLElement;
 
-	private something?: boolean;
-
 	@query('.swiper-button-prev')
 	private swiperButtonPrev?: HTMLElement;
 
@@ -52,9 +50,9 @@ export class VWCCarousel extends LitElement {
 	firstUpdated(): void {
 		this.swiper = new Swiper(this.swiperContainer as HTMLElement, this.swiperOptions);
 		this.collectSlideRefs(this.swiper);
-		this.postSlideToNext();
-		this.postSlideToPrev();
-		this.renderPagination(this.swiper);
+		this.moveFirstIfNeeded(this.swiper);
+		this.moveLastIfNeeded(this.swiper);
+		this.renderPagination();
 		this.updatePagination(this.swiper);
 		this.addEventListener('mouseenter', () => {
 			if (this.autoplay) {
@@ -67,14 +65,11 @@ export class VWCCarousel extends LitElement {
 			}
 		});
 		if (this.autoplay) {
-			this.swiper?.autoplay?.start();
+			this.swiper.autoplay?.start();
 		}
 	}
 
 	protected createRenderRoot(): HTMLElement {
-		if (this.something) {
-			return this;
-		}
 		return this;
 	}
 
@@ -103,37 +98,39 @@ export class VWCCarousel extends LitElement {
 		}
 	}
 
-	private postSlideToNext(): void {
-		if (this.swiper && this.swiper.slides.length > 2 && this.swiper.isEnd) {
-			const first = this.swiper.slides[0];
-			this.swiper.removeSlide(0);
-			this.swiper.appendSlide(first);
+	private moveFirstIfNeeded(swiper?: Swiper): void {
+		const s = swiper ?? (this as unknown as Swiper);
+		if (s.slides.length > 2 && s.isEnd) {
+			const first = s.slides[0];
+			s.removeSlide(0);
+			s.appendSlide(first);
 		}
 	}
 
-	private postSlideToPrev(): void {
-		if (this.swiper && this.swiper.slides.length > 2 && this.swiper.isBeginning) {
-			const last = this.swiper.slides[this.swiper.slides.length - 1];
-			this.swiper.removeSlide(this.swiper.slides.length - 1);
-			this.swiper.prependSlide(last);
+	private moveLastIfNeeded(swiper?: Swiper): void {
+		const s = swiper ?? (this as unknown as Swiper);
+		if (s.slides.length > 2 && s.isBeginning) {
+			const last = s.slides[s.slides.length - 1];
+			s.removeSlide(s.slides.length - 1);
+			s.prependSlide(last);
 		}
 	}
 
-	private renderPagination(_swiper: Swiper) {
+	private renderPagination() {
 		if (this.swiperPagination) {
 			const df = document.createDocumentFragment();
-			this.slideRefs.forEach(_slide => {
+			for (let i = 0, l = this.slideRefs.length; i < l; i++) {
 				const bullet = document.createElement('span');
 				bullet.classList.add('swiper-pagination-bullet');
 				bullet.addEventListener('click', this.goToSlide.bind(this));
 				df.appendChild(bullet);
-			});
+			}
 			this.swiperPagination.appendChild(df);
 		}
 	}
 
-	private updatePagination(swiper: Swiper): void {
-		if (this.swiperPagination) {
+	private updatePagination(swiper?: Swiper): void {
+		if (swiper && this.swiperPagination) {
 			const activeIndex = this.calculateActiveIndex(swiper);
 			Array.from(this.swiperPagination.children).forEach((bullet, index) => {
 				bullet.classList[index === activeIndex ? 'add' : 'remove']('swiper-pagination-bullet-active');
@@ -142,16 +139,14 @@ export class VWCCarousel extends LitElement {
 	}
 
 	private onSlideChange(): void {
-		if (this.swiper) {
-			this.updatePagination(this.swiper);
-		}
+		this.updatePagination(this.swiper);
 	}
 
 	private goToSlide(event: Event): void {
 		if (this.swiper && this.swiperPagination) {
 			const logicalIndex = Array.from(this.swiperPagination.children).indexOf(event.target as HTMLElement);
 			const domIndex = Array.from(this.swiper.wrapperEl.children).indexOf(this.slideRefs[logicalIndex]);
-			if (typeof domIndex === 'number') {
+			if (domIndex >= 0) {
 				this.swiper.slideTo(domIndex);
 			}
 		}
@@ -177,8 +172,8 @@ export class VWCCarousel extends LitElement {
 			mousewheel: true,
 			keyboard: true,
 			on: {
-				slideNextTransitionEnd: this.postSlideToNext.bind(this),
-				slidePrevTransitionEnd: this.postSlideToPrev.bind(this),
+				slideNextTransitionEnd: this.moveFirstIfNeeded,
+				slidePrevTransitionEnd: this.moveLastIfNeeded,
 				slideChange: this.onSlideChange.bind(this)
 			}
 		};
