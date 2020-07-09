@@ -36,29 +36,8 @@ describe('test vwc-carousel', () => {
 		assert.equal(document.querySelector('#carousel-b'), actualElement);
 		assert.equal(actualElement.querySelectorAll('*').length, 17);
 
-		//	ensure slide A is visible
-		const slideA = document.querySelector('#carousel-b-slide-a');
-		const slideABoundingRect = slideA.getBoundingClientRect();
-		const slidesViewportBoundingRect = slideA.parentNode.getBoundingClientRect();
-		assert.equal(slideABoundingRect.y, slidesViewportBoundingRect.y);
-		assert.equal(slideABoundingRect.width, slidesViewportBoundingRect.width);
-		assert.equal(slideABoundingRect.height, slidesViewportBoundingRect.height);
-		console.info(slideABoundingRect.x, slideABoundingRect.y, slideABoundingRect.width, slideABoundingRect.height);
-		console.info(slidesViewportBoundingRect.x, slidesViewportBoundingRect.y, slidesViewportBoundingRect.width, slidesViewportBoundingRect.height);
-
-		//	ensure slide B is not visible
-		const slideB = document.querySelector('#carousel-b-slide-b');
-		const slideBBoundingRect = slideB.getBoundingClientRect();
-		assert.equal(slideBBoundingRect.y, slidesViewportBoundingRect.y);
-		assert.equal(slideBBoundingRect.width, slidesViewportBoundingRect.width);
-		assert.equal(slideBBoundingRect.height, slidesViewportBoundingRect.height);
-
-		//	ensure slide C is not visible
-		const slideC = document.querySelector('#carousel-b-slide-c');
-		const slideCBoundingRect = slideC.getBoundingClientRect();
-		assert.equal(slideCBoundingRect.y, slidesViewportBoundingRect.y);
-		assert.equal(slideCBoundingRect.width, slidesViewportBoundingRect.width);
-		assert.equal(slideCBoundingRect.height, slidesViewportBoundingRect.height);
+		//	DOM pivot index is the actual index AFTER the slides adjustements, in this case 1, since last one is pushed before the first
+		assertSlidesStrip(document.querySelector('#carousel-b .swiper-wrapper'), 1)
 	});
 
 	it('vwc-carousel with slides, autoplay = true', async () => {
@@ -76,3 +55,17 @@ describe('test vwc-carousel', () => {
 		assert.equal(actualElement.querySelectorAll('*').length, 15);
 	});
 });
+
+function assertSlidesStrip(viewPort, domPivotIndex) {
+	const viewPortRect = viewPort.getBoundingClientRect();
+	for (let i = 0, l = viewPort.children.length; i < l; i++) {
+		const slideRect = viewPort.children[i].getBoundingClientRect();
+		assert.equal(slideRect.x, viewPortRect.x + i * viewPortRect.width);
+		assert.equal(slideRect.y, viewPortRect.y);
+		assert.equal(slideRect.width, viewPortRect.width);
+		assert.equal(slideRect.height, viewPortRect.height);
+		if (i === domPivotIndex) {
+			assert.equal(slideRect.x, viewPort.parentNode.previousElementSibling.offsetWidth);
+		}
+	}
+}
