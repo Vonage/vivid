@@ -18,7 +18,7 @@ It might also be helpful to read the following docs as well:
 
 ### Feature request
 
-When a team needs new service or component, we suggest first to see if anything similar is already available. [Packages](https://github.com/Vonage/vivid/packages) and [demo page](vivid.vonage.com) are the best places to start with.
+When a team needs new service or component, we suggest first to see if anything similar is already available. [Packages](https://github.com/Vonage/vivid/packages) and [demo site](https://vivid.vonage.com/) are the best places to start with.
 
 If nothing suitable found, please search the [issues](https://github.com/Vonage/vivid/issues) and [features](https://github.com/Vonage/vivid/projects), it is possible something is already in the pipe.
 

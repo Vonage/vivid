@@ -53,6 +53,6 @@ jobs:
         run: >
           git config user.email "vivid.ci@vonage.com" && git config user.name "Vivid CI" &&
           git fetch origin &&
-          get checkout develop &&
+          git checkout develop &&
           git merge origin/master --allow-unrelated-histories &&
           git push
