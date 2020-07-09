@@ -1,4 +1,4 @@
-import {html, LitElement, property, customElement, TemplateResult, CSSResult} from 'lit-element';
+import {html, LitElement, property, customElement, CSSResult, TemplateResult} from 'lit-element';
 import { style as vwcKeypadStyle } from './vwc-keypad.css';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import '@vonage/vwc-button/vwc-button';
