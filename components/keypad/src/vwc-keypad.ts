@@ -1,6 +1,6 @@
 import {html, LitElement, property, customElement, TemplateResult, CSSResult} from 'lit-element';
 import { style as vwcKeypadStyle } from './vwc-keypad.css';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 
 declare global {
 	interface HTMLElementTagNameMap {
