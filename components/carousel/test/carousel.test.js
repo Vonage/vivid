@@ -40,8 +40,25 @@ describe('test vwc-carousel', () => {
 		const slideA = document.querySelector('#carousel-b-slide-a');
 		const slideABoundingRect = slideA.getBoundingClientRect();
 		const slidesViewportBoundingRect = slideA.parentNode.getBoundingClientRect();
+		assert.equal(slideABoundingRect.y, slidesViewportBoundingRect.y);
+		assert.equal(slideABoundingRect.width, slidesViewportBoundingRect.width);
+		assert.equal(slideABoundingRect.height, slidesViewportBoundingRect.height);
 		console.info(slideABoundingRect.x, slideABoundingRect.y, slideABoundingRect.width, slideABoundingRect.height);
 		console.info(slidesViewportBoundingRect.x, slidesViewportBoundingRect.y, slidesViewportBoundingRect.width, slidesViewportBoundingRect.height);
+
+		//	ensure slide B is not visible
+		const slideB = document.querySelector('#carousel-b-slide-b');
+		const slideBBoundingRect = slideB.getBoundingClientRect();
+		assert.equal(slideBBoundingRect.y, slidesViewportBoundingRect.y);
+		assert.equal(slideBBoundingRect.width, slidesViewportBoundingRect.width);
+		assert.equal(slideBBoundingRect.height, slidesViewportBoundingRect.height);
+
+		//	ensure slide C is not visible
+		const slideC = document.querySelector('#carousel-b-slide-c');
+		const slideCBoundingRect = slideC.getBoundingClientRect();
+		assert.equal(slideCBoundingRect.y, slidesViewportBoundingRect.y);
+		assert.equal(slideCBoundingRect.width, slidesViewportBoundingRect.width);
+		assert.equal(slideCBoundingRect.height, slidesViewportBoundingRect.height);
 	});
 
 	it('vwc-carousel with slides, autoplay = true', async () => {
