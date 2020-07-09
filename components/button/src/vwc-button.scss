@@ -9,6 +9,10 @@
   text-transform: none;
 }
 
+:host([disabled]) .mdc-button.mdc-button--outlined {
+  border-color: var(--vvd-color-disabled-fill-color);
+}
+
 .vwc-button--pill {
 	border-radius: 40px;
 }
