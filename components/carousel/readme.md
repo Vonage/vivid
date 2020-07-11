@@ -18,5 +18,6 @@ This component is a carousel
 
 | Property                  | Type                                      |
 |---------------------------|-------------------------------------------|
+| `autoplay`                | `boolean`                                 |
 | `floatingLabelFoundation` | `MDCFloatingLabelFoundation \| undefined` |
 | `lineRippleFoundation`    | `MDCLineRippleFoundation \| undefined`    |

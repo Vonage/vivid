@@ -8,6 +8,7 @@
 	font-size: 0;
   background-color: var(--vvd-color-unchecked);
 	transition: transform 0.1s;
+	cursor: pointer;
 
 	&-active {
 			background-color: var(--vvd-color-base-foreground);
