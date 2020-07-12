@@ -13,7 +13,14 @@ export default class Home extends Element {
         <vwc-chip label="Chip Three"></vwc-chip>
         <vwc-chip label="Chip Four"></vwc-chip>
       </vwc-chip-set>
-
+    
+      <h3>Filter</h3>
+      <vwc-chip-set type="filter">
+        <vwc-chip label="1"></vwc-chip>
+        <vwc-chip label="2" icon="fingerprint"></vwc-chip>
+        <vwc-chip label="3" icon="language"></vwc-chip>
+      </vwc-chip-set>
+    
       <h3>Removable</h3>
       <vwc-chip-set>
         <vwc-chip label="Chip One" removable></vwc-chip>

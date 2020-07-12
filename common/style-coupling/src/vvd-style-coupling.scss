@@ -5,7 +5,7 @@
 	--vvd-color-base-foreground: #131415;
 	--vvd-color-surface-background: #ffffff;
 	--vvd-color-surface-foreground: #131415;
-	--vvd-color-primary-background: #871fff;
+	--vvd-color-primary-background: #131415;
 	--vvd-color-primary-foreground: #ffffff;
 	--vvd-color-secondary-background: #131415;
 	--vvd-color-secondary-foreground: #ffffff;
@@ -16,6 +16,9 @@
 	--vvd-color-checked: var(--vvd-color-base-foreground);
 	--vvd-color-unchecked: #c2c4cc;
 	--vvd-color-error: #e84545;
+	--vvd-color-idle: #ced0d7;
+	--vvd-color-disabled-fill-color: #ced0d7;
+	--vvd-color-disabled-ink-color: #74767a;
 }
 
 :host {
@@ -28,4 +31,6 @@
 	--mdc-theme-surface: var(--vvd-color-surface-background);
 	--mdc-theme-on-surface: var(--vvd-color-surface-foreground);
 	--mdc-theme-error: var(--vvd-color-error);
+	--mdc-button-disabled-fill-color: var(--vvd-color-disabled-fill-color);
+	--mdc-button-disabled-ink-color: var(--vvd-color-disabled-ink-color)
 }
