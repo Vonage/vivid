@@ -3,7 +3,7 @@ import { withA11y } from '@storybook/addon-a11y';
 import { withKnobs, number } from "@storybook/addon-knobs";
 
 export default {
-	title: 'Services/Fonts',
+	title: 'Core/Fonts',
 	decorators: [withA11y],
 	decorators: [withKnobs]
 }
@@ -72,27 +72,36 @@ export const basic = () => {
 			<span class="part text">Lorem ipsum...</span>
 		</div>
 
-		<h3>Usage example</h3>
-		<p>
-			Fonts are being fetched and 'installed' by the following API call flow:
-		</p>
-		<pre>
-			<code class="javascript">
-import fonts from 'vvd-fonts.js';
+		<h3>How to use</h3>
+		<ol>
+			<li>
+				<p>
+					Fonts are being fetched and 'installed' by the following API call flow:
+				</p>
+				<pre>
+					<code class="javascript">
+	import fonts from 'vvd-fonts.js';
 
-fonts.init().then(() => {});
-			</code>
-		</pre>
+	fonts.init().then(() => {});
+					</code>
+				</pre>
+				<p>
+					This code should run as part of an application initialization logic.
+				</p>
+			</li>
 
-		<p>
-			In your CSS part consume the fonts as following:
-			<pre>
-				<code class="css">
-body {
-	font-family: var(--vvd-font-family-spezia);
-}
-				</code>
-			</pre>
-		</p>
+			<li>
+				<p>
+					In your CSS part consume the fonts as following:
+					<pre>
+						<code class="css">
+	body {
+		font-family: var(--vvd-font-family-spezia);
+	}
+						</code>
+					</pre>
+				</p>
+			</li>
+		</ol>
 	`
 };
