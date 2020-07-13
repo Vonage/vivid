@@ -1,4 +1,4 @@
-import {html, LitElement, property, customElement, CSSResult, TemplateResult} from 'lit-element';
+import { html, LitElement, property, customElement, CSSResult, TemplateResult } from 'lit-element';
 import { style as vwcKeypadStyle } from './vwc-keypad.css';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import '@vonage/vwc-button/vwc-button';
@@ -68,8 +68,8 @@ export class VWCKeypad extends LitElement {
 		return html`
 			<div id="container">
 				${this.noDisplay
-					? ''
-					: html`<vwc-textfield
+				? ''
+				: html`<vwc-textfield
 							id="digits-display"
 							outlined
 							label="digits display"
@@ -137,8 +137,8 @@ export class VWCKeypad extends LitElement {
 				</div>
 				<div class="button-row">
 					${this.noAsterisk
-						? ''
-						: html`<vwc-button
+				? ''
+				: html`<vwc-button
 								id="asterisk-digit"
 								unelevated
 								@click=${() => this.addDigit('*')}
@@ -151,8 +151,8 @@ export class VWCKeypad extends LitElement {
 						>0</vwc-button
 					>
 					${this.noHash
-						? ''
-						: html`<vwc-button
+				? ''
+				: html`<vwc-button
 								id="hash-digit"
 								unelevated
 								@click=${() => this.addDigit('#')}
@@ -161,14 +161,14 @@ export class VWCKeypad extends LitElement {
 				</div>
 				<div class="button-row">
 					${this.actionStarted
-						? html`<vwc-button
+				? html`<vwc-button
 								id="cancel-button"
 								unelevated
 								fullwidth
 								@click=${this.endAction}
 								>${this.cancelText}</vwc-button
 						  >`
-						: html`<vwc-button
+				: html`<vwc-button
 								id="action-button"
 								unelevated
 								fullwidth

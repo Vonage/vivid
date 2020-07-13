@@ -6,7 +6,18 @@
 		"outDir": ".",
 		"tsBuildInfoFile": ".tsbuildinfo"
 	},
-	"include": ["src/*.ts"],
-	"exclude": ["src/test/*.ts"],
-	"references": []
+	"include": [
+		"src/*.ts"
+	],
+	"exclude": [
+		"src/test/*.ts"
+	],
+	"references": [
+		{
+			"path": "../button"
+		},
+		{
+			"path": "../textfield"
+		}
+	]
 }
