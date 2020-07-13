@@ -1,110 +1,47 @@
 :root {
-	--vvd-font: 'VonageMain';
+	--vvd-font-family-spezia: 'SpeziaWeb';
 }
 
 /*
-	regular
+	regular (regular width)
 */
 @font-face {
-	font-family: 'VonageMain';
-	src: url('./fonts/static/WorkSans-Regular.woff2') format('woff2');
+	font-family: 'SpeziaWeb';
+	src: url('./fonts/static/SpeziaWeb-Regular.woff2') format('woff2');
 	font-style: normal;
 	font-weight: 400;
 }
 
-@font-face {
-	font-family: 'VonageMain';
-	src: url('./fonts/static/WorkSans-RegularItalic.woff2') format('woff2');
-	font-style: italic;
-	font-weight: 400;
-}
-
 /*
-	light
+	medium (wide width)
 */
 @font-face {
-	font-family: 'VonageMain';
-	src: url('./fonts/static/WorkSans-Light.woff2') format('woff2');
+	font-family: 'SpeziaWeb';
+	src: url('./fonts/static/SpeziaWeb-WideMedium.woff2') format('woff2');
 	font-style: normal;
-	font-weight: 300;
-}
-
-@font-face {
-	font-family: 'VonageMain';
-	src: url('./fonts/static/WorkSans-LightItalic.woff2') format('woff2');
-	font-style: italic;
-	font-weight: 300;
+	font-weight: 500;
 }
 
 /*
-	extra light
+	semi-bold (regular width)
 */
 @font-face {
-	font-family: 'VonageMain';
-	src: url('./fonts/static/WorkSans-ExtraLight.woff2') format('woff2');
-	font-style: normal;
-	font-weight: 100;
-}
-
-@font-face {
-	font-family: 'VonageMain';
-	src: url('./fonts/static/WorkSans-ExtraLightItalic.woff2') format('woff2');
-	font-style: italic;
-	font-weight: 100;
-}
-
-/*
-	bold
-*/
-@font-face {
-	font-family: 'VonageMain';
-	src: url('./fonts/static/WorkSans-Bold.woff2') format('woff2');
+	font-family: 'SpeziaWeb';
+	src: url('./fonts/static/SpeziaWeb-SemiBold.woff2') format('woff2');
 	font-style: normal;
 	font-weight: 600;
-}
-
-@font-face {
-	font-family: 'VonageMain';
-	src: url('./fonts/static/WorkSans-BoldItalic.woff2') format('woff2');
-	font-style: italic;
-	font-weight: 600;
-}
-
-/*
-	extra bold
-*/
-@font-face {
-	font-family: 'VonageMain';
-	src: url('./fonts/static/WorkSans-ExtraBold.woff2') format('woff2');
-	font-style: normal;
-	font-weight: 800;
-}
-
-@font-face {
-	font-family: 'VonageMain';
-	src: url('./fonts/static/WorkSans-ExtraBoldItalic.woff2') format('woff2');
-	font-style: italic;
-	font-weight: 800;
 }
 
 @supports (font-variation-settings: 'wdth' 9) {
 	:root {
-		--vvd-font: 'VonageMainVariable';
+		--vvd-font-family-spezia: 'SpeziaWebVariable';
 	}
 
 	@font-face {
-		font-family: 'VonageMainVariable';
+		font-family: 'SpeziaWebVariable';
 		src:  url('./fonts/variable/Spezia_Web_Complete_Upright.woff2') format('woff2-variations');
 		font-style: normal;
 		font-weight: 1 1000;
-		font-stretch: 20 250;
-	}
-
-	@font-face {
-		font-family: 'VonageMainVariable';
-		src:  url('./fonts/variable/Spezia_Web_Complete_Italic.woff2') format('woff2-variations');
-		font-style: italic;
-		font-weight: 1 1000;
-		font-stretch: 20 250;
+		font-stretch: 50% 200%;
 	}
 }
