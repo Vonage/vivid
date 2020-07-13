@@ -13,3 +13,11 @@ export function htmlToDom(html) {
 export async function waitNextTask() {
 	return new Promise(resolve => setTimeout(resolve));
 }
+
+export async function activateComponent(elementTemplate) {
+	const docFragContainer = htmlToDom(elementTemplate);
+	const actualElement = docFragContainer.firstElementChild;
+	document.body.appendChild(docFragContainer);
+	await waitNextTask();
+	return actualElement;
+}
