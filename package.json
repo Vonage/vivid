@@ -5,8 +5,8 @@
 	"author": "Vonage",
 	"license": "Apache-2.0",
 	"workspaces": [
-		"components/*",
-		"common/*"
+		"common/*",
+		"components/*"
 	],
 	"scripts": {
 		"lint:eslint": "eslint components/** common/** --no-error-on-unmatched-pattern --ignore-path .eslintignore --config .eslintrc.yaml",
