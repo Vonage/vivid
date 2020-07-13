@@ -48,7 +48,7 @@ describe('test vwc-carousel', () => {
 			expect(carouselDOMElements[1].id).to.equal(`carousel-b-slide-${elementsIds[0]}`);
 		});
 
-		it('should move slide to the right when click on next', function() {
+		it('should move slide to the right when click on next', async function() {
 			// b is swiper-slide-active
 			actualElement.querySelector('.swiper-container').addEventListener('transitionEnd', () => console.log('!@##@!'));
 			actualElement.querySelector('.swiper-button-next').click();
