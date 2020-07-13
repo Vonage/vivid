@@ -12,7 +12,7 @@ describe('test vwc-carousel', () => {
 		assert.exists(customElements.get(VWC_CAROUSEL_ITEM, 'vwc-carousel-item element is not defined'));
 	});
 
-	describe('HTML output', function() {
+	describe('Init', function() {
 		it('should have the required elements', async () => {
 			const actualElement = await activateComponent(`<${VWC_CAROUSEL} id="carousel-a"></${VWC_CAROUSEL}>`);
 			expect(actualElement).dom.to.equalSnapshot();
@@ -20,35 +20,73 @@ describe('test vwc-carousel', () => {
 	});
 
 	describe('slides order', function() {
-		it('should set the first slide in the middle and the last before it', async function() {
+		let actualElement;
 
-			const elementsIds = ['a', 'b', 'c'];
+		beforeEach(async () => {
+			const elementsIds = ['a', 'b', 'c', 'd'];
 
-			const carouselElements = elementsIds.map((key) => `<${VWC_CAROUSEL_ITEM} id="carousel-b-slide-${key}">Slide ${key.toUpperCase()}</${VWC_CAROUSEL_ITEM}>`)
+			const carouselElements = elementsIds.map((key) => `<${VWC_CAROUSEL_ITEM} autoplay="false" id="carousel-b-slide-${key}">Slide ${key.toUpperCase()}</${VWC_CAROUSEL_ITEM}>`);
 
 			const elementTemplate = `
 				<${VWC_CAROUSEL} id="carousel-b" autoplay="false">
 					${carouselElements.join('\n')}
 				</${VWC_CAROUSEL}>
 			`;
-			const actualElement = await activateComponent(elementTemplate);
+
+			actualElement = await activateComponent(elementTemplate);
+		});
+
+		afterEach(() => {
+			actualElement.remove();
+		});
+
+		it('should set the last carousel item before the first', async function() {
 
 			const carouselDOMElements = actualElement.querySelectorAll(VWC_CAROUSEL_ITEM);
+			// check the A is swiper-slide-active
 			expect(carouselDOMElements[0].id).to.equal(`carousel-b-slide-${elementsIds[elementsIds.length - 1]}`);
 			expect(carouselDOMElements[1].id).to.equal(`carousel-b-slide-${elementsIds[0]}`);
 		});
+
+		it('should move slide to the right when click on next', function() {
+			// b is swiper-slide-active
+			actualElement.querySelector('.swiper-container').addEventListener('transitionEnd', () => console.log('!@##@!'));
+			actualElement.querySelector('.swiper-button-next').click();
+			await new Promise(res => setTimeout(res, 1500));
+		});
+
+		it('should move slide to the right when click on next twice', function() {
+			// c is swiper-slide-active and order is a,b,c,d
+		});
+
+		// TODO::test the prev motion
 	});
 
-	it('vwc-carousel with slides, autoplay = false', async () => {
+	describe('autoplay', function() {
+		// test that it works
+		// test hover effects
+		// decide if you want to expose the autoplay delay or hard code it
+		it('should move slides automatically when autoplay is true', async () => {
+			const elementsIds = ['a', 'b', 'c'];
 
-		assert.equal(document.querySelector('#carousel-b'), actualElement);
-		assert.equal(actualElement.querySelectorAll('*').length, 17);
+			const carouselElements = elementsIds.map((key) => `<${VWC_CAROUSEL_ITEM} id="carousel-b-slide-${key}">Slide ${key.toUpperCase()}</${VWC_CAROUSEL_ITEM}>`);
 
-		//	DOM pivot index is the actual index AFTER the slides adjustements, in this case 1, since last one is pushed before the first
-		assertSlidesStrip(document.querySelector('#carousel-b .swiper-wrapper'), 1);
+			const elementTemplate = `
+				<${VWC_CAROUSEL} id="carousel-b" autoplay="false">
+					${carouselElements.join('\n')}
+				</${VWC_CAROUSEL}>
+			`;
+
+			const actualElement = await activateComponent(elementTemplate);
+		});
 	});
 
-	it('vwc-carousel with slides, autoplay = true', async () => {
+	describe('click on slide', function() {
+		// check that it works
+		// check that it works after full rotation
+	});
+
+	it('should move slides when autoplay = true', async () => {
 		await customElements.whenDefined(VWC_CAROUSEL);
 		const docFragContainer = htmlToDom(`
 			<${VWC_CAROUSEL} id="carousel-c" autoplay="true">
@@ -63,17 +101,3 @@ describe('test vwc-carousel', () => {
 		assert.equal(actualElement.querySelectorAll('*').length, 15);
 	});
 });
-
-function assertSlidesStrip(viewPort, domPivotIndex) {
-	const viewPortRect = viewPort.getBoundingClientRect();
-	for (let i = 0, l = viewPort.children.length; i < l; i++) {
-		const slideRect = viewPort.children[i].getBoundingClientRect();
-		assert.equal(slideRect.x, viewPortRect.x + i * viewPortRect.width);
-		assert.equal(slideRect.y, viewPortRect.y);
-		assert.equal(slideRect.width, viewPortRect.width);
-		assert.equal(slideRect.height, viewPortRect.height);
-		if (i === domPivotIndex) {
-			assert.equal(slideRect.x, viewPort.parentNode.previousElementSibling.offsetWidth);
-		}
-	}
-}
