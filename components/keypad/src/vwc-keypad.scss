@@ -1,0 +1,23 @@
+:host {
+	display: block;
+	padding: 25px;
+	color: var(--vwc-keypad-text-color, #000);
+}
+
+#container {
+	width: 75vw;
+	max-width: 300px;
+}
+
+.button-row {
+	display: flex;
+	justify-content: space-evenly;
+}
+
+vwc-button {
+	margin: 10px;
+}
+
+vwc-textfield {
+	width: 100%;
+}
