@@ -53,6 +53,7 @@
     { "path": "components/switch" },
     { "path": "components/textarea" },
     { "path": "components/textfield" },
-    { "path": "components/relative-time" }
+    { "path": "components/relative-time" },
+    { "path": "components/keypad" }
   ]
 }

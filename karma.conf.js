@@ -11,7 +11,7 @@ module.exports = config => {
 		esm: {
 			nodeResolve: true,
 		},
-		frameworks: ['esm', 'mocha', 'chai'],
+		frameworks: ['chai'],
 		browserDisconnectTimeout: 300000,
 		browserNoActivityTimeout: 360000,
 		captureTimeout: 420000,
