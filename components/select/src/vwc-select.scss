@@ -15,14 +15,20 @@
   --mdc-select-error-dropdown-icon-color: var(--mdc-select-error-color);
 }
 
+:host(:not([disabled])) .mdc-select.mdc-select--focused:not(.mdc-select--invalid) {
+  mwc-notched-outline {
+    --mdc-notched-outline-border-color: var(--mdc-theme-primary);
+  }
+
+  .mdc-floating-label {
+    color: var(--mdc-select-focused-label-color);
+  }
+}
+
 mwc-notched-outline,
 :host(:not([disabled])) .mdc-select.mdc-select--focused mwc-notched-outline {
   --mdc-notched-outline-stroke-width: 1px;
   --mdc-notched-outline-notch-offset: 0px;
-}
-
-:host(:not([disabled])) .mdc-select.mdc-select--focused:not(.mdc-select--invalid) mwc-notched-outline {
-  --mdc-notched-outline-border-color: var(--mdc-select-outlined-hover-border-color);
 }
 
 .mdc-select {
@@ -69,6 +75,7 @@ mwc-notched-outline,
     z-index: 1;
   }
 
+  :host(:hover) &,
   &:hover,
   &--focused {
     &:not(.mdc-select--invalid) {
