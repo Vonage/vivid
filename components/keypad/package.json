@@ -1,11 +1,12 @@
 {
-	"name": "@vonage/vwc-icon",
+	"name": "@vonage/vwc-keypad",
 	"version": "0.0.22",
-	"description": "icon component",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/icon#readme",
+	"description": "Web Component vwc-keypad following open-wc recommendations for Vonage Vivid",
+	"author": "Dwane <Dwane.Hemmings@vonage.com>",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/keypad#readme",
 	"license": "ISC",
-	"main": "vwc-icon.js",
-	"module": "vwc-icon.js",
+	"main": "vwc-keypad.js",
+	"module": "vwc-keypad.js",
 	"files": [
 		"src",
 		"*.js",
@@ -15,7 +16,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/icon"
+		"directory": "components/keypad"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"
@@ -24,8 +25,9 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@material/mwc-icon": "^0.17.2",
 		"@vonage/vvd-style-coupling": "^0.0.22",
+		"@vonage/vwc-button": "^0.0.22",
+		"@vonage/vwc-textfield": "^0.0.22",
 		"lit-element": "^2.3.1",
 		"tslib": "^2.0.0"
 	}

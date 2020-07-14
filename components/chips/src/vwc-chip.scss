@@ -8,10 +8,8 @@ TODO:
 */
 
 :host {
-  --mdc-theme-primary: #871fff;
   --mdc-theme-primary-rgb: 135, 31, 255;
-  --mdc-theme-on-primary: #ffffff;
-  --mdc-theme-on-primary-rgb: 255, 255, 255;
+  --mdc-theme-text-primary-on-background-rgb: 19, 20, 21;
 }
 
 // :host(.vwc-chip--black) {
@@ -62,9 +60,9 @@ TODO:
 // }
 
 .mdc-chip {
-  @include chips.fill-color(var(--mdc-theme-primary));
-  @include chips.ink-color(on-primary);
-  @include chips.trailing-icon-color(var(--mdc-theme-on-primary-rgb), variables.$trailing-icon-opacity, variables.$trailing-icon-opacity-hover);
+  @include chips.fill-color(var(--vvd-color-idle));
+  @include chips.ink-color(text-primary-on-background);
+  @include chips.trailing-icon-color(var(--mdc-theme-text-primary-on-background-rgb), variables.$trailing-icon-opacity, variables.$trailing-icon-opacity-hover);
   @include chips.height(map-get(variables.$height, default));
   @include chips.horizontal-padding(map-get(variables.$horizontal-padding, default));
   @include chips.shape-radius(map-get(variables.$shape-radius, default));
@@ -75,6 +73,10 @@ TODO:
   font-size: map-get(variables.$font-size, default);
   font-weight: variables.$font-weight;
 
+  :host([type="filter"]) & {
+    cursor: pointer;
+  }
+  
   .mdc-chip__ripple {
     display: none;
   }
