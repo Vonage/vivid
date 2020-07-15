@@ -5,6 +5,9 @@
 	min-height: 48px;
 
 	&.mdc-text-field--outlined {
+
+		padding-top: 22px;
+
 		&.mdc-text-field--no-label {
 			.mdc-text-field__input {
 				padding-top: 8px;
@@ -14,7 +17,6 @@
 		.mdc-text-field__input {
 			height: auto;
 			margin: 0;
-			padding-top: 20px;
 			resize: vertical;
 		}
 
