@@ -3,7 +3,7 @@ import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Atoms/Button',
+	title: 'Atoms|Button',
 	component: 'vwc-button',
 	decorators: [withA11y]
 }
@@ -13,14 +13,6 @@ export const basic = () => html`
 		.container {
 			display: inline-block;
 			padding: 24px;
-		}
-
-		.outstanding {
-			background-color: #E5E5E5;
-		}
-
-		.inverted {
-			background-color: #131414;
 		}
 	</style>
 
@@ -43,7 +35,7 @@ export const basic = () => html`
 		<vwc-button layout="filled">Normal</vwc-button>
 		<vwc-button layout="filled" meaning="call-to-action" icon="info">Call to action</vwc-button>
 		<vwc-button layout="filled" meaning="success" icon="code">Success</vwc-button>
-		<vwc-button layout="filled" meaning="error" icon="code">Error</vwc-button>
+		<vwc-button layout="filled" meaning="failure" icon="code">Failure</vwc-button>
 		<vwc-button layout="filled" meaning="warning" icon="info">Warning</vwc-button>
 		<vwc-button layout="filled" meaning="warning" disabled icon="code">Disabled</vwc-button>
 	</div>

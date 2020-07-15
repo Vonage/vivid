@@ -29,12 +29,12 @@
 	background-color: var(--vvd-color-call-to-action);
 }
 
-:host([unelevated]) .error:not(:disabled) {
-	background-color: var(--vvd-color-error);
-}
-
 :host([unelevated]) .success:not(:disabled) {
 	background-color: var(--vvd-color-success);
+}
+
+:host([unelevated]) .failure:not(:disabled) {
+	background-color: var(--vvd-color-failure);
 }
 
 :host([unelevated]) .warning:not(:disabled) {

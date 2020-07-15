@@ -4,7 +4,7 @@ import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Atoms/Radio',
+	title: 'Atoms|Radio',
 	component: 'vwc-radio',
 	decorators: [withA11y]
 }

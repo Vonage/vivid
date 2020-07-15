@@ -17,7 +17,7 @@ MWCButton.styles = [styleCoupling, mwcButtonStyle, vwcButtonStyle];
 const layouts = ['text', 'outlined', 'filled'];
 export type ButtonLayout = typeof layouts;
 
-const meanings = ['regular', 'call-to-action', 'success', 'error', 'warning'] as const;
+const meanings = ['regular', 'call-to-action', 'success', 'failure', 'warning'] as const;
 export type ButtonMeaning = typeof meanings;
 
 const shapes = ['rounded', 'pill'] as const;
