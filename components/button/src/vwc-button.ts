@@ -14,6 +14,8 @@ declare global {
 // @ts-ignore
 MWCButton.styles = [styleCoupling, mwcButtonStyle, vwcButtonStyle];
 
+export type ButtonFillMean = 'normal' | 'call-to-action' | 'success' | 'error' | 'warning';
+
 export type ButtonShape = 'rounded' | 'pill';
 
 /**
@@ -21,11 +23,16 @@ export type ButtonShape = 'rounded' | 'pill';
  */
 @customElement('vwc-button')
 export class VWCButton extends MWCButton {
+	@property({ type: String, reflect: true }) fillMean: ButtonFillMean = 'normal';
+
 	@property({ type: String, reflect: true }) shape: ButtonShape = 'rounded';
 
 	protected updated(): void {
+		const fillMean = this.fillMean ?? 'normal';
+		const shape = this.shape ?? 'rounded';
+		
 		const innerButton = this.shadowRoot?.querySelector('.mdc-button');
-		innerButton?.classList[this.shape === 'pill' ? 'add' : 'remove']('vwc-button--pill');
-		innerButton?.classList[this.shape === 'rounded' ? 'add' : 'remove']('vwc-button--rounded');
+		innerButton?.classList[shape === 'pill' ? 'add' : 'remove']('vwc-button--pill');
+		innerButton?.classList[shape === 'rounded' ? 'add' : 'remove']('vwc-button--rounded');
 	}
 }
