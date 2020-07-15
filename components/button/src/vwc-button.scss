@@ -13,31 +13,31 @@
   border-color: var(--vvd-color-disabled-fill-color);
 }
 
-.mdc-button.pill {
+.pill {
 	border-radius: 40px;
 }
 
-.mdc-button.filled {
+.filled {
 	color: var(--vvd-color-primary-foreground);
 }
 
-.mdc-button.filled.normal:not(:disabled) {
+.filled.normal:not(:disabled) {
 	background-color: var(--vvd-color-primary-background);
 }
 
-.mdc-button.filled.call-to-action:not(:disabled) {
+.filled.call-to-action:not(:disabled) {
 	background-color: var(--vvd-color-call-to-action);
 }
 
-.mdc-button.filled.error:not(:disabled) {
+.filled.error:not(:disabled) {
 	background-color: var(--vvd-color-error);
 }
 
-.mdc-button.filled.success:not(:disabled) {
+.filled.success:not(:disabled) {
 	background-color: var(--vvd-color-success);
 }
 
-.mdc-button.filled.warning:not(:disabled) {
+.filled.warning:not(:disabled) {
 	color:  var(--vvd-color-primary-background);
 	background-color: var(--vvd-color-warning);
 }
