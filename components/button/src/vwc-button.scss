@@ -17,27 +17,27 @@
 	border-radius: 40px;
 }
 
-.filled {
+:host([unelevated]) {
 	color: var(--vvd-color-primary-foreground);
 }
 
-.filled.normal:not(:disabled) {
+:host([unelevated]) .normal:not(:disabled) {
 	background-color: var(--vvd-color-primary-background);
 }
 
-.filled.call-to-action:not(:disabled) {
+:host([unelevated]) .call-to-action:not(:disabled) {
 	background-color: var(--vvd-color-call-to-action);
 }
 
-.filled.error:not(:disabled) {
+:host([unelevated]) .error:not(:disabled) {
 	background-color: var(--vvd-color-error);
 }
 
-.filled.success:not(:disabled) {
+:host([unelevated]) .success:not(:disabled) {
 	background-color: var(--vvd-color-success);
 }
 
-.filled.warning:not(:disabled) {
+:host([unelevated]) .warning:not(:disabled) {
 	color:  var(--vvd-color-primary-background);
 	background-color: var(--vvd-color-warning);
 }

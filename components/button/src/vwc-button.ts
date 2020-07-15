@@ -14,8 +14,11 @@ declare global {
 // @ts-ignore
 MWCButton.styles = [styleCoupling, mwcButtonStyle, vwcButtonStyle];
 
-const fillMeans = ['', 'normal', 'call-to-action', 'success', 'error', 'warning'] as const;
-export type ButtonFillMean = typeof fillMeans;
+const layouts = ['text', 'outlined', 'filled'];
+export type ButtonLayout = typeof layouts;
+
+const meanings = ['regular', 'call-to-action', 'success', 'error', 'warning'] as const;
+export type ButtonMeaning = typeof meanings;
 
 const shapes = ['rounded', 'pill'] as const;
 export type ButtonShape = typeof shapes;
@@ -25,27 +28,29 @@ export type ButtonShape = typeof shapes;
  */
 @customElement('vwc-button')
 export class VWCButton extends MWCButton {
-	@property({ type: String, reflect: true }) fill: ButtonFillMean[number] | undefined;
+	@property({ type: String, reflect: true }) layout: ButtonLayout[number] = 'text';
+
+	@property({ type: String, reflect: true }) meaning?: ButtonMeaning[number] | undefined;
 
 	@property({ type: String, reflect: true }) shape: ButtonShape[number] = 'rounded';
 
 	protected updated(): void {
-		const fillMean = this.fill === '' ? 'normal' : this.fill;
-		const shape = this.shape ?? 'rounded';
+		const layout: ButtonLayout[number] = this.layout;
+		const meaning: ButtonMeaning[number] | undefined = this.layout === 'filled' ? (this.meaning ?? 'regular') : undefined;
+		const shape: ButtonShape[number] = this.shape ?? 'rounded';
+
 		const innerButton = this.shadowRoot?.querySelector('.mdc-button');
 
-		if (fillMean === undefined) {
-			this.removeAttribute('unelevated');
-		} else {
-			this.setAttribute('unelevated', '');
-		}
 		if (innerButton) {
 			//	get existing classes aside from the DOM
 			const classesSet = new Set(innerButton.classList);
 
-			//	merge/unmerge new ones
-			classesSet[fillMean === undefined ? 'delete' : 'add']('filled');
-			fillMeans.forEach(fm => classesSet[fillMean === fm ? 'add' : 'delete'](fm));
+			//	merge classes
+			this.toggleAttribute('outlined', layout === 'outlined');
+			this.toggleAttribute('unelevated', layout === 'filled');
+			if (layout === 'filled') {
+				meanings.forEach(m => classesSet[meaning === m ? 'add' : 'delete'](m));
+			}
 			shapes.forEach(s => classesSet[shape === s ? 'add' : 'delete'](s));
 
 			//	set the clases back to the DOM
