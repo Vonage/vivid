@@ -15,10 +15,13 @@
 	--vvd-color-alternate-secondary-foreground: #131415;
 	--vvd-color-checked: var(--vvd-color-base-foreground);
 	--vvd-color-unchecked: #c2c4cc;
-	--vvd-color-error: #e84545;
 	--vvd-color-idle: #ced0d7;
 	--vvd-color-disabled-fill-color: #ced0d7;
 	--vvd-color-disabled-ink-color: #74767a;
+	--vvd-color-error: #d43f3f;
+	--vvd-color-success: #1d7e67;
+	--vvd-color-warning: #ffc100;
+	--vvd-color-call-to-action: #871fff;
 }
 
 :host {

@@ -14,25 +14,42 @@ declare global {
 // @ts-ignore
 MWCButton.styles = [styleCoupling, mwcButtonStyle, vwcButtonStyle];
 
-export type ButtonFillMean = 'normal' | 'call-to-action' | 'success' | 'error' | 'warning';
+const fillMeans = ['', 'normal', 'call-to-action', 'success', 'error', 'warning'] as const;
+export type ButtonFillMean = typeof fillMeans;
 
-export type ButtonShape = 'rounded' | 'pill';
+const shapes = ['rounded', 'pill'] as const;
+export type ButtonShape = typeof shapes;
 
 /**
  * This component is an extension of [<mwc-button>](https://github.com/material-components/material-components-web-components/tree/master/packages/button)
  */
 @customElement('vwc-button')
 export class VWCButton extends MWCButton {
-	@property({ type: String, reflect: true }) fillMean: ButtonFillMean = 'normal';
+	@property({ type: String, reflect: true }) fill: ButtonFillMean[number] | undefined;
 
-	@property({ type: String, reflect: true }) shape: ButtonShape = 'rounded';
+	@property({ type: String, reflect: true }) shape: ButtonShape[number] = 'rounded';
 
 	protected updated(): void {
-		const fillMean = this.fillMean ?? 'normal';
+		const fillMean = this.fill === '' ? 'normal' : this.fill;
 		const shape = this.shape ?? 'rounded';
-		
 		const innerButton = this.shadowRoot?.querySelector('.mdc-button');
-		innerButton?.classList[shape === 'pill' ? 'add' : 'remove']('vwc-button--pill');
-		innerButton?.classList[shape === 'rounded' ? 'add' : 'remove']('vwc-button--rounded');
+
+		if (fillMean === undefined) {
+			this.removeAttribute('unelevated');
+		} else {
+			this.setAttribute('unelevated', '');
+		}
+		if (innerButton) {
+			//	get existing classes aside from the DOM
+			const classesSet = new Set(innerButton.classList);
+
+			//	merge/unmerge new ones
+			classesSet[fillMean === undefined ? 'delete' : 'add']('filled');
+			fillMeans.forEach(fm => classesSet[fillMean === fm ? 'add' : 'delete'](fm));
+			shapes.forEach(s => classesSet[shape === s ? 'add' : 'delete'](s));
+
+			//	set the clases back to the DOM
+			innerButton.className = Array.from(classesSet).join(' ');
+		}
 	}
 }
