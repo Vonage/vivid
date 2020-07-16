@@ -1,13 +1,14 @@
 const conventionalChangelogCore = require('conventional-changelog-core');
 const angularPreset = require('conventional-changelog-angular');
 
-angularPreset.then(config => {
-	config.conventionalChangelog.finalizeContext = function(context, options, commits, keyCommit) {
-		console.log(context);
+const parserOpts = {
+	finalizeContext: function(context, options, commits, keyCommit) {
+		console.log(context, commits, keyCommit);
 	}
-	conventionalChangelogCore(config)
-		.pipe(function(data) {
-			console.log(data);
-		}); // or any writable stream
+}
+angularPreset.then(config => {
+
+	const cl = conventionalChangelogCore(config, {}, {}, {}, parserOpts);
+	cl.pipe(process.stdout); // or any writable stream
 });
 
