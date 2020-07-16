@@ -73,6 +73,7 @@
 		"command-line-args": "^5.1.1",
 		"command-line-usage": "^6.1.0",
 		"concurrently": "^5.2.0",
+		"conventional-changelog-cli": "^2.0.34",
 		"deepmerge": "^4.2.2",
 		"es-dev-server": "^1.50.8",
 		"eslint": "^7.4.0",
