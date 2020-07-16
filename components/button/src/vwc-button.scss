@@ -47,8 +47,8 @@
     }
 
     #{$scoped-selector} {
-      --vwc-color-background: --vvd-color-#{$connotation}-background;
-      --vwc-color-foreground: --vvd-color-#{$connotation}-foreground;
+      --mdc-theme-primary: var(--vvd-color-#{$connotation}-background);
+      --mdc-theme-on-primary: var(--vvd-color-#{$connotation}-foreground);
     }
   }
 }
@@ -73,8 +73,8 @@
 //   background-color: var(--vvd-color-success);
 // }
 
-// :host([unelevated]) .failure:not(:disabled) {
-//   background-color: var(--vvd-color-failure);
+// :host([unelevated]) .error:not(:disabled) {
+//   background-color: var(--vvd-color-error);
 // }
 
 // :host([unelevated]) .warning:not(:disabled) {
