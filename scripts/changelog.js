@@ -1,14 +1,7 @@
-const conventionalChangelogCore = require('conventional-changelog-core');
-const angularPreset = require('conventional-changelog-angular');
+const fs = require('fs');
+const core = require('@actions/core');
 
-const parserOpts = {
-	finalizeContext: function(context, options, commits, keyCommit) {
-		console.log(context, commits, keyCommit);
-	}
-}
-angularPreset.then(config => {
+const fileContent = fs.readFileSync('./CHANGELOG.md').toString();
 
-	const cl = conventionalChangelogCore(config, {}, {}, {}, parserOpts);
-	cl.pipe(process.stdout); // or any writable stream
-});
+core.exportVariable('versionChangeLog', fileContent);
 

@@ -1,0 +1,28 @@
+name: Prepare release
+
+on:
+  push:
+    branches:
+      - 'VIV-70/*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Install yarn
+        run: npm install -g yarn
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Extract release version
+        run: yarn add @actions/core && yarn changelog:publish && yarn remove @actions/core |
+          echo $versionChangeLog

@@ -9,7 +9,8 @@
 		"components/*"
 	],
 	"scripts": {
-		"changelog:project": "conventional-changelog --preset angular --release-count 0 --outfil ./CHANGELOG.md --verbose --commit-path $PWD --pkg $PWD/package.json",
+		"changelog:publish": "yarn changelog:currentVersion && node ./scripts/changelog.js && rm -f ./CHANGELOG.md",
+		"changelog:currentVersion": "conventional-changelog --preset angular --release-count 1 --outfile ./CHANGELOG.md --verbose --commit-path $PWD --pkg $PWD/package.json",
 		"changelog": "yarn lerna exec --concurrency 1 --stream 'conventional-changelog --preset angular --release-count 0 --commit-path $PWD --pkg $PWD/package.json --outfile $PWD/CHANGELOG.md --verbose'",
 		"lint:eslint": "eslint components/** common/** --no-error-on-unmatched-pattern --ignore-path .eslintignore --config .eslintrc.yaml",
 		"format:eslint": "eslint --ext .js,.html . --fix --ignore-path .eslintignore",
