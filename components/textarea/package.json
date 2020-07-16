@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-textarea",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "textarea component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/textarea#readme",
 	"license": "ISC",
@@ -25,7 +25,7 @@
 	},
 	"dependencies": {
 		"@material/mwc-textarea": "^0.17.2",
-		"@vonage/vvd-style-coupling": "^0.1.0",
+		"@vonage/vvd-style-coupling": "^0.2.0",
 		"lit-element": "^2.3.1",
 		"tslib": "^2.0.0"
 	}

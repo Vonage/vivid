@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-button",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "button component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/button#readme",
 	"license": "ISC",
@@ -26,8 +26,8 @@
 	"dependencies": {
 		"@material/button": "^7.0.0",
 		"@material/mwc-button": "^0.17.2",
-		"@vonage/vvd-style-coupling": "^0.1.0",
-		"@vonage/vwc-icon": "^0.1.0",
+		"@vonage/vvd-style-coupling": "^0.2.0",
+		"@vonage/vwc-icon": "^0.2.0",
 		"lit-element": "^2.3.1",
 		"tslib": "^2.0.0"
 	}
