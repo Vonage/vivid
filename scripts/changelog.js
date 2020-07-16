@@ -3,5 +3,7 @@ const core = require('@actions/core');
 
 const fileContent = fs.readFileSync('./CHANGELOG.md').toString();
 
-core.exportVariable('versionChangeLog', fileContent);
+console.log("The content is: ", fileContent);
+
+core.exportVariable('VERSION_CHANGE_LOG', fileContent);
 

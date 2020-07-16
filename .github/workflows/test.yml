@@ -1,4 +1,4 @@
-name: Prepare release
+name: Test Yonatan
 
 on:
   push:
@@ -17,12 +17,17 @@ jobs:
         with:
           node-version: 12
 
+      - name: Git log
+        run: git log --format=%B%n-hash-%n%H%n-gitTags-%n%d%n-committerDate-%n%ci%n
+
       - name: Install yarn
         run: npm install -g yarn
 
-      - name: Install dependencies
-        run: yarn install
+      - name: Install deps
+        run: yarn add @actions/core conventional-changelog-cli -W
 
-      - name: Extract release version
-        run: yarn add @actions/core && yarn changelog:publish && yarn remove @actions/core |
-          echo $versionChangeLog
+      - name: Get the changes
+        run: yarn changelog:publish
+
+      - name: Print the changes
+        run: echo $VERSION_CHANGE_LOG
