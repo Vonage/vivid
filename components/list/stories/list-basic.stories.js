@@ -4,7 +4,7 @@ import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Atoms/List',
+	title: 'Atoms|List',
 	component: 'vwc-list',
 	decorators: [withA11y]
 }

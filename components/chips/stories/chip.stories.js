@@ -3,7 +3,7 @@ import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Atoms/Chip',
+	title: 'Atoms|Chip',
 	component: 'vwc-chip',
 	decorators: [withA11y]
 }
@@ -11,7 +11,7 @@ export default {
 export const basic = () => html`
 	<h3>Default</h3>
 	<vwc-chip label="Chip"></vwc-chip>
-	
+
 	<h3>Leading icon</h3>
 	<vwc-chip label="Chip" icon="fingerprint"></vwc-chip>
 
