@@ -1,16 +1,14 @@
 name: Build & Deploy Showcase (PROD)
 
 on:
-  push:
-    branches:
-      - iss-95*
+	push:
 
 jobs:
   build-and-deploy-demo-prod:
     runs-on: ubuntu-latest
-    # env:
-    #   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_VIVID_DEMO_PROD_ACCESS }}
-    #   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_VIVID_DEMO_PROD_SECRET }}
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_VIVID_DEMO_PROD_ACCESS }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_VIVID_DEMO_PROD_SECRET }}
 
     steps:
       - name: Checkout
