@@ -2,7 +2,8 @@ name: Build & Deploy Showcase (PROD)
 
 on:
   push:
-    branches: [iss-95*]
+    branches:
+      - iss-95*
 
 jobs:
   build-and-deploy-demo-prod:
