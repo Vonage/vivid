@@ -39,7 +39,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install changelog deps
-          run: yarn add @actions/core conventional-changelog-cli -W
+        run: yarn add @actions/core conventional-changelog-cli -W
 
       - name: Get the changes
         run: yarn changelog:publish # creates the VERSION_CHANGE_LOG env variable
