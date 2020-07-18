@@ -46,7 +46,6 @@ jobs:
 
       - name: Notify slack
         uses: rtCamp/action-slack-notify@master
-        # run: yarn add @actions/core && yarn changelog:publish && yarn remove @actions/core
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
           SLACK_CHANNEL: 'vivid-engineering'
