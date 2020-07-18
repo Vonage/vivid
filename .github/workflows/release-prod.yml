@@ -7,6 +7,9 @@ on:
 jobs:
   build-test-and-publish-prod:
     runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_VIVID_DEMO_PROD_ACCESS }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_VIVID_DEMO_PROD_SECRET }}
 
     steps:
       - name: Checkout
@@ -55,10 +58,17 @@ jobs:
           SLACK_TITLE: Vivid Release Notice
           SLACK_MESSAGE: Hey!!! We've just released a new version!!! ${{ VERSION_CHANGE_LOG }}
 
-      # - name: Update downstream ('develop')
-      #   run: >
-      #     git config user.email "vivid.ci@vonage.com" && git config user.name "Vivid CI" &&
-      #     git fetch origin &&
-      #     git checkout develop &&
-      #     git merge origin/master --allow-unrelated-histories &&
-      #     git push
+      - name: Build storybook
+        run: yarn storybook:build
+
+      - name: Create deploy timestamp/version
+        run: echo ::set-env name=STORYBOOK_DEPLOY_TIMESTAMP::$(jq -r '.timestamp' ./.storybook/static/build-details.json)
+
+      - name: Deploy showcase versioned as ${{ env.STORYBOOK_DEPLOY_TIMESTAMP }}
+        run: aws s3 sync ./.out/ s3://${{ secrets.AWS_VIVID_DEMO_PROD_BUCKET }}/${{ env.STORYBOOK_DEPLOY_TIMESTAMP }}
+
+      - name: Update CloudFront distribution root object ${{ env.STORYBOOK_DEPLOY_TIMESTAMP }}
+        run: aws cloudfront update-distribution --id ${{ secrets.AWS_VIVID_DEMO_PROD_DISTRIBUTION }} --default-root-object ${{ env.STORYBOOK_DEPLOY_TIMESTAMP }}/index.html
+
+      - name: Invalidate CloudFront distribution root object's cache
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_VIVID_DEMO_PROD_DISTRIBUTION }} --paths "/"
