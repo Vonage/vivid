@@ -7,7 +7,6 @@ on:
 jobs:
   build-and-deploy-demo-prod:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_VIVID_DEMO_PROD_ACCESS }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_VIVID_DEMO_PROD_SECRET }}
