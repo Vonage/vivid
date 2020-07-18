@@ -1,7 +1,7 @@
 name: Build & Deploy Showcase (PROD)
 
 on:
-	push:
+  push:
 
 jobs:
   build-and-deploy-demo-prod:
