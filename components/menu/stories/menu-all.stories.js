@@ -6,7 +6,7 @@ import '@vonage/vwc-fab/vwc-fab.js';
 import { withA11y } from '@storybook/addon-a11y';
 
 export default {
-	title: 'Atoms/Menu',
+	title: 'Atoms|Menu',
 	component: 'vwc-menu',
 	decorators: [withA11y]
 }

@@ -28,7 +28,7 @@ jobs:
         run: echo "::set-output name=version::$(echo ${GITHUB_REF##*/release-})"
 
       - name: Bump version to ${{ steps.releaseVersion.outputs.version }}
-        run: yarn lerna version ${{ steps.releaseVersion.outputs.version }} --no-git-tag-version --no-private --yes
+        run: yarn lerna version ${{ steps.releaseVersion.outputs.version }} --no-git-tag-version --no-private --yes && yarn changelog
 
       - name: Push changes
         run: >

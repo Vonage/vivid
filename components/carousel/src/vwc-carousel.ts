@@ -77,6 +77,7 @@ export class VWCCarousel extends LitElement {
 		super.connectedCallback();
 		this.ensureStyleApplied();
 		this.tabIndex = 0;
+
 	}
 
 	private ensureStyleApplied() {
