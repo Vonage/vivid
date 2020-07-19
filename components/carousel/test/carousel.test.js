@@ -1,5 +1,5 @@
 import '../vwc-carousel.js';
-import { htmlToDom, waitNextTask, waitInterval, activateComponent } from '../../../utils/js/test-helpers.js';
+import { textToDocumentFragment, textToDomToParent, waitNextTask, waitInterval } from '../../../utils/js/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 chai.use(chaiDomDiff);
 
@@ -15,8 +15,29 @@ describe('test vwc-carousel', () => {
 
 	describe('init flow', function () {
 		it('should have the required elements', async () => {
-			const actualElement = await activateComponent(`<${VWC_CAROUSEL} id="carousel-a"></${VWC_CAROUSEL}>`);
-			expect(actualElement).dom.to.equalSnapshot();
+			const actualElements = textToDomToParent(`<${VWC_CAROUSEL} id="carousel-a"></${VWC_CAROUSEL}>`, document.body);
+			await waitNextTask();
+			expect(actualElements[0]).dom.to.equalSnapshot(`
+			<vwc-carousel id="carousel-a" tabindex="0" autoplay=""><!---->
+				<div class="upper-pane">
+					<div class="swiper-nav swiper-button-prev swiper-button-disabled" tabindex="-1" role="button" aria-label="Previous slide" aria-disabled="true">
+						<svg class="icon" viewBox="0 0 24 24">
+							<path d="M14.5 4.5L8.5 12L14.5 19.5"></path>
+						</svg>
+					</div>
+					<div class="swiper-container swiper-container-initialized swiper-container-horizontal">
+						<div class="swiper-wrapper">
+						</div>
+					<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+					<div class="swiper-nav swiper-button-next swiper-button-disabled" tabindex="-1" role="button" aria-label="Next slide" aria-disabled="true">
+						<svg class="icon" viewBox="0 0 24 24">
+							<path d="M9.5 4.5L15.5 12L9.5 19.5"></path>
+						</svg>
+					</div>
+				</div>
+				<div class="lower-pane swiper-pagination"></div>
+			<!----></vwc-carousel>
+			`);
 		});
 	});
 
@@ -89,7 +110,7 @@ describe('test vwc-carousel', () => {
 
 	it('should move slides when autoplay = true', async () => {
 		await customElements.whenDefined(VWC_CAROUSEL);
-		const docFragContainer = htmlToDom(`
+		const docFragContainer = textToDocumentFragment(`
 			<${VWC_CAROUSEL} id="carousel-c" autoplay="true">
 				<${VWC_CAROUSEL_ITEM} id="carousel-c-slide-a">Slide A</${VWC_CAROUSEL_ITEM}>
 				<${VWC_CAROUSEL_ITEM} id="carousel-c-slide-b">Slide B</${VWC_CAROUSEL_ITEM}>
