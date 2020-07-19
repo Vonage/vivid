@@ -14,6 +14,10 @@ export async function waitNextTask() {
 	return new Promise(resolve => setTimeout(resolve));
 }
 
+export async function waitInterval(millis) {
+	await new Promise(resolve => setTimeout(resolve, millis));
+}
+
 export async function activateComponent(elementTemplate) {
 	const docFragContainer = htmlToDom(elementTemplate);
 	const actualElement = docFragContainer.firstElementChild;

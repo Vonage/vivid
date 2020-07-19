@@ -1,5 +1,5 @@
 import '../vwc-carousel.js';
-import { htmlToDom, waitNextTask, activateComponent } from '../../../utils/js/test-helpers.js';
+import { htmlToDom, waitNextTask, waitInterval, activateComponent } from '../../../utils/js/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 chai.use(chaiDomDiff);
 const
@@ -12,14 +12,14 @@ describe('test vwc-carousel', () => {
 		assert.exists(customElements.get(VWC_CAROUSEL_ITEM, 'vwc-carousel-item element is not defined'));
 	});
 
-	describe('Init', function() {
+	describe('Init', function () {
 		it('should have the required elements', async () => {
 			const actualElement = await activateComponent(`<${VWC_CAROUSEL} id="carousel-a"></${VWC_CAROUSEL}>`);
 			expect(actualElement).dom.to.equalSnapshot();
 		});
 	});
 
-	describe('slides order', function() {
+	describe('slides order', function () {
 		let actualElement;
 
 		beforeEach(async () => {
@@ -40,7 +40,7 @@ describe('test vwc-carousel', () => {
 			actualElement.remove();
 		});
 
-		it('should set the last carousel item before the first', async function() {
+		it('should set the last carousel item before the first', async function () {
 
 			const carouselDOMElements = actualElement.querySelectorAll(VWC_CAROUSEL_ITEM);
 			// check the A is swiper-slide-active
@@ -48,21 +48,21 @@ describe('test vwc-carousel', () => {
 			expect(carouselDOMElements[1].id).to.equal(`carousel-b-slide-${elementsIds[0]}`);
 		});
 
-		it('should move slide to the right when click on next', async function() {
+		it('should move slide to the right when click on next', async function () {
 			// b is swiper-slide-active
 			actualElement.querySelector('.swiper-container').addEventListener('transitionEnd', () => console.log('!@##@!'));
 			actualElement.querySelector('.swiper-button-next').click();
-			await new Promise(res => setTimeout(res, 1500));
+			await waitInterval(1500);
 		});
 
-		it('should move slide to the right when click on next twice', function() {
+		it('should move slide to the right when click on next twice', function () {
 			// c is swiper-slide-active and order is a,b,c,d
 		});
 
 		// TODO::test the prev motion
 	});
 
-	describe('autoplay', function() {
+	describe('autoplay', function () {
 		// test that it works
 		// test hover effects
 		// decide if you want to expose the autoplay delay or hard code it
@@ -81,7 +81,7 @@ describe('test vwc-carousel', () => {
 		});
 	});
 
-	describe('click on slide', function() {
+	describe('click on slide', function () {
 		// check that it works
 		// check that it works after full rotation
 	});
