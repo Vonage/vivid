@@ -70,19 +70,19 @@ describe('test vwc-carousel', () => {
 			expect(slides[3].classList.contains('swiper-slide-active'));
 
 			nextButton.click();
-			await waitInterval(600);
+			await waitInterval(500);
 			slides = extractSlides(carousel);
 			expect(slides[3].dataset.key).to.equal('d');
 			expect(slides[3].classList.contains('swiper-slide-active'));
 
 			nextButton.click();
-			await waitInterval(600);
+			await waitInterval(500);
 			slides = extractSlides(carousel);
 			expect(slides[3].dataset.key).to.equal('e');
 			expect(slides[3].classList.contains('swiper-slide-active'));
 
 			nextButton.click();
-			await waitInterval(600);
+			await waitInterval(500);
 			slides = extractSlides(carousel);
 			expect(slides[3].dataset.key).to.equal('a');
 			expect(slides[3].classList.contains('swiper-slide-active'));
@@ -96,19 +96,19 @@ describe('test vwc-carousel', () => {
 			const prevButton = carousel.querySelector('.swiper-button-prev');
 
 			prevButton.click();
-			await waitInterval(600);
+			await waitInterval(500);
 			let slides = extractSlides(carousel);
 			expect(slides[1].dataset.key).to.equal('d');
 			expect(slides[1].classList.contains('swiper-slide-active'));
 
 			prevButton.click();
-			await waitInterval(600);
+			await waitInterval(500);
 			slides = extractSlides(carousel);
 			expect(slides[1].dataset.key).to.equal('c');
 			expect(slides[1].classList.contains('swiper-slide-active'));
 
 			prevButton.click();
-			await waitInterval(600);
+			await waitInterval(500);
 			slides = extractSlides(carousel);
 			expect(slides[1].dataset.key).to.equal('b');
 			expect(slides[1].classList.contains('swiper-slide-active'));
@@ -117,16 +117,15 @@ describe('test vwc-carousel', () => {
 
 	describe('autoplay', () => {
 		it('should move slides automatically when autoplay is true', async function () {
-			this.timeout(4000);
+			this.timeout(3000);
 			const carousel = await initCarousel(['a', 'b', 'c'], { autoplay: true });
 			let slides = extractSlides(carousel);
-
-			console.log(carousel);
 
 			expect(slides[1].dataset.key).to.equal('a');
 			expect(slides[1].classList.contains('swiper-slide-active'));
 
-			await waitInterval(3600);
+			await waitInterval(2900);
+			slides = extractSlides(carousel);
 
 			expect(slides[1].dataset.key).to.equal('b');
 			expect(slides[1].classList.contains('swiper-slide-active'));
