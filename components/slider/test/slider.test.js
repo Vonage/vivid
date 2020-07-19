@@ -1,5 +1,5 @@
 import '../vwc-slider.js';
-import { htmlToDom, waitNextTask } from '../../../utils/js/test-helpers.js';
+import { textToDocumentFragment, waitNextTask } from '../../../utils/js/test-helpers.js';
 
 describe('test vwc-slider', () => {
 	it('vwc-slider is defined as a custom element', async () => {
@@ -8,7 +8,7 @@ describe('test vwc-slider', () => {
 
 	it('vwc-slider has internal contents', async () => {
 		await customElements.whenDefined('vwc-slider');
-		const docFragContainer = htmlToDom('<vwc-slider id="slider-a"></vwc-slider>');
+		const docFragContainer = textToDocumentFragment('<vwc-slider id="slider-a"></vwc-slider>');
 		const actualElement = docFragContainer.firstElementChild;
 		document.body.appendChild(docFragContainer);
 		await waitNextTask();
