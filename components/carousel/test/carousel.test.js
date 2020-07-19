@@ -2,6 +2,7 @@ import '../vwc-carousel.js';
 import { htmlToDom, waitNextTask, waitInterval, activateComponent } from '../../../utils/js/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 chai.use(chaiDomDiff);
+
 const
 	VWC_CAROUSEL = 'vwc-carousel',
 	VWC_CAROUSEL_ITEM = 'vwc-carousel-item';
@@ -12,7 +13,7 @@ describe('test vwc-carousel', () => {
 		assert.exists(customElements.get(VWC_CAROUSEL_ITEM, 'vwc-carousel-item element is not defined'));
 	});
 
-	describe('Init', function () {
+	describe('init flow', function () {
 		it('should have the required elements', async () => {
 			const actualElement = await activateComponent(`<${VWC_CAROUSEL} id="carousel-a"></${VWC_CAROUSEL}>`);
 			expect(actualElement).dom.to.equalSnapshot();
