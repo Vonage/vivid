@@ -1,5 +1,5 @@
 import '../vwc-carousel.js';
-import { textToDocumentFragment, textToDomToParent, waitNextTask, waitInterval } from '../../../utils/js/test-helpers.js';
+import { textToDomToParent, waitNextTask, waitInterval } from '../../../utils/js/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 chai.use(chaiDomDiff);
 
@@ -88,7 +88,6 @@ describe('test vwc-carousel', () => {
 			expect(slides[3].classList.contains('swiper-slide-active'));
 		});
 
-
 		it('should slide to the left when click on prev', async function () {
 			this.timeout(3000);
 
@@ -133,8 +132,22 @@ describe('test vwc-carousel', () => {
 	});
 
 	describe('click on slide', function () {
-		// check that it works
-		// check that it works after full rotation
+		it('should preserve click listeners of slides after sliding', async () => {
+			const carousel = await initCarousel(['a', 'b', 'c']);
+			const slides = extractSlides(carousel);
+			const nextButton = carousel.querySelector('.swiper-button-next');
+
+			const clicked = [];
+			slides.forEach(s => s.addEventListener('click', e => clicked.push(e.target)));
+
+			nextButton.click();
+			nextButton.click();
+
+			await waitInterval(600);
+
+			slides.forEach(s => s.click());
+			slides.forEach((s, i) => expect(s).to.equal(clicked[i]));
+		});
 	});
 });
 
