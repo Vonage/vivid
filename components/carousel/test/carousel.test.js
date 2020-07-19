@@ -17,7 +17,7 @@ describe('test vwc-carousel', () => {
 		it('should have the required elements', async () => {
 			const actualElements = textToDomToParent(`<${VWC_CAROUSEL} id="carousel-a"></${VWC_CAROUSEL}>`, document.body);
 			await waitNextTask();
-			expect(actualElements[0]).dom.to.equalSnapshot(`
+			expect(actualElements[0]).dom.to.equal(`
 				<vwc-carousel id="carousel-a" tabindex="0" autoplay=""><!---->
 					<div class="upper-pane">
 						<div class="swiper-nav swiper-button-prev swiper-button-disabled" tabindex="-1" role="button" aria-label="Previous slide" aria-disabled="true">
