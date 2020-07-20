@@ -1,5 +1,5 @@
 import '../vwc-list.js';
-import { htmlToDom, waitNextTask } from '../../../utils/js/test-helpers.js';
+import { textToDocumentFragment, waitNextTask } from '../../../utils/js/test-helpers.js';
 
 describe('test vwc-list', () => {
 	it('vwc-list is defined as a custom element', async () => {
@@ -8,7 +8,7 @@ describe('test vwc-list', () => {
 
 	it('vwc-list has internal contents', async () => {
 		await customElements.whenDefined('vwc-list');
-		const docFragContainer = htmlToDom('<vwc-list id="list-a"></vwc-list>');
+		const docFragContainer = textToDocumentFragment('<vwc-list id="list-a"></vwc-list>');
 		const actualElement = docFragContainer.firstElementChild;
 		document.body.appendChild(docFragContainer);
 		await waitNextTask();
