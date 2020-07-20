@@ -1,6 +1,5 @@
 import '@vonage/vwc-list/vwc-list.js';
 import '@vonage/vwc-list/vwc-list-item.js';
-import '@vonage/vwc-list/vwc-check-list-item.js';
 import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 import '@vonage/vwc-icon/vwc-icon.js';
@@ -31,7 +30,6 @@ export const metaIcon = () => html`
 	<style>
 		vwc-list {
 			width: 240px;
-
 		}
 	</style>
 
@@ -53,23 +51,5 @@ export const metaIcon = () => html`
 			<span>Item D</span>
 			<vwc-icon slot="meta" class="material-icons">info</vwc-icon>
 		</vwc-list-item>
-	</vwc-list>
-`;
-
-export const checklist = () => html`
-	<style>
-		vwc-list {
-			width: 240px;
-
-		}
-	</style>
-
-	<h3>List of check boxes</h3>
-	<vwc-list multi>
-		<vwc-check-list-item selected>Item 0</vwc-check-list-item>
-		<vwc-check-list-item selected>Item 1</vwc-check-list-item>
-		<li divider role="separator" padded></li>
-		<vwc-check-list-item left selected>Item 2 (left)</vwc-check-list-item>
-		<vwc-check-list-item left>Item 3 (left)</vwc-check-list-item>
 	</vwc-list>
 `;
