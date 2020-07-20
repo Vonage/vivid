@@ -9,5 +9,5 @@ export default {
 }
 
 export const basic = () => html`
-	<vwc-icon>accessible_forward</icon-fab>
+	<vwc-icon>accessible_forward</vwc-icon>
 `;
