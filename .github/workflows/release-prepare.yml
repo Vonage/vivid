@@ -1,0 +1,62 @@
+name: Prepare Vivid for release
+
+on:
+  push:
+    tags:
+      - release-*
+
+jobs:
+  prepare-verify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          ref: master
+
+      - name: Use Node.js 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Install dependencies
+        run: |
+          npm install -g yarn
+          yarn install
+
+      # Update to a new version
+      - name: Extract release version
+        id: extractVersion
+        run: echo "::set-output name=version::$(echo ${GITHUB_REF##*/release-})"
+
+      - name: Bump version to ${{ steps.extractVersion.outputs.version }}
+        run: |
+          yarn lerna version ${{ steps.extractVersion.outputs.version }} --no-private --no-git-tag-version --no-push --yes
+          yarn changelog
+
+      # Build & Test with new version
+      - name: Build components
+        run: yarn compile
+
+      - name: Lint sources
+        run: yarn lint
+
+      - name: Test components
+        run: yarn test
+
+      # Push updated/created content to remote and Tag version
+      - name: Push changes
+        run: |
+          git fetch
+          git config user.email "vivid.ci@vonage.com"
+          git config user.name "Vivid CI"
+          git add --all
+          git commit -m "update versions to ${{ steps.extractVersion.outputs.version }}"
+          git push
+
+      - name: Tag release
+        run: |
+          git tag -a v${{ steps.extractVersion.outputs.version }} -m "tag release v${{ steps.extractVersion.outputs.version }}"
+          git push --follow-tags
+          git push origin --delete test-${{ steps.extractVersion.outputs.version }}
