@@ -25,4 +25,12 @@ export const basic = () => html`
 		<vwc-formfield label="Europe">
 		<vwc-radio name="group-b" value="value2"></vwc-radio>
 	</vwc-formfield>
+
+	<h3>Disabled</h3>
+	<vwc-formfield label="London">
+		<vwc-radio name="group-c" value="value1" disabled></vwc-radio>
+	</vwc-formfield>
+		<vwc-formfield label="New York">
+		<vwc-radio name="group-c" value="value2" checked disabled></vwc-radio>
+	</vwc-formfield>
 `;
