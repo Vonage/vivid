@@ -59,4 +59,4 @@ jobs:
         run: |
           git tag -a v${{ steps.extractVersion.outputs.version }} -m "tag release v${{ steps.extractVersion.outputs.version }}"
           git push --follow-tags
-          git push origin --delete test-${{ steps.extractVersion.outputs.version }}
+          git push origin --delete release-${{ steps.extractVersion.outputs.version }}
