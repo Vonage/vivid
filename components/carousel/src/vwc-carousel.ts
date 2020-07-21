@@ -47,7 +47,7 @@ export class VWCCarousel extends LitElement {
 
 	private slideRefs: HTMLElement[] = [];
 
-	firstUpdated(): void {
+	protected firstUpdated(): void {
 		this.swiper = new Swiper(this.swiperContainer as HTMLElement, this.swiperOptions);
 		this.collectSlideRefs(this.swiper);
 		this.moveFirstIfNeeded(this.swiper);
@@ -77,6 +77,7 @@ export class VWCCarousel extends LitElement {
 		super.connectedCallback();
 		this.ensureStyleApplied();
 		this.tabIndex = 0;
+
 	}
 
 	private ensureStyleApplied() {

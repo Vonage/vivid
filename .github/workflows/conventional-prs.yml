@@ -7,7 +7,7 @@ on:
       - synchronize
 
 jobs:
-  main:
+  lint-pr:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -16,4 +16,4 @@ jobs:
         run: npm install @actions/core @actions/github @commitlint/config-conventional @commitlint/lint @commitlint/load
 
       - name: Checks the PR title
-        run: node ./scripts/prLint
+        run: node ./scripts/pr-lint

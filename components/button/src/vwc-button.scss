@@ -1,3 +1,4 @@
+@use 'sass:selector';
 @use '@material/button';
 
 .mdc-button {
@@ -13,6 +14,70 @@
   border-color: var(--vvd-color-disabled-fill-color);
 }
 
-.vwc-button--pill {
-	border-radius: 40px;
+.pill {
+  border-radius: 40px;
 }
+
+// ! move to utils as this might be a common
+// ! mixin for other components such as call-out
+@mixin connotations-context(
+  $selector: ':host([connotation-specifier])',
+  $default: primary
+) {
+  $connotations: primary cta success error warning;
+
+  @each $connotation in $connotations {
+    $attr: '[connotation="#{$connotation}"i]';
+
+    $scoped-selector: $selector; // prevents overriding argument
+
+    $scoped-selector: selector.replace(
+      #{$selector},
+      '[connotation-specifier]',
+      #{$attr}
+    );
+
+    @if ($connotation == $default) {
+      $default-selector: selector.replace(
+        #{$selector},
+        '[connotation-specifier]',
+        ':not([connotation])'
+      );
+      $scoped-selector: $default-selector, $scoped-selector;
+    }
+
+    #{$scoped-selector} {
+      --mdc-theme-primary: var(--vvd-color-#{$connotation}-background);
+      --mdc-theme-on-primary: var(--vvd-color-#{$connotation}-foreground);
+    }
+  }
+}
+
+@include connotations-context(
+  ':host([unelevated][connotation-specifier])'
+); // ! can add argument to define a default connotation (cta);
+
+// :host([unelevated]) {
+//   color: var(--vvd-color-primary-foreground);
+// }
+
+// :host([unelevated]) .normal:not(:disabled) {
+//   background-color: var(--vvd-color-primary-background);
+// }
+
+// :host([unelevated]) .call-to-action:not(:disabled) {
+//   background-color: var(--vvd-color-call-to-action);
+// }
+
+// :host([unelevated]) .success:not(:disabled) {
+//   background-color: var(--vvd-color-success);
+// }
+
+// :host([unelevated]) .error:not(:disabled) {
+//   background-color: var(--vvd-color-error);
+// }
+
+// :host([unelevated]) .warning:not(:disabled) {
+//   color: var(--vvd-color-primary-background);
+//   background-color: var(--vvd-color-warning);
+// }

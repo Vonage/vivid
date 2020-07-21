@@ -1,0 +1,70 @@
+name: Release Vivid
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  build-publish:
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_VIVID_DEMO_PROD_ACCESS }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_VIVID_DEMO_PROD_SECRET }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup NodeJS 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: 'https://npm.pkg.github.com'
+
+      - name: Install dependencies
+        run: |
+          npm install -g yarn
+          yarn install
+
+      # Build and publish
+      - name: Build components
+        run: yarn compile
+
+      - name: Publish components
+        run: yarn lerna publish from-package --registry https://npm.pkg.github.com --no-git-tag-version --no-push --yes
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Notify community
+      - name: Build changelog for Slack notification
+        run: |
+          yarn add @actions/core conventional-changelog-cli -W
+          yarn changelog:publish
+
+      # - name: Notify slack
+      #   uses: rtCamp/action-slack-notify@master
+      #   env:
+      #     SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+      #     SLACK_CHANNEL: 'vivid-engineering'
+      #     MSG_MINIMAL: true
+      #     SLACK_ICON_EMOJI: ':vivid:'
+      #     SLACK_USERNAME: Vivid CI
+      #     SLACK_TITLE: Vivid Release Notice
+      #     SLACK_MESSAGE: Hey!!! We've just released a new Vivid!!! ${{ VERSION_CHANGE_LOG }}
+
+      # Build and deploy showcase
+      - name: Build storybook
+        run: yarn storybook:build
+
+      - name: Create deploy timestamp/version
+        run: echo ::set-env name=STORYBOOK_DEPLOY_TIMESTAMP::$(jq -r '.timestamp' ./.storybook/static/build-details.json)
+
+      - name: Deploy showcase versioned as ${{ env.STORYBOOK_DEPLOY_TIMESTAMP }}
+        run: aws s3 sync ./.out/ s3://${{ secrets.AWS_VIVID_DEMO_PROD_BUCKET }}/${{ env.STORYBOOK_DEPLOY_TIMESTAMP }}
+
+      - name: Update CloudFront distribution root object ${{ env.STORYBOOK_DEPLOY_TIMESTAMP }}
+        run: aws cloudfront update-distribution --id ${{ secrets.AWS_VIVID_DEMO_PROD_DISTRIBUTION }} --default-root-object ${{ env.STORYBOOK_DEPLOY_TIMESTAMP }}/index.html
+
+      - name: Invalidate CloudFront distribution root object's cache
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_VIVID_DEMO_PROD_DISTRIBUTION }} --paths "/"

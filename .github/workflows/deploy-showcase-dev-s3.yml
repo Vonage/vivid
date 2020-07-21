@@ -1,34 +1,31 @@
 name: Build & Deploy Showcase (Dev)
 
 on:
-  push:
-    branches: [issue/fix-gray]
   pull_request:
     types: [closed]
-    branches: [develop]
+    branches: [master]
 
 jobs:
-  build-and-deploy-demo-dev:
+  build-deploy-demo-dev:
     runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_B }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_SECRET_B }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.PAT }}
-          submodules: true
 
       - name: Setup NodeJS 12
         uses: actions/setup-node@v1
         with:
           node-version: 12
 
-      - name: Install yarn
-        run: npm install -g yarn
-
       - name: Install dependencies
-        run: yarn install
+        run: |
+          npm install -g yarn
+          yarn install
 
       - name: Build storybook
         run: yarn storybook:build
@@ -37,19 +34,10 @@ jobs:
         run: echo ::set-env name=STORYBOOK_DEPLOY_TIMESTAMP::$(jq -r '.timestamp' ./.storybook/static/build-details.json)
 
       - name: Deploy showcase versioned as ${{ env.STORYBOOK_DEPLOY_TIMESTAMP }}
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_B }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_SECRET_B }}
         run: aws s3 sync ./.out/ s3://${{ secrets.AWS_S3_BUCKET_B }}/${{ env.STORYBOOK_DEPLOY_TIMESTAMP }}
 
       - name: Update CloudFront distribution root object ${{ env.STORYBOOK_DEPLOY_TIMESTAMP }}
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_B }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_SECRET_B }}
         run: aws cloudfront update-distribution --id ${{ secrets.AWS_CF_DISTRIBUTION_ID_B }} --default-root-object ${{ env.STORYBOOK_DEPLOY_TIMESTAMP }}/index.html
 
       - name: Invalidate CloudFront distribution root object's cache
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_B }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_SECRET_B }}
         run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_CF_DISTRIBUTION_ID_B }} --paths "/"
