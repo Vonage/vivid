@@ -1,0 +1,29 @@
+name: Test Yonatan
+
+on:
+  push:
+    branches:
+      - 'yonatan-*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: master
+          fetch-depth: 0
+
+      - name: Use Node.js 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Install dependencies
+        run: |
+          npm install -g yarn
+          yarn install
+
+      - name: Get the changes
+        run: yarn changelog
