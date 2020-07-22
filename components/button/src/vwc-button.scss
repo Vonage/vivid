@@ -4,10 +4,12 @@
 .mdc-button {
   @include button.height(40px);
 
-  border-radius: 6px;
-  font-weight: 600;
-  letter-spacing: normal;
-  text-transform: none;
+	font-size: 14px;
+	font-weight: 600;
+	font-stretch: 50%;
+	letter-spacing: initial;
+  text-transform: initial;
+	border-radius: 6px;
 }
 
 :host([disabled]) .mdc-button.mdc-button--outlined {
