@@ -3,9 +3,9 @@ import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
-  title: 'Atoms|Button',
-  component: 'vwc-button',
-  decorators: [withA11y],
+	title: 'Atoms|Button',
+	component: 'vwc-button',
+	decorators: [withA11y],
 };
 
 export const basic = () => html`
@@ -33,21 +33,10 @@ export const basic = () => html`
   <h3>Filled</h3>
   <div class="container">
     <vwc-button layout="filled">Normal</vwc-button>
-    <vwc-button layout="filled" connotation="cta" icon="info"
-      >Call to action</vwc-button
-    >
-    <vwc-button layout="filled" connotation="success" icon="code"
-      >Success</vwc-button
-    >
-    <vwc-button layout="filled" connotation="error" icon="code"
-      >Error</vwc-button
-    >
-    <vwc-button layout="filled" connotation="warning" icon="info"
-      >Warning</vwc-button
-    >
-    <vwc-button layout="filled" connotation="warning" disabled icon="code"
-      >Disabled</vwc-button
-    >
+    <vwc-button layout="filled" connotation="cta" icon="info">Call to action</vwc-button>
+    <vwc-button layout="filled" connotation="success" icon="code">Success</vwc-button>
+    <vwc-button layout="filled" connotation="error" icon="code">Error</vwc-button>
+    <vwc-button layout="filled" connotation="error" disabled icon="code">Disabled</vwc-button>
   </div>
 
   <h3>Pill shape</h3>
