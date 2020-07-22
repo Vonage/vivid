@@ -14,12 +14,13 @@
   --vvd-color-alternate-secondary-background: #ffffff;
   --vvd-color-alternate-secondary-foreground: #131415;
   --vvd-color-checked: var(--vvd-color-base-foreground);
-  --vvd-color-unchecked: #c2c4cc;
-  --vvd-color-idle: #ced0d7;
+  --vvd-color-unchecked: #74767a;
+  --vvd-color-disabled-unchecked: #afb0b8;
+  --vvd-color-idle: #c2c4cc;
+  --vvd-color-alternate-idle: #f3f3f5;
   --vvd-color-disabled-fill-color: #ced0d7;
+  --vvd-color-alternate-disabled-fill-color: #f3f3f5;
   --vvd-color-disabled-ink-color: #74767a;
-  --vvd-color-base-background: #ffffff;
-  --vvd-color-base-foreground: #131415;
 
   --vvd-color-success-background: #1d7e67;
   --vvd-color-success-foreground: #ffffff;
