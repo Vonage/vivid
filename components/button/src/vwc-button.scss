@@ -5,9 +5,6 @@
 .mdc-button {
   @include button.height(40px);
 	@include typography.font-combo('Body2Bold');
-	//font-size: 14px;
-	//font-weight: 600;
-	//font-stretch: 50%;
 	letter-spacing: initial;
   text-transform: initial;
 	border-radius: 6px;
