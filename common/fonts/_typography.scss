@@ -1,0 +1,62 @@
+@mixin font-combo($combo-id){
+		@if($combo-id == "XLarge"){
+		font-family: var(--vvd-font-family-spezia);
+		font-weight: 500;
+		font-stretch: 75%;
+		font-size: 44px;
+	}
+	@if($combo-id == "Large"){
+		font-family: var(--vvd-font-family-spezia);
+		font-weight: 500;
+		font-stretch: 75%;
+		font-size: 32px;
+	}
+	@if($combo-id == "Medium"){
+		font-family: var(--vvd-font-family-spezia);
+		font-weight: 500;
+		font-stretch: 75%;
+		font-size: 24px;
+	}
+	@if($combo-id == "Heading"){
+		font-family: var(--vvd-font-family-spezia);
+		font-weight: 500;
+		font-stretch: 75%;
+		font-size: 20px;
+	}
+	@if($combo-id == "SubHeading"){
+		font-family: var(--vvd-font-family-spezia);
+		font-weight: 500;
+		font-stretch: 75%;
+		font-size: 16px;
+	}
+	@if($combo-id == "Body1"){
+		font-family: var(--vvd-font-family-spezia);
+		font-weight: 400;
+		font-stretch: 50%;
+		font-size: 16px;
+	}
+	@if($combo-id == "Body1Bold"){
+		font-family: var(--vvd-font-family-spezia);
+		font-weight: 600;
+		font-stretch: 50%;
+		font-size: 16px;
+	}
+	@if($combo-id == "Body2"){
+		font-family: var(--vvd-font-family-spezia);
+		font-weight: 400;
+		font-stretch: 50%;
+		font-size: 14px;
+	}
+	@if($combo-id == "Body2Bold"){
+		font-family: var(--vvd-font-family-spezia);
+		font-weight: 600;
+		font-stretch: 50%;
+		font-size: 14px;
+	}
+	@if($combo-id == "Caption"){
+		font-family: var(--vvd-font-family-spezia);
+		font-weight: 600;
+		font-stretch: 50%;
+		font-size: 12px;
+	}
+}
