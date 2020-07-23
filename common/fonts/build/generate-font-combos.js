@@ -29,7 +29,7 @@ const FONT_DESIGN_COMBINATIONS = {
 		"font-stretch": "75%",
 		"font-size": "16px"
 	},
-	"Body": {
+	"Body1": {
 		"font-family": "var(--vvd-font-family-spezia)",
 		"font-weight": "400",
 		"font-stretch": "50%",
