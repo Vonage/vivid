@@ -12,7 +12,8 @@ describe('vwc-slider', () => {
 		it('vwc-slider has internal contents', async () => {
 			const actualElements = textToDomToParent('<vwc-slider id="slider-a"></vwc-slider>', document.body);
 			await waitNextTask();
-			expect(actualElements[0]).shadowDom.to.equalSnapshot();
+			await waitNextTask();
+			expect(actualElements[0]).shadowDom.to.equalSnapshot({ ignoreAttributes: ['style'] });
 		});
 	});
 });
