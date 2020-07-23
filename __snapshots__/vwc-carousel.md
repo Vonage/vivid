@@ -1,4 +1,4 @@
-# `test vwc-carousel`
+# `vwc-carousel`
 
 ## `init flow`
 
