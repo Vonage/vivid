@@ -1,5 +1,5 @@
 import scheme from '@vonage/vvd-scheme/vvd-scheme.js';
-import fonts from '@vonage/vvd-fonts/vvd-fonts-b.js';
+import fonts from '@vonage/vvd-fonts/vvd-fonts.js';
 
 Promise.all([
 	scheme.init(),

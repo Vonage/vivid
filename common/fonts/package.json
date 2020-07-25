@@ -6,6 +6,12 @@
 	"license": "ISC",
 	"main": "vvd-fonts.js",
 	"module": "vvd-fonts.js",
+	"files": [
+		"*.js",
+		"*.d.ts",
+		"*.js.map",
+		"*.css"
+	],
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
