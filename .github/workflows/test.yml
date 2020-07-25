@@ -20,7 +20,7 @@ jobs:
         id: export_message
         run: |
           description="$(npx conventional-changelog-cli --preset angular --release-count 5)"
-          npx conventional-changelog-cli --preset angular --release-count 5
+          git log --pretty="%h %d %s" --decorate
           description="${description//'%'/'%25'}"
           description="${description//$'\n'/'%0A'}"
           description="${description//$'\r'/'%0D'}"
