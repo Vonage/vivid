@@ -16,8 +16,13 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12
-      - name: Build changelog for Slack notification
+      - name: Description
         id: export_message
-        run: echo "::set-output name=message::$(npx conventional-changelog-cli --preset angular --release-count 5)"
+        run: |
+          description="$(npx conventional-changelog-cli --preset angular --release-count 5)"
+          description="${description//'%'/'%25'}"
+          description="${description//$'\n'/'%0A'}"
+          description="${description//$'\r'/'%0D'}"
+          echo "::set-output name=message::$description"
       - name: Test
         run: echo ${{steps.export_message.outputs.message}}
