@@ -12,6 +12,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          ref: master
+          token: ${{ secrets.CI_AT }}
       - name: Setup NodeJS 12
         uses: actions/setup-node@v1
         with:
