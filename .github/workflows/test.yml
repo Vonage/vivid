@@ -20,4 +20,4 @@ jobs:
         id: export_message
         run: echo "::set-output name=message::$(npx conventional-changelog-cli --preset angular --release-count 1)"
       - name: Test
-        run: echo ${steps.export_message.outputs.message}
+        run: echo ${{steps.export_message.outputs.message}}
