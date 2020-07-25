@@ -23,11 +23,10 @@ jobs:
       - name: Description
         id: export_message
         run: |
-          #description=
-          #git log --pretty="%h %d %s" --decorate
-          #description="${description//'%'/'%25'}"
-          #description="${description//$'\n'/'%0A'}"
-          #description="${description//$'\r'/'%0D'}"
-          echo "::set-output name=message::$(npx conventional-changelog-cli --preset angular --release-count 5)"
+          description="$(npx conventional-changelog-cli --preset angular --release-count 5)"
+          description="${description//'%'/'%25'}"
+          description="${description//$'\n'/'%0A'}"
+          description="${description//$'\r'/'%0D'}"
+          echo "::set-output name=message::$description"
       - name: Test
         run: echo "${{steps.export_message.outputs.message}}"
