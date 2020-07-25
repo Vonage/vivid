@@ -23,10 +23,18 @@ jobs:
       - name: Description
         id: export_message
         run: |
-          description="$(npx conventional-changelog-cli --preset angular --release-count 5)"
+          description="$(npx conventional-changelog-cli --preset angular --release-count 1)"
           description="${description//'%'/'%25'}"
           description="${description//$'\n'/'%0A'}"
           description="${description//$'\r'/'%0D'}"
           echo "::set-output name=message::$description"
-      - name: Test
-        run: echo "${{steps.export_message.outputs.message}}"
+      - name: Notify slack
+        uses: rtCamp/action-slack-notify@master
+        env:
+         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+         SLACK_CHANNEL: 'vivid-core'
+         MSG_MINIMAL: true
+         SLACK_ICON_EMOJI: ':vivid:'
+         SLACK_USERNAME: Vivid CI
+         SLACK_TITLE: Vivid Release Notice
+         SLACK_MESSAGE: Hey!!! We've just released a new Vivid!!! ${{ steps.export_message.outputs.message }}
