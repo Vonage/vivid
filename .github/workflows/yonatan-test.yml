@@ -1,6 +1,8 @@
 name: yonatan-test
 
-on: [workflow_dispatch]
+on: 
+  push
+  
 
 jobs:
   greeting:
