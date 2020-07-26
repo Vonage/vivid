@@ -1,4 +1,4 @@
-name: Greetings
+name: Changelog-test
 
 on: [workflow_dispatch]
 
@@ -14,6 +14,6 @@ jobs:
     # Notify community
     - name: Build changelog for Slack notification
       run: |
-        yarn add @actions/core conventional-changelog-cli -W
-        yarn changelog:publish
+        npm i @actions/core conventional-changelog-cli -W
+        npm run changelog:publish
         echo 'The changelog is: ' $VERSION_CHANGE_LOG
