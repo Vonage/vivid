@@ -1,7 +1,6 @@
 name: yonatan-test
 
-on: 
-  push
+on: [push, workflow_dispatch]
   
 
 jobs:
@@ -12,6 +11,7 @@ jobs:
       uses: actions/checkout@v2
       with:
         token: ${{ secrets.CI_AT }}
+        fetch-depth: 0
           
     # Notify community
     - name: Build changelog for Slack notification
