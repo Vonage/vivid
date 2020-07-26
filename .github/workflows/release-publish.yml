@@ -43,8 +43,8 @@ jobs:
 
       # Notify community
       - name: Build changelog for Slack notification
-          id: export_message
-          run: echo "::set-output name=message::$(npx conventional-changelog-cli --preset angular --release-count 1)"
+        id: export_message
+        run: echo "::set-output name=message::$(npx conventional-changelog-cli --preset angular --release-count 1)"
 
       - name: Notify slack
         uses: rtCamp/action-slack-notify@master
