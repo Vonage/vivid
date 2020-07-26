@@ -5,7 +5,7 @@
 	justify-content: center;
 	color: var(--vvd-color-surface-foreground);
 	background-color: var(--vvd-color-base-background);
-	border: 1px solid #ced0d7;
+	border: 1px solid var(--vvd-color-disabled-fill-color);
 	box-sizing: border-box;
 	overflow: hidden;
 	outline: none;
