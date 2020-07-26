@@ -1,4 +1,4 @@
-name: Changelog-test
+name: yonatan-test
 
 on: [workflow_dispatch]
 
