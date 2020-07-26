@@ -31,5 +31,5 @@ jobs:
         run: echo "::set-output name=message::$(npx conventional-changelog-cli --preset angular --release-count 1)"
 
       - name: Notify slack mock
-        run: echo 'Changelog - ' "$steps.export_message.outputs.message"
+        run: echo 'Changelog - ' ${{steps.export_message.outputs.message}}
         
