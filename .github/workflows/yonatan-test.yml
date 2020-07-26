@@ -1,0 +1,20 @@
+name: Greetings
+
+on: 
+  workflow_dispatch
+
+jobs:
+  greeting:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.CI_AT }}
+          
+    # Notify community
+    - name: Build changelog for Slack notification
+      run: |
+        yarn add @actions/core conventional-changelog-cli -W
+        yarn changelog:publish
+        echo 'The changelog is: ' $VERSION_CHANGE_LOG
