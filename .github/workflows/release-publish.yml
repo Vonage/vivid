@@ -36,7 +36,7 @@ jobs:
       - name: Build components
         run: yarn compile
 
-      - name: Publish components
+      #- name: Publish components
       #  run: yarn lerna publish from-package --registry https://npm.pkg.github.com --no-git-tag-version --no-push --yes
       #  env:
       #    NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
