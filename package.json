@@ -30,7 +30,7 @@
 		"storybook:build": "node ./scripts/storybook/prepare-sb-details.js && yarn wca:custom-elements && build-storybook -c .storybook -o .out -s ./.storybook/static && node ./scripts/storybook/update-sb-base-url.js",
 		"storybook:start": "node scripts/storybook/prepare-sb-details.js && yarn wca:custom-elements && start-storybook -s ./.storybook/static -p 9000",
 		"compile": "yarn compile:design-tokens && yarn compile:styles && yarn compile:typescript",
-		"compile:styles": "node ./common/fonts/build/embed-fonts.js && ./scripts/build-styles.sh",
+		"compile:styles": "node ./common/fonts/build/generate-font-combos.js && ./scripts/build-styles.sh",
 		"compile:typescript": "tsc --build",
 		"compile:design-tokens": "node ./design-tokens/renderers/index.js",
 		"prestart": "yarn compile",
