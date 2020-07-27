@@ -28,15 +28,14 @@ export type ButtonShape = typeof shapes;
  */
 @customElement('vwc-button')
 export class VWCButton extends MWCButton {
-	@property({ type: String, reflect: true }) layout: ButtonLayout[number] =
-		'text';
+	@property({ type: String, reflect: true })
+	layout: ButtonLayout[number] = 'text';
 
-	@property({ type: String, reflect: true }) connotation?:
-		| ButtonConnotation[number]
-		| undefined;
+	@property({ type: String, reflect: true })
+	connotation?: | ButtonConnotation[number] | undefined;
 
-	@property({ type: String, reflect: true }) shape: ButtonShape[number] =
-		'rounded';
+	@property({ type: String, reflect: true })
+	shape: ButtonShape[number] = 'rounded';
 
 	protected updated(): void {
 		const layout: ButtonLayout[number] = this.layout;
