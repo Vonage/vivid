@@ -12,6 +12,8 @@ describe('test vvd-fonts service', () => {
 		//	create test element, to measure width of
 		const testElement = document.createElement('span');
 		testElement.textContent = 'www.iii.com';
+		testElement.style.fonSize = '16px';
+		testElement.style.fontStretch = '50%';
 		testElement.style.fontFamily = 'var(--vvd-font-family-spezia), monospace';
 
 		//	first, append it as is, take the width (monospaced, since no fonts init ran yet)
@@ -24,6 +26,6 @@ describe('test vvd-fonts service', () => {
 		//	third, measure the element again (now should have non-monospaced fonting)
 		const postWidth = testElement.offsetWidth;
 
-		assert.isTrue(postWidth > preWidth, 'element width after should be higher than before');
+		assert.isTrue(postWidth !== preWidth, 'element width after should be other than before');
 	});
 });

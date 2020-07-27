@@ -1,30 +1,54 @@
-async function resolveVariableFontsCSS(): Promise<string> {
-  return (await import('./fonts-variable.css')).style.cssText;
-}
+export default Object.freeze({
+	init: init,
+});
 
-async function resolveStaticFontsCSS(): Promise<string> {
-  return (await import('./fonts-static.css')).style.cssText;
-}
+const
+	FONTS_BASE_URL_TOKEN = 'FONTS_BASE_URL',
+	CDN_BASE_URL = '//dpnf5z0hinc7q.cloudfront.net/fonts/v1';
 
 async function init(): Promise<void> {
-  const st = performance.now();
-	const variableSupported = CSS.supports && CSS.supports('font-variation-settings', '"wdth" 9');
+	const st = performance.now();
 
-  const cssText = await (variableSupported ? resolveVariableFontsCSS() : resolveStaticFontsCSS());
-  const ds = document.createElement('style');
-  ds.type = 'text/css';
-  ds.innerHTML = cssText;
-  document.body.appendChild(ds);
-  console.info(
-    `Vivid Fonts (${variableSupported ? 'variable' : 'static'}) initialization took ${Math.floor(
-      performance.now() - st,
-    )}ms`,
-  );
+	const testElement = setupInitTestElement();
+	const initialWidth = testElement.offsetWidth;
+	const cssDefs = await import('./vvd-fonts.css.js');
+	const cssText = cssDefs.style.cssText;
+	const finalCSS = cssText.replace(new RegExp(FONTS_BASE_URL_TOKEN, 'g'), CDN_BASE_URL);
+	const ds = document.createElement('style');
+	ds.type = 'text/css';
+	ds.innerHTML = finalCSS;
+	document.head.appendChild(ds);
+	await ensureInit(testElement, initialWidth);
+	cleanInitTestElement(testElement);
+	console.info(
+		`Vivid Fonts initialization took ${Math.floor(performance.now() - st)}ms`,
+	);
 }
 
-export default Object.freeze({
-  init: init,
-});
+function setupInitTestElement(): HTMLElement {
+	const result = document.createElement('span');
+	result.textContent = 'wwwiii';
+	result.style.cssText = 'position:absolute;top:-1000px;font-family:var(--vvd-font-family-spezia),monospace;visibility:hidden';
+	document.body.appendChild(result);
+	return result;
+}
+
+async function ensureInit(testElement: HTMLElement, initialWidth: number): Promise<void> {
+	return new Promise(resolve => {
+		function innerTest() {
+			if (testElement.offsetWidth === initialWidth) {
+				setTimeout(innerTest, 25);
+			} else {
+				resolve();
+			}
+		}
+		innerTest();
+	});
+}
+
+function cleanInitTestElement(testElement: HTMLElement): void {
+	testElement.remove();
+}
 
 // !TODO when moving to cdn consider using the following
 // <link rel="preconnect"
