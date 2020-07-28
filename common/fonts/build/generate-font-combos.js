@@ -2,6 +2,8 @@ const
 	fs = require('fs'),
 	path = require('path');
 
+const [outputFilename] = process.argv.slice(2);
+
 const
 	OUTPUT_SCSS = "../_typography.scss",
 	FONT_DESIGN_COMBINATIONS = {
@@ -67,11 +69,30 @@ const
 		}
 	};
 
-const outputSassFile = fs.createWriteStream(path.join(__dirname, OUTPUT_SCSS));
-outputSassFile.end(`@mixin font-combo($combo-id){
-	${Object
-		.entries(FONT_DESIGN_COMBINATIONS)
-		.map(([identifier, styles])=> `\t@if($combo-id == "${identifier}"){${Object.entries(styles).map(([modifier, value])=>"\n\t\t"+[modifier, value].join(': ') + ";").join('')+"\n\t"}}`)
-		.join('\n')
-}
-}`);
+const
+	mixinTemplate = (fontDesignCombos)=> `@mixin font-combo($combo-id){
+			${Object
+			.entries(fontDesignCombos)
+			.map(([identifier, styles])=> `\t@if($combo-id == "${identifier}"){${Object.entries(styles).map(([modifier, value])=>"\n\t\t"+[modifier, value].join(': ') + ";").join('')+"\n\t"}}`)
+			.join('\n')
+		}
+	}`,
+	variablesTemplate = (function(){
+		const kebabCase = (txt)=> txt.toLowerCase().replace(/[_\s]+/g, '-');
+		return (prefix = "vvd")=> (typographyCombos)=> {
+			return Object
+				.entries(typographyCombos)
+				.flatMap(([identifier, styles])=>{
+						return Object
+							.entries(styles)
+							.map(([styleName, styleValue])=>{
+								return `$${[[prefix, identifier, styleName].map(kebabCase).join('-'), styleValue].join(': ')}`;
+							});
+				})
+				.concat([''])
+				.join(";\n");
+		};
+	})();
+
+let outStream = outputFilename === "--" ? process.stdout : fs.createWriteStream(path.join(__dirname, outputFilename || OUTPUT_SCSS));
+outStream.end([mixinTemplate, variablesTemplate('vvd')].map((template)=> template(FONT_DESIGN_COMBINATIONS)).join('\n'));
