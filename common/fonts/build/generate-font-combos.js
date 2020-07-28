@@ -78,7 +78,7 @@ const
 		}
 	}`,
 	variablesTemplate = (function(){
-		const kebabCase = (txt)=> txt.toLowerCase().replace(/[_\s]+/, '-ß');
+		const kebabCase = (txt)=> txt.toLowerCase().replace(/[_\s]+/g, '-');
 		return (prefix = "vvd")=> (typographyCombos)=> {
 			return Object
 				.entries(typographyCombos)
