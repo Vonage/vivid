@@ -1,0 +1,27 @@
+{
+  "name": "@vonage/vvd-style",
+  "version": "0.2.4",
+  "description": "A global Vivid CSS stylesheet",
+  "author": "",
+  "homepage": "",
+  "license": "ISC",
+  "main": "lib/style.js",
+  "files": [
+    "./vvd-style.css"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Vonage/vivid/tree/master/components/style#readme"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "scss": "node ./scripts/build_style.js ./src/vvd-style.scss > vvd-style.css"
+  },
+  "dependencies": {
+    "@vonage/vvd-fonts": "^0.2.4"
+  },
+	"devDependencies": {
+		"node-sass-import": "^2.0.1",
+		"sass": "^1.26.10"
+	}
+}

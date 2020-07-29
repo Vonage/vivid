@@ -1,0 +1,21 @@
+@use '@vonage/vvd-fonts/_typography.scss' as typography;
+
+h1 {
+	@include typography.font-combo("XLarge");
+}
+
+h2 {
+	@include typography.font-combo("Large");
+}
+
+h3 {
+	@include typography.font-combo("Medium");
+}
+
+h4 {
+	@include typography.font-combo("Heading");
+}
+
+h5 {
+	@include typography.font-combo("SubHeading");
+}
