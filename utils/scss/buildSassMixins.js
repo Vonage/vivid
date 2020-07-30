@@ -2,7 +2,7 @@ const
 	fs = require('fs'),
 	path = require('path');
 const {argv} = require('yargs');
-const outputPath = path.join(process.cwd(), 'common/mixins');
+const outputPath = path.join(process.cwd(), 'design-tokens/mixins');
 
 if (!fs.existsSync(outputPath)){
 	fs.mkdirSync(outputPath);
