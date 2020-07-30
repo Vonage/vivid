@@ -55,5 +55,3 @@ storybook-static
 lerna-debug.log
 
 custom-elements.json
-
-design-tokens/mixins
