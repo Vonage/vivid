@@ -1,7 +1,9 @@
+@use '@vonage/vvd-fonts/typography' as typography;
+
 :host {
   --mdc-theme-primary: #131415;
   --mdc-theme-error: #e84545;
-	--mdc-text-field-filled-border-radius: 6px; 
+	--mdc-text-field-filled-border-radius: 6px;
   --mdc-text-field-label-ink-color: #616266;
   --mdc-text-field-ink-color: var(--mdc-theme-primary);
   --mdc-text-field-disabled-ink-color: #9b9da3;
@@ -9,6 +11,7 @@
   --mdc-text-field-outlined-hover-border-color:	var(--mdc-theme-primary);
   --mdc-text-field-outlined-disabled-border-color: #e1e2e6;
 
+	@include typography.font-combo('Body2');
   display: block;
 }
 
@@ -33,11 +36,10 @@
     }
 
     .mdc-text-field__input {
-      --mdc-typography-subtitle1-font-size: 0.875rem;
-
+			@include typography.font-combo('Body2');
+      width: 100%;
       height: 32px;
       padding: 0 14px;
-      width: 100%;
     }
 
     .mdc-floating-label {
@@ -46,7 +48,7 @@
       top: 24px;
       transition: transform 0.15s, font-size 0.15s;
     }
-    
+
     .mdc-floating-label--float-above {
       --mdc-theme-primary: var(--mdc-text-field-label-ink-color);
 

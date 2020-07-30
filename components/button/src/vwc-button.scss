@@ -1,13 +1,13 @@
 @use 'sass:selector';
 @use '@material/button';
+@use '@vonage/vvd-fonts/typography' as typography;
 
 .mdc-button {
   @include button.height(40px);
-
-  border-radius: 6px;
-  font-weight: 600;
-  letter-spacing: normal;
-  text-transform: none;
+	@include typography.font-combo('Body2Bold');
+	letter-spacing: initial;
+  text-transform: initial;
+	border-radius: 6px;
 }
 
 :host([disabled]) .mdc-button.mdc-button--outlined {
@@ -24,7 +24,7 @@
   $selector: ':host([connotation-specifier])',
   $default: primary
 ) {
-  $connotations: primary cta success error warning;
+  $connotations: primary cta success error;
 
   @each $connotation in $connotations {
     $attr: '[connotation="#{$connotation}"i]';
@@ -55,29 +55,4 @@
 
 @include connotations-context(
   ':host([unelevated][connotation-specifier])'
-); // ! can add argument to define a default connotation (cta);
-
-// :host([unelevated]) {
-//   color: var(--vvd-color-primary-foreground);
-// }
-
-// :host([unelevated]) .normal:not(:disabled) {
-//   background-color: var(--vvd-color-primary-background);
-// }
-
-// :host([unelevated]) .call-to-action:not(:disabled) {
-//   background-color: var(--vvd-color-call-to-action);
-// }
-
-// :host([unelevated]) .success:not(:disabled) {
-//   background-color: var(--vvd-color-success);
-// }
-
-// :host([unelevated]) .error:not(:disabled) {
-//   background-color: var(--vvd-color-error);
-// }
-
-// :host([unelevated]) .warning:not(:disabled) {
-//   color: var(--vvd-color-primary-background);
-//   background-color: var(--vvd-color-warning);
-// }
+);

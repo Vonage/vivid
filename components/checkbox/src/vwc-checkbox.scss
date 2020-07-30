@@ -1,22 +1,20 @@
 :host {
 	--mdc-checkbox-unchecked-color: var(--vvd-color-unchecked);
-	--mdc-checkbox-disabled-color: rgba(19, 20, 21, 0.3);
-	--mdc-checkbox-mark-color: white;
+	--mdc-checkbox-disabled-color: var(--vvd-color-disabled-unchecked);
 }
 
 .mdc-checkbox {
 	padding: 0;
-
-	&:hover,
-	.mdc-checkbox__native-control:focus + .mdc-checkbox__background {
-		--mdc-checkbox-unchecked-color: var(--vvd-color-base-foreground);
-	}
 
 	&,
 	.mdc-checkbox__background,
 	.mdc-checkbox__native-control {
 		width: 22px;
 		height: 22px;
+	}
+
+	&--touch {
+		margin: 0;
 	}
 	
 	.mdc-checkbox__native-control {
@@ -29,7 +27,8 @@
 		left: 0;
 		border-width: 2px;
 		border-radius: 3px;
-		transition: border-color 0.2s !important;
+		transition-property: background-color, border-color !important;
+		transition-duration: 0.2s !important;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -46,9 +45,27 @@
 		width: 12px;
 	}
 
-	.mdc-checkbox__native-control[disabled]:not(:checked):not(:indeterminate):not([data-indeterminate="true"]) ~ .mdc-checkbox__background {
-		--mdc-checkbox-disabled-color: rgba(225, 226, 230, 1);
-		background-color: #f3f3f5;
+	.mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate="true"]) {
+		~ .mdc-checkbox__background {
+			background-color: var(--vvd-color-alternate-idle);
+		}
+
+		&:hover,
+		&:focus {
+			~ .mdc-checkbox__background {
+				--mdc-checkbox-unchecked-color: var(--vvd-color-base-foreground);
+
+				background-color: var(--vvd-color-base-background);
+			}
+		}
+	}
+
+	.mdc-checkbox__native-control[disabled]:checked,
+	.mdc-checkbox__native-control[disabled]:indeterminate, 
+	.mdc-checkbox__native-control[data-indeterminate="true"][disabled] {
+		~ .mdc-checkbox__background {
+			--mdc-checkbox-disabled-color: rgba(19, 20, 21, 0.3);
+		}
 	}
 }
 
