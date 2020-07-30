@@ -14,6 +14,5 @@ describe('test vwc-menu', () => {
 		await waitNextTask();
 		const actualElement = docFragContainer[0];
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
-
 	});
 });
