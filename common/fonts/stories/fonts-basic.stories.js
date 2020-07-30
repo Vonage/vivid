@@ -1,25 +1,25 @@
 import { html } from 'lit-element';
 import { withA11y } from '@storybook/addon-a11y';
-import { withKnobs, number } from "@storybook/addon-knobs";
+import { withKnobs, number } from '@storybook/addon-knobs';
 
 export default {
 	title: 'Core/Fonts',
 	decorators: [withA11y],
 	decorators: [withKnobs]
-}
+};
 
 export const basic = () => {
 	const size = number('Size', 24, {
 		range: true,
 		min: 16,
 		max: 36,
-		step: 1,
+		step: 1
 	});
 	const weight = number('Weight', 300, {
 		range: true,
 		min: 100,
 		max: 900,
-		step: 10,
+		step: 10
 	});
 	return html`
 		<style>
@@ -76,11 +76,25 @@ export const basic = () => {
 		<ol>
 			<li>
 				<p>
+					Install the fonts package:
+					<pre>
+					<code>
+	// npm
+	npm install @vonage/vvd-fonts
+
+	// yarn
+	yarn add @vonage/vvd-fonts
+					</code>
+				</pre>
+				</p>
+			</li>
+			<li>
+				<p>
 					Fonts are being fetched and 'installed' by the following API call flow:
 				</p>
 				<pre>
 					<code class="javascript">
-	import fonts from 'vvd-fonts.js';
+	import fonts from '@vonage/vvd-fonts';
 
 	fonts.init().then(() => {});
 					</code>
@@ -103,5 +117,5 @@ export const basic = () => {
 				</p>
 			</li>
 		</ol>
-	`
+	`;
 };
