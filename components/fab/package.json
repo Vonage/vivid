@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-fab",
-	"version": "0.2.2",
+	"version": "0.2.4",
 	"description": "fab component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/fab#readme",
 	"license": "ISC",
@@ -25,7 +25,8 @@
 	},
 	"dependencies": {
 		"@material/mwc-fab": "^0.17.2",
-		"@vonage/vvd-style-coupling": "^0.2.2",
+		"@vonage/vvd-style-coupling": "^0.2.4",
+		"@vonage/vvd-fonts": "^0.2.4",
 		"lit-element": "^2.3.1",
 		"tslib": "^2.0.0"
 	}

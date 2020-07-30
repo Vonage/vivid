@@ -1,16 +1,12 @@
 :host {
 	--mdc-radio-unchecked-color: var(--vvd-color-unchecked);
-	--mdc-radio-disabled-color: #e1e2e6;
+	--mdc-radio-disabled-color: var(--vvd-color-disabled-unchecked);
 }
 
 .mdc-radio {
 	padding: 0;
 
 	.mdc-radio__native-control:enabled {
-		&:checked + .mdc-radio__background .mdc-radio__outer-circle {
-			border-color: var(--vvd-color-unchecked);
-		}
-
 		&:hover,
 		&:focus {
 			+ .mdc-radio__background .mdc-radio__outer-circle {
@@ -28,7 +24,7 @@
 
 	&--disabled {
 		.mdc-radio__outer-circle {
-			background-color: #f3f3f5;
+			background-color: var(--vvd-color-alternate-disabled-fill-color);
 		}
 	}
 }

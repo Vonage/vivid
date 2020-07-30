@@ -1,4 +1,7 @@
+@use '@vonage/vvd-fonts/typography' as typography;
+
 :host {
+	@include typography.font-combo('Body2Bold');
   display: block;
 }
 

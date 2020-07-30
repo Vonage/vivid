@@ -7,8 +7,8 @@ const
 	VWC_CAROUSEL = 'vwc-carousel',
 	VWC_CAROUSEL_ITEM = 'vwc-carousel-item';
 
-describe('test vwc-carousel', () => {
-	it('vwc-carousel and vwc-carousel-item are defined as a custom element', async () => {
+describe('vwc-carousel', () => {
+	it('vwc-carousel and vwc-carousel-item are defined as a custom element', () => {
 		assert.exists(customElements.get(VWC_CAROUSEL, 'vwc-carousel element is not defined'));
 		assert.exists(customElements.get(VWC_CAROUSEL_ITEM, 'vwc-carousel-item element is not defined'));
 	});
@@ -17,37 +17,18 @@ describe('test vwc-carousel', () => {
 		it('should have the required elements', async () => {
 			const actualElements = textToDomToParent(`<${VWC_CAROUSEL} id="carousel-a"></${VWC_CAROUSEL}>`, document.body);
 			await waitNextTask();
-			expect(actualElements[0]).dom.to.equalSnapshot(`
-				<vwc-carousel id="carousel-a" tabindex="0" autoplay=""><!---->
-					<div class="upper-pane">
-						<div class="swiper-nav swiper-button-prev swiper-button-disabled" tabindex="-1" role="button" aria-label="Previous slide" aria-disabled="true">
-							<svg class="icon" viewBox="0 0 24 24">
-								<path d="M14.5 4.5L8.5 12L14.5 19.5"></path>
-							</svg>
-						</div>
-						<div class="swiper-container swiper-container-initialized swiper-container-horizontal">
-							<div class="swiper-wrapper">
-							</div>
-						<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
-						<div class="swiper-nav swiper-button-next swiper-button-disabled" tabindex="-1" role="button" aria-label="Next slide" aria-disabled="true">
-							<svg class="icon" viewBox="0 0 24 24">
-								<path d="M9.5 4.5L15.5 12L9.5 19.5"></path>
-							</svg>
-						</div>
-					</div>
-					<div class="lower-pane swiper-pagination"></div>
-				<!----></vwc-carousel>
-			`);
+			expect(actualElements[0]).dom.to.equalSnapshot();
 		});
 	});
 
 	describe('slides order', () => {
 		it('should set the last carousel item before the first', async () => {
-			const slides = extractSlides(await initCarousel(['a', 'b', 'c', 'd']));
-			expect(slides[0].dataset.key).to.equal('d');
-			expect(slides[1].dataset.key).to.equal('a');
-			expect(slides[2].dataset.key).to.equal('b');
-			expect(slides[3].dataset.key).to.equal('c');
+			const inputSlidesIds = ['a', 'b', 'c', 'd'];
+			const expectedSlidesIds = ['d', 'a', 'b', 'c'];
+			const slides = extractSlides(await initCarousel(inputSlidesIds));
+			expectedSlidesIds.forEach((id, index) => {
+				expect(slides[index].dataset.key).to.equal(id);
+			});
 			expect(slides[1].classList.contains('swiper-slide-active'));
 		});
 
