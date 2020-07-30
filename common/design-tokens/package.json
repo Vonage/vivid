@@ -1,5 +1,5 @@
 {
-  "name": "design-tokens",
+  "name": "@vonage/vvd-design-tokens",
   "version": "0.2.4",
   "private": true,
   "description": "> TODO: description",

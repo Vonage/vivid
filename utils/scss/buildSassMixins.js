@@ -1,27 +1,17 @@
 const
-	fs = require('fs'),
-	path = require('path');
+	fs = require('fs');
 const {argv} = require('yargs');
-const outputPath = path.join(process.cwd(), 'common/design-tokens/build');
-
-if (!fs.existsSync(outputPath)){
-	fs.mkdirSync(outputPath);
-}
-
-function sassFilePath({sassOutputFilePath, mixinName}) {
-	return sassOutputFilePath ? sassOutputFilePath : path.join(outputPath, `${mixinName}.scss`);
-}
 
 /**
  *
  * @param config {
  *   mixinName: String,
  *   mixinCombinations: Object,
- *   sassOutputFilePath: String (optional)
+ *   sassOutputFilePath: String
  * }
  */
-module.exports = function generateMixins(config) {
-	const { mixinName, mixinCombinations} = config;
+
+module.exports = function generateMixins({ mixinName, mixinCombinations, sassOutputFilePath }) {
 
 	const
 		mixinTemplate = (mixinCombos)=> `@mixin ${mixinName}($combo-id){
@@ -30,8 +20,9 @@ module.exports = function generateMixins(config) {
 			.map(([identifier, styles])=> `\t@if($combo-id == "${identifier}"){${Object.entries(styles).map(([modifier, value])=>"\n\t\t"+[modifier, value].join(': ') + ";").join('')+"\n\t"}}`)
 			.join('\n')
 		}
-	}`,
-		variablesTemplate = (function(){
+	}`;
+
+		const variablesTemplate = (function(){
 			const kebabCase = (txt)=> txt.toLowerCase().replace(/[_\s]+/g, '-');
 			return (prefix = "vvd")=> (mixinCombos)=> {
 				return Object
@@ -48,6 +39,6 @@ module.exports = function generateMixins(config) {
 			};
 		})();
 
-	let outStream = argv.d ? process.stdout : fs.createWriteStream(sassFilePath(config));
+	let outStream = argv.d ? process.stdout : fs.createWriteStream(sassOutputFilePath);
 	outStream.end([mixinTemplate, variablesTemplate('vvd')].map((template)=> template(mixinCombinations)).join('\n'));
 }
