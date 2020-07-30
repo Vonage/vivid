@@ -1,5 +1,5 @@
 const path = require('path');
-const buildSassMixin = require('../utils/scss/buildSassMixins');
+const buildSassMixin = require('../../utils/scss/buildSassMixins');
 const {argv} = require('yargs');
 
 const dataFile = argv.generatorFile;
