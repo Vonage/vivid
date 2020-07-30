@@ -2,7 +2,7 @@ const
 	fs = require('fs'),
 	path = require('path');
 const {argv} = require('yargs');
-const outputPath = path.join(process.cwd(), 'design-tokens/build/scss');
+const outputPath = path.join(process.cwd(), 'common/design-tokens/build');
 
 if (!fs.existsSync(outputPath)){
 	fs.mkdirSync(outputPath);

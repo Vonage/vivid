@@ -1,0 +1,19 @@
+{
+  "name": "design-tokens",
+  "version": "0.2.4",
+  "private": true,
+  "description": "> TODO: description",
+  "author": "yonatankra <yonatan.kra@vonage.com>",
+  "homepage": "",
+  "license": "ISC",
+  "directories": {
+    "mixinConfigurations": "mixinConfigurations",
+		".": "build"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  }
+}
