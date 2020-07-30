@@ -10,7 +10,7 @@ export function textToDocumentFragment(html) {
 	return result;
 }
 
-export function textToDomToParent(html, parentNode = document.body) {
+export function textToDomToParent(html, parentNode) {
 	const documentFragment = textToDocumentFragment(html);
 	const result = Array.from(documentFragment.children);
 	parentNode.appendChild(documentFragment);
