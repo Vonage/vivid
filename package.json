@@ -30,7 +30,7 @@
 		"compile": "yarn compile:design-tokens && yarn compile:styles && yarn compile:typescript",
 		"compile:styles": "node ./common/fonts/build/generate-font-combos.js && ./scripts/build-styles.sh",
 		"compile:typescript": "tsc --build",
-		"compile:design-tokens": "scripts/build-design-tokens-mixins.sh && node ./design-tokens/renderers/index.js",
+		"compile:design-tokens": "design-tokens/mixinsConfigurations/build-design-tokens-mixins.sh && node ./design-tokens/renderers/index.js",
 		"prestart": "yarn compile",
 		"start": "yarn dev:server",
 		"build:demo": "yarn compile && rimraf dist && rollup -c rollup.demo.config.js",
