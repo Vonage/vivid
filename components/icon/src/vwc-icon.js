@@ -88,7 +88,11 @@ class IconElement extends HTMLElement {
 	}
 
 	attributeChangedCallback(attrName, oldValue, newValue){
-		(({ "type": (value)=> this.type = value })[attrName] || noop)(newValue);
+		switch(attrName){
+			case "type":
+				this.type = newValue;
+				break;
+		}
 	}
 }
 
