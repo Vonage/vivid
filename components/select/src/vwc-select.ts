@@ -1,4 +1,7 @@
 import { customElement } from 'lit-element';
+import { NotchedOutline as MWCNotchedOutline } from '@material/mwc-notched-outline';
+import { style as mwcNotchedOutlineStyle } from '@material/mwc-notched-outline/mwc-notched-outline-css.js';
+import { style as vwcNotchedOutlineStyle } from './vwc-notched-outline.css';
 import { Select as MWCSelect } from '@material/mwc-select';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import { style as vwcSelectStyle } from './vwc-select.css';
@@ -10,6 +13,9 @@ declare global {
 	}
 }
 
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-ignore
+MWCNotchedOutline.styles = [mwcNotchedOutlineStyle, vwcNotchedOutlineStyle];
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 MWCSelect.styles = [styleCoupling, mwcSelectStyle, vwcSelectStyle];

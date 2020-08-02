@@ -12,7 +12,7 @@
   --mdc-text-field-outlined-disabled-border-color: #e1e2e6;
 
 	@include typography.font-combo('Body2');
-  display: block;
+	display: block;
 }
 
 :host([disabled]) .mdc-text-field {

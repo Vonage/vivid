@@ -25,6 +25,7 @@
 	},
 	"dependencies": {
 		"@material/mwc-textarea": "^0.17.2",
+		"@material/mwc-notched-outline": "^0.17.2",
 		"@vonage/vvd-style-coupling": "^0.2.4",
 		"@vonage/vvd-fonts": "^0.2.4",
 		"lit-element": "^2.3.1",
