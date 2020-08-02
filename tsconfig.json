@@ -42,7 +42,6 @@
 		{ "path": "components/drawer" },
 		{ "path": "components/fab" },
 		{ "path": "components/formfield" },
-		{ "path": "components/icon" },
     { "path": "components/linear-progress" },
     { "path": "components/list" },
     { "path": "components/menu" },

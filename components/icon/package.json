@@ -4,8 +4,8 @@
 	"description": "icon component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/icon#readme",
 	"license": "ISC",
-	"main": "vwc-icon.js",
-	"module": "vwc-icon.js",
+	"main": "./src/vwc-icon.js",
+	"module": "./src/vwc-icon.js",
 	"files": [
 		"src",
 		"*.js",
@@ -26,6 +26,7 @@
 	"dependencies": {
 		"@material/mwc-icon": "^0.17.2",
 		"@vonage/vvd-style-coupling": "^0.2.4",
+		"kefir": "^3.8.7",
 		"lit-element": "^2.3.1",
 		"tslib": "^2.0.0"
 	}

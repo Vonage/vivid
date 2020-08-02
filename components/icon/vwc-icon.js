@@ -1,0 +1,1 @@
+export * from "./src/vwc-icon.js";
