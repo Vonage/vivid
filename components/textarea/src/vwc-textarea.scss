@@ -2,6 +2,10 @@
 @use '@vonage/vvd-fonts/typography' as typography;
 
 :host {
+	--mdc-text-field-outlined-idle-border-color: var(--vvd-grey-400);
+  --mdc-text-field-outlined-hover-border-color:	var(--mdc-theme-primary);
+  --mdc-text-field-outlined-disabled-border-color: #e1e2e6;
+
 	@include typography.font-combo('Body2');
 }
 

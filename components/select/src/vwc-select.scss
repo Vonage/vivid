@@ -2,7 +2,7 @@
 
 :host {
   --mdc-theme-primary: var(--vvd-color-alternate-primary-background);
-  --mdc-select-outlined-idle-border-color: #c2c4cc;
+  --mdc-select-outlined-idle-border-color: var(--vvd-grey-400);
   --mdc-select-outlined-hover-border-color: var(--mdc-theme-primary);
   --mdc-select-outlined-disabled-border-color: #e1e2e6;
   --mdc-select-ink-color: var(--mdc-theme-primary);

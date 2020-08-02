@@ -7,7 +7,7 @@
   --mdc-text-field-label-ink-color: #616266;
   --mdc-text-field-ink-color: var(--mdc-theme-primary);
   --mdc-text-field-disabled-ink-color: #9b9da3;
-  --mdc-text-field-outlined-idle-border-color: #c2c4cc;
+  --mdc-text-field-outlined-idle-border-color: var(--vvd-grey-400);
   --mdc-text-field-outlined-hover-border-color:	var(--mdc-theme-primary);
   --mdc-text-field-outlined-disabled-border-color: #e1e2e6;
 
@@ -15,7 +15,7 @@
 }
 
 :host([disabled]) .mdc-text-field {
-  background-color: #f3f3f5;
+	background-color: #f3f3f5;
 }
 
 :host(:not([disabled])) .mdc-text-field.mdc-text-field--focused mwc-notched-outline {
