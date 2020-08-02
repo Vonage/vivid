@@ -36,7 +36,6 @@ class IconElement extends HTMLElement {
 					kefir.constant(this.getAttribute('type')),
 					kefir.stream(({ emit })=> this[SYMBOL_PROPERTY_TYPE_SET] = emit)
 				])
-				//.filter((type)=> ["alarm", "arrow-right"].includes((type || "").toLowerCase()))
 				.skipDuplicates()
 				.toProperty()
 				.onValue(noop);
