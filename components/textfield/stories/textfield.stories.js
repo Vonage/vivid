@@ -9,7 +9,11 @@ export default {
 }
 
 export const basic = () => html`
+	<h3>Regular</h3>
 	<vwc-textfield outlined label="VWC textfield" @keydown=${handleKeyDown}></vwc-textfield>
+
+	<h3>Disabled</h3>
+	<vwc-textfield outlined disabled label="Hint text" value="Text" @keydown=${handleKeyDown}></vwc-textfield>
 `;
 
 function handleKeyDown(e) {

@@ -12,7 +12,6 @@
   --mdc-text-field-outlined-disabled-border-color: #e1e2e6;
 
 	@include typography.font-combo('Body2');
-	display: block;
 }
 
 :host([disabled]) .mdc-text-field {
@@ -24,6 +23,8 @@
 }
 
 .mdc-text-field {
+	border-radius: 6px;
+
   &--outlined {
     align-items: flex-end;
     height: 48px;
@@ -43,9 +44,9 @@
     }
 
     .mdc-floating-label {
+      top: 24px;
       left: 2px;
       padding-right: 8px;
-      top: 24px;
       transition: transform 0.15s, font-size 0.15s;
     }
 
@@ -58,13 +59,13 @@
 
   // Todo: change notched outline
   &:before {
-    background-color: var(--mdc-text-field-outlined-idle-border-color);
     content: '';
-    height: 1px;
-    left: 12px;
     position: absolute;
-    right: 6px;
     top: 0;
+    left: 12px;
+    right: 6px;
+    height: 1px;
+    background-color: var(--mdc-text-field-outlined-idle-border-color);
   }
 
   &:hover,
