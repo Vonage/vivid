@@ -6,7 +6,7 @@
   --mdc-select-outlined-hover-border-color: var(--mdc-theme-primary);
   --mdc-select-outlined-disabled-border-color: #e1e2e6;
   --mdc-select-ink-color: var(--mdc-theme-primary);
-  --mdc-select-label-ink-color: #616266;
+  --mdc-select-label-ink-color: var(--vvd-grey-900);
   --mdc-select-focused-label-color: var(--mdc-select-label-ink-color);
   --mdc-select-disabled-ink-color: #9b9da3;
   --mdc-select-dropdown-icon-color: var(--mdc-theme-primary);
@@ -86,7 +86,7 @@ mwc-notched-outline,
 
   &--disabled {
     &.mdc-select--outlined .mdc-select__anchor {
-      background-color: #f3f3f5;
+      background-color: var(--vvd-grey-100);
     }
 
     &:before {
