@@ -25,8 +25,7 @@
 	},
 	"dependencies": {
 		"@material/mwc-chips": "^0.2.0",
-		"@vonage/vvd-fonts": "^0.2.4",
-		"lit-element": "^2.3.1",
-		"tslib": "^2.0.0"
+		"@vonage/vvd-style-coupling": "^0.2.4",
+		"lit-element": "^2.3.1"
 	}
 }

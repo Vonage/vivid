@@ -28,7 +28,6 @@
 		"@vonage/vvd-style-coupling": "^0.2.4",
 		"@vonage/vwc-button": "^0.2.4",
 		"@vonage/vwc-textfield": "^0.2.4",
-		"lit-element": "^2.3.1",
-		"tslib": "^2.0.0"
+		"lit-element": "^2.3.1"
 	}
 }
