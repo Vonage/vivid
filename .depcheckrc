@@ -1,1 +1,1 @@
-ignore-patterns: ["*.js"]
+ignore-patterns: ["*.js", "*.d.ts"]
