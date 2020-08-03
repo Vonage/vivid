@@ -37,7 +37,7 @@
 		"dev:server": "es-dev-server --config es-dev-server.config.js",
 		"git:clean": "git clean -xdf",
 		"watch": "node scripts/watcher.js",
-		"wca:custom-elements": "yarn compile && wca analyze components/**/*.d.ts --outFile custom-elements.json"
+		"wca:custom-elements": "yarn compile && wca analyze components/icon/src/vwc-icon.js components/**/*.d.ts --outFile custom-elements.json"
 	},
 	"dependencies": {
 		"lit-html": "^1.2.1",
