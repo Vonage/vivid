@@ -4,7 +4,7 @@ const SECOND = 1000;
 
 const wait = (time)=> new Promise((resolve)=> setTimeout(resolve, time));
 
-describe.only('vwc-icon', () => {
+describe('vwc-icon', () => {
 	it('vwc-icon is defined as a custom element', async () => {
 		assert.exists(customElements.get('vwc-icon', 'vwc-icon element is not defined'));
 	});
