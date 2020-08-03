@@ -1,7 +1,7 @@
 import { ActionDetail } from '@material/mwc-list/mwc-list-foundation.js';
 import { Menu as MWCMenu } from '@material/mwc-menu';
 import { customElement } from 'lit-element';
-//import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import { style as mwcMenuStyle } from '@material/mwc-menu/mwc-menu-css.js';
 import {style as vwcMenuStyle} from './vwc-menu.css';
 
@@ -13,7 +13,7 @@ declare global {
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-MWCMenu.styles = [mwcMenuStyle, vwcMenuStyle];
+MWCMenu.styles = [mwcMenuStyle, vwcMenuStyle, styleCoupling];
 
 /**
  * This component is an extension of [<mwc-menu>](https://github.com/material-components/material-components-web-components/tree/master/packages/menu)

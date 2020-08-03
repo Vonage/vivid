@@ -27,6 +27,7 @@
 	"dependencies": {
 		"@material/mwc-list": "^0.17.2",
 		"@material/mwc-menu": "^0.17.2",
+		"@vonage/vvd-style-coupling": "^0.2.4",
 		"lit-element": "^2.3.1"
 	}
 }
