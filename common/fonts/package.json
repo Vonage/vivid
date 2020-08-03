@@ -24,7 +24,7 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"tslib": "^2.0.0"
+		"lit-element": "^2.3.1"
 	},
 	"devDependencies": {
 		"fs-extra": "^9.0.1"
