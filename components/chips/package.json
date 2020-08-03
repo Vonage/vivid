@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-chips",
-	"version": "0.2.4",
+	"version": "0.3.0",
 	"description": "> TODO: description",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/menu#readme",
 	"license": "ISC",
@@ -25,7 +25,7 @@
 	},
 	"dependencies": {
 		"@material/mwc-chips": "^0.2.0",
-		"@vonage/vvd-fonts": "^0.2.4",
+		"@vonage/vvd-fonts": "^0.3.0",
 		"lit-element": "^2.3.1",
 		"tslib": "^2.0.0"
 	}
