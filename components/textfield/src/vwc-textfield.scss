@@ -3,19 +3,31 @@
 :host {
   --mdc-theme-primary: #131415;
   --mdc-theme-error: #e84545;
-	--mdc-text-field-filled-border-radius: 6px;
-  --mdc-text-field-label-ink-color: var(--vvd-grey-900);
   --mdc-text-field-ink-color: var(--mdc-theme-primary);
-  --mdc-text-field-disabled-ink-color: #9b9da3;
+  --mdc-text-field-label-ink-color: var(--vvd-grey-900);
+  --mdc-text-field-disabled-ink-color: var(--vvd-grey-800);
   --mdc-text-field-outlined-idle-border-color: var(--vvd-grey-400);
   --mdc-text-field-outlined-hover-border-color:	var(--mdc-theme-primary);
-  --mdc-text-field-outlined-disabled-border-color: #e1e2e6;
+  --mdc-text-field-outlined-disabled-border-color: var(--vvd-grey-300);
 
 	@include typography.font-combo('Body2');
+
+	--vvd-outline-color: var(--mdc-text-field-outlined-idle-border-color);
 }
 
 :host([disabled]) .mdc-text-field {
+	--vvd-outline-color: var(--mdc-text-field-outlined-disabled-border-color);
 	background-color: var(--vvd-grey-100);
+
+	.mdc-text-field__input {
+		color: var(--vvd-grey-800);
+	}
+
+	.mdc-notched-outline {
+		.mdc-floating-label--float-above {
+			--mdc-theme-primary: var(--mdc-text-field-label-ink-color);
+		}
+	}
 }
 
 :host(:not([disabled])) .mdc-text-field.mdc-text-field--focused mwc-notched-outline {
@@ -52,29 +64,13 @@
 
     .mdc-floating-label--float-above {
       --mdc-theme-primary: var(--mdc-text-field-label-ink-color);
-
       transform: translateY(-100%);
     }
   }
 
-  // Todo: change notched outline
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 12px;
-    right: 6px;
-    height: 1px;
-    background-color: var(--mdc-text-field-outlined-idle-border-color);
-  }
-
   &:hover,
   &--focused {
-    &:not(.mdc-text-field--invalid) {
-      &:before {
-        background-color: var(--mdc-theme-primary);
-      }
-    }
+		--vvd-outline-color: var(--mdc-text-field-outlined-hover-border-color);
   }
 
   &--invalid {

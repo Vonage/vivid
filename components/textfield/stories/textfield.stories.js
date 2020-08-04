@@ -9,6 +9,12 @@ export default {
 }
 
 export const basic = () => html`
+	<style>
+		vwc-textfield {
+			width: 240px;
+		}
+	</style>
+
 	<h3>Regular</h3>
 	<vwc-textfield outlined label="VWC textfield" @keydown="${handleKeyDown}" @change="${onChange}" @input="${onInput}"></vwc-textfield>
 
