@@ -1,0 +1,1 @@
+export default function(){ return `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 10.5H13.5V3L24 12L13.5 21V13.5H0V10.5Z"/></svg>`; }
