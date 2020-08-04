@@ -1,5 +1,7 @@
+@use './vvd-fonts';
+
 :root {
-  --vvd-font-family-spezia: 'SpeziaWeb';
+  #{vvd-fonts.$font-variable-name}: 'SpeziaWeb';
 }
 
 /*

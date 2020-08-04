@@ -1,0 +1,18 @@
+@use 'modularscale-sass/stylesheets/modularscale';
+
+$modularscale: (
+  // base: 1em,
+  // ratio: 1.1,
+
+  400px: (
+    ratio: 1.1,
+  ),
+  900px: (
+    // base: 16px,
+    ratio: 1.18,
+  ),
+  1200px: (
+    base: 14px,
+    ratio: modularscale.$major-second,
+  ),
+);
