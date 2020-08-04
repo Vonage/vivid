@@ -2,22 +2,7 @@
 @use '@material/button';
 // @use '@vonage/vvd-fonts/typography' as typography;
 @use '@vonage/vvd-typography/scss/typography' as typography;
-
-.mdc-button {
-  @include button.height(40px);
-  // @include typography.font-combo('Body2Bold');
-  // letter-spacing: initial;
-  // text-transform: initial;
-  border-radius: 6px;
-}
-
-:host([disabled]) .mdc-button.mdc-button--outlined {
-  border-color: var(--vvd-color-disabled-fill-color);
-}
-
-.pill {
-  border-radius: 40px;
-}
+@forward './vwc-button-coupling';
 
 // ! move to utils as this might be a common
 // ! mixin for other components such as call-out
@@ -56,13 +41,22 @@
 
 @include connotations-context(':host([unelevated][connotation-specifier])');
 
-:host {
-  @include typography.typography-cat-variables('body-1');
-  font-stretch: var(--vvd-typography-font-stretch);
-  line-height: var(--vvd-typography-line-height);
-  --mdc-typography-button-font-size: var(--vvd-typography-font-size);
-  --mdc-typography-button-font-weight: var(--vvd-typography-font-weight);
-  --mdc-typography-button-letter-spacing: initial;
-  --mdc-typography-button-text-transform: none;
-  --mdc-typography-button-font-family: var(--vvd-typography-font-family);
+
+/////////////////////////////////////////////////////////////////////////////
+.mdc-button {
+  @include button.height(40px);
+  // @include typography.font-combo('Body2Bold');
+  // letter-spacing: initial;
+	// text-transform: initial;
+	font-stretch: var(--vvd-typography-font-stretch);
+
+  border-radius: 6px;
+}
+
+:host([disabled]) .mdc-button.mdc-button--outlined {
+  border-color: var(--vvd-color-disabled-fill-color);
+}
+
+.pill {
+  border-radius: 40px;
 }

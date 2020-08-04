@@ -19,5 +19,6 @@
   "devDependencies": {
     "modularscale-sass": "^3.0.10",
     "@vonage/vvd-fonts": "^0.3.0"
-  }
+  },
+  "private": true
 }
