@@ -3,7 +3,7 @@ import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Atoms|Icon',
+	title: 'Atoms/Icon',
 	component: 'vwc-icon',
 	decorators: [withA11y]
 }

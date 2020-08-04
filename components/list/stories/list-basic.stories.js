@@ -5,7 +5,7 @@ import { html } from 'lit-element';
 import '@vonage/vwc-icon/vwc-icon.js';
 
 export default {
-	title: 'Atoms|List',
+	title: 'Atoms/List',
 	component: 'vwc-list',
 	decorators: [withA11y]
 }

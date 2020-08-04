@@ -3,7 +3,7 @@ import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Atoms|Fab',
+	title: 'Atoms/Fab',
 	component: 'vwc-fab',
 	decorators: [withA11y]
 }
