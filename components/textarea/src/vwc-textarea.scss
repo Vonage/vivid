@@ -1,10 +1,18 @@
 @use '@vonage/vwc-textfield/src/vwc-textfield';
+@use '@vonage/vvd-fonts/typography' as typography;
+
+:host {
+	@include typography.font-combo('Body2');
+}
 
 .mdc-text-field--textarea {
 	height: 100%;
 	min-height: 48px;
 
 	&.mdc-text-field--outlined {
+
+		padding-top: 22px;
+
 		&.mdc-text-field--no-label {
 			.mdc-text-field__input {
 				padding-top: 8px;
@@ -12,9 +20,9 @@
 		}
 
 		.mdc-text-field__input {
+			@include typography.font-combo('Body2');
 			height: auto;
 			margin: 0;
-			padding-top: 20px;
 			resize: vertical;
 		}
 

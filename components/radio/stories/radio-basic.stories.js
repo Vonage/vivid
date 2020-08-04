@@ -4,7 +4,7 @@ import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Atoms/Radio',
+	title: 'Atoms|Radio',
 	component: 'vwc-radio',
 	decorators: [withA11y]
 }
@@ -24,5 +24,13 @@ export const basic = () => html`
 	</vwc-formfield>
 		<vwc-formfield label="Europe">
 		<vwc-radio name="group-b" value="value2"></vwc-radio>
+	</vwc-formfield>
+
+	<h3>Disabled</h3>
+	<vwc-formfield label="London">
+		<vwc-radio name="group-c" value="value1" disabled></vwc-radio>
+	</vwc-formfield>
+		<vwc-formfield label="New York">
+		<vwc-radio name="group-c" value="value2" checked disabled></vwc-radio>
 	</vwc-formfield>
 `;

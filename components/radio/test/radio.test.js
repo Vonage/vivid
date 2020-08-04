@@ -1,5 +1,5 @@
 import '../vwc-radio.js';
-import { htmlToDom, waitNextTask } from '../../../utils/js/test-helpers.js';
+import { textToDocumentFragment, waitNextTask } from '../../../utils/js/test-helpers.js';
 
 describe('test vwc-radio', () => {
 	it('vwc-radio is defined as a custom element', async () => {
@@ -8,7 +8,7 @@ describe('test vwc-radio', () => {
 
 	it('vwc-radio has internal contents', async () => {
 		await customElements.whenDefined('vwc-radio');
-		const docFragContainer = htmlToDom('<vwc-radio id="radio-a" name="myGroup" value="value1"></vwc-radio>');
+		const docFragContainer = textToDocumentFragment('<vwc-radio id="radio-a" name="myGroup" value="value1"></vwc-radio>');
 		const actualElement = docFragContainer.firstElementChild;
 		document.body.appendChild(docFragContainer);
 		await waitNextTask();

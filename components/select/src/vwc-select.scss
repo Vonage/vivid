@@ -15,20 +15,25 @@
   --mdc-select-error-dropdown-icon-color: var(--mdc-select-error-color);
 }
 
+:host(:not([disabled])) .mdc-select.mdc-select--focused:not(.mdc-select--invalid) {
+  mwc-notched-outline {
+    --mdc-notched-outline-border-color: var(--mdc-theme-primary);
+  }
+
+  .mdc-floating-label {
+    color: var(--mdc-select-focused-label-color);
+  }
+}
+
 mwc-notched-outline,
 :host(:not([disabled])) .mdc-select.mdc-select--focused mwc-notched-outline {
   --mdc-notched-outline-stroke-width: 1px;
   --mdc-notched-outline-notch-offset: 0px;
 }
 
-:host(:not([disabled])) .mdc-select.mdc-select--focused:not(.mdc-select--invalid) mwc-notched-outline {
-  --mdc-notched-outline-border-color: var(--mdc-select-outlined-hover-border-color);
-}
-
 .mdc-select {
   &--outlined {
     .mdc-select__anchor {
-      border-radius: 6px;
       height: 48px;
       padding-left: 14px;
 
@@ -44,7 +49,7 @@ mwc-notched-outline,
         top: 24px;
         transition: transform 0.15s, font-size 0.15s;
       }
-      
+
       .mdc-floating-label--float-above {
         color: var(--mdc-select-label-ink-color);
         transform: translateY(-100%);
@@ -69,6 +74,7 @@ mwc-notched-outline,
     z-index: 1;
   }
 
+  :host(:hover) &,
   &:hover,
   &--focused {
     &:not(.mdc-select--invalid) {
@@ -87,7 +93,7 @@ mwc-notched-outline,
       background-color: var(--mdc-select-outlined-disabled-border-color);
     }
   }
-  
+
   &--invalid {
     &.mdc-select--outlined .mdc-select__anchor {
       background-color: #fdecec;

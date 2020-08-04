@@ -1,0 +1,18 @@
+@use 'sass:selector';
+@use '@vonage/vvd-fonts/typography' as typography;
+
+.mdc-fab {
+	@include typography.font-combo('Body2Bold');
+	letter-spacing: initial;
+	text-transform: initial;
+}
+
+:host([connotation="regular"]) .mdc-fab {
+	--mdc-theme-secondary: var(--vvd-color-regular-background);
+	--mdc-theme-on-secondary: var(--vvd-color-regular-foreground);
+}
+
+:host([connotation="cta"]) .mdc-fab {
+	--mdc-theme-secondary: var(--vvd-color-cta-background);
+	--mdc-theme-on-secondary: var(--vvd-color-cta-foreground);
+}

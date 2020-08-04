@@ -3,7 +3,7 @@ import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Atoms/Switch',
+	title: 'Atoms|Switch',
 	component: 'vwc-switch',
 	decorators: [withA11y]
 }

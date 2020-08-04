@@ -1,8 +1,9 @@
 @use '@material/chips';
 @use './variables';
+@use '@vonage/vvd-fonts/typography' as typography;
 
 /*
-TODO: 
+TODO:
   - add volta combined badges
   - move out hex/rgb codes
 */
@@ -68,15 +69,15 @@ TODO:
   @include chips.shape-radius(map-get(variables.$shape-radius, default));
   @include chips.trailing-icon-margin(variables.$trailing-icon-margin-left);
   @include chips.trailing-icon-size(variables.$trailing-icon-size);
-  
+	@include typography.font-combo('Body2Bold');
+
   cursor: auto;
   font-size: map-get(variables.$font-size, default);
-  font-weight: variables.$font-weight;
 
   :host([type="filter"]) & {
     cursor: pointer;
   }
-  
+
   .mdc-chip__ripple {
     display: none;
   }

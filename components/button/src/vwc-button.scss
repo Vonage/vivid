@@ -1,18 +1,58 @@
+@use 'sass:selector';
 @use '@material/button';
+@use '@vonage/vvd-fonts/typography' as typography;
 
 .mdc-button {
   @include button.height(40px);
-
-  border-radius: 6px;
-  font-weight: 600;
-  letter-spacing: normal;
-  text-transform: none;
+	@include typography.font-combo('Body2Bold');
+	letter-spacing: initial;
+  text-transform: initial;
+	border-radius: 6px;
 }
 
 :host([disabled]) .mdc-button.mdc-button--outlined {
   border-color: var(--vvd-color-disabled-fill-color);
 }
 
-.vwc-button--pill {
-	border-radius: 40px;
+.pill {
+  border-radius: 40px;
 }
+
+// ! move to utils as this might be a common
+// ! mixin for other components such as call-out
+@mixin connotations-context(
+  $selector: ':host([connotation-specifier])',
+  $default: primary
+) {
+  $connotations: primary cta success error;
+
+  @each $connotation in $connotations {
+    $attr: '[connotation="#{$connotation}"i]';
+
+    $scoped-selector: $selector; // prevents overriding argument
+
+    $scoped-selector: selector.replace(
+      #{$selector},
+      '[connotation-specifier]',
+      #{$attr}
+    );
+
+    @if ($connotation == $default) {
+      $default-selector: selector.replace(
+        #{$selector},
+        '[connotation-specifier]',
+        ':not([connotation])'
+      );
+      $scoped-selector: $default-selector, $scoped-selector;
+    }
+
+    #{$scoped-selector} {
+      --mdc-theme-primary: var(--vvd-color-#{$connotation}-background);
+      --mdc-theme-on-primary: var(--vvd-color-#{$connotation}-foreground);
+    }
+  }
+}
+
+@include connotations-context(
+  ':host([unelevated][connotation-specifier])'
+);

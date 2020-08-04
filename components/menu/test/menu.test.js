@@ -1,20 +1,18 @@
 import '../vwc-menu.js';
-import { htmlToDom, waitNextTask } from '../../../utils/js/test-helpers.js';
+import '../../button/vwc-button.js';
+import { textToDomToParent, waitNextTask } from '../../../utils/js/test-helpers.js';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
+chai.use(chaiDomDiff);
 
 describe('test vwc-menu', () => {
 	it('vwc-menu is defined as a custom element', async () => {
 		assert.exists(customElements.get('vwc-menu', 'vwc-menu element is not defined'));
 	});
 
-	it('vwc-menu has internal contents', async () => {
-		await customElements.whenDefined('vwc-button');
-		const docFragContainer = htmlToDom('<vwc-menu id="menu-a"></vwc-menu>');
-		const actualElement = docFragContainer.firstElementChild;
-		document.body.appendChild(docFragContainer);
+	it('vwc-menu has internal contents',  async () => {
+		const docFragContainer = textToDomToParent('<vwc-menu id="menu-a"></vwc-menu>');
 		await waitNextTask();
-		assert.equal(document.querySelector('#menu-a'), actualElement);
-		assert.exists(actualElement.shadowRoot);
-		assert.equal(actualElement.shadowRoot.childElementCount, 1);
-		assert.equal(actualElement.shadowRoot.querySelectorAll('*').length, 3);
+		const actualElement = docFragContainer[0];
+		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 });
