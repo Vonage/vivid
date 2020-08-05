@@ -1,11 +1,11 @@
-# `core`
+# `typography`
 
 > TODO: description
 
 ## Usage
 
 ```
-const core = require('core');
+const typography = require('typography');
 
 // TODO: DEMONSTRATE API
 ```
