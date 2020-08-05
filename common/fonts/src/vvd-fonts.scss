@@ -1,7 +1,7 @@
-$font-variable-name: --vvd-font-family-spezia;
+$font-family-css-variable-name: --vvd-font-family-spezia;
 
 :root {
-  #{$font-variable-name}: 'SpeziaWeb';
+  #{$font-family-css-variable-name}: 'SpeziaWeb';
 }
 
 /*
@@ -36,7 +36,7 @@ $font-variable-name: --vvd-font-family-spezia;
 
 @supports (font-variation-settings: 'wdth' 9) {
   :root {
-    #{$font-variable-name}: 'SpeziaWebVariable';
+    #{$font-family-css-variable-name}: 'SpeziaWebVariable';
   }
 
   @font-face {
