@@ -46,10 +46,9 @@
 .mdc-button {
   @include button.height(40px);
   // @include typography.font-combo('Body2Bold');
-  // letter-spacing: initial;
 	// text-transform: initial;
 	font-stretch: var(--vvd-typography-font-stretch);
-
+	letter-spacing: normal;
   border-radius: 6px;
 }
 
