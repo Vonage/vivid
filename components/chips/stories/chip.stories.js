@@ -1,11 +1,9 @@
 import '@vonage/vwc-chips/vwc-chip.js';
-import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Atoms|Chip',
-	component: 'vwc-chip',
-	decorators: [withA11y]
+	title: 'Atoms/Chip',
+	component: 'vwc-chip'
 }
 
 export const basic = () => html`

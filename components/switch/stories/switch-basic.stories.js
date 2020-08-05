@@ -1,11 +1,9 @@
 import '@vonage/vwc-switch/vwc-switch.js';
-import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Atoms|Switch',
-	component: 'vwc-switch',
-	decorators: [withA11y]
+	title: 'Atoms/Switch',
+	component: 'vwc-switch'
 }
 
 export const basic = () => html`

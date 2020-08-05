@@ -1,13 +1,11 @@
 import '@vonage/vwc-list/vwc-list.js';
 import '@vonage/vwc-list/vwc-list-item.js';
-import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 import '@vonage/vwc-icon/vwc-icon.js';
 
 export default {
-	title: 'Atoms|List',
-	component: 'vwc-list',
-	decorators: [withA11y]
+	title: 'Atoms/List',
+	component: 'vwc-list'
 }
 
 export const basic = () => html`

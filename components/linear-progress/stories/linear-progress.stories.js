@@ -1,11 +1,9 @@
 import '@vonage/vwc-linear-progress/vwc-linear-progress.js';
-import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Atoms|Linear Progress',
-	component: 'vwc-linear-progress',
-	decorators: [withA11y]
+	title: 'Atoms/Linear Progress',
+	component: 'vwc-linear-progress'
 }
 
 export const basic = () => html`

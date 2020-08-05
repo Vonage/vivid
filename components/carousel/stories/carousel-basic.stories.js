@@ -1,11 +1,9 @@
 import '@vonage/vwc-carousel/vwc-carousel.js';
-import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Cells|Carousel',
-	component: 'vwc-carousel',
-	decorators: [withA11y]
+	title: 'Cells/Carousel',
+	component: 'vwc-carousel'
 }
 
 export const basic = () => html`

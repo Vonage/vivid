@@ -1,12 +1,10 @@
 import '@vonage/vwc-button/vwc-button.js';
-import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 
 export default {
   title: 'Atoms/Button',
-  component: 'vwc-button',
-  decorators: [withA11y],
+  component: 'vwc-button'
 };
 
 const Template = args => html`<vwc-button ...=${spread(args)}></vwc-button>`;

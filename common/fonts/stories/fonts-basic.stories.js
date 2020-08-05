@@ -1,11 +1,8 @@
 import { html } from 'lit-element';
-import { withA11y } from '@storybook/addon-a11y';
-import { withKnobs, number } from "@storybook/addon-knobs";
+import { number } from "@storybook/addon-knobs";
 
 export default {
-	title: 'Core/Fonts',
-	decorators: [withA11y],
-	decorators: [withKnobs]
+	title: 'Core/Fonts'
 }
 
 export const basic = () => {

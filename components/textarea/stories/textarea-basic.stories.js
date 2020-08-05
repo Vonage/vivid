@@ -1,11 +1,9 @@
 import '@vonage/vwc-textarea/vwc-textarea.js';
-import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Atoms|Textarea',
-	component: 'vwc-textarea',
-	decorators: [withA11y]
+	title: 'Atoms/Textarea',
+	component: 'vwc-textarea'
 }
 
 export const basic = () => html`
