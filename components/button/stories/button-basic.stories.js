@@ -8,11 +8,37 @@ export default {
   component: 'vwc-button',
   decorators: [withA11y],
 };
-export const Basic = (args) => {
-  console.log(args);
-  return html`<vwc-button ...=${spread(args)}>Basic</vwc-button>`;
+
+const Template = args => html`<vwc-button ...=${spread(args)}></vwc-button>`;
+
+export const Basic = Template.bind({});
+Basic.args = { label: 'Basic' };
+
+export const Filled = Template.bind({});
+Filled.args = { layout: 'filled', label: 'Filled' };
+Filled.argTypes = { 
+  connotation: {
+    control: {
+      type: 'select',
+      options: [undefined, 'cta', 'success', 'error', 'warning'],
+    }
+  }
 };
-Basic.args = { label: 'hello' };
+
+// export const Outlined = Template.bind({});
+// Outlined.args = { label: 'Outlined', layout: 'outlined' };
+
+// export const Filled = Template.bind({});
+// Filled.args = { label: 'Normal', layout: 'filled' };
+
+// export const PillShape = Template.bind({});
+// PillShape.args = { label: 'Filled', layout: 'filled', shape: 'pill' };
+
+// export const Basic = (args) => {
+//   console.log(args);
+//   return html`<vwc-button ...=${spread(args)}>Basic</vwc-button>`;
+// };
+// Basic.args = { label: 'hello' };
 
 // export const basic = () => html`
 //   <style>
