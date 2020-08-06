@@ -1,37 +1,56 @@
 @use '@material/select';
+@use '@vonage/vvd-fonts/typography' as typography;
+@use '@vonage/vvd-style-coupling/vvd-style-coupling-variables' as sc-variables;
 
 :host {
+	--mdc-select-filled-border-radius: 6px;
   --mdc-theme-primary: var(--vvd-color-alternate-primary-background);
-  --mdc-select-outlined-idle-border-color: #c2c4cc;
-  --mdc-select-outlined-hover-border-color: var(--mdc-theme-primary);
-  --mdc-select-outlined-disabled-border-color: #e1e2e6;
   --mdc-select-ink-color: var(--mdc-theme-primary);
-  --mdc-select-label-ink-color: #616266;
-  --mdc-select-focused-label-color: var(--mdc-select-label-ink-color);
-  --mdc-select-disabled-ink-color: #9b9da3;
+  --mdc-select-label-ink-color: var(#{sc-variables.$formfield-label-idle-ink});
+	--mdc-select-disabled-ink-color: var(#{sc-variables.$formfield-disabled-inc});
+	--mdc-select-disabled-fill-color: var(#{sc-variables.$formfield-disabled-fill});
+
   --mdc-select-dropdown-icon-color: var(--mdc-theme-primary);
   --mdc-select-focused-dropdown-icon-color: var(--mdc-theme-primary);
   --mdc-select-disabled-dropdown-icon-color: var(--mdc-select-disabled-ink-color);
   --mdc-select-error-dropdown-icon-color: var(--mdc-select-error-color);
+  --mdc-select-outlined-idle-border-color: var(#{sc-variables.$formfield-border-idle});
+  --mdc-select-outlined-hover-border-color: var(#{sc-variables.$formfield-border-hover});
+  --mdc-select-outlined-disabled-border-color: var(#{sc-variables.$formfield-border-disabled});
+
+	@include typography.font-combo('Body2');
+
+	--vvd-outline-color: var(--mdc-select-outlined-idle-border-color);
 }
 
 :host(:not([disabled])) .mdc-select.mdc-select--focused:not(.mdc-select--invalid) {
-  mwc-notched-outline {
-    --mdc-notched-outline-border-color: var(--mdc-theme-primary);
-  }
-
   .mdc-floating-label {
-    color: var(--mdc-select-focused-label-color);
+    color: var(--mdc-select-label-ink-color);
   }
 }
 
-mwc-notched-outline,
+:host([disabled]) .mdc-select {
+	--vvd-outline-color: var(--mdc-select-outlined-disabled-border-color);
+	background-color: var(--mdc-select-disabled-fill-color);
+
+	.mdc-select__selected-text {
+		color: var(--mdc-select-disabled-ink-color);
+	}
+
+	.mdc-notched-outline {
+		.mdc-floating-label--float-above {
+			--mdc-theme-primary: var(--mdc-select-label-ink-color);
+		}
+	}
+}
+
 :host(:not([disabled])) .mdc-select.mdc-select--focused mwc-notched-outline {
   --mdc-notched-outline-stroke-width: 1px;
-  --mdc-notched-outline-notch-offset: 0px;
 }
 
 .mdc-select {
+	border-radius: 6px;
+
   &--outlined {
     .mdc-select__anchor {
       height: 48px;
@@ -43,10 +62,8 @@ mwc-notched-outline,
       }
 
       .mdc-floating-label {
-        display: inline-block;
         left: 2px;
         padding-right: 8px;
-        top: 24px;
         transition: transform 0.15s, font-size 0.15s;
       }
 
@@ -62,40 +79,14 @@ mwc-notched-outline,
     }
   }
 
-  // Todo: change notched outline
-  &:before {
-    background-color: var(--mdc-select-outlined-idle-border-color);
-    content: '';
-    height: 1px;
-    left: 12px;
-    position: absolute;
-    right: 6px;
-    top: 0;
-    z-index: 1;
-  }
-
   :host(:hover) &,
   &:hover,
   &--focused {
-    &:not(.mdc-select--invalid) {
-      &:before {
-        background-color: var(--mdc-theme-primary);
-      }
-    }
-  }
-
-  &--disabled {
-    &.mdc-select--outlined .mdc-select__anchor {
-      background-color: #f3f3f5;
-    }
-
-    &:before {
-      background-color: var(--mdc-select-outlined-disabled-border-color);
-    }
+		--vvd-outline-color: var(--mdc-select-outlined-hover-border-color);
   }
 
   &--invalid {
-    &.mdc-select--outlined .mdc-select__anchor {
+    &.mdc-select--outlined {
       background-color: #fdecec;
     }
 
