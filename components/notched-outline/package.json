@@ -1,0 +1,31 @@
+{
+	"name": "@vonage/vwc-notched-outline",
+	"version": "0.3.0",
+	"description": "notched-outline component",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/notched-outline#readme",
+	"license": "ISC",
+	"main": "vwc-notched-outline.js",
+	"module": "vwc-notched-outline.js",
+	"files": [
+		"src",
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/vonage/vivid.git",
+		"directory": "components/notched-outline"
+	},
+	"scripts": {
+		"test": "echo \"Error: run tests from root\" && exit 1"
+	},
+	"bugs": {
+		"url": "https://github.com/Vonage/vivid/issues"
+	},
+	"dependencies": {
+		"@material/mwc-notched-outline": "^0.17.2",
+		"lit-element": "^2.3.1",
+		"tslib": "^2.0.0"
+	}
+}
