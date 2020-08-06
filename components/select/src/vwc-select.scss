@@ -1,19 +1,22 @@
 @use '@material/select';
 @use '@vonage/vvd-fonts/typography' as typography;
+@use '@vonage/vvd-style-coupling/src/vvd-style-coupling-variables' as sc-variables;
 
 :host {
 	--mdc-select-filled-border-radius: 6px;
   --mdc-theme-primary: var(--vvd-color-alternate-primary-background);
   --mdc-select-ink-color: var(--mdc-theme-primary);
-  --mdc-select-label-ink-color: var(--vvd-grey-900);
-  --mdc-select-disabled-ink-color: var(--vvd-grey-800);
+  --mdc-select-label-ink-color: var(#{sc-variables.$formfield-label-idle-ink});
+	--mdc-select-disabled-ink-color: var(#{sc-variables.$formfield-disabled-inc});
+	--mdc-select-disabled-fill-color: var(#{sc-variables.$formfield-disabled-fill});
+
   --mdc-select-dropdown-icon-color: var(--mdc-theme-primary);
   --mdc-select-focused-dropdown-icon-color: var(--mdc-theme-primary);
   --mdc-select-disabled-dropdown-icon-color: var(--mdc-select-disabled-ink-color);
   --mdc-select-error-dropdown-icon-color: var(--mdc-select-error-color);
-  --mdc-select-outlined-idle-border-color: var(--vvd-grey-400);
-  --mdc-select-outlined-hover-border-color: var(--mdc-theme-primary);
-  --mdc-select-outlined-disabled-border-color: var(--vvd-grey-300);
+  --mdc-select-outlined-idle-border-color: var(#{sc-variables.$formfield-border-idle});
+  --mdc-select-outlined-hover-border-color: var(#{sc-variables.$formfield-border-hover});
+  --mdc-select-outlined-disabled-border-color: var(#{sc-variables.$formfield-border-disabled});
 
 	@include typography.font-combo('Body2');
 
@@ -28,10 +31,10 @@
 
 :host([disabled]) .mdc-select {
 	--vvd-outline-color: var(--mdc-select-outlined-disabled-border-color);
-	background-color: var(--vvd-grey-100);
+	background-color: var(--mdc-select-disabled-fill-color);
 
 	.mdc-select__selected-text {
-		color: var(--vvd-grey-800);
+		color: var(--mdc-select-disabled-ink-color);
 	}
 
 	.mdc-notched-outline {
@@ -43,7 +46,6 @@
 
 :host(:not([disabled])) .mdc-select.mdc-select--focused mwc-notched-outline {
   --mdc-notched-outline-stroke-width: 1px;
-  --mdc-notched-outline-notch-offset: 0px;
 }
 
 .mdc-select {
@@ -60,7 +62,6 @@
       }
 
       .mdc-floating-label {
-        top: 24px;
         left: 2px;
         padding-right: 8px;
         transition: transform 0.15s, font-size 0.15s;
@@ -82,12 +83,6 @@
   &:hover,
   &--focused {
 		--vvd-outline-color: var(--mdc-select-outlined-hover-border-color);
-  }
-
-  &--disabled {
-    &.mdc-select--outlined {
-    	background-color: var(--vvd-grey-100);
-    }
   }
 
   &--invalid {

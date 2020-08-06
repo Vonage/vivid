@@ -1,3 +1,5 @@
+@use '@vonage/vvd-style-coupling/src/vvd-style-coupling-variables' as sc-variables;
+
 :host {
 	--mdc-radio-unchecked-color: var(--vvd-color-unchecked);
 	--mdc-radio-disabled-color: var(--vvd-color-disabled-unchecked);
@@ -24,7 +26,7 @@
 
 	&--disabled {
 		.mdc-radio__outer-circle {
-			background-color: var(--vvd-color-alternate-disabled-fill-color);
+			background-color: var(#{sc-variables.$formfield-disabled-fill});
 		}
 	}
 }

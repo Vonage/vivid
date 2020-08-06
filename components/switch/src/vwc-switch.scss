@@ -4,6 +4,7 @@
   $thumb-diameter: 24px,
   $thumb-offset: -3px
 );
+@use '@vonage/vvd-style-coupling/src/vvd-style-coupling-variables' as sc-variables;
 
 @include switch.without-ripple();
 
@@ -27,10 +28,10 @@
   &:not(.mdc-switch--disabled) {
     &:hover {
       // look into opacity for hover states
-      @include switch.toggled-off-track-color(var(--vvd-grey-900));
-      @include switch.toggled-on-track-color(var(--vvd-grey-900));
-      @include switch.toggled-off-thumb-color(var(--vvd-grey-100));
-      @include switch.toggled-on-thumb-color(var(--vvd-grey-100));
+      @include switch.toggled-off-track-color(sc-variables.$grey-900);
+      @include switch.toggled-on-track-color(sc-variables.$grey-900);
+      @include switch.toggled-off-thumb-color(sc-variables.$grey-100);
+      @include switch.toggled-on-thumb-color(sc-variables.$grey-100);
     }
   }
 

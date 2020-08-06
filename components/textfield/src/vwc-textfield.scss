@@ -1,14 +1,16 @@
 @use '@vonage/vvd-fonts/typography' as typography;
+@use '@vonage/vvd-style-coupling/src/vvd-style-coupling-variables' as sc-variables;
 
 :host {
   --mdc-theme-primary: #131415;
   --mdc-theme-error: #e84545;
   --mdc-text-field-ink-color: var(--mdc-theme-primary);
-  --mdc-text-field-label-ink-color: var(--vvd-grey-900);
-  --mdc-text-field-disabled-ink-color: var(--vvd-grey-800);
-  --mdc-text-field-outlined-idle-border-color: var(--vvd-grey-400);
-  --mdc-text-field-outlined-hover-border-color:	var(--mdc-theme-primary);
-  --mdc-text-field-outlined-disabled-border-color: var(--vvd-grey-300);
+  --mdc-text-field-label-ink-color: var(#{sc-variables.$formfield-label-idle-ink});
+  --mdc-text-field-disabled-ink-color: var(#{sc-variables.$formfield-disabled-inc});
+  --mdc-text-field-disabled-fill-color: var(#{sc-variables.$formfield-disabled-fill});
+  --mdc-text-field-outlined-idle-border-color: var(#{sc-variables.$formfield-border-idle});
+  --mdc-text-field-outlined-hover-border-color:	var(#{sc-variables.$formfield-border-hover});
+  --mdc-text-field-outlined-disabled-border-color: var(#{sc-variables.$formfield-border-disabled});
 
 	@include typography.font-combo('Body2');
 
@@ -17,10 +19,10 @@
 
 :host([disabled]) .mdc-text-field {
 	--vvd-outline-color: var(--mdc-text-field-outlined-disabled-border-color);
-	background-color: var(--vvd-grey-100);
+	background-color: var(--mdc-text-field-disabled-fill-color);
 
 	.mdc-text-field__input {
-		color: var(--vvd-grey-800);
+		color: var(#{sc-variables.$formfield-disabled-inc});
 	}
 
 	.mdc-notched-outline {

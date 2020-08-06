@@ -1,3 +1,5 @@
+@use '@vonage/vvd-style-coupling/src/vvd-style-coupling-variables' as sc-variables;
+
 :host {
 	--mdc-checkbox-unchecked-color: var(--vvd-color-unchecked);
 	--mdc-checkbox-disabled-color: var(--vvd-color-disabled-unchecked);
@@ -16,7 +18,7 @@
 	&--touch {
 		margin: 0;
 	}
-	
+
 	.mdc-checkbox__native-control {
 		left: 0;
 		top: 0;
@@ -47,7 +49,7 @@
 
 	.mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate="true"]) {
 		~ .mdc-checkbox__background {
-			background-color: var(--vvd-color-alternate-idle);
+			background-color: sc-variables.$grey-100;
 		}
 
 		&:hover,
@@ -61,7 +63,7 @@
 	}
 
 	.mdc-checkbox__native-control[disabled]:checked,
-	.mdc-checkbox__native-control[disabled]:indeterminate, 
+	.mdc-checkbox__native-control[disabled]:indeterminate,
 	.mdc-checkbox__native-control[data-indeterminate="true"][disabled] {
 		~ .mdc-checkbox__background {
 			--mdc-checkbox-disabled-color: rgba(19, 20, 21, 0.3);
