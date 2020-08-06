@@ -4,6 +4,9 @@ $grey-400: #ced0d7;
 $grey-800: #74767a;
 $grey-900: #616266;
 
+$red-100: #fdecec;
+$red-600: #d43f3f;
+
 $formfield-disabled-ink: --vvd-formfield-disabled-ink;
 $formfield-disabled-fill: --vvd-formfield-disabled-fill;
 
@@ -13,3 +16,7 @@ $formfield-border-idle: --vvd-formfield-border-idle;
 $formfield-border-hover: --vvd-formfield-border-hover;
 $formfield-border-active: --vvd-formfield-border-active;
 $formfield-border-disabled: --vvd-formfield-border-disabled;
+
+$formfield-error-fill: --vvd-formfield-error-fill;
+$formfield-border-error: --vvd-formfield-border-error;
+$formfield-label-error-ink: --vvd-formfield-label-error-ink;

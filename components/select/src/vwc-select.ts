@@ -28,10 +28,10 @@ export class VWCSelect extends MWCSelect {
 	}
 
 	private replaceIcon(): void {
-		const ddIconClass = '.mdc-select__dropdown-icon';
+		const ddIconClass = 'mdc-select__dropdown-icon';
 		const chevronIcon = document.createElement('vwc-icon');
 		chevronIcon.classList.add(ddIconClass);
-		chevronIcon.setAttribute('type', 'down-full');
-		this.shadowRoot?.querySelector(ddIconClass)?.replaceWith(chevronIcon);
+		chevronIcon.setAttribute('type', 'down');
+		this.shadowRoot?.querySelector(`.${ddIconClass}`)?.replaceWith(chevronIcon);
 	}
 }

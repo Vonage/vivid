@@ -30,6 +30,10 @@
 	#{vs.$formfield-border-active}: var(--vvd-color-base-foreground);
 	#{vs.$formfield-border-disabled}: vs.$grey-300;
 
+	#{vs.$formfield-error-fill}: vs.$red-100;
+	#{vs.$formfield-border-error}: vs.$red-600;
+	#{vs.$formfield-label-error-ink}: vs.$red-600;
+
   --vvd-color-success-background: #1d7e67;
   --vvd-color-success-foreground: #ffffff;
 
