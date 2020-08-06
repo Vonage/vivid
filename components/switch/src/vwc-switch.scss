@@ -4,7 +4,7 @@
   $thumb-diameter: 24px,
   $thumb-offset: -3px
 );
-@use '@vonage/vvd-style-coupling/src/vvd-style-coupling-variables' as sc-variables;
+@use '@vonage/vvd-style-coupling/vvd-style-coupling-variables' as sc-variables;
 
 @include switch.without-ripple();
 

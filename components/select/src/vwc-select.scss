@@ -1,6 +1,6 @@
 @use '@material/select';
 @use '@vonage/vvd-fonts/typography' as typography;
-@use '@vonage/vvd-style-coupling/src/vvd-style-coupling-variables' as sc-variables;
+@use '@vonage/vvd-style-coupling/vvd-style-coupling-variables' as sc-variables;
 
 :host {
 	--mdc-select-filled-border-radius: 6px;
