@@ -1,6 +1,7 @@
 import '@vonage/vwc-icon';
 import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
+import { aiIcons } from './icon-ai.stories.js';
 
 export default {
 	title: 'Atoms|Icon',
@@ -9,7 +10,7 @@ export default {
 };
 
 const style = html`
-<style>
+	<style>
     .container {
       display: flex;
       flex-wrap: wrap;
@@ -57,19 +58,11 @@ const style = html`
 			background-color: #00000025;
 			padding: 0.2rem;
 		}
-</style>`;
+	</style>
+`;
 
-export const ai = () => html`${style}<div class="container"><figure><vwc-icon type="ai"></vwc-icon><figcaption>ai-full</figcaption></figure>
-<figure><vwc-icon type="ai-full"></vwc-icon><figcaption>ai-full</figcaption></figure>
-<figure><vwc-icon type="ai-2"></vwc-icon><figcaption>ai-full</figcaption></figure>
-<figure><vwc-icon type="ai-2-full"></vwc-icon><figcaption>ai-full</figcaption></figure>
-<figure><vwc-icon type="ai-3"></vwc-icon><figcaption>ai-full</figcaption></figure>
-<figure><vwc-icon type="ai-3-full"></vwc-icon><figcaption>ai-full</figcaption></figure>
-<figure><vwc-icon type="mind-map"></vwc-icon><figcaption>ai-full</figcaption></figure>
-<figure><vwc-icon type="mind-map-full"></vwc-icon><figcaption>ai-full</figcaption></figure>
-<figure><vwc-icon type="brain"></vwc-icon><figcaption>ai-full</figcaption></figure>
-<figure><vwc-icon type="brain-full"></vwc-icon><figcaption>ai-full</figcaption></figure></div>`;
-ai.story = { name: 'AI', parameters: { docs: { disable: true } } };
+export const ai = aiIcons(style, { name: 'AI', parameters: { docs: { disable: true } } });
+
 export const alert = () => html`${style}<div class="container"><figure><vwc-icon type="info"></vwc-icon><figcaption>ai-full</figcaption></figure>
 <figure><vwc-icon type="info-negative"></vwc-icon><figcaption>ai-full</figcaption></figure>
 <figure><vwc-icon type="help"></vwc-icon><figcaption>ai-full</figcaption></figure>
