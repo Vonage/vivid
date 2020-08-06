@@ -59,6 +59,8 @@ const style = html`
 		}
 </style>`;
 
+export const sampleUsage = ()=> html`Haha! <vwc-icon type="happy"></vwc-icon>`;
+
 export const ai = () => html`${style}<div class="container"><figure><vwc-icon type="ai"></vwc-icon><figcaption>ai-full</figcaption></figure>
 <figure><vwc-icon type="ai-full"></vwc-icon><figcaption>ai-full</figcaption></figure>
 <figure><vwc-icon type="ai-2"></vwc-icon><figcaption>ai-full</figcaption></figure>
