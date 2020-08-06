@@ -1,6 +1,7 @@
 import { customElement } from 'lit-element';
 import { NotchedOutline as MWCNotchedOutline } from '@material/mwc-notched-outline';
 import { style as mwcNotchedOutlineStyle } from '@material/mwc-notched-outline/mwc-notched-outline-css.js';
+import { style as vwcNotchedOutlineStyle } from './vwc-notched-outline.css';
 
 declare global {
 	interface HTMLElementTagNameMap {
