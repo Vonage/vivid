@@ -9,6 +9,12 @@ export default {
 }
 
 export const basic = () => html`
+	<style>
+		vwc-textarea {
+			width: 240px;
+		}
+	</style>
+
 	<h3>Regular</h3>
 	<vwc-textarea outlined label="Vwc textarea" @keydown=${handleKeyDown}></vwc-textarea>
 
