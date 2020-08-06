@@ -1,3 +1,5 @@
+@use '@vonage/vvd-style-coupling/vvd-style-coupling-variables' as sc-variables;
+
 .swiper-nav {
 	flex: 0 0 29px;
 	display: flex;
@@ -5,7 +7,7 @@
 	justify-content: center;
 	color: var(--vvd-color-surface-foreground);
 	background-color: var(--vvd-color-base-background);
-	border: 1px solid var(--vvd-color-disabled-fill-color);
+	border: 1px solid var(#{sc-variables.$formfield-border-idle});
 	box-sizing: border-box;
 	overflow: hidden;
 	outline: none;

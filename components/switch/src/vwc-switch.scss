@@ -4,6 +4,7 @@
   $thumb-diameter: 24px,
   $thumb-offset: -3px
 );
+@use '@vonage/vvd-style-coupling/vvd-style-coupling-variables' as sc-variables;
 
 @include switch.without-ripple();
 
@@ -20,17 +21,17 @@
 
   &--disabled {
     @include switch.toggled-on-track-color(#9b9da3);
-    
+
     opacity: 0.5;
   }
 
   &:not(.mdc-switch--disabled) {
     &:hover {
       // look into opacity for hover states
-      @include switch.toggled-off-track-color(#616266);
-      @include switch.toggled-on-track-color(#616266);
-      @include switch.toggled-off-thumb-color(#f3f3f5);
-      @include switch.toggled-on-thumb-color(#f3f3f5);
+      @include switch.toggled-off-track-color(sc-variables.$grey-900);
+      @include switch.toggled-on-track-color(sc-variables.$grey-900);
+      @include switch.toggled-off-thumb-color(sc-variables.$grey-100);
+      @include switch.toggled-on-thumb-color(sc-variables.$grey-100);
     }
   }
 
@@ -72,11 +73,11 @@
 
   .mdc-ripple-upgraded--background-focused & {
     box-shadow: 0 0 0 5px #9b9da3;
-  
+
     .mdc-switch--checked & {
       box-shadow: 0 0 0 5px var(--mdc-theme-secondary);
     }
-    
+
     .mdc-switch--disabled & {
       display: none;
     }
