@@ -15,9 +15,8 @@ async function sassToCss(file) {
     fiber,
     file,
     importer: (url, ...otherArgs) => {
-      if (url.split('/').length === 2) {
-        url += '/_index.scss';
-      }
+			console.log("URL: ", url);
+
       return nodeSassImport(url, ...otherArgs);
     },
     outputStyle: 'compressed',

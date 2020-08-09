@@ -25,6 +25,7 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
+		"@material/linear-progress": "^7.0.0",
 		"@material/mwc-linear-progress": "^0.17.2",
 		"@vonage/vvd-style-coupling": "^0.2.4",
 		"lit-element": "^2.3.1"
