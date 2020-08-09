@@ -10,6 +10,7 @@ import {
 import { style } from './vwc-carousel.css';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import Swiper, { SwiperOptions } from 'swiper';
+import '@vonage/vwc-icon';
 import './vwc-carousel-item.js';
 
 declare global {
@@ -191,9 +192,7 @@ export class VWCCarousel extends LitElement {
 		return html`
 			<div class="upper-pane">
 				<div class="swiper-nav swiper-button-prev">
-					<svg class="icon" viewBox="0 0 24 24">
-						<path d="M14.5 4.5L8.5 12L14.5 19.5"/>
-					</svg>
+					<vwc-icon type="left"></vwc-icon>
 				</div>
 				<div class="swiper-container">
 					<div class="swiper-wrapper">
@@ -201,9 +200,7 @@ export class VWCCarousel extends LitElement {
 					</div>
 				</div>
 				<div class="swiper-nav swiper-button-next">
-					<svg class="icon" viewBox="0 0 24 24">
-						<path d="M9.5 4.5L15.5 12L9.5 19.5"/>
-					</svg>
+					<vwc-icon type="right"></vwc-icon>
 				</div>
 			</div>
 			<div class="lower-pane swiper-pagination"></div>
