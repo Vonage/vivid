@@ -19,6 +19,5 @@
     "url": "https://github.com/Vonage/vivid/issues"
   },
   "dependencies": {
-		"lit-element": "^2.3.1"
   }
 }
