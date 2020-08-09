@@ -41,7 +41,7 @@ jobs:
         run: yarn install
 
       - name: Dependency Check
-        run: yarn dep-check
+        run: cd node_modules/depcheck && yarn && npm run prepublishOnly && cd ../.. && yarn dep-check
 
       - name: Build components
         run: yarn compile
