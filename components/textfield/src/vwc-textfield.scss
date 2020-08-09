@@ -1,22 +1,35 @@
 @use '@vonage/vvd-fonts/typography' as typography;
+@use '@vonage/vvd-style-coupling/vvd-style-coupling-variables' as sc-variables;
 
 :host {
   --mdc-theme-primary: #131415;
   --mdc-theme-error: #e84545;
-	--mdc-text-field-filled-border-radius: 6px;
-  --mdc-text-field-label-ink-color: #616266;
   --mdc-text-field-ink-color: var(--mdc-theme-primary);
-  --mdc-text-field-disabled-ink-color: #9b9da3;
-  --mdc-text-field-outlined-idle-border-color: #c2c4cc;
-  --mdc-text-field-outlined-hover-border-color:	var(--mdc-theme-primary);
-  --mdc-text-field-outlined-disabled-border-color: #e1e2e6;
+  --mdc-text-field-label-ink-color: var(#{sc-variables.$formfield-label-idle-ink});
+  --mdc-text-field-disabled-ink-color: var(#{sc-variables.$formfield-disabled-inc});
+  --mdc-text-field-disabled-fill-color: var(#{sc-variables.$formfield-disabled-fill});
+  --mdc-text-field-outlined-idle-border-color: var(#{sc-variables.$formfield-border-idle});
+  --mdc-text-field-outlined-hover-border-color:	var(#{sc-variables.$formfield-border-hover});
+  --mdc-text-field-outlined-disabled-border-color: var(#{sc-variables.$formfield-border-disabled});
 
 	@include typography.font-combo('Body2');
-  display: block;
+
+	--vvd-outline-color: var(--mdc-text-field-outlined-idle-border-color);
 }
 
 :host([disabled]) .mdc-text-field {
-  background-color: #f3f3f5;
+	--vvd-outline-color: var(--mdc-text-field-outlined-disabled-border-color);
+	background-color: var(--mdc-text-field-disabled-fill-color);
+
+	.mdc-text-field__input {
+		color: var(#{sc-variables.$formfield-disabled-inc});
+	}
+
+	.mdc-notched-outline {
+		.mdc-floating-label--float-above {
+			--mdc-theme-primary: var(--mdc-text-field-label-ink-color);
+		}
+	}
 }
 
 :host(:not([disabled])) .mdc-text-field.mdc-text-field--focused mwc-notched-outline {
@@ -24,6 +37,8 @@
 }
 
 .mdc-text-field {
+	border-radius: 6px;
+
   &--outlined {
     align-items: flex-end;
     height: 48px;
@@ -43,37 +58,21 @@
     }
 
     .mdc-floating-label {
+      top: 24px;
       left: 2px;
       padding-right: 8px;
-      top: 24px;
       transition: transform 0.15s, font-size 0.15s;
     }
 
     .mdc-floating-label--float-above {
       --mdc-theme-primary: var(--mdc-text-field-label-ink-color);
-
       transform: translateY(-100%);
     }
   }
 
-  // Todo: change notched outline
-  &:before {
-    background-color: var(--mdc-text-field-outlined-idle-border-color);
-    content: '';
-    height: 1px;
-    left: 12px;
-    position: absolute;
-    right: 6px;
-    top: 0;
-  }
-
   &:hover,
   &--focused {
-    &:not(.mdc-text-field--invalid) {
-      &:before {
-        background-color: var(--mdc-theme-primary);
-      }
-    }
+		--vvd-outline-color: var(--mdc-text-field-outlined-hover-border-color);
   }
 
   &--invalid {
