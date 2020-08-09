@@ -16,8 +16,6 @@
 	"author": "",
 	"license": "Apache-2.0",
 	"dependencies": {
-		"@material/chips": "^7.0.0",
-		"@material/dom": "^7.0.0",
 		"@material/mwc-base": "^0.17.2",
 		"@material/mwc-icon": "^0.17.2",
 		"@material/mwc-ripple": "^0.17.2",

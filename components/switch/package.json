@@ -26,7 +26,6 @@
 	},
 	"dependencies": {
 		"@material/mwc-switch": "^0.17.2",
-		"@material/switch": "^7.0.0",
 		"@vonage/vvd-style-coupling": "^0.3.0",
 		"lit-element": "^2.3.1"
 	}
