@@ -40,6 +40,9 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
+      - name: Dependency Check
+        run: yarn dep-check
+
       - name: Build components
         run: yarn compile
 
