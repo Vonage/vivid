@@ -9,6 +9,9 @@ async function run() {
 		docs: {
 			inlineStories: true,
 		},
+		options: {
+			storySort: (a, b) => a[1].kind.localeCompare(b[1].kind)
+		}
 	});
 }
 
