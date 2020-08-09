@@ -1,5 +1,4 @@
 @use 'sass:selector';
-@use '@material/button';
 @use '@vonage/vvd-fonts/typography' as typography;
 @use '@vonage/vvd-style-coupling/vvd-style-coupling-variables' as sc-variables;
 
@@ -9,8 +8,8 @@
 }
 
 .mdc-button {
-  @include button.height(40px);
 	@include typography.font-combo('Body2Bold');
+  height: 40px;
 	letter-spacing: initial;
   text-transform: initial;
 	border-radius: 6px;
