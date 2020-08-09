@@ -18,6 +18,8 @@
       role="button"
       tabindex="-1"
     >
+      <vwc-icon type="left">
+      </vwc-icon>
     </div>
     <div class="swiper-container swiper-container-horizontal swiper-container-initialized">
       <div class="swiper-wrapper">
@@ -36,6 +38,8 @@
       role="button"
       tabindex="-1"
     >
+      <vwc-icon type="right">
+      </vwc-icon>
     </div>
   </div>
   <div class="lower-pane swiper-pagination">
