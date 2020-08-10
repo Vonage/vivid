@@ -1,11 +1,11 @@
 {
-	"name": "@vonage/vwc-slider",
+	"name": "@vonage/vwc-notched-outline",
 	"version": "0.3.0",
-	"description": "slider component",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/slider#readme",
+	"description": "notched-outline component",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/notched-outline#readme",
 	"license": "ISC",
-	"main": "vwc-slider.js",
-	"module": "vwc-slider.js",
+	"main": "vwc-notched-outline.js",
+	"module": "vwc-notched-outline.js",
 	"files": [
 		"src",
 		"*.js",
@@ -15,7 +15,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/slider"
+		"directory": "components/notched-outline"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"
@@ -24,8 +24,7 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@material/mwc-slider": "^0.18.0",
-		"@vonage/vvd-style-coupling": "^0.3.0",
+		"@material/mwc-notched-outline": "^0.18.0",
 		"lit-element": "^2.3.1",
 		"tslib": "^2.0.0"
 	}

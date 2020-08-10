@@ -1,6 +1,13 @@
 @use 'sass:selector';
 @use '@material/button';
 @forward './vwc-button-coupling';
+@use '@vonage/vvd-style-coupling/vvd-style-coupling-variables' as sc-variables;
+
+:host {
+	--mdc-button-disabled-ink-color: var(#{sc-variables.$formfield-disabled-ink});
+	--mdc-button-disabled-fill-color: var(#{sc-variables.$formfield-border-idle});
+}
+
 
 // ! move to utils as this might be a common
 // ! mixin for other components such as call-out

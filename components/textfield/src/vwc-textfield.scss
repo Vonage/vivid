@@ -1,22 +1,37 @@
 @use '@vonage/vvd-fonts/typography' as typography;
+@use '@vonage/vvd-style-coupling/vvd-style-coupling-variables' as sc-variables;
 
 :host {
   --mdc-theme-primary: #131415;
-  --mdc-theme-error: #e84545;
-	--mdc-text-field-filled-border-radius: 6px;
-  --mdc-text-field-label-ink-color: #616266;
   --mdc-text-field-ink-color: var(--mdc-theme-primary);
-  --mdc-text-field-disabled-ink-color: #9b9da3;
-  --mdc-text-field-outlined-idle-border-color: #c2c4cc;
-  --mdc-text-field-outlined-hover-border-color:	var(--mdc-theme-primary);
-  --mdc-text-field-outlined-disabled-border-color: #e1e2e6;
+  --mdc-text-field-label-ink-color: var(#{sc-variables.$formfield-label-idle-ink});
+  --mdc-text-field-disabled-ink-color: var(#{sc-variables.$formfield-disabled-ink});
+  --mdc-text-field-disabled-fill-color: var(#{sc-variables.$formfield-disabled-fill});
+  --mdc-text-field-outlined-idle-border-color: var(#{sc-variables.$formfield-border-idle});
+  --mdc-text-field-outlined-hover-border-color:	var(#{sc-variables.$formfield-border-hover});
+  --mdc-text-field-outlined-disabled-border-color: var(#{sc-variables.$formfield-border-disabled});
+
+	--mdc-text-field-error-color: var(#{sc-variables.$formfield-label-error-ink});
+	--mdc-text-field-error-fill-color: var(#{sc-variables.$formfield-error-fill});
 
 	@include typography.font-combo('Body2');
-  display: block;
+
+	--vvd-outline-color: var(--mdc-text-field-outlined-idle-border-color);
 }
 
 :host([disabled]) .mdc-text-field {
-  background-color: #f3f3f5;
+	--vvd-outline-color: var(--mdc-text-field-outlined-disabled-border-color);
+	background-color: var(--mdc-text-field-disabled-fill-color);
+
+	.mdc-text-field__input {
+		color: var(#{sc-variables.$formfield-disabled-ink});
+	}
+
+	.mdc-notched-outline {
+		.mdc-floating-label--float-above {
+			--mdc-theme-primary: var(--mdc-text-field-label-ink-color);
+		}
+	}
 }
 
 :host(:not([disabled])) .mdc-text-field.mdc-text-field--focused mwc-notched-outline {
@@ -24,6 +39,8 @@
 }
 
 .mdc-text-field {
+	border-radius: 6px;
+
   &--outlined {
     align-items: flex-end;
     height: 48px;
@@ -45,40 +62,41 @@
     .mdc-floating-label {
       left: 2px;
       padding-right: 8px;
-      top: 24px;
       transition: transform 0.15s, font-size 0.15s;
     }
 
     .mdc-floating-label--float-above {
       --mdc-theme-primary: var(--mdc-text-field-label-ink-color);
+			transform: translateY(-100%);
 
-      transform: translateY(-100%);
+			&.mdc-floating-label--shake {
+				animation: none;
+			}
     }
-  }
-
-  // Todo: change notched outline
-  &:before {
-    background-color: var(--mdc-text-field-outlined-idle-border-color);
-    content: '';
-    height: 1px;
-    left: 12px;
-    position: absolute;
-    right: 6px;
-    top: 0;
   }
 
   &:hover,
   &--focused {
-    &:not(.mdc-text-field--invalid) {
-      &:before {
-        background-color: var(--mdc-theme-primary);
-      }
-    }
-  }
+		--vvd-outline-color: var(--mdc-text-field-outlined-hover-border-color);
+
+		&.mdc-text-field--invalid {
+			--vvd-outline-color: var(--mdc-text-field-error-color);
+		}
+ }
 
   &--invalid {
-    &:before {
-      background-color: var(--mdc-theme-error);
+		--vvd-outline-color: var(--mdc-text-field-error-color);
+
+    &.mdc-text-field--outlined {
+			background-color: var(--mdc-text-field-error-fill-color);
+
+			.mdc-floating-label {
+				color: var(--mdc-text-field-error-color);
+			}
     }
   }
+}
+
+.mdc-text-field--invalid:not(.mdc-text-field--disabled).mdc-text-field--invalid + .mdc-text-field-helper-text--validation-msg {
+	color: var(--mdc-text-field-error-color);
 }
