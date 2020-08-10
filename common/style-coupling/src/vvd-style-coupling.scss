@@ -20,7 +20,7 @@
   --vvd-color-disabled-unchecked: #afb0b8;
 	--vvd-color-idle: #c2c4cc;
 
-	#{vs.$formfield-disabled-inc}: vs.$grey-800;
+	#{vs.$formfield-disabled-ink}: vs.$grey-800;
 	#{vs.$formfield-disabled-fill}: vs.$grey-100;
 
 	#{vs.$formfield-label-idle-ink}: vs.$grey-900;
@@ -29,6 +29,10 @@
 	#{vs.$formfield-border-hover}: var(--vvd-color-base-foreground);
 	#{vs.$formfield-border-active}: var(--vvd-color-base-foreground);
 	#{vs.$formfield-border-disabled}: vs.$grey-300;
+
+	#{vs.$formfield-error-fill}: vs.$red-100;
+	#{vs.$formfield-border-error}: vs.$red-600;
+	#{vs.$formfield-label-error-ink}: vs.$red-600;
 
   --vvd-color-success-background: #1d7e67;
   --vvd-color-success-foreground: #ffffff;

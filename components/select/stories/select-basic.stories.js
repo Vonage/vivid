@@ -11,6 +11,12 @@ export default {
 }
 
 export const basic = () => html`
+	<style>
+		vwc-select {
+			width: 240px;
+		}
+	</style>
+
 	<h3>Outlined</h3>
 	<vwc-select outlined label="VWC Select" helper="Helper Text">
 		<vwc-list-item></vwc-list-item>

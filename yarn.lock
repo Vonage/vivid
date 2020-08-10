@@ -2026,21 +2026,6 @@
   dependencies:
     tslib "^1.9.3"
 
-"@material/button@^7.0.0":
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/@material/button/-/button-7.0.0.tgz#9d80a580997d5e053d2947cb879031d042929473"
-  integrity sha512-Y6dGxtXBEXa2Bnkj66nyXQo4yc2OTXH00NCGinf+rP24pASxIV27pHwW64zjoTAdJYhZbyrx+wyk8fN9tk2yag==
-  dependencies:
-    "@material/density" "^7.0.0"
-    "@material/elevation" "^7.0.0"
-    "@material/feature-targeting" "^7.0.0"
-    "@material/ripple" "^7.0.0"
-    "@material/rtl" "^7.0.0"
-    "@material/shape" "^7.0.0"
-    "@material/theme" "^7.0.0"
-    "@material/touch-target" "^7.0.0"
-    "@material/typography" "^7.0.0"
-
 "@material/checkbox@^7.0.0":
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/@material/checkbox/-/checkbox-7.0.0.tgz#8941fe7f31570b7a055b72fda73c3ba4bc829f19"
@@ -12458,11 +12443,6 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
-
-navigo@^7.1.2:
-  version "7.1.2"
-  resolved "https://registry.yarnpkg.com/navigo/-/navigo-7.1.2.tgz#f543098ae5cbc5763b926742b5047ffb68a187e2"
-  integrity sha512-OlhxHxhLM62X0Sjbkp5wlm1V6GpOIKShFu7dS/fDS3cVqzMHYS880LT5tu6JjGkrSYQbtCNDADmRIP47MoVGlA==
 
 negotiator@0.6.2:
   version "0.6.2"

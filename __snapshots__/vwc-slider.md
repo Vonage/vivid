@@ -15,16 +15,10 @@
   tabindex="0"
 >
   <div class="mdc-slider__track-container">
-    <div
-      class="mdc-slider__track"
-      style=""
-    >
+    <div class="mdc-slider__track">
     </div>
   </div>
-  <div
-    class="mdc-slider__thumb-container"
-    style=""
-  >
+  <div class="mdc-slider__thumb-container">
     <div class="mdc-slider__focus-ring">
     </div>
   </div>
