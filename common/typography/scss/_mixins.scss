@@ -8,9 +8,9 @@
   --vvd-typography-font-weight: #{map-get($category-map, "font-weight")};
   --vvd-typography-font-stretch: #{map-get($category-map, "font-stretch")};
   --vvd-typography-line-height: #{map-get($category-map, "line-height")};
-  strong {
-    --vvd-typography-font-weight: #{map-get($category-map, "font-weight-strong")};
-  }
+  // strong {
+  //   --vvd-typography-font-weight: #{map-get($category-map, "font-weight-strong")};
+  // }
 }
 @mixin typography-cat-properties {
   /*   dont forget to define defaults */

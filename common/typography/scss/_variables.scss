@@ -27,7 +27,6 @@ $typography-category-list: (
   'headline': (
     font-family: map.get($font-families, 'primary'),
     font-weight: map.get($font-weights, 'medium'),
-    font-weight-strong: map.get($font-weights, 'medium'),
     font-stretch: map.get($font-stretches, 'extra-expanded'),
     font-size: math.round(ms(9, $thread: 1200px)),
     line-height: calc(1ex / 0.47),
@@ -35,7 +34,6 @@ $typography-category-list: (
   'title': (
     font-family: map.get($font-families, 'primary'),
     font-weight: map.get($font-weights, 'medium'),
-    font-weight-strong: map.get($font-weights, 'medium'),
     font-stretch: map.get($font-stretches, 'extra-expanded'),
     font-size: math.round(ms(7, $thread: 1200px)),
     line-height: calc(1ex / 0.42),
@@ -43,7 +41,6 @@ $typography-category-list: (
   'subheading-2': (
     font-family: map.get($font-families, 'primary'),
     font-weight: map.get($font-weights, 'medium'),
-    font-weight-strong: map.get($font-weights, 'medium'),
     font-stretch: map.get($font-stretches, 'extra-expanded'),
     font-size: math.round(ms(6, $thread: 1200px)),
     line-height: calc(1ex / 0.38),
@@ -51,7 +48,6 @@ $typography-category-list: (
   'subheading-1': (
     font-family: map.get($font-families, 'primary'),
     font-weight: map.get($font-weights, 'medium'),
-    font-weight-strong: map.get($font-weights, 'medium'),
     font-stretch: map.get($font-stretches, 'extra-expanded'),
     font-size: math.round(ms(5, $thread: 1200px)),
     line-height: calc(1ex / 0.37),
@@ -59,17 +55,37 @@ $typography-category-list: (
   'body-1': (
     font-family: map.get($font-families, 'primary'),
     font-weight: map.get($font-weights, 'normal'),
-    font-weight-strong: map.get($font-weights, 'semibold'),
     font-stretch: map.get($font-stretches, 'normal'),
     font-size: math.round(ms(0, $thread: 1200px)),
     line-height: calc(1ex / 0.32),
   ),
-  'caption': (
+  'body-2': (
     font-family: map.get($font-families, 'primary'),
     font-weight: map.get($font-weights, 'normal'),
-    font-weight-strong: map.get($font-weights, 'semibold'),
     font-stretch: map.get($font-stretches, 'normal'),
     font-size: math.round(ms(-1, $thread: 1200px)),
     line-height: calc(1ex / 0.32),
   ),
+);
+
+// Merge with bold categories by extending
+// specific members and overriding their weight
+$typography-category-list: map.merge(
+  $typography-category-list,
+  (
+    'body-1-bold':
+      map.merge(
+        map.get($typography-category-list, 'body-1'),
+        (
+          font-weight: map.get($font-weights, 'semibold'),
+        )
+      ),
+    'body-2-bold':
+      map.merge(
+        map.get($typography-category-list, 'body-2'),
+        (
+          font-weight: map.get($font-weights, 'semibold'),
+        )
+      ),
+  )
 );
