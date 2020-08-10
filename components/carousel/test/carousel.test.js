@@ -15,7 +15,7 @@ describe('vwc-carousel', () => {
 
 	describe('init flow', () => {
 		it('should have the required elements', async () => {
-			const actualElements = textToDomToParent(`<${VWC_CAROUSEL} id="carousel-a"></${VWC_CAROUSEL}>`, document.body);
+			const actualElements = textToDomToParent(`<${VWC_CAROUSEL} id="carousel-a"></${VWC_CAROUSEL}>`);
 			await waitNextTask();
 			expect(actualElements[0]).dom.to.equalSnapshot();
 		});
