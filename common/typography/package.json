@@ -1,16 +1,14 @@
 {
-  "name": "@vonage/vvd-style-coupling",
+  "name": "@vonage/vvd-typography",
   "version": "0.3.0",
   "description": "> TODO: description",
   "author": "yinonov <yinon@hotmail.com>",
-  "homepage": "https://github.com/Vonage/vivid/tree/master/components/style-coupling#readme",
+  "homepage": "https://github.com/Vonage/vivid/tree/master/components/typography#readme",
   "license": "ISC",
-  "main": "vvd-style-coupling.css.js",
-  "module": "vvd-style-coupling.css.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/vonage/vivid.git",
-    "directory": "components/style-coupling"
+    "directory": "components/typography"
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
@@ -18,11 +16,8 @@
   "bugs": {
     "url": "https://github.com/Vonage/vivid/issues"
   },
-  "dependencies": {
-    "tslib": "^2.0.0"
-  },
   "devDependencies": {
-    "@vonage/vvd-fonts": "^0.3.0",
-    "lit-element": "^2.3.1"
+    "modularscale-sass": "^3.0.10",
+    "@vonage/vvd-fonts": "^0.3.0"
   }
 }

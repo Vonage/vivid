@@ -5,7 +5,7 @@ import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Atoms|Select',
+	title: 'Atoms/Select',
 	component: 'vwc-select',
 	decorators: [withA11y]
 }

@@ -1,0 +1,28 @@
+@use 'variables';
+
+@mixin typography-cat-variables($category) {
+  $category-map: map-get(variables.$typography-category-list, $category);
+
+  --vvd-typography-font-family: #{map-get($category-map, "font-family")};
+  --vvd-typography-font-size: #{map-get($category-map, "font-size")};
+  --vvd-typography-font-weight: #{map-get($category-map, "font-weight")};
+  --vvd-typography-font-stretch: #{map-get($category-map, "font-stretch")};
+  --vvd-typography-line-height: #{map-get($category-map, "line-height")};
+  // strong {
+  //   --vvd-typography-font-weight: #{map-get($category-map, "font-weight-strong")};
+  // }
+}
+@mixin typography-cat-properties {
+  /*   dont forget to define defaults */
+  font: var(--vvd-typography-font-weight)
+  var(--vvd-typography-font-size) /
+  var(--vvd-typography-line-height) var(--vvd-typography-font-family);
+  /* font shorthand supports font-stretch keywords only and can't be set by %.
+  font-stretch keyword doesn't support our Spezia's 0 - 100 range.
+  therefor we set it separatly */
+  font-stretch: var(--vvd-typography-font-stretch);
+  margin: var(--vvd-typography-line-height) 0;
+}
+
+
+

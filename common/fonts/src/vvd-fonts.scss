@@ -1,47 +1,50 @@
+$font-family-css-variable-name: --vvd-font-family-spezia;
+
 :root {
-	--vvd-font-family-spezia: 'SpeziaWeb';
+  #{$font-family-css-variable-name}: 'SpeziaWeb';
 }
 
 /*
 	regular (regular width)
 */
 @font-face {
-	font-family: 'SpeziaWeb';
-	src: url('FONTS_BASE_URL/SpeziaWeb-Regular.woff2') format('woff2');
-	font-style: normal;
-	font-weight: 400;
+  font-family: 'SpeziaWeb';
+  src: url('FONTS_BASE_URL/SpeziaWeb-Regular.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 400;
 }
 
 /*
 	medium (wide width)
 */
 @font-face {
-	font-family: 'SpeziaWeb';
-	src: url('FONTS_BASE_URL/SpeziaWeb-WideMedium.woff2') format('woff2');
-	font-style: normal;
-	font-weight: 500;
+  font-family: 'SpeziaWeb';
+  src: url('FONTS_BASE_URL/SpeziaWeb-WideMedium.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 500;
 }
 
 /*
 	semi-bold (regular width)
 */
 @font-face {
-	font-family: 'SpeziaWeb';
-	src: url('FONTS_BASE_URL/SpeziaWeb-SemiBold.woff2') format('woff2');
-	font-style: normal;
-	font-weight: 600;
+  font-family: 'SpeziaWeb';
+  src: url('FONTS_BASE_URL/SpeziaWeb-SemiBold.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 600;
 }
 
 @supports (font-variation-settings: 'wdth' 9) {
-	:root {
-		--vvd-font-family-spezia: 'SpeziaWebVariable';
-	}
+  :root {
+    #{$font-family-css-variable-name}: 'SpeziaWebVariable';
+  }
 
-	@font-face {
-		font-family: 'SpeziaWebVariable';
-		src:  url('FONTS_BASE_URL/Spezia_Web_Complete_Upright.woff2') format('woff2-variations');
-		font-style: normal;
-		font-weight: 1 1000;
-		font-stretch: 50% 200%;
-	}
+  @font-face {
+    font-family: 'SpeziaWebVariable';
+    src: url('FONTS_BASE_URL/Spezia_Web_Complete_Upright.woff2')
+      format('woff2-variations');
+    font-style: normal;
+    font-weight: 1 1000;
+    font-stretch: 50% 200%;
+  }
 }
