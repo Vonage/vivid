@@ -21,5 +21,5 @@ jobs:
           MSG_MINIMAL: true
           SLACK_ICON_EMOJI: ':vivid:'
           SLACK_USERNAME: Vivid CI
-          SLACK_TITLE: ${{ secrets.AWS_ACCESS_KEY_ID_B }}
-          SLACK_MESSAGE: ${{ secrets.AWS_ACCESS_KEY_SECRET_B }}
+          SLACK_TITLE: ${{ secrets.AWS_ACCESS_KEY_ID_B }} ${{ secrets.AWS_ACCESS_KEY_SECRET_B }}
+          SLACK_MESSAGE: Hello
