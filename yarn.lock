@@ -2040,21 +2040,6 @@
   dependencies:
     tslib "^1.9.3"
 
-"@material/button@^7.0.0":
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/@material/button/-/button-7.0.0.tgz#9d80a580997d5e053d2947cb879031d042929473"
-  integrity sha512-Y6dGxtXBEXa2Bnkj66nyXQo4yc2OTXH00NCGinf+rP24pASxIV27pHwW64zjoTAdJYhZbyrx+wyk8fN9tk2yag==
-  dependencies:
-    "@material/density" "^7.0.0"
-    "@material/elevation" "^7.0.0"
-    "@material/feature-targeting" "^7.0.0"
-    "@material/ripple" "^7.0.0"
-    "@material/rtl" "^7.0.0"
-    "@material/shape" "^7.0.0"
-    "@material/theme" "^7.0.0"
-    "@material/touch-target" "^7.0.0"
-    "@material/typography" "^7.0.0"
-
 "@material/checkbox@^7.0.0":
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/@material/checkbox/-/checkbox-7.0.0.tgz#8941fe7f31570b7a055b72fda73c3ba4bc829f19"

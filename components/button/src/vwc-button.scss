@@ -1,5 +1,4 @@
 @use 'sass:selector';
-@use '@material/button';
 @forward './vwc-button-coupling';
 @use '@vonage/vvd-style-coupling/vvd-style-coupling-variables' as sc-variables;
 
@@ -49,9 +48,8 @@
 
 /////////////////////////////////////////////////////////////////////////////
 .mdc-button {
-  @include button.height(40px);
-	// text-transform: initial;
 	font-stretch: var(--vvd-typography-font-stretch);
+  height: 40px;
 	letter-spacing: normal;
   border-radius: 6px;
 }
