@@ -3,14 +3,16 @@
 
 :host {
   --mdc-theme-primary: #131415;
-  --mdc-theme-error: #e84545;
   --mdc-text-field-ink-color: var(--mdc-theme-primary);
   --mdc-text-field-label-ink-color: var(#{sc-variables.$formfield-label-idle-ink});
-  --mdc-text-field-disabled-ink-color: var(#{sc-variables.$formfield-disabled-inc});
+  --mdc-text-field-disabled-ink-color: var(#{sc-variables.$formfield-disabled-ink});
   --mdc-text-field-disabled-fill-color: var(#{sc-variables.$formfield-disabled-fill});
   --mdc-text-field-outlined-idle-border-color: var(#{sc-variables.$formfield-border-idle});
   --mdc-text-field-outlined-hover-border-color:	var(#{sc-variables.$formfield-border-hover});
   --mdc-text-field-outlined-disabled-border-color: var(#{sc-variables.$formfield-border-disabled});
+
+	--mdc-text-field-error-color: var(#{sc-variables.$formfield-label-error-ink});
+	--mdc-text-field-error-fill-color: var(#{sc-variables.$formfield-error-fill});
 
 	@include typography.font-combo('Body2');
 
@@ -22,7 +24,7 @@
 	background-color: var(--mdc-text-field-disabled-fill-color);
 
 	.mdc-text-field__input {
-		color: var(#{sc-variables.$formfield-disabled-inc});
+		color: var(#{sc-variables.$formfield-disabled-ink});
 	}
 
 	.mdc-notched-outline {
@@ -58,7 +60,6 @@
     }
 
     .mdc-floating-label {
-      top: 24px;
       left: 2px;
       padding-right: 8px;
       transition: transform 0.15s, font-size 0.15s;
@@ -66,18 +67,36 @@
 
     .mdc-floating-label--float-above {
       --mdc-theme-primary: var(--mdc-text-field-label-ink-color);
-      transform: translateY(-100%);
+			transform: translateY(-100%);
+
+			&.mdc-floating-label--shake {
+				animation: none;
+			}
     }
   }
 
   &:hover,
   &--focused {
 		--vvd-outline-color: var(--mdc-text-field-outlined-hover-border-color);
-  }
+
+		&.mdc-text-field--invalid {
+			--vvd-outline-color: var(--mdc-text-field-error-color);
+		}
+ }
 
   &--invalid {
-    &:before {
-      background-color: var(--mdc-theme-error);
+		--vvd-outline-color: var(--mdc-text-field-error-color);
+
+    &.mdc-text-field--outlined {
+			background-color: var(--mdc-text-field-error-fill-color);
+
+			.mdc-floating-label {
+				color: var(--mdc-text-field-error-color);
+			}
     }
   }
+}
+
+.mdc-text-field--invalid:not(.mdc-text-field--disabled).mdc-text-field--invalid + .mdc-text-field-helper-text--validation-msg {
+	color: var(--mdc-text-field-error-color);
 }

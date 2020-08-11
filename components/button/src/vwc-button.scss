@@ -1,16 +1,15 @@
 @use 'sass:selector';
-@use '@material/button';
 @use '@vonage/vvd-fonts/typography' as typography;
 @use '@vonage/vvd-style-coupling/vvd-style-coupling-variables' as sc-variables;
 
 :host {
-	--mdc-button-disabled-ink-color: var(#{sc-variables.$formfield-disabled-inc});
+	--mdc-button-disabled-ink-color: var(#{sc-variables.$formfield-disabled-ink});
 	--mdc-button-disabled-fill-color: var(#{sc-variables.$formfield-border-idle});
 }
 
 .mdc-button {
-  @include button.height(40px);
 	@include typography.font-combo('Body2Bold');
+  height: 40px;
 	letter-spacing: initial;
   text-transform: initial;
 	border-radius: 6px;
