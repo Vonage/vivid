@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-menu",
-	"version": "0.2.4",
+	"version": "0.3.0",
 	"description": "menu component",
 	"author": "yinonov <yinon@hotmail.com>",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/menu#readme",
@@ -25,8 +25,8 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@material/mwc-menu": "^0.17.2",
-		"@vonage/vvd-style-coupling": "^0.2.4",
+		"@material/mwc-menu": "^0.18.0",
+		"@vonage/vvd-style-coupling": "^0.3.0",
 		"lit-element": "^2.3.1",
 		"tslib": "^2.0.0"
 	}

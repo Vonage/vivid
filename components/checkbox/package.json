@@ -1,6 +1,6 @@
 {
   "name": "@vonage/vwc-checkbox",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "description": "> TODO: description",
   "homepage": "https://github.com/Vonage/vivid/tree/master/components/checkbox#readme",
   "license": "ISC",
@@ -24,8 +24,8 @@
     "url": "https://github.com/Vonage/vivid/issues"
   },
   "dependencies": {
-    "@material/mwc-checkbox": "^0.17.2",
-    "@vonage/vvd-style-coupling": "^0.2.4",
+    "@material/mwc-checkbox": "^0.18.0",
+    "@vonage/vvd-style-coupling": "^0.3.0",
     "lit-element": "^2.3.1",
     "tslib": "^2.0.0"
   }

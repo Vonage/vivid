@@ -1,4 +1,4 @@
-import { html, LitElement, property, customElement, CSSResult, TemplateResult } from 'lit-element';
+import { html, LitElement, property, customElement, CSSResult, TemplateResult, query } from 'lit-element';
 import { style as vwcKeypadStyle } from './vwc-keypad.css';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import '@vonage/vwc-button/vwc-button';
@@ -28,16 +28,27 @@ export class VWCKeypad extends LitElement {
 
 	@property({ type: String }) digits = '';
 
+	@property({type: Number}) currentPosition = 0;
+
+	@query('#digits-display') digitsDisplay!: HTMLTextAreaElement;
+
 	@property({ type: Boolean }) actionStarted = false;
 
 	private addDigit(digit: string): void {
-		this.digits += digit;
+		const front = this.digits.substring(0, this.currentPosition);
+		const end = this.digits.substring(this.currentPosition);
+		this.digits = front + digit + end;
 		const digitAdded = new CustomEvent('digit-added', {
-			detail: { digit },
+			detail: { digit, position: this.currentPosition },
 			bubbles: true,
 			composed: true,
 		});
 		this.dispatchEvent(digitAdded);
+		this.currentPosition++;
+	}
+
+	private displayBlur(){
+		this.currentPosition = this.digitsDisplay.selectionStart;
 	}
 
 	private sendDigits(): void {
@@ -72,8 +83,9 @@ export class VWCKeypad extends LitElement {
 				: html`<vwc-textfield
 							id="digits-display"
 							outlined
-							label="digits display"
+							label="Enter"
 							.value=${this.digits}
+							@blur=${this.displayBlur}
 					  ></vwc-textfield>`}
 				<div class="button-row">
 					<vwc-button
