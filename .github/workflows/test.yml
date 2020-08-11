@@ -2,12 +2,12 @@ name: Test Script
 
 on:
   push:
-    branches: [new-icon-strategy]
+    branches:
+      - new-icon-strategy
 
 jobs:
   build-deploy-demo-dev:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_B }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_SECRET_B }}
