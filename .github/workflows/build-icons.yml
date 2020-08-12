@@ -15,14 +15,14 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.CI_AT }}
       - name: Setup NodeJS 12
-          uses: actions/setup-node@v1
-          with:
-            node-version: 12
-            registry-url: 'https://npm.pkg.github.com'
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: 'https://npm.pkg.github.com'
       - name: Install dependencies
-          run: |
-            npm install -g yarn
-            yarn install
+        run: |
+          npm install -g yarn
+          yarn install
       # Build and publish
       - name: Build components
         run: yarn compile
