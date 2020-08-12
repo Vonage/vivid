@@ -34,6 +34,9 @@ jobs:
       - name: Build components
         run: yarn compile
 
+      - name: Build icon resolver
+        run: yarn build:icon-resolver --awsAccessKey=${{ secrets.AWS_ACCESS_KEY_ID_B }} --awsAccessSecret=${{ secrets.AWS_ACCESS_KEY_SECRET_B }} --awsBucketName=vivid-icons-dev
+
       - name: Publish components
         run: yarn lerna publish from-package --registry https://npm.pkg.github.com --no-git-tag-version --no-push --yes
         env:
