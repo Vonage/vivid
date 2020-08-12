@@ -26,5 +26,12 @@
 	"dependencies": {
 		"kefir": "^3.8.7",
 		"lit-element": "^2.3.1"
+	},
+	"devDependencies": {
+		"aws-sdk": "^2.730.0",
+		"minimist": "^1.2.5"
+	},
+	"engines": {
+		"node": ">=v12.0.0"
 	}
 }
