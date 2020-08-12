@@ -1,16 +1,23 @@
 {
-  "extends": "../../tsconfig.json",
-  "compilerOptions": {
-    "composite": true,
-    "rootDir": "src",
-    "outDir": ".",
-    "tsBuildInfoFile": ".tsbuildinfo"
-  },
-  "include": ["src/*.ts"],
-  "exclude": ["src/test/*.ts"],
-  "references": [
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		"composite": true,
+		"rootDir": "src",
+		"outDir": ".",
+		"tsBuildInfoFile": ".tsbuildinfo"
+	},
+	"include": [
+		"src/*.ts"
+	],
+	"exclude": [
+		"src/test/*.ts"
+	],
+	"references": [
 		{
-      "path": "../mwc-chips"
-    }
+			"path": "../mwc-chips"
+		},
+		{
+			"path": "../../common/fonts"
+		}
 	]
 }

@@ -4,7 +4,7 @@ import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Atoms|List (check list item)',
+	title: 'Atoms/List (check list item)',
 	component: 'vwc-check-list-item',
 	decorators: [withA11y]
 }

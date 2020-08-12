@@ -8,5 +8,15 @@
   },
   "include": ["src/*.ts"],
   "exclude": ["src/test/*.ts"],
-  "references": []
+  "references": [
+		{
+			"path": "../../common/fonts"
+		},
+		{
+			"path": "../../common/style-coupling"
+		},
+		{
+			"path": "../icon"
+		}
+	]
 }

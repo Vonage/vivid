@@ -1,34 +1,38 @@
 {
-	"name": "@vonage/vwc-button",
-	"version": "0.3.0",
-	"description": "button component",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/button#readme",
-	"license": "ISC",
-	"main": "vwc-button.js",
-	"module": "vwc-button.js",
-	"files": [
-		"src",
-		"*.js",
-		"*.ts",
-		"*.map"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/button"
-	},
-	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1"
-	},
-	"bugs": {
-		"url": "https://github.com/Vonage/vivid/issues"
-	},
-	"dependencies": {
-		"@material/mwc-button": "^0.18.0",
-		"@vonage/vvd-fonts": "^0.3.0",
-		"@vonage/vvd-style-coupling": "^0.3.0",
-		"@vonage/vwc-icon": "^0.3.0",
-		"lit-element": "^2.3.1",
-		"tslib": "^2.0.0"
-	}
+  "name": "@vonage/vwc-button",
+  "version": "0.3.0",
+  "description": "button component",
+  "homepage": "https://github.com/Vonage/vivid/tree/master/components/button#readme",
+  "license": "ISC",
+  "main": "vwc-button.js",
+  "module": "vwc-button.js",
+  "files": [
+    "src",
+    "*.js",
+    "*.ts",
+    "*.map"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vonage/vivid.git",
+    "directory": "components/button"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/Vonage/vivid/issues"
+  },
+  "dependencies": {
+    "@material/mwc-button": "^0.18.0",
+    "@vonage/vvd-fonts": "^0.3.0",
+    "@vonage/vvd-style-coupling": "^0.3.0",
+    "@vonage/vwc-icon": "^0.3.0",
+    "lit-element": "^2.3.1",
+    "tslib": "^2.0.0"
+  },
+  "devDependencies": {
+    "@material/button": "^7.0.0",
+    "@vonage/vvd-typography": "^0.3.0"
+  }
 }
