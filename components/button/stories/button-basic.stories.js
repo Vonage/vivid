@@ -4,7 +4,15 @@ import { spread } from '@open-wc/lit-helpers';
 
 export default {
   title: 'Atoms/Button',
-  component: 'vwc-button'
+  component: 'vwc-button',
+  argTypes: { 
+    connotation: {
+      control: {
+        type: 'select',
+        options: [undefined, 'cta', 'success', 'error', 'warning'],
+      }
+    }
+  }
 };
 
 const Template = args => html`<vwc-button ...=${spread(args)}></vwc-button>`;
@@ -14,23 +22,15 @@ Basic.args = { label: 'Basic' };
 
 export const Filled = Template.bind({});
 Filled.args = { layout: 'filled', label: 'Filled' };
-Filled.argTypes = { 
-  connotation: {
-    control: {
-      type: 'select',
-      options: [undefined, 'cta', 'success', 'error', 'warning'],
-    }
-  }
-};
 
-// export const Outlined = Template.bind({});
-// Outlined.args = { label: 'Outlined', layout: 'outlined' };
+export const Outlined = Template.bind({});
+Outlined.args = { label: 'Outlined', layout: 'outlined' };
 
-// export const Filled = Template.bind({});
-// Filled.args = { label: 'Normal', layout: 'filled' };
+export const PillShape = Template.bind({});
+PillShape.args = { label: 'Filled', layout: 'filled', shape: 'pill' };
 
-// export const PillShape = Template.bind({});
-// PillShape.args = { label: 'Filled', layout: 'filled', shape: 'pill' };
+export const Disabled = Template.bind({});
+Disabled.args = { label: 'Disabled', layout: 'filled', disabled: true };
 
 // export const Basic = (args) => {
 //   console.log(args);
