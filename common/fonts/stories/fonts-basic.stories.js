@@ -66,7 +66,7 @@ export const basic = () => {
 			Vivid provides means to fetch and use the brand selected fonts.
 		</p>
 		<p>
-			We are providing variable fonts by default, falling back to a regular (static) fonts on a non-suporting systems.
+			We are providing variable fonts by default, falling back to a regular (static) fonts on a non-supporting systems.
 		</p>
 		<div class="preview">
 			<span class="part text">Lorem ipsum...</span>
@@ -106,14 +106,7 @@ export const basic = () => {
 
 			<li>
 				<p>
-					In your CSS part consume the fonts as following:
-					<pre>
-						<code class="css">
-	body {
-		font-family: var(--vvd-font-family-spezia);
-	}
-						</code>
-					</pre>
+					For an actuall consumption of the fonts in your application please refer to the typography module documentation.
 				</p>
 			</li>
 		</ol>

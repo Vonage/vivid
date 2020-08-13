@@ -56,8 +56,5 @@
   --mdc-theme-on-surface: var(--vvd-color-surface-foreground);
   --mdc-theme-error: var(--vvd-color-error);
 
-  --mdc-button-disabled-fill-color: var(--vvd-color-disabled-fill-color);
-  --mdc-button-disabled-ink-color: var(--vvd-color-disabled-ink-color);
-
   --mdc-typography-font-family: var(#{vvd-fonts.$font-family-css-variable-name});
 }
