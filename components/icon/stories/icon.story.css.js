@@ -17,6 +17,7 @@ const css = `.container {
 	background-color: #eee;
 	border-radius: 4px;
 	overflow: hidden;
+	color: #eee;
 	fill: #eee;
 }
 

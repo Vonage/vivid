@@ -22,7 +22,7 @@ _(icons)
 	.map((list)=> {
 			return [
 				_(list).chain().first().get('category_title').value(),
-				list.map(({ icon_id })=>`<figure><vwc-icon title=${icon_id} type="${icon_id}"></vwc-icon><figcaption>${icon_id}</figcaption></figure>`).join('\n')
+				list.map(({ icon_id })=>`<figure><vwc-icon title=${icon_id} size="large" type="${icon_id}"></vwc-icon><figcaption>${icon_id}</figcaption></figure>`).join('\n')
 			];
 	})
 	.forEach(_.spread(registerCategory));

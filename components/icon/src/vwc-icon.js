@@ -6,7 +6,13 @@ const [
 		SYMBOL_DISCONNECT,
 		SYMBOL_PROPERTY_TYPE,
 		SYMBOL_PROPERTY_TYPE_SET,
-	] = ["connect", "disconnect", "property-type", "property-type-set"].map((name)=> Symbol(name));
+		SYMBOL_PROPERTY_SIZE,
+		SYMBOL_PROPERTY_SIZE_SET
+] = ["connect", "disconnect", "property-type", "property-type-set", "property-size", "property-size-set"].map((name)=> Symbol(name));
+
+const
+	SIZES = { small: 16, medium: 24, large: 32 },
+	DEFAULT_SIZE = "medium";
 
 const noop = ()=> {};
 
@@ -16,22 +22,32 @@ const noop = ()=> {};
  * @element vwc-icon
  *
  * @prop {string} type - The icon's identifier.
+ * @prop {"small" | "medium" | "large"} [size="medium"] - The icon's size.
  *
  */
 class IconElement extends HTMLElement {
 
 	constructor() {
+
 		super();
 
 		const
 			rootEl = this.attachShadow({ mode: "open" }),
 			[styleEl, slotEl] = ["style", "slot"].map((elName)=> document.createElement(elName));
 
-		styleEl.innerHTML = `:host { display: inline-block; width: 32px; height: 32px; } :host > slot > svg { width: 100%; height: 100%; }`;
-		[SYMBOL_CONNECT, SYMBOL_DISCONNECT, SYMBOL_PROPERTY_TYPE_SET].forEach((symbol)=> this[symbol] = noop);
+		styleEl.innerHTML = `:host { display: inline-block; width: 32px; height: 32px; fill: currentColor; } :host > slot > svg { width: 100%; height: 100%; }`;
+		[SYMBOL_CONNECT, SYMBOL_DISCONNECT, SYMBOL_PROPERTY_TYPE_SET, SYMBOL_PROPERTY_SIZE_SET].forEach((symbol)=> this[symbol] = noop);
 
 		const
 			connectStream = kefir.stream(({ emit })=> this[SYMBOL_CONNECT] = emit),
+			sizeProperty = kefir
+				.concat([
+					kefir.constant(this.getAttribute('size') || DEFAULT_SIZE),
+					kefir.stream(({ emit })=> this[SYMBOL_PROPERTY_SIZE_SET] = emit)
+				])
+				.skipDuplicates()
+				.toProperty()
+				.onValue(noop),
 			typeProperty = kefir
 				.concat([
 					kefir.constant(this.getAttribute('type')),
@@ -44,12 +60,17 @@ class IconElement extends HTMLElement {
 		// Update icon
 		connectStream
 			.flatMapLatest(()=> {
-				return typeProperty
-					.flatMap((typeId)=> kefir.fromPromise(resolveIcon(typeId)))
-					.takeUntilBy(kefir.stream(({ emit })=> this[SYMBOL_DISCONNECT] = emit).take(1));
+				return kefir.combine([
+					typeProperty.flatMap((typeId)=> kefir.fromPromise(resolveIcon(typeId))),
+					sizeProperty.map((sizeName)=> SIZES[sizeName])
+				])
+				.takeUntilBy(kefir.stream(({ emit })=> this[SYMBOL_DISCONNECT] = emit).take(1));
 			})
 			.filter(()=> this.isConnected)
-			.onValue((svg)=> slotEl.innerHTML = svg)
+			.onValue(([svg, size])=> {
+				slotEl.innerHTML = svg;
+				["width", "height"].forEach((prop)=> rootEl.host.style[prop] = `${size}px`);
+			})
 			.onError(console.warn);
 
 		// Assemble element
@@ -57,20 +78,22 @@ class IconElement extends HTMLElement {
 			.take(1)
 			.onValue(()=> [styleEl, slotEl].forEach((el)=> rootEl.appendChild(el)));
 
-		// Update local var
+		// Update local vars/attributes
 		kefir
 			.concat([
 				connectStream.take(1).ignoreValues(),
-				typeProperty
+				kefir.combine([typeProperty, sizeProperty])
 			])
-			.onValue((val)=> {
-				this[SYMBOL_PROPERTY_TYPE] = val;
-				this.setAttribute('type', val);
+			.onValue(([type, size])=> {
+				this[SYMBOL_PROPERTY_TYPE] = type;
+				this[SYMBOL_PROPERTY_SIZE] = size;
+				this.setAttribute('type', type);
+				this.setAttribute('size', size);
 			});
 	}
 
 	static get observedAttributes(){
-		return ["type"];
+		return ["type", "size"];
 	}
 
 	set type(value){
@@ -79,6 +102,15 @@ class IconElement extends HTMLElement {
 
 	get type() {
 		return this[SYMBOL_PROPERTY_TYPE];
+	}
+
+	set size(value){
+		!Object.keys(SIZES).includes(value) && (function(){ throw(`Size can either be "${Object.keys(SIZES).join(',')}"`); })();
+		this[SYMBOL_PROPERTY_SIZE_SET](value);
+	}
+
+	get size() {
+		return this[SYMBOL_PROPERTY_SIZE];
 	}
 
 	connectedCallback(){
@@ -93,6 +125,9 @@ class IconElement extends HTMLElement {
 		switch(attrName){
 			case "type":
 				this.type = newValue;
+				break;
+			case "size":
+				this.size = newValue;
 				break;
 		}
 	}
