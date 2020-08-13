@@ -3,7 +3,7 @@ import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Cells|Carousel',
+	title: 'Cells/Carousel',
 	component: 'vwc-carousel',
 	decorators: [withA11y]
 }

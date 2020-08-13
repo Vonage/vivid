@@ -1,5 +1,5 @@
 @use 'sass:selector';
-@use '@vonage/vvd-fonts/typography' as typography;
+@forward './vwc-button-coupling';
 @use '@vonage/vvd-style-coupling/vvd-style-coupling-variables' as sc-variables;
 
 :host {
@@ -7,21 +7,6 @@
 	--mdc-button-disabled-fill-color: var(#{sc-variables.$formfield-border-idle});
 }
 
-.mdc-button {
-	@include typography.font-combo('Body2Bold');
-  height: 40px;
-	letter-spacing: initial;
-  text-transform: initial;
-	border-radius: 6px;
-}
-
-:host([disabled]) .mdc-button.mdc-button--outlined {
-  border-color: var(#{sc-variables.$formfield-border-idle});
-}
-
-.pill {
-  border-radius: 40px;
-}
 
 // ! move to utils as this might be a common
 // ! mixin for other components such as call-out
@@ -58,6 +43,21 @@
   }
 }
 
-@include connotations-context(
-  ':host([unelevated][connotation-specifier])'
-);
+@include connotations-context(':host([unelevated][connotation-specifier])');
+
+
+/////////////////////////////////////////////////////////////////////////////
+.mdc-button {
+	font-stretch: var(--vvd-typography-font-stretch);
+  height: 40px;
+	letter-spacing: normal;
+  border-radius: 6px;
+}
+
+:host([disabled]) .mdc-button.mdc-button--outlined {
+  border-color: var(--vvd-color-disabled-fill-color);
+}
+
+.pill {
+  border-radius: 40px;
+}

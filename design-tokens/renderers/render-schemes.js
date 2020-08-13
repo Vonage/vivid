@@ -64,15 +64,15 @@ function getStyleDictionaryConfig(scheme, scope) {
 					//     },
 					//   },
 					// },
-					// {
-					//   destination: '_typography.scss',
-					//   format,
-					//   filter: {
-					//     attributes: {
-					//       category: 'typography',
-					//     },
-					//   },
-					// },
+					{
+					  destination: '_typography.scss',
+						format: "custom/format/scss",
+					  filter: {
+					    attributes: {
+					      category: 'typography',
+					    },
+					  },
+					},
 				],
 			},
 			// android: {

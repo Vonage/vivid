@@ -9,6 +9,7 @@
 		"components/*"
 	],
 	"scripts": {
+		"dep-check": "lerna exec --stream --no-bail depcheck",
 		"changelog": "yarn lerna exec --concurrency 1 --stream 'conventional-changelog --preset angular --release-count 0 --commit-path $PWD --pkg $PWD/package.json --outfile $PWD/CHANGELOG.md --verbose'",
 		"lint:eslint": "eslint components/** common/** --no-error-on-unmatched-pattern --ignore-path .eslintignore --config .eslintrc.yaml",
 		"format:eslint": "eslint --ext .js,.html . --fix --ignore-path .eslintignore",
@@ -76,6 +77,7 @@
 		"concurrently": "^5.2.0",
 		"conventional-changelog-cli": "^2.0.34",
 		"deepmerge": "^4.2.2",
+		"depcheck": "YonatanKra/depcheck#vivid-version",
 		"es-dev-server": "^1.50.8",
 		"eslint": "^7.5.0",
 		"eslint-plugin-babel": "^5.3.1",

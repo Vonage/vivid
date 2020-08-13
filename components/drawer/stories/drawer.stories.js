@@ -6,7 +6,7 @@ import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Atoms|Drawer',
+	title: 'Atoms/Drawer',
 	component: 'vwc-drawer',
 	decorators: [withA11y]
 }

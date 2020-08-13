@@ -4,7 +4,7 @@ import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Atoms|List (radio list item)',
+	title: 'Atoms/List (radio list item)',
 	component: 'vwc-radio-list-item',
 	decorators: [withA11y]
 }
