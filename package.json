@@ -9,7 +9,6 @@
 		"components/*"
 	],
 	"scripts": {
-		"build:icon-resolver": "cd ./components/icon && node ./build/vwc-icon-build-manifest.js",
 		"changelog": "yarn lerna exec --concurrency 1 --stream 'conventional-changelog --preset angular --release-count 0 --commit-path $PWD --pkg $PWD/package.json --outfile $PWD/CHANGELOG.md --verbose'",
 		"lint:eslint": "eslint components/** common/** --no-error-on-unmatched-pattern --ignore-path .eslintignore --config .eslintrc.yaml",
 		"format:eslint": "eslint --ext .js,.html . --fix --ignore-path .eslintignore",
@@ -28,13 +27,14 @@
 		"bootstrap": "lerna bootstrap",
 		"storybook:build": "node ./scripts/storybook/prepare-sb-details.js && yarn wca:custom-elements && build-storybook -c .storybook -o .out -s ./.storybook/static && node ./scripts/storybook/update-sb-base-url.js",
 		"storybook:start": "node scripts/storybook/prepare-sb-details.js && yarn wca:custom-elements && start-storybook -s ./.storybook/static -p 9000",
-		"compile": "yarn compile:design-tokens && yarn compile:styles && yarn compile:typescript",
+		"compile": "yarn compile:design-tokens && yarn compile:styles && yarn compile:typescript && yarn build:icon-resolver --skip",
 		"compile:styles": "node ./common/fonts/build/generate-font-combos.js && ./scripts/build-styles.sh",
 		"compile:typescript": "tsc --build",
 		"compile:design-tokens": "node ./design-tokens/renderers/index.js",
 		"prestart": "yarn compile",
 		"start": "yarn dev:server",
 		"build:demo": "yarn compile && rimraf dist && rollup -c rollup.demo.config.js",
+		"build:icon-resolver": "cd ./components/icon && node ./build/vwc-icon-resolver-factory.js",
 		"dev:server": "es-dev-server --config es-dev-server.config.js",
 		"git:clean": "git clean -xdf",
 		"watch": "node scripts/watcher.js",
