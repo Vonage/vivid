@@ -7,5 +7,4 @@ export default {
 	component: 'vwc-icon',
 	decorators: [withA11y]
 };
-
-export const usage = ()=> html`<strong>I <vwc-icon type="heart-full" style="vertical-align: middle; fill: red;"></vwc-icon> VIVID!</strong>`;
+export const usage = ()=> html`<strong>I <vwc-icon type="heart-full" size="medium" style="vertical-align: middle; color: red;"></vwc-icon> VIVID!</strong>`;
