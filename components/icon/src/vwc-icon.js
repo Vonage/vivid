@@ -50,7 +50,7 @@ class IconElement extends HTMLElement {
 				.onValue(noop),
 			typeProperty = kefir
 				.concat([
-					kefir.constant(this.getAttribute('type')),
+					kefir.constant(this.getAttribute('type') || ""),
 					kefir.stream(({ emit })=> this[SYMBOL_PROPERTY_TYPE_SET] = emit)
 				])
 				.skipDuplicates()
@@ -61,7 +61,7 @@ class IconElement extends HTMLElement {
 		connectStream
 			.flatMapLatest(()=> {
 				return kefir.combine([
-					typeProperty.flatMap((typeId)=> kefir.fromPromise(resolveIcon(typeId))),
+					typeProperty.filter(Boolean).flatMap((typeId)=> kefir.fromPromise(resolveIcon(typeId))),
 					sizeProperty.map((sizeName)=> SIZES[sizeName])
 				])
 				.takeUntilBy(kefir.stream(({ emit })=> this[SYMBOL_DISCONNECT] = emit).take(1));
