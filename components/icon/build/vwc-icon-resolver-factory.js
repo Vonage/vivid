@@ -3,17 +3,27 @@ import kefir from "kefir";
 import aws from "aws-sdk";
 import parseArgs from "minimist";
 import { createHash } from "crypto";
-import { readdir, readFile, writeFile } from "fs";
+import { readdir, readFile, writeFile, mkdir } from "fs";
 
 const
 	S3_UPLOAD_CONCURRENCY = 10,
 	DEFAULT_BASE_URL = "https://d1zxmm6snown09.cloudfront.net",  //Dev
 	DEFAULT_OUTPUT_FOLDER = "./src",
 	DEFAULT_ICON_FOLDER = "./build/icon",
-	DEFAULT_SKIP = false;
+	DEFAULT_SKIP = false,
+	DEFAULT_RESOLVE_STRATEGY = "esm"; // cdn/esm
 
 const
-	{ awsAccessKey, awsAccessSecret, awsBucketName, awsSkipUpload = DEFAULT_SKIP, iconFolder = DEFAULT_ICON_FOLDER, awsBaseUrl = DEFAULT_BASE_URL, outputFolder = DEFAULT_OUTPUT_FOLDER } = parseArgs(process.argv.slice(2), { alias: { "skip": "awsSkipUpload" } }),
+	{
+		awsAccessKey,
+		awsAccessSecret,
+		awsBucketName,
+		awsSkipUpload = DEFAULT_SKIP,
+		awsBaseUrl = DEFAULT_BASE_URL,
+		iconFolder = DEFAULT_ICON_FOLDER,
+		outputFolder = DEFAULT_OUTPUT_FOLDER,
+		resolveStrategy = DEFAULT_RESOLVE_STRATEGY
+	} = parseArgs(process.argv.slice(2), { alias: { "skip": "awsSkipUpload" } }),
 	log = (message)=> console.log(["✓", message].join(' ')),
 	warn = (message)=> console.warn(["✘", message].join(' '));
 
@@ -65,15 +75,41 @@ const createAwsResolver = function({ awsAccessKey, awsAccessSecret, awsBucketNam
 			});
 
 	return (iconStream)=> {
-		return kefir.concat([
+		return kefir.merge([
 			!awsSkipUpload && iconStream.thru(pushToS3Bucket).map(({ key })=> ({ type: "log", value: `${key} successfully uploaded` })),
 			iconStream.thru(generateResolver).map((code)=> ({ type: "code", value: code }))
 		].filter(Boolean));
 	};
 };
+const createDynamicResolver = function(){
+	const RELATIVE_MODULE_PATH = "icon";
+	const
+		baseModulePath = path.resolve(process.cwd(), outputFolder, RELATIVE_MODULE_PATH),
+		esModuleTemplate = (svgContent)=>  `export default function(){ return \`${svgContent.replace(/`,/g, '\\``')}\`; }`;
+
+	return (iconStream)=> {
+		return kefir.concat([
+			kefir
+				.fromNodeCallback((cb)=> mkdir(baseModulePath, cb))
+				.flatMapErrors(({ code, ...err })=> kefir[code === "EEXIST" ? "never" : "constantError"]({ code, ...err }))
+				.ignoreValues(),
+			iconStream
+				.flatMapConcurLimit(({ content, filename })=> {
+					const moduleName = [filename.match(/([^/]+)\..+$/)[1], "js"].join('.');
+					return kefir
+						.fromNodeCallback((cb)=> writeFile(path.join(baseModulePath, moduleName), esModuleTemplate(content), cb))
+						.map(()=> ({ type: "log", value: `"${moduleName}" module was created successfully` }));
+				}, 5)
+				.beforeEnd(()=>({
+						type: "code",
+						value: `export default function(iconId){ return import('./${RELATIVE_MODULE_PATH}/' + iconId + ".js").then(({ default: f })=> f()); }`
+				}))
+		]);
+	};
+}
 
 const processStream = iconStream
-	.thru(createAwsResolver({ awsAccessKey, awsAccessSecret, awsBucketName, awsSkipUpload }))
+	.thru((({ "cdn": createAwsResolver, "esm": createDynamicResolver })[resolveStrategy] || (()=> ()=> kefir.never()))({ awsAccessKey, awsAccessSecret, awsBucketName, awsSkipUpload }))
 	.takeErrors(1);
 
 kefir
