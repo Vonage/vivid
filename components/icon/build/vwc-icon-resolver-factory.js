@@ -13,7 +13,7 @@ const
 	DEFAULT_SKIP = false;
 
 const
-	{ awsAccessKey, awsAccessSecret, awsBucketName, awsSkipUpload = DEFAULT_SKIP, iconFolder = DEFAULT_ICON_FOLDER, baseUrl = DEFAULT_BASE_URL, outputFolder = DEFAULT_OUTPUT_FOLDER } = parseArgs(process.argv.slice(2), { alias: { "skip": "awsSkipUpload" } }),
+	{ awsAccessKey, awsAccessSecret, awsBucketName, awsSkipUpload = DEFAULT_SKIP, iconFolder = DEFAULT_ICON_FOLDER, awsBaseUrl = DEFAULT_BASE_URL, outputFolder = DEFAULT_OUTPUT_FOLDER } = parseArgs(process.argv.slice(2), { alias: { "skip": "awsSkipUpload" } }),
 	log = (message)=> console.log(["✓", message].join(' ')),
 	warn = (message)=> console.warn(["✘", message].join(' '));
 
@@ -42,7 +42,6 @@ const createAwsResolver = function({ awsAccessKey, awsAccessSecret, awsBucketNam
 		return iconStream
 			.flatMapConcurLimit(
 				({ filename, content })=> {
-					const hash = sha256(content);
 					return kefir
 						.fromNodeCallback((cb) => s3.upload({
 							Bucket: awsBucketName,
@@ -61,7 +60,7 @@ const createAwsResolver = function({ awsAccessKey, awsAccessSecret, awsBucketNam
 			.map((resourceMap)=> {
 				return [
 					`const resourceMap = ${JSON.stringify(resourceMap)};`,
-					`export default function(iconId){ const resourceLocation = resourceMap[iconId]; return resourceLocation ? fetch(["${baseUrl}", resourceLocation].join('/')).then((res)=> res.text()) : Promise.reject("Icon not found"); };`
+					`export default function(iconId){ const resourceLocation = resourceMap[iconId]; return resourceLocation ? fetch(["${awsBaseUrl}", resourceLocation].join('/')).then((res)=> res.text()) : Promise.reject("Icon not found"); };`
 				].join('\n');
 			});
 
