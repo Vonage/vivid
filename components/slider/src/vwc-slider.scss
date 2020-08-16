@@ -1,13 +1,21 @@
-.mdc-slider__pin-value-marker {
-	font-size: 14px;
-	font-weight: 600;
-	font-stretch: 50%;
+@use '@vonage/vvd-typography/scss/typography' as typography;
 
-	width: 100%;
-	height: 100%;
-	border-radius: 2px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	background-color: var(--mdc-theme-secondary);
+:host {
+  @include typography.typography-cat-variables('body-2-bold');
+	--mdc-typography-body2-font-size: var(--vvd-typography-font-size);
+  --mdc-typography-body2-font-weight: var(--vvd-typography-font-weight);
+  --mdc-typography-body2-letter-spacing: initial;
+  --mdc-typography-body2-text-transform: none;
+	--mdc-typography-body2-font-family: var(--vvd-typography-font-family);
+	
+	.mdc-slider__pin-value-marker {
+		font-stretch: var(--vvd-typography-font-stretch);
+		width: 100%;
+		height: 100%;
+		border-radius: 3px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: var(--mdc-theme-secondary);
+	}
 }
