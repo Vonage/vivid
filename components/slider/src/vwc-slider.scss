@@ -1,7 +1,7 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 
 :host {
-  @include typography.typography-cat-variables('caption');
+  @include typography.typography-cat-variables('caption-bold');
 	--mdc-typography-body2-font-size: var(--vvd-typography-font-size);
   --mdc-typography-body2-font-weight: var(--vvd-typography-font-weight);
   --mdc-typography-body2-letter-spacing: initial;
