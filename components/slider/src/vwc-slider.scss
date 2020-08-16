@@ -2,14 +2,15 @@
 
 :host {
   @include typography.typography-cat-variables('caption-bold');
+	--mdc-typography-body2-font-family: var(--vvd-typography-font-family);
 	--mdc-typography-body2-font-size: var(--vvd-typography-font-size);
   --mdc-typography-body2-font-weight: var(--vvd-typography-font-weight);
+	--mdc-typography-body2-font-stretch: var(--vvd-typography-font-family);
   --mdc-typography-body2-letter-spacing: initial;
   --mdc-typography-body2-text-transform: none;
-	--mdc-typography-body2-font-family: var(--vvd-typography-font-family);
 
 	.mdc-slider__pin-value-marker {
-		font-stretch: var(--vvd-typography-font-stretch);
+		font-stretch: var(--mdc-typography-body2-font-stretch);
 		width: 100%;
 		height: 100%;
 		border-radius: 3px;
