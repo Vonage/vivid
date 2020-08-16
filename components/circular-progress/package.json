@@ -1,0 +1,32 @@
+{
+  "name": "@vonage/vwc-circular-progress",
+  "version": "0.3.0",
+  "description": "> TODO: description",
+  "homepage": "https://github.com/Vonage/vivid/tree/master/components/circular-progress#readme",
+  "license": "ISC",
+  "main": "vwc-circular-progress.js",
+  "module": "vwc-circular-progress.js",
+  "files": [
+    "src",
+    "*.js",
+    "*.ts",
+    "*.map"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vonage/vivid.git",
+    "directory": "components/circular-progress"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/Vonage/vivid/issues"
+  },
+  "dependencies": {
+    "@material/mwc-circular-progress": "^0.18.0",
+    "@vonage/vvd-style-coupling": "^0.3.0",
+    "lit-element": "^2.3.1",
+    "tslib": "^2.0.0"
+  }
+}
