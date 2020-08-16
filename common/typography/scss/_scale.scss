@@ -1,7 +1,8 @@
 @use 'modularscale-sass/stylesheets/modularscale';
 
 $modularscale: (
-  // base: 1em,
+  base: 14px,
+	ratio: modularscale.$major-second,
   // ratio: 1.1,
 
   400px: (
