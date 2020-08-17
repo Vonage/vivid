@@ -40,20 +40,8 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Notify community
-      - name: Build changelog for Slack notification
-        id: export_message
-        run: echo "::set-output name=version_change_log::$(npx conventional-changelog-cli --preset angular --release-count 1)"
-
       - name: Notify slack
-        uses: rtCamp/action-slack-notify@master
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          SLACK_CHANNEL: 'vivid-engineering'
-          MSG_MINIMAL: true
-          SLACK_ICON_EMOJI: ':vivid:'
-          SLACK_USERNAME: Vivid CI
-          SLACK_TITLE: Vivid Release Notice
-          SLACK_MESSAGE: Hey!!! We've just released a new Vivid!!! ${{ steps.export_message.outputs.version_change_log }}
+        run: git log --format=oneline --decorate=short | node ./scripts/release_announcer --slackHookUrl="${{ secrets.SLACK_WEBHOOK }}"
 
       # Build and deploy showcase
       - name: Build storybook
