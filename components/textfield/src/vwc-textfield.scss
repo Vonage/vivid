@@ -1,18 +1,18 @@
 @use '@vonage/vvd-fonts/typography' as typography;
-@use '@vonage/vvd-style-coupling/vvd-style-coupling-variables' as sc-variables;
+@use '../../../utils/scss/variable-names/color-semantic-variable-names' as color-semantic;
 
 :host {
   --mdc-theme-primary: #131415;
   --mdc-text-field-ink-color: var(--mdc-theme-primary);
-  --mdc-text-field-label-ink-color: var(#{sc-variables.$formfield-label-idle-ink});
-  --mdc-text-field-disabled-ink-color: var(#{sc-variables.$formfield-disabled-ink});
-  --mdc-text-field-disabled-fill-color: var(#{sc-variables.$formfield-disabled-fill});
-  --mdc-text-field-outlined-idle-border-color: var(#{sc-variables.$formfield-border-idle});
-  --mdc-text-field-outlined-hover-border-color:	var(#{sc-variables.$formfield-border-hover});
-  --mdc-text-field-outlined-disabled-border-color: var(#{sc-variables.$formfield-border-disabled});
+  --mdc-text-field-label-ink-color: var(#{color-semantic.$formfield-label-idle-ink});
+  --mdc-text-field-disabled-ink-color: var(#{color-semantic.$formfield-disabled-ink});
+  --mdc-text-field-disabled-fill-color: var(#{color-semantic.$formfield-disabled-fill});
+  --mdc-text-field-outlined-idle-border-color: var(#{color-semantic.$formfield-border-idle});
+  --mdc-text-field-outlined-hover-border-color:	var(#{color-semantic.$formfield-border-hover});
+  --mdc-text-field-outlined-disabled-border-color: var(#{color-semantic.$formfield-border-disabled});
 
-	--mdc-text-field-error-color: var(#{sc-variables.$formfield-label-error-ink});
-	--mdc-text-field-error-fill-color: var(#{sc-variables.$formfield-error-fill});
+	--mdc-text-field-error-color: var(#{color-semantic.$formfield-label-error-ink});
+	--mdc-text-field-error-fill-color: var(#{color-semantic.$formfield-error-fill});
 
 	@include typography.font-combo('Body2');
 
@@ -24,7 +24,7 @@
 	background-color: var(--mdc-text-field-disabled-fill-color);
 
 	.mdc-text-field__input {
-		color: var(#{sc-variables.$formfield-disabled-ink});
+		color: var(#{color-semantic.$formfield-disabled-ink});
 	}
 
 	.mdc-notched-outline {
