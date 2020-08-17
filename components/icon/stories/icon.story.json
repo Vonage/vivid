@@ -1,4377 +1,4377 @@
 [
 	{
+		"category_title": "AI",
 		"icon_id": "ai",
-		"category_title": "AI",
 		"category_id": "aiIcons"
 	},
 	{
+		"category_title": "AI",
 		"icon_id": "ai-full",
-		"category_title": "AI",
 		"category_id": "aiIcons"
 	},
 	{
+		"category_title": "AI",
 		"icon_id": "ai-2",
-		"category_title": "AI",
 		"category_id": "aiIcons"
 	},
 	{
+		"category_title": "AI",
 		"icon_id": "ai-2-full",
-		"category_title": "AI",
 		"category_id": "aiIcons"
 	},
 	{
+		"category_title": "AI",
 		"icon_id": "ai-3",
-		"category_title": "AI",
 		"category_id": "aiIcons"
 	},
 	{
+		"category_title": "AI",
 		"icon_id": "ai-3-full",
-		"category_title": "AI",
 		"category_id": "aiIcons"
 	},
 	{
+		"category_title": "AI",
 		"icon_id": "mind-map",
-		"category_title": "AI",
 		"category_id": "aiIcons"
 	},
 	{
+		"category_title": "AI",
 		"icon_id": "mind-map-full",
-		"category_title": "AI",
 		"category_id": "aiIcons"
 	},
 	{
+		"category_title": "AI",
 		"icon_id": "brain",
-		"category_title": "AI",
 		"category_id": "aiIcons"
 	},
 	{
+		"category_title": "AI",
 		"icon_id": "brain-full",
-		"category_title": "AI",
 		"category_id": "aiIcons"
 	},
 	{
+		"category_title": "Alert",
 		"icon_id": "info",
-		"category_title": "Alert",
 		"category_id": "alertIcons"
 	},
 	{
+		"category_title": "Alert",
 		"icon_id": "info-negative",
-		"category_title": "Alert",
 		"category_id": "alertIcons"
 	},
 	{
+		"category_title": "Alert",
 		"icon_id": "help",
-		"category_title": "Alert",
 		"category_id": "alertIcons"
 	},
 	{
+		"category_title": "Alert",
 		"icon_id": "help-negative",
-		"category_title": "Alert",
 		"category_id": "alertIcons"
 	},
 	{
+		"category_title": "Alert",
 		"icon_id": "alert",
-		"category_title": "Alert",
 		"category_id": "alertIcons"
 	},
 	{
+		"category_title": "Alert",
 		"icon_id": "alert-negative",
-		"category_title": "Alert",
 		"category_id": "alertIcons"
 	},
 	{
+		"category_title": "Alert",
 		"icon_id": "block",
-		"category_title": "Alert",
 		"category_id": "alertIcons"
 	},
 	{
+		"category_title": "Alert",
 		"icon_id": "block-full",
-		"category_title": "Alert",
 		"category_id": "alertIcons"
 	},
 	{
+		"category_title": "Alert",
 		"icon_id": "notification",
-		"category_title": "Alert",
 		"category_id": "alertIcons"
 	},
 	{
+		"category_title": "Alert",
 		"icon_id": "notification-full",
-		"category_title": "Alert",
 		"category_id": "alertIcons"
 	},
 	{
+		"category_title": "Alert",
 		"icon_id": "notification-off",
-		"category_title": "Alert",
 		"category_id": "alertIcons"
 	},
 	{
+		"category_title": "Alert",
 		"icon_id": "notification-off-full",
-		"category_title": "Alert",
 		"category_id": "alertIcons"
 	},
 	{
+		"category_title": "Alert",
 		"icon_id": "error-star",
-		"category_title": "Alert",
 		"category_id": "alertIcons"
 	},
 	{
+		"category_title": "Alert",
 		"icon_id": "error",
-		"category_title": "Alert",
 		"category_id": "alertIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "arrow-thin-right",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "arrow-thin-right-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "arrow-thin-left",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "arrow-thin-left-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "arrow-thin-up",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "arrow-thin-up-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "arrow-thin-down",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "arrow-thin-down-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "arrow-right",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "arrow-right-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "arrow-left",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "arrow-left-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "arrow-inbound",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "arrow-inbound-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "arrow-outbound",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "arrow-outbound-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "maximise",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "maximise-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "minimize",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "minimize-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "merge",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "merge-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "minimize-2",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "minimize-2-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "expand",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "expand-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "merge-2",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "merge-2-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "refresh",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "refresh-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "toggle",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "toggle-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "reload",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "reload-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "collapse",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "collapse-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "expand",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "expand-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "open",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "open-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "transfer",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "transfer-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "reply",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "reply-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "share-1",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "share-1-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "share-2",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "share-2-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "exit",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "exit-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "exit",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "exit-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "enter",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "enter-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "increase",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "increase-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "leave",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "leave-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "enlarge-screen",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "enlarge-screen-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "enlarge-screen-2",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "enlarge-screen-2-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "bounce",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Arrows",
 		"icon_id": "bounce-full",
-		"category_title": "Arrows",
 		"category_id": "arrowsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "angular",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "angular-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "android",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "android-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "apple",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "apple-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "blogger",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "blogger-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "bullhorn",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "bullhorn-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "chime",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "chime-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "clio",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "clio-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "curl",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "curl-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "dotnet",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "dotnet-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "drupal",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "drupal-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "dynamics",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "dynamics-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "express",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "express-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "facebook",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "facebook-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "github",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "github-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "google",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "google-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "gradle",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "gradle-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "groovy",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "groovy-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "ios",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "ios-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "java",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "java-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "jobdiva",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "jobdiva-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "javascript",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "javascript-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "laravel",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "laravel-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "linkedin",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "linkedin-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "nexmo",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "nexmo-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "node",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "node-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "office",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "office-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "php",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "php-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "python",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "python-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "rails",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "rails-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "react",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "react-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "ruby",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "ruby-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "rss",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "rss-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "salesforce",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "salesforce-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "slack",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "slack-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "stackoverflow",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "stackoverflow-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "sugarcrm",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "sugarcrm-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "symfony",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "symfony-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "twitch",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "twitch-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "twitter",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "twitter-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "viber",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "viber-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "vonage",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "vonage-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "vonage-2",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "vonage-2-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "vue",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "vue-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "whatsapp",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "whatsapp-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "wordpress",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "wordpress-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "xml",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "xml-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "youtube",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "youtube-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "zendesk",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "zendesk-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "zoho",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Brands",
 		"icon_id": "zoho-color",
-		"category_title": "Brands",
 		"category_id": "brandsIcons"
 	},
 	{
+		"category_title": "Gradient Brands",
 		"icon_id": "kotlin",
-		"category_title": "Gradient Brands",
 		"category_id": "brandsGradientIcons"
 	},
 	{
+		"category_title": "Gradient Brands",
 		"icon_id": "kotlin-color",
-		"category_title": "Gradient Brands",
 		"category_id": "brandsGradientIcons"
 	},
 	{
+		"category_title": "Cancel",
 		"icon_id": "cross",
-		"category_title": "Cancel",
 		"category_id": "cancelIcons"
 	},
 	{
+		"category_title": "Cancel",
 		"icon_id": "cross-full",
-		"category_title": "Cancel",
 		"category_id": "cancelIcons"
 	},
 	{
+		"category_title": "Cancel",
 		"icon_id": "cross-circle",
-		"category_title": "Cancel",
 		"category_id": "cancelIcons"
 	},
 	{
+		"category_title": "Cancel",
 		"icon_id": "cross-circle-negative",
-		"category_title": "Cancel",
 		"category_id": "cancelIcons"
 	},
 	{
+		"category_title": "Cancel",
 		"icon_id": "backspace",
-		"category_title": "Cancel",
 		"category_id": "cancelIcons"
 	},
 	{
+		"category_title": "Cancel",
 		"icon_id": "backspace-full",
-		"category_title": "Cancel",
 		"category_id": "cancelIcons"
 	},
 	{
+		"category_title": "Charts",
 		"icon_id": "chart",
-		"category_title": "Charts",
 		"category_id": "chartsIcons"
 	},
 	{
+		"category_title": "Charts",
 		"icon_id": "chart-full",
-		"category_title": "Charts",
 		"category_id": "chartsIcons"
 	},
 	{
+		"category_title": "Charts",
 		"icon_id": "report",
-		"category_title": "Charts",
 		"category_id": "chartsIcons"
 	},
 	{
+		"category_title": "Charts",
 		"icon_id": "report-full",
-		"category_title": "Charts",
 		"category_id": "chartsIcons"
 	},
 	{
+		"category_title": "Charts",
 		"icon_id": "pie-chart",
-		"category_title": "Charts",
 		"category_id": "chartsIcons"
 	},
 	{
+		"category_title": "Charts",
 		"icon_id": "pie-chart-full",
-		"category_title": "Charts",
 		"category_id": "chartsIcons"
 	},
 	{
+		"category_title": "Check",
 		"icon_id": "check-circle",
-		"category_title": "Check",
 		"category_id": "checkIcons"
 	},
 	{
+		"category_title": "Check",
 		"icon_id": "check-circle-negative",
-		"category_title": "Check",
 		"category_id": "checkIcons"
 	},
 	{
+		"category_title": "Check",
 		"icon_id": "checkbox",
-		"category_title": "Check",
 		"category_id": "checkIcons"
 	},
 	{
+		"category_title": "Check",
 		"icon_id": "checkbox-checked-full",
-		"category_title": "Check",
 		"category_id": "checkIcons"
 	},
 	{
+		"category_title": "Check",
 		"icon_id": "checkbox-unchecked",
-		"category_title": "Check",
 		"category_id": "checkIcons"
 	},
 	{
+		"category_title": "Check",
 		"icon_id": "checkbox-unchecked-full",
-		"category_title": "Check",
 		"category_id": "checkIcons"
 	},
 	{
+		"category_title": "Check",
 		"icon_id": "check",
-		"category_title": "Check",
 		"category_id": "checkIcons"
 	},
 	{
+		"category_title": "Check",
 		"icon_id": "check-bold",
-		"category_title": "Check",
 		"category_id": "checkIcons"
 	},
 	{
+		"category_title": "Check",
 		"icon_id": "check-double",
-		"category_title": "Check",
 		"category_id": "checkIcons"
 	},
 	{
+		"category_title": "Check",
 		"icon_id": "check-double-bold",
-		"category_title": "Check",
 		"category_id": "checkIcons"
 	},
 	{
+		"category_title": "Chevrons",
 		"icon_id": "down",
-		"category_title": "Chevrons",
 		"category_id": "chevronsIcons"
 	},
 	{
+		"category_title": "Chevrons",
 		"icon_id": "down-full",
-		"category_title": "Chevrons",
 		"category_id": "chevronsIcons"
 	},
 	{
+		"category_title": "Chevrons",
 		"icon_id": "up",
-		"category_title": "Chevrons",
 		"category_id": "chevronsIcons"
 	},
 	{
+		"category_title": "Chevrons",
 		"icon_id": "up-full",
-		"category_title": "Chevrons",
 		"category_id": "chevronsIcons"
 	},
 	{
+		"category_title": "Chevrons",
 		"icon_id": "left",
-		"category_title": "Chevrons",
 		"category_id": "chevronsIcons"
 	},
 	{
+		"category_title": "Chevrons",
 		"icon_id": "left-full",
-		"category_title": "Chevrons",
 		"category_id": "chevronsIcons"
 	},
 	{
+		"category_title": "Chevrons",
 		"icon_id": "right",
-		"category_title": "Chevrons",
 		"category_id": "chevronsIcons"
 	},
 	{
+		"category_title": "Chevrons",
 		"icon_id": "right-full",
-		"category_title": "Chevrons",
 		"category_id": "chevronsIcons"
 	},
 	{
+		"category_title": "Chevrons",
 		"icon_id": "sort",
-		"category_title": "Chevrons",
 		"category_id": "chevronsIcons"
 	},
 	{
+		"category_title": "Chevrons",
 		"icon_id": "sort-full",
-		"category_title": "Chevrons",
 		"category_id": "chevronsIcons"
 	},
 	{
+		"category_title": "Chevrons",
 		"icon_id": "circle-down",
-		"category_title": "Chevrons",
 		"category_id": "chevronsIcons"
 	},
 	{
+		"category_title": "Chevrons",
 		"icon_id": "circle-down-full",
-		"category_title": "Chevrons",
 		"category_id": "chevronsIcons"
 	},
 	{
+		"category_title": "Commerce shapes",
 		"icon_id": "store",
-		"category_title": "Commerce shapes",
 		"category_id": "commerceIcons"
 	},
 	{
+		"category_title": "Commerce shapes",
 		"icon_id": "store-full",
-		"category_title": "Commerce shapes",
 		"category_id": "commerceIcons"
 	},
 	{
+		"category_title": "Commerce shapes",
 		"icon_id": "credit-card",
-		"category_title": "Commerce shapes",
 		"category_id": "commerceIcons"
 	},
 	{
+		"category_title": "Commerce shapes",
 		"icon_id": "wallet",
-		"category_title": "Commerce shapes",
 		"category_id": "commerceIcons"
 	},
 	{
+		"category_title": "Commerce shapes",
 		"icon_id": "wallet-full",
-		"category_title": "Commerce shapes",
 		"category_id": "commerceIcons"
 	},
 	{
+		"category_title": "Commerce shapes",
 		"icon_id": "cart",
-		"category_title": "Commerce shapes",
 		"category_id": "commerceIcons"
 	},
 	{
+		"category_title": "Commerce shapes",
 		"icon_id": "cart-glyph",
-		"category_title": "Commerce shapes",
 		"category_id": "commerceIcons"
 	},
 	{
+		"category_title": "Commerce shapes",
 		"icon_id": "cart-full",
-		"category_title": "Commerce shapes",
 		"category_id": "commerceIcons"
 	},
 	{
+		"category_title": "Commerce shapes",
 		"icon_id": "cart-full-glyph",
-		"category_title": "Commerce shapes",
 		"category_id": "commerceIcons"
 	},
 	{
+		"category_title": "Commerce shapes",
 		"icon_id": "packet",
-		"category_title": "Commerce shapes",
 		"category_id": "commerceIcons"
 	},
 	{
+		"category_title": "Commerce shapes",
 		"icon_id": "packet-full",
-		"category_title": "Commerce shapes",
 		"category_id": "commerceIcons"
 	},
 	{
+		"category_title": "Commerce shapes",
 		"icon_id": "packet-2",
-		"category_title": "Commerce shapes",
 		"category_id": "commerceIcons"
 	},
 	{
+		"category_title": "Commerce shapes",
 		"icon_id": "packet-2-full",
-		"category_title": "Commerce shapes",
 		"category_id": "commerceIcons"
 	},
 	{
+		"category_title": "Commerce shapes",
 		"icon_id": "calculator",
-		"category_title": "Commerce shapes",
 		"category_id": "commerceIcons"
 	},
 	{
+		"category_title": "Commerce shapes",
 		"icon_id": "calculator-full",
-		"category_title": "Commerce shapes",
 		"category_id": "commerceIcons"
 	},
 	{
+		"category_title": "Commerce shapes",
 		"icon_id": "refresh-dollar",
-		"category_title": "Commerce shapes",
 		"category_id": "commerceIcons"
 	},
 	{
+		"category_title": "Commerce shapes",
 		"icon_id": "dollar-star",
-		"category_title": "Commerce shapes",
 		"category_id": "commerceIcons"
 	},
 	{
+		"category_title": "Connectivity",
 		"icon_id": "wifi",
-		"category_title": "Connectivity",
 		"category_id": "connectivityIcons"
 	},
 	{
+		"category_title": "Connectivity",
 		"icon_id": "wifi-full",
-		"category_title": "Connectivity",
 		"category_id": "connectivityIcons"
 	},
 	{
+		"category_title": "Connectivity",
 		"icon_id": "salesforce",
-		"category_title": "Connectivity",
 		"category_id": "connectivityIcons"
 	},
 	{
+		"category_title": "Connectivity",
 		"icon_id": "salesforce-full",
-		"category_title": "Connectivity",
 		"category_id": "connectivityIcons"
 	},
 	{
+		"category_title": "Connectivity",
 		"icon_id": "cloud",
-		"category_title": "Connectivity",
 		"category_id": "connectivityIcons"
 	},
 	{
+		"category_title": "Connectivity",
 		"icon_id": "cloud-full",
-		"category_title": "Connectivity",
 		"category_id": "connectivityIcons"
 	},
 	{
+		"category_title": "Connectivity",
 		"icon_id": "snooze",
-		"category_title": "Connectivity",
 		"category_id": "connectivityIcons"
 	},
 	{
+		"category_title": "Connectivity",
 		"icon_id": "snooze-full",
-		"category_title": "Connectivity",
 		"category_id": "connectivityIcons"
 	},
 	{
+		"category_title": "Connectivity",
 		"icon_id": "cloud-upload",
-		"category_title": "Connectivity",
 		"category_id": "connectivityIcons"
 	},
 	{
+		"category_title": "Connectivity",
 		"icon_id": "cloud-upload-full",
-		"category_title": "Connectivity",
 		"category_id": "connectivityIcons"
 	},
 	{
+		"category_title": "Connectivity",
 		"icon_id": "quit",
-		"category_title": "Connectivity",
 		"category_id": "connectivityIcons"
 	},
 	{
+		"category_title": "Connectivity",
 		"icon_id": "quit-full",
-		"category_title": "Connectivity",
 		"category_id": "connectivityIcons"
 	},
 	{
+		"category_title": "Connectivity",
 		"icon_id": "broadcast",
-		"category_title": "Connectivity",
 		"category_id": "connectivityIcons"
 	},
 	{
+		"category_title": "Connectivity",
 		"icon_id": "broadcast-full",
-		"category_title": "Connectivity",
 		"category_id": "connectivityIcons"
 	},
 	{
+		"category_title": "Date & Time",
 		"icon_id": "calendar",
-		"category_title": "Date & Time",
 		"category_id": "dateIcons"
 	},
 	{
+		"category_title": "Date & Time",
 		"icon_id": "calendar-full",
-		"category_title": "Date & Time",
 		"category_id": "dateIcons"
 	},
 	{
+		"category_title": "Date & Time",
 		"icon_id": "calendar-2",
-		"category_title": "Date & Time",
 		"category_id": "dateIcons"
 	},
 	{
+		"category_title": "Date & Time",
 		"icon_id": "calendar-2-full",
-		"category_title": "Date & Time",
 		"category_id": "dateIcons"
 	},
 	{
+		"category_title": "Date & Time",
 		"icon_id": "calendar-3",
-		"category_title": "Date & Time",
 		"category_id": "dateIcons"
 	},
 	{
+		"category_title": "Date & Time",
 		"icon_id": "calendar-3-full",
-		"category_title": "Date & Time",
 		"category_id": "dateIcons"
 	},
 	{
+		"category_title": "Date & Time",
 		"icon_id": "calendar-add",
-		"category_title": "Date & Time",
 		"category_id": "dateIcons"
 	},
 	{
+		"category_title": "Date & Time",
 		"icon_id": "calendar-add-full",
-		"category_title": "Date & Time",
 		"category_id": "dateIcons"
 	},
 	{
+		"category_title": "Date & Time",
 		"icon_id": "clock",
-		"category_title": "Date & Time",
 		"category_id": "dateIcons"
 	},
 	{
+		"category_title": "Date & Time",
 		"icon_id": "clock-full",
-		"category_title": "Date & Time",
 		"category_id": "dateIcons"
 	},
 	{
+		"category_title": "Date & Time",
 		"icon_id": "alarm",
-		"category_title": "Date & Time",
 		"category_id": "dateIcons"
 	},
 	{
+		"category_title": "Date & Time",
 		"icon_id": "alarm-full",
-		"category_title": "Date & Time",
 		"category_id": "dateIcons"
 	},
 	{
+		"category_title": "Date & Time",
 		"icon_id": "history",
-		"category_title": "Date & Time",
 		"category_id": "dateIcons"
 	},
 	{
+		"category_title": "Date & Time",
 		"icon_id": "history-full",
-		"category_title": "Date & Time",
 		"category_id": "dateIcons"
 	},
 	{
+		"category_title": "Date & Time",
 		"icon_id": "sand-clock",
-		"category_title": "Date & Time",
 		"category_id": "dateIcons"
 	},
 	{
+		"category_title": "Date & Time",
 		"icon_id": "sand-clock-full",
-		"category_title": "Date & Time",
 		"category_id": "dateIcons"
 	},
 	{
+		"category_title": "Date & Time",
 		"icon_id": "stopwatch",
-		"category_title": "Date & Time",
 		"category_id": "dateIcons"
 	},
 	{
+		"category_title": "Date & Time",
 		"icon_id": "stopwatch-full",
-		"category_title": "Date & Time",
 		"category_id": "dateIcons"
 	},
 	{
+		"category_title": "Delete",
 		"icon_id": "bin",
-		"category_title": "Delete",
 		"category_id": "deleteIcons"
 	},
 	{
+		"category_title": "Delete",
 		"icon_id": "bin-full",
-		"category_title": "Delete",
 		"category_id": "deleteIcons"
 	},
 	{
+		"category_title": "Delete",
 		"icon_id": "remove",
-		"category_title": "Delete",
 		"category_id": "deleteIcons"
 	},
 	{
+		"category_title": "Delete",
 		"icon_id": "remove-full",
-		"category_title": "Delete",
 		"category_id": "deleteIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "devices",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "devices-full",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "headset",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "headset-full",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "laptop",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "laptop-full",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "mobile-devices",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "mobile-devices-full",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "mobile",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "mobile-full",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "mobile-2",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "mobile-2-full",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "print",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "print-full",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "fax",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "fax-full",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "fax-2",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "fax-2-full",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "fax-inbound",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "fax-inbound-full",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "fax-outbound",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "fax-outbound-full",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "fax-pending",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "fax-pending-full",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "fax-failed",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "fax-failed-full",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "fax-add",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "fax-add-full",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "fax-scheduled",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "fax-scheduled-full",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "voicemail",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "voicemail-full",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "virtual-voicemail",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "virtual-voicemail-full",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "voicemail-transcript",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "voicemail-transcript-full",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "light-bulb",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "light-bulb-full",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "telephone",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "telephone-full",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "telephone-2",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Devices",
 		"icon_id": "telephone-2-full",
-		"category_title": "Devices",
 		"category_id": "devicesIcons"
 	},
 	{
+		"category_title": "Elements",
 		"icon_id": "duplicate",
-		"category_title": "Elements",
 		"category_id": "elementsIcons"
 	},
 	{
+		"category_title": "Elements",
 		"icon_id": "duplicate-full",
-		"category_title": "Elements",
 		"category_id": "elementsIcons"
 	},
 	{
+		"category_title": "Elements",
 		"icon_id": "more-v",
-		"category_title": "Elements",
 		"category_id": "elementsIcons"
 	},
 	{
+		"category_title": "Elements",
 		"icon_id": "more-v-negative",
-		"category_title": "Elements",
 		"category_id": "elementsIcons"
 	},
 	{
+		"category_title": "Elements",
 		"icon_id": "more",
-		"category_title": "Elements",
 		"category_id": "elementsIcons"
 	},
 	{
+		"category_title": "Elements",
 		"icon_id": "more-full",
-		"category_title": "Elements",
 		"category_id": "elementsIcons"
 	},
 	{
+		"category_title": "Elements",
 		"icon_id": "my-apps",
-		"category_title": "Elements",
 		"category_id": "elementsIcons"
 	},
 	{
+		"category_title": "Elements",
 		"icon_id": "my-apps-full",
-		"category_title": "Elements",
 		"category_id": "elementsIcons"
 	},
 	{
+		"category_title": "Elements",
 		"icon_id": "drag",
-		"category_title": "Elements",
 		"category_id": "elementsIcons"
 	},
 	{
+		"category_title": "Elements",
 		"icon_id": "drag-full",
-		"category_title": "Elements",
 		"category_id": "elementsIcons"
 	},
 	{
+		"category_title": "Emoji",
 		"icon_id": "emoji",
-		"category_title": "Emoji",
 		"category_id": "emojiIcons"
 	},
 	{
+		"category_title": "Emoji",
 		"icon_id": "emoji-full",
-		"category_title": "Emoji",
 		"category_id": "emojiIcons"
 	},
 	{
+		"category_title": "Emoji",
 		"icon_id": "unhappy",
-		"category_title": "Emoji",
 		"category_id": "emojiIcons"
 	},
 	{
+		"category_title": "Emoji",
 		"icon_id": "unhappy-full",
-		"category_title": "Emoji",
 		"category_id": "emojiIcons"
 	},
 	{
+		"category_title": "Emoji",
 		"icon_id": "happy",
-		"category_title": "Emoji",
 		"category_id": "emojiIcons"
 	},
 	{
+		"category_title": "Emoji",
 		"icon_id": "happy-full",
-		"category_title": "Emoji",
 		"category_id": "emojiIcons"
 	},
 	{
+		"category_title": "Emoji",
 		"icon_id": "surprised",
-		"category_title": "Emoji",
 		"category_id": "emojiIcons"
 	},
 	{
+		"category_title": "Emoji",
 		"icon_id": "surprised-full",
-		"category_title": "Emoji",
 		"category_id": "emojiIcons"
 	},
 	{
+		"category_title": "Emoji",
 		"icon_id": "smile",
-		"category_title": "Emoji",
 		"category_id": "emojiIcons"
 	},
 	{
+		"category_title": "Emoji",
 		"icon_id": "smile-full",
-		"category_title": "Emoji",
 		"category_id": "emojiIcons"
 	},
 	{
+		"category_title": "Emoji",
 		"icon_id": "puzzled",
-		"category_title": "Emoji",
 		"category_id": "emojiIcons"
 	},
 	{
+		"category_title": "Emoji",
 		"icon_id": "puzzled-full",
-		"category_title": "Emoji",
 		"category_id": "emojiIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "small-file",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file-2",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file-2-full",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file-3",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file-3-full",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file-pdf",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file-pdf-full",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file-ppt",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file-ppt-full",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file-doc",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file-doc-full",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file-xls",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file-xls-full",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file-zip",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file-zip-full",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file-video",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file-video-full",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file-dollar",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file-dollar-full",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file-plus",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file-plus-full",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file-edit",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file-edit-full",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file-gear",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file-gear-full",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file-search",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file-search-full",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file-add",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file-add-full",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "files",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "files-full",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "copy",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "copy-full",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "copy-2",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "copy-2-full",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "upload",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "upload-full",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "download",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "download-full",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "image",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "image-full",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "gallery",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "small-image",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "small-video",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "small-video-full",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "stack",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "stack-full",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "notes",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "notes-full",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "document",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "document-full",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file-paragraph",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file-paragraph-full",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
+		"category_title": "File",
 		"icon_id": "file-csv-full",
-		"category_title": "File",
 		"category_id": "fileIcons"
 	},
 	{
-		"icon_id": "albania",
 		"category_title": "Flags",
+		"icon_id": "flag-albania",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "algeria",
 		"category_title": "Flags",
+		"icon_id": "flag-algeria",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "argentina",
 		"category_title": "Flags",
+		"icon_id": "flag-argentina",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "armenia",
 		"category_title": "Flags",
+		"icon_id": "flag-armenia",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "aruba",
 		"category_title": "Flags",
+		"icon_id": "flag-aruba",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "australia",
 		"category_title": "Flags",
+		"icon_id": "flag-australia",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "austria",
 		"category_title": "Flags",
+		"icon_id": "flag-austria",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "bahamas",
 		"category_title": "Flags",
+		"icon_id": "flag-bahamas",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "bahrain",
 		"category_title": "Flags",
+		"icon_id": "flag-bahrain",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "belarus",
 		"category_title": "Flags",
+		"icon_id": "flag-belarus",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "belgium",
 		"category_title": "Flags",
+		"icon_id": "flag-belgium",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "benin",
 		"category_title": "Flags",
+		"icon_id": "flag-benin",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "bolivia",
 		"category_title": "Flags",
+		"icon_id": "flag-bolivia",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "botswana",
 		"category_title": "Flags",
+		"icon_id": "flag-botswana",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "brazil",
 		"category_title": "Flags",
+		"icon_id": "flag-brazil",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "bulgaria",
 		"category_title": "Flags",
+		"icon_id": "flag-bulgaria",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "burkina-faso",
 		"category_title": "Flags",
+		"icon_id": "flag-burkina-faso",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "cambodia",
 		"category_title": "Flags",
+		"icon_id": "flag-cambodia",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "canada",
 		"category_title": "Flags",
+		"icon_id": "flag-canada",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "cayman-islands",
 		"category_title": "Flags",
+		"icon_id": "flag-cayman-islands",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "central-african-republic",
 		"category_title": "Flags",
+		"icon_id": "flag-central-african-republic",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "chad",
 		"category_title": "Flags",
+		"icon_id": "flag-chad",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "chile",
 		"category_title": "Flags",
+		"icon_id": "flag-chile",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "china",
 		"category_title": "Flags",
+		"icon_id": "flag-china",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "colombia",
 		"category_title": "Flags",
+		"icon_id": "flag-colombia",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "costa-rica",
 		"category_title": "Flags",
+		"icon_id": "flag-costa-rica",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "croatia",
 		"category_title": "Flags",
+		"icon_id": "flag-croatia",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "cyprus",
 		"category_title": "Flags",
+		"icon_id": "flag-cyprus",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "denmark",
 		"category_title": "Flags",
+		"icon_id": "flag-denmark",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "dominican-republic",
 		"category_title": "Flags",
+		"icon_id": "flag-dominican-republic",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "egypt",
 		"category_title": "Flags",
+		"icon_id": "flag-egypt",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "el-salvador",
 		"category_title": "Flags",
+		"icon_id": "flag-el-salvador",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "estonia",
 		"category_title": "Flags",
+		"icon_id": "flag-estonia",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "finland",
 		"category_title": "Flags",
+		"icon_id": "flag-finland",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "france",
 		"category_title": "Flags",
+		"icon_id": "flag-france",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "georgia",
 		"category_title": "Flags",
+		"icon_id": "flag-georgia",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "germany",
 		"category_title": "Flags",
+		"icon_id": "flag-germany",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "ghana",
 		"category_title": "Flags",
+		"icon_id": "flag-ghana",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "grenada",
 		"category_title": "Flags",
+		"icon_id": "flag-grenada",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "guatemala",
 		"category_title": "Flags",
+		"icon_id": "flag-guatemala",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "honduras",
 		"category_title": "Flags",
+		"icon_id": "flag-honduras",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "hong-kong",
 		"category_title": "Flags",
+		"icon_id": "flag-hong-kong",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "hungary",
 		"category_title": "Flags",
+		"icon_id": "flag-hungary",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "iceland",
 		"category_title": "Flags",
+		"icon_id": "flag-iceland",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "india",
 		"category_title": "Flags",
+		"icon_id": "flag-india",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "indonesia",
 		"category_title": "Flags",
+		"icon_id": "flag-indonesia",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "ireland",
 		"category_title": "Flags",
+		"icon_id": "flag-ireland",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "israel",
 		"category_title": "Flags",
+		"icon_id": "flag-israel",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "italy",
 		"category_title": "Flags",
+		"icon_id": "flag-italy",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "jamaica",
 		"category_title": "Flags",
+		"icon_id": "flag-jamaica",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "japan",
 		"category_title": "Flags",
+		"icon_id": "flag-japan",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "latvia",
 		"category_title": "Flags",
+		"icon_id": "flag-latvia",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "liechtenstein",
 		"category_title": "Flags",
+		"icon_id": "flag-liechtenstein",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "lithuania",
 		"category_title": "Flags",
+		"icon_id": "flag-lithuania",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "luxembourg",
 		"category_title": "Flags",
+		"icon_id": "flag-luxembourg",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "macao",
 		"category_title": "Flags",
+		"icon_id": "flag-macao",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "malasya",
 		"category_title": "Flags",
+		"icon_id": "flag-malasya",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "malta",
 		"category_title": "Flags",
+		"icon_id": "flag-malta",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "mauritius",
 		"category_title": "Flags",
+		"icon_id": "flag-mauritius",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "mexico",
 		"category_title": "Flags",
+		"icon_id": "flag-mexico",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "moldova",
 		"category_title": "Flags",
+		"icon_id": "flag-moldova",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "netherlands",
 		"category_title": "Flags",
+		"icon_id": "flag-netherlands",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "new-zealand",
 		"category_title": "Flags",
+		"icon_id": "flag-new-zealand",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "nigeria",
 		"category_title": "Flags",
+		"icon_id": "flag-nigeria",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "norway",
 		"category_title": "Flags",
+		"icon_id": "flag-norway",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "pakistan",
 		"category_title": "Flags",
+		"icon_id": "flag-pakistan",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "panama",
 		"category_title": "Flags",
+		"icon_id": "flag-panama",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "peru",
 		"category_title": "Flags",
+		"icon_id": "flag-peru",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "philippines",
 		"category_title": "Flags",
+		"icon_id": "flag-philippines",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "poland",
 		"category_title": "Flags",
+		"icon_id": "flag-poland",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "portugal",
 		"category_title": "Flags",
+		"icon_id": "flag-portugal",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "puerto-rico",
 		"category_title": "Flags",
+		"icon_id": "flag-puerto-rico",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "romania",
 		"category_title": "Flags",
+		"icon_id": "flag-romania",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "russia",
 		"category_title": "Flags",
+		"icon_id": "flag-russia",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "rwanda",
 		"category_title": "Flags",
+		"icon_id": "flag-rwanda",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "saudi-arabia",
 		"category_title": "Flags",
+		"icon_id": "flag-saudi-arabia",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "serbia",
 		"category_title": "Flags",
+		"icon_id": "flag-serbia",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "singapore",
 		"category_title": "Flags",
+		"icon_id": "flag-singapore",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "slovakia",
 		"category_title": "Flags",
+		"icon_id": "flag-slovakia",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "slovenia",
 		"category_title": "Flags",
+		"icon_id": "flag-slovenia",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "south-africa",
 		"category_title": "Flags",
+		"icon_id": "flag-south-africa",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "south-korea",
 		"category_title": "Flags",
+		"icon_id": "flag-south-korea",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "spain",
 		"category_title": "Flags",
+		"icon_id": "flag-spain",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "sri-lanka",
 		"category_title": "Flags",
+		"icon_id": "flag-sri-lanka",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "sweden",
 		"category_title": "Flags",
+		"icon_id": "flag-sweden",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "switzerland",
 		"category_title": "Flags",
+		"icon_id": "flag-switzerland",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "taiwan",
 		"category_title": "Flags",
+		"icon_id": "flag-taiwan",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "tajikistan",
 		"category_title": "Flags",
+		"icon_id": "flag-tajikistan",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "tanzania",
 		"category_title": "Flags",
+		"icon_id": "flag-tanzania",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "thailand",
 		"category_title": "Flags",
+		"icon_id": "flag-thailand",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "trinidad-and-tobago",
 		"category_title": "Flags",
+		"icon_id": "flag-trinidad-and-tobago",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "turkey",
 		"category_title": "Flags",
+		"icon_id": "flag-turkey",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "ukraine",
 		"category_title": "Flags",
+		"icon_id": "flag-ukraine",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "united-arab-emirates",
 		"category_title": "Flags",
+		"icon_id": "flag-united-arab-emirates",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "united-kingdom",
 		"category_title": "Flags",
+		"icon_id": "flag-united-kingdom",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "united-states",
 		"category_title": "Flags",
+		"icon_id": "flag-united-states",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "uruguay",
 		"category_title": "Flags",
+		"icon_id": "flag-uruguay",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "uzbekistn",
 		"category_title": "Flags",
+		"icon_id": "flag-uzbekistn",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "venezuela",
 		"category_title": "Flags",
+		"icon_id": "flag-venezuela",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "vietnam",
 		"category_title": "Flags",
+		"icon_id": "flag-vietnam",
 		"category_id": "flagsIcons"
 	},
 	{
-		"icon_id": "zambia",
 		"category_title": "Flags",
+		"icon_id": "flag-zambia",
 		"category_id": "flagsIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "audio-mute-full",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "audio-mid",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "audio-mute",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "audio-max",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "audio-mid-full",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "audio-min-full",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "audio-off-2-full",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "audio-off",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "audio-off-full",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "audio-off-2",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "audio-max-full",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "audio-min",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "media-fullscreen",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "media-exit-fullscreen",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "microphone",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "microphone-full",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "microphone-2",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "microphone-2-full",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "microphone-mute",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "microphone-mute-full",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "subtitles-full",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "volume",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "volume-full",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "volume-decrease",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "volume-decrease-full",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "volume-increase",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "volume-increase-full",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "volume-off",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "volume-off-full",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "volume-off-2",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "volume-off-2-full",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "volume-on-2",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "volume-on-2-full",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "hearing",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "hearing-full",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "shout",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "shout-full",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "whisper",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "whisper-full",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "file-audio",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "file-audio-full",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "note",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "note-full",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "stream",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "stream-full",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "video-active",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "video-active-full",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "video-off",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "video-off-full",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "video",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "video-negative",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "video-conference",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "video-conference-full",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "screen-share",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "screen-share-full",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "camera",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "camera-full",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "camera-switch",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "camera-switch-full",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "play",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "play-2",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "play-3",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "play-3-full",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "pause",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "pause-2",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "rec",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "rec-full",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "stop",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Media",
 		"icon_id": "stop-full",
-		"category_title": "Media",
 		"category_id": "mediaIcons"
 	},
 	{
+		"category_title": "Messaging",
 		"icon_id": "compose",
-		"category_title": "Messaging",
 		"category_id": "messagingIcons"
 	},
 	{
+		"category_title": "Messaging",
 		"icon_id": "compose-full",
-		"category_title": "Messaging",
 		"category_id": "messagingIcons"
 	},
 	{
+		"category_title": "Messaging",
 		"icon_id": "chat",
-		"category_title": "Messaging",
 		"category_id": "messagingIcons"
 	},
 	{
+		"category_title": "Messaging",
 		"icon_id": "chat-full",
-		"category_title": "Messaging",
 		"category_id": "messagingIcons"
 	},
 	{
+		"category_title": "Messaging",
 		"icon_id": "chat-2",
-		"category_title": "Messaging",
 		"category_id": "messagingIcons"
 	},
 	{
+		"category_title": "Messaging",
 		"icon_id": "chat-2-full",
-		"category_title": "Messaging",
 		"category_id": "messagingIcons"
 	},
 	{
+		"category_title": "Messaging",
 		"icon_id": "message",
-		"category_title": "Messaging",
 		"category_id": "messagingIcons"
 	},
 	{
+		"category_title": "Messaging",
 		"icon_id": "message-full",
-		"category_title": "Messaging",
 		"category_id": "messagingIcons"
 	},
 	{
+		"category_title": "Messaging",
 		"icon_id": "sms",
-		"category_title": "Messaging",
 		"category_id": "messagingIcons"
 	},
 	{
+		"category_title": "Messaging",
 		"icon_id": "sms-full",
-		"category_title": "Messaging",
 		"category_id": "messagingIcons"
 	},
 	{
+		"category_title": "Messaging",
 		"icon_id": "inbox",
-		"category_title": "Messaging",
 		"category_id": "messagingIcons"
 	},
 	{
+		"category_title": "Messaging",
 		"icon_id": "inbox-full",
-		"category_title": "Messaging",
 		"category_id": "messagingIcons"
 	},
 	{
+		"category_title": "Messaging",
 		"icon_id": "inbox-2",
-		"category_title": "Messaging",
 		"category_id": "messagingIcons"
 	},
 	{
+		"category_title": "Messaging",
 		"icon_id": "inbox-2-full",
-		"category_title": "Messaging",
 		"category_id": "messagingIcons"
 	},
 	{
+		"category_title": "Messaging",
 		"icon_id": "inbox-3",
-		"category_title": "Messaging",
 		"category_id": "messagingIcons"
 	},
 	{
+		"category_title": "Messaging",
 		"icon_id": "inbox-3-full",
-		"category_title": "Messaging",
 		"category_id": "messagingIcons"
 	},
 	{
+		"category_title": "Messaging",
 		"icon_id": "envelope",
-		"category_title": "Messaging",
 		"category_id": "messagingIcons"
 	},
 	{
+		"category_title": "Messaging",
 		"icon_id": "envelope-full",
-		"category_title": "Messaging",
 		"category_id": "messagingIcons"
 	},
 	{
+		"category_title": "Messaging",
 		"icon_id": "mailbox",
-		"category_title": "Messaging",
 		"category_id": "messagingIcons"
 	},
 	{
+		"category_title": "Messaging",
 		"icon_id": "mailbox-full",
-		"category_title": "Messaging",
 		"category_id": "messagingIcons"
 	},
 	{
+		"category_title": "Messaging",
 		"icon_id": "voicemail-2",
-		"category_title": "Messaging",
 		"category_id": "messagingIcons"
 	},
 	{
+		"category_title": "Messaging",
 		"icon_id": "voicemail-2-full",
-		"category_title": "Messaging",
 		"category_id": "messagingIcons"
 	},
 	{
+		"category_title": "Messaging",
 		"icon_id": "message-delivered",
-		"category_title": "Messaging",
 		"category_id": "messagingIcons"
 	},
 	{
+		"category_title": "Messaging",
 		"icon_id": "message-read",
-		"category_title": "Messaging",
 		"category_id": "messagingIcons"
 	},
 	{
+		"category_title": "Messaging",
 		"icon_id": "attachment",
-		"category_title": "Messaging",
 		"category_id": "messagingIcons"
 	},
 	{
+		"category_title": "Messaging",
 		"icon_id": "attachment-full",
-		"category_title": "Messaging",
 		"category_id": "messagingIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "call",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "call-2",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "phone",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "phone-full",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "calls-disabled",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "calls-disabled-full",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "phone-down",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "phone-down-full",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "call-pause",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "call-pause-full",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "call-pending",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "call-pending-full",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "call-block",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "call-block-full",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "call-outbound",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "call-outbound-full",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "call-inbound",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "call-inbound-full",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "phone-message",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "phone-message-full",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "phone-number",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "phone-number-full",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "phone-plus",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "phone-plus-full",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "call-forward",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "call-forward-full",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "call-park",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "call-park-full",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "call-transfer",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "call-transfer-full",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "call-check",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "call-check-full",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "call-bounce",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "call-bounce-full",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "phone-garland",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "phone-garland-full",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "keypad",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "keypad-line",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "keypad-line-full",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "keypad-solid",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "telephone",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "telephone-full",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "telephone-2",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "telephone-2-full",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "telephone-3",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "telephone-3-full",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "device-cloud",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "mobile",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "mobile-full",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "mobile-2",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "mobile-2-full",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "mobile-arrow-right",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "mobile-arrow-right-full",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "mobile-devices",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "mobile-devices-full",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "click-to-call",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "click-to-call-full",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "call-flip",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Phone",
 		"icon_id": "call-flip-full",
-		"category_title": "Phone",
 		"category_id": "phoneIcons"
 	},
 	{
+		"category_title": "Social",
 		"icon_id": "thumbs-up",
-		"category_title": "Social",
 		"category_id": "socialIcons"
 	},
 	{
+		"category_title": "Social",
 		"icon_id": "thumbs-up-full",
-		"category_title": "Social",
 		"category_id": "socialIcons"
 	},
 	{
+		"category_title": "Social",
 		"icon_id": "thumbs-down",
-		"category_title": "Social",
 		"category_id": "socialIcons"
 	},
 	{
+		"category_title": "Social",
 		"icon_id": "thumbs-down-full",
-		"category_title": "Social",
 		"category_id": "socialIcons"
 	},
 	{
+		"category_title": "Social",
 		"icon_id": "rocket",
-		"category_title": "Social",
 		"category_id": "socialIcons"
 	},
 	{
+		"category_title": "Social",
 		"icon_id": "rocket-full",
-		"category_title": "Social",
 		"category_id": "socialIcons"
 	},
 	{
+		"category_title": "Social",
 		"icon_id": "rocket-off",
-		"category_title": "Social",
 		"category_id": "socialIcons"
 	},
 	{
+		"category_title": "Social",
 		"icon_id": "rocket-off-full",
-		"category_title": "Social",
 		"category_id": "socialIcons"
 	},
 	{
+		"category_title": "Social",
 		"icon_id": "magic-wand",
-		"category_title": "Social",
 		"category_id": "socialIcons"
 	},
 	{
+		"category_title": "Social",
 		"icon_id": "magic-wand-full",
-		"category_title": "Social",
 		"category_id": "socialIcons"
 	},
 	{
+		"category_title": "Social",
 		"icon_id": "world",
-		"category_title": "Social",
 		"category_id": "socialIcons"
 	},
 	{
+		"category_title": "Social",
 		"icon_id": "world-full",
-		"category_title": "Social",
 		"category_id": "socialIcons"
 	},
 	{
+		"category_title": "Social",
 		"icon_id": "heart",
-		"category_title": "Social",
 		"category_id": "socialIcons"
 	},
 	{
+		"category_title": "Social",
 		"icon_id": "heart-full",
-		"category_title": "Social",
 		"category_id": "socialIcons"
 	},
 	{
+		"category_title": "Social",
 		"icon_id": "star",
-		"category_title": "Social",
 		"category_id": "socialIcons"
 	},
 	{
+		"category_title": "Social",
 		"icon_id": "star-full",
-		"category_title": "Social",
 		"category_id": "socialIcons"
 	},
 	{
+		"category_title": "Social",
 		"icon_id": "share-2",
-		"category_title": "Social",
 		"category_id": "socialIcons"
 	},
 	{
+		"category_title": "Social",
 		"icon_id": "share-2-full",
-		"category_title": "Social",
 		"category_id": "socialIcons"
 	},
 	{
+		"category_title": "Social",
 		"icon_id": "link",
-		"category_title": "Social",
 		"category_id": "socialIcons"
 	},
 	{
+		"category_title": "Social",
 		"icon_id": "link-full",
-		"category_title": "Social",
 		"category_id": "socialIcons"
 	},
 	{
+		"category_title": "Social",
 		"icon_id": "hash",
-		"category_title": "Social",
 		"category_id": "socialIcons"
 	},
 	{
+		"category_title": "Social",
 		"icon_id": "vonage-2",
-		"category_title": "Social",
 		"category_id": "socialIcons"
 	},
 	{
+		"category_title": "Social",
 		"icon_id": "vonage",
-		"category_title": "Social",
 		"category_id": "socialIcons"
 	},
 	{
+		"category_title": "Social",
 		"icon_id": "rss",
-		"category_title": "Social",
 		"category_id": "socialIcons"
 	},
 	{
+		"category_title": "Social",
 		"icon_id": "facebook",
-		"category_title": "Social",
 		"category_id": "socialIcons"
 	},
 	{
+		"category_title": "Social",
 		"icon_id": "note",
-		"category_title": "Social",
 		"category_id": "socialIcons"
 	},
 	{
+		"category_title": "Social",
 		"icon_id": "world-hand",
-		"category_title": "Social",
 		"category_id": "socialIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "filter",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "filter-full",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "search",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "search-full",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "plus",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "plus-bold",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "minus",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "minus-bold",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "list-numbers",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "list",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "list-2",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "more-detailed-list",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "more-detailed-list-full",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "less-detailed-list",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "less-detailed-list-full",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "list-filter",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "reorder",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "reorder-full",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "tag",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "tag-full",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "tag-add",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "tag-add-full",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "tag-detach",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "tag-detach-full",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "tag-search",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "bookmark",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "bookmark-full",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "separator",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "separator-full",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "preferences",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "preferences-full",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "table-1",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "table-2",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "add-full",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Sort",
 		"icon_id": "add-outline",
-		"category_title": "Sort",
 		"category_id": "sortIcons"
 	},
 	{
+		"category_title": "Tools",
 		"icon_id": "save",
-		"category_title": "Tools",
 		"category_id": "toolsIcons"
 	},
 	{
+		"category_title": "Tools",
 		"icon_id": "save-full",
-		"category_title": "Tools",
 		"category_id": "toolsIcons"
 	},
 	{
+		"category_title": "Tools",
 		"icon_id": "edit",
-		"category_title": "Tools",
 		"category_id": "toolsIcons"
 	},
 	{
+		"category_title": "Tools",
 		"icon_id": "edit-full",
-		"category_title": "Tools",
 		"category_id": "toolsIcons"
 	},
 	{
+		"category_title": "Tools",
 		"icon_id": "crop-fill",
-		"category_title": "Tools",
 		"category_id": "toolsIcons"
 	},
 	{
+		"category_title": "Tools",
 		"icon_id": "crop-fill-full",
-		"category_title": "Tools",
 		"category_id": "toolsIcons"
 	},
 	{
+		"category_title": "Tools",
 		"icon_id": "palette",
-		"category_title": "Tools",
 		"category_id": "toolsIcons"
 	},
 	{
+		"category_title": "Tools",
 		"icon_id": "palette-full",
-		"category_title": "Tools",
 		"category_id": "toolsIcons"
 	},
 	{
+		"category_title": "Tools",
 		"icon_id": "pentool",
-		"category_title": "Tools",
 		"category_id": "toolsIcons"
 	},
 	{
+		"category_title": "Tools",
 		"icon_id": "pentool-full",
-		"category_title": "Tools",
 		"category_id": "toolsIcons"
 	},
 	{
+		"category_title": "Tools",
 		"icon_id": "design-tools",
-		"category_title": "Tools",
 		"category_id": "toolsIcons"
 	},
 	{
+		"category_title": "Tools",
 		"icon_id": "design-tools-full",
-		"category_title": "Tools",
 		"category_id": "toolsIcons"
 	},
 	{
+		"category_title": "Tools",
 		"icon_id": "cursor",
-		"category_title": "Tools",
 		"category_id": "toolsIcons"
 	},
 	{
+		"category_title": "Tools",
 		"icon_id": "cursor-full",
-		"category_title": "Tools",
 		"category_id": "toolsIcons"
 	},
 	{
+		"category_title": "Tools",
 		"icon_id": "type",
-		"category_title": "Tools",
 		"category_id": "toolsIcons"
 	},
 	{
+		"category_title": "Tools",
 		"icon_id": "type-full",
-		"category_title": "Tools",
 		"category_id": "toolsIcons"
 	},
 	{
+		"category_title": "Tools",
 		"icon_id": "tool",
-		"category_title": "Tools",
 		"category_id": "toolsIcons"
 	},
 	{
+		"category_title": "Tools",
 		"icon_id": "tool-full",
-		"category_title": "Tools",
 		"category_id": "toolsIcons"
 	},
 	{
+		"category_title": "Tools",
 		"icon_id": "tool-circle",
-		"category_title": "Tools",
 		"category_id": "toolsIcons"
 	},
 	{
+		"category_title": "Travel & Places",
 		"icon_id": "ambulance",
-		"category_title": "Travel & Places",
 		"category_id": "travelIcons"
 	},
 	{
+		"category_title": "Travel & Places",
 		"icon_id": "ambulance-full",
-		"category_title": "Travel & Places",
 		"category_id": "travelIcons"
 	},
 	{
+		"category_title": "Travel & Places",
 		"icon_id": "car",
-		"category_title": "Travel & Places",
 		"category_id": "travelIcons"
 	},
 	{
+		"category_title": "Travel & Places",
 		"icon_id": "car-full",
-		"category_title": "Travel & Places",
 		"category_id": "travelIcons"
 	},
 	{
+		"category_title": "Travel & Places",
 		"icon_id": "home",
-		"category_title": "Travel & Places",
 		"category_id": "travelIcons"
 	},
 	{
+		"category_title": "Travel & Places",
 		"icon_id": "home-full",
-		"category_title": "Travel & Places",
 		"category_id": "travelIcons"
 	},
 	{
+		"category_title": "Travel & Places",
 		"icon_id": "hoteling",
-		"category_title": "Travel & Places",
 		"category_id": "travelIcons"
 	},
 	{
+		"category_title": "Travel & Places",
 		"icon_id": "hoteling-full",
-		"category_title": "Travel & Places",
 		"category_id": "travelIcons"
 	},
 	{
+		"category_title": "Travel & Places",
 		"icon_id": "van",
-		"category_title": "Travel & Places",
 		"category_id": "travelIcons"
 	},
 	{
+		"category_title": "Travel & Places",
 		"icon_id": "van-full",
-		"category_title": "Travel & Places",
 		"category_id": "travelIcons"
 	},
 	{
+		"category_title": "Travel & Places",
 		"icon_id": "pin",
-		"category_title": "Travel & Places",
 		"category_id": "travelIcons"
 	},
 	{
+		"category_title": "Travel & Places",
 		"icon_id": "pin-full",
-		"category_title": "Travel & Places",
 		"category_id": "travelIcons"
 	},
 	{
+		"category_title": "Travel & Places",
 		"icon_id": "hospital",
-		"category_title": "Travel & Places",
 		"category_id": "travelIcons"
 	},
 	{
+		"category_title": "Travel & Places",
 		"icon_id": "hospital-full",
-		"category_title": "Travel & Places",
 		"category_id": "travelIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "profile",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "profile-full",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "home-user",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "home-user-full",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "user",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "user-full",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "add-user",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "add-user-full",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "add-group",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "add-group-full",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "group",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "group-full",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "group-2",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "group-2-full",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "group-3",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "group-3-full",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "group-4",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "group-4-full",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "group-5",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "group-5-full",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "group-6",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "group-6-full",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "group-7",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "group-7-full",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "group-8",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "group-8-full",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "group-9",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "group-9-full",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "receptionist",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "receptionist-full",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "receptionist-2",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "receptionist-2-full",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "user-small",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "id",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "id-full",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "queue",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "queue-full",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "meeting",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "meeting-full",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "user-sync",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "user-sync-full",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "user-sync-2",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "user-sync-2-full",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "card",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "card-full",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "address-book",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "address-book-full",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "user-admin",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "user-admin-full",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "user-lock",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "User/Avatar",
 		"icon_id": "user-lock-full",
-		"category_title": "User/Avatar",
 		"category_id": "userIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "infinity",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "infinity-full",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "plug",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "plug-full",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "world",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "world-full",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "key",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "key-full",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "atoms",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "atoms-full",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "mind-map",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "mind-map-full",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "books",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "books-full",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "puzzle",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "puzzle-full",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "lock",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "lock-full",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "unlock",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "unlock-full",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "flash",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "flash-full",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "flash-2",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "flash-2-full",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "clipboard-add",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "clipboard-add-full",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "shield",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "shield-full",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "gear",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "gear-full",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "tooltip",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "tooltip-full",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "circle-nested",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "tabs",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "flow",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "flow-full",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "code",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "code-full",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "sticker",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "sticker-full",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "switch",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "switch-full",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "megaphone",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "megaphone-negative",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "link",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "link-full",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "umbrella",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "umbrella-full",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "pin-2",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "pin-2-full",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "condition",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "condition-full",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "quote",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "Utilities & Objects",
 		"icon_id": "quote-full",
-		"category_title": "Utilities & Objects",
 		"category_id": "utilitiesIcons"
 	},
 	{
+		"category_title": "View",
 		"icon_id": "density-high",
-		"category_title": "View",
 		"category_id": "viewIcons"
 	},
 	{
+		"category_title": "View",
 		"icon_id": "density-medium",
-		"category_title": "View",
 		"category_id": "viewIcons"
 	},
 	{
+		"category_title": "View",
 		"icon_id": "eye",
-		"category_title": "View",
 		"category_id": "viewIcons"
 	},
 	{
+		"category_title": "View",
 		"icon_id": "eye-negative",
-		"category_title": "View",
 		"category_id": "viewIcons"
 	},
 	{
+		"category_title": "View",
 		"icon_id": "eye-hide",
-		"category_title": "View",
 		"category_id": "viewIcons"
 	},
 	{
+		"category_title": "View",
 		"icon_id": "eye-hide-full",
-		"category_title": "View",
 		"category_id": "viewIcons"
 	},
 	{
+		"category_title": "View",
 		"icon_id": "menu",
-		"category_title": "View",
 		"category_id": "viewIcons"
 	},
 	{
+		"category_title": "View",
 		"icon_id": "menu-full",
-		"category_title": "View",
 		"category_id": "viewIcons"
 	},
 	{
+		"category_title": "Windows",
 		"icon_id": "code-snippet",
-		"category_title": "Windows",
 		"category_id": "windowsIcons"
 	},
 	{
+		"category_title": "Windows",
 		"icon_id": "code-snippet-full",
-		"category_title": "Windows",
 		"category_id": "windowsIcons"
 	},
 	{
+		"category_title": "Windows",
 		"icon_id": "mockup",
-		"category_title": "Windows",
 		"category_id": "windowsIcons"
 	},
 	{
+		"category_title": "Windows",
 		"icon_id": "mockup-full",
-		"category_title": "Windows",
 		"category_id": "windowsIcons"
 	},
 	{
+		"category_title": "Windows",
 		"icon_id": "modal",
-		"category_title": "Windows",
 		"category_id": "windowsIcons"
 	},
 	{
+		"category_title": "Windows",
 		"icon_id": "modal-full",
-		"category_title": "Windows",
 		"category_id": "windowsIcons"
 	},
 	{
+		"category_title": "Windows",
 		"icon_id": "bottom-tabs",
-		"category_title": "Windows",
 		"category_id": "windowsIcons"
 	},
 	{
+		"category_title": "Windows",
 		"icon_id": "bottom-tabs-full",
-		"category_title": "Windows",
 		"category_id": "windowsIcons"
 	},
 	{
+		"category_title": "Windows",
 		"icon_id": "app",
-		"category_title": "Windows",
 		"category_id": "windowsIcons"
 	},
 	{
+		"category_title": "Windows",
 		"icon_id": "app-full",
-		"category_title": "Windows",
 		"category_id": "windowsIcons"
 	},
 	{
+		"category_title": "Windows",
 		"icon_id": "app-plus",
-		"category_title": "Windows",
 		"category_id": "windowsIcons"
 	},
 	{
+		"category_title": "Windows",
 		"icon_id": "app-plus-full",
-		"category_title": "Windows",
 		"category_id": "windowsIcons"
 	},
 	{
+		"category_title": "Windows",
 		"icon_id": "sidebar",
-		"category_title": "Windows",
 		"category_id": "windowsIcons"
 	},
 	{
+		"category_title": "Windows",
 		"icon_id": "sidebar-full",
-		"category_title": "Windows",
 		"category_id": "windowsIcons"
 	},
 	{
+		"category_title": "Windows",
 		"icon_id": "grid-two",
-		"category_title": "Windows",
 		"category_id": "windowsIcons"
 	},
 	{
+		"category_title": "Windows",
 		"icon_id": "table-1",
-		"category_title": "Windows",
 		"category_id": "windowsIcons"
 	},
 	{
+		"category_title": "Windows",
 		"icon_id": "table-full",
-		"category_title": "Windows",
 		"category_id": "windowsIcons"
 	},
 	{
-		"icon_id": "table-2",
 		"category_title": "Windows",
+		"icon_id": "table-2",
 		"category_id": "windowsIcons"
 	}
 ]
