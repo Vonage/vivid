@@ -16,13 +16,13 @@ const countLines = (function(testers){
         return logLines.reduce((ac, line)=> ac += testers[type](line) ? 1 : 0, 0)
     };
 })({
-    "fix": (line)=> /\bfix\b/i.test(line),
-    "feature": (line)=> /\b(feature|issue)\b/i.test(line),
+    "fix": (line)=> /\bfix(e[ds])?\b/i.test(line),
+    "feature": (line)=> /\bfeat(ures?)?\b/i.test(line),
     "commit": ()=> true
 });
 
 exports.releaseTemplate = ({ version, log_lines })=>{
-    let count = _.partial(countLines, log_lines);
+	let count = _.partial(countLines, log_lines);
     return {
         "blocks": [
             {
@@ -35,7 +35,7 @@ exports.releaseTemplate = ({ version, log_lines })=>{
             {
                 "type": "divider"
             },
-            {
+            /*{
                 "type": "image",
                 "image_url": _.sample([
                     "https://media.tenor.com/images/e9b40734a93ecbdcebdff345e670276f/tenor.gif",
@@ -47,7 +47,7 @@ exports.releaseTemplate = ({ version, log_lines })=>{
             },
             {
                 "type": "divider"
-            },
+            },*/
             {
                 "type": "section",
                 "text": {
@@ -55,9 +55,9 @@ exports.releaseTemplate = ({ version, log_lines })=>{
                     "text": `We are ${_.sample(["proud", "excited", "thrilled"])} to announce the newest *Vivid* release!\nTo upgrade your development environment, run: \`\`\`yarn upgrade --pattern="@vonage/*"\`\`\``
                 },
                 "fields": [
-                    ..._(["commit", "fix", "feature"]).map((name)=>{
+                    ..._(["fix", "feature"]).map((name)=>{
                         const cnt = count(name);
-                        return cnt && { type: "mrkdwn", text: `*${({ "fix": "Bug Fixes", "feature": "New Features", "commit": "Commits" })[name]}*\n${cnt.toLocaleString()}` }
+                        return cnt && { type: "mrkdwn", text: `*${({ "fix": "Bug Fixes", "feature": "Features", "commit": "Commits" })[name]}*\n${cnt.toLocaleString()}` }
                     }).compact().value()
                 ]
             }
@@ -68,6 +68,7 @@ exports.releaseTemplate = ({ version, log_lines })=>{
 exports.factory = function({ hook_url }){
     const req = promisify(request);
     return function(message){
-        return req({ url: hook_url, method: "POST", json: message });
+        return req({ url: hook_url, method: "POST", json: message })
+					.then(({ statusCode, body })=> Promise[~~(statusCode / 100) !== 2 ? "reject" : "resolve"](body) );
     };
 };

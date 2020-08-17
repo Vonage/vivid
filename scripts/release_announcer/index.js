@@ -31,4 +31,7 @@ createLineStream(fileName === "--" ? process.stdin : fs.createReadStream(fileNam
             .map(()=> `Message successfully sent to Slack`)
     )
     .onValue(console.log)
-    .onError(console.warn);
+    .onError((err)=> {
+    	console.log('Failed to send message to Slack');
+    	process.exit(1);
+		});
