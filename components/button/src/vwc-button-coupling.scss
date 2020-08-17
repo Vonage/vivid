@@ -2,7 +2,7 @@
 
 
 :host {
-  @include typography.typography-cat-variables('body-1');
+  @include typography.typography-cat-variables('headline');
   --mdc-typography-button-font-size: var(--vvd-typography-font-size);
   --mdc-typography-button-font-weight: var(--vvd-typography-font-weight);
   --mdc-typography-button-letter-spacing: initial;
