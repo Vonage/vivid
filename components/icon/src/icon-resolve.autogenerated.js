@@ -1,1 +1,1 @@
-export default function(iconId){ return Promise.reject(`Icon resolver not set. Cannot resolve icon "${iconId}".`); }
+export default function(iconId){ return import('./icon/' + iconId + ".js").then(({ default: f })=> f()); }
