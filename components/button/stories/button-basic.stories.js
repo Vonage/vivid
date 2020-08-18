@@ -1,18 +1,12 @@
 import '@vonage/vwc-button/vwc-button.js';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
+import { argTypes } from './argTypes.js'
 
 export default {
   title: 'Atoms/Button',
   component: 'vwc-button',
-  argTypes: {
-    connotation: {
-      control: {
-        type: 'select',
-        options: [undefined, 'cta', 'success', 'error', 'warning'],
-      }
-    }
-  }
+  argTypes
 };
 
 const Template = args => html`<vwc-button ...=${spread(args)}></vwc-button>`;
@@ -29,14 +23,11 @@ Outlined.args = { label: 'Outlined', layout: 'outlined' };
 export const PillShape = Template.bind({});
 PillShape.args = { label: 'Filled', layout: 'filled', shape: 'pill' };
 
+export const Dense = Template.bind({});
+Dense.args = { label: 'Dense', layout: 'filled', dense: true };
+
 export const Disabled = Template.bind({});
 Disabled.args = { label: 'Disabled', layout: 'filled', disabled: true };
-
-// export const Basic = (args) => {
-//   console.log(args);
-//   return html`<vwc-button ...=${spread(args)}>Basic</vwc-button>`;
-// };
-// Basic.args = { label: 'hello' };
 
 // export const basic = () => html`
 //   <style>
