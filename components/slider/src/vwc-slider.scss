@@ -1,5 +1,16 @@
-.mdc-slider__pin-value-marker {
-	font-size: 14px;
-	font-weight: 600;
-	font-stretch: 50%;
+@use '@vonage/vvd-typography/scss/typography' as typography;
+
+:host {
+  @include typography.typography-mdc-coupling('body2', 'caption-bold');
+	font-stretch: var(--mdc-typography-body2-font-stretch);
+
+	.mdc-slider__pin-value-marker {
+		width: 100%;
+		height: 100%;
+		border-radius: 3px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: var(--mdc-theme-secondary);
+	}
 }

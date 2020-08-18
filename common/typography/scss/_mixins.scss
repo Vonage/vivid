@@ -8,9 +8,8 @@
   --vvd-typography-font-weight: #{map-get($category-map, "font-weight")};
   --vvd-typography-font-stretch: #{map-get($category-map, "font-stretch")};
   --vvd-typography-line-height: #{map-get($category-map, "line-height")};
-  // strong {
-  //   --vvd-typography-font-weight: #{map-get($category-map, "font-weight-strong")};
-  // }
+  --vvd-typography-letter-spacing: #{map-get($category-map, "letter-spacing")};
+  --vvd-typography-text-transform: #{map-get($category-map, "text-transform")};
 }
 @mixin typography-cat-properties {
   /*   dont forget to define defaults */
@@ -20,9 +19,18 @@
   /* font shorthand supports font-stretch keywords only and can't be set by %.
   font-stretch keyword doesn't support our Spezia's 0 - 100 range.
   therefor we set it separatly */
-  font-stretch: var(--vvd-typography-font-stretch);
+	font-stretch: var(--vvd-typography-font-stretch);
+	letter-spacing: var(--vvd-typography-letter-spacing);
+	text-transform: var(--vvd-typography-text-transform);
   margin: var(--vvd-typography-line-height) 0;
 }
 
+// the following mixin couples a mdc typography variable to a primitive value of which we declare in our typography categories
+// it is an extension related exclusively to a usage of mwc components and is not part of our typography abstraction
+@mixin typography-mdc-coupling($mdc-category, $vvd-category){
+  $vvd-category-map: map-get(variables.$typography-category-list, $vvd-category);
 
-
+	@each $name, $value in $vvd-category-map {
+		--mdc-typography-#{$mdc-category}-#{$name}: #{map-get($vvd-category-map, $name)};
+	}
+}
