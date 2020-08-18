@@ -21,6 +21,6 @@ MWCSlider.styles = [styleCoupling, mwcSliderStyle, vwcSliderStyle];
 export class VWCSlider extends MWCSlider {
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
-		(this.mdcFoundation as any).adapter.setMarkerValue(this.value);
+		this.pinMarkerText = this.value?.toLocaleString();
 	}
 }
