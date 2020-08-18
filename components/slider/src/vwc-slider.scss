@@ -13,4 +13,31 @@
 		justify-content: center;
 		background-color: var(--mdc-theme-secondary);
 	}
+
+	.mdc-slider__thumb {
+		transform: scale3d(0.6, 0.6, 0.6);
+	}
+
+	.mdc-slider--focus,
+	.mdc-slider__thumb-container:hover {
+		.mdc-slider__focus-ring {
+			transform: scale3d(1.55, 1.55, 1.55);
+			opacity: 0.12;
+		}
+
+		.mdc-slider__pin {
+			transform: rotate(-45deg) scale(1) translate(19px, -20px);
+		}
+	}
+
+	.mdc-slider--active {
+		.mdc-slider__thumb {
+			transform: scale3d(0.6, 0.6, 0.6);
+		}
+
+		.mdc-slider__thumb-container:hover .mdc-slider__focus-ring {
+			transform: scale3d(1.8, 1.8, 1.8);
+			opacity: 0.25;
+		}
+	}
 }
