@@ -1,15 +1,15 @@
 {
 	"name": "@vonage/vwc-icon",
-	"version": "0.2.2",
+	"version": "0.3.0",
 	"description": "icon component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/icon#readme",
 	"license": "ISC",
-	"main": "vwc-icon.js",
-	"module": "vwc-icon.js",
+	"main": "./src/vwc-icon.js",
+	"exports": "./src/vwc-icon.js",
+	"type": "module",
 	"files": [
 		"src",
 		"*.js",
-		"*.ts",
 		"*.map"
 	],
 	"repository": {
@@ -24,9 +24,7 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@material/mwc-icon": "^0.17.2",
-		"@vonage/vvd-style-coupling": "^0.2.2",
-		"lit-element": "^2.3.1",
-		"tslib": "^2.0.0"
+		"kefir": "^3.8.7",
+		"lit-element": "^2.3.1"
 	}
 }

@@ -17,9 +17,11 @@
 	"license": "Apache-2.0",
 	"dependencies": {
 		"@material/chips": "^7.0.0",
-		"@material/mwc-base": "^0.17.2",
-		"@material/mwc-ripple": "^0.17.2",
+		"@material/mwc-base": "^0.18.0",
+		"@material/mwc-icon": "^0.18.0",
+		"@material/mwc-ripple": "^0.18.0",
 		"lit-element": "^2.3.1",
+		"lit-html": "^1.2.1",
 		"tslib": "^2.0.0"
 	}
 }

@@ -1,0 +1,5 @@
+@use '@vonage/vvd-typography/scss/typography' as typography;
+
+:host {
+	@include typography.typography-mdc-coupling('button', 'body-2-bold');
+}

@@ -1,22 +1,12 @@
 @use 'sass:selector';
-@use '@material/button';
+@forward './vwc-button-coupling';
+@use '../../../utils/scss/variable-names/color-semantic-variable-names' as color-semantic;
 
-.mdc-button {
-  @include button.height(40px);
-
-  border-radius: 6px;
-  font-weight: 600;
-  letter-spacing: normal;
-  text-transform: none;
+:host {
+	--mdc-button-disabled-ink-color: var(#{color-semantic.$formfield-disabled-ink});
+	--mdc-button-disabled-fill-color: var(#{color-semantic.$formfield-border-idle});
 }
 
-:host([disabled]) .mdc-button.mdc-button--outlined {
-  border-color: var(--vvd-color-disabled-fill-color);
-}
-
-.pill {
-  border-radius: 40px;
-}
 
 // ! move to utils as this might be a common
 // ! mixin for other components such as call-out
@@ -24,7 +14,7 @@
   $selector: ':host([connotation-specifier])',
   $default: primary
 ) {
-  $connotations: primary cta success error warning;
+  $connotations: primary cta success error;
 
   @each $connotation in $connotations {
     $attr: '[connotation="#{$connotation}"i]';
@@ -53,31 +43,25 @@
   }
 }
 
-@include connotations-context(
-  ':host([unelevated][connotation-specifier])'
-); // ! can add argument to define a default connotation (cta);
+@include connotations-context(':host([unelevated][connotation-specifier])');
 
-// :host([unelevated]) {
-//   color: var(--vvd-color-primary-foreground);
-// }
 
-// :host([unelevated]) .normal:not(:disabled) {
-//   background-color: var(--vvd-color-primary-background);
-// }
+/////////////////////////////////////////////////////////////////////////////
+.mdc-button {
+	font-stretch: var(--mdc-typography-button-font-stretch); // ! this was supposed to be set by MDC
+  height: 40px;
+	letter-spacing: normal;
+  border-radius: 6px;
 
-// :host([unelevated]) .call-to-action:not(:disabled) {
-//   background-color: var(--vvd-color-call-to-action);
-// }
+  &.mdc-button--dense {
+    height: 32px;
+  }
+}
 
-// :host([unelevated]) .success:not(:disabled) {
-//   background-color: var(--vvd-color-success);
-// }
+:host([disabled]) .mdc-button.mdc-button--outlined {
+  border-color: var(--vvd-color-disabled-fill-color);
+}
 
-// :host([unelevated]) .error:not(:disabled) {
-//   background-color: var(--vvd-color-error);
-// }
-
-// :host([unelevated]) .warning:not(:disabled) {
-//   color: var(--vvd-color-primary-background);
-//   background-color: var(--vvd-color-warning);
-// }
+.pill {
+  border-radius: 40px;
+}

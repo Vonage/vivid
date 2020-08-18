@@ -9,6 +9,12 @@ export default {
 }
 
 export const basic = () => html`
+	<style>
+		vwc-select {
+			width: 240px;
+		}
+	</style>
+
 	<h3>Outlined</h3>
 	<vwc-select outlined label="VWC Select" helper="Helper Text">
 		<vwc-list-item></vwc-list-item>
@@ -31,7 +37,7 @@ export const basic = () => html`
 	</vwc-select>
 
 	<h3>Required</h3>
-	<vwc-select required outlined label="VWC Select" validationMessage="This Field is Required">
+	<vwc-select required outlined label="VWC Select" validationMessage="This Field is Required" @selected=${onSelected}>
 		<vwc-list-item></vwc-list-item>
 		<vwc-list-item value="0">Item 0</vwc-list-item>
 		<vwc-list-item value="1">Item 1</vwc-list-item>
@@ -39,3 +45,7 @@ export const basic = () => html`
 		<vwc-list-item value="3">Item 3</vwc-list-item>
 	</vwc-select>
 `;
+
+function onSelected(e) {
+	console.log(e);
+}

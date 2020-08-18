@@ -35,35 +35,6 @@ vwc-casousel:active {
 	flex: 1;
 }
 
-.swiper-nav {
-	flex: 0 0 29px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	color: #9b9da3;
-	background-color: var(--vvd-color-base-background);
-	border: 1px solid #ced0d7;
-	box-sizing: border-box;
-	overflow: hidden;
-	outline: none;
-	cursor: pointer;
-	transition: color 0.2s;
-}
-
-.swiper-nav > .icon {
-	width: 1.2em;
-	height: auto;
-	fill: none;
-	stroke: currentColor;
-	stroke-width: 3;
-	stroke-linecap: round;
-	stroke-linejoin: round;
-}
-
-.swiper-nav:hover {
-	color: var(--vvd-color-surface-foreground);
-}
-
 .swiper-slide {
 	contain: strict;
 	overflow: hidden;
@@ -87,6 +58,6 @@ $themeColor: var(--vvd-color-surface-foreground) !default;
 @import "../../../node_modules/swiper/components/thumbs/thumbs";
 @import "../../../node_modules/swiper/components/zoom/zoom";
 
-//IMPORT PAGINATION
+//IMPORT NAVIGATION/PAGINATION
 @import "./vwc-carousel-navigation";
 @import "./vwc-carousel-pagination";

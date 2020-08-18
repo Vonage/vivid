@@ -7,7 +7,7 @@ const
 	VWC_CAROUSEL = 'vwc-carousel',
 	VWC_CAROUSEL_ITEM = 'vwc-carousel-item';
 
-describe('test vwc-carousel', () => {
+describe('vwc-carousel', () => {
 	it('vwc-carousel and vwc-carousel-item are defined as a custom element', () => {
 		assert.exists(customElements.get(VWC_CAROUSEL, 'vwc-carousel element is not defined'));
 		assert.exists(customElements.get(VWC_CAROUSEL_ITEM, 'vwc-carousel-item element is not defined'));
@@ -15,7 +15,7 @@ describe('test vwc-carousel', () => {
 
 	describe('init flow', () => {
 		it('should have the required elements', async () => {
-			const actualElements = textToDomToParent(`<${VWC_CAROUSEL} id="carousel-a"></${VWC_CAROUSEL}>`, document.body);
+			const actualElements = textToDomToParent(`<${VWC_CAROUSEL} id="carousel-a"></${VWC_CAROUSEL}>`);
 			await waitNextTask();
 			expect(actualElements[0]).dom.to.equalSnapshot();
 		});

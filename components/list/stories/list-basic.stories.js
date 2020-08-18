@@ -1,7 +1,7 @@
 import '@vonage/vwc-list/vwc-list.js';
 import '@vonage/vwc-list/vwc-list-item.js';
 import { html } from 'lit-element';
-import '@vonage/vwc-icon/vwc-icon.js';
+import '@vonage/vwc-icon';
 
 export default {
 	title: 'Atoms/List',
@@ -35,19 +35,19 @@ export const metaIcon = () => html`
 	<vwc-list>
 		<vwc-list-item hasMeta>
 			<span>Item A</span>
-			<vwc-icon slot="meta" class="material-icons">info</vwc-icon>
+			<vwc-icon slot="meta" type="info"></vwc-icon>
 		</vwc-list-item>
 		<vwc-list-item hasMeta>
 			<span>Item B</span>
-			<vwc-icon slot="meta" class="material-icons">info</vwc-icon>
+			<vwc-icon slot="meta" type="info"></vwc-icon>
 		</vwc-list-item>
 		<vwc-list-item hasMeta>
 			<span>Item C</span>
-			<vwc-icon slot="meta" class="material-icons">info</vwc-icon>
+			<vwc-icon slot="meta" type="info"></vwc-icon>
 		</vwc-list-item>
 		<vwc-list-item hasMeta>
 			<span>Item D</span>
-			<vwc-icon slot="meta" class="material-icons">info</vwc-icon>
+			<vwc-icon slot="meta" type="info"></vwc-icon>
 		</vwc-list-item>
 	</vwc-list>
 `;

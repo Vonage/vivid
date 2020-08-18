@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-switch",
-	"version": "0.2.2",
+	"version": "0.3.0",
 	"description": "> TODO: description",
 	"author": "yinonov <yinon@hotmail.com>",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/switch#readme",
@@ -25,7 +25,8 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@material/mwc-switch": "^0.17.2",
+		"@material/mwc-switch": "^0.18.0",
+		"@vonage/vvd-style-coupling": "^0.3.0",
 		"lit-element": "^2.3.1",
 		"tslib": "^2.0.0"
 	}

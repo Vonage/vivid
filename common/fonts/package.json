@@ -1,11 +1,17 @@
 {
 	"name": "@vonage/vvd-fonts",
-	"version": "0.2.2",
+	"version": "0.3.0",
 	"description": "Vivid fonts initialisation service",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/common/fonts",
 	"license": "ISC",
 	"main": "vvd-fonts.js",
 	"module": "vvd-fonts.js",
+	"files": [
+		"*.js",
+		"*.d.ts",
+		"*.js.map",
+		"*.css"
+	],
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
@@ -21,6 +27,7 @@
 		"tslib": "^2.0.0"
 	},
 	"devDependencies": {
-		"fs-extra": "^9.0.1"
+		"fs-extra": "^9.0.1",
+		"lit-element": "^2.3.1"
 	}
 }

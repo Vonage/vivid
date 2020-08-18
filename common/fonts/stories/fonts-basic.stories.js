@@ -2,7 +2,7 @@ import { html } from 'lit-element';
 
 export default {
 	title: 'Core/Fonts',
-	argTypes: { 
+	argTypes: {
 		size: { control: { type: 'range', min: 16, max: 36, step: 1 }, defaultValue: 24 },
 		weight: { control: { type: 'range', min: 100, max: 900, step: 10 }, defaultValue: 300 }
   }
@@ -54,7 +54,7 @@ export const basic = ({size, weight}) => {
 			Vivid provides means to fetch and use the brand selected fonts.
 		</p>
 		<p>
-			We are providing variable fonts by default, falling back to a regular (static) fonts on a non-suporting systems.
+			We are providing variable fonts by default, falling back to a regular (static) fonts on a non-supporting systems.
 		</p>
 		<div class="preview">
 			<span class="part text">Lorem ipsum...</span>
@@ -64,11 +64,25 @@ export const basic = ({size, weight}) => {
 		<ol>
 			<li>
 				<p>
+					Install the fonts package:
+					<pre>
+					<code>
+	// npm
+	npm install @vonage/vvd-fonts
+
+	// yarn
+	yarn add @vonage/vvd-fonts
+					</code>
+				</pre>
+				</p>
+			</li>
+			<li>
+				<p>
 					Fonts are being fetched and 'installed' by the following API call flow:
 				</p>
 				<pre>
 					<code class="javascript">
-	import fonts from 'vvd-fonts.js';
+	import fonts from '@vonage/vvd-fonts';
 
 	fonts.init().then(() => {});
 					</code>
@@ -80,14 +94,7 @@ export const basic = ({size, weight}) => {
 
 			<li>
 				<p>
-					In your CSS part consume the fonts as following:
-					<pre>
-						<code class="css">
-	body {
-		font-family: var(--vvd-font-family-spezia);
-	}
-						</code>
-					</pre>
+					For an actuall consumption of the fonts in your application please refer to the typography module documentation.
 				</p>
 			</li>
 		</ol>
