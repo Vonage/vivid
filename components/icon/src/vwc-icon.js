@@ -85,10 +85,8 @@ class IconElement extends HTMLElement {
 				kefir.combine([typeProperty, sizeProperty])
 			])
 			.onValue(([type, size])=> {
-				this[SYMBOL_PROPERTY_TYPE] = type;
-				this[SYMBOL_PROPERTY_SIZE] = size;
-				this.setAttribute('type', type);
-				this.setAttribute('size', size);
+				type && this.setAttribute('type', type);
+				size && this.setAttribute('size', size);
 			});
 	}
 
@@ -97,6 +95,7 @@ class IconElement extends HTMLElement {
 	}
 
 	set type(value){
+		!value && (function(){ throw('Type must be a specified') })();
 		this[SYMBOL_PROPERTY_TYPE_SET](value);
 	}
 
@@ -124,7 +123,7 @@ class IconElement extends HTMLElement {
 	attributeChangedCallback(attrName, oldValue, newValue){
 		switch(attrName){
 			case "type":
-				this.type = newValue;
+				this.type = ["undefined", "null"].includes(newValue) ? "" : newValue;
 				break;
 			case "size":
 				this.size = newValue;
