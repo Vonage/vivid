@@ -1,4 +1,4 @@
-@use '@vonage/vvd-fonts/typography' as typography;
+@use '@vonage/vvd-typography/scss/typography' as typography;
 @use '../../../utils/scss/variable-names/color-semantic-variable-names' as color-semantic;
 
 :host {
@@ -22,7 +22,8 @@
 	--mdc-select-error-fill-color: var(#{color-semantic.$formfield-error-fill});
 	--mdc-select-error-dropdown-icon-color: var(--mdc-select-error-color);
 
-	@include typography.font-combo('Body2');
+	@include typography.typography-mdc-coupling('subtitle1', 'body-2');
+	font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
 
 	--vvd-outline-color: var(--mdc-select-outlined-idle-border-color);
 }

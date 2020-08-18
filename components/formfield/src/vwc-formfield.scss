@@ -1,7 +1,9 @@
-@use '@vonage/vvd-fonts/typography' as typography;
+@use '@vonage/vvd-typography/scss/typography' as typography;
 
 :host {
-	@include typography.font-combo('Body2Bold');
+	@include typography.typography-mdc-coupling('body2', 'body-2');
+	font-stretch: var(--mdc-typography-body2-font-stretch); // ! this was supposed to be set by MDC
+
   display: block;
 }
 
