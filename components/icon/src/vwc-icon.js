@@ -95,8 +95,11 @@ class IconElement extends HTMLElement {
 	}
 
 	set type(value){
-		!value && (function(){ throw('Type must be a specified') })();
-		this[SYMBOL_PROPERTY_TYPE_SET](value);
+		if(!value){
+			console.warn('Type must be a specified');
+		} else {
+			this[SYMBOL_PROPERTY_TYPE_SET](value);
+		}
 	}
 
 	get type() {
@@ -104,8 +107,11 @@ class IconElement extends HTMLElement {
 	}
 
 	set size(value){
-		!Object.keys(SIZES).includes(value) && (function(){ throw(`Size can either be "${Object.keys(SIZES).join(',')}"`); })();
-		this[SYMBOL_PROPERTY_SIZE_SET](value);
+		if(!Object.keys(SIZES).includes(value)){
+			console.warn(`Size can either be "${Object.keys(SIZES).join(',')}"`);
+		} else {
+			this[SYMBOL_PROPERTY_SIZE_SET](value);
+		}
 	}
 
 	get size() {
