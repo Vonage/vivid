@@ -18,4 +18,9 @@ MWCSlider.styles = [styleCoupling, mwcSliderStyle, vwcSliderStyle];
  * This component is an extension of [<mwc-slider>](https://github.com/material-components/material-components-web-components/tree/master/packages/slider)
  */
 @customElement('vwc-slider')
-export class VWCSlider extends MWCSlider {}
+export class VWCSlider extends MWCSlider {
+	async firstUpdated(): Promise<void> {
+		await super.firstUpdated();
+		(this.mdcFoundation as any).adapter.setMarkerValue(this.value);
+	}
+}
