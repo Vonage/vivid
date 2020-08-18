@@ -1,10 +1,10 @@
 @use 'sass:selector';
 @forward './vwc-button-coupling';
-@use '@vonage/vvd-style-coupling/vvd-style-coupling-variables' as sc-variables;
+@use '../../../utils/scss/variable-names/color-semantic-variable-names' as color-semantic;
 
 :host {
-	--mdc-button-disabled-ink-color: var(#{sc-variables.$formfield-disabled-ink});
-	--mdc-button-disabled-fill-color: var(#{sc-variables.$formfield-border-idle});
+	--mdc-button-disabled-ink-color: var(#{color-semantic.$formfield-disabled-ink});
+	--mdc-button-disabled-fill-color: var(#{color-semantic.$formfield-border-idle});
 }
 
 
@@ -48,7 +48,7 @@
 
 /////////////////////////////////////////////////////////////////////////////
 .mdc-button {
-	font-stretch: var(--vvd-typography-font-stretch);
+	font-stretch: var(--mdc-typography-button-font-stretch); // ! this was supposed to be set by MDC
   height: 40px;
 	letter-spacing: normal;
   border-radius: 6px;

@@ -1,4 +1,4 @@
-@use '@vonage/vvd-style-coupling/vvd-style-coupling-variables' as sc-variables;
+@use '../../../utils/scss/variable-names/color-semantic-variable-names' as color-semantic;
 
 .swiper-nav {
 	flex: 0 0 29px;
@@ -7,7 +7,7 @@
 	justify-content: center;
 	fill: var(--vvd-color-surface-foreground);
 	background-color: var(--vvd-color-base-background);
-	border: 1px solid var(#{sc-variables.$formfield-border-idle});
+	border: 1px solid var(#{color-semantic.$formfield-border-idle});
 	box-sizing: border-box;
 	overflow: hidden;
 	outline: none;

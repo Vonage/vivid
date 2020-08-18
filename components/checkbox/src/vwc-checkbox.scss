@@ -1,4 +1,4 @@
-@use '@vonage/vvd-style-coupling/vvd-style-coupling-variables' as sc-variables;
+@use '../../../utils/scss/variable-names/color-semantic-variable-names' as color-semantic;
 
 :host {
 	--mdc-checkbox-unchecked-color: var(--vvd-color-unchecked);
@@ -49,7 +49,7 @@
 
 	.mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate="true"]) {
 		~ .mdc-checkbox__background {
-			background-color: sc-variables.$grey-100;
+			background-color: var(#{color-semantic.$formfield-disabled-fill});
 		}
 
 		&:hover,
