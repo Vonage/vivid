@@ -2,7 +2,7 @@ export const argTypes = {
   connotation: {
     control: {
       type: 'select',
-      options: [undefined, 'cta', 'success', 'error', 'warning'],
+      options: ['regular', 'cta', 'success', 'error'],
     }
   },
   layout: {
@@ -20,25 +20,25 @@ export const argTypes = {
   dense: {
     control: {
       type: 'inline-radio',
-      options: {'true': '', 'false': undefined}
+      options: { 'true': '', 'false': undefined }
     }
   },
   disabled: {
     control: {
       type: 'inline-radio',
-      options: {'true': '', 'false': undefined}
+      options: { 'true': '', 'false': undefined }
     }
   },
   trailingIcon: {
     control: {
       type: 'inline-radio',
-      options: {'true': '', 'false': undefined}
+      options: { 'true': '', 'false': undefined }
     }
   },
   fullwidth: {
     control: {
       type: 'inline-radio',
-      options: {'true': '', 'false': undefined}
+      options: { 'true': '', 'false': undefined }
     }
   },
   styles: { table: { disable: true } },

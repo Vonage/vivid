@@ -12,7 +12,7 @@ export default {
 const Template = args => html`<vwc-button ...=${spread(args)}></vwc-button>`;
 
 export const Basic = Template.bind({});
-Basic.args = { label: 'Basic' };
+Basic.args = { label: 'Basic', layout: 'text' };
 
 export const Filled = Template.bind({});
 Filled.args = { layout: 'filled', label: 'Filled' };
@@ -24,10 +24,10 @@ export const PillShape = Template.bind({});
 PillShape.args = { label: 'Filled', layout: 'filled', shape: 'pill' };
 
 export const Dense = Template.bind({});
-Dense.args = { label: 'Dense', layout: 'filled', dense: true };
+Dense.args = { label: 'Dense', layout: 'filled', dense: '' };
 
 export const Disabled = Template.bind({});
-Disabled.args = { label: 'Disabled', layout: 'filled', disabled: true };
+Disabled.args = { label: 'Disabled', layout: 'filled', disabled: '' };
 
 // export const basic = () => html`
 //   <style>
