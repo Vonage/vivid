@@ -52,6 +52,10 @@
   height: 40px;
 	letter-spacing: normal;
   border-radius: 6px;
+
+  &.mdc-button--dense {
+    height: 32px;
+  }
 }
 
 :host([disabled]) .mdc-button.mdc-button--outlined {
