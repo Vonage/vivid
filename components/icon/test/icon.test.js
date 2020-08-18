@@ -21,7 +21,7 @@ describe('vwc-icon', () => {
 			.entries(snapshots)
 			.map(([iconName, svg])=> async ()=> {
 				el.setAttribute('type', iconName);
-				await wait(0.2 * SECOND);
+				await wait(0.3 * SECOND);
 				expect((el.shadowRoot.querySelector('svg') || { innerHTML: "" }).innerHTML).to.equal(svg, `Failed to validate icon type "${iconName}"`)
 			})
 			.reduce((ac, f)=> ac.then(f), Promise.resolve())
