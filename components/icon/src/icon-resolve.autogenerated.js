@@ -1,1 +1,0 @@
-export default function(iconId){ return import('./icon/' + iconId + ".js").then(({ default: f })=> f()); }
