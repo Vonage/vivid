@@ -63,7 +63,6 @@
     "@storybook/addon-console": "^1.2.1",
     "@storybook/addon-controls": "^6.0.12",
     "@storybook/addon-docs": "^6.0.12",
-    "@storybook/addon-knobs": "^6.0.12",
     "@storybook/addon-storysource": "^6.0.12",
     "@storybook/addon-viewport": "^6.0.12",
     "@storybook/addons": "^6.0.12",
