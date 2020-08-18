@@ -70,7 +70,7 @@ const createAwsResolver = function({ awsAccessKey, awsAccessSecret, awsBucketNam
 			.map((resourceMap)=> {
 				return [
 					`const resourceMap = ${JSON.stringify(resourceMap)};`,
-					`export default function(iconId){ const resourceLocation = resourceMap[iconId]; return resourceLocation ? fetch(["${awsBaseUrl}", resourceLocation].join('/')).then((res)=> res.text()) : Promise.reject("Icon not found"); };`
+					`export default function(iconId){ const resourceLocation = resourceMap[iconId]; return resourceLocation ? fetch(["${awsBaseUrl}", resourceLocation].join('/')).then((res)=> res.text()) : Promise.reject("Icon [" + iconId + "] not found"); };`
 				].join('\n');
 			});
 
