@@ -4,7 +4,7 @@ import { default as icons } from './icon.story.json';
 import { storiesOf } from '@storybook/web-components';
 import storyCssContent from "./icon.story.css.js";
 
-const registerCategory = (categoryTitle, content)=> storiesOf(["Atoms", "Icon", "Types", categoryTitle].join('|'), module)
+const registerCategory = (categoryTitle, content)=> storiesOf(["Atoms", "Icon", "Types", categoryTitle].join('/'), module)
 	.add(categoryTitle, () => {
 		const styleEl = document.createElement('style');
 		styleEl.innerHTML = storyCssContent;
