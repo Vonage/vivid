@@ -3,7 +3,7 @@ const
     fp = require('lodash/fp'),
     kefir = require('kefir');
 
-const DEFAULT_VERSION_EXTRACTOR = (meta = "")=> _.last(meta.match(/^tag: v([0-9]+\.[0-9]+\.[0-9]+)/));
+const DEFAULT_VERSION_EXTRACTOR = (meta = "")=> _.last(meta.match(/tag: v([0-9]+\.[0-9]+\.[0-9]+)/));
 
 module.exports = ({ version_extractor: extractVersion = DEFAULT_VERSION_EXTRACTOR } = {})=> (lineLogStream)=> {
 		return lineLogStream
