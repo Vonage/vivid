@@ -1,8 +1,9 @@
+@use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vwc-textfield/src/vwc-textfield';
-@use '@vonage/vvd-fonts/typography' as typography;
 
 :host {
-	@include typography.font-combo('Body2');
+	@include typography.typography-mdc-coupling('subtitle1', 'body-2');
+	font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
 }
 
 .mdc-text-field--textarea {
@@ -20,7 +21,8 @@
 		}
 
 		.mdc-text-field__input {
-			@include typography.font-combo('Body2');
+			@include typography.typography-mdc-coupling('subtitle1', 'body-2');
+			font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
 			height: auto;
 			margin: 0;
 			resize: vertical;

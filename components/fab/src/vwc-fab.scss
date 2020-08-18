@@ -1,8 +1,9 @@
 @use 'sass:selector';
-@use '@vonage/vvd-fonts/typography' as typography;
+@use '@vonage/vvd-typography/scss/typography' as typography;
 
 .mdc-fab {
-	@include typography.font-combo('Body2Bold');
+	@include typography.typography-mdc-coupling('button', 'body-2-bold');
+	font-stretch: var(--mdc-typography-button-font-stretch); // ! this was supposed to be set by MDC
 	letter-spacing: initial;
 	text-transform: initial;
 }

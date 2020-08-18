@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-icon",
-	"version": "0.3.0",
+	"version": "0.4.0",
 	"description": "icon component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/icon#readme",
 	"license": "ISC",
@@ -26,5 +26,12 @@
 	"dependencies": {
 		"kefir": "^3.8.7",
 		"lit-element": "^2.3.1"
+	},
+	"devDependencies": {
+		"aws-sdk": "^2.730.0",
+		"minimist": "^1.2.5"
+	},
+	"engines": {
+		"node": ">=v12.0.0"
 	}
 }

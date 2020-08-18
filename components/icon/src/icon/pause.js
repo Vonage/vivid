@@ -1,1 +1,0 @@
-export default function(){ return `<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M5 2H2V14H5V2ZM2 1H5C5.6 1 6 1.4 6 2V14C6 14.6 5.6 15 5 15H2C1.4 15 1 14.6 1 14V2C1 1.4 1.4 1 2 1Z"/><path d="M14 2H11V14H14V2ZM11 1H14C14.6 1 15 1.4 15 2V14C15 14.6 14.6 15 14 15H11C10.4 15 10 14.6 10 14V2C10 1.4 10.4 1 11 1Z"/></svg>`; }
