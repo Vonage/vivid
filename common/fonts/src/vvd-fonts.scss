@@ -1,7 +1,7 @@
-$font-family-css-variable-name: --vvd-font-family-spezia;
+@use '../../../utils/scss/variable-names/font-variable-names' as font-var-names;
 
 :root {
-  #{$font-family-css-variable-name}: 'SpeziaWeb';
+  #{font-var-names.$font-family-css-variable-name}: 'SpeziaWeb';
 }
 
 /*
@@ -36,13 +36,12 @@ $font-family-css-variable-name: --vvd-font-family-spezia;
 
 @supports (font-variation-settings: 'wdth' 9) {
   :root {
-    #{$font-family-css-variable-name}: 'SpeziaWebVariable';
+    #{font-var-names.$font-family-css-variable-name}: 'SpeziaWebVariable';
   }
 
   @font-face {
     font-family: 'SpeziaWebVariable';
-    src: url('FONTS_BASE_URL/Spezia_Web_Complete_Upright.woff2')
-      format('woff2-variations');
+    src: url('FONTS_BASE_URL/Spezia_Web_Complete_Upright.woff2') format('woff2-variations');
     font-style: normal;
     font-weight: 1 1000;
     font-stretch: 50% 200%;
