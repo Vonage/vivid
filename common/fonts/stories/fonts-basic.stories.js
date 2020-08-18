@@ -1,23 +1,14 @@
 import { html } from 'lit-element';
-import { number } from "@storybook/addon-knobs";
 
 export default {
-	title: 'Core/Fonts'
+	title: 'Core/Fonts',
+	argTypes: { 
+		size: { control: { type: 'range', min: 16, max: 36, step: 1 }, defaultValue: 24 },
+		weight: { control: { type: 'range', min: 100, max: 900, step: 10 }, defaultValue: 300 }
+  }
 }
 
-export const basic = () => {
-	const size = number('Size', 24, {
-		range: true,
-		min: 16,
-		max: 36,
-		step: 1,
-	});
-	const weight = number('Weight', 300, {
-		range: true,
-		min: 100,
-		max: 900,
-		step: 10,
-	});
+export const basic = ({size, weight}) => {
 	return html`
 		<style>
 			.preview {
