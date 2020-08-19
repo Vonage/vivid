@@ -1,3 +1,9 @@
+@use '@vonage/vvd-typography/scss/typography' as typography;
+
+:host{
+	@include typography.font('body-2');
+}
+
 :host(:not([left])) > .mdc-list-item__meta {
 	width: var(--mdc-list-item-meta-size, 24px);
 	height: var(--mdc-list-item-meta-size, 24px);
