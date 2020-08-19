@@ -20,6 +20,8 @@ This component is an extension of [<mwc-button>](https://github.com/material-com
 | `shape`                   | `ButtonShape`                             |
 | `trailingIcon`            | `boolean`                                 |
 | `unelevated`              | `boolean`                                 |
+| `form`                    | `string`                                  |
+| `type`                    | `string`                                  |
 
 ## Methods
 
