@@ -1,17 +1,20 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 
 :host {
-	@include typography.font('body-1');
+	::slotted(*) {
+		@include typography.font('body-1');
+	}
 
-	h1 {
+	::slotted(h1) {
 		@include typography.font('headline');
 	}
 
-	h2 {
+	::slotted(h2) {
 		@include typography.font('title');
 	}
 
-	b, strong {
+	::slotted(b),
+	::slotted(strong) {
 		@include typography.font('body-1-bold');
 	}
 }

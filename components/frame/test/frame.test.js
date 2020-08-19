@@ -1,5 +1,5 @@
 import '../vwc-frame.js';
-import { textToDomToParent, waitNextTask, randomAlpha } from '../../../utils/js/test-helpers.js';
+import { textToDomToParent, waitNextTask, randomAlpha, assertComputedStyle } from '../../../utils/js/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 chai.use(chaiDomDiff);
 
@@ -26,12 +26,49 @@ describe('vwc-frame', () => {
 			await waitNextTask();
 			const h1 = actualElements[0].querySelector('#' + randomId);
 			expect(h1).to.exist;
-			const computedStyle = getComputedStyle(h1);
-			expect(computedStyle.fontFamily).to.equal('SpeziaWebVariable', 'font family is NOT as expected');
-			expect(computedStyle.fontSize).to.equal('32px', 'font size is NOT as expected');
-			expect(computedStyle.fontWeight).to.equal('700', 'font weight is NOT as expected');
-			expect(computedStyle.fontStretch).to.equal('50%', 'font stretch is NOT as expected');
-			expect(computedStyle.lineHeight).to.equal('25.7324px', 'line height is NOT as expected');
+			assertComputedStyle(h1, {
+				fontFamily: 'SpeziaWebVariable',
+				fontSize: '46.1841px',
+				fontWeight: '500',
+				fontStretch: '75%',
+				lineHeight: '50.9028px',
+				letterSpacing: 'normal',
+				textTransform: 'none'
+			});
+		});
+
+		it('should have style correctly H2 element', async () => {
+			const randomId = randomAlpha();
+			const actualElements = textToDomToParent(`<${VWC_FRAME}><h2 id="${randomId}">Header 2</h2></${VWC_FRAME}>`);
+			await waitNextTask();
+			const h2 = actualElements[0].querySelector('#' + randomId);
+			expect(h2).to.exist;
+			assertComputedStyle(h2, {
+				fontFamily: 'SpeziaWebVariable',
+				fontSize: '36.4912px',
+				fontWeight: '500',
+				fontStretch: '75%',
+				lineHeight: '45.0101px',
+				letterSpacing: 'normal',
+				textTransform: 'none'
+			});
+		});
+
+		it('should have style correctly P element', async () => {
+			const randomId = randomAlpha();
+			const actualElements = textToDomToParent(`<${VWC_FRAME}><p id="${randomId}">Header 2</p></${VWC_FRAME}>`);
+			await waitNextTask();
+			const p = actualElements[0].querySelector('#' + randomId);
+			expect(p).to.exist;
+			assertComputedStyle(p, {
+				fontFamily: 'SpeziaWebVariable',
+				fontSize: '16px',
+				fontWeight: '400',
+				fontStretch: '50%',
+				lineHeight: '25.7324px',
+				letterSpacing: 'normal',
+				textTransform: 'none'
+			});
 		});
 	});
 });
