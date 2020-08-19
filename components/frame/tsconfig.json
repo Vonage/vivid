@@ -12,12 +12,5 @@
 	"exclude": [
 		"src/test/*.ts"
 	],
-	"references": [
-		{
-			"path": "../../common/style-coupling"
-		},
-		{
-			"path": "../icon"
-		}
-	]
+	"references": []
 }

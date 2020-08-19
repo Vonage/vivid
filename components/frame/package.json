@@ -1,11 +1,11 @@
 {
-	"name": "@vonage/vwc-button",
+	"name": "@vonage/vwc-framew",
 	"version": "0.4.0",
-	"description": "button component",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/button#readme",
+	"description": "Vivid context provider",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/frame#readme",
 	"license": "ISC",
-	"main": "vwc-button.js",
-	"module": "vwc-button.js",
+	"main": "vwc-frame.js",
+	"module": "vwc-frame.js",
 	"files": [
 		"src",
 		"*.js",
@@ -15,7 +15,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/button"
+		"directory": "components/frame"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"
@@ -24,9 +24,6 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@material/mwc-button": "^0.18.0",
-		"@vonage/vvd-style-coupling": "^0.4.0",
-		"@vonage/vwc-icon": "^0.4.0",
 		"lit-element": "^2.3.1",
 		"tslib": "^2.0.0"
 	},
