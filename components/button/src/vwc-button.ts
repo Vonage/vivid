@@ -43,6 +43,9 @@ export class VWCButton extends MWCButton {
 	@property({type: String, reflect: true})
 	type: ButtonTYpe[number] = 'submit';
 
+	@property({type: String, reflect: true})
+	form: string | undefined;
+
 	protected updated(): void {
 		const layout: ButtonLayout[number] = this.layout;
 		const connotation: ButtonConnotation[number] | undefined =
@@ -71,7 +74,14 @@ export class VWCButton extends MWCButton {
 	}
 
 	protected _handleClick() {
-		const form = this.closest('form');
+		let form: HTMLFormElement;
+		const formId = this.getAttribute('form');
+		if (formId){
+			form = document.getElementById(formId) as HTMLFormElement;
+		} else {
+			form = this.closest('form') as HTMLFormElement;
+		}
+
 		if (form) {
 			switch (this.getAttribute('type')) {
 				case 'reset':
