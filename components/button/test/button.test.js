@@ -22,7 +22,7 @@ describe('test vwc-button', () => {
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
-	describe(`form association`, function() {
+	describe(`Form Association`, function() {
 
 		beforeEach(() => {
 			window.formSubmitted = false;
@@ -54,6 +54,23 @@ describe('test vwc-button', () => {
 			actualElement.click();
 
 			expect(submitted).to.equal(true);
+		});
+
+		it(`should reset form when of type reset`, async function() {
+			let submitted = false;
+			let reset = false;
+			const internalElements = textToDomToParent('<form onsubmit="return false" name="testForm" id="testForm"><vwc-button id="button-a" type="reset">Button Text</vwc-button></form>');
+			const formElement = addedElement = internalElements[0];
+			const actualElement = formElement.firstChild;
+			await waitNextTask();
+			await waitNextTask();
+			formElement.addEventListener('submit', () => submitted = true);
+			formElement.addEventListener('reset', () => reset = true);
+
+			actualElement.click();
+
+			expect(reset).to.equal(true);
+			expect(submitted).to.equal(false);
 		});
 	});
 });
