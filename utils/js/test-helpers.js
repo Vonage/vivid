@@ -24,3 +24,15 @@ export async function waitNextTask() {
 export async function waitInterval(millis) {
 	await new Promise(resolve => setTimeout(resolve, millis));
 }
+
+const ALPHA_CHARSET = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+export function randomAlpha(length = 8) {
+	if (!length || length < 0 || typeof length !== 'number') {
+		throw new Error(`unexpected length type '${typeof length}'`);
+	}
+
+	const srcLen = ALPHA_CHARSET.length;
+	return Array.from(crypto.getRandomValues(new Uint8Array(length)))
+		.map(rv => ALPHA_CHARSET.charAt(srcLen * rv / 256))
+		.join('');
+}
