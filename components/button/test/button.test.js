@@ -21,4 +21,39 @@ describe('test vwc-button', () => {
 		await waitNextTask();
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
+
+	describe(`form association`, function() {
+
+		beforeEach(() => {
+			window.formSubmitted = false;
+		});
+
+		it(`should submit form when inside a form`, async function() {
+			let submitted = false;
+			const internalElements = textToDomToParent('<form onsubmit="return false" name="testForm" id="testForm"><vwc-button id="button-a">Button Text</vwc-button></form>');
+			const formElement = addedElement = internalElements[0];
+			const actualElement = formElement.firstChild;
+			await waitNextTask();
+			await waitNextTask();
+			formElement.addEventListener('submit', () => submitted = true);
+
+			actualElement.click();
+
+			expect(submitted).to.equal(true);
+		});
+
+		it(`should submit form when of type submit`, async function() {
+			let submitted = false;
+			const internalElements = textToDomToParent('<form onsubmit="return false" name="testForm" id="testForm"><vwc-button id="button-a" type="submit">Button Text</vwc-button></form>');
+			const formElement = addedElement = internalElements[0];
+			const actualElement = formElement.firstChild;
+			await waitNextTask();
+			await waitNextTask();
+			formElement.addEventListener('submit', () => submitted = true);
+
+			actualElement.click();
+
+			expect(submitted).to.equal(true);
+		});
+	});
 });
