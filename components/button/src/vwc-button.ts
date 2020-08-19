@@ -23,8 +23,12 @@ export type ButtonConnotation = typeof connotations;
 const shapes = ['rounded', 'pill'] as const;
 export type ButtonShape = typeof shapes;
 
+const types = ['submit', 'reset', 'button'] as const;
+export type ButtonType = typeof types;
+
 /**
  * This component is an extension of [<mwc-button>](https://github.com/material-components/material-components-web-components/tree/master/packages/button)
+ * Our button supports native features like the 'form' and 'type' attributes
  */
 @customElement('vwc-button')
 export class VWCButton extends MWCButton {
@@ -36,6 +40,12 @@ export class VWCButton extends MWCButton {
 
 	@property({ type: String, reflect: true })
 	shape: ButtonShape[number] = 'rounded';
+
+	@property({type: String, reflect: true})
+	type: ButtonType[number] = 'submit';
+
+	@property({type: String, reflect: true})
+	form: string | undefined;
 
 	protected updated(): void {
 		const layout: ButtonLayout[number] = this.layout;
@@ -62,5 +72,31 @@ export class VWCButton extends MWCButton {
 			//	set the clases back to the DOM
 			innerButton.className = Array.from(classesSet).join(' ');
 		}
+	}
+
+	protected _handleClick() {
+		let form: HTMLFormElement;
+		const formId = this.getAttribute('form');
+		if (formId){
+			form = document.getElementById(formId) as HTMLFormElement;
+		} else {
+			form = this.closest('form') as HTMLFormElement;
+		}
+
+		if (form) {
+			switch (this.getAttribute('type')) {
+				case 'reset':
+					form.reset();
+					break;
+				default:
+					form.requestSubmit();
+					break;
+			}
+		}
+	}
+
+	connectedCallback() {
+		super.connectedCallback();
+		this.addEventListener('click', this._handleClick);
 	}
 }
