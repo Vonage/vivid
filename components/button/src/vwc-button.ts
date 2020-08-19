@@ -69,7 +69,14 @@ export class VWCButton extends MWCButton {
 	protected _handleClick() {
 		const form = this.closest('form');
 		if (form) {
-			form.requestSubmit();
+			switch (this.getAttribute('type')) {
+				case 'reset':
+					form.reset();
+					break;
+				default:
+					form.requestSubmit();
+					break;
+			}
 		}
 	}
 
