@@ -28,6 +28,7 @@ export type ButtonTYpe = typeof types;
 
 /**
  * This component is an extension of [<mwc-button>](https://github.com/material-components/material-components-web-components/tree/master/packages/button)
+ * Our button supports native features like the 'form' and 'type' attributes
  */
 @customElement('vwc-button')
 export class VWCButton extends MWCButton {
