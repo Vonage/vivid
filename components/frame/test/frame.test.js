@@ -56,7 +56,7 @@ describe('vwc-frame', () => {
 
 		it('should have style correctly P element', async () => {
 			const randomId = randomAlpha();
-			const actualElements = textToDomToParent(`<${VWC_FRAME}><p id="${randomId}">Header 2</p></${VWC_FRAME}>`);
+			const actualElements = textToDomToParent(`<${VWC_FRAME}><p id="${randomId}">Paragraph</p></${VWC_FRAME}>`);
 			await waitNextTask();
 			const p = actualElements[0].querySelector('#' + randomId);
 			expect(p).to.exist;
