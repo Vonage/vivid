@@ -22,6 +22,10 @@ export type ButtonConnotation = typeof connotations;
 
 const shapes = ['rounded', 'pill'] as const;
 export type ButtonShape = typeof shapes;
+
+const types = ['submit', 'reset', 'button'] as const;
+export type ButtonTYpe = typeof types;
+
 /**
  * This component is an extension of [<mwc-button>](https://github.com/material-components/material-components-web-components/tree/master/packages/button)
  */
@@ -37,7 +41,7 @@ export class VWCButton extends MWCButton {
 	shape: ButtonShape[number] = 'rounded';
 
 	@property({type: String, reflect: true})
-	type: string = 'submit';
+	type: ButtonTYpe[number] = 'submit';
 
 	protected updated(): void {
 		const layout: ButtonLayout[number] = this.layout;
