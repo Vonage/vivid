@@ -35,8 +35,6 @@ describe('test vwc-button', () => {
 			addedElements = textToDomToParent('<form onsubmit="return false" name="testForm" id="testForm"><vwc-button id="button-a">Button Text</vwc-button></form>');
 			const formElement = addedElements[0];
 			const actualElement = formElement.firstChild;
-			await waitNextTask();
-			await waitNextTask();
 			formElement.addEventListener('submit', () => submitted = true);
 
 			actualElement.click();
@@ -49,8 +47,6 @@ describe('test vwc-button', () => {
 			addedElements = textToDomToParent('<form onsubmit="return false" name="testForm" id="testForm"><vwc-button id="button-a" type="submit">Button Text</vwc-button></form>');
 			const formElement = addedElements[0];
 			const actualElement = formElement.firstChild;
-			await waitNextTask();
-			await waitNextTask();
 			formElement.addEventListener('submit', () => submitted = true);
 
 			actualElement.click();
@@ -64,8 +60,6 @@ describe('test vwc-button', () => {
 			addedElements = textToDomToParent('<form onsubmit="return false" name="testForm" id="testForm"><vwc-button id="button-a" type="reset">Button Text</vwc-button></form>');
 			const formElement = addedElements[0];
 			const actualElement = formElement.firstChild;
-			await waitNextTask();
-			await waitNextTask();
 			formElement.addEventListener('submit', () => submitted = true);
 			formElement.addEventListener('reset', () => reset = true);
 
@@ -106,9 +100,6 @@ describe('test vwc-button', () => {
 			const resetButton = formElement.children[0];
 			const submitButton = formElement.children[1];
 			const externalForm = addedElements[1];
-
-			await waitNextTask();
-			await waitNextTask();
 
 			formElement.addEventListener('submit', () => submitted.internal = true);
 			formElement.addEventListener('reset', () => reset.internal = true);
@@ -154,9 +145,6 @@ describe('test vwc-button', () => {
 			const resetButton = formElement.children[0];
 			const submitButton = formElement.children[1];
 			const externalForm = addedElements[1];
-
-			await waitNextTask();
-			await waitNextTask();
 
 			formElement.addEventListener('submit', () => submitted.internal = true);
 			formElement.addEventListener('reset', () => reset.internal = true);
