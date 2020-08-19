@@ -22,7 +22,6 @@ export type ButtonConnotation = typeof connotations;
 
 const shapes = ['rounded', 'pill'] as const;
 export type ButtonShape = typeof shapes;
-
 /**
  * This component is an extension of [<mwc-button>](https://github.com/material-components/material-components-web-components/tree/master/packages/button)
  */
@@ -36,6 +35,9 @@ export class VWCButton extends MWCButton {
 
 	@property({ type: String, reflect: true })
 	shape: ButtonShape[number] = 'rounded';
+
+	@property({type: String, reflect: true})
+	type: string = 'submit';
 
 	protected updated(): void {
 		const layout: ButtonLayout[number] = this.layout;
@@ -62,5 +64,18 @@ export class VWCButton extends MWCButton {
 			//	set the clases back to the DOM
 			innerButton.className = Array.from(classesSet).join(' ');
 		}
+	}
+
+	protected _handleClick() {
+		const form = this.closest('form');
+		if (form) {
+			form.requestSubmit();
+		}
+	}
+
+	async firstUpdated() {
+		// Give the browser a chance to paint - performance enhancement
+		await new Promise((r) => setTimeout(r, 0));
+		this.addEventListener('click', this._handleClick);
 	}
 }
