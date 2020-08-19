@@ -11,7 +11,8 @@ const
 	DEFAULT_OUTPUT_FOLDER = "./src",
 	DEFAULT_ICON_FOLDER = "./build/icon",
 	DEFAULT_SKIP = false,
-	DEFAULT_RESOLVE_STRATEGY = "esm"; // cdn/esm
+	DEFAULT_RESOLVE_STRATEGY = "esm", // cdn/esm
+	DEFAULT_CDN_CACHE_CONTROL = "public, max-age=604800";
 
 const
 	{
@@ -57,7 +58,8 @@ const createAwsResolver = function({ awsAccessKey, awsAccessSecret, awsBucketNam
 							Bucket: awsBucketName,
 							Key: [sha256(content), "svg"].join('.'),
 							Body: content,
-							ContentType: "image/svg+xml"
+							ContentType: "image/svg+xml",
+							CacheControl: DEFAULT_CDN_CACHE_CONTROL
 						}, cb))
 						.map(({ Location: location, ETag: etag, key })=> ({ filename, content, location, etag, key }))
 				}, S3_UPLOAD_CONCURRENCY);
