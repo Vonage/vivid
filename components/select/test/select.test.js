@@ -25,7 +25,7 @@ describe('vwc-select', () => {
 		});
 	});
 
-	describe('select has correct typography', () => {
+	describe('select typography', () => {
 		it('should have set typography for a label', async () => {
 			const actualElements = textToDomToParent(`
 				<${VWC_SELECT} outlined label="VWC Select">
