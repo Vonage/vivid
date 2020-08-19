@@ -74,5 +74,53 @@ describe('test vwc-button', () => {
 			expect(reset).to.equal(true);
 			expect(submitted).to.equal(false);
 		});
+
+		it(`should associate with external form attribute is set with form id`, async function() {
+			const submitted = {
+				external: false,
+				internal: false
+			};
+
+			const reset = {
+				external: false,
+				internal: false
+			};
+
+			const expectedSubmitted = {
+				external: true,
+				internal: false
+			}
+			const expectedReset = {
+				external: true,
+				internal: false
+			}
+
+			addedElements = textToDomToParent(`
+				<form onsubmit="return false" name="testForm" id="testForm">
+					<vwc-button id="button-a" form="externalForm" type="reset">RESET</vwc-button>
+					<vwc-button id="button-b" form="externalForm" type="submit">SUBMIT</vwc-button>
+				</form>
+				<form onsubmit="return false" name="externalForm" id="externalForm"></form>
+			`);
+			const formElement = addedElements[0];
+			const resetButton = formElement.children[0];
+			const submitButton = formElement.children[1];
+			const externalForm = addedElements[1];
+
+			await waitNextTask();
+			await waitNextTask();
+
+			formElement.addEventListener('submit', () => submitted.internal = true);
+			formElement.addEventListener('reset', () => reset.internal = true);
+
+			externalForm.addEventListener('submit', () => submitted.external = true);
+			externalForm.addEventListener('reset', () => reset.external = true);
+
+			resetButton.click();
+			submitButton.click();
+
+			expect(reset).to.eql(expectedReset);
+			expect(submitted).to.eql(expectedSubmitted);
+		});
 	});
 });
