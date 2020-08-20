@@ -1,8 +1,7 @@
-@use '@vonage/vvd-typography/scss/typography' as typography;
+@forward './vwc-textarea-coupling';
 @use '@vonage/vwc-textfield/src/vwc-textfield';
 
 :host {
-	@include typography.typography-mdc-coupling('subtitle1', 'body-2');
 	font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
 }
 
@@ -21,7 +20,6 @@
 		}
 
 		.mdc-text-field__input {
-			@include typography.typography-mdc-coupling('subtitle1', 'body-2');
 			font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
 			height: auto;
 			margin: 0;
