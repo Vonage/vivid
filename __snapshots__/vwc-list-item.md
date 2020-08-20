@@ -1,8 +1,8 @@
 # `vwc-list-item`
 
-## `vwc-list-item init flow`
+## `init flow`
 
-####   `vwc-list-item has internal contents`
+####   `should have internal contents`
 
 ```html
 <span class="mdc-list-item__text">
@@ -11,4 +11,3 @@
 </span>
 
 ```
-

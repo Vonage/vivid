@@ -1,8 +1,8 @@
 # `vwc-radio-list-item`
 
-## `vwc-radio-list-item init flow`
+## `init flow`
 
-####   `vwc-radio-list-item has internal contents`
+####   `should have internal contents`
 
 ```html
 <span class="mdc-list-item__text">
@@ -18,4 +18,3 @@
 </span>
 
 ```
-
