@@ -1,11 +1,9 @@
 import '@vonage/vwc-circular-progress/vwc-circular-progress.js';
-import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
 	title: 'Atoms/Circular Progress',
 	component: 'vwc-circular-progress',
-	decorators: [withA11y]
 }
 
 export const basic = () => html`

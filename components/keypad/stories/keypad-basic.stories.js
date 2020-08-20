@@ -1,11 +1,9 @@
 import '@vonage/vwc-keypad/vwc-keypad.js';
-import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Cells|Keypad',
-	component: 'vwc-keypad',
-	decorators: [withA11y]
+	title: 'Cells/Keypad',
+	component: 'vwc-keypad'
 }
 
 export const basic = () => html`

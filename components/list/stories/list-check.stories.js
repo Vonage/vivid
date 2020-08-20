@@ -1,12 +1,10 @@
 import '@vonage/vwc-list/vwc-list.js';
 import '@vonage/vwc-list/vwc-check-list-item.js';
-import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
 	title: 'Atoms/List (check list item)',
-	component: 'vwc-check-list-item',
-	decorators: [withA11y]
+	component: 'vwc-check-list-item'
 }
 
 export const checklist = () => html`
