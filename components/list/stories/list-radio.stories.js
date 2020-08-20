@@ -1,12 +1,10 @@
 import '@vonage/vwc-list/vwc-list.js';
 import '@vonage/vwc-list/vwc-radio-list-item.js';
-import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
 	title: 'Atoms/List (radio list item)',
-	component: 'vwc-radio-list-item',
-	decorators: [withA11y]
+	component: 'vwc-radio-list-item'
 }
 
 export const radioList = () => html`

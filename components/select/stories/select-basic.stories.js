@@ -1,13 +1,11 @@
 import '@vonage/vwc-select/vwc-select.js';
 import '@vonage/vwc-list/vwc-list-item.js';
 import '@vonage/vwc-button/vwc-button.js';
-import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
 	title: 'Atoms/Select',
-	component: 'vwc-select',
-	decorators: [withA11y]
+	component: 'vwc-select'
 }
 
 export const basic = () => html`
