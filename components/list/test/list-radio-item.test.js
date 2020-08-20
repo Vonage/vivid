@@ -3,7 +3,7 @@ import { textToDomToParent, waitNextTask, assertComputedStyle } from '../../../u
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 chai.use(chaiDomDiff);
 
-const VWC_RADIO_LIST_ITEM = 'vwc-check-list-item';
+const VWC_RADIO_LIST_ITEM = 'vwc-radio-list-item';
 
 describe('vwc-radio-list-item', () => {
 	it('should be defined as a custom element', async () => {

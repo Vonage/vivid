@@ -1,7 +1,7 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 
 :host{
-	@include typography.font('body-2');
+	@include typography.typography-cat-shorthand('body-2');
 }
 
 :host(:not([left])) > .mdc-list-item__meta {

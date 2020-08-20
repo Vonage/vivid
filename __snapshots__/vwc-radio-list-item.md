@@ -9,12 +9,12 @@
   <slot>
   </slot>
 </span>
-<span class="mdc-list-item__meta">
-  <mwc-checkbox
-    reducedtouchtarget=""
-    tabindex="-1"
-  >
-  </mwc-checkbox>
-</span>
+<mwc-radio
+  class="mdc-list-item__meta"
+  global=""
+  tabindex="-1"
+>
+</mwc-radio>
 
 ```
+
