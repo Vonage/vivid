@@ -5,7 +5,7 @@ chai.use(chaiDomDiff);
 
 const VWC_LIST_ITEM = 'vwc-list-item';
 
-describe('vwc-list-item', () => {
+describe('list item', () => {
 	it('should be defined as a custom element', () => {
 		assert.exists(customElements.get(VWC_LIST_ITEM, 'vwc-list-item element is not defined'));
 	});

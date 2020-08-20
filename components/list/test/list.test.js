@@ -1,7 +1,7 @@
 import '../vwc-list.js';
 import { textToDocumentFragment, waitNextTask } from '../../../utils/js/test-helpers.js';
 
-describe('test vwc-list', () => {
+describe('list', () => {
 	it('should be defined as a custom element', async () => {
 		assert.exists(customElements.get('vwc-list', 'vwc-list element is not defined'));
 	});

@@ -1,12 +1,12 @@
 import '../vwc-circular-progress.js';
 import { textToDocumentFragment, waitNextTask } from '../../../utils/js/test-helpers.js';
 
-describe('test vwc-circular-progress', () => {
-	it('vwc-circular-progress is defined as a custom element', async () => {
+describe('circular progress', () => {
+	it('should be defined as a custom element', async () => {
 		assert.exists(customElements.get('vwc-circular-progress', 'vwc-circular-progress element is not defined'));
 	});
 
-	it('vwc-circular-progress has internal contents', async () => {
+	it('should have internal contents', async () => {
 		await customElements.whenDefined('vwc-circular-progress');
 		const docFragContainer = textToDocumentFragment('<vwc-circular-progress id="circular-progress-a"></vwc-circular-progress>');
 		const actualElement = docFragContainer.firstElementChild;

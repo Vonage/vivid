@@ -6,12 +6,12 @@ chai.use(chaiDomDiff);
 
 const VWC_BUTTON = 'vwc-button';
 
-describe('vwc-button', () => {
+describe('button', () => {
 	it('vwc-button is defined as a custom element', async () => {
 		assert.exists(customElements.get(VWC_BUTTON, 'vwc-button element is not defined'));
 	});
 
-	it('vwc-button has internal contents', async () => {
+	it('should internal contents', async () => {
 		const addedElements = textToDomToParent(`<${VWC_BUTTON} id="button-a">Button Text</${VWC_BUTTON}>`);
 		const actualElement = addedElements[0];
 		await waitNextTask();

@@ -5,7 +5,7 @@ chai.use(chaiDomDiff);
 
 const VWC_RADIO_LIST_ITEM = 'vwc-radio-list-item';
 
-describe('vwc-radio-list-item', () => {
+describe('radio list item', () => {
 	it('should be defined as a custom element', async () => {
 		assert.exists(customElements.get(VWC_RADIO_LIST_ITEM, 'vwc-radio-list-item element is not defined'));
 	});

@@ -7,8 +7,8 @@ chai.use(chaiDomDiff);
 const
 	VWC_SELECT = 'vwc-select';
 
-describe('vwc-select', () => {
-	it('vwc-select is defined as a custom element', () => {
+describe('select', () => {
+	it('should be defined as a custom element', () => {
 		assert.exists(customElements.get(VWC_SELECT, 'vwc-select element is not defined'));
 	});
 
@@ -25,7 +25,7 @@ describe('vwc-select', () => {
 		});
 	});
 
-	describe('select typography', () => {
+	describe('typography', () => {
 		it('should have set typography for a label', async () => {
 			const actualElements = textToDomToParent(`
 				<${VWC_SELECT} outlined label="VWC Select">

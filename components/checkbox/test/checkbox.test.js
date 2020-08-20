@@ -1,12 +1,12 @@
 import '../vwc-checkbox.js';
 import { textToDocumentFragment, waitNextTask } from '../../../utils/js/test-helpers.js';
 
-describe('test vwc-checkbox', () => {
-	it('vwc-checkbox is defined as a custom element', async () => {
+describe('checkbox', () => {
+	it('should be defined as a custom element', async () => {
 		assert.exists(customElements.get('vwc-checkbox', 'vwc-checkbox element is not defined'));
 	});
 
-	it('vwc-checkbox has internal contents', async () => {
+	it('should have internal contents', async () => {
 		await customElements.whenDefined('vwc-checkbox');
 		const docFragContainer = textToDocumentFragment('<vwc-checkbox id="checkbox-a"></vwc-checkbox>');
 		const actualElement = docFragContainer.firstElementChild;
