@@ -14,9 +14,6 @@
 	],
 	"references": [
 		{
-			"path": "../../common/fonts"
-		},
-		{
 			"path": "../../common/style-coupling"
 		}
 	]
