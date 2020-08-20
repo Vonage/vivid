@@ -1,6 +1,6 @@
 {
   "name": "@vonage/vvd-typography",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "> TODO: description",
   "author": "yinonov <yinon@hotmail.com>",
   "homepage": "https://github.com/Vonage/vivid/tree/master/components/typography#readme",
@@ -17,7 +17,7 @@
     "url": "https://github.com/Vonage/vivid/issues"
   },
   "devDependencies": {
-    "@vonage/vvd-fonts": "^0.4.0",
+    "@vonage/vvd-fonts": "^0.5.0",
     "modularscale-sass": "^3.0.10"
   }
 }
