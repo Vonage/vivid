@@ -2,11 +2,11 @@ import '../vwc-list.js';
 import { textToDocumentFragment, waitNextTask } from '../../../utils/js/test-helpers.js';
 
 describe('test vwc-list', () => {
-	it('vwc-list is defined as a custom element', async () => {
+	it('should be defined as a custom element', async () => {
 		assert.exists(customElements.get('vwc-list', 'vwc-list element is not defined'));
 	});
 
-	it('vwc-list has internal contents', async () => {
+	it('should have internal contents', async () => {
 		await customElements.whenDefined('vwc-list');
 		const docFragContainer = textToDocumentFragment('<vwc-list id="list-a"></vwc-list>');
 		const actualElement = docFragContainer.firstElementChild;

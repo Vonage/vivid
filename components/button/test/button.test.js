@@ -6,7 +6,7 @@ chai.use(chaiDomDiff);
 
 const VWC_BUTTON = 'vwc-button';
 
-describe('test vwc-button', () => {
+describe('vwc-button', () => {
 	it('vwc-button is defined as a custom element', async () => {
 		assert.exists(customElements.get(VWC_BUTTON, 'vwc-button element is not defined'));
 	});
@@ -154,13 +154,13 @@ describe('test vwc-button', () => {
 		});
 	});
 
-	describe('button typography', function () {
+	describe('typography', function () {
 		it(`should have set button (text, rounded) typography correct`, async function () {
 			const actualElements = textToDomToParent(`<${VWC_BUTTON}>Button Text</${VWC_BUTTON}>`);
 			await waitNextTask();
 			const button = actualElements[0].shadowRoot.querySelector('#button');
 			expect(button).to.exist;
-			assertComputedStyle(button, {
+			const expectedStyles = {
 				fontFamily: 'SpeziaWebVariable',
 				fontSize: '14.2222px',
 				fontWeight: '600',
@@ -168,7 +168,8 @@ describe('test vwc-button', () => {
 				lineHeight: 'normal',
 				letterSpacing: 'normal',
 				textTransform: 'none'
-			});
+			};
+			assertComputedStyle(button, expectedStyles);
 		});
 
 		it(`should have set button (outlined, pill) typography correct`, async function () {
@@ -176,7 +177,7 @@ describe('test vwc-button', () => {
 			await waitNextTask();
 			const button = actualElements[0].shadowRoot.querySelector('#button');
 			expect(button).to.exist;
-			assertComputedStyle(button, {
+			const expectedStyles = {
 				fontFamily: 'SpeziaWebVariable',
 				fontSize: '14.2222px',
 				fontWeight: '600',
@@ -184,7 +185,8 @@ describe('test vwc-button', () => {
 				lineHeight: 'normal',
 				letterSpacing: 'normal',
 				textTransform: 'none'
-			});
+			};
+			assertComputedStyle(button, expectedStyles);
 		});
 
 		it(`should have set button (filled, disabled, pill) typography correct`, async function () {
@@ -192,7 +194,7 @@ describe('test vwc-button', () => {
 			await waitNextTask();
 			const button = actualElements[0].shadowRoot.querySelector('#button');
 			expect(button).to.exist;
-			assertComputedStyle(button, {
+			const expectedStyles = {
 				fontFamily: 'SpeziaWebVariable',
 				fontSize: '14.2222px',
 				fontWeight: '600',
@@ -200,7 +202,8 @@ describe('test vwc-button', () => {
 				lineHeight: 'normal',
 				letterSpacing: 'normal',
 				textTransform: 'none'
-			});
+			};
+			assertComputedStyle(button, expectedStyles);
 		});
 	});
 });
