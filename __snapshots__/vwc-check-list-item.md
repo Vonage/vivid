@@ -1,6 +1,8 @@
-# `vwc-check-list-item init flow`
+# `vwc-check-list-item`
 
-#### `vwc-check-list-item has expected contents`
+## `init flow`
+
+####   `should have expected HTML`
 
 ```html
 <span class="mdc-list-item__text">

@@ -35,19 +35,19 @@ export const metaIcon = () => html`
 	<vwc-list>
 		<vwc-list-item hasMeta>
 			<span>Item A</span>
-			<vwc-icon slot="meta" type="info"></vwc-icon>
+			<vwc-icon slot="meta" type="info" size="small"></vwc-icon>
 		</vwc-list-item>
 		<vwc-list-item hasMeta>
 			<span>Item B</span>
-			<vwc-icon slot="meta" type="info"></vwc-icon>
+			<vwc-icon slot="meta" type="info" size="small"></vwc-icon>
 		</vwc-list-item>
 		<vwc-list-item hasMeta>
 			<span>Item C</span>
-			<vwc-icon slot="meta" type="info"></vwc-icon>
+			<vwc-icon slot="meta" type="info" size="small"></vwc-icon>
 		</vwc-list-item>
 		<vwc-list-item hasMeta>
 			<span>Item D</span>
-			<vwc-icon slot="meta" type="info"></vwc-icon>
+			<vwc-icon slot="meta" type="info" size="small"></vwc-icon>
 		</vwc-list-item>
 	</vwc-list>
 `;

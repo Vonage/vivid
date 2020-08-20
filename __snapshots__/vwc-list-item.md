@@ -1,6 +1,8 @@
-# `vwc-list-item init flow`
+# `vwc-list-item`
 
-#### `vwc-list-item has internal contents`
+## `init flow`
+
+####   `should have internal contents`
 
 ```html
 <span class="mdc-list-item__text">

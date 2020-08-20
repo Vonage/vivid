@@ -24,3 +24,18 @@ export async function waitNextTask() {
 export async function waitInterval(millis) {
 	await new Promise(resolve => setTimeout(resolve, millis));
 }
+
+export function assertComputedStyle(element, expectedStyles) {
+	if (!element) {
+		throw new Error(`'element' parameter MUST be a valid element, got ${element}`);
+	}
+	if (!expectedStyles || typeof expectedStyles !== 'object' || !Object.keys(expectedStyles)) {
+		throw new Error(`'expectedStyles' MUST be a non-empty object, got ${JSON.stringify(expectedStyles)}`);
+	}
+	const computedStyle = getComputedStyle(element);
+	Object.keys(expectedStyles).forEach(key => {
+		if (computedStyle[key] !== expectedStyles[key]) {
+			throw new Error(`'${key}' is NOT as expected; expected: '${expectedStyles[key]}', found: '${computedStyle[key]}'`);
+		}
+	});
+}

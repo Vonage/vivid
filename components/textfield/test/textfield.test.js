@@ -1,12 +1,12 @@
 import '../vwc-textfield.js';
 import { textToDocumentFragment, waitNextTask } from '../../../utils/js/test-helpers.js';
 
-describe('test vwc-textfield', () => {
-	it('vwc-textfield is defined as a custom element', async () => {
+describe('textfield', () => {
+	it('should be defined as a custom element', async () => {
 		assert.exists(customElements.get('vwc-textfield', 'vwc-textfield element is not defined'));
 	});
 
-	it('vwc-textfield has internal contents', async () => {
+	it('should have internal contents', async () => {
 		await customElements.whenDefined('vwc-textfield');
 		const docFragContainer = textToDocumentFragment('<vwc-textfield id="textfield-a"></vwc-textfield>');
 		const actualElement = docFragContainer.firstElementChild;
