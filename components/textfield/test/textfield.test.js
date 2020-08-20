@@ -1,20 +1,21 @@
 import '../vwc-textfield.js';
-import { textToDocumentFragment, waitNextTask } from '../../../utils/js/test-helpers.js';
+import { waitNextTask, textToDomToParent } from '../../../utils/js/test-helpers.js';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
-describe('textfield', () => {
+chai.use(chaiDomDiff);
+
+const VWC_TEXTFIELD = 'vwc-textfield';
+
+describe.only('vwc-textfield', () => {
 	it('should be defined as a custom element', async () => {
-		assert.exists(customElements.get('vwc-textfield', 'vwc-textfield element is not defined'));
+		expect(Boolean(customElements.get(VWC_TEXTFIELD))).to.equal(true);
 	});
 
 	it('should have internal contents', async () => {
 		await customElements.whenDefined('vwc-textfield');
-		const docFragContainer = textToDocumentFragment('<vwc-textfield id="textfield-a"></vwc-textfield>');
-		const actualElement = docFragContainer.firstElementChild;
-		document.body.appendChild(docFragContainer);
+		const docFragContainer = textToDomToParent('<vwc-textfield id="textfield-a"></vwc-textfield>');
+		const actualElement = docFragContainer[0];
 		await waitNextTask();
-		assert.equal(document.querySelector('#textfield-a'), actualElement);
-		assert.exists(actualElement.shadowRoot);
-		assert.equal(actualElement.shadowRoot.childElementCount, 1);
-		assert.equal(actualElement.shadowRoot.querySelectorAll('*').length, 4);
+		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 });
