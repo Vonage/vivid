@@ -1,10 +1,6 @@
 @forward './vwc-textarea-coupling';
 @use '@vonage/vwc-textfield/src/vwc-textfield';
 
-:host {
-	font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
-}
-
 .mdc-text-field--textarea {
 	height: 100%;
 	min-height: 48px;
@@ -27,6 +23,7 @@
 		}
 
 		.mdc-floating-label {
+			font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
 			top: 15px;
 
 			&--float-above {
