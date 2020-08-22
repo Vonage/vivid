@@ -75,7 +75,7 @@ export class VWCButton extends MWCButton {
 		}
 	}
 
-	protected _handleClick() {
+	protected _handleClick():void {
 		let form: HTMLFormElement;
 		const formId = this.getAttribute('form');
 		if (formId){
@@ -100,7 +100,7 @@ export class VWCButton extends MWCButton {
 		return html`<vwc-icon size="small" type="${this.icon}"></vwc-icon>`;
 	}
 
-	connectedCallback() {
+	connectedCallback():void {
 		super.connectedCallback();
 		this.addEventListener('click', this._handleClick);
 	}
