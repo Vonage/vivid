@@ -97,7 +97,7 @@ export class VWCButton extends MWCButton {
 	}
 
 	protected renderIcon(){
-		return html`<vwc-icon style="vertical-align: middle" size="small" type="${this.icon}"></vwc-icon>`;
+		return html`<vwc-icon size="small" type="${this.icon}"></vwc-icon>`;
 	}
 
 	connectedCallback() {
