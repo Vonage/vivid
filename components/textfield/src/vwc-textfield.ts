@@ -17,6 +17,10 @@ declare global {
 // @ts-ignore
 MWCTextField.styles = [styleCoupling, mwcTextFieldStyle, vwcTextFieldStyle];
 
+function getFormByIdOrClosest(element: HTMLElement, formId = '') {
+	return formId ? document.getElementById(formId) : element.closest('form');
+}
+
 @customElement('vwc-textfield')
 export class VWCTextField extends MWCTextField {
 	@property({type: HTMLInputElement, reflect: true})
@@ -26,13 +30,7 @@ export class VWCTextField extends MWCTextField {
 	form: string | undefined;
 
 	protected addInputToForm() {
-		let hostingForm: HTMLFormElement;
-		const formId = this.form;
-		if (formId){
-			hostingForm = document.getElementById(formId) as HTMLFormElement;
-		} else {
-			hostingForm = this.closest('form') as HTMLFormElement;
-		}
+		const hostingForm = getFormByIdOrClosest(this, this.form);
 
 		if (!hostingForm) {return;}
 
