@@ -1,4 +1,5 @@
 import '../vwc-textfield.js';
+import '@vonage/vwc-formfield';
 import { waitNextTask, textToDomToParent } from '../../../utils/js/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
@@ -157,20 +158,37 @@ describe('vwc-textfield', () => {
 				expect(validInput).to.equal(true);
 				expect(formElement.checkValidity()).to.equal(false);
 			});
-
-			it(`should not show error message for the hidden field`, function() {
-
-			});
 		});
 
+		it(`should work under multiple shadow layers`, async function() {
+			const fieldValue = Math.random().toString();
+			const fieldName = 'test-field';
+			addedElements = textToDomToParent(`
+				<form onsubmit="return false" name="testForm" id="testForm">
+					<vwc-formfield>
+						<${VWC_TEXTFIELD} required value="${fieldValue}" name="${fieldName}">Button Text</${VWC_TEXTFIELD}>
+					</vwc-formfield>
+				</form>`);
+			const formElement = addedElements[0];
+			const actualElement = formElement.firstChild;
+			await waitNextTask();
 
+			const validInput = formElement.checkValidity();
 
-		describe(`events`, function() {
+			const submitPromise = listenToSubmission(formElement);
 
-		});
+			formElement.requestSubmit();
 
-		describe(`multiple shadow layers`, function() {
+			formElement.reset();
 
+			for (let pair of (await submitPromise).entries()) {
+				expect(pair[0]).to.equal(fieldName);
+				expect(pair[1]).to.equal(fieldValue);
+			}
+
+			expect(formElement.querySelectorAll(`input[name="${fieldName}"`).length).to.equal(1);
+			expect(validInput).to.equal(true);
+			expect(formElement.checkValidity()).to.equal(false);
 		});
 	});
 });

@@ -42,7 +42,7 @@ function setValueAndValidity(inputField: HTMLInputElement | undefined, value: st
 
 @customElement('vwc-textfield')
 export class VWCTextField extends MWCTextField {
-	@property({type: HTMLInputElement, reflect: true})
+	@property({type: HTMLInputElement, reflect: false})
 	hiddenInput: HTMLInputElement | undefined;
 
 	@property({type: String, reflect: true})
