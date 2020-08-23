@@ -45,6 +45,38 @@ describe.only('vwc-textfield', () => {
 			});
 
 			formElement.requestSubmit();
+
+			expect(formElement.querySelectorAll(`input[name="${fieldName}"`).length).to.equal(1);
+		});
+
+		it(`should attach to form when given form id`, function() {
+			const fieldValue = Math.random().toString();
+			const fieldName = 'test-field';
+			const externalFormID = 'externalForm';
+
+			const addedElements = textToDomToParent(`
+				<form onsubmit="return false" name="testForm" id="testForm">
+					<${VWC_TEXTFIELD} name="${fieldName}" value="${fieldValue}" form="${externalFormID}">Button Text
+					</${VWC_TEXTFIELD}>
+				</form>
+				<form onsubmit="return false" name="externalForm" id="externalForm"></form>`);
+			const formElement = addedElements[0];
+			const actualElement = formElement.firstChild;
+			const externalForm = addedElements[1];
+
+			formElement.addEventListener('submit', () => {
+				const formData = new FormData(externalForm);
+				for (let pair of formData.entries()) {
+					expect(pair[0]).to.equal(fieldName);
+					expect(pair[1]).to.equal(fieldValue);
+				}
+			});
+
+			formElement.requestSubmit();
+
+			expect(formElement.querySelector(`input[name="${fieldName}"`)).to.equal(null);
+			expect(externalForm.querySelectorAll(`input[name="${fieldName}"`).length).to.equal(1);
+		});
 		});
 	});
 });
