@@ -23,11 +23,11 @@ function getFormByIdOrClosest(element: VWCTextField): HTMLFormElement | null {
 	return formElement instanceof HTMLFormElement ? formElement : null;
 }
 
-function addHiddenInput(hostingForm: HTMLElement, fieldName: string) {
+function addHiddenInput(hostingForm: HTMLElement, {name, value}: {name: string, value: string}) {
 	const hiddenInput = document.createElement('input');
 	hiddenInput.style.display = 'none';
-	hiddenInput.setAttribute('name', fieldName);
-
+	hiddenInput.setAttribute('name', name);
+	hiddenInput.defaultValue = value;
 	hostingForm.appendChild(hiddenInput);
 
 	return hiddenInput;
@@ -62,8 +62,7 @@ export class VWCTextField extends MWCTextField {
 			return;
 		}
 
-		this.hiddenInput = addHiddenInput(hostingForm, this.name);
-		this.hiddenInput.defaultValue = this.value;
+		this.hiddenInput = addHiddenInput(hostingForm, this);
 		setValueAndValidity(this.hiddenInput, this.value, this.formElement.validationMessage);
 
 		hostingForm.addEventListener('reset', () => {
