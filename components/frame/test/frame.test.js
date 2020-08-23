@@ -26,7 +26,7 @@ describe('vwc-frame', () => {
 			await waitNextTask();
 			const h1 = actualElements[0].querySelector('#' + randomId);
 			expect(h1).to.exist;
-			assertComputedStyle(h1, {
+			const expectedStyle = {
 				fontFamily: 'SpeziaWebVariable',
 				fontSize: '46.1841px',
 				fontWeight: '500',
@@ -34,7 +34,8 @@ describe('vwc-frame', () => {
 				lineHeight: '50.9028px',
 				letterSpacing: 'normal',
 				textTransform: 'none'
-			});
+			};
+			assertComputedStyle(h1, expectedStyle);
 		});
 
 		it('should have style correctly H2 element', async () => {
@@ -43,7 +44,7 @@ describe('vwc-frame', () => {
 			await waitNextTask();
 			const h2 = actualElements[0].querySelector('#' + randomId);
 			expect(h2).to.exist;
-			assertComputedStyle(h2, {
+			const expectedStyle = {
 				fontFamily: 'SpeziaWebVariable',
 				fontSize: '36.4912px',
 				fontWeight: '500',
@@ -51,7 +52,8 @@ describe('vwc-frame', () => {
 				lineHeight: '45.0101px',
 				letterSpacing: 'normal',
 				textTransform: 'none'
-			});
+			};
+			assertComputedStyle(h2, expectedStyle);
 		});
 
 		it('should have style correctly P element', async () => {
@@ -60,7 +62,7 @@ describe('vwc-frame', () => {
 			await waitNextTask();
 			const p = actualElements[0].querySelector('#' + randomId);
 			expect(p).to.exist;
-			assertComputedStyle(p, {
+			const expectedStyle = {
 				fontFamily: 'SpeziaWebVariable',
 				fontSize: '16px',
 				fontWeight: '400',
@@ -68,7 +70,8 @@ describe('vwc-frame', () => {
 				lineHeight: '25.7324px',
 				letterSpacing: 'normal',
 				textTransform: 'none'
-			});
+			};
+			assertComputedStyle(p, expectedStyle);
 		});
 	});
 });

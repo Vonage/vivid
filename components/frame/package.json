@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-frame",
-	"version": "0.4.0",
+	"version": "0.5.0",
 	"description": "Vivid context provider",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/frame#readme",
 	"license": "ISC",
@@ -28,6 +28,6 @@
 		"tslib": "^2.0.0"
 	},
 	"devDependencies": {
-		"@vonage/vvd-typography": "^0.4.0"
+		"@vonage/vvd-typography": "^0.5.0"
 	}
 }
