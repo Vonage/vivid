@@ -29,12 +29,13 @@ describe.only('vwc-textfield', () => {
 
 	describe(`form association`, function() {
 
-		it(`should attach to closest form`, function() {
+		it(`should attach to closest form`, async function() {
 			const fieldValue = Math.random().toString();
 			const fieldName = 'test-field';
 			const addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_TEXTFIELD} name="${fieldName}" value="${fieldValue}">Button Text</${VWC_TEXTFIELD}></form>`);
 			const formElement = addedElements[0];
 			const actualElement = formElement.firstChild;
+			await waitNextTask();
 
 			formElement.addEventListener('submit', () => {
 				const formData = new FormData(formElement);
@@ -49,7 +50,7 @@ describe.only('vwc-textfield', () => {
 			expect(formElement.querySelectorAll(`input[name="${fieldName}"`).length).to.equal(1);
 		});
 
-		it(`should attach to form when given form id`, function() {
+		it(`should attach to form when given form id`, async function() {
 			const fieldValue = Math.random().toString();
 			const fieldName = 'test-field';
 			const externalFormID = 'externalForm';
@@ -63,6 +64,7 @@ describe.only('vwc-textfield', () => {
 			const formElement = addedElements[0];
 			const actualElement = formElement.firstChild;
 			const externalForm = addedElements[1];
+			await waitNextTask();
 
 			formElement.addEventListener('submit', () => {
 				const formData = new FormData(externalForm);
@@ -80,24 +82,26 @@ describe.only('vwc-textfield', () => {
 
 		describe(`value binding`, function() {
 
-			it(`should reset the value of the custom element on form reset`, function() {
+			it(`should reset the value of the custom element on form reset`, async function() {
 				const fieldValue = Math.random().toString();
 				const fieldName = 'test-field';
 				const addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_TEXTFIELD} name="${fieldName}" value="${fieldValue}">Button Text</${VWC_TEXTFIELD}></form>`);
 				const formElement = addedElements[0];
 				const actualElement = formElement.firstChild;
 
+				await waitNextTask();
 				formElement.reset();
 
 				expect(actualElement.value).to.equal('');
 			});
 
-			it(`should change the value of the mock input on internal input change`, function() {
+			it(`should change the value of the mock input on internal input change`, async function() {
 				const fieldValue = Math.random().toString();
 				const fieldName = 'test-field';
 				const addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_TEXTFIELD} name="${fieldName}">Button Text</${VWC_TEXTFIELD}></form>`);
 				const formElement = addedElements[0];
 				const actualElement = formElement.firstChild;
+				await waitNextTask();
 
 				actualElement.value = fieldValue;
 				let evt = document.createEvent("HTMLEvents");
@@ -107,6 +111,34 @@ describe.only('vwc-textfield', () => {
 				expect(actualElement.hiddenInput.value).to.equal(fieldValue);
 			});
 		});
+
+		it(`should get validity from the element's validationMessage`, function() {
+			const fieldName = 'test-field';
+			const addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_TEXTFIELD} required name="${fieldName}">Button Text</${VWC_TEXTFIELD}></form>`);
+			const formElement = addedElements[0];
+			const actualElement = formElement.firstChild;
+			await waitNextTask();
+
+			const invalidity = formElement.checkValidity();
+			actualElement.value = 'abc';
+			let evt = document.createEvent("HTMLEvents");
+			evt.initEvent("input", false, true);
+			actualElement.dispatchEvent(evt);
+
+			expect(invalidity).to.equal('false');
+			expect(formElement.checkValidity()).to.equal(true);
+		});
+
+		it(`should not show error message for the hidden field`, function() {
+
+		});
+
+		describe(`events`, function() {
+
+		});
+
+		describe(`multiple shadow layers`, function() {
+
 		});
 	});
 });

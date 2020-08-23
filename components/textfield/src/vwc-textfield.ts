@@ -44,6 +44,7 @@ export class VWCTextField extends MWCTextField {
 		hostingForm.appendChild(this.hiddenInput);
 
 		hiddenInput.value = this.value;
+		hiddenInput.setCustomValidity(this.formElement.validationMessage ?? '');
 
 		hostingForm.addEventListener('reset', () => {
 			this.value = '';
@@ -53,15 +54,20 @@ export class VWCTextField extends MWCTextField {
 			'change',
 			() => (hiddenInput.value = this.value)
 		);
+
+		this.addEventListener('input', () => {
+			hiddenInput.value = this.value;
+			hiddenInput.setCustomValidity(this.formElement.validationMessage ?? '');
+		});
 	}
 
 	connectedCallback() {
 		super.connectedCallback();
-		this.addInputToForm();
 	}
 
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
 		this.shadowRoot?.querySelector('.mdc-notched-outline')?.shadowRoot?.querySelector('.mdc-notched-outline')?.classList.add('vvd-notch');
+		this.addInputToForm();
 	}
 }
