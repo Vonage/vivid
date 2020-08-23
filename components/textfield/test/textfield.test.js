@@ -16,7 +16,7 @@ function listenToSubmission(formElement) {
 
 }
 
-describe.only('vwc-textfield', () => {
+describe('vwc-textfield', () => {
 	let addedElements = [];
 
 	afterEach(() => {
@@ -120,29 +120,50 @@ describe.only('vwc-textfield', () => {
 			});
 		});
 
-		it(`should get validity from the element's validationMessage`, async function() {
-			const fieldName = 'test-field';
-			addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_TEXTFIELD} required name="${fieldName}">Button Text</${VWC_TEXTFIELD}></form>`);
-			const formElement = addedElements[0];
-			const actualElement = formElement.firstChild;
-			await waitNextTask();
+		describe(`validation`, function() {
+			it(`should get validity from the element's validationMessage`, async function() {
+				const fieldName = 'test-field';
+				addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_TEXTFIELD} required name="${fieldName}">Button Text</${VWC_TEXTFIELD}></form>`);
+				const formElement = addedElements[0];
+				const actualElement = formElement.firstChild;
+				await waitNextTask();
 
-			const invalidity = formElement.checkValidity();
-			actualElement.value = 'abc';
+				const invalidity = formElement.checkValidity();
+				actualElement.value = 'abc';
 
-			await waitNextTask();
+				await waitNextTask();
 
-			let evt = document.createEvent("HTMLEvents");
-			evt.initEvent("input", false, true);
-			actualElement.dispatchEvent(evt);
+				let evt = document.createEvent("HTMLEvents");
+				evt.initEvent("input", false, true);
+				actualElement.dispatchEvent(evt);
 
-			expect(invalidity).to.equal(false);
-			expect(formElement.checkValidity()).to.equal(true);
+				expect(invalidity).to.equal(false);
+				expect(formElement.checkValidity()).to.equal(true);
+			});
+
+			it(`should validate on reset`, async function() {
+				const fieldValue = Math.random().toString();
+				const fieldName = 'test-field';
+				addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_TEXTFIELD} required value="${fieldValue}" name="${fieldName}">Button Text</${VWC_TEXTFIELD}></form>`);
+				const formElement = addedElements[0];
+				const actualElement = formElement.firstChild;
+				await waitNextTask();
+
+				const validInput = formElement.checkValidity();
+				actualElement.value = 'abc';
+
+				formElement.reset();
+
+				expect(validInput).to.equal(true);
+				expect(formElement.checkValidity()).to.equal(false);
+			});
+
+			it(`should not show error message for the hidden field`, function() {
+
+			});
 		});
 
-		it(`should not show error message for the hidden field`, function() {
 
-		});
 
 		describe(`events`, function() {
 

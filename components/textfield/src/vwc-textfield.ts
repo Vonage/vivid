@@ -57,7 +57,8 @@ export class VWCTextField extends MWCTextField {
 		setValueAndValidity(this.hiddenInput, this.value, this.formElement.validationMessage);
 
 		hostingForm.addEventListener('reset', () => {
-			this.value = '';
+			this.value = this.formElement.value = '';
+			setValueAndValidity(this.hiddenInput, this.value, this.formElement.validationMessage);
 		});
 
 		this.addEventListener(
