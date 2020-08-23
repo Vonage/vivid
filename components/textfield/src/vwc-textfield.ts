@@ -21,6 +21,25 @@ function getFormByIdOrClosest(element: HTMLElement, formId = '') {
 	return formId ? document.getElementById(formId) : element.closest('form');
 }
 
+function addHiddenInput(hostingForm: HTMLElement, fieldName: string) {
+	const hiddenInput = document.createElement('input');
+	hiddenInput.style.opacity = '0';
+	hiddenInput.style.position = 'fixed';
+	hiddenInput.setAttribute('name', fieldName);
+
+	hostingForm.appendChild(hiddenInput);
+
+	return hiddenInput;
+}
+
+function setValueAndValidity(inputField: HTMLInputElement | undefined, value: string, validationMessage = '') {
+	if (!inputField) {
+		return;
+	}
+	inputField.value = value;
+	inputField.setCustomValidity(validationMessage);
+}
+
 @customElement('vwc-textfield')
 export class VWCTextField extends MWCTextField {
 	@property({type: HTMLInputElement, reflect: true})
@@ -34,15 +53,8 @@ export class VWCTextField extends MWCTextField {
 
 		if (!hostingForm) {return;}
 
-		const hiddenInput = this.hiddenInput = document.createElement('input');
-		this.hiddenInput.style.opacity = '0';
-		this.hiddenInput.style.position = 'fixed';
-		this.hiddenInput.setAttribute('name', this.name);
-
-		hostingForm.appendChild(this.hiddenInput);
-
-		hiddenInput.value = this.value;
-		hiddenInput.setCustomValidity(this.formElement.validationMessage ?? '');
+		this.hiddenInput = addHiddenInput(hostingForm, this.name);
+		setValueAndValidity(this.hiddenInput, this.value, this.formElement.validationMessage);
 
 		hostingForm.addEventListener('reset', () => {
 			this.value = '';
@@ -50,12 +62,13 @@ export class VWCTextField extends MWCTextField {
 
 		this.addEventListener(
 			'change',
-			() => (hiddenInput.value = this.value)
+			() => {
+				setValueAndValidity(this.hiddenInput, this.value, this.formElement.validationMessage);
+			}
 		);
 
 		this.addEventListener('input', () => {
-			hiddenInput.value = this.value;
-			hiddenInput.setCustomValidity(this.formElement.validationMessage ?? '');
+			setValueAndValidity(this.hiddenInput, this.value, this.formElement.validationMessage);
 		});
 	}
 
