@@ -20,7 +20,6 @@ const registerCategory = (categoryTitle, content)=> storiesOf(["Atoms", "Icon", 
 
 _(icons)
 	.groupBy('category_id')
-	.filter((list, cateogyId)=> !["brandsIcons", "brandsGradientIcons"].includes(cateogyId))
 	.map((list)=> {
 			return [
 				_(list).chain().first().get('category_title').value().replace(new RegExp(_.escapeRegExp(PATH_SEPARATOR), 'g'), ' & '),
