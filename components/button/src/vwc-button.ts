@@ -3,6 +3,7 @@ import { Button as MWCButton } from '@material/mwc-button';
 import { style as vwcButtonStyle } from './vwc-button.css';
 import { style as mwcButtonStyle } from '@material/mwc-button/mwc-button-css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
+import { html, TemplateResult } from 'lit-element';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -74,7 +75,7 @@ export class VWCButton extends MWCButton {
 		}
 	}
 
-	protected _handleClick(): void {
+	protected _handleClick():void {
 		let form: HTMLFormElement;
 		const formId = this.getAttribute('form');
 		if (formId){
@@ -95,7 +96,11 @@ export class VWCButton extends MWCButton {
 		}
 	}
 
-	connectedCallback(): void {
+	protected renderIcon():TemplateResult {
+		return html`<vwc-icon size="small" type="${this.icon}"></vwc-icon>`;
+	}
+
+	connectedCallback():void {
 		super.connectedCallback();
 		this.addEventListener('click', this._handleClick);
 	}
