@@ -1,24 +1,5 @@
-@use '@vonage/vvd-typography/scss/typography' as typography;
+@use 'typography';
 
 :host {
-	::slotted(*) {
-		@include typography.typography-cat-shorthand('body-1');
-	}
-
-	::slotted(h1) {
-		@include typography.typography-cat-shorthand('headline');
-	}
-
-	::slotted(h2) {
-		@include typography.typography-cat-shorthand('title');
-	}
-
-	::slotted(b),
-	::slotted(strong) {
-		@include typography.typography-cat-shorthand('body-1-bold');
-	}
-
-	::slotted(code) {
-		background-color: lightgray;
-	}
+  @include typography.frame-typography;
 }
