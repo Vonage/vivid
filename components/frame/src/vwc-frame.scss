@@ -2,19 +2,23 @@
 
 :host {
 	::slotted(*) {
-		@include typography.font('body-1');
+		@include typography.typography-cat-shorthand('body-1');
 	}
 
 	::slotted(h1) {
-		@include typography.font('headline');
+		@include typography.typography-cat-shorthand('headline');
 	}
 
 	::slotted(h2) {
-		@include typography.font('title');
+		@include typography.typography-cat-shorthand('title');
 	}
 
 	::slotted(b),
 	::slotted(strong) {
-		@include typography.font('body-1-bold');
+		@include typography.typography-cat-shorthand('body-1-bold');
+	}
+
+	::slotted(code) {
+		background-color: lightgray;
 	}
 }

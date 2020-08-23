@@ -3,7 +3,7 @@ import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Cells|Frame',
+	title: 'Cells/Frame',
 	component: 'vwc-frame',
 	decorators: [withA11y]
 }
