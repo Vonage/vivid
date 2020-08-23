@@ -21,8 +21,7 @@ async function changeFieldValue(actualElement, value, eventName = 'change') {
 	actualElement.value = value;
 	await waitNextTask();
 
-	let evt = document.createEvent("HTMLEvents");
-	evt.initEvent(eventName, false, true);
+	let evt = new Event(eventName);
 	actualElement.dispatchEvent(evt);
 }
 
@@ -152,13 +151,8 @@ describe('vwc-textfield', () => {
 				await waitNextTask();
 
 				const invalidity = formElement.checkValidity();
-				actualElement.value = 'abc';
 
-				await waitNextTask();
-
-				let evt = document.createEvent("HTMLEvents");
-				evt.initEvent("input", false, true);
-				actualElement.dispatchEvent(evt);
+				await changeFieldValue(actualElement, 'abc', 'input');
 
 				expect(invalidity).to.equal(false);
 				expect(formElement.checkValidity()).to.equal(true);
