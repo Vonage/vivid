@@ -58,8 +58,19 @@
   }
 
 	vwc-icon {
-		margin-right: 6px;
 		vertical-align: middle;
+	}
+
+	> span.trailing-icon {
+		> slot > vwc-icon {
+			margin-left: 6px;
+		}
+	}
+
+	> span.leading-icon {
+		> slot > vwc-icon {
+			margin-right: 6px;
+		}
 	}
 }
 
