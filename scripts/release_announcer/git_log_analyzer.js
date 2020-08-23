@@ -11,7 +11,7 @@ module.exports = ({ version_extractor: extractVersion = DEFAULT_VERSION_EXTRACTO
         .diff((prev , cur)=>{
             return {
                 version: prev.slice(-1).map(fp.flow(fp.get('meta'), extractVersion))[0],
-                lines: [...prev.slice(-1), ...cur.slice(0, -1)].map(fp.get('comment'))
+                log_lines: [...prev.slice(-1), ...cur.slice(0, -1)]
             };
         }, []);
 };
