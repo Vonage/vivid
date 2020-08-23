@@ -1,104 +1,149 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '../../../utils/scss/variable-names/color-semantic-variable-names' as color-semantic;
 
+// :host {
+//   --mdc-theme-primary: #131415;
+//   --mdc-text-field-ink-color: var(--mdc-theme-primary);
+//   --mdc-text-field-label-ink-color: var(
+//     #{color-semantic.$formfield-label-idle-ink}
+//   );
+//   --mdc-text-field-disabled-ink-color: var(
+//     #{color-semantic.$formfield-disabled-ink}
+//   );
+//   --mdc-text-field-disabled-fill-color: var(
+//     #{color-semantic.$formfield-disabled-fill}
+//   );
+//   --mdc-text-field-outlined-idle-border-color: var(
+//     #{color-semantic.$formfield-border-idle}
+//   );
+//   --mdc-text-field-outlined-hover-border-color: var(
+//     #{color-semantic.$formfield-border-hover}
+//   );
+//   --mdc-text-field-outlined-disabled-border-color: var(
+//     #{color-semantic.$formfield-border-disabled}
+//   );
+
+//   --mdc-text-field-error-color: var(
+//     #{color-semantic.$formfield-label-error-ink}
+//   );
+//   --mdc-text-field-error-fill-color: var(
+//     #{color-semantic.$formfield-error-fill}
+//   );
+
+//   @include typography.typography-mdc-coupling('subtitle1', 'body-2');
+//   font-stretch: var(
+//     --mdc-typography-subtitle1-font-stretch
+//   ); // ! this was supposed to be set by MDC
+
+//   --vvd-outline-color: var(--mdc-text-field-outlined-idle-border-color);
+// }
+
+// :host([disabled]) .mdc-text-field {
+//   --vvd-outline-color: var(--mdc-text-field-outlined-disabled-border-color);
+//   background-color: var(--mdc-text-field-disabled-fill-color);
+
+//   .mdc-text-field__input {
+//     color: var(#{color-semantic.$formfield-disabled-ink});
+//   }
+
+//   .mdc-notched-outline {
+//     .mdc-floating-label--float-above {
+//       --mdc-theme-primary: var(--mdc-text-field-label-ink-color);
+//     }
+//   }
+// }
+
+// :host(:not([disabled]))
+//   .mdc-text-field.mdc-text-field--focused
+//   mwc-notched-outline {
+//   --mdc-notched-outline-stroke-width: 1px;
+// }
+
+// .mdc-text-field {
+//   // border-radius: 6px;
+
+//   &--outlined {
+//     align-items: flex-end;
+//     height: 48px;
+//     padding: 0;
+
+//     &.mdc-text-field--no-label {
+//       .mdc-text-field__input {
+//         height: 48px;
+//       }
+//     }
+
+//     .mdc-text-field__input {
+//       @include typography.typography-mdc-coupling('subtitle1', 'body-2');
+//       font-stretch: var(
+//         --mdc-typography-subtitle1-font-stretch
+//       ); // ! this was supposed to be set by MDC
+//       width: 100%;
+//       height: 32px;
+//       padding: 0 14px;
+//     }
+
+//     .mdc-floating-label {
+//       left: 2px;
+//       padding-right: 8px;
+//       transition: transform 0.15s, font-size 0.15s;
+//     }
+
+//     .mdc-floating-label--float-above {
+//       --mdc-theme-primary: var(--mdc-text-field-label-ink-color);
+//       transform: translateY(-100%);
+
+//       &.mdc-floating-label--shake {
+//         animation: none;
+//       }
+//     }
+//   }
+
+//   &:hover,
+//   &--focused {
+//     --vvd-outline-color: var(--mdc-text-field-outlined-hover-border-color);
+
+//     &.mdc-text-field--invalid {
+//       --vvd-outline-color: var(--mdc-text-field-error-color);
+//     }
+//   }
+
+//   &--invalid {
+//     --vvd-outline-color: var(--mdc-text-field-error-color);
+
+//     &.mdc-text-field--outlined {
+//       background-color: var(--mdc-text-field-error-fill-color);
+
+//       .mdc-floating-label {
+//         color: var(--mdc-text-field-error-color);
+//       }
+//     }
+//   }
+// }
+
+// .mdc-text-field--invalid:not(.mdc-text-field--disabled).mdc-text-field--invalid
+//   + .mdc-text-field-helper-text--validation-msg {
+//   color: var(--mdc-text-field-error-color);
+// }
+
 :host {
-  --mdc-theme-primary: #131415;
-  --mdc-text-field-ink-color: var(--mdc-theme-primary);
-  --mdc-text-field-label-ink-color: var(#{color-semantic.$formfield-label-idle-ink});
-  --mdc-text-field-disabled-ink-color: var(#{color-semantic.$formfield-disabled-ink});
-  --mdc-text-field-disabled-fill-color: var(#{color-semantic.$formfield-disabled-fill});
-  --mdc-text-field-outlined-idle-border-color: var(#{color-semantic.$formfield-border-idle});
-  --mdc-text-field-outlined-hover-border-color:	var(#{color-semantic.$formfield-border-hover});
-  --mdc-text-field-outlined-disabled-border-color: var(#{color-semantic.$formfield-border-disabled});
-
-	--mdc-text-field-error-color: var(#{color-semantic.$formfield-label-error-ink});
-	--mdc-text-field-error-fill-color: var(#{color-semantic.$formfield-error-fill});
-
-	@include typography.typography-mdc-coupling('subtitle1', 'body-2');
-	font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
-
-	--vvd-outline-color: var(--mdc-text-field-outlined-idle-border-color);
+  --mdc-text-field-outlined-idle-border-color: green;
 }
 
-:host([disabled]) .mdc-text-field {
-	--vvd-outline-color: var(--mdc-text-field-outlined-disabled-border-color);
-	background-color: var(--mdc-text-field-disabled-fill-color);
-
-	.mdc-text-field__input {
-		color: var(#{color-semantic.$formfield-disabled-ink});
-	}
-
-	.mdc-notched-outline {
-		.mdc-floating-label--float-above {
-			--mdc-theme-primary: var(--mdc-text-field-label-ink-color);
-		}
-	}
+.mdc-text-field--outlined {
+  .mdc-floating-label {
+    transition: left 0.2s;
+    :not(.mdc-text-field--label-floating)& {
+      left: -20px;
+    }
+  }
 }
 
-:host(:not([disabled])) .mdc-text-field.mdc-text-field--focused mwc-notched-outline {
-  --mdc-notched-outline-stroke-width: 1px;
-}
-
+/// SHAPE setup
 .mdc-text-field {
-	border-radius: 6px;
-
-  &--outlined {
-    align-items: flex-end;
-    height: 48px;
-    padding: 0;
-
-    &.mdc-text-field--no-label {
-      .mdc-text-field__input {
-        height: 48px;
-      }
-    }
-
-    .mdc-text-field__input {
-			@include typography.typography-mdc-coupling('subtitle1', 'body-2');
-			font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
-			width: 100%;
-      height: 32px;
-      padding: 0 14px;
-    }
-
-    .mdc-floating-label {
-      left: 2px;
-      padding-right: 8px;
-      transition: transform 0.15s, font-size 0.15s;
-    }
-
-    .mdc-floating-label--float-above {
-      --mdc-theme-primary: var(--mdc-text-field-label-ink-color);
-			transform: translateY(-100%);
-
-			&.mdc-floating-label--shake {
-				animation: none;
-			}
-    }
+  --mdc-shape-small: 6px;
+  :host([shape='pill'i]) & {
+    --mdc-shape-small: 28px;
+    // --transform-inline-offset: -200px;
   }
-
-  &:hover,
-  &--focused {
-		--vvd-outline-color: var(--mdc-text-field-outlined-hover-border-color);
-
-		&.mdc-text-field--invalid {
-			--vvd-outline-color: var(--mdc-text-field-error-color);
-		}
- }
-
-  &--invalid {
-		--vvd-outline-color: var(--mdc-text-field-error-color);
-
-    &.mdc-text-field--outlined {
-			background-color: var(--mdc-text-field-error-fill-color);
-
-			.mdc-floating-label {
-				color: var(--mdc-text-field-error-color);
-			}
-    }
-  }
-}
-
-.mdc-text-field--invalid:not(.mdc-text-field--disabled).mdc-text-field--invalid + .mdc-text-field-helper-text--validation-msg {
-	color: var(--mdc-text-field-error-color);
 }
