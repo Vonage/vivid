@@ -42,16 +42,24 @@ function setValueAndValidity(inputField: HTMLInputElement | undefined, value: st
 
 @customElement('vwc-textfield')
 export class VWCTextField extends MWCTextField {
-	@property({type: HTMLInputElement, reflect: false})
+	@property({ type: HTMLInputElement, reflect: false })
 	hiddenInput: HTMLInputElement | undefined;
 
-	@property({type: String, reflect: true})
+	@property({ type: String, reflect: true })
 	form: string | undefined;
+
+	async firstUpdated(): Promise<void> {
+		await super.firstUpdated();
+		this.shadowRoot?.querySelector('.mdc-notched-outline')?.shadowRoot?.querySelector('.mdc-notched-outline')?.classList.add('vvd-notch');
+		this.addInputToForm();
+	}
 
 	protected addInputToForm() {
 		const hostingForm = getFormByIdOrClosest(this, this.form);
 
-		if (!hostingForm) {return;}
+		if (!hostingForm) {
+			return;
+		}
 
 		this.hiddenInput = addHiddenInput(hostingForm, this.name);
 		setValueAndValidity(this.hiddenInput, this.value, this.formElement.validationMessage);
@@ -61,25 +69,12 @@ export class VWCTextField extends MWCTextField {
 			setValueAndValidity(this.hiddenInput, this.value, this.formElement.validationMessage);
 		});
 
-		this.addEventListener(
-			'change',
-			() => {
-				setValueAndValidity(this.hiddenInput, this.value, this.formElement.validationMessage);
-			}
-		);
+		this.addEventListener('change', () => {
+			setValueAndValidity(this.hiddenInput, this.value, this.formElement.validationMessage);
+		});
 
 		this.addEventListener('input', () => {
 			setValueAndValidity(this.hiddenInput, this.value, this.formElement.validationMessage);
 		});
-	}
-
-	connectedCallback() {
-		super.connectedCallback();
-	}
-
-	async firstUpdated(): Promise<void> {
-		await super.firstUpdated();
-		this.shadowRoot?.querySelector('.mdc-notched-outline')?.shadowRoot?.querySelector('.mdc-notched-outline')?.classList.add('vvd-notch');
-		this.addInputToForm();
 	}
 }
