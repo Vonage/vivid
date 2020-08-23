@@ -56,6 +56,22 @@
   &.mdc-button--dense {
     height: 32px;
   }
+
+	vwc-icon {
+		vertical-align: middle;
+	}
+
+	> span.trailing-icon {
+		> slot > vwc-icon {
+			margin-left: 6px;
+		}
+	}
+
+	> span.leading-icon {
+		> slot > vwc-icon {
+			margin-right: 6px;
+		}
+	}
 }
 
 :host([disabled]) .mdc-button.mdc-button--outlined {

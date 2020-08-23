@@ -1,4 +1,11 @@
+@use '@vonage/vvd-typography/scss/typography' as typography;
+
+:host{
+	@include typography.typography-cat-shorthand('body-2');
+}
+
 :host(:not([left])) > .mdc-list-item__meta {
-	width: var(--mdc-list-item-meta-size, 24px);
-	height: var(--mdc-list-item-meta-size, 24px);
+	--mdc-list-item-meta-size: 22px;
+	width: var(--mdc-list-item-meta-size);
+	height: var(--mdc-list-item-meta-size);
 }

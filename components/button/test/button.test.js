@@ -1,38 +1,32 @@
 import '../vwc-button.js';
-import { waitNextTask, textToDomToParent } from '../../../utils/js/test-helpers.js';
+import { waitNextTask, textToDomToParent, assertComputedStyle } from '../../../utils/js/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
 
-describe('test vwc-button', () => {
-	let addedElements = [];
+const VWC_BUTTON = 'vwc-button';
 
-	afterEach(() => {
-		while (addedElements.length) {
-			addedElements.pop().remove();
-		}
-	});
-
+describe('button', () => {
 	it('vwc-button is defined as a custom element', async () => {
-		assert.exists(customElements.get('vwc-button', 'vwc-button element is not defined'));
+		assert.exists(customElements.get(VWC_BUTTON, 'vwc-button element is not defined'));
 	});
 
-	it('vwc-button has internal contents', async () => {
-		addedElements = textToDomToParent('<vwc-button id="button-a">Button Text</vwc-button>');
+	it('should internal contents', async () => {
+		const addedElements = textToDomToParent(`<${VWC_BUTTON} id="button-a">Button Text</${VWC_BUTTON}>`);
 		const actualElement = addedElements[0];
 		await waitNextTask();
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
-	describe(`Form Association`, function() {
+	describe('Form Association', function () {
 
 		beforeEach(() => {
 			window.formSubmitted = false;
 		});
 
-		it(`should submit form when inside a form`, async function() {
+		it('should submit form when inside a form', async function () {
 			let submitted = false;
-			addedElements = textToDomToParent('<form onsubmit="return false" name="testForm" id="testForm"><vwc-button id="button-a">Button Text</vwc-button></form>');
+			const addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON} id="button-a">Button Text</${VWC_BUTTON}></form>`);
 			const formElement = addedElements[0];
 			const actualElement = formElement.firstChild;
 			formElement.addEventListener('submit', () => submitted = true);
@@ -42,9 +36,9 @@ describe('test vwc-button', () => {
 			expect(submitted).to.equal(true);
 		});
 
-		it(`should submit form when of type submit`, async function() {
+		it('should submit form when of type submit', async function () {
 			let submitted = false;
-			addedElements = textToDomToParent('<form onsubmit="return false" name="testForm" id="testForm"><vwc-button id="button-a" type="submit">Button Text</vwc-button></form>');
+			const addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON} id="button-a" type="submit">Button Text</${VWC_BUTTON}></form>`);
 			const formElement = addedElements[0];
 			const actualElement = formElement.firstChild;
 			formElement.addEventListener('submit', () => submitted = true);
@@ -54,10 +48,10 @@ describe('test vwc-button', () => {
 			expect(submitted).to.equal(true);
 		});
 
-		it(`should reset form when of type reset`, async function() {
+		it('should reset form when of type reset', async function () {
 			let submitted = false;
 			let reset = false;
-			addedElements = textToDomToParent('<form onsubmit="return false" name="testForm" id="testForm"><vwc-button id="button-a" type="reset">Button Text</vwc-button></form>');
+			const addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON} id="button-a" type="reset">Button Text</${VWC_BUTTON}></form>`);
 			const formElement = addedElements[0];
 			const actualElement = formElement.firstChild;
 			formElement.addEventListener('submit', () => submitted = true);
@@ -69,7 +63,7 @@ describe('test vwc-button', () => {
 			expect(submitted).to.equal(false);
 		});
 
-		it(`should associate with external form attribute is set with form id`, async function() {
+		it('should associate with external form attribute is set with form id', async function () {
 			const submitted = {
 				external: false,
 				internal: false
@@ -89,10 +83,10 @@ describe('test vwc-button', () => {
 				internal: false
 			}
 
-			addedElements = textToDomToParent(`
+			const addedElements = textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="testForm">
-					<vwc-button id="button-a" form="externalForm" type="reset">RESET</vwc-button>
-					<vwc-button id="button-b" form="externalForm" type="submit">SUBMIT</vwc-button>
+					<${VWC_BUTTON} id="button-a" form="externalForm" type="reset">RESET</${VWC_BUTTON}>
+					<${VWC_BUTTON} id="button-b" form="externalForm" type="submit">SUBMIT</${VWC_BUTTON}>
 				</form>
 				<form onsubmit="return false" name="externalForm" id="externalForm"></form>
 			`);
@@ -114,7 +108,7 @@ describe('test vwc-button', () => {
 			expect(submitted).to.eql(expectedSubmitted);
 		});
 
-		it(`should associate with no form if form attribute is set with nonexistent id`, async function() {
+		it('should associate with no form if form attribute is set with nonexistent id', async function () {
 			const submitted = {
 				external: false,
 				internal: false
@@ -134,10 +128,10 @@ describe('test vwc-button', () => {
 				internal: false
 			}
 
-			addedElements = textToDomToParent(`
+			const addedElements = textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="testForm">
-					<vwc-button id="button-a" form="noneExistentForm" type="reset">RESET</vwc-button>
-					<vwc-button id="button-b" form="noneExistentForm" type="submit">SUBMIT</vwc-button>
+					<${VWC_BUTTON} id="button-a" form="noneExistentForm" type="reset">RESET</${VWC_BUTTON}>
+					<${VWC_BUTTON} id="button-b" form="noneExistentForm" type="submit">SUBMIT</${VWC_BUTTON}>
 				</form>
 				<form onsubmit="return false" name="externalForm" id="externalForm"></form>
 			`);
@@ -157,6 +151,59 @@ describe('test vwc-button', () => {
 
 			expect(reset).to.eql(expectedReset);
 			expect(submitted).to.eql(expectedSubmitted);
+		});
+	});
+
+	describe('typography', function () {
+		it(`should have set button (text, rounded) typography correct`, async function () {
+			const actualElements = textToDomToParent(`<${VWC_BUTTON}>Button Text</${VWC_BUTTON}>`);
+			await waitNextTask();
+			const button = actualElements[0].shadowRoot.querySelector('#button');
+			expect(button).to.exist;
+			const expectedStyles = {
+				fontFamily: 'SpeziaWebVariable',
+				fontSize: '14.2222px',
+				fontWeight: '600',
+				fontStretch: '50%',
+				lineHeight: 'normal',
+				letterSpacing: 'normal',
+				textTransform: 'none'
+			};
+			assertComputedStyle(button, expectedStyles);
+		});
+
+		it(`should have set button (outlined, pill) typography correct`, async function () {
+			const actualElements = textToDomToParent(`<${VWC_BUTTON} layout="outlined" shape="pill">Button Text</${VWC_BUTTON}>`);
+			await waitNextTask();
+			const button = actualElements[0].shadowRoot.querySelector('#button');
+			expect(button).to.exist;
+			const expectedStyles = {
+				fontFamily: 'SpeziaWebVariable',
+				fontSize: '14.2222px',
+				fontWeight: '600',
+				fontStretch: '50%',
+				lineHeight: 'normal',
+				letterSpacing: 'normal',
+				textTransform: 'none'
+			};
+			assertComputedStyle(button, expectedStyles);
+		});
+
+		it(`should have set button (filled, disabled, pill) typography correct`, async function () {
+			const actualElements = textToDomToParent(`<${VWC_BUTTON} layout="filled" disabled shape="pill">Button Text</${VWC_BUTTON}>`);
+			await waitNextTask();
+			const button = actualElements[0].shadowRoot.querySelector('#button');
+			expect(button).to.exist;
+			const expectedStyles = {
+				fontFamily: 'SpeziaWebVariable',
+				fontSize: '14.2222px',
+				fontWeight: '600',
+				fontStretch: '50%',
+				lineHeight: 'normal',
+				letterSpacing: 'normal',
+				textTransform: 'none'
+			};
+			assertComputedStyle(button, expectedStyles);
 		});
 	});
 });

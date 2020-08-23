@@ -1,6 +1,6 @@
+@use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@material/chips';
 @use './variables';
-@use '@vonage/vvd-fonts/typography' as typography;
 
 /*
 TODO:
@@ -69,8 +69,8 @@ TODO:
   @include chips.shape-radius(map-get(variables.$shape-radius, default));
   @include chips.trailing-icon-margin(variables.$trailing-icon-margin-left);
   @include chips.trailing-icon-size(variables.$trailing-icon-size);
-	@include typography.font-combo('Body2Bold');
-
+	@include typography.typography-cat-variables('body-2-bold');
+	@include typography.typography-cat-properties();
   cursor: auto;
   font-size: map-get(variables.$font-size, default);
 

@@ -84,12 +84,12 @@
         color: var(--mdc-select-label-ink-color);
         transform: translateY(-100%);
       }
-
-      + .mdc-select-helper-text {
-        font-size: var(--mdc-typography-caption-font-size, 0.75rem);
-        margin: 3px 0 0;
-      }
     }
+
+		+ .mdc-select-helper-text {
+			@include typography.typography-mdc-coupling('caption', 'caption');
+			font-stretch: var(--mdc-typography-caption-font-stretch); // ! this was supposed to be set by MDC
+		}
   }
 
   :host(:hover) &,

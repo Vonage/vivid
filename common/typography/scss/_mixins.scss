@@ -25,7 +25,7 @@
   margin: var(--vvd-typography-line-height) 0;
 }
 
-@mixin font($category) {
+@mixin typography-cat-shorthand($category) {
 	@include typography-cat-variables($category);
 
   /*   dont forget to define defaults */

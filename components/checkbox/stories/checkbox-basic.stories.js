@@ -1,12 +1,10 @@
 import '@vonage/vwc-checkbox/vwc-checkbox.js';
 import '@vonage/vwc-formfield/vwc-formfield.js';
-import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
 	title: 'Atoms/Checkbox',
-	component: 'vwc-checkbox',
-	decorators: [withA11y]
+	component: 'vwc-checkbox'
 }
 
 export const basic = () => html`

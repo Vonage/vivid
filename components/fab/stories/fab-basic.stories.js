@@ -1,11 +1,9 @@
 import '@vonage/vwc-fab/vwc-fab.js';
-import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
 	title: 'Atoms/Fab',
-	component: 'vwc-fab',
-	decorators: [withA11y]
+	component: 'vwc-fab'
 }
 
 export const basic = () => html`

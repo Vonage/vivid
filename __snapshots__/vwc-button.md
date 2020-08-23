@@ -1,4 +1,4 @@
-# `test vwc-button`
+# `vwc-button`
 
 #### `vwc-button has internal contents`
 

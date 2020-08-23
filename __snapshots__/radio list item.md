@@ -1,6 +1,8 @@
-# `vwc-radio-list-item init flow`
+# `radio list item`
 
-#### `vwc-radio-list-item has internal contents`
+## `init flow`
+
+####   `should have internal contents`
 
 ```html
 <span class="mdc-list-item__text">
