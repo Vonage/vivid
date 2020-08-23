@@ -42,7 +42,6 @@
     "wca:custom-elements": "yarn compile && wca analyze components/icon/src/vwc-icon.js components/**/*.d.ts --outFile custom-elements.json"
   },
   "dependencies": {
-    "lit-element": "^2.4.0",
     "lit-html": "^1.2.1"
   },
   "devDependencies": {
