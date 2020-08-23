@@ -3,7 +3,7 @@ import { Button as MWCButton } from '@material/mwc-button';
 import { style as vwcButtonStyle } from './vwc-button.css';
 import { style as mwcButtonStyle } from '@material/mwc-button/mwc-button-css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
-import { html } from 'lit-element';
+import { html, TemplateResult } from 'lit-element';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -96,7 +96,7 @@ export class VWCButton extends MWCButton {
 		}
 	}
 
-	protected renderIcon(){
+	protected renderIcon():TemplateResult {
 		return html`<vwc-icon size="small" type="${this.icon}"></vwc-icon>`;
 	}
 
