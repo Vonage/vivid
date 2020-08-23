@@ -18,7 +18,8 @@ declare global {
 MWCTextField.styles = [styleCoupling, mwcTextFieldStyle, vwcTextFieldStyle];
 
 function getFormByIdOrClosest(element: HTMLElement, formId = '') {
-	return formId ? document.getElementById(formId) : element.closest('form');
+	const formElement = formId ? document.getElementById(formId) : element.closest('form');
+	return formElement instanceof HTMLFormElement ? formElement : null;
 }
 
 function addHiddenInput(hostingForm: HTMLElement, fieldName: string) {

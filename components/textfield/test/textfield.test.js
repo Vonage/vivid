@@ -78,7 +78,7 @@ describe('vwc-textfield', () => {
 					<${VWC_TEXTFIELD} name="${fieldName}" value="${fieldValue}" form="${externalFormID}">Button Text
 					</${VWC_TEXTFIELD}>
 				</form>
-				<form onsubmit="return false" name="externalForm" id="externalForm"></form>`);
+				<form onsubmit="return false" name="externalForm" id="${externalFormID}"></form>`);
 
 			await waitNextTask();
 
@@ -96,6 +96,18 @@ describe('vwc-textfield', () => {
 
 			expect(formElement.querySelector(`input[name="${fieldName}"`)).to.equal(null);
 			expect(externalForm.querySelectorAll(`input[name="${fieldName}"`).length).to.equal(1);
+		});
+
+		it(`should do nothing if form value resolves to a non form element`, async function() {
+			const fieldValue = Math.random().toString();
+			const fieldName = 'test-field';
+			const formId = 'testForm';
+			addedElements = textToDomToParent(`<div onsubmit="return false" name="testForm" id="testForm"><${VWC_TEXTFIELD} name="${fieldName}" value="${fieldValue}" form="${formId}">Button Text</${VWC_TEXTFIELD}></div>`);
+			const formElement = addedElements[0];
+			const actualElement = formElement.firstChild;
+			await waitNextTask();
+
+			expect(formElement.querySelector('input')).to.equal(null);
 		});
 
 		describe(`value binding`, function() {
