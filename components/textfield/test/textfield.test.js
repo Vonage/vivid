@@ -158,12 +158,41 @@ describe('vwc-textfield', () => {
 				expect(validInput).to.equal(true);
 				expect(formElement.checkValidity()).to.equal(false);
 			});
+
+			it(`should not submit an invalid form`, async function() {
+				let submitted = false;
+				const fieldName = 'test-field';
+				addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_TEXTFIELD} required value="val" name="${fieldName}">Button Text</${VWC_TEXTFIELD}></form>`);
+				const formElement = addedElements[0];
+				const actualElement = formElement.firstChild;
+				await waitNextTask();
+
+				const invalidity = formElement.checkValidity();
+
+				await waitNextTask();
+
+				formElement.addEventListener('submit', () => {
+					submitted = true;
+				});
+
+				formElement.requestSubmit();
+
+				const submitValidForm = submitted;
+
+				submitted = false;
+				formElement.reset();
+				formElement.requestSubmit();
+
+				expect(invalidity).to.equal(true);
+				expect(submitValidForm).to.equal(true);
+				expect(submitted).to.equal(false);
+			});
 		});
 
 		it(`should work under multiple shadow layers`, async function() {
 			const fieldValue = Math.random().toString();
 			const fieldName = 'test-field';
-			addedElements = textToDomToParent(`
+			const addedElements = textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="testForm">
 					<vwc-formfield>
 						<${VWC_TEXTFIELD} required value="${fieldValue}" name="${fieldName}">Button Text</${VWC_TEXTFIELD}>
