@@ -22,8 +22,17 @@ export class VWCTextField extends MWCTextField {
 	@property({type: HTMLInputElement, reflect: true})
 	hiddenInput: HTMLInputElement | undefined;
 
+	@property({type: String, reflect: true})
+	form: string | undefined;
+
 	protected addInputToForm() {
-		const hostingForm = this.closest('form');
+		let hostingForm: HTMLFormElement;
+		const formId = this.form;
+		if (formId){
+			hostingForm = document.getElementById(formId) as HTMLFormElement;
+		} else {
+			hostingForm = this.closest('form') as HTMLFormElement;
+		}
 
 		if (!hostingForm) {return;}
 
