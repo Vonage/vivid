@@ -77,6 +77,36 @@ describe.only('vwc-textfield', () => {
 			expect(formElement.querySelector(`input[name="${fieldName}"`)).to.equal(null);
 			expect(externalForm.querySelectorAll(`input[name="${fieldName}"`).length).to.equal(1);
 		});
+
+		describe(`value binding`, function() {
+
+			it(`should reset the value of the custom element on form reset`, function() {
+				const fieldValue = Math.random().toString();
+				const fieldName = 'test-field';
+				const addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_TEXTFIELD} name="${fieldName}" value="${fieldValue}">Button Text</${VWC_TEXTFIELD}></form>`);
+				const formElement = addedElements[0];
+				const actualElement = formElement.firstChild;
+
+				formElement.reset();
+
+				expect(actualElement.value).to.equal('');
+			});
+
+			it(`should change the value of the mock input on internal input change`, function() {
+				const fieldValue = Math.random().toString();
+				const fieldName = 'test-field';
+				const addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_TEXTFIELD} name="${fieldName}">Button Text</${VWC_TEXTFIELD}></form>`);
+				const formElement = addedElements[0];
+				const actualElement = formElement.firstChild;
+
+				actualElement.value = fieldValue;
+				let evt = document.createEvent("HTMLEvents");
+				evt.initEvent("change", false, true);
+				actualElement.dispatchEvent(evt);
+
+				expect(actualElement.hiddenInput.value).to.equal(fieldValue);
+			});
+		});
 		});
 	});
 });

@@ -44,6 +44,11 @@ export class VWCTextField extends MWCTextField {
 		hostingForm.appendChild(this.hiddenInput);
 
 		hiddenInput.value = this.value;
+
+		hostingForm.addEventListener('reset', () => {
+			this.value = '';
+		});
+
 		this.addEventListener(
 			'change',
 			() => (hiddenInput.value = this.value)
