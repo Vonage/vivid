@@ -61,10 +61,11 @@ export class VWCTextField extends MWCTextField {
 		}
 
 		this.hiddenInput = addHiddenInput(hostingForm, this.name);
+		this.hiddenInput.defaultValue = this.value;
 		setValueAndValidity(this.hiddenInput, this.value, this.formElement.validationMessage);
 
 		hostingForm.addEventListener('reset', () => {
-			this.value = this.formElement.value = '';
+			this.value = this.formElement.value = this.hiddenInput?.defaultValue ?? '';
 			setValueAndValidity(this.hiddenInput, this.value, this.formElement.validationMessage);
 		});
 

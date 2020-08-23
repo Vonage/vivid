@@ -17,6 +17,15 @@ function listenToSubmission(formElement) {
 
 }
 
+async function changeFieldValue(actualElement, value, eventName = 'change') {
+	actualElement.value = value;
+	await waitNextTask();
+
+	let evt = document.createEvent("HTMLEvents");
+	evt.initEvent(eventName, false, true);
+	actualElement.dispatchEvent(evt);
+}
+
 describe('vwc-textfield', () => {
 	let addedElements = [];
 
@@ -91,17 +100,18 @@ describe('vwc-textfield', () => {
 
 		describe(`value binding`, function() {
 
-			it(`should reset the value of the custom element on form reset`, async function() {
+			it(`should reset the value of the custom element to default on form reset`, async function() {
 				const fieldValue = Math.random().toString();
 				const fieldName = 'test-field';
 				addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_TEXTFIELD} name="${fieldName}" value="${fieldValue}">Button Text</${VWC_TEXTFIELD}></form>`);
 				const formElement = addedElements[0];
 				const actualElement = formElement.firstChild;
-
+				await waitNextTask();
+				actualElement.value = '5';
 				await waitNextTask();
 				formElement.reset();
 
-				expect(actualElement.value).to.equal('');
+				expect(actualElement.value).to.equal(fieldValue);
 			});
 
 			it(`should change the value of the mock input on internal input change`, async function() {
@@ -151,12 +161,14 @@ describe('vwc-textfield', () => {
 				await waitNextTask();
 
 				const validInput = formElement.checkValidity();
-				actualElement.value = 'abc';
+				await changeFieldValue(actualElement, '', 'change');
+				const invalidInput = formElement.checkValidity();
 
 				formElement.reset();
 
 				expect(validInput).to.equal(true);
-				expect(formElement.checkValidity()).to.equal(false);
+				expect(invalidInput).to.equal(false);
+				expect(formElement.checkValidity()).to.equal(true);
 			});
 
 			it(`should not submit an invalid form`, async function() {
@@ -180,7 +192,8 @@ describe('vwc-textfield', () => {
 				const submitValidForm = submitted;
 
 				submitted = false;
-				formElement.reset();
+
+				await changeFieldValue(actualElement, '', 'change');
 				formElement.requestSubmit();
 
 				expect(invalidity).to.equal(true);
@@ -192,14 +205,14 @@ describe('vwc-textfield', () => {
 		it(`should work under multiple shadow layers`, async function() {
 			const fieldValue = Math.random().toString();
 			const fieldName = 'test-field';
-			const addedElements = textToDomToParent(`
+			addedElements = textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="testForm">
 					<vwc-formfield>
 						<${VWC_TEXTFIELD} required value="${fieldValue}" name="${fieldName}">Button Text</${VWC_TEXTFIELD}>
 					</vwc-formfield>
 				</form>`);
 			const formElement = addedElements[0];
-			const actualElement = formElement.firstChild;
+			const actualElement = formElement.children[0].children[0];
 			await waitNextTask();
 
 			const validInput = formElement.checkValidity();
@@ -208,12 +221,12 @@ describe('vwc-textfield', () => {
 
 			formElement.requestSubmit();
 
-			formElement.reset();
-
 			for (let pair of (await submitPromise).entries()) {
 				expect(pair[0]).to.equal(fieldName);
 				expect(pair[1]).to.equal(fieldValue);
 			}
+
+			await changeFieldValue(actualElement, '', 'change');
 
 			expect(formElement.querySelectorAll(`input[name="${fieldName}"`).length).to.equal(1);
 			expect(validInput).to.equal(true);
