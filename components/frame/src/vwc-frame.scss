@@ -1,5 +1,9 @@
 @use 'typography';
 
-:host {
-  @include typography.frame-typography;
+vwc-frame {
+	@include typography.frame-typography;
+
+	code {
+		background-color: lightgray;
+	}
 }
