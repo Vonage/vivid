@@ -1,9 +1,9 @@
-import '@vonage/vwc-frame/vwc-frame.js';
+import context from '@vonage/vvd-context/vvd-context';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Cells/Frame',
-	component: 'vwc-frame',
+	title: 'Cells/Context',
+	component: 'vvd-context',
 };
 
 export const basic = () => html`
@@ -33,3 +33,7 @@ export const basic = () => html`
 		</p>
 	</vwc-frame>
 `;
+
+context
+	.init()
+	.then(() => console.log('Vivid context initialised for the demo story'));
