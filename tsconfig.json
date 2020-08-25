@@ -34,7 +34,6 @@
     { "path": "common/style-coupling" },
     { "path": "common/scheme" },
 		{	"path": "common/fonts" },
-    { "path": "components/app" },
     { "path": "components/button" },
     { "path": "components/carousel" },
     { "path": "components/checkbox" },

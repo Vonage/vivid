@@ -1,7 +1,11 @@
-import './vivid-storybook-utils.js';
 import '@storybook/addon-console';
 import { addParameters, setCustomElements } from '@storybook/web-components';
 import customElements from '../custom-elements.json';
+import vvdContext from '@vonage/vvd-context';
+
+vvdContext
+	.init()
+	.then(() => console.info('init Vivid context done (preview frame)'));
 
 async function run() {
 	setCustomElements(customElements);

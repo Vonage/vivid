@@ -39,9 +39,6 @@ export async function init(services?: Record<string, unknown>): Promise<void[]> 
 		services = servicesRegistry;
 	}
 
-	console.log('init services');
-	console.log(services);
-
 	const serviceInitPromises = Object
 		.entries(services)
 		.map(([serviceKey, initParams]) => servicesRegistry[serviceKey].initialiser(initParams));
