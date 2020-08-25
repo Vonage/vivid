@@ -4,6 +4,12 @@ import {
 	CSSResult,
 } from 'lit-element';
 import { style } from './vwc-frame.css';
+import fonts from '@vonage/vvd-fonts/vvd-fonts.js';
+import scheme from '@vonage/vvd-scheme/vvd-scheme.js';
+
+Promise
+	.all([fonts.init(), scheme.init()])
+	.then(() => console.info('vwc-frame here - should be visible only after the base is initialized'));
 
 declare global {
 	interface HTMLElementTagNameMap {
