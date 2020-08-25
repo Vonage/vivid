@@ -5,6 +5,7 @@ import { style as vwcButtonStyle } from './vwc-button.css';
 import { style as mwcButtonStyle } from '@material/mwc-button/mwc-button-css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import { html, TemplateResult } from 'lit-element';
+import '@vonage/vwc-icon';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -12,7 +13,7 @@ declare global {
 	}
 }
 
-initCore();
+coreInit();
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore

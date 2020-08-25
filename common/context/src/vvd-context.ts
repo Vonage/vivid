@@ -1,4 +1,4 @@
-import { init as initCore } from '@vonage/vvd-core';
+import { init as coreInit } from '@vonage/vvd-core';
 import { style } from './vvd-context.css';
 
 /**
@@ -10,14 +10,14 @@ import { style } from './vvd-context.css';
  */
 async function init(services: Record<string, unknown>): Promise<void[]> {
 	injectGlobalStyle();
-	return await initCore(services);
+	return await coreInit(services);
 }
 
 function injectGlobalStyle() {
-	const ds = document.createElement('style');
-	ds.type = 'text/css';
-	ds.innerHTML = globalStyle.cssText;
-	document.head.appendChild(ds);
+	const globalStyleSheet = document.createElement('style');
+	globalStyleSheet.type = 'text/css';
+	globalStyleSheet.innerHTML = style.cssText;
+	document.head.appendChild(globalStyleSheet);
 }
 
 export default Object.freeze({
