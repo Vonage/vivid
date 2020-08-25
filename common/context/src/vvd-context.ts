@@ -1,5 +1,5 @@
 import { init as initCore } from '@vonage/vvd-core';
-import { style as globalStyle } from './vvd-context.css';
+import { style } from './vvd-context.css';
 
 /**
  * Vivid context initialiser
