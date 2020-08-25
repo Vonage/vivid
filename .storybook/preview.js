@@ -1,7 +1,7 @@
 import '@storybook/addon-console';
 import { addParameters, setCustomElements } from '@storybook/web-components';
 import customElements from '../custom-elements.json';
-import vvdContext from '@vonage/vvd-context';
+import context from '@vonage/vvd-context';
 
 vvdContext
 	.init()
