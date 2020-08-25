@@ -1,4 +1,4 @@
-import { init as initCore } from '@vonage/vvd-core';
+import { init as coreInit } from '@vonage/vvd-core';
 import { customElement, property } from 'lit-element';
 import { Button as MWCButton } from '@material/mwc-button';
 import { style as vwcButtonStyle } from './vwc-button.css';
