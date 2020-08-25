@@ -9,34 +9,34 @@ const
 let INIT_PROMISE: Promise<void> | null = null;
 
 async function init(): Promise<void> {
-	if (INIT_PROMISE) {
-		return INIT_PROMISE;
+	if (!INIT_PROMISE) {
+		INIT_PROMISE = new Promise((resolve, reject) => {
+			console.info('Vivid Fonts initialization start...');
+			const st = performance.now();
+
+			const testElement = setupInitTestElement();
+			const initialWidth = testElement.offsetWidth;
+
+			import('./vvd-fonts.css.js')
+				.then(cssDefs => {
+					const cssText = cssDefs.style.cssText;
+					const finalCSS = cssText.replace(new RegExp(FONTS_BASE_URL_TOKEN, 'g'), CDN_BASE_URL);
+					const ds = document.createElement('style');
+					ds.type = 'text/css';
+					ds.innerHTML = finalCSS;
+					document.head.appendChild(ds);
+					return ensureInit(testElement, initialWidth);
+				})
+				.then(resolve)
+				.catch(reject)
+				.finally(() => {
+					cleanInitTestElement(testElement);
+					console.info(`Vivid Fonts initialization took ${Math.floor(performance.now() - st)}ms`);
+				});
+		});
 	}
 
-	return INIT_PROMISE = new Promise((resolve, reject) => {
-		console.info('Vivid Fonts initialization start...');
-		const st = performance.now();
-
-		const testElement = setupInitTestElement();
-		const initialWidth = testElement.offsetWidth;
-
-		import('./vvd-fonts.css.js')
-			.then(cssDefs => {
-				const cssText = cssDefs.style.cssText;
-				const finalCSS = cssText.replace(new RegExp(FONTS_BASE_URL_TOKEN, 'g'), CDN_BASE_URL);
-				const ds = document.createElement('style');
-				ds.type = 'text/css';
-				ds.innerHTML = finalCSS;
-				document.head.appendChild(ds);
-				return ensureInit(testElement, initialWidth);
-			})
-			.then(resolve)
-			.catch(reject)
-			.finally(() => {
-				cleanInitTestElement(testElement);
-				console.info(`Vivid Fonts initialization took ${Math.floor(performance.now() - st)}ms`);
-			});
-	});
+	return INIT_PROMISE;
 }
 
 function setupInitTestElement(): HTMLElement {
