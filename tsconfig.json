@@ -29,10 +29,11 @@
   "include": ["custom_typings/**/*.ts", "src/*.ts"],
   "exclude": [],
   "references": [
+    { "path": "common/core" },
+    { "path": "common/context" },
     { "path": "common/style-coupling" },
     { "path": "common/scheme" },
 		{	"path": "common/fonts" },
-    { "path": "common/core" },
     { "path": "components/app" },
     { "path": "components/button" },
     { "path": "components/carousel" },

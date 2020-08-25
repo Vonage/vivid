@@ -32,12 +32,12 @@ export class VWCFrame extends LitElement {
 		return this;
 	}
 
-	connectedCallback() {
+	connectedCallback(): void {
 		super.connectedCallback();
 		this.ensureStylesApplied();
 	}
 
-	private ensureStylesApplied() {
+	private ensureStylesApplied(): void {
 		VWCFrame.styles.forEach((style, index) => {
 			const tmpId = `${FRAME_STYLE_ID}-${index}`;
 			if (!document.head.querySelector(`#${tmpId}`)) {
