@@ -25,6 +25,10 @@
 	},
 	"dependencies": {
 		"@vonage/vvd-core": "^0.5.0",
+		"lit-element": "2.3.1",
 		"tslib": "^2.0.0"
+	},
+	"devDependencies": {
+		"@vonage/vvd-typography": "^0.5.0"
 	}
 }
