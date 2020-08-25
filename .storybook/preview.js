@@ -3,7 +3,7 @@ import { addParameters, setCustomElements } from '@storybook/web-components';
 import customElements from '../custom-elements.json';
 import context from '@vonage/vvd-context';
 
-vvdContext
+context
 	.init()
 	.then(() => console.info('init Vivid context done (preview frame)'));
 
