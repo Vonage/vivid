@@ -23,6 +23,7 @@
 	},
 	"dependencies": {
 		"kefir": "^3.8.7",
-		"rambda": "^5.13.1"
+		"ramda": "^5.13.1",
+		"lit-element": "^2.3.1"
 	}
 }

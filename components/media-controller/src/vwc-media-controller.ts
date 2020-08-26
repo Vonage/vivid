@@ -5,7 +5,9 @@ import { pipe, not, always, clamp } from 'ramda';
 import { style } from './vwc-media-controller.css';
 
 const
-	noop = ()=> {},
+	noop = ()=> {
+		// do nothing
+	},
 	TRACK_RESPONSE_MARGIN = 5,
 	TRACK_VERTICAL_RESPONSIVITY_MARGIN = 15;
 
