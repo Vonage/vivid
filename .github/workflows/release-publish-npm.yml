@@ -1,0 +1,41 @@
+name: Release Vivid
+
+on:
+  push:
+    tags:
+      - v*
+    branches: [add-npm-deploy]
+
+jobs:
+  build-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.CI_AT }}
+
+      - name: Setup NodeJS 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: |
+          npm install -g yarn
+          yarn install
+
+      # Build and publish
+      - name: Build components
+        run: yarn compile
+
+      - name: Build CDN icon resolver
+        run: yarn build:icon-resolver --resolveStrategy=cdn --awsAccessKey=${{ secrets.AWS_VIVID_DEMO_PROD_ACCESS }} --awsAccessSecret=${{ secrets.AWS_VIVID_DEMO_PROD_SECRET }} --awsBucketName=vivid-icons-prod --awsBaseUrl=https://d3fzvwfxu7izti.cloudfront.net
+
+      - name: Publish components (NPM)
+        run: yarn lerna publish from-package --no-git-tag-version --no-push --yes
+        env:
+          NODE_AUTH_TOKEN: ad20fbed-a438-49f3-9fd0-30a008dc8741
