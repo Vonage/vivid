@@ -1,0 +1,5 @@
+@use 'typography';
+
+body {
+	@include typography.frame-typography;
+}
