@@ -15,6 +15,9 @@
 	],
 	"references": [
 		{
+			"path": "../fonts"
+		},
+		{
 			"path": "../scheme"
 		}
 	]

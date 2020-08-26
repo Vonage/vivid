@@ -1,6 +1,7 @@
 {
 	"extends": "../../tsconfig.json",
 	"compilerOptions": {
+		"module": "ESNext",
 		"composite": true,
 		"rootDir": "src",
 		"outDir": ".",
@@ -14,13 +15,7 @@
 	],
 	"references": [
 		{
-			"path": "../../common/core"
-		},
-		{
-			"path": "../../common/style-coupling"
-		},
-		{
-			"path": "../icon"
+			"path": "../core"
 		}
 	]
 }
