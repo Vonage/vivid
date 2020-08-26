@@ -7,7 +7,6 @@
 	--mdc-button-disabled-fill-color: var(#{color-semantic.$formfield-border-idle});
 }
 
-
 // ! move to utils as this might be a common
 // ! mixin for other components such as call-out
 @mixin connotations-context(
@@ -45,7 +44,6 @@
 
 @include connotations-context(':host([unelevated][connotation-specifier])');
 
-
 /////////////////////////////////////////////////////////////////////////////
 .mdc-button {
 	font-stretch: var(--mdc-typography-button-font-stretch); // ! this was supposed to be set by MDC
@@ -58,7 +56,7 @@
   }
 
 	vwc-icon {
-		vertical-align: middle;
+		vertical-align: sub;
 	}
 
 	> span.trailing-icon {
