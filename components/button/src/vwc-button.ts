@@ -22,7 +22,7 @@ MWCButton.styles = [styleCoupling, mwcButtonStyle, vwcButtonStyle];
 const layouts = ['text', 'outlined', 'filled'];
 export type ButtonLayout = typeof layouts;
 
-const connotations = ['regular', 'cta', 'success', 'error'] as const;
+const connotations = ['regular', 'cta', 'success', 'error', 'info', 'announcement'] as const;
 export type ButtonConnotation = typeof connotations;
 
 const shapes = ['rounded', 'pill'] as const;

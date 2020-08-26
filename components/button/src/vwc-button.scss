@@ -11,9 +11,9 @@
 // ! mixin for other components such as call-out
 @mixin connotations-context(
   $selector: ':host([connotation-specifier])',
-  $default: primary
+  $default: regular
 ) {
-  $connotations: primary cta success error;
+  $connotations: regular cta success error info announcement;
 
   @each $connotation in $connotations {
     $attr: '[connotation="#{$connotation}"i]';
@@ -38,11 +38,41 @@
     #{$scoped-selector} {
       --mdc-theme-primary: var(--vvd-color-#{$connotation}-background);
       --mdc-theme-on-primary: var(--vvd-color-#{$connotation}-foreground);
-    }
+		}
   }
 }
 
 @include connotations-context(':host([unelevated][connotation-specifier])');
+
+:host([layout=outlined]) {
+	--mdc-theme-primary: var(--vvd-color-regular-background);
+	border-color: var(--vvd-color-regular-background);
+}
+
+:host([layout=outlined][connotation=cta]) {
+	--mdc-theme-primary: var(--vvd-color-cta-background);
+	border-color: var(--vvd-color-cta-background)
+}
+
+:host([layout=outlined][connotation=success]) {
+	--mdc-theme-primary: var(--vvd-color-success-background);
+	border-color: var(--vvd-color-success-background)
+}
+
+:host([layout=outlined][connotation=error]) {
+	--mdc-theme-primary: var(--vvd-color-error-background);
+	border-color: var(--vvd-color-error-background)
+}
+
+:host([layout=outlined][connotation=info]) {
+	--mdc-theme-primary: var(--vvd-color-info-background);
+	border-color: var(--vvd-color-info-background)
+}
+
+:host([layout=outlined][connotation=announcement]) {
+	--mdc-theme-primary: var(--vvd-color-announcement-background);
+	border-color: var(--vvd-color-announcement-background)
+}
 
 /////////////////////////////////////////////////////////////////////////////
 .mdc-button {
