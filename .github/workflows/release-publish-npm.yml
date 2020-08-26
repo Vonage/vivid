@@ -4,7 +4,6 @@ on:
   push:
     tags:
       - v*
-    branches: [add-npm-deploy]
 
 jobs:
   build-publish:
@@ -28,7 +27,6 @@ jobs:
           npm install -g yarn
           yarn install
 
-      # Build and publish
       - name: Build components
         run: yarn compile
 
