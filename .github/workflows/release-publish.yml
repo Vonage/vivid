@@ -24,7 +24,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12
-          # registry-url: 'https://npm.pkg.github.com'
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
         run: |
@@ -38,13 +38,13 @@ jobs:
       - name: Build CDN icon resolver
         run: yarn build:icon-resolver --resolveStrategy=cdn --awsAccessKey=${{ secrets.AWS_VIVID_DEMO_PROD_ACCESS }} --awsAccessSecret=${{ secrets.AWS_VIVID_DEMO_PROD_SECRET }} --awsBucketName=vivid-icons-prod --awsBaseUrl=https://d3fzvwfxu7izti.cloudfront.net
 
-      - name: Publish components (GitHub)
-        run: yarn lerna publish from-package --registry https://npm.pkg.github.com --no-git-tag-version --no-push --yes
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Publish components (GitHub)
+      #   run: yarn lerna publish from-package --registry https://npm.pkg.github.com --no-git-tag-version --no-push --yes
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish components (NPM)
-        run: yarn lerna publish from-package --registry https://registry.npmjs.org --no-git-tag-version --no-push --yes
+        run: yarn lerna publish from-package --no-git-tag-version --no-push --yes
         env:
           NODE_AUTH_TOKEN: ad20fbed-a438-49f3-9fd0-30a008dc8741
 
