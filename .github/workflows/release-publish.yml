@@ -44,7 +44,7 @@ jobs:
       #     NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish components (NPM)
-        run: yarn lerna publish from-package --no-git-tag-version --no-push --yes
+        run: yarn lerna publish from-package --registry https://registry.npmjs.org --no-git-tag-version --no-push --yes
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
