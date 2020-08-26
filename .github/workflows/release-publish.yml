@@ -46,7 +46,7 @@ jobs:
       - name: Publish components (NPM)
         run: yarn lerna publish from-package --registry https://registry.npmjs.org --no-git-tag-version --no-push --yes
         env:
-          NPM_TOKEN: ad20fbed-a438-49f3-9fd0-30a008dc8741
+          NODE_AUTH_TOKEN: ad20fbed-a438-49f3-9fd0-30a008dc8741
 
       # # Notify community
       # - name: Notify slack
