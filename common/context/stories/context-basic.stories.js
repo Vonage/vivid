@@ -1,13 +1,38 @@
 import context from '@vonage/vvd-context/vvd-context';
+import '@vonage/vwc-scheme-select';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Cells/Context',
-	component: 'vvd-context',
+	title: 'Cells/Context'
 };
 
 export const basic = () => html`
-	<vwc-frame>
+	<style>
+		body {
+			background-color: #eee;
+		}
+
+		.app-page-frame {
+			padding: 24px;
+			background-color: #fff;
+			box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+			border-radius: 3px;
+		}
+
+		.masthead {
+			display: flex;
+			align-items: center;
+			border-bottom: 1px solid #efefef;
+		}
+	</style>
+
+	<h3>Example of a static contents styled with Vivid context</h3>
+	<div class="app-page-frame">
+		<div class="masthead">
+			<span>Scheme:</span>
+			<vwc-scheme-select></vwc-scheme-select>
+		</div>
+
 		<h1>Call Flow (H1)</h1>
 
 		<h2>Overview (H2)</h2>
@@ -31,7 +56,7 @@ export const basic = () => html`
 			Call Control Object). This scenario is generally used for forwarding
 			calls.
 		</p>
-	</vwc-frame>
+	</dive>
 `;
 
 context
