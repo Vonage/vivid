@@ -11,9 +11,9 @@
 // ! mixin for other components such as call-out
 @mixin connotations-context(
   $selector: ':host([connotation-specifier])',
-  $default: regular
+  $default: primary
 ) {
-  $connotations: regular cta success error info announcement;
+  $connotations: primary cta success error info announcement;
 
   @each $connotation in $connotations {
     $attr: '[connotation="#{$connotation}"i]';
@@ -45,6 +45,7 @@
 @include connotations-context(
   ':host([unelevated][connotation-specifier]), :host([outlined][connotation-specifier])'
 );
+
 /////////////////////////////////////////////////////////////////////////////
 .mdc-button {
 	font-stretch: var(--mdc-typography-button-font-stretch); // ! this was supposed to be set by MDC
