@@ -8,6 +8,7 @@ context
 	.then(() => console.info('init Vivid context done (preview frame)'));
 
 // Initialize material icons (TBD: Remove once all MWC icons have been replaced by VWC alternative)
+// See https://github.com/material-components/material-components-web-components/tree/master/packages/icon
 document.querySelector('head').appendChild(
 	(function(){
 		const linkEl = document.createElement('link');
