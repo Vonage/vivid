@@ -24,7 +24,7 @@ async function changeFieldValue(actualElement, value, eventName = 'change') {
 	actualElement.dispatchEvent(evt);
 }
 
-describe('vwc-textfield', () => {
+describe('textfield', () => {
 	let addedElements = [];
 
 	afterEach(() => {
