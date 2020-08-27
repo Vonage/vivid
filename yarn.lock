@@ -4342,6 +4342,13 @@
     "@types/node" "*"
     log4js "^4.0.0"
 
+"@types/kefir@^3.8.5":
+  version "3.8.5"
+  resolved "https://registry.yarnpkg.com/@types/kefir/-/kefir-3.8.5.tgz#dea5421b93f1c7b0547605c753fc24441a38362b"
+  integrity sha512-sNWBzOdQGYhxKaTPcMRcnTR4CCJzhKfKVabbTju/mqKc5acFihqk0liEfV6w7o6AFcJx91rDbwSSJjuBy3Sa4Q==
+  dependencies:
+    "@types/node" "*"
+
 "@types/keygrip@*":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@types/keygrip/-/keygrip-1.0.2.tgz#513abfd256d7ad0bf1ee1873606317b33b1b2a72"
