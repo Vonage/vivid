@@ -1,6 +1,7 @@
 :host {
-	display: inline-block;
+	display: block;
 	box-sizing: border-box;
+	min-width: 5rem;
 }
 div.component {
 	$basic: #B779FF;
