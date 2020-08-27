@@ -12,5 +12,4 @@ export const basic = () => html`
 	</style>
 	<h1>Regular</h1>
 	<vwc-media-controller></vwc-media-controller>
-	<script>console.log('Hey')</script>
 `;
