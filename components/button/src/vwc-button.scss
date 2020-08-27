@@ -42,38 +42,9 @@
   }
 }
 
-@include connotations-context(':host([unelevated][connotation-specifier])');
-
-:host([layout=outlined]) {
-	--mdc-theme-primary: var(--vvd-color-regular-background);
-	border-color: var(--vvd-color-regular-background);
-}
-
-:host([layout=outlined][connotation=cta]) {
-	--mdc-theme-primary: var(--vvd-color-cta-background);
-	border-color: var(--vvd-color-cta-background)
-}
-
-:host([layout=outlined][connotation=success]) {
-	--mdc-theme-primary: var(--vvd-color-success-background);
-	border-color: var(--vvd-color-success-background)
-}
-
-:host([layout=outlined][connotation=error]) {
-	--mdc-theme-primary: var(--vvd-color-error-background);
-	border-color: var(--vvd-color-error-background)
-}
-
-:host([layout=outlined][connotation=info]) {
-	--mdc-theme-primary: var(--vvd-color-info-background);
-	border-color: var(--vvd-color-info-background)
-}
-
-:host([layout=outlined][connotation=announcement]) {
-	--mdc-theme-primary: var(--vvd-color-announcement-background);
-	border-color: var(--vvd-color-announcement-background)
-}
-
+@include connotations-context(
+  ':host([unelevated][connotation-specifier]), :host([outlined][connotation-specifier])'
+);
 /////////////////////////////////////////////////////////////////////////////
 .mdc-button {
 	font-stretch: var(--mdc-typography-button-font-stretch); // ! this was supposed to be set by MDC
