@@ -1,21 +1,21 @@
 {
-	"name": "@vonage/vvd-core",
+	"name": "@vonage/vvd-context",
 	"version": "0.5.0",
 	"description": "> TODO: description",
-	"author": "yinonov <yinon@hotmail.com>",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/core#readme",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/context#readme",
 	"license": "ISC",
-	"main": "vvd-core.js",
-	"module": "vvd-core.js",
+	"main": "vvd-context.js",
+	"module": "vvd-context.js",
 	"files": [
 		"*.js",
 		"*.d.ts",
-		"*.js.map"
+		"*.js.map",
+		"*.css"
 	],
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/core"
+		"directory": "components/context"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"
@@ -24,8 +24,11 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@vonage/vvd-fonts": "^0.5.0",
-		"@vonage/vvd-scheme": "^0.5.0",
+		"@vonage/vvd-core": "^0.5.0",
+		"lit-element": "2.3.1",
 		"tslib": "^2.0.0"
+	},
+	"devDependencies": {
+		"@vonage/vvd-typography": "^0.5.0"
 	}
 }

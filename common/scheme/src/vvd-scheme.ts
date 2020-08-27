@@ -81,12 +81,10 @@ async function set(scheme: SchemeOption = schemeDefault()) {
 	let nextScheme: PredefinedScheme;
 
 	if (scheme == 'syncWithOSSettings') {
-		// observe preference changes
-		pcs.addListener(syncWithOSSettings);
+		pcs.addEventListener('change', syncWithOSSettings);
 		nextScheme = getPreferedColorScheme() as PredefinedScheme;
 	} else {
-		// stop observing preference changes
-		pcs.removeListener(syncWithOSSettings);
+		pcs.removeEventListener('change', syncWithOSSettings);
 		nextScheme = scheme;
 	}
 	if (_selectedScheme === nextScheme) {
