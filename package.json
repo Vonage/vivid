@@ -41,9 +41,6 @@
     "watch": "node scripts/watcher.js",
     "wca:custom-elements": "yarn compile && wca analyze components/icon/src/vwc-icon.js components/**/*.d.ts --outFile custom-elements.json"
   },
-  "dependencies": {
-    "lit-html": "^1.2.1"
-  },
   "devDependencies": {
     "@babel/core": "^7.10.4",
     "@open-wc/building-rollup": "^1.3.1",
@@ -66,8 +63,8 @@
     "@storybook/react": "^6.0.13",
     "@storybook/theming": "^6.0.13",
     "@storybook/web-components": "^6.0.13",
-    "@typescript-eslint/eslint-plugin": "^3.5.0",
-    "@typescript-eslint/parser": "^3.5.0",
+    "@typescript-eslint/eslint-plugin": "^3.10.1",
+    "@typescript-eslint/parser": "^3.10.1",
     "@webcomponents/webcomponentsjs": "^2.4.3",
     "babel-loader": "^8.1.0",
     "chai": "^4.2.0",
@@ -113,8 +110,8 @@
     "rollup-plugin-terser": "^6.1.0",
     "sass": "^1.26.10",
     "style-dictionary": "^2.10.0",
-    "tslib": "^2.0.0",
-    "typescript": "^3.9.7",
+    "tslib": "^2.0.1",
+    "typescript": "^4.0.2",
     "web-component-analyzer": "^1.1.6"
   },
   "eslintConfig": {
