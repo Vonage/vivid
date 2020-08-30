@@ -133,10 +133,7 @@ describe('vwc-textfield', () => {
 				const actualElement = formElement.firstChild;
 				await waitNextTask();
 
-				actualElement.value = fieldValue;
-				let evt = document.createEvent("HTMLEvents");
-				evt.initEvent("change", false, true);
-				actualElement.dispatchEvent(evt);
+				await changeFieldValue(actualElement, fieldValue, 'change');
 
 				expect(actualElement.hiddenInput.value).to.equal(fieldValue);
 			});
