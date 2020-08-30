@@ -35,14 +35,20 @@
 	#{color-semantic.$formfield-border-error}: color-base.$red-600;
 	#{color-semantic.$formfield-label-error-ink}: color-base.$red-600;
 
-  --vvd-color-success-background: #1d7e67;
-  --vvd-color-success-foreground: #ffffff;
+	#{color-semantic.$button-cta-background}: #871fff;
+  #{color-semantic.$button-cta-foreground}: #ffffff;
 
-  --vvd-color-error-background: #d43f3f;
-  --vvd-color-error-foreground: #ffffff;
+  #{color-semantic.$button-success-background}: color-base.$green-700;
+  #{color-semantic.$button-success-foreground}: #ffffff;
 
-	--vvd-color-cta-background: #871fff;
-  --vvd-color-cta-foreground: #ffffff;
+  #{color-semantic.$button-error-background}: color-base.$red-600;
+  #{color-semantic.$button-error-foreground}: #ffffff;
+
+  #{color-semantic.$button-info-background}: color-base.$blue-700;
+  #{color-semantic.$button-info-foreground}: #ffffff;
+
+  #{color-semantic.$button-announcement-background}: color-base.$magenta-500;
+  #{color-semantic.$button-announcement-foreground}: #ffffff;
 }
 
 :host {

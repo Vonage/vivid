@@ -15,4 +15,12 @@
   h2 {
     @include typography.typography-cat-shorthand('title');
   }
+
+  h3 {
+    @include typography.typography-cat-shorthand('subheading-2');
+  }
+
+  h6 {
+    @include typography.typography-cat-shorthand('body-2');
+  }
 }
