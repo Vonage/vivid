@@ -50,13 +50,18 @@ describe('vwc-select', () => {
 	});
 
 	describe(`form association`, function() {
+		let value1, value2, fieldName, formId;
+
+		beforeEach(() => {
+			value1 = Math.random().toString();
+			value2 = Math.random().toString();
+			fieldName = 'test-field';
+			formId = 'testForm';
+		});
 
 		it(`should attach to closest form`, async function() {
-			const value1 = Math.random().toString();
-			const value2 = Math.random().toString();
-			const fieldName = 'test-field';
 			addedElements = textToDomToParent(`
-				<form onsubmit="return false" name="testForm" id="testForm">
+				<form onsubmit="return false" name="testForm" id="${formId}">
 					<${VWC_SELECT} name="${fieldName}" value="${value2}">
 						<vwc-list-item value="${value1}">Item 1</vwc-list-item>
 						<vwc-list-item value="${value2}">Item 2</vwc-list-item>
@@ -78,13 +83,10 @@ describe('vwc-select', () => {
 		});
 
 		it(`should attach to form when given form id`, async function() {
-			const value1 = Math.random().toString();
-			const value2 = Math.random().toString();
-			const fieldName = 'test-field';
 			const externalFormID = 'externalForm';
 
 			addedElements = textToDomToParent(`
-				<form onsubmit="return false" name="testForm" id="testForm">
+				<form onsubmit="return false" name="testForm" id="${formId}">
 					<${VWC_SELECT} name="${fieldName}" value="${value1}" form="${externalFormID}">
 						<vwc-list-item value="${value1}">Item 1</vwc-list-item>
 						<vwc-list-item value="${value2}">Item 2</vwc-list-item>
@@ -111,13 +113,11 @@ describe('vwc-select', () => {
 		});
 
 		it(`should do nothing if form value resolves to a non form element`, async function() {
-			const fieldValue = Math.random().toString();
-			const fieldName = 'test-field';
-			const formId = 'testForm';
 			addedElements = textToDomToParent(`
-			<div onsubmit="return false" name="testForm" id="testForm">
-				<${VWC_SELECT} name="${fieldName}" value="${fieldValue}" form="${formId}">
-					<vwc-list-item value="${fieldValue}">Item 1</vwc-list-item>
+			<div onsubmit="return false" name="testForm" id="${formId}">
+				<${VWC_SELECT} name="${fieldName}" value="${value1}" form="${formId}">
+					<vwc-list-item value="${value1}">Item 1</vwc-list-item>
+					<vwc-list-item value="${value2}">Item 2</vwc-list-item>
 				</${VWC_SELECT}>
 			</div>`);
 			const formElement = addedElements[0];
@@ -129,10 +129,6 @@ describe('vwc-select', () => {
 		describe(`value binding`, function() {
 
 			it(`should reset the value of the custom element to default on form reset`, async function() {
-				const value1 = Math.random().toString();
-				const value2 = Math.random().toString();
-				const fieldName = 'test-field';
-				const formId = 'testForm';
 				addedElements = textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="${formId}">
 					<${VWC_SELECT} name="${fieldName}" value="${value1}" form="${formId}">
@@ -151,17 +147,13 @@ describe('vwc-select', () => {
 			});
 
 			it(`should change the value of the mock input on internal input change`, async function() {
-				const value1 = Math.random().toString();
-				const value2 = Math.random().toString();
-				const fieldName = 'test-field';
-				const formId = 'testForm';
 				addedElements = textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="${formId}">
 					<${VWC_SELECT} name="${fieldName}" value="${value1}" form="${formId}">
 						<vwc-list-item value="${value1}">Item 1</vwc-list-item>
 						<vwc-list-item value="${value2}">Item 2</vwc-list-item>
 					</${VWC_SELECT}>
-				</form>\``);
+				</form>`);
 				const formElement = addedElements[0];
 				const actualElement = formElement.querySelector('vwc-select');
 				await waitNextTask();
@@ -175,17 +167,13 @@ describe('vwc-select', () => {
 
 		describe(`validation`, function() {
 			it(`should get validity from the element's validationMessage`, async function() {
-				const value1 = Math.random().toString();
-				const value2 = Math.random().toString();
-				const fieldName = 'test-field';
-				const formId = 'testForm';
 				addedElements = textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="${formId}">
 					<${VWC_SELECT} required name="${fieldName}" form="${formId}">
 						<vwc-list-item value="${value1}">Item 1</vwc-list-item>
 						<vwc-list-item value="${value2}">Item 2</vwc-list-item>
 					</${VWC_SELECT}>
-				</form>\``);
+				</form>`);
 				const formElement = addedElements[0];
 				const actualElement = formElement.querySelector('vwc-select');
 				await waitNextTask();
@@ -199,17 +187,13 @@ describe('vwc-select', () => {
 			});
 
 			it(`should validate on reset`, async function() {
-				const value1 = Math.random().toString();
-				const value2 = Math.random().toString();
-				const fieldName = 'test-field';
-				const formId = 'testForm';
 				addedElements = textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="${formId}">
 					<${VWC_SELECT} required name="${fieldName}" value="${value1}" form="${formId}">
 						<vwc-list-item value="${value1}">Item 1</vwc-list-item>
 						<vwc-list-item value="${value2}">Item 2</vwc-list-item>
 					</${VWC_SELECT}>
-				</form>\``);
+				</form>`);
 				const formElement = addedElements[0];
 				const actualElement = formElement.querySelector('vwc-select');
 				await waitNextTask();
@@ -227,17 +211,13 @@ describe('vwc-select', () => {
 
 			it(`should not submit an invalid form`, async function() {
 				let submitted = false;
-				const value1 = Math.random().toString();
-				const value2 = Math.random().toString();
-				const fieldName = 'test-field';
-				const formId = 'testForm';
 				addedElements = textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="${formId}">
 					<${VWC_SELECT} required name="${fieldName}" value="${value1}" form="${formId}">
 						<vwc-list-item value="${value1}">Item 1</vwc-list-item>
 						<vwc-list-item value="${value2}">Item 2</vwc-list-item>
 					</${VWC_SELECT}>
-				</form>\``);
+				</form>`);
 				const formElement = addedElements[0];
 				const actualElement = formElement.querySelector('vwc-select');
 				await waitNextTask();
@@ -266,10 +246,6 @@ describe('vwc-select', () => {
 		});
 
 		it(`should work under multiple shadow layers`, async function() {
-			const value1 = Math.random().toString();
-			const value2 = Math.random().toString();
-			const fieldName = 'test-field';
-			const formId = 'testForm';
 			addedElements = textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="${formId}">
 				<vwc-formfield>
@@ -278,7 +254,7 @@ describe('vwc-select', () => {
 						<vwc-list-item value="${value2}">Item 2</vwc-list-item>
 					</${VWC_SELECT}>
 					</vwc-formfield>
-				</form>\``);
+				</form>`);
 			const formElement = addedElements[0];
 			const actualElement = formElement.querySelector('vwc-select');
 			await waitNextTask();
