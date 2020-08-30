@@ -33,10 +33,13 @@ class VwcAudio extends HTMLElement implements ILookup<any> {
 					kefir.stream(({ emit })=> this[SYMBOL_DISCONNECT] = emit).map(()=> false)
 			]).toProperty(()=> false);
 
-		const controllerElProperty = connectedProperty
+		connectedProperty
 			.filter(Boolean)
 			.take(1)
-			.onValue((mediaControllerEl)=> this.appendChild(controllerEl));
+			.onValue(()=> {
+				// eslint-disable-next-line
+				this.appendChild(controllerEl)
+			});
 
 		const
 			userPlayRequestStream = kefir.fromEvents(controllerEl, 'userPlayPauseRequest'),
