@@ -26,6 +26,6 @@
 	"dependencies": {
 		"@vonage/vvd-fonts": "^0.5.0",
 		"@vonage/vvd-scheme": "^0.5.0",
-		"tslib": "^2.0.0"
+		"tslib": "^2.0.1"
 	}
 }
