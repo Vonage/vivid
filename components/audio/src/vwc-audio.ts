@@ -9,17 +9,13 @@ const noop = ()=> {
 	// do nothing
 };
 
-interface ILookup<T> {
-	[key: string]: T;
-}
-
 /**
  * Basic audio player
  *
  * @element vwc-audio
  *
  */
-class VwcAudio extends HTMLElement implements ILookup<any> {
+class VwcAudio extends HTMLElement {
 	[index:string]: any;
 
 	constructor() {
