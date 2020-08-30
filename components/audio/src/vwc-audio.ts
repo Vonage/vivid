@@ -3,13 +3,6 @@
 import '@vonage/vwc-media-controller';
 import kefir from 'kefir';
 
-/*
-audioEl.src = "./src/demo_1/dance_of_the_fireflies_nathan_moore.mp3";
-audioEl.addEventListener('play', controller.setPlayPause.bind(controller, 'play'));
-audioEl.addEventListener('pause', controller.setPlayPause.bind(controller, 'pause'));
-audioEl.addEventListener('timeupdate', ({ timeStamp })=> controller.setPosition(audioEl.currentTime / audioEl.duration));
- */
-
 const [SYMBOL_CONNECT, SYMBOL_DISCONNECT, SYMBOL_AUDIO_EL] = ['symbol_connect', 'symbol_disconnect', 'symbol_audio_el'].map((symbolName)=> Symbol(symbolName));
 
 const noop = ()=> {
