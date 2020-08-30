@@ -22,7 +22,7 @@ MWCButton.styles = [styleCoupling, mwcButtonStyle, vwcButtonStyle];
 const layouts = ['text', 'outlined', 'filled'];
 export type ButtonLayout = typeof layouts;
 
-const connotations = ['regular', 'cta', 'success', 'error', 'info', 'announcement'] as const;
+const connotations = ['primary', 'cta', 'success', 'error', 'info', 'announcement'] as const;
 export type ButtonConnotation = typeof connotations;
 
 const shapes = ['rounded', 'pill'] as const;
@@ -55,7 +55,7 @@ export class VWCButton extends MWCButton {
 	protected updated(): void {
 		const layout: ButtonLayout[number] = this.layout;
 		const connotation: ButtonConnotation[number] | undefined =
-			this.layout === 'filled' ? this.connotation ?? 'regular' : undefined;
+			this.layout === 'filled' ? this.connotation ?? 'primary' : undefined;
 		const shape: ButtonShape[number] = this.shape ?? 'rounded';
 
 		const innerButton = this.shadowRoot?.querySelector('.mdc-button');
