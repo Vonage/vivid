@@ -16,7 +16,6 @@ const noop = ()=> {
  *
  */
 class VwcAudio extends HTMLElement {
-	[index:string]: any;
 
 	constructor() {
 		super();
