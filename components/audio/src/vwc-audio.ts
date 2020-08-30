@@ -13,6 +13,12 @@ interface ILookup<T> {
 	[key: string]: T;
 }
 
+/**
+ * Basic audio player
+ *
+ * @element vwc-audio
+ *
+ */
 class VwcAudio extends HTMLElement implements ILookup<any> {
 	[index:string]: any;
 
@@ -74,6 +80,10 @@ class VwcAudio extends HTMLElement implements ILookup<any> {
 		this[SYMBOL_DISCONNECT]();
 	}
 
+	/**
+	 * Gets/Sets the playhead position
+	 * @param {number} time - The timestamp (in seconds) to jump to
+	 **/
 	get currentTime():number {
 		return this[SYMBOL_AUDIO_EL].currentTime
 	}
@@ -82,6 +92,10 @@ class VwcAudio extends HTMLElement implements ILookup<any> {
 		this[SYMBOL_AUDIO_EL].currentTime = time;
 	}
 
+	/**
+	 * Gets/Sets the audio source
+	 * @param {string} source - The media source file to play
+	 **/
 	get src():string {
 		return [SYMBOL_AUDIO_EL].src;
 	}
@@ -90,10 +104,16 @@ class VwcAudio extends HTMLElement implements ILookup<any> {
 		this[SYMBOL_AUDIO_EL].src = source;
 	}
 
+	/**
+	 * Starts playback
+	 **/
 	play():void {
 		this[SYMBOL_AUDIO_EL].play();
 	}
 
+	/**
+	 * Pauses playback
+	 **/
 	pause():void {
 		this[SYMBOL_AUDIO_EL].pause();
 	}
