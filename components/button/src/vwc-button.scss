@@ -13,7 +13,7 @@
   $selector: ':host([connotation-specifier])',
   $default: primary
 ) {
-  $connotations: primary cta success error;
+  $connotations: primary cta success error info announcement;
 
   @each $connotation in $connotations {
     $attr: '[connotation="#{$connotation}"i]';
@@ -38,11 +38,13 @@
     #{$scoped-selector} {
       --mdc-theme-primary: var(--vvd-color-#{$connotation}-background);
       --mdc-theme-on-primary: var(--vvd-color-#{$connotation}-foreground);
-    }
+		}
   }
 }
 
-@include connotations-context(':host([unelevated][connotation-specifier])');
+@include connotations-context(
+  ':host([unelevated][connotation-specifier]), :host([outlined][connotation-specifier])'
+);
 
 /////////////////////////////////////////////////////////////////////////////
 .mdc-button {
