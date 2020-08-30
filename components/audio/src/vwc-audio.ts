@@ -25,7 +25,7 @@ class VwcAudio extends HTMLElement implements ILookup<any> {
 	constructor() {
 		super();
 
-		[SYMBOL_CONNECT, SYMBOL_DISCONNECT, SYMBOL_AUDIO_EL].forEach((symbol)=> this[symbol] = noop);
+		[SYMBOL_CONNECT, SYMBOL_DISCONNECT, SYMBOL_AUDIO_EL].forEach((symbol) => this[symbol] = noop);
 
 		const
 			audioEl = this[SYMBOL_AUDIO_EL] = new Audio(),
@@ -35,41 +35,45 @@ class VwcAudio extends HTMLElement implements ILookup<any> {
 
 		const connectedProperty = kefir
 			.merge([
-					kefir.stream(({ emit })=> this[SYMBOL_CONNECT] = emit).map(()=> true),
-					kefir.stream(({ emit })=> this[SYMBOL_DISCONNECT] = emit).map(()=> false)
-			]).toProperty(()=> false);
+				kefir.stream(({ emit }) => this[SYMBOL_CONNECT] = emit).map(() => true),
+				kefir.stream(({ emit }) => this[SYMBOL_DISCONNECT] = emit).map(() => false)
+			]).toProperty(() => false);
 
 		connectedProperty
 			.filter(Boolean)
 			.take(1)
 			.onValue(()=> {
 				// eslint-disable-next-line
-				this.appendChild(controllerEl)
+				const sourceUrl = this.getAttribute('src');
+				// eslint-disable-next-line
+				sourceUrl && (this.src = sourceUrl);
+				// eslint-disable-next-line
+				this.appendChild(controllerEl);
 			});
 
 		const
 			userPlayRequestStream = kefir.fromEvents(controllerEl, 'userPlayPauseRequest'),
-			userScrubRequestStream = kefir.fromEvents(controllerEl, 'userScrubRequest').map(({ detail })=> detail),
-			playerTimeUpdatedProperty = kefir.fromEvents(audioEl, 'timeupdate').map(()=> audioEl.currentTime).toProperty(),
+			userScrubRequestStream = kefir.fromEvents(controllerEl, 'userScrubRequest').map(({ detail }) => detail),
+			playerTimeUpdatedProperty = kefir.fromEvents(audioEl, 'timeupdate').map(() => audioEl.currentTime).toProperty(),
 			playerAudioLoadedProperty = kefir
 				.merge([
-					kefir.fromEvents(audioEl, 'loadstart').map(()=> false),
-					kefir.fromEvents(audioEl, 'canplay').map(()=> true)
+					kefir.fromEvents(audioEl, 'loadstart').map(() => false),
+					kefir.fromEvents(audioEl, 'canplay').map(() => true)
 				])
 				.toProperty(),
 			playerIsPlayingProperty = kefir.merge([
-				kefir.fromEvents(audioEl, 'play').map(()=> true),
+				kefir.fromEvents(audioEl, 'play').map(() => true),
 				kefir.merge([
 					kefir.fromEvents(audioEl, 'pause'),
-					playerAudioLoadedProperty.filter((loaded)=> !loaded)
-				]).map(()=> false)
+					playerAudioLoadedProperty.filter((loaded) => !loaded)
+				]).map(() => false)
 			]).toProperty();
 
-		playerTimeUpdatedProperty.onValue(()=> controllerEl.setPosition(audioEl.currentTime === 0 ? 0 : audioEl.currentTime / audioEl.duration));
+		playerTimeUpdatedProperty.onValue(() => controllerEl.setPosition(audioEl.currentTime === 0 ? 0 : audioEl.currentTime / audioEl.duration));
 		playerIsPlayingProperty.onValue(controllerEl.setPlayState.bind(controllerEl));
-		userPlayRequestStream.filterBy(playerAudioLoadedProperty).onValue(()=> audioEl[audioEl.paused ? 'play' : 'pause']());
-		userScrubRequestStream.filterBy(playerAudioLoadedProperty).onValue((position)=> audioEl.currentTime = audioEl.duration * position);
-		connectedProperty.filter((connected)=> !connected).onValue(()=> audioEl.pause());
+		userPlayRequestStream.filterBy(playerAudioLoadedProperty).onValue(() => audioEl[audioEl.paused ? 'play' : 'pause']());
+		userScrubRequestStream.filterBy(playerAudioLoadedProperty).onValue((position) => audioEl.currentTime = audioEl.duration * position);
+		connectedProperty.filter((connected) => !connected).onValue(() => audioEl.pause());
 	}
 
 	connectedCallback():void{
