@@ -1,8 +1,12 @@
 @use '../../../design-tokens/build/scss/schemes/dark/base.scss';
 @use '../../../design-tokens/build/scss/schemes/dark/alternate.scss';
 
+body,
 .vvd-theme-dark-base {
 	@include base.variables;
+
+  color: #ffffff;
+	background-color: #131415;
 }
 
 .vvd-theme-dark-alternate {
