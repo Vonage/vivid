@@ -3,11 +3,11 @@
 import '@vonage/vwc-media-controller';
 import kefir from 'kefir';
 
-const [SYMBOL_CONNECT, SYMBOL_DISCONNECT, SYMBOL_AUDIO_EL] = ['symbol_connect', 'symbol_disconnect', 'symbol_audio_el'].map((symbolName)=> Symbol(symbolName));
+const
+	SYMBOL_TRIGGER = Symbol('trigger'),
+	SYMBOL_AUDIO_EL = Symbol('audio_el');
 
-const noop = ()=> {
-	// do nothing
-};
+const filterByValue = (filterValue)=> (value)=> value === filterValue;
 
 /**
  * Basic audio player
@@ -20,18 +20,18 @@ class VwcAudio extends HTMLElement {
 	constructor() {
 		super();
 
-		[SYMBOL_CONNECT, SYMBOL_DISCONNECT, SYMBOL_AUDIO_EL].forEach((symbol) => this[symbol] = noop);
-
 		const
 			audioEl = this[SYMBOL_AUDIO_EL] = new Audio(),
 			controllerEl = document.createElement('vwc-media-controller');
 
 		audioEl.controls = true;
 
+		const ingestStream = kefir.stream(({ emit })=> this[SYMBOL_TRIGGER] = emit);
+
 		const connectedProperty = kefir
 			.merge([
-				kefir.stream(({ emit }) => this[SYMBOL_CONNECT] = emit).map(() => true),
-				kefir.stream(({ emit }) => this[SYMBOL_DISCONNECT] = emit).map(() => false)
+				ingestStream.filter(filterByValue('connected')).map(()=> true),
+				ingestStream.filter(filterByValue('disconnected')).map(()=> false)
 			]).toProperty(() => false);
 
 		connectedProperty
@@ -72,11 +72,11 @@ class VwcAudio extends HTMLElement {
 	}
 
 	connectedCallback():void{
-		this[SYMBOL_CONNECT]();
+		this[SYMBOL_TRIGGER]('connected');
 	}
 
 	disconnectedCallback():void {
-		this[SYMBOL_DISCONNECT]();
+		this[SYMBOL_TRIGGER]('disconnected');
 	}
 
 	/**
