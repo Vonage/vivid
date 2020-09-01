@@ -2,7 +2,7 @@ const css = `.container {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-start;
-	margin: 1rem
+	margin: 20px;
 }
 
 .container > figure {
