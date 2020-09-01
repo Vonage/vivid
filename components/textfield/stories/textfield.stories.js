@@ -62,12 +62,24 @@ export const searchField = () => html`
   </style>
 
   <h3>Search</h3>
+  <vwc-textfield outlined label="VWC textfield"></vwc-textfield>
+  <br />
   <vwc-textfield outlined shape="pill" label="Search...">
     <vwc-icon
       title="an icon of magnifying glass"
       size="small"
-			type="search"
-			slot="icon"
+      type="search"
+      slot="icon"
     ></vwc-icon>
+  </vwc-textfield>
+  <br />
+  <vwc-textfield outlined shape="pill" placeholder="Search...">
+    <span
+      title="an icon of magnifying glass"
+      size="small"
+      type="search"
+      slot="icon"
+      >Hi</span
+    >
   </vwc-textfield>
 `;
