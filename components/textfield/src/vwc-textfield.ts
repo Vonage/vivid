@@ -1,4 +1,4 @@
-import { customElement } from 'lit-element';
+import { customElement, property } from 'lit-element';
 import '@vonage/vwc-notched-outline';
 import { TextField as MWCTextField } from '@material/mwc-textfield';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
@@ -8,9 +8,9 @@ import { style as mwcTextFieldStyle } from '@material/mwc-textfield/mwc-textfiel
 export { TextFieldType } from '@material/mwc-textfield';
 
 declare global {
-	interface HTMLElementTagNameMap {
-		'vwc-textfield': VWCTextField;
-	}
+  interface HTMLElementTagNameMap {
+    'vwc-textfield': VWCTextField;
+  }
 }
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
@@ -19,8 +19,13 @@ MWCTextField.styles = [styleCoupling, mwcTextFieldStyle, vwcTextFieldStyle];
 
 @customElement('vwc-textfield')
 export class VWCTextField extends MWCTextField {
-	async firstUpdated(): Promise<void> {
-		await super.firstUpdated();
-		this.shadowRoot?.querySelector('.mdc-notched-outline')?.shadowRoot?.querySelector('.mdc-notched-outline')?.classList.add('vvd-notch');
-	}
+  @property({ type: Boolean }) dense = false;
+
+  async firstUpdated(): Promise<void> {
+    await super.firstUpdated();
+    this.shadowRoot
+      ?.querySelector('.mdc-notched-outline')
+      ?.shadowRoot?.querySelector('.mdc-notched-outline')
+      ?.classList.add('vvd-notch');
+  }
 }

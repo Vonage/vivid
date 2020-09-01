@@ -1,11 +1,26 @@
 import '@vonage/vwc-textfield/vwc-textfield.js';
 import '@vonage/vwc-icon';
 import { html } from 'lit-element';
+import { spread } from '@open-wc/lit-helpers';
+import { argTypes } from './argTypes.js';
 
 export default {
   title: 'Atoms/Textfield',
   component: 'vwc-textfield',
+  argTypes,
 };
+
+const Template = (args) =>
+  html`<vwc-textfield ...=${spread(args)}></vwc-textfield>`;
+
+export const Default = Template.bind({});
+Default.args = { label: 'e.g. username' };
+
+export const Outlined = Template.bind({});
+Outlined.args = { outlined: '', label: 'e.g. username' };
+
+export const Dense = Template.bind({});
+Dense.args = { outlined: '', dense: '' };
 
 export const basic = () => html`
   <style>

@@ -1,16 +1,7 @@
-// .mdc-notched-outline .mdc-notched-outline__leading {
-// 	border-top-left-radius: 6px;
-// 	border-bottom-left-radius: 6px;
-// }
-
-// .mdc-notched-outline .mdc-notched-outline__trailing {
-// 	border-top-right-radius: 6px;
-// 	border-bottom-right-radius: 6px;
-// }
-.mdc-notched-outline__notch {
-  --mdc-notched-outline-border-color: inherit;
-  // border-top: 1px solid;
-  // border-top-color: var(
-  //   --vvd-outline-color
-  // ); // ! TODO: [VIV-152] @gullerya magic string right there 👈 let's use name-safe variables
+:host {
+  // --mdc-theme-primary: pink;
+  // --mdc-shape-small: 28px;
+  // --mdc-notched-outline-stroke-width: 1px;
+  // --mdc-notched-outline-notch-offset: 0;
+  // --mdc-notched-outline-border-color: green;
 }
