@@ -23,8 +23,8 @@ const [
  *
  * @element vwc-media-controller
  *
- * @fires userScrubRequest - Fires while the user modifies the scrubber's knob location.
- * @fires {number} userPlayPauseRequest - Fires when the user clicks the play/pause button, the "detail" event field will contain a number between zero and one describing the user's relative selected position.
+ * @fires userScrubRequest - Fires while the user modifies the scrubber's knob location, the "detail" event field will contain a number between zero and one describing the user's relative selected position..
+ * @fires {number} userPlayPauseRequest - Fires when the user clicks the play/pause button
  */
 class MediaController extends HTMLElement {
 

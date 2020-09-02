@@ -3,6 +3,22 @@ import { textToDomToParent } from '../../../utils/js/test-helpers';
 
 const COMPONENT_NAME = `vwc-media-controller-yonatan`;
 
+
+function emulateMouseMove(clientX, clientY) {
+	const mouseMoveEvent = new MouseEvent("mousemove", {clientX, clientY});
+	document.dispatchEvent(mouseMoveEvent);
+}
+
+function startDragging(knobElement, clientX = 0, clientY = 0) {
+	const mouseDownEvent = new MouseEvent("mousedown", {clientX, clientY});
+	knobElement.dispatchEvent(mouseDownEvent);
+}
+
+function stopDragging(knobElement, clientX = 0, clientY = 0) {
+	const mouseUpEvent = new MouseEvent("mouseup");
+	knobElement.dispatchEvent(mouseUpEvent);
+}
+
 describe(`${COMPONENT_NAME}`, ()=>{
 	let addedElements = [];
 	let actualElement;
@@ -13,15 +29,222 @@ describe(`${COMPONENT_NAME}`, ()=>{
 	});
 
 	afterEach(function() {
-		addedElements.forEach(elm => elm.remove());
+		// addedElements.forEach(elm => elm.remove());
 	});
 
-	it('should register as a custom element', async ()=> {
-		assert.exists(customElements.get(`${COMPONENT_NAME}`, 'vwc-media-controller element is not defined'));
+	describe(`init`, function() {
+		it('should register as a custom element', async ()=> {
+			assert.exists(customElements.get(`${COMPONENT_NAME}`, 'vwc-media-controller element is not defined'));
+		});
+
+		it(`should have the DOM set`, function() {
+
+		});
 	});
 
 	describe(`userPlayPauseRequest`, function() {
-		it(`should emit inverse play/pause state in the event detail`, function() {
+		let button;
+		beforeEach(function() {
+			button = actualElement.shadowRoot.querySelector('#playControl');
+		});
+
+		it(`should emit a userPlayPauseRequest event on play button click`, function() {
+			let eventFired = false;
+
+			actualElement.addEventListener('userPlayPauseRequest', _ => {
+				eventFired = true;
+			});
+
+			button.click();
+
+			expect(eventFired).to.equal(true);
+		});
+	});
+
+	describe(`userScrubRequest`, function() {
+
+		let scrubberElement, clientX, clientY, padding, width, knobElement;
+
+		beforeEach(function() {
+			scrubberElement = actualElement.shadowRoot.querySelector('.scrubber');
+			knobElement = scrubberElement.querySelector('button');
+
+			clientX = 5;
+			clientY = 100;
+			padding = 7;
+			scrubberElement.style.paddingRight = padding + 'px';
+			scrubberElement.style.paddingLeft = 0 + 'px';
+			width = scrubberElement.getBoundingClientRect().width;
+		});
+
+		it(`should emit a userScrubRequest event with ratio in event detail when user clicks on the slider`, function() {
+			let detail;
+			actualElement.addEventListener('userScrubRequest', (event) => {
+				detail = event.detail;
+			});
+
+			const event = new MouseEvent("click", {clientX, clientY});
+			scrubberElement.dispatchEvent(event);
+
+			expect(detail).to.equal(clientX / (width - padding));
+		});
+
+		it(`should emit a userScrubRequest event with ratio in event detail when user is dragging the scrub`, function() {
+			const motionCoordinates = [
+				10, 15, 20, 12, 177
+			];
+			const expectedDetails = motionCoordinates.map(x => x / (width - padding));
+
+			const details = [];
+			actualElement.addEventListener('userScrubRequest', (event) => {
+				details.push(event.detail);
+			});
+
+			startDragging(knobElement, clientX, clientY);
+
+			motionCoordinates.forEach((x) => emulateMouseMove(x, clientY));
+
+			expect(details.length).to.equal(expectedDetails.length);
+			expectedDetails.forEach((expectedResult, index) => expect(expectedResult).to.equal(details[index]));
+		});
+
+		it(`should move the knob while dragging`, function() {
+			const motionCoordinates = [
+				10, 15, 20
+			];
+
+			const knobPositions = [];
+			actualElement.addEventListener('userScrubRequest', (event) => {
+				knobPositions.push(knobElement.getBoundingClientRect().x);
+			});
+
+			startDragging(knobElement, clientX, clientY);
+
+			motionCoordinates.forEach((x, index) => {
+				emulateMouseMove(x, clientY)
+			});
+
+			motionCoordinates.forEach((expectedX, index) => {
+				expect(expectedX).to.equal(knobPositions[index]);
+			});
+
+			stopDragging(knobElement);
+		});
+
+		it('should stop emitting userScrubRequest after mouseup event', function() {
+
+			const stopDraggingIndex = 3;
+			const motionCoordinates = [
+				10, 15, 20, 12, 177
+			];
+			const expectedDetails = motionCoordinates
+				.map(x => x / (width - padding))
+				.filter((val, index) => index < stopDraggingIndex);
+
+			const details = [];
+			actualElement.addEventListener('userScrubRequest', (event) => {
+				details.push(event.detail);
+			});
+
+			startDragging(knobElement, clientX, clientY);
+
+			motionCoordinates.forEach((x, index) => {
+				if (index === stopDraggingIndex) {
+					stopDragging(knobElement);
+				}
+				emulateMouseMove(x, clientY)
+			});
+
+			expect(details.length).to.equal(expectedDetails.length);
+			expectedDetails.forEach((expectedResult, index) => expect(expectedResult).to.equal(details[index]));
+		});
+
+		it(`should stop sending userScrubRequest when out of X bounds`, function() {
+			function outOfBoundsValue() {
+				return Math.random() * 10 + dispatchSlackness;
+			}
+			const scrubberFixedWidth = 20;
+			const dispatchSlackness = 1;
+			scrubberElement.style.width = `${scrubberFixedWidth}px`;
+
+			const motionCoordinates = [
+				0 - outOfBoundsValue(), 0, 5, scrubberFixedWidth, scrubberFixedWidth + outOfBoundsValue()
+			];
+
+			const expectedEventsCount = 3; // only 0, 5 and scrubberFixedWidth
+
+			let eventsSent = 0;
+			actualElement.addEventListener('userScrubRequest', (event) => {
+				eventsSent++;
+			});
+
+			startDragging(knobElement, clientX, clientY);
+
+			motionCoordinates.forEach((x) => {
+				emulateMouseMove(x, clientY);
+			});
+
+			expect(eventsSent, `Error: ${JSON.stringify(motionCoordinates)} triggered more events than expected`).to.equal(expectedEventsCount)
+		});
+
+		it(`should stop moving the knob while x position is outside the scrubber width`, function() {
+			const scrubberFixedWidth = 20;
+			scrubberElement.style.width = `${scrubberFixedWidth}px`;
+			const motionCoordinates = [
+				0 - Math.random() * 10, 0, 5, scrubberFixedWidth, scrubberFixedWidth + Math.random()*10
+			];
+
+			const expectedPositions = motionCoordinates.map(x => x < 0 ? 0 :
+				x > scrubberFixedWidth ? scrubberFixedWidth : x);
+
+			const knobPositions = [];
+
+			startDragging(knobElement, clientX, clientY);
+
+			motionCoordinates.forEach((x) => {
+				emulateMouseMove(x, clientY);
+				knobPositions.push(knobElement.getBoundingClientRect().x);
+			});
+
+			expectedPositions.forEach((expectedPosition, index) => expect(expectedPosition, `failed on index ${index}`).to.equal(knobPositions[index]));
+
+		});
+
+	});
+
+	describe(`setPlayState`, function() {
+		let button;
+		beforeEach(function() {
+			button = actualElement.shadowRoot.querySelector('#playControl');
+		});
+
+		it(`should toggle the play button class "isPlayed"`, function() {
+			const isPlayingOnStartup = button.classList.contains("isPlayed");
+			actualElement.setPlayState(true);
+			const isPlayingAfterSetPlayStateTrue = button.classList.contains("isPlayed");
+			actualElement.setPlayState(false);
+			const isNotPlayingAfterSetPlayStateTrue = button.classList.contains("isPlayed");
+
+			expect(isPlayingOnStartup, 'Error: playing on startup').to.equal(false);
+			expect(isPlayingAfterSetPlayStateTrue, 'Error: not playing after state change').to.equal(true);
+			expect(isNotPlayingAfterSetPlayStateTrue, 'Error: still playing after state change to false').to.equal(false);
+		});
+
+		it(`should set the play state according to the input`, function() {
+
+		});
+	});
+
+	describe(`setPosition`, function() {
+		it(`should set the scrub position according to input in %`, function() {
+
+		});
+
+		it(`should set the knob according to the last setPosition value after user change`, function() {
+
+		});
+
+		it(`should set the knob according to the last setPosition value after dragEnd`, function() {
 
 		});
 	});
