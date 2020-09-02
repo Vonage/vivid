@@ -15,7 +15,7 @@ export const basic = () => html`
   <vwc-switch disabled></vwc-switch>
   <vwc-switch checked disabled></vwc-switch>
 
-  <h3>Dense</h3>
-  <vwc-switch dense></vwc-switch>
-  <vwc-switch checked dense></vwc-switch>
+  <h3>Enlarged</h3>
+  <vwc-switch enlarged></vwc-switch>
+  <vwc-switch checked enlarged></vwc-switch>
 `;

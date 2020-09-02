@@ -1,82 +1,86 @@
 @use '../../../utils/scss/variable-names/color-base-variable-names' as color-base;
 
+// sizing parts only
 :host {
-	.mdc-switch {
-		width: 50px;
-		height: 30px;
+	border-radius: 16px;
+
+	.mdc-switch,
+	.mdc-switch__native-control {
+		width: 30px;
+		height: 20px;
 	}
 
 	.mdc-switch__track {
 		width: 100%;
 		height: 100%;
-		border-radius: 15px;
+		border-radius: 16px;
+	}
+
+	.mdc-switch__thumb-underlay {
+		top: 0;
+		left: 0;
+		width: 20px;
+		height: 100%;
+
+		.mdc-switch__thumb {
+			width: 16px;
+			height: 16px;
+			border: none;
+		}
+	}
+
+	.mdc-switch--checked .mdc-switch__thumb-underlay {
+    transform: translateX(10px);
 	}
 }
 
-:host([dense]) {
-	.mdc-switch {
+:host([enlarged]) {
+	.mdc-switch,
+	.mdc-switch__native-control {
+		width: 50px;
+		height: 32px;
+	}
+
+	.mdc-switch__thumb-underlay {
 		width: 32px;
-		height: 20px;
+
+		.mdc-switch__thumb {
+			width: 24px;
+			height: 24px;
+		}
+	}
+
+	.mdc-switch--checked .mdc-switch__thumb-underlay {
+    transform: translateX(18px);
 	}
 }
 
-// .mdc-switch {
+//	colors/shadowing
+:host {
+	.mdc-switch {
+		.mdc-switch__thumb {
+			box-shadow: none;
+		}
 
-// 	&--disabled {
+		&.mdc-switch--checked .mdc-switch__thumb {
+			background-color: #fff;
+		}
 
-//     opacity: 0.5;
-//   }
+		&:hover .mdc-switch__thumb {
+			opacity: 0.9;
+		}
 
-//   &:not(.mdc-switch--disabled) {
-//     &:hover {
-//     }
-//   }
+		&.mdc-switch--disabled {
+			opacity: initial;
 
-//   &__track,
-//   &__thumb,
-//   &__thumb:after,
-//   &__thumb-underlay {
-//     transition-duration: 0.4s;
-//   }
+			.mdc-switch__track {
+				opacity: initial;
+				background-color: color-base.$grey-500;
+			}
+		}
+	}
+}
 
-//   &__track {
-//     &,
-//     .mdc-switch--checked & {
-//       opacity: 1;
-//     }
-//   }
-
-//   &__thumb {
-//     box-shadow: none;
-//   }
-// }
-
-// .mdc-switch__thumb:after {
-//   border-radius: 15px;
-//   box-shadow: 0 0 0 0;
-//   content: '';
-//   height: 30px;
-//   left: 9px;
-//   opacity: 0.3;
-//   position: absolute;
-//   top: 9px;
-//   transition-property: box-shadow, transform;
-//   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-//   width: 50px;
-
-//   .mdc-switch--checked & {
-//     transform: translateX(-20px);
-//   }
-
-//   .mdc-ripple-upgraded--background-focused & {
-//     box-shadow: 0 0 0 5px #9b9da3;
-
-//     .mdc-switch--checked & {
-//       box-shadow: 0 0 0 5px var(--mdc-theme-secondary);
-//     }
-
-//     .mdc-switch--disabled & {
-//       display: none;
-//     }
-//   }
-// }
+:host(:focus-within) {
+	box-shadow: 1px -1px 4px rgba(0, 0, 0, 0.25), -1px 1px 3px 1px rgba(0, 0, 0, 0.25);
+}

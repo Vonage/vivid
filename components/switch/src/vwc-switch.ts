@@ -21,7 +21,7 @@ MWCSwitch.styles = [styleCoupling, mwcSwitchStyle, vwcSwitchStyle];
 export class VWCSwitch extends MWCSwitch {
 
 	@property({ type: Boolean, reflect: true })
-	dense = false;
+	enlarged = false;
 
 	protected renderRipple(): TemplateResult {
 		return html``;

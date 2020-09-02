@@ -1,0 +1,48 @@
+import '../vwc-switch.js';
+import { waitNextTask, textToDomToParent, assertComputedStyle } from '../../../utils/js/test-helpers.js';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
+
+chai.use(chaiDomDiff);
+
+const VWC_SWITCH = 'vwc-switch';
+
+describe('switch', () => {
+	let addedElements = [];
+	afterEach(() => {
+		addedElements.forEach(elm => elm.remove());
+	});
+	it('vwc-switch is defined as a custom element', async () => {
+		assert.exists(customElements.get(VWC_SWITCH, 'vwc-switch element is not defined'));
+	});
+
+	it('should have internal contents', async () => {
+		addedElements = textToDomToParent(`<${VWC_SWITCH}></${VWC_SWITCH}>`);
+		const actualElement = addedElements[0];
+		await waitNextTask();
+		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
+	});
+
+	describe('sizing', () => {
+		it('should have normal size by default', async () => {
+			addedElements = textToDomToParent(`<${VWC_SWITCH}></${VWC_SWITCH}>`);
+			const actualElement = addedElements[0];
+			await waitNextTask();
+			const expectedStyles = {
+				width: '30px',
+				height: '20px'
+			};
+			assertComputedStyle(actualElement, expectedStyles);
+		});
+
+		it('should have enlarged size when enlarged', async () => {
+			addedElements = textToDomToParent(`<${VWC_SWITCH} enlarged></${VWC_SWITCH}>`);
+			const actualElement = addedElements[0];
+			await waitNextTask();
+			const expectedStyles = {
+				width: '50px',
+				height: '32px'
+			};
+			assertComputedStyle(actualElement, expectedStyles);
+		});
+	});
+});
