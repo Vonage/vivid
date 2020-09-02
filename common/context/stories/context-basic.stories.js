@@ -1,64 +1,47 @@
 import context from '@vonage/vvd-context/vvd-context';
 import '@vonage/vwc-scheme-select';
+import '@vonage/vwc-top-app-bar';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Cells/Context'
+  title: 'Cells/Context',
 };
 
 export const basic = () => html`
-	<style>
-		body {
-			background-color: #eee;
-		}
+  <main>
+    <vwc-top-app-bar dense style="position: absolute; left: 0; top: 0;">
+      <div slot="title">Example page</div>
+      <span slot="actionItems">Choose scheme:</span>
+      <vwc-scheme-select slot="actionItems"></vwc-scheme-select>
+      <div><!-- content --></div>
+    </vwc-top-app-bar>
 
-		.app-page-frame {
-			padding: 24px;
-			background-color: #fff;
-			box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
-			border-radius: 3px;
-		}
+    <h1>Call Flow (H1)</h1>
 
-		.masthead {
-			display: flex;
-			align-items: center;
-			border-bottom: 1px solid #efefef;
-		}
-	</style>
+    <h2>Overview (H2)</h2>
 
-	<h3>Example of a static contents styled with Vivid context</h3>
-	<div class="app-page-frame">
-		<div class="masthead">
-			<span>Scheme:</span>
-			<vwc-scheme-select></vwc-scheme-select>
-		</div>
+    <p>
+      The Nexmo Voice API handles two types of phone call:
+      <b>inbound</b> and <b>outbound</b>.
+    </p>
 
-		<h1>Call Flow (H1)</h1>
+    <p>
+      <b>Inbound</b> calls are calls made to a Nexmo number from another regular
+      phone anywhere in the world.
+    </p>
 
-		<h2>Overview (H2)</h2>
-
-		<p>
-			The Nexmo Voice API handles two types of phone call: <b>inbound</b> and
-			<b>outbound</b>.
-		</p>
-
-		<p>
-			<b>Inbound</b> calls are calls made to a Nexmo number from another regular
-			phone anywhere in the world.
-		</p>
-
-		<p>
-			<b>Outbound</b> calls are calls made from the Nexmo platform to a regular
-			phone number. Outbound calls are usually initiated in response to a
-			request made via the REST API to create a new call. Outbound calls may
-			also be made from within the call flow of an existing call (either inbound
-			or outbound) using the <code>connect</code> action within the NCCO (Nexmo
-			Call Control Object). This scenario is generally used for forwarding
-			calls.
-		</p>
-	</dive>
+    <p>
+      <b>Outbound</b> calls are calls made from the Nexmo platform to a regular
+      phone number. Outbound calls are usually initiated in response to a
+      request made via the REST API to create a new call. Outbound calls may
+      also be made from within the call flow of an existing call (either inbound
+      or outbound) using the <code>connect</code> action within the NCCO (Nexmo
+      Call Control Object). This scenario is generally used for forwarding
+      calls.
+    </p>
+  </main>
 `;
 
 context
-	.init()
-	.then(() => console.log('Vivid context initialised for the demo story'));
+  .init()
+  .then(() => console.log('Vivid context initialised for the demo story'));
