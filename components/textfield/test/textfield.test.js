@@ -1,6 +1,6 @@
 import '../vwc-textfield.js';
 import '@vonage/vwc-formfield';
-import { waitNextTask, textToDomToParent } from '../../../utils/js/test-helpers.js';
+import { waitNextTask, textToDomToParent } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
