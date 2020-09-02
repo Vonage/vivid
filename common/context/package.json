@@ -1,34 +1,35 @@
 {
-  "name": "@vonage/vvd-context",
-  "version": "0.5.0",
-  "description": "> TODO: description",
-  "homepage": "https://github.com/Vonage/vivid/tree/master/components/context#readme",
-  "license": "ISC",
-  "main": "vvd-context.js",
-  "module": "vvd-context.js",
-  "files": [
-    "*.js",
-    "*.d.ts",
-    "*.js.map",
-    "*.css"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/vonage/vivid.git",
-    "directory": "components/context"
-  },
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
-  },
-  "bugs": {
-    "url": "https://github.com/Vonage/vivid/issues"
-  },
-  "dependencies": {
-    "@vonage/vvd-core": "^0.5.0",
-    "lit-element": "2.3.1",
-    "tslib": "^2.0.0"
-  },
-  "devDependencies": {
-    "@vonage/vvd-typography": "^0.5.0"
-  }
+	"name": "@vonage/vvd-context",
+	"version": "0.5.0",
+	"description": "> TODO: description",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/context#readme",
+	"license": "ISC",
+	"main": "vvd-context.js",
+	"module": "vvd-context.js",
+	"files": [
+		"*.js",
+		"*.d.ts",
+		"*.js.map",
+		"*.css"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/vonage/vivid.git",
+		"directory": "components/context"
+	},
+	"scripts": {
+		"test": "echo \"Error: run tests from root\" && exit 1"
+	},
+	"bugs": {
+		"url": "https://github.com/Vonage/vivid/issues"
+	},
+	"dependencies": {
+		"@vonage/vvd-core": "^0.5.0",
+		"lit-element": "^2.4.0",
+		"tslib": "^2.0.1"
+	},
+	"devDependencies": {
+		"@vonage/vvd-typography": "^0.5.0"
+	}
 }
+
