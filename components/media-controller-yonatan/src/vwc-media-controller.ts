@@ -45,10 +45,7 @@ function setScrubListeners(element: MediaController, scrubElement: HTMLDivElemen
 		const {width, x: scrubberX} = scrubElement.getBoundingClientRect();
 		const actualWidth = width - getPaddingX(scrubElement);
 		let mousePositionX = event.clientX;
-		const shouldNotDispatchEvent = ((mousePositionX + 1) < scrubberX || (mousePositionX - 1) > scrubberX + actualWidth)
-		if (!shouldNotDispatchEvent && (mousePositionX < 0 || mousePositionX > scrubberX)) {
-			debugger
-		};
+		const shouldNotDispatchEvent = ((mousePositionX + 1) <= scrubberX || (mousePositionX - 1) >= scrubberX + actualWidth);
 
 		mousePositionX < scrubberX ? mousePositionX = scrubberX :
 			mousePositionX > scrubberX + actualWidth ? mousePositionX = scrubberX + actualWidth : '';
