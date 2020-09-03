@@ -1,6 +1,6 @@
 import '../vwc-textfield.js';
 import '@vonage/vwc-formfield';
-import { waitNextTask, textToDomToParent } from '../../../utils/js/test-helpers.js';
+import { textToDomToParent, waitNextTask, assertComputedStyle } from '../../../utils/js/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
@@ -14,7 +14,6 @@ function listenToSubmission(formElement) {
 			res(formData);
 		});
 	});
-
 }
 
 async function changeFieldValue(actualElement, value, eventName = 'change') {
@@ -25,7 +24,7 @@ async function changeFieldValue(actualElement, value, eventName = 'change') {
 	actualElement.dispatchEvent(evt);
 }
 
-describe('vwc-textfield', () => {
+describe('textfield', () => {
 	let addedElements = [];
 
 	afterEach(() => {
@@ -39,16 +38,49 @@ describe('vwc-textfield', () => {
 	});
 
 	it('should have internal contents', async () => {
-		await customElements.whenDefined('vwc-textfield');
-		addedElements = textToDomToParent('<vwc-textfield id="textfield-a"></vwc-textfield>');
+		addedElements = textToDomToParent(`<${VWC_TEXTFIELD}></${VWC_TEXTFIELD}>`);
 		const actualElement = addedElements[0];
 		await waitNextTask();
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
-	describe(`form association`, function() {
+	describe('typography', () => {
+		it('should have set typography for a label', async () => {
+			addedElements = textToDomToParent(`<${VWC_TEXTFIELD} outlined label="Vwc textarea"></${VWC_TEXTFIELD}>`);
+			await waitNextTask();
+			const labelElement = addedElements[0].shadowRoot.querySelector('.mdc-notched-outline').querySelector('#label');
+			expect(labelElement).to.exist;
+			assertComputedStyle(labelElement, {
+				fontFamily: 'SpeziaWebVariable',
+				fontSize: '14.2222px',
+				fontWeight: '400',
+				fontStretch: '50%',
+				lineHeight: '18.4px',
+				letterSpacing: '0.133333px',
+				textTransform: 'none'
+			});
+		});
 
-		it(`should attach to closest form`, async function() {
+		it('should have set typography for an input', async () => {
+			addedElements = textToDomToParent(`<${VWC_TEXTFIELD} outlined disabled label="Vwc textarea"></${VWC_TEXTFIELD}>`);
+			await waitNextTask();
+			const inputElement = addedElements[0].shadowRoot.querySelector('.mdc-text-field__input');
+			expect(inputElement).to.exist;
+			assertComputedStyle(inputElement, {
+				fontFamily: 'SpeziaWebVariable',
+				fontSize: '14.2222px',
+				fontWeight: '400',
+				fontStretch: '50%',
+				lineHeight: 'normal',
+				letterSpacing: '0.133333px',
+				textTransform: 'none'
+			});
+		});
+	});
+
+	describe(`form association`, function () {
+
+		it(`should attach to closest form`, async function () {
 			const fieldValue = Math.random().toString();
 			const fieldName = 'test-field';
 			addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_TEXTFIELD} name="${fieldName}" value="${fieldValue}">Button Text</${VWC_TEXTFIELD}></form>`);
@@ -67,7 +99,7 @@ describe('vwc-textfield', () => {
 			expect(formElement.querySelectorAll(`input[name="${fieldName}"`).length).to.equal(1);
 		});
 
-		it(`should attach to form when given form id`, async function() {
+		it(`should attach to form when given form id`, async function () {
 			const fieldValue = Math.random().toString();
 			const fieldName = 'test-field';
 			const externalFormID = 'externalForm';
@@ -97,7 +129,7 @@ describe('vwc-textfield', () => {
 			expect(externalForm.querySelectorAll(`input[name="${fieldName}"`).length).to.equal(1);
 		});
 
-		it(`should do nothing if form value resolves to a non form element`, async function() {
+		it(`should do nothing if form value resolves to a non form element`, async function () {
 			const fieldValue = Math.random().toString();
 			const fieldName = 'test-field';
 			const formId = 'testForm';
@@ -109,9 +141,9 @@ describe('vwc-textfield', () => {
 			expect(formElement.querySelector('input')).to.equal(null);
 		});
 
-		describe(`value binding`, function() {
+		describe(`value binding`, function () {
 
-			it(`should reset the value of the custom element to default on form reset`, async function() {
+			it(`should reset the value of the custom element to default on form reset`, async function () {
 				const fieldValue = Math.random().toString();
 				const fieldName = 'test-field';
 				addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_TEXTFIELD} name="${fieldName}" value="${fieldValue}">Button Text</${VWC_TEXTFIELD}></form>`);
@@ -125,7 +157,7 @@ describe('vwc-textfield', () => {
 				expect(actualElement.value).to.equal(fieldValue);
 			});
 
-			it(`should change the value of the mock input on internal input change`, async function() {
+			it(`should change the value of the mock input on internal input change`, async function () {
 				const fieldValue = Math.random().toString();
 				const fieldName = 'test-field';
 				addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_TEXTFIELD} name="${fieldName}">Button Text</${VWC_TEXTFIELD}></form>`);
@@ -142,8 +174,8 @@ describe('vwc-textfield', () => {
 			});
 		});
 
-		describe(`validation`, function() {
-			it(`should get validity from the element's validationMessage`, async function() {
+		describe(`validation`, function () {
+			it(`should get validity from the element's validationMessage`, async function () {
 				const fieldName = 'test-field';
 				addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_TEXTFIELD} required name="${fieldName}">Button Text</${VWC_TEXTFIELD}></form>`);
 				const formElement = addedElements[0];
@@ -158,7 +190,7 @@ describe('vwc-textfield', () => {
 				expect(formElement.checkValidity()).to.equal(true);
 			});
 
-			it(`should validate on reset`, async function() {
+			it(`should validate on reset`, async function () {
 				const fieldValue = Math.random().toString();
 				const fieldName = 'test-field';
 				addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_TEXTFIELD} required value="${fieldValue}" name="${fieldName}">Button Text</${VWC_TEXTFIELD}></form>`);
@@ -177,7 +209,7 @@ describe('vwc-textfield', () => {
 				expect(formElement.checkValidity()).to.equal(true);
 			});
 
-			it(`should not submit an invalid form`, async function() {
+			it(`should not submit an invalid form`, async function () {
 				let submitted = false;
 				const fieldName = 'test-field';
 				addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_TEXTFIELD} required value="val" name="${fieldName}">Button Text</${VWC_TEXTFIELD}></form>`);
@@ -208,7 +240,7 @@ describe('vwc-textfield', () => {
 			});
 		});
 
-		it(`should work under multiple shadow layers`, async function() {
+		it(`should work under multiple shadow layers`, async function () {
 			const fieldValue = Math.random().toString();
 			const fieldName = 'test-field';
 			addedElements = textToDomToParent(`
