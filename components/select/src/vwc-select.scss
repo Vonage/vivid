@@ -1,5 +1,5 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
-@use '@vonage/vvd-foundation/src/variable-names/color-semantic-variable-names' as color-semantic;
+@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 
 :host {
 	--mdc-select-filled-border-radius: 6px;
