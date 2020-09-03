@@ -12,20 +12,37 @@ $formfield-error-fill: --vvd-formfield-error-fill;
 $formfield-border-error: --vvd-formfield-border-error;
 $formfield-label-error-ink: --vvd-formfield-label-error-ink;
 
-$primary-background: --vvd-color-primary-background;
-$primary-foreground: --vvd-color-primary-foreground;
+$switch-checked-background: --vvd-switch-checked-background;
+$switch-unchecked-background: --vvd-switch-unchecked-background;
+$switch-checked-background-hover: --vvd-switch-checked-background-hover;
+$switch-unchecked-background-hover: --vvd-switch-unchecked-background-hover;
+$switch-checked-background-focus: --vvd-switch-checked-background-focus;
+$switch-unchecked-background-focus: --vvd-switch-unchecked-background-focus;
+$switch-checked-border-focus: --vvd-switch-checked-border-focus;
+$switch-unchecked-border-focus: --vvd-switch-unchecked-border-focus;
 
-$button-cta-background: --vvd-color-cta-background;
-$button-cta-foreground: --vvd-color-cta-foreground;
+$color-primary-background: --vvd-color-primary-background;
+$color-primary-background-hover: --vvd-color-primary-background-hover;
+$color-primary-border: --vvd-color-primary-border;
+$color-primary-foreground: --vvd-color-primary-foreground;
 
-$button-success-background: --vvd-color-success-background;
-$button-success-foreground: --vvd-color-success-foreground;
+$color-cta-background: --vvd-color-cta-background;
+$color-cta-background-hover: --vvd-color-cta-background-hover;
+$color-cta-border: --vvd-color-cta-border;
+$color-cta-foreground: --vvd-color-cta-foreground;
 
-$button-error-background: --vvd-color-error-background;
-$button-error-foreground: --vvd-color-error-foreground;
+$color-success-background: --vvd-color-success-background;
+$color-success-background-hover: --vvd-color-success-background-hover;
+$color-success-border: --vvd-color-success-border;
+$color-success-foreground: --vvd-color-success-foreground;
 
-$button-info-background: --vvd-color-info-background;
-$button-info-foreground: --vvd-color-info-foreground;
+$color-error-background: --vvd-color-error-background;
+$color-error-background-hover: --vvd-color-error-background-hover;
+$color-error-border: --vvd-color-error-border;
+$color-error-foreground: --vvd-color-error-foreground;
 
-$button-announcement-background: --vvd-color-announcement-background;
-$button-announcement-foreground: --vvd-color-announcement-foreground;
+$color-info-background: --vvd-color-info-background;
+$color-info-foreground: --vvd-color-info-foreground;
+
+$color-announcement-background: --vvd-color-announcement-background;
+$color-announcement-foreground: --vvd-color-announcement-foreground;

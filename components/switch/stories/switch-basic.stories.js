@@ -15,7 +15,7 @@ export const Basic = Template.bind({});
 Basic.args = { checked: '' };
 
 export const Disabled = Template.bind({});
-Disabled.args = { checked: '', disabled: '' };
+Disabled.args = { disabled: '' };
 
 export const Enlarged = Template.bind({});
-Enlarged.args = { checked: '', enlarged: '' };
+Enlarged.args = { enlarged: '' };

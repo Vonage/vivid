@@ -15,6 +15,7 @@
 		width: 100%;
 		height: 100%;
 		border-radius: 16px;
+		border-width: 0;
 	}
 
 	.mdc-switch__thumb-underlay {
@@ -71,6 +72,8 @@
 
     #{$scoped-selector} {
 			--mdc-theme-secondary: var(--vvd-color-#{$connotation}-background);
+			--vvd-switch-checked-background-hover: var(--vvd-color-#{$connotation}-background-hover);
+			--vvd-switch-checked-border-focus: var(--vvd-color-#{$connotation}-border);
 		}
   }
 }
@@ -108,6 +111,8 @@
 
 //	colors/shadowing
 :host {
+	--mdc-theme-on-surface: var(--vvd-switch-unchecked-background);
+
 	.mdc-switch {
 		.mdc-switch__thumb {
 			box-shadow: none;
@@ -120,9 +125,18 @@
 		&:hover .mdc-switch__thumb {
 			opacity: 0.9;
 		}
-		
+
+		.mdc-switch__track,
 		&.mdc-switch--checked .mdc-switch__track {
 			opacity: initial;
+		}
+
+		&:hover .mdc-switch__track {
+			background-color: var(--vvd-switch-checked-background-hover);
+		}
+		
+		&:not(.mdc-switch--checked):hover .mdc-switch__track {
+			background-color: var(--vvd-switch-unchecked-background-hover);
 		}
 
 		&.mdc-switch--disabled {
@@ -136,6 +150,16 @@
 	}
 }
 
-:host(:focus-within) {
+// TODO: create dropshadow colour vars
+:host(:not([disabled]):focus-within) {
 	box-shadow: 1px -1px 4px rgba(0, 0, 0, 0.25), -1px 1px 3px 1px rgba(0, 0, 0, 0.25);
+
+	.mdc-switch__track {
+		box-shadow: inset 0 0 1px 1px var(--vvd-switch-checked-border-focus);
+	}
+
+	.mdc-switch:not(.mdc-switch--checked) .mdc-switch__track {
+		background-color: var(--vvd-switch-unchecked-background-focus);
+		box-shadow: inset 0 0 1px 1px var(--vvd-switch-unchecked-border-focus);
+	}
 }
