@@ -25,7 +25,7 @@
 	},
 	"dependencies": {
 		"@material/mwc-notched-outline": "^0.18.0",
-		"lit-element": "^2.3.1",
-		"tslib": "^2.0.0"
+		"lit-element": "^2.4.0",
+		"tslib": "^2.0.1"
 	}
 }
