@@ -6,9 +6,9 @@ import { style as VWCTopAppBarStyle } from './vwc-top-app-bar.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'vwc-top-app-bar-fixed': VWCTopAppBar;
-  }
+	interface HTMLElementTagNameMap {
+		'vwc-top-app-bar': VWCTopAppBar;
+	}
 }
 
 coreInit();
@@ -18,7 +18,7 @@ coreInit();
 MWCTopAppBar.styles = [styleCoupling, MWCTopAppBarStyle, VWCTopAppBarStyle];
 
 /**
- * This component is an extension of [<mwc-top-app-bar-fixed>](https://github.com/material-components/material-components-web-components/tree/master/packages/top-app-bar-fixed)
+ * This component is an extension of [<mwc-top-app-bar>](https://github.com/material-components/material-components-web-components/tree/master/packages/top-app-bar)
  */
 @customElement('vwc-top-app-bar')
-export class VWCTopAppBar extends MWCTopAppBar {}
+export class VWCTopAppBar extends MWCTopAppBar { }
