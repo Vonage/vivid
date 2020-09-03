@@ -20,13 +20,32 @@ function stopDragging(knobElement, clientX = 0, clientY = 0) {
 	knobElement.dispatchEvent(mouseUpEvent);
 }
 
+function addFnCounter(target){
+	const swap = target;
+	function counter(){
+		if (!this.count) this.count = 0;
+		swap.apply(null, arguments);
+		counter.count++;
+		console.log(`Called ${swap.name} ${counter.count} times`);
+	}
+
+	counter.count = 0;
+	return counter;
+}
+
 describe(`${COMPONENT_NAME}`, ()=>{
 	let addedElements = [];
-	let actualElement;
+	let actualElement, scrubberElement, knobElement, clientX, clientY;
 
 	beforeEach(function() {
 		addedElements = textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`);
 		actualElement = addedElements[0];
+		scrubberElement = actualElement.shadowRoot.querySelector('.scrubber');
+		knobElement = scrubberElement.querySelector('button');
+
+		const {x, y} = scrubberElement.getBoundingClientRect();
+		clientX = x;
+		clientY = y;
 	});
 
 	afterEach(function() {
@@ -65,15 +84,9 @@ describe(`${COMPONENT_NAME}`, ()=>{
 
 	describe(`userScrubRequest`, function() {
 
-		let scrubberElement, clientX, clientY, padding, width, knobElement;
+		let padding, width;
 
 		beforeEach(function() {
-			scrubberElement = actualElement.shadowRoot.querySelector('.scrubber');
-			knobElement = scrubberElement.querySelector('button');
-
-			const {x, y} = scrubberElement.getBoundingClientRect();
-			clientX = x;
-			clientY = y;
 			padding = 7;
 			scrubberElement.style.paddingRight = padding + 'px';
 			scrubberElement.style.paddingLeft = 0 + 'px';
@@ -213,7 +226,6 @@ describe(`${COMPONENT_NAME}`, ()=>{
 			expectedPositions.forEach((expectedPosition, index) => expect(expectedPosition, `failed on index ${index}`).to.equal(knobPositions[index]));
 
 		});
-
 	});
 
 	describe(`setPlayState`, function() {
@@ -266,5 +278,58 @@ describe(`${COMPONENT_NAME}`, ()=>{
 			expect(knobElement.getBoundingClientRect().x).to.equal(expectedKnobPosition);
 		});
 
+	});
+
+	describe(`cleanup`, function() {
+		let originalAddEventListener, originalRemoveEventListener;
+		const eventsCallbacks = {};
+
+		before(function() {
+			originalAddEventListener = Document.prototype.addEventListener;
+			originalRemoveEventListener = Document.prototype.removeEventListener;
+			Document.prototype.addEventListener = function(eventName, cb) {
+
+				const counter = addFnCounter(cb)
+				eventsCallbacks[eventName] = {
+					counter,
+					cb
+				};
+
+				originalAddEventListener(eventName, counter);
+			}
+
+			Document.prototype.removeEventListener = function(eventName, cb) {
+				originalRemoveEventListener(eventName, eventsCallbacks[eventName].counter)
+			}
+		});
+
+		after(() => {
+			// Document.prototype.addEventListener = originalAddEventListener;
+		});
+
+		beforeEach(function() {
+		});
+
+		afterEach(function() {
+		});
+		it(`should remove all events set on the document and the window`, function() {
+			const documentEvents = Object.keys(eventsCallbacks);
+			const counts = documentEvents.map(eventName => eventsCallbacks[eventName].counter.count);
+
+			startDragging(knobElement, )
+
+			// remove the element from the DOM
+			addedElements.forEach(elm => elm.remove());
+			// enact the events on the document
+			documentEvents.forEach(eventName => {
+				const event = new MouseEvent(eventName, {bubbles: true, composed: true});
+				document.dispatchEvent(event);
+			});
+
+			// expect that counts is the same
+			documentEvents.map(eventName => eventsCallbacks[eventName].counter.count).forEach((val, index) => {
+				expect(val).to.equal(counts[index]);
+			})
+		});
 	});
 });

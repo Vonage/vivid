@@ -62,46 +62,9 @@ function moveKnob(knobElement: HTMLElement, scrubElement: HTMLDivElement, target
 	return hasPositionChanged;
 }
 
-function setScrubListeners(element: MediaController, scrubElement: HTMLDivElement) {
-	function knobMove(event: MouseEvent, eventName = USER_SCRUB_EVENT_NAME) {
-		if (!knob) {
-			return;
-		}
-
-		if (!isDragging) {
-			moveKnob(knob, scrubElement, element.knobPosition);
-			return;
-		}
-
-		const mousePositionX = event.clientX;
-
-		const hasPositionChanged = moveKnob(knob, scrubElement, mousePositionX);
-
-		if (hasPositionChanged) {
-			const {width} = scrubElement.getBoundingClientRect();
-			const actualWidth = width - getPaddingX(scrubElement);
-			const positionRatio = mousePositionX / actualWidth;
-			dispatchEvent(element, eventName, positionRatio);
-		}
-	}
-
-	const knob = scrubElement.querySelector('button');
-	let isDragging = false;
-
-	scrubElement.addEventListener('mousedown', (event) => {
-		isDragging = true;
-		knobMove(event);
-		document.addEventListener('mousemove', knobMove);
-	});
-
-	document.addEventListener('mouseup', (event) => {
-		if (!isDragging) {
-			return;
-		}
-		isDragging = false;
-		knobMove(event);
-		document.removeEventListener('mousemove', knobMove);
-	});
+interface ListenerCallback {
+	event: string;
+	cb: any;
 }
 
 class MediaController extends HTMLElement {
@@ -110,6 +73,8 @@ class MediaController extends HTMLElement {
 	#_playButtonElement: HTMLButtonElement;
 	#_scrubElement: HTMLDivElement;
 	#_knobElement: HTMLButtonElement | null;
+	#_initComplete = false;
+	#_eventsToClear: ListenerCallback[] = [];
 
 	constructor() {
 		super();
@@ -121,11 +86,7 @@ class MediaController extends HTMLElement {
 		root.appendChild(componentRootEl);
 
 		this.#_playButtonElement = addPlaycontrolButton(componentRootEl);
-		setPlayButtonListener(this, this.#_playButtonElement);
-
 		this.#_scrubElement = addScrub(componentRootEl);
-		setScrubListeners(this, this.#_scrubElement);
-
 		this.#_knobElement = this.#_scrubElement.querySelector('button');
 
 		const baseStyle = document.createElement('style');
@@ -157,6 +118,81 @@ class MediaController extends HTMLElement {
 	 **/
 	setPlayState(isPlaying:boolean):void {
 		this.#_playButtonElement.classList.toggle('isPlayed', isPlaying);
+	}
+
+	disconnectedCallback() {
+		this.#_initComplete = false;
+		this.#_eventsToClear.forEach(evt => {
+			document.removeEventListener(evt.event, evt.cb);
+		});
+	}
+
+	connectedCallback() {
+		setPlayButtonListener(this, this.#_playButtonElement);
+		this._setScrubListeners();
+		this.#_initComplete = true;
+	}
+
+	_setScrubListeners() {
+		function knobMove(event: MouseEvent, eventName = USER_SCRUB_EVENT_NAME) {
+			if (!knob) {
+				return;
+			}
+
+			if (!isDragging) {
+				moveKnob(knob, scrubElement, element.knobPosition);
+				return;
+			}
+
+			const mousePositionX = event.clientX;
+
+			const hasPositionChanged = moveKnob(knob, scrubElement, mousePositionX);
+
+			if (hasPositionChanged) {
+				const {width} = scrubElement.getBoundingClientRect();
+				const actualWidth = width - getPaddingX(scrubElement);
+				const positionRatio = mousePositionX / actualWidth;
+				dispatchEvent(element, eventName, positionRatio);
+			}
+		}
+
+		const mouseDownHandler = (event: MouseEvent) => {
+			isDragging = true;
+			knobMove(event);
+			document.addEventListener('mousemove', knobMove);
+		}
+
+		const mouseUpHandler = (event: MouseEvent) => {
+			if (!isDragging) {
+				return;
+			}
+			isDragging = false;
+			knobMove(event);
+			document.removeEventListener('mousemove', knobMove);
+		};
+
+		if (this.#_initComplete) {
+			return;
+		}
+
+		const knob = this.#_knobElement;
+		const scrubElement = this.#_scrubElement;
+		const element = this;
+		let isDragging = false;
+
+		scrubElement.addEventListener('mousedown', mouseDownHandler);
+
+		document.addEventListener('mouseup', mouseUpHandler);
+
+		this.#_eventsToClear.push({
+			event: 'mouseup',
+			cb: mouseUpHandler
+		});
+
+		this.#_eventsToClear.push({
+			event: 'mousemove',
+			cb: knobMove
+		});
 	}
 }
 
