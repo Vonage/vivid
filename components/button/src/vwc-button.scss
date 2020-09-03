@@ -1,6 +1,6 @@
 @use 'sass:selector';
 @forward './vwc-button-coupling';
-@use '../../../utils/scss/variable-names/color-semantic-variable-names' as color-semantic;
+@use '@vonage/vvd-foundation/src/variable-names/color-semantic-variable-names' as color-semantic;
 
 :host {
 	--mdc-button-disabled-ink-color: var(#{color-semantic.$formfield-disabled-ink});

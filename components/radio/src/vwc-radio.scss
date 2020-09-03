@@ -1,4 +1,4 @@
-@use '../../../utils/scss/variable-names/color-semantic-variable-names' as color-semantic;
+@use '@vonage/vvd-foundation/src/variable-names/color-semantic-variable-names' as color-semantic;
 
 :host {
 	--mdc-radio-unchecked-color: var(--vvd-color-unchecked);
