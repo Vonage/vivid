@@ -158,12 +158,6 @@ class MediaController extends HTMLElement {
 	setPlayState(isPlaying:boolean):void {
 		this.#_playButtonElement.classList.toggle('isPlayed', isPlaying);
 	}
-
-	connectedCallback(): void {
-	}
-
-	disconnectedCallback(): void {
-	}
 }
 
 export default MediaController;
