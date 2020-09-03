@@ -3,12 +3,9 @@
 
 body,
 .vvd-theme-dark-base {
-	@include base.variables;
-
-  color: #ffffff;
-	background-color: #131415;
+  @include base.variables;
 }
 
 .vvd-theme-dark-alternate {
-	@include base.variables;
+  @include base.variables;
 }
