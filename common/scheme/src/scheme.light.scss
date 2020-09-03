@@ -3,12 +3,9 @@
 
 body,
 .vvd-theme-light-base {
-	@include base.variables;
-
-  color: #131415;
-	background-color: #ffffff;
+  @include base.variables;
 }
 
 .vvd-theme-light-alternate {
-	@include base.variables;
+  @include base.variables;
 }
