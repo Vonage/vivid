@@ -1,21 +1,21 @@
 import '@vonage/vwc-switch/vwc-switch.js';
 import { html } from 'lit-element';
+import { spread } from '@open-wc/lit-helpers';
+import { argTypes } from './arg-types.js';
 
 export default {
 	title: 'Atoms/Switch',
-	component: 'vwc-switch'
+  component: 'vwc-switch',
+  argTypes
 }
 
-export const basic = () => html`
-	<h3>Default</h3>
-  <vwc-switch></vwc-switch>
-  <vwc-switch checked></vwc-switch>
+const Template = args => html`<vwc-switch ...=${spread(args)}></vwc-switch>`;
 
-  <h3>Disabled</h3>
-  <vwc-switch disabled></vwc-switch>
-  <vwc-switch checked disabled></vwc-switch>
+export const Basic = Template.bind({});
+Basic.args = { checked: '' };
 
-  <h3>Enlarged</h3>
-  <vwc-switch enlarged></vwc-switch>
-  <vwc-switch checked enlarged></vwc-switch>
-`;
+export const Disabled = Template.bind({});
+Disabled.args = { checked: '', disabled: '' };
+
+export const Enlarged = Template.bind({});
+Enlarged.args = { checked: '', enlarged: '' };

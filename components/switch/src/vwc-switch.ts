@@ -14,16 +14,40 @@ declare global {
 // @ts-ignore
 MWCSwitch.styles = [styleCoupling, mwcSwitchStyle, vwcSwitchStyle];
 
+const connotations = ['primary', 'cta', 'success', 'error'] as const;
+export type SwitchConnotation = typeof connotations;
+
 /**
  * This component is an extension of [<mwc-switch>](https://github.com/material-components/material-components-web-components/tree/master/packages/switch)
  */
 @customElement('vwc-switch')
 export class VWCSwitch extends MWCSwitch {
+	@property({ type: String, reflect: true })
+	connotation?: | SwitchConnotation[number] | undefined;
 
 	@property({ type: Boolean, reflect: true })
 	enlarged = false;
 
 	protected renderRipple(): TemplateResult {
 		return html``;
+	}
+
+	connectedCallback(): void {
+		super.connectedCallback();
+		
+		const connotation: SwitchConnotation[number] | undefined = this.connotation ?? 'primary';
+		const innerSwitch = this.shadowRoot?.querySelector('.mdc-switch');
+
+		if (innerSwitch) {
+			//	get existing classes aside from the DOM
+			const classesSet = new Set(innerSwitch.classList);
+				
+			connotations.forEach((m) =>
+				classesSet[connotation === m ? 'add' : 'delete'](m)
+			);
+
+			//	set the clases back to the DOM
+			innerSwitch.className = Array.from(classesSet).join(' ');
+		}
 	}
 }

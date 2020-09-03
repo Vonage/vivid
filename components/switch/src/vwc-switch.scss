@@ -1,3 +1,4 @@
+@use 'sass:selector';
 @use '../../../utils/scss/variable-names/color-base-variable-names' as color-base;
 
 // sizing parts only
@@ -29,10 +30,54 @@
 		}
 	}
 
-	.mdc-switch--checked .mdc-switch__thumb-underlay {
-    transform: translateX(10px);
+	.mdc-switch--checked {
+		.mdc-switch__thumb-underlay {
+			transform: translateX(10px);
+		}
+		
+		.mdc-switch__native-control {
+			transform: translateX(-10px);
+		}
 	}
 }
+
+// ! move to utils as this might be a common
+// ! mixin for other components such as call-out
+@mixin connotations-context(
+  $selector: ':host([connotation-specifier])',
+  $default: primary
+) {
+  $connotations: primary cta success error;
+
+  @each $connotation in $connotations {
+    $attr: '[connotation="#{$connotation}"i]';
+
+    $scoped-selector: $selector; // prevents overriding argument
+
+    $scoped-selector: selector.replace(
+      #{$selector},
+      '[connotation-specifier]',
+      #{$attr}
+    );
+
+    @if ($connotation == $default) {
+      $default-selector: selector.replace(
+        #{$selector},
+        '[connotation-specifier]',
+        ':not([connotation])'
+      );
+      $scoped-selector: $default-selector, $scoped-selector;
+    }
+
+    #{$scoped-selector} {
+			--mdc-theme-secondary: var(--vvd-color-#{$connotation}-background);
+		}
+  }
+}
+
+@include connotations-context(
+  ':host([connotation-specifier])'
+);
 
 :host([enlarged]) {
 	.mdc-switch,
@@ -50,8 +95,14 @@
 		}
 	}
 
-	.mdc-switch--checked .mdc-switch__thumb-underlay {
-    transform: translateX(18px);
+	.mdc-switch--checked {
+		.mdc-switch__thumb-underlay {
+			transform: translateX(18px);
+		}
+
+		.mdc-switch__native-control {
+			transform: translateX(-18px);
+		}
 	}
 }
 
@@ -68,6 +119,10 @@
 
 		&:hover .mdc-switch__thumb {
 			opacity: 0.9;
+		}
+		
+		&.mdc-switch--checked .mdc-switch__track {
+			opacity: initial;
 		}
 
 		&.mdc-switch--disabled {
