@@ -5,19 +5,18 @@ import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 chai.use(chaiDomDiff);
 const COMPONENT_NAME = `vwc-media-controller-yonatan`;
 
-
 function emulateMouseMove(clientX, clientY) {
-	const mouseMoveEvent = new MouseEvent("mousemove", {clientX, clientY});
+	const mouseMoveEvent = new MouseEvent("mousemove", {bubbles: true, composed: true, clientX, clientY});
 	document.dispatchEvent(mouseMoveEvent);
 }
 
 function startDragging(knobElement, clientX = 0, clientY = 0) {
-	const mouseDownEvent = new MouseEvent("mousedown", {clientX, clientY});
+	const mouseDownEvent = new MouseEvent("mousedown", {bubbles: true, composed: true, clientX, clientY});
 	knobElement.dispatchEvent(mouseDownEvent);
 }
 
 function stopDragging(knobElement, clientX = 0, clientY = 0) {
-	const mouseUpEvent = new MouseEvent("mouseup");
+	const mouseUpEvent = new MouseEvent("mouseup", {bubbles: true, composed: true});
 	knobElement.dispatchEvent(mouseUpEvent);
 }
 
@@ -31,7 +30,7 @@ describe(`${COMPONENT_NAME}`, ()=>{
 	});
 
 	afterEach(function() {
-		addedElements.forEach(elm => elm.remove());
+		// addedElements.forEach(elm => elm.remove());
 	});
 
 	describe(`init`, function() {
@@ -48,7 +47,7 @@ describe(`${COMPONENT_NAME}`, ()=>{
 	describe(`userPlayPauseRequest`, function() {
 		let button;
 		beforeEach(function() {
-			button = actualElement.shadowRoot.querySelector('#playControl');
+			button = actualElement.shadowRoot.querySelector('.play-pause-control');
 		});
 
 		it(`should emit a userPlayPauseRequest event on play button click`, function() {
@@ -72,8 +71,9 @@ describe(`${COMPONENT_NAME}`, ()=>{
 			scrubberElement = actualElement.shadowRoot.querySelector('.scrubber');
 			knobElement = scrubberElement.querySelector('button');
 
-			clientX = 5;
-			clientY = 100;
+			const {x, y} = scrubberElement.getBoundingClientRect();
+			clientX = x;
+			clientY = y;
 			padding = 7;
 			scrubberElement.style.paddingRight = padding + 'px';
 			scrubberElement.style.paddingLeft = 0 + 'px';
@@ -94,7 +94,7 @@ describe(`${COMPONENT_NAME}`, ()=>{
 		it(`should emit a userScrubRequest event with ratio in event detail when user is dragging the scrub`, function() {
 			const motionCoordinates = [
 				10, 15, 20, 12, 177
-			];
+			].map(x => clientX + x);
 			const expectedDetails = motionCoordinates.map(x => x / (width - padding));
 
 			const details = [];
@@ -114,7 +114,7 @@ describe(`${COMPONENT_NAME}`, ()=>{
 		it(`should move the knob while dragging`, function() {
 			const motionCoordinates = [
 				10, 15, 20
-			];
+			].map(x => clientX + x);
 
 			startDragging(knobElement, clientX, clientY);
 
@@ -139,7 +139,7 @@ describe(`${COMPONENT_NAME}`, ()=>{
 			const stopDraggingIndex = 3;
 			const motionCoordinates = [
 				10, 15, 20, 12, 177
-			];
+			].map(x => clientX + x);
 			const expectedDetails = motionCoordinates
 				.map(x => x / (width - padding))
 				.filter((val, index) => index < stopDraggingIndex);
@@ -170,11 +170,12 @@ describe(`${COMPONENT_NAME}`, ()=>{
 			const dispatchSlackness = 1;
 			scrubberElement.style.width = `${scrubberFixedWidth}px`;
 
-			const motionCoordinates = [
-				0 - outOfBoundsValue(), 0, 5, scrubberFixedWidth, scrubberFixedWidth + outOfBoundsValue()
-			];
+			const motionCoordinates = [31.915659635885948,33,38,53,58.533680876033436];
+			// const motionCoordinates = [
+			// 	0 - outOfBoundsValue(), 0, 5, scrubberFixedWidth, scrubberFixedWidth + outOfBoundsValue()
+			// ].map(x => clientX + x);
 
-			const expectedEventsCount = 3; // only 0, 5 and scrubberFixedWidth
+			const expectedEventsCount = motionCoordinates.filter(x => x >= clientX && x <= clientX + scrubberFixedWidth).length; // only 0, 5 and scrubberFixedWidth
 
 			startDragging(knobElement, clientX, clientY);
 
@@ -195,10 +196,10 @@ describe(`${COMPONENT_NAME}`, ()=>{
 			scrubberElement.style.width = `${scrubberFixedWidth}px`;
 			const motionCoordinates = [
 				0 - Math.random() * 10, 0, 5, scrubberFixedWidth, scrubberFixedWidth + Math.random()*10
-			];
+			].map(x => clientX + x);
 
-			const expectedPositions = motionCoordinates.map(x => x < 0 ? 0 :
-				x > scrubberFixedWidth ? scrubberFixedWidth : x);
+			const expectedPositions = motionCoordinates.map(x => x < clientX ? clientX :
+				x > clientX + scrubberFixedWidth ? clientX + scrubberFixedWidth : x);
 
 			const knobPositions = [];
 
@@ -218,7 +219,7 @@ describe(`${COMPONENT_NAME}`, ()=>{
 	describe(`setPlayState`, function() {
 		let button;
 		beforeEach(function() {
-			button = actualElement.shadowRoot.querySelector('#playControl');
+			button = actualElement.shadowRoot.querySelector('.play-pause-control');
 		});
 
 		it(`should toggle the play button class "isPlayed"`, function() {

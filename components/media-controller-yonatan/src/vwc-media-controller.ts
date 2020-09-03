@@ -1,3 +1,5 @@
+import { style } from './vwc-media-controller.css';
+
 const USER_PLAY_TOGGLE_EVENT_NAME = 'userPlayPauseRequest';
 const USER_SCRUB_EVENT_NAME = 'userScrubRequest';
 
@@ -14,7 +16,8 @@ function dispatchEvent(element: MediaController, eventName: string, payload: any
 
 function addPlaycontrolButton( parent: HTMLElement) {
 	const playControlButton = document.createElement('button');
-	playControlButton.id = 'playControl';
+	playControlButton.className = 'play-pause-control';
+
 
 	parent.appendChild(playControlButton);
 	return playControlButton;
@@ -43,14 +46,20 @@ function addScrub(parent: HTMLElement) {
 function moveKnob(knobElement: HTMLElement, scrubElement: HTMLDivElement, targetPosition: number) {
 	const {width, x: scrubberX} = scrubElement.getBoundingClientRect();
 	const actualWidth = width - getPaddingX(scrubElement);
-	let newKnobPositionX = targetPosition;
+	let hasPositionChanged = true;
+	let newKnobPositionX = targetPosition - scrubberX;
 
-	newKnobPositionX < scrubberX ? newKnobPositionX = scrubberX :
-		newKnobPositionX > scrubberX + actualWidth ? newKnobPositionX = scrubberX + actualWidth : '';
+	if (newKnobPositionX < 0) {
+		newKnobPositionX = 0;
+		hasPositionChanged = false;
+	} else if (newKnobPositionX > actualWidth) {
+		newKnobPositionX = actualWidth;
+		hasPositionChanged = false;
+	}
 
-	knobElement.style.transform = `translate(${newKnobPositionX}px)`;
+	knobElement.style.transform = `translate(${newKnobPositionX}px, -50%)`;
 
-	return !((targetPosition + 1) <= scrubberX || (targetPosition - 1) >= scrubberX + actualWidth);
+	return hasPositionChanged;
 }
 
 function setScrubListeners(element: MediaController, scrubElement: HTMLDivElement) {
@@ -79,13 +88,16 @@ function setScrubListeners(element: MediaController, scrubElement: HTMLDivElemen
 	const knob = scrubElement.querySelector('button');
 	let isDragging = false;
 
-	knob?.addEventListener('mousedown', (event) => {
+	scrubElement.addEventListener('mousedown', (event) => {
 		isDragging = true;
 		knobMove(event);
 		document.addEventListener('mousemove', knobMove);
 	});
 
-	knob?.addEventListener('mouseup', (event) => {
+	document.addEventListener('mouseup', (event) => {
+		if (!isDragging) {
+			return;
+		}
 		isDragging = false;
 		knobMove(event);
 		document.removeEventListener('mousemove', knobMove);
@@ -94,9 +106,10 @@ function setScrubListeners(element: MediaController, scrubElement: HTMLDivElemen
 
 class MediaController extends HTMLElement {
 
-	#_currentPosition: number = 0;
+	#_currentPosition = 0;
 	#_playButtonElement: HTMLButtonElement;
 	#_scrubElement: HTMLDivElement;
+	#_knobElement: HTMLButtonElement | null;
 
 	constructor() {
 		super();
@@ -112,6 +125,12 @@ class MediaController extends HTMLElement {
 
 		this.#_scrubElement = addScrub(componentRootEl);
 		setScrubListeners(this, this.#_scrubElement);
+
+		this.#_knobElement = this.#_scrubElement.querySelector('button');
+
+		const baseStyle = document.createElement('style');
+		baseStyle.innerHTML = style.cssText;
+		root.appendChild(baseStyle);
 	}
 
 	/**
@@ -120,10 +139,8 @@ class MediaController extends HTMLElement {
 	 **/
 	setPosition(position:number):void {
 		this.#_currentPosition = position;
-		const scrubElement = this.#_scrubElement;
-		const knob = scrubElement?.querySelector('button');
-		if (knob) {
-			moveKnob(knob, scrubElement, this.knobPosition);
+		if (this.#_knobElement) {
+			moveKnob(this.#_knobElement, this.#_scrubElement, this.knobPosition);
 		}
 	}
 
@@ -139,7 +156,7 @@ class MediaController extends HTMLElement {
 	 * @param {boolean} isPlaying - A boolean stating whether the component is playing or not (displayed pause/play buttons respectively).
 	 **/
 	setPlayState(isPlaying:boolean):void {
-		this.shadowRoot?.querySelector('#playControl')?.classList.toggle('isPlayed', isPlaying);
+		this.#_playButtonElement.classList.toggle('isPlayed', isPlaying);
 	}
 
 	connectedCallback(): void {
