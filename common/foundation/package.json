@@ -5,7 +5,10 @@
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/foundation#readme",
 	"license": "ISC",
 	"files": [
-		"src/**/*.scss"
+		"src/**/*.scss",
+		"*.js",
+		"*.ts",
+		"*.map"
 	],
 	"repository": {
 		"type": "git",
