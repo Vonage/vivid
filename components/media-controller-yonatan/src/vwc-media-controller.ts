@@ -40,40 +40,63 @@ function addScrub(parent: HTMLElement) {
 	return scrubberEl;
 }
 
+function moveKnob(knobElement: HTMLElement, scrubElement: HTMLDivElement, targetPosition: number) {
+	const {width, x: scrubberX} = scrubElement.getBoundingClientRect();
+	const actualWidth = width - getPaddingX(scrubElement);
+	let newKnobPositionX = targetPosition;
+
+	newKnobPositionX < scrubberX ? newKnobPositionX = scrubberX :
+		newKnobPositionX > scrubberX + actualWidth ? newKnobPositionX = scrubberX + actualWidth : '';
+
+	knobElement.style.transform = `translate(${newKnobPositionX}px)`;
+
+	return !((targetPosition + 1) <= scrubberX || (targetPosition - 1) >= scrubberX + actualWidth);
+}
+
 function setScrubListeners(element: MediaController, scrubElement: HTMLDivElement) {
 	function knobMove(event: MouseEvent, eventName = USER_SCRUB_EVENT_NAME) {
-		const {width, x: scrubberX} = scrubElement.getBoundingClientRect();
-		const actualWidth = width - getPaddingX(scrubElement);
-		let mousePositionX = event.clientX;
-		const shouldNotDispatchEvent = ((mousePositionX + 1) <= scrubberX || (mousePositionX - 1) >= scrubberX + actualWidth);
+		if (!knob) {
+			return;
+		}
 
-		mousePositionX < scrubberX ? mousePositionX = scrubberX :
-			mousePositionX > scrubberX + actualWidth ? mousePositionX = scrubberX + actualWidth : '';
+		if (!isDragging) {
+			moveKnob(knob, scrubElement, element.knobPosition);
+			return;
+		}
 
-		const positionRatio = mousePositionX / actualWidth;
-		knob ? knob.style.transform = `translate(${mousePositionX}px)` : '';
+		const mousePositionX = event.clientX;
 
-		if (!shouldNotDispatchEvent) {
+		const hasPositionChanged = moveKnob(knob, scrubElement, mousePositionX);
+
+		if (hasPositionChanged) {
+			const {width} = scrubElement.getBoundingClientRect();
+			const actualWidth = width - getPaddingX(scrubElement);
+			const positionRatio = mousePositionX / actualWidth;
 			dispatchEvent(element, eventName, positionRatio);
 		}
 	}
 
 	const knob = scrubElement.querySelector('button');
+	let isDragging = false;
 
-	knob?.addEventListener('mousedown', () => {
+	knob?.addEventListener('mousedown', (event) => {
+		isDragging = true;
+		knobMove(event);
 		document.addEventListener('mousemove', knobMove);
 	});
 
-	knob?.addEventListener('mouseup', () => {
+	knob?.addEventListener('mouseup', (event) => {
+		isDragging = false;
+		knobMove(event);
 		document.removeEventListener('mousemove', knobMove);
-	});
-
-	scrubElement.addEventListener('click', (event) => {
-		knobMove(event, USER_SCRUB_EVENT_NAME);
 	});
 }
 
 class MediaController extends HTMLElement {
+
+	#_currentPosition: number = 0;
+	#_playButtonElement: HTMLButtonElement;
+	#_scrubElement: HTMLDivElement;
 
 	constructor() {
 		super();
@@ -84,11 +107,11 @@ class MediaController extends HTMLElement {
 		componentRootEl.className = 'component';
 		root.appendChild(componentRootEl);
 
-		const playerButton = addPlaycontrolButton(componentRootEl);
-		setPlayButtonListener(this, playerButton);
+		this.#_playButtonElement = addPlaycontrolButton(componentRootEl);
+		setPlayButtonListener(this, this.#_playButtonElement);
 
-		const scrubElement = addScrub(componentRootEl);
-		setScrubListeners(this, scrubElement);
+		this.#_scrubElement = addScrub(componentRootEl);
+		setScrubListeners(this, this.#_scrubElement);
 	}
 
 	/**
@@ -96,7 +119,19 @@ class MediaController extends HTMLElement {
 	 * @param {number} position - The relative position of the scrubber (a value between 0-1).
 	 **/
 	setPosition(position:number):void {
-		console.log(position);
+		this.#_currentPosition = position;
+		const scrubElement = this.#_scrubElement;
+		const knob = scrubElement?.querySelector('button');
+		if (knob) {
+			moveKnob(knob, scrubElement, this.knobPosition);
+		}
+	}
+
+	get knobPosition(): number {
+		const scrubberElement = this.#_scrubElement;
+		const { x, width } = scrubberElement.getBoundingClientRect();
+
+		return x + (this.#_currentPosition * width / 100);
 	}
 
 	/**
@@ -104,7 +139,7 @@ class MediaController extends HTMLElement {
 	 * @param {boolean} isPlaying - A boolean stating whether the component is playing or not (displayed pause/play buttons respectively).
 	 **/
 	setPlayState(isPlaying:boolean):void {
-		console.log(isPlaying);
+		this.shadowRoot?.querySelector('#playControl')?.classList.toggle('isPlayed', isPlaying);
 	}
 
 	connectedCallback(): void {

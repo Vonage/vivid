@@ -1,6 +1,8 @@
 import '../vwc-media-controller';
-import { textToDomToParent } from '../../../utils/js/test-helpers';
+import { textToDomToParent, waitNextTask } from '../../../utils/js/test-helpers';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
+chai.use(chaiDomDiff);
 const COMPONENT_NAME = `vwc-media-controller-yonatan`;
 
 
@@ -29,7 +31,7 @@ describe(`${COMPONENT_NAME}`, ()=>{
 	});
 
 	afterEach(function() {
-		// addedElements.forEach(elm => elm.remove());
+		addedElements.forEach(elm => elm.remove());
 	});
 
 	describe(`init`, function() {
@@ -37,8 +39,9 @@ describe(`${COMPONENT_NAME}`, ()=>{
 			assert.exists(customElements.get(`${COMPONENT_NAME}`, 'vwc-media-controller element is not defined'));
 		});
 
-		it(`should have the DOM set`, function() {
-
+		it(`should have the DOM set`, async function() {
+			await waitNextTask();
+			expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 		});
 	});
 
@@ -83,8 +86,7 @@ describe(`${COMPONENT_NAME}`, ()=>{
 				detail = event.detail;
 			});
 
-			const event = new MouseEvent("click", {clientX, clientY});
-			scrubberElement.dispatchEvent(event);
+			startDragging(knobElement, clientX, clientY);
 
 			expect(detail).to.equal(clientX / (width - padding));
 		});
@@ -96,11 +98,12 @@ describe(`${COMPONENT_NAME}`, ()=>{
 			const expectedDetails = motionCoordinates.map(x => x / (width - padding));
 
 			const details = [];
+
+			startDragging(knobElement, clientX, clientY);
+
 			actualElement.addEventListener('userScrubRequest', (event) => {
 				details.push(event.detail);
 			});
-
-			startDragging(knobElement, clientX, clientY);
 
 			motionCoordinates.forEach((x) => emulateMouseMove(x, clientY));
 
@@ -113,12 +116,12 @@ describe(`${COMPONENT_NAME}`, ()=>{
 				10, 15, 20
 			];
 
+			startDragging(knobElement, clientX, clientY);
+
 			const knobPositions = [];
 			actualElement.addEventListener('userScrubRequest', (event) => {
 				knobPositions.push(knobElement.getBoundingClientRect().x);
 			});
-
-			startDragging(knobElement, clientX, clientY);
 
 			motionCoordinates.forEach((x, index) => {
 				emulateMouseMove(x, clientY)
@@ -141,12 +144,12 @@ describe(`${COMPONENT_NAME}`, ()=>{
 				.map(x => x / (width - padding))
 				.filter((val, index) => index < stopDraggingIndex);
 
+			startDragging(knobElement, clientX, clientY);
+
 			const details = [];
 			actualElement.addEventListener('userScrubRequest', (event) => {
 				details.push(event.detail);
 			});
-
-			startDragging(knobElement, clientX, clientY);
 
 			motionCoordinates.forEach((x, index) => {
 				if (index === stopDraggingIndex) {
@@ -173,12 +176,12 @@ describe(`${COMPONENT_NAME}`, ()=>{
 
 			const expectedEventsCount = 3; // only 0, 5 and scrubberFixedWidth
 
+			startDragging(knobElement, clientX, clientY);
+
 			let eventsSent = 0;
 			actualElement.addEventListener('userScrubRequest', (event) => {
 				eventsSent++;
 			});
-
-			startDragging(knobElement, clientX, clientY);
 
 			motionCoordinates.forEach((x) => {
 				emulateMouseMove(x, clientY);
@@ -229,23 +232,38 @@ describe(`${COMPONENT_NAME}`, ()=>{
 			expect(isPlayingAfterSetPlayStateTrue, 'Error: not playing after state change').to.equal(true);
 			expect(isNotPlayingAfterSetPlayStateTrue, 'Error: still playing after state change to false').to.equal(false);
 		});
-
-		it(`should set the play state according to the input`, function() {
-
-		});
 	});
 
 	describe(`setPosition`, function() {
-		it(`should set the scrub position according to input in %`, function() {
+		let knobElement, scrubberElement;
+		beforeEach(function() {
+			scrubberElement = actualElement.shadowRoot.querySelector('.scrubber');
+			knobElement = scrubberElement.querySelector('button');
+		});
 
+		it(`should set the scrub position according to input in %`, function() {
+			const { x: scrubberX, width: scrubberWidth } = scrubberElement.getBoundingClientRect();
+			const setPositionValue = 50;
+			const expectedKnobPosition = scrubberX + scrubberWidth * setPositionValue / 100;
+
+			actualElement.setPosition(setPositionValue);
+
+			expect(knobElement.getBoundingClientRect().x).to.equal(expectedKnobPosition);
 		});
 
 		it(`should set the knob according to the last setPosition value after user change`, function() {
+			const { x: scrubberX, y: scrubberY, width: scrubberWidth } = scrubberElement.getBoundingClientRect();
+			const setPositionValue = 50;
+			const expectedKnobPosition = scrubberX + scrubberWidth * setPositionValue / 100;
 
+			actualElement.setPosition(setPositionValue);
+
+			startDragging(knobElement,  scrubberX + 3, scrubberY );
+
+			stopDragging(knobElement,  scrubberX + 3, scrubberY);
+
+			expect(knobElement.getBoundingClientRect().x).to.equal(expectedKnobPosition);
 		});
 
-		it(`should set the knob according to the last setPosition value after dragEnd`, function() {
-
-		});
 	});
 });
