@@ -30,7 +30,7 @@ describe(`${COMPONENT_NAME}`, ()=>{
 	});
 
 	afterEach(function() {
-		// addedElements.forEach(elm => elm.remove());
+		addedElements.forEach(elm => elm.remove());
 	});
 
 	describe(`init`, function() {
