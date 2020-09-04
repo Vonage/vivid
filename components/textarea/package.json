@@ -7,7 +7,6 @@
 	"main": "vwc-textarea.js",
 	"module": "vwc-textarea.js",
 	"files": [
-		"src",
 		"*.js",
 		"*.ts",
 		"*.map"

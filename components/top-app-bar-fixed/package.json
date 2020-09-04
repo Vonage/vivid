@@ -1,21 +1,21 @@
 {
-	"name": "@vonage/vvd-context",
+	"name": "@vonage/vwc-top-app-bar-fixed",
 	"version": "0.5.0",
-	"description": "> TODO: description",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/context#readme",
+	"description": "top-app-bar-fixed component",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/top-app-bar-fixed#readme",
 	"license": "ISC",
-	"main": "vvd-context.js",
-	"module": "vvd-context.js",
+	"main": "vwc-top-app-bar-fixed.js",
+	"module": "vwc-top-app-bar-fixed.js",
 	"files": [
+		"src",
 		"*.js",
-		"*.d.ts",
-		"*.js.map",
-		"*.css"
+		"*.ts",
+		"*.map"
 	],
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/context"
+		"directory": "components/top-app-bar-fixed"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"
@@ -24,12 +24,9 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
+		"@material/mwc-top-app-bar-fixed": "^0.18.0",
 		"@vonage/vvd-core": "^0.5.0",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.1"
-	},
-	"devDependencies": {
-		"@vonage/vvd-typography": "^0.5.0"
 	}
 }
-
