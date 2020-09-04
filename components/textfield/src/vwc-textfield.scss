@@ -131,10 +131,10 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 :host {
   // --mdc-theme-primary: lightblue;
   --mdc-theme-error: #b00020;
-  --mdc-text-field-filled-border-radius: 6px;
+  --mdc-text-field-filled-border-radius: var(--mdc-shape-small);
 }
 
-.mdc-text-field--outlined {
+.mdc-text-field {
   height: var(#{$vvd-text-field-size-block});
 }
 
@@ -160,11 +160,17 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 // --mdc-text-field-ink-color	rgba(0, 0, 0, 0.87)	Color of the input text.
 // --mdc-text-field-label-ink-color	rgba(0, 0, 0, 0.6)	Color of the non-focused floating label, helper text, char counter, and placeholder.
 // --mdc-text-field-disabled-ink-color
-:host([shape='pill'i]) {
-  --mdc-shape-small: 28px;
+
+:host([shape='pill']) {
+  --mdc-shape-small: 24px;
 }
-:host(:not([shape='pill'i])) {
+
+:host(:not([shape='pill'])) {
   --mdc-shape-small: 6px;
+}
+
+:host(:not([shape='pill'])[dense]) {
+  --mdc-shape-small: 5px;
 }
 
 :host(:not([dense])) {
@@ -173,6 +179,19 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 
 :host([dense]) {
   #{$vvd-text-field-size-block}: 40px;
+
+  .mdc-floating-label {
+    display: none;
+  }
+}
+
+.mdc-text-field--filled {
+  border-bottom-right-radius: var(--mdc-shape-small);
+  border-bottom-left-radius: var(--mdc-shape-small);
+
+  .mdc-line-ripple {
+    display: none;
+  }
 }
 
 // .mdc-text-field--outlined .mdc-floating-label--float-above {

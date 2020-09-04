@@ -22,6 +22,9 @@ Outlined.args = { outlined: '', label: 'e.g. username' };
 export const Dense = Template.bind({});
 Dense.args = { outlined: '', dense: '' };
 
+export const Icon = Template.bind({});
+Icon.args = { icon: 'search', placeholder: 'Search' };
+
 export const basic = () => html`
   <style>
     vwc-textfield {

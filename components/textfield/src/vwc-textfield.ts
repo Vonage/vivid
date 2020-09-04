@@ -17,10 +17,16 @@ declare global {
 // @ts-ignore
 MWCTextField.styles = [styleCoupling, mwcTextFieldStyle, vwcTextFieldStyle];
 
+const shapes = ['rounded', 'pill'] as const;
+export type TextFieldShape = typeof shapes;
+
 @customElement('vwc-textfield')
 export class VWCTextField extends MWCTextField {
   @property({ type: Boolean }) dense = false;
 
+  @property({ type: String, reflect: true })
+  shape: TextFieldShape[number] = 'rounded';
+  
   async firstUpdated(): Promise<void> {
     await super.firstUpdated();
     this.shadowRoot
