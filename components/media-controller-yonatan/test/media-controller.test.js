@@ -278,6 +278,16 @@ describe(`${COMPONENT_NAME}`, ()=>{
 			expect(knobElement.getBoundingClientRect().x).to.equal(expectedKnobPosition);
 		});
 
+		it(`should leave the knob in its place while dragging`, function() {
+			const { x: scrubberX, y: scrubberY, width: scrubberWidth } = scrubberElement.getBoundingClientRect();
+			const expectedKnobPosition = scrubberX + 50;
+
+			startDragging(knobElement,  expectedKnobPosition, scrubberY );
+
+			actualElement.setPosition(10);
+
+			expect(knobElement.getBoundingClientRect().x).to.equal(expectedKnobPosition);
+		});
 	});
 
 	describe(`cleanup`, function() {
