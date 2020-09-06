@@ -134,13 +134,13 @@ class MediaController extends HTMLElement {
 	}
 
 	_setScrubListeners() {
-		function knobMove(event: MouseEvent, eventName = USER_SCRUB_EVENT_NAME) {
+		const knobMove = (event: MouseEvent, eventName = USER_SCRUB_EVENT_NAME) => {
 			if (!knob) {
 				return;
 			}
 
 			if (!isDragging) {
-				moveKnob(knob, scrubElement, element.knobPosition);
+				moveKnob(knob, scrubElement, this.knobPosition);
 				return;
 			}
 
@@ -152,13 +152,14 @@ class MediaController extends HTMLElement {
 				const {width} = scrubElement.getBoundingClientRect();
 				const actualWidth = width - getPaddingX(scrubElement);
 				const positionRatio = mousePositionX / actualWidth;
-				dispatchEvent(element, eventName, positionRatio);
+				dispatchEvent(this, eventName, positionRatio);
 			}
 		}
 
 		const mouseDownHandler = (event: MouseEvent) => {
 			isDragging = true;
 			knobMove(event);
+			document.addEventListener('mouseup', mouseUpHandler);
 			document.addEventListener('mousemove', knobMove);
 		}
 
@@ -169,6 +170,7 @@ class MediaController extends HTMLElement {
 			isDragging = false;
 			knobMove(event);
 			document.removeEventListener('mousemove', knobMove);
+			document.removeEventListener('mouseup', mouseUpHandler);
 		};
 
 		if (this.#_initComplete) {
@@ -177,12 +179,9 @@ class MediaController extends HTMLElement {
 
 		const knob = this.#_knobElement;
 		const scrubElement = this.#_scrubElement;
-		const element = this;
 		let isDragging = false;
 
 		scrubElement.addEventListener('mousedown', mouseDownHandler);
-
-		document.addEventListener('mouseup', mouseUpHandler);
 
 		this.#_eventsToClear.push({
 			event: 'mouseup',
