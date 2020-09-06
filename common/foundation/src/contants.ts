@@ -1,0 +1,1 @@
+export const connotations = ['primary', 'cta', 'success', 'error', 'info', 'announcement'] as const;
