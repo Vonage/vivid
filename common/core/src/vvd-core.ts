@@ -18,7 +18,7 @@ async function init(): Promise<void> {
 	Promise
 		.all([
 			fonts.init(),
-			scheme.init(config?.scheme as SchemeOption)
+			scheme.set(config?.scheme as SchemeOption)
 		])
 		.then(initResolver)
 		.catch(initRejector);
