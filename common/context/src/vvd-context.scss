@@ -1,5 +1,7 @@
-@use 'typography';
+@use 'partials/typography';
+@use 'partials/theme';
+@use 'partials/layout';
 
-body {
-	@include typography.frame-typography;
-}
+@include typography.default;
+@include theme.scheme-variables-coupling;
+@include layout.spacing;

@@ -1,14 +1,13 @@
 {
 	"name": "@vonage/vwc-textfield",
 	"version": "0.5.0",
-	"description": "> TODO: description",
+	"description": "texfield component",
 	"author": "yinonov <yinon@hotmail.com>",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/textfield#readme",
 	"license": "ISC",
 	"main": "vwc-textfield.js",
 	"module": "vwc-textfield.js",
 	"files": [
-		"src",
 		"*.js",
 		"*.ts",
 		"*.map"
