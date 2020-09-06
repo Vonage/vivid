@@ -1,5 +1,6 @@
 import '../vwc-media-controller';
 import kefir from "kefir";
+import { textToDomToParent } from '../../../test/test-helpers';
 
 const
 	CENTER_Y = 8,
@@ -25,19 +26,19 @@ const simulateMouseFactory =
 					: findTarget(target.shadowRoot, x, y);
 		};
 
-		//const deb = document.createElement('div');
-		//setStyle(deb, { transition: "opacity 0.2s", opacity: 0, borderRadius: "10px", pointerEvents: "none", backgroundColor: "yellow", width: "10px", height: "10px", position: "fixed" });
-		//document.body.append(deb);
+		const deb = document.createElement('div');
+		setStyle(deb, { transition: "opacity 0.2s", opacity: 0, borderRadius: "10px", pointerEvents: "none", backgroundColor: "yellow", width: "10px", height: "10px", position: "fixed" });
+		document.body.append(deb);
 
 		return ( x, y , eventType, options = { bubbles: true, composed: true }) => {
 			let
 				targetX = baseX + x,
 				targetY = baseY + y;
 
-			/*setStyle(deb, { opacity: 1, "left": targetX + "px", "top": targetY + "px" });
+			setStyle(deb, { opacity: 1, "left": targetX + "px", "top": targetY + "px" });
 			setTimeout(function(){
 				setStyle(deb, { opacity: 0 });
-			}, 1200);*/
+			}, 1200);
 
 			findTarget(document, targetX, targetY)
 				.dispatchEvent(new MouseEvent(eventType, {
@@ -48,7 +49,7 @@ const simulateMouseFactory =
 		}
 	};
 
-describe.only('vwc-media-controller', function(){
+describe('vwc-media-controller', function(){
 
 	describe('Custom Component', function(){
 		it('Should register as a custom element', function(){
@@ -58,19 +59,22 @@ describe.only('vwc-media-controller', function(){
 
 	describe(`Component Interaction`, function(){
 
-		const controllerEl = setStyle(
-			document.createElement('vwc-media-controller'),
-			{
-				"position": "fixed",
-				"bottom": 0,
-				"left": 0,
-				"width": "100%"
-			});
+		let addedElements, controllerEl, componentX, componentY, componentWidth, simulateMouse;
 
-		document.body.appendChild(controllerEl);
-		const
-			{ x: componentX, y: componentY, width: componentWidth } = controllerEl.getBoundingClientRect(),
+		beforeEach(function(){
+			addedElements = textToDomToParent('<vwc-media-controller></vwc-media-controller>');
+			controllerEl = addedElements[0];
+			setStyle(controllerEl, { top:0, left: 0, width: "200px", position: "fixed" });
+			const rect = controllerEl.getBoundingClientRect();
+			componentX = rect.x;
+			componentY = rect.y;
+			componentWidth = rect.width;
 			simulateMouse = simulateMouseFactory({ x: componentX, y: componentY });
+		});
+
+		afterEach(function() {
+			addedElements.forEach(elm => elm.remove());
+		});
 
 		it('Should emit an event when clicking play/pause ', function(){
 			return new Promise((resolve, reject)=> {
