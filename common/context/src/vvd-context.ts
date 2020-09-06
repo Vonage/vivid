@@ -1,11 +1,11 @@
-import { coreInitPromise } from '@vonage/vvd-core';
+import { coreReady } from '@vonage/vvd-core';
 import { style } from './vvd-context.css';
 
 let
 	initResolver: (value?: unknown) => void | PromiseLike<void>,
 	initRejector: (reason?: unknown) => void | PromiseLike<void>;
 
-export const contextInitPromise = new Promise((resolve, reject) => {
+export const contextReady = new Promise((resolve, reject) => {
 	initResolver = resolve;
 	initRejector = reject;
 });
@@ -15,7 +15,7 @@ init();
 async function init(): Promise<void> {
 	try {
 		injectGlobalStyle();
-		await coreInitPromise;
+		await coreReady;
 		initResolver();
 	} catch (e) {
 		initRejector(e);

@@ -1,9 +1,9 @@
 import '@storybook/addon-console';
 import { addParameters, setCustomElements } from '@storybook/web-components';
 import customElements from '../custom-elements.json';
-import { contextInitPromise } from '@vonage/vvd-context';
+import { contextReady } from '@vonage/vvd-context';
 
-contextInitPromise
+contextReady
 	.then(() => console.info('init Vivid context done (preview frame)'));
 
 async function run() {

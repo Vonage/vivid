@@ -6,7 +6,7 @@ let
 	initResolver: (value?: unknown) => void | PromiseLike<void>,
 	initRejector: (reason?: unknown) => void | PromiseLike<void>;
 
-export const coreInitPromise = new Promise((resolve, reject) => {
+export const coreReady = new Promise((resolve, reject) => {
 	initResolver = resolve;
 	initRejector = reject;
 });
