@@ -4,6 +4,7 @@ import { Button as MWCButton } from '@material/mwc-button';
 import { style as vwcButtonStyle } from './vwc-button.css';
 import { style as mwcButtonStyle } from '@material/mwc-button/mwc-button-css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
+import { connotations } from '@vonage/vvd-foundation/contants';
 import { html, TemplateResult } from 'lit-element';
 import '@vonage/vwc-icon';
 
@@ -20,13 +21,12 @@ MWCButton.styles = [styleCoupling, mwcButtonStyle, vwcButtonStyle];
 const layouts = ['text', 'outlined', 'filled'];
 export type ButtonLayout = typeof layouts;
 
-const connotations = ['primary', 'cta', 'success', 'error', 'info', 'announcement'] as const;
 export type ButtonConnotation = typeof connotations;
 
-const shapes = ['rounded', 'pill'] as const;
+const shapes = ['rounded', 'pill'];
 export type ButtonShape = typeof shapes;
 
-const types = ['submit', 'reset', 'button'] as const;
+const types = ['submit', 'reset', 'button'];
 export type ButtonType = typeof types;
 
 /**

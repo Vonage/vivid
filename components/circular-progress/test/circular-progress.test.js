@@ -1,5 +1,5 @@
 import '../vwc-circular-progress.js';
-import { textToDocumentFragment, waitNextTask } from '../../../utils/js/test-helpers.js';
+import { textToDocumentFragment, waitNextTask } from '../../../test/test-helpers.js';
 
 describe('circular progress', () => {
 	it('should be defined as a custom element', async () => {

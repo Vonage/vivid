@@ -1,5 +1,5 @@
 import '../vwc-textarea.js';
-import { textToDomToParent, waitNextTask, assertComputedStyle } from '../../../utils/js/test-helpers.js';
+import { textToDomToParent, waitNextTask, assertComputedStyle } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
