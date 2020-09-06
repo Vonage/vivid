@@ -1,5 +1,5 @@
 import '../vwc-list.js';
-import { textToDocumentFragment, waitNextTask } from '../../../utils/js/test-helpers.js';
+import { textToDocumentFragment, waitNextTask } from '../../../test/test-helpers.js';
 
 describe('list', () => {
 	it('should be defined as a custom element', async () => {
