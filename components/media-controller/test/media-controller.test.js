@@ -26,19 +26,10 @@ const simulateMouseFactory =
 					: findTarget(target.shadowRoot, x, y);
 		};
 
-		const deb = document.createElement('div');
-		setStyle(deb, { transition: "opacity 0.2s", opacity: 0, borderRadius: "10px", pointerEvents: "none", backgroundColor: "yellow", width: "10px", height: "10px", position: "fixed" });
-		document.body.append(deb);
-
 		return ( x, y , eventType, options = { bubbles: true, composed: true }) => {
 			let
 				targetX = baseX + x,
 				targetY = baseY + y;
-
-			setStyle(deb, { opacity: 1, "left": targetX + "px", "top": targetY + "px" });
-			setTimeout(function(){
-				setStyle(deb, { opacity: 0 });
-			}, 1200);
 
 			findTarget(document, targetX, targetY)
 				.dispatchEvent(new MouseEvent(eventType, {
