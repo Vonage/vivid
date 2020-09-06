@@ -13,6 +13,7 @@
     "directory": "components/scheme"
   },
   "scripts": {
+    "build": "node scripts/parseComponentsList.js",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {

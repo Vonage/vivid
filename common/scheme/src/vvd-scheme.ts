@@ -1,6 +1,8 @@
 import { CSSResult } from 'lit-element';
 import { pipe } from 'ramda';
 import { onSchemeChange } from './scheme-change-listener';
+import { updateTagStyleCssText } from './vvd-scheme-style-tag-handler';
+
 import {
   pcs,
   getPreferedColorScheme,
@@ -22,15 +24,6 @@ export const getSelectedScheme = (): PredefinedScheme => _selectedScheme;
 let _selectedSchemeOption: SchemeOption;
 export const getSelectedSchemeOption = (): SchemeOption =>
   _selectedSchemeOption;
-
-const style = mountStyle();
-
-function mountStyle() {
-  const style = document.createElement('style');
-  style.type = 'text/css';
-  document.head.appendChild(style);
-  return style;
-}
 
 function schemeDefault(): SchemeOption {
   // if no scheme chosen try 'prefers-color-scheme' and if not supported just return 'light
@@ -58,12 +51,8 @@ async function getCssText(
   return cssText;
 }
 
-function updateStyleCssText(newCssText: CSSResult['cssText']) {
-  style.innerHTML = newCssText || '';
-}
-
 async function syncWithOSSettings() {
-  updateStyleCssText(
+  updateTagStyleCssText(
     await getSchemeCssText(getPreferedColorScheme() as SchemeOption)
   );
 }
@@ -93,7 +82,7 @@ async function set(scheme: SchemeOption = schemeDefault()) {
     return;
   }
   _selectedScheme = nextScheme;
-  updateStyleCssText(await getSchemeCssText(nextScheme));
+  updateTagStyleCssText(await getSchemeCssText(nextScheme));
 }
 
 export default Object.freeze({
