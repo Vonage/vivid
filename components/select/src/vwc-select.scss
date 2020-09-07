@@ -117,5 +117,5 @@
 }
 
 .mdc-select--invalid:not(.mdc-select--disabled).mdc-select--invalid + .mdc-select-helper-text--validation-msg {
-	color: var(--mdc-select-error-color);
+	color: var(--mdc-select-ink-color);
 }
