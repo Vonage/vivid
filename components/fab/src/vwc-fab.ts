@@ -1,4 +1,4 @@
-import { init as coreInit } from '@vonage/vvd-core';
+import '@vonage/vvd-core';
 import { customElement, property, html, TemplateResult } from 'lit-element';
 import { Fab as MWCFab } from '@material/mwc-fab';
 import { style as mwcFabStyle } from '@material/mwc-fab/mwc-fab-css.js';
@@ -11,8 +11,6 @@ declare global {
 		'vwc-fab': VWCFab;
 	}
 }
-
-coreInit();
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore

@@ -1,8 +1,7 @@
 import { create } from '@storybook/theming/create';
-import context from '@vonage/vvd-context';
+import { contextReady } from '@vonage/vvd-context';
 
-context
-	.init()
+contextReady
 	.then(() => console.info('init Vivid context done (main page)'));
 
 export default create({
