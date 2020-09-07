@@ -93,7 +93,11 @@
 				color: var(--mdc-text-field-error-color);
 			}
     }
-  }
+	}
+}
+
+.mdc-text-field + .mdc-text-field-helper-line {
+	padding: 0;
 }
 
 .mdc-text-field--invalid:not(.mdc-text-field--disabled).mdc-text-field--invalid + .mdc-text-field-helper-line .mdc-text-field-helper-text--validation-msg {
