@@ -3,9 +3,6 @@ import { textToDomToParent } from '../../../test/test-helpers';
 
 describe(`Form Association Foundation`, function() {
 	let addedElements = [];
-	beforeEach(function() {
-
-	});
 
 	afterEach(function() {
 		addedElements.forEach(elm => elm.remove());
@@ -128,7 +125,9 @@ describe(`Form Association Foundation`, function() {
 			inputElementWrapper.formElement = inputElementWrapper.querySelector('input');
 			inputElementWrapper.name = fieldName;
 
-			HTMLElement.prototype.setCustomValidity = function() {};
+			HTMLElement.prototype.setCustomValidity = function() {
+				return 5;
+			};
 			addInputToForm(inputElementWrapper, hiddenElementType);
 
 			expect(formElement.querySelector(`[name="${fieldName}"]`).tagName).to.equal(hiddenElementType);
