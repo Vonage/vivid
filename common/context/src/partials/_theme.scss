@@ -1,0 +1,8 @@
+@use '@vonage/vvd-typography/scss/typography';
+
+@mixin scheme-variables-coupling {
+  body {
+    color: var(--vvd-color-base-foreground);
+    background-color: var(--vvd-color-base-background);
+  }
+}

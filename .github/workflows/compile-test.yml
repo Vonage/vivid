@@ -43,6 +43,9 @@ jobs:
       - name: Build components
         run: yarn compile
 
+      - name: Dependencies check
+        run: yarn dep-check
+
       - name: Lint sources
         run: yarn lint
 
