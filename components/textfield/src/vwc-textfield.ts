@@ -68,7 +68,8 @@ export class VWCTextField extends MWCTextField {
 		};
 		return html`
 			<div class="mdc-text-field-helper-line">
-				<vwc-icon type="info-negative" size="small"></vwc-icon>
+				<vwc-icon class="mdc-text-field-helper-icon" type="info-negative" size="small"></vwc-icon>
+				<span class="spacer"></span>
 				<div class="mdc-text-field-helper-text ${spreadObjectToClasses(classes).join(' ')}">${showValidationMessage ? this.validationMessage : this.helper}</div>
 					${charCounterTemplate}
 			</div>

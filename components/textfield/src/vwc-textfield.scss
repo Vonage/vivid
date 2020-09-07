@@ -74,6 +74,7 @@
     }
   }
 
+	:host(:hover) &,
   &:hover,
   &--focused {
 		--vvd-outline-color: var(--mdc-text-field-outlined-hover-border-color);
@@ -96,10 +97,37 @@
 	}
 }
 
-.mdc-text-field + .mdc-text-field-helper-line {
-	padding: 0;
-}
+// helper / error message line
+.mdc-text-field {
+	& + .mdc-text-field-helper-line {
+		--mdc-theme-error: var(--mdc-text-field-ink-color);
+		margin-top: 7px;
+		padding: 0;
+		align-items: center;
+		justify-content: initial;
+		cursor: default;
 
-.mdc-text-field--invalid:not(.mdc-text-field--disabled).mdc-text-field--invalid + .mdc-text-field-helper-line .mdc-text-field-helper-text--validation-msg {
-	color: var(--mdc-text-field-ink-color);
+		.mdc-text-field-helper-icon {
+			display: none;
+			color: var(--mdc-text-field-error-color);
+		}
+
+		.mdc-text-field-helper-text::before {
+			display: inline;
+		}
+
+		.spacer {
+			flex-basis: 14px;
+		}
+	}
+
+	&.mdc-text-field--invalid + .mdc-text-field-helper-line {
+		.mdc-text-field-helper-icon {
+			display: flex;
+		}
+
+		.spacer {
+			flex-basis: 6px;
+		}
+	}
 }

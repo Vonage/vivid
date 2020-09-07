@@ -14,7 +14,6 @@ function listenToSubmission(formElement) {
 			res(formData);
 		});
 	});
-
 }
 
 async function changeFieldValue(actualElement, value, eventName = 'change') {
@@ -25,7 +24,7 @@ async function changeFieldValue(actualElement, value, eventName = 'change') {
 	actualElement.dispatchEvent(evt);
 }
 
-describe('vwc-select', () => {
+describe('select', () => {
 	let addedElements = [];
 
 	afterEach(() => {
@@ -49,7 +48,7 @@ describe('vwc-select', () => {
 		});
 	});
 
-	describe(`form association`, function() {
+	describe(`form association`, function () {
 		let value1, value2, fieldName, formId;
 
 		beforeEach(() => {
@@ -59,7 +58,7 @@ describe('vwc-select', () => {
 			formId = 'testForm';
 		});
 
-		it(`should attach to closest form`, async function() {
+		it(`should attach to closest form`, async function () {
 			addedElements = textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="${formId}">
 					<${VWC_SELECT} name="${fieldName}" value="${value2}">
@@ -82,7 +81,7 @@ describe('vwc-select', () => {
 			expect(formElement.querySelectorAll(`input[name="${fieldName}"`).length).to.equal(1);
 		});
 
-		it(`should attach to form when given form id`, async function() {
+		it(`should attach to form when given form id`, async function () {
 			const externalFormID = 'externalForm';
 
 			addedElements = textToDomToParent(`
@@ -112,7 +111,7 @@ describe('vwc-select', () => {
 			expect(externalForm.querySelectorAll(`input[name="${fieldName}"`).length).to.equal(1);
 		});
 
-		it(`should do nothing if form value resolves to a non form element`, async function() {
+		it(`should do nothing if form value resolves to a non form element`, async function () {
 			addedElements = textToDomToParent(`
 			<div onsubmit="return false" name="testForm" id="${formId}">
 				<${VWC_SELECT} name="${fieldName}" value="${value1}" form="${formId}">
@@ -126,9 +125,9 @@ describe('vwc-select', () => {
 			expect(formElement.querySelector('input')).to.equal(null);
 		});
 
-		describe(`value binding`, function() {
+		describe(`value binding`, function () {
 
-			it(`should reset the value of the custom element to default on form reset`, async function() {
+			it(`should reset the value of the custom element to default on form reset`, async function () {
 				addedElements = textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="${formId}">
 					<${VWC_SELECT} name="${fieldName}" value="${value1}" form="${formId}">
@@ -146,7 +145,7 @@ describe('vwc-select', () => {
 				expect(actualElement.value).to.equal(value1);
 			});
 
-			it(`should change the value of the mock input on internal input change`, async function() {
+			it(`should change the value of the mock input on internal input change`, async function () {
 				addedElements = textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="${formId}">
 					<${VWC_SELECT} name="${fieldName}" value="${value1}" form="${formId}">
@@ -165,8 +164,8 @@ describe('vwc-select', () => {
 			});
 		});
 
-		describe(`validation`, function() {
-			it(`should get validity from the element's validationMessage`, async function() {
+		describe(`validation`, function () {
+			it(`should get validity from the element's validationMessage`, async function () {
 				addedElements = textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="${formId}">
 					<${VWC_SELECT} required name="${fieldName}" form="${formId}">
@@ -186,7 +185,7 @@ describe('vwc-select', () => {
 				expect(formElement.checkValidity()).to.equal(true);
 			});
 
-			it(`should validate on reset`, async function() {
+			it(`should validate on reset`, async function () {
 				addedElements = textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="${formId}">
 					<${VWC_SELECT} required name="${fieldName}" value="${value1}" form="${formId}">
@@ -209,7 +208,7 @@ describe('vwc-select', () => {
 				expect(formElement.checkValidity()).to.equal(true);
 			});
 
-			it(`should not submit an invalid form`, async function() {
+			it(`should not submit an invalid form`, async function () {
 				let submitted = false;
 				addedElements = textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="${formId}">
@@ -245,7 +244,7 @@ describe('vwc-select', () => {
 			});
 		});
 
-		it(`should work under multiple shadow layers`, async function() {
+		it(`should work under multiple shadow layers`, async function () {
 			addedElements = textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="${formId}">
 				<vwc-formfield>
