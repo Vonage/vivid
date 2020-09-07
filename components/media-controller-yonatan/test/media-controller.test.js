@@ -99,16 +99,16 @@ describe(`${COMPONENT_NAME}`, ()=>{
 				detail = event.detail;
 			});
 
-			startDragging(knobElement, clientX, clientY);
+			startDragging(knobElement, clientX + 5	, clientY);
 
-			expect(detail).to.equal(clientX / (width - padding));
+			expect(detail).to.equal(5 / (width - padding));
 		});
 
 		it(`should emit a userScrubRequest event with ratio in event detail when user is dragging the scrub`, function() {
 			const motionCoordinates = [
 				10, 15, 20, 12, 177
 			].map(x => clientX + x);
-			const expectedDetails = motionCoordinates.map(x => x / (width - padding));
+			const expectedDetails = motionCoordinates.map(x => (x - clientX) / (width - padding));
 
 			const details = [];
 
@@ -154,7 +154,7 @@ describe(`${COMPONENT_NAME}`, ()=>{
 				10, 15, 20, 12, 177
 			].map(x => clientX + x);
 			const expectedDetails = motionCoordinates
-				.map(x => x / (width - padding))
+				.map(x => (x - clientX) / (width - padding))
 				.filter((val, index) => index < stopDraggingIndex);
 
 			startDragging(knobElement, clientX, clientY);

@@ -150,9 +150,9 @@ class MediaController extends HTMLElement {
 			const hasPositionChanged = moveKnob(knob, scrubElement, mousePositionX);
 
 			if (hasPositionChanged) {
-				const {width} = scrubElement.getBoundingClientRect();
+				const {width, x} = scrubElement.getBoundingClientRect();
 				const actualWidth = width - getPaddingX(scrubElement);
-				const positionRatio = mousePositionX / actualWidth;
+				const positionRatio = (mousePositionX - x) / actualWidth;
 				dispatchEvent(this, eventName, positionRatio);
 			}
 		}
