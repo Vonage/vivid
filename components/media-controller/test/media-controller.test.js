@@ -5,6 +5,11 @@ import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 chai.use(chaiDomDiff);
 const COMPONENT_NAME = `vwc-media-controller`;
 
+function dispatchMouseEvent(target, eventName, options = {bubbles: true, composed: true}) {
+	const mouseMoveEvent = new MouseEvent(eventName, options);
+	target.dispatchEvent(mouseMoveEvent);
+}
+
 function emulateMouseMove(clientX, clientY) {
 	const mouseMoveEvent = new MouseEvent("mousemove", {bubbles: true, composed: true, clientX, clientY});
 	document.dispatchEvent(mouseMoveEvent);
@@ -35,12 +40,13 @@ function addFnCounter(target){
 
 describe(`${COMPONENT_NAME}`, ()=>{
 	let addedElements = [];
-	let actualElement, scrubberElement, knobElement, clientX, clientY;
+	let actualElement, scrubberElement, knobElement, playButton, clientX, clientY;
 
 	beforeEach(function() {
 		addedElements = textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`);
 		actualElement = addedElements[0];
-		scrubberElement = actualElement.shadowRoot.querySelector(':root > div');
+		playButton = actualElement.shadowRoot.querySelector('div>button');
+		scrubberElement = actualElement.shadowRoot.querySelector('div>div');
 		knobElement = scrubberElement.querySelector('button');
 
 		const {x, y} = scrubberElement.getBoundingClientRect();
@@ -64,11 +70,6 @@ describe(`${COMPONENT_NAME}`, ()=>{
 	});
 
 	describe(`userPlayPauseRequest`, function() {
-		let button;
-		beforeEach(function() {
-			button = actualElement.shadowRoot.querySelector('.play-pause-control');
-		});
-
 		it(`should emit a userPlayPauseRequest event on play button click`, function() {
 			let eventFired = false;
 
@@ -76,7 +77,7 @@ describe(`${COMPONENT_NAME}`, ()=>{
 				eventFired = true;
 			});
 
-			button.click();
+			dispatchMouseEvent(playButton, 'mousedown');
 
 			expect(eventFired).to.equal(true);
 		});
