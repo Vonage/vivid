@@ -1,15 +1,15 @@
 import { addInputToForm } from '../form-association';
-import { textToDomToParent } from '../../../test/test-helpers';
+import { textToDomToParent, randomAlpha } from '../../../test/test-helpers';
 
-describe(`Form Association Foundation`, function() {
+describe(`Form Association Foundation`, function () {
 	let addedElements = [];
 
-	afterEach(function() {
+	afterEach(function () {
 		addedElements.forEach(elm => elm.remove());
 	});
 
-	describe(`addInputToForm`, function() {
-		it(`should attach a hidden input to form with given name`, function() {
+	describe(`addInputToForm`, function () {
+		it(`should attach a hidden input to form with given name`, function () {
 			const fieldName = 'fieldName';
 			addedElements = textToDomToParent(`<form><div><input></input></div></form>`);
 			const formElement = addedElements[0];
@@ -24,14 +24,17 @@ describe(`Form Association Foundation`, function() {
 			expect(formElement.querySelectorAll(`input[name="${fieldName}"]`).length).to.equal(1);
 		});
 
-		it(`should attach a hidden input to form with given id`, function() {
-			const otherFormId = 'otherForm';
-			addedElements = textToDomToParent(`<form><div><input></input></div></form><form id="${otherFormId}"></form>`);
+		it(`should attach a hidden input to form with given id`, function () {
+			const otherFormId = randomAlpha();
+			addedElements = textToDomToParent(`
+				<form><div><input></input></div></form>
+				<form id="${otherFormId}"></form>
+			`);
 			const formElement = addedElements[0];
 			const otherForm = addedElements[1];
 
 			const inputElementWrapper = formElement.children[0];
-			inputElementWrapper.form = otherFormId;
+			inputElementWrapper.setAttribute('form', otherFormId);
 			inputElementWrapper.formElement = inputElementWrapper.querySelector('input');
 
 			addInputToForm(inputElementWrapper);
@@ -40,13 +43,13 @@ describe(`Form Association Foundation`, function() {
 			expect(otherForm.querySelectorAll('input').length).to.equal(1);
 		});
 
-		it(`should attach to no form if given form id is not found`, function() {
-			const otherFormId = 'otherForm';
+		it(`should attach to no form if given form id is not found`, function () {
+			const otherFormId = randomAlpha();
 			const fieldName = 'fieldName';
 			addedElements = textToDomToParent(`<form><div><input></input></div></form><form id="${otherFormId}"></form>`);
 			const formElement = addedElements[0];
 			const inputElementWrapper = formElement.children[0];
-			inputElementWrapper.form = 'someOtherFormId';
+			inputElementWrapper.setAttribute('form', 'someOtherFormId');
 			inputElementWrapper.name = fieldName;
 
 			inputElementWrapper.formElement = inputElementWrapper.querySelector('input');
@@ -56,8 +59,8 @@ describe(`Form Association Foundation`, function() {
 			expect(document.querySelectorAll(`input[name="${fieldName}"]`).length).to.equal(0);
 		});
 
-		it(`should reset value of the internal input, the wrapper and the hidden input on form reset`, function() {
-			const otherFormId = 'otherForm';
+		it(`should reset value of the internal input, the wrapper and the hidden input on form reset`, function () {
+			const otherFormId = randomAlpha();
 			const defaultValue = 'defaultValue';
 			const fieldName = 'fieldName';
 
@@ -66,7 +69,7 @@ describe(`Form Association Foundation`, function() {
 			const otherForm = addedElements[1];
 
 			const inputElementWrapper = formElement.children[0];
-			inputElementWrapper.form = otherFormId;
+			inputElementWrapper.setAttribute('form', otherFormId);
 			inputElementWrapper.value = defaultValue;
 			inputElementWrapper.name = fieldName;
 			inputElementWrapper.formElement = inputElementWrapper.querySelector('input');
@@ -82,8 +85,8 @@ describe(`Form Association Foundation`, function() {
 			expect(inputElementWrapper.value).to.equal(defaultValue)
 		});
 
-		it(`should set the validity and value of the hidden input according to the internal input`, function() {
-			const otherFormId = 'otherForm';
+		it(`should set the validity and value of the hidden input according to the internal input`, function () {
+			const otherFormId = randomAlpha();
 			const validValue = 'defaultValue';
 			const invalidValue = 'defaultValue';
 			const fieldName = 'fieldName';
@@ -114,7 +117,7 @@ describe(`Form Association Foundation`, function() {
 			});
 		});
 
-		it(`should add custom hidden element`, function() {
+		it(`should add custom hidden element`, function () {
 			const hiddenElementType = 'DIGGERING';
 			const fieldName = 'inputName';
 
@@ -125,7 +128,7 @@ describe(`Form Association Foundation`, function() {
 			inputElementWrapper.formElement = inputElementWrapper.querySelector('input');
 			inputElementWrapper.name = fieldName;
 
-			HTMLElement.prototype.setCustomValidity = function() {
+			HTMLElement.prototype.setCustomValidity = function () {
 				return 5;
 			};
 			addInputToForm(inputElementWrapper, hiddenElementType);

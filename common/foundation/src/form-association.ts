@@ -1,8 +1,8 @@
 const types = ['checkbox', 'textarea', 'input'];
 export type HiddenInputType = typeof types;
 
-function getFormByIdOrClosest(element: any): HTMLFormElement | null {
-	const formId = element.form;
+function getFormByIdOrClosest(element: HTMLElement): HTMLFormElement | null {
+	const formId = element.getAttribute('form');
 	const formElement = formId ? document.getElementById(formId) : element.closest('form');
 	return formElement instanceof HTMLFormElement ? formElement : null;
 }
