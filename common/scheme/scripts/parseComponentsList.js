@@ -1,5 +1,10 @@
 const fs = require('fs');
 
+console.log(
+  '\x1b[33m%s\x1b[0m',
+  '** generating css selectors from custom-elements.json **'
+);
+
 const customElementsJson = fs.readFileSync(
   __dirname + '/../../../custom-elements.json',
   { encoding: 'utf8' }
@@ -12,11 +17,10 @@ const cssSelector = tags.reduce(
 );
 
 fs.writeFileSync(
-  'pre-scheme-loading-css-text.js',
+  'src/pre-scheme-loading-css-text.ts',
   `
 		export const preSchemeLoadingCssText = \`${cssSelector} {
 			visibility: hidden;
 		}\`
 	`
 );
-console.log(cssSelector);
