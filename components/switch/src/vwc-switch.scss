@@ -74,7 +74,7 @@
 			--mdc-theme-secondary: var(--vvd-color-#{$connotation}-background);
 			--vvd-switch-checked-background-hover: var(--vvd-color-#{$connotation}-background-hover);
 			--vvd-switch-checked-border-focus: var(--vvd-color-#{$connotation}-border);
-			--vvd-switch-checked-shadow: var(--vvd-color-#{$connotation}-shadow);
+			--vvd-switch-shadow-focus: var(--vvd-color-#{$connotation}-shadow);
 		}
   }
 }
@@ -151,20 +151,20 @@
 	}
 }
 
-// TODO: create shadow vars
+// TODO: create shadow var
 :host(:not([disabled]):focus-within) {
 	.mdc-switch__track {
-		box-shadow: 1px -1px 4px rgba(var(--vvd-switch-checked-shadow)), 
-			-1px 1px 3px 1px rgba(var(--vvd-switch-checked-shadow)),
-			inset 0 0 1px 1px var(--vvd-switch-checked-border-focus);
+		border: 1px solid var(--vvd-switch-checked-border-focus);
+		box-shadow: -1px -1px 2px rgba(var(--vvd-switch-shadow-focus)), 
+			1px 1px 2px rgba(var(--vvd-switch-shadow-focus)), 
+			1px -1px 2px rgba(var(--vvd-switch-shadow-focus)), 
+			-1px 1px 2px rgba(var(--vvd-switch-shadow-focus));
 	}
 
 	.mdc-switch:not(.mdc-switch--checked) {
 		.mdc-switch__track {
 			background-color: var(--vvd-switch-unchecked-background-focus);
-			box-shadow: 1px -1px 4px rgba(var(--vvd-switch-unchecked-shadow)), 
-				-1px 1px 3px 1px rgba(var(--vvd-switch-unchecked-shadow)),
-				inset 0 0 1px 1px var(--vvd-switch-unchecked-border-focus);
+			border: 1px solid var(--vvd-switch-unchecked-border-focus);
 		}
 			
 		&:hover .mdc-switch__track {
