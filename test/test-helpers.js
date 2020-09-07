@@ -41,13 +41,16 @@ export function assertComputedStyle(element, expectedStyles) {
 	if (!element) {
 		throw new Error(`'element' parameter MUST be a valid element, got ${element}`);
 	}
-	if (!expectedStyles || typeof expectedStyles !== 'object' || !Object.keys(expectedStyles)) {
+
+	const styleKeys = Object.keys(expectedStyles);
+	if (!expectedStyles || typeof expectedStyles !== 'object' || !styleKeys.length) {
 		throw new Error(`'expectedStyles' MUST be a non-empty object, got ${JSON.stringify(expectedStyles)}`);
 	}
+
 	const computedStyle = getComputedStyle(element);
-	Object.keys(expectedStyles).forEach(key => {
-		if (computedStyle[key] !== expectedStyles[key]) {
-			throw new Error(`'${key}' is NOT as expected; expected: '${expectedStyles[key]}', found: '${computedStyle[key]}'`);
+	for (const styleKey of styleKeys) {
+		if (computedStyle[styleKey] !== expectedStyles[styleKey]) {
+			throw new Error(`'${styleKey}' is NOT as expected; expected: '${expectedStyles[styleKey]}', found: '${computedStyle[styleKey]}'`);
 		}
-	});
+	}
 }

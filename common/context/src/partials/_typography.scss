@@ -1,7 +1,12 @@
 @use '@vonage/vvd-typography/scss/typography';
 
-@mixin frame-typography {
-  @include typography.typography-cat-shorthand('body-1');
+@mixin default {
+  body {
+    @supports (font-size-adjust: 1) {
+      font-size-adjust: 0.5;
+    }
+    @include typography.typography-cat-shorthand('body-1');
+  }
 
   b,
   strong {
@@ -22,5 +27,19 @@
 
   h6 {
     @include typography.typography-cat-shorthand('body-2');
+  }
+
+  p {
+    width: 60ch;
+    max-width: 100%;
+  }
+
+  code,
+  samp,
+  kbd,
+  var {
+    // font-family: 'SpeziaCompleteTrial-Monospace';
+    display: block;
+    border-radius: 4px;
   }
 }
