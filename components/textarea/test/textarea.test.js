@@ -15,6 +15,14 @@ function listenToSubmission(formElement) {
 	});
 }
 
+async function changeFieldValue(actualElement, value, eventName = 'change') {
+	actualElement.value = value;
+	await waitNextTask();
+
+	let evt = new Event(eventName);
+	actualElement.dispatchEvent(evt);
+}
+
 describe.only('textarea', () => {
 	let addedElements = [];
 
@@ -87,6 +95,145 @@ describe.only('textarea', () => {
 
 			expect(formElement.querySelector(`textarea[name="${fieldName}"`)).to.equal(null);
 			expect(externalForm.querySelectorAll(`textarea[name="${fieldName}"`).length).to.equal(1);
+		});
+
+		it(`should do nothing if form value resolves to a non form element`, async function () {
+			const fieldValue = Math.random().toString();
+			const fieldName = 'test-field';
+			const formId = 'testForm';
+			addedElements = textToDomToParent(`<div onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} name="${fieldName}" value="${fieldValue}" form="${formId}">Button Text</${COMPONENT_NAME}></div>`);
+			const formElement = addedElements[0];
+			const actualElement = formElement.firstChild;
+			await waitNextTask();
+
+			expect(formElement.querySelector('textarea')).to.equal(null);
+		});
+
+		describe(`value binding`, function () {
+
+			it(`should reset the value of the custom element to default on form reset`, async function () {
+				const fieldValue = Math.random().toString();
+				const fieldName = 'test-field';
+				addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} name="${fieldName}" value="${fieldValue}">Button Text</${COMPONENT_NAME}></form>`);
+				const formElement = addedElements[0];
+				const actualElement = formElement.firstChild;
+				await waitNextTask();
+				actualElement.value = '5';
+				await waitNextTask();
+				formElement.reset();
+
+				expect(actualElement.value).to.equal(fieldValue);
+			});
+
+			it(`should change the value of the mock input on internal input change`, async function () {
+				const fieldValue = Math.random().toString();
+				const fieldName = 'test-field';
+				addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} name="${fieldName}">Button Text</${COMPONENT_NAME}></form>`);
+				const formElement = addedElements[0];
+				const actualElement = formElement.firstChild;
+				await waitNextTask();
+
+				await changeFieldValue(actualElement, fieldValue, 'change');
+
+				expect(actualElement.hiddenInput.value).to.equal(fieldValue);
+			});
+		});
+
+		describe(`validation`, function () {
+			it(`should get validity from the element's validationMessage`, async function () {
+				const fieldName = 'test-field';
+				addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} required name="${fieldName}">Button Text</${COMPONENT_NAME}></form>`);
+				const formElement = addedElements[0];
+				const actualElement = formElement.firstChild;
+				await waitNextTask();
+
+				const invalidity = formElement.checkValidity();
+
+				await changeFieldValue(actualElement, 'abc', 'input');
+
+				expect(invalidity).to.equal(false);
+				expect(formElement.checkValidity()).to.equal(true);
+			});
+
+			it(`should validate on reset`, async function () {
+				const fieldValue = Math.random().toString();
+				const fieldName = 'test-field';
+				addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} required value="${fieldValue}" name="${fieldName}">Button Text</${COMPONENT_NAME}></form>`);
+				const formElement = addedElements[0];
+				const actualElement = formElement.firstChild;
+				await waitNextTask();
+
+				const validInput = formElement.checkValidity();
+				await changeFieldValue(actualElement, '', 'change');
+				const invalidInput = formElement.checkValidity();
+
+				formElement.reset();
+
+				expect(validInput).to.equal(true);
+				expect(invalidInput).to.equal(false);
+				expect(formElement.checkValidity()).to.equal(true);
+			});
+
+			it(`should not submit an invalid form`, async function () {
+				let submitted = false;
+				const fieldName = 'test-field';
+				addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} required value="val" name="${fieldName}">Button Text</${COMPONENT_NAME}></form>`);
+				const formElement = addedElements[0];
+				const actualElement = formElement.firstChild;
+				await waitNextTask();
+
+				const invalidity = formElement.checkValidity();
+
+				await waitNextTask();
+
+				formElement.addEventListener('submit', () => {
+					submitted = true;
+				});
+
+				formElement.requestSubmit();
+
+				const submitValidForm = submitted;
+
+				submitted = false;
+
+				await changeFieldValue(actualElement, '', 'change');
+				formElement.requestSubmit();
+
+				expect(invalidity).to.equal(true);
+				expect(submitValidForm).to.equal(true);
+				expect(submitted).to.equal(false);
+			});
+		});
+
+		it(`should work under multiple shadow layers`, async function () {
+			const fieldValue = Math.random().toString();
+			const fieldName = 'test-field';
+			addedElements = textToDomToParent(`
+				<form onsubmit="return false" name="testForm" id="testForm">
+					<vwc-formfield>
+						<${COMPONENT_NAME} required value="${fieldValue}" name="${fieldName}">Button Text</${COMPONENT_NAME}>
+					</vwc-formfield>
+				</form>`);
+			const formElement = addedElements[0];
+			const actualElement = formElement.children[0].children[0];
+			await waitNextTask();
+
+			const validInput = formElement.checkValidity();
+
+			const submitPromise = listenToSubmission(formElement);
+
+			formElement.requestSubmit();
+
+			for (let pair of (await submitPromise).entries()) {
+				expect(pair[0]).to.equal(fieldName);
+				expect(pair[1]).to.equal(fieldValue);
+			}
+
+			await changeFieldValue(actualElement, '', 'change');
+
+			expect(formElement.querySelectorAll(`textarea[name="${fieldName}"`).length).to.equal(1);
+			expect(validInput).to.equal(true);
+			expect(formElement.checkValidity()).to.equal(false);
 		});
 	});
 
