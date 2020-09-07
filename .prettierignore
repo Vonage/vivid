@@ -2,7 +2,6 @@
 **/*.d.ts
 **/*.js
 **/*.js.map
-!**/test/*.js
 **/*.tsbuildinfo
 **/storybook-static
 **/coverage
