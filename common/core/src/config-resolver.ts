@@ -1,21 +1,21 @@
-//	TODO: this service is currently internal and known to resolve a genereal config preset from the attribute "vivid-context" on html element
-//	TOOD: we need to consider to provide a reconfigure API (probably in the vvd-core module) which will override this autodetection facility
-const defaultConfig = {
-	scheme: 'light'
-} as Record<string, unknown>;
-let effectiveConfig: Record<string, unknown> | null = null;
+const
+	VVD_CONTEXT_ATTRIBUTE = 'data-vvd-context',
+	defaultConfig = {} as Record<string, unknown>;
 
-effectiveConfig = updateByHtmlAttribute();
+let tmpConfig: Record<string, unknown> | null = null;
 
-if (!effectiveConfig) {
-	effectiveConfig = defaultConfig;
+tmpConfig = updateByHtmlAttribute();
+
+if (!tmpConfig) {
+	tmpConfig = defaultConfig;
 }
 
+const effectiveConfig: Record<string, unknown> = tmpConfig;
 export default effectiveConfig;
 
 function updateByHtmlAttribute(): Record<string, unknown> | null {
 	let result = null;
-	const htmlContextAttribute = document.documentElement.getAttribute('vivid-context');
+	const htmlContextAttribute = document.documentElement.getAttribute(VVD_CONTEXT_ATTRIBUTE);
 	if (htmlContextAttribute) {
 		result = {};
 	}
