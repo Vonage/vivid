@@ -116,5 +116,22 @@ describe.only(`Form Association Foundation`, function() {
 				});
 			});
 		});
+
+		it(`should add custom hidden element`, function() {
+			const hiddenElementType = 'DIGGERING';
+			const fieldName = 'inputName';
+
+			addedElements = textToDomToParent(`<form><div><input></input></div></form>`);
+			const formElement = addedElements[0];
+
+			const inputElementWrapper = formElement.children[0];
+			inputElementWrapper.formElement = inputElementWrapper.querySelector('input');
+			inputElementWrapper.name = fieldName;
+
+			HTMLElement.prototype.setCustomValidity = function() {};
+			addInputToForm(inputElementWrapper, hiddenElementType);
+
+			expect(formElement.querySelector(`[name="${fieldName}"]`).tagName).to.equal(hiddenElementType);
+		});
 	});
 });

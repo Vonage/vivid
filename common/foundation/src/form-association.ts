@@ -1,11 +1,14 @@
-export function getFormByIdOrClosest(element: any): HTMLFormElement | null {
+const types = ['checkbox', 'textarea', 'input'];
+export type HiddenInputType = typeof types;
+
+function getFormByIdOrClosest(element: any): HTMLFormElement | null {
 	const formId = element.form;
 	const formElement = formId ? document.getElementById(formId) : element.closest('form');
 	return formElement instanceof HTMLFormElement ? formElement : null;
 }
 
-export function addHiddenInput(hostingForm: HTMLElement, { name, value }: { name: string, value: string }) {
-	const hiddenInput = document.createElement('input');
+function addHiddenInput(hostingForm: HTMLElement, { name, value }: { name: string, value: string }, hiddenType: HiddenInputType[number]) {
+	const hiddenInput = document.createElement(hiddenType) as HTMLInputElement;
 	hiddenInput.style.display = 'none';
 	hiddenInput.setAttribute('name', name);
 	hiddenInput.defaultValue = value;
@@ -14,7 +17,7 @@ export function addHiddenInput(hostingForm: HTMLElement, { name, value }: { name
 	return hiddenInput;
 }
 
-export function setValueAndValidity(inputField: HTMLInputElement | undefined, value: string, validationMessage = '') {
+function setValueAndValidity(inputField: HTMLInputElement | undefined, value: string, validationMessage = '') {
 	if (!inputField) {
 		return;
 	}
@@ -22,14 +25,14 @@ export function setValueAndValidity(inputField: HTMLInputElement | undefined, va
 	inputField.setCustomValidity(validationMessage);
 }
 
-export function addInputToForm(inputElement: any): void {
+export function addInputToForm(inputElement: any, hiddenType: HiddenInputType[number] = 'input'): void {
 	const hostingForm = getFormByIdOrClosest(inputElement);
 
 	if (!hostingForm) {
 		return;
 	}
 
-	inputElement.hiddenInput = addHiddenInput(hostingForm, inputElement);
+	inputElement.hiddenInput = addHiddenInput(hostingForm, inputElement, hiddenType);
 	setValueAndValidity(inputElement.hiddenInput, inputElement.value, inputElement.formElement.validationMessage);
 
 	hostingForm.addEventListener('reset', () => {
