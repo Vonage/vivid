@@ -38,18 +38,20 @@
 	#{color-semantic.$switch-checked-background}: #131415;
 	#{color-semantic.$switch-checked-background-hover}: #131415;
 	#{color-semantic.$switch-checked-background-focus}: #131415;
-  #{color-semantic.$switch-checked-border-focus}: #131415;
+  #{color-semantic.$switch-checked-border-focus}: #000000;
   
 	#{color-semantic.$switch-unchecked-background}: color-base.$grey-700;
 	#{color-semantic.$switch-unchecked-background-hover}: #131415;
 	#{color-semantic.$switch-unchecked-background-focus}: color-base.$grey-800;
   #{color-semantic.$switch-unchecked-border-focus}: color-base.$grey-900;
 
+  #{color-semantic.$switch-disabled-background}: color-base.$grey-500;
+  
   #{color-semantic.$switch-shadow-focus}: 19, 20, 21, 0.2;
   
   #{color-semantic.$color-primary-background}: #131415;
 	#{color-semantic.$color-primary-background-hover}: #131415;
-	#{color-semantic.$color-primary-border}: #131415;
+	#{color-semantic.$color-primary-border}: #000000;
   #{color-semantic.$color-primary-foreground}: #ffffff;
   #{color-semantic.$color-primary-shadow}: 19, 20, 21, 0.2;
 
