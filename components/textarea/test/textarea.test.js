@@ -103,7 +103,6 @@ describe('textarea', () => {
 			const formId = 'testForm';
 			addedElements = textToDomToParent(`<div onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} name="${fieldName}" value="${fieldValue}" form="${formId}">Button Text</${COMPONENT_NAME}></div>`);
 			const formElement = addedElements[0];
-			const actualElement = formElement.firstChild;
 			await waitNextTask();
 
 			expect(formElement.querySelector('textarea')).to.equal(null);
