@@ -74,6 +74,15 @@ TODO:
   cursor: auto;
   font-size: map-get(variables.$font-size, default);
 
+	vwc-icon.leading {
+		vertical-align: middle;
+		margin: 0 5px 0 0;
+	}
+
+	vwc-icon.trailing {
+		margin-top: -1px;
+	}
+
   :host([type="filter"]) & {
     cursor: pointer;
   }
