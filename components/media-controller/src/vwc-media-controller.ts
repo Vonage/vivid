@@ -1,27 +1,22 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import kefir from 'kefir';
-import { pipe, partial, clamp, prop, always, not, allPass } from 'ramda';
-import { style as vwcMediaControllerStyle } from './vwc-media-controller.css';
+import { pipe, not, always, clamp } from 'ramda';
+import { style } from './vwc-media-controller.css';
 
 const
-	SIGNAL = Symbol('signal'),
-	TRACK_KNOB_HORIZONTAL_MARGIN = 5,
-	TRACK_VERTICAL_RESPONSIVITY_MARGIN = 10,
-	TRACK_INACTIVE_COLOR = '#E1E2E6',
-	TRACK_ACTIVE_COLOR = '#999';
-
-const
-	byType = (typeName)=> ({ type })=> type === typeName,
-	createTag = function(tagName, ...children){
-		const el = document.createElement(tagName);
-		children.forEach((child)=> typeof(child) === 'string' ? el.innerHTML += child : el.appendChild(child));
-		return el;
+	noop = ()=> {
+		// do nothing
 	},
-	sendCustomEventFactory = (target)=> (eventType, detail, options = { bubbles: true, composed: true })=> {
-			const event = new CustomEvent(eventType, { ...options, detail });
-			target.dispatchEvent(event);
-	};
+	TRACK_RESPONSE_MARGIN = 5,
+	TRACK_VERTICAL_RESPONSIVITY_MARGIN = 15;
+
+const [
+	SET_POSITION,
+	SET_PLAY_STATE,
+	ON_CONNECT,
+	ON_DISCONNECT
+] = ['set_position', 'set_play_state', 'on_connect', 'on_disconnect'].map((name)=> Symbol(name));
 
 /**
  * Displays controllers for media playback. Includes play/pause button and a scrub bar
@@ -36,123 +31,124 @@ class MediaController extends HTMLElement {
 	constructor() {
 		super();
 
-		// Local bus for collecting signals from the end-user/custom element api
 		const
-			apiBus = kefir.pool(),
-			sendCustomEvent = sendCustomEventFactory(this);
+			rootDom = this.attachShadow({ mode: 'open' }),
+			baseStyle = document.createElement('style');
 
-		this[SIGNAL] = pipe(kefir.constant, apiBus.plug.bind(apiBus));
+		baseStyle.innerHTML = style.cssText;
+		rootDom.appendChild(baseStyle);
 
-		// Set component's elemental structure
-		const rootDoc = this.attachShadow({ mode: 'open' });
-		let trackEl, ScrubberKnobEl, playPauseControlEl, rootEl;
-
-		const componentContent = (function(){
-			const [style, div, button] = ['style', 'div', 'button'].map((tagName)=> partial(createTag, [tagName]));
-			return [
-				style( vwcMediaControllerStyle.cssText),
-				rootEl = div(
-					playPauseControlEl = button(),
-					trackEl = div(
-						ScrubberKnobEl = button()
-					)
-				),
-			];
-		})();
+		[SET_PLAY_STATE, SET_POSITION].forEach((symbol)=> this[symbol] = noop);
 
 		const
-			rafStream = kefir.repeat(()=> kefir.fromCallback(requestAnimationFrame)),
-			componentConnectedStream = apiBus.filter(byType('component_connected')),
-			mouseDownStream = kefir.fromEvents(rootDoc, 'mousedown'),
-			[mouseUpStream, mouseMoveStream, contextMenuStream, windowResizeStream] = ['mouseup', 'mousemove', 'contextmenu', 'resize'].map((eventName)=> kefir.fromEvents(window, eventName));
+			triggerEvent = (eventName, payload)=> {
+				const event = new CustomEvent(eventName.replace(/_(\w)/g, (m, group)=> group.toUpperCase()), { bubbles: true, composed: true, detail: payload });
+				this.dispatchEvent(event);
+			};
 
-		const userScrubStream = mouseDownStream
-			.map(({ clientX, clientY })=> ({ mouseX: clientX, mouseY: clientY, ...(({ x: rectX, y: rectY, width: rectWidth, height: rectHeight })=> ({ rectX, rectY, rectWidth, rectHeight }))(trackEl.getBoundingClientRect()) }))
-			.filter(({ mouseX, mouseY, rectX, rectY, rectWidth, rectHeight })=> mouseX > rectX - TRACK_KNOB_HORIZONTAL_MARGIN && mouseX < rectX + rectWidth + TRACK_KNOB_HORIZONTAL_MARGIN && mouseY > rectY - TRACK_VERTICAL_RESPONSIVITY_MARGIN && mouseY < rectY + rectHeight + TRACK_VERTICAL_RESPONSIVITY_MARGIN)
-			.flatMapLatest(({ mouseX, mouseY, rectX, rectWidth })=> {
+		const componentRootEl = document.createElement('div');
+		componentRootEl.className = 'component';
+		rootDom.appendChild(componentRootEl);
+
+		const playPauseControlEl = document.createElement('button');
+		playPauseControlEl.className = 'play-pause-control';
+		componentRootEl.appendChild(playPauseControlEl);
+
+		const
+			[scrubberEl, trackEl] = [1,2].map(()=> document.createElement('div')),
+			knobEl = document.createElement('button');
+
+		knobEl.tabIndex = 0;
+		scrubberEl.appendChild(trackEl);
+		scrubberEl.appendChild(knobEl);
+		scrubberEl.className = 'scrubber';
+		scrubberEl.style.width = '100%';
+		componentRootEl.appendChild(scrubberEl);
+
+		const
+			mouseClickStream = kefir.fromEvents(rootDom, 'click'),
+			[
+				mouseDownStream,
+				mouseUpStream,
+				mouseMoveStream,
+				contentMenuStream
+			] = [
+				'mousedown',
+				'mouseup',
+				'mousemove',
+				'contextmenu'
+			].map((eventName)=> kefir.fromEvents(document, eventName));
+
+		const connectedProperty = kefir.merge([
+			kefir.stream(({ emit })=> this[ON_CONNECT] = emit).map(always(true)),
+			kefir.stream(({ emit })=> this[ON_DISCONNECT] = emit).map(always(false))
+		]).toProperty(always(false));
+
+		const
+			rafStream = kefir.repeat(()=> kefir.fromCallback((cb)=> requestAnimationFrame(cb))),
+			trackElBoundingRectProperty = connectedProperty
+				.filter(Boolean)
+				.flatMapLatest(()=> {
 					return kefir.concat([
-						kefir.constant({ type: 'start', rectWidth, rectX }),
+						kefir.constant(trackEl.getBoundingClientRect()),
 						kefir
-							.concat([
-								kefir.constant({ mouseX, mouseY }),
-								mouseMoveStream.map(({ clientX: mouseX, clientY: mouseY })=> ({ mouseX, mouseY }))
-							])
-							.map(pipe(prop('mouseX'), clamp(rectX + TRACK_KNOB_HORIZONTAL_MARGIN, rectX + rectWidth - TRACK_KNOB_HORIZONTAL_MARGIN), (pos)=> (pos - (rectX + TRACK_KNOB_HORIZONTAL_MARGIN)) / (rectWidth - TRACK_KNOB_HORIZONTAL_MARGIN * 2)))
-							.takeUntilBy(kefir.merge([mouseUpStream, contextMenuStream]).take(1))
-							.map((position)=> ({ type: 'position_change', position })),
-						kefir.constant({ type: 'end' })
+							.fromEvents(window, 'resize')
+							.debounce(10)
+							.map(()=> trackEl.getBoundingClientRect())
+							.takeUntilBy(connectedProperty.filter(pipe(Boolean, not)))
+					]);
+				})
+				.toProperty(),
+			userScrubInteractionProperty = kefir
+				.merge([
+					kefir
+						.combine([mouseDownStream], [trackElBoundingRectProperty])
+						.filter(([{ clientY, clientX }, { x, y, width, height }])=>
+							clientX > x
+							&& clientX < x + width
+							&& clientY > y - TRACK_VERTICAL_RESPONSIVITY_MARGIN
+							&& clientY < y + height + TRACK_VERTICAL_RESPONSIVITY_MARGIN
+						)
+						.map(()=> true),
+					kefir.merge([
+						mouseUpStream,
+						contentMenuStream
 					])
-			});
+					.map(()=> false)
+				])
+				.skipDuplicates()
+				.toProperty(()=> false),
+			userScrubRequestStream = kefir
+				.combine(
+					[userScrubInteractionProperty, mouseMoveStream],
+					[trackElBoundingRectProperty]
+				)
+				.filter(([interaction])=> interaction)
+				.map(([interaction, { clientX }, { x, width }])=>
+					clamp(
+						0,
+						width - (TRACK_RESPONSE_MARGIN * 2),
+						clientX - (x + TRACK_RESPONSE_MARGIN)) / (width - TRACK_RESPONSE_MARGIN * 2)
+				),
+			userPlayPauseRequestStream = mouseClickStream
+				.filter(({ target })=> target === playPauseControlEl),
+			positionProperty = kefir.stream(({ emit })=> this[SET_POSITION] = emit).toProperty(()=> 0),
+			playStateProperty = kefir
+				.stream(({ emit })=> this[SET_PLAY_STATE] = emit)
+				.toProperty(()=> false);
 
-		const userScrubInteractionProperty = kefir
-			.merge(['start', 'end'].map((eventType)=> userScrubStream.filter(byType(eventType)).map(always(eventType === 'start'))))
-			.skipDuplicates()
-			.toProperty(always(false));
+		userScrubRequestStream.onValue(triggerEvent.bind(null, 'user_scrub_request'));
+		userPlayPauseRequestStream.onValue(triggerEvent.bind(null, 'user_play_pause_request'));
+		playStateProperty.onValue((isPlaying)=> playPauseControlEl.classList.toggle('engaged', isPlaying));
+		positionProperty.onValue((percentage)=> trackEl.style.backgroundImage = `linear-gradient(90deg, #999 0%, #999 ${percentage * 100}%, #00000000 ${percentage * 100}%, #00000000 100%)`);
 
-		const apiPositionProperty = apiBus
-			.filter(byType('set_position'))
-			.map(prop('value'))
-			.toProperty(always(0));
-
-		const playStateProperty = apiBus
-			.filter(byType('set_play_state'))
-			.map(prop('value'))
-			.toProperty(always(false));
-
-		// Draw component internals
-		componentConnectedStream.take(1).onValue(()=> {
-			componentContent.forEach((el)=> rootDoc.appendChild(el));
-		});
-
-		// Update knob position
-		apiBus
-			.filter(byType('component_connected'))
-			.flatMapLatest(()=> {
-				return kefir
-					.combine([
-						userScrubInteractionProperty
-							.flatMap((active)=> {
-								return active
-									? userScrubStream.filter(byType('position_change')).map(prop('position'))
-									: apiPositionProperty.filterBy(userScrubInteractionProperty.map(not))
-							})
-							.skipDuplicates(),
-						windowResizeStream.toProperty(always(0))
-					], (val)=> val)
-					.flatMapLatest((value)=> rafStream.take(1).map(always(value)))
-					.takeUntilBy(apiBus.filter(byType('component_disconnected')).take(1));
-			})
-			.onValue((position)=> {
-				const { width: trackWidth } = trackEl.getBoundingClientRect();
-				ScrubberKnobEl.style.transform = `translate(-50%, -50%) translateX(${TRACK_KNOB_HORIZONTAL_MARGIN + position * (trackWidth - TRACK_KNOB_HORIZONTAL_MARGIN * 2)}px)`;
-			});
-
-		// Update track state
-		apiPositionProperty
-			.skipDuplicates()
-			.onValue((percentage)=> trackEl.style.backgroundImage = `linear-gradient(90deg, ${TRACK_ACTIVE_COLOR} 0%, ${TRACK_ACTIVE_COLOR} ${percentage * 100}%, ${TRACK_INACTIVE_COLOR} ${percentage * 100}%, ${TRACK_INACTIVE_COLOR} 100%)`);
-
-		// Update scrub state
-		userScrubInteractionProperty
-			.onValue((scrub)=> rootEl.classList.toggle('scrub', scrub));
-
-		// Update play state
-		playStateProperty
-			.onValue((isPlaying)=> rootEl.classList.toggle('play', isPlaying));
-
-		// Send user scrub event
-		userScrubStream
-			.filter(byType('position_change'))
-			.map(prop('position'))
-			.onValue(partial(sendCustomEvent,['userScrubRequest']));
-
-		// Send user play/pause event
-		mouseDownStream
-			.filter(allPass([
-				({ target })=> target === playPauseControlEl,
-				({ which })=> which === 1
-			]))
-			.onValue(partial(sendCustomEvent,['userPlayPauseRequest', null]));
+		kefir
+			.combine([
+				kefir.combine([userScrubInteractionProperty, userScrubRequestStream.toProperty(()=> false), positionProperty], (scrub, request, actual)=> scrub ? request : actual),
+				trackElBoundingRectProperty
+			], (percentage, { width })=> TRACK_RESPONSE_MARGIN + (width - (TRACK_RESPONSE_MARGIN * 2)) * percentage)
+			.sampledBy(rafStream)
+			.onValue((xPos)=> knobEl.style.left = `${xPos}px`);
 	}
 
 	/**
@@ -160,7 +156,7 @@ class MediaController extends HTMLElement {
  	* @param {number} position - The relative position of the scrubber (a value between 0-1).
 	**/
 	setPosition(position:number):void {
-		this[SIGNAL]({ type: 'set_position', value: position });
+		this[SET_POSITION](position);
 	}
 
 	/**
@@ -168,15 +164,15 @@ class MediaController extends HTMLElement {
 	 * @param {boolean} isPlaying - A boolean stating whether the component is playing or not (displayed pause/play buttons respectively).
 	 **/
 	setPlayState(isPlaying:boolean):void {
-		this[SIGNAL]({ type: 'set_play_state', value: isPlaying });
+		this[SET_PLAY_STATE](isPlaying);
 	}
 
 	connectedCallback():void{
-		this[SIGNAL]({ type: 'component_connected' });
+		this[ON_CONNECT]();
 	}
 
 	disconnectedCallback():void{
-		this[SIGNAL]({ type: 'component_disconnected' });
+		this[ON_DISCONNECT]();
 	}
 }
 
