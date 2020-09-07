@@ -6,7 +6,7 @@ import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-cou
 import '@vonage/vwc-icon';
 import { classMap } from 'lit-html/directives/class-map';
 import { ifDefined } from 'lit-html/directives/if-defined';
-import { nothing } from 'lit-html';
+import { nothing, TemplateResult } from 'lit-html';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -46,9 +46,9 @@ export class VWCChip extends MWCChip {
 	// 	/* eslint-disable wc/no-self-class */
 	// 	this.classList.add(...customClasses, ...filteredClasses);
 	// }
-	renderThumbnail():any {
+	renderThumbnail():TemplateResult {
 		if (this.icon) {
-			return html`<vwc-icon size="small" type="${this.icon}" style="vertical-align: middle; margin: 0 5px 0 0;"></vwc-icon>`;
+			return html`<vwc-icon size="small" type="${this.icon}" class="leading"></vwc-icon>`;
 		} else if (this.childElementCount > 0) {
 			return html`
         <span class="mdc-chip__icon mdc-chip__icon--leading">
@@ -59,7 +59,7 @@ export class VWCChip extends MWCChip {
 		}
 	}
 
-	renderRemoveIcon() {
+	renderRemoveIcon():TemplateResult {
 		const classes = {
 			'mdc-chip__trailing-action': this.removeIconFocusable,
 			[this.removeIconClass]: true
@@ -70,9 +70,9 @@ export class VWCChip extends MWCChip {
         tabindex="-1"
         role=${ifDefined(this.removeIconFocusable ? 'button' : undefined)}
         aria-hidden=${ifDefined(this.removeIconFocusable ? undefined : 'true')}
-        @click=${this.myFunc}
-        @keydown=${this.myFunc}
-      ><vwc-icon style="margin-top: -1px;" size="small" type="cross-circle-negative"/></i>` : nothing}`;
+        @click=${this.clickHandler}
+        @keydown=${this.clickHandler}
+      ><vwc-icon size="small" class="trailing" type="cross-circle-negative"/></i>` : nothing}`;
 
 		if (this.removeIconFocusable) {
 			return html`<span role="gridcell">${icon}</span>`;
@@ -81,7 +81,7 @@ export class VWCChip extends MWCChip {
 		}
 	}
 
-	myFunc(){
+	clickHandler():void{
 		this.mdcFoundation.handleTrailingActionInteraction();
 	}
 }

@@ -20,8 +20,8 @@
 		"@material/mwc-base": "^0.18.0",
 		"@material/mwc-icon": "^0.18.0",
 		"@material/mwc-ripple": "^0.18.0",
-		"lit-element": "^2.4.0",
-		"lit-html": "^1.3.0",
+		"lit-element": "^2.3.1",
+		"lit-html": "^1.2.1",
 		"tslib": "^2.0.1"
 	}
 }
