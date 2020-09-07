@@ -1,5 +1,7 @@
-import { customElement, property } from 'lit-element';
+import { customElement, property, html, TemplateResult } from 'lit-element';
 import '@vonage/vwc-notched-outline';
+import '@vonage/vwc-icon';
+import { spreadObjectToClasses } from '@vonage/vvd-foundation/class-utils.js';
 import { TextField as MWCTextField } from '@material/mwc-textfield';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import { style as vwcTextFieldStyle } from './vwc-textfield.css';
@@ -53,6 +55,24 @@ export class VWCTextField extends MWCTextField {
 		await super.firstUpdated();
 		this.shadowRoot?.querySelector('.mdc-notched-outline')?.shadowRoot?.querySelector('.mdc-notched-outline')?.classList.add('vvd-notch');
 		this.addInputToForm();
+	}
+
+	renderHelperText(charCounterTemplate = {}): TemplateResult {
+		if (!this.shouldRenderHelperText) {
+			return html``;
+		}
+		const showValidationMessage = this.validationMessage && !this.isUiValid;
+		const classes = {
+			'mdc-text-field-helper-text--persistent': this.helperPersistent,
+			'mdc-text-field-helper-text--validation-msg': showValidationMessage,
+		};
+		return html`
+			<div class="mdc-text-field-helper-line">
+				<vwc-icon type="info-negative" size="small"></vwc-icon>
+				<div class="mdc-text-field-helper-text ${spreadObjectToClasses(classes).join(' ')}">${showValidationMessage ? this.validationMessage : this.helper}</div>
+					${charCounterTemplate}
+			</div>
+		`;
 	}
 
 	protected addInputToForm(): void {

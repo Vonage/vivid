@@ -20,7 +20,7 @@ export const basic = () => html`
 	<vwc-textfield outlined disabled label="Hint text" value="Text" @keydown="${handleKeyDown}"></vwc-textfield>
 
 	<h3>Validation</h3>
-	<vwc-textfield outlined label="Numbers only" required pattern="[0-9]+" @keydown="${handleKeyDown}"></vwc-textfield>
+	<vwc-textfield outlined label="Legal ID" required pattern="[0-9]+" validationMessage="Numbers only" @keydown="${handleKeyDown}"></vwc-textfield>
 `;
 
 function handleKeyDown(e) {

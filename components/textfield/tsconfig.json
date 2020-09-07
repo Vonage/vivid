@@ -14,10 +14,16 @@
 	],
 	"references": [
 		{
+			"path": "../../common/foundation"
+		},
+		{
 			"path": "../../common/style-coupling"
 		},
 		{
 			"path": "../notched-outline"
+		},
+		{
+			"path": "../icon"
 		}
 	]
 }
