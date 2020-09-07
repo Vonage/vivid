@@ -1,0 +1,10 @@
+**/node_modules
+**/*.d.ts
+**/*.js
+**/*.js.map
+**/*.tsbuildinfo
+**/storybook-static
+**/coverage
+
+
+components/mwc-chips
