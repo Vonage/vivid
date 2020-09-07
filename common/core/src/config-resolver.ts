@@ -1,3 +1,5 @@
+import { SchemeOption } from '@vonage/vvd-scheme';
+
 const
 	VVD_CONTEXT_ATTRIBUTE = 'data-vvd-context',
 	defaultConfig = {} as Record<string, unknown>;
@@ -10,7 +12,10 @@ if (!tmpConfig) {
 	tmpConfig = defaultConfig;
 }
 
-const effectiveConfig: Record<string, unknown> = tmpConfig;
+export interface Configuration {
+	scheme?: SchemeOption
+}
+const effectiveConfig: Configuration = tmpConfig;
 export default effectiveConfig;
 
 function updateByHtmlAttribute(): Record<string, unknown> | null {

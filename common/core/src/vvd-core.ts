@@ -1,6 +1,6 @@
-import configuration from './config-resolver.js';
+import configuration, { Configuration } from './config-resolver.js';
 import fonts from '@vonage/vvd-fonts/vvd-fonts.js';
-import scheme, { SchemeOption } from '@vonage/vvd-scheme';
+import schemeService from '@vonage/vvd-scheme';
 
 let
 	initResolver: (value?: unknown) => void | PromiseLike<void>,
@@ -14,11 +14,11 @@ export const coreReady = new Promise((resolve, reject) => {
 console.debug('effective config', JSON.stringify(configuration));
 init(configuration);
 
-async function init(config: { scheme?: SchemeOption }): Promise<void> {
+async function init({ scheme }: Configuration): Promise<void> {
 	Promise
 		.all([
 			fonts.init(),
-			scheme.set(config?.scheme)
+			schemeService.set(scheme)
 		])
 		.then(initResolver)
 		.catch(initRejector);
