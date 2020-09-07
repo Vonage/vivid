@@ -38,7 +38,7 @@
     "build:icon-resolver": "cd ./components/icon && node ./build/vwc-icon-resolver-factory.js",
     "git:clean": "git clean -xdf",
     "watch": "node scripts/watcher.js",
-    "wca:json": "wca analyze components/icon/src/vwc-icon.js components/**/*.d.ts --outFile custom-elements.json",
+    "wca:json": "wca analyze components/** --outFile custom-elements.json",
     "wca:compile:json": "yarn compile && yarn wca:custom-elements"
   },
   "devDependencies": {

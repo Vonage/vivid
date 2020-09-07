@@ -13,7 +13,7 @@
     "directory": "components/scheme"
   },
   "scripts": {
-    "build": "node scripts/parseComponentsList.js",
+    "build": "yarn --cwd ../../ wca:json && node scripts/parseComponentsList.ts",
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "bugs": {
