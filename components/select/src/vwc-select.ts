@@ -5,7 +5,6 @@ import { Select as MWCSelect } from '@material/mwc-select';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import { style as vwcSelectStyle } from './vwc-select.css';
 import { style as mwcSelectStyle } from '@material/mwc-select/mwc-select-css.js';
-import { VWCTextField } from '@vonage/vwc-textfield/vwc-textfield';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -17,7 +16,7 @@ declare global {
 // @ts-ignore
 MWCSelect.styles = [styleCoupling, mwcSelectStyle, vwcSelectStyle];
 
-function getFormByIdOrClosest(element: VWCTextField | VWCSelect): HTMLFormElement | null {
+function getFormByIdOrClosest(element: VWCSelect): HTMLFormElement | null {
 	const formId = element.form;
 	const formElement = formId ? document.getElementById(formId) : element.closest('form');
 	return formElement instanceof HTMLFormElement ? formElement : null;
