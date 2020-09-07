@@ -1,7 +1,7 @@
 import { addInputToForm } from '../form-association';
 import { textToDomToParent } from '../../../test/test-helpers';
 
-describe.only(`Form Association Foundation`, function() {
+describe(`Form Association Foundation`, function() {
 	let addedElements = [];
 	beforeEach(function() {
 
