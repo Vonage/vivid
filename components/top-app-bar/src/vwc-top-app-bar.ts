@@ -1,4 +1,4 @@
-import { init as coreInit } from '@vonage/vvd-core';
+import '@vonage/vvd-core';
 import { customElement } from 'lit-element';
 import { TopAppBar as MWCTopAppBar } from '@material/mwc-top-app-bar';
 import { style as MWCTopAppBarStyle } from '@material/mwc-top-app-bar/mwc-top-app-bar-css.js';
@@ -10,8 +10,6 @@ declare global {
 		'vwc-top-app-bar': VWCTopAppBar;
 	}
 }
-
-coreInit();
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore

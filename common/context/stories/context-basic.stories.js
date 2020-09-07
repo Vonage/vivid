@@ -1,10 +1,10 @@
-import context from '@vonage/vvd-context/vvd-context';
+import { contextReady } from '@vonage/vvd-context/vvd-context';
 import '@vonage/vwc-scheme-select';
 import '@vonage/vwc-top-app-bar';
 import { html } from 'lit-element';
 
 export default {
-  title: 'Cells/Context',
+	title: 'Cells/Context',
 };
 
 export const basic = () => html`
@@ -42,6 +42,5 @@ export const basic = () => html`
   </main>
 `;
 
-context
-  .init()
-  .then(() => console.log('Vivid context initialised for the demo story'));
+contextReady
+	.then(() => console.log('Vivid context initialised for the context demo story'));
