@@ -1,113 +1,345 @@
 import '../vwc-media-controller';
-import kefir from "kefir";
-import { textToDomToParent } from '../../../test/test-helpers';
+import { textToDomToParent, waitNextTask } from '../../../test/test-helpers';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
-const
-	CENTER_Y = 8,
-	TRACK_X = 37,
-	TRACK_X_MARGIN = 5,
-	BUTTON_X = 6,
-	PERCENTAGE_TOLERANCE = 2,
-	RESPONSE_TIMEOUT = 100; //ms
+chai.use(chaiDomDiff);
+const COMPONENT_NAME = `vwc-media-controller`;
 
-const setStyle = (el, style = {})=> {
-	return Object.entries(style).reduce((el, [k, v])=> { el.style[k] = v; return el; }, el);
-};
+function emulateMouseMove(clientX, clientY) {
+	const mouseMoveEvent = new MouseEvent("mousemove", {bubbles: true, composed: true, clientX, clientY});
+	document.dispatchEvent(mouseMoveEvent);
+}
 
-const simulateMouseFactory =
-	({ x: baseX = 0, y: baseY = 0 })=> {
+function startDragging(knobElement, clientX = 0, clientY = 0) {
+	const mouseDownEvent = new MouseEvent("mousedown", {bubbles: true, composed: true, clientX, clientY});
+	knobElement.dispatchEvent(mouseDownEvent);
+}
 
-		let findTarget = (root = document, x, y)=> {
-			let target = root.elementFromPoint(x, y);
-			return !target
-				? root
-				: !target.shadowRoot
-					? target
-					: findTarget(target.shadowRoot, x, y);
-		};
+function stopDragging(knobElement, clientX = 0, clientY = 0) {
+	const mouseUpEvent = new MouseEvent("mouseup", {bubbles: true, composed: true});
+	knobElement.dispatchEvent(mouseUpEvent);
+}
 
-		return ( x, y , eventType, options = { bubbles: true, composed: true }) => {
-			let
-				targetX = baseX + x,
-				targetY = baseY + y;
+function addFnCounter(target){
+	const swap = target;
+	function counter(){
+		if (!this.count) this.count = 0;
+		swap.apply(null, arguments);
+		counter.count++;
+		console.log(`Called ${swap.name} ${counter.count} times`);
+	}
 
-			findTarget(document, targetX, targetY)
-				.dispatchEvent(new MouseEvent(eventType, {
-					clientX: targetX,
-					clientY: targetY,
-					...options
-				}));
-		}
-	};
+	counter.count = 0;
+	return counter;
+}
 
-describe('vwc-media-controller', function(){
+describe(`${COMPONENT_NAME}`, ()=>{
+	let addedElements = [];
+	let actualElement, scrubberElement, knobElement, clientX, clientY;
 
-	describe('Custom Component', function(){
-		it('Should register as a custom element', function(){
-			assert.exists(customElements.get(`vwc-media-controller`, 'vwc-media-controller element is not defined'));
+	beforeEach(function() {
+		addedElements = textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`);
+		actualElement = addedElements[0];
+		scrubberElement = actualElement.shadowRoot.querySelector(':root > div');
+		knobElement = scrubberElement.querySelector('button');
+
+		const {x, y} = scrubberElement.getBoundingClientRect();
+		clientX = x;
+		clientY = y;
+	});
+
+	afterEach(function() {
+		addedElements.forEach(elm => elm.remove());
+	});
+
+	describe(`init`, function() {
+		it('should register as a custom element', async ()=> {
+			assert.exists(customElements.get(`${COMPONENT_NAME}`, 'vwc-media-controller element is not defined'));
+		});
+
+		it(`should have the DOM set`, async function() {
+			await waitNextTask();
+			expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 		});
 	});
 
-	describe(`Component Interaction`, function(){
+	describe(`userPlayPauseRequest`, function() {
+		let button;
+		beforeEach(function() {
+			button = actualElement.shadowRoot.querySelector('.play-pause-control');
+		});
 
-		let addedElements, controllerEl, componentX, componentY, componentWidth, simulateMouse;
+		it(`should emit a userPlayPauseRequest event on play button click`, function() {
+			let eventFired = false;
 
-		beforeEach(function(){
-			addedElements = textToDomToParent('<vwc-media-controller></vwc-media-controller>');
-			controllerEl = addedElements[0];
-			setStyle(controllerEl, { top:0, left: 0, width: "200px", position: "fixed" });
-			const rect = controllerEl.getBoundingClientRect();
-			componentX = rect.x;
-			componentY = rect.y;
-			componentWidth = rect.width;
-			simulateMouse = simulateMouseFactory({ x: componentX, y: componentY });
+			actualElement.addEventListener('userPlayPauseRequest', _ => {
+				eventFired = true;
+			});
+
+			button.click();
+
+			expect(eventFired).to.equal(true);
+		});
+	});
+
+	describe(`userScrubRequest`, function() {
+
+		let padding, width;
+
+		beforeEach(function() {
+			padding = 7;
+			scrubberElement.style.paddingRight = padding + 'px';
+			scrubberElement.style.paddingLeft = 0 + 'px';
+			width = scrubberElement.getBoundingClientRect().width;
+		});
+
+		it(`should emit a userScrubRequest event with ratio in event detail when user clicks on the slider`, function() {
+			let detail;
+			actualElement.addEventListener('userScrubRequest', (event) => {
+				detail = event.detail;
+			});
+
+			startDragging(knobElement, clientX, clientY);
+
+			expect(detail).to.equal(clientX / (width - padding));
+		});
+
+		it(`should emit a userScrubRequest event with ratio in event detail when user is dragging the scrub`, function() {
+			const motionCoordinates = [
+				10, 15, 20, 12, 177
+			].map(x => clientX + x);
+			const expectedDetails = motionCoordinates.map(x => x / (width - padding));
+
+			const details = [];
+
+			startDragging(knobElement, clientX, clientY);
+
+			actualElement.addEventListener('userScrubRequest', (event) => {
+				details.push(event.detail);
+			});
+
+			motionCoordinates.forEach((x) => emulateMouseMove(x, clientY));
+
+			expect(details.length).to.equal(expectedDetails.length);
+			expectedDetails.forEach((expectedResult, index) => expect(expectedResult).to.equal(details[index]));
+		});
+
+		it(`should move the knob while dragging`, function() {
+			const motionCoordinates = [
+				10, 15, 20
+			].map(x => clientX + x);
+
+			startDragging(knobElement, clientX, clientY);
+
+			const knobPositions = [];
+			actualElement.addEventListener('userScrubRequest', (event) => {
+				knobPositions.push(knobElement.getBoundingClientRect().x);
+			});
+
+			motionCoordinates.forEach((x, index) => {
+				emulateMouseMove(x, clientY)
+			});
+
+			motionCoordinates.forEach((expectedX, index) => {
+				expect(expectedX).to.equal(knobPositions[index]);
+			});
+
+			stopDragging(knobElement);
+		});
+
+		it('should stop emitting userScrubRequest after mouseup event', function() {
+
+			const stopDraggingIndex = 3;
+			const motionCoordinates = [
+				10, 15, 20, 12, 177
+			].map(x => clientX + x);
+			const expectedDetails = motionCoordinates
+				.map(x => x / (width - padding))
+				.filter((val, index) => index < stopDraggingIndex);
+
+			startDragging(knobElement, clientX, clientY);
+
+			const details = [];
+			actualElement.addEventListener('userScrubRequest', (event) => {
+				details.push(event.detail);
+			});
+
+			motionCoordinates.forEach((x, index) => {
+				if (index === stopDraggingIndex) {
+					stopDragging(knobElement);
+				}
+				emulateMouseMove(x, clientY)
+			});
+
+			expect(details.length).to.equal(expectedDetails.length);
+			expectedDetails.forEach((expectedResult, index) => expect(expectedResult).to.equal(details[index]));
+		});
+
+		it(`should stop sending userScrubRequest when out of X bounds`, function() {
+			function outOfBoundsValue() {
+				return Math.random() * 10 + dispatchSlackness;
+			}
+			const scrubberFixedWidth = 20;
+			const dispatchSlackness = 1;
+			scrubberElement.style.width = `${scrubberFixedWidth}px`;
+
+			const motionCoordinates = [31.915659635885948,33,38,53,58.533680876033436];
+			// const motionCoordinates = [
+			// 	0 - outOfBoundsValue(), 0, 5, scrubberFixedWidth, scrubberFixedWidth + outOfBoundsValue()
+			// ].map(x => clientX + x);
+
+			const expectedEventsCount = motionCoordinates.filter(x => x >= clientX && x <= clientX + scrubberFixedWidth).length; // only 0, 5 and scrubberFixedWidth
+
+			startDragging(knobElement, clientX, clientY);
+
+			let eventsSent = 0;
+			actualElement.addEventListener('userScrubRequest', (event) => {
+				eventsSent++;
+			});
+
+			motionCoordinates.forEach((x) => {
+				emulateMouseMove(x, clientY);
+			});
+
+			expect(eventsSent, `Error: ${JSON.stringify(motionCoordinates)} triggered more events than expected`).to.equal(expectedEventsCount)
+		});
+
+		it(`should stop moving the knob while x position is outside the scrubber width`, function() {
+			const scrubberFixedWidth = 20;
+			scrubberElement.style.width = `${scrubberFixedWidth}px`;
+			const motionCoordinates = [
+				0 - Math.random() * 10, 0, 5, scrubberFixedWidth, scrubberFixedWidth + Math.random()*10
+			].map(x => clientX + x);
+
+			const expectedPositions = motionCoordinates.map(x => x < clientX ? clientX :
+				x > clientX + scrubberFixedWidth ? clientX + scrubberFixedWidth : x);
+
+			const knobPositions = [];
+
+			startDragging(knobElement, clientX, clientY);
+
+			motionCoordinates.forEach((x) => {
+				emulateMouseMove(x, clientY);
+				knobPositions.push(knobElement.getBoundingClientRect().x);
+			});
+
+			expectedPositions.forEach((expectedPosition, index) => expect(expectedPosition, `failed on index ${index}`).to.equal(knobPositions[index]));
+
+		});
+	});
+
+	describe(`setPlayState`, function() {
+		let button;
+		beforeEach(function() {
+			button = actualElement.shadowRoot.querySelector('.play-pause-control');
+		});
+
+		it(`should toggle the play button class "isPlayed"`, function() {
+			const isPlayingOnStartup = button.classList.contains("isPlayed");
+			actualElement.setPlayState(true);
+			const isPlayingAfterSetPlayStateTrue = button.classList.contains("isPlayed");
+			actualElement.setPlayState(false);
+			const isNotPlayingAfterSetPlayStateTrue = button.classList.contains("isPlayed");
+
+			expect(isPlayingOnStartup, 'Error: playing on startup').to.equal(false);
+			expect(isPlayingAfterSetPlayStateTrue, 'Error: not playing after state change').to.equal(true);
+			expect(isNotPlayingAfterSetPlayStateTrue, 'Error: still playing after state change to false').to.equal(false);
+		});
+	});
+
+	describe(`setPosition`, function() {
+		let knobElement, scrubberElement;
+		beforeEach(function() {
+			scrubberElement = actualElement.shadowRoot.querySelector('.scrubber');
+			knobElement = scrubberElement.querySelector('button');
+		});
+
+		it(`should set the scrub position according to input in %`, function() {
+			const { x: scrubberX, width: scrubberWidth } = scrubberElement.getBoundingClientRect();
+			const setPositionValue = 50;
+			const expectedKnobPosition = scrubberX + scrubberWidth * setPositionValue / 100;
+
+			actualElement.setPosition(setPositionValue);
+
+			expect(knobElement.getBoundingClientRect().x).to.equal(expectedKnobPosition);
+		});
+
+		it(`should set the knob according to the last setPosition value after user change`, function() {
+			const { x: scrubberX, y: scrubberY, width: scrubberWidth } = scrubberElement.getBoundingClientRect();
+			const setPositionValue = 50;
+			const expectedKnobPosition = scrubberX + scrubberWidth * setPositionValue / 100;
+
+			actualElement.setPosition(setPositionValue);
+
+			startDragging(knobElement,  scrubberX + 3, scrubberY );
+
+			stopDragging(knobElement,  scrubberX + 3, scrubberY);
+
+			expect(knobElement.getBoundingClientRect().x).to.equal(expectedKnobPosition);
+		});
+
+		it(`should leave the knob in its place while dragging`, function() {
+			const { x: scrubberX, y: scrubberY, width: scrubberWidth } = scrubberElement.getBoundingClientRect();
+			const expectedKnobPosition = scrubberX + 50;
+
+			startDragging(knobElement,  expectedKnobPosition, scrubberY );
+
+			actualElement.setPosition(10);
+
+			expect(knobElement.getBoundingClientRect().x).to.equal(expectedKnobPosition);
+		});
+	});
+
+	describe(`cleanup`, function() {
+		let originalAddEventListener, originalRemoveEventListener;
+		const eventsCallbacks = {};
+
+		before(function() {
+			originalAddEventListener = Document.prototype.addEventListener;
+			originalRemoveEventListener = Document.prototype.removeEventListener;
+			Document.prototype.addEventListener = function(eventName, cb) {
+
+				const counter = addFnCounter(cb)
+				eventsCallbacks[eventName] = {
+					counter,
+					cb
+				};
+
+				originalAddEventListener(eventName, counter);
+			}
+
+			Document.prototype.removeEventListener = function(eventName, cb) {
+				originalRemoveEventListener(eventName, eventsCallbacks[eventName].counter)
+			}
+		});
+
+		after(() => {
+			// Document.prototype.addEventListener = originalAddEventListener;
+		});
+
+		beforeEach(function() {
 		});
 
 		afterEach(function() {
+		});
+		it(`should remove all events set on the document and the window`, function() {
+			const documentEvents = Object.keys(eventsCallbacks);
+			const counts = documentEvents.map(eventName => eventsCallbacks[eventName].counter.count);
+
+			startDragging(knobElement, )
+
+			// remove the element from the DOM
 			addedElements.forEach(elm => elm.remove());
-		});
-
-		it('Should emit an event when clicking play/pause ', function(){
-			return new Promise((resolve, reject)=> {
-				controllerEl.addEventListener('userPlayPauseRequest', resolve);
-				simulateMouse( BUTTON_X, CENTER_Y, 'mousedown');
-				setTimeout( reject, RESPONSE_TIMEOUT, new Error('Play/pause button did not emit an event, make sure the layout\'s hasn\'t changed'))
+			// enact the events on the document
+			documentEvents.forEach(eventName => {
+				const event = new MouseEvent(eventName, {bubbles: true, composed: true});
+				document.dispatchEvent(event);
 			});
-		});
 
-		it('Should report userScrubRequest events when clicking the trackbar', function(){
-			const SAMPLES = 10;
-			return kefir
-				.concat(
-					Array(SAMPLES)
-						.fill(0)
-						.map((val, index)=> ({
-							x: TRACK_X + TRACK_X_MARGIN + ((componentWidth - 5 - TRACK_X - TRACK_X_MARGIN * 2) / SAMPLES * index),
-							y: CENTER_Y,
-							expected: Math.floor(index / SAMPLES * 100)
-						}))
-						.map(({ x, y, expected })=> {
-							return kefir.merge([
-								kefir
-									.fromEvents(controllerEl, 'userScrubRequest')
-									.take(1)
-									.flatMap(
-										({ detail })=> {
-											const got = Math.floor(detail * 100);
-											return kefir[
-												(got <= expected + PERCENTAGE_TOLERANCE && got >= expected - PERCENTAGE_TOLERANCE)
-													? "constant"
-													: "constantError"
-												](new Error(`Wrong value returned, expected ${expected}, got ${got}`));
-										}),
-								kefir.later(RESPONSE_TIMEOUT).flatMap(()=> kefir.constantError('Did not receive a "userScrubRequest" event following a click on the trackbar')),
-								kefir.fromCallback((cb)=> cb(["mousedown", "mouseup"].forEach((eventName)=> simulateMouse( x, y, eventName)))).ignoreValues()
-							]).take(1).takeErrors(1)
-						})
-				)
-				.takeErrors(1)
-				.mapErrors((des)=> new Error(des))
-				.toPromise();
+			// expect that counts is the same
+			documentEvents.map(eventName => eventsCallbacks[eventName].counter.count).forEach((val, index) => {
+				expect(val).to.equal(counts[index]);
+			})
 		});
 	});
 });
