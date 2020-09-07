@@ -23,7 +23,7 @@ async function changeFieldValue(actualElement, value, eventName = 'change') {
 	actualElement.dispatchEvent(evt);
 }
 
-describe.only('textarea', () => {
+describe('textarea', () => {
 	let addedElements = [];
 
 	afterEach(() => {
