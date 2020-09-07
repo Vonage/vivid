@@ -24,10 +24,12 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
+		"@vonage/vwc-icon": "^0.5.0",
 		"@material/mwc-chips": "^0.2.0",
 		"@vonage/vvd-style-coupling": "^0.5.0",
-		"lit-element": "^2.4.0",
-		"tslib": "^2.0.1"
+		"lit-element": "^2.3.1",
+		"tslib": "^2.0.1",
+		"lit-html": "^1.2.1"
 	},
 	"devDependencies": {
 		"@vonage/vvd-typography": "^0.5.0"
