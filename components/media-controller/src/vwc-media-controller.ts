@@ -22,7 +22,18 @@ const
 			const event = new CustomEvent(eventType, { ...options, detail });
 			target.dispatchEvent(event);
 	},
-	between = (value, min, max)=> value >= min && value <= max;
+	between = (value, min, max)=> value >= min && value <= max,
+	byMouseInsideControlRange = ({ mouseX, mouseY, rectX, rectY, rectWidth, rectHeight })=>
+		between(
+			mouseX,
+			rectX - TRACK_KNOB_HORIZONTAL_MARGIN,
+			rectX + rectWidth + TRACK_KNOB_HORIZONTAL_MARGIN
+		)
+		&& between(
+		mouseY,
+		rectY - TRACK_VERTICAL_RESPONSIVITY_MARGIN,
+		rectY + rectHeight + TRACK_VERTICAL_RESPONSIVITY_MARGIN
+	);
 
 /**
  * Displays controllers for media playback. Includes play/pause button and a scrub bar
@@ -64,6 +75,7 @@ class MediaController extends HTMLElement {
 		const
 			rafStream = kefir.repeat(()=> kefir.fromCallback(requestAnimationFrame)),
 			componentConnectedStream = apiBus.filter(byType('component_connected')),
+			mouseClickStream = kefir.fromEvents(rootDoc, 'click'),
 			mouseDownStream = kefir.fromEvents(rootDoc, 'mousedown'),
 			[mouseUpStream, mouseMoveStream, contextMenuStream, windowResizeStream] = ['mouseup', 'mousemove', 'contextmenu', 'resize'].map((eventName)=> kefir.fromEvents(window, eventName));
 
@@ -74,18 +86,7 @@ class MediaController extends HTMLElement {
 					mouseY: clientY,
 					...(({ x: rectX, y: rectY, width: rectWidth, height: rectHeight })=> ({ rectX, rectY, rectWidth, rectHeight }))(trackEl.getBoundingClientRect())
 				}))
-			.filter(({ mouseX, mouseY, rectX, rectY, rectWidth, rectHeight })=>
-				between(
-					mouseX,
-					rectX - TRACK_KNOB_HORIZONTAL_MARGIN,
-					rectX + rectWidth + TRACK_KNOB_HORIZONTAL_MARGIN
-				)
-				&& between(
-					mouseY,
-					rectY - TRACK_VERTICAL_RESPONSIVITY_MARGIN,
-					rectY + rectHeight + TRACK_VERTICAL_RESPONSIVITY_MARGIN
-				)
-			)
+			.filter(byMouseInsideControlRange)
 			.flatMapLatest(({ mouseX, mouseY, rectX, rectWidth })=> {
 					return kefir.concat([
 						kefir.constant({ type: 'start', rectWidth, rectX }),
@@ -174,10 +175,9 @@ class MediaController extends HTMLElement {
 			.onValue(partial(sendCustomEvent,['userScrubRequest']));
 
 		// Send user play/pause event
-		mouseDownStream
+		mouseClickStream
 			.filter(allPass([
-				({ target })=> target === playPauseControlEl,
-				({ which })=> which === 1
+				({ target })=> target === playPauseControlEl
 			]))
 			.onValue(partial(sendCustomEvent,['userPlayPauseRequest', null]));
 	}
