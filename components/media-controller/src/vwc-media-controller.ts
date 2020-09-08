@@ -83,7 +83,7 @@ class MediaController extends HTMLElement {
 				&& between(
 					mouseY,
 					rectY - TRACK_VERTICAL_RESPONSIVITY_MARGIN,
-					mouseY < rectY + rectHeight + TRACK_VERTICAL_RESPONSIVITY_MARGIN
+					rectY + rectHeight + TRACK_VERTICAL_RESPONSIVITY_MARGIN
 				)
 			)
 			.flatMapLatest(({ mouseX, mouseY, rectX, rectWidth })=> {
