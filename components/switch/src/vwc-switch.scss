@@ -1,85 +1,183 @@
-@use "@material/switch" with (
-  $track-height: 30px,
-  $track-width: 50px,
-  $thumb-diameter: 24px,
-  $thumb-offset: -3px
-);
+@use 'sass:selector';
 @use '@vonage/vvd-foundation/scss/variable-names/color-base-variable-names' as color-base;
 
-@include switch.without-ripple();
-
+// sizing parts only
 :host {
-  display: inline-flex;
-  outline: none;
+	border-radius: 16px;
+
+	.mdc-switch,
+	.mdc-switch__native-control {
+		width: 30px;
+		height: 20px;
+	}
+
+	.mdc-switch__track {
+		width: 100%;
+		height: 100%;
+		border-radius: 16px;
+		border-width: 0;
+	}
+
+	.mdc-switch__thumb-underlay {
+		top: 0;
+		left: 0;
+		width: 20px;
+		height: 100%;
+
+		.mdc-switch__thumb {
+			width: 16px;
+			height: 16px;
+			border: none;
+		}
+	}
+
+	.mdc-switch--checked {
+		.mdc-switch__thumb-underlay {
+			transform: translateX(10px);
+		}
+
+		.mdc-switch__native-control {
+			transform: translateX(-10px);
+		}
+	}
 }
 
-.mdc-switch {
-  @include switch.toggled-on-track-color(var(--mdc-theme-secondary));
-  @include switch.toggled-off-track-color(#9b9da3);
-  @include switch.toggled-on-thumb-color(var(--mdc-theme-surface));
-  @include switch.toggled-off-thumb-color(var(--mdc-theme-surface));
+// ! move to utils as this might be a common
+// ! mixin for other components such as call-out
+@mixin connotations-context(
+  $selector: ':host([connotation-specifier])',
+  $default: primary
+) {
+  $connotations: primary cta success error;
 
-  &--disabled {
-    @include switch.toggled-on-track-color(#9b9da3);
+  @each $connotation in $connotations {
+    $attr: '[connotation="#{$connotation}"i]';
 
-    opacity: 0.5;
-  }
+    $scoped-selector: $selector; // prevents overriding argument
 
-  &:not(.mdc-switch--disabled) {
-    &:hover {
-			// look into opacity for hover states
-      @include switch.toggled-off-track-color(color-base.$grey-900);
-      @include switch.toggled-on-track-color(color-base.$grey-900);
-      @include switch.toggled-off-thumb-color(color-base.$grey-100);
-      @include switch.toggled-on-thumb-color(color-base.$grey-100);
+    $scoped-selector: selector.replace(
+      #{$selector},
+      '[connotation-specifier]',
+      #{$attr}
+    );
+
+    @if ($connotation == $default) {
+      $default-selector: selector.replace(
+        #{$selector},
+        '[connotation-specifier]',
+        ':not([connotation])'
+      );
+      $scoped-selector: $default-selector, $scoped-selector;
     }
-  }
 
-  &__track,
-  &__thumb,
-  &__thumb:after,
-  &__thumb-underlay {
-    transition-duration: 0.4s;
-  }
-
-  &__track {
-    &,
-    .mdc-switch--checked & {
-      opacity: 1;
-    }
-  }
-
-  &__thumb {
-    box-shadow: none;
+    #{$scoped-selector} {
+			--mdc-theme-secondary: var(--vvd-color-#{$connotation}-background);
+			--vvd-switch-checked-background-hover: var(--vvd-color-#{$connotation}-background-hover);
+			--vvd-switch-checked-border-focus: var(--vvd-color-#{$connotation}-border);
+			--vvd-switch-shadow-focus: var(--vvd-color-#{$connotation}-shadow);
+		}
   }
 }
 
-.mdc-switch__thumb:after {
-  border-radius: 15px;
-  box-shadow: 0 0 0 0;
-  content: '';
-  height: 30px;
-  left: 9px;
-  opacity: 0.3;
-  position: absolute;
-  top: 9px;
-  transition-property: box-shadow, transform;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  width: 50px;
+@include connotations-context(
+  ':host([connotation-specifier])'
+);
 
-  .mdc-switch--checked & {
-    transform: translateX(-20px);
-  }
+:host([enlarged]) {
+	.mdc-switch,
+	.mdc-switch__native-control {
+		width: 50px;
+		height: 32px;
+	}
 
-  .mdc-ripple-upgraded--background-focused & {
-    box-shadow: 0 0 0 5px #9b9da3;
+	.mdc-switch__thumb-underlay {
+		width: 32px;
 
-    .mdc-switch--checked & {
-      box-shadow: 0 0 0 5px var(--mdc-theme-secondary);
-    }
+		.mdc-switch__thumb {
+			width: 24px;
+			height: 24px;
+		}
+	}
 
-    .mdc-switch--disabled & {
-      display: none;
-    }
-  }
+	.mdc-switch--checked {
+		.mdc-switch__thumb-underlay {
+			transform: translateX(18px);
+		}
+
+		.mdc-switch__native-control {
+			transform: translateX(-18px);
+		}
+	}
+}
+
+// colors/shadowing
+:host {
+	--vvd-switch-checked-background: var(--vvd-color-primary-background);
+	--vvd-switch-checked-background-hover: var(--vvd-color-primary-background);
+	--vvd-switch-checked-background-focus: var(--vvd-color-primary-background);
+	--vvd-switch-checked-border-focus: #000000;
+
+	--vvd-switch-unchecked-background: #{color-base.$grey-700};
+	--vvd-switch-unchecked-background-hover: #{color-base.$grey-900};
+	--vvd-switch-unchecked-background-focus: #{color-base.$grey-800};
+	--vvd-switch-unchecked-border-focus: #{color-base.$grey-900};
+
+	--vvd-switch-disabled-background: #{color-base.$grey-500};
+	--vvd-switch-shadow-focus: 19, 20, 21, 0.42;
+
+	--mdc-theme-on-surface: var(--vvd-switch-unchecked-background);
+
+	.mdc-switch {
+		.mdc-switch__thumb {
+			box-shadow: none;
+		}
+
+		&.mdc-switch--checked .mdc-switch__thumb {
+			background-color: #fff;
+		}
+
+		&:hover .mdc-switch__thumb {
+			opacity: 0.9;
+		}
+
+		.mdc-switch__track,
+		&.mdc-switch--checked .mdc-switch__track {
+			opacity: initial;
+		}
+
+		&:hover .mdc-switch__track {
+			background-color: var(--vvd-switch-checked-background-hover);
+		}
+
+		&:not(.mdc-switch--checked):hover .mdc-switch__track {
+			background-color: var(--vvd-switch-unchecked-background-hover);
+		}
+
+		&.mdc-switch--disabled {
+			opacity: initial;
+
+			.mdc-switch__track {
+				opacity: initial;
+				background-color: var(--vvd-switch-disabled-background);
+			}
+		}
+	}
+}
+
+:host(:not([disabled]):focus-within) {
+	.mdc-switch__track {
+		border: 1px solid var(--vvd-switch-checked-border-focus);
+		box-shadow: 0 0 2px 1px rgba(var(--vvd-switch-shadow-focus));
+	}
+
+	.mdc-switch:not(.mdc-switch--checked) {
+		.mdc-switch__track {
+			background-color: var(--vvd-switch-unchecked-background-focus);
+			border: 1px solid var(--vvd-switch-unchecked-border-focus);
+		}
+
+		&:hover .mdc-switch__track {
+			background-color: var(--vvd-switch-unchecked-background-hover);
+		}
+	}
 }

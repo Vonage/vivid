@@ -19,8 +19,8 @@ export const basic = () => html`
 	<h3>Filter</h3>
 	<vwc-chip-set id="chipSetB" type="filter" @MDCChip:selection="${handleSelection}">
 		<vwc-chip label="1"></vwc-chip>
-		<vwc-chip label="2" icon="fingerprint"></vwc-chip>
-		<vwc-chip label="3" icon="language"></vwc-chip>
+		<vwc-chip label="2" icon="chat-full"></vwc-chip>
+		<vwc-chip label="3" icon="rocket-full"></vwc-chip>
 	</vwc-chip-set>
 
 	<h3>Removable</h3>

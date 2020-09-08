@@ -11,7 +11,7 @@ export const basic = () => html`
 	<vwc-chip label="Chip"></vwc-chip>
 
 	<h3>Leading icon</h3>
-	<vwc-chip label="Chip" icon="fingerprint"></vwc-chip>
+	<vwc-chip label="Chip" icon="alert-negative"></vwc-chip>
 
 	<h3>Removable</h3>
 	<vwc-chip label="Chip" removable></vwc-chip>
