@@ -31,23 +31,4 @@ export class VWCSwitch extends MWCSwitch {
 	protected renderRipple(): TemplateResult {
 		return html``;
 	}
-
-	connectedCallback(): void {
-		super.connectedCallback();
-		
-		const connotation: SwitchConnotation[number] | undefined = this.connotation ?? 'primary';
-		const innerSwitch = this.shadowRoot?.querySelector('.mdc-switch');
-
-		if (innerSwitch) {
-			//	get existing classes aside from the DOM
-			const classesSet = new Set(innerSwitch.classList);
-				
-			connotations.forEach((m) =>
-				classesSet[connotation === m ? 'add' : 'delete'](m)
-			);
-
-			//	set the clases back to the DOM
-			innerSwitch.className = Array.from(classesSet).join(' ');
-		}
-	}
 }

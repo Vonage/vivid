@@ -1,4 +1,5 @@
 @use 'sass:selector';
+@use '@vonage/vvd-foundation/scss/variable-names/color-base-variable-names' as color-base;
 
 // sizing parts only
 :host {
@@ -111,6 +112,19 @@
 
 // colors/shadowing
 :host {
+	--vvd-switch-checked-background: var(--vvd-color-primary-background);
+	--vvd-switch-checked-background-hover: var(--vvd-color-primary-background);
+	--vvd-switch-checked-background-focus: var(--vvd-color-primary-background);
+	--vvd-switch-checked-border-focus: #000000;
+
+	--vvd-switch-unchecked-background: #{color-base.$grey-700};
+	--vvd-switch-unchecked-background-hover: var(--vvd-color-primary-background);
+	--vvd-switch-unchecked-background-focus: #{color-base.$grey-800};
+	--vvd-switch-unchecked-border-focus: #{color-base.$grey-900};
+
+	--vvd-switch-disabled-background: #{color-base.$grey-500};
+	--vvd-switch-shadow-focus: 19, 20, 21, 0.42;
+
 	--mdc-theme-on-surface: var(--vvd-switch-unchecked-background);
 
 	.mdc-switch {
@@ -153,7 +167,7 @@
 :host(:not([disabled]):focus-within) {
 	.mdc-switch__track {
 		border: 1px solid var(--vvd-switch-checked-border-focus);
-		box-shadow: 0 0 2px rgba(var(--vvd-switch-shadow-focus));
+		box-shadow: 0 0 2px 1px rgba(var(--vvd-switch-shadow-focus));
 	}
 
 	.mdc-switch:not(.mdc-switch--checked) {
