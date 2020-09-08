@@ -1,4 +1,4 @@
-import { customElement, property } from 'lit-element';
+import { customElement, property,html, TemplateResult } from 'lit-element';
 import '@vonage/vwc-notched-outline';
 import { TextField as MWCTextField } from '@material/mwc-textfield';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
@@ -6,6 +6,7 @@ import { style as vwcTextFieldStyle } from './vwc-textfield.css';
 import { style as mwcTextFieldStyle } from '@material/mwc-textfield/mwc-textfield-css.js';
 import { addInputToForm } from '@vonage/vvd-foundation/form-association';
 export { TextFieldType } from '@material/mwc-textfield';
+import '@vonage/vwc-icon';
 
 declare global {
   interface HTMLElementTagNameMap {
@@ -26,7 +27,7 @@ export class VWCTextField extends MWCTextField {
 
   @property({ type: String, reflect: true })
   shape: TextFieldShape[number] = 'rounded';
-  
+
 	@property({ type: HTMLInputElement, reflect: false })
 	hiddenInput: HTMLInputElement | undefined;
 
@@ -37,5 +38,9 @@ export class VWCTextField extends MWCTextField {
 		await super.firstUpdated();
 		this.shadowRoot?.querySelector('.mdc-notched-outline')?.shadowRoot?.querySelector('.mdc-notched-outline')?.classList.add('vvd-notch');
 		addInputToForm(this);
+  }
+
+  protected renderIcon(): TemplateResult {
+		return html`<vwc-icon size="small" type="${this.icon}"></vwc-icon>`;
 	}
 }

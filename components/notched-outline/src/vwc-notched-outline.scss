@@ -9,7 +9,7 @@
     padding-right: 0;
   }
 
-  // .mdc-notched-outline__leading {
-  //   width: 24px;
-  // }
+  .mdc-notched-outline__leading {
+    width: var(--mdc-shape-small);
+  }
 }

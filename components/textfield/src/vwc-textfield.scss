@@ -55,18 +55,8 @@
 // }
 
 // .mdc-text-field {
-//   border-radius: 6px;
-
 //   &--outlined {
-//     align-items: flex-end;
-//     height: 48px;
 //     padding: 0;
-
-//     &.mdc-text-field--no-label {
-//       .mdc-text-field__input {
-//         height: 48px;
-//       }
-//     }
 
 //     .mdc-text-field__input {
 //       font-stretch: var(
@@ -126,9 +116,6 @@
 /*****************
 * REFACTOR
 *****************/
-@forward './vwc-textfield-coupling';
-@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
-
 $vvd-text-field-size-block: --vvd-text-field-size-block;
 
 :host {
@@ -178,6 +165,11 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 
 :host(:not([dense])) {
   #{$vvd-text-field-size-block}: 48px;
+
+  .mdc-text-field__input {
+    align-self: flex-end;
+    height: 32px;
+  }
 }
 
 :host([dense]) {
@@ -191,13 +183,19 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 .mdc-text-field--filled {
   border-bottom-right-radius: var(--mdc-shape-small);
   border-bottom-left-radius: var(--mdc-shape-small);
-
+  
   .mdc-line-ripple {
     display: none;
   }
 }
 
-// .mdc-text-field--outlined .mdc-floating-label--float-above {
-//   font-size: inherit;
-//   transform: translateY(-106%) scale(0.75);
-// }
+.mdc-text-field--outlined {
+  .mdc-floating-label--float-above {
+    font-size: inherit;
+    transform: translateY(-17px) scale(0.75);
+  }
+
+  .mdc-text-field__input {
+    font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
+  }
+}
