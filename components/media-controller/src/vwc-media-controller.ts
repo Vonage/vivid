@@ -78,11 +78,13 @@ class MediaController extends HTMLElement {
 				inRange(
 					mouseX,
 					rectX - TRACK_KNOB_HORIZONTAL_MARGIN,
-					rectX + rectWidth + TRACK_KNOB_HORIZONTAL_MARGIN)
+					rectX + rectWidth + TRACK_KNOB_HORIZONTAL_MARGIN
+				)
 				&& inRange(
 					mouseY,
 					rectY - TRACK_VERTICAL_RESPONSIVITY_MARGIN,
-					mouseY < rectY + rectHeight + TRACK_VERTICAL_RESPONSIVITY_MARGIN)
+					mouseY < rectY + rectHeight + TRACK_VERTICAL_RESPONSIVITY_MARGIN
+				)
 			)
 			.flatMapLatest(({ mouseX, mouseY, rectX, rectWidth })=> {
 					return kefir.concat([
@@ -92,7 +94,15 @@ class MediaController extends HTMLElement {
 								kefir.constant({ mouseX, mouseY }),
 								mouseMoveStream.map(({ clientX: mouseX, clientY: mouseY })=> ({ mouseX, mouseY }))
 							])
-							.map(pipe(prop('mouseX'), clamp(rectX + TRACK_KNOB_HORIZONTAL_MARGIN, rectX + rectWidth - TRACK_KNOB_HORIZONTAL_MARGIN), (pos)=> (pos - (rectX + TRACK_KNOB_HORIZONTAL_MARGIN)) / (rectWidth - TRACK_KNOB_HORIZONTAL_MARGIN * 2)))
+							.map(pipe(
+								prop('mouseX'),
+								clamp(
+									rectX + TRACK_KNOB_HORIZONTAL_MARGIN,
+									rectX + rectWidth - TRACK_KNOB_HORIZONTAL_MARGIN
+								),
+								(pos)=>
+									(pos - (rectX + TRACK_KNOB_HORIZONTAL_MARGIN)) / (rectWidth - TRACK_KNOB_HORIZONTAL_MARGIN * 2)
+							))
 							.takeUntilBy(kefir.merge([mouseUpStream, contextMenuStream]).take(1))
 							.map((position)=> ({ type: 'position_change', position })),
 						kefir.constant({ type: 'end' })
@@ -145,7 +155,9 @@ class MediaController extends HTMLElement {
 		// Update track state
 		apiPositionProperty
 			.skipDuplicates()
-			.onValue((percentage)=> trackEl.style.backgroundImage = `linear-gradient(90deg, ${TRACK_ACTIVE_COLOR} 0%, ${TRACK_ACTIVE_COLOR} ${percentage * 100}%, ${TRACK_INACTIVE_COLOR} ${percentage * 100}%, ${TRACK_INACTIVE_COLOR} 100%)`);
+			.onValue((percentage)=>
+				trackEl.style.backgroundImage =
+					`linear-gradient(90deg, ${TRACK_ACTIVE_COLOR} 0%, ${TRACK_ACTIVE_COLOR} ${percentage * 100}%, ${TRACK_INACTIVE_COLOR} ${percentage * 100}%, ${TRACK_INACTIVE_COLOR} 100%)`);
 
 		// Update scrub state
 		userScrubInteractionProperty
