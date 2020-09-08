@@ -1,4 +1,6 @@
-@use 'sass:selector';
+@use '@vonage/vvd-foundation/scss/variable-names/color-base-variable-names' as color-base;
+
+@include switch.without-ripple();
 
 // sizing parts only
 :host {
@@ -34,7 +36,7 @@
 		.mdc-switch__thumb-underlay {
 			transform: translateX(10px);
 		}
-		
+
 		.mdc-switch__native-control {
 			transform: translateX(-10px);
 		}
@@ -134,7 +136,7 @@
 		&:hover .mdc-switch__track {
 			background-color: var(--vvd-switch-checked-background-hover);
 		}
-		
+
 		&:not(.mdc-switch--checked):hover .mdc-switch__track {
 			background-color: var(--vvd-switch-unchecked-background-hover);
 		}
@@ -162,7 +164,7 @@
 			background-color: var(--vvd-switch-unchecked-background-focus);
 			border: 1px solid var(--vvd-switch-unchecked-border-focus);
 		}
-			
+
 		&:hover .mdc-switch__track {
 			background-color: var(--vvd-switch-unchecked-background-hover);
 		}

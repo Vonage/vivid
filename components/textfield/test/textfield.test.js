@@ -1,6 +1,6 @@
 import '../vwc-textfield.js';
 import '@vonage/vwc-formfield';
-import { textToDomToParent, waitNextTask, assertComputedStyle } from '../../../utils/js/test-helpers.js';
+import { textToDomToParent, waitNextTask, assertComputedStyle } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
@@ -165,10 +165,7 @@ describe('textfield', () => {
 				const actualElement = formElement.firstChild;
 				await waitNextTask();
 
-				actualElement.value = fieldValue;
-				let evt = document.createEvent("HTMLEvents");
-				evt.initEvent("change", false, true);
-				actualElement.dispatchEvent(evt);
+				await changeFieldValue(actualElement, fieldValue, 'change');
 
 				expect(actualElement.hiddenInput.value).to.equal(fieldValue);
 			});
