@@ -13,8 +13,8 @@
     "changelog": "yarn lerna exec --concurrency 1 --stream 'conventional-changelog --preset angular --release-count 0 --commit-path $PWD --pkg $PWD/package.json --outfile $PWD/CHANGELOG.md --verbose'",
     "lint:eslint": "eslint components/** common/** --no-error-on-unmatched-pattern --ignore-path .eslintignore --config .eslintrc.yaml",
     "format:eslint": "eslint --ext .js,.html . --fix --ignore-path .eslintignore",
-    "lint:prettier": "prettier \"**/*.js\" --check --ignore-path .eslintignore",
-    "format:prettier": "prettier \"**/*.js\" --write --ignore-path .eslintignore",
+    "lint:prettier": "prettier \"**/*.js\" --check --ignore-path .prettierignore",
+    "format:prettier": "prettier \"**/*.js\" --write --ignore-path .prettierignore",
     "lint": "yarn lint:eslint && yarn lint:prettier",
     "format": "yarn format:eslint && yarn format:prettier",
     "tsc:watch": "tsc --build --watch",
@@ -41,9 +41,6 @@
     "watch": "node scripts/watcher.js",
     "wca:custom-elements": "yarn compile && wca analyze components/icon/src/vwc-icon.js components/**/*.d.ts --outFile custom-elements.json"
   },
-  "dependencies": {
-    "lit-html": "^1.2.1"
-  },
   "devDependencies": {
     "@babel/core": "^7.10.4",
     "@open-wc/building-rollup": "^1.3.1",
@@ -66,8 +63,8 @@
     "@storybook/react": "^6.0.13",
     "@storybook/theming": "^6.0.13",
     "@storybook/web-components": "^6.0.13",
-    "@typescript-eslint/eslint-plugin": "^3.5.0",
-    "@typescript-eslint/parser": "^3.5.0",
+    "@typescript-eslint/eslint-plugin": "^3.10.1",
+    "@typescript-eslint/parser": "^3.10.1",
     "@webcomponents/webcomponentsjs": "^2.4.3",
     "babel-loader": "^8.1.0",
     "chai": "^4.2.0",
@@ -85,6 +82,7 @@
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-lit": "^1.2.0",
     "eslint-plugin-mocha": "^7.0.1",
+    "eslint-plugin-no-only-tests": "^2.4.0",
     "eslint-plugin-wc": "^1.2.0",
     "fibers": "^5.0.0",
     "husky": "^4.2.5",
@@ -113,8 +111,8 @@
     "rollup-plugin-terser": "^6.1.0",
     "sass": "^1.26.10",
     "style-dictionary": "^2.10.0",
-    "tslib": "^2.0.0",
-    "typescript": "^3.9.7",
+    "tslib": "^2.0.1",
+    "typescript": "^4.0.2",
     "web-component-analyzer": "^1.1.6"
   },
   "eslintConfig": {

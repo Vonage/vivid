@@ -68,12 +68,10 @@ async function syncWithOSSettings() {
 	);
 }
 
-async function init(scheme?: SchemeOption) {
-	// listen to selection change event
+function init(): void {
 	onSchemeChange(async (scheme: SchemeOption) => {
 		set(scheme);
 	});
-	return await set(scheme);
 }
 
 async function set(scheme: SchemeOption = schemeDefault()) {
@@ -81,12 +79,10 @@ async function set(scheme: SchemeOption = schemeDefault()) {
 	let nextScheme: PredefinedScheme;
 
 	if (scheme == 'syncWithOSSettings') {
-		// observe preference changes
-		pcs.addListener(syncWithOSSettings);
+		pcs.addEventListener('change', syncWithOSSettings);
 		nextScheme = getPreferedColorScheme() as PredefinedScheme;
 	} else {
-		// stop observing preference changes
-		pcs.removeListener(syncWithOSSettings);
+		pcs.removeEventListener('change', syncWithOSSettings);
 		nextScheme = scheme;
 	}
 	if (_selectedScheme === nextScheme) {
@@ -97,9 +93,10 @@ async function set(scheme: SchemeOption = schemeDefault()) {
 }
 
 export default Object.freeze({
-	init,
-	set,
+	set
 });
+
+init();
 
 //TODO add the following tests:
 //!scheme init with/without arguments

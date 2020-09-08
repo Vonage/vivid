@@ -1,9 +1,12 @@
+import '@vonage/vvd-core';
 import { customElement, property } from 'lit-element';
 import { Button as MWCButton } from '@material/mwc-button';
 import { style as vwcButtonStyle } from './vwc-button.css';
 import { style as mwcButtonStyle } from '@material/mwc-button/mwc-button-css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
+import { connotations } from '@vonage/vvd-foundation/contants';
 import { html, TemplateResult } from 'lit-element';
+import '@vonage/vwc-icon';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -18,13 +21,12 @@ MWCButton.styles = [styleCoupling, mwcButtonStyle, vwcButtonStyle];
 const layouts = ['text', 'outlined', 'filled'];
 export type ButtonLayout = typeof layouts;
 
-const connotations = ['regular', 'cta', 'success', 'error'] as const;
 export type ButtonConnotation = typeof connotations;
 
-const shapes = ['rounded', 'pill'] as const;
+const shapes = ['rounded', 'pill'];
 export type ButtonShape = typeof shapes;
 
-const types = ['submit', 'reset', 'button'] as const;
+const types = ['submit', 'reset', 'button'];
 export type ButtonType = typeof types;
 
 /**
@@ -42,16 +44,16 @@ export class VWCButton extends MWCButton {
 	@property({ type: String, reflect: true })
 	shape: ButtonShape[number] = 'rounded';
 
-	@property({type: String, reflect: true})
+	@property({ type: String, reflect: true })
 	type: ButtonType[number] = 'submit';
 
-	@property({type: String, reflect: true})
+	@property({ type: String, reflect: true })
 	form: string | undefined;
 
 	protected updated(): void {
 		const layout: ButtonLayout[number] = this.layout;
 		const connotation: ButtonConnotation[number] | undefined =
-			this.layout === 'filled' ? this.connotation ?? 'regular' : undefined;
+			this.layout === 'filled' ? this.connotation ?? 'primary' : undefined;
 		const shape: ButtonShape[number] = this.shape ?? 'rounded';
 
 		const innerButton = this.shadowRoot?.querySelector('.mdc-button');
@@ -75,10 +77,10 @@ export class VWCButton extends MWCButton {
 		}
 	}
 
-	protected _handleClick():void {
+	protected _handleClick(): void {
 		let form: HTMLFormElement;
 		const formId = this.getAttribute('form');
-		if (formId){
+		if (formId) {
 			form = document.getElementById(formId) as HTMLFormElement;
 		} else {
 			form = this.closest('form') as HTMLFormElement;
@@ -96,11 +98,11 @@ export class VWCButton extends MWCButton {
 		}
 	}
 
-	protected renderIcon():TemplateResult {
+	protected renderIcon(): TemplateResult {
 		return html`<vwc-icon size="small" type="${this.icon}"></vwc-icon>`;
 	}
 
-	connectedCallback():void {
+	connectedCallback(): void {
 		super.connectedCallback();
 		this.addEventListener('click', this._handleClick);
 	}

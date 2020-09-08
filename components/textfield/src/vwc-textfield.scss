@@ -126,6 +126,9 @@
 /*****************
 * REFACTOR
 *****************/
+@forward './vwc-textfield-coupling';
+@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
+
 $vvd-text-field-size-block: --vvd-text-field-size-block;
 
 :host {
