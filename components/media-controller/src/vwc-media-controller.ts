@@ -22,7 +22,7 @@ const
 			const event = new CustomEvent(eventType, { ...options, detail });
 			target.dispatchEvent(event);
 	},
-	inRange = (min, max)=> (value)=> value >= min && value <= max;
+	inRange = (value, min, max)=> value >= min && value <= max;
 
 /**
  * Displays controllers for media playback. Includes play/pause button and a scrub bar
