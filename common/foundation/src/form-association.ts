@@ -28,7 +28,7 @@ function setValueAndValidity(inputField: HTMLInputElement | undefined, value: st
 export function addInputToForm(inputElement: any, hiddenType: HiddenInputType[number] = 'input'): void {
 	const hostingForm = getFormByIdOrClosest(inputElement);
 
-	if (!hostingForm) {
+	if (!hostingForm || !inputElement) {
 		return;
 	}
 
