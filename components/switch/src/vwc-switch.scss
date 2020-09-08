@@ -118,7 +118,7 @@
 	--vvd-switch-checked-border-focus: #000000;
 
 	--vvd-switch-unchecked-background: #{color-base.$grey-700};
-	--vvd-switch-unchecked-background-hover: var(--vvd-color-primary-background);
+	--vvd-switch-unchecked-background-hover: #{color-base.$grey-900};
 	--vvd-switch-unchecked-background-focus: #{color-base.$grey-800};
 	--vvd-switch-unchecked-border-focus: #{color-base.$grey-900};
 
