@@ -4,22 +4,19 @@ import {
 
 describe('class (DOM) utils', () => {
 
-	it('should throw on illegal param - undefined', async () => {
-		expect(
-			() => spreadObjectToClasses()
-		).throw('input parameter MUST be a non-null object');
+	it('should return empty array in invalid param - undefined', async () => {
+		const r = spreadObjectToClasses();
+		expect(r).eql([]);
 	});
 
-	it('should throw on illegal param - null', async () => {
-		expect(
-			() => spreadObjectToClasses(null)
-		).throw('input parameter MUST be a non-null object');
+	it('should return empty array in invalid param - null', async () => {
+		const r = spreadObjectToClasses(null);
+		expect(r).eql([]);
 	});
 
-	it('should throw on illegal param - not an object', async () => {
-		expect(
-			() => spreadObjectToClasses('not an object')
-		).throw('input parameter MUST be a non-null object');
+	it('should return empty array in invalid param - not an object', async () => {
+		const r = spreadObjectToClasses('not an object');
+		expect(r).eql([]);
 	});
 
 	it('should supply an empty array on empty object', async () => {
