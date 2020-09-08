@@ -23,7 +23,7 @@ export type SwitchConnotation = typeof connotations;
 @customElement('vwc-switch')
 export class VWCSwitch extends MWCSwitch {
 	@property({ type: String, reflect: true })
-	connotation?: | SwitchConnotation[number] | undefined;
+	connotation?: SwitchConnotation[number] | undefined;
 
 	@property({ type: Boolean, reflect: true })
 	enlarged = false;
