@@ -1,1 +1,8 @@
-export const connotations = ['primary', 'cta', 'success', 'error', 'info', 'announcement'] as const;
+export enum Connotation {
+	Primary = 'primary',
+	CTA = 'cta',
+	Success = 'success',
+	Error = 'error',
+	Info = 'info',
+	Announcement = 'announcement'
+}
