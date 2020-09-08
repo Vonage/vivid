@@ -1,6 +1,4 @@
-@use '@vonage/vvd-foundation/scss/variable-names/color-base-variable-names' as color-base;
-
-@include switch.without-ripple();
+@use 'sass:selector';
 
 // sizing parts only
 :host {
@@ -146,7 +144,7 @@
 
 			.mdc-switch__track {
 				opacity: initial;
-				background-color: var(--vwc-switch-disabled-background);
+				background-color: var(--vvd-switch-disabled-background);
 			}
 		}
 	}
