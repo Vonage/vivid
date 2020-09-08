@@ -2,10 +2,12 @@ import { style } from './vwc-media-controller.css';
 
 const USER_PLAY_TOGGLE_EVENT_NAME = 'userPlayPauseRequest';
 const USER_SCRUB_EVENT_NAME = 'userScrubRequest';
+const SIDE_SCRUB_MARGIN = 5;
 
 function getPaddingX(element: HTMLElement) {
 	return Number(window.getComputedStyle(element).paddingRight.replace('px', '')) +
-		Number(window.getComputedStyle(element).paddingLeft.replace('px', ''));
+		Number(window.getComputedStyle(element).paddingLeft.replace('px', ''))
+		+ SIDE_SCRUB_MARGIN * 2;
 }
 
 function dispatchEvent(element: MediaController, eventName: string, payload: any) {
@@ -14,7 +16,7 @@ function dispatchEvent(element: MediaController, eventName: string, payload: any
 	));
 }
 
-function addPlaycontrolButton( parent: HTMLElement) {
+function addPlaycontrolButton(parent: HTMLElement) {
 	const playControlButton = document.createElement('button');
 	playControlButton.className = 'play-pause-control';
 
@@ -43,11 +45,11 @@ function addScrub(parent: HTMLElement) {
 	return scrubberEl;
 }
 
-function moveKnob(knobElement: HTMLElement, scrubElement: HTMLDivElement, targetPosition: number) {
-	const {width, x: scrubberX} = scrubElement.getBoundingClientRect();
+function repositionKnob(knobElement: HTMLElement, scrubElement: HTMLDivElement, targetPosition: number): { hasPositionChanged: boolean, newKnobPositionX: number, newPositionRatio: number } {
+	const { width, x: scrubberX } = scrubElement.getBoundingClientRect();
 	const actualWidth = width - getPaddingX(scrubElement);
 	let hasPositionChanged = true;
-	let newKnobPositionX = targetPosition - scrubberX;
+	let newKnobPositionX = targetPosition - scrubberX + SIDE_SCRUB_MARGIN;
 
 	if (newKnobPositionX < 0) {
 		newKnobPositionX = 0;
@@ -57,9 +59,14 @@ function moveKnob(knobElement: HTMLElement, scrubElement: HTMLDivElement, target
 		hasPositionChanged = false;
 	}
 
+	const newPositionRatio = newKnobPositionX / actualWidth;
 	knobElement.style.transform = `translate(${newKnobPositionX}px, -50%)`;
 
-	return hasPositionChanged;
+	return {
+		hasPositionChanged,
+		newKnobPositionX,
+		newPositionRatio
+	};
 }
 
 interface ListenerCallback {
@@ -95,17 +102,6 @@ class MediaController extends HTMLElement {
 		root.appendChild(baseStyle);
 	}
 
-	/**
-	 * Sets the scrubber's position
-	 * @param {number} position - The relative position of the scrubber (a value between 0-1).
-	 **/
-	setPosition(position:number):void {
-		this.#_currentPosition = position;
-		if (this.#_knobElement && !this.#_isDragging) {
-			moveKnob(this.#_knobElement, this.#_scrubElement, this.knobPosition);
-		}
-	}
-
 	get knobPosition(): number {
 		const scrubberElement = this.#_scrubElement;
 		const { x, width } = scrubberElement.getBoundingClientRect();
@@ -114,10 +110,21 @@ class MediaController extends HTMLElement {
 	}
 
 	/**
+	 * Sets the scrubber's position
+	 * @param {number} position - The relative position of the scrubber (a value between 0-1).
+	 **/
+	setPosition(position: number): void {
+		this.#_currentPosition = position;
+		if (this.#_knobElement && !this.#_isDragging) {
+			repositionKnob(this.#_knobElement, this.#_scrubElement, this.knobPosition);
+		}
+	}
+
+	/**
 	 * Sets the component's play state
 	 * @param {boolean} isPlaying - A boolean stating whether the component is playing or not (displayed pause/play buttons respectively).
 	 **/
-	setPlayState(isPlaying:boolean):void {
+	setPlayState(isPlaying: boolean): void {
 		this.#_playButtonElement.classList.toggle('isPlayed', isPlaying);
 	}
 
@@ -141,28 +148,26 @@ class MediaController extends HTMLElement {
 			}
 
 			if (!this.#_isDragging) {
-				moveKnob(knob, scrubElement, this.knobPosition);
+				repositionKnob(knob, scrubElement, this.knobPosition);
 				return;
 			}
 
 			const mousePositionX = event.clientX;
 
-			const hasPositionChanged = moveKnob(knob, scrubElement, mousePositionX);
+			const { hasPositionChanged, newPositionRatio } = repositionKnob(knob, scrubElement, mousePositionX);
 
 			if (hasPositionChanged) {
-				const {width, x} = scrubElement.getBoundingClientRect();
-				const actualWidth = width - getPaddingX(scrubElement);
-				const positionRatio = (mousePositionX - x) / actualWidth;
+				const positionRatio = newPositionRatio;
 				dispatchEvent(this, eventName, positionRatio);
 			}
-		}
+		};
 
 		const mouseDownHandler = (event: MouseEvent) => {
 			this.#_isDragging = true;
 			knobMove(event);
 			document.addEventListener('mouseup', mouseUpHandler);
 			document.addEventListener('mousemove', knobMove);
-		}
+		};
 
 		const mouseUpHandler = (event: MouseEvent) => {
 			if (!this.#_isDragging) {
