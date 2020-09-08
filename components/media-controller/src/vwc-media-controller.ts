@@ -22,7 +22,7 @@ const
 			const event = new CustomEvent(eventType, { ...options, detail });
 			target.dispatchEvent(event);
 	},
-	inRange = (value, min, max)=> value >= min && value <= max;
+	between = (value, min, max)=> value >= min && value <= max;
 
 /**
  * Displays controllers for media playback. Includes play/pause button and a scrub bar
@@ -75,12 +75,12 @@ class MediaController extends HTMLElement {
 					...(({ x: rectX, y: rectY, width: rectWidth, height: rectHeight })=> ({ rectX, rectY, rectWidth, rectHeight }))(trackEl.getBoundingClientRect())
 				}))
 			.filter(({ mouseX, mouseY, rectX, rectY, rectWidth, rectHeight })=>
-				inRange(
+				between(
 					mouseX,
 					rectX - TRACK_KNOB_HORIZONTAL_MARGIN,
 					rectX + rectWidth + TRACK_KNOB_HORIZONTAL_MARGIN
 				)
-				&& inRange(
+				&& between(
 					mouseY,
 					rectY - TRACK_VERTICAL_RESPONSIVITY_MARGIN,
 					mouseY < rectY + rectHeight + TRACK_VERTICAL_RESPONSIVITY_MARGIN
