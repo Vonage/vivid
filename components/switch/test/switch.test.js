@@ -1,5 +1,5 @@
 import '../vwc-switch.js';
-import { waitNextTask, textToDomToParent, assertComputedStyle } from '../../../utils/js/test-helpers.js';
+import { waitNextTask, textToDomToParent, assertComputedStyle } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
@@ -11,7 +11,8 @@ describe('switch', () => {
 	afterEach(() => {
 		addedElements.forEach(elm => elm.remove());
 	});
-	it('vwc-switch is defined as a custom element', async () => {
+
+	it('should have vwc-switch defined', async () => {
 		assert.exists(customElements.get(VWC_SWITCH, 'vwc-switch element is not defined'));
 	});
 
