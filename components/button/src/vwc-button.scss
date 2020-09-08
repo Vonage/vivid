@@ -79,6 +79,6 @@
   border-color: var(--vvd-color-disabled-fill-color);
 }
 
-.pill {
+:host([shape="pill"]) .mdc-button {
   border-radius: 40px;
 }
