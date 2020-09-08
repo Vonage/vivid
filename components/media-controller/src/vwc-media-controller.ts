@@ -21,7 +21,8 @@ const
 	sendCustomEventFactory = (target)=> (eventType, detail, options = { bubbles: true, composed: true })=> {
 			const event = new CustomEvent(eventType, { ...options, detail });
 			target.dispatchEvent(event);
-	};
+	},
+	inRange = (min, max)=> (value)=> value >= min && value <= max;
 
 /**
  * Displays controllers for media playback. Includes play/pause button and a scrub bar
@@ -67,8 +68,22 @@ class MediaController extends HTMLElement {
 			[mouseUpStream, mouseMoveStream, contextMenuStream, windowResizeStream] = ['mouseup', 'mousemove', 'contextmenu', 'resize'].map((eventName)=> kefir.fromEvents(window, eventName));
 
 		const userScrubStream = mouseDownStream
-			.map(({ clientX, clientY })=> ({ mouseX: clientX, mouseY: clientY, ...(({ x: rectX, y: rectY, width: rectWidth, height: rectHeight })=> ({ rectX, rectY, rectWidth, rectHeight }))(trackEl.getBoundingClientRect()) }))
-			.filter(({ mouseX, mouseY, rectX, rectY, rectWidth, rectHeight })=> mouseX > rectX - TRACK_KNOB_HORIZONTAL_MARGIN && mouseX < rectX + rectWidth + TRACK_KNOB_HORIZONTAL_MARGIN && mouseY > rectY - TRACK_VERTICAL_RESPONSIVITY_MARGIN && mouseY < rectY + rectHeight + TRACK_VERTICAL_RESPONSIVITY_MARGIN)
+			.map(({ clientX, clientY })=>
+				({
+					mouseX: clientX,
+					mouseY: clientY,
+					...(({ x: rectX, y: rectY, width: rectWidth, height: rectHeight })=> ({ rectX, rectY, rectWidth, rectHeight }))(trackEl.getBoundingClientRect())
+				}))
+			.filter(({ mouseX, mouseY, rectX, rectY, rectWidth, rectHeight })=>
+				inRange(
+					mouseX,
+					rectX - TRACK_KNOB_HORIZONTAL_MARGIN,
+					rectX + rectWidth + TRACK_KNOB_HORIZONTAL_MARGIN)
+				&& inRange(
+					mouseY,
+					rectY - TRACK_VERTICAL_RESPONSIVITY_MARGIN,
+					mouseY < rectY + rectHeight + TRACK_VERTICAL_RESPONSIVITY_MARGIN)
+			)
 			.flatMapLatest(({ mouseX, mouseY, rectX, rectWidth })=> {
 					return kefir.concat([
 						kefir.constant({ type: 'start', rectWidth, rectX }),
