@@ -150,7 +150,6 @@
 	}
 }
 
-// TODO: create shadow var
 :host(:not([disabled]):focus-within) {
 	.mdc-switch__track {
 		border: 1px solid var(--vvd-switch-checked-border-focus);
