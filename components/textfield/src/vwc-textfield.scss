@@ -58,13 +58,22 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
   );
 }
 
-:host([disabled]) .mdc-text-field {
-  background-color: var(--mdc-text-field-disabled-fill-color);
+:host([readonly]),
+:host([disabled]) {
+  .mdc-text-field {
+    background-color: var(--mdc-text-field-disabled-fill-color);
+  }
 }
 
 :host(:not([disabled])) {
-  .mdc-text-field.mdc-text-field--focused:not(.mdc-text-field--invalid) .mdc-floating-label {
-    color: var(--mdc-text-field-label-ink-color);
+  .mdc-text-field.mdc-text-field--focused {
+    mwc-notched-outline {
+      --mdc-notched-outline-stroke-width: inherit;
+    }
+
+    &:not(.mdc-text-field--invalid) .mdc-floating-label {
+      color: var(--mdc-text-field-label-ink-color);
+    }
   }
 }
 
@@ -126,8 +135,12 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
     }
   }
 
-  &--outlined .mdc-floating-label {
-    left: 2px;
+  &--outlined {
+    background-color: var(--mdc-text-field-fill-color);
+
+    .mdc-floating-label {
+      left: 2px;
+    }
   }
 
   &--invalid {
