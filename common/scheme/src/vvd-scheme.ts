@@ -57,14 +57,10 @@ async function syncWithOSSettings() {
   );
 }
 
-// TODO refactor this to an IIFE and remove any exposed API methods
-// TODO identities need to be defined prior to initialization by a config
-async function init(scheme?: SchemeOption) {
-  // listen to selection change event
+function init(): void {
   onSchemeChange(async (scheme: SchemeOption) => {
     set(scheme);
   });
-  return await set(scheme);
 }
 
 async function set(scheme: SchemeOption = schemeDefault()) {
@@ -86,9 +82,10 @@ async function set(scheme: SchemeOption = schemeDefault()) {
 }
 
 export default Object.freeze({
-  init,
   set,
 });
+
+init();
 
 //TODO add the following tests:
 //!scheme init with/without arguments
