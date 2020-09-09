@@ -18,7 +18,8 @@
 		"directory": "components/icon"
 	},
 	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1"
+		"test": "echo \"Error: run tests from root\" && exit 1",
+		"build": "node ./build/vwc-icon-resolver-factory.js"
 	},
 	"bugs": {
 		"url": "https://github.com/Vonage/vivid/issues"
