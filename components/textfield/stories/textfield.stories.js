@@ -20,16 +20,19 @@ export const Outlined = Template.bind({});
 Outlined.args = { outlined: '', label: 'e.g. username' };
 
 export const Dense = Template.bind({});
-Dense.args = { outlined: '', dense: '' };
+Dense.args = { outlined: '', dense: '', placeholder: 'e.g. username' };
+
+export const PillShape = Template.bind({});
+PillShape.args = { outlined: '', shape: 'pill', dense: '', placeholder: 'e.g. username' };
 
 export const Disabled = Template.bind({});
-Disabled.args = { disabled: '', outlined: '', label: 'Hint test', value: 'Text' };
+Disabled.args = { outlined: '', disabled: '', label: 'Hint test', value: 'Text' };
 
 export const Validation = Template.bind({});
-Validation.args = { outlined: '', label: 'Numbers only', required: '', pattern: '[0-9]+', value: 'Text' };
+Validation.args = { outlined: '', label: 'Numbers only', required: '', pattern: '[0-9]+', validationMessage: 'Numbers only', value: 'Text' };
 
 export const Icon = Template.bind({});
-Icon.args = { icon: 'search', dense: '', placeholder: 'Search' };
+Icon.args = { outlined: '', icon: 'search', dense: '', shape: 'pill', placeholder: 'Search' };
 
 function handleKeyDown(e) {
   e.stopPropagation();
@@ -43,24 +46,17 @@ function onInput(e) {
   console.log('input');
 }
 
-export const searchField = () => html`
-  <h3>Search</h3>
-  <vwc-textfield outlined shape="pill" label="Search...">
-    <vwc-icon
-      title="an icon of magnifying glass"
-      size="small"
-      type="search"
-      slot="icon"
-    ></vwc-icon>
-  </vwc-textfield>
-  <br />
-  <vwc-textfield outlined shape="pill" placeholder="Search...">
-    <span
-      title="an icon of magnifying glass"
-      size="small"
-      type="search"
-      slot="icon"
-      >Hi</span
-    >
-  </vwc-textfield>
-`;
+{/* <vwc-icon
+  title="an icon of magnifying glass"
+  size="small"
+  type="search"
+  slot="icon"
+></vwc-icon> */}
+
+{/* <span
+title="an icon of magnifying glass"
+size="small"
+type="search"
+slot="icon"
+>Hi</span
+> */}

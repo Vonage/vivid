@@ -36,4 +36,5 @@ export const argTypes = {
     },
   },
   ripple: { table: { disable: true } },
+  outlineOpen: { table: { disable: true } },
 };

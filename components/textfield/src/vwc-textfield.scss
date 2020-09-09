@@ -1,91 +1,11 @@
-// @forward './vwc-textfield-coupling';
-// @use '../../../utils/scss/variable-names/color-semantic-variable-names' as color-semantic;
+@forward './vwc-textfield-coupling';
+@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 
 // :host {
-//   --mdc-theme-primary: #131415;
-//   --mdc-text-field-ink-color: var(--mdc-theme-primary);
-//   --mdc-text-field-label-ink-color: var(
-//     #{color-semantic.$formfield-label-idle-ink}
-//   );
-//   --mdc-text-field-disabled-ink-color: var(
-//     #{color-semantic.$formfield-disabled-ink}
-//   );
-//   --mdc-text-field-disabled-fill-color: var(
-//     #{color-semantic.$formfield-disabled-fill}
-//   );
-//   --mdc-text-field-outlined-idle-border-color: var(
-//     #{color-semantic.$formfield-border-idle}
-//   );
-//   --mdc-text-field-outlined-hover-border-color: var(
-//     #{color-semantic.$formfield-border-hover}
-//   );
-//   --mdc-text-field-outlined-disabled-border-color: var(
-//     #{color-semantic.$formfield-border-disabled}
-//   );
-
-//   --mdc-text-field-error-color: var(
-//     #{color-semantic.$formfield-label-error-ink}
-//   );
-//   --mdc-text-field-error-fill-color: var(
-//     #{color-semantic.$formfield-error-fill}
-//   );
-
 //   --vvd-outline-color: var(--mdc-text-field-outlined-idle-border-color);
 // }
 
-// :host([disabled]) .mdc-text-field {
-//   --vvd-outline-color: var(--mdc-text-field-outlined-disabled-border-color);
-//   background-color: var(--mdc-text-field-disabled-fill-color);
-
-//   .mdc-text-field__input {
-//     color: var(#{color-semantic.$formfield-disabled-ink});
-//   }
-
-//   .mdc-notched-outline {
-//     .mdc-floating-label--float-above {
-//       --mdc-theme-primary: var(--mdc-text-field-label-ink-color);
-//     }
-//   }
-// }
-
-// :host(:not([disabled]))
-//   .mdc-text-field.mdc-text-field--focused
-//   mwc-notched-outline {
-//   --mdc-notched-outline-stroke-width: 1px;
-// }
-
 // .mdc-text-field {
-//   &--outlined {
-//     padding: 0;
-
-//     .mdc-text-field__input {
-//       font-stretch: var(
-//         --mdc-typography-subtitle1-font-stretch
-//       ); // ! this was supposed to be set by MDC
-//       width: 100%;
-//       height: 32px;
-//       padding: 0 14px;
-//     }
-
-//     .mdc-floating-label {
-//       font-stretch: var(
-//         --mdc-typography-subtitle1-font-stretch
-//       ); // ! this was supposed to be set by MDC
-//       left: 2px;
-//       padding-right: 8px;
-//       transition: transform 0.15s, font-size 0.15s;
-//     }
-
-//     .mdc-floating-label--float-above {
-//       --mdc-theme-primary: var(--mdc-text-field-label-ink-color);
-//       transform: translateY(-100%);
-
-//       &.mdc-floating-label--shake {
-//         animation: none;
-//       }
-//     }
-//   }
-
 //   &:hover,
 //   &--focused {
 //     --vvd-outline-color: var(--mdc-text-field-outlined-hover-border-color);
@@ -97,59 +17,56 @@
 
 //   &--invalid {
 //     --vvd-outline-color: var(--mdc-text-field-error-color);
-
-//     &.mdc-text-field--outlined {
-//       background-color: var(--mdc-text-field-error-fill-color);
-
-//       .mdc-floating-label {
-//         color: var(--mdc-text-field-error-color);
-//       }
-//     }
 //   }
 // }
 
-// .mdc-text-field--invalid:not(.mdc-text-field--disabled).mdc-text-field--invalid
-//   + .mdc-text-field-helper-text--validation-msg {
-//   color: var(--mdc-text-field-error-color);
+// :host([disabled]) .mdc-text-field {
+//   --vvd-outline-color: var(--mdc-text-field-outlined-disabled-border-color);
 // }
 
-/*****************
-* REFACTOR
-*****************/
 $vvd-text-field-size-block: --vvd-text-field-size-block;
 
 :host {
-  // --mdc-theme-primary: lightblue;
-  --mdc-theme-error: #b00020;
-  --mdc-text-field-filled-border-radius: var(--mdc-shape-small);
+  --mdc-theme-primary: #131415;
+  --mdc-theme-error: #{color-semantic.$formfield-label-error-ink};
+  --mdc-text-field-fill-color: #ffffff;
+  --mdc-text-field-ink-color: var(--mdc-theme-primary);
+
+  --mdc-text-field-label-ink-color: var(
+    #{color-semantic.$formfield-label-idle-ink}
+  );
+  --mdc-text-field-disabled-ink-color: var(
+    #{color-semantic.$formfield-disabled-ink}
+  );
+  --mdc-text-field-disabled-fill-color: var(
+    #{color-semantic.$formfield-disabled-fill}
+  );
+  --mdc-text-field-outlined-idle-border-color: var(
+    #{color-semantic.$formfield-border-idle}
+  );
+  --mdc-text-field-outlined-hover-border-color: var(
+    #{color-semantic.$formfield-border-hover}
+  );
+  --mdc-text-field-outlined-disabled-border-color: var(
+    #{color-semantic.$formfield-border-disabled}
+  );
+  --mdc-text-field-error-color: var(
+    #{color-semantic.$formfield-label-error-ink}
+  );
+  --mdc-text-field-error-fill-color: var(
+    #{color-semantic.$formfield-error-fill}
+  );
 }
 
-.mdc-text-field {
-  height: var(#{$vvd-text-field-size-block});
+:host([disabled]) .mdc-text-field {
+  background-color: var(--mdc-text-field-disabled-fill-color);
 }
 
 :host(:not([disabled])) {
-  .mdc-text-field {
-    &.mdc-text-field--focused {
-      mwc-notched-outline {
-        --mdc-notched-outline-stroke-width: inherit;
-      }
-    }
+  .mdc-text-field.mdc-text-field--focused:not(.mdc-text-field--invalid) .mdc-floating-label {
+    color: var(--mdc-text-field-label-ink-color);
   }
 }
-
-// --mdc-text-field-filled-border-radius	4px 4px 0 0	Border radius of the standard / filled textfield's background filling.
-// --mdc-text-field-idle-line-color	rgba(0, 0, 0, 0.42)	Color of the filled textfield's bottom line when idle.
-// --mdc-text-field-hover-line-color	rgba(0, 0, 0, 0.87)	Color of the filled textfield's bottom line when hovering.
-// --mdc-text-field-disabled-line-color	rgba(0, 0, 0, 0.06)	Color of the filled textfield's bottom line when disabled.
-// --mdc-text-field-outlined-idle-border-color	rgba(0, 0, 0, 0.38)	Color of the outlined textfield's outline when idle.
-// --mdc-text-field-outlined-hover-border-color	rgba(0, 0, 0, 0.87)	Color of the outlined textfield's outline when hovering.
-// --mdc-text-field-outlined-disabled-border-color	rgba(0, 0, 0, 0.06)	Color of the outlined textfield's outline when disabled.
-// --mdc-text-field-fill-color	rgb(245, 245, 245)	Color of the textfield's background fill (non-outlined).
-// --mdc-text-field-disabled-fill-color	rgb(250, 250, 250)	Color of the textfield's background fill (non-outlined) when disabled.
-// --mdc-text-field-ink-color	rgba(0, 0, 0, 0.87)	Color of the input text.
-// --mdc-text-field-label-ink-color	rgba(0, 0, 0, 0.6)	Color of the non-focused floating label, helper text, char counter, and placeholder.
-// --mdc-text-field-disabled-ink-color
 
 :host([shape='pill']) {
   --mdc-shape-small: 24px;
@@ -180,17 +97,48 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
   }
 }
 
-.mdc-text-field--filled {
+.mdc-text-field {
   border-bottom-right-radius: var(--mdc-shape-small);
   border-bottom-left-radius: var(--mdc-shape-small);
-}
+  height: var(#{$vvd-text-field-size-block});
 
-.mdc-text-field--outlined {
-  .mdc-floating-label--float-above {
-    transform: translateY(-100%);
+  &,
+  & + .mdc-text-field-helper-line {
+    padding: 0 14px;
   }
 
+  .mdc-floating-label,
   .mdc-text-field__input {
     font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
   }
+
+  .mdc-floating-label {
+    left: 14px;
+    transition-property: transform, font-size;
+  }
+
+  .mdc-floating-label--float-above {
+    font-size: 0.75rem;
+    transform: translateY(-100%);
+
+    &.mdc-floating-label--shake {
+      animation: none;
+    }
+  }
+
+  &--outlined .mdc-floating-label {
+    left: 2px;
+  }
+
+  &--invalid {
+    &.mdc-text-field--outlined {
+      background-color: var(--mdc-text-field-error-fill-color);
+
+      .mdc-floating-label {
+        color: var(--mdc-text-field-error-color);
+      }
+    }
+  }
 }
+
+// TODO: readonly styling
