@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import kefir from 'kefir';
-import { pipe, partial, clamp, prop, always, not, allPass } from 'ramda';
+import { pipe, partial, clamp, prop, always, not, allPass, identity, path } from 'ramda';
 import { style as vwcMediaControllerStyle } from './vwc-media-controller.css';
 
 const
@@ -18,22 +18,18 @@ const
 		children.forEach((child)=> typeof(child) === 'string' ? el.innerHTML += child : el.appendChild(child));
 		return el;
 	},
+	preventDefault = (e)=> { e.preventDefault(); return e; },
 	sendCustomEventFactory = (target)=> (eventType, detail, options = { bubbles: true, composed: true })=> {
 			const event = new CustomEvent(eventType, { ...options, detail });
 			target.dispatchEvent(event);
 	},
-	between = (value, min, max)=> value >= min && value <= max,
-	byMouseInsideControlRange = ({ mouseX, mouseY, rectX, rectY, rectWidth, rectHeight })=>
-		between(
-			mouseX,
-			rectX - TRACK_KNOB_HORIZONTAL_MARGIN,
-			rectX + rectWidth + TRACK_KNOB_HORIZONTAL_MARGIN
-		)
-		&& between(
-		mouseY,
-		rectY - TRACK_VERTICAL_RESPONSIVITY_MARGIN,
-		rectY + rectHeight + TRACK_VERTICAL_RESPONSIVITY_MARGIN
-	);
+	addRectMargin = ({ marginX = 0, marginY = 0 }, { x, y, width, height })=> ({ x: x - marginX, y: y - marginY, width: width + marginX * 2, height: height + marginY * 2 }),
+	isBetween = (value, min, max)=> value >= min && value <= max,
+	isInRect = ({ x: sourceX, y: sourceY }, { x: rectX, y: rectY, width: rectWidth, height: rectHeight })=>
+		[
+			isBetween(sourceX, rectX, rectX + rectWidth),
+			isBetween(sourceY, rectY, rectY + rectHeight),
+		].every(identity);
 
 /**
  * Displays controllers for media playback. Includes play/pause button and a scrub bar
@@ -77,37 +73,57 @@ class MediaController extends HTMLElement {
 			componentConnectedStream = apiBus.filter(byType('component_connected')),
 			mouseClickStream = kefir.fromEvents(rootDoc, 'click'),
 			mouseDownStream = kefir.fromEvents(rootDoc, 'mousedown'),
+			touchStartStream = kefir.fromEvents(window, 'touchstart').map(preventDefault),
+			touchMoveStream = kefir.stream(({ emit })=> {
+				window.addEventListener('touchmove', emit, { passive: false });
+				return ()=> window.removeEventListener('touchmove', emit);
+			}).map(preventDefault),
+			touchEndStream = kefir.merge(['touchend', 'touchcancel'].map((eventName)=> kefir.fromEvents(window, eventName))),
 			[mouseUpStream, mouseMoveStream, contextMenuStream, windowResizeStream] = ['mouseup', 'mousemove', 'contextmenu', 'resize'].map((eventName)=> kefir.fromEvents(window, eventName));
 
-		const userScrubStream = mouseDownStream
-			.map(({ clientX, clientY })=>
-				({
-					mouseX: clientX,
-					mouseY: clientY,
-					...(({ x: rectX, y: rectY, width: rectWidth, height: rectHeight })=> ({ rectX, rectY, rectWidth, rectHeight }))(trackEl.getBoundingClientRect())
-				}))
-			.filter(byMouseInsideControlRange)
-			.flatMapLatest(({ mouseX, mouseY, rectX, rectWidth })=> {
-					return kefir.concat([
-						kefir.constant({ type: 'start', rectWidth, rectX }),
-						kefir
-							.concat([
-								kefir.constant({ mouseX, mouseY }),
-								mouseMoveStream.map(({ clientX: mouseX, clientY: mouseY })=> ({ mouseX, mouseY }))
+		const userScrubStream = kefir
+			.merge([
+				touchStartStream.map(path(['changedTouches', 0])),
+				mouseDownStream
+			])
+			.map(({ clientX: mouseX, clientY: mouseY, identifier })=> ({ mouseX, mouseY, identifier, ...(({ x, y, width, height })=> ({ x, y, width, height }))(trackEl.getBoundingClientRect()) }))
+			.filter(({ mouseX, mouseY, ...rect })=> isInRect(
+				{ x: mouseX, y: mouseY },
+				addRectMargin({ marginY: TRACK_VERTICAL_RESPONSIVITY_MARGIN }, rect)
+			))
+			.flatMapLatest(({ mouseX, mouseY, x: rectX, width: rectWidth, identifier: touchIdentifier })=> {
+				return kefir.concat([
+					kefir.constant({ type: 'start', rectWidth, rectX }),
+					kefir
+						.concat([
+							kefir.constant({ mouseX, mouseY }),
+							kefir.merge([
+								mouseMoveStream,
+								touchMoveStream
+									.map(({ touches })=> Array.from(touches).find(({ identifier: currentIdentifier })=> currentIdentifier === touchIdentifier))
+									.filter(Boolean)
 							])
-							.map(pipe(
-								prop('mouseX'),
-								clamp(
-									rectX + TRACK_KNOB_HORIZONTAL_MARGIN,
-									rectX + rectWidth - TRACK_KNOB_HORIZONTAL_MARGIN
-								),
-								(pos)=>
-									(pos - (rectX + TRACK_KNOB_HORIZONTAL_MARGIN)) / (rectWidth - TRACK_KNOB_HORIZONTAL_MARGIN * 2)
-							))
-							.takeUntilBy(kefir.merge([mouseUpStream, contextMenuStream]).take(1))
-							.map((position)=> ({ type: 'position_change', position })),
-						kefir.constant({ type: 'end' })
-					])
+							.map(({ clientX: mouseX, clientY: mouseY })=> ({ mouseX, mouseY }))
+						])
+						.map(pipe(
+							prop('mouseX'),
+							clamp(
+								rectX + TRACK_KNOB_HORIZONTAL_MARGIN,
+								rectX + rectWidth - TRACK_KNOB_HORIZONTAL_MARGIN
+							),
+							(pos)=>
+								(pos - (rectX + TRACK_KNOB_HORIZONTAL_MARGIN)) / (rectWidth - TRACK_KNOB_HORIZONTAL_MARGIN * 2)
+						))
+						.takeUntilBy(
+							kefir.merge([
+								mouseUpStream,
+								contextMenuStream,
+								touchEndStream.filter(({ changedTouches })=> Array.from(changedTouches).map(prop('identifier')).includes(touchIdentifier))
+							]).take(1)
+						)
+						.map((position)=> ({ type: 'position_change', position })),
+					kefir.constant({ type: 'end' })
+				])
 			});
 
 		const userScrubInteractionProperty = kefir

@@ -23,6 +23,10 @@
 			background-position: 0 center;
 			border: none;
 			cursor: pointer;
+			box-sizing: border-box;
+			overflow: hidden;
+			padding: 0;
+			-webkit-tap-highlight-color: transparent;
 
 			&:focus {
 				outline: none;
@@ -45,6 +49,7 @@
 			cursor: pointer;
 
 			> button {
+				padding: 0;
 				position: absolute;
 				top: 50%;
 				left: 0;
@@ -58,6 +63,7 @@
 				transition: background-color 0.2s, box-shadow 200ms, border-radius 0.2s;
 				box-shadow: 0 0 0 0 #00000000;
 				cursor: pointer;
+				-webkit-tap-highlight-color: transparent;
 
 				&:focus {
 					outline: none;
