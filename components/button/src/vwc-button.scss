@@ -3,8 +3,12 @@
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 
 :host {
-	--mdc-button-disabled-ink-color: var(#{color-semantic.$formfield-disabled-ink});
-	--mdc-button-disabled-fill-color: var(#{color-semantic.$formfield-border-idle});
+  --mdc-button-disabled-ink-color: var(
+    #{color-semantic.$formfield-disabled-ink}
+  );
+  --mdc-button-disabled-fill-color: var(
+    #{color-semantic.$formfield-border-idle}
+  );
 }
 
 // ! move to utils as this might be a common
@@ -38,7 +42,7 @@
     #{$scoped-selector} {
       --mdc-theme-primary: var(--vvd-color-#{$connotation}-background);
       --mdc-theme-on-primary: var(--vvd-color-#{$connotation}-foreground);
-		}
+    }
   }
 }
 
@@ -48,30 +52,31 @@
 
 /////////////////////////////////////////////////////////////////////////////
 .mdc-button {
-	font-stretch: var(--mdc-typography-button-font-stretch); // ! this was supposed to be set by MDC
+  // ! this was supposed to be set by MDC
+  font-stretch: var(--mdc-typography-button-font-stretch);
   height: 40px;
-	letter-spacing: normal;
+  letter-spacing: normal;
   border-radius: 6px;
 
   &.mdc-button--dense {
     height: 32px;
   }
 
-	vwc-icon {
-		vertical-align: sub;
-	}
+  vwc-icon {
+    vertical-align: sub;
+  }
 
-	> span.trailing-icon {
-		> slot > vwc-icon {
-			margin-left: 6px;
-		}
-	}
+  > span.trailing-icon {
+    > slot > vwc-icon {
+      margin-left: 6px;
+    }
+  }
 
-	> span.leading-icon {
-		> slot > vwc-icon {
-			margin-right: 6px;
-		}
-	}
+  > span.leading-icon {
+    > slot > vwc-icon {
+      margin-right: 6px;
+    }
+  }
 }
 
 :host([disabled]) .mdc-button.mdc-button--outlined {
