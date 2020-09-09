@@ -1,4 +1,5 @@
 import { customElement, property,html, TemplateResult } from 'lit-element';
+import { nothing } from 'lit-html';
 import '@vonage/vwc-notched-outline';
 import { TextField as MWCTextField } from '@material/mwc-textfield';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
@@ -22,7 +23,7 @@ const shapes = ['rounded', 'pill'] as const;
 export type TextFieldShape = typeof shapes;
 
 @customElement('vwc-textfield')
-export class VWCTextField extends MWCTextField {
+export class VWCTextField extends MWCTextField {  
   @property({ type: Boolean }) dense = false;
 
   @property({ type: String, reflect: true })
@@ -42,5 +43,25 @@ export class VWCTextField extends MWCTextField {
 
   protected renderIcon(): TemplateResult {
 		return html`<vwc-icon size="small" type="${this.icon}"></vwc-icon>`;
-	}
+  }
+  
+  protected renderRipple(): TemplateResult {
+		return html``;
+  }
+
+  protected renderLineRipple() {
+    return html``;
+  }
+
+  protected renderOutline() {
+    if (!this.outlined) {
+      return nothing;
+    }
+
+    return html`
+      <mwc-notched-outline
+          class="mdc-notched-outline">
+        ${this.renderLabel()}
+      </mwc-notched-outline>`;
+  }
 }

@@ -44,15 +44,7 @@ function onInput(e) {
 }
 
 export const searchField = () => html`
-  <style>
-    vwc-textfield {
-      width: 240px;
-    }
-  </style>
-
   <h3>Search</h3>
-  <vwc-textfield outlined label="VWC textfield"></vwc-textfield>
-  <br />
   <vwc-textfield outlined shape="pill" label="Search...">
     <vwc-icon
       title="an icon of magnifying glass"

@@ -183,16 +183,11 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 .mdc-text-field--filled {
   border-bottom-right-radius: var(--mdc-shape-small);
   border-bottom-left-radius: var(--mdc-shape-small);
-  
-  .mdc-line-ripple {
-    display: none;
-  }
 }
 
 .mdc-text-field--outlined {
   .mdc-floating-label--float-above {
-    font-size: inherit;
-    transform: translateY(-17px) scale(0.75);
+    transform: translateY(-100%);
   }
 
   .mdc-text-field__input {
