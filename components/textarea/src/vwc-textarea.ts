@@ -1,6 +1,6 @@
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import '@vonage/vwc-notched-outline';
-import { spreadObjectToClasses } from '@vonage/vvd-foundation/class-utils.js';
+import { mapToClasses } from '@vonage/vvd-foundation/class-utils.js';
 import { TextArea as MWCTextArea } from '@material/mwc-textarea';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import { style as vwcTextareaStyle } from './vwc-textarea.css';
@@ -36,7 +36,7 @@ export class VWCTextArea extends MWCTextArea {
 			return html``;
 		}
 		const showValidationMessage = this.validationMessage && !this.isUiValid;
-		const classes = {
+		const classesMap = {
 			'mdc-text-field-helper-text--persistent': this.helperPersistent,
 			'mdc-text-field-helper-text--validation-msg': showValidationMessage,
 		};
@@ -44,8 +44,8 @@ export class VWCTextArea extends MWCTextArea {
 			<div class="mdc-text-field-helper-line">
 				<vwc-icon class="mdc-text-field-helper-icon" type="info-negative" size="small"></vwc-icon>
 				<span class="spacer"></span>
-				<div class="mdc-text-field-helper-text ${spreadObjectToClasses(classes).join(' ')}">${showValidationMessage ? this.validationMessage : this.helper}</div>
-					${charCounterTemplate}
+				<div class="mdc-text-field-helper-text ${mapToClasses(classesMap).join(' ')}">${showValidationMessage ? this.validationMessage : this.helper}</div>
+				${charCounterTemplate}
 			</div>
 		`;
 	}
