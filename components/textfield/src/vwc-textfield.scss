@@ -56,6 +56,8 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
   --mdc-text-field-error-fill-color: var(
     #{color-semantic.$formfield-error-fill}
   );
+
+  width: 100%;
 }
 
 :host([readonly]),

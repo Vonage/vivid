@@ -2,4 +2,8 @@
 
 :host {
 	@include typography.typography-mdc-coupling('subtitle1', 'body-2');
+
+	.mdc-floating-label {
+		@include typography.typography-mdc-coupling('subtitle1', 'body-1');
+	}
 }
