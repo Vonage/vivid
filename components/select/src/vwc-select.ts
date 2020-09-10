@@ -1,5 +1,4 @@
 import { customElement, property, html, TemplateResult } from 'lit-element';
-import { nothing } from 'lit-html';
 import '@vonage/vwc-notched-outline';
 import '@vonage/vwc-icon';
 import { Select as MWCSelect } from '@material/mwc-select';
@@ -49,7 +48,7 @@ export class VWCSelect extends MWCSelect {
 
 	protected renderOutline(): TemplateResult | Record<string, unknown> {
     if (!this.outlined) {
-      return nothing;
+      return {};
     }
 
     return html`

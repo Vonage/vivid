@@ -1,5 +1,4 @@
 import { customElement, property, html, TemplateResult } from 'lit-element';
-import { nothing } from 'lit-html';
 import '@vonage/vwc-notched-outline';
 import { TextArea as MWCTextArea } from '@material/mwc-textarea';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
@@ -35,7 +34,7 @@ export class VWCTextArea extends MWCTextArea {
 
 	protected renderOutline(): TemplateResult | Record<string, unknown> {
     if (!this.outlined) {
-      return nothing;
+      return {};
     }
 
     return html`

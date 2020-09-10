@@ -1,5 +1,4 @@
 import { customElement, property, html, TemplateResult } from 'lit-element';
-import { nothing } from 'lit-html';
 import { classMap } from 'lit-html/directives/class-map';
 import '@vonage/vwc-notched-outline';
 import { TextField as MWCTextField } from '@material/mwc-textfield';
@@ -62,7 +61,7 @@ export class VWCTextField extends MWCTextField {
 
   protected renderOutline(): TemplateResult | Record<string, unknown> {
     if (!this.outlined) {
-      return nothing;
+      return {};
     }
 
     return html`
