@@ -70,7 +70,7 @@ describe('vwc-media-controller', function(){
 		it('Should emit an event when clicking play/pause ', function(){
 			return new Promise((resolve, reject)=> {
 				controllerEl.addEventListener('userPlayPauseRequest', resolve);
-				simulateMouse( BUTTON_X, CENTER_Y, 'mousedown');
+				simulateMouse( BUTTON_X, CENTER_Y, 'click');
 				setTimeout( reject, RESPONSE_TIMEOUT, new Error('Play/pause button did not emit an event, make sure the layout\'s hasn\'t changed'))
 			});
 		});
