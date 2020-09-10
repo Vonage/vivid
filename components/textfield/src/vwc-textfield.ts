@@ -1,5 +1,6 @@
 import { customElement, property,html, TemplateResult } from 'lit-element';
 import { nothing } from 'lit-html';
+import { classMap } from 'lit-html/directives/class-map';
 import '@vonage/vwc-notched-outline';
 import { TextField as MWCTextField } from '@material/mwc-textfield';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
@@ -24,7 +25,8 @@ export type TextFieldShape = typeof shapes;
 
 @customElement('vwc-textfield')
 export class VWCTextField extends MWCTextField {  
-  @property({ type: Boolean }) dense = false;
+  @property({ type: Boolean, reflect: true })
+  dense = false;
 
   @property({ type: String, reflect: true })
   shape: TextFieldShape[number] = 'rounded';
@@ -40,20 +42,25 @@ export class VWCTextField extends MWCTextField {
 		this.shadowRoot?.querySelector('.mdc-notched-outline')?.shadowRoot?.querySelector('.mdc-notched-outline')?.classList.add('vvd-notch');
     addInputToForm(this);
   }
+  
+  protected renderIcon(icon: string, isTrailingIcon = false): TemplateResult {
+    const classes = {
+      'mdc-text-field__icon--leading': !isTrailingIcon,
+      'mdc-text-field__icon--trailing': isTrailingIcon
+    };
 
-  protected renderIcon(): TemplateResult {
-		return html`<vwc-icon size="small" type="${this.icon}"></vwc-icon>`;
+    return html`<vwc-icon type="${icon}" size="small" class="${classMap(classes)}"></vwc-icon>`;
   }
   
   protected renderRipple(): TemplateResult {
 		return html``;
   }
 
-  protected renderLineRipple() {
+  protected renderLineRipple(): TemplateResult {
     return html``;
   }
 
-  protected renderOutline() {
+  protected renderOutline(): TemplateResult | Record<string, unknown> {
     if (!this.outlined) {
       return nothing;
     }

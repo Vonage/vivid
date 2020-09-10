@@ -32,7 +32,7 @@ export const Validation = Template.bind({});
 Validation.args = { outlined: '', label: 'Numbers only', required: '', pattern: '[0-9]+', validationMessage: 'Numbers only', value: 'Text' };
 
 export const Icon = Template.bind({});
-Icon.args = { outlined: '', icon: 'search', dense: '', shape: 'pill', placeholder: 'Search' };
+Icon.args = { outlined: '', icon: 'search', iconTrailing: 'cross-bold', dense: '', shape: 'pill', placeholder: 'Search' };
 
 function handleKeyDown(e) {
   e.stopPropagation();
