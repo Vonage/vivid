@@ -1,9 +1,11 @@
+@forward './vwc-select-coupling';
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 
 :host {
 	--mdc-select-filled-border-radius: 6px;
   --mdc-theme-primary: var(--vvd-color-alternate-primary-background);
+  --mdc-select-fill-color: var(--vvd-color-surface-background);
   --mdc-select-ink-color: var(--mdc-theme-primary);
   --mdc-select-label-ink-color: var(#{color-semantic.$formfield-label-idle-ink});
 	--mdc-select-disabled-ink-color: var(#{color-semantic.$formfield-disabled-ink});
@@ -60,6 +62,8 @@
 	}
 
   &--outlined {
+    background-color: var(--mdc-select-fill-color);
+
     .mdc-select__anchor {
       height: 48px;
       padding-left: 14px;

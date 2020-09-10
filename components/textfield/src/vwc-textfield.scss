@@ -6,7 +6,7 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 :host {
   --mdc-theme-primary: #131415;
   --mdc-theme-error: #{color-semantic.$formfield-label-error-ink};
-  --mdc-text-field-fill-color: #ffffff;
+  --mdc-text-field-fill-color: var(--vvd-color-surface-background);
   --mdc-text-field-ink-color: var(--mdc-theme-primary);
   --mdc-text-field-label-ink-color: var(
     #{color-semantic.$formfield-label-idle-ink}

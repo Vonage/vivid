@@ -291,11 +291,11 @@ describe('select', () => {
 			expect(labelElement).to.exist;
 			assertComputedStyle(labelElement, {
 				fontFamily: 'SpeziaWebVariable',
-				fontSize: '14.2222px',
+				fontSize: '16px',
 				fontWeight: '400',
 				fontStretch: '50%',
 				lineHeight: '18.4px',
-				letterSpacing: '0.133333px',
+				letterSpacing: '0.15px',
 				textTransform: 'none'
 			});
 		});
