@@ -1,29 +1,6 @@
 @forward './vwc-textfield-coupling';
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 
-// :host {
-//   --vvd-outline-color: var(--mdc-text-field-outlined-idle-border-color);
-// }
-
-// .mdc-text-field {
-//   &:hover,
-//   &--focused {
-//     --vvd-outline-color: var(--mdc-text-field-outlined-hover-border-color);
-
-//     &.mdc-text-field--invalid {
-//       --vvd-outline-color: var(--mdc-text-field-error-color);
-//     }
-//   }
-
-//   &--invalid {
-//     --vvd-outline-color: var(--mdc-text-field-error-color);
-//   }
-// }
-
-// :host([disabled]) .mdc-text-field {
-//   --vvd-outline-color: var(--mdc-text-field-outlined-disabled-border-color);
-// }
-
 $vvd-text-field-size-block: --vvd-text-field-size-block;
 
 :host {
