@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-icon",
-	"version": "0.5.0",
+	"version": "0.6.0",
 	"description": "icon component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/icon#readme",
 	"license": "ISC",
@@ -18,7 +18,8 @@
 		"directory": "components/icon"
 	},
 	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1"
+		"test": "echo \"Error: run tests from root\" && exit 1",
+		"build": "node ./build/vwc-icon-resolver-factory.js"
 	},
 	"bugs": {
 		"url": "https://github.com/Vonage/vivid/issues"
