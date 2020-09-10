@@ -4,12 +4,12 @@ import {
 
 describe('class (DOM) utils', () => {
 
-	it('should return empty array in invalid param - undefined', async () => {
+	it('should return empty array if invalid param - undefined', async () => {
 		const r = mapToClasses();
 		expect(r).eql([]);
 	});
 
-	it('should return empty array in invalid param - null', async () => {
+	it('should return empty array if invalid param - null', async () => {
 		const r = mapToClasses(null);
 		expect(r).eql([]);
 	});
@@ -33,7 +33,8 @@ describe('class (DOM) utils', () => {
 			take3: {},
 			nonTake3: null
 		});
-		expect(r.sort()).eql(['take1', 'take2', 'take3'].sort());
+		const expected = ['take1', 'take2', 'take3'];
+		expect(r.sort()).eql(expected.sort());
 	});
 
 });
