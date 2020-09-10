@@ -9,7 +9,6 @@
 	--mdc-select-disabled-ink-color: var(#{color-semantic.$formfield-disabled-ink});
 	--mdc-select-disabled-fill-color: var(#{color-semantic.$formfield-disabled-fill});
 
-
   --mdc-select-dropdown-icon-color: var(--mdc-select-ink-color);
   --mdc-select-focused-dropdown-icon-color: var(--mdc-select-ink-color);
   --mdc-select-disabled-dropdown-icon-color: var(--mdc-select-disabled-ink-color);
@@ -22,10 +21,7 @@
 	--mdc-select-error-fill-color: var(#{color-semantic.$formfield-error-fill});
 	--mdc-select-error-dropdown-icon-color: var(--mdc-select-error-color);
 
-	@include typography.typography-mdc-coupling('subtitle1', 'body-2');
 	font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
-
-	--vvd-outline-color: var(--mdc-select-outlined-idle-border-color);
 }
 
 :host(:not([disabled])) .mdc-select.mdc-select--focused:not(.mdc-select--invalid) {
@@ -35,7 +31,6 @@
 }
 
 :host([disabled]) .mdc-select {
-	--vvd-outline-color: var(--mdc-select-outlined-disabled-border-color);
 	background-color: var(--mdc-select-disabled-fill-color);
 
 	.mdc-select__selected-text {
@@ -92,19 +87,7 @@
 		}
   }
 
-  :host(:hover) &,
-  &:hover,
-  &--focused {
-		--vvd-outline-color: var(--mdc-select-outlined-hover-border-color);
-
-		&.mdc-select--invalid {
-			--vvd-outline-color: var(--mdc-select-error-color);
-		}
-  }
-
   &--invalid {
-		--vvd-outline-color: var(--mdc-select-error-color);
-
     &.mdc-select--outlined {
 			background-color: var(--mdc-select-error-fill-color);
 
@@ -113,7 +96,10 @@
 			}
     }
 	}
+}
 
+.mdc-select-helper-text {
+	margin: 0 14px;
 }
 
 .mdc-select--invalid:not(.mdc-select--disabled).mdc-select--invalid + .mdc-select-helper-text--validation-msg {

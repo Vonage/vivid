@@ -45,18 +45,3 @@ function onChange(e) {
 function onInput(e) {
   console.log('input');
 }
-
-{/* <vwc-icon
-  title="an icon of magnifying glass"
-  size="small"
-  type="search"
-  slot="icon"
-></vwc-icon> */}
-
-{/* <span
-title="an icon of magnifying glass"
-size="small"
-type="search"
-slot="icon"
->Hi</span
-> */}

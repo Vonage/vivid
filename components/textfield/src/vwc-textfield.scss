@@ -8,7 +8,6 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
   --mdc-theme-error: #{color-semantic.$formfield-label-error-ink};
   --mdc-text-field-fill-color: #ffffff;
   --mdc-text-field-ink-color: var(--mdc-theme-primary);
-
   --mdc-text-field-label-ink-color: var(
     #{color-semantic.$formfield-label-idle-ink}
   );
@@ -79,10 +78,6 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 
 :host([dense]) {
   #{$vvd-text-field-size-block}: 40px;
-
-  .mdc-floating-label {
-    display: none;
-  }
 }
 
 .mdc-text-field {

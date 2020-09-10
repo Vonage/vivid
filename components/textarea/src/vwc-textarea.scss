@@ -20,6 +20,8 @@
 		padding-top: 22px;
 
 		&.mdc-text-field--no-label {
+			padding-top: 0;
+
 			.mdc-text-field__input {
 				padding-top: 8px;
 			}

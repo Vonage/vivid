@@ -1,4 +1,5 @@
-import { customElement, property } from 'lit-element';
+import { customElement, property, html, TemplateResult } from 'lit-element';
+import { nothing } from 'lit-html';
 import '@vonage/vwc-notched-outline';
 import '@vonage/vwc-icon';
 import { Select as MWCSelect } from '@material/mwc-select';
@@ -45,4 +46,15 @@ export class VWCSelect extends MWCSelect {
 		chevronIcon.setAttribute('type', 'down');
 		this.shadowRoot?.querySelector(`.${ddIconClass}`)?.replaceWith(chevronIcon);
 	}
+
+	protected renderOutline(): TemplateResult | Record<string, unknown> {
+    if (!this.outlined) {
+      return nothing;
+    }
+
+    return html`
+      <mwc-notched-outline class="mdc-notched-outline">
+        ${this.renderLabel()}
+      </mwc-notched-outline>`;
+  }
 }
