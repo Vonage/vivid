@@ -1,0 +1,15 @@
+@use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins' as color-connotation-mixins;
+
+:host {
+  padding: 4px 8px;
+  border-radius: 12px;
+  background: rgb(var(--red), var(--green), var(--blue), var(--opacity, 1));
+}
+
+@include color-connotation-mixins.connotations-context(
+  ':host([connotation-specifier])'
+);
+
+:host([translucent]) {
+  --opacity: 0.3;
+}

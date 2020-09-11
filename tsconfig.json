@@ -31,8 +31,8 @@
   "references": [
     { "path": "common/context" },
     { "path": "common/core" },
-		{	"path": "common/fonts" },
-		{ "path": "common/foundation" },
+    { "path": "common/fonts" },
+    { "path": "common/foundation" },
     { "path": "common/scheme" },
     { "path": "common/style-coupling" },
     { "path": "components/button" },
@@ -59,6 +59,7 @@
     { "path": "components/textarea" },
     { "path": "components/textfield" },
     { "path": "components/top-app-bar" },
-    { "path": "components/top-app-bar-fixed" }
+    { "path": "components/top-app-bar-fixed" },
+    { "path": "components/badge" }
   ]
 }
