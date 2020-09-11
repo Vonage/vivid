@@ -162,14 +162,14 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
     .mdc-text-field__icon--trailing {
       color: var(--mdc-text-field-disabled-ink-color);
     }
-	}
-}
-
-vwc-icon {
-  align-self: center;
-  margin: 0 12px;
-  min-height: 18px;
-  min-width: 18px;
+  }
+  
+  vwc-icon {
+    align-self: center;
+    margin: 0 12px;
+    min-height: 18px;
+    min-width: 18px;
+  }
 }
 
 vwc-notched-outline {
