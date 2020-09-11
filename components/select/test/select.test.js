@@ -320,4 +320,18 @@ describe('select', () => {
 			});
 		});
 	});
+
+	describe('notched outlined', () => {
+		it('should have vwc-notched-outline defined', async () => {
+			addedElements = textToDomToParent(`
+				<${VWC_SELECT} outlined>
+					<vwc-list-item>Item 1</vwc-list-item>
+					<vwc-list-item>Item 2</vwc-list-item>
+				</${VWC_SELECT}>
+			`);			
+			await waitNextTask();
+			const notchedOutline = addedElements[0].shadowRoot.querySelector('vwc-notched-outline');
+			expect(notchedOutline).to.exist;
+		});
+	});
 });

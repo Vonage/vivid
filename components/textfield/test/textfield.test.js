@@ -267,4 +267,13 @@ describe('textfield', () => {
 			expect(formElement.checkValidity()).to.equal(false);
 		});
 	});
+
+	describe('notched outlined', () => {
+		it('should have vwc-notched-outline defined', async () => {
+			addedElements = textToDomToParent(`<${COMPONENT_NAME} outlined></${COMPONENT_NAME}>`);
+			await waitNextTask();
+			const notchedOutline = addedElements[0].shadowRoot.querySelector('vwc-notched-outline');
+			expect(notchedOutline).to.exist;
+		});
+	});
 });
