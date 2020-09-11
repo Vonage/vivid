@@ -26,6 +26,12 @@ const Template = (args) => html`
 export const Default = Template.bind({});
 Default.args = { outlined: '', label: 'VWC Select', helper: 'Helper Text' };
 
+export const Dense = Template.bind({});
+Dense.args = { dense: '', outlined: '' };
+
+export const PillShape = Template.bind({});
+PillShape.args = { shape: 'pill', dense: '', outlined: '' };
+
 export const Disabled = Template.bind({});
 Disabled.args = { disabled: '', outlined: '', label: 'VWC Select', helper: 'Helper Text' };
 

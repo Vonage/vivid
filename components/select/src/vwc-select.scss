@@ -1,8 +1,9 @@
 @forward './vwc-select-coupling';
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 
+$vvd-select-size-block: --vvd-text-field-size-block;
+
 :host {
-	--mdc-select-filled-border-radius: 6px;
   --mdc-theme-primary: var(--vvd-color-alternate-primary-background);
   --mdc-select-fill-color: var(--vvd-color-surface-background);
   --mdc-select-ink-color: var(--mdc-theme-primary);
@@ -49,8 +50,32 @@
 	}
 }
 
+:host([shape='pill']) {
+  --mdc-shape-small: 24px;
+}
+
+:host(:not([shape='pill'])) {
+  --mdc-shape-small: 6px;
+}
+
+:host(:not([shape='pill'])[dense]) {
+  --mdc-shape-small: 5px;
+}
+
+:host([dense]) {
+  #{$vvd-select-size-block}: 40px;
+}
+
+:host(:not([dense])) {
+  #{$vvd-select-size-block}: 48px;
+
+  .mdc-select__selected-text {
+    padding: 22px 0 6px;
+  }
+}
+
 .mdc-select {
-	border-radius: 6px;
+  border-radius: var(--mdc-shape-small);
 
 	.mdc-select__dropdown-icon {
 		transition: transform 200ms;
@@ -64,12 +89,11 @@
     background-color: var(--mdc-select-fill-color);
 
     .mdc-select__anchor {
-      height: 48px;
+      height: var(#{$vvd-select-size-block});
       padding-left: 14px;
 
       .mdc-select__selected-text {
         font-size: var(--mdc-typography-subtitle2-font-size, 0.875rem);
-        padding: 22px 0 6px;
       }
 
       .mdc-floating-label {

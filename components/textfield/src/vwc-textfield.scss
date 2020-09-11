@@ -69,6 +69,10 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
   --mdc-shape-small: 5px;
 }
 
+:host([dense]) {
+  #{$vvd-text-field-size-block}: 40px;
+}
+
 :host(:not([dense])) {
   #{$vvd-text-field-size-block}: 48px;
 
@@ -76,10 +80,6 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
     align-self: flex-end;
     height: 32px;
   }
-}
-
-:host([dense]) {
-  #{$vvd-text-field-size-block}: 40px;
 }
 
 .mdc-text-field {
