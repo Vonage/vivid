@@ -14,7 +14,6 @@ function listenToSubmission(formElement) {
 			res(formData);
 		});
 	});
-
 }
 
 async function changeFieldValue(actualElement, value, eventName = 'change') {

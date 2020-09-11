@@ -1,6 +1,7 @@
 import { customElement, property, html, TemplateResult } from 'lit-element';
 import '@vonage/vwc-notched-outline';
 import '@vonage/vwc-icon';
+import { mapToClasses } from '@vonage/vvd-foundation/class-utils.js';
 import { Select as MWCSelect } from '@material/mwc-select';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import { style as vwcSelectStyle } from './vwc-select.css';
@@ -44,6 +45,26 @@ export class VWCSelect extends MWCSelect {
 		await super.firstUpdated();
 		this.replaceIcon();
 		addInputToForm(this);
+	}
+
+	protected renderHelperText(): TemplateResult {
+		if (!this.shouldRenderHelperText) {
+			return html``;
+		}
+
+		const showValidationMessage = this.validationMessage && !this.isUiValid;
+		const classesMap = {
+			'mdc-select-helper-text--validation-msg': showValidationMessage,
+		};
+
+		return html`
+			<div class="mdc-select-helper-line">
+				<vwc-icon class="mdc-select-helper-icon" type="info-negative" size="small"></vwc-icon>
+				<span class="spacer"></span>
+				<div id="helper-text" class="mdc-select-helper-text ${mapToClasses(classesMap).join(' ')}"
+				>${showValidationMessage ? this.validationMessage : this.helper}</div>
+			</div>
+		`;
 	}
 
 	private replaceIcon(): void {

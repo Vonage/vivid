@@ -1,39 +1,39 @@
 {
-  "name": "@vonage/vwc-textfield",
-  "version": "0.6.0",
-  "description": "texfield component",
-  "author": "yinonov <yinon@hotmail.com>",
-  "homepage": "https://github.com/Vonage/vivid/tree/master/components/textfield#readme",
-  "license": "ISC",
-  "main": "vwc-textfield.js",
-  "module": "vwc-textfield.js",
-  "files": [
-    "*.js",
-    "*.ts",
-    "*.map"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/vonage/vivid.git",
-    "directory": "components/textfield"
-  },
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
-  },
-  "bugs": {
-    "url": "https://github.com/Vonage/vivid/issues"
-  },
-  "dependencies": {
-    "@material/mwc-textfield": "^0.18.0",
-    "@vonage/vvd-foundation": "^0.6.0",
-    "@vonage/vvd-style-coupling": "^0.6.0",
-    "@vonage/vwc-icon": "^0.6.0",
-    "@vonage/vwc-notched-outline": "^0.6.0",
-    "lit-element": "^2.4.0",
-    "lit-html": "^1.2.1",
-    "tslib": "^2.0.1"
-  },
-  "devDependencies": {
-    "@vonage/vvd-typography": "^0.6.0"
-  }
+	"name": "@vonage/vwc-textfield",
+	"version": "0.6.0",
+	"description": "texfield component",
+	"author": "yinonov <yinon@hotmail.com>",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/textfield#readme",
+	"license": "ISC",
+	"main": "vwc-textfield.js",
+	"module": "vwc-textfield.js",
+	"files": [
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/vonage/vivid.git",
+		"directory": "components/textfield"
+	},
+	"scripts": {
+		"test": "echo \"Error: run tests from root\" && exit 1"
+	},
+	"bugs": {
+		"url": "https://github.com/Vonage/vivid/issues"
+	},
+	"dependencies": {
+		"@material/mwc-textfield": "^0.18.0",
+		"@vonage/vvd-foundation": "^0.6.0",
+		"@vonage/vvd-style-coupling": "^0.6.0",
+		"@vonage/vwc-icon": "^0.6.0",
+		"@vonage/vwc-notched-outline": "^0.6.0",
+		"lit-element": "^2.4.0",
+		"lit-html": "^1.2.1",
+		"tslib": "^2.0.1"
+	},
+	"devDependencies": {
+		"@vonage/vvd-typography": "^0.6.0"
+	}
 }

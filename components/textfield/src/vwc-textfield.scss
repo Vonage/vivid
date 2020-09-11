@@ -124,7 +124,7 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
       vwc-notched-outline {
         --mdc-notched-outline-border-color: var(--mdc-text-field-error-color);
       }
-      
+
       background-color: var(--mdc-text-field-error-fill-color);
 
       .mdc-floating-label {
@@ -136,7 +136,21 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
   &:not(.mdc-text-field--disabled) {
     .mdc-text-field__icon--leading {
       color: var(--mdc-text-field-ink-color);
-    }
+		}
+	}
+
+	:host(:hover) &,
+  &:hover,
+  &--focused {
+		--vvd-outline-color: var(--mdc-text-field-outlined-hover-border-color);
+
+		&.mdc-text-field--invalid {
+			--vvd-outline-color: var(--mdc-text-field-error-color);
+		}
+ 	}
+
+  &--invalid {
+		--vvd-outline-color: var(--mdc-text-field-error-color);
 
     .mdc-text-field__icon--trailing {
       color: var(--mdc-text-field-label-ink-color);
@@ -148,7 +162,7 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
     .mdc-text-field__icon--trailing {
       color: var(--mdc-text-field-disabled-ink-color);
     }
-  }
+	}
 }
 
 vwc-icon {
@@ -164,4 +178,39 @@ vwc-notched-outline {
 
 :host(:not([disabled]):hover) :not(.mdc-text-field--invalid):not(.mdc-text-field--focused) vwc-notched-outline {
   --mdc-notched-outline-border-color: var(--mdc-text-field-outlined-hover-border-color);
+}
+
+// helper / error message line
+.mdc-text-field {
+	& + .mdc-text-field-helper-line {
+		--mdc-theme-error: var(--mdc-text-field-ink-color);
+		margin-top: 7px;
+		padding: 0;
+		align-items: center;
+		justify-content: initial;
+		cursor: default;
+
+		.mdc-text-field-helper-icon {
+			display: none;
+			color: var(--mdc-text-field-error-color);
+		}
+
+		.mdc-text-field-helper-text::before {
+			display: inline;
+		}
+
+		.spacer {
+			flex-basis: 14px;
+		}
+	}
+
+	&.mdc-text-field--invalid + .mdc-text-field-helper-line {
+		.mdc-text-field-helper-icon {
+			display: flex;
+		}
+
+		.spacer {
+			flex-basis: 6px;
+		}
+	}
 }

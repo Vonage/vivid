@@ -30,7 +30,7 @@ export const Disabled = Template.bind({});
 Disabled.args = { disabled: '', outlined: '', label: 'VWC Select', helper: 'Helper Text' };
 
 export const Required = Template.bind({});
-Required.args = { required: '', outlined: '', label: 'VWC Select', validationMessage: 'This Field is Required' };
+Required.args = { required: '', outlined: '', label: 'VWC Select', helper: 'Select your preference', validationMessage: 'This Field is Required' };
 
 function onSelected(e) {
 	console.log(e);
