@@ -28,7 +28,6 @@ export class VWCTextArea extends MWCTextArea {
 	
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
-		this.shadowRoot?.querySelector('.mdc-notched-outline')?.shadowRoot?.querySelector('.mdc-notched-outline')?.classList.add('vvd-notch');
 		addInputToForm(this, 'textarea');
 	}
 
@@ -38,8 +37,8 @@ export class VWCTextArea extends MWCTextArea {
     }
 
     return html`
-      <mwc-notched-outline class="mdc-notched-outline">
+      <vwc-notched-outline class="mdc-notched-outline vvd-notch">
         ${this.renderLabel()}
-      </mwc-notched-outline>`;
+      </vwc-notched-outline>`;
   }
 }

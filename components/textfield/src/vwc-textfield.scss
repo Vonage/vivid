@@ -17,9 +17,7 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
   --mdc-text-field-disabled-fill-color: var(
     #{color-semantic.$formfield-disabled-fill}
   );
-  --mdc-text-field-outlined-idle-border-color: var(
-    #{color-semantic.$formfield-border-idle}
-  );
+  --mdc-text-field-outlined-idle-border-color: var(#{color-semantic.$formfield-border-idle});
   --mdc-text-field-outlined-hover-border-color: var(
     #{color-semantic.$formfield-border-hover}
   );
@@ -38,6 +36,10 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 
 :host([readonly]),
 :host([disabled]) {
+  vwc-notched-outline {
+    --mdc-notched-outline-border-color: var(--mdc-text-field-outlined-disabled-border-color);
+  }
+
   .mdc-text-field {
     background-color: var(--mdc-text-field-disabled-fill-color);
   }
@@ -45,8 +47,8 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 
 :host(:not([disabled])) {
   .mdc-text-field.mdc-text-field--focused {
-    mwc-notched-outline {
-      --mdc-notched-outline-stroke-width: inherit;
+    vwc-notched-outline {
+      --mdc-notched-outline-border-color: var(--mdc-text-field-outlined-hover-border-color);
     }
 
     &:not(.mdc-text-field--invalid) .mdc-floating-label {
@@ -119,6 +121,10 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 
   &--invalid {
     &.mdc-text-field--outlined {
+      vwc-notched-outline {
+        --mdc-notched-outline-border-color: var(--mdc-text-field-error-color);
+      }
+      
       background-color: var(--mdc-text-field-error-fill-color);
 
       .mdc-floating-label {
@@ -143,11 +149,19 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
       color: var(--mdc-text-field-disabled-ink-color);
     }
   }
+}
 
-	vwc-icon {
-    align-self: center;
-    margin: 0 12px;
-    min-height: 18px;
-    min-width: 18px;
-	}
+vwc-icon {
+  align-self: center;
+  margin: 0 12px;
+  min-height: 18px;
+  min-width: 18px;
+}
+
+vwc-notched-outline {
+  --mdc-notched-outline-border-color: var(--mdc-text-field-outlined-idle-border-color);
+}
+
+:host(:not([disabled]):hover) :not(.mdc-text-field--invalid):not(.mdc-text-field--focused) vwc-notched-outline {
+  --mdc-notched-outline-border-color: var(--mdc-text-field-outlined-hover-border-color);
 }

@@ -1,10 +1,12 @@
 import '@vonage/vwc-textarea/vwc-textarea.js';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
+import { argTypes } from './arg-types.js';
 
 export default {
 	title: 'Atoms/Textarea',
-	component: 'vwc-textarea'
+	component: 'vwc-textarea',
+	argTypes
 }
 
 const Template = (args) =>

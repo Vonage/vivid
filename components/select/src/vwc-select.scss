@@ -33,6 +33,10 @@
 }
 
 :host([disabled]) .mdc-select {
+  vwc-notched-outline {
+    --mdc-notched-outline-border-color: var(--mdc-select-outlined-disabled-border-color);
+  }
+
 	background-color: var(--mdc-select-disabled-fill-color);
 
 	.mdc-select__selected-text {
@@ -44,10 +48,6 @@
 			--mdc-theme-primary: var(--mdc-select-label-ink-color);
 		}
 	}
-}
-
-:host(:not([disabled])) .mdc-select.mdc-select--focused mwc-notched-outline {
-  --mdc-notched-outline-stroke-width: 1px;
 }
 
 .mdc-select {
@@ -93,6 +93,10 @@
 
   &--invalid {
     &.mdc-select--outlined {
+      vwc-notched-outline {
+        --mdc-notched-outline-border-color: var(--mdc-select-error-color);
+      }
+
 			background-color: var(--mdc-select-error-fill-color);
 
 			.mdc-floating-label {
@@ -108,4 +112,13 @@
 
 .mdc-select--invalid:not(.mdc-select--disabled).mdc-select--invalid + .mdc-select-helper-text--validation-msg {
 	color: var(--mdc-select-error-color);
+}
+
+vwc-notched-outline {
+  --mdc-notched-outline-border-color: var(--mdc-select-outlined-idle-border-color);
+}
+
+:host(:not([disabled])) .mdc-select.mdc-select--focused vwc-notched-outline,
+:host(:not([disabled]):hover) .mdc-select:not(.mdc-select--invalid):not(.mdc-select--focused) vwc-notched-outline {
+  --mdc-notched-outline-border-color: var(--mdc-select-outlined-hover-border-color);
 }

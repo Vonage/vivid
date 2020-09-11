@@ -17,11 +17,20 @@ declare global {
 // @ts-ignore
 MWCSelect.styles = [styleCoupling, mwcSelectStyle, vwcSelectStyle];
 
+const shapes = ['rounded', 'pill'] as const;
+export type SelectShape = typeof shapes;
+
 /**
  * This component is an extension of [<mwc-select>](https://github.com/material-components/material-components-web-components/tree/master/packages/select)
  */
 @customElement('vwc-select')
 export class VWCSelect extends MWCSelect {
+	@property({ type: Boolean, reflect: true })
+	dense = false;
+
+	@property({ type: String, reflect: true })
+  shape: SelectShape[number] = 'rounded';
+	
 	@property({ type: HTMLInputElement, reflect: false })
 	hiddenInput: HTMLInputElement | undefined;
 
@@ -33,7 +42,6 @@ export class VWCSelect extends MWCSelect {
 
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
-		this.shadowRoot?.querySelector('.mdc-notched-outline')?.shadowRoot?.querySelector('.mdc-notched-outline')?.classList.add('vvd-notch');
 		this.replaceIcon();
 		addInputToForm(this);
 	}
@@ -52,8 +60,8 @@ export class VWCSelect extends MWCSelect {
     }
 
     return html`
-      <mwc-notched-outline class="mdc-notched-outline">
+      <vwc-notched-outline class="mdc-notched-outline vvd-notch">
         ${this.renderLabel()}
-      </mwc-notched-outline>`;
+      </vwc-notched-outline>`;
   }
 }

@@ -14,10 +14,7 @@ const Template = (args) =>
   html`<vwc-textfield ...=${spread(args)} @keydown=${handleKeyDown} @change=${onChange} @input=${onInput}></vwc-textfield>`;
 
 export const Default = Template.bind({});
-Default.args = { label: 'e.g. username' };
-
-export const Outlined = Template.bind({});
-Outlined.args = { outlined: '', label: 'e.g. username' };
+Default.args = { outlined: '', label: 'e.g. username' };
 
 export const Dense = Template.bind({});
 Dense.args = { outlined: '', dense: '', placeholder: 'e.g. username' };
