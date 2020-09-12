@@ -1,16 +1,15 @@
 import '@vonage/vwc-badge/vwc-badge.js';
 import { html } from 'lit-element';
+import { spread } from '@open-wc/lit-helpers';
+import { argTypes } from './arg-types.js';
 
 export default {
 	title: 'Atoms/Badge',
-	component: 'vwc-badge'
+	component: 'vwc-badge',
+	argTypes
 }
 
-export const basic = () => html`
+const Template = args => html`<vwc-badge ...=${spread(args)}>lorem ipsum?</vwc-badge>`;
 
-	<h3>Outlined</h3>
-	<vwc-badge>
-		plain text
-	</vwc-badge>
-
-`;
+export const Basic = Template.bind({});
+Basic.args = { connotation: 'cta' };

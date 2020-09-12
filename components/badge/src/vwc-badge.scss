@@ -1,3 +1,4 @@
+@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins' as color-connotation-mixins;
 
 :host {
@@ -7,9 +8,13 @@
 }
 
 @include color-connotation-mixins.connotations-context(
-  ':host([connotation-specifier])'
+	':host(#{color-connotation-mixins.$connotation-placeholder})'
 );
+:host {
+	 background-color: var(#{color-semantic.$color-connotation-background});
+   color: var(#{color-semantic.$color-connotation-foreground});
+}
 
 :host([translucent]) {
-  --opacity: 0.3;
+  // --opacity: 0.3;
 }
