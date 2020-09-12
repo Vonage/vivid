@@ -10,7 +10,6 @@
 :host {
   padding: 4px 8px;
 	border-radius: 4px;
-	overflow: hidden;
 	position: relative;
 	color: var(#{color-semantic.$color-connotation-foreground});
 	@include typography.typography-cat-variables('body-2');
@@ -18,6 +17,7 @@
 	&::before{
 		content: '';
 		z-index: -1;
+		border-radius: inherit;
 		position: absolute;
 		top: 0;
 		right: 0;
