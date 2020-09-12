@@ -7,6 +7,7 @@ const
 
 const
 	filterByValue = (filterValue:string)=> (value:string)=> value === filterValue,
+	// eslint-disable-next-line
 	createConnectedProperty = (ingestStream:any)=> {
 		return kefir
 			.merge([
@@ -57,6 +58,7 @@ class VwcAudio extends HTMLElement {
 			userScrubRequestStream = kefir.fromEvents(controllerEl, 'userScrubRequest')
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				// @ts-ignore
+				// eslint-disable-next-line
 				.map(({ detail }):any => detail),
 			playerTimeUpdatedProperty = kefir.fromEvents(audioEl, 'timeupdate').map(() => audioEl.currentTime).toProperty(),
 			playerAudioLoadedProperty = kefir
@@ -80,6 +82,7 @@ class VwcAudio extends HTMLElement {
 		// @ts-ignore
 		playerIsPlayingProperty.onValue(controllerEl.setPlayState.bind(controllerEl));
 		userPlayRequestStream.filterBy(playerAudioLoadedProperty).onValue(() => audioEl[audioEl.paused ? 'play' : 'pause']());
+		// eslint-disable-next-line
 		userScrubRequestStream.filterBy(playerAudioLoadedProperty).onValue((position:any) => audioEl.currentTime = audioEl.duration * position);
 		connectedProperty.filter((connected) => !connected).onValue(() => audioEl.pause());
 	}

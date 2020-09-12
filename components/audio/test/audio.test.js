@@ -25,6 +25,7 @@ describe('vwc-audio', ()=>{
 			counter ++;
 		};
 
+		// eslint-disable-next-line
 		const Audio = function(){};
 		Audio.prototype = Object.assign(Object.create(null, {
 			"currentTime": {
@@ -32,7 +33,9 @@ describe('vwc-audio', ()=>{
 				get: function(){ exp("currentTimeGetter", true); return 5; },
 			},
 		}),{
+			// eslint-disable-next-line
 			"on": ()=> {},
+			// eslint-disable-next-line
 			"off": ()=> {},
 			"pause": ()=> { exp('pause', true); },
 			"play": ()=> { exp('play', true); }
