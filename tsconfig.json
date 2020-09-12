@@ -62,4 +62,5 @@
 		{ "path": "components/audio" },
     { "path": "components/top-app-bar" },
     { "path": "components/top-app-bar-fixed" }
+	]
 }
