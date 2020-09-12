@@ -1,9 +1,10 @@
-import { init as coreInit } from '@vonage/vvd-core';
+import '@vonage/vvd-core';
 import { customElement, property } from 'lit-element';
 import { Button as MWCButton } from '@material/mwc-button';
 import { style as vwcButtonStyle } from './vwc-button.css';
 import { style as mwcButtonStyle } from '@material/mwc-button/mwc-button-css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
+import { Connotation } from '@vonage/vvd-foundation/contants';
 import { html, TemplateResult } from 'lit-element';
 import '@vonage/vwc-icon';
 
@@ -13,8 +14,6 @@ declare global {
 	}
 }
 
-coreInit();
-
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 MWCButton.styles = [styleCoupling, mwcButtonStyle, vwcButtonStyle];
@@ -22,13 +21,14 @@ MWCButton.styles = [styleCoupling, mwcButtonStyle, vwcButtonStyle];
 const layouts = ['text', 'outlined', 'filled'];
 export type ButtonLayout = typeof layouts;
 
-const connotations = ['regular', 'cta', 'success', 'error'] as const;
-export type ButtonConnotation = typeof connotations;
+export {
+	Connotation
+};
 
-const shapes = ['rounded', 'pill'] as const;
+const shapes = ['rounded', 'pill'];
 export type ButtonShape = typeof shapes;
 
-const types = ['submit', 'reset', 'button'] as const;
+const types = ['submit', 'reset', 'button'];
 export type ButtonType = typeof types;
 
 /**
@@ -41,7 +41,7 @@ export class VWCButton extends MWCButton {
 	layout: ButtonLayout[number] = 'text';
 
 	@property({ type: String, reflect: true })
-	connotation?: | ButtonConnotation[number] | undefined;
+	connotation?: Connotation | undefined;
 
 	@property({ type: String, reflect: true })
 	shape: ButtonShape[number] = 'rounded';
@@ -54,29 +54,8 @@ export class VWCButton extends MWCButton {
 
 	protected updated(): void {
 		const layout: ButtonLayout[number] = this.layout;
-		const connotation: ButtonConnotation[number] | undefined =
-			this.layout === 'filled' ? this.connotation ?? 'regular' : undefined;
-		const shape: ButtonShape[number] = this.shape ?? 'rounded';
-
-		const innerButton = this.shadowRoot?.querySelector('.mdc-button');
-
-		if (innerButton) {
-			//	get existing classes aside from the DOM
-			const classesSet = new Set(innerButton.classList);
-
-			//	merge classes
-			this.toggleAttribute('outlined', layout === 'outlined');
-			this.toggleAttribute('unelevated', layout === 'filled');
-			if (layout === 'filled') {
-				connotations.forEach((m) =>
-					classesSet[connotation === m ? 'add' : 'delete'](m)
-				);
-			}
-			shapes.forEach((s) => classesSet[shape === s ? 'add' : 'delete'](s));
-
-			//	set the clases back to the DOM
-			innerButton.className = Array.from(classesSet).join(' ');
-		}
+		this.toggleAttribute('outlined', layout === 'outlined');
+		this.toggleAttribute('unelevated', layout === 'filled');
 	}
 
 	protected _handleClick(): void {

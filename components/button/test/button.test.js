@@ -1,5 +1,5 @@
 import '../vwc-button.js';
-import { waitNextTask, textToDomToParent, assertComputedStyle } from '../../../utils/js/test-helpers.js';
+import { waitNextTask, textToDomToParent, assertComputedStyle } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
@@ -16,7 +16,7 @@ describe('button', () => {
 	});
 
 	it('should internal contents', async () => {
-		addedElements = textToDomToParent(`<${VWC_BUTTON} id="button-a">Button Text</${VWC_BUTTON}>`);
+		addedElements = textToDomToParent(`<${VWC_BUTTON}>Button Text</${VWC_BUTTON}>`);
 		const actualElement = addedElements[0];
 		await waitNextTask();
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
@@ -30,7 +30,7 @@ describe('button', () => {
 
 		it('should submit form when inside a form', async function () {
 			let submitted = false;
-			addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON} id="button-a">Button Text</${VWC_BUTTON}></form>`);
+			addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON}>Button Text</${VWC_BUTTON}></form>`);
 			const formElement = addedElements[0];
 			const actualElement = formElement.firstChild;
 			formElement.addEventListener('submit', () => submitted = true);
@@ -42,7 +42,7 @@ describe('button', () => {
 
 		it('should submit form when of type submit', async function () {
 			let submitted = false;
-			addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON} id="button-a" type="submit">Button Text</${VWC_BUTTON}></form>`);
+			addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON} type="submit">Button Text</${VWC_BUTTON}></form>`);
 			const formElement = addedElements[0];
 			const actualElement = formElement.firstChild;
 			formElement.addEventListener('submit', () => submitted = true);
@@ -55,7 +55,7 @@ describe('button', () => {
 		it('should reset form when of type reset', async function () {
 			let submitted = false;
 			let reset = false;
-			addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON} id="button-a" type="reset">Button Text</${VWC_BUTTON}></form>`);
+			addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON} type="reset">Button Text</${VWC_BUTTON}></form>`);
 			const formElement = addedElements[0];
 			const actualElement = formElement.firstChild;
 			formElement.addEventListener('submit', () => submitted = true);
@@ -89,8 +89,8 @@ describe('button', () => {
 
 			addedElements = textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="testForm">
-					<${VWC_BUTTON} id="button-a" form="externalForm" type="reset">RESET</${VWC_BUTTON}>
-					<${VWC_BUTTON} id="button-b" form="externalForm" type="submit">SUBMIT</${VWC_BUTTON}>
+					<${VWC_BUTTON} form="externalForm" type="reset">RESET</${VWC_BUTTON}>
+					<${VWC_BUTTON} form="externalForm" type="submit">SUBMIT</${VWC_BUTTON}>
 				</form>
 				<form onsubmit="return false" name="externalForm" id="externalForm"></form>
 			`);
@@ -134,8 +134,8 @@ describe('button', () => {
 
 			addedElements = textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="testForm">
-					<${VWC_BUTTON} id="button-a" form="noneExistentForm" type="reset">RESET</${VWC_BUTTON}>
-					<${VWC_BUTTON} id="button-b" form="noneExistentForm" type="submit">SUBMIT</${VWC_BUTTON}>
+					<${VWC_BUTTON} form="noneExistentForm" type="reset">RESET</${VWC_BUTTON}>
+					<${VWC_BUTTON} form="noneExistentForm" type="submit">SUBMIT</${VWC_BUTTON}>
 				</form>
 				<form onsubmit="return false" name="externalForm" id="externalForm"></form>
 			`);

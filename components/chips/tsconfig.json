@@ -14,6 +14,12 @@
 	],
 	"references": [
 		{
+			"path": "../../common/style-coupling"
+		},
+		{
+			"path": "../icon"
+		},
+		{
 			"path": "../mwc-chips"
 		}
 	]

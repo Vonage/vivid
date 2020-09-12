@@ -1,7 +1,7 @@
 import '@vonage/vwc-button/vwc-button.js';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
-import { argTypes } from './argTypes.js'
+import { argTypes } from './arg-types.js';
 
 export default {
   title: 'Atoms/Button',

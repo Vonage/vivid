@@ -1,5 +1,5 @@
 import '../vwc-carousel.js';
-import { textToDomToParent, waitNextTask, waitInterval } from '../../../utils/js/test-helpers.js';
+import { textToDomToParent, waitNextTask, waitInterval } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 chai.use(chaiDomDiff);
 

@@ -1,0 +1,32 @@
+{
+	"name": "@vonage/vwc-top-app-bar-fixed",
+	"version": "0.6.0",
+	"description": "top-app-bar-fixed component",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/top-app-bar-fixed#readme",
+	"license": "ISC",
+	"main": "vwc-top-app-bar-fixed.js",
+	"module": "vwc-top-app-bar-fixed.js",
+	"files": [
+		"src",
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/vonage/vivid.git",
+		"directory": "components/top-app-bar-fixed"
+	},
+	"scripts": {
+		"test": "echo \"Error: run tests from root\" && exit 1"
+	},
+	"bugs": {
+		"url": "https://github.com/Vonage/vivid/issues"
+	},
+	"dependencies": {
+		"@material/mwc-top-app-bar-fixed": "^0.18.0",
+		"@vonage/vvd-core": "^0.6.0",
+		"lit-element": "^2.4.0",
+		"tslib": "^2.0.1"
+	}
+}

@@ -1,5 +1,5 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
-@use '../../../utils/scss/variable-names/color-semantic-variable-names' as color-semantic;
+@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 
 :host {
 	--mdc-select-filled-border-radius: 6px;
@@ -24,6 +24,8 @@
 
 	@include typography.typography-mdc-coupling('subtitle1', 'body-2');
 	font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
+	@include typography.typography-mdc-coupling('caption', 'caption');
+	font-stretch: var(--mdc-typography-caption-font-stretch); // ! this was supposed to be set by MDC
 
 	--vvd-outline-color: var(--mdc-select-outlined-idle-border-color);
 }
@@ -85,11 +87,6 @@
         transform: translateY(-100%);
       }
     }
-
-		+ .mdc-select-helper-text {
-			@include typography.typography-mdc-coupling('caption', 'caption');
-			font-stretch: var(--mdc-typography-caption-font-stretch); // ! this was supposed to be set by MDC
-		}
   }
 
   :host(:hover) &,
@@ -113,9 +110,45 @@
 			}
     }
 	}
-
 }
 
-.mdc-select--invalid:not(.mdc-select--disabled).mdc-select--invalid + .mdc-select-helper-text--validation-msg {
-	color: var(--mdc-select-error-color);
+// helper / error message line
+.mdc-select {
+	& + .mdc-select-helper-line {
+		--mdc-theme-error: var(--mdc-select-ink-color);
+		display: flex;
+		margin-top: 7px;
+		padding: 0;
+		align-items: center;
+		justify-content: initial;
+		cursor: default;
+
+		.mdc-select-helper-icon {
+			display: none;
+			color: var(--mdc-select-error-color);
+		}
+
+		.mdc-select-helper-text {
+			margin: 0;
+			opacity: 1;
+		}
+
+		.mdc-select-helper-text::before {
+			display: inline;
+		}
+
+		.spacer {
+			flex-basis: 14px;
+		}
+	}
+
+	&.mdc-select--invalid + .mdc-select-helper-line {
+		.mdc-select-helper-icon {
+			display: flex;
+		}
+
+		.spacer {
+			flex-basis: 6px;
+		}
+	}
 }

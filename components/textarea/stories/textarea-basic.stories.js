@@ -20,7 +20,15 @@ export const basic = () => html`
 	<vwc-textarea outlined disabled label="Vwc textarea" value="Something" @keydown=${handleKeyDown}></vwc-textarea>
 
 	<h3>Required</h3>
-	<vwc-textarea outlined required label="Vwc textarea" value="Clean to see validation effect" @keydown=${handleKeyDown}></vwc-textarea>
+	<vwc-textarea
+		outlined
+		required
+		label="Vwc textarea"
+		value="Is it time to make a change?"
+		helper="Are we closer than before?"
+		validationMessage="Required field"
+		@keydown=${handleKeyDown}
+	></vwc-textarea>
 `;
 
 function handleKeyDown(e) {
