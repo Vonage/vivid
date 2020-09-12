@@ -1,5 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
 import '@vonage/vwc-media-controller';
 import kefir from 'kefir';
 
@@ -8,8 +6,8 @@ const
 	SYMBOL_AUDIO_EL = Symbol('audio_el');
 
 const
-	filterByValue = (filterValue)=> (value)=> value === filterValue,
-	createConnectedProperty = (ingestStream)=> {
+	filterByValue = (filterValue:string)=> (value:string)=> value === filterValue,
+	createConnectedProperty = (ingestStream:any)=> {
 		return kefir
 			.merge([
 				ingestStream.filter(filterByValue('connected')).map(()=> true),
@@ -28,14 +26,19 @@ class VwcAudio extends HTMLElement {
 	constructor() {
 		super();
 
-		const
-			audioEl = this[SYMBOL_AUDIO_EL] = new Audio(),
-			controllerEl = document.createElement('vwc-media-controller');
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore
+		const audioEl = this[SYMBOL_AUDIO_EL] = new Audio();
+		const controllerEl = document.createElement('vwc-media-controller');
 
 		audioEl.controls = true;
 
 		const
-			ingestStream = kefir.stream(({ emit })=> this[SYMBOL_TRIGGER] = emit),
+			ingestStream = kefir.stream(({ emit })=> {
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				this[SYMBOL_TRIGGER] = emit;
+			}),
 			connectedProperty = ingestStream.thru(createConnectedProperty);
 
 		connectedProperty
@@ -51,7 +54,10 @@ class VwcAudio extends HTMLElement {
 
 		const
 			userPlayRequestStream = kefir.fromEvents(controllerEl, 'userPlayPauseRequest'),
-			userScrubRequestStream = kefir.fromEvents(controllerEl, 'userScrubRequest').map(({ detail }) => detail),
+			userScrubRequestStream = kefir.fromEvents(controllerEl, 'userScrubRequest')
+				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+				// @ts-ignore
+				.map(({ detail }):any => detail),
 			playerTimeUpdatedProperty = kefir.fromEvents(audioEl, 'timeupdate').map(() => audioEl.currentTime).toProperty(),
 			playerAudioLoadedProperty = kefir
 				.merge([
@@ -67,18 +73,27 @@ class VwcAudio extends HTMLElement {
 				]).map(() => false)
 			]).toProperty();
 
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore
 		playerTimeUpdatedProperty.onValue(() => controllerEl.setPosition(audioEl.currentTime === 0 ? 0 : audioEl.currentTime / audioEl.duration));
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore
 		playerIsPlayingProperty.onValue(controllerEl.setPlayState.bind(controllerEl));
 		userPlayRequestStream.filterBy(playerAudioLoadedProperty).onValue(() => audioEl[audioEl.paused ? 'play' : 'pause']());
-		userScrubRequestStream.filterBy(playerAudioLoadedProperty).onValue((position) => audioEl.currentTime = audioEl.duration * position);
+		userScrubRequestStream.filterBy(playerAudioLoadedProperty).onValue((position:any) => audioEl.currentTime = audioEl.duration * position);
 		connectedProperty.filter((connected) => !connected).onValue(() => audioEl.pause());
 	}
 
+	// ts-ignore
 	connectedCallback():void{
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore
 		this[SYMBOL_TRIGGER]('connected');
 	}
 
 	disconnectedCallback():void {
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore
 		this[SYMBOL_TRIGGER]('disconnected');
 	}
 
@@ -87,10 +102,14 @@ class VwcAudio extends HTMLElement {
 	 * @param {number} time - The timestamp (in seconds) to jump to
 	 **/
 	get currentTime():number {
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore
 		return this[SYMBOL_AUDIO_EL].currentTime
 	}
 
 	set currentTime(time:number){
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore
 		this[SYMBOL_AUDIO_EL].currentTime = time;
 	}
 
@@ -99,10 +118,14 @@ class VwcAudio extends HTMLElement {
 	 * @param {string} source - The media source file to play
 	 **/
 	get src():string {
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore
 		return [SYMBOL_AUDIO_EL].src;
 	}
 
 	set src(source:string){
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore
 		this[SYMBOL_AUDIO_EL].src = source;
 	}
 
@@ -110,6 +133,8 @@ class VwcAudio extends HTMLElement {
 	 * Starts playback
 	 **/
 	play():void {
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore
 		this[SYMBOL_AUDIO_EL].play();
 	}
 
@@ -117,9 +142,10 @@ class VwcAudio extends HTMLElement {
 	 * Pauses playback
 	 **/
 	pause():void {
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		// @ts-ignore
 		this[SYMBOL_AUDIO_EL].pause();
 	}
-
 }
 
 export default Audio;
