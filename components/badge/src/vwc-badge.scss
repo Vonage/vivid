@@ -12,7 +12,7 @@
 	border-radius: 4px;
 	position: relative;
 	color: var(#{color-semantic.$color-connotation-foreground});
-	@include typography.typography-cat-variables('body-2');
+	@include typography.typography-cat-variables('caption');
 	@include typography.typography-cat-properties;
 	&::before{
 		content: '';
