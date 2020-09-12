@@ -7,7 +7,15 @@ const
 	SYMBOL_TRIGGER = Symbol('trigger'),
 	SYMBOL_AUDIO_EL = Symbol('audio_el');
 
-const filterByValue = (filterValue)=> (value)=> value === filterValue;
+const
+	filterByValue = (filterValue)=> (value)=> value === filterValue,
+	createConnectedProperty = (ingestStream)=> {
+		return kefir
+			.merge([
+				ingestStream.filter(filterByValue('connected')).map(()=> true),
+				ingestStream.filter(filterByValue('disconnected')).map(()=> false)
+			]).toProperty(() => false);
+	};
 
 /**
  * Basic audio player
@@ -26,13 +34,9 @@ class VwcAudio extends HTMLElement {
 
 		audioEl.controls = true;
 
-		const ingestStream = kefir.stream(({ emit })=> this[SYMBOL_TRIGGER] = emit);
-
-		const connectedProperty = kefir
-			.merge([
-				ingestStream.filter(filterByValue('connected')).map(()=> true),
-				ingestStream.filter(filterByValue('disconnected')).map(()=> false)
-			]).toProperty(() => false);
+		const
+			ingestStream = kefir.stream(({ emit })=> this[SYMBOL_TRIGGER] = emit),
+			connectedProperty = ingestStream.thru(createConnectedProperty);
 
 		connectedProperty
 			.filter(Boolean)
@@ -40,7 +44,6 @@ class VwcAudio extends HTMLElement {
 			.onValue(()=> {
 				// eslint-disable-next-line
 				const sourceUrl = this.getAttribute('src');
-				// eslint-disable-next-line
 				sourceUrl && (this.src = sourceUrl);
 				// eslint-disable-next-line
 				this.appendChild(controllerEl);
