@@ -1,20 +1,33 @@
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins' as color-connotation-mixins;
+@use '@vonage/vvd-typography/scss/typography' as typography;
 
-:host {
-  padding: 4px 8px;
-  border-radius: 12px;
-  background: rgb(var(--red), var(--green), var(--blue), var(--opacity, 1));
-}
 
 @include color-connotation-mixins.connotations-context(
 	':host(#{color-connotation-mixins.$connotation-placeholder})'
 );
+
 :host {
-	 background-color: var(#{color-semantic.$color-connotation-background});
-   color: var(#{color-semantic.$color-connotation-foreground});
+  padding: 4px 8px;
+	border-radius: 4px;
+	overflow: hidden;
+	position: relative;
+	color: var(#{color-semantic.$color-connotation-foreground});
+	@include typography.typography-cat-variables('body-2');
+	@include typography.typography-cat-properties;
+	&::before{
+		content: '';
+		z-index: -1;
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: var(#{color-semantic.$color-connotation-background});
+		opacity: calc(var(--opaque) * .01);
+	}
 }
 
 :host([translucent]) {
-  // --opacity: 0.3;
+   --opaque: 20;
 }
