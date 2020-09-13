@@ -8,12 +8,12 @@
 );
 
 :host {
+	display: inline;
   padding: 4px 8px;
 	border-radius: 4px;
 	position: relative;
 	color: var(#{color-semantic.$color-connotation-foreground});
-	@include typography.typography-cat-variables('caption');
-	@include typography.typography-cat-properties;
+	@include typography.typography-cat-shorthand('caption');
 	&::before{
 		content: '';
 		z-index: -1;

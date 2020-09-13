@@ -4,7 +4,7 @@ import { Connotation } from '@vonage/vvd-foundation/constants';
 export class BadgeBase extends LitElement {
   @property({ type: Boolean, reflect: true }) translucent = false;
   @property({ type: String, reflect: true })
-  connotation?: Connotation | undefined;
+  connotation?: Connotation;
 
   protected render() {
     //  /** @classMap */
