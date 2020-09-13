@@ -1,5 +1,5 @@
 import { addInputToForm } from '../form-association';
-import { textToDomToParent, randomAlpha } from '../../../test/test-helpers';
+import { textToDomToParent, randomAlpha, waitNextTask } from '../../../test/test-helpers';
 
 function setInputElementAttributes(inputElement, attrs = {}, domAttrs = {}) {
 	Object.keys(attrs).forEach(attr => {
@@ -167,6 +167,37 @@ describe.only(`Form Association Foundation`, function() {
 			addInputToForm(inputElementWrapper, hiddenElementType);
 
 			expect(formElement.querySelector(`[name="${fieldName}"]`).tagName).to.equal(hiddenElementType);
+		});
+
+		describe(`cleanup`, function() {
+			function getHiddenInput(fieldName) {
+				return  document.querySelector(`input[name="${fieldName}"]`);
+			}
+
+			let inputElementWrapper, hiddenInput, fieldName;
+
+			beforeEach( function() {
+				fieldName = 'fieldName';
+
+				const [formElement] = addedElements = textToDomToParent(`<form><div><input></input></div></form>`);
+
+				inputElementWrapper = formElement.children[0];
+				setInputElementAttributes(inputElementWrapper, {
+					formElement: inputElementWrapper.querySelector('input'),
+					name: fieldName
+				});
+
+				addInputToForm(inputElementWrapper);
+
+				hiddenInput = getHiddenInput(fieldName);
+			});
+
+			it(`should remove hidden input on removal from the DOM`, async function() {
+				inputElementWrapper.remove();
+				await waitNextTask();
+				expect(hiddenInput !== null).to.equal(true);
+				expect(getHiddenInput(fieldName)).to.equal(null);
+			});
 		});
 	});
 });
