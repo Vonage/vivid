@@ -30,7 +30,7 @@ export class VWCTextField extends MWCTextField {
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
 		this.shadowRoot?.querySelector('.mdc-notched-outline')?.shadowRoot?.querySelector('.mdc-notched-outline')?.classList.add('vvd-notch');
-		addInputToForm(this);
+		addInputToForm(this as unknown as HTMLInputElement, this.formElement);
 	}
 
 	renderHelperText(charCounterTemplate = {}): TemplateResult {

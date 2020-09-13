@@ -36,7 +36,7 @@ export class VWCSelect extends MWCSelect {
 		await super.firstUpdated();
 		this.shadowRoot?.querySelector('.mdc-notched-outline')?.shadowRoot?.querySelector('.mdc-notched-outline')?.classList.add('vvd-notch');
 		this.replaceIcon();
-		addInputToForm(this);
+		addInputToForm(this as unknown as HTMLInputElement, this.formElement);
 	}
 
 	protected renderHelperText(): TemplateResult {

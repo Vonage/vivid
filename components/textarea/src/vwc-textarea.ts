@@ -28,7 +28,7 @@ export class VWCTextArea extends MWCTextArea {
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
 		this.shadowRoot?.querySelector('.mdc-notched-outline')?.shadowRoot?.querySelector('.mdc-notched-outline')?.classList.add('vvd-notch');
-		addInputToForm(this, 'textarea');
+		addInputToForm(this as unknown as HTMLInputElement, this.formElement, 'textarea');
 	}
 
 	renderHelperText(charCounterTemplate = {}): TemplateResult {

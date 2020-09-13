@@ -1,3 +1,9 @@
+interface SetInputUpdateEvent {
+	eventName: string;
+	inputElement: HTMLInputElement;
+	innerInputElement: HTMLInputElement;
+	hiddenInput: HTMLInputElement;
+}
 const types = ['checkbox', 'textarea', 'input'];
 export type HiddenInputType = typeof types;
 
@@ -7,11 +13,11 @@ function getFormByIdOrClosest(element: HTMLElement): HTMLFormElement | null {
 	return formElement instanceof HTMLFormElement ? formElement : null;
 }
 
-function addHiddenInput(hostingForm: HTMLElement, { name, value }: { name: string, value: string }, hiddenType: HiddenInputType[number]) {
+function addHiddenInput(hostingForm: HTMLElement, customInput: HTMLInputElement, hiddenType: HiddenInputType[number]) {
 	const hiddenInput = document.createElement(hiddenType) as HTMLInputElement;
 	hiddenInput.style.display = 'none';
-	hiddenInput.setAttribute('name', name);
-	hiddenInput.defaultValue = value;
+	hiddenInput.setAttribute('name', customInput.name);
+	hiddenInput.defaultValue = customInput.value;
 	hostingForm.appendChild(hiddenInput);
 
 	return hiddenInput;
@@ -25,23 +31,23 @@ function setValueAndValidity(inputField: HTMLInputElement | undefined, value: st
 	inputField.setCustomValidity(validationMessage);
 }
 
-function resetFormFactory(inputElement: any) {
+function resetFormFactory(inputElement: HTMLInputElement, innerInputElement: HTMLInputElement, hiddenInput: HTMLInputElement) {
 	return () => {
-		inputElement.value = inputElement.formElement.value = inputElement.hiddenInput?.defaultValue ?? '';
-		setValueAndValidity(inputElement.hiddenInput, inputElement.value, inputElement.formElement.validationMessage);
+		inputElement.value = innerInputElement.value = hiddenInput.defaultValue ?? '';
+		setValueAndValidity(hiddenInput, inputElement.value, innerInputElement.validationMessage);
 	};
 }
 
-function silenceInvalidEvent(inputElement: HTMLFormElement) {
+function silenceInvalidEvent(inputElement: HTMLInputElement) {
 	inputElement.addEventListener('invalid', (event: Event) => {
 		event.stopPropagation();
 		event.preventDefault();
 	});
 }
 
-function setInputUpdateEvent(eventName: string, inputElement: any) {
+function setInputUpdateEvent( {eventName, inputElement, innerInputElement, hiddenInput}: SetInputUpdateEvent ) {
 	inputElement.addEventListener(eventName, () => {
-		setValueAndValidity(inputElement.hiddenInput, inputElement.value, inputElement.formElement.validationMessage);
+		setValueAndValidity(hiddenInput, inputElement.value, innerInputElement.validationMessage);
 	});
 }
 
@@ -51,30 +57,44 @@ function isElementRemoved(mutations: MutationRecord[], element: any) {
 			.find(removedElement => removedElement === element)).length > 0;
 }
 
-export function addInputToForm(inputElement: any, hiddenType: HiddenInputType[number] = 'input'): void {
-	const resetFormHandler = resetFormFactory(inputElement);
-	const handleInputElementRemove = (mutations: MutationRecord[]) => {
-		if (isElementRemoved(mutations, inputElement)) {
-			inputElement.hiddenInput.remove();
-			hostingForm?.removeEventListener('reset', resetFormHandler);
-		}
-	};
-
+export function addInputToForm(inputElement: HTMLInputElement, innerInputElement: HTMLInputElement, hiddenType: HiddenInputType[number] = 'input'): void {
 	const hostingForm = getFormByIdOrClosest(inputElement);
 
 	if (!hostingForm || !inputElement) {
 		return;
 	}
 
-	inputElement.hiddenInput = addHiddenInput(hostingForm, inputElement, hiddenType);
-	setValueAndValidity(inputElement.hiddenInput, inputElement.value, inputElement.formElement.validationMessage);
+	const hiddenInput = addHiddenInput(hostingForm, inputElement, hiddenType);
+	const resetFormHandler = resetFormFactory(inputElement, innerInputElement, hiddenInput);
+	const handleInputElementRemove = (mutations: MutationRecord[]) => {
+		if (isElementRemoved(mutations, inputElement)) {
+			hiddenInput.remove();
+			hostingForm?.removeEventListener('reset', resetFormHandler);
+			elementObserver.disconnect();
+		}
+	};
+
+	setValueAndValidity(hiddenInput, inputElement.value, innerInputElement.validationMessage);
 
 	hostingForm.addEventListener('reset', resetFormHandler);
 	const elementObserver = new MutationObserver(handleInputElementRemove);
-	elementObserver.observe(inputElement.parentNode, { childList: true });
+	if (inputElement.parentNode) {
+		elementObserver.observe(inputElement.parentNode, { childList: true });
+	}
 
-	silenceInvalidEvent(inputElement.hiddenInput);
+	silenceInvalidEvent(hiddenInput);
 
-	setInputUpdateEvent('change', inputElement);
-	setInputUpdateEvent('input', inputElement);
+	setInputUpdateEvent({
+		eventName: 'change',
+		inputElement,
+		innerInputElement,
+		hiddenInput
+	});
+
+	setInputUpdateEvent({
+		eventName: 'input',
+		inputElement,
+		innerInputElement,
+		hiddenInput
+	});
 }

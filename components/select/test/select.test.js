@@ -16,6 +16,10 @@ function listenToSubmission(formElement) {
 	});
 }
 
+function getHiddenInput(formElement, fieldName) {
+	return formElement.querySelector(`input[name="${fieldName}"]`);
+}
+
 async function changeFieldValue(actualElement, value, eventName = 'change') {
 	actualElement.value = value.toString();
 	await waitNextTask();
@@ -160,7 +164,7 @@ describe('select', () => {
 				actualElement.value = value2.toString();
 				await waitNextTask();
 
-				expect(actualElement.hiddenInput.value).to.equal(value2);
+				expect(getHiddenInput(formElement, fieldName).value).to.equal(value2);
 			});
 		});
 
