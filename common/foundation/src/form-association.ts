@@ -25,6 +25,26 @@ function setValueAndValidity(inputField: HTMLInputElement | undefined, value: st
 	inputField.setCustomValidity(validationMessage);
 }
 
+function resetFormFactory(inputElement: any) {
+	return () => {
+		inputElement.value = inputElement.formElement.value = inputElement.hiddenInput?.defaultValue ?? '';
+		setValueAndValidity(inputElement.hiddenInput, inputElement.value, inputElement.formElement.validationMessage);
+	}
+}
+
+function silenceInvalidEvent(inputElement: HTMLFormElement) {
+	inputElement.addEventListener('invalid', (event: Event) => {
+		event.stopPropagation();
+		event.preventDefault();
+	});
+}
+
+function setInputUpdateEvent(eventName: string, inputElement: any) {
+	inputElement.addEventListener(eventName, () => {
+		setValueAndValidity(inputElement.hiddenInput, inputElement.value, inputElement.formElement.validationMessage);
+	});
+}
+
 export function addInputToForm(inputElement: any, hiddenType: HiddenInputType[number] = 'input'): void {
 	const hostingForm = getFormByIdOrClosest(inputElement);
 
@@ -32,24 +52,15 @@ export function addInputToForm(inputElement: any, hiddenType: HiddenInputType[nu
 		return;
 	}
 
+	const resetFormHandler = resetFormFactory(inputElement);
+
 	inputElement.hiddenInput = addHiddenInput(hostingForm, inputElement, hiddenType);
 	setValueAndValidity(inputElement.hiddenInput, inputElement.value, inputElement.formElement.validationMessage);
 
-	hostingForm.addEventListener('reset', () => {
-		inputElement.value = inputElement.formElement.value = inputElement.hiddenInput?.defaultValue ?? '';
-		setValueAndValidity(inputElement.hiddenInput, inputElement.value, inputElement.formElement.validationMessage);
-	});
+	hostingForm.addEventListener('reset', resetFormHandler);
 
-	inputElement.hiddenInput.addEventListener('invalid', (event: Event) => {
-		event.stopPropagation();
-		event.preventDefault();
-	});
+	silenceInvalidEvent(inputElement.hiddenInput);
 
-	inputElement.addEventListener('change', () => {
-		setValueAndValidity(inputElement.hiddenInput, inputElement.value, inputElement.formElement.validationMessage);
-	});
-
-	inputElement.addEventListener('input', () => {
-		setValueAndValidity(inputElement.hiddenInput, inputElement.value, inputElement.formElement.validationMessage);
-	});
+	setInputUpdateEvent('change', inputElement);
+	setInputUpdateEvent('input', inputElement);
 }
