@@ -35,6 +35,7 @@
     { "path": "common/foundation" },
     { "path": "common/scheme" },
     { "path": "common/style-coupling" },
+    { "path": "components/badge" },
     { "path": "components/button" },
     { "path": "components/carousel" },
     { "path": "components/checkbox" },
@@ -59,7 +60,6 @@
     { "path": "components/textarea" },
     { "path": "components/textfield" },
     { "path": "components/top-app-bar" },
-    { "path": "components/top-app-bar-fixed" },
-    { "path": "components/badge" }
+    { "path": "components/top-app-bar-fixed" }
   ]
 }
