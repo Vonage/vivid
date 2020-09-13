@@ -32,7 +32,7 @@ describe('button', () => {
 			let submitted = false;
 			addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON}>Button Text</${VWC_BUTTON}></form>`);
 			const formElement = addedElements[0];
-			const actualElement = formElement.firstChild;
+			const actualElement = formElement.firstElementChild;
 			formElement.addEventListener('submit', () => submitted = true);
 
 			actualElement.click();
@@ -44,7 +44,7 @@ describe('button', () => {
 			let submitted = false;
 			addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON} type="submit">Button Text</${VWC_BUTTON}></form>`);
 			const formElement = addedElements[0];
-			const actualElement = formElement.firstChild;
+			const actualElement = formElement.firstElementChild;
 			formElement.addEventListener('submit', () => submitted = true);
 
 			actualElement.click();
@@ -57,7 +57,7 @@ describe('button', () => {
 			let reset = false;
 			addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON} type="reset">Button Text</${VWC_BUTTON}></form>`);
 			const formElement = addedElements[0];
-			const actualElement = formElement.firstChild;
+			const actualElement = formElement.firstElementChild;
 			formElement.addEventListener('submit', () => submitted = true);
 			formElement.addEventListener('reset', () => reset = true);
 

@@ -147,7 +147,7 @@ describe('textfield', () => {
 				const fieldName = 'test-field';
 				addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} name="${fieldName}" value="${fieldValue}">Button Text</${COMPONENT_NAME}></form>`);
 				const formElement = addedElements[0];
-				const actualElement = formElement.firstChild;
+				const actualElement = formElement.firstElementChild;
 				await waitNextTask();
 				actualElement.value = '5';
 				await waitNextTask();
@@ -161,12 +161,12 @@ describe('textfield', () => {
 				const fieldName = 'test-field';
 				addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} name="${fieldName}">Button Text</${COMPONENT_NAME}></form>`);
 				const formElement = addedElements[0];
-				const actualElement = formElement.firstChild;
+				const actualElement = formElement.firstElementChild;
 				await waitNextTask();
 
 				await changeFieldValue(actualElement, fieldValue, 'change');
 
-				expect(actualElement.hiddenInput.value).to.equal(fieldValue);
+				expect(formElement.lastElementChild.value).to.equal(fieldValue);
 			});
 		});
 
@@ -175,7 +175,7 @@ describe('textfield', () => {
 				const fieldName = 'test-field';
 				addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} required name="${fieldName}">Button Text</${COMPONENT_NAME}></form>`);
 				const formElement = addedElements[0];
-				const actualElement = formElement.firstChild;
+				const actualElement = formElement.firstElementChild;
 				await waitNextTask();
 
 				const invalidity = formElement.checkValidity();
@@ -191,7 +191,7 @@ describe('textfield', () => {
 				const fieldName = 'test-field';
 				addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} required value="${fieldValue}" name="${fieldName}">Button Text</${COMPONENT_NAME}></form>`);
 				const formElement = addedElements[0];
-				const actualElement = formElement.firstChild;
+				const actualElement = formElement.firstElementChild;
 				await waitNextTask();
 
 				const validInput = formElement.checkValidity();
@@ -210,7 +210,7 @@ describe('textfield', () => {
 				const fieldName = 'test-field';
 				addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} required value="val" name="${fieldName}">Button Text</${COMPONENT_NAME}></form>`);
 				const formElement = addedElements[0];
-				const actualElement = formElement.firstChild;
+				const actualElement = formElement.firstElementChild;
 				await waitNextTask();
 
 				const invalidity = formElement.checkValidity();

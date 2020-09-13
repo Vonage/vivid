@@ -160,7 +160,7 @@ describe('select', () => {
 				actualElement.value = value2.toString();
 				await waitNextTask();
 
-				expect(actualElement.hiddenInput.value).to.equal(value2);
+				expect(formElement.lastElementChild.value).to.equal(value2);
 			});
 		});
 
@@ -328,7 +328,7 @@ describe('select', () => {
 					<vwc-list-item>Item 1</vwc-list-item>
 					<vwc-list-item>Item 2</vwc-list-item>
 				</${VWC_SELECT}>
-			`);			
+			`);
 			await waitNextTask();
 			const notchedOutline = addedElements[0].shadowRoot.querySelector('vwc-notched-outline');
 			expect(notchedOutline).to.exist;

@@ -30,10 +30,7 @@ export class VWCSelect extends MWCSelect {
 	dense = false;
 
 	@property({ type: String, reflect: true })
-  shape: SelectShape[number] = 'rounded';
-	
-	@property({ type: HTMLInputElement, reflect: false })
-	hiddenInput: HTMLInputElement | undefined;
+	shape: SelectShape[number] = 'rounded';
 
 	@property({ type: String, reflect: true })
 	form: string | undefined;
@@ -44,7 +41,7 @@ export class VWCSelect extends MWCSelect {
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
 		this.replaceIcon();
-		addInputToForm(this);
+		addInputToForm(this as unknown as HTMLInputElement, this.formElement);
 	}
 
 	protected renderHelperText(): TemplateResult {
@@ -76,13 +73,13 @@ export class VWCSelect extends MWCSelect {
 	}
 
 	protected renderOutline(): TemplateResult | Record<string, unknown> {
-    if (!this.outlined) {
-      return {};
-    }
+		if (!this.outlined) {
+			return {};
+		}
 
-    return html`
+		return html`
       <vwc-notched-outline class="mdc-notched-outline vvd-notch">
         ${this.renderLabel()}
       </vwc-notched-outline>`;
-  }
+	}
 }

@@ -31,16 +31,13 @@ export class VWCTextField extends MWCTextField {
 	@property({ type: String, reflect: true })
 	shape: TextFieldShape[number] = 'rounded';
 
-	@property({ type: HTMLInputElement, reflect: false })
-	hiddenInput: HTMLInputElement | undefined;
-
 	@property({ type: String, reflect: true })
 	form: string | undefined;
 
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
 		this.shadowRoot?.querySelector('.mdc-notched-outline')?.shadowRoot?.querySelector('.mdc-notched-outline')?.classList.add('vvd-notch');
-		addInputToForm(this);
+		addInputToForm(this as unknown as HTMLInputElement, this.formElement);
 	}
 
 	protected renderIcon(icon: string, isTrailingIcon = false): TemplateResult {
