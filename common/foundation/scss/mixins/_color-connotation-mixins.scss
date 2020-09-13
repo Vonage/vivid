@@ -1,0 +1,33 @@
+@use 'sass:selector';
+@use '../variable-names/color-semantic-variable-names' as color-semantic;
+
+$connotation-placeholder: '[connotation-specifier]';
+
+@mixin connotations-context(
+  $selector: ':host(#{$connotation-placeholder})',
+  $default: primary
+) {
+  $connotations: primary cta success error info announcement;
+
+  @each $connotation in $connotations {
+    $attr: '[connotation="#{$connotation}"i]';
+
+		@if ($connotation == $default) {
+		// if is default also add case for not assigning connotation
+			$attr: '#{$attr},:not([connotation])';
+		}
+
+    $scoped-selector: $selector; // prevents overriding argument
+
+    $scoped-selector: selector.replace(
+      #{$selector},
+      #{$connotation-placeholder},
+      #{$attr}
+    );
+
+    #{$scoped-selector} {
+      #{color-semantic.$color-connotation-background}: var(--vvd-color-#{$connotation}-background);
+      #{color-semantic.$color-connotation-foreground}: var(--vvd-color-#{$connotation}-foreground);
+    }
+  }
+}
