@@ -6,7 +6,7 @@ chai.use(chaiDomDiff);
 
 const VWC_BADGE = 'vwc-badge';
 
-describe.only('badge', () => {
+describe('badge', () => {
 	let addedElements = [];
 	afterEach(() => {
 		// addedElements.forEach(elm => elm.remove());
