@@ -56,6 +56,7 @@ export function addInputToForm(inputElement: any, hiddenType: HiddenInputType[nu
 	const handleInputElementRemove = (mutations: MutationRecord[]) => {
 		if (isElementRemoved(mutations, inputElement)) {
 			inputElement.hiddenInput.remove();
+			hostingForm?.removeEventListener('reset', resetFormHandler);
 		}
 	};
 

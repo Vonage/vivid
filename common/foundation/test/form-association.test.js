@@ -11,7 +11,7 @@ function setInputElementAttributes(inputElement, attrs = {}, domAttrs = {}) {
 	});
 }
 
-describe.only(`Form Association Foundation`, function() {
+describe(`Form Association Foundation`, function() {
 	let addedElements = [];
 
 	afterEach(function() {
@@ -141,10 +141,9 @@ describe.only(`Form Association Foundation`, function() {
 			const events = ['input', 'change'];
 
 			events.forEach(eventName => {
-				const inputEvent = new Event(eventName);
 				values.forEach(inputValue => {
 					inputElementWrapper.value = inputElementWrapper.formElement.value = inputValue;
-					inputElementWrapper.dispatchEvent(inputEvent);
+					inputElementWrapper.dispatchEvent(new Event(eventName));
 					expect(hiddenInput.value, `${eventName} was unable to match values`).to.equal(inputElementWrapper.formElement.value);
 					expect(hiddenInput.validationMessage, `${eventName} was unable to match validation messages`).to.equal(inputElementWrapper.formElement.validationMessage);
 				});
@@ -174,17 +173,19 @@ describe.only(`Form Association Foundation`, function() {
 				return  document.querySelector(`input[name="${fieldName}"]`);
 			}
 
-			let inputElementWrapper, hiddenInput, fieldName;
+			let inputElementWrapper, hiddenInput, fieldName, formElement, defaultValue;
 
 			beforeEach( function() {
 				fieldName = 'fieldName';
+				defaultValue = "abc";
 
-				const [formElement] = addedElements = textToDomToParent(`<form><div><input></input></div></form>`);
+				formElement = addedElements = textToDomToParent(`<form><div value="${defaultValue}"><input></input></div></form>`)[0];
 
 				inputElementWrapper = formElement.children[0];
 				setInputElementAttributes(inputElementWrapper, {
 					formElement: inputElementWrapper.querySelector('input'),
-					name: fieldName
+					name: fieldName,
+					value: defaultValue
 				});
 
 				addInputToForm(inputElementWrapper);
@@ -197,6 +198,27 @@ describe.only(`Form Association Foundation`, function() {
 				await waitNextTask();
 				expect(hiddenInput !== null).to.equal(true);
 				expect(getHiddenInput(fieldName)).to.equal(null);
+			});
+
+			it(`should remove external event listeners on removal from DOM`, async function() {
+				const inputElementValue = "5";
+
+				inputElementWrapper.value = inputElementWrapper.formElement.value = inputElementValue;
+				inputElementWrapper.dispatchEvent(new Event('change'));
+				expect(hiddenInput.value).to.equal(inputElementValue);
+
+				formElement.reset();
+				expect(hiddenInput.value).to.equal(defaultValue);
+
+				inputElementWrapper.value = inputElementWrapper.formElement.value = inputElementValue;
+				inputElementWrapper.dispatchEvent(new Event('change'));
+				expect(hiddenInput.value).to.equal(inputElementValue);
+
+				inputElementWrapper.remove();
+				await waitNextTask();
+				formElement.reset();
+
+				expect(hiddenInput.value).to.equal(inputElementValue)
 			});
 		});
 	});
