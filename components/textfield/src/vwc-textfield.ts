@@ -86,6 +86,10 @@ export class VWCTextField extends MWCTextField {
       'mdc-text-field-helper-text--persistent': this.helperPersistent,
       'mdc-text-field-helper-text--validation-msg': showValidationMessage,
     };
+    const validationMessage = showValidationMessage
+      ? this.validationMessage
+      : this.helper;
+    const classes = ['mdc-text-field-helper-text', ...mapToClasses(classesMap)].join(' ');
     return html`
       <div class="mdc-text-field-helper-line">
         <vwc-icon
@@ -94,13 +98,7 @@ export class VWCTextField extends MWCTextField {
           size="small"
         ></vwc-icon>
         <span class="spacer"></span>
-        <div
-          class="mdc-text-field-helper-text ${mapToClasses(classesMap).join(
-            ' '
-          )}"
-        >
-          ${showValidationMessage ? this.validationMessage : this.helper}
-        </div>
+        <div class="${classes}">${validationMessage}</div>
         ${charCounterTemplate}
       </div>
     `;

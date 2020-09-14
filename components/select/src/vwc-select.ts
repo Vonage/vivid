@@ -57,6 +57,10 @@ export class VWCSelect extends MWCSelect {
       'mdc-select-helper-text--validation-msg': showValidationMessage,
     };
 
+    const classes = ['mdc-select-helper-text', ...mapToClasses(classesMap)].join(' ');
+		const validationMessage = showValidationMessage
+			? this.validationMessage
+			: this.helper;
     return html`
       <div class="mdc-select-helper-line">
         <vwc-icon
@@ -67,10 +71,7 @@ export class VWCSelect extends MWCSelect {
         <span class="spacer"></span>
         <div
           id="helper-text"
-          class="mdc-select-helper-text ${mapToClasses(classesMap).join(' ')}"
-        >
-          ${showValidationMessage ? this.validationMessage : this.helper}
-        </div>
+          class="${classes}">${validationMessage}</div>
       </div>
     `;
   }
