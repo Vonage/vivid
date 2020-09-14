@@ -17,7 +17,7 @@ const cssSelector = tags.reduce(
 );
 
 fs.writeFileSync(
-  'src/pre-scheme-loading-css.ts',
+  'src/pre-scheme-loading.css.ts',
   `
 		export const preSchemeLoadingCssText = \`${cssSelector} {
 			visibility: hidden;
