@@ -79,122 +79,146 @@ class MediaController extends HTMLElement {
 				return ()=> window.removeEventListener('touchmove', emit);
 			}).map(preventDefault),
 			touchEndStream = kefir.merge(['touchend', 'touchcancel'].map((eventName)=> kefir.fromEvents(window, eventName))),
-			[mouseUpStream, mouseMoveStream, contextMenuStream, windowResizeStream] = ['mouseup', 'mousemove', 'contextmenu', 'resize'].map((eventName)=> kefir.fromEvents(window, eventName));
-
-		const userScrubStream = kefir
-			.merge([
-				touchStartStream.map(path(['changedTouches', 0])),
-				mouseDownStream
-			])
-			.map(({ clientX: mouseX, clientY: mouseY, identifier })=> ({ mouseX, mouseY, identifier, ...(({ x, y, width, height })=> ({ x, y, width, height }))(trackEl.getBoundingClientRect()) }))
-			.filter(({ mouseX, mouseY, ...rect })=> isInRect(
-				{ x: mouseX, y: mouseY },
-				addRectMargin({ marginY: TRACK_VERTICAL_RESPONSIVITY_MARGIN }, rect)
-			))
-			.flatMapLatest(({ mouseX, mouseY, x: rectX, width: rectWidth, identifier: touchIdentifier })=> {
-				return kefir.concat([
-					kefir.constant({ type: 'start', rectWidth, rectX }),
-					kefir
-						.concat([
-							kefir.constant({ mouseX, mouseY }),
-							kefir.merge([
-								mouseMoveStream,
-								touchMoveStream
-									.map(({ touches })=> Array.from(touches).find(({ identifier: currentIdentifier })=> currentIdentifier === touchIdentifier))
-									.filter(Boolean)
-							])
-							.map(({ clientX: mouseX, clientY: mouseY })=> ({ mouseX, mouseY }))
-						])
-						.map(pipe(
-							prop('mouseX'),
-							clamp(
-								rectX + TRACK_KNOB_HORIZONTAL_MARGIN,
-								rectX + rectWidth - TRACK_KNOB_HORIZONTAL_MARGIN
-							),
-							(pos)=>
-								(pos - (rectX + TRACK_KNOB_HORIZONTAL_MARGIN)) / (rectWidth - TRACK_KNOB_HORIZONTAL_MARGIN * 2)
-						))
-						.takeUntilBy(
-							kefir.merge([
-								mouseUpStream,
-								contextMenuStream,
-								touchEndStream.filter(({ changedTouches })=> Array.from(changedTouches).map(prop('identifier')).includes(touchIdentifier))
-							]).take(1)
-						)
-						.map((position)=> ({ type: 'position_change', position })),
-					kefir.constant({ type: 'end' })
-				])
-			});
-
-		const userScrubInteractionProperty = kefir
-			.merge(['start', 'end'].map((eventType)=> userScrubStream.filter(byType(eventType)).map(always(eventType === 'start'))))
-			.skipDuplicates()
-			.toProperty(always(false));
+			[mouseUpStream, mouseMoveStream, contextMenuStream, windowResizeStream] = ['mouseup', 'mousemove', 'contextmenu', 'resize'].map((eventName)=> kefir.fromEvents(window, eventName)),
+			trackBarEnabledProperty = componentConnectedStream.take(1).map(()=> {
+				// eslint-disable-next-line
+				return this.getAttribute('noseek') !== 'true';
+			}).toProperty(()=> true);
 
 		const apiPositionProperty = apiBus
 			.filter(byType('set_position'))
 			.map(prop('value'))
 			.toProperty(always(0));
 
-		const playStateProperty = apiBus
-			.filter(byType('set_play_state'))
-			.map(prop('value'))
-			.toProperty(always(false));
+		const trackBarStream = kefir
+			.combine([trackBarEnabledProperty, componentConnectedStream], identity)
+			.flatMapLatest(function(trackEnabled){
+				const userScrubStream = kefir
+					.merge([
+						touchStartStream.map(path(['changedTouches', 0])),
+						mouseDownStream
+					])
+					.map(({ clientX: mouseX, clientY: mouseY, identifier })=> ({ mouseX, mouseY, identifier, ...(({ x, y, width, height })=> ({ x, y, width, height }))(trackEl.getBoundingClientRect()) }))
+					.filter(({ mouseX, mouseY, ...rect })=> isInRect(
+						{ x: mouseX, y: mouseY },
+						addRectMargin({ marginY: TRACK_VERTICAL_RESPONSIVITY_MARGIN }, rect)
+					))
+					.flatMapLatest(({ mouseX, mouseY, x: rectX, width: rectWidth, identifier: touchIdentifier })=> {
+						return kefir.concat([
+							kefir.constant({ type: 'start', rectWidth, rectX }),
+							kefir
+								.concat([
+									kefir.constant({ mouseX, mouseY }),
+									kefir.merge([
+										mouseMoveStream,
+										touchMoveStream
+											.map(({ touches })=> Array.from(touches).find(({ identifier: currentIdentifier })=> currentIdentifier === touchIdentifier))
+											.filter(Boolean)
+									])
+										.map(({ clientX: mouseX, clientY: mouseY })=> ({ mouseX, mouseY }))
+								])
+								.map(pipe(
+									prop('mouseX'),
+									clamp(
+										rectX + TRACK_KNOB_HORIZONTAL_MARGIN,
+										rectX + rectWidth - TRACK_KNOB_HORIZONTAL_MARGIN
+									),
+									(pos)=>
+										(pos - (rectX + TRACK_KNOB_HORIZONTAL_MARGIN)) / (rectWidth - TRACK_KNOB_HORIZONTAL_MARGIN * 2)
+								))
+								.takeUntilBy(
+									kefir.merge([
+										mouseUpStream,
+										contextMenuStream,
+										touchEndStream.filter(({ changedTouches })=> Array.from(changedTouches).map(prop('identifier')).includes(touchIdentifier))
+									]).take(1)
+								)
+								.map((position)=> ({ type: 'position_change', position })),
+							kefir.constant({ type: 'end' })
+						])
+					});
+
+				const userScrubInteractionProperty = kefir
+					.merge(['start', 'end'].map((eventType)=> userScrubStream.filter(byType(eventType)).map(always(eventType === 'start'))))
+					.skipDuplicates()
+					.toProperty(always(false));
+
+				return trackEnabled
+					? kefir
+						.merge([
+							kefir
+								.combine([
+									userScrubInteractionProperty
+										.flatMap((active)=> {
+											return active
+												? userScrubStream.filter(byType('position_change')).map(prop('position'))
+												: apiPositionProperty.filterBy(userScrubInteractionProperty.map(not))
+										})
+										.skipDuplicates(),
+									windowResizeStream.toProperty(always(0))
+								], (val)=> val)
+								.flatMapLatest((value)=> rafStream.take(1).map(always(value)))
+								.map((position)=> ({ type: 'update_knob_position', value: position })),
+							apiPositionProperty
+								.skipDuplicates()
+								.map((percentage)=> ({ type: 'update_progress_position', value: percentage })),
+							userScrubInteractionProperty
+								.map((state)=> ({ type: 'update_scrub_state', value: state })),
+							userScrubStream
+								.filter(byType('position_change'))
+								.map(pipe(prop('position'), (position)=> ({ type: 'update_user_scrub_request', value: position })))
+						])
+						.takeUntilBy(apiBus.filter(byType('component_disconnected')).take(1))
+					: kefir.constant({ type: 'update_scrub_state', value: false });
+			});
 
 		// Draw component internals
 		componentConnectedStream.take(1).onValue(()=> {
 			componentContent.forEach((el)=> rootDoc.appendChild(el));
 		});
 
+		trackBarEnabledProperty
+			.onValue((enabled)=> trackEl.style.display = enabled ? 'block' : 'none');
+
 		// Update knob position
-		apiBus
-			.filter(byType('component_connected'))
-			.flatMapLatest(()=> {
-				return kefir
-					.combine([
-						userScrubInteractionProperty
-							.flatMap((active)=> {
-								return active
-									? userScrubStream.filter(byType('position_change')).map(prop('position'))
-									: apiPositionProperty.filterBy(userScrubInteractionProperty.map(not))
-							})
-							.skipDuplicates(),
-						windowResizeStream.toProperty(always(0))
-					], (val)=> val)
-					.flatMapLatest((value)=> rafStream.take(1).map(always(value)))
-					.takeUntilBy(apiBus.filter(byType('component_disconnected')).take(1));
-			})
+		trackBarStream
+			.filter(byType('update_knob_position'))
+			.map(prop('value'))
 			.onValue((position)=> {
 				const { width: trackWidth } = trackEl.getBoundingClientRect();
 				ScrubberKnobEl.style.transform = `translate(-50%, -50%) translateX(${TRACK_KNOB_HORIZONTAL_MARGIN + position * (trackWidth - TRACK_KNOB_HORIZONTAL_MARGIN * 2)}px)`;
 			});
 
-		// Update track state
-		apiPositionProperty
-			.skipDuplicates()
+		trackBarStream
+			.filter(byType('update_progress_position'))
+			.map(prop('value'))
 			.onValue((percentage)=>
 				trackEl.style.backgroundImage =
 					`linear-gradient(90deg, ${TRACK_ACTIVE_COLOR} 0%, ${TRACK_ACTIVE_COLOR} ${percentage * 100}%, ${TRACK_INACTIVE_COLOR} ${percentage * 100}%, ${TRACK_INACTIVE_COLOR} 100%)`);
 
-		// Update scrub state
-		userScrubInteractionProperty
+		trackBarStream
+			.filter(byType('update_scrub_state'))
+			.map(prop('value'))
 			.onValue((scrub)=> rootEl.classList.toggle('scrub', scrub));
+
+		// Send user scrub event
+		trackBarStream
+			.filter(byType('update_user_scrub_request'))
+			.map(prop('value'))
+			.onValue(partial(sendCustomEvent,['userScrubRequest']));
+
+		const playStateProperty = apiBus
+			.filter(byType('set_play_state'))
+			.map(prop('value'))
+			.toProperty(always(false));
 
 		// Update play state
 		playStateProperty
 			.onValue((isPlaying)=> rootEl.classList.toggle('play', isPlaying));
 
-		// Send user scrub event
-		userScrubStream
-			.filter(byType('position_change'))
-			.map(prop('position'))
-			.onValue(partial(sendCustomEvent,['userScrubRequest']));
-
 		// Send user play/pause event
 		mouseClickStream
-			.filter(allPass([
-				({ target })=> target === playPauseControlEl
-			]))
+			.filter(({ target })=> target === playPauseControlEl)
 			.onValue(partial(sendCustomEvent,['userPlayPauseRequest', null]));
 	}
 
