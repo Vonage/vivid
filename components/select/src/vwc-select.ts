@@ -1,6 +1,7 @@
-import { customElement, property } from 'lit-element';
+import { customElement, property, html, TemplateResult } from 'lit-element';
 import '@vonage/vwc-notched-outline';
 import '@vonage/vwc-icon';
+import { mapToClasses } from '@vonage/vvd-foundation/class-utils.js';
 import { Select as MWCSelect } from '@material/mwc-select';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import { style as vwcSelectStyle } from './vwc-select.css';
@@ -17,11 +18,20 @@ declare global {
 // @ts-ignore
 MWCSelect.styles = [styleCoupling, mwcSelectStyle, vwcSelectStyle];
 
+const shapes = ['rounded', 'pill'] as const;
+export type SelectShape = typeof shapes;
+
 /**
  * This component is an extension of [<mwc-select>](https://github.com/material-components/material-components-web-components/tree/master/packages/select)
  */
 @customElement('vwc-select')
 export class VWCSelect extends MWCSelect {
+	@property({ type: Boolean, reflect: true })
+	dense = false;
+
+	@property({ type: String, reflect: true })
+  shape: SelectShape[number] = 'rounded';
+	
 	@property({ type: HTMLInputElement, reflect: false })
 	hiddenInput: HTMLInputElement | undefined;
 
@@ -33,9 +43,28 @@ export class VWCSelect extends MWCSelect {
 
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
-		this.shadowRoot?.querySelector('.mdc-notched-outline')?.shadowRoot?.querySelector('.mdc-notched-outline')?.classList.add('vvd-notch');
 		this.replaceIcon();
 		addInputToForm(this);
+	}
+
+	protected renderHelperText(): TemplateResult {
+		if (!this.shouldRenderHelperText) {
+			return html``;
+		}
+
+		const showValidationMessage = this.validationMessage && !this.isUiValid;
+		const classesMap = {
+			'mdc-select-helper-text--validation-msg': showValidationMessage,
+		};
+
+		return html`
+			<div class="mdc-select-helper-line">
+				<vwc-icon class="mdc-select-helper-icon" type="info-negative" size="small"></vwc-icon>
+				<span class="spacer"></span>
+				<div id="helper-text" class="mdc-select-helper-text ${mapToClasses(classesMap).join(' ')}"
+				>${showValidationMessage ? this.validationMessage : this.helper}</div>
+			</div>
+		`;
 	}
 
 	private replaceIcon(): void {
@@ -45,4 +74,15 @@ export class VWCSelect extends MWCSelect {
 		chevronIcon.setAttribute('type', 'down');
 		this.shadowRoot?.querySelector(`.${ddIconClass}`)?.replaceWith(chevronIcon);
 	}
+
+	protected renderOutline(): TemplateResult | Record<string, unknown> {
+    if (!this.outlined) {
+      return {};
+    }
+
+    return html`
+      <vwc-notched-outline class="mdc-notched-outline vvd-notch">
+        ${this.renderLabel()}
+      </vwc-notched-outline>`;
+  }
 }

@@ -52,11 +52,11 @@ describe('textfield', () => {
 			expect(labelElement).to.exist;
 			assertComputedStyle(labelElement, {
 				fontFamily: 'SpeziaWebVariable',
-				fontSize: '14.2222px',
+				fontSize: '16px',
 				fontWeight: '400',
 				fontStretch: '50%',
 				lineHeight: '18.4px',
-				letterSpacing: '0.133333px',
+				letterSpacing: '0.15px',
 				textTransform: 'none'
 			});
 		});
@@ -265,6 +265,15 @@ describe('textfield', () => {
 			expect(formElement.querySelectorAll(`input[name="${fieldName}"`).length).to.equal(1);
 			expect(validInput).to.equal(true);
 			expect(formElement.checkValidity()).to.equal(false);
+		});
+	});
+
+	describe('notched outlined', () => {
+		it('should have vwc-notched-outline defined', async () => {
+			addedElements = textToDomToParent(`<${COMPONENT_NAME} outlined></${COMPONENT_NAME}>`);
+			await waitNextTask();
+			const notchedOutline = addedElements[0].shadowRoot.querySelector('vwc-notched-outline');
+			expect(notchedOutline).to.exist;
 		});
 	});
 });
