@@ -1,5 +1,5 @@
 import { CSSResult } from 'lit-element';
-import { preSchemeLoadingCssText } from './pre-scheme-loading-css-text.js';
+import { preSchemeLoadingCssText } from './pre-scheme-loading-css.js';
 
 const style = mountStyle();
 
