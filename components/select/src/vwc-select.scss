@@ -1,14 +1,15 @@
-@use '@vonage/vvd-typography/scss/typography' as typography;
+@forward './vwc-select-coupling';
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 
+$vvd-select-size-block: --vvd-text-field-size-block;
+
 :host {
-	--mdc-select-filled-border-radius: 6px;
   --mdc-theme-primary: var(--vvd-color-alternate-primary-background);
+  --mdc-select-fill-color: var(--vvd-color-surface-background);
   --mdc-select-ink-color: var(--mdc-theme-primary);
   --mdc-select-label-ink-color: var(#{color-semantic.$formfield-label-idle-ink});
 	--mdc-select-disabled-ink-color: var(#{color-semantic.$formfield-disabled-ink});
 	--mdc-select-disabled-fill-color: var(#{color-semantic.$formfield-disabled-fill});
-
 
   --mdc-select-dropdown-icon-color: var(--mdc-select-ink-color);
   --mdc-select-focused-dropdown-icon-color: var(--mdc-select-ink-color);
@@ -22,12 +23,7 @@
 	--mdc-select-error-fill-color: var(#{color-semantic.$formfield-error-fill});
 	--mdc-select-error-dropdown-icon-color: var(--mdc-select-error-color);
 
-	@include typography.typography-mdc-coupling('subtitle1', 'body-2');
 	font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
-	@include typography.typography-mdc-coupling('caption', 'caption');
-	font-stretch: var(--mdc-typography-caption-font-stretch); // ! this was supposed to be set by MDC
-
-	--vvd-outline-color: var(--mdc-select-outlined-idle-border-color);
 }
 
 :host(:not([disabled])) .mdc-select.mdc-select--focused:not(.mdc-select--invalid) {
@@ -37,7 +33,10 @@
 }
 
 :host([disabled]) .mdc-select {
-	--vvd-outline-color: var(--mdc-select-outlined-disabled-border-color);
+  vwc-notched-outline {
+    --mdc-notched-outline-border-color: var(--mdc-select-outlined-disabled-border-color);
+  }
+
 	background-color: var(--mdc-select-disabled-fill-color);
 
 	.mdc-select__selected-text {
@@ -51,12 +50,32 @@
 	}
 }
 
-:host(:not([disabled])) .mdc-select.mdc-select--focused mwc-notched-outline {
-  --mdc-notched-outline-stroke-width: 1px;
+:host([shape='pill']) {
+  --mdc-shape-small: 24px;
+}
+
+:host(:not([shape='pill'])) {
+  --mdc-shape-small: 6px;
+}
+
+:host(:not([shape='pill'])[dense]) {
+  --mdc-shape-small: 5px;
+}
+
+:host([dense]) {
+  #{$vvd-select-size-block}: 40px;
+}
+
+:host(:not([dense])) {
+  #{$vvd-select-size-block}: 48px;
+
+  .mdc-select__selected-text {
+    padding: 22px 0 6px;
+  }
 }
 
 .mdc-select {
-	border-radius: 6px;
+  border-radius: var(--mdc-shape-small);
 
 	.mdc-select__dropdown-icon {
 		transition: transform 200ms;
@@ -67,13 +86,14 @@
 	}
 
   &--outlined {
+    background-color: var(--mdc-select-fill-color);
+
     .mdc-select__anchor {
-      height: 48px;
+      height: var(#{$vvd-select-size-block});
       padding-left: 14px;
 
       .mdc-select__selected-text {
         font-size: var(--mdc-typography-subtitle2-font-size, 0.875rem);
-        padding: 22px 0 6px;
       }
 
       .mdc-floating-label {
@@ -89,20 +109,12 @@
     }
   }
 
-  :host(:hover) &,
-  &:hover,
-  &--focused {
-		--vvd-outline-color: var(--mdc-select-outlined-hover-border-color);
-
-		&.mdc-select--invalid {
-			--vvd-outline-color: var(--mdc-select-error-color);
-		}
-  }
-
   &--invalid {
-		--vvd-outline-color: var(--mdc-select-error-color);
-
     &.mdc-select--outlined {
+      vwc-notched-outline {
+        --mdc-notched-outline-border-color: var(--mdc-select-error-color);
+      }
+
 			background-color: var(--mdc-select-error-fill-color);
 
 			.mdc-floating-label {
@@ -110,6 +122,23 @@
 			}
     }
 	}
+}
+
+// .mdc-select-helper-text {
+// 	margin: 0 14px;
+// }
+
+// .mdc-select--invalid:not(.mdc-select--disabled).mdc-select--invalid + .mdc-select-helper-text--validation-msg {
+// 	color: var(--mdc-select-error-color);
+// }
+
+vwc-notched-outline {
+  --mdc-notched-outline-border-color: var(--mdc-select-outlined-idle-border-color);
+}
+
+:host(:not([disabled])) .mdc-select.mdc-select--focused vwc-notched-outline,
+:host(:not([disabled]):hover) .mdc-select:not(.mdc-select--invalid):not(.mdc-select--focused) vwc-notched-outline {
+  --mdc-notched-outline-border-color: var(--mdc-select-outlined-hover-border-color);
 }
 
 // helper / error message line

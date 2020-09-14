@@ -294,11 +294,11 @@ describe('select', () => {
 			expect(labelElement).to.exist;
 			assertComputedStyle(labelElement, {
 				fontFamily: 'SpeziaWebVariable',
-				fontSize: '14.2222px',
+				fontSize: '16px',
 				fontWeight: '400',
 				fontStretch: '50%',
 				lineHeight: '18.4px',
-				letterSpacing: '0.133333px',
+				letterSpacing: '0.15px',
 				textTransform: 'none'
 			});
 		});
@@ -322,6 +322,20 @@ describe('select', () => {
 				letterSpacing: '0.421399px',
 				textTransform: 'none'
 			});
+		});
+	});
+
+	describe('notched outlined', () => {
+		it('should have vwc-notched-outline defined', async () => {
+			addedElements = textToDomToParent(`
+				<${VWC_SELECT} outlined>
+					<vwc-list-item>Item 1</vwc-list-item>
+					<vwc-list-item>Item 2</vwc-list-item>
+				</${VWC_SELECT}>
+			`);			
+			await waitNextTask();
+			const notchedOutline = addedElements[0].shadowRoot.querySelector('vwc-notched-outline');
+			expect(notchedOutline).to.exist;
 		});
 	});
 });
