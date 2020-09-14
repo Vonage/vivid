@@ -1,7 +1,6 @@
 :host {
 	display: block;
 	box-sizing: border-box;
-	min-width: 5rem;
 
 	> div {
 		$scrub_size: 12px;
@@ -47,6 +46,7 @@
 			box-sizing: border-box;
 			width: 100%;
 			cursor: pointer;
+			min-width: 5rem;
 
 			> button {
 				padding: 0;

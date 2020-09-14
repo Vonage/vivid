@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import kefir from 'kefir';
-import { pipe, partial, clamp, prop, always, not, allPass, identity, path } from 'ramda';
+import { pipe, partial, clamp, prop, always, not, identity, path } from 'ramda';
 import { style as vwcMediaControllerStyle } from './vwc-media-controller.css';
 
 const
