@@ -5,9 +5,9 @@ import { style as mwcSwitchStyle } from '@material/mwc-switch/mwc-switch-css.js'
 import { style as styleCoupling } from '@vonage/vvd-style-coupling';
 
 declare global {
-	interface HTMLElementTagNameMap {
-		'vwc-switch': VWCSwitch;
-	}
+  interface HTMLElementTagNameMap {
+    'vwc-switch': VWCSwitch;
+  }
 }
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
@@ -22,13 +22,13 @@ export type SwitchConnotation = typeof connotations;
  */
 @customElement('vwc-switch')
 export class VWCSwitch extends MWCSwitch {
-	@property({ type: String, reflect: true })
-	connotation?: SwitchConnotation[number] | undefined;
+  @property({ type: String, reflect: true })
+  connotation?: SwitchConnotation[number] | undefined;
 
-	@property({ type: Boolean, reflect: true })
-	enlarged = false;
+  @property({ type: Boolean, reflect: true })
+  enlarged = false;
 
-	protected renderRipple(): TemplateResult {
-		return html``;
-	}
+  protected renderRipple(): TemplateResult {
+    return html``;
+  }
 }

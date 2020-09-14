@@ -5,9 +5,9 @@ import { style as mwcCheckboxStyle } from '@material/mwc-checkbox/mwc-checkbox-c
 import { style as styleCoupling } from '@vonage/vvd-style-coupling';
 
 declare global {
-	interface HTMLElementTagNameMap {
-		'vwc-checkbox': VWCCheckbox;
-	}
+  interface HTMLElementTagNameMap {
+    'vwc-checkbox': VWCCheckbox;
+  }
 }
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */

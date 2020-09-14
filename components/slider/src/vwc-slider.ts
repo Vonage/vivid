@@ -5,9 +5,9 @@ import { style as mwcSliderStyle } from '@material/mwc-slider/mwc-slider-css.js'
 import { style as vwcSliderStyle } from './vwc-slider.css';
 
 declare global {
-	interface HTMLElementTagNameMap {
-		'vwc-slider': VWCSlider;
-	}
+  interface HTMLElementTagNameMap {
+    'vwc-slider': VWCSlider;
+  }
 }
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
@@ -19,8 +19,8 @@ MWCSlider.styles = [styleCoupling, mwcSliderStyle, vwcSliderStyle];
  */
 @customElement('vwc-slider')
 export class VWCSlider extends MWCSlider {
-	async firstUpdated(): Promise<void> {
-		await super.firstUpdated();
-		this.pinMarkerText = this.value?.toLocaleString();
-	}
+  async firstUpdated(): Promise<void> {
+    await super.firstUpdated();
+    this.pinMarkerText = this.value?.toLocaleString();
+  }
 }

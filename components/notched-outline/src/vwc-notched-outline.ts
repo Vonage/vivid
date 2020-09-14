@@ -4,9 +4,9 @@ import { style as mwcNotchedOutlineStyle } from '@material/mwc-notched-outline/m
 import { style as vwcNotchedOutlineStyle } from './vwc-notched-outline.css';
 
 declare global {
-	interface HTMLElementTagNameMap {
-		'vwc-notched-outline': VWCNotchedOutline;
-	}
+  interface HTMLElementTagNameMap {
+    'vwc-notched-outline': VWCNotchedOutline;
+  }
 }
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
@@ -18,4 +18,4 @@ MWCNotchedOutline.styles = [mwcNotchedOutlineStyle, vwcNotchedOutlineStyle];
  * This component is NOT meant to be used itself, but serves as an adjustment/definition for the usage of it in other components
  */
 @customElement('vwc-notched-outline')
-export class VWCNotchedOutline extends MWCNotchedOutline { }
+export class VWCNotchedOutline extends MWCNotchedOutline {}

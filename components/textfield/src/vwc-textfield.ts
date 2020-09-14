@@ -11,9 +11,9 @@ export { TextFieldType } from '@material/mwc-textfield';
 import '@vonage/vwc-icon';
 
 declare global {
-	interface HTMLElementTagNameMap {
-		'vwc-textfield': VWCTextField;
-	}
+  interface HTMLElementTagNameMap {
+    'vwc-textfield': VWCTextField;
+  }
 }
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
@@ -25,68 +25,84 @@ export type TextFieldShape = typeof shapes;
 
 @customElement('vwc-textfield')
 export class VWCTextField extends MWCTextField {
-	@property({ type: Boolean, reflect: true })
-	dense = false;
+  @property({ type: Boolean, reflect: true })
+  dense = false;
 
-	@property({ type: String, reflect: true })
-	shape: TextFieldShape[number] = 'rounded';
+  @property({ type: String, reflect: true })
+  shape: TextFieldShape[number] = 'rounded';
 
-	@property({ type: HTMLInputElement, reflect: false })
-	hiddenInput: HTMLInputElement | undefined;
+  @property({ type: HTMLInputElement, reflect: false })
+  hiddenInput: HTMLInputElement | undefined;
 
-	@property({ type: String, reflect: true })
-	form: string | undefined;
+  @property({ type: String, reflect: true })
+  form: string | undefined;
 
-	async firstUpdated(): Promise<void> {
-		await super.firstUpdated();
-		this.shadowRoot?.querySelector('.mdc-notched-outline')?.shadowRoot?.querySelector('.mdc-notched-outline')?.classList.add('vvd-notch');
-		addInputToForm(this);
-	}
+  async firstUpdated(): Promise<void> {
+    await super.firstUpdated();
+    this.shadowRoot
+      ?.querySelector('.mdc-notched-outline')
+      ?.shadowRoot?.querySelector('.mdc-notched-outline')
+      ?.classList.add('vvd-notch');
+    addInputToForm(this);
+  }
 
-	protected renderIcon(icon: string, isTrailingIcon = false): TemplateResult {
-		const classes = {
-			'mdc-text-field__icon--leading': !isTrailingIcon,
-			'mdc-text-field__icon--trailing': isTrailingIcon
-		};
+  protected renderIcon(icon: string, isTrailingIcon = false): TemplateResult {
+    const classes = {
+      'mdc-text-field__icon--leading': !isTrailingIcon,
+      'mdc-text-field__icon--trailing': isTrailingIcon,
+    };
 
-		return html`<vwc-icon type="${icon}" size="small" class="${mapToClasses(classes).join(' ')}"></vwc-icon>`;
-	}
+    return html`<vwc-icon
+      type="${icon}"
+      size="small"
+      class="${mapToClasses(classes).join(' ')}"
+    ></vwc-icon>`;
+  }
 
-	protected renderRipple(): TemplateResult {
-		return html``;
-	}
+  protected renderRipple(): TemplateResult {
+    return html``;
+  }
 
-	protected renderLineRipple(): TemplateResult {
-		return html``;
-	}
+  protected renderLineRipple(): TemplateResult {
+    return html``;
+  }
 
-	protected renderOutline(): TemplateResult | Record<string, unknown> {
-		if (!this.outlined) {
-			return {};
-		}
+  protected renderOutline(): TemplateResult | Record<string, unknown> {
+    if (!this.outlined) {
+      return {};
+    }
 
-		return html`
-      <vwc-notched-outline class="mdc-notched-outline vvd-notch">
-        ${this.renderLabel()}
-      </vwc-notched-outline>`;
-	}
+    return html` <vwc-notched-outline class="mdc-notched-outline vvd-notch">
+      ${this.renderLabel()}
+    </vwc-notched-outline>`;
+  }
 
-	renderHelperText(charCounterTemplate = {}): TemplateResult {
-		if (!this.shouldRenderHelperText) {
-			return html``;
-		}
-		const showValidationMessage = this.validationMessage && !this.isUiValid;
-		const classesMap = {
-			'mdc-text-field-helper-text--persistent': this.helperPersistent,
-			'mdc-text-field-helper-text--validation-msg': showValidationMessage,
-		};
-		return html`
-			<div class="mdc-text-field-helper-line">
-				<vwc-icon class="mdc-text-field-helper-icon" type="info-negative" size="small"></vwc-icon>
-				<span class="spacer"></span>
-				<div class="mdc-text-field-helper-text ${mapToClasses(classesMap).join(' ')}">${showValidationMessage ? this.validationMessage : this.helper}</div>
-				${charCounterTemplate}
-			</div>
-		`;
-	}
+  renderHelperText(charCounterTemplate = {}): TemplateResult {
+    if (!this.shouldRenderHelperText) {
+      return html``;
+    }
+    const showValidationMessage = this.validationMessage && !this.isUiValid;
+    const classesMap = {
+      'mdc-text-field-helper-text--persistent': this.helperPersistent,
+      'mdc-text-field-helper-text--validation-msg': showValidationMessage,
+    };
+    return html`
+      <div class="mdc-text-field-helper-line">
+        <vwc-icon
+          class="mdc-text-field-helper-icon"
+          type="info-negative"
+          size="small"
+        ></vwc-icon>
+        <span class="spacer"></span>
+        <div
+          class="mdc-text-field-helper-text ${mapToClasses(classesMap).join(
+            ' '
+          )}"
+        >
+          ${showValidationMessage ? this.validationMessage : this.helper}
+        </div>
+        ${charCounterTemplate}
+      </div>
+    `;
+  }
 }

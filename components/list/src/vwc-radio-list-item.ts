@@ -6,17 +6,22 @@ import { style as vwcRadioListItemStyle } from './vwc-radio-list-item.css';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 
 declare global {
-	interface HTMLElementTagNameMap {
-		'vwc-radio-list-item': VWCRadioListItem;
-	}
+  interface HTMLElementTagNameMap {
+    'vwc-radio-list-item': VWCRadioListItem;
+  }
 }
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-MWCRadioListItem.styles = [styleCoupling, mwcListItemStyle, mwcControlListItemStyle, vwcRadioListItemStyle];
+MWCRadioListItem.styles = [
+  styleCoupling,
+  mwcListItemStyle,
+  mwcControlListItemStyle,
+  vwcRadioListItemStyle,
+];
 
 /**
  * This component is an extension of [<mwc-radio-list-item>](https://github.com/material-components/material-components-web-components/tree/master/packages/list)
  */
 @customElement('vwc-radio-list-item')
-export class VWCRadioListItem extends MWCRadioListItem { }
+export class VWCRadioListItem extends MWCRadioListItem {}
