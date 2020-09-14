@@ -13,8 +13,8 @@
     "changelog": "yarn lerna exec --concurrency 1 --stream 'conventional-changelog --preset angular --release-count 0 --commit-path $PWD --pkg $PWD/package.json --outfile $PWD/CHANGELOG.md --verbose'",
     "lint:eslint": "eslint components/** common/** --no-error-on-unmatched-pattern --ignore-path .eslintignore --config .eslintrc.yaml",
     "format:eslint": "eslint --ext .js,.html . --fix --ignore-path .eslintignore",
-    "lint:prettier": "prettier \"**/*.js\" --check --ignore-path .prettierignore",
-    "format:prettier": "prettier \"**/*.js\" --write --ignore-path .prettierignore",
+    "lint:prettier": "prettier \"**/*.ts\" \"**/test/*.test.js\" --check --ignore-path .prettierignore",
+    "format:prettier": "prettier \"**/*.ts\" \"**/test/*.test.js\" --write --ignore-path .prettierignore",
     "lint": "yarn lint:eslint && yarn lint:prettier",
     "format": "yarn format:eslint && yarn format:prettier",
     "tsc:watch": "tsc --build --watch",
@@ -127,7 +127,10 @@
   },
   "lint-staged": {
     "*.ts": [
-      "eslint"
-    ]
+      "eslint", "prettier --write"
+    ],
+		"*.test.js": [
+			"prettier --write"
+		]
   }
 }
