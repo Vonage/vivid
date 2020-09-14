@@ -1,3 +1,4 @@
+import '@vonage/vvd-core';
 import { customElement, html } from 'lit-element';
 import { Chip as MWCChip } from '@material/mwc-chips/mwc-chip';
 import { style as vwcChipStyle } from './vwc-chip.css';
@@ -46,7 +47,7 @@ export class VWCChip extends MWCChip {
 	// 	/* eslint-disable wc/no-self-class */
 	// 	this.classList.add(...customClasses, ...filteredClasses);
 	// }
-	renderThumbnail():TemplateResult {
+	renderThumbnail(): TemplateResult {
 		if (this.icon) {
 			return html`<vwc-icon size="small" type="${this.icon}" class="leading"></vwc-icon>`;
 		} else if (this.childElementCount > 0) {
@@ -59,7 +60,7 @@ export class VWCChip extends MWCChip {
 		}
 	}
 
-	renderRemoveIcon():TemplateResult {
+	renderRemoveIcon(): TemplateResult {
 		const classes = {
 			'mdc-chip__trailing-action': this.removeIconFocusable,
 			[this.removeIconClass]: true
@@ -81,7 +82,7 @@ export class VWCChip extends MWCChip {
 		}
 	}
 
-	clickHandler():void{
+	clickHandler(): void {
 		this.mdcFoundation.handleTrailingActionInteraction();
 	}
 }

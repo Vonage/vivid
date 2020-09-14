@@ -1,3 +1,4 @@
+import '@vonage/vvd-core';
 import {
 	customElement,
 	property,

@@ -1,4 +1,4 @@
-import { coreReady } from '@vonage/vvd-core';
+import vvdCore from '@vonage/vvd-core';
 import { style } from './vvd-context.css';
 
 let
@@ -15,7 +15,7 @@ init();
 async function init(): Promise<void> {
 	try {
 		injectGlobalStyle();
-		await coreReady;
+		await vvdCore.coreReady;
 		initResolver();
 	} catch (e) {
 		initRejector(e);
@@ -24,7 +24,6 @@ async function init(): Promise<void> {
 
 function injectGlobalStyle() {
 	const globalStyleSheet = document.createElement('style');
-	globalStyleSheet.type = 'text/css';
 	globalStyleSheet.innerHTML = style.cssText;
 	document.head.appendChild(globalStyleSheet);
 }

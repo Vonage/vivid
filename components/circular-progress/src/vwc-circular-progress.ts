@@ -1,3 +1,4 @@
+import '@vonage/vvd-core';
 import { customElement } from 'lit-element';
 import { CircularProgress as MWCCircularProgress } from '@material/mwc-circular-progress';
 import { style as mwcCircularProgressStyle } from '@material/mwc-circular-progress/mwc-circular-progress-css.js';
@@ -17,4 +18,4 @@ MWCCircularProgress.styles = [
 ];
 
 @customElement('vwc-circular-progress')
-export class VWCCircularProgress extends MWCCircularProgress {}
+export class VWCCircularProgress extends MWCCircularProgress { }

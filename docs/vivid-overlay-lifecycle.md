@@ -59,14 +59,13 @@ It is the consuming application, which becomes responsible for the core services
 
 HTML part:
 ```html
-<html data-vvd-context="custom">
+<html data-vvd-context="manual">
 ...
 ```
 
 JavaScript part:
 ```javascript
-import { init as initFonts } from '@vonage/vvd-fonts.js';
-import { init as initScheme } from '@vonage/vvd-scheme.js';
+import vividCore from '@vonage/vvd-core.js';
 
 Promise
 	.all([

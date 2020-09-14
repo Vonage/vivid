@@ -1,25 +1,29 @@
-import configuration, { Configuration } from './config-resolver.js';
+import configurer, { Configuration } from './vvd-configurer.js';
 import fonts from '@vonage/vvd-fonts/vvd-fonts.js';
 import schemeService from '@vonage/vvd-scheme';
 
-let
-	initResolver: (value?: unknown) => void | PromiseLike<void>,
-	initRejector: (reason?: unknown) => void | PromiseLike<void>;
+console.info(`Vivid initial configuration: ${JSON.stringify(configurer.initialConfiguration)}`);
 
-export const coreReady = new Promise((resolve, reject) => {
-	initResolver = resolve;
-	initRejector = reject;
+let coreAutoInitDone: Promise<Array<void>>;
+if (!configurer.initialConfiguration.manual) {
+	coreAutoInitDone = applyConfiguration(configurer.initialConfiguration);
+} else {
+	coreAutoInitDone = Promise.reject('auto-init unavailable when manual configuration required');
+}
+
+export default Object.freeze({
+	set: applyConfiguration,
+	coreReady: coreAutoInitDone
 });
 
-console.debug('effective config', JSON.stringify(configuration));
-init(configuration);
+async function applyConfiguration(configuration: Partial<Configuration>) {
+	configurer.validateConfiguration(configuration);
+	return init(configuration);
+}
 
-async function init({ scheme }: Configuration): Promise<void> {
-	Promise
-		.all([
-			fonts.init(),
-			schemeService.set(scheme)
-		])
-		.then(initResolver)
-		.catch(initRejector);
+async function init(configuration: Partial<Configuration>): Promise<Array<void>> {
+	return Promise.all([
+		fonts.init(),
+		schemeService.set(configuration.scheme)
+	]);
 }
