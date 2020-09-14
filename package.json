@@ -127,7 +127,7 @@
   },
   "lint-staged": {
     "*.ts": [
-      "eslint", "prettier --write"
+			"prettier --write", "eslint"
     ],
 		"*.test.js": [
 			"prettier --write"
