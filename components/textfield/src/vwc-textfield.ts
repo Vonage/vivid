@@ -89,7 +89,10 @@ export class VWCTextField extends MWCTextField {
     const validationMessage = showValidationMessage
       ? this.validationMessage
       : this.helper;
-    const classes = ['mdc-text-field-helper-text', ...mapToClasses(classesMap)].join(' ');
+    const classes = [
+      'mdc-text-field-helper-text',
+      ...mapToClasses(classesMap),
+    ].join(' ');
     return html`
       <div class="mdc-text-field-helper-line">
         <vwc-icon
