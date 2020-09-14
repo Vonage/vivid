@@ -21,11 +21,11 @@ import { style } from './mwc-chip.css.js';
 
 @customElement('mwc-chip')
 export class Chip extends ChipBase {
-	static styles = style;
+  static styles = style;
 }
 
 declare global {
-	interface HTMLElementTagNameMap {
-		'mwc-chip': Chip;
-	}
+  interface HTMLElementTagNameMap {
+    'mwc-chip': Chip;
+  }
 }
