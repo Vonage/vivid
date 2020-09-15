@@ -1,9 +1,9 @@
-# 0.2.0 (2020-09-08)
+# 0.2.0 (2020-09-15)
 
 
 ### Features
 
-* **textarea:** textarea form association ([#300](https://github.com/material-components/material-components-web-components/issues/300)) ([19ebd4e](https://github.com/material-components/material-components-web-components/commit/19ebd4e5f694738d2687f2a9d2a24ef2fa9beb4b))
+* **vwc-button:** add type button handling ([c68010a](https://github.com/material-components/material-components-web-components/commit/c68010abecd205267e311cdaeb9cc9065a4c17a2))
 
 
 
