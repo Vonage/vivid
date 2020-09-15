@@ -1,14 +1,17 @@
 import '../vwc-select.js';
 import '@vonage/vwc-list/vwc-list-item.js';
-import { textToDomToParent, waitNextTask, assertComputedStyle } from '../../../test/test-helpers.js';
+import {
+	textToDomToParent,
+	waitNextTask,
+	assertComputedStyle,
+} from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 chai.use(chaiDomDiff);
 
-const
-	VWC_SELECT = 'vwc-select';
+const VWC_SELECT = 'vwc-select';
 
 function listenToSubmission(formElement) {
-	return new Promise(res => {
+	return new Promise((res) => {
 		formElement.addEventListener('submit', () => {
 			const formData = new FormData(formElement);
 			res(formData);
@@ -28,11 +31,13 @@ describe('select', () => {
 	let addedElements = [];
 
 	afterEach(() => {
-		addedElements.forEach(elm => elm.remove());
+		addedElements.forEach((elm) => elm.remove());
 	});
 
 	it('should be defined as a custom element', () => {
-		assert.exists(customElements.get(VWC_SELECT, 'vwc-select element is not defined'));
+		assert.exists(
+			customElements.get(VWC_SELECT, 'vwc-select element is not defined')
+		);
 	});
 
 	describe('init flow', () => {
@@ -78,7 +83,9 @@ describe('select', () => {
 				expect(pair[1]).to.equal(value2);
 			}
 
-			expect(formElement.querySelectorAll(`input[name="${fieldName}"`).length).to.equal(1);
+			expect(
+				formElement.querySelectorAll(`input[name="${fieldName}"`).length
+			).to.equal(1);
 		});
 
 		it(`should attach to form when given form id`, async function () {
@@ -107,8 +114,12 @@ describe('select', () => {
 				expect(pair[1]).to.equal(value1);
 			}
 
-			expect(formElement.querySelector(`input[name="${fieldName}"`)).to.equal(null);
-			expect(externalForm.querySelectorAll(`input[name="${fieldName}"`).length).to.equal(1);
+			expect(formElement.querySelector(`input[name="${fieldName}"`)).to.equal(
+				null
+			);
+			expect(
+				externalForm.querySelectorAll(`input[name="${fieldName}"`).length
+			).to.equal(1);
 		});
 
 		it(`should do nothing if form value resolves to a non form element`, async function () {
@@ -126,7 +137,6 @@ describe('select', () => {
 		});
 
 		describe(`value binding`, function () {
-
 			it(`should reset the value of the custom element to default on form reset`, async function () {
 				addedElements = textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="${formId}">
@@ -271,7 +281,9 @@ describe('select', () => {
 
 			await changeFieldValue(actualElement, '', 'change');
 
-			expect(formElement.querySelectorAll(`input[name="${fieldName}"`).length).to.equal(1);
+			expect(
+				formElement.querySelectorAll(`input[name="${fieldName}"`).length
+			).to.equal(1);
 			expect(validInput).to.equal(true);
 			expect(formElement.checkValidity()).to.equal(false);
 		});
@@ -286,7 +298,9 @@ describe('select', () => {
 				</${VWC_SELECT}>
 			`);
 			await waitNextTask();
-			const labelElement = addedElements[0].shadowRoot.querySelector('.mdc-notched-outline').querySelector('#label');
+			const labelElement = addedElements[0].shadowRoot
+				.querySelector('.mdc-notched-outline')
+				.querySelector('#label');
 			expect(labelElement).to.exist;
 			assertComputedStyle(labelElement, {
 				fontFamily: 'SpeziaWebVariable',
@@ -295,7 +309,7 @@ describe('select', () => {
 				fontStretch: '50%',
 				lineHeight: '18.4px',
 				letterSpacing: '0.15px',
-				textTransform: 'none'
+				textTransform: 'none',
 			});
 		});
 
@@ -307,7 +321,9 @@ describe('select', () => {
 				</${VWC_SELECT}>
 			`);
 			await waitNextTask();
-			const helperElement = addedElements[0].shadowRoot.querySelector('.mdc-select-helper-text');
+			const helperElement = addedElements[0].shadowRoot.querySelector(
+				'.mdc-select-helper-text'
+			);
 			expect(helperElement).to.exist;
 			assertComputedStyle(helperElement, {
 				fontFamily: 'SpeziaWebVariable',
@@ -316,7 +332,7 @@ describe('select', () => {
 				fontStretch: '50%',
 				lineHeight: 'normal',
 				letterSpacing: '0.421399px',
-				textTransform: 'none'
+				textTransform: 'none',
 			});
 		});
 	});
@@ -328,9 +344,11 @@ describe('select', () => {
 					<vwc-list-item>Item 1</vwc-list-item>
 					<vwc-list-item>Item 2</vwc-list-item>
 				</${VWC_SELECT}>
-			`);			
+			`);
 			await waitNextTask();
-			const notchedOutline = addedElements[0].shadowRoot.querySelector('vwc-notched-outline');
+			const notchedOutline = addedElements[0].shadowRoot.querySelector(
+				'vwc-notched-outline'
+			);
 			expect(notchedOutline).to.exist;
 		});
 	});

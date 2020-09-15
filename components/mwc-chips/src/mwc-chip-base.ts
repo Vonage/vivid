@@ -20,7 +20,12 @@ import { addHasRemoveClass } from '@material/mwc-base/utils.js';
 import { ripple } from '@material/mwc-ripple/ripple-directive.js';
 import { MDCChipAdapter } from '@material/chips/chip/adapter.js';
 import { MDCChipFoundation } from '@material/chips/chip/foundation.js';
-import { MDCChipInteractionEventDetail, MDCChipSelectionEventDetail, MDCChipRemovalEventDetail, MDCChipNavigationEventDetail } from '@material/chips/chip/types';
+import {
+	MDCChipInteractionEventDetail,
+	MDCChipSelectionEventDetail,
+	MDCChipRemovalEventDetail,
+	MDCChipNavigationEventDetail,
+} from '@material/chips/chip/types';
 import { html, property, query } from 'lit-element';
 import { nothing } from 'lit-html';
 import { classMap } from 'lit-html/directives/class-map';
@@ -80,7 +85,8 @@ export class ChipBase extends BaseElement {
 					this.leadingIconElement.classList.add(className);
 				}
 			},
-			eventTargetHasClass: (target: HTMLElement, className: string) => target ? (target as Element).classList.contains(className) : false,
+			eventTargetHasClass: (target: HTMLElement, className: string) =>
+				target ? (target as Element).classList.contains(className) : false,
 			focusPrimaryAction: () => {
 				if (this.primaryActionElement) {
 					this.primaryActionElement.focus();
@@ -94,49 +100,74 @@ export class ChipBase extends BaseElement {
 			getAttribute: (attrName: string) => {
 				return this.mdcRoot.getAttribute(attrName);
 			},
-			getCheckmarkBoundingClientRect: () => this.checkmarkElement && this.checkmarkElement.getBoundingClientRect(),
-			getComputedStyleValue: (propertyName) => getComputedStyle(this.mdcRoot).getPropertyValue(propertyName),
+			getCheckmarkBoundingClientRect: () =>
+				this.checkmarkElement && this.checkmarkElement.getBoundingClientRect(),
+			getComputedStyleValue: (propertyName) =>
+				getComputedStyle(this.mdcRoot).getPropertyValue(propertyName),
 			getRootBoundingClientRect: () => this.mdcRoot.getBoundingClientRect(),
 			hasLeadingIcon: () => !!this.leadingIconElement,
-			isRTL: () => getComputedStyle(this.mdcRoot).getPropertyValue('direction') === 'rtl',
+			isRTL: () =>
+				getComputedStyle(this.mdcRoot).getPropertyValue('direction') === 'rtl',
 			isTrailingActionNavigable: () => {
-				return this.trailingActionElement && (this.trailingActionElement as any).isNavigable();
+				return (
+					this.trailingActionElement &&
+					(this.trailingActionElement as any).isNavigable()
+				);
 			},
 			notifyInteraction: () => {
 				const detail: MDCChipInteractionEventDetail = { chipId: this.id };
-				this.dispatchEvent(new CustomEvent(MDCChipFoundation.strings.INTERACTION_EVENT, {
-					detail,
-					bubbles: true,
-					composed: true
-				}));
+				this.dispatchEvent(
+					new CustomEvent(MDCChipFoundation.strings.INTERACTION_EVENT, {
+						detail,
+						bubbles: true,
+						composed: true,
+					})
+				);
 			},
 			notifyNavigation: (key, source) => {
-				const detail: MDCChipNavigationEventDetail = { chipId: this.id, key, source };
-				this.dispatchEvent(new CustomEvent(MDCChipFoundation.strings.NAVIGATION_EVENT, {
-					detail,
-					bubbles: true,
-					composed: true
-				}));
+				const detail: MDCChipNavigationEventDetail = {
+					chipId: this.id,
+					key,
+					source,
+				};
+				this.dispatchEvent(
+					new CustomEvent(MDCChipFoundation.strings.NAVIGATION_EVENT, {
+						detail,
+						bubbles: true,
+						composed: true,
+					})
+				);
 			},
 			notifyRemoval: () => this.dispatchRemovalEvent(),
 			notifySelection: (selected, shouldIgnore) => {
-				const detail: MDCChipSelectionEventDetail = { chipId: this.id, selected, shouldIgnore };
-				this.dispatchEvent(new CustomEvent(MDCChipFoundation.strings.SELECTION_EVENT, {
-					detail,
-					bubbles: true,
-					composed: true
-				}));
+				const detail: MDCChipSelectionEventDetail = {
+					chipId: this.id,
+					selected,
+					shouldIgnore,
+				};
+				this.dispatchEvent(
+					new CustomEvent(MDCChipFoundation.strings.SELECTION_EVENT, {
+						detail,
+						bubbles: true,
+						composed: true,
+					})
+				);
 			},
 			notifyTrailingIconInteraction: () => {
 				const detail: MDCChipInteractionEventDetail = { chipId: this.id };
-				this.dispatchEvent(new CustomEvent(MDCChipFoundation.strings.TRAILING_ICON_INTERACTION_EVENT, {
-					detail,
-					bubbles: true,
-					composed: true
-				}));
+				this.dispatchEvent(
+					new CustomEvent(
+						MDCChipFoundation.strings.TRAILING_ICON_INTERACTION_EVENT,
+						{
+							detail,
+							bubbles: true,
+							composed: true,
+						}
+					)
+				);
 			},
-			notifyEditStart: () => { },
-			notifyEditFinish: () => { },
+			notifyEditStart: () => {},
+			notifyEditFinish: () => {},
 			removeClassFromLeadingIcon: (className: string) => {
 				if (this.leadingIconElement) {
 					this.leadingIconElement.classList.remove(className);
@@ -152,7 +183,8 @@ export class ChipBase extends BaseElement {
 					this.primaryActionElement.setAttribute(attr, value);
 				}
 			},
-			setStyleProperty: (propertyName, value) => this.mdcRoot.style.setProperty(propertyName, value),
+			setStyleProperty: (propertyName, value) =>
+				this.mdcRoot.style.setProperty(propertyName, value),
 		};
 	}
 
@@ -182,24 +214,23 @@ export class ChipBase extends BaseElement {
 	render() {
 		const classes = {
 			'mdc-chip--selected': this.selected,
-			'mdc-chip--deletable': this.removable
+			'mdc-chip--deletable': this.removable,
 		};
 
 		return html`
-			<div class="mdc-chip ${classMap(classes)}"
-			role="row"
-			.ripple=${ripple()}
-			@click=${this.handleInteraction}
-			@keydown=${this.handleKeydown}
-			@transitionend=${this.handleTransitionEnd}
+			<div
+				class="mdc-chip ${classMap(classes)}"
+				role="row"
+				.ripple=${ripple()}
+				@click=${this.handleInteraction}
+				@keydown=${this.handleKeydown}
+				@transitionend=${this.handleTransitionEnd}
 			>
 				<div class="mdc-chip__ripple"></div>
-				${this.renderThumbnail()}
-				${this.renderCheckmark()}
-				${this.renderPrimaryAction()}
-				${this.renderRemoveIcon()}
+				${this.renderThumbnail()} ${this.renderCheckmark()}
+				${this.renderPrimaryAction()} ${this.renderRemoveIcon()}
 			</div>
-      	`;
+		`;
 	}
 
 	renderLabel() {
@@ -208,53 +239,66 @@ export class ChipBase extends BaseElement {
 
 	renderThumbnail() {
 		if (this.icon) {
-			return html`
-        <i class="mdc-chip__icon mdc-chip__icon--leading ${this.iconClass}">
-          ${this.icon}
-        </i>`;
+			return html` <i
+				class="mdc-chip__icon mdc-chip__icon--leading ${this.iconClass}"
+			>
+				${this.icon}
+			</i>`;
 		} else if (this.childElementCount > 0) {
-			return html`
-        <span class="mdc-chip__icon mdc-chip__icon--leading">
-          <slot name="thumbnail"></slot>
-        </span>`;
+			return html` <span class="mdc-chip__icon mdc-chip__icon--leading">
+				<slot name="thumbnail"></slot>
+			</span>`;
 		} else {
 			return html``;
 		}
 	}
 
 	renderCheckmark() {
-		return html`${this.type === 'filter' ? html`
-      <span class="mdc-chip__checkmark">
-        <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
-          <path class="mdc-chip__checkmark-path" fill="none" stroke="black" d="M1.73,12.91 8.1,19.28 22.79,4.59" />
-        </svg>
-      </span>` : nothing}`;
+		return html`${this.type === 'filter'
+			? html` <span class="mdc-chip__checkmark">
+					<svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
+						<path
+							class="mdc-chip__checkmark-path"
+							fill="none"
+							stroke="black"
+							d="M1.73,12.91 8.1,19.28 22.79,4.59"
+						/>
+					</svg>
+			  </span>`
+			: nothing}`;
 	}
 
 	renderPrimaryAction() {
 		const isFilter = this.type === 'filter';
 		const role = isFilter ? 'checkbox' : 'button';
 		const ariaChecked = isFilter ? String(this.selected) : undefined;
-		return html`
-      <span class="mdc-chip__text mdc-chip__primary-action" role="${role}" tabindex="0" aria-checked=${ifDefined(ariaChecked)}>
-        ${this.renderLabel()}
-      </span>`;
+		return html` <span
+			class="mdc-chip__text mdc-chip__primary-action"
+			role="${role}"
+			tabindex="0"
+			aria-checked=${ifDefined(ariaChecked)}
+		>
+			${this.renderLabel()}
+		</span>`;
 	}
 
 	renderRemoveIcon() {
 		const classes = {
 			'mdc-chip__trailing-action': this.removeIconFocusable,
-			[this.removeIconClass]: true
+			[this.removeIconClass]: true,
 		};
 
-		const icon = html`${this.removable ? html`
-      <i class="mdc-chip__icon mdc-chip__icon--trailing ${classMap(classes)}"
-        tabindex="-1"
-        role=${ifDefined(this.removeIconFocusable ? 'button' : undefined)}
-        aria-hidden=${ifDefined(this.removeIconFocusable ? undefined : 'true')}
-        @click=${this.handleTrailingIconInteraction}
-        @keydown=${this.handleTrailingIconInteraction}
-      >${this.removeIcon}</i>` : nothing}`;
+		const icon = html`${this.removable
+			? html` <i
+					class="mdc-chip__icon mdc-chip__icon--trailing ${classMap(classes)}"
+					tabindex="-1"
+					role=${ifDefined(this.removeIconFocusable ? 'button' : undefined)}
+					aria-hidden=${ifDefined(this.removeIconFocusable ? undefined : 'true')}
+					@click=${this.handleTrailingIconInteraction}
+					@keydown=${this.handleTrailingIconInteraction}
+					>${this.removeIcon}</i
+			  >`
+			: nothing}`;
 
 		if (this.removeIconFocusable) {
 			return html`<span role="gridcell">${icon}</span>`;
@@ -264,12 +308,17 @@ export class ChipBase extends BaseElement {
 	}
 
 	private dispatchRemovalEvent() {
-		const detail: MDCChipRemovalEventDetail = { chipId: this.id, removedAnnouncement: null };
-		this.dispatchEvent(new CustomEvent(MDCChipFoundation.strings.REMOVAL_EVENT, {
-			detail,
-			bubbles: true,
-			composed: true
-		}));
+		const detail: MDCChipRemovalEventDetail = {
+			chipId: this.id,
+			removedAnnouncement: null,
+		};
+		this.dispatchEvent(
+			new CustomEvent(MDCChipFoundation.strings.REMOVAL_EVENT, {
+				detail,
+				bubbles: true,
+				composed: true,
+			})
+		);
 	}
 
 	private handleInteraction(_e: MouseEvent | KeyboardEvent) {

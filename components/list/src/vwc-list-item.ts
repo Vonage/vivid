@@ -18,4 +18,4 @@ MWCListItem.styles = [styleCoupling, mwcListItemStyle, vwcListItemStyle];
  * This component is an extension of [<mwc-list-item>](https://github.com/material-components/material-components-web-components/tree/master/packages/list)
  */
 @customElement('vwc-list-item')
-export class VWCListItem extends MWCListItem { }
+export class VWCListItem extends MWCListItem {}

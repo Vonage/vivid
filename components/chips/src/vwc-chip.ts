@@ -49,12 +49,15 @@ export class VWCChip extends MWCChip {
 	// }
 	renderThumbnail(): TemplateResult {
 		if (this.icon) {
-			return html`<vwc-icon size="small" type="${this.icon}" class="leading"></vwc-icon>`;
+			return html`<vwc-icon
+				size="small"
+				type="${this.icon}"
+				class="leading"
+			></vwc-icon>`;
 		} else if (this.childElementCount > 0) {
-			return html`
-        <span class="mdc-chip__icon mdc-chip__icon--leading">
-          <slot name="thumbnail"></slot>
-        </span>`;
+			return html` <span class="mdc-chip__icon mdc-chip__icon--leading">
+				<slot name="thumbnail"></slot>
+			</span>`;
 		} else {
 			return html``;
 		}
@@ -63,17 +66,20 @@ export class VWCChip extends MWCChip {
 	renderRemoveIcon(): TemplateResult {
 		const classes = {
 			'mdc-chip__trailing-action': this.removeIconFocusable,
-			[this.removeIconClass]: true
+			[this.removeIconClass]: true,
 		};
 
-		const icon = html`${this.removable ? html`
-      <i class="mdc-chip__icon mdc-chip__icon--trailing ${classMap(classes)}"
-        tabindex="-1"
-        role=${ifDefined(this.removeIconFocusable ? 'button' : undefined)}
-        aria-hidden=${ifDefined(this.removeIconFocusable ? undefined : 'true')}
-        @click=${this.clickHandler}
-        @keydown=${this.clickHandler}
-      ><vwc-icon size="small" class="trailing" type="cross-circle-negative"/></i>` : nothing}`;
+		const icon = html`${this.removable
+			? html` <i
+					class="mdc-chip__icon mdc-chip__icon--trailing ${classMap(classes)}"
+					tabindex="-1"
+					role=${ifDefined(this.removeIconFocusable ? 'button' : undefined)}
+					aria-hidden=${ifDefined(this.removeIconFocusable ? undefined : 'true')}
+					@click=${this.clickHandler}
+					@keydown=${this.clickHandler}
+					><vwc-icon size="small" class="trailing" type="cross-circle-negative"
+			  /></i>`
+			: nothing}`;
 
 		if (this.removeIconFocusable) {
 			return html`<span role="gridcell">${icon}</span>`;

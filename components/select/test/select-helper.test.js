@@ -1,6 +1,11 @@
 import '../vwc-select.js';
 import '@vonage/vwc-list/vwc-list-item.js';
-import { textToDomToParent, waitNextTask, waitInterval, assertComputedStyle } from '../../../test/test-helpers.js';
+import {
+	textToDomToParent,
+	waitNextTask,
+	waitInterval,
+	assertComputedStyle,
+} from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
@@ -17,8 +22,7 @@ describe('select helper', () => {
 	});
 
 	it('should have a helper text visible', async () => {
-		const
-			helper = 'helper',
+		const helper = 'helper',
 			error = 'error';
 		addedElements = textToDomToParent(`
 			<${COMPONENT_NAME}
@@ -36,15 +40,16 @@ describe('select helper', () => {
 		await waitNextTask();
 
 		//	present, not seen
-		const helperLine = addedElements[0].shadowRoot.querySelector('.mdc-select-helper-text');
+		const helperLine = addedElements[0].shadowRoot.querySelector(
+			'.mdc-select-helper-text'
+		);
 		expect(helperLine).to.exist;
 		expect(helperLine.textContent).to.equal(helper);
 		assertComputedStyle(helperLine, { opacity: '1' });
 	});
 
 	it('should have helper error message visible when error', async () => {
-		const
-			helper = 'helper',
+		const helper = 'helper',
 			error = 'error';
 		addedElements = textToDomToParent(`
 			<${COMPONENT_NAME}
@@ -62,10 +67,14 @@ describe('select helper', () => {
 		await waitNextTask();
 
 		//	present helper, seen
-		let helperLine = addedElements[0].shadowRoot.querySelector('.mdc-select-helper-text');
+		let helperLine = addedElements[0].shadowRoot.querySelector(
+			'.mdc-select-helper-text'
+		);
 		expect(helperLine).to.exist;
 		expect(helperLine.textContent).to.equal(helper);
-		let errorLine = addedElements[0].shadowRoot.querySelector('.mdc-select-helper-text--validation-msg');
+		let errorLine = addedElements[0].shadowRoot.querySelector(
+			'.mdc-select-helper-text--validation-msg'
+		);
 		expect(errorLine).to.not.exist;
 		assertComputedStyle(helperLine, { opacity: '1' });
 
@@ -77,7 +86,9 @@ describe('select helper', () => {
 
 		await waitInterval(200);
 
-		errorLine = addedElements[0].shadowRoot.querySelector('.mdc-select-helper-text--validation-msg');
+		errorLine = addedElements[0].shadowRoot.querySelector(
+			'.mdc-select-helper-text--validation-msg'
+		);
 		expect(errorLine).to.exist;
 		expect(errorLine.textContent).to.equal(error);
 
@@ -89,7 +100,9 @@ describe('select helper', () => {
 
 		await waitInterval(200);
 
-		errorLine = addedElements[0].shadowRoot.querySelector('.mdc-select-helper-text--validation-msg');
+		errorLine = addedElements[0].shadowRoot.querySelector(
+			'.mdc-select-helper-text--validation-msg'
+		);
 		expect(errorLine).to.not.exist;
 		expect(helperLine.textContent).to.equal(helper);
 	});

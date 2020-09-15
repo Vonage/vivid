@@ -1,5 +1,9 @@
 import '../vwc-badge.js';
-import { waitNextTask, textToDomToParent, assertComputedStyle } from '../../../test/test-helpers.js';
+import {
+	waitNextTask,
+	textToDomToParent,
+	assertComputedStyle,
+} from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
@@ -10,11 +14,13 @@ describe('badge', () => {
 	let addedElements = [];
 
 	afterEach(() => {
-		addedElements.forEach(elm => elm.remove());
+		addedElements.forEach((elm) => elm.remove());
 	});
 
 	it('vwc-badge is defined as a custom element', async () => {
-		assert.exists(customElements.get(VWC_BADGE, 'vwc-badge element is not defined'));
+		assert.exists(
+			customElements.get(VWC_BADGE, 'vwc-badge element is not defined')
+		);
 	});
 
 	it('should internal contents', async () => {
@@ -30,20 +36,28 @@ describe('badge', () => {
 			await waitNextTask();
 			const badge = addedElements[0];
 
-			const syncMatchFn = connotation => badge.connotation == connotation && badge.getAttribute('connotation') == connotation;
+			const syncMatchFn = (connotation) =>
+				badge.connotation == connotation &&
+				badge.getAttribute('connotation') == connotation;
 
-			let connotationValue = "cta";
+			let connotationValue = 'cta';
 			badge.connotation = connotationValue;
 			await waitNextTask();
 			const propertyChangesAffectsAttribute = syncMatchFn(connotationValue);
 
-			connotationValue = "primary"
+			connotationValue = 'primary';
 			badge.setAttribute('connotation', connotationValue);
 			await waitNextTask();
 			const attributeChangesAffectsProperty = syncMatchFn(connotationValue);
 
-			expect(propertyChangesAffectsAttribute, "Property change did not apply to attribute").to.equal(true);
-			expect(attributeChangesAffectsProperty, "Attribute change did not apply to property").to.equal(true);
+			expect(
+				propertyChangesAffectsAttribute,
+				'Property change did not apply to attribute'
+			).to.equal(true);
+			expect(
+				attributeChangesAffectsProperty,
+				'Attribute change did not apply to property'
+			).to.equal(true);
 		});
 	});
 
@@ -61,7 +75,7 @@ describe('badge', () => {
 				fontStretch: '50%',
 				// lineHeight: 'calc(1ex / 0.32);', // TODO: [VIV-166] line-height value contains runtime calculated value and depend on x-height of font (which may vary with the existence of font-size-adjust property). an alternative to existing test should be defined.
 				letterSpacing: 'normal',
-				textTransform: 'none'
+				textTransform: 'none',
 			};
 			assertComputedStyle(badge, expectedStyles);
 		});

@@ -1,5 +1,5 @@
 {
-  "tabWidth": 2,
-	"useTabs": false,
+  "tabWidth": 1,
+	"useTabs": true,
 	"singleQuote": true
 }

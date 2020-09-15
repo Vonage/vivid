@@ -29,6 +29,9 @@ describe('test vvd-fonts service', () => {
 		//	third, measure the element again (now should have non-monospaced fonting)
 		const postWidth = testElement.offsetWidth;
 
-		assert.isTrue(postWidth !== monoWidth, 'element width after should be other than before');
+		assert.isTrue(
+			postWidth !== monoWidth,
+			'element width after should be other than before'
+		);
 	});
 });
