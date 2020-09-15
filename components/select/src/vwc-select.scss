@@ -74,6 +74,26 @@ $vvd-select-size-block: --vvd-text-field-size-block;
   }
 }
 
+:host([dense][label]) {
+  padding-top: 24px;
+
+  .mdc-select {
+    .mdc-floating-label {
+      font-size: 0.875rem;
+      left: -12px;
+      top: -24px;
+      transform: none;
+    }
+
+    .mdc-floating-label,
+    &--invalid.mdc-select--outlined .mdc-floating-label,
+    &:not(.mdc-select--invalid):not(.mdc-select--focused) .mdc-floating-label,
+    &:not(.mdc-select--invalid).mdc-select--focused .mdc-floating-label {
+      color: var(--mdc-select-ink-color);
+    }
+  }
+}
+
 .mdc-select {
   border-radius: var(--mdc-shape-small);
 
