@@ -78,21 +78,22 @@ function setInputUpdateEvent({
 	});
 }
 
-function isElementRemoved(mutations: MutationRecord[], element: any) {
-	return (
-		mutations.filter((mutation: MutationRecord) =>
-			[...mutation.removedNodes].find(
-				(removedElement) => removedElement === element
-			)
-		).length > 0
-	);
-}
+const cleanupFunctionFactory = (
+	hiddenInput: HTMLInputElement,
+	hostingForm: HTMLFormElement,
+	resetFormHandler: any
+) => {
+	return () => {
+		hiddenInput.remove();
+		hostingForm?.removeEventListener('reset', resetFormHandler);
+	};
+};
 
 export function addInputToForm(
 	inputElement: HTMLInputElement,
 	innerInputElement: HTMLInputElement,
 	hiddenType: HiddenInputType[number] = 'input'
-): void {
+) {
 	const hostingForm = getFormByIdOrClosest(inputElement);
 
 	if (!hostingForm || !inputElement) {
@@ -105,13 +106,6 @@ export function addInputToForm(
 		innerInputElement,
 		hiddenInput
 	);
-	const handleInputElementRemove = (mutations: MutationRecord[]) => {
-		if (isElementRemoved(mutations, inputElement)) {
-			hiddenInput.remove();
-			hostingForm?.removeEventListener('reset', resetFormHandler);
-			elementObserver.disconnect();
-		}
-	};
 
 	setValueAndValidity(
 		hiddenInput,
@@ -120,10 +114,6 @@ export function addInputToForm(
 	);
 
 	hostingForm.addEventListener('reset', resetFormHandler);
-	const elementObserver = new MutationObserver(handleInputElementRemove);
-	if (inputElement.parentNode) {
-		elementObserver.observe(inputElement.parentNode, { childList: true });
-	}
 
 	silenceInvalidEvent(hiddenInput);
 
@@ -140,4 +130,6 @@ export function addInputToForm(
 		innerInputElement,
 		hiddenInput,
 	});
+
+	return cleanupFunctionFactory(hiddenInput, hostingForm, resetFormHandler);
 }

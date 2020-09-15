@@ -211,7 +211,12 @@ describe(`Form Association Foundation`, function () {
 				return document.querySelector(`input[name="${fieldName}"]`);
 			}
 
-			let inputElementWrapper, hiddenInput, fieldName, formElement, defaultValue;
+			let inputElementWrapper,
+				hiddenInput,
+				fieldName,
+				formElement,
+				defaultValue,
+				cleanupFunction;
 
 			beforeEach(function () {
 				fieldName = 'fieldName';
@@ -228,13 +233,16 @@ describe(`Form Association Foundation`, function () {
 					value: defaultValue,
 				});
 
-				addInputToForm(inputElementWrapper, inputElementWrapper.formElement);
+				cleanupFunction = addInputToForm(
+					inputElementWrapper,
+					inputElementWrapper.formElement
+				);
 
 				hiddenInput = getHiddenInput(fieldName);
 			});
 
 			it(`should remove hidden input on removal from the DOM`, async function () {
-				inputElementWrapper.remove();
+				cleanupFunction();
 				await waitNextTask();
 				expect(hiddenInput !== null).to.equal(true);
 				expect(getHiddenInput(fieldName)).to.equal(null);
