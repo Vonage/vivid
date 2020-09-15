@@ -1,3 +1,4 @@
+import '@vonage/vwc-scheme-select';
 import '@storybook/addon-console';
 import { addParameters, setCustomElements } from '@storybook/web-components';
 import customElements from '../custom-elements.json';
