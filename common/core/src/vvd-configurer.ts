@@ -13,7 +13,7 @@ import { SchemeOption } from '@vonage/vvd-scheme';
 
 const VVD_CONTEXT_ATTRIBUTE = 'data-vvd-context',
 	MANUAL_KEY = 'manual',
-	VALID_CONFIGURATION_KEYS = ['fonts', 'scheme'];
+	VALID_CONFIGURATION_KEYS = [MANUAL_KEY, 'fonts', 'scheme'];
 
 export interface Configuration {
 	manual: boolean;
@@ -44,7 +44,7 @@ function validateConfiguration(configuration: Partial<Configuration>) {
 
 	if (extraParams.length) {
 		throw new Error(
-			`unexpected configuration parts '${extraParams}',	only some of '${VALID_CONFIGURATION_KEYS}' expected`
+			`unexpected configuration part/s '${extraParams}',	only some of '${VALID_CONFIGURATION_KEYS}' expected`
 		);
 	}
 }
