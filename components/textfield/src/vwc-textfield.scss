@@ -82,7 +82,7 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
   }
 }
 
-:host([dense][label]) {
+:host([dense][label]:not([label=''])) {
   padding-top: 24px;
 
   .mdc-text-field {

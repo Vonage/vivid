@@ -5,6 +5,12 @@ export const argTypes = {
       options: { true: '', false: undefined },
     },
   },
+  dense: {
+    control: {
+      type: 'inline-radio',
+      options: { true: '', false: undefined },
+    },
+  },
   disabled: {
     control: {
       type: 'inline-radio',

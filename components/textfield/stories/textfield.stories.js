@@ -17,10 +17,10 @@ export const Default = Template.bind({});
 Default.args = { outlined: '', label: 'e.g. username' };
 
 export const Dense = Template.bind({});
-Dense.args = { outlined: '', dense: '', label: 'Label', placeholder: 'e.g. username' };
+Dense.args = { outlined: '', dense: '', label: 'VWC Textfield' };
 
 export const PillShape = Template.bind({});
-PillShape.args = { outlined: '', shape: 'pill', dense: '', placeholder: 'e.g. username' };
+PillShape.args = { outlined: '', shape: 'pill', dense: '' };
 
 export const Disabled = Template.bind({});
 Disabled.args = { outlined: '', disabled: '', label: 'Hint test', value: 'Text' };

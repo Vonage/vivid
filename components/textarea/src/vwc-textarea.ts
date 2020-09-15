@@ -22,6 +22,9 @@ MWCTextArea.styles = [styleCoupling, mwcTextareaStyle, vwcTextareaStyle];
  */
 @customElement('vwc-textarea')
 export class VWCTextArea extends MWCTextArea {
+	@property({ type: Boolean, reflect: true })
+	dense = false;
+
 	@property({ type: String, reflect: true })
 	form: string | undefined;
 

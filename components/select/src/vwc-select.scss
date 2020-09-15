@@ -1,7 +1,7 @@
 @forward './vwc-select-coupling';
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 
-$vvd-select-size-block: --vvd-text-field-size-block;
+$vvd-select-size-block: --vvd-select-size-block;
 
 :host {
   --mdc-theme-primary: var(--vvd-color-alternate-primary-background);
