@@ -70,6 +70,8 @@ export class VWCButton extends MWCButton {
 				case 'reset':
 					form.reset();
 					break;
+				case 'button':
+					break;
 				default:
 					form.requestSubmit();
 					break;
