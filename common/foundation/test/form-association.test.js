@@ -15,6 +15,14 @@ function setInputElementAttributes(inputElement, attrs = {}, domAttrs = {}) {
 	});
 }
 
+async function changeFieldValue(actualElement, value, eventName = 'change') {
+	actualElement.value = value.toString();
+	await waitNextTask();
+
+	let evt = new Event(eventName);
+	actualElement.dispatchEvent(evt);
+}
+
 describe(`Form Association Foundation`, function () {
 	let addedElements = [];
 
@@ -243,7 +251,6 @@ describe(`Form Association Foundation`, function () {
 
 			it(`should remove hidden input on removal from the DOM`, async function () {
 				cleanupFunction();
-				await waitNextTask();
 				expect(hiddenInput !== null).to.equal(true);
 				expect(getHiddenInput(fieldName)).to.equal(null);
 			});
@@ -251,22 +258,26 @@ describe(`Form Association Foundation`, function () {
 			it(`should remove external event listeners on removal from DOM`, async function () {
 				const inputElementValue = '5';
 
-				inputElementWrapper.value = inputElementWrapper.formElement.value = inputElementValue;
-				inputElementWrapper.dispatchEvent(new Event('change'));
-				expect(hiddenInput.value).to.equal(inputElementValue);
+				await changeFieldValue(inputElementWrapper, inputElementValue, 'change');
+				const inputAfterFirstChange = hiddenInput.value;
 
 				formElement.reset();
-				expect(hiddenInput.value).to.equal(defaultValue);
+				const inputAfterBoundReset = hiddenInput.value;
 
-				inputElementWrapper.value = inputElementWrapper.formElement.value = inputElementValue;
-				inputElementWrapper.dispatchEvent(new Event('change'));
-				expect(hiddenInput.value).to.equal(inputElementValue);
+				await changeFieldValue(inputElementWrapper, inputElementValue, 'change');
+				const inputAfterSecondChange = hiddenInput.value;
 
 				cleanupFunction();
-				await waitNextTask();
-				formElement.reset();
 
-				expect(hiddenInput.value).to.equal(inputElementValue);
+				formElement.reset();
+				const inputAfterUnBoundReset = hiddenInput.value;
+
+				expect(inputAfterFirstChange).to.equal(inputElementValue);
+				expect(inputAfterBoundReset, 'Reset is not bound!').to.equal(defaultValue);
+				expect(inputAfterSecondChange).to.equal(inputElementValue);
+				expect(inputAfterUnBoundReset, 'Reset is still bound!').to.equal(
+					inputElementValue
+				);
 			});
 		});
 	});
