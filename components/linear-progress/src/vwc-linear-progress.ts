@@ -5,17 +5,17 @@ import { style as mwcLinearProgressStyle } from '@material/mwc-linear-progress/m
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'vwc-linear-progress': VWCLinearProgress;
-  }
+	interface HTMLElementTagNameMap {
+		'vwc-linear-progress': VWCLinearProgress;
+	}
 }
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 MWCLinearProgress.styles = [
-  styleCoupling,
-  mwcLinearProgressStyle,
-  vwcLinearProgressStyle,
+	styleCoupling,
+	mwcLinearProgressStyle,
+	vwcLinearProgressStyle,
 ];
 
 @customElement('vwc-linear-progress')

@@ -1,9 +1,9 @@
 import { customElement } from 'lit-element';
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'vwc-carousel-item': VWCCarouselItem;
-  }
+	interface HTMLElementTagNameMap {
+		'vwc-carousel-item': VWCCarouselItem;
+	}
 }
 
 /**

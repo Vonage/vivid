@@ -5,9 +5,9 @@ import { style as mwcDrawerStyle } from '@material/mwc-drawer/mwc-drawer-css.js'
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'vwc-drawer': VWCDrawer;
-  }
+	interface HTMLElementTagNameMap {
+		'vwc-drawer': VWCDrawer;
+	}
 }
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */

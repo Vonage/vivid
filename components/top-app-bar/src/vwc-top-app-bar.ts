@@ -6,9 +6,9 @@ import { style as VWCTopAppBarStyle } from './vwc-top-app-bar.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'vwc-top-app-bar': VWCTopAppBar;
-  }
+	interface HTMLElementTagNameMap {
+		'vwc-top-app-bar': VWCTopAppBar;
+	}
 }
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */

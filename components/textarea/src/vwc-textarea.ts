@@ -8,9 +8,9 @@ import { style as mwcTextareaStyle } from '@material/mwc-textarea/mwc-textarea-c
 import { addInputToForm } from '@vonage/vvd-foundation/form-association';
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'vwc-textarea': VWCTextArea;
-  }
+	interface HTMLElementTagNameMap {
+		'vwc-textarea': VWCTextArea;
+	}
 }
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
@@ -22,50 +22,48 @@ MWCTextArea.styles = [styleCoupling, mwcTextareaStyle, vwcTextareaStyle];
  */
 @customElement('vwc-textarea')
 export class VWCTextArea extends MWCTextArea {
-  @property({ type: String, reflect: true })
-  form: string | undefined;
+	@property({ type: String, reflect: true })
+	form: string | undefined;
 
-  async firstUpdated(): Promise<void> {
-    await super.firstUpdated();
-    addInputToForm(this, 'textarea');
-  }
+	async firstUpdated(): Promise<void> {
+		await super.firstUpdated();
+		addInputToForm(this, 'textarea');
+	}
 
-  protected renderOutline(): TemplateResult | Record<string, unknown> {
-    if (!this.outlined) {
-      return {};
-    }
+	protected renderOutline(): TemplateResult | Record<string, unknown> {
+		if (!this.outlined) {
+			return {};
+		}
 
-    return html` <vwc-notched-outline class="mdc-notched-outline vvd-notch">
-      ${this.renderLabel()}
-    </vwc-notched-outline>`;
-  }
+		return html` <vwc-notched-outline class="mdc-notched-outline vvd-notch">
+			${this.renderLabel()}
+		</vwc-notched-outline>`;
+	}
 
-  renderHelperText(charCounterTemplate = {}): TemplateResult {
-    if (!this.shouldRenderHelperText) {
-      return html``;
-    }
-    const showValidationMessage = this.validationMessage && !this.isUiValid;
-    const classesMap = {
-      'mdc-text-field-helper-text--persistent': this.helperPersistent,
-      'mdc-text-field-helper-text--validation-msg': showValidationMessage,
-    };
-    return html`
-      <div class="mdc-text-field-helper-line">
-        <vwc-icon
-          class="mdc-text-field-helper-icon"
-          type="info-negative"
-          size="small"
-        ></vwc-icon>
-        <span class="spacer"></span>
-        <div
-          class="mdc-text-field-helper-text ${mapToClasses(classesMap).join(
-            ' '
-          )}"
-        >
-          ${showValidationMessage ? this.validationMessage : this.helper}
-        </div>
-        ${charCounterTemplate}
-      </div>
-    `;
-  }
+	renderHelperText(charCounterTemplate = {}): TemplateResult {
+		if (!this.shouldRenderHelperText) {
+			return html``;
+		}
+		const showValidationMessage = this.validationMessage && !this.isUiValid;
+		const classesMap = {
+			'mdc-text-field-helper-text--persistent': this.helperPersistent,
+			'mdc-text-field-helper-text--validation-msg': showValidationMessage,
+		};
+		return html`
+			<div class="mdc-text-field-helper-line">
+				<vwc-icon
+					class="mdc-text-field-helper-icon"
+					type="info-negative"
+					size="small"
+				></vwc-icon>
+				<span class="spacer"></span>
+				<div
+					class="mdc-text-field-helper-text ${mapToClasses(classesMap).join(' ')}"
+				>
+					${showValidationMessage ? this.validationMessage : this.helper}
+				</div>
+				${charCounterTemplate}
+			</div>
+		`;
+	}
 }

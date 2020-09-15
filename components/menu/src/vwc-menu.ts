@@ -6,9 +6,9 @@ import { style as mwcMenuStyle } from '@material/mwc-menu/mwc-menu-css.js';
 import { style as vwcMenuStyle } from './vwc-menu.css';
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'vwc-menu': VWCMenu;
-  }
+	interface HTMLElementTagNameMap {
+		'vwc-menu': VWCMenu;
+	}
 }
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
@@ -20,10 +20,10 @@ MWCMenu.styles = [mwcMenuStyle, vwcMenuStyle];
  */
 @customElement('vwc-menu')
 export class VWCMenu extends MWCMenu {
-  protected onAction(evt: CustomEvent<ActionDetail>): void {
-    const hitItem = (evt.target as MWCMenu).items[evt.detail.index];
-    if (!hitItem || !hitItem.hasAttribute('cascader')) {
-      super.onAction(evt);
-    }
-  }
+	protected onAction(evt: CustomEvent<ActionDetail>): void {
+		const hitItem = (evt.target as MWCMenu).items[evt.detail.index];
+		if (!hitItem || !hitItem.hasAttribute('cascader')) {
+			super.onAction(evt);
+		}
+	}
 }

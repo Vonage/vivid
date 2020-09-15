@@ -5,9 +5,9 @@ import { style as vwcRadioStyle } from './vwc-radio.css';
 import { style as mwcRadioStyle } from '@material/mwc-radio/mwc-radio-css.js';
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'vwc-radio': VWCRadio;
-  }
+	interface HTMLElementTagNameMap {
+		'vwc-radio': VWCRadio;
+	}
 }
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */

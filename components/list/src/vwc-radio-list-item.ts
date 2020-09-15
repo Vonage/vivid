@@ -6,18 +6,18 @@ import { style as vwcRadioListItemStyle } from './vwc-radio-list-item.css';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'vwc-radio-list-item': VWCRadioListItem;
-  }
+	interface HTMLElementTagNameMap {
+		'vwc-radio-list-item': VWCRadioListItem;
+	}
 }
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 MWCRadioListItem.styles = [
-  styleCoupling,
-  mwcListItemStyle,
-  mwcControlListItemStyle,
-  vwcRadioListItemStyle,
+	styleCoupling,
+	mwcListItemStyle,
+	mwcControlListItemStyle,
+	vwcRadioListItemStyle,
 ];
 
 /**

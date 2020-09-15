@@ -4,9 +4,9 @@ import { style as mwcNotchedOutlineStyle } from '@material/mwc-notched-outline/m
 import { style as vwcNotchedOutlineStyle } from './vwc-notched-outline.css';
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'vwc-notched-outline': VWCNotchedOutline;
-  }
+	interface HTMLElementTagNameMap {
+		'vwc-notched-outline': VWCNotchedOutline;
+	}
 }
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */

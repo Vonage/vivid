@@ -4,9 +4,9 @@ import { style as mwcCircularProgressStyle } from '@material/mwc-circular-progre
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'vwc-circular-progress': VWCCircularProgress;
-  }
+	interface HTMLElementTagNameMap {
+		'vwc-circular-progress': VWCCircularProgress;
+	}
 }
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */

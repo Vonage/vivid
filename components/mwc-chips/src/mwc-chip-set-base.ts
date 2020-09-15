@@ -19,10 +19,10 @@ import { observer } from '@material/mwc-base/observer.js';
 import { announce } from '@material/dom/announce';
 import { addHasRemoveClass } from '@material/mwc-base/utils.js';
 import {
-  MDCChipInteractionEvent,
-  MDCChipSelectionEvent,
-  MDCChipRemovalEvent,
-  MDCChipNavigationEvent,
+	MDCChipInteractionEvent,
+	MDCChipSelectionEvent,
+	MDCChipRemovalEvent,
+	MDCChipNavigationEvent,
 } from '@material/chips/chip/types';
 import { MDCChipSetAdapter } from '@material/chips/chip-set/adapter.js';
 import { MDCChipSetFoundation } from '@material/chips/chip-set/foundation.js';
@@ -33,159 +33,159 @@ import { ChipBase, ChipType } from './mwc-chip-base.js';
 let chipIdCounter = 0;
 
 export class ChipSetBase extends BaseElement {
-  @query('.mdc-chip-set') protected mdcRoot!: HTMLElement;
-  protected mdcFoundation!: MDCChipSetFoundation;
-  protected readonly mdcFoundationClass = MDCChipSetFoundation;
+	@query('.mdc-chip-set') protected mdcRoot!: HTMLElement;
+	protected mdcFoundation!: MDCChipSetFoundation;
+	protected readonly mdcFoundationClass = MDCChipSetFoundation;
 
-  @property()
-  @observer(function (this: ChipSetBase, value: ChipType) {
-    for (let chip of this.chipsArray) {
-      chip.type = value;
-    }
-  })
-  type?: ChipType;
+	@property()
+	@observer(function (this: ChipSetBase, value: ChipType) {
+		for (let chip of this.chipsArray) {
+			chip.type = value;
+		}
+	})
+	type?: ChipType;
 
-  get chips(): ReadonlyArray<ChipBase> {
-    return this.chipsArray.slice();
-  }
+	get chips(): ReadonlyArray<ChipBase> {
+		return this.chipsArray.slice();
+	}
 
-  private chipsArray: ChipBase[] = [];
-  private chipsObserver = new MutationObserver(() => this.syncChips());
+	private chipsArray: ChipBase[] = [];
+	private chipsObserver = new MutationObserver(() => this.syncChips());
 
-  protected createAdapter(): MDCChipSetAdapter {
-    return {
-      hasClass: addHasRemoveClass(this.mdcRoot).hasClass,
-      announceMessage: function (message) {
-        announce(message);
-      },
-      removeChipAtIndex: (index) => {
-        const chip = this.chipsArray[index];
-        if (chip) {
-          if (chip.parentNode) {
-            chip.parentNode.removeChild(chip);
-          }
+	protected createAdapter(): MDCChipSetAdapter {
+		return {
+			hasClass: addHasRemoveClass(this.mdcRoot).hasClass,
+			announceMessage: function (message) {
+				announce(message);
+			},
+			removeChipAtIndex: (index) => {
+				const chip = this.chipsArray[index];
+				if (chip) {
+					if (chip.parentNode) {
+						chip.parentNode.removeChild(chip);
+					}
 
-          this.chipsArray.splice(index, 1);
-        }
-      },
-      selectChipAtIndex: (index, isSelected, shouldNotifyClients) => {
-        const chip = this.chipsArray[index];
-        if (chip) {
-          chip.setSelectedFromChipSet(isSelected, shouldNotifyClients);
-        }
-      },
-      getIndexOfChipById: (chipId) => {
-        for (let i = 0; i < this.chipsArray.length; i++) {
-          if (this.chipsArray[i].id === chipId) {
-            return i;
-          }
-        }
+					this.chipsArray.splice(index, 1);
+				}
+			},
+			selectChipAtIndex: (index, isSelected, shouldNotifyClients) => {
+				const chip = this.chipsArray[index];
+				if (chip) {
+					chip.setSelectedFromChipSet(isSelected, shouldNotifyClients);
+				}
+			},
+			getIndexOfChipById: (chipId) => {
+				for (let i = 0; i < this.chipsArray.length; i++) {
+					if (this.chipsArray[i].id === chipId) {
+						return i;
+					}
+				}
 
-        return -1;
-      },
-      focusChipPrimaryActionAtIndex: (index) => {
-        const chip = this.chipsArray[index];
-        if (chip) {
-          chip.focusPrimaryAction();
-        }
-      },
-      focusChipTrailingActionAtIndex: (index) => {
-        const chip = this.chipsArray[index];
-        if (chip) {
-          this.chipsArray[index].focusTrailingAction();
-        }
-      },
-      removeFocusFromChipAtIndex: (index) => {
-        const chip = this.chipsArray[index];
-        if (chip) {
-          this.chipsArray[index].removeFocus();
-        }
-      },
-      isRTL: () =>
-        getComputedStyle(this.mdcRoot).getPropertyValue('direction') === 'rtl',
-      getChipListCount: () => this.chipsArray.length,
-    };
-  }
+				return -1;
+			},
+			focusChipPrimaryActionAtIndex: (index) => {
+				const chip = this.chipsArray[index];
+				if (chip) {
+					chip.focusPrimaryAction();
+				}
+			},
+			focusChipTrailingActionAtIndex: (index) => {
+				const chip = this.chipsArray[index];
+				if (chip) {
+					this.chipsArray[index].focusTrailingAction();
+				}
+			},
+			removeFocusFromChipAtIndex: (index) => {
+				const chip = this.chipsArray[index];
+				if (chip) {
+					this.chipsArray[index].removeFocus();
+				}
+			},
+			isRTL: () =>
+				getComputedStyle(this.mdcRoot).getPropertyValue('direction') === 'rtl',
+			getChipListCount: () => this.chipsArray.length,
+		};
+	}
 
-  connectedCallback() {
-    super.connectedCallback();
-    this.chipsObserver.observe(this, {
-      childList: true,
-      subtree: true,
-    });
+	connectedCallback() {
+		super.connectedCallback();
+		this.chipsObserver.observe(this, {
+			childList: true,
+			subtree: true,
+		});
 
-    this.syncChips();
-  }
+		this.syncChips();
+	}
 
-  disconnectedCallback() {
-    super.disconnectedCallback();
-    this.chipsObserver.disconnect();
-  }
+	disconnectedCallback() {
+		super.disconnectedCallback();
+		this.chipsObserver.disconnect();
+	}
 
-  render() {
-    const classes = {
-      'mdc-ship-set--input': this.type === 'input',
-      'mdc-chip-set--choice': this.type === 'choice',
-      'mdc-chip-set--filter': this.type === 'filter',
-    };
+	render() {
+		const classes = {
+			'mdc-ship-set--input': this.type === 'input',
+			'mdc-chip-set--choice': this.type === 'choice',
+			'mdc-chip-set--filter': this.type === 'filter',
+		};
 
-    return html` <div
-      class="mdc-chip-set ${classMap(classes)}"
-      @MDCChip:interaction=${this.handleChipInteraction}
-      @MDCChip:navigation=${this.handleChipNavigation}
-      @MDCChip:removal=${this.handleChipRemoval}
-      @MDCChip:selection=${this.handleChipSelection}
-    >
-      <slot></slot>
-    </div>`;
-  }
+		return html` <div
+			class="mdc-chip-set ${classMap(classes)}"
+			@MDCChip:interaction=${this.handleChipInteraction}
+			@MDCChip:navigation=${this.handleChipNavigation}
+			@MDCChip:removal=${this.handleChipRemoval}
+			@MDCChip:selection=${this.handleChipSelection}
+		>
+			<slot></slot>
+		</div>`;
+	}
 
-  protected syncChips() {
-    const chips = this.queryChips();
-    for (let chip of chips) {
-      chip.type = this.type;
-      chip.id = chip.id || this.nextChipId();
-      if (chip.selected) {
-        this.mdcFoundation.select(chip.id);
-      }
-    }
+	protected syncChips() {
+		const chips = this.queryChips();
+		for (let chip of chips) {
+			chip.type = this.type;
+			chip.id = chip.id || this.nextChipId();
+			if (chip.selected) {
+				this.mdcFoundation.select(chip.id);
+			}
+		}
 
-    this.chipsArray = chips;
-  }
+		this.chipsArray = chips;
+	}
 
-  protected nextChipId() {
-    return `mwc-chip-${++chipIdCounter}`;
-  }
+	protected nextChipId() {
+		return `mwc-chip-${++chipIdCounter}`;
+	}
 
-  protected queryChips() {
-    const chips: ChipBase[] = [];
-    const collectChips = (root: Element) => {
-      for (let child of Array.from(root.children)) {
-        if (child instanceof ChipBase) {
-          chips.push(child);
-        } else {
-          collectChips(child);
-        }
-      }
-    };
+	protected queryChips() {
+		const chips: ChipBase[] = [];
+		const collectChips = (root: Element) => {
+			for (let child of Array.from(root.children)) {
+				if (child instanceof ChipBase) {
+					chips.push(child);
+				} else {
+					collectChips(child);
+				}
+			}
+		};
 
-    collectChips(this);
-    return chips;
-  }
+		collectChips(this);
+		return chips;
+	}
 
-  private handleChipInteraction(e: MDCChipInteractionEvent) {
-    this.mdcFoundation.handleChipInteraction(e.detail);
-  }
+	private handleChipInteraction(e: MDCChipInteractionEvent) {
+		this.mdcFoundation.handleChipInteraction(e.detail);
+	}
 
-  private handleChipSelection(e: MDCChipSelectionEvent) {
-    this.mdcFoundation.handleChipSelection(e.detail);
-  }
+	private handleChipSelection(e: MDCChipSelectionEvent) {
+		this.mdcFoundation.handleChipSelection(e.detail);
+	}
 
-  private handleChipRemoval(e: MDCChipRemovalEvent) {
-    this.mdcFoundation.handleChipRemoval(e.detail);
-  }
+	private handleChipRemoval(e: MDCChipRemovalEvent) {
+		this.mdcFoundation.handleChipRemoval(e.detail);
+	}
 
-  private handleChipNavigation(e: MDCChipNavigationEvent) {
-    this.mdcFoundation.handleChipNavigation(e.detail);
-  }
+	private handleChipNavigation(e: MDCChipNavigationEvent) {
+		this.mdcFoundation.handleChipNavigation(e.detail);
+	}
 }

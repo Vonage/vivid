@@ -7,9 +7,9 @@ import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-cou
 import '@vonage/vwc-icon';
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'vwc-fab': VWCFab;
-  }
+	interface HTMLElementTagNameMap {
+		'vwc-fab': VWCFab;
+	}
 }
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
@@ -24,16 +24,16 @@ export type FabConnotation = typeof connotations;
  */
 @customElement('vwc-fab')
 export class VWCFab extends MWCFab {
-  @property({ type: String, reflect: true })
-  connotation?: FabConnotation[number] | undefined;
+	@property({ type: String, reflect: true })
+	connotation?: FabConnotation[number] | undefined;
 
-  protected renderIcon(): TemplateResult {
-    return html`${this.icon
-      ? html`<vwc-icon
-          class="mdc-fab__icon"
-          type="${this.icon}"
-          size="${this.mini ? 'small' : 'medium'}"
-        ></vwc-icon>`
-      : ''}`;
-  }
+	protected renderIcon(): TemplateResult {
+		return html`${this.icon
+			? html`<vwc-icon
+					class="mdc-fab__icon"
+					type="${this.icon}"
+					size="${this.mini ? 'small' : 'medium'}"
+			  ></vwc-icon>`
+			: ''}`;
+	}
 }

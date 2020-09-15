@@ -5,9 +5,9 @@ import { style as mwcFormfieldStyle } from '@material/mwc-formfield/mwc-formfiel
 import { style as styleCoupling } from '@vonage/vvd-style-coupling';
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'vwc-formfield': VWCFormfield;
-  }
+	interface HTMLElementTagNameMap {
+		'vwc-formfield': VWCFormfield;
+	}
 }
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */

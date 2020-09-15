@@ -5,9 +5,9 @@ import { style as mwcListItemStyle } from '@material/mwc-list/mwc-list-item-css.
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'vwc-list-item': VWCListItem;
-  }
+	interface HTMLElementTagNameMap {
+		'vwc-list-item': VWCListItem;
+	}
 }
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */

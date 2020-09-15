@@ -5,9 +5,9 @@ import { style as mwcChipSetStyle } from '@material/mwc-chips/mwc-chip-set.css.j
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'vwc-chip-set': VWCChipSet;
-  }
+	interface HTMLElementTagNameMap {
+		'vwc-chip-set': VWCChipSet;
+	}
 }
 
 /**

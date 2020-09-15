@@ -6,18 +6,18 @@ import { style as vwcCheckListItemStyle } from './vwc-check-list-item.css';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'vwc-check-list-item': VWCCheckListItem;
-  }
+	interface HTMLElementTagNameMap {
+		'vwc-check-list-item': VWCCheckListItem;
+	}
 }
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 MWCCheckListItem.styles = [
-  styleCoupling,
-  mwcListItemStyle,
-  mwcControlListItemStyle,
-  vwcCheckListItemStyle,
+	styleCoupling,
+	mwcListItemStyle,
+	mwcControlListItemStyle,
+	vwcCheckListItemStyle,
 ];
 
 /**

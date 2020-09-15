@@ -3,9 +3,9 @@ import { customElement } from 'lit-element';
 import { TopAppBarFixed as MWCTopAppBarFixed } from '@material/mwc-top-app-bar-fixed';
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'vwc-top-app-bar-fixed': VWCTopAppBarFixed;
-  }
+	interface HTMLElementTagNameMap {
+		'vwc-top-app-bar-fixed': VWCTopAppBarFixed;
+	}
 }
 
 /**
