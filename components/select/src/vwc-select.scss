@@ -74,7 +74,7 @@ $vvd-select-size-block: --vvd-select-size-block;
   }
 }
 
-:host([dense][label]) {
+:host([dense][label]:not([label=''])) {
   padding-top: 24px;
 
   .mdc-select {
