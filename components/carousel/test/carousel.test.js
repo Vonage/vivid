@@ -1,21 +1,33 @@
 import '../vwc-carousel.js';
-import { textToDomToParent, waitNextTask, waitInterval } from '../../../test/test-helpers.js';
+import {
+	textToDomToParent,
+	waitNextTask,
+	waitInterval,
+} from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 chai.use(chaiDomDiff);
 
-const
-	VWC_CAROUSEL = 'vwc-carousel',
+const VWC_CAROUSEL = 'vwc-carousel',
 	VWC_CAROUSEL_ITEM = 'vwc-carousel-item';
 
 describe('carousel', () => {
 	it('vwc-carousel and vwc-carousel-item are defined as a custom element', () => {
-		assert.exists(customElements.get(VWC_CAROUSEL, 'vwc-carousel element is not defined'));
-		assert.exists(customElements.get(VWC_CAROUSEL_ITEM, 'vwc-carousel-item element is not defined'));
+		assert.exists(
+			customElements.get(VWC_CAROUSEL, 'vwc-carousel element is not defined')
+		);
+		assert.exists(
+			customElements.get(
+				VWC_CAROUSEL_ITEM,
+				'vwc-carousel-item element is not defined'
+			)
+		);
 	});
 
 	describe('init flow', () => {
 		it('should have the required elements', async () => {
-			const actualElements = textToDomToParent(`<${VWC_CAROUSEL} id="carousel-a"></${VWC_CAROUSEL}>`);
+			const actualElements = textToDomToParent(
+				`<${VWC_CAROUSEL} id="carousel-a"></${VWC_CAROUSEL}>`
+			);
 			await waitNextTask();
 			expect(actualElements[0]).dom.to.equalSnapshot();
 		});
@@ -119,14 +131,16 @@ describe('carousel', () => {
 			const nextButton = carousel.querySelector('.swiper-button-next');
 
 			const clicked = [];
-			slides.forEach(s => s.addEventListener('click', e => clicked.push(e.target)));
+			slides.forEach((s) =>
+				s.addEventListener('click', (e) => clicked.push(e.target))
+			);
 
 			nextButton.click();
 			nextButton.click();
 
 			await waitInterval(600);
 
-			slides.forEach(s => s.click());
+			slides.forEach((s) => s.click());
 			slides.forEach((s, i) => expect(s).to.equal(clicked[i]));
 		});
 	});
@@ -137,14 +151,20 @@ describe('carousel', () => {
  */
 function buildSlidesText(keys) {
 	return keys
-		.map(key => `<${VWC_CAROUSEL_ITEM} data-key="${key}">Slide ${key}</${VWC_CAROUSEL_ITEM}>`)
+		.map(
+			(key) =>
+				`<${VWC_CAROUSEL_ITEM} data-key="${key}">Slide ${key}</${VWC_CAROUSEL_ITEM}>`
+		)
 		.join();
 }
 
 function buildCarouselText(slidesText, options) {
-	const opts = Object.assign({
-		autoplay: false
-	}, options);
+	const opts = Object.assign(
+		{
+			autoplay: false,
+		},
+		options
+	);
 
 	return `
 		<${VWC_CAROUSEL} autoplay="${opts.autoplay}">
@@ -155,7 +175,9 @@ function buildCarouselText(slidesText, options) {
 
 async function initCarousel(slideKeys, carouselOptions) {
 	if (!slideKeys || !Array.isArray(slideKeys) || !slideKeys.length) {
-		throw new Error(`slide keys MUST be a non-empty array, received ${slideKeys}`);
+		throw new Error(
+			`slide keys MUST be a non-empty array, received ${slideKeys}`
+		);
 	}
 
 	const slidesText = buildSlidesText(slideKeys);

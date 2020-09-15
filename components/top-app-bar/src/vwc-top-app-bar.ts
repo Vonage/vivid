@@ -19,4 +19,4 @@ MWCTopAppBar.styles = [styleCoupling, MWCTopAppBarStyle, VWCTopAppBarStyle];
  * This component is an extension of [<mwc-top-app-bar>](https://github.com/material-components/material-components-web-components/tree/master/packages/top-app-bar)
  */
 @customElement('vwc-top-app-bar')
-export class VWCTopAppBar extends MWCTopAppBar { }
+export class VWCTopAppBar extends MWCTopAppBar {}

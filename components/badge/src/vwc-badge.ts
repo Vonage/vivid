@@ -6,11 +6,11 @@ import { style } from './vwc-badge.css.js';
 
 @customElement('vwc-badge')
 export class Badge extends BadgeBase {
-  static styles = style;
+	static styles = style;
 }
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'vwc-badge': Badge;
-  }
+	interface HTMLElementTagNameMap {
+		'vwc-badge': Badge;
+	}
 }

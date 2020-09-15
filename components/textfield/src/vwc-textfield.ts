@@ -39,17 +39,24 @@ export class VWCTextField extends MWCTextField {
 
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
-		this.shadowRoot?.querySelector('.mdc-notched-outline')?.shadowRoot?.querySelector('.mdc-notched-outline')?.classList.add('vvd-notch');
-		addInputToForm(this as unknown as HTMLInputElement, this.formElement);
+		this.shadowRoot
+			?.querySelector('.mdc-notched-outline')
+			?.shadowRoot?.querySelector('.mdc-notched-outline')
+			?.classList.add('vvd-notch');
+		addInputToForm((this as unknown) as HTMLInputElement, this.formElement);
 	}
 
 	protected renderIcon(icon: string, isTrailingIcon = false): TemplateResult {
 		const classes = {
 			'mdc-text-field__icon--leading': !isTrailingIcon,
-			'mdc-text-field__icon--trailing': isTrailingIcon
+			'mdc-text-field__icon--trailing': isTrailingIcon,
 		};
 
-		return html`<vwc-icon type="${icon}" size="small" class="${mapToClasses(classes).join(' ')}"></vwc-icon>`;
+		return html`<vwc-icon
+			type="${icon}"
+			size="small"
+			class="${mapToClasses(classes).join(' ')}"
+		></vwc-icon>`;
 	}
 
 	protected renderRipple(): TemplateResult {
@@ -65,10 +72,9 @@ export class VWCTextField extends MWCTextField {
 			return {};
 		}
 
-		return html`
-      <vwc-notched-outline class="mdc-notched-outline vvd-notch">
-        ${this.renderLabel()}
-      </vwc-notched-outline>`;
+		return html` <vwc-notched-outline class="mdc-notched-outline vvd-notch">
+			${this.renderLabel()}
+		</vwc-notched-outline>`;
 	}
 
 	renderHelperText(charCounterTemplate = {}): TemplateResult {
@@ -80,11 +86,22 @@ export class VWCTextField extends MWCTextField {
 			'mdc-text-field-helper-text--persistent': this.helperPersistent,
 			'mdc-text-field-helper-text--validation-msg': showValidationMessage,
 		};
+		const validationMessage = showValidationMessage
+			? this.validationMessage
+			: this.helper;
+		const classes = [
+			'mdc-text-field-helper-text',
+			...mapToClasses(classesMap),
+		].join(' ');
 		return html`
 			<div class="mdc-text-field-helper-line">
-				<vwc-icon class="mdc-text-field-helper-icon" type="info-negative" size="small"></vwc-icon>
+				<vwc-icon
+					class="mdc-text-field-helper-icon"
+					type="info-negative"
+					size="small"
+				></vwc-icon>
 				<span class="spacer"></span>
-				<div class="mdc-text-field-helper-text ${mapToClasses(classesMap).join(' ')}">${showValidationMessage ? this.validationMessage : this.helper}</div>
+				<div class="${classes}">${validationMessage}</div>
 				${charCounterTemplate}
 			</div>
 		`;
