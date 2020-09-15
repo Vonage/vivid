@@ -93,11 +93,13 @@ export function addInputToForm(
 	inputElement: HTMLInputElement,
 	innerInputElement: HTMLInputElement,
 	hiddenType: HiddenInputType[number] = 'input'
-) {
+): () => void {
 	const hostingForm = getFormByIdOrClosest(inputElement);
 
 	if (!hostingForm || !inputElement) {
-		return;
+		return () => {
+			return;
+		};
 	}
 
 	const hiddenInput = addHiddenInput(hostingForm, inputElement, hiddenType);
