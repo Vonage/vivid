@@ -40,13 +40,23 @@ export class VWCSelect extends MWCSelect {
 
 	@property({ type: String, reflect: true })
 	name: string | undefined;
+	#_cleanupFunction: (() => void) | undefined;
 
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
 		this.replaceIcon();
-		addInputToForm((this as unknown) as HTMLInputElement, this.formElement);
+		this.#_cleanupFunction = addInputToForm(
+			(this as unknown) as HTMLInputElement,
+			this.formElement
+		);
 	}
 
+	disconnectedCallback() {
+		super.disconnectedCallback();
+		if (this.#_cleanupFunction) {
+			this.#_cleanupFunction();
+		}
+	}
 	protected renderHelperText(): TemplateResult {
 		if (!this.shouldRenderHelperText) {
 			return html``;
