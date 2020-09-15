@@ -37,13 +37,25 @@ export class VWCTextField extends MWCTextField {
 	@property({ type: String, reflect: true })
 	form: string | undefined;
 
+	#_cleanupFunction: (() => void) | undefined;
+
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
 		this.shadowRoot
 			?.querySelector('.mdc-notched-outline')
 			?.shadowRoot?.querySelector('.mdc-notched-outline')
 			?.classList.add('vvd-notch');
-		addInputToForm((this as unknown) as HTMLInputElement, this.formElement);
+		this.#_cleanupFunction = addInputToForm(
+			(this as unknown) as HTMLInputElement,
+			this.formElement
+		);
+	}
+
+	disconnectedCallback() {
+		super.disconnectedCallback();
+		if (this.#_cleanupFunction) {
+			this.#_cleanupFunction();
+		}
 	}
 
 	protected renderIcon(icon: string, isTrailingIcon = false): TemplateResult {

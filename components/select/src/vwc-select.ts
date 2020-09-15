@@ -57,6 +57,7 @@ export class VWCSelect extends MWCSelect {
 			this.#_cleanupFunction();
 		}
 	}
+
 	protected renderHelperText(): TemplateResult {
 		if (!this.shouldRenderHelperText) {
 			return html``;

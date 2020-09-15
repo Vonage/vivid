@@ -24,14 +24,22 @@ MWCTextArea.styles = [styleCoupling, mwcTextareaStyle, vwcTextareaStyle];
 export class VWCTextArea extends MWCTextArea {
 	@property({ type: String, reflect: true })
 	form: string | undefined;
+	#_cleanupFunction: (() => void) | undefined;
 
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
-		addInputToForm(
+		this.#_cleanupFunction = addInputToForm(
 			(this as unknown) as HTMLInputElement,
 			this.formElement,
 			'textarea'
 		);
+	}
+
+	disconnectedCallback() {
+		super.disconnectedCallback();
+		if (this.#_cleanupFunction) {
+			this.#_cleanupFunction();
+		}
 	}
 
 	protected renderOutline(): TemplateResult | Record<string, unknown> {

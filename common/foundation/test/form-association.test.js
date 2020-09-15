@@ -262,7 +262,7 @@ describe(`Form Association Foundation`, function () {
 				inputElementWrapper.dispatchEvent(new Event('change'));
 				expect(hiddenInput.value).to.equal(inputElementValue);
 
-				inputElementWrapper.remove();
+				cleanupFunction();
 				await waitNextTask();
 				formElement.reset();
 
