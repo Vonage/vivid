@@ -330,4 +330,19 @@ describe('textfield', () => {
 			expect(formElement.hasAttribute('dense')).to.equal(false);
 		});
 	});
+
+	describe('shape', () => {
+		it('sets correct attribute', async () => {
+			addedElements = textToDomToParent(
+				`<${COMPONENT_NAME} outlined></${COMPONENT_NAME}>`
+			);
+			await waitNextTask();
+			const formElement = addedElements[0];
+			expect(formElement.getAttribute('shape') === 'rounded').to.equal(true);
+
+			formElement.shape = 'pill';
+			await waitNextTask();
+			expect(formElement.getAttribute('shape') === 'pill').to.equal(true);
+		});
+	});
 });

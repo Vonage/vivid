@@ -373,4 +373,22 @@ describe('select', () => {
 			expect(formElement.hasAttribute('dense')).to.equal(false);
 		});
 	});
+
+	describe('shape', () => {
+		it('sets correct attribute', async () => {
+			addedElements = textToDomToParent(`
+				<${VWC_SELECT} outlined>
+					<vwc-list-item>Item 1</vwc-list-item>
+					<vwc-list-item>Item 2</vwc-list-item>
+				</${VWC_SELECT}>
+			`);
+			await waitNextTask();
+			const formElement = addedElements[0];
+			expect(formElement.getAttribute('shape') === 'rounded').to.equal(true);
+
+			formElement.shape = 'pill';
+			await waitNextTask();
+			expect(formElement.getAttribute('shape') === 'pill').to.equal(true);
+		});
+	});
 });
