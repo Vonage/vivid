@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.7.0 (2020-09-15)
+
+**Note:** Version bump only for package @vivid/root
+
+
+
+
+
+# 0.7.0 (2020-09-15)
+
+
+### Features
+
+* **vwc-button:** add type button handling ([c68010a](https://github.com/Vonage/vivid/commit/c68010abecd205267e311cdaeb9cc9065a4c17a2))
+
+
+
+
+
 # 0.6.0 (2020-09-08)
 
 
