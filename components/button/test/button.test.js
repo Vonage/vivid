@@ -156,6 +156,21 @@ describe('button', () => {
 			expect(reset).to.eql(expectedReset);
 			expect(submitted).to.eql(expectedSubmitted);
 		});
+
+		it(`should do nothing when of type button`, function() {
+			let submitted = false;
+			let reset = false;
+			addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON} type="button">Button Text</${VWC_BUTTON}></form>`);
+			const formElement = addedElements[0];
+			const actualElement = formElement.firstChild;
+			formElement.addEventListener('submit', () => submitted = true);
+			formElement.addEventListener('reset', () => reset = true);
+
+			actualElement.click();
+
+			expect(reset, 'reset was initiated').to.equal(false);
+			expect(submitted, 'submit was initiated').to.equal(false);
+		});
 	});
 
 	describe('typography', function () {
