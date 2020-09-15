@@ -17,7 +17,7 @@ export const Default = Template.bind({});
 Default.args = { outlined: '', label: 'e.g. username' };
 
 export const Dense = Template.bind({});
-Dense.args = { outlined: '', dense: '', placeholder: 'e.g. username' };
+Dense.args = { outlined: '', dense: '', label: 'Label', placeholder: 'e.g. username' };
 
 export const PillShape = Template.bind({});
 PillShape.args = { outlined: '', shape: 'pill', dense: '', placeholder: 'e.g. username' };

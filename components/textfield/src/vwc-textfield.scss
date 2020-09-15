@@ -82,6 +82,26 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
   }
 }
 
+:host([dense][label]) {
+  padding-top: 24px;
+
+  .mdc-text-field {
+    .mdc-floating-label {
+      font-size: 0.875rem;
+      left: -12px;
+      top: -24px;
+      transform: none;
+    }
+
+    .mdc-floating-label,
+    &--invalid.mdc-text-field--outlined .mdc-floating-label,
+    &:not(.mdc-text-field--invalid):not(.mdc-text-field--focused) .mdc-floating-label,
+    &:not(.mdc-text-field--invalid).mdc-text-field--focused .mdc-floating-label {
+      color: var(--mdc-text-field-ink-color);
+    }
+  }
+}
+
 .mdc-text-field {
   border-bottom-right-radius: var(--mdc-shape-small);
   border-bottom-left-radius: var(--mdc-shape-small);
