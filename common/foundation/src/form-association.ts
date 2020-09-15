@@ -89,25 +89,31 @@ const cleanupFunctionFactory = (
 	};
 };
 
+function noop() {
+	return;
+}
+
 export function addInputToForm(
 	inputElement: HTMLInputElement,
 	innerInputElement: HTMLInputElement,
 	hiddenType: HiddenInputType[number] = 'input'
 ): () => void {
-	const hostingForm = getFormByIdOrClosest(inputElement);
+	function setFormResetEvent(hostingForm: HTMLFormElement) {
+		const resetFormHandler = resetFormFactory(
+			inputElement,
+			innerInputElement,
+			hiddenInput
+		);
+		hostingForm.addEventListener('reset', resetFormHandler);
+		return resetFormHandler;
+	}
 
+	const hostingForm = getFormByIdOrClosest(inputElement);
 	if (!hostingForm || !inputElement) {
-		return () => {
-			return;
-		};
+		return noop;
 	}
 
 	const hiddenInput = addHiddenInput(hostingForm, inputElement, hiddenType);
-	const resetFormHandler = resetFormFactory(
-		inputElement,
-		innerInputElement,
-		hiddenInput
-	);
 
 	setValueAndValidity(
 		hiddenInput,
@@ -115,7 +121,7 @@ export function addInputToForm(
 		innerInputElement.validationMessage
 	);
 
-	hostingForm.addEventListener('reset', resetFormHandler);
+	const resetFormHandler = setFormResetEvent(hostingForm);
 
 	silenceInvalidEvent(hiddenInput);
 
