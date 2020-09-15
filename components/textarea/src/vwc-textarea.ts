@@ -35,10 +35,9 @@ export class VWCTextArea extends MWCTextArea {
 			return {};
 		}
 
-		return html`
-      <vwc-notched-outline class="mdc-notched-outline vvd-notch">
-        ${this.renderLabel()}
-      </vwc-notched-outline>`;
+		return html` <vwc-notched-outline class="mdc-notched-outline vvd-notch">
+			${this.renderLabel()}
+		</vwc-notched-outline>`;
 	}
 
 	renderHelperText(charCounterTemplate = {}): TemplateResult {
@@ -52,9 +51,17 @@ export class VWCTextArea extends MWCTextArea {
 		};
 		return html`
 			<div class="mdc-text-field-helper-line">
-				<vwc-icon class="mdc-text-field-helper-icon" type="info-negative" size="small"></vwc-icon>
+				<vwc-icon
+					class="mdc-text-field-helper-icon"
+					type="info-negative"
+					size="small"
+				></vwc-icon>
 				<span class="spacer"></span>
-				<div class="mdc-text-field-helper-text ${mapToClasses(classesMap).join(' ')}">${showValidationMessage ? this.validationMessage : this.helper}</div>
+				<div
+					class="mdc-text-field-helper-text ${mapToClasses(classesMap).join(' ')}"
+				>
+					${showValidationMessage ? this.validationMessage : this.helper}
+				</div>
 				${charCounterTemplate}
 			</div>
 		`;

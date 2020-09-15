@@ -20,6 +20,7 @@ settings:
   wc:
     elementBaseClasses: ["BaseElement", "LitElement", "FormElement"]
 rules:
+  "no-mixed-spaces-and-tabs": off
   # Rules temporally disabled
   "@typescript-eslint/explicit-function-return-type": off
 

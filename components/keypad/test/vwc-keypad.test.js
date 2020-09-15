@@ -4,9 +4,7 @@ import '../vwc-keypad.js';
 
 describe('VwcKeypad', () => {
 	it('has a default no-asterisk false, no-hash false, no-display false, actionText "Enter", cancelText "Cancel"', async () => {
-		const el = await fixture(html`
-      <vwc-keypad></vwc-keypad>
-    `);
+		const el = await fixture(html` <vwc-keypad></vwc-keypad> `);
 
 		expect(el.noAsterisk).to.equal(false);
 		expect(el.noHash).to.equal(false);
@@ -16,9 +14,7 @@ describe('VwcKeypad', () => {
 	});
 
 	it('keypad buttons clicks add digits to display', async () => {
-		const el = await fixture(html`
-      <vwc-keypad></vwc-keypad>
-    `);
+		const el = await fixture(html` <vwc-keypad></vwc-keypad> `);
 
 		const digit1 = el.shadowRoot.getElementById('1-digit');
 		const digit2 = el.shadowRoot.getElementById('2-digit');
@@ -49,9 +45,7 @@ describe('VwcKeypad', () => {
 	});
 
 	it('no-asterisk attribute removes * button', async () => {
-		const el = await fixture(html`
-      <vwc-keypad no-asterisk></vwc-keypad>
-    `);
+		const el = await fixture(html` <vwc-keypad no-asterisk></vwc-keypad> `);
 		const asteriskButton = el.shadowRoot.querySelector('#asterisk-digit');
 
 		expect(el.noAsterisk).to.equal(true);
@@ -59,9 +53,7 @@ describe('VwcKeypad', () => {
 	});
 
 	it('no-hash attribute removes # button', async () => {
-		const el = await fixture(html`
-      <vwc-keypad no-hash></vwc-keypad>
-    `);
+		const el = await fixture(html` <vwc-keypad no-hash></vwc-keypad> `);
 		const hashButton = el.shadowRoot.querySelector('#hash-digit');
 
 		expect(el.noHash).to.equal(true);
@@ -69,9 +61,7 @@ describe('VwcKeypad', () => {
 	});
 
 	it('no-display attribute removes display input', async () => {
-		const el = await fixture(html`
-      <vwc-keypad no-display></vwc-keypad>
-    `);
+		const el = await fixture(html` <vwc-keypad no-display></vwc-keypad> `);
 		const digitsDisplay = el.shadowRoot.querySelector('#digits-display');
 
 		expect(el.noDisplay).to.equal(true);
@@ -79,18 +69,14 @@ describe('VwcKeypad', () => {
 	});
 
 	it('called createAction method sets actionStarted to true', async () => {
-		const el = await fixture(html`
-      <vwc-keypad></vwc-keypad>
-    `);
+		const el = await fixture(html` <vwc-keypad></vwc-keypad> `);
 
 		el.createAction();
 		expect(el.actionStarted).to.equal(true);
 	});
 
 	it('end action and clear digits on cancel button click', async () => {
-		const el = await fixture(html`
-      <vwc-keypad></vwc-keypad>
-    `);
+		const el = await fixture(html` <vwc-keypad></vwc-keypad> `);
 
 		const digit1 = el.shadowRoot.getElementById('1-digit');
 		const digit2 = el.shadowRoot.getElementById('2-digit');
@@ -113,24 +99,20 @@ describe('VwcKeypad', () => {
 
 	it('can change Action button text via attribute', async () => {
 		const el = await fixture(html`
-      <vwc-keypad actionText='Start'></vwc-keypad>
-    `);
+			<vwc-keypad actionText="Start"></vwc-keypad>
+		`);
 
 		expect(el.actionText).to.equal('Start');
 	});
 
 	it('can change Cancel button text via attribute', async () => {
-		const el = await fixture(html`
-      <vwc-keypad cancelText='Stop'></vwc-keypad>
-    `);
+		const el = await fixture(html` <vwc-keypad cancelText="Stop"></vwc-keypad> `);
 
 		expect(el.cancelText).to.equal('Stop');
 	});
 
 	it('maintains cursor position', async () => {
-		const el = await fixture(html`
-      <vwc-keypad></vwc-keypad>
-    `);
+		const el = await fixture(html` <vwc-keypad></vwc-keypad> `);
 
 		const digit1 = el.shadowRoot.getElementById('1-digit');
 		const digit2 = el.shadowRoot.getElementById('2-digit');
@@ -145,7 +127,7 @@ describe('VwcKeypad', () => {
 		digit3.click();
 		digit4.click();
 		await elementUpdated(digitsDisplay);
-		digitsDisplay.setSelectionRange(2,2);
+		digitsDisplay.setSelectionRange(2, 2);
 		el.displayBlur();
 		await elementUpdated(digitsDisplay);
 
@@ -158,13 +140,9 @@ describe('VwcKeypad', () => {
 		expect(el.digits).to.equal('1256734');
 	});
 
-
-  it('passes the a11y audit', async () => {
-    const el = await fixture(html`
-      <vwc-keypad></vwc-keypad>
-    `);
+	it('passes the a11y audit', async () => {
+		const el = await fixture(html` <vwc-keypad></vwc-keypad> `);
 
 		await expect(el).shadowDom.to.be.accessible();
 	});
-
 });

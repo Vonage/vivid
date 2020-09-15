@@ -4,5 +4,5 @@ export enum Connotation {
 	Success = 'success',
 	Error = 'error',
 	Info = 'info',
-	Announcement = 'announcement'
+	Announcement = 'announcement',
 }

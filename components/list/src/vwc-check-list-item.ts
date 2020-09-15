@@ -13,10 +13,15 @@ declare global {
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-MWCCheckListItem.styles = [styleCoupling, mwcListItemStyle, mwcControlListItemStyle, vwcCheckListItemStyle];
+MWCCheckListItem.styles = [
+	styleCoupling,
+	mwcListItemStyle,
+	mwcControlListItemStyle,
+	vwcCheckListItemStyle,
+];
 
 /**
  * This component is an extension of [<mwc-check-list-item>](https://github.com/material-components/material-components-web-components/tree/master/packages/list)
  */
 @customElement('vwc-check-list-item')
-export class VWCCheckListItem extends MWCCheckListItem { }
+export class VWCCheckListItem extends MWCCheckListItem {}
