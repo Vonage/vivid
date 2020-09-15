@@ -1,9 +1,6 @@
-import {
-	mapToClasses
-} from '@vonage/vvd-foundation/class-utils.js';
+import { mapToClasses } from '@vonage/vvd-foundation/class-utils.js';
 
 describe('class (DOM) utils', () => {
-
 	it('should return empty array if invalid param - undefined', async () => {
 		const r = mapToClasses();
 		expect(r).eql([]);
@@ -31,10 +28,9 @@ describe('class (DOM) utils', () => {
 			take2: 3,
 			nonTake2: 0,
 			take3: {},
-			nonTake3: null
+			nonTake3: null,
 		});
 		const expected = ['take1', 'take2', 'take3'];
 		expect(r.sort()).eql(expected.sort());
 	});
-
 });

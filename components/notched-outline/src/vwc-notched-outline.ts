@@ -18,4 +18,4 @@ MWCNotchedOutline.styles = [mwcNotchedOutlineStyle, vwcNotchedOutlineStyle];
  * This component is NOT meant to be used itself, but serves as an adjustment/definition for the usage of it in other components
  */
 @customElement('vwc-notched-outline')
-export class VWCNotchedOutline extends MWCNotchedOutline { }
+export class VWCNotchedOutline extends MWCNotchedOutline {}

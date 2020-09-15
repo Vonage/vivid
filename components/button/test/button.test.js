@@ -1,5 +1,9 @@
 import '../vwc-button.js';
-import { waitNextTask, textToDomToParent, assertComputedStyle } from '../../../test/test-helpers.js';
+import {
+	waitNextTask,
+	textToDomToParent,
+	assertComputedStyle,
+} from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
@@ -9,31 +13,36 @@ const VWC_BUTTON = 'vwc-button';
 describe('button', () => {
 	let addedElements = [];
 	afterEach(() => {
-		addedElements.forEach(elm => elm.remove());
+		addedElements.forEach((elm) => elm.remove());
 	});
 	it('vwc-button is defined as a custom element', async () => {
-		assert.exists(customElements.get(VWC_BUTTON, 'vwc-button element is not defined'));
+		assert.exists(
+			customElements.get(VWC_BUTTON, 'vwc-button element is not defined')
+		);
 	});
 
 	it('should internal contents', async () => {
-		addedElements = textToDomToParent(`<${VWC_BUTTON}>Button Text</${VWC_BUTTON}>`);
+		addedElements = textToDomToParent(
+			`<${VWC_BUTTON}>Button Text</${VWC_BUTTON}>`
+		);
 		const actualElement = addedElements[0];
 		await waitNextTask();
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
 	describe('Form Association', function () {
-
 		beforeEach(() => {
 			window.formSubmitted = false;
 		});
 
 		it('should submit form when inside a form', async function () {
 			let submitted = false;
-			addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON}>Button Text</${VWC_BUTTON}></form>`);
+			addedElements = textToDomToParent(
+				`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON}>Button Text</${VWC_BUTTON}></form>`
+			);
 			const formElement = addedElements[0];
 			const actualElement = formElement.firstChild;
-			formElement.addEventListener('submit', () => submitted = true);
+			formElement.addEventListener('submit', () => (submitted = true));
 
 			actualElement.click();
 
@@ -42,10 +51,12 @@ describe('button', () => {
 
 		it('should submit form when of type submit', async function () {
 			let submitted = false;
-			addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON} type="submit">Button Text</${VWC_BUTTON}></form>`);
+			addedElements = textToDomToParent(
+				`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON} type="submit">Button Text</${VWC_BUTTON}></form>`
+			);
 			const formElement = addedElements[0];
 			const actualElement = formElement.firstChild;
-			formElement.addEventListener('submit', () => submitted = true);
+			formElement.addEventListener('submit', () => (submitted = true));
 
 			actualElement.click();
 
@@ -55,11 +66,13 @@ describe('button', () => {
 		it('should reset form when of type reset', async function () {
 			let submitted = false;
 			let reset = false;
-			addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON} type="reset">Button Text</${VWC_BUTTON}></form>`);
+			addedElements = textToDomToParent(
+				`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON} type="reset">Button Text</${VWC_BUTTON}></form>`
+			);
 			const formElement = addedElements[0];
 			const actualElement = formElement.firstChild;
-			formElement.addEventListener('submit', () => submitted = true);
-			formElement.addEventListener('reset', () => reset = true);
+			formElement.addEventListener('submit', () => (submitted = true));
+			formElement.addEventListener('reset', () => (reset = true));
 
 			actualElement.click();
 
@@ -70,22 +83,22 @@ describe('button', () => {
 		it('should associate with external form attribute is set with form id', async function () {
 			const submitted = {
 				external: false,
-				internal: false
+				internal: false,
 			};
 
 			const reset = {
 				external: false,
-				internal: false
+				internal: false,
 			};
 
 			const expectedSubmitted = {
 				external: true,
-				internal: false
-			}
+				internal: false,
+			};
 			const expectedReset = {
 				external: true,
-				internal: false
-			}
+				internal: false,
+			};
 
 			addedElements = textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="testForm">
@@ -99,11 +112,11 @@ describe('button', () => {
 			const submitButton = formElement.children[1];
 			const externalForm = addedElements[1];
 
-			formElement.addEventListener('submit', () => submitted.internal = true);
-			formElement.addEventListener('reset', () => reset.internal = true);
+			formElement.addEventListener('submit', () => (submitted.internal = true));
+			formElement.addEventListener('reset', () => (reset.internal = true));
 
-			externalForm.addEventListener('submit', () => submitted.external = true);
-			externalForm.addEventListener('reset', () => reset.external = true);
+			externalForm.addEventListener('submit', () => (submitted.external = true));
+			externalForm.addEventListener('reset', () => (reset.external = true));
 
 			resetButton.click();
 			submitButton.click();
@@ -115,22 +128,22 @@ describe('button', () => {
 		it('should associate with no form if form attribute is set with nonexistent id', async function () {
 			const submitted = {
 				external: false,
-				internal: false
+				internal: false,
 			};
 
 			const reset = {
 				external: false,
-				internal: false
+				internal: false,
 			};
 
 			const expectedSubmitted = {
 				external: false,
-				internal: false
-			}
+				internal: false,
+			};
 			const expectedReset = {
 				external: false,
-				internal: false
-			}
+				internal: false,
+			};
 
 			addedElements = textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="testForm">
@@ -144,11 +157,11 @@ describe('button', () => {
 			const submitButton = formElement.children[1];
 			const externalForm = addedElements[1];
 
-			formElement.addEventListener('submit', () => submitted.internal = true);
-			formElement.addEventListener('reset', () => reset.internal = true);
+			formElement.addEventListener('submit', () => (submitted.internal = true));
+			formElement.addEventListener('reset', () => (reset.internal = true));
 
-			externalForm.addEventListener('submit', () => submitted.external = true);
-			externalForm.addEventListener('reset', () => reset.external = true);
+			externalForm.addEventListener('submit', () => (submitted.external = true));
+			externalForm.addEventListener('reset', () => (reset.external = true));
 
 			resetButton.click();
 			submitButton.click();
@@ -157,14 +170,16 @@ describe('button', () => {
 			expect(submitted).to.eql(expectedSubmitted);
 		});
 
-		it(`should do nothing when of type button`, function() {
+		it(`should do nothing when of type button`, function () {
 			let submitted = false;
 			let reset = false;
-			addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON} type="button">Button Text</${VWC_BUTTON}></form>`);
+			addedElements = textToDomToParent(
+				`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON} type="button">Button Text</${VWC_BUTTON}></form>`
+			);
 			const formElement = addedElements[0];
 			const actualElement = formElement.firstChild;
-			formElement.addEventListener('submit', () => submitted = true);
-			formElement.addEventListener('reset', () => reset = true);
+			formElement.addEventListener('submit', () => (submitted = true));
+			formElement.addEventListener('reset', () => (reset = true));
 
 			actualElement.click();
 
@@ -175,7 +190,9 @@ describe('button', () => {
 
 	describe('typography', function () {
 		it(`should have set button (text, rounded) typography correct`, async function () {
-			const actualElements = textToDomToParent(`<${VWC_BUTTON}>Button Text</${VWC_BUTTON}>`);
+			const actualElements = textToDomToParent(
+				`<${VWC_BUTTON}>Button Text</${VWC_BUTTON}>`
+			);
 			await waitNextTask();
 			const button = actualElements[0].shadowRoot.querySelector('#button');
 			expect(button).to.exist;
@@ -186,13 +203,15 @@ describe('button', () => {
 				fontStretch: '50%',
 				lineHeight: 'normal',
 				letterSpacing: 'normal',
-				textTransform: 'none'
+				textTransform: 'none',
 			};
 			assertComputedStyle(button, expectedStyles);
 		});
 
 		it(`should have set button (outlined, pill) typography correct`, async function () {
-			const actualElements = textToDomToParent(`<${VWC_BUTTON} layout="outlined" shape="pill">Button Text</${VWC_BUTTON}>`);
+			const actualElements = textToDomToParent(
+				`<${VWC_BUTTON} layout="outlined" shape="pill">Button Text</${VWC_BUTTON}>`
+			);
 			await waitNextTask();
 			const button = actualElements[0].shadowRoot.querySelector('#button');
 			expect(button).to.exist;
@@ -203,13 +222,15 @@ describe('button', () => {
 				fontStretch: '50%',
 				lineHeight: 'normal',
 				letterSpacing: 'normal',
-				textTransform: 'none'
+				textTransform: 'none',
 			};
 			assertComputedStyle(button, expectedStyles);
 		});
 
 		it(`should have set button (filled, disabled, pill) typography correct`, async function () {
-			const actualElements = textToDomToParent(`<${VWC_BUTTON} layout="filled" disabled shape="pill">Button Text</${VWC_BUTTON}>`);
+			const actualElements = textToDomToParent(
+				`<${VWC_BUTTON} layout="filled" disabled shape="pill">Button Text</${VWC_BUTTON}>`
+			);
 			await waitNextTask();
 			const button = actualElements[0].shadowRoot.querySelector('#button');
 			expect(button).to.exist;
@@ -220,7 +241,7 @@ describe('button', () => {
 				fontStretch: '50%',
 				lineHeight: 'normal',
 				letterSpacing: 'normal',
-				textTransform: 'none'
+				textTransform: 'none',
 			};
 			assertComputedStyle(button, expectedStyles);
 		});
