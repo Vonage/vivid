@@ -312,4 +312,22 @@ describe('textfield', () => {
 			expect(notchedOutline).to.exist;
 		});
 	});
+
+	describe('dense', () => {
+		it('sets correct attribute', async () => {
+			addedElements = textToDomToParent(
+				`<${COMPONENT_NAME} outlined></${COMPONENT_NAME}>`
+			);
+			await waitNextTask();
+			const formElement = addedElements[0];
+
+			formElement.dense = true;
+			await waitNextTask();
+			expect(formElement.hasAttribute('dense')).to.equal(true);
+
+			formElement.dense = false;
+			await waitNextTask();
+			expect(formElement.hasAttribute('dense')).to.equal(false);
+		});
+	});
 });

@@ -352,4 +352,25 @@ describe('select', () => {
 			expect(notchedOutline).to.exist;
 		});
 	});
+
+	describe('dense', () => {
+		it('sets correct attribute', async () => {
+			addedElements = textToDomToParent(`
+				<${VWC_SELECT} outlined>
+					<vwc-list-item>Item 1</vwc-list-item>
+					<vwc-list-item>Item 2</vwc-list-item>
+				</${VWC_SELECT}>
+			`);
+			await waitNextTask();
+			const formElement = addedElements[0];
+
+			formElement.dense = true;
+			await waitNextTask();
+			expect(formElement.hasAttribute('dense')).to.equal(true);
+
+			formElement.dense = false;
+			await waitNextTask();
+			expect(formElement.hasAttribute('dense')).to.equal(false);
+		});
+	});
 });
