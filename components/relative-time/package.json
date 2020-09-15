@@ -23,6 +23,7 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
+		"@vonage/vvd-core": "^0.6.0",
 		"date-fns": "^2.14.0",
 		"kefir": "^3.8.7"
 	}

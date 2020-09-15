@@ -11,25 +11,26 @@
  */
 import { SchemeOption } from '@vonage/vvd-scheme';
 
-const
-	VVD_CONTEXT_ATTRIBUTE = 'data-vvd-context',
+const VVD_CONTEXT_ATTRIBUTE = 'data-vvd-context',
 	MANUAL_KEY = 'manual',
 	VALID_CONFIGURATION_KEYS = ['fonts', 'scheme'];
 
 export interface Configuration {
-	manual: boolean,
-	scheme?: SchemeOption
+	manual: boolean;
+	scheme?: SchemeOption;
 }
 export default Object.freeze({
 	initialConfiguration: buildInitialConfiguration(),
-	validateConfiguration
+	validateConfiguration,
 });
 
 function buildInitialConfiguration(): Configuration {
 	const result: Configuration = {
-		manual: false
+		manual: false,
 	};
-	const vvdContextAttrValue = document.documentElement.getAttribute(VVD_CONTEXT_ATTRIBUTE);
+	const vvdContextAttrValue = document.documentElement.getAttribute(
+		VVD_CONTEXT_ATTRIBUTE
+	);
 	if (vvdContextAttrValue === MANUAL_KEY) {
 		result.manual = true;
 	}
@@ -37,11 +38,13 @@ function buildInitialConfiguration(): Configuration {
 }
 
 function validateConfiguration(configuration: Partial<Configuration>) {
-	const extraParams = Object
-		.keys(configuration)
-		.filter(k => !VALID_CONFIGURATION_KEYS.includes(k));
+	const extraParams = Object.keys(configuration).filter(
+		(k) => !VALID_CONFIGURATION_KEYS.includes(k)
+	);
 
 	if (extraParams.length) {
-		throw new Error(`unexpected configuration parts '${extraParams}',	only some of '${VALID_CONFIGURATION_KEYS}' expected`);
+		throw new Error(
+			`unexpected configuration parts '${extraParams}',	only some of '${VALID_CONFIGURATION_KEYS}' expected`
+		);
 	}
 }

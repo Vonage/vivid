@@ -1,6 +1,7 @@
-import { customElement, property, html, TemplateResult } from 'lit-element';
-import '@vonage/vwc-notched-outline';
+import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
+import '@vonage/vwc-notched-outline';
+import { customElement, property, html, TemplateResult } from 'lit-element';
 import { mapToClasses } from '@vonage/vvd-foundation/class-utils.js';
 import { TextField as MWCTextField } from '@material/mwc-textfield';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
@@ -8,7 +9,6 @@ import { style as vwcTextFieldStyle } from './vwc-textfield.css';
 import { style as mwcTextFieldStyle } from '@material/mwc-textfield/mwc-textfield-css.js';
 import { addInputToForm } from '@vonage/vvd-foundation/form-association';
 export { TextFieldType } from '@material/mwc-textfield';
-import '@vonage/vwc-icon';
 
 declare global {
 	interface HTMLElementTagNameMap {
