@@ -20,7 +20,7 @@
     "url": "https://github.com/Vonage/vivid/issues"
   },
   "dependencies": {
-    "ramda": "^0.27.0",
+    "ramda": "^0.27.1",
     "tslib": "^2.0.1"
   },
   "devDependencies": {

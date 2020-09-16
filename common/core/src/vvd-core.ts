@@ -2,7 +2,7 @@ import configurer, { Configuration } from './vvd-configurer.js';
 import fonts from '@vonage/vvd-fonts/vvd-fonts.js';
 import schemeService from '@vonage/vvd-scheme';
 
-let coreAutoInitDone: Promise<Array<void>>;
+let coreAutoInitDone: Promise<Array<unknown>>;
 if (!configurer.initialConfiguration.manual) {
 	coreAutoInitDone = applyConfiguration(configurer.initialConfiguration);
 } else {
@@ -23,6 +23,6 @@ async function applyConfiguration(configuration: Partial<Configuration>) {
 
 async function init(
 	configuration: Partial<Configuration>
-): Promise<Array<void>> {
+): Promise<Array<unknown>> {
 	return Promise.all([fonts.init(), schemeService.set(configuration.scheme)]);
 }

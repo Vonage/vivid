@@ -64,21 +64,29 @@ function init(): void {
 }
 
 async function set(scheme: SchemeOption = schemeDefault()) {
-	_selectedSchemeOption = scheme;
-	let nextScheme: PredefinedScheme;
+	console.log(`Vivid scheme requested to change to '${scheme}'...`);
 
-	if (scheme == 'syncWithOSSettings') {
-		pcs.addEventListener('change', syncWithOSSettings);
-		nextScheme = getPreferedColorScheme() as PredefinedScheme;
+	if (scheme !== _selectedSchemeOption) {
+		_selectedSchemeOption = scheme;
+		let nextScheme: PredefinedScheme;
+
+		if (scheme == 'syncWithOSSettings') {
+			pcs.addEventListener('change', syncWithOSSettings);
+			nextScheme = getPreferedColorScheme() as PredefinedScheme;
+		} else {
+			pcs.removeEventListener('change', syncWithOSSettings);
+			nextScheme = scheme;
+		}
+		if (_selectedScheme === nextScheme) {
+			return;
+		}
+		_selectedScheme = nextScheme;
+		updateTagStyleCssText(await getSchemeCssText(nextScheme));
 	} else {
-		pcs.removeEventListener('change', syncWithOSSettings);
-		nextScheme = scheme;
+		console.log('new scheme equal to current, doing nothing');
 	}
-	if (_selectedScheme === nextScheme) {
-		return;
-	}
-	_selectedScheme = nextScheme;
-	updateTagStyleCssText(await getSchemeCssText(nextScheme));
+
+	console.log('... scheme change done');
 }
 
 export default Object.freeze({
