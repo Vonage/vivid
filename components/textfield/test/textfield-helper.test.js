@@ -1,11 +1,15 @@
 import '../vwc-textfield.js';
-import { textToDomToParent, waitNextTask, waitInterval, assertComputedStyle } from '../../../test/test-helpers.js';
+import {
+	textToDomToParent,
+	waitNextTask,
+	waitInterval,
+	assertComputedStyle,
+} from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
 
-const
-	COMPONENT_NAME = 'vwc-textfield',
+const COMPONENT_NAME = 'vwc-textfield',
 	HELPER_MESSAGE = 'helper',
 	ERROR_MESSAGE = 'error';
 
@@ -26,7 +30,9 @@ describe('textfield helper', () => {
 	});
 
 	it('should make a helper text visible when focused', async () => {
-		const helperLine = addedElements[0].shadowRoot.querySelector('.mdc-text-field-helper-text');
+		const helperLine = addedElements[0].shadowRoot.querySelector(
+			'.mdc-text-field-helper-text'
+		);
 
 		//	present, not seen
 		expect(helperLine).to.exist;
@@ -39,9 +45,13 @@ describe('textfield helper', () => {
 	});
 
 	it('should make a helper text invisible when blurred', async () => {
-		const helperLine = addedElements[0].shadowRoot.querySelector('.mdc-text-field-helper-text');
+		const helperLine = addedElements[0].shadowRoot.querySelector(
+			'.mdc-text-field-helper-text'
+		);
 		await focus(addedElements[0]);
-		addedElements[0].shadowRoot.querySelector('.mdc-text-field').classList.remove('mdc-text-field--focused');
+		addedElements[0].shadowRoot
+			.querySelector('.mdc-text-field')
+			.classList.remove('mdc-text-field--focused');
 		await waitInterval(200);
 		assertComputedStyle(helperLine, { opacity: '0' });
 	});
@@ -53,14 +63,18 @@ describe('textfield helper', () => {
 	});
 
 	it('should have error message invisible when valid', async () => {
-		let errorLine = addedElements[0].shadowRoot.querySelector('.mdc-text-field-helper-text--validation-msg');
+		let errorLine = addedElements[0].shadowRoot.querySelector(
+			'.mdc-text-field-helper-text--validation-msg'
+		);
 		expect(errorLine).to.not.exist;
 	});
 
 	it('should have error message visible when error', async () => {
 		await turnValidityWaitReported(addedElements[0], false);
 
-		const errorLine = addedElements[0].shadowRoot.querySelector('.mdc-text-field-helper-text--validation-msg');
+		const errorLine = addedElements[0].shadowRoot.querySelector(
+			'.mdc-text-field-helper-text--validation-msg'
+		);
 		const vwcIcon = addedElements[0].shadowRoot.querySelector('vwc-icon');
 		expect(errorLine).to.exist;
 		expect(errorLine.textContent).to.equal(ERROR_MESSAGE);
@@ -72,7 +86,9 @@ describe('textfield helper', () => {
 		//	make it error, blur, error still present
 		await turnValidityWaitReported(addedElements[0], false);
 		await blur(addedElements[0]);
-		const errorLine = addedElements[0].shadowRoot.querySelector('.mdc-text-field-helper-text--validation-msg');
+		const errorLine = addedElements[0].shadowRoot.querySelector(
+			'.mdc-text-field-helper-text--validation-msg'
+		);
 		assertComputedStyle(errorLine, { opacity: '1' });
 
 		//	fix the error, error made invisible
@@ -81,7 +97,9 @@ describe('textfield helper', () => {
 
 		//	blurred, helper is visible now
 		await blur(addedElements[0]);
-		const helperLine = addedElements[0].shadowRoot.querySelector('.mdc-text-field-helper-text');
+		const helperLine = addedElements[0].shadowRoot.querySelector(
+			'.mdc-text-field-helper-text'
+		);
 		expect(helperLine).to.exist;
 		expect(helperLine.textContent).to.equal(HELPER_MESSAGE);
 	});

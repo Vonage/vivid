@@ -1,6 +1,4 @@
-import {
-	customElement,
-} from 'lit-element';
+import { customElement } from 'lit-element';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -12,4 +10,4 @@ declare global {
  * This component is a carousel's item wrapper
  */
 @customElement('vwc-carousel-item')
-export class VWCCarouselItem extends HTMLElement { }
+export class VWCCarouselItem extends HTMLElement {}

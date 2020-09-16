@@ -3,11 +3,17 @@ export type HiddenInputType = typeof types;
 
 function getFormByIdOrClosest(element: HTMLElement): HTMLFormElement | null {
 	const formId = element.getAttribute('form');
-	const formElement = formId ? document.getElementById(formId) : element.closest('form');
+	const formElement = formId
+		? document.getElementById(formId)
+		: element.closest('form');
 	return formElement instanceof HTMLFormElement ? formElement : null;
 }
 
-function addHiddenInput(hostingForm: HTMLElement, { name, value }: { name: string, value: string }, hiddenType: HiddenInputType[number]) {
+function addHiddenInput(
+	hostingForm: HTMLElement,
+	{ name, value }: { name: string; value: string },
+	hiddenType: HiddenInputType[number]
+) {
 	const hiddenInput = document.createElement(hiddenType) as HTMLInputElement;
 	hiddenInput.style.display = 'none';
 	hiddenInput.setAttribute('name', name);
@@ -17,7 +23,11 @@ function addHiddenInput(hostingForm: HTMLElement, { name, value }: { name: strin
 	return hiddenInput;
 }
 
-function setValueAndValidity(inputField: HTMLInputElement | undefined, value: string, validationMessage = '') {
+function setValueAndValidity(
+	inputField: HTMLInputElement | undefined,
+	value: string,
+	validationMessage = ''
+) {
 	if (!inputField) {
 		return;
 	}
@@ -25,19 +35,35 @@ function setValueAndValidity(inputField: HTMLInputElement | undefined, value: st
 	inputField.setCustomValidity(validationMessage);
 }
 
-export function addInputToForm(inputElement: any, hiddenType: HiddenInputType[number] = 'input'): void {
+export function addInputToForm(
+	inputElement: any,
+	hiddenType: HiddenInputType[number] = 'input'
+): void {
 	const hostingForm = getFormByIdOrClosest(inputElement);
 
 	if (!hostingForm || !inputElement) {
 		return;
 	}
 
-	inputElement.hiddenInput = addHiddenInput(hostingForm, inputElement, hiddenType);
-	setValueAndValidity(inputElement.hiddenInput, inputElement.value, inputElement.formElement.validationMessage);
+	inputElement.hiddenInput = addHiddenInput(
+		hostingForm,
+		inputElement,
+		hiddenType
+	);
+	setValueAndValidity(
+		inputElement.hiddenInput,
+		inputElement.value,
+		inputElement.formElement.validationMessage
+	);
 
 	hostingForm.addEventListener('reset', () => {
-		inputElement.value = inputElement.formElement.value = inputElement.hiddenInput?.defaultValue ?? '';
-		setValueAndValidity(inputElement.hiddenInput, inputElement.value, inputElement.formElement.validationMessage);
+		inputElement.value = inputElement.formElement.value =
+			inputElement.hiddenInput?.defaultValue ?? '';
+		setValueAndValidity(
+			inputElement.hiddenInput,
+			inputElement.value,
+			inputElement.formElement.validationMessage
+		);
 	});
 
 	inputElement.hiddenInput.addEventListener('invalid', (event: Event) => {
@@ -46,10 +72,18 @@ export function addInputToForm(inputElement: any, hiddenType: HiddenInputType[nu
 	});
 
 	inputElement.addEventListener('change', () => {
-		setValueAndValidity(inputElement.hiddenInput, inputElement.value, inputElement.formElement.validationMessage);
+		setValueAndValidity(
+			inputElement.hiddenInput,
+			inputElement.value,
+			inputElement.formElement.validationMessage
+		);
 	});
 
 	inputElement.addEventListener('input', () => {
-		setValueAndValidity(inputElement.hiddenInput, inputElement.value, inputElement.formElement.validationMessage);
+		setValueAndValidity(
+			inputElement.hiddenInput,
+			inputElement.value,
+			inputElement.formElement.validationMessage
+		);
 	});
 }

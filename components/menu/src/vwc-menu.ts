@@ -3,7 +3,7 @@ import { Menu as MWCMenu } from '@material/mwc-menu';
 import { customElement } from 'lit-element';
 //import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import { style as mwcMenuStyle } from '@material/mwc-menu/mwc-menu-css.js';
-import {style as vwcMenuStyle} from './vwc-menu.css';
+import { style as vwcMenuStyle } from './vwc-menu.css';
 
 declare global {
 	interface HTMLElementTagNameMap {

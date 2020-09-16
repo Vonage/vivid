@@ -18,4 +18,4 @@ MWCDrawer.styles = [styleCoupling, mwcDrawerStyle, vwcDrawerStyle];
  * This component is an extension of [<mwc-drawer>](https://github.com/material-components/material-components-web-components/tree/master/packages/drawer)
  */
 @customElement('vwc-drawer')
-export class VWCDrawer extends MWCDrawer { }
+export class VWCDrawer extends MWCDrawer {}

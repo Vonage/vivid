@@ -1,4 +1,12 @@
-import { html, LitElement, property, customElement, CSSResult, TemplateResult, query } from 'lit-element';
+import {
+	html,
+	LitElement,
+	property,
+	customElement,
+	CSSResult,
+	TemplateResult,
+	query,
+} from 'lit-element';
 import { style as vwcKeypadStyle } from './vwc-keypad.css';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import '@vonage/vwc-button/vwc-button';
@@ -28,7 +36,7 @@ export class VWCKeypad extends LitElement {
 
 	@property({ type: String }) digits = '';
 
-	@property({type: Number}) currentPosition = 0;
+	@property({ type: Number }) currentPosition = 0;
 
 	@query('#digits-display') digitsDisplay!: HTMLTextAreaElement;
 
@@ -47,7 +55,7 @@ export class VWCKeypad extends LitElement {
 		this.currentPosition++;
 	}
 
-	private displayBlur(){
+	private displayBlur() {
 		this.currentPosition = this.digitsDisplay.selectionStart;
 	}
 
@@ -79,8 +87,8 @@ export class VWCKeypad extends LitElement {
 		return html`
 			<div id="container">
 				${this.noDisplay
-				? ''
-				: html`<vwc-textfield
+					? ''
+					: html`<vwc-textfield
 							id="digits-display"
 							outlined
 							label="Enter"
@@ -88,83 +96,53 @@ export class VWCKeypad extends LitElement {
 							@blur=${this.displayBlur}
 					  ></vwc-textfield>`}
 				<div class="button-row">
-					<vwc-button
-						id="1-digit"
-						unelevated
-						@click=${() => this.addDigit('1')}
+					<vwc-button id="1-digit" unelevated @click=${() => this.addDigit('1')}
 						>1</vwc-button
 					>
-					<vwc-button
-						id="2-digit"
-						unelevated
-						@click=${() => this.addDigit('2')}
+					<vwc-button id="2-digit" unelevated @click=${() => this.addDigit('2')}
 						>2</vwc-button
 					>
-					<vwc-button
-						id="3-digit"
-						unelevated
-						@click=${() => this.addDigit('3')}
+					<vwc-button id="3-digit" unelevated @click=${() => this.addDigit('3')}
 						>3</vwc-button
 					>
 				</div>
 				<div class="button-row">
-					<vwc-button
-						id="4-digit"
-						unelevated
-						@click=${() => this.addDigit('4')}
+					<vwc-button id="4-digit" unelevated @click=${() => this.addDigit('4')}
 						>4</vwc-button
 					>
-					<vwc-button
-						id="5-digit"
-						unelevated
-						@click=${() => this.addDigit('5')}
+					<vwc-button id="5-digit" unelevated @click=${() => this.addDigit('5')}
 						>5</vwc-button
 					>
-					<vwc-button
-						id="6-digit"
-						unelevated
-						@click=${() => this.addDigit('6')}
+					<vwc-button id="6-digit" unelevated @click=${() => this.addDigit('6')}
 						>6</vwc-button
 					>
 				</div>
 				<div class="button-row">
-					<vwc-button
-						id="7-digit"
-						unelevated
-						@click=${() => this.addDigit('7')}
+					<vwc-button id="7-digit" unelevated @click=${() => this.addDigit('7')}
 						>7</vwc-button
 					>
-					<vwc-button
-						id="8-digit"
-						unelevated
-						@click=${() => this.addDigit('8')}
+					<vwc-button id="8-digit" unelevated @click=${() => this.addDigit('8')}
 						>8</vwc-button
 					>
-					<vwc-button
-						id="9-digit"
-						unelevated
-						@click=${() => this.addDigit('9')}
+					<vwc-button id="9-digit" unelevated @click=${() => this.addDigit('9')}
 						>9</vwc-button
 					>
 				</div>
 				<div class="button-row">
 					${this.noAsterisk
-				? ''
-				: html`<vwc-button
+						? ''
+						: html`<vwc-button
 								id="asterisk-digit"
 								unelevated
 								@click=${() => this.addDigit('*')}
 								>*</vwc-button
 						  >`}
-					<vwc-button
-						id="0-digit"
-						unelevated
-						@click=${() => this.addDigit('0')}
+					<vwc-button id="0-digit" unelevated @click=${() => this.addDigit('0')}
 						>0</vwc-button
 					>
 					${this.noHash
-				? ''
-				: html`<vwc-button
+						? ''
+						: html`<vwc-button
 								id="hash-digit"
 								unelevated
 								@click=${() => this.addDigit('#')}
@@ -173,14 +151,14 @@ export class VWCKeypad extends LitElement {
 				</div>
 				<div class="button-row">
 					${this.actionStarted
-				? html`<vwc-button
+						? html`<vwc-button
 								id="cancel-button"
 								unelevated
 								fullwidth
 								@click=${this.endAction}
 								>${this.cancelText}</vwc-button
 						  >`
-				: html`<vwc-button
+						: html`<vwc-button
 								id="action-button"
 								unelevated
 								fullwidth

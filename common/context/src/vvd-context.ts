@@ -1,8 +1,7 @@
 import { coreReady } from '@vonage/vvd-core';
 import { style } from './vvd-context.css';
 
-let
-	initResolver: (value?: unknown) => void | PromiseLike<void>,
+let initResolver: (value?: unknown) => void | PromiseLike<void>,
 	initRejector: (reason?: unknown) => void | PromiseLike<void>;
 
 export const contextReady = new Promise((resolve, reject) => {

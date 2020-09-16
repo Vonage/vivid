@@ -8,11 +8,12 @@
  */
 export function mapToClasses(input: Record<string, unknown>): Array<string> {
 	if (!input || typeof input !== 'object') {
-		console.error(`unexpected input; non-null object expected but got '${input}'`);
+		console.error(
+			`unexpected input; non-null object expected but got '${input}'`
+		);
 		return [];
 	}
-	return Object
-		.entries(input)
-		.filter(entryPair => entryPair[1])
-		.map(entryPair => entryPair[0]);
+	return Object.entries(input)
+		.filter((entryPair) => entryPair[1])
+		.map((entryPair) => entryPair[0]);
 }
