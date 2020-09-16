@@ -1,0 +1,20 @@
+{
+  "alias": {
+    "color": {
+      "palette": {
+        "purple": {
+          "50": { "value": "#f0e6fc" },
+          "100": { "value": "#d8c1f6" },
+          "200": { "value": "#be97f1" },
+          "300": { "value": "#a369ed","comment":"for dark mode" },
+          "400": { "value": "#8d43e9" },
+          "500": { "value": "#750ee3" },
+          "600": { "value": "#6a05dd", "comment":"for light mode" },
+          "700": { "value": "#5900d5" },
+          "800": { "value": "#4800cf" },
+          "900": { "value": "#2300c8" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "alias": {
+    "color": {
+      "base": {
+        "background": { "value": "black" },
+        "foreground": { "value": "white" },
+        "dim": { "value": "#c0c0c0" }
+      },
+      "surface": {
+        "background": { "value": "black" },
+        "foreground": { "value": "#c0c0c0" }
+      },
+      "inverse": {
+        "background": { "value": "{alias.color.base.foreground.value}" },
+        "foreground": { "value": "{alias.color.base.background.value}" }
+			},
+			"cta": {
+				"background": { "value": "{alias.color.palette.purple.400.value}" },
+				"foreground": { "value": "{alias.color.base.background.value}" }
+			},
+			"success": {
+				"background": { "value": "#1d7e67" },
+				"foreground": { "value": "black" }
+			},
+			"error": {
+				"background": { "value": "#992B2B" },
+				"foreground": { "value": "black" }
+			},
+			"info": {
+				"background": { "value": "#008AE5" },
+				"foreground": { "value": "black" }
+			},
+			"announcement": {
+				"background": { "value": "#d6219c" },
+				"foreground": { "value": "black" }
+			}
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "color": {
+    "base": {
+      "background": { "value": "{alias.color.base.background.value}" },
+      "foreground": { "value": "{alias.color.base.foreground.value}" },
+      "dim": { "value": "{alias.color.base.dim.value}" }
+    },
+    "surface": {
+      "background": {
+        "value": "{alias.color.surface.background.value}"
+      },
+      "foreground": {
+        "value": "{alias.color.surface.foreground.value}"
+      }
+    },
+    "primary": {
+      "background": { "value": "{alias.color.inverse.background.value}" },
+      "foreground": { "value": "{alias.color.inverse.foreground.value}" }
+    },
+    "cta": {
+      "background": { "value": "{alias.color.cta.background.value}" },
+      "foreground": { "value": "{alias.color.cta.foreground.value}" }
+    },
+    "success": {
+      "background": { "value": "{alias.color.success.background.value}" },
+      "foreground": { "value": "{alias.color.success.foreground.value}" }
+    },
+    "error": {
+      "background": { "value": "{alias.color.error.background.value}" },
+      "foreground": { "value": "{alias.color.error.foreground.value}" }
+    },
+    "info": {
+      "background": { "value": "{alias.color.info.background.value}" },
+      "foreground": { "value": "{alias.color.info.foreground.value}" }
+    },
+    "announcement": {
+      "background": { "value": "{alias.color.announcement.background.value}" },
+      "foreground": { "value": "{alias.color.announcement.foreground.value}" }
+    }
+  }
+}
