@@ -1,11 +1,11 @@
-@use '../../../design-tokens/build/scss/schemes/light/base.scss';
-@use '../../../design-tokens/build/scss/schemes/light/alternate.scss';
+@use '@vonage/vvd-design-tokens/build/scss/schemes/light/base.scss';
+@use '@vonage/vvd-design-tokens/build/scss/schemes/light/alternate.scss';
 
 body,
 .vvd-theme-light-base {
-  @include base.variables;
+	@include base.variables;
 }
 
 .vvd-theme-light-alternate {
-  @include base.variables;
+	@include base.variables;
 }

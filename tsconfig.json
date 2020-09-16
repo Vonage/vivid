@@ -29,7 +29,6 @@
 	"include": ["custom_typings/**/*.ts", "src/*.ts"],
 	"exclude": [],
 	"references": [
-		{ "path": "common/design-tokens" },
 		{ "path": "common/context" },
 		{ "path": "common/core" },
 		{ "path": "common/fonts" },
