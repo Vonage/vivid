@@ -30,13 +30,10 @@ describe('textfield helper', () => {
 	});
 
 	it('should make a helper text visible when focused', async () => {
-		const helperLine = addedElements[0].shadowRoot.querySelector(
-			'.mdc-text-field-helper-text'
-		);
+		const helperLine = getAsHelperLine(addedElements[0]);
 
 		//	present, not seen
-		expect(helperLine).to.exist;
-		expect(helperLine.textContent).to.equal(HELPER_MESSAGE);
+		assertExistWithMessage(helperLine, HELPER_MESSAGE);
 		assertComputedStyle(helperLine, { opacity: '0' });
 
 		//	focused, seen
@@ -45,9 +42,7 @@ describe('textfield helper', () => {
 	});
 
 	it('should make a helper text invisible when blurred', async () => {
-		const helperLine = addedElements[0].shadowRoot.querySelector(
-			'.mdc-text-field-helper-text'
-		);
+		const helperLine = getAsHelperLine(addedElements[0]);
 		await focus(addedElements[0]);
 		addedElements[0].shadowRoot
 			.querySelector('.mdc-text-field')
@@ -63,21 +58,16 @@ describe('textfield helper', () => {
 	});
 
 	it('should have error message invisible when valid', async () => {
-		let errorLine = addedElements[0].shadowRoot.querySelector(
-			'.mdc-text-field-helper-text--validation-msg'
-		);
+		let errorLine = getAsErrorLine(addedElements[0]);
 		expect(errorLine).to.not.exist;
 	});
 
 	it('should have error message visible when error', async () => {
 		await turnValidityWaitReported(addedElements[0], false);
 
-		const errorLine = addedElements[0].shadowRoot.querySelector(
-			'.mdc-text-field-helper-text--validation-msg'
-		);
+		const errorLine = getAsErrorLine(addedElements[0]);
 		const vwcIcon = addedElements[0].shadowRoot.querySelector('vwc-icon');
-		expect(errorLine).to.exist;
-		expect(errorLine.textContent).to.equal(ERROR_MESSAGE);
+		assertExistWithMessage(errorLine, ERROR_MESSAGE);
 		assertComputedStyle(errorLine, { opacity: '1' });
 		assertComputedStyle(vwcIcon, { display: 'flex' });
 	});
@@ -86,9 +76,7 @@ describe('textfield helper', () => {
 		//	make it error, blur, error still present
 		await turnValidityWaitReported(addedElements[0], false);
 		await blur(addedElements[0]);
-		const errorLine = addedElements[0].shadowRoot.querySelector(
-			'.mdc-text-field-helper-text--validation-msg'
-		);
+		const errorLine = getAsErrorLine(addedElements[0]);
 		assertComputedStyle(errorLine, { opacity: '1' });
 
 		//	fix the error, error made invisible
@@ -97,15 +85,28 @@ describe('textfield helper', () => {
 
 		//	blurred, helper is visible now
 		await blur(addedElements[0]);
-		const helperLine = addedElements[0].shadowRoot.querySelector(
-			'.mdc-text-field-helper-text'
-		);
-		expect(helperLine).to.exist;
-		expect(helperLine.textContent).to.equal(HELPER_MESSAGE);
+		const helperLine = getAsHelperLine(addedElements[0]);
+		assertExistWithMessage(helperLine, HELPER_MESSAGE);
 	});
 });
 
 //	internal util functions
+//
+function getAsHelperLine(addedElement) {
+	return addedElement.shadowRoot.querySelector('.mdc-text-field-helper-text');
+}
+
+function getAsErrorLine(addedElement) {
+	return addedElement.shadowRoot.querySelector(
+		'.mdc-text-field-helper-text--validation-msg'
+	);
+}
+
+function assertExistWithMessage(helperLine, messageExpected) {
+	expect(helperLine).to.exist;
+	expect(helperLine.textContent).to.equal(messageExpected);
+}
+
 async function turnValidityWaitReported(input, toBeValid) {
 	input.focus();
 	input.value = toBeValid ? '12' : 'not-a-number';
