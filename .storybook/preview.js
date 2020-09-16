@@ -1,11 +1,11 @@
-import '@vonage/vvd-scheme';
 import '@vonage/vwc-scheme-select';
 import '@storybook/addon-console';
 import { addParameters, setCustomElements } from '@storybook/web-components';
 import customElements from '../custom-elements.json';
-import { contextReady } from '@vonage/vvd-context';
+import vvdCore from '@vonage/vvd-core';
+import '@vonage/vvd-context';
 
-contextReady
+vvdCore.coreReady
 	.then(() => console.info('init Vivid context done (preview frame)'));
 
 async function run() {

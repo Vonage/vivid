@@ -12,21 +12,21 @@ We've designed Vivid overlay lifecycle to be selfcontained, agnostic to other co
 
 # Readiness hook
 
-In order to allow ourselves and consuming applications to run code __after__ initialization is done, __vivid core__ exposes a `getReady` API, that returns an internally managed Promise. This Promise will resolve once all of the __core__ services done and ready.
+In order to allow ourselves and consuming applications to run code __after__ initialization is done, __vivid core__ exposes a `coreReady` Promise. This Promise will resolve once all of the __core__ services done and ready.
 
-> Important: in case of __custom__ initialization, `getReady` will throw.
+> Important: in case of __manual__ initialization, `coreReady` will be immediatelly rejected.
 
 ```javascript
-import { getReady } from '@vonage/vvd-core.js';
+import vvdCore from '@vonage/vvd-core.js';
 
 ...
 
-getReady().then(() => {
+vvdCore.coreReady.then(() => {
 	//	do whatever after the init, eg remove the loading vilon
 });
 ```
 
-Most obvious use of `getReady` is to remove the loading vilon, which could be put over the site in order to prevent FOUC (flash of unstyled content).
+Most obvious use of the `coreReady` is to remove the loading vilon, which could be put over the site in order to prevent FOUC (flash of unstyled content).
 
 # Silent/Auto init
 
@@ -48,12 +48,12 @@ The below example will auto-initialise __vivid core__ with the dark theme.
 
 > Important: the attribute is being examined at the moment of initialization ONLY, so it should be in place BEFORE the initialization performed. We suggest to use this feature as a purely static setup OOTB.
 
-## Custom flow init
+## Manual init
 
 Advanced consumer will manage the visual application state (we mean Vivid's part, eg theming) as per user setting.
-Obviously, this state, unless injected into the main html by some server side logic, should involve some async work to be done client side, eg fetching personalised settings from the server or from some local storage like IndexedDB.
+Obviously, this state, unless injected into the main HTML by some server side logic, should involve an async work to be done client side, eg fetching personalised settings from the server or from a local storage like IndexedDB.
 
-For those cases we suggest to use `custom` value in the `data-vvd-context`, which will prevent auto init of the __vivid core__. This is the reason, that in this initialization path the `getReady` API is meaningless, therefore throws.
+For those cases we suggest to use `manual` value in the `data-vvd-context`, which will prevent auto init of the __vivid core__. This is the reason, that in this initialization path the `coreReady` API is meaningless, therefore auto rejected.
 
 It is the consuming application, which becomes responsible for the core services initialization.
 
@@ -65,14 +65,17 @@ HTML part:
 
 JavaScript part:
 ```javascript
-import vividCore from '@vonage/vvd-core.js';
+import vvdCore from '@vonage/vvd-core.js';
 
-Promise
-	.all([
-		initFonts(),
-		setScheme('dark')
-	])
-	.then(() => ... );
+vividCore
+	.set({
+		scheme: 'dark'
+	})
+	.then(() => {
+		//	do whatever after applying configuration
+	});
 ```
 
-Each of the services returns promise of initialization readiness of it's own, thus providing a way to run a post-init logic. Reminder: `getReady` API of the __vivid core__ in the __custom__ initialization flavor won't be available.
+Pay attention: `set` API obviously is not limited to the init use case only, it may be used for any runtime (re-)configuration of the Vivid overlay.
+
+> Reminder: `coreReady` Promise of the __vivid core__ in the __manual__ initialization flavor is a rejected Promise.
