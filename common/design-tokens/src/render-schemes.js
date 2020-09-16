@@ -1,7 +1,12 @@
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
 import StyleDictionaryPackage from 'style-dictionary';
 import fs from 'fs';
 import _ from 'lodash';
 import R from 'ramda';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // StyleDictionaryPackage.registerFilter({
 // 	name: "filter-alias",
