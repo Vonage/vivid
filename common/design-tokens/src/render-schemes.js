@@ -8,6 +8,8 @@ import R from 'ramda';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
+const propertiesPath = `/node_modules/@vonage/vvd-design-tokens-properties`;
+
 // StyleDictionaryPackage.registerFilter({
 // 	name: "filter-alias",
 // 	matcher: function (prop) {
@@ -30,8 +32,8 @@ StyleDictionaryPackage.registerFormat({
 function getStyleDictionaryConfig(scheme, scope) {
 	return {
 		source: [
-			`${__dirname}/../properties/globals/**/*.json`,
-			`${__dirname}/../properties/scheme/${scheme}/color.json`,
+			`${propertiesPath}/globals/**/*.json`,
+			`${propertiesPath}/scheme/${scheme}/color.json`,
 			// `${__dirname}/../properties/platforms/palette.json`,
 		],
 		platforms: {

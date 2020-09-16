@@ -4697,6 +4697,11 @@
   dependencies:
     eslint-visitor-keys "^1.1.0"
 
+"@vonage/vivid-design-tokens-properties@^0.1.0":
+  version "0.1.0"
+  resolved "https://npm.pkg.github.com/download/@vonage/vivid-design-tokens-properties/0.1.0/e4ad3ec61adaf84be7e9528b32597c728fad130b2ffde70d964ca15515b6a5e7#76796d344ef9c8931f16b2ba4e6fa4fc63cabe28"
+  integrity sha512-muJ7mmtgzuOEsWLyhozJajGJj0yEcyM2NACqhgMzjwkBIlKViTq56VFf97+/gLb2wVVS0QxRlV70l0PKENYVjA==
+
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.9.0.tgz#bd850604b4042459a5a41cd7d338cbed695ed964"
