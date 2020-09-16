@@ -26,6 +26,6 @@
 	"devDependencies": {
 		"@types/ramda": "^0.27.4",
 		"lit-element": "^2.4.0",
-		"@vonage/vvd-design-tokens": "^0.0.7"
+		"@vonage/vvd-design-tokens": "^0.7.0"
 	}
 }
