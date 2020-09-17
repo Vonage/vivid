@@ -7,6 +7,7 @@ import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-cou
 import { Connotation } from '@vonage/vvd-foundation/constants';
 import { html, TemplateResult } from 'lit-element';
 import '@vonage/vwc-icon';
+import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -73,7 +74,7 @@ export class VWCButton extends MWCButton {
 				case 'button':
 					break;
 				default:
-					form.requestSubmit();
+					form.requestSubmit ? form.requestSubmit() : requestSubmit(form);
 					break;
 			}
 		}

@@ -186,6 +186,21 @@ describe('button', () => {
 			expect(reset, 'reset was initiated').to.equal(false);
 			expect(submitted, 'submit was initiated').to.equal(false);
 		});
+
+		it(`should submit even when requestSubmit is not supported`, function () {
+			let submitted = false;
+			addedElements = textToDomToParent(
+				`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON}>Button Text</${VWC_BUTTON}></form>`
+			);
+			const formElement = addedElements[0];
+			formElement.requestSubmit = undefined;
+			const actualElement = formElement.firstChild;
+			formElement.addEventListener('submit', () => (submitted = true));
+
+			actualElement.click();
+
+			expect(submitted, 'submit was not initiated').to.equal(true);
+		});
 	});
 
 	describe('typography', function () {
