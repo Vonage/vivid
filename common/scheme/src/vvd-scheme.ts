@@ -1,5 +1,5 @@
 import { CSSResult } from 'lit-element';
-import { pipe } from 'ramda';
+import { constructN, pipe } from 'ramda';
 import { onSchemeChange } from './scheme-change-listener';
 import { updateTagStyleCssText } from './vvd-scheme-style-tag-handler';
 
@@ -63,29 +63,31 @@ function init(): void {
 	});
 }
 
+function setSyncModeIfRelevant(scheme: SchemeOption): PredefinedScheme {
+	let result: SchemeOption;
+	if (scheme === 'syncWithOSSettings') {
+		pcs.addEventListener('change', syncWithOSSettings);
+		result = getPreferedColorScheme() as PredefinedScheme;
+	} else {
+		pcs.removeEventListener('change', syncWithOSSettings);
+		result = scheme;
+	}
+	return result;
+}
+
 async function set(scheme: SchemeOption = schemeDefault()) {
 	console.log(`Vivid scheme requested to change to '${scheme}'...`);
 
-	if (_selectedSchemeOption !== scheme) {
-		_selectedSchemeOption = scheme;
-		let nextScheme: PredefinedScheme;
+	if (_selectedSchemeOption === scheme) {
+		console.log(`'${scheme}' scheme selected but it was already in effect`);
+		return;
+	}
 
-		if (scheme === 'syncWithOSSettings') {
-			pcs.addEventListener('change', syncWithOSSettings);
-			nextScheme = getPreferedColorScheme() as PredefinedScheme;
-		} else {
-			pcs.removeEventListener('change', syncWithOSSettings);
-			nextScheme = scheme;
-		}
-		if (_selectedScheme === nextScheme) {
-			return;
-		}
+	_selectedSchemeOption = scheme;
+	const nextScheme: PredefinedScheme = setSyncModeIfRelevant(scheme);
+	if (_selectedScheme !== nextScheme) {
 		_selectedScheme = nextScheme;
 		updateTagStyleCssText(await getSchemeCssText(nextScheme));
-	} else {
-		console.log(
-			`You have tried to select the ${scheme} theme sync mode but it was already in effect.`
-		);
 	}
 
 	console.log('... scheme change done');
