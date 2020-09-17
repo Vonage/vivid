@@ -84,7 +84,7 @@ async function set(scheme: SchemeOption = schemeDefault()) {
 		updateTagStyleCssText(await getSchemeCssText(nextScheme));
 	} else {
 		console.log(
-			'change to the currently effective state required, nothing to do'
+			`You have tried to select the ${scheme} theme sync mode but it was already in effect.`
 		);
 	}
 
