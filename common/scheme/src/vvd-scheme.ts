@@ -1,5 +1,5 @@
 import { CSSResult } from 'lit-element';
-import { constructN, pipe } from 'ramda';
+import { pipe } from 'ramda';
 import { onSchemeChange } from './scheme-change-listener';
 import { updateTagStyleCssText } from './vvd-scheme-style-tag-handler';
 
