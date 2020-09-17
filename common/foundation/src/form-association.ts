@@ -144,3 +144,11 @@ export function addInputToForm(
 
 	return cleanupFunctionFactory(hiddenInput, hostingForm, resetFormHandler);
 }
+
+export function requestSubmit(form: HTMLFormElement) {
+	const fakeButton = document.createElement('button');
+	fakeButton.style.display = 'none';
+	form.appendChild(fakeButton);
+	fakeButton.click();
+	fakeButton.remove();
+}
