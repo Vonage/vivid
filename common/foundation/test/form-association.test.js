@@ -1,4 +1,4 @@
-import { addInputToForm, supportRequestSubmit } from '../form-association';
+import { addInputToForm, requestSubmit } from '../form-association';
 import { textToDomToParent, randomAlpha } from '../../../test/test-helpers';
 
 describe(`Form Association Foundation`, function () {
@@ -166,32 +166,8 @@ describe(`Form Association Foundation`, function () {
 		});
 	});
 
-	describe(`supportRequestSubmit`, function () {
-		const originalRequestSubmit = HTMLFormElement.prototype.requestSubmit;
-
-		beforeEach(function () {
-			HTMLFormElement.prototype.requestSubmit = undefined;
-		});
-
-		afterEach(function () {
-			HTMLFormElement.prototype.requestSubmit = originalRequestSubmit;
-		});
-
-		it(`should submit any form on requestSubmit when not given a specific form`, function () {
-			let formSubmitted = false;
-
-			addedElements = textToDomToParent(`<form onsubmit="return false"></form>`);
-			const formElement = addedElements[0];
-			supportRequestSubmit();
-			formElement.addEventListener('submit', () => (formSubmitted = true));
-
-			formElement.requestSubmit();
-
-			expect(formSubmitted).to.equal(true);
-		});
-
+	describe(`requestSubmit`, function () {
 		it(`should submit a form on requestSubmit when given a form`, function () {
-			HTMLFormElement.prototype.requestSubmit = originalRequestSubmit;
 			let formSubmitted = false;
 
 			addedElements = textToDomToParent(`<form onsubmit="return false"></form>`);
@@ -199,9 +175,7 @@ describe(`Form Association Foundation`, function () {
 			formElement.addEventListener('submit', () => (formSubmitted = true));
 			formElement.requestSubmit = undefined;
 
-			supportRequestSubmit(formElement);
-
-			formElement.requestSubmit();
+			requestSubmit(formElement);
 
 			expect(formSubmitted).to.equal(true);
 		});

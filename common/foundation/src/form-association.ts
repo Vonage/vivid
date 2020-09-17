@@ -88,21 +88,10 @@ export function addInputToForm(
 	});
 }
 
-function requestSubmit(this: HTMLFormElement) {
+export function requestSubmit(form: HTMLFormElement) {
 	const fakeButton = document.createElement('button');
 	fakeButton.style.display = 'none';
-	this.appendChild(fakeButton);
+	form.appendChild(fakeButton);
 	fakeButton.click();
 	fakeButton.remove();
-}
-
-export function supportRequestSubmit(form?: HTMLFormElement) {
-	if (form && !form.requsetSubmit) {
-		form.requestSubmit = requestSubmit;
-		return;
-	}
-
-	if (!HTMLFormElement.prototype.requestSubmit) {
-		HTMLFormElement.prototype.requestSubmit = requestSubmit;
-	}
 }
