@@ -93,6 +93,21 @@ function noop() {
 	return;
 }
 
+function updateOnValueChanges(
+	inputElement: HTMLInputElement,
+	innerInputElement: HTMLInputElement,
+	hiddenInput: HTMLInputElement
+) {
+	['change', 'input'].forEach((eventName) => {
+		setInputUpdateEvent({
+			eventName,
+			inputElement,
+			innerInputElement,
+			hiddenInput,
+		});
+	});
+}
+
 export function addInputToForm(
 	inputElement: HTMLInputElement,
 	innerInputElement: HTMLInputElement,
@@ -125,19 +140,7 @@ export function addInputToForm(
 
 	silenceInvalidEvent(hiddenInput);
 
-	setInputUpdateEvent({
-		eventName: 'change',
-		inputElement,
-		innerInputElement,
-		hiddenInput,
-	});
-
-	setInputUpdateEvent({
-		eventName: 'input',
-		inputElement,
-		innerInputElement,
-		hiddenInput,
-	});
+	updateOnValueChanges(inputElement, innerInputElement, hiddenInput);
 
 	return cleanupFunctionFactory(hiddenInput, hostingForm, resetFormHandler);
 }
