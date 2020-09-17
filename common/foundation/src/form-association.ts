@@ -87,3 +87,22 @@ export function addInputToForm(
 		);
 	});
 }
+
+function requestSubmit(this: HTMLFormElement) {
+	const fakeButton = document.createElement('button');
+	fakeButton.style.display = 'none';
+	this.appendChild(fakeButton);
+	fakeButton.click();
+	fakeButton.remove();
+}
+
+export function supportRequestSubmit(form?: HTMLFormElement) {
+	if (HTMLFormElement.prototype.requestSubmit) {
+		return;
+	}
+	if (form) {
+		form.requestSubmit = requestSubmit;
+	} else {
+		HTMLFormElement.prototype.requestSubmit = requestSubmit;
+	}
+}
