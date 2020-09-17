@@ -87,3 +87,11 @@ export function addInputToForm(
 		);
 	});
 }
+
+export function requestSubmit(form: HTMLFormElement) {
+	const fakeButton = document.createElement('button');
+	fakeButton.style.display = 'none';
+	form.appendChild(fakeButton);
+	fakeButton.click();
+	fakeButton.remove();
+}

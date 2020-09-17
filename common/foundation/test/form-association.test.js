@@ -1,4 +1,4 @@
-import { addInputToForm } from '../form-association';
+import { addInputToForm, requestSubmit } from '../form-association';
 import { textToDomToParent, randomAlpha } from '../../../test/test-helpers';
 
 describe(`Form Association Foundation`, function () {
@@ -163,6 +163,21 @@ describe(`Form Association Foundation`, function () {
 			expect(formElement.querySelector(`[name="${fieldName}"]`).tagName).to.equal(
 				hiddenElementType
 			);
+		});
+	});
+
+	describe(`requestSubmit`, function () {
+		it(`should submit a form on requestSubmit when given a form`, function () {
+			let formSubmitted = false;
+
+			addedElements = textToDomToParent(`<form onsubmit="return false"></form>`);
+			const formElement = addedElements[0];
+			formElement.addEventListener('submit', () => (formSubmitted = true));
+			formElement.requestSubmit = undefined;
+
+			requestSubmit(formElement);
+
+			expect(formSubmitted).to.equal(true);
 		});
 	});
 });
