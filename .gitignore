@@ -9,7 +9,6 @@
 node_modules
 npm-debug.log
 package-lock.json
-.npmrc
 
 ## yarn
 yarn-error.log

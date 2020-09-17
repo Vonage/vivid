@@ -1,8 +1,8 @@
 {
 	"name": "@vonage/vvd-design-tokens",
 	"version": "0.7.0",
-	"description": "> TODO: description",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/design-tokens#readme",
+	"description": "Vivid Design Tokens Builder",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/common/design-tokens#readme",
 	"license": "ISC",
 	"main": "vvd-design-tokens.js",
 	"module": "vvd-design-tokens.js",
@@ -16,7 +16,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/design-tokens"
+		"directory": "common/design-tokens"
 	},
 	"scripts": {
 		"build": "node src/index.js",
@@ -25,11 +25,7 @@
 	"bugs": {
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
-	"dependencies": {
-		"@vonage/vivid-design-tokens-properties": "^0.1.0"
-	},
 	"devDependencies": {
-		"lodash": "^4.17.20",
 		"style-dictionary": "^2.10.1"
 	}
 }
