@@ -354,7 +354,7 @@ describe('select', () => {
 	});
 
 	describe('dense', () => {
-		it('sets correct attribute', async () => {
+		it('should reflect the dense attribute', async () => {
 			addedElements = textToDomToParent(`
 				<${VWC_SELECT} outlined>
 					<vwc-list-item>Item 1</vwc-list-item>
@@ -375,7 +375,7 @@ describe('select', () => {
 	});
 
 	describe('shape', () => {
-		it('sets correct attribute', async () => {
+		it('should reflect the shape attribute', async () => {
 			addedElements = textToDomToParent(`
 				<${VWC_SELECT} outlined>
 					<vwc-list-item>Item 1</vwc-list-item>

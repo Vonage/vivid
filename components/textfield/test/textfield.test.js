@@ -314,7 +314,7 @@ describe('textfield', () => {
 	});
 
 	describe('dense', () => {
-		it('sets correct attribute', async () => {
+		it('should reflect the dense attribute', async () => {
 			addedElements = textToDomToParent(
 				`<${COMPONENT_NAME} outlined></${COMPONENT_NAME}>`
 			);
@@ -332,7 +332,7 @@ describe('textfield', () => {
 	});
 
 	describe('shape', () => {
-		it('sets correct attribute', async () => {
+		it('should reflect the shape attribute', async () => {
 			addedElements = textToDomToParent(
 				`<${COMPONENT_NAME} outlined></${COMPONENT_NAME}>`
 			);
