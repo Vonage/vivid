@@ -180,7 +180,7 @@ describe(`Form Association Foundation`, function () {
 		it(`should submit any form on requestSubmit when not given a specific form`, function () {
 			let formSubmitted = false;
 
-			addedElements = textToDomToParent(`<form></form>`);
+			addedElements = textToDomToParent(`<form onsubmit="return false"></form>`);
 			const formElement = addedElements[0];
 			supportRequestSubmit();
 			formElement.addEventListener('submit', () => (formSubmitted = true));
@@ -191,11 +191,13 @@ describe(`Form Association Foundation`, function () {
 		});
 
 		it(`should submit a form on requestSubmit when given a form`, function () {
+			HTMLFormElement.prototype.requestSubmit = originalRequestSubmit;
 			let formSubmitted = false;
 
-			addedElements = textToDomToParent(`<form></form>`);
+			addedElements = textToDomToParent(`<form onsubmit="return false"></form>`);
 			const formElement = addedElements[0];
 			formElement.addEventListener('submit', () => (formSubmitted = true));
+			formElement.requestSubmit = undefined;
 
 			supportRequestSubmit(formElement);
 

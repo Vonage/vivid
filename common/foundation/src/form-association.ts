@@ -97,12 +97,12 @@ function requestSubmit(this: HTMLFormElement) {
 }
 
 export function supportRequestSubmit(form?: HTMLFormElement) {
-	if (HTMLFormElement.prototype.requestSubmit) {
+	if (form && !form.requsetSubmit) {
+		form.requestSubmit = requestSubmit;
 		return;
 	}
-	if (form) {
-		form.requestSubmit = requestSubmit;
-	} else {
+
+	if (!HTMLFormElement.prototype.requestSubmit) {
 		HTMLFormElement.prototype.requestSubmit = requestSubmit;
 	}
 }
