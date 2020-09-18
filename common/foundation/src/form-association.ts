@@ -168,7 +168,7 @@ export function addInputToForm<T extends InputElement>(
 	setInputSyncEvents(inputElement, internalFormElement, hiddenInput);
 }
 
-export function requestSubmit(form: HTMLFormElement) {
+export function requestSubmit(form: HTMLFormElement): void {
 	const fakeButton = document.createElement('button');
 	fakeButton.style.display = 'none';
 	form.appendChild(fakeButton);
