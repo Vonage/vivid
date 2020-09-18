@@ -98,7 +98,7 @@ function silenceInvalidEvent(inputElement: HTMLInputElement) {
 	});
 }
 
-function setInputUpdateEvents<T extends InputElement>(
+function setInputSyncEvents<T extends InputElement>(
 	inputElement: T,
 	internalFormElement: HTMLInputElement,
 	hiddenInput: HTMLInputElement
@@ -113,6 +113,22 @@ function setInputUpdateEvents<T extends InputElement>(
 			);
 		});
 	});
+}
+
+function setupDisconnectionCleanup<T extends InputElement>(
+	hiddenInput: HTMLInputElement,
+	hostingForm: HTMLFormElement,
+	resetFormHandler: () => void,
+	inputElement: T
+) {
+	const removeListenerElement = document.createElement(
+		'form-association-disconnection'
+	) as FormAssociationDisconnectionComponent;
+	removeListenerElement.listener = () => {
+		hiddenInput.remove();
+		hostingForm.removeEventListener('reset', resetFormHandler);
+	};
+	inputElement.appendChild(removeListenerElement);
 }
 
 export function addInputToForm<T extends InputElement>(
@@ -139,18 +155,17 @@ export function addInputToForm<T extends InputElement>(
 		hiddenInput
 	);
 	hostingForm.addEventListener('reset', resetFormHandler);
-	const removeListenerElement = document.createElement(
-		'form-association-disconnection'
-	) as FormAssociationDisconnectionComponent;
-	removeListenerElement.listener = () => {
-		hiddenInput.remove();
-		hostingForm.removeEventListener('reset', resetFormHandler);
-	};
-	inputElement.appendChild(removeListenerElement);
+
+	setupDisconnectionCleanup(
+		hiddenInput,
+		hostingForm,
+		resetFormHandler,
+		inputElement
+	);
 
 	silenceInvalidEvent(hiddenInput);
 
-	setInputUpdateEvents(inputElement, internalFormElement, hiddenInput);
+	setInputSyncEvents(inputElement, internalFormElement, hiddenInput);
 }
 
 export function requestSubmit(form: HTMLFormElement) {
