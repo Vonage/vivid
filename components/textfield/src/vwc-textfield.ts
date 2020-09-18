@@ -21,8 +21,6 @@ MWCTextField.styles = [styleCoupling, mwcTextFieldStyle, vwcTextFieldStyle];
 
 @customElement('vwc-textfield')
 export class VWCTextField extends MWCTextField {
-	@property({ type: HTMLInputElement, reflect: false })
-	hiddenInput: HTMLInputElement | undefined;
 
 	@property({ type: String, reflect: true })
 	form: string | undefined;
@@ -30,7 +28,7 @@ export class VWCTextField extends MWCTextField {
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
 		this.shadowRoot?.querySelector('.mdc-notched-outline')?.shadowRoot?.querySelector('.mdc-notched-outline')?.classList.add('vvd-notch');
-		addInputToForm(this);
+		addInputToForm<VWCTextField>(this, this.formElement);
 	}
 
 	renderHelperText(charCounterTemplate = {}): TemplateResult {
