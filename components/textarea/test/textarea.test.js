@@ -20,10 +20,14 @@ function listenToSubmission(formElement) {
 }
 
 function getHiddenInput(formElement, fieldName) {
-	return formElement.querySelector(`input[name="${fieldName}"]`);
+	return formElement.querySelector(`[name="${fieldName}"]`);
 }
 
-async function changeFieldValue(actualElement, value, eventName = 'change') {
+async function changeValueAndNotify(
+	actualElement,
+	value,
+	eventName = 'change'
+) {
 	actualElement.value = value;
 	await waitNextTask();
 
@@ -154,7 +158,7 @@ describe('textarea', () => {
 				const actualElement = formElement.firstChild;
 				await waitNextTask();
 
-				await changeFieldValue(actualElement, fieldValue, 'change');
+				await changeValueAndNotify(actualElement, fieldValue, 'change');
 
 				expect(getHiddenInput(formElement, fieldName).value).to.equal(fieldValue);
 			});
@@ -172,7 +176,7 @@ describe('textarea', () => {
 
 				const invalidity = formElement.checkValidity();
 
-				await changeFieldValue(actualElement, 'abc', 'input');
+				await changeValueAndNotify(actualElement, 'abc', 'input');
 
 				expect(invalidity).to.equal(false);
 				expect(formElement.checkValidity()).to.equal(true);
@@ -189,7 +193,7 @@ describe('textarea', () => {
 				await waitNextTask();
 
 				const validInput = formElement.checkValidity();
-				await changeFieldValue(actualElement, '', 'change');
+				await changeValueAndNotify(actualElement, '', 'change');
 				const invalidInput = formElement.checkValidity();
 
 				formElement.reset();
@@ -223,7 +227,7 @@ describe('textarea', () => {
 
 				submitted = false;
 
-				await changeFieldValue(actualElement, '', 'change');
+				await changeValueAndNotify(actualElement, '', 'change');
 				formElement.requestSubmit();
 
 				expect(invalidity).to.equal(true);
@@ -256,7 +260,7 @@ describe('textarea', () => {
 				expect(pair[1]).to.equal(fieldValue);
 			}
 
-			await changeFieldValue(actualElement, '', 'change');
+			await changeValueAndNotify(actualElement, '', 'change');
 
 			expect(
 				formElement.querySelectorAll(`textarea[name="${fieldName}"`).length
