@@ -1,4 +1,10 @@
-import { customElement, property, html, TemplateResult } from 'lit-element';
+import {
+	customElement,
+	property,
+	html,
+	TemplateResult,
+	PropertyValues,
+} from 'lit-element';
 import '@vonage/vwc-notched-outline';
 import '@vonage/vwc-icon';
 import { mapToClasses } from '@vonage/vvd-foundation/class-utils.js';
@@ -47,7 +53,8 @@ export class VWCSelect extends MWCSelect {
 		addInputToForm(this);
 	}
 
-	protected updated() {
+	protected updated(changedProperties: PropertyValues) {
+		super.updated(changedProperties);
 		if (this.shape === 'pill') {
 			this.dense = true;
 		}
