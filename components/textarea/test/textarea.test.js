@@ -324,14 +324,19 @@ describe('textarea', () => {
 			);
 			await waitNextTask();
 			const formElement = addedElements[0];
+			const actualElement = formElement.shadowRoot.querySelector(
+				'.mdc-text-field--textarea'
+			);
 
 			formElement.dense = true;
 			await waitNextTask();
 			expect(formElement.hasAttribute('dense')).to.equal(true);
+			assertComputedStyle(actualElement, { minHeight: '40px' });
 
 			formElement.dense = false;
 			await waitNextTask();
 			expect(formElement.hasAttribute('dense')).to.equal(false);
+			assertComputedStyle(actualElement, { minHeight: '48px' });
 		});
 	});
 });

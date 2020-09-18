@@ -324,10 +324,12 @@ describe('textfield', () => {
 			formElement.dense = true;
 			await waitNextTask();
 			expect(formElement.hasAttribute('dense')).to.equal(true);
+			assertComputedStyle(formElement, { height: '40px' });
 
 			formElement.dense = false;
 			await waitNextTask();
 			expect(formElement.hasAttribute('dense')).to.equal(false);
+			assertComputedStyle(formElement, { height: '48px' });
 		});
 	});
 
