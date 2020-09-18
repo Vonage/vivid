@@ -190,7 +190,7 @@ describe(`Form Association Foundation`, function () {
 		let textAreaElement;
 		const keyName = 'Enter';
 
-		function setup() {
+		function setupTest() {
 			addedElements = textToDomToParent(
 				`<form onsubmit="return false"><textarea></textarea></form>`
 			);
@@ -209,7 +209,7 @@ describe(`Form Association Foundation`, function () {
 		}
 
 		beforeEach(function () {
-			setup();
+			setupTest();
 		});
 
 		it(`should submit the form when hitting designated keys`, function () {
