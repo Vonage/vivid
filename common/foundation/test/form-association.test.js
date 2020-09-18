@@ -1,4 +1,8 @@
-import { addInputToForm, requestSubmit } from '../form-association';
+import {
+	addInputToForm,
+	requestSubmit,
+	submitOnKeys,
+} from '../form-association';
 import { textToDomToParent, randomAlpha } from '../../../test/test-helpers';
 
 describe(`Form Association Foundation`, function () {
@@ -178,6 +182,69 @@ describe(`Form Association Foundation`, function () {
 			requestSubmit(formElement);
 
 			expect(formSubmitted).to.equal(true);
+		});
+	});
+
+	describe(`submitOnKeys`, function () {
+		let formSubmitted = false;
+		let textAreaElement;
+		const keyName = 'Enter';
+
+		function setup() {
+			addedElements = textToDomToParent(
+				`<form onsubmit="return false"><textarea></textarea></form>`
+			);
+			const formElement = addedElements[0];
+			textAreaElement = formElement.querySelector('textarea');
+
+			formElement.addEventListener('submit', () => (formSubmitted = true));
+
+			submitOnKeys(textAreaElement, [keyName]);
+			const ke = new KeyboardEvent('keydown', {
+				bubbles: true,
+				cancelable: true,
+				key: keyName,
+			});
+			textAreaElement.dispatchEvent(ke);
+		}
+
+		beforeEach(function () {
+			setup();
+		});
+
+		it(`should submit the form when hitting designated keys`, function () {
+			expect(formSubmitted).to.equal(true);
+		});
+
+		it(`should remove listeners that were set if called again without them`, function () {
+			const formerFormSubmitted = formSubmitted;
+			formSubmitted = false;
+			let removeListenerEvent = '';
+
+			textAreaElement.removeEventListener = function (eventName) {
+				removeListenerEvent = eventName;
+			};
+
+			submitOnKeys(textAreaElement, []);
+			const ke = new KeyboardEvent('keydown', {
+				bubbles: true,
+				cancelable: true,
+				key: keyName,
+			});
+			textAreaElement.dispatchEvent(ke);
+
+			expect(removeListenerEvent).to.equal('keydown');
+			expect(formSubmitted).to.equal(false);
+		});
+
+		it(`should remove added attributes to the element`, function () {
+			submitOnKeys(textAreaElement, ['Enter'], 'formId');
+			submitOnKeys(textAreaElement, []);
+			const keysAttrAfter = textAreaElement.getAttribute('data-keys');
+			const formAttrAfter = textAreaElement.getAttribute('data-form');
+
+			expect(keysAttrAfter).to.equal(null);
+			expect(formAttrAfter).to.equal(null);
 		});
 	});
 });
