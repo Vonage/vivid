@@ -27,8 +27,17 @@ export class VWCTextArea extends MWCTextArea {
 
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
-		this.shadowRoot?.querySelector('.mdc-notched-outline')?.shadowRoot?.querySelector('.mdc-notched-outline')?.classList.add('vvd-notch');
-		addInputToForm<VWCTextArea>(this, this.formElement,'textarea');
+		addInputToForm<VWCTextArea>(this, this.formElement, 'textarea');
+	}
+
+	protected renderOutline(): TemplateResult | Record<string, unknown> {
+		if (!this.outlined) {
+			return {};
+		}
+
+		return html` <vwc-notched-outline class="mdc-notched-outline vvd-notch">
+			${this.renderLabel()}
+		</vwc-notched-outline>`;
 	}
 
 	renderHelperText(charCounterTemplate = {}): TemplateResult {
@@ -42,9 +51,17 @@ export class VWCTextArea extends MWCTextArea {
 		};
 		return html`
 			<div class="mdc-text-field-helper-line">
-				<vwc-icon class="mdc-text-field-helper-icon" type="info-negative" size="small"></vwc-icon>
+				<vwc-icon
+					class="mdc-text-field-helper-icon"
+					type="info-negative"
+					size="small"
+				></vwc-icon>
 				<span class="spacer"></span>
-				<div class="mdc-text-field-helper-text ${mapToClasses(classesMap).join(' ')}">${showValidationMessage ? this.validationMessage : this.helper}</div>
+				<div
+					class="mdc-text-field-helper-text ${mapToClasses(classesMap).join(' ')}"
+				>
+					${showValidationMessage ? this.validationMessage : this.helper}
+				</div>
 				${charCounterTemplate}
 			</div>
 		`;

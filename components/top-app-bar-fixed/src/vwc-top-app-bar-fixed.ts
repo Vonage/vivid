@@ -12,4 +12,4 @@ declare global {
  * This component is an extension of [<mwc-top-app-bar-fixed>](https://github.com/material-components/material-components-web-components/tree/master/packages/top-app-bar-fixed)
  */
 @customElement('vwc-top-app-bar-fixed')
-export class VWCTopAppBarFixed extends MWCTopAppBarFixed { }
+export class VWCTopAppBarFixed extends MWCTopAppBarFixed {}

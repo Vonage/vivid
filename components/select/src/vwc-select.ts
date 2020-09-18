@@ -18,11 +18,19 @@ declare global {
 // @ts-ignore
 MWCSelect.styles = [styleCoupling, mwcSelectStyle, vwcSelectStyle];
 
+const shapes = ['rounded', 'pill'] as const;
+export type SelectShape = typeof shapes;
+
 /**
  * This component is an extension of [<mwc-select>](https://github.com/material-components/material-components-web-components/tree/master/packages/select)
  */
 @customElement('vwc-select')
 export class VWCSelect extends MWCSelect {
+	@property({ type: Boolean, reflect: true })
+	dense = false;
+
+	@property({ type: String, reflect: true })
+	shape: SelectShape[number] = 'rounded';
 
 	@property({ type: String, reflect: true })
 	form: string | undefined;
@@ -32,7 +40,6 @@ export class VWCSelect extends MWCSelect {
 
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
-		this.shadowRoot?.querySelector('.mdc-notched-outline')?.shadowRoot?.querySelector('.mdc-notched-outline')?.classList.add('vvd-notch');
 		this.replaceIcon();
 		addInputToForm<VWCSelect>(this, this.formElement);
 	}
@@ -47,12 +54,21 @@ export class VWCSelect extends MWCSelect {
 			'mdc-select-helper-text--validation-msg': showValidationMessage,
 		};
 
+		const classes = ['mdc-select-helper-text', ...mapToClasses(classesMap)].join(
+			' '
+		);
+		const validationMessage = showValidationMessage
+			? this.validationMessage
+			: this.helper;
 		return html`
 			<div class="mdc-select-helper-line">
-				<vwc-icon class="mdc-select-helper-icon" type="info-negative" size="small"></vwc-icon>
+				<vwc-icon
+					class="mdc-select-helper-icon"
+					type="info-negative"
+					size="small"
+				></vwc-icon>
 				<span class="spacer"></span>
-				<div id="helper-text" class="mdc-select-helper-text ${mapToClasses(classesMap).join(' ')}"
-				>${showValidationMessage ? this.validationMessage : this.helper}</div>
+				<div id="helper-text" class="${classes}">${validationMessage}</div>
 			</div>
 		`;
 	}
@@ -63,5 +79,15 @@ export class VWCSelect extends MWCSelect {
 		chevronIcon.classList.add(ddIconClass);
 		chevronIcon.setAttribute('type', 'down');
 		this.shadowRoot?.querySelector(`.${ddIconClass}`)?.replaceWith(chevronIcon);
+	}
+
+	protected renderOutline(): TemplateResult | Record<string, unknown> {
+		if (!this.outlined) {
+			return {};
+		}
+
+		return html` <vwc-notched-outline class="mdc-notched-outline vvd-notch">
+			${this.renderLabel()}
+		</vwc-notched-outline>`;
 	}
 }

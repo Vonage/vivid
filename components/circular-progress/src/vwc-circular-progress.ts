@@ -11,10 +11,7 @@ declare global {
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-MWCCircularProgress.styles = [
-	styleCoupling,
-	mwcCircularProgressStyle
-];
+MWCCircularProgress.styles = [styleCoupling, mwcCircularProgressStyle];
 
 @customElement('vwc-circular-progress')
 export class VWCCircularProgress extends MWCCircularProgress {}

@@ -4,9 +4,10 @@ import { Button as MWCButton } from '@material/mwc-button';
 import { style as vwcButtonStyle } from './vwc-button.css';
 import { style as mwcButtonStyle } from '@material/mwc-button/mwc-button-css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
-import { Connotation } from '@vonage/vvd-foundation/contants';
+import { Connotation } from '@vonage/vvd-foundation/constants';
 import { html, TemplateResult } from 'lit-element';
 import '@vonage/vwc-icon';
+import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -21,9 +22,7 @@ MWCButton.styles = [styleCoupling, mwcButtonStyle, vwcButtonStyle];
 const layouts = ['text', 'outlined', 'filled'];
 export type ButtonLayout = typeof layouts;
 
-export {
-	Connotation
-};
+export { Connotation };
 
 const shapes = ['rounded', 'pill'];
 export type ButtonShape = typeof shapes;
@@ -72,8 +71,10 @@ export class VWCButton extends MWCButton {
 				case 'reset':
 					form.reset();
 					break;
+				case 'button':
+					break;
 				default:
-					form.requestSubmit();
+					form.requestSubmit ? form.requestSubmit() : requestSubmit(form);
 					break;
 			}
 		}

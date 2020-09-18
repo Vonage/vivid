@@ -1,7 +1,6 @@
 import { SchemeOption } from '@vonage/vvd-scheme';
 
-const
-	VVD_CONTEXT_ATTRIBUTE = 'data-vvd-context',
+const VVD_CONTEXT_ATTRIBUTE = 'data-vvd-context',
 	defaultConfig = {} as Record<string, unknown>;
 
 let tmpConfig: Record<string, unknown> | null = null;
@@ -13,14 +12,16 @@ if (!tmpConfig) {
 }
 
 export interface Configuration {
-	scheme?: SchemeOption
+	scheme?: SchemeOption;
 }
 const effectiveConfig: Configuration = tmpConfig;
 export default effectiveConfig;
 
 function updateByHtmlAttribute(): Record<string, unknown> | null {
 	let result = null;
-	const htmlContextAttribute = document.documentElement.getAttribute(VVD_CONTEXT_ATTRIBUTE);
+	const htmlContextAttribute = document.documentElement.getAttribute(
+		VVD_CONTEXT_ATTRIBUTE
+	);
 	if (htmlContextAttribute) {
 		result = {};
 	}

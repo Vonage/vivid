@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-textfield",
-	"version": "0.6.0",
+	"version": "0.7.0",
 	"description": "texfield component",
 	"author": "yinonov <yinon@hotmail.com>",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/textfield#readme",
@@ -25,14 +25,14 @@
 	},
 	"dependencies": {
 		"@material/mwc-textfield": "^0.18.0",
-		"@vonage/vvd-foundation": "^0.6.0",
-		"@vonage/vvd-style-coupling": "^0.6.0",
-		"@vonage/vwc-notched-outline": "^0.6.0",
-		"@vonage/vwc-icon": "^0.6.0",
+		"@vonage/vvd-foundation": "^0.7.0",
+		"@vonage/vvd-style-coupling": "^0.7.0",
+		"@vonage/vwc-icon": "^0.7.0",
+		"@vonage/vwc-notched-outline": "^0.7.0",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.1"
 	},
 	"devDependencies": {
-		"@vonage/vvd-typography": "^0.6.0"
+		"@vonage/vvd-typography": "^0.7.0"
 	}
 }

@@ -1,8 +1,13 @@
 abstract class InputElement {
-	name: string|undefined ='';
+	name: string | undefined = '';
 	value = '';
-	getAttribute(str: string): string | null { return str }
-	closest(str: string): HTMLElement | null { console.log(str); return null }
+	getAttribute(str: string): string | null {
+		return str;
+	}
+	closest(str: string): HTMLElement | null {
+		console.log(str);
+		return null;
+	}
 	abstract addEventListener(eventName: string, cb: (evt?: Event) => void): void;
 	abstract disconnectedCallback(): void;
 	abstract appendChild(elm: HTMLElement): void;
@@ -12,7 +17,6 @@ const types = ['checkbox', 'textarea', 'input'];
 export type HiddenInputType = typeof types;
 
 class FormAssociationDisconnectionComponent extends HTMLElement {
-
 	#_listener: () => void = () => {
 		return;
 	};
@@ -30,15 +34,26 @@ class FormAssociationDisconnectionComponent extends HTMLElement {
 	}
 }
 
-window.customElements.define('form-association-disconnection', FormAssociationDisconnectionComponent);
+window.customElements.define(
+	'form-association-disconnection',
+	FormAssociationDisconnectionComponent
+);
 
-function getFormByIdOrClosest<T extends InputElement>(element: T): HTMLFormElement | null {
+function getFormByIdOrClosest<T extends InputElement>(
+	element: T
+): HTMLFormElement | null {
 	const formId = element.getAttribute('form');
-	const formElement = formId ? document.getElementById(formId) : element.closest('form');
+	const formElement = formId
+		? document.getElementById(formId)
+		: element.closest('form');
 	return formElement instanceof HTMLFormElement ? formElement : null;
 }
 
-function appendHiddenInput(hostingForm: HTMLFormElement, { name, value }: InputElement, hiddenType: HiddenInputType[number]) {
+function appendHiddenInput(
+	hostingForm: HTMLFormElement,
+	{ name, value }: InputElement,
+	hiddenType: HiddenInputType[number]
+) {
 	const hiddenInput = document.createElement(hiddenType) as HTMLInputElement;
 	hiddenInput.style.display = 'none';
 	name ? hiddenInput.setAttribute('name', name) : '';
@@ -48,7 +63,11 @@ function appendHiddenInput(hostingForm: HTMLFormElement, { name, value }: InputE
 	return hiddenInput;
 }
 
-function setValueAndValidity(inputField: HTMLInputElement | undefined, value: string, validationMessage = '') {
+function setValueAndValidity(
+	inputField: HTMLInputElement | undefined,
+	value: string,
+	validationMessage = ''
+) {
 	if (!inputField) {
 		return;
 	}
@@ -56,10 +75,19 @@ function setValueAndValidity(inputField: HTMLInputElement | undefined, value: st
 	inputField.setCustomValidity(validationMessage);
 }
 
-function resetFormFactory<T extends InputElement>(inputElement: T, internalFormElement: HTMLInputElement, hiddenInput: HTMLInputElement) {
+function resetFormFactory<T extends InputElement>(
+	inputElement: T,
+	internalFormElement: HTMLInputElement,
+	hiddenInput: HTMLInputElement
+) {
 	return () => {
-		inputElement.value = internalFormElement.value = hiddenInput?.defaultValue ?? '';
-		setValueAndValidity(hiddenInput, inputElement.value, internalFormElement.validationMessage);
+		inputElement.value = internalFormElement.value =
+			hiddenInput?.defaultValue ?? '';
+		setValueAndValidity(
+			hiddenInput,
+			inputElement.value,
+			internalFormElement.validationMessage
+		);
 	};
 }
 
@@ -70,16 +98,28 @@ function silenceInvalidEvent(inputElement: HTMLInputElement) {
 	});
 }
 
-function setInputUpdateEvents<T extends InputElement>(inputElement: T, internalFormElement: HTMLInputElement, hiddenInput: HTMLInputElement) {
+function setInputUpdateEvents<T extends InputElement>(
+	inputElement: T,
+	internalFormElement: HTMLInputElement,
+	hiddenInput: HTMLInputElement
+) {
 	const eventNames = ['input', 'change'];
-	eventNames.forEach(eventName => {
+	eventNames.forEach((eventName) => {
 		inputElement.addEventListener(eventName, () => {
-			setValueAndValidity(hiddenInput, inputElement.value, internalFormElement.validationMessage);
+			setValueAndValidity(
+				hiddenInput,
+				inputElement.value,
+				internalFormElement.validationMessage
+			);
 		});
 	});
 }
 
-export function addInputToForm<T extends InputElement>(inputElement: T, internalFormElement: HTMLInputElement, hiddenType: HiddenInputType[number] = 'input'): void {
+export function addInputToForm<T extends InputElement>(
+	inputElement: T,
+	internalFormElement: HTMLInputElement,
+	hiddenType: HiddenInputType[number] = 'input'
+): void {
 	const hostingForm = getFormByIdOrClosest(inputElement);
 
 	if (!hostingForm || !inputElement) {
@@ -87,11 +127,21 @@ export function addInputToForm<T extends InputElement>(inputElement: T, internal
 	}
 
 	const hiddenInput = appendHiddenInput(hostingForm, inputElement, hiddenType);
-	setValueAndValidity(hiddenInput, inputElement.value, internalFormElement.validationMessage);
+	setValueAndValidity(
+		hiddenInput,
+		inputElement.value,
+		internalFormElement.validationMessage
+	);
 
-	const resetFormHandler = resetFormFactory(inputElement, internalFormElement, hiddenInput);
+	const resetFormHandler = resetFormFactory(
+		inputElement,
+		internalFormElement,
+		hiddenInput
+	);
 	hostingForm.addEventListener('reset', resetFormHandler);
-	const removeListenerElement = document.createElement('form-association-disconnection') as FormAssociationDisconnectionComponent;
+	const removeListenerElement = document.createElement(
+		'form-association-disconnection'
+	) as FormAssociationDisconnectionComponent;
 	removeListenerElement.listener = () => {
 		hiddenInput.remove();
 		hostingForm.removeEventListener('reset', resetFormHandler);
@@ -101,4 +151,12 @@ export function addInputToForm<T extends InputElement>(inputElement: T, internal
 	silenceInvalidEvent(hiddenInput);
 
 	setInputUpdateEvents(inputElement, internalFormElement, hiddenInput);
+}
+
+export function requestSubmit(form: HTMLFormElement) {
+	const fakeButton = document.createElement('button');
+	fakeButton.style.display = 'none';
+	form.appendChild(fakeButton);
+	fakeButton.click();
+	fakeButton.remove();
 }

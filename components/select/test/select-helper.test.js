@@ -1,57 +1,29 @@
 import '../vwc-select.js';
 import '@vonage/vwc-list/vwc-list-item.js';
-import { textToDomToParent, waitNextTask, waitInterval, assertComputedStyle } from '../../../test/test-helpers.js';
+import {
+	textToDomToParent,
+	waitNextTask,
+	waitInterval,
+	assertComputedStyle,
+} from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
 
-const COMPONENT_NAME = 'vwc-select';
+const COMPONENT_NAME = 'vwc-select',
+	HELPER_MESSAGE = 'helper',
+	ERROR_MESSAGE = 'error';
 
 describe('select helper', () => {
 	let addedElements = [];
 
-	afterEach(() => {
-		while (addedElements.length) {
-			addedElements.pop().remove();
-		}
-	});
-
-	it('should have a helper text visible', async () => {
-		const
-			helper = 'helper',
-			error = 'error';
+	beforeEach(async () => {
 		addedElements = textToDomToParent(`
 			<${COMPONENT_NAME}
 				outlined
 				label="Vwc select"
-				helper="${helper}"
-				validationMessage="${error}"
-				required"
-			>
-				<vwc-list-item></vwc-list-item>
-				<vwc-list-item value="0">Item 0</vwc-list-item>
-				<vwc-list-item value="1">Item 1</vwc-list-item>
-			</${COMPONENT_NAME}>
-		`);
-		await waitNextTask();
-
-		//	present, not seen
-		const helperLine = addedElements[0].shadowRoot.querySelector('.mdc-select-helper-text');
-		expect(helperLine).to.exist;
-		expect(helperLine.textContent).to.equal(helper);
-		assertComputedStyle(helperLine, { opacity: '1' });
-	});
-
-	it('should have helper error message visible when error', async () => {
-		const
-			helper = 'helper',
-			error = 'error';
-		addedElements = textToDomToParent(`
-			<${COMPONENT_NAME}
-				outlined
-				label="Vwc select"
-				helper="${helper}"
-				validationMessage="${error}"
+				helper="${HELPER_MESSAGE}"
+				validationMessage="${ERROR_MESSAGE}"
 				required
 			>
 				<vwc-list-item></vwc-list-item>
@@ -60,37 +32,67 @@ describe('select helper', () => {
 			</${COMPONENT_NAME}>
 		`);
 		await waitNextTask();
+	});
 
+	afterEach(() => {
+		while (addedElements.length) {
+			addedElements.pop().remove();
+		}
+	});
+
+	it('should have a helper text visible', async () => {
+		const helperLine = getAsHelperLine(addedElements[0]);
+		assertExistWithMessage(helperLine, HELPER_MESSAGE);
+		assertComputedStyle(helperLine, { opacity: '1' });
+	});
+
+	it('should have helper error message visible when error', async () => {
 		//	present helper, seen
-		let helperLine = addedElements[0].shadowRoot.querySelector('.mdc-select-helper-text');
-		expect(helperLine).to.exist;
-		expect(helperLine.textContent).to.equal(helper);
-		let errorLine = addedElements[0].shadowRoot.querySelector('.mdc-select-helper-text--validation-msg');
+		let helperLine = getAsHelperLine(addedElements[0]);
+		assertExistWithMessage(helperLine, HELPER_MESSAGE);
+
+		//	error not present
+		let errorLine = getAsErrorLine(addedElements[0]);
 		expect(errorLine).to.not.exist;
 		assertComputedStyle(helperLine, { opacity: '1' });
 
 		//	make it error and validate, error present
-		addedElements[0].focus();
-		addedElements[0].select(0);
-		addedElements[0].reportValidity();
-		addedElements[0].blur();
+		await turnValidityWaitReported(addedElements[0], false);
 
-		await waitInterval(200);
-
-		errorLine = addedElements[0].shadowRoot.querySelector('.mdc-select-helper-text--validation-msg');
-		expect(errorLine).to.exist;
-		expect(errorLine.textContent).to.equal(error);
+		errorLine = getAsErrorLine(addedElements[0]);
+		assertExistWithMessage(errorLine, ERROR_MESSAGE);
 
 		//	fix the error, error made invisible
-		addedElements[0].focus();
-		addedElements[0].select(1);
-		addedElements[0].reportValidity();
-		addedElements[0].blur();
+		await turnValidityWaitReported(addedElements[0], true);
 
-		await waitInterval(200);
-
-		errorLine = addedElements[0].shadowRoot.querySelector('.mdc-select-helper-text--validation-msg');
+		//	error replaced by helper
+		errorLine = getAsErrorLine(addedElements[0]);
 		expect(errorLine).to.not.exist;
-		expect(helperLine.textContent).to.equal(helper);
+		assertExistWithMessage(helperLine, HELPER_MESSAGE);
 	});
 });
+
+//	internal util functions
+//
+function getAsHelperLine(addedElement) {
+	return addedElement.shadowRoot.querySelector('.mdc-select-helper-text');
+}
+
+function getAsErrorLine(addedElement) {
+	return addedElement.shadowRoot.querySelector(
+		'.mdc-select-helper-text--validation-msg'
+	);
+}
+
+function assertExistWithMessage(helperLine, messageExpected) {
+	expect(helperLine).to.exist;
+	expect(helperLine.textContent).to.equal(messageExpected);
+}
+
+async function turnValidityWaitReported(input, toBeValid) {
+	input.focus();
+	input.select(toBeValid ? 1 : 0);
+	input.reportValidity();
+	input.blur();
+	await waitInterval(200);
+}
