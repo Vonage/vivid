@@ -5,13 +5,15 @@ import {
 	waitNextTask,
 } from '../../../test/test-helpers';
 
-function setInputElementAttributes(inputElement, attrs = {}, domAttrs = {}) {
+function setInputElementAttributes(inputElement, attrs = {}) {
 	Object.keys(attrs).forEach((attr) => {
-		inputElement[attr] = attrs[attr];
+		inputElement.setAttribute(attr, attrs[attr]);
 	});
+}
 
-	Object.keys(domAttrs).forEach((attr) => {
-		inputElement.setAttribute(attr, domAttrs[attr]);
+function setInputElementProperties(inputElement, props = {}) {
+	Object.keys(props).forEach((attr) => {
+		inputElement[attr] = props[attr];
 	});
 }
 
@@ -50,7 +52,7 @@ describe(`Form Association Foundation`, function () {
 			));
 			const inputElementWrapper = formElement.children[0];
 
-			setInputElementAttributes(inputElementWrapper, {
+			setInputElementProperties(inputElementWrapper, {
 				formElement: inputElementWrapper.querySelector('input'),
 				name: fieldName,
 			});
@@ -74,15 +76,12 @@ describe(`Form Association Foundation`, function () {
 			`));
 
 			const inputElementWrapper = formElement.children[0];
-			setInputElementAttributes(
-				inputElementWrapper,
-				{
-					formElement: inputElementWrapper.querySelector('input'),
-				},
-				{
-					form: otherFormId,
-				}
-			);
+			setInputElementProperties(inputElementWrapper, {
+				formElement: inputElementWrapper.querySelector('input'),
+			});
+			setInputElementAttributes(inputElementWrapper, {
+				form: otherFormId,
+			});
 
 			addInputToForm(inputElementWrapper, inputElementWrapper.formElement);
 
@@ -99,16 +98,13 @@ describe(`Form Association Foundation`, function () {
 			));
 
 			const inputElementWrapper = formElement.children[0];
-			setInputElementAttributes(
-				inputElementWrapper,
-				{
-					name: fieldName,
-					formElement: inputElementWrapper.querySelector('input'),
-				},
-				{
-					form: nonExistentFormId,
-				}
-			);
+			setInputElementProperties(inputElementWrapper, {
+				name: fieldName,
+				formElement: inputElementWrapper.querySelector('input'),
+			});
+			setInputElementAttributes(inputElementWrapper, {
+				form: nonExistentFormId,
+			});
 
 			addInputToForm(inputElementWrapper, inputElementWrapper.formElement);
 
@@ -127,17 +123,15 @@ describe(`Form Association Foundation`, function () {
 			));
 
 			const inputElementWrapper = formElement.children[0];
-			setInputElementAttributes(
-				inputElementWrapper,
-				{
-					name: fieldName,
-					formElement: inputElementWrapper.querySelector('input'),
-					value: defaultValue,
-				},
-				{
-					form: otherFormId,
-				}
-			);
+			setInputElementAttributes(inputElementWrapper, {
+				form: otherFormId,
+			});
+
+			setInputElementProperties(inputElementWrapper, {
+				name: fieldName,
+				formElement: inputElementWrapper.querySelector('input'),
+				value: defaultValue,
+			});
 
 			addInputToForm(inputElementWrapper, inputElementWrapper.formElement);
 
@@ -161,7 +155,7 @@ describe(`Form Association Foundation`, function () {
 			));
 
 			const inputElementWrapper = formElement.children[0];
-			setInputElementAttributes(inputElementWrapper, {
+			setInputElementProperties(inputElementWrapper, {
 				form: otherFormId,
 				formElement: inputElementWrapper.querySelector('input'),
 				name: fieldName,
@@ -198,7 +192,7 @@ describe(`Form Association Foundation`, function () {
 			const formElement = addedElements[0];
 
 			const inputElementWrapper = formElement.children[0];
-			setInputElementAttributes(inputElementWrapper, {
+			setInputElementProperties(inputElementWrapper, {
 				name: fieldName,
 				formElement: inputElementWrapper.querySelector('input'),
 			});
@@ -230,7 +224,7 @@ describe(`Form Association Foundation`, function () {
 				)[0];
 
 				inputElementWrapper = formElement.children[0];
-				setInputElementAttributes(inputElementWrapper, {
+				setInputElementProperties(inputElementWrapper, {
 					formElement: inputElementWrapper.querySelector('input'),
 					name: fieldName,
 					value: defaultValue,
