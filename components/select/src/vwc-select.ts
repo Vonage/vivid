@@ -47,6 +47,12 @@ export class VWCSelect extends MWCSelect {
 		addInputToForm(this);
 	}
 
+	protected updated() {
+		if (this.shape === 'pill') {
+			this.dense = true;
+		}
+	}
+
 	protected renderHelperText(): TemplateResult {
 		if (!this.shouldRenderHelperText) {
 			return html``;
