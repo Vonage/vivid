@@ -1,16 +1,6 @@
-abstract class InputElement {
+abstract class InputElement extends HTMLElement {
 	name: string | undefined = '';
 	value = '';
-	getAttribute(str: string): string | null {
-		return str;
-	}
-	closest(str: string): HTMLElement | null {
-		console.log(str);
-		return null;
-	}
-	abstract addEventListener(eventName: string, cb: (evt?: Event) => void): void;
-	abstract disconnectedCallback(): void;
-	abstract appendChild(elm: HTMLElement): void;
 }
 
 const types = ['checkbox', 'textarea', 'input'];
@@ -91,7 +81,7 @@ function resetFormFactory<T extends InputElement>(
 	};
 }
 
-function silenceInvalidEvent(inputElement: HTMLInputElement) {
+function suspendInvalidEvent(inputElement: HTMLInputElement) {
 	inputElement.addEventListener('invalid', (event: Event) => {
 		event.stopPropagation();
 		event.preventDefault();
@@ -163,7 +153,7 @@ export function addInputToForm<T extends InputElement>(
 		inputElement
 	);
 
-	silenceInvalidEvent(hiddenInput);
+	suspendInvalidEvent(hiddenInput);
 
 	setInputSyncEvents(inputElement, internalFormElement, hiddenInput);
 }
