@@ -25,6 +25,16 @@ function getDefaultSchemeOption(): SchemeOption {
 	return prefersColorSchemeSupported() ? 'syncWithOSSettings' : 'light';
 }
 
+function getEffectiveSchemeOption(
+	destOption: SchemeOption | null = null
+): SchemeOption {
+	return destOption
+		? destOption
+		: _selectedSchemeOption
+		? _selectedSchemeOption
+		: getDefaultSchemeOption();
+}
+
 async function syncWithOSSettings() {
 	applySchemeCSS(getPreferedColorScheme() as PredefinedScheme);
 }
@@ -35,36 +45,38 @@ function init(): void {
 	});
 }
 
+function setSyncModeIfRelevant(scheme: SchemeOption): PredefinedScheme {
+	let result: SchemeOption;
+	if (scheme === 'syncWithOSSettings') {
+		pcs.addEventListener('change', syncWithOSSettings);
+		result = getPreferedColorScheme() as PredefinedScheme;
+	} else {
+		pcs.removeEventListener('change', syncWithOSSettings);
+		result = scheme;
+	}
+	return result;
+}
+
 let setPromise: Promise<Record<string, unknown>> | null = null;
 async function set(
 	schemeOption: SchemeOption | null = null
 ): Promise<Record<string, unknown>> {
 	console.log(`Vivid scheme requested to change to '${schemeOption}'...`);
 
-	const effectiveOption = schemeOption
-		? schemeOption
-		: _selectedSchemeOption
-		? _selectedSchemeOption
-		: getDefaultSchemeOption();
-
+	const effectiveOption = getEffectiveSchemeOption(schemeOption);
 	console.log(`... which resolved effectively to '${effectiveOption}'...`);
+
 	if (effectiveOption === _selectedSchemeOption && setPromise) {
-		console.log('... new scheme option equal to current, done');
+		console.log('... new scheme option is equal to current, done');
 		return setPromise;
 	}
 
 	_selectedSchemeOption = effectiveOption;
-	let effectiveNewScheme: PredefinedScheme;
-
-	if (_selectedSchemeOption === 'syncWithOSSettings') {
-		pcs.addEventListener('change', syncWithOSSettings);
-		effectiveNewScheme = getPreferedColorScheme() as PredefinedScheme;
-	} else {
-		pcs.removeEventListener('change', syncWithOSSettings);
-		effectiveNewScheme = _selectedSchemeOption;
-	}
 
 	let tmpPromise;
+	const effectiveNewScheme: PredefinedScheme = setSyncModeIfRelevant(
+		_selectedSchemeOption
+	);
 	if (effectiveNewScheme !== _selectedScheme) {
 		_selectedScheme = effectiveNewScheme;
 		tmpPromise = applySchemeCSS(effectiveNewScheme);
