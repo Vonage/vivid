@@ -4,11 +4,15 @@ Vivid content may be consumed on different levels.
 One may consume a single component, like `vwc-button`.
 Another use might be to init a common context via `vvd-context` service to style a common HTML native semantics like `H1`, `p` etc.
 
-Any of those involves internal mechanics initialization, like fetching __fonts__ for typography or initialising __schemes__ for a theming / scheme management.
+Any of those involves internal mechanics initialization: fetching __fonts__ for typography, initializing __schemes__ for a theming / scheme management etc.
 We call those __vivid core__.
 
-Obviously, there is a lifecycle here.
+There is a lifecycle here.
 We've designed Vivid overlay lifecycle to be selfcontained, agnostic to other contexts and to not interfere nor require alignment to the existing application lifecycle or any other framework in place.
+
+ __vivid core__ initialization may go 2 main paths:
+- __auto-init__: this is the default behaviour, Vivid will auto init itself upon the first usage unless specified otherwise
+- __manual__: see below how to configure Vivid this way and when to use it
 
 # Readiness hook
 
@@ -28,9 +32,9 @@ vvdCore.coreReady.then(() => {
 
 Most obvious use of the `coreReady` is to remove the loading vilon, which could be put over the site in order to prevent FOUC (flash of unstyled content).
 
-# Silent/Auto init
+# Auto init
 
-If consuming application took no special action, the first use of the Vivid's component/s will auto initialise the __vivid core__.
+If consuming application took no special action, the first use of the Vivid's component/s will auto initialize the __vivid core__.
 
 ## Default init
 
@@ -38,32 +42,31 @@ All of the __vivid core__ services know to init themselves to the default values
 
 ## Pre-configured init
 
-In order to help Vivid overlay to initialise itself to some specific state, consuming application should use `data-vvd-context` attribute on `html` element.
-The below example will auto-initialise __vivid core__ with the dark theme.
+In order to help Vivid overlay to initialize itself to some specific state, consuming application should use `data-vvd-context` attribute on `html` element.
+The below example will auto-initialize __vivid core__ with the dark theme.
 
 ```html
 <html data-vvd-context="dark">
-</html>
+...
 ```
 
 > Important: the attribute is being examined at the moment of initialization ONLY, so it should be in place BEFORE the initialization performed. We suggest to use this feature as a purely static setup OOTB.
 
-## Manual init
+# Manual init
 
-Advanced consumer will manage the visual application state (we mean Vivid's part, eg theming) as per user setting.
-Obviously, this state, unless injected into the main HTML by some server side logic, should involve an async work to be done client side, eg fetching personalised settings from the server or from a local storage like IndexedDB.
+Advanced consumer might like to manage the visual application state (we mean Vivid's part, eg theming) as per user setting.
 
-For those cases we suggest to use `manual` value in the `data-vvd-context`, which will prevent auto init of the __vivid core__. This is the reason, that in this initialization path the `coreReady` API is meaningless, therefore auto rejected.
+This case would involve an async work to be done client side, eg fetching personalised settings from the server or from a local storage like IndexedDB.
 
-It is the consuming application, which becomes responsible for the core services initialization.
+__Manual__ init designed exactly for that. It will prevent auto init of the __vivid core__. Manual init can be done in the following manner:
 
-HTML part:
+Set the `data-vvd-context` to `manual` in HTML:
 ```html
 <html data-vvd-context="manual">
 ...
 ```
 
-JavaScript part:
+Use the __vivid core__ API to set configuration dynamically:
 ```javascript
 import vvdCore from '@vonage/vvd-core.js';
 
@@ -76,6 +79,6 @@ vividCore
 	});
 ```
 
-Pay attention: `set` API obviously is not limited to the init use case only, it may be used for any runtime (re-)configuration of the Vivid overlay.
+Pay attention: `set` API is not limited to the init use case only, it may be used for any runtime (re-)configuration of the Vivid overlay.
 
-> Reminder: `coreReady` Promise of the __vivid core__ in the __manual__ initialization flavor is a rejected Promise.
+> Reminder: `coreReady` Promise of the __vivid core__ in the __manual__ initialization flavor is meaningless and is immediatelly rejected.
