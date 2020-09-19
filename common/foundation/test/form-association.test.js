@@ -198,11 +198,12 @@ describe(`Form Association Foundation`, function () {
 		let formSubmitted = 0;
 		let textAreaElement;
 		const keyNames = ['Enter', 'E'];
+		const otherFormId = randomAlpha();
 
 		function setupTest() {
 			formSubmitted = 0;
 			addedElements = textToDomToParent(
-				`<form onsubmit="return false"><textarea></textarea></form>`
+				`<form onsubmit="return false"><textarea></textarea></form><form onsubmit="return false" id="${otherFormId}"></form>`
 			);
 			const formElement = addedElements[0];
 			textAreaElement = formElement.querySelector('textarea');
@@ -229,6 +230,20 @@ describe(`Form Association Foundation`, function () {
 			expect(formSubmitted).to.equal(0);
 		});
 
+		it(`should bind to external form according to form attribute`, function () {
+			const otherFormElement = document.getElementById(otherFormId);
+			let otherFormSubmitted = 0;
+			textAreaElement.setAttribute('form', otherFormId);
+
+			otherFormElement.addEventListener('submit', () => otherFormSubmitted++);
+
+			keyNames.forEach((keyName, index) => {
+				dispatchKeyEvent(keyName);
+				expect(formSubmitted).to.equal(0);
+				expect(otherFormSubmitted).to.equal(index + 1);
+			});
+		});
+
 		it(`should remove listeners that were set if called again without them`, function () {
 			let removeListenerEvent = '';
 
@@ -244,13 +259,10 @@ describe(`Form Association Foundation`, function () {
 		});
 
 		it(`should remove added attributes to the element`, function () {
-			submitOnKeys(textAreaElement, ['Enter'], 'formId');
 			submitOnKeys(textAreaElement, []);
 			const keysAttrAfter = textAreaElement.getAttribute('data-keys');
-			const formAttrAfter = textAreaElement.getAttribute('data-form');
 
 			expect(keysAttrAfter).to.equal(null);
-			expect(formAttrAfter).to.equal(null);
 		});
 	});
 });

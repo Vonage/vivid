@@ -2,7 +2,7 @@ const types = ['checkbox', 'textarea', 'input'];
 export type HiddenInputType = typeof types;
 
 function getFormByIdOrClosest(element: HTMLElement): HTMLFormElement | null {
-	const formId = element.getAttribute('form') || element.dataset.form;
+	const formId = element.getAttribute('form');
 	const formElement = formId
 		? document.getElementById(formId)
 		: element.closest('form');
@@ -113,23 +113,15 @@ function handleKeyDown(this: HTMLInputElement, event: KeyboardEvent) {
 	}
 }
 
-export function submitOnKeys(
-	element: HTMLInputElement,
-	keys: string[] = [],
-	formId?: string
-) {
+export function submitOnKeys(element: HTMLInputElement, keys: string[] = []) {
 	element.removeEventListener('keydown', handleKeyDown);
 	element.removeAttribute('data-keys');
-	element.removeAttribute('data-form');
 
 	if (keys.length === 0) {
 		return;
 	}
 
 	element.setAttribute('data-keys', keys.join(','));
-	if (formId) {
-		element.setAttribute('data-form', formId);
-	}
 
 	element.addEventListener('keydown', handleKeyDown);
 }
