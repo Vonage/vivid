@@ -7,20 +7,8 @@ const types = ['checkbox', 'textarea', 'input'];
 export type HiddenInputType = typeof types;
 
 class FormAssociationDisconnectionComponent extends HTMLElement {
-	#_listener: () => void = () => {
-		return;
-	};
-
-	set listener(cb: () => void) {
-		this.#_listener = cb;
-	}
-
-	get listener(): () => void {
-		return this.#_listener;
-	}
-
 	disconnectedCallback() {
-		this.#_listener();
+		this.dispatchEvent(new Event('disconnected'));
 	}
 }
 
@@ -39,7 +27,7 @@ function getFormByIdOrClosest<T extends InputElement>(
 	return formElement instanceof HTMLFormElement ? formElement : null;
 }
 
-function appendHiddenInput(
+function appendHiddenInputToHostingForm(
 	hostingForm: HTMLFormElement,
 	{ name, value }: InputElement,
 	hiddenType: HiddenInputType[number]
@@ -53,7 +41,7 @@ function appendHiddenInput(
 	return hiddenInput;
 }
 
-function setValueAndValidity(
+function syncValueAndValidity(
 	inputField: HTMLInputElement | undefined,
 	value: string,
 	validationMessage = ''
@@ -73,7 +61,7 @@ function resetFormFactory<T extends InputElement>(
 	return () => {
 		inputElement.value = internalFormElement.value =
 			hiddenInput?.defaultValue ?? '';
-		setValueAndValidity(
+		syncValueAndValidity(
 			hiddenInput,
 			inputElement.value,
 			internalFormElement.validationMessage
@@ -96,7 +84,7 @@ function setInputSyncEvents<T extends InputElement>(
 	const eventNames = ['input', 'change'];
 	eventNames.forEach((eventName) => {
 		inputElement.addEventListener(eventName, () => {
-			setValueAndValidity(
+			syncValueAndValidity(
 				hiddenInput,
 				inputElement.value,
 				internalFormElement.validationMessage
@@ -105,20 +93,28 @@ function setInputSyncEvents<T extends InputElement>(
 	});
 }
 
-function setupDisconnectionCleanup<T extends InputElement>(
-	hiddenInput: HTMLInputElement,
-	hostingForm: HTMLFormElement,
-	resetFormHandler: () => void,
-	inputElement: T
+function appendDisconnectionCleanupElement<T extends InputElement>(
+	inputElement: T,
+	disconnectionCallback: () => void
 ) {
 	const removeListenerElement = document.createElement(
 		'form-association-disconnection'
 	) as FormAssociationDisconnectionComponent;
-	removeListenerElement.listener = () => {
+	removeListenerElement.addEventListener('disconnected', () => {
+		disconnectionCallback();
+	});
+	inputElement.appendChild(removeListenerElement);
+}
+
+function associateFormCleanupFactory(
+	hiddenInput: HTMLInputElement,
+	hostingForm: HTMLFormElement,
+	resetFormHandler: () => void
+) {
+	return () => {
 		hiddenInput.remove();
 		hostingForm.removeEventListener('reset', resetFormHandler);
 	};
-	inputElement.appendChild(removeListenerElement);
 }
 
 export function addInputToForm<T extends InputElement>(
@@ -132,11 +128,10 @@ export function addInputToForm<T extends InputElement>(
 		return;
 	}
 
-	const hiddenInput = appendHiddenInput(hostingForm, inputElement, hiddenType);
-	setValueAndValidity(
-		hiddenInput,
-		inputElement.value,
-		internalFormElement.validationMessage
+	const hiddenInput = appendHiddenInputToHostingForm(
+		hostingForm,
+		inputElement,
+		hiddenType
 	);
 
 	const resetFormHandler = resetFormFactory(
@@ -144,14 +139,22 @@ export function addInputToForm<T extends InputElement>(
 		internalFormElement,
 		hiddenInput
 	);
-	hostingForm.addEventListener('reset', resetFormHandler);
 
-	setupDisconnectionCleanup(
+	const cleanupCallback = associateFormCleanupFactory(
 		hiddenInput,
 		hostingForm,
-		resetFormHandler,
-		inputElement
+		resetFormHandler
 	);
+
+	syncValueAndValidity(
+		hiddenInput,
+		inputElement.value,
+		internalFormElement.validationMessage
+	);
+
+	hostingForm.addEventListener('reset', resetFormHandler);
+
+	appendDisconnectionCleanupElement(inputElement, cleanupCallback);
 
 	suspendInvalidEvent(hiddenInput);
 

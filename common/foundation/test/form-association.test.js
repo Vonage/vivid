@@ -17,11 +17,7 @@ function setInputElementProperties(inputElement, props = {}) {
 	});
 }
 
-class TestComponent extends HTMLElement {
-	disconnectedCallback() {
-		console.log('CB');
-	}
-}
+class TestComponent extends HTMLElement {}
 
 window.customElements.define('test-component', TestComponent);
 
