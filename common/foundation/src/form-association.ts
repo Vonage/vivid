@@ -104,9 +104,7 @@ function handleKeyDown(this: HTMLInputElement, event: KeyboardEvent) {
 		return;
 	}
 
-	const keys = this.dataset.keys ? this.dataset.keys.split(',') : false;
-
-	if (keys && keys.indexOf(event.key) > -1) {
+	if ((this.dataset.keys?.split(',') || []).includes(event.key)) {
 		form.requestSubmit ? form.requestSubmit() : requestSubmit(form);
 	}
 }
