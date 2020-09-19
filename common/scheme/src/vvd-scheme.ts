@@ -79,7 +79,7 @@ async function set(
 	);
 	if (effectiveNewScheme !== _selectedScheme) {
 		_selectedScheme = effectiveNewScheme;
-		tmpPromise = applySchemeCSS(effectiveNewScheme);
+		tmpPromise = applySchemeCSS(_selectedScheme);
 	} else {
 		tmpPromise = Promise.resolve();
 	}
