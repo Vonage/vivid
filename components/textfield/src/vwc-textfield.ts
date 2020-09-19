@@ -6,7 +6,7 @@ import { TextField as MWCTextField } from '@material/mwc-textfield';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import { style as vwcTextFieldStyle } from './vwc-textfield.css';
 import { style as mwcTextFieldStyle } from '@material/mwc-textfield/mwc-textfield-css.js';
-import { addInputToForm } from '@vonage/vvd-foundation/form-association';
+import { associateWithForm } from '@vonage/vvd-foundation/form-association';
 export { TextFieldType } from '@material/mwc-textfield';
 import '@vonage/vwc-icon';
 
@@ -40,7 +40,7 @@ export class VWCTextField extends MWCTextField {
 			?.querySelector('.mdc-notched-outline')
 			?.shadowRoot?.querySelector('.mdc-notched-outline')
 			?.classList.add('vvd-notch');
-		addInputToForm<VWCTextField>(this, this.formElement);
+		associateWithForm<VWCTextField>(this, this.formElement);
 	}
 
 	protected renderIcon(icon: string, isTrailingIcon = false): TemplateResult {

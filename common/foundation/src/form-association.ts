@@ -117,7 +117,7 @@ function associateFormCleanupFactory(
 	};
 }
 
-export function addInputToForm<T extends InputElement>(
+export function associateWithForm<T extends InputElement>(
 	inputElement: T,
 	internalFormElement: HTMLInputElement,
 	hiddenType: HiddenInputType[number] = 'input'

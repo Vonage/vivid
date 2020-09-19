@@ -6,7 +6,7 @@ import { Select as MWCSelect } from '@material/mwc-select';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import { style as vwcSelectStyle } from './vwc-select.css';
 import { style as mwcSelectStyle } from '@material/mwc-select/mwc-select-css.js';
-import { addInputToForm } from '@vonage/vvd-foundation/form-association';
+import { associateWithForm } from '@vonage/vvd-foundation/form-association';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -41,7 +41,7 @@ export class VWCSelect extends MWCSelect {
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
 		this.replaceIcon();
-		addInputToForm<VWCSelect>(this, this.formElement);
+		associateWithForm<VWCSelect>(this, this.formElement);
 	}
 
 	protected renderHelperText(): TemplateResult {

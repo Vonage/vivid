@@ -1,4 +1,4 @@
-import { addInputToForm, requestSubmit } from '../form-association';
+import { associateWithForm, requestSubmit } from '../form-association';
 import {
 	textToDomToParent,
 	randomAlpha,
@@ -28,7 +28,7 @@ describe(`Form Association Foundation`, function () {
 		addedElements.forEach((elm) => elm.remove());
 	});
 
-	describe(`addInputToForm`, function () {
+	describe(`associateWithForm`, function () {
 		let originalSetCustomValidity;
 		beforeEach(function () {
 			originalSetCustomValidity = HTMLElement.prototype.setCustomValidity;
@@ -57,7 +57,7 @@ describe(`Form Association Foundation`, function () {
 				`input[name="${fieldName}]"`
 			).length;
 
-			addInputToForm(inputElementWrapper, inputElementWrapper.formElement);
+			associateWithForm(inputElementWrapper, inputElementWrapper.formElement);
 			expect(numberOfNamedInputsBefore).to.equal(0);
 			expect(
 				formElement.querySelectorAll(`input[name="${fieldName}"]`).length
@@ -79,7 +79,7 @@ describe(`Form Association Foundation`, function () {
 				form: otherFormId,
 			});
 
-			addInputToForm(inputElementWrapper, inputElementWrapper.formElement);
+			associateWithForm(inputElementWrapper, inputElementWrapper.formElement);
 
 			expect(formElement.querySelectorAll('input').length).to.equal(1);
 			expect(otherForm.querySelectorAll('input').length).to.equal(1);
@@ -102,7 +102,7 @@ describe(`Form Association Foundation`, function () {
 				form: nonExistentFormId,
 			});
 
-			addInputToForm(inputElementWrapper, inputElementWrapper.formElement);
+			associateWithForm(inputElementWrapper, inputElementWrapper.formElement);
 
 			expect(
 				document.querySelectorAll(`input[name="${fieldName}"]`).length
@@ -129,7 +129,7 @@ describe(`Form Association Foundation`, function () {
 				value: defaultValue,
 			});
 
-			addInputToForm(inputElementWrapper, inputElementWrapper.formElement);
+			associateWithForm(inputElementWrapper, inputElementWrapper.formElement);
 
 			const hiddenInput = document.querySelector(`input[name="${fieldName}"]`);
 
@@ -157,7 +157,7 @@ describe(`Form Association Foundation`, function () {
 				name: fieldName,
 			});
 
-			addInputToForm(inputElementWrapper, inputElementWrapper.formElement);
+			associateWithForm(inputElementWrapper, inputElementWrapper.formElement);
 
 			const hiddenInput = document.querySelector(`input[name="${fieldName}"]`);
 
@@ -193,7 +193,7 @@ describe(`Form Association Foundation`, function () {
 				formElement: inputElementWrapper.querySelector('input'),
 			});
 
-			addInputToForm(
+			associateWithForm(
 				inputElementWrapper,
 				inputElementWrapper.formElement,
 				hiddenElementType
@@ -226,7 +226,7 @@ describe(`Form Association Foundation`, function () {
 					value: defaultValue,
 				});
 
-				addInputToForm(inputElementWrapper, inputElementWrapper.formElement);
+				associateWithForm(inputElementWrapper, inputElementWrapper.formElement);
 
 				hiddenInput = getHiddenInput(fieldName);
 			});
