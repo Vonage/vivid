@@ -89,6 +89,10 @@ export function addInputToForm(
 }
 
 export function requestSubmit(form: HTMLFormElement) {
+	if (form.requestSubmit) {
+		form.requestSubmit();
+		return;
+	}
 	const fakeButton = document.createElement('button');
 	fakeButton.style.display = 'none';
 	form.appendChild(fakeButton);
@@ -105,7 +109,7 @@ function handleKeyDown(this: HTMLInputElement, event: KeyboardEvent) {
 	}
 
 	if ((this.dataset.keys?.split(',') || []).includes(event.key)) {
-		form.requestSubmit ? form.requestSubmit() : requestSubmit(form);
+		requestSubmit(form);
 	}
 }
 
