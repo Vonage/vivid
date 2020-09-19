@@ -124,7 +124,7 @@ export function submitOnKeys(
 		return;
 	}
 
-	element.setAttribute('data-keys', keys.join(''));
+	element.setAttribute('data-keys', keys.join(','));
 	if (formId) {
 		element.setAttribute('data-form', formId);
 	}

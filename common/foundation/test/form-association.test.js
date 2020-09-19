@@ -186,20 +186,7 @@ describe(`Form Association Foundation`, function () {
 	});
 
 	describe(`submitOnKeys`, function () {
-		let formSubmitted = false;
-		let textAreaElement;
-		const keyName = 'Enter';
-
-		function setupTest() {
-			addedElements = textToDomToParent(
-				`<form onsubmit="return false"><textarea></textarea></form>`
-			);
-			const formElement = addedElements[0];
-			textAreaElement = formElement.querySelector('textarea');
-
-			formElement.addEventListener('submit', () => (formSubmitted = true));
-
-			submitOnKeys(textAreaElement, [keyName]);
+		function dispatchKeyEvent(keyName) {
 			const ke = new KeyboardEvent('keydown', {
 				bubbles: true,
 				cancelable: true,
@@ -208,17 +195,41 @@ describe(`Form Association Foundation`, function () {
 			textAreaElement.dispatchEvent(ke);
 		}
 
+		let formSubmitted = 0;
+		let textAreaElement;
+		const keyNames = ['Enter', 'E'];
+
+		function setupTest() {
+			formSubmitted = 0;
+			addedElements = textToDomToParent(
+				`<form onsubmit="return false"><textarea></textarea></form>`
+			);
+			const formElement = addedElements[0];
+			textAreaElement = formElement.querySelector('textarea');
+
+			formElement.addEventListener('submit', () => formSubmitted++);
+
+			submitOnKeys(textAreaElement, keyNames);
+		}
+
 		beforeEach(function () {
 			setupTest();
 		});
 
 		it(`should submit the form when hitting designated keys`, function () {
-			expect(formSubmitted).to.equal(true);
+			keyNames.forEach((keyName, index) => {
+				dispatchKeyEvent(keyName);
+				expect(formSubmitted).to.equal(index + 1);
+			});
+		});
+
+		it(`should not fire submit when hitting a non designated key`, function () {
+			const nonDesignatedKey = 'e';
+			dispatchKeyEvent(nonDesignatedKey);
+			expect(formSubmitted).to.equal(0);
 		});
 
 		it(`should remove listeners that were set if called again without them`, function () {
-			const formerFormSubmitted = formSubmitted;
-			formSubmitted = false;
 			let removeListenerEvent = '';
 
 			textAreaElement.removeEventListener = function (eventName) {
@@ -226,15 +237,10 @@ describe(`Form Association Foundation`, function () {
 			};
 
 			submitOnKeys(textAreaElement, []);
-			const ke = new KeyboardEvent('keydown', {
-				bubbles: true,
-				cancelable: true,
-				key: keyName,
-			});
-			textAreaElement.dispatchEvent(ke);
+			dispatchKeyEvent(keyNames[0]);
 
 			expect(removeListenerEvent).to.equal('keydown');
-			expect(formSubmitted).to.equal(false);
+			expect(formSubmitted).to.equal(0);
 		});
 
 		it(`should remove added attributes to the element`, function () {
