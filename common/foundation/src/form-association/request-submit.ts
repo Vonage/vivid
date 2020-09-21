@@ -1,4 +1,4 @@
-export function requestSubmit(form: HTMLFormElement) {
+export function requestSubmit(form: HTMLFormElement): void {
 	if (form.requestSubmit) {
 		form.requestSubmit();
 		return;
