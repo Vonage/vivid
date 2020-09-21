@@ -1,6 +1,7 @@
-import { customElement, property, html, TemplateResult } from 'lit-element';
-import '@vonage/vwc-notched-outline';
+import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
+import '@vonage/vwc-notched-outline';
+import { customElement, property, html, TemplateResult } from 'lit-element';
 import { mapToClasses } from '@vonage/vvd-foundation/class-utils.js';
 import { Select as MWCSelect } from '@material/mwc-select';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';

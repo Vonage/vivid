@@ -1,3 +1,4 @@
+import '@vonage/vvd-core';
 import { customElement } from 'lit-element';
 import { Formfield as MWCFormfield } from '@material/mwc-formfield';
 import { style as vwcFormfieldStyle } from './vwc-formfield.css';

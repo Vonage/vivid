@@ -1,3 +1,4 @@
+import '@vonage/vvd-core';
 import { ActionDetail } from '@material/mwc-list/mwc-list-foundation.js';
 import { Menu as MWCMenu } from '@material/mwc-menu';
 import { customElement } from 'lit-element';
