@@ -131,7 +131,7 @@ export function associateWithForm<T extends InputElement>(
 		hiddenInput
 	);
 
-	const cleanupCallback = associateFormCleanupFactory(
+	const disconnectionCallback = associateFormCleanupFactory(
 		hiddenInput,
 		hostingForm,
 		resetFormHandler
@@ -145,7 +145,7 @@ export function associateWithForm<T extends InputElement>(
 
 	hostingForm.addEventListener('reset', resetFormHandler);
 
-	appendDisconnectionCleanupElement(inputElement, cleanupCallback);
+	appendDisconnectionCleanupElement(inputElement, disconnectionCallback);
 
 	syncValueAndValidityOnChanges(inputElement, internalFormElement, hiddenInput);
 }
