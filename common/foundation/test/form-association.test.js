@@ -1,4 +1,8 @@
-import { associateWithForm, requestSubmit } from '../form-association';
+import {
+	associateWithForm,
+	requestSubmit,
+	submitOnEnter,
+} from '../form-association';
 import {
 	textToDomToParent,
 	randomAlpha,
@@ -273,6 +277,66 @@ describe(`Form Association Foundation`, function () {
 			requestSubmit(formElement);
 
 			expect(formSubmitted).to.equal(true);
+		});
+	});
+
+	describe(`submitOnEnter`, function () {
+		function dispatchKeyEvent(keyName) {
+			const ke = new KeyboardEvent('keydown', {
+				bubbles: true,
+				cancelable: true,
+				key: keyName,
+			});
+			textAreaElement.dispatchEvent(ke);
+		}
+
+		let formSubmitted = 0;
+		let textAreaElement;
+		const keyName = 'Enter';
+
+		function setupTest() {
+			formSubmitted = 0;
+			addedElements = textToDomToParent(
+				`<form onsubmit="return false"><textarea></textarea></form></form>`
+			);
+			const formElement = addedElements[0];
+			textAreaElement = formElement.querySelector('textarea');
+
+			formElement.addEventListener('submit', () => formSubmitted++);
+
+			submitOnEnter(textAreaElement);
+		}
+
+		beforeEach(function () {
+			setupTest();
+		});
+
+		it(`should submit the form when hitting designated keys`, function () {
+			dispatchKeyEvent(keyName);
+			dispatchKeyEvent(keyName);
+			expect(formSubmitted).to.equal(2);
+		});
+
+		it(`should not fire submit when hitting a non designated key`, function () {
+			const nonDesignatedKey = 'e';
+			dispatchKeyEvent(nonDesignatedKey);
+			expect(formSubmitted).to.equal(0);
+		});
+
+		it(`should bind to external form according to form attribute`, function () {
+			const otherFormId = randomAlpha();
+			const otherFormElement = textToDomToParent(
+				`<form onsubmit="return false" id="${otherFormId}">`
+			)[0];
+			addedElements.push(otherFormElement);
+
+			let otherFormSubmitted = 0;
+			textAreaElement.setAttribute('form', otherFormId);
+
+			otherFormElement.addEventListener('submit', () => otherFormSubmitted++);
+
+			dispatchKeyEvent(keyName);
+			expect(otherFormSubmitted).to.equal(1);
 		});
 	});
 });

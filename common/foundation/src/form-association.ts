@@ -1,3 +1,4 @@
+import { getFormByIdOrClosest } from './form-association/common';
 abstract class InputElement extends HTMLElement {
 	name: string | undefined = '';
 	value = '';
@@ -161,10 +162,16 @@ export function associateWithForm<T extends InputElement>(
 	setInputSyncEvents(inputElement, internalFormElement, hiddenInput);
 }
 
-export function requestSubmit(form: HTMLFormElement): void {
+export function requestSubmit(form: HTMLFormElement) {
+	if (form.requestSubmit) {
+		form.requestSubmit();
+		return;
+	}
 	const fakeButton = document.createElement('button');
 	fakeButton.style.display = 'none';
 	form.appendChild(fakeButton);
 	fakeButton.click();
 	fakeButton.remove();
 }
+
+export * from './form-association/submit-on-enter-key';

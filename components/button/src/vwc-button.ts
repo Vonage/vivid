@@ -74,7 +74,7 @@ export class VWCButton extends MWCButton {
 				case 'button':
 					break;
 				default:
-					form.requestSubmit ? form.requestSubmit() : requestSubmit(form);
+					requestSubmit(form);
 					break;
 			}
 		}
