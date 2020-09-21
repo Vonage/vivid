@@ -1,4 +1,4 @@
-import { getFormByIdOrClosest } from './formAssociation/common';
+import { getFormByIdOrClosest } from './form-association/common';
 
 const types = ['checkbox', 'textarea', 'input'];
 export type HiddenInputType = typeof types;
@@ -94,4 +94,4 @@ export function requestSubmit(form: HTMLFormElement) {
 	fakeButton.remove();
 }
 
-export * from './formAssociation/submitOnEnterKey';
+export * from './form-association/submit-on-enter-key';
