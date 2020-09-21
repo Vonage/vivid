@@ -1,13 +1,7 @@
+import { getFormByIdOrClosest } from './formAssociation/common';
+
 const types = ['checkbox', 'textarea', 'input'];
 export type HiddenInputType = typeof types;
-
-function getFormByIdOrClosest(element: HTMLElement): HTMLFormElement | null {
-	const formId = element.getAttribute('form');
-	const formElement = formId
-		? document.getElementById(formId)
-		: element.closest('form');
-	return formElement instanceof HTMLFormElement ? formElement : null;
-}
 
 function addHiddenInput(
 	hostingForm: HTMLElement,
@@ -100,28 +94,4 @@ export function requestSubmit(form: HTMLFormElement) {
 	fakeButton.remove();
 }
 
-function handleKeyDown(this: HTMLInputElement, event: KeyboardEvent) {
-	event.preventDefault();
-
-	const form = getFormByIdOrClosest(this);
-	if (!form) {
-		return;
-	}
-
-	if ((this.dataset.keys?.split(',') || []).includes(event.key)) {
-		requestSubmit(form);
-	}
-}
-
-export function submitOnKeys(element: HTMLInputElement, keys: string[] = []) {
-	element.removeEventListener('keydown', handleKeyDown);
-	element.removeAttribute('data-keys');
-
-	if (keys.length === 0) {
-		return;
-	}
-
-	element.setAttribute('data-keys', keys.join(','));
-
-	element.addEventListener('keydown', handleKeyDown);
-}
+export * from './formAssociation/submitOnEnterKey';
