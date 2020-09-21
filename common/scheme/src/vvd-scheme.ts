@@ -1,7 +1,5 @@
-import { CSSResult } from 'lit-element';
-import { pipe } from 'ramda';
 import { onSchemeChange } from './scheme-change-listener';
-import { updateTagStyleCssText } from './vvd-scheme-style-tag-handler';
+import { applySchemeCSS } from './vvd-scheme-style-tag-handler';
 
 import {
 	pcs,
@@ -12,49 +10,33 @@ import {
 export type PredefinedScheme = 'light' | 'dark';
 export type SchemeOption = 'syncWithOSSettings' | PredefinedScheme;
 
-type ModuleType =
-	| typeof import('./scheme.dark.css')
-	| typeof import('./scheme.light.css'); // This is the import type!
-
-const getSchemeCssText = pipe(getSchemeModule, getStyleSheet, getCssText);
-
 let _selectedScheme: PredefinedScheme;
-export const getSelectedScheme = (): PredefinedScheme => _selectedScheme;
+function getSelectedScheme(): PredefinedScheme {
+	return _selectedScheme;
+}
 
 let _selectedSchemeOption: SchemeOption;
-export const getSelectedSchemeOption = (): SchemeOption =>
-	_selectedSchemeOption;
+function getSelectedSchemeOption(): SchemeOption {
+	return _selectedSchemeOption;
+}
 
-function schemeDefault(): SchemeOption {
-	// if no scheme chosen try 'prefers-color-scheme' and if not supported just return 'light
+function getDefaultSchemeOption(): SchemeOption {
+	// if no scheme chosen try 'prefers-color-scheme' and if not supported just return 'light'
 	return prefersColorSchemeSupported() ? 'syncWithOSSettings' : 'light';
 }
 
-function getSchemeModule(schemeOption: SchemeOption): Promise<ModuleType> {
-	switch (schemeOption) {
-		case 'dark':
-			return import('./scheme.dark.css');
-		case 'light':
-		default:
-			return import('./scheme.light.css');
-	}
-}
-
-async function getStyleSheet(ModulePromise: Promise<ModuleType>) {
-	return (await ModulePromise).style;
-}
-
-async function getCssText(
-	resultPromise: Promise<CSSResult>
-): Promise<CSSResult['cssText']> {
-	const { cssText } = await resultPromise;
-	return cssText;
+function getEffectiveSchemeOption(
+	destOption: SchemeOption | null = null
+): SchemeOption {
+	return destOption
+		? destOption
+		: _selectedSchemeOption
+		? _selectedSchemeOption
+		: getDefaultSchemeOption();
 }
 
 async function syncWithOSSettings() {
-	updateTagStyleCssText(
-		await getSchemeCssText(getPreferedColorScheme() as SchemeOption)
-	);
+	applySchemeCSS(getPreferedColorScheme() as PredefinedScheme);
 }
 
 function init(): void {
@@ -75,31 +57,52 @@ function setSyncModeIfRelevant(scheme: SchemeOption): PredefinedScheme {
 	return result;
 }
 
-async function set(scheme: SchemeOption = schemeDefault()) {
-	console.log(`Vivid scheme requested to change to '${scheme}'...`);
+let setPromise: Promise<Record<string, unknown>> | null = null;
+async function set(
+	schemeOption: SchemeOption | null = null
+): Promise<Record<string, unknown>> {
+	console.log(`Vivid scheme requested to change to '${schemeOption}'...`);
 
-	if (_selectedSchemeOption === scheme) {
-		console.log(`'${scheme}' scheme selected but it was already in effect`);
-		return;
+	const effectiveOption = getEffectiveSchemeOption(schemeOption);
+	console.log(`... which resolved effectively to '${effectiveOption}'...`);
+
+	if (effectiveOption === _selectedSchemeOption && setPromise) {
+		console.log('... new scheme option is equal to current, done');
+		return setPromise;
 	}
 
-	_selectedSchemeOption = scheme;
-	const nextScheme: PredefinedScheme = setSyncModeIfRelevant(scheme);
-	if (_selectedScheme !== nextScheme) {
-		_selectedScheme = nextScheme;
-		updateTagStyleCssText(await getSchemeCssText(nextScheme));
+	_selectedSchemeOption = effectiveOption;
+
+	let tmpPromise;
+	const effectiveNewScheme: PredefinedScheme = setSyncModeIfRelevant(
+		_selectedSchemeOption
+	);
+	if (effectiveNewScheme !== _selectedScheme) {
+		_selectedScheme = effectiveNewScheme;
+		tmpPromise = applySchemeCSS(_selectedScheme);
+	} else {
+		tmpPromise = Promise.resolve();
 	}
 
-	console.log('... scheme change done');
+	setPromise = tmpPromise.then(() => {
+		console.log('... scheme changed');
+		return {
+			option: _selectedSchemeOption,
+			scheme: _selectedScheme,
+		};
+	});
+
+	return setPromise;
 }
 
 export default Object.freeze({
 	set,
+	getSelectedScheme,
+	getSelectedSchemeOption,
 });
 
 init();
 
 //TODO add the following tests:
-//!scheme init with/without arguments
 //!scheme change event
 //!add / remove Listener when toggling 'syncWithOSSettings' selected option

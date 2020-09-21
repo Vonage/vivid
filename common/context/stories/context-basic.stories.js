@@ -1,4 +1,5 @@
-import { contextReady } from '@vonage/vvd-context/vvd-context';
+import vvdCore from '@vonage/vvd-core';
+import '@vonage/vvd-context';
 import '@vonage/vwc-scheme-select';
 import '@vonage/vwc-top-app-bar';
 import { html } from 'lit-element';
@@ -42,5 +43,5 @@ export const basic = () => html`
   </main>
 `;
 
-contextReady
+vvdCore.coreReady
 	.then(() => console.log('Vivid context initialised for the context demo story'));

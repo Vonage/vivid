@@ -1,5 +1,6 @@
-import { customElement, html, property, TemplateResult } from 'lit-element';
+import '@vonage/vvd-core';
 import '@vonage/vwc-notched-outline';
+import { customElement, html, property, TemplateResult } from 'lit-element';
 import { mapToClasses } from '@vonage/vvd-foundation/class-utils.js';
 import { TextArea as MWCTextArea } from '@material/mwc-textarea';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
