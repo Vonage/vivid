@@ -120,7 +120,7 @@ export function associateWithForm<T extends InputElement>(
 
 	const hiddenInput = appendHiddenInputToHostingForm(
 		hostingForm,
-		internalFormElement.tagName
+		internalFormElement.nodeName
 	);
 	setHiddenInputInitialValuesAndStyle(hiddenInput, inputElement);
 	suspendInvalidEvent(hiddenInput);
