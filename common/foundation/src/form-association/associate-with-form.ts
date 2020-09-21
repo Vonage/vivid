@@ -110,16 +110,18 @@ function associateFormCleanupFactory(
 
 export function associateWithForm<T extends InputElement>(
 	inputElement: T,
-	internalFormElement: HTMLInputElement,
-	hiddenType: HiddenInputType[number] = 'input'
+	internalFormElement: HTMLInputElement
 ): void {
 	const hostingForm = getFormByIdOrClosest(inputElement);
 
-	if (!hostingForm || !inputElement) {
+	if (!hostingForm) {
 		return;
 	}
 
-	const hiddenInput = appendHiddenInputToHostingForm(hostingForm, hiddenType);
+	const hiddenInput = appendHiddenInputToHostingForm(
+		hostingForm,
+		internalFormElement.tagName
+	);
 	setHiddenInputInitialValuesAndStyle(hiddenInput, inputElement);
 	suspendInvalidEvent(hiddenInput);
 

@@ -184,24 +184,22 @@ describe(`Form Association Foundation`, function () {
 			});
 		});
 
-		it(`should add custom hidden element`, function () {
+		it(`should add hidden element according to internalFormElement type`, function () {
 			const hiddenElementType = 'DIGGERING';
 			const fieldName = 'inputName';
 
-			addedElements = textToDomToParent(`<form><div><input></input></div></form>`);
+			addedElements = textToDomToParent(
+				`<form><div><${hiddenElementType}></${hiddenElementType}></div></form>`
+			);
 			const formElement = addedElements[0];
 
 			const inputElementWrapper = formElement.children[0];
 			setInputElementProperties(inputElementWrapper, {
 				name: fieldName,
-				formElement: inputElementWrapper.querySelector('input'),
+				formElement: inputElementWrapper.querySelector(hiddenElementType),
 			});
 
-			associateWithForm(
-				inputElementWrapper,
-				inputElementWrapper.formElement,
-				hiddenElementType
-			);
+			associateWithForm(inputElementWrapper, inputElementWrapper.formElement);
 
 			expect(formElement.querySelector(`[name="${fieldName}"]`).tagName).to.equal(
 				hiddenElementType

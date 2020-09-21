@@ -28,7 +28,7 @@ export class VWCTextArea extends MWCTextArea {
 
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
-		associateWithForm<VWCTextArea>(this, this.formElement, 'textarea');
+		associateWithForm<VWCTextArea>(this, this.formElement);
 	}
 
 	protected renderOutline(): TemplateResult | Record<string, unknown> {
