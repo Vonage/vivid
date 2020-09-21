@@ -1,8 +1,4 @@
-import { getFormByIdOrClosest } from './form-association/common';
-abstract class InputElement extends HTMLElement {
-	name: string | undefined = '';
-	value = '';
-}
+import { getFormByIdOrClosest, InputElement } from './form-association/common';
 
 const types = ['checkbox', 'textarea', 'input'];
 export type HiddenInputType = typeof types;
@@ -17,16 +13,6 @@ window.customElements.define(
 	'form-association-disconnection',
 	FormAssociationDisconnectionComponent
 );
-
-function getFormByIdOrClosest<T extends InputElement>(
-	element: T
-): HTMLFormElement | null {
-	const formId = element.getAttribute('form');
-	const formElement = formId
-		? document.getElementById(formId)
-		: element.closest('form');
-	return formElement instanceof HTMLFormElement ? formElement : null;
-}
 
 function appendHiddenInputToHostingForm(
 	hostingForm: HTMLFormElement,
@@ -162,16 +148,6 @@ export function associateWithForm<T extends InputElement>(
 	setInputSyncEvents(inputElement, internalFormElement, hiddenInput);
 }
 
-export function requestSubmit(form: HTMLFormElement) {
-	if (form.requestSubmit) {
-		form.requestSubmit();
-		return;
-	}
-	const fakeButton = document.createElement('button');
-	fakeButton.style.display = 'none';
-	form.appendChild(fakeButton);
-	fakeButton.click();
-	fakeButton.remove();
-}
+export * from './form-association/request-submit';
 
 export * from './form-association/submit-on-enter-key';
