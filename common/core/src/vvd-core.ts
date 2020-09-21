@@ -3,12 +3,10 @@ import fonts from '@vonage/vvd-fonts/vvd-fonts.js';
 import schemeService from '@vonage/vvd-scheme';
 
 let coreAutoInitDone: Promise<Array<unknown>>;
-if (!configurer.initialConfiguration.manual) {
+if (configurer.initialConfiguration.autoInit) {
 	coreAutoInitDone = applyConfiguration(configurer.initialConfiguration);
 } else {
-	coreAutoInitDone = Promise.reject(
-		'auto-init unavailable when manual configuration required'
-	);
+	coreAutoInitDone = Promise.reject('auto-init unavailable when "none" used');
 }
 
 export default Object.freeze({

@@ -7,16 +7,16 @@
  *
  * Static way to pre-configure Vivid is via `data-vvd-context` attribute on the HTML element.
  * As of now, only a single keyword token value is supported:
- * - manual: suspend auto-init, to be used in custom initialization flavor
+ * - none: suspend auto-init, to be used in custom initialization flavor
  */
 import { SchemeOption } from '@vonage/vvd-scheme';
 
 const VVD_CONTEXT_ATTRIBUTE = 'data-vvd-context',
-	MANUAL_KEY = 'manual',
+	MANUAL_KEY = 'none',
 	VALID_CONFIGURATION_KEYS = [MANUAL_KEY, 'fonts', 'scheme'];
 
 export interface Configuration {
-	manual: boolean;
+	autoInit: boolean;
 	scheme?: SchemeOption;
 }
 export default Object.freeze({
@@ -26,13 +26,13 @@ export default Object.freeze({
 
 function buildInitialConfiguration(): Configuration {
 	const result: Configuration = {
-		manual: false,
+		autoInit: true,
 	};
 	const vvdContextAttrValue = document.documentElement.getAttribute(
 		VVD_CONTEXT_ATTRIBUTE
 	);
 	if (vvdContextAttrValue === MANUAL_KEY) {
-		result.manual = true;
+		result.autoInit = false;
 	}
 	return result;
 }

@@ -58,11 +58,11 @@ Advanced consumer might like to manage the visual application state (we mean Viv
 
 This case would involve an async work to be done client side, eg fetching personalised settings from the server or from a local storage like IndexedDB.
 
-__Manual__ init designed exactly for that. It will prevent auto init of the __vivid core__. Manual init can be done in the following manner:
+Init with __none__ keyword designed exactly for that. It will prevent auto init of the __vivid core__. It can be done in the following manner:
 
-Set the `data-vvd-context` to `manual` in HTML:
+Set the `data-vvd-context` to `none` in HTML:
 ```html
-<html data-vvd-context="manual">
+<html data-vvd-context="none">
 ...
 ```
 
@@ -81,4 +81,4 @@ vividCore
 
 Pay attention: `set` API is not limited to the init use case only, it may be used for any runtime (re-)configuration of the Vivid overlay.
 
-> Reminder: `coreReady` Promise of the __vivid core__ in the __manual__ initialization flavor is meaningless and is immediatelly rejected.
+> Reminder: `coreReady` Promise of the __vivid core__ is immediatelly rejuected when __none__ initialization flavor is used.
