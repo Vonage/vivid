@@ -1,7 +1,7 @@
 import {
 	addInputToForm,
 	requestSubmit,
-	submitOnKeys,
+	submitOnEnter,
 } from '../form-association';
 import { textToDomToParent, randomAlpha } from '../../../test/test-helpers';
 
@@ -185,7 +185,7 @@ describe(`Form Association Foundation`, function () {
 		});
 	});
 
-	describe(`submitOnKeys`, function () {
+	describe(`submitOnEnter`, function () {
 		function dispatchKeyEvent(keyName) {
 			const ke = new KeyboardEvent('keydown', {
 				bubbles: true,
@@ -197,20 +197,19 @@ describe(`Form Association Foundation`, function () {
 
 		let formSubmitted = 0;
 		let textAreaElement;
-		const keyNames = ['Enter', 'E'];
-		const otherFormId = randomAlpha();
+		const keyName = 'Enter';
 
 		function setupTest() {
 			formSubmitted = 0;
 			addedElements = textToDomToParent(
-				`<form onsubmit="return false"><textarea></textarea></form><form onsubmit="return false" id="${otherFormId}"></form>`
+				`<form onsubmit="return false"><textarea></textarea></form></form>`
 			);
 			const formElement = addedElements[0];
 			textAreaElement = formElement.querySelector('textarea');
 
 			formElement.addEventListener('submit', () => formSubmitted++);
 
-			submitOnKeys(textAreaElement, keyNames);
+			submitOnEnter(textAreaElement);
 		}
 
 		beforeEach(function () {
@@ -218,10 +217,9 @@ describe(`Form Association Foundation`, function () {
 		});
 
 		it(`should submit the form when hitting designated keys`, function () {
-			keyNames.forEach((keyName, index) => {
-				dispatchKeyEvent(keyName);
-				expect(formSubmitted).to.equal(index + 1);
-			});
+			dispatchKeyEvent(keyName);
+			dispatchKeyEvent(keyName);
+			expect(formSubmitted).to.equal(2);
 		});
 
 		it(`should not fire submit when hitting a non designated key`, function () {
@@ -231,38 +229,19 @@ describe(`Form Association Foundation`, function () {
 		});
 
 		it(`should bind to external form according to form attribute`, function () {
-			const otherFormElement = document.getElementById(otherFormId);
+			const otherFormId = randomAlpha();
+			const otherFormElement = textToDomToParent(
+				`<form onsubmit="return false" id="${otherFormId}">`
+			)[0];
+			addedElements.push(otherFormElement);
+
 			let otherFormSubmitted = 0;
 			textAreaElement.setAttribute('form', otherFormId);
 
 			otherFormElement.addEventListener('submit', () => otherFormSubmitted++);
 
-			keyNames.forEach((keyName, index) => {
-				dispatchKeyEvent(keyName);
-				expect(formSubmitted).to.equal(0);
-				expect(otherFormSubmitted).to.equal(index + 1);
-			});
-		});
-
-		it(`should remove listeners that were set if called again without them`, function () {
-			let removeListenerEvent = '';
-
-			textAreaElement.removeEventListener = function (eventName) {
-				removeListenerEvent = eventName;
-			};
-
-			submitOnKeys(textAreaElement, []);
-			dispatchKeyEvent(keyNames[0]);
-
-			expect(removeListenerEvent).to.equal('keydown');
-			expect(formSubmitted).to.equal(0);
-		});
-
-		it(`should remove added attributes to the element`, function () {
-			submitOnKeys(textAreaElement, []);
-			const keysAttrAfter = textAreaElement.getAttribute('data-keys');
-
-			expect(keysAttrAfter).to.equal(null);
+			dispatchKeyEvent(keyName);
+			expect(otherFormSubmitted).to.equal(1);
 		});
 	});
 });
