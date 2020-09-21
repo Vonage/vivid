@@ -14,17 +14,21 @@ window.customElements.define(
 	FormAssociationDisconnectionComponent
 );
 
+function setHiddenInputInitialValuesAndStyle(
+	hiddenInput: HTMLInputElement,
+	{ name, value: initialValue }: InputElement
+) {
+	hiddenInput.style.display = 'none';
+	name ? hiddenInput.setAttribute('name', name) : '';
+	hiddenInput.defaultValue = initialValue;
+}
+
 function appendHiddenInputToHostingForm(
 	hostingForm: HTMLFormElement,
-	{ name, value }: InputElement,
 	hiddenType: HiddenInputType[number]
 ) {
 	const hiddenInput = document.createElement(hiddenType) as HTMLInputElement;
-	hiddenInput.style.display = 'none';
-	name ? hiddenInput.setAttribute('name', name) : '';
-	hiddenInput.defaultValue = value;
 	hostingForm.appendChild(hiddenInput);
-
 	return hiddenInput;
 }
 
@@ -115,11 +119,8 @@ export function associateWithForm<T extends InputElement>(
 		return;
 	}
 
-	const hiddenInput = appendHiddenInputToHostingForm(
-		hostingForm,
-		inputElement,
-		hiddenType
-	);
+	const hiddenInput = appendHiddenInputToHostingForm(hostingForm, hiddenType);
+	setHiddenInputInitialValuesAndStyle(hiddenInput, inputElement);
 	suspendInvalidEvent(hiddenInput);
 
 	const resetFormHandler = resetFormFactory(
