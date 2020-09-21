@@ -28,7 +28,7 @@ function appendHiddenInputToHostingForm(
 	return hiddenInput;
 }
 
-function syncValueAndValidity(
+function setInternalValueAndValidityInHiddenInput(
 	inputField: HTMLInputElement | undefined,
 	value: string,
 	validationMessage = ''
@@ -48,7 +48,7 @@ function resetFormFactory<T extends InputElement>(
 	return () => {
 		inputElement.value = internalFormElement.value =
 			hiddenInput?.defaultValue ?? '';
-		syncValueAndValidity(
+		setInternalValueAndValidityInHiddenInput(
 			hiddenInput,
 			inputElement.value,
 			internalFormElement.validationMessage
@@ -63,7 +63,7 @@ function suspendInvalidEvent(inputElement: HTMLInputElement) {
 	});
 }
 
-function setInputSyncEvents<T extends InputElement>(
+function syncValueAndValidityOnChanges<T extends InputElement>(
 	inputElement: T,
 	internalFormElement: HTMLInputElement,
 	hiddenInput: HTMLInputElement
@@ -71,7 +71,7 @@ function setInputSyncEvents<T extends InputElement>(
 	const eventNames = ['input', 'change'];
 	eventNames.forEach((eventName) => {
 		inputElement.addEventListener(eventName, () => {
-			syncValueAndValidity(
+			setInternalValueAndValidityInHiddenInput(
 				hiddenInput,
 				inputElement.value,
 				internalFormElement.validationMessage
@@ -134,7 +134,7 @@ export function associateWithForm<T extends InputElement>(
 		resetFormHandler
 	);
 
-	syncValueAndValidity(
+	setInternalValueAndValidityInHiddenInput(
 		hiddenInput,
 		inputElement.value,
 		internalFormElement.validationMessage
@@ -144,5 +144,5 @@ export function associateWithForm<T extends InputElement>(
 
 	appendDisconnectionCleanupElement(inputElement, cleanupCallback);
 
-	setInputSyncEvents(inputElement, internalFormElement, hiddenInput);
+	syncValueAndValidityOnChanges(inputElement, internalFormElement, hiddenInput);
 }
