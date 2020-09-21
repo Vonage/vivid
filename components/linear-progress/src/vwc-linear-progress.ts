@@ -1,3 +1,4 @@
+import '@vonage/vvd-core';
 import { customElement } from 'lit-element';
 import { LinearProgress as MWCLinearProgress } from '@material/mwc-linear-progress';
 import { style as vwcLinearProgressStyle } from './vwc-linear-progress.css';

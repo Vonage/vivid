@@ -5,9 +5,9 @@ export default Object.freeze({
 const FONTS_BASE_URL_TOKEN = 'FONTS_BASE_URL',
 	CDN_BASE_URL = '//dpnf5z0hinc7q.cloudfront.net/fonts/v1';
 
-let INIT_PROMISE: Promise<void> | null = null;
+let INIT_PROMISE: Promise<Record<string, unknown>> | null = null;
 
-async function init(): Promise<void> {
+async function init(): Promise<Record<string, unknown>> {
 	if (!INIT_PROMISE) {
 		INIT_PROMISE = new Promise((resolve, reject) => {
 			console.info('Vivid Fonts initialization start...');
@@ -24,7 +24,6 @@ async function init(): Promise<void> {
 						CDN_BASE_URL
 					);
 					const ds = document.createElement('style');
-					ds.type = 'text/css';
 					ds.innerHTML = finalCSS;
 					document.head.appendChild(ds);
 					return ensureInit(testElement, initialWidth);
@@ -55,13 +54,13 @@ function setupInitTestElement(): HTMLElement {
 async function ensureInit(
 	testElement: HTMLElement,
 	initialWidth: number
-): Promise<void> {
+): Promise<Record<string, unknown>> {
 	return new Promise((resolve) => {
 		function innerTest() {
 			if (testElement.offsetWidth === initialWidth) {
 				setTimeout(innerTest, 25);
 			} else {
-				resolve();
+				resolve({});
 			}
 		}
 		innerTest();
