@@ -1,13 +1,7 @@
+import { getFormByIdOrClosest } from './form-association/common';
+
 const types = ['checkbox', 'textarea', 'input'];
 export type HiddenInputType = typeof types;
-
-function getFormByIdOrClosest(element: HTMLElement): HTMLFormElement | null {
-	const formId = element.getAttribute('form');
-	const formElement = formId
-		? document.getElementById(formId)
-		: element.closest('form');
-	return formElement instanceof HTMLFormElement ? formElement : null;
-}
 
 function addHiddenInput(
 	hostingForm: HTMLElement,
@@ -89,9 +83,15 @@ export function addInputToForm(
 }
 
 export function requestSubmit(form: HTMLFormElement) {
+	if (form.requestSubmit) {
+		form.requestSubmit();
+		return;
+	}
 	const fakeButton = document.createElement('button');
 	fakeButton.style.display = 'none';
 	form.appendChild(fakeButton);
 	fakeButton.click();
 	fakeButton.remove();
 }
+
+export * from './form-association/submit-on-enter-key';
