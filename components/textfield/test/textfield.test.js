@@ -320,4 +320,69 @@ describe('textfield', () => {
 			expect(notchedOutline).to.exist;
 		});
 	});
+
+	describe('dense', () => {
+		it('should have normal size by default', async () => {
+			addedElements = textToDomToParent(
+				`<${COMPONENT_NAME} outlined></${COMPONENT_NAME}>`
+			);
+			await waitNextTask();
+			const formElement = addedElements[0];
+			assertComputedStyle(formElement, { height: '48px' });
+		});
+
+		it('should have dense size when dense', async () => {
+			addedElements = textToDomToParent(
+				`<${COMPONENT_NAME} outlined dense label="VWC Textfield"></${COMPONENT_NAME}>`
+			);
+			await waitNextTask();
+			const formElement = addedElements[0];
+			const labelElement = formElement.shadowRoot
+				.querySelector('.mdc-notched-outline')
+				.querySelector('#label');
+
+			assertComputedStyle(formElement, {
+				height: '40px',
+				paddingTop: '24px',
+			});
+
+			assertComputedStyle(labelElement, {
+				fontSize: '14px',
+				left: '-12px',
+				top: '-24px',
+				transform: 'none',
+			});
+		});
+	});
+
+	describe('shape', () => {
+		it('should have rounded shape by default', async () => {
+			addedElements = textToDomToParent(
+				`<${COMPONENT_NAME} outlined></${COMPONENT_NAME}>`
+			);
+			await waitNextTask();
+			const formElement = addedElements[0];
+			const actualElement = formElement.shadowRoot.querySelector(
+				'.mdc-text-field'
+			);
+
+			expect(formElement.getAttribute('shape') === 'rounded').to.equal(true);
+			assertComputedStyle(actualElement, { borderRadius: '6px' });
+
+			formElement.dense = true;
+			await waitNextTask();
+			assertComputedStyle(actualElement, { borderRadius: '5px' });
+		});
+
+		it('should have pill shape when shape set to pill', async () => {
+			addedElements = textToDomToParent(
+				`<${COMPONENT_NAME} outlined shape="pill"></${COMPONENT_NAME}>`
+			);
+			await waitNextTask();
+			const actualElement = addedElements[0].shadowRoot.querySelector(
+				'.mdc-text-field'
+			);
+			assertComputedStyle(actualElement, { borderRadius: '24px' });
+		});
+	});
 });

@@ -2,6 +2,12 @@ export const argTypes = {
   outlined: {
     control: {
       type: 'inline-radio',
+      options: { true: '' },
+    },
+  },
+  dense: {
+    control: {
+      type: 'inline-radio',
       options: { true: '', false: undefined },
     },
   },

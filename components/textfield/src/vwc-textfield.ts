@@ -1,7 +1,13 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
 import '@vonage/vwc-notched-outline';
-import { customElement, property, html, TemplateResult } from 'lit-element';
+import {
+	customElement,
+	property,
+	html,
+	TemplateResult,
+	PropertyValues,
+} from 'lit-element';
 import { mapToClasses } from '@vonage/vvd-foundation/class-utils.js';
 import { TextField as MWCTextField } from '@material/mwc-textfield';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
@@ -41,6 +47,13 @@ export class VWCTextField extends MWCTextField {
 			?.shadowRoot?.querySelector('.mdc-notched-outline')
 			?.classList.add('vvd-notch');
 		associateWithForm<VWCTextField>(this, this.formElement);
+	}
+
+	updated(changedProperties: PropertyValues): void {
+		super.updated(changedProperties);
+		if (this.shape === 'pill') {
+			this.dense = true;
+		}
 	}
 
 	protected renderIcon(icon: string, isTrailingIcon = false): TemplateResult {
