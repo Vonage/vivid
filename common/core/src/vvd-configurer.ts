@@ -12,7 +12,7 @@
 import { SchemeOption } from '@vonage/vvd-scheme';
 
 const VVD_CONTEXT_ATTRIBUTE = 'data-vvd-context',
-	MANUAL_INIT_VALUE = 'none',
+	NONE_INIT_VALUE = 'none',
 	VALID_CONFIGURATION_KEYS = ['autoInit', 'scheme'];
 
 export interface Configuration {
@@ -31,7 +31,7 @@ function buildInitialConfiguration(): Configuration {
 	const vvdContextAttrValue = document.documentElement.getAttribute(
 		VVD_CONTEXT_ATTRIBUTE
 	);
-	if (vvdContextAttrValue === MANUAL_INIT_VALUE) {
+	if (vvdContextAttrValue === NONE_INIT_VALUE) {
 		result.autoInit = false;
 	}
 	return result;
