@@ -10,7 +10,12 @@ chai.use(chaiDomDiff);
 const VWC_CAROUSEL = 'vwc-carousel',
 	VWC_CAROUSEL_ITEM = 'vwc-carousel-item';
 
+let addedElements = [];
 describe('carousel', () => {
+	afterEach(function () {
+		addedElements.forEach((elm) => elm.remove());
+	});
+
 	it('vwc-carousel and vwc-carousel-item are defined as a custom element', () => {
 		assert.exists(
 			customElements.get(VWC_CAROUSEL, 'vwc-carousel element is not defined')
@@ -25,9 +30,9 @@ describe('carousel', () => {
 
 	describe('init flow', () => {
 		it('should have the required elements', async () => {
-			const actualElements = textToDomToParent(
+			const actualElements = (addedElements = textToDomToParent(
 				`<${VWC_CAROUSEL} id="carousel-a"></${VWC_CAROUSEL}>`
-			);
+			));
 			await waitNextTask();
 			expect(actualElements[0]).dom.to.equalSnapshot();
 		});
@@ -182,7 +187,10 @@ async function initCarousel(slideKeys, carouselOptions) {
 
 	const slidesText = buildSlidesText(slideKeys);
 	const carouselText = buildCarouselText(slidesText, carouselOptions);
-	const carouselDOM = textToDomToParent(carouselText, document.body);
+	const carouselDOM = (addedElements = textToDomToParent(
+		carouselText,
+		document.body
+	));
 
 	await waitNextTask();
 	return carouselDOM[0];
