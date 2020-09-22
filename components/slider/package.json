@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-slider",
-	"version": "0.7.0",
+	"version": "0.8.0",
 	"description": "slider component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/slider#readme",
 	"license": "ISC",
@@ -25,12 +25,12 @@
 	},
 	"dependencies": {
 		"@material/mwc-slider": "^0.18.0",
-		"@vonage/vvd-core": "^0.7.0",
-		"@vonage/vvd-style-coupling": "^0.7.0",
+		"@vonage/vvd-core": "^0.8.0",
+		"@vonage/vvd-style-coupling": "^0.8.0",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.1"
 	},
 	"devDependencies": {
-		"@vonage/vvd-typography": "^0.7.0"
+		"@vonage/vvd-typography": "^0.8.0"
 	}
 }
