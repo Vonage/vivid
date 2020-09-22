@@ -26,6 +26,8 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"devDependencies": {
-		"style-dictionary": "^2.10.1"
+		"style-dictionary": "^2.10.1",
+		"ramda": "^0.27.1",
+		"lodash": "^4.17.20"
 	}
 }
