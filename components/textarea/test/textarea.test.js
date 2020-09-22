@@ -318,25 +318,38 @@ describe('textarea', () => {
 	});
 
 	describe('dense', () => {
-		it('should reflect the dense attribute', async () => {
+		it('should have normal size by default', async () => {
 			addedElements = textToDomToParent(
 				`<${COMPONENT_NAME} outlined></${COMPONENT_NAME}>`
+			);
+			await waitNextTask();
+			const actualElement = addedElements[0].shadowRoot.querySelector(
+				'.mdc-text-field--textarea'
+			);
+			assertComputedStyle(actualElement, { minHeight: '48px' });
+		});
+
+		it('should have dense size when dense', async () => {
+			addedElements = textToDomToParent(
+				`<${COMPONENT_NAME} outlined dense label="VWC Textarea"></${COMPONENT_NAME}>`
 			);
 			await waitNextTask();
 			const formElement = addedElements[0];
 			const actualElement = formElement.shadowRoot.querySelector(
 				'.mdc-text-field--textarea'
 			);
+			const labelElement = formElement.shadowRoot
+				.querySelector('.mdc-notched-outline')
+				.querySelector('#label');
 
-			formElement.dense = true;
-			await waitNextTask();
-			expect(formElement.hasAttribute('dense')).to.equal(true);
+			assertComputedStyle(formElement, { paddingTop: '24px' });
 			assertComputedStyle(actualElement, { minHeight: '40px' });
-
-			formElement.dense = false;
-			await waitNextTask();
-			expect(formElement.hasAttribute('dense')).to.equal(false);
-			assertComputedStyle(actualElement, { minHeight: '48px' });
+			assertComputedStyle(labelElement, {
+				fontSize: '14px',
+				left: '-12px',
+				top: '-24px',
+				transform: 'none',
+			});
 		});
 	});
 });

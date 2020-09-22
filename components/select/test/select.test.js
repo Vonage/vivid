@@ -354,7 +354,7 @@ describe('select', () => {
 	});
 
 	describe('dense', () => {
-		it('should reflect the dense attribute', async () => {
+		it('should have normal size by default', async () => {
 			addedElements = textToDomToParent(`
 				<${VWC_SELECT} outlined>
 					<vwc-list-item>Item 1</vwc-list-item>
@@ -363,21 +363,38 @@ describe('select', () => {
 			`);
 			await waitNextTask();
 			const formElement = addedElements[0];
-
-			formElement.dense = true;
-			await waitNextTask();
-			expect(formElement.hasAttribute('dense')).to.equal(true);
-			assertComputedStyle(formElement, { height: '40px' });
-
-			formElement.dense = false;
-			await waitNextTask();
-			expect(formElement.hasAttribute('dense')).to.equal(false);
 			assertComputedStyle(formElement, { height: '48px' });
+		});
+
+		it('should have dense size when dense', async () => {
+			addedElements = textToDomToParent(`
+				<${VWC_SELECT} outlined dense label="VWC Select">
+					<vwc-list-item>Item 1</vwc-list-item>
+					<vwc-list-item>Item 2</vwc-list-item>
+				</${VWC_SELECT}>
+			`);
+			await waitNextTask();
+			const formElement = addedElements[0];
+			const labelElement = formElement.shadowRoot
+				.querySelector('.mdc-notched-outline')
+				.querySelector('#label');
+
+			assertComputedStyle(formElement, {
+				height: '40px',
+				paddingTop: '24px',
+			});
+
+			assertComputedStyle(labelElement, {
+				fontSize: '14px',
+				left: '-12px',
+				top: '-24px',
+				transform: 'none',
+			});
 		});
 	});
 
 	describe('shape', () => {
-		it('should reflect the shape attribute', async () => {
+		it('should have rounded shape by default', async () => {
 			addedElements = textToDomToParent(`
 				<${VWC_SELECT} outlined>
 					<vwc-list-item>Item 1</vwc-list-item>
@@ -386,11 +403,28 @@ describe('select', () => {
 			`);
 			await waitNextTask();
 			const formElement = addedElements[0];
-			expect(formElement.getAttribute('shape') === 'rounded').to.equal(true);
+			const actualElement = formElement.shadowRoot.querySelector('.mdc-select');
 
-			formElement.shape = 'pill';
+			expect(formElement.getAttribute('shape') === 'rounded').to.equal(true);
+			assertComputedStyle(actualElement, { borderRadius: '6px' });
+
+			formElement.dense = true;
 			await waitNextTask();
-			expect(formElement.getAttribute('shape') === 'pill').to.equal(true);
+			assertComputedStyle(actualElement, { borderRadius: '5px' });
+		});
+
+		it('should have pill shape when shape set to pill', async () => {
+			addedElements = textToDomToParent(`
+				<${VWC_SELECT} outlined shape="pill">
+					<vwc-list-item>Item 1</vwc-list-item>
+					<vwc-list-item>Item 2</vwc-list-item>
+				</${VWC_SELECT}>
+			`);
+			await waitNextTask();
+			const actualElement = addedElements[0].shadowRoot.querySelector(
+				'.mdc-select'
+			);
+			assertComputedStyle(actualElement, { borderRadius: '24px' });
 		});
 	});
 });
