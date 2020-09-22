@@ -11,6 +11,14 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
+# 0.9.0 (2020-09-22)
+
+**Note:** Version bump only for package @vivid/root
+
+
+
+
+
 # 0.8.0 (2020-09-22)
 
 **Note:** Version bump only for package @vivid/root
