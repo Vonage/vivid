@@ -14,4 +14,14 @@ describe('vvd-core service', () => {
 			'core service has "coreReady" object - ensure it is Promise'
 		);
 	});
+
+	it('should perform and auto-init to default when no data-vvd-context provided', async () => {
+		const vvdCore = (await import('../vvd-core.js')).default;
+		assert.isDefined(vvdCore.coreReady);
+		const readyResult = await vvdCore.coreReady;
+		assert.isArray(readyResult);
+		readyResult.forEach((r) => {
+			assert.isObject(r);
+		});
+	});
 });
