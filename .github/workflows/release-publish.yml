@@ -38,7 +38,12 @@ jobs:
         run: yarn build:icon-resolver --resolveStrategy=cdn --awsAccessKey=${{ secrets.AWS_VIVID_DEMO_PROD_ACCESS }} --awsAccessSecret=${{ secrets.AWS_VIVID_DEMO_PROD_SECRET }} --awsBucketName=vivid-icons-prod --awsBaseUrl=https://d3fzvwfxu7izti.cloudfront.net
 
       - name: Publish components
-        run: yarn lerna publish from-package --registry https://npm.pkg.github.com --no-git-tag-version --no-push --yes
+        run: |
+          mv .npmrc .npmrctmp
+          git update-index --assume-unchanged .npmrc*
+          yarn lerna publish from-package --registry https://npm.pkg.github.com --no-git-tag-version --no-push --yes
+          mv .npmrctmp .npmrc
+          git update-index --no-assume-unchanged .npmrc*
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
