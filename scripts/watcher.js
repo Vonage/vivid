@@ -4,48 +4,45 @@ const { promisify } = require('util');
 const exec = promisify(require('child_process').exec);
 
 function getRelevantJobPromise(path) {
-  if (path.includes('design-tokens') && path.endsWith('json')) {
-    return exec('yarn compile:design-tokens');
-  }
-  return path.endsWith('ts') ? exec('yarn compile:typescript') : exec('npm run compile:styles');
+	return path.endsWith('ts') ? exec('yarn compile:typescript') : exec('npm run compile:styles');
 }
 
 let inProgress = false;
 const watchFileExtenstions = ['ts', 'scss', 'json'];
 async function onChange(path) {
-  if (watchFileExtenstions.every(s => !path.endsWith(`.${s}`))) {
-    return;
-  }
+	if (watchFileExtenstions.every(s => !path.endsWith(`.${s}`))) {
+		return;
+	}
 
-  if (inProgress) {
-    return;
-  }
-  inProgress = true;
+	if (inProgress) {
+		return;
+	}
+	inProgress = true;
 
-  console.log('%s changed.', path);
+	console.log('%s changed.', path);
 
-  try {
-    await getRelevantJobPromise(path);
-  } catch (err) {
-    console.log(err);
-  }
+	try {
+		await getRelevantJobPromise(path);
+	} catch (err) {
+		console.log(err);
+	}
 
-  console.log('done');
-  inProgress = false;
+	console.log('done');
+	inProgress = false;
 }
 
 const watchPath = [
-  'common/design-tokens/properties/**/*.json',
-  'common/**/src/**',
-  'components/**/src/**',
+	'common/design-tokens/properties/**/*.json',
+	'common/**/src/**',
+	'components/**/src/**',
 ];
 
 // Initialize watcher.
 const watcher = chokidar.watch(watchPath, {
-  ignored: ['**/node_modules/**/*', '**/.git/**/*'],
-  persistent: true,
-  ignoreInitial: true,
-  followSymlinks: true,
+	ignored: ['**/node_modules/**/*', '**/.git/**/*'],
+	persistent: true,
+	ignoreInitial: true,
+	followSymlinks: true,
 });
 // Add event listeners.
 watcher.on('add', onChange).on('change', onChange).on('unlink', onChange);
