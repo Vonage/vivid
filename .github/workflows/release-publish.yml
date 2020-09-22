@@ -40,10 +40,8 @@ jobs:
       - name: Publish components
         run: |
           mv .npmrc .npmrctmp
-          git update-index --assume-unchanged .npmrc*
           yarn lerna publish from-package --registry https://npm.pkg.github.com --no-git-tag-version --no-push --yes
           mv .npmrctmp .npmrc
-          git update-index --no-assume-unchanged .npmrc*
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
