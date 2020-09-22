@@ -50,6 +50,7 @@ storybook-static
 !**/stories/**/*.js
 
 .cache
+*.tmp
 
 lerna-debug.log
 
