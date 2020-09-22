@@ -1,3 +1,4 @@
+import '@vonage/vvd-core';
 import { customElement, html, LitElement, TemplateResult } from 'lit-element';
 import { SchemeOption } from '@vonage/vvd-scheme/vvd-scheme.js';
 import { SCHEME_SELECT_EVENT_TYPE } from '@vonage/vvd-scheme/scheme-change-listener.js';
@@ -15,7 +16,7 @@ export class SchemeSelect extends LitElement {
 
 	constructor() {
 		super();
-		if (!globalThis.BroadcastChannel) {
+		if (globalThis.BroadcastChannel) {
 			const bc = new BroadcastChannel(SCHEME_SELECT_EVENT_TYPE);
 			this.onClick = (scheme) => bc.postMessage(scheme);
 		} else {

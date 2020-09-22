@@ -1,20 +1,26 @@
-import configuration, { Configuration } from './config-resolver.js';
+import configurer, { Configuration } from './vvd-configurer.js';
 import fonts from '@vonage/vvd-fonts/vvd-fonts.js';
 import schemeService from '@vonage/vvd-scheme';
 
-let initResolver: (value?: unknown) => void | PromiseLike<void>,
-	initRejector: (reason?: unknown) => void | PromiseLike<void>;
+let coreAutoInitDone: Promise<Array<unknown>>;
+if (configurer.initialConfiguration.autoInit) {
+	coreAutoInitDone = applyConfiguration(configurer.initialConfiguration);
+} else {
+	coreAutoInitDone = Promise.reject('auto-init unavailable when "none" used');
+}
 
-export const coreReady = new Promise((resolve, reject) => {
-	initResolver = resolve;
-	initRejector = reject;
+export default Object.freeze({
+	set: applyConfiguration,
+	settled: coreAutoInitDone,
 });
 
-console.debug('effective config', JSON.stringify(configuration));
-init(configuration);
+async function applyConfiguration(configuration: Partial<Configuration>) {
+	configurer.validateConfiguration(configuration);
+	return init(configuration);
+}
 
-async function init({ scheme }: Configuration): Promise<void> {
-	Promise.all([fonts.init(), schemeService.set(scheme)])
-		.then(initResolver)
-		.catch(initRejector);
+async function init(
+	configuration: Partial<Configuration>
+): Promise<Array<unknown>> {
+	return Promise.all([fonts.init(), schemeService.set(configuration.scheme)]);
 }

@@ -1,17 +1,24 @@
 {
-  "extends": "../../tsconfig.json",
-  "compilerOptions": {
-    "module": "ESNext",
-    "composite": true,
-    "rootDir": "src",
-    "outDir": ".",
-    "tsBuildInfoFile": ".tsbuildinfo"
-  },
-  "include": ["src/*.ts"],
-  "exclude": ["src/test/*.ts"],
-  "references": [
-    {
-      "path": "../../common/scheme"
-    }
-  ]
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		"module": "ESNext",
+		"composite": true,
+		"rootDir": "src",
+		"outDir": ".",
+		"tsBuildInfoFile": ".tsbuildinfo"
+	},
+	"include": [
+		"src/*.ts"
+	],
+	"exclude": [
+		"src/test/*.ts"
+	],
+	"references": [
+		{
+			"path": "../../common/core"
+		},
+		{
+			"path": "../../common/scheme"
+		}
+	]
 }

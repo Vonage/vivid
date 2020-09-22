@@ -19,7 +19,15 @@ function listenToSubmission(formElement) {
 	});
 }
 
-async function changeFieldValue(actualElement, value, eventName = 'change') {
+function getHiddenInput(formElement, fieldName) {
+	return formElement.querySelector(`input[name="${fieldName}"]`);
+}
+
+async function changeValueAndNotify(
+	actualElement,
+	value,
+	eventName = 'change'
+) {
 	actualElement.value = value.toString();
 	await waitNextTask();
 
@@ -170,7 +178,7 @@ describe('select', () => {
 				actualElement.value = value2.toString();
 				await waitNextTask();
 
-				expect(actualElement.hiddenInput.value).to.equal(value2);
+				expect(getHiddenInput(formElement, fieldName).value).to.equal(value2);
 			});
 		});
 
@@ -189,7 +197,7 @@ describe('select', () => {
 
 				const invalidity = formElement.checkValidity();
 
-				await changeFieldValue(actualElement, value1, 'change');
+				await changeValueAndNotify(actualElement, value1, 'change');
 
 				expect(invalidity).to.equal(false);
 				expect(formElement.checkValidity()).to.equal(true);
@@ -208,7 +216,7 @@ describe('select', () => {
 				await waitNextTask();
 
 				const validInput = formElement.checkValidity();
-				await changeFieldValue(actualElement, '', 'change');
+				await changeValueAndNotify(actualElement, '', 'change');
 				const invalidInput = formElement.checkValidity();
 
 				formElement.reset();
@@ -245,7 +253,7 @@ describe('select', () => {
 
 				submitted = false;
 
-				await changeFieldValue(actualElement, '', 'change');
+				await changeValueAndNotify(actualElement, '', 'change');
 				formElement.requestSubmit();
 
 				expect(invalidity).to.equal(true);
@@ -279,7 +287,7 @@ describe('select', () => {
 				expect(pair[1]).to.equal(value1);
 			}
 
-			await changeFieldValue(actualElement, '', 'change');
+			await changeValueAndNotify(actualElement, '', 'change');
 
 			expect(
 				formElement.querySelectorAll(`input[name="${fieldName}"`).length
