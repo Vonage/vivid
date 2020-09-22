@@ -37,7 +37,7 @@ const eventListenerFn = (callback: (scheme: SchemeOption) => void) =>
 	);
 
 export function onSchemeChange(callback: (scheme: SchemeOption) => void): void {
-	!globalThis.BroadcastChannel
+	globalThis.BroadcastChannel
 		? broadCastFn(callback)
 		: eventListenerFn(callback);
 }
