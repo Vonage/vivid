@@ -11,7 +11,7 @@ if (configurer.initialConfiguration.autoInit) {
 
 export default Object.freeze({
 	set: applyConfiguration,
-	coreReady: coreAutoInitDone,
+	settled: coreAutoInitDone,
 });
 
 async function applyConfiguration(configuration: Partial<Configuration>) {

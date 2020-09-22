@@ -5,7 +5,7 @@ import customElements from '../custom-elements.json';
 import vvdCore from '@vonage/vvd-core';
 import '@vonage/vvd-context';
 
-vvdCore.coreReady
+vvdCore.settled
 	.then(() => console.info('init Vivid context done (preview frame)'));
 
 async function run() {
