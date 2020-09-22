@@ -6,6 +6,7 @@
 	"license": "ISC",
 	"files": [
 		"scss",
+		"form-association",
 		"*.js",
 		"*.ts",
 		"*.map"
