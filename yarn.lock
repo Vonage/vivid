@@ -16297,7 +16297,7 @@ strong-log-transformer@^2.0.0:
     minimist "^1.2.0"
     through "^2.3.4"
 
-style-dictionary@^2.10.0, style-dictionary@^2.10.1:
+style-dictionary@^2.10.1:
   version "2.10.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/style-dictionary/-/style-dictionary-2.10.1.tgz#7c8bd31c265d5169ef40fc47fada97d21a249927"
   integrity sha1-fIvTHCZdUWnvQPxH+tqX0hokmSc=
