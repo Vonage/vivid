@@ -16297,10 +16297,10 @@ strong-log-transformer@^2.0.0:
     minimist "^1.2.0"
     through "^2.3.4"
 
-style-dictionary@^2.10.1:
+style-dictionary@^2.10.0, style-dictionary@^2.10.1:
   version "2.10.1"
-  resolved "https://registry.yarnpkg.com/style-dictionary/-/style-dictionary-2.10.1.tgz#7c8bd31c265d5169ef40fc47fada97d21a249927"
-  integrity sha512-AsAeRIpA82zHRql1mg6yvBsLmi+seymwYcShdmnyhbwjBRmOlJ0pj9QlBWH5MWAUBwzR4IndS1aSzgxeqmH5Kg==
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/style-dictionary/-/style-dictionary-2.10.1.tgz#7c8bd31c265d5169ef40fc47fada97d21a249927"
+  integrity sha1-fIvTHCZdUWnvQPxH+tqX0hokmSc=
   dependencies:
     chalk "^4.0.0"
     commander "^5.1.0"

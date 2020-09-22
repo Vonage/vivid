@@ -31,7 +31,7 @@
 		"storybook:build": "yarn prestart && build-storybook -c .storybook -o .out -s ./.storybook/static && node ./scripts/storybook/update-sb-base-url.js",
 		"prestart": "yarn storybook:metadata && yarn compile && yarn wca:json",
 		"start": "start-storybook -s ./.storybook/static -p 9000",
-		"compile": "yarn compile:design-tokens && yarn packages:build && yarn compile:styles && yarn compile:typescript",
+		"compile": "yarn packages:build && yarn compile:styles && yarn compile:typescript",
 		"compile:styles": "./scripts/build-styles.sh",
 		"compile:typescript": "tsc --build",
 		"compile:design-tokens": "node ./design-tokens/renderers/index.js",
