@@ -8,6 +8,8 @@ on:
 jobs:
   build-publish:
     runs-on: ubuntu-latest
+    env:
+      ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
     steps:
       - name: Checkout
