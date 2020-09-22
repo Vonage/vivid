@@ -43,5 +43,5 @@ export const basic = () => html`
   </main>
 `;
 
-vvdCore.coreReady
+vvdCore.settled
 	.then(() => console.log('Vivid context initialised for the context demo story'));

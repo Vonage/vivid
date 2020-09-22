@@ -16,21 +16,21 @@ We've designed Vivid overlay lifecycle to be selfcontained, agnostic to other co
 
 # Readiness hook
 
-In order to allow ourselves and consuming applications to run code __after__ initialization is done, __vivid core__ exposes a `coreReady` Promise. This Promise will resolve once all of the __core__ services done and ready.
+In order to allow ourselves and consuming applications to run code __after__ initialization is done, __vivid core__ exposes a `settled` Promise. This Promise will resolve once all of the __core__ services done and ready.
 
-> Important: in case of __manual__ initialization, `coreReady` will be immediatelly rejected.
+> Important: in case of __manual__ initialization, `settled` will be immediatelly rejected.
 
 ```javascript
 import vvdCore from '@vonage/vvd-core.js';
 
 ...
 
-vvdCore.coreReady.then(() => {
+vvdCore.settled.then(() => {
 	//	do whatever after the init, eg remove the loading vilon
 });
 ```
 
-Most obvious use of the `coreReady` is to remove the loading vilon, which could be put over the site in order to prevent FOUC (flash of unstyled content).
+Most obvious use of the `settled` is to remove the loading vilon, which could be put over the site in order to prevent FOUC (flash of unstyled content).
 
 # Auto init
 
@@ -81,4 +81,4 @@ vividCore
 
 Pay attention: `set` API is not limited to the init use case only, it may be used for any runtime (re-)configuration of the Vivid overlay.
 
-> Reminder: `coreReady` Promise of the __vivid core__ is immediatelly rejuected when __none__ initialization flavor is used.
+> Reminder: `settled` Promise of the __vivid core__ is immediatelly rejuected when __none__ initialization flavor is used.

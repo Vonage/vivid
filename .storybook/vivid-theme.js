@@ -2,7 +2,7 @@ import { create } from '@storybook/theming/create';
 import '@vonage/vvd-context';
 import vvdCore from '@vonage/vvd-core';
 
-vvdCore.coreReady
+vvdCore.settled
 	.then(() => console.info('init Vivid context done (main page)'));
 
 export default create({
