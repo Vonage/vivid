@@ -16,7 +16,7 @@ export class SchemeSelect extends LitElement {
 
 	constructor() {
 		super();
-		if (!globalThis.BroadcastChannel) {
+		if (globalThis.BroadcastChannel) {
 			const bc = new BroadcastChannel(SCHEME_SELECT_EVENT_TYPE);
 			this.onClick = (scheme) => bc.postMessage(scheme);
 		} else {
