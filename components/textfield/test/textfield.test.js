@@ -306,6 +306,38 @@ describe('textfield', () => {
 			expect(validInput).to.equal(true);
 			expect(formElement.checkValidity()).to.equal(false);
 		});
+
+		it(`should submit form on enter key press`, async function () {
+			const fieldValue = Math.random().toString();
+			const fieldName = 'test-field';
+			const externalFormID = 'externalForm';
+
+			addedElements = textToDomToParent(`
+				<form onsubmit="return false" name="testForm" id="testForm">
+					<${COMPONENT_NAME} name="${fieldName}" value="${fieldValue}" form="${externalFormID}">Button Text
+					</${COMPONENT_NAME}>
+				</form>
+				<form onsubmit="return false" name="externalForm" id="${externalFormID}"></form>`);
+
+			await waitNextTask();
+
+			const formElement = addedElements[0];
+			const externalForm = addedElements[1];
+			const actualElement = formElement.querySelector(COMPONENT_NAME);
+			const submitPromise = listenToSubmission(externalForm);
+
+			for (let pair of (await submitPromise).entries()) {
+				expect(pair[0]).to.equal(fieldName);
+				expect(pair[1]).to.equal(fieldValue);
+			}
+
+			expect(formElement.querySelector(`input[name="${fieldName}"`)).to.equal(
+				null
+			);
+			expect(
+				externalForm.querySelectorAll(`input[name="${fieldName}"`).length
+			).to.equal(1);
+		});
 	});
 
 	describe('notched outlined', () => {
