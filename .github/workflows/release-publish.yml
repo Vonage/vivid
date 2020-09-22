@@ -40,12 +40,11 @@ jobs:
       - name: Publish components
         run: |
           echo registry=https://npm.pkg.github.com/ > .npmrc
-          echo //npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN} >> .npmrc
-          cat .npmrc
+          echo //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN} >> .npmrc
           git update-index --skip-worktree .npmrc
           yarn lerna publish from-package --registry https://npm.pkg.github.com --no-git-tag-version --no-push --yes
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Notify community
       - name: Notify slack
