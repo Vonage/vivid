@@ -1,7 +1,14 @@
-const StyleDictionaryPackage = require("style-dictionary");
-const fs = require("fs");
-const _ = require("lodash");
-const R = require("ramda");
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+import StyleDictionaryPackage from 'style-dictionary';
+import fs from 'fs';
+import _ from 'lodash';
+import R from 'ramda';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+const propertiesPath = `/node_modules/@vonage/vvd-design-tokens-properties`;
 
 // StyleDictionaryPackage.registerFilter({
 // 	name: "filter-alias",
@@ -12,9 +19,9 @@ const R = require("ramda");
 // });
 
 StyleDictionaryPackage.registerFormat({
-	name: "custom/format/scss",
+	name: 'custom/format/scss',
 	formatter: _.template(
-		fs.readFileSync(__dirname + "/../templates/web-scss.template")
+		fs.readFileSync(__dirname + '/../templates/web-scss.template')
 	),
 });
 
@@ -25,22 +32,22 @@ StyleDictionaryPackage.registerFormat({
 function getStyleDictionaryConfig(scheme, scope) {
 	return {
 		source: [
-			`${__dirname}/../properties/globals/**/*.json`,
-			`${__dirname}/../properties/scheme/${scheme}/color.json`,
+			`${propertiesPath}/globals/**/*.json`,
+			`${propertiesPath}/scheme/${scheme}/color.json`,
 			// `${__dirname}/../properties/platforms/palette.json`,
 		],
 		platforms: {
 			web: {
-				prefix: "vvd",
-				transformGroup: "css", // 'web'
+				prefix: 'vvd',
+				transformGroup: 'css', // 'web'
 				buildPath: `${__dirname}/../build/scss/`,
 				files: [
 					{
 						destination: `schemes/${scheme}/${scope}.scss`,
-						format: "custom/format/scss",
+						format: 'custom/format/scss',
 						filter: {
 							attributes: {
-								category: "color",
+								category: 'color',
 								// type: "root",
 							},
 						},
@@ -65,13 +72,13 @@ function getStyleDictionaryConfig(scheme, scope) {
 					//   },
 					// },
 					{
-					  destination: '_typography.scss',
-						format: "custom/format/scss",
-					  filter: {
-					    attributes: {
-					      category: 'typography',
-					    },
-					  },
+						destination: '_typography.scss',
+						format: 'custom/format/scss',
+						filter: {
+							attributes: {
+								category: 'typography',
+							},
+						},
 					},
 				],
 			},
@@ -108,19 +115,19 @@ function getStyleDictionaryConfig(scheme, scope) {
 }
 
 const curriedGetStyleDictionaryConfig = R.curry(getStyleDictionaryConfig);
-const baseConfig = curriedGetStyleDictionaryConfig(R.__, "base");
-const alternateConfig = curriedGetStyleDictionaryConfig(R.__, "alternate");
+const baseConfig = curriedGetStyleDictionaryConfig(R.__, 'base');
+const alternateConfig = curriedGetStyleDictionaryConfig(R.__, 'alternate');
 
 // PROCESS THE DESIGN TOKENS FOR THE DIFFERENT SCHEMES AND PLATFORMS
 // TODO: [VIV-41] add accessible colors scheme
-exports.render = () => {
-	["light", "dark"].forEach(function (scheme) {
-		console.log("\n==============================================");
+export const render = () => {
+	['light', 'dark'].forEach(function (scheme) {
+		console.log('\n==============================================');
 		console.log(`\nProcessing: [${scheme}]`);
 
-		StyleDictionaryPackage.extend(baseConfig(scheme)).buildPlatform("web");
-		StyleDictionaryPackage.extend(alternateConfig(scheme)).buildPlatform("web");
+		StyleDictionaryPackage.extend(baseConfig(scheme)).buildPlatform('web');
+		StyleDictionaryPackage.extend(alternateConfig(scheme)).buildPlatform('web');
 
-		console.log("\nEnd processing");
+		console.log('\nEnd processing');
 	});
 };
