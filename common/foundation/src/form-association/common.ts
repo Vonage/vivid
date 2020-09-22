@@ -1,5 +1,10 @@
-export function getFormByIdOrClosest(
-	element: HTMLElement
+export interface InputElement extends HTMLElement {
+	name: string | undefined;
+	value: string;
+}
+
+export function getFormByIdOrClosest<T extends InputElement>(
+	element: T
 ): HTMLFormElement | null {
 	const formId = element.getAttribute('form');
 	const formElement = formId

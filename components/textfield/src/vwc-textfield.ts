@@ -7,7 +7,7 @@ import { TextField as MWCTextField } from '@material/mwc-textfield';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import { style as vwcTextFieldStyle } from './vwc-textfield.css';
 import { style as mwcTextFieldStyle } from '@material/mwc-textfield/mwc-textfield-css.js';
-import { addInputToForm } from '@vonage/vvd-foundation/form-association';
+import { associateWithForm } from '@vonage/vvd-foundation/form-association';
 export { TextFieldType } from '@material/mwc-textfield';
 
 declare global {
@@ -31,9 +31,6 @@ export class VWCTextField extends MWCTextField {
 	@property({ type: String, reflect: true })
 	shape: TextFieldShape[number] = 'rounded';
 
-	@property({ type: HTMLInputElement, reflect: false })
-	hiddenInput: HTMLInputElement | undefined;
-
 	@property({ type: String, reflect: true })
 	form: string | undefined;
 
@@ -43,7 +40,7 @@ export class VWCTextField extends MWCTextField {
 			?.querySelector('.mdc-notched-outline')
 			?.shadowRoot?.querySelector('.mdc-notched-outline')
 			?.classList.add('vvd-notch');
-		addInputToForm(this);
+		associateWithForm<VWCTextField>(this, this.formElement);
 	}
 
 	protected renderIcon(icon: string, isTrailingIcon = false): TemplateResult {
