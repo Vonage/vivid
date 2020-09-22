@@ -1,5 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
+import '@vonage/vvd-core';
 import kefir from 'kefir';
 import { pipe, not, always, clamp } from 'ramda';
 import { style } from './vwc-media-controller.css';

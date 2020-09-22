@@ -1,3 +1,4 @@
+import '@vonage/vvd-core';
 import { customElement, html } from 'lit-element';
 import { Chip as MWCChip } from '@material/mwc-chips/mwc-chip';
 import { style as vwcChipStyle } from './vwc-chip.css';

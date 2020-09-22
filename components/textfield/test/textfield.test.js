@@ -20,7 +20,15 @@ function listenToSubmission(formElement) {
 	});
 }
 
-async function changeFieldValue(actualElement, value, eventName = 'change') {
+function getHiddenInput(formElement, fieldName) {
+	return formElement.querySelector(`input[name="${fieldName}"]`);
+}
+
+async function changeValueAndNotify(
+	actualElement,
+	value,
+	eventName = 'change'
+) {
 	actualElement.value = value;
 	await waitNextTask();
 
@@ -188,9 +196,9 @@ describe('textfield', () => {
 				const actualElement = formElement.firstChild;
 				await waitNextTask();
 
-				await changeFieldValue(actualElement, fieldValue, 'change');
+				await changeValueAndNotify(actualElement, fieldValue, 'change');
 
-				expect(actualElement.hiddenInput.value).to.equal(fieldValue);
+				expect(getHiddenInput(formElement, fieldName).value).to.equal(fieldValue);
 			});
 		});
 
@@ -206,7 +214,7 @@ describe('textfield', () => {
 
 				const invalidity = formElement.checkValidity();
 
-				await changeFieldValue(actualElement, 'abc', 'input');
+				await changeValueAndNotify(actualElement, 'abc', 'input');
 
 				expect(invalidity).to.equal(false);
 				expect(formElement.checkValidity()).to.equal(true);
@@ -223,7 +231,7 @@ describe('textfield', () => {
 				await waitNextTask();
 
 				const validInput = formElement.checkValidity();
-				await changeFieldValue(actualElement, '', 'change');
+				await changeValueAndNotify(actualElement, '', 'change');
 				const invalidInput = formElement.checkValidity();
 
 				formElement.reset();
@@ -257,7 +265,7 @@ describe('textfield', () => {
 
 				submitted = false;
 
-				await changeFieldValue(actualElement, '', 'change');
+				await changeValueAndNotify(actualElement, '', 'change');
 				formElement.requestSubmit();
 
 				expect(invalidity).to.equal(true);
@@ -290,7 +298,7 @@ describe('textfield', () => {
 				expect(pair[1]).to.equal(fieldValue);
 			}
 
-			await changeFieldValue(actualElement, '', 'change');
+			await changeValueAndNotify(actualElement, '', 'change');
 
 			expect(
 				formElement.querySelectorAll(`input[name="${fieldName}"`).length

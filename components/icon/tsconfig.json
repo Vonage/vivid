@@ -8,5 +8,9 @@
 		"tsBuildInfoFile": ".tsbuildinfo"
 	},
 	"include": [],
-	"references": []
+	"references": [
+		{
+			"path": "../../common/core"
+		}
+	]
 }
