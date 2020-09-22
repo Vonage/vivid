@@ -40,7 +40,8 @@ jobs:
           echo registry=https://registry.npmjs.org > .npmrc
           echo _auth=${{ secrets.NPM_AUTH_TOKEN }} >> .npmrc
           cat .npmrc
+          npm whoami
           git update-index --skip-worktree .npmrc
-          yarn lerna publish from-package --no-git-tag-version --no-push --yes
+          yarn lerna publish from-package --no-git-tag-version --no-verify-access --no-push --yes
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
