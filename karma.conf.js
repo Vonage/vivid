@@ -26,7 +26,6 @@ module.exports = config => {
 			},
 		},
 	});
-	extendedDefaultConfig.browsers = ['Safari'];
 
 	config.set(extendedDefaultConfig);
 	return config;
