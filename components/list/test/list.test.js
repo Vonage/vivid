@@ -1,10 +1,10 @@
 import '../vwc-list.js';
-import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	isolatedElementsCreation,
 	textToDomToParent,
 	waitNextTask,
 } from '../../../test/test-helpers';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
 
@@ -26,8 +26,8 @@ describe('list', () => {
 		const addedElements = addElement(
 			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 		);
-		const actualElement = addedElements[0];
 		await waitNextTask();
+		const actualElement = addedElements[0];
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 });
