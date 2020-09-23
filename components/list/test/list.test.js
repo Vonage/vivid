@@ -5,6 +5,13 @@ import {
 } from '../../../test/test-helpers.js';
 
 describe('list', () => {
+	let addedElements = [];
+
+	afterEach(function () {
+		addedElements.forEach((elm) => elm.remove());
+		addedElements.length = 0;
+	});
+
 	it('should be defined as a custom element', async () => {
 		assert.exists(
 			customElements.get('vwc-list', 'vwc-list element is not defined')
@@ -16,7 +23,9 @@ describe('list', () => {
 		const docFragContainer = textToDocumentFragment(
 			'<vwc-list id="list-a"></vwc-list>'
 		);
+
 		const actualElement = docFragContainer.firstElementChild;
+		addedElements.push(actualElement);
 		document.body.appendChild(docFragContainer);
 		await waitNextTask();
 		assert.equal(document.querySelector('#list-a'), actualElement);

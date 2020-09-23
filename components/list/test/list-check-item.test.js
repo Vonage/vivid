@@ -9,7 +9,12 @@ chai.use(chaiDomDiff);
 
 const VWC_CHECK_LIST_ITEM = 'vwc-check-list-item';
 
+let addedElements = [];
 describe('check list item', () => {
+	afterEach(function () {
+		addedElements.forEach((elm) => elm.remove());
+	});
+
 	it('should be defined as a custom element', () => {
 		assert.exists(
 			customElements.get(
@@ -21,10 +26,10 @@ describe('check list item', () => {
 
 	describe('init flow', () => {
 		it('should have expected HTML', async () => {
-			const docFragContainer = textToDomToParent(
+			const docFragContainer = (addedElements = textToDomToParent(
 				`<${VWC_CHECK_LIST_ITEM} id="check-list-item-a">Item 0</${VWC_CHECK_LIST_ITEM}>`,
 				document.body
-			);
+			));
 			await waitNextTask();
 			expect(docFragContainer[0]).shadowDom.to.equalSnapshot();
 		});
@@ -32,9 +37,9 @@ describe('check list item', () => {
 
 	describe('typography', function () {
 		it(`should have set typography correct (normal)`, async function () {
-			const actualElements = textToDomToParent(
+			const actualElements = (addedElements = textToDomToParent(
 				`<${VWC_CHECK_LIST_ITEM}>Item 1</${VWC_CHECK_LIST_ITEM}>`
-			);
+			));
 			await waitNextTask();
 			const listItem = actualElements[0];
 			expect(listItem).to.exist;
@@ -50,9 +55,9 @@ describe('check list item', () => {
 		});
 
 		it(`should have set typography correct (left, selected)`, async function () {
-			const actualElements = textToDomToParent(
+			const actualElements = (addedElements = textToDomToParent(
 				`<${VWC_CHECK_LIST_ITEM} left selected>Item 1</${VWC_CHECK_LIST_ITEM}>`
-			);
+			));
 			await waitNextTask();
 			const listItem = actualElements[0];
 			expect(listItem).to.exist;

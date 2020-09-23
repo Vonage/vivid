@@ -5,6 +5,13 @@ import {
 } from '../../../test/test-helpers.js';
 
 describe('vwc-radio', () => {
+	let addedElements = [];
+
+	afterEach(function () {
+		addedElements.forEach((elm) => elm.remove());
+		addedElements.legth = 0;
+	});
+
 	it('should be defined as a custom element', async () => {
 		assert.exists(
 			customElements.get('vwc-radio', 'vwc-radio element is not defined')
@@ -16,7 +23,9 @@ describe('vwc-radio', () => {
 		const docFragContainer = textToDocumentFragment(
 			'<vwc-radio id="radio-a" name="myGroup" value="value1"></vwc-radio>'
 		);
+
 		const actualElement = docFragContainer.firstElementChild;
+		addedElements.push(actualElement);
 		document.body.appendChild(docFragContainer);
 		await waitNextTask();
 		assert.equal(document.querySelector('#radio-a'), actualElement);
