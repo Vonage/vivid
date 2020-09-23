@@ -1,10 +1,18 @@
 import '../vwc-checkbox.js';
 import {
-	textToDocumentFragment,
+	textToDomToParent,
 	waitNextTask,
+	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
+
+chai.use(chaiDomDiff);
+
+const COMPONENT_NAME = 'vwc-checkbox';
 
 describe('checkbox', () => {
+	const addElement = isolatedElementsCreation();
+
 	it('should be defined as a custom element', async () => {
 		assert.exists(
 			customElements.get('vwc-checkbox', 'vwc-checkbox element is not defined')
@@ -12,16 +20,11 @@ describe('checkbox', () => {
 	});
 
 	it('should have internal contents', async () => {
-		await customElements.whenDefined('vwc-checkbox');
-		const docFragContainer = textToDocumentFragment(
-			'<vwc-checkbox id="checkbox-a"></vwc-checkbox>'
+		const addedElements = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 		);
-		const actualElement = docFragContainer.firstElementChild;
-		document.body.appendChild(docFragContainer);
+		const actualElement = addedElements[0];
 		await waitNextTask();
-		assert.equal(document.querySelector('#checkbox-a'), actualElement);
-		assert.exists(actualElement.shadowRoot);
-		assert.equal(actualElement.shadowRoot.childElementCount, 1);
-		assert.equal(actualElement.shadowRoot.querySelectorAll('*').length, 6);
+		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 });
