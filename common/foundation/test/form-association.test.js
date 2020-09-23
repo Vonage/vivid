@@ -309,13 +309,13 @@ describe(`Form Association Foundation`, function () {
 			setupTest();
 		});
 
-		it(`should submit the form when hitting designated keys`, function () {
+		it(`should submit the form when hitting the "Enter" key`, function () {
 			dispatchKeyEvent(keyName);
 			dispatchKeyEvent(keyName);
 			expect(formSubmitted).to.equal(2);
 		});
 
-		it(`should not fire submit when hitting a non designated key`, function () {
+		it(`should not fire submit when hitting a non "Enter" key`, function () {
 			const nonDesignatedKey = 'e';
 			dispatchKeyEvent(nonDesignatedKey);
 			expect(formSubmitted).to.equal(0);
