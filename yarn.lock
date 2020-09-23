@@ -11522,6 +11522,11 @@ karma-mocha@^2.0.1:
   dependencies:
     minimist "^1.2.3"
 
+karma-safari-launcher@^1.0.0:
+  version "1.0.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/karma-safari-launcher/-/karma-safari-launcher-1.0.0.tgz#96982a2cc47d066aae71c553babb28319115a2ce"
+  integrity sha1-lpgqLMR9BmquccVTursoMZEVos4=
+
 karma-snapshot@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/karma-snapshot/-/karma-snapshot-0.6.0.tgz#8cdf21e9957c576a190db0973e5210f0e34f4501"

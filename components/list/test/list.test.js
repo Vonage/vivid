@@ -1,10 +1,18 @@
 import '../vwc-list.js';
-import {
-	textToDocumentFragment,
-	waitNextTask,
-} from '../../../test/test-helpers.js';
+import { textToDomToParent, waitNextTask } from '../../../test/test-helpers.js';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
+
+chai.use(chaiDomDiff);
+
+const VWC_LIST = 'vwc-list';
 
 describe('list', () => {
+	let addedElements = [];
+
+	afterEach(() => {
+		addedElements.forEach((elm) => elm.remove());
+	});
+
 	it('should be defined as a custom element', async () => {
 		assert.exists(
 			customElements.get('vwc-list', 'vwc-list element is not defined')
@@ -12,16 +20,9 @@ describe('list', () => {
 	});
 
 	it('should have internal contents', async () => {
-		await customElements.whenDefined('vwc-list');
-		const docFragContainer = textToDocumentFragment(
-			'<vwc-list id="list-a"></vwc-list>'
-		);
-		const actualElement = docFragContainer.firstElementChild;
-		document.body.appendChild(docFragContainer);
+		addedElements = textToDomToParent(`<${VWC_LIST}></${VWC_LIST}>`);
+		const actualElement = addedElements[0];
 		await waitNextTask();
-		assert.equal(document.querySelector('#list-a'), actualElement);
-		assert.exists(actualElement.shadowRoot);
-		assert.equal(actualElement.shadowRoot.childElementCount, 1);
-		assert.equal(actualElement.shadowRoot.querySelectorAll('*').length, 2);
+		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 });
