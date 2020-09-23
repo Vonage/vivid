@@ -150,4 +150,4 @@ jobs:
           name: vivid-artifact
           path: |
             ./**/*
-            !/node_modules
+            !./node_modules
