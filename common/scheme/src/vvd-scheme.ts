@@ -48,10 +48,10 @@ function init(): void {
 function setSyncModeIfRelevant(scheme: SchemeOption): PredefinedScheme {
 	let result: SchemeOption;
 	if (scheme === 'syncWithOSSettings') {
-		pcs.addEventListener('change', syncWithOSSettings);
+		pcs.addListener(syncWithOSSettings);
 		result = getPreferedColorScheme() as PredefinedScheme;
 	} else {
-		pcs.removeEventListener('change', syncWithOSSettings);
+		pcs.removeListener(syncWithOSSettings);
 		result = scheme;
 	}
 	return result;
