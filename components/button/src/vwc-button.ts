@@ -54,7 +54,7 @@ export class VWCButton extends MWCButton {
 
 	#_hiddenButton: HTMLButtonElement | undefined;
 
-	protected updateFormAndButton() {
+	protected updateFormAndButton(): void {
 		this.#_hiddenButton?.remove();
 		this.form = getFormByIdOrClosest((this as unknown) as HTMLInputElement);
 		if (this.form && this.#_hiddenButton) {
