@@ -264,10 +264,12 @@ describe(`Form Association Foundation`, function () {
 	});
 
 	describe(`requestSubmit`, function () {
-		it(`should submit a form on requestSubmit when given a form`, function () {
+		it(`should submit a form on requestSubmit when given a form with a submit button`, function () {
 			let formSubmitted = false;
 
-			addedElements = textToDomToParent(`<form onsubmit="return false"></form>`);
+			addedElements = textToDomToParent(
+				`<form onsubmit="return false"><button>Submit</button></form>`
+			);
 			const formElement = addedElements[0];
 			formElement.addEventListener('submit', () => (formSubmitted = true));
 			formElement.requestSubmit = undefined;
@@ -295,7 +297,7 @@ describe(`Form Association Foundation`, function () {
 		function setupTest() {
 			formSubmitted = 0;
 			addedElements = textToDomToParent(
-				`<form onsubmit="return false"><textarea></textarea></form></form>`
+				`<form onsubmit="return false"><textarea></textarea><button>Submit</button></form>`
 			);
 			const formElement = addedElements[0];
 			textAreaElement = formElement.querySelector('textarea');
@@ -324,7 +326,7 @@ describe(`Form Association Foundation`, function () {
 		it(`should bind to external form according to form attribute`, function () {
 			const otherFormId = randomAlpha();
 			const otherFormElement = textToDomToParent(
-				`<form onsubmit="return false" id="${otherFormId}">`
+				`<form onsubmit="return false" id="${otherFormId}"><button>Submit</button></form>`
 			)[0];
 			addedElements.push(otherFormElement);
 

@@ -5,6 +5,7 @@ import {
 	assertComputedStyle,
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
+import { randomAlpha } from '../../../test/test-helpers';
 
 chai.use(chaiDomDiff);
 
@@ -40,6 +41,7 @@ describe('button', () => {
 			addedElements = textToDomToParent(
 				`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON}>Button Text</${VWC_BUTTON}></form>`
 			);
+			await waitNextTask();
 			const formElement = addedElements[0];
 			const actualElement = formElement.firstChild;
 			formElement.addEventListener('submit', () => (submitted = true));
@@ -54,6 +56,7 @@ describe('button', () => {
 			addedElements = textToDomToParent(
 				`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON} type="submit">Button Text</${VWC_BUTTON}></form>`
 			);
+			await waitNextTask();
 			const formElement = addedElements[0];
 			const actualElement = formElement.firstChild;
 			formElement.addEventListener('submit', () => (submitted = true));
@@ -69,6 +72,7 @@ describe('button', () => {
 			addedElements = textToDomToParent(
 				`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON} type="reset">Button Text</${VWC_BUTTON}></form>`
 			);
+			await waitNextTask();
 			const formElement = addedElements[0];
 			const actualElement = formElement.firstChild;
 			formElement.addEventListener('submit', () => (submitted = true));
@@ -107,6 +111,7 @@ describe('button', () => {
 				</form>
 				<form onsubmit="return false" name="externalForm" id="externalForm"></form>
 			`);
+			await waitNextTask();
 			const formElement = addedElements[0];
 			const resetButton = formElement.children[0];
 			const submitButton = formElement.children[1];
@@ -152,6 +157,7 @@ describe('button', () => {
 				</form>
 				<form onsubmit="return false" name="externalForm" id="externalForm"></form>
 			`);
+			await waitNextTask();
 			const formElement = addedElements[0];
 			const resetButton = formElement.children[0];
 			const submitButton = formElement.children[1];
@@ -170,12 +176,13 @@ describe('button', () => {
 			expect(submitted).to.eql(expectedSubmitted);
 		});
 
-		it(`should do nothing when of type button`, function () {
+		it(`should do nothing when of type button`, async function () {
 			let submitted = false;
 			let reset = false;
 			addedElements = textToDomToParent(
 				`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON} type="button">Button Text</${VWC_BUTTON}></form>`
 			);
+			await waitNextTask();
 			const formElement = addedElements[0];
 			const actualElement = formElement.firstChild;
 			formElement.addEventListener('submit', () => (submitted = true));
@@ -187,11 +194,12 @@ describe('button', () => {
 			expect(submitted, 'submit was initiated').to.equal(false);
 		});
 
-		it(`should submit even when requestSubmit is not supported`, function () {
+		it(`should submit even when requestSubmit is not supported`, async function () {
 			let submitted = false;
 			addedElements = textToDomToParent(
 				`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON}>Button Text</${VWC_BUTTON}></form>`
 			);
+			await waitNextTask();
 			const formElement = addedElements[0];
 			formElement.requestSubmit = undefined;
 			const actualElement = formElement.firstChild;
@@ -201,13 +209,55 @@ describe('button', () => {
 
 			expect(submitted, 'submit was not initiated').to.equal(true);
 		});
+
+		it(`should cleanup the hidden element on disconnection`, async function () {
+			function hiddenButtonExists() {
+				return formElement.querySelector('button') !== null;
+			}
+			addedElements = textToDomToParent(
+				`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON}>Button Text</${VWC_BUTTON}></form>`
+			);
+			await waitNextTask();
+			const formElement = addedElements[0];
+			const actualElement = formElement.firstChild;
+
+			const buttonExistsBeforeDisconnection = hiddenButtonExists();
+			actualElement.remove();
+			expect(buttonExistsBeforeDisconnection).to.equal(true);
+			expect(hiddenButtonExists()).to.equal(false);
+		});
+
+		it(`should change the buttons location when the form attribute changes`, async function () {
+			function hiddenButtonExists(formElement) {
+				return formElement.querySelector('button') !== null;
+			}
+
+			const otherFormId = randomAlpha();
+			addedElements = textToDomToParent(
+				`<form onsubmit="return false" name="testForm" id="testForm">
+								<${VWC_BUTTON}>Button Text</${VWC_BUTTON}>
+							</form>
+							<form id="${otherFormId}"></form>`
+			);
+			await waitNextTask();
+			const formElement = addedElements[0];
+			const otherForm = addedElements[1];
+			const actualElement = formElement.querySelector(VWC_BUTTON);
+
+			const buttonExistsOnClosestForm = hiddenButtonExists(formElement);
+			actualElement.setAttribute('form', otherFormId);
+			await waitNextTask();
+			expect(buttonExistsOnClosestForm).to.equal(true);
+			expect(hiddenButtonExists(formElement)).to.equal(false);
+			expect(hiddenButtonExists(otherForm)).to.equal(true);
+		});
 	});
 
 	describe('typography', function () {
 		it(`should have set button (text, rounded) typography correct`, async function () {
-			const actualElements = textToDomToParent(
+			const actualElements = (addedElements = textToDomToParent(
 				`<${VWC_BUTTON}>Button Text</${VWC_BUTTON}>`
-			);
+			));
 			await waitNextTask();
 			const button = actualElements[0].shadowRoot.querySelector('#button');
 			expect(button).to.exist;
@@ -224,9 +274,9 @@ describe('button', () => {
 		});
 
 		it(`should have set button (outlined, pill) typography correct`, async function () {
-			const actualElements = textToDomToParent(
+			const actualElements = (addedElements = textToDomToParent(
 				`<${VWC_BUTTON} layout="outlined" shape="pill">Button Text</${VWC_BUTTON}>`
-			);
+			));
 			await waitNextTask();
 			const button = actualElements[0].shadowRoot.querySelector('#button');
 			expect(button).to.exist;
@@ -243,9 +293,9 @@ describe('button', () => {
 		});
 
 		it(`should have set button (filled, disabled, pill) typography correct`, async function () {
-			const actualElements = textToDomToParent(
+			const actualElements = (addedElements = textToDomToParent(
 				`<${VWC_BUTTON} layout="filled" disabled shape="pill">Button Text</${VWC_BUTTON}>`
-			);
+			));
 			await waitNextTask();
 			const button = actualElements[0].shadowRoot.querySelector('#button');
 			expect(button).to.exist;
