@@ -14,12 +14,20 @@ jobs:
       ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
     steps:
+      - name: Setup NodeJS 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Install yarn
+        run: npm install -g yarn
+
       - name: Download a single artifact
-          uses: actions/download-artifact@v2
-          with:
-            name: vivid-artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: vivid-artifact
       - name: Test components
-          run: yarn test:safari
+        run: yarn test:safari
 
   test-chrome:
     needs: compile-and-test
@@ -28,12 +36,20 @@ jobs:
       ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
     steps:
+      - name: Setup NodeJS 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Install yarn
+        run: npm install -g yarn
+
       - name: Download a single artifact
-          uses: actions/download-artifact@v2
-          with:
-            name: vivid-artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: vivid-artifact
       - name: Test components
-          run: yarn test:chrome
+        run: yarn test:chrome
 
   code-standards:
     needs: compile-and-test
@@ -42,10 +58,18 @@ jobs:
       ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
     steps:
+      - name: Setup NodeJS 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Install yarn
+        run: npm install -g yarn
+
       - name: Download a single artifact
-          uses: actions/download-artifact@v2
-          with:
-            name: vivid-artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: vivid-artifact
       - name: Dependencies check
         run: yarn dep-check
 
@@ -93,7 +117,7 @@ jobs:
         run: yarn compile
 
       - name: Upload output file
-          uses: actions/upload-artifact@v2
-          with:
-            name: vivid-artifact
-            path: ~/**/*
+        uses: actions/upload-artifact@v2
+        with:
+          name: vivid-artifact
+          path: ./vivid
