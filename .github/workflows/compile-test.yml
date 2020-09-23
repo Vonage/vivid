@@ -40,6 +40,39 @@ jobs:
       - name: Test components
         run: yarn test:safari
 
+  test-firefox:
+    runs-on: ubuntu-latest
+    env:
+      ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PAT }}
+
+      - name: Setup NodeJS 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Install yarn
+        run: npm install -g yarn
+
+      - uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install packages
+        run: yarn install
+
+      - name: Build components
+        run: yarn compile
+
+      - name: Test components
+        run: yarn test:firefox
+
   test-chrome:
     runs-on: ubuntu-latest
     env:

@@ -19,6 +19,7 @@
 		"format": "yarn format:eslint && yarn format:prettier",
 		"tsc:watch": "tsc --build --watch",
 		"test:chrome": "karma start --coverage --browsers=ChromeHeadless",
+		"test:firefox": "karma start --coverage --browsers=FirefoxHeadless",
 		"test:safari": "karma start --coverage --browsers=SafariNative",
 		"test:dev": "yarn compile && concurrently \"yarn tsc:watch\" \"karma start --auto-watch=true --single-run=false --browsers=Chrome\"",
 		"test:update-snapshots": "karma start --update-snapshots",
