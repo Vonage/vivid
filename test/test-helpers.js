@@ -69,6 +69,10 @@ export function assertComputedStyle(element, expectedStyles) {
 				expectedValue = String(expectedStyles[styleKey]);
 				actualValue = String(computedStyle[styleKey]).replaceAll('"', '');
 				break;
+			case 'fontSize':
+				expectedValue = parseFloat(expectedStyles[styleKey]).toFixed(3);
+				actualValue = parseFloat(computedStyle[styleKey]).toFixed(3);
+				break;
 			default:
 				expectedValue = expectedStyles[styleKey];
 				actualValue = computedStyle[styleKey];
