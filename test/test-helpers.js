@@ -1,5 +1,19 @@
 const tmpTemple = document.createElement('template');
 
+export function isolatedElementsCreation() {
+	function addElementToBeCleared(elementsToBeCleared) {
+		elements.push.apply(elements, elementsToBeCleared);
+		return elementsToBeCleared;
+	}
+
+	afterEach(function() {
+		elements.forEach(elm => elm.remove());
+		elements.length = 0;
+	});
+	const elements = [];
+	return addElementToBeCleared;
+}
+
 export function textToDocumentFragment(html) {
 	if (!html) {
 		throw new Error(`html parameter MUST NOT be NULL nor EMPTY, got ${html}`);
