@@ -112,9 +112,9 @@ describe('textfield', () => {
 
 			formElement.requestSubmit();
 
-			for (let pair of (await submitPromise).entries()) {
-				expect(pair[0]).to.equal(fieldName);
-				expect(pair[1]).to.equal(fieldValue);
+			for (let [formDataKey, formDataValue] of (await submitPromise).entries()) {
+				expect(formDataKey).to.equal(fieldName);
+				expect(formDataValue).to.equal(fieldValue);
 			}
 
 			expect(
@@ -143,9 +143,9 @@ describe('textfield', () => {
 
 			externalForm.requestSubmit();
 
-			for (let pair of (await submitPromise).entries()) {
-				expect(pair[0]).to.equal(fieldName);
-				expect(pair[1]).to.equal(fieldValue);
+			for (let [formDataKey, formDataValue] of (await submitPromise).entries()) {
+				expect(formDataKey).to.equal(fieldName);
+				expect(formDataValue).to.equal(fieldValue);
 			}
 
 			expect(formElement.querySelector(`input[name="${fieldName}"`)).to.equal(
@@ -293,9 +293,9 @@ describe('textfield', () => {
 
 			formElement.requestSubmit();
 
-			for (let pair of (await submitPromise).entries()) {
-				expect(pair[0]).to.equal(fieldName);
-				expect(pair[1]).to.equal(fieldValue);
+			for (let [formDataKey, formDataValue] of (await submitPromise).entries()) {
+				expect(formDataKey).to.equal(fieldName);
+				expect(formDataValue).to.equal(fieldValue);
 			}
 
 			await changeValueAndNotify(actualElement, '', 'change');
