@@ -8881,19 +8881,6 @@ exec-sh@^0.3.2:
   resolved "https://registry.yarnpkg.com/exec-sh/-/exec-sh-0.3.4.tgz#3a018ceb526cc6f6df2bb504b2bfe8e3a4934ec5"
   integrity sha512-sEFIkc61v75sWeOe72qyrqg2Qg0OuLESziUDk/O/z2qgS15y2gWVFrI6f2Qn/qw/0/NCfCEsmNA4zOjkwEZT1A==
 
-execa@^0.10.0:
-  version "0.10.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/execa/-/execa-0.10.0.tgz#ff456a8f53f90f8eccc71a96d11bdfc7f082cb50"
-  integrity sha1-/0Vqj1P5D47MxxqW0Rvfx/CCy1A=
-  dependencies:
-    cross-spawn "^6.0.0"
-    get-stream "^3.0.0"
-    is-stream "^1.1.0"
-    npm-run-path "^2.0.0"
-    p-finally "^1.0.0"
-    signal-exit "^3.0.0"
-    strip-eof "^1.0.0"
-
 execa@^0.7.0:
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/execa/-/execa-0.7.0.tgz#944becd34cc41ee32a63a9faf27ad5a65fc59777"
@@ -11535,12 +11522,10 @@ karma-mocha@^2.0.1:
   dependencies:
     minimist "^1.2.3"
 
-karma-safari-applescript-launcher@^0.1.0:
-  version "0.1.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/karma-safari-applescript-launcher/-/karma-safari-applescript-launcher-0.1.0.tgz#ee44c3cad0ad2d1eca785b7d8626b11b37e101f5"
-  integrity sha1-7kTDytCtLR7KeFt9hiaxGzfhAfU=
-  dependencies:
-    run-applescript "^3.2.0"
+karma-safarinative-launcher@^1.1.0:
+  version "1.1.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/karma-safarinative-launcher/-/karma-safarinative-launcher-1.1.0.tgz#9f3435e13365445051305eb4d1bb80757cf337a3"
+  integrity sha1-nzQ14TNlRFBRMF600buAdXzzN6M=
 
 karma-snapshot@^0.6.0:
   version "0.6.0"
@@ -15307,13 +15292,6 @@ rsvp@^4.8.4:
   version "4.8.5"
   resolved "https://registry.yarnpkg.com/rsvp/-/rsvp-4.8.5.tgz#c8f155311d167f68f21e168df71ec5b083113734"
   integrity sha512-nfMOlASu9OnRJo1mbEk2cz0D56a1MBNrJ7orjRZQG10XDyuvwksKbuXNp6qa+kbn839HwjwhBzhFmdsaEAfauA==
-
-run-applescript@^3.2.0:
-  version "3.2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/run-applescript/-/run-applescript-3.2.0.tgz#73fb34ce85d3de8076d511ea767c30d4fdfc918b"
-  integrity sha1-c/s0zoXT3oB21RHqdnww1P38kYs=
-  dependencies:
-    execa "^0.10.0"
 
 run-async@^2.2.0, run-async@^2.4.0:
   version "2.4.1"
