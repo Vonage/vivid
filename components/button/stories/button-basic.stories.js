@@ -26,6 +26,9 @@ PillShape.args = { label: 'Filled', layout: 'filled', shape: 'pill' };
 export const Dense = Template.bind({});
 Dense.args = { label: 'Dense', layout: 'filled', dense: '' };
 
+export const Enlarged = Template.bind({});
+Enlarged.args = { label: 'Enlarged', layout: 'filled', enlarged: '' };
+
 export const Disabled = Template.bind({});
 Disabled.args = { label: 'Disabled', layout: 'filled', disabled: '' };
 

@@ -36,6 +36,9 @@ export type ButtonType = typeof types;
  */
 @customElement('vwc-button')
 export class VWCButton extends MWCButton {
+	@property({ type: Boolean, reflect: true })
+	enlarged = false;
+
 	@property({ type: String, reflect: true })
 	layout: ButtonLayout[number] = 'text';
 

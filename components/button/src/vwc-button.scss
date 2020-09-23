@@ -2,6 +2,7 @@
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins' as color-connotation-mixins;
 
+$vvd-button-size-block: --vvd-button-size-block;
 
 :host {
   --mdc-button-disabled-ink-color: var(
@@ -10,6 +11,7 @@
   --mdc-button-disabled-fill-color: var(
     #{color-semantic.$formfield-border-idle}
   );
+  #{$vvd-button-size-block}: 40px;
 }
 
 
@@ -24,12 +26,13 @@
 .mdc-button {
   // ! this was supposed to be set by MDC
   font-stretch: var(--mdc-typography-button-font-stretch);
-  height: 40px;
+  height: var(#{$vvd-button-size-block});
   letter-spacing: normal;
   border-radius: 6px;
 
   &.mdc-button--dense {
-    height: 32px;
+    border-radius: 5px;
+    #{$vvd-button-size-block}: 32px;
   }
 
   vwc-icon {
@@ -54,5 +57,9 @@
 }
 
 :host([shape='pill']) .mdc-button {
-  border-radius: 40px;
+  border-radius: 24px;
+}
+
+:host([enlarged]) .mdc-button {
+  #{$vvd-button-size-block}: 48px;
 }

@@ -261,4 +261,33 @@ describe('button', () => {
 			assertComputedStyle(button, expectedStyles);
 		});
 	});
+
+	describe('sizing', () => {
+		it('should have normal size by default', async () => {
+			const addedElements = textToDomToParent(
+				`<${VWC_BUTTON}>Button Text</${VWC_BUTTON}>`
+			);
+			const actualElement = addedElements[0];
+			await waitNextTask();
+			assertComputedStyle(actualElement, { height: '40px' });
+		});
+
+		it('should have dense size when dense', async () => {
+			const addedElements = textToDomToParent(
+				`<${VWC_BUTTON} dense>Button Text</${VWC_BUTTON}>`
+			);
+			const actualElement = addedElements[0];
+			await waitNextTask();
+			assertComputedStyle(actualElement, { height: '32px' });
+		});
+
+		it('should have enlarged size when enlarged', async () => {
+			const addedElements = textToDomToParent(
+				`<${VWC_BUTTON} enlarged>Button Text</${VWC_BUTTON}>`
+			);
+			const actualElement = addedElements[0];
+			await waitNextTask();
+			assertComputedStyle(actualElement, { height: '48px' });
+		});
+	});
 });
