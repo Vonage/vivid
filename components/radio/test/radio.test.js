@@ -19,13 +19,15 @@ describe('vwc-radio', () => {
 		);
 	});
 
-	it.skip('should have internal contents', async () => {
+	it('should have internal contents', async () => {
 		const addedElements = addElement(
 			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 		);
 		await waitNextTask();
 		await waitNextTask();
 		const actualElement = addedElements[0];
-		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
+		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot({
+			ignoreAttributes: ['class', 'style'],
+		});
 	});
 });
