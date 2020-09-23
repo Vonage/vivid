@@ -1,30 +1,33 @@
 import '../vwc-circular-progress.js';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
-	textToDocumentFragment,
+	isolatedElementsCreation,
+	textToDomToParent,
 	waitNextTask,
-} from '../../../test/test-helpers.js';
+} from '../../../test/test-helpers';
+
+chai.use(chaiDomDiff);
+
+const COMPONENT_NAME = 'vwc-circular-progress';
 
 describe('circular progress', () => {
-	it('should be defined as a custom element', async () => {
+	const addElement = isolatedElementsCreation();
+
+	it('should be defined as a custom element', () => {
 		assert.exists(
 			customElements.get(
-				'vwc-circular-progress',
-				'vwc-circular-progress element is not defined'
+				COMPONENT_NAME,
+				`${COMPONENT_NAME} element is not defined`
 			)
 		);
 	});
 
 	it('should have internal contents', async () => {
-		await customElements.whenDefined('vwc-circular-progress');
-		const docFragContainer = textToDocumentFragment(
-			'<vwc-circular-progress id="circular-progress-a"></vwc-circular-progress>'
+		const addedElements = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 		);
-		const actualElement = docFragContainer.firstElementChild;
-		document.body.appendChild(docFragContainer);
+		const actualElement = addedElements[0];
 		await waitNextTask();
-		assert.equal(document.querySelector('#circular-progress-a'), actualElement);
-		assert.exists(actualElement.shadowRoot);
-		assert.equal(actualElement.shadowRoot.childElementCount, 1);
-		assert.equal(actualElement.shadowRoot.querySelectorAll('*').length, 15);
+		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 });

@@ -1,5 +1,19 @@
 const tmpTemple = document.createElement('template');
 
+export function isolatedElementsCreation() {
+	function addElementToBeCleared(elementsToBeCleared) {
+		elements.push.apply(elements, elementsToBeCleared);
+		return elementsToBeCleared;
+	}
+
+	afterEach(function () {
+		elements.forEach(elm => elm.remove());
+		elements.length = 0;
+	});
+	const elements = [];
+	return addElementToBeCleared;
+}
+
 export function textToDocumentFragment(html) {
 	if (!html) {
 		throw new Error(`html parameter MUST NOT be NULL nor EMPTY, got ${html}`);
@@ -49,8 +63,18 @@ export function assertComputedStyle(element, expectedStyles) {
 
 	const computedStyle = getComputedStyle(element);
 	for (const styleKey of styleKeys) {
-		if (computedStyle[styleKey] !== expectedStyles[styleKey]) {
-			throw new Error(`'${styleKey}' is NOT as expected; expected: '${expectedStyles[styleKey]}', found: '${computedStyle[styleKey]}'`);
+		let actualValue, expectedValue;
+		switch (styleKey) {
+			case 'fontFamily':
+				expectedValue = String(expectedStyles[styleKey]);
+				actualValue = String(computedStyle[styleKey]).replaceAll('"', '');
+				break;
+			default:
+				expectedValue = expectedStyles[styleKey];
+				actualValue = computedStyle[styleKey];
+		}
+		if (actualValue !== expectedValue) {
+			throw new Error(`'${styleKey}' is NOT as expected; expected: '${expectedValue}', found: '${actualValue}'`);
 		}
 	}
 }
