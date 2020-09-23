@@ -7,6 +7,7 @@ import {
 	textToDomToParent,
 	randomAlpha,
 	waitNextTask,
+	isolatedElementsCreation,
 } from '../../../test/test-helpers';
 
 function setInputElementAttributes(inputElement, attrs = {}) {
@@ -26,11 +27,7 @@ class TestComponent extends HTMLElement {}
 window.customElements.define('test-component', TestComponent);
 
 describe(`Form Association Foundation`, function () {
-	let addedElements = [];
-
-	afterEach(function () {
-		addedElements.forEach((elm) => elm.remove());
-	});
+	let addElement = isolatedElementsCreation();
 
 	describe(`associateWithForm`, function () {
 		let originalSetCustomValidity;
@@ -47,9 +44,9 @@ describe(`Form Association Foundation`, function () {
 
 		it(`should attach a hidden input to form with given name`, function () {
 			const fieldName = 'fieldName';
-			const [formElement] = (addedElements = textToDomToParent(
-				`<form><div><input></input></div></form>`
-			));
+			const [formElement] = addElement(
+				textToDomToParent(`<form><div><input></input></div></form>`)
+			);
 			const inputElementWrapper = formElement.children[0];
 
 			setInputElementProperties(inputElementWrapper, {
@@ -70,10 +67,12 @@ describe(`Form Association Foundation`, function () {
 
 		it(`should attach a hidden input to form with given id`, function () {
 			const otherFormId = randomAlpha();
-			const [formElement, otherForm] = (addedElements = textToDomToParent(`
+			const [formElement, otherForm] = addElement(
+				textToDomToParent(`
 				<form><div><input></input></div></form>
 				<form id="${otherFormId}"></form>
-			`));
+			`)
+			);
 
 			const inputElementWrapper = formElement.children[0];
 			setInputElementProperties(inputElementWrapper, {
@@ -93,9 +92,11 @@ describe(`Form Association Foundation`, function () {
 			const otherFormId = randomAlpha();
 			const nonExistentFormId = 'someOtherFormId';
 			const fieldName = 'fieldName';
-			const [formElement] = (addedElements = textToDomToParent(
-				`<form><div><input></input></div></form><form id="${otherFormId}"></form>`
-			));
+			const [formElement] = addElement(
+				textToDomToParent(
+					`<form><div><input></input></div></form><form id="${otherFormId}"></form>`
+				)
+			);
 
 			const inputElementWrapper = formElement.children[0];
 			setInputElementProperties(inputElementWrapper, {
@@ -118,9 +119,11 @@ describe(`Form Association Foundation`, function () {
 			const defaultValue = 'defaultValue';
 			const fieldName = 'fieldName';
 
-			const [formElement, otherForm] = (addedElements = textToDomToParent(
-				`<form><div><input></input></div></form><form id="${otherFormId}"></form>`
-			));
+			const [formElement, otherForm] = addElement(
+				textToDomToParent(
+					`<form><div><input></input></div></form><form id="${otherFormId}"></form>`
+				)
+			);
 
 			const inputElementWrapper = formElement.children[0];
 			setInputElementAttributes(inputElementWrapper, {
@@ -150,9 +153,11 @@ describe(`Form Association Foundation`, function () {
 			const invalidValue = 'defaultValue';
 			const fieldName = 'fieldName';
 
-			const [formElement] = (addedElements = textToDomToParent(
-				`<form><div required><input required></input></div></form><form id="${otherFormId}"></form>`
-			));
+			const [formElement] = addElement(
+				textToDomToParent(
+					`<form><div required><input required></input></div></form><form id="${otherFormId}"></form>`
+				)
+			);
 
 			const inputElementWrapper = formElement.children[0];
 			setInputElementProperties(inputElementWrapper, {
@@ -188,10 +193,11 @@ describe(`Form Association Foundation`, function () {
 			const hiddenElementType = 'DIGGERING';
 			const fieldName = 'inputName';
 
-			addedElements = textToDomToParent(
-				`<form><div><${hiddenElementType}></${hiddenElementType}></div></form>`
+			const [formElement] = addElement(
+				textToDomToParent(
+					`<form><div><${hiddenElementType}></${hiddenElementType}></div></form>`
+				)
 			);
-			const formElement = addedElements[0];
 
 			const inputElementWrapper = formElement.children[0];
 			setInputElementProperties(inputElementWrapper, {
@@ -217,8 +223,10 @@ describe(`Form Association Foundation`, function () {
 				fieldName = 'fieldName';
 				defaultValue = 'abc';
 
-				formElement = addedElements = textToDomToParent(
-					`<form><test-component value="${defaultValue}"><input></input></test-component></form>`
+				formElement = addElement(
+					textToDomToParent(
+						`<form><test-component value="${defaultValue}"><input></input></test-component></form>`
+					)
 				)[0];
 
 				inputElementWrapper = formElement.children[0];
@@ -267,10 +275,11 @@ describe(`Form Association Foundation`, function () {
 		it(`should submit a form on requestSubmit when given a form with a submit button`, function () {
 			let formSubmitted = false;
 
-			addedElements = textToDomToParent(
-				`<form onsubmit="return false"><button>Submit</button></form>`
+			const [formElement] = addElement(
+				textToDomToParent(
+					`<form onsubmit="return false"><button>Submit</button></form>`
+				)
 			);
-			const formElement = addedElements[0];
 			formElement.addEventListener('submit', () => (formSubmitted = true));
 			formElement.requestSubmit = undefined;
 
@@ -296,10 +305,11 @@ describe(`Form Association Foundation`, function () {
 
 		function setupTest() {
 			formSubmitted = 0;
-			addedElements = textToDomToParent(
-				`<form onsubmit="return false"><textarea></textarea><button>Submit</button></form>`
+			const [formElement] = addElement(
+				textToDomToParent(
+					`<form onsubmit="return false"><textarea></textarea><button>Submit</button></form>`
+				)
 			);
-			const formElement = addedElements[0];
 			textAreaElement = formElement.querySelector('textarea');
 
 			formElement.addEventListener('submit', () => formSubmitted++);
@@ -325,10 +335,11 @@ describe(`Form Association Foundation`, function () {
 
 		it(`should bind to external form according to form attribute`, function () {
 			const otherFormId = randomAlpha();
-			const otherFormElement = textToDomToParent(
-				`<form onsubmit="return false" id="${otherFormId}"><button>Submit</button></form>`
-			)[0];
-			addedElements.push(otherFormElement);
+			const [otherFormElement] = addElement(
+				textToDomToParent(
+					`<form onsubmit="return false" id="${otherFormId}"><button>Submit</button></form>`
+				)
+			);
 
 			let otherFormSubmitted = 0;
 			textAreaElement.setAttribute('form', otherFormId);
