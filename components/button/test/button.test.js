@@ -290,4 +290,30 @@ describe('button', () => {
 			assertComputedStyle(actualElement, { height: '48px' });
 		});
 	});
+
+	describe('shape', () => {
+		it('should have rounded shape by default', async () => {
+			const addedElements = textToDomToParent(
+				`<${VWC_BUTTON} layout="filled">Button Text</${VWC_BUTTON}>`
+			);
+			await waitNextTask();
+			const formElement = addedElements[0];
+			const actualElement = formElement.shadowRoot.querySelector('#button');
+
+			assertComputedStyle(actualElement, { borderRadius: '6px' });
+
+			formElement.dense = true;
+			await waitNextTask();
+			assertComputedStyle(actualElement, { borderRadius: '5px' });
+		});
+
+		it('should have pill shape when shape set to pill', async () => {
+			addedElements = textToDomToParent(
+				`<${VWC_BUTTON} layout="filled" shape="pill"></${VWC_BUTTON}>`
+			);
+			await waitNextTask();
+			const actualElement = addedElements[0].shadowRoot.querySelector('#button');
+			assertComputedStyle(actualElement, { borderRadius: '24px' });
+		});
+	});
 });
