@@ -2,8 +2,6 @@
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins' as color-connotation-mixins;
 
-$vvd-button-size-block: --vvd-button-size-block;
-
 :host {
   --mdc-button-disabled-ink-color: var(
     #{color-semantic.$formfield-disabled-ink}
@@ -11,7 +9,7 @@ $vvd-button-size-block: --vvd-button-size-block;
   --mdc-button-disabled-fill-color: var(
     #{color-semantic.$formfield-border-idle}
   );
-  #{$vvd-button-size-block}: 40px;
+  --mdc-button-horizontal-padding: 14px;
 }
 
 
@@ -24,15 +22,17 @@ $vvd-button-size-block: --vvd-button-size-block;
 }
 /////////////////////////////////////////////////////////////////////////////
 .mdc-button {
+  border-radius: 6px;
   // ! this was supposed to be set by MDC
   font-stretch: var(--mdc-typography-button-font-stretch);
-  height: var(#{$vvd-button-size-block});
+  height: 40px;
   letter-spacing: normal;
-  border-radius: 6px;
 
   &.mdc-button--dense {
     border-radius: 5px;
-    #{$vvd-button-size-block}: 32px;
+    font-size: 0.75rem;
+    height: 32px;
+    padding: 0 12px;
   }
 
   vwc-icon {
@@ -61,5 +61,7 @@ $vvd-button-size-block: --vvd-button-size-block;
 }
 
 :host([enlarged]) .mdc-button {
-  #{$vvd-button-size-block}: 48px;
+  font-size: 1rem;
+  height: 48px;
+  padding: 0 24px;
 }
