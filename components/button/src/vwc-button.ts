@@ -99,6 +99,7 @@ export class VWCButton extends MWCButton {
 		super.connectedCallback();
 		this.addEventListener('click', this._handleClick);
 		this.#_hiddenButton = document.createElement('button');
+		this.#_hiddenButton.style.display = 'none';
 	}
 
 	disconnectedCallback(): void {

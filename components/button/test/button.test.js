@@ -32,6 +32,10 @@ describe('button', () => {
 	});
 
 	describe('Form Association', function () {
+		function hiddenButtonExists(formElement) {
+			return formElement.querySelector('button') !== null;
+		}
+
 		beforeEach(() => {
 			window.formSubmitted = false;
 		});
@@ -211,9 +215,6 @@ describe('button', () => {
 		});
 
 		it(`should cleanup the hidden element on disconnection`, async function () {
-			function hiddenButtonExists() {
-				return formElement.querySelector('button') !== null;
-			}
 			addedElements = textToDomToParent(
 				`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON}>Button Text</${VWC_BUTTON}></form>`
 			);
@@ -221,17 +222,13 @@ describe('button', () => {
 			const formElement = addedElements[0];
 			const actualElement = formElement.firstChild;
 
-			const buttonExistsBeforeDisconnection = hiddenButtonExists();
+			const buttonExistsBeforeDisconnection = hiddenButtonExists(formElement);
 			actualElement.remove();
 			expect(buttonExistsBeforeDisconnection).to.equal(true);
-			expect(hiddenButtonExists()).to.equal(false);
+			expect(hiddenButtonExists(formElement)).to.equal(false);
 		});
 
 		it(`should change the buttons location when the form attribute changes`, async function () {
-			function hiddenButtonExists(formElement) {
-				return formElement.querySelector('button') !== null;
-			}
-
 			const otherFormId = randomAlpha();
 			addedElements = textToDomToParent(
 				`<form onsubmit="return false" name="testForm" id="testForm">
@@ -250,6 +247,19 @@ describe('button', () => {
 			expect(buttonExistsOnClosestForm).to.equal(true);
 			expect(hiddenButtonExists(formElement)).to.equal(false);
 			expect(hiddenButtonExists(otherForm)).to.equal(true);
+		});
+
+		it(`should have display:none on the button`, async function () {
+			addedElements = textToDomToParent(
+				`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON}>Button Text</${VWC_BUTTON}></form>`
+			);
+			await waitNextTask();
+			const formElement = addedElements[0];
+			const buttonElement = formElement.querySelector('button');
+
+			assertComputedStyle(buttonElement, {
+				display: 'none',
+			});
 		});
 	});
 
