@@ -1,17 +1,17 @@
 import '../vwc-checkbox.js';
 import {
-	textToDocumentFragment,
+	textToDomToParent,
 	waitNextTask,
+	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
-import { textToDomToParent } from '../../../test/test-helpers';
 
 chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-checkbox';
 
 describe('checkbox', () => {
-	let addedElements = [];
+	const addElement = isolatedElementsCreation();
 
 	it('should be defined as a custom element', async () => {
 		assert.exists(
@@ -20,7 +20,9 @@ describe('checkbox', () => {
 	});
 
 	it('should have internal contents', async () => {
-		addedElements = textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`);
+		const addedElements = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+		);
 		const actualElement = addedElements[0];
 		await waitNextTask();
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
