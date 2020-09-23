@@ -12,8 +12,8 @@
 import { SchemeOption } from '@vonage/vvd-scheme';
 
 const VVD_CONTEXT_ATTRIBUTE = 'data-vvd-context',
-	MANUAL_KEY = 'none',
-	VALID_CONFIGURATION_KEYS = [MANUAL_KEY, 'fonts', 'scheme'];
+	NONE_INIT_VALUE = 'none',
+	VALID_CONFIGURATION_KEYS = ['autoInit', 'scheme'];
 
 export interface Configuration {
 	autoInit: boolean;
@@ -31,7 +31,7 @@ function buildInitialConfiguration(): Configuration {
 	const vvdContextAttrValue = document.documentElement.getAttribute(
 		VVD_CONTEXT_ATTRIBUTE
 	);
-	if (vvdContextAttrValue === MANUAL_KEY) {
+	if (vvdContextAttrValue === NONE_INIT_VALUE) {
 		result.autoInit = false;
 	}
 	return result;
@@ -43,7 +43,7 @@ function validateConfiguration(configuration: Partial<Configuration>) {
 	);
 
 	if (extraParams.length) {
-		throw new Error(
+		console.warn(
 			`unexpected configuration part/s '${extraParams}',	only some of '${VALID_CONFIGURATION_KEYS}' expected`
 		);
 	}

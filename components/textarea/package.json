@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-textarea",
-	"version": "0.7.0",
+	"version": "0.10.0",
 	"description": "textarea component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/textarea#readme",
 	"license": "ISC",
@@ -24,14 +24,14 @@
 	},
 	"dependencies": {
 		"@material/mwc-textarea": "^0.18.0",
-		"@vonage/vvd-core": "^0.7.0",
-		"@vonage/vvd-foundation": "^0.7.0",
-		"@vonage/vvd-style-coupling": "^0.7.0",
-		"@vonage/vwc-notched-outline": "^0.7.0",
+		"@vonage/vvd-core": "^0.10.0",
+		"@vonage/vvd-foundation": "^0.10.0",
+		"@vonage/vvd-style-coupling": "^0.10.0",
+		"@vonage/vwc-notched-outline": "^0.10.0",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.1"
 	},
 	"devDependencies": {
-		"@vonage/vwc-textfield": "^0.7.0"
+		"@vonage/vwc-textfield": "^0.10.0"
 	}
 }

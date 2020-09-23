@@ -9,7 +9,6 @@
 node_modules
 npm-debug.log
 package-lock.json
-.npmrc
 
 ## yarn
 yarn-error.log
@@ -51,6 +50,7 @@ storybook-static
 !**/stories/**/*.js
 
 .cache
+*.tmp
 
 lerna-debug.log
 

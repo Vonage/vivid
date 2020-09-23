@@ -1,7 +1,13 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
 import '@vonage/vwc-notched-outline';
-import { customElement, property, html, TemplateResult } from 'lit-element';
+import {
+	customElement,
+	property,
+	html,
+	TemplateResult,
+	PropertyValues,
+} from 'lit-element';
 import { mapToClasses } from '@vonage/vvd-foundation/class-utils.js';
 import { Select as MWCSelect } from '@material/mwc-select';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
@@ -43,6 +49,13 @@ export class VWCSelect extends MWCSelect {
 		await super.firstUpdated();
 		this.replaceIcon();
 		associateWithForm<VWCSelect>(this, this.formElement);
+	}
+
+	protected updated(changedProperties: PropertyValues): void {
+		super.updated(changedProperties);
+		if (this.shape === 'pill') {
+			this.dense = true;
+		}
 	}
 
 	protected renderHelperText(): TemplateResult {

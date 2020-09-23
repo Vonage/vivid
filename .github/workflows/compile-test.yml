@@ -9,13 +9,14 @@ on:
 jobs:
   compile-and-test:
     runs-on: ubuntu-latest
+    env:
+      ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
           token: ${{ secrets.PAT }}
-          submodules: true
 
       - name: Setup NodeJS 12
         uses: actions/setup-node@v1

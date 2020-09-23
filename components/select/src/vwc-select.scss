@@ -1,7 +1,7 @@
 @forward './vwc-select-coupling';
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 
-$vvd-select-size-block: --vvd-text-field-size-block;
+$vvd-select-size-block: --vvd-select-size-block;
 
 :host {
   --mdc-theme-primary: var(--vvd-color-alternate-primary-background);
@@ -71,6 +71,26 @@ $vvd-select-size-block: --vvd-text-field-size-block;
 
   .mdc-select__selected-text {
     padding: 22px 0 6px;
+  }
+}
+
+:host([dense][label]:not([label=''])) {
+  padding-top: 24px;
+
+  .mdc-select {
+    .mdc-floating-label {
+      font-size: 0.875rem;
+      left: -12px;
+      top: -24px;
+      transform: none;
+    }
+
+    .mdc-floating-label,
+    &--invalid.mdc-select--outlined .mdc-floating-label,
+    &:not(.mdc-select--invalid):not(.mdc-select--focused) .mdc-floating-label,
+    &:not(.mdc-select--invalid).mdc-select--focused .mdc-floating-label {
+      color: var(--mdc-select-ink-color);
+    }
   }
 }
 

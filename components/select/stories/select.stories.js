@@ -27,7 +27,7 @@ export const Default = Template.bind({});
 Default.args = { outlined: '', label: 'VWC Select', helper: 'Helper Text' };
 
 export const Dense = Template.bind({});
-Dense.args = { dense: '', outlined: '' };
+Dense.args = { dense: '', outlined: '', label: 'VWC Select' };
 
 export const PillShape = Template.bind({});
 PillShape.args = { shape: 'pill', dense: '', outlined: '' };
