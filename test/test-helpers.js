@@ -51,6 +51,23 @@ export function randomAlpha(length = 8) {
 		.join('');
 }
 
+const
+	fontWeightSemanticMap = {
+		normal: 400,
+		bold: 700
+	},
+	fontStretchSemanticMap = {
+		'ultra-condensed': 50,
+		'extra-condensed': 62.5,
+		'condensed': 75,
+		'semi-condensed': 87.5,
+		'normal': 100,
+		'semi-expanded': 112.5,
+		'expanded': 125,
+		'extra-expanded': 150,
+		'ultra-expanded': 200
+	};
+
 export function assertComputedStyle(element, expectedStyles) {
 	if (!element) {
 		throw new Error(`'element' parameter MUST be a valid element, got ${element}`);
@@ -72,6 +89,20 @@ export function assertComputedStyle(element, expectedStyles) {
 			case 'fontSize':
 				expectedValue = parseFloat(expectedStyles[styleKey]).toFixed(3);
 				actualValue = parseFloat(computedStyle[styleKey]).toFixed(3);
+				break;
+			case 'fontStretch':
+				actualValue = parseFloat(computedStyle[styleKey]);
+				if (isNaN(actualValue)) {
+					actualValue = fontStretchSemanticMap[computedStyle[styleKey]];
+				}
+				expectedValue = parseFloat(expectedStyles[styleKey]);
+				break;
+			case 'fontWeight':
+				actualValue = parseInt(computedStyle[styleKey]);
+				if (isNaN(actualValue)) {
+					actualValue = fontWeightSemanticMap[computedStyle[styleKey]];
+				}
+				expectedValue = parseInt(expectedStyles[styleKey]);
 				break;
 			default:
 				expectedValue = expectedStyles[styleKey];
