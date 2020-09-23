@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-linear-progress",
-	"version": "0.9.0",
+	"version": "0.10.0",
 	"description": "linear progress component",
 	"author": "yinonov <yinon@hotmail.com>",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/linear-progress#readme",
@@ -26,8 +26,8 @@
 	},
 	"dependencies": {
 		"@material/mwc-linear-progress": "^0.18.0",
-		"@vonage/vvd-core": "^0.9.0",
-		"@vonage/vvd-style-coupling": "^0.9.0",
+		"@vonage/vvd-core": "^0.10.0",
+		"@vonage/vvd-style-coupling": "^0.10.0",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.1"
 	}
