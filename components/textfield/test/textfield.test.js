@@ -343,12 +343,14 @@ describe('textfield', () => {
 				const fieldName = 'test-field';
 				const externalFormID = 'externalForm';
 
-				addedElements = textToDomToParent(`
+				const addedElements = addElement(
+					textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="testForm">
 					<${COMPONENT_NAME} name="${fieldName}" value="${fieldValue}" form="${externalFormID}">
 					</${COMPONENT_NAME}>
 				</form>
-				<form onsubmit="return false" name="externalForm" id="${externalFormID}"><button>Button Text</button></form>`);
+				<form onsubmit="return false" name="externalForm" id="${externalFormID}"><button>Button Text</button></form>`)
+				);
 
 				await waitNextTask();
 
@@ -370,12 +372,14 @@ describe('textfield', () => {
 				const fieldName = 'test-field';
 				const externalFormID = 'externalForm';
 
-				addedElements = textToDomToParent(`
+				const addedElements = addElement(
+					textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="testForm">
 					<${COMPONENT_NAME} name="${fieldName}" value="${fieldValue}" form="${externalFormID}">
 					</${COMPONENT_NAME}>
 				</form>
-				<form onsubmit="return false" name="externalForm" id="${externalFormID}"><input type="submit">Button Text</input></form>`);
+				<form onsubmit="return false" name="externalForm" id="${externalFormID}"><input type="submit">Button Text</input></form>`)
+				);
 
 				await waitNextTask();
 
@@ -399,12 +403,14 @@ describe('textfield', () => {
 
 				let called = false;
 
-				addedElements = textToDomToParent(`
+				const addedElements = addElement(
+					textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="testForm">
 					<${COMPONENT_NAME} name="${fieldName}" value="${fieldValue}" form="${externalFormID}">
 					</${COMPONENT_NAME}>
 				</form>
-				<form onsubmit="return false" name="externalForm" id="${externalFormID}"><button type="button">Button Text</button></form>`);
+				<form onsubmit="return false" name="externalForm" id="${externalFormID}"><button type="button">Button Text</button></form>`)
+				);
 
 				await waitNextTask();
 
