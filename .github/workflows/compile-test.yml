@@ -23,7 +23,6 @@ jobs:
         run: npm install -g yarn
 
       - uses: actions/cache@v2
-        id: yarn-cache
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
@@ -39,7 +38,6 @@ jobs:
           name: vivid-artifact
 
       - uses: actions/cache@v2
-        id: yarn-cache
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
@@ -73,7 +71,6 @@ jobs:
           name: vivid-artifact
 
       - uses: actions/cache@v2
-        id: yarn-cache
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
@@ -105,7 +102,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: vivid-artifact
-          
+
       - name: Dependencies check
         run: yarn dep-check
 
@@ -134,12 +131,7 @@ jobs:
       - name: Install yarn
         run: npm install -g yarn
 
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
       - uses: actions/cache@v2
-        id: yarn-cache
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
