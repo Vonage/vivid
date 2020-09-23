@@ -25,6 +25,8 @@ module.exports = config => {
 				},
 			},
 		},
+		plugins: ['karma-safari-applescript-launcher'],
+		browsers: ['Safari']
 	});
 
 	config.set(extendedDefaultConfig);
