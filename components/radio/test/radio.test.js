@@ -19,7 +19,7 @@ describe('vwc-radio', () => {
 		);
 	});
 
-	it('should have internal contents', async () => {
+	it.skip('should have internal contents', async () => {
 		const addedElements = addElement(
 			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 		);
