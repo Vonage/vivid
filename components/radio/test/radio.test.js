@@ -1,14 +1,15 @@
 import '../vwc-radio.js';
-import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	isolatedElementsCreation,
 	textToDomToParent,
 	waitNextTask,
 } from '../../../test/test-helpers';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-radio';
+
 describe('vwc-radio', () => {
 	const addElement = isolatedElementsCreation();
 
@@ -22,8 +23,9 @@ describe('vwc-radio', () => {
 		const addedElements = addElement(
 			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 		);
-		const actualElement = addedElements[0];
 		await waitNextTask();
+		await waitNextTask();
+		const actualElement = addedElements[0];
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 });
