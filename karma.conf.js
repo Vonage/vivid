@@ -24,7 +24,7 @@ module.exports = config => {
 					functions: 10,
 				},
 			},
-		},
+		}
 	});
 
 	config.set(extendedDefaultConfig);
