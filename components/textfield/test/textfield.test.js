@@ -6,6 +6,7 @@ import {
 	assertComputedStyle,
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
+import { isolatedElementsCreation } from '../../../test/test-helpers';
 
 chai.use(chaiDomDiff);
 
@@ -37,20 +38,16 @@ async function changeValueAndNotify(
 }
 
 describe('textfield', () => {
-	let addedElements = [];
-
-	afterEach(() => {
-		while (addedElements.length) {
-			addedElements.pop().remove();
-		}
-	});
+	const addElement = isolatedElementsCreation();
 
 	it('should be defined as a custom element', async () => {
 		expect(Boolean(customElements.get(COMPONENT_NAME))).to.equal(true);
 	});
 
 	it('should have internal contents', async () => {
-		addedElements = textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`);
+		const addedElements = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+		);
 		const actualElement = addedElements[0];
 		await waitNextTask();
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
@@ -58,8 +55,10 @@ describe('textfield', () => {
 
 	describe('typography', () => {
 		it('should have set typography for a label', async () => {
-			addedElements = textToDomToParent(
-				`<${COMPONENT_NAME} outlined label="Vwc textarea"></${COMPONENT_NAME}>`
+			const addedElements = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} outlined label="Vwc textarea"></${COMPONENT_NAME}>`
+				)
 			);
 			await waitNextTask();
 			const labelElement = addedElements[0].shadowRoot
@@ -78,8 +77,10 @@ describe('textfield', () => {
 		});
 
 		it('should have set typography for an input', async () => {
-			addedElements = textToDomToParent(
-				`<${COMPONENT_NAME} outlined disabled label="Vwc textarea"></${COMPONENT_NAME}>`
+			const addedElements = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} outlined disabled label="Vwc textarea"></${COMPONENT_NAME}>`
+				)
 			);
 			await waitNextTask();
 			const inputElement = addedElements[0].shadowRoot.querySelector(
@@ -102,8 +103,10 @@ describe('textfield', () => {
 		it(`should attach to closest form`, async function () {
 			const fieldValue = Math.random().toString();
 			const fieldName = 'test-field';
-			addedElements = textToDomToParent(
-				`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} name="${fieldName}" value="${fieldValue}">Button Text</${COMPONENT_NAME}></form>`
+			const addedElements = addElement(
+				textToDomToParent(
+					`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} name="${fieldName}" value="${fieldValue}">Button Text</${COMPONENT_NAME}></form>`
+				)
 			);
 			const formElement = addedElements[0];
 			await waitNextTask();
@@ -127,12 +130,14 @@ describe('textfield', () => {
 			const fieldName = 'test-field';
 			const externalFormID = 'externalForm';
 
-			addedElements = textToDomToParent(`
+			const addedElements = addElement(
+				textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="testForm">
 					<${COMPONENT_NAME} name="${fieldName}" value="${fieldValue}" form="${externalFormID}">Button Text
 					</${COMPONENT_NAME}>
 				</form>
-				<form onsubmit="return false" name="externalForm" id="${externalFormID}"></form>`);
+				<form onsubmit="return false" name="externalForm" id="${externalFormID}"></form>`)
+			);
 
 			await waitNextTask();
 
@@ -160,8 +165,10 @@ describe('textfield', () => {
 			const fieldValue = Math.random().toString();
 			const fieldName = 'test-field';
 			const formId = 'testForm';
-			addedElements = textToDomToParent(
-				`<div onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} name="${fieldName}" value="${fieldValue}" form="${formId}">Button Text</${COMPONENT_NAME}></div>`
+			const addedElements = addElement(
+				textToDomToParent(
+					`<div onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} name="${fieldName}" value="${fieldValue}" form="${formId}">Button Text</${COMPONENT_NAME}></div>`
+				)
 			);
 			const formElement = addedElements[0];
 			await waitNextTask();
@@ -173,8 +180,10 @@ describe('textfield', () => {
 			it(`should reset the value of the custom element to default on form reset`, async function () {
 				const fieldValue = Math.random().toString();
 				const fieldName = 'test-field';
-				addedElements = textToDomToParent(
-					`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} name="${fieldName}" value="${fieldValue}">Button Text</${COMPONENT_NAME}></form>`
+				const addedElements = addElement(
+					textToDomToParent(
+						`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} name="${fieldName}" value="${fieldValue}">Button Text</${COMPONENT_NAME}></form>`
+					)
 				);
 				const formElement = addedElements[0];
 				const actualElement = formElement.firstChild;
@@ -189,8 +198,10 @@ describe('textfield', () => {
 			it(`should change the value of the mock input on internal input change`, async function () {
 				const fieldValue = Math.random().toString();
 				const fieldName = 'test-field';
-				addedElements = textToDomToParent(
-					`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} name="${fieldName}">Button Text</${COMPONENT_NAME}></form>`
+				const addedElements = addElement(
+					textToDomToParent(
+						`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} name="${fieldName}">Button Text</${COMPONENT_NAME}></form>`
+					)
 				);
 				const formElement = addedElements[0];
 				const actualElement = formElement.firstChild;
@@ -205,8 +216,10 @@ describe('textfield', () => {
 		describe(`validation`, function () {
 			it(`should get validity from the element's validationMessage`, async function () {
 				const fieldName = 'test-field';
-				addedElements = textToDomToParent(
-					`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} required name="${fieldName}">Button Text</${COMPONENT_NAME}></form>`
+				const addedElements = addElement(
+					textToDomToParent(
+						`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} required name="${fieldName}">Button Text</${COMPONENT_NAME}></form>`
+					)
 				);
 				const formElement = addedElements[0];
 				const actualElement = formElement.firstChild;
@@ -223,8 +236,10 @@ describe('textfield', () => {
 			it(`should validate on reset`, async function () {
 				const fieldValue = Math.random().toString();
 				const fieldName = 'test-field';
-				addedElements = textToDomToParent(
-					`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} required value="${fieldValue}" name="${fieldName}">Button Text</${COMPONENT_NAME}></form>`
+				const addedElements = addElement(
+					textToDomToParent(
+						`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} required value="${fieldValue}" name="${fieldName}">Button Text</${COMPONENT_NAME}></form>`
+					)
 				);
 				const formElement = addedElements[0];
 				const actualElement = formElement.firstChild;
@@ -244,8 +259,10 @@ describe('textfield', () => {
 			it(`should not submit an invalid form`, async function () {
 				let submitted = false;
 				const fieldName = 'test-field';
-				addedElements = textToDomToParent(
-					`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} required value="val" name="${fieldName}">Button Text</${COMPONENT_NAME}></form>`
+				const addedElements = addElement(
+					textToDomToParent(
+						`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} required value="val" name="${fieldName}">Button Text</${COMPONENT_NAME}></form>`
+					)
 				);
 				const formElement = addedElements[0];
 				const actualElement = formElement.firstChild;
@@ -277,12 +294,14 @@ describe('textfield', () => {
 		it(`should work under multiple shadow layers`, async function () {
 			const fieldValue = Math.random().toString();
 			const fieldName = 'test-field';
-			addedElements = textToDomToParent(`
+			const addedElements = addElement(
+				textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="testForm">
 					<vwc-formfield>
 						<${COMPONENT_NAME} required value="${fieldValue}" name="${fieldName}">Button Text</${COMPONENT_NAME}>
 					</vwc-formfield>
-				</form>`);
+				</form>`)
+			);
 			const formElement = addedElements[0];
 			const actualElement = formElement.children[0].children[0];
 			await waitNextTask();
@@ -310,8 +329,8 @@ describe('textfield', () => {
 
 	describe('notched outlined', () => {
 		it('should have vwc-notched-outline defined', async () => {
-			addedElements = textToDomToParent(
-				`<${COMPONENT_NAME} outlined></${COMPONENT_NAME}>`
+			const addedElements = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} outlined></${COMPONENT_NAME}>`)
 			);
 			await waitNextTask();
 			const notchedOutline = addedElements[0].shadowRoot.querySelector(
@@ -323,8 +342,8 @@ describe('textfield', () => {
 
 	describe('dense', () => {
 		it('should have normal size by default', async () => {
-			addedElements = textToDomToParent(
-				`<${COMPONENT_NAME} outlined></${COMPONENT_NAME}>`
+			const addedElements = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} outlined></${COMPONENT_NAME}>`)
 			);
 			await waitNextTask();
 			const formElement = addedElements[0];
@@ -332,8 +351,10 @@ describe('textfield', () => {
 		});
 
 		it('should have dense size when dense', async () => {
-			addedElements = textToDomToParent(
-				`<${COMPONENT_NAME} outlined dense label="VWC Textfield"></${COMPONENT_NAME}>`
+			const addedElements = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} outlined dense label="VWC Textfield"></${COMPONENT_NAME}>`
+				)
 			);
 			await waitNextTask();
 			const formElement = addedElements[0];
@@ -357,8 +378,8 @@ describe('textfield', () => {
 
 	describe('shape', () => {
 		it('should have rounded shape by default', async () => {
-			addedElements = textToDomToParent(
-				`<${COMPONENT_NAME} outlined></${COMPONENT_NAME}>`
+			const addedElements = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} outlined></${COMPONENT_NAME}>`)
 			);
 			await waitNextTask();
 			const formElement = addedElements[0];
@@ -375,8 +396,10 @@ describe('textfield', () => {
 		});
 
 		it('should have pill shape when shape set to pill', async () => {
-			addedElements = textToDomToParent(
-				`<${COMPONENT_NAME} outlined shape="pill"></${COMPONENT_NAME}>`
+			const addedElements = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} outlined shape="pill"></${COMPONENT_NAME}>`
+				)
 			);
 			await waitNextTask();
 			const actualElement = addedElements[0].shadowRoot.querySelector(
