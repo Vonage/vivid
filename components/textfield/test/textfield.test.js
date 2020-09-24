@@ -140,8 +140,7 @@ describe('textfield', () => {
 		});
 
 		it(`should attach to closest form`, async function () {
-			const addedElements = addElement(createElementInForm(fieldName, fieldValue));
-			const formElement = addedElements[0];
+			const [formElement] = addElement(createElementInForm(fieldName, fieldValue));
 			await waitNextTask();
 
 			const submitPromise = listenToSubmission(formElement);
@@ -318,7 +317,10 @@ describe('textfield', () => {
 		});
 
 		describe(`submit form on Enter key`, function () {
-			let actualElement;
+			let actualElement, formElement, externalForm;
+			const fieldName = 'test-field';
+			const externalFormID = 'externalForm';
+			const fieldValue = Math.random().toString();
 
 			function dispatchKeyEvent(keyName) {
 				const ke = new KeyboardEvent('keydown', {
@@ -329,26 +331,22 @@ describe('textfield', () => {
 				actualElement.dispatchEvent(ke);
 			}
 
-			it(`should submit form on enter key press with button without a type`, async function () {
-				const fieldValue = Math.random().toString();
-				const fieldName = 'test-field';
-				const externalFormID = 'externalForm';
-
-				const addedElements = addElement(
+			beforeEach(async function () {
+				[formElement, externalForm] = addElement(
 					textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="testForm">
 					<${COMPONENT_NAME} name="${fieldName}" value="${fieldValue}" form="${externalFormID}">
 					</${COMPONENT_NAME}>
 				</form>
-				<form onsubmit="return false" name="externalForm" id="${externalFormID}"><button>Button Text</button></form>`)
+				<form onsubmit="return false" name="externalForm" id="${externalFormID}"></form>`)
 				);
-
-				await waitNextTask();
-
-				const formElement = addedElements[0];
-				const externalForm = addedElements[1];
 				actualElement = formElement.querySelector(COMPONENT_NAME);
+				await waitNextTask();
+			});
+
+			it(`should submit form on enter key press with button without a type`, async function () {
 				const submitPromise = listenToSubmission(externalForm);
+				externalForm.appendChild(document.createElement('button'));
 
 				dispatchKeyEvent('Enter');
 
@@ -359,24 +357,9 @@ describe('textfield', () => {
 			});
 
 			it(`should submit form on enter key press with input of type "submit"`, async function () {
-				const fieldValue = Math.random().toString();
-				const fieldName = 'test-field';
-				const externalFormID = 'externalForm';
-
-				const addedElements = addElement(
-					textToDomToParent(`
-				<form onsubmit="return false" name="testForm" id="testForm">
-					<${COMPONENT_NAME} name="${fieldName}" value="${fieldValue}" form="${externalFormID}">
-					</${COMPONENT_NAME}>
-				</form>
-				<form onsubmit="return false" name="externalForm" id="${externalFormID}"><input type="submit">Button Text</input></form>`)
-				);
-
-				await waitNextTask();
-
-				const formElement = addedElements[0];
-				const externalForm = addedElements[1];
-				actualElement = formElement.querySelector(COMPONENT_NAME);
+				const submitElement = document.createElement('input');
+				submitElement.setAttribute('type', 'submit');
+				externalForm.appendChild(submitElement);
 				const submitPromise = listenToSubmission(externalForm);
 
 				dispatchKeyEvent('Enter');
@@ -388,26 +371,7 @@ describe('textfield', () => {
 			});
 
 			it(`should not submit form without a button or input submit`, async function () {
-				const fieldValue = Math.random().toString();
-				const fieldName = 'test-field';
-				const externalFormID = 'externalForm';
-
 				let called = false;
-
-				const addedElements = addElement(
-					textToDomToParent(`
-				<form onsubmit="return false" name="testForm" id="testForm">
-					<${COMPONENT_NAME} name="${fieldName}" value="${fieldValue}" form="${externalFormID}">
-					</${COMPONENT_NAME}>
-				</form>
-				<form onsubmit="return false" name="externalForm" id="${externalFormID}"><button type="button">Button Text</button></form>`)
-				);
-
-				await waitNextTask();
-
-				const formElement = addedElements[0];
-				const externalForm = addedElements[1];
-				actualElement = formElement.querySelector(COMPONENT_NAME);
 				externalForm.addEventListener('submit', () => (called = true));
 
 				dispatchKeyEvent('Enter');
