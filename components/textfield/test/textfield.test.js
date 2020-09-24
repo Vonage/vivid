@@ -4,54 +4,21 @@ import {
 	textToDomToParent,
 	waitNextTask,
 	assertComputedStyle,
-} from '../../../test/test-helpers.js';
-import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
-import {
+	changeValueAndNotify,
 	isolatedElementsCreation,
 	randomAlpha,
-} from '../../../test/test-helpers';
+	listenToSubmission,
+} from '../../../test/test-helpers.js';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
 chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-textfield';
 
-function listenToSubmission(formElement) {
-	return new Promise((res) => {
-		formElement.addEventListener('submit', () => {
-			const formData = new FormData(formElement);
-			res(formData);
-		});
-	});
-}
-
 function getHiddenInput(formElement, fieldName) {
 	return formElement.querySelector(`input[name="${fieldName}"]`);
 }
-
-async function changeValueAndNotify(
-	actualElement,
-	value,
-	eventName = 'change'
-) {
-	actualElement.value = value;
-	await waitNextTask();
-
-	let evt = new Event(eventName);
-	actualElement.dispatchEvent(evt);
-}
-
-class TestComponent extends HTMLElement {
-	connectedCallback() {
-		this.attachShadow({ mode: 'open' });
-	}
-
-	setContent(htmlString) {
-		this.shadowRoot.innerHTML = htmlString;
-	}
-}
-
-window.customElements.define('textfield-test-component', TestComponent);
 
 describe('textfield', () => {
 	const addElement = isolatedElementsCreation();
@@ -281,7 +248,7 @@ describe('textfield', () => {
 			const fieldName = 'test-field';
 			const formTemplate = `
 				<form onsubmit="return false" name="testForm" id="testForm">
-					<textfield-test-component></textfield-test-component>
+					<vivid-tests-component></vivid-tests-component>
 					<button></button>
 				</form>`;
 			const elementTemplate = `
@@ -291,7 +258,7 @@ describe('textfield', () => {
 					</${COMPONENT_NAME}>`;
 			const [formElement] = addElement(textToDomToParent(formTemplate));
 			await waitNextTask();
-			const wrapperElement = formElement.querySelector('textfield-test-component');
+			const wrapperElement = formElement.querySelector('vivid-tests-component');
 			wrapperElement.setContent(elementTemplate);
 			const actualElement = wrapperElement.shadowRoot.querySelector(
 				COMPONENT_NAME

@@ -3,38 +3,19 @@ import {
 	textToDomToParent,
 	waitNextTask,
 	assertComputedStyle,
+	changeValueAndNotify,
+	isolatedElementsCreation,
+	listenToSubmission,
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
-import { isolatedElementsCreation } from '../../../test/test-helpers';
 
 chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-textarea';
 
-function listenToSubmission(formElement) {
-	return new Promise((res) => {
-		formElement.addEventListener('submit', () => {
-			const formData = new FormData(formElement);
-			res(formData);
-		});
-	});
-}
-
 function getHiddenInput(formElement, fieldName) {
 	return formElement.querySelector(`[name="${fieldName}"]`);
-}
-
-async function changeValueAndNotify(
-	actualElement,
-	value,
-	eventName = 'change'
-) {
-	actualElement.value = value;
-	await waitNextTask();
-
-	let evt = new Event(eventName);
-	actualElement.dispatchEvent(evt);
 }
 
 describe('textarea', () => {
@@ -223,39 +204,45 @@ describe('textarea', () => {
 			});
 		});
 
-		// it(`should work under multiple shadow layers`, async function () {
-		// 	const fieldValue = Math.random().toString();
-		// 	const fieldName = 'test-field';
-		// 	addedElements = textToDomToParent(`
-		// 		<form onsubmit="return false" name="testForm" id="testForm">
-		// 			<vwc-formfield>
-		// 				<${COMPONENT_NAME} required value="${fieldValue}" name="${fieldName}">Button Text</${COMPONENT_NAME}>
-		// 			</vwc-formfield>
-		// 			<button></button>
-		// 		</form>`);
-		// 	const formElement = addedElements[0];
-		// 	const actualElement = formElement.children[0].children[0];
-		// 	await waitNextTask();
-		//
-		// 	const validInput = formElement.checkValidity();
-		//
-		// 	const submitPromise = listenToSubmission(formElement);
-		//
-		// 	requestSubmit(formElement);
-		//
-		// 	for (let pair of (await submitPromise).entries()) {
-		// 		expect(pair[0]).to.equal(fieldName);
-		// 		expect(pair[1]).to.equal(fieldValue);
-		// 	}
-		//
-		// 	await changeValueAndNotify(actualElement, '', 'change');
-		//
-		// 	expect(
-		// 		formElement.querySelectorAll(`textarea[name="${fieldName}"`).length
-		// 	).to.equal(1);
-		// 	expect(validInput).to.equal(true);
-		// 	expect(formElement.checkValidity()).to.equal(false);
-		// });
+		it(`should work under multiple shadow layers`, async function () {
+			const fieldValue = Math.random().toString();
+			const fieldName = 'test-field';
+			const formTemplate = `
+				<form onsubmit="return false" name="testForm" id="testForm">
+					<vivid-tests-component></vivid-tests-component>
+					<button></button>
+				</form>`;
+			const elementTemplate = `
+					<${COMPONENT_NAME} required value="${fieldValue}"
+ 														 name="${fieldName}">
+
+					</${COMPONENT_NAME}>`;
+			const [formElement] = addElement(textToDomToParent(formTemplate));
+			await waitNextTask();
+			const wrapperElement = formElement.querySelector('vivid-tests-component');
+			wrapperElement.setContent(elementTemplate);
+			const actualElement = wrapperElement.shadowRoot.querySelector(
+				COMPONENT_NAME
+			);
+
+			const validInput = formElement.checkValidity();
+			const submitPromise = listenToSubmission(formElement);
+
+			requestSubmit(formElement);
+
+			for (let [formDataKey, formDataValue] of (await submitPromise).entries()) {
+				expect(formDataKey).to.equal(fieldName);
+				expect(formDataValue).to.equal(fieldValue);
+			}
+
+			await changeValueAndNotify(actualElement, '', 'change');
+
+			expect(
+				formElement.querySelectorAll(`textarea[name="${fieldName}"`).length
+			).to.equal(1);
+			expect(validInput).to.equal(true);
+			expect(formElement.checkValidity()).to.equal(false);
+		});
 	});
 
 	describe('typography', () => {
