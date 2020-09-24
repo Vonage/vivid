@@ -5,7 +5,6 @@ import fs from 'fs';
 import _ from 'lodash';
 import R from 'ramda';
 
-
 const propertiesPath = resolve('../../node_modules/@vonage/vvd-design-tokens-properties');
 
 
