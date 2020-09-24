@@ -9,7 +9,9 @@ const [
 	SYMBOL_PROPERTY_TYPE_SET
 ] = ["connect", "disconnect", "property-type", "property-type-set"].map((name) => Symbol(name));
 
-const SIZES = { small: 16, medium: 24, large: 32 };
+const
+	SIZES = { small: 16, medium: 24, large: 32 },
+	DEFAULT_SIZE = "medium";
 
 const noop = ()=> { };
 
@@ -36,7 +38,7 @@ class IconElement extends HTMLElement {
 			`:host { display: inline-block; fill: currentColor; }`,
 			`:host > slot { margin: 0; padding: 0; display: block; position: relative; width: 100%; height: 100%; }`,
 			`:host > slot > svg { width: 100%; height: 100%; position: absolute; top: 0; left: 0; }`,
-			...Object.entries(SIZES).map(([sizeId, size])=>`:host([size=${sizeId}]) { width: ${size}px; height: ${size}px; }`)
+			...[[null, SIZES[DEFAULT_SIZE]], ...Object.entries(SIZES)].map(([sizeId, size])=>`:host${sizeId ? `([size=${sizeId}])` : ''} { width: ${size}px; height: ${size}px; }`)
 		].join('\n');
 
 		[SYMBOL_CONNECT, SYMBOL_DISCONNECT, SYMBOL_PROPERTY_TYPE_SET].forEach((symbol) => this[symbol] = noop);
