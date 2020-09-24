@@ -155,11 +155,9 @@ describe('textfield', () => {
 
 		it(`should do nothing if form value resolves to a non form element`, async function () {
 			const nonExistentFormId = 'noneExistentForm';
-			const addedElements = addElement(
+			const [formElement] = addElement(
 				createElementInForm(fieldName, fieldValue, nonExistentFormId)
 			);
-
-			const formElement = addedElements[0];
 			await waitNextTask();
 
 			expect(formElement.querySelector('input')).to.equal(null);
@@ -167,10 +165,9 @@ describe('textfield', () => {
 
 		describe(`value binding`, function () {
 			it(`should reset the value of the custom element to default on form reset`, async function () {
-				const addedElements = addElement(
+				const [formElement] = addElement(
 					createElementInForm(fieldName, fieldValue)
 				);
-				const formElement = addedElements[0];
 				const actualElement = formElement.querySelector(COMPONENT_NAME);
 				await waitNextTask();
 				actualElement.value = '5';
