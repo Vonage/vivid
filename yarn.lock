@@ -4437,13 +4437,6 @@
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@types/qs/6.9.5/38c1be40f0d8a01d27d5713743fe407bfa2dc168eb7e3dfbdb4b4c3e8b5ebea1#434711bdd49eb5ee69d90c1d67c354a9a8ecb18b"
   integrity sha1-Q0cRvdSete5p2QwdZ8NUqajssYs=
 
-"@types/ramda@^0.27.4":
-  version "0.27.19"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@types/ramda/0.27.19/7f7e5128ab14dfd7030028f2b24845e84f86ad4a26b27a392984918363272bf7#20a96954ca63aa42f419f392745dde94fde7dbee"
-  integrity sha1-IKlpVMpjqkL0GfOSdF3elP3n2+4=
-  dependencies:
-    ts-toolbelt "^6.3.3"
-
 "@types/range-parser@*":
   version "1.2.3"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@types/range-parser/1.2.3/b3cb4a67c4e60b3fbe7d9bb594fefe7ca7aeacf3d357cf00015e511dded09028#09f5ae3caa029e6a82b505ffcd431b2f915137bf"
@@ -7738,12 +7731,10 @@ depcheck@YonatanKra/depcheck#vivid-version:
     minimatch "^3.0.4"
     multimatch "^4.0.0"
     please-upgrade-node "^3.2.0"
-    query-ast "^1.0.3"
     readdirp "^3.4.0"
     require-package-name "^2.0.1"
     resolve "^1.17.0"
     sass "^1.26.10"
-    scss-parser "^1.0.4"
     vue-template-compiler "^2.6.11"
     yargs "^15.4.0"
 
@@ -16855,11 +16846,6 @@ ts-simple-type@~1.0.5:
   version "1.0.7"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ts-simple-type/-/ts-simple-type-1.0.7.tgz#03930af557528dd40eaa121913c7035a0baaacf8"
   integrity sha1-A5MK9VdSjdQOqhIZE8cDWguqrPg=
-
-ts-toolbelt@^6.3.3:
-  version "6.15.5"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ts-toolbelt/-/ts-toolbelt-6.15.5.tgz#cb3b43ed725cb63644782c64fbcad7d8f28c0a83"
-  integrity sha1-yztD7XJctjZEeCxk+8rX2PKMCoM=
 
 tsconfig-paths@^3.9.0:
   version "3.9.0"
