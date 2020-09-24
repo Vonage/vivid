@@ -1,15 +1,13 @@
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
+import { resolve } from 'path';
 
 import StyleDictionaryPackage from 'style-dictionary';
 import fs from 'fs';
 import _ from 'lodash';
 import R from 'ramda';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const propertiesPath = `/node_modules/@vonage/vvd-design-tokens-properties`;
-
+const propertiesPath = resolve('../../node_modules/@vonage/vvd-design-tokens-properties');
+console.log(propertiesPath);
 // StyleDictionaryPackage.registerFilter({
 // 	name: "filter-alias",
 // 	matcher: function (prop) {
@@ -21,7 +19,7 @@ const propertiesPath = `/node_modules/@vonage/vvd-design-tokens-properties`;
 StyleDictionaryPackage.registerFormat({
 	name: 'custom/format/scss',
 	formatter: _.template(
-		fs.readFileSync(__dirname + '/../templates/web-scss.template')
+		fs.readFileSync(resolve('templates/web-scss.template'))
 	),
 });
 
@@ -40,7 +38,7 @@ function getStyleDictionaryConfig(scheme, scope) {
 			web: {
 				prefix: 'vvd',
 				transformGroup: 'css', // 'web'
-				buildPath: `${__dirname}/../build/scss/`,
+				buildPath: `${resolve('build/scss')}/`,
 				files: [
 					{
 						destination: `schemes/${scheme}/${scope}.scss`,
