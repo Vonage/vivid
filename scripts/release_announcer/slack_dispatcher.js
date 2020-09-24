@@ -28,7 +28,7 @@ exports.releaseTemplate = ({ version, log_lines: rawLogLines })=>{
 
 	const
 		validLog = rawLogLines.filter(({ comment })=> !/(branch)|(pull request)/i.test(comment)),
-		bugs = validLog.filter(({ comment })=> /fix(e[ds])?:/i.test(comment)).map(formatLogLine(':beetle:')),
+		bugs = validLog.filter(({ comment })=> /^fix(e[ds])?:/i.test(comment)).map(formatLogLine(':beetle:')),
 		features = validLog.filter(({ comment })=> /feat(ures?)?:/i.test(comment)).map(formatLogLine(':star:'));
 
 	return {
