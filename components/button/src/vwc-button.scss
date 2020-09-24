@@ -35,19 +35,26 @@
     padding: 0 12px;
   }
 
+  &:not(.mdc-button--dense) {
+    vwc-icon {
+      min-height: 18px;
+      min-width: 18px;
+    }
+  }
+
   vwc-icon {
     vertical-align: sub;
   }
 
   > span.trailing-icon {
     > slot > vwc-icon {
-      margin-left: 6px;
+      margin-left: 8px;
     }
   }
 
   > span.leading-icon {
     > slot > vwc-icon {
-      margin-right: 6px;
+      margin-right: 8px;
     }
   }
 }
@@ -64,4 +71,21 @@
   font-size: 1rem;
   height: 48px;
   padding: 0 24px;
+
+  vwc-icon {
+    min-height: 20px;
+    min-width: 20px;
+  }
+
+  > span.trailing-icon {
+    > slot > vwc-icon {
+      margin-left: 10px;
+    }
+  }
+
+  > span.leading-icon {
+    > slot > vwc-icon {
+      margin-right: 10px;
+    }
+  }
 }
