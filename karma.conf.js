@@ -14,6 +14,9 @@ module.exports = config => {
 		frameworks: ['chai'],
 		browserDisconnectTimeout: 300000,
 		browserNoActivityTimeout: 360000,
+		singleRun: true,
+		autoWatch: false,
+		restartOnFileChange: true,
 		captureTimeout: 420000,
 		coverageIstanbulReporter: {
 			thresholds: {

@@ -30,7 +30,7 @@ describe('carousel', () => {
 			const actualElements = addElement(
 				textToDomToParent(`<${VWC_CAROUSEL} id="carousel-a"></${VWC_CAROUSEL}>`)
 			);
-			await waitNextTask();
+			await waitInterval(70);
 			expect(actualElements[0]).dom.to.equalSnapshot();
 		});
 	});

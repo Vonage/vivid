@@ -20,6 +20,7 @@
     >
       <vwc-icon
         size="medium"
+        style="width: 24px; height: 24px;"
         type="left"
       >
       </vwc-icon>
@@ -43,6 +44,7 @@
     >
       <vwc-icon
         size="medium"
+        style="width: 24px; height: 24px;"
         type="right"
       >
       </vwc-icon>
