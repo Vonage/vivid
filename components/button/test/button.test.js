@@ -345,8 +345,8 @@ describe('button', () => {
 
 	describe('sizing', () => {
 		it('should have normal size by default', async () => {
-			const addedElements = textToDomToParent(
-				`<${VWC_BUTTON}>Button Text</${VWC_BUTTON}>`
+			const addedElements = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}>`)
 			);
 			const actualElement = addedElements[0];
 			await waitNextTask();
@@ -354,8 +354,10 @@ describe('button', () => {
 		});
 
 		it('should have dense size when dense', async () => {
-			const addedElements = textToDomToParent(
-				`<${VWC_BUTTON} dense>Button Text</${VWC_BUTTON}>`
+			const addedElements = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} dense>Button Text</${COMPONENT_NAME}>`
+				)
 			);
 			const actualElement = addedElements[0];
 			await waitNextTask();
@@ -363,8 +365,10 @@ describe('button', () => {
 		});
 
 		it('should have enlarged size when enlarged', async () => {
-			const addedElements = textToDomToParent(
-				`<${VWC_BUTTON} enlarged>Button Text</${VWC_BUTTON}>`
+			const addedElements = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} enlarged>Button Text</${COMPONENT_NAME}>`
+				)
 			);
 			const actualElement = addedElements[0];
 			await waitNextTask();
@@ -374,27 +378,49 @@ describe('button', () => {
 
 	describe('shape', () => {
 		it('should have rounded shape by default', async () => {
-			const addedElements = textToDomToParent(
-				`<${VWC_BUTTON} layout="filled">Button Text</${VWC_BUTTON}>`
+			const addedElements = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} layout="filled">Button Text</${COMPONENT_NAME}>`
+				)
 			);
 			await waitNextTask();
 			const formElement = addedElements[0];
 			const actualElement = formElement.shadowRoot.querySelector('#button');
 
-			assertComputedStyle(actualElement, { borderRadius: '6px' });
+			const expectedNormalStyles = {
+				borderTopLeftRadius: '6px',
+				borderTopRightRadius: '6px',
+				borderBottomLeftRadius: '6px',
+				borderBottomRightRadius: '6px',
+			};
+			assertComputedStyle(actualElement, expectedNormalStyles);
 
 			formElement.dense = true;
 			await waitNextTask();
-			assertComputedStyle(actualElement, { borderRadius: '5px' });
+			const expectedDenseStyles = {
+				borderTopLeftRadius: '5px',
+				borderTopRightRadius: '5px',
+				borderBottomLeftRadius: '5px',
+				borderBottomRightRadius: '5px',
+			};
+			assertComputedStyle(actualElement, expectedDenseStyles);
 		});
 
 		it('should have pill shape when shape set to pill', async () => {
-			addedElements = textToDomToParent(
-				`<${VWC_BUTTON} layout="filled" shape="pill"></${VWC_BUTTON}>`
+			const addedElements = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} layout="filled" shape="pill"></${COMPONENT_NAME}>`
+				)
 			);
 			await waitNextTask();
 			const actualElement = addedElements[0].shadowRoot.querySelector('#button');
-			assertComputedStyle(actualElement, { borderRadius: '24px' });
+			const expectedPillStyles = {
+				borderTopLeftRadius: '24px',
+				borderTopRightRadius: '24px',
+				borderBottomLeftRadius: '24px',
+				borderBottomRightRadius: '24px',
+			};
+			assertComputedStyle(actualElement, expectedPillStyles);
 		});
 	});
 });
