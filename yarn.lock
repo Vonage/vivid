@@ -3978,9 +3978,9 @@
   integrity sha1-WgWQTgFRsLoeExOE7NjSbUyz7Zw=
 
 "@types/babel__core@^7.1.3":
-  version "7.1.9"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@types/babel__core/7.1.9/d9209d0f3d4743cfffcd5cd64bbd6ff1d42056dd3469290c7c58ae44856c9d6c#77e59d438522a6fb898fa43dc3455c6e72f3963d"
-  integrity sha1-d+WdQ4UipvuJj6Q9w0VcbnLzlj0=
+  version "7.1.10"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@types/babel__core/7.1.10/a3016bbc048fa07fe0174cf17598dba117eed127b80e727d99cb29ece406339b#ca58fc195dd9734e77e57c6f2df565623636ab40"
+  integrity sha1-ylj8GV3Zc0535XxvLfVlYjY2q0A=
   dependencies:
     "@babel/parser" "^7.1.0"
     "@babel/types" "^7.0.0"
@@ -3996,9 +3996,9 @@
     "@babel/types" "^7.0.0"
 
 "@types/babel__template@*":
-  version "7.0.2"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@types/babel__template/7.0.2/5a13d18bdc61029250c1e349af67eafdf3919afb74b2678216db0ca7cdf019a7#b01bdb3ac76986a827564b5110b6794ee119278f"
-  integrity sha1-sBvbOsdphqgnVktRELZ5TuEZJ48=
+  version "7.0.3"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@types/babel__template/7.0.3/124b54b66d19faf59f046bee71f9fa09bebd1e61f86216f0e38ab2a26d424f4e#b8aaeba0a45caca7b56a5de9459872dde3727214"
+  integrity sha1-uKrroKRcrKe1al3pRZhy3eNychQ=
   dependencies:
     "@babel/parser" "^7.1.0"
     "@babel/types" "^7.0.0"
@@ -4436,13 +4436,6 @@
   version "6.9.5"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@types/qs/6.9.5/38c1be40f0d8a01d27d5713743fe407bfa2dc168eb7e3dfbdb4b4c3e8b5ebea1#434711bdd49eb5ee69d90c1d67c354a9a8ecb18b"
   integrity sha1-Q0cRvdSete5p2QwdZ8NUqajssYs=
-
-"@types/ramda@^0.27.4":
-  version "0.27.19"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@types/ramda/0.27.19/7f7e5128ab14dfd7030028f2b24845e84f86ad4a26b27a392984918363272bf7#20a96954ca63aa42f419f392745dde94fde7dbee"
-  integrity sha1-IKlpVMpjqkL0GfOSdF3elP3n2+4=
-  dependencies:
-    ts-toolbelt "^6.3.3"
 
 "@types/range-parser@*":
   version "1.2.3"
@@ -5402,9 +5395,9 @@ autoprefixer@^9.7.2:
     postcss-value-parser "^4.1.0"
 
 aws-sdk@^2.730.0:
-  version "2.759.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/aws-sdk/-/aws-sdk-2.759.0.tgz#de4029dd6c804dd9e5570728e9206a103ddf9935"
-  integrity sha1-3kAp3WyATdnlVwco6SBqED3fmTU=
+  version "2.760.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/aws-sdk/-/aws-sdk-2.760.0.tgz#a18b1c86f820d2617471151ae6f3823f0b42f141"
+  integrity sha1-oYschvgg0mF0cRUa5vOCPwtC8UE=
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
@@ -6094,12 +6087,12 @@ browserslist@4.10.0:
     pkg-up "^3.1.0"
 
 browserslist@^4.0.0, browserslist@^4.12.0, browserslist@^4.8.5, browserslist@^4.9.1:
-  version "4.14.4"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/browserslist/-/browserslist-4.14.4.tgz#66a18131439f9e16c3da7f352518dfa12f60b0e3"
-  integrity sha1-ZqGBMUOfnhbD2n81JRjfoS9gsOM=
+  version "4.14.5"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/browserslist/-/browserslist-4.14.5.tgz#1c751461a102ddc60e40993639b709be7f2c4015"
+  integrity sha1-HHUUYaEC3cYOQJk2ObcJvn8sQBU=
   dependencies:
     caniuse-lite "^1.0.30001135"
-    electron-to-chromium "^1.3.570"
+    electron-to-chromium "^1.3.571"
     escalade "^3.1.0"
     node-releases "^1.1.61"
 
@@ -6378,9 +6371,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001033, caniuse-lite@^1.0.30001035, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001135:
-  version "1.0.30001135"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/caniuse-lite/-/caniuse-lite-1.0.30001135.tgz#995b1eb94404a3c9a0d7600c113c9bb27f2cd8aa"
-  integrity sha1-mVseuUQEo8mg12AMETybsn8s2Ko=
+  version "1.0.30001137"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/caniuse-lite/-/caniuse-lite-1.0.30001137.tgz#6f0127b1d3788742561a25af3607a17fc778b803"
+  integrity sha1-bwEnsdN4h0JWGiWvNgehf8d4uAM=
 
 capture-exit@^2.0.0:
   version "2.0.0"
@@ -8078,10 +8071,10 @@ ejs@^3.1.2:
   dependencies:
     jake "^10.6.1"
 
-electron-to-chromium@^1.3.378, electron-to-chromium@^1.3.570:
-  version "1.3.571"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/electron-to-chromium/-/electron-to-chromium-1.3.571.tgz#e57977f1569f8326ae2a7905e26f3943536ba28f"
-  integrity sha1-5Xl38VafgyauKnkF4m85Q1Nroo8=
+electron-to-chromium@^1.3.378, electron-to-chromium@^1.3.571:
+  version "1.3.572"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/electron-to-chromium/-/electron-to-chromium-1.3.572.tgz#62d87dfe32ca1f6b9a0f76917d24f66e94e19c01"
+  integrity sha1-Yth9/jLKH2uaD3aRfST2bpThnAE=
 
 element-resize-detector@^1.2.1:
   version "1.2.1"
@@ -16855,11 +16848,6 @@ ts-simple-type@~1.0.5:
   version "1.0.7"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ts-simple-type/-/ts-simple-type-1.0.7.tgz#03930af557528dd40eaa121913c7035a0baaacf8"
   integrity sha1-A5MK9VdSjdQOqhIZE8cDWguqrPg=
-
-ts-toolbelt@^6.3.3:
-  version "6.15.5"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ts-toolbelt/-/ts-toolbelt-6.15.5.tgz#cb3b43ed725cb63644782c64fbcad7d8f28c0a83"
-  integrity sha1-yztD7XJctjZEeCxk+8rX2PKMCoM=
 
 tsconfig-paths@^3.9.0:
   version "3.9.0"
