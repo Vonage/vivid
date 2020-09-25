@@ -8,6 +8,7 @@ import { Connotation } from '@vonage/vvd-foundation/constants';
 import { html, TemplateResult } from 'lit-element';
 import '@vonage/vwc-icon';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
+import { getFormByIdOrClosest } from '@vonage/vvd-foundation/form-association/common';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -48,33 +49,43 @@ export class VWCButton extends MWCButton {
 	@property({ type: String, reflect: true })
 	type: ButtonType[number] = 'submit';
 
-	@property({ type: String, reflect: true })
-	form: string | undefined;
+	@property({ type: String, reflect: false })
+	form: HTMLFormElement | null = null;
 
-	protected updated(): void {
+	#_hiddenButton: HTMLButtonElement | undefined;
+
+	protected updateFormAndButton(): void {
+		this.#_hiddenButton?.remove();
+		this.form = getFormByIdOrClosest((this as unknown) as HTMLInputElement);
+		if (this.form && this.#_hiddenButton) {
+			this.form.appendChild(this.#_hiddenButton);
+		}
+	}
+
+	protected updated(changes: Map<string, boolean>): void {
+		if (changes.has('form')) {
+			this.updateFormAndButton();
+		}
+
+		if (changes.has('type')) {
+			this.#_hiddenButton?.setAttribute('type', this.getAttribute('type') ?? '');
+		}
+
 		const layout: ButtonLayout[number] = this.layout;
 		this.toggleAttribute('outlined', layout === 'outlined');
 		this.toggleAttribute('unelevated', layout === 'filled');
 	}
 
 	protected _handleClick(): void {
-		let form: HTMLFormElement;
-		const formId = this.getAttribute('form');
-		if (formId) {
-			form = document.getElementById(formId) as HTMLFormElement;
-		} else {
-			form = this.closest('form') as HTMLFormElement;
-		}
-
-		if (form) {
+		if (this.form) {
 			switch (this.getAttribute('type')) {
 				case 'reset':
-					form.reset();
+					this.form.reset();
 					break;
 				case 'button':
 					break;
 				default:
-					requestSubmit(form);
+					requestSubmit(this.form);
 					break;
 			}
 		}
@@ -87,5 +98,12 @@ export class VWCButton extends MWCButton {
 	connectedCallback(): void {
 		super.connectedCallback();
 		this.addEventListener('click', this._handleClick);
+		this.#_hiddenButton = document.createElement('button');
+		this.#_hiddenButton.style.display = 'none';
+	}
+
+	disconnectedCallback(): void {
+		super.disconnectedCallback();
+		this.#_hiddenButton?.remove();
 	}
 }

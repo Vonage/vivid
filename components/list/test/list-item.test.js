@@ -5,11 +5,14 @@ import {
 	assertComputedStyle,
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
+import { isolatedElementsCreation } from '../../../test/test-helpers';
 chai.use(chaiDomDiff);
 
 const VWC_LIST_ITEM = 'vwc-list-item';
 
 describe('list item', () => {
+	let addElement = isolatedElementsCreation();
+
 	it('should be defined as a custom element', () => {
 		assert.exists(
 			customElements.get(VWC_LIST_ITEM, 'vwc-list-item element is not defined')
@@ -18,8 +21,10 @@ describe('list item', () => {
 
 	describe('init flow', () => {
 		it('should have internal contents', async () => {
-			const actualElements = textToDomToParent(
-				`<${VWC_LIST_ITEM} id="list-item-a">Item 0</${VWC_LIST_ITEM}>`
+			const actualElements = addElement(
+				textToDomToParent(
+					`<${VWC_LIST_ITEM} id="list-item-a">Item 0</${VWC_LIST_ITEM}>`
+				)
 			);
 			await waitNextTask();
 			expect(actualElements[0]).shadowDom.to.equalSnapshot();
@@ -28,8 +33,8 @@ describe('list item', () => {
 
 	describe('typography', function () {
 		it(`should have set typography correct`, async function () {
-			const actualElements = textToDomToParent(
-				`<${VWC_LIST_ITEM}>Item 1</${VWC_LIST_ITEM}>`
+			const actualElements = addElement(
+				textToDomToParent(`<${VWC_LIST_ITEM}>Item 1</${VWC_LIST_ITEM}>`)
 			);
 			await waitNextTask();
 			const listItem = actualElements[0];

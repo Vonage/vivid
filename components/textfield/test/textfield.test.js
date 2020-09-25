@@ -4,37 +4,20 @@ import {
 	textToDomToParent,
 	waitNextTask,
 	assertComputedStyle,
+	changeValueAndNotify,
+	isolatedElementsCreation,
+	randomAlpha,
+	listenToSubmission,
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
-import { isolatedElementsCreation } from '../../../test/test-helpers';
+import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
 chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-textfield';
 
-function listenToSubmission(formElement) {
-	return new Promise((res) => {
-		formElement.addEventListener('submit', () => {
-			const formData = new FormData(formElement);
-			res(formData);
-		});
-	});
-}
-
 function getHiddenInput(formElement, fieldName) {
 	return formElement.querySelector(`input[name="${fieldName}"]`);
-}
-
-async function changeValueAndNotify(
-	actualElement,
-	value,
-	eventName = 'change'
-) {
-	actualElement.value = value;
-	await waitNextTask();
-
-	let evt = new Event(eventName);
-	actualElement.dispatchEvent(evt);
 }
 
 describe('textfield', () => {
@@ -100,24 +83,40 @@ describe('textfield', () => {
 	});
 
 	describe(`form association`, function () {
-		it(`should attach to closest form`, async function () {
-			const fieldValue = Math.random().toString();
-			const fieldName = 'test-field';
-			const addedElements = addElement(
-				textToDomToParent(
-					`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} name="${fieldName}" value="${fieldValue}">Button Text</${COMPONENT_NAME}></form>`
-				)
+		function createElementInForm(fieldName, fieldValue, formId, otherFormId) {
+			const otherForm = otherFormId
+				? `<form onsubmit="return false" id="${otherFormId}"><button></button></form>`
+				: '';
+			return textToDomToParent(
+				`<form onsubmit="return false" name="testForm" id="testForm">
+									<${COMPONENT_NAME} name="${fieldName}"
+																		 value="${fieldValue}"
+																		 ${formId ? `form="${formId}"` : ''}>
+
+									</${COMPONENT_NAME}>
+									<button></button>
+								</form>
+								${otherForm}`
 			);
-			const formElement = addedElements[0];
+		}
+
+		let fieldValue, fieldName;
+		beforeEach(function () {
+			fieldValue = Math.random().toString();
+			fieldName = 'test-field';
+		});
+
+		it(`should attach to closest form`, async function () {
+			const [formElement] = addElement(createElementInForm(fieldName, fieldValue));
 			await waitNextTask();
 
 			const submitPromise = listenToSubmission(formElement);
 
-			formElement.requestSubmit();
+			requestSubmit(formElement);
 
-			for (let pair of (await submitPromise).entries()) {
-				expect(pair[0]).to.equal(fieldName);
-				expect(pair[1]).to.equal(fieldValue);
+			for (let [formDataKey, formDataValue] of (await submitPromise).entries()) {
+				expect(formDataKey).to.equal(fieldName);
+				expect(formDataValue).to.equal(fieldValue);
 			}
 
 			expect(
@@ -126,17 +125,10 @@ describe('textfield', () => {
 		});
 
 		it(`should attach to form when given form id`, async function () {
-			const fieldValue = Math.random().toString();
-			const fieldName = 'test-field';
-			const externalFormID = 'externalForm';
+			const externalFormID = randomAlpha();
 
 			const addedElements = addElement(
-				textToDomToParent(`
-				<form onsubmit="return false" name="testForm" id="testForm">
-					<${COMPONENT_NAME} name="${fieldName}" value="${fieldValue}" form="${externalFormID}">Button Text
-					</${COMPONENT_NAME}>
-				</form>
-				<form onsubmit="return false" name="externalForm" id="${externalFormID}"></form>`)
+				createElementInForm(fieldName, fieldValue, externalFormID, externalFormID)
 			);
 
 			await waitNextTask();
@@ -146,11 +138,11 @@ describe('textfield', () => {
 
 			const submitPromise = listenToSubmission(externalForm);
 
-			externalForm.requestSubmit();
+			requestSubmit(externalForm);
 
-			for (let pair of (await submitPromise).entries()) {
-				expect(pair[0]).to.equal(fieldName);
-				expect(pair[1]).to.equal(fieldValue);
+			for (let [formDataKey, formDataValue] of (await submitPromise).entries()) {
+				expect(formDataKey).to.equal(fieldName);
+				expect(formDataValue).to.equal(fieldValue);
 			}
 
 			expect(formElement.querySelector(`input[name="${fieldName}"`)).to.equal(
@@ -162,15 +154,10 @@ describe('textfield', () => {
 		});
 
 		it(`should do nothing if form value resolves to a non form element`, async function () {
-			const fieldValue = Math.random().toString();
-			const fieldName = 'test-field';
-			const formId = 'testForm';
-			const addedElements = addElement(
-				textToDomToParent(
-					`<div onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} name="${fieldName}" value="${fieldValue}" form="${formId}">Button Text</${COMPONENT_NAME}></div>`
-				)
+			const nonExistentFormId = 'noneExistentForm';
+			const [formElement] = addElement(
+				createElementInForm(fieldName, fieldValue, nonExistentFormId)
 			);
-			const formElement = addedElements[0];
 			await waitNextTask();
 
 			expect(formElement.querySelector('input')).to.equal(null);
@@ -178,15 +165,10 @@ describe('textfield', () => {
 
 		describe(`value binding`, function () {
 			it(`should reset the value of the custom element to default on form reset`, async function () {
-				const fieldValue = Math.random().toString();
-				const fieldName = 'test-field';
-				const addedElements = addElement(
-					textToDomToParent(
-						`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} name="${fieldName}" value="${fieldValue}">Button Text</${COMPONENT_NAME}></form>`
-					)
+				const [formElement] = addElement(
+					createElementInForm(fieldName, fieldValue)
 				);
-				const formElement = addedElements[0];
-				const actualElement = formElement.firstChild;
+				const actualElement = formElement.querySelector(COMPONENT_NAME);
 				await waitNextTask();
 				actualElement.value = '5';
 				await waitNextTask();
@@ -196,15 +178,12 @@ describe('textfield', () => {
 			});
 
 			it(`should change the value of the mock input on internal input change`, async function () {
-				const fieldValue = Math.random().toString();
-				const fieldName = 'test-field';
 				const addedElements = addElement(
-					textToDomToParent(
-						`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} name="${fieldName}">Button Text</${COMPONENT_NAME}></form>`
-					)
+					createElementInForm(fieldName, fieldValue)
 				);
+
 				const formElement = addedElements[0];
-				const actualElement = formElement.firstChild;
+				const actualElement = formElement.querySelector(COMPONENT_NAME);
 				await waitNextTask();
 
 				await changeValueAndNotify(actualElement, fieldValue, 'change');
@@ -214,39 +193,30 @@ describe('textfield', () => {
 		});
 
 		describe(`validation`, function () {
-			it(`should get validity from the element's validationMessage`, async function () {
-				const fieldName = 'test-field';
-				const addedElements = addElement(
-					textToDomToParent(
-						`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} required name="${fieldName}">Button Text</${COMPONENT_NAME}></form>`
-					)
-				);
-				const formElement = addedElements[0];
-				const actualElement = formElement.firstChild;
-				await waitNextTask();
+			const invalidValue = '';
+			const validValue = 'abc';
+			let formElement, actualElement;
 
+			beforeEach(async function () {
+				[formElement] = addElement(createElementInForm(fieldName, validValue));
+				actualElement = formElement.querySelector(COMPONENT_NAME);
+				actualElement.setAttribute('required', 'true');
+				await waitNextTask();
+			});
+
+			it(`should set validity on the form`, async function () {
+				await changeValueAndNotify(actualElement, invalidValue);
 				const invalidity = formElement.checkValidity();
 
-				await changeValueAndNotify(actualElement, 'abc', 'input');
+				await changeValueAndNotify(actualElement, validValue, 'input');
 
 				expect(invalidity).to.equal(false);
 				expect(formElement.checkValidity()).to.equal(true);
 			});
 
 			it(`should validate on reset`, async function () {
-				const fieldValue = Math.random().toString();
-				const fieldName = 'test-field';
-				const addedElements = addElement(
-					textToDomToParent(
-						`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} required value="${fieldValue}" name="${fieldName}">Button Text</${COMPONENT_NAME}></form>`
-					)
-				);
-				const formElement = addedElements[0];
-				const actualElement = formElement.firstChild;
-				await waitNextTask();
-
 				const validInput = formElement.checkValidity();
-				await changeValueAndNotify(actualElement, '', 'change');
+				await changeValueAndNotify(actualElement, invalidValue, 'change');
 				const invalidInput = formElement.checkValidity();
 
 				formElement.reset();
@@ -258,35 +228,14 @@ describe('textfield', () => {
 
 			it(`should not submit an invalid form`, async function () {
 				let submitted = false;
-				const fieldName = 'test-field';
-				const addedElements = addElement(
-					textToDomToParent(
-						`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} required value="val" name="${fieldName}">Button Text</${COMPONENT_NAME}></form>`
-					)
-				);
-				const formElement = addedElements[0];
-				const actualElement = formElement.firstChild;
-				await waitNextTask();
-
-				const invalidity = formElement.checkValidity();
-
-				await waitNextTask();
-
 				formElement.addEventListener('submit', () => {
 					submitted = true;
 				});
 
-				formElement.requestSubmit();
+				await changeValueAndNotify(actualElement, invalidValue);
+				requestSubmit(formElement);
 
-				const submitValidForm = submitted;
-
-				submitted = false;
-
-				await changeValueAndNotify(actualElement, '', 'change');
-				formElement.requestSubmit();
-
-				expect(invalidity).to.equal(true);
-				expect(submitValidForm).to.equal(true);
+				expect(formElement.checkValidity()).to.equal(false);
 				expect(submitted).to.equal(false);
 			});
 		});
@@ -294,27 +243,32 @@ describe('textfield', () => {
 		it(`should work under multiple shadow layers`, async function () {
 			const fieldValue = Math.random().toString();
 			const fieldName = 'test-field';
-			const addedElements = addElement(
-				textToDomToParent(`
+			const formTemplate = `
 				<form onsubmit="return false" name="testForm" id="testForm">
-					<vwc-formfield>
-						<${COMPONENT_NAME} required value="${fieldValue}" name="${fieldName}">Button Text</${COMPONENT_NAME}>
-					</vwc-formfield>
-				</form>`)
-			);
-			const formElement = addedElements[0];
-			const actualElement = formElement.children[0].children[0];
+					<vivid-tests-component></vivid-tests-component>
+					<button></button>
+				</form>`;
+			const elementTemplate = `
+					<${COMPONENT_NAME} required value="${fieldValue}"
+ 														 name="${fieldName}">
+
+					</${COMPONENT_NAME}>`;
+			const [formElement] = addElement(textToDomToParent(formTemplate));
 			await waitNextTask();
+			const wrapperElement = formElement.querySelector('vivid-tests-component');
+			wrapperElement.setContent(elementTemplate);
+			const actualElement = wrapperElement.shadowRoot.querySelector(
+				COMPONENT_NAME
+			);
 
 			const validInput = formElement.checkValidity();
-
 			const submitPromise = listenToSubmission(formElement);
 
-			formElement.requestSubmit();
+			requestSubmit(formElement);
 
-			for (let pair of (await submitPromise).entries()) {
-				expect(pair[0]).to.equal(fieldName);
-				expect(pair[1]).to.equal(fieldValue);
+			for (let [formDataKey, formDataValue] of (await submitPromise).entries()) {
+				expect(formDataKey).to.equal(fieldName);
+				expect(formDataValue).to.equal(fieldValue);
 			}
 
 			await changeValueAndNotify(actualElement, '', 'change');
@@ -324,6 +278,70 @@ describe('textfield', () => {
 			).to.equal(1);
 			expect(validInput).to.equal(true);
 			expect(formElement.checkValidity()).to.equal(false);
+		});
+
+		describe(`submit form on Enter key`, function () {
+			let actualElement, formElement, externalForm;
+			const fieldName = 'test-field';
+			const externalFormID = 'externalForm';
+			const fieldValue = Math.random().toString();
+
+			function dispatchKeyEvent(keyName) {
+				const ke = new KeyboardEvent('keydown', {
+					bubbles: true,
+					cancelable: true,
+					key: keyName,
+				});
+				actualElement.dispatchEvent(ke);
+			}
+
+			beforeEach(async function () {
+				[formElement, externalForm] = addElement(
+					textToDomToParent(`
+				<form onsubmit="return false" name="testForm" id="testForm">
+					<${COMPONENT_NAME} name="${fieldName}" value="${fieldValue}" form="${externalFormID}">
+					</${COMPONENT_NAME}>
+				</form>
+				<form onsubmit="return false" name="externalForm" id="${externalFormID}"></form>`)
+				);
+				actualElement = formElement.querySelector(COMPONENT_NAME);
+				await waitNextTask();
+			});
+
+			it(`should submit form on enter key press with button without a type`, async function () {
+				const submitPromise = listenToSubmission(externalForm);
+				externalForm.appendChild(document.createElement('button'));
+
+				dispatchKeyEvent('Enter');
+
+				for (let [formDataKey, formDataValue] of (await submitPromise).entries()) {
+					expect(formDataKey).to.equal(fieldName);
+					expect(formDataValue).to.equal(fieldValue);
+				}
+			});
+
+			it(`should submit form on enter key press with input of type "submit"`, async function () {
+				const submitElement = document.createElement('input');
+				submitElement.setAttribute('type', 'submit');
+				externalForm.appendChild(submitElement);
+				const submitPromise = listenToSubmission(externalForm);
+
+				dispatchKeyEvent('Enter');
+
+				for (let [formDataKey, formDataValue] of (await submitPromise).entries()) {
+					expect(formDataKey).to.equal(fieldName);
+					expect(formDataValue).to.equal(fieldValue);
+				}
+			});
+
+			it(`should not submit form without a button or input submit`, async function () {
+				let called = false;
+				externalForm.addEventListener('submit', () => (called = true));
+
+				dispatchKeyEvent('Enter');
+
+				expect(called).to.equal(false);
+			});
 		});
 	});
 
