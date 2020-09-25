@@ -13,7 +13,10 @@ import { TextField as MWCTextField } from '@material/mwc-textfield';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import { style as vwcTextFieldStyle } from './vwc-textfield.css';
 import { style as mwcTextFieldStyle } from '@material/mwc-textfield/mwc-textfield-css.js';
-import { associateWithForm } from '@vonage/vvd-foundation/form-association';
+import {
+	associateWithForm,
+	submitOnEnter,
+} from '@vonage/vvd-foundation/form-association';
 export { TextFieldType } from '@material/mwc-textfield';
 
 declare global {
@@ -47,6 +50,7 @@ export class VWCTextField extends MWCTextField {
 			?.shadowRoot?.querySelector('.mdc-notched-outline')
 			?.classList.add('vvd-notch');
 		associateWithForm<VWCTextField>(this, this.formElement);
+		submitOnEnter((this as unknown) as HTMLInputElement);
 	}
 
 	updated(changedProperties: PropertyValues): void {

@@ -1,11 +1,20 @@
+function isElementSubmit(element: Element) {
+	return Boolean(
+		element.getAttribute('type') === 'submit' ||
+			(element.nodeName === 'BUTTON' && element.getAttribute('type') === null)
+	);
+}
+
+function findFormSubmitButtons(form: HTMLFormElement) {
+	const formElements = [...form.elements];
+	return formElements.filter(isElementSubmit);
+}
+
 export function requestSubmit(form: HTMLFormElement): void {
-	if (form.requestSubmit) {
-		form.requestSubmit();
+	const formSubmitButtons = findFormSubmitButtons(form);
+	if (!formSubmitButtons.length) {
 		return;
 	}
-	const fakeButton = document.createElement('button');
-	fakeButton.style.display = 'none';
-	form.appendChild(fakeButton);
-	fakeButton.click();
-	fakeButton.remove();
+
+	(formSubmitButtons[0] as HTMLElement).click();
 }

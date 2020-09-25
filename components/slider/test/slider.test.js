@@ -10,6 +10,12 @@ chai.use(chaiDomDiff);
 const VWC_SLIDER = 'vwc-slider';
 
 describe('slider', () => {
+	let addedElements = [];
+
+	afterEach(function () {
+		addedElements.forEach((elm) => elm.remove());
+	});
+
 	describe('init flow', () => {
 		it('should define vwc-slider as a custom element', () => {
 			assert.exists(
@@ -18,10 +24,10 @@ describe('slider', () => {
 		});
 
 		it('should have internal contents', async () => {
-			const actualElements = textToDomToParent(
+			const actualElements = (addedElements = textToDomToParent(
 				`<${VWC_SLIDER}></${VWC_SLIDER}>`,
 				document.body
-			);
+			));
 			await waitNextTask();
 			expect(actualElements[0]).shadowDom.to.equalSnapshot({
 				ignoreAttributes: ['style'],
@@ -32,10 +38,10 @@ describe('slider', () => {
 
 	describe('styling', () => {
 		it('should style the basic slider', async () => {
-			const actualElements = textToDomToParent(
+			const actualElements = (addedElements = textToDomToParent(
 				`<${VWC_SLIDER} min="0" max="100" value="50"></${VWC_SLIDER}>`,
 				document.body
-			);
+			));
 			await waitNextTask();
 
 			const sliderTrack = actualElements[0].shadowRoot.querySelector(
