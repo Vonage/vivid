@@ -6,13 +6,11 @@ type ModuleType =
 	| typeof import('./scheme.dark.css')
 	| typeof import('./scheme.light.css');
 
-export async function applySchemeCSS(scheme: PredefinedScheme): Promise<void> {
-	const cssResult: CSSResult = (await getSchemeModule(scheme)).style;
-	style.innerHTML = cssResult.cssText || '';
-}
+const importSchemeMap = new Map<PredefinedScheme, Promise<ModuleType>>([
+	['dark', import('./scheme.dark.css')],
+	['light', import('./scheme.light.css')],
+]);
 
-//	private area
-//
 const style = mountStyle();
 
 function mountStyle() {
@@ -22,14 +20,13 @@ function mountStyle() {
 	return style;
 }
 
-async function getSchemeModule(
-	schemeOption: PredefinedScheme
-): Promise<ModuleType> {
-	switch (schemeOption) {
-		case 'dark':
-			return import('./scheme.dark.css');
-		case 'light':
-		default:
-			return import('./scheme.light.css');
+export async function applySchemeCSS(scheme: PredefinedScheme): Promise<void> {
+	if (!importSchemeMap.has(scheme)) {
+		throw new Error('scheme not found');
+	}
+	const schemeModule = await importSchemeMap.get(scheme);
+	const cssResult: CSSResult | undefined = schemeModule?.style;
+	if (cssResult) {
+		style.innerHTML = cssResult.cssText || '';
 	}
 }

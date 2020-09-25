@@ -3,11 +3,15 @@ import {
 	textToDomToParent,
 	waitNextTask,
 	assertComputedStyle,
+	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
+
 chai.use(chaiDomDiff);
 
 const VWC_RADIO_LIST_ITEM = 'vwc-radio-list-item';
+
+let addElements = isolatedElementsCreation();
 
 describe('radio list item', () => {
 	it('should be defined as a custom element', async () => {
@@ -21,9 +25,11 @@ describe('radio list item', () => {
 
 	describe('init flow', () => {
 		it('should have internal contents', async () => {
-			const actualElements = textToDomToParent(
-				`<${VWC_RADIO_LIST_ITEM}>Item 0</${VWC_RADIO_LIST_ITEM}>`,
-				document.body
+			const actualElements = addElements(
+				textToDomToParent(
+					`<${VWC_RADIO_LIST_ITEM}>Item 0</${VWC_RADIO_LIST_ITEM}>`,
+					document.body
+				)
 			);
 			await waitNextTask();
 			expect(actualElements[0]).shadowDom.to.equalSnapshot();
@@ -32,8 +38,8 @@ describe('radio list item', () => {
 
 	describe('typography', function () {
 		it(`should have set typography correct (normal)`, async function () {
-			const actualElements = textToDomToParent(
-				`<${VWC_RADIO_LIST_ITEM}>Item 1</${VWC_RADIO_LIST_ITEM}>`
+			const actualElements = addElements(
+				textToDomToParent(`<${VWC_RADIO_LIST_ITEM}>Item 1</${VWC_RADIO_LIST_ITEM}>`)
 			);
 			await waitNextTask();
 			const listItem = actualElements[0];
@@ -51,8 +57,10 @@ describe('radio list item', () => {
 		});
 
 		it(`should have typography correct (selected)`, async function () {
-			const actualElements = textToDomToParent(
-				`<${VWC_RADIO_LIST_ITEM} selected>Item 1</${VWC_RADIO_LIST_ITEM}>`
+			const actualElements = addElements(
+				textToDomToParent(
+					`<${VWC_RADIO_LIST_ITEM} selected>Item 1</${VWC_RADIO_LIST_ITEM}>`
+				)
 			);
 			await waitNextTask();
 			const listItem = actualElements[0];
