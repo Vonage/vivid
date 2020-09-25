@@ -12,7 +12,7 @@ const VWC_CAROUSEL = 'vwc-carousel',
 	VWC_CAROUSEL_ITEM = 'vwc-carousel-item';
 
 let addElement = isolatedElementsCreation();
-describe.only('carousel', () => {
+describe('carousel', () => {
 	it('vwc-carousel and vwc-carousel-item are defined as a custom element', () => {
 		assert.exists(
 			customElements.get(VWC_CAROUSEL, 'vwc-carousel element is not defined')
