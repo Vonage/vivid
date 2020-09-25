@@ -28,6 +28,7 @@
 	"devDependencies": {
 		"lodash": "^4.17.20",
 		"ramda": "^0.27.1",
-		"style-dictionary": "^2.10.1"
+		"style-dictionary": "^2.10.1",
+		"@vonage/vvd-design-tokens-properties": "^0.1.7"
 	}
 }
