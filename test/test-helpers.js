@@ -1,5 +1,25 @@
 const tmpTemple = document.createElement('template');
 
+export function listenToSubmission(formElement) {
+	return new Promise((res) => {
+		formElement.addEventListener('submit', () => {
+			const formData = new FormData(formElement);
+			res(formData);
+		});
+	});
+}
+
+export async function changeValueAndNotify(
+	actualElement,
+	value,
+	eventName = 'change'
+) {
+	actualElement.value = value;
+	await waitNextTask();
+
+	actualElement.dispatchEvent(new Event(eventName));
+}
+
 export function isolatedElementsCreation() {
 	function addElementToBeCleared(elementsToBeCleared) {
 		elements.push.apply(elements, elementsToBeCleared);
@@ -121,3 +141,15 @@ export function assertComputedStyle(element, expectedStyles) {
 		}
 	}
 }
+
+class TestComponent extends HTMLElement {
+	connectedCallback() {
+		this.attachShadow({ mode: 'open' });
+	}
+
+	setContent(htmlString) {
+		this.shadowRoot.innerHTML = htmlString;
+	}
+}
+
+window.customElements.define('vivid-tests-component', TestComponent);
