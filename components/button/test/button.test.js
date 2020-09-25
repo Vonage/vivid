@@ -12,20 +12,20 @@ import {
 
 chai.use(chaiDomDiff);
 
-const VWC_BUTTON = 'vwc-button';
+const COMPONENT_NAME = 'vwc-button';
 
 describe('button', () => {
 	let addElement = isolatedElementsCreation();
 
 	it('vwc-button is defined as a custom element', async () => {
 		assert.exists(
-			customElements.get(VWC_BUTTON, 'vwc-button element is not defined')
+			customElements.get(COMPONENT_NAME, 'vwc-button element is not defined')
 		);
 	});
 
 	it('should internal contents', async () => {
 		const addedElements = addElement(
-			textToDomToParent(`<${VWC_BUTTON}>Button Text</${VWC_BUTTON}>`)
+			textToDomToParent(`<${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}>`)
 		);
 		const actualElement = addedElements[0];
 		await waitNextTask();
@@ -45,7 +45,7 @@ describe('button', () => {
 			let submitted = false;
 			const addedElements = addElement(
 				textToDomToParent(
-					`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON}>Button Text</${VWC_BUTTON}></form>`
+					`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}></form>`
 				)
 			);
 			await waitNextTask();
@@ -62,7 +62,7 @@ describe('button', () => {
 			let submitted = false;
 			const addedElements = addElement(
 				textToDomToParent(
-					`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON} type="submit">Button Text</${VWC_BUTTON}></form>`
+					`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} type="submit">Button Text</${COMPONENT_NAME}></form>`
 				)
 			);
 			await waitNextTask();
@@ -80,7 +80,7 @@ describe('button', () => {
 			let reset = false;
 			const addedElements = addElement(
 				textToDomToParent(
-					`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON} type="reset">Button Text</${VWC_BUTTON}></form>`
+					`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} type="reset">Button Text</${COMPONENT_NAME}></form>`
 				)
 			);
 			await waitNextTask();
@@ -118,8 +118,8 @@ describe('button', () => {
 			const addedElements = addElement(
 				textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="testForm">
-					<${VWC_BUTTON} form="externalForm" type="reset">RESET</${VWC_BUTTON}>
-					<${VWC_BUTTON} form="externalForm" type="submit">SUBMIT</${VWC_BUTTON}>
+					<${COMPONENT_NAME} form="externalForm" type="reset">RESET</${COMPONENT_NAME}>
+					<${COMPONENT_NAME} form="externalForm" type="submit">SUBMIT</${COMPONENT_NAME}>
 				</form>
 				<form onsubmit="return false" name="externalForm" id="externalForm"></form>
 			`)
@@ -166,8 +166,8 @@ describe('button', () => {
 			const addedElements = addElement(
 				textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="testForm">
-					<${VWC_BUTTON} form="noneExistentForm" type="reset">RESET</${VWC_BUTTON}>
-					<${VWC_BUTTON} form="noneExistentForm" type="submit">SUBMIT</${VWC_BUTTON}>
+					<${COMPONENT_NAME} form="noneExistentForm" type="reset">RESET</${COMPONENT_NAME}>
+					<${COMPONENT_NAME} form="noneExistentForm" type="submit">SUBMIT</${COMPONENT_NAME}>
 				</form>
 				<form onsubmit="return false" name="externalForm" id="externalForm"></form>
 			`)
@@ -196,7 +196,7 @@ describe('button', () => {
 			let reset = false;
 			const addedElements = addElement(
 				textToDomToParent(
-					`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON} type="button">Button Text</${VWC_BUTTON}></form>`
+					`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} type="button">Button Text</${COMPONENT_NAME}></form>`
 				)
 			);
 			await waitNextTask();
@@ -215,7 +215,7 @@ describe('button', () => {
 			let submitted = false;
 			const addedElements = addElement(
 				textToDomToParent(
-					`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON}>Button Text</${VWC_BUTTON}></form>`
+					`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}></form>`
 				)
 			);
 			await waitNextTask();
@@ -229,15 +229,14 @@ describe('button', () => {
 			expect(submitted, 'submit was not initiated').to.equal(true);
 		});
 
-		it(`should cleanup the hidden element on disconnection`, async function () {
-			const addedElements = addElement(
+		it(`should cleanup the hidden button on disconnection`, async function () {
+			const [formElement] = addElement(
 				textToDomToParent(
-					`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON}>Button Text</${VWC_BUTTON}></form>`
+					`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}></form>`
 				)
 			);
 			await waitNextTask();
-			const formElement = addedElements[0];
-			const actualElement = formElement.firstChild;
+			const actualElement = formElement.querySelector(COMPONENT_NAME);
 
 			const buttonExistsBeforeDisconnection = hiddenButtonExists(formElement);
 			actualElement.remove();
@@ -247,18 +246,16 @@ describe('button', () => {
 
 		it(`should change the buttons location when the form attribute changes`, async function () {
 			const otherFormId = randomAlpha();
-			const addedElements = addElement(
+			const [formElement, otherForm] = addElement(
 				textToDomToParent(
 					`<form onsubmit="return false" name="testForm" id="testForm">
-								<${VWC_BUTTON}>Button Text</${VWC_BUTTON}>
+								<${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}>
 							</form>
 							<form id="${otherFormId}"></form>`
 				)
 			);
 			await waitNextTask();
-			const formElement = addedElements[0];
-			const otherForm = addedElements[1];
-			const actualElement = formElement.querySelector(VWC_BUTTON);
+			const actualElement = formElement.querySelector(COMPONENT_NAME);
 
 			const buttonExistsOnClosestForm = hiddenButtonExists(formElement);
 			actualElement.setAttribute('form', otherFormId);
@@ -268,14 +265,13 @@ describe('button', () => {
 			expect(hiddenButtonExists(otherForm)).to.equal(true);
 		});
 
-		it(`should have display:none on the button`, async function () {
-			const addedElements = addElement(
+		it(`should have display:none on the hidden button`, async function () {
+			const [formElement] = addElement(
 				textToDomToParent(
-					`<form onsubmit="return false" name="testForm" id="testForm"><${VWC_BUTTON}>Button Text</${VWC_BUTTON}></form>`
+					`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}></form>`
 				)
 			);
 			await waitNextTask();
-			const formElement = addedElements[0];
 			const buttonElement = formElement.querySelector('button');
 
 			assertComputedStyle(buttonElement, {
@@ -287,7 +283,7 @@ describe('button', () => {
 	describe('typography', function () {
 		it(`should have set button (text, rounded) typography correct`, async function () {
 			const actualElements = addElement(
-				textToDomToParent(`<${VWC_BUTTON}>Button Text</${VWC_BUTTON}>`)
+				textToDomToParent(`<${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}>`)
 			);
 			await waitNextTask();
 			const button = actualElements[0].shadowRoot.querySelector('#button');
@@ -307,7 +303,7 @@ describe('button', () => {
 		it(`should have set button (outlined, pill) typography correct`, async function () {
 			const actualElements = addElement(
 				textToDomToParent(
-					`<${VWC_BUTTON} layout="outlined" shape="pill">Button Text</${VWC_BUTTON}>`
+					`<${COMPONENT_NAME} layout="outlined" shape="pill">Button Text</${COMPONENT_NAME}>`
 				)
 			);
 			await waitNextTask();
@@ -328,7 +324,7 @@ describe('button', () => {
 		it(`should have set button (filled, disabled, pill) typography correct`, async function () {
 			const actualElements = addElement(
 				textToDomToParent(
-					`<${VWC_BUTTON} layout="filled" disabled shape="pill">Button Text</${VWC_BUTTON}>`
+					`<${COMPONENT_NAME} layout="filled" disabled shape="pill">Button Text</${COMPONENT_NAME}>`
 				)
 			);
 			await waitNextTask();
