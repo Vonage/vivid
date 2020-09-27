@@ -84,28 +84,38 @@ describe('carousel', () => {
 		});
 
 		it('should slide to the left when click on prev', async function () {
+			function sliderStateCheck() {
+				let resolver;
+				transitionEndPromise = new Promise((res) => (resolver = res));
+				return () => resolver();
+			}
+
+			async function clickPrev() {
+				carousel.swiper.once('slidePrevTransitionEnd', sliderStateCheck());
+				prevButton.click();
+				await transitionEndPromise;
+				await waitNextTask();
+				let slides = extractSlides(carousel);
+				return [
+					slides[1].dataset.key,
+					slides[1].classList.contains('swiper-slide-active'),
+				];
+			}
+
 			this.timeout(3000);
 
-			const carousel = await initCarousel(['a', 'b', 'c', 'd']);
+			const carouselInput = ['a', 'b', 'c', 'd'];
+			const carousel = await initCarousel(carouselInput);
 			const prevButton = carousel.querySelector('.swiper-button-prev');
+			let transitionEndPromise;
 
-			prevButton.click();
-			await waitInterval(500);
-			let slides = extractSlides(carousel);
-			expect(slides[1].dataset.key).to.equal('d');
-			expect(slides[1].classList.contains('swiper-slide-active'));
-
-			prevButton.click();
-			await waitInterval(500);
-			slides = extractSlides(carousel);
-			expect(slides[1].dataset.key).to.equal('c');
-			expect(slides[1].classList.contains('swiper-slide-active'));
-
-			prevButton.click();
-			await waitInterval(500);
-			slides = extractSlides(carousel);
-			expect(slides[1].dataset.key).to.equal('b');
-			expect(slides[1].classList.contains('swiper-slide-active'));
+			for (let i = carouselInput.length - 1; i > 0; i--) {
+				console.log(i, 'start');
+				const [key, isActiveClass] = await clickPrev();
+				expect(key).to.equal(carouselInput[i]);
+				expect(isActiveClass).to.equal(true);
+				console.log(i, ' end');
+			}
 		});
 	});
 
