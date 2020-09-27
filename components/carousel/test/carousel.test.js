@@ -35,7 +35,7 @@ describe('carousel', () => {
 		});
 	});
 
-	describe.only('slides order', () => {
+	describe('slides order', () => {
 		it('should set the last carousel item before the first', async () => {
 			const inputSlidesIds = ['a', 'b', 'c', 'd'];
 			const expectedSlidesIds = ['d', 'a', 'b', 'c'];
