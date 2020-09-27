@@ -18,6 +18,7 @@
 		"lint": "yarn lint:eslint && yarn lint:prettier",
 		"format": "yarn format:eslint && yarn format:prettier",
 		"tsc:watch": "tsc --build --watch",
+		"test:prepublish": "karma start --coverage --browsers=ChromeHeadless,FirefoxHeadless",
 		"test:chrome": "karma start --coverage --browsers=ChromeHeadless",
 		"test:firefox": "karma start --coverage --browsers=FirefoxHeadless",
 		"test:safari": "karma start --coverage --browsers=SafariNative",
