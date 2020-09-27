@@ -49,7 +49,7 @@ describe('carousel', () => {
 		});
 
 		it('should slide to the right when click on next', async function () {
-			this.timeout(3000);
+			this.timeout(5000);
 
 			const carousel = await initCarousel(['a', 'b', 'c', 'd', 'e']);
 
@@ -80,48 +80,39 @@ describe('carousel', () => {
 		});
 
 		it('should slide to the left when click on prev', async function () {
-			this.timeout(3000);
-
-			await waitInterval(100);
+			this.timeout(5000);
 
 			const carousel = await initCarousel(['a', 'b', 'c', 'd', 'e']);
 
 			assertOrder(carousel, ['e', 'a', 'b', 'c', 'd'], 1);
 
+			await waitInterval(20);
 			await movePrevAndWait(carousel);
 			assertOrder(carousel, ['d', 'e', 'a', 'b', 'c'], 1);
 
+			await waitInterval(20);
 			await movePrevAndWait(carousel);
 			assertOrder(carousel, ['c', 'd', 'e', 'a', 'b'], 1);
 
+			await waitInterval(20);
 			await movePrevAndWait(carousel);
 			assertOrder(carousel, ['b', 'c', 'd', 'e', 'a'], 1);
 
+			//	back and forth in the middle
+			await moveNextAndWait(carousel);
+			assertOrder(carousel, ['b', 'c', 'd', 'e', 'a'], 2);
+			await movePrevAndWait(carousel);
+			assertOrder(carousel, ['b', 'c', 'd', 'e', 'a'], 1);
+
+			await waitInterval(20);
 			await movePrevAndWait(carousel);
 			assertOrder(carousel, ['a', 'b', 'c', 'd', 'e'], 1);
 
+			await waitInterval(20);
 			await movePrevAndWait(carousel);
-			assertOrder(carousel, ['e', 'c', 'd', 'e', 'a'], 1);
+			assertOrder(carousel, ['e', 'a', 'b', 'c', 'd'], 1);
 
 			carousel.remove();
-
-			// prevButton.click();
-			// await waitInterval(500);
-			// let slides = extractSlides(carousel);
-			// expect(slides[1].dataset.key).to.equal('d');
-			// expect(slides[1].classList.contains('swiper-slide-active'));
-
-			// prevButton.click();
-			// await waitInterval(500);
-			// slides = extractSlides(carousel);
-			// expect(slides[1].dataset.key).to.equal('c');
-			// expect(slides[1].classList.contains('swiper-slide-active'));
-
-			// prevButton.click();
-			// await waitInterval(500);
-			// slides = extractSlides(carousel);
-			// expect(slides[1].dataset.key).to.equal('b');
-			// expect(slides[1].classList.contains('swiper-slide-active'));
 		});
 	});
 
