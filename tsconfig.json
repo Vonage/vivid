@@ -60,6 +60,7 @@
 		{ "path": "components/textarea" },
 		{ "path": "components/textfield" },
 		{ "path": "components/top-app-bar" },
-		{ "path": "components/top-app-bar-fixed" }
+		{ "path": "components/top-app-bar-fixed" },
+		{ "path": "components/icon" }
 	]
 }
