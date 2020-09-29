@@ -15,6 +15,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
+          fetch-depth: 0
           ref: master
           token: ${{ secrets.CI_AT }}
 
@@ -49,7 +50,7 @@ jobs:
         run: yarn lint
 
       - name: Test components
-        run: yarn test
+        run: yarn test:prepublish
 
       # Push updated/created content to remote and Tag version
       - name: Push changes
