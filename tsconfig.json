@@ -45,6 +45,7 @@
 		{ "path": "components/drawer" },
 		{ "path": "components/fab" },
 		{ "path": "components/formfield" },
+		{ "path": "components/icon" },
 		{ "path": "components/keypad" },
 		{ "path": "components/linear-progress" },
 		{ "path": "components/list" },
@@ -60,7 +61,6 @@
 		{ "path": "components/textarea" },
 		{ "path": "components/textfield" },
 		{ "path": "components/top-app-bar" },
-		{ "path": "components/top-app-bar-fixed" },
-		{ "path": "components/icon" }
+		{ "path": "components/top-app-bar-fixed" }
 	]
 }
