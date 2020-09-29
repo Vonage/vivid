@@ -39,73 +39,80 @@ describe('carousel', () => {
 		it('should set the last carousel item before the first', async () => {
 			const inputSlidesIds = ['a', 'b', 'c', 'd'];
 			const expectedSlidesIds = ['d', 'a', 'b', 'c'];
-			const slides = extractSlides(await initCarousel(inputSlidesIds));
+			const carousel = await initCarousel(inputSlidesIds);
+			const slides = extractSlides(carousel);
 			expectedSlidesIds.forEach((id, index) => {
 				expect(slides[index].dataset.key).to.equal(id);
 			});
 			expect(slides[1].classList.contains('swiper-slide-active'));
+			carousel.remove();
 		});
 
 		it('should slide to the right when click on next', async function () {
-			this.timeout(3000);
+			this.timeout(5000);
 
 			const carousel = await initCarousel(['a', 'b', 'c', 'd', 'e']);
-			const nextButton = carousel.querySelector('.swiper-button-next');
 
-			nextButton.click();
-			await waitInterval(50);
-			let slides = extractSlides(carousel);
-			expect(slides[2].dataset.key).to.equal('b');
-			expect(slides[2].classList.contains('swiper-slide-active'));
+			assertOrder(carousel, ['e', 'a', 'b', 'c', 'd'], 1);
 
-			nextButton.click();
-			await waitInterval(50);
-			slides = extractSlides(carousel);
-			expect(slides[3].dataset.key).to.equal('c');
-			expect(slides[3].classList.contains('swiper-slide-active'));
+			await moveNextAndWait(carousel);
+			assertOrder(carousel, ['e', 'a', 'b', 'c', 'd'], 2);
 
-			nextButton.click();
-			await waitInterval(500);
-			slides = extractSlides(carousel);
-			expect(slides[3].dataset.key).to.equal('d');
-			expect(slides[3].classList.contains('swiper-slide-active'));
+			await moveNextAndWait(carousel);
+			assertOrder(carousel, ['e', 'a', 'b', 'c', 'd'], 3);
 
-			nextButton.click();
-			await waitInterval(500);
-			slides = extractSlides(carousel);
-			expect(slides[3].dataset.key).to.equal('e');
-			expect(slides[3].classList.contains('swiper-slide-active'));
+			await moveNextAndWait(carousel);
+			assertOrder(carousel, ['a', 'b', 'c', 'd', 'e'], 3);
 
-			nextButton.click();
-			await waitInterval(500);
-			slides = extractSlides(carousel);
-			expect(slides[3].dataset.key).to.equal('a');
-			expect(slides[3].classList.contains('swiper-slide-active'));
+			//	back and forth in the middle
+			await movePrevAndWait(carousel);
+			assertOrder(carousel, ['a', 'b', 'c', 'd', 'e'], 2);
+			await moveNextAndWait(carousel);
+			assertOrder(carousel, ['a', 'b', 'c', 'd', 'e'], 3);
+
+			await moveNextAndWait(carousel);
+			assertOrder(carousel, ['b', 'c', 'd', 'e', 'a'], 3);
+
+			await moveNextAndWait(carousel);
+			assertOrder(carousel, ['c', 'd', 'e', 'a', 'b'], 3);
+
+			carousel.remove();
 		});
 
 		it('should slide to the left when click on prev', async function () {
-			this.timeout(3000);
+			this.timeout(5000);
 
-			const carousel = await initCarousel(['a', 'b', 'c', 'd']);
-			const prevButton = carousel.querySelector('.swiper-button-prev');
+			const carousel = await initCarousel(['a', 'b', 'c', 'd', 'e']);
 
-			prevButton.click();
-			await waitInterval(500);
-			let slides = extractSlides(carousel);
-			expect(slides[1].dataset.key).to.equal('d');
-			expect(slides[1].classList.contains('swiper-slide-active'));
+			assertOrder(carousel, ['e', 'a', 'b', 'c', 'd'], 1);
 
-			prevButton.click();
-			await waitInterval(500);
-			slides = extractSlides(carousel);
-			expect(slides[1].dataset.key).to.equal('c');
-			expect(slides[1].classList.contains('swiper-slide-active'));
+			await waitInterval(20);
+			await movePrevAndWait(carousel);
+			assertOrder(carousel, ['d', 'e', 'a', 'b', 'c'], 1);
 
-			prevButton.click();
-			await waitInterval(500);
-			slides = extractSlides(carousel);
-			expect(slides[1].dataset.key).to.equal('b');
-			expect(slides[1].classList.contains('swiper-slide-active'));
+			await waitInterval(20);
+			await movePrevAndWait(carousel);
+			assertOrder(carousel, ['c', 'd', 'e', 'a', 'b'], 1);
+
+			await waitInterval(20);
+			await movePrevAndWait(carousel);
+			assertOrder(carousel, ['b', 'c', 'd', 'e', 'a'], 1);
+
+			//	back and forth in the middle
+			await moveNextAndWait(carousel);
+			assertOrder(carousel, ['b', 'c', 'd', 'e', 'a'], 2);
+			await movePrevAndWait(carousel);
+			assertOrder(carousel, ['b', 'c', 'd', 'e', 'a'], 1);
+
+			await waitInterval(20);
+			await movePrevAndWait(carousel);
+			assertOrder(carousel, ['a', 'b', 'c', 'd', 'e'], 1);
+
+			await waitInterval(20);
+			await movePrevAndWait(carousel);
+			assertOrder(carousel, ['e', 'a', 'b', 'c', 'd'], 1);
+
+			carousel.remove();
 		});
 	});
 
@@ -195,4 +202,28 @@ function extractSlides(carousel) {
 		throw new Error(`carousel MUST be a carousel element, received ${carousel}`);
 	}
 	return carousel.querySelectorAll(`${VWC_CAROUSEL_ITEM}`);
+}
+
+async function moveNextAndWait(carousel) {
+	const nextButton = carousel.querySelector('.swiper-button-next');
+	return new Promise((r) => {
+		carousel.swiper.once('slideNextTransitionEnd', async () => r());
+		nextButton.click();
+	});
+}
+
+async function movePrevAndWait(carousel) {
+	const nextButton = carousel.querySelector('.swiper-button-prev');
+	return new Promise((r) => {
+		carousel.swiper.once('slidePrevTransitionEnd', async () => r());
+		nextButton.click();
+	});
+}
+
+function assertOrder(carousel, expectedArray, expectedActive) {
+	const slides = extractSlides(carousel);
+	for (let i = 0, l = slides.length; i < l; i++) {
+		expect(slides[i].dataset.key).to.equal(expectedArray[i]);
+	}
+	expect(slides[expectedActive].classList.contains('swiper-slide-active'));
 }
