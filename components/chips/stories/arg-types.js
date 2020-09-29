@@ -5,12 +5,6 @@ export const argTypes = {
 			options: { 'true': '', 'false': undefined }
 		}
 	},
-	removeIconFocusable: {
-		control: {
-			type: 'inline-radio',
-			options: { 'true': '', 'false': undefined }
-		}
-	},
 	selected: {
 		control: {
 			type: 'inline-radio',
