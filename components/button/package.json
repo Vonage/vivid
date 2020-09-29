@@ -1,13 +1,12 @@
 {
 	"name": "@vonage/vwc-button",
-	"version": "0.2.4",
+	"version": "0.10.0",
 	"description": "button component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/button#readme",
 	"license": "ISC",
 	"main": "vwc-button.js",
 	"module": "vwc-button.js",
 	"files": [
-		"src",
 		"*.js",
 		"*.ts",
 		"*.map"
@@ -24,12 +23,15 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@material/button": "^7.0.0",
-		"@material/mwc-button": "^0.17.2",
-		"@vonage/vvd-fonts": "^0.2.4",
-		"@vonage/vvd-style-coupling": "^0.2.4",
-		"@vonage/vwc-icon": "^0.2.4",
-		"lit-element": "^2.3.1",
-		"tslib": "^2.0.0"
+		"@material/mwc-button": "^0.18.0",
+		"@vonage/vvd-core": "^0.10.0",
+		"@vonage/vvd-foundation": "^0.10.0",
+		"@vonage/vvd-style-coupling": "^0.10.0",
+		"@vonage/vwc-icon": "^0.10.0",
+		"lit-element": "^2.4.0",
+		"tslib": "^2.0.1"
+	},
+	"devDependencies": {
+		"@vonage/vvd-typography": "^0.10.0"
 	}
 }

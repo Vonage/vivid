@@ -1,3 +1,4 @@
+import '@vonage/vvd-core';
 import {
 	customElement,
 	property,
@@ -10,6 +11,7 @@ import {
 import { style } from './vwc-carousel.css';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import Swiper, { SwiperOptions } from 'swiper';
+import '@vonage/vwc-icon';
 import './vwc-carousel-item.js';
 
 declare global {
@@ -25,30 +27,86 @@ const CAROUSEL_STYLE_ID = 'vwc-carousel-style-id';
  */
 @customElement('vwc-carousel')
 export class VWCCarousel extends LitElement {
+	@property({
+		type: Boolean,
+		reflect: true,
+		converter: (v) => (v && v === 'false' ? false : true),
+	})
+	autoplay = true;
+	@query('.swiper-container')
+	private swiperContainer?: HTMLElement;
+	@query('.swiper-button-next')
+	private swiperButtonNext?: HTMLElement;
+	@query('.swiper-button-prev')
+	private swiperButtonPrev?: HTMLElement;
+	@query('.swiper-pagination')
+	private swiperPagination?: HTMLElement;
+	private swiper?: Swiper;
+	private slideRefs: HTMLElement[] = [];
+
 	static get styles(): CSSResult[] {
 		return [style, styleCoupling];
 	}
 
-	@property({ type: Boolean, reflect: true, converter: v => v && v === 'false' ? false : true }) autoplay = true;
+	private get swiperOptions(): SwiperOptions {
+		return {
+			loop: false,
+			autoplay: this.autoplay
+				? {
+						delay: 2500,
+						disableOnInteraction: true,
+				  }
+				: false,
+			cssMode: false,
+			navigation: {
+				prevEl: this.swiperButtonPrev as HTMLElement,
+				nextEl: this.swiperButtonNext as HTMLElement,
+			},
+			mousewheel: true,
+			keyboard: true,
+			on: {
+				slideNextTransitionEnd: this.moveFirstIfNeeded,
+				slidePrevTransitionEnd: this.moveLastIfNeeded,
+				slideChange: this.onSlideChange.bind(this),
+			},
+		};
+	}
 
-	@query('.swiper-container')
-	private swiperContainer?: HTMLElement;
+	connectedCallback(): void {
+		super.connectedCallback();
+		this.ensureStyleApplied();
+		this.tabIndex = 0;
+	}
 
-	@query('.swiper-button-next')
-	private swiperButtonNext?: HTMLElement;
+	render(): TemplateResult {
+		const slides = Array.from(this.children);
+		slides.forEach((s) => {
+			if (s.nodeName.toLowerCase() === 'vwc-carousel-item') {
+				s.classList.add('swiper-slide');
+			}
+		});
 
-	@query('.swiper-button-prev')
-	private swiperButtonPrev?: HTMLElement;
-
-	@query('.swiper-pagination')
-	private swiperPagination?: HTMLElement;
-
-	private swiper?: Swiper;
-
-	private slideRefs: HTMLElement[] = [];
+		return html`
+			<div class="upper-pane">
+				<div class="swiper-nav swiper-button-prev">
+					<vwc-icon type="left"></vwc-icon>
+				</div>
+				<div class="swiper-container">
+					<div class="swiper-wrapper">${slides}</div>
+				</div>
+				<div class="swiper-nav swiper-button-next">
+					<vwc-icon type="right"></vwc-icon>
+				</div>
+			</div>
+			<div class="lower-pane swiper-pagination"></div>
+		`;
+	}
 
 	protected firstUpdated(): void {
-		this.swiper = new Swiper(this.swiperContainer as HTMLElement, this.swiperOptions);
+		this.swiper = new Swiper(
+			this.swiperContainer as HTMLElement,
+			this.swiperOptions
+		);
 		this.collectSlideRefs(this.swiper);
 		this.moveFirstIfNeeded(this.swiper);
 		this.moveLastIfNeeded(this.swiper);
@@ -73,13 +131,6 @@ export class VWCCarousel extends LitElement {
 		return this;
 	}
 
-	connectedCallback(): void {
-		super.connectedCallback();
-		this.ensureStyleApplied();
-		this.tabIndex = 0;
-
-	}
-
 	private ensureStyleApplied() {
 		VWCCarousel.styles.forEach((style, index) => {
 			const tmpId = `${CAROUSEL_STYLE_ID}-${index}`;
@@ -100,7 +151,7 @@ export class VWCCarousel extends LitElement {
 	}
 
 	private moveFirstIfNeeded(swiper?: Swiper): void {
-		const s = swiper ?? (this as unknown as Swiper);
+		const s = swiper ?? ((this as unknown) as Swiper);
 		if (s.slides.length > 2 && s.isEnd) {
 			const first = s.slides[0];
 			s.removeSlide(0);
@@ -109,7 +160,7 @@ export class VWCCarousel extends LitElement {
 	}
 
 	private moveLastIfNeeded(swiper?: Swiper): void {
-		const s = swiper ?? (this as unknown as Swiper);
+		const s = swiper ?? ((this as unknown) as Swiper);
 		if (s.slides.length > 2 && s.isBeginning) {
 			const last = s.slides[s.slides.length - 1];
 			s.removeSlide(s.slides.length - 1);
@@ -134,7 +185,9 @@ export class VWCCarousel extends LitElement {
 		if (swiper && this.swiperPagination) {
 			const activeIndex = this.calculateActiveIndex(swiper);
 			Array.from(this.swiperPagination.children).forEach((bullet, index) => {
-				bullet.classList[index === activeIndex ? 'add' : 'remove']('swiper-pagination-bullet-active');
+				bullet.classList[index === activeIndex ? 'add' : 'remove'](
+					'swiper-pagination-bullet-active'
+				);
 			});
 		}
 	}
@@ -145,8 +198,12 @@ export class VWCCarousel extends LitElement {
 
 	private goToSlide(event: Event): void {
 		if (this.swiper && this.swiperPagination) {
-			const logicalIndex = Array.from(this.swiperPagination.children).indexOf(event.target as HTMLElement);
-			const domIndex = Array.from(this.swiper.wrapperEl.children).indexOf(this.slideRefs[logicalIndex]);
+			const logicalIndex = Array.from(this.swiperPagination.children).indexOf(
+				event.target as HTMLElement
+			);
+			const domIndex = Array.from(this.swiper.wrapperEl.children).indexOf(
+				this.slideRefs[logicalIndex]
+			);
 			if (domIndex >= 0) {
 				this.swiper.slideTo(domIndex);
 			}
@@ -156,57 +213,5 @@ export class VWCCarousel extends LitElement {
 	private calculateActiveIndex(swiper: Swiper): number {
 		const nai = swiper.activeIndex;
 		return this.slideRefs.indexOf(swiper.slides[nai]);
-	}
-
-	private get swiperOptions(): SwiperOptions {
-		return {
-			loop: false,
-			autoplay: this.autoplay ? {
-				delay: 2500,
-				disableOnInteraction: true,
-			} : false,
-			cssMode: false,
-			navigation: {
-				prevEl: this.swiperButtonPrev as HTMLElement,
-				nextEl: this.swiperButtonNext as HTMLElement,
-			},
-			mousewheel: true,
-			keyboard: true,
-			on: {
-				slideNextTransitionEnd: this.moveFirstIfNeeded,
-				slidePrevTransitionEnd: this.moveLastIfNeeded,
-				slideChange: this.onSlideChange.bind(this)
-			}
-		};
-	}
-
-	render(): TemplateResult {
-		const slides = Array.from(this.children);
-		slides.forEach(s => {
-			if (s.nodeName.toLowerCase() === 'vwc-carousel-item') {
-				s.classList.add('swiper-slide');
-			}
-		});
-
-		return html`
-			<div class="upper-pane">
-				<div class="swiper-nav swiper-button-prev">
-					<svg class="icon" viewBox="0 0 24 24">
-						<path d="M14.5 4.5L8.5 12L14.5 19.5"/>
-					</svg>
-				</div>
-				<div class="swiper-container">
-					<div class="swiper-wrapper">
-						${slides}
-					</div>
-				</div>
-				<div class="swiper-nav swiper-button-next">
-					<svg class="icon" viewBox="0 0 24 24">
-						<path d="M9.5 4.5L15.5 12L9.5 19.5"/>
-					</svg>
-				</div>
-			</div>
-			<div class="lower-pane swiper-pagination"></div>
-    `;
 	}
 }

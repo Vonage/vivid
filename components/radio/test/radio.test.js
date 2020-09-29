@@ -1,20 +1,33 @@
 import '../vwc-radio.js';
-import { textToDocumentFragment, waitNextTask } from '../../../utils/js/test-helpers.js';
+import {
+	isolatedElementsCreation,
+	textToDomToParent,
+	waitNextTask,
+} from '../../../test/test-helpers';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
-describe('test vwc-radio', () => {
-	it('vwc-radio is defined as a custom element', async () => {
-		assert.exists(customElements.get('vwc-radio', 'vwc-radio element is not defined'));
+chai.use(chaiDomDiff);
+
+const COMPONENT_NAME = 'vwc-radio';
+
+describe('vwc-radio', () => {
+	const addElement = isolatedElementsCreation();
+
+	it('should be defined as a custom element', async () => {
+		assert.exists(
+			customElements.get(COMPONENT_NAME, 'vwc-radio element is not defined')
+		);
 	});
 
-	it('vwc-radio has internal contents', async () => {
-		await customElements.whenDefined('vwc-radio');
-		const docFragContainer = textToDocumentFragment('<vwc-radio id="radio-a" name="myGroup" value="value1"></vwc-radio>');
-		const actualElement = docFragContainer.firstElementChild;
-		document.body.appendChild(docFragContainer);
+	it('should have internal contents', async () => {
+		const addedElements = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+		);
 		await waitNextTask();
-		assert.equal(document.querySelector('#radio-a'), actualElement);
-		assert.exists(actualElement.shadowRoot);
-		assert.equal(actualElement.shadowRoot.childElementCount, 1);
-		assert.equal(actualElement.shadowRoot.querySelectorAll('*').length, 6);
+		await waitNextTask();
+		const actualElement = addedElements[0];
+		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot({
+			ignoreAttributes: ['class', 'style'],
+		});
 	});
 });

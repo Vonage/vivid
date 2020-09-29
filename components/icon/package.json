@@ -1,15 +1,15 @@
 {
 	"name": "@vonage/vwc-icon",
-	"version": "0.2.4",
+	"version": "0.10.0",
 	"description": "icon component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/icon#readme",
 	"license": "ISC",
-	"main": "vwc-icon.js",
-	"module": "vwc-icon.js",
+	"main": "./src/vwc-icon.js",
+	"exports": "./src/vwc-icon.js",
+	"type": "module",
 	"files": [
 		"src",
 		"*.js",
-		"*.ts",
 		"*.map"
 	],
 	"repository": {
@@ -18,15 +18,22 @@
 		"directory": "components/icon"
 	},
 	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1"
+		"test": "echo \"Error: run tests from root\" && exit 1",
+		"build": "node ./build/vwc-icon-resolver-factory.js"
 	},
 	"bugs": {
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@material/mwc-icon": "^0.17.2",
-		"@vonage/vvd-style-coupling": "^0.2.4",
-		"lit-element": "^2.3.1",
-		"tslib": "^2.0.0"
+		"@vonage/vvd-core": "^0.10.0",
+		"kefir": "^3.8.7",
+		"lit-element": "^2.4.0"
+	},
+	"devDependencies": {
+		"aws-sdk": "^2.730.0",
+		"minimist": "^1.2.5"
+	},
+	"engines": {
+		"node": ">=v12.0.0"
 	}
 }

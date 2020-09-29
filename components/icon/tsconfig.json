@@ -1,12 +1,16 @@
 {
-  "extends": "../../tsconfig.json",
-  "compilerOptions": {
-    "composite": true,
-    "rootDir": "src",
-    "outDir": ".",
-    "tsBuildInfoFile": ".tsbuildinfo"
-  },
-  "include": ["src/*.ts"],
-  "exclude": ["src/test/*.ts"],
-  "references": []
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		"allowJs": true,
+		"composite": true,
+		"rootDir": "src",
+		"outDir": ".",
+		"tsBuildInfoFile": ".tsbuildinfo"
+	},
+	"include": [],
+	"references": [
+		{
+			"path": "../../common/core"
+		}
+	]
 }

@@ -1,19 +1,62 @@
 import '../vwc-slider.js';
-import { textToDomToParent, waitNextTask } from '../../../utils/js/test-helpers.js';
+import {
+	textToDomToParent,
+	waitNextTask,
+	assertComputedStyle,
+} from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 chai.use(chaiDomDiff);
 
-describe('vwc-slider', () => {
+const VWC_SLIDER = 'vwc-slider';
+
+describe('slider', () => {
+	let addedElements = [];
+
+	afterEach(function () {
+		addedElements.forEach((elm) => elm.remove());
+	});
+
 	describe('init flow', () => {
-		it('should define vwc-slider as a custom element', async () => {
-			assert.exists(customElements.get('vwc-slider', 'vwc-slider element is not defined'));
+		it('should define vwc-slider as a custom element', () => {
+			assert.exists(
+				customElements.get(VWC_SLIDER, 'vwc-slider element is not defined')
+			);
 		});
 
-		it('vwc-slider has internal contents', async () => {
-			const actualElements = textToDomToParent('<vwc-slider id="slider-a"></vwc-slider>', document.body);
+		it('should have internal contents', async () => {
+			const actualElements = (addedElements = textToDomToParent(
+				`<${VWC_SLIDER}></${VWC_SLIDER}>`,
+				document.body
+			));
 			await waitNextTask();
+			expect(actualElements[0]).shadowDom.to.equalSnapshot({
+				ignoreAttributes: ['style'],
+			});
+			actualElements.forEach((e) => e.remove());
+		});
+	});
+
+	describe('styling', () => {
+		it('should style the basic slider', async () => {
+			const actualElements = (addedElements = textToDomToParent(
+				`<${VWC_SLIDER} min="0" max="100" value="50"></${VWC_SLIDER}>`,
+				document.body
+			));
 			await waitNextTask();
-			expect(actualElements[0]).shadowDom.to.equalSnapshot({ ignoreAttributes: ['style'] });
+
+			const sliderTrack = actualElements[0].shadowRoot.querySelector(
+				'.mdc-slider__track'
+			);
+			expect(sliderTrack).to.exist;
+			assertComputedStyle(sliderTrack, { backgroundColor: 'rgb(19, 20, 21)' });
+
+			const sliderThumb = actualElements[0].shadowRoot.querySelector(
+				'.mdc-slider__thumb'
+			);
+			expect(sliderThumb).to.exist;
+			assertComputedStyle(sliderThumb, { fill: 'rgb(19, 20, 21)' });
+
+			actualElements.forEach((e) => e.remove());
 		});
 	});
 });

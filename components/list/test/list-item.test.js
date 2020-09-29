@@ -1,19 +1,53 @@
 import '../vwc-list-item.js';
-import { textToDomToParent, waitNextTask } from '../../../utils/js/test-helpers.js';
+import {
+	textToDomToParent,
+	waitNextTask,
+	assertComputedStyle,
+} from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
+import { isolatedElementsCreation } from '../../../test/test-helpers';
 chai.use(chaiDomDiff);
 
-describe('vwc-list-item', () => {
-	it('vwc-list-item is defined as a custom element', () => {
-		assert.exists(customElements.get('vwc-list-item', 'vwc-list-item element is not defined'));
-	});
-});
+const VWC_LIST_ITEM = 'vwc-list-item';
 
-describe('vwc-list-item init flow', () => {
-	it('vwc-list-item has internal contents', async () => {
-		await customElements.whenDefined('vwc-list-item');
-		const actualElements = textToDomToParent('<vwc-list-item id="list-item-a">Item 0</vwc-list-item>', document.body);
-		await waitNextTask();
-		expect(actualElements[0]).shadowDom.to.equalSnapshot();
+describe('list item', () => {
+	let addElement = isolatedElementsCreation();
+
+	it('should be defined as a custom element', () => {
+		assert.exists(
+			customElements.get(VWC_LIST_ITEM, 'vwc-list-item element is not defined')
+		);
+	});
+
+	describe('init flow', () => {
+		it('should have internal contents', async () => {
+			const actualElements = addElement(
+				textToDomToParent(
+					`<${VWC_LIST_ITEM} id="list-item-a">Item 0</${VWC_LIST_ITEM}>`
+				)
+			);
+			await waitNextTask();
+			expect(actualElements[0]).shadowDom.to.equalSnapshot();
+		});
+	});
+
+	describe('typography', function () {
+		it(`should have set typography correct`, async function () {
+			const actualElements = addElement(
+				textToDomToParent(`<${VWC_LIST_ITEM}>Item 1</${VWC_LIST_ITEM}>`)
+			);
+			await waitNextTask();
+			const listItem = actualElements[0];
+			expect(listItem).to.exist;
+			assertComputedStyle(listItem, {
+				fontFamily: 'SpeziaWebVariable',
+				fontSize: '14.2222px',
+				fontWeight: '400',
+				fontStretch: '50%',
+				//	lineHeight: '22.8697px',
+				letterSpacing: 'normal',
+				textTransform: 'none',
+			});
+		});
 	});
 });

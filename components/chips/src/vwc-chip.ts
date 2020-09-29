@@ -1,8 +1,13 @@
-import { customElement } from 'lit-element';
+import '@vonage/vvd-core';
+import { customElement, html } from 'lit-element';
 import { Chip as MWCChip } from '@material/mwc-chips/mwc-chip';
 import { style as vwcChipStyle } from './vwc-chip.css';
 import { style as mwcChipStyle } from '@material/mwc-chips/mwc-chip.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
+import '@vonage/vwc-icon';
+import { classMap } from 'lit-html/directives/class-map';
+import { ifDefined } from 'lit-html/directives/if-defined';
+import { nothing, TemplateResult } from 'lit-html';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -42,4 +47,48 @@ export class VWCChip extends MWCChip {
 	// 	/* eslint-disable wc/no-self-class */
 	// 	this.classList.add(...customClasses, ...filteredClasses);
 	// }
+	renderThumbnail(): TemplateResult {
+		if (this.icon) {
+			return html`<vwc-icon
+				size="small"
+				type="${this.icon}"
+				class="leading"
+			></vwc-icon>`;
+		} else if (this.childElementCount > 0) {
+			return html` <span class="mdc-chip__icon mdc-chip__icon--leading">
+				<slot name="thumbnail"></slot>
+			</span>`;
+		} else {
+			return html``;
+		}
+	}
+
+	renderRemoveIcon(): TemplateResult {
+		const classes = {
+			'mdc-chip__trailing-action': this.removeIconFocusable,
+			[this.removeIconClass]: true,
+		};
+
+		const icon = html`${this.removable
+			? html` <i
+					class="mdc-chip__icon mdc-chip__icon--trailing ${classMap(classes)}"
+					tabindex="-1"
+					role=${ifDefined(this.removeIconFocusable ? 'button' : undefined)}
+					aria-hidden=${ifDefined(this.removeIconFocusable ? undefined : 'true')}
+					@click=${this.clickHandler}
+					@keydown=${this.clickHandler}
+					><vwc-icon size="small" class="trailing" type="cross-circle-negative"
+			  /></i>`
+			: nothing}`;
+
+		if (this.removeIconFocusable) {
+			return html`<span role="gridcell">${icon}</span>`;
+		} else {
+			return icon;
+		}
+	}
+
+	clickHandler(): void {
+		this.mdcFoundation.handleTrailingActionInteraction();
+	}
 }

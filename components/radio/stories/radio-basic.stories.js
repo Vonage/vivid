@@ -1,12 +1,10 @@
 import '@vonage/vwc-radio/vwc-radio.js';
 import '@vonage/vwc-formfield/vwc-formfield.js';
-import { withA11y } from '@storybook/addon-a11y';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Atoms|Radio',
-	component: 'vwc-radio',
-	decorators: [withA11y]
+	title: 'Atoms/Radio',
+	component: 'vwc-radio'
 }
 
 export const basic = () => html`

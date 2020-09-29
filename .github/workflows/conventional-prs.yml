@@ -9,6 +9,9 @@ on:
 jobs:
   lint-pr:
     runs-on: ubuntu-latest
+    env:
+      ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+
     steps:
       - uses: actions/checkout@v2
 

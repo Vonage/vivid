@@ -1,32 +1,38 @@
-@use '@vonage/vwc-textfield/src/vwc-textfield';
-@use '@vonage/vvd-fonts/typography' as typography;
+@use '@vonage/vwc-textfield/src/vwc-textfield' as textfield;
 
-:host {
-	@include typography.font-combo('Body2');
+:host([dense][label]:not([label=''])) {
+  .mdc-text-field--outlined {
+		padding-top: 8px;
+	}
 }
 
 .mdc-text-field--textarea {
 	height: 100%;
-	min-height: 48px;
+	min-height: var(#{textfield.$vvd-text-field-size-block});
+	padding-left: 0;
+	padding-right: 0;
+
+	.mdc-text-field__input {
+		padding-left: 14px;
+		padding-right: 14px;
+	}
 
 	&.mdc-text-field--outlined {
-
 		padding-top: 22px;
 
 		&.mdc-text-field--no-label {
-			.mdc-text-field__input {
-				padding-top: 8px;
-			}
+			padding-top: 8px;
 		}
 
 		.mdc-text-field__input {
-			@include typography.font-combo('Body2');
+			font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
 			height: auto;
 			margin: 0;
 			resize: vertical;
 		}
 
 		.mdc-floating-label {
+			font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
 			top: 15px;
 
 			&--float-above {

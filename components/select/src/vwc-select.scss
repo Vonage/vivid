@@ -1,52 +1,126 @@
-@use '@material/select';
+@forward './vwc-select-coupling';
+@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
+
+$vvd-select-size-block: --vvd-select-size-block;
 
 :host {
   --mdc-theme-primary: var(--vvd-color-alternate-primary-background);
-  --mdc-select-outlined-idle-border-color: #c2c4cc;
-  --mdc-select-outlined-hover-border-color: var(--mdc-theme-primary);
-  --mdc-select-outlined-disabled-border-color: #e1e2e6;
+  --mdc-select-fill-color: var(--vvd-color-surface-background);
   --mdc-select-ink-color: var(--mdc-theme-primary);
-  --mdc-select-label-ink-color: #616266;
-  --mdc-select-focused-label-color: var(--mdc-select-label-ink-color);
-  --mdc-select-disabled-ink-color: #9b9da3;
-  --mdc-select-dropdown-icon-color: var(--mdc-theme-primary);
-  --mdc-select-focused-dropdown-icon-color: var(--mdc-theme-primary);
+  --mdc-select-label-ink-color: var(#{color-semantic.$formfield-label-idle-ink});
+	--mdc-select-disabled-ink-color: var(#{color-semantic.$formfield-disabled-ink});
+	--mdc-select-disabled-fill-color: var(#{color-semantic.$formfield-disabled-fill});
+
+  --mdc-select-dropdown-icon-color: var(--mdc-select-ink-color);
+  --mdc-select-focused-dropdown-icon-color: var(--mdc-select-ink-color);
   --mdc-select-disabled-dropdown-icon-color: var(--mdc-select-disabled-ink-color);
-  --mdc-select-error-dropdown-icon-color: var(--mdc-select-error-color);
+
+  --mdc-select-outlined-idle-border-color: var(#{color-semantic.$formfield-border-idle});
+  --mdc-select-outlined-hover-border-color: var(#{color-semantic.$formfield-border-hover});
+  --mdc-select-outlined-disabled-border-color: var(#{color-semantic.$formfield-border-disabled});
+
+	--mdc-select-error-color: var(#{color-semantic.$formfield-label-error-ink});
+	--mdc-select-error-fill-color: var(#{color-semantic.$formfield-error-fill});
+	--mdc-select-error-dropdown-icon-color: var(--mdc-select-error-color);
+
+	display: inline-flex;
+	flex-direction: column;
+	font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
 }
 
 :host(:not([disabled])) .mdc-select.mdc-select--focused:not(.mdc-select--invalid) {
-  mwc-notched-outline {
-    --mdc-notched-outline-border-color: var(--mdc-theme-primary);
-  }
-
   .mdc-floating-label {
-    color: var(--mdc-select-focused-label-color);
+    color: var(--mdc-select-label-ink-color);
   }
 }
 
-mwc-notched-outline,
-:host(:not([disabled])) .mdc-select.mdc-select--focused mwc-notched-outline {
-  --mdc-notched-outline-stroke-width: 1px;
-  --mdc-notched-outline-notch-offset: 0px;
+:host([disabled]) .mdc-select {
+  vwc-notched-outline {
+    --mdc-notched-outline-border-color: var(--mdc-select-outlined-disabled-border-color);
+  }
+
+	background-color: var(--mdc-select-disabled-fill-color);
+
+	.mdc-select__selected-text {
+		color: var(--mdc-select-disabled-ink-color);
+	}
+
+	.mdc-notched-outline {
+		.mdc-floating-label--float-above {
+			--mdc-theme-primary: var(--mdc-select-label-ink-color);
+		}
+	}
+}
+
+:host([shape='pill']) {
+  --mdc-shape-small: 24px;
+}
+
+:host(:not([shape='pill'])) {
+  --mdc-shape-small: 6px;
+}
+
+:host(:not([shape='pill'])[dense]) {
+  --mdc-shape-small: 5px;
+}
+
+:host([dense]) {
+  #{$vvd-select-size-block}: 40px;
+}
+
+:host(:not([dense])) {
+  #{$vvd-select-size-block}: 48px;
+
+  .mdc-select__selected-text {
+    padding: 22px 0 6px;
+  }
+}
+
+:host([dense][label]:not([label=''])) {
+  padding-top: 24px;
+
+  .mdc-select {
+    .mdc-floating-label {
+      font-size: 0.875rem;
+      left: -12px;
+      top: -24px;
+      transform: none;
+    }
+
+    .mdc-floating-label,
+    &--invalid.mdc-select--outlined .mdc-floating-label,
+    &:not(.mdc-select--invalid):not(.mdc-select--focused) .mdc-floating-label,
+    &:not(.mdc-select--invalid).mdc-select--focused .mdc-floating-label {
+      color: var(--mdc-select-ink-color);
+    }
+  }
 }
 
 .mdc-select {
+  border-radius: var(--mdc-shape-small);
+
+	.mdc-select__dropdown-icon {
+		transition: transform 200ms;
+	}
+
+	&.mdc-select--activated .mdc-select__dropdown-icon {
+		transform: rotateX(180deg);
+	}
+
   &--outlined {
+    background-color: var(--mdc-select-fill-color);
+
     .mdc-select__anchor {
-      height: 48px;
+      height: var(#{$vvd-select-size-block});
       padding-left: 14px;
 
       .mdc-select__selected-text {
         font-size: var(--mdc-typography-subtitle2-font-size, 0.875rem);
-        padding: 22px 0 6px;
       }
 
       .mdc-floating-label {
-        display: inline-block;
         left: 2px;
         padding-right: 8px;
-        top: 24px;
         transition: transform 0.15s, font-size 0.15s;
       }
 
@@ -54,53 +128,78 @@ mwc-notched-outline,
         color: var(--mdc-select-label-ink-color);
         transform: translateY(-100%);
       }
-
-      + .mdc-select-helper-text {
-        font-size: var(--mdc-typography-caption-font-size, 0.75rem);
-        margin: 3px 0 0;
-      }
-    }
-  }
-
-  // Todo: change notched outline
-  &:before {
-    background-color: var(--mdc-select-outlined-idle-border-color);
-    content: '';
-    height: 1px;
-    left: 12px;
-    position: absolute;
-    right: 6px;
-    top: 0;
-    z-index: 1;
-  }
-
-  :host(:hover) &,
-  &:hover,
-  &--focused {
-    &:not(.mdc-select--invalid) {
-      &:before {
-        background-color: var(--mdc-theme-primary);
-      }
-    }
-  }
-
-  &--disabled {
-    &.mdc-select--outlined .mdc-select__anchor {
-      background-color: #f3f3f5;
-    }
-
-    &:before {
-      background-color: var(--mdc-select-outlined-disabled-border-color);
     }
   }
 
   &--invalid {
-    &.mdc-select--outlined .mdc-select__anchor {
-      background-color: #fdecec;
-    }
+    &.mdc-select--outlined {
+      vwc-notched-outline {
+        --mdc-notched-outline-border-color: var(--mdc-select-error-color);
+      }
 
-    &:before {
-      background-color: var(--mdc-theme-error);
+			background-color: var(--mdc-select-error-fill-color);
+
+			.mdc-floating-label {
+				color: var(--mdc-select-error-color);
+			}
     }
-  }
+	}
+}
+
+// .mdc-select-helper-text {
+// 	margin: 0 14px;
+// }
+
+// .mdc-select--invalid:not(.mdc-select--disabled).mdc-select--invalid + .mdc-select-helper-text--validation-msg {
+// 	color: var(--mdc-select-error-color);
+// }
+
+vwc-notched-outline {
+  --mdc-notched-outline-border-color: var(--mdc-select-outlined-idle-border-color);
+}
+
+:host(:not([disabled])) .mdc-select.mdc-select--focused vwc-notched-outline,
+:host(:not([disabled]):hover) .mdc-select:not(.mdc-select--invalid):not(.mdc-select--focused) vwc-notched-outline {
+  --mdc-notched-outline-border-color: var(--mdc-select-outlined-hover-border-color);
+}
+
+// helper / error message line
+.mdc-select {
+	& + .mdc-select-helper-line {
+		--mdc-theme-error: var(--mdc-select-ink-color);
+		display: flex;
+		margin-top: 7px;
+		padding: 0;
+		align-items: center;
+		justify-content: initial;
+		cursor: default;
+
+		.mdc-select-helper-icon {
+			display: none;
+			color: var(--mdc-select-error-color);
+		}
+
+		.mdc-select-helper-text {
+			margin: 0;
+			opacity: 1;
+		}
+
+		.mdc-select-helper-text::before {
+			display: inline;
+		}
+
+		.spacer {
+			flex-basis: 14px;
+		}
+	}
+
+	&.mdc-select--invalid + .mdc-select-helper-line {
+		.mdc-select-helper-icon {
+			display: flex;
+		}
+
+		.spacer {
+			flex-basis: 6px;
+		}
+	}
 }

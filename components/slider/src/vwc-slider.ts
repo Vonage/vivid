@@ -1,3 +1,4 @@
+import '@vonage/vvd-core';
 import { customElement } from 'lit-element';
 import { Slider as MWCSlider } from '@material/mwc-slider';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
@@ -18,4 +19,9 @@ MWCSlider.styles = [styleCoupling, mwcSliderStyle, vwcSliderStyle];
  * This component is an extension of [<mwc-slider>](https://github.com/material-components/material-components-web-components/tree/master/packages/slider)
  */
 @customElement('vwc-slider')
-export class VWCSlider extends MWCSlider {}
+export class VWCSlider extends MWCSlider {
+	async firstUpdated(): Promise<void> {
+		await super.firstUpdated();
+		this.pinMarkerText = this.value?.toLocaleString();
+	}
+}

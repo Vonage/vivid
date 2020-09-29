@@ -1,58 +1,58 @@
-@use 'sass:selector';
-@use '@material/button';
-@use '@vonage/vvd-fonts/typography' as typography;
+@forward './vwc-button-coupling';
+@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
+@use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins' as color-connotation-mixins;
 
+
+:host {
+  --mdc-button-disabled-ink-color: var(
+    #{color-semantic.$formfield-disabled-ink}
+  );
+  --mdc-button-disabled-fill-color: var(
+    #{color-semantic.$formfield-border-idle}
+  );
+}
+
+
+@include color-connotation-mixins.connotations-context(
+	':host([unelevated]#{color-connotation-mixins.$connotation-placeholder},[outlined]#{color-connotation-mixins.$connotation-placeholder})'
+);
+:host([unelevated],[outlined]) {
+	 --mdc-theme-primary: var(#{color-semantic.$color-connotation-background});
+   --mdc-theme-on-primary: var(#{color-semantic.$color-connotation-foreground});
+}
+/////////////////////////////////////////////////////////////////////////////
 .mdc-button {
-  @include button.height(40px);
-	@include typography.font-combo('Body2Bold');
-	letter-spacing: initial;
-  text-transform: initial;
-	border-radius: 6px;
+  // ! this was supposed to be set by MDC
+  font-stretch: var(--mdc-typography-button-font-stretch);
+  height: 40px;
+  letter-spacing: normal;
+  border-radius: 6px;
+
+  &.mdc-button--dense {
+    height: 32px;
+  }
+
+  vwc-icon {
+    vertical-align: sub;
+  }
+
+  > span.trailing-icon {
+    > slot > vwc-icon {
+      margin-left: 6px;
+    }
+  }
+
+  > span.leading-icon {
+    > slot > vwc-icon {
+      margin-right: 6px;
+    }
+  }
 }
 
 :host([disabled]) .mdc-button.mdc-button--outlined {
   border-color: var(--vvd-color-disabled-fill-color);
 }
 
-.pill {
+:host([shape='pill']) .mdc-button {
   border-radius: 40px;
 }
-
-// ! move to utils as this might be a common
-// ! mixin for other components such as call-out
-@mixin connotations-context(
-  $selector: ':host([connotation-specifier])',
-  $default: primary
-) {
-  $connotations: primary cta success error;
-
-  @each $connotation in $connotations {
-    $attr: '[connotation="#{$connotation}"i]';
-
-    $scoped-selector: $selector; // prevents overriding argument
-
-    $scoped-selector: selector.replace(
-      #{$selector},
-      '[connotation-specifier]',
-      #{$attr}
-    );
-
-    @if ($connotation == $default) {
-      $default-selector: selector.replace(
-        #{$selector},
-        '[connotation-specifier]',
-        ':not([connotation])'
-      );
-      $scoped-selector: $default-selector, $scoped-selector;
-    }
-
-    #{$scoped-selector} {
-      --mdc-theme-primary: var(--vvd-color-#{$connotation}-background);
-      --mdc-theme-on-primary: var(--vvd-color-#{$connotation}-foreground);
-    }
-  }
-}
-
-@include connotations-context(
-  ':host([unelevated][connotation-specifier])'
-);

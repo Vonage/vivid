@@ -1,30 +1,22 @@
+@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
+
 .swiper-nav {
 	flex: 0 0 29px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	color: var(--vvd-color-surface-foreground);
+	fill: var(--vvd-color-surface-foreground);
 	background-color: var(--vvd-color-base-background);
-	border: 1px solid var(--vvd-color-disabled-fill-color);
+	border: 1px solid var(#{color-semantic.$formfield-border-idle});
 	box-sizing: border-box;
 	overflow: hidden;
 	outline: none;
 	cursor: pointer;
-	transition: color 0.2s;
-}
-
-.swiper-nav > .icon {
-	width: 1.2em;
-	height: auto;
-	fill: none;
-	stroke: currentColor;
-	stroke-width: 3;
-	stroke-linecap: round;
-	stroke-linejoin: round;
+	transition: fill 0.2s;
 }
 
 .swiper-nav:hover {
-	color: #9b9da3;
+	fill: #9b9da3;
 }
 
 .swiper-button-prev {
