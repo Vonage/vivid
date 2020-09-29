@@ -27,22 +27,9 @@ Indeterminate.args = { label: 'Phone number publicly visible', indeterminate: ''
 export const Disabled = Template.bind({});
 Disabled.args = { label: 'London', disabled: '', checked: '' };
 
+// TODO: error example
+
 // export const basic = () => html`
-// 	<h3>Regular</h3>
-// 	<vwc-formfield label="Use email">
-// 		<vwc-checkbox></vwc-checkbox>
-// 	</vwc-formfield>
-
-// 	<h3>Checked</h3>
-// 	<vwc-formfield label="SMS auth enabled">
-// 		<vwc-checkbox checked></vwc-checkbox>
-// 	</vwc-formfield>
-
-// 	<h3>Indeterminate</h3>
-// 	<vwc-formfield label="Phone number publicly visible">
-// 		<vwc-checkbox indeterminate></vwc-checkbox>
-// 	</vwc-formfield>
-
 // 	<h3>Disabled</h3>
 // 	<vwc-formfield label="London">
 // 		<vwc-checkbox disabled></vwc-checkbox>
