@@ -14,7 +14,7 @@ export default {
 
 const Template = args => html`
 	<div style="height: 100vh">
-		<vwc-drawer id="drawer" ...=${spread(args)}>
+		<vwc-drawer id="drawer" @MDCDrawer:opened="${handleOpened}" @MDCDrawer:closed="${handleClosed}" ...=${spread(args)}>
 			<span slot="title">Drawer Title</span>
 			<span slot="subtitle">subtitle</span>
 			<vwc-list>
@@ -35,8 +35,13 @@ const Template = args => html`
 export const Basic = Template.bind({});
 Basic.args = { hasHeader: '', type: 'dismissible' };
 
-export const Modal = Template.bind({});
-Modal.args = { hasHeader: '', type: 'modal' };
+function handleOpened() {
+	console.log('MDCDrawer:opened event');
+}
+
+function handleClosed() {
+	console.log('MDCDrawer:removal event');
+}
 
 function handleClick() {
 	drawer.open = !drawer.open;

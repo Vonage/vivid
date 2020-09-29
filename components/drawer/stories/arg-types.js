@@ -10,5 +10,12 @@ export const argTypes = {
 			type: 'inline-radio',
 			options: { 'true': '', 'false': undefined }
 		}
-	}
+	},
+	type: {
+		control: {
+			type: 'select',
+			options: ['dismissible', 'modal'],
+		},
+		defaultValue: ['dismissible']
+	},
 }
