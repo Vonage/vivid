@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/Vonage/vivid/compare/v0.10.0...v0.11.0) (2020-09-29)
+
+
+### Bug Fixes
+
+* **design tokens properties :** vivid properties path reference ([60ac4ef](https://github.com/Vonage/vivid/commit/60ac4efcad7463e5c5e829e58fdaaa7cf182a71e))
+
+
+### Features
+
+* **vwc-icon:** added default size ([397bb7e](https://github.com/Vonage/vivid/commit/397bb7ed607e32309e8071a167e731485ba466b2))
+* **vwc-icon:** exported style to external scss ([a0af301](https://github.com/Vonage/vivid/commit/a0af301fc5e7ae01f8ad328b509f105b8bf24fb4))
+* **vwc-icon:** removed "size" from observed attributes ([2b44f0f](https://github.com/Vonage/vivid/commit/2b44f0fe47f9fe78aa2686a6b94984bcd992eec3))
+
+
+
+
+
 # 0.10.0 (2020-09-22)
 
 **Note:** Version bump only for package @vivid/root

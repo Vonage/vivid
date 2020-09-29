@@ -1,8 +1,11 @@
-# [0.10.0](https://github.com/vonage/vivid/compare/v0.11.2...v0.10.0) (2020-09-29)
+# [0.11.0](https://github.com/vonage/vivid/compare/v0.10.0...v0.11.0) (2020-09-29)
 
 
+### Features
 
-## [0.11.2](https://github.com/vonage/vivid/compare/v0.10.0...v0.11.2) (2020-09-29)
+* **vwc-icon:** added default size ([397bb7e](https://github.com/vonage/vivid/commit/397bb7ed607e32309e8071a167e731485ba466b2))
+* **vwc-icon:** exported style to external scss ([a0af301](https://github.com/vonage/vivid/commit/a0af301fc5e7ae01f8ad328b509f105b8bf24fb4))
+* **vwc-icon:** removed "size" from observed attributes ([2b44f0f](https://github.com/vonage/vivid/commit/2b44f0fe47f9fe78aa2686a6b94984bcd992eec3))
 
 
 
