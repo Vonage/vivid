@@ -81,7 +81,7 @@ class IconElement extends HTMLElement {
 	}
 
 	static get observedAttributes() {
-		return ["type", "size"];
+		return ["type"];
 	}
 
 	set type(value) {
@@ -97,11 +97,7 @@ class IconElement extends HTMLElement {
 	}
 
 	set size(value) {
-		if (!Object.keys(SIZES).includes(value)) {
-			console.warn(`Size can either be "${Object.keys(SIZES).join(',')}"`);
-		} else {
-			this.setAttribute('size', value);
-		}
+		this.setAttribute('size', value);
 	}
 
 	get size() {
