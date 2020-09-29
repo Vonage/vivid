@@ -1,24 +1,21 @@
 import '@vonage/vwc-fab/vwc-fab.js';
 import { html } from 'lit-element';
+import { spread } from '@open-wc/lit-helpers';
+import { argTypes } from './arg-types.js';
 
 export default {
 	title: 'Atoms/Fab',
-	component: 'vwc-fab'
+	component: 'vwc-fab',
+	argTypes
 }
 
-export const basic = () => html`
-	<h3>Mini</h3>
-	<vwc-fab mini icon="store" @click="${onClick}"></vwc-fab>
+const Template = args => html`<vwc-fab ...=${spread(args)} @click="${onClick}"></vwc-fab>`;
 
-	<h3>Extended</h3>
-	<vwc-fab extended icon="wallet" label="Add to cart" @click="${onClick}"></vwc-fab>
+export const Mini = Template.bind({});
+Mini.args = { mini: '', icon: 'store' };
 
-	<h3>Mini call-to-action</h3>
-	<vwc-fab mini icon="help" connotation="cta" @click="${onClick}"></vwc-fab>
-
-	<h3>Extended call-to-action</h3>
-	<vwc-fab extended icon="info" label="Info" connotation="cta" @click="${onClick}"></vwc-fab>
-`;
+export const Extended = Template.bind({});
+Extended.args = { extended: '', label: 'Add to cart', icon: 'wallet' };
 
 function onClick(event) {
 	console.log(`'${event.target.getAttribute('icon')}' fab clicked`);
