@@ -284,18 +284,17 @@ describe('button', () => {
 		const originalAttachShadow = HTMLElement.prototype.attachShadow;
 		let attachShadowConfig = {};
 
-		beforeEach(function() {
-			HTMLElement.prototype.attachShadow = function(config) {
+		beforeEach(function () {
+			HTMLElement.prototype.attachShadow = function (config) {
 				attachShadowConfig = config;
-			}
+			};
 		});
 
-		afterEach(function() {
+		afterEach(function () {
 			HTMLElement.prototype.attachShadow = originalAttachShadow;
 		});
 
 		it(`should set the shadowroot without delegatesFocus: true on Safari`, function () {
-
 			const isOnSafari = !HTMLFormElement.prototype.requestSubmit;
 			const [button] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></COMPONENT_NAME>`)
