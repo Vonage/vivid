@@ -280,6 +280,34 @@ describe('button', () => {
 		});
 	});
 
+	describe(`Safari Fiasco`, function() {
+		const originalRequestSubmit = HTMLFormElement.prototype.requestSubmit;
+
+		function imitateSafari() {
+			HTMLFormElement.prototype.requestSubmit = undefined;
+		}
+
+		function stopImitatingSafari() {
+			HTMLFormElement.prototype.requestSubmit = originalRequestSubmit;
+		}
+
+		afterEach(function() {
+			stopImitatingSafari();
+		});
+
+		it(`should set the shadowroot without delegatesFocus: true on Safari`, function() {
+			imitateSafari();
+			const [button] = addElement(textToDomToParent(`<${COMPONENT_NAME}></COMPONENT_NAME>`));
+			expect(!button.shadowRoot.delegatesFocus).to.equal(true);
+		});
+
+		it(`should set the shadowroot with delegatesFocus: true when not on Safari`, function() {
+			stopImitatingSafari();
+			const [button] = addElement(textToDomToParent(`<${COMPONENT_NAME}></COMPONENT_NAME>`));
+			expect(!button.shadowRoot.delegatesFocus).to.equal(false);
+		});
+	});
+
 	describe('typography', function () {
 		it(`should have set button (text, rounded) typography correct`, async function () {
 			const actualElements = addElement(
