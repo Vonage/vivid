@@ -280,31 +280,27 @@ describe('button', () => {
 		});
 	});
 
-	describe(`Safari Fiasco`, function() {
-		const originalRequestSubmit = HTMLFormElement.prototype.requestSubmit;
+	describe(`Safari Fiasco`, function () {
+		const originalAttachShadow = HTMLElement.prototype.attachShadow;
+		let attachShadowConfig = {};
 
-		function imitateSafari() {
-			HTMLFormElement.prototype.requestSubmit = undefined;
-		}
-
-		function stopImitatingSafari() {
-			HTMLFormElement.prototype.requestSubmit = originalRequestSubmit;
-		}
+		beforeEach(function() {
+			HTMLElement.prototype.attachShadow = function(config) {
+				attachShadowConfig = config;
+			}
+		});
 
 		afterEach(function() {
-			stopImitatingSafari();
+			HTMLElement.prototype.attachShadow = originalAttachShadow;
 		});
 
-		it(`should set the shadowroot without delegatesFocus: true on Safari`, function() {
-			imitateSafari();
-			const [button] = addElement(textToDomToParent(`<${COMPONENT_NAME}></COMPONENT_NAME>`));
-			expect(!button.shadowRoot.delegatesFocus).to.equal(true);
-		});
+		it(`should set the shadowroot without delegatesFocus: true on Safari`, function () {
 
-		it(`should set the shadowroot with delegatesFocus: true when not on Safari`, function() {
-			stopImitatingSafari();
-			const [button] = addElement(textToDomToParent(`<${COMPONENT_NAME}></COMPONENT_NAME>`));
-			expect(!button.shadowRoot.delegatesFocus).to.equal(false);
+			const isOnSafari = !HTMLFormElement.prototype.requestSubmit;
+			const [button] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}></COMPONENT_NAME>`)
+			);
+			expect(Boolean(attachShadowConfig.delegatesFocus)).to.equal(!isOnSafari);
 		});
 	});
 
