@@ -384,8 +384,7 @@ describe('button', () => {
 				)
 			);
 			await waitNextTask();
-			const formElement = addedElements[0];
-			const actualElement = formElement.shadowRoot.querySelector('#button');
+			let actualElement = addedElements[0].shadowRoot.querySelector('#button');
 
 			const expectedNormalStyles = {
 				borderTopLeftRadius: '6px',
@@ -394,18 +393,24 @@ describe('button', () => {
 				borderBottomRightRadius: '6px',
 			};
 			assertComputedStyle(actualElement, expectedNormalStyles);
+		});
 
-			formElement.dense = true;
+		it('should have rounded shape when dense', async () => {
+			const addedElements = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} layout="filled" dense>Button Text</${COMPONENT_NAME}>`
+				)
+			);
 			await waitNextTask();
-			const actualElement = formElement.shadowRoot.querySelector('#button');
+			let actualElement = addedElements[0].shadowRoot.querySelector('#button');
 
-			const expectedDenseStyles = {
+			const expectedNormalStyles = {
 				borderTopLeftRadius: '5px',
 				borderTopRightRadius: '5px',
 				borderBottomLeftRadius: '5px',
 				borderBottomRightRadius: '5px',
 			};
-			assertComputedStyle(actualElement, expectedDenseStyles);
+			assertComputedStyle(actualElement, expectedNormalStyles);
 		});
 
 		it('should have pill shape when shape set to pill', async () => {
