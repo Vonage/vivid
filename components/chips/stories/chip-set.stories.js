@@ -1,35 +1,30 @@
 import '@vonage/vwc-chips/vwc-chip.js';
 import '@vonage/vwc-chips/vwc-chip-set.js';
 import { html } from 'lit-element';
+import { spread } from '@open-wc/lit-helpers';
 
 export default {
 	title: 'Atoms/ChipSet',
-	component: 'vwc-chip-set'
+	component: 'vwc-chip-set',
+	argTypes: { 
+		chips: { table: { disable: true } },
+		chipArgs: { table: { disable: true } }
+	}
 }
 
-export const basic = () => html`
-	<h3>Default</h3>
-	<vwc-chip-set id="chipSetA">
-		<vwc-chip label="Chip One"></vwc-chip>
-		<vwc-chip label="Chip Two"></vwc-chip>
-		<vwc-chip label="Chip Three"></vwc-chip>
-		<vwc-chip label="Chip Four"></vwc-chip>
-	</vwc-chip-set>
+const Template = ({ chipArgs, ...args }) => html`
+	<vwc-chip-set id="chipSet" @MDCChip:selection="${handleSelection}" @MDCChip:removal="${handleRemoval}" ...=${spread(args)}>
+		<vwc-chip label="Chip One" ...=${spread(chipArgs)}></vwc-chip>
+		<vwc-chip label="Chip Two" ...=${spread(chipArgs)}></vwc-chip>
+		<vwc-chip label="Chip Three" ...=${spread(chipArgs)}></vwc-chip>
+		<vwc-chip label="Chip Four" ...=${spread(chipArgs)}></vwc-chip>
+	</vwc-chip-set>`;
 
-	<h3>Filter</h3>
-	<vwc-chip-set id="chipSetB" type="filter" @MDCChip:selection="${handleSelection}">
-		<vwc-chip label="1"></vwc-chip>
-		<vwc-chip label="2" icon="chat-full"></vwc-chip>
-		<vwc-chip label="3" icon="rocket-full"></vwc-chip>
-	</vwc-chip-set>
+export const Filter = Template.bind({});
+Filter.args = { type: 'filter' };
 
-	<h3>Removable</h3>
-	<vwc-chip-set id="chipSetC" @MDCChip:removal="${handleRemoval}">
-		<vwc-chip label="Chip One" removable></vwc-chip>
-		<vwc-chip label="Chip Two" removable></vwc-chip>
-		<vwc-chip label="Chip Three" removable></vwc-chip>
-	</vwc-chip-set>
-`;
+export const Removable = Template.bind({});
+Removable.args = { chipArgs: { removable: ''} };
 
 function handleSelection(e) {
 	let payload = {
@@ -40,7 +35,7 @@ function handleSelection(e) {
 		}
 	}
 
-	console.log('chipSetB.chips method', chipSetB.chips);
+	console.log('chipSet.chips method', chipSet.chips);
 	console.log('MDCChip:selection event', payload);
 }
 
@@ -52,6 +47,6 @@ function handleRemoval(e) {
 		}
 	}
 
-	console.log('chipSetC.chips method', chipSetC.chips);
+	console.log('chipSet.chips method', chipSet.chips);
 	console.log('MDCChip:removal event', payload);
 }
