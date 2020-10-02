@@ -54,7 +54,7 @@ export class VWCButton extends MWCButton {
 
 	#_hiddenButton: HTMLButtonElement | undefined;
 
-	createRenderRoot() {
+	createRenderRoot(): ShadowRoot {
 		if (HTMLFormElement.prototype.requestSubmit) {
 			return super.createRenderRoot();
 		}
