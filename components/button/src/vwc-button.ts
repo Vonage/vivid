@@ -77,6 +77,19 @@ export class VWCButton extends MWCButton {
 		const layout: ButtonLayout[number] = this.layout;
 		this.toggleAttribute('outlined', layout === 'outlined');
 		this.toggleAttribute('unelevated', layout === 'filled');
+
+		if (changes.has('dense')) {
+			if (this.dense && this.enlarged) {
+				this.enlarged = false;
+			}
+		}
+
+		if (changes.has('enlarged')) {
+			if (this.enlarged && this.dense) {
+				this.removeAttribute('dense');
+				this.dense = false;
+			}
+		}
 	}
 
 	protected _handleClick(): void {
