@@ -397,6 +397,8 @@ describe('button', () => {
 
 			formElement.dense = true;
 			await waitNextTask();
+			const actualElement = formElement.shadowRoot.querySelector('#button');
+
 			const expectedDenseStyles = {
 				borderTopLeftRadius: '5px',
 				borderTopRightRadius: '5px',
