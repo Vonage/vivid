@@ -15,7 +15,7 @@ export const Basic = Template.bind({});
 Basic.args = { label: 'Basic', layout: 'text' };
 
 export const Filled = Template.bind({});
-Filled.args = { layout: 'filled', label: 'Filled' };
+Filled.args = { label: 'Filled', layout: 'filled' };
 
 export const Outlined = Template.bind({});
 Outlined.args = { label: 'Outlined', layout: 'outlined' };
@@ -28,6 +28,9 @@ Dense.args = { label: 'Dense', layout: 'filled', dense: '' };
 
 export const Enlarged = Template.bind({});
 Enlarged.args = { label: 'Enlarged', layout: 'filled', enlarged: '' };
+
+export const Icon = Template.bind({});
+Icon.args = { label: 'Icon', layout: 'filled', icon: 'download' };
 
 export const Disabled = Template.bind({});
 Disabled.args = { label: 'Disabled', layout: 'filled', disabled: '' };
