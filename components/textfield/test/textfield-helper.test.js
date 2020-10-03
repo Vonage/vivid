@@ -13,7 +13,7 @@ const COMPONENT_NAME = 'vwc-textfield',
 	HELPER_MESSAGE = 'helper',
 	ERROR_MESSAGE = 'error';
 
-describe.only('textfield helper', () => {
+describe('textfield helper', () => {
 	let addedElements = [];
 
 	beforeEach(async () => {
