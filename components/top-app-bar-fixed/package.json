@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-top-app-bar-fixed",
-	"version": "0.11.0",
+	"version": "0.12.0",
 	"description": "top-app-bar-fixed component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/top-app-bar-fixed#readme",
 	"license": "ISC",
@@ -25,7 +25,7 @@
 	},
 	"dependencies": {
 		"@material/mwc-top-app-bar-fixed": "^0.18.0",
-		"@vonage/vvd-core": "^0.11.0",
+		"@vonage/vvd-core": "^0.12.0",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.1"
 	}
