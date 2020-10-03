@@ -45,6 +45,7 @@ export class VWCTextField extends MWCTextField {
 
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
+		this.autoValidate = true;
 		this.shadowRoot
 			?.querySelector('.mdc-notched-outline')
 			?.shadowRoot?.querySelector('.mdc-notched-outline')
@@ -103,10 +104,7 @@ export class VWCTextField extends MWCTextField {
 		const validationMessage = showValidationMessage
 			? this.validationMessage
 			: this.helper;
-		const classes = [
-			'mdc-text-field-helper-text',
-			...mapToClasses(classesMap),
-		].join(' ');
+		const classes = mapToClasses(classesMap).join(' ');
 		return html`
 			<div class="mdc-text-field-helper-line">
 				<vwc-icon
@@ -115,7 +113,9 @@ export class VWCTextField extends MWCTextField {
 					size="small"
 				></vwc-icon>
 				<span class="spacer"></span>
-				<div class="${classes}">${validationMessage}</div>
+				<div class="mdc-text-field-helper-text ${classes}">
+					${validationMessage}
+				</div>
 				${charCounterTemplate}
 			</div>
 		`;
