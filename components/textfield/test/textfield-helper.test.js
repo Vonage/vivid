@@ -13,7 +13,7 @@ const COMPONENT_NAME = 'vwc-textfield',
 	HELPER_MESSAGE = 'helper',
 	ERROR_MESSAGE = 'error';
 
-describe('textfield helper', () => {
+describe.only('textfield helper', () => {
 	let addedElements = [];
 
 	beforeEach(async () => {
@@ -104,7 +104,7 @@ function getAsErrorLine(addedElement) {
 
 function assertExistWithMessage(helperLine, messageExpected) {
 	expect(helperLine).to.exist;
-	expect(helperLine.textContent).to.equal(messageExpected);
+	expect(helperLine.textContent.trim()).to.equal(messageExpected.trim());
 }
 
 async function turnValidityWaitReported(input, toBeValid) {
