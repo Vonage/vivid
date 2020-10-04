@@ -87,7 +87,7 @@ const isInRect = (
  * @fires userScrubRequest - Fires while the user modifies the scrubber's knob location.
  * @fires {number} userPlayPauseRequest - Fires when the user clicks the play/pause button, the "detail" event field will contain a number between zero and one describing the user's relative selected position.
  */
-class MediaController extends HTMLElement implements ExtendableClass {
+class MediaController extends HTMLElement {
 	[SIGNAL] = _.noop;
 	constructor() {
 		super();
@@ -274,24 +274,20 @@ class MediaController extends HTMLElement implements ExtendableClass {
 										type: 'update_knob_position',
 										value: position,
 									})),
-								apiPositionProperty
-									.skipDuplicates()
-									.map((percentage) => ({
-										type: 'update_progress_position',
-										value: percentage,
-									})),
+								apiPositionProperty.skipDuplicates().map((percentage) => ({
+									type: 'update_progress_position',
+									value: percentage,
+								})),
 								userScrubInteractionProperty.map((state) => ({
 									type: 'update_scrub_state',
 									value: state,
 								})),
-								userScrubStream
-									.filter(byType('position_change'))
-									.map(
-										pipe(prop('position'), (position) => ({
-											type: 'update_user_scrub_request',
-											value: position,
-										}))
-									),
+								userScrubStream.filter(byType('position_change')).map(
+									pipe(prop('position'), (position) => ({
+										type: 'update_user_scrub_request',
+										value: position,
+									}))
+								),
 							])
 							.takeUntilBy(apiBus.filter(byType('component_disconnected')).take(1))
 					: kefir.constant({ type: 'update_scrub_state', value: false });
