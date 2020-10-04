@@ -22,6 +22,8 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
+		"@types/kefir": "^3.8.5",
+		"@types/ramda": "^0.27.20",
 		"@vonage/vvd-core": "^0.12.2",
 		"kefir": "^3.8.7",
 		"lit-element": "^2.4.0",

@@ -4444,6 +4444,13 @@
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@types/qs/6.9.5/38c1be40f0d8a01d27d5713743fe407bfa2dc168eb7e3dfbdb4b4c3e8b5ebea1#434711bdd49eb5ee69d90c1d67c354a9a8ecb18b"
   integrity sha1-Q0cRvdSete5p2QwdZ8NUqajssYs=
 
+"@types/ramda@^0.27.20":
+  version "0.27.20"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@types/ramda/0.27.20/d3e2f73ce4416eba8e3313983b90131def8fa415464b2cb70d79482e2b952b24#ced17424e358f058af271d97353d6913fd178663"
+  integrity sha1-ztF0JONY8FivJx2XNT1pE/0XhmM=
+  dependencies:
+    ts-toolbelt "^6.3.3"
+
 "@types/range-parser@*":
   version "1.2.3"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@types/range-parser/1.2.3/b3cb4a67c4e60b3fbe7d9bb594fefe7ca7aeacf3d357cf00015e511dded09028#09f5ae3caa029e6a82b505ffcd431b2f915137bf"
@@ -16837,6 +16844,11 @@ ts-simple-type@~1.0.5:
   version "1.0.7"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ts-simple-type/-/ts-simple-type-1.0.7.tgz#03930af557528dd40eaa121913c7035a0baaacf8"
   integrity sha1-A5MK9VdSjdQOqhIZE8cDWguqrPg=
+
+ts-toolbelt@^6.3.3:
+  version "6.15.5"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ts-toolbelt/-/ts-toolbelt-6.15.5.tgz#cb3b43ed725cb63644782c64fbcad7d8f28c0a83"
+  integrity sha1-yztD7XJctjZEeCxk+8rX2PKMCoM=
 
 tsconfig-paths@^3.9.0:
   version "3.9.0"

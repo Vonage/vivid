@@ -1,9 +1,8 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
 import '@vonage/vvd-core';
 import kefir from 'kefir';
 import { pipe, partial, clamp, prop, always, not, identity, path } from 'ramda';
 import { style as vwcMediaControllerStyle } from './vwc-media-controller.css';
+import { Observable } from 'kefir';
 
 const SIGNAL = Symbol('signal'),
 	TRACK_KNOB_HORIZONTAL_MARGIN = 5,
@@ -29,7 +28,7 @@ interface Point {
 	y: number;
 }
 
-const byType = (typeName: string, ...ops: any) => ({ type }: StreamEvent) =>
+const byType = (typeName: string) => ({ type }: StreamEvent) =>
 	type === typeName;
 
 const createTag = function (
@@ -88,7 +87,9 @@ const isInRect = (
  * @fires {number} userPlayPauseRequest - Fires when the user clicks the play/pause button, the "detail" event field will contain a number between zero and one describing the user's relative selected position.
  */
 class MediaController extends HTMLElement {
-	[SIGNAL] = _.noop;
+	[SIGNAL] = (payload: Record<string, unknown>): void => {
+		void payload;
+	};
 	constructor() {
 		super();
 
@@ -106,8 +107,11 @@ class MediaController extends HTMLElement {
 			rootEl: HTMLElement;
 
 		const componentContent = (function () {
-			const [style, div, button] = ['style', 'div', 'button'].map((tagName) =>
-				partial(createTag, [tagName])
+			const [style, div, button] = ['style', 'div', 'button'].map(
+				(tagName) =>
+					partial(createTag, [tagName]) as (
+						...children: Array<HTMLElement | string>
+					) => HTMLElement
 			);
 			return [
 				style(vwcMediaControllerStyle.cssText),
@@ -121,18 +125,20 @@ class MediaController extends HTMLElement {
 		const rafStream = kefir.repeat(() =>
 				kefir.fromCallback(requestAnimationFrame)
 			),
-			componentConnectedStream = apiBus.filter(byType('component_connected')),
+			componentConnectedStream = apiBus.filter(
+				byType('component_connected') as (p: unknown) => boolean
+			),
 			mouseClickStream = kefir.fromEvents(rootDoc, 'click'),
 			mouseDownStream = kefir.fromEvents(rootDoc, 'mousedown'),
 			touchStartStream = kefir
 				.fromEvents(window, 'touchstart')
-				.map(preventDefault),
+				.map(preventDefault as (p: unknown) => unknown),
 			touchMoveStream = kefir
 				.stream(({ emit }) => {
 					window.addEventListener('touchmove', emit, { passive: false });
 					return () => window.removeEventListener('touchmove', emit);
 				})
-				.map(preventDefault),
+				.map(preventDefault as (p: unknown) => unknown),
 			touchEndStream = kefir.merge(
 				['touchend', 'touchcancel'].map((eventName) =>
 					kefir.fromEvents(window, eventName)
@@ -153,8 +159,8 @@ class MediaController extends HTMLElement {
 				.toProperty(() => true);
 
 		const apiPositionProperty = apiBus
-			.filter(byType('set_position'))
-			.map(prop('value'))
+			.filter(byType('set_position') as (p: unknown) => boolean)
+			.map(prop('value') as (p: unknown) => unknown)
 			.toProperty(always(0));
 
 		const trackBarStream = kefir
@@ -165,83 +171,98 @@ class MediaController extends HTMLElement {
 						touchStartStream.map(path(['changedTouches', 0])),
 						mouseDownStream,
 					])
-					.map(({ clientX: mouseX, clientY: mouseY, identifier }) => ({
-						mouseX,
-						mouseY,
-						identifier,
-						...(({ x, y, width, height }) => ({ x, y, width, height }))(
-							trackEl.getBoundingClientRect()
-						),
-					}))
-					.filter(({ mouseX, mouseY, ...rect }) =>
-						isInRect(
-							{ x: mouseX, y: mouseY },
-							addRectMargin({ marginY: TRACK_VERTICAL_RESPONSIVITY_MARGIN }, rect)
-						)
-					)
-					.flatMapLatest(
-						({
+					.map(function ({ clientX: mouseX, clientY: mouseY, identifier }) {
+						return {
 							mouseX,
 							mouseY,
-							x: rectX,
-							width: rectWidth,
-							identifier: touchIdentifier,
-						}) => {
-							return kefir.concat([
-								kefir.constant({ type: 'start', rectWidth, rectX }),
-								kefir
-									.concat([
-										kefir.constant({ mouseX, mouseY }),
-										kefir
-											.merge([
-												mouseMoveStream,
-												touchMoveStream
-													.map(({ touches }) =>
-														Array.from(touches).find(
-															({ identifier: currentIdentifier }) =>
-																currentIdentifier === touchIdentifier
-														)
-													)
-													.filter(Boolean),
-											])
-											.map(({ clientX: mouseX, clientY: mouseY }) => ({ mouseX, mouseY })),
-									])
-									.map(
-										pipe(
-											prop('mouseX'),
-											clamp(
-												rectX + TRACK_KNOB_HORIZONTAL_MARGIN,
-												rectX + rectWidth - TRACK_KNOB_HORIZONTAL_MARGIN
-											),
-											(pos) =>
-												(pos - (rectX + TRACK_KNOB_HORIZONTAL_MARGIN)) /
-												(rectWidth - TRACK_KNOB_HORIZONTAL_MARGIN * 2)
-										)
+							identifier,
+							...(({ x, y, width, height }) => ({ x, y, width, height }))(
+								trackEl.getBoundingClientRect()
+							),
+						};
+					} as (p: unknown) => unknown)
+					.filter(function ({ mouseX, mouseY, ...rect }) {
+						return isInRect(
+							{ x: mouseX, y: mouseY },
+							addRectMargin(
+								{ marginY: TRACK_VERTICAL_RESPONSIVITY_MARGIN },
+								rect as Rect
+							)
+						);
+					} as (p: unknown) => boolean)
+					.flatMapLatest(function ({
+						mouseX,
+						mouseY,
+						x: rectX,
+						width: rectWidth,
+						identifier: touchIdentifier,
+					}) {
+						return kefir.concat([
+							kefir.constant({ type: 'start', rectWidth, rectX }),
+							kefir
+								.concat([
+									kefir.constant({ mouseX, mouseY }),
+									kefir
+										.merge([
+											mouseMoveStream,
+											touchMoveStream
+												.map((event: unknown): unknown => {
+													const touches = (event as Record<string, ArrayLike<unknown>>)[
+														'touches'
+													];
+													return Array.from(touches).find(
+														(({ identifier: currentIdentifier }) =>
+															currentIdentifier === touchIdentifier) as (
+															value: unknown
+														) => unknown
+													);
+												})
+												.filter(Boolean),
+										])
+										.map((({ clientX: mouseX, clientY: mouseY }) => ({
+											mouseX,
+											mouseY,
+										})) as (value: unknown) => unknown),
+								])
+								.map(
+									pipe(
+										prop('mouseX') as (x: unknown) => unknown,
+										clamp(
+											rectX + TRACK_KNOB_HORIZONTAL_MARGIN,
+											rectX + rectWidth - TRACK_KNOB_HORIZONTAL_MARGIN
+										),
+										(pos) =>
+											(pos - (rectX + TRACK_KNOB_HORIZONTAL_MARGIN)) /
+											(rectWidth - TRACK_KNOB_HORIZONTAL_MARGIN * 2)
 									)
-									.takeUntilBy(
-										kefir
-											.merge([
-												mouseUpStream,
-												contextMenuStream,
-												touchEndStream.filter(({ changedTouches }) =>
-													Array.from(changedTouches)
-														.map(prop('identifier'))
-														.includes(touchIdentifier)
-												),
-											])
-											.take(1)
-									)
-									.map((position) => ({ type: 'position_change', position })),
-								kefir.constant({ type: 'end' }),
-							]);
-						}
-					);
+								)
+								.takeUntilBy(
+									kefir
+										.merge([
+											mouseUpStream,
+											contextMenuStream,
+											touchEndStream.filter((event: unknown): boolean => {
+												const changedTouches = (event as Record<
+													string,
+													unknown
+												>['changedTouches']) as ArrayLike<unknown>;
+												return Array.from(changedTouches)
+													.map(prop('identifier') as (parameter: unknown) => unknown)
+													.includes(touchIdentifier);
+											}),
+										])
+										.take(1)
+								)
+								.map((position) => ({ type: 'position_change', position })),
+							kefir.constant({ type: 'end' }),
+						]);
+					} as (p: unknown) => Observable<{ type: string }, unknown>);
 
 				const userScrubInteractionProperty = kefir
 					.merge(
 						['start', 'end'].map((eventType) =>
 							userScrubStream
-								.filter(byType(eventType))
+								.filter(byType(eventType) as (parameter: unknown) => boolean)
 								.map(always(eventType === 'start'))
 						)
 					)
@@ -258,8 +279,10 @@ class MediaController extends HTMLElement {
 												.flatMap((active) => {
 													return active
 														? userScrubStream
-																.filter(byType('position_change'))
-																.map(prop('position'))
+																.filter(
+																	byType('position_change') as (parameter: unknown) => boolean
+																)
+																.map(prop('position') as (parameter: unknown) => unknown)
 														: apiPositionProperty.filterBy(
 																userScrubInteractionProperty.map(not)
 														  );
@@ -282,14 +305,25 @@ class MediaController extends HTMLElement {
 									type: 'update_scrub_state',
 									value: state,
 								})),
-								userScrubStream.filter(byType('position_change')).map(
-									pipe(prop('position'), (position) => ({
-										type: 'update_user_scrub_request',
-										value: position,
-									}))
-								),
+								userScrubStream
+									.filter(byType('position_change') as (parameter: unknown) => boolean)
+									.map(
+										pipe(
+											prop('position') as (a: unknown) => unknown,
+											(position): unknown => ({
+												type: 'update_user_scrub_request',
+												value: position,
+											})
+										)
+									),
 							])
-							.takeUntilBy(apiBus.filter(byType('component_disconnected')).take(1))
+							.takeUntilBy(
+								apiBus
+									.filter(
+										byType('component_disconnected') as (parameter: unknown) => boolean
+									)
+									.take(1)
+							)
 					: kefir.constant({ type: 'update_scrub_state', value: false });
 			});
 
@@ -304,53 +338,58 @@ class MediaController extends HTMLElement {
 
 		// Update knob position
 		trackBarStream
-			.filter(byType('update_knob_position'))
-			.map(prop('value'))
+			.filter(byType('update_knob_position') as (parameter: unknown) => boolean)
+			.map(prop('value') as (parameter: unknown) => unknown)
 			.onValue((position) => {
 				const { width: trackWidth } = trackEl.getBoundingClientRect();
 				ScrubberKnobEl.style.transform = `translate(-50%, -50%) translateX(${
 					TRACK_KNOB_HORIZONTAL_MARGIN +
-					position * (trackWidth - TRACK_KNOB_HORIZONTAL_MARGIN * 2)
+					(position as number) * (trackWidth - TRACK_KNOB_HORIZONTAL_MARGIN * 2)
 				}px)`;
 			});
 
 		trackBarStream
-			.filter(byType('update_progress_position'))
-			.map(prop('value'))
+			.filter(
+				byType('update_progress_position') as (parameter: unknown) => boolean
+			)
+			.map(prop('value') as (parameter: unknown) => unknown)
 			.onValue(
 				(percentage) =>
 					(trackEl.style.backgroundImage = `linear-gradient(90deg, ${TRACK_ACTIVE_COLOR} 0%, ${TRACK_ACTIVE_COLOR} ${
-						percentage * 100
+						(percentage as number) * 100
 					}%, ${TRACK_INACTIVE_COLOR} ${
-						percentage * 100
+						(percentage as number) * 100
 					}%, ${TRACK_INACTIVE_COLOR} 100%)`)
 			);
 
 		trackBarStream
-			.filter(byType('update_scrub_state'))
-			.map(prop('value'))
-			.onValue((scrub) => rootEl.classList.toggle('scrub', scrub));
+			.filter(byType('update_scrub_state') as (parameter: unknown) => boolean)
+			.map(prop('value') as (parameter: unknown) => unknown)
+			.onValue((scrub) => rootEl.classList.toggle('scrub', scrub as boolean));
 
 		// Send user scrub event
 		trackBarStream
-			.filter(byType('update_user_scrub_request'))
-			.map(prop('value'))
+			.filter(
+				byType('update_user_scrub_request') as (parameter: unknown) => boolean
+			)
+			.map(prop('value') as (parameter: unknown) => unknown)
 			.onValue(partial(sendCustomEvent, ['userScrubRequest']));
 
 		const playStateProperty = apiBus
-			.filter(byType('set_play_state'))
-			.map(prop('value'))
+			.filter(byType('set_play_state') as (parameter: unknown) => boolean)
+			.map(prop('value') as (parameter: unknown) => unknown)
 			.toProperty(always(false));
 
 		// Update play state
 		playStateProperty.onValue((isPlaying) =>
-			rootEl.classList.toggle('play', isPlaying)
+			rootEl.classList.toggle('play', isPlaying as boolean)
 		);
 
 		// Send user play/pause event
 		mouseClickStream
 			.filter(
-				({ target }: { target: HTMLElement }) => target === playPauseControlEl
+				(obj: unknown): boolean =>
+					(obj as Record<string, unknown>)['target'] === playPauseControlEl
 			)
 			.onValue(partial(sendCustomEvent, ['userPlayPauseRequest', null]));
 	}
