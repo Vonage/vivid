@@ -29,32 +29,24 @@ describe('VwcKeypad', () => {
 		const el = addElement(
 			await textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 		)[0];
-		const digit1 = el.shadowRoot.getElementById('1-digit');
-		const digit2 = el.shadowRoot.getElementById('2-digit');
-		const digit3 = el.shadowRoot.getElementById('3-digit');
-		const digit4 = el.shadowRoot.getElementById('4-digit');
-		const digit5 = el.shadowRoot.getElementById('5-digit');
-		const digit6 = el.shadowRoot.getElementById('6-digit');
-		const digit7 = el.shadowRoot.getElementById('7-digit');
-		const digit8 = el.shadowRoot.getElementById('8-digit');
-		const digit9 = el.shadowRoot.getElementById('9-digit');
-		const digit0 = el.shadowRoot.getElementById('0-digit');
-		const digitAsterisk = el.shadowRoot.getElementById('asterisk-digit');
-		const digitHash = el.shadowRoot.getElementById('hash-digit');
-		digit1.click();
-		digit2.click();
-		digit3.click();
-		digit4.click();
-		digit5.click();
-		digit6.click();
-		digit7.click();
-		digit8.click();
-		digit9.click();
-		digit0.click();
-		digitAsterisk.click();
-		digitHash.click();
 
-		expect(el.digits).to.equal('1234567890*#');
+		await waitNextTask();
+		hitKeys(el, [
+			'0',
+			'1',
+			'2',
+			'3',
+			'4',
+			'5',
+			'6',
+			'7',
+			'8',
+			'9',
+			'asterisk',
+			'hash',
+		]);
+
+		expect(el.digits).to.equal('0123456789*#');
 	});
 
 	it('no-asterisk attribute removes * button', async () => {
@@ -102,12 +94,9 @@ describe('VwcKeypad', () => {
 		const el = addElement(
 			await textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 		)[0];
-		const digit1 = el.shadowRoot.getElementById('1-digit');
-		const digit2 = el.shadowRoot.getElementById('2-digit');
-		const digit3 = el.shadowRoot.getElementById('3-digit');
-		digit1.click();
-		digit2.click();
-		digit3.click();
+
+		await waitNextTask();
+		hitKeys(el, ['1', '2', '3']);
 
 		const actionButton = el.shadowRoot.getElementById('action-button');
 		actionButton.click();
@@ -145,29 +134,22 @@ describe('VwcKeypad', () => {
 		const el = addElement(
 			await textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 		)[0];
-		const digit1 = el.shadowRoot.getElementById('1-digit');
-		const digit2 = el.shadowRoot.getElementById('2-digit');
-		const digit3 = el.shadowRoot.getElementById('3-digit');
-		const digit4 = el.shadowRoot.getElementById('4-digit');
-		const digit5 = el.shadowRoot.getElementById('5-digit');
-		const digit6 = el.shadowRoot.getElementById('6-digit');
-		const digit7 = el.shadowRoot.getElementById('7-digit');
+
+		await waitNextTask();
 		const digitsDisplay = el.shadowRoot.getElementById('digits-display');
-		digit1.click();
-		digit2.click();
-		digit3.click();
-		digit4.click();
+
+		hitKeys(el, ['1', '2', '3', '4']);
+
 		await waitNextTask();
 		digitsDisplay.setSelectionRange(2, 2);
 		el.displayBlur();
-		await waitNextTask();
 
+		await waitNextTask();
 		expect(digitsDisplay.selectionStart).to.equal(2);
-		digit5.click();
-		digit6.click();
-		digit7.click();
-		await waitNextTask();
 
+		hitKeys(el, ['5', '6', '7']);
+
+		await waitNextTask();
 		expect(el.digits).to.equal('1256734');
 	});
 
@@ -179,3 +161,10 @@ describe('VwcKeypad', () => {
 		expect(el).shadowDom.to.be.accessible();
 	});
 });
+
+//	internal helper function
+function hitKeys(keypad, keys) {
+	for (const key of keys) {
+		keypad.shadowRoot.getElementById(`${key}-digit`).click();
+	}
+}
