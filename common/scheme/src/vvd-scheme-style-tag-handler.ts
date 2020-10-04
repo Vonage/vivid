@@ -14,10 +14,10 @@ const importSchemeMap = new Map<PredefinedScheme, Promise<ModuleType>>([
 const style = mountStyle();
 
 function mountStyle() {
-	const style = document.createElement('style');
-	style.innerHTML = preSchemeLoadingCssText;
-	document.head.appendChild(style);
-	return style;
+	const styleElement = document.createElement('style');
+	styleElement.innerHTML = preSchemeLoadingCssText;
+	document.head.appendChild(styleElement);
+	return styleElement;
 }
 
 export async function applySchemeCSS(scheme: PredefinedScheme): Promise<void> {
