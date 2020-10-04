@@ -1,8 +1,13 @@
-# [0.10.0](https://github.com/vonage/vivid/compare/v0.11.2...v0.10.0) (2020-09-29)
+# [0.12.0](https://github.com/vonage/vivid/compare/v0.11.0...v0.12.0) (2020-10-03)
+
+
+### Bug Fixes
+
+* **scheme:** fixed include typo ([fa93df6](https://github.com/vonage/vivid/commit/fa93df69f191245351165f4372693b8a6ee8b655))
 
 
 
-## [0.11.2](https://github.com/vonage/vivid/compare/v0.10.0...v0.11.2) (2020-09-29)
+# [0.11.0](https://github.com/vonage/vivid/compare/v0.10.0...v0.11.0) (2020-09-29)
 
 
 

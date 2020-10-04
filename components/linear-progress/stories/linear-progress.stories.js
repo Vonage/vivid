@@ -1,15 +1,18 @@
 import '@vonage/vwc-linear-progress/vwc-linear-progress.js';
 import { html } from 'lit-element';
+import { spread } from '@open-wc/lit-helpers';
+import { argTypes } from './arg-types.js';
 
 export default {
 	title: 'Atoms/Linear Progress',
-	component: 'vwc-linear-progress'
+	component: 'vwc-linear-progress',
+	argTypes
 }
 
-export const basic = () => html`
-	<h3>Default</h3>
-	<vwc-linear-progress size="small" progress="0.5" buffer="0.75"></vwc-linear-progress>
+const Template = args => html`<vwc-linear-progress ...=${spread(args)}></vwc-linear-progress>`;
 
-	<h3>Indeterminate</h3>
-	<vwc-linear-progress size="small" indeterminate></vwc-linear-progress>
-`;
+export const Default = Template.bind({});
+Default.args = { progress: '0.5' };
+
+export const Indeterminate = Template.bind({});
+Indeterminate.args = { indeterminate: '', progress: '' };

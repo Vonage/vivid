@@ -6,14 +6,13 @@ export function submitOnEnter(element: HTMLInputElement): void {
 		this: HTMLInputElement,
 		event: KeyboardEvent
 	) {
-		event.preventDefault();
-
 		const form = getFormByIdOrClosest(this);
 		if (!form) {
 			return;
 		}
 
 		if (event.key === 'Enter') {
+			event.preventDefault();
 			requestSubmit(form);
 		}
 	});
