@@ -1,3 +1,12 @@
+# [0.12.0](https://github.com/vonage/vivid/compare/v0.11.0...v0.12.0) (2020-10-03)
+
+
+### Bug Fixes
+
+* **textfield:** submit on enter prevented typing input ([11e5022](https://github.com/vonage/vivid/commit/11e50224c602782e9914050b00fb211d2697d755))
+
+
+
 # [0.11.0](https://github.com/vonage/vivid/compare/v0.10.0...v0.11.0) (2020-09-29)
 
 
