@@ -132,13 +132,13 @@ export class VWCCarousel extends LitElement {
 	}
 
 	private ensureStyleApplied() {
-		VWCCarousel.styles.forEach((style, index) => {
+		VWCCarousel.styles.forEach((styleResult, index) => {
 			const tmpId = `${CAROUSEL_STYLE_ID}-${index}`;
 			if (!document.head.querySelector(`#${tmpId}`)) {
 				const cs = document.createElement('style');
 				cs.id = tmpId;
 				cs.type = 'text/css';
-				cs.innerHTML = style.cssText;
+				cs.innerHTML = styleResult.cssText;
 				document.head.appendChild(cs);
 			}
 		});
