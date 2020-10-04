@@ -12,8 +12,8 @@ const SIGNAL = Symbol('signal'),
 
 interface StreamEvent {
 	type: string;
-	value?: any;
-	[key: string]: any;
+	value?: unknown;
+	[key: string]: unknown;
 }
 
 interface Rect {
@@ -49,8 +49,8 @@ const preventDefault = (e: Event) => {
 
 const sendCustomEventFactory = (target: HTMLElement) => (
 	eventType: string,
-	detail: any,
-	options: any = { bubbles: true, composed: true }
+	detail: unknown,
+	options: Record<string, unknown> = { bubbles: true, composed: true }
 ) => {
 	const event = new CustomEvent(eventType, { ...options, detail });
 	target.dispatchEvent(event);
@@ -373,7 +373,9 @@ class MediaController extends HTMLElement {
 				byType('update_user_scrub_request') as (parameter: unknown) => boolean
 			)
 			.map(prop('value') as (parameter: unknown) => unknown)
-			.onValue(partial(sendCustomEvent, ['userScrubRequest']));
+			.onValue(
+				partial(sendCustomEvent, ['userScrubRequest']) as (p: unknown) => void
+			);
 
 		const playStateProperty = apiBus
 			.filter(byType('set_play_state') as (parameter: unknown) => boolean)
@@ -391,7 +393,11 @@ class MediaController extends HTMLElement {
 				(obj: unknown): boolean =>
 					(obj as Record<string, unknown>)['target'] === playPauseControlEl
 			)
-			.onValue(partial(sendCustomEvent, ['userPlayPauseRequest', null]));
+			.onValue(
+				partial(sendCustomEvent, ['userPlayPauseRequest', null]) as (
+					p: unknown
+				) => void
+			);
 	}
 
 	/**
