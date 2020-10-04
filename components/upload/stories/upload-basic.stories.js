@@ -1,15 +1,17 @@
-import '@vonage/vwc-upload/vwc-upload.js';
+import '@vonage/vwc-upload';
+import '@vonage/vwc-button';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Atoms/Upload',
+	title: 'Composite/Upload',
 	component: 'vwc-upload',
 	argTypes
 }
 
-const Template = args => html`<vwc-upload ...=${spread(args)}>Upload</vwc-upload>`;
+const Template = args => html`
+<vwc-upload ...=${spread(args)}></vwc-upload>`;
 
 export const Basic = Template.bind({});
-Basic.args = { };
+Basic.args = { label: 'Choose a profile picture:', multiple: true, accept: "image/png, image/jpeg" };
