@@ -1,20 +1,26 @@
-import { html, fixture, expect, elementUpdated } from '@open-wc/testing';
-
 import '../vwc-keypad.js';
+import { textToDomToParent, waitNextTask } from '../../../test/test-helpers.js';
+import { chaiA11yAxe } from 'chai-a11y-axe';
+
+chai.use(chaiA11yAxe);
 
 describe('VwcKeypad', () => {
 	it('has a default no-asterisk false, no-hash false, no-display false, actionText "Enter", cancelText "Cancel"', async () => {
-		const el = await fixture(html` <vwc-keypad></vwc-keypad> `);
+		const els = await textToDomToParent('<vwc-keypad></vwc-keypad>');
+		const el = els[0];
 
 		expect(el.noAsterisk).to.equal(false);
 		expect(el.noHash).to.equal(false);
 		expect(el.noDisplay).to.equal(false);
 		expect(el.actionText).to.equal('Enter');
 		expect(el.cancelText).to.equal('Cancel');
+
+		el.remove();
 	});
 
 	it('keypad buttons clicks add digits to display', async () => {
-		const el = await fixture(html` <vwc-keypad></vwc-keypad> `);
+		const els = await textToDomToParent('<vwc-keypad></vwc-keypad>');
+		const el = els[0];
 
 		const digit1 = el.shadowRoot.getElementById('1-digit');
 		const digit2 = el.shadowRoot.getElementById('2-digit');
@@ -42,10 +48,13 @@ describe('VwcKeypad', () => {
 		digitHash.click();
 
 		expect(el.digits).to.equal('1234567890*#');
+
+		el.remove();
 	});
 
 	it('no-asterisk attribute removes * button', async () => {
-		const el = await fixture(html` <vwc-keypad no-asterisk></vwc-keypad> `);
+		const els = await textToDomToParent('<vwc-keypad no-asterisk></vwc-keypad>');
+		const el = els[0];
 		const asteriskButton = el.shadowRoot.querySelector('#asterisk-digit');
 
 		expect(el.noAsterisk).to.equal(true);
@@ -53,7 +62,8 @@ describe('VwcKeypad', () => {
 	});
 
 	it('no-hash attribute removes # button', async () => {
-		const el = await fixture(html` <vwc-keypad no-hash></vwc-keypad> `);
+		const els = await textToDomToParent('<vwc-keypad no-hash></vwc-keypad>');
+		const el = els[0];
 		const hashButton = el.shadowRoot.querySelector('#hash-digit');
 
 		expect(el.noHash).to.equal(true);
@@ -61,7 +71,8 @@ describe('VwcKeypad', () => {
 	});
 
 	it('no-display attribute removes display input', async () => {
-		const el = await fixture(html` <vwc-keypad no-display></vwc-keypad> `);
+		const els = await textToDomToParent('<vwc-keypad no-display></vwc-keypad>');
+		const el = els[0];
 		const digitsDisplay = el.shadowRoot.querySelector('#digits-display');
 
 		expect(el.noDisplay).to.equal(true);
@@ -69,14 +80,16 @@ describe('VwcKeypad', () => {
 	});
 
 	it('called createAction method sets actionStarted to true', async () => {
-		const el = await fixture(html` <vwc-keypad></vwc-keypad> `);
+		const els = await textToDomToParent('<vwc-keypad></vwc-keypad>');
+		const el = els[0];
 
 		el.createAction();
 		expect(el.actionStarted).to.equal(true);
 	});
 
 	it('end action and clear digits on cancel button click', async () => {
-		const el = await fixture(html` <vwc-keypad></vwc-keypad> `);
+		const els = await textToDomToParent('<vwc-keypad></vwc-keypad>');
+		const el = els[0];
 
 		const digit1 = el.shadowRoot.getElementById('1-digit');
 		const digit2 = el.shadowRoot.getElementById('2-digit');
@@ -89,7 +102,7 @@ describe('VwcKeypad', () => {
 		actionButton.click();
 
 		el.createAction();
-		await elementUpdated(el);
+		await waitNextTask();
 		const cancelButton = el.shadowRoot.getElementById('cancel-button');
 		cancelButton.click();
 
@@ -98,21 +111,24 @@ describe('VwcKeypad', () => {
 	});
 
 	it('can change Action button text via attribute', async () => {
-		const el = await fixture(html`
-			<vwc-keypad actionText="Start"></vwc-keypad>
-		`);
+		const els = await textToDomToParent(
+			'<vwc-keypad actionText="Start"></vwc-keypad>'
+		);
 
-		expect(el.actionText).to.equal('Start');
+		expect(els[0].actionText).to.equal('Start');
 	});
 
 	it('can change Cancel button text via attribute', async () => {
-		const el = await fixture(html` <vwc-keypad cancelText="Stop"></vwc-keypad> `);
+		const els = await textToDomToParent(
+			'<vwc-keypad cancelText="Stop"></vwc-keypad>'
+		);
 
-		expect(el.cancelText).to.equal('Stop');
+		expect(els[0].cancelText).to.equal('Stop');
 	});
 
 	it('maintains cursor position', async () => {
-		const el = await fixture(html` <vwc-keypad></vwc-keypad> `);
+		const els = await textToDomToParent('<vwc-keypad></vwc-keypad>');
+		const el = els[0];
 
 		const digit1 = el.shadowRoot.getElementById('1-digit');
 		const digit2 = el.shadowRoot.getElementById('2-digit');
@@ -126,23 +142,24 @@ describe('VwcKeypad', () => {
 		digit2.click();
 		digit3.click();
 		digit4.click();
-		await elementUpdated(digitsDisplay);
+		await waitNextTask();
 		digitsDisplay.setSelectionRange(2, 2);
 		el.displayBlur();
-		await elementUpdated(digitsDisplay);
+		await waitNextTask();
 
 		expect(digitsDisplay.selectionStart).to.equal(2);
 		digit5.click();
 		digit6.click();
 		digit7.click();
-		await elementUpdated(digitsDisplay);
+		await waitNextTask();
 
 		expect(el.digits).to.equal('1256734');
 	});
 
 	it('passes the a11y audit', async () => {
-		const el = await fixture(html` <vwc-keypad></vwc-keypad> `);
+		const els = await textToDomToParent('<vwc-keypad></vwc-keypad>');
 
-		await expect(el).shadowDom.to.be.accessible();
+		await waitNextTask();
+		expect(els[0]).shadowDom.to.be.accessible();
 	});
 });
