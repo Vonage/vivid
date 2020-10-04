@@ -18,7 +18,12 @@ import { BaseElement } from '@material/mwc-base/base-element.js';
 import { observer } from '@material/mwc-base/observer.js';
 import { announce } from '@material/dom/announce';
 import { addHasRemoveClass } from '@material/mwc-base/utils.js';
-import { MDCChipInteractionEvent, MDCChipSelectionEvent, MDCChipRemovalEvent, MDCChipNavigationEvent } from '@material/chips/chip/types';
+import {
+	MDCChipInteractionEvent,
+	MDCChipSelectionEvent,
+	MDCChipRemovalEvent,
+	MDCChipNavigationEvent,
+} from '@material/chips/chip/types';
 import { MDCChipSetAdapter } from '@material/chips/chip-set/adapter.js';
 import { MDCChipSetFoundation } from '@material/chips/chip-set/foundation.js';
 import { html, property, query } from 'lit-element';
@@ -53,7 +58,7 @@ export class ChipSetBase extends BaseElement {
 			announceMessage: function (message) {
 				announce(message);
 			},
-			removeChipAtIndex: index => {
+			removeChipAtIndex: (index) => {
 				const chip = this.chipsArray[index];
 				if (chip) {
 					if (chip.parentNode) {
@@ -69,7 +74,7 @@ export class ChipSetBase extends BaseElement {
 					chip.setSelectedFromChipSet(isSelected, shouldNotifyClients);
 				}
 			},
-			getIndexOfChipById: chipId => {
+			getIndexOfChipById: (chipId) => {
 				for (let i = 0; i < this.chipsArray.length; i++) {
 					if (this.chipsArray[i].id === chipId) {
 						return i;
@@ -78,26 +83,27 @@ export class ChipSetBase extends BaseElement {
 
 				return -1;
 			},
-			focusChipPrimaryActionAtIndex: index => {
+			focusChipPrimaryActionAtIndex: (index) => {
 				const chip = this.chipsArray[index];
 				if (chip) {
 					chip.focusPrimaryAction();
 				}
 			},
-			focusChipTrailingActionAtIndex: index => {
+			focusChipTrailingActionAtIndex: (index) => {
 				const chip = this.chipsArray[index];
 				if (chip) {
 					this.chipsArray[index].focusTrailingAction();
 				}
 			},
-			removeFocusFromChipAtIndex: index => {
+			removeFocusFromChipAtIndex: (index) => {
 				const chip = this.chipsArray[index];
 				if (chip) {
 					this.chipsArray[index].removeFocus();
 				}
 			},
-			isRTL: () => getComputedStyle(this.mdcRoot).getPropertyValue('direction') === 'rtl',
-			getChipListCount: () => this.chipsArray.length
+			isRTL: () =>
+				getComputedStyle(this.mdcRoot).getPropertyValue('direction') === 'rtl',
+			getChipListCount: () => this.chipsArray.length,
 		};
 	}
 
@@ -105,7 +111,7 @@ export class ChipSetBase extends BaseElement {
 		super.connectedCallback();
 		this.chipsObserver.observe(this, {
 			childList: true,
-			subtree: true
+			subtree: true,
 		});
 
 		this.syncChips();
@@ -120,18 +126,18 @@ export class ChipSetBase extends BaseElement {
 		const classes = {
 			'mdc-ship-set--input': this.type === 'input',
 			'mdc-chip-set--choice': this.type === 'choice',
-			'mdc-chip-set--filter': this.type === 'filter'
+			'mdc-chip-set--filter': this.type === 'filter',
 		};
 
-		return html`
-      <div class="mdc-chip-set ${classMap(classes)}"
-        @MDCChip:interaction=${this.handleChipInteraction}
-        @MDCChip:navigation=${this.handleChipNavigation}
-        @MDCChip:removal=${this.handleChipRemoval}
-        @MDCChip:selection=${this.handleChipSelection}
-      >
-        <slot></slot>
-      </div>`;
+		return html` <div
+			class="mdc-chip-set ${classMap(classes)}"
+			@MDCChip:interaction=${this.handleChipInteraction}
+			@MDCChip:navigation=${this.handleChipNavigation}
+			@MDCChip:removal=${this.handleChipRemoval}
+			@MDCChip:selection=${this.handleChipSelection}
+		>
+			<slot></slot>
+		</div>`;
 	}
 
 	protected syncChips() {

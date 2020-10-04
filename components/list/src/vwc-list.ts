@@ -1,3 +1,4 @@
+import '@vonage/vvd-core';
 import { customElement } from 'lit-element';
 import { List as MWCList } from '@material/mwc-list/mwc-list';
 import { style as vwcListStyle } from './vwc-list.css.js';
@@ -18,4 +19,4 @@ MWCList.styles = [styleCoupling, mwcListStyle, vwcListStyle];
  * This component is an extension of [<mwc-list>](https://github.com/material-components/material-components-web-components/tree/master/packages/list)
  */
 @customElement('vwc-list')
-export class VWCList extends MWCList { }
+export class VWCList extends MWCList {}

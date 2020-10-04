@@ -5,7 +5,9 @@ chai.use(chaiDomDiff);
 
 describe('test vwc-fab', () => {
 	it('vwc-fab is defined as a custom element', async () => {
-		assert.exists(customElements.get('vwc-fab', 'vwc-fab element is not defined'));
+		assert.exists(
+			customElements.get('vwc-fab', 'vwc-fab element is not defined')
+		);
 	});
 
 	it('vwc-fab has internal contents', async () => {

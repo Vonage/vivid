@@ -1,121 +1,127 @@
 import '../vwc-textarea.js';
-import { textToDomToParent, waitNextTask, assertComputedStyle } from '../../../test/test-helpers.js';
+import {
+	textToDomToParent,
+	waitNextTask,
+	assertComputedStyle,
+	changeValueAndNotify,
+	isolatedElementsCreation,
+	listenToSubmission,
+} from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
+import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
 chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-textarea';
 
-function listenToSubmission(formElement) {
-	return new Promise(res => {
-		formElement.addEventListener('submit', () => {
-			const formData = new FormData(formElement);
-			res(formData);
-		});
-	});
-}
-
-async function changeFieldValue(actualElement, value, eventName = 'change') {
-	actualElement.value = value;
-	await waitNextTask();
-
-	let evt = new Event(eventName);
-	actualElement.dispatchEvent(evt);
+function getHiddenInput(formElement, fieldName) {
+	return formElement.querySelector(`[name="${fieldName}"]`);
 }
 
 describe('textarea', () => {
-	let addedElements = [];
-
-	afterEach(() => {
-		while (addedElements.length) {
-			addedElements.pop().remove();
-		}
-	});
+	let addElement = isolatedElementsCreation();
 
 	it('should be defined as a custom element', async () => {
-		assert.exists(customElements.get(COMPONENT_NAME, 'vwc-textarea element is not defined'));
+		assert.exists(
+			customElements.get(COMPONENT_NAME, 'vwc-textarea element is not defined')
+		);
 	});
 
 	it('should have internal contents', async () => {
-		addedElements = textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`);
-		const actualElement = addedElements[0];
+		const [actualElement] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+		);
 		await waitNextTask();
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
-	describe(`form association`, function() {
+	describe(`form association`, function () {
+		function createElementInForm(fieldName, fieldValue, formId, otherFormId) {
+			const otherForm = otherFormId
+				? `<form onsubmit="return false" id="${otherFormId}"><button></button></form>`
+				: '';
+			return addElement(
+				textToDomToParent(
+					`<form onsubmit="return false" name="testForm" id="testForm">
+									<${COMPONENT_NAME} name="${fieldName}"
+																		 value="${fieldValue}"
+																		 ${formId ? `form="${formId}"` : ''}>
 
-		it(`should attach to closest form`, async function() {
-			const fieldValue = `
+									</${COMPONENT_NAME}>
+									<button></button>
+								</form>
+								${otherForm}`
+				)
+			);
+		}
+
+		const fieldValue = `
 				${Math.random().toString()}
 				${Math.random().toString()}
 			`;
-			const fieldName = 'test-field';
-			addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} name="${fieldName}" value="${fieldValue}">Button Text</${COMPONENT_NAME}></form>`);
-			const formElement = addedElements[0];
-			await waitNextTask();
+		const fieldName = 'test-field';
 
+		it(`should attach to closest form`, async function () {
+			const [formElement] = createElementInForm(fieldName, fieldValue);
 			const submitPromise = listenToSubmission(formElement);
-
-			formElement.requestSubmit();
+			await waitNextTask();
+			requestSubmit(formElement);
 
 			for (let pair of (await submitPromise).entries()) {
 				expect(pair[0]).to.equal(fieldName);
 				expect(pair[1].split('\r').join('')).to.equal(fieldValue);
 			}
 
-			expect(formElement.querySelectorAll(`textarea[name="${fieldName}"`).length).to.equal(1);
+			expect(
+				formElement.querySelectorAll(`textarea[name="${fieldName}"`).length
+			).to.equal(1);
 		});
 
 		it(`should attach to form when given form id`, async function () {
-			const fieldValue = Math.random().toString();
-			const fieldName = 'test-field';
 			const externalFormID = 'externalForm';
-
-			addedElements = textToDomToParent(`
-				<form onsubmit="return false" name="testForm" id="testForm">
-					<${COMPONENT_NAME} name="${fieldName}" value="${fieldValue}" form="${externalFormID}">Button Text
-					</${COMPONENT_NAME}>
-				</form>
-				<form onsubmit="return false" name="externalForm" id="${externalFormID}"></form>`);
+			const [formElement, externalForm] = createElementInForm(
+				fieldName,
+				fieldValue,
+				externalFormID,
+				externalFormID
+			);
 
 			await waitNextTask();
 
-			const formElement = addedElements[0];
-			const externalForm = addedElements[1];
-
 			const submitPromise = listenToSubmission(externalForm);
 
-			externalForm.requestSubmit();
+			requestSubmit(externalForm);
 
 			for (let pair of (await submitPromise).entries()) {
 				expect(pair[0]).to.equal(fieldName);
-				expect(pair[1]).to.equal(fieldValue);
+				expect(pair[1].split('\r').join('')).to.equal(fieldValue);
 			}
 
-			expect(formElement.querySelector(`textarea[name="${fieldName}"`)).to.equal(null);
-			expect(externalForm.querySelectorAll(`textarea[name="${fieldName}"`).length).to.equal(1);
+			expect(formElement.querySelector(`textarea[name="${fieldName}"`)).to.equal(
+				null
+			);
+			expect(
+				externalForm.querySelectorAll(`textarea[name="${fieldName}"`).length
+			).to.equal(1);
 		});
 
 		it(`should do nothing if form value resolves to a non form element`, async function () {
-			const fieldValue = Math.random().toString();
-			const fieldName = 'test-field';
-			const formId = 'testForm';
-			addedElements = textToDomToParent(`<div onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} name="${fieldName}" value="${fieldValue}" form="${formId}">Button Text</${COMPONENT_NAME}></div>`);
-			const formElement = addedElements[0];
+			const noneExistentFormId = 'noneExistentFormId';
+			const [formElement] = createElementInForm(
+				fieldName,
+				fieldValue,
+				noneExistentFormId
+			);
+
 			await waitNextTask();
 
 			expect(formElement.querySelector('textarea')).to.equal(null);
 		});
 
 		describe(`value binding`, function () {
-
 			it(`should reset the value of the custom element to default on form reset`, async function () {
-				const fieldValue = Math.random().toString();
-				const fieldName = 'test-field';
-				addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} name="${fieldName}" value="${fieldValue}">Button Text</${COMPONENT_NAME}></form>`);
-				const formElement = addedElements[0];
-				const actualElement = formElement.firstChild;
+				const [formElement] = createElementInForm(fieldName, fieldValue);
+				const actualElement = formElement.querySelector(COMPONENT_NAME);
 				await waitNextTask();
 				actualElement.value = '5';
 				await waitNextTask();
@@ -125,45 +131,42 @@ describe('textarea', () => {
 			});
 
 			it(`should change the value of the mock input on internal input change`, async function () {
-				const fieldValue = Math.random().toString();
-				const fieldName = 'test-field';
-				addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} name="${fieldName}">Button Text</${COMPONENT_NAME}></form>`);
-				const formElement = addedElements[0];
-				const actualElement = formElement.firstChild;
+				const [formElement] = createElementInForm(fieldName, fieldValue);
+				const actualElement = formElement.querySelector(COMPONENT_NAME);
 				await waitNextTask();
 
-				await changeFieldValue(actualElement, fieldValue, 'change');
+				await changeValueAndNotify(actualElement, fieldValue, 'change');
 
-				expect(actualElement.hiddenInput.value).to.equal(fieldValue);
+				expect(getHiddenInput(formElement, fieldName).value).to.equal(fieldValue);
 			});
 		});
 
 		describe(`validation`, function () {
+			const validValue = 'abc';
+			const invalidValue = '';
+
 			it(`should get validity from the element's validationMessage`, async function () {
-				const fieldName = 'test-field';
-				addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} required name="${fieldName}">Button Text</${COMPONENT_NAME}></form>`);
-				const formElement = addedElements[0];
-				const actualElement = formElement.firstChild;
+				const [formElement] = createElementInForm(fieldName, invalidValue);
+				const actualElement = formElement.querySelector(COMPONENT_NAME);
+				actualElement.setAttribute('required', 'true');
 				await waitNextTask();
 
 				const invalidity = formElement.checkValidity();
 
-				await changeFieldValue(actualElement, 'abc', 'input');
+				await changeValueAndNotify(actualElement, validValue, 'input');
 
 				expect(invalidity).to.equal(false);
 				expect(formElement.checkValidity()).to.equal(true);
 			});
 
 			it(`should validate on reset`, async function () {
-				const fieldValue = Math.random().toString();
-				const fieldName = 'test-field';
-				addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} required value="${fieldValue}" name="${fieldName}">Button Text</${COMPONENT_NAME}></form>`);
-				const formElement = addedElements[0];
-				const actualElement = formElement.firstChild;
+				const [formElement] = createElementInForm(fieldName, validValue);
+				const actualElement = formElement.querySelector(COMPONENT_NAME);
+				actualElement.setAttribute('required', 'true');
 				await waitNextTask();
 
 				const validInput = formElement.checkValidity();
-				await changeFieldValue(actualElement, '', 'change');
+				await changeValueAndNotify(actualElement, invalidValue, 'change');
 				const invalidInput = formElement.checkValidity();
 
 				formElement.reset();
@@ -175,28 +178,25 @@ describe('textarea', () => {
 
 			it(`should not submit an invalid form`, async function () {
 				let submitted = false;
-				const fieldName = 'test-field';
-				addedElements = textToDomToParent(`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} required value="val" name="${fieldName}">Button Text</${COMPONENT_NAME}></form>`);
-				const formElement = addedElements[0];
-				const actualElement = formElement.firstChild;
+				const [formElement] = createElementInForm(fieldName, validValue);
+				const actualElement = formElement.querySelector(COMPONENT_NAME);
+				actualElement.setAttribute('required', 'true');
 				await waitNextTask();
 
 				const invalidity = formElement.checkValidity();
-
-				await waitNextTask();
 
 				formElement.addEventListener('submit', () => {
 					submitted = true;
 				});
 
-				formElement.requestSubmit();
+				requestSubmit(formElement);
 
 				const submitValidForm = submitted;
 
 				submitted = false;
 
-				await changeFieldValue(actualElement, '', 'change');
-				formElement.requestSubmit();
+				await changeValueAndNotify(actualElement, invalidValue, 'change');
+				requestSubmit(formElement);
 
 				expect(invalidity).to.equal(true);
 				expect(submitValidForm).to.equal(true);
@@ -207,30 +207,39 @@ describe('textarea', () => {
 		it(`should work under multiple shadow layers`, async function () {
 			const fieldValue = Math.random().toString();
 			const fieldName = 'test-field';
-			addedElements = textToDomToParent(`
+			const formTemplate = `
 				<form onsubmit="return false" name="testForm" id="testForm">
-					<vwc-formfield>
-						<${COMPONENT_NAME} required value="${fieldValue}" name="${fieldName}">Button Text</${COMPONENT_NAME}>
-					</vwc-formfield>
-				</form>`);
-			const formElement = addedElements[0];
-			const actualElement = formElement.children[0].children[0];
+					<vivid-tests-component></vivid-tests-component>
+					<button></button>
+				</form>`;
+			const elementTemplate = `
+					<${COMPONENT_NAME} required value="${fieldValue}"
+ 														 name="${fieldName}">
+
+					</${COMPONENT_NAME}>`;
+			const [formElement] = addElement(textToDomToParent(formTemplate));
 			await waitNextTask();
+			const wrapperElement = formElement.querySelector('vivid-tests-component');
+			wrapperElement.setContent(elementTemplate);
+			const actualElement = wrapperElement.shadowRoot.querySelector(
+				COMPONENT_NAME
+			);
 
 			const validInput = formElement.checkValidity();
-
 			const submitPromise = listenToSubmission(formElement);
 
-			formElement.requestSubmit();
+			requestSubmit(formElement);
 
-			for (let pair of (await submitPromise).entries()) {
-				expect(pair[0]).to.equal(fieldName);
-				expect(pair[1]).to.equal(fieldValue);
+			for (let [formDataKey, formDataValue] of (await submitPromise).entries()) {
+				expect(formDataKey).to.equal(fieldName);
+				expect(formDataValue).to.equal(fieldValue);
 			}
 
-			await changeFieldValue(actualElement, '', 'change');
+			await changeValueAndNotify(actualElement, '', 'change');
 
-			expect(formElement.querySelectorAll(`textarea[name="${fieldName}"`).length).to.equal(1);
+			expect(
+				formElement.querySelectorAll(`textarea[name="${fieldName}"`).length
+			).to.equal(1);
 			expect(validInput).to.equal(true);
 			expect(formElement.checkValidity()).to.equal(false);
 		});
@@ -238,9 +247,15 @@ describe('textarea', () => {
 
 	describe('typography', () => {
 		it('should have set typography for a label', async () => {
-			addedElements = textToDomToParent(`<${COMPONENT_NAME} outlined label="Vwc textarea"></${COMPONENT_NAME}>`);
+			const addedElements = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} outlined label="Vwc textarea"></${COMPONENT_NAME}>`
+				)
+			);
 			await waitNextTask();
-			const labelElement = addedElements[0].shadowRoot.querySelector('.mdc-notched-outline').querySelector('#label');
+			const labelElement = addedElements[0].shadowRoot
+				.querySelector('.mdc-notched-outline')
+				.querySelector('#label');
 			expect(labelElement).to.exist;
 			assertComputedStyle(labelElement, {
 				fontFamily: 'SpeziaWebVariable',
@@ -249,14 +264,20 @@ describe('textarea', () => {
 				fontStretch: '50%',
 				lineHeight: '18.4px',
 				letterSpacing: '0.15px',
-				textTransform: 'none'
+				textTransform: 'none',
 			});
 		});
 
 		it('should have set typography for an input', async () => {
-			addedElements = textToDomToParent(`<${COMPONENT_NAME} outlined disabled label="Vwc textarea"></${COMPONENT_NAME}>`);
+			const addedElements = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} outlined disabled label="Vwc textarea"></${COMPONENT_NAME}>`
+				)
+			);
 			await waitNextTask();
-			const inputElement = addedElements[0].shadowRoot.querySelector('.mdc-text-field__input');
+			const inputElement = addedElements[0].shadowRoot.querySelector(
+				'.mdc-text-field__input'
+			);
 			expect(inputElement).to.exist;
 			assertComputedStyle(inputElement, {
 				fontFamily: 'SpeziaWebVariable',
@@ -265,17 +286,59 @@ describe('textarea', () => {
 				fontStretch: '50%',
 				lineHeight: '24px',
 				letterSpacing: '0.133333px',
-				textTransform: 'none'
+				textTransform: 'none',
 			});
 		});
 	});
 
 	describe('notched outlined', () => {
 		it('should have vwc-notched-outline defined', async () => {
-			addedElements = textToDomToParent(`<${COMPONENT_NAME} outlined></${COMPONENT_NAME}>`);
+			const addedElements = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} outlined></${COMPONENT_NAME}>`)
+			);
 			await waitNextTask();
-			const notchedOutline = addedElements[0].shadowRoot.querySelector('vwc-notched-outline');
+			const notchedOutline = addedElements[0].shadowRoot.querySelector(
+				'vwc-notched-outline'
+			);
 			expect(notchedOutline).to.exist;
+		});
+	});
+
+	describe('dense', () => {
+		it('should have normal size by default', async () => {
+			const addedElements = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} outlined></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			const actualElement = addedElements[0].shadowRoot.querySelector(
+				'.mdc-text-field--textarea'
+			);
+			assertComputedStyle(actualElement, { minHeight: '48px' });
+		});
+
+		it('should have dense size when dense', async () => {
+			const addedElements = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} outlined dense label="VWC Textarea"></${COMPONENT_NAME}>`
+				)
+			);
+			await waitNextTask();
+			const formElement = addedElements[0];
+			const actualElement = formElement.shadowRoot.querySelector(
+				'.mdc-text-field--textarea'
+			);
+			const labelElement = formElement.shadowRoot
+				.querySelector('.mdc-notched-outline')
+				.querySelector('#label');
+
+			assertComputedStyle(formElement, { paddingTop: '24px' });
+			assertComputedStyle(actualElement, { minHeight: '40px' });
+			assertComputedStyle(labelElement, {
+				fontSize: '14px',
+				left: '-12px',
+				top: '-24px',
+				transform: 'none',
+			});
 		});
 	});
 });

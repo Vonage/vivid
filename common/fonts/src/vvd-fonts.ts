@@ -2,13 +2,12 @@ export default Object.freeze({
 	init: init,
 });
 
-const
-	FONTS_BASE_URL_TOKEN = 'FONTS_BASE_URL',
+const FONTS_BASE_URL_TOKEN = 'FONTS_BASE_URL',
 	CDN_BASE_URL = '//dpnf5z0hinc7q.cloudfront.net/fonts/v1';
 
-let INIT_PROMISE: Promise<void> | null = null;
+let INIT_PROMISE: Promise<Record<string, unknown>> | null = null;
 
-async function init(): Promise<void> {
+async function init(): Promise<Record<string, unknown>> {
 	if (!INIT_PROMISE) {
 		INIT_PROMISE = new Promise((resolve, reject) => {
 			console.info('Vivid Fonts initialization start...');
@@ -18,11 +17,13 @@ async function init(): Promise<void> {
 			const initialWidth = testElement.offsetWidth;
 
 			import('./vvd-fonts.css.js')
-				.then(cssDefs => {
+				.then((cssDefs) => {
 					const cssText = cssDefs.style.cssText;
-					const finalCSS = cssText.replace(new RegExp(FONTS_BASE_URL_TOKEN, 'g'), CDN_BASE_URL);
+					const finalCSS = cssText.replace(
+						new RegExp(FONTS_BASE_URL_TOKEN, 'g'),
+						CDN_BASE_URL
+					);
 					const ds = document.createElement('style');
-					ds.type = 'text/css';
 					ds.innerHTML = finalCSS;
 					document.head.appendChild(ds);
 					return ensureInit(testElement, initialWidth);
@@ -31,7 +32,9 @@ async function init(): Promise<void> {
 				.catch(reject)
 				.finally(() => {
 					cleanInitTestElement(testElement);
-					console.info(`Vivid Fonts initialization took ${Math.floor(performance.now() - st)}ms`);
+					console.info(
+						`Vivid Fonts initialization took ${Math.floor(performance.now() - st)}ms`
+					);
 				});
 		});
 	}
@@ -42,18 +45,22 @@ async function init(): Promise<void> {
 function setupInitTestElement(): HTMLElement {
 	const result = document.createElement('span');
 	result.textContent = 'wwwiii';
-	result.style.cssText = 'position:absolute;top:-1000px;font-family:var(--vvd-font-family-spezia),monospace;visibility:hidden';
+	result.style.cssText =
+		'position:absolute;top:-1000px;font-family:var(--vvd-font-family-spezia),monospace;visibility:hidden';
 	document.body.appendChild(result);
 	return result;
 }
 
-async function ensureInit(testElement: HTMLElement, initialWidth: number): Promise<void> {
-	return new Promise(resolve => {
+async function ensureInit(
+	testElement: HTMLElement,
+	initialWidth: number
+): Promise<Record<string, unknown>> {
+	return new Promise((resolve) => {
 		function innerTest() {
 			if (testElement.offsetWidth === initialWidth) {
 				setTimeout(innerTest, 25);
 			} else {
-				resolve();
+				resolve({});
 			}
 		}
 		innerTest();

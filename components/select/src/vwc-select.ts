@@ -1,12 +1,19 @@
-import { customElement, property, html, TemplateResult } from 'lit-element';
-import '@vonage/vwc-notched-outline';
+import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
+import '@vonage/vwc-notched-outline';
+import {
+	customElement,
+	property,
+	html,
+	TemplateResult,
+	PropertyValues,
+} from 'lit-element';
 import { mapToClasses } from '@vonage/vvd-foundation/class-utils.js';
 import { Select as MWCSelect } from '@material/mwc-select';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import { style as vwcSelectStyle } from './vwc-select.css';
 import { style as mwcSelectStyle } from '@material/mwc-select/mwc-select-css.js';
-import { addInputToForm } from '@vonage/vvd-foundation/form-association';
+import { associateWithForm } from '@vonage/vvd-foundation/form-association';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -30,10 +37,7 @@ export class VWCSelect extends MWCSelect {
 	dense = false;
 
 	@property({ type: String, reflect: true })
-  shape: SelectShape[number] = 'rounded';
-	
-	@property({ type: HTMLInputElement, reflect: false })
-	hiddenInput: HTMLInputElement | undefined;
+	shape: SelectShape[number] = 'rounded';
 
 	@property({ type: String, reflect: true })
 	form: string | undefined;
@@ -44,7 +48,14 @@ export class VWCSelect extends MWCSelect {
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
 		this.replaceIcon();
-		addInputToForm(this);
+		associateWithForm<VWCSelect>(this, this.formElement);
+	}
+
+	protected updated(changedProperties: PropertyValues): void {
+		super.updated(changedProperties);
+		if (this.shape === 'pill') {
+			this.dense = true;
+		}
 	}
 
 	protected renderHelperText(): TemplateResult {
@@ -57,12 +68,21 @@ export class VWCSelect extends MWCSelect {
 			'mdc-select-helper-text--validation-msg': showValidationMessage,
 		};
 
+		const classes = ['mdc-select-helper-text', ...mapToClasses(classesMap)].join(
+			' '
+		);
+		const validationMessage = showValidationMessage
+			? this.validationMessage
+			: this.helper;
 		return html`
 			<div class="mdc-select-helper-line">
-				<vwc-icon class="mdc-select-helper-icon" type="info-negative" size="small"></vwc-icon>
+				<vwc-icon
+					class="mdc-select-helper-icon"
+					type="info-negative"
+					size="small"
+				></vwc-icon>
 				<span class="spacer"></span>
-				<div id="helper-text" class="mdc-select-helper-text ${mapToClasses(classesMap).join(' ')}"
-				>${showValidationMessage ? this.validationMessage : this.helper}</div>
+				<div id="helper-text" class="${classes}">${validationMessage}</div>
 			</div>
 		`;
 	}
@@ -76,13 +96,12 @@ export class VWCSelect extends MWCSelect {
 	}
 
 	protected renderOutline(): TemplateResult | Record<string, unknown> {
-    if (!this.outlined) {
-      return {};
-    }
+		if (!this.outlined) {
+			return {};
+		}
 
-    return html`
-      <vwc-notched-outline class="mdc-notched-outline vvd-notch">
-        ${this.renderLabel()}
-      </vwc-notched-outline>`;
-  }
+		return html` <vwc-notched-outline class="mdc-notched-outline vvd-notch">
+			${this.renderLabel()}
+		</vwc-notched-outline>`;
+	}
 }

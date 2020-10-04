@@ -1,4 +1,4 @@
-name: Release Vivid
+name: Release Vivid (GitHub)
 
 on:
   push:
@@ -9,6 +9,7 @@ jobs:
   build-publish:
     runs-on: ubuntu-latest
     env:
+      ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_VIVID_DEMO_PROD_ACCESS }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_VIVID_DEMO_PROD_SECRET }}
 
@@ -23,7 +24,6 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12
-          registry-url: 'https://npm.pkg.github.com'
 
       - name: Install dependencies
         run: |
@@ -38,9 +38,13 @@ jobs:
         run: yarn build:icon-resolver --resolveStrategy=cdn --awsAccessKey=${{ secrets.AWS_VIVID_DEMO_PROD_ACCESS }} --awsAccessSecret=${{ secrets.AWS_VIVID_DEMO_PROD_SECRET }} --awsBucketName=vivid-icons-prod --awsBaseUrl=https://d3fzvwfxu7izti.cloudfront.net
 
       - name: Publish components
-        run: yarn lerna publish from-package --registry https://npm.pkg.github.com --no-git-tag-version --no-push --yes
+        run: |
+          echo registry=https://npm.pkg.github.com/ > .npmrc
+          echo //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN} >> .npmrc
+          git update-index --skip-worktree .npmrc
+          yarn lerna publish from-package --registry https://npm.pkg.github.com --no-git-tag-version --no-push --yes
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Notify community
       - name: Notify slack

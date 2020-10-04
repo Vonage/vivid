@@ -1,20 +1,33 @@
 import '../vwc-linear-progress.js';
-import { textToDocumentFragment, waitNextTask } from '../../../test/test-helpers.js';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
+import {
+	isolatedElementsCreation,
+	textToDomToParent,
+	waitNextTask,
+} from '../../../test/test-helpers';
+
+chai.use(chaiDomDiff);
+
+const COMPONENT_NAME = 'vwc-linear-progress';
 
 describe('linear progress', () => {
-	it('should be defined as a custom element', async () => {
-		assert.exists(customElements.get('vwc-linear-progress', 'vwc-linear-progress element is not defined'));
+	const addElement = isolatedElementsCreation();
+
+	it('should be defined as a custom element', () => {
+		assert.exists(
+			customElements.get(
+				COMPONENT_NAME,
+				`${COMPONENT_NAME} element is not defined`
+			)
+		);
 	});
 
 	it('should have internal contents', async () => {
-		await customElements.whenDefined('vwc-linear-progress');
-		const docFragContainer = textToDocumentFragment('<vwc-linear-progress id="linear-progress-a"></vwc-linear-progress>');
-		const actualElement = docFragContainer.firstElementChild;
-		document.body.appendChild(docFragContainer);
+		const addedElements = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+		);
+		const actualElement = addedElements[0];
 		await waitNextTask();
-		assert.equal(document.querySelector('#linear-progress-a'), actualElement);
-		assert.exists(actualElement.shadowRoot);
-		assert.equal(actualElement.shadowRoot.childElementCount, 1);
-		assert.equal(actualElement.shadowRoot.querySelectorAll('*').length, 8);
+		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 });

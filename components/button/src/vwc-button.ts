@@ -7,11 +7,13 @@ import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-cou
 import { Connotation } from '@vonage/vvd-foundation/constants';
 import { html, TemplateResult } from 'lit-element';
 import '@vonage/vwc-icon';
+import { requestSubmit } from '@vonage/vvd-foundation/form-association';
+import { getFormByIdOrClosest } from '@vonage/vvd-foundation/form-association/common';
 
 declare global {
-  interface HTMLElementTagNameMap {
-    'vwc-button': VWCButton;
-  }
+	interface HTMLElementTagNameMap {
+		'vwc-button': VWCButton;
+	}
 }
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
@@ -35,54 +37,81 @@ export type ButtonType = typeof types;
  */
 @customElement('vwc-button')
 export class VWCButton extends MWCButton {
-  @property({ type: String, reflect: true })
-  layout: ButtonLayout[number] = 'text';
+	@property({ type: String, reflect: true })
+	layout: ButtonLayout[number] = 'text';
 
-  @property({ type: String, reflect: true })
-  connotation?: Connotation | undefined;
+	@property({ type: String, reflect: true })
+	connotation?: Connotation | undefined;
 
-  @property({ type: String, reflect: true })
-  shape: ButtonShape[number] = 'rounded';
+	@property({ type: String, reflect: true })
+	shape: ButtonShape[number] = 'rounded';
 
-  @property({ type: String, reflect: true })
-  type: ButtonType[number] = 'submit';
+	@property({ type: String, reflect: true })
+	type: ButtonType[number] = 'submit';
 
-  @property({ type: String, reflect: true })
-  form: string | undefined;
+	@property({ type: String, reflect: false })
+	form: HTMLFormElement | null = null;
 
-  protected updated(): void {
-    const layout: ButtonLayout[number] = this.layout;
-    this.toggleAttribute('outlined', layout === 'outlined');
-    this.toggleAttribute('unelevated', layout === 'filled');
-  }
+	#_hiddenButton: HTMLButtonElement | undefined;
 
-  protected _handleClick(): void {
-    let form: HTMLFormElement;
-    const formId = this.getAttribute('form');
-    if (formId) {
-      form = document.getElementById(formId) as HTMLFormElement;
-    } else {
-      form = this.closest('form') as HTMLFormElement;
-    }
+	createRenderRoot(): ShadowRoot {
+		if (HTMLFormElement.prototype.requestSubmit) {
+			return super.createRenderRoot();
+		}
+		// don't set delegatesFocus: true due to https://bugs.webkit.org/show_bug.cgi?id=215732
+		return this.attachShadow({ mode: 'open' });
+	}
 
-    if (form) {
-      switch (this.getAttribute('type')) {
-        case 'reset':
-          form.reset();
-          break;
-        default:
-          form.requestSubmit();
-          break;
-      }
-    }
-  }
+	protected updateFormAndButton(): void {
+		this.#_hiddenButton?.remove();
+		this.form = getFormByIdOrClosest((this as unknown) as HTMLInputElement);
+		if (this.form && this.#_hiddenButton) {
+			this.form.appendChild(this.#_hiddenButton);
+		}
+	}
 
-  protected renderIcon(): TemplateResult {
-    return html`<vwc-icon size="small" type="${this.icon}"></vwc-icon>`;
-  }
+	protected updated(changes: Map<string, boolean>): void {
+		if (changes.has('form')) {
+			this.updateFormAndButton();
+		}
 
-  connectedCallback(): void {
-    super.connectedCallback();
-    this.addEventListener('click', this._handleClick);
-  }
+		if (changes.has('type')) {
+			this.#_hiddenButton?.setAttribute('type', this.getAttribute('type') ?? '');
+		}
+
+		const layout: ButtonLayout[number] = this.layout;
+		this.toggleAttribute('outlined', layout === 'outlined');
+		this.toggleAttribute('unelevated', layout === 'filled');
+	}
+
+	protected _handleClick(): void {
+		if (this.form) {
+			switch (this.getAttribute('type')) {
+				case 'reset':
+					this.form.reset();
+					break;
+				case 'button':
+					break;
+				default:
+					requestSubmit(this.form);
+					break;
+			}
+		}
+	}
+
+	protected renderIcon(): TemplateResult {
+		return html`<vwc-icon size="small" type="${this.icon}"></vwc-icon>`;
+	}
+
+	connectedCallback(): void {
+		super.connectedCallback();
+		this.addEventListener('click', this._handleClick);
+		this.#_hiddenButton = document.createElement('button');
+		this.#_hiddenButton.style.display = 'none';
+	}
+
+	disconnectedCallback(): void {
+		super.disconnectedCallback();
+		this.#_hiddenButton?.remove();
+	}
 }

@@ -1,11 +1,12 @@
-import { customElement, html, property, TemplateResult } from 'lit-element';
+import '@vonage/vvd-core';
 import '@vonage/vwc-notched-outline';
+import { customElement, html, property, TemplateResult } from 'lit-element';
 import { mapToClasses } from '@vonage/vvd-foundation/class-utils.js';
 import { TextArea as MWCTextArea } from '@material/mwc-textarea';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import { style as vwcTextareaStyle } from './vwc-textarea.css';
 import { style as mwcTextareaStyle } from '@material/mwc-textarea/mwc-textarea-css.js';
-import { addInputToForm } from '@vonage/vvd-foundation/form-association';
+import { associateWithForm } from '@vonage/vvd-foundation/form-association';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -22,12 +23,15 @@ MWCTextArea.styles = [styleCoupling, mwcTextareaStyle, vwcTextareaStyle];
  */
 @customElement('vwc-textarea')
 export class VWCTextArea extends MWCTextArea {
+	@property({ type: Boolean, reflect: true })
+	dense = false;
+
 	@property({ type: String, reflect: true })
 	form: string | undefined;
 
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
-		addInputToForm(this, 'textarea');
+		associateWithForm<VWCTextArea>(this, this.formElement);
 	}
 
 	protected renderOutline(): TemplateResult | Record<string, unknown> {
@@ -35,10 +39,9 @@ export class VWCTextArea extends MWCTextArea {
 			return {};
 		}
 
-		return html`
-      <vwc-notched-outline class="mdc-notched-outline vvd-notch">
-        ${this.renderLabel()}
-      </vwc-notched-outline>`;
+		return html` <vwc-notched-outline class="mdc-notched-outline vvd-notch">
+			${this.renderLabel()}
+		</vwc-notched-outline>`;
 	}
 
 	renderHelperText(charCounterTemplate = {}): TemplateResult {
@@ -52,9 +55,17 @@ export class VWCTextArea extends MWCTextArea {
 		};
 		return html`
 			<div class="mdc-text-field-helper-line">
-				<vwc-icon class="mdc-text-field-helper-icon" type="info-negative" size="small"></vwc-icon>
+				<vwc-icon
+					class="mdc-text-field-helper-icon"
+					type="info-negative"
+					size="small"
+				></vwc-icon>
 				<span class="spacer"></span>
-				<div class="mdc-text-field-helper-text ${mapToClasses(classesMap).join(' ')}">${showValidationMessage ? this.validationMessage : this.helper}</div>
+				<div
+					class="mdc-text-field-helper-text ${mapToClasses(classesMap).join(' ')}"
+				>
+					${showValidationMessage ? this.validationMessage : this.helper}
+				</div>
 				${charCounterTemplate}
 			</div>
 		`;

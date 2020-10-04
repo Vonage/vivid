@@ -1,7 +1,7 @@
 {
 	"name": "@vonage/vwc-select",
-	"version": "0.6.0",
-	"description": "> TODO: description",
+	"version": "0.12.2",
+	"description": "select component",
 	"author": "yinonov <yinon@hotmail.com>",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/select#readme",
 	"license": "ISC",
@@ -26,14 +26,15 @@
 	},
 	"dependencies": {
 		"@material/mwc-select": "^0.18.0",
-		"@vonage/vvd-foundation": "^0.6.0",
-		"@vonage/vvd-style-coupling": "^0.6.0",
-		"@vonage/vwc-icon": "^0.6.0",
-		"@vonage/vwc-notched-outline": "^0.6.0",
+		"@vonage/vvd-core": "^0.12.2",
+		"@vonage/vvd-foundation": "^0.12.2",
+		"@vonage/vvd-style-coupling": "^0.12.2",
+		"@vonage/vwc-icon": "^0.12.2",
+		"@vonage/vwc-notched-outline": "^0.12.2",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.1"
 	},
 	"devDependencies": {
-		"@vonage/vvd-typography": "^0.6.0"
+		"@vonage/vvd-typography": "^0.12.2"
 	}
 }

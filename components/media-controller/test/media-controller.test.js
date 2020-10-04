@@ -109,5 +109,6 @@ describe('vwc-media-controller', function(){
 				.mapErrors((des)=> new Error(des))
 				.toPromise();
 		});
+
 	});
 });

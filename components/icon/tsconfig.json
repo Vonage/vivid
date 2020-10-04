@@ -1,12 +1,17 @@
 {
 	"extends": "../../tsconfig.json",
 	"compilerOptions": {
-		"allowJs": true,
 		"composite": true,
 		"rootDir": "src",
 		"outDir": ".",
 		"tsBuildInfoFile": ".tsbuildinfo"
 	},
-	"include": [],
-	"references": []
+	"include": [
+		"src/*.ts"
+	],
+	"references": [
+		{
+			"path": "../../common/core"
+		}
+	]
 }

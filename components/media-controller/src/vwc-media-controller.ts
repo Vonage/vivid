@@ -1,5 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
+import '@vonage/vvd-core';
 import kefir from 'kefir';
 import { pipe, partial, clamp, prop, always, not, identity, path } from 'ramda';
 import { style as vwcMediaControllerStyle } from './vwc-media-controller.css';
@@ -40,7 +41,6 @@ const
  * @fires {number} userPlayPauseRequest - Fires when the user clicks the play/pause button, the "detail" event field will contain a number between zero and one describing the user's relative selected position.
  */
 class MediaController extends HTMLElement {
-
 	constructor() {
 		super();
 

@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-list",
-	"version": "0.6.0",
+	"version": "0.12.2",
 	"description": "list and list item components",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/list#readme",
 	"license": "ISC",
@@ -25,11 +25,12 @@
 	},
 	"dependencies": {
 		"@material/mwc-list": "^0.18.0",
-		"@vonage/vvd-style-coupling": "^0.6.0",
+		"@vonage/vvd-core": "^0.12.2",
+		"@vonage/vvd-style-coupling": "^0.12.2",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.1"
 	},
 	"devDependencies": {
-		"@vonage/vvd-typography": "^0.6.0"
+		"@vonage/vvd-typography": "^0.12.2"
 	}
 }
