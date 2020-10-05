@@ -1,18 +1,21 @@
 import '@vonage/vwc-chips/vwc-chip.js';
 import { html } from 'lit-element';
+import { spread } from '@open-wc/lit-helpers';
+import { argTypes } from './arg-types.js';
 
 export default {
 	title: 'Atoms/Chip',
-	component: 'vwc-chip'
+	component: 'vwc-chip',
+	argTypes,
+	args: { label: 'Chip' }
 }
 
-export const basic = () => html`
-	<h3>Default</h3>
-	<vwc-chip label="Chip"></vwc-chip>
+const Template = args => html`<vwc-chip ...=${spread(args)}></vwc-chip>`;
 
-	<h3>Leading icon</h3>
-	<vwc-chip label="Chip" icon="alert-negative"></vwc-chip>
+export const Default = Template.bind({});
 
-	<h3>Removable</h3>
-	<vwc-chip label="Chip" removable></vwc-chip>
-`;
+export const Icon = Template.bind({});
+Icon.args = { icon: 'alert-negative' };
+
+export const Removable = Template.bind({});
+Removable.args = { removable: '' };

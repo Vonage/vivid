@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.2](https://github.com/Vonage/vivid/compare/v0.12.1...v0.12.2) (2020-10-04)
+
+**Note:** Version bump only for package @vivid/root
+
+
+
+
+
+## [0.12.1](https://github.com/Vonage/vivid/compare/v0.12.0...v0.12.1) (2020-10-04)
+
+**Note:** Version bump only for package @vivid/root
+
+
+
+
+
+# [0.12.0](https://github.com/Vonage/vivid/compare/v0.11.0...v0.12.0) (2020-10-03)
+
+
+### Bug Fixes
+
+* **scheme:** fixed include typo ([fa93df6](https://github.com/Vonage/vivid/commit/fa93df69f191245351165f4372693b8a6ee8b655))
+* **textfield:** submit on enter prevented typing input ([11e5022](https://github.com/Vonage/vivid/commit/11e50224c602782e9914050b00fb211d2697d755))
+
+
+
+
+
 # [0.11.0](https://github.com/Vonage/vivid/compare/v0.10.0...v0.11.0) (2020-09-29)
 
 

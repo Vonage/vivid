@@ -1,22 +1,25 @@
 import '@vonage/vwc-list/vwc-list.js';
 import '@vonage/vwc-list/vwc-list-item.js';
-import { html } from 'lit-element';
 import '@vonage/vwc-icon';
+import { html } from 'lit-element';
+import { spread } from '@open-wc/lit-helpers';
+import { argTypes } from './arg-types-list.js';
 
 export default {
 	title: 'Atoms/List',
-	component: 'vwc-list'
+	component: 'vwc-list',
+	subcomponents: 'vwc-list-item',
+	argTypes
 }
 
-export const basic = () => html`
+export const Basic = args => html`
 	<style>
 		vwc-list {
 			width: 240px;
 		}
 	</style>
 
-	<h3>Simple list</h3>
-	<vwc-list>
+	<vwc-list ...=${spread(args)}>
 		<vwc-list-item>Item 0</vwc-list-item>
 		<vwc-list-item>Item 1</vwc-list-item>
 		<vwc-list-item>Item 2</vwc-list-item>
@@ -24,15 +27,14 @@ export const basic = () => html`
 	</vwc-list>
 `;
 
-export const metaIcon = () => html`
+export const metaIcon = args => html`
 	<style>
 		vwc-list {
 			width: 240px;
 		}
 	</style>
 
-	<h3>List with meta data (icon)</h3>
-	<vwc-list>
+	<vwc-list ...=${spread(args)}>
 		<vwc-list-item hasMeta>
 			<span>Item A</span>
 			<vwc-icon slot="meta" type="info" size="small"></vwc-icon>
