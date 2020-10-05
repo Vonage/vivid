@@ -296,9 +296,7 @@ describe('button', () => {
 
 		it(`should set the shadowroot without delegatesFocus: true on Safari`, function () {
 			const isOnSafari = !HTMLFormElement.prototype.requestSubmit;
-			const [button] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME}></COMPONENT_NAME>`)
-			);
+			addElement(textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`));
 			expect(Boolean(attachShadowConfig.delegatesFocus)).to.equal(!isOnSafari);
 		});
 	});
