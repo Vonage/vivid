@@ -154,7 +154,7 @@ class MediaController extends HTMLElement {
 				.take(1)
 				.map(() => {
 					// eslint-disable-next-line
-					return this.hasAttribute('noseek');
+					return !this.hasAttribute('noseek');
 				})
 				.toProperty(() => true);
 
