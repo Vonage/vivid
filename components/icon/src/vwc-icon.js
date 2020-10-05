@@ -10,7 +10,7 @@ const [
 	SYMBOL_PROPERTY_TYPE_SET
 ] = ['connect', 'disconnect', 'property-type', 'property-type-set'].map((name) => Symbol(name));
 
-const noop = ()=> { };
+const noop = () => { };
 
 /**
  * Integrates an icon
@@ -24,10 +24,7 @@ const noop = ()=> { };
 class IconElement extends HTMLElement {
 
 	constructor() {
-
 		super();
-
-		this.classList.add('vvd-icon');
 
 		const
 			rootEl = this.attachShadow({ mode: 'open' }),
@@ -50,14 +47,14 @@ class IconElement extends HTMLElement {
 
 		// Update icon
 		connectStream
-			.flatMapLatest(()=> {
+			.flatMapLatest(() => {
 				return typeProperty
 					.filter(Boolean)
 					.flatMap((typeId) => kefir.fromPromise(resolveIcon(typeId)))
 					.takeUntilBy(kefir.stream(({ emit }) => this[SYMBOL_DISCONNECT] = emit).take(1));
 			})
 			.filter(() => this.isConnected)
-			.onValue((svg)=> slotEl.innerHTML = svg)
+			.onValue((svg) => slotEl.innerHTML = svg)
 			.onError(console.warn);
 
 		// Assemble element
@@ -99,6 +96,7 @@ class IconElement extends HTMLElement {
 	}
 
 	connectedCallback() {
+		this.classList.add('vvd-icon');
 		this[SYMBOL_CONNECT]();
 	}
 
