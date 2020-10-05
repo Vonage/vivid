@@ -118,6 +118,7 @@ class MediaController extends HTMLElement {
 				)
 				.filter(([interaction]) => interaction)
 				.map(
+					// eslint-disable-next-line @typescript-eslint/no-unused-vars
 					([interaction, { clientX }, { x, width }]) =>
 						clamp(
 							0,

@@ -61,13 +61,13 @@ let setPromise: Promise<Record<string, unknown>> | null = null;
 async function set(
 	schemeOption: SchemeOption | null = null
 ): Promise<Record<string, unknown>> {
-	console.log(`Vivid scheme requested to change to '${schemeOption}'...`);
+	console.debug(`Vivid scheme requested to change to '${schemeOption}'...`);
 
 	const effectiveOption = getEffectiveSchemeOption(schemeOption);
-	console.log(`... which resolved effectively to '${effectiveOption}'...`);
+	console.debug(`... which resolved effectively to '${effectiveOption}'...`);
 
 	if (effectiveOption === _selectedSchemeOption && setPromise) {
-		console.log('... new scheme option is equal to current, done');
+		console.debug('... new scheme option is equal to current, done');
 		return setPromise;
 	}
 
@@ -85,7 +85,7 @@ async function set(
 	}
 
 	setPromise = tmpPromise.then(() => {
-		console.log('... scheme changed');
+		console.debug('... scheme changed');
 		return {
 			option: _selectedSchemeOption,
 			scheme: _selectedScheme,
