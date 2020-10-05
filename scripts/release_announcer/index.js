@@ -35,11 +35,11 @@ createLineStream(fileName === "--" ? process.stdin : fs.createReadStream(fileNam
 				: "never"
 			](newRelease)
 	)
-	.flatMap(({ version, log_lines })=> {
+	.flatMap(({ version, log_lines })=>
 		kefir
 			.fromPromise(slackDispatcher(slackReleaseTemplate({ version, log_lines })))
 			.map(() => `Message successfully sent to Slack`)
-	})
+	)
 	.onValue(console.log)
 	.onError(()=> {
 		console.log('Failed to send message to Slack');
