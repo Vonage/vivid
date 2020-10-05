@@ -363,4 +363,92 @@ describe('button', () => {
 			assertComputedStyle(button, expectedStyles);
 		});
 	});
+
+	describe('sizing', () => {
+		it('should have normal size by default', async () => {
+			const addedElements = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}>`)
+			);
+			const actualElement = addedElements[0];
+			await waitNextTask();
+			assertComputedStyle(actualElement, { height: '40px' });
+		});
+
+		it('should have dense size when dense', async () => {
+			const addedElements = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} dense>Button Text</${COMPONENT_NAME}>`
+				)
+			);
+			const actualElement = addedElements[0];
+			await waitNextTask();
+			assertComputedStyle(actualElement, { height: '32px' });
+		});
+
+		it('should have enlarged size when enlarged', async () => {
+			const addedElements = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} enlarged>Button Text</${COMPONENT_NAME}>`
+				)
+			);
+			const actualElement = addedElements[0];
+			await waitNextTask();
+			assertComputedStyle(actualElement, { height: '48px' });
+		});
+	});
+
+	describe('shape', () => {
+		it('should have rounded shape by default', async () => {
+			const addedElements = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} layout="filled">Button Text</${COMPONENT_NAME}>`
+				)
+			);
+			await waitNextTask();
+			let actualElement = addedElements[0].shadowRoot.querySelector('#button');
+
+			const expectedNormalStyles = {
+				borderTopLeftRadius: '6px',
+				borderTopRightRadius: '6px',
+				borderBottomLeftRadius: '6px',
+				borderBottomRightRadius: '6px',
+			};
+			assertComputedStyle(actualElement, expectedNormalStyles);
+		});
+
+		it('should have rounded shape when dense', async () => {
+			const addedElements = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} layout="filled" dense>Button Text</${COMPONENT_NAME}>`
+				)
+			);
+			await waitNextTask();
+			let actualElement = addedElements[0].shadowRoot.querySelector('#button');
+
+			const expectedNormalStyles = {
+				borderTopLeftRadius: '5px',
+				borderTopRightRadius: '5px',
+				borderBottomLeftRadius: '5px',
+				borderBottomRightRadius: '5px',
+			};
+			assertComputedStyle(actualElement, expectedNormalStyles);
+		});
+
+		it('should have pill shape when shape set to pill', async () => {
+			const addedElements = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} layout="filled" shape="pill"></${COMPONENT_NAME}>`
+				)
+			);
+			await waitNextTask();
+			const actualElement = addedElements[0].shadowRoot.querySelector('#button');
+			const expectedPillStyles = {
+				borderTopLeftRadius: '24px',
+				borderTopRightRadius: '24px',
+				borderBottomLeftRadius: '24px',
+				borderBottomRightRadius: '24px',
+			};
+			assertComputedStyle(actualElement, expectedPillStyles);
+		});
+	});
 });
