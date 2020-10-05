@@ -13,5 +13,5 @@ export const basic = () => html`
 	<h1>Regular</h1>
 	<vwc-media-controller></vwc-media-controller>
 	<h1>Without seekbar</h1>
-	<vwc-media-controller noseek="true"></vwc-media-controller>
+	<vwc-media-controller noseek></vwc-media-controller>
 `;
