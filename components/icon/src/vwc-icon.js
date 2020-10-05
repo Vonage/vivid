@@ -27,6 +27,8 @@ class IconElement extends HTMLElement {
 
 		super();
 
+		this.classList.add('vvd-icon');
+
 		const
 			rootEl = this.attachShadow({ mode: 'open' }),
 			[styleEl, slotEl] = ['style', 'slot'].map((elName) => document.createElement(elName));

@@ -29,24 +29,24 @@
   letter-spacing: normal;
 
   &:not(.mdc-button--dense) {
-    vwc-icon {
+    .vvd-icon {
       min-height: 18px;
       min-width: 18px;
     }
   }
 
-  vwc-icon {
+  .vvd-icon {
     vertical-align: sub;
   }
 
   > span.trailing-icon {
-    > slot > vwc-icon {
+    .vvd-icon {
       margin-inline-start: 8px;
     }
   }
 
   > span.leading-icon {
-    > slot > vwc-icon {
+    .vvd-icon {
       margin-inline-end: 8px;
     }
   }
@@ -75,19 +75,19 @@
   .mdc-button {
     height: 48px;
 
-    vwc-icon {
+    .vvd-icon {
       min-height: 20px;
       min-width: 20px;
     }
 
     > span.trailing-icon {
-      > slot > vwc-icon {
+      .vvd-icon {
         margin-inline-start: 10px;
       }
     }
 
     > span.leading-icon {
-      > slot > vwc-icon {
+      .vvd-icon {
         margin-inline-end: 10px;
       }
     }
