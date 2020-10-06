@@ -70,7 +70,12 @@ export class UploadBase extends LitElement {
 		return html`
 			${this.label && this.renderLabel()}
 			<slot name="fileInput" @slotchange=${this.handleFileInputSlotchange}></slot>
-			<button @click=${() => this._fileInput.click()}>Upload</button>
+			<vwc-button
+				@click=${() => this._fileInput.click()}
+				layout="filled"
+				connotation="primary"
+				>Upload</vwc-button
+			>
 		`;
 	}
 }
