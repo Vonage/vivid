@@ -9,11 +9,15 @@ export default {
 	argTypes
 }
 
-const Template = args => html`<vwc-upload ...=${spread(args)}>
-<input slot="fileInput" type="file"
-       id="avatar" name="avatar"
-       accept="image/png, image/jpeg">
-</vwc-upload>`;
+const Template = args => html`
+	<vwc-upload ...=${spread(args)}>
+		<input
+			slot="fileInput"
+			type="file"
+      name="avatar"
+      accept="image/png, image/jpeg"/>
+	</vwc-upload>
+`;
 
 export const Basic = Template.bind({});
 Basic.args = { label: 'Upload your image file' };
