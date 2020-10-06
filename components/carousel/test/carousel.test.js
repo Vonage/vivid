@@ -1,4 +1,5 @@
-import '../vwc-carousel.js';
+import '@vonage/vwc-carousel';
+import schemeService from '@vonage/vvd-scheme';
 import {
 	textToDomToParent,
 	waitNextTask,
@@ -163,7 +164,10 @@ describe('carousel', () => {
 		it('should have the pagination bullets colored', async () => {
 			const carousel = await initCarousel(['a', 'b', 'c']);
 			const bullets = extractBullets(carousel);
-			const expectedStyleActive = { backgroundColor: 'rgb(0, 0, 0)' };
+			const scheme = schemeService.getSelectedScheme();
+			const expectedStyleActive = {
+				backgroundColor: scheme === 'light' ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)',
+			};
 			const expectedStyleInactive = { backgroundColor: 'rgb(194, 196, 204)' };
 
 			expect(bullets.length).equal(3);
@@ -177,8 +181,9 @@ describe('carousel', () => {
 		it('should have the navigation buttons colored', async () => {
 			const carousel = await initCarousel(['a', 'b', 'c']);
 			const navButtons = extractNavButtons(carousel);
+			const scheme = schemeService.getSelectedScheme();
 			const expectedStyle = {
-				fill: 'rgb(0, 0, 0)',
+				fill: scheme === 'light' ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)',
 				borderTopColor: 'rgb(206, 208, 215)',
 				borderLeftColor: 'rgb(206, 208, 215)',
 				borderRightColor: 'rgb(206, 208, 215)',

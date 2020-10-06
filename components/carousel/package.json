@@ -33,6 +33,7 @@
 	},
 	"devDependencies": {
 		"@types/swiper": "^5.4.0",
-		"@vonage/vvd-foundation": "^0.12.5"
+		"@vonage/vvd-foundation": "^0.12.5",
+		"@vonage/vvd-scheme": "^0.12.5"
 	}
 }
