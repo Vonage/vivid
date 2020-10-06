@@ -4242,11 +4242,6 @@
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@types/source-list-map/0.1.2/0d3836d982bc181a779327f6c0da46c9c32475e744c04c3b4e3bfa3d04a848c9#bc5f765df10572135c0bd4a956baf458c9996827"
   integrity sha1-vF92XfEFchNcC9SpVrr0WMmZaCc=
 
-"@types/swiper@^5.4.0":
-  version "5.4.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@types/swiper/5.4.0/61f16d50821f9f8c2ac80d5c1d81db9c99936a28ca3a5914f8ef6da9faa0660b#315bb99fdb9d0a517b6dbf08881d5f2edb0d42d1"
-  integrity sha1-MVu5n9udClF7bb8IiB1fLtsNQtE=
-
 "@types/tapable@*", "@types/tapable@^1.0.5":
   version "1.0.6"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@types/tapable/1.0.6/73adb44cd2ead4b333b1db97e94278c3c08d5e4c4254c274c82ac4725324115f#a9ca4b70a18b270ccb2bc0aaafefd1d486b7ea74"

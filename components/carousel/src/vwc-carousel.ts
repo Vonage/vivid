@@ -145,15 +145,17 @@ export class VWCCarousel extends LitElement {
 	}
 
 	private collectSlideRefs(swiper: Swiper): void {
-		for (let i = 0, l = swiper.slides.length; i < l; i++) {
-			this.slideRefs[i] = swiper.slides[i];
+		const slides = this.getSwiperSlides(swiper);
+		for (let i = 0, l = slides.length; i < l; i++) {
+			this.slideRefs[i] = slides[i];
 		}
 	}
 
 	private moveFirstIfNeeded(swiper?: Swiper): void {
 		const s = swiper ?? ((this as unknown) as Swiper);
-		if (s.slides.length > 2 && s.isEnd) {
-			const first = s.slides[0];
+		const slides = this.getSwiperSlides(s);
+		if (slides.length > 2 && s.isEnd) {
+			const first = slides[0];
 			s.removeSlide(0);
 			s.appendSlide(first);
 		}
@@ -161,9 +163,10 @@ export class VWCCarousel extends LitElement {
 
 	private moveLastIfNeeded(swiper?: Swiper): void {
 		const s = swiper ?? ((this as unknown) as Swiper);
-		if (s.slides.length > 2 && s.isBeginning) {
-			const last = s.slides[s.slides.length - 1];
-			s.removeSlide(s.slides.length - 1);
+		const slides = this.getSwiperSlides(s);
+		if (slides.length > 2 && s.isBeginning) {
+			const last = slides[slides.length - 1];
+			s.removeSlide(slides.length - 1);
 			s.prependSlide(last);
 		}
 	}
@@ -212,6 +215,11 @@ export class VWCCarousel extends LitElement {
 
 	private calculateActiveIndex(swiper: Swiper): number {
 		const nai = swiper.activeIndex;
-		return this.slideRefs.indexOf(swiper.slides[nai]);
+		const slides = this.getSwiperSlides(swiper);
+		return this.slideRefs.indexOf(slides[nai]);
+	}
+
+	private getSwiperSlides(swiper: Swiper): HTMLElement[] {
+		return (swiper.slides as unknown) as HTMLElement[];
 	}
 }
