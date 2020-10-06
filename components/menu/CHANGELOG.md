@@ -1,3 +1,7 @@
+## [0.12.5](https://github.com/vonage/vivid/compare/v0.12.4...v0.12.5) (2020-10-06)
+
+
+
 ## [0.12.4](https://github.com/vonage/vivid/compare/v0.12.3...v0.12.4) (2020-10-06)
 
 

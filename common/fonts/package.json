@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vvd-fonts",
-	"version": "0.12.4",
+	"version": "0.12.5",
 	"description": "Vivid fonts initialisation service",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/common/fonts",
 	"license": "ISC",
@@ -27,7 +27,7 @@
 		"tslib": "^2.0.1"
 	},
 	"devDependencies": {
-		"@vonage/vvd-foundation": "^0.12.4",
+		"@vonage/vvd-foundation": "^0.12.5",
 		"fs-extra": "^9.0.1",
 		"lit-element": "^2.4.0"
 	}

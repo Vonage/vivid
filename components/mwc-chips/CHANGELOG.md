@@ -1,4 +1,8 @@
-# [0.2.0](https://github.com/material-components/material-components-web-components/compare/v0.12.3...v0.2.0) (2020-10-06)
+# [0.2.0](https://github.com/material-components/material-components-web-components/compare/v0.12.4...v0.2.0) (2020-10-06)
+
+
+
+## [0.12.4](https://github.com/material-components/material-components-web-components/compare/v0.12.3...v0.12.4) (2020-10-06)
 
 
 
