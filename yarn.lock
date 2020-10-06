@@ -7512,12 +7512,12 @@ dom-walk@^0.1.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/dom-walk/-/dom-walk-0.1.2.tgz#0c548bef048f4d1f2a97249002236060daa3fd84"
   integrity sha1-DFSL7wSPTR8qlySQAiNgYNqj/YQ=
 
-dom7@^2.1.5:
-  version "2.1.5"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/dom7/-/dom7-2.1.5.tgz#a79411017800b31d8400070cdaebbfc92c1f6377"
-  integrity sha1-p5QRAXgAsx2EAAcM2uu/ySwfY3c=
+dom7@^3.0.0-alpha.7:
+  version "3.0.0-alpha.9"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/dom7/-/dom7-3.0.0-alpha.9.tgz#0110c21181b8bad3a1ee72443e04d3c2e3f1d38f"
+  integrity sha1-ARDCEYG4utOh7nJEPgTTwuPx048=
   dependencies:
-    ssr-window "^2.0.0"
+    ssr-window "^3.0.0-alpha.1"
 
 domain-browser@^1.1.1:
   version "1.2.0"
@@ -15234,10 +15234,10 @@ sshpk@^1.7.0:
     safer-buffer "^2.0.2"
     tweetnacl "~0.14.0"
 
-ssr-window@^2.0.0:
-  version "2.0.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ssr-window/-/ssr-window-2.0.0.tgz#98c301aef99523317f8d69618f0010791096efc4"
-  integrity sha1-mMMBrvmVIzF/jWlhjwAQeRCW78Q=
+ssr-window@^3.0.0-alpha.1, ssr-window@^3.0.0-alpha.4:
+  version "3.0.0-alpha.4"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ssr-window/-/ssr-window-3.0.0-alpha.4.tgz#0c69a18c4305ecccdd8e11596155ca07b635f345"
+  integrity sha1-DGmhjEMF7MzdjhFZYVXKB7Y180U=
 
 ssri@^6.0.0, ssri@^6.0.1:
   version "6.0.1"
@@ -15633,13 +15633,13 @@ svgo@^1.2.2:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
-swiper@^5.4.5:
-  version "5.4.5"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/swiper/-/swiper-5.4.5.tgz#a350f654bf68426dbb651793824925512d223c0f"
-  integrity sha1-o1D2VL9oQm27ZReTgkklUS0iPA8=
+swiper@^6.3.2:
+  version "6.3.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/swiper/-/swiper-6.3.2.tgz#3eb337ff58f425841a27400a7b0215234d94f3c1"
+  integrity sha1-PrM3/1j0JYQaJ0AKewIVI02U88E=
   dependencies:
-    dom7 "^2.1.5"
-    ssr-window "^2.0.0"
+    dom7 "^3.0.0-alpha.7"
+    ssr-window "^3.0.0-alpha.4"
 
 symbol.prototype.description@^1.0.0:
   version "1.0.2"
