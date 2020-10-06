@@ -3,6 +3,7 @@ import {
 	textToDomToParent,
 	waitNextTask,
 	waitInterval,
+	assertComputedStyle,
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import { isolatedElementsCreation } from '../../../test/test-helpers';
@@ -130,12 +131,14 @@ describe('carousel', () => {
 
 			expect(slides[1].dataset.key).to.equal('b');
 			expect(slides[1].classList.contains('swiper-slide-active'));
+
+			carousel.remove();
 		});
 	});
 
 	describe('click on slide', function () {
 		it('should preserve click listeners of slides after sliding', async () => {
-			const carousel = await initCarousel(['a', 'b', 'c']);
+			const carousel = await initCarousel(['a', 'b', 'c'], {});
 			const slides = extractSlides(carousel);
 			const nextButton = carousel.querySelector('.swiper-button-next');
 
@@ -151,6 +154,42 @@ describe('carousel', () => {
 
 			slides.forEach((s) => s.click());
 			slides.forEach((s, i) => expect(s).to.equal(clicked[i]));
+
+			carousel.remove();
+		});
+	});
+
+	describe('styling applyed', () => {
+		it('should have the pagination bullets colored', async () => {
+			const carousel = await initCarousel(['a', 'b', 'c']);
+			const bullets = extractBullets(carousel);
+			const expectedStyleActive = { backgroundColor: 'rgb(0, 0, 0)' };
+			const expectedStyleInactive = { backgroundColor: 'rgb(194, 196, 204)' };
+
+			expect(bullets.length).equal(3);
+			assertComputedStyle(bullets[0], expectedStyleActive);
+			assertComputedStyle(bullets[1], expectedStyleInactive);
+			assertComputedStyle(bullets[2], expectedStyleInactive);
+
+			carousel.remove();
+		});
+
+		it('should have the navigation buttons colored', async () => {
+			const carousel = await initCarousel(['a', 'b', 'c']);
+			const navButtons = extractNavButtons(carousel);
+			const expectedStyle = {
+				fill: 'rgb(0, 0, 0)',
+				borderTopColor: 'rgb(206, 208, 215)',
+				borderLeftColor: 'rgb(206, 208, 215)',
+				borderRightColor: 'rgb(206, 208, 215)',
+				borderBottomColor: 'rgb(206, 208, 215)',
+			};
+
+			expect(navButtons.length).equal(2);
+			assertComputedStyle(navButtons[0], expectedStyle);
+			assertComputedStyle(navButtons[1], expectedStyle);
+
+			carousel.remove();
 		});
 	});
 });
@@ -202,6 +241,20 @@ function extractSlides(carousel) {
 		throw new Error(`carousel MUST be a carousel element, received ${carousel}`);
 	}
 	return carousel.querySelectorAll(`${VWC_CAROUSEL_ITEM}`);
+}
+
+function extractBullets(carousel) {
+	if (!carousel || typeof carousel.querySelectorAll !== 'function') {
+		throw new Error(`carousel MUST be a carousel element, received ${carousel}`);
+	}
+	return carousel.querySelectorAll('.swiper-pagination-bullet');
+}
+
+function extractNavButtons(carousel) {
+	if (!carousel || typeof carousel.querySelectorAll !== 'function') {
+		throw new Error(`carousel MUST be a carousel element, received ${carousel}`);
+	}
+	return carousel.querySelectorAll('.swiper-nav');
 }
 
 async function moveNextAndWait(carousel) {

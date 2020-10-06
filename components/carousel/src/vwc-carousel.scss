@@ -43,8 +43,8 @@ vwc-casousel:active {
 
 $themeColor: var(--vvd-color-surface-foreground) !default;
 
-// @import ".../../../node_modules/swiper/scss/functions";
-// @import "../../../node_modules/swiper/components/core/core";
+@import ".../../../node_modules/swiper/scss/functions";
+@import "../../../node_modules/swiper/components/core/core";
 
 //IMPORT_COMPONENTS
 @import "../../../node_modules/swiper/components/a11y/a11y";

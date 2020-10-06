@@ -18,7 +18,7 @@
   --vvd-color-checked: var(--vvd-color-base-foreground);
   --vvd-color-unchecked: #74767a;
   --vvd-color-disabled-unchecked: #afb0b8;
-  --vvd-color-idle: #c2c4cc;
+  --vvd-color-idle: color-base.$grey-500;
 
   #{color-semantic.$formfield-disabled-ink}: color-base.$grey-800;
   #{color-semantic.$formfield-disabled-fill}: color-base.$grey-100;
@@ -29,11 +29,11 @@
 	#{color-semantic.$formfield-border-hover}: var(--vvd-color-base-foreground);
 	#{color-semantic.$formfield-border-active}: var(--vvd-color-base-foreground);
   #{color-semantic.$formfield-border-disabled}: color-base.$grey-300;
-  
+
 	#{color-semantic.$formfield-error-fill}: color-base.$red-100;
 	#{color-semantic.$formfield-border-error}: color-base.$red-600;
   #{color-semantic.$formfield-label-error-ink}: color-base.$red-600;
-  
+
   #{color-semantic.$color-primary-background}: #131415;
 	#{color-semantic.$color-primary-background-hover}: #131415;
 	#{color-semantic.$color-primary-border}: #000000;

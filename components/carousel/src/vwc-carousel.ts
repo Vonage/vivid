@@ -35,6 +35,8 @@ export class VWCCarousel extends LitElement {
 	autoplay = true;
 	@query('.swiper-container')
 	private swiperContainer?: HTMLElement;
+	@query('.swiper-wrapper')
+	private swiperWrapper?: HTMLElement;
 	@query('.swiper-button-next')
 	private swiperButtonNext?: HTMLElement;
 	@query('.swiper-button-prev')
@@ -145,7 +147,7 @@ export class VWCCarousel extends LitElement {
 	}
 
 	private collectSlideRefs(swiper: Swiper): void {
-		const slides = this.getSwiperSlides(swiper);
+		const slides = swiper.slides;
 		for (let i = 0, l = slides.length; i < l; i++) {
 			this.slideRefs[i] = slides[i];
 		}
@@ -153,7 +155,7 @@ export class VWCCarousel extends LitElement {
 
 	private moveFirstIfNeeded(swiper?: Swiper): void {
 		const s = swiper ?? ((this as unknown) as Swiper);
-		const slides = this.getSwiperSlides(s);
+		const slides = s.slides;
 		if (slides.length > 2 && s.isEnd) {
 			const first = slides[0];
 			s.removeSlide(0);
@@ -163,7 +165,7 @@ export class VWCCarousel extends LitElement {
 
 	private moveLastIfNeeded(swiper?: Swiper): void {
 		const s = swiper ?? ((this as unknown) as Swiper);
-		const slides = this.getSwiperSlides(s);
+		const slides = s.slides;
 		if (slides.length > 2 && s.isBeginning) {
 			const last = slides[slides.length - 1];
 			s.removeSlide(slides.length - 1);
@@ -200,11 +202,11 @@ export class VWCCarousel extends LitElement {
 	}
 
 	private goToSlide(event: Event): void {
-		if (this.swiper && this.swiperPagination) {
+		if (this.swiper && this.swiperPagination && this.swiperWrapper) {
 			const logicalIndex = Array.from(this.swiperPagination.children).indexOf(
 				event.target as HTMLElement
 			);
-			const domIndex = Array.from(this.swiper.wrapperEl.children).indexOf(
+			const domIndex = Array.from(this.swiperWrapper.children).indexOf(
 				this.slideRefs[logicalIndex]
 			);
 			if (domIndex >= 0) {
@@ -215,11 +217,7 @@ export class VWCCarousel extends LitElement {
 
 	private calculateActiveIndex(swiper: Swiper): number {
 		const nai = swiper.activeIndex;
-		const slides = this.getSwiperSlides(swiper);
+		const slides = swiper.slides;
 		return this.slideRefs.indexOf(slides[nai]);
-	}
-
-	private getSwiperSlides(swiper: Swiper): HTMLElement[] {
-		return (swiper.slides as unknown) as HTMLElement[];
 	}
 }
