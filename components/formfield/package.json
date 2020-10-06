@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-formfield",
-	"version": "0.12.3",
+	"version": "0.12.4",
 	"description": "> TODO: description",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/formfield#readme",
 	"license": "ISC",
@@ -25,12 +25,12 @@
 	},
 	"dependencies": {
 		"@material/mwc-formfield": "^0.18.0",
-		"@vonage/vvd-core": "^0.12.3",
-		"@vonage/vvd-style-coupling": "^0.12.3",
+		"@vonage/vvd-core": "^0.12.4",
+		"@vonage/vvd-style-coupling": "^0.12.4",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.1"
 	},
 	"devDependencies": {
-		"@vonage/vvd-typography": "^0.12.3"
+		"@vonage/vvd-typography": "^0.12.4"
 	}
 }
