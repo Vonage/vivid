@@ -66,8 +66,12 @@ export class VWCButton extends MWCButton {
 	}
 
 	protected updateFormAndButton(): void {
+		const form = getFormByIdOrClosest((this as unknown) as HTMLInputElement);
+		if (form === this.form) {
+			return;
+		}
+		this.form = form;
 		this.#_hiddenButton?.remove();
-		this.form = getFormByIdOrClosest((this as unknown) as HTMLInputElement);
 		if (this.form && this.#_hiddenButton) {
 			this.form.appendChild(this.#_hiddenButton);
 		}
@@ -101,6 +105,8 @@ export class VWCButton extends MWCButton {
 	}
 
 	protected _handleClick(): void {
+		this.updateFormAndButton();
+
 		if (this.form) {
 			switch (this.getAttribute('type')) {
 				case 'reset':

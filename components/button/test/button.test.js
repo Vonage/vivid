@@ -37,10 +37,6 @@ describe('button', () => {
 			return formElement.querySelector('button') !== null;
 		}
 
-		beforeEach(() => {
-			window.formSubmitted = false;
-		});
-
 		it('should submit form when inside a form', async function () {
 			let submitted = false;
 			const addedElements = addElement(
@@ -141,6 +137,56 @@ describe('button', () => {
 
 			expect(reset).to.eql(expectedReset);
 			expect(submitted).to.eql(expectedSubmitted);
+		});
+
+		it('should associate with form even if the form is added after the button', async function () {
+			const afterSubmit = {
+				external: false,
+				internal: false,
+			};
+
+			const afterReset = {
+				external: false,
+				internal: false,
+			};
+
+			const expectedAfterSubmitted = {
+				external: true,
+				internal: false,
+			};
+			const expectedAfterReset = {
+				external: true,
+				internal: false,
+			};
+
+			const [formElement] = addElement(
+				textToDomToParent(`
+				<form onsubmit="return false" name="testForm" id="testForm">
+					<${COMPONENT_NAME} form="externalForm" type="reset">RESET</${COMPONENT_NAME}>
+					<${COMPONENT_NAME} form="externalForm" type="submit">SUBMIT</${COMPONENT_NAME}>
+				</form>
+			`)
+			);
+			await waitNextTask();
+			const [externalForm] = addElement(
+				textToDomToParent(
+					`<form onsubmit="return false" name="externalForm" id="externalForm"></form>`
+				)
+			);
+			const resetButton = formElement.children[0];
+			const submitButton = formElement.children[1];
+
+			formElement.addEventListener('submit', () => (afterSubmit.internal = true));
+			formElement.addEventListener('reset', () => (afterReset.internal = true));
+
+			externalForm.addEventListener('submit', () => (afterSubmit.external = true));
+			externalForm.addEventListener('reset', () => (afterReset.external = true));
+
+			resetButton.click();
+			submitButton.click();
+
+			expect(afterReset).to.eql(expectedAfterReset);
+			expect(afterSubmit).to.eql(expectedAfterSubmitted);
 		});
 
 		it('should associate with no form if form attribute is set with nonexistent id', async function () {
