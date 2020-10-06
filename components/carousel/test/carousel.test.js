@@ -138,7 +138,7 @@ describe('carousel', () => {
 
 	describe('click on slide', function () {
 		it('should preserve click listeners of slides after sliding', async () => {
-			const carousel = await initCarousel(['a', 'b', 'c'], {});
+			const carousel = await initCarousel(['a', 'b', 'c']);
 			const slides = extractSlides(carousel);
 			const nextButton = carousel.querySelector('.swiper-button-next');
 
