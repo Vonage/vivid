@@ -1,3 +1,4 @@
+import '@vonage/vvd-core';
 import { customElement } from 'lit-element';
 
 import { UploadBase } from './vwc-upload-base.js';

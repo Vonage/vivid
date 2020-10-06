@@ -1,3 +1,5 @@
+@use '@vonage/vvd-typography/scss/typography' as typography;
+
 :host {
 	display: flex;
 	place-items: center;
@@ -12,6 +14,10 @@
 	}
 }
 
-input[type='file'] {
+::slotted(input[type='file']) {
 	display: none;
+}
+
+label {
+	@include typography.typography-cat-shorthand('body-1');
 }
