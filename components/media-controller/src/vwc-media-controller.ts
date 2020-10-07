@@ -164,14 +164,15 @@ class MediaController extends HTMLElement {
 			mouseUpStream = kefir.fromEvents(window, 'mouseup'),
 			mouseMoveStream = kefir.fromEvents(window, 'mousemove'),
 			contextMenuStream = kefir.fromEvents(window, 'contextmenu'),
-			windowResizeStream = kefir.fromEvents(window, 'resize'),
-			trackBarEnabledProperty = componentConnectedStream
-				.take(1)
-				.map(() => {
-					// eslint-disable-next-line
-					return !this.hasAttribute('noseek');
-				})
-				.toProperty(() => true);
+			windowResizeStream = kefir.fromEvents(window, 'resize');
+
+		const trackBarEnabledProperty = componentConnectedStream
+			.take(1)
+			.map(() => {
+				// eslint-disable-next-line
+				return !this.hasAttribute('noseek');
+			})
+			.toProperty(() => true);
 
 		const apiPositionProperty = apiBus
 			.filter(byType('set_position') as (p: unknown) => boolean)
