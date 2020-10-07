@@ -1,6 +1,6 @@
-@use 'sass:selector';
 @forward './vwc-button-coupling';
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
+@use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins' as color-connotation-mixins;
 
 :host {
   --mdc-button-disabled-ink-color: var(
@@ -9,72 +9,45 @@
   --mdc-button-disabled-fill-color: var(
     #{color-semantic.$formfield-border-idle}
   );
+  --mdc-button-horizontal-padding: 14px;
 }
 
-// ! move to utils as this might be a common
-// ! mixin for other components such as call-out
-@mixin connotations-context(
-  $selector: ':host([connotation-specifier])',
-  $default: primary
-) {
-  $connotations: primary cta success error info announcement;
 
-  @each $connotation in $connotations {
-    $attr: '[connotation="#{$connotation}"i]';
-
-    $scoped-selector: $selector; // prevents overriding argument
-
-    $scoped-selector: selector.replace(
-      #{$selector},
-      '[connotation-specifier]',
-      #{$attr}
-    );
-
-    @if ($connotation == $default) {
-      $default-selector: selector.replace(
-        #{$selector},
-        '[connotation-specifier]',
-        ':not([connotation])'
-      );
-      $scoped-selector: $default-selector, $scoped-selector;
-    }
-
-    #{$scoped-selector} {
-      --mdc-theme-primary: var(--vvd-color-#{$connotation}-background);
-      --mdc-theme-on-primary: var(--vvd-color-#{$connotation}-foreground);
-    }
-  }
-}
-
-@include connotations-context(
-  ':host([unelevated][connotation-specifier]), :host([outlined][connotation-specifier])'
+@include color-connotation-mixins.connotations-context(
+	':host([unelevated]#{color-connotation-mixins.$connotation-placeholder},[outlined]#{color-connotation-mixins.$connotation-placeholder})'
 );
-
+:host([unelevated],[outlined]) {
+	 --mdc-theme-primary: var(#{color-semantic.$color-connotation-background});
+   --mdc-theme-on-primary: var(#{color-semantic.$color-connotation-foreground});
+}
 /////////////////////////////////////////////////////////////////////////////
 .mdc-button {
+  border-radius: 6px;
   // ! this was supposed to be set by MDC
   font-stretch: var(--mdc-typography-button-font-stretch);
   height: 40px;
   letter-spacing: normal;
-  border-radius: 6px;
 
-  &.mdc-button--dense {
-    height: 32px;
+  &:not(.mdc-button--dense) {
+    .vvd-icon {
+      min-height: 18px;
+      min-width: 18px;
+    }
   }
 
-  vwc-icon {
+  .vvd-icon {
     vertical-align: sub;
   }
 
   > span.trailing-icon {
-    > slot > vwc-icon {
-      margin-left: 6px;
+    .vvd-icon {
+      margin-inline-start: 8px;
     }
   }
 
   > span.leading-icon {
-    > slot > vwc-icon {
-      margin-right: 6px;
+    .vvd-icon {
+      margin-inline-end: 8px;
     }
   }
 }
@@ -83,6 +56,40 @@
   border-color: var(--vvd-color-disabled-fill-color);
 }
 
-:host([shape="pill"]) .mdc-button {
-  border-radius: 40px;
+:host([shape='pill']) .mdc-button {
+  border-radius: 24px;
+}
+
+:host([dense]) {
+  --mdc-button-horizontal-padding: 12px;
+
+  .mdc-button {
+    border-radius: 5px;
+    height: 32px;
+  }
+}
+
+:host([enlarged]) {
+  --mdc-button-horizontal-padding: 24px;
+
+  .mdc-button {
+    height: 48px;
+
+    .vvd-icon {
+      min-height: 20px;
+      min-width: 20px;
+    }
+
+    > span.trailing-icon {
+      .vvd-icon {
+        margin-inline-start: 10px;
+      }
+    }
+
+    > span.leading-icon {
+      .vvd-icon {
+        margin-inline-end: 10px;
+      }
+    }
+  }
 }

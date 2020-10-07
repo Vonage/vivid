@@ -19,7 +19,7 @@
       tabindex="-1"
     >
       <vwc-icon
-        size="medium"
+        class="vvd-icon"
         type="left"
       >
       </vwc-icon>
@@ -42,7 +42,7 @@
       tabindex="-1"
     >
       <vwc-icon
-        size="medium"
+        class="vvd-icon"
         type="right"
       >
       </vwc-icon>

@@ -25,12 +25,15 @@ export type FabConnotation = typeof connotations;
 @customElement('vwc-fab')
 export class VWCFab extends MWCFab {
 	@property({ type: String, reflect: true })
-	connotation?: | FabConnotation[number] | undefined;
+	connotation?: FabConnotation[number];
 
 	protected renderIcon(): TemplateResult {
-		return html`${
-			this.icon
-				? html`<vwc-icon class="mdc-fab__icon" type="${this.icon}" size="${this.mini ? 'small' : 'medium'}"></vwc-icon>`
-				: ''}`;
+		return html`${this.icon
+			? html`<vwc-icon
+					class="mdc-fab__icon"
+					type="${this.icon}"
+					size="${this.mini ? 'small' : 'medium'}"
+			  ></vwc-icon>`
+			: ''}`;
 	}
 }

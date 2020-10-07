@@ -1,3 +1,4 @@
+import '@vonage/vvd-core';
 import { customElement, property, html, TemplateResult } from 'lit-element';
 import { Switch as MWCSwitch } from '@material/mwc-switch';
 import { style as vwcSwitchStyle } from './vwc-switch.css';
@@ -23,7 +24,7 @@ export type SwitchConnotation = typeof connotations;
 @customElement('vwc-switch')
 export class VWCSwitch extends MWCSwitch {
 	@property({ type: String, reflect: true })
-	connotation?: SwitchConnotation[number] | undefined;
+	connotation?: SwitchConnotation[number];
 
 	@property({ type: Boolean, reflect: true })
 	enlarged = false;

@@ -1,14 +1,23 @@
-import { customElement, property, html, TemplateResult } from 'lit-element';
-import '@vonage/vwc-notched-outline';
+import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
+import '@vonage/vwc-notched-outline';
+import {
+	customElement,
+	property,
+	html,
+	TemplateResult,
+	PropertyValues,
+} from 'lit-element';
 import { mapToClasses } from '@vonage/vvd-foundation/class-utils.js';
 import { TextField as MWCTextField } from '@material/mwc-textfield';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import { style as vwcTextFieldStyle } from './vwc-textfield.css';
 import { style as mwcTextFieldStyle } from '@material/mwc-textfield/mwc-textfield-css.js';
-import { addInputToForm } from '@vonage/vvd-foundation/form-association';
+import {
+	associateWithForm,
+	submitOnEnter,
+} from '@vonage/vvd-foundation/form-association';
 export { TextFieldType } from '@material/mwc-textfield';
-import '@vonage/vwc-icon';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -31,25 +40,38 @@ export class VWCTextField extends MWCTextField {
 	@property({ type: String, reflect: true })
 	shape: TextFieldShape[number] = 'rounded';
 
-	@property({ type: HTMLInputElement, reflect: false })
-	hiddenInput: HTMLInputElement | undefined;
-
 	@property({ type: String, reflect: true })
 	form: string | undefined;
 
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
-		this.shadowRoot?.querySelector('.mdc-notched-outline')?.shadowRoot?.querySelector('.mdc-notched-outline')?.classList.add('vvd-notch');
-		addInputToForm(this);
+		this.autoValidate = true;
+		this.shadowRoot
+			?.querySelector('.mdc-notched-outline')
+			?.shadowRoot?.querySelector('.mdc-notched-outline')
+			?.classList.add('vvd-notch');
+		associateWithForm<VWCTextField>(this, this.formElement);
+		submitOnEnter((this as unknown) as HTMLInputElement);
+	}
+
+	updated(changedProperties: PropertyValues): void {
+		super.updated(changedProperties);
+		if (this.shape === 'pill') {
+			this.dense = true;
+		}
 	}
 
 	protected renderIcon(icon: string, isTrailingIcon = false): TemplateResult {
 		const classes = {
 			'mdc-text-field__icon--leading': !isTrailingIcon,
-			'mdc-text-field__icon--trailing': isTrailingIcon
+			'mdc-text-field__icon--trailing': isTrailingIcon,
 		};
 
-		return html`<vwc-icon type="${icon}" size="small" class="${mapToClasses(classes).join(' ')}"></vwc-icon>`;
+		return html`<vwc-icon
+			type="${icon}"
+			size="small"
+			class="${mapToClasses(classes).join(' ')}"
+		></vwc-icon>`;
 	}
 
 	protected renderRipple(): TemplateResult {
@@ -65,10 +87,9 @@ export class VWCTextField extends MWCTextField {
 			return {};
 		}
 
-		return html`
-      <vwc-notched-outline class="mdc-notched-outline vvd-notch">
-        ${this.renderLabel()}
-      </vwc-notched-outline>`;
+		return html` <vwc-notched-outline class="mdc-notched-outline vvd-notch">
+			${this.renderLabel()}
+		</vwc-notched-outline>`;
 	}
 
 	renderHelperText(charCounterTemplate = {}): TemplateResult {
@@ -80,11 +101,21 @@ export class VWCTextField extends MWCTextField {
 			'mdc-text-field-helper-text--persistent': this.helperPersistent,
 			'mdc-text-field-helper-text--validation-msg': showValidationMessage,
 		};
+		const validationMessage = showValidationMessage
+			? this.validationMessage
+			: this.helper;
+		const classes = mapToClasses(classesMap).join(' ');
 		return html`
 			<div class="mdc-text-field-helper-line">
-				<vwc-icon class="mdc-text-field-helper-icon" type="info-negative" size="small"></vwc-icon>
+				<vwc-icon
+					class="mdc-text-field-helper-icon"
+					type="info-negative"
+					size="small"
+				></vwc-icon>
 				<span class="spacer"></span>
-				<div class="mdc-text-field-helper-text ${mapToClasses(classesMap).join(' ')}">${showValidationMessage ? this.validationMessage : this.helper}</div>
+				<div class="mdc-text-field-helper-text ${classes}">
+					${validationMessage}
+				</div>
 				${charCounterTemplate}
 			</div>
 		`;

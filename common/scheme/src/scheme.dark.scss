@@ -1,11 +1,11 @@
-@use '../../../design-tokens/build/scss/schemes/dark/base.scss';
-@use '../../../design-tokens/build/scss/schemes/dark/alternate.scss';
+@use '@vonage/vvd-design-tokens/build/scss/schemes/dark/base.scss';
+@use '@vonage/vvd-design-tokens/build/scss/schemes/dark/alternate.scss';
 
 body,
 .vvd-theme-dark-base {
-  @include base.variables;
+	@include base.variables;
 }
 
 .vvd-theme-dark-alternate {
-  @include base.variables;
+	@include alternate.variables;
 }

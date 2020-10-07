@@ -4,9 +4,11 @@ import { Button as MWCButton } from '@material/mwc-button';
 import { style as vwcButtonStyle } from './vwc-button.css';
 import { style as mwcButtonStyle } from '@material/mwc-button/mwc-button-css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
-import { Connotation } from '@vonage/vvd-foundation/contants';
+import { Connotation } from '@vonage/vvd-foundation/constants';
 import { html, TemplateResult } from 'lit-element';
 import '@vonage/vwc-icon';
+import { requestSubmit } from '@vonage/vvd-foundation/form-association';
+import { getFormByIdOrClosest } from '@vonage/vvd-foundation/form-association/common';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -21,9 +23,7 @@ MWCButton.styles = [styleCoupling, mwcButtonStyle, vwcButtonStyle];
 const layouts = ['text', 'outlined', 'filled'];
 export type ButtonLayout = typeof layouts;
 
-export {
-	Connotation
-};
+export { Connotation };
 
 const shapes = ['rounded', 'pill'];
 export type ButtonShape = typeof shapes;
@@ -37,6 +37,9 @@ export type ButtonType = typeof types;
  */
 @customElement('vwc-button')
 export class VWCButton extends MWCButton {
+	@property({ type: Boolean, reflect: true })
+	enlarged = false;
+
 	@property({ type: String, reflect: true })
 	layout: ButtonLayout[number] = 'text';
 
@@ -49,31 +52,70 @@ export class VWCButton extends MWCButton {
 	@property({ type: String, reflect: true })
 	type: ButtonType[number] = 'submit';
 
-	@property({ type: String, reflect: true })
-	form: string | undefined;
+	@property({ type: String, reflect: false })
+	form: HTMLFormElement | null = null;
 
-	protected updated(): void {
+	#_hiddenButton: HTMLButtonElement | undefined;
+
+	createRenderRoot(): ShadowRoot {
+		if (HTMLFormElement.prototype.requestSubmit) {
+			return super.createRenderRoot();
+		}
+		// don't set delegatesFocus: true due to https://bugs.webkit.org/show_bug.cgi?id=215732
+		return this.attachShadow({ mode: 'open' });
+	}
+
+	protected updateFormAndButton(): void {
+		const form = getFormByIdOrClosest((this as unknown) as HTMLInputElement);
+		if (form === this.form) {
+			return;
+		}
+		this.form = form;
+		this.#_hiddenButton?.remove();
+		if (this.form && this.#_hiddenButton) {
+			this.form.appendChild(this.#_hiddenButton);
+		}
+	}
+
+	protected updated(changes: Map<string, boolean>): void {
+		if (changes.has('form')) {
+			this.updateFormAndButton();
+		}
+
+		if (changes.has('type')) {
+			this.#_hiddenButton?.setAttribute('type', this.getAttribute('type') ?? '');
+		}
+
 		const layout: ButtonLayout[number] = this.layout;
 		this.toggleAttribute('outlined', layout === 'outlined');
 		this.toggleAttribute('unelevated', layout === 'filled');
+
+		if (changes.has('dense')) {
+			if (this.dense && this.enlarged) {
+				this.enlarged = false;
+			}
+		}
+
+		if (changes.has('enlarged')) {
+			if (this.enlarged && this.dense) {
+				this.removeAttribute('dense');
+				this.dense = false;
+			}
+		}
 	}
 
 	protected _handleClick(): void {
-		let form: HTMLFormElement;
-		const formId = this.getAttribute('form');
-		if (formId) {
-			form = document.getElementById(formId) as HTMLFormElement;
-		} else {
-			form = this.closest('form') as HTMLFormElement;
-		}
+		this.updateFormAndButton();
 
-		if (form) {
+		if (this.form) {
 			switch (this.getAttribute('type')) {
 				case 'reset':
-					form.reset();
+					this.form.reset();
+					break;
+				case 'button':
 					break;
 				default:
-					form.requestSubmit();
+					requestSubmit(this.form);
 					break;
 			}
 		}
@@ -86,5 +128,12 @@ export class VWCButton extends MWCButton {
 	connectedCallback(): void {
 		super.connectedCallback();
 		this.addEventListener('click', this._handleClick);
+		this.#_hiddenButton = document.createElement('button');
+		this.#_hiddenButton.style.display = 'none';
+	}
+
+	disconnectedCallback(): void {
+		super.disconnectedCallback();
+		this.#_hiddenButton?.remove();
 	}
 }

@@ -1,3 +1,4 @@
+import '@vonage/vvd-core';
 import { customElement } from 'lit-element';
 import { Drawer as MWCDrawer } from '@material/mwc-drawer';
 import { style as vwcDrawerStyle } from './vwc-drawer.css';
@@ -18,4 +19,4 @@ MWCDrawer.styles = [styleCoupling, mwcDrawerStyle, vwcDrawerStyle];
  * This component is an extension of [<mwc-drawer>](https://github.com/material-components/material-components-web-components/tree/master/packages/drawer)
  */
 @customElement('vwc-drawer')
-export class VWCDrawer extends MWCDrawer { }
+export class VWCDrawer extends MWCDrawer {}

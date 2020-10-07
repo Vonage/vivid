@@ -1,4 +1,0 @@
-[submodule "design-tokens/properties"]
-	path = design-tokens/properties
-	url = git@github.com:Vonage/vivid-design-tokens-properties.git
-	branch = master

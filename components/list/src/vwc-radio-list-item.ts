@@ -13,10 +13,15 @@ declare global {
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-MWCRadioListItem.styles = [styleCoupling, mwcListItemStyle, mwcControlListItemStyle, vwcRadioListItemStyle];
+MWCRadioListItem.styles = [
+	styleCoupling,
+	mwcListItemStyle,
+	mwcControlListItemStyle,
+	vwcRadioListItemStyle,
+];
 
 /**
  * This component is an extension of [<mwc-radio-list-item>](https://github.com/material-components/material-components-web-components/tree/master/packages/list)
  */
 @customElement('vwc-radio-list-item')
-export class VWCRadioListItem extends MWCRadioListItem { }
+export class VWCRadioListItem extends MWCRadioListItem {}
