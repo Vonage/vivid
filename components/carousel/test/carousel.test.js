@@ -165,7 +165,7 @@ describe('carousel', () => {
 	});
 
 	describe('styling applyed', () => {
-		xit('should have the pagination bullets colored', async () => {
+		it('should have the pagination bullets colored', async () => {
 			const carousel = await initCarousel(['a', 'b', 'c']);
 			const bullets = extractBullets(carousel);
 			const scheme = schemeService.getSelectedScheme();
@@ -182,7 +182,7 @@ describe('carousel', () => {
 			carousel.remove();
 		});
 
-		xit('should have the navigation buttons colored', async () => {
+		it('should have the navigation buttons colored', async () => {
 			const carousel = await initCarousel(['a', 'b', 'c']);
 			const navButtons = extractNavButtons(carousel);
 			const scheme = schemeService.getSelectedScheme();
