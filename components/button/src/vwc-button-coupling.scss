@@ -3,3 +3,11 @@
 :host {
   @include typography.typography-mdc-coupling('button', 'button');
 }
+
+:host([dense]) {
+  @include typography.typography-mdc-coupling('button', 'caption-bold');
+}
+
+:host([enlarged]) {
+  @include typography.typography-mdc-coupling('button', 'body-1-bold');
+}

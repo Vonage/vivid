@@ -10,8 +10,8 @@ let INIT_PROMISE: Promise<Record<string, unknown>> | null = null;
 async function init(): Promise<Record<string, unknown>> {
 	if (!INIT_PROMISE) {
 		INIT_PROMISE = new Promise((resolve, reject) => {
-			console.info('Vivid Fonts initialization start...');
-			const st = performance.now();
+			// console.info('Vivid Fonts initialization start...');
+			// const st = performance.now();
 
 			const testElement = setupInitTestElement();
 			const initialWidth = testElement.offsetWidth;
@@ -32,9 +32,9 @@ async function init(): Promise<Record<string, unknown>> {
 				.catch(reject)
 				.finally(() => {
 					cleanInitTestElement(testElement);
-					console.info(
-						`Vivid Fonts initialization took ${Math.floor(performance.now() - st)}ms`
-					);
+					// console.info(
+					// 	`Vivid Fonts initialization took ${Math.floor(performance.now() - st)}ms`
+					// );
 				});
 		});
 	}

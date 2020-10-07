@@ -16084,6 +16084,11 @@ tslib@^2.0.0, tslib@^2.0.1:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/tslib/-/tslib-2.0.1.tgz#410eb0d113e5b6356490eec749603725b021b43e"
   integrity sha1-QQ6w0RPltjVkkO7HSWA3JbAhtD4=
 
+tslib@^2.0.2:
+  version "2.0.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/tslib/-/tslib-2.0.2.tgz#462295631185db44b21b1ea3615b63cd1c038242"
+  integrity sha1-RiKVYxGF20SyGx6jYVtjzRwDgkI=
+
 tsscmp@1.0.6:
   version "1.0.6"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/tsscmp/-/tsscmp-1.0.6.tgz#85b99583ac3589ec4bfef825b5000aa911d605eb"
