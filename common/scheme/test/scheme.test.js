@@ -43,6 +43,8 @@ describe('vvd-scheme service', () => {
 		const currentSchemeOption = s.getSelectedSchemeOption();
 		assert.equal(currentScheme, autoScheme);
 		assert.equal(currentSchemeOption, SYNC_WITH_OS);
+
+		await s.set(SYNC_WITH_OS);
 	});
 
 	it('should init to default (OS) when set to null', async () => {
@@ -54,6 +56,8 @@ describe('vvd-scheme service', () => {
 		const currentSchemeOption = s.getSelectedSchemeOption();
 		assert.equal(currentScheme, autoScheme);
 		assert.equal(currentSchemeOption, SYNC_WITH_OS);
+
+		await s.set(SYNC_WITH_OS);
 	});
 
 	it('should init to the given argument', async () => {
@@ -65,6 +69,8 @@ describe('vvd-scheme service', () => {
 		const currentSchemeOption = s.getSelectedSchemeOption();
 		assert.equal(currentScheme, newScheme);
 		assert.equal(currentSchemeOption, newScheme);
+
+		await s.set(SYNC_WITH_OS);
 	});
 
 	it('should do nothing when set to the same argument', async () => {
@@ -77,6 +83,8 @@ describe('vvd-scheme service', () => {
 
 		const r2 = await s.set(sameScheme);
 		assert.equal(r2, r1);
+
+		await s.set(SYNC_WITH_OS);
 	});
 
 	it('should do nothing when set to undefined and already post-init', async () => {
@@ -89,6 +97,8 @@ describe('vvd-scheme service', () => {
 
 		const r2 = await s.set();
 		assert.equal(r2, r1);
+
+		await s.set(SYNC_WITH_OS);
 	});
 
 	it('should do nothing when set to null and already post-init', async () => {
@@ -101,5 +111,7 @@ describe('vvd-scheme service', () => {
 
 		const r2 = await s.set(null);
 		assert.equal(r2, r1);
+
+		await s.set(SYNC_WITH_OS);
 	});
 });
