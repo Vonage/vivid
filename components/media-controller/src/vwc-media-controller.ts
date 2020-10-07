@@ -28,6 +28,17 @@ interface Point {
 	y: number;
 }
 
+const kefirStreamFromAddEventListener = function (
+	target: EventTarget,
+	eventName: string,
+	options: AddEventListenerOptions
+) {
+	return kefir.stream(({ emit }) => {
+		target.addEventListener(eventName, emit, options);
+		return () => target.removeEventListener(eventName, emit);
+	});
+};
+
 const byType = (typeName: string) => ({ type }: StreamEvent) =>
 	type === typeName;
 
@@ -40,6 +51,30 @@ const createTag = function (
 		typeof child === 'string' ? (el.innerHTML += child) : el.appendChild(child)
 	);
 	return el;
+};
+
+const createBaseStructureAndHandles = function () {
+	let trackEl: HTMLElement,
+		ScrubberKnobEl: HTMLElement,
+		playPauseControlEl: HTMLElement,
+		rootEl: HTMLElement;
+
+	const [style, div, button] = ['style', 'div', 'button'].map(
+		(tagName) =>
+			partial(createTag, [tagName]) as (
+				...children: Array<HTMLElement | string>
+			) => HTMLElement
+	);
+	return {
+		els: [
+			style(vwcMediaControllerStyle.cssText),
+			(rootEl = div(
+				(playPauseControlEl = button()),
+				(trackEl = div((ScrubberKnobEl = button())))
+			)),
+		],
+		handles: { trackEl, ScrubberKnobEl, playPauseControlEl, rootEl },
+	};
 };
 
 const preventDefault = (e: Event) => {
@@ -87,7 +122,7 @@ const isInRect = (
  * @fires {number} userPlayPauseRequest - Fires when the user clicks the play/pause button, the "detail" event field will contain a number between zero and one describing the user's relative selected position.
  */
 class MediaController extends HTMLElement {
-	[SIGNAL] = (payload: Record<string, unknown>): void => {
+	[SIGNAL] = (payload?: Record<string, unknown>): void => {
 		void payload;
 	};
 	constructor() {
@@ -101,26 +136,11 @@ class MediaController extends HTMLElement {
 
 		// Set component's elemental structure
 		const rootDoc = this.attachShadow({ mode: 'open' });
-		let trackEl: HTMLElement,
-			ScrubberKnobEl: HTMLElement,
-			playPauseControlEl: HTMLElement,
-			rootEl: HTMLElement;
 
-		const componentContent = (function () {
-			const [style, div, button] = ['style', 'div', 'button'].map(
-				(tagName) =>
-					partial(createTag, [tagName]) as (
-						...children: Array<HTMLElement | string>
-					) => HTMLElement
-			);
-			return [
-				style(vwcMediaControllerStyle.cssText),
-				(rootEl = div(
-					(playPauseControlEl = button()),
-					(trackEl = div((ScrubberKnobEl = button())))
-				)),
-			];
-		})();
+		const {
+			els: componentContent,
+			handles: { trackEl, ScrubberKnobEl, playPauseControlEl, rootEl },
+		} = createBaseStructureAndHandles();
 
 		const rafStream = kefir.repeat(() =>
 				kefir.fromCallback(requestAnimationFrame)
@@ -133,23 +153,18 @@ class MediaController extends HTMLElement {
 			touchStartStream = kefir
 				.fromEvents(window, 'touchstart')
 				.map(preventDefault as (p: unknown) => unknown),
-			touchMoveStream = kefir
-				.stream(({ emit }) => {
-					window.addEventListener('touchmove', emit, { passive: false });
-					return () => window.removeEventListener('touchmove', emit);
-				})
-				.map(preventDefault as (p: unknown) => unknown),
+			touchMoveStream = kefirStreamFromAddEventListener(window, 'touchmove', {
+				passive: false,
+			}).map(preventDefault as (p: unknown) => unknown),
 			touchEndStream = kefir.merge(
 				['touchend', 'touchcancel'].map((eventName) =>
 					kefir.fromEvents(window, eventName)
 				)
 			),
-			[mouseUpStream, mouseMoveStream, contextMenuStream, windowResizeStream] = [
-				'mouseup',
-				'mousemove',
-				'contextmenu',
-				'resize',
-			].map((eventName) => kefir.fromEvents(window, eventName)),
+			mouseUpStream = kefir.fromEvents(window, 'mouseup'),
+			mouseMoveStream = kefir.fromEvents(window, 'mousemove'),
+			contextMenuStream = kefir.fromEvents(window, 'contextmenu'),
+			windowResizeStream = kefir.fromEvents(window, 'resize'),
 			trackBarEnabledProperty = componentConnectedStream
 				.take(1)
 				.map(() => {
