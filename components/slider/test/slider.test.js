@@ -1,5 +1,7 @@
-import '../vwc-slider.js';
+import '@vonage/vwc-slider';
+import schemeService from '@vonage/vvd-scheme';
 import {
+	isolatedElementsCreation,
 	textToDomToParent,
 	waitNextTask,
 	assertComputedStyle,
@@ -10,10 +12,10 @@ chai.use(chaiDomDiff);
 const VWC_SLIDER = 'vwc-slider';
 
 describe('slider', () => {
-	let addedElements = [];
+	let addElement = isolatedElementsCreation();
 
-	afterEach(function () {
-		addedElements.forEach((elm) => elm.remove());
+	beforeEach(async () => {
+		await schemeService.set('light');
 	});
 
 	describe('init flow', () => {
@@ -24,39 +26,43 @@ describe('slider', () => {
 		});
 
 		it('should have internal contents', async () => {
-			const actualElements = (addedElements = textToDomToParent(
-				`<${VWC_SLIDER}></${VWC_SLIDER}>`,
-				document.body
-			));
+			const actualElements = addElement(
+				textToDomToParent(`<${VWC_SLIDER}></${VWC_SLIDER}>`)
+			);
 			await waitNextTask();
 			expect(actualElements[0]).shadowDom.to.equalSnapshot({
 				ignoreAttributes: ['style'],
 			});
-			actualElements.forEach((e) => e.remove());
 		});
 	});
 
 	describe('styling', () => {
 		it('should style the basic slider', async () => {
-			const actualElements = (addedElements = textToDomToParent(
-				`<${VWC_SLIDER} min="0" max="100" value="50"></${VWC_SLIDER}>`,
-				document.body
-			));
+			const actualElements = addElement(
+				textToDomToParent(
+					`<${VWC_SLIDER} min="0" max="100" value="50"></${VWC_SLIDER}>`
+				)
+			);
 			await waitNextTask();
+			const scheme = schemeService.getSelectedScheme();
 
 			const sliderTrack = actualElements[0].shadowRoot.querySelector(
 				'.mdc-slider__track'
 			);
 			expect(sliderTrack).to.exist;
-			assertComputedStyle(sliderTrack, { backgroundColor: 'rgb(19, 20, 21)' });
+			const expectedStylesTrack = {
+				backgroundColor: scheme === 'light' ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)',
+			};
+			assertComputedStyle(sliderTrack, expectedStylesTrack);
 
 			const sliderThumb = actualElements[0].shadowRoot.querySelector(
 				'.mdc-slider__thumb'
 			);
 			expect(sliderThumb).to.exist;
-			assertComputedStyle(sliderThumb, { fill: 'rgb(19, 20, 21)' });
-
-			actualElements.forEach((e) => e.remove());
+			const expectedStylesThumb = {
+				fill: scheme === 'light' ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)',
+			};
+			assertComputedStyle(sliderThumb, expectedStylesThumb);
 		});
 	});
 });
