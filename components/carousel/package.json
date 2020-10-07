@@ -29,7 +29,7 @@
 		"@vonage/vwc-icon": "^0.12.5",
 		"lit-element": "^2.4.0",
 		"swiper": "^5.4.5",
-		"tslib": "^2.0.1"
+		"tslib": "^2.0.2"
 	},
 	"devDependencies": {
 		"@types/swiper": "^5.4.0",
