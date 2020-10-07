@@ -39,7 +39,7 @@ jobs:
 
       - name: Bump version to ${{ steps.extractVersion.outputs.version }}
         run: |
-          yarn lerna version ${{ steps.extractVersion.outputs.version }} --no-private --no-git-tag-version --no-push --yes
+          yarn lerna version ${{ steps.extractVersion.outputs.version }} --force-publish --no-private --no-git-tag-version --no-push --yes
           yarn changelog
 
       # Build & Test with new version

@@ -19,7 +19,9 @@ function setHiddenInputInitialValuesAndStyle(
 	{ name, value: initialValue }: InputElement
 ) {
 	hiddenInput.style.display = 'none';
-	name ? hiddenInput.setAttribute('name', name) : '';
+	if (name) {
+		hiddenInput.setAttribute('name', name);
+	}
 	hiddenInput.defaultValue = initialValue;
 }
 

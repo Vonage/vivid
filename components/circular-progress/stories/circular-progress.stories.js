@@ -1,20 +1,21 @@
 import '@vonage/vwc-circular-progress/vwc-circular-progress.js';
 import { html } from 'lit-element';
+import { spread } from '@open-wc/lit-helpers';
+import { argTypes } from './arg-types.js';
 
 export default {
 	title: 'Atoms/Circular Progress',
 	component: 'vwc-circular-progress',
+	argTypes
 }
 
-export const basic = () => html`
-	<h3>Determinate</h3>
-	<vwc-circular-progress progress="0.7"></vwc-circular-progress>
+const Template = args => html`<vwc-circular-progress ...=${spread(args)}></vwc-circular-progress>`;
 
-	<h3>Indeterminate</h3>
-	<vwc-circular-progress indeterminate></vwc-circular-progress>
+export const Default = Template.bind({});
+Default.args = { progress: '0.7', density: '' };
 
-	<h3>Density</h3>
-	<vwc-circular-progress indeterminate density="4"></vwc-circular-progress>
-	<vwc-circular-progress indeterminate density="-4"></vwc-circular-progress>
-	<vwc-circular-progress indeterminate density="-7"></vwc-circular-progress>
-`;
+export const Indeterminate = Template.bind({});
+Indeterminate.args = { indeterminate: '', progress: '', density: '' };
+
+export const Density = Template.bind({});
+Density.args = { indeterminate: '', progress: '', density: '-4' };

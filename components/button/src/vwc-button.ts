@@ -37,6 +37,9 @@ export type ButtonType = typeof types;
  */
 @customElement('vwc-button')
 export class VWCButton extends MWCButton {
+	@property({ type: Boolean, reflect: true })
+	enlarged = false;
+
 	@property({ type: String, reflect: true })
 	layout: ButtonLayout[number] = 'text';
 
@@ -54,9 +57,21 @@ export class VWCButton extends MWCButton {
 
 	#_hiddenButton: HTMLButtonElement | undefined;
 
+	createRenderRoot(): ShadowRoot {
+		if (HTMLFormElement.prototype.requestSubmit) {
+			return super.createRenderRoot();
+		}
+		// don't set delegatesFocus: true due to https://bugs.webkit.org/show_bug.cgi?id=215732
+		return this.attachShadow({ mode: 'open' });
+	}
+
 	protected updateFormAndButton(): void {
+		const form = getFormByIdOrClosest((this as unknown) as HTMLInputElement);
+		if (form === this.form) {
+			return;
+		}
+		this.form = form;
 		this.#_hiddenButton?.remove();
-		this.form = getFormByIdOrClosest((this as unknown) as HTMLInputElement);
 		if (this.form && this.#_hiddenButton) {
 			this.form.appendChild(this.#_hiddenButton);
 		}
@@ -74,9 +89,24 @@ export class VWCButton extends MWCButton {
 		const layout: ButtonLayout[number] = this.layout;
 		this.toggleAttribute('outlined', layout === 'outlined');
 		this.toggleAttribute('unelevated', layout === 'filled');
+
+		if (changes.has('dense')) {
+			if (this.dense && this.enlarged) {
+				this.enlarged = false;
+			}
+		}
+
+		if (changes.has('enlarged')) {
+			if (this.enlarged && this.dense) {
+				this.removeAttribute('dense');
+				this.dense = false;
+			}
+		}
 	}
 
 	protected _handleClick(): void {
+		this.updateFormAndButton();
+
 		if (this.form) {
 			switch (this.getAttribute('type')) {
 				case 'reset':

@@ -25,7 +25,7 @@ export type FabConnotation = typeof connotations;
 @customElement('vwc-fab')
 export class VWCFab extends MWCFab {
 	@property({ type: String, reflect: true })
-	connotation?: FabConnotation[number] | undefined;
+	connotation?: FabConnotation[number];
 
 	protected renderIcon(): TemplateResult {
 		return html`${this.icon

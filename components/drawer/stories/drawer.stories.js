@@ -3,15 +3,18 @@ import '@vonage/vwc-button';
 import '@vonage/vwc-list/vwc-list.js';
 import '@vonage/vwc-list/vwc-list-item.js';
 import { html } from 'lit-element';
+import { spread } from '@open-wc/lit-helpers';
+import { argTypes } from './arg-types.js';
 
 export default {
 	title: 'Atoms/Drawer',
-	component: 'vwc-drawer'
+	component: 'vwc-drawer',
+	argTypes
 }
 
-export const basic = () => html`
+const Template = args => html`
 	<div style="height: 100vh">
-		<vwc-drawer id="drawer" hasHeader type="dismissible">
+		<vwc-drawer id="drawer" @MDCDrawer:opened="${handleOpened}" @MDCDrawer:closed="${handleClosed}" ...=${spread(args)}>
 			<span slot="title">Drawer Title</span>
 			<span slot="subtitle">subtitle</span>
 			<vwc-list>
@@ -27,8 +30,18 @@ export const basic = () => html`
 				</div>
 			</div>
 		</vwc-drawer>
-	</div>
-`;
+	</div>`;
+
+export const Basic = Template.bind({});
+Basic.args = { hasHeader: '', type: 'dismissible' };
+
+function handleOpened() {
+	console.log('MDCDrawer:opened event');
+}
+
+function handleClosed() {
+	console.log('MDCDrawer:removal event');
+}
 
 function handleClick() {
 	drawer.open = !drawer.open;
