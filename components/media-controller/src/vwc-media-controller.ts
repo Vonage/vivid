@@ -39,6 +39,17 @@ const kefirStreamFromAddEventListener = function (
 	});
 };
 
+const attachBoundingRect = (targetEl: HTMLElement) => (
+	obj: unknown
+): unknown => {
+	return Object.assign(
+		obj,
+		(({ x, y, width, height }) => ({ x, y, width, height }))(
+			targetEl.getBoundingClientRect()
+		)
+	);
+};
+
 const byType = (typeName: string) => ({ type }: StreamEvent) =>
 	type === typeName;
 
@@ -66,7 +77,7 @@ const createBaseStructureAndHandles = function () {
 			) => HTMLElement
 	);
 	return {
-		els: [
+		componentDOMElements: [
 			style(vwcMediaControllerStyle.cssText),
 			(rootEl = div(
 				(playPauseControlEl = button()),
@@ -113,6 +124,13 @@ const isInRect = (
 		isBetween(sourceY, rectY, rectY + rectHeight),
 	].every(identity);
 
+const isEventWithinTrackElRect = function ({ mouseX, mouseY, ...rect }) {
+	return isInRect(
+		{ x: mouseX, y: mouseY },
+		addRectMargin({ marginY: TRACK_VERTICAL_RESPONSIVITY_MARGIN }, rect as Rect)
+	);
+} as (p: unknown) => boolean;
+
 /**
  * Displays controllers for media playback. Includes play/pause button and a scrub bar
  *
@@ -138,7 +156,7 @@ class MediaController extends HTMLElement {
 		const rootDoc = this.attachShadow({ mode: 'open' });
 
 		const {
-			els: componentContent,
+			componentDOMElements: componentContent,
 			handles: { trackEl, ScrubberKnobEl, playPauseControlEl, rootEl },
 		} = createBaseStructureAndHandles();
 
@@ -187,25 +205,18 @@ class MediaController extends HTMLElement {
 						touchStartStream.map(path(['changedTouches', 0])),
 						mouseDownStream,
 					])
-					.map(function ({ clientX: mouseX, clientY: mouseY, identifier }) {
-						return {
-							mouseX,
-							mouseY,
-							identifier,
-							...(({ x, y, width, height }) => ({ x, y, width, height }))(
-								trackEl.getBoundingClientRect()
-							),
-						};
-					} as (p: unknown) => unknown)
-					.filter(function ({ mouseX, mouseY, ...rect }) {
-						return isInRect(
-							{ x: mouseX, y: mouseY },
-							addRectMargin(
-								{ marginY: TRACK_VERTICAL_RESPONSIVITY_MARGIN },
-								rect as Rect
-							)
-						);
-					} as (p: unknown) => boolean)
+					.map(
+						// This transforms the original mouse event to logical names and adds the trackEl rectangle
+						pipe(
+							(({ clientX: mouseX, clientY: mouseY, identifier }) => ({
+								mouseX,
+								mouseY,
+								identifier,
+							})) as (a: unknown) => unknown,
+							attachBoundingRect(trackEl)
+						)
+					)
+					.filter(isEventWithinTrackElRect)
 					.flatMapLatest(function ({
 						mouseX,
 						mouseY,
