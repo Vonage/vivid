@@ -124,8 +124,5 @@
 		"*.test.js": [
 			"prettier --write"
 		]
-	},
-	"dependencies": {
-		"@vonage/vvd-design-tokens-properties": "0.1.20"
 	}
 }
