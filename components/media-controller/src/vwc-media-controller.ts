@@ -64,30 +64,6 @@ const createTag = function (
 	return el;
 };
 
-const createBaseStructureAndHandles = function () {
-	let trackEl: HTMLElement,
-		ScrubberKnobEl: HTMLElement,
-		playPauseControlEl: HTMLElement,
-		rootEl: HTMLElement;
-
-	const [style, div, button] = ['style', 'div', 'button'].map(
-		(tagName) =>
-			partial(createTag, [tagName]) as (
-				...children: Array<HTMLElement | string>
-			) => HTMLElement
-	);
-	return {
-		componentDOMElements: [
-			style(vwcMediaControllerStyle.cssText),
-			(rootEl = div(
-				(playPauseControlEl = button()),
-				(trackEl = div((ScrubberKnobEl = button())))
-			)),
-		],
-		handles: { trackEl, ScrubberKnobEl, playPauseControlEl, rootEl },
-	};
-};
-
 const preventDefault = (e: Event) => {
 	e.preventDefault();
 	return e;
@@ -131,6 +107,54 @@ const isEventWithinTrackElRect = function ({ mouseX, mouseY, ...rect }) {
 	);
 } as (p: unknown) => boolean;
 
+// Artificially Excluded functions (here to remove congestion in constructor)
+const createBaseStructureAndHandles = function () {
+	let trackEl: HTMLElement,
+		ScrubberKnobEl: HTMLElement,
+		playPauseControlEl: HTMLElement,
+		rootEl: HTMLElement;
+
+	const [style, div, button] = ['style', 'div', 'button'].map(
+		(tagName) =>
+			partial(createTag, [tagName]) as (
+				...children: Array<HTMLElement | string>
+			) => HTMLElement
+	);
+	return {
+		componentDOMElements: [
+			style(vwcMediaControllerStyle.cssText),
+			(rootEl = div(
+				(playPauseControlEl = button()),
+				(trackEl = div((ScrubberKnobEl = button())))
+			)),
+		],
+		uiHandles: { trackEl, ScrubberKnobEl, playPauseControlEl, rootEl },
+	};
+};
+
+const createTrackBarEnabledProperty = function (
+	this: MediaController,
+	componentConnectedStream: Observable<unknown, unknown>
+) {
+	return componentConnectedStream
+		.take(1)
+		.map(() => {
+			// eslint-disable-next-line
+			return !this.hasAttribute('noseek');
+		})
+		.toProperty(() => true);
+};
+
+const createApiPositionProperty = function (
+	this: MediaController,
+	apiBus: Observable<unknown, unknown>
+) {
+	return apiBus
+		.filter(byType('set_position') as (p: unknown) => boolean)
+		.map(prop('value') as (p: unknown) => unknown)
+		.toProperty(always(0));
+};
+
 /**
  * Displays controllers for media playback. Includes play/pause button and a scrub bar
  *
@@ -157,7 +181,7 @@ class MediaController extends HTMLElement {
 
 		const {
 			componentDOMElements: componentContent,
-			handles: { trackEl, ScrubberKnobEl, playPauseControlEl, rootEl },
+			uiHandles: { trackEl, ScrubberKnobEl, playPauseControlEl, rootEl },
 		} = createBaseStructureAndHandles();
 
 		const rafStream = kefir.repeat(() =>
@@ -184,18 +208,11 @@ class MediaController extends HTMLElement {
 			contextMenuStream = kefir.fromEvents(window, 'contextmenu'),
 			windowResizeStream = kefir.fromEvents(window, 'resize');
 
-		const trackBarEnabledProperty = componentConnectedStream
-			.take(1)
-			.map(() => {
-				// eslint-disable-next-line
-				return !this.hasAttribute('noseek');
-			})
-			.toProperty(() => true);
-
-		const apiPositionProperty = apiBus
-			.filter(byType('set_position') as (p: unknown) => boolean)
-			.map(prop('value') as (p: unknown) => unknown)
-			.toProperty(always(0));
+		const trackBarEnabledProperty = createTrackBarEnabledProperty.call(
+			this,
+			componentConnectedStream
+		);
+		const apiPositionProperty = createApiPositionProperty.call(this, apiBus);
 
 		const trackBarStream = kefir
 			.combine([trackBarEnabledProperty, componentConnectedStream], identity)
