@@ -1,4 +1,5 @@
 import '@vonage/vvd-core';
+import '@vonage/vwc-button';
 import {
 	customElement,
 	html,

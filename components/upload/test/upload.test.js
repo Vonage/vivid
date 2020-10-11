@@ -1,4 +1,4 @@
-import '../vwc-upload.js';
+import '@vonage/vwc-upload';
 import {
 	waitNextTask,
 	textToDomToParent,
