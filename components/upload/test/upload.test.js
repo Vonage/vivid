@@ -30,7 +30,7 @@ describe('upload', () => {
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
-	describe.only('form association', () => {
+	describe('form association', () => {
 		it('should have an associated form as a read-only property', async () => {
 			addedElements = textToDomToParent(
 				`<form><${VWC_COMPONENT}></${VWC_COMPONENT}></form>`
@@ -51,10 +51,8 @@ describe('upload', () => {
 				`<form><${VWC_COMPONENT} name="${uploadName}"></${VWC_COMPONENT}></form>`
 			);
 			const form = addedElements[0];
-			const upload = form.querySelector(VWC_COMPONENT);
 
 			await waitNextTask();
-			upload.value = 'non-existing-path.pdf';
 
 			return new Promise((resolve) => {
 				form.addEventListener('submit', (e) => {
@@ -78,7 +76,6 @@ describe('upload', () => {
 			const upload = formA.querySelector(VWC_COMPONENT);
 
 			await waitNextTask();
-			upload.value = 'non-existing-path.pdf';
 
 			expect(upload.form).equal(formA);
 			formB.appendChild(upload);

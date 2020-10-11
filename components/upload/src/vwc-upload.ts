@@ -46,9 +46,6 @@ export class VWCUpload extends LitElement {
 
 	connectedCallback(): void {
 		super.connectedCallback();
-		this.#internalInput.addEventListener('change', (e) => {
-			this.dispatchEvent(new Event('change', e));
-		});
 		this.appendChild(this.#internalInput);
 	}
 
@@ -76,12 +73,8 @@ export class VWCUpload extends LitElement {
 		//	do nothing, as a native element does
 	}
 
-	get value(): string {
+	get value(): string | null {
 		return this.#internalInput.value;
-	}
-
-	set value(value: string) {
-		this.#internalInput.value = value;
 	}
 
 	triggerFileInput(): void {
