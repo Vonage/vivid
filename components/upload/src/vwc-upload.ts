@@ -114,6 +114,7 @@ export class VWCUpload extends LitElement {
 	private static createInternalInput() {
 		const result = document.createElement('input');
 		result.type = 'file';
+		result.slot = INTERNAL_INPUT_SLOT_NAME;
 		return result;
 	}
 

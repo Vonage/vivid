@@ -47,9 +47,12 @@ describe('upload', () => {
 
 		it('should be associated with the wrapping form', async () => {
 			const uploadName = randomAlpha();
-			addedElements = textToDomToParent(
-				`<form><${VWC_COMPONENT} name="${uploadName}"></${VWC_COMPONENT}></form>`
-			);
+			addedElements = textToDomToParent(`
+				<form>
+					<${VWC_COMPONENT} name="${uploadName}"></${VWC_COMPONENT}>
+					<button></button>
+				</form>
+			`);
 			const form = addedElements[0];
 
 			await waitNextTask();
@@ -61,15 +64,18 @@ describe('upload', () => {
 					expect(new FormData(e.target).get(uploadName)).exist;
 					resolve();
 				});
-				form.requestSubmit();
+				form.querySelector('button').click();
 			});
 		});
 
 		it('should re-associate itself upon moving in the DOM', async () => {
 			const uploadName = randomAlpha();
 			addedElements = textToDomToParent(`
-				<form><${VWC_COMPONENT} name="${uploadName}"></${VWC_COMPONENT}></form>
-				<form></form>
+				<form>
+					<${VWC_COMPONENT} name="${uploadName}"></${VWC_COMPONENT}>
+					<button></button>
+				</form>
+				<form><button></button></form>
 			`);
 			const formA = addedElements[0];
 			const formB = addedElements[1];
@@ -89,7 +95,7 @@ describe('upload', () => {
 					expect(new FormData(e.target).get(uploadName)).exist;
 					resolve();
 				});
-				formB.requestSubmit();
+				formB.querySelector('button').click();
 			});
 		});
 
