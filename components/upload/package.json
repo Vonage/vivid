@@ -1,0 +1,34 @@
+{
+	"name": "@vonage/vwc-upload",
+	"version": "0.12.5",
+	"description": "Upload file/s component",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/upload#readme",
+	"license": "ISC",
+	"main": "vwc-upload.js",
+	"module": "vwc-upload.js",
+	"files": [
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/vonage/vivid.git",
+		"directory": "components/upload"
+	},
+	"scripts": {
+		"test": "echo \"Error: run tests from root\" && exit 1"
+	},
+	"bugs": {
+		"url": "https://github.com/Vonage/vivid/issues"
+	},
+	"dependencies": {
+		"@vonage/vvd-core": "^0.12.5",
+		"@vonage/vwc-button": "^0.12.5",
+		"lit-element": "^2.4.0",
+		"tslib": "^2.0.2"
+	},
+	"devDependencies": {
+		"@vonage/vvd-typography": "^0.12.5"
+	}
+}
