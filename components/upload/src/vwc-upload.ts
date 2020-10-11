@@ -80,8 +80,6 @@ export class VWCUpload extends LitElement {
 	private static createInternalInput() {
 		const result = document.createElement('input');
 		result.type = 'file';
-		// result.accept = this.accept;
-		// if (this.multiple) result.setAttribute('multiple', '');
 		return result;
 	}
 
