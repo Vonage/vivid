@@ -18,7 +18,8 @@
 		"directory": "components/fab"
 	},
 	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1"
+		"test": "echo \"Error: run tests from root\" && exit 1",
+		"try": "lucid"
 	},
 	"bugs": {
 		"url": "https://github.com/Vonage/vivid/issues"
@@ -32,6 +33,7 @@
 		"tslib": "^2.0.2"
 	},
 	"devDependencies": {
+		"@vonage/lucid": "^0.12.5",
 		"@vonage/vvd-typography": "^0.12.5"
 	}
 }

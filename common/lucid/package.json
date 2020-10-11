@@ -1,0 +1,36 @@
+{
+  "name": "@vonage/lucid",
+  "private": true,
+  "version": "0.12.5",
+  "description": "A swift buliding tool, built for Vivid",
+  "keywords": [
+    "Build",
+    "Tool",
+    "Vivid"
+  ],
+  "author": "Tal Weinfeld <tal.weinfeld@vonage.com>",
+  "homepage": "https://github.com/Vonage/vivid#readme",
+  "license": "ISC",
+  "bin": "./index.js",
+  "main": "./index.js",
+  "directories": {},
+  "files": [],
+  "publishConfig": {
+    "registry": "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vonage/vivid.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/Vonage/vivid/issues"
+  },
+  "dependencies": {
+    "kefir": "^3.8.7",
+    "lodash": "^4.17.20",
+    "typescript": "^4.0.3"
+  }
+}
