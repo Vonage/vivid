@@ -25,8 +25,14 @@ export class VWCUpload extends LitElement {
 	@property({ type: String, reflect: true })
 	accept = '';
 
+	@property({ attribute: 'form', reflect: true })
+	formId = null;
+
 	@property({ type: Boolean, reflect: true })
 	multiple = false;
+
+	@property({ type: String, reflect: true })
+	name = '';
 
 	@property({ type: String, reflect: true })
 	'aria-controls' = 'fileupload';
@@ -45,8 +51,28 @@ export class VWCUpload extends LitElement {
 		this.appendChild(this.#internalInput);
 	}
 
+	attributeChangedCallback(
+		name: string,
+		oldval: string | null,
+		newval: string | null
+	): void {
+		if (name === 'form' && newval && newval !== oldval) {
+			this.#internalInput.setAttribute('form', newval);
+		} else {
+			super.attributeChangedCallback(name, oldval, newval);
+		}
+	}
+
 	get files(): FileList | null {
 		return this.#internalInput.files;
+	}
+
+	get form(): HTMLFormElement | null {
+		return this.#internalInput.form;
+	}
+
+	set form(_: HTMLFormElement | null) {
+		//	do nothing, as a native element does
 	}
 
 	triggerFileInput(): void {
@@ -66,6 +92,9 @@ export class VWCUpload extends LitElement {
 			} else {
 				this.#internalInput.removeAttribute('multiple');
 			}
+		}
+		if (changedProperties.has('name')) {
+			this.#internalInput.setAttribute('name', this.name);
 		}
 	}
 
