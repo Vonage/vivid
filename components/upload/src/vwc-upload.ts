@@ -76,6 +76,14 @@ export class VWCUpload extends LitElement {
 		//	do nothing, as a native element does
 	}
 
+	get value(): string {
+		return this.#internalInput.value;
+	}
+
+	set value(value: string) {
+		this.#internalInput.value = value;
+	}
+
 	triggerFileInput(): void {
 		this.#internalInput?.click();
 	}
