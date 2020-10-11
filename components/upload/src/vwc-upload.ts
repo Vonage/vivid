@@ -39,9 +39,9 @@ export class VWCUpload extends LitElement {
 
 	connectedCallback(): void {
 		super.connectedCallback();
-		this.#internalInput.addEventListener('change', (e) =>
-			this.dispatchEvent(new Event('change', e))
-		);
+		this.#internalInput.addEventListener('change', (e) => {
+			this.dispatchEvent(new Event('change', e));
+		});
 		this.appendChild(this.#internalInput);
 	}
 
