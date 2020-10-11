@@ -1,5 +1,11 @@
 @use '@vonage/vwc-textfield/src/vwc-textfield' as textfield;
 
+:host {
+	display: inline-flex;
+	flex-direction: column;
+	outline: none;
+}
+
 :host([dense][label]:not([label=''])) {
   .mdc-text-field--outlined {
 		padding-top: 8px;
