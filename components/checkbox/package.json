@@ -18,7 +18,8 @@
 		"directory": "components/checkbox"
 	},
 	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1"
+		"test": "echo \"Error: run tests from root\" && exit 1",
+		"build": "sass -s \"./src/*.scss\" -o ./src && tsc"
 	},
 	"bugs": {
 		"url": "https://github.com/Vonage/vivid/issues"
@@ -31,6 +32,7 @@
 		"tslib": "^2.0.2"
 	},
 	"devDependencies": {
-		"@vonage/vvd-foundation": "^0.12.5"
+		"@vonage/vvd-foundation": "^0.12.5",
+		"@vonage/lucid": "^0.12.5"
 	}
 }

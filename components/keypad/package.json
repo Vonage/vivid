@@ -19,7 +19,8 @@
 		"directory": "components/keypad"
 	},
 	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1"
+		"test": "echo \"Error: run tests from root\" && exit 1",
+		"build": "sass -s \"./src/*.scss\" -o ./src && tsc"
 	},
 	"bugs": {
 		"url": "https://github.com/Vonage/vivid/issues"
@@ -30,5 +31,8 @@
 		"@vonage/vwc-textfield": "^0.12.5",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.2"
+	},
+	"devDependencies": {
+		"@vonage/lucid": "^0.12.5"
 	}
 }

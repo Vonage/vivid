@@ -11,7 +11,8 @@
 		"directory": "packages/chips"
 	},
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build": "sass -s \"./src/*.scss\" -o ./src && tsc"
 	},
 	"author": "",
 	"license": "Apache-2.0",
@@ -23,5 +24,8 @@
 		"lit-element": "^2.3.1",
 		"lit-html": "^1.2.1",
 		"tslib": "^2.0.2"
+	},
+	"devDependencies": {
+		"@vonage/lucid": "^0.12.5"
 	}
 }

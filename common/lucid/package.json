@@ -2,7 +2,7 @@
   "name": "@vonage/lucid",
   "private": true,
   "version": "0.12.5",
-  "description": "A swift buliding tool, built for Vivid",
+  "description": "All Vivid's building tools under one roof",
   "keywords": [
     "Build",
     "Tool",
@@ -11,7 +11,9 @@
   "author": "Tal Weinfeld <tal.weinfeld@vonage.com>",
   "homepage": "https://github.com/Vonage/vivid#readme",
   "license": "ISC",
-  "bin": "./index.js",
+  "bin": {
+    "sass": "./sass-render/bin/sass-render.js"
+  },
   "main": "./index.js",
   "directories": {},
   "files": [],
@@ -29,8 +31,14 @@
     "url": "https://github.com/Vonage/vivid/issues"
   },
   "dependencies": {
+    "command-line-args": "^5.1.1",
+    "command-line-usage": "^6.1.0",
+    "fibers": "^5.0.0",
+    "glob": "^7.1.6",
     "kefir": "^3.8.7",
     "lodash": "^4.17.20",
-    "typescript": "^4.0.3"
+    "node-sass": "^4.14.1",
+    "node-sass-import": "^2.0.1",
+    "sass": "^1.27.0"
   }
 }

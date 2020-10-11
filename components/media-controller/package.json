@@ -16,7 +16,8 @@
 		"directory": "components/media-controller"
 	},
 	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1"
+		"test": "echo \"Error: run tests from root\" && exit 1",
+		"build": "sass -s \"./src/*.scss\" -o ./src && tsc"
 	},
 	"bugs": {
 		"url": "https://github.com/Vonage/vivid/issues"
@@ -26,5 +27,8 @@
 		"kefir": "^3.8.7",
 		"lit-element": "^2.4.0",
 		"ramda": "^0.27.1"
+	},
+	"devDependencies": {
+		"@vonage/lucid": "^0.12.5"
 	}
 }

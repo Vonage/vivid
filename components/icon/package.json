@@ -19,7 +19,7 @@
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1",
-		"build": "node ./build/vwc-icon-resolver-factory.js"
+		"build": "node ./build/vwc-icon-resolver-factory.js && sass -s \"./src/*.scss\" -o ./src && tsc"
 	},
 	"bugs": {
 		"url": "https://github.com/Vonage/vivid/issues"
@@ -32,7 +32,8 @@
 	},
 	"devDependencies": {
 		"aws-sdk": "^2.730.0",
-		"minimist": "^1.2.5"
+		"minimist": "^1.2.5",
+		"@vonage/lucid": "^0.12.5"
 	},
 	"engines": {
 		"node": ">=v12.0.0"
