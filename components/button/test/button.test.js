@@ -295,13 +295,11 @@ describe('button', () => {
 		});
 
 		it(`should set the form property to parent form`, async function () {
-			const otherFormId = randomAlpha();
-			const [formElement, otherForm] = addElement(
+			const [formElement] = addElement(
 				textToDomToParent(
 					`<form onsubmit="return false" name="testForm" id="testForm">
 								<${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}>
-							</form>
-							<form id="${otherFormId}"></form>`
+							</form>`
 				)
 			);
 			await waitNextTask();

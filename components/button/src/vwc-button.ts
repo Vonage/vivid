@@ -107,7 +107,7 @@ export class VWCButton extends MWCButton {
 	}
 
 	get form(): HTMLFormElement | null {
-		return (this.#_hiddenButton as HTMLInputElement).form;
+		return (this.#_hiddenButton as HTMLButtonElement).form;
 	}
 
 	set form(_: HTMLFormElement | null) {
@@ -133,11 +133,12 @@ export class VWCButton extends MWCButton {
 		return html`<vwc-icon size="small" type="${this.icon}"></vwc-icon>`;
 	}
 
-	static createHiddenButton() {
+	static createHiddenButton(): HTMLButtonElement {
 		const button = document.createElement('button');
 		button.style.display = 'none';
 		return button;
 	}
+
 	connectedCallback(): void {
 		super.connectedCallback();
 		this.addEventListener('click', this._handleClick);
