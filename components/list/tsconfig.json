@@ -1,5 +1,5 @@
 {
-	"extends": "../../tsconfig.json",
+	"extends": "@vonage/vvd-build-toolkit",
 	"compilerOptions": {
 		"composite": true,
 		"rootDir": "src",
