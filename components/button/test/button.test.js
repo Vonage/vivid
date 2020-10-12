@@ -111,20 +111,20 @@ describe('button', () => {
 				internal: false,
 			};
 
-			const addedElements = addElement(
+			const externalFormID = randomAlpha();
+			const [formElement, externalForm] = addElement(
 				textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="testForm">
-					<${COMPONENT_NAME} form="externalForm" type="reset">RESET</${COMPONENT_NAME}>
-					<${COMPONENT_NAME} form="externalForm" type="submit">SUBMIT</${COMPONENT_NAME}>
+					<${COMPONENT_NAME} form="${externalFormID}" type="reset">RESET</${COMPONENT_NAME}>
+					<${COMPONENT_NAME} form="${externalFormID}" type="submit">SUBMIT</${COMPONENT_NAME}>
 				</form>
-				<form onsubmit="return false" name="externalForm" id="externalForm"></form>
+				<form onsubmit="return false" name="externalForm" id="${externalFormID}"></form>
 			`)
 			);
 			await waitNextTask();
-			const formElement = addedElements[0];
+
 			const resetButton = formElement.children[0];
 			const submitButton = formElement.children[1];
-			const externalForm = addedElements[1];
 
 			formElement.addEventListener('submit', () => (submitted.internal = true));
 			formElement.addEventListener('reset', () => (reset.internal = true));
@@ -135,8 +135,8 @@ describe('button', () => {
 			resetButton.click();
 			submitButton.click();
 
-			expect(reset).to.eql(expectedReset);
-			expect(submitted).to.eql(expectedSubmitted);
+			expect(reset, 'expected button to reset the external form').to.eql(expectedReset);
+			expect(submitted, 'expected button to submit the external form').to.eql(expectedSubmitted);
 		});
 
 		it('should associate with form even if the form is added after the button', async function () {
@@ -290,7 +290,7 @@ describe('button', () => {
 			expect(hiddenButtonExists(formElement)).to.equal(false);
 		});
 
-		it(`should change the buttons location when the form attribute changes`, async function () {
+		it(`should set the form property to parent form`, async function() {
 			const otherFormId = randomAlpha();
 			const [formElement, otherForm] = addElement(
 				textToDomToParent(
@@ -302,13 +302,24 @@ describe('button', () => {
 			);
 			await waitNextTask();
 			const actualElement = formElement.querySelector(COMPONENT_NAME);
+			expect(actualElement.form).to.equal(formElement);
+		});
 
-			const buttonExistsOnClosestForm = hiddenButtonExists(formElement);
-			actualElement.setAttribute('form', otherFormId);
+		it(`should set the form property to form with the form's attribute`, async function() {
+			const otherFormId = randomAlpha();
+			const [formElement, otherForm] = addElement(
+				textToDomToParent(
+					`<form onsubmit="return false" name="testForm" id="testForm">
+								<${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}>
+							</form>
+							<form id="${otherFormId}"></form>`
+				)
+			);
 			await waitNextTask();
-			expect(buttonExistsOnClosestForm).to.equal(true);
-			expect(hiddenButtonExists(formElement)).to.equal(false);
-			expect(hiddenButtonExists(otherForm)).to.equal(true);
+
+			const actualElement = formElement.querySelector(COMPONENT_NAME);
+			actualElement.setAttribute('form', otherFormId);
+			expect(actualElement.form).to.equal(otherForm);
 		});
 
 		it(`should have display:none on the hidden button`, async function () {
