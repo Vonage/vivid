@@ -386,7 +386,7 @@ describe('textfield', () => {
 			});
 
 			assertComputedStyle(labelElement, {
-				fontSize: '14px',
+				fontSize: '14.2222px',
 				left: '-12px',
 				top: '-24px',
 				transform: 'none',
