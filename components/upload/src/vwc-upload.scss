@@ -1,0 +1,23 @@
+@use '@vonage/vvd-typography/scss/typography' as typography;
+
+:host {
+	display: flex;
+	place-items: center;
+	$gap: 24px;
+	@supports (gap: 2rem) {
+		gap: $gap;
+	}
+	@supports not (gap: 2rem) {
+		> * + * {
+			margin-inline-start: $gap;
+		}
+	}
+}
+
+::slotted(input[type='file']) {
+	display: none;
+}
+
+label {
+	@include typography.typography-cat-shorthand('body-1');
+}

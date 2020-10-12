@@ -1,8 +1,10 @@
 const
 	fs = require('fs'),
-	path = require('path');
+	path = require('path'),
+	process = require('process');
 
 const
+	BASE_URL_ARG = 'base-url',
 	STORYBOOK_PATH = './.out',
 	BUILD_DETAILS_PATH = 'build-details.json',
 	MANAGER_HEAD_PATH = 'index.html',
@@ -16,9 +18,24 @@ run();
 //
 function run() {
 	console.info('starting base URL update...');
-	const timestamp = obtainTimestamp();
-	updateBaseUrl(timestamp);
-	console.info('base URL updated');
+	let baseUrl = '';
+	const baseUrlArg = process.argv.find(a => a.startsWith(BASE_URL_ARG));
+	if (baseUrlArg) {
+		baseUrl = baseUrlArg.replace(BASE_URL_ARG + '=', '');
+	}
+	if (baseUrl) {
+		console.info(`\tbase URL taken from CL argument ('${baseUrl}')`);
+	} else {
+		baseUrl = obtainTimestamp();
+		console.info(`\tbase URL taken from timestamp ('${baseUrl}')`);
+	}
+	if (baseUrl) {
+		console.info(`\tupdating base URL with '${baseUrl}'`);
+		updateBaseUrl(baseUrl);
+		console.info('base URL updated');
+	} else {
+		console.error('failed to resolve base URL, update FAILED');
+	}
 }
 
 function obtainTimestamp() {
