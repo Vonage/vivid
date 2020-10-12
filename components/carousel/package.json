@@ -30,11 +30,13 @@
 		"@vonage/vwc-icon": "^0.12.5",
 		"lit-element": "^2.4.0",
 		"swiper": "^5.4.5",
-		"tslib": "^2.0.2"
+		"tslib": "^2.0.2",
+		"typescript": "^4.0.3"
 	},
 	"devDependencies": {
 		"@types/swiper": "^5.4.0",
+		"@vonage/vvd-build-toolkit": "^0.12.5",
 		"@vonage/vvd-foundation": "^0.12.5",
-		"@vonage/lucid": "^0.12.5"
+		"typescript": "^4.0.3"
 	}
 }

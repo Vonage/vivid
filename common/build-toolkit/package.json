@@ -1,5 +1,5 @@
 {
-  "name": "@vonage/lucid",
+  "name": "@vonage/vvd-build-toolkit",
   "private": true,
   "version": "0.12.5",
   "description": "All Vivid's building tools under one roof",
@@ -12,7 +12,7 @@
   "homepage": "https://github.com/Vonage/vivid#readme",
   "license": "ISC",
   "bin": {
-    "sass": "./sass-render/bin/sass-render.js"
+    "build-sass": "./sass-render/bin/sass-render.js"
   },
   "main": "./index.js",
   "directories": {},

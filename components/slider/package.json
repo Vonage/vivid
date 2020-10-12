@@ -32,7 +32,8 @@
 		"tslib": "^2.0.2"
 	},
 	"devDependencies": {
+		"@vonage/vvd-build-toolkit": "^0.12.5",
 		"@vonage/vvd-typography": "^0.12.5",
-		"@vonage/lucid": "^0.12.5"
+		"typescript": "^4.0.3"
 	}
 }

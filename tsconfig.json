@@ -28,12 +28,5 @@
 	},
 	"include": ["custom_typings/**/*.ts", "src/*.ts"],
 	"exclude": [],
-	"references": [
-		{ "path": "common/context" },
-		{ "path": "common/core" },
-		{ "path": "common/fonts" },
-		{ "path": "common/foundation" },
-		{ "path": "common/scheme" },
-		{ "path": "common/style-coupling" }
-	]
+	"references": []
 }
