@@ -12,7 +12,7 @@
 	},
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"build": "sass -s \"./src/*.scss\" -o ./src && tsc"
+		"build": "build-sass -s \"./src/*.scss\" -o ./src && tsc"
 	},
 	"author": "",
 	"license": "Apache-2.0",

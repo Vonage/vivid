@@ -18,12 +18,13 @@
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1",
-		"build": "build-sass -s \"./src/*.scss\" -o ./src && tsc"
+		"build": "tsc"
 	},
 	"bugs": {
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
+		"glob": "^7.1.6",
 		"tslib": "^2.0.2"
 	},
 	"devDependencies": {

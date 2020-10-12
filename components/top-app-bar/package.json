@@ -18,7 +18,7 @@
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1",
-		"build": "sass -s \"./src/*.scss\" -o ./src && tsc"
+		"build": "build-sass -s \"./src/*.scss\" -o ./src && tsc"
 	},
 	"bugs": {
 		"url": "https://github.com/Vonage/vivid/issues"
