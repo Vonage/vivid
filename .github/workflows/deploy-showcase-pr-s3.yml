@@ -16,6 +16,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Extract PR number
+        id: extractVersion
+        run: echo ${{ github.event.number }}
+
       # - name: Setup NodeJS 12
       #   uses: actions/setup-node@v1
       #   with:
