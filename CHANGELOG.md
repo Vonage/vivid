@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/Vonage/vivid/compare/v0.12.5...v0.13.0) (2020-10-12)
+
+
+### Features
+
+* **vwc-upload:** upload button component ([3a0b376](https://github.com/Vonage/vivid/commit/3a0b3762cd7eedddb1045b584c1f9ccd12eb8235))
+
+
+
+
+
 ## [0.12.5](https://github.com/Vonage/vivid/compare/v0.12.4...v0.12.5) (2020-10-06)
 
 **Note:** Version bump only for package @vivid/root
