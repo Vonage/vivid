@@ -14,8 +14,10 @@
   </span>
   <span class="mdc-button__label">
   </span>
-  <slot>
-  </slot>
+  <span class="slot-container">
+    <slot>
+    </slot>
+  </span>
   <span class="trailing-icon">
     <slot name="trailingIcon">
     </slot>
