@@ -1,0 +1,45 @@
+name: Build & Deploy Showcase (PR)
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  build-deploy-demo-pr:
+    runs-on: ubuntu-latest
+    env:
+      ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_VIVID_DEMO_PRS_ACCESS }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_VIVID_DEMO_PRS_SECRET }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup NodeJS 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Install dependencies
+        run: |
+          npm install -g yarn
+          yarn install
+
+      - name: Build storybook
+        run: yarn storybook:build base-url=${{ github.event.number }}
+
+      - name: Deploy showcase under PR ID (${{ github.event.number }})
+        run: aws s3 sync ./.out/ s3://${{ secrets.AWS_VIVID_DEMO_PRS_BUCKET }}/${{ github.event.number }}
+
+      - name: Invalidate CloudFront distribution root object's cache
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_VIVID_DEMO_PRS_DISTRIBUTION }} --paths "/${{ github.event.number }}/index.html"
+
+      - name: Add PR deploy URL comment
+        if: ${{ github.event.action == 'opened' || github.event.action == 'reopened' }}
+        env:
+          URL: ${{ github.event.pull_request.comments_url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl -X POST $URL -H "Content-Type: application/json" -H "Authorization: token $GITHUB_TOKEN" \
+            --data '{ "body": "PR showcase deployed [here](https://dtb9xssx7zaj6.cloudfront.net/${{ github.event.number }}/index.html)." }'
