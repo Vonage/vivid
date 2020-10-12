@@ -135,8 +135,12 @@ describe('button', () => {
 			resetButton.click();
 			submitButton.click();
 
-			expect(reset, 'expected button to reset the external form').to.eql(expectedReset);
-			expect(submitted, 'expected button to submit the external form').to.eql(expectedSubmitted);
+			expect(reset, 'expected button to reset the external form').to.eql(
+				expectedReset
+			);
+			expect(submitted, 'expected button to submit the external form').to.eql(
+				expectedSubmitted
+			);
 		});
 
 		it('should associate with form even if the form is added after the button', async function () {
@@ -290,7 +294,7 @@ describe('button', () => {
 			expect(hiddenButtonExists(formElement)).to.equal(false);
 		});
 
-		it(`should set the form property to parent form`, async function() {
+		it(`should set the form property to parent form`, async function () {
 			const otherFormId = randomAlpha();
 			const [formElement, otherForm] = addElement(
 				textToDomToParent(
@@ -305,7 +309,7 @@ describe('button', () => {
 			expect(actualElement.form).to.equal(formElement);
 		});
 
-		it(`should set the form property to form with the form's attribute`, async function() {
+		it(`should set the form property to form with the form's attribute`, async function () {
 			const otherFormId = randomAlpha();
 			const [formElement, otherForm] = addElement(
 				textToDomToParent(

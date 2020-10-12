@@ -65,7 +65,7 @@ export class VWCButton extends MWCButton {
 	}
 
 	protected updateFormAndButton(): void {
-		const formId = this.getAttribute('form')
+		const formId = this.getAttribute('form');
 		if (formId !== null) {
 			this.#_hiddenButton?.setAttribute('form', formId);
 		}
