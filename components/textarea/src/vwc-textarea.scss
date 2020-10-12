@@ -36,6 +36,7 @@
 			top: 15px;
 
 			&--float-above {
+				font-size: var(--mdc-typography-subtitle1-font-size);
 				transform: translateY(-9px) scale(1);
 			}
 		}
