@@ -2,7 +2,7 @@ import '@vonage/vvd-core';
 import { customElement, property } from 'lit-element';
 import { Button as MWCButton } from '@material/mwc-button';
 import { style as vwcButtonStyle } from './vwc-button.css';
-import { style as mwcButtonStyle } from '@material/mwc-button/mwc-button-css.js';
+import { style as mwcButtonStyle } from '@material/mwc-button/styles-css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import { Connotation } from '@vonage/vvd-foundation/constants';
 import { html, TemplateResult } from 'lit-element';
