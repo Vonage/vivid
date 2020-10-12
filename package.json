@@ -29,7 +29,7 @@
 		"git:sync": "git submodule sync && git submodule update --init --recursive --remote",
 		"postinstall": "yarn bootstrap",
 		"bootstrap": "lerna bootstrap",
-		"packages:build": "lerna run build --stream",
+		"packages:build": "lerna run build --stream --concurrency=5",
 		"storybook:metadata": "node ./scripts/storybook/prepare-sb-details.js",
 		"storybook:build": "yarn prestart && build-storybook -c .storybook -o .out -s ./.storybook/static && node ./scripts/storybook/update-sb-base-url.js",
 		"prestart": "yarn storybook:metadata && yarn compile && yarn wca:json",
