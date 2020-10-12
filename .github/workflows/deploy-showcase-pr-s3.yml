@@ -33,4 +33,13 @@ jobs:
         run: aws s3 sync ./.out/ s3://${{ secrets.AWS_VIVID_DEMO_PRS_BUCKET }}/${{ github.event.number }}
 
       - name: Invalidate CloudFront distribution root object's cache
-        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_VIVID_DEMO_PRS_DISTRIBUTION }} --paths "/${{ github.event.number }}/index.html"
+				run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_VIVID_DEMO_PRS_DISTRIBUTION }} --paths "/${{ github.event.number }}/index.html"
+
+      - name: Add PR deploy URL comment
+        if: ${{ github.event.action == 'opened' || github.event.action == 'synchronize' || github.event.action == 'reopened' }}
+        env:
+          URL: ${{ github.event.pull_request.comments_url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl -X POST $URL -H "Content-Type: application/json" -H "Authorization: token $GITHUB_TOKEN" \
+            --data '{ "body": "PR showcase deployed [here](https://dtb9xssx7zaj6.cloudfront.net/{{ github.event.number }}/index.html)." }'
