@@ -3,6 +3,7 @@ import '@vonage/vwc-list/vwc-list-item.js';
 import {
 	textToDomToParent,
 	waitNextTask,
+	waitInterval,
 	assertComputedStyle,
 	listenToSubmission,
 	changeValueAndNotify,
@@ -272,6 +273,31 @@ describe('select', () => {
 				fontStretch: '50%',
 				lineHeight: '18.4px',
 				letterSpacing: '0.15px',
+				textTransform: 'none',
+			});
+		});
+
+		it('should have set typography for a floating label', async () => {
+			const addedElements = addElement(
+				textToDomToParent(`
+				<${COMPONENT_NAME} outlined label="VWC Select">
+					<vwc-list-item selected value="0">Item 1</vwc-list-item>
+					<vwc-list-item value="1">Item 2</vwc-list-item>
+				</${COMPONENT_NAME}>
+			`)
+			);
+			await waitInterval(150); // font transition
+			const labelElement = addedElements[0].shadowRoot
+				.querySelector('.mdc-notched-outline')
+				.querySelector('#label');
+			expect(labelElement).to.exist;
+			assertComputedStyle(labelElement, {
+				fontFamily: 'SpeziaWebVariable',
+				fontSize: '12.642px',
+				fontWeight: '400',
+				fontStretch: '50%',
+				// lineHeight: 'normal',
+				// letterSpacing: 'normal',
 				textTransform: 'none',
 			});
 		});

@@ -268,6 +268,28 @@ describe('textarea', () => {
 			});
 		});
 
+		it('should have set typography for a floating label', async () => {
+			const addedElements = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} outlined label="Vwc textarea" value="hello"></${COMPONENT_NAME}>`
+				)
+			);
+			await waitNextTask();
+			const labelElement = addedElements[0].shadowRoot
+				.querySelector('.mdc-notched-outline')
+				.querySelector('#label');
+			expect(labelElement).to.exist;
+			assertComputedStyle(labelElement, {
+				fontFamily: 'SpeziaWebVariable',
+				fontSize: '12.642px',
+				fontWeight: '400',
+				fontStretch: '50%',
+				// lineHeight: 'normal',
+				// letterSpacing: 'normal',
+				textTransform: 'none',
+			});
+		});
+
 		it('should have set typography for an input', async () => {
 			const addedElements = addElement(
 				textToDomToParent(
