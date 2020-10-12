@@ -286,7 +286,7 @@ describe('select', () => {
 				</${COMPONENT_NAME}>
 			`)
 			);
-			await waitInterval(150); // font transition
+			await waitInterval(200); // font transition
 			const labelElement = addedElements[0].shadowRoot
 				.querySelector('.mdc-notched-outline')
 				.querySelector('#label');
