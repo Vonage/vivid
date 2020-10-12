@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vvd-core",
-	"version": "0.12.5",
+	"version": "0.13.0",
 	"description": "> TODO: description",
 	"author": "yinonov <yinon@hotmail.com>",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/core#readme",
@@ -25,12 +25,12 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@vonage/vvd-fonts": "^0.12.5",
-		"@vonage/vvd-scheme": "^0.12.5",
+		"@vonage/vvd-fonts": "^0.13.0",
+		"@vonage/vvd-scheme": "^0.13.0",
 		"tslib": "^2.0.2"
 	},
 	"devDependencies": {
-		"@vonage/vvd-build-toolkit": "^0.12.5",
+		"@vonage/vvd-build-toolkit": "^0.13.0",
 		"typescript": "^4.0.3"
 	}
 }

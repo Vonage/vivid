@@ -1,6 +1,6 @@
 {
 	"name": "@material/mwc-chips",
-	"version": "0.2.0",
+	"version": "0.13.0",
 	"description": "",
 	"main": "mwc-chips.js",
 	"module": "mwc-chips.js",
@@ -26,7 +26,7 @@
 		"tslib": "^2.0.2"
 	},
 	"devDependencies": {
-		"@vonage/vvd-build-toolkit": "^0.12.5",
+		"@vonage/vvd-build-toolkit": "^0.13.0",
 		"typescript": "^4.0.3"
 	}
 }

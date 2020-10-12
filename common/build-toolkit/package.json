@@ -1,7 +1,7 @@
 {
   "name": "@vonage/vvd-build-toolkit",
   "private": false,
-  "version": "0.12.5",
+  "version": "0.13.0",
   "description": "All Vivid's building tools under one roof",
   "keywords": [
     "Build",
