@@ -54,7 +54,7 @@ export class VWCButton extends MWCButton {
 	@property({ attribute: 'form', reflect: true })
 	formId = null;
 
-	#_hiddenButton: HTMLButtonElement | undefined;
+	#_hiddenButton: HTMLButtonElement = VWCButton.createHiddenButton();
 
 	createRenderRoot(): ShadowRoot {
 		if (HTMLFormElement.prototype.requestSubmit) {
@@ -142,8 +142,6 @@ export class VWCButton extends MWCButton {
 	connectedCallback(): void {
 		super.connectedCallback();
 		this.addEventListener('click', this._handleClick);
-		this.#_hiddenButton = VWCButton.createHiddenButton();
-		this.updateFormAndButton();
 		this.appendChild(this.#_hiddenButton);
 	}
 }
