@@ -1,11 +1,13 @@
-import '../vwc-list-item.js';
+import '@vonage/vwc-list';
+import '@vonage/vwc-list/vwc-list-item';
 import {
 	textToDomToParent,
 	waitNextTask,
 	assertComputedStyle,
+	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
-import { isolatedElementsCreation } from '../../../test/test-helpers';
+
 chai.use(chaiDomDiff);
 
 const VWC_LIST_ITEM = 'vwc-list-item';
@@ -31,8 +33,8 @@ describe('list item', () => {
 		});
 	});
 
-	describe('typography', function () {
-		it(`should have set typography correct`, async function () {
+	describe('typography', () => {
+		it(`should have set typography correct`, async () => {
 			const actualElements = addElement(
 				textToDomToParent(`<${VWC_LIST_ITEM}>Item 1</${VWC_LIST_ITEM}>`)
 			);
@@ -48,6 +50,34 @@ describe('list item', () => {
 				letterSpacing: 'normal',
 				textTransform: 'none',
 			});
+		});
+	});
+
+	describe('general styling', async () => {
+		it('should have correct height', async () => {
+			const actualElements = addElement(
+				textToDomToParent(`
+					<vwc-list>
+						<${VWC_LIST_ITEM}>Item 1</${VWC_LIST_ITEM}>
+						<${VWC_LIST_ITEM}>Item 2</${VWC_LIST_ITEM}>
+						<${VWC_LIST_ITEM}>Item 3</${VWC_LIST_ITEM}>
+					</vwc-list>
+				`)
+			);
+			await waitNextTask();
+			const items = actualElements[0].children;
+			expect(items).exist;
+			expect(items.length).equal(3);
+			for (const item of items) {
+				expect(item.offsetHeight).equal(48);
+				assertComputedStyle(item, {
+					marginTop: '0px',
+					marginLeft: '0px',
+					marginRight: '0px',
+					marginBottom: '0px',
+					height: '48px',
+				});
+			}
 		});
 	});
 });

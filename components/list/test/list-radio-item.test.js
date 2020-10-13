@@ -1,3 +1,4 @@
+import '@vonage/vwc-list';
 import '../vwc-radio-list-item.js';
 import {
 	textToDomToParent,
@@ -11,9 +12,9 @@ chai.use(chaiDomDiff);
 
 const VWC_RADIO_LIST_ITEM = 'vwc-radio-list-item';
 
-let addElements = isolatedElementsCreation();
-
 describe('radio list item', () => {
+	let addElements = isolatedElementsCreation();
+
 	it('should be defined as a custom element', async () => {
 		assert.exists(
 			customElements.get(
@@ -75,6 +76,34 @@ describe('radio list item', () => {
 				textTransform: 'none',
 			};
 			assertComputedStyle(listItem, expectedStyles);
+		});
+	});
+
+	describe('general styling', async () => {
+		it('should have correct height', async () => {
+			const actualElements = addElements(
+				textToDomToParent(`
+					<vwc-list>
+						<${VWC_RADIO_LIST_ITEM}>Item 1</${VWC_RADIO_LIST_ITEM}>
+						<${VWC_RADIO_LIST_ITEM}>Item 2</${VWC_RADIO_LIST_ITEM}>
+						<${VWC_RADIO_LIST_ITEM}>Item 3</${VWC_RADIO_LIST_ITEM}>
+					</vwc-list>
+				`)
+			);
+			await waitNextTask();
+			const items = actualElements[0].children;
+			expect(items).exist;
+			expect(items.length).equal(3);
+			for (const item of items) {
+				expect(item.offsetHeight).equal(56);
+				assertComputedStyle(item, {
+					marginTop: '0px',
+					marginLeft: '0px',
+					marginRight: '0px',
+					marginBottom: '0px',
+					height: '56px',
+				});
+			}
 		});
 	});
 });
