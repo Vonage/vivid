@@ -12,7 +12,7 @@ import {
 	body1TypographyStyles,
 	body2TypographyStyles,
 	captionTypographyStyles,
-} from '../../../test/typography-helpers.js';
+} from '../../../test/style-utils.js';
 import { validateMultipleShadowLayers } from '../../../test/form-utils.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';

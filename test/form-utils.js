@@ -35,4 +35,4 @@ export async function validateMultipleShadowLayers(element) {
   ).to.equal(1);
   expect(validInput).to.equal(true);
   expect(formElement.checkValidity()).to.equal(false);
-};
+}
