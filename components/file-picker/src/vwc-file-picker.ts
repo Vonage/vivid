@@ -7,19 +7,19 @@ import {
 	LitElement,
 	TemplateResult,
 } from 'lit-element';
-import { style } from './vwc-upload.css.js';
+import { style } from './vwc-file-picker.css.js';
 
 declare global {
 	interface HTMLElementTagNameMap {
-		'vwc-upload': VWCUpload;
+		'vwc-file-picker': VWCFilePicker;
 	}
 }
 
 const INTERNAL_INPUT_SLOT_NAME = 'internal-input';
 
-@customElement('vwc-upload')
-export class VWCUpload extends LitElement {
-	#internalInput: HTMLInputElement = VWCUpload.createInternalInput();
+@customElement('vwc-file-picker')
+export class VWCFilePicker extends LitElement {
+	#internalInput: HTMLInputElement = VWCFilePicker.createInternalInput();
 
 	static styles = [style];
 
@@ -43,6 +43,9 @@ export class VWCUpload extends LitElement {
 
 	@property({ type: String, reflect: true })
 	label = '';
+
+	@property({ reflect: false })
+	files: File[] = [];
 
 	connectedCallback(): void {
 		super.connectedCallback();
