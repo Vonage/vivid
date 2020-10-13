@@ -11,10 +11,11 @@ import {
 	listenToSubmission,
 } from '../../../test/test-helpers.js';
 import {
+	borderRadiusStyles,
 	body1TypographyStyles,
 	body2TypographyStyles,
 	captionTypographyStyles,
-} from '../../../test/typography-helpers.js';
+} from '../../../test/style-utils.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
@@ -399,23 +400,11 @@ describe('textfield', () => {
 			);
 
 			expect(formElement.getAttribute('shape') === 'rounded').to.equal(true);
-			const expectedNormalStyles = {
-				borderTopLeftRadius: '6px',
-				borderTopRightRadius: '6px',
-				borderBottomLeftRadius: '6px',
-				borderBottomRightRadius: '6px',
-			};
-			assertComputedStyle(actualElement, expectedNormalStyles);
+			assertComputedStyle(actualElement, borderRadiusStyles(6));
 
 			formElement.dense = true;
 			await waitNextTask();
-			const expectedDenseStyles = {
-				borderTopLeftRadius: '5px',
-				borderTopRightRadius: '5px',
-				borderBottomLeftRadius: '5px',
-				borderBottomRightRadius: '5px',
-			};
-			assertComputedStyle(actualElement, expectedDenseStyles);
+			assertComputedStyle(actualElement, borderRadiusStyles(5));
 		});
 
 		it('should have pill shape when shape set to pill', async () => {
@@ -428,13 +417,7 @@ describe('textfield', () => {
 			const actualElement = addedElements[0].shadowRoot.querySelector(
 				'.mdc-text-field'
 			);
-			const expectedStyles = {
-				borderTopLeftRadius: '24px',
-				borderTopRightRadius: '24px',
-				borderBottomLeftRadius: '24px',
-				borderBottomRightRadius: '24px',
-			};
-			assertComputedStyle(actualElement, expectedStyles);
+			assertComputedStyle(actualElement, borderRadiusStyles(24));
 		});
 	});
 });
