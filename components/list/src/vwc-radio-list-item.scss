@@ -5,6 +5,7 @@
 }
 
 :host(:not([left])) > .mdc-list-item__meta {
+	// TODO: add list-coupling variables (like --mdc-list-item-meta-size)
 	width: 26px;
 	height: 26px;
 }
