@@ -33,6 +33,7 @@
 		.mdc-text-field__input {
 			font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
 			height: auto;
+			line-height: normal;
 			margin: 0;
 			resize: vertical;
 		}

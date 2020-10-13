@@ -8,6 +8,11 @@ import {
 	isolatedElementsCreation,
 	listenToSubmission,
 } from '../../../test/test-helpers.js';
+import {
+	body1TypographyStyles,
+	body2TypographyStyles,
+	captionTypographyStyles,
+} from '../../../test/typography-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
@@ -262,44 +267,20 @@ describe('textarea', () => {
 		});
 
 		it('should have set typography for a label', async () => {
-			assertComputedStyle(labelElement, {
-				fontFamily: 'SpeziaWebVariable',
-				fontSize: '16px',
-				fontWeight: '400',
-				fontStretch: '50%',
-				lineHeight: '18.4px',
-				letterSpacing: '0.15px',
-				textTransform: 'none',
-			});
+			assertComputedStyle(labelElement, body1TypographyStyles);
 		});
 
 		it('should have set typography for a floating label', async () => {
 			formElement.value = 'hello';
 			await waitInterval(200); // font transition
-			assertComputedStyle(labelElement, {
-				fontFamily: 'SpeziaWebVariable',
-				fontSize: '12.642px',
-				fontWeight: '400',
-				fontStretch: '50%',
-				lineHeight: '18.4px',
-				letterSpacing: '0.119',
-				textTransform: 'none',
-			});
+			assertComputedStyle(labelElement, captionTypographyStyles);
 		});
 
 		it('should have set typography for an input', async () => {
 			const inputElement = formElement.shadowRoot.querySelector(
 				'.mdc-text-field__input'
 			);
-			assertComputedStyle(inputElement, {
-				fontFamily: 'SpeziaWebVariable',
-				fontSize: '14.2222px',
-				fontWeight: '400',
-				fontStretch: '50%',
-				lineHeight: '24px',
-				letterSpacing: '0.133333px',
-				textTransform: 'none',
-			});
+			assertComputedStyle(inputElement, body2TypographyStyles);
 		});
 	});
 

@@ -8,7 +8,12 @@ import {
 	listenToSubmission,
 	changeValueAndNotify,
 	isolatedElementsCreation,
-} from '../../../test/test-helpers.js';
+} from '../../../test/helpers.js';
+import {
+	body1TypographyStyles,
+	body2TypographyStyles,
+	captionTypographyStyles,
+} from '../../../test/typography-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 chai.use(chaiDomDiff);
@@ -270,29 +275,20 @@ describe('select', () => {
 		});
 
 		it('should have set typography for a label', async () => {
-			assertComputedStyle(labelElement, {
-				fontFamily: 'SpeziaWebVariable',
-				fontSize: '16px',
-				fontWeight: '400',
-				fontStretch: '50%',
-				lineHeight: '18.4px',
-				letterSpacing: '0.15px',
-				textTransform: 'none',
-			});
+			assertComputedStyle(labelElement, body1TypographyStyles);
 		});
 
 		it('should have set typography for a floating label', async () => {
 			formElement.select(1);
 			await waitInterval(200); // font transition
-			assertComputedStyle(labelElement, {
-				fontFamily: 'SpeziaWebVariable',
-				fontSize: '12.642px',
-				fontWeight: '400',
-				fontStretch: '50%',
-				lineHeight: '18.4px',
-				letterSpacing: '0.119',
-				textTransform: 'none',
-			});
+			assertComputedStyle(labelElement, captionTypographyStyles);
+		});
+
+		it('should have set typography for a selected text', async () => {
+			const selectedText = formElement.shadowRoot.querySelector(
+				'.mdc-select__selected-text'
+			);
+			assertComputedStyle(labelElement, body2TypographyStyles);
 		});
 
 		it('should have set typography for a helper', async () => {
@@ -301,15 +297,7 @@ describe('select', () => {
 			const helperElement = formElement.shadowRoot.querySelector(
 				'.mdc-select-helper-text'
 			);
-			assertComputedStyle(helperElement, {
-				fontFamily: 'SpeziaWebVariable',
-				fontSize: '12.642px',
-				fontWeight: '400',
-				fontStretch: '50%',
-				lineHeight: 'normal',
-				letterSpacing: '0.421399px',
-				textTransform: 'none',
-			});
+			assertComputedStyle(helperElement, captionTypographyStyles);
 		});
 	});
 
