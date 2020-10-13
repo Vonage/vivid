@@ -24,11 +24,9 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"glob": "^7.1.6",
 		"tslib": "^2.0.2"
 	},
 	"devDependencies": {
-		"@vonage/vvd-build-toolkit": "^0.13.0",
 		"typescript": "^4.0.3"
 	}
 }

@@ -35,9 +35,6 @@
     "command-line-usage": "^6.1.0",
     "fibers": "^5.0.0",
     "glob": "^7.1.6",
-    "kefir": "^3.8.7",
-    "lodash": "^4.17.20",
-    "node-sass": "^4.14.1",
     "node-sass-import": "^2.0.1",
     "sass": "^1.27.0"
   }
