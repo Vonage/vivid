@@ -1,5 +1,3 @@
-import { assertComputedStyle } from './test-helpers.js';
-
 export function borderRadiusStyles(expectedRadius) {
   return {
     borderTopLeftRadius: `${expectedRadius}px`,
