@@ -1,17 +1,24 @@
+import '@vonage/vwc-list';
 import '../vwc-check-list-item.js';
 import {
 	textToDomToParent,
 	waitNextTask,
 	assertComputedStyle,
+	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
-import { isolatedElementsCreation } from '../../../test/test-helpers';
+import {
+	assertListItemDimensions,
+	buildListOfNItems,
+} from './list-items-check-utils.test.js';
+
 chai.use(chaiDomDiff);
 
 const VWC_CHECK_LIST_ITEM = 'vwc-check-list-item';
 
-let addElement = isolatedElementsCreation();
 describe('check list item', () => {
+	let addElements = isolatedElementsCreation();
+
 	it('should be defined as a custom element', () => {
 		assert.exists(
 			customElements.get(
@@ -23,7 +30,7 @@ describe('check list item', () => {
 
 	describe('init flow', () => {
 		it('should have expected HTML', async () => {
-			const docFragContainer = addElement(
+			const docFragContainer = addElements(
 				textToDomToParent(
 					`<${VWC_CHECK_LIST_ITEM} id="check-list-item-a">Item 0</${VWC_CHECK_LIST_ITEM}>`,
 					document.body
@@ -36,7 +43,7 @@ describe('check list item', () => {
 
 	describe('typography', function () {
 		it(`should have set typography correct (normal)`, async function () {
-			const actualElements = addElement(
+			const actualElements = addElements(
 				textToDomToParent(`<${VWC_CHECK_LIST_ITEM}>Item 1</${VWC_CHECK_LIST_ITEM}>`)
 			);
 			await waitNextTask();
@@ -54,7 +61,7 @@ describe('check list item', () => {
 		});
 
 		it(`should have set typography correct (left, selected)`, async function () {
-			const actualElements = addElement(
+			const actualElements = addElements(
 				textToDomToParent(
 					`<${VWC_CHECK_LIST_ITEM} left selected>Item 1</${VWC_CHECK_LIST_ITEM}>`
 				)
@@ -72,6 +79,17 @@ describe('check list item', () => {
 				textTransform: 'none',
 			};
 			assertComputedStyle(listItem, expectedStyles);
+		});
+	});
+
+	describe('general styling', async () => {
+		it('should have correct dimensions', async () => {
+			const itemsNum = 4;
+			const actualElements = addElements(
+				buildListOfNItems(itemsNum, VWC_CHECK_LIST_ITEM)
+			);
+			await waitNextTask();
+			assertListItemDimensions(actualElements[0].children, itemsNum, 56);
 		});
 	});
 });

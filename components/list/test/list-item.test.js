@@ -1,11 +1,17 @@
-import '../vwc-list-item.js';
+import '@vonage/vwc-list';
+import '@vonage/vwc-list/vwc-list-item';
 import {
 	textToDomToParent,
 	waitNextTask,
 	assertComputedStyle,
+	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
-import { isolatedElementsCreation } from '../../../test/test-helpers';
+import {
+	assertListItemDimensions,
+	buildListOfNItems,
+} from './list-items-check-utils.test.js';
+
 chai.use(chaiDomDiff);
 
 const VWC_LIST_ITEM = 'vwc-list-item';
@@ -31,8 +37,8 @@ describe('list item', () => {
 		});
 	});
 
-	describe('typography', function () {
-		it(`should have set typography correct`, async function () {
+	describe('typography', () => {
+		it(`should have set typography correct`, async () => {
 			const actualElements = addElement(
 				textToDomToParent(`<${VWC_LIST_ITEM}>Item 1</${VWC_LIST_ITEM}>`)
 			);
@@ -48,6 +54,17 @@ describe('list item', () => {
 				letterSpacing: 'normal',
 				textTransform: 'none',
 			});
+		});
+	});
+
+	describe('general styling', async () => {
+		it('should have correct dimensions', async () => {
+			const itemsNum = 3;
+			const actualElements = addElement(
+				buildListOfNItems(itemsNum, VWC_LIST_ITEM)
+			);
+			await waitNextTask();
+			assertListItemDimensions(actualElements[0].children, itemsNum, 48);
 		});
 	});
 });
