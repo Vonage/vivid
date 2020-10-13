@@ -45,10 +45,13 @@ export class VWCFilePicker extends LitElement {
 	label = '';
 
 	@property({ reflect: false })
-	files: File[] = [];
+	files: FileList | null = null;
 
 	connectedCallback(): void {
 		super.connectedCallback();
+		this.#internalInput.addEventListener('change', () => {
+			this.files = this.#internalInput.files;
+		});
 		this.appendChild(this.#internalInput);
 	}
 
@@ -62,10 +65,6 @@ export class VWCFilePicker extends LitElement {
 		} else {
 			super.attributeChangedCallback(name, oldval, newval);
 		}
-	}
-
-	get files(): FileList | null {
-		return this.#internalInput.files;
 	}
 
 	get form(): HTMLFormElement | null {
