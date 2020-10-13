@@ -2,9 +2,10 @@
 
 :host{
 	@include typography.typography-cat-shorthand('body-2');
+	margin: 0;
 }
 
 :host(:not([left])) > .mdc-list-item__meta {
-	width: var(--mdc-list-item-meta-size, 24px);
-	height: var(--mdc-list-item-meta-size, 24px);
+	width: 26px;
+	height: 26px;
 }
