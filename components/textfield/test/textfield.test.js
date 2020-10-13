@@ -16,7 +16,11 @@ import {
 	body2TypographyStyles,
 	captionTypographyStyles,
 } from '../../../test/style-utils.js';
-import { validateMultipleShadowLayers } from '../../../test/form-utils.js';
+import {
+	assertDenseStyles,
+	hasNotchedOutline,
+	validateMultipleShadowLayers,
+} from './textfield-utils.test.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
@@ -306,14 +310,7 @@ describe('textfield', () => {
 
 	describe('notched outlined', () => {
 		it('should have vwc-notched-outline defined', async () => {
-			const addedElements = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} outlined></${COMPONENT_NAME}>`)
-			);
-			await waitNextTask();
-			const notchedOutline = addedElements[0].shadowRoot.querySelector(
-				'vwc-notched-outline'
-			);
-			expect(notchedOutline).to.exist;
+			hasNotchedOutline(COMPONENT_NAME);
 		});
 	});
 
@@ -328,28 +325,7 @@ describe('textfield', () => {
 		});
 
 		it('should have dense size when dense', async () => {
-			const addedElements = addElement(
-				textToDomToParent(
-					`<${COMPONENT_NAME} outlined dense label="VWC Textfield"></${COMPONENT_NAME}>`
-				)
-			);
-			await waitNextTask();
-			const formElement = addedElements[0];
-			const labelElement = formElement.shadowRoot
-				.querySelector('.mdc-notched-outline')
-				.querySelector('#label');
-
-			assertComputedStyle(formElement, {
-				height: '40px',
-				paddingTop: '24px',
-			});
-
-			assertComputedStyle(labelElement, {
-				fontSize: '14.2222px',
-				left: '-12px',
-				top: '-24px',
-				transform: 'none',
-			});
+			assertDenseStyles(COMPONENT_NAME);
 		});
 	});
 

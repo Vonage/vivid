@@ -15,6 +15,10 @@ import {
 	body2TypographyStyles,
 	captionTypographyStyles,
 } from '../../../test/style-utils.js';
+import {
+	assertDenseStyles,
+	hasNotchedOutline,
+} from '../../textfield/test/textfield-utils.test';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 chai.use(chaiDomDiff);
@@ -304,19 +308,7 @@ describe('select', () => {
 
 	describe('notched outlined', () => {
 		it('should have vwc-notched-outline defined', async () => {
-			const addedElements = addElement(
-				textToDomToParent(`
-				<${COMPONENT_NAME} outlined>
-					<vwc-list-item>Item 1</vwc-list-item>
-					<vwc-list-item>Item 2</vwc-list-item>
-				</${COMPONENT_NAME}>
-			`)
-			);
-			await waitNextTask();
-			const notchedOutline = addedElements[0].shadowRoot.querySelector(
-				'vwc-notched-outline'
-			);
-			expect(notchedOutline).to.exist;
+			hasNotchedOutline(COMPONENT_NAME);
 		});
 	});
 
@@ -336,31 +328,7 @@ describe('select', () => {
 		});
 
 		it('should have dense size when dense', async () => {
-			const addedElements = addElement(
-				textToDomToParent(`
-				<${COMPONENT_NAME} outlined dense label="VWC Select">
-					<vwc-list-item>Item 1</vwc-list-item>
-					<vwc-list-item>Item 2</vwc-list-item>
-				</${COMPONENT_NAME}>
-			`)
-			);
-			await waitNextTask();
-			const formElement = addedElements[0];
-			const labelElement = formElement.shadowRoot
-				.querySelector('.mdc-notched-outline')
-				.querySelector('#label');
-
-			assertComputedStyle(formElement, {
-				height: '40px',
-				paddingTop: '24px',
-			});
-
-			assertComputedStyle(labelElement, {
-				fontSize: '14.2222px',
-				left: '-12px',
-				top: '-24px',
-				transform: 'none',
-			});
+			assertDenseStyles(COMPONENT_NAME);
 		});
 	});
 
