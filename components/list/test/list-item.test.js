@@ -50,7 +50,7 @@ describe('list item', () => {
 				fontSize: '14.2222px',
 				fontWeight: '400',
 				fontStretch: '50%',
-				lineHeight: '22.8697px',
+				//	lineHeight: '22.8697px',
 				letterSpacing: 'normal',
 				textTransform: 'none',
 			});
