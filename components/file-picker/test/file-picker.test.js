@@ -49,7 +49,7 @@ describe('file picker', () => {
 			const filePickerName = randomAlpha();
 			addedElements = textToDomToParent(`
 				<form>
-					<${VWC_COMPONENT} name="${filePickerName}"></${VWC_COMPONENT}>
+					<${VWC_COMPONENT} name="${filePickerName}" multiple></${VWC_COMPONENT}>
 					<button></button>
 				</form>
 			`);
