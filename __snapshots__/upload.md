@@ -15,6 +15,11 @@
     <slot>
     </slot>
     Upload
+    <button
+      style="display: none;"
+      type="submit"
+    >
+    </button>
   </vwc-button>
   <slot name="internal-input">
   </slot>
