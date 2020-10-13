@@ -27,7 +27,7 @@
 	"dependencies": {
 		"@vonage/vvd-core": "^0.13.0",
 		"lit-element": "^2.4.0",
-		"tslib": "^2.0.2"
+		"tslib": "^2.0.3"
 	},
 	"devDependencies": {
 		"@vonage/vvd-build-toolkit": "^0.13.0",

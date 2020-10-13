@@ -14694,6 +14694,13 @@ sass@^1.26.10:
   dependencies:
     chokidar ">=2.0.0 <4.0.0"
 
+sass@^1.27.0:
+  version "1.27.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/sass/-/sass-1.27.0.tgz#0657ff674206b95ec20dc638a93e179c78f6ada2"
+  integrity sha1-Blf/Z0IGuV7CDcY4qT4XnHj2raI=
+  dependencies:
+    chokidar ">=2.0.0 <4.0.0"
+
 sax@1.2.1:
   version "1.2.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/sax/-/sax-1.2.1.tgz#7b8e656190b228e81a66aea748480d828cd2d37a"
@@ -16072,7 +16079,7 @@ tslib@^2.0.0, tslib@^2.0.1:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/tslib/-/tslib-2.0.1.tgz#410eb0d113e5b6356490eec749603725b021b43e"
   integrity sha1-QQ6w0RPltjVkkO7HSWA3JbAhtD4=
 
-tslib@^2.0.3:
+tslib@^2.0.2, tslib@^2.0.3:
   version "2.0.3"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/tslib/-/tslib-2.0.3.tgz#8e0741ac45fc0c226e58a17bfc3e64b9bc6ca61c"
   integrity sha1-jgdBrEX8DCJuWKF7/D5kubxsphw=
@@ -16190,7 +16197,7 @@ typescript@^3.8.3:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/typescript/-/typescript-3.9.7.tgz#98d600a5ebdc38f40cb277522f12dc800e9e25fa"
   integrity sha1-mNYApevcOPQMsndSLxLcgA6eJfo=
 
-typescript@^4.0.2:
+typescript@^4.0.2, typescript@^4.0.3:
   version "4.0.3"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/typescript/-/typescript-4.0.3.tgz#153bbd468ef07725c1df9c77e8b453f8d36abba5"
   integrity sha1-FTu9Ro7wdyXB35x36LRT+NNqu6U=
