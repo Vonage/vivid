@@ -7,6 +7,7 @@ import {
 	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
+import { assertListItemDimensions } from './list-items-check-utils.test.js';
 
 chai.use(chaiDomDiff);
 
@@ -46,7 +47,7 @@ describe('list item', () => {
 				fontSize: '14.2222px',
 				fontWeight: '400',
 				fontStretch: '50%',
-				//	lineHeight: '22.8697px',
+				lineHeight: '22.8697px',
 				letterSpacing: 'normal',
 				textTransform: 'none',
 			});
@@ -54,7 +55,7 @@ describe('list item', () => {
 	});
 
 	describe('general styling', async () => {
-		it('should have correct height', async () => {
+		it('should have correct dimensions', async () => {
 			const actualElements = addElement(
 				textToDomToParent(`
 					<vwc-list>
@@ -65,19 +66,7 @@ describe('list item', () => {
 				`)
 			);
 			await waitNextTask();
-			const items = actualElements[0].children;
-			expect(items).exist;
-			expect(items.length).equal(3);
-			for (const item of items) {
-				expect(item.offsetHeight).equal(48);
-				assertComputedStyle(item, {
-					marginTop: '0px',
-					marginLeft: '0px',
-					marginRight: '0px',
-					marginBottom: '0px',
-					height: '48px',
-				});
-			}
+			assertListItemDimensions(actualElements[0].children, 3, 48);
 		});
 	});
 });
