@@ -30,7 +30,7 @@ describe('file picker', () => {
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
-	describe('form association', () => {
+	describe.only('form association', () => {
 		it('should have an associated form as a read-only property', async () => {
 			addedElements = textToDomToParent(
 				`<form><${VWC_COMPONENT}></${VWC_COMPONENT}></form>`
@@ -96,6 +96,7 @@ describe('file picker', () => {
 					expect(e.target).equal(formB);
 					const d = new FormData(e.target).get(filePickerName);
 					expect(d).exist;
+					console.log(JSON.stringify(d));
 					expect(d.size).equal(0);
 					resolve();
 				});

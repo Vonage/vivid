@@ -36,9 +36,6 @@ export class VWCFilePicker extends LitElement {
 	name = '';
 
 	@property({ type: String, reflect: true })
-	'aria-controls' = 'fileupload';
-
-	@property({ type: String, reflect: true })
 	buttonText = 'Upload';
 
 	@property({ type: String, reflect: true })
@@ -65,16 +62,16 @@ export class VWCFilePicker extends LitElement {
 		return this.#internalInput.files;
 	}
 
+	get value(): string | null {
+		return this.#internalInput.value;
+	}
+
 	get form(): HTMLFormElement | null {
 		return this.#internalInput.form;
 	}
 
 	set form(_: HTMLFormElement | null) {
 		//	do nothing, as a native element does
-	}
-
-	get value(): string | null {
-		return this.#internalInput.value;
 	}
 
 	triggerFileInput(): void {
@@ -103,7 +100,7 @@ export class VWCFilePicker extends LitElement {
 	protected render(): TemplateResult {
 		return html`
 			<label>
-				${this.renderDragNDropSurface()} ${this.renderLabel()}
+				${this.renderLabel()} ${this.renderDragNDropSurface()}
 				${this.renderButton()}
 				<slot name="${INTERNAL_INPUT_SLOT_NAME}"></slot>
 				${this.renderHelper()}
