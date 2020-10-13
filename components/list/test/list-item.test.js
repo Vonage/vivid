@@ -7,7 +7,10 @@ import {
 	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
-import { assertListItemDimensions } from './list-items-check-utils.test.js';
+import {
+	assertListItemDimensions,
+	buildListOfNItems,
+} from './list-items-check-utils.test.js';
 
 chai.use(chaiDomDiff);
 
@@ -56,15 +59,7 @@ describe('list item', () => {
 
 	describe('general styling', async () => {
 		it('should have correct dimensions', async () => {
-			const actualElements = addElement(
-				textToDomToParent(`
-					<vwc-list>
-						<${VWC_LIST_ITEM}>Item 1</${VWC_LIST_ITEM}>
-						<${VWC_LIST_ITEM}>Item 2</${VWC_LIST_ITEM}>
-						<${VWC_LIST_ITEM}>Item 3</${VWC_LIST_ITEM}>
-					</vwc-list>
-				`)
-			);
+			const actualElements = addElement(buildListOfNItems(3, VWC_LIST_ITEM));
 			await waitNextTask();
 			assertListItemDimensions(actualElements[0].children, 3, 48);
 		});
