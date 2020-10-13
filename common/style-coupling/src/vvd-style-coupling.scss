@@ -20,10 +20,10 @@
   --vvd-color-disabled-unchecked: #afb0b8;
   --vvd-color-idle: color-base.$grey-500;
 
-  #{color-semantic.$formfield-disabled-ink}: color-base.$grey-800;
-  #{color-semantic.$formfield-disabled-fill}: color-base.$grey-100;
+	#{color-semantic.$formfield-disabled-ink}: color-base.$grey-800;
+	#{color-semantic.$formfield-disabled-fill}: color-base.$grey-100;
 
-  #{color-semantic.$formfield-label-idle-ink}: color-base.$grey-900;
+	#{color-semantic.$formfield-label-idle-ink}: color-base.$grey-900;
 
 	#{color-semantic.$formfield-border-idle}: color-base.$grey-400;
 	#{color-semantic.$formfield-border-hover}: var(--vvd-color-base-foreground);
@@ -37,41 +37,41 @@
   #{color-semantic.$color-primary-background}: #131415;
 	#{color-semantic.$color-primary-background-hover}: #131415;
 	#{color-semantic.$color-primary-border}: #000000;
-  #{color-semantic.$color-primary-foreground}: #ffffff;
-  #{color-semantic.$color-primary-shadow}: 19, 20, 21, 0.42;
+	#{color-semantic.$color-primary-foreground}: #ffffff;
+	#{color-semantic.$color-primary-shadow}: 19, 20, 21, 0.42;
 
-  #{color-semantic.$color-cta-background}: #871fff;
+	#{color-semantic.$color-cta-background}: #871fff;
 	#{color-semantic.$color-cta-background-hover}: color-base.$purple-900;
 	#{color-semantic.$color-cta-border}: color-base.$purple-900;
-  #{color-semantic.$color-cta-foreground}: #ffffff;
-  #{color-semantic.$color-cta-shadow}: 105, 5, 221, 0.42;
+	#{color-semantic.$color-cta-foreground}: #ffffff;
+	#{color-semantic.$color-cta-shadow}: 105, 5, 221, 0.42;
 
-  #{color-semantic.$color-success-background}: color-base.$green-700;
-  #{color-semantic.$color-success-background-hover}: color-base.$green-900;
-  #{color-semantic.$color-success-border}: color-base.$green-900;
-  #{color-semantic.$color-success-foreground}: #ffffff;
-  #{color-semantic.$color-success-shadow}: 8, 106, 94, 0.42;
+	#{color-semantic.$color-success-background}: color-base.$green-700;
+	#{color-semantic.$color-success-background-hover}: color-base.$green-900;
+	#{color-semantic.$color-success-border}: color-base.$green-900;
+	#{color-semantic.$color-success-foreground}: #ffffff;
+	#{color-semantic.$color-success-shadow}: 8, 106, 94, 0.42;
 
-  #{color-semantic.$color-error-background}: color-base.$red-600;
-  #{color-semantic.$color-error-background-hover}: color-base.$red-800;
-  #{color-semantic.$color-error-border}: color-base.$red-800;
-  #{color-semantic.$color-error-foreground}: #ffffff;
-  #{color-semantic.$color-error-shadow}: 153, 43, 43, 0.42;
+	#{color-semantic.$color-error-background}: color-base.$red-600;
+	#{color-semantic.$color-error-background-hover}: color-base.$red-800;
+	#{color-semantic.$color-error-border}: color-base.$red-800;
+	#{color-semantic.$color-error-foreground}: #ffffff;
+	#{color-semantic.$color-error-shadow}: 153, 43, 43, 0.42;
 
-  #{color-semantic.$color-info-background}: color-base.$blue-700;
-  #{color-semantic.$color-info-foreground}: #ffffff;
+	#{color-semantic.$color-info-background}: color-base.$blue-700;
+	#{color-semantic.$color-info-foreground}: #ffffff;
 
-  #{color-semantic.$color-announcement-background}: color-base.$magenta-500;
-  #{color-semantic.$color-announcement-foreground}: #ffffff;
+	#{color-semantic.$color-announcement-background}: color-base.$magenta-500;
+	#{color-semantic.$color-announcement-foreground}: #ffffff;
 }
 
 :host {
-  --mdc-theme-primary: var(--vvd-color-primary-background);
-  --mdc-theme-on-primary: var(--vvd-color-primary-foreground);
-  --mdc-theme-text-primary-on-background: var(--vvd-color-base-foreground);
-  --mdc-theme-secondary: var(--vvd-color-primary-background);
-  --mdc-theme-on-secondary: var(--vvd-color-primary-foreground);
-  --mdc-theme-surface: var(--vvd-color-surface-background);
-  --mdc-theme-on-surface: var(--vvd-color-surface-foreground);
-  --mdc-theme-error: var(--vvd-color-error);
+	--mdc-theme-primary: var(--vvd-color-primary-background);
+	--mdc-theme-on-primary: var(--vvd-color-primary-foreground);
+	--mdc-theme-text-primary-on-background: var(--vvd-color-base-foreground);
+	--mdc-theme-secondary: var(--vvd-color-primary-background);
+	--mdc-theme-on-secondary: var(--vvd-color-primary-foreground);
+	--mdc-theme-surface: var(--vvd-color-surface-background);
+	--mdc-theme-on-surface: var(--vvd-color-surface-foreground);
+	--mdc-theme-error: var(--vvd-color-error);
 }
