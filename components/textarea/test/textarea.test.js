@@ -2,6 +2,7 @@ import '../vwc-textarea.js';
 import {
 	textToDomToParent,
 	waitNextTask,
+	waitInterval,
 	assertComputedStyle,
 	changeValueAndNotify,
 	isolatedElementsCreation,
@@ -246,17 +247,21 @@ describe('textarea', () => {
 	});
 
 	describe('typography', () => {
-		it('should have set typography for a label', async () => {
-			const addedElements = addElement(
+		let addedElements, formElement, labelElement;
+		beforeEach(async () => {
+			addedElements = addElement(
 				textToDomToParent(
 					`<${COMPONENT_NAME} outlined label="Vwc textarea"></${COMPONENT_NAME}>`
 				)
 			);
 			await waitNextTask();
-			const labelElement = addedElements[0].shadowRoot
+			formElement = addedElements[0];
+			labelElement = formElement.shadowRoot
 				.querySelector('.mdc-notched-outline')
 				.querySelector('#label');
-			expect(labelElement).to.exist;
+		});
+
+		it('should have set typography for a label', async () => {
 			assertComputedStyle(labelElement, {
 				fontFamily: 'SpeziaWebVariable',
 				fontSize: '16px',
@@ -269,38 +274,23 @@ describe('textarea', () => {
 		});
 
 		it('should have set typography for a floating label', async () => {
-			const addedElements = addElement(
-				textToDomToParent(
-					`<${COMPONENT_NAME} outlined label="Vwc textarea" value="hello"></${COMPONENT_NAME}>`
-				)
-			);
-			await waitNextTask();
-			const labelElement = addedElements[0].shadowRoot
-				.querySelector('.mdc-notched-outline')
-				.querySelector('#label');
-			expect(labelElement).to.exist;
+			formElement.value = 'hello';
+			await waitInterval(200); // font transition
 			assertComputedStyle(labelElement, {
 				fontFamily: 'SpeziaWebVariable',
 				fontSize: '12.642px',
 				fontWeight: '400',
 				fontStretch: '50%',
-				// lineHeight: 'normal',
-				// letterSpacing: 'normal',
+				lineHeight: '18.4px',
+				letterSpacing: '0.119',
 				textTransform: 'none',
 			});
 		});
 
 		it('should have set typography for an input', async () => {
-			const addedElements = addElement(
-				textToDomToParent(
-					`<${COMPONENT_NAME} outlined disabled label="Vwc textarea"></${COMPONENT_NAME}>`
-				)
-			);
-			await waitNextTask();
-			const inputElement = addedElements[0].shadowRoot.querySelector(
+			const inputElement = formElement.shadowRoot.querySelector(
 				'.mdc-text-field__input'
 			);
-			expect(inputElement).to.exist;
 			assertComputedStyle(inputElement, {
 				fontFamily: 'SpeziaWebVariable',
 				fontSize: '14.2222px',

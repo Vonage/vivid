@@ -252,20 +252,24 @@ describe('select', () => {
 	});
 
 	describe('typography', () => {
-		it('should have set typography for a label', async () => {
-			const addedElements = addElement(
+		let addedElements, formElement, labelElement;
+		beforeEach(async () => {
+			addedElements = addElement(
 				textToDomToParent(`
 				<${COMPONENT_NAME} outlined label="VWC Select">
-					<vwc-list-item>Item 1</vwc-list-item>
-					<vwc-list-item>Item 2</vwc-list-item>
+					<vwc-list-item value="0">Item 1</vwc-list-item>
+					<vwc-list-item value="1">Item 2</vwc-list-item>
 				</${COMPONENT_NAME}>
 			`)
 			);
 			await waitNextTask();
-			const labelElement = addedElements[0].shadowRoot
+			formElement = addedElements[0];
+			labelElement = formElement.shadowRoot
 				.querySelector('.mdc-notched-outline')
 				.querySelector('#label');
-			expect(labelElement).to.exist;
+		});
+
+		it('should have set typography for a label', async () => {
 			assertComputedStyle(labelElement, {
 				fontFamily: 'SpeziaWebVariable',
 				fontSize: '16px',
@@ -278,44 +282,25 @@ describe('select', () => {
 		});
 
 		it('should have set typography for a floating label', async () => {
-			const addedElements = addElement(
-				textToDomToParent(`
-				<${COMPONENT_NAME} outlined label="VWC Select">
-					<vwc-list-item selected value="0">Item 1</vwc-list-item>
-					<vwc-list-item value="1">Item 2</vwc-list-item>
-				</${COMPONENT_NAME}>
-			`)
-			);
+			formElement.select(1);
 			await waitInterval(200); // font transition
-			const labelElement = addedElements[0].shadowRoot
-				.querySelector('.mdc-notched-outline')
-				.querySelector('#label');
-			expect(labelElement).to.exist;
 			assertComputedStyle(labelElement, {
 				fontFamily: 'SpeziaWebVariable',
 				fontSize: '12.642px',
 				fontWeight: '400',
 				fontStretch: '50%',
-				// lineHeight: 'normal',
-				// letterSpacing: 'normal',
+				lineHeight: '18.4px',
+				letterSpacing: '0.119',
 				textTransform: 'none',
 			});
 		});
 
 		it('should have set typography for a helper', async () => {
-			const addedElements = addElement(
-				textToDomToParent(`
-				<${COMPONENT_NAME} outlined label="VWC Select" helper="Helper text">
-					<vwc-list-item>Item 1</vwc-list-item>
-					<vwc-list-item>Item 2</vwc-list-item>
-				</${COMPONENT_NAME}>
-			`)
-			);
+			formElement.helper = 'Helper text';
 			await waitNextTask();
-			const helperElement = addedElements[0].shadowRoot.querySelector(
+			const helperElement = formElement.shadowRoot.querySelector(
 				'.mdc-select-helper-text'
 			);
-			expect(helperElement).to.exist;
 			assertComputedStyle(helperElement, {
 				fontFamily: 'SpeziaWebVariable',
 				fontSize: '12.642px',
