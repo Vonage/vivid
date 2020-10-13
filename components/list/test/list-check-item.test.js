@@ -84,11 +84,12 @@ describe('check list item', () => {
 
 	describe('general styling', async () => {
 		it('should have correct dimensions', async () => {
+			const itemsNum = 4;
 			const actualElements = addElements(
-				buildListOfNItems(4, VWC_CHECK_LIST_ITEM)
+				buildListOfNItems(itemsNum, VWC_CHECK_LIST_ITEM)
 			);
 			await waitNextTask();
-			assertListItemDimensions(actualElements[0].children, 3, 56);
+			assertListItemDimensions(actualElements[0].children, itemsNum, 56);
 		});
 	});
 });
