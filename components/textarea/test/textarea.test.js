@@ -2,7 +2,6 @@ import '../vwc-textarea.js';
 import {
 	textToDomToParent,
 	waitNextTask,
-	waitInterval,
 	assertComputedStyle,
 	changeValueAndNotify,
 	isolatedElementsCreation,
