@@ -146,7 +146,10 @@ export class VWCFilePicker extends LitElement {
 	}
 
 	private renderDragNDropSurface(): TemplateResult {
-		return html``;
+		return html`
+			<span class="dd-hint main">Drag&Drop files here</span>
+			<span class="dd-hint splitter">or</span>
+		`;
 	}
 
 	private setupDragNDrop() {
@@ -160,7 +163,11 @@ export class VWCFilePicker extends LitElement {
 				if (e.dataTransfer?.files && e.dataTransfer.files.length) {
 					//	TODO: filter out files?
 					this.#internalInput.files = e.dataTransfer.files;
-					//	TODO: trigger change event?
+					this.#internalInput.dispatchEvent(
+						new Event('change', {
+							bubbles: true,
+						})
+					);
 				} else {
 					console.error('this component allows only a file/s drop');
 				}

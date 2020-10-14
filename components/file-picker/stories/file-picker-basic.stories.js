@@ -1,4 +1,5 @@
 import '@vonage/vwc-file-picker';
+import '@vonage/vwc-button';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
@@ -14,7 +15,11 @@ const Template = args => html`
 `;
 
 function onChange(e) {
-	console.log(e.target.value);
+	const list = [];
+	for (let i = 0; i < e.target.files.length; i++) {
+		list.push(e.target.files[i].name);
+	}
+	console.log(list.join(', '));
 }
 
 export const Basic = Template.bind({});
@@ -33,7 +38,7 @@ const TemplateWithForm = args => html`
 	<form @submit="${onSubmit}">
 		<div>This is an example of file-picker living in form</div>
 		<vwc-file-picker ...=${spread(args)}></vwc-file-picker>
-		<button>Submit</button>
+		<vwc-button layout="filled">Submit</vwc-button>
 	</form>
 `;
 
