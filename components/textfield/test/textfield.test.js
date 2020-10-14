@@ -3,20 +3,15 @@ import '@vonage/vwc-formfield';
 import {
 	textToDomToParent,
 	waitNextTask,
-	waitInterval,
 	assertComputedStyle,
 	changeValueAndNotify,
 	isolatedElementsCreation,
 	randomAlpha,
 	listenToSubmission,
 } from '../../../test/test-helpers.js';
+import { borderRadiusStyles } from '../../../test/style-utils.js';
 import {
-	borderRadiusStyles,
-	body1TypographyStyles,
-	body2TypographyStyles,
-	captionTypographyStyles,
-} from '../../../test/style-utils.js';
-import {
+	typographyTestCases,
 	assertDenseStyles,
 	hasNotchedOutline,
 	validateMultipleShadowLayers,
@@ -50,36 +45,7 @@ describe('textfield', () => {
 	});
 
 	describe('typography', () => {
-		let addedElements, formElement, labelElement;
-		beforeEach(async () => {
-			addedElements = addElement(
-				textToDomToParent(
-					`<${COMPONENT_NAME} outlined label="Vwc textarea"></${COMPONENT_NAME}>`
-				)
-			);
-			await waitNextTask();
-			formElement = addedElements[0];
-			labelElement = formElement.shadowRoot
-				.querySelector('.mdc-notched-outline')
-				.querySelector('#label');
-		});
-
-		it('should have set typography for a label', async () => {
-			assertComputedStyle(labelElement, body1TypographyStyles);
-		});
-
-		it('should have set typography for a floating label', async () => {
-			formElement.value = 'hello';
-			await waitInterval(200); // font transition
-			assertComputedStyle(labelElement, captionTypographyStyles);
-		});
-
-		it('should have set typography for an input', async () => {
-			const inputElement = formElement.shadowRoot.querySelector(
-				'.mdc-text-field__input'
-			);
-			assertComputedStyle(inputElement, body2TypographyStyles);
-		});
+		typographyTestCases(COMPONENT_NAME);
 	});
 
 	describe(`form association`, function () {

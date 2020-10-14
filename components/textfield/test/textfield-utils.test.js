@@ -2,13 +2,52 @@ import {
 	assertComputedStyle,
 	textToDomToParent,
 	waitNextTask,
+	waitInterval,
 	isolatedElementsCreation,
 	changeValueAndNotify,
 	listenToSubmission,
 } from '../../../test/test-helpers.js';
+import {
+	body1TypographyStyles,
+	body2TypographyStyles,
+	captionTypographyStyles,
+} from '../../../test/style-utils.js';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
 let addElement = isolatedElementsCreation();
+
+export async function typographyTestCases(COMPONENT_NAME) {
+	let addedElements, formElement, labelElement;
+	beforeEach(async () => {
+		addedElements = addElement(
+			textToDomToParent(
+				`<${COMPONENT_NAME} outlined label="Example"></${COMPONENT_NAME}>`
+			)
+		);
+		await waitNextTask();
+		formElement = addedElements[0];
+		labelElement = formElement.shadowRoot
+			.querySelector('.mdc-notched-outline')
+			.querySelector('#label');
+	});
+
+	it('should have set typography for a label', async () => {
+		assertComputedStyle(labelElement, body1TypographyStyles);
+	});
+
+	it('should have set typography for a floating label', async () => {
+		formElement.value = 'hello';
+		await waitInterval(200); // font transition
+		assertComputedStyle(labelElement, captionTypographyStyles);
+	});
+
+	it('should have set typography for an input', async () => {
+		const inputElement = formElement.shadowRoot.querySelector(
+			'.mdc-text-field__input'
+		);
+		assertComputedStyle(inputElement, body2TypographyStyles);
+	});
+}
 
 export async function hasNotchedOutline(COMPONENT_NAME) {
 	const addedElements = addElement(
