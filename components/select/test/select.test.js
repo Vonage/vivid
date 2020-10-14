@@ -18,6 +18,7 @@ import {
 import {
 	assertDenseStyles,
 	hasNotchedOutline,
+	validateOnReset,
 } from '../../textfield/test/textfield-utils.test';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
@@ -180,15 +181,7 @@ describe('select', () => {
 			});
 
 			it(`should validate on reset`, async function () {
-				const validInput = formElement.checkValidity();
-				await changeValueAndNotify(actualElement, invalidValue, 'change');
-				const invalidInput = formElement.checkValidity();
-
-				formElement.reset();
-
-				expect(validInput).to.equal(true);
-				expect(invalidInput).to.equal(false);
-				expect(formElement.checkValidity()).to.equal(true);
+				validateOnReset(formElement);
 			});
 
 			it(`should not submit an invalid form`, async function () {

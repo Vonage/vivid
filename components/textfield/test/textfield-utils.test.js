@@ -82,3 +82,15 @@ export async function validateMultipleShadowLayers(COMPONENT_NAME, elementTag) {
 	expect(validInput).to.equal(true);
 	expect(formElement.checkValidity()).to.equal(false);
 }
+
+export async function validateOnReset(formElement) {
+	const validInput = formElement.checkValidity();
+	await changeValueAndNotify(actualElement, invalidValue, 'change');
+	const invalidInput = formElement.checkValidity();
+
+	formElement.reset();
+
+	expect(validInput).to.equal(true);
+	expect(invalidInput).to.equal(false);
+	expect(formElement.checkValidity()).to.equal(true);
+}
