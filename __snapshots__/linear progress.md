@@ -4,12 +4,12 @@
 
 ```html
 <div
-  aria-label=""
   aria-valuemax="1"
   aria-valuemin="0"
   aria-valuenow="0"
-  class="mdc-linear-progress"
+  class="mdc-linear-progress mdc-linear-progress--animation-ready"
   role="progressbar"
+  style=""
 >
   <div class="mdc-linear-progress__buffer">
     <div
