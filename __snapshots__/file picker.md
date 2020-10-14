@@ -7,14 +7,16 @@
   <vwc-button
     class="vwc-upload-button"
     connotation="primary"
+    icon="upload"
     layout="filled"
     shape="rounded"
+    trailingicon=""
     type="submit"
     unelevated=""
   >
     <slot>
     </slot>
-    Upload
+    Add file
     <button
       style="display: none;"
       type="submit"

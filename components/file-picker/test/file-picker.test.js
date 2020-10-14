@@ -9,6 +9,7 @@ import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 chai.use(chaiDomDiff);
 
 const VWC_COMPONENT = 'vwc-file-picker';
+const isSafari = window.navigator.userAgent.includes('Safari');
 
 describe('file picker', () => {
 	let addedElements = [];
@@ -46,7 +47,6 @@ describe('file picker', () => {
 		});
 
 		it('should be associated with the wrapping form', async () => {
-			const isSafari = window.navigator.userAgent.indexOf('Safari') > 0;
 			const filePickerName = randomAlpha();
 			addedElements = textToDomToParent(`
 				<form>
@@ -55,12 +55,11 @@ describe('file picker', () => {
 				</form>
 			`);
 			const form = addedElements[0];
-			const filesTotal = 3;
 			const filePicker = form.querySelector(VWC_COMPONENT);
 			const internalInput = filePicker.querySelector('[type="file"]');
+			const filesTotal = 3;
 
 			expect(internalInput).exist;
-
 			if (!isSafari) {
 				mockInputFiles(internalInput, filesTotal);
 			}
@@ -93,19 +92,28 @@ describe('file picker', () => {
 			const formB = addedElements[1];
 			const filePicker = formA.querySelector(VWC_COMPONENT);
 
-			await waitNextTask();
-
 			expect(filePicker.form).equal(formA);
 			formB.appendChild(filePicker);
 
 			expect(filePicker.form).equal(formB);
 
+			const filesTotal = 3;
+			const internalInput = filePicker.querySelector('[type="file"]');
+
+			expect(internalInput).exist;
+			if (!isSafari) {
+				mockInputFiles(internalInput, filesTotal);
+			}
+
 			return new Promise((resolve) => {
 				formB.addEventListener('submit', (e) => {
 					e.preventDefault();
 					expect(e.target).equal(formB);
-					const d = new FormData(e.target).get(filePickerName);
+					const d = new FormData(e.target).getAll(filePickerName);
 					expect(d).exist;
+					if (!isSafari) {
+						expect(d.length).equal(filesTotal);
+					}
 					resolve();
 				});
 				formB.querySelector('button').click();
