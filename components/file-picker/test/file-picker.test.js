@@ -3,13 +3,13 @@ import {
 	waitNextTask,
 	textToDomToParent,
 	randomAlpha,
+	isSafari,
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
 
 const VWC_COMPONENT = 'vwc-file-picker';
-const isSafari = window.navigator.userAgent.includes('Safari');
 
 describe('file picker', () => {
 	let addedElements = [];
@@ -31,7 +31,7 @@ describe('file picker', () => {
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
-	describe('form association', () => {
+	describe.only('form association', () => {
 		it('should have an associated form as a read-only property', async () => {
 			addedElements = textToDomToParent(
 				`<form><${VWC_COMPONENT}></${VWC_COMPONENT}></form>`
@@ -60,7 +60,7 @@ describe('file picker', () => {
 			const filesTotal = 3;
 
 			expect(internalInput).exist;
-			if (!isSafari) {
+			if (!isSafari()) {
 				mockInputFiles(internalInput, filesTotal);
 			}
 
@@ -70,7 +70,7 @@ describe('file picker', () => {
 					expect(e.target).equal(form);
 					const d = new FormData(e.target).getAll(filePickerName);
 					expect(d).exist;
-					if (!isSafari) {
+					if (!isSafari()) {
 						expect(d.length).equal(filesTotal);
 					}
 					resolve();
@@ -101,7 +101,7 @@ describe('file picker', () => {
 			const internalInput = filePicker.querySelector('[type="file"]');
 
 			expect(internalInput).exist;
-			if (!isSafari) {
+			if (!isSafari()) {
 				mockInputFiles(internalInput, filesTotal);
 			}
 
@@ -111,7 +111,7 @@ describe('file picker', () => {
 					expect(e.target).equal(formB);
 					const d = new FormData(e.target).getAll(filePickerName);
 					expect(d).exist;
-					if (!isSafari) {
+					if (!isSafari()) {
 						expect(d.length).equal(filesTotal);
 					}
 					resolve();
