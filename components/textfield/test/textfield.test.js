@@ -240,7 +240,7 @@ describe('textfield', () => {
 		});
 
 		it(`should work under multiple shadow layers`, async function () {
-			validateMultipleShadowLayers('input');
+			validateMultipleShadowLayers(COMPONENT_NAME, 'input');
 		});
 
 		describe(`submit form on Enter key`, function () {

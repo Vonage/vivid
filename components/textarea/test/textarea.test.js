@@ -215,7 +215,7 @@ describe('textarea', () => {
 		});
 
 		it(`should work under multiple shadow layers`, async function () {
-			validateMultipleShadowLayers('textarea');
+			validateMultipleShadowLayers(COMPONENT_NAME, 'textarea');
 		});
 	});
 

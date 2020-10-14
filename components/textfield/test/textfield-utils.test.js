@@ -1,8 +1,12 @@
 import {
+	assertComputedStyle,
 	textToDomToParent,
 	waitNextTask,
 	isolatedElementsCreation,
+	changeValueAndNotify,
+	listenToSubmission,
 } from '../../../test/test-helpers.js';
+import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
 let addElement = isolatedElementsCreation();
 
@@ -42,7 +46,7 @@ export async function assertDenseStyles(COMPONENT_NAME) {
 	});
 }
 
-export async function validateMultipleShadowLayers(element) {
+export async function validateMultipleShadowLayers(COMPONENT_NAME, elementTag) {
 	const fieldValue = Math.random().toString();
 	const fieldName = 'test-field';
 	const formTemplate = `
@@ -73,7 +77,7 @@ export async function validateMultipleShadowLayers(element) {
 	await changeValueAndNotify(actualElement, '', 'change');
 
 	expect(
-		formElement.querySelectorAll(`${element}[name="${fieldName}"`).length
+		formElement.querySelectorAll(`${elementTag}[name="${fieldName}"`).length
 	).to.equal(1);
 	expect(validInput).to.equal(true);
 	expect(formElement.checkValidity()).to.equal(false);
