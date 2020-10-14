@@ -181,7 +181,7 @@ describe('select', () => {
 			});
 
 			it(`should validate on reset`, async function () {
-				validateOnReset(formElement);
+				validateOnReset(actualElement, formElement, invalidValue);
 			});
 
 			it(`should not submit an invalid form`, async function () {

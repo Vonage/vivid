@@ -83,7 +83,11 @@ export async function validateMultipleShadowLayers(COMPONENT_NAME, elementTag) {
 	expect(formElement.checkValidity()).to.equal(false);
 }
 
-export async function validateOnReset(formElement) {
+export async function validateOnReset(
+	actualElement,
+	formElement,
+	invalidValue
+) {
 	const validInput = formElement.checkValidity();
 	await changeValueAndNotify(actualElement, invalidValue, 'change');
 	const invalidInput = formElement.checkValidity();
