@@ -36,7 +36,7 @@ export class VWCFilePicker extends LitElement {
 	name = '';
 
 	@property({ type: String, reflect: true })
-	buttonText = 'Upload';
+	buttonText = 'Add file';
 
 	@property({ type: String, reflect: true })
 	label = '';
@@ -51,11 +51,16 @@ export class VWCFilePicker extends LitElement {
 		oldval: string | null,
 		newval: string | null
 	): void {
-		if (name === 'form' && newval && newval !== oldval) {
-			this.#internalInput.setAttribute('form', newval);
-		} else {
-			super.attributeChangedCallback(name, oldval, newval);
+		if (['accept', 'form', 'name'].includes(name) && newval !== null) {
+			this.#internalInput.setAttribute(name, newval);
+		} else if (name === 'multiple') {
+			if (newval === 'false' || newval === null) {
+				this.#internalInput.removeAttribute('multiple');
+			} else {
+				this.#internalInput.setAttribute('multiple', '');
+			}
 		}
+		super.attributeChangedCallback(name, oldval, newval);
 	}
 
 	get files(): FileList | null {
@@ -76,25 +81,6 @@ export class VWCFilePicker extends LitElement {
 
 	triggerFileInput(): void {
 		this.#internalInput?.click();
-	}
-
-	protected updated(
-		changedProperties: Map<string | number | symbol, unknown>
-	): void {
-		super.update(changedProperties);
-		if (changedProperties.has('accept')) {
-			this.#internalInput.setAttribute('accept', this.accept);
-		}
-		if (changedProperties.has('multiple')) {
-			if (this.multiple) {
-				this.#internalInput.setAttribute('multiple', '');
-			} else {
-				this.#internalInput.removeAttribute('multiple');
-			}
-		}
-		if (changedProperties.has('name')) {
-			this.#internalInput.setAttribute('name', this.name);
-		}
 	}
 
 	protected render(): TemplateResult {
@@ -129,9 +115,11 @@ export class VWCFilePicker extends LitElement {
 		return html`
 			<vwc-button
 				class="vwc-upload-button"
-				@click=${this.triggerFileInput}
+				icon="upload"
+				trailingIcon
 				layout="filled"
 				connotation="primary"
+				@click=${this.triggerFileInput}
 			>
 				<slot></slot>${this.buttonText}</vwc-button
 			>

@@ -4,7 +4,7 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Cells/FilePicker',
+	title: 'Cells/File Picker',
 	component: 'vwc-file-picker',
 	argTypes
 }
@@ -12,6 +12,10 @@ export default {
 const Template = args => html`
 	<vwc-file-picker ...=${spread(args)} @change="${onChange}"></vwc-file-picker>
 `;
+
+function onChange(e) {
+	console.log(e.target.value);
+}
 
 export const Basic = Template.bind({});
 Basic.args = { name: 'some-file' };
@@ -25,6 +29,19 @@ Accept.args = { accept: '.pdf', label: 'Select your PDF', name: 'some-file' };
 export const Multiple = Template.bind({});
 Multiple.args = { label: 'Choose your PDFs', multiple: true, name: 'some-file' };
 
-function onChange(e) {
-	console.log(e.target.value);
+const TemplateWithForm = args => html`
+	<form @submit="${onSubmit}">
+		<div>This is an example of file-picker living in form</div>
+		<vwc-file-picker ...=${spread(args)}></vwc-file-picker>
+		<button>Submit</button>
+	</form>
+`;
+
+function onSubmit(e) {
+	e.preventDefault();
+	console.log(new FormData(e.target));
 }
+
+export const WithinForm = TemplateWithForm.bind({});
+WithinForm.args = { label: 'Choose your PDFs', multiple: true, name: 'some-file' };
+//WithinForm.parameters = { controls: { disabled: true } };

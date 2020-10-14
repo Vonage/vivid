@@ -46,6 +46,7 @@ describe('file picker', () => {
 		});
 
 		it('should be associated with the wrapping form', async () => {
+			const isSafari = window.navigator.userAgent.indexOf('Safari') > 0;
 			const filePickerName = randomAlpha();
 			addedElements = textToDomToParent(`
 				<form>
@@ -54,15 +55,25 @@ describe('file picker', () => {
 				</form>
 			`);
 			const form = addedElements[0];
+			const filesTotal = 3;
+			const filePicker = form.querySelector(VWC_COMPONENT);
+			const internalInput = filePicker.querySelector('[type="file"]');
 
-			await waitNextTask();
+			expect(internalInput).exist;
+
+			if (!isSafari) {
+				mockInputFiles(internalInput, filesTotal);
+			}
 
 			return new Promise((resolve) => {
 				form.addEventListener('submit', (e) => {
 					e.preventDefault();
 					expect(e.target).equal(form);
-					const d = new FormData(e.target).get(filePickerName);
+					const d = new FormData(e.target).getAll(filePickerName);
 					expect(d).exist;
+					if (!isSafari) {
+						expect(d.length).equal(filesTotal);
+					}
 					resolve();
 				});
 				form.querySelector('button').click();
@@ -124,3 +135,13 @@ describe('file picker', () => {
 		});
 	});
 });
+
+function mockInputFiles(input, total) {
+	const dt = new DataTransfer();
+	for (let i = 0; i < total; i++) {
+		dt.items.add(
+			new File(['file content'], `file-${i}.png`, { type: 'image/png' })
+		);
+	}
+	input.files = dt.files;
+}
