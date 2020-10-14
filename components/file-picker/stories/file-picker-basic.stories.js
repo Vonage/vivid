@@ -43,5 +43,4 @@ function onSubmit(e) {
 }
 
 export const WithinForm = TemplateWithForm.bind({});
-WithinForm.args = { label: 'Choose your PDFs', multiple: true, name: 'some-file' };
-//WithinForm.parameters = { controls: { disabled: true } };
+WithinForm.args = { label: 'Choose your PDFs', helper: 'only PDF files allowed', accept: '.pdf', multiple: true, name: 'some-file' };

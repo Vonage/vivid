@@ -24,14 +24,14 @@ describe('file picker', () => {
 		);
 	});
 
-	it('should have the expected internal contents', async () => {
+	xit('should have the expected internal contents', async () => {
 		addedElements = textToDomToParent(`<${VWC_COMPONENT}></${VWC_COMPONENT}>`);
 		const actualElement = addedElements[0];
 		await waitNextTask();
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
-	describe.only('form association', () => {
+	describe('form association', () => {
 		it('should have an associated form as a read-only property', async () => {
 			addedElements = textToDomToParent(
 				`<form><${VWC_COMPONENT}></${VWC_COMPONENT}></form>`

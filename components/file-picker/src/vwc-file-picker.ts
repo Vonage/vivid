@@ -41,9 +41,16 @@ export class VWCFilePicker extends LitElement {
 	@property({ type: String, reflect: true })
 	label = '';
 
+	@property({ type: String, reflect: true })
+	helper = '';
+
 	connectedCallback(): void {
 		super.connectedCallback();
 		this.appendChild(this.#internalInput);
+	}
+
+	protected firstUpdated(): void {
+		this.setupDragNDrop();
 	}
 
 	attributeChangedCallback(
@@ -85,11 +92,13 @@ export class VWCFilePicker extends LitElement {
 
 	protected render(): TemplateResult {
 		return html`
-			<label>
-				${this.renderLabel()} ${this.renderDragNDropSurface()}
-				${this.renderButton()}
-				<slot name="${INTERNAL_INPUT_SLOT_NAME}"></slot>
-				${this.renderHelper()}
+			<label class="wrapper">
+				${this.renderHeader()}
+				<div class="content part">
+					${this.renderDragNDropSurface()} ${this.renderButton()}
+					<slot name="${INTERNAL_INPUT_SLOT_NAME}"></slot>
+				</div>
+				${this.renderFooter()}
 			</label>
 		`;
 	}
@@ -101,20 +110,18 @@ export class VWCFilePicker extends LitElement {
 		return result;
 	}
 
-	private renderLabel(): TemplateResult {
-		let result;
+	private renderHeader(): TemplateResult {
 		if (this.label) {
-			result = html`<span class="vwc-upload-label">${this.label}</span>`;
+			return html`<span class="label part">${this.label}</span>`;
 		} else {
-			result = html``;
+			return html``;
 		}
-		return result;
 	}
 
 	private renderButton(): TemplateResult {
 		return html`
 			<vwc-button
-				class="vwc-upload-button"
+				class="button"
 				icon="upload"
 				trailingIcon
 				layout="filled"
@@ -126,11 +133,40 @@ export class VWCFilePicker extends LitElement {
 		`;
 	}
 
-	private renderHelper(): TemplateResult {
-		return html``;
+	private renderFooter(): TemplateResult {
+		if (this.helper) {
+			return html`
+				<div class="footer part">
+					<span class="helper">${this.helper}</span>
+				</div>
+			`;
+		} else {
+			return html``;
+		}
 	}
 
 	private renderDragNDropSurface(): TemplateResult {
 		return html``;
+	}
+
+	private setupDragNDrop() {
+		const dropZone = this.shadowRoot?.querySelector('.content') as HTMLElement;
+		if (dropZone) {
+			dropZone.ondragover = (e) => {
+				e.preventDefault();
+			};
+			dropZone.addEventListener('drop', (e) => {
+				e.preventDefault();
+				if (e.dataTransfer?.files && e.dataTransfer.files.length) {
+					//	TODO: filter out files?
+					this.#internalInput.files = e.dataTransfer.files;
+					//	TODO: trigger change event?
+				} else {
+					console.error('this component allows only a file/s drop');
+				}
+			});
+		} else {
+			console.error('failed to setup drop zone');
+		}
 	}
 }
