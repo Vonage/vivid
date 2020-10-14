@@ -17,8 +17,9 @@
 	':host([unelevated]#{color-connotation-mixins.$connotation-placeholder},[outlined]#{color-connotation-mixins.$connotation-placeholder})'
 );
 :host([unelevated],[outlined]) {
-	 --mdc-theme-primary: var(#{color-semantic.$color-connotation-background});
-   --mdc-theme-on-primary: var(#{color-semantic.$color-connotation-foreground});
+  --mdc-theme-primary: var(#{color-semantic.$color-connotation-background});
+  --mdc-theme-on-primary: var(#{color-semantic.$color-connotation-foreground});
+  --mdc-button-outline-color: var(--mdc-theme-primary);
 }
 /////////////////////////////////////////////////////////////////////////////
 .mdc-button {
