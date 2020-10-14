@@ -39,7 +39,8 @@ const TemplateWithForm = args => html`
 
 function onSubmit(e) {
 	e.preventDefault();
-	console.log(new FormData(e.target));
+	const fs = new FormData(e.target).getAll('some-file');
+	console.log(fs.map(f => f.name).join(', '));
 }
 
 export const WithinForm = TemplateWithForm.bind({});
