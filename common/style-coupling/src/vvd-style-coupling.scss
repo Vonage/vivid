@@ -23,8 +23,8 @@
 	#{color-semantic.$formfield-border-error}: color-base.$red-600;
   #{color-semantic.$formfield-label-error-ink}: color-base.$red-600;
   
-	#{color-semantic.$color-primary-background-hover}: var(--vvd-color-primary-background);;
-	#{color-semantic.$color-primary-border}: var(--vvd-color-primary-background);;
+	#{color-semantic.$color-primary-background-hover}: var(--vvd-color-primary-background);
+	#{color-semantic.$color-primary-border}: var(--vvd-color-primary-background);
   #{color-semantic.$color-primary-shadow}: 19, 20, 21, 0.42;
 
 	#{color-semantic.$color-cta-background-hover}: color-base.$purple-900;

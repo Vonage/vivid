@@ -9,6 +9,10 @@
   --mdc-button-disabled-fill-color: var(
     #{color-semantic.$formfield-border-idle}
   );
+  --mdc-button-disabled-outline-color: var(
+    #{color-semantic.$formfield-disabled-ink}
+  );
+  --mdc-button-outline-color: var(--mdc-theme-primary);
   --mdc-button-horizontal-padding: 14px;
 }
 
@@ -19,7 +23,6 @@
 :host([unelevated],[outlined]) {
   --mdc-theme-primary: var(#{color-semantic.$color-connotation-background});
   --mdc-theme-on-primary: var(#{color-semantic.$color-connotation-foreground});
-  --mdc-button-outline-color: var(--mdc-theme-primary);
 }
 /////////////////////////////////////////////////////////////////////////////
 .mdc-button {
@@ -51,10 +54,6 @@
       margin-inline-end: 8px;
     }
   }
-}
-
-:host([disabled]) .mdc-button.mdc-button--outlined {
-  border-color: var(--vvd-color-disabled-fill-color);
 }
 
 :host([shape='pill']) .mdc-button {
