@@ -7,4 +7,14 @@
 	.mdc-floating-label {
 		@include typography.typography-mdc-coupling('subtitle1', 'body-1');
 	}
+
+	.mdc-floating-label--float-above {
+		@include typography.typography-mdc-coupling('subtitle1', 'caption');
+  }
+}
+
+:host([dense]) {
+	.mdc-floating-label {
+		@include typography.typography-mdc-coupling('subtitle1', 'body-2');
+	}
 }

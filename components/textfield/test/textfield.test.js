@@ -9,6 +9,14 @@ import {
 	randomAlpha,
 	listenToSubmission,
 } from '../../../test/test-helpers.js';
+import { borderRadiusStyles } from '../../../test/style-utils.js';
+import {
+	typographyTestCases,
+	assertDenseStyles,
+	hasNotchedOutline,
+	validateMultipleShadowLayers,
+	validateOnReset,
+} from './textfield-utils.test.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
@@ -37,49 +45,7 @@ describe('textfield', () => {
 	});
 
 	describe('typography', () => {
-		it('should have set typography for a label', async () => {
-			const addedElements = addElement(
-				textToDomToParent(
-					`<${COMPONENT_NAME} outlined label="Vwc textarea"></${COMPONENT_NAME}>`
-				)
-			);
-			await waitNextTask();
-			const labelElement = addedElements[0].shadowRoot
-				.querySelector('.mdc-notched-outline')
-				.querySelector('#label');
-			expect(labelElement).to.exist;
-			assertComputedStyle(labelElement, {
-				fontFamily: 'SpeziaWebVariable',
-				fontSize: '16px',
-				fontWeight: '400',
-				fontStretch: '50%',
-				lineHeight: '18.4px',
-				letterSpacing: '0.15px',
-				textTransform: 'none',
-			});
-		});
-
-		it('should have set typography for an input', async () => {
-			const addedElements = addElement(
-				textToDomToParent(
-					`<${COMPONENT_NAME} outlined disabled label="Vwc textarea"></${COMPONENT_NAME}>`
-				)
-			);
-			await waitNextTask();
-			const inputElement = addedElements[0].shadowRoot.querySelector(
-				'.mdc-text-field__input'
-			);
-			expect(inputElement).to.exist;
-			assertComputedStyle(inputElement, {
-				fontFamily: 'SpeziaWebVariable',
-				fontSize: '14.2222px',
-				fontWeight: '400',
-				fontStretch: '50%',
-				lineHeight: 'normal',
-				letterSpacing: '0.133333px',
-				textTransform: 'none',
-			});
-		});
+		typographyTestCases(COMPONENT_NAME);
 	});
 
 	describe(`form association`, function () {
@@ -215,15 +181,7 @@ describe('textfield', () => {
 			});
 
 			it(`should validate on reset`, async function () {
-				const validInput = formElement.checkValidity();
-				await changeValueAndNotify(actualElement, invalidValue, 'change');
-				const invalidInput = formElement.checkValidity();
-
-				formElement.reset();
-
-				expect(validInput).to.equal(true);
-				expect(invalidInput).to.equal(false);
-				expect(formElement.checkValidity()).to.equal(true);
+				validateOnReset(actualElement, formElement, invalidValue);
 			});
 
 			it(`should not submit an invalid form`, async function () {
@@ -241,43 +199,7 @@ describe('textfield', () => {
 		});
 
 		it(`should work under multiple shadow layers`, async function () {
-			const fieldValue = Math.random().toString();
-			const fieldName = 'test-field';
-			const formTemplate = `
-				<form onsubmit="return false" name="testForm" id="testForm">
-					<vivid-tests-component></vivid-tests-component>
-					<button></button>
-				</form>`;
-			const elementTemplate = `
-					<${COMPONENT_NAME} required value="${fieldValue}"
- 														 name="${fieldName}">
-
-					</${COMPONENT_NAME}>`;
-			const [formElement] = addElement(textToDomToParent(formTemplate));
-			await waitNextTask();
-			const wrapperElement = formElement.querySelector('vivid-tests-component');
-			wrapperElement.setContent(elementTemplate);
-			const actualElement = wrapperElement.shadowRoot.querySelector(
-				COMPONENT_NAME
-			);
-
-			const validInput = formElement.checkValidity();
-			const submitPromise = listenToSubmission(formElement);
-
-			requestSubmit(formElement);
-
-			for (let [formDataKey, formDataValue] of (await submitPromise).entries()) {
-				expect(formDataKey).to.equal(fieldName);
-				expect(formDataValue).to.equal(fieldValue);
-			}
-
-			await changeValueAndNotify(actualElement, '', 'change');
-
-			expect(
-				formElement.querySelectorAll(`input[name="${fieldName}"`).length
-			).to.equal(1);
-			expect(validInput).to.equal(true);
-			expect(formElement.checkValidity()).to.equal(false);
+			validateMultipleShadowLayers(COMPONENT_NAME, 'input');
 		});
 
 		describe(`submit form on Enter key`, function () {
@@ -347,14 +269,7 @@ describe('textfield', () => {
 
 	describe('notched outlined', () => {
 		it('should have vwc-notched-outline defined', async () => {
-			const addedElements = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} outlined></${COMPONENT_NAME}>`)
-			);
-			await waitNextTask();
-			const notchedOutline = addedElements[0].shadowRoot.querySelector(
-				'vwc-notched-outline'
-			);
-			expect(notchedOutline).to.exist;
+			hasNotchedOutline(COMPONENT_NAME);
 		});
 	});
 
@@ -369,28 +284,7 @@ describe('textfield', () => {
 		});
 
 		it('should have dense size when dense', async () => {
-			const addedElements = addElement(
-				textToDomToParent(
-					`<${COMPONENT_NAME} outlined dense label="VWC Textfield"></${COMPONENT_NAME}>`
-				)
-			);
-			await waitNextTask();
-			const formElement = addedElements[0];
-			const labelElement = formElement.shadowRoot
-				.querySelector('.mdc-notched-outline')
-				.querySelector('#label');
-
-			assertComputedStyle(formElement, {
-				height: '40px',
-				paddingTop: '24px',
-			});
-
-			assertComputedStyle(labelElement, {
-				fontSize: '14px',
-				left: '-12px',
-				top: '-24px',
-				transform: 'none',
-			});
+			assertDenseStyles(COMPONENT_NAME);
 		});
 	});
 
@@ -406,23 +300,11 @@ describe('textfield', () => {
 			);
 
 			expect(formElement.getAttribute('shape') === 'rounded').to.equal(true);
-			const expectedNormalStyles = {
-				borderTopLeftRadius: '6px',
-				borderTopRightRadius: '6px',
-				borderBottomLeftRadius: '6px',
-				borderBottomRightRadius: '6px',
-			};
-			assertComputedStyle(actualElement, expectedNormalStyles);
+			assertComputedStyle(actualElement, borderRadiusStyles(6));
 
 			formElement.dense = true;
 			await waitNextTask();
-			const expectedDenseStyles = {
-				borderTopLeftRadius: '5px',
-				borderTopRightRadius: '5px',
-				borderBottomLeftRadius: '5px',
-				borderBottomRightRadius: '5px',
-			};
-			assertComputedStyle(actualElement, expectedDenseStyles);
+			assertComputedStyle(actualElement, borderRadiusStyles(5));
 		});
 
 		it('should have pill shape when shape set to pill', async () => {
@@ -435,13 +317,7 @@ describe('textfield', () => {
 			const actualElement = addedElements[0].shadowRoot.querySelector(
 				'.mdc-text-field'
 			);
-			const expectedStyles = {
-				borderTopLeftRadius: '24px',
-				borderTopRightRadius: '24px',
-				borderBottomLeftRadius: '24px',
-				borderBottomRightRadius: '24px',
-			};
-			assertComputedStyle(actualElement, expectedStyles);
+			assertComputedStyle(actualElement, borderRadiusStyles(24));
 		});
 	});
 });
