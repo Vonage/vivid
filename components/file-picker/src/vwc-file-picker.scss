@@ -1,4 +1,5 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
+@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 
 .input-file-slot::slotted(*) {
 	display: none;
@@ -30,12 +31,35 @@
 .dd-hint {
 	@include typography.typography-cat-shorthand('body-2');
 }
+[name="dd-hint"]::slotted(*:empty) {
+	display: none;
+}
 
-.helper {
-	@include typography.typography-cat-shorthand('caption');
-	color: #666666;
+//	footer
+.footer {
+	cursor: default;
+
+	.error-icon {
+		display: none;
+		color: var(#{color-semantic.$formfield-label-error-ink});
+	}
 
 	.spacer {
-		flex-basis: 20px;
+		flex-basis: 14px;
+	}
+
+	.helper {
+		@include typography.typography-cat-shorthand('caption');
+		color: #666666;
+	}
+}
+
+.invalid .footer {
+	.error-icon {
+		display: flex;
+	}
+
+	.spacer {
+		flex-basis: 6px;
 	}
 }

@@ -1,0 +1,66 @@
+import '@vonage/vwc-file-picker';
+import '@vonage/vwc-button';
+import { html } from 'lit-element';
+import { spread } from '@open-wc/lit-helpers';
+import { argTypes } from './arg-types.js';
+
+export default {
+	title: 'Cells/File Picker/Events',
+	component: 'vwc-file-picker',
+	argTypes
+}
+
+const Template = args => html`
+	<vwc-file-picker ...=${spread(args.self)} @change="${onChange}"><input type="file" ...=${spread(args.input)}/></vwc-file-picker>
+`;
+
+function onChange(e) {
+	const list = [];
+	for (let i = 0; i < e.target.files.length; i++) {
+		list.push(e.target.files[i].name);
+	}
+	console.log(list.join(', '));
+}
+
+export const Basic = Template.bind({});
+Basic.args = {
+	input: { name: 'some-file' }
+};
+
+export const Label = Template.bind({});
+Label.args = {
+	self: { label: 'Pick up your image' },
+	input: { name: 'some-file' }
+};
+
+export const Accept = Template.bind({});
+Accept.args = {
+	self: { label: 'Select your PDF' },
+	input: { accept: '.pdf', name: 'some-file' }
+};
+
+export const Multiple = Template.bind({});
+Multiple.args = {
+	self: { label: 'Choose your PDFs' },
+	input: { multiple: true, name: 'some-file' }
+};
+
+const TemplateWithForm = args => html`
+	<form @submit="${onSubmit}">
+		<div>This is an example of file-picker living in form</div>
+		<vwc-file-picker ...=${spread(args.self)}><input type="file" ...=${spread(args.input)}/></vwc-file-picker>
+		<vwc-button layout="filled">Submit</vwc-button>
+	</form>
+`;
+
+function onSubmit(e) {
+	e.preventDefault();
+	const fs = new FormData(e.target).getAll('some-file');
+	console.log(fs.map(f => f.name).join(', '));
+}
+
+export const WithinForm = TemplateWithForm.bind({});
+WithinForm.args = {
+	self: { label: 'Choose your PDFs', helper: 'only PDF files allowed' },
+	input: { accept: '.pdf', multiple: true, name: 'some-file' }
+};

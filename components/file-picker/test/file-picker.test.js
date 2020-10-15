@@ -41,9 +41,7 @@ describe.only('file picker', () => {
 
 			await waitNextTask();
 			expect(filePicker).exist;
-			expect(filePicker.form).equal(form);
-			filePicker.form = null;
-			expect(filePicker.form).equal(form);
+			expect(filePicker.firstElementChild.form).equal(form);
 		});
 
 		it('should be associated with the wrapping form', async () => {
@@ -91,16 +89,15 @@ describe.only('file picker', () => {
 			const formA = addedElements[0];
 			const formB = addedElements[1];
 			const filePicker = formA.querySelector(VWC_COMPONENT);
-
-			expect(filePicker.form).equal(formA);
-			formB.appendChild(filePicker);
-
-			expect(filePicker.form).equal(formB);
-
-			const filesTotal = 3;
 			const internalInput = filePicker.querySelector('[type="file"]');
 
 			expect(internalInput).exist;
+			expect(internalInput.form).equal(formA);
+
+			formB.appendChild(filePicker);
+			expect(internalInput.form).equal(formB);
+
+			const filesTotal = 3;
 			if (!isSafari()) {
 				mockInputFiles(internalInput, filesTotal);
 			}
@@ -132,14 +129,15 @@ describe.only('file picker', () => {
 			const formA = addedElements[0];
 			const formB = addedElements[1];
 			const filePicker = addedElements[2];
+			const internalInput = filePicker.querySelector('[type="file"]');
 
-			expect(filePicker.form).null;
+			expect(internalInput.form).null;
 
-			filePicker.querySelector('[type="file"]').setAttribute('form', formAId);
-			expect(filePicker.form).equal(formA);
+			internalInput.setAttribute('form', formAId);
+			expect(internalInput.form).equal(formA);
 
-			filePicker.querySelector('[type="file"]').setAttribute('form', formBId);
-			expect(filePicker.form).equal(formB);
+			internalInput.setAttribute('form', formBId);
+			expect(internalInput.form).equal(formB);
 		});
 	});
 });

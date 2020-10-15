@@ -17,6 +17,9 @@
 			"path": "../../common/core"
 		},
 		{
+			"path": "../../common/style-coupling"
+		},
+		{
 			"path": "../button"
 		},
 		{

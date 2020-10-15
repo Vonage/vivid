@@ -8,7 +8,8 @@ import {
 	LitElement,
 	TemplateResult,
 } from 'lit-element';
-import { style } from './vwc-file-picker.css.js';
+import { style as filePickerStyle } from './vwc-file-picker.css.js';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -16,11 +17,13 @@ declare global {
 	}
 }
 
-const INPUT_FILE_SLOT = 'input-file-slot';
+const BUTTON_SLOT = 'button',
+	INPUT_FILE_SLOT = 'input-file-slot';
 
 @customElement('vwc-file-picker')
 export class VWCFilePicker extends LitElement {
-	static styles = [style];
+	static styles = [styleCoupling, filePickerStyle];
+	#container: HTMLElement | null = null;
 
 	@property({ type: String, reflect: true })
 	label = '';
@@ -28,32 +31,8 @@ export class VWCFilePicker extends LitElement {
 	@property({ type: String, reflect: true })
 	helper = '';
 
-	get files(): FileList | null {
-		return this.getActualInput()?.files || null;
-	}
-
-	get value(): string | null {
-		return this.getActualInput()?.value || null;
-	}
-
-	get form(): HTMLFormElement | null {
-		return this.getActualInput()?.form || null;
-	}
-
-	set form(_: HTMLFormElement | null) {
-		//	do nothing, as a native element does
-	}
-
-	triggerFileInput(): void {
-		const fi = this.getActualInput();
-		if (fi) {
-			fi.click();
-		} else {
-			console.error('input element missing');
-		}
-	}
-
 	protected firstUpdated(): void {
+		this.#container = this.shadowRoot?.querySelector('.wrapper') || null;
 		this.setupDragNDrop();
 		this.shadowRoot
 			?.querySelector(`.${INPUT_FILE_SLOT}`)
@@ -68,9 +47,7 @@ export class VWCFilePicker extends LitElement {
 				${this.renderHeader()}
 				<div class="content part">
 					<slot name="dd-hint">${this.renderDragNDropHint()}</slot>
-					<slot name="button" @click=${this.triggerFileInput}
-						>${this.renderButton()}</slot
-					>
+					<slot name="${BUTTON_SLOT}" @click=${this.triggerFileInput}></slot>
 					<slot class="${INPUT_FILE_SLOT}"></slot>
 				</div>
 				${this.renderFooter()}
@@ -90,19 +67,6 @@ export class VWCFilePicker extends LitElement {
 		}
 	}
 
-	private renderButton(): TemplateResult {
-		return html`
-			<vwc-button
-				class="button"
-				icon="upload"
-				trailingIcon
-				layout="filled"
-				connotation="primary"
-				>Add File</vwc-button
-			>
-		`;
-	}
-
 	private renderFooter(): TemplateResult {
 		if (this.helper) {
 			return html`
@@ -118,40 +82,73 @@ export class VWCFilePicker extends LitElement {
 	}
 
 	private renderDragNDropHint(): TemplateResult {
-		return html` <span class="dd-hint">Drag&Drop files here or</span> `;
+		return html` <span class="dd-hint">Drag & Drop files here</span> `;
 	}
 
 	private setupDragNDrop() {
-		const dropZone = this.shadowRoot?.querySelector('.content') as HTMLElement;
-		if (dropZone) {
-			dropZone.ondragover = (e) => {
+		const ddZone = this.shadowRoot?.querySelector('.content') as HTMLElement;
+		if (ddZone) {
+			ddZone.ondragover = (e) => e.preventDefault();
+
+			ddZone.addEventListener('dragenter', (e) => {
 				e.preventDefault();
-			};
-			dropZone.addEventListener('drop', (e) => {
+				const dddValidationError = this.validateDragDropData(e);
+				if (dddValidationError) {
+					this.#container?.classList.add('drag-invalid');
+					console.log('drag invalid');
+				} else {
+					this.#container?.classList.add('drag-valid');
+					console.log('drag valid');
+				}
+			});
+
+			ddZone.addEventListener('dragleave', (e) => {
 				e.preventDefault();
-				const fi = this.getActualInput();
-				if (!fi) {
-					console.error('input element missing');
-					return;
-				}
-				if (!e.dataTransfer?.files || !e.dataTransfer.files.length) {
-					console.error('one file/s drop allowed');
-					return;
-				}
-				if (!fi.hasAttribute('multiple') && e.dataTransfer.files.length > 1) {
-					console.error('only one file allowed, but many dropped');
+				this.#container?.classList.forEach((c, _i, a) => {
+					if (c.startsWith('drag')) {
+						a.remove(c);
+					}
+				});
+			});
+
+			ddZone.addEventListener('drop', (e) => {
+				e.preventDefault();
+
+				const dddValidationError = this.validateDragDropData(e);
+				if (dddValidationError) {
+					console.error(dddValidationError);
 					return;
 				}
 
-				fi.files = e.dataTransfer.files;
-				fi.dispatchEvent(
-					new Event('change', {
-						bubbles: true,
-					})
-				);
+				if (e.dataTransfer) {
+					this.setFiles(e.dataTransfer.files);
+				}
 			});
 		} else {
 			console.error('failed to setup drop zone');
+		}
+	}
+
+	private triggerFileInput(): void {
+		const fi = this.getActualInput();
+		if (fi) {
+			fi.click();
+		} else {
+			console.error('input element missing');
+		}
+	}
+
+	private setFiles(files: FileList | null): void {
+		const fi = this.getActualInput();
+		if (fi) {
+			fi.files = files;
+			fi.dispatchEvent(
+				new Event('change', {
+					bubbles: true,
+				})
+			);
+		} else {
+			console.error('input element missing');
 		}
 	}
 
@@ -179,5 +176,29 @@ export class VWCFilePicker extends LitElement {
 				`only an INPUT of type 'file' expected; found '${fic.getAttribute('type')}'`
 			);
 		}
+	}
+
+	/**
+	 * This method validates component readyness for dropping files:
+	 * - presence of file input is assured
+	 * - file/s drag (and not otherwise) is assured
+	 * - file/s cardinality is assured
+	 * - TODO: file/s type is assured
+	 * @param e DragEvent
+	 */
+	private validateDragDropData(e: DragEvent): string | null {
+		const fi = this.getActualInput();
+		if (!fi) {
+			return 'input element missing';
+		}
+		const ddl = e.dataTransfer?.items;
+		if (ddl && Array.from(ddl).some((i) => i.kind !== 'file')) {
+			return 'only file/s drop allowed';
+		}
+		if (!fi.hasAttribute('multiple') && ddl && ddl.length > 1) {
+			return 'only one file allowed, but many dropped';
+		}
+		//	TODO: assert file types
+		return null;
 	}
 }
