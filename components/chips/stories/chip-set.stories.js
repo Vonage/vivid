@@ -6,7 +6,7 @@ import { spread } from '@open-wc/lit-helpers';
 export default {
 	title: 'Atoms/ChipSet',
 	component: 'vwc-chip-set',
-	argTypes: { 
+	argTypes: {
 		chips: { table: { disable: true } },
 		chipArgs: { table: { disable: true } }
 	}
@@ -35,6 +35,7 @@ function handleSelection(e) {
 		}
 	}
 
+	const chipSet = this.closest('#chipSet');
 	console.log('chipSet.chips method', chipSet.chips);
 	console.log('MDCChip:selection event', payload);
 }
@@ -47,6 +48,7 @@ function handleRemoval(e) {
 		}
 	}
 
+	const chipSet = this.closest('#chipSet');
 	console.log('chipSet.chips method', chipSet.chips);
 	console.log('MDCChip:removal event', payload);
 }

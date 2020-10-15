@@ -7,6 +7,7 @@ globals:
   goog: false
 env:
   browser: true
+  node: true
 parser: "@typescript-eslint/parser"
 plugins:
   - "@typescript-eslint"
@@ -63,8 +64,9 @@ overrides:
       no-unused-vars: off
       no-invalid-this: off
       new-cap: off
-  - files: ["common/**/test/**/*.js", "components/**/test/**/*.js"]
+  - files: ["**/test/**/*.js", "**/stories/**/*.js"]
     rules:
+      "@typescript-eslint/explicit-module-boundary-types": off
       "@typescript-eslint/no-non-null-assertion": off
       "no-only-tests/no-only-tests": "error"
       quotes: off

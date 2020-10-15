@@ -56,7 +56,7 @@ function onSubmit(e) {
 export const SingleRestrictedSubmitEvent = TemplateWithForm.bind({});
 SingleRestrictedSubmitEvent.args = {
 	self: { label: 'Pick your favorive', helper: 'single file of PDF type only' },
-	input: { accept: '.pdf', accept: '.pdf' }
+	input: { accept: '.pdf' }
 };
 
 export const MultipleUnestrictedSubmitEvent = TemplateWithForm.bind({});
