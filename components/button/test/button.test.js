@@ -4,6 +4,7 @@ import {
 	textToDomToParent,
 	assertComputedStyle,
 } from '../../../test/test-helpers.js';
+import { borderRadiusStyles } from '../../../test/style-utils.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	isolatedElementsCreation,
@@ -466,13 +467,7 @@ describe('button', () => {
 			await waitNextTask();
 			let actualElement = addedElements[0].shadowRoot.querySelector('#button');
 
-			const expectedNormalStyles = {
-				borderTopLeftRadius: '6px',
-				borderTopRightRadius: '6px',
-				borderBottomLeftRadius: '6px',
-				borderBottomRightRadius: '6px',
-			};
-			assertComputedStyle(actualElement, expectedNormalStyles);
+			assertComputedStyle(actualElement, borderRadiusStyles(6));
 		});
 
 		it('should have rounded shape when dense', async () => {
@@ -484,13 +479,7 @@ describe('button', () => {
 			await waitNextTask();
 			let actualElement = addedElements[0].shadowRoot.querySelector('#button');
 
-			const expectedNormalStyles = {
-				borderTopLeftRadius: '5px',
-				borderTopRightRadius: '5px',
-				borderBottomLeftRadius: '5px',
-				borderBottomRightRadius: '5px',
-			};
-			assertComputedStyle(actualElement, expectedNormalStyles);
+			assertComputedStyle(actualElement, borderRadiusStyles(5));
 		});
 
 		it('should have pill shape when shape set to pill', async () => {
@@ -501,13 +490,7 @@ describe('button', () => {
 			);
 			await waitNextTask();
 			const actualElement = addedElements[0].shadowRoot.querySelector('#button');
-			const expectedPillStyles = {
-				borderTopLeftRadius: '24px',
-				borderTopRightRadius: '24px',
-				borderBottomLeftRadius: '24px',
-				borderBottomRightRadius: '24px',
-			};
-			assertComputedStyle(actualElement, expectedPillStyles);
+			assertComputedStyle(actualElement, borderRadiusStyles(24));
 		});
 	});
 });
