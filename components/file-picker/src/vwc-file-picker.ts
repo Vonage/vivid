@@ -31,6 +31,15 @@ export class VWCFilePicker extends LitElement {
 	@property({ type: String, reflect: true })
 	helper = '';
 
+	@property({ type: String, reflect: false })
+	error = '';
+
+	@property({ type: String, reflect: true })
+	notAFileError = 'only file/s drop allowed';
+
+	@property({ type: String, reflect: true })
+	tooManyFilesError = 'only one file allowed, but many dropped';
+
 	protected firstUpdated(): void {
 		this.#container = this.shadowRoot?.querySelector('.wrapper') || null;
 		this.setupDragNDrop();
@@ -82,7 +91,7 @@ export class VWCFilePicker extends LitElement {
 	}
 
 	private renderDragNDropHint(): TemplateResult {
-		return html` <span class="dd-hint">Drag & Drop files here</span> `;
+		return html`<span class="dd-hint">Drag & Drop files here</span>`;
 	}
 
 	private setupDragNDrop() {
@@ -92,27 +101,25 @@ export class VWCFilePicker extends LitElement {
 
 			ddZone.addEventListener('dragenter', (e) => {
 				e.preventDefault();
+				this.#container?.classList.add('drag-over');
 				const dddValidationError = this.validateDragDropData(e);
 				if (dddValidationError) {
 					this.#container?.classList.add('drag-invalid');
-					console.log('drag invalid');
-				} else {
-					this.#container?.classList.add('drag-valid');
-					console.log('drag valid');
+				}
+				if (e.dataTransfer) {
+					e.dataTransfer.effectAllowed = 'link';
+					e.dataTransfer.dropEffect = dddValidationError ? 'none' : 'link';
 				}
 			});
 
 			ddZone.addEventListener('dragleave', (e) => {
 				e.preventDefault();
-				this.#container?.classList.forEach((c, _i, a) => {
-					if (c.startsWith('drag')) {
-						a.remove(c);
-					}
-				});
+				this.cleanDragClasses();
 			});
 
 			ddZone.addEventListener('drop', (e) => {
 				e.preventDefault();
+				this.cleanDragClasses();
 
 				const dddValidationError = this.validateDragDropData(e);
 				if (dddValidationError) {
@@ -150,6 +157,16 @@ export class VWCFilePicker extends LitElement {
 		} else {
 			console.error('input element missing');
 		}
+	}
+
+	private cleanDragClasses(): void {
+		if (!this.#container) {
+			return;
+		}
+		const ctr = Array.from(this.#container.classList).filter((c) =>
+			c.startsWith('drag-')
+		);
+		this.#container?.classList.remove(...ctr);
 	}
 
 	/**
@@ -193,10 +210,10 @@ export class VWCFilePicker extends LitElement {
 		}
 		const ddl = e.dataTransfer?.items;
 		if (ddl && Array.from(ddl).some((i) => i.kind !== 'file')) {
-			return 'only file/s drop allowed';
+			return this.notAFileError;
 		}
 		if (!fi.hasAttribute('multiple') && ddl && ddl.length > 1) {
-			return 'only one file allowed, but many dropped';
+			return this.tooManyFilesError;
 		}
 		//	TODO: assert file types
 		return null;

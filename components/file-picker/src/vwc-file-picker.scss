@@ -22,17 +22,38 @@
 
 .content {
 	flex-basis: 100px;
-	justify-content: space-evenly;
+	justify-content: center;
 	border: 1px dashed #cccccc;
 	border-radius: 6px;
 	box-sizing: border-box;
 }
 
-.dd-hint {
+.dd-hint,
+[name="dd-hint"]::slotted(*) {
 	@include typography.typography-cat-shorthand('body-2');
+	margin-inline-end: 16px;
 }
 [name="dd-hint"]::slotted(*:empty) {
 	display: none;
+}
+
+//	drag & drop
+.drag-over {
+	.content {
+		border: 1px solid #000;
+
+		.dd-hint,
+		::slotted(*) {
+			opacity: 0.5;
+			pointer-events: none;
+		}
+	}
+
+	&.drag-invalid {
+		.content {
+			background-color: var(#{color-semantic.$formfield-error-fill});
+		}
+	}
 }
 
 //	footer
@@ -54,7 +75,7 @@
 	}
 }
 
-.invalid .footer {
+.error .footer {
 	.error-icon {
 		display: flex;
 	}

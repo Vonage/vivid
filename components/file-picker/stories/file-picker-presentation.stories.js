@@ -5,7 +5,7 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Cells/File Picker/Basic',
+	title: 'Cells/File Picker/Presentation',
 	component: 'vwc-file-picker',
 	argTypes
 }
@@ -52,7 +52,7 @@ const TemplateC = args => html`
 	<vwc-file-picker ...=${spread(args.self)}>
 		<input type="file" name="fi-name" ...=${spread(args.input)}/>
 		<span slot="dd-hint"></span>
-		<vwc-button slot="button" connotation="cta" layout="filled">Select</vwc-button>
+		<vwc-button slot="button" type="button" connotation="cta" layout="filled">Select</vwc-button>
 	</vwc-file-picker>
 `;
 
@@ -78,7 +78,7 @@ const TemplateE = args => html`
 	<vwc-file-picker ...=${spread(args.self)}>
 		<input type="file" name="fi-name" ...=${spread(args.input)}/>
 		<span slot="dd-hint">${args.ddContent}</span>
-		<vwc-button slot="button" layout="filled" icon="upload" trailingIcon>Select Files</vwc-button>
+		<vwc-button slot="button" type="button" layout="filled" icon="upload" trailingIcon>Select Files</vwc-button>
 	</vwc-file-picker>
 `;
 
