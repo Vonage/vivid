@@ -1,4 +1,5 @@
 import '@vonage/vvd-core';
+import '@vonage/vwc-icon';
 import '@vonage/vwc-button';
 import {
 	customElement,
@@ -15,28 +16,11 @@ declare global {
 	}
 }
 
-const INTERNAL_INPUT_SLOT_NAME = 'internal-input';
+const INPUT_FILE_SLOT = 'input-file-slot';
 
 @customElement('vwc-file-picker')
 export class VWCFilePicker extends LitElement {
-	#internalInput: HTMLInputElement = VWCFilePicker.createInternalInput();
-
 	static styles = [style];
-
-	@property({ type: String, reflect: true })
-	accept = '';
-
-	@property({ attribute: 'form', reflect: true })
-	formId = null;
-
-	@property({ type: Boolean, reflect: true })
-	multiple = false;
-
-	@property({ type: String, reflect: true })
-	name = '';
-
-	@property({ type: String, reflect: true })
-	buttonText = 'Add file';
 
 	@property({ type: String, reflect: true })
 	label = '';
@@ -44,42 +28,16 @@ export class VWCFilePicker extends LitElement {
 	@property({ type: String, reflect: true })
 	helper = '';
 
-	connectedCallback(): void {
-		super.connectedCallback();
-		this.appendChild(this.#internalInput);
-	}
-
-	protected firstUpdated(): void {
-		this.setupDragNDrop();
-	}
-
-	attributeChangedCallback(
-		name: string,
-		oldval: string | null,
-		newval: string | null
-	): void {
-		if (['accept', 'form', 'name'].includes(name) && newval !== null) {
-			this.#internalInput.setAttribute(name, newval);
-		} else if (name === 'multiple') {
-			if (newval === 'false' || newval === null) {
-				this.#internalInput.removeAttribute('multiple');
-			} else {
-				this.#internalInput.setAttribute('multiple', '');
-			}
-		}
-		super.attributeChangedCallback(name, oldval, newval);
-	}
-
 	get files(): FileList | null {
-		return this.#internalInput.files;
+		return this.getActualInput()?.files || null;
 	}
 
 	get value(): string | null {
-		return this.#internalInput.value;
+		return this.getActualInput()?.value || null;
 	}
 
 	get form(): HTMLFormElement | null {
-		return this.#internalInput.form;
+		return this.getActualInput()?.form || null;
 	}
 
 	set form(_: HTMLFormElement | null) {
@@ -87,7 +45,21 @@ export class VWCFilePicker extends LitElement {
 	}
 
 	triggerFileInput(): void {
-		this.#internalInput?.click();
+		const fi = this.getActualInput();
+		if (fi) {
+			fi.click();
+		} else {
+			console.error('input element missing');
+		}
+	}
+
+	protected firstUpdated(): void {
+		this.setupDragNDrop();
+		this.shadowRoot
+			?.querySelector(`.${INPUT_FILE_SLOT}`)
+			?.addEventListener('slotchange', (e) => {
+				this.validateSlottedInput(e.target as HTMLSlotElement);
+			});
 	}
 
 	protected render(): TemplateResult {
@@ -95,19 +67,19 @@ export class VWCFilePicker extends LitElement {
 			<label class="wrapper">
 				${this.renderHeader()}
 				<div class="content part">
-					${this.renderDragNDropSurface()} ${this.renderButton()}
-					<slot name="${INTERNAL_INPUT_SLOT_NAME}"></slot>
+					<slot name="dd-hint">${this.renderDragNDropHint()}</slot>
+					<slot name="button" @click=${this.triggerFileInput}
+						>${this.renderButton()}</slot
+					>
+					<slot class="${INPUT_FILE_SLOT}"></slot>
 				</div>
 				${this.renderFooter()}
 			</label>
 		`;
 	}
 
-	private static createInternalInput() {
-		const result = document.createElement('input');
-		result.type = 'file';
-		result.slot = INTERNAL_INPUT_SLOT_NAME;
-		return result;
+	private getActualInput(): HTMLInputElement | null {
+		return this.querySelector('[type="file"]');
 	}
 
 	private renderHeader(): TemplateResult {
@@ -126,9 +98,7 @@ export class VWCFilePicker extends LitElement {
 				trailingIcon
 				layout="filled"
 				connotation="primary"
-				@click=${this.triggerFileInput}
-			>
-				<slot></slot>${this.buttonText}</vwc-button
+				>Add File</vwc-button
 			>
 		`;
 	}
@@ -137,6 +107,8 @@ export class VWCFilePicker extends LitElement {
 		if (this.helper) {
 			return html`
 				<div class="footer part">
+					<vwc-icon class="error-icon" type="info-negative" size="small"></vwc-icon>
+					<span class="spacer"></span>
 					<span class="helper">${this.helper}</span>
 				</div>
 			`;
@@ -145,11 +117,8 @@ export class VWCFilePicker extends LitElement {
 		}
 	}
 
-	private renderDragNDropSurface(): TemplateResult {
-		return html`
-			<span class="dd-hint main">Drag&Drop files here</span>
-			<span class="dd-hint splitter">or</span>
-		`;
+	private renderDragNDropHint(): TemplateResult {
+		return html` <span class="dd-hint">Drag&Drop files here or</span> `;
 	}
 
 	private setupDragNDrop() {
@@ -160,20 +129,55 @@ export class VWCFilePicker extends LitElement {
 			};
 			dropZone.addEventListener('drop', (e) => {
 				e.preventDefault();
-				if (e.dataTransfer?.files && e.dataTransfer.files.length) {
-					//	TODO: filter out files?
-					this.#internalInput.files = e.dataTransfer.files;
-					this.#internalInput.dispatchEvent(
-						new Event('change', {
-							bubbles: true,
-						})
-					);
-				} else {
-					console.error('this component allows only a file/s drop');
+				const fi = this.getActualInput();
+				if (!fi) {
+					console.error('input element missing');
+					return;
 				}
+				if (!e.dataTransfer?.files || !e.dataTransfer.files.length) {
+					console.error('one file/s drop allowed');
+					return;
+				}
+				if (!fi.hasAttribute('multiple') && e.dataTransfer.files.length > 1) {
+					console.error('only one file allowed, but many dropped');
+					return;
+				}
+
+				fi.files = e.dataTransfer.files;
+				fi.dispatchEvent(
+					new Event('change', {
+						bubbles: true,
+					})
+				);
 			});
 		} else {
 			console.error('failed to setup drop zone');
+		}
+	}
+
+	/**
+	 * This method will validate ONLY the slotted content:
+	 * - not more than a single element
+	 * - ONLY an input of type 'file'
+	 * @param slot actual input slot
+	 */
+	private validateSlottedInput(slot: HTMLSlotElement): void {
+		const assignedElements = slot
+			.assignedNodes()
+			.filter((n) => n.nodeType === Node.ELEMENT_NODE);
+		if (assignedElements.length > 1) {
+			console.error(
+				`only a single slotted INPUT expected; found ${assignedElements.length}`
+			);
+		}
+		const fic = assignedElements[0] as HTMLElement;
+		if (fic.nodeName !== 'INPUT') {
+			console.error(`only an INPUT expected; found ${fic.nodeName}`);
+		}
+		if (fic.getAttribute('type') !== 'file') {
+			console.error(
+				`only an INPUT of type 'file' expected; found '${fic.getAttribute('type')}'`
+			);
 		}
 	}
 }

@@ -6,14 +6,21 @@
 		"outDir": ".",
 		"tsBuildInfoFile": ".tsbuildinfo"
 	},
-	"include": ["src/*.ts"],
-	"exclude": ["src/test/*.ts"],
+	"include": [
+		"src/*.ts"
+	],
+	"exclude": [
+		"src/test/*.ts"
+	],
 	"references": [
 		{
 			"path": "../../common/core"
 		},
 		{
 			"path": "../button"
+		},
+		{
+			"path": "../icon"
 		}
 	]
 }

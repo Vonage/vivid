@@ -11,7 +11,7 @@ chai.use(chaiDomDiff);
 
 const VWC_COMPONENT = 'vwc-file-picker';
 
-describe('file picker', () => {
+describe.only('file picker', () => {
 	let addedElements = [];
 
 	afterEach(() => {
@@ -34,7 +34,7 @@ describe('file picker', () => {
 	describe('form association', () => {
 		it('should have an associated form as a read-only property', async () => {
 			addedElements = textToDomToParent(
-				`<form><${VWC_COMPONENT}></${VWC_COMPONENT}></form>`
+				`<form><${VWC_COMPONENT}><input type="file"/></${VWC_COMPONENT}></form>`
 			);
 			const form = addedElements[0];
 			const filePicker = form.querySelector(VWC_COMPONENT);
@@ -50,7 +50,7 @@ describe('file picker', () => {
 			const filePickerName = randomAlpha();
 			addedElements = textToDomToParent(`
 				<form>
-					<${VWC_COMPONENT} name="${filePickerName}" multiple></${VWC_COMPONENT}>
+					<${VWC_COMPONENT}><input type="file" name="${filePickerName}" multiple/></${VWC_COMPONENT}>
 					<button></button>
 				</form>
 			`);
@@ -83,7 +83,7 @@ describe('file picker', () => {
 			const filePickerName = randomAlpha();
 			addedElements = textToDomToParent(`
 				<form>
-					<${VWC_COMPONENT} name="${filePickerName}"></${VWC_COMPONENT}>
+					<${VWC_COMPONENT}><input type="file" name="${filePickerName}"/></${VWC_COMPONENT}>
 					<button></button>
 				</form>
 				<form><button></button></form>
@@ -127,7 +127,7 @@ describe('file picker', () => {
 			addedElements = textToDomToParent(`
 				<form id="${formAId}"></form>
 				<form id="${formBId}"></form>
-				<${VWC_COMPONENT} name="${filePickerName}"></${VWC_COMPONENT}>
+				<${VWC_COMPONENT}><input type="file" name="${filePickerName}"/></${VWC_COMPONENT}>
 			`);
 			const formA = addedElements[0];
 			const formB = addedElements[1];
@@ -135,10 +135,10 @@ describe('file picker', () => {
 
 			expect(filePicker.form).null;
 
-			filePicker.setAttribute('form', formAId);
+			filePicker.querySelector('[type="file"]').setAttribute('form', formAId);
 			expect(filePicker.form).equal(formA);
 
-			filePicker.setAttribute('form', formBId);
+			filePicker.querySelector('[type="file"]').setAttribute('form', formBId);
 			expect(filePicker.form).equal(formB);
 		});
 	});

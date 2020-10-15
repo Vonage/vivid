@@ -1,6 +1,6 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 
-::slotted(input[type='file']) {
+.input-file-slot::slotted(*) {
 	display: none;
 }
 
@@ -21,7 +21,7 @@
 
 .content {
 	flex-basis: 100px;
-	justify-content: center;
+	justify-content: space-evenly;
 	border: 1px dashed #cccccc;
 	border-radius: 6px;
 	box-sizing: border-box;
@@ -29,42 +29,13 @@
 
 .dd-hint {
 	@include typography.typography-cat-shorthand('body-2');
-
-	&.splitter {
-		margin: 0 30px;
-	}
 }
 
 .helper {
 	@include typography.typography-cat-shorthand('caption');
-	padding: 0 20px;
 	color: #666666;
-}
 
-// responsive adjustments
-@media screen and (min-width: 800px) {
-  .content {
-		flex-basis: 140px;
-	}
-
-	.dd-hint {
-		@include typography.typography-cat-shorthand('body-1');
-	}
-}
-
-@media screen and (min-width: 500px) and (max-width: 799px) {
-  .content {
-		flex-basis: 120px;
-	}
-}
-
-@media screen and (max-width: 349px) {
-  .content {
-		flex-basis: 120px;
-	}
-
-	.dd-hint.main {
-		@include typography.typography-cat-shorthand('caption');
-		flex-basis: 80px;
+	.spacer {
+		flex-basis: 20px;
 	}
 }

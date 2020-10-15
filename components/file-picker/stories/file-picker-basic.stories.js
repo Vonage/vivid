@@ -11,7 +11,7 @@ export default {
 }
 
 const Template = args => html`
-	<vwc-file-picker ...=${spread(args)} @change="${onChange}"></vwc-file-picker>
+	<vwc-file-picker ...=${spread(args.self)} @change="${onChange}"><input type="file" ...=${spread(args.input)}/></vwc-file-picker>
 `;
 
 function onChange(e) {
@@ -23,21 +23,32 @@ function onChange(e) {
 }
 
 export const Basic = Template.bind({});
-Basic.args = { name: 'some-file' };
+Basic.args = {
+	input: { name: 'some-file' }
+};
 
 export const Label = Template.bind({});
-Label.args = { buttonText: 'Select files', label: 'Pick up your image', name: 'some-file' };
+Label.args = {
+	self: { label: 'Pick up your image' },
+	input: { name: 'some-file' }
+};
 
 export const Accept = Template.bind({});
-Accept.args = { accept: '.pdf', label: 'Select your PDF', name: 'some-file' };
+Accept.args = {
+	self: { label: 'Select your PDF' },
+	input: { accept: '.pdf', name: 'some-file' }
+};
 
 export const Multiple = Template.bind({});
-Multiple.args = { label: 'Choose your PDFs', multiple: true, name: 'some-file' };
+Multiple.args = {
+	self: { label: 'Choose your PDFs' },
+	input: { multiple: true, name: 'some-file' }
+};
 
 const TemplateWithForm = args => html`
 	<form @submit="${onSubmit}">
 		<div>This is an example of file-picker living in form</div>
-		<vwc-file-picker ...=${spread(args)}></vwc-file-picker>
+		<vwc-file-picker ...=${spread(args.self)}><input type="file" ...=${spread(args.input)}/></vwc-file-picker>
 		<vwc-button layout="filled">Submit</vwc-button>
 	</form>
 `;
@@ -49,4 +60,7 @@ function onSubmit(e) {
 }
 
 export const WithinForm = TemplateWithForm.bind({});
-WithinForm.args = { label: 'Choose your PDFs', helper: 'only PDF files allowed', accept: '.pdf', multiple: true, name: 'some-file' };
+WithinForm.args = {
+	self: { label: 'Choose your PDFs', helper: 'only PDF files allowed' },
+	input: { accept: '.pdf', multiple: true, name: 'some-file' }
+};
