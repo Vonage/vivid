@@ -4386,10 +4386,10 @@
     "@typescript-eslint/types" "4.3.0"
     eslint-visitor-keys "^2.0.0"
 
-"@vonage/vvd-design-tokens-properties@^0.1.20":
-  version "0.1.20"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@vonage/vvd-design-tokens-properties/0.1.20/6961fdf5d1ab4da497498b08dbe084e954bccde4ba7a625b92e67833914c353f#0640eddb65346d25478d38d016c6d302f064af64"
-  integrity sha1-BkDt22U0bSVHjTjQFsbTAvBkr2Q=
+"@vonage/vvd-design-tokens-properties@^0.1.21":
+  version "0.1.21"
+  resolved "https://npm.pkg.github.com/download/@vonage/vvd-design-tokens-properties/0.1.21/f97e717b05a5bd6f940878c2d2fe0cd09c61350c9d04134166a1bbfb69165271#8bda9f438805e7e53b8076b82a6d93a317fc4eab"
+  integrity sha512-GCxvwje58IZm6YCn//pVjXP6lrY1CDbjsKqpQkFEz6ET/U8ytBtRQLKDtDbFsWzR3q2s0Ks/YdCqGBTxDDe3gA==
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
@@ -7338,12 +7338,10 @@ depcheck@YonatanKra/depcheck#vivid-version:
     minimatch "^3.0.4"
     multimatch "^4.0.0"
     please-upgrade-node "^3.2.0"
-    query-ast "^1.0.3"
     readdirp "^3.4.0"
     require-package-name "^2.0.1"
     resolve "^1.17.0"
     sass "^1.26.10"
-    scss-parser "^1.0.4"
     vue-template-compiler "^2.6.11"
     yargs "^15.4.0"
 

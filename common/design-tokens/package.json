@@ -26,7 +26,7 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"devDependencies": {
-		"@vonage/vvd-design-tokens-properties": "^0.1.20",
+		"@vonage/vvd-design-tokens-properties": "^0.1.21",
 		"lodash": "^4.17.20",
 		"ramda": "^0.27.1",
 		"style-dictionary": "^2.10.1"
