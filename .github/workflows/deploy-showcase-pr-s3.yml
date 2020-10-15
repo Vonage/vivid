@@ -33,7 +33,7 @@ jobs:
         run: aws s3 sync ./.out/ s3://${{ secrets.AWS_VIVID_DEMO_PRS_BUCKET }}/${{ github.event.number }}
 
       - name: Invalidate CloudFront distribution root object's cache
-        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_VIVID_DEMO_PRS_DISTRIBUTION }} --paths "/${{ github.event.number }}/index.html"
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_VIVID_DEMO_PRS_DISTRIBUTION }} --paths "/${{ github.event.number }}/index.html*"
 
       - name: Add PR deploy URL comment
         if: ${{ github.event.action == 'opened' || github.event.action == 'reopened' }}
