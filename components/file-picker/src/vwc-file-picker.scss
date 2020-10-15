@@ -69,18 +69,22 @@
 		flex-basis: 14px;
 	}
 
-	.helper {
+	.text {
 		@include typography.typography-cat-shorthand('caption');
-		color: #666666;
+		color: #666;
 	}
 }
 
-.error .footer {
+.invalid .footer {
 	.error-icon {
 		display: flex;
 	}
 
 	.spacer {
 		flex-basis: 6px;
+	}
+
+	.text {
+		color: #000;
 	}
 }

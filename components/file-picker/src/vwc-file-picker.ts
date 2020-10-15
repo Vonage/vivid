@@ -32,13 +32,20 @@ export class VWCFilePicker extends LitElement {
 	helper = '';
 
 	@property({ type: String, reflect: false })
-	error = '';
+	validationMessage = '';
 
 	@property({ type: String, reflect: true })
 	notAFileError = 'only file/s drop allowed';
 
 	@property({ type: String, reflect: true })
-	tooManyFilesError = 'only one file allowed, but many dropped';
+	tooManyFilesError = 'only one file allowed';
+
+	setCustomValidity(message: string): void {
+		this.validationMessage = String(message);
+		this.#container?.classList[this.validationMessage ? 'add' : 'remove'](
+			'invalid'
+		);
+	}
 
 	protected firstUpdated(): void {
 		this.#container = this.shadowRoot?.querySelector('.wrapper') || null;
@@ -77,12 +84,13 @@ export class VWCFilePicker extends LitElement {
 	}
 
 	private renderFooter(): TemplateResult {
-		if (this.helper) {
+		const text = this.validationMessage || this.helper || '';
+		if (text) {
 			return html`
 				<div class="footer part">
 					<vwc-icon class="error-icon" type="info-negative" size="small"></vwc-icon>
 					<span class="spacer"></span>
-					<span class="helper">${this.helper}</span>
+					<span class="text">${text}</span>
 				</div>
 			`;
 		} else {
@@ -122,8 +130,12 @@ export class VWCFilePicker extends LitElement {
 				this.cleanDragClasses();
 
 				const dddValidationError = this.validateDragDropData(e);
+				this.setCustomValidity(dddValidationError);
 				if (dddValidationError) {
-					console.error(dddValidationError);
+					const fi = this.getActualInput();
+					if (fi) {
+						fi.value = '';
+					}
 					return;
 				}
 
@@ -137,6 +149,7 @@ export class VWCFilePicker extends LitElement {
 	}
 
 	private triggerFileInput(): void {
+		this.setCustomValidity('');
 		const fi = this.getActualInput();
 		if (fi) {
 			fi.click();
@@ -203,7 +216,7 @@ export class VWCFilePicker extends LitElement {
 	 * - TODO: file/s type is assured
 	 * @param e DragEvent
 	 */
-	private validateDragDropData(e: DragEvent): string | null {
+	private validateDragDropData(e: DragEvent): string {
 		const fi = this.getActualInput();
 		if (!fi) {
 			return 'input element missing';
@@ -216,6 +229,6 @@ export class VWCFilePicker extends LitElement {
 			return this.tooManyFilesError;
 		}
 		//	TODO: assert file types
-		return null;
+		return '';
 	}
 }

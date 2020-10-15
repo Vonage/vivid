@@ -11,8 +11,8 @@ export default {
 }
 
 const Template = args => html`
-	<vwc-file-picker ...=${spread(args)} @change="${onChange}">
-		<input type="file" name="file-input"/>
+	<vwc-file-picker ...=${spread(args.self)} @change="${onChange}">
+		<input type="file" name="file-input" ...=${spread(args.input)}/>
 		<vwc-button slot="button" type="button" layout="filled" icon="upload" trailingIcon>Add Files</vwc-button>
 	</vwc-file-picker>
 `;
@@ -27,8 +27,7 @@ function onChange(e) {
 
 export const SingleUnrestrictedChangeEvent = Template.bind({});
 SingleUnrestrictedChangeEvent.args = {
-	label: 'Pick your favorive',
-	helper: 'single file of any type'
+	self: { label: 'Pick your favorive', helper: 'single file of any type' }
 };
 
 export const MultipleRestrictedChangeEvent = Template.bind({});

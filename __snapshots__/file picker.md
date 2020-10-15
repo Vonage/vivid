@@ -3,28 +3,18 @@
 #### `should have the expected internal contents`
 
 ```html
-<label>
-  <vwc-button
-    class="vwc-upload-button"
-    connotation="primary"
-    icon="upload"
-    layout="filled"
-    shape="rounded"
-    trailingicon=""
-    type="submit"
-    unelevated=""
-  >
-    <slot>
+<label class="wrapper">
+  <div class="content part">
+    <slot name="dd-hint">
+      <span class="dd-hint">
+        Drag & Drop files here
+      </span>
     </slot>
-    Add file
-    <button
-      style="display: none;"
-      type="submit"
-    >
-    </button>
-  </vwc-button>
-  <slot name="internal-input">
-  </slot>
+    <slot name="button">
+    </slot>
+    <slot class="input-file-slot">
+    </slot>
+  </div>
 </label>
 
 ```

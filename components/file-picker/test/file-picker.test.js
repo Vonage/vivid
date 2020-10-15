@@ -11,7 +11,7 @@ chai.use(chaiDomDiff);
 
 const VWC_COMPONENT = 'vwc-file-picker';
 
-describe.only('file picker', () => {
+describe('file picker', () => {
 	let addedElements = [];
 
 	afterEach(() => {
@@ -25,10 +25,10 @@ describe.only('file picker', () => {
 	});
 
 	it('should have the expected internal contents', async () => {
-		// addedElements = textToDomToParent(`<${VWC_COMPONENT}></${VWC_COMPONENT}>`);
-		// const actualElement = addedElements[0];
-		// await waitNextTask();
-		// expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
+		addedElements = textToDomToParent(`<${VWC_COMPONENT}></${VWC_COMPONENT}>`);
+		const actualElement = addedElements[0];
+		await waitNextTask();
+		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
 	describe('form association', () => {
