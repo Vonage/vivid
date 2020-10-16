@@ -4386,10 +4386,10 @@
     "@typescript-eslint/types" "4.3.0"
     eslint-visitor-keys "^2.0.0"
 
-"@vonage/vvd-design-tokens-properties@^0.1.7":
-  version "0.1.7"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@vonage/vvd-design-tokens-properties/0.1.7/2be5fa99695d7af301f886a765eac3669e2f19725d4ae09460eff2a0d7ac26f9#abeca0b21f0f429e00ea48cffb2818f40c6ecdae"
-  integrity sha1-q+ygsh8PQp4A6kjP+ygY9Axuza4=
+"@vonage/vvd-design-tokens-properties@^0.1.22":
+  version "0.1.22"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@vonage/vvd-design-tokens-properties/0.1.22/1a10e20d62c2a55f5bee79c683199b14cd3c5e22c949247b24e1e6e225556bcf#313c437879ea6c787b9e595680ad44be61e277e6"
+  integrity sha1-MTxDeHnqbHh7nllWgK1EvmHid+Y=
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
