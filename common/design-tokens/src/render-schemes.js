@@ -20,7 +20,7 @@ function getStyleDictionaryConfig(scheme, scope) {
 	return {
 		source: [
 			`${propertiesPath}/globals/**/*.json`,
-			`${propertiesPath}/scheme/${scheme}/color.json`,
+			`${propertiesPath}/scheme/${scheme}/${scope}.json`,
 		],
 		platforms: {
 			web: {
@@ -38,16 +38,6 @@ function getStyleDictionaryConfig(scheme, scope) {
 							},
 						},
 						// filter: "filter-alias",
-					},
-
-					{
-						destination: '_typography.scss',
-						format: 'custom/format/scss',
-						filter: {
-							attributes: {
-								category: 'typography',
-							},
-						},
 					},
 				],
 			},

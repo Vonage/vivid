@@ -1,5 +1,11 @@
 @use '@vonage/vwc-textfield/src/vwc-textfield' as textfield;
 
+:host {
+	display: inline-flex;
+	flex-direction: column;
+	outline: none;
+}
+
 :host([dense][label]:not([label=''])) {
   .mdc-text-field--outlined {
 		padding-top: 8px;
@@ -27,6 +33,7 @@
 		.mdc-text-field__input {
 			font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
 			height: auto;
+			line-height: normal;
 			margin: 0;
 			resize: vertical;
 		}
@@ -36,6 +43,7 @@
 			top: 15px;
 
 			&--float-above {
+				font-size: var(--mdc-typography-subtitle1-font-size);
 				transform: translateY(-9px) scale(1);
 			}
 		}

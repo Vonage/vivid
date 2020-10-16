@@ -9,10 +9,10 @@
   --vvd-color-disabled-unchecked: #afb0b8;
   --vvd-color-idle: color-base.$grey-500;
 
-  #{color-semantic.$formfield-disabled-ink}: color-base.$grey-800;
-  #{color-semantic.$formfield-disabled-fill}: color-base.$grey-100;
+	#{color-semantic.$formfield-disabled-ink}: color-base.$grey-800;
+	#{color-semantic.$formfield-disabled-fill}: color-base.$grey-100;
 
-  #{color-semantic.$formfield-label-idle-ink}: color-base.$grey-900;
+	#{color-semantic.$formfield-label-idle-ink}: color-base.$grey-900;
 
 	#{color-semantic.$formfield-border-idle}: color-base.$grey-400;
 	#{color-semantic.$formfield-border-hover}: var(--vvd-color-base-foreground);
@@ -23,8 +23,8 @@
 	#{color-semantic.$formfield-border-error}: color-base.$red-600;
   #{color-semantic.$formfield-label-error-ink}: color-base.$red-600;
   
-	#{color-semantic.$color-primary-background-hover}: #131415;
-	#{color-semantic.$color-primary-border}: #000000;
+	#{color-semantic.$color-primary-background-hover}: var(--vvd-color-primary-background);
+	#{color-semantic.$color-primary-border}: var(--vvd-color-primary-background);
   #{color-semantic.$color-primary-shadow}: 19, 20, 21, 0.42;
 
 	#{color-semantic.$color-cta-background-hover}: color-base.$purple-900;
@@ -41,12 +41,12 @@
 }
 
 :host {
-  --mdc-theme-primary: var(--vvd-color-primary-background);
-  --mdc-theme-on-primary: var(--vvd-color-primary-foreground);
-  --mdc-theme-text-primary-on-background: var(--vvd-color-base-foreground);
-  --mdc-theme-secondary: var(--vvd-color-primary-background);
-  --mdc-theme-on-secondary: var(--vvd-color-primary-foreground);
-  --mdc-theme-surface: var(--vvd-color-surface-background);
-  --mdc-theme-on-surface: var(--vvd-color-surface-foreground);
-  --mdc-theme-error: var(--vvd-color-error);
+	--mdc-theme-primary: var(--vvd-color-primary-background);
+	--mdc-theme-on-primary: var(--vvd-color-primary-foreground);
+	--mdc-theme-text-primary-on-background: var(--vvd-color-base-foreground);
+	--mdc-theme-secondary: var(--vvd-color-primary-background);
+	--mdc-theme-on-secondary: var(--vvd-color-primary-foreground);
+	--mdc-theme-surface: var(--vvd-color-surface-background);
+	--mdc-theme-on-surface: var(--vvd-color-surface-foreground);
+	--mdc-theme-error: var(--vvd-color-error);
 }

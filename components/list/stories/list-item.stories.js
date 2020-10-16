@@ -19,7 +19,17 @@ const Template = args => html`
 
 	<vwc-list>
 		<vwc-list-item ...=${spread(args)}>
-			Item 0
+			Item A
+			<span slot="secondary">Secondary line</span>
+			<vwc-icon slot="meta" type="info" size="small"></vwc-icon>
+		</vwc-list-item>
+		<vwc-list-item ...=${spread(args)}>
+			Item B
+			<span slot="secondary">Secondary line</span>
+			<vwc-icon slot="meta" type="info" size="small"></vwc-icon>
+		</vwc-list-item>
+		<vwc-list-item ...=${spread(args)}>
+			Item C
 			<span slot="secondary">Secondary line</span>
 			<vwc-icon slot="meta" type="info" size="small"></vwc-icon>
 		</vwc-list-item>

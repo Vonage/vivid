@@ -4,6 +4,7 @@ import {
 	textToDomToParent,
 	assertComputedStyle,
 } from '../../../test/test-helpers.js';
+import { borderRadiusStyles } from '../../../test/style-utils.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	isolatedElementsCreation,
@@ -111,20 +112,20 @@ describe('button', () => {
 				internal: false,
 			};
 
-			const addedElements = addElement(
+			const externalFormID = randomAlpha();
+			const [formElement, externalForm] = addElement(
 				textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="testForm">
-					<${COMPONENT_NAME} form="externalForm" type="reset">RESET</${COMPONENT_NAME}>
-					<${COMPONENT_NAME} form="externalForm" type="submit">SUBMIT</${COMPONENT_NAME}>
+					<${COMPONENT_NAME} form="${externalFormID}" type="reset">RESET</${COMPONENT_NAME}>
+					<${COMPONENT_NAME} form="${externalFormID}" type="submit">SUBMIT</${COMPONENT_NAME}>
 				</form>
-				<form onsubmit="return false" name="externalForm" id="externalForm"></form>
+				<form onsubmit="return false" name="externalForm" id="${externalFormID}"></form>
 			`)
 			);
 			await waitNextTask();
-			const formElement = addedElements[0];
+
 			const resetButton = formElement.children[0];
 			const submitButton = formElement.children[1];
-			const externalForm = addedElements[1];
 
 			formElement.addEventListener('submit', () => (submitted.internal = true));
 			formElement.addEventListener('reset', () => (reset.internal = true));
@@ -135,8 +136,12 @@ describe('button', () => {
 			resetButton.click();
 			submitButton.click();
 
-			expect(reset).to.eql(expectedReset);
-			expect(submitted).to.eql(expectedSubmitted);
+			expect(reset, 'expected button to reset the external form').to.eql(
+				expectedReset
+			);
+			expect(submitted, 'expected button to submit the external form').to.eql(
+				expectedSubmitted
+			);
 		});
 
 		it('should associate with form even if the form is added after the button', async function () {
@@ -290,7 +295,20 @@ describe('button', () => {
 			expect(hiddenButtonExists(formElement)).to.equal(false);
 		});
 
-		it(`should change the buttons location when the form attribute changes`, async function () {
+		it(`should set the form property to parent form`, async function () {
+			const [formElement] = addElement(
+				textToDomToParent(
+					`<form onsubmit="return false" name="testForm" id="testForm">
+								<${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}>
+							</form>`
+				)
+			);
+			await waitNextTask();
+			const actualElement = formElement.querySelector(COMPONENT_NAME);
+			expect(actualElement.form).to.equal(formElement);
+		});
+
+		it(`should set the form property to form with the form's attribute`, async function () {
 			const otherFormId = randomAlpha();
 			const [formElement, otherForm] = addElement(
 				textToDomToParent(
@@ -301,14 +319,10 @@ describe('button', () => {
 				)
 			);
 			await waitNextTask();
-			const actualElement = formElement.querySelector(COMPONENT_NAME);
 
-			const buttonExistsOnClosestForm = hiddenButtonExists(formElement);
+			const actualElement = formElement.querySelector(COMPONENT_NAME);
 			actualElement.setAttribute('form', otherFormId);
-			await waitNextTask();
-			expect(buttonExistsOnClosestForm).to.equal(true);
-			expect(hiddenButtonExists(formElement)).to.equal(false);
-			expect(hiddenButtonExists(otherForm)).to.equal(true);
+			expect(actualElement.form).to.equal(otherForm);
 		});
 
 		it(`should have display:none on the hidden button`, async function () {
@@ -453,13 +467,7 @@ describe('button', () => {
 			await waitNextTask();
 			let actualElement = addedElements[0].shadowRoot.querySelector('#button');
 
-			const expectedNormalStyles = {
-				borderTopLeftRadius: '6px',
-				borderTopRightRadius: '6px',
-				borderBottomLeftRadius: '6px',
-				borderBottomRightRadius: '6px',
-			};
-			assertComputedStyle(actualElement, expectedNormalStyles);
+			assertComputedStyle(actualElement, borderRadiusStyles(6));
 		});
 
 		it('should have rounded shape when dense', async () => {
@@ -471,13 +479,7 @@ describe('button', () => {
 			await waitNextTask();
 			let actualElement = addedElements[0].shadowRoot.querySelector('#button');
 
-			const expectedNormalStyles = {
-				borderTopLeftRadius: '5px',
-				borderTopRightRadius: '5px',
-				borderBottomLeftRadius: '5px',
-				borderBottomRightRadius: '5px',
-			};
-			assertComputedStyle(actualElement, expectedNormalStyles);
+			assertComputedStyle(actualElement, borderRadiusStyles(5));
 		});
 
 		it('should have pill shape when shape set to pill', async () => {
@@ -488,13 +490,7 @@ describe('button', () => {
 			);
 			await waitNextTask();
 			const actualElement = addedElements[0].shadowRoot.querySelector('#button');
-			const expectedPillStyles = {
-				borderTopLeftRadius: '24px',
-				borderTopRightRadius: '24px',
-				borderBottomLeftRadius: '24px',
-				borderBottomRightRadius: '24px',
-			};
-			assertComputedStyle(actualElement, expectedPillStyles);
+			assertComputedStyle(actualElement, borderRadiusStyles(24));
 		});
 	});
 });
