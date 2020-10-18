@@ -3,11 +3,23 @@ import '@vonage/vwc-list/vwc-list-item.js';
 import {
 	textToDomToParent,
 	waitNextTask,
+	waitInterval,
 	assertComputedStyle,
 	listenToSubmission,
 	changeValueAndNotify,
 	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
+import {
+	borderRadiusStyles,
+	body1TypographyStyles,
+	body2TypographyStyles,
+	captionTypographyStyles,
+} from '../../../test/style-utils.js';
+import {
+	assertDenseStyles,
+	hasNotchedOutline,
+	validateOnReset,
+} from '../../textfield/test/textfield-utils.test';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 chai.use(chaiDomDiff);
@@ -169,15 +181,7 @@ describe('select', () => {
 			});
 
 			it(`should validate on reset`, async function () {
-				const validInput = formElement.checkValidity();
-				await changeValueAndNotify(actualElement, invalidValue, 'change');
-				const invalidInput = formElement.checkValidity();
-
-				formElement.reset();
-
-				expect(validInput).to.equal(true);
-				expect(invalidInput).to.equal(false);
-				expect(formElement.checkValidity()).to.equal(true);
+				validateOnReset(actualElement, formElement, invalidValue);
 			});
 
 			it(`should not submit an invalid form`, async function () {
@@ -251,72 +255,53 @@ describe('select', () => {
 	});
 
 	describe('typography', () => {
-		it('should have set typography for a label', async () => {
-			const addedElements = addElement(
+		let addedElements, formElement, labelElement;
+		beforeEach(async () => {
+			addedElements = addElement(
 				textToDomToParent(`
 				<${COMPONENT_NAME} outlined label="VWC Select">
-					<vwc-list-item>Item 1</vwc-list-item>
-					<vwc-list-item>Item 2</vwc-list-item>
+					<vwc-list-item value="0">Item 1</vwc-list-item>
+					<vwc-list-item value="1">Item 2</vwc-list-item>
 				</${COMPONENT_NAME}>
 			`)
 			);
 			await waitNextTask();
-			const labelElement = addedElements[0].shadowRoot
+			formElement = addedElements[0];
+			labelElement = formElement.shadowRoot
 				.querySelector('.mdc-notched-outline')
 				.querySelector('#label');
-			expect(labelElement).to.exist;
-			assertComputedStyle(labelElement, {
-				fontFamily: 'SpeziaWebVariable',
-				fontSize: '16px',
-				fontWeight: '400',
-				fontStretch: '50%',
-				lineHeight: '18.4px',
-				letterSpacing: '0.15px',
-				textTransform: 'none',
-			});
+		});
+
+		it('should have set typography for a label', async () => {
+			assertComputedStyle(labelElement, body1TypographyStyles);
+		});
+
+		it('should have set typography for a floating label', async () => {
+			formElement.select(1);
+			await waitInterval(200); // font transition
+			assertComputedStyle(labelElement, captionTypographyStyles);
+		});
+
+		it('should have set typography for a selected text', async () => {
+			const selectedText = formElement.shadowRoot.querySelector(
+				'.mdc-select__selected-text'
+			);
+			assertComputedStyle(selectedText, body2TypographyStyles);
 		});
 
 		it('should have set typography for a helper', async () => {
-			const addedElements = addElement(
-				textToDomToParent(`
-				<${COMPONENT_NAME} outlined label="VWC Select" helper="Helper text">
-					<vwc-list-item>Item 1</vwc-list-item>
-					<vwc-list-item>Item 2</vwc-list-item>
-				</${COMPONENT_NAME}>
-			`)
-			);
+			formElement.helper = 'Helper text';
 			await waitNextTask();
-			const helperElement = addedElements[0].shadowRoot.querySelector(
+			const helperElement = formElement.shadowRoot.querySelector(
 				'.mdc-select-helper-text'
 			);
-			expect(helperElement).to.exist;
-			assertComputedStyle(helperElement, {
-				fontFamily: 'SpeziaWebVariable',
-				fontSize: '12.642px',
-				fontWeight: '400',
-				fontStretch: '50%',
-				lineHeight: 'normal',
-				letterSpacing: '0.421399px',
-				textTransform: 'none',
-			});
+			assertComputedStyle(helperElement, captionTypographyStyles);
 		});
 	});
 
 	describe('notched outlined', () => {
 		it('should have vwc-notched-outline defined', async () => {
-			const addedElements = addElement(
-				textToDomToParent(`
-				<${COMPONENT_NAME} outlined>
-					<vwc-list-item>Item 1</vwc-list-item>
-					<vwc-list-item>Item 2</vwc-list-item>
-				</${COMPONENT_NAME}>
-			`)
-			);
-			await waitNextTask();
-			const notchedOutline = addedElements[0].shadowRoot.querySelector(
-				'vwc-notched-outline'
-			);
-			expect(notchedOutline).to.exist;
+			hasNotchedOutline(COMPONENT_NAME);
 		});
 	});
 
@@ -336,31 +321,7 @@ describe('select', () => {
 		});
 
 		it('should have dense size when dense', async () => {
-			const addedElements = addElement(
-				textToDomToParent(`
-				<${COMPONENT_NAME} outlined dense label="VWC Select">
-					<vwc-list-item>Item 1</vwc-list-item>
-					<vwc-list-item>Item 2</vwc-list-item>
-				</${COMPONENT_NAME}>
-			`)
-			);
-			await waitNextTask();
-			const formElement = addedElements[0];
-			const labelElement = formElement.shadowRoot
-				.querySelector('.mdc-notched-outline')
-				.querySelector('#label');
-
-			assertComputedStyle(formElement, {
-				height: '40px',
-				paddingTop: '24px',
-			});
-
-			assertComputedStyle(labelElement, {
-				fontSize: '14px',
-				left: '-12px',
-				top: '-24px',
-				transform: 'none',
-			});
+			assertDenseStyles(COMPONENT_NAME);
 		});
 	});
 
@@ -379,23 +340,11 @@ describe('select', () => {
 			const actualElement = formElement.shadowRoot.querySelector('.mdc-select');
 
 			expect(formElement.getAttribute('shape') === 'rounded').to.equal(true);
-			const expectedNormalStyles = {
-				borderTopLeftRadius: '6px',
-				borderTopRightRadius: '6px',
-				borderBottomLeftRadius: '6px',
-				borderBottomRightRadius: '6px',
-			};
-			assertComputedStyle(actualElement, expectedNormalStyles);
+			assertComputedStyle(actualElement, borderRadiusStyles(6));
 
 			formElement.dense = true;
 			await waitNextTask();
-			const expectedDenseStyles = {
-				borderTopLeftRadius: '5px',
-				borderTopRightRadius: '5px',
-				borderBottomLeftRadius: '5px',
-				borderBottomRightRadius: '5px',
-			};
-			assertComputedStyle(actualElement, expectedDenseStyles);
+			assertComputedStyle(actualElement, borderRadiusStyles(5));
 		});
 
 		it('should have pill shape when shape set to pill', async () => {
@@ -411,13 +360,7 @@ describe('select', () => {
 			const actualElement = addedElements[0].shadowRoot.querySelector(
 				'.mdc-select'
 			);
-			const expectedStyles = {
-				borderTopLeftRadius: '24px',
-				borderTopRightRadius: '24px',
-				borderBottomLeftRadius: '24px',
-				borderBottomRightRadius: '24px',
-			};
-			assertComputedStyle(actualElement, expectedStyles);
+			assertComputedStyle(actualElement, borderRadiusStyles(24));
 		});
 	});
 });

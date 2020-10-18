@@ -4,7 +4,6 @@
 $vvd-text-field-size-block: --vvd-text-field-size-block;
 
 :host {
-  --mdc-theme-primary: #131415;
   --mdc-theme-error: #{color-semantic.$formfield-label-error-ink};
   --mdc-text-field-fill-color: var(--vvd-color-surface-background);
   --mdc-text-field-ink-color: var(--mdc-theme-primary);
@@ -87,7 +86,6 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 
   .mdc-text-field {
     .mdc-floating-label {
-      font-size: 0.875rem;
       left: -12px;
       top: -24px;
       transform: none;
@@ -123,7 +121,7 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
   }
 
   .mdc-floating-label--float-above {
-    font-size: 0.75rem;
+    font-size: var(--mdc-typography-subtitle1-font-size);
     transform: translateY(-100%);
 
     &.mdc-floating-label--shake {

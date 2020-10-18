@@ -28,6 +28,8 @@ describe('linear progress', () => {
 		);
 		const actualElement = addedElements[0];
 		await waitNextTask();
-		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
+		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot({
+			ignoreAttributes: ['style'],
+		});
 	});
 });
