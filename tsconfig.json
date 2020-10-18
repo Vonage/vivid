@@ -44,6 +44,7 @@
 		{ "path": "components/circular-progress" },
 		{ "path": "components/drawer" },
 		{ "path": "components/fab" },
+		{ "path": "components/file-picker" },
 		{ "path": "components/formfield" },
 		{ "path": "components/icon" },
 		{ "path": "components/keypad" },
@@ -61,7 +62,6 @@
 		{ "path": "components/textarea" },
 		{ "path": "components/textfield" },
 		{ "path": "components/top-app-bar" },
-		{ "path": "components/top-app-bar-fixed" },
-		{ "path": "components/upload" }
+		{ "path": "components/top-app-bar-fixed" }
 	]
 }

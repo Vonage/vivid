@@ -39,10 +39,10 @@ function handleKeyDown(e) {
 	e.stopPropagation();
 }
 
-function onChange(e) {
+function onChange() {
 	console.log('change');
 }
 
-function onInput(e) {
+function onInput() {
 	console.log('input');
 }

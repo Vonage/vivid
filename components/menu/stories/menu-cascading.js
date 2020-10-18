@@ -40,7 +40,7 @@ function anchorAClickHandler() {
 	menu.open = true;
 }
 
-function anchorBClickHandler(event) {
+function anchorBClickHandler() {
 	const anchor = document.querySelector('#nested-menu-anchor');
 	const menu = document.querySelector('#context-menu-nested');
 	menu.anchor = anchor;
