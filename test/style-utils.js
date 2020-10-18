@@ -19,7 +19,7 @@ export const body1TypographyStyles = {
 
 export const body2TypographyStyles = {
   fontFamily: 'SpeziaWebVariable',
-  fontSize: '14.2222px',
+  fontSize: '14.222px',
   fontWeight: '400',
   fontStretch: '50%',
   // lineHeight: 'normal',

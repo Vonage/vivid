@@ -51,7 +51,7 @@ describe('radio list item', () => {
 			expect(listItem).to.exist;
 			const expectedStyles = {
 				fontFamily: 'SpeziaWebVariable',
-				fontSize: '14.2222px',
+				fontSize: '14.222px',
 				fontWeight: '400',
 				fontStretch: '50%',
 				//	lineHeight: '22.8697px',
@@ -72,7 +72,7 @@ describe('radio list item', () => {
 			expect(listItem).to.exist;
 			const expectedStyles = {
 				fontFamily: 'SpeziaWebVariable',
-				fontSize: '14.2222px',
+				fontSize: '14.222px',
 				fontWeight: '400',
 				fontStretch: '50%',
 				//	lineHeight: '22.8697px',

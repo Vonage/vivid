@@ -78,7 +78,7 @@ export async function assertDenseStyles(COMPONENT_NAME) {
 	});
 
 	assertComputedStyle(labelElement, {
-		fontSize: '14.2222px',
+		fontSize: '14.222px',
 		left: '-12px',
 		top: '-24px',
 		transform: 'none',
@@ -94,7 +94,7 @@ export async function validateMultipleShadowLayers(COMPONENT_NAME, elementTag) {
       <button></button>
     </form>`;
 	const elementTemplate = `
-    <${COMPONENT_NAME} required value="${fieldValue}" 
+    <${COMPONENT_NAME} required value="${fieldValue}"
       name="${fieldName}">
     </${COMPONENT_NAME}>`;
 	const [formElement] = addElement(textToDomToParent(formTemplate));

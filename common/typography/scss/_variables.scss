@@ -19,6 +19,11 @@ $font-stretches: (
   'extra-expanded': 75%,
 );
 
+@function toFixed($number, $digits: 0) {
+	$mul: math.pow(10, $digits);
+	@return math.round($number * $mul) / $mul;
+}
+
 // NOTICE LINE-HEIGHT IS HARDCODED
 // But I belive we can "algorithmatize"
 // it by this practice here
@@ -28,7 +33,7 @@ $typography-category-list-base: (
     font-family: map.get($font-families, 'primary'),
     font-weight: map.get($font-weights, 'medium'),
     font-stretch: map.get($font-stretches, 'extra-expanded'),
-    font-size: ms(9, $thread: 1200px),
+    font-size: toFixed(ms(9, $thread: 1200px), 3),
     line-height: calc(1ex / 0.47),
     letter-spacing: initial,
     text-transform: none,
@@ -37,7 +42,7 @@ $typography-category-list-base: (
     font-family: map.get($font-families, 'primary'),
     font-weight: map.get($font-weights, 'medium'),
     font-stretch: map.get($font-stretches, 'extra-expanded'),
-    font-size: ms(7, $thread: 1200px),
+    font-size: toFixed(ms(7, $thread: 1200px), 3),
     line-height: calc(1ex / 0.42),
     letter-spacing: initial,
     text-transform: none,
@@ -46,7 +51,7 @@ $typography-category-list-base: (
     font-family: map.get($font-families, 'primary'),
     font-weight: map.get($font-weights, 'medium'),
     font-stretch: map.get($font-stretches, 'extra-expanded'),
-    font-size: ms(6, $thread: 1200px),
+    font-size: toFixed(ms(6, $thread: 1200px), 3),
     line-height: calc(1ex / 0.38),
     letter-spacing: initial,
     text-transform: none,
@@ -55,7 +60,7 @@ $typography-category-list-base: (
     font-family: map.get($font-families, 'primary'),
     font-weight: map.get($font-weights, 'medium'),
     font-stretch: map.get($font-stretches, 'extra-expanded'),
-    font-size: ms(5, $thread: 1200px),
+    font-size: toFixed(ms(5, $thread: 1200px), 3),
     line-height: calc(1ex / 0.37),
     letter-spacing: initial,
     text-transform: none,
@@ -64,7 +69,7 @@ $typography-category-list-base: (
     font-family: map.get($font-families, 'primary'),
     font-weight: map.get($font-weights, 'normal'),
     font-stretch: map.get($font-stretches, 'normal'),
-    font-size: ms(0, $thread: 1200px),
+    font-size: toFixed(ms(0, $thread: 1200px), 3),
     line-height: calc(1ex / 0.32),
     letter-spacing: initial,
     text-transform: none,
@@ -73,7 +78,7 @@ $typography-category-list-base: (
     font-family: map.get($font-families, 'primary'),
     font-weight: map.get($font-weights, 'normal'),
     font-stretch: map.get($font-stretches, 'normal'),
-    font-size: ms(-1, $thread: 1200px),
+    font-size: toFixed(ms(-1, $thread: 1200px), 3),
     line-height: calc(1ex / 0.32),
     letter-spacing: initial,
     text-transform: none,
@@ -82,7 +87,7 @@ $typography-category-list-base: (
     font-family: map.get($font-families, 'primary'),
     font-weight: map.get($font-weights, 'normal'),
     font-stretch: map.get($font-stretches, 'normal'),
-    font-size: ms(-2, $thread: 1200px),
+    font-size: toFixed(ms(-2, $thread: 1200px), 3),
     line-height: calc(1ex / 0.32),
     letter-spacing: initial,
     text-transform: none,

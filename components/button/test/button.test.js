@@ -371,7 +371,7 @@ describe('button', () => {
 			expect(button).to.exist;
 			const expectedStyles = {
 				fontFamily: 'SpeziaWebVariable',
-				fontSize: '14.2222px',
+				fontSize: '14.222px',
 				fontWeight: '600',
 				fontStretch: '50%',
 				lineHeight: 'normal',
@@ -392,7 +392,7 @@ describe('button', () => {
 			expect(button).to.exist;
 			const expectedStyles = {
 				fontFamily: 'SpeziaWebVariable',
-				fontSize: '14.2222px',
+				fontSize: '14.222px',
 				fontWeight: '600',
 				fontStretch: '50%',
 				lineHeight: 'normal',
@@ -413,7 +413,7 @@ describe('button', () => {
 			expect(button).to.exist;
 			const expectedStyles = {
 				fontFamily: 'SpeziaWebVariable',
-				fontSize: '14.2222px',
+				fontSize: '14.222px',
 				fontWeight: '600',
 				fontStretch: '50%',
 				lineHeight: 'normal',

@@ -254,7 +254,7 @@ describe('textarea', () => {
 			assertComputedStyle(formElement, { paddingTop: '24px' });
 			assertComputedStyle(actualElement, { minHeight: '40px' });
 			assertComputedStyle(labelElement, {
-				fontSize: '14.2222px',
+				fontSize: '14.222px',
 				left: '-12px',
 				top: '-24px',
 				transform: 'none',
