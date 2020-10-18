@@ -50,6 +50,7 @@ export class VWCFilePicker extends LitElement {
 	protected firstUpdated(): void {
 		this.#container = this.shadowRoot?.querySelector('.wrapper') || null;
 		this.setupDragNDrop();
+		this.setupClipboardPaste();
 		this.shadowRoot
 			?.querySelector(`.${INPUT_FILE_SLOT}`)
 			?.addEventListener('slotchange', (e) => {
@@ -102,7 +103,7 @@ export class VWCFilePicker extends LitElement {
 		return html`<span class="dd-hint">Drag & Drop files here</span>`;
 	}
 
-	private setupDragNDrop() {
+	private setupDragNDrop(): void {
 		const ddZone = this.shadowRoot?.querySelector('.content') as HTMLElement;
 		if (ddZone) {
 			ddZone.ondragover = (e) => e.preventDefault();
@@ -110,13 +111,16 @@ export class VWCFilePicker extends LitElement {
 			ddZone.addEventListener('dragenter', (e) => {
 				e.preventDefault();
 				this.#container?.classList.add('drag-over');
-				const dddValidationError = this.validateDragDropData(e);
+				if (!e.dataTransfer) {
+					return;
+				}
+
+				const dddValidationError = this.validateImportedData(e.dataTransfer);
 				if (dddValidationError) {
 					this.#container?.classList.add('drag-invalid');
-				}
-				if (e.dataTransfer) {
-					e.dataTransfer.effectAllowed = 'link';
-					e.dataTransfer.dropEffect = dddValidationError ? 'none' : 'link';
+					e.dataTransfer.dropEffect = 'none';
+				} else {
+					e.dataTransfer.dropEffect = 'copy';
 				}
 			});
 
@@ -128,24 +132,47 @@ export class VWCFilePicker extends LitElement {
 			ddZone.addEventListener('drop', (e) => {
 				e.preventDefault();
 				this.cleanDragClasses();
+				if (!e.dataTransfer) {
+					return;
+				}
 
-				const dddValidationError = this.validateDragDropData(e);
+				const dddValidationError = this.validateImportedData(e.dataTransfer);
 				this.setCustomValidity(dddValidationError);
 				if (dddValidationError) {
 					const fi = this.getActualInput();
 					if (fi) {
 						fi.value = '';
 					}
-					return;
-				}
-
-				if (e.dataTransfer) {
+				} else {
 					this.setFiles(e.dataTransfer.files);
 				}
 			});
 		} else {
 			console.error('failed to setup drop zone');
 		}
+	}
+
+	private setupClipboardPaste(): void {
+		this.addEventListener('paste', (e) => {
+			e.preventDefault();
+
+			console.log(e.clipboardData);
+
+			if (!e.clipboardData) {
+				return;
+			}
+
+			const dddValidationError = this.validateImportedData(e.clipboardData);
+			this.setCustomValidity(dddValidationError);
+			if (dddValidationError) {
+				const fi = this.getActualInput();
+				if (fi) {
+					fi.value = '';
+				}
+			} else {
+				this.setFiles(e.clipboardData.files);
+			}
+		});
 	}
 
 	private triggerFileInput(): void {
@@ -214,21 +241,23 @@ export class VWCFilePicker extends LitElement {
 	 * - file/s drag (and not otherwise) is assured
 	 * - file/s cardinality is assured
 	 * - TODO: file/s type is assured
-	 * @param e DragEvent
+	 * @param dataTransfer DataTransfer supplied by the event
 	 */
-	private validateDragDropData(e: DragEvent): string {
+	private validateImportedData(dataTransfer: DataTransfer): string {
 		const fi = this.getActualInput();
 		if (!fi) {
 			return 'input element missing';
 		}
-		const ddl = e.dataTransfer?.items;
-		if (ddl && Array.from(ddl).some((i) => i.kind !== 'file')) {
-			return this.notAFileError;
+		const ddl = dataTransfer.items;
+		if (ddl) {
+			if (Array.from(ddl).some((i) => i.kind !== 'file')) {
+				return this.notAFileError;
+			}
+			if (!fi.hasAttribute('multiple') && ddl.length > 1) {
+				return this.tooManyFilesError;
+			}
+			//	TODO: assert file types?
 		}
-		if (!fi.hasAttribute('multiple') && ddl && ddl.length > 1) {
-			return this.tooManyFilesError;
-		}
-		//	TODO: assert file types
 		return '';
 	}
 }
