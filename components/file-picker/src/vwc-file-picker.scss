@@ -1,0 +1,90 @@
+@use '@vonage/vvd-typography/scss/typography' as typography;
+@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
+
+.input-file-slot::slotted(*) {
+	display: none;
+}
+
+.label {
+	@include typography.typography-cat-shorthand('body-2');
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+}
+
+.part {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.content {
+	flex-basis: 100px;
+	justify-content: center;
+	border: 1px dashed #cccccc;
+	border-radius: 6px;
+	box-sizing: border-box;
+}
+
+.dd-hint,
+[name="dd-hint"]::slotted(*) {
+	@include typography.typography-cat-shorthand('body-2');
+	margin-inline-end: 16px;
+}
+[name="dd-hint"]::slotted(*:empty) {
+	display: none;
+}
+
+//	drag & drop
+.drag-over {
+	.content {
+		border: 1px solid #000;
+
+		.dd-hint,
+		::slotted(*) {
+			opacity: 0.5;
+			pointer-events: none;
+		}
+	}
+
+	&.drag-invalid {
+		.content {
+			background-color: var(#{color-semantic.$formfield-error-fill});
+		}
+	}
+}
+
+//	footer
+.footer {
+	cursor: default;
+
+	.error-icon {
+		display: none;
+		color: var(#{color-semantic.$formfield-label-error-ink});
+	}
+
+	.spacer {
+		flex-basis: 14px;
+	}
+
+	.text {
+		@include typography.typography-cat-shorthand('caption');
+		color: #666;
+	}
+}
+
+.invalid .footer {
+	.error-icon {
+		display: flex;
+	}
+
+	.spacer {
+		flex-basis: 6px;
+	}
+
+	.text {
+		color: #000;
+	}
+}

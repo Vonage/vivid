@@ -1,11 +1,11 @@
 {
-	"name": "@vonage/vwc-upload",
+	"name": "@vonage/vwc-file-picker",
 	"version": "0.13.0",
-	"description": "Upload file/s component",
+	"description": "File/s picker component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/upload#readme",
 	"license": "ISC",
-	"main": "vwc-upload.js",
-	"module": "vwc-upload.js",
+	"main": "vwc-file-picker.js",
+	"module": "vwc-file-picker.js",
 	"files": [
 		"*.js",
 		"*.ts",
@@ -14,7 +14,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/upload"
+		"directory": "components/file-picker"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"
@@ -24,7 +24,10 @@
 	},
 	"dependencies": {
 		"@vonage/vvd-core": "^0.13.0",
+		"@vonage/vvd-foundation": "^0.13.0",
+		"@vonage/vvd-style-coupling": "^0.13.0",
 		"@vonage/vwc-button": "^0.13.0",
+		"@vonage/vwc-icon": "^0.13.0",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.3"
 	},
