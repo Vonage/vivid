@@ -35,7 +35,7 @@
 		"prestart": "yarn storybook:metadata && yarn compile && yarn wca:json",
 		"start": "start-storybook -s ./.storybook/static -p 9000",
 		"compile": "yarn packages:build && yarn compile:styles && yarn compile:typescript",
-		"compile:styles": "./scripts/build-styles.sh",
+		"compile:styles": "node ./scripts/build-styles.js",
 		"compile:typescript": "tsc --build",
 		"build:icon-resolver": "cd ./components/icon && node ./build/vwc-icon-resolver-factory.js",
 		"git:clean": "git clean -xdf",
@@ -91,6 +91,7 @@
 		"karma-mocha-reporter": "^2.2.5",
 		"karma-safarinative-launcher": "^1.1.0",
 		"kefir": "^3.8.7",
+		"glob": "^7.1.6",
 		"lerna": "^3.22.1",
 		"lint-staged": "^10.2.11",
 		"lodash": "^4.17.20",
@@ -124,5 +125,8 @@
 		"*.test.js": [
 			"prettier --write"
 		]
+	},
+	"engines": {
+		"node": "12.18.4"
 	}
 }
