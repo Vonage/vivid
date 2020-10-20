@@ -4,6 +4,7 @@
 
 ```html
 <vwc-button
+  class="syncWithOSSettings"
   connotation="cta"
   dense=""
   layout="filled"
@@ -19,6 +20,7 @@
   </button>
 </vwc-button>
 <vwc-button
+  class="light"
   connotation="cta"
   dense=""
   layout="filled"
@@ -34,6 +36,7 @@
   </button>
 </vwc-button>
 <vwc-button
+  class="dark"
   connotation="cta"
   dense=""
   layout="filled"
