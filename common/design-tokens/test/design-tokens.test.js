@@ -1,7 +1,6 @@
 const DT_SCHEMES_BASE_PATH = 'common/design-tokens/build/scss/schemes/',
 	FIXTURES = window.__FIXTURES__,
-	KNOWN_SCHEMES = ['dark', 'light'],
-	KNOWN_FLAVORS = ['alternate.scss', 'base.scss'];
+	MUST_DIFFER = ['base', 'surface', 'primary'];
 
 describe('design tokens service', () => {
 	describe('scheme design tokens', () => {
@@ -31,6 +30,30 @@ describe('design tokens service', () => {
 					}
 				}, null);
 		});
+
+		it('should have differing values in different flavors same scheme', async () => {
+			const schemeVariables = getSchemeVariables();
+			const flavorsListByScheme = {};
+			for (const key in schemeVariables) {
+				const scheme = key.split('/')[0];
+				const list =
+					flavorsListByScheme[scheme] || (flavorsListByScheme[scheme] = []);
+				list.push(schemeVariables[key]);
+			}
+			assertListsOfDistinct(flavorsListByScheme);
+		});
+
+		it('should have differing values in different schemes same flavors', async () => {
+			const schemeVariables = getSchemeVariables();
+			const schemesListByFlavor = {};
+			for (const key in schemeVariables) {
+				const flavor = key.split('/')[1];
+				const list =
+					schemesListByFlavor[flavor] || (schemesListByFlavor[flavor] = []);
+				list.push(schemeVariables[key]);
+			}
+			assertListsOfDistinct(schemesListByFlavor);
+		});
 	});
 });
 
@@ -59,4 +82,16 @@ function getSchemeVariables() {
 			}, {});
 	});
 	return result;
+}
+
+function assertListsOfDistinct(setOfLists) {
+	for (const list of Object.values(setOfLists)) {
+		const numOfItems = list.length;
+		for (const item in list[0]) {
+			if (MUST_DIFFER.some((md) => item.includes(md))) {
+				const checkSet = new Set(list.map((sf) => sf[item]));
+				expect(checkSet.size).equal(numOfItems);
+			}
+		}
+	}
 }
