@@ -25,24 +25,13 @@ function getStyleDictionaryConfig(scheme, scope) {
 		platforms: {
 			web: {
 				prefix: 'vvd',
-				transformGroup: 'css', // 'web'
-				buildPath: `${resolve('build/scss')}/`,
+				transformGroup: 'css',
+				buildPath: `${resolve()}/`,
 				files: [
-					{
-						destination: `schemes/${scheme}/${scope}.scss`,
-						format: 'custom/format/scss',
-						filter: {
-							attributes: {
-								category: 'color',
-								// type: "root",
-							},
-						},
-						// filter: "filter-alias",
-					},
-				],
-			},
-
-		},
+					setupDestination(`build/scss/schemes/${scheme}/${scope}.scss`, 'custom/format/scss')
+				]
+			}
+		}
 	};
 }
 
@@ -63,3 +52,15 @@ export const render = () => {
 		console.log('\nEnd processing');
 	});
 };
+
+function setupDestination(path, format) {
+	return {
+		destination: path,
+		format: format,
+		filter: {
+			attributes: {
+				category: 'color'
+			}
+		}
+	};
+}

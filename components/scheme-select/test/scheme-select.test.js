@@ -34,7 +34,7 @@ describe('scheme select', () => {
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
-	describe.only('basic functionality', () => {
+	describe('basic functionality', () => {
 		it('should change color and background upon switch', async () => {
 			const testedElementClass = 'header-to-test';
 			const actualElements = addElement(
