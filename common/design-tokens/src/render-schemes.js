@@ -28,7 +28,15 @@ function getStyleDictionaryConfig(scheme, scope) {
 				transformGroup: 'css',
 				buildPath: `${resolve()}/`,
 				files: [
-					setupDestination(`build/scss/schemes/${scheme}/${scope}.scss`, 'custom/format/scss')
+					{
+						destination: `build/scss/schemes/${scheme}/${scope}.scss`,
+						format: 'custom/format/scss',
+						filter: {
+							attributes: {
+								category: 'color'
+							}
+						}
+					}
 				]
 			}
 		}
@@ -52,15 +60,3 @@ export const render = () => {
 		console.log('\nEnd processing');
 	});
 };
-
-function setupDestination(path, format) {
-	return {
-		destination: path,
-		format: format,
-		filter: {
-			attributes: {
-				category: 'color'
-			}
-		}
-	};
-}
