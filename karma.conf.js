@@ -1,5 +1,4 @@
 const { createDefaultConfig } = require('@open-wc/testing-karma');
-require('karma-scss-preprocessor');
 const merge = require('deepmerge');
 
 module.exports = config => {
@@ -8,15 +7,14 @@ module.exports = config => {
 	const extendedDefaultConfig = merge(defaultConfig, {
 		files: [
 			{ pattern: config.grep ? config.grep : '{common,components}/**/test/**/*.test.js', type: 'module' },
-			{ pattern: 'common/design-tokens/build/scss/schemes/**/*.scss' }
 		],
 		preprocessors: {
-			'*.scss': ['scss']
+			'common/design-tokens/build/scss/schemes/**/*.scss': ['file-fixtures']
 		},
 		esm: {
 			nodeResolve: true,
 		},
-		frameworks: ['chai', 'fixture', 'scss'],
+		frameworks: ['chai'],
 		browserDisconnectTimeout: 300000,
 		browserNoActivityTimeout: 360000,
 		singleRun: true,

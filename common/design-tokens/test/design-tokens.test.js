@@ -3,12 +3,8 @@ const DT_SCHEMES_BASE_PATH = 'common/design-tokens/build/scss/schemes',
 
 describe.only('design tokens service', () => {
 	describe('scheme design tokens', () => {
-		before(function () {
-			fixture.setBase(DT_SCHEMES_BASE_PATH);
-		});
-
-		it('should have scheme design tokens generated', () => {
-			console.log(fixture.load('dark/base.scss'));
+		it('should have scheme design tokens generated', async () => {
+			console.log(Object.keys(FIXTURES));
 		});
 	});
 });
