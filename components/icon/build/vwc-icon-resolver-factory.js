@@ -97,7 +97,7 @@ const createDynamicResolver = function(){
 				.ignoreValues(),
 			iconStream
 				.flatMapConcurLimit(({ content, filename })=> {
-					const moduleName = [filename.match(/([^/]+)\..+$/)[1], "js"].join('.');
+					const moduleName = `${path.basename(filename, path.extname(filename))}.js`;
 					return kefir
 						.fromNodeCallback((cb)=> writeFile(path.join(baseModulePath, moduleName), esModuleTemplate(content), cb))
 						.map(()=> ({ type: "log", value: `"${moduleName}" module was created successfully` }));
