@@ -8,10 +8,9 @@ TODO:
   - move out hex/rgb codes
 */
 
-:host {
-  --mdc-theme-primary-rgb: 135, 31, 255;
-  --mdc-theme-text-primary-on-background-rgb: 19, 20, 21;
-}
+// :host {
+  // --mdc-theme-primary-rgb: 135, 31, 255;
+// }
 
 // :host(.vwc-chip--black) {
 //   --mdc-theme-primary: #131415;
@@ -61,9 +60,9 @@ TODO:
 // }
 
 .mdc-chip {
-  @include chips.fill-color(var(--vvd-color-idle));
-  @include chips.ink-color(text-primary-on-background);
-  @include chips.trailing-icon-color(var(--mdc-theme-text-primary-on-background-rgb), variables.$trailing-icon-opacity, variables.$trailing-icon-opacity-hover);
+  @include chips.fill-color(var(--vvd-color-base-tinged));
+  // @include chips.ink-color(text-primary-on-background);
+  @include chips.trailing-icon-color(var(--vvd-color-surface-foreground), variables.$trailing-icon-opacity, variables.$trailing-icon-opacity-hover);
   @include chips.height(map-get(variables.$height, default));
   @include chips.horizontal-padding(map-get(variables.$horizontal-padding, default));
   @include chips.shape-radius(map-get(variables.$shape-radius, default));
@@ -72,6 +71,7 @@ TODO:
 	@include typography.typography-cat-variables('body-2-bold');
 	@include typography.typography-cat-properties();
   cursor: auto;
+  color: var(--vvd-color-surface-foreground);
   font-size: map-get(variables.$font-size, default);
 
 	vwc-icon.leading {

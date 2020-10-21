@@ -4386,10 +4386,10 @@
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@ungap/promise-all-settled/-/promise-all-settled-1.1.2.tgz#aa58042711d6e3275dd37dc597e5d31e8c290a44"
   integrity sha1-qlgEJxHW4ydd033Fl+XTHowpCkQ=
 
-"@vonage/vvd-design-tokens-properties@^0.2.1":
-  version "0.2.1"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@vonage/vvd-design-tokens-properties/0.2.1/36522e99071a2a8842b4b097f05672caa5020539db3dfad8801460d3c74526a3#06fbb3715a0c0f11a66bf3ff7e25e8827cad9ff5"
-  integrity sha1-BvuzcVoMDxGma/P/fiXognytn/U=
+"@vonage/vvd-design-tokens-properties@^0.2.2":
+  version "0.2.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@vonage/vvd-design-tokens-properties/0.2.2/6ab16156194f91585236c1d036ef9b166a7f1c7fb3d4c5a1625f05c6add717ec#eab7b8f1848a46949a431a6d2550128ff037fe07"
+  integrity sha1-6re48YSKRpSaQxptJVASj/A3/gc=
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
@@ -7341,10 +7341,12 @@ depcheck@YonatanKra/depcheck#vivid-version:
     minimatch "^3.0.4"
     multimatch "^4.0.0"
     please-upgrade-node "^3.2.0"
+    query-ast "^1.0.3"
     readdirp "^3.4.0"
     require-package-name "^2.0.1"
     resolve "^1.17.0"
     sass "^1.26.10"
+    scss-parser "^1.0.4"
     vue-template-compiler "^2.6.11"
     yargs "^15.4.0"
 
