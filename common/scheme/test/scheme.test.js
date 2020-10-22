@@ -2,8 +2,8 @@ import { randomAlpha } from '../../../test/test-helpers.js';
 import schemeService from '../vvd-scheme.js';
 import { getPreferedColorScheme } from '../os-sync.utils.js';
 
-const SYNC_WITH_OS = 'syncWithOSSettings',
-	LIGHT = 'light',
+// const SYNC_WITH_OS = 'syncWithOSSettings',
+const LIGHT = 'light',
 	DARK = 'dark';
 
 describe('vvd-scheme service', () => {
