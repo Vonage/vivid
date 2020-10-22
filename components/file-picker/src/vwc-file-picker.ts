@@ -139,10 +139,7 @@ export class VWCFilePicker extends LitElement {
 				const dddValidationError = this.validateImportedData(e.dataTransfer);
 				this.setCustomValidity(dddValidationError);
 				if (dddValidationError) {
-					const fi = this.getActualInput();
-					if (fi) {
-						fi.value = '';
-					}
+					this.setFiles(null);
 				} else {
 					this.setFiles(e.dataTransfer.files);
 				}
@@ -155,9 +152,6 @@ export class VWCFilePicker extends LitElement {
 	private setupClipboardPaste(): void {
 		this.addEventListener('paste', (e) => {
 			e.preventDefault();
-
-			console.log(e.clipboardData);
-
 			if (!e.clipboardData) {
 				return;
 			}
@@ -165,10 +159,7 @@ export class VWCFilePicker extends LitElement {
 			const dddValidationError = this.validateImportedData(e.clipboardData);
 			this.setCustomValidity(dddValidationError);
 			if (dddValidationError) {
-				const fi = this.getActualInput();
-				if (fi) {
-					fi.value = '';
-				}
+				this.setFiles(null);
 			} else {
 				this.setFiles(e.clipboardData.files);
 			}
@@ -188,7 +179,11 @@ export class VWCFilePicker extends LitElement {
 	private setFiles(files: FileList | null): void {
 		const fi = this.getActualInput();
 		if (fi) {
-			fi.files = files;
+			if (files) {
+				fi.files = files;
+			} else {
+				fi.value = '';
+			}
 			fi.dispatchEvent(
 				new Event('change', {
 					bubbles: true,
