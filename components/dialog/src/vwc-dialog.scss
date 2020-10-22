@@ -1,0 +1,14 @@
+@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
+@use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins' as color-connotation-mixins;
+
+:host {
+	--mdc-dialog-heading-ink-color: #000000;
+
+	--mdc-theme-surface: #ffffff;
+
+	--mdc-dialog-content-ink-color: #000000;
+
+	--mdc-shape-medium: 6px;
+
+	--mdc-dialog-box-shadow: 0px 4px 20px rgba(19, 20, 21, 0.1);
+}

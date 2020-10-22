@@ -59,6 +59,17 @@ export async function waitInterval(millis) {
 	await new Promise(resolve => setTimeout(resolve, millis));
 }
 
+export const awaitEvent = (element, eventName) => {
+	return new Promise((res) => {
+		const listener = (e) => {
+			element.removeEventListener(eventName, listener);
+			res(e);
+		};
+
+		element.addEventListener(eventName, listener);
+	});
+};
+
 const ALPHA_CHARSET = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 export function randomAlpha(length = 8) {
 	if (!length || length < 0 || typeof length !== 'number') {

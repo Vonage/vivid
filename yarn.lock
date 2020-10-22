@@ -2049,6 +2049,21 @@
   dependencies:
     tslib "^1.9.3"
 
+"@material/button@8.0.0-canary.774dcfc8e.0":
+  version "8.0.0-canary.774dcfc8e.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/button/-/button-8.0.0-canary.774dcfc8e.0.tgz#778298eeb48f4bda767283ac35c45186beec9ac0"
+  integrity sha1-d4KY7rSPS9p2coOsNcRRhr7smsA=
+  dependencies:
+    "@material/density" "8.0.0-canary.774dcfc8e.0"
+    "@material/elevation" "8.0.0-canary.774dcfc8e.0"
+    "@material/feature-targeting" "8.0.0-canary.774dcfc8e.0"
+    "@material/ripple" "8.0.0-canary.774dcfc8e.0"
+    "@material/rtl" "8.0.0-canary.774dcfc8e.0"
+    "@material/shape" "8.0.0-canary.774dcfc8e.0"
+    "@material/theme" "8.0.0-canary.774dcfc8e.0"
+    "@material/touch-target" "8.0.0-canary.774dcfc8e.0"
+    "@material/typography" "8.0.0-canary.774dcfc8e.0"
+
 "@material/checkbox@^7.0.0":
   version "7.0.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/checkbox/-/checkbox-7.0.0.tgz#8941fe7f31570b7a055b72fda73c3ba4bc829f19"
@@ -2105,6 +2120,25 @@
   version "7.0.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/density/-/density-7.0.0.tgz#ad59ebb62566c1085b51e94375b20b5149d5e9e6"
   integrity sha1-rVnrtiVmwQhbUelDdbILUUnV6eY=
+
+"@material/dialog@=8.0.0-canary.774dcfc8e.0":
+  version "8.0.0-canary.774dcfc8e.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/dialog/-/dialog-8.0.0-canary.774dcfc8e.0.tgz#4e1b5a340b23b767cdcc306c7725c845f3dbb653"
+  integrity sha1-ThtaNAsjt2fNzDBsdyXIRfPbtlM=
+  dependencies:
+    "@material/animation" "8.0.0-canary.774dcfc8e.0"
+    "@material/base" "8.0.0-canary.774dcfc8e.0"
+    "@material/button" "8.0.0-canary.774dcfc8e.0"
+    "@material/dom" "8.0.0-canary.774dcfc8e.0"
+    "@material/elevation" "8.0.0-canary.774dcfc8e.0"
+    "@material/feature-targeting" "8.0.0-canary.774dcfc8e.0"
+    "@material/ripple" "8.0.0-canary.774dcfc8e.0"
+    "@material/rtl" "8.0.0-canary.774dcfc8e.0"
+    "@material/shape" "8.0.0-canary.774dcfc8e.0"
+    "@material/theme" "8.0.0-canary.774dcfc8e.0"
+    "@material/touch-target" "8.0.0-canary.774dcfc8e.0"
+    "@material/typography" "8.0.0-canary.774dcfc8e.0"
+    tslib "^1.9.3"
 
 "@material/dom@8.0.0-canary.01db89053.0":
   version "8.0.0-canary.01db89053.0"
@@ -2322,6 +2356,21 @@
     lit-element "^2.3.0"
     lit-html "^1.1.2"
     tslib "^1.10.0"
+
+"@material/mwc-dialog@^0.19.1":
+  version "0.19.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-dialog/-/mwc-dialog-0.19.1.tgz#228567e3928fb6e6da21058ba4e6f61683371c25"
+  integrity sha1-IoVn45KPtubaIQWLpOb2FoM3HCU=
+  dependencies:
+    "@material/dialog" "=8.0.0-canary.774dcfc8e.0"
+    "@material/dom" "=8.0.0-canary.774dcfc8e.0"
+    "@material/mwc-base" "^0.19.1"
+    "@material/mwc-button" "^0.19.1"
+    blocking-elements "^0.1.0"
+    lit-element "^2.3.0"
+    lit-html "^1.1.2"
+    tslib "^1.10.0"
+    wicg-inert "^3.0.0"
 
 "@material/mwc-drawer@^0.19.1":
   version "0.19.1"
@@ -15900,7 +15949,7 @@ tslib@^1.10.0, tslib@^1.11.1, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha1-zy04vcNKE0vK8QkcQfZhni9nLQA=
 
-tslib@^2.0.0, tslib@^2.0.1, tslib@^2.0.3:
+tslib@^2.0.0, tslib@^2.0.1, tslib@^2.0.2, tslib@^2.0.3:
   version "2.0.3"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/tslib/-/tslib-2.0.3.tgz#8e0741ac45fc0c226e58a17bfc3e64b9bc6ca61c"
   integrity sha1-jgdBrEX8DCJuWKF7/D5kubxsphw=
