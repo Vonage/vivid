@@ -1,6 +1,6 @@
 import vvdCore from '../vvd-core.js';
 
-describe('vvd-core service', () => {
+describe.only('vvd-core service', () => {
 	it('verify basic core API', async () => {
 		assert.isDefined(vvdCore, 'core service is defined');
 		assert.isObject(vvdCore, 'core service is a defaultly exported object');
@@ -15,7 +15,17 @@ describe('vvd-core service', () => {
 		);
 	});
 
-	it('should perform and auto-init to default when no data-vvd-context provided', async () => {
+	it('should perform auto-init to default when no data-vvd-context provided', async () => {
+		const vvdCore = (await import('../vvd-core.js')).default;
+		assert.isDefined(vvdCore.settled);
+		const readyResult = await vvdCore.settled;
+		assert.isArray(readyResult);
+		readyResult.forEach((r) => {
+			assert.isObject(r);
+		});
+	});
+
+	it('should NOT perform auto-init when data-vvd-context is "none"', async () => {
 		const vvdCore = (await import('../vvd-core.js')).default;
 		assert.isDefined(vvdCore.settled);
 		const readyResult = await vvdCore.settled;

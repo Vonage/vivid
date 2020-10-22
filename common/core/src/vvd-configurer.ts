@@ -33,6 +33,8 @@ function buildInitialConfiguration(): Configuration {
 	);
 	if (vvdContextAttrValue === NONE_INIT_VALUE) {
 		result.autoInit = false;
+	} else {
+		//	TODO: parse the value and build configuration as appropriate
 	}
 	return result;
 }
