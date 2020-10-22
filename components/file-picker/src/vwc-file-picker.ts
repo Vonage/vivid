@@ -25,6 +25,9 @@ export class VWCFilePicker extends LitElement {
 	static styles = [styleCoupling, filePickerStyle];
 	#container: HTMLElement | null = null;
 
+	@property({ type: Number, reflect: false })
+	private filesCount = 0;
+
 	@property({ type: String, reflect: true })
 	label = '';
 
@@ -55,6 +58,10 @@ export class VWCFilePicker extends LitElement {
 			?.addEventListener('slotchange', (e) => {
 				this.validateSlottedInput(e.target as HTMLSlotElement);
 			});
+		this.addEventListener('change', () => {
+			const fi = this.getActualInput();
+			this.filesCount = fi && fi.files ? fi.files.length : 0;
+		});
 	}
 
 	protected render(): TemplateResult {
@@ -65,6 +72,7 @@ export class VWCFilePicker extends LitElement {
 					<slot name="dd-hint">${this.renderDragNDropHint()}</slot>
 					<slot name="${BUTTON_SLOT}" @click=${this.triggerFileInput}></slot>
 					<slot class="${INPUT_FILE_SLOT}"></slot>
+					<span class="files-count">${this.filesCount}</span>
 				</div>
 				${this.renderFooter()}
 			</label>
@@ -102,7 +110,7 @@ export class VWCFilePicker extends LitElement {
 		return html`<span class="dd-hint">Drag & Drop files here</span>`;
 	}
 
-	private setupDragNDrop() {
+	private setupDragNDrop(): void {
 		const ddZone = this.shadowRoot?.querySelector('.content') as HTMLElement;
 		if (ddZone) {
 			ddZone.ondragover = (e) => e.preventDefault();
@@ -110,13 +118,16 @@ export class VWCFilePicker extends LitElement {
 			ddZone.addEventListener('dragenter', (e) => {
 				e.preventDefault();
 				this.#container?.classList.add('drag-over');
-				const dddValidationError = this.validateDragDropData(e);
+				if (!e.dataTransfer) {
+					return;
+				}
+
+				const dddValidationError = this.validateImportedData(e.dataTransfer);
 				if (dddValidationError) {
 					this.#container?.classList.add('drag-invalid');
-				}
-				if (e.dataTransfer) {
-					e.dataTransfer.effectAllowed = 'link';
-					e.dataTransfer.dropEffect = dddValidationError ? 'none' : 'link';
+					e.dataTransfer.dropEffect = 'none';
+				} else {
+					e.dataTransfer.dropEffect = 'copy';
 				}
 			});
 
@@ -128,18 +139,15 @@ export class VWCFilePicker extends LitElement {
 			ddZone.addEventListener('drop', (e) => {
 				e.preventDefault();
 				this.cleanDragClasses();
-
-				const dddValidationError = this.validateDragDropData(e);
-				this.setCustomValidity(dddValidationError);
-				if (dddValidationError) {
-					const fi = this.getActualInput();
-					if (fi) {
-						fi.value = '';
-					}
+				if (!e.dataTransfer) {
 					return;
 				}
 
-				if (e.dataTransfer) {
+				const dddValidationError = this.validateImportedData(e.dataTransfer);
+				this.setCustomValidity(dddValidationError);
+				if (dddValidationError) {
+					this.setFiles(null);
+				} else {
 					this.setFiles(e.dataTransfer.files);
 				}
 			});
@@ -161,7 +169,11 @@ export class VWCFilePicker extends LitElement {
 	private setFiles(files: FileList | null): void {
 		const fi = this.getActualInput();
 		if (fi) {
-			fi.files = files;
+			if (files && files.length) {
+				fi.files = files;
+			} else {
+				fi.value = '';
+			}
 			fi.dispatchEvent(
 				new Event('change', {
 					bubbles: true,
@@ -214,21 +226,26 @@ export class VWCFilePicker extends LitElement {
 	 * - file/s drag (and not otherwise) is assured
 	 * - file/s cardinality is assured
 	 * - TODO: file/s type is assured
-	 * @param e DragEvent
+	 *
+	 * @param {DataTransfer} dataTransfer data transferred
 	 */
-	private validateDragDropData(e: DragEvent): string {
+	private validateImportedData(dataTransfer: DataTransfer): string {
 		const fi = this.getActualInput();
 		if (!fi) {
 			return 'input element missing';
 		}
-		const ddl = e.dataTransfer?.items;
-		if (ddl && Array.from(ddl).some((i) => i.kind !== 'file')) {
-			return this.notAFileError;
+
+		const ddl = dataTransfer.items;
+		if (ddl) {
+			if (Array.from(ddl).some((i) => i.kind !== 'file')) {
+				return this.notAFileError;
+			}
+			if (!fi.hasAttribute('multiple') && ddl.length > 1) {
+				return this.tooManyFilesError;
+			}
+			//	TODO: assert file types
 		}
-		if (!fi.hasAttribute('multiple') && ddl && ddl.length > 1) {
-			return this.tooManyFilesError;
-		}
-		//	TODO: assert file types
+
 		return '';
 	}
 }

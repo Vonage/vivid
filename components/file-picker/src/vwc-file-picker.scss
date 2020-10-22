@@ -1,4 +1,5 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
+@use '@vonage/vvd-foundation/scss/variable-names/color-base-variable-names' as color-base;
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 
 .input-file-slot::slotted(*) {
@@ -21,11 +22,29 @@
 }
 
 .content {
+	position: relative;
 	flex-basis: 100px;
 	justify-content: center;
 	border: 1px dashed #cccccc;
 	border-radius: 6px;
 	box-sizing: border-box;
+
+	.files-count {
+		@include typography.typography-cat-shorthand('body-2-bold');
+		line-height: 100%;
+
+		position: absolute;
+		top: -8px;
+		margin-inline-start: calc(100% - 12px);
+		width: 28px;
+		height: 28px;
+		border-radius: 28px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #fff;
+		background-color: #{color-base.$red-500};
+	}
 }
 
 .dd-hint,
