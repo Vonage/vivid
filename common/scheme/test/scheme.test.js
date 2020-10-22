@@ -1,5 +1,8 @@
 import { randomAlpha } from '../../../test/test-helpers.js';
-import { getSchemeVariables } from '../../../test/style-utils.js';
+import {
+	getSchemeVariables,
+	getBaseVarNames,
+} from '../../../test/style-utils.js';
 
 import schemeService from '../vvd-scheme.js';
 import { getPreferedColorScheme } from '../os-sync.utils.js';
@@ -7,7 +10,6 @@ import { getPreferedColorScheme } from '../os-sync.utils.js';
 // const SYNC_WITH_OS = 'syncWithOSSettings',
 const LIGHT = 'light';
 const DARK = 'dark';
-const BASE_VARIABLES = ['base', 'surface', 'primary'];
 
 describe('vvd-scheme service', () => {
 	it('should provide basic set scheme API', async () => {
@@ -175,10 +177,3 @@ describe('vvd-scheme service', () => {
 		});
 	});
 });
-
-function getBaseVarNames(scheme) {
-	const baseSchemeSet = getSchemeVariables()[`${scheme}/base`];
-	return Object.keys(baseSchemeSet).filter((key) =>
-		BASE_VARIABLES.some((baseVar) => key.includes(baseVar))
-	);
-}

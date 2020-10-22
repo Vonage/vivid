@@ -57,10 +57,18 @@ export function getSchemeVariables() {
 			.replace(/;[^;]+?$/, '')
 			.split(';')
 			.map((entry) => entry.trim().split(/\s*:\s*/))
-			.reduce((result, [key, value]) => {
-				result[key] = value;
-				return result;
+			.reduce((r, [key, value]) => {
+				r[key] = value;
+				return r;
 			}, {});
 	});
 	return result;
+}
+
+export function getBaseVarNames(scheme) {
+	const BASE_VARIABLES = ['base', 'surface', 'primary'];
+	const baseSchemeSet = getSchemeVariables()[`${scheme}/base`];
+	return Object.keys(baseSchemeSet).filter((key) =>
+		BASE_VARIABLES.some((baseVar) => key.includes(baseVar))
+	);
 }

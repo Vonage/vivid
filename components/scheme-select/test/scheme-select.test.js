@@ -5,13 +5,12 @@ import {
 	waitNextTask,
 	waitInterval,
 } from '../../../test/test-helpers';
-import { getSchemeVariables } from '../../../test/style-utils.js';
+import { getBaseVarNames } from '../../../test/style-utils.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-scheme-select';
-const BASE_VARIABLES = ['base', 'surface', 'primary'];
 
 describe('scheme select', () => {
 	const addElement = isolatedElementsCreation();
@@ -76,10 +75,3 @@ describe('scheme select', () => {
 		});
 	});
 });
-
-function getBaseVarNames(scheme) {
-	const baseSchemeSet = getSchemeVariables()[`${scheme}/base`];
-	return Object.keys(baseSchemeSet).filter((key) =>
-		BASE_VARIABLES.some((baseVar) => key.includes(baseVar))
-	);
-}
