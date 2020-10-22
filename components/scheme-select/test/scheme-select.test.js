@@ -4,13 +4,14 @@ import {
 	textToDomToParent,
 	waitNextTask,
 	waitInterval,
-	assertComputedStyle,
 } from '../../../test/test-helpers';
+import { getSchemeVariables } from '../../../test/style-utils.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-scheme-select';
+const BASE_VARIABLES = ['base', 'surface', 'primary'];
 
 describe('scheme select', () => {
 	const addElement = isolatedElementsCreation();
@@ -35,29 +36,50 @@ describe('scheme select', () => {
 	});
 
 	describe('basic functionality', () => {
+		it('should have basic variables set', async () => {
+			const keys = getBaseVarNames('light');
+			expect(keys).not.empty;
+			keys.forEach((key) => {
+				const varVal = getComputedStyle(document.body).getPropertyValue(key);
+				expect(varVal).exist;
+			});
+		});
+
 		it('should change color and background upon switch', async () => {
-			const testedElementClass = 'header-to-test';
+			const testSet = {};
 			const actualElements = addElement(
 				textToDomToParent(`
 						<${COMPONENT_NAME}></${COMPONENT_NAME}>
-						<h1 class="${testedElementClass}">Header A</h1>
 				`)
 			);
 			await waitNextTask();
 			const schemeSelector = actualElements[0];
-			const testedElement = actualElements[1];
 
-			assertComputedStyle(testedElement, {
-				color: 'rgb(0, 0, 0)',
-			});
-
+			//	switch to dark
 			schemeSelector.shadowRoot.querySelector('.dark').click();
-
-			await waitInterval(850);
-
-			assertComputedStyle(testedElement, {
-				color: 'rgb(0, 0, 0)',
+			await waitInterval(50);
+			getBaseVarNames('dark').forEach((key) => {
+				const varVal = getComputedStyle(document.body).getPropertyValue(key).trim();
+				testSet[key] = new Set([varVal]);
 			});
+
+			//	switch to light
+			schemeSelector.shadowRoot.querySelector('.light').click();
+			await waitInterval(50);
+			getBaseVarNames('light').forEach((key) => {
+				const varVal = getComputedStyle(document.body).getPropertyValue(key).trim();
+				testSet[key].add(varVal);
+			});
+
+			expect(testSet).not.empty;
+			Object.values(testSet).forEach((varSet) => expect(varSet.size).equal(2));
 		});
 	});
 });
+
+function getBaseVarNames(scheme) {
+	const baseSchemeSet = getSchemeVariables()[`${scheme}/base`];
+	return Object.keys(baseSchemeSet).filter((key) =>
+		BASE_VARIABLES.some((baseVar) => key.includes(baseVar))
+	);
+}

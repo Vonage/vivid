@@ -1,10 +1,13 @@
 import { randomAlpha } from '../../../test/test-helpers.js';
+import { getSchemeVariables } from '../../../test/style-utils.js';
+
 import schemeService from '../vvd-scheme.js';
 import { getPreferedColorScheme } from '../os-sync.utils.js';
 
 // const SYNC_WITH_OS = 'syncWithOSSettings',
-const LIGHT = 'light',
-	DARK = 'dark';
+const LIGHT = 'light';
+const DARK = 'dark';
+const BASE_VARIABLES = ['base', 'surface', 'primary'];
 
 describe('vvd-scheme service', () => {
 	it('should provide basic set scheme API', async () => {
@@ -119,7 +122,63 @@ describe('vvd-scheme service', () => {
 
 		const r2 = await s.set(null);
 		assert.equal(r2, r1);
+	});
 
-		await s.set(LIGHT);
+	describe('variables setup functionality', () => {
+		it('should have light variables set when light scheme set', async () => {
+			const r = randomAlpha();
+			const s = (await import(`../vvd-scheme.js?${r}`)).default;
+			await s.set(LIGHT);
+			const lightBaseSchemeSet = getSchemeVariables()[`${LIGHT}/base`];
+			const keys = getBaseVarNames(LIGHT);
+			expect(keys).not.empty;
+			keys.forEach((key) => {
+				const varVal = getComputedStyle(document.body).getPropertyValue(key).trim();
+				expect(varVal).equal(lightBaseSchemeSet[key]);
+			});
+		});
+
+		it('should have dark variables set when dark scheme set', async () => {
+			const r = randomAlpha();
+			const s = (await import(`../vvd-scheme.js?${r}`)).default;
+			await s.set(DARK);
+			const darkBaseSchemeSet = getSchemeVariables()[`${DARK}/base`];
+			const keys = getBaseVarNames(DARK);
+			expect(keys).not.empty;
+			keys.forEach((key) => {
+				const varVal = getComputedStyle(document.body).getPropertyValue(key).trim();
+				expect(varVal).equal(darkBaseSchemeSet[key]);
+			});
+
+			await s.set(LIGHT);
+		});
+
+		it('should have different variables when move from light to dark', async () => {
+			const testSet = {};
+			const r = randomAlpha();
+			const s = (await import(`../vvd-scheme.js?${r}`)).default;
+
+			await s.set(DARK);
+			getBaseVarNames(DARK).forEach((key) => {
+				const varVal = getComputedStyle(document.body).getPropertyValue(key).trim();
+				testSet[key] = new Set([varVal]);
+			});
+
+			await s.set(LIGHT);
+			getBaseVarNames(LIGHT).forEach((key) => {
+				const varVal = getComputedStyle(document.body).getPropertyValue(key).trim();
+				testSet[key].add(varVal);
+			});
+
+			expect(testSet).not.empty;
+			Object.values(testSet).forEach((varSet) => expect(varSet.size).equal(2));
+		});
 	});
 });
+
+function getBaseVarNames(scheme) {
+	const baseSchemeSet = getSchemeVariables()[`${scheme}/base`];
+	return Object.keys(baseSchemeSet).filter((key) =>
+		BASE_VARIABLES.some((baseVar) => key.includes(baseVar))
+	);
+}

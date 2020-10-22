@@ -1,6 +1,9 @@
-const DT_SCHEMES_BASE_PATH = 'common/design-tokens/build/scss/schemes/',
-	FIXTURES = window.__FIXTURES__,
-	MUST_DIFFER = ['base', 'surface', 'primary'];
+import {
+	getSchemeFiles,
+	getSchemeVariables,
+} from '../../../test/style-utils.js';
+
+const MUST_DIFFER = ['base', 'surface', 'primary'];
 
 describe('design tokens service', () => {
 	describe('scheme design tokens', () => {
@@ -56,33 +59,6 @@ describe('design tokens service', () => {
 		});
 	});
 });
-
-function getSchemeFiles() {
-	return Object.entries(FIXTURES).reduce((result, [key, value]) => {
-		if (key.startsWith(DT_SCHEMES_BASE_PATH)) {
-			result[key.replace(DT_SCHEMES_BASE_PATH, '')] = value;
-		}
-		return result;
-	}, {});
-}
-
-function getSchemeVariables() {
-	const result = {};
-	const schemeFiles = getSchemeFiles();
-	Object.keys(schemeFiles).forEach((sf) => {
-		const schemeKey = sf.replace(/\..+$/, '');
-		result[schemeKey] = schemeFiles[sf]
-			.replace(/^[^-]+/, '')
-			.replace(/;[^;]+?$/, '')
-			.split(';')
-			.map((entry) => entry.trim().split(/\s*:\s*/))
-			.reduce((result, [key, value]) => {
-				result[key] = value;
-				return result;
-			}, {});
-	});
-	return result;
-}
 
 function assertListsOfDistinct(setOfLists) {
 	for (const list of Object.values(setOfLists)) {
