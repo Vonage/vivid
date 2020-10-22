@@ -34,30 +34,38 @@ describe('vvd-scheme service', () => {
 		assert.isUndefined(currentSchemeOption);
 	});
 
-	it('should init to default (OS) when set to undefined', async () => {
-		const autoScheme = getPreferedColorScheme();
+	it('should init to default (LIGHT) when set to undefined', async () => {
+		const autoScheme = LIGHT;
+		// ! This is hardcoded to light instead of os settings due to:
+		// ! 1. vivid packages aren't really supported by dark mode yet
+		// ! 2. we still have no control over application scheme mode context
+		// const autoScheme = getPreferedColorScheme();
 		const r = randomAlpha();
 		const s = (await import(`../vvd-scheme.js?${r}`)).default;
 		await s.set();
 		const currentScheme = s.getSelectedScheme();
 		const currentSchemeOption = s.getSelectedSchemeOption();
 		assert.equal(currentScheme, autoScheme);
-		assert.equal(currentSchemeOption, SYNC_WITH_OS);
+		assert.equal(currentSchemeOption, LIGHT);
 
-		await s.set(SYNC_WITH_OS);
+		await s.set(LIGHT);
 	});
 
-	it('should init to default (OS) when set to null', async () => {
-		const autoScheme = getPreferedColorScheme();
+	it('should init to default (LIGHT) when set to null', async () => {
+		const autoScheme = LIGHT;
+		// ! This is hardcoded to light instead of os settings due to:
+		// ! 1. vivid packages aren't really supported by dark mode yet
+		// ! 2. we still have no control over application scheme mode context
+		// const autoScheme = getPreferedColorScheme();
 		const r = randomAlpha();
 		const s = (await import(`../vvd-scheme.js?${r}`)).default;
 		await s.set(null);
 		const currentScheme = s.getSelectedScheme();
 		const currentSchemeOption = s.getSelectedSchemeOption();
 		assert.equal(currentScheme, autoScheme);
-		assert.equal(currentSchemeOption, SYNC_WITH_OS);
+		assert.equal(currentSchemeOption, LIGHT);
 
-		await s.set(SYNC_WITH_OS);
+		await s.set(LIGHT);
 	});
 
 	it('should init to the given argument', async () => {
@@ -70,7 +78,7 @@ describe('vvd-scheme service', () => {
 		assert.equal(currentScheme, newScheme);
 		assert.equal(currentSchemeOption, newScheme);
 
-		await s.set(SYNC_WITH_OS);
+		await s.set(LIGHT);
 	});
 
 	it('should do nothing when set to the same argument', async () => {
@@ -84,7 +92,7 @@ describe('vvd-scheme service', () => {
 		const r2 = await s.set(sameScheme);
 		assert.equal(r2, r1);
 
-		await s.set(SYNC_WITH_OS);
+		await s.set(LIGHT);
 	});
 
 	it('should do nothing when set to undefined and already post-init', async () => {
@@ -98,7 +106,7 @@ describe('vvd-scheme service', () => {
 		const r2 = await s.set();
 		assert.equal(r2, r1);
 
-		await s.set(SYNC_WITH_OS);
+		await s.set(LIGHT);
 	});
 
 	it('should do nothing when set to null and already post-init', async () => {
@@ -112,6 +120,6 @@ describe('vvd-scheme service', () => {
 		const r2 = await s.set(null);
 		assert.equal(r2, r1);
 
-		await s.set(SYNC_WITH_OS);
+		await s.set(LIGHT);
 	});
 });
