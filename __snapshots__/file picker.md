@@ -14,6 +14,9 @@
     </slot>
     <slot class="input-file-slot">
     </slot>
+    <span class="files-count">
+      0
+    </span>
   </div>
 </label>
 
