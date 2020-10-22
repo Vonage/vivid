@@ -4,7 +4,7 @@ import { applySchemeCSS } from './vvd-scheme-style-tag-handler';
 import {
 	pcs,
 	getPreferedColorScheme,
-	prefersColorSchemeSupported,
+	// prefersColorSchemeSupported,
 } from './os-sync.utils';
 
 export type PredefinedScheme = 'light' | 'dark';
@@ -22,7 +22,11 @@ function getSelectedSchemeOption(): SchemeOption {
 
 function getDefaultSchemeOption(): SchemeOption {
 	// if no scheme chosen try 'prefers-color-scheme' and if not supported just return 'light'
-	return prefersColorSchemeSupported() ? 'syncWithOSSettings' : 'light';
+	// return prefersColorSchemeSupported() ? 'syncWithOSSettings' : 'light';
+	// ! commented the cahnce of serving dark mode components as:
+	// ! 1. vivid packages aren't really supported by dark mode yet
+	// ! 2. we still have no control over application scheme mode context
+	return 'light';
 }
 
 function getEffectiveSchemeOption(
