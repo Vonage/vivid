@@ -5,7 +5,11 @@ import {
 	waitNextTask,
 	waitInterval,
 } from '../../../test/test-helpers';
-import { getBaseVarNames } from '../../../test/style-utils.js';
+import {
+	getBaseVarNames,
+	assertBaseVarsMatch,
+	PRINCIPAL_VARIABLES_FILTER,
+} from '../../../test/style-utils.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
@@ -36,12 +40,7 @@ describe('scheme select', () => {
 
 	describe('basic functionality', () => {
 		it('should have basic variables set', async () => {
-			const keys = getBaseVarNames('light');
-			expect(keys).not.empty;
-			keys.forEach((key) => {
-				const varVal = getComputedStyle(document.body).getPropertyValue(key);
-				expect(varVal).exist;
-			});
+			assertBaseVarsMatch('light', PRINCIPAL_VARIABLES_FILTER);
 		});
 
 		it('should change color and background upon switch', async () => {
@@ -57,7 +56,7 @@ describe('scheme select', () => {
 			//	switch to dark
 			schemeSelector.shadowRoot.querySelector('.dark').click();
 			await waitInterval(50);
-			getBaseVarNames('dark').forEach((key) => {
+			getBaseVarNames('dark', PRINCIPAL_VARIABLES_FILTER).forEach((key) => {
 				const varVal = getComputedStyle(document.body).getPropertyValue(key).trim();
 				testSet[key] = new Set([varVal]);
 			});
@@ -65,7 +64,7 @@ describe('scheme select', () => {
 			//	switch to light
 			schemeSelector.shadowRoot.querySelector('.light').click();
 			await waitInterval(50);
-			getBaseVarNames('light').forEach((key) => {
+			getBaseVarNames('light', PRINCIPAL_VARIABLES_FILTER).forEach((key) => {
 				const varVal = getComputedStyle(document.body).getPropertyValue(key).trim();
 				testSet[key].add(varVal);
 			});

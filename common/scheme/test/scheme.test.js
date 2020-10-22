@@ -1,7 +1,8 @@
 import { randomAlpha } from '../../../test/test-helpers.js';
 import {
-	getSchemeVariables,
 	getBaseVarNames,
+	assertBaseVarsMatch,
+	PRINCIPAL_VARIABLES_FILTER,
 } from '../../../test/style-utils.js';
 
 import schemeService from '../vvd-scheme.js';
@@ -131,26 +132,14 @@ describe('vvd-scheme service', () => {
 			const r = randomAlpha();
 			const s = (await import(`../vvd-scheme.js?${r}`)).default;
 			await s.set(LIGHT);
-			const lightBaseSchemeSet = getSchemeVariables()[`${LIGHT}/base`];
-			const keys = getBaseVarNames(LIGHT);
-			expect(keys).not.empty;
-			keys.forEach((key) => {
-				const varVal = getComputedStyle(document.body).getPropertyValue(key).trim();
-				expect(varVal).equal(lightBaseSchemeSet[key]);
-			});
+			assertBaseVarsMatch(LIGHT, PRINCIPAL_VARIABLES_FILTER);
 		});
 
 		it('should have dark variables set when dark scheme set', async () => {
 			const r = randomAlpha();
 			const s = (await import(`../vvd-scheme.js?${r}`)).default;
 			await s.set(DARK);
-			const darkBaseSchemeSet = getSchemeVariables()[`${DARK}/base`];
-			const keys = getBaseVarNames(DARK);
-			expect(keys).not.empty;
-			keys.forEach((key) => {
-				const varVal = getComputedStyle(document.body).getPropertyValue(key).trim();
-				expect(varVal).equal(darkBaseSchemeSet[key]);
-			});
+			assertBaseVarsMatch(DARK, PRINCIPAL_VARIABLES_FILTER);
 
 			await s.set(LIGHT);
 		});
@@ -161,13 +150,13 @@ describe('vvd-scheme service', () => {
 			const s = (await import(`../vvd-scheme.js?${r}`)).default;
 
 			await s.set(DARK);
-			getBaseVarNames(DARK).forEach((key) => {
+			getBaseVarNames(DARK, PRINCIPAL_VARIABLES_FILTER).forEach((key) => {
 				const varVal = getComputedStyle(document.body).getPropertyValue(key).trim();
 				testSet[key] = new Set([varVal]);
 			});
 
 			await s.set(LIGHT);
-			getBaseVarNames(LIGHT).forEach((key) => {
+			getBaseVarNames(LIGHT, PRINCIPAL_VARIABLES_FILTER).forEach((key) => {
 				const varVal = getComputedStyle(document.body).getPropertyValue(key).trim();
 				testSet[key].add(varVal);
 			});
