@@ -1,4 +1,5 @@
 import {
+	getBaseVarNames,
 	getSchemeFiles,
 	getSchemeVariables,
 } from '../../../test/style-utils.js';
@@ -21,7 +22,7 @@ describe('design tokens service', () => {
 			});
 		});
 
-		it('should have symmetric variables number in each scheme', async () => {
+		it("should have symmetric variables number in each scheme's **base** variables", async () => {
 			const schemeVariables = getSchemeVariables();
 			Object.values(schemeVariables)
 				.map((schemeVars) => Object.keys(schemeVars).length)
@@ -32,6 +33,26 @@ describe('design tokens service', () => {
 						return schemeVarsLength;
 					}
 				}, null);
+		});
+
+		it('should have symmetric variables the base schemes', async () => {
+			const testSet = {};
+			const schemeVariables = getSchemeVariables();
+			Object.keys(schemeVariables)
+				.filter((schemeName) => schemeName.includes('base'))
+				.forEach((schemeName) => {
+					Object.keys(schemeVariables[schemeName]).forEach((cssVarName) => {
+						const set = testSet[cssVarName] || (testSet[cssVarName] = new Set());
+						set.add(schemeName);
+					});
+				});
+
+			expect(Object.values(testSet)).not.empty;
+			const expectedCount = Object.values(testSet)[0].size;
+			expect(expectedCount).greaterThan(0);
+			Object.values(testSet).forEach((set) =>
+				expect(set.size).equal(expectedCount)
+			);
 		});
 
 		it('should have differing values in different flavors same scheme', async () => {
