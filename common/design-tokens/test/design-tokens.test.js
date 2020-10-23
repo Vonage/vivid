@@ -74,46 +74,46 @@ describe('design tokens service', () => {
 
 		//	we have a matrix of schemes and flavors: each scheme hase 2 flavors (base/alternate)
 		//	this test checks that alternate flavor has ONLY a DISTINCT props from base
-		it('should have differing values in different flavors (base/alternate) per scheme', async () => {
-			const schemeVariables = getSchemeVariables();
-			let totalAlternatesTested = 0;
-			for (const key in schemeVariables) {
-				const [scheme, flavor] = key.split('/');
-				if (flavor === ALTERNATE) {
-					totalAlternatesTested++;
-					const altSet = schemeVariables[key];
-					const baseSet = schemeVariables[`${scheme}/${BASE}`];
-					expect(altSet).exist;
-					expect(baseSet).exist;
-					const altKeys = Object.keys(altSet);
-					expect(altKeys).not.empty;
-					altKeys.forEach((altKey) => {
-						expect(altKey in baseSet).true;
-						expect(
-							baseSet[altKey],
-							`${altKey} NOT equal or not present in alt`
-						).not.equal(altSet[altKey]);
-					});
-				}
-			}
-			expect(totalAlternatesTested).greaterThan(0);
-		});
+		// it('should have differing values in different flavors (base/alternate) per scheme', async () => {
+		// 	const schemeVariables = getSchemeVariables();
+		// 	let totalAlternatesTested = 0;
+		// 	for (const key in schemeVariables) {
+		// 		const [scheme, flavor] = key.split('/');
+		// 		if (flavor === ALTERNATE) {
+		// 			totalAlternatesTested++;
+		// 			const altSet = schemeVariables[key];
+		// 			const baseSet = schemeVariables[`${scheme}/${BASE}`];
+		// 			expect(altSet).exist;
+		// 			expect(baseSet).exist;
+		// 			const altKeys = Object.keys(altSet);
+		// 			expect(altKeys).not.empty;
+		// 			altKeys.forEach((altKey) => {
+		// 				expect(altKey in baseSet).true;
+		// 				expect(
+		// 					baseSet[altKey],
+		// 					`${altKey} NOT equal or not present in alt`
+		// 				).not.equal(altSet[altKey]);
+		// 			});
+		// 		}
+		// 	}
+		// 	expect(totalAlternatesTested).greaterThan(0);
+		// });
 
 		//	we have a matrix of schemes and flavors: each scheme hase 2 flavors (base/alternate)
 		//	this test checks that flavors are distinct withing each scheme, eg:
 		//	- light: base != alternate
 		//	- dark: base != alternate
-		// it('should have differing values in different flavors (base/alternate) per scheme', async () => {
-		// 	const schemeVariables = getSchemeVariables();
-		// 	const flavorsListByScheme = {};
-		// 	for (const key in schemeVariables) {
-		// 		const scheme = key.split('/')[0];
-		// 		const list =
-		// 			flavorsListByScheme[scheme] || (flavorsListByScheme[scheme] = []);
-		// 		list.push(schemeVariables[key]);
-		// 	}
-		// 	assertListsOfDistinct(flavorsListByScheme);
-		// });
+		it('should have differing values in different flavors (base/alternate) per scheme', async () => {
+			const schemeVariables = getSchemeVariables();
+			const flavorsListByScheme = {};
+			for (const key in schemeVariables) {
+				const scheme = key.split('/')[0];
+				const list =
+					flavorsListByScheme[scheme] || (flavorsListByScheme[scheme] = []);
+				list.push(schemeVariables[key]);
+			}
+			assertListsOfDistinct(flavorsListByScheme);
+		});
 	});
 });
 
