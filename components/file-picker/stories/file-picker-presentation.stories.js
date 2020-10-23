@@ -58,7 +58,7 @@ const TemplateC = args => html`
 
 export const ButtonOnly = TemplateC.bind({});
 ButtonOnly.args = {
-	self: { 'button-only': true },
+	self: { 'drop-zone': false },
 	input: { name: 'some-file' }
 };
 

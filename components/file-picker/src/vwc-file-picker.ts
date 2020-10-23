@@ -44,6 +44,9 @@ export class VWCFilePicker extends LitElement {
 	@property({ type: String, reflect: true })
 	tooManyFilesError = 'only one file allowed';
 
+	@property({ type: Boolean, reflect: true })
+	'drop-zone': true;
+
 	setCustomValidity(message: string): void {
 		this.validationMessage = String(message);
 		this.#container?.classList[this.validationMessage ? 'add' : 'remove'](

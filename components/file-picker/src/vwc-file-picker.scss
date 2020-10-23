@@ -108,7 +108,7 @@
 	}
 }
 
-:host([button-only]) {
+:host([drop-zone="false"]) {
 	display: inline-flex;
 
 	.content {
