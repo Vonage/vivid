@@ -35,15 +35,15 @@
 
 		position: absolute;
 		top: -8px;
-		margin-inline-start: calc(100% - 12px);
 		width: 28px;
 		height: 28px;
+		margin-inline-start: calc(100% - 12px);
+		padding: 0;
 		border-radius: 28px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		color: #fff;
-		background-color: #{color-base.$red-500};
+		z-index: 1;
 	}
 }
 
@@ -105,5 +105,18 @@
 
 	.text {
 		color: #000;
+	}
+}
+
+:host([button-only]) {
+	display: inline-flex;
+
+	.content {
+		flex-basis: initial;
+		border: none;
+	}
+
+	.part > [name="dd-hint"]::slotted(*) {
+		display: none;
 	}
 }

@@ -7,6 +7,6 @@ export class BadgeBase extends LitElement {
 	connotation?: Connotation;
 
 	protected render(): TemplateResult {
-		return html` <slot></slot>`;
+		return html`<slot></slot>`;
 	}
 }

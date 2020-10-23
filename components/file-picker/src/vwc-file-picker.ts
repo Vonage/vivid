@@ -72,7 +72,9 @@ export class VWCFilePicker extends LitElement {
 					<slot name="dd-hint">${this.renderDragNDropHint()}</slot>
 					<slot name="${BUTTON_SLOT}" @click=${this.triggerFileInput}></slot>
 					<slot class="${INPUT_FILE_SLOT}"></slot>
-					<span class="files-count">${this.filesCount}</span>
+					<vwc-badge class="files-count" connotation="error"
+						>${this.filesCount}</vwc-badge
+					>
 				</div>
 				${this.renderFooter()}
 			</label>
