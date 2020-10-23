@@ -25,24 +25,21 @@ function getStyleDictionaryConfig(scheme, scope) {
 		platforms: {
 			web: {
 				prefix: 'vvd',
-				transformGroup: 'css', // 'web'
-				buildPath: `${resolve('build/scss')}/`,
+				transformGroup: 'css',
+				buildPath: `${resolve()}/`,
 				files: [
 					{
-						destination: `schemes/${scheme}/${scope}.scss`,
+						destination: `build/scss/schemes/${scheme}/${scope}.scss`,
 						format: 'custom/format/scss',
 						filter: {
 							attributes: {
-								category: 'color',
-								// type: "root",
-							},
-						},
-						// filter: "filter-alias",
-					},
-				],
-			},
-
-		},
+								category: 'color'
+							}
+						}
+					}
+				]
+			}
+		}
 	};
 }
 

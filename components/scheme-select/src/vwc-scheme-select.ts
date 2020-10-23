@@ -5,22 +5,22 @@ import { SCHEME_SELECT_EVENT_TYPE } from '@vonage/vvd-scheme/scheme-change-liste
 
 declare global {
 	interface HTMLElementTagNameMap {
-		'vwc-scheme-select': SchemeSelect;
+		'vwc-scheme-select': VWCSchemeSelect;
 	}
 }
 
 @customElement('vwc-scheme-select')
-export class SchemeSelect extends LitElement {
+export class VWCSchemeSelect extends LitElement {
 	schemes: SchemeOption[] = ['syncWithOSSettings', 'light', 'dark'];
-	onClick: (scheme: SchemeOption) => void;
+	handleClick: (scheme: SchemeOption) => void;
 
 	constructor() {
 		super();
 		if (globalThis.BroadcastChannel) {
 			const bc = new BroadcastChannel(SCHEME_SELECT_EVENT_TYPE);
-			this.onClick = (scheme) => bc.postMessage(scheme);
+			this.handleClick = (scheme) => bc.postMessage(scheme);
 		} else {
-			this.onClick = (scheme: SchemeOption) =>
+			this.handleClick = (scheme: SchemeOption) =>
 				this.dispatchEvent(
 					new CustomEvent(SCHEME_SELECT_EVENT_TYPE, {
 						detail: { scheme },
@@ -28,13 +28,6 @@ export class SchemeSelect extends LitElement {
 						composed: true, // needed for bubbling up the shadow DOM
 					})
 				);
-			// this.dispatchEvent(
-			//   new CustomEvent(SCHEME_SELECT_EVENT_TYPE, {
-			//     detail: { scheme },
-			//     bubbles: true, // needed for bubbling up the shadow DOM
-			//     composed: true, // needed for bubbling up the shadow DOM
-			//   })
-			// );
 		}
 	}
 
@@ -48,7 +41,8 @@ export class SchemeSelect extends LitElement {
 							unelevated
 							layout="filled"
 							connotation="cta"
-							@click="${this.onClick.bind(this, scheme)}"
+							class="${scheme}"
+							@click="${this.handleClick.bind(this, scheme)}"
 						>
 							${scheme}
 						</vwc-button>
