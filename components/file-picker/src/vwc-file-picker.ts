@@ -68,7 +68,7 @@ export class VWCFilePicker extends LitElement {
 		return html`
 			<label class="wrapper">
 				${this.renderHeader()}
-				<div class="content part">
+				<div class="content drop-zone part">
 					<slot name="dd-hint">${this.renderDragNDropHint()}</slot>
 					<slot name="${BUTTON_SLOT}" @click=${this.triggerFileInput}></slot>
 					<slot class="${INPUT_FILE_SLOT}"></slot>
