@@ -4,7 +4,7 @@
 
 ```html
 <label class="wrapper">
-  <div class="content part">
+  <div class="content drop-zone part">
     <slot name="dd-hint">
       <span class="dd-hint">
         Drag & Drop files here

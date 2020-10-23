@@ -1,6 +1,6 @@
 import { waitNextTask } from '../../../test/test-helpers.js';
 
-export { getFilesCount, simulateChoseFiles, simulateDropFiles };
+export { getInput, getFilesCount, simulateChoseFiles, simulateDropFiles };
 
 function getInput(filePicker) {
 	return filePicker.querySelector('[type="file"]');
