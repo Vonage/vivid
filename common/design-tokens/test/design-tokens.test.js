@@ -1,19 +1,20 @@
 import {
-	getBaseVarNames,
 	getSchemeFiles,
 	getSchemeVariables,
 } from '../../../test/style-utils.js';
 
-const MUST_DIFFER = ['base', 'surface', 'primary'];
+const MUST_DIFFER = ['base', 'surface', 'primary'],
+	ALTERNATE = 'alternate',
+	BASE = 'base';
 
 describe('design tokens service', () => {
 	describe('scheme design tokens', () => {
 		it('should have scheme design tokens generated', async () => {
 			const EXPECTED_MATRIX = [
-				'dark/alternate.scss',
-				'dark/base.scss',
-				'light/alternate.scss',
-				'light/base.scss',
+				`dark/${ALTERNATE}.scss`,
+				`dark/${BASE}.scss`,
+				`light/${ALTERNATE}.scss`,
+				`light/${BASE}.scss`,
 			];
 			const schemeFiles = getSchemeFiles();
 			expect(Object.keys(schemeFiles).sort()).eql(EXPECTED_MATRIX);
@@ -39,7 +40,7 @@ describe('design tokens service', () => {
 			const testSet = {};
 			const schemeVariables = getSchemeVariables();
 			Object.keys(schemeVariables)
-				.filter((schemeName) => schemeName.includes('base'))
+				.filter((schemeName) => schemeName.includes(BASE))
 				.forEach((schemeName) => {
 					Object.keys(schemeVariables[schemeName]).forEach((cssVarName) => {
 						const set = testSet[cssVarName] || (testSet[cssVarName] = new Set());
@@ -53,22 +54,6 @@ describe('design tokens service', () => {
 			Object.values(testSet).forEach((set) =>
 				expect(set.size).equal(expectedCount)
 			);
-		});
-
-		//	we have a matrix of schemes and flavors: each scheme hase 2 flavors (base/alternate)
-		//	this test checks that flavors are distinct withing each scheme, eg:
-		//	- light: base != alternate
-		//	- dark: base != alternate
-		it('should have differing values in different flavors (base/alternate) per scheme', async () => {
-			const schemeVariables = getSchemeVariables();
-			const flavorsListByScheme = {};
-			for (const key in schemeVariables) {
-				const scheme = key.split('/')[0];
-				const list =
-					flavorsListByScheme[scheme] || (flavorsListByScheme[scheme] = []);
-				list.push(schemeVariables[key]);
-			}
-			assertListsOfDistinct(flavorsListByScheme);
 		});
 
 		//	we have a matrix of schemes and flavors: each scheme hase 2 flavors (base/alternate)
@@ -86,6 +71,49 @@ describe('design tokens service', () => {
 			}
 			assertListsOfDistinct(schemesListByFlavor);
 		});
+
+		//	we have a matrix of schemes and flavors: each scheme hase 2 flavors (base/alternate)
+		//	this test checks that alternate flavor has ONLY a DISTINCT props from base
+		it('should have differing values in different flavors (base/alternate) per scheme', async () => {
+			const schemeVariables = getSchemeVariables();
+			let totalAlternatesTested = 0;
+			for (const key in schemeVariables) {
+				const [scheme, flavor] = key.split('/');
+				if (flavor === ALTERNATE) {
+					totalAlternatesTested++;
+					const altSet = schemeVariables[key];
+					const baseSet = schemeVariables[`${scheme}/${BASE}`];
+					expect(altSet).exist;
+					expect(baseSet).exist;
+					const altKeys = Object.keys(altSet);
+					expect(altKeys).not.empty;
+					altKeys.forEach((altKey) => {
+						expect(altKey in baseSet).true;
+						expect(
+							baseSet[altKey],
+							`${altKey} NOT equal or not present in alt`
+						).not.equal(altSet[altKey]);
+					});
+				}
+			}
+			expect(totalAlternatesTested).greaterThan(0);
+		});
+
+		//	we have a matrix of schemes and flavors: each scheme hase 2 flavors (base/alternate)
+		//	this test checks that flavors are distinct withing each scheme, eg:
+		//	- light: base != alternate
+		//	- dark: base != alternate
+		// it('should have differing values in different flavors (base/alternate) per scheme', async () => {
+		// 	const schemeVariables = getSchemeVariables();
+		// 	const flavorsListByScheme = {};
+		// 	for (const key in schemeVariables) {
+		// 		const scheme = key.split('/')[0];
+		// 		const list =
+		// 			flavorsListByScheme[scheme] || (flavorsListByScheme[scheme] = []);
+		// 		list.push(schemeVariables[key]);
+		// 	}
+		// 	assertListsOfDistinct(flavorsListByScheme);
+		// });
 	});
 });
 
