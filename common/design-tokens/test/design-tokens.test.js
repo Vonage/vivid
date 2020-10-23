@@ -55,7 +55,11 @@ describe('design tokens service', () => {
 			);
 		});
 
-		it('should have differing values in different flavors same scheme', async () => {
+		//	we have a matrix of schemes and flavors: each scheme hase 2 flavors (base/alternate)
+		//	this test checks that flavors are distinct withing each scheme, eg:
+		//	- light: base != alternate
+		//	- dark: base != alternate
+		it('should have differing values in different flavors (base/alternate) per scheme', async () => {
 			const schemeVariables = getSchemeVariables();
 			const flavorsListByScheme = {};
 			for (const key in schemeVariables) {
@@ -67,7 +71,11 @@ describe('design tokens service', () => {
 			assertListsOfDistinct(flavorsListByScheme);
 		});
 
-		it('should have differing values in different schemes same flavors', async () => {
+		//	we have a matrix of schemes and flavors: each scheme hase 2 flavors (base/alternate)
+		//	this test checks that schemes are distinct from each other while comparing the same flavor, eg:
+		//	- base: light != dark != ...
+		//	- alternate: light != dark != ...
+		it('should have differing values in different schemes (light/dark/...) per flavor', async () => {
 			const schemeVariables = getSchemeVariables();
 			const schemesListByFlavor = {};
 			for (const key in schemeVariables) {
