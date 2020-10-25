@@ -1,6 +1,28 @@
-import { waitNextTask } from '../../../test/test-helpers.js';
+import {
+	randomAlpha,
+	textToDomToParent,
+	waitNextTask,
+} from '../../../test/test-helpers.js';
 
-export { getInput, getFilesCount, simulateChoseFiles, simulateDropFiles };
+export {
+	createWithInput,
+	getInput,
+	getFilesCount,
+	simulateChoseFiles,
+	simulateDropFiles,
+	simulatePasteFiles,
+};
+
+async function createWithInput(mulitple) {
+	const filePickerName = randomAlpha();
+	const addedElements = textToDomToParent(`
+		<vwc-file-picker>
+			<input type="file" name="${filePickerName}" ${mulitple ? 'multiple' : ''}/>
+		</vwc-file-picker>
+	`);
+	await waitNextTask();
+	return addedElements;
+}
 
 function getInput(filePicker) {
 	return filePicker.querySelector('[type="file"]');
@@ -39,6 +61,15 @@ async function simulateDropFiles(filePicker, total) {
 	const ft = mockDataTransfer(total);
 	const de = new CustomEvent('drop', { bubbles: true });
 	de.dataTransfer = ft;
+	dz.dispatchEvent(de);
+	await waitNextTask();
+}
+
+async function simulatePasteFiles(filePicker, total) {
+	const dz = getDropZone(filePicker);
+	const ft = mockDataTransfer(total);
+	const de = new CustomEvent('paste', { bubbles: true });
+	de.clipboardData = ft;
 	dz.dispatchEvent(de);
 	await waitNextTask();
 }

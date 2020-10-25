@@ -164,7 +164,8 @@ export class VWCFilePicker extends LitElement {
 	}
 
 	private setupClipboardPaste(): void {
-		this.addEventListener('paste', (e) => {
+		this.shadowRoot?.addEventListener('paste', (ce) => {
+			const e = ce as ClipboardEvent;
 			e.preventDefault();
 			if (!e.clipboardData) {
 				return;
@@ -222,6 +223,7 @@ export class VWCFilePicker extends LitElement {
 	 * This method will validate ONLY the slotted content:
 	 * - not more than a single element
 	 * - ONLY an input of type 'file'
+	 *
 	 * @param slot actual input slot
 	 */
 	private validateSlottedInput(slot: HTMLSlotElement): void {

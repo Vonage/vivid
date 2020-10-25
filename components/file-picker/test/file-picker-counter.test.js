@@ -1,17 +1,11 @@
 import '@vonage/vwc-file-picker';
+import { isSafari } from '../../../test/test-helpers.js';
 import {
-	waitNextTask,
-	textToDomToParent,
-	randomAlpha,
-	isSafari,
-} from '../../../test/test-helpers.js';
-import {
+	createWithInput,
 	getFilesCount,
 	simulateChoseFiles,
 	simulateDropFiles,
 } from './file-picker-utils.test.js';
-
-const VWC_COMPONENT = 'vwc-file-picker';
 
 describe('file picker - count files hint', () => {
 	let addedElements = [];
@@ -21,7 +15,7 @@ describe('file picker - count files hint', () => {
 	});
 
 	it('should have initial counter show 0', async () => {
-		addedElements = await create();
+		addedElements = await createWithInput();
 		const filesCount = getFilesCount(addedElements[0]);
 		expect(filesCount).equal(0);
 	});
@@ -30,7 +24,7 @@ describe('file picker - count files hint', () => {
 		if (isSafari()) {
 			return;
 		}
-		addedElements = await create(true);
+		addedElements = await createWithInput(true);
 		const files = 4;
 		await simulateChoseFiles(addedElements[0], files);
 
@@ -42,7 +36,7 @@ describe('file picker - count files hint', () => {
 		if (isSafari()) {
 			return;
 		}
-		addedElements = await create(true);
+		addedElements = await createWithInput(true);
 		const files = 4;
 		await simulateDropFiles(addedElements[0], files);
 
@@ -54,7 +48,7 @@ describe('file picker - count files hint', () => {
 		if (isSafari()) {
 			return;
 		}
-		addedElements = await create(false);
+		addedElements = await createWithInput(false);
 
 		await simulateChoseFiles(addedElements[0], 1);
 		const filesCount1 = getFilesCount(addedElements[0]);
@@ -68,14 +62,3 @@ describe('file picker - count files hint', () => {
 		expect(filesCount2).equal(0);
 	});
 });
-
-async function create(mulitple) {
-	const filePickerName = randomAlpha();
-	const addedElements = textToDomToParent(`
-		<${VWC_COMPONENT}>
-			<input type="file" name="${filePickerName}" ${mulitple ? 'multiple' : ''}/>
-		</${VWC_COMPONENT}>
-	`);
-	await waitNextTask();
-	return addedElements;
-}
