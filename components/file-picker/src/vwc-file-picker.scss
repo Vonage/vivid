@@ -29,9 +29,6 @@
 	box-sizing: border-box;
 
 	.files-count {
-		@include typography.typography-cat-shorthand('body-2-bold');
-		line-height: 100%;
-
 		position: absolute;
 		top: -8px;
 		width: 28px;
