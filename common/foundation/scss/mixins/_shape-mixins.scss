@@ -1,0 +1,43 @@
+@use 'sass:map';
+@use '../variable-names/shape-variable-names' as shape-var-names;
+
+@function getDefaultSelector($list, $default) {
+	map.deep-remove($list, $default);
+	$selectors: ();
+	@each $key, $_ in $list {
+		$selectors: map.join($selectors, template($key), $separator: comma);
+	}
+	@return ':host(:not(:is(#{$selectors})))';
+}
+
+@function template($key) {
+	@return '[shape="#{$key}"i]';
+}
+
+@mixin shape(
+	$shapes: (
+		rounded: var(#{shape-var-names.$shape-border-radius-md-css-variable-name}),
+		pill: var(#{shape-var-names.$shape-border-radius-lg-css-variable-name}),
+	),
+	$default: rounded
+) {
+	@each $key, $shape in $shapes {
+		$selector: ();
+		@if ($key == $default) {
+			// if is default also add case for not assigning shape properly
+
+			$selector: map.join(
+				$selector,
+				getDefaultSelector($shapes, $default),
+				$separator: comma
+			);
+		}
+
+		// shape item selector
+		$selector: map.join($selector, ':host(#{template($key)})', $separator: comma);
+
+		#{$selector} {
+			--border-radius: #{$shape};
+		}
+	}
+}
