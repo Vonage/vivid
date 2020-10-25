@@ -23,6 +23,9 @@
 			"path": "../../common/style-coupling"
 		},
 		{
+			"path": "../badge"
+		},
+		{
 			"path": "../button"
 		},
 		{

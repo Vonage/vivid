@@ -4,7 +4,7 @@
 
 ```html
 <label class="wrapper">
-  <div class="content part">
+  <div class="content drop-zone part">
     <slot name="dd-hint">
       <span class="dd-hint">
         Drag & Drop files here
@@ -14,6 +14,11 @@
     </slot>
     <slot class="input-file-slot">
     </slot>
+    <div class="files-count">
+      <vwc-badge connotation="error">
+        0
+      </vwc-badge>
+    </div>
   </div>
 </label>
 
