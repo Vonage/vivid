@@ -14,12 +14,11 @@
     </slot>
     <slot class="input-file-slot">
     </slot>
-    <vwc-badge
-      class="files-count"
-      connotation="error"
-    >
-      0
-    </vwc-badge>
+    <div class="files-count">
+      <vwc-badge connotation="error">
+        0
+      </vwc-badge>
+    </div>
   </div>
 </label>
 

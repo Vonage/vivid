@@ -1,3 +1,13 @@
+# [0.14.0](https://github.com/vonage/vivid/compare/v0.13.0...v0.14.0) (2020-10-25)
+
+
+### Bug Fixes
+
+* **scheme:** alternate variables support ([1c9c781](https://github.com/vonage/vivid/commit/1c9c781faaf71999040ea36fbeab969143ac40a2))
+* **scheme:** dark scheme correct variables ref ([fbaff84](https://github.com/vonage/vivid/commit/fbaff8409bdaca63306cf0740c786107c9e4175e))
+
+
+
 # [0.13.0](https://github.com/vonage/vivid/compare/v0.12.5...v0.13.0) (2020-10-12)
 
 
