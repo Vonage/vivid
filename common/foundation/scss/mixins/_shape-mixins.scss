@@ -1,13 +1,13 @@
-@use 'sass:map';
 @use '../variable-names/shape-variable-names' as shape-var-names;
 
 @function getDefaultSelector($list, $default) {
-	map.deep-remove($list, $default);
-	$selectors: ();
+	$selectors: '';
 	@each $key, $_ in $list {
-		$selectors: map.join($selectors, template($key), $separator: comma);
+		@if $key != $default {
+			$selectors: $selectors + ':not(#{template($key)})';
+		}
 	}
-	@return ':host(:not(:is(#{$selectors})))';
+	@return ':host(#{$selectors})';
 }
 
 @function template($key) {
@@ -26,7 +26,7 @@
 		@if ($key == $default) {
 			// if is default also add case for not assigning shape properly
 
-			$selector: map.join(
+			$selector: join(
 				$selector,
 				getDefaultSelector($shapes, $default),
 				$separator: comma
@@ -34,7 +34,7 @@
 		}
 
 		// shape item selector
-		$selector: map.join($selector, ':host(#{template($key)})', $separator: comma);
+		$selector: join($selector, ':host(#{template($key)})', $separator: comma);
 
 		#{$selector} {
 			--border-radius: #{$shape};
