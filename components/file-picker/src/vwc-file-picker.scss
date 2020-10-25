@@ -30,8 +30,8 @@
 
 	.files-count {
 		position: absolute;
-		right: 0;
 		top: 0;
+		margin-inline-start: 100%;
 		z-index: 1;
 		transform: translate(50%, -50%);
 	}
