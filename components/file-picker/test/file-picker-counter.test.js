@@ -10,9 +10,6 @@ import {
 	simulateChoseFiles,
 	simulateDropFiles,
 } from './file-picker-utils.test.js';
-import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
-
-chai.use(chaiDomDiff);
 
 const VWC_COMPONENT = 'vwc-file-picker';
 

@@ -9,21 +9,21 @@
   aria-valuenow="0"
   class="mdc-linear-progress mdc-linear-progress--animation-ready"
   role="progressbar"
-	style=""
+  style=""
 >
   <div class="mdc-linear-progress__buffer">
     <div
-		  class="mdc-linear-progress__buffer-bar"
-			style="flex-basis: 100%;"
-		>
+      class="mdc-linear-progress__buffer-bar"
+      style="flex-basis: 100%;"
+    >
     </div>
     <div class="mdc-linear-progress__buffer-dots">
     </div>
   </div>
   <div
-	  class="mdc-linear-progress__bar mdc-linear-progress__primary-bar"
-		style="transform: scaleX(0);"
-	>
+    class="mdc-linear-progress__bar mdc-linear-progress__primary-bar"
+    style="transform: scaleX(0);"
+  >
     <span class="mdc-linear-progress__bar-inner">
     </span>
   </div>
