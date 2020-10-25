@@ -1,3 +1,4 @@
+import '@vonage/vvd-core';
 import { customElement } from 'lit-element';
 import { Dialog as MwcDialog } from '@material/mwc-dialog';
 import { style as mwcDialogStyle } from '@material/mwc-dialog/mwc-dialog-css.js';
@@ -18,7 +19,6 @@ MwcDialog.styles = [mwcDialogStyle, vwcDialogStyle];
  */
 @customElement('vwc-dialog')
 export class VwcDialog extends MwcDialog {
-
 	protected updated(changes: Map<string, boolean>): void {
 		super.updated(changes);
 	}
