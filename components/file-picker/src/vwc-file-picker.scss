@@ -29,29 +29,20 @@
 	box-sizing: border-box;
 
 	.files-count {
-		@include typography.typography-cat-shorthand('body-2-bold');
-		line-height: 100%;
-
 		position: absolute;
-		top: -8px;
-		width: 28px;
-		height: 28px;
-		margin-inline-start: calc(100% - 12px);
-		padding: 0;
-		border-radius: 28px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		right: 0;
+		top: 0;
 		z-index: 1;
+		transform: translate(50%, -50%);
 	}
 }
 
 .dd-hint,
-[name="dd-hint"]::slotted(*) {
+[name='dd-hint']::slotted(*) {
 	@include typography.typography-cat-shorthand('body-2');
 	margin-inline-end: 16px;
 }
-[name="dd-hint"]::slotted(*:empty) {
+[name='dd-hint']::slotted(*:empty) {
 	display: none;
 }
 
@@ -107,7 +98,7 @@
 	}
 }
 
-:host([drop-zone="false"]) {
+:host([drop-zone='false']) {
 	display: inline-flex;
 
 	.content {
@@ -115,7 +106,7 @@
 		border: none;
 	}
 
-	.part > [name="dd-hint"]::slotted(*) {
+	.part > [name='dd-hint']::slotted(*) {
 		display: none;
 	}
 }
