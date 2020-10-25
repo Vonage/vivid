@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vvd-context",
-	"version": "0.13.0",
+	"version": "0.14.0",
 	"description": "> TODO: description",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/context#readme",
 	"license": "ISC",
@@ -24,11 +24,11 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@vonage/vvd-core": "^0.13.0",
+		"@vonage/vvd-core": "^0.14.0",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.3"
 	},
 	"devDependencies": {
-		"@vonage/vvd-typography": "^0.13.0"
+		"@vonage/vvd-typography": "^0.14.0"
 	}
 }

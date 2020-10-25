@@ -52,9 +52,15 @@ const TemplateC = args => html`
 	<vwc-file-picker ...=${spread(args.self)}>
 		<input type="file" name="fi-name" ...=${spread(args.input)}/>
 		<span slot="dd-hint"></span>
-		<vwc-button slot="button" type="button" connotation="cta" layout="filled">Select</vwc-button>
+		<vwc-button slot="button" type="button" layout="filled" icon="upload" trailingIcon>Select files</vwc-button>
 	</vwc-file-picker>
 `;
+
+export const ButtonOnly = TemplateC.bind({});
+ButtonOnly.args = {
+	self: { 'drop-zone': false },
+	input: { name: 'some-file' }
+};
 
 export const CustomButtonNoMessage = TemplateC.bind({});
 CustomButtonNoMessage.args = {

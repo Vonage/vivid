@@ -8,6 +8,9 @@ module.exports = config => {
 		files: [
 			{ pattern: config.grep ? config.grep : '{common,components}/**/test/**/*.test.js', type: 'module' },
 		],
+		preprocessors: {
+			'common/design-tokens/build/scss/schemes/**/*.scss': ['file-fixtures']
+		},
 		esm: {
 			nodeResolve: true,
 		},

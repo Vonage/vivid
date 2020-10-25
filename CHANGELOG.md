@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.14.0](https://github.com/Vonage/vivid/compare/v0.13.0...v0.14.0) (2020-10-25)
+
+
+### Bug Fixes
+
+* **scheme:** alternate variables support ([1c9c781](https://github.com/Vonage/vivid/commit/1c9c781faaf71999040ea36fbeab969143ac40a2))
+* **scheme:** dark scheme correct variables ref ([fbaff84](https://github.com/Vonage/vivid/commit/fbaff8409bdaca63306cf0740c786107c9e4175e))
+* **scheme:** Scheme default to light mode ([539cade](https://github.com/Vonage/vivid/commit/539cade5d1a3b95c235b536f7cda3252fdb151db))
+* **scheme tests:** aligned tests with PR Tests temporarly modified to match a 'light' scheme defult BREAKING CHANGE: scheme now serves 'light' scheme by default instead of os settings ([51460c1](https://github.com/Vonage/vivid/commit/51460c1ee189876739de4b39be6db492be7c9ac2))
+
+
+### Features
+
+* **storybook:** removed .ico favicon as per joella's request ([038606d](https://github.com/Vonage/vivid/commit/038606dc61460404008c7c66441d3daf6e381636))
+
+
+
+
+
 # [0.13.0](https://github.com/Vonage/vivid/compare/v0.12.5...v0.13.0) (2020-10-12)
 
 
