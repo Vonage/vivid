@@ -21,19 +21,28 @@
 }
 
 .content {
+	position: relative;
 	flex-basis: 100px;
 	justify-content: center;
 	border: 1px dashed #cccccc;
 	border-radius: 6px;
 	box-sizing: border-box;
+
+	.files-count {
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 1;
+		transform: translate(50%, -50%);
+	}
 }
 
 .dd-hint,
-[name="dd-hint"]::slotted(*) {
+[name='dd-hint']::slotted(*) {
 	@include typography.typography-cat-shorthand('body-2');
 	margin-inline-end: 16px;
 }
-[name="dd-hint"]::slotted(*:empty) {
+[name='dd-hint']::slotted(*:empty) {
 	display: none;
 }
 
@@ -86,5 +95,18 @@
 
 	.text {
 		color: #000;
+	}
+}
+
+:host([drop-zone='false']) {
+	display: inline-flex;
+
+	.content {
+		flex-basis: initial;
+		border: none;
+	}
+
+	.part > [name='dd-hint']::slotted(*) {
+		display: none;
 	}
 }
