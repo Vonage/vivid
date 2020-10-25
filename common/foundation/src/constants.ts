@@ -6,3 +6,8 @@ export enum Connotation {
 	Info = 'info',
 	Announcement = 'announcement',
 }
+
+export enum Shape {
+	Rounded = 'rounded',
+	Pill = 'pill',
+}
