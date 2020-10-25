@@ -1,5 +1,4 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
-@use '@vonage/vvd-foundation/scss/variable-names/color-base-variable-names' as color-base;
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 
 .input-file-slot::slotted(*) {
