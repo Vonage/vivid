@@ -12,9 +12,9 @@ describe('vwc-icon', () => {
 	});
 
 	it('validates vwc-icon svg integrity', async () => {
-		const el = ((elStarter) => {
-				document.body.appendChild(elStarter);
-				return elStarter;
+		const el = ((el) => {
+				document.body.appendChild(el);
+				return el;
 			})(document.createElement('vwc-icon')),
 			snapshots = {
 				alarm:

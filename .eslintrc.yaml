@@ -21,8 +21,7 @@ settings:
   wc:
     elementBaseClasses: ["BaseElement", "LitElement", "FormElement"]
 rules:
-  no-shadow: error
-  no-mixed-spaces-and-tabs: off
+  "no-mixed-spaces-and-tabs": off
   # Rules temporally disabled
   "@typescript-eslint/explicit-function-return-type": off
 
