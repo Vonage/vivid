@@ -16,9 +16,9 @@ describe('vvd-core service', () => {
 	});
 
 	it('should perform and auto-init to default when no data-vvd-context provided', async () => {
-		const vvdCore = (await import('../vvd-core.js')).default;
-		assert.isDefined(vvdCore.settled);
-		const readyResult = await vvdCore.settled;
+		const vvdCoreDedicated = (await import('../vvd-core.js')).default;
+		assert.isDefined(vvdCoreDedicated.settled);
+		const readyResult = await vvdCoreDedicated.settled;
 		assert.isArray(readyResult);
 		readyResult.forEach((r) => {
 			assert.isObject(r);
