@@ -62,7 +62,7 @@ TODO:
 .mdc-chip {
   @include chips.fill-color(var(--vvd-color-base-tinged));
   // @include chips.ink-color(text-primary-on-background);
-  @include chips.trailing-icon-color(var(--vvd-color-surface-foreground), variables.$trailing-icon-opacity, variables.$trailing-icon-opacity-hover);
+  @include chips.trailing-icon-color(var(--vvd-color-base-foreground), variables.$trailing-icon-opacity, variables.$trailing-icon-opacity-hover);
   @include chips.height(map-get(variables.$height, default));
   @include chips.horizontal-padding(map-get(variables.$horizontal-padding, default));
   @include chips.shape-radius(map-get(variables.$shape-radius, default));
@@ -71,7 +71,7 @@ TODO:
 	@include typography.typography-cat-variables('body-2-bold');
 	@include typography.typography-cat-properties();
   cursor: auto;
-  color: var(--vvd-color-surface-foreground);
+  color: var(--vvd-color-base-foreground);
   font-size: map-get(variables.$font-size, default);
 
 	vwc-icon.leading {
