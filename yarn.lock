@@ -4388,8 +4388,8 @@
 
 "@vonage/vvd-design-tokens-properties@^0.2.4":
   version "0.2.4"
-  resolved "https://npm.pkg.github.com/download/@vonage/vvd-design-tokens-properties/0.2.4/6dcbf565d7f997416cd1dbc98f5b5f3d61ed2c7c37d7c8301bf9008a2d2284a3#ccb6407f9ee06b39a9bb2d2c8bc173aafcd50b94"
-  integrity sha512-orFQ/z2K0sNAZMIHCDOHS4Ga0bgMrrJGrvOHFSU9MxIxceTwWw68KsZ3kk46gByDToQeGjfuuLFCBUFK9sDHnQ==
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@vonage/vvd-design-tokens-properties/0.2.4/6dcbf565d7f997416cd1dbc98f5b5f3d61ed2c7c37d7c8301bf9008a2d2284a3#ccb6407f9ee06b39a9bb2d2c8bc173aafcd50b94"
+  integrity sha1-zLZAf57gazmpuy0si8FzqvzVC5Q=
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
@@ -10026,14 +10026,7 @@ intersection-observer@^0.7.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/intersection-observer/-/intersection-observer-0.7.0.tgz#ee16bee978db53516ead2f0a8154b09b400bbdc9"
   integrity sha1-7ha+6XjbU1FurS8KgVSwm0ALvck=
 
-invariant@2.2.2:
-  version "2.2.2"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/invariant/-/invariant-2.2.2.tgz#9e1f56ac0acdb6bf303306f338be3b204ae60360"
-  integrity sha1-nh9WrArNtr8wMwbzOL47IErmA2A=
-  dependencies:
-    loose-envify "^1.0.0"
-
-invariant@2.2.4, invariant@^2.2.3, invariant@^2.2.4:
+invariant@^2.2.3, invariant@^2.2.4:
   version "2.2.4"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   integrity sha1-YQ88ksk1nOHbYW5TgAjSP/NRWOY=
@@ -11335,7 +11328,7 @@ lodash.uniq@4.5.0, lodash.uniq@^4.5.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
-lodash@^4.0.0, lodash@^4.0.1, lodash@^4.14.0, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.4, lodash@^4.2.1, lodash@~4.17.10:
+lodash@^4.0.0, lodash@^4.0.1, lodash@^4.14.0, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.2.1, lodash@~4.17.10:
   version "4.17.20"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
   integrity sha1-tEqbYpe8tpjxxRo1RaKzs2jVnFI=
@@ -13542,14 +13535,6 @@ qs@~6.5.2:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
   integrity sha1-yzroBuh0BERYTvFUzo7pjUA/PjY=
 
-query-ast@^1.0.3:
-  version "1.0.3"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/query-ast/-/query-ast-1.0.3.tgz#4a18374950fa80cbf9b03d7b945bbac8bb4250bf"
-  integrity sha1-Shg3SVD6gMv5sD17lFu6yLtCUL8=
-  dependencies:
-    invariant "2.2.2"
-    lodash "^4.17.15"
-
 querystring-es3@^0.2.0:
   version "0.2.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/querystring-es3/-/querystring-es3-0.2.1.tgz#9ec61f79049875707d69414596fd907a4d711e73"
@@ -14587,14 +14572,6 @@ schema-utils@^3.0.0:
     "@types/json-schema" "^7.0.6"
     ajv "^6.12.5"
     ajv-keywords "^3.5.2"
-
-scss-parser@^1.0.4:
-  version "1.0.4"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/scss-parser/-/scss-parser-1.0.4.tgz#61cdeb28701ffcb497954b9b05729c6d38eb8b9f"
-  integrity sha1-Yc3rKHAf/LSXlUubBXKcbTjri58=
-  dependencies:
-    invariant "2.2.4"
-    lodash "^4.17.4"
 
 scss-tokenizer@^0.2.3:
   version "0.2.3"
