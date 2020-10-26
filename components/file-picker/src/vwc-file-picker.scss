@@ -27,13 +27,14 @@
 	border: 1px dashed #cccccc;
 	border-radius: 6px;
 	box-sizing: border-box;
+	background-color: var(#{color-semantic.$color-base-background});
 
 	.files-count {
 		position: absolute;
 		top: 0;
 		right: 0;
 		z-index: 1;
-		transform: translate(50%, -50%);
+		transform: translate(12px, -50%);
 	}
 }
 
