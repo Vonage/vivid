@@ -204,9 +204,9 @@ describe('textfield', () => {
 
 		describe(`submit form on Enter key`, function () {
 			let actualElement, formElement, externalForm;
-			const fieldName = 'test-field';
 			const externalFormID = 'externalForm';
-			const fieldValue = Math.random().toString();
+			const fieldNameEnterSubmit = 'test-field';
+			const fieldValueEnterSubmit = Math.random().toString();
 
 			function dispatchKeyEvent(keyName) {
 				const ke = new KeyboardEvent('keydown', {
@@ -221,7 +221,7 @@ describe('textfield', () => {
 				[formElement, externalForm] = addElement(
 					textToDomToParent(`
 				<form onsubmit="return false" name="testForm" id="testForm">
-					<${COMPONENT_NAME} name="${fieldName}" value="${fieldValue}" form="${externalFormID}">
+					<${COMPONENT_NAME} name="${fieldNameEnterSubmit}" value="${fieldValueEnterSubmit}" form="${externalFormID}">
 					</${COMPONENT_NAME}>
 				</form>
 				<form onsubmit="return false" name="externalForm" id="${externalFormID}"></form>`)
@@ -237,8 +237,8 @@ describe('textfield', () => {
 				dispatchKeyEvent('Enter');
 
 				for (let [formDataKey, formDataValue] of (await submitPromise).entries()) {
-					expect(formDataKey).to.equal(fieldName);
-					expect(formDataValue).to.equal(fieldValue);
+					expect(formDataKey).to.equal(fieldNameEnterSubmit);
+					expect(formDataValue).to.equal(fieldValueEnterSubmit);
 				}
 			});
 
@@ -251,8 +251,8 @@ describe('textfield', () => {
 				dispatchKeyEvent('Enter');
 
 				for (let [formDataKey, formDataValue] of (await submitPromise).entries()) {
-					expect(formDataKey).to.equal(fieldName);
-					expect(formDataValue).to.equal(fieldValue);
+					expect(formDataKey).to.equal(fieldNameEnterSubmit);
+					expect(formDataValue).to.equal(fieldValueEnterSubmit);
 				}
 			});
 

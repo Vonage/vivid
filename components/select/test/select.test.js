@@ -160,11 +160,13 @@ describe('select', () => {
 			const invalidValue = '';
 			const validValue1 = Math.random().toString();
 			const validValue2 = Math.random().toString();
-			const values = [validValue1, validValue2];
+			const valuesValidation = [validValue1, validValue2];
 			let formElement, actualElement;
 
 			beforeEach(async function () {
-				[formElement] = addElement(createElementInForm(fieldName, values));
+				[formElement] = addElement(
+					createElementInForm(fieldName, valuesValidation)
+				);
 				actualElement = formElement.querySelector(COMPONENT_NAME);
 				actualElement.setAttribute('required', 'true');
 				await waitNextTask();
