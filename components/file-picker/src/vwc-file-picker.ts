@@ -26,7 +26,7 @@ export class VWCFilePicker extends LitElement {
 	static styles = [styleCoupling, filePickerStyle];
 	#container: HTMLElement | null = null;
 
-	@property({ type: Number, reflect: false })
+	@property({ type: Number, reflect: true, attribute: 'files-count' })
 	private filesCount = 0;
 
 	@property({ type: String, reflect: true })
