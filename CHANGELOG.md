@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/Vonage/vivid/compare/v0.14.0...v0.15.0) (2020-10-27)
+
+
+### Reverts
+
+* Revert "issue #405 - fixing eslint remarks" ([ff1fa4d](https://github.com/Vonage/vivid/commit/ff1fa4dcbbe4a477a9a600483f297bd63d5ac5fa)), closes [#405](https://github.com/Vonage/vivid/issues/405)
+
+
+
+
+
 # [0.14.0](https://github.com/Vonage/vivid/compare/v0.13.0...v0.14.0) (2020-10-25)
 
 

@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 export enum Connotation {
 	Primary = 'primary',
 	CTA = 'cta',
@@ -5,4 +6,10 @@ export enum Connotation {
 	Error = 'error',
 	Info = 'info',
 	Announcement = 'announcement',
+}
+
+/* eslint-disable no-shadow */
+export enum Shape {
+	Rounded = 'rounded',
+	Pill = 'pill',
 }
