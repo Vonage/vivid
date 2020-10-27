@@ -470,18 +470,6 @@ describe('button', () => {
 			assertComputedStyle(actualElement, borderRadiusStyles(6));
 		});
 
-		it('should have rounded shape when dense', async () => {
-			const addedElements = addElement(
-				textToDomToParent(
-					`<${COMPONENT_NAME} layout="filled" dense>Button Text</${COMPONENT_NAME}>`
-				)
-			);
-			await waitNextTask();
-			let actualElement = addedElements[0].shadowRoot.querySelector('#button');
-
-			assertComputedStyle(actualElement, borderRadiusStyles(5));
-		});
-
 		it('should have pill shape when shape set to pill', async () => {
 			const addedElements = addElement(
 				textToDomToParent(

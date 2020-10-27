@@ -301,10 +301,6 @@ describe('textfield', () => {
 
 			expect(formElement.getAttribute('shape') === 'rounded').to.equal(true);
 			assertComputedStyle(actualElement, borderRadiusStyles(6));
-
-			formElement.dense = true;
-			await waitNextTask();
-			assertComputedStyle(actualElement, borderRadiusStyles(5));
 		});
 
 		it('should have pill shape when shape set to pill', async () => {
