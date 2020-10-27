@@ -1,6 +1,6 @@
 import { waitNextTask } from '../../../test/test-helpers.js';
 
-export { getInput, getFilesCount, simulateChoseFiles, simulateDropFiles };
+export { getInput, assertFilesCount, simulateChoseFiles, simulateDropFiles };
 
 function getInput(filePicker) {
 	return filePicker.querySelector('[type="file"]');
@@ -20,10 +20,22 @@ function mockDataTransfer(total) {
 	return dt;
 }
 
-function getFilesCount(filePicker) {
-	return parseInt(
-		filePicker.shadowRoot.querySelector('.files-count').textContent
-	);
+function assertFilesCount(filePicker, expectedNumber, expectedShown) {
+	const fce = filePicker.shadowRoot.querySelector('.files-count');
+	const fcNumber = parseInt(fce.textContent);
+	const fcShown = getComputedStyle(fce).display !== 'none';
+	if (fcNumber !== expectedNumber) {
+		throw new Error(
+			`expected for ${expectedNumber} files, but found ${fcNumber}`
+		);
+	}
+	if (fcShown !== expectedShown) {
+		throw new Error(
+			`expected files count to be ${
+				expectedShown ? 'shown' : 'hidden'
+			}, but found ${fcShown ? 'shown' : 'hidden'}`
+		);
+	}
 }
 
 async function simulateChoseFiles(filePicker, total) {

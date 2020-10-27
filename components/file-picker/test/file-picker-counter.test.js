@@ -6,7 +6,7 @@ import {
 	isSafari,
 } from '../../../test/test-helpers.js';
 import {
-	getFilesCount,
+	assertFilesCount,
 	simulateChoseFiles,
 	simulateDropFiles,
 } from './file-picker-utils.test.js';
@@ -20,10 +20,9 @@ describe('file picker - count files hint', () => {
 		addedElements.forEach((elm) => elm.remove());
 	});
 
-	it('should have initial counter show 0', async () => {
+	it('should have initial counter show 0 and hidden', async () => {
 		addedElements = await create();
-		const filesCount = getFilesCount(addedElements[0]);
-		expect(filesCount).equal(0);
+		assertFilesCount(addedElements[0], 0, false);
 	});
 
 	it('should have counter set to number when valid choice', async () => {
@@ -34,8 +33,7 @@ describe('file picker - count files hint', () => {
 		const files = 4;
 		await simulateChoseFiles(addedElements[0], files);
 
-		const filesCount = getFilesCount(addedElements[0]);
-		expect(filesCount).equal(files);
+		assertFilesCount(addedElements[0], files, true);
 	});
 
 	it('should have counter set to number when valid drop', async () => {
@@ -46,8 +44,7 @@ describe('file picker - count files hint', () => {
 		const files = 4;
 		await simulateDropFiles(addedElements[0], files);
 
-		const filesCount = getFilesCount(addedElements[0]);
-		expect(filesCount).equal(files);
+		assertFilesCount(addedElements[0], files, true);
 	});
 
 	it('should have counter reset to 0 when invalid drop (multiple)', async () => {
@@ -57,15 +54,13 @@ describe('file picker - count files hint', () => {
 		addedElements = await create(false);
 
 		await simulateChoseFiles(addedElements[0], 1);
-		const filesCount1 = getFilesCount(addedElements[0]);
-		expect(filesCount1).equal(1);
+		assertFilesCount(addedElements[0], 1, true);
 
 		//	do invalid drop
 		const files = 4;
 		await simulateDropFiles(addedElements[0], files);
 
-		const filesCount2 = getFilesCount(addedElements[0]);
-		expect(filesCount2).equal(0);
+		assertFilesCount(addedElements[0], 0, false);
 	});
 });
 
