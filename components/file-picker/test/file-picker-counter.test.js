@@ -20,7 +20,7 @@ describe('file picker - count files hint', () => {
 		addedElements.forEach((elm) => elm.remove());
 	});
 
-	it('should have initial counter show 0 and hidden', async () => {
+	it('should have initial counter set to 0 and hidden', async () => {
 		addedElements = await create();
 		assertFilesCount(addedElements[0], 0, false);
 	});
@@ -47,7 +47,7 @@ describe('file picker - count files hint', () => {
 		assertFilesCount(addedElements[0], files, true);
 	});
 
-	it('should have counter reset to 0 when invalid drop (multiple)', async () => {
+	it('should have counter reset to 0 and hidden when invalid drop (multiple)', async () => {
 		if (isSafari()) {
 			return;
 		}
