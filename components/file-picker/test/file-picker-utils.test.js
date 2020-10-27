@@ -22,19 +22,21 @@ function mockDataTransfer(total) {
 
 function assertFilesCount(filePicker, expectedNumber, expectedShown) {
 	const fce = filePicker.shadowRoot.querySelector('.files-count');
-	const fcNumber = parseInt(fce.textContent);
-	const fcShown = getComputedStyle(fce).display !== 'none';
-	if (fcNumber !== expectedNumber) {
-		throw new Error(
-			`expected for ${expectedNumber} files, but found ${fcNumber}`
-		);
-	}
-	if (fcShown !== expectedShown) {
+	if (Boolean(fce) ^ expectedShown) {
 		throw new Error(
 			`expected files count to be ${
 				expectedShown ? 'shown' : 'hidden'
-			}, but found ${fcShown ? 'shown' : 'hidden'}`
+			}, but found ${fce ? 'shown' : 'hidden'}`
 		);
+	}
+
+	if (fce) {
+		const fcNumber = parseInt(fce.textContent);
+		if (fcNumber !== expectedNumber) {
+			throw new Error(
+				`expected for ${expectedNumber} files, but found ${fcNumber}`
+			);
+		}
 	}
 }
 

@@ -26,7 +26,7 @@ export class VWCFilePicker extends LitElement {
 	static styles = [styleCoupling, filePickerStyle];
 	#container: HTMLElement | null = null;
 
-	@property({ type: Number, reflect: true, attribute: 'files-count' })
+	@property({ type: Number, reflect: false })
 	private filesCount = 0;
 
 	@property({ type: String, reflect: true })
@@ -76,9 +76,7 @@ export class VWCFilePicker extends LitElement {
 					<slot name="dd-hint">${this.renderDragNDropHint()}</slot>
 					<slot name="${BUTTON_SLOT}" @click=${this.triggerFileInput}></slot>
 					<slot class="${INPUT_FILE_SLOT}"></slot>
-					<div class="files-count">
-						<vwc-badge connotation="error" shape="pill">${this.filesCount}</vwc-badge>
-					</div>
+					${this.renderFilesCount()}
 				</div>
 				${this.renderFooter()}
 			</label>
@@ -114,6 +112,18 @@ export class VWCFilePicker extends LitElement {
 
 	private renderDragNDropHint(): TemplateResult {
 		return html`<span class="dd-hint">Drag & Drop files here</span>`;
+	}
+
+	private renderFilesCount(): TemplateResult {
+		if (this.filesCount) {
+			return html`
+				<div class="files-count">
+					<vwc-badge connotation="error" shape="pill">${this.filesCount}</vwc-badge>
+				</div>
+			`;
+		} else {
+			return html``;
+		}
 	}
 
 	private setupDragNDrop(): void {

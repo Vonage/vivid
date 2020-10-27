@@ -111,9 +111,3 @@
 		display: none;
 	}
 }
-
-:host([files-count='0']) {
-	.files-count {
-		display: none;
-	}
-}
