@@ -28,7 +28,7 @@ function getStyleDictionaryConfig() {
 				buildPath: `${resolve()}/`,
 				files: [
 					{
-						destination: `build/scss/schemes/_variables-coupling.scss`,
+						destination: `build/scss/semantic-variables/_scheme-variables.scss`,
 						format: 'custom/format/css-to-scss',
 						filter: {
 							attributes: {
