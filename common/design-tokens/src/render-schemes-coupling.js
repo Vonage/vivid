@@ -8,7 +8,7 @@ const propertiesPath = resolve('../../node_modules/@vonage/vvd-design-tokens-pro
 
 
 StyleDictionaryPackage.registerFormat({
-	name: 'custom/format/scss',
+	name: 'custom/format/css-to-scss',
 	formatter: _.template(
 		fs.readFileSync(resolve('templates/web-scss-coupling.template'))
 	),
@@ -29,7 +29,7 @@ function getStyleDictionaryConfig() {
 				files: [
 					{
 						destination: `build/scss/schemes/_variables-coupling.scss`,
-						format: 'custom/format/scss',
+						format: 'custom/format/css-to-scss',
 						filter: {
 							attributes: {
 								category: 'color'
