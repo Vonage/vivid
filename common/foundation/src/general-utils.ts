@@ -10,7 +10,7 @@ export function handleAutofocus(targetElement: HTMLElement): void {
 			('matches' in rootNode &&
 				!(rootNode as HTMLElement).matches(':focus-within'))
 		) {
-			Promise.resolve().then(() => targetElement.focus());
+			targetElement.focus();
 		}
 	}
 }
