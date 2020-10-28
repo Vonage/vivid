@@ -8,6 +8,7 @@ import { style as vwcTextareaStyle } from './vwc-textarea.css';
 import { style as mwcTextareaStyle } from '@material/mwc-textarea/mwc-textarea-css.js';
 import { style as mwcTextfieldStyle } from '@material/mwc-textfield/mwc-textfield-css.js';
 import { associateWithForm } from '@vonage/vvd-foundation/form-association';
+import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -38,6 +39,7 @@ export class VWCTextArea extends MWCTextArea {
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
 		associateWithForm<VWCTextArea>(this, this.formElement);
+		handleAutofocus(this);
 	}
 
 	protected renderOutline(): TemplateResult | Record<string, unknown> {
