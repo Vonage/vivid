@@ -6,6 +6,7 @@ import '@vonage/vwc-textfield';
 const vwcElementsSupported = [
 	'vwc-checkbox',
 	'vwc-radio',
+	'vwc-select',
 	'vwc-slider',
 	'vwc-switch',
 	'vwc-textarea',
@@ -64,9 +65,11 @@ function clearAnyFocus() {
 
 function assertFocusStatus(vividInput, status) {
 	expect(vividInput.matches(':focus-within')).equal(status);
-	expect(
-		vividInput.shadowRoot
-			.querySelector('input, textarea, .mdc-slider')
-			.matches(':focus')
-	).equal(status);
+	if (vividInput.nodeName.toLowerCase() !== 'vwc-select') {
+		expect(
+			vividInput.shadowRoot
+				.querySelector('input, textarea, .mdc-slider')
+				.matches(':focus')
+		).equal(status);
+	}
 }

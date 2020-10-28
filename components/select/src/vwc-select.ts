@@ -14,6 +14,7 @@ import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-cou
 import { style as vwcSelectStyle } from './vwc-select.css';
 import { style as mwcSelectStyle } from '@material/mwc-select/mwc-select-css.js';
 import { associateWithForm } from '@vonage/vvd-foundation/form-association';
+import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -49,6 +50,7 @@ export class VWCSelect extends MWCSelect {
 		await super.firstUpdated();
 		this.replaceIcon();
 		associateWithForm<VWCSelect>(this, this.formElement);
+		handleAutofocus(this);
 	}
 
 	protected updated(changedProperties: PropertyValues): void {
