@@ -4435,40 +4435,10 @@
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@ungap/promise-all-settled/-/promise-all-settled-1.1.2.tgz#aa58042711d6e3275dd37dc597e5d31e8c290a44"
   integrity sha1-qlgEJxHW4ydd033Fl+XTHowpCkQ=
 
-"@vonage/vvd-core@^0.13.0":
-  version "0.13.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@vonage/vvd-core/0.13.0/376f66242b30011b8de5379cfdbdf66c38a0ad5c1cf59b9adbc2694794bca01e#c7e85393c53d50201e5cdd87ee19bd50180d68f6"
-  integrity sha1-x+hTk8U9UCAeXN2H7hm9UBgNaPY=
-  dependencies:
-    "@vonage/vvd-fonts" "^0.13.0"
-    "@vonage/vvd-scheme" "^0.13.0"
-    tslib "^2.0.2"
-
 "@vonage/vvd-design-tokens-properties@^0.2.4":
   version "0.2.4"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@vonage/vvd-design-tokens-properties/0.2.4/6dcbf565d7f997416cd1dbc98f5b5f3d61ed2c7c37d7c8301bf9008a2d2284a3#ccb6407f9ee06b39a9bb2d2c8bc173aafcd50b94"
   integrity sha1-zLZAf57gazmpuy0si8FzqvzVC5Q=
-
-"@vonage/vvd-fonts@^0.13.0":
-  version "0.13.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@vonage/vvd-fonts/0.13.0/c43e8fd2b91f595df57869b037792a79832b4d9d387f64e1c5c896089657f339#6283caaa94815720ee736eecc72eb0a03a1ca286"
-  integrity sha1-YoPKqpSBVyDuc27sxy6woDocooY=
-  dependencies:
-    tslib "^2.0.2"
-
-"@vonage/vvd-foundation@^0.13.0":
-  version "0.13.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@vonage/vvd-foundation/0.13.0/534cd15712b11b2632dcaf32b861406b9525bdc5c564e9b973eafeb5192e57e5#63f6b69167467eab9543bb4fa5b933970b4e3eff"
-  integrity sha1-Y/a2kWdGfquVQ7tPpbkzlwtOPv8=
-  dependencies:
-    tslib "^2.0.2"
-
-"@vonage/vvd-scheme@^0.13.0":
-  version "0.13.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@vonage/vvd-scheme/0.13.0/e9edad88b4bd5b37a5e48cfe4d529ea07319c1257e0e364e0d082924d38a3b54#64998b8dc24a1f2ca1df0b0ca7dd81bc57ac1227"
-  integrity sha1-ZJmLjcJKHyyh3wsMp92BvFesEic=
-  dependencies:
-    tslib "^2.0.2"
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
@@ -15984,7 +15954,7 @@ tslib@^1.10.0, tslib@^1.11.1, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha1-zy04vcNKE0vK8QkcQfZhni9nLQA=
 
-tslib@^2.0.0, tslib@^2.0.1, tslib@^2.0.2, tslib@^2.0.3:
+tslib@^2.0.0, tslib@^2.0.1, tslib@^2.0.3:
   version "2.0.3"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/tslib/-/tslib-2.0.3.tgz#8e0741ac45fc0c226e58a17bfc3e64b9bc6ca61c"
   integrity sha1-jgdBrEX8DCJuWKF7/D5kubxsphw=
