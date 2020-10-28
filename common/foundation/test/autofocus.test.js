@@ -5,7 +5,7 @@ import '@vonage/vwc-textfield';
 
 const vwcElementsSupported = ['vwc-textarea', 'vwc-textfield'];
 
-describe.only('autofocus', () => {
+describe('autofocus', () => {
 	it('should NOT throw on invalid input', async () => {
 		handleAutofocus();
 		handleAutofocus(null);
