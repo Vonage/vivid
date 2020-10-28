@@ -1,4 +1,4 @@
-# `Dialog`
+# `dialog`
 
 #### `should have internal contents matching snapshot`
 

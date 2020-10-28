@@ -1,13 +1,9 @@
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 
 :host {
-	--mdc-dialog-heading-ink-color: --vvd-color-surface-foreground;
-
-	--mdc-theme-surface: --vvd-color-surface-background;
-
-	--mdc-dialog-content-ink-color: --vvd-color-surface-foreground;
-
+	--mdc-theme-surface: var(--vvd-color-surface-background);
+	--mdc-dialog-heading-ink-color: var(--vvd-color-surface-foreground);
+	--mdc-dialog-content-ink-color: var(--vvd-color-surface-foreground);
 	--mdc-shape-medium: 6px;
-
 	--mdc-dialog-box-shadow: 0px 4px 20px rgba(19, 20, 21, 0.1);
 }
