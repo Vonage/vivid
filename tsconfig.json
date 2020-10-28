@@ -42,6 +42,7 @@
 		{ "path": "components/chips" },
 		{ "path": "components/mwc-chips" },
 		{ "path": "components/circular-progress" },
+		{ "path": "components/dialog" },
 		{ "path": "components/drawer" },
 		{ "path": "components/fab" },
 		{ "path": "components/file-picker" },
@@ -62,7 +63,6 @@
 		{ "path": "components/textarea" },
 		{ "path": "components/textfield" },
 		{ "path": "components/top-app-bar" },
-		{ "path": "components/top-app-bar-fixed" },
-		{ "path": "components/dialog" }
+		{ "path": "components/top-app-bar-fixed" }
 	]
 }
