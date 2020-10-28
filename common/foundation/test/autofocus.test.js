@@ -3,7 +3,14 @@ import { textToDomToParent, waitNextTask } from '../../../test/test-helpers';
 import '@vonage/vwc-textarea';
 import '@vonage/vwc-textfield';
 
-const vwcElementsSupported = ['vwc-textarea', 'vwc-textfield'];
+const vwcElementsSupported = [
+	'vwc-checkbox',
+	'vwc-radio',
+	'vwc-slider',
+	'vwc-switch',
+	'vwc-textarea',
+	'vwc-textfield',
+];
 
 describe('autofocus', () => {
 	it('should NOT throw on invalid input', async () => {
@@ -58,6 +65,8 @@ function clearAnyFocus() {
 function assertFocusStatus(vividInput, status) {
 	expect(vividInput.matches(':focus-within')).equal(status);
 	expect(
-		vividInput.shadowRoot.querySelector('input, textarea').matches(':focus')
+		vividInput.shadowRoot
+			.querySelector('input, textarea, .mdc-slider')
+			.matches(':focus')
 	).equal(status);
 }

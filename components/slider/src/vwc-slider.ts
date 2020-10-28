@@ -4,6 +4,7 @@ import { Slider as MWCSlider } from '@material/mwc-slider';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import { style as mwcSliderStyle } from '@material/mwc-slider/mwc-slider-css.js';
 import { style as vwcSliderStyle } from './vwc-slider.css';
+import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -23,5 +24,6 @@ export class VWCSlider extends MWCSlider {
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
 		this.pinMarkerText = this.value?.toLocaleString();
+		handleAutofocus(this);
 	}
 }

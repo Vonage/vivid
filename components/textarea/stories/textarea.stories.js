@@ -28,11 +28,8 @@ Required.args = {
 	validationMessage: 'Required field'
 };
 
-const TemplateAutofocus = (args) =>
-	html`<vwc-textarea ...=${spread(args)} @keydown=${handleKeyDown} autofocus></vwc-textarea>`;
-
-export const Autofocus = TemplateAutofocus.bind({});
-Autofocus.args = { outlined: '', label: 'VWC Textarea' };
+export const Autofocus = Template.bind({});
+Autofocus.args = { outlined: '', label: 'VWC Textarea', autofocus: true };
 
 function handleKeyDown(e) {
 	e.stopPropagation();

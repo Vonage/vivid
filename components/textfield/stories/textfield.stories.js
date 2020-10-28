@@ -35,11 +35,8 @@ Icon.args = {
 	validationMessage: 'Numbers only'
 };
 
-const TemplateAutofocus = (args) =>
-	html`<vwc-textfield ...=${spread(args)} @keydown=${handleKeyDown} @change=${onChange} @input=${onInput} autofocus></vwc-textfield>`;
-
-export const Autofocus = TemplateAutofocus.bind({});
-Autofocus.args = { outlined: '', label: 'e.g. username' };
+export const Autofocus = Template.bind({});
+Autofocus.args = { outlined: '', label: 'e.g. username', autofocus: true };
 
 function handleKeyDown(e) {
 	e.stopPropagation();
