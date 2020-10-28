@@ -1,6 +1,6 @@
 import { waitNextTask } from '../../../test/test-helpers.js';
 
-export { getInput, assertFilesCount, simulateChoseFiles, simulateDropFiles };
+export { getInput, assertFilesCount, simulateFilesSelect, simulateFilesDrop };
 
 function getInput(filePicker) {
 	return filePicker.querySelector('[type="file"]');
@@ -40,7 +40,7 @@ function assertFilesCount(filePicker, expectedNumber, expectedShown) {
 	}
 }
 
-async function simulateChoseFiles(filePicker, total) {
+async function simulateFilesSelect(filePicker, total) {
 	const fi = getInput(filePicker);
 	const ft = mockDataTransfer(total);
 	fi.files = ft.files;
@@ -48,7 +48,7 @@ async function simulateChoseFiles(filePicker, total) {
 	await waitNextTask();
 }
 
-async function simulateDropFiles(filePicker, total) {
+async function simulateFilesDrop(filePicker, total) {
 	const dz = getDropZone(filePicker);
 	const ft = mockDataTransfer(total);
 	const de = new CustomEvent('drop', { bubbles: true });

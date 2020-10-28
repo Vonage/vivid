@@ -7,8 +7,8 @@ import {
 } from '../../../test/test-helpers.js';
 import {
 	getInput,
-	simulateChoseFiles,
-	simulateDropFiles,
+	simulateFilesSelect,
+	simulateFilesDrop,
 } from './file-picker-utils.test.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
@@ -66,7 +66,7 @@ describe('file picker', () => {
 
 			expect(internalInput).exist;
 			if (!isSafari()) {
-				await simulateChoseFiles(filePicker, filesTotal);
+				await simulateFilesSelect(filePicker, filesTotal);
 			}
 
 			return new Promise((resolve) => {
@@ -108,7 +108,7 @@ describe('file picker', () => {
 
 			const filesTotal = 3;
 			if (!isSafari()) {
-				await simulateDropFiles(filePicker, filesTotal);
+				await simulateFilesDrop(filePicker, filesTotal);
 			}
 
 			return new Promise((resolve) => {
