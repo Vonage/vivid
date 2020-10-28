@@ -172,7 +172,7 @@ describe('carousel', () => {
 			const expectedStyleActive = {
 				backgroundColor: scheme === 'light' ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)',
 			};
-			const expectedStyleInactive = { backgroundColor: 'rgb(194, 196, 204)' };
+			const expectedStyleInactive = { backgroundColor: 'rgb(117, 117, 117)' };
 
 			expect(bullets.length).equal(3);
 			assertComputedStyle(bullets[0], expectedStyleActive);
@@ -188,10 +188,10 @@ describe('carousel', () => {
 			const scheme = schemeService.getSelectedScheme();
 			const expectedStyle = {
 				fill: scheme === 'light' ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)',
-				borderTopColor: 'rgb(206, 208, 215)',
-				borderLeftColor: 'rgb(206, 208, 215)',
-				borderRightColor: 'rgb(206, 208, 215)',
-				borderBottomColor: 'rgb(206, 208, 215)',
+				borderTopColor: 'rgb(153, 153, 153)',
+				borderLeftColor: 'rgb(153, 153, 153)',
+				borderRightColor: 'rgb(153, 153, 153)',
+				borderBottomColor: 'rgb(153, 153, 153)',
 			};
 
 			expect(navButtons.length).equal(2);
