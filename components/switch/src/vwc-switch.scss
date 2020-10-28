@@ -122,7 +122,7 @@
 	--vvd-switch-unchecked-background-focus: #{color-base.$grey-800};
 	--vvd-switch-unchecked-border-focus: #{color-base.$grey-900};
 
-	--vvd-switch-disabled-background: #{color-base.$grey-500};
+	--vvd-switch-disabled-background: var(--vvd-color-base-neutral);
 	--vvd-switch-shadow-focus: 19, 20, 21, 0.42;
 
 	--mdc-theme-on-surface: var(--vvd-switch-unchecked-background);
