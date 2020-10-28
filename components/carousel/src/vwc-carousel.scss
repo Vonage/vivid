@@ -41,7 +41,7 @@ vwc-casousel:active {
 	display: flex;
 }
 
-$themeColor: var(--vvd-color-surface-foreground) !default;
+$themeColor: var(--vvd-color-base-foreground) !default;
 
 @import ".../../../node_modules/swiper/scss/functions";
 @import "../../../node_modules/swiper/components/core/core";
