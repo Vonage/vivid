@@ -1,6 +1,6 @@
 export function handleAutofocus(targetElement: HTMLElement): void {
-	if (!targetElement) {
-		console.error(`target element expected, got '${targetElement}'`);
+	if (!targetElement || !targetElement.hasAttribute) {
+		console.error(`HTMLElement target expected, got '${targetElement}'`);
 		return;
 	}
 	if (targetElement.hasAttribute('autofocus')) {
