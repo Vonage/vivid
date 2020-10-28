@@ -32,7 +32,6 @@
 		"tslib": "^2.0.3"
 	},
 	"devDependencies": {
-		"@types/swiper": "^5.4.0",
-		"@vonage/vvd-foundation": "^0.15.0"
+		"@types/swiper": "^5.4.0"
 	}
 }

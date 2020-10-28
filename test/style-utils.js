@@ -37,7 +37,7 @@ export const captionTypographyStyles = {
 	textTransform: 'none',
 }
 
-export const PRINCIPAL_VARIABLES_FILTER = /base|surface|primary/;
+export const PRINCIPAL_VARIABLES_FILTER = /(base|surface|primary)-(background|foreground)/;
 
 export function getSchemeFiles() {
 	const DT_SCHEMES_BASE_PATH = 'common/design-tokens/build/scss/schemes/';
