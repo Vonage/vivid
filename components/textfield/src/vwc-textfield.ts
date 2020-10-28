@@ -17,6 +17,7 @@ import {
 	associateWithForm,
 	submitOnEnter,
 } from '@vonage/vvd-foundation/form-association';
+import { Shape } from '@vonage/vvd-foundation/constants';
 export { TextFieldType } from '@material/mwc-textfield';
 
 declare global {
@@ -29,16 +30,13 @@ declare global {
 // @ts-ignore
 MWCTextField.styles = [styleCoupling, mwcTextFieldStyle, vwcTextFieldStyle];
 
-const shapes = ['rounded', 'pill'] as const;
-export type TextFieldShape = typeof shapes;
-
 @customElement('vwc-textfield')
 export class VWCTextField extends MWCTextField {
 	@property({ type: Boolean, reflect: true })
 	dense = false;
 
 	@property({ type: String, reflect: true })
-	shape: TextFieldShape[number] = 'rounded';
+	shape?: Shape;
 
 	@property({ type: String, reflect: true })
 	form: string | undefined;

@@ -299,7 +299,6 @@ describe('textfield', () => {
 				'.mdc-text-field'
 			);
 
-			expect(formElement.getAttribute('shape') === 'rounded').to.equal(true);
 			assertComputedStyle(actualElement, borderRadiusStyles(6));
 		});
 

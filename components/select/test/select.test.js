@@ -341,7 +341,6 @@ describe('select', () => {
 			const formElement = addedElements[0];
 			const actualElement = formElement.shadowRoot.querySelector('.mdc-select');
 
-			expect(formElement.getAttribute('shape') === 'rounded').to.equal(true);
 			assertComputedStyle(actualElement, borderRadiusStyles(6));
 		});
 
