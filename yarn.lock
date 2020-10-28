@@ -4444,10 +4444,10 @@
     "@vonage/vvd-scheme" "^0.13.0"
     tslib "^2.0.2"
 
-"@vonage/vvd-design-tokens-properties@^0.2.1":
-  version "0.2.1"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@vonage/vvd-design-tokens-properties/0.2.1/36522e99071a2a8842b4b097f05672caa5020539db3dfad8801460d3c74526a3#06fbb3715a0c0f11a66bf3ff7e25e8827cad9ff5"
-  integrity sha1-BvuzcVoMDxGma/P/fiXognytn/U=
+"@vonage/vvd-design-tokens-properties@^0.2.4":
+  version "0.2.4"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@vonage/vvd-design-tokens-properties/0.2.4/6dcbf565d7f997416cd1dbc98f5b5f3d61ed2c7c37d7c8301bf9008a2d2284a3#ccb6407f9ee06b39a9bb2d2c8bc173aafcd50b94"
+  integrity sha1-zLZAf57gazmpuy0si8FzqvzVC5Q=
 
 "@vonage/vvd-fonts@^0.13.0":
   version "0.13.0"
