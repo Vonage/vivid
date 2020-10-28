@@ -25,4 +25,9 @@ export class VWCCheckbox extends MWCCheckbox {
 		await super.firstUpdated();
 		handleAutofocus(this);
 	}
+
+	focus(): void {
+		super.focus();
+		this.formElement.focus();
+	}
 }

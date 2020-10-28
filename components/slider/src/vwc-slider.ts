@@ -26,4 +26,9 @@ export class VWCSlider extends MWCSlider {
 		this.pinMarkerText = this.value?.toLocaleString();
 		handleAutofocus(this);
 	}
+
+	focus(): void {
+		super.focus();
+		this.formElement.focus();
+	}
 }
