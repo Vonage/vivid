@@ -6,7 +6,8 @@ export function handleAutofocus(targetElement: HTMLElement): void {
 	if (targetElement.hasAttribute('autofocus')) {
 		const rootNode = targetElement.getRootNode();
 		if (
-			('hasFocus' in rootNode && !(rootNode as Document).hasFocus()) ||
+			('activeElement' in rootNode &&
+				!(rootNode as Document).activeElement?.matches(':focus')) ||
 			('matches' in rootNode &&
 				!(rootNode as HTMLElement).matches(':focus-within'))
 		) {

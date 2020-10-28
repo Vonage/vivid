@@ -14,7 +14,7 @@ describe('autofocus', () => {
 
 	vwcElementsSupported.forEach((vwcElement) => {
 		describe(`autofocus behaviour of '${vwcElement}'`, () => {
-			it('should focus on target if no other element focused in parent', async () => {
+			it('should focus on target if no other element focused', async () => {
 				clearAnyFocus();
 
 				const [e] = textToDomToParent(`<${vwcElement} autofocus></${vwcElement}>`);
@@ -24,7 +24,7 @@ describe('autofocus', () => {
 				e.remove();
 			});
 
-			it('should NOT "steal" focus from already focused element in parent in any', async () => {
+			it('should NOT "steal" focus from already focused element if any', async () => {
 				const [input] = textToDomToParent('<input/>');
 				input.focus();
 
@@ -33,10 +33,12 @@ describe('autofocus', () => {
 
 				assertFocusStatus(e, false);
 				e.remove();
+				input.blur();
 				input.remove();
+				document.body.blur();
 			});
 
-			it('should NOT focus on target "autofocus" not specified', async () => {
+			it('should NOT focus when "autofocus" not specified', async () => {
 				clearAnyFocus();
 
 				const [e] = textToDomToParent(`<${vwcElement}></${vwcElement}>`);
@@ -50,10 +52,7 @@ describe('autofocus', () => {
 });
 
 function clearAnyFocus() {
-	const currentlyFocused = document.querySelector(':focus');
-	if (currentlyFocused) {
-		currentlyFocused.blur();
-	}
+	document.activeElement?.blur();
 }
 
 function assertFocusStatus(vividInput, status) {
