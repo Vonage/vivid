@@ -1,13 +1,11 @@
-@use '@vonage/vvd-foundation/scss/variable-names/color-base-variable-names' as color-base;
-
 .swiper-nav {
 	flex: 0 0 29px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	fill: var(--vvd-color-surface-foreground);
+	fill: var(--vvd-color-base-foreground);
 	background-color: var(--vvd-color-base-background);
-	border: 1px solid color-base.$grey-400;
+	border: 1px solid var(--vvd-color-base-dim);
 	box-sizing: border-box;
 	overflow: hidden;
 	outline: none;

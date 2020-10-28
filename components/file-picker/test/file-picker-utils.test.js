@@ -1,6 +1,6 @@
 import { waitNextTask } from '../../../test/test-helpers.js';
 
-export { getInput, getFilesCount, simulateChoseFiles, simulateDropFiles };
+export { getInput, assertFilesCount, simulateFilesSelect, simulateFilesDrop };
 
 function getInput(filePicker) {
 	return filePicker.querySelector('[type="file"]');
@@ -20,13 +20,27 @@ function mockDataTransfer(total) {
 	return dt;
 }
 
-function getFilesCount(filePicker) {
-	return parseInt(
-		filePicker.shadowRoot.querySelector('.files-count').textContent
-	);
+function assertFilesCount(filePicker, expectedNumber, expectedShown) {
+	const fce = filePicker.shadowRoot.querySelector('.files-count');
+	if (Boolean(fce) ^ expectedShown) {
+		throw new Error(
+			`expected files count to be ${
+				expectedShown ? 'shown' : 'hidden'
+			}, but found ${fce ? 'shown' : 'hidden'}`
+		);
+	}
+
+	if (fce) {
+		const fcNumber = parseInt(fce.textContent);
+		if (fcNumber !== expectedNumber) {
+			throw new Error(
+				`expected for ${expectedNumber} files, but found ${fcNumber}`
+			);
+		}
+	}
 }
 
-async function simulateChoseFiles(filePicker, total) {
+async function simulateFilesSelect(filePicker, total) {
 	const fi = getInput(filePicker);
 	const ft = mockDataTransfer(total);
 	fi.files = ft.files;
@@ -34,7 +48,7 @@ async function simulateChoseFiles(filePicker, total) {
 	await waitNextTask();
 }
 
-async function simulateDropFiles(filePicker, total) {
+async function simulateFilesDrop(filePicker, total) {
 	const dz = getDropZone(filePicker);
 	const ft = mockDataTransfer(total);
 	const de = new CustomEvent('drop', { bubbles: true });

@@ -14,14 +14,6 @@
     </slot>
     <slot class="input-file-slot">
     </slot>
-    <div class="files-count">
-      <vwc-badge
-        connotation="error"
-        shape="pill"
-      >
-        0
-      </vwc-badge>
-    </div>
   </div>
 </label>
 
