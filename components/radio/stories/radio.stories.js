@@ -27,4 +27,5 @@ Checked.args = { checked: '' };
 export const Disabled = Template.bind({});
 Disabled.args = { checked: '', disabled: '' };
 
-// TODO: error example
+export const Autofocus = Template.bind({});
+Autofocus.args = { autofocus: true };
