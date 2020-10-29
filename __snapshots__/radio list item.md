@@ -12,7 +12,7 @@
 <mwc-radio
   class="mdc-list-item__meta"
   global=""
-  tabindex="-1"
+  tabindex="null"
 >
 </mwc-radio>
 

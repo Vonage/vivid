@@ -5,7 +5,11 @@
 ####   `should have the required elements`
 
 ```html
-<vwc-select shape="rounded">
+<vwc-select
+  aria-hidden="true"
+  inert=""
+  shape="rounded"
+>
   <vwc-list-item
     activated=""
     aria-disabled="false"

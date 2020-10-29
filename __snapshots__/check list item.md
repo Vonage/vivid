@@ -12,7 +12,7 @@
 <span class="mdc-list-item__meta">
   <mwc-checkbox
     reducedtouchtarget=""
-    tabindex="-1"
+    tabindex="null"
   >
   </mwc-checkbox>
 </span>

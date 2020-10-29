@@ -6,6 +6,7 @@ import {
 	awaitEvent,
 	assertComputedStyle,
 } from '../../../test/test-helpers.js';
+import { borderRadiusStyles } from '../../../test/style-utils.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import vvdCore from '@vonage/vvd-core';
 
@@ -16,7 +17,7 @@ const COMPONENT_NAME = 'vwc-dialog';
 describe('dialog', () => {
 	let addElement = isolatedElementsCreation();
 
-	it(`${COMPONENT_NAME} is defined as a custom element`, async () => {
+	it('should be defined as a custom element', async () => {
 		assert.exists(customElements.get(COMPONENT_NAME));
 	});
 
@@ -30,21 +31,18 @@ describe('dialog', () => {
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
-	describe(`styles`, function () {
-		it(`should have the wanted styles`, async function () {
+	describe('styles', function () {
+		it('should be styled as expected', async function () {
 			await vvdCore.set({
 				scheme: 'light',
 			});
 
-			const surfaceWantedStyles = {
-				'background-color': 'rgb(255, 255, 255)',
-				'border-radius': '6px',
-				'box-shadow': 'rgba(19, 20, 21, 0.1) 0px 4px 20px 0px',
+			const surfaceExpectedColors = {
+				backgroundColor: 'rgb(255, 255, 255)',
+				boxShadow: 'rgba(19, 20, 21, 0.1) 0px 4px 20px 0px',
 			};
-
-			const contentWantedStyles = {
-				color: 'rgb(0, 0, 0)',
-			};
+			const surfaceExpectedBorderRadius = borderRadiusStyles(6);
+			const contentExpectedColors = { color: 'rgb(0, 0, 0)' };
 
 			const [actualElement] = textToDomToParent(
 				`<${COMPONENT_NAME} open><div>Content</div></${COMPONENT_NAME}>`
@@ -56,8 +54,9 @@ describe('dialog', () => {
 			);
 			const content = actualElement.shadowRoot.querySelector('#content');
 
-			assertComputedStyle(surface, surfaceWantedStyles);
-			assertComputedStyle(content, contentWantedStyles);
+			assertComputedStyle(surface, surfaceExpectedColors);
+			assertComputedStyle(surface, surfaceExpectedBorderRadius);
+			assertComputedStyle(content, contentExpectedColors);
 		});
 	});
 });
