@@ -4,6 +4,7 @@ import { Switch as MWCSwitch } from '@material/mwc-switch';
 import { style as vwcSwitchStyle } from './vwc-switch.css';
 import { style as mwcSwitchStyle } from '@material/mwc-switch/mwc-switch-css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling';
+import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -28,6 +29,11 @@ export class VWCSwitch extends MWCSwitch {
 
 	@property({ type: Boolean, reflect: true })
 	enlarged = false;
+
+	async firstUpdated(): Promise<void> {
+		await super.firstUpdated();
+		handleAutofocus(this);
+	}
 
 	protected renderRipple(): TemplateResult {
 		return html``;
