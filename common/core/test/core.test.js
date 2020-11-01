@@ -64,11 +64,12 @@ describe.only('vvd-core service', () => {
 			const iframeWindow = iframe.contentWindow;
 			await iframeWindow.executeSetup();
 
-			const coreInitResult = await iframeWindow.vvdCore.settled;
-			expect(coreInitResult).exist;
-			expect(coreInitResult.scheme).exist;
-			expect(coreInitResult.scheme.option).equals(vvdContextNone);
-			expect(coreInitResult.scheme.scheme).equals(vvdContextNone);
+			try {
+				await iframeWindow.vvdCore.settled;
+			} catch (e) {
+				expect(e).exist;
+				expect(e.includes('auto-init unavailable')).true;
+			}
 		});
 	});
 });
