@@ -5,6 +5,11 @@ import {
 	randomAlpha,
 	isSafari,
 } from '../../../test/test-helpers.js';
+import {
+	getInput,
+	simulateFilesSelect,
+	simulateFilesDrop,
+} from './file-picker-utils.test.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
@@ -52,14 +57,16 @@ describe('file picker', () => {
 					<button></button>
 				</form>
 			`);
+			await waitNextTask();
+
 			const form = addedElements[0];
 			const filePicker = form.querySelector(VWC_COMPONENT);
-			const internalInput = filePicker.querySelector('[type="file"]');
+			const internalInput = getInput(filePicker);
 			const filesTotal = 3;
 
 			expect(internalInput).exist;
 			if (!isSafari()) {
-				mockInputFiles(internalInput, filesTotal);
+				await simulateFilesSelect(filePicker, filesTotal);
 			}
 
 			return new Promise((resolve) => {
@@ -81,15 +88,17 @@ describe('file picker', () => {
 			const filePickerName = randomAlpha();
 			addedElements = textToDomToParent(`
 				<form>
-					<${VWC_COMPONENT}><input type="file" name="${filePickerName}"/></${VWC_COMPONENT}>
+					<${VWC_COMPONENT}><input type="file" name="${filePickerName}" multiple/></${VWC_COMPONENT}>
 					<button></button>
 				</form>
 				<form><button></button></form>
 			`);
+			await waitNextTask();
+
 			const formA = addedElements[0];
 			const formB = addedElements[1];
 			const filePicker = formA.querySelector(VWC_COMPONENT);
-			const internalInput = filePicker.querySelector('[type="file"]');
+			const internalInput = getInput(filePicker);
 
 			expect(internalInput).exist;
 			expect(internalInput.form).equal(formA);
@@ -99,7 +108,7 @@ describe('file picker', () => {
 
 			const filesTotal = 3;
 			if (!isSafari()) {
-				mockInputFiles(internalInput, filesTotal);
+				await simulateFilesDrop(filePicker, filesTotal);
 			}
 
 			return new Promise((resolve) => {
@@ -129,7 +138,7 @@ describe('file picker', () => {
 			const formA = addedElements[0];
 			const formB = addedElements[1];
 			const filePicker = addedElements[2];
-			const internalInput = filePicker.querySelector('[type="file"]');
+			const internalInput = getInput(filePicker);
 
 			expect(internalInput.form).null;
 
@@ -141,13 +150,3 @@ describe('file picker', () => {
 		});
 	});
 });
-
-function mockInputFiles(input, total) {
-	const dt = new DataTransfer();
-	for (let i = 0; i < total; i++) {
-		dt.items.add(
-			new File(['file content'], `file-${i}.png`, { type: 'image/png' })
-		);
-	}
-	input.files = dt.files;
-}

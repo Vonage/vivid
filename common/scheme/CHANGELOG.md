@@ -1,3 +1,17 @@
+# [0.15.0](https://github.com/vonage/vivid/compare/v0.14.0...v0.15.0) (2020-10-27)
+
+
+
+# [0.14.0](https://github.com/vonage/vivid/compare/v0.13.0...v0.14.0) (2020-10-25)
+
+
+### Bug Fixes
+
+* **scheme:** Scheme default to light mode ([539cade](https://github.com/vonage/vivid/commit/539cade5d1a3b95c235b536f7cda3252fdb151db))
+* **scheme tests:** aligned tests with PR Tests temporarly modified to match a 'light' scheme defult BREAKING CHANGE: scheme now serves 'light' scheme by default instead of os settings ([51460c1](https://github.com/vonage/vivid/commit/51460c1ee189876739de4b39be6db492be7c9ac2))
+
+
+
 # [0.13.0](https://github.com/vonage/vivid/compare/v0.12.5...v0.13.0) (2020-10-12)
 
 

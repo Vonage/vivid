@@ -4,8 +4,8 @@
 $vvd-select-size-block: --vvd-select-size-block;
 
 :host {
-  --mdc-select-fill-color: var(--vvd-color-surface-background);
-  --mdc-select-ink-color: var(--mdc-theme-primary);
+  --mdc-select-fill-color: var(--vvd-color-base-background);
+  --mdc-select-ink-color: var(--vvd-color-base-foreground);
   --mdc-select-label-ink-color: var(#{color-semantic.$formfield-label-idle-ink});
 	--mdc-select-disabled-ink-color: var(#{color-semantic.$formfield-disabled-ink});
 	--mdc-select-disabled-fill-color: var(#{color-semantic.$formfield-disabled-fill});

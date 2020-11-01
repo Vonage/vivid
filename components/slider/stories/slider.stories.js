@@ -25,6 +25,9 @@ Markers.args = { value: 10, min: 0, max: 70, step: 10, pin: '', markers: '', cha
 export const Disabled = Template.bind({});
 Disabled.args = { value: 50, disabled: '' };
 
+export const Autofocus = Template.bind({});
+Autofocus.args = { value: 33, step: 10, markers: true, autofocus: true };
+
 function continuousChange(e) {
 	console.log('continuous', e.detail.value);
 }
