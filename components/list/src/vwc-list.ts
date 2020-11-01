@@ -11,12 +11,38 @@ declare global {
 	}
 }
 
+function debounce(callback: Function, waitInMS = 50) {
+	let timeoutId: NodeJS.Timeout;
+	return function<T> (this: T, ...args: any[]) {
+		if (timeoutId) {
+			clearTimeout(timeoutId);
+		}
+		// eslint-disable-next-line @typescript-eslint/no-this-alias
+		const context = this;
+		return new Promise(res => {
+			timeoutId = setTimeout(() => res(callback.apply(context, args)), waitInMS);
+		});
+	}
+}
+
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 MWCList.styles = [styleCoupling, mwcListStyle, vwcListStyle];
 
+const debouncedLayout = debounce(function<T>(this: T, ...args: any[]) {
+	if (!this) {
+		return;
+	}
+	MWCList.prototype.layout(...args);
+});
 /**
  * This component is an extension of [<mwc-list>](https://github.com/material-components/material-components-web-components/tree/master/packages/list)
  */
 @customElement('vwc-list')
-export class VWCList extends MWCList {}
+export class VWCList extends MWCList {
+	layout(updateItems?: boolean) {
+		debouncedLayout(updateItems, 25);
+	}
+}
+
+
