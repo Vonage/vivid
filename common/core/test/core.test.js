@@ -1,4 +1,4 @@
-import vvdCore from '@vonage/vvd-core.js';
+import vvdCore from '../vvd-core.js';
 
 describe.only('vvd-core service', () => {
 	it('verify basic core API', async () => {
@@ -16,7 +16,7 @@ describe.only('vvd-core service', () => {
 	});
 
 	it('should perform auto-init to default when no data-vvd-context provided', async () => {
-		const vvdCoreDedicated = (await import('@vonage/vvd-core.js')).default;
+		const vvdCoreDedicated = (await import('../vvd-core.js')).default;
 		assert.isDefined(vvdCoreDedicated.settled);
 		const readyResult = await vvdCoreDedicated.settled;
 		assert.isArray(readyResult);
@@ -26,7 +26,7 @@ describe.only('vvd-core service', () => {
 	});
 
 	it('should NOT perform auto-init when data-vvd-context is "none"', async () => {
-		const vvdCoreDedicated = (await import('@vonage/vvd-core.js')).default;
+		const vvdCoreDedicated = (await import('../vvd-core.js')).default;
 		assert.isDefined(vvdCoreDedicated.settled);
 		const readyResult = await vvdCoreDedicated.settled;
 		assert.isArray(readyResult);
