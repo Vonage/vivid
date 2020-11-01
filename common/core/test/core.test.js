@@ -1,6 +1,11 @@
 import vvdCore from '../vvd-core.js';
 import { getFrameLoadedInjected } from '../../../test/test-helpers.js';
 
+const CORE_SETUP_HTML_TAG = 'coreSetupTest';
+const LIGHT = 'light';
+const DARK = 'dark';
+const NONE = 'none';
+
 describe.only('vvd-core service', () => {
 	it('verify basic core API', async () => {
 		assert.isDefined(vvdCore, 'core service is defined');
@@ -17,16 +22,53 @@ describe.only('vvd-core service', () => {
 	});
 
 	it('should perform auto-init to default when no data-vvd-context provided', async () => {
-		const ifr = await getFrameLoadedInjected('coreSetupTest');
-		const coreSettledResult = await ifr.contentWindow.vvdCoreSettled;
-		console.log(coreSettledResult);
+		await getFrameLoadedInjected(CORE_SETUP_HTML_TAG, async (iframe) => {
+			const iframeWindow = iframe.contentWindow;
+			await iframeWindow.executeSetup();
+
+			const coreInitResult = await iframeWindow.vvdCore.settled;
+			expect(coreInitResult).exist;
+			expect(coreInitResult.scheme).exist;
+			expect(coreInitResult.scheme.option).equals(LIGHT);
+			expect(coreInitResult.scheme.scheme).equals(LIGHT);
+		});
 	});
 
 	it('should perform auto-init to a value in data-vvd-context, when provided', async () => {
-		const ifr = await getFrameLoadedInjected('coreSetupTest');
-		const coreSettledResult = await ifr.contentWindow.vvdCoreSettled;
-		console.log(coreSettledResult);
+		const vvdContextDark = DARK;
+		await getFrameLoadedInjected(CORE_SETUP_HTML_TAG, async (iframe) => {
+			iframe.contentDocument.documentElement.setAttribute(
+				'data-vvd-context',
+				vvdContextDark
+			);
+
+			const iframeWindow = iframe.contentWindow;
+			await iframeWindow.executeSetup();
+
+			const coreInitResult = await iframeWindow.vvdCore.settled;
+			expect(coreInitResult).exist;
+			expect(coreInitResult.scheme).exist;
+			expect(coreInitResult.scheme.option).equals(vvdContextDark);
+			expect(coreInitResult.scheme.scheme).equals(vvdContextDark);
+		});
 	});
 
-	it('should NOT perform auto-init when data-vvd-context is "none"', async () => {});
+	it('should NOT perform auto-init when data-vvd-context is "none"', async () => {
+		const vvdContextNone = NONE;
+		await getFrameLoadedInjected(CORE_SETUP_HTML_TAG, async (iframe) => {
+			iframe.contentDocument.documentElement.setAttribute(
+				'data-vvd-context',
+				vvdContextNone
+			);
+
+			const iframeWindow = iframe.contentWindow;
+			await iframeWindow.executeSetup();
+
+			const coreInitResult = await iframeWindow.vvdCore.settled;
+			expect(coreInitResult).exist;
+			expect(coreInitResult.scheme).exist;
+			expect(coreInitResult.scheme.option).equals(vvdContextNone);
+			expect(coreInitResult.scheme.scheme).equals(vvdContextNone);
+		});
+	});
 });

@@ -150,28 +150,33 @@ export function isSafari() {
 /**
  * creates iFrame with the specified HTML (via karmaHTML framework)
  * waits until the iFrame is loaded
- * executes fixtureFunction, if any, on the iFrame's window object
+ * executes testCode on the iFrame's window object
  * resolves as soon as all of those operations done
  *
- * @param {*} htmlTag
+ * @param {string} htmlTag
+ * @param {function} testCode logic to run on the contentWindow of the newly created iframe
  * @returns created and initialised iFrame element
  */
-export async function getFrameLoadedInjected(htmlTag, fixtureFunction) {
+export async function getFrameLoadedInjected(htmlTag, testCode) {
 	if (!htmlTag || typeof htmlTag !== 'string') {
 		throw new Error(`htmlTag MUST be a non-null nor-empty string, got '${htmlTag}'`);
 	}
-	if (fixtureFunction !== undefined && typeof fixtureFunction !== 'function') {
-		throw new Error(`fixtureFunction, if/when provided, MUST be a function`);
+	if (!testCode && typeof testCode !== 'function') {
+		throw new Error(`test code MUST be a function`);
 	}
 
 	const loader = karmaHTML[htmlTag];
-	loader.open();
-	return new Promise(resolve => {
+	loader.reload();
+	return new Promise((resolve, reject) => {
 		loader.onstatechange = ready => {
-			if (ready) {
+			if (!ready) { return; }
+			const result = loader.iframe;
 
-				resolve(loader.iframe);
-			}
+			//	test logic
+			Promise
+				.resolve(testCode.call(result.contentWindow, result))
+				.catch(reject)
+				.finally(() => resolve(result));
 		};
 	});
 }
