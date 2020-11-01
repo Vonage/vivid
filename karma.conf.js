@@ -15,6 +15,7 @@ module.exports = config => {
 			nodeResolve: true,
 		},
 		frameworks: ['chai'],
+		reporters: ['karmaHTML'],
 		browserDisconnectTimeout: 300000,
 		browserNoActivityTimeout: 360000,
 		singleRun: true,
@@ -30,6 +31,13 @@ module.exports = config => {
 					functions: 10,
 				},
 			},
+		},
+		client: {
+			karmaHTML: {
+				source: [
+					{ tag: 'coreSetupTest', src: 'common/core/test/core-setup.test.html' }
+				]
+			}
 		}
 	});
 

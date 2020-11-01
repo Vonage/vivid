@@ -147,6 +147,35 @@ export function isSafari() {
 		!window.navigator.userAgent.toLowerCase().includes('chrome');
 }
 
+/**
+ * creates iFrame with the specified HTML (via karmaHTML framework)
+ * waits until the iFrame is loaded
+ * executes fixtureFunction, if any, on the iFrame's window object
+ * resolves as soon as all of those operations done
+ *
+ * @param {*} htmlTag
+ * @returns created and initialised iFrame element
+ */
+export async function getFrameLoadedInjected(htmlTag, fixtureFunction) {
+	if (!htmlTag || typeof htmlTag !== 'string') {
+		throw new Error(`htmlTag MUST be a non-null nor-empty string, got '${htmlTag}'`);
+	}
+	if (fixtureFunction !== undefined && typeof fixtureFunction !== 'function') {
+		throw new Error(`fixtureFunction, if/when provided, MUST be a function`);
+	}
+
+	const loader = karmaHTML[htmlTag];
+	loader.open();
+	return new Promise(resolve => {
+		loader.onstatechange = ready => {
+			if (ready) {
+
+				resolve(loader.iframe);
+			}
+		};
+	});
+}
+
 class TestComponent extends HTMLElement {
 	connectedCallback() {
 		this.attachShadow({ mode: 'open' });

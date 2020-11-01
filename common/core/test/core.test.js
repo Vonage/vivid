@@ -1,4 +1,5 @@
 import vvdCore from '../vvd-core.js';
+import { getFrameLoadedInjected } from '../../../test/test-helpers.js';
 
 describe.only('vvd-core service', () => {
 	it('verify basic core API', async () => {
@@ -16,22 +17,16 @@ describe.only('vvd-core service', () => {
 	});
 
 	it('should perform auto-init to default when no data-vvd-context provided', async () => {
-		const vvdCoreDedicated = (await import('../vvd-core.js')).default;
-		assert.isDefined(vvdCoreDedicated.settled);
-		const readyResult = await vvdCoreDedicated.settled;
-		assert.isArray(readyResult);
-		readyResult.forEach((r) => {
-			assert.isObject(r);
-		});
+		const ifr = await getFrameLoadedInjected('coreSetupTest');
+		const coreSettledResult = await ifr.contentWindow.vvdCoreSettled;
+		console.log(coreSettledResult);
 	});
 
-	it('should NOT perform auto-init when data-vvd-context is "none"', async () => {
-		const vvdCoreDedicated = (await import('../vvd-core.js')).default;
-		assert.isDefined(vvdCoreDedicated.settled);
-		const readyResult = await vvdCoreDedicated.settled;
-		assert.isArray(readyResult);
-		readyResult.forEach((r) => {
-			assert.isObject(r);
-		});
+	it('should perform auto-init to a value in data-vvd-context, when provided', async () => {
+		const ifr = await getFrameLoadedInjected('coreSetupTest');
+		const coreSettledResult = await ifr.contentWindow.vvdCoreSettled;
+		console.log(coreSettledResult);
 	});
+
+	it('should NOT perform auto-init when data-vvd-context is "none"', async () => {});
 });
