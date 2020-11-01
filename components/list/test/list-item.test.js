@@ -16,7 +16,7 @@ chai.use(chaiDomDiff);
 
 const VWC_LIST_ITEM = 'vwc-list-item';
 
-describe.only('list item', () => {
+describe('list item', () => {
 	let addElement = isolatedElementsCreation();
 
 	it('should be defined as a custom element', () => {
