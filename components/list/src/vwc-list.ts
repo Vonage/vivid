@@ -43,7 +43,7 @@ const debouncedLayout = debounce(function <T>(this: T, ...args: any[]) {
  */
 @customElement('vwc-list')
 export class VWCList extends MWCList {
-	layout(updateItems?: boolean) {
+	layout(updateItems?: boolean): void {
 		debouncedLayout(updateItems, 25);
 	}
 }
