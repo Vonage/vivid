@@ -11,7 +11,10 @@ declare global {
 	}
 }
 
-function debounce(callback: Function, waitInMS = 50) {
+function debounce(
+	callback: <T>(this: T, ...args: any[]) => void,
+	waitInMS = 50
+) {
 	let timeoutId: NodeJS.Timeout;
 	return function <T>(this: T, ...args: any[]) {
 		if (timeoutId) {
