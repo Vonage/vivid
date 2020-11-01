@@ -17,14 +17,10 @@ function debounce(
 ) {
 	let timeoutId: NodeJS.Timeout;
 	return function <T>(this: T, ...args: any[]) {
-		if (timeoutId) {
-			clearTimeout(timeoutId);
-		}
+		clearTimeout(timeoutId);
 		// eslint-disable-next-line @typescript-eslint/no-this-alias
 		const context = this;
-		return new Promise((res) => {
-			timeoutId = setTimeout(() => res(callback.apply(context, args)), waitInMS);
-		});
+		timeoutId = setTimeout(() => callback.apply(context, args), waitInMS);
 	};
 }
 
