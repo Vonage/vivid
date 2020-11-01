@@ -54,8 +54,9 @@ function _buildConfiguration(): Configuration {
 	);
 	if (vvdContextAttrValue === NONE_INIT_VALUE) {
 		result.autoInit = false;
-	} else {
-		//	TODO: parse the value and build configuration as appropriate
+	} else if (vvdContextAttrValue) {
+		const parsed = _parseVvdConvextAttr(vvdContextAttrValue);
+		Object.assign(result, parsed);
 	}
 	return result;
 }
@@ -70,4 +71,14 @@ function _validateConfiguration(configuration: Partial<Configuration>) {
 			`unexpected configuration part/s '${extraParams}',	only some of '${VALID_CONFIGURATION_KEYS}' expected`
 		);
 	}
+}
+
+function _parseVvdConvextAttr(value: string): Record<string, unknown> {
+	const tokens = value.trim().split(/\s+/);
+	return tokens.reduce((result, token) => {
+		if (/^theme:/.test(token)) {
+			result.scheme = token.replace(/^theme:/, '');
+		}
+		return result;
+	}, {} as Record<string, unknown>);
 }

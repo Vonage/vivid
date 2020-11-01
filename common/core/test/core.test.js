@@ -6,7 +6,7 @@ const LIGHT = 'light';
 const DARK = 'dark';
 const NONE = 'none';
 
-describe.only('vvd-core service', () => {
+describe('vvd-core service', () => {
 	it('verify basic core API', async () => {
 		assert.isDefined(vvdCore, 'core service is defined');
 		assert.isObject(vvdCore, 'core service is a defaultly exported object');
@@ -39,7 +39,7 @@ describe.only('vvd-core service', () => {
 		await getFrameLoadedInjected(CORE_SETUP_HTML_TAG, async (iframe) => {
 			iframe.contentDocument.documentElement.setAttribute(
 				'data-vvd-context',
-				vvdContextDark
+				`theme:${vvdContextDark}`
 			);
 
 			const iframeWindow = iframe.contentWindow;
