@@ -13,23 +13,23 @@ declare global {
 
 function debounce(callback: Function, waitInMS = 50) {
 	let timeoutId: NodeJS.Timeout;
-	return function<T> (this: T, ...args: any[]) {
+	return function <T>(this: T, ...args: any[]) {
 		if (timeoutId) {
 			clearTimeout(timeoutId);
 		}
 		// eslint-disable-next-line @typescript-eslint/no-this-alias
 		const context = this;
-		return new Promise(res => {
+		return new Promise((res) => {
 			timeoutId = setTimeout(() => res(callback.apply(context, args)), waitInMS);
 		});
-	}
+	};
 }
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 MWCList.styles = [styleCoupling, mwcListStyle, vwcListStyle];
 
-const debouncedLayout = debounce(function<T>(this: T, ...args: any[]) {
+const debouncedLayout = debounce(function <T>(this: T, ...args: any[]) {
 	if (!this) {
 		return;
 	}
@@ -44,5 +44,3 @@ export class VWCList extends MWCList {
 		debouncedLayout(updateItems, 25);
 	}
 }
-
-

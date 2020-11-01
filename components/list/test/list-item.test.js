@@ -68,27 +68,25 @@ describe.only('list item', () => {
 		});
 	});
 
-	describe(`performance issue`, function() {
+	describe(`performance issue`, function () {
 		function createElement(index) {
 			return `<vwc-list-item value=${index}>Item ${index}</vwc-list-item>`;
 		}
 		const selectItems = new Array(300)
 			.fill(0)
 			.map((_, index) => index)
-			.reduce((last, next) => (last += createElement(next)), "");
+			.reduce((last, next) => (last += createElement(next)), '');
 
-		it(`should not take more than 10ms to remove the list from the DOM`, async function() {
+		it(`should not take more than 10ms to remove the list from the DOM`, async function () {
 			const [actualElement] = addElement(
-				textToDomToParent(
-					`<vwc-list>${selectItems}</vwc-list>`
-				)
+				textToDomToParent(`<vwc-list>${selectItems}</vwc-list>`)
 			);
 			await waitNextTask();
 			const startTime = new Date().getTime();
 			actualElement.remove();
 			const endTime = new Date().getTime();
 
-			expect(endTime - startTime ).to.be.lessThan(10)
+			expect(endTime - startTime).to.be.lessThan(10);
 		});
 	});
 });
