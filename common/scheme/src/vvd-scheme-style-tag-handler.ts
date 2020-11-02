@@ -19,7 +19,7 @@ const getSchemeModule: (scheme: PredefinedScheme) => Promise<ModuleType> = (
 };
 
 const STYLE_ELEMENT_CLASS = 'vvd-scheme-style';
-ensureStyleMount(STYLE_ELEMENT_CLASS);
+const style = ensureStyleMount(STYLE_ELEMENT_CLASS);
 
 function ensureStyleMount(sseClass: string): HTMLStyleElement {
 	let result;
@@ -40,10 +40,9 @@ function ensureStyleMount(sseClass: string): HTMLStyleElement {
 
 export async function applySchemeCSS(scheme: PredefinedScheme): Promise<void> {
 	const schemeModule = await getSchemeModule(scheme);
-	const styleElement = ensureStyleMount(STYLE_ELEMENT_CLASS);
 
 	const cssResult: CSSResult | undefined = schemeModule?.style;
 	if (cssResult) {
-		styleElement.innerHTML = cssResult.cssText || '';
+		style.innerHTML = cssResult.cssText || '';
 	}
 }
