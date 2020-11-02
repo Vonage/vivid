@@ -11,6 +11,19 @@ declare global {
 	}
 }
 
+function debounce(
+	callback: <T>(this: T, ...args: any[]) => void,
+	waitInMS = 50
+) {
+	let timeoutId: NodeJS.Timeout;
+	return function <T>(this: T, ...args: any[]) {
+		clearTimeout(timeoutId);
+		// eslint-disable-next-line @typescript-eslint/no-this-alias
+		const context = this;
+		timeoutId = setTimeout(() => callback.apply(context, args), waitInMS);
+	};
+}
+
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 MWCList.styles = [styleCoupling, mwcListStyle, vwcListStyle];
@@ -19,4 +32,9 @@ MWCList.styles = [styleCoupling, mwcListStyle, vwcListStyle];
  * This component is an extension of [<mwc-list>](https://github.com/material-components/material-components-web-components/tree/master/packages/list)
  */
 @customElement('vwc-list')
-export class VWCList extends MWCList {}
+export class VWCList extends MWCList {
+	constructor() {
+		super();
+		this.layout = debounce(super.layout);
+	}
+}
