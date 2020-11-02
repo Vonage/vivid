@@ -2,6 +2,10 @@ import {
 	randomAlpha,
 	getFrameLoadedInjected,
 } from '../../../test/test-helpers.js';
+import {
+	assertBaseVarsMatch,
+	PRINCIPAL_VARIABLES_FILTER,
+} from '../../../test/style-utils.js';
 
 const CONTEXT_ATTR = 'data-vvd-context';
 const CORE_SETUP_HTML_TAG = 'coreSetupTest';
@@ -86,7 +90,11 @@ describe('vvd-core service', () => {
 				const coreInitResult = await iframeWindow.vvdCore.settled;
 
 				assertInitResult(coreInitResult, LIGHT);
-				//	TODO: assert scheme and typography variables
+				assertBaseVarsMatch(
+					LIGHT,
+					PRINCIPAL_VARIABLES_FILTER,
+					iframe.contentDocument.body
+				);
 			});
 		});
 
@@ -103,7 +111,11 @@ describe('vvd-core service', () => {
 				const coreInitResult = await iframeWindow.vvdCore.settled;
 
 				assertInitResult(coreInitResult, vvdContextTheme);
-				//	TODO: assert scheme and typography variables
+				assertBaseVarsMatch(
+					vvdContextTheme,
+					PRINCIPAL_VARIABLES_FILTER,
+					iframe.contentDocument.body
+				);
 			});
 		});
 
@@ -140,7 +152,11 @@ describe('vvd-core service', () => {
 				const coreInitResult = await iframeWindow.vvdCore.settled;
 
 				assertInitResult(coreInitResult, vvdContextTheme);
-				//	TODO: assert scheme and typography variables
+				assertBaseVarsMatch(
+					vvdContextTheme,
+					PRINCIPAL_VARIABLES_FILTER,
+					iframe.contentDocument.body
+				);
 			});
 		});
 	});
