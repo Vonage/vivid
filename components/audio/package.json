@@ -1,0 +1,29 @@
+{
+	"name": "@vonage/vwc-audio",
+	"version": "0.15.0",
+	"description": "Plays audio files",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/audio#readme",
+	"license": "ISC",
+	"main": "./vwc-audio.js",
+	"files": [
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/vonage/vivid.git",
+		"directory": "components/audio"
+	},
+	"scripts": {
+		"test": "echo \"Error: run tests from root\" && exit 1"
+	},
+	"bugs": {
+		"url": "https://github.com/Vonage/vivid/issues"
+	},
+	"dependencies": {
+		"@types/kefir": "^3.8.5",
+		"@vonage/vwc-media-controller": "^0.15.0",
+		"kefir": "^3.8.7"
+	}
+}
