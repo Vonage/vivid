@@ -104,7 +104,7 @@ class VwcAudio extends HTMLElement {
 		userScrubRequestStream
 			.filterBy(playerAudioLoadedProperty)
 			.onValue(
-				(position: any) => (audioEl.currentTime = audioEl.duration * position)
+				(position: number) => (audioEl.currentTime = audioEl.duration * position)
 			);
 		connectedProperty
 			.filter((connected) => !connected)
