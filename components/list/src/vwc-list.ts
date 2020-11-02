@@ -28,18 +28,13 @@ function debounce(
 // @ts-ignore
 MWCList.styles = [styleCoupling, mwcListStyle, vwcListStyle];
 
-const debouncedLayout = debounce(function <T>(this: T, ...args: any[]) {
-	if (!this) {
-		return;
-	}
-	MWCList.prototype.layout(...args);
-});
 /**
  * This component is an extension of [<mwc-list>](https://github.com/material-components/material-components-web-components/tree/master/packages/list)
  */
 @customElement('vwc-list')
 export class VWCList extends MWCList {
-	layout(updateItems?: boolean): void {
-		debouncedLayout(updateItems, 25);
+	constructor() {
+		super();
+		this.layout = debounce(super.layout);
 	}
 }
