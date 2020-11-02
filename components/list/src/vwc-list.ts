@@ -11,12 +11,13 @@ declare global {
 	}
 }
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 function debounce(
-	callback: <T>(this: T, ...args: unknown[]) => void,
+	callback: <T>(this: T, ...args: any[]) => void,
 	waitInMS = 50
 ) {
 	let timeoutId: NodeJS.Timeout;
-	return function <T>(this: T, ...args: unknown[]) {
+	return function <T>(this: T, ...args: any[]) {
 		clearTimeout(timeoutId);
 		// eslint-disable-next-line @typescript-eslint/no-this-alias
 		const context = this;
