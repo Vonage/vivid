@@ -168,6 +168,7 @@ class MediaController extends HTMLElement {
 													)
 													.filter(Boolean),
 											])
+											// eslint-disable-next-line
 											.map(({ clientX: mouseX, clientY: mouseY }) => ({ mouseX, mouseY })),
 									])
 									.map(
@@ -238,24 +239,20 @@ class MediaController extends HTMLElement {
 										type: 'update_knob_position',
 										value: position,
 									})),
-								apiPositionProperty
-									.skipDuplicates()
-									.map((percentage) => ({
-										type: 'update_progress_position',
-										value: percentage,
-									})),
+								apiPositionProperty.skipDuplicates().map((percentage) => ({
+									type: 'update_progress_position',
+									value: percentage,
+								})),
 								userScrubInteractionProperty.map((state) => ({
 									type: 'update_scrub_state',
 									value: state,
 								})),
-								userScrubStream
-									.filter(byType('position_change'))
-									.map(
-										pipe(prop('position'), (position) => ({
-											type: 'update_user_scrub_request',
-											value: position,
-										}))
-									),
+								userScrubStream.filter(byType('position_change')).map(
+									pipe(prop('position'), (position) => ({
+										type: 'update_user_scrub_request',
+										value: position,
+									}))
+								),
 							])
 							.takeUntilBy(apiBus.filter(byType('component_disconnected')).take(1))
 					: kefir.constant({ type: 'update_scrub_state', value: false });

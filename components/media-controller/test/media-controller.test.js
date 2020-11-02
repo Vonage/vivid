@@ -10,6 +10,7 @@ const CENTER_Y = 8,
 	RESPONSE_TIMEOUT = 100; //ms
 
 const setStyle = (el, style = {}) => {
+	// eslint-disable-next-line
 	return Object.entries(style).reduce((el, [k, v]) => {
 		el.style[k] = v;
 		return el;
