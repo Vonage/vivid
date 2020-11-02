@@ -86,7 +86,7 @@ describe('list item', () => {
 			actualElement.remove();
 			const endTime = new Date().getTime();
 
-			expect(endTime - startTime).to.be.lessThan(10);
+			expect(endTime - startTime).to.be.lessThan(50);
 		});
 	});
 });
