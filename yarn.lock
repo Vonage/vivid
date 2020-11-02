@@ -10834,6 +10834,13 @@ karma-firefox-launcher@^1.3.0:
   dependencies:
     is-wsl "^2.1.0"
 
+karma-html@^1.0.5:
+  version "1.0.5"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/karma-html/-/karma-html-1.0.5.tgz#08d47d8afb374f9e100efe5f38694d2efd56b46a"
+  integrity sha1-CNR9ivs3T54QDv5fOGlNLv1WtGo=
+  dependencies:
+    glob "^7.1.2"
+
 karma-mocha-reporter@^2.0.0, karma-mocha-reporter@^2.2.5:
   version "2.2.5"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/karma-mocha-reporter/-/karma-mocha-reporter-2.2.5.tgz#15120095e8ed819186e47a0b012f3cd741895560"

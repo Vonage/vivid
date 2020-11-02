@@ -1,4 +1,7 @@
-import { randomAlpha } from '../../../test/test-helpers.js';
+import {
+	getFrameLoadedInjected,
+	randomAlpha,
+} from '../../../test/test-helpers.js';
 import {
 	getBaseVarNames,
 	assertBaseVarsMatch,
@@ -9,6 +12,7 @@ import schemeService from '../vvd-scheme.js';
 import { getPreferedColorScheme } from '../os-sync.utils.js';
 
 // const SYNC_WITH_OS = 'syncWithOSSettings',
+const SCHEME_SETUP_HTML_TAG = 'schemeSetupTestHTML';
 const LIGHT = 'light';
 const DARK = 'dark';
 
@@ -125,6 +129,28 @@ describe('vvd-scheme service', () => {
 
 		const r2 = await s.set(null);
 		assert.equal(r2, r1);
+	});
+
+	it('should install style element only once', async () => {
+		await getFrameLoadedInjected(SCHEME_SETUP_HTML_TAG, async (iframe) => {
+			const iframeWindow = iframe.contentWindow;
+			const tmpErrorHolder = iframeWindow.console.error;
+			let expectedError;
+			iframeWindow.console.error = (m) => {
+				expectedError = m;
+			};
+			await Promise.all([
+				iframeWindow.executeSetup('../vvd-scheme.js?instance=1'),
+				iframeWindow.executeSetup('../vvd-scheme.js?instance=2'),
+			]);
+			iframeWindow.console.error = tmpErrorHolder;
+			const sseCount = iframe.contentDocument.querySelectorAll('.vvd-scheme-style')
+				.length;
+			expect(sseCount).equal(1);
+			expect(expectedError).equal(
+				'found 1 scheme styles upon init while expected for 1, check your dependencies configuration'
+			);
+		});
 	});
 
 	describe('variables setup functionality', () => {

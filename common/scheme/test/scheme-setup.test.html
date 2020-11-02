@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Vivid - injectable isolated document as testing playground</title>
+	<script type="module">
+		window.executeSetup = async (src) => {
+			window.vvdScheme = (await import(src)).default;
+			await window.vvdScheme.set();
+		};
+	</script>
+</head>
+
+<body></body>
+
+</html>

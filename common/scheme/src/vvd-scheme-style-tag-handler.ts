@@ -19,7 +19,7 @@ const getSchemeModule: (scheme: PredefinedScheme) => Promise<ModuleType> = (
 };
 
 const STYLE_ELEMENT_CLASS = 'vvd-scheme-style';
-const style = ensureStyleMount(STYLE_ELEMENT_CLASS);
+ensureStyleMount(STYLE_ELEMENT_CLASS);
 
 function ensureStyleMount(sseClass: string): HTMLStyleElement {
 	let result;
@@ -31,6 +31,7 @@ function ensureStyleMount(sseClass: string): HTMLStyleElement {
 		result = existing[0] as HTMLStyleElement;
 	} else {
 		result = document.createElement('style');
+		result.className = STYLE_ELEMENT_CLASS;
 		result.innerHTML = preSchemeLoadingCssText;
 		document.head.appendChild(result);
 	}
@@ -39,9 +40,10 @@ function ensureStyleMount(sseClass: string): HTMLStyleElement {
 
 export async function applySchemeCSS(scheme: PredefinedScheme): Promise<void> {
 	const schemeModule = await getSchemeModule(scheme);
+	const styleElement = ensureStyleMount(STYLE_ELEMENT_CLASS);
 
 	const cssResult: CSSResult | undefined = schemeModule?.style;
 	if (cssResult) {
-		style.innerHTML = cssResult.cssText || '';
+		styleElement.innerHTML = cssResult.cssText || '';
 	}
 }
