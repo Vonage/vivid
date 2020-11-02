@@ -44,6 +44,7 @@ function handleClosed() {
 }
 
 function handleClick() {
+	const drawer = this.closest('#drawer');
 	drawer.open = !drawer.open;
 	this.textContent = `${drawer.open ? 'Close' : 'Open'} Drawer`;
 }

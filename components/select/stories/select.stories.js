@@ -38,6 +38,9 @@ Disabled.args = { disabled: '', outlined: '', label: 'VWC Select', helper: 'Help
 export const Required = Template.bind({});
 Required.args = { required: '', outlined: '', label: 'VWC Select', helper: 'Select your preference', validationMessage: 'This Field is Required' };
 
+export const Autofocus = Template.bind({});
+Autofocus.args = { outlined: '', label: 'VWC Select', helper: 'Select your preference', autofocus: true };
+
 function onSelected(e) {
 	console.log(e);
 }

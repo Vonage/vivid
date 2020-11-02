@@ -43,7 +43,7 @@ added 34 packages from 27 contributors in 6.637s
 
 > This is the **recommended way** to consume any package dependencies: developer consumes all packages from secured internally accessed registry. Internal packages are available and public packages are scanned and cached at the secure source (vulnerability and license scanning is offered).
 
-In the case your teams already make use of an internal package source (Artifactoruy, Snyk, etc) you can simply proxy/cache Vivid packages and your developers don't need to add any other configuration to consume packages.
+In the case your teams already make use of an internal package source (Artifactory, Snyk, etc) you can simply proxy/cache Vivid packages and your developers don't need to add any other configuration to consume packages.
 
 Requirements:
 

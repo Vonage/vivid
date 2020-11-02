@@ -4,10 +4,9 @@
 $vvd-text-field-size-block: --vvd-text-field-size-block;
 
 :host {
-  --mdc-theme-primary: #131415;
   --mdc-theme-error: #{color-semantic.$formfield-label-error-ink};
-  --mdc-text-field-fill-color: var(--vvd-color-surface-background);
-  --mdc-text-field-ink-color: var(--mdc-theme-primary);
+  --mdc-text-field-fill-color: var(--vvd-color-base-background);
+  --mdc-text-field-ink-color: var(--vvd-color-base-foreground);
   --mdc-text-field-label-ink-color: var(
     #{color-semantic.$formfield-label-idle-ink}
   );
@@ -30,8 +29,6 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
   --mdc-text-field-error-fill-color: var(
     #{color-semantic.$formfield-error-fill}
   );
-
-  width: 100%;
 }
 
 :host([readonly]),
@@ -70,6 +67,7 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 }
 
 :host([dense]) {
+  --mdc-text-field-label-ink-color: var(--vvd-color-base-foreground);
   #{$vvd-text-field-size-block}: 40px;
 }
 
@@ -87,7 +85,6 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 
   .mdc-text-field {
     .mdc-floating-label {
-      font-size: 0.875rem;
       left: -12px;
       top: -24px;
       transform: none;
@@ -123,7 +120,7 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
   }
 
   .mdc-floating-label--float-above {
-    font-size: 0.75rem;
+    font-size: var(--mdc-typography-subtitle1-font-size);
     transform: translateY(-100%);
 
     &.mdc-floating-label--shake {

@@ -3,6 +3,76 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/Vonage/vivid/compare/v0.14.0...v0.15.0) (2020-10-27)
+
+
+### Reverts
+
+* Revert "issue #405 - fixing eslint remarks" ([ff1fa4d](https://github.com/Vonage/vivid/commit/ff1fa4dcbbe4a477a9a600483f297bd63d5ac5fa)), closes [#405](https://github.com/Vonage/vivid/issues/405)
+
+
+
+
+
+# [0.14.0](https://github.com/Vonage/vivid/compare/v0.13.0...v0.14.0) (2020-10-25)
+
+
+### Bug Fixes
+
+* **scheme:** alternate variables support ([1c9c781](https://github.com/Vonage/vivid/commit/1c9c781faaf71999040ea36fbeab969143ac40a2))
+* **scheme:** dark scheme correct variables ref ([fbaff84](https://github.com/Vonage/vivid/commit/fbaff8409bdaca63306cf0740c786107c9e4175e))
+* **scheme:** Scheme default to light mode ([539cade](https://github.com/Vonage/vivid/commit/539cade5d1a3b95c235b536f7cda3252fdb151db))
+* **scheme tests:** aligned tests with PR Tests temporarly modified to match a 'light' scheme defult BREAKING CHANGE: scheme now serves 'light' scheme by default instead of os settings ([51460c1](https://github.com/Vonage/vivid/commit/51460c1ee189876739de4b39be6db492be7c9ac2))
+
+
+### Features
+
+* **storybook:** removed .ico favicon as per joella's request ([038606d](https://github.com/Vonage/vivid/commit/038606dc61460404008c7c66441d3daf6e381636))
+
+
+
+
+
+# [0.13.0](https://github.com/Vonage/vivid/compare/v0.12.5...v0.13.0) (2020-10-12)
+
+
+### Features
+
+* **vwc-upload:** upload button component ([3a0b376](https://github.com/Vonage/vivid/commit/3a0b3762cd7eedddb1045b584c1f9ccd12eb8235))
+
+
+
+
+
+## [0.12.5](https://github.com/Vonage/vivid/compare/v0.12.4...v0.12.5) (2020-10-06)
+
+**Note:** Version bump only for package @vivid/root
+
+
+
+
+
+## [0.12.4](https://github.com/Vonage/vivid/compare/v0.12.3...v0.12.4) (2020-10-06)
+
+**Note:** Version bump only for package @vivid/root
+
+
+
+
+
+## [0.12.3](https://github.com/Vonage/vivid/compare/v0.12.2...v0.12.3) (2020-10-05)
+
+
+### Features
+
+* **slack-announcer:** dispatch release messages only on "major" and "minor" versions ([d788d86](https://github.com/Vonage/vivid/commit/d788d86fbe101fde124787f837c529d893e7d3fd))
+* **slack-announcer:** removed "request" dep ([#356](https://github.com/Vonage/vivid/issues/356)) ([fdc61d6](https://github.com/Vonage/vivid/commit/fdc61d6437390a8d9a9c5ad55151c6de449df75d))
+* **slack-announcer:** yarn lock added ([874aaa6](https://github.com/Vonage/vivid/commit/874aaa6f230340a4c3e408ff02bb3406608b532a))
+
+
+
+
+
 ## [0.12.2](https://github.com/Vonage/vivid/compare/v0.12.1...v0.12.2) (2020-10-04)
 
 **Note:** Version bump only for package @vivid/root

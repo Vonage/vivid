@@ -1,3 +1,27 @@
+# [0.15.0](https://github.com/vonage/vivid/compare/v0.14.0...v0.15.0) (2020-10-27)
+
+
+
+# [0.14.0](https://github.com/vonage/vivid/compare/v0.13.0...v0.14.0) (2020-10-25)
+
+
+
+# [0.13.0](https://github.com/vonage/vivid/compare/v0.12.5...v0.13.0) (2020-10-12)
+
+
+
+## [0.12.5](https://github.com/vonage/vivid/compare/v0.12.4...v0.12.5) (2020-10-06)
+
+
+
+## [0.12.4](https://github.com/vonage/vivid/compare/v0.12.3...v0.12.4) (2020-10-06)
+
+
+
+## [0.12.3](https://github.com/vonage/vivid/compare/v0.12.2...v0.12.3) (2020-10-05)
+
+
+
 ## [0.12.2](https://github.com/vonage/vivid/compare/v0.12.1...v0.12.2) (2020-10-04)
 
 
@@ -6,7 +30,7 @@
 
 
 
-# [0.11.0](https://github.com/vonage/vivid/compare/v0.10.0...v0.11.0) (2020-09-29)
+# [0.11.0](https://github.com/vonage/vivid/compare/v0.11.2...v0.11.0) (2020-09-29)
 
 
 ### Features
@@ -17,24 +41,11 @@
 
 
 
+## [0.11.2](https://github.com/vonage/vivid/compare/v0.10.0...v0.11.2) (2020-09-29)
+
+
+
 # [0.10.0](https://github.com/vonage/vivid/compare/v0.9.0...v0.10.0) (2020-09-22)
-
-
-
-# [0.8.0](https://github.com/vonage/vivid/compare/v0.7.0...v0.8.0) (2020-09-22)
-
-
-
-# [0.7.0](https://github.com/vonage/vivid/compare/v0.6.0...v0.7.0) (2020-09-15)
-
-
-### Features
-
-* **general:** moved icon generation script call into local icon package ([6754322](https://github.com/vonage/vivid/commit/6754322ffc1219cb967e7fa33da7c1bcc13f1fe4))
-
-
-
-# [0.6.0](https://github.com/vonage/vivid/compare/v0.5.0...v0.6.0) (2020-09-08)
 
 
 ### Bug Fixes
@@ -45,32 +56,13 @@
 
 ### Features
 
+* **general:** moved icon generation script call into local icon package ([6754322](https://github.com/vonage/vivid/commit/6754322ffc1219cb967e7fa33da7c1bcc13f1fe4))
 * **icon:** widened icon panes ([3bec0fe](https://github.com/vonage/vivid/commit/3bec0fe76b4b37479ff64e45613bde784e3b5317))
+* added flag icons (VIV-148) ([7577bb9](https://github.com/vonage/vivid/commit/7577bb9936f0ef46aba5de7227d3673218316e0b))
+* revised icon story's design ([3b8b755](https://github.com/vonage/vivid/commit/3b8b7558268a1ecaf880d9d90fe03117863fd36c))
 * touchup ([02903b4](https://github.com/vonage/vivid/commit/02903b4d87d96892bf7659fc6cd196dc823f1dd0))
 * **icon:** Added 104 new brand icons ([6e503ca](https://github.com/vonage/vivid/commit/6e503cab0666241ae31208fd607f25d7366c0006))
 * **icon:** added add-full and add-outline icons ([3b2f915](https://github.com/vonage/vivid/commit/3b2f915606e576dea0b62cf4724098da5afc4b1d))
-
-
-
-# [0.5.0](https://github.com/vonage/vivid/compare/v0.4.0...v0.5.0) (2020-08-20)
-
-
-### Features
-
-* added flag icons (VIV-148) ([7577bb9](https://github.com/vonage/vivid/commit/7577bb9936f0ef46aba5de7227d3673218316e0b))
-* revised icon story's design ([3b8b755](https://github.com/vonage/vivid/commit/3b8b7558268a1ecaf880d9d90fe03117863fd36c))
-
-
-
-# [0.3.0](https://github.com/vonage/vivid/compare/v0.2.4...v0.3.0) (2020-08-03)
-
-
-
-## [0.2.4](https://github.com/vonage/vivid/compare/v0.2.3...v0.2.4) (2020-07-23)
-
-
-
-## [0.2.3](https://github.com/vonage/vivid/compare/v0.2.2...v0.2.3) (2020-07-23)
 
 
 

@@ -35,14 +35,17 @@ Icon.args = {
 	validationMessage: 'Numbers only'
 };
 
+export const Autofocus = Template.bind({});
+Autofocus.args = { outlined: '', label: 'e.g. username', autofocus: true };
+
 function handleKeyDown(e) {
 	e.stopPropagation();
 }
 
-function onChange(e) {
+function onChange() {
 	console.log('change');
 }
 
-function onInput(e) {
+function onInput() {
 	console.log('input');
 }

@@ -12,6 +12,14 @@ $formfield-error-fill: --vvd-formfield-error-fill;
 $formfield-border-error: --vvd-formfield-border-error;
 $formfield-label-error-ink: --vvd-formfield-label-error-ink;
 
+// TODO discuss the need of all the following unfamiliar variables
+// TODO and the option to use an @each iteration
+$color-base-background: --vvd-color-base-background;
+$color-base-background-hover: --vvd-color-base-background-hover;
+$color-base-border: --vvd-color-base-border;
+$color-base-foreground: --vvd-color-base-foreground;
+$color-base-shadow: --vvd-color-base-shadow;
+
 $color-primary-background: --vvd-color-primary-background;
 $color-primary-background-hover: --vvd-color-primary-background-hover;
 $color-primary-border: --vvd-color-primary-border;

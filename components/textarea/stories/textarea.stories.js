@@ -28,6 +28,9 @@ Required.args = {
 	validationMessage: 'Required field'
 };
 
+export const Autofocus = Template.bind({});
+Autofocus.args = { outlined: '', label: 'VWC Textarea', autofocus: true };
+
 function handleKeyDown(e) {
 	e.stopPropagation();
 }

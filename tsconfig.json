@@ -44,6 +44,7 @@
 		{ "path": "components/circular-progress" },
 		{ "path": "components/drawer" },
 		{ "path": "components/fab" },
+		{ "path": "components/file-picker" },
 		{ "path": "components/formfield" },
 		{ "path": "components/icon" },
 		{ "path": "components/keypad" },

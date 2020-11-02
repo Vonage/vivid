@@ -1,10 +1,16 @@
 import { randomAlpha } from '../../../test/test-helpers.js';
+import {
+	getBaseVarNames,
+	assertBaseVarsMatch,
+	PRINCIPAL_VARIABLES_FILTER,
+} from '../../../test/style-utils.js';
+
 import schemeService from '../vvd-scheme.js';
 import { getPreferedColorScheme } from '../os-sync.utils.js';
 
-const SYNC_WITH_OS = 'syncWithOSSettings',
-	LIGHT = 'light',
-	DARK = 'dark';
+// const SYNC_WITH_OS = 'syncWithOSSettings',
+const LIGHT = 'light';
+const DARK = 'dark';
 
 describe('vvd-scheme service', () => {
 	it('should provide basic set scheme API', async () => {
@@ -34,26 +40,38 @@ describe('vvd-scheme service', () => {
 		assert.isUndefined(currentSchemeOption);
 	});
 
-	it('should init to default (OS) when set to undefined', async () => {
-		const autoScheme = getPreferedColorScheme();
+	it('should init to default (LIGHT) when set to undefined', async () => {
+		const autoScheme = LIGHT;
+		// ! This is hardcoded to light instead of os settings due to:
+		// ! 1. vivid packages aren't really supported by dark mode yet
+		// ! 2. we still have no control over application scheme mode context
+		// const autoScheme = getPreferedColorScheme();
 		const r = randomAlpha();
 		const s = (await import(`../vvd-scheme.js?${r}`)).default;
 		await s.set();
 		const currentScheme = s.getSelectedScheme();
 		const currentSchemeOption = s.getSelectedSchemeOption();
 		assert.equal(currentScheme, autoScheme);
-		assert.equal(currentSchemeOption, SYNC_WITH_OS);
+		assert.equal(currentSchemeOption, LIGHT);
+
+		await s.set(LIGHT);
 	});
 
-	it('should init to default (OS) when set to null', async () => {
-		const autoScheme = getPreferedColorScheme();
+	it('should init to default (LIGHT) when set to null', async () => {
+		const autoScheme = LIGHT;
+		// ! This is hardcoded to light instead of os settings due to:
+		// ! 1. vivid packages aren't really supported by dark mode yet
+		// ! 2. we still have no control over application scheme mode context
+		// const autoScheme = getPreferedColorScheme();
 		const r = randomAlpha();
 		const s = (await import(`../vvd-scheme.js?${r}`)).default;
 		await s.set(null);
 		const currentScheme = s.getSelectedScheme();
 		const currentSchemeOption = s.getSelectedSchemeOption();
 		assert.equal(currentScheme, autoScheme);
-		assert.equal(currentSchemeOption, SYNC_WITH_OS);
+		assert.equal(currentSchemeOption, LIGHT);
+
+		await s.set(LIGHT);
 	});
 
 	it('should init to the given argument', async () => {
@@ -65,6 +83,8 @@ describe('vvd-scheme service', () => {
 		const currentSchemeOption = s.getSelectedSchemeOption();
 		assert.equal(currentScheme, newScheme);
 		assert.equal(currentSchemeOption, newScheme);
+
+		await s.set(LIGHT);
 	});
 
 	it('should do nothing when set to the same argument', async () => {
@@ -77,6 +97,8 @@ describe('vvd-scheme service', () => {
 
 		const r2 = await s.set(sameScheme);
 		assert.equal(r2, r1);
+
+		await s.set(LIGHT);
 	});
 
 	it('should do nothing when set to undefined and already post-init', async () => {
@@ -89,6 +111,8 @@ describe('vvd-scheme service', () => {
 
 		const r2 = await s.set();
 		assert.equal(r2, r1);
+
+		await s.set(LIGHT);
 	});
 
 	it('should do nothing when set to null and already post-init', async () => {
@@ -101,5 +125,44 @@ describe('vvd-scheme service', () => {
 
 		const r2 = await s.set(null);
 		assert.equal(r2, r1);
+	});
+
+	describe('variables setup functionality', () => {
+		it('should have light variables set when light scheme set', async () => {
+			const r = randomAlpha();
+			const s = (await import(`../vvd-scheme.js?${r}`)).default;
+			await s.set(LIGHT);
+			assertBaseVarsMatch(LIGHT, PRINCIPAL_VARIABLES_FILTER);
+		});
+
+		it('should have dark variables set when dark scheme set', async () => {
+			const r = randomAlpha();
+			const s = (await import(`../vvd-scheme.js?${r}`)).default;
+			await s.set(DARK);
+			assertBaseVarsMatch(DARK, PRINCIPAL_VARIABLES_FILTER);
+
+			await s.set(LIGHT);
+		});
+
+		it('should have different variables when move from light to dark', async () => {
+			const testSet = {};
+			const r = randomAlpha();
+			const s = (await import(`../vvd-scheme.js?${r}`)).default;
+
+			await s.set(DARK);
+			getBaseVarNames(DARK, PRINCIPAL_VARIABLES_FILTER).forEach((key) => {
+				const varVal = getComputedStyle(document.body).getPropertyValue(key).trim();
+				testSet[key] = new Set([varVal]);
+			});
+
+			await s.set(LIGHT);
+			getBaseVarNames(LIGHT, PRINCIPAL_VARIABLES_FILTER).forEach((key) => {
+				const varVal = getComputedStyle(document.body).getPropertyValue(key).trim();
+				testSet[key].add(varVal);
+			});
+
+			expect(testSet).not.empty;
+			Object.values(testSet).forEach((varSet) => expect(varSet.size).equal(2));
+		});
 	});
 });

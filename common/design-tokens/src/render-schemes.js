@@ -20,39 +20,26 @@ function getStyleDictionaryConfig(scheme, scope) {
 	return {
 		source: [
 			`${propertiesPath}/globals/**/*.json`,
-			`${propertiesPath}/scheme/${scheme}/color.json`,
+			`${propertiesPath}/scheme/${scheme}/${scope}.json`,
 		],
 		platforms: {
 			web: {
 				prefix: 'vvd',
-				transformGroup: 'css', // 'web'
-				buildPath: `${resolve('build/scss')}/`,
+				transformGroup: 'css',
+				buildPath: `${resolve()}/`,
 				files: [
 					{
-						destination: `schemes/${scheme}/${scope}.scss`,
+						destination: `build/scss/schemes/${scheme}/${scope}.scss`,
 						format: 'custom/format/scss',
 						filter: {
 							attributes: {
-								category: 'color',
-								// type: "root",
-							},
-						},
-						// filter: "filter-alias",
-					},
-
-					{
-						destination: '_typography.scss',
-						format: 'custom/format/scss',
-						filter: {
-							attributes: {
-								category: 'typography',
-							},
-						},
-					},
-				],
-			},
-
-		},
+								category: 'color'
+							}
+						}
+					}
+				]
+			}
+		}
 	};
 }
 

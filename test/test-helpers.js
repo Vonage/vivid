@@ -142,6 +142,11 @@ export function assertComputedStyle(element, expectedStyles) {
 	}
 }
 
+export function isSafari() {
+	return window.navigator.userAgent.toLowerCase().includes('safari') &&
+		!window.navigator.userAgent.toLowerCase().includes('chrome');
+}
+
 class TestComponent extends HTMLElement {
 	connectedCallback() {
 		this.attachShadow({ mode: 'open' });

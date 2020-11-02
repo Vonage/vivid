@@ -2,13 +2,12 @@ import '@vonage/vvd-core';
 import { customElement, property } from 'lit-element';
 import { Button as MWCButton } from '@material/mwc-button';
 import { style as vwcButtonStyle } from './vwc-button.css';
-import { style as mwcButtonStyle } from '@material/mwc-button/mwc-button-css.js';
+import { style as mwcButtonStyle } from '@material/mwc-button/styles-css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import { Connotation } from '@vonage/vvd-foundation/constants';
 import { html, TemplateResult } from 'lit-element';
 import '@vonage/vwc-icon';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
-import { getFormByIdOrClosest } from '@vonage/vvd-foundation/form-association/common';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -37,6 +36,9 @@ export type ButtonType = typeof types;
  */
 @customElement('vwc-button')
 export class VWCButton extends MWCButton {
+	@property({ type: Boolean, reflect: true })
+	enlarged = false;
+
 	@property({ type: String, reflect: true })
 	layout: ButtonLayout[number] = 'text';
 
@@ -49,10 +51,10 @@ export class VWCButton extends MWCButton {
 	@property({ type: String, reflect: true })
 	type: ButtonType[number] = 'submit';
 
-	@property({ type: String, reflect: false })
-	form: HTMLFormElement | null = null;
+	@property({ attribute: 'form', reflect: true })
+	formId = null;
 
-	#_hiddenButton: HTMLButtonElement | undefined;
+	#_hiddenButton: HTMLButtonElement = VWCButton.createHiddenButton();
 
 	createRenderRoot(): ShadowRoot {
 		if (HTMLFormElement.prototype.requestSubmit) {
@@ -63,18 +65,25 @@ export class VWCButton extends MWCButton {
 	}
 
 	protected updateFormAndButton(): void {
-		this.#_hiddenButton?.remove();
-		this.form = getFormByIdOrClosest((this as unknown) as HTMLInputElement);
-		if (this.form && this.#_hiddenButton) {
-			this.form.appendChild(this.#_hiddenButton);
+		const formId = this.getAttribute('form');
+		if (formId !== null) {
+			this.#_hiddenButton?.setAttribute('form', formId);
+		}
+	}
+
+	attributeChangedCallback(
+		name: string,
+		oldval: string | null,
+		newval: string | null
+	): void {
+		if (name === 'form' && newval && newval !== oldval) {
+			this.#_hiddenButton?.setAttribute('form', newval);
+		} else {
+			super.attributeChangedCallback(name, oldval, newval);
 		}
 	}
 
 	protected updated(changes: Map<string, boolean>): void {
-		if (changes.has('form')) {
-			this.updateFormAndButton();
-		}
-
 		if (changes.has('type')) {
 			this.#_hiddenButton?.setAttribute('type', this.getAttribute('type') ?? '');
 		}
@@ -82,6 +91,27 @@ export class VWCButton extends MWCButton {
 		const layout: ButtonLayout[number] = this.layout;
 		this.toggleAttribute('outlined', layout === 'outlined');
 		this.toggleAttribute('unelevated', layout === 'filled');
+
+		if (changes.has('dense')) {
+			if (this.dense && this.enlarged) {
+				this.enlarged = false;
+			}
+		}
+
+		if (changes.has('enlarged')) {
+			if (this.enlarged && this.dense) {
+				this.removeAttribute('dense');
+				this.dense = false;
+			}
+		}
+	}
+
+	get form(): HTMLFormElement | null {
+		return (this.#_hiddenButton as HTMLButtonElement).form;
+	}
+
+	set form(_: HTMLFormElement | null) {
+		// return nothing
 	}
 
 	protected _handleClick(): void {
@@ -103,15 +133,15 @@ export class VWCButton extends MWCButton {
 		return html`<vwc-icon size="small" type="${this.icon}"></vwc-icon>`;
 	}
 
+	static createHiddenButton(): HTMLButtonElement {
+		const button = document.createElement('button');
+		button.style.display = 'none';
+		return button;
+	}
+
 	connectedCallback(): void {
 		super.connectedCallback();
 		this.addEventListener('click', this._handleClick);
-		this.#_hiddenButton = document.createElement('button');
-		this.#_hiddenButton.style.display = 'none';
-	}
-
-	disconnectedCallback(): void {
-		super.disconnectedCallback();
-		this.#_hiddenButton?.remove();
+		this.appendChild(this.#_hiddenButton);
 	}
 }

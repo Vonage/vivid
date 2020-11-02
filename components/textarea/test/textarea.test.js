@@ -7,6 +7,11 @@ import {
 	isolatedElementsCreation,
 	listenToSubmission,
 } from '../../../test/test-helpers.js';
+import {
+	typographyTestCases,
+	hasNotchedOutline,
+	validateMultipleShadowLayers,
+} from '../../textfield/test/textfield-utils.test';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
@@ -205,102 +210,17 @@ describe('textarea', () => {
 		});
 
 		it(`should work under multiple shadow layers`, async function () {
-			const fieldValue = Math.random().toString();
-			const fieldName = 'test-field';
-			const formTemplate = `
-				<form onsubmit="return false" name="testForm" id="testForm">
-					<vivid-tests-component></vivid-tests-component>
-					<button></button>
-				</form>`;
-			const elementTemplate = `
-					<${COMPONENT_NAME} required value="${fieldValue}"
- 														 name="${fieldName}">
-
-					</${COMPONENT_NAME}>`;
-			const [formElement] = addElement(textToDomToParent(formTemplate));
-			await waitNextTask();
-			const wrapperElement = formElement.querySelector('vivid-tests-component');
-			wrapperElement.setContent(elementTemplate);
-			const actualElement = wrapperElement.shadowRoot.querySelector(
-				COMPONENT_NAME
-			);
-
-			const validInput = formElement.checkValidity();
-			const submitPromise = listenToSubmission(formElement);
-
-			requestSubmit(formElement);
-
-			for (let [formDataKey, formDataValue] of (await submitPromise).entries()) {
-				expect(formDataKey).to.equal(fieldName);
-				expect(formDataValue).to.equal(fieldValue);
-			}
-
-			await changeValueAndNotify(actualElement, '', 'change');
-
-			expect(
-				formElement.querySelectorAll(`textarea[name="${fieldName}"`).length
-			).to.equal(1);
-			expect(validInput).to.equal(true);
-			expect(formElement.checkValidity()).to.equal(false);
+			validateMultipleShadowLayers(COMPONENT_NAME, 'textarea');
 		});
 	});
 
 	describe('typography', () => {
-		it('should have set typography for a label', async () => {
-			const addedElements = addElement(
-				textToDomToParent(
-					`<${COMPONENT_NAME} outlined label="Vwc textarea"></${COMPONENT_NAME}>`
-				)
-			);
-			await waitNextTask();
-			const labelElement = addedElements[0].shadowRoot
-				.querySelector('.mdc-notched-outline')
-				.querySelector('#label');
-			expect(labelElement).to.exist;
-			assertComputedStyle(labelElement, {
-				fontFamily: 'SpeziaWebVariable',
-				fontSize: '16px',
-				fontWeight: '400',
-				fontStretch: '50%',
-				lineHeight: '18.4px',
-				letterSpacing: '0.15px',
-				textTransform: 'none',
-			});
-		});
-
-		it('should have set typography for an input', async () => {
-			const addedElements = addElement(
-				textToDomToParent(
-					`<${COMPONENT_NAME} outlined disabled label="Vwc textarea"></${COMPONENT_NAME}>`
-				)
-			);
-			await waitNextTask();
-			const inputElement = addedElements[0].shadowRoot.querySelector(
-				'.mdc-text-field__input'
-			);
-			expect(inputElement).to.exist;
-			assertComputedStyle(inputElement, {
-				fontFamily: 'SpeziaWebVariable',
-				fontSize: '14.2222px',
-				fontWeight: '400',
-				fontStretch: '50%',
-				lineHeight: '24px',
-				letterSpacing: '0.133333px',
-				textTransform: 'none',
-			});
-		});
+		typographyTestCases(COMPONENT_NAME);
 	});
 
 	describe('notched outlined', () => {
 		it('should have vwc-notched-outline defined', async () => {
-			const addedElements = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} outlined></${COMPONENT_NAME}>`)
-			);
-			await waitNextTask();
-			const notchedOutline = addedElements[0].shadowRoot.querySelector(
-				'vwc-notched-outline'
-			);
-			expect(notchedOutline).to.exist;
+			hasNotchedOutline(COMPONENT_NAME);
 		});
 	});
 
@@ -334,7 +254,7 @@ describe('textarea', () => {
 			assertComputedStyle(formElement, { paddingTop: '24px' });
 			assertComputedStyle(actualElement, { minHeight: '40px' });
 			assertComputedStyle(labelElement, {
-				fontSize: '14px',
+				fontSize: '14.2222px',
 				left: '-12px',
 				top: '-24px',
 				transform: 'none',
