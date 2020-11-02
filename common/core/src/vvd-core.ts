@@ -55,7 +55,7 @@ function _buildConfiguration(): Configuration {
 	if (vvdContextAttrValue === NONE_INIT_VALUE) {
 		result.autoInit = false;
 	} else if (vvdContextAttrValue) {
-		const parsed = _parseVvdConvextAttr(vvdContextAttrValue);
+		const parsed = _parseVvdContextAttr(vvdContextAttrValue);
 		Object.assign(result, parsed);
 	}
 	return result;
@@ -73,11 +73,19 @@ function _validateConfiguration(configuration: Partial<Configuration>) {
 	}
 }
 
-function _parseVvdConvextAttr(value: string): Record<string, unknown> {
+function _parseVvdContextAttr(value: string): Record<string, unknown> {
 	const tokens = value.trim().split(/\s+/);
 	return tokens.reduce((result, token) => {
 		if (/^theme:/.test(token)) {
-			result.scheme = token.replace(/^theme:/, '');
+			if (result.scheme) {
+				console.error(
+					`theme vivid context defined multiple times, only the first (${result.scheme}) will be effective`
+				);
+			} else {
+				result.scheme = token.replace(/^theme:/, '');
+			}
+		} else {
+			console.warn(`unsupported token '${token}' in vivid context`);
 		}
 		return result;
 	}, {} as Record<string, unknown>);
