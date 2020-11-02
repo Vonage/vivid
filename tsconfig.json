@@ -51,6 +51,7 @@
 		{ "path": "components/linear-progress" },
 		{ "path": "components/list" },
 		{ "path": "components/media-controller" },
+		{ "path": "components/audio" },
 		{ "path": "components/menu" },
 		{ "path": "components/notched-outline" },
 		{ "path": "components/radio" },

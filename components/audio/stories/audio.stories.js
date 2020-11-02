@@ -12,4 +12,6 @@ export const basic = () => html`
 	</style>
 	<h1>Regular</h1>
 	<vwc-audio></vwc-audio>
+	<h1>No Seek</h1>
+	<vwc-audio noseek="true"></vwc-audio>
 `;
