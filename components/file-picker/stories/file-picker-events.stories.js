@@ -39,10 +39,14 @@ MultipleRestrictedChangeEvent.args = {
 const TemplateWithForm = args => html`
 	<form @submit="${onSubmit}">
 		<div>This is an example of file-picker living in form</div>
-		<vwc-file-picker ...=${spread(args.self)}>
-			<input type="file" name="file-input" ...=${spread(args.input)}/>
-			<vwc-button slot="button" type="button" layout="filled" icon="upload" trailingIcon>Add Files</vwc-button>
-		</vwc-file-picker>
+		<hr>
+		<div>
+			<vwc-file-picker ...=${spread(args.self)}>
+				<input type="file" name="file-input" ...=${spread(args.input)}/>
+				<vwc-button slot="button" type="button" layout="filled" icon="upload" trailingIcon>Add Files</vwc-button>
+			</vwc-file-picker>
+		</div>
+		<hr>
 		<vwc-button layout="filled">Submit</vwc-button>
 	</form>
 `;

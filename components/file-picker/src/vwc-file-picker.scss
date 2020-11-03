@@ -1,6 +1,12 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 
+:host {
+	display: inline-block;
+	min-inline-size: 320px;
+	max-inline-size: 100%;
+}
+
 .input-file-slot::slotted(*) {
 	display: none;
 }
