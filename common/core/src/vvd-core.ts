@@ -6,8 +6,11 @@ const VVD_CONTEXT_ATTRIBUTE = 'data-vvd-context',
 	VALID_CONFIGURATION_KEYS = ['scheme'];
 
 export interface Configuration {
-	autoInit: boolean;
 	scheme?: SchemeOption;
+}
+
+interface InitialConfiguration extends Configuration {
+	autoInit: boolean;
 }
 
 let coreAutoInitDone: Promise<Record<string, unknown>>;
@@ -45,8 +48,8 @@ async function _applyConfiguration(
 	});
 }
 
-function _buildConfiguration(): Configuration {
-	const result: Configuration = {
+function _buildConfiguration(): InitialConfiguration {
+	const result: InitialConfiguration = {
 		autoInit: true,
 	};
 	const vvdContextAttrValue = document.documentElement.getAttribute(
