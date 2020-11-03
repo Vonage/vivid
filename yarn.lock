@@ -1188,6 +1188,22 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@eslint/eslintrc@^0.2.1":
+  version "0.2.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@eslint/eslintrc/-/eslintrc-0.2.1.tgz#f72069c330461a06684d119384435e12a5d76e3c"
+  integrity sha1-9yBpwzBGGgZoTRGThENeEqXXbjw=
+  dependencies:
+    ajv "^6.12.4"
+    debug "^4.1.1"
+    espree "^7.3.0"
+    globals "^12.1.0"
+    ignore "^4.0.6"
+    import-fresh "^3.2.1"
+    js-yaml "^3.13.1"
+    lodash "^4.17.19"
+    minimatch "^3.0.4"
+    strip-json-comments "^3.1.1"
+
 "@evocateur/libnpmaccess@^3.1.2":
   version "3.1.2"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@evocateur/libnpmaccess/-/libnpmaccess-3.1.2.tgz#ecf7f6ce6b004e9f942b098d92200be4a4b1c845"
@@ -3117,19 +3133,19 @@
     estree-walker "^1.0.1"
     picomatch "^2.2.2"
 
-"@storybook/addon-a11y@^6.0.26":
-  version "6.0.26"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/addon-a11y/-/addon-a11y-6.0.26.tgz#b71761d9b8f8b340894eb9826d51ce319ce65116"
-  integrity sha1-txdh2bj4s0CJTrmCbVHOMZzmURY=
+"@storybook/addon-a11y@^6.0.28":
+  version "6.0.28"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/addon-a11y/-/addon-a11y-6.0.28.tgz#6e04ec19b208b3ea3809efd85809ac12c6b464ec"
+  integrity sha1-bgTsGbIIs+o4Ce/YWAmsEsa0ZOw=
   dependencies:
-    "@storybook/addons" "6.0.26"
-    "@storybook/api" "6.0.26"
-    "@storybook/channels" "6.0.26"
-    "@storybook/client-api" "6.0.26"
-    "@storybook/client-logger" "6.0.26"
-    "@storybook/components" "6.0.26"
-    "@storybook/core-events" "6.0.26"
-    "@storybook/theming" "6.0.26"
+    "@storybook/addons" "6.0.28"
+    "@storybook/api" "6.0.28"
+    "@storybook/channels" "6.0.28"
+    "@storybook/client-api" "6.0.28"
+    "@storybook/client-logger" "6.0.28"
+    "@storybook/components" "6.0.28"
+    "@storybook/core-events" "6.0.28"
+    "@storybook/theming" "6.0.28"
     axe-core "^3.5.2"
     core-js "^3.0.1"
     global "^4.3.2"
@@ -3139,17 +3155,17 @@
     ts-dedent "^1.1.1"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-actions@^6.0.26":
-  version "6.0.26"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/addon-actions/-/addon-actions-6.0.26.tgz#d0de9e4d78a8f8f5bf8730c04d0b6d1741c29273"
-  integrity sha1-0N6eTXio+PW/hzDATQttF0HCknM=
+"@storybook/addon-actions@^6.0.28":
+  version "6.0.28"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/addon-actions/-/addon-actions-6.0.28.tgz#86c0353b597c2a41f6ac7efa7c0d5aeed6a456b2"
+  integrity sha1-hsA1O1l8KkH2rH76fA1a7takVrI=
   dependencies:
-    "@storybook/addons" "6.0.26"
-    "@storybook/api" "6.0.26"
-    "@storybook/client-api" "6.0.26"
-    "@storybook/components" "6.0.26"
-    "@storybook/core-events" "6.0.26"
-    "@storybook/theming" "6.0.26"
+    "@storybook/addons" "6.0.28"
+    "@storybook/api" "6.0.28"
+    "@storybook/client-api" "6.0.28"
+    "@storybook/components" "6.0.28"
+    "@storybook/core-events" "6.0.28"
+    "@storybook/theming" "6.0.28"
     core-js "^3.0.1"
     fast-deep-equal "^3.1.1"
     global "^4.3.2"
@@ -3170,24 +3186,24 @@
   dependencies:
     global "^4.3.2"
 
-"@storybook/addon-controls@^6.0.26":
-  version "6.0.26"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/addon-controls/-/addon-controls-6.0.26.tgz#4cc4c30ee7bf89ab873158ead4d25d6f7e07ffba"
-  integrity sha1-TMTDDue/iauHMVjq1NJdb34H/7o=
+"@storybook/addon-controls@^6.0.28":
+  version "6.0.28"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/addon-controls/-/addon-controls-6.0.28.tgz#5872ede3d33b103c0b519304dedde1000b8c68f0"
+  integrity sha1-WHLt49M7EDwLUZME3t3hAAuMaPA=
   dependencies:
-    "@storybook/addons" "6.0.26"
-    "@storybook/api" "6.0.26"
-    "@storybook/client-api" "6.0.26"
-    "@storybook/components" "6.0.26"
-    "@storybook/node-logger" "6.0.26"
-    "@storybook/theming" "6.0.26"
+    "@storybook/addons" "6.0.28"
+    "@storybook/api" "6.0.28"
+    "@storybook/client-api" "6.0.28"
+    "@storybook/components" "6.0.28"
+    "@storybook/node-logger" "6.0.28"
+    "@storybook/theming" "6.0.28"
     core-js "^3.0.1"
     ts-dedent "^1.1.1"
 
-"@storybook/addon-docs@^6.0.26":
-  version "6.0.26"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/addon-docs/-/addon-docs-6.0.26.tgz#bd7fc1fcdc47bb7992fa8d3254367e8c3bba373d"
-  integrity sha1-vX/B/NxHu3mS+o0yVDZ+jDu6Nz0=
+"@storybook/addon-docs@^6.0.28":
+  version "6.0.28"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/addon-docs/-/addon-docs-6.0.28.tgz#f7a9c6ba58969b9e83b215f21092f5970d708915"
+  integrity sha1-96nGuliWm56DshXyEJL1lw1wiRU=
   dependencies:
     "@babel/generator" "^7.9.6"
     "@babel/parser" "^7.9.6"
@@ -3197,18 +3213,18 @@
     "@mdx-js/loader" "^1.5.1"
     "@mdx-js/mdx" "^1.5.1"
     "@mdx-js/react" "^1.5.1"
-    "@storybook/addons" "6.0.26"
-    "@storybook/api" "6.0.26"
-    "@storybook/client-api" "6.0.26"
-    "@storybook/client-logger" "6.0.26"
-    "@storybook/components" "6.0.26"
-    "@storybook/core" "6.0.26"
-    "@storybook/core-events" "6.0.26"
+    "@storybook/addons" "6.0.28"
+    "@storybook/api" "6.0.28"
+    "@storybook/client-api" "6.0.28"
+    "@storybook/client-logger" "6.0.28"
+    "@storybook/components" "6.0.28"
+    "@storybook/core" "6.0.28"
+    "@storybook/core-events" "6.0.28"
     "@storybook/csf" "0.0.1"
-    "@storybook/node-logger" "6.0.26"
-    "@storybook/postinstall" "6.0.26"
-    "@storybook/source-loader" "6.0.26"
-    "@storybook/theming" "6.0.26"
+    "@storybook/node-logger" "6.0.28"
+    "@storybook/postinstall" "6.0.28"
+    "@storybook/source-loader" "6.0.28"
+    "@storybook/theming" "6.0.28"
     acorn "^7.1.0"
     acorn-jsx "^5.1.0"
     acorn-walk "^7.0.0"
@@ -3228,18 +3244,18 @@
     ts-dedent "^1.1.1"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-storysource@^6.0.26":
-  version "6.0.26"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/addon-storysource/-/addon-storysource-6.0.26.tgz#ee099f271846b45a5a4e9ac7f4264604e65d8062"
-  integrity sha1-7gmfJxhGtFpaTprH9CZGBOZdgGI=
+"@storybook/addon-storysource@^6.0.28":
+  version "6.0.28"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/addon-storysource/-/addon-storysource-6.0.28.tgz#aea78da499bddb29b39c4a8722cdac82d5ce57c3"
+  integrity sha1-rqeNpJm92ymznEqHIs2sgtXOV8M=
   dependencies:
-    "@storybook/addons" "6.0.26"
-    "@storybook/api" "6.0.26"
-    "@storybook/client-logger" "6.0.26"
-    "@storybook/components" "6.0.26"
-    "@storybook/router" "6.0.26"
-    "@storybook/source-loader" "6.0.26"
-    "@storybook/theming" "6.0.26"
+    "@storybook/addons" "6.0.28"
+    "@storybook/api" "6.0.28"
+    "@storybook/client-logger" "6.0.28"
+    "@storybook/components" "6.0.28"
+    "@storybook/router" "6.0.28"
+    "@storybook/source-loader" "6.0.28"
+    "@storybook/theming" "6.0.28"
     core-js "^3.0.1"
     estraverse "^4.2.0"
     loader-utils "^2.0.0"
@@ -3249,51 +3265,51 @@
     react-syntax-highlighter "^12.2.1"
     regenerator-runtime "^0.13.3"
 
-"@storybook/addon-viewport@^6.0.26":
-  version "6.0.26"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/addon-viewport/-/addon-viewport-6.0.26.tgz#c913dadcb55b31d2df21a580e932b85b1a200a8b"
-  integrity sha1-yRPa3LVbMdLfIaWA6TK4WxogCos=
+"@storybook/addon-viewport@^6.0.28":
+  version "6.0.28"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/addon-viewport/-/addon-viewport-6.0.28.tgz#20f096695699c90c1b5ba795ff858a46d4084a10"
+  integrity sha1-IPCWaVaZyQwbW6eV/4WKRtQIShA=
   dependencies:
-    "@storybook/addons" "6.0.26"
-    "@storybook/api" "6.0.26"
-    "@storybook/client-logger" "6.0.26"
-    "@storybook/components" "6.0.26"
-    "@storybook/core-events" "6.0.26"
-    "@storybook/theming" "6.0.26"
+    "@storybook/addons" "6.0.28"
+    "@storybook/api" "6.0.28"
+    "@storybook/client-logger" "6.0.28"
+    "@storybook/components" "6.0.28"
+    "@storybook/core-events" "6.0.28"
+    "@storybook/theming" "6.0.28"
     core-js "^3.0.1"
     global "^4.3.2"
     memoizerific "^1.11.3"
     prop-types "^15.7.2"
     regenerator-runtime "^0.13.3"
 
-"@storybook/addons@6.0.26", "@storybook/addons@^6.0.26":
-  version "6.0.26"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/addons/-/addons-6.0.26.tgz#343cbea3eee2d39413b80bc2d66535a7f61488fc"
-  integrity sha1-NDy+o+7i05QTuAvC1mU1p/YUiPw=
+"@storybook/addons@6.0.28", "@storybook/addons@^6.0.28":
+  version "6.0.28"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/addons/-/addons-6.0.28.tgz#8c7ef3229706e2dc32d40ec9158431a3ffee3e5b"
+  integrity sha1-jH7zIpcG4twy1A7JFYQxo//uPls=
   dependencies:
-    "@storybook/api" "6.0.26"
-    "@storybook/channels" "6.0.26"
-    "@storybook/client-logger" "6.0.26"
-    "@storybook/core-events" "6.0.26"
-    "@storybook/router" "6.0.26"
-    "@storybook/theming" "6.0.26"
+    "@storybook/api" "6.0.28"
+    "@storybook/channels" "6.0.28"
+    "@storybook/client-logger" "6.0.28"
+    "@storybook/core-events" "6.0.28"
+    "@storybook/router" "6.0.28"
+    "@storybook/theming" "6.0.28"
     core-js "^3.0.1"
     global "^4.3.2"
     regenerator-runtime "^0.13.3"
 
-"@storybook/api@6.0.26":
-  version "6.0.26"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/api/-/api-6.0.26.tgz#c45222c132eb8bc2e383536adfebbeb7a89867d0"
-  integrity sha1-xFIiwTLri8Ljg1Nq3+u+t6iYZ9A=
+"@storybook/api@6.0.28":
+  version "6.0.28"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/api/-/api-6.0.28.tgz#ec87494e982240e2ccc2390f79d3100cc5a8f4da"
+  integrity sha1-7IdJTpgiQOLMwjkPedMQDMWo9No=
   dependencies:
     "@reach/router" "^1.3.3"
-    "@storybook/channels" "6.0.26"
-    "@storybook/client-logger" "6.0.26"
-    "@storybook/core-events" "6.0.26"
+    "@storybook/channels" "6.0.28"
+    "@storybook/client-logger" "6.0.28"
+    "@storybook/core-events" "6.0.28"
     "@storybook/csf" "0.0.1"
-    "@storybook/router" "6.0.26"
+    "@storybook/router" "6.0.28"
     "@storybook/semver" "^7.3.2"
-    "@storybook/theming" "6.0.26"
+    "@storybook/theming" "6.0.28"
     "@types/reach__router" "^1.3.5"
     core-js "^3.0.1"
     fast-deep-equal "^3.1.1"
@@ -3307,38 +3323,38 @@
     ts-dedent "^1.1.1"
     util-deprecate "^1.0.2"
 
-"@storybook/channel-postmessage@6.0.26":
-  version "6.0.26"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/channel-postmessage/-/channel-postmessage-6.0.26.tgz#a98a0132d6bdf06741afac2607e9feabe34ab98b"
-  integrity sha1-qYoBMta98GdBr6wmB+n+q+NKuYs=
+"@storybook/channel-postmessage@6.0.28":
+  version "6.0.28"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/channel-postmessage/-/channel-postmessage-6.0.28.tgz#82028e368d440d49e3c4ad4e6d0166d044f0a35b"
+  integrity sha1-ggKONo1EDUnjxK1ObQFm0ETwo1s=
   dependencies:
-    "@storybook/channels" "6.0.26"
-    "@storybook/client-logger" "6.0.26"
-    "@storybook/core-events" "6.0.26"
+    "@storybook/channels" "6.0.28"
+    "@storybook/client-logger" "6.0.28"
+    "@storybook/core-events" "6.0.28"
     core-js "^3.0.1"
     global "^4.3.2"
     qs "^6.6.0"
     telejson "^5.0.2"
 
-"@storybook/channels@6.0.26":
-  version "6.0.26"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/channels/-/channels-6.0.26.tgz#3e8678b4b40085081257a39b9e85fab13a19943c"
-  integrity sha1-PoZ4tLQAhQgSV6ObnoX6sToZlDw=
+"@storybook/channels@6.0.28":
+  version "6.0.28"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/channels/-/channels-6.0.28.tgz#9d086db8ae9ee0464fa743fefd155a2e810eb4b7"
+  integrity sha1-nQhtuK6e4EZPp0P+/RVaLoEOtLc=
   dependencies:
     core-js "^3.0.1"
     ts-dedent "^1.1.1"
     util-deprecate "^1.0.2"
 
-"@storybook/client-api@6.0.26":
-  version "6.0.26"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/client-api/-/client-api-6.0.26.tgz#ac9334ba86834e5cb23fc4fb577de60bda66164d"
-  integrity sha1-rJM0uoaDTlyyP8T7V33mC9pmFk0=
+"@storybook/client-api@6.0.28":
+  version "6.0.28"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/client-api/-/client-api-6.0.28.tgz#789e1dd85e5bfed8580035bbefe1871359bac8fc"
+  integrity sha1-eJ4d2F5b/thYADW77+GHE1m6yPw=
   dependencies:
-    "@storybook/addons" "6.0.26"
-    "@storybook/channel-postmessage" "6.0.26"
-    "@storybook/channels" "6.0.26"
-    "@storybook/client-logger" "6.0.26"
-    "@storybook/core-events" "6.0.26"
+    "@storybook/addons" "6.0.28"
+    "@storybook/channel-postmessage" "6.0.28"
+    "@storybook/channels" "6.0.28"
+    "@storybook/client-logger" "6.0.28"
+    "@storybook/core-events" "6.0.28"
     "@storybook/csf" "0.0.1"
     "@types/qs" "^6.9.0"
     "@types/webpack-env" "^1.15.2"
@@ -3352,22 +3368,22 @@
     ts-dedent "^1.1.1"
     util-deprecate "^1.0.2"
 
-"@storybook/client-logger@6.0.26":
-  version "6.0.26"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/client-logger/-/client-logger-6.0.26.tgz#e3d28bd8dc02ec2c53a9d69773a68189590b746f"
-  integrity sha1-49KL2NwC7CxTqdaXc6aBiVkLdG8=
+"@storybook/client-logger@6.0.28":
+  version "6.0.28"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/client-logger/-/client-logger-6.0.28.tgz#f71d0ad3314facfdce4a5d2bebd0f08dc0289109"
+  integrity sha1-9x0K0zFPrP3OSl0r69DwjcAokQk=
   dependencies:
     core-js "^3.0.1"
     global "^4.3.2"
 
-"@storybook/components@6.0.26":
-  version "6.0.26"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/components/-/components-6.0.26.tgz#e1f6e16aae850a71c9ac7bdd1d44a068ec9cfdc1"
-  integrity sha1-4fbhaq6FCnHJrHvdHUSgaOyc/cE=
+"@storybook/components@6.0.28":
+  version "6.0.28"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/components/-/components-6.0.28.tgz#aca24419a3941e0f5a20dd349f2b13614542b3da"
+  integrity sha1-rKJEGaOUHg9aIN00nysTYUVCs9o=
   dependencies:
-    "@storybook/client-logger" "6.0.26"
+    "@storybook/client-logger" "6.0.28"
     "@storybook/csf" "0.0.1"
-    "@storybook/theming" "6.0.26"
+    "@storybook/theming" "6.0.28"
     "@types/overlayscrollbars" "^1.9.0"
     "@types/react-color" "^3.0.1"
     "@types/react-syntax-highlighter" "11.0.4"
@@ -3388,17 +3404,17 @@
     react-textarea-autosize "^8.1.1"
     ts-dedent "^1.1.1"
 
-"@storybook/core-events@6.0.26":
-  version "6.0.26"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/core-events/-/core-events-6.0.26.tgz#61181c9a8610d26cc85d47f133a563879044ca2d"
-  integrity sha1-YRgcmoYQ0mzIXUfxM6Vjh5BEyi0=
+"@storybook/core-events@6.0.28":
+  version "6.0.28"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/core-events/-/core-events-6.0.28.tgz#f9d0925cf11e696fdd3602ae581d29568f352822"
+  integrity sha1-+dCSXPEeaW/dNgKuWB0pVo81KCI=
   dependencies:
     core-js "^3.0.1"
 
-"@storybook/core@6.0.26":
-  version "6.0.26"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/core/-/core-6.0.26.tgz#ff587929d0f55cefa8405686e831e79aeeb6870e"
-  integrity sha1-/1h5KdD1XO+oQFaG6DHnmu62hw4=
+"@storybook/core@6.0.28":
+  version "6.0.28"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/core/-/core-6.0.28.tgz#82ca8ef2700971c5abceea3750fc2d1081034c9d"
+  integrity sha1-gsqO8nAJccWrzuo3UPwtEIEDTJ0=
   dependencies:
     "@babel/plugin-proposal-class-properties" "^7.8.3"
     "@babel/plugin-proposal-decorators" "^7.8.3"
@@ -3421,20 +3437,20 @@
     "@babel/preset-react" "^7.8.3"
     "@babel/preset-typescript" "^7.9.0"
     "@babel/register" "^7.10.5"
-    "@storybook/addons" "6.0.26"
-    "@storybook/api" "6.0.26"
-    "@storybook/channel-postmessage" "6.0.26"
-    "@storybook/channels" "6.0.26"
-    "@storybook/client-api" "6.0.26"
-    "@storybook/client-logger" "6.0.26"
-    "@storybook/components" "6.0.26"
-    "@storybook/core-events" "6.0.26"
+    "@storybook/addons" "6.0.28"
+    "@storybook/api" "6.0.28"
+    "@storybook/channel-postmessage" "6.0.28"
+    "@storybook/channels" "6.0.28"
+    "@storybook/client-api" "6.0.28"
+    "@storybook/client-logger" "6.0.28"
+    "@storybook/components" "6.0.28"
+    "@storybook/core-events" "6.0.28"
     "@storybook/csf" "0.0.1"
-    "@storybook/node-logger" "6.0.26"
-    "@storybook/router" "6.0.26"
+    "@storybook/node-logger" "6.0.28"
+    "@storybook/router" "6.0.28"
     "@storybook/semver" "^7.3.2"
-    "@storybook/theming" "6.0.26"
-    "@storybook/ui" "6.0.26"
+    "@storybook/theming" "6.0.28"
+    "@storybook/ui" "6.0.28"
     "@types/glob-base" "^0.3.0"
     "@types/micromatch" "^4.0.1"
     "@types/node-fetch" "^2.5.4"
@@ -3505,10 +3521,10 @@
   dependencies:
     lodash "^4.17.15"
 
-"@storybook/node-logger@6.0.26":
-  version "6.0.26"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/node-logger/-/node-logger-6.0.26.tgz#2ef95ea1e2defd4efcba6b23431ea5c5cbaa110b"
-  integrity sha1-LvleoeLe/U78umsjQx6lxcuqEQs=
+"@storybook/node-logger@6.0.28":
+  version "6.0.28"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/node-logger/-/node-logger-6.0.28.tgz#b1e51d00c8acaa44b91e4cef33ab3275cad93b14"
+  integrity sha1-seUdAMisqkS5HkzvM6sydcrZOxQ=
   dependencies:
     "@types/npmlog" "^4.1.2"
     chalk "^4.0.0"
@@ -3516,29 +3532,29 @@
     npmlog "^4.1.2"
     pretty-hrtime "^1.0.3"
 
-"@storybook/postinstall@6.0.26":
-  version "6.0.26"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/postinstall/-/postinstall-6.0.26.tgz#3ba9f6fa598d92daf5823361186c4b1369f16ebe"
-  integrity sha1-O6n2+lmNktr1gjNhGGxLE2nxbr4=
+"@storybook/postinstall@6.0.28":
+  version "6.0.28"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/postinstall/-/postinstall-6.0.28.tgz#b793b25994147f4fc0271e264ccf358a47fb2caa"
+  integrity sha1-t5OyWZQUf0/AJx4mTM81ikf7LKo=
   dependencies:
     core-js "^3.0.1"
 
-"@storybook/react@^6.0.26":
-  version "6.0.26"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/react/-/react-6.0.26.tgz#5d4b8f2c6d8003912d371298a6e5a945e24680b4"
-  integrity sha1-XUuPLG2AA5EtNxKYpuWpReJGgLQ=
+"@storybook/react@^6.0.28":
+  version "6.0.28"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/react/-/react-6.0.28.tgz#b7b482342b995645770906833799a0b1e155f9b4"
+  integrity sha1-t7SCNCuZVkV3CQaDN5mgseFV+bQ=
   dependencies:
     "@babel/preset-flow" "^7.0.0"
     "@babel/preset-react" "^7.0.0"
-    "@storybook/addons" "6.0.26"
-    "@storybook/core" "6.0.26"
-    "@storybook/node-logger" "6.0.26"
+    "@storybook/addons" "6.0.28"
+    "@storybook/core" "6.0.28"
+    "@storybook/node-logger" "6.0.28"
     "@storybook/semver" "^7.3.2"
     "@svgr/webpack" "^5.4.0"
     "@types/webpack-env" "^1.15.2"
     babel-plugin-add-react-displayname "^0.0.5"
     babel-plugin-named-asset-import "^0.3.1"
-    babel-plugin-react-docgen "^4.1.0"
+    babel-plugin-react-docgen "^4.2.1"
     core-js "^3.0.1"
     global "^4.3.2"
     lodash "^4.17.15"
@@ -3549,10 +3565,10 @@
     ts-dedent "^1.1.1"
     webpack "^4.43.0"
 
-"@storybook/router@6.0.26":
-  version "6.0.26"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/router/-/router-6.0.26.tgz#5b991001afa7d7eb5e40c53cd4c58266b6f9edfd"
-  integrity sha1-W5kQAa+n1+teQMU81MWCZrb57f0=
+"@storybook/router@6.0.28":
+  version "6.0.28"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/router/-/router-6.0.28.tgz#e95d8c3bcc18688c17a5f582b2612014400fed58"
+  integrity sha1-6V2MO8wYaIwXpfWCsmEgFEAP7Vg=
   dependencies:
     "@reach/router" "^1.3.3"
     "@types/reach__router" "^1.3.5"
@@ -3569,13 +3585,13 @@
     core-js "^3.6.5"
     find-up "^4.1.0"
 
-"@storybook/source-loader@6.0.26":
-  version "6.0.26"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/source-loader/-/source-loader-6.0.26.tgz#0c9a20b9e018c49d559c56e1bdae8350b8175371"
-  integrity sha1-DJogueAYxJ1VnFbhva6DULgXU3E=
+"@storybook/source-loader@6.0.28":
+  version "6.0.28"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/source-loader/-/source-loader-6.0.28.tgz#35bcf3ddaf10ee1fd14f3029895321935388f3df"
+  integrity sha1-Nbzz3a8Q7h/RTzApiVMhk1OI898=
   dependencies:
-    "@storybook/addons" "6.0.26"
-    "@storybook/client-logger" "6.0.26"
+    "@storybook/addons" "6.0.28"
+    "@storybook/client-logger" "6.0.28"
     "@storybook/csf" "0.0.1"
     core-js "^3.0.1"
     estraverse "^4.2.0"
@@ -3585,15 +3601,15 @@
     prettier "~2.0.5"
     regenerator-runtime "^0.13.3"
 
-"@storybook/theming@6.0.26", "@storybook/theming@^6.0.26":
-  version "6.0.26"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/theming/-/theming-6.0.26.tgz#e5b545fb2653dfd1b043b567197d490b1c3c0da3"
-  integrity sha1-5bVF+yZT39GwQ7VnGX1JCxw8DaM=
+"@storybook/theming@6.0.28", "@storybook/theming@^6.0.28":
+  version "6.0.28"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/theming/-/theming-6.0.28.tgz#8403333c68c44729eb677ef7c934aaa06e269f33"
+  integrity sha1-hAMzPGjERynrZ373yTSqoG4mnzM=
   dependencies:
     "@emotion/core" "^10.0.20"
     "@emotion/is-prop-valid" "^0.8.6"
     "@emotion/styled" "^10.0.17"
-    "@storybook/client-logger" "6.0.26"
+    "@storybook/client-logger" "6.0.28"
     core-js "^3.0.1"
     deep-object-diff "^1.1.0"
     emotion-theming "^10.0.19"
@@ -3603,21 +3619,21 @@
     resolve-from "^5.0.0"
     ts-dedent "^1.1.1"
 
-"@storybook/ui@6.0.26":
-  version "6.0.26"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/ui/-/ui-6.0.26.tgz#60e97d2044a3f63b489d7ad0b0529d93373b71ee"
-  integrity sha1-YOl9IESj9jtInXrQsFKdkzc7ce4=
+"@storybook/ui@6.0.28":
+  version "6.0.28"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/ui/-/ui-6.0.28.tgz#9b07d11c648b26d9fe20db0436bfbb65634a1930"
+  integrity sha1-mwfRHGSLJtn+INsENr+7ZWNKGTA=
   dependencies:
     "@emotion/core" "^10.0.20"
-    "@storybook/addons" "6.0.26"
-    "@storybook/api" "6.0.26"
-    "@storybook/channels" "6.0.26"
-    "@storybook/client-logger" "6.0.26"
-    "@storybook/components" "6.0.26"
-    "@storybook/core-events" "6.0.26"
-    "@storybook/router" "6.0.26"
+    "@storybook/addons" "6.0.28"
+    "@storybook/api" "6.0.28"
+    "@storybook/channels" "6.0.28"
+    "@storybook/client-logger" "6.0.28"
+    "@storybook/components" "6.0.28"
+    "@storybook/core-events" "6.0.28"
+    "@storybook/router" "6.0.28"
     "@storybook/semver" "^7.3.2"
-    "@storybook/theming" "6.0.26"
+    "@storybook/theming" "6.0.28"
     "@types/markdown-to-jsx" "^6.11.0"
     copy-to-clipboard "^3.0.8"
     core-js "^3.0.1"
@@ -3640,15 +3656,15 @@
     resolve-from "^5.0.0"
     store2 "^2.7.1"
 
-"@storybook/web-components@^6.0.26":
-  version "6.0.26"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/web-components/-/web-components-6.0.26.tgz#f6d194982d7c5a0d14e5f1e0f8d46be226e01080"
-  integrity sha1-9tGUmC18Wg0U5fHg+NRr4ibgEIA=
+"@storybook/web-components@^6.0.28":
+  version "6.0.28"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/web-components/-/web-components-6.0.28.tgz#def3f40aaf4cce1021c5eb83693910134425ffe5"
+  integrity sha1-3vP0Cq9MzhAhxeuDaTkQE0Ql/+U=
   dependencies:
     "@babel/plugin-syntax-dynamic-import" "^7.2.0"
     "@babel/plugin-syntax-import-meta" "^7.2.0"
-    "@storybook/addons" "6.0.26"
-    "@storybook/core" "6.0.26"
+    "@storybook/addons" "6.0.28"
+    "@storybook/core" "6.0.28"
     "@types/webpack-env" "^1.15.2"
     babel-plugin-bundled-import-meta "^0.3.1"
     core-js "^3.0.1"
@@ -4318,61 +4334,61 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@typescript-eslint/eslint-plugin@^4.3.0":
-  version "4.4.1"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@typescript-eslint/eslint-plugin/-/eslint-plugin-4.4.1.tgz#b8acea0373bd2a388ac47df44652f00bf8b368f5"
-  integrity sha1-uKzqA3O9KjiKxH30RlLwC/izaPU=
+"@typescript-eslint/eslint-plugin@^4.6.1":
+  version "4.6.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@typescript-eslint/eslint-plugin/-/eslint-plugin-4.6.1.tgz#99d77eb7a016fd5a5e749d2c44a7e4c317eb7da3"
+  integrity sha1-mdd+t6AW/VpedJ0sRKfkwxfrfaM=
   dependencies:
-    "@typescript-eslint/experimental-utils" "4.4.1"
-    "@typescript-eslint/scope-manager" "4.4.1"
+    "@typescript-eslint/experimental-utils" "4.6.1"
+    "@typescript-eslint/scope-manager" "4.6.1"
     debug "^4.1.1"
     functional-red-black-tree "^1.0.1"
     regexpp "^3.0.0"
     semver "^7.3.2"
     tsutils "^3.17.1"
 
-"@typescript-eslint/experimental-utils@4.4.1":
-  version "4.4.1"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@typescript-eslint/experimental-utils/-/experimental-utils-4.4.1.tgz#40613b9757fa0170de3e0043254dbb077cafac0c"
-  integrity sha1-QGE7l1f6AXDePgBDJU27B3yvrAw=
+"@typescript-eslint/experimental-utils@4.6.1":
+  version "4.6.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@typescript-eslint/experimental-utils/-/experimental-utils-4.6.1.tgz#a9c691dfd530a9570274fe68907c24c07a06c4aa"
+  integrity sha1-qcaR39UwqVcCdP5okHwkwHoGxKo=
   dependencies:
     "@types/json-schema" "^7.0.3"
-    "@typescript-eslint/scope-manager" "4.4.1"
-    "@typescript-eslint/types" "4.4.1"
-    "@typescript-eslint/typescript-estree" "4.4.1"
+    "@typescript-eslint/scope-manager" "4.6.1"
+    "@typescript-eslint/types" "4.6.1"
+    "@typescript-eslint/typescript-estree" "4.6.1"
     eslint-scope "^5.0.0"
     eslint-utils "^2.0.0"
 
-"@typescript-eslint/parser@^4.3.0":
-  version "4.4.1"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@typescript-eslint/parser/-/parser-4.4.1.tgz#25fde9c080611f303f2f33cedb145d2c59915b80"
-  integrity sha1-Jf3pwIBhHzA/LzPO2xRdLFmRW4A=
+"@typescript-eslint/parser@^4.6.1":
+  version "4.6.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@typescript-eslint/parser/-/parser-4.6.1.tgz#b801bff67b536ecc4a840ac9289ba2be57e02428"
+  integrity sha1-uAG/9ntTbsxKhArJKJuivlfgJCg=
   dependencies:
-    "@typescript-eslint/scope-manager" "4.4.1"
-    "@typescript-eslint/types" "4.4.1"
-    "@typescript-eslint/typescript-estree" "4.4.1"
+    "@typescript-eslint/scope-manager" "4.6.1"
+    "@typescript-eslint/types" "4.6.1"
+    "@typescript-eslint/typescript-estree" "4.6.1"
     debug "^4.1.1"
 
-"@typescript-eslint/scope-manager@4.4.1":
-  version "4.4.1"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@typescript-eslint/scope-manager/-/scope-manager-4.4.1.tgz#d19447e60db2ce9c425898d62fa03b2cce8ea3f9"
-  integrity sha1-0ZRH5g2yzpxCWJjWL6A7LM6Oo/k=
+"@typescript-eslint/scope-manager@4.6.1":
+  version "4.6.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@typescript-eslint/scope-manager/-/scope-manager-4.6.1.tgz#21872b91cbf7adfc7083f17b8041149148baf992"
+  integrity sha1-IYcrkcv3rfxwg/F7gEEUkUi6+ZI=
   dependencies:
-    "@typescript-eslint/types" "4.4.1"
-    "@typescript-eslint/visitor-keys" "4.4.1"
+    "@typescript-eslint/types" "4.6.1"
+    "@typescript-eslint/visitor-keys" "4.6.1"
 
-"@typescript-eslint/types@4.4.1":
-  version "4.4.1"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@typescript-eslint/types/-/types-4.4.1.tgz#c507b35cf523bc7ba00aae5f75ee9b810cdabbc1"
-  integrity sha1-xQezXPUjvHugCq5fde6bgQzau8E=
+"@typescript-eslint/types@4.6.1":
+  version "4.6.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@typescript-eslint/types/-/types-4.6.1.tgz#d3ad7478f53f22e7339dc006ab61aac131231552"
+  integrity sha1-0610ePU/IuczncAGq2GqwTEjFVI=
 
-"@typescript-eslint/typescript-estree@4.4.1":
-  version "4.4.1"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@typescript-eslint/typescript-estree/-/typescript-estree-4.4.1.tgz#598f6de488106c2587d47ca2462c60f6e2797cb8"
-  integrity sha1-WY9t5IgQbCWH1HyiRixg9uJ5fLg=
+"@typescript-eslint/typescript-estree@4.6.1":
+  version "4.6.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@typescript-eslint/typescript-estree/-/typescript-estree-4.6.1.tgz#6025cce724329413f57e4959b2d676fceeca246f"
+  integrity sha1-YCXM5yQylBP1fklZstZ2/O7KJG8=
   dependencies:
-    "@typescript-eslint/types" "4.4.1"
-    "@typescript-eslint/visitor-keys" "4.4.1"
+    "@typescript-eslint/types" "4.6.1"
+    "@typescript-eslint/visitor-keys" "4.6.1"
     debug "^4.1.1"
     globby "^11.0.1"
     is-glob "^4.0.1"
@@ -4380,12 +4396,12 @@
     semver "^7.3.2"
     tsutils "^3.17.1"
 
-"@typescript-eslint/visitor-keys@4.4.1":
-  version "4.4.1"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@typescript-eslint/visitor-keys/-/visitor-keys-4.4.1.tgz#1769dc7a9e2d7d2cfd3318b77ed8249187aed5c3"
-  integrity sha1-F2ncep4tfSz9Mxi3ftgkkYeu1cM=
+"@typescript-eslint/visitor-keys@4.6.1":
+  version "4.6.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@typescript-eslint/visitor-keys/-/visitor-keys-4.6.1.tgz#6b125883402d8939df7b54528d879e88f7ba3614"
+  integrity sha1-axJYg0AtiTnfe1RSjYeeiPe6NhQ=
   dependencies:
-    "@typescript-eslint/types" "4.4.1"
+    "@typescript-eslint/types" "4.6.1"
     eslint-visitor-keys "^2.0.0"
 
 "@ungap/promise-all-settled@1.1.2":
@@ -4548,10 +4564,15 @@
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@webcomponents/shadycss/-/shadycss-1.10.1.tgz#6f377b313c96a93a690f25206b32a20eada4b2a9"
   integrity sha1-bzd7MTyWqTppDyUgazKiDq2ksqk=
 
-"@webcomponents/webcomponentsjs@^2.4.0", "@webcomponents/webcomponentsjs@^2.4.4":
+"@webcomponents/webcomponentsjs@^2.4.0":
   version "2.4.4"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@webcomponents/webcomponentsjs/-/webcomponentsjs-2.4.4.tgz#14b7e78da47f8f0071ff96c35335b871534179bc"
   integrity sha1-FLfnjaR/jwBx/5bDUzW4cVNBebw=
+
+"@webcomponents/webcomponentsjs@^2.5.0":
+  version "2.5.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@webcomponents/webcomponentsjs/-/webcomponentsjs-2.5.0.tgz#61b27785a6ad5bfd68fa018201fe418b118cb38d"
+  integrity sha1-YbJ3haatW/1o+gGCAf5BixGMs40=
 
 "@webpack-contrib/schema-utils@^1.0.0-beta.0":
   version "1.0.0-beta.0"
@@ -5369,7 +5390,7 @@ babel-plugin-named-asset-import@^0.3.1:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/babel-plugin-named-asset-import/-/babel-plugin-named-asset-import-0.3.6.tgz#c9750a1b38d85112c9e166bf3ef7c5dbc605f4be"
   integrity sha1-yXUKGzjYURLJ4Wa/PvfF28YF9L4=
 
-babel-plugin-react-docgen@^4.1.0:
+babel-plugin-react-docgen@^4.2.1:
   version "4.2.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/babel-plugin-react-docgen/-/babel-plugin-react-docgen-4.2.1.tgz#7cc8e2f94e8dc057a06e953162f0810e4e72257b"
   integrity sha1-fMji+U6NwFegbpUxYvCBDk5yJXs=
@@ -8127,7 +8148,7 @@ eslint-plugin-html@^6.0.0:
   dependencies:
     htmlparser2 "^4.1.0"
 
-eslint-plugin-import@^2.18.2, eslint-plugin-import@^2.22.0:
+eslint-plugin-import@^2.18.2, eslint-plugin-import@^2.22.1:
   version "2.22.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/eslint-plugin-import/-/eslint-plugin-import-2.22.1.tgz#0896c7e6a0cf44109a2d97b95903c2bb689d7702"
   integrity sha1-CJbH5qDPRBCaLZe5WQPCu2iddwI=
@@ -8155,13 +8176,22 @@ eslint-plugin-lit@^1.2.0:
     parse5-htmlparser2-tree-adapter "^6.0.1"
     requireindex "^1.2.0"
 
-eslint-plugin-mocha@^7.0.1:
-  version "7.0.1"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/eslint-plugin-mocha/-/eslint-plugin-mocha-7.0.1.tgz#b2e9e8ebef7836f999a83f8bab25d0e0c05f0d28"
-  integrity sha1-suno6+94NvmZqD+LqyXQ4MBfDSg=
+eslint-plugin-lit@^1.2.4:
+  version "1.2.4"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/eslint-plugin-lit/-/eslint-plugin-lit-1.2.4.tgz#fe4e59e9cc898d5721f6d60f6646f6b2a50b41b0"
+  integrity sha1-/k5Z6cyJjVch9tYPZkb2sqULQbA=
   dependencies:
-    eslint-utils "^2.0.0"
-    ramda "^0.27.0"
+    parse5 "^6.0.1"
+    parse5-htmlparser2-tree-adapter "^6.0.1"
+    requireindex "^1.2.0"
+
+eslint-plugin-mocha@^8.0.0:
+  version "8.0.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/eslint-plugin-mocha/-/eslint-plugin-mocha-8.0.0.tgz#7ec5d228bcb3735301701dfbc3376320a1ca3791"
+  integrity sha1-fsXSKLyzc1MBcB37wzdjIKHKN5E=
+  dependencies:
+    eslint-utils "^2.1.0"
+    ramda "^0.27.1"
 
 eslint-plugin-no-only-tests@^2.4.0:
   version "2.4.0"
@@ -8209,7 +8239,50 @@ eslint-visitor-keys@^2.0.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/eslint-visitor-keys/-/eslint-visitor-keys-2.0.0.tgz#21fdc8fbcd9c795cc0321f0563702095751511a8"
   integrity sha1-If3I+82ceVzAMh8FY3AglXUVEag=
 
-eslint@^7.5.0, eslint@^7.6.0:
+eslint@^7.12.1:
+  version "7.12.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/eslint/-/eslint-7.12.1.tgz#bd9a81fa67a6cfd51656cdb88812ce49ccec5801"
+  integrity sha1-vZqB+memz9UWVs24iBLOSczsWAE=
+  dependencies:
+    "@babel/code-frame" "^7.0.0"
+    "@eslint/eslintrc" "^0.2.1"
+    ajv "^6.10.0"
+    chalk "^4.0.0"
+    cross-spawn "^7.0.2"
+    debug "^4.0.1"
+    doctrine "^3.0.0"
+    enquirer "^2.3.5"
+    eslint-scope "^5.1.1"
+    eslint-utils "^2.1.0"
+    eslint-visitor-keys "^2.0.0"
+    espree "^7.3.0"
+    esquery "^1.2.0"
+    esutils "^2.0.2"
+    file-entry-cache "^5.0.1"
+    functional-red-black-tree "^1.0.1"
+    glob-parent "^5.0.0"
+    globals "^12.1.0"
+    ignore "^4.0.6"
+    import-fresh "^3.0.0"
+    imurmurhash "^0.1.4"
+    is-glob "^4.0.0"
+    js-yaml "^3.13.1"
+    json-stable-stringify-without-jsonify "^1.0.1"
+    levn "^0.4.1"
+    lodash "^4.17.19"
+    minimatch "^3.0.4"
+    natural-compare "^1.4.0"
+    optionator "^0.9.1"
+    progress "^2.0.0"
+    regexpp "^3.1.0"
+    semver "^7.2.1"
+    strip-ansi "^6.0.0"
+    strip-json-comments "^3.1.0"
+    table "^5.2.3"
+    text-table "^0.2.0"
+    v8-compile-cache "^2.0.3"
+
+eslint@^7.6.0:
   version "7.11.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/eslint/-/eslint-7.11.0.tgz#aaf2d23a0b5f1d652a08edacea0c19f7fadc0b3b"
   integrity sha1-qvLSOgtfHWUqCO2s6gwZ9/rcCzs=
@@ -13567,7 +13640,7 @@ ramda@^0.21.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ramda/-/ramda-0.21.0.tgz#a001abedb3ff61077d4ff1d577d44de77e8d0a35"
   integrity sha1-oAGr7bP/YQd9T/HVd9RN536NCjU=
 
-ramda@^0.27.0, ramda@^0.27.1:
+ramda@^0.27.1:
   version "0.27.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ramda/-/ramda-0.27.1.tgz#66fc2df3ef873874ffc2da6aa8984658abacf5c9"
   integrity sha1-Zvwt8++HOHT/wtpqqJhGWKus9ck=
@@ -16030,10 +16103,10 @@ typescript@^3.8.3:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/typescript/-/typescript-3.9.7.tgz#98d600a5ebdc38f40cb277522f12dc800e9e25fa"
   integrity sha1-mNYApevcOPQMsndSLxLcgA6eJfo=
 
-typescript@^4.0.2:
-  version "4.0.3"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/typescript/-/typescript-4.0.3.tgz#153bbd468ef07725c1df9c77e8b453f8d36abba5"
-  integrity sha1-FTu9Ro7wdyXB35x36LRT+NNqu6U=
+typescript@^4.0.5:
+  version "4.0.5"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/typescript/-/typescript-4.0.5.tgz#ae9dddfd1069f1cb5beb3ef3b2170dd7c1332389"
+  integrity sha1-rp3d/RBp8ctb6z7zshcN18EzI4k=
 
 typical@^4.0.0:
   version "4.0.0"
