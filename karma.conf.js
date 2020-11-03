@@ -9,27 +9,26 @@ module.exports = config => {
 			{ pattern: config.grep ? config.grep : '{common,components}/**/test/**/*.test.js', type: 'module' },
 		],
 		preprocessors: {
-			'common/design-tokens/build/scss/schemes/**/*.scss': ['file-fixtures']
+			'common/design-tokens/build/scss/schemes/**/*.scss': ['file-fixtures'],
+			'{common,components}/**/*.js': ['coverage']
 		},
 		esm: {
 			nodeResolve: true,
 		},
 		frameworks: ['chai'],
+		reporters: ['karmaHTML'],
 		browserDisconnectTimeout: 300000,
 		browserNoActivityTimeout: 360000,
 		singleRun: true,
 		autoWatch: false,
 		restartOnFileChange: true,
 		captureTimeout: 420000,
-		coverageIstanbulReporter: {
-			thresholds: {
-				global: {
-					statements: 10,
-					lines: 10,
-					branches: 3,
-					functions: 10,
-				},
-			},
+		client: {
+			karmaHTML: {
+				source: [
+					{ tag: 'coreSetupTest', src: 'common/core/test/core-setup.test.html' }
+				]
+			}
 		}
 	});
 
