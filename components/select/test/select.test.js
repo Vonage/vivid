@@ -10,10 +10,10 @@ import {
 	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
 import {
-	borderRadiusStyles,
 	body1TypographyStyles,
 	body2TypographyStyles,
 	captionTypographyStyles,
+	shapeStyles,
 } from '../../../test/style-utils.js';
 import {
 	assertDenseStyles,
@@ -328,7 +328,8 @@ describe('select', () => {
 	});
 
 	describe('shape', () => {
-		it('should have rounded shape by default', async () => {
+		let formElement, actualElement;
+		beforeEach(async () => {
 			const addedElements = addElement(
 				textToDomToParent(`
 				<${COMPONENT_NAME} outlined>
@@ -338,26 +339,24 @@ describe('select', () => {
 			`)
 			);
 			await waitNextTask();
-			const formElement = addedElements[0];
-			const actualElement = formElement.shadowRoot.querySelector('.mdc-select');
+			formElement = addedElements[0];
+			actualElement = formElement.shadowRoot.querySelector('.mdc-select');
+		});
 
-			assertComputedStyle(actualElement, borderRadiusStyles(6));
+		it('should have rounded shape by default', async () => {
+			assertComputedStyle(actualElement, shapeStyles('rounded'));
+		});
+
+		it('should have rounded shape when shape set to rounded', async () => {
+			formElement.shape = 'rounded';
+			await waitNextTask();
+			assertComputedStyle(actualElement, shapeStyles('rounded'));
 		});
 
 		it('should have pill shape when shape set to pill', async () => {
-			const addedElements = addElement(
-				textToDomToParent(`
-				<${COMPONENT_NAME} outlined shape="pill">
-					<vwc-list-item>Item 1</vwc-list-item>
-					<vwc-list-item>Item 2</vwc-list-item>
-				</${COMPONENT_NAME}>
-			`)
-			);
+			formElement.shape = 'pill';
 			await waitNextTask();
-			const actualElement = addedElements[0].shadowRoot.querySelector(
-				'.mdc-select'
-			);
-			assertComputedStyle(actualElement, borderRadiusStyles(24));
+			assertComputedStyle(actualElement, shapeStyles('pill'));
 		});
 	});
 });

@@ -4,7 +4,7 @@ import {
 	textToDomToParent,
 	assertComputedStyle,
 } from '../../../test/test-helpers.js';
-import { borderRadiusStyles } from '../../../test/style-utils.js';
+import { shapeStyles } from '../../../test/style-utils.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	isolatedElementsCreation,
@@ -458,27 +458,32 @@ describe('button', () => {
 	});
 
 	describe('shape', () => {
-		it('should have rounded shape by default', async () => {
+		let formElement, actualElement;
+		beforeEach(async () => {
 			const addedElements = addElement(
 				textToDomToParent(
 					`<${COMPONENT_NAME} layout="filled">Button Text</${COMPONENT_NAME}>`
 				)
 			);
 			await waitNextTask();
-			let actualElement = addedElements[0].shadowRoot.querySelector('#button');
+			formElement = addedElements[0];
+			actualElement = formElement.shadowRoot.querySelector('#button');
+		});
 
-			assertComputedStyle(actualElement, borderRadiusStyles(6));
+		it('should have rounded shape by default', async () => {
+			assertComputedStyle(actualElement, shapeStyles('rounded'));
+		});
+
+		it('should have rounded shape when shape set to rounded', async () => {
+			formElement.shape = 'rounded';
+			await waitNextTask();
+			assertComputedStyle(actualElement, shapeStyles('rounded'));
 		});
 
 		it('should have pill shape when shape set to pill', async () => {
-			const addedElements = addElement(
-				textToDomToParent(
-					`<${COMPONENT_NAME} layout="filled" shape="pill"></${COMPONENT_NAME}>`
-				)
-			);
+			formElement.shape = 'pill';
 			await waitNextTask();
-			const actualElement = addedElements[0].shadowRoot.querySelector('#button');
-			assertComputedStyle(actualElement, borderRadiusStyles(24));
+			assertComputedStyle(actualElement, shapeStyles('pill'));
 		});
 	});
 });
