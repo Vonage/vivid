@@ -181,6 +181,10 @@ export async function getFrameLoadedInjected(htmlTag, testCode) {
 	});
 }
 
+export function cleanFrame(htmlTag) {
+	karmaHTML[htmlTag].close();
+}
+
 class TestComponent extends HTMLElement {
 	connectedCallback() {
 		this.attachShadow({ mode: 'open' });

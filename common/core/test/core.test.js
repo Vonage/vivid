@@ -1,6 +1,7 @@
 import {
 	randomAlpha,
 	getFrameLoadedInjected,
+	cleanFrame,
 } from '../../../test/test-helpers.js';
 import {
 	assertBaseVarsMatch,
@@ -14,6 +15,10 @@ const DARK = 'dark';
 const NONE = 'none';
 
 describe('vvd-core service', () => {
+	after(() => {
+		cleanFrame(CORE_SETUP_HTML_TAG);
+	});
+
 	describe('basic APIs', () => {
 		it('is should init to default', async () => {
 			const r = randomAlpha();
