@@ -18,6 +18,7 @@ const LIGHT = 'light';
 const DARK = 'dark';
 
 describe('vvd-scheme service', () => {
+	/* eslint-disable no-undef */
 	after(() => {
 		cleanFrame(SCHEME_SETUP_HTML_TAG);
 	});

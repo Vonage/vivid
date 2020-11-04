@@ -15,6 +15,7 @@ const DARK = 'dark';
 const NONE = 'none';
 
 describe('vvd-core service', () => {
+	/* eslint-disable no-undef */
 	after(() => {
 		cleanFrame(CORE_SETUP_HTML_TAG);
 	});
