@@ -11,6 +11,7 @@ declare global {
 	}
 }
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 function debounce(
 	callback: <T>(this: T, ...args: any[]) => void,
 	waitInMS = 50
