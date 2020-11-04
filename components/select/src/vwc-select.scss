@@ -81,7 +81,7 @@ $vvd-select-size-block: --vvd-select-size-block;
   .mdc-select {
     .mdc-floating-label {
       left: -12px;
-      top: -24px;
+      top: -26px;
       transform: none;
     }
 
@@ -114,6 +114,7 @@ $vvd-select-size-block: --vvd-select-size-block;
 
       .mdc-floating-label {
         left: 2px;
+        line-height: var(--mdc-typography-subtitle1-line-height);
         padding-right: 8px;
         transition: transform 0.15s, font-size 0.15s;
       }
@@ -121,7 +122,7 @@ $vvd-select-size-block: --vvd-select-size-block;
       .mdc-floating-label--float-above {
         color: var(--mdc-select-label-ink-color);
         font-size: var(--mdc-typography-subtitle1-font-size);
-        transform: translateY(-100%);
+        transform: translateY(-19px);
       }
     }
   }
@@ -175,6 +176,7 @@ vwc-notched-outline {
 		}
 
 		.mdc-select-helper-text {
+      line-height: var(--mdc-typography-caption-line-height);
 			margin: 0;
 			opacity: 1;
 		}

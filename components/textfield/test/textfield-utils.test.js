@@ -47,6 +47,15 @@ export async function typographyTestCases(COMPONENT_NAME) {
 		);
 		assertComputedStyle(inputElement, body2TypographyStyles);
 	});
+
+	// it('should have set typography for a helper', async () => {
+	// 	formElement.helper = 'Helper text';
+	// 	await waitNextTask();
+	// 	const helperElement = formElement.shadowRoot.querySelector(
+	// 		'.mdc-text-field-helper-text'
+	// 	);
+	// 	assertComputedStyle(helperElement, captionTypographyStyles);
+	// });
 }
 
 export async function hasNotchedOutline(COMPONENT_NAME) {
@@ -80,6 +89,7 @@ export async function assertDenseStyles(COMPONENT_NAME) {
 	assertComputedStyle(labelElement, {
 		fontSize: '14.2222px',
 		left: '-12px',
+		lineHeight: '22.8697px',
 		top: '-24px',
 		transform: 'none',
 	});

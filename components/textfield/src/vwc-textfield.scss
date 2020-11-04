@@ -29,6 +29,8 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
   --mdc-text-field-error-fill-color: var(
     #{color-semantic.$formfield-error-fill}
   );
+
+  font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
 }
 
 :host([readonly]),
@@ -86,7 +88,7 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
   .mdc-text-field {
     .mdc-floating-label {
       left: -12px;
-      top: -24px;
+      top: -26px;
       transform: none;
     }
 
@@ -116,12 +118,13 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 
   .mdc-floating-label {
     left: 14px;
+    line-height: var(--mdc-typography-subtitle1-line-height);
     transition-property: transform, font-size;
   }
 
   .mdc-floating-label--float-above {
     font-size: var(--mdc-typography-subtitle1-font-size);
-    transform: translateY(-100%);
+    transform: translateY(-19px);
 
     &.mdc-floating-label--shake {
       animation: none;
@@ -212,7 +215,11 @@ vwc-notched-outline {
 			color: var(--mdc-text-field-error-color);
 		}
 
-		.mdc-text-field-helper-text::before {
+		.mdc-text-field-helper-text {
+      line-height: var(--mdc-typography-caption-line-height);
+		}
+    
+    .mdc-text-field-helper-text::before {
 			display: inline;
 		}
 

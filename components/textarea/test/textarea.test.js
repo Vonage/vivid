@@ -256,7 +256,7 @@ describe('textarea', () => {
 			assertComputedStyle(labelElement, {
 				fontSize: '14.2222px',
 				left: '-12px',
-				top: '-24px',
+				top: '-26px',
 				transform: 'none',
 			});
 		});
