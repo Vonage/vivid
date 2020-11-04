@@ -32,6 +32,7 @@ export async function typographyTestCases(COMPONENT_NAME) {
 	});
 
 	it('should have set typography for a label', async () => {
+		await waitInterval(200); // font transition
 		assertComputedStyle(labelElement, body1TypographyStyles);
 	});
 
@@ -45,6 +46,7 @@ export async function typographyTestCases(COMPONENT_NAME) {
 		const inputElement = formElement.shadowRoot.querySelector(
 			'.mdc-text-field__input'
 		);
+		await waitInterval(200);
 		assertComputedStyle(inputElement, body2TypographyStyles);
 	});
 
