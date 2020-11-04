@@ -82,7 +82,7 @@ $typography-category-list-base: (
     font-family: map.get($font-families, 'primary'),
     font-weight: map.get($font-weights, 'normal'),
     font-stretch: map.get($font-stretches, 'normal'),
-    font-size: ms(-2, $thread: 1200px),
+    font-size: 12.642px,
     line-height: calc(1ex / 0.32),
     letter-spacing: initial,
     text-transform: none,
