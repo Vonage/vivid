@@ -18,13 +18,24 @@ const getSchemeModule: (scheme: PredefinedScheme) => Promise<ModuleType> = (
 	}
 };
 
-const style = mountStyle();
+const STYLE_ELEMENT_CLASS = 'vvd-scheme-style';
+const style = ensureStyleMount(STYLE_ELEMENT_CLASS);
 
-function mountStyle() {
-	const styleElement = document.createElement('style');
-	styleElement.innerHTML = preSchemeLoadingCssText;
-	document.head.appendChild(styleElement);
-	return styleElement;
+function ensureStyleMount(schemeStylesheetClass: string): HTMLStyleElement {
+	let result;
+	const existing = document.querySelectorAll(`.${schemeStylesheetClass}`);
+	if (existing.length) {
+		console.error(
+			`found ${existing.length} scheme styles upon init while expected for 1, check your dependencies configuration`
+		);
+		result = existing[0] as HTMLStyleElement;
+	} else {
+		result = document.createElement('style');
+		result.className = STYLE_ELEMENT_CLASS;
+		result.innerHTML = preSchemeLoadingCssText;
+		document.head.appendChild(result);
+	}
+	return result;
 }
 
 export async function applySchemeCSS(scheme: PredefinedScheme): Promise<void> {

@@ -26,7 +26,8 @@ module.exports = config => {
 		client: {
 			karmaHTML: {
 				source: [
-					{ tag: 'coreSetupTest', src: 'common/core/test/core-setup.test.html' }
+          { tag: 'coreSetupTest', src: 'common/core/test/core-setup.test.html' },
+					{ tag: 'schemeSetupTestHTML', src: 'common/scheme/test/scheme-setup.test.html' }
 				]
 			}
 		}
