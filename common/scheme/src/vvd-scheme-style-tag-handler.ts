@@ -21,9 +21,9 @@ const getSchemeModule: (scheme: PredefinedScheme) => Promise<ModuleType> = (
 const STYLE_ELEMENT_CLASS = 'vvd-scheme-style';
 const style = ensureStyleMount(STYLE_ELEMENT_CLASS);
 
-function ensureStyleMount(sseClass: string): HTMLStyleElement {
+function ensureStyleMount(schemeStylesheetClass: string): HTMLStyleElement {
 	let result;
-	const existing = document.querySelectorAll(`.${sseClass}`);
+	const existing = document.querySelectorAll(`.${schemeStylesheetClass}`);
 	if (existing.length) {
 		console.error(
 			`found ${existing.length} scheme styles upon init while expected for 1, check your dependencies configuration`
