@@ -1,5 +1,6 @@
 import {
 	getFrameLoadedInjected,
+	cleanFrame,
 	randomAlpha,
 } from '../../../test/test-helpers.js';
 import {
@@ -17,6 +18,11 @@ const LIGHT = 'light';
 const DARK = 'dark';
 
 describe('vvd-scheme service', () => {
+	/* eslint-disable no-undef */
+	after(() => {
+		cleanFrame(SCHEME_SETUP_HTML_TAG);
+	});
+
 	it('should provide basic set scheme API', async () => {
 		assert.isObject(schemeService, 'imported "schemeService" is object');
 		assert.isNotNull(schemeService, 'imported "schemeService" not null');
