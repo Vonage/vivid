@@ -12,7 +12,7 @@ export const body1TypographyStyles = {
 	fontSize: '16px',
 	fontWeight: '400',
 	fontStretch: '50%',
-	// lineHeight: '18.4px',
+	lineHeight: '18px',
 	// letterSpacing: '0.15px',
 	textTransform: 'none',
 }
@@ -32,7 +32,7 @@ export const captionTypographyStyles = {
 	fontSize: '12.642px',
 	fontWeight: '400',
 	fontStretch: '50%',
-	// lineHeight: '18.4px',
+	// lineHeight: '20.3286px',
 	// letterSpacing: '0.119',
 	textTransform: 'none',
 }

@@ -8,9 +8,6 @@ import {
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
-const SECOND = 1000;
-
-const wait = (time) => new Promise((resolve) => setTimeout(resolve, time));
 
 describe('vwc-icon', () => {
 	const addElement = isolatedElementsCreation();
