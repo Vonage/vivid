@@ -30,6 +30,17 @@ module.exports = config => {
 					{ tag: 'schemeSetupTestHTML', src: 'common/scheme/test/scheme-setup.test.html' }
 				]
 			}
+		},
+		coverageReporter: {
+			dir: 'coverage',
+			reporters: [
+				{
+					type: 'html', subdir: 'report-html'
+				},
+				{
+					type: 'lcovonly', subdir: 'report-lcov'
+				}
+			]
 		}
 	});
 
