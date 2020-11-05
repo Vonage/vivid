@@ -142,14 +142,6 @@ $vvd-select-size-block: --vvd-select-size-block;
 	}
 }
 
-// .mdc-select-helper-text {
-// 	margin: 0 14px;
-// }
-
-// .mdc-select--invalid:not(.mdc-select--disabled).mdc-select--invalid + .mdc-select-helper-text--validation-msg {
-// 	color: var(--mdc-select-error-color);
-// }
-
 vwc-notched-outline {
   --mdc-notched-outline-border-color: var(--mdc-select-outlined-idle-border-color);
 }

@@ -12,7 +12,7 @@ export const body1TypographyStyles = {
 	fontSize: '16px',
 	fontWeight: '400',
 	fontStretch: '50%',
-	// lineHeight: '25.7324px',
+	lineHeight: '18px',
 	// letterSpacing: '0.15px',
 	textTransform: 'none',
 }
