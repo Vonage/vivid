@@ -14,6 +14,7 @@ import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-cou
 import { style as vwcSelectStyle } from './vwc-select.css';
 import { style as mwcSelectStyle } from '@material/mwc-select/mwc-select-css.js';
 import { associateWithForm } from '@vonage/vvd-foundation/form-association';
+import { Shape } from '@vonage/vvd-foundation/constants';
 import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
 
 declare global {
@@ -26,9 +27,6 @@ declare global {
 // @ts-ignore
 MWCSelect.styles = [styleCoupling, mwcSelectStyle, vwcSelectStyle];
 
-const shapes = ['rounded', 'pill'] as const;
-export type SelectShape = typeof shapes;
-
 /**
  * This component is an extension of [<mwc-select>](https://github.com/material-components/material-components-web-components/tree/master/packages/select)
  */
@@ -38,7 +36,7 @@ export class VWCSelect extends MWCSelect {
 	dense = false;
 
 	@property({ type: String, reflect: true })
-	shape: SelectShape[number] = 'rounded';
+	shape?: Shape;
 
 	@property({ type: String, reflect: true })
 	form: string | undefined;

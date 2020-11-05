@@ -8,7 +8,6 @@
   connotation="cta"
   dense=""
   layout="filled"
-  shape="rounded"
   type="submit"
   unelevated=""
 >
@@ -24,7 +23,6 @@
   connotation="cta"
   dense=""
   layout="filled"
-  shape="rounded"
   type="submit"
   unelevated=""
 >
@@ -40,7 +38,6 @@
   connotation="cta"
   dense=""
   layout="filled"
-  shape="rounded"
   type="submit"
   unelevated=""
 >

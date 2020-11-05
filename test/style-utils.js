@@ -1,10 +1,19 @@
-export function borderRadiusStyles(expectedRadius) {
+function borderRadiusStyles(expectedRadius) {
 	return {
 		borderTopLeftRadius: `${expectedRadius}px`,
 		borderTopRightRadius: `${expectedRadius}px`,
 		borderBottomLeftRadius: `${expectedRadius}px`,
 		borderBottomRightRadius: `${expectedRadius}px`,
 	};
+}
+
+export function shapeStyles(shape) {
+	const shapeRadius = {
+		rounded: 6,
+		pill: 24,
+	}
+
+	return borderRadiusStyles(shapeRadius[shape]);
 }
 
 export const body1TypographyStyles = {

@@ -4,7 +4,7 @@ import { Button as MWCButton } from '@material/mwc-button';
 import { style as vwcButtonStyle } from './vwc-button.css';
 import { style as mwcButtonStyle } from '@material/mwc-button/styles-css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
-import { Connotation } from '@vonage/vvd-foundation/constants';
+import { Connotation, Shape } from '@vonage/vvd-foundation/constants';
 import { html, TemplateResult } from 'lit-element';
 import '@vonage/vwc-icon';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
@@ -22,11 +22,6 @@ MWCButton.styles = [styleCoupling, mwcButtonStyle, vwcButtonStyle];
 const layouts = ['text', 'outlined', 'filled'];
 export type ButtonLayout = typeof layouts;
 
-export { Connotation };
-
-const shapes = ['rounded', 'pill'];
-export type ButtonShape = typeof shapes;
-
 const types = ['submit', 'reset', 'button'];
 export type ButtonType = typeof types;
 
@@ -43,10 +38,10 @@ export class VWCButton extends MWCButton {
 	layout: ButtonLayout[number] = 'text';
 
 	@property({ type: String, reflect: true })
-	connotation?: Connotation | undefined;
+	connotation?: Connotation;
 
 	@property({ type: String, reflect: true })
-	shape: ButtonShape[number] = 'rounded';
+	shape?: Shape;
 
 	@property({ type: String, reflect: true })
 	type: ButtonType[number] = 'submit';
