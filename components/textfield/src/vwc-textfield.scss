@@ -88,7 +88,7 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
   .mdc-text-field {
     .mdc-floating-label {
       left: -12px;
-      top: -26px;
+      top: -24px;
       transform: none;
     }
 
@@ -118,13 +118,13 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 
   .mdc-floating-label {
     left: 14px;
-    line-height: var(--mdc-typography-subtitle1-line-height);
+    line-height: 18px;
     transition-property: transform, font-size;
   }
 
   .mdc-floating-label--float-above {
     font-size: var(--mdc-typography-subtitle1-font-size);
-    transform: translateY(-19px);
+    transform: translateY(-100%);
 
     &.mdc-floating-label--shake {
       animation: none;
@@ -213,10 +213,6 @@ vwc-notched-outline {
 		.mdc-text-field-helper-icon {
 			display: none;
 			color: var(--mdc-text-field-error-color);
-		}
-
-		.mdc-text-field-helper-text {
-      line-height: var(--mdc-typography-caption-line-height);
 		}
     
     .mdc-text-field-helper-text::before {
