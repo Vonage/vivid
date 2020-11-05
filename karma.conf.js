@@ -1,5 +1,6 @@
 const { createDefaultConfig } = require('@open-wc/testing-karma');
 const merge = require('deepmerge');
+const {browsers} = require('minimist')(process.argv.slice(2));
 
 module.exports = config => {
 	//	merging our stuff into default config
@@ -32,7 +33,7 @@ module.exports = config => {
 			}
 		},
 		coverageReporter: {
-			dir: 'coverage',
+			dir: `coverage/${browsers ? browsers : ''}`,
 			reporters: [
 				{
 					type: 'html', subdir: 'report-html'
