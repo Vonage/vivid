@@ -82,9 +82,9 @@ describe('list item', () => {
 				textToDomToParent(`<vwc-list>${selectItems}</vwc-list>`)
 			);
 			await waitNextTask();
-			const startTime = new Date().getTime();
+			const startTime = performance.now();
 			actualElement.remove();
-			const endTime = new Date().getTime();
+			const endTime = performance.now();
 
 			expect(endTime - startTime).to.be.lessThan(50);
 		});

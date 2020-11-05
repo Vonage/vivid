@@ -3,6 +3,7 @@ import {
 	waitNextTask,
 	textToDomToParent,
 	assertComputedStyle,
+	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
@@ -11,11 +12,7 @@ chai.use(chaiDomDiff);
 const VWC_BADGE = 'vwc-badge';
 
 describe('badge', () => {
-	let addedElements = [];
-
-	afterEach(() => {
-		addedElements.forEach((elm) => elm.remove());
-	});
+	const addElement = isolatedElementsCreation();
 
 	it('vwc-badge is defined as a custom element', async () => {
 		assert.exists(
@@ -24,17 +21,19 @@ describe('badge', () => {
 	});
 
 	it('should internal contents', async () => {
-		addedElements = textToDomToParent(`<${VWC_BADGE}>Badge Text</${VWC_BADGE}>`);
-		const actualElement = addedElements[0];
+		const [actualElement] = addElement(
+			textToDomToParent(`<${VWC_BADGE}>Badge Text</${VWC_BADGE}>`)
+		);
 		await waitNextTask();
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
 	describe('connotation', function () {
 		it(`should sync badge class member 'connotation' and html attribute 'connotation'`, async function () {
-			addedElements = textToDomToParent(`<${VWC_BADGE}>Badge Text</${VWC_BADGE}>`);
+			const [badge] = addElement(
+				textToDomToParent(`<${VWC_BADGE}>Badge Text</${VWC_BADGE}>`)
+			);
 			await waitNextTask();
-			const badge = addedElements[0];
 
 			const syncMatchFn = (connotation) =>
 				badge.connotation == connotation &&
@@ -63,9 +62,10 @@ describe('badge', () => {
 
 	describe('typography', function () {
 		it(`should have set badge (text, default) typography correct`, async function () {
-			addedElements = textToDomToParent(`<${VWC_BADGE}>Badge Text</${VWC_BADGE}>`);
+			const [badge] = addElement(
+				textToDomToParent(`<${VWC_BADGE}>Badge Text</${VWC_BADGE}>`)
+			);
 			await waitNextTask();
-			const badge = addedElements[0];
 			expect(badge).to.exist;
 			// @YonatanKra can we fetch this following object from json? It can be rendered for both scss and json usage from same source. would be a better practice for consistency
 			const expectedStyles = {

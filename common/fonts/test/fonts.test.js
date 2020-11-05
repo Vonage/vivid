@@ -1,6 +1,8 @@
 import fonts from '../vvd-fonts.js';
+import { isolatedElementsCreation } from '../../../test/test-helpers';
 
 describe('vvd-fonts service', () => {
+	const addElement = isolatedElementsCreation();
 	it('should provide basic fonts API', async () => {
 		assert.isObject(fonts, 'imported "fonts" is object');
 		assert.isNotNull(fonts, 'imported "fonts" not null');
@@ -10,7 +12,7 @@ describe('vvd-fonts service', () => {
 
 	it('should affect the actual font', async () => {
 		//	create test element, to measure width of
-		const testElement = document.createElement('span');
+		const [testElement] = addElement([document.createElement('span')]);
 		testElement.textContent = 'www.iii.com';
 		testElement.style.fonSize = '16px';
 		testElement.style.fontStretch = '50%';
