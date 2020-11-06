@@ -192,10 +192,15 @@ vwc-notched-outline {
 }
 
 // helper / error message line
+:host([helper]:not([helper=''])) {
+  .mdc-text-field  + .mdc-text-field-helper-line {
+    margin-top: 7px;
+  }
+}
+
 .mdc-text-field {
 	& + .mdc-text-field-helper-line {
 		--mdc-theme-error: var(--mdc-text-field-ink-color);
-		margin-top: 7px;
 		padding: 0;
 		align-items: center;
 		justify-content: initial;
@@ -220,6 +225,8 @@ vwc-notched-outline {
 	}
 
 	&.mdc-text-field--invalid + .mdc-text-field-helper-line {
+    margin-top: 7px;
+
 		.mdc-text-field-helper-icon {
 			display: flex;
 		}
