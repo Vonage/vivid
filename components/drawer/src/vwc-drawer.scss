@@ -2,9 +2,9 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/_scheme-variables' as scheme-variables;
 
 :host {
-  --mdc-theme-surface: var(#{scheme-variables.$vvd-color-base-background});
+  --mdc-theme-surface: var(#{scheme-variables.$vvd-color-surface-background});
 
-  color: var(#{scheme-variables.$vvd-color-base-foreground});
+  color: var(#{scheme-variables.$vvd-color-surface-foreground});
 }
 
 .mdc-drawer {
@@ -12,7 +12,7 @@
 
   .mdc-drawer__title,
   .mdc-drawer__subtitle {
-    color: var(#{scheme-variables.$vvd-color-base-foreground});
+    color: var(#{scheme-variables.$vvd-color-surface-foreground});
   }
 }
 
