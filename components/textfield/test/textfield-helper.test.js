@@ -29,26 +29,11 @@ describe('textfield helper', () => {
 		}
 	});
 
-	it('should make a helper text visible when focused', async () => {
+	it('should have helper text visible', async () => {
 		const helperLine = getAsHelperLine(addedElements[0]);
 
-		//	present, not seen
 		assertExistWithMessage(helperLine, HELPER_MESSAGE);
-		assertComputedStyle(helperLine, { opacity: '0' });
-
-		//	focused, seen
-		await focus(addedElements[0]);
 		assertComputedStyle(helperLine, { opacity: '1' });
-	});
-
-	it('should make a helper text invisible when blurred', async () => {
-		const helperLine = getAsHelperLine(addedElements[0]);
-		await focus(addedElements[0]);
-		addedElements[0].shadowRoot
-			.querySelector('.mdc-text-field')
-			.classList.remove('mdc-text-field--focused');
-		await waitInterval(200);
-		assertComputedStyle(helperLine, { opacity: '0' });
 	});
 
 	it('should have error message icon of our own', async () => {
@@ -79,14 +64,14 @@ describe('textfield helper', () => {
 		const errorLine = getAsErrorLine(addedElements[0]);
 		assertComputedStyle(errorLine, { opacity: '1' });
 
-		//	fix the error, error made invisible
+		//	fix the error
 		await turnValidityWaitReported(addedElements[0], true);
-		assertComputedStyle(errorLine, { opacity: '0' });
 
 		//	blurred, helper is visible now
 		await blur(addedElements[0]);
 		const helperLine = getAsHelperLine(addedElements[0]);
 		assertExistWithMessage(helperLine, HELPER_MESSAGE);
+		assertComputedStyle(errorLine, { opacity: '1' });
 	});
 });
 
@@ -111,11 +96,6 @@ async function turnValidityWaitReported(input, toBeValid) {
 	input.focus();
 	input.value = toBeValid ? '12' : 'not-a-number';
 	input.reportValidity();
-	await waitInterval(200);
-}
-
-async function focus(input) {
-	input.focus();
 	await waitInterval(200);
 }
 

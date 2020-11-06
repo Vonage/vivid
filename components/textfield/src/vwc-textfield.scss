@@ -204,6 +204,10 @@ vwc-notched-outline {
 		.mdc-text-field-helper-icon {
 			display: none;
 			color: var(--mdc-text-field-error-color);
+    }
+    
+    .mdc-text-field-helper-text:not(.mdc-text-field-helper-text--validation-msg) {
+			opacity: 1;
 		}
     
     .mdc-text-field-helper-text::before {
