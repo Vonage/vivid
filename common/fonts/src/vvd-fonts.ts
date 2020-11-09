@@ -44,12 +44,16 @@ async function init(): Promise<Record<string, unknown>> {
 
 function setupInitTestElement(): HTMLElement {
 	const result = document.createElement('span');
-	result.textContent = 'wwwiii';
+	result.textContent = 'wwwwwiiiii';
 	result.style.cssText =
-		'position:absolute;top:-999px;font-family:var(--vvd-font-family-spezia),monospace';
-	document.addEventListener('DOMContentLoaded', () =>
-		document.body.appendChild(result)
-	);
+		'position:absolute;top:-999px;font-family:var(--vvd-font-family-spezia,monospace)';
+	if (document.body) {
+		document.body.appendChild(result);
+	} else {
+		document.addEventListener('DOMContentLoaded', () =>
+			document.body.appendChild(result)
+		);
+	}
 	return result;
 }
 

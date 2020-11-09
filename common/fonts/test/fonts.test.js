@@ -34,7 +34,20 @@ describe('vvd-fonts service', () => {
 		it('should init fonts when init via HEAD element', async () => {
 			await getFrameLoadedInjected(FONTS_SETUP_HTML_TAG, async (iframe) => {
 				const [testElement, monoWidth] = setupTestElement(iframe.contentDocument);
-				await iframe.contentWindow.vvdFontsReady;
+				await iframe.contentWindow.vvdFonts.init();
+				assertTestElementAndClean(testElement, monoWidth);
+			});
+		});
+
+		it('should init fonts when init is AFTER the document loaded', async () => {
+			await getFrameLoadedInjected(FONTS_SETUP_HTML_TAG, async (iframe) => {
+				const [testElement, monoWidth] = setupTestElement(iframe.contentDocument);
+				if (iframe.contentDocument.readyState !== 'complete') {
+					await new Promise((resolve) =>
+						iframe.contentDocument.addEventListener('DOMContentLoaded', resolve)
+					);
+				}
+				await iframe.contentWindow.vvdFonts.init();
 				assertTestElementAndClean(testElement, monoWidth);
 			});
 		});
@@ -43,9 +56,8 @@ describe('vvd-fonts service', () => {
 
 function setupTestElement(targetDocument) {
 	const testElement = targetDocument.createElement('span');
-	testElement.textContent = 'www.iii.com';
+	testElement.textContent = 'wwwwwiiiii';
 	testElement.style.fonSize = '16px';
-	testElement.style.fontStretch = '50%';
 	testElement.style.fontFamily = 'monospace';
 
 	//	first, append it as is, take the width (monospaced)
@@ -53,7 +65,7 @@ function setupTestElement(targetDocument) {
 	const monoWidth = testElement.offsetWidth;
 
 	//	second, set our font and then call init (to be sure, init might already ran)
-	testElement.style.fontFamily = 'var(--vvd-font-family-spezia), monospace';
+	testElement.style.fontFamily = 'var(--vvd-font-family-spezia, monospace)';
 
 	return [testElement, monoWidth];
 }
@@ -62,5 +74,6 @@ function assertTestElementAndClean(testElement, monoWidth) {
 	if (testElement.offsetWidth === monoWidth) {
 		throw new Error('element width after should be other than before ()');
 	}
-	testElement.remove();
+	console.log(testElement.offsetWidth + ' - ' + monoWidth);
+	//testElement.remove();
 }
