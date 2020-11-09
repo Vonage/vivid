@@ -75,5 +75,5 @@ function assertTestElementAndClean(testElement, monoWidth) {
 		throw new Error('element width after should be other than before ()');
 	}
 	console.log(testElement.offsetWidth + ' - ' + monoWidth);
-	//testElement.remove();
+	testElement.remove();
 }
