@@ -59,7 +59,6 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 }
 
 :host([dense]) {
-  --mdc-text-field-label-ink-color: var(--vvd-color-base-foreground);
   #{$vvd-text-field-size-block}: 40px;
 }
 
