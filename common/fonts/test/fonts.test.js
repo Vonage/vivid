@@ -34,9 +34,7 @@ describe('vvd-fonts service', () => {
 		it('should init fonts when init via HEAD element', async () => {
 			await getFrameLoadedInjected(FONTS_SETUP_HTML_TAG, async (iframe) => {
 				const [testElement, monoWidth] = setupTestElement(iframe.contentDocument);
-
 				await iframe.contentWindow.vvdFontsReady;
-
 				assertTestElementAndClean(testElement, monoWidth);
 			});
 		});
