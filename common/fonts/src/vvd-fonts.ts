@@ -46,8 +46,10 @@ function setupInitTestElement(): HTMLElement {
 	const result = document.createElement('span');
 	result.textContent = 'wwwiii';
 	result.style.cssText =
-		'position:absolute;top:-1000px;font-family:var(--vvd-font-family-spezia),monospace;visibility:hidden';
-	document.body.appendChild(result);
+		'position:absolute;top:-999px;font-family:var(--vvd-font-family-spezia),monospace';
+	document.addEventListener('DOMContentLoaded', () =>
+		document.body.appendChild(result)
+	);
 	return result;
 }
 
