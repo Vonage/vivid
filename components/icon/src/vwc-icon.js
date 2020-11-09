@@ -96,7 +96,6 @@ class IconElement extends HTMLElement {
 	}
 
 	connectedCallback() {
-		this.classList.add('vvd-icon');
 		this[SYMBOL_CONNECT]();
 	}
 
