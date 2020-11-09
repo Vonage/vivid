@@ -1,5 +1,6 @@
 @forward './vwc-textfield-coupling';
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
+@use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins;
 
 $vvd-text-field-size-block: --vvd-text-field-size-block;
 
@@ -29,6 +30,7 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
   --mdc-text-field-error-fill-color: var(
     #{color-semantic.$formfield-error-fill}
   );
+  --mdc-shape-small: var(--border-radius);
 
   font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
 }
@@ -54,18 +56,6 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
       color: var(--mdc-text-field-label-ink-color);
     }
   }
-}
-
-:host([shape='pill']) {
-  --mdc-shape-small: 24px;
-}
-
-:host(:not([shape='pill'])) {
-  --mdc-shape-small: 6px;
-}
-
-:host(:not([shape='pill'])[dense]) {
-  --mdc-shape-small: 5px;
 }
 
 :host([dense]) {
@@ -102,6 +92,7 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 }
 
 .mdc-text-field {
+  // prevent fill overflowing bottom corners
   border-bottom-right-radius: var(--mdc-shape-small);
   border-bottom-left-radius: var(--mdc-shape-small);
   height: var(#{$vvd-text-field-size-block});
@@ -234,3 +225,10 @@ vwc-notched-outline {
 		}
 	}
 }
+
+@include shape-mixins.shape(
+	$shapes: (
+		rounded: 6px,
+		pill: 24px,
+	)
+);

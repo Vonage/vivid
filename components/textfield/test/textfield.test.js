@@ -9,7 +9,7 @@ import {
 	randomAlpha,
 	listenToSubmission,
 } from '../../../test/test-helpers.js';
-import { borderRadiusStyles } from '../../../test/style-utils.js';
+import { shapeStyles } from '../../../test/style-utils.js';
 import {
 	typographyTestCases,
 	assertDenseStyles,
@@ -289,35 +289,30 @@ describe('textfield', () => {
 	});
 
 	describe('shape', () => {
-		it('should have rounded shape by default', async () => {
+		let formElement, actualElement;
+		beforeEach(async () => {
 			const addedElements = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} outlined></${COMPONENT_NAME}>`)
 			);
 			await waitNextTask();
-			const formElement = addedElements[0];
-			const actualElement = formElement.shadowRoot.querySelector(
-				'.mdc-text-field'
-			);
+			formElement = addedElements[0];
+			actualElement = formElement.shadowRoot.querySelector('.mdc-text-field');
+		});
 
-			expect(formElement.getAttribute('shape') === 'rounded').to.equal(true);
-			assertComputedStyle(actualElement, borderRadiusStyles(6));
+		it('should have rounded shape by default', async () => {
+			assertComputedStyle(actualElement, shapeStyles('rounded'));
+		});
 
-			formElement.dense = true;
+		it('should have rounded shape when shape set to rounded', async () => {
+			formElement.shape = 'rounded';
 			await waitNextTask();
-			assertComputedStyle(actualElement, borderRadiusStyles(5));
+			assertComputedStyle(actualElement, shapeStyles('rounded'));
 		});
 
 		it('should have pill shape when shape set to pill', async () => {
-			const addedElements = addElement(
-				textToDomToParent(
-					`<${COMPONENT_NAME} outlined shape="pill"></${COMPONENT_NAME}>`
-				)
-			);
+			formElement.shape = 'pill';
 			await waitNextTask();
-			const actualElement = addedElements[0].shadowRoot.querySelector(
-				'.mdc-text-field'
-			);
-			assertComputedStyle(actualElement, borderRadiusStyles(24));
+			assertComputedStyle(actualElement, shapeStyles('pill'));
 		});
 	});
 });

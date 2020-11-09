@@ -1,5 +1,6 @@
 @forward './vwc-select-coupling';
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
+@use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins;
 
 $vvd-select-size-block: --vvd-select-size-block;
 
@@ -20,7 +21,9 @@ $vvd-select-size-block: --vvd-select-size-block;
 
 	--mdc-select-error-color: var(#{color-semantic.$formfield-label-error-ink});
 	--mdc-select-error-fill-color: var(#{color-semantic.$formfield-error-fill});
-	--mdc-select-error-dropdown-icon-color: var(--mdc-select-error-color);
+  --mdc-select-error-dropdown-icon-color: var(--mdc-select-error-color);
+  
+  --mdc-shape-small: var(--border-radius);
 
 	display: inline-flex;
 	flex-direction: column;
@@ -49,18 +52,6 @@ $vvd-select-size-block: --vvd-select-size-block;
 			--mdc-theme-primary: var(--mdc-select-label-ink-color);
 		}
 	}
-}
-
-:host([shape='pill']) {
-  --mdc-shape-small: 24px;
-}
-
-:host(:not([shape='pill'])) {
-  --mdc-shape-small: 6px;
-}
-
-:host(:not([shape='pill'])[dense]) {
-  --mdc-shape-small: 5px;
 }
 
 :host([dense]) {
@@ -95,6 +86,7 @@ $vvd-select-size-block: --vvd-select-size-block;
 }
 
 .mdc-select {
+  // prevent fill overflowing corners
   border-radius: var(--mdc-shape-small);
 
 	.mdc-select__dropdown-icon {
@@ -191,3 +183,10 @@ vwc-notched-outline {
 		}
 	}
 }
+
+@include shape-mixins.shape(
+	$shapes: (
+		rounded: 6px,
+		pill: 24px,
+	)
+);

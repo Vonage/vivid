@@ -1,3 +1,6 @@
+import { Shape } from '@vonage/vvd-foundation/constants';
+
+
 export const argTypes = {
   outlined: {
     control: {
@@ -20,7 +23,7 @@ export const argTypes = {
   shape: {
     control: {
       type: 'select',
-      options: ['rounded', 'pill'],
+      options: Object.values(Shape),
     }
   },
   required: {
