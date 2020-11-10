@@ -71,7 +71,7 @@ async function ensureInit(
 			if (testElements[0].offsetWidth !== testElements[1].offsetWidth) {
 				resolve({});
 			} else if ((pollDuration = Date.now() - pollStart) > READY_PROMISE_TIMEOUT) {
-				reject(`fonts init timed out after ${pollDuration}ms`);
+				reject(new Error(`fonts init timed out after ${pollDuration}ms`));
 			} else {
 				setTimeout(innerTest, 25);
 			}
