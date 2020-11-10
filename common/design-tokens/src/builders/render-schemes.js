@@ -11,7 +11,7 @@ const propertiesPath = resolve('../../node_modules/@vonage/vvd-design-tokens-pro
 StyleDictionaryPackage.registerFormat({
 	name: 'custom/format/scss',
 	formatter: _.template(
-		fs.readFileSync(resolve('templates/web-scss.template'))
+		fs.readFileSync(resolve('templates/web-scss-schemes.template'))
 	),
 });
 
