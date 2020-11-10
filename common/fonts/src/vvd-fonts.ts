@@ -2,7 +2,8 @@ export default Object.freeze({
 	init: init,
 });
 
-const FONTS_BASE_URL_TOKEN = 'FONTS_BASE_URL',
+const READY_PROMISE_TIMEOUT = 5000,
+	FONTS_BASE_URL_TOKEN = 'FONTS_BASE_URL',
 	CDN_BASE_URL = '//dpnf5z0hinc7q.cloudfront.net/fonts/v1';
 
 let INIT_PROMISE: Promise<Record<string, unknown>> | null = null;
@@ -13,6 +14,7 @@ async function init(): Promise<Record<string, unknown>> {
 			// console.info('Vivid Fonts initialization start...');
 			// const st = performance.now();
 
+			const timeoutHandler = setTimeout(reject, READY_PROMISE_TIMEOUT);
 			const testElement = setupInitTestElement();
 			const initialWidth = testElement.offsetWidth;
 
@@ -31,6 +33,7 @@ async function init(): Promise<Record<string, unknown>> {
 				.then(resolve)
 				.catch(reject)
 				.finally(() => {
+					clearTimeout(timeoutHandler);
 					cleanInitTestElement(testElement);
 					// console.info(
 					// 	`Vivid Fonts initialization took ${Math.floor(performance.now() - st)}ms`
