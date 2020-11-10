@@ -19,8 +19,8 @@ StyleDictionaryPackage.registerFormat({
 function getStyleDictionaryConfig(scheme, scope) {
 	return {
 		source: [
-			`${propertiesPath}/globals/**/*.json`,
-			`${propertiesPath}/scheme/${scheme}/${scope}.json`,
+			`${propertiesPath}/globals/color/**/*.json`,
+			`${propertiesPath}/schemes/${scheme}/${scope}.json`,
 		],
 		platforms: {
 			web: {
