@@ -2,7 +2,7 @@ export default Object.freeze({
 	init: init,
 });
 
-const READY_PROMISE_TIMEOUT = 5000,
+const READY_PROMISE_TIMEOUT = 12000,
 	FONTS_BASE_URL_TOKEN = 'FONTS_BASE_URL',
 	CDN_BASE_URL = '//dpnf5z0hinc7q.cloudfront.net/fonts/v1';
 
