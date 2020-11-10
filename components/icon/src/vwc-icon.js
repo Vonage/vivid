@@ -10,7 +10,12 @@ const [
 	SYMBOL_PROPERTY_TYPE_SET
 ] = ['connect', 'disconnect', 'property-type', 'property-type-set'].map((name) => Symbol(name));
 
-const noop = () => { };
+const
+	PLACEHOLDER_ICON = `<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><style>@keyframes rotation { from { transform: rotate(0deg) } to { transform: rotate(360deg) } } g#circle { transform-origin: center center; animation: 1s rotation 0s linear infinite; } path { fill: var(--vvd-color-base-faint) }</style> <g id="circle"> <path d="M7.5 2C3.91014 2 1 4.91014 1 8.5C1 12.0899 3.91014 15 7.5 15C11.0899 15 14 12.0899 14 8.5C14 8.22386 14.2239 8 14.5 8C14.7761 8 15 8.22386 15 8.5C15 12.6421 11.6421 16 7.5 16C3.35786 16 0 12.6421 0 8.5C0 4.35786 3.35786 1 7.5 1C10.3622 1 12.7088 2.78366 13.9478 5.27753C14.0706 5.52484 13.9698 5.82492 13.7225 5.94778C13.4752 6.07065 13.1751 5.96977 13.0522 5.72247C11.9472 3.49834 9.90985 2 7.5 2Z"/><path d="M13.5 0C13.7761 0 14 0.223858 14 0.5V5.5C14 5.77614 13.7761 6 13.5 6H8.5C8.22386 6 8 5.77614 8 5.5C8 5.22386 8.22386 5 8.5 5H13V0.5C13 0.223858 13.2239 0 13.5 0Z"/></g></svg>`,
+	PLACEHOLDER_DELAY = 500,  				// Start displaying placeholder if waiting more than this period of time
+	PLACEHOLDER_TIMEOUT = 2000;				// Stop displaying placeholder if exceeding this period of time (will also stop one an icon is loaded)
+
+const noop = ()=> {};
 
 /**
  * Integrates an icon
@@ -50,7 +55,19 @@ class IconElement extends HTMLElement {
 			.flatMapLatest(() => {
 				return typeProperty
 					.filter(Boolean)
-					.flatMap((typeId) => kefir.fromPromise(resolveIcon(typeId)))
+					.flatMap((typeId)=> {
+						const loadedSvgProperty = kefir.fromPromise(resolveIcon(typeId)).toProperty();
+						return kefir
+							.merge([
+								kefir
+									.merge([
+										kefir.later(PLACEHOLDER_DELAY, PLACEHOLDER_ICON),
+										kefir.later(PLACEHOLDER_TIMEOUT, ''),
+									])
+									.takeUntilBy(loadedSvgProperty),
+								loadedSvgProperty
+							]);
+					})
 					.takeUntilBy(kefir.stream(({ emit }) => this[SYMBOL_DISCONNECT] = emit).take(1));
 			})
 			.filter(() => this.isConnected)
