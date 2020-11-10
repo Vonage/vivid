@@ -31,7 +31,7 @@ async function init(): Promise<Record<string, unknown>> {
 				.then(resolve)
 				.catch(reject)
 				.finally(() => {
-					cleanInitTestElement(testElements);
+					cleanInitTestElements(testElements);
 					// console.info(
 					// 	`Vivid Fonts initialization took ${Math.floor(performance.now() - st)}ms`
 					// );
@@ -82,6 +82,6 @@ async function ensureInit(
 	});
 }
 
-function cleanInitTestElement(testElements: HTMLElement[]): void {
+function cleanInitTestElements(testElements: HTMLElement[]): void {
 	testElements.forEach((e) => e.remove());
 }
