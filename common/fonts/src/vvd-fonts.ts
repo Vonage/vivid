@@ -65,14 +65,12 @@ async function ensureInit(
 	testElements: HTMLElement[]
 ): Promise<Record<string, unknown>> {
 	return new Promise((resolve, reject) => {
-		const pollStart = performance.now();
+		const pollStart = Date.now();
 		let pollDuration;
 		function innerTest() {
 			if (testElements[0].offsetWidth !== testElements[1].offsetWidth) {
 				resolve({});
-			} else if (
-				(pollDuration = performance.now() - pollStart) > READY_PROMISE_TIMEOUT
-			) {
+			} else if ((pollDuration = Date.now() - pollStart) > READY_PROMISE_TIMEOUT) {
 				reject(`fonts init timed out after ${pollDuration}ms`);
 			} else {
 				setTimeout(innerTest, 25);
