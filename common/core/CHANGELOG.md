@@ -1,3 +1,12 @@
+## [0.15.1](https://github.com/vonage/vivid/compare/v0.15.0...v0.15.1) (2020-11-09)
+
+
+### Features
+
+* iss 398/viv 224 core declarative config ([#416](https://github.com/vonage/vivid/issues/416)) ([6228dfe](https://github.com/vonage/vivid/commit/6228dfe9494187b81ae7b073611005e598dc928b)), closes [#398](https://github.com/vonage/vivid/issues/398) [#398](https://github.com/vonage/vivid/issues/398) [#398](https://github.com/vonage/vivid/issues/398) [#398](https://github.com/vonage/vivid/issues/398) [#398](https://github.com/vonage/vivid/issues/398) [#398](https://github.com/vonage/vivid/issues/398) [#398](https://github.com/vonage/vivid/issues/398) [#398](https://github.com/vonage/vivid/issues/398) [#398](https://github.com/vonage/vivid/issues/398) [#398](https://github.com/vonage/vivid/issues/398)
+
+
+
 # [0.15.0](https://github.com/vonage/vivid/compare/v0.14.0...v0.15.0) (2020-10-27)
 
 
