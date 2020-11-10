@@ -2,10 +2,10 @@
 @use '@vonage/vvd-design-tokens/build/scss/schemes/light/alternate.scss';
 
 body,
-.vvd-theme-light-base {
+.vvd-theme-base {
 	@include base.variables;
 }
 
-.vvd-theme-light-alternate {
+.vvd-theme-alternate {
 	@include alternate.variables;
 }

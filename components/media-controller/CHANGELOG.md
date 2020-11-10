@@ -1,3 +1,21 @@
+## [0.15.1](https://github.com/vonage/vivid/compare/v0.15.0...v0.15.1) (2020-11-09)
+
+
+### Bug Fixes
+
+* **media-controller:** updated test ([b34f7ab](https://github.com/vonage/vivid/commit/b34f7ab2a54181e6b4f9417df5f91ed62f0dd1ca))
+
+
+### Features
+
+* **chip:** added focus circle + bug fixes ([a11fb7c](https://github.com/vonage/vivid/commit/a11fb7c74f5be064ce2331393e00729b581da686))
+* **general:** improved code readability ([fd079f6](https://github.com/vonage/vivid/commit/fd079f604064438dc211b9e111cd0f9351c39fca))
+* **general:** improved code readability ([84fd5b4](https://github.com/vonage/vivid/commit/84fd5b4b63f01adf955704ef3dbd207b7b44623f))
+* **media-controller:** added mobile (ios) support ([f5f8a49](https://github.com/vonage/vivid/commit/f5f8a496ba571c13b1e7f1bb96938e49c9cd06e2))
+* **media-controller:** refactored to separate function ([f652679](https://github.com/vonage/vivid/commit/f652679f06623894fc9165941b21214e0b7d674e))
+
+
+
 # [0.15.0](https://github.com/vonage/vivid/compare/v0.14.0...v0.15.0) (2020-10-27)
 
 

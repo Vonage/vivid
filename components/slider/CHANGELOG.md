@@ -1,3 +1,12 @@
+## [0.15.1](https://github.com/vonage/vivid/compare/v0.15.0...v0.15.1) (2020-11-09)
+
+
+### Features
+
+* issue [#411](https://github.com/vonage/vivid/issues/411): initial implementation of the autofocus - textfield textarea ([#413](https://github.com/vonage/vivid/issues/413)) ([74e0c7d](https://github.com/vonage/vivid/commit/74e0c7d79c1eb724d01d817b52c06bdbb2c6672d)), closes [#401](https://github.com/vonage/vivid/issues/401)
+
+
+
 # [0.15.0](https://github.com/vonage/vivid/compare/v0.14.0...v0.15.0) (2020-10-27)
 
 
