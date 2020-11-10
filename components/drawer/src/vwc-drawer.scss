@@ -1,1 +1,21 @@
 @forward './vwc-drawer-coupling';
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/_scheme-variables' as scheme-variables;
+
+:host {
+	--mdc-theme-surface: var(#{scheme-variables.$vvd-color-surface-background});
+
+	color: var(#{scheme-variables.$vvd-color-surface-foreground});
+}
+
+.mdc-drawer {
+	top: 0;
+	position: sticky;
+	block-size: 100%;
+	max-block-size: 100vh;
+	border-color: var(#{scheme-variables.$vvd-color-base-faint});
+
+	.mdc-drawer__title,
+	.mdc-drawer__subtitle {
+		color: var(#{scheme-variables.$vvd-color-surface-foreground});
+	}
+}

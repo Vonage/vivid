@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.1](https://github.com/Vonage/vivid/compare/v0.15.0...v0.15.1) (2020-11-09)
+
+
+### Bug Fixes
+
+* **scheme:** renamed scheme class names ([c68198f](https://github.com/Vonage/vivid/commit/c68198f1d737289bb12cb9017ffb39dc079ead19))
+* **scheme-select:** missing integrated dependencies installed ([6ccbfd2](https://github.com/Vonage/vivid/commit/6ccbfd216e4dafe54cf172315bc8b01df2fd877d))
+* fixing file-picker width as per Yinon comment ([#423](https://github.com/Vonage/vivid/issues/423)) ([6611245](https://github.com/Vonage/vivid/commit/6611245580e903d133e91cdbd5e93ab6fb3157ba))
+* issue [#419](https://github.com/Vonage/vivid/issues/419) / VIV-243 - fixing scheme duplicate styles load ([#420](https://github.com/Vonage/vivid/issues/420)) ([564724f](https://github.com/Vonage/vivid/commit/564724fdded5ec33abfa4ab35b94ae5e49747381))
+* **audio:** reduce boilerplate code (pr comments) ([a7e7966](https://github.com/Vonage/vivid/commit/a7e79665a334bbe40ce9c5b7046d496f3eaf9d81))
+* **audio:** refactoring following code-review ([c2af4ca](https://github.com/Vonage/vivid/commit/c2af4ca97b703096ee3da8cc54662c172cf91f03))
+* **audio:** refactoring following code-review ([6f91d00](https://github.com/Vonage/vivid/commit/6f91d00c6941124d294660937649ef304a603fbe))
+* **audio:** revised documentation ([e634279](https://github.com/Vonage/vivid/commit/e634279302f5c52a935f00d54b996ec900c5a125))
+* **design-tokens:** renamed override of formatter in registry ([a644e2c](https://github.com/Vonage/vivid/commit/a644e2ca022844a083e3b9eef4588c095a18cd0d))
+* **list:** performance issue in list items are now resolved ([#417](https://github.com/Vonage/vivid/issues/417)) ([824c715](https://github.com/Vonage/vivid/commit/824c7154ec9f8c4f9c937d5959437e14fc065612))
+* **media-controller:** updated test ([b34f7ab](https://github.com/Vonage/vivid/commit/b34f7ab2a54181e6b4f9417df5f91ed62f0dd1ca))
+* added test and ignore rule ([d790051](https://github.com/Vonage/vivid/commit/d7900510793df0f6ef7ae8dcb1d656221bf5e4ca))
+
+
+### Features
+
+* iss 398/viv 224 core declarative config ([#416](https://github.com/Vonage/vivid/issues/416)) ([6228dfe](https://github.com/Vonage/vivid/commit/6228dfe9494187b81ae7b073611005e598dc928b)), closes [#398](https://github.com/Vonage/vivid/issues/398) [#398](https://github.com/Vonage/vivid/issues/398) [#398](https://github.com/Vonage/vivid/issues/398) [#398](https://github.com/Vonage/vivid/issues/398) [#398](https://github.com/Vonage/vivid/issues/398) [#398](https://github.com/Vonage/vivid/issues/398) [#398](https://github.com/Vonage/vivid/issues/398) [#398](https://github.com/Vonage/vivid/issues/398) [#398](https://github.com/Vonage/vivid/issues/398) [#398](https://github.com/Vonage/vivid/issues/398)
+* issue [#411](https://github.com/Vonage/vivid/issues/411): initial implementation of the autofocus - textfield textarea ([#413](https://github.com/Vonage/vivid/issues/413)) ([74e0c7d](https://github.com/Vonage/vivid/commit/74e0c7d79c1eb724d01d817b52c06bdbb2c6672d)), closes [#401](https://github.com/Vonage/vivid/issues/401)
+* **audio:** added audio player component ([2e0e96e](https://github.com/Vonage/vivid/commit/2e0e96eb4f2085fc4140ee3699c5958f1b0fd483))
+* **audio:** added documentation ([035edde](https://github.com/Vonage/vivid/commit/035edde9735a9b0139cbef1fe5166cc80458141a))
+* **audio:** added src attribute ([82b34d9](https://github.com/Vonage/vivid/commit/82b34d993b822c128310c351468fd48b4cd3e944))
+* **audio:** added tests ([a0014b9](https://github.com/Vonage/vivid/commit/a0014b91e5c43dfc2c612b3a876a70298f9e13f4))
+* **audio:** bumped dep version ([05c31d3](https://github.com/Vonage/vivid/commit/05c31d37baf100a99319436f86af3dc4e6aca146))
+* **audio:** fixed tsconfig ([4c20516](https://github.com/Vonage/vivid/commit/4c205168e9c79d18fa35269d7be74e6c7f20d211))
+* **audio:** removed redundant ts ([2694149](https://github.com/Vonage/vivid/commit/26941497ca17d134cf5de24b523593c097ef2714))
+* **audio:** removed redundant ts ([71256ba](https://github.com/Vonage/vivid/commit/71256ba620fa79e632dbda6a74ea7aa23491b818))
+* **chip:** added focus circle + bug fixes ([a11fb7c](https://github.com/Vonage/vivid/commit/a11fb7c74f5be064ce2331393e00729b581da686))
+* **chip:** linter overrides ([c3c0fa2](https://github.com/Vonage/vivid/commit/c3c0fa23a81fecc819b564d04570312f57b6354f))
+* **general:** improved code readability ([fd079f6](https://github.com/Vonage/vivid/commit/fd079f604064438dc211b9e111cd0f9351c39fca))
+* **general:** improved code readability ([84fd5b4](https://github.com/Vonage/vivid/commit/84fd5b4b63f01adf955704ef3dbd207b7b44623f))
+* **media-controller:** added mobile (ios) support ([f5f8a49](https://github.com/Vonage/vivid/commit/f5f8a496ba571c13b1e7f1bb96938e49c9cd06e2))
+* **media-controller:** refactored to separate function ([f652679](https://github.com/Vonage/vivid/commit/f652679f06623894fc9165941b21214e0b7d674e))
+* **scheme:** scheme design tokens render name coupling ([7251c29](https://github.com/Vonage/vivid/commit/7251c290dd7f4f29ed91ff1a5cae605a66b49eea))
+
+
+
+
+
 # [0.15.0](https://github.com/Vonage/vivid/compare/v0.14.0...v0.15.0) (2020-10-27)
 
 

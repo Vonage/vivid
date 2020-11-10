@@ -1,3 +1,12 @@
+## [0.15.1](https://github.com/vonage/vivid/compare/v0.15.0...v0.15.1) (2020-11-09)
+
+
+### Bug Fixes
+
+* **scheme-select:** missing integrated dependencies installed ([6ccbfd2](https://github.com/vonage/vivid/commit/6ccbfd216e4dafe54cf172315bc8b01df2fd877d))
+
+
+
 # [0.15.0](https://github.com/vonage/vivid/compare/v0.14.0...v0.15.0) (2020-10-27)
 
 
