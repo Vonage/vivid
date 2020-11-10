@@ -57,15 +57,14 @@ describe('vvd-fonts service', () => {
 function setupTestElement(targetDocument) {
 	const testElement = targetDocument.createElement('span');
 	testElement.textContent = 'wwwwwiiiii';
-	testElement.style.fonSize = '16px';
-	testElement.style.fontFamily = 'monospace';
+	testElement.style.fontFamily = 'initial';
 
 	//	first, append it as is, take the width (monospaced)
 	targetDocument.body.appendChild(testElement);
 	const monoWidth = testElement.offsetWidth;
 
 	//	second, set our font and then call init (to be sure, init might already ran)
-	testElement.style.fontFamily = 'var(--vvd-font-family-spezia, monospace)';
+	testElement.style.fontFamily = 'var(--vvd-font-family-spezia, initial)';
 
 	return [testElement, monoWidth];
 }
@@ -74,6 +73,5 @@ function assertTestElementAndClean(testElement, monoWidth) {
 	if (testElement.offsetWidth === monoWidth) {
 		throw new Error('element width after should be other than before ()');
 	}
-	console.log(testElement.offsetWidth + ' - ' + monoWidth);
 	testElement.remove();
 }
