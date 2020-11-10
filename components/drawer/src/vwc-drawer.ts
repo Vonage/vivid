@@ -1,5 +1,5 @@
 import '@vonage/vvd-core';
-import { customElement } from 'lit-element';
+import { customElement, property } from 'lit-element';
 import { Drawer as MWCDrawer } from '@material/mwc-drawer';
 import { style as vwcDrawerStyle } from './vwc-drawer.css';
 import { style as mwcDrawerStyle } from '@material/mwc-drawer/mwc-drawer-css.js';
@@ -11,6 +11,7 @@ declare global {
 	}
 }
 
+const THEME_ALTERNATE = 'themeAlternate';
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 MWCDrawer.styles = [styleCoupling, mwcDrawerStyle, vwcDrawerStyle];
@@ -19,4 +20,19 @@ MWCDrawer.styles = [styleCoupling, mwcDrawerStyle, vwcDrawerStyle];
  * This component is an extension of [<mwc-drawer>](https://github.com/material-components/material-components-web-components/tree/master/packages/drawer)
  */
 @customElement('vwc-drawer')
-export class VWCDrawer extends MWCDrawer {}
+export class VWCDrawer extends MWCDrawer {
+	@property({ type: Boolean, reflect: true, attribute: 'theme-alternate' })
+	[THEME_ALTERNATE] = false;
+
+	protected updated(changes: Map<string, boolean>): void {
+		super.updated(changes);
+		if (changes.has(THEME_ALTERNATE)) {
+			const drawerEl = this.shadowRoot?.querySelector('.mdc-drawer');
+			if (this[THEME_ALTERNATE]) {
+				drawerEl?.setAttribute('part', 'vvd-theme-alternate');
+			} else {
+				drawerEl?.removeAttribute('part');
+			}
+		}
+	}
+}
