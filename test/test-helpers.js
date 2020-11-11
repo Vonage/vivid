@@ -1,3 +1,5 @@
+export { getTypographyStyle } from './typography-utils.js';
+
 const tmpTemple = document.createElement('template');
 
 export function listenToSubmission(formElement) {

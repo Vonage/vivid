@@ -5,8 +5,8 @@ import {
 	waitNextTask,
 	assertComputedStyle,
 	isolatedElementsCreation,
+	getTypographyStyle,
 } from '../../../test/test-helpers.js';
-import { body2TypographyStyles } from '../../../test/style-utils.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	assertListItemDimensions,
@@ -46,7 +46,7 @@ describe('list item', () => {
 			await waitNextTask();
 			const listItem = actualElements[0];
 			expect(listItem).to.exist;
-			assertComputedStyle(listItem, body2TypographyStyles);
+			assertComputedStyle(listItem, await getTypographyStyle('body-2'));
 		});
 	});
 

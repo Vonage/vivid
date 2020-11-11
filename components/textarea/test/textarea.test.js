@@ -6,8 +6,8 @@ import {
 	changeValueAndNotify,
 	isolatedElementsCreation,
 	listenToSubmission,
+	getTypographyStyle,
 } from '../../../test/test-helpers.js';
-import { body2TypographyStyles } from '../../../test/style-utils.js';
 import {
 	typographyTestCases,
 	hasNotchedOutline,
@@ -49,14 +49,13 @@ describe('textarea', () => {
 			return addElement(
 				textToDomToParent(
 					`<form onsubmit="return false" name="testForm" id="testForm">
-									<${COMPONENT_NAME} name="${fieldName}"
-																		 value="${fieldValue}"
-																		 ${formId ? `form="${formId}"` : ''}>
-
-									</${COMPONENT_NAME}>
-									<button></button>
-								</form>
-								${otherForm}`
+						<${COMPONENT_NAME} name="${fieldName}"
+							value="${fieldValue}"
+							${formId ? `form="${formId}"` : ''}>
+						</${COMPONENT_NAME}>
+						<button></button>
+					</form>
+					${otherForm}`
 				)
 			);
 		}
@@ -254,7 +253,7 @@ describe('textarea', () => {
 
 			assertComputedStyle(formElement, { paddingTop: '24px' });
 			assertComputedStyle(actualElement, { minHeight: '40px' });
-			assertComputedStyle(labelElement, body2TypographyStyles);
+			assertComputedStyle(labelElement, await getTypographyStyle('body-2'));
 			assertComputedStyle(labelElement, {
 				top: '-24px',
 				left: '-12px',
