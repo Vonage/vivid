@@ -2,7 +2,8 @@ export default Object.freeze({
 	init: init,
 });
 
-const FONTS_BASE_URL_TOKEN = 'FONTS_BASE_URL',
+const READY_PROMISE_TIMEOUT = 12000,
+	FONTS_BASE_URL_TOKEN = 'FONTS_BASE_URL',
 	CDN_BASE_URL = '//dpnf5z0hinc7q.cloudfront.net/fonts/v1';
 
 let INIT_PROMISE: Promise<Record<string, unknown>> | null = null;
@@ -13,8 +14,7 @@ async function init(): Promise<Record<string, unknown>> {
 			// console.info('Vivid Fonts initialization start...');
 			// const st = performance.now();
 
-			const testElement = setupInitTestElement();
-			const initialWidth = testElement.offsetWidth;
+			const testElements = setupInitTestElements();
 
 			import('./vvd-fonts.css.js')
 				.then((cssDefs) => {
@@ -26,12 +26,12 @@ async function init(): Promise<Record<string, unknown>> {
 					const ds = document.createElement('style');
 					ds.innerHTML = finalCSS;
 					document.head.appendChild(ds);
-					return ensureInit(testElement, initialWidth);
+					return ensureInit(testElements);
 				})
 				.then(resolve)
 				.catch(reject)
 				.finally(() => {
-					cleanInitTestElement(testElement);
+					cleanInitTestElements(testElements);
 					// console.info(
 					// 	`Vivid Fonts initialization took ${Math.floor(performance.now() - st)}ms`
 					// );
@@ -42,48 +42,44 @@ async function init(): Promise<Record<string, unknown>> {
 	return INIT_PROMISE;
 }
 
-function setupInitTestElement(): HTMLElement {
-	const result = document.createElement('span');
-	result.textContent = 'wwwiii';
-	result.style.cssText =
-		'position:absolute;top:-1000px;font-family:var(--vvd-font-family-spezia),monospace;visibility:hidden';
-	document.body.appendChild(result);
+function setupInitTestElements(): HTMLElement[] {
+	const result = ['var(--vvd-font-family-spezia)', 'initial'].map((ff) => {
+		const e = document.createElement('span');
+		e.textContent = 'testing text to measure font appliance';
+		e.style.cssText = `position:absolute;top:-999px;font-family:${ff}`;
+		return e;
+	});
+	if (document.body) {
+		result.forEach((e) => document.body.appendChild(e));
+	} else {
+		document.addEventListener(
+			'DOMContentLoaded',
+			() => result.forEach((e) => document.body.appendChild(e)),
+			{ once: true }
+		);
+	}
 	return result;
 }
 
 async function ensureInit(
-	testElement: HTMLElement,
-	initialWidth: number
+	testElements: HTMLElement[]
 ): Promise<Record<string, unknown>> {
-	return new Promise((resolve) => {
+	return new Promise((resolve, reject) => {
+		const pollStart = Date.now();
+		let pollDuration;
 		function innerTest() {
-			if (testElement.offsetWidth === initialWidth) {
-				setTimeout(innerTest, 25);
-			} else {
+			if (testElements[0].offsetWidth !== testElements[1].offsetWidth) {
 				resolve({});
+			} else if ((pollDuration = Date.now() - pollStart) > READY_PROMISE_TIMEOUT) {
+				reject(new Error(`fonts init timed out after ${pollDuration}ms`));
+			} else {
+				setTimeout(innerTest, 25);
 			}
 		}
 		innerTest();
 	});
 }
 
-function cleanInitTestElement(testElement: HTMLElement): void {
-	testElement.remove();
+function cleanInitTestElements(testElements: HTMLElement[]): void {
+	testElements.forEach((e) => e.remove());
 }
-
-// !TODO when moving to cdn consider using the following
-// <link rel="preconnect"
-//       href="https://fonts.gstatic.com"
-//       crossorigin />
-// Then preloading the fonts and setting it to use display: swap:
-
-// <link rel="preload"
-//       as="style"
-//       href="$CSS&display=swap" />
-// ($CSS is the URL that Google gives you after you’ve selected which font you want).
-
-// And finally we need to use a rather clever trick with the stylesheet:
-
-// <link rel="stylesheet"
-//       href="$CSS&display=swap"
-//       media="print" onload="this.media='all'" />

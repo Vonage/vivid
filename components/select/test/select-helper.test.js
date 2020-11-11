@@ -46,6 +46,32 @@ describe('select helper', () => {
 		assertComputedStyle(helperLine, { opacity: '1' });
 	});
 
+	it('should have the helper text colored', async () => {
+		const actualElement = addedElements[0];
+		const helperLine = getAsHelperLine(actualElement);
+
+		assertComputedStyle(helperLine, { color: 'rgb(102, 102, 102)' });
+
+		actualElement.dense = true;
+		await waitNextTask();
+		assertComputedStyle(helperLine, { color: 'rgb(102, 102, 102)' });
+
+		actualElement.disabled = true;
+		await waitNextTask();
+		assertComputedStyle(helperLine, { color: 'rgb(153, 153, 153)' });
+	});
+
+	it('should have the error message colored', async () => {
+		await turnValidityWaitReported(addedElements[0], false);
+		const errorLine = getAsErrorLine(addedElements[0]);
+		const vwcIcon = addedElements[0].shadowRoot.querySelector(
+			'.mdc-select-helper-icon'
+		);
+
+		assertComputedStyle(errorLine, { color: 'rgb(0, 0, 0)' });
+		assertComputedStyle(vwcIcon, { color: 'rgb(230, 29, 29)' });
+	});
+
 	it('should have helper error message visible when error', async () => {
 		//	present helper, seen
 		let helperLine = getAsHelperLine(addedElements[0]);

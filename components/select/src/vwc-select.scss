@@ -144,11 +144,16 @@ vwc-notched-outline {
 }
 
 // helper / error message line
+:host([helper]:not([helper=''])) {
+  .mdc-select  + .mdc-select-helper-line {
+    margin-top: 7px;
+  }
+}
+
 .mdc-select {
 	& + .mdc-select-helper-line {
 		--mdc-theme-error: var(--mdc-select-ink-color);
 		display: flex;
-		margin-top: 7px;
 		padding: 0;
 		align-items: center;
 		justify-content: initial;
@@ -174,6 +179,8 @@ vwc-notched-outline {
 	}
 
 	&.mdc-select--invalid + .mdc-select-helper-line {
+    margin-top: 7px;
+
 		.mdc-select-helper-icon {
 			display: flex;
 		}
