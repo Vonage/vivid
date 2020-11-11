@@ -256,7 +256,7 @@ describe('textarea', () => {
 			assertComputedStyle(actualElement, { minHeight: '40px' });
 			assertComputedStyle(labelElement, body2TypographyStyles);
 			assertComputedStyle(labelElement, {
-				top: '-24px',
+				top: '-25px',
 				left: '-12px',
 				transform: 'none',
 			});
