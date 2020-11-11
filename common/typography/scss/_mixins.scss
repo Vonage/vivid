@@ -1,47 +1,32 @@
-@use 'variables';
+@use '@vonage/vvd-design-tokens/build/scss/typography-variables/categories-index.scss';
 
-@mixin typography-cat-variables($category) {
-	$category-map: map-get(variables.$typography-category-list, $category);
-
-	--vvd-typography-font-family: #{map-get($category-map, 'font-family')};
-	--vvd-typography-font-size: #{map-get($category-map, 'font-size')};
-	--vvd-typography-font-weight: #{map-get($category-map, 'font-weight')};
-	--vvd-typography-font-stretch: #{map-get($category-map, 'font-stretch')};
-	--vvd-typography-line-height: #{map-get($category-map, 'line-height')};
-	--vvd-typography-letter-spacing: #{map-get($category-map, 'letter-spacing')};
-	--vvd-typography-text-transform: #{map-get($category-map, 'text-transform')};
-}
-
-// TODO: [VIV-165] font shorthand not rendered when css variables value contain long decimals
-@mixin typography-cat-properties {
-	/*   dont forget to define defaults */
-	font: var(--vvd-typography-font-weight) var(--vvd-typography-font-size) /
-		var(--vvd-typography-line-height) var(--vvd-typography-font-family);
-	/* font shorthand supports font-stretch keywords only and can't be set by %.
-  font-stretch keyword doesn't support our Spezia's 0 - 100 range.
-  therefor we set it separatly */
+@mixin typography-set-properties {
+	font-family: var(--vvd-typography-font-family);
+	font-size: var(--vvd-typography-font-size);
 	font-stretch: var(--vvd-typography-font-stretch);
+	font-weight: var(--vvd-typography-font-weight);
 	letter-spacing: var(--vvd-typography-letter-spacing);
-	text-transform: var(--vvd-typography-text-transform);
-	// TODO: move headers vertical margins to context
-	// margin: var(--vvd-typography-line-height) 0;
+	line-height: var(--vvd-typography-line-height);
+	text-decoration: var(--vvd-typography-text-decoration, none);
+	text-transform: var(--vvd-typography-text-transform, none);
 }
 
 // @gullerya why do we have this mixin refactor and the previous one still exist? do we need it? anyway shorthand is a better name
 @mixin typography-cat-shorthand($category) {
-	@include typography-cat-variables($category);
-	@include typography-cat-properties;
+	@include categories-index.include-category($category);
+	@include typography-set-properties;
 }
 
 // the following mixin couples a mdc typography variable to a primitive value of which we declare in our typography categories
 // it is an extension related exclusively to a usage of mwc components and is not part of our typography abstraction
+// [YG] IMHO, is would be best to get rid of all this and NOT do any coupling to MDC
 @mixin typography-mdc-coupling($mdc-category, $vvd-category) {
-	$vvd-category-map: map-get(variables.$typography-category-list, $vvd-category);
+	// $vvd-category-map: map-get(variables.$typography-category-list, $vvd-category);
 
-	@each $name, $value in $vvd-category-map {
-		--mdc-typography-#{$mdc-category}-#{$name}: #{map-get(
-				$vvd-category-map,
-				$name
-			)};
-	}
+	// @each $name, $value in $vvd-category-map {
+	// 	--mdc-typography-#{$mdc-category}-#{$name}: #{map-get(
+	// 			$vvd-category-map,
+	// 			$name
+	// 		)};
+	// }
 }

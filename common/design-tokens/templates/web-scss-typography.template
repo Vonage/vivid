@@ -1,4 +1,4 @@
-@mixin variables{
+@mixin vars {
 <% _.each(allProperties, function(prop) {
 %>	--<%= prop.name %>: <%= prop.value %>;
 <% }); %>}
