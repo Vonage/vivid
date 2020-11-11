@@ -12117,11 +12117,6 @@ modify-values@^1.0.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/modify-values/-/modify-values-1.0.1.tgz#b3939fa605546474e3e3e3c63d64bd43b4ee6022"
   integrity sha1-s5OfpgVUZHTj4+PGPWS9Q7TuYCI=
 
-modularscale-sass@^3.0.10:
-  version "3.0.10"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/modularscale-sass/-/modularscale-sass-3.0.10.tgz#3a596b090360129dd2375bee81b9318085cb47b3"
-  integrity sha1-OllrCQNgEp3SN1vugbkxgIXLR7M=
-
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
