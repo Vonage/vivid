@@ -20,10 +20,21 @@ export function shapeStyles(shape) {
 export const body1TypographyStyles = {
 	fontFamily: 'SpeziaWebVariable',
 	fontSize: '16px',
-	fontWeight: '400',
 	fontStretch: '50%',
-	lineHeight: '18px',
-	// letterSpacing: '0.15px',
+	fontWeight: '400',
+	letterSpacing: '0px',
+	lineHeight: '24px',
+	textTransform: 'none',
+}
+
+//	TODO VIV-273: those variables should come from built mixins
+export const body1BoldTypographyStyles = {
+	fontFamily: 'SpeziaWebVariable',
+	fontSize: '16px',
+	fontStretch: '50%',
+	fontWeight: '600',
+	letterSpacing: '0px',
+	lineHeight: '24px',
 	textTransform: 'none',
 }
 
@@ -39,11 +50,33 @@ export const body2TypographyStyles = {
 }
 
 //	TODO VIV-273: those variables should come from built mixins
+export const buttonDefaultTypographyStyles = {
+	fontFamily: 'SpeziaWebVariable',
+	fontSize: '14px',
+	fontStretch: '50%',
+	fontWeight: '600',
+	letterSpacing: '0px',
+	lineHeight: '100%',
+	textTransform: 'none',
+}
+
+//	TODO VIV-273: those variables should come from built mixins
 export const captionTypographyStyles = {
 	fontFamily: 'SpeziaWebVariable',
 	fontSize: '12px',
 	fontStretch: '50%',
 	fontWeight: '400',
+	letterSpacing: '0px',
+	lineHeight: '16px',
+	textTransform: 'none',
+}
+
+//	TODO VIV-273: those variables should come from built mixins
+export const captionBoldTypographyStyles = {
+	fontFamily: 'SpeziaWebVariable',
+	fontSize: '12px',
+	fontStretch: '50%',
+	fontWeight: '600',
 	letterSpacing: '0px',
 	lineHeight: '16px',
 	textTransform: 'none',

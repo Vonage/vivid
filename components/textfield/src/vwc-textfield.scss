@@ -109,7 +109,7 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 
   .mdc-floating-label {
     left: 14px;
-    line-height: 18px;
+    line-height: var(--mdc-typography-subtitle1-line-height);
     transition-property: transform, font-size;
   }
 
@@ -174,7 +174,7 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
       color: var(--mdc-text-field-disabled-ink-color);
     }
   }
-  
+
   vwc-icon {
     align-self: center;
     margin: 0 12px;
@@ -205,7 +205,7 @@ vwc-notched-outline {
 			display: none;
 			color: var(--mdc-text-field-error-color);
 		}
-    
+
     .mdc-text-field-helper-text::before {
 			display: inline;
 		}

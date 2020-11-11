@@ -7,6 +7,7 @@ import {
 	isolatedElementsCreation,
 	listenToSubmission,
 } from '../../../test/test-helpers.js';
+import { body2TypographyStyles } from '../../../test/style-utils.js';
 import {
 	typographyTestCases,
 	hasNotchedOutline,
@@ -253,10 +254,10 @@ describe('textarea', () => {
 
 			assertComputedStyle(formElement, { paddingTop: '24px' });
 			assertComputedStyle(actualElement, { minHeight: '40px' });
+			assertComputedStyle(labelElement, body2TypographyStyles);
 			assertComputedStyle(labelElement, {
-				fontSize: '14.2222px',
-				left: '-12px',
 				top: '-24px',
+				left: '-12px',
 				transform: 'none',
 			});
 		});

@@ -47,6 +47,15 @@ export async function typographyTestCases(COMPONENT_NAME) {
 		);
 		assertComputedStyle(inputElement, body2TypographyStyles);
 	});
+
+	it('should have set typography for a helper', async () => {
+		formElement.helper = 'Helper text';
+		await waitNextTask();
+		const helperElement = formElement.shadowRoot.querySelector(
+			'.mdc-text-field-helper-text'
+		);
+		assertComputedStyle(helperElement, captionTypographyStyles);
+	});
 }
 
 export async function hasNotchedOutline(COMPONENT_NAME) {
@@ -94,7 +103,7 @@ export async function validateMultipleShadowLayers(COMPONENT_NAME, elementTag) {
       <button></button>
     </form>`;
 	const elementTemplate = `
-    <${COMPONENT_NAME} required value="${fieldValue}" 
+    <${COMPONENT_NAME} required value="${fieldValue}"
       name="${fieldName}">
     </${COMPONENT_NAME}>`;
 	const [formElement] = addElement(textToDomToParent(formTemplate));

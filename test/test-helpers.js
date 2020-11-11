@@ -135,8 +135,14 @@ export function assertComputedStyle(element, expectedStyles) {
 				expectedValue = parseFloat(expectedStyles[styleKey]).toFixed(3);
 				break;
 			case 'lineHeight':
-				expectedValue = parseFloat(expectedStyles[styleKey]).toFixed(1);
-				actualValue = parseFloat(computedStyle[styleKey]).toFixed(1);
+				actualValue = parseFloat(computedStyle[styleKey]);
+				if (isNaN(actualValue)) {
+					expectedValue = 'normal';
+					actualValue = computedStyle[styleKey];
+				} else {
+					expectedValue = parseFloat(expectedStyles[styleKey]).toFixed(1);
+					actualValue = parseFloat(computedStyle[styleKey]).toFixed(1);
+				}
 				break;
 			default:
 				expectedValue = expectedStyles[styleKey];
