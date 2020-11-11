@@ -27,7 +27,8 @@ module.exports = config => {
 			karmaHTML: {
 				source: [
           { tag: 'coreSetupTest', src: 'common/core/test/core-setup.test.html' },
-					{ tag: 'schemeSetupTestHTML', src: 'common/scheme/test/scheme-setup.test.html' }
+					{ tag: 'schemeSetupTestHTML', src: 'common/scheme/test/scheme-setup.test.html' },
+          { tag: 'drawerSetupTest', src: 'components/drawer/test/drawer-setup.test.html' },
 				]
 			}
 		}

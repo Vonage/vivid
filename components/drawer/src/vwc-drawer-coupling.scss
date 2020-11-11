@@ -1,7 +1,6 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 
 :host {
-	@include typography.typography-mdc-coupling('subtitle2', 'subheading-2');
 	@include typography.typography-mdc-coupling('headline6', 'subheading-1');
 	@include typography.typography-mdc-coupling('body2', 'body-2');
 }
