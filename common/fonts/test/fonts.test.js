@@ -1,8 +1,9 @@
 import fonts from '../vvd-fonts.js';
-import { isolatedElementsCreation } from '../../../test/test-helpers';
+import { cleanFrame, getFrameLoadedInjected } from '../../../test/test-helpers';
+
+const FONTS_SETUP_HTML_TAG = 'fontsSetupTest';
 
 describe('vvd-fonts service', () => {
-	const addElement = isolatedElementsCreation();
 	it('should provide basic fonts API', async () => {
 		assert.isObject(fonts, 'imported "fonts" is object');
 		assert.isNotNull(fonts, 'imported "fonts" not null');
@@ -11,30 +12,9 @@ describe('vvd-fonts service', () => {
 	});
 
 	it('should affect the actual font', async () => {
-		//	create test element, to measure width of
-		const [testElement] = addElement([document.createElement('span')]);
-		testElement.textContent = 'www.iii.com';
-		testElement.style.fonSize = '16px';
-		testElement.style.fontStretch = '50%';
-		testElement.style.fontFamily = 'monospace';
-
-		//	first, append it as is, take the width (monospaced)
-		document.body.appendChild(testElement);
-		const monoWidth = testElement.offsetWidth;
-
-		//	second, set our font and then call init (to be sure, init might already ran)
-		testElement.style.fontFamily = 'var(--vvd-font-family-spezia), monospace';
-
-		//	second, init the fonts
+		const [testElement, monoWidth] = setupTestElement(document);
 		await fonts.init();
-
-		//	third, measure the element again (now should have non-monospaced fonting)
-		const postWidth = testElement.offsetWidth;
-
-		assert.isTrue(
-			postWidth !== monoWidth,
-			'element width after should be other than before'
-		);
+		assertTestElementAndClean(testElement, monoWidth);
 	});
 
 	it('should provide the same Promise each new time after the initial run', async () => {
@@ -44,4 +24,54 @@ describe('vvd-fonts service', () => {
 		expect(r2).equal(r1);
 		expect(r3).equal(r2);
 	});
+
+	describe('isolated environment fonts init test', () => {
+		/* eslint-disable no-undef */
+		after(() => {
+			cleanFrame(FONTS_SETUP_HTML_TAG);
+		});
+
+		it('should init fonts when init via HEAD element', async () => {
+			await getFrameLoadedInjected(FONTS_SETUP_HTML_TAG, async (iframe) => {
+				const [testElement, monoWidth] = setupTestElement(iframe.contentDocument);
+				await iframe.contentWindow.vvdFonts.init();
+				assertTestElementAndClean(testElement, monoWidth);
+			});
+		});
+
+		it('should init fonts when init is AFTER the document loaded', async () => {
+			await getFrameLoadedInjected(FONTS_SETUP_HTML_TAG, async (iframe) => {
+				const [testElement, monoWidth] = setupTestElement(iframe.contentDocument);
+				if (iframe.contentDocument.readyState !== 'complete') {
+					await new Promise((resolve) =>
+						iframe.contentDocument.addEventListener('DOMContentLoaded', resolve)
+					);
+				}
+				await iframe.contentWindow.vvdFonts.init();
+				assertTestElementAndClean(testElement, monoWidth);
+			});
+		});
+	});
 });
+
+function setupTestElement(targetDocument) {
+	const testElement = targetDocument.createElement('span');
+	testElement.textContent = 'wwwwwiiiii';
+	testElement.style.fontFamily = 'initial';
+
+	//	first, append it as is, take the width (monospaced)
+	targetDocument.body.appendChild(testElement);
+	const monoWidth = testElement.offsetWidth;
+
+	//	second, set our font and then call init (to be sure, init might already ran)
+	testElement.style.fontFamily = 'var(--vvd-font-family-spezia, initial)';
+
+	return [testElement, monoWidth];
+}
+
+function assertTestElementAndClean(testElement, monoWidth) {
+	if (testElement.offsetWidth === monoWidth) {
+		throw new Error('element width after should be other than before ()');
+	}
+	testElement.remove();
+}

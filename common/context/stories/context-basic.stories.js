@@ -44,4 +44,5 @@ export const basic = () => html`
 `;
 
 vvdCore.settled
-	.then(() => console.log('Vivid context initialised for the context demo story'));
+	.then(() => console.log('Vivid context initialised for the context demo story'))
+	.catch(e => console.error(e));

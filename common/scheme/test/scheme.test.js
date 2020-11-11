@@ -13,7 +13,7 @@ import schemeService from '../vvd-scheme.js';
 import { getPreferedColorScheme } from '../os-sync.utils.js';
 
 // const SYNC_WITH_OS = 'syncWithOSSettings',
-const SCHEME_SETUP_HTML_TAG = 'schemeSetupTestHTML';
+const SCHEME_SETUP_HTML_TAG = 'schemeSetupTest';
 const LIGHT = 'light';
 const DARK = 'dark';
 
