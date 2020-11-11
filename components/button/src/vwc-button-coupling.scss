@@ -1,7 +1,7 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 
 :host {
-  @include typography.typography-mdc-coupling('button', 'button-default');
+  @include typography.typography-mdc-coupling('button', 'button');
 }
 
 :host([dense]) {

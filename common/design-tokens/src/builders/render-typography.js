@@ -37,6 +37,8 @@ export const render = () => {
 	console.log('\n==============================================');
 	console.log(`\nProcessing typography variables`);
 
+	fs.rmdirSync(OUTPUT_FOLDER, { recursive: true });
+
 	const indexEntries = [];
 	const propertiesFolder = resolve('../../node_modules/@vonage/vvd-design-tokens-properties');
 	const typographyFolder = resolve(propertiesFolder, 'globals', 'typography');
@@ -71,6 +73,8 @@ function createCategoriesIndex(entryKeys) {
 		outputLines.push(`\t${i === 0 ? '@if' : '} @else if'} ${PARAM_NAME} == '${entryKey}' {`);
 		outputLines.push(`\t\t@include ${entryKey}.variables;`);
 	});
+	outputLines.push('\t} @else {');
+	outputLines.push(`\t\t@error '"#{${PARAM_NAME}}" category not exist'`);
 	outputLines.push('\t}');
 	outputLines.push('}');
 

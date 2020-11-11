@@ -5,7 +5,7 @@ import {
 	assertComputedStyle,
 	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
-import { captionTypographyStyles } from '../../../test/style-utils.js';
+import { captionBoldTypographyStyles } from '../../../test/style-utils.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
@@ -68,7 +68,7 @@ describe('badge', () => {
 			);
 			await waitNextTask();
 			expect(badge).to.exist;
-			assertComputedStyle(badge, captionTypographyStyles);
+			assertComputedStyle(badge, captionBoldTypographyStyles);
 		});
 	});
 });
