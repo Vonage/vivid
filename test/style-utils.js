@@ -16,6 +16,7 @@ export function shapeStyles(shape) {
 	return borderRadiusStyles(shapeRadius[shape]);
 }
 
+//	TODO VIV-273: those variables should come from built mixins
 export const body1TypographyStyles = {
 	fontFamily: 'SpeziaWebVariable',
 	fontSize: '16px',
@@ -26,23 +27,25 @@ export const body1TypographyStyles = {
 	textTransform: 'none',
 }
 
+//	TODO VIV-273: those variables should come from built mixins
 export const body2TypographyStyles = {
 	fontFamily: 'SpeziaWebVariable',
-	fontSize: '14.2222px',
-	fontWeight: '400',
+	fontSize: '14px',
 	fontStretch: '50%',
-	// lineHeight: 'normal',
-	// letterSpacing: '0.133333px',
+	fontWeight: '400',
+	letterSpacing: '0px',
+	lineHeight: '20px',
 	textTransform: 'none',
 }
 
+//	TODO VIV-273: those variables should come from built mixins
 export const captionTypographyStyles = {
 	fontFamily: 'SpeziaWebVariable',
-	fontSize: '12.642px',
-	fontWeight: '400',
+	fontSize: '12px',
 	fontStretch: '50%',
-	// lineHeight: '20.3286px',
-	// letterSpacing: '0.119',
+	fontWeight: '400',
+	letterSpacing: '0px',
+	lineHeight: '16px',
 	textTransform: 'none',
 }
 

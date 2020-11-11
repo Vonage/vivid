@@ -62,21 +62,21 @@ function createCategoriesIndex(entryKeys) {
 	const outputLines = [];
 
 	//	create @use directives
-	entryKeys.forEach(entryKey => outputLines.push(`@use '${entryKey}.scss';`));
+	entryKeys.forEach(entryKey => outputLines.push(`@use '${entryKey}';`));
 	outputLines.push(os.EOL);
 
 	//	create include-variables mixin
 	outputLines.push(`@mixin include-category(${PARAM_NAME}) {`);
 	entryKeys.forEach((entryKey, i) => {
 		outputLines.push(`\t${i === 0 ? '@if' : '} @else if'} ${PARAM_NAME} == '${entryKey}' {`);
-		outputLines.push(`\t\t@include ${entryKey}.vars;`);
+		outputLines.push(`\t\t@include ${entryKey}.variables;`);
 	});
 	outputLines.push('\t}');
 	outputLines.push('}');
 
 	//	write the file
 	fs.writeFileSync(
-		`${OUTPUT_FOLDER}/categories-index.scss`,
+		`${OUTPUT_FOLDER}/index.scss`,
 		outputLines.join(os.EOL),
 		{ encoding: 'utf-8' }
 	);

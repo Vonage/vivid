@@ -6,6 +6,7 @@ import {
 	assertComputedStyle,
 	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
+import { body2TypographyStyles } from '../../../test/style-utils.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	assertListItemDimensions,
@@ -49,15 +50,7 @@ describe('check list item', () => {
 			await waitNextTask();
 			const listItem = actualElements[0];
 			expect(listItem).to.exist;
-			assertComputedStyle(listItem, {
-				fontFamily: 'SpeziaWebVariable',
-				fontSize: '14.2222px',
-				fontWeight: '400',
-				fontStretch: '50%',
-				//	lineHeight: '22.8697px',
-				letterSpacing: 'normal',
-				textTransform: 'none',
-			});
+			assertComputedStyle(listItem, body2TypographyStyles);
 		});
 
 		it(`should have set typography correct (left, selected)`, async function () {
@@ -69,16 +62,7 @@ describe('check list item', () => {
 			await waitNextTask();
 			const listItem = actualElements[0];
 			expect(listItem).to.exist;
-			const expectedStyles = {
-				fontFamily: 'SpeziaWebVariable',
-				fontSize: '14.2222px',
-				fontWeight: '400',
-				fontStretch: '50%',
-				//	lineHeight: '22.8697px',
-				letterSpacing: 'normal',
-				textTransform: 'none',
-			};
-			assertComputedStyle(listItem, expectedStyles);
+			assertComputedStyle(listItem, body2TypographyStyles);
 		});
 	});
 

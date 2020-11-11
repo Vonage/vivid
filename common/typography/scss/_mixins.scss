@@ -1,14 +1,11 @@
-@use '@vonage/vvd-design-tokens/build/scss/typography-variables/categories-index.scss';
+@use '@vonage/vvd-design-tokens/build/scss/typography-variables/index.scss' as categories-index;
+
+$props-list: font-family, font-size, font-stretch, font-weight, letter-spacing, line-height, text-decoration, text-transform;
 
 @mixin typography-set-properties {
-	font-family: var(--vvd-typography-font-family);
-	font-size: var(--vvd-typography-font-size);
-	font-stretch: var(--vvd-typography-font-stretch);
-	font-weight: var(--vvd-typography-font-weight);
-	letter-spacing: var(--vvd-typography-letter-spacing);
-	line-height: var(--vvd-typography-line-height);
-	text-decoration: var(--vvd-typography-text-decoration, none);
-	text-transform: var(--vvd-typography-text-transform, none);
+	@each $prop in $props-list {
+		#{$prop}: var(--vvd-typography-#{$prop});
+	}
 }
 
 // @gullerya why do we have this mixin refactor and the previous one still exist? do we need it? anyway shorthand is a better name
@@ -19,14 +16,10 @@
 
 // the following mixin couples a mdc typography variable to a primitive value of which we declare in our typography categories
 // it is an extension related exclusively to a usage of mwc components and is not part of our typography abstraction
-// [YG] IMHO, is would be best to get rid of all this and NOT do any coupling to MDC
 @mixin typography-mdc-coupling($mdc-category, $vvd-category) {
-	// $vvd-category-map: map-get(variables.$typography-category-list, $vvd-category);
-
-	// @each $name, $value in $vvd-category-map {
-	// 	--mdc-typography-#{$mdc-category}-#{$name}: #{map-get(
-	// 			$vvd-category-map,
-	// 			$name
-	// 		)};
-	// }
+	@include categories-index.include-category($vvd-category);
+	// couple MDC to VVD variables
+	@each $prop in $props-list {
+		--mdc-typography-#{$mdc-category}-#{$prop}: var(--vvd-typography-#{$prop});
+	}
 }
