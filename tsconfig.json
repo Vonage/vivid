@@ -57,6 +57,7 @@
 		{ "path": "components/radio" },
 		{ "path": "components/relative-time" },
 		{ "path": "components/scheme-select" },
+		{ "path": "components/scheme-switch" },
 		{ "path": "components/select" },
 		{ "path": "components/slider" },
 		{ "path": "components/switch" },
