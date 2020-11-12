@@ -52,13 +52,9 @@ export const render = () => {
 	const typographiesFolder = resolve(propertiesFolder, 'typography');
 
 	for (const typographyType of TYPOGRAPHY_TYPES) {
-		console.log(`\nprocessing typography '${typographyType}'...`);
-
 		const dictionaryConfig = getStyleDictionaryConfig(typographyType, definitionsFolder, typographiesFolder);
 		StyleDictionaryPackage.extend(dictionaryConfig).buildPlatform('web');
-
-		console.log('\n...done');
 	}
 
-	console.log('\nEnd processing typography');
+	console.log('\ntypography processing DONE');
 };
