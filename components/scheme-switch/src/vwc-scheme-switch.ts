@@ -1,7 +1,10 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-switch';
 import { customElement, html, LitElement, TemplateResult } from 'lit-element';
-import { SchemeOption } from '@vonage/vvd-scheme/vvd-scheme.js';
+import {
+	default as vvdScheme,
+	SchemeOption,
+} from '@vonage/vvd-scheme/vvd-scheme.js';
 import { SCHEME_SELECT_EVENT_TYPE } from '@vonage/vvd-scheme/scheme-change-listener.js';
 
 declare global {
@@ -10,9 +13,14 @@ declare global {
 	}
 }
 
+/* eslint-disable no-shadow */
+enum switchScheme {
+	checked = 'dark',
+	unchecked = 'light',
+}
+
 @customElement('vwc-scheme-switch')
 export class VWCSchemeSwitch extends LitElement {
-	schemes: SchemeOption[] = ['light', 'dark'];
 	handleChange: (scheme: SchemeOption) => void;
 
 	constructor() {
@@ -35,9 +43,12 @@ export class VWCSchemeSwitch extends LitElement {
 	render(): TemplateResult {
 		return html` <vwc-switch
 			connotation="cta"
+			?checked=${vvdScheme.getSelectedScheme() === switchScheme.checked}
 			@change=${(e: InputEvent) =>
 				this.handleChange(
-					(e.target as HTMLInputElement).checked ? 'dark' : 'light'
+					(e.target as HTMLInputElement).checked
+						? switchScheme.checked
+						: switchScheme.unchecked
 				)}
 		></vwc-switch>`;
 	}
