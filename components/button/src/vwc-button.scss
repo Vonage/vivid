@@ -1,4 +1,5 @@
 @forward './vwc-button-coupling';
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/_scheme-variables' as scheme-variables;
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins' as color-connotation-mixins;
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins;
@@ -8,7 +9,7 @@
     #{color-semantic.$formfield-disabled-ink}
   );
   --mdc-button-disabled-fill-color: var(
-    #{color-semantic.$formfield-border-idle}
+    #{scheme-variables.$vvd-color-base-soft}
   );
   --mdc-button-disabled-outline-color: var(
     #{color-semantic.$formfield-disabled-ink}
