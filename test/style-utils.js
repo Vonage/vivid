@@ -16,73 +16,7 @@ export function shapeStyles(shape) {
 	return borderRadiusStyles(shapeRadius[shape]);
 }
 
-//	TODO VIV-273: those variables should come from built mixins
-// export const body1TypographyStyles = {
-// 	fontFamily: 'SpeziaWebVariable',
-// 	fontSize: '16px',
-// 	fontStretch: '50%',
-// 	fontWeight: '400',
-// 	letterSpacing: '0px',
-// 	lineHeight: '24px',
-// 	textTransform: 'none',
-// }
-
-//	TODO VIV-273: those variables should come from built mixins
-// export const body1BoldTypographyStyles = {
-// 	fontFamily: 'SpeziaWebVariable',
-// 	fontSize: '16px',
-// 	fontStretch: '50%',
-// 	fontWeight: '600',
-// 	letterSpacing: '0px',
-// 	lineHeight: '24px',
-// 	textTransform: 'none',
-// }
-
-//	TODO VIV-273: those variables should come from built mixins
-// export const body2TypographyStyles = {
-// 	fontFamily: 'SpeziaWebVariable',
-// 	fontSize: '14px',
-// 	fontStretch: '50%',
-// 	fontWeight: '400',
-// 	letterSpacing: '0px',
-// 	lineHeight: '20px',
-// 	textTransform: 'none',
-// }
-
-//	TODO VIV-273: those variables should come from built mixins
-// export const buttonDefaultTypographyStyles = {
-// 	fontFamily: 'SpeziaWebVariable',
-// 	fontSize: '14px',
-// 	fontStretch: '50%',
-// 	fontWeight: '600',
-// 	letterSpacing: '0px',
-// 	lineHeight: '100%',
-// 	textTransform: 'none',
-// }
-
-//	TODO VIV-273: those variables should come from built mixins
-// export const captionTypographyStyles = {
-// 	fontFamily: 'SpeziaWebVariable',
-// 	fontSize: '12px',
-// 	fontStretch: '50%',
-// 	fontWeight: '400',
-// 	letterSpacing: '0px',
-// 	lineHeight: '16px',
-// 	textTransform: 'none',
-// }
-
-//	TODO VIV-273: those variables should come from built mixins
-// export const captionBoldTypographyStyles = {
-// 	fontFamily: 'SpeziaWebVariable',
-// 	fontSize: '12px',
-// 	fontStretch: '50%',
-// 	fontWeight: '600',
-// 	letterSpacing: '0px',
-// 	lineHeight: '16px',
-// 	textTransform: 'none',
-// }
-
-export const PRINCIPAL_VARIABLES_FILTER = /(base|surface|primary)-(background|foreground)/;
+export const PRINCIPAL_SCHEME_VARIABLES_FILTER = /(base|surface|primary)-(background|foreground)/;
 
 export function getSchemeFiles() {
 	const DT_SCHEMES_BASE_PATH = 'common/design-tokens/build/scss/schemes/';

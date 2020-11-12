@@ -7,11 +7,10 @@ module.exports = config => {
 	const extendedDefaultConfig = merge(defaultConfig, {
 		files: [
 			{ pattern: config.grep ? config.grep : '{common,components}/**/test/**/*.test.js', type: 'module' },
-			{ pattern: 'common/design-tokens/build/scss/typography-variables/*.scss', included: false }
+			{ pattern: 'common/design-tokens/build/**/*.scss', included: false }
 		],
 		preprocessors: {
 			'common/design-tokens/build/scss/schemes/**/*.scss': ['file-fixtures'],
-			'{common,components}/**/*.js': ['coverage']
 		},
 		esm: {
 			nodeResolve: true,

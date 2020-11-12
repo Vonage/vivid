@@ -8239,10 +8239,10 @@ eslint-visitor-keys@^2.0.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/eslint-visitor-keys/-/eslint-visitor-keys-2.0.0.tgz#21fdc8fbcd9c795cc0321f0563702095751511a8"
   integrity sha1-If3I+82ceVzAMh8FY3AglXUVEag=
 
-eslint@^7.12.1:
-  version "7.12.1"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/eslint/-/eslint-7.12.1.tgz#bd9a81fa67a6cfd51656cdb88812ce49ccec5801"
-  integrity sha1-vZqB+memz9UWVs24iBLOSczsWAE=
+eslint@^7.13.0:
+  version "7.13.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/eslint/-/eslint-7.13.0.tgz#7f180126c0dcdef327bfb54b211d7802decc08da"
+  integrity sha1-fxgBJsDc3vMnv7VLIR14At7MCNo=
   dependencies:
     "@babel/code-frame" "^7.0.0"
     "@eslint/eslintrc" "^0.2.1"
@@ -10515,7 +10515,7 @@ is-wsl@^1.1.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/is-wsl/-/is-wsl-1.1.0.tgz#1f16e4aa22b04d1336b66188a66af3c600c3a66d"
   integrity sha1-HxbkqiKwTRM2tmGIpmrzxgDDpm0=
 
-is-wsl@^2.1.0, is-wsl@^2.1.1:
+is-wsl@^2.1.1, is-wsl@^2.2.0:
   version "2.2.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/is-wsl/-/is-wsl-2.2.0.tgz#74a4c76e77ca9fd3f932f290c17ea326cd157271"
   integrity sha1-dKTHbnfKn9P5MvKQwX6jJs0VcnE=
@@ -10900,12 +10900,13 @@ karma-file-fixtures-preprocessor@^3.0.1:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/karma-file-fixtures-preprocessor/-/karma-file-fixtures-preprocessor-3.0.1.tgz#b20c2547e613523e8911071607a5232626de3eeb"
   integrity sha1-sgwlR+YTUj6JEQcWB6UjJibePus=
 
-karma-firefox-launcher@^1.3.0:
-  version "1.3.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/karma-firefox-launcher/-/karma-firefox-launcher-1.3.0.tgz#ebcbb1d1ddfada6be900eb8fae25bcf2dcdc8171"
-  integrity sha1-68ux0d362mvpAOuPriW88tzcgXE=
+karma-firefox-launcher@^2.1.0:
+  version "2.1.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/karma-firefox-launcher/-/karma-firefox-launcher-2.1.0.tgz#d0d328c93dfcf9b46f1ac83b4bb32f43aadb2050"
+  integrity sha1-0NMoyT38+bRvGsg7S7MvQ6rbIFA=
   dependencies:
-    is-wsl "^2.1.0"
+    is-wsl "^2.2.0"
+    which "^2.0.1"
 
 karma-html@^1.0.5:
   version "1.0.5"
