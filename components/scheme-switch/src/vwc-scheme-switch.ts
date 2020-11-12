@@ -1,6 +1,7 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-switch';
 import { customElement, html, LitElement, TemplateResult } from 'lit-element';
+import { style } from './vwc-scheme-switch.css.js';
 import {
 	default as vvdScheme,
 	SchemeOption,
@@ -21,6 +22,7 @@ enum switchScheme {
 
 @customElement('vwc-scheme-switch')
 export class VWCSchemeSwitch extends LitElement {
+	static styles = style;
 	handleChange: (scheme: SchemeOption) => void;
 
 	constructor() {
