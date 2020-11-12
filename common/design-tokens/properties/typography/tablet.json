@@ -1,0 +1,14 @@
+{
+	"alias": {
+		"typography": {
+			"body-1": {
+				"fontSize": { "value": "14px" },
+				"fontWeight": { "value": "500" }
+			},
+			"body-2": {
+				"fontSize": { "value": "12px" },
+				"fontWeight": { "value": "600" }
+			}
+		}
+	}
+}
