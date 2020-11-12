@@ -11,24 +11,22 @@
 
     print('\n');
 
-		modifiedProperties = 	allProperties.reduce((acc, entry) => {
-			console.log(entry);
-			const {attributes:{category, type, item}} = entry;
-			// switch to logical "or" assignment when supported
+		modifiedProperties = allProperties.reduce((acc, entry) => {
+			const {attributes:{category, type, item, subitem}} = entry;
 			if(!acc[type]) {acc[type] = {};}
-			acc[type][item] = {value: entry.value};
+			acc[type][`${item}-${subitem}`] = {value: entry.value};
 			return acc;
-			}, {})
+		}, {})
 
     // output the list of tokens as a Sass nested map
     // (the values are pointing to the variables)
     //
-    print(`$${this.mapName||'tokens'}: ${processJsonNode(modifiedProperties, 0)};\n`);
+    print(`$${this.mapName||'tokens'}: ${processJsonNode(modifiedProperties)};\n`);
 
     // recursive function to process a properties JSON node
     //
-    function processJsonNode(obj, depth) {
-        var output = '';
+    function processJsonNode(obj, depth = 0) {
+        let output = '';
         if (obj.hasOwnProperty('value')) {
             // if we have found a leaf (a property with a value) append the value
             output += `${obj.value}`;
