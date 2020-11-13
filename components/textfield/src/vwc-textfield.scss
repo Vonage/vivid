@@ -77,7 +77,7 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
   .mdc-text-field {
     .mdc-floating-label {
       left: -12px;
-      top: -24px;
+      top: -25px;
       transform: none;
     }
 
@@ -114,7 +114,7 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 
   .mdc-floating-label--float-above {
     font-size: var(--mdc-typography-subtitle1-font-size);
-    transform: translateY(-100%);
+    transform: translateY(-18px);
 
     &.mdc-floating-label--shake {
       animation: none;
@@ -209,7 +209,7 @@ vwc-notched-outline {
 			display: none;
 			color: var(--mdc-text-field-error-color);
     }
-    
+
     .mdc-text-field-helper-text:not(.mdc-text-field-helper-text--validation-msg) {
 			opacity: 1;
 		}

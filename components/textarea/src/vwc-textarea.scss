@@ -38,10 +38,11 @@
 		}
 
 		.mdc-floating-label {
-			top: 15px;
+			top: 12px;
 
 			&--float-above {
-				transform: translateY(-9px) scale(1);
+				font-size: var(--mdc-typography-subtitle1-font-size);
+				transform: translateY(-7px) scale(1);
 			}
 		}
 	}

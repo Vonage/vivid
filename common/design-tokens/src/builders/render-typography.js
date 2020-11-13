@@ -1,10 +1,10 @@
-import os from 'os';
 import fs from 'fs';
 import { resolve } from 'path';
 import _ from 'lodash';
 import StyleDictionaryPackage from 'style-dictionary';
 
-const CUSTOM_TYPOGRAPHY_FORMAT = 'custom/web/scss/typography',
+const TYPOGRAPHY_TYPES = ['web'],
+	CUSTOM_TYPOGRAPHY_FORMAT = 'custom/web/scss/typography',
 	OUTPUT_FOLDER = 'build/scss/typography-variables';
 
 StyleDictionaryPackage.registerFormat({
@@ -14,9 +14,12 @@ StyleDictionaryPackage.registerFormat({
 	),
 });
 
-function getStyleDictionaryConfig(key, path) {
+function getStyleDictionaryConfig(type, defsFolder, dataFolder) {
 	return {
-		source: [path],
+		source: [
+			`${defsFolder}/*.json`,
+			`${dataFolder}/${type}.json`
+		],
 		platforms: {
 			web: {
 				prefix: 'vvd',
@@ -24,8 +27,14 @@ function getStyleDictionaryConfig(key, path) {
 				buildPath: `${resolve()}/`,
 				files: [
 					{
-						destination: `${OUTPUT_FOLDER}/_${key}.scss`,
-						format: CUSTOM_TYPOGRAPHY_FORMAT
+						destination: `${OUTPUT_FOLDER}/${type}.scss`,
+						mapName: 'typography-category-list',
+						format: CUSTOM_TYPOGRAPHY_FORMAT,
+						filter: {
+							attributes: {
+								category: 'typography'
+							}
+						}
 					}
 				]
 			}
@@ -35,53 +44,17 @@ function getStyleDictionaryConfig(key, path) {
 
 export const render = () => {
 	console.log('\n==============================================');
-	console.log(`\nProcessing typography variables`);
+	console.log('\nProcessing typography variables');
 
 	fs.rmdirSync(OUTPUT_FOLDER, { recursive: true });
-
-	const indexEntries = [];
 	const propertiesFolder = resolve('../../node_modules/@vonage/vvd-design-tokens-properties');
-	const typographyFolder = resolve(propertiesFolder, 'globals', 'typography');
+	const definitionsFolder = resolve(propertiesFolder, 'globals', 'typography');
+	const typographiesFolder = resolve(propertiesFolder, 'typography');
 
-	const categoryFiles = fs.readdirSync(typographyFolder);
-	console.log(`\tprocessing ${categoryFiles.length} category/ies`);
-
-	categoryFiles.forEach(categoryFile => {
-		const categoryKey = categoryFile.replace(/\.json$/, '');
-		const categoryPath = resolve(typographyFolder, categoryFile);
-		const dictionaryConfig = getStyleDictionaryConfig(categoryKey, categoryPath);
+	for (const typographyType of TYPOGRAPHY_TYPES) {
+		const dictionaryConfig = getStyleDictionaryConfig(typographyType, definitionsFolder, typographiesFolder);
 		StyleDictionaryPackage.extend(dictionaryConfig).buildPlatform('web');
-		indexEntries.push(categoryKey);
-	});
+	}
 
-	createCategoriesIndex(indexEntries);
-
-	console.log('\nEnd processing');
+	console.log('\ntypography processing DONE');
 };
-
-function createCategoriesIndex(entryKeys) {
-	const PARAM_NAME = '$category';
-	const outputLines = [];
-
-	//	create @use directives
-	entryKeys.forEach(entryKey => outputLines.push(`@use '${entryKey}';`));
-	outputLines.push(os.EOL);
-
-	//	create include-variables mixin
-	outputLines.push(`@mixin include-category(${PARAM_NAME}) {`);
-	entryKeys.forEach((entryKey, i) => {
-		outputLines.push(`\t${i === 0 ? '@if' : '} @else if'} ${PARAM_NAME} == '${entryKey}' {`);
-		outputLines.push(`\t\t@include ${entryKey}.variables;`);
-	});
-	outputLines.push('\t} @else {');
-	outputLines.push(`\t\t@error '"#{${PARAM_NAME}}" category not exist'`);
-	outputLines.push('\t}');
-	outputLines.push('}');
-
-	//	write the file
-	fs.writeFileSync(
-		`${OUTPUT_FOLDER}/index.scss`,
-		outputLines.join(os.EOL),
-		{ encoding: 'utf-8' }
-	);
-}
