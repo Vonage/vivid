@@ -1,5 +1,4 @@
 @use 'sass:selector';
-@use '@vonage/vvd-foundation/scss/variable-names/color-base-variable-names' as color-base;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/_scheme-variables' as scheme-variables;
 
 // sizing parts only
@@ -111,15 +110,15 @@
 
 // colors/shadowing
 :host {
-	--vvd-switch-checked-background: var(--vvd-color-primary-background);
-	--vvd-switch-checked-background-hover: var(--vvd-color-primary-background);
-	--vvd-switch-checked-background-focus: var(--vvd-color-primary-background);
+	--vvd-switch-checked-background: var(#{scheme-variables.$vvd-color-primary-background});
+	--vvd-switch-checked-background-hover: var(#{scheme-variables.$vvd-color-primary-background});
+	--vvd-switch-checked-background-focus: var(#{scheme-variables.$vvd-color-primary-background});
 
 	--vvd-switch-unchecked-background: var(#{scheme-variables.$vvd-color-base-neutral});
 	--vvd-switch-unchecked-background-hover: var(#{scheme-variables.$vvd-color-base-neutral});
 	--vvd-switch-unchecked-background-focus: var(#{scheme-variables.$vvd-color-base-neutral});
 
-	--vvd-switch-disabled-background: var(--vvd-color-base-soft);
+	--vvd-switch-disabled-background: var(#{scheme-variables.$vvd-color-base-soft});
 	--vvd-switch-shadow-focus: 0, 0, 0, 0.5;
 
 	--mdc-theme-surface: var(#{scheme-variables.$vvd-color-surface-background}); // unchecked thumb
