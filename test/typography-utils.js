@@ -1,34 +1,51 @@
 const typographyCache = {};
 
-export async function getTypographyStyle(category) {
+export async function getTypographyStyle(category, typographyType = 'web') {
 	if (!category || typeof category !== 'string') {
 		throw new Error(`category parameter MUST be a non-empty string, got '${category}'`);
 	}
-
-	if (category in typographyCache) {
-		return typographyCache[category];
+	if (!(typographyType in typographyCache)) {
+		typographyCache[typographyType] = await fetchData(typographyType);
 	}
+	const result = typographyCache[typographyType][category];
+	if (!result) {
+		throw new Error(`category '${category}' is missing in typography '${typographyType}'`);
+	}
+	return result;
+}
 
-	const response = await fetch(`base/common/design-tokens/build/scss/typography-variables/_${category}.scss`);
+async function fetchData(typographyType) {
+	const response = await fetch(`base/common/design-tokens/build/scss/typography-variables/${typographyType}.scss`);
 	if (response.status !== 200) {
-		throw new Error(`failed to fetch typography styles for '${category}', ${response.status} ${response.statusText}`);
+		throw new Error(`failed to fetch typography of type '${typographyType}', ${response.status} ${response.statusText}`);
 	}
-
 	const content = await response.text();
 	if (!content) {
-		throw new Error(`typography data fetched for '${category}' is empty`);
+		throw new Error(`typography data fetched for '${typographyType}' is empty`);
 	}
+	return parseData(content);
+}
 
-	const typographyData = content
-		.split(';')
-		.filter(part => part.includes('--vvd-typography-'))
-		.map(part => part.replace(/^[\s\S\.]*--vvd-typography-/, '').split(/\s*:\s/))
-		.reduce((acc, [k, v]) => {
-			const key = k.replace(/-(\w)/g, (_v, v1) => v1.toUpperCase());
-			acc[key] = v;
+function parseData(data) {
+	const tmp = data
+		.replace(/^[^\(]*\(/, '')
+		.replace(/\)[^\)]*$/, '')
+		.split(/\s\)[,\s]*\s/)
+		.filter(category => category.trim())
+		.map(category => category.trim().split(/\s*\:\s*\(/))
+		.reduce((acc, cat) => {
+			const catKey = cat[0].replace(/[^\w-]*/g, '');
+			const catPairs = cat[1].split(/\s*,\s*/);
+			acc[catKey] = catPairs.reduce((acc1, pair) => {
+				const [key, val] = pair.split(/\s*\:\s*/);
+				const propKey = key
+					.replace(/[^\w-]*/g, '')
+					.replace(/-(\w)/, (_whole, group) => group.toUpperCase());
+				acc1[propKey] = val;
+				return acc1;
+			}, {});
 			return acc;
 		}, {});
 
-	typographyCache[category] = typographyData;
-	return typographyData;
+	return tmp;
 }

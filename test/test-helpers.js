@@ -146,6 +146,11 @@ export function assertComputedStyle(element, expectedStyles) {
 					actualValue = parseFloat(computedStyle[styleKey]).toFixed(1);
 				}
 				break;
+			case 'textDecoration':
+				actualValue = computedStyle[styleKey]
+					.split(/\s/)
+					.reduce((r, v) => v === expectedValue ? v : r, undefined);
+				break;
 			default:
 				expectedValue = expectedStyles[styleKey];
 				actualValue = computedStyle[styleKey];
