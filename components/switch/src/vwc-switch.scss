@@ -74,7 +74,6 @@
     #{$scoped-selector} {
 			--mdc-theme-secondary: var(--vvd-color-#{$connotation}-background);
 			--vvd-switch-checked-background-hover: var(--vvd-color-#{$connotation}-background-hover);
-			--vvd-switch-shadow-focus: var(--vvd-color-#{$connotation}-shadow);
 		}
   }
 }
@@ -120,8 +119,8 @@
 	--vvd-switch-unchecked-background-hover: var(#{scheme-variables.$vvd-color-base-neutral});
 	--vvd-switch-unchecked-background-focus: var(#{scheme-variables.$vvd-color-base-neutral});
 
-	--vvd-switch-disabled-background: var(--vvd-color-base-neutral);
-	--vvd-switch-shadow-focus: 19, 20, 21, 0.42;
+	--vvd-switch-disabled-background: var(--vvd-color-base-soft);
+	--vvd-switch-shadow-focus: 0, 0, 0, 0.5;
 
 	--mdc-theme-surface: var(#{scheme-variables.$vvd-color-surface-background}); // unchecked thumb
 	--mdc-theme-on-surface: var(--vvd-switch-unchecked-background); // unchecked track
