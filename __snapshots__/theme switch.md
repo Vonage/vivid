@@ -1,4 +1,4 @@
-# `scheme switch`
+# `theme switch`
 
 #### `should have internal contents`
 

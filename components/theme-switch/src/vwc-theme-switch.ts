@@ -1,7 +1,7 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-switch';
 import { customElement, html, LitElement, TemplateResult } from 'lit-element';
-import { style } from './vwc-scheme-switch.css.js';
+import { style } from './vwc-theme-switch.css.js';
 import {
 	default as vvdScheme,
 	SchemeOption,
@@ -10,7 +10,7 @@ import { SCHEME_SELECT_EVENT_TYPE } from '@vonage/vvd-scheme/scheme-change-liste
 
 declare global {
 	interface HTMLElementTagNameMap {
-		'vwc-scheme-switch': VWCSchemeSwitch;
+		'vwc-theme-switch': VWCThemeSwitch;
 	}
 }
 
@@ -20,8 +20,8 @@ enum switchScheme {
 	unchecked = 'light',
 }
 
-@customElement('vwc-scheme-switch')
-export class VWCSchemeSwitch extends LitElement {
+@customElement('vwc-theme-switch')
+export class VWCThemeSwitch extends LitElement {
 	static styles = style;
 	handleChange: (scheme: SchemeOption) => void;
 

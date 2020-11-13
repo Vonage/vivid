@@ -1,4 +1,4 @@
-import '@vonage/vwc-scheme-switch';
+import '@vonage/vwc-theme-switch';
 import {
 	isolatedElementsCreation,
 	textToDomToParent,
@@ -14,17 +14,14 @@ import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
 
-const COMPONENT_NAME = 'vwc-scheme-switch';
+const COMPONENT_NAME = 'vwc-theme-switch';
 
-describe('scheme switch', () => {
+describe('theme switch', () => {
 	const addElement = isolatedElementsCreation();
 
 	it('should be defined as a custom element', async () => {
 		assert.exists(
-			customElements.get(
-				COMPONENT_NAME,
-				'vwc-scheme-switch element is not defined'
-			)
+			customElements.get(COMPONENT_NAME, 'vwc-theme-switch element is not defined')
 		);
 	});
 
@@ -50,10 +47,10 @@ describe('scheme switch', () => {
 				`)
 			);
 			await waitNextTask();
-			const schemeSelector = actualElements[0];
+			const themeSelector = actualElements[0];
 
 			//	switch to dark
-			schemeSelector.shadowRoot.querySelector('vwc-switch').click();
+			themeSelector.shadowRoot.querySelector('vwc-switch').click();
 			await waitInterval(50);
 			getBaseVarNames('dark', PRINCIPAL_VARIABLES_FILTER).forEach((key) => {
 				const varVal = getComputedStyle(document.body).getPropertyValue(key).trim();
@@ -61,7 +58,7 @@ describe('scheme switch', () => {
 			});
 
 			//	switch to light
-			schemeSelector.shadowRoot.querySelector('vwc-switch').click();
+			themeSelector.shadowRoot.querySelector('vwc-switch').click();
 			await waitInterval(50);
 			getBaseVarNames('light', PRINCIPAL_VARIABLES_FILTER).forEach((key) => {
 				const varVal = getComputedStyle(document.body).getPropertyValue(key).trim();

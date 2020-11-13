@@ -1,6 +1,6 @@
 import vvdCore from '@vonage/vvd-core';
 import '@vonage/vvd-context';
-import '@vonage/vwc-scheme-switch';
+import '@vonage/vwc-theme-switch';
 import '@vonage/vwc-top-app-bar';
 import { html } from 'lit-element';
 
@@ -12,8 +12,8 @@ export const basic = () => html`
   <main>
     <vwc-top-app-bar dense style="position: absolute; left: 0; top: 0;">
       <div slot="title">Example page</div>
-      <span slot="actionItems">Toggle scheme:</span>
-      <vwc-scheme-switch slot="actionItems"></vwc-scheme-switch>
+      <span slot="actionItems">Toggle theme:</span>
+      <vwc-theme-switch slot="actionItems"></vwc-theme-switch>
       <div><!-- content --></div>
     </vwc-top-app-bar>
 
