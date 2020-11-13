@@ -1,0 +1,44 @@
+<%
+    // for backward compatibility we need to have the user explicitly hide it
+    const showFileHeader = (this.options && this.options.hasOwnProperty('showFileHeader')) ? this.options.showFileHeader : true;
+    if(showFileHeader) {
+        let header = '';
+        header += "/*\n  Do not edit directly";
+        header += "\n  Generated on " + new Date().toUTCString();
+        header += "\n*/\n";
+        print(header);
+				print('\n');
+    }
+
+		modifiedProperties = allProperties.reduce((acc, entry) => {
+			const {attributes:{category, type, item, subitem}} = entry;
+			if(!acc[type]) {acc[type] = {};}
+			acc[type][`${item}-${subitem}`] = {value: entry.value};
+			return acc;
+		}, {})
+
+    // output the list of tokens as a Sass nested map
+    // (the values are pointing to the variables)
+    //
+    print(`$${this.mapName||'tokens'}: ${processJsonNode(modifiedProperties)};\n`);
+
+    // recursive function to process a properties JSON node
+    //
+    function processJsonNode(obj, depth = 0) {
+        let output = '';
+        if (obj.hasOwnProperty('value')) {
+            // if we have found a leaf (a property with a value) append the value
+            output += `${obj.value}`;
+        } else {
+            // if we have found a group of properties, use the Sass group "(...)" syntax and loop -recursively- on the children
+            output += '(\n'
+            output += Object.keys(obj).map(function(newKey) {
+            var newProp = obj[newKey];
+            var indent = '  '.repeat(depth + 1);
+            return `${indent}'${newKey}': ${processJsonNode(newProp, depth + 1)}`;
+            }).join(',\n');
+            output += '\n' + '  '.repeat(depth) + ')';
+        }
+        return output;
+    }
+%>

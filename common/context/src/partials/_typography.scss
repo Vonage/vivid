@@ -22,7 +22,7 @@
   }
 
   h3 {
-    @include typography.typography-cat-shorthand('subheading-2');
+		@include typography.typography-cat-shorthand('subtitle-2');
   }
 
   h6 {

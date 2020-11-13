@@ -68,9 +68,9 @@ TODO:
   @include chips.shape-radius(map-get(variables.$shape-radius, default));
   @include chips.trailing-icon-margin(variables.$trailing-icon-margin-left);
   @include chips.trailing-icon-size(variables.$trailing-icon-size);
-	@include typography.typography-cat-variables('body-2-bold');
-	@include typography.typography-cat-properties();
-  cursor: auto;
+	@include typography.typography-cat-shorthand('body-2-bold');
+
+	cursor: auto;
   color: var(--vvd-color-base-foreground);
   font-size: map-get(variables.$font-size, default);
 
