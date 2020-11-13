@@ -6,7 +6,6 @@ import {
 	isolatedElementsCreation,
 	getTypographyStyle,
 } from '../../../test/test-helpers.js';
-import { captionBoldTypographyStyles } from '../../../test/style-utils.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
