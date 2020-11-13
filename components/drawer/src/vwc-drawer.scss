@@ -1,4 +1,4 @@
-@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/_scheme-variables' as scheme-variables;
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @forward './vwc-drawer-coupling';
 
 .mdc-drawer {
