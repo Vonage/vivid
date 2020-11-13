@@ -103,7 +103,7 @@ export async function validateMultipleShadowLayers(COMPONENT_NAME, elementTag) {
       <button></button>
     </form>`;
 	const elementTemplate = `
-    <${COMPONENT_NAME} required value="${fieldValue}" 
+    <${COMPONENT_NAME} required value="${fieldValue}"
       name="${fieldName}">
     </${COMPONENT_NAME}>`;
 	const [formElement] = addElement(textToDomToParent(formTemplate));

@@ -5,6 +5,7 @@ import {
 	assertComputedStyle,
 	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
+import { captionBoldTypographyStyles } from '../../../test/style-utils.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
@@ -67,17 +68,7 @@ describe('badge', () => {
 			);
 			await waitNextTask();
 			expect(badge).to.exist;
-			// @YonatanKra can we fetch this following object from json? It can be rendered for both scss and json usage from same source. would be a better practice for consistency
-			const expectedStyles = {
-				fontFamily: 'SpeziaWebVariable',
-				fontSize: '12.642px',
-				fontWeight: '400',
-				fontStretch: '50%',
-				// lineHeight: 'calc(1ex / 0.32);', // TODO: [VIV-166] line-height value contains runtime calculated value and depend on x-height of font (which may vary with the existence of font-size-adjust property). an alternative to existing test should be defined.
-				letterSpacing: 'normal',
-				textTransform: 'none',
-			};
-			assertComputedStyle(badge, expectedStyles);
+			assertComputedStyle(badge, captionBoldTypographyStyles);
 		});
 	});
 });

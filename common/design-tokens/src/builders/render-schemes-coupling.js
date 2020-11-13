@@ -18,8 +18,8 @@ StyleDictionaryPackage.registerFormat({
 function getStyleDictionaryConfig() {
 	return {
 		source: [
-			`${propertiesPath}/globals/**/*.json`,
-			`${propertiesPath}/scheme/light/base.json`,
+			`${propertiesPath}/globals/color/**/*.json`,
+			`${propertiesPath}/schemes/light/base.json`,
 		],
 		platforms: {
 			web: {
@@ -46,10 +46,10 @@ function getStyleDictionaryConfig() {
 // PROCESS THE DESIGN TOKENS FOR THE DIFFERENT SCHEMES AND PLATFORMS
 // TODO: [VIV-41] add accessible colors scheme
 export const render = () => {
-		console.log('\n==============================================');
-		console.log(`\nProcessing scheme variables coupling`);
+	console.log('\n==============================================');
+	console.log(`\nProcessing scheme variables coupling`);
 
-		StyleDictionaryPackage.extend(getStyleDictionaryConfig()).buildPlatform('web');
+	StyleDictionaryPackage.extend(getStyleDictionaryConfig()).buildPlatform('web');
 
-		console.log('\nEnd processing');
+	console.log('\nEnd processing');
 };

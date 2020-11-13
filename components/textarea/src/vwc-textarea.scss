@@ -31,7 +31,6 @@
 		}
 
 		.mdc-text-field__input {
-			font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
 			height: auto;
 			line-height: normal;
 			margin: 0;
@@ -39,12 +38,11 @@
 		}
 
 		.mdc-floating-label {
-			font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
-			top: 15px;
+			top: 12px;
 
 			&--float-above {
 				font-size: var(--mdc-typography-subtitle1-font-size);
-				transform: translateY(-9px) scale(1);
+				transform: translateY(-7px) scale(1);
 			}
 		}
 	}

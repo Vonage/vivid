@@ -22,7 +22,7 @@ $vvd-select-size-block: --vvd-select-size-block;
 	--mdc-select-error-color: var(#{color-semantic.$formfield-label-error-ink});
 	--mdc-select-error-fill-color: var(#{color-semantic.$formfield-error-fill});
   --mdc-select-error-dropdown-icon-color: var(--mdc-select-error-color);
-  
+
   --mdc-shape-small: var(--border-radius);
 
 	display: inline-flex;
@@ -71,8 +71,8 @@ $vvd-select-size-block: --vvd-select-size-block;
 
   .mdc-select {
     .mdc-floating-label {
-      left: -12px;
       top: -24px;
+      left: -12px;
       transform: none;
     }
 
@@ -106,7 +106,7 @@ $vvd-select-size-block: --vvd-select-size-block;
 
       .mdc-floating-label {
         left: 2px;
-        line-height: 18px;
+				line-height: var(--mdc-typography-subtitle1-line-height);
         padding-right: 8px;
         transition: transform 0.15s, font-size 0.15s;
       }
