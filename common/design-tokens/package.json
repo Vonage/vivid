@@ -4,8 +4,6 @@
 	"description": "Vivid Design Tokens Builder",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/common/design-tokens#readme",
 	"license": "ISC",
-	"main": "vvd-design-tokens.js",
-	"module": "vvd-design-tokens.js",
 	"type": "module",
 	"files": [
 		"*.js",
@@ -26,7 +24,7 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"devDependencies": {
-		"@vonage/vvd-design-tokens-properties": "^0.2.4",
+		"@vonage/vvd-design-tokens-properties": "^0.4.8",
 		"lodash": "^4.17.20",
 		"ramda": "^0.27.1",
 		"style-dictionary": "^2.10.2"

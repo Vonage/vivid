@@ -17,6 +17,6 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"devDependencies": {
-		"modularscale-sass": "^3.0.10"
+		"@vonage/vvd-design-tokens": "^0.15.1"
 	}
 }
