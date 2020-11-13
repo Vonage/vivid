@@ -5,7 +5,7 @@
 	@include typography.typography-cat-shorthand('body-1');
 
 	--mdc-list-item-meta-size: 16px;
-	--mdc-ripple-color: var(#{scheme-variables.$vvd-color-primary-background});
+	--mdc-ripple-color: var(#{scheme-variables.$vvd-color-base-foreground});
 	--mdc-theme-text-hint-on-background: var(#{scheme-variables.$vvd-color-base-tinted});
 	--mdc-theme-text-secondary-on-background: var(#{scheme-variables.$vvd-color-base-tinted});
 }
