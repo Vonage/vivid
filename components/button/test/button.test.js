@@ -361,69 +361,6 @@ describe('button', () => {
 		});
 	});
 
-	describe('typography', function () {
-		it(`should have set button (text, rounded) typography correct`, async function () {
-			const actualElements = addElement(
-				textToDomToParent(`<${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}>`)
-			);
-			await waitNextTask();
-			const button = actualElements[0].shadowRoot.querySelector('#button');
-			expect(button).to.exist;
-			const expectedStyles = {
-				fontFamily: 'SpeziaWebVariable',
-				fontSize: '14.2222px',
-				fontWeight: '600',
-				fontStretch: '50%',
-				lineHeight: 'normal',
-				letterSpacing: 'normal',
-				textTransform: 'none',
-			};
-			assertComputedStyle(button, expectedStyles);
-		});
-
-		it(`should have set button (outlined, pill) typography correct`, async function () {
-			const actualElements = addElement(
-				textToDomToParent(
-					`<${COMPONENT_NAME} layout="outlined" shape="pill">Button Text</${COMPONENT_NAME}>`
-				)
-			);
-			await waitNextTask();
-			const button = actualElements[0].shadowRoot.querySelector('#button');
-			expect(button).to.exist;
-			const expectedStyles = {
-				fontFamily: 'SpeziaWebVariable',
-				fontSize: '14.2222px',
-				fontWeight: '600',
-				fontStretch: '50%',
-				lineHeight: 'normal',
-				letterSpacing: 'normal',
-				textTransform: 'none',
-			};
-			assertComputedStyle(button, expectedStyles);
-		});
-
-		it(`should have set button (filled, disabled, pill) typography correct`, async function () {
-			const actualElements = addElement(
-				textToDomToParent(
-					`<${COMPONENT_NAME} layout="filled" disabled shape="pill">Button Text</${COMPONENT_NAME}>`
-				)
-			);
-			await waitNextTask();
-			const button = actualElements[0].shadowRoot.querySelector('#button');
-			expect(button).to.exist;
-			const expectedStyles = {
-				fontFamily: 'SpeziaWebVariable',
-				fontSize: '14.2222px',
-				fontWeight: '600',
-				fontStretch: '50%',
-				lineHeight: 'normal',
-				letterSpacing: 'normal',
-				textTransform: 'none',
-			};
-			assertComputedStyle(button, expectedStyles);
-		});
-	});
-
 	describe('sizing', () => {
 		it('should have normal size by default', async () => {
 			const addedElements = addElement(

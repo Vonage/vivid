@@ -8,13 +8,12 @@
 );
 
 :host {
-	// --vvd-badge-border-radius:
 	display: inline;
 	padding: 4px 8px;
-	// border-radius: 4px;
 	position: relative;
 	color: var(#{color-semantic.$color-connotation-foreground});
-	@include typography.typography-cat-shorthand('caption');
+	@include typography.typography-cat-shorthand('caption-bold');
+
 	&::before {
 		content: '';
 		z-index: -1;

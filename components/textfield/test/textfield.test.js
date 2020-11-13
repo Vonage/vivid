@@ -55,14 +55,13 @@ describe('textfield', () => {
 				: '';
 			return textToDomToParent(
 				`<form onsubmit="return false" name="testForm" id="testForm">
-									<${COMPONENT_NAME} name="${fieldName}"
-																		 value="${fieldValue}"
-																		 ${formId ? `form="${formId}"` : ''}>
-
-									</${COMPONENT_NAME}>
-									<button></button>
-								</form>
-								${otherForm}`
+					<${COMPONENT_NAME} name="${fieldName}"
+						value="${fieldValue}"
+						${formId ? `form="${formId}"` : ''}>
+					</${COMPONENT_NAME}>
+					<button></button>
+				</form>
+				${otherForm}`
 			);
 		}
 
