@@ -1,3 +1,17 @@
+## [0.15.2](https://github.com/vonage/vivid/compare/v0.15.1...v0.15.2) (2020-11-15)
+
+
+### Bug Fixes
+
+* iss-431/viv-267 fix fonts init ([#437](https://github.com/vonage/vivid/issues/437)) ([0953b93](https://github.com/vonage/vivid/commit/0953b937a91eb9ba80d5315f32807780c052d072)), closes [#431](https://github.com/vonage/vivid/issues/431) [#431](https://github.com/vonage/vivid/issues/431) [#431](https://github.com/vonage/vivid/issues/431) [#430](https://github.com/vonage/vivid/issues/430) [#431](https://github.com/vonage/vivid/issues/431) [#431](https://github.com/vonage/vivid/issues/431) [#431](https://github.com/vonage/vivid/issues/431) [#431](https://github.com/vonage/vivid/issues/431)
+
+
+### Features
+
+* iss-430/viv-261 typography dt automation ([#441](https://github.com/vonage/vivid/issues/441)) ([b056588](https://github.com/vonage/vivid/commit/b05658855b9c8ef0a4db1f82d025a9e81d23cb87)), closes [#430](https://github.com/vonage/vivid/issues/430) [#430](https://github.com/vonage/vivid/issues/430) [#430](https://github.com/vonage/vivid/issues/430) [#430](https://github.com/vonage/vivid/issues/430) [#430](https://github.com/vonage/vivid/issues/430) [#430](https://github.com/vonage/vivid/issues/430) [#430](https://github.com/vonage/vivid/issues/430) [#430](https://github.com/vonage/vivid/issues/430) [#430](https://github.com/vonage/vivid/issues/430) [#430](https://github.com/vonage/vivid/issues/430) [#430](https://github.com/vonage/vivid/issues/430) [#430](https://github.com/vonage/vivid/issues/430) [#430](https://github.com/vonage/vivid/issues/430) [#430](https://github.com/vonage/vivid/issues/430) [#430](https://github.com/vonage/vivid/issues/430) [#430](https://github.com/vonage/vivid/issues/430)
+
+
+
 ## [0.15.1](https://github.com/vonage/vivid/compare/v0.15.0...v0.15.1) (2020-11-09)
 
 

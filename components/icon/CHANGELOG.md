@@ -1,3 +1,13 @@
+## [0.15.2](https://github.com/vonage/vivid/compare/v0.15.1...v0.15.2) (2020-11-15)
+
+
+### Features
+
+* **icon:** add loading placeholder [viv-241] ([a463201](https://github.com/vonage/vivid/commit/a46320159dc6a583df20862bc24bddfc457e36b3))
+* **stories:** added two stories for reset ([5e1cf27](https://github.com/vonage/vivid/commit/5e1cf27ca0f9be00ecbadf7f15628733d76e2771))
+
+
+
 ## [0.15.1](https://github.com/vonage/vivid/compare/v0.15.0...v0.15.1) (2020-11-09)
 
 
