@@ -1,7 +1,11 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/_scheme-variables' as scheme-variables;
 
 :host {
 	@include typography.typography-cat-shorthand('body-1');
 
 	--mdc-list-item-meta-size: 16px;
+	--mdc-ripple-color: var(#{scheme-variables.$vvd-color-base-foreground});
+	--mdc-theme-text-hint-on-background: var(#{scheme-variables.$vvd-color-base-tinted});
+	--mdc-theme-text-secondary-on-background: var(#{scheme-variables.$vvd-color-base-tinted});
 }
