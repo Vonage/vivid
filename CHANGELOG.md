@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.2](https://github.com/Vonage/vivid/compare/v0.15.1...v0.15.2) (2020-11-15)
+
+
+### Bug Fixes
+
+* annotate vwc-slider.ts events using JSDoc ([#446](https://github.com/Vonage/vivid/issues/446)) ([5a1fa27](https://github.com/Vonage/vivid/commit/5a1fa27f680b824df99ea62d7f7aa76a4e04a8ab))
+* iss-431/viv-267 fix fonts init ([#437](https://github.com/Vonage/vivid/issues/437)) ([0953b93](https://github.com/Vonage/vivid/commit/0953b937a91eb9ba80d5315f32807780c052d072)), closes [#431](https://github.com/Vonage/vivid/issues/431) [#431](https://github.com/Vonage/vivid/issues/431) [#431](https://github.com/Vonage/vivid/issues/431) [#430](https://github.com/Vonage/vivid/issues/430) [#431](https://github.com/Vonage/vivid/issues/431) [#431](https://github.com/Vonage/vivid/issues/431) [#431](https://github.com/Vonage/vivid/issues/431) [#431](https://github.com/Vonage/vivid/issues/431)
+
+
+### Features
+
+* iss-430/viv-261 typography dt automation ([#441](https://github.com/Vonage/vivid/issues/441)) ([b056588](https://github.com/Vonage/vivid/commit/b05658855b9c8ef0a4db1f82d025a9e81d23cb87)), closes [#430](https://github.com/Vonage/vivid/issues/430) [#430](https://github.com/Vonage/vivid/issues/430) [#430](https://github.com/Vonage/vivid/issues/430) [#430](https://github.com/Vonage/vivid/issues/430) [#430](https://github.com/Vonage/vivid/issues/430) [#430](https://github.com/Vonage/vivid/issues/430) [#430](https://github.com/Vonage/vivid/issues/430) [#430](https://github.com/Vonage/vivid/issues/430) [#430](https://github.com/Vonage/vivid/issues/430) [#430](https://github.com/Vonage/vivid/issues/430) [#430](https://github.com/Vonage/vivid/issues/430) [#430](https://github.com/Vonage/vivid/issues/430) [#430](https://github.com/Vonage/vivid/issues/430) [#430](https://github.com/Vonage/vivid/issues/430) [#430](https://github.com/Vonage/vivid/issues/430) [#430](https://github.com/Vonage/vivid/issues/430)
+* **icon:** add loading placeholder [viv-241] ([a463201](https://github.com/Vonage/vivid/commit/a46320159dc6a583df20862bc24bddfc457e36b3))
+* **stories:** added two stories for reset ([5e1cf27](https://github.com/Vonage/vivid/commit/5e1cf27ca0f9be00ecbadf7f15628733d76e2771))
+
+
+
+
+
 ## [0.15.1](https://github.com/Vonage/vivid/compare/v0.15.0...v0.15.1) (2020-11-09)
 
 
