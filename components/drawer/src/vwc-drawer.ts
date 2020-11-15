@@ -11,7 +11,9 @@ declare global {
 	}
 }
 
-const THEME_ALTERNATE = 'themeAlternate';
+export const THEME_ALTERNATE = 'theme-alternate';
+export const VVD_THEME_ALTERNATE = 'vvd-theme-alternate';
+
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 MWCDrawer.styles = [styleCoupling, mwcDrawerStyle, vwcDrawerStyle];
@@ -21,18 +23,25 @@ MWCDrawer.styles = [styleCoupling, mwcDrawerStyle, vwcDrawerStyle];
  */
 @customElement('vwc-drawer')
 export class VWCDrawer extends MWCDrawer {
-	@property({ type: Boolean, reflect: true, attribute: 'theme-alternate' })
-	[THEME_ALTERNATE] = false;
+	@property({ type: Boolean, reflect: true, attribute: THEME_ALTERNATE })
+	isThemeAlternate = false;
+
+	get drawerEl(): Element | null | undefined {
+		return this.shadowRoot?.querySelector('.mdc-drawer');
+	}
 
 	protected updated(changes: Map<string, boolean>): void {
 		super.updated(changes);
-		if (changes.has(THEME_ALTERNATE)) {
-			const drawerEl = this.shadowRoot?.querySelector('.mdc-drawer');
-			if (this[THEME_ALTERNATE]) {
-				drawerEl?.setAttribute('part', 'vvd-theme-alternate');
-			} else {
-				drawerEl?.removeAttribute('part');
-			}
+		if (changes.has('isThemeAlternate')) {
+			this.togglePart(this.isThemeAlternate);
+		}
+	}
+
+	private togglePart(isAlternate: boolean) {
+		if (isAlternate) {
+			this.drawerEl?.setAttribute('part', VVD_THEME_ALTERNATE);
+		} else {
+			this.drawerEl?.removeAttribute('part');
 		}
 	}
 }

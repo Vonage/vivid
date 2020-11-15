@@ -5,6 +5,7 @@ import {
 } from '../../../test/test-helpers.js';
 const VWC_DRAWER = 'vwc-drawer';
 const DRAWER_SETUP_HTML_TAG = 'drawerSetupTest';
+import { VVD_THEME_ALTERNATE, THEME_ALTERNATE } from '../vwc-drawer';
 
 describe('vwc-drawer', () => {
 	/* eslint-disable no-undef */
@@ -51,8 +52,8 @@ describe('vwc-drawer', () => {
 		});
 	});
 
-	describe('colors', () => {
-		it('drawer aside should define surface variables by default', async () => {
+	describe('colors context API', () => {
+		it('should define drawer aside surface variables by default', async () => {
 			await getFrameLoadedInjected(DRAWER_SETUP_HTML_TAG, async (iframe) => {
 				const iframeWindow = iframe.contentWindow;
 				await drawerDefined(iframeWindow);
@@ -78,6 +79,41 @@ describe('vwc-drawer', () => {
 					shadowDrawer
 				).getPropertyValue('--vvd-color-surface-foreground');
 				expect(surfaceForegroundBody).to.equal(surfaceForegroundDrawer);
+			});
+		});
+
+		it(`should set 'isThemeAlternate' property member as true on '${THEME_ALTERNATE}' attribute value set to true`, async () => {
+			await getFrameLoadedInjected(DRAWER_SETUP_HTML_TAG, async (iframe) => {
+				const iframeWindow = iframe.contentWindow;
+				await drawerDefined(iframeWindow);
+
+				const drawerEl = iframeWindow.document.querySelector(VWC_DRAWER);
+
+				drawerEl.setAttribute(THEME_ALTERNATE, true);
+				await waitNextTask();
+
+				const { isThemeAlternate } = drawerEl;
+				await waitNextTask();
+
+				expect(isThemeAlternate).to.equal(true);
+			});
+		});
+
+		it(`should set <aside> '::part' attribute value as '${VVD_THEME_ALTERNATE}' on isThemeAlternate property set to true`, async () => {
+			await getFrameLoadedInjected(DRAWER_SETUP_HTML_TAG, async (iframe) => {
+				const iframeWindow = iframe.contentWindow;
+				await drawerDefined(iframeWindow);
+
+				const drawerEl = iframeWindow.document.querySelector(VWC_DRAWER);
+
+				drawerEl.isThemeAlternate = true;
+
+				const shadowDrawer = drawerEl.shadowRoot.querySelector('.mdc-drawer');
+				await waitNextTask();
+
+				const partValue = shadowDrawer.getAttribute('part');
+
+				expect(partValue).to.equal(VVD_THEME_ALTERNATE);
 			});
 		});
 	});
