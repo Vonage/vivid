@@ -5,7 +5,7 @@ import '@vonage/vwc-top-app-bar';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Composite/Context',
+	title: 'Composite/Theme Switch',
 };
 
 export const basic = () => html`

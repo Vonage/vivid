@@ -62,6 +62,7 @@
 		{ "path": "components/switch" },
 		{ "path": "components/textarea" },
 		{ "path": "components/textfield" },
+		{ "path": "components/theme-switch" },
 		{ "path": "components/top-app-bar" },
 		{ "path": "components/top-app-bar-fixed" }
 	]
