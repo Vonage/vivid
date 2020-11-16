@@ -34,6 +34,7 @@
 		"tslib": "^2.0.3"
 	},
 	"devDependencies": {
-		"@vonage/vvd-typography": "^0.15.2"
+		"@vonage/vvd-typography": "^0.15.2",
+		"@vonage/vwc-menu": "^0.15.2"
 	}
 }

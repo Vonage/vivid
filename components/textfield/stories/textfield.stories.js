@@ -1,5 +1,7 @@
 import '@vonage/vwc-textfield/vwc-textfield.js';
 import '@vonage/vwc-icon';
+import '@vonage/vwc-menu';
+import '@vonage/vwc-list/vwc-list-item';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
@@ -38,6 +40,22 @@ Icon.args = {
 export const Autofocus = Template.bind({});
 Autofocus.args = { outlined: '', label: 'e.g. username', autofocus: true };
 
+const TemplateDataList = (args) =>
+	html`
+	<div style="position: relative;">
+		${Template(args)}
+		<mwc-menu id="browsers" corner="BOTTOM_END">
+			<mwc-list-item selected activated>Item 0</mwc-list-item>
+			<mwc-list-item selected activated>Item 1</mwc-list-item>
+			<mwc-list-item>Item 2</mwc-list-item>
+			<mwc-list-item>Item 3</mwc-list-item>
+		</mwc-menu>
+	</div>
+`;
+
+export const WithDataList = TemplateDataList.bind({});
+WithDataList.args = { outlined: '', label: 'e.g. safari', list: 'browsers' };
+
 function handleKeyDown(e) {
 	e.stopPropagation();
 }
@@ -49,3 +67,4 @@ function onChange() {
 function onInput() {
 	console.log('input');
 }
+
