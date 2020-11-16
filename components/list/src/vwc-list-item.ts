@@ -19,13 +19,16 @@ MWCListItem.styles = [styleCoupling, mwcListItemStyle, vwcListItemStyle];
  */
 @customElement('vwc-list-item')
 export class VWCListItem extends MWCListItem {
-	disconnectedCallback() {
+	disconnectedCallback(): void {
 		for (const listener of this.listeners) {
 			for (const eventName of listener.eventNames) {
 				listener.target.removeEventListener(eventName, listener.cb);
 			}
 		}
-		if (this._managingList && (this._managingList as unknown as HTMLElement).isConnected) {
+		if (
+			this._managingList &&
+			((this._managingList as unknown) as HTMLElement).isConnected
+		) {
 			this._managingList.layout(true);
 		}
 	}
