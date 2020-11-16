@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.3](https://github.com/Vonage/vivid/compare/v0.15.2...v0.15.3) (2020-11-16)
+
+
+### Bug Fixes
+
+* **select:** quick performance patch for when removing big lists of select options ([b5d222d](https://github.com/Vonage/vivid/commit/b5d222de70d1a1d8b3503842c265171312e7fd81))
+
+
+
+
+
 ## [0.15.2](https://github.com/Vonage/vivid/compare/v0.15.1...v0.15.2) (2020-11-15)
 
 
