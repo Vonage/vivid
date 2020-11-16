@@ -44,9 +44,9 @@ const TemplateDataList = (args) =>
 	html`
 	<div style="position: relative;">
 		${Template(args)}
-		<mwc-menu id="browsers" corner="BOTTOM_END">
-			<mwc-list-item selected activated>Item 0</mwc-list-item>
-			<mwc-list-item selected activated>Item 1</mwc-list-item>
+		<mwc-menu id="browsers" menucorner="END" corner="BOTTOM_START">
+			<mwc-list-item>Item 0</mwc-list-item>
+			<mwc-list-item>Item 1</mwc-list-item>
 			<mwc-list-item>Item 2</mwc-list-item>
 			<mwc-list-item>Item 3</mwc-list-item>
 		</mwc-menu>

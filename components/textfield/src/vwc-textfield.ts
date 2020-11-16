@@ -19,9 +19,8 @@ import {
 } from '@vonage/vvd-foundation/form-association';
 import { Shape } from '@vonage/vvd-foundation/constants';
 import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
-import { VWCMenu } from 'components/menu/vwc-menu';
 export { TextFieldType } from '@material/mwc-textfield';
-export { VWCMenu } from '@vonage/vwc-menu';
+import { listHandler } from './vwc-textfield-list-handler';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -46,7 +45,6 @@ export class VWCTextField extends MWCTextField {
 
 	@property({ type: String, reflect: true })
 	list: string | undefined;
-	// eager lazy debounce
 
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
@@ -58,7 +56,7 @@ export class VWCTextField extends MWCTextField {
 		associateWithForm<VWCTextField>(this, this.formElement);
 		submitOnEnter((this as unknown) as HTMLInputElement);
 		handleAutofocus(this);
-		handleList.call(this);
+		listHandler.call(this);
 	}
 
 	updated(changedProperties: PropertyValues): void {
@@ -126,24 +124,5 @@ export class VWCTextField extends MWCTextField {
 				${charCounterTemplate}
 			</div>
 		`;
-	}
-}
-
-function handleList(this: VWCTextField): void {
-	if (this.list) {
-		const input = this.shadowRoot?.querySelector('input');
-		const menu = document.getElementById(this.list) as VWCMenu | undefined;
-		// console.log(menu instanceof VWCMenu);
-		console.log(VWCMenu);
-		(menu as VWCMenu).defaultFocus = 'NONE';
-		console.log(menu);
-		input?.addEventListener('focus', function () {
-			console.log(menu);
-			menu?.show();
-		});
-		input?.addEventListener('blur', function () {
-			console.log(menu);
-			menu?.close();
-		});
 	}
 }
