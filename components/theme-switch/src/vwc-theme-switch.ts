@@ -44,7 +44,7 @@ export class VWCThemeSwitch extends LitElement {
 
 	render(): TemplateResult {
 		return html` <vwc-switch
-			connotation="cta"
+			connotation="primary"
 			?checked=${vvdScheme.getSelectedScheme() === switchScheme.checked}
 			@change=${(e: InputEvent) =>
 				this.handleChange(
