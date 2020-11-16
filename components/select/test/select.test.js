@@ -22,6 +22,7 @@ import {
 } from '../../textfield/test/textfield-utils.test';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
+
 chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-select';
@@ -357,6 +358,29 @@ describe('select', () => {
 			formElement.shape = 'pill';
 			await waitNextTask();
 			assertComputedStyle(actualElement, shapeStyles('pill'));
+		});
+	});
+
+	describe(`performance acceptability`, function () {
+		function createElement(index) {
+			return `<vwc-list-item value=${index}>Item ${index}</vwc-list-item>`;
+		}
+
+		const selectItems = new Array(300)
+			.fill(0)
+			.map((_, index) => index)
+			.reduce((last, next) => (last += createElement(next)), '');
+
+		it(`should not take more than 50ms to remove the list from the DOM`, async function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}>${selectItems}</${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			const startTime = performance.now();
+			actualElement.remove();
+			const endTime = performance.now();
+
+			expect(endTime - startTime).to.be.lessThan(50);
 		});
 	});
 });
