@@ -2,7 +2,9 @@
   <img src="./assets/images/vivid-hero.png"></img>
 </p>
 
-# Vivid UI components ![develop build](https://github.com/Vonage/vivid/workflows/develop%20build/badge.svg?branch=develop)
+![Quality](https://github.com/Vonage/vivid/workflows/Compile%20&%20Test/badge.svg)
+
+# Vivid UI components
 
 Vivid provides a Design System comprised of ready-to-use web components and services, aligned with the Vonage's design guidelines, providing well-thought APIs and striving to stick to the best practices in every possible aspect.
 
@@ -53,44 +55,45 @@ The overall roadmap may be split into the the following:
 
 | Component | Package | Status | Issues |
 |--|--|--|--|
-| `vvd-fonts` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235315) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+font+fonts) |
-| `vvd-scheme` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235300) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+scheme+schema+theme) |
+| `vvd-fonts` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.15.2&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235315) | GA | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+font+fonts) |
+| `vvd-scheme` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.15.2&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235300) | GA | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+scheme+schema+theme) |
 
 
 ##### Generic/Atomic components
 
 | Component | Package | Status | Issues |
 |--|--|--|--|
-| `<vwc-anchor>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/166581) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+anchor) |
-| `<vwc-banner>` | - | planned | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+banner) |
-| `<vwc-button>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/165931) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+button) |
+| `<vwc-button>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.15.2&color=green&logo=github)](https://github.com/Vonage/vivid/packages/165931) | GA | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+button) |
 | `<vwc-callout>` | - | planned | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+callout) |
-| `<vwc-checkbox>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235311) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+checkbox) |
+| `<vwc-checkbox>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.15.2&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235311) | GA | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+checkbox) |
 | `<vwc-chip>` | - | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+chip+chips) |
-| `<vwc-drawer>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235307) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+drawer) |
+| `<vwc-drawer>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.15.2&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235307) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+drawer) |
 | `<vwc-dropdown>` | - | planned | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+dropdown) |
 | `<vwc-fab>` | - | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+fab) |
-| `<vwc-formfield>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235309) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+formfield) |
-| `<vwc-icon>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235306) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+icon) |
-| `<vwc-linear-progress>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.12-alpha.0&color=green&logo=github)](https://github.com/Vonage/vivid/packages/267584) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+linear+progress) |
-| `<vwc-list>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235303) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+list) |
-| `<vwc-menu>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235299) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+menu) |
+| `<vwc-formfield>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.15.2&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235309) | GA | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+formfield) |
+| `<vwc-icon>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.15.2&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235306) | GA | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+icon) |
+| `<vwc-linear-progress>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.12-alpha.0&color=green&logo=github)](https://github.com/Vonage/vivid/packages/267584) | GA | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+linear+progress) |
+| `<vwc-list>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.15.2&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235303) | GA | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+list) |
+| `<vwc-menu>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.15.2&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235299) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+menu) |
 | `<vwc-modal>` | - | planned | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+modal) |
-| `<vwc-radio>` | - | planned | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+radio) |
-| `<vwc-scheme-select>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235304) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+scheme+schema+theme+select) |
-| `<vwc-select>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235301) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+select) |
-| `<vwc-slider>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/251037) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+slider) |
-| `<vwc-switch>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235302) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+switch) |
+| `<vwc-radio>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.15.2&color=green&logo=github)](https://github.com/Vonage/vivid/packages/282592) | GA | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+radio) |
+| `<vwc-scheme-select>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.15.2&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235304) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+scheme+schema+theme+select) |
+| `<vwc-select>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.15.2&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235301) | GA | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+select) |
+| `<vwc-slider>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.15.2&color=green&logo=github)](https://github.com/Vonage/vivid/packages/251037) | GA | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+slider) |
+| `<vwc-switch>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.15.2&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235302) | GA | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+switch) |
 | `<vwc-table>` | - | planned | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+table) |
-| `<vwc-textfield>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/166369) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+textfield) |
-| `<vwc-textarea>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.0.7&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235308) | in progress | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+textarea) |
+| `<vwc-textfield>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.15.2&color=green&logo=github)](https://github.com/Vonage/vivid/packages/166369) | GA | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+textfield) |
+| `<vwc-textarea>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.15.2&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235308) | GA | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+textarea) |
 
 
 ##### High level Vonage specific components
 
 | Component | Package | Status | Issues |
 |--|--|--|--|
+| `<vwc-carousel>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.15.2&color=green&logo=github)](https://github.com/Vonage/vivid/packages/299747) | GA | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+carousel) |
 | `<vwc-dialer>` | - | planned | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+dialer) |
+| `<vwc-file-picker>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.15.2&color=green&logo=github)](https://github.com/Vonage/vivid/packages/235308) | GA | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+file+picker+filepicker) |
+| `<vwc-media-controller>` | [![GPR](https://img.shields.io/static/v1?label=GPR&message=0.15.2&color=green&logo=github)](https://github.com/Vonage/vivid/packages/381994) | GA | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+media+controller) |
 | `<vwc-video>` | - | planned | [*Issues*](https://github.com/Vonage/vivid/issues?q=is%3Aissue+is%3Aopen+video+player+videoplayer) |
 
 ---

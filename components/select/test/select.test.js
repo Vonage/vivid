@@ -8,13 +8,9 @@ import {
 	listenToSubmission,
 	changeValueAndNotify,
 	isolatedElementsCreation,
+	getTypographyStyle,
 } from '../../../test/test-helpers.js';
-import {
-	body1TypographyStyles,
-	body2TypographyStyles,
-	captionTypographyStyles,
-	shapeStyles,
-} from '../../../test/style-utils.js';
+import { shapeStyles } from '../../../test/style-utils.js';
 import {
 	assertDenseStyles,
 	hasNotchedOutline,
@@ -22,6 +18,7 @@ import {
 } from '../../textfield/test/textfield-utils.test';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
+
 chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-select';
@@ -61,14 +58,14 @@ describe('select', () => {
 				: '';
 			return textToDomToParent(
 				`<form onsubmit="return false" name="testForm" id="testForm">
-									<${COMPONENT_NAME} name="${fieldName}" value="${values[1]}"
-																		 ${formId ? `form="${formId}"` : ''}>
-										<vwc-list-item value="${values[0]}">Item 1</vwc-list-item>
-										<vwc-list-item value="${values[1]}">Item 2</vwc-list-item>
-									</${COMPONENT_NAME}>
-									<button></button>
-								</form>
-								${otherForm}`
+					<${COMPONENT_NAME} name="${fieldName}" value="${values[1]}"
+							${formId ? `form="${formId}"` : ''}>
+						<vwc-list-item value="${values[0]}">Item 1</vwc-list-item>
+						<vwc-list-item value="${values[1]}">Item 2</vwc-list-item>
+					</${COMPONENT_NAME}>
+					<button></button>
+				</form>
+				${otherForm}`
 			);
 		}
 
@@ -275,20 +272,20 @@ describe('select', () => {
 		});
 
 		it('should have set typography for a label', async () => {
-			assertComputedStyle(labelElement, body1TypographyStyles);
+			assertComputedStyle(labelElement, await getTypographyStyle('body-1'));
 		});
 
 		it('should have set typography for a floating label', async () => {
 			formElement.select(1);
 			await waitInterval(200); // font transition
-			assertComputedStyle(labelElement, captionTypographyStyles);
+			assertComputedStyle(labelElement, await getTypographyStyle('caption'));
 		});
 
 		it('should have set typography for a selected text', async () => {
 			const selectedText = formElement.shadowRoot.querySelector(
 				'.mdc-select__selected-text'
 			);
-			assertComputedStyle(selectedText, body2TypographyStyles);
+			assertComputedStyle(selectedText, await getTypographyStyle('body-2'));
 		});
 
 		it('should have set typography for a helper', async () => {
@@ -297,7 +294,7 @@ describe('select', () => {
 			const helperElement = formElement.shadowRoot.querySelector(
 				'.mdc-select-helper-text'
 			);
-			assertComputedStyle(helperElement, captionTypographyStyles);
+			assertComputedStyle(helperElement, await getTypographyStyle('caption'));
 		});
 	});
 
@@ -357,6 +354,29 @@ describe('select', () => {
 			formElement.shape = 'pill';
 			await waitNextTask();
 			assertComputedStyle(actualElement, shapeStyles('pill'));
+		});
+	});
+
+	describe(`performance acceptability`, function () {
+		function createElement(index) {
+			return `<vwc-list-item value=${index}>Item ${index}</vwc-list-item>`;
+		}
+
+		const selectItems = new Array(300)
+			.fill(0)
+			.map((_, index) => index)
+			.reduce((last, next) => (last += createElement(next)), '');
+
+		it(`should not take more than 50ms to remove the list from the DOM`, async function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}>${selectItems}</${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			const startTime = performance.now();
+			actualElement.remove();
+			const endTime = performance.now();
+
+			expect(endTime - startTime).to.be.lessThan(50);
 		});
 	});
 });

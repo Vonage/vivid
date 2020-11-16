@@ -4,22 +4,18 @@ import {
 	textToDomToParent,
 	assertComputedStyle,
 	isolatedElementsCreation,
+	getTypographyStyle,
 } from '../../../test/test-helpers.js';
-import {
-	body1BoldTypographyStyles,
-	buttonDefaultTypographyStyles,
-	captionBoldTypographyStyles,
-} from '../../../test/style-utils.js';
 
 const COMPONENT_NAME = 'vwc-button';
-const SIZE_FLAVORS = {
-	default: buttonDefaultTypographyStyles,
-	dense: captionBoldTypographyStyles,
-	enlarged: body1BoldTypographyStyles,
-};
 
-describe('button typography', () => {
+describe('button typography', async () => {
 	let addElement = isolatedElementsCreation();
+	const SIZE_FLAVORS = {
+		default: await getTypographyStyle('button'),
+		dense: await getTypographyStyle('caption-bold'),
+		enlarged: await getTypographyStyle('body-1-bold'),
+	};
 
 	for (const flavor in SIZE_FLAVORS) {
 		const expectedTypography = SIZE_FLAVORS[flavor];

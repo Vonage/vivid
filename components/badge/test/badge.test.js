@@ -4,8 +4,8 @@ import {
 	textToDomToParent,
 	assertComputedStyle,
 	isolatedElementsCreation,
+	getTypographyStyle,
 } from '../../../test/test-helpers.js';
-import { captionBoldTypographyStyles } from '../../../test/style-utils.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
@@ -68,7 +68,7 @@ describe('badge', () => {
 			);
 			await waitNextTask();
 			expect(badge).to.exist;
-			assertComputedStyle(badge, captionBoldTypographyStyles);
+			assertComputedStyle(badge, await getTypographyStyle('caption-bold'));
 		});
 	});
 });
