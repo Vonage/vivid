@@ -1,7 +1,7 @@
 import {
 	getSchemeFiles,
 	getSchemeVariables,
-	PRINCIPAL_VARIABLES_FILTER,
+	PRINCIPAL_SCHEME_VARIABLES_FILTER,
 } from '../../../test/style-utils.js';
 
 const ALTERNATE = 'alternate',
@@ -121,7 +121,7 @@ function assertListsOfDistinct(setOfLists) {
 	for (const list of Object.values(setOfLists)) {
 		const numOfItems = list.length;
 		for (const item in list[0]) {
-			if (PRINCIPAL_VARIABLES_FILTER.test(item)) {
+			if (PRINCIPAL_SCHEME_VARIABLES_FILTER.test(item)) {
 				const checkSet = new Set(list.map((sf) => sf[item]));
 				expect(checkSet.size).equal(
 					numOfItems,
