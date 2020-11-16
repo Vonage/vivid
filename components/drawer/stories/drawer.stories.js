@@ -13,7 +13,6 @@ export default {
 }
 
 const Template = args => html`
-	<div style="height: 100vh">
 		<vwc-drawer id="drawer" @MDCDrawer:opened="${handleOpened}" @MDCDrawer:closed="${handleClosed}" ...=${spread(args)}>
 			<span slot="title">Drawer Title</span>
 			<span slot="subtitle">subtitle</span>
@@ -29,8 +28,7 @@ const Template = args => html`
 					<p>Main Content</p>
 				</div>
 			</div>
-		</vwc-drawer>
-	</div>`;
+		</vwc-drawer>`;
 
 export const Basic = Template.bind({});
 Basic.args = { hasHeader: '', type: 'dismissible' };

@@ -6,6 +6,6 @@
 	}
 
 	.mdc-drawer__subtitle {
-		@include typography.typography-mdc-coupling('body2', 'body-2-bold');
+		@include typography.typography-mdc-coupling('body2', 'body-2');
 	}
 }

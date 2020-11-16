@@ -11,6 +11,12 @@ export const argTypes = {
 			options: { 'true': '', 'false': undefined }
 		}
 	},
+	'theme-alternate': {
+		control: {
+			type: 'inline-radio',
+			options: { 'true': '', 'false': undefined }
+		}
+	},
 	type: {
 		control: {
 			type: 'select',
