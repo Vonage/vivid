@@ -6,7 +6,6 @@ import {
 	default as vvdScheme,
 	SchemeOption,
 } from '@vonage/vvd-scheme/vvd-scheme.js';
-import { SCHEME_SELECT_EVENT_TYPE } from '@vonage/vvd-scheme/scheme-change-listener.js';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -23,35 +22,20 @@ enum switchScheme {
 @customElement('vwc-theme-switch')
 export class VWCThemeSwitch extends LitElement {
 	static styles = style;
-	handleChange: (scheme: SchemeOption) => void;
 
-	constructor() {
-		super();
-		if (globalThis.BroadcastChannel) {
-			const bc = new BroadcastChannel(SCHEME_SELECT_EVENT_TYPE);
-			this.handleChange = (scheme) => bc.postMessage(scheme);
-		} else {
-			this.handleChange = (scheme: SchemeOption) =>
-				this.dispatchEvent(
-					new CustomEvent(SCHEME_SELECT_EVENT_TYPE, {
-						detail: { scheme },
-						bubbles: true, // needed for bubbling up the shadow DOM // ! throws in safari
-						composed: true, // needed for bubbling up the shadow DOM
-					})
-				);
-		}
+	private handleChange(e: InputEvent): void {
+		const scheme: SchemeOption = (e.target as HTMLInputElement).checked
+			? switchScheme.checked
+			: switchScheme.unchecked;
+
+		vvdScheme.set(scheme);
 	}
 
 	render(): TemplateResult {
 		return html` <vwc-switch
 			connotation="primary"
 			?checked=${vvdScheme.getSelectedScheme() === switchScheme.checked}
-			@change=${(e: InputEvent) =>
-				this.handleChange(
-					(e.target as HTMLInputElement).checked
-						? switchScheme.checked
-						: switchScheme.unchecked
-				)}
+			@change=${this.handleChange}
 		></vwc-switch>`;
 	}
 }
