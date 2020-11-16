@@ -8,7 +8,7 @@ import {
 import {
 	getBaseVarNames,
 	assertBaseVarsMatch,
-	PRINCIPAL_VARIABLES_FILTER,
+	PRINCIPAL_SCHEME_VARIABLES_FILTER,
 } from '../../../test/style-utils.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
@@ -36,7 +36,7 @@ describe('theme switch', () => {
 
 	describe('basic functionality', () => {
 		it('should have basic variables set', async () => {
-			assertBaseVarsMatch('light', PRINCIPAL_VARIABLES_FILTER);
+			assertBaseVarsMatch('light', PRINCIPAL_SCHEME_VARIABLES_FILTER);
 		});
 
 		it('should change color and background upon switch', async () => {
@@ -52,7 +52,7 @@ describe('theme switch', () => {
 			//	switch to dark
 			themeSelector.shadowRoot.querySelector('vwc-switch').click();
 			await waitInterval(50);
-			getBaseVarNames('dark', PRINCIPAL_VARIABLES_FILTER).forEach((key) => {
+			getBaseVarNames('dark', PRINCIPAL_SCHEME_VARIABLES_FILTER).forEach((key) => {
 				const varVal = getComputedStyle(document.body).getPropertyValue(key).trim();
 				testSet[key] = new Set([varVal]);
 			});
@@ -60,10 +60,14 @@ describe('theme switch', () => {
 			//	switch to light
 			themeSelector.shadowRoot.querySelector('vwc-switch').click();
 			await waitInterval(50);
-			getBaseVarNames('light', PRINCIPAL_VARIABLES_FILTER).forEach((key) => {
-				const varVal = getComputedStyle(document.body).getPropertyValue(key).trim();
-				testSet[key].add(varVal);
-			});
+			getBaseVarNames('light', PRINCIPAL_SCHEME_VARIABLES_FILTER).forEach(
+				(key) => {
+					const varVal = getComputedStyle(document.body)
+						.getPropertyValue(key)
+						.trim();
+					testSet[key].add(varVal);
+				}
+			);
 
 			expect(testSet).not.empty;
 			Object.values(testSet).forEach((varSet) => expect(varSet.size).equal(2));
