@@ -371,7 +371,7 @@ describe('select', () => {
 			.map((_, index) => index)
 			.reduce((last, next) => (last += createElement(next)), '');
 
-		it(`should not take more than 10ms to remove the list from the DOM`, async function () {
+		it(`should not take more than 50ms to remove the list from the DOM`, async function () {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}>${selectItems}</${COMPONENT_NAME}>`)
 			);
