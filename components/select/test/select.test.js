@@ -7,21 +7,22 @@ import {
 	assertComputedStyle,
 	listenToSubmission,
 	changeValueAndNotify,
-	isolatedElementsCreation,
+	isolatedElementsCreation
 } from '../../../test/test-helpers.js';
 import {
 	body1TypographyStyles,
 	body2TypographyStyles,
 	captionTypographyStyles,
-	shapeStyles,
+	shapeStyles
 } from '../../../test/style-utils.js';
 import {
 	assertDenseStyles,
 	hasNotchedOutline,
-	validateOnReset,
+	validateOnReset
 } from '../../textfield/test/textfield-utils.test';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
+
 chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-select';
@@ -54,7 +55,7 @@ describe('select', () => {
 		});
 	});
 
-	describe(`form association`, function () {
+	describe(`form association`, function() {
 		function createElementInForm(fieldName, values, formId, otherFormId) {
 			const otherForm = otherFormId
 				? `<form onsubmit="return false" id="${otherFormId}"><button></button></form>`
@@ -82,7 +83,7 @@ describe('select', () => {
 			formId = 'testForm';
 		});
 
-		it(`should attach to closest form`, async function () {
+		it(`should attach to closest form`, async function() {
 			const [formElement] = addElement(createElementInForm(fieldName, values));
 			await waitNextTask();
 
@@ -100,7 +101,7 @@ describe('select', () => {
 			).to.equal(1);
 		});
 
-		it(`should attach to form when given form id`, async function () {
+		it(`should attach to form when given form id`, async function() {
 			const externalFormID = 'externalForm';
 			const [formElement, externalForm] = addElement(
 				createElementInForm(fieldName, values, externalFormID, externalFormID)
@@ -122,7 +123,7 @@ describe('select', () => {
 			).to.equal(1);
 		});
 
-		it(`should do nothing if form value resolves to a non form element`, async function () {
+		it(`should do nothing if form value resolves to a non form element`, async function() {
 			const nonExistentFormId = 'noneExistentForm';
 			const [formElement] = addElement(
 				createElementInForm(fieldName, values, nonExistentFormId)
@@ -132,8 +133,8 @@ describe('select', () => {
 			expect(formElement.querySelector('input')).to.equal(null);
 		});
 
-		describe(`value binding`, function () {
-			it(`should reset the value of the custom element to default on form reset`, async function () {
+		describe(`value binding`, function() {
+			it(`should reset the value of the custom element to default on form reset`, async function() {
 				const [formElement] = addElement(createElementInForm(fieldName, values));
 				const actualElement = formElement.querySelector(COMPONENT_NAME);
 				await waitNextTask();
@@ -144,7 +145,7 @@ describe('select', () => {
 				expect(actualElement.value).to.equal(values[1]);
 			});
 
-			it(`should change the value of the mock input on internal input change`, async function () {
+			it(`should change the value of the mock input on internal input change`, async function() {
 				const [formElement] = addElement(createElementInForm(fieldName, values));
 				const actualElement = formElement.querySelector(COMPONENT_NAME);
 				await waitNextTask();
@@ -156,14 +157,14 @@ describe('select', () => {
 			});
 		});
 
-		describe(`validation`, function () {
+		describe(`validation`, function() {
 			const invalidValue = '';
 			const validValue1 = Math.random().toString();
 			const validValue2 = Math.random().toString();
 			const valuesValidation = [validValue1, validValue2];
 			let formElement, actualElement;
 
-			beforeEach(async function () {
+			beforeEach(async function() {
 				[formElement] = addElement(
 					createElementInForm(fieldName, valuesValidation)
 				);
@@ -171,7 +172,7 @@ describe('select', () => {
 				actualElement.setAttribute('required', 'true');
 				await waitNextTask();
 			});
-			it(`should get validity from the element's validationMessage`, async function () {
+			it(`should get validity from the element's validationMessage`, async function() {
 				await changeValueAndNotify(actualElement, invalidValue, 'change');
 
 				const invalidity = formElement.checkValidity();
@@ -182,11 +183,11 @@ describe('select', () => {
 				expect(formElement.checkValidity()).to.equal(true);
 			});
 
-			it(`should validate on reset`, async function () {
+			it(`should validate on reset`, async function() {
 				validateOnReset(actualElement, formElement, invalidValue);
 			});
 
-			it(`should not submit an invalid form`, async function () {
+			it(`should not submit an invalid form`, async function() {
 				let submitted = false;
 
 				await changeValueAndNotify(actualElement, invalidValue, 'change');
@@ -214,7 +215,7 @@ describe('select', () => {
 			});
 		});
 
-		it(`should work under multiple shadow layers`, async function () {
+		it(`should work under multiple shadow layers`, async function() {
 			const formTemplate = `
 				<form onsubmit="return false" name="testForm" id="testForm">
 					<vivid-tests-component></vivid-tests-component>
@@ -357,6 +358,29 @@ describe('select', () => {
 			formElement.shape = 'pill';
 			await waitNextTask();
 			assertComputedStyle(actualElement, shapeStyles('pill'));
+		});
+	});
+
+	describe(`performance acceptability`, function() {
+		function createElement(index) {
+			return `<vwc-list-item value=${index}>Item ${index}</vwc-list-item>`;
+		}
+
+		const selectItems = new Array(300)
+			.fill(0)
+			.map((_, index) => index)
+			.reduce((last, next) => (last += createElement(next)), '');
+
+		it(`should not take more than 10ms to remove the list from the DOM`, async function() {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}>${selectItems}</${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			const startTime = performance.now();
+			actualElement.remove();
+			const endTime = performance.now();
+
+			expect(endTime - startTime).to.be.lessThan(50);
 		});
 	});
 });

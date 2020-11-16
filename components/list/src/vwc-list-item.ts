@@ -18,4 +18,15 @@ MWCListItem.styles = [styleCoupling, mwcListItemStyle, vwcListItemStyle];
  * This component is an extension of [<mwc-list-item>](https://github.com/material-components/material-components-web-components/tree/master/packages/list)
  */
 @customElement('vwc-list-item')
-export class VWCListItem extends MWCListItem {}
+export class VWCListItem extends MWCListItem {
+	disconnectedCallback() {
+		for (const listener of this.listeners) {
+			for (const eventName of listener.eventNames) {
+				listener.target.removeEventListener(eventName, listener.cb);
+			}
+		}
+		if (this._managingList && (this._managingList as unknown as HTMLElement).isConnected) {
+			this._managingList.layout(true);
+		}
+	}
+}
