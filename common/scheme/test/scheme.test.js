@@ -6,7 +6,7 @@ import {
 import {
 	getBaseVarNames,
 	assertBaseVarsMatch,
-	PRINCIPAL_VARIABLES_FILTER,
+	PRINCIPAL_SCHEME_VARIABLES_FILTER,
 } from '../../../test/style-utils.js';
 
 import schemeService from '../vvd-scheme.js';
@@ -155,14 +155,14 @@ describe('vvd-scheme service', () => {
 			const r = randomAlpha();
 			const s = (await import(`../vvd-scheme.js?${r}`)).default;
 			await s.set(LIGHT);
-			assertBaseVarsMatch(LIGHT, PRINCIPAL_VARIABLES_FILTER);
+			assertBaseVarsMatch(LIGHT, PRINCIPAL_SCHEME_VARIABLES_FILTER);
 		});
 
 		it('should have dark variables set when dark scheme set', async () => {
 			const r = randomAlpha();
 			const s = (await import(`../vvd-scheme.js?${r}`)).default;
 			await s.set(DARK);
-			assertBaseVarsMatch(DARK, PRINCIPAL_VARIABLES_FILTER);
+			assertBaseVarsMatch(DARK, PRINCIPAL_SCHEME_VARIABLES_FILTER);
 
 			await s.set(LIGHT);
 		});
@@ -173,13 +173,13 @@ describe('vvd-scheme service', () => {
 			const s = (await import(`../vvd-scheme.js?${r}`)).default;
 
 			await s.set(DARK);
-			getBaseVarNames(DARK, PRINCIPAL_VARIABLES_FILTER).forEach((key) => {
+			getBaseVarNames(DARK, PRINCIPAL_SCHEME_VARIABLES_FILTER).forEach((key) => {
 				const varVal = getComputedStyle(document.body).getPropertyValue(key).trim();
 				testSet[key] = new Set([varVal]);
 			});
 
 			await s.set(LIGHT);
-			getBaseVarNames(LIGHT, PRINCIPAL_VARIABLES_FILTER).forEach((key) => {
+			getBaseVarNames(LIGHT, PRINCIPAL_SCHEME_VARIABLES_FILTER).forEach((key) => {
 				const varVal = getComputedStyle(document.body).getPropertyValue(key).trim();
 				testSet[key].add(varVal);
 			});
