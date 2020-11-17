@@ -5,7 +5,7 @@ import {
 } from '../../../test/test-helpers.js';
 import {
 	assertBaseVarsMatch,
-	PRINCIPAL_VARIABLES_FILTER,
+	PRINCIPAL_SCHEME_VARIABLES_FILTER,
 } from '../../../test/style-utils.js';
 
 const CONTEXT_ATTR = 'data-vvd-context';
@@ -98,7 +98,7 @@ describe('vvd-core service', () => {
 				assertInitResult(coreInitResult, LIGHT);
 				assertBaseVarsMatch(
 					LIGHT,
-					PRINCIPAL_VARIABLES_FILTER,
+					PRINCIPAL_SCHEME_VARIABLES_FILTER,
 					iframe.contentDocument.body
 				);
 			});
@@ -119,7 +119,7 @@ describe('vvd-core service', () => {
 				assertInitResult(coreInitResult, vvdContextTheme);
 				assertBaseVarsMatch(
 					vvdContextTheme,
-					PRINCIPAL_VARIABLES_FILTER,
+					PRINCIPAL_SCHEME_VARIABLES_FILTER,
 					iframe.contentDocument.body
 				);
 			});
@@ -160,7 +160,7 @@ describe('vvd-core service', () => {
 				assertInitResult(coreInitResult, vvdContextTheme);
 				assertBaseVarsMatch(
 					vvdContextTheme,
-					PRINCIPAL_VARIABLES_FILTER,
+					PRINCIPAL_SCHEME_VARIABLES_FILTER,
 					iframe.contentDocument.body
 				);
 			});

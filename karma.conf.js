@@ -7,10 +7,10 @@ module.exports = config => {
 	const extendedDefaultConfig = merge(defaultConfig, {
 		files: [
 			{ pattern: config.grep ? config.grep : '{common,components}/**/test/**/*.test.js', type: 'module' },
+			{ pattern: 'common/design-tokens/build/**/*.scss', included: false }
 		],
 		preprocessors: {
 			'common/design-tokens/build/scss/schemes/**/*.scss': ['file-fixtures'],
-			'{common,components}/**/*.js': ['coverage']
 		},
 		esm: {
 			nodeResolve: true,
@@ -28,7 +28,8 @@ module.exports = config => {
 				source: [
 					{ tag: 'coreSetupTest', src: 'common/core/test/core-setup.test.html' },
 					{ tag: 'fontsSetupTest', src: 'common/fonts/test/fonts-setup.test.html' },
-					{ tag: 'schemeSetupTest', src: 'common/scheme/test/scheme-setup.test.html' }
+					{ tag: 'schemeSetupTest', src: 'common/scheme/test/scheme-setup.test.html' },
+          { tag: 'drawerSetupTest', src: 'components/drawer/test/drawer-setup.test.html' },
 				]
 			}
 		}

@@ -6,12 +6,8 @@ import {
 	isolatedElementsCreation,
 	changeValueAndNotify,
 	listenToSubmission,
+	getTypographyStyle,
 } from '../../../test/test-helpers.js';
-import {
-	body1TypographyStyles,
-	body2TypographyStyles,
-	captionTypographyStyles,
-} from '../../../test/style-utils.js';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
 let addElement = isolatedElementsCreation();
@@ -32,20 +28,20 @@ export async function typographyTestCases(COMPONENT_NAME) {
 	});
 
 	it('should have set typography for a label', async () => {
-		assertComputedStyle(labelElement, body1TypographyStyles);
+		assertComputedStyle(labelElement, await getTypographyStyle('body-1'));
 	});
 
 	it('should have set typography for a floating label', async () => {
 		formElement.value = 'hello';
 		await waitInterval(200); // font transition
-		assertComputedStyle(labelElement, captionTypographyStyles);
+		assertComputedStyle(labelElement, await getTypographyStyle('caption'));
 	});
 
 	it('should have set typography for an input', async () => {
 		const inputElement = formElement.shadowRoot.querySelector(
 			'.mdc-text-field__input'
 		);
-		assertComputedStyle(inputElement, body2TypographyStyles);
+		assertComputedStyle(inputElement, await getTypographyStyle('body-2'));
 	});
 
 	it('should have set typography for a helper', async () => {
@@ -54,7 +50,7 @@ export async function typographyTestCases(COMPONENT_NAME) {
 		const helperElement = formElement.shadowRoot.querySelector(
 			'.mdc-text-field-helper-text'
 		);
-		assertComputedStyle(helperElement, captionTypographyStyles);
+		assertComputedStyle(helperElement, await getTypographyStyle('caption'));
 	});
 }
 

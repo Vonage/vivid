@@ -5,8 +5,8 @@ import {
 	waitNextTask,
 	assertComputedStyle,
 	isolatedElementsCreation,
+	getTypographyStyle,
 } from '../../../test/test-helpers.js';
-import { body2TypographyStyles } from '../../../test/style-utils.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	assertListItemDimensions,
@@ -46,7 +46,7 @@ describe('list item', () => {
 			await waitNextTask();
 			const listItem = actualElements[0];
 			expect(listItem).to.exist;
-			assertComputedStyle(listItem, body2TypographyStyles);
+			assertComputedStyle(listItem, await getTypographyStyle('body-2'));
 		});
 	});
 
@@ -70,7 +70,7 @@ describe('list item', () => {
 			.map((_, index) => index)
 			.reduce((last, next) => (last += createElement(next)), '');
 
-		it(`should not take more than 10ms to remove the list from the DOM`, async function () {
+		it(`should not take more than 50ms to remove the list from the DOM`, async function () {
 			const [actualElement] = addElement(
 				textToDomToParent(`<vwc-list>${selectItems}</vwc-list>`)
 			);

@@ -1,3 +1,5 @@
+export { getTypographyStyle } from './typography-utils.js';
+
 const tmpTemple = document.createElement('template');
 
 export function listenToSubmission(formElement) {
@@ -143,6 +145,11 @@ export function assertComputedStyle(element, expectedStyles) {
 					expectedValue = parseFloat(expectedStyles[styleKey]).toFixed(1);
 					actualValue = parseFloat(computedStyle[styleKey]).toFixed(1);
 				}
+				break;
+			case 'textDecoration':
+				actualValue = computedStyle[styleKey]
+					.split(/\s/)
+					.reduce((r, v) => v === expectedValue ? v : r, undefined);
 				break;
 			default:
 				expectedValue = expectedStyles[styleKey];
