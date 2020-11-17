@@ -30,6 +30,7 @@ module.exports = config => {
 					{ tag: 'fontsSetupTest', src: 'common/fonts/test/fonts-setup.test.html' },
 					{ tag: 'schemeSetupTest', src: 'common/scheme/test/scheme-setup.test.html' },
           { tag: 'drawerSetupTest', src: 'components/drawer/test/drawer-setup.test.html' },
+          { tag: 'textfieldSetupTest', src: 'components/textfield/test/textfield-setup.test.html' }
 				]
 			}
 		}

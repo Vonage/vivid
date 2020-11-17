@@ -1,4 +1,4 @@
-import '@vonage/vwc-textfield/vwc-textfield.js';
+import '@vonage/vwc-textfield';
 import '@vonage/vwc-icon';
 import '@vonage/vwc-menu';
 import '@vonage/vwc-list/vwc-list-item';
