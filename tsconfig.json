@@ -60,6 +60,7 @@
 		{ "path": "components/select" },
 		{ "path": "components/slider" },
 		{ "path": "components/switch" },
+		{ "path": "components/tab-bar" },
 		{ "path": "components/textarea" },
 		{ "path": "components/textfield" },
 		{ "path": "components/theme-switch" },
