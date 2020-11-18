@@ -17,9 +17,6 @@
 			"path": "../../common/core"
 		},
 		{
-			"path": "../../common/foundation"
-		},
-		{
 			"path": "../../common/style-coupling"
 		},
 		{
