@@ -3,7 +3,7 @@ export enum Connotation {
 	Primary = 'primary',
 	CTA = 'cta',
 	Success = 'success',
-	Error = 'error',
+	Alert = 'alert',
 	Info = 'info',
 	Announcement = 'announcement',
 }
