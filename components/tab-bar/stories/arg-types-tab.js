@@ -35,5 +35,11 @@ export const argTypes = {
 			options: { 'true': '', 'false': undefined }
 		}
 	},
+	focusOnActivate: {
+		control: {
+			type: 'inline-radio',
+			options: { 'true': '', 'false': undefined }
+		}
+	},
 	styles: { table: { disable: true } },
 }
