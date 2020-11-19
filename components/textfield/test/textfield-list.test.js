@@ -1,7 +1,7 @@
 import {
 	getFrameLoadedInjected,
 	cleanFrame,
-	// waitNextTask,
+	waitNextTask,
 } from '../../../test/test-helpers.js';
 const VWC_TEXTFIELD = 'vwc-textfield';
 const VWC_MENU = 'vwc-menu';
@@ -38,15 +38,112 @@ describe('textfield list', () => {
 			);
 		});
 
-		it(`should pair ${VWC_TEXTFIELD}'s list with ${VWC_MENU}'s id`, async () => {
+		it(`should open ${VWC_MENU} on ${VWC_TEXTFIELD} focus`, async () => {
 			await getFrameLoadedInjected(
 				TEXTFIELD_LIST_SETUP_HTML_TAG,
 				async (iframe) => {
-					const iframeWindow = iframe.contentWindow;
+					const iframeDocument = iframe.contentDocument;
 
-					const textfield = iframeWindow.document.querySelector(VWC_TEXTFIELD);
-					const menu = iframeWindow.document.querySelector(VWC_MENU);
+					const textfield = iframeDocument.querySelector(VWC_TEXTFIELD);
+					const menu = iframeDocument.querySelector(VWC_MENU);
 					expect(textfield.list).to.equal(menu.id);
+					textfield.focus();
+					menu.onOpened(() => {});
+					// ! should await this async task
+
+					expect(menu.open).to.equal(true);
+				}
+			);
+		});
+
+		it(`should keep ${VWC_TEXTFIELD} focus on ${VWC_MENU} open`, async () => {
+			await getFrameLoadedInjected(
+				TEXTFIELD_LIST_SETUP_HTML_TAG,
+				async (iframe) => {
+					const iframeDocument = iframe.contentDocument;
+
+					const textfield = iframeDocument.querySelector(VWC_TEXTFIELD);
+					const menu = iframeDocument.querySelector(VWC_MENU);
+					expect(textfield.list).to.equal(menu.id);
+					textfield.focus();
+					menu.onOpened(() => {});
+					// ! should await this async task
+
+					expect(iframeDocument.activeElement).to.equal(textfield);
+				}
+			);
+		});
+
+		it(`should keep ${VWC_MENU} opened on document.body bubbled click`, async () => {
+			await getFrameLoadedInjected(
+				TEXTFIELD_LIST_SETUP_HTML_TAG,
+				async (iframe) => {
+					const iframeDocument = iframe.contentDocument;
+
+					const textfield = iframeDocument.querySelector(VWC_TEXTFIELD);
+					const menu = iframeDocument.querySelector(VWC_MENU);
+					expect(textfield.list).to.equal(menu.id);
+					textfield.dispatchEvent(new MouseEvent('click'));
+					menu.onOpened(() => {});
+					// ! should await this async task
+
+					expect(menu.open).to.equal(true);
+				}
+			);
+		});
+
+		it(`should keep ${VWC_MENU} open on ${VWC_TEXTFIELD} focus`, async () => {
+			await getFrameLoadedInjected(
+				TEXTFIELD_LIST_SETUP_HTML_TAG,
+				async (iframe) => {
+					const iframeDocument = iframe.contentDocument;
+
+					const textfield = iframeDocument.querySelector(VWC_TEXTFIELD);
+					const menu = iframeDocument.querySelector(VWC_MENU);
+					expect(textfield.list).to.equal(menu.id);
+					textfield.focus();
+					menu.onOpened(() => {});
+					// ! should await this async task
+
+					expect(menu.open).to.equal(true);
+				}
+			);
+		});
+
+		it(`should close ${VWC_MENU} on ${VWC_TEXTFIELD} focusout`, async () => {
+			await getFrameLoadedInjected(
+				TEXTFIELD_LIST_SETUP_HTML_TAG,
+				async (iframe) => {
+					const iframeDocument = iframe.contentDocument;
+
+					const textfield = iframeDocument.querySelector(VWC_TEXTFIELD);
+					const menu = iframeDocument.querySelector(VWC_MENU);
+					expect(textfield.list).to.equal(menu.id);
+					textfield.focus();
+					menu.onOpened(() => {});
+					// ! should await this async task
+
+					textfield.focusout();
+					// ! should await this async task
+
+					expect(menu.open).to.equal(false);
+				}
+			);
+		});
+
+		it(`should not open ${VWC_MENU} if length is less than 1`, async () => {
+			await getFrameLoadedInjected(
+				TEXTFIELD_LIST_SETUP_HTML_TAG,
+				async (iframe) => {
+					const iframeDocument = iframe.contentDocument;
+
+					const textfield = iframeDocument.querySelector(VWC_TEXTFIELD);
+					const menu = iframeDocument.querySelector(VWC_MENU);
+					menu.innerHTML = '';
+					textfield.focus();
+					// ! should await this async task
+
+					expect(menu.open).to.equal(false);
 				}
 			);
 		});
@@ -54,6 +151,6 @@ describe('textfield list', () => {
 });
 
 // FUNCTIONS
-async function whenDefined(iframeWindow, name) {
-	return await iframeWindow.customElements.whenDefined(name);
+async function whenDefined(iframeDocument, name) {
+	return await iframeDocument.customElements.whenDefined(name);
 }

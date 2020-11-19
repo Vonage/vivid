@@ -42,15 +42,16 @@ Autofocus.args = { outlined: '', label: 'e.g. username', autofocus: true };
 
 const TemplateDataList = (args) =>
 	html`
-	<div style="position: relative;">
-		${Template(args)}
-		<mwc-menu id="browsers" menucorner="END" corner="BOTTOM_START">
-			<mwc-list-item>Item 0</mwc-list-item>
-			<mwc-list-item>Item 1</mwc-list-item>
-			<mwc-list-item>Item 2</mwc-list-item>
-			<mwc-list-item>Item 3</mwc-list-item>
-		</mwc-menu>
-	</div>
+		<div style="position: relative;">
+			${Template(args)}
+			<mwc-menu id="browsers" style="--mdc-menu-min-width: 300px">
+				<vwc-list-item value="edge">Edge</vwc-list-item>
+				<vwc-list-item value="firefox">Firefox</vwc-list-item>
+				<vwc-list-item value="chrome">Chrome</vwc-list-item>
+				<vwc-list-item value="opera">Opera</vwc-list-item>
+				<vwc-list-item value="safari">Safari</vwc-list-item>
+			</mwc-menu>
+		</div>
 `;
 
 export const WithDataList = TemplateDataList.bind({});
