@@ -1,7 +1,8 @@
 import {
 	getFrameLoadedInjected,
 	cleanFrame,
-	waitNextTask,
+	// waitNextTask,
+	waitInterval,
 } from '../../../test/test-helpers.js';
 const VWC_TEXTFIELD = 'vwc-textfield';
 const VWC_MENU = 'vwc-menu';
@@ -48,9 +49,6 @@ describe('textfield list', () => {
 					const menu = iframeDocument.querySelector(VWC_MENU);
 					expect(textfield.list).to.equal(menu.id);
 					textfield.focus();
-					menu.onOpened(() => {});
-					// ! should await this async task
-
 					expect(menu.open).to.equal(true);
 				}
 			);
@@ -63,12 +61,9 @@ describe('textfield list', () => {
 					const iframeDocument = iframe.contentDocument;
 
 					const textfield = iframeDocument.querySelector(VWC_TEXTFIELD);
-					const menu = iframeDocument.querySelector(VWC_MENU);
-					expect(textfield.list).to.equal(menu.id);
+					// adding a timeout for component to render shadowed html input
+					await waitInterval(200);
 					textfield.focus();
-					menu.onOpened(() => {});
-					// ! should await this async task
-
 					expect(iframeDocument.activeElement).to.equal(textfield);
 				}
 			);
@@ -82,10 +77,7 @@ describe('textfield list', () => {
 
 					const textfield = iframeDocument.querySelector(VWC_TEXTFIELD);
 					const menu = iframeDocument.querySelector(VWC_MENU);
-					expect(textfield.list).to.equal(menu.id);
-					textfield.dispatchEvent(new MouseEvent('click'));
-					menu.onOpened(() => {});
-					// ! should await this async task
+					textfield.focus();
 
 					expect(menu.open).to.equal(true);
 				}
@@ -100,17 +92,14 @@ describe('textfield list', () => {
 
 					const textfield = iframeDocument.querySelector(VWC_TEXTFIELD);
 					const menu = iframeDocument.querySelector(VWC_MENU);
-					expect(textfield.list).to.equal(menu.id);
 					textfield.focus();
-					menu.onOpened(() => {});
-					// ! should await this async task
 
 					expect(menu.open).to.equal(true);
 				}
 			);
 		});
 
-		it(`should close ${VWC_MENU} on ${VWC_TEXTFIELD} focusout`, async () => {
+		it(`should close ${VWC_MENU} on ${VWC_TEXTFIELD} blur`, async () => {
 			await getFrameLoadedInjected(
 				TEXTFIELD_LIST_SETUP_HTML_TAG,
 				async (iframe) => {
@@ -120,11 +109,8 @@ describe('textfield list', () => {
 					const menu = iframeDocument.querySelector(VWC_MENU);
 					expect(textfield.list).to.equal(menu.id);
 					textfield.focus();
-					menu.onOpened(() => {});
-					// ! should await this async task
 
-					textfield.focusout();
-					// ! should await this async task
+					textfield.blur();
 
 					expect(menu.open).to.equal(false);
 				}

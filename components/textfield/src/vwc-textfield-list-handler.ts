@@ -14,23 +14,27 @@ export function listHandler(this: VWCTextField): void {
 			menu.quick = true;
 
 			const input = this.shadowRoot?.querySelector('input');
-			input?.addEventListener('focusin', onFocusIn.bind(null, menu));
-			input?.addEventListener('focusout', onFocusOut.bind(null, menu));
+			input?.addEventListener('focus', onFocus.bind(null, menu));
+			input?.addEventListener('blur', onBlur.bind(null, menu));
 		}
 		// eager lazy debounce
 	}
 }
 
-function onFocusIn(menu: VWCMenu): void {
+function onFocus(menu: VWCMenu): void {
 	document.body.addEventListener('click', preventMenuCloseByClick, {
 		capture: true,
 	});
-	menu?.show();
+	if (menu?.items?.length) {
+		menu.show();
+	}
 }
 
-function onFocusOut(menu: VWCMenu): void {
+function onBlur(menu: VWCMenu): void {
 	document.body.removeEventListener('click', preventMenuCloseByClick);
-	menu?.close();
+	if (menu.open) {
+		menu.close();
+	}
 }
 
 function preventMenuCloseByClick(e: Event) {
