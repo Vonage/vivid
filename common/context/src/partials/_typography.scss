@@ -38,7 +38,7 @@
   samp,
   kbd,
   var {
-    // font-family: 'SpeziaCompleteTrial-Monospace';
+		@include typography.typography-cat-shorthand('body-1-code');
     display: block;
     border-radius: 4px;
   }
