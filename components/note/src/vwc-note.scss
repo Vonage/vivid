@@ -1,0 +1,12 @@
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/_scheme-variables' as scheme-variables;
+@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
+@use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins' as color-connotation-mixins;
+
+:host {
+  --mdc-theme-primary: var(#{color-semantic.$color-connotation-background});
+  --mdc-theme-on-primary: var(#{color-semantic.$color-connotation-foreground});
+}
+
+@include color-connotation-mixins.connotations-context(
+	':host(#{color-connotation-mixins.$connotation-placeholder},#{color-connotation-mixins.$connotation-placeholder})'
+);
