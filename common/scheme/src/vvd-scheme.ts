@@ -6,9 +6,12 @@ import {
 	getPreferedColorScheme,
 	// prefersColorSchemeSupported,
 } from './os-sync.utils';
+import { ReplaySubject } from 'rxjs';
 
 export type PredefinedScheme = 'light' | 'dark';
 export type SchemeOption = 'syncWithOSSettings' | PredefinedScheme;
+
+const changeSubject: ReplaySubject<SchemeOption> = new ReplaySubject();
 
 let _selectedScheme: PredefinedScheme;
 function getSelectedScheme(): PredefinedScheme {
@@ -62,6 +65,7 @@ function setSyncModeIfRelevant(scheme: SchemeOption): PredefinedScheme {
 }
 
 let setPromise: Promise<Record<string, unknown>> | null = null;
+
 async function set(
 	schemeOption: SchemeOption | null = null
 ): Promise<Record<string, unknown>> {
@@ -90,6 +94,7 @@ async function set(
 
 	setPromise = tmpPromise.then(() => {
 		// console.info('... scheme changed');
+		changeSubject.next(_selectedScheme);
 		return {
 			option: _selectedSchemeOption,
 			scheme: _selectedScheme,
@@ -103,6 +108,9 @@ export default Object.freeze({
 	set,
 	getSelectedScheme,
 	getSelectedSchemeOption,
+	valueChanges() {
+		return changeSubject.asObservable();
+	},
 });
 
 init();

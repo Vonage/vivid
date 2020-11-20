@@ -1,5 +1,3 @@
-import vvdCore from '@vonage/vvd-core';
-import '@vonage/vvd-context';
 import '@vonage/vwc-theme-switch';
 import '@vonage/vwc-top-app-bar';
 import { html } from 'lit-element';
@@ -43,6 +41,4 @@ export const basic = () => html`
   </main>
 `;
 
-vvdCore.settled
-	.then(() => console.log('Vivid context initialised for the context demo story'))
-	.catch(e => console.error(e));
+
