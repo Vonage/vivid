@@ -18,26 +18,19 @@ export class VWCNote extends LitElement {
 	}
 
 	@property({ type: String, reflect: true })
-	connotation?: Connotation;
+	connotation: Connotation = Connotation.Primary;
 
-	@property({
-		type: Boolean,
-		reflect: true,
-		converter: (v) => v !== 'false',
-	})
-	iconless = false;
+	@property({ type: String, reflect: true })
+	icon = '';
 
 	@property({ type: String, reflect: true })
 	header = '';
-
-	@property({ type: String, reflect: false })
-	private icon = 'info';
 
 	protected render(): TemplateResult {
 		return html`
 			<div class="note-vibe"></div>
 			<div class="note-body">
-				${this.iconless ? '' : this.renderIcon()}
+				${this.icon ? this.renderIcon() : ''}
 				<div class="note-text">
 					${this.header ? this.renderHeader() : ''} ${this.renderMessage()}
 				</div>

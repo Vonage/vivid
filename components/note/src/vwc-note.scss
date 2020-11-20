@@ -14,7 +14,7 @@
 	contain: content;
 }
 @include color-connotation-mixins.connotations-context(
-	':host(#{color-connotation-mixins.$connotation-placeholder},#{color-connotation-mixins.$connotation-placeholder})'
+	':host(#{color-connotation-mixins.$connotation-placeholder})'
 );
 
 .note-vibe {
@@ -22,7 +22,7 @@
 	top: 0;
 	width: 8px;
 	height: 100%;
-	background:var(--vvd-connotation-background);
+	background: var(#{color-semantic.$color-connotation-background}, var(#{color-semantic.$color-primary-background}));
 }
 
 .note-body {
@@ -42,7 +42,7 @@
 
 .note-text {
 	flex: 1;
-	padding: 19px 23px 19px 0;
+	padding: 19px 23px;
 
 	.note-header {
 		@include typography.typography-cat-shorthand('body-2-bold');
@@ -53,6 +53,6 @@
 		@include typography.typography-cat-shorthand('body-2');
 	}
 }
-:host([iconless]:not([iconless=false])) .note-text {
-	padding-inline-start: 23px;
+:host([icon]:not([icon=''])) .note-text {
+	padding-inline-start: 0px;
 }

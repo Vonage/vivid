@@ -10,7 +10,7 @@ $connotation-placeholder: '[connotation-specifier]';
   $connotations: primary cta success error info announcement;
 
   @each $connotation in $connotations {
-    $attr: '[connotation="#{$connotation}"i]';
+    $attr: '[connotation="#{$connotation}" i]';
 
 		@if ($connotation == $default) {
 		// if is default also add case for not assigning connotation

@@ -16,16 +16,16 @@ const TemplatePlain = args => html`
 `;
 
 export const Full = TemplatePlain.bind({});
-Full.args = { header: `Pascal's theological argument`, connotation: 'success' };
+Full.args = { connotation: 'success', icon: 'check-circle', header: `Pascal's theological argument`, };
 
 export const IconLess = TemplatePlain.bind({});
-IconLess.args = { iconless: '', header: `Pascal's theological argument` };
+IconLess.args = { icon: '', header: `Pascal's theological argument` };
 
 export const HeaderLess = TemplatePlain.bind({});
-HeaderLess.args = { header: '', connotation: 'announcement' };
+HeaderLess.args = { connotation: 'announcement', icon: 'notification', header: '', };
 
 export const HeaderAndIconLess = TemplatePlain.bind({});
-HeaderAndIconLess.args = { iconless: '', header: '', connotation: 'cta' };
+HeaderAndIconLess.args = { connotation: 'cta', icon: '', header: '' };
 
 const TemplateComplex = args => html`
 	<vwc-note ...=${spread(args)}>
@@ -40,4 +40,4 @@ const TemplateComplex = args => html`
 `;
 
 export const ComplexMessage = TemplateComplex.bind({});
-ComplexMessage.args = { header: `Pascal's theological argument`, connotation: 'info' };
+ComplexMessage.args = { connotation: 'info', icon: 'megaphone', header: `Pascal's theological argument` };
