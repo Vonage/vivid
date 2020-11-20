@@ -1,12 +1,58 @@
-@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/_scheme-variables' as scheme-variables;
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins' as color-connotation-mixins;
+@use '@vonage/vvd-typography/scss/typography' as typography;
 
 :host {
-  --mdc-theme-primary: var(#{color-semantic.$color-connotation-background});
-  --mdc-theme-on-primary: var(#{color-semantic.$color-connotation-foreground});
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+	color: var(#{color-semantic.$color-base-foreground});
+	background-color: var(#{color-semantic.$color-base-background});
+	border-radius: 6px;
+	overflow: hidden;
+	contain: content;
 }
-
 @include color-connotation-mixins.connotations-context(
 	':host(#{color-connotation-mixins.$connotation-placeholder},#{color-connotation-mixins.$connotation-placeholder})'
 );
+
+.note-vibe {
+	position: absolute;
+	top: 0;
+	width: 8px;
+	height: 100%;
+	background:var(--vvd-connotation-background);
+}
+
+.note-body {
+	flex: 1;
+	display: flex;
+	flex-direction: row;
+	border-radius: 6px;
+	border: 1px solid #B3B3B3;
+
+	.note-icon {
+		flex: 0 0 56px;
+		margin-block-start: 17px;
+		margin-inline-start: 7px;
+		text-align: center;
+	}
+}
+
+.note-text {
+	flex: 1;
+	padding: 19px 23px 19px 0;
+
+	.note-header {
+		@include typography.typography-cat-shorthand('body-2-bold');
+		margin-block-end: 4px;
+	}
+
+	.note-message {
+		@include typography.typography-cat-shorthand('body-2');
+	}
+}
+:host([iconless]:not([iconless=false])) .note-text {
+	padding-inline-start: 23px;
+}

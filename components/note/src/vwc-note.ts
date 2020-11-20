@@ -20,7 +20,42 @@ export class VWCNote extends LitElement {
 	@property({ type: String, reflect: true })
 	connotation?: Connotation;
 
+	@property({
+		type: Boolean,
+		reflect: true,
+		converter: (v) => v !== 'false',
+	})
+	iconless = false;
+
+	@property({ type: String, reflect: true })
+	header = '';
+
+	@property({ type: String, reflect: false })
+	private icon = 'info';
+
 	protected render(): TemplateResult {
-		return html``;
+		return html`
+			<div class="note-vibe"></div>
+			<div class="note-body">
+				${this.iconless ? '' : this.renderIcon()}
+				<div class="note-text">
+					${this.header ? this.renderHeader() : ''} ${this.renderMessage()}
+				</div>
+			</div>
+		`;
+	}
+
+	private renderIcon(): TemplateResult {
+		return html`<div class="note-icon">
+			<vwc-icon type="${this.icon}"></vwc-icon>
+		</div>`;
+	}
+
+	private renderHeader(): TemplateResult {
+		return html`<div class="note-header">${this.header}</div>`;
+	}
+
+	private renderMessage(): TemplateResult {
+		return html`<slot class="note-message"></slot>`;
 	}
 }
