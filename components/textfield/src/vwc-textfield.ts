@@ -1,4 +1,3 @@
-import { listHandler } from './vwc-textfield-list-handler';
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
 import '@vonage/vwc-notched-outline';
@@ -21,6 +20,7 @@ import {
 import { Shape } from '@vonage/vvd-foundation/constants';
 import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
 export { TextFieldType } from '@material/mwc-textfield';
+import { listHandler } from './vwc-textfield-list-handler';
 
 declare global {
 	interface HTMLElementTagNameMap {
