@@ -30,11 +30,11 @@
 		"@vonage/vvd-style-coupling": "^0.15.3",
 		"@vonage/vwc-icon": "^0.15.3",
 		"@vonage/vwc-notched-outline": "^0.15.3",
+		"@vonage/vwc-menu": "^0.15.2",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.3"
 	},
 	"devDependencies": {
-		"@vonage/vvd-typography": "^0.15.2",
-		"@vonage/vwc-menu": "^0.15.2"
+		"@vonage/vvd-typography": "^0.15.2"
 	}
 }
