@@ -16,26 +16,14 @@ describe('textfield list', () => {
 
 	describe('basic', () => {
 		it(`should define ${VWC_TEXTFIELD} in custom elements registry`, async () => {
-			await getFrameLoadedInjected(
-				TEXTFIELD_LIST_SETUP_HTML_TAG,
-				async (iframe) => {
-					const iframeWindow = iframe.contentWindow;
-					await whenDefined(iframeWindow, VWC_TEXTFIELD);
-					const elClass = iframeWindow.customElements.get(VWC_TEXTFIELD);
-					expect(elClass).to.be.a('function');
-				}
+			assert.exists(
+				customElements.get(VWC_TEXTFIELD, `${VWC_TEXTFIELD} element is not defined`)
 			);
 		});
 
 		it(`should define ${VWC_MENU} in custom elements registry`, async () => {
-			await getFrameLoadedInjected(
-				TEXTFIELD_LIST_SETUP_HTML_TAG,
-				async (iframe) => {
-					const iframeWindow = iframe.contentWindow;
-					await whenDefined(iframeWindow, VWC_MENU);
-					const elClass = iframeWindow.customElements.get(VWC_MENU);
-					expect(elClass).to.be.a('function');
-				}
+			assert.exists(
+				customElements.get(VWC_MENU, `${VWC_MENU} element is not defined`)
 			);
 		});
 
