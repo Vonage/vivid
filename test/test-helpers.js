@@ -124,6 +124,23 @@ export function assertComputedStyle(element, expectedStyles, pseudoSelector = nu
 				actualValue = computedStyle[styleKey].replaceAll(/\s/g, '');
 				expectedValue = expectedStyles[styleKey].replaceAll(/\s/g, '');
 				break;
+			case 'borderTopColor':
+				actualValue = computedStyle[styleKey].replaceAll(/\s/g, '');
+				expectedValue = expectedStyles[styleKey].replaceAll(/\s/g, '');
+				break;
+			case 'borderRightColor':
+				actualValue = computedStyle[styleKey].replaceAll(/\s/g, '');
+				expectedValue = expectedStyles[styleKey].replaceAll(/\s/g, '');
+				break;
+			case 'borderBottomColor':
+				actualValue = computedStyle[styleKey].replaceAll(/\s/g, '');
+				expectedValue = expectedStyles[styleKey].replaceAll(/\s/g, '');
+				break;
+			case 'borderLeftColor':
+				actualValue = computedStyle[styleKey].replaceAll(/\s/g, '');
+				expectedValue = expectedStyles[styleKey].replaceAll(/\s/g, '');
+				break;
+
 
 			//	typography transformers
 			case 'fontFamily':
@@ -175,6 +192,7 @@ export function assertComputedStyle(element, expectedStyles, pseudoSelector = nu
 				actualValue = computedStyle[styleKey];
 		}
 		if (actualValue !== expectedValue) {
+			console.log(JSON.stringify(computedStyle));
 			throw new Error(`'${styleKey}' is NOT as expected; expected: '${expectedValue}', found: '${actualValue}'`);
 		}
 	}

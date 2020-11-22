@@ -26,7 +26,13 @@ const LAYOUTS_AFFECTED = [
 	{
 		layout: 'outlined',
 		childrenAffected: ['button'],
-		stylesAffected: ['color', 'borderColor'],
+		stylesAffected: [
+			'color',
+			'borderTopColor',
+			'borderRightColor',
+			'borderBottomColor',
+			'borderLeftColor',
+		],
 	},
 ];
 
