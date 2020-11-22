@@ -12,10 +12,10 @@ $connotation-placeholder: '[connotation-specifier]';
   @each $connotation in $connotations {
     $attr: '[connotation="#{$connotation}"i]';
 
-		@if ($connotation == $default) {
-		// if is default also add case for not assigning connotation
-			$attr: '#{$attr},:not([connotation])';
-		}
+		// @if ($connotation == $default) {
+		// // if is default also add case for not assigning connotation
+		// 	$attr: '#{$attr}),:host(:not([connotation]))';
+		// }
 
     $scoped-selector: $selector; // prevents overriding argument
 
