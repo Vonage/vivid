@@ -11,7 +11,7 @@ import { ReplaySubject } from 'rxjs';
 export type PredefinedScheme = 'light' | 'dark';
 export type SchemeOption = 'syncWithOSSettings' | PredefinedScheme;
 
-const changeSubject: ReplaySubject<SchemeOption> = new ReplaySubject();
+const changeSubject: ReplaySubject<SchemeOption> = new ReplaySubject(1);
 
 let _selectedScheme: PredefinedScheme;
 function getSelectedScheme(): PredefinedScheme {
