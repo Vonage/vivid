@@ -141,7 +141,6 @@ export function assertComputedStyle(element, expectedStyles, pseudoSelector = nu
 				expectedValue = expectedStyles[styleKey].replaceAll(/\s/g, '');
 				break;
 
-
 			//	typography transformers
 			case 'fontFamily':
 				expectedValue = String(expectedStyles[styleKey]);
@@ -192,7 +191,6 @@ export function assertComputedStyle(element, expectedStyles, pseudoSelector = nu
 				actualValue = computedStyle[styleKey];
 		}
 		if (actualValue !== expectedValue) {
-			console.log(JSON.stringify(computedStyle));
 			throw new Error(`'${styleKey}' is NOT as expected; expected: '${expectedValue}', found: '${actualValue}'`);
 		}
 	}

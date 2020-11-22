@@ -16,7 +16,6 @@ async function assertConnotationAttribute({
 
 	element.setAttribute('connotation', connotation);
 	await waitNextTask();
-	await waitNextTask();
 	assertChildrenAffected(connotation, element, childrenAffected, stylesAffected);
 }
 
@@ -29,7 +28,6 @@ async function assertConnotationProperty({
 	validateParams(element, connotation, childrenAffected, stylesAffected);
 
 	element.connotation = connotation;
-	await waitNextTask();
 	await waitNextTask();
 	assertChildrenAffected(connotation, element, childrenAffected, stylesAffected);
 }
