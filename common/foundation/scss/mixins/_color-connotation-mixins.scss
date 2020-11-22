@@ -7,7 +7,7 @@ $connotation-placeholder: '[connotation-specifier]';
   $selector: ':host(#{$connotation-placeholder})',
   $default: primary
 ) {
-  $connotations: primary cta success error info announcement;
+  $connotations: primary cta success alert info announcement;
 
   @each $connotation in $connotations {
     $attr: '[connotation="#{$connotation}"i]';
