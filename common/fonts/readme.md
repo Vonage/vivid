@@ -3,18 +3,7 @@
 As part of the One Vonage unified branding and look'n'feel experience, we are providing a common Web fonts set.
 Our font loading service will load a [variable fonts](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/Variable_Fonts_Guide) for any supporting platform, while falling back to the static fonts on the non-supporting ones.
 
-There are two API approaches to init the fonts in your application:
-* `JS/TS` driven - import our module and invoke the API method
-* `CSS` driven - link a single `CSS` stylesheet to rule them all
-
-See more details about each of those approaches down below.
-
-To use Vivid fonts in your application please apply the following `CSS` rule:
-```
-body {
-	font-family: var(--vvd-font-family-spezia);
-}
-```
+To apply Vivid fonts in your application please refer to typography module documentation.
 
 ---
 
@@ -40,13 +29,3 @@ fonts.init().then(() =>
 
 > Note: this approach won't block site's contents rendering, so you'll most likely to experience FOUC behaviour unless employing some kind of loading vilon on start up.
 ---
-
-#### `CSS` driven initialization
-Link the `vvd-fonts.css` from the location you've put our library in.
-It is highly advised to link this resource early in the application lifecycle (for example, up in the `head`).
-
-```
-<link rel="stylesheet" href="@vonage/vvd-fonts/vvd-fonts.css" />
-```
-
-> Note: this approach will block the site's contents rendering until the fonts are fully fetched, yet no FOUC (flash of unstyled content) expected.
