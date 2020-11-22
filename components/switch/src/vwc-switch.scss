@@ -48,7 +48,7 @@
   $selector: ':host([connotation-specifier])',
   $default: primary
 ) {
-  $connotations: primary cta success error;
+  $connotations: primary cta success alert;
 
   @each $connotation in $connotations {
     $attr: '[connotation="#{$connotation}"i]';

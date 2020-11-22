@@ -16,7 +16,7 @@ declare global {
 // @ts-ignore
 MWCSwitch.styles = [styleCoupling, mwcSwitchStyle, vwcSwitchStyle];
 
-const connotations = ['primary', 'cta', 'success', 'error'] as const;
+const connotations = ['primary', 'cta', 'success', 'alert'] as const;
 export type SwitchConnotation = typeof connotations;
 
 /**
