@@ -4,18 +4,12 @@
 $connotation-placeholder: '[connotation-specifier]';
 
 @mixin connotations-context(
-  $selector: ':host(#{$connotation-placeholder})',
-  $default: primary
+  $selector: ':host(#{$connotation-placeholder})'
 ) {
   $connotations: primary cta success alert info announcement;
 
   @each $connotation in $connotations {
     $attr: '[connotation="#{$connotation}"i]';
-
-		// @if ($connotation == $default) {
-		// // if is default also add case for not assigning connotation
-		// 	$attr: '#{$attr}),:host(:not([connotation]))';
-		// }
 
     $scoped-selector: $selector; // prevents overriding argument
 
