@@ -53,7 +53,7 @@ describe('badge connotation', () => {
 	});
 
 	for (const connotation of CONNOTATIONS_SUPPORTED) {
-		it(`should reflect ${connotation} connotation (attribute) visually`, async () => {
+		it(`should reflect '${connotation}' connotation (attribute) visually`, async () => {
 			const [badge] = addElement(
 				textToDomToParent(`<${VWC_BADGE}>Badge Text</${VWC_BADGE}>`)
 			);
@@ -65,7 +65,7 @@ describe('badge connotation', () => {
 			});
 		});
 
-		it(`should reflect ${connotation} connotation (property) visually`, async () => {
+		it(`should reflect '${connotation}' connotation (property) visually`, async () => {
 			const [badge] = addElement(
 				textToDomToParent(`<${VWC_BADGE}>Badge Text</${VWC_BADGE}>`)
 			);

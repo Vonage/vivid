@@ -15,7 +15,7 @@ describe('switch connotation', () => {
 	const addElement = isolatedElementsCreation();
 
 	for (const connotation of CONNOTATIONS_SUPPORTED) {
-		it(`should reflect ${connotation} connotation (attribute) visually, checked`, async () => {
+		it(`should reflect '${connotation}' connotation (attribute) visually, checked`, async () => {
 			const [vwcSwitch] = addElement(
 				textToDomToParent(`<${VWC_SWITCH} checked></${VWC_SWITCH}>`)
 			);
@@ -27,7 +27,7 @@ describe('switch connotation', () => {
 			});
 		});
 
-		it(`should reflect ${connotation} connotation (property) visually, checked`, async () => {
+		it(`should reflect '${connotation}' connotation (property) visually, checked`, async () => {
 			const [vwcSwitch] = addElement(
 				textToDomToParent(`<${VWC_SWITCH} checked></${VWC_SWITCH}>`)
 			);

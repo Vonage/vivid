@@ -35,7 +35,7 @@ describe('button connotation', () => {
 
 	for (const { layout, childrenAffected, stylesAffected } of LAYOUTS_AFFECTED) {
 		for (const connotation of CONNOTATIONS_SUPPORTED) {
-			it(`should reflect ${connotation} connotation (attribute) visually, ${layout}`, async () => {
+			it(`should reflect '${connotation}' connotation (attribute) visually, ${layout}`, async () => {
 				const [button] = addElement(
 					textToDomToParent(
 						`<${VWC_BUTTON} layout="${layout}">Button</${VWC_BUTTON}>`
@@ -49,7 +49,7 @@ describe('button connotation', () => {
 				});
 			});
 
-			it(`should reflect ${connotation} connotation (property) visually, ${layout}`, async () => {
+			it(`should reflect '${connotation}' connotation (property) visually, ${layout}`, async () => {
 				const [button] = addElement(
 					textToDomToParent(
 						`<${VWC_BUTTON} layout="${layout}">Button</${VWC_BUTTON}>`
