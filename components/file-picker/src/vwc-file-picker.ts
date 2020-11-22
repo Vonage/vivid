@@ -118,7 +118,7 @@ export class VWCFilePicker extends LitElement {
 		if (this.filesCount) {
 			return html`
 				<div class="files-count">
-					<vwc-badge connotation="error" shape="pill">${this.filesCount}</vwc-badge>
+					<vwc-badge connotation="alert" shape="pill">${this.filesCount}</vwc-badge>
 				</div>
 			`;
 		} else {
