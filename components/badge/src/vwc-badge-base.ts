@@ -6,7 +6,7 @@ export class BadgeBase extends LitElement {
 	translucent = false;
 
 	@property({ type: String, reflect: true })
-	connotation?: Connotation;
+	connotation: Connotation = Connotation.Primary;
 
 	@property({ type: String, reflect: true })
 	shape?: Shape;

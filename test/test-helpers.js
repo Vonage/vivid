@@ -93,7 +93,7 @@ const
 		'ultra-expanded': 200
 	};
 
-export function assertComputedStyle(element, expectedStyles) {
+export function assertComputedStyle(element, expectedStyles, pseudoSelector = null) {
 	if (!element) {
 		throw new Error(`'element' parameter MUST be a valid element, got ${element}`);
 	}
@@ -103,10 +103,45 @@ export function assertComputedStyle(element, expectedStyles) {
 		throw new Error(`'expectedStyles' MUST be a non-empty object, got ${JSON.stringify(expectedStyles)}`);
 	}
 
-	const computedStyle = getComputedStyle(element);
+	const computedStyle = getComputedStyle(element, pseudoSelector);
+	if (!computedStyle) {
+		throw new Error(`failed to retrieve computed style of ${element}${pseudoSelector ? ` (${pseudoSelector})` : ''}`);
+	}
+
 	for (const styleKey of styleKeys) {
 		let actualValue, expectedValue;
 		switch (styleKey) {
+			//	color transformers
+			case 'color':
+				actualValue = computedStyle[styleKey].replaceAll(/\s/g, '');
+				expectedValue = expectedStyles[styleKey].replaceAll(/\s/g, '');
+				break;
+			case 'backgroundColor':
+				actualValue = computedStyle[styleKey].replaceAll(/\s/g, '');
+				expectedValue = expectedStyles[styleKey].replaceAll(/\s/g, '');
+				break;
+			case 'borderColor':
+				actualValue = computedStyle[styleKey].replaceAll(/\s/g, '');
+				expectedValue = expectedStyles[styleKey].replaceAll(/\s/g, '');
+				break;
+			case 'borderTopColor':
+				actualValue = computedStyle[styleKey].replaceAll(/\s/g, '');
+				expectedValue = expectedStyles[styleKey].replaceAll(/\s/g, '');
+				break;
+			case 'borderRightColor':
+				actualValue = computedStyle[styleKey].replaceAll(/\s/g, '');
+				expectedValue = expectedStyles[styleKey].replaceAll(/\s/g, '');
+				break;
+			case 'borderBottomColor':
+				actualValue = computedStyle[styleKey].replaceAll(/\s/g, '');
+				expectedValue = expectedStyles[styleKey].replaceAll(/\s/g, '');
+				break;
+			case 'borderLeftColor':
+				actualValue = computedStyle[styleKey].replaceAll(/\s/g, '');
+				expectedValue = expectedStyles[styleKey].replaceAll(/\s/g, '');
+				break;
+
+			//	typography transformers
 			case 'fontFamily':
 				expectedValue = String(expectedStyles[styleKey]);
 				actualValue = String(computedStyle[styleKey]).replaceAll('"', '');
