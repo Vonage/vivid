@@ -1,9 +1,9 @@
 # vwc-note
 
-`vwc-note` component is designated to layout connotated notification content
+`vwc-note` component is designated to layout connotated notification content.
 
-`vwc-note` provides an attribute-way to manage the connotation, header and icon features
-while any light DOM within it becomes a message body
+`vwc-note` exposes API to manage the connotation, header and icon features.
+Any light DOM within `vwc-note` becomes a body of the message.
 
 ## Properties
 
