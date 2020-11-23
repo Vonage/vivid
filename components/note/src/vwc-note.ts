@@ -11,6 +11,12 @@ declare global {
 	}
 }
 
+/**
+ * `vwc-note` component is designated to layout connotated notification content
+ *
+ * `vwc-note` provides an attribute-way to manage the connotation, header and icon features
+ * while any light DOM within it becomes a message body
+ */
 @customElement('vwc-note')
 export class VWCNote extends LitElement {
 	static get styles(): CSSResult[] {
