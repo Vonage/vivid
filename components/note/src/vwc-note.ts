@@ -34,12 +34,9 @@ export class VWCNote extends LitElement {
 
 	protected render(): TemplateResult {
 		return html`
-			<div class="note-vibe"></div>
-			<div class="note-body">
-				${this.icon ? this.renderIcon() : ''}
-				<div class="note-text">
-					${this.header ? this.renderHeader() : ''} ${this.renderMessage()}
-				</div>
+			${this.icon ? this.renderIcon() : ''}
+			<div class="note-text">
+				${this.header ? this.renderHeader() : ''} ${this.renderMessage()}
 			</div>
 		`;
 	}

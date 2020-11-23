@@ -3,46 +3,38 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 
 :host {
-	position: relative;
 	display: flex;
 	flex-direction: row;
 	align-items: stretch;
 	color: var(#{color-semantic.$color-base-foreground});
 	background-color: var(#{color-semantic.$color-base-background});
 	border-radius: 6px;
+	box-shadow: inset 0 0 0 1px #B3B3B3;
 	overflow: hidden;
 	contain: content;
+
+	&::before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 100%;
+    background-color: var(#{color-semantic.$vvd-color-connotation-background});
+  }
 }
 @include color-connotation-mixins.connotations-context(
 	':host(#{color-connotation-mixins.$connotation-placeholder})'
 );
 
-.note-vibe {
-	position: absolute;
-	top: 0;
-	width: 8px;
-	height: 100%;
-	background-color: var(#{color-semantic.$vvd-color-connotation-background});
-}
-
-.note-body {
-	flex: 1;
-	display: flex;
-	flex-direction: row;
-	border-radius: 6px;
-	border: 1px solid #B3B3B3;
-
-	.note-icon {
-		flex: 0 0 56px;
-		margin-block-start: 17px;
-		margin-inline-start: 7px;
-		text-align: center;
-	}
+.note-icon {
+	flex: 0 0 56px;
+	margin-block-start: 18px;
+	margin-inline-start: 8px;
+	text-align: center;
 }
 
 .note-text {
 	flex: 1;
-	padding: 19px 23px;
+	padding: 20px 24px;
 
 	.note-header {
 		@include typography.typography-cat-shorthand('body-2-bold');

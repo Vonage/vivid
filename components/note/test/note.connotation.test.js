@@ -28,7 +28,7 @@ describe('note connotation', () => {
 			await assertConnotationAttribute({
 				element: badge,
 				connotation: connotation,
-				childrenAffected: ['.note-vibe'],
+				childrenAffected: ['::before'],
 				stylesAffected: ['backgroundColor'],
 			});
 		});
@@ -38,7 +38,7 @@ describe('note connotation', () => {
 			await assertConnotationProperty({
 				element: badge,
 				connotation: connotation,
-				childrenAffected: ['.note-vibe'],
+				childrenAffected: ['::before'],
 				stylesAffected: ['backgroundColor'],
 			});
 		});
