@@ -24,8 +24,8 @@
 );
 :host([unelevated]),
 :host([outlined]) {
-  --mdc-theme-primary: var(#{color-semantic.$color-connotation-background});
-  --mdc-theme-on-primary: var(#{color-semantic.$color-connotation-foreground});
+  --mdc-theme-primary: var(#{color-semantic.$vvd-color-connotation-background});
+  --mdc-theme-on-primary: var(#{color-semantic.$vvd-color-connotation-foreground});
 }
 /////////////////////////////////////////////////////////////////////////////
 .mdc-button {

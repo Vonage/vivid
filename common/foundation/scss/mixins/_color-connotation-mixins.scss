@@ -4,9 +4,9 @@
 $connotation-placeholder: '[connotation-specifier]';
 
 @mixin connotations-context(
-  $selector: ':host(#{$connotation-placeholder})'
+  $selector: ':host(#{$connotation-placeholder})',
+  $connotations: primary cta success alert info announcement
 ) {
-  $connotations: primary cta success alert info announcement;
 
   @each $connotation in $connotations {
     $attr: '[connotation="#{$connotation}"i]';
@@ -20,8 +20,8 @@ $connotation-placeholder: '[connotation-specifier]';
     );
 
     #{$scoped-selector} {
-      #{color-semantic.$color-connotation-background}: var(--vvd-color-#{$connotation}-background);
-      #{color-semantic.$color-connotation-foreground}: var(--vvd-color-#{$connotation}-foreground);
+      #{color-semantic.$vvd-color-connotation-background}: var(--vvd-color-#{$connotation}-background);
+      #{color-semantic.$vvd-color-connotation-foreground}: var(--vvd-color-#{$connotation}-foreground);
     }
   }
 }
