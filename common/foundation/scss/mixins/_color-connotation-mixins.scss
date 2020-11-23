@@ -9,7 +9,7 @@ $connotation-placeholder: '[connotation-specifier]';
 ) {
 
   @each $connotation in $connotations {
-    $attr: '[connotation="#{$connotation}"i]';
+    $attr: '[connotation="#{$connotation}" i]';
 
     $scoped-selector: $selector; // prevents overriding argument
 
