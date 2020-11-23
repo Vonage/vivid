@@ -17,11 +17,64 @@ describe('note', () => {
 	});
 
 	it('should internal contents', async () => {
-		const addedElements = addElement(
+		const [note] = addElement(
 			textToDomToParent(`<${COMPONENT_NAME}>Internal contents</${COMPONENT_NAME}>`)
 		);
-		const actualElement = addedElements[0];
 		await waitNextTask();
-		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
+		expect(note.shadowRoot.innerHTML).to.equalSnapshot();
+	});
+
+	it('should have icon when icon is set', async () => {
+		const [note] = addElement(
+			textToDomToParent(
+				`<${COMPONENT_NAME} icon="home">Internal contents</${COMPONENT_NAME}>`
+			)
+		);
+		await waitNextTask();
+		expect(note.shadowRoot.innerHTML).to.equalSnapshot();
+	});
+
+	it('should have icon added when icon is set dynamically (property)', async () => {
+		const [note] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}>Internal contents</${COMPONENT_NAME}>`)
+		);
+		await waitNextTask();
+		note.icon = 'home';
+		await waitNextTask();
+		expect(note.shadowRoot.innerHTML).to.equalSnapshot();
+	});
+
+	it('should have icon added when icon is set dynamically (attribute)', async () => {
+		const [note] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}>Internal contents</${COMPONENT_NAME}>`)
+		);
+		await waitNextTask();
+		note.setAttribute('icon', 'home');
+		await waitNextTask();
+		expect(note.shadowRoot.innerHTML).to.equalSnapshot();
+	});
+
+	it('should have icon removed when icon is unset (property)', async () => {
+		const [note] = addElement(
+			textToDomToParent(
+				`<${COMPONENT_NAME} icon="home">Internal contents</${COMPONENT_NAME}>`
+			)
+		);
+		await waitNextTask();
+		note.icon = null;
+		await waitNextTask();
+		expect(note.shadowRoot.innerHTML).to.equalSnapshot();
+	});
+
+	it('should have icon removed when icon is unset (attribute)', async () => {
+		const [note] = addElement(
+			textToDomToParent(
+				`<${COMPONENT_NAME} icon="home">Internal contents</${COMPONENT_NAME}>`
+			)
+		);
+		await waitNextTask();
+		note.removeAttribute('icon');
+		await waitNextTask();
+		expect(note.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 });
