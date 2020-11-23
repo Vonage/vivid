@@ -1,5 +1,7 @@
 @use 'sass:selector';
-@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/_scheme-variables' as scheme-variables;
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names';
+@use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins';
 
 // sizing parts only
 :host {
@@ -42,45 +44,6 @@
 	}
 }
 
-// ! move to utils as this might be a common
-// ! mixin for other components such as call-out
-@mixin connotations-context(
-  $selector: ':host([connotation-specifier])',
-  $default: primary
-) {
-  $connotations: primary cta success alert;
-
-  @each $connotation in $connotations {
-    $attr: '[connotation="#{$connotation}"i]';
-
-    $scoped-selector: $selector; // prevents overriding argument
-
-    $scoped-selector: selector.replace(
-      #{$selector},
-      '[connotation-specifier]',
-      #{$attr}
-    );
-
-    @if ($connotation == $default) {
-      $default-selector: selector.replace(
-        #{$selector},
-        '[connotation-specifier]',
-        ':not([connotation])'
-      );
-      $scoped-selector: $default-selector, $scoped-selector;
-    }
-
-    #{$scoped-selector} {
-			--mdc-theme-secondary: var(--vvd-color-#{$connotation}-background);
-			--vvd-switch-checked-background-hover: var(--vvd-color-#{$connotation}-background-hover);
-		}
-  }
-}
-
-@include connotations-context(
-  ':host([connotation-specifier])'
-);
-
 :host([enlarged]) {
 	.mdc-switch,
 	.mdc-switch__native-control {
@@ -108,11 +71,15 @@
 	}
 }
 
+@include color-connotation-mixins.connotations-context(
+	':host(#{color-connotation-mixins.$connotation-placeholder})',
+	primary cta success alert
+);
+
 // colors/shadowing
 :host {
-	--vvd-switch-checked-background: var(#{scheme-variables.$vvd-color-primary-background});
-	--vvd-switch-checked-background-hover: var(#{scheme-variables.$vvd-color-primary-background});
-	--vvd-switch-checked-background-focus: var(#{scheme-variables.$vvd-color-primary-background});
+		--mdc-theme-secondary: var(#{color-semantic-variable-names.$vvd-color-connotation-background});
+
 
 	--vvd-switch-unchecked-background: var(#{scheme-variables.$vvd-color-base-neutral});
 	--vvd-switch-unchecked-background-hover: var(#{scheme-variables.$vvd-color-base-neutral});
@@ -140,10 +107,6 @@
 		.mdc-switch__track,
 		&.mdc-switch--checked .mdc-switch__track {
 			opacity: initial;
-		}
-
-		&:hover .mdc-switch__track {
-			background-color: var(--vvd-switch-checked-background-hover);
 		}
 
 		&:not(.mdc-switch--checked):hover .mdc-switch__track {
