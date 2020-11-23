@@ -1,0 +1,16 @@
+name: Build & Deploy Showcase (Dev)
+
+on:
+  push:
+    branches: [fix-ci]
+
+jobs:
+  build-deploy-demo-dev:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create deploy timestamp/version
+        run: echo "STORYBOOK_DEPLOY_TIMESTAMP=some" >> $GITHUB_ENV
+
+      - name: Create deploy timestamp/version
+        run: echo $STORYBOOK_DEPLOY_TIMESTAMP

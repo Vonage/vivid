@@ -32,7 +32,7 @@ jobs:
       # Update to a new version
       - name: Extract release version
         id: extractVersion
-        run: echo "::set-output name=version::$(echo ${GITHUB_REF##*/release-})"
+        run: echo "version=$(echo ${GITHUB_REF##*/release-})" >> $GITHUB_ENV
 
       - name: Delete temporary trigger tag
         run: git push origin --delete release-${{ steps.extractVersion.outputs.version }}
