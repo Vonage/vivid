@@ -16,12 +16,141 @@ describe('note', () => {
 		);
 	});
 
-	it('should internal contents', async () => {
-		const addedElements = addElement(
+	it('should have internal contents', async () => {
+		const [note] = addElement(
 			textToDomToParent(`<${COMPONENT_NAME}>Internal contents</${COMPONENT_NAME}>`)
 		);
-		const actualElement = addedElements[0];
 		await waitNextTask();
-		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
+		expect(note.shadowRoot.innerHTML).to.equalSnapshot();
+	});
+
+	it('should have internal contents (full layout)', async () => {
+		const [note] = addElement(
+			textToDomToParent(
+				`<${COMPONENT_NAME} header="Title" icon="home" connotation="cta">Internal contents</${COMPONENT_NAME}>`
+			)
+		);
+		await waitNextTask();
+		expect(note.shadowRoot.innerHTML).to.equalSnapshot();
+	});
+
+	describe('header', () => {
+		it('should have header when header is set', async () => {
+			const [note] = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} header="Title">Internal contents</${COMPONENT_NAME}>`
+				)
+			);
+			await waitNextTask();
+			expect(note.shadowRoot.innerHTML).to.equalSnapshot();
+		});
+
+		it('should have header added when header is set dynamically (property)', async () => {
+			const [note] = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME}>Internal contents</${COMPONENT_NAME}>`
+				)
+			);
+			await waitNextTask();
+			note.header = 'Title';
+			await waitNextTask();
+			expect(note.shadowRoot.innerHTML).to.equalSnapshot();
+		});
+
+		it('should have header added when header is set dynamically (attribute)', async () => {
+			const [note] = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME}>Internal contents</${COMPONENT_NAME}>`
+				)
+			);
+			await waitNextTask();
+			note.setAttribute('header', 'Title');
+			await waitNextTask();
+			expect(note.shadowRoot.innerHTML).to.equalSnapshot();
+		});
+
+		it('should have header removed when header is unset (property)', async () => {
+			const [note] = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} header="Title">Internal contents</${COMPONENT_NAME}>`
+				)
+			);
+			await waitNextTask();
+			note.header = null;
+			await waitNextTask();
+			expect(note.shadowRoot.innerHTML).to.equalSnapshot();
+		});
+
+		it('should have header removed when header is unset (attribute)', async () => {
+			const [note] = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} header="Title">Internal contents</${COMPONENT_NAME}>`
+				)
+			);
+			await waitNextTask();
+			note.removeAttribute('header');
+			await waitNextTask();
+			expect(note.shadowRoot.innerHTML).to.equalSnapshot();
+		});
+	});
+
+	describe('icon', () => {
+		it('should have icon when icon is set', async () => {
+			const [note] = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} icon="home">Internal contents</${COMPONENT_NAME}>`
+				)
+			);
+			await waitNextTask();
+			expect(note.shadowRoot.innerHTML).to.equalSnapshot();
+		});
+
+		it('should have icon added when icon is set dynamically (property)', async () => {
+			const [note] = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME}>Internal contents</${COMPONENT_NAME}>`
+				)
+			);
+			await waitNextTask();
+			note.icon = 'home';
+			await waitNextTask();
+			expect(note.shadowRoot.innerHTML).to.equalSnapshot();
+		});
+
+		it('should have icon added when icon is set dynamically (attribute)', async () => {
+			const [note] = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME}>Internal contents</${COMPONENT_NAME}>`
+				)
+			);
+			await waitNextTask();
+			note.setAttribute('icon', 'home');
+			await waitNextTask();
+			expect(note.shadowRoot.innerHTML).to.equalSnapshot();
+		});
+
+		it('should have icon removed when icon is unset (property)', async () => {
+			const [note] = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} icon="home">Internal contents</${COMPONENT_NAME}>`
+				)
+			);
+			await waitNextTask();
+			note.icon = null;
+			await waitNextTask();
+			expect(note.shadowRoot.innerHTML).to.equalSnapshot();
+		});
+
+		it('should have icon removed when icon is unset (attribute)', async () => {
+			const [note] = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} icon="home">Internal contents</${COMPONENT_NAME}>`
+				)
+			);
+			await waitNextTask();
+			note.removeAttribute('icon');
+			await waitNextTask();
+			expect(note.shadowRoot.innerHTML).to.equalSnapshot();
+		});
 	});
 });
