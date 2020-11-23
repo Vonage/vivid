@@ -32,7 +32,7 @@ jobs:
         run: yarn storybook:build
 
       - name: Create deploy timestamp/version
-        run: echo "STORYBOOK_DEPLOY_TIMESTAMP=$(jq -r '.timestamp' ./.storybook/static/build-details.json)"" >> $GITHUB_ENV
+        run: echo "STORYBOOK_DEPLOY_TIMESTAMP=$(jq -r '.timestamp' ./.storybook/static/build-details.json)" >> $GITHUB_ENV
 
       - name: Deploy showcase versioned as ${{ env.STORYBOOK_DEPLOY_TIMESTAMP }}
         run: aws s3 sync ./.out/ s3://${{ secrets.AWS_S3_BUCKET_B }}/${{ env.STORYBOOK_DEPLOY_TIMESTAMP }}
