@@ -32,7 +32,6 @@ const TemplateComplex = args => html`
 		<div>
 			Pascal argues that a rational person should live as though God exists and seek to believe in God. If God does not actually exist, such a person will have only a finite loss (some pleasures, luxury, etc.), whereas if God does exist, he stands to receive infinite gains (as represented by eternity in Heaven) and avoid infinite losses (eternity in Hell).
 		</div>
-		<hr>
 		<div>
 			Read more <a href="https://en.wikipedia.org/wiki/Pascal%27s_wager#:~:text=Pascal's%20wager%20is%20an%20argument,Pascal%20(1623%E2%80%931662).&text=Pascal%20argues%20that%20a%20rational,seek%20to%20believe%20in%20God.">here</a>.
 		</div>
