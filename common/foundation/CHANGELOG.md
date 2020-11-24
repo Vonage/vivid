@@ -1,3 +1,17 @@
+# [0.16.0](https://github.com/vonage/vivid/compare/v0.15.3...v0.16.0) (2020-11-24)
+
+
+### Bug Fixes
+
+* issue [#458](https://github.com/vonage/vivid/issues/458): added tests for all of the components using connotations ([#459](https://github.com/vonage/vivid/issues/459)) ([d589f53](https://github.com/vonage/vivid/commit/d589f53e469f5bc581c49f536784f640dd383c01))
+
+
+### Features
+
+* iss-454 / viv-158 vwc-note component ([#455](https://github.com/vonage/vivid/issues/455)) ([137d772](https://github.com/vonage/vivid/commit/137d772bc66d570c61fd9fad0367c9d528c45d11)), closes [#454](https://github.com/vonage/vivid/issues/454) [#454](https://github.com/vonage/vivid/issues/454) [#454](https://github.com/vonage/vivid/issues/454) [#454](https://github.com/vonage/vivid/issues/454) [#454](https://github.com/vonage/vivid/issues/454) [#454](https://github.com/vonage/vivid/issues/454) [#454](https://github.com/vonage/vivid/issues/454) [#454](https://github.com/vonage/vivid/issues/454) [#454](https://github.com/vonage/vivid/issues/454) [#454](https://github.com/vonage/vivid/issues/454) [#454](https://github.com/vonage/vivid/issues/454) [#454](https://github.com/vonage/vivid/issues/454) [#454](https://github.com/vonage/vivid/issues/454)
+
+
+
 ## [0.15.3](https://github.com/vonage/vivid/compare/v0.15.2...v0.15.3) (2020-11-16)
 
 

@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.16.0](https://github.com/Vonage/vivid/compare/v0.15.3...v0.16.0) (2020-11-24)
+
+
+### Bug Fixes
+
+* ci scripts due to the deprecation of echo-env ([#460](https://github.com/Vonage/vivid/issues/460)) ([cba1c36](https://github.com/Vonage/vivid/commit/cba1c36e4ccf35d5016e1691e097d7c4d62da7c9))
+* issue [#458](https://github.com/Vonage/vivid/issues/458): added tests for all of the components using connotations ([#459](https://github.com/Vonage/vivid/issues/459)) ([d589f53](https://github.com/Vonage/vivid/commit/d589f53e469f5bc581c49f536784f640dd383c01))
+
+
+### Features
+
+* iss-443/viv-273 typography tests dt automation ([#444](https://github.com/Vonage/vivid/issues/444)) ([8bde4af](https://github.com/Vonage/vivid/commit/8bde4affbdee6b818276bf76fe8cfa9c9eda2850)), closes [#430](https://github.com/Vonage/vivid/issues/430) [#430](https://github.com/Vonage/vivid/issues/430) [#430](https://github.com/Vonage/vivid/issues/430) [#430](https://github.com/Vonage/vivid/issues/430) [#430](https://github.com/Vonage/vivid/issues/430) [#430](https://github.com/Vonage/vivid/issues/430) [#430](https://github.com/Vonage/vivid/issues/430) [#430](https://github.com/Vonage/vivid/issues/430) [#443](https://github.com/Vonage/vivid/issues/443) [#443](https://github.com/Vonage/vivid/issues/443) [#443](https://github.com/Vonage/vivid/issues/443) [#443](https://github.com/Vonage/vivid/issues/443)
+* iss-454 / viv-158 vwc-note component ([#455](https://github.com/Vonage/vivid/issues/455)) ([137d772](https://github.com/Vonage/vivid/commit/137d772bc66d570c61fd9fad0367c9d528c45d11)), closes [#454](https://github.com/Vonage/vivid/issues/454) [#454](https://github.com/Vonage/vivid/issues/454) [#454](https://github.com/Vonage/vivid/issues/454) [#454](https://github.com/Vonage/vivid/issues/454) [#454](https://github.com/Vonage/vivid/issues/454) [#454](https://github.com/Vonage/vivid/issues/454) [#454](https://github.com/Vonage/vivid/issues/454) [#454](https://github.com/Vonage/vivid/issues/454) [#454](https://github.com/Vonage/vivid/issues/454) [#454](https://github.com/Vonage/vivid/issues/454) [#454](https://github.com/Vonage/vivid/issues/454) [#454](https://github.com/Vonage/vivid/issues/454) [#454](https://github.com/Vonage/vivid/issues/454)
+
+
+
+
+
 ## [0.15.3](https://github.com/Vonage/vivid/compare/v0.15.2...v0.15.3) (2020-11-16)
 
 

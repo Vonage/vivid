@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vvd-foundation",
-	"version": "0.15.3",
+	"version": "0.16.0",
 	"description": "internal package to hold constants, definitions and primitives to be used in the rest of Vivid ecosystem",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/foundation#readme",
 	"license": "ISC",
