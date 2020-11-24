@@ -31,15 +31,14 @@ jobs:
 
       # Update to a new version
       - name: Extract release version
-        id: extractVersion
-        run: echo "version=$(echo ${GITHUB_REF##*/release-})" >> $GITHUB_ENV
+        run: echo "RELEASE_VERSION=$(echo ${GITHUB_REF##*/release-})" >> $GITHUB_ENV
 
       - name: Delete temporary trigger tag
-        run: git push origin --delete release-${{ steps.extractVersion.outputs.version }}
+        run: git push origin --delete release-${{ env.RELEASE_VERSION }}
 
-      - name: Bump version to ${{ steps.extractVersion.outputs.version }}
+      - name: Bump version to ${{ env.RELEASE_VERSION }}
         run: |
-          yarn lerna version ${{ steps.extractVersion.outputs.version }} --force-publish --no-private --no-git-tag-version --no-push --yes
+          yarn lerna version ${{ env.RELEASE_VERSION }} --force-publish --no-private --no-git-tag-version --no-push --yes
           yarn changelog
 
       # Build & Test with new version
@@ -59,10 +58,10 @@ jobs:
           git config user.email "vivid.ci@vonage.com"
           git config user.name "Vivid CI"
           git add --all
-          git commit -m "update versions to ${{ steps.extractVersion.outputs.version }}"
+          git commit -m "update versions to ${{ env.RELEASE_VERSION }}"
           git push
 
       - name: Tag release
         run: |
-          git tag -a v${{ steps.extractVersion.outputs.version }} -m "tag release v${{ steps.extractVersion.outputs.version }}"
+          git tag -a v${{ env.RELEASE_VERSION }} -m "tag release v${{ env.RELEASE_VERSION }}"
           git push --follow-tags
