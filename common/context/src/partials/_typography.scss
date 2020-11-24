@@ -32,9 +32,12 @@
   p {
     width: 60ch;
     max-width: 100%;
-  }
+	}
 
-  code,
+	code {
+		@include typography.typography-cat-shorthand('body-1-code');
+	}
+
   samp,
   kbd,
   var {
