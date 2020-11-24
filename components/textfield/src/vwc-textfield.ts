@@ -20,7 +20,7 @@ import {
 import { Shape } from '@vonage/vvd-foundation/constants';
 import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
 export { TextFieldType } from '@material/mwc-textfield';
-import { listHandler } from './vwc-textfield-list-handler';
+import { handleList } from './vwc-textfield-list-handler';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -56,13 +56,16 @@ export class VWCTextField extends MWCTextField {
 		associateWithForm<VWCTextField>(this, this.formElement);
 		submitOnEnter((this as unknown) as HTMLInputElement);
 		handleAutofocus(this);
-		listHandler.call(this);
 	}
 
 	updated(changedProperties: PropertyValues): void {
 		super.updated(changedProperties);
 		if (this.shape === 'pill') {
 			this.dense = true;
+		}
+		if (changedProperties.has('list')) {
+			console.log('list changed');
+			handleList.call(this);
 		}
 	}
 
