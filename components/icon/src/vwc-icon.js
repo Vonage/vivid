@@ -130,4 +130,4 @@ class IconElement extends HTMLElement {
 }
 
 window.customElements.define('vwc-icon', IconElement);
-export { IconElement as Icon };
+export { IconElement as VWCIcon };
