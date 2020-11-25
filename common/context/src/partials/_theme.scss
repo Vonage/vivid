@@ -7,7 +7,7 @@
 	}
 
 	code {
-		background-color: grey;
+		background-color:var(#{scheme-variables.$vvd-color-surface-background});
 	}
 
 	a {
