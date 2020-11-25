@@ -3,10 +3,9 @@ import '@storybook/addon-console';
 import { addParameters, setCustomElements } from '@storybook/web-components';
 import customElements from '../custom-elements.json';
 import vvdCore from '@vonage/vvd-core';
-import '@vonage/vvd-context';
 
 vvdCore.settled
-	.then(() => console.info('init Vivid context done (preview frame)'))
+	.then(() => console.info('init Vivid core done (preview frame)'))
 	.catch(e => console.error(e));
 
 async function run() {

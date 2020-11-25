@@ -9,4 +9,8 @@
 	code {
 		background-color: grey;
 	}
+
+	a {
+		color: var(#{scheme-variables.$vvd-color-cta-background});
+	}
 }

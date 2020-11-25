@@ -38,7 +38,16 @@
 		@include typography.typography-cat-shorthand('body-1-code');
 	}
 
-  samp,
+	b,
+	strong {
+		@include typography.typography-cat-shorthand('body-1-bold');
+	}
+
+	a {
+		@include typography.typography-cat-shorthand('body-1-link');
+	}
+
+	samp,
   kbd,
   var {
 		@include typography.typography-cat-shorthand('body-1-code');

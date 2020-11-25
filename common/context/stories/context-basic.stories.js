@@ -1,5 +1,4 @@
-import vvdCore from '@vonage/vvd-core';
-import '@vonage/vvd-context';
+import vvdContext from '@vonage/vvd-context';
 import '@vonage/vwc-theme-switch';
 import '@vonage/vwc-top-app-bar';
 import { html } from 'lit-element';
@@ -20,6 +19,10 @@ export const basic = () => html`
     <h1>Call Flow (H1)</h1>
 
     <h2>Overview (H2)</h2>
+
+		<p>
+			The contents of this page are an excerps from <a href="https://developer.nexmo.com/voice/voice-api/guides/call-flow">this API docs</a>.
+		</p>
 
     <p>
       The Nexmo Voice API handles two types of phone call:
@@ -43,6 +46,6 @@ export const basic = () => html`
   </main>
 `;
 
-vvdCore.settled
+vvdContext.install()
 	.then(() => console.log('Vivid context initialised for the context demo story'))
 	.catch(e => console.error(e));
