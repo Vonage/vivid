@@ -16,7 +16,7 @@
   </span>
   <mwc-tab-indicator>
   </mwc-tab-indicator>
-  <span class="mdc-tab__ripple">
+  <span class="mdc-ripple-upgraded mdc-tab__ripple">
   </span>
 </button>
 
