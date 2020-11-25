@@ -56,6 +56,7 @@ export function handleList(this: VWCTextField): void {
 				(target as VWCMenu)?.items[index as number]
 		)
 	);
+
 	// #endregion
 
 	// #region SUBSCRIPTIONS
@@ -70,6 +71,7 @@ export function handleList(this: VWCTextField): void {
 		value ||= textContent || '';
 		this.value = value;
 	});
+
 	// #endregion
 }
 

@@ -34,9 +34,12 @@ describe('textfield list', () => {
 					const iframeDocument = iframe.contentDocument;
 
 					const textfield = iframeDocument.querySelector(VWC_TEXTFIELD);
-					const menu = iframeDocument.querySelector(VWC_MENU);
-					expect(textfield.list).to.equal(menu.id);
+
+					// adding a timeout for component to render shadowed html input
+					await waitInterval(200);
 					textfield.focus();
+
+					const menu = iframeDocument.querySelector(VWC_MENU);
 					expect(menu.open).to.equal(true);
 				}
 			);
@@ -65,6 +68,8 @@ describe('textfield list', () => {
 
 					const textfield = iframeDocument.querySelector(VWC_TEXTFIELD);
 					const menu = iframeDocument.querySelector(VWC_MENU);
+					// adding a timeout for component to render shadowed html input
+					await waitInterval(200);
 					textfield.focus();
 
 					expect(menu.open).to.equal(true);
@@ -80,6 +85,10 @@ describe('textfield list', () => {
 
 					const textfield = iframeDocument.querySelector(VWC_TEXTFIELD);
 					const menu = iframeDocument.querySelector(VWC_MENU);
+
+					// adding a timeout for component to render shadowed html input
+					await waitInterval(200);
+
 					textfield.focus();
 
 					expect(menu.open).to.equal(true);
@@ -117,15 +126,6 @@ describe('textfield list', () => {
 					textfield.focus();
 
 					expect(menu.open).to.equal(false);
-				}
-			);
-		});
-
-		it(`should keep ${VWC_TEXTFIELD} focus on vwc-list mousedown`, async () => {
-			await getFrameLoadedInjected(
-				TEXTFIELD_LIST_SETUP_HTML_TAG,
-				async (iframe) => {
-					expect(false).to.equal(true);
 				}
 			);
 		});
