@@ -20,8 +20,8 @@ $connotation-placeholder: '[connotation-specifier]';
     );
 
     #{$scoped-selector} {
-      #{color-semantic.$vvd-color-connotation-background}: var(--vvd-color-#{$connotation}-background);
-      #{color-semantic.$vvd-color-connotation-foreground}: var(--vvd-color-#{$connotation}-foreground);
+      #{color-semantic.$vvd-color-connotation-background}: var(--vvd-color-#{$connotation});
+      #{color-semantic.$vvd-color-connotation-foreground}: var(--vvd-color-on-#{$connotation});
     }
   }
 }
