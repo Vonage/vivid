@@ -1,8 +1,11 @@
+import { Connotation } from '@vonage/vvd-foundation/constants';
+
 export const argTypes = {
 	connotation: {
 		control: {
 			type: 'select',
-			options: ['primary', 'cta', 'success', 'error'],
+			options: Object.values(Connotation)
+				.filter(connotation => ![Connotation.Announcement, Connotation.Info].includes(connotation))
 		}
 	},
   enlarged: {

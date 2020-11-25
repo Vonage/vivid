@@ -55,7 +55,7 @@ class IconElement extends HTMLElement {
 			.flatMapLatest(() => {
 				return typeProperty
 					.filter(Boolean)
-					.flatMap((typeId)=> {
+					.flatMapLatest((typeId)=> {
 						const loadedSvgProperty = kefir.fromPromise(resolveIcon(typeId)).toProperty();
 						return kefir
 							.merge([

@@ -1,3 +1,16 @@
+## [0.16.1](https://github.com/vonage/vivid/compare/v0.16.0...v0.16.1) (2020-11-24)
+
+
+
+# [0.16.0](https://github.com/vonage/vivid/compare/v0.15.3...v0.16.0) (2020-11-24)
+
+
+### Features
+
+* iss-443/viv-273 typography tests dt automation ([#444](https://github.com/vonage/vivid/issues/444)) ([8bde4af](https://github.com/vonage/vivid/commit/8bde4affbdee6b818276bf76fe8cfa9c9eda2850)), closes [#430](https://github.com/vonage/vivid/issues/430) [#430](https://github.com/vonage/vivid/issues/430) [#430](https://github.com/vonage/vivid/issues/430) [#430](https://github.com/vonage/vivid/issues/430) [#430](https://github.com/vonage/vivid/issues/430) [#430](https://github.com/vonage/vivid/issues/430) [#430](https://github.com/vonage/vivid/issues/430) [#430](https://github.com/vonage/vivid/issues/430) [#443](https://github.com/vonage/vivid/issues/443) [#443](https://github.com/vonage/vivid/issues/443) [#443](https://github.com/vonage/vivid/issues/443) [#443](https://github.com/vonage/vivid/issues/443)
+
+
+
 ## [0.15.3](https://github.com/vonage/vivid/compare/v0.15.2...v0.15.3) (2020-11-16)
 
 

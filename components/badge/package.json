@@ -1,6 +1,6 @@
 {
   "name": "@vonage/vwc-badge",
-  "version": "0.15.3",
+  "version": "0.16.1",
   "description": "> TODO: description",
   "author": "yinonov <yinon@hotmail.com>",
   "homepage": "https://github.com/Vonage/vivid/tree/master/components/badge#readme",
@@ -25,12 +25,12 @@
     "url": "https://github.com/Vonage/vivid/issues"
   },
   "dependencies": {
-    "@vonage/vvd-core": "^0.15.3",
-    "@vonage/vvd-foundation": "^0.15.3",
+    "@vonage/vvd-core": "^0.16.1",
+    "@vonage/vvd-foundation": "^0.16.1",
     "lit-element": "^2.4.0",
     "tslib": "^2.0.3"
   },
   "devDependencies": {
-    "@vonage/vvd-typography": "^0.15.3"
+    "@vonage/vvd-typography": "^0.16.1"
   }
 }

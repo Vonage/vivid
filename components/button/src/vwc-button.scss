@@ -20,11 +20,12 @@
 
 
 @include color-connotation-mixins.connotations-context(
-	':host([unelevated]#{color-connotation-mixins.$connotation-placeholder},[outlined]#{color-connotation-mixins.$connotation-placeholder})'
+	':host([unelevated]#{color-connotation-mixins.$connotation-placeholder}),:host([outlined]#{color-connotation-mixins.$connotation-placeholder})'
 );
-:host([unelevated],[outlined]) {
-  --mdc-theme-primary: var(#{color-semantic.$color-connotation-background});
-  --mdc-theme-on-primary: var(#{color-semantic.$color-connotation-foreground});
+:host([unelevated]),
+:host([outlined]) {
+  --mdc-theme-primary: var(#{color-semantic.$vvd-color-connotation-background});
+  --mdc-theme-on-primary: var(#{color-semantic.$vvd-color-connotation-foreground});
 }
 /////////////////////////////////////////////////////////////////////////////
 .mdc-button {
