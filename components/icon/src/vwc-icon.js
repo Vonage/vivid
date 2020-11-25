@@ -26,7 +26,7 @@ const noop = ()=> {};
  * @prop {"small" | "medium" | "large"} [size="medium"] - The icon's size.
  *
  */
-class IconElement extends HTMLElement {
+class VWCIcon extends HTMLElement {
 
 	constructor() {
 		super();
@@ -129,5 +129,5 @@ class IconElement extends HTMLElement {
 	}
 }
 
-window.customElements.define('vwc-icon', IconElement);
-export { IconElement as VWCIcon };
+window.customElements.define('vwc-icon', VWCIcon);
+export { VWCIcon };
