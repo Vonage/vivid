@@ -55,7 +55,7 @@ const byType = (typeName) => ({ type }) => type === typeName,
  * @fires userScrubRequest - Fires while the user modifies the scrubber's knob location.
  * @fires {number} userPlayPauseRequest - Fires when the user clicks the play/pause button, the "detail" event field will contain a number between zero and one describing the user's relative selected position.
  */
-class MediaController extends HTMLElement {
+class VWCMediaController extends HTMLElement {
 	constructor() {
 		super();
 
@@ -343,5 +343,5 @@ class MediaController extends HTMLElement {
 	}
 }
 
-export default MediaController;
-customElements.define('vwc-media-controller', MediaController);
+export { VWCMediaController };
+customElements.define('vwc-media-controller', VWCMediaController);

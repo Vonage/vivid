@@ -1,3 +1,5 @@
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+
 vwc-carousel {
 	width: 300px;
 	height: 200px;
@@ -41,7 +43,7 @@ vwc-casousel:active {
 	display: flex;
 }
 
-$themeColor: var(--vvd-color-base-foreground) !default;
+$themeColor: var(#{scheme-variables.$vvd-color-on-base}) !default;
 
 @import ".../../../node_modules/swiper/scss/functions";
 @import "../../../node_modules/swiper/components/core/core";
