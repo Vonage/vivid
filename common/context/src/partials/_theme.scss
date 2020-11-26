@@ -3,13 +3,13 @@
 
 @mixin scheme-variables-coupling {
   body {
-    color: var(#{scheme-variables.$vvd-color-base-foreground});
     background-color: var(#{scheme-variables.$vvd-color-base-background});
+    color: var(#{scheme-variables.$vvd-color-base-foreground});
 	}
 
 	code {
-		color: color-base.$orange-500;
 		background-color:var(#{scheme-variables.$vvd-color-surface-background});
+		color: color-base.$orange-500;
 	}
 
 	a {
