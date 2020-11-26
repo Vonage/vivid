@@ -18,8 +18,7 @@ const PACKAGE_NAME = "@vonage/vivid";
 
 const
 	EXCLUDE_PACKAGES = [
-		"@vonage/vwc-chips",						// Dependency not available (from MWC)
-		"@vonage/vwc-relative-time"			// Non-standard export
+		"@vonage/vwc-chips"						// Dependency not available (from MWC)
 	],
 	ALWAYS_INCLUDE = [
 		{ name: "@vonage/vvd-core", export_as: "VVDCore" }
@@ -52,7 +51,7 @@ const packageJsonProperty = customElementsMapProperty
 	.map((packages)=>
 		packageJsonTemplate({
 			name: PACKAGE_NAME,
-			version: "0.0.1-alpha", //fp.pipe(fp.map(fp.get('version')), (arr)=> arr.sort(semverCmp), fp.last)(packages),
+			version: "0.0.2-alpha", //fp.pipe(fp.map(fp.get('version')), (arr)=> arr.sort(semverCmp), fp.last)(packages),
 			dependencies:
 				packages
 					.map(({ name, version })=> ({ [name]: `^${version}` }))
