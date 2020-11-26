@@ -52,7 +52,7 @@ const packageJsonProperty = customElementsMapProperty
 	.map((packages)=>
 		packageJsonTemplate({
 			name: PACKAGE_NAME,
-			version: fp.pipe(fp.map(fp.get('version')), (arr)=> arr.sort(semverCmp), fp.last)(packages),
+			version: "0.0.1-alpha", //fp.pipe(fp.map(fp.get('version')), (arr)=> arr.sort(semverCmp), fp.last)(packages),
 			dependencies:
 				packages
 					.map(({ name, version })=> ({ [name]: `^${version}` }))

@@ -1,0 +1,46 @@
+name: Release Vivid (GitHub)
+
+on:
+  push:
+    branches:
+      - vivid-all-package-generator
+
+jobs:
+  build-publish:
+    runs-on: ubuntu-latest
+    env:
+      ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_VIVID_DEMO_PROD_ACCESS }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_VIVID_DEMO_PROD_SECRET }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.CI_AT }}
+
+      - name: Setup NodeJS 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Install dependencies
+        run: |
+          npm install -g yarn
+          yarn install
+
+      # Build and publish
+      - name: Build components
+        run: yarn compile
+
+      - name: Build CDN icon resolver
+        run: yarn build:icon-resolver --resolveStrategy=cdn --awsAccessKey=${{ secrets.AWS_VIVID_DEMO_PROD_ACCESS }} --awsAccessSecret=${{ secrets.AWS_VIVID_DEMO_PROD_SECRET }} --awsBucketName=vivid-icons-prod --awsBaseUrl=https://d3fzvwfxu7izti.cloudfront.net
+
+      - name: Publish Phantom Component (@vonage/vivid)
+        run: |
+          echo registry=https://npm.pkg.github.com/ > .npmrc
+          echo //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN} >> .npmrc
+          npm publish $(node ./scripts/vivid-all-package-generator/index.js)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
