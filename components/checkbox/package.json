@@ -30,5 +30,8 @@
 		"@vonage/vvd-style-coupling": "^0.16.1",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.3"
+	},
+	"devDependencies": {
+		"@vonage/vvd-design-tokens": "^0.16.1"
 	}
 }

@@ -78,17 +78,17 @@
 
 // colors/shadowing
 :host {
-		--mdc-theme-secondary: var(#{color-semantic-variable-names.$vvd-color-connotation-background});
+		--mdc-theme-secondary: var(#{color-semantic-variable-names.$vvd-color-connotation});
 
 
-	--vvd-switch-unchecked-background: var(#{scheme-variables.$vvd-color-base-neutral});
-	--vvd-switch-unchecked-background-hover: var(#{scheme-variables.$vvd-color-base-neutral});
-	--vvd-switch-unchecked-background-focus: var(#{scheme-variables.$vvd-color-base-neutral});
+	--vvd-switch-unchecked-background: var(#{scheme-variables.$vvd-color-contrast-neutral});
+	--vvd-switch-unchecked-background-hover: var(#{scheme-variables.$vvd-color-contrast-neutral});
+	--vvd-switch-unchecked-background-focus: var(#{scheme-variables.$vvd-color-contrast-neutral});
 
-	--vvd-switch-disabled-background: var(#{scheme-variables.$vvd-color-base-soft});
+	--vvd-switch-disabled-background: var(#{scheme-variables.$vvd-color-contrast-soft});
 	--vvd-switch-shadow-focus: 0, 0, 0, 0.5;
 
-	--mdc-theme-surface: var(#{scheme-variables.$vvd-color-surface-background}); // unchecked thumb
+	--mdc-theme-surface: var(#{scheme-variables.$vvd-color-surface}); // unchecked thumb
 	--mdc-theme-on-surface: var(--vvd-switch-unchecked-background); // unchecked track
 
 	.mdc-switch {
@@ -97,7 +97,7 @@
 		}
 
 		&.mdc-switch--checked .mdc-switch__thumb {
-			background-color: var(#{scheme-variables.$vvd-color-surface-background});
+			background-color: var(#{scheme-variables.$vvd-color-surface});
 		}
 
 		&:hover .mdc-switch__thumb {
