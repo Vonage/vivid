@@ -9,10 +9,10 @@
 
 	code {
 		background-color:var(#{scheme-variables.$vvd-color-surface-background});
-		color: color-base.$orange-500;
+		color: color-base.$orange-600;
 	}
 
 	a {
-		color: var(#{scheme-variables.$vvd-color-cta-background});
+		color: color-base.$purple-600;
 	}
 }
