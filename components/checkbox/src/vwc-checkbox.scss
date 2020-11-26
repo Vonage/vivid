@@ -1,3 +1,4 @@
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 
 :host {
@@ -55,9 +56,8 @@
 		&:hover,
 		&:focus {
 			~ .mdc-checkbox__background {
-				--mdc-checkbox-unchecked-color: var(--vvd-color-base-foreground);
-
-				background-color: var(--vvd-color-base-background);
+				background-color: var(#{scheme-variables.$vvd-color-base});
+				--mdc-checkbox-unchecked-color: var(#{scheme-variables.$vvd-color-on-base});
 			}
 		}
 	}

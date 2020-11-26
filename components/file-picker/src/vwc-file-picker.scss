@@ -1,5 +1,6 @@
-@use '@vonage/vvd-typography/scss/typography' as typography;
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
+@use '@vonage/vvd-typography/scss/typography' as typography;
 
 :host {
 	display: inline-block;
@@ -33,7 +34,7 @@
 	border: 1px dashed #cccccc;
 	border-radius: 6px;
 	box-sizing: border-box;
-	background-color: var(#{color-semantic.$color-base-background});
+	background-color: var(#{scheme-variables.$vvd-color-base});
 
 	.files-count {
 		position: absolute;

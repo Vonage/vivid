@@ -63,11 +63,10 @@ function assertChildrenAffected(
 	stylesAffected
 ) {
 	const schemeVars = getSchemeVariables();
-	const expectedColor =
-		schemeVars['light/base'][`--vvd-color-${connotation}-background`];
+	const expectedColor = schemeVars['light/base'][`--vvd-color-${connotation}`];
 	if (!expectedColor) {
 		throw new Error(
-			`failed to find '--vvd-color-${connotation}-background' value in 'light/base' scheme`
+			`failed to find '--vvd-color-${connotation}' value in 'light/base' scheme`
 		);
 	}
 

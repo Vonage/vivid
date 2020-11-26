@@ -1,12 +1,13 @@
 @forward './vwc-select-coupling';
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/_scheme-variables' as scheme-variables;
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins;
 
 $vvd-select-size-block: --vvd-select-size-block;
 
 :host {
-  --mdc-select-fill-color: var(--vvd-color-base-background);
-  --mdc-select-ink-color: var(--vvd-color-base-foreground);
+  --mdc-select-fill-color: var(#{scheme-variables.$vvd-color-base});
+  --mdc-select-ink-color: var(#{scheme-variables.$vvd-color-on-base});
   --mdc-select-label-ink-color: var(#{color-semantic.$formfield-label-idle-ink});
 	--mdc-select-disabled-ink-color: var(#{color-semantic.$formfield-disabled-ink});
 	--mdc-select-disabled-fill-color: var(#{color-semantic.$formfield-disabled-fill});
