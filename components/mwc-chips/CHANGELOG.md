@@ -2,6 +2,10 @@
 
 
 
+## v0.16.2 (2020-11-26)
+
+
+
 ## [0.16.1](https://github.com/material-components/material-components-web-components/compare/v0.16.0...v0.16.1) (2020-11-24)
 
 

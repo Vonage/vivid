@@ -1,6 +1,10 @@
 ## [0.16.2](https://github.com/vonage/vivid/compare/v0.16.1...v0.16.2) (2020-11-26)
 
 
+
+## v0.16.2 (2020-11-26)
+
+
 ### Features
 
 * **icon:** apply naming standards + JS explicit imports ([#468](https://github.com/vonage/vivid/issues/468)) ([31382df](https://github.com/vonage/vivid/commit/31382dfd1460e4907bacf0eee3b04314fb8bef7f))

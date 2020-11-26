@@ -1,6 +1,10 @@
 ## [0.16.2](https://github.com/vonage/vivid/compare/v0.16.1...v0.16.2) (2020-11-26)
 
 
+
+## v0.16.2 (2020-11-26)
+
+
 ### Features
 
 * iss 463 unify consolidate semantic vars ([#466](https://github.com/vonage/vivid/issues/466)) ([1e6cd91](https://github.com/vonage/vivid/commit/1e6cd91f5f246ad5c84369436fa7914d8546c866)), closes [#463](https://github.com/vonage/vivid/issues/463) [#463](https://github.com/vonage/vivid/issues/463) [#463](https://github.com/vonage/vivid/issues/463) [#463](https://github.com/vonage/vivid/issues/463) [#463](https://github.com/vonage/vivid/issues/463)
