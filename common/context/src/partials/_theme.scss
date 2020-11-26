@@ -1,14 +1,14 @@
-@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/_scheme-variables' as scheme-variables;
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-foundation/scss/variable-names/color-base-variable-names' as color-base;
 
 @mixin scheme-variables-coupling {
   body {
-    background-color: var(#{scheme-variables.$vvd-color-base-background});
-    color: var(#{scheme-variables.$vvd-color-base-foreground});
+    background-color: var(#{scheme-variables.$vvd-color-base});
+    color: var(#{scheme-variables.$vvd-color-on-base});
 	}
 
 	code {
-		background-color:var(#{scheme-variables.$vvd-color-surface-background});
+		background-color:var(#{scheme-variables.$vvd-color-surface});
 		color: color-base.$orange-600;
 	}
 
