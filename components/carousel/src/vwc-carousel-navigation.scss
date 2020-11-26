@@ -1,11 +1,13 @@
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+
 .swiper-nav {
 	flex: 0 0 29px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	fill: var(--vvd-color-base-foreground);
-	background-color: var(--vvd-color-base-background);
-	border: 1px solid var(--vvd-color-base-dim);
+	fill: var(#{scheme-variables.$vvd-color-on-base});
+	background-color: var(#{scheme-variables.$vvd-color-base});
+	border: 1px solid var(#{scheme-variables.$vvd-color-contrast-dim});
 	box-sizing: border-box;
 	overflow: hidden;
 	outline: none;
