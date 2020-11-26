@@ -1,3 +1,12 @@
+## [0.16.2](https://github.com/vonage/vivid/compare/v0.16.1...v0.16.2) (2020-11-26)
+
+
+### Features
+
+* **relative-time:** apply naming standards ([#470](https://github.com/vonage/vivid/issues/470)) ([14e7755](https://github.com/vonage/vivid/commit/14e7755fbc6f6fec228191a9ecac3f53e4721e47))
+
+
+
 ## [0.16.1](https://github.com/vonage/vivid/compare/v0.16.0...v0.16.1) (2020-11-24)
 
 
