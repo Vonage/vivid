@@ -1,5 +1,9 @@
 import '../vwc-note.js';
-import { waitNextTask, textToDomToParent } from '../../../test/test-helpers.js';
+import {
+	waitNextTask,
+	textToDomToParent,
+	assertComputedStyle,
+} from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import { isolatedElementsCreation } from '../../../test/test-helpers';
 
@@ -32,6 +36,15 @@ describe('note', () => {
 		);
 		await waitNextTask();
 		expect(note.shadowRoot.innerHTML).to.equalSnapshot();
+	});
+
+	it('should have connotation strip constrained', async () => {
+		const [note] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}>Internal contents</${COMPONENT_NAME}>`)
+		);
+		await waitNextTask();
+		assertComputedStyle(note, { width: '8px' }, '::before');
+		assertComputedStyle(note, { height: `${note.offsetHeight}px` }, '::before');
 	});
 
 	describe('header', () => {

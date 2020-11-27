@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-file-picker",
-	"version": "0.16.1",
+	"version": "0.16.2",
 	"description": "File/s picker component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/upload#readme",
 	"license": "ISC",
@@ -23,17 +23,17 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@vonage/vvd-core": "^0.16.1",
-		"@vonage/vvd-foundation": "^0.16.1",
-		"@vonage/vvd-style-coupling": "^0.16.1",
-		"@vonage/vwc-badge": "^0.16.1",
-		"@vonage/vwc-button": "^0.16.1",
-		"@vonage/vwc-icon": "^0.16.1",
+		"@vonage/vvd-core": "^0.16.2",
+		"@vonage/vvd-foundation": "^0.16.2",
+		"@vonage/vvd-style-coupling": "^0.16.2",
+		"@vonage/vwc-badge": "^0.16.2",
+		"@vonage/vwc-button": "^0.16.2",
+		"@vonage/vwc-icon": "^0.16.2",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.3"
 	},
 	"devDependencies": {
-		"@vonage/vvd-design-tokens": "^0.16.1",
-		"@vonage/vvd-typography": "^0.16.1"
+		"@vonage/vvd-design-tokens": "^0.16.2",
+		"@vonage/vvd-typography": "^0.16.2"
 	}
 }
