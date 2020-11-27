@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.16.2](https://github.com/Vonage/vivid/compare/vv0.16.2...v0.16.2) (2020-11-26)
+
+**Note:** Version bump only for package @vivid/root
+
+
+
+
+
+## [0.16.2](https://github.com/Vonage/vivid/compare/v0.16.1...v0.16.2) (2020-11-26)
+
+
+### Features
+
+* **icon:** apply naming standards + JS explicit imports ([#468](https://github.com/Vonage/vivid/issues/468)) ([31382df](https://github.com/Vonage/vivid/commit/31382dfd1460e4907bacf0eee3b04314fb8bef7f))
+* **infra:** Renamed export names to adhere to convention ([b43fe75](https://github.com/Vonage/vivid/commit/b43fe7574edd6202201590b2fce56c6a28f0333a))
+* **infra:** Renamed export names to adhere to convention ([0b17cfb](https://github.com/Vonage/vivid/commit/0b17cfb6c1282c1e49a86d672b3e0573f4e6b227))
+* **relative-time:** apply naming standards ([#470](https://github.com/Vonage/vivid/issues/470)) ([14e7755](https://github.com/Vonage/vivid/commit/14e7755fbc6f6fec228191a9ecac3f53e4721e47))
+* iss 463 unify consolidate semantic vars ([#466](https://github.com/Vonage/vivid/issues/466)) ([1e6cd91](https://github.com/Vonage/vivid/commit/1e6cd91f5f246ad5c84369436fa7914d8546c866)), closes [#463](https://github.com/Vonage/vivid/issues/463) [#463](https://github.com/Vonage/vivid/issues/463) [#463](https://github.com/Vonage/vivid/issues/463) [#463](https://github.com/Vonage/vivid/issues/463) [#463](https://github.com/Vonage/vivid/issues/463)
+* **infra:** Renamed export names to adhere to convention ([ca83b9f](https://github.com/Vonage/vivid/commit/ca83b9f768eb2efa248ecf718ea6eebfa76b39b2))
+
+
+
+
+
 ## [0.16.1](https://github.com/Vonage/vivid/compare/v0.16.0...v0.16.1) (2020-11-24)
 
 **Note:** Version bump only for package @vivid/root
