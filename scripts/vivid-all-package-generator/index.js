@@ -8,9 +8,9 @@ const
 	{ pack } = require('tar-stream'),
 	{ createGzip } = require('zlib'),
 	{ pipeline } = require('stream'),
-	{ createWriteStream } = require('fs'),
 	semverCmp = require('semver-compare'),
 	locatePackage = require('./locate-package'),
+	{ createWriteStream, readFile } = require('fs'),
 	mapCustomElements = require('./map-custom-elements'),
 	packageJsonTemplate = require('./template/package.json.js');
 
@@ -44,24 +44,47 @@ const extraComponents = kefir
 const customElementsMapProperty = kefir
 	.fromPromise(mapCustomElements('./components/*/package.json'))
 	.map(fp.filter(({ name })=> !EXCLUDE_PACKAGES.includes(name)))
-	.combine(extraComponents, _.concat)
-	.toProperty()
+	.toProperty();
 
-const packageJsonProperty = customElementsMapProperty
-	.map((packages)=>
-		packageJsonTemplate({
+const allExports = customElementsMapProperty
+	.combine(extraComponents, _.concat)
+	.toProperty();
+
+const customElementsMapFileProperty = customElementsMapProperty
+	.map((elementsMap)=>
+		elementsMap
+			.flatMap(({ components })=>
+				components
+					.map(({ component_name })=>
+						({
+							component_name,
+							export_name: exportNameTemplate(component_name)
+						})
+					)
+			)
+	)
+	.toProperty();
+
+const packageJsonProperty = kefir
+	.combine([
+		allExports,
+		customElementsMapFileProperty
+	])
+	.map(([packages, component_map])=> {
+		return packageJsonTemplate({
 			name: PACKAGE_NAME,
-			version: "0.0.3-alpha", //fp.pipe(fp.map(fp.get('version')), (arr)=> arr.sort(semverCmp), fp.last)(packages),
+			version: "0.0.4-alpha", //fp.pipe(fp.map(fp.get('version')), (arr)=> arr.sort(semverCmp), fp.last)(packages),
 			dependencies:
 				packages
-					.map(({ name, version })=> ({ [name]: `^${version}` }))
-					.reduce((ac, line)=> Object.assign(ac, line))
-		})
-	)
+					.map(({ name, version }) => ({ [name]: `^${version}` }))
+					.reduce((ac, line) => Object.assign(ac, line)),
+			component_map
+		});
+	})
 	.map(fp.pipe((json)=> JSON.stringify(json, null, 2), asFile('package.json')))
 	.toProperty();
 
-const mainFileProperty = customElementsMapProperty
+const mainFileProperty = allExports
 	.map((packageMap)=> {
 		return packageMap
 			.flatMap(({ components, name })=>{
@@ -80,8 +103,10 @@ const mainFileProperty = customElementsMapProperty
 	.map(asFile('index.js'))
 	.toProperty();
 
-const customElementsMapFileProperty = customElementsMapProperty
-	.map(fp.pipe((json)=> JSON.stringify(json, null, 2), asFile('elements.json')));
+const readmeFileProperty = kefir
+	.fromNodeCallback(_.partial(readFile, './README.md', 'utf8'))
+	.map(asFile('README.md'))
+	.toProperty();
 
 const persistToTar = (stream)=> {
 	const tmpFilename = join(tmpdir(), `${v4()}.tar.gz`);
@@ -97,6 +122,11 @@ const persistToTar = (stream)=> {
 };
 
 kefir
-	.merge([packageJsonProperty, mainFileProperty, customElementsMapFileProperty])
+	.merge([
+		packageJsonProperty,
+		mainFileProperty,
+		readmeFileProperty
+	])
 	.thru(persistToTar)
-	.onValue((tmpFilename)=> process.stdout.write(tmpFilename));
+	.onValue((tmpFilename)=> process.stdout.write(tmpFilename))
+	.onError(console.warn);

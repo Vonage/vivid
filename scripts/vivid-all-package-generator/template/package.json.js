@@ -2,7 +2,8 @@ module.exports = function({
 	main = "index.js",
 	name = "@vonage/vivid",
 	version = "1.0.0",
-	dependencies = {}
+	dependencies = {},
+	component_map = []
 }) {
 	return {
 		'name': name,
@@ -15,7 +16,8 @@ module.exports = function({
 		'sideEffects': false,
 		'keywords': ['Vivid', 'Components', 'All'],
 		'license': 'ISC',
-		'dependencies': dependencies
+		'dependencies': dependencies,
+		'com_vonage': { 'components': component_map }
 	};
 };
 
