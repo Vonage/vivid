@@ -82,7 +82,6 @@
 		"eslint-plugin-wc": "^1.2.0",
 		"fibers": "^5.0.0",
 		"glob": "^7.1.6",
-		"got": "^11.8.0",
 		"husky": "^4.2.5",
 		"karma": "^5.2.3",
 		"karma-chai": "^0.1.0",
