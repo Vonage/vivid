@@ -47,7 +47,7 @@ export class VWCTextArea extends MWCTextArea {
 			return {};
 		}
 
-		return html` <vwc-notched-outline class="mdc-notched-outline vvd-notch">
+		return html`<vwc-notched-outline class="mdc-notched-outline vvd-notch">
 			${this.renderLabel()}
 		</vwc-notched-outline>`;
 	}
@@ -61,19 +61,19 @@ export class VWCTextArea extends MWCTextArea {
 			'mdc-text-field-helper-text--persistent': this.helperPersistent,
 			'mdc-text-field-helper-text--validation-msg': showValidationMessage,
 		};
+		const validationMessage = showValidationMessage
+			? this.validationMessage
+			: this.helper;
+		const classes = mapToClasses(classesMap).join(' ');
 		return html`
-			<div class="mdc-text-field-helper-line">
+			<div class="mdc-text-field-helper-line ${classes}">
 				<vwc-icon
 					class="mdc-text-field-helper-icon"
 					type="info-negative"
 					size="small"
 				></vwc-icon>
 				<span class="spacer"></span>
-				<div
-					class="mdc-text-field-helper-text ${mapToClasses(classesMap).join(' ')}"
-				>
-					${showValidationMessage ? this.validationMessage : this.helper}
-				</div>
+				<div class="mdc-text-field-helper-text">${validationMessage}</div>
 				${charCounterTemplate}
 			</div>
 		`;
