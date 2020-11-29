@@ -86,7 +86,7 @@ export class VWCTextField extends MWCTextField {
 			return {};
 		}
 
-		return html` <vwc-notched-outline class="mdc-notched-outline vvd-notch">
+		return html`<vwc-notched-outline class="mdc-notched-outline vvd-notch">
 			${this.renderLabel()}
 		</vwc-notched-outline>`;
 	}
