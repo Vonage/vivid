@@ -73,7 +73,7 @@ const packageJsonProperty = kefir
 	.map(([packages, component_map])=> {
 		return packageJsonTemplate({
 			name: PACKAGE_NAME,
-			version: "0.0.8-alpha", //fp.pipe(fp.map(fp.get('version')), (arr)=> arr.sort(semverCmp), fp.last)(packages),
+			version: fp.pipe(fp.map(fp.get('version')), (arr)=> arr.sort(semverCmp), fp.last)(packages),
 			dependencies:
 				packages
 					.map(({ name, version }) => ({ [name]: `^${version}` }))
