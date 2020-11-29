@@ -4,6 +4,7 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 
 :host {
+	position: relative;
 	display: flex;
 	flex-direction: row;
 	align-items: stretch;
