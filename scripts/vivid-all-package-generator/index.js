@@ -73,7 +73,7 @@ const packageJsonProperty = kefir
 	.map(([packages, component_map])=> {
 		return packageJsonTemplate({
 			name: PACKAGE_NAME,
-			version: "0.0.4-alpha", //fp.pipe(fp.map(fp.get('version')), (arr)=> arr.sort(semverCmp), fp.last)(packages),
+			version: "0.0.8-alpha", //fp.pipe(fp.map(fp.get('version')), (arr)=> arr.sort(semverCmp), fp.last)(packages),
 			dependencies:
 				packages
 					.map(({ name, version }) => ({ [name]: `^${version}` }))
@@ -87,7 +87,7 @@ const packageJsonProperty = kefir
 const mainFileProperty = allExports
 	.map((packageMap)=> {
 		return packageMap
-			.flatMap(({ components, name })=>{
+			.flatMap(({ components, name })=> {
 				return components.map(({ component_name, export_name, module, is_main, export_as })=>
 					_.compact([
 						`export`,
@@ -106,6 +106,7 @@ const mainFileProperty = allExports
 const readmeFileProperty = kefir
 	.fromNodeCallback(_.partial(readFile, './README.md', 'utf8'))
 	.map(asFile('README.md'))
+	.ignoreErrors()
 	.toProperty();
 
 const persistToTar = (stream)=> {
@@ -129,4 +130,7 @@ kefir
 	])
 	.thru(persistToTar)
 	.onValue((tmpFilename)=> process.stdout.write(tmpFilename))
-	.onError(console.warn);
+	.onError((errorMessage)=> {
+		console.warn(errorMessage);
+		process.exit(1);
+	});
