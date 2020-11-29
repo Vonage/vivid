@@ -30,6 +30,7 @@
 	},
 	"devDependencies": {
 		"@vonage/vvd-design-tokens": "^0.16.2",
+		"@vonage/vvd-foundation": "^0.16.2",
 		"@vonage/vvd-typography": "^0.16.2"
 	}
 }
