@@ -1,9 +1,12 @@
 import { create } from '@storybook/theming/create';
-import '@vonage/vvd-context';
+import vvdContext from '@vonage/vvd-context';
 import vvdCore from '@vonage/vvd-core';
 
 vvdCore.settled
-	.then(() => console.info('init Vivid context done (main page)'));
+	.then(() => console.info('init Vivid core done (main page)'));
+
+vvdContext.install()
+	.then(() => console.log('init Vivid context into main document done'));
 
 export default create({
 	base: 'light',
@@ -11,10 +14,6 @@ export default create({
 
 	appBorderRadius: 6,
 
-	fontBase: 'var(--vvd-font-family-spezia), sans-serif',
-	fontCode: 'monospace',
-
-	textColor: '#131415',
 	barSelectedColor: 'black',
 
 	brandTitle: 'Vivid, the Vonage Design System',
