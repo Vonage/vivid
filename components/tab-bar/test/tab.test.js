@@ -1,7 +1,7 @@
 import '../vwc-tab.js';
 import {
 	textToDomToParent,
-	waitNextTask,
+	waitInterval,
 	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
@@ -23,7 +23,7 @@ describe('tab', () => {
 		const actualElements = addElement(
 			textToDomToParent(`<${COMPONENT_NAME} label="Tab"></${COMPONENT_NAME}>`)
 		);
-		await waitNextTask();
+		await waitInterval(50);
 		expect(actualElements[0]).shadowDom.to.equalSnapshot();
 	});
 });
