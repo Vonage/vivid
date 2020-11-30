@@ -24,7 +24,7 @@ const filterByValue = (filterValue: string) => (value: string) =>
  * @element vwc-audio
  *
  */
-class VwcAudio extends HTMLElement {
+class VWCAudio extends HTMLElement {
 	constructor() {
 		super();
 
@@ -175,5 +175,5 @@ class VwcAudio extends HTMLElement {
 	}
 }
 
-export default Audio;
-customElements.define('vwc-audio', VwcAudio);
+export { VWCAudio };
+customElements.define('vwc-audio', VWCAudio);

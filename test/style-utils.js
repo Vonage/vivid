@@ -16,7 +16,7 @@ export function shapeStyles(shape) {
 	return borderRadiusStyles(shapeRadius[shape]);
 }
 
-export const PRINCIPAL_SCHEME_VARIABLES_FILTER = /(base|surface|primary)-(background|foreground)/;
+export const PRINCIPAL_SCHEME_VARIABLES_FILTER = /-(on-|)(base|surface|primary)$/;
 
 export function getSchemeFiles() {
 	const DT_SCHEMES_BASE_PATH = 'common/design-tokens/build/scss/schemes/';

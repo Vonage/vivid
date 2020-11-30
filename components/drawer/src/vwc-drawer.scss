@@ -6,28 +6,28 @@
 	position: sticky;
 	block-size: 100%;
 	max-block-size: 100vh;
-	border-color: var(#{scheme-variables.$vvd-color-base-faint});
+	border-color: var(#{scheme-variables.$vvd-color-contrast-faint});
 
 	&.mdc-drawer--dismissible {
 		:host([theme-alternate]) & {
-			background-color: var(#{scheme-variables.$vvd-color-base-background});
-			color: var(#{scheme-variables.$vvd-color-base-foreground});
+			background-color: var(#{scheme-variables.$vvd-color-base});
+			color: var(#{scheme-variables.$vvd-color-on-base});
 		}
 		:host(:not([theme-alternate])) & {
-			background-color: var(#{scheme-variables.$vvd-color-surface-background});
-			color: var(#{scheme-variables.$vvd-color-surface-foreground});
+			background-color: var(#{scheme-variables.$vvd-color-surface});
+			color: var(#{scheme-variables.$vvd-color-on-surface});
 		}
 	}
 
 	.mdc-drawer__title {
-		color: var(#{scheme-variables.$vvd-color-surface-foreground});
+		color: var(#{scheme-variables.$vvd-color-on-surface});
 	}
 	.mdc-drawer__subtitle {
-		color: var(#{scheme-variables.$vvd-color-surface-foreground});
+		color: var(#{scheme-variables.$vvd-color-on-surface});
 	}
 }
 
 .mdc-drawer-app-content {
-	background-color: var(#{scheme-variables.$vvd-color-base-background});
-	color: var(#{scheme-variables.$vvd-color-base-foreground});
+	background-color: var(#{scheme-variables.$vvd-color-base});
+	color: var(#{scheme-variables.$vvd-color-on-base});
 }
