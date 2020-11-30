@@ -11,13 +11,19 @@ export const argTypes = {
 	shape: {
 		control: {
 			type: 'select',
-			options: Object.values(Shape),
+			options: Object.values(Shape)
 		}
 	},
 	layout: {
 		control: {
 			type: 'select',
-			options: ['filled', 'outlined', 'soft'],
+			options: ['filled', 'outlined', 'soft']
+		}
+	},
+	disabled: {
+		control: {
+			type: 'inline-radio',
+			options: { 'true': '', 'false': undefined }
 		}
 	},
 	dense: {

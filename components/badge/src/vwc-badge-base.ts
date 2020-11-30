@@ -18,6 +18,9 @@ export class BadgeBase extends LitElement {
 	layout: BadgeLayout[number] = 'filled';
 
 	@property({ type: Boolean, reflect: true })
+	disabled = false;
+
+	@property({ type: Boolean, reflect: true })
 	dense = false;
 
 	@property({ type: Boolean, reflect: true })

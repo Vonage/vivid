@@ -44,6 +44,24 @@
 	}
 }
 
+:host([disabled]) {
+	--opaque: 100;
+	color: var(#{scheme-variables.$vvd-color-contrast-dim});
+
+	&::before {
+		background-color: var(#{scheme-variables.$vvd-color-contrast-soft});
+	}
+}
+
+:host([disabled][layout='outlined']) {
+	--opaque: 100;
+
+	&::before {
+		background-color: transparent;
+		border: 1px solid var(#{scheme-variables.$vvd-color-contrast-dim});
+	}
+}
+
 :host([dense]) {
   padding: 2px 8px;
 }
