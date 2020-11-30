@@ -5,7 +5,7 @@ export const argTypes = {
 	connotation: {
 		control: {
 			type: 'select',
-			options: Object.values(Connotation),
+			options: ['primary', 'cta', 'info', 'success', 'alert', 'warning']
 		}
 	},
 	shape: {
@@ -14,7 +14,19 @@ export const argTypes = {
 			options: Object.values(Shape),
 		}
 	},
-	translucent: {
+	layout: {
+		control: {
+			type: 'select',
+			options: ['filled', 'outlined', 'soft'],
+		}
+	},
+	dense: {
+		control: {
+			type: 'inline-radio',
+			options: { 'true': '', 'false': undefined }
+		}
+	},
+	enlarged: {
 		control: {
 			type: 'inline-radio',
 			options: { 'true': '', 'false': undefined }

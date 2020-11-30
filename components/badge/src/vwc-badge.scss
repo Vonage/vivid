@@ -9,8 +9,8 @@
 );
 
 :host {
-	display: inline;
-	padding: 4px 8px;
+	display: inline-flex;
+	padding: 4px 10px;
 	position: relative;
 	color: var(#{color-semantic.$vvd-color-on-connotation});
 	@include typography.typography-cat-shorthand('caption-bold');
@@ -29,14 +29,32 @@
 	}
 }
 
-:host([translucent]) {
+:host([layout='soft']) {
 	--opaque: 20;
 	color: var(#{scheme-variables.$vvd-color-on-base});
 }
 
+:host([layout='outlined']) {
+	color: var(#{scheme-variables.$vvd-color-on-base});
+	
+	&::before {
+		background-color: transparent;
+		// TODO should be using step-600
+		border: 1px solid var(#{color-semantic.$vvd-color-connotation});
+	}
+}
+
+:host([dense]) {
+  padding: 2px 8px;
+}
+
+:host([enlarged]) {
+  padding: 6px 12px;
+}
+
 @include shape-mixins.shape(
 	$shapes: (
-		rounded: 6px,
-		pill: 12px,
+		rounded: 4px,
+		pill: 14px,
 	)
 );
