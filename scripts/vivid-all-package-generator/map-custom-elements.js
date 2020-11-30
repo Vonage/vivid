@@ -37,7 +37,6 @@ module.exports = function(pathGlob){
 					return kefir
 						.fromNodeCallback(_.partial(glob, join(srcDir, '*.js'), { follow: false }))
 						.flatten()
-						.filter((path)=> !path.includes('node_modules'))
 						.flatMapConcat((codeFilePath)=>
 							fileToStream(codeFilePath)
 								.flatMap((code)=> {
