@@ -21,7 +21,9 @@ describe('tab', () => {
 
 	it('should have internal contents', async () => {
 		const actualElements = addElement(
-			textToDomToParent(`<${COMPONENT_NAME} label="Tab"></${COMPONENT_NAME}>`)
+			textToDomToParent(
+				`<${COMPONENT_NAME} active label="Tab"></${COMPONENT_NAME}>`
+			)
 		);
 		await waitNextTask();
 		expect(actualElements[0]).shadowDom.to.equalSnapshot();
