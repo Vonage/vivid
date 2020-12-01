@@ -44,7 +44,6 @@ export class VWCTextField extends MWCTextField {
 
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
-		this.autoValidate = true;
 		this.shadowRoot
 			?.querySelector('.mdc-notched-outline')
 			?.shadowRoot?.querySelector('.mdc-notched-outline')
@@ -87,7 +86,7 @@ export class VWCTextField extends MWCTextField {
 			return {};
 		}
 
-		return html` <vwc-notched-outline class="mdc-notched-outline vvd-notch">
+		return html`<vwc-notched-outline class="mdc-notched-outline vvd-notch">
 			${this.renderLabel()}
 		</vwc-notched-outline>`;
 	}
@@ -106,16 +105,14 @@ export class VWCTextField extends MWCTextField {
 			: this.helper;
 		const classes = mapToClasses(classesMap).join(' ');
 		return html`
-			<div class="mdc-text-field-helper-line">
+			<div class="mdc-text-field-helper-line ${classes}">
 				<vwc-icon
 					class="mdc-text-field-helper-icon"
 					type="info-negative"
 					size="small"
 				></vwc-icon>
 				<span class="spacer"></span>
-				<div class="mdc-text-field-helper-text ${classes}">
-					${validationMessage}
-				</div>
+				<div class="mdc-text-field-helper-text">${validationMessage}</div>
 				${charCounterTemplate}
 			</div>
 		`;
