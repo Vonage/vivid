@@ -9,7 +9,7 @@
     #{color-semantic.$formfield-disabled-ink}
   );
   --mdc-button-disabled-fill-color: var(
-    #{scheme-variables.$vvd-color-base-soft}
+    #{scheme-variables.$vvd-color-contrast-soft}
   );
   --mdc-button-disabled-outline-color: var(
     #{color-semantic.$formfield-disabled-ink}
@@ -20,11 +20,12 @@
 
 
 @include color-connotation-mixins.connotations-context(
-	':host([unelevated]#{color-connotation-mixins.$connotation-placeholder},[outlined]#{color-connotation-mixins.$connotation-placeholder})'
+	':host([unelevated]#{color-connotation-mixins.$connotation-placeholder}),:host([outlined]#{color-connotation-mixins.$connotation-placeholder})'
 );
-:host([unelevated],[outlined]) {
-  --mdc-theme-primary: var(#{color-semantic.$color-connotation-background});
-  --mdc-theme-on-primary: var(#{color-semantic.$color-connotation-foreground});
+:host([unelevated]),
+:host([outlined]) {
+  --mdc-theme-primary: var(#{color-semantic.$vvd-color-connotation});
+  --mdc-theme-on-primary: var(#{color-semantic.$vvd-color-on-connotation});
 }
 /////////////////////////////////////////////////////////////////////////////
 .mdc-button {

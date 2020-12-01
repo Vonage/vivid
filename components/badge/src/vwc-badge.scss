@@ -1,3 +1,4 @@
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins' as color-connotation-mixins;
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins;
@@ -11,7 +12,7 @@
 	display: inline;
 	padding: 4px 8px;
 	position: relative;
-	color: var(#{color-semantic.$color-connotation-foreground});
+	color: var(#{color-semantic.$vvd-color-on-connotation});
 	@include typography.typography-cat-shorthand('caption-bold');
 
 	&::before {
@@ -23,14 +24,14 @@
 		right: 0;
 		bottom: 0;
 		left: 0;
-		background-color: var(#{color-semantic.$color-connotation-background});
+		background-color: var(#{color-semantic.$vvd-color-connotation});
 		opacity: calc(var(--opaque) * 0.01);
 	}
 }
 
 :host([translucent]) {
 	--opaque: 20;
-	color: var(#{color-semantic.$color-base-foreground});
+	color: var(#{scheme-variables.$vvd-color-on-base});
 }
 
 @include shape-mixins.shape(

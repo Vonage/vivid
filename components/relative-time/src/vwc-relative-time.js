@@ -22,7 +22,7 @@ const
  * @prop {integer} datetime - The target timestamp in milliseconds since epoch.
  *
  */
-class RelativeTimeElement extends HTMLElement {
+class VWCRelativeTime extends HTMLElement {
 
 	constructor() {
 		super();
@@ -119,5 +119,5 @@ class RelativeTimeElement extends HTMLElement {
 	}
 }
 
-window.customElements.define('vwc-relative-time', RelativeTimeElement);
-export { RelativeTimeElement as RelativeTime };
+window.customElements.define('vwc-relative-time', VWCRelativeTime);
+export { VWCRelativeTime };

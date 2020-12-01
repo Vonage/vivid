@@ -54,5 +54,5 @@ describe('button typography', async () => {
 
 async function getButtonElement(component) {
 	await waitNextTask();
-	return component.shadowRoot.querySelector('#button');
+	return component.shadowRoot.querySelector('button');
 }
