@@ -224,7 +224,7 @@ vwc-notched-outline {
 		}
 	}
 
-	&.mdc-text-field--invalid + .mdc-text-field-helper-line {
+	+ .mdc-text-field-helper-text--validation-msg {
     margin-top: 7px;
 
 		.mdc-text-field-helper-icon {
