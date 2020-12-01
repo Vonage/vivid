@@ -41,7 +41,6 @@ jobs:
         run: yarn install
 
   test-safari:
-    needs: cache-yarn
     runs-on: macOS-latest
     env:
       ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
