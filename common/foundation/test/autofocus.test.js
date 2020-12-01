@@ -1,5 +1,9 @@
 import { handleAutofocus } from '@vonage/vvd-foundation/general-utils.js';
-import { textToDomToParent, waitNextTask } from '../../../test/test-helpers';
+import {
+	isSafari,
+	textToDomToParent,
+	waitNextTask,
+} from '../../../test/test-helpers';
 import '@vonage/vwc-textarea';
 import '@vonage/vwc-textfield';
 
@@ -23,6 +27,9 @@ describe('autofocus', () => {
 	vwcElementsSupported.forEach((vwcElement) => {
 		describe(`autofocus behaviour of '${vwcElement}'`, () => {
 			it('should focus on target if no other element focused', async () => {
+				if (isSafari()) {
+					return;
+				}
 				clearAnyFocus();
 
 				const [e] = textToDomToParent(`<${vwcElement} autofocus></${vwcElement}>`);
