@@ -12,6 +12,7 @@ export const basic = () => html`
       <div slot="title">Example page</div>
       <span slot="actionItems">Toggle theme:</span>
       <vwc-theme-switch slot="actionItems"></vwc-theme-switch>
+      <vwc-theme-switch slot="actionItems"></vwc-theme-switch>
       <div><!-- content --></div>
     </vwc-top-app-bar>
 

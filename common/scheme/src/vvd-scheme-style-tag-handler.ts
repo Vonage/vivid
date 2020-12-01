@@ -1,6 +1,6 @@
 import { CSSResult } from 'lit-element';
 import { preSchemeLoadingCssText } from './pre-scheme-loading.css.js';
-import { PredefinedScheme } from './vvd-scheme.js';
+import { PredefinedScheme } from './vvd-scheme-foundation';
 
 type ModuleType =
 	| typeof import('./scheme.dark.css')
@@ -10,9 +10,9 @@ const getSchemeModule: (scheme: PredefinedScheme) => Promise<ModuleType> = (
 	scheme: PredefinedScheme
 ) => {
 	switch (scheme) {
-		case 'dark':
+		case PredefinedScheme.DARK:
 			return import('./scheme.dark.css');
-		case 'light':
+		case PredefinedScheme.LIGHT:
 		default:
 			return import('./scheme.light.css');
 	}

@@ -10,9 +10,12 @@ import {
 import { style } from './vwc-theme-switch.css.js';
 import {
 	default as vvdScheme,
+	PredefinedScheme,
 	SchemeOption,
+	SelectedDetail,
 } from '@vonage/vvd-scheme/vvd-scheme.js';
-import { Subscription } from 'rxjs';
+
+const VVD_SCHEME_SELECT = 'vvd-scheme-select';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -26,31 +29,43 @@ export class VWCThemeSwitch extends LitElement {
 	@property({ reflect: true })
 	scheme?: SchemeOption;
 
-	subscription?: Subscription;
-
 	connectedCallback(): void {
 		super.connectedCallback();
-		this.subscription = vvdScheme.valueChanges().subscribe({
-			next: (scheme: SchemeOption) => {
-				this.scheme = scheme;
-			},
-		});
+		document.addEventListener(
+			VVD_SCHEME_SELECT,
+			this.updateScheme.bind(this) as EventListener
+		);
+		this.scheme = vvdScheme.getSelectedSchemeOption();
+		this.scheme ??= vvdScheme.getSelectedScheme();
 	}
 
 	disconnectedCallback(): void {
 		super.disconnectedCallback();
-		this.subscription?.unsubscribe();
+		document.removeEventListener(
+			VVD_SCHEME_SELECT,
+			this.updateScheme.bind(this) as EventListener
+		);
+	}
+
+	private updateScheme({
+		detail: { scheme },
+	}: CustomEvent<SelectedDetail>): void {
+		this.scheme = scheme;
 	}
 
 	private handleChange({ target }: InputEvent): void {
-		vvdScheme.set((target as HTMLInputElement)?.checked ? 'light' : 'dark');
+		vvdScheme.set(
+			(target as HTMLInputElement)?.checked
+				? PredefinedScheme.LIGHT
+				: PredefinedScheme.DARK
+		);
 	}
 
 	render(): TemplateResult {
 		return html` <vwc-switch
 			class="switch"
 			connotation="primary"
-			?checked="${this.scheme === 'light'}"
+			?checked="${this.scheme === PredefinedScheme.LIGHT}"
 			@change=${this.handleChange}
 		></vwc-switch>`;
 	}
