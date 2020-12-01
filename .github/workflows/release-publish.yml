@@ -25,10 +25,23 @@ jobs:
         with:
           node-version: 12
 
+      - name: Install yarn
+        run: npm install -g yarn
+
+      - name: Cache yarn dependencies
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: |
+            ${{ steps.yarn-cache-dir-path.outputs.dir }}
+            **\node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
       - name: Install dependencies
-        run: |
-          npm install -g yarn
-          yarn install
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn install
 
       # Build and publish
       - name: Build components
