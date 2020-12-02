@@ -33,7 +33,7 @@ export class VWCThemeSwitch extends LitElement {
 		super.connectedCallback();
 		vvdScheme.eventBus.addEventListener(
 			VVD_SCHEME_SELECT,
-			this.updateScheme.bind(this) as EventListener
+			this.updateScheme as EventListener
 		);
 		this.scheme = vvdScheme.getSelectedSchemeOption();
 		this.scheme ??= vvdScheme.getSelectedScheme();
@@ -43,14 +43,12 @@ export class VWCThemeSwitch extends LitElement {
 		super.disconnectedCallback();
 		vvdScheme.eventBus.removeEventListener(
 			VVD_SCHEME_SELECT,
-			this.updateScheme.bind(this) as EventListener
+			this.updateScheme as EventListener
 		);
 	}
 
-	private updateScheme({
-		detail: { scheme },
-	}: CustomEvent<SelectedDetail>): void {
-		this.scheme = scheme;
+	private updateScheme(event: CustomEvent<SelectedDetail>): void {
+		(event.target as VWCThemeSwitch).scheme = event.detail.scheme;
 	}
 
 	private handleChange({ target }: InputEvent): void {
