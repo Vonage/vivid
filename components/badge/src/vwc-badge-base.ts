@@ -5,9 +5,6 @@ const layouts = ['filled', 'outlined', 'soft'];
 export type BadgeLayout = typeof layouts;
 
 export class BadgeBase extends LitElement {
-	@property({ type: Boolean, reflect: true })
-	translucent = false;
-
 	@property({ type: String, reflect: true })
 	connotation: Connotation = Connotation.Primary;
 

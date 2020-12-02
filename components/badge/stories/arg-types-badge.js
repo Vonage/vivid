@@ -1,4 +1,4 @@
-import { Connotation, Shape } from '@vonage/vvd-foundation/constants';
+import { Shape } from '@vonage/vvd-foundation/constants';
 
 
 export const argTypes = {
@@ -37,5 +37,6 @@ export const argTypes = {
 			type: 'inline-radio',
 			options: { 'true': '', 'false': undefined }
 		}
-	}
+	},
+	styles: { table: { disable: true } },
 }

@@ -25,12 +25,10 @@
 		bottom: 0;
 		left: 0;
 		background-color: var(#{color-semantic.$vvd-color-connotation});
-		opacity: calc(var(--opaque) * 0.01);
 	}
 }
 
 :host([layout='soft']) {
-	--opaque: 20;
 	color: var(#{scheme-variables.$vvd-color-on-base});
 }
 
@@ -45,7 +43,6 @@
 }
 
 :host([disabled]) {
-	--opaque: 100;
 	color: var(#{scheme-variables.$vvd-color-contrast-dim});
 
 	&::before {
@@ -54,8 +51,6 @@
 }
 
 :host([disabled][layout='outlined']) {
-	--opaque: 100;
-
 	&::before {
 		background-color: transparent;
 		border: 1px solid var(#{scheme-variables.$vvd-color-contrast-dim});
