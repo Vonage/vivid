@@ -20,7 +20,6 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"rxjs": "^6.6.3",
 		"tslib": "^2.0.3"
 	},
 	"devDependencies": {
