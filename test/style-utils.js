@@ -47,7 +47,7 @@ export function getSchemeVariables() {
 }
 
 /**
- * collects a set of variables from the said scheme (base flavor)
+ * collects a set of variables from the said scheme (main flavor)
  * filter them if any filter supplied
  *
  * @param {string} scheme - scheme name to pick variables from
@@ -59,14 +59,14 @@ export function getBaseVarNames(scheme, filter) {
 		throw new Error(`scheme MUST be a non-empty string, got ${scheme}`);
 	}
 
-	const baseSchemeSet = getSchemeVariables()[`${scheme}/base`];
+	const mainSchemeSet = getSchemeVariables()[`${scheme}/main`];
 	return filter
-		? Object.keys(baseSchemeSet).filter(key => filter.test(key))
-		: Object.keys(baseSchemeSet);
+		? Object.keys(mainSchemeSet).filter(key => filter.test(key))
+		: Object.keys(mainSchemeSet);
 }
 
 /**
- * collects a set of variables from the said scheme (base flavor) and
+ * collects a set of variables from the said scheme (main flavor) and
  * asserts they are set in the living element
  *
  * @param {string} scheme - scheme name to pick variables from
@@ -78,14 +78,14 @@ export function assertBaseVarsMatch(scheme, variablesFilter, element) {
 		throw new Error(`scheme MUST be a non-empty string, got ${scheme}`);
 	}
 
-	const baseSchemeSet = getSchemeVariables()[`${scheme}/base`];
-	if (!baseSchemeSet) {
-		throw new Error(`extected to get asserted scheme set, got ${baseSchemeSet}`);
+	const mainSchemeSet = getSchemeVariables()[`${scheme}/main`];
+	if (!mainSchemeSet) {
+		throw new Error(`extected to get asserted scheme set, got ${mainSchemeSet}`);
 	}
 
 	const keys = variablesFilter
-		? Object.keys(baseSchemeSet).filter(k => variablesFilter.test(k))
-		: Object.keys(baseSchemeSet);
+		? Object.keys(mainSchemeSet).filter(k => variablesFilter.test(k))
+		: Object.keys(mainSchemeSet);
 	if (!keys || !keys.length) {
 		throw new Error(`expected asserted variables list to NOT be empty, got ${keys}`);
 	}
@@ -93,9 +93,9 @@ export function assertBaseVarsMatch(scheme, variablesFilter, element) {
 	const ee = element || document.body;
 	keys.forEach((key) => {
 		const varVal = getComputedStyle(ee).getPropertyValue(key).trim();
-		if (varVal !== baseSchemeSet[key]) {
+		if (varVal !== mainSchemeSet[key]) {
 			throw new Error(
-				`scheme CSS variable mismatch: '${key}' expected to be '${baseSchemeSet[key]}', living DOM value found is '${varVal}'`
+				`scheme CSS variable mismatch: '${key}' expected to be '${mainSchemeSet[key]}', living DOM value found is '${varVal}'`
 			);
 		}
 	});

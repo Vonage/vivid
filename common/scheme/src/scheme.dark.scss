@@ -1,9 +1,9 @@
-@use '@vonage/vvd-design-tokens/build/scss/schemes/dark/base.scss';
+@use '@vonage/vvd-design-tokens/build/scss/schemes/dark/main.scss';
 @use '@vonage/vvd-design-tokens/build/scss/schemes/dark/alternate.scss';
 
 body,
 ::part(vvd-theme-base) {
-	@include base.variables;
+	@include main.variables;
 }
 
 ::part(vvd-theme-alternate) {
