@@ -1,0 +1,34 @@
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/_scheme-variables' as scheme-variables;
+@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
+
+:host {
+	.mdc-icon-button {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+	}
+}
+
+// theming
+:host {
+	.mdc-icon-button {
+		color: var(#{scheme-variables.$vvd-color-on-base});
+	}
+
+	.mdc-icon-button:disabled {
+		color: var(	#{color-semantic.$formfield-disabled-ink});
+	}
+}
+
+// sizing
+:host {
+	--mdc-icon-button-size: 40px;
+}
+
+:host([dense]) {
+	--mdc-icon-button-size: 32px;
+}
+
+:host([enlarged]) {
+	--mdc-icon-button-size: 48px;
+}
