@@ -29,7 +29,6 @@
 		"@vonage/vvd-scheme": "^0.16.2",
 		"@vonage/vwc-switch": "^0.16.2",
 		"lit-element": "^2.4.0",
-		"rxjs": "^6.6.3",
 		"tslib": "^2.0.3"
 	}
 }
