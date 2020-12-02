@@ -19,7 +19,7 @@ function getStyleDictionaryConfig() {
 	return {
 		source: [
 			`${propertiesPath}/globals/color/**/*.json`,
-			`${propertiesPath}/schemes/light/base.json`,
+			`${propertiesPath}/schemes/light/main.json`,
 		],
 		platforms: {
 			web: {
