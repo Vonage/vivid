@@ -112,6 +112,9 @@ function notifySelected(scheme: SchemeOption) {
 	document.dispatchEvent(ev);
 }
 
+/**
+ * @fires selected {SelectedDetail}
+ */
 export default Object.freeze({
 	set,
 	getSelectedScheme,
