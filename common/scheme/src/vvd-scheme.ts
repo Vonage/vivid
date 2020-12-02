@@ -106,12 +106,9 @@ async function set(
 }
 
 function notifySelected(scheme: SchemeOption) {
-	const customEventInit: CustomEventInit = { bubbles: true, composed: true };
-	customEventInit.detail = { scheme };
-	const ev = new CustomEvent<SelectedDetail>(
-		'vvd-scheme-select',
-		customEventInit
-	);
+	const init: CustomEventInit = { bubbles: true, composed: true };
+	init.detail = { scheme };
+	const ev = new CustomEvent<SelectedDetail>('vvd-scheme-select', init);
 	document.dispatchEvent(ev);
 }
 
