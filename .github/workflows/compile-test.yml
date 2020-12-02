@@ -72,12 +72,8 @@ jobs:
             vivid-cache-yarn-
 
       - name: Install packages
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        # if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
-
-      - name: Bootstap packages
-        if: steps.yarn-cache.outputs.cache-hit == 'true'
-        run: yarn bootstrap
 
       - name: Build components
         run: yarn compile
@@ -117,12 +113,8 @@ jobs:
             vivid-cache-yarn-
 
       - name: Install packages
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        # if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
-
-      - name: Bootstap packages
-        if: steps.yarn-cache.outputs.cache-hit == 'true'
-        run: yarn bootstrap
 
       - name: Build components
         run: yarn compile
@@ -162,12 +154,8 @@ jobs:
             vivid-cache-yarn-
 
       - name: Install packages
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        # if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
-
-      - name: Bootstap packages
-        if: steps.yarn-cache.outputs.cache-hit == 'true'
-        run: yarn bootstrap
 
       - name: Build components
         run: yarn compile
