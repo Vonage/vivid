@@ -1,6 +1,12 @@
 import { Shape } from '@vonage/vvd-foundation/constants';
 
 export const argTypes = {
+	connotation: {
+		control: {
+			type: 'select',
+			options: ['primary', 'cta', 'info', 'success', 'alert', 'warning']
+		}
+	},
 	shape: {
 		control: {
 			type: 'select',

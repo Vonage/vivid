@@ -1,8 +1,15 @@
 import { html, LitElement, property, TemplateResult, query } from 'lit-element';
+import { Connotation, Shape } from '@vonage/vvd-foundation/constants';
 import { Badge } from './vwc-badge';
 
 export class BadgeCombinedBase extends LitElement {
 	@query('slot') protected badgesSlot!: HTMLElement;
+
+	@property({ type: String, reflect: true })
+	connotation?: Connotation;
+
+	@property({ type: String, reflect: true })
+	shape?: Shape;
 
 	@property({ type: Boolean, reflect: true })
 	dense = false;
@@ -29,6 +36,7 @@ export class BadgeCombinedBase extends LitElement {
 		const badges = this._getBadges();
 		badges &&
 			badges.forEach((badge) => {
+				this.connotation && badge.setAttribute('connotation', this.connotation);
 				badge.toggleAttribute('dense', this.dense);
 				badge.toggleAttribute('enlarged', this.enlarged);
 				badge.toggleAttribute('disabled', this.disabled);

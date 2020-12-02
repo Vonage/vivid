@@ -13,12 +13,13 @@ export default {
 
 const Template = args => html`
 	<vwc-badge-combined ...=${spread(args)}>
-		<vwc-badge connotation="cta" layout="filled">I'm a badge</vwc-badge>
-		<vwc-badge connotation="cta" layout="outlined">I'm a badge</vwc-badge>
+		<vwc-badge layout="filled">I'm a badge</vwc-badge>
+		<vwc-badge layout="outlined">I'm a badge</vwc-badge>
 	</vwc-badge-combined>
 `;
 
 export const Basic = Template.bind({});
+Basic.args = { connotation: 'cta' };
 
 export const PillShape = Template.bind({});
 PillShape.args = { shape: 'pill' };
