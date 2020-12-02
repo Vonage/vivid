@@ -7,23 +7,23 @@ export const argTypes = {
 			options: Object.values(Shape)
 		}
 	},
-	// disabled: {
-	// 	control: {
-	// 		type: 'inline-radio',
-	// 		options: { 'true': '', 'false': undefined }
-	// 	}
-	// },
-	// dense: {
-	// 	control: {
-	// 		type: 'inline-radio',
-	// 		options: { 'true': '', 'false': undefined }
-	// 	}
-	// },
-	// enlarged: {
-	// 	control: {
-	// 		type: 'inline-radio',
-	// 		options: { 'true': '', 'false': undefined }
-	// 	}
-	// },
+	disabled: {
+		control: {
+			type: 'inline-radio',
+			options: { 'true': '', 'false': undefined }
+		}
+	},
+	dense: {
+		control: {
+			type: 'inline-radio',
+			options: { 'true': '', 'false': undefined }
+		}
+	},
+	enlarged: {
+		control: {
+			type: 'inline-radio',
+			options: { 'true': '', 'false': undefined }
+		}
+	},
 	styles: { table: { disable: true } },
 }
