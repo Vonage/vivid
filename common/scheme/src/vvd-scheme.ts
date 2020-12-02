@@ -19,6 +19,8 @@ export {
 	SchemeOption,
 } from './vvd-scheme-foundation';
 
+const eventBus = new EventTarget();
+
 let _selectedScheme: PredefinedScheme;
 function getSelectedScheme(): PredefinedScheme {
 	return _selectedScheme;
@@ -109,7 +111,7 @@ function notifySelected(scheme: SchemeOption) {
 	const init: CustomEventInit = { bubbles: true, composed: true };
 	init.detail = { scheme };
 	const ev = new CustomEvent<SelectedDetail>('vvd-scheme-select', init);
-	document.dispatchEvent(ev);
+	eventBus.dispatchEvent(ev);
 }
 
 /**
@@ -117,6 +119,7 @@ function notifySelected(scheme: SchemeOption) {
  */
 export default Object.freeze({
 	set,
+	eventBus,
 	getSelectedScheme,
 	getSelectedSchemeOption,
 });

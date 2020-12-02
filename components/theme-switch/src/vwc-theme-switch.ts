@@ -7,7 +7,7 @@ import {
 	html,
 	TemplateResult,
 } from 'lit-element';
-import { style } from './vwc-theme-switch.css.js';
+import { style } from './vwc-theme-switch.css';
 import {
 	default as vvdScheme,
 	PredefinedScheme,
@@ -31,7 +31,7 @@ export class VWCThemeSwitch extends LitElement {
 
 	connectedCallback(): void {
 		super.connectedCallback();
-		document.addEventListener(
+		vvdScheme.eventBus.addEventListener(
 			VVD_SCHEME_SELECT,
 			this.updateScheme.bind(this) as EventListener
 		);
@@ -41,7 +41,7 @@ export class VWCThemeSwitch extends LitElement {
 
 	disconnectedCallback(): void {
 		super.disconnectedCallback();
-		document.removeEventListener(
+		vvdScheme.eventBus.removeEventListener(
 			VVD_SCHEME_SELECT,
 			this.updateScheme.bind(this) as EventListener
 		);

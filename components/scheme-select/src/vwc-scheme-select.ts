@@ -20,24 +20,6 @@ export class VWCSchemeSelect extends LitElement {
 		PredefinedScheme.LIGHT,
 		PredefinedScheme.DARK,
 	];
-	handleClick: (scheme: SchemeOption) => void;
-
-	constructor() {
-		super();
-		if (globalThis.BroadcastChannel) {
-			const bc = new BroadcastChannel('vvd_scheme_select');
-			this.handleClick = (scheme) => bc.postMessage(scheme);
-		} else {
-			this.handleClick = (scheme: SchemeOption) =>
-				this.dispatchEvent(
-					new CustomEvent('vvd_scheme_select', {
-						detail: { scheme },
-						bubbles: true, // needed for bubbling up the shadow DOM // ! throws in safari
-						composed: true, // needed for bubbling up the shadow DOM
-					})
-				);
-		}
-	}
 
 	render(): TemplateResult {
 		return html`
