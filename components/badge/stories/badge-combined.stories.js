@@ -22,3 +22,12 @@ export const Basic = Template.bind({});
 
 export const PillShape = Template.bind({});
 PillShape.args = { shape: 'pill' };
+
+export const Dense = Template.bind({});
+Dense.args = { dense: '' };
+
+export const Enlarged = Template.bind({});
+Enlarged.args = { enlarged: '' };
+
+export const Disabled = Template.bind({});
+Disabled.args = { disabled: '' };

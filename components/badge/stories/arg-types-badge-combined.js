@@ -7,12 +7,6 @@ export const argTypes = {
 			options: Object.values(Shape)
 		}
 	},
-	disabled: {
-		control: {
-			type: 'inline-radio',
-			options: { 'true': '', 'false': undefined }
-		}
-	},
 	dense: {
 		control: {
 			type: 'inline-radio',
@@ -20,6 +14,12 @@ export const argTypes = {
 		}
 	},
 	enlarged: {
+		control: {
+			type: 'inline-radio',
+			options: { 'true': '', 'false': undefined }
+		}
+	},
+	disabled: {
 		control: {
 			type: 'inline-radio',
 			options: { 'true': '', 'false': undefined }
