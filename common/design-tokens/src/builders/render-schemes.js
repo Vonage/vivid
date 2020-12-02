@@ -5,11 +5,13 @@ import fs from 'fs';
 import _ from 'lodash';
 import R from 'ramda';
 
-const propertiesPath = resolve('../../node_modules/@vonage/vvd-design-tokens-properties');
-
+const
+	propertiesPath = resolve('../../node_modules/@vonage/vvd-design-tokens-properties'),
+	CUSTOM_SCHEMES_FORMAT = 'custom/web/scss/schemes',
+	OUTPUT_FOLDER = 'build/scss/schemes';
 
 StyleDictionaryPackage.registerFormat({
-	name: 'custom/format/scss',
+	name: CUSTOM_SCHEMES_FORMAT,
 	formatter: _.template(
 		fs.readFileSync(resolve('templates/web-scss-schemes.template'))
 	),
@@ -29,8 +31,8 @@ function getStyleDictionaryConfig(scheme, scope) {
 				buildPath: `${resolve()}/`,
 				files: [
 					{
-						destination: `build/scss/schemes/${scheme}/${scope}.scss`,
-						format: 'custom/format/scss',
+						destination: `${OUTPUT_FOLDER}/${scheme}/${scope}.scss`,
+						format: CUSTOM_SCHEMES_FORMAT,
 						filter: {
 							attributes: {
 								category: 'color'
@@ -44,12 +46,14 @@ function getStyleDictionaryConfig(scheme, scope) {
 }
 
 const curriedGetStyleDictionaryConfig = R.curry(getStyleDictionaryConfig);
-const baseConfig = curriedGetStyleDictionaryConfig(R.__, 'base');
+const baseConfig = curriedGetStyleDictionaryConfig(R.__, 'main');
 const alternateConfig = curriedGetStyleDictionaryConfig(R.__, 'alternate');
 
 // PROCESS THE DESIGN TOKENS FOR THE DIFFERENT SCHEMES AND PLATFORMS
 // TODO: [VIV-41] add accessible colors scheme
 export const render = () => {
+	fs.rmdirSync(OUTPUT_FOLDER, { recursive: true });
+
 	['light', 'dark'].forEach(function (scheme) {
 		console.log('\n==============================================');
 		console.log(`\nProcessing: [${scheme}]`);

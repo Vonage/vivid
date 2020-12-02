@@ -5,16 +5,16 @@ import {
 } from '../../../test/style-utils.js';
 
 const ALTERNATE = 'alternate',
-	BASE = 'base';
+	MAIN = 'main';
 
 describe('design tokens service', () => {
 	describe('scheme design tokens', () => {
 		it('should have scheme design tokens generated', async () => {
 			const EXPECTED_MATRIX = [
 				`dark/${ALTERNATE}.scss`,
-				`dark/${BASE}.scss`,
+				`dark/${MAIN}.scss`,
 				`light/${ALTERNATE}.scss`,
-				`light/${BASE}.scss`,
+				`light/${MAIN}.scss`,
 			];
 			const schemeFiles = getSchemeFiles();
 			expect(Object.keys(schemeFiles).sort()).eql(EXPECTED_MATRIX);
@@ -40,7 +40,7 @@ describe('design tokens service', () => {
 			const testSet = {};
 			const schemeVariables = getSchemeVariables();
 			Object.keys(schemeVariables)
-				.filter((schemeName) => schemeName.includes(BASE))
+				.filter((schemeName) => schemeName.includes(MAIN))
 				.forEach((schemeName) => {
 					Object.keys(schemeVariables[schemeName]).forEach((cssVarName) => {
 						const set = testSet[cssVarName] || (testSet[cssVarName] = new Set());
@@ -56,9 +56,9 @@ describe('design tokens service', () => {
 			);
 		});
 
-		//	we have a matrix of schemes and flavors: each scheme hase 2 flavors (base/alternate)
+		//	we have a matrix of schemes and flavors: each scheme hase 2 flavors (main/alternate)
 		//	this test checks that schemes are distinct from each other while comparing the same flavor, eg:
-		//	- base: light != dark != ...
+		//	- main: light != dark != ...
 		//	- alternate: light != dark != ...
 		it('should have differing values in different schemes (light/dark/...) per flavor', async () => {
 			const schemeVariables = getSchemeVariables();
@@ -72,9 +72,9 @@ describe('design tokens service', () => {
 			assertListsOfDistinct(schemesListByFlavor);
 		});
 
-		//	we have a matrix of schemes and flavors: each scheme hase 2 flavors (base/alternate)
-		//	this test checks that alternate flavor has ONLY a DISTINCT props from base
-		// it('should have differing values in different flavors (base/alternate) per scheme', async () => {
+		//	we have a matrix of schemes and flavors: each scheme hase 2 flavors (main/alternate)
+		//	this test checks that alternate flavor has ONLY a DISTINCT props from main
+		// it('should have differing values in different flavors (main/alternate) per scheme', async () => {
 		// 	const schemeVariables = getSchemeVariables();
 		// 	let totalAlternatesTested = 0;
 		// 	for (const key in schemeVariables) {
@@ -82,7 +82,7 @@ describe('design tokens service', () => {
 		// 		if (flavor === ALTERNATE) {
 		// 			totalAlternatesTested++;
 		// 			const altSet = schemeVariables[key];
-		// 			const baseSet = schemeVariables[`${scheme}/${BASE}`];
+		// 			const baseSet = schemeVariables[`${scheme}/${MAIN}`];
 		// 			expect(altSet).exist;
 		// 			expect(baseSet).exist;
 		// 			const altKeys = Object.keys(altSet);
