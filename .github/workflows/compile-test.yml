@@ -7,7 +7,7 @@ on:
       - develop
 jobs:
   cache-yarn:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     env:
       ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
@@ -83,7 +83,7 @@ jobs:
 
   test-firefox:
     needs: cache-yarn
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     env:
       ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
@@ -124,7 +124,7 @@ jobs:
 
   test-chrome:
     needs: cache-yarn
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     env:
       ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
@@ -165,7 +165,7 @@ jobs:
 
   code-standards:
     needs: cache-yarn
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     env:
       ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
