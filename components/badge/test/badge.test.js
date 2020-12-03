@@ -39,4 +39,33 @@ describe('badge', () => {
 			assertComputedStyle(badge, await getTypographyStyle('caption-bold'));
 		});
 	});
+
+	describe('sizing', () => {
+		it('should have normal size by default', async () => {
+			const addedElements = addElement(
+				textToDomToParent(`<${VWC_BADGE}>I'm a badge</${VWC_BADGE}>`)
+			);
+			const actualElement = addedElements[0];
+			await waitNextTask();
+			assertComputedStyle(actualElement, { height: '24px' });
+		});
+
+		it('should have dense size when dense', async () => {
+			const addedElements = addElement(
+				textToDomToParent(`<${VWC_BADGE} dense>I'm a badge</${VWC_BADGE}>`)
+			);
+			const actualElement = addedElements[0];
+			await waitNextTask();
+			assertComputedStyle(actualElement, { height: '20px' });
+		});
+
+		it('should have enlarged size when enlarged', async () => {
+			const addedElements = addElement(
+				textToDomToParent(`<${VWC_BADGE} enlarged>I'm a badge</${VWC_BADGE}>`)
+			);
+			const actualElement = addedElements[0];
+			await waitNextTask();
+			assertComputedStyle(actualElement, { height: '28px' });
+		});
+	});
 });
