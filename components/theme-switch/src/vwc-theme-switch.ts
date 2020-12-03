@@ -15,7 +15,8 @@ import {
 	SelectedDetail,
 } from '@vonage/vvd-scheme/vvd-scheme.js';
 
-const VVD_SCHEME_SELECT = 'vvd-scheme-select';
+const VVD_SCHEME_SELECT = 'vvd-scheme-select',
+	EVENT_LISTENER_KEY = Symbol('scheme.select.listener');
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -29,11 +30,18 @@ export class VWCThemeSwitch extends LitElement {
 	@property({ reflect: true })
 	scheme?: SchemeOption;
 
+	private [EVENT_LISTENER_KEY]: (e: CustomEvent<SelectedDetail>) => void;
+
+	constructor() {
+		super();
+		this[EVENT_LISTENER_KEY] = this.updateScheme.bind(this);
+	}
+
 	connectedCallback(): void {
 		super.connectedCallback();
 		vvdScheme.eventBus.addEventListener(
 			VVD_SCHEME_SELECT,
-			this.updateScheme as EventListener
+			this[EVENT_LISTENER_KEY] as EventListener
 		);
 		this.scheme = vvdScheme.getSelectedSchemeOption();
 		this.scheme ??= vvdScheme.getSelectedScheme();
@@ -43,12 +51,16 @@ export class VWCThemeSwitch extends LitElement {
 		super.disconnectedCallback();
 		vvdScheme.eventBus.removeEventListener(
 			VVD_SCHEME_SELECT,
-			this.updateScheme as EventListener
+			this[EVENT_LISTENER_KEY] as EventListener
 		);
 	}
 
-	private updateScheme(event: CustomEvent<SelectedDetail>): void {
-		(event.target as VWCThemeSwitch).scheme = event.detail.scheme;
+	private updateScheme({
+		detail: { scheme },
+	}: CustomEvent<SelectedDetail>): void {
+		if (scheme !== this.scheme) {
+			this.scheme = scheme;
+		}
 	}
 
 	private handleChange({ target }: InputEvent): void {
