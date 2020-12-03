@@ -1,7 +1,9 @@
 import '@vonage/vvd-core';
-import { VWCIconButton } from '@vonage/vwc-icon-button';
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { IconButtonToggle as MWCIconButtonToggle } from '@material/mwc-icon-button-toggle';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
+import { style as vwcButtonStyle } from '@vonage/vwc-icon-button/vwc-icon-button.css';
+import { style as mwcIconButtonStyle } from '@material/mwc-icon-button/mwc-icon-button-css.js';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -9,7 +11,13 @@ declare global {
 	}
 }
 
-MWCIconButtonToggle.styles = VWCIconButton.styles;
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-ignore
+MWCIconButtonToggle.styles = [
+	styleCoupling,
+	mwcIconButtonStyle,
+	vwcButtonStyle,
+];
 
 /**
  * This component is an extension of [<mwc-icon-button-toggle>](https://github.com/material-components/material-components-web-components/tree/master/packages/icon-button-toggle)
