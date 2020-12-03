@@ -47,6 +47,7 @@
 		{ "path": "components/file-picker" },
 		{ "path": "components/formfield" },
 		{ "path": "components/icon" },
+		{ "path": "components/icon-button" },
 		{ "path": "components/keypad" },
 		{ "path": "components/linear-progress" },
 		{ "path": "components/list" },
