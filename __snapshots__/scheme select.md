@@ -4,14 +4,14 @@
 
 ```html
 <vwc-button
-  class="syncWithOSSettings"
+  class="syncWithOsSettings"
   connotation="cta"
   dense=""
   layout="filled"
   type="submit"
   unelevated=""
 >
-  syncWithOSSettings
+  syncWithOsSettings
   <button
     style="display: none;"
     type="submit"

@@ -1,10 +1,7 @@
 # `theme switch`
 
-#### `should have internal contents`
+#### `should match internal contents`
 
 ```html
-<vwc-switch connotation="primary">
-</vwc-switch>
-
+<vwc-switch checked="" class="switch" connotation="primary"> </vwc-switch>
 ```
-

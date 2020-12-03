@@ -1,4 +1,3 @@
-import { onSchemeChange } from './scheme-change-listener';
 import { applySchemeCSS } from './vvd-scheme-style-tag-handler';
 
 import {
@@ -7,8 +6,20 @@ import {
 	// prefersColorSchemeSupported,
 } from './os-sync.utils';
 
-export type PredefinedScheme = 'light' | 'dark';
-export type SchemeOption = 'syncWithOSSettings' | PredefinedScheme;
+import {
+	SelectedDetail,
+	PredefinedScheme,
+	AutoScheme,
+	SchemeOption,
+} from './vvd-scheme-foundation';
+export {
+	SelectedDetail,
+	PredefinedScheme,
+	AutoScheme,
+	SchemeOption,
+} from './vvd-scheme-foundation';
+
+const eventBus = new EventTarget();
 
 let _selectedScheme: PredefinedScheme;
 function getSelectedScheme(): PredefinedScheme {
@@ -26,7 +37,7 @@ function getDefaultSchemeOption(): SchemeOption {
 	// ! commented the cahnce of serving dark mode components as:
 	// ! 1. vivid packages aren't really supported by dark mode yet
 	// ! 2. we still have no control over application scheme mode context
-	return 'light';
+	return PredefinedScheme.LIGHT;
 }
 
 function getEffectiveSchemeOption(
@@ -43,15 +54,9 @@ async function syncWithOSSettings() {
 	applySchemeCSS(getPreferedColorScheme() as PredefinedScheme);
 }
 
-function init(): void {
-	onSchemeChange(async (scheme: SchemeOption) => {
-		set(scheme);
-	});
-}
-
 function setSyncModeIfRelevant(scheme: SchemeOption): PredefinedScheme {
 	let result: SchemeOption;
-	if (scheme === 'syncWithOSSettings') {
+	if (scheme === AutoScheme.SYNC_WITH_OS_SETTINGS) {
 		pcs.addListener(syncWithOSSettings);
 		result = getPreferedColorScheme() as PredefinedScheme;
 	} else {
@@ -62,6 +67,7 @@ function setSyncModeIfRelevant(scheme: SchemeOption): PredefinedScheme {
 }
 
 let setPromise: Promise<Record<string, unknown>> | null = null;
+
 async function set(
 	schemeOption: SchemeOption | null = null
 ): Promise<Record<string, unknown>> {
@@ -90,6 +96,8 @@ async function set(
 
 	setPromise = tmpPromise.then(() => {
 		// console.info('... scheme changed');
+		notifySelected(_selectedScheme);
+
 		return {
 			option: _selectedSchemeOption,
 			scheme: _selectedScheme,
@@ -99,13 +107,22 @@ async function set(
 	return setPromise;
 }
 
+function notifySelected(scheme: SchemeOption) {
+	const ev = new CustomEvent<SelectedDetail>('vvd-scheme-select', {
+		detail: { scheme },
+	});
+	eventBus.dispatchEvent(ev);
+}
+
+/**
+ * @fires selected {SelectedDetail}
+ */
 export default Object.freeze({
 	set,
+	eventBus,
 	getSelectedScheme,
 	getSelectedSchemeOption,
 });
-
-init();
 
 //TODO add the following tests:
 //!scheme change event
