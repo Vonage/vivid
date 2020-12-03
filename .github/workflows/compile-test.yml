@@ -36,9 +36,9 @@ jobs:
   #         restore-keys: |
   #           vivid-cache-yarn-
 
-      - name: Install packages
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: yarn install
+      # - name: Install packages
+      #   if: steps.yarn-cache.outputs.cache-hit != 'true'
+      #   run: yarn install
 
   test-safari:
     # needs: cache-yarn
