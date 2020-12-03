@@ -83,7 +83,7 @@ jobs:
 
   test-firefox:
     needs: cache-yarn
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     env:
       ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
@@ -124,7 +124,7 @@ jobs:
 
   test-chrome:
     needs: cache-yarn
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     env:
       ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
