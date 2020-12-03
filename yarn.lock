@@ -2382,6 +2382,15 @@
     lit-html "^1.1.2"
     tslib "^1.10.0"
 
+"@material/mwc-icon-button@^0.19.1":
+  version "0.19.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-icon-button/-/mwc-icon-button-0.19.1.tgz#8bf761a22e89fd7224917368e8f0c7db772e4641"
+  integrity sha1-i/dhoi6J/XIkkXNo6PDH23cuRkE=
+  dependencies:
+    "@material/mwc-ripple" "^0.19.1"
+    lit-element "^2.3.0"
+    tslib "^1.10.0"
+
 "@material/mwc-icon@^0.19.1":
   version "0.19.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-icon/-/mwc-icon-0.19.1.tgz#4dddf27a9f24262b02ea9cddc39800fec8b42920"
