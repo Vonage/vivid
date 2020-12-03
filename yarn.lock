@@ -2554,6 +2554,54 @@
     lit-element "^2.3.0"
     tslib "^1.10.0"
 
+"@material/mwc-tab-bar@^0.19.1":
+  version "0.19.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-tab-bar/-/mwc-tab-bar-0.19.1.tgz#bb427387e5ab34cb715ddeed0b110669775e01c2"
+  integrity sha1-u0Jzh+WrNMtxXd7tCxEGaXdeAcI=
+  dependencies:
+    "@material/mwc-base" "^0.19.1"
+    "@material/mwc-tab" "^0.19.1"
+    "@material/mwc-tab-scroller" "^0.19.1"
+    "@material/tab" "=8.0.0-canary.774dcfc8e.0"
+    "@material/tab-bar" "=8.0.0-canary.774dcfc8e.0"
+    lit-element "^2.3.0"
+    tslib "^1.10.0"
+
+"@material/mwc-tab-indicator@^0.19.1":
+  version "0.19.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-tab-indicator/-/mwc-tab-indicator-0.19.1.tgz#177d364ec8fefbdf00eccbd5842ffdb0b0fa55f8"
+  integrity sha1-F302Tsj++98A7MvVhC/9sLD6Vfg=
+  dependencies:
+    "@material/mwc-base" "^0.19.1"
+    "@material/tab-indicator" "=8.0.0-canary.774dcfc8e.0"
+    lit-element "^2.3.0"
+    lit-html "^1.1.2"
+    tslib "^1.10.0"
+
+"@material/mwc-tab-scroller@^0.19.1":
+  version "0.19.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-tab-scroller/-/mwc-tab-scroller-0.19.1.tgz#668438b18437a0adeac5f60d684f889fa117b847"
+  integrity sha1-ZoQ4sYQ3oK3qxfYNaE+In6EXuEc=
+  dependencies:
+    "@material/dom" "=8.0.0-canary.774dcfc8e.0"
+    "@material/mwc-base" "^0.19.1"
+    "@material/tab-scroller" "=8.0.0-canary.774dcfc8e.0"
+    lit-element "^2.3.0"
+    tslib "^1.10.0"
+
+"@material/mwc-tab@^0.19.1":
+  version "0.19.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-tab/-/mwc-tab-0.19.1.tgz#974bf92211493304c9c28a88c5e24e9d7a005464"
+  integrity sha1-l0v5IhFJMwTJwoqIxeJOnXoAVGQ=
+  dependencies:
+    "@material/mwc-base" "^0.19.1"
+    "@material/mwc-ripple" "^0.19.1"
+    "@material/mwc-tab-indicator" "^0.19.1"
+    "@material/tab" "=8.0.0-canary.774dcfc8e.0"
+    lit-element "^2.3.0"
+    lit-html "^1.1.2"
+    tslib "^1.10.0"
+
 "@material/mwc-textarea@^0.19.1":
   version "0.19.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-textarea/-/mwc-textarea-0.19.1.tgz#07bce3e04316712f086b213fb07c398b30c55e49"
@@ -2751,6 +2799,56 @@
     "@material/ripple" "8.0.0-canary.774dcfc8e.0"
     "@material/rtl" "8.0.0-canary.774dcfc8e.0"
     "@material/theme" "8.0.0-canary.774dcfc8e.0"
+    tslib "^1.9.3"
+
+"@material/tab-bar@=8.0.0-canary.774dcfc8e.0":
+  version "8.0.0-canary.774dcfc8e.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/tab-bar/-/tab-bar-8.0.0-canary.774dcfc8e.0.tgz#a522650042089128ff74f746ffdd0591390069e3"
+  integrity sha1-pSJlAEIIkSj/dPdG/90FkTkAaeM=
+  dependencies:
+    "@material/animation" "8.0.0-canary.774dcfc8e.0"
+    "@material/base" "8.0.0-canary.774dcfc8e.0"
+    "@material/density" "8.0.0-canary.774dcfc8e.0"
+    "@material/feature-targeting" "8.0.0-canary.774dcfc8e.0"
+    "@material/tab" "8.0.0-canary.774dcfc8e.0"
+    "@material/tab-scroller" "8.0.0-canary.774dcfc8e.0"
+    tslib "^1.9.3"
+
+"@material/tab-indicator@8.0.0-canary.774dcfc8e.0", "@material/tab-indicator@=8.0.0-canary.774dcfc8e.0":
+  version "8.0.0-canary.774dcfc8e.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/tab-indicator/-/tab-indicator-8.0.0-canary.774dcfc8e.0.tgz#a07e8e2b0ea8c22cab9623c69095709caba11f0a"
+  integrity sha1-oH6OKw6owiyrliPGkJVwnKuhHwo=
+  dependencies:
+    "@material/animation" "8.0.0-canary.774dcfc8e.0"
+    "@material/base" "8.0.0-canary.774dcfc8e.0"
+    "@material/feature-targeting" "8.0.0-canary.774dcfc8e.0"
+    "@material/theme" "8.0.0-canary.774dcfc8e.0"
+    tslib "^1.9.3"
+
+"@material/tab-scroller@8.0.0-canary.774dcfc8e.0", "@material/tab-scroller@=8.0.0-canary.774dcfc8e.0":
+  version "8.0.0-canary.774dcfc8e.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/tab-scroller/-/tab-scroller-8.0.0-canary.774dcfc8e.0.tgz#81ff09bce49eeaf4569d1e681dec8b701f7db58e"
+  integrity sha1-gf8JvOSe6vRWnR5oHeyLcB99tY4=
+  dependencies:
+    "@material/animation" "8.0.0-canary.774dcfc8e.0"
+    "@material/base" "8.0.0-canary.774dcfc8e.0"
+    "@material/dom" "8.0.0-canary.774dcfc8e.0"
+    "@material/feature-targeting" "8.0.0-canary.774dcfc8e.0"
+    "@material/tab" "8.0.0-canary.774dcfc8e.0"
+    tslib "^1.9.3"
+
+"@material/tab@8.0.0-canary.774dcfc8e.0", "@material/tab@=8.0.0-canary.774dcfc8e.0":
+  version "8.0.0-canary.774dcfc8e.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/tab/-/tab-8.0.0-canary.774dcfc8e.0.tgz#5c47317c02b1c68dfa6caf41129bff4f64dc4500"
+  integrity sha1-XEcxfAKxxo36bK9BEpv/T2TcRQA=
+  dependencies:
+    "@material/base" "8.0.0-canary.774dcfc8e.0"
+    "@material/feature-targeting" "8.0.0-canary.774dcfc8e.0"
+    "@material/ripple" "8.0.0-canary.774dcfc8e.0"
+    "@material/rtl" "8.0.0-canary.774dcfc8e.0"
+    "@material/tab-indicator" "8.0.0-canary.774dcfc8e.0"
+    "@material/theme" "8.0.0-canary.774dcfc8e.0"
+    "@material/typography" "8.0.0-canary.774dcfc8e.0"
     tslib "^1.9.3"
 
 "@material/textfield@=8.0.0-canary.774dcfc8e.0":
