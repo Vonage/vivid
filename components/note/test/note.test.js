@@ -44,7 +44,11 @@ describe('note', () => {
 		);
 		await waitNextTask();
 		assertComputedStyle(note, { width: '8px' }, '::before');
-		assertComputedStyle(note, { height: `${note.offsetHeight}px` }, '::before');
+		assertComputedStyle(
+			note,
+			{ height: getComputedStyle(note).height },
+			'::before'
+		);
 	});
 
 	describe('header', () => {
