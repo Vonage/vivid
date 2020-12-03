@@ -52,6 +52,7 @@ function setupInitTestElements(): HTMLElement[] {
 	if (document.body) {
 		result.forEach((e) => document.body.appendChild(e));
 	} else {
+		console.log('-=-=-=-=-=--=');
 		document.addEventListener(
 			'DOMContentLoaded',
 			() => result.forEach((e) => document.body.appendChild(e)),
