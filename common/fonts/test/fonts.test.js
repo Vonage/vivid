@@ -11,14 +11,14 @@ describe('vvd-fonts service', () => {
 		assert.isFunction(fonts.init, 'fonts has "init" method');
 	});
 
-	it('should affect the actual font', async () => {
+	it('should affect the actual font', async function () {
 		this.timeout(5000);
 		const [testElement, initialWidth] = setupTestElement(document);
 		await fonts.init();
 		assertTestElementAndClean(testElement, initialWidth);
 	});
 
-	it('should provide the same Promise each new time after the initial run', async () => {
+	it('should provide the same Promise each new time after the initial run', async function () {
 		this.timeout(5000);
 		const [r1, r2, r3, r4] = await Promise.all([
 			await fonts.init(),
@@ -37,7 +37,7 @@ describe('vvd-fonts service', () => {
 			cleanFrame(FONTS_SETUP_HTML_TAG);
 		});
 
-		it('should init fonts when init via HEAD element', async () => {
+		it('should init fonts when init via HEAD element', async function () {
 			this.timeout(5000);
 			await getFrameLoadedInjected(FONTS_SETUP_HTML_TAG, async (iframe) => {
 				const [testElement, initialWidth] = setupTestElement(
@@ -48,7 +48,7 @@ describe('vvd-fonts service', () => {
 			});
 		});
 
-		it('should init fonts when init is AFTER the document loaded', async () => {
+		it('should init fonts when init is AFTER the document loaded', async function () {
 			this.timeout(5000);
 			await getFrameLoadedInjected(FONTS_SETUP_HTML_TAG, async (iframe) => {
 				const [testElement, initialWidth] = setupTestElement(
