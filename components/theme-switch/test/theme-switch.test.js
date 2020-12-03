@@ -25,7 +25,7 @@ describe('theme switch', () => {
 		);
 	});
 
-	it('should have internal contents', async () => {
+	it('should match internal contents', async () => {
 		const addedElements = addElement(
 			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 		);

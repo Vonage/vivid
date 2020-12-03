@@ -12,15 +12,17 @@ describe('vvd-fonts service', () => {
 	});
 
 	it('should affect the actual font', async () => {
-		const [testElement, monoWidth] = setupTestElement(document);
+		const [testElement, baseElement] = setupTestElements(document);
 		await fonts.init();
-		assertTestElementAndClean(testElement, monoWidth);
+		assertTestElementAndClean(testElement, baseElement);
 	});
 
 	it('should provide the same Promise each new time after the initial run', async () => {
-		const r1 = await fonts.init();
-		const r2 = await fonts.init();
-		const r3 = await (await import('../vvd-fonts.js')).default.init();
+		const [r1, r2, r3] = await Promise.all([
+			await fonts.init(),
+			await fonts.init(),
+			await (await import('../vvd-fonts.js')).default.init(),
+		]);
 		expect(r2).equal(r1);
 		expect(r3).equal(r2);
 	});
@@ -33,45 +35,52 @@ describe('vvd-fonts service', () => {
 
 		it('should init fonts when init via HEAD element', async () => {
 			await getFrameLoadedInjected(FONTS_SETUP_HTML_TAG, async (iframe) => {
-				const [testElement, monoWidth] = setupTestElement(iframe.contentDocument);
+				const [testElement, baseElement] = setupTestElements(
+					iframe.contentDocument
+				);
 				await iframe.contentWindow.vvdFonts.init();
-				assertTestElementAndClean(testElement, monoWidth);
+				assertTestElementAndClean(testElement, baseElement);
 			});
 		});
 
 		it('should init fonts when init is AFTER the document loaded', async () => {
 			await getFrameLoadedInjected(FONTS_SETUP_HTML_TAG, async (iframe) => {
-				const [testElement, monoWidth] = setupTestElement(iframe.contentDocument);
+				const [testElement, baseElement] = setupTestElements(
+					iframe.contentDocument
+				);
 				if (iframe.contentDocument.readyState !== 'complete') {
 					await new Promise((resolve) =>
 						iframe.contentDocument.addEventListener('DOMContentLoaded', resolve)
 					);
 				}
 				await iframe.contentWindow.vvdFonts.init();
-				assertTestElementAndClean(testElement, monoWidth);
+				assertTestElementAndClean(testElement, baseElement);
 			});
 		});
 	});
 });
 
-function setupTestElement(targetDocument) {
-	const testElement = targetDocument.createElement('span');
-	testElement.textContent = 'wwwwwiiiii';
-	testElement.style.fontFamily = 'initial';
+function setupTestElements(targetDocument) {
+	const [testElement, baseElement] = [
+		'var(--vvd-font-family-spezia)',
+		'initial',
+	].map((fs) => {
+		const e = targetDocument.createElement('span');
+		e.textContent = 'wwwwwiiiii';
+		e.style.fontFamily = fs;
+		targetDocument.body.appendChild(e);
+		return e;
+	});
 
-	//	first, append it as is, take the width (monospaced)
-	targetDocument.body.appendChild(testElement);
-	const monoWidth = testElement.offsetWidth;
-
-	//	second, set our font and then call init (to be sure, init might already ran)
-	testElement.style.fontFamily = 'var(--vvd-font-family-spezia, initial)';
-
-	return [testElement, monoWidth];
+	return [testElement, baseElement];
 }
 
-function assertTestElementAndClean(testElement, monoWidth) {
-	if (testElement.offsetWidth === monoWidth) {
-		throw new Error('element width after should be other than before ()');
+function assertTestElementAndClean(testElement, baseElement) {
+	if (testElement.offsetWidth === baseElement.offsetWidth) {
+		throw new Error(
+			`element width (${testElement.offsetWidth}) should have been different from initial (${baseElement.offsetWidth})`
+		);
 	}
 	testElement.remove();
+	baseElement.remove();
 }
