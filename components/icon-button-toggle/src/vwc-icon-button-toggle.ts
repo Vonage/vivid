@@ -1,4 +1,5 @@
 import '@vonage/vvd-core';
+import { VWCIconButton } from '@vonage/vwc-icon-button';
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { IconButtonToggle as MWCIconButtonToggle } from '@material/mwc-icon-button-toggle';
 
@@ -7,6 +8,8 @@ declare global {
 		'vwc-icon-button-toggle': VWCIconButtonToggle;
 	}
 }
+
+MWCIconButtonToggle.styles = VWCIconButton.styles;
 
 /**
  * This component is an extension of [<mwc-icon-button-toggle>](https://github.com/material-components/material-components-web-components/tree/master/packages/icon-button-toggle)
