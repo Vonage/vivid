@@ -12,9 +12,9 @@ describe('vvd-fonts service', () => {
 	});
 
 	it('should affect the actual font', async () => {
-		const [testElement, monoWidth] = setupTestElement(document);
+		const [testElement, initialWidth] = setupTestElement(document);
 		await fonts.init();
-		assertTestElementAndClean(testElement, monoWidth);
+		assertTestElementAndClean(testElement, initialWidth);
 	});
 
 	it('should provide the same Promise each new time after the initial run', async () => {
@@ -59,18 +59,16 @@ function setupTestElement(targetDocument) {
 	testElement.textContent = 'wwwwwiiiii';
 	testElement.style.fontFamily = 'initial';
 
-	//	first, append it as is, take the width (monospaced)
 	targetDocument.body.appendChild(testElement);
-	const monoWidth = testElement.offsetWidth;
+	const initialWidth = testElement.offsetWidth;
 
-	//	second, set our font and then call init (to be sure, init might already ran)
 	testElement.style.fontFamily = 'var(--vvd-font-family-spezia, initial)';
 
-	return [testElement, monoWidth];
+	return [testElement, initialWidth];
 }
 
-function assertTestElementAndClean(testElement, monoWidth) {
-	if (testElement.offsetWidth === monoWidth) {
+function assertTestElementAndClean(testElement, initialWidth) {
+	if (testElement.offsetWidth === initialWidth) {
 		throw new Error('element width after should be other than before ()');
 	}
 	testElement.remove();
