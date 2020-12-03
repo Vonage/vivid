@@ -4,44 +4,44 @@ on:
   pull_request:
     branches:
       - master
-      - develop
+
 jobs:
-  cache-yarn:
-    runs-on: ubuntu-20.04
-    env:
-      ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+  # cache-yarn:
+  #   runs-on: ubuntu-20.04
+  #   env:
+  #     ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.PAT }}
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+  #       with:
+  #         token: ${{ secrets.PAT }}
 
-      - name: Setup NodeJS 12
-        uses: actions/setup-node@v1
-        with:
-          node-version: 12
+  #     - name: Setup NodeJS 12
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 12
 
-      - name: Install yarn
-        run: npm install -g yarn
+  #     - name: Install yarn
+  #       run: npm install -g yarn
 
-      - name: Cache yarn dependencies
-        uses: actions/cache@v2
-        id: yarn-cache
-        with:
-          path: |
-            ${{ steps.yarn-cache-dir-path.outputs.dir }}
-            **\node_modules
-          key: vivid-cache-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            vivid-cache-yarn-
+  #     - name: Cache yarn dependencies
+  #       uses: actions/cache@v2
+  #       id: yarn-cache
+  #       with:
+  #         path: |
+  #           ${{ steps.yarn-cache-dir-path.outputs.dir }}
+  #           **\node_modules
+  #         key: vivid-cache-yarn-${{ hashFiles('**/yarn.lock') }}
+  #         restore-keys: |
+  #           vivid-cache-yarn-
 
       - name: Install packages
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
 
   test-safari:
-    needs: cache-yarn
+    # needs: cache-yarn
     runs-on: macOS-latest
     env:
       ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
@@ -52,27 +52,27 @@ jobs:
         with:
           token: ${{ secrets.PAT }}
 
-      - name: Setup NodeJS 12
+      - name: Setup NodeJS 14
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 14
 
       - name: Install yarn
         run: npm install -g yarn
 
-      - name: Cache yarn dependencies
-        uses: actions/cache@v2
-        id: yarn-cache
-        with:
-          path: |
-            ${{ steps.yarn-cache-dir-path.outputs.dir }}
-            **\node_modules
-          key: vivid-cache-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            vivid-cache-yarn-
+      # - name: Cache yarn dependencies
+      #   uses: actions/cache@v2
+      #   id: yarn-cache
+      #   with:
+      #     path: |
+      #       ${{ steps.yarn-cache-dir-path.outputs.dir }}
+      #       **\node_modules
+      #     key: vivid-cache-yarn-${{ hashFiles('**/yarn.lock') }}
+      #     restore-keys: |
+      #       vivid-cache-yarn-
 
       - name: Install packages
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        # if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
 
       - name: Build components
@@ -82,7 +82,7 @@ jobs:
         run: yarn test:safari
 
   test-firefox:
-    needs: cache-yarn
+    # needs: cache-yarn
     runs-on: ubuntu-20.04
     env:
       ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
@@ -93,27 +93,27 @@ jobs:
         with:
           token: ${{ secrets.PAT }}
 
-      - name: Setup NodeJS 12
+      - name: Setup NodeJS 14
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 14
 
       - name: Install yarn
         run: npm install -g yarn
 
-      - name: Cache yarn dependencies
-        uses: actions/cache@v2
-        id: yarn-cache
-        with:
-          path: |
-            ${{ steps.yarn-cache-dir-path.outputs.dir }}
-            **\node_modules
-          key: vivid-cache-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            vivid-cache-yarn-
+      # - name: Cache yarn dependencies
+      #   uses: actions/cache@v2
+      #   id: yarn-cache
+      #   with:
+      #     path: |
+      #       ${{ steps.yarn-cache-dir-path.outputs.dir }}
+      #       **\node_modules
+      #     key: vivid-cache-yarn-${{ hashFiles('**/yarn.lock') }}
+      #     restore-keys: |
+      #       vivid-cache-yarn-
 
       - name: Install packages
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        # if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
 
       - name: Build components
@@ -123,7 +123,7 @@ jobs:
         run: yarn test:firefox
 
   test-chrome:
-    needs: cache-yarn
+    # needs: cache-yarn
     runs-on: ubuntu-20.04
     env:
       ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
@@ -134,27 +134,27 @@ jobs:
         with:
           token: ${{ secrets.PAT }}
 
-      - name: Setup NodeJS 12
+      - name: Setup NodeJS 14
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 14
 
       - name: Install yarn
         run: npm install -g yarn
 
-      - name: Cache yarn dependencies
-        uses: actions/cache@v2
-        id: yarn-cache
-        with:
-          path: |
-            ${{ steps.yarn-cache-dir-path.outputs.dir }}
-            **\node_modules
-          key: vivid-cache-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            vivid-cache-yarn-
+      # - name: Cache yarn dependencies
+      #   uses: actions/cache@v2
+      #   id: yarn-cache
+      #   with:
+      #     path: |
+      #       ${{ steps.yarn-cache-dir-path.outputs.dir }}
+      #       **\node_modules
+      #     key: vivid-cache-yarn-${{ hashFiles('**/yarn.lock') }}
+      #     restore-keys: |
+      #       vivid-cache-yarn-
 
       - name: Install packages
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        # if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
 
       - name: Build components
@@ -164,7 +164,7 @@ jobs:
         run: yarn test:chrome
 
   code-standards:
-    needs: cache-yarn
+    # needs: cache-yarn
     runs-on: ubuntu-20.04
     env:
       ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
@@ -175,27 +175,27 @@ jobs:
         with:
           token: ${{ secrets.PAT }}
 
-      - name: Setup NodeJS 12
+      - name: Setup NodeJS 14
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 14
 
       - name: Install yarn
         run: npm install -g yarn
 
-      - name: Cache yarn dependencies
-        uses: actions/cache@v2
-        id: yarn-cache
-        with:
-          path: |
-            ${{ steps.yarn-cache-dir-path.outputs.dir }}
-            **\node_modules
-          key: vivid-cache-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            vivid-cache-yarn-
+      # - name: Cache yarn dependencies
+      #   uses: actions/cache@v2
+      #   id: yarn-cache
+      #   with:
+      #     path: |
+      #       ${{ steps.yarn-cache-dir-path.outputs.dir }}
+      #       **\node_modules
+      #     key: vivid-cache-yarn-${{ hashFiles('**/yarn.lock') }}
+      #     restore-keys: |
+      #       vivid-cache-yarn-
 
       - name: Install packages
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        # if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
 
       - name: Build components
