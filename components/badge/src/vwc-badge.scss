@@ -10,7 +10,9 @@
 
 :host {
 	display: inline-flex;
-	padding: 4px 10px;
+	align-items: center;
+	height: 24px;
+	padding: 0 10px;
 	position: relative;
 	color: var(#{color-semantic.$vvd-color-on-connotation});
 	@include typography.typography-cat-shorthand('caption-bold');
@@ -58,11 +60,13 @@
 }
 
 :host([dense]) {
-  padding: 2px 8px;
+	height: 20px;
+  padding: 0 8px;
 }
 
 :host([enlarged]) {
-  padding: 6px 12px;
+	height: 28px;
+  padding: 0 12px;
 }
 
 @include shape-mixins.shape(
