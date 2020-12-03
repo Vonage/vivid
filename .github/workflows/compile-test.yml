@@ -120,9 +120,7 @@ jobs:
         run: yarn compile
 
       - name: Test components
-        run: |
-          sudo ethtool -K eth0 tx off rx off
-          yarn test:firefox
+        run: yarn test:firefox
 
   test-chrome:
     needs: cache-yarn
