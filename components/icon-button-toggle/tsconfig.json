@@ -11,6 +11,9 @@
 	"references": [
 		{
 			"path": "../../common/core"
+		},
+		{
+			"path": "../../components/icon-button"
 		}
 	]
 }
