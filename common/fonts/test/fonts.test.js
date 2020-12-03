@@ -12,12 +12,14 @@ describe('vvd-fonts service', () => {
 	});
 
 	it('should affect the actual font', async () => {
+		this.timeout(5000);
 		const [testElement, initialWidth] = setupTestElement(document);
 		await fonts.init();
 		assertTestElementAndClean(testElement, initialWidth);
 	});
 
 	it('should provide the same Promise each new time after the initial run', async () => {
+		this.timeout(5000);
 		const [r1, r2, r3, r4] = await Promise.all([
 			await fonts.init(),
 			await fonts.init(),
@@ -36,6 +38,7 @@ describe('vvd-fonts service', () => {
 		});
 
 		it('should init fonts when init via HEAD element', async () => {
+			this.timeout(5000);
 			await getFrameLoadedInjected(FONTS_SETUP_HTML_TAG, async (iframe) => {
 				const [testElement, initialWidth] = setupTestElement(
 					iframe.contentDocument
@@ -46,6 +49,7 @@ describe('vvd-fonts service', () => {
 		});
 
 		it('should init fonts when init is AFTER the document loaded', async () => {
+			this.timeout(5000);
 			await getFrameLoadedInjected(FONTS_SETUP_HTML_TAG, async (iframe) => {
 				const [testElement, initialWidth] = setupTestElement(
 					iframe.contentDocument
