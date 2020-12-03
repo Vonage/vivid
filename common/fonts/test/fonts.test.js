@@ -1,4 +1,4 @@
-import fonts from '../vvd-fonts.js?isolated';
+import fonts from '../vvd-fonts.js';
 import { cleanFrame, getFrameLoadedInjected } from '../../../test/test-helpers';
 
 const FONTS_SETUP_HTML_TAG = 'fontsSetupTest';
@@ -11,24 +11,20 @@ describe('vvd-fonts service', () => {
 		assert.isFunction(fonts.init, 'fonts has "init" method');
 	});
 
-	it('should affect the actual font', async function () {
-		this.timeout(5000);
-		const [testElement, initialWidth] = setupTestElement(document);
+	it('should affect the actual font', async () => {
+		const [testElement, baseElement] = setupTestElements(document);
 		await fonts.init();
-		assertTestElementAndClean(testElement, initialWidth);
+		assertTestElementAndClean(testElement, baseElement);
 	});
 
-	it('should provide the same Promise each new time after the initial run', async function () {
-		this.timeout(5000);
-		const [r1, r2, r3, r4] = await Promise.all([
+	it('should provide the same Promise each new time after the initial run', async () => {
+		const [r1, r2, r3] = await Promise.all([
 			await fonts.init(),
 			await fonts.init(),
-			await (await import('../vvd-fonts.js?isolated')).default.init(),
-			await (await import('../vvd-fonts.js?isolated-else')).default.init(),
+			await (await import('../vvd-fonts.js')).default.init(),
 		]);
 		expect(r2).equal(r1);
 		expect(r3).equal(r2);
-		expect(r4).not.equal(r3);
 	});
 
 	describe('isolated environment fonts init test', () => {
@@ -37,21 +33,19 @@ describe('vvd-fonts service', () => {
 			cleanFrame(FONTS_SETUP_HTML_TAG);
 		});
 
-		it('should init fonts when init via HEAD element', async function () {
-			this.timeout(5000);
+		it('should init fonts when init via HEAD element', async () => {
 			await getFrameLoadedInjected(FONTS_SETUP_HTML_TAG, async (iframe) => {
-				const [testElement, initialWidth] = setupTestElement(
+				const [testElement, baseElement] = setupTestElements(
 					iframe.contentDocument
 				);
 				await iframe.contentWindow.vvdFonts.init();
-				assertTestElementAndClean(testElement, initialWidth);
+				assertTestElementAndClean(testElement, baseElement);
 			});
 		});
 
-		it('should init fonts when init is AFTER the document loaded', async function () {
-			this.timeout(5000);
+		it('should init fonts when init is AFTER the document loaded', async () => {
 			await getFrameLoadedInjected(FONTS_SETUP_HTML_TAG, async (iframe) => {
-				const [testElement, initialWidth] = setupTestElement(
+				const [testElement, baseElement] = setupTestElements(
 					iframe.contentDocument
 				);
 				if (iframe.contentDocument.readyState !== 'complete') {
@@ -60,28 +54,33 @@ describe('vvd-fonts service', () => {
 					);
 				}
 				await iframe.contentWindow.vvdFonts.init();
-				assertTestElementAndClean(testElement, initialWidth);
+				assertTestElementAndClean(testElement, baseElement);
 			});
 		});
 	});
 });
 
-function setupTestElement(targetDocument) {
-	const testElement = targetDocument.createElement('span');
-	testElement.textContent = 'wwwwwiiiii';
-	testElement.style.fontFamily = 'initial';
+function setupTestElements(targetDocument) {
+	const [testElement, baseElement] = [
+		'var(--vvd-font-family-spezia)',
+		'initial',
+	].map((fs) => {
+		const e = targetDocument.createElement('span');
+		e.textContent = 'wwwwwiiiii';
+		e.style.fontFamily = fs;
+		targetDocument.body.appendChild(e);
+		return e;
+	});
 
-	targetDocument.body.appendChild(testElement);
-	const initialWidth = testElement.offsetWidth;
-
-	testElement.style.fontFamily = 'var(--vvd-font-family-spezia, initial)';
-
-	return [testElement, initialWidth];
+	return [testElement, baseElement];
 }
 
-function assertTestElementAndClean(testElement, initialWidth) {
-	if (testElement.offsetWidth === initialWidth) {
-		throw new Error('element width after should be other than before ()');
+function assertTestElementAndClean(testElement, baseElement) {
+	if (testElement.offsetWidth === baseElement.offsetWidth) {
+		throw new Error(
+			`element width (${testElement.offsetWidth}) should have been different from initial (${baseElement.offsetWidth})`
+		);
 	}
 	testElement.remove();
+	baseElement.remove();
 }
