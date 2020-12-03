@@ -17,6 +17,12 @@ export const argTypes = {
 			options: { 'true': '', 'false': undefined }
 		}
 	},
+	on: {
+		control: {
+			type: 'inline-radio',
+			options: { 'true': '', 'false': undefined }
+		}
+	},
 	styles: { table: { disable: true } },
 	buttonElement: { table: { disable: true } },
 	ripple: { table: { disable: true } }

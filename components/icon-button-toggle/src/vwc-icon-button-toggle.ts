@@ -1,6 +1,6 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
-import { customElement, property } from 'lit-element';
+import { customElement, html, property, TemplateResult } from 'lit-element';
 import { IconButtonToggle as MWCIconButtonToggle } from '@material/mwc-icon-button-toggle';
 import { style as MWCIconButtonStyle } from '@material/mwc-icon-button/mwc-icon-button-css.js';
 import { style as VWCIconButtonStyle } from '@vonage/vwc-icon-button/vwc-icon-button.css';
@@ -43,5 +43,9 @@ export class VWCIconButtonToggle extends MWCIconButtonToggle {
 				this.dense = undefined;
 			}
 		}
+	}
+
+	protected renderIcon(type: string): TemplateResult {
+		return html`<vwc-icon class="icon" size="small" type="${type}"></vwc-icon>`;
 	}
 }

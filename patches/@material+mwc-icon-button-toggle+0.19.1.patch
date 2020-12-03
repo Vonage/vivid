@@ -1,0 +1,19 @@
+diff --git a/node_modules/@material/mwc-icon-button-toggle/mwc-icon-button-toggle-base.js b/node_modules/@material/mwc-icon-button-toggle/mwc-icon-button-toggle-base.js
+index f8c6cd5..c4b9929 100644
+--- a/node_modules/@material/mwc-icon-button-toggle/mwc-icon-button-toggle-base.js
++++ b/node_modules/@material/mwc-icon-button-toggle/mwc-icon-button-toggle-base.js
+@@ -83,12 +83,12 @@ export class IconButtonToggleBase extends BaseElement {
+         ${this.renderRipple()}
+         <span class="mdc-icon-button__icon">
+           <slot name="offIcon">
+-            <i class="material-icons">${this.offIcon}</i>
++            ${this.renderIcon(this.offIcon)}
+           </slot>
+         </span>
+         <span class="mdc-icon-button__icon mdc-icon-button__icon--on">
+           <slot name="onIcon">
+-            <i class="material-icons">${this.onIcon}</i>
++            ${this.renderIcon(this.onIcon)}
+           </slot>
+         </span>
+       </button>`;

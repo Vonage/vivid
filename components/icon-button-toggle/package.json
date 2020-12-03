@@ -17,6 +17,7 @@
 		"directory": "components/icon-button-toggle"
 	},
 	"scripts": {
+		"prepare": "cd .. && yarn patch-package",
 		"test": "echo \"Error: run tests from root\" && exit 1"
 	},
 	"bugs": {
