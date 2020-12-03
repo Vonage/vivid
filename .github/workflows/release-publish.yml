@@ -56,6 +56,7 @@ jobs:
           echo //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN} >> .npmrc
           git update-index --skip-worktree .npmrc
           yarn lerna publish from-package --registry https://npm.pkg.github.com --no-git-tag-version --no-push --yes
+          npm publish $(node ./scripts/vivid-all-package-generator)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
