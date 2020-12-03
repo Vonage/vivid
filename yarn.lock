@@ -2226,6 +2226,19 @@
     "@material/typography" "8.0.0-canary.774dcfc8e.0"
     tslib "^1.9.3"
 
+"@material/icon-button@=8.0.0-canary.774dcfc8e.0":
+  version "8.0.0-canary.774dcfc8e.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/icon-button/-/icon-button-8.0.0-canary.774dcfc8e.0.tgz#b4b421629ca0503bb66b0cfe6c8a909d86d6444f"
+  integrity sha1-tLQhYpygUDu2awz+bIqQnYbWRE8=
+  dependencies:
+    "@material/base" "8.0.0-canary.774dcfc8e.0"
+    "@material/density" "8.0.0-canary.774dcfc8e.0"
+    "@material/feature-targeting" "8.0.0-canary.774dcfc8e.0"
+    "@material/ripple" "8.0.0-canary.774dcfc8e.0"
+    "@material/rtl" "8.0.0-canary.774dcfc8e.0"
+    "@material/theme" "8.0.0-canary.774dcfc8e.0"
+    tslib "^1.9.3"
+
 "@material/line-ripple@8.0.0-canary.774dcfc8e.0", "@material/line-ripple@=8.0.0-canary.774dcfc8e.0":
   version "8.0.0-canary.774dcfc8e.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/line-ripple/-/line-ripple-8.0.0-canary.774dcfc8e.0.tgz#4050dfeaad894e6ca4cf7325ff7be4d6d9162058"
@@ -2380,6 +2393,18 @@
     "@material/mwc-base" "^0.19.1"
     lit-element "^2.3.0"
     lit-html "^1.1.2"
+    tslib "^1.10.0"
+
+"@material/mwc-icon-button-toggle@^0.19.1":
+  version "0.19.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-icon-button-toggle/-/mwc-icon-button-toggle-0.19.1.tgz#89e2132fc7513ab05e915f9847956c62fba1a9cd"
+  integrity sha1-ieITL8dROrBekV+YR5VsYvuhqc0=
+  dependencies:
+    "@material/icon-button" "=8.0.0-canary.774dcfc8e.0"
+    "@material/mwc-base" "^0.19.1"
+    "@material/mwc-icon-button" "^0.19.1"
+    "@material/mwc-ripple" "^0.19.1"
+    lit-element "^2.3.0"
     tslib "^1.10.0"
 
 "@material/mwc-icon-button@^0.19.1":
@@ -7378,10 +7403,12 @@ depcheck@YonatanKra/depcheck#vivid-version:
     minimatch "^3.0.4"
     multimatch "^4.0.0"
     please-upgrade-node "^3.2.0"
+    query-ast "^1.0.3"
     readdirp "^3.4.0"
     require-package-name "^2.0.1"
     resolve "^1.17.0"
     sass "^1.26.10"
+    scss-parser "^1.0.4"
     vue-template-compiler "^2.6.11"
     yargs "^15.4.0"
 
