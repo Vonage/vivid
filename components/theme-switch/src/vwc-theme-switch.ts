@@ -34,7 +34,7 @@ export class VWCThemeSwitch extends LitElement {
 
 	constructor() {
 		super();
-		this[EVENT_LISTENER_KEY] = this.updateScheme.bind(this);
+		this[EVENT_LISTENER_KEY] = VWCThemeSwitch.updateScheme.bind(this);
 	}
 
 	connectedCallback(): void {
@@ -55,11 +55,12 @@ export class VWCThemeSwitch extends LitElement {
 		);
 	}
 
-	private updateScheme({
+	private static updateScheme({
 		detail: { scheme },
 	}: CustomEvent<SelectedDetail>): void {
-		if (scheme !== this.scheme) {
-			this.scheme = scheme;
+		const self = (this as unknown) as VWCThemeSwitch;
+		if (scheme !== self.scheme) {
+			self.scheme = scheme;
 		}
 	}
 
