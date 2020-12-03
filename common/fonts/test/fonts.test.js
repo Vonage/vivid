@@ -1,4 +1,4 @@
-import fonts from '../vvd-fonts.js';
+import fonts from '../vvd-fonts.js?isolated';
 import { cleanFrame, getFrameLoadedInjected } from '../../../test/test-helpers';
 
 const FONTS_SETUP_HTML_TAG = 'fontsSetupTest';
@@ -18,11 +18,15 @@ describe('vvd-fonts service', () => {
 	});
 
 	it('should provide the same Promise each new time after the initial run', async () => {
-		const r1 = await fonts.init();
-		const r2 = await fonts.init();
-		const r3 = await (await import('../vvd-fonts.js')).default.init();
+		const [r1, r2, r3, r4] = await Promise.all([
+			await fonts.init(),
+			await fonts.init(),
+			await (await import('../vvd-fonts.js?isolated')).default.init(),
+			await (await import('../vvd-fonts.js?isolated-else')).default.init(),
+		]);
 		expect(r2).equal(r1);
 		expect(r3).equal(r2);
+		expect(r4).not.equal(r3);
 	});
 
 	describe('isolated environment fonts init test', () => {
@@ -33,22 +37,26 @@ describe('vvd-fonts service', () => {
 
 		it('should init fonts when init via HEAD element', async () => {
 			await getFrameLoadedInjected(FONTS_SETUP_HTML_TAG, async (iframe) => {
-				const [testElement, monoWidth] = setupTestElement(iframe.contentDocument);
+				const [testElement, initialWidth] = setupTestElement(
+					iframe.contentDocument
+				);
 				await iframe.contentWindow.vvdFonts.init();
-				assertTestElementAndClean(testElement, monoWidth);
+				assertTestElementAndClean(testElement, initialWidth);
 			});
 		});
 
 		it('should init fonts when init is AFTER the document loaded', async () => {
 			await getFrameLoadedInjected(FONTS_SETUP_HTML_TAG, async (iframe) => {
-				const [testElement, monoWidth] = setupTestElement(iframe.contentDocument);
+				const [testElement, initialWidth] = setupTestElement(
+					iframe.contentDocument
+				);
 				if (iframe.contentDocument.readyState !== 'complete') {
 					await new Promise((resolve) =>
 						iframe.contentDocument.addEventListener('DOMContentLoaded', resolve)
 					);
 				}
 				await iframe.contentWindow.vvdFonts.init();
-				assertTestElementAndClean(testElement, monoWidth);
+				assertTestElementAndClean(testElement, initialWidth);
 			});
 		});
 	});

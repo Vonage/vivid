@@ -50,7 +50,6 @@ function setupInitTestElements(): HTMLElement[] {
 		return e;
 	});
 	if (document.body) {
-		console.log('-=-=-=-=-=--=');
 		result.forEach((e) => document.body.appendChild(e));
 	} else {
 		document.addEventListener(
