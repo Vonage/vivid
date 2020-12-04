@@ -1,0 +1,5 @@
+@forward './vwc-tab-coupling';
+
+.mdc-tab {
+  font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
+}

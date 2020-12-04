@@ -4,10 +4,10 @@ on:
   pull_request:
     branches:
       - master
-      - develop
+
 jobs:
   cache-yarn:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     env:
       ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
@@ -52,10 +52,10 @@ jobs:
         with:
           token: ${{ secrets.PAT }}
 
-      - name: Setup NodeJS 12
+      - name: Setup NodeJS 14
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 14
 
       - name: Install yarn
         run: npm install -g yarn
@@ -83,7 +83,7 @@ jobs:
 
   test-firefox:
     needs: cache-yarn
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     env:
       ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
@@ -93,10 +93,10 @@ jobs:
         with:
           token: ${{ secrets.PAT }}
 
-      - name: Setup NodeJS 12
+      - name: Setup NodeJS 14
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 14
 
       - name: Install yarn
         run: npm install -g yarn
@@ -124,7 +124,7 @@ jobs:
 
   test-chrome:
     needs: cache-yarn
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     env:
       ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
@@ -134,10 +134,10 @@ jobs:
         with:
           token: ${{ secrets.PAT }}
 
-      - name: Setup NodeJS 12
+      - name: Setup NodeJS 14
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 14
 
       - name: Install yarn
         run: npm install -g yarn
@@ -165,7 +165,7 @@ jobs:
 
   code-standards:
     needs: cache-yarn
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     env:
       ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
@@ -175,10 +175,10 @@ jobs:
         with:
           token: ${{ secrets.PAT }}
 
-      - name: Setup NodeJS 12
+      - name: Setup NodeJS 14
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 14
 
       - name: Install yarn
         run: npm install -g yarn

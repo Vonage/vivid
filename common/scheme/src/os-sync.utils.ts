@@ -1,9 +1,9 @@
-import { PredefinedScheme } from './vvd-scheme';
+import { PredefinedScheme } from './vvd-scheme-foundation';
 
 export const pcs = window.matchMedia('(prefers-color-scheme: dark)');
 
 export function getPreferedColorScheme(): PredefinedScheme {
-	return pcs.matches ? 'dark' : 'light';
+	return pcs.matches ? PredefinedScheme.DARK : PredefinedScheme.LIGHT;
 }
 
 export function prefersColorSchemeSupported(): boolean {

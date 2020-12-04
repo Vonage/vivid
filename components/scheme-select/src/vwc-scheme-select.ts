@@ -1,8 +1,11 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-button';
 import { customElement, html, LitElement, TemplateResult } from 'lit-element';
-import { SchemeOption } from '@vonage/vvd-scheme/vvd-scheme.js';
-import { SCHEME_SELECT_EVENT_TYPE } from '@vonage/vvd-scheme/scheme-change-listener.js';
+import vvdScheme, {
+	AutoScheme,
+	PredefinedScheme,
+	SchemeOption,
+} from '@vonage/vvd-scheme';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -12,25 +15,11 @@ declare global {
 
 @customElement('vwc-scheme-select')
 export class VWCSchemeSelect extends LitElement {
-	schemes: SchemeOption[] = ['syncWithOSSettings', 'light', 'dark'];
-	handleClick: (scheme: SchemeOption) => void;
-
-	constructor() {
-		super();
-		if (globalThis.BroadcastChannel) {
-			const bc = new BroadcastChannel(SCHEME_SELECT_EVENT_TYPE);
-			this.handleClick = (scheme) => bc.postMessage(scheme);
-		} else {
-			this.handleClick = (scheme: SchemeOption) =>
-				this.dispatchEvent(
-					new CustomEvent(SCHEME_SELECT_EVENT_TYPE, {
-						detail: { scheme },
-						bubbles: true, // needed for bubbling up the shadow DOM // ! throws in safari
-						composed: true, // needed for bubbling up the shadow DOM
-					})
-				);
-		}
-	}
+	schemes: SchemeOption[] = [
+		AutoScheme.SYNC_WITH_OS_SETTINGS,
+		PredefinedScheme.LIGHT,
+		PredefinedScheme.DARK,
+	];
 
 	render(): TemplateResult {
 		return html`
@@ -43,7 +32,7 @@ export class VWCSchemeSelect extends LitElement {
 							layout="filled"
 							connotation="cta"
 							class="${scheme}"
-							@click="${this.handleClick.bind(this, scheme)}"
+							@click="${vvdScheme.set.bind(null, scheme)}"
 						>
 							${scheme}
 						</vwc-button>
