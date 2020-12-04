@@ -27,12 +27,12 @@
 		bottom: 0;
 		left: 0;
 		background-color: var(#{color-semantic.$vvd-color-connotation});
-		opacity: var(--opaque, 1);
+		opacity: calc(var(--opaque) * 0.01);
 	}
 }
 
 :host([layout='soft']:not([disabled])) {
-	--opaque: 0.2;
+	--opaque: 20;
 	color: var(#{scheme-variables.$vvd-color-on-base});
 }
 
