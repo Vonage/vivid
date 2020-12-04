@@ -5,7 +5,7 @@ export const argTypes = {
 	connotation: {
 		control: {
 			type: 'select',
-			options: ['primary', 'cta', 'info', 'success', 'alert', 'warning']
+			options: ['primary', 'cta', 'info', 'success', 'alert'] //  TODO add warning
 		}
 	},
 	shape: {
