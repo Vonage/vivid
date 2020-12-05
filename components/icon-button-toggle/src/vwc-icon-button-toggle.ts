@@ -47,4 +47,31 @@ export class VWCIconButtonToggle extends MWCIconButtonToggle {
 	protected renderIcon(type: string): TemplateResult {
 		return html`<vwc-icon class="icon" size="small" type="${type}"></vwc-icon>`;
 	}
+
+	// ! copy & paste code from original mwc icon button toggle
+	// ! to replace icon handling
+	protected render(): TemplateResult {
+		return html` <button
+			class="mdc-icon-button"
+			@click="${this.handleClick}"
+			aria-label="${this.label}"
+			?disabled="${this.disabled}"
+			@focus="${this.handleRippleFocus}"
+			@blur="${this.handleRippleBlur}"
+			@mousedown="${this.handleRippleMouseDown}"
+			@mouseenter="${this.handleRippleMouseEnter}"
+			@mouseleave="${this.handleRippleMouseLeave}"
+			@touchstart="${this.handleRippleTouchStart}"
+			@touchend="${this.handleRippleDeactivate}"
+			@touchcancel="${this.handleRippleDeactivate}"
+		>
+			${this.renderRipple()}
+			<span class="mdc-icon-button__icon">
+				<slot name="offIcon"> ${this.renderIcon(this.offIcon)} </slot>
+			</span>
+			<span class="mdc-icon-button__icon mdc-icon-button__icon--on">
+				<slot name="onIcon"> ${this.renderIcon(this.onIcon)} </slot>
+			</span>
+		</button>`;
+	}
 }
