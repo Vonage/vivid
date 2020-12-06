@@ -1,8 +1,13 @@
+# [0.17.0](https://github.com/vonage/vivid/compare/v0.16.2...v0.17.0) (2020-12-06)
+
+
+### Features
+
+* iss 462/viv 220 inline native elements ([#464](https://github.com/vonage/vivid/issues/464)) ([f4f388e](https://github.com/vonage/vivid/commit/f4f388eb88fdd69b0104d8a9aac9c63c1a5a1c56)), closes [#462](https://github.com/vonage/vivid/issues/462) [#462](https://github.com/vonage/vivid/issues/462) [#462](https://github.com/vonage/vivid/issues/462) [#462](https://github.com/vonage/vivid/issues/462) [#462](https://github.com/vonage/vivid/issues/462) [#462](https://github.com/vonage/vivid/issues/462) [#462](https://github.com/vonage/vivid/issues/462) [#462](https://github.com/vonage/vivid/issues/462) [#462](https://github.com/vonage/vivid/issues/462)
+
+
+
 ## [0.16.2](https://github.com/vonage/vivid/compare/v0.16.1...v0.16.2) (2020-11-26)
-
-
-
-## v0.16.2 (2020-11-26)
 
 
 ### Features

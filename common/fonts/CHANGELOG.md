@@ -1,8 +1,13 @@
+# [0.17.0](https://github.com/vonage/vivid/compare/v0.16.2...v0.17.0) (2020-12-06)
+
+
+### Features
+
+* **scheme:** valueChanges observable API ([#456](https://github.com/vonage/vivid/issues/456)) ([5e84898](https://github.com/vonage/vivid/commit/5e84898927a4ca6ec9fbe7e0380872e9c58b70a5))
+
+
+
 ## [0.16.2](https://github.com/vonage/vivid/compare/v0.16.1...v0.16.2) (2020-11-26)
-
-
-
-## v0.16.2 (2020-11-26)
 
 
 
