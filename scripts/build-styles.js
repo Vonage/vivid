@@ -16,7 +16,7 @@ for (const workspace of pkg.workspaces) {
 			'node',
 			[
 				'./scripts/sass-render/bin/sass-render.js',
-				'-t', 'sass-template.tmpl',
+				'-t', './scripts/sass-render/sass-template.tmpl',
 				'-s', fileName,
 				'-o', tscssFileName
 			],
