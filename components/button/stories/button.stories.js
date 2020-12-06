@@ -1,4 +1,5 @@
 import '@vonage/vwc-button/vwc-button.js';
+import '@vonage/vwc-circular-progress';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
@@ -10,6 +11,7 @@ export default {
 };
 
 const Template = args => html`<vwc-button ...=${spread(args)}></vwc-button>`;
+const PendingTemplate = args => html`<vwc-button ...=${spread(args)}><vwc-circular-progress style="--mdc-theme-primary: currentColor;" indeterminate density="-7" slot="icon"></vwc-circular-progress></vwc-button>`;
 
 export const Basic = Template.bind({});
 Basic.args = { label: 'Basic', layout: 'text' };
@@ -34,4 +36,7 @@ Icon.args = { label: 'Icon', layout: 'filled', icon: 'download' };
 
 export const Disabled = Template.bind({});
 Disabled.args = { label: 'Disabled', layout: 'filled', disabled: '' };
+
+export const Pending = PendingTemplate.bind({});
+Pending.args = { label: 'Pending', layout: 'filled', disabled: true };
 
