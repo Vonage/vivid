@@ -1,8 +1,8 @@
-@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
-@use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins' as color-connotation-mixins;
-@use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins;
-@use '@vonage/vvd-typography/scss/typography' as typography;
+@use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins';
+@use '@vonage/vvd-foundation/scss/mixins/shape-mixins';
+@use '@vonage/vvd-typography/scss/typography';
 
 @include color-connotation-mixins.connotations-context(
 	':host(#{color-connotation-mixins.$connotation-placeholder})'

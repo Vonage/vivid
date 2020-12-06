@@ -10,6 +10,14 @@ declare global {
 		'vwc-note': VWCNote;
 	}
 }
+type NoteConnotation = Extract<
+	Connotation,
+	| Connotation.Success
+	| Connotation.Alert
+	| Connotation.Warning
+	| Connotation.Info
+	| Connotation.Announcement
+>;
 
 /**
  * `vwc-note` component is designated to layout connotated notification content.
@@ -24,7 +32,7 @@ export class VWCNote extends LitElement {
 	}
 
 	@property({ type: String, reflect: true })
-	connotation: Connotation = Connotation.Primary;
+	connotation: NoteConnotation = Connotation.Announcement;
 
 	@property({ type: String, reflect: true })
 	icon = '';
