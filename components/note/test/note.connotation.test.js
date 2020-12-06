@@ -20,7 +20,7 @@ const CONNOTATIONS_SUPPORTED = Object.values(Connotation).filter((c) =>
 	].includes(c)
 );
 
-// TODO @gullerya we can extend this test to make sure unsupported connotations aren't reflected
+// TODO @gullerya can extend this test to make sure unsupported connotations aren't reflected
 // const CONNOTATIONS_UNSUPPORTED = Object.values(Connotation).filter(
 // 	(c) => !CONNOTATIONS_SUPPORTED.includes(c)
 // );
