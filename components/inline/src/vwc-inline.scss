@@ -1,0 +1,32 @@
+@use 'sass:map';
+
+$items-min-inline-sizes: (
+	'sm': 150px,
+	'md': 250px,
+	'lg': 350px,
+);
+$column-items-min-inline-size: --column-items-min-inline-size;
+
+:host {
+	width: 100%;
+	inline-size: 100%;
+	display: grid;
+	gap: 24px;
+	// grid-auto-rows: 1fr;
+	grid-auto-rows: min-content;
+	grid-template-columns: repeat(
+		auto-fit,
+		minmax(
+			var(
+				#{$column-items-min-inline-size},
+				#{map.get($items-min-inline-sizes, lg)}
+			),
+			1fr
+		)
+	);
+	@each $key, $value in $items-min-inline-sizes {
+		@at-root [size~='#{$key}'i] {
+			#{$column-items-min-inline-size}: #{map.get($items-min-inline-sizes, #{$key})};
+		}
+	}
+}
