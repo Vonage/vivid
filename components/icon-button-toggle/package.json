@@ -1,0 +1,34 @@
+{
+	"name": "@vonage/vwc-icon-button-toggle",
+	"version": "0.17.0",
+	"description": "icon button component",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/icon-button-toggle#readme",
+	"license": "ISC",
+	"main": "vwc-icon-button-toggle.js",
+	"module": "vwc-icon-button-toggle.js",
+	"files": [
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/vonage/vivid.git",
+		"directory": "components/icon-button-toggle"
+	},
+	"scripts": {
+		"test": "echo \"Error: run tests from root\" && exit 1"
+	},
+	"bugs": {
+		"url": "https://github.com/Vonage/vivid/issues"
+	},
+	"dependencies": {
+		"@material/mwc-icon-button": "^0.19.1",
+		"@material/mwc-icon-button-toggle": "^0.19.1",
+		"@vonage/vvd-core": "^0.17.0",
+		"@vonage/vvd-style-coupling": "^0.17.0",
+		"@vonage/vwc-icon-button": "^0.17.0",
+		"lit-element": "^2.4.0",
+		"tslib": "^2.0.3"
+	}
+}

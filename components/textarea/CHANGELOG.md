@@ -1,8 +1,13 @@
+# [0.17.0](https://github.com/vonage/vivid/compare/v0.16.2...v0.17.0) (2020-12-06)
+
+
+### Bug Fixes
+
+* iss 474 remove autovalidate as default ([#475](https://github.com/vonage/vivid/issues/475)) ([597cf65](https://github.com/vonage/vivid/commit/597cf658bc5eb9716cca304f42b8217b0e4fd2db)), closes [#474](https://github.com/vonage/vivid/issues/474) [#474](https://github.com/vonage/vivid/issues/474) [#474](https://github.com/vonage/vivid/issues/474)
+
+
+
 ## [0.16.2](https://github.com/vonage/vivid/compare/v0.16.1...v0.16.2) (2020-11-26)
-
-
-
-## v0.16.2 (2020-11-26)
 
 
 

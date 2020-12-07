@@ -1,8 +1,8 @@
+# [0.17.0](https://github.com/vonage/vivid/compare/v0.16.2...v0.17.0) (2020-12-06)
+
+
+
 ## [0.16.2](https://github.com/vonage/vivid/compare/v0.16.1...v0.16.2) (2020-11-26)
-
-
-
-## v0.16.2 (2020-11-26)
 
 
 ### Features

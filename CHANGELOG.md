@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/Vonage/vivid/compare/v0.16.2...v0.17.0) (2020-12-06)
+
+
+### Bug Fixes
+
+* iss 474 remove autovalidate as default ([#475](https://github.com/Vonage/vivid/issues/475)) ([597cf65](https://github.com/Vonage/vivid/commit/597cf658bc5eb9716cca304f42b8217b0e4fd2db)), closes [#474](https://github.com/Vonage/vivid/issues/474) [#474](https://github.com/Vonage/vivid/issues/474) [#474](https://github.com/Vonage/vivid/issues/474)
+* **vivid-all:** removed 'got' dependency ([ce9d0b6](https://github.com/Vonage/vivid/commit/ce9d0b634641384f835aec8dfde8f16bc131207d))
+* **vivid-all:** removed redundant filtration (review comments) ([294fdff](https://github.com/Vonage/vivid/commit/294fdff380a78c61ec1755935dcba48c90ab8838))
+
+
+### Features
+
+* **vwc-icon-button-toggle:** extending mwc icon-button-toggle ([#484](https://github.com/Vonage/vivid/issues/484)) ([05bc71c](https://github.com/Vonage/vivid/commit/05bc71c512167cfc64cb53617cee3d1e9af21ec3))
+* viv-269 add basic tabs component ([#452](https://github.com/Vonage/vivid/issues/452)) ([7f921fc](https://github.com/Vonage/vivid/commit/7f921fc3871fb4702df6fa503ccf78d6110f901f))
+* **all:** staging a test ([ec874da](https://github.com/Vonage/vivid/commit/ec874dae132c8e5794465f3b87ad6f29bd7a042f))
+* **all:** staging a test ([5fd320f](https://github.com/Vonage/vivid/commit/5fd320f70651b51a603be8386b9588557b30be08))
+* **scheme:** valueChanges observable API ([#456](https://github.com/Vonage/vivid/issues/456)) ([5e84898](https://github.com/Vonage/vivid/commit/5e84898927a4ca6ec9fbe7e0380872e9c58b70a5))
+* **vivid-all:** new "vivid all" package (https://jira.vonage.com/browse/VIV-197) ([7b569ee](https://github.com/Vonage/vivid/commit/7b569ee184a49d5f98f0cc4703d5e70e603cb35a))
+* **vivid-all:** staging a final test ([3eb4390](https://github.com/Vonage/vivid/commit/3eb439019b5b6edbeab30bba1a62d6aeed0d1538))
+* iss 462/viv 220 inline native elements ([#464](https://github.com/Vonage/vivid/issues/464)) ([f4f388e](https://github.com/Vonage/vivid/commit/f4f388eb88fdd69b0104d8a9aac9c63c1a5a1c56)), closes [#462](https://github.com/Vonage/vivid/issues/462) [#462](https://github.com/Vonage/vivid/issues/462) [#462](https://github.com/Vonage/vivid/issues/462) [#462](https://github.com/Vonage/vivid/issues/462) [#462](https://github.com/Vonage/vivid/issues/462) [#462](https://github.com/Vonage/vivid/issues/462) [#462](https://github.com/Vonage/vivid/issues/462) [#462](https://github.com/Vonage/vivid/issues/462) [#462](https://github.com/Vonage/vivid/issues/462)
+* **all-package:** staging test ([922958d](https://github.com/Vonage/vivid/commit/922958dd282291ee9c65e757268d4b669d44eb28))
+* **vivid-all:** phantom package generator ([6bf46a0](https://github.com/Vonage/vivid/commit/6bf46a08a3d3f08ba72c26a65c5bc5514a4c988f))
+* **vivid-all:** staging a test ([f1c6153](https://github.com/Vonage/vivid/commit/f1c6153fcc28673066156b620197f97f30ea0e89))
+
+
+
+
+
 ## [0.16.2](https://github.com/Vonage/vivid/compare/vv0.16.2...v0.16.2) (2020-11-26)
 
 **Note:** Version bump only for package @vivid/root
