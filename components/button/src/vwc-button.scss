@@ -1,95 +1,96 @@
 @forward './vwc-button-coupling';
-@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/_scheme-variables' as scheme-variables;
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
-@use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins' as color-connotation-mixins;
-@use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins;
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+@use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins' with (
+	$connotations: primary cta success alert info announcement
+);
+@use '@vonage/vvd-foundation/scss/mixins/shape-mixins';
 
 :host {
-  --mdc-button-disabled-ink-color: var(
-    #{color-semantic.$formfield-disabled-ink}
-  );
-  --mdc-button-disabled-fill-color: var(
-    #{scheme-variables.$vvd-color-contrast-soft}
-  );
-  --mdc-button-disabled-outline-color: var(
-    #{color-semantic.$formfield-disabled-ink}
-  );
-  --mdc-button-outline-color: var(--mdc-theme-primary);
-  --mdc-button-horizontal-padding: 14px;
+	--mdc-button-disabled-ink-color: var(
+		#{color-semantic.$formfield-disabled-ink}
+	);
+	--mdc-button-disabled-fill-color: var(
+		#{scheme-variables.$vvd-color-contrast-soft}
+	);
+	--mdc-button-disabled-outline-color: var(
+		#{color-semantic.$formfield-disabled-ink}
+	);
+	--mdc-button-outline-color: var(--mdc-theme-primary);
+	--mdc-button-horizontal-padding: 14px;
 }
-
 
 @include color-connotation-mixins.connotations-context(
 	':host([unelevated]#{color-connotation-mixins.$connotation-placeholder}),:host([outlined]#{color-connotation-mixins.$connotation-placeholder})'
 );
 :host([unelevated]),
 :host([outlined]) {
-  --mdc-theme-primary: var(#{color-semantic.$vvd-color-connotation});
-  --mdc-theme-on-primary: var(#{color-semantic.$vvd-color-on-connotation});
+	--mdc-theme-primary: var(#{color-semantic.$vvd-color-connotation});
+	--mdc-theme-on-primary: var(#{color-semantic.$vvd-color-on-connotation});
 }
 /////////////////////////////////////////////////////////////////////////////
 .mdc-button {
-  border-radius: var(--border-radius);
-  // ! this was supposed to be set by MDC
-  font-stretch: var(--mdc-typography-button-font-stretch);
-  height: 40px;
-  letter-spacing: normal;
+	border-radius: var(--border-radius);
+	// ! this was supposed to be set by MDC
+	font-stretch: var(--mdc-typography-button-font-stretch);
+	height: 40px;
+	letter-spacing: normal;
 
-  &:not(.mdc-button--dense) {
-    .vvd-icon {
-      min-height: 18px;
-      min-width: 18px;
-    }
-  }
+	&:not(.mdc-button--dense) {
+		.vvd-icon {
+			min-height: 18px;
+			min-width: 18px;
+		}
+	}
 
-  .vvd-icon {
-    vertical-align: sub;
-  }
+	.vvd-icon {
+		vertical-align: sub;
+	}
 
-  > span.trailing-icon {
-    .vvd-icon {
-      margin-inline-start: 8px;
-    }
-  }
+	> span.trailing-icon {
+		.vvd-icon {
+			margin-inline-start: 8px;
+		}
+	}
 
-  > span.leading-icon {
-    .vvd-icon {
-      margin-inline-end: 8px;
-    }
-  }
+	> span.leading-icon {
+		.vvd-icon {
+			margin-inline-end: 8px;
+		}
+	}
 }
 
 :host([dense]) {
-  --mdc-button-horizontal-padding: 12px;
+	--mdc-button-horizontal-padding: 12px;
 
-  .mdc-button {
-    height: 32px;
-  }
+	.mdc-button {
+		height: 32px;
+	}
 }
 
 :host([enlarged]) {
-  --mdc-button-horizontal-padding: 24px;
+	--mdc-button-horizontal-padding: 24px;
 
-  .mdc-button {
-    height: 48px;
+	.mdc-button {
+		height: 48px;
 
-    .vvd-icon {
-      min-height: 20px;
-      min-width: 20px;
-    }
+		.vvd-icon {
+			min-height: 20px;
+			min-width: 20px;
+		}
 
-    > span.trailing-icon {
-      .vvd-icon {
-        margin-inline-start: 10px;
-      }
-    }
+		> span.trailing-icon {
+			.vvd-icon {
+				margin-inline-start: 10px;
+			}
+		}
 
-    > span.leading-icon {
-      .vvd-icon {
-        margin-inline-end: 10px;
-      }
-    }
-  }
+		> span.leading-icon {
+			.vvd-icon {
+				margin-inline-end: 10px;
+			}
+		}
+	}
 }
 
 @include shape-mixins.shape(
