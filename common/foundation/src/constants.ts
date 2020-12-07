@@ -4,6 +4,7 @@ export enum Connotation {
 	CTA = 'cta',
 	Success = 'success',
 	Alert = 'alert',
+	Warning = 'warning',
 	Info = 'info',
 	Announcement = 'announcement',
 }

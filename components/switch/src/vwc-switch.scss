@@ -1,7 +1,9 @@
 @use 'sass:selector';
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names';
-@use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins';
+@use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins' with (
+	$connotations: primary cta success alert
+);
 
 // sizing parts only
 :host {
@@ -72,24 +74,36 @@
 }
 
 @include color-connotation-mixins.connotations-context(
-	':host(#{color-connotation-mixins.$connotation-placeholder})',
-	primary cta success alert
+	':host(#{color-connotation-mixins.$connotation-placeholder})'
 );
 
 // colors/shadowing
 :host {
-		--mdc-theme-secondary: var(#{color-semantic-variable-names.$vvd-color-connotation});
+	--mdc-theme-secondary: var(
+		#{color-semantic-variable-names.$vvd-color-connotation}
+	);
 
+	--vvd-switch-unchecked-background: var(
+		#{scheme-variables.$vvd-color-contrast-neutral}
+	);
+	--vvd-switch-unchecked-background-hover: var(
+		#{scheme-variables.$vvd-color-contrast-neutral}
+	);
+	--vvd-switch-unchecked-background-focus: var(
+		#{scheme-variables.$vvd-color-contrast-neutral}
+	);
 
-	--vvd-switch-unchecked-background: var(#{scheme-variables.$vvd-color-contrast-neutral});
-	--vvd-switch-unchecked-background-hover: var(#{scheme-variables.$vvd-color-contrast-neutral});
-	--vvd-switch-unchecked-background-focus: var(#{scheme-variables.$vvd-color-contrast-neutral});
-
-	--vvd-switch-disabled-background: var(#{scheme-variables.$vvd-color-contrast-soft});
+	--vvd-switch-disabled-background: var(
+		#{scheme-variables.$vvd-color-contrast-soft}
+	);
 	--vvd-switch-shadow-focus: 0, 0, 0, 0.5;
 
-	--mdc-theme-surface: var(#{scheme-variables.$vvd-color-surface}); // unchecked thumb
-	--mdc-theme-on-surface: var(--vvd-switch-unchecked-background); // unchecked track
+	--mdc-theme-surface: var(
+		#{scheme-variables.$vvd-color-surface}
+	); // unchecked thumb
+	--mdc-theme-on-surface: var(
+		--vvd-switch-unchecked-background
+	); // unchecked track
 
 	.mdc-switch {
 		.mdc-switch__thumb {
