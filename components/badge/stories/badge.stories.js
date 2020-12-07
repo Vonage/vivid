@@ -1,7 +1,7 @@
 import '@vonage/vwc-badge/vwc-badge.js';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
-import { argTypes } from './arg-types-badge.js';
+import { argTypes } from './arg-types.js';
 
 export default {
 	title: 'Atoms/Badge',
