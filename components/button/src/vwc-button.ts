@@ -25,6 +25,16 @@ export type ButtonLayout = typeof layouts;
 const types = ['submit', 'reset', 'button'];
 export type ButtonType = typeof types;
 
+type ButtonConnotation = Extract<
+	Connotation,
+	| Connotation.Primary
+	| Connotation.CTA
+	| Connotation.Success
+	| Connotation.Alert
+	| Connotation.Info
+	| Connotation.Announcement
+>;
+
 /**
  * This component is an extension of [<mwc-button>](https://github.com/material-components/material-components-web-components/tree/master/packages/button)
  * Our button supports native features like the 'form' and 'type' attributes
@@ -38,7 +48,7 @@ export class VWCButton extends MWCButton {
 	layout: ButtonLayout[number] = 'text';
 
 	@property({ type: String, reflect: true })
-	connotation: Connotation = Connotation.Primary;
+	connotation: ButtonConnotation = Connotation.Primary;
 
 	@property({ type: String, reflect: true })
 	shape?: Shape;

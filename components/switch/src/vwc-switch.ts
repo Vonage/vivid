@@ -17,17 +17,18 @@ declare global {
 // @ts-ignore
 MWCSwitch.styles = [styleCoupling, mwcSwitchStyle, vwcSwitchStyle];
 
+type SwitchConnotation = Extract<
+	Connotation,
+	Connotation.Primary | Connotation.CTA | Connotation.Success | Connotation.Alert
+>;
+
 /**
  * This component is an extension of [<mwc-switch>](https://github.com/material-components/material-components-web-components/tree/master/packages/switch)
  */
 @customElement('vwc-switch')
 export class VWCSwitch extends MWCSwitch {
 	@property({ type: String, reflect: true })
-	connotation?:
-		| Connotation.Primary
-		| Connotation.CTA
-		| Connotation.Success
-		| Connotation.Alert = Connotation.Primary;
+	connotation: SwitchConnotation = Connotation.Primary;
 
 	@property({ type: Boolean, reflect: true })
 	enlarged = false;

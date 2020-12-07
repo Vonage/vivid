@@ -1,27 +1,26 @@
 @use 'sass:selector';
 @use '../variable-names/color-semantic-variable-names' as color-semantic;
 
+$connotations: primary cta success alert warning info announcement !default;
 $connotation-placeholder: '[connotation-specifier]';
 
-@mixin connotations-context(
-  $selector: ':host(#{$connotation-placeholder})',
-  $connotations: primary cta success alert info announcement
-) {
+@mixin connotations-context($selector: ':host(#{$connotation-placeholder})') {
+	@each $connotation in $connotations {
+		$attr: '[connotation="#{$connotation}" i]';
 
-  @each $connotation in $connotations {
-    $attr: '[connotation="#{$connotation}" i]';
+		$scoped-selector: $selector; // prevents overriding argument
 
-    $scoped-selector: $selector; // prevents overriding argument
+		$scoped-selector: selector.replace(
+			#{$selector},
+			#{$connotation-placeholder},
+			#{$attr}
+		);
 
-    $scoped-selector: selector.replace(
-      #{$selector},
-      #{$connotation-placeholder},
-      #{$attr}
-    );
-
-    #{$scoped-selector} {
-      #{color-semantic.$vvd-color-connotation}: var(--vvd-color-#{$connotation});
-      #{color-semantic.$vvd-color-on-connotation}: var(--vvd-color-on-#{$connotation});
-    }
-  }
+		#{$scoped-selector} {
+			#{color-semantic.$vvd-color-connotation}: var(--vvd-color-#{$connotation});
+			#{color-semantic.$vvd-color-on-connotation}: var(
+				--vvd-color-on-#{$connotation}
+			);
+		}
+	}
 }

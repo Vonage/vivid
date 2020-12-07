@@ -7,16 +7,23 @@ import {
 	assertConnotationAttribute,
 	assertConnotationProperty,
 } from '@vonage/vvd-foundation/test/connotation.test.js';
+import { Connotation } from '@vonage/vvd-foundation/constants';
 
 const VWC_NOTE = 'vwc-note';
-const CONNOTATIONS_SUPPORTED = [
-	'primary',
-	'cta',
-	'success',
-	'alert',
-	'info',
-	'announcement',
-];
+const CONNOTATIONS_SUPPORTED = Object.values(Connotation).filter((c) =>
+	[
+		Connotation.Success,
+		Connotation.Alert,
+		Connotation.Warning,
+		Connotation.Info,
+		Connotation.Announcement,
+	].includes(c)
+);
+
+// TODO @gullerya can extend this test to make sure unsupported connotations aren't reflected
+// const CONNOTATIONS_UNSUPPORTED = Object.values(Connotation).filter(
+// 	(c) => !CONNOTATIONS_SUPPORTED.includes(c)
+// );
 
 describe('note connotation', () => {
 	const addElement = isolatedElementsCreation();
