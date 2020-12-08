@@ -12,28 +12,71 @@ export default {
 const Template = args => html`
 <style>
 	.child {
-		padding:20px;
 		background-color: var(--connotation);
 		color: var(--on-connotation);
+		border-radius: 6px;
+		overflow: hidden;
+		border: 1px solid var(--vvd-color-contrast-faint);
+	}
+	.child img{
+		width: 100%;
+	}
+	.child .child-content{
+		padding:20px;
+		box-sizing: border-box;
 	}
 	.child:nth-child(odd) {
-		--connotation: var(--vvd-color-primary);
-		--on-connotation: var(--vvd-color-on-primary);
+		--connotation: var(--vvd-color-main);
 	}
 	.child:nth-child(even){
-		--connotation: var(--vvd-color-cta);
-		--on-connotation: var(--vvd-color-on-cta);
+		--connotation: var(--vvd-color-contrast-faint);
 	}
 </style>
 
 <vwc-inline ...=${spread(args)}>
-	<div class="child">lorem ipsum dolor sit amet, consectetur adipiscing</div>
-	<div class="child">lorem ipsum dolor sit amet, consectetur adipiscing</div>
-	<div class="child">lorem ipsum dolor sit amet, consectetur adipiscing</div>
-	<div class="child">lorem ipsum dolor sit amet, consectetur adipiscing</div>
-	<div class="child">lorem ipsum dolor sit amet, consectetur adipiscing</div>
-	<div class="child">lorem ipsum dolor sit amet, consectetur adipiscing</div>
-	<div class="child">lorem ipsum dolor sit amet, consectetur adipiscing</div>
+	<div class="child">
+		<img src="https://picsum.photos/350/200">
+		<p class="child-content">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat tempus augue, a molestie nulla faucibus at. Nullam semper iaculis lorem varius congue.
+		</p>
+	</div>
+	<div class="child">
+		<img src="https://picsum.photos/350/200">
+		<p class="child-content">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat tempus augue, a molestie nulla faucibus at. Nullam semper iaculis lorem varius congue.
+		</p>
+	</div>
+	<div class="child">
+		<img src="https://picsum.photos/350/200">
+		<p class="child-content">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat tempus augue, a molestie nulla faucibus at. Nullam semper iaculis lorem varius congue.
+		</p>
+	</div>
+	<div class="child">
+		<img src="https://picsum.photos/350/200">
+		<p class="child-content">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat tempus augue, a molestie nulla faucibus at. Nullam semper iaculis lorem varius congue.
+		</p>
+	</div>
+	<div class="child">
+		<img src="https://picsum.photos/350/200">
+		<p class="child-content">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat tempus augue, a molestie nulla faucibus at. Nullam semper iaculis lorem varius congue.
+		</p>
+	</div>
+		<div class="child">
+		<img src="https://picsum.photos/350/200">
+		<p class="child-content">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat tempus augue, a molestie nulla faucibus at. Nullam semper iaculis lorem varius congue.
+		</p>
+	</div>
+		<div class="child">
+		<img src="https://picsum.photos/350/200">
+		<p class="child-content">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec feugiat tempus augue, a molestie nulla faucibus at. Nullam semper iaculis lorem varius congue.
+		</p>
+	</div>
+
 </vwc-inline>`;
 
 export const Basic = Template.bind({});
