@@ -1,28 +1,65 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
+@use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins' with (
+	$connotations: primary cta success alert info announcement
+);
+@use '@vonage/vvd-foundation/scss/mixins/shape-mixins';
 
 :host {
 	.mdc-icon-button {
+		border-radius: var(--border-radius);
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
+		overflow: hidden;
 	}
 }
 
 // theming
+@include color-connotation-mixins.connotations-context(
+	':host([layout="filled"]#{color-connotation-mixins.$connotation-placeholder}),:host([layout="outlined"]#{color-connotation-mixins.$connotation-placeholder})'
+);
+
+:host([layout='filled']) {
+	.mdc-icon-button {
+		background-color: var(#{color-semantic.$vvd-color-connotation});
+		color: var(#{color-semantic.$vvd-color-on-connotation});
+	}
+
+	.mdc-icon-button:disabled {
+		background-color: var(#{scheme-variables.$vvd-color-contrast-soft});
+	}
+}
+
+:host([layout='outlined']) {
+	.mdc-icon-button {
+		border: 1px solid var(#{color-semantic.$vvd-color-connotation});
+		color: var(#{color-semantic.$vvd-color-connotation});
+	}
+
+	.mdc-icon-button:disabled {
+		border-color: currentColor;
+	}
+}
+
 :host {
 	.mdc-icon-button {
 		color: var(#{scheme-variables.$vvd-color-on-base});
 	}
 
 	.mdc-icon-button:disabled {
-		color: var(	#{color-semantic.$formfield-disabled-ink});
+		color: var(#{color-semantic.$formfield-disabled-ink});
 	}
 }
 
 // sizing
-:host {
+:host(:not([dense])) {
 	--mdc-icon-button-size: 40px;
+
+	.vwc-icon {
+		min-height: 20px;
+		min-width: 20px;
+	}
 }
 
 :host([dense]) {
@@ -31,4 +68,16 @@
 
 :host([enlarged]) {
 	--mdc-icon-button-size: 48px;
+
+	.vwc-icon {
+		min-height: 24px;
+		min-width: 24px;
+	}
 }
+
+@include shape-mixins.shape(
+	$shapes: (
+		rounded: 6px,
+		pill: 24px,
+	)
+);

@@ -1,4 +1,26 @@
+import { Connotation, Shape } from '@vonage/vvd-foundation/constants';
+
 export const argTypes = {
+	connotation: {
+		control: {
+			type: 'select',
+			options: Object.values(Connotation).filter(c => [
+				Connotation.Primary, Connotation.CTA, Connotation.Success, Connotation.Alert, Connotation.Info, Connotation.Announcement
+			].includes(c)),
+		}
+	},
+	layout: {
+		control: {
+			type: 'select',
+			options: ['text', 'outlined', 'filled'],
+		}
+	},
+	shape: {
+		control: {
+			type: 'select',
+			options: Object.values(Shape),
+		}
+	},
 	dense: {
 		control: {
 			type: 'inline-radio',

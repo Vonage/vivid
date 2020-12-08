@@ -5,6 +5,7 @@ import { IconButton as MWCIconButton } from '@material/mwc-icon-button';
 import { style as vwcButtonStyle } from './vwc-icon-button.css';
 import { style as mwcIconButtonStyle } from '@material/mwc-icon-button/mwc-icon-button-css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
+import { Connotation, Shape } from '@vonage/vvd-foundation/constants';
 import { html, TemplateResult } from 'lit-element';
 
 declare global {
@@ -17,11 +18,33 @@ declare global {
 // @ts-ignore
 MWCIconButton.styles = [styleCoupling, mwcIconButtonStyle, vwcButtonStyle];
 
+const layouts = ['text', 'outlined', 'filled'];
+export type IconButtonLayout = typeof layouts;
+
+type IconButtonConnotation = Extract<
+	Connotation,
+	| Connotation.Primary
+	| Connotation.CTA
+	| Connotation.Success
+	| Connotation.Alert
+	| Connotation.Info
+	| Connotation.Announcement
+>;
+
 /**
  * This component is an extension of [<mwc-icon-button>](https://github.com/material-components/material-components-web-components/tree/master/packages/icon-button)
  */
 @customElement('vwc-icon-button')
 export class VWCIconButton extends MWCIconButton {
+	@property({ type: String, reflect: true })
+	layout: IconButtonLayout[number] = 'text';
+
+	@property({ type: String, reflect: true })
+	connotation: IconButtonConnotation = Connotation.Primary;
+
+	@property({ type: String, reflect: true })
+	shape?: Shape;
+
 	@property({ type: Boolean, reflect: true })
 	dense = false;
 
@@ -66,9 +89,15 @@ export class VWCIconButton extends MWCIconButton {
 
 	protected renderIcon(): TemplateResult {
 		return html`<vwc-icon
-			class="icon"
+			class="vwc-icon"
 			size="small"
 			type="${this.icon}"
 		></vwc-icon>`;
+	}
+
+	renderRipple(): TemplateResult | '' {
+		return this.shouldRenderRipple
+			? html` <mwc-ripple .disabled="${this.disabled}"></mwc-ripple>`
+			: '';
 	}
 }
