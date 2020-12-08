@@ -14,3 +14,9 @@ export enum Shape {
 	Rounded = 'rounded',
 	Pill = 'pill',
 }
+
+export enum Size {
+	Small = 'sm',
+	Medium = 'md',
+	Large = 'lg',
+}

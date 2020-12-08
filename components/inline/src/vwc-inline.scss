@@ -1,11 +1,20 @@
 @use 'sass:map';
 
+$column-items-min-inline-size: --column-items-min-inline-size;
 $items-min-inline-sizes: (
 	'sm': 150px,
 	'md': 250px,
 	'lg': 350px,
 );
-$column-items-min-inline-size: --column-items-min-inline-size;
+
+@each $key, $value in $items-min-inline-sizes {
+	:host([size='#{$key}'i]) {
+		#{$column-items-min-inline-size}: #{map.get(
+				$items-min-inline-sizes,
+				#{$key}
+			)};
+	}
+}
 
 :host {
 	width: 100%;
@@ -24,9 +33,4 @@ $column-items-min-inline-size: --column-items-min-inline-size;
 			1fr
 		)
 	);
-	@each $key, $value in $items-min-inline-sizes {
-		@at-root [size~='#{$key}'i] {
-			#{$column-items-min-inline-size}: #{map.get($items-min-inline-sizes, #{$key})};
-		}
-	}
 }
