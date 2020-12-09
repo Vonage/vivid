@@ -7,6 +7,7 @@
   <slot class="note-message">
   </slot>
 </div>
+
 ```
 
 #### `should have internal contents (full layout)`
@@ -38,6 +39,7 @@
   <slot class="note-message">
   </slot>
 </div>
+
 ```
 
 ####   `should have header added when header is set dynamically (property)`
@@ -50,6 +52,7 @@
   <slot class="note-message">
   </slot>
 </div>
+
 ```
 
 ####   `should have header added when header is set dynamically (attribute)`
@@ -62,6 +65,7 @@
   <slot class="note-message">
   </slot>
 </div>
+
 ```
 
 ####   `should have header removed when header is unset (property)`
@@ -71,6 +75,7 @@
   <slot class="note-message">
   </slot>
 </div>
+
 ```
 
 ####   `should have header removed when header is unset (attribute)`
@@ -80,6 +85,7 @@
   <slot class="note-message">
   </slot>
 </div>
+
 ```
 
 ## `icon`
@@ -95,6 +101,7 @@
   <slot class="note-message">
   </slot>
 </div>
+
 ```
 
 ####   `should have icon added when icon is set dynamically (property)`
@@ -108,6 +115,7 @@
   <slot class="note-message">
   </slot>
 </div>
+
 ```
 
 ####   `should have icon added when icon is set dynamically (attribute)`
@@ -121,6 +129,7 @@
   <slot class="note-message">
   </slot>
 </div>
+
 ```
 
 ####   `should have icon removed when icon is unset (property)`
@@ -130,6 +139,7 @@
   <slot class="note-message">
   </slot>
 </div>
+
 ```
 
 ####   `should have icon removed when icon is unset (attribute)`
@@ -139,5 +149,6 @@
   <slot class="note-message">
   </slot>
 </div>
+
 ```
 
