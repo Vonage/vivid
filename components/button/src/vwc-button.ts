@@ -144,7 +144,6 @@ export class VWCButton extends MWCButton {
 	}
 
 	protected renderIcon(): TemplateResult {
-		console.log(this.icon);
 		return html`<vwc-icon
 			class="vvd-icon${this.label ? ' with-label' : ''}"
 			size="small"
