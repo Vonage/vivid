@@ -24,6 +24,9 @@
 		},
 		{
 			"path": "../icon"
+		},
+		{
+			"path": "../circular-progress"
 		}
 	]
 }
