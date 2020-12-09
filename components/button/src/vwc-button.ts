@@ -7,6 +7,7 @@ import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-cou
 import { Connotation, Shape } from '@vonage/vvd-foundation/constants';
 import { html, TemplateResult } from 'lit-element';
 import '@vonage/vwc-icon';
+import '@vonage/vwc-circular-progress';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
 declare global {
