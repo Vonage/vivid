@@ -93,6 +93,15 @@ export class VWCButton extends MWCButton {
 			this.#_hiddenButton?.setAttribute('type', this.getAttribute('type') ?? '');
 		}
 
+		if (changes.has('label')) {
+			const iconWrapper = this.shadowRoot?.querySelector('.leading-icon');
+			if (changes.get('label')) {
+				iconWrapper && iconWrapper.classList.add('with-label');
+			} else {
+				iconWrapper && iconWrapper.classList.remove('with-label');
+			}
+		}
+
 		const layout: ButtonLayout[number] = this.layout;
 		this.toggleAttribute('outlined', layout === 'outlined');
 		this.toggleAttribute('unelevated', layout === 'filled');
@@ -135,8 +144,9 @@ export class VWCButton extends MWCButton {
 	}
 
 	protected renderIcon(): TemplateResult {
+		console.log(this.icon);
 		return html`<vwc-icon
-			class="vvd-icon"
+			class="vvd-icon${this.label ? ' with-label' : ''}"
 			size="small"
 			type="${this.icon}"
 		></vwc-icon>`;
