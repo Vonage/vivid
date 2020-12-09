@@ -52,6 +52,12 @@ export const argTypes = {
 			options: { 'true': '', 'false': undefined }
 		}
 	},
+	pending: {
+		control: {
+			type: 'inline-radio',
+			options: { 'true': '', 'false': undefined }
+		}
+	},
 	styles: { table: { disable: true } },
 	raised: { table: { disable: true } },
 	unelevated: { table: { disable: true } },

@@ -35,3 +35,5 @@ Icon.args = { label: 'Icon', layout: 'filled', icon: 'download' };
 export const Disabled = Template.bind({});
 Disabled.args = { label: 'Disabled', layout: 'filled', disabled: '' };
 
+export const Pending = Template.bind({});
+Pending.args = { label: 'Pending', pending: '' };
