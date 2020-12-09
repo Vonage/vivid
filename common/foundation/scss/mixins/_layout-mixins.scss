@@ -1,5 +1,5 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
-@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
+@use '../variable-names/color-semantic-variable-names' as color-semantic;
 
 @mixin layout($layouts...) {
 	@each $layout in $layouts {
