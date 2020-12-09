@@ -81,19 +81,20 @@ export class VWCTextField extends MWCTextField {
 		return html``;
 	}
 
-	protected renderOutline(): TemplateResult | Record<string, unknown> {
-		if (!this.outlined) {
-			return {};
-		}
-
-		return html`<vwc-notched-outline class="mdc-notched-outline vvd-notch">
-			${this.renderLabel()}
-		</vwc-notched-outline>`;
+	protected renderOutline(): TemplateResult | string {
+		return !this.outlined
+			? ''
+			: html`<vwc-notched-outline class="mdc-notched-outline vvd-notch">
+					${this.renderLabel()}
+			  </vwc-notched-outline>`;
 	}
 
-	renderHelperText(charCounterTemplate = {}): TemplateResult {
-		if (!this.shouldRenderHelperText) {
-			return html``;
+	renderHelperText(
+		shouldRenderHelperText: boolean,
+		shouldRenderCharCounter: boolean
+	): TemplateResult | string {
+		if (!shouldRenderHelperText) {
+			return '';
 		}
 		const showValidationMessage = this.validationMessage && !this.isUiValid;
 		const classesMap = {
@@ -113,7 +114,7 @@ export class VWCTextField extends MWCTextField {
 				></vwc-icon>
 				<span class="spacer"></span>
 				<div class="mdc-text-field-helper-text">${validationMessage}</div>
-				${charCounterTemplate}
+				${this.renderCharCounter(shouldRenderCharCounter)}
 			</div>
 		`;
 	}
