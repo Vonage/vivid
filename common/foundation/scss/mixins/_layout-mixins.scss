@@ -1,0 +1,25 @@
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
+
+@mixin layout($layouts...) {
+	@each $layout in $layouts {
+		#{':host([layout="#{$layout}"])'} {
+			@if ($layout == 'filled') {
+				--background-color: var(#{color-semantic.$vvd-color-connotation});
+				--color: var(#{color-semantic.$vvd-color-on-connotation});
+			}
+			
+			@if ($layout == 'outlined') {
+				--background-color: transparent;
+				--border: 1px solid var(#{color-semantic.$vvd-color-connotation});
+				--color: var(#{color-semantic.$vvd-color-connotation});
+			}
+			
+			@if ($layout == 'soft') {
+				--background-color: var(#{color-semantic.$vvd-color-connotation});
+				--color: var(#{scheme-variables.$vvd-color-on-base});
+				--opaque: 20;
+			}
+		}
+	}
+}
