@@ -8,10 +8,14 @@
 	':host(#{color-connotation-mixins.$connotation-placeholder})'
 );
 
+$vvd-badge-block-size: --vvd-badge-block-size;
+
 :host {
 	display: inline-flex;
 	align-items: center;
-	height: 24px;
+	#{$vvd-badge-block-size}: 24px;
+	height: var(#{$vvd-badge-block-size});
+	block-size: var(#{$vvd-badge-block-size});
 	padding: 0 10px;
 	position: relative;
 	color: var(#{color-semantic.$vvd-color-on-connotation});
@@ -62,12 +66,12 @@
 }
 
 :host([dense]) {
-	height: 20px;
+	#{$vvd-badge-block-size}: 20px;
   padding: 0 8px;
 }
 
 :host([enlarged]) {
-	height: 28px;
+	#{$vvd-badge-block-size}: 28px;
   padding: 0 12px;
 }
 
