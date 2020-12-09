@@ -55,4 +55,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           curl -X POST $URL -H "Content-Type: application/json" -H "Authorization: token $GITHUB_TOKEN" \
-            --data '{ "body": "PR showcase deployed [here](https://dtb9xssx7zaj6.cloudfront.net/${{ github.event.number }}/index.html)." }'
+            --data '{ "body": "PR showcase deployed [here](https://${{ secrets.TMP_PR_DEPLOYMENT_BASE_URL }}/${{ github.event.number }}/index.html)." }'
