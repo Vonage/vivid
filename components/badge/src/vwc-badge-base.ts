@@ -1,18 +1,30 @@
 import { html, LitElement, property, TemplateResult } from 'lit-element';
-import { Connotation, Shape } from '@vonage/vvd-foundation/constants';
+import { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
 
-const layouts = ['filled', 'outlined', 'soft'];
-export type BadgeLayout = typeof layouts;
+type BadgeConnotation = Extract<
+	Connotation,
+	| Connotation.Primary
+	| Connotation.CTA
+	| Connotation.Success
+	| Connotation.Alert
+	| Connotation.Warning
+	| Connotation.Info
+>;
+
+type BadgeLayout = Extract<
+	Layout,
+	Layout.Filled | Layout.Outlined | Layout.Soft
+>;
 
 export class BadgeBase extends LitElement {
 	@property({ type: String, reflect: true })
-	connotation: Connotation = Connotation.Primary;
+	connotation: BadgeConnotation = Connotation.Primary;
 
 	@property({ type: String, reflect: true })
 	shape?: Shape;
 
 	@property({ type: String, reflect: true })
-	layout: BadgeLayout[number] = 'filled';
+	layout: BadgeLayout = Layout.Filled;
 
 	@property({ type: Boolean, reflect: true })
 	disabled = false;

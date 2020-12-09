@@ -1,11 +1,13 @@
-import { Connotation, Shape } from '@vonage/vvd-foundation/constants';
+import { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
 
 
 export const argTypes = {
 	connotation: {
 		control: {
 			type: 'select',
-			options: Object.values(Connotation)
+			options: Object.values(Connotation).filter(c => [
+				Connotation.Primary, Connotation.CTA, Connotation.Success, Connotation.Alert, Connotation.Info, Connotation.Warning
+			].includes(c)),
 		}
 	},
 	shape: {
@@ -17,7 +19,9 @@ export const argTypes = {
 	layout: {
 		control: {
 			type: 'select',
-			options: ['filled', 'outlined', 'soft']
+			options: Object.values(Layout).filter(l => [
+				Layout.Filled, Layout.Outlined, Layout.Soft
+			].includes(l)),
 		}
 	},
 	disabled: {
