@@ -93,12 +93,12 @@
 	}
 }
 
-vwc-circular-progress {
+.progress-indicator {
 	display: none;
 }
 
 :host([pending]){
-	vwc-circular-progress {
+	.progress-indicator {
 		--mdc-theme-primary: var(#{color-semantic.$vvd-color-connotation});
 		display: inline-block;
 		box-sizing: border-box;
@@ -109,20 +109,20 @@ vwc-circular-progress {
 }
 
 :host([pending][layout='filled']) {
-	vwc-circular-progress {
+	.progress-indicator {
 		--mdc-theme-primary: var(#{color-semantic.$vvd-color-on-connotation});
 	}
 }
 
 :host([pending][enlarged]) {
-	vwc-circular-progress {
+	.progress-indicator {
 		transform: scale(0.6) translateY(3px);
 		margin: 0 -2px -0 -13px;
 	}
 }
 
 :host([pending][disabled]){
-	vwc-circular-progress {
+	.progress-indicator {
 		--mdc-theme-primary: var(#{color-semantic.$formfield-disabled-ink});
 	}
 }

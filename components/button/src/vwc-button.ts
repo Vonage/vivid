@@ -94,6 +94,7 @@ export class VWCButton extends MWCButton {
 	firstUpdated(): void {
 		const el = document.createElement('vwc-circular-progress');
 		el.setAttribute('indeterminate', '');
+		el.className = 'progress-indicator';
 		this.shadowRoot?.querySelector('button')?.prepend(el);
 	}
 
