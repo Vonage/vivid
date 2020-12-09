@@ -8,6 +8,13 @@
   class="mdc-button"
   id="button"
 >
+  <vwc-circular-progress
+    class="progress-indicator"
+    density="0"
+    indeterminate=""
+    progress="0"
+  >
+  </vwc-circular-progress>
   <span class="leading-icon">
     <slot name="icon">
     </slot>
