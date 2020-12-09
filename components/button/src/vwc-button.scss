@@ -30,6 +30,7 @@
 }
 /////////////////////////////////////////////////////////////////////////////
 .mdc-button {
+	min-width: 0px;
 	border-radius: var(--border-radius);
 	// ! this was supposed to be set by MDC
 	font-stretch: var(--mdc-typography-button-font-stretch);
