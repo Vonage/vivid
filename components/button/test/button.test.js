@@ -33,7 +33,7 @@ describe('button', () => {
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
-	describe(`button without a label`, function() {
+	describe(`button without a label`, function () {
 		let iconWrapper, actualElement;
 		async function setLabel(value, attr = true) {
 			if (attr) {
@@ -44,51 +44,72 @@ describe('button', () => {
 			await waitNextTask();
 		}
 
-		beforeEach(async function() {
-			const addedElements = (
-				textToDomToParent(`<${COMPONENT_NAME} icon="download"></${COMPONENT_NAME}>`)
+		beforeEach(async function () {
+			const addedElements = textToDomToParent(
+				`<${COMPONENT_NAME} icon="download"></${COMPONENT_NAME}>`
 			);
 
 			actualElement = addedElements[0];
 			await waitNextTask();
-			iconWrapper = actualElement.shadowRoot.querySelector("vwc-icon");
+			iconWrapper = actualElement.shadowRoot.querySelector('vwc-icon');
 		});
 
-		it(`should set a "with-label" class on the icon when button has a label`, async function() {
-
-			const hasClassWithLabelWithoutLabelOnInit = iconWrapper.classList.contains('with-label');
+		it(`should set a "with-label" class on the icon when button has a label`, async function () {
+			const hasClassWithLabelWithoutLabelOnInit = iconWrapper.classList.contains(
+				'with-label'
+			);
 
 			await setLabel('label text');
 			const hasClassWithLabel = iconWrapper.classList.contains('with-label');
 
 			await setLabel('');
-			const hasClassWithLabelWithoutLabel = iconWrapper.classList.contains('with-label');
+			const hasClassWithLabelWithoutLabel = iconWrapper.classList.contains(
+				'with-label'
+			);
 
 			await setLabel('New Label', false);
-			expect(hasClassWithLabel, 'should have a label when set with attribute label').to.equal(true);
-			expect(hasClassWithLabelWithoutLabel, 'should not have a label class when attribute label faulty').to.equal(false);
-			expect(hasClassWithLabelWithoutLabelOnInit, 'should not have a label class when attribute label faulty').to.equal(false);
-			expect(iconWrapper.classList.contains('with-label'), 'should have a label when with property label updates').to.equal(true);
+			expect(
+				hasClassWithLabel,
+				'should have a label when set with attribute label'
+			).to.equal(true);
+			expect(
+				hasClassWithLabelWithoutLabel,
+				'should not have a label class when attribute label faulty'
+			).to.equal(false);
+			expect(
+				hasClassWithLabelWithoutLabelOnInit,
+				'should not have a label class when attribute label faulty'
+			).to.equal(false);
+			expect(
+				iconWrapper.classList.contains('with-label'),
+				'should have a label when with property label updates'
+			).to.equal(true);
 		});
 
-		it(`should set the correct margin to the icon`, async function() {
+		it(`should set the correct margin to the icon`, async function () {
 			const withLabelMargin = 8;
 			const noLabelMargin = 0;
 
 			const sidesMarginWithoutALabel = Number(
 				getComputedStyle(iconWrapper).marginLeft.replace('px', '') +
-				getComputedStyle(iconWrapper).marginRight.replace('px', ''));
+					getComputedStyle(iconWrapper).marginRight.replace('px', '')
+			);
 
 			await setLabel('label text');
 			const sidesMarginWithALabel = Number(
 				getComputedStyle(iconWrapper).marginLeft.replace('px', '') +
-				getComputedStyle(iconWrapper).marginRight.replace('px', ''));
+					getComputedStyle(iconWrapper).marginRight.replace('px', '')
+			);
 
-			expect(sidesMarginWithoutALabel, `Side margins should be ${noLabelMargin}`).to.equal(noLabelMargin);
-			expect(sidesMarginWithALabel, `Side margins should be ${withLabelMargin}`).to.equal(withLabelMargin);
+			expect(
+				sidesMarginWithoutALabel,
+				`Side margins should be ${noLabelMargin}`
+			).to.equal(noLabelMargin);
+			expect(
+				sidesMarginWithALabel,
+				`Side margins should be ${withLabelMargin}`
+			).to.equal(withLabelMargin);
 		});
-
-
 	});
 
 	describe('Form Association', function () {
