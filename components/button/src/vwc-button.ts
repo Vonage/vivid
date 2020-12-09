@@ -59,6 +59,9 @@ export class VWCButton extends MWCButton {
 	@property({ attribute: 'form', reflect: true })
 	formId = null;
 
+	@property({ type: Boolean, reflect: true })
+	pending = false;
+
 	#_hiddenButton: HTMLButtonElement = VWCButton.createHiddenButton();
 
 	createRenderRoot(): ShadowRoot {
@@ -76,6 +79,10 @@ export class VWCButton extends MWCButton {
 		}
 	}
 
+	protected render(): TemplateResult {
+		return html`${super.render()}`;
+	}
+
 	attributeChangedCallback(
 		name: string,
 		oldval: string | null,
@@ -86,6 +93,12 @@ export class VWCButton extends MWCButton {
 		} else {
 			super.attributeChangedCallback(name, oldval, newval);
 		}
+	}
+
+	firstUpdated(): void {
+		const el = document.createElement('vwc-circular-progress');
+		el.setAttribute('indeterminate', '');
+		this.shadowRoot?.querySelector('button')?.prepend(el);
 	}
 
 	protected updated(changes: Map<string, boolean>): void {

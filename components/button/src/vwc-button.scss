@@ -93,6 +93,40 @@
 	}
 }
 
+vwc-circular-progress {
+	display: none;
+}
+
+:host([pending]){
+	vwc-circular-progress {
+		--mdc-theme-primary: var(#{color-semantic.$vvd-color-connotation});
+		display: inline-block;
+		box-sizing: border-box;
+		transform-origin: center;
+		transform: scale(0.4) translateY(3px);
+		margin: 0 -4px -0 -13px;
+	}
+}
+
+:host([pending][layout='filled']) {
+	vwc-circular-progress {
+		--mdc-theme-primary: var(#{color-semantic.$vvd-color-on-connotation});
+	}
+}
+
+:host([pending][enlarged]) {
+	vwc-circular-progress {
+		transform: scale(0.6) translateY(3px);
+		margin: 0 -2px -0 -13px;
+	}
+}
+
+:host([pending][disabled]){
+	vwc-circular-progress {
+		--mdc-theme-primary: var(#{color-semantic.$formfield-disabled-ink});
+	}
+}
+
 @include shape-mixins.shape(
 	$shapes: (
 		rounded: 6px,
