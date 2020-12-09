@@ -79,10 +79,6 @@ export class VWCButton extends MWCButton {
 		}
 	}
 
-	protected render(): TemplateResult {
-		return html`${super.render()}`;
-	}
-
 	attributeChangedCallback(
 		name: string,
 		oldval: string | null,
