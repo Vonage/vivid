@@ -1,5 +1,6 @@
 import { html, LitElement, property, TemplateResult } from 'lit-element';
 import { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
+import { handleMultipleSizeProps } from '@vonage/vvd-foundation/general-utils';
 
 type BadgeConnotation = Extract<
 	Connotation,
@@ -36,18 +37,7 @@ export class BadgeBase extends LitElement {
 	enlarged = false;
 
 	protected updated(changes: Map<string, boolean>): void {
-		if (changes.has('dense')) {
-			if (this.dense && this.enlarged) {
-				this.enlarged = false;
-			}
-		}
-
-		if (changes.has('enlarged')) {
-			if (this.enlarged && this.dense) {
-				this.removeAttribute('dense');
-				this.dense = false;
-			}
-		}
+		handleMultipleSizeProps(this, changes);
 	}
 
 	protected render(): TemplateResult {
