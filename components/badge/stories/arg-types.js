@@ -24,12 +24,6 @@ export const argTypes = {
 			].includes(l)),
 		}
 	},
-	disabled: {
-		control: {
-			type: 'inline-radio',
-			options: { 'true': '', 'false': undefined }
-		}
-	},
 	dense: {
 		control: {
 			type: 'inline-radio',

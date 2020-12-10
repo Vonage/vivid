@@ -28,9 +28,6 @@ export class BadgeBase extends LitElement {
 	layout: BadgeLayout = Layout.Filled;
 
 	@property({ type: Boolean, reflect: true })
-	disabled = false;
-
-	@property({ type: Boolean, reflect: true })
 	dense = false;
 
 	@property({ type: Boolean, reflect: true })

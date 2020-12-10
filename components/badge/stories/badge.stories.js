@@ -28,6 +28,3 @@ Dense.args = { layout: 'filled', dense: '' };
 
 export const Enlarged = Template.bind({});
 Enlarged.args = { layout: 'filled', enlarged: '' };
-
-export const Disabled = Template.bind({});
-Disabled.args = { layout: 'filled', disabled: '' };
