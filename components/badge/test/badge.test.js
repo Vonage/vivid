@@ -6,6 +6,7 @@ import {
 	isolatedElementsCreation,
 	getTypographyStyle,
 } from '../../../test/test-helpers.js';
+import { shapeStyles } from '../../../test/style-utils.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
@@ -66,6 +67,35 @@ describe('badge', () => {
 			const actualElement = addedElements[0];
 			await waitNextTask();
 			assertComputedStyle(actualElement, { height: '28px' });
+		});
+	});
+
+	describe('shape', () => {
+		let actualElement;
+		beforeEach(async () => {
+			const addedElements = addElement(
+				textToDomToParent(
+					`<${VWC_BADGE} layout="filled">I'm a badge</${VWC_BADGE}>`
+				)
+			);
+			await waitNextTask();
+			actualElement = addedElements[0];
+		});
+
+		it('should have rounded shape by default', async () => {
+			assertComputedStyle(actualElement, shapeStyles('rounded', 'badge'), '::before');
+		});
+
+		it('should have rounded shape when shape set to rounded', async () => {
+			actualElement.shape = 'rounded';
+			await waitNextTask();
+			assertComputedStyle(actualElement, shapeStyles('rounded', 'badge'), '::before');
+		});
+
+		it('should have pill shape when shape set to pill', async () => {
+			actualElement.shape = 'pill';
+			await waitNextTask();
+			assertComputedStyle(actualElement, shapeStyles('pill', 'badge'), '::before');
 		});
 	});
 });
