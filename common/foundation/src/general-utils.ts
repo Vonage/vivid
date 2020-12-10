@@ -12,6 +12,7 @@ export function handleAutofocus(targetElement: HTMLElement): void {
 }
 
 export function handleMultipleSizeProps(
+	// eslint-disable-next-line
 	targetElement: any,
 	changes: Map<string, boolean>
 ): void {

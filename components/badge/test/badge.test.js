@@ -83,13 +83,21 @@ describe('badge', () => {
 		});
 
 		it('should have rounded shape by default', async () => {
-			assertComputedStyle(actualElement, shapeStyles('rounded', 'badge'), '::before');
+			assertComputedStyle(
+				actualElement,
+				shapeStyles('rounded', 'badge'),
+				'::before'
+			);
 		});
 
 		it('should have rounded shape when shape set to rounded', async () => {
 			actualElement.shape = 'rounded';
 			await waitNextTask();
-			assertComputedStyle(actualElement, shapeStyles('rounded', 'badge'), '::before');
+			assertComputedStyle(
+				actualElement,
+				shapeStyles('rounded', 'badge'),
+				'::before'
+			);
 		});
 
 		it('should have pill shape when shape set to pill', async () => {
