@@ -16,6 +16,16 @@ export function shapeStyles(shape) {
 	return borderRadiusStyles(shapeRadius[shape]);
 }
 
+export function sizeStyles(size) {
+	const sizes = {
+		dense: 32,
+		enlarged: 48,
+		default: 40,
+	}
+
+	return { height: `${sizes[size]}px` };
+}
+
 export const PRINCIPAL_SCHEME_VARIABLES_FILTER = /-(on-|)(base|surface|primary)$/;
 
 export function getSchemeFiles() {
