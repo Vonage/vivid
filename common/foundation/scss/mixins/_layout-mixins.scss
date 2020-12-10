@@ -1,8 +1,16 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '../variable-names/color-semantic-variable-names' as color-semantic;
+@use '../functions';
+
+$allLayouts: (
+	filled: 'filled',
+	outlined: 'outlined',
+	soft: 'soft',
+	text: 'text',
+);
 
 @mixin layout($layouts...) {
-	@each $layout in $layouts {
+	@each $layout in functions.pick($layouts, $allLayouts) {
 		#{':host([layout="#{$layout}"])'} {
 			@if ($layout == 'filled') {
 				--background-color: var(#{color-semantic.$vvd-color-connotation});

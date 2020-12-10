@@ -41,6 +41,7 @@ $vvd-badge-block-size: --vvd-badge-block-size;
 	color: var(#{scheme-variables.$vvd-color-contrast-dim});
 
 	&::before {
+		--opaque: 100;
 		background-color: var(#{scheme-variables.$vvd-color-contrast-soft});
 	}
 }
