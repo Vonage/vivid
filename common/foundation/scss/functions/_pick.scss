@@ -1,0 +1,14 @@
+@use 'sass:list';
+@use 'sass:map';
+
+@function pick($list, $map) {
+	$result: ();
+	@each $key in $list {
+		@if map.has-key($map, $key) {
+			$result: list.append($result, map.get($map, $key));
+		} @else {
+			@error "ERROR: Specified index does not exist in the mapping";
+		}
+	}
+	@return $result;
+}
