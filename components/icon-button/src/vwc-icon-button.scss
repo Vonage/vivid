@@ -13,6 +13,12 @@
 		justify-content: center;
 		overflow: hidden;
 	}
+
+	.vwc-icon {
+		--size: 20px;
+		height: var(--size);
+		width: var(--size);
+	}
 }
 
 // theming
@@ -53,25 +59,23 @@
 }
 
 // sizing
-:host(:not([dense])) {
+:host {
 	--mdc-icon-button-size: 40px;
-
-	.vwc-icon {
-		min-height: 20px;
-		min-width: 20px;
-	}
 }
 
 :host([dense]) {
 	--mdc-icon-button-size: 32px;
+
+	.vwc-icon {
+		--size: 16px;
+	}
 }
 
 :host([enlarged]) {
 	--mdc-icon-button-size: 48px;
 
 	.vwc-icon {
-		min-height: 24px;
-		min-width: 24px;
+		--size: 24px;
 	}
 }
 
