@@ -1,9 +1,12 @@
 import '../vwc-icon-button.js';
-import { waitNextTask, textToDomToParent } from '../../../test/test-helpers.js';
-import {
+import { 
+	waitNextTask,
+	textToDomToParent,
+} from '../../../test/test-helpers.js';
+import { 
 	sizingTestCases,
-	shapeTestCases,
-} from '../../button/test/button-utils.test.js';
+	shapeTestCases
+} from '../../../test/shared';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import { isolatedElementsCreation } from '../../../test/test-helpers';
 

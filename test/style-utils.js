@@ -1,3 +1,10 @@
+export const selectors = {
+	'vwc-button': '.mdc-button',
+	'vwc-icon-button': '.mdc-icon-button',
+	'vwc-select': '.mdc-select',
+	'vwc-textfield': '.mdc-text-field',
+}
+
 function borderRadiusStyles(expectedRadius) {
 	return {
 		borderTopLeftRadius: `${expectedRadius}px`,

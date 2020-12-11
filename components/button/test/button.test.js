@@ -4,7 +4,10 @@ import {
 	textToDomToParent,
 	assertComputedStyle,
 } from '../../../test/test-helpers.js';
-import { sizingTestCases, shapeTestCases } from './button-utils.test';
+import { 
+	sizingTestCases,
+	shapeTestCases
+} from '../../../test/shared';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	isolatedElementsCreation,
