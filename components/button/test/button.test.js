@@ -8,6 +8,7 @@ import {
 	sizingTestCases,
 	shapeTestCases
 } from '../../../test/shared';
+import { connotationTestCases } from './button.connotation.test.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	isolatedElementsCreation,
@@ -370,5 +371,9 @@ describe('button', () => {
 
 	describe('shape', () => {
 		shapeTestCases(COMPONENT_NAME);
+	});
+
+	describe('button connotation', () => {
+		connotationTestCases(COMPONENT_NAME);
 	});
 });

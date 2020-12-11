@@ -1,4 +1,3 @@
-import '../vwc-button.js';
 import {
 	textToDomToParent,
 	isolatedElementsCreation,
@@ -8,7 +7,6 @@ import {
 	assertConnotationProperty,
 } from '@vonage/vvd-foundation/test/connotation.test.js';
 
-const VWC_BUTTON = 'vwc-button';
 const CONNOTATIONS_SUPPORTED = [
 	'primary',
 	'cta',
@@ -36,7 +34,7 @@ const LAYOUTS_AFFECTED = [
 	},
 ];
 
-describe('button connotation', () => {
+export async function connotationTestCases(COMPONENT_NAME) {
 	const addElement = isolatedElementsCreation();
 
 	for (const { layout, childrenAffected, stylesAffected } of LAYOUTS_AFFECTED) {
@@ -44,7 +42,9 @@ describe('button connotation', () => {
 			it(`should reflect '${connotation}' connotation (attribute) visually, ${layout}`, async () => {
 				const [button] = addElement(
 					textToDomToParent(
-						`<${VWC_BUTTON} layout="${layout}">Button</${VWC_BUTTON}>`
+						`<${COMPONENT_NAME} layout="${layout}">
+							${COMPONENT_NAME === 'vwc-button' ? 'Button' : ''}
+						</${COMPONENT_NAME}>`
 					)
 				);
 				await assertConnotationAttribute({
@@ -58,7 +58,7 @@ describe('button connotation', () => {
 			it(`should reflect '${connotation}' connotation (property) visually, ${layout}`, async () => {
 				const [button] = addElement(
 					textToDomToParent(
-						`<${VWC_BUTTON} layout="${layout}">Button</${VWC_BUTTON}>`
+						`<${COMPONENT_NAME} layout="${layout}">Button</${COMPONENT_NAME}>`
 					)
 				);
 				await assertConnotationProperty({
@@ -70,4 +70,4 @@ describe('button connotation', () => {
 			});
 		}
 	}
-});
+}
