@@ -6,6 +6,7 @@ import {
 	isolatedElementsCreation,
 	getTypographyStyle,
 } from '../../../test/test-helpers.js';
+import { shapeStyles } from '../../../test/style-utils.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
@@ -37,6 +38,72 @@ describe('badge', () => {
 			await waitNextTask();
 			expect(badge).to.exist;
 			assertComputedStyle(badge, await getTypographyStyle('caption-bold'));
+		});
+	});
+
+	describe('sizing', () => {
+		it('should have normal size by default', async () => {
+			const addedElements = addElement(
+				textToDomToParent(`<${VWC_BADGE}>I'm a badge</${VWC_BADGE}>`)
+			);
+			const actualElement = addedElements[0];
+			await waitNextTask();
+			assertComputedStyle(actualElement, { height: '24px' });
+		});
+
+		it('should have dense size when dense', async () => {
+			const addedElements = addElement(
+				textToDomToParent(`<${VWC_BADGE} dense>I'm a badge</${VWC_BADGE}>`)
+			);
+			const actualElement = addedElements[0];
+			await waitNextTask();
+			assertComputedStyle(actualElement, { height: '20px' });
+		});
+
+		it('should have enlarged size when enlarged', async () => {
+			const addedElements = addElement(
+				textToDomToParent(`<${VWC_BADGE} enlarged>I'm a badge</${VWC_BADGE}>`)
+			);
+			const actualElement = addedElements[0];
+			await waitNextTask();
+			assertComputedStyle(actualElement, { height: '28px' });
+		});
+	});
+
+	describe('shape', () => {
+		let actualElement;
+		beforeEach(async () => {
+			const addedElements = addElement(
+				textToDomToParent(
+					`<${VWC_BADGE} layout="filled">I'm a badge</${VWC_BADGE}>`
+				)
+			);
+			await waitNextTask();
+			actualElement = addedElements[0];
+		});
+
+		it('should have rounded shape by default', async () => {
+			assertComputedStyle(
+				actualElement,
+				shapeStyles('rounded', 'badge'),
+				'::before'
+			);
+		});
+
+		it('should have rounded shape when shape set to rounded', async () => {
+			actualElement.shape = 'rounded';
+			await waitNextTask();
+			assertComputedStyle(
+				actualElement,
+				shapeStyles('rounded', 'badge'),
+				'::before'
+			);
+		});
+
+		it('should have pill shape when shape set to pill', async () => {
+			actualElement.shape = 'pill';
+			await waitNextTask();
+			assertComputedStyle(actualElement, shapeStyles('pill', 'badge'), '::before');
 		});
 	});
 });
