@@ -1,6 +1,7 @@
 {
 	"compilerOptions": {
-		"target": "es2017",
+		// 2018 includes async await
+		"target": "es2018",
 		"module": "es2015",
 		"moduleResolution": "node",
 		"lib": ["es2017", "dom", "dom.iterable"],
@@ -12,9 +13,11 @@
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"experimentalDecorators": true,
-		"skipLibCheck": true,
+		"noUnusedReturns": true,
+		"stripInternal": true,
+		"forceConsistentCasingInFileNames": true,
+		// "skipLibCheck": true, // would force consumers to enable this as well
 		"strict": true,
-		"noImplicitAny": true,
 		"outDir": "./",
 		"baseUrl": "./",
 		"paths": {
@@ -23,8 +26,8 @@
 		},
 		"composite": true,
 		"importHelpers": true,
-		"allowSyntheticDefaultImports": true,
-		"esModuleInterop": true
+		"allowSyntheticDefaultImports": true
+		// "esModuleInterop": true // would force consumers to enable this as well
 	},
 	"include": ["custom_typings/**/*.ts", "src/*.ts"],
 	"exclude": [],
