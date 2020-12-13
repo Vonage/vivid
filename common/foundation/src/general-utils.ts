@@ -11,7 +11,7 @@ export function handleAutofocus(targetElement: HTMLElement): void {
 	}
 }
 
-export function handleMultipleSizeProps(
+export function handleMultipleDenseProps(
 	// eslint-disable-next-line
 	targetElement: any,
 	changes: Map<string, boolean>
