@@ -20,3 +20,11 @@ export enum Size {
 	Medium = 'md',
 	Large = 'lg',
 }
+
+/* eslint-disable no-shadow */
+export enum Layout {
+	Text = 'text',
+	Filled = 'filled',
+	Outlined = 'outlined',
+	Soft = 'soft',
+}
