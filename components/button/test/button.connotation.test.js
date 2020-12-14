@@ -42,7 +42,7 @@ export async function connotationTestCases(COMPONENT_NAME) {
 			it(`should reflect '${connotation}' connotation (attribute) visually, ${layout}`, async () => {
 				const [button] = addElement(
 					textToDomToParent(
-						`<${COMPONENT_NAME} layout="${layout}">
+						`<${COMPONENT_NAME} layout="${layout}" icon="bin">
 							${COMPONENT_NAME === 'vwc-button' ? 'Button' : ''}
 						</${COMPONENT_NAME}>`
 					)
@@ -58,7 +58,9 @@ export async function connotationTestCases(COMPONENT_NAME) {
 			it(`should reflect '${connotation}' connotation (property) visually, ${layout}`, async () => {
 				const [button] = addElement(
 					textToDomToParent(
-						`<${COMPONENT_NAME} layout="${layout}">Button</${COMPONENT_NAME}>`
+						`<${COMPONENT_NAME} layout="${layout}" icon="bin">
+							${COMPONENT_NAME === 'vwc-button' ? 'Button' : ''}
+						</${COMPONENT_NAME}>`
 					)
 				);
 				await assertConnotationProperty({
