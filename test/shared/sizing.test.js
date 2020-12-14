@@ -5,8 +5,8 @@ import {
 	isolatedElementsCreation,
 } from '../test-helpers.js';
 import {
-  selectors,
-  sizeStyles
+	sizeStyles,
+  topLevelSelectors,
 } from '../style-utils.js';
 
 let addElement = isolatedElementsCreation();
@@ -19,7 +19,7 @@ export async function sizingTestCases(COMPONENT_NAME) {
 		);
 		await waitNextTask();
 		formElement = addedElements[0];
-		actualElement = formElement.shadowRoot.querySelector(selectors[COMPONENT_NAME]);
+		actualElement = formElement.shadowRoot.querySelector(topLevelSelectors[COMPONENT_NAME]);
 	});
 
 	it('should have normal size by default', async () => {

@@ -5,8 +5,8 @@ import {
 	isolatedElementsCreation,
 } from '../test-helpers.js';
 import {
-  selectors,
-  shapeStyles,
+	shapeStyles,
+  topLevelSelectors,
 } from '../style-utils.js';
 
 let addElement = isolatedElementsCreation();
@@ -19,7 +19,7 @@ export async function shapeTestCases(COMPONENT_NAME) {
 		);
 		await waitNextTask();
 		formElement = addedElements[0];
-		actualElement = formElement.shadowRoot.querySelector(selectors[COMPONENT_NAME]);
+		actualElement = formElement.shadowRoot.querySelector(topLevelSelectors[COMPONENT_NAME]);
 	});
 
 	it('should have rounded shape by default', async () => {

@@ -1,4 +1,4 @@
-export const selectors = {
+export const topLevelSelectors = {
 	'vwc-button': '.mdc-button',
 	'vwc-icon-button': '.mdc-icon-button',
 	'vwc-select': '.mdc-select',
@@ -31,6 +31,28 @@ export function sizeStyles(size) {
 	}
 
 	return { height: `${sizes[size]}px` };
+}
+
+export function layoutStyles(layout) {
+	const layouts = {
+		filled: {
+			'background-color': 'rgb(0, 0, 0)',
+			'border': '0px none rgb(255, 255, 255)',
+			'color': 'rgb(255, 255, 255)',
+		},
+		outlined: {
+			'background-color': 'rgba(0, 0, 0, 0)',
+			'border': '1px solid rgb(0, 0, 0)',
+			'color': 'rgb(0, 0, 0)',
+		},
+		ghost: {
+			'background-color': 'rgba(0, 0, 0, 0)',
+			'border': '0px none rgb(0, 0, 0)',
+			'color': 'rgb(0, 0, 0)',
+		},
+	}
+
+	return layouts[layout];
 }
 
 export const PRINCIPAL_SCHEME_VARIABLES_FILTER = /-(on-|)(base|surface|primary)$/;
