@@ -1,4 +1,4 @@
-import { Connotation, Shape } from '@vonage/vvd-foundation/constants';
+import { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
 
 export const argTypes = {
 	connotation: {
@@ -12,7 +12,9 @@ export const argTypes = {
 	layout: {
 		control: {
 			type: 'select',
-			options: ['text', 'outlined', 'filled'],
+			options: Object.values(Layout).filter(l => [
+				Layout.Filled, Layout.Outlined, Layout.Ghost
+			].includes(l)),
 		}
 	},
 	shape: {

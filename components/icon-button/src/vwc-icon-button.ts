@@ -5,7 +5,8 @@ import { IconButton as MWCIconButton } from '@material/mwc-icon-button';
 import { style as vwcButtonStyle } from './vwc-icon-button.css';
 import { style as mwcIconButtonStyle } from '@material/mwc-icon-button/mwc-icon-button-css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
-import { Connotation, Shape } from '@vonage/vvd-foundation/constants';
+import { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
+import { handleMultipleDenseProps } from '@vonage/vvd-foundation/general-utils';
 import { html, TemplateResult } from 'lit-element';
 
 declare global {
@@ -18,8 +19,10 @@ declare global {
 // @ts-ignore
 MWCIconButton.styles = [styleCoupling, mwcIconButtonStyle, vwcButtonStyle];
 
-const layouts = ['text', 'outlined', 'filled'];
-export type IconButtonLayout = typeof layouts;
+type IconButtonLayout = Extract<
+	Layout,
+	Layout.Filled | Layout.Outlined | Layout.Ghost
+>;
 
 type IconButtonConnotation = Extract<
 	Connotation,
@@ -37,7 +40,7 @@ type IconButtonConnotation = Extract<
 @customElement('vwc-icon-button')
 export class VWCIconButton extends MWCIconButton {
 	@property({ type: String, reflect: true })
-	layout: IconButtonLayout[number] = 'text';
+	layout: IconButtonLayout = Layout.Ghost;
 
 	@property({ type: String, reflect: true })
 	connotation: IconButtonConnotation = Connotation.Primary;
@@ -52,18 +55,7 @@ export class VWCIconButton extends MWCIconButton {
 	enlarged = false;
 
 	protected updated(changes: Map<string, boolean>): void {
-		if (changes.has('dense')) {
-			if (this.dense && this.enlarged) {
-				this.enlarged = false;
-			}
-		}
-
-		if (changes.has('enlarged')) {
-			if (this.enlarged && this.dense) {
-				this.removeAttribute('dense');
-				this.dense = false;
-			}
-		}
+		handleMultipleDenseProps(this, changes);
 	}
 
 	protected render(): TemplateResult {

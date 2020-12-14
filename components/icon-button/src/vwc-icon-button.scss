@@ -1,13 +1,19 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
+@use '@vonage/vvd-foundation/scss/mixins/shape-mixins';
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins' with (
 	$connotations: primary cta success alert info announcement
 );
-@use '@vonage/vvd-foundation/scss/mixins/shape-mixins';
+@use '@vonage/vvd-foundation/scss/mixins/layout-mixins' with (
+	$layouts: filled outlined ghost
+);
 
 :host {
 	.mdc-icon-button {
+		background-color: var(--background-color);
+		border: var(--border);
 		border-radius: var(--border-radius);
+		color: var(--color);
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
@@ -27,32 +33,18 @@
 );
 
 :host([layout='filled']) {
-	.mdc-icon-button {
-		background-color: var(#{color-semantic.$vvd-color-connotation});
-		color: var(#{color-semantic.$vvd-color-on-connotation});
-	}
-
 	.mdc-icon-button:disabled {
 		background-color: var(#{scheme-variables.$vvd-color-contrast-soft});
 	}
 }
 
 :host([layout='outlined']) {
-	.mdc-icon-button {
-		border: 1px solid var(#{color-semantic.$vvd-color-connotation});
-		color: var(#{color-semantic.$vvd-color-connotation});
-	}
-
 	.mdc-icon-button:disabled {
 		border-color: currentColor;
 	}
 }
 
 :host {
-	.mdc-icon-button {
-		color: var(#{scheme-variables.$vvd-color-on-base});
-	}
-
 	.mdc-icon-button:disabled {
 		color: var(#{color-semantic.$formfield-disabled-ink});
 	}
@@ -85,3 +77,5 @@
 		pill: 24px,
 	)
 );
+
+@include layout-mixins.layout();

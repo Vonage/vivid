@@ -21,4 +21,5 @@ export enum Layout {
 	Filled = 'filled',
 	Outlined = 'outlined',
 	Soft = 'soft',
+	Ghost = 'ghost',
 }
