@@ -1,0 +1,41 @@
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+@use '../variable-names/color-semantic-variable-names' as color-semantic;
+@use '../functions';
+
+// override to apply relevance
+$layouts: filled outlined soft text !default;
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+$allLayouts: (
+	filled: 'filled',
+	outlined: 'outlined',
+	soft: 'soft',
+	text: 'text',
+);
+
+$bg: var(#{color-semantic.$vvd-color-connotation});
+
+%filled {
+	--background-color: #{$bg};
+	--color: var(#{color-semantic.$vvd-color-on-connotation});
+}
+
+%outlined {
+	--background-color: transparent;
+	--border: 1px solid #{$bg};
+	--color: #{$bg};
+}
+
+%soft {
+	--background-color: #{$bg};
+	--color: var(#{scheme-variables.$vvd-color-on-base});
+	--opaque: 20;
+}
+
+@mixin layout() {
+	@each $layout in functions.pick($layouts, $allLayouts) {
+		#{':host([layout="#{$layout}"])'} {
+			@extend %#{$layout};
+		}
+	}
+}

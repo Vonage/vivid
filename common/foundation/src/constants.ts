@@ -14,3 +14,11 @@ export enum Shape {
 	Rounded = 'rounded',
 	Pill = 'pill',
 }
+
+/* eslint-disable no-shadow */
+export enum Layout {
+	Text = 'text',
+	Filled = 'filled',
+	Outlined = 'outlined',
+	Soft = 'soft',
+}

@@ -10,3 +10,22 @@ export function handleAutofocus(targetElement: HTMLElement): void {
 		targetElement.focus();
 	}
 }
+
+export function handleMultipleDenseProps(
+	// eslint-disable-next-line
+	targetElement: any,
+	changes: Map<string, boolean>
+): void {
+	if (changes.has('dense')) {
+		if (targetElement.dense && targetElement.enlarged) {
+			targetElement.enlarged = false;
+		}
+	}
+
+	if (changes.has('enlarged')) {
+		if (targetElement.enlarged && targetElement.dense) {
+			targetElement.removeAttribute('dense');
+			targetElement.dense = false;
+		}
+	}
+}

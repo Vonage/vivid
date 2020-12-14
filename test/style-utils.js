@@ -14,10 +14,10 @@ function borderRadiusStyles(expectedRadius) {
 	};
 }
 
-export function shapeStyles(shape) {
+export function shapeStyles(shape, element) {
 	const shapeRadius = {
-		rounded: 6,
-		pill: 24,
+		rounded: element === 'badge' ? 4 : 6,
+		pill: element === 'badge' ? 14 : 24,
 	}
 
 	return borderRadiusStyles(shapeRadius[shape]);
