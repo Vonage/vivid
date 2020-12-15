@@ -40,9 +40,13 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
 
-  test-safari:
+  build-and-test:
     needs: cache-yarn
-    runs-on: macOS-latest
+    strategy:
+      matrix:
+        browser: [chrome, safari, firefox]
+
+    runs-on: ${{ fromJSON('["macOSlatest", "ubuntu-latest"]')[matrix.browser != 'safari'] }}
     env:
       ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
@@ -79,109 +83,154 @@ jobs:
         run: yarn compile
 
       - name: Test components
-        run: yarn test:safari
+        run: yarn test:${{matrix.browser}}
 
-      - name: Upload Safari coverage as an artifact
+      - name: Upload ${{matrix.browser}} coverage as an artifact
         uses: actions/upload-artifact@v2
         with:
-          name: safari-coverage
-          path: ./coverage/report-lcov/cobertura.xml
+          name: ${{matrix.browser}}-coverage
+          path: ./coverage/report-lcov/coverage.xml
 
-
-  test-firefox:
-    needs: cache-yarn
-    runs-on: ubuntu-20.04
-    env:
-      ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.PAT }}
-
-      - name: Setup NodeJS 14
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14
-
-      - name: Install yarn
-        run: npm install -g yarn
-
-      - name: Cache yarn dependencies
-        uses: actions/cache@v2
-        id: yarn-cache
-        with:
-          path: |
-            ${{ steps.yarn-cache-dir-path.outputs.dir }}
-            **\node_modules
-          key: vivid-cache-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            vivid-cache-yarn-
-
-      - name: Install packages
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: yarn install
-
-      - name: Build components
-        run: yarn compile
-
-      - name: Test components
-        run: yarn test:firefox
-
-      - name: Upload firefox coverage as an artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: firefox-coverage
-          path: ./coverage/report-cobertura/cobertura.xml
-
-
-  test-chrome:
-    needs: cache-yarn
-    runs-on: ubuntu-20.04
-    env:
-      ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.PAT }}
-
-      - name: Setup NodeJS 14
-        uses: actions/setup-node@v1
-        with:
-          node-version: 14
-
-      - name: Install yarn
-        run: npm install -g yarn
-
-      - name: Cache yarn dependencies
-        uses: actions/cache@v2
-        id: yarn-cache
-        with:
-          path: |
-            ${{ steps.yarn-cache-dir-path.outputs.dir }}
-            **\node_modules
-          key: vivid-cache-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            vivid-cache-yarn-
-
-      - name: Install packages
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: yarn install
-
-      - name: Build components
-        run: yarn compile
-
-      - name: Test components
-        run: yarn test:chrome
-
-      - name: Upload chrome coverage as an artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: chrome-coverage
-          path: ./coverage/report-lcov/cobertura.xml
+#  test-safari:
+#    needs: cache-yarn
+#    runs-on: macOS-latest
+#    env:
+#      ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+#
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v2
+#        with:
+#          token: ${{ secrets.PAT }}
+#
+#      - name: Setup NodeJS 14
+#        uses: actions/setup-node@v1
+#        with:
+#          node-version: 14
+#
+#      - name: Install yarn
+#        run: npm install -g yarn
+#
+#      - name: Cache yarn dependencies
+#        uses: actions/cache@v2
+#        id: yarn-cache
+#        with:
+#          path: |
+#            ${{ steps.yarn-cache-dir-path.outputs.dir }}
+#            **\node_modules
+#          key: vivid-cache-yarn-${{ hashFiles('**/yarn.lock') }}
+#          restore-keys: |
+#            vivid-cache-yarn-
+#
+#      - name: Install packages
+#        if: steps.yarn-cache.outputs.cache-hit != 'true'
+#        run: yarn install
+#
+#      - name: Build components
+#        run: yarn compile
+#
+#      - name: Test components
+#        run: yarn test:safari
+#
+#      - name: Upload Safari coverage as an artifact
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: safari-coverage
+#          path: ./coverage/report-lcov/cobertura.xml
+#
+#  test-firefox:
+#    needs: cache-yarn
+#    runs-on: ubuntu-20.04
+#    env:
+#      ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+#
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v2
+#        with:
+#          token: ${{ secrets.PAT }}
+#
+#      - name: Setup NodeJS 14
+#        uses: actions/setup-node@v1
+#        with:
+#          node-version: 14
+#
+#      - name: Install yarn
+#        run: npm install -g yarn
+#
+#      - name: Cache yarn dependencies
+#        uses: actions/cache@v2
+#        id: yarn-cache
+#        with:
+#          path: |
+#            ${{ steps.yarn-cache-dir-path.outputs.dir }}
+#            **\node_modules
+#          key: vivid-cache-yarn-${{ hashFiles('**/yarn.lock') }}
+#          restore-keys: |
+#            vivid-cache-yarn-
+#
+#      - name: Install packages
+#        if: steps.yarn-cache.outputs.cache-hit != 'true'
+#        run: yarn install
+#
+#      - name: Build components
+#        run: yarn compile
+#
+#      - name: Test components
+#        run: yarn test:firefox
+#
+#      - name: Upload firefox coverage as an artifact
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: firefox-coverage
+#          path: ./coverage/report-cobertura/cobertura.xml
+#
+#  test-chrome:
+#    needs: cache-yarn
+#    runs-on: ubuntu-20.04
+#    env:
+#      ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+#
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v2
+#        with:
+#          token: ${{ secrets.PAT }}
+#
+#      - name: Setup NodeJS 14
+#        uses: actions/setup-node@v1
+#        with:
+#          node-version: 14
+#
+#      - name: Install yarn
+#        run: npm install -g yarn
+#
+#      - name: Cache yarn dependencies
+#        uses: actions/cache@v2
+#        id: yarn-cache
+#        with:
+#          path: |
+#            ${{ steps.yarn-cache-dir-path.outputs.dir }}
+#            **\node_modules
+#          key: vivid-cache-yarn-${{ hashFiles('**/yarn.lock') }}
+#          restore-keys: |
+#            vivid-cache-yarn-
+#
+#      - name: Install packages
+#        if: steps.yarn-cache.outputs.cache-hit != 'true'
+#        run: yarn install
+#
+#      - name: Build components
+#        run: yarn compile
+#
+#      - name: Test components
+#        run: yarn test:chrome
+#
+#      - name: Upload chrome coverage as an artifact
+#        uses: actions/upload-artifact@v2
+#        with:
+#          name: chrome-coverage
+#          path: ./coverage/report-lcov/cobertura.xml
 
   code-standards:
     needs: cache-yarn
@@ -231,7 +280,7 @@ jobs:
         run: sh ./scripts/ensure-all-committed.sh
 
   code-coverage:
-      needs: [test-chrome, test-firefox, test-safari]
+      needs: [build-and-test]
       runs-on: ubuntu-20.04
       env:
         ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
