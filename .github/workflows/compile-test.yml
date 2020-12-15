@@ -242,7 +242,7 @@ jobs:
             token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
             files: ./chrome-coverage/coverage.xml,./firefox-coverage/coverage.xml,./safari-coverage/coverage.xml
             flags: unittests # optional
-            name: codecov-umbrella # optional
+            name: codecov-working # optional
             fail_ci_if_error: true # optional (default = false)
             verbose: true # optional (default = false)
 
