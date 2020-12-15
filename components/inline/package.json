@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-inline",
-	"version": "0.17.0",
+	"version": "0.17.0-alpha",
 	"description": "scheme switch component",
 	"author": "yinonov <yinon@hotmail.com>",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/inline#readme",
