@@ -32,6 +32,14 @@ module.exports = config => {
           { tag: 'drawerSetupTest', src: 'components/drawer/test/drawer-setup.test.html' },
 				]
 			}
+		},
+		coverageReporter: {
+			dir: `coverage/`,
+			reporters: [
+				{
+					type: 'lcovonly', subdir: 'report-lcov'
+				}
+			]
 		}
 	});
 
