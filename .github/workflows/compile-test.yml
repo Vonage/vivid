@@ -85,7 +85,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: safari-coverage
-          path: ./coverage/report-coverage/cobertura.xml
+          path: ./coverage/report-coverage/coverage.xml
 
   test-firefox:
     needs: cache-yarn
@@ -132,7 +132,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: firefox-coverage
-          path: ./coverage/report-cobertura/cobertura.xml
+          path: ./coverage/report-cobertura/coverage.xml
 
   test-chrome:
     needs: cache-yarn
@@ -179,7 +179,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: chrome-coverage
-          path: ./coverage/report-cobertura/cobertura.xml
+          path: ./coverage/report-cobertura/coverage.xml
 
   code-standards:
     needs: cache-yarn
@@ -240,7 +240,7 @@ jobs:
         - uses: codecov/codecov-action@v1
           with:
             token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-            files: ./chrome-coverage/cobertura.xml,./firefox-coverage/cobertura.xml,./safari-coverage/cobertura.xml
+            files: ./chrome-coverage/coverage.xml,./firefox-coverage/coverage.xml,./safari-coverage/coverage.xml
             flags: unittests # optional
             name: codecov-umbrella # optional
             fail_ci_if_error: true # optional (default = false)
