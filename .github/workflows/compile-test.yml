@@ -81,6 +81,13 @@ jobs:
       - name: Test components
         run: yarn test:safari
 
+      - name: Upload Safari coverage as an artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: safari-coverage
+          path: ./coverage/report-lcov/lcov.info
+
+
   test-firefox:
     needs: cache-yarn
     runs-on: ubuntu-20.04
@@ -121,6 +128,13 @@ jobs:
 
       - name: Test components
         run: yarn test:firefox
+
+      - name: Upload firefox coverage as an artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: firefox-coverage
+          path: ./coverage/report-lcov/lcov.info
+
 
   test-chrome:
     needs: cache-yarn
@@ -224,8 +238,15 @@ jobs:
       steps:
         - name: Download artifact pass_status_job01
           uses: actions/download-artifact@v2
-          with:
-            name: chrome-coverage
 
-        - name: Display structure of downloaded files
-          run: ls -R
+        - uses: codecov/codecov-action@v1
+          with:
+            token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+            files: ./chrome-coverage/lcov.info,./firefox-coverage/lcov.info,./safari-coverage/lcov.info
+            flags: unittests # optional
+            name: codecov-umbrella # optional
+            fail_ci_if_error: true # optional (default = false)
+            verbose: true # optional (default = false)
+
+
+
