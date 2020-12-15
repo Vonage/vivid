@@ -231,8 +231,7 @@ jobs:
   code-coverage:
       needs: [test-chrome, test-firefox, test-safari]
       runs-on: ubuntu-20.04
-      env:
-        ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+
       steps:
         - name: Download artifact pass_status_job01
           uses: actions/download-artifact@v2
@@ -244,7 +243,25 @@ jobs:
             flags: unittests # optional
             name: codecov-working # optional
             fail_ci_if_error: true # optional (default = false)
-            verbose: true # optional (default = false)
+
+  coverage-report:
+      strategy:
+        matrix:
+          browser: [chrome, firefox, safari]
+
+      needs: [test-chrome, test-firefox, test-safari]
+      runs-on: ubuntu-20.04
+      steps:
+        - name: Download artifact pass_status_job01
+          uses: actions/download-artifact@v2
+          with:
+            name: ${{matrix.browser}}-coverage
+
+        - uses: 5monkeys/cobertura-action@master
+          with:
+            path: ./coverage.xml
+            repo_token: ${{ secrets.GITHUB_TOKEN }}
+            minimum_coverage: 75
 
 
 
