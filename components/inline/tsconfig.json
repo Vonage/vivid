@@ -11,9 +11,6 @@
 	"references": [
 		{
 			"path": "../../common/foundation"
-		},
-		{
-			"path": "../../common/core"
 		}
 	]
 }
