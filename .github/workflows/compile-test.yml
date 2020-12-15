@@ -164,7 +164,7 @@ jobs:
         run: yarn test:chrome
 
       - name: Upload chrome coverage as an artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v2
         with:
           name: chrome-coverage
           path: ./coverage/report-lcov/lcov.info
@@ -223,6 +223,9 @@ jobs:
         ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
       steps:
         - name: Download artifact pass_status_job01
-          uses: actions/download-artifact@v1
+          uses: actions/download-artifact@v2
           with:
             name: chrome-coverage
+
+        - name: Display structure of downloaded files
+          run: ls -R
