@@ -85,7 +85,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: safari-coverage
-          path: ./coverage/report-coverage/coverage.xml
+          path: ./coverage/report-cobertura/coverage.xml
 
   test-firefox:
     needs: cache-yarn
