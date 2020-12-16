@@ -181,12 +181,11 @@ jobs:
           name: chrome-coverage
           path: ./coverage/report-cobertura/coverage.xml
 
-      - name: Coveralls
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: ./coverage/report-lcov/lcov.info
-          flag-name: Unit
+      - name: Upload chrome lcov coverage as an artifact
+          uses: actions/upload-artifact@v2
+          with:
+            name: chrome-lcov-coverage
+            path: ./coverage/report-lcov/lcov.info
 
 
   code-standards:
@@ -237,20 +236,21 @@ jobs:
         run: sh ./scripts/ensure-all-committed.sh
 
   code-coverage:
-      needs: [test-chrome, test-firefox, test-safari]
+      needs: test-chrome
       runs-on: ubuntu-20.04
 
       steps:
         - name: Download artifact pass_status_job01
           uses: actions/download-artifact@v2
+          with:
+            name: chrome-lcov-coverage
 
-  #        - uses: codecov/codecov-action@v1
-#          with:
-#            token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-#            files: ./chrome-coverage/coverage.xml,./firefox-coverage/coverage.xml,./safari-coverage/coverage.xml
-#            flags: unittests # optional
-#            name: codecov-working # optional
-#            fail_ci_if_error: true # optional (default = false)
+        - name: Coveralls
+          uses: coverallsapp/github-action@master
+          with:
+            github-token: ${{ secrets.GITHUB_TOKEN }}
+            path-to-lcov: ./lcov.info
+            flag-name: Unit
 
   coverage-report:
       strategy:
