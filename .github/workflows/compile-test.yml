@@ -236,13 +236,20 @@ jobs:
         - name: Download artifact pass_status_job01
           uses: actions/download-artifact@v2
 
-        - uses: codecov/codecov-action@v1
+        - name: Coveralls
+          uses: coverallsapp/github-action@master
           with:
-            token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
-            files: ./chrome-coverage/coverage.xml,./firefox-coverage/coverage.xml,./safari-coverage/coverage.xml
-            flags: unittests # optional
-            name: codecov-working # optional
-            fail_ci_if_error: true # optional (default = false)
+            github-token: ${{ secrets.GITHUB_TOKEN }}
+            path-to-lcov: ./chrome-coverage/coverage.xml
+            flag-name: Unit
+            
+  #        - uses: codecov/codecov-action@v1
+#          with:
+#            token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+#            files: ./chrome-coverage/coverage.xml,./firefox-coverage/coverage.xml,./safari-coverage/coverage.xml
+#            flags: unittests # optional
+#            name: codecov-working # optional
+#            fail_ci_if_error: true # optional (default = false)
 
   coverage-report:
       strategy:
