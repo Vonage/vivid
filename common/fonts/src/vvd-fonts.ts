@@ -4,7 +4,7 @@ export default Object.freeze({
 
 const READY_PROMISE_TIMEOUT = 12000,
 	FONTS_BASE_URL_TOKEN = 'FONTS_BASE_URL',
-	CDN_BASE_URL = '//assets.vivid.vonage.com/fonts/v1';
+	CDN_BASE_URL = '//fonts.resources.vonage.com/fonts/v1';
 
 let INIT_PROMISE: Promise<Record<string, unknown>> | null = null;
 
