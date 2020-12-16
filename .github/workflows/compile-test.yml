@@ -187,6 +187,13 @@ jobs:
           name: chrome-lcov-coverage
           path: ./coverage/report-lcov/lcov.info
 
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./coverage/report-lcov/lcov.info
+          flag-name: Vivid Unit
+
   code-standards:
     needs: cache-yarn
     runs-on: ubuntu-20.04
@@ -239,7 +246,7 @@ jobs:
       runs-on: ubuntu-20.04
 
       steps:
-        - name: Download artifact pass_status_job01
+        - name: Download artifact chrom-lcov-coverage
           uses: actions/download-artifact@v2
           with:
             name: chrome-lcov-coverage
