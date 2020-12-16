@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-top-app-bar",
-	"version": "0.17.0",
+	"version": "0.17.1",
 	"description": "top-app-bar component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/top-app-bar#readme",
 	"license": "ISC",
@@ -23,13 +23,13 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@material/mwc-top-app-bar": "^0.19.1",
-		"@vonage/vvd-core": "^0.17.0",
-		"@vonage/vvd-style-coupling": "^0.17.0",
+		"@material/mwc-top-app-bar": "^0.20.0",
+		"@vonage/vvd-core": "^0.17.1",
+		"@vonage/vvd-style-coupling": "^0.17.1",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.3"
 	},
 	"devDependencies": {
-		"@vonage/vvd-typography": "^0.17.0"
+		"@vonage/vvd-typography": "^0.17.1"
 	}
 }

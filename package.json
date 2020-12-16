@@ -3,7 +3,7 @@
 	"private": true,
 	"description": "Web Components based on branded design system by Vonage, following open-wc recommendations",
 	"author": "Vonage",
-	"license": "Apache-2.0",
+	"license": "ISC",
 	"workspaces": [
 		"common/*",
 		"components/*"

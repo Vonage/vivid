@@ -3,40 +3,66 @@
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins';
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins';
 @use '@vonage/vvd-typography/scss/typography';
+@use '@vonage/vvd-foundation/scss/mixins/layout-mixins' with (
+	$layouts: filled	outlined	soft
+);
 
 @include color-connotation-mixins.connotations-context(
 	':host(#{color-connotation-mixins.$connotation-placeholder})'
 );
 
+$vvd-badge-block-size: --vvd-badge-block-size;
+
 :host {
-	display: inline;
-	padding: 4px 8px;
+	display: inline-flex;
+	align-items: center;
+	#{$vvd-badge-block-size}: 24px;
+	height: var(#{$vvd-badge-block-size});
+	block-size: var(#{$vvd-badge-block-size});
+	padding: 0 10px;
 	position: relative;
-	color: var(#{color-semantic.$vvd-color-on-connotation});
+	color: var(--color);
 	@include typography.typography-cat-shorthand('caption-bold');
 
 	&::before {
 		content: '';
 		z-index: -1;
-		border-radius: var(--border-radius);
 		position: absolute;
 		top: 0;
 		right: 0;
 		bottom: 0;
 		left: 0;
-		background-color: var(#{color-semantic.$vvd-color-connotation});
+		background-color: var(--background-color);
+		border-radius: var(--border-radius);
+		border: var(--border);
 		opacity: calc(var(--opaque) * 0.01);
 	}
 }
 
-:host([translucent]) {
-	--opaque: 20;
-	color: var(#{scheme-variables.$vvd-color-on-base});
+:host([disabled]) {
+	color: var(#{scheme-variables.$vvd-color-contrast-dim});
+
+	&::before {
+		--opaque: 100;
+		background-color: var(#{scheme-variables.$vvd-color-contrast-soft});
+	}
+}
+
+:host([dense]) {
+	#{$vvd-badge-block-size}: 20px;
+	padding: 0 8px;
+}
+
+:host([enlarged]) {
+	#{$vvd-badge-block-size}: 28px;
+	padding: 0 12px;
 }
 
 @include shape-mixins.shape(
 	$shapes: (
-		rounded: 6px,
-		pill: 12px,
+		rounded: 4px,
+		pill: 14px,
 	)
 );
+
+@include layout-mixins.layout();
