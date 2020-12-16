@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.1](https://github.com/Vonage/vivid/compare/v0.17.0...v0.17.1) (2020-12-15)
+
+
+### Features
+
+* **connotation:** adding support for warning connotation ([#488](https://github.com/Vonage/vivid/issues/488)) ([245a9b9](https://github.com/Vonage/vivid/commit/245a9b9c095b2af4f3d9a088d0c6219370199c2d))
+* **icon:** 4 new chat icons ([#494](https://github.com/Vonage/vivid/issues/494)) ([30b6e30](https://github.com/Vonage/vivid/commit/30b6e3089c2ffdb29d15ee5065418c6a1ab348a6))
+* **icon:** added global memoization for previously resolved icons ([0ade404](https://github.com/Vonage/vivid/commit/0ade40416d5f854dd8bc95166b2a5fca82e37da7))
+* **infra:** define domain for icon resources ([1193aa0](https://github.com/Vonage/vivid/commit/1193aa023ef22ae5bb7397c587c20932fc692586))
+* **sass:** relocated template file [https://jira.vonage.com/browse/VIV-307] ([#487](https://github.com/Vonage/vivid/issues/487)) ([5058820](https://github.com/Vonage/vivid/commit/50588201a6d2cb3be3f4b8310187837a52a38b2e))
+* **vwc-inline:** new component to handle inline layouts ([9b03d6b](https://github.com/Vonage/vivid/commit/9b03d6b3171c891985a10c77edfc2f78b78be68d))
+
+
+
+
+
 # [0.17.0](https://github.com/Vonage/vivid/compare/v0.16.2...v0.17.0) (2020-12-06)
 
 
