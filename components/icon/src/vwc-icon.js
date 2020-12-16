@@ -20,11 +20,13 @@ const
 	memoize = (func)=> {
 		const cache = new Map();
 		return (key)=>
-			cache.get(key) ?? (function(){
-				const value = func(key);
-				cache.set(key, value);
-				return value;
-			})();
+			cache.has(key)
+				? cache.get(key)
+				: (function(){
+					const value = func(key);
+					cache.set(key, value);
+					return value;
+				})();
 	},
 	resolveIconCache = memoize(resolveIcon);
 
