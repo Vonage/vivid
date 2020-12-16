@@ -182,10 +182,10 @@ jobs:
           path: ./coverage/report-cobertura/coverage.xml
 
       - name: Upload chrome lcov coverage as an artifact
-          uses: actions/upload-artifact@v2
-          with:
-            name: chrome-lcov-coverage
-            path: ./coverage/report-lcov/lcov.info
+        uses: actions/upload-artifact@v2
+        with:
+          name: chrome-lcov-coverage
+          path: ./coverage/report-lcov/lcov.info
 
 
   code-standards:

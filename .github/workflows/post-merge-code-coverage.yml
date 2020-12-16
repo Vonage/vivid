@@ -1,4 +1,4 @@
-name: Test, Build and Deploy
+name: Master Code Coverage
 
 on:
   push:
