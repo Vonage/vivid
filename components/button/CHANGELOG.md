@@ -1,3 +1,12 @@
+## [0.17.1](https://github.com/vonage/vivid/compare/v0.17.0...v0.17.1) (2020-12-15)
+
+
+### Features
+
+* **connotation:** adding support for warning connotation ([#488](https://github.com/vonage/vivid/issues/488)) ([245a9b9](https://github.com/vonage/vivid/commit/245a9b9c095b2af4f3d9a088d0c6219370199c2d))
+
+
+
 # [0.17.0](https://github.com/vonage/vivid/compare/v0.16.2...v0.17.0) (2020-12-06)
 
 
