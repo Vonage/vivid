@@ -179,7 +179,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: chrome-coverage
-          path: ./coverage/report-cobertura/coverage.xml
+          path: ./coverage/report-lcov/lcov.info
 
   code-standards:
     needs: cache-yarn
@@ -240,9 +240,9 @@ jobs:
           uses: coverallsapp/github-action@master
           with:
             github-token: ${{ secrets.GITHUB_TOKEN }}
-            path-to-lcov: ./chrome-coverage/coverage.xml
+            path-to-lcov: ./chrome-coverage/lcov.info
             flag-name: Unit
-            
+
   #        - uses: codecov/codecov-action@v1
 #          with:
 #            token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
