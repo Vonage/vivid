@@ -6,13 +6,12 @@
 		"outDir": ".",
 		"tsBuildInfoFile": ".tsbuildinfo"
 	},
-	"include": [
-		"src/*.ts"
-	],
-	"exclude": [
-		"src/test/*.ts"
-	],
+	"include": ["src/*.ts"],
+	"exclude": ["src/test/*.ts"],
 	"references": [
+		{
+			"path": "../../common/foundation"
+		},
 		{
 			"path": "../../common/core"
 		}

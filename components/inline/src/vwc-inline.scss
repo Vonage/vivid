@@ -1,0 +1,50 @@
+@use 'sass:map';
+
+$items-min-inline-size-v-name: --items-min-inline-size;
+$items-spacing-v-name: --items-spacing;
+
+/* #region SIZE */
+$items-min-inline-sizes: (
+	'sm': 10rem,
+	'md': 20rem,
+	'lg': 30rem,
+);
+
+@each $key, $value in $items-min-inline-sizes {
+	:host([size='#{$key}'i]) {
+		#{$items-min-inline-size-v-name}: $value;
+	}
+}
+/* #endregion */
+
+/* #region SPACING */
+$items-spacings: (
+	// ! hardcoded values should be defined and auto-generated to, and by, design tokens
+	'sm': 24px,
+	'md': 32px
+);
+
+@each $key, $value in $items-spacings {
+	:host([spacing='#{$key}'i]) {
+		#{$items-spacing-v-name}: $value;
+	}
+}
+/* #endregion */
+
+:host {
+	width: 100%;
+	inline-size: 100%;
+	display: grid;
+	gap: var(#{$items-spacing-v-name}, #{map.get($items-spacings, md)});
+	grid-auto-rows: min-content;
+	grid-template-columns: repeat(
+		auto-fit,
+		minmax(
+			var(
+				#{$items-min-inline-size-v-name},
+				#{map.get($items-min-inline-sizes, lg)}
+			),
+			1fr
+		)
+	);
+}

@@ -1,3 +1,13 @@
+## [0.17.1](https://github.com/vonage/vivid/compare/v0.17.0...v0.17.1) (2020-12-15)
+
+
+### Features
+
+* **icon:** 4 new chat icons ([#494](https://github.com/vonage/vivid/issues/494)) ([30b6e30](https://github.com/vonage/vivid/commit/30b6e3089c2ffdb29d15ee5065418c6a1ab348a6))
+* **icon:** added global memoization for previously resolved icons ([0ade404](https://github.com/vonage/vivid/commit/0ade40416d5f854dd8bc95166b2a5fca82e37da7))
+
+
+
 # [0.17.0](https://github.com/vonage/vivid/compare/v0.16.2...v0.17.0) (2020-12-06)
 
 

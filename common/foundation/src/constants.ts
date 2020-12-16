@@ -15,6 +15,12 @@ export enum Shape {
 	Pill = 'pill',
 }
 
+export enum Size {
+	Small = 'sm',
+	Medium = 'md',
+	Large = 'lg',
+}
+
 /* eslint-disable no-shadow */
 export enum Layout {
 	Text = 'text',
