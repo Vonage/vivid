@@ -187,7 +187,6 @@ jobs:
           name: chrome-lcov-coverage
           path: ./coverage/report-lcov/lcov.info
 
-
   code-standards:
     needs: cache-yarn
     runs-on: ubuntu-20.04
@@ -252,35 +251,12 @@ jobs:
             path-to-lcov: ./lcov.info
             flag-name: Unit
 
-  code-coverage-master:
-    needs: test-chrome
-    runs-on: ubuntu-20.04
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.PAT }}
-          ref: master
-
-      - name: Download artifact pass_status_job01
-        uses: actions/download-artifact@v2
-        with:
-          name: chrome-lcov-coverage
-
-      - name: Coveralls
-        uses: coverallsapp/github-action@master
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: ./lcov.info
-          flag-name: Unit
-
   coverage-report:
       strategy:
         matrix:
-          browser: [chrome, firefox, safari]
+          browser: [chrome]
 
-      needs: [test-chrome, test-firefox, test-safari]
+      needs: [test-chrome]
       runs-on: ubuntu-20.04
       steps:
         - name: Download artifact pass_status_job01
