@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-theme-switch",
-	"version": "0.17.0",
+	"version": "0.17.1",
 	"description": "scheme switch component",
 	"author": "yinonov <yinon@hotmail.com>",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/theme-switch#readme",
@@ -25,9 +25,9 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@vonage/vvd-core": "^0.17.0",
-		"@vonage/vvd-scheme": "^0.17.0",
-		"@vonage/vwc-switch": "^0.17.0",
+		"@vonage/vvd-core": "^0.17.1",
+		"@vonage/vvd-scheme": "^0.17.1",
+		"@vonage/vwc-switch": "^0.17.1",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.3"
 	}

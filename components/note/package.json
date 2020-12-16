@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-note",
-	"version": "0.17.0",
+	"version": "0.17.1",
 	"description": "Note component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/note#readme",
 	"license": "ISC",
@@ -23,14 +23,14 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@vonage/vvd-core": "^0.17.0",
-		"@vonage/vvd-foundation": "^0.17.0",
-		"@vonage/vwc-icon": "^0.17.0",
+		"@vonage/vvd-core": "^0.17.1",
+		"@vonage/vvd-foundation": "^0.17.1",
+		"@vonage/vwc-icon": "^0.17.1",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.3"
 	},
 	"devDependencies": {
-		"@vonage/vvd-design-tokens": "^0.17.0",
-		"@vonage/vvd-typography": "^0.17.0"
+		"@vonage/vvd-design-tokens": "^0.17.1",
+		"@vonage/vvd-typography": "^0.17.1"
 	}
 }

@@ -15,7 +15,20 @@ const
 	PLACEHOLDER_DELAY = 500,  				// Start displaying placeholder if waiting more than this period of time
 	PLACEHOLDER_TIMEOUT = 2000;				// Stop displaying placeholder if exceeding this period of time (will also stop one an icon is loaded)
 
-const noop = ()=> {};
+const
+	noop = ()=> {},
+	memoize = (func)=> {
+		const cache = new Map();
+		return (key)=>
+			cache.has(key)
+				? cache.get(key)
+				: (function(){
+					const value = func(key);
+					cache.set(key, value);
+					return value;
+				})();
+	},
+	resolveIconCache = memoize(resolveIcon);
 
 /**
  * Integrates an icon
@@ -56,7 +69,7 @@ class VWCIcon extends HTMLElement {
 				return typeProperty
 					.filter(Boolean)
 					.flatMapLatest((typeId)=> {
-						const loadedSvgProperty = kefir.fromPromise(resolveIcon(typeId)).toProperty();
+						const loadedSvgProperty = kefir.fromPromise(resolveIconCache(typeId)).toProperty();
 						return kefir
 							.merge([
 								kefir
@@ -64,7 +77,7 @@ class VWCIcon extends HTMLElement {
 										kefir.later(PLACEHOLDER_DELAY, PLACEHOLDER_ICON),
 										kefir.later(PLACEHOLDER_TIMEOUT, ''),
 									])
-									.takeUntilBy(loadedSvgProperty),
+									.takeUntilBy(loadedSvgProperty.ignoreErrors()),
 								loadedSvgProperty
 							]);
 					})
