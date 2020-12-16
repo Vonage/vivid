@@ -13,13 +13,22 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_VIVID_DEMO_PRS_SECRET }}
 
     steps:
+      - name: Add PR deploy URL comment
+        if: ${{ github.event.action == 'opened' || github.event.action == 'reopened' }}
+        env:
+          URL: ${{ github.event.pull_request.comments_url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          curl -X POST $URL -H "Content-Type: application/json" -H "Authorization: token $GITHUB_TOKEN" \
+            --data '{ "body": ":rocket:\n\nLatest __successful__ build of the PR deployed [here](https://${{ secrets.TMP_PR_DEPLOYMENT_BASE_URL }}/${{ github.event.number }}/index.html).\n\n:rocket:" }'
+
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Setup NodeJS 12
+      - name: Setup NodeJS 14
         uses: actions/setup-node@v1
         with:
-          node-version: 12
+          node-version: 14
 
       - name: Install yarn
         run: npm install -g yarn
@@ -31,7 +40,7 @@ jobs:
           path: |
             ${{ steps.yarn-cache-dir-path.outputs.dir }}
             **\node_modules
-          key: vivid-cache-yarn-${{ hashFiles('**/yarn.lock') }}
+          key: vivid-cache-yarn-${{ hashFiles('**/package.json') }}
           restore-keys: |
             vivid-cache-yarn-
 
@@ -47,12 +56,3 @@ jobs:
 
       - name: Invalidate CloudFront distribution root object's cache
         run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_VIVID_DEMO_PRS_DISTRIBUTION }} --paths "/${{ github.event.number }}/*"
-
-      - name: Add PR deploy URL comment
-        # if: ${{ github.event.action == 'opened' || github.event.action == 'reopened' }}
-        env:
-          URL: ${{ github.event.pull_request.comments_url }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          curl -X POST $URL -H "Content-Type: application/json" -H "Authorization: token $GITHUB_TOKEN" \
-            --data '{ "body": "PR showcase deployed [here](https://${{ secrets.TMP_PR_DEPLOYMENT_BASE_URL }}/${{ github.event.number }}/index.html)." }'
