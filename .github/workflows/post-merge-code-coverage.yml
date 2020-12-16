@@ -1,0 +1,53 @@
+name: Test, Build and Deploy
+
+on:
+  push:
+    branches:
+      - code-coverage
+
+jobs:
+  build-test-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PAT }}
+          ref: master
+
+      - name: Setup NodeJS 14
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+
+      - name: Install yarn
+        run: npm install -g yarn
+
+      - name: Cache yarn dependencies
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+          path: |
+            ${{ steps.yarn-cache-dir-path.outputs.dir }}
+            **\node_modules
+          key: vivid-cache-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            vivid-cache-yarn-
+
+      - name: Install packages
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn install
+
+      - name: Build components
+        run: yarn compile
+
+      - name: Test components
+        run: yarn test:chrome
+
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./coverage/coverage-lcov/lcov.info
+          flag-name: Unit on master branch
