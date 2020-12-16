@@ -40,7 +40,7 @@ jobs:
           path: |
             ${{ steps.yarn-cache-dir-path.outputs.dir }}
             **\node_modules
-          key: vivid-cache-yarn-${{ hashFiles('**/yarn.lock') }}
+          key: vivid-cache-yarn-${{ hashFiles('**/package.json') }}
           restore-keys: |
             vivid-cache-yarn-
 
