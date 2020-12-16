@@ -179,7 +179,15 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: chrome-coverage
-          path: ./coverage/report-lcov/lcov.info
+          path: ./coverage/report-cobertura/coverage.xml
+
+      - name: Coveralls
+        uses: coverallsapp/github-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: ./coverage/report-lcov/lcov.info
+          flag-name: Unit
+
 
   code-standards:
     needs: cache-yarn
@@ -235,13 +243,6 @@ jobs:
       steps:
         - name: Download artifact pass_status_job01
           uses: actions/download-artifact@v2
-
-        - name: Coveralls
-          uses: coverallsapp/github-action@master
-          with:
-            github-token: ${{ secrets.GITHUB_TOKEN }}
-            path-to-lcov: ./chrome-coverage/lcov.info
-            flag-name: Unit
 
   #        - uses: codecov/codecov-action@v1
 #          with:
