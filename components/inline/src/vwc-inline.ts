@@ -1,4 +1,10 @@
-import { LitElement, customElement, html, property } from 'lit-element';
+import {
+	LitElement,
+	customElement,
+	html,
+	property,
+	TemplateResult,
+} from 'lit-element';
 import { Size } from '@vonage/vvd-foundation/constants';
 
 import { style } from './vwc-inline.css.js';
@@ -15,7 +21,7 @@ export class Inline extends LitElement {
 	@property({ type: String, reflect: true })
 	spacing: SizeSpacing = Size.Small;
 
-	protected render() {
+	protected render(): TemplateResult {
 		return html`<slot></slot>`;
 	}
 }
