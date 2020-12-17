@@ -1,14 +1,3 @@
-import {
-	associateWithForm,
-	requestSubmit,
-	submitOnEnter,
-} from '../form-association';
-import {
-	textToDomToParent,
-	randomAlpha,
-	waitNextTask,
-	isolatedElementsCreation,
-} from '../../../test/test-helpers';
 import { handleMultipleDenseProps } from '../general-utils';
 
 class TestComponent extends HTMLElement {}
