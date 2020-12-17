@@ -249,7 +249,7 @@ jobs:
           with:
             node-version: 14
 
-        - name: Download artifact chrom-lcov-coverage
+        - name: Download artifact chrome-lcov-coverage
           uses: actions/download-artifact@v2
           with:
             name: chrome-lcov-coverage
@@ -279,6 +279,5 @@ jobs:
             path: ./coverage.xml
             repo_token: ${{ secrets.GITHUB_TOKEN }}
             minimum_coverage: 75
-
 
 
