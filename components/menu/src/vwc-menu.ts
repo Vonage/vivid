@@ -18,5 +18,4 @@ MWCMenu.styles = [mwcMenuStyle, vwcMenuStyle];
  * This component is an extension of [<mwc-menu>](https://github.com/material-components/material-components-web-components/tree/master/packages/menu)
  */
 @customElement('vwc-menu')
-export class VWCMenu extends MWCMenu {
-}
+export class VWCMenu extends MWCMenu {}
