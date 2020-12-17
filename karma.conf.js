@@ -40,7 +40,7 @@ module.exports = config => {
 					type: 'cobertura', subdir: 'report-cobertura', file: 'coverage.xml'
 				},
 				{
-					type: 'lcovonly', subdir: 'report-lcov'
+					type: 'lcovonly', subdir: 'report-lcov', file: 'lcov.info'
 				}
 			]
 		}
