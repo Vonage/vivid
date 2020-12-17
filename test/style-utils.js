@@ -7,17 +7,18 @@ export const topLevelSelectors = {
 
 function borderRadiusStyles(expectedRadius) {
 	return {
-		borderTopLeftRadius: `${expectedRadius}px`,
-		borderTopRightRadius: `${expectedRadius}px`,
-		borderBottomLeftRadius: `${expectedRadius}px`,
-		borderBottomRightRadius: `${expectedRadius}px`,
+		borderTopLeftRadius: expectedRadius,
+		borderTopRightRadius: expectedRadius,
+		borderBottomLeftRadius: expectedRadius,
+		borderBottomRightRadius: expectedRadius,
 	};
 }
 
 export function shapeStyles(shape, element) {
 	const shapeRadius = {
-		rounded: element === 'badge' ? 4 : 6,
-		pill: element === 'badge' ? 14 : 24,
+		rounded: element === 'badge' ? '4px' : '6px',
+		pill: element === 'badge' ? '14px' : '24px',
+		circled: '50%',
 	}
 
 	return borderRadiusStyles(shapeRadius[shape]);

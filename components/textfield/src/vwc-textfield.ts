@@ -27,6 +27,8 @@ declare global {
 	}
 }
 
+type TextfieldShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
+
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 MWCTextField.styles = [styleCoupling, mwcTextFieldStyle, vwcTextFieldStyle];
@@ -37,7 +39,7 @@ export class VWCTextField extends MWCTextField {
 	dense = false;
 
 	@property({ type: String, reflect: true })
-	shape?: Shape;
+	shape?: TextfieldShape;
 
 	@property({ type: String, reflect: true })
 	form: string | undefined;

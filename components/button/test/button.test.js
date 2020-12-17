@@ -4,7 +4,11 @@ import {
 	textToDomToParent,
 	assertComputedStyle,
 } from '../../../test/test-helpers.js';
-import { sizingTestCases, shapeTestCases } from '../../../test/shared';
+import {
+	sizingTestCases,
+	shapeRoundedTestCases,
+	shapePillTestCases,
+} from '../../../test/shared';
 import { connotationTestCases } from './button.connotation.test.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
@@ -367,7 +371,8 @@ describe('button', () => {
 	});
 
 	describe('shape', () => {
-		shapeTestCases(COMPONENT_NAME);
+		shapeRoundedTestCases(COMPONENT_NAME);
+		shapePillTestCases(COMPONENT_NAME);
 	});
 
 	describe('button connotation', () => {

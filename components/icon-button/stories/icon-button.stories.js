@@ -20,8 +20,8 @@ Filled.args = { icon: 'bin', layout: 'filled' };
 export const Outlined = Template.bind({});
 Outlined.args = { icon: 'bin', layout: 'outlined' };
 
-export const PillShape = Template.bind({});
-PillShape.args = { icon: 'bin', shape: 'pill', layout: 'filled' };
+export const CircledShape = Template.bind({});
+CircledShape.args = { icon: 'bin', shape: 'circled', layout: 'filled' };
 
 export const Dense = Template.bind({});
 Dense.args = { icon: 'home', dense: true, layout: 'filled' };

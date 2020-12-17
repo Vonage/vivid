@@ -9,7 +9,10 @@ import {
 	randomAlpha,
 	listenToSubmission,
 } from '../../../test/test-helpers.js';
-import { shapeTestCases } from '../../../test/shared';
+import {
+	shapeRoundedTestCases,
+	shapePillTestCases,
+} from '../../../test/shared';
 import {
 	typographyTestCases,
 	assertDenseStyles,
@@ -288,6 +291,7 @@ describe('textfield', () => {
 	});
 
 	describe('shape', () => {
-		shapeTestCases(COMPONENT_NAME);
+		shapeRoundedTestCases(COMPONENT_NAME);
+		shapePillTestCases(COMPONENT_NAME);
 	});
 });

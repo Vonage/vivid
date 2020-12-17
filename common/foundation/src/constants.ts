@@ -13,6 +13,7 @@ export enum Connotation {
 export enum Shape {
 	Rounded = 'rounded',
 	Pill = 'pill',
+	Circled = 'circled',
 }
 
 export enum Size {

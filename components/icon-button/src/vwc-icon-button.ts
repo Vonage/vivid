@@ -24,6 +24,8 @@ type IconButtonLayout = Extract<
 	Layout.Filled | Layout.Outlined | Layout.Ghost
 >;
 
+type IconButtonShape = Extract<Shape, Shape.Rounded | Shape.Circled>;
+
 type IconButtonConnotation = Extract<
 	Connotation,
 	| Connotation.Primary
@@ -46,7 +48,7 @@ export class VWCIconButton extends MWCIconButton {
 	connotation: IconButtonConnotation = Connotation.Primary;
 
 	@property({ type: String, reflect: true })
-	shape?: Shape;
+	shape?: IconButtonShape;
 
 	@property({ type: Boolean, reflect: true })
 	dense = false;

@@ -5,7 +5,11 @@ import {
 	assertComputedStyle,
 } from '../../../test/test-helpers.js';
 import { layoutStyles, topLevelSelectors } from '../../../test/style-utils.js';
-import { sizingTestCases, shapeTestCases } from '../../../test/shared';
+import {
+	sizingTestCases,
+	shapeRoundedTestCases,
+	shapeCircledTestCases,
+} from '../../../test/shared';
 import { connotationTestCases } from '../../button/test/button.connotation.test.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import { isolatedElementsCreation } from '../../../test/test-helpers';
@@ -36,7 +40,8 @@ describe('icon button', () => {
 	});
 
 	describe('shape', () => {
-		shapeTestCases(COMPONENT_NAME);
+		shapeRoundedTestCases(COMPONENT_NAME);
+		shapeCircledTestCases(COMPONENT_NAME);
 	});
 
 	describe('icon button connotation', () => {

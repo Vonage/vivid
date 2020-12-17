@@ -10,7 +10,10 @@ import {
 	isolatedElementsCreation,
 	getTypographyStyle,
 } from '../../../test/test-helpers.js';
-import { shapeTestCases } from '../../../test/shared';
+import {
+	shapeRoundedTestCases,
+	shapePillTestCases,
+} from '../../../test/shared';
 import {
 	assertDenseStyles,
 	hasNotchedOutline,
@@ -325,7 +328,8 @@ describe('select', () => {
 	});
 
 	describe('shape', () => {
-		shapeTestCases(COMPONENT_NAME);
+		shapeRoundedTestCases(COMPONENT_NAME);
+		shapePillTestCases(COMPONENT_NAME);
 	});
 
 	describe(`performance acceptability`, function () {

@@ -40,7 +40,7 @@
 
 :host([layout='outlined']) {
 	.mdc-icon-button:disabled {
-		border-color: currentColor;
+		border-color: var(#{color-semantic.$formfield-disabled-ink});
 	}
 }
 
@@ -74,7 +74,7 @@
 @include shape-mixins.shape(
 	$shapes: (
 		rounded: 6px,
-		pill: 24px,
+		circled: 50%,
 	)
 );
 
