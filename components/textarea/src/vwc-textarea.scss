@@ -12,6 +12,12 @@
 	}
 }
 
+:host([resizable]) {
+  .mdc-text-field__input {
+		resize: vertical;
+	}
+}
+
 .mdc-text-field--textarea {
 	height: 100%;
 	min-height: var(#{textfield.$vvd-text-field-size-block});
@@ -34,7 +40,6 @@
 			height: auto;
 			line-height: normal;
 			margin: 0;
-			resize: vertical;
 		}
 
 		.mdc-floating-label {
