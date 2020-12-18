@@ -1,7 +1,6 @@
 {
 	"compilerOptions": {
-		// 2018 includes async await
-		"target": "es2018",
+		"target": "es2017",
 		"module": "es2015",
 		"moduleResolution": "node",
 		"lib": ["es2017", "dom", "dom.iterable"],
