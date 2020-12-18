@@ -261,4 +261,30 @@ describe('textarea', () => {
 			});
 		});
 	});
+
+	describe('resizable', () => {
+		let formElement, actualElement;
+		beforeEach(async () => {
+			const addedElements = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} outlined label="VWC Textarea"></${COMPONENT_NAME}>`
+				)
+			);
+			await waitNextTask();
+			formElement = addedElements[0];
+			actualElement = formElement.shadowRoot.querySelector(
+				'.mdc-text-field__input'
+			);
+		});
+
+		it('should not be resizable by default', async () => {
+			assertComputedStyle(actualElement, { resize: 'none' });
+		});
+
+		it('should be resizable when resizable', async () => {
+			formElement.resizable = true;
+			await waitNextTask();
+			assertComputedStyle(actualElement, { resize: 'vertical' });
+		});
+	});
 });
