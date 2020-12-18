@@ -192,6 +192,16 @@ vwc-notched-outline {
 }
 
 // helper / error message line
+:host([preserveErrorSpace]) {
+  .mdc-text-field-helper-text--validation-msg {
+    opacity: 0;
+  }
+
+  .mdc-text-field--invalid + .mdc-text-field-helper-text--validation-msg {
+    opacity: 1;
+  }
+}
+
 :host([helper]:not([helper=''])) {
   .mdc-text-field  + .mdc-text-field-helper-line {
     margin-top: 7px;
@@ -208,7 +218,9 @@ vwc-notched-outline {
 
 		.mdc-text-field-helper-icon {
 			display: none;
-			color: var(--mdc-text-field-error-color);
+      color: var(--mdc-text-field-error-color);
+      height: 12px;
+      width: 12px;
     }
 
     .mdc-text-field-helper-text:not(.mdc-text-field-helper-text--validation-msg) {
@@ -228,11 +240,11 @@ vwc-notched-outline {
     margin-top: 7px;
 
 		.mdc-text-field-helper-icon {
-			display: flex;
+      display: flex;
 		}
 
 		.spacer {
-			flex-basis: 6px;
+			flex-basis: 2px;
 		}
 	}
 }

@@ -34,6 +34,9 @@ MWCTextField.styles = [styleCoupling, mwcTextFieldStyle, vwcTextFieldStyle];
 @customElement('vwc-textfield')
 export class VWCTextField extends MWCTextField {
 	@property({ type: Boolean, reflect: true })
+	preserveErrorSpace = false;
+
+	@property({ type: Boolean, reflect: true })
 	dense = false;
 
 	@property({ type: String, reflect: true })
@@ -96,7 +99,8 @@ export class VWCTextField extends MWCTextField {
 		if (!shouldRenderHelperText) {
 			return '';
 		}
-		const showValidationMessage = this.validationMessage && !this.isUiValid;
+		const showValidationMessage =
+			this.validationMessage && (!this.isUiValid || this.preserveErrorSpace);
 		const classesMap = {
 			'mdc-text-field-helper-text--persistent': this.helperPersistent,
 			'mdc-text-field-helper-text--validation-msg': showValidationMessage,

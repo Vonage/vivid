@@ -100,6 +100,19 @@ describe('textfield helper', () => {
 		assertExistWithMessage(helperLine, HELPER_MESSAGE);
 		assertComputedStyle(errorLine, { opacity: '1' });
 	});
+
+	it('should have error space preserved', async () => {
+		const actualElement = addedElements[0];
+		actualElement.preserveErrorSpace = true;
+		await waitNextTask();
+		const errorLine = getAsErrorLine(addedElements[0]);
+		assertComputedStyle(errorLine, { opacity: '0' });
+
+		//	make it error, blur, error still present
+		await turnValidityWaitReported(addedElements[0], false);
+		await blur(addedElements[0]);
+		assertComputedStyle(errorLine, { opacity: '1' });
+	});
 });
 
 //	internal util functions

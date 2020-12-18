@@ -32,6 +32,12 @@ export const argTypes = {
       options: { true: '', false: undefined },
     },
   },
+  preserveErrorSpace: {
+    control: {
+      type: 'inline-radio',
+      options: { true: '', false: undefined },
+    },
+  },
   readOnly: {
     control: {
       type: 'inline-radio',
