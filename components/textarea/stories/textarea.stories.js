@@ -18,6 +18,9 @@ Default.args = { outlined: '', label: 'VWC Textarea' };
 export const Dense = Template.bind({});
 Dense.args = { outlined: '', dense: '', label: 'VWC Textarea' };
 
+export const Resizable = Template.bind({});
+Resizable.args = { outlined: '', dense: '', label: 'VWC Textarea', resizable: '' };
+
 export const Disabled = Template.bind({});
 Disabled.args = { outlined: '', disabled: '', label: 'VWC Textarea', value: 'Something' };
 

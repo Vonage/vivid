@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vvd-typography",
-	"version": "0.17.1",
+	"version": "0.17.2",
 	"description": "> TODO: description",
 	"author": "yinonov <yinon@hotmail.com>",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/typography#readme",
@@ -17,6 +17,6 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"devDependencies": {
-		"@vonage/vvd-design-tokens": "^0.17.1"
+		"@vonage/vvd-design-tokens": "^0.17.2"
 	}
 }
