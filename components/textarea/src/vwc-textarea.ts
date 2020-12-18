@@ -33,6 +33,9 @@ export class VWCTextArea extends MWCTextArea {
 	@property({ type: Boolean, reflect: true })
 	dense = false;
 
+	@property({ type: Boolean, reflect: true })
+	resizable = false;
+
 	@property({ type: String, reflect: true })
 	form: string | undefined;
 
