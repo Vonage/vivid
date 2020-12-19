@@ -45,6 +45,10 @@ export class VWCTextField extends MWCTextField {
 	@property({ type: String, reflect: true })
 	form: string | undefined;
 
+	get isUiInvalid(): boolean {
+		return !this.isUiValid;
+	}
+
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
 		this.shadowRoot
@@ -100,7 +104,7 @@ export class VWCTextField extends MWCTextField {
 			return '';
 		}
 		const showValidationMessage =
-			this.validationMessage && (!this.isUiValid || this.preserveErrorSpace);
+			this.validationMessage && (this.isUiInvalid || this.preserveErrorSpace);
 		const classesMap = {
 			'mdc-text-field-helper-text--persistent': this.helperPersistent,
 			'mdc-text-field-helper-text--validation-msg': showValidationMessage,
