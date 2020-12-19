@@ -261,6 +261,8 @@ jobs:
             path-to-lcov: ./lcov.info
             flag-name: Unit
             verbose: true
+          env:
+            NODE_COVERALLS_DEBUG: 1
 
   coverage-report:
       strategy:
