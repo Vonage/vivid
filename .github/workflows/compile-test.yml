@@ -255,11 +255,12 @@ jobs:
             name: chrome-lcov-coverage
 
         - name: Coveralls
-          uses: coverallsapp/github-action@master
+          uses: YonatanKra/github-action@add-verbose-functionality
           with:
             github-token: ${{ secrets.GITHUB_TOKEN }}
             path-to-lcov: ./lcov.info
             flag-name: Unit
+            verbose: true
 
   coverage-report:
       strategy:
