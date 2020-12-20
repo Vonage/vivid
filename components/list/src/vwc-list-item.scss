@@ -2,4 +2,5 @@
 
 :host {
 	@include typography.typography-cat-shorthand('body-2');
+	border-radius: 6px;
 }

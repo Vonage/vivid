@@ -1,0 +1,24 @@
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+
+:host(:not([open])) {
+	display: none;
+}
+
+$indent: 24px;
+
+.expansion-panel {
+	margin-inline-start: $indent;
+}
+
+// ::slotted(vwc-list-item) {
+// 	// overflow: visible; // ! ripple shown outside the rounded corners
+// 	margin-inline-start: $indent;
+// 	// &::before {
+// 	// 	content: '';
+// 	// 	height: 100%;
+// 	// 	border-inline-start: 1px solid
+// 	// 		var(#{scheme-variables.$vvd-color-contrast-soft});
+// 	// 	position: absolute;
+// 	// 	left: calc(#{$indent} / -2);
+// 	// }
+// }
