@@ -3,6 +3,8 @@
 </p>
 
 ![Quality](https://github.com/Vonage/vivid/workflows/Compile%20&%20Test/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/Vonage/vivid/badge.svg?t=v9CrbP)](https://coveralls.io/github/Vonage/vivid)
+
 
 # Vivid UI components
 
