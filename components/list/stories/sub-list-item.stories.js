@@ -18,20 +18,26 @@ const listStyles = {
 
 function toggleExpansion() {
 	const { nextElementSibling: panel } = this;
-	const { open } = panel;
-	panel[open ? 'close' : 'show']();
-	this.activated = open ? true : false;
+	panel.open = !panel.open;
+	this.activated = panel.open ? true : false;
 }
 
-
+function onChange(e) {
+	console.log(e);
+	const { detail: { open } } = e;
+	const { target: { previousElementSibling: listItem } } = e;
+	const icon = listItem.querySelector('vwc-icon');
+	const iconType = open ? 'up-full' : 'down-full';
+	icon.setAttribute('type', iconType);
+}
 
 const Template = args => html`
-	<vwc-list multi activatable style=${styleMap(listStyles)}>
+	<vwc-list style=${styleMap(listStyles)}>
 		<vwc-list-item ...=${spread(args)} @click="${toggleExpansion}">
 			Parent 1
-			<vwc-icon type="down-full" slot="meta"></vwc-icon>
+			<vwc-icon slot="meta"></vwc-icon>
 		</vwc-list-item>
-		<vwc-list-expansion-panel>
+		<vwc-list-expansion-panel @changed="${onChange}">
 			<vwc-list-item>
 				Child 1
 			</vwc-list-item>
@@ -41,17 +47,17 @@ const Template = args => html`
 		</vwc-list-expansion-panel>
 		<vwc-list-item ...=${spread(args)} @click="${toggleExpansion}">
 			Parent 2
-			<vwc-icon type="down-full" slot="meta"></vwc-icon>
+			<vwc-icon slot="meta"></vwc-icon>
 		</vwc-list-item>
-		<vwc-list-expansion-panel>
+		<vwc-list-expansion-panel @changed="${onChange}">
 			<vwc-list-item>
 				Child 1
 			</vwc-list-item>
 			<vwc-list-item ...=${spread(args)} @click="${toggleExpansion}">
 				Child 2
-				<vwc-icon type="down-full" slot="meta"></vwc-icon>
+				<vwc-icon slot="meta"></vwc-icon>
 			</vwc-list-item>
-			<vwc-list-expansion-panel>
+			<vwc-list-expansion-panel @changed="${onChange}">
 				<vwc-list-item>
 					Grand Child 1
 				</vwc-list-item>
