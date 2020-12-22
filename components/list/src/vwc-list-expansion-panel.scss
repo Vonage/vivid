@@ -3,7 +3,9 @@
 $indent: 24px;
 
 :host(:not([open])) {
-	display: none;
+	.expansion-panel {
+		display: none;
+	}
 }
 
 .expansion-panel {
