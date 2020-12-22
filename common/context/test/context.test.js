@@ -24,11 +24,6 @@ describe('vvd-context service', () => {
 	});
 
 	describe('basic (default) document setup', () => {
-		/* eslint-disable no-undef */
-		after(() => {
-			cleanFrame(CONTEXT_SETUP_HTML_TAG);
-		});
-
 		it('should setup context in default document', async () => {
 			await getFrameLoadedInjected(CONTEXT_SETUP_HTML_TAG, async (iframe) => {
 				const iframeWindow = iframe.contentWindow;
@@ -42,6 +37,9 @@ describe('vvd-context service', () => {
 				expect(e).exist;
 				expect(e.nodeType).equal(Node.ELEMENT_NODE);
 				expect(e.nodeName.toLowerCase()).equal('style');
+				//	TODO: assert some basic styles appliance
+
+				cleanFrame(CONTEXT_SETUP_HTML_TAG);
 			});
 		});
 
@@ -58,6 +56,8 @@ describe('vvd-context service', () => {
 				expect(es2.length).equal(1);
 
 				expect(es1[0]).equal(es2[0]);
+
+				cleanFrame(CONTEXT_SETUP_HTML_TAG);
 			});
 		});
 	});
@@ -76,6 +76,7 @@ describe('vvd-context service', () => {
 			expect(e).exist;
 			expect(e.nodeType).equal(Node.ELEMENT_NODE);
 			expect(e.nodeName.toLowerCase()).equal('style');
+			//	TODO: assert some basic styles appliance
 
 			iframe.remove();
 		});
@@ -111,6 +112,7 @@ describe('vvd-context service', () => {
 			expect(e).exist;
 			expect(e.nodeType).equal(Node.ELEMENT_NODE);
 			expect(e.nodeName.toLowerCase()).equal('style');
+			//	TODO: assert some basic styles appliance
 
 			sr.host.remove();
 		});
