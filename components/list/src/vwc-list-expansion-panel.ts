@@ -124,7 +124,7 @@ function mountIcon(headerListItem: ListItemBase) {
 }
 
 function getHeaderListItemIcon(headerListItem: ListItemBase) {
-	let icon = headerListItem.querySelector('vwc-icon');
+	let icon = headerListItem.querySelector('vwc-icon[slot="meta"]');
 	icon ||= mountIcon(headerListItem);
 	return icon;
 }

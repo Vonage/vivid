@@ -18,11 +18,13 @@ const listStyles = {
 
 const Template = () => html`
 	<vwc-list style=${styleMap(listStyles)}>
-		<vwc-list-item>
+		<vwc-list-item graphic="icon">
+			<vwc-icon slot="graphic" type="home"></vwc-icon>
 			Parent 1
 		</vwc-list-item>
-		<vwc-list-expansion-panel>
-			<vwc-list-item slot="header">
+		<vwc-list-expansion-panel open>
+			<vwc-list-item slot="header" graphic="icon">
+				<vwc-icon slot="graphic" type="profile"></vwc-icon>
 				Parent 2
 			</vwc-list-item>
 			<vwc-list-item>
@@ -33,7 +35,8 @@ const Template = () => html`
 			</vwc-list-item>
 		</vwc-list-expansion-panel>
 		<vwc-list-expansion-panel>
-			<vwc-list-item slot="header">
+			<vwc-list-item slot="header" graphic="icon">
+				<vwc-icon slot="graphic" type="gear"></vwc-icon>
 				Parent 3
 			</vwc-list-item>
 			<vwc-list-item>
