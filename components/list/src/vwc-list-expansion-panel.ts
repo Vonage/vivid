@@ -2,16 +2,14 @@ import '@vonage/vwc-icon';
 import {
 	customElement,
 	html,
-	LitElement,
-	property,
 	PropertyValues,
 	queryAssignedNodes,
 	TemplateResult,
 } from 'lit-element';
-import { observer } from '@material/mwc-base/observer';
 
-import { style } from './vwc-list-expansion-panel.css.js';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
+import { VWCExpansionPanelBase } from '@vonage/vwc-expansion-panel/src/vwc-expansion-panel-base';
+import { style } from './vwc-list-expansion-panel.css.js';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -23,27 +21,10 @@ declare global {
  * This component support expand-collapse list
  */
 @customElement('vwc-list-expansion-panel')
-export class VWCListExpansionPanel extends LitElement {
+export class VWCListExpansionPanel extends VWCExpansionPanelBase {
 	static styles = style;
 
 	headerListItemIcon?: unknown;
-
-	@property({ type: Boolean, reflect: true })
-	@observer(function (
-		this: VWCListExpansionPanel,
-		isOpen: boolean,
-		wasOpen: boolean
-	) {
-		if (isOpen) {
-			this.show();
-			// wasOpen helps with first render (when it is `undefined`) perf
-		} else if (wasOpen !== undefined) {
-			this.close();
-		}
-
-		this.onOpenChange(isOpen);
-	})
-	open = false;
 
 	// @property({ type: Boolean }) quick = false; // TODO add animation
 
@@ -61,35 +42,12 @@ export class VWCListExpansionPanel extends LitElement {
 		);
 	}
 
-	private onOpenChange(isOpen: boolean): void {
+	openChanged(isOpen: boolean): void {
+		super.openChanged(isOpen);
 		(this.headerListItemIcon as Element).setAttribute(
 			'type',
 			isOpen ? 'up' : 'down'
 		);
-	}
-
-	close(): void {
-		this.open = false;
-		this.notifyClose();
-	}
-
-	show(): void {
-		this.open = true;
-		this.notifyOpen();
-	}
-
-	notifyClose(): void {
-		const init: CustomEventInit = { bubbles: true, composed: true };
-		const ev = new CustomEvent('closed', init);
-		this.open = false;
-		this.dispatchEvent(ev);
-	}
-
-	notifyOpen(): void {
-		const init: CustomEventInit = { bubbles: true, composed: true };
-		const ev = new CustomEvent('opened', init);
-		this.open = true;
-		this.dispatchEvent(ev);
 	}
 
 	render(): TemplateResult {
