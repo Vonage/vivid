@@ -4,7 +4,7 @@ import '@vonage/vwc-top-app-bar';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Composite/Context',
+	title: 'Components/Composite/Context',
 };
 
 export const basic = () => html`

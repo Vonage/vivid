@@ -8,6 +8,13 @@ vvdCore.settled
 	.then(() => console.info('init Vivid core done (preview frame)'))
 	.catch(e => console.error(e));
 
+const TOPIC_ORDERING = {
+	'Introduction': 0,
+	'Guides': 1,
+	'Design System': 2,
+	'Components': 3
+};
+
 async function run() {
 	setCustomElements(customElements);
 	addParameters({
@@ -15,7 +22,10 @@ async function run() {
 			inlineStories: true,
 		},
 		options: {
-			storySort: (a, b) => a[1].kind.localeCompare(b[1].kind)
+			storySort: {
+				order: ['Introduction', 'Guides', ['Installation', 'Core'], 'Design System', 'Components'],
+				method: 'alphabetical'
+			}
 		}
 	});
 }

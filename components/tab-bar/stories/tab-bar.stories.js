@@ -4,7 +4,7 @@ import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 
 export default {
-  title: 'Atoms/Tab Bar',
+  title: 'Components/Atoms/Tab Bar',
   component: 'vwc-tab-bar',
   subcomponents: 'vwc-tab',
   argTypes: { styles: { table: { disable: true } } }

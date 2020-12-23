@@ -4,7 +4,7 @@ import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 
 export default {
-	title: 'Atoms/ChipSet',
+	title: 'Components/Atoms/ChipSet',
 	component: 'vwc-chip-set',
 	argTypes: {
 		chips: { table: { disable: true } },

@@ -4,7 +4,7 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Atoms/Chip',
+	title: 'Components/Atoms/Chip',
 	component: 'vwc-chip',
 	argTypes,
 	args: { label: 'Chip' }
