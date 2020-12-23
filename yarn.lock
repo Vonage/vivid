@@ -3640,7 +3640,7 @@
     global "^4.3.2"
     regenerator-runtime "^0.13.7"
 
-"@storybook/api@6.1.11":
+"@storybook/api@6.1.11", "@storybook/api@^6.1.10":
   version "6.1.11"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/api/-/api-6.1.11.tgz#1e0b798203df823ac21184386258cf8b5f17f440"
   integrity sha1-Hgt5ggPfgjrCEYQ4YljPi18X9EA=
@@ -3719,7 +3719,7 @@
     core-js "^3.0.1"
     global "^4.3.2"
 
-"@storybook/components@6.1.11":
+"@storybook/components@6.1.11", "@storybook/components@^6.1.10":
   version "6.1.11"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/components/-/components-6.1.11.tgz#edd5db7fe43f47b5a7ab515840795a89d931512e"
   integrity sha1-7dXbf+Q/R7Wnq1FYQHlaidkxUS4=
@@ -4815,6 +4815,18 @@
   version "2.5.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@webcomponents/webcomponentsjs/-/webcomponentsjs-2.5.0.tgz#61b27785a6ad5bfd68fa018201fe418b118cb38d"
   integrity sha1-YbJ3haatW/1o+gGCAf5BixGMs40=
+
+"@whitespace/storybook-addon-html@^4.0.2":
+  version "4.0.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@whitespace/storybook-addon-html/-/storybook-addon-html-4.0.2.tgz#9c027255df1874ffddff50e80a12128958f90bcf"
+  integrity sha1-nAJyVd8YdP/d/1DoChISiVj5C88=
+  dependencies:
+    "@babel/generator" "^7.12.10"
+    "@babel/parser" "^7.12.10"
+    "@storybook/api" "^6.1.10"
+    "@storybook/components" "^6.1.10"
+    prettier "^2.2.1"
+    react-syntax-highlighter "^15.4.3"
 
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
@@ -9901,7 +9913,7 @@ he@1.2.0, he@^1.1.0, he@^1.2.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
   integrity sha1-hK5l+n6vsWX922FWauFLrwVmTw8=
 
-highlight.js@^10.1.1, highlight.js@^10.4.0, highlight.js@~10.4.0:
+highlight.js@^10.1.1, highlight.js@^10.4.0, highlight.js@^10.4.1, highlight.js@~10.4.0:
   version "10.4.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/highlight.js/-/highlight.js-10.4.1.tgz#d48fbcf4a9971c4361b3f95f302747afe19dbad0"
   integrity sha1-1I+89KmXHENhs/lfMCdHr+GdutA=
@@ -11866,7 +11878,7 @@ lower-case@^2.0.1:
   dependencies:
     tslib "^1.10.0"
 
-lowlight@^1.14.0:
+lowlight@^1.14.0, lowlight@^1.17.0:
   version "1.17.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/lowlight/-/lowlight-1.17.0.tgz#a1143b2fba8239df8cd5893f9fe97aaf8465af4a"
   integrity sha1-oRQ7L7qCOd+M1Yk/n+l6r4Rlr0o=
@@ -13764,6 +13776,11 @@ prettier@^2.0.5:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/prettier/-/prettier-2.1.2.tgz#3050700dae2e4c8b67c4c3f666cdb8af405e1ce5"
   integrity sha1-MFBwDa4uTItnxMP2Zs24r0BeHOU=
 
+prettier@^2.2.1:
+  version "2.2.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/prettier/-/prettier-2.2.1.tgz#795a1a78dd52f073da0cd42b21f9c91381923ff5"
+  integrity sha1-eVoaeN1S8HPaDNQrIfnJE4GSP/U=
+
 prettier@~2.0.5:
   version "2.0.5"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/prettier/-/prettier-2.0.5.tgz#d6d56282455243f2f92cc1716692c08aa31522d4"
@@ -13810,7 +13827,7 @@ prism@^4.1.2:
     prism-react "^1.0.2"
     prism-redux "^1.0.2"
 
-prismjs@^1.21.0, prismjs@~1.22.0:
+prismjs@^1.21.0, prismjs@^1.22.0, prismjs@~1.22.0:
   version "1.22.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/prismjs/-/prismjs-1.22.0.tgz#73c3400afc58a823dd7eed023f8e1ce9fd8977fa"
   integrity sha1-c8NACvxYqCPdfu0CP44c6f2Jd/o=
@@ -14273,6 +14290,17 @@ react-syntax-highlighter@^13.5.0:
     prismjs "^1.21.0"
     refractor "^3.1.0"
 
+react-syntax-highlighter@^15.4.3:
+  version "15.4.3"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/react-syntax-highlighter/-/react-syntax-highlighter-15.4.3.tgz#fffe3286677ac470b963b364916d16374996f3a6"
+  integrity sha1-//4yhmd6xHC5Y7NkkW0WN0mW86Y=
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    highlight.js "^10.4.1"
+    lowlight "^1.17.0"
+    prismjs "^1.22.0"
+    refractor "^3.2.0"
+
 react-textarea-autosize@^8.1.1:
   version "8.2.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/react-textarea-autosize/-/react-textarea-autosize-8.2.0.tgz#fae38653f5ec172a855fd5fffb39e466d56aebdb"
@@ -14548,7 +14576,7 @@ reduce-without@^1.0.1:
   dependencies:
     test-value "^2.0.0"
 
-refractor@^3.1.0:
+refractor@^3.1.0, refractor@^3.2.0:
   version "3.2.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/refractor/-/refractor-3.2.0.tgz#bc46f7cfbb6adbf45cd304e8e299b7fa854804e0"
   integrity sha1-vEb3z7tq2/Rc0wTo4pm3+oVIBOA=

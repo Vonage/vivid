@@ -10,5 +10,6 @@ module.exports = {
 		'@storybook/addon-docs',
 		'@storybook/addon-controls',
 		'@storybook/addon-viewport',
+		'@whitespace/storybook-addon-html',
 	],
 };
