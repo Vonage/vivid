@@ -23,7 +23,7 @@ async function run() {
 		},
 		options: {
 			storySort: {
-				order: ['Introduction', 'Guides', ['Installation', 'Core'], 'Design System', 'Components'],
+				order: ['Introduction', 'Guides', ['Installation', 'Context'], 'Design System', 'Components'],
 				method: 'alphabetical'
 			}
 		}
