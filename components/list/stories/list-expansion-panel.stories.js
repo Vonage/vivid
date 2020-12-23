@@ -57,4 +57,4 @@ const Template = () => html`
 	</vwc-list>
 `;
 
-export const Expandable = Template.bind({});
+export const ExpansionPanel = Template.bind({});

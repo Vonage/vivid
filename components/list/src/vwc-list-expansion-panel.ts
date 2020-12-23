@@ -6,10 +6,9 @@ import {
 	queryAssignedNodes,
 	TemplateResult,
 } from 'lit-element';
-
+import { style } from './vwc-list-expansion-panel.css';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
-import { VWCExpansionPanelBase } from '@vonage/vwc-expansion-panel/src/vwc-expansion-panel-base';
-import { style } from './vwc-list-expansion-panel.css.js';
+import { VWCExpansionPanelBase } from '@vonage/vwc-expansion-panel/vwc-expansion-panel-base';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -36,10 +35,9 @@ export class VWCListExpansionPanel extends VWCExpansionPanelBase {
 		const headerListItem = getHeaderListItem(this.headerNodes);
 		this.headerListItemIcon = getHeaderListItemIcon(headerListItem);
 
-		headerListItem.addEventListener(
-			'request-selected',
-			() => (this.open = !this.open)
-		);
+		headerListItem.addEventListener('request-selected', () => {
+			this.open = !this.open;
+		});
 	}
 
 	openChanged(isOpen: boolean): void {
