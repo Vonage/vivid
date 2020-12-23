@@ -3376,27 +3376,6 @@
     ts-dedent "^1.1.1"
     util-deprecate "^1.0.2"
 
-"@storybook/addon-storysource@^6.0.28":
-  version "6.0.28"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/addon-storysource/-/addon-storysource-6.0.28.tgz#aea78da499bddb29b39c4a8722cdac82d5ce57c3"
-  integrity sha1-rqeNpJm92ymznEqHIs2sgtXOV8M=
-  dependencies:
-    "@storybook/addons" "6.0.28"
-    "@storybook/api" "6.0.28"
-    "@storybook/client-logger" "6.0.28"
-    "@storybook/components" "6.0.28"
-    "@storybook/router" "6.0.28"
-    "@storybook/source-loader" "6.0.28"
-    "@storybook/theming" "6.0.28"
-    core-js "^3.0.1"
-    estraverse "^4.2.0"
-    loader-utils "^2.0.0"
-    prettier "~2.0.5"
-    prop-types "^15.7.2"
-    react "^16.9.17"
-    react-syntax-highlighter "^12.2.1"
-    regenerator-runtime "^0.13.3"
-
 "@storybook/addon-viewport@^6.0.28":
   version "6.0.28"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/addon-viewport/-/addon-viewport-6.0.28.tgz#20f096695699c90c1b5ba795ff858a46d4084a10"
@@ -7483,12 +7462,10 @@ depcheck@YonatanKra/depcheck#vivid-version:
     minimatch "^3.0.4"
     multimatch "^4.0.0"
     please-upgrade-node "^3.2.0"
-    query-ast "^1.0.3"
     readdirp "^3.4.0"
     require-package-name "^2.0.1"
     resolve "^1.17.0"
     sass "^1.26.10"
-    scss-parser "^1.0.4"
     vue-template-compiler "^2.6.11"
     yargs "^15.4.0"
 
@@ -13927,7 +13904,7 @@ react-textarea-autosize@^8.1.1:
     use-composed-ref "^1.0.0"
     use-latest "^1.0.0"
 
-react@^16.8.3, react@^16.9.17:
+react@^16.8.3:
   version "16.14.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
   integrity sha1-lNd23dCqo32j7aj8W2sYpMmjEU0=
