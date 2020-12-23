@@ -7,3 +7,8 @@ export default {
 export const Foundation = () => html`
 	Foundation section... TODO
 `;
+Foundation.parameters = {
+	options: {
+		showPanel: false
+	}
+};

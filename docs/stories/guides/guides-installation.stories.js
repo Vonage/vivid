@@ -7,3 +7,8 @@ export default {
 export const Installation = () => html`
 	Installation guide should go here... TODO
 `;
+Installation.parameters = {
+	options: {
+		showPanel: false
+	}
+}

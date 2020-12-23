@@ -7,3 +7,8 @@ export default {
 export const Introduction = () => html`
 	Design System general introduction... TODO
 `;
+Introduction.parameters = {
+	options: {
+		showPanel: false
+	}
+};

@@ -11,14 +11,15 @@ vvdContext.install()
 async function run() {
 	setCustomElements(customElements);
 	addParameters({
-		docs: {
-			inlineStories: true,
+		controls: {
+			expanded: true
 		},
 		options: {
 			storySort: {
-				order: ['Introduction', 'Guides', ['Installation', 'Context'], 'Design System', ['', ''], 'Components'],
+				order: ['Introduction', 'Guides', ['Installation', 'Context'], 'Design System', ['Introduction'], 'Components'],
 				method: 'alphabetical'
-			}
+			},
+			showPanel: true
 		}
 	});
 }

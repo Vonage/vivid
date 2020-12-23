@@ -6,3 +6,8 @@ export default {
 
 export const Context = () => html`
 `;
+Context.parameters = {
+	options: {
+		showPanel: false
+	}
+};
