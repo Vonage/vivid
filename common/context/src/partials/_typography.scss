@@ -8,11 +8,6 @@
     @include typography.typography-cat-shorthand('body-1');
   }
 
-  b,
-  strong {
-    @include typography.typography-cat-shorthand('body-1-bold');
-  }
-
   h1 {
     @include typography.typography-cat-shorthand('headline');
   }
@@ -22,11 +17,24 @@
   }
 
   h3 {
-		@include typography.typography-cat-shorthand('subtitle-2');
+		@include typography.typography-cat-shorthand('subtitle-1');
+  }
+
+	h4 {
+    @include typography.typography-cat-shorthand('subtitle-3');
+  }
+
+  h5 {
+		@include typography.typography-cat-shorthand('subtitle-3');
   }
 
   h6 {
     @include typography.typography-cat-shorthand('body-2');
+  }
+
+  b,
+  strong {
+    @include typography.typography-cat-shorthand('body-1-bold');
   }
 
   p {
@@ -34,8 +42,9 @@
     max-width: 100%;
 	}
 
-	code {
-		@include typography.typography-cat-shorthand('body-1-code');
+	code,
+	kbd {
+		font-family: 'SpeziaMonoWebVariable';
 	}
 
 	b,
@@ -48,7 +57,6 @@
 	}
 
 	samp,
-  kbd,
   var {
 		@include typography.typography-cat-shorthand('body-1-code');
     display: block;
