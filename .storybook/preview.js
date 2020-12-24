@@ -16,7 +16,14 @@ async function run() {
 		},
 		options: {
 			storySort: {
-				order: ['Introduction', 'Guides', ['Installation', 'Context'], 'Design System', ['Introduction'], 'Components'],
+				order: [
+					'Introduction',
+					['General', 'Architecture'],
+					'Guides',
+					['Installation', 'Context'],
+					'Design System',
+					['Introduction'],
+					'Components'],
 				method: 'alphabetical'
 			},
 			showPanel: true

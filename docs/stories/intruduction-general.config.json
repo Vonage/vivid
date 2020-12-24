@@ -1,0 +1,13 @@
+{
+	"sourcePath": "../../readme.md",
+	"outputName": "introduction-general",
+	"story": {
+		"title": "Introduction/General",
+		"name": "General",
+		"parameters": {
+			"options": {
+				"showPanel": false
+			}
+		}
+	}
+}
