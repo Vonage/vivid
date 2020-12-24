@@ -1,0 +1,13 @@
+{
+	"sourcePath": "../readme.md",
+	"outputName": "context-basic",
+	"story": {
+		"title": "Guides/Context",
+		"name": "Context",
+		"parameters": {
+			"options": {
+				"showPanel": false
+			}
+		}
+	}
+}
