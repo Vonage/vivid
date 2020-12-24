@@ -50,7 +50,7 @@ export class VWCListExpansionPanel extends VWCExpansionPanelBase {
 
 	render(): TemplateResult {
 		return html`<slot name="header"></slot>
-			<div class="expansion-panel"><slot></slot></div>`;
+			<div class="body"><slot></slot></div>`;
 	}
 }
 

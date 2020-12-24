@@ -1,11 +1,11 @@
 # `list expansion panel`
 
-#### `should have the expected internal contents`
+#### `should have the expected custom element's internal contents`
 
 ```html
 <slot name="header">
 </slot>
-<div class="expansion-panel">
+<div class="body">
   <slot>
   </slot>
 </div>

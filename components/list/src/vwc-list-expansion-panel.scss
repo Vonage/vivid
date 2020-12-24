@@ -13,13 +13,7 @@ $indent: 24px;
 // 	}
 // }
 
-:host(:not([open])) {
-	.expansion-panel {
-		display: none;
-	}
-}
-
-.expansion-panel {
+.body {
 	margin-inline-start: $indent;
 	position: relative;
 	&::before {
@@ -29,6 +23,9 @@ $indent: 24px;
 			var(#{scheme-variables.$vvd-color-contrast-faint});
 		position: absolute;
 		left: $indent / -2;
+	}
+	:host(:not([open])) & {
+		display: none;
 	}
 }
 
