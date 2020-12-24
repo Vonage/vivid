@@ -10,7 +10,7 @@ import { style } from './vwc-list-expansion-panel.css';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 import { VWCExpansionPanelBase } from '@vonage/vwc-expansion-panel/vwc-expansion-panel-base';
 
-import { VWCIcon } from '@vonage/vwc-icon/src/vwc-icon';
+import { VWCIcon } from '@vonage/vwc-icon';
 
 declare global {
 	interface HTMLElementTagNameMap {

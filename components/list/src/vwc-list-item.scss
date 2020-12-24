@@ -1,6 +1,8 @@
-@use '@vonage/vvd-typography/scss/typography' as typography;
+// @use '@vonage/vvd-typography/scss/typography' as typography;
 
 :host {
-	@include typography.typography-cat-shorthand('body-2');
+	// @include typography.typography-cat-shorthand('body-2');
 	border-radius: 6px;
+	--mdc-list-side-padding: 12px;
+	--mdc-list-item-graphic-margin: 12px;
 }
