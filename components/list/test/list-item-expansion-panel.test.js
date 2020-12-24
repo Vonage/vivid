@@ -85,5 +85,22 @@ describe('list expansion panel', () => {
 			await waitNextTask();
 			expect(getComputedStyle(body).display).to.equal('none');
 		});
+
+		it('should apply correct styles', async () => {
+			addElements = textToDomToParent(
+				`<${VWC_LIST_EXPANSION_PANEL}>
+				</${VWC_LIST_EXPANSION_PANEL}>`
+			);
+			const actualElement = addElements[0];
+			await waitNextTask();
+			const { shadowRoot } = actualElement;
+			const body = shadowRoot.querySelector('.body');
+			expect(getComputedStyle(body)['margin-inline-start']).to.equal('24px');
+			expect(getComputedStyle(body).position).to.equal('relative');
+			expect(getComputedStyle(body, '::before').content).to.equal('""');
+			expect(getComputedStyle(body, '::before')['block-size']).to.equal('100%');
+			expect(getComputedStyle(body, '::before').position).to.equal('absolute');
+			expect(getComputedStyle(body, '::before').left).to.equal('-12px');
+		});
 	});
 });
