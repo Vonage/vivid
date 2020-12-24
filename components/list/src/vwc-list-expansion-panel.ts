@@ -10,6 +10,8 @@ import { style } from './vwc-list-expansion-panel.css';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 import { VWCExpansionPanelBase } from '@vonage/vwc-expansion-panel/vwc-expansion-panel-base';
 
+import { VWCIcon } from '@vonage/vwc-icon/src/vwc-icon';
+
 declare global {
 	interface HTMLElementTagNameMap {
 		'vwc-list-expansion-panel': VWCListExpansionPanel;
@@ -23,7 +25,7 @@ declare global {
 export class VWCListExpansionPanel extends VWCExpansionPanelBase {
 	static styles = style;
 
-	headerListItemIcon?: unknown;
+	headerListItemIcon?: VWCIcon;
 
 	// @property({ type: Boolean }) quick = false; // TODO add animation
 
@@ -82,5 +84,5 @@ function mountIcon(headerListItem: ListItemBase) {
 function getHeaderListItemIcon(headerListItem: ListItemBase) {
 	let icon = headerListItem.querySelector('vwc-icon[slot="meta"]');
 	icon ||= mountIcon(headerListItem);
-	return icon;
+	return icon as VWCIcon;
 }
