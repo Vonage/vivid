@@ -31,11 +31,10 @@ const
 	resolveIconCache = memoize(resolveIcon);
 
 /**
- * Integrates an icon
+ * Displays an icon
  *
  * @element vwc-icon
- *
- * @prop {string} type - The icon's identifier.
+ * @prop {string} type - The icon's identifier. A full list can be found at https://icons.vivid.vonage.com
  * @prop {"small" | "medium" | "large"} [size="medium"] - The icon's size.
  *
  */
@@ -101,38 +100,66 @@ class VWCIcon extends HTMLElement {
 			.onValue((type) => type && this.setAttribute('type', type));
 	}
 
+	/**
+	 * @private
+	 */
 	static get observedAttributes() {
 		return ['type'];
 	}
 
+	/**
+	 *
+	 * @type {string}
+	 */
 	set type(value) {
 		if (!value) {
-			console.warn('Type must be a specified');
+			console.warn('Type must be specified');
 		} else {
 			this[SYMBOL_PROPERTY_TYPE_SET](value);
 		}
 	}
 
+	/**
+	 *
+	 * @type {string}
+	 */
 	get type() {
 		return this[SYMBOL_PROPERTY_TYPE];
 	}
 
+	/**
+	 *
+	 * @type {"small" | "medium" | "large"}
+	 */
 	set size(value) {
 		this.setAttribute('size', value);
 	}
 
+	/**
+	 *
+	 * @type {"small" | "medium" | "large"}
+	 */
 	get size() {
 		return this.getAttribute('size');
 	}
 
+	/**
+	 * @private
+	 */
 	connectedCallback() {
 		this[SYMBOL_CONNECT]();
 	}
 
+	/**
+	 * @private
+	 */
 	disconnectedCallback() {
 		this[SYMBOL_DISCONNECT]();
 	}
 
+	/**
+	 * @private
+	 */
 	attributeChangedCallback(attrName, oldValue, newValue) {
 		switch (attrName) {
 			case 'type':
