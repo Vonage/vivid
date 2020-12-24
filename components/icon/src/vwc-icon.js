@@ -113,7 +113,7 @@ class VWCIcon extends HTMLElement {
 	 */
 	set type(value) {
 		if (!value) {
-			console.warn('Type must be a specified');
+			console.warn('Type must be specified');
 		} else {
 			this[SYMBOL_PROPERTY_TYPE_SET](value);
 		}
