@@ -17,7 +17,7 @@ let STYLE_FETCHED_PROMISE: Promise<CSSResult>;
  * @param {Document | DocumentFragment} target - target document/shadow root to install the CSS into
  * @throws {Error} error - if the provided target argument is `null` or not a Node of type `Document` / `DocumentFragment`
  */
-async function install(
+async function mount(
 	target: Document | DocumentFragment = document
 ): Promise<void> {
 	if (
