@@ -2,22 +2,22 @@ import '@vonage/vvd-core';
 import { CSSResult } from 'lit-element';
 
 export default {
-	install,
+	mount,
 };
 
 const CONTEXT_STYLE_CLASS_IDENTIFIER = 'vivid-context-style';
 let STYLE_FETCHED_PROMISE: Promise<CSSResult>;
 
 /**
- * installs Vivid context (styles) into the target scope / document
+ * mounts Vivid context (styles) into the target scope / document
  * - target scope may by any `Document` or `DocumentFragment` (including `ShadowRoot`)
  * - default target (when not specified) is the document visible in the current scope
- * - the API is idempotent, the style/s will be installed only once, even if API called multiple times
+ * - the API is idempotent, the style/s will be mounted only once, even if API called multiple times
  *
- * @param {Document | DocumentFragment} target - target document/shadow root to install the CSS into
+ * @param {Document | DocumentFragment} target - target document/shadow root to mount the CSS into
  * @throws {Error} error - if the provided target argument is `null` or not a Node of type `Document` / `DocumentFragment`
  */
-async function install(
+async function mount(
 	target: Document | DocumentFragment = document
 ): Promise<void> {
 	if (

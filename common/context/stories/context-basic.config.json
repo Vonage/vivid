@@ -6,7 +6,8 @@
 		"name": "Context",
 		"parameters": {
 			"options": {
-				"showPanel": false
+				"showPanel": false,
+				"isToolshown": false
 			}
 		}
 	}

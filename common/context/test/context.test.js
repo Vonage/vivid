@@ -13,7 +13,7 @@ describe('vvd-context service', () => {
 		for (const illegalArg of illegalArgs) {
 			it(`should fail on illegal argument ${illegalArg}`, async () => {
 				try {
-					await vvdContext.install(illegalArg);
+					await vvdContext.mount(illegalArg);
 					expect.fail('should NOT get to this point');
 				} catch (e) {
 					expect(e).exist;
@@ -31,7 +31,7 @@ describe('vvd-context service', () => {
 				let e = iframeWindow.document.querySelector('.vivid-context-style');
 				expect(e).null;
 
-				await iframeWindow.vvdContext.install();
+				await iframeWindow.vvdContext.mount();
 
 				e = iframeWindow.document.querySelector('.vivid-context-style');
 				expect(e).exist;
@@ -47,11 +47,11 @@ describe('vvd-context service', () => {
 			await getFrameLoadedInjected(CONTEXT_SETUP_HTML_TAG, async (iframe) => {
 				const iframeWindow = iframe.contentWindow;
 
-				await iframeWindow.vvdContext.install();
+				await iframeWindow.vvdContext.mount();
 				const es1 = iframeWindow.document.querySelectorAll('.vivid-context-style');
 				expect(es1.length).equal(1);
 
-				await iframeWindow.vvdContext.install();
+				await iframeWindow.vvdContext.mount();
 				const es2 = iframeWindow.document.querySelectorAll('.vivid-context-style');
 				expect(es2.length).equal(1);
 
@@ -70,7 +70,7 @@ describe('vvd-context service', () => {
 			let e = iframeWindow.document.querySelector('.vivid-context-style');
 			expect(e).null;
 
-			await vvdContext.install(iframe.contentWindow.document);
+			await vvdContext.mount(iframe.contentWindow.document);
 
 			e = iframeWindow.document.querySelector('.vivid-context-style');
 			expect(e).exist;
@@ -85,11 +85,11 @@ describe('vvd-context service', () => {
 			const iframe = await setupLocalIframe();
 			const iframeWindow = iframe.contentWindow;
 
-			await vvdContext.install(iframe.contentWindow.document);
+			await vvdContext.mount(iframe.contentWindow.document);
 			const es1 = iframeWindow.document.querySelectorAll('.vivid-context-style');
 			expect(es1.length).equal(1);
 
-			await vvdContext.install(iframe.contentWindow.document);
+			await vvdContext.mount(iframe.contentWindow.document);
 			const es2 = iframeWindow.document.querySelectorAll('.vivid-context-style');
 			expect(es2.length).equal(1);
 
@@ -106,7 +106,7 @@ describe('vvd-context service', () => {
 			let e = sr.querySelector('.vivid-context-style');
 			expect(e).null;
 
-			await vvdContext.install(sr);
+			await vvdContext.mount(sr);
 
 			e = sr.querySelector('.vivid-context-style');
 			expect(e).exist;
@@ -120,11 +120,11 @@ describe('vvd-context service', () => {
 		it('should NOT duplicate context in default document', async () => {
 			const sr = document.createElement('div').attachShadow({ mode: 'open' });
 
-			await vvdContext.install(sr);
+			await vvdContext.mount(sr);
 			const es1 = sr.querySelectorAll('.vivid-context-style');
 			expect(es1.length).equal(1);
 
-			await vvdContext.install(sr);
+			await vvdContext.mount(sr);
 			const es2 = sr.querySelectorAll('.vivid-context-style');
 			expect(es2.length).equal(1);
 

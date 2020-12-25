@@ -6,7 +6,8 @@
 		"name": "Architecture",
 		"parameters": {
 			"options": {
-				"showPanel": false
+				"showPanel": false,
+				"isToolshown": false
 			}
 		}
 	}

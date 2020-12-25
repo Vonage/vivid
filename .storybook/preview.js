@@ -4,7 +4,7 @@ import { addParameters, setCustomElements } from '@storybook/web-components';
 import customElements from '../custom-elements.json';
 import vvdContext from '@vonage/vvd-context';
 
-vvdContext.install()
+vvdContext.mount()
 	.then(() => console.info('init Vivid core done (preview frame)'))
 	.catch(e => console.error(e));
 
