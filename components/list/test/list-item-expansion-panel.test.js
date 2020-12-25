@@ -95,12 +95,12 @@ describe('list expansion panel', () => {
 			await waitNextTask();
 			const { shadowRoot } = actualElement;
 			const body = shadowRoot.querySelector('.body');
-			expect(getComputedStyle(body)['margin-inline-start']).to.equal('24px');
+			expect(getComputedStyle(body)['margin-inline-start']).to.equal('44px');
 			expect(getComputedStyle(body).position).to.equal('relative');
 			expect(getComputedStyle(body, '::before').content).to.equal('""');
 			expect(getComputedStyle(body, '::before')['block-size']).to.equal('100%');
 			expect(getComputedStyle(body, '::before').position).to.equal('absolute');
-			expect(getComputedStyle(body, '::before').left).to.equal('-12px');
+			expect(getComputedStyle(body, '::before').left).to.equal('-22px');
 		});
 	});
 });
