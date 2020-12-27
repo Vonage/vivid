@@ -8,15 +8,5 @@
 	},
 	"include": ["src/*.ts"],
 	"exclude": ["src/test/*.ts"],
-	"references": [
-		{
-			"path": "../../common/core"
-		},
-		{
-			"path": "../../common/style-coupling"
-		},
-		{
-			"path": "../../components/expansion-panel"
-		}
-	]
+	"references": []
 }

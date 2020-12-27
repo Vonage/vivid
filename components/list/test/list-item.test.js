@@ -38,17 +38,18 @@ describe('list item', () => {
 		});
 	});
 
-	describe('typography', () => {
-		it(`should have set typography correct`, async () => {
-			const actualElements = addElement(
-				textToDomToParent(`<${VWC_LIST_ITEM}>Item 1</${VWC_LIST_ITEM}>`)
-			);
-			await waitNextTask();
-			const listItem = actualElements[0];
-			expect(listItem).to.exist;
-			assertComputedStyle(listItem, await getTypographyStyle('body-2'));
-		});
-	});
+	// ! typography is defined by context
+	// describe('typography', () => {
+	// 	it(`should have set typography correct`, async () => {
+	// 		const actualElements = addElement(
+	// 			textToDomToParent(`<${VWC_LIST_ITEM}>Item 1</${VWC_LIST_ITEM}>`)
+	// 		);
+	// 		await waitNextTask();
+	// 		const listItem = actualElements[0];
+	// 		expect(listItem).to.exist;
+	// 		assertComputedStyle(listItem, await getTypographyStyle('body-2'));
+	// 	});
+	// });
 
 	describe('general styling', async () => {
 		it('should have correct dimensions', async () => {
