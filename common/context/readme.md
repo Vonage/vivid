@@ -26,16 +26,6 @@ The API is idempotent, the style/s will be mounted only once, even if API called
 
 ### Examples
 
-#### Setup Vivid context for a main document
+#### Import
 ```js
 import vvdContext from '@vonage/vvd-context';
-...
-vvdContext.mount();
-```
-
-#### Mount Vivid context into your component
-```js
-import vvdContext from '@vonage/vvd-context';
-...
-vvdContext.mount(webComponent.shadowRoot);
-```
