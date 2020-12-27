@@ -27,5 +27,20 @@ The API is idempotent, the style/s will be mounted only once, even if API called
 ### Examples
 
 #### Import
+
 ```js
 import vvdContext from '@vonage/vvd-context';
+```
+
+#### Mount context to current document scope
+
+```js
+vvdContext.mount();
+```
+
+#### Mount context to a document of choice
+
+```js
+const shadowRoot = someElement.shadowRoot;
+vvdContext.mount(shadowRoot);
+```
