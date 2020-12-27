@@ -1,4 +1,4 @@
-import '@vonage/vwc-icon';
+import { VWCIcon } from '@vonage/vwc-icon';
 import {
 	customElement,
 	html,
@@ -9,8 +9,6 @@ import {
 import { style } from './vwc-list-expansion-panel.css';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 import { VWCExpansionPanelBase } from '@vonage/vwc-expansion-panel/vwc-expansion-panel-base';
-
-import { VWCIcon } from '@vonage/vwc-icon';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -56,8 +54,8 @@ export class VWCListExpansionPanel extends VWCExpansionPanelBase {
 	}
 }
 
-/// UTIL FNS
-function assert(condition: any, msg?: string): asserts condition {
+//	UTIL FNS
+function assert(condition: boolean, msg?: string): asserts condition {
 	if (!condition) {
 		throw new Error(msg);
 	}
@@ -73,15 +71,15 @@ function getHeaderListItem(headerNodes: unknown) {
 	);
 	return headerListItem;
 }
-function mountIcon(headerListItem: ListItemBase) {
+function mountIcon(headerListItem: ListItemBase): VWCIcon {
 	const icon = document.createElement('vwc-icon');
 	icon.setAttribute('slot', 'meta');
 	headerListItem.appendChild(icon);
 	headerListItem.setAttribute('hasMeta', ''); // side effect setting attribute to match icon usage
-	return icon;
+	return icon as VWCIcon;
 }
 
-function getHeaderListItemIcon(headerListItem: ListItemBase) {
+function getHeaderListItemIcon(headerListItem: ListItemBase): VWCIcon {
 	let icon = headerListItem.querySelector('vwc-icon[slot="meta"]');
 	icon ||= mountIcon(headerListItem);
 	return icon as VWCIcon;
