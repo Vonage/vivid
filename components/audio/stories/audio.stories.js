@@ -2,7 +2,7 @@ import { html } from 'lit-element';
 import '@vonage/vwc-audio';
 
 export default {
-	title: 'Composite/Audio Player',
+	title: 'Components/Composite/Audio Player',
 	component: 'vwc-audio'
 }
 

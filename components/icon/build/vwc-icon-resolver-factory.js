@@ -100,7 +100,7 @@ const createDynamicResolver = function(){
 					const moduleName = `${path.basename(filename, path.extname(filename))}.js`;
 					return kefir
 						.fromNodeCallback((cb)=> writeFile(path.join(baseModulePath, moduleName), esModuleTemplate(content), cb))
-						.map(()=> ({ type: "log", value: `"${moduleName}" module was created successfully` }));
+						.map(()=> ({ type: "debug", value: `"${moduleName}" module was created successfully` }));
 				}, 5)
 				.beforeEnd(()=>({
 						type: "code",
