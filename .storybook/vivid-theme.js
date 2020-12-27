@@ -5,7 +5,7 @@ import vvdCore from '@vonage/vvd-core';
 vvdCore.settled
 	.then(() => console.info('init Vivid core done (main page)'));
 
-vvdContext.install()
+vvdContext.mount()
 	.then(() => console.log('init Vivid context into main document done'));
 
 export default create({

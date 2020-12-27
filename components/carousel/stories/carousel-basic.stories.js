@@ -2,7 +2,7 @@ import '@vonage/vwc-carousel/vwc-carousel.js';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Composite/Carousel',
+	title: 'Components/Composite/Carousel',
 	component: 'vwc-carousel'
 }
 

@@ -6,7 +6,7 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Atoms/Select',
+	title: 'Components/Atoms/Select',
 	component: 'vwc-select',
 	argTypes
 }

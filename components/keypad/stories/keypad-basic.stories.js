@@ -2,7 +2,7 @@ import '@vonage/vwc-keypad/vwc-keypad.js';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Composite/Keypad',
+	title: 'Components/Composite/Keypad',
 	component: 'vwc-keypad'
 }
 

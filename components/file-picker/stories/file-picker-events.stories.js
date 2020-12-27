@@ -5,7 +5,7 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Composite/File Picker/Events',
+	title: 'Components/Composite/File Picker/Events',
 	component: 'vwc-file-picker',
 	argTypes
 }
