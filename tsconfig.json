@@ -70,6 +70,7 @@
 		{ "path": "components/theme-switch" },
 		{ "path": "components/top-app-bar" },
 		{ "path": "components/top-app-bar-fixed" },
+		{ "path": "components/expansion-panel" },
 		{ "path": "components/inline" }
 	]
 }

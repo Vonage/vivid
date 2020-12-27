@@ -1,8 +1,8 @@
-@use '@vonage/vvd-typography/scss/typography' as typography;
+// @use '@vonage/vvd-typography/scss/typography' as typography;
 
-:host{
-	@include typography.typography-cat-shorthand('body-2');
-}
+// :host{
+// 	@include typography.typography-cat-shorthand('body-2');
+// }
 
 :host(:not([left])) > .mdc-list-item__meta {
 	// TODO: add list-coupling variables (like --mdc-list-item-meta-size)
