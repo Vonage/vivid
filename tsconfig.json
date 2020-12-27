@@ -12,9 +12,10 @@
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"experimentalDecorators": true,
-		"skipLibCheck": true,
+		"stripInternal": true,
+		"forceConsistentCasingInFileNames": true,
+		// "skipLibCheck": true, // would force consumers to enable this as well
 		"strict": true,
-		"noImplicitAny": true,
 		"outDir": "./",
 		"baseUrl": "./",
 		"paths": {
@@ -23,8 +24,8 @@
 		},
 		"composite": true,
 		"importHelpers": true,
-		"allowSyntheticDefaultImports": true,
-		"esModuleInterop": true
+		"allowSyntheticDefaultImports": true
+		// "esModuleInterop": true // would force consumers to enable this as well
 	},
 	"include": ["custom_typings/**/*.ts", "src/*.ts"],
 	"exclude": [],
