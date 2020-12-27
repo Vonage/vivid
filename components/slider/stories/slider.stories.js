@@ -4,7 +4,7 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Atoms/Slider',
+	title: 'Components/Atoms/Slider',
 	component: 'vwc-slider',
 	argTypes
 }

@@ -5,10 +5,10 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types-list-item.js';
 
 export default {
-	title: 'Atoms/List (check list item)',
+	title: 'Components/Atoms/List (check list item)',
 	component: 'vwc-check-list-item',
 	argTypes: {
-		...argTypes, 
+		...argTypes,
 		left: {
 			control: {
 				type: 'inline-radio',
