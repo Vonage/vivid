@@ -7,7 +7,7 @@ import { argTypes } from './arg-types-list-item.js';
 import { styleMap } from 'lit-html/directives/style-map';
 
 export default {
-	title: 'Atoms/List expansion panel',
+	title: 'Components/Atoms/List expansion panel',
 	component: 'vwc-list-expansion-panel',
 	argTypes
 }

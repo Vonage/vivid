@@ -2,17 +2,6 @@
 
 $indent: 44px;
 
-// :host([open]) {
-// 	.expansion-panel {
-// 		animation: fade-in-left 0.2s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-// 		@media (prefers-reduced-motion) {
-// 			.animation {
-// 				animation-name: dissolve;
-// 			}
-// 		}
-// 	}
-// }
-
 .body {
 	margin-inline-start: $indent;
 	position: relative;
@@ -27,6 +16,12 @@ $indent: 44px;
 	:host(:not([open])) & {
 		display: none;
 	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		:host([open]) & {
+			animation: fade-in-left 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+		}
+	}
 }
 
 /**
@@ -34,13 +29,13 @@ $indent: 44px;
  * animation fade-in-left
  * ----------------------------------------
  */
-// @keyframes fade-in-left {
-// 	0% {
-// 		transform: translateX(-10px);
-// 		opacity: 0;
-// 	}
-// 	100% {
-// 		transform: translateX(0);
-// 		opacity: 1;
-// 	}
-// }
+@keyframes fade-in-left {
+	0% {
+		transform: translateX(-10px);
+		opacity: 0;
+	}
+	100% {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}
