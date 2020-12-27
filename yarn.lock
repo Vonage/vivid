@@ -4651,10 +4651,10 @@
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@ungap/promise-all-settled/-/promise-all-settled-1.1.2.tgz#aa58042711d6e3275dd37dc597e5d31e8c290a44"
   integrity sha1-qlgEJxHW4ydd033Fl+XTHowpCkQ=
 
-"@vonage/vvd-design-tokens-properties@^0.5.3":
-  version "0.5.3"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@vonage/vvd-design-tokens-properties/0.5.3/f62e56f21421aff88ef74f6f5dc720eed7527c68df62215fdaba96f278490573#43e87fc20239712709ec618da04e56bbb2ac7bfc"
-  integrity sha1-Q+h/wgI5cScJ7GGNoE5Wu7Kse/w=
+"@vonage/vvd-design-tokens-properties@^0.5.4":
+  version "0.5.4"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@vonage/vvd-design-tokens-properties/0.5.4/7a5aa317678207ddbc2be97ee322d3721f09226dbeb9b7372cb74ced7a6608a4#9f7443829dcc9c7bfee308fe6a4dbdff954b5019"
+  integrity sha1-n3RDgp3MnHv+4wj+ak29/5VLUBk=
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"

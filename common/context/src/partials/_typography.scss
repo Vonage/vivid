@@ -9,32 +9,27 @@
   }
 
   h1 {
-    @include typography.typography-cat-shorthand('headline');
+    @include typography.typography-cat-shorthand('headline-1');
   }
 
   h2 {
-    @include typography.typography-cat-shorthand('title');
+    @include typography.typography-cat-shorthand('headline-2');
   }
 
   h3 {
-		@include typography.typography-cat-shorthand('subtitle-1');
+		@include typography.typography-cat-shorthand('title-1');
   }
 
 	h4 {
-    @include typography.typography-cat-shorthand('subtitle-3');
+    @include typography.typography-cat-shorthand('title-2');
   }
 
   h5 {
-		@include typography.typography-cat-shorthand('subtitle-3');
+		@include typography.typography-cat-shorthand('subtitle-1');
   }
 
   h6 {
-    @include typography.typography-cat-shorthand('body-2');
-  }
-
-  b,
-  strong {
-    @include typography.typography-cat-shorthand('body-1-bold');
+    @include typography.typography-cat-shorthand('subtitle-2');
   }
 
   p {
