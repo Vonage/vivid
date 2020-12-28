@@ -1,6 +1,11 @@
 import { LitElement, property } from 'lit-element';
 import { observer } from '@material/mwc-base/observer';
 
+/**
+ * Base class for expansion panel behaviour
+ *
+ * @beta
+ * */
 export abstract class VWCExpansionPanelBase extends LitElement {
 	@property({ type: Boolean, reflect: true })
 	@observer(function (

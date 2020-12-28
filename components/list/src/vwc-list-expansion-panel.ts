@@ -20,7 +20,9 @@ declare global {
 
 /**
  * This component support expand-collapse list
- */
+ *
+ * @beta
+ * */
 @customElement('vwc-list-expansion-panel')
 export class VWCListExpansionPanel extends VWCExpansionPanelBase {
 	static styles = style;
@@ -73,6 +75,7 @@ function getHeaderListItem(headerNodes: unknown) {
 	);
 	return headerListItem;
 }
+
 function mountIcon(headerListItem: ListItemBase) {
 	const icon = document.createElement('vwc-icon');
 	icon.setAttribute('slot', 'meta');
