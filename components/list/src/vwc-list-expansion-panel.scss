@@ -1,0 +1,41 @@
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+
+$indent: 44px;
+
+.body {
+	margin-inline-start: $indent;
+	position: relative;
+	&::before {
+		content: '';
+		block-size: 100%;
+		border-inline-start: 1px solid
+			var(#{scheme-variables.$vvd-color-contrast-faint});
+		position: absolute;
+		left: $indent / -2;
+	}
+	:host(:not([open])) & {
+		display: none;
+	}
+
+	@media (prefers-reduced-motion: no-preference) {
+		:host([open]) & {
+			animation: fade-in-left 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
+		}
+	}
+}
+
+/**
+ * ----------------------------------------
+ * animation fade-in-left
+ * ----------------------------------------
+ */
+@keyframes fade-in-left {
+	0% {
+		transform: translateX(-10px);
+		opacity: 0;
+	}
+	100% {
+		transform: translateX(0);
+		opacity: 1;
+	}
+}

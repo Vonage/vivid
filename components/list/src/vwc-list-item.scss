@@ -1,5 +1,15 @@
-@use '@vonage/vvd-typography/scss/typography' as typography;
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+// @use '@vonage/vvd-typography/scss/typography' as typography;
 
 :host {
-	@include typography.typography-cat-shorthand('body-2');
+	// @include typography.typography-cat-shorthand('body-2');
+	// ! typography here is defined by its context
+	$gutter: 12px;
+	border-radius: 6px;
+	--mdc-list-side-padding: #{$gutter};
+	--mdc-list-item-graphic-margin: #{$gutter};
+	--mdc-list-item-graphic-size: 20px;
+	--mdc-theme-text-icon-on-background: var(
+		#{scheme-variables.$vvd-color-on-base}
+	);
 }
