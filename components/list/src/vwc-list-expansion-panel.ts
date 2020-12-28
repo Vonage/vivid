@@ -71,7 +71,7 @@ function getHeaderListItem(headerNodes: unknown) {
 	);
 	return headerListItem;
 }
-function mountIcon(headerListItem: ListItemBase): VWCIcon {
+function mountIcon(headerListItem: ListItemBase) {
 	const icon = document.createElement('vwc-icon');
 	icon.setAttribute('slot', 'meta');
 	headerListItem.appendChild(icon);
@@ -79,7 +79,7 @@ function mountIcon(headerListItem: ListItemBase): VWCIcon {
 	return icon as VWCIcon;
 }
 
-function getHeaderListItemIcon(headerListItem: ListItemBase): VWCIcon {
+function getHeaderListItemIcon(headerListItem: ListItemBase) {
 	let icon = headerListItem.querySelector('vwc-icon[slot="meta"]');
 	icon ||= mountIcon(headerListItem);
 	return icon as VWCIcon;
