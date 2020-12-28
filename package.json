@@ -44,8 +44,6 @@
 		"wca:compile:json": "yarn compile && yarn wca:custom-elements"
 	},
 	"devDependencies": {
-		"@microsoft/api-documenter": "^7.12.1",
-		"@microsoft/api-extractor": "^7.12.1",
 		"@open-wc/eslint-config": "^3.0.0",
 		"@open-wc/karma-esm": "^3.0.9",
 		"@open-wc/lit-helpers": "^0.3.11",
