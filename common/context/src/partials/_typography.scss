@@ -38,20 +38,20 @@
 	}
 
 	code,
-	kbd {
+	kbd,
+	samp {
 		font-family: 'SpeziaMonoWebVariable', monospace;
 	}
 
 	b,
 	strong {
-		@include typography.typography-cat-shorthand('body-1-bold');
+		font-weight: 600;
 	}
 
 	a {
-		@include typography.typography-cat-shorthand('body-1-link');
+		text-decoration: underline;
 	}
 
-	samp,
   var {
 		@include typography.typography-cat-shorthand('body-1-code');
     display: block;
