@@ -31,6 +31,8 @@
 		"tslib": "^2.0.3"
 	},
 	"devDependencies": {
+		"@microsoft/api-documenter": "^7.12.1",
+		"@microsoft/api-extractor": "^7.12.1",
 		"@vonage/vvd-design-tokens": "^0.17.2",
 		"@vonage/vvd-typography": "^0.17.2"
 	}

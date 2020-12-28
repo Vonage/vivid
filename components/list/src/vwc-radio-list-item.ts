@@ -22,6 +22,8 @@ MWCRadioListItem.styles = [
 
 /**
  * This component is an extension of [<mwc-radio-list-item>](https://github.com/material-components/material-components-web-components/tree/master/packages/list)
- */
+ *
+ * @public
+ * */
 @customElement('vwc-radio-list-item')
 export class VWCRadioListItem extends MWCRadioListItem {}

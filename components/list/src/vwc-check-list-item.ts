@@ -22,6 +22,8 @@ MWCCheckListItem.styles = [
 
 /**
  * This component is an extension of [<mwc-check-list-item>](https://github.com/material-components/material-components-web-components/tree/master/packages/list)
- */
+ *
+ * @public
+ * */
 @customElement('vwc-check-list-item')
 export class VWCCheckListItem extends MWCCheckListItem {}
