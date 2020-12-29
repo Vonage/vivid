@@ -1,4 +1,3 @@
-import '@vonage/vwc-list/vwc-list.js';
 import '@vonage/vwc-list/vwc-list-item.js';
 import '@vonage/vwc-list/vwc-list-expansion-panel.js';
 import '@vonage/vwc-icon';
@@ -17,7 +16,7 @@ const listStyles = {
 };
 
 const Template = () => html`
-	<vwc-list style=${styleMap(listStyles)}>
+	<div style=${styleMap(listStyles)}>
 		<vwc-list-item graphic="icon">
 			<vwc-icon slot="graphic" type="home"></vwc-icon>
 			Parent 1
@@ -54,7 +53,7 @@ const Template = () => html`
 				</vwc-list-item>
 			</vwc-list-expansion-panel>
 		</vwc-list-expansion-panel>
-	</vwc-list>
+	</div>
 `;
 
 export const ExpansionPanel = Template.bind({});
