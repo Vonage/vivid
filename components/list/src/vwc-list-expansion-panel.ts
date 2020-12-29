@@ -55,7 +55,7 @@ export class VWCListExpansionPanel extends VWCExpansionPanelBase {
 }
 
 //	UTIL FNS
-function assert(condition: boolean, msg?: string): asserts condition {
+function assert(condition: any, msg?: string): asserts condition {
 	if (!condition) {
 		throw new Error(msg);
 	}
