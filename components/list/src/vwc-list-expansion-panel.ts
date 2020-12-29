@@ -9,8 +9,8 @@ import {
 import { style } from './vwc-list-expansion-panel.css';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 import { VWCExpansionPanelBase } from '@vonage/vwc-expansion-panel/vwc-expansion-panel-base';
-
 import { VWCIcon } from '@vonage/vwc-icon';
+import { assert } from '@vonage/vvd-foundation/general-utils';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -57,11 +57,6 @@ export class VWCListExpansionPanel extends VWCExpansionPanelBase {
 }
 
 /// UTIL FNS
-function assert(condition: any, msg?: string): asserts condition {
-	if (!condition) {
-		throw new Error(msg);
-	}
-}
 
 function getHeaderListItem(headerNodes: unknown) {
 	assert(Array.isArray(headerNodes), `Not an array: ${headerNodes}`);
@@ -83,6 +78,8 @@ function mountIcon(headerListItem: ListItemBase) {
 
 function getHeaderListItemIcon(headerListItem: ListItemBase) {
 	let icon = headerListItem.querySelector('vwc-icon[slot="meta"]');
-	icon ||= mountIcon(headerListItem);
+	if (!icon) {
+		icon = mountIcon(headerListItem);
+	}
 	return icon as VWCIcon;
 }
