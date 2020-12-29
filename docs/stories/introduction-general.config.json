@@ -2,8 +2,8 @@
 	"sourcePath": "../../readme.md",
 	"outputName": "introduction-general",
 	"story": {
-		"title": "Introduction/General",
-		"name": "General",
+		"title": "Introduction/Meet Vivid",
+		"name": "MeetVivid",
 		"parameters": {
 			"options": {
 				"showPanel": false,

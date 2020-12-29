@@ -1,13 +1,23 @@
 ![Quality](https://github.com/Vonage/vivid/workflows/Compile%20&%20Test/badge.svg)
 [![Coverage Status](https://coveralls.io/repos/github/Vonage/vivid/badge.svg?t=v9CrbP)](https://coveralls.io/github/Vonage/vivid)
 
+# Meet VIVID,
+
+## Vonage's design system
+
+### Vivid provides components and tools to help product teams work more efficiently, and to make Vonage's products and applications more cohesive.
+
 <p align="center">
-  <img src="assets/images/vivid-hero.png"></img>
+  <img src="assets/images/meet-vivid.svg"></img>
 </p>
 
-# Vivid UI components
+Vivid provides a Design System comprised of ready-to-use web components and services, aligned with the Vonage's design guidelines.
+Providing well-thought APIs and striving to stick to the best practices in every possible aspect, Vivid team's goal is to provide high quality and convenient to use UI platform for all Vonage.
 
-Vivid provides a Design System comprised of ready-to-use web components and services, aligned with the Vonage's design guidelines, providing well-thought APIs and striving to stick to the best practices in every possible aspect.
+
+---
+
+Old content
 
 Demos, tutorials and living examples are at [vivid.vonage.com](https://vivid.vonage.com).
 
