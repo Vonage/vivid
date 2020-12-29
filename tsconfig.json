@@ -23,8 +23,8 @@
 			"@vivid/vwc-*": ["./*/src"]
 		},
 		"composite": true,
-		"importHelpers": true,
-		"allowSyntheticDefaultImports": true
+		"importHelpers": true
+		// "allowSyntheticDefaultImports": true
 		// "esModuleInterop": true // would force consumers to enable this as well
 	},
 	"include": ["custom_typings/**/*.ts", "src/*.ts"],
