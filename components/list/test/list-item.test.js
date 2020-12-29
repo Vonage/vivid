@@ -3,9 +3,7 @@ import '@vonage/vwc-list/vwc-list-item';
 import {
 	textToDomToParent,
 	waitNextTask,
-	assertComputedStyle,
 	isolatedElementsCreation,
-	getTypographyStyle,
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
@@ -37,19 +35,6 @@ describe('list item', () => {
 			expect(actualElements[0]).shadowDom.to.equalSnapshot();
 		});
 	});
-
-	// ! typography is defined by context
-	// describe('typography', () => {
-	// 	it(`should have set typography correct`, async () => {
-	// 		const actualElements = addElement(
-	// 			textToDomToParent(`<${VWC_LIST_ITEM}>Item 1</${VWC_LIST_ITEM}>`)
-	// 		);
-	// 		await waitNextTask();
-	// 		const listItem = actualElements[0];
-	// 		expect(listItem).to.exist;
-	// 		assertComputedStyle(listItem, await getTypographyStyle('body-2'));
-	// 	});
-	// });
 
 	describe('general styling', async () => {
 		it('should have correct dimensions', async () => {

@@ -5,7 +5,11 @@ export async function getTypographyStyle(category, typographyType = 'web') {
 		throw new Error(`category parameter MUST be a non-empty string, got '${category}'`);
 	}
 	if (!(typographyType in typographyCache)) {
-		typographyCache[typographyType] = await fetchData(typographyType);
+		const ttDefs = await fetchData(typographyType);
+		for (const [tName, tVals] of Object.entries(ttDefs)) {
+			ttDefs[tName] = Object.freeze(tVals);
+		}
+		typographyCache[typographyType] = Object.freeze(ttDefs);
 	}
 	const result = typographyCache[typographyType][category];
 	if (!result) {

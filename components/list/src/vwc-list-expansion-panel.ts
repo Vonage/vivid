@@ -1,4 +1,4 @@
-import '@vonage/vwc-icon';
+import { VWCIcon } from '@vonage/vwc-icon';
 import {
 	customElement,
 	html,
@@ -9,7 +9,6 @@ import {
 import { style } from './vwc-list-expansion-panel.css';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 import { VWCExpansionPanelBase } from '@vonage/vwc-expansion-panel/vwc-expansion-panel-base';
-import { VWCIcon } from '@vonage/vwc-icon';
 import { assert } from '@vonage/vvd-foundation/general-utils';
 
 declare global {
@@ -73,7 +72,7 @@ function mountIcon(headerListItem: ListItemBase) {
 	icon.setAttribute('slot', 'meta');
 	headerListItem.appendChild(icon);
 	headerListItem.setAttribute('hasMeta', ''); // side effect setting attribute to match icon usage
-	return icon;
+	return icon as VWCIcon;
 }
 
 function getHeaderListItemIcon(headerListItem: ListItemBase) {
