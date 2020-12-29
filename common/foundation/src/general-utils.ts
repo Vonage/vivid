@@ -30,6 +30,7 @@ export function handleMultipleDenseProps(
 	}
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
 export function assert(condition: any, msg?: string): asserts condition {
 	if (!condition) {
 		throw new Error(msg);
