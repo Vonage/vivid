@@ -1,2 +1,2 @@
-ignore-patterns: ["*.js", "*.d.ts", "components/mwc-chips/**/*.ts"]
+ignore-patterns: ["*.js", "*.d.ts", "packages/mwc-chips/**/*.ts"]
 ignores: ["tslib", "@material/*", "@vonage/vvd-design-tokens-properties", "!@material/mwc-*"]

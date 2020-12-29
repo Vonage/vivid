@@ -10,4 +10,4 @@
 **/storybook-static
 **/coverage
 
-components/mwc-chips
+packages/mwc-chips
