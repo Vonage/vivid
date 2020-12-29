@@ -18,7 +18,7 @@ async function run() {
 			storySort: {
 				order: [
 					'Introduction',
-					['Meet Vivid', 'Getting Started', 'Architecture', 'Components List'],
+					['Meet Vivid', 'Getting Started', 'Architecture', 'Roadmap', 'Contacts', 'Components List'],
 					'Guides',
 					['Installation', 'Context'],
 					'Design System',
