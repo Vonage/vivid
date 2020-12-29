@@ -5,9 +5,14 @@
 ```ts
 
 import { CheckListItem } from '@material/mwc-list/mwc-check-list-item';
+import { CSSResult } from 'lit-element';
 import { List } from '@material/mwc-list/mwc-list';
 import { ListItem } from '@material/mwc-list/mwc-list-item';
+import { PropertyValues } from 'lit-element';
 import { RadioListItem } from '@material/mwc-list/mwc-radio-list-item';
+import { TemplateResult } from 'lit-element';
+import { VWCExpansionPanelBase } from '@vonage/vwc-expansion-panel/vwc-expansion-panel-base';
+import { VWCIcon } from '@vonage/vwc-icon';
 
 // @public
 export class VWCCheckListItem extends CheckListItem {
@@ -16,6 +21,22 @@ export class VWCCheckListItem extends CheckListItem {
 // @public
 export class VWCList extends List {
     constructor();
+}
+
+// @beta
+export class VWCListExpansionPanel extends VWCExpansionPanelBase {
+    // (undocumented)
+    firstUpdated(changedProperties: PropertyValues): void;
+    // (undocumented)
+    headerListItemIcon?: VWCIcon;
+    // (undocumented)
+    headerNodes?: HTMLElement[] | null;
+    // (undocumented)
+    openChanged(isOpen: boolean): void;
+    // (undocumented)
+    render(): TemplateResult;
+    // (undocumented)
+    static styles: CSSResult;
 }
 
 // @public

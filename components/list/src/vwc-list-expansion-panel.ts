@@ -5,6 +5,7 @@ import {
 	PropertyValues,
 	queryAssignedNodes,
 	TemplateResult,
+	CSSResult,
 } from 'lit-element';
 import { style } from './vwc-list-expansion-panel.css';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
@@ -25,7 +26,7 @@ declare global {
  * */
 @customElement('vwc-list-expansion-panel')
 export class VWCListExpansionPanel extends VWCExpansionPanelBase {
-	static styles = style;
+	static styles: CSSResult = style;
 
 	headerListItemIcon?: VWCIcon;
 
