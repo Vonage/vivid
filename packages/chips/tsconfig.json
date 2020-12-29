@@ -1,0 +1,25 @@
+{
+	"extends": "../tsconfig.settings.json",
+	"compilerOptions": {
+		"composite": true,
+		"rootDir": "src",
+		"outDir": ".",
+		"tsBuildInfoFile": ".tsbuildinfo"
+	},
+	"include": ["src/*.ts"],
+	"exclude": ["src/test/*.ts"],
+	"references": [
+		{
+			"path": "../core"
+		},
+		{
+			"path": "../style-coupling"
+		},
+		{
+			"path": "../icon"
+		},
+		{
+			"path": "../mwc-chips"
+		}
+	]
+}

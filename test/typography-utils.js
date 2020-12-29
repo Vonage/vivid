@@ -19,7 +19,7 @@ export async function getTypographyStyle(category, typographyType = 'web') {
 }
 
 async function fetchData(typographyType) {
-	const response = await fetch(`base/common/design-tokens/build/scss/typography-variables/${typographyType}.scss`);
+	const response = await fetch(`base/packages/design-tokens/build/scss/typography-variables/${typographyType}.scss`);
 	if (response.status !== 200) {
 		throw new Error(`failed to fetch typography of type '${typographyType}', ${response.status} ${response.statusText}`);
 	}

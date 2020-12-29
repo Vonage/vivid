@@ -19,7 +19,7 @@ export function shapeStyles(shape, element) {
 export const PRINCIPAL_SCHEME_VARIABLES_FILTER = /-(on-|)(base|surface|primary)$/;
 
 export function getSchemeFiles() {
-	const DT_SCHEMES_BASE_PATH = 'common/design-tokens/build/scss/schemes/';
+	const DT_SCHEMES_BASE_PATH = 'packages/design-tokens/build/scss/schemes/';
 	return Object.entries(window.__FIXTURES__).reduce((result, [key, value]) => {
 		if (key.startsWith(DT_SCHEMES_BASE_PATH)) {
 			result[key.replace(DT_SCHEMES_BASE_PATH, '')] = value;

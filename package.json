@@ -5,13 +5,12 @@
 	"author": "Vonage",
 	"license": "ISC",
 	"workspaces": [
-		"common/*",
-		"components/*"
+		"packages/*"
 	],
 	"scripts": {
 		"dep-check": "lerna exec --stream --no-bail depcheck",
 		"changelog": "yarn lerna exec --concurrency 1 --stream 'conventional-changelog --preset angular --release-count 0 --commit-path $PWD --pkg $PWD/package.json --outfile $PWD/CHANGELOG.md --verbose'",
-		"lint:eslint": "eslint components/** common/** --no-error-on-unmatched-pattern --ignore-path .eslintignore --config .eslintrc.yaml",
+		"lint:eslint": "eslint packages/** --no-error-on-unmatched-pattern --ignore-path .eslintignore --config .eslintrc.yaml",
 		"format:eslint": "eslint --ext .js,.html . --fix --ignore-path .eslintignore",
 		"lint:prettier": "prettier \"**/*.ts\" \"**/test/*.test.js\" --check --ignore-path .prettierignore",
 		"format:prettier": "prettier \"**/*.ts\" \"**/test/*.test.js\" --write --ignore-path .prettierignore",
@@ -36,11 +35,11 @@
 		"start": "yarn storybook:vivid:pre && start-storybook -s ./.storybook/static -p 9000",
 		"compile": "yarn packages:build && yarn compile:styles && yarn compile:typescript",
 		"compile:styles": "node ./scripts/build-styles.js",
-		"compile:typescript": "tsc --build",
-		"build:icon-resolver": "cd ./components/icon && node ./build/vwc-icon-resolver-factory.js",
+		"compile:typescript": "tsc -b ./packages",
+		"build:icon-resolver": "cd ./packages/icon && node ./build/vwc-icon-resolver-factory.js",
 		"git:clean": "git clean -xdf",
 		"watch": "node scripts/watcher.js",
-		"wca:json": "wca analyze components/*/src/*.?s --outFile custom-elements.json",
+		"wca:json": "wca analyze packages/*/src/*.?s --outFile custom-elements.json",
 		"wca:compile:json": "yarn compile && yarn wca:custom-elements"
 	},
 	"devDependencies": {
@@ -61,7 +60,6 @@
 		"@storybook/web-components": "^6.1.0",
 		"@typescript-eslint/eslint-plugin": "^4.6.1",
 		"@typescript-eslint/parser": "^4.6.1",
-		"@webcomponents/webcomponentsjs": "^2.5.0",
 		"@whitespace/storybook-addon-html": "^4.0.2",
 		"chai": "^4.2.0",
 		"chai-a11y-axe": "^1.3.1",
