@@ -33,6 +33,7 @@
 	},
 	"devDependencies": {
 		"@types/swiper": "^5.4.0",
-		"@vonage/vvd-design-tokens": "^0.17.2"
+		"@vonage/vvd-design-tokens": "^0.17.2",
+		"typescript": "^4.1.3"
 	}
 }

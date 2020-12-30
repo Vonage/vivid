@@ -17,6 +17,7 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"devDependencies": {
-		"@vonage/vvd-design-tokens": "^0.17.2"
+		"@vonage/vvd-design-tokens": "^0.17.2",
+		"typescript": "^4.1.3"
 	}
 }

@@ -33,7 +33,8 @@
 	},
 	"devDependencies": {
 		"aws-sdk": "^2.730.0",
-		"minimist": "^1.2.5"
+		"minimist": "^1.2.5",
+		"typescript": "^4.1.3"
 	},
 	"engines": {
 		"node": ">=v12.0.0"

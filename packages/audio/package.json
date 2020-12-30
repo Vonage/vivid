@@ -25,5 +25,8 @@
 		"@types/kefir": "^3.8.5",
 		"@vonage/vwc-media-controller": "^0.17.2",
 		"kefir": "^3.8.7"
+	},
+	"devDependencies": {
+		"typescript": "^4.1.3"
 	}
 }

@@ -23,5 +23,8 @@
 		"lit-element": "^2.3.1",
 		"lit-html": "^1.2.1",
 		"tslib": "^2.0.3"
+	},
+	"devDependencies": {
+		"typescript": "^4.1.3"
 	}
 }

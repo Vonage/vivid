@@ -27,5 +27,8 @@
 		"@vonage/vvd-fonts": "^0.17.2",
 		"@vonage/vvd-scheme": "^0.17.2",
 		"tslib": "^2.0.3"
+	},
+	"devDependencies": {
+		"typescript": "^4.1.3"
 	}
 }
