@@ -1,6 +1,11 @@
 @use '@vonage/vvd-design-tokens/build/scss/typography-variables/web.scss' as typographies;
 
 $props-list: font-family, font-size, font-stretch, font-weight, letter-spacing, line-height, text-decoration, text-transform;
+$stretch-map: (
+	'50%': 'ultra-condensed',
+	'75%': 'condensed'
+);
+$slash-char: '/';
 
 @mixin typography-set-variables($category) {
 	$category-map: map-get(typographies.$typography-category-list, $category);
@@ -17,9 +22,14 @@ $props-list: font-family, font-size, font-stretch, font-weight, letter-spacing, 
 }
 
 @mixin typography-cat-shorthand($category) {
-	@include typography-set-variables($category);
-	@include typography-set-properties;
+	$category-map: map-get(typographies.$typography-category-list, $category);
+	font: map-get($category-map, font-weight)
+		map-get($category-map, font-stretch)
+		map-get($category-map, font-size) #{$slash-char} map-get($category-map, line-height)
+		map-get($category-map, font-family)
 }
+
+// 	--jt-font-base: normal 400 16px /1.5 Tahoma, Verdana, sans-serif;
 
 // the following mixin couples a mdc typography variable to a primitive value of which we declare in our typography categories
 // it is an extension related exclusively to a usage of mwc components and is not part of our typography abstraction
