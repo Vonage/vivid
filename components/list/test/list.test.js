@@ -43,7 +43,7 @@ describe('list', () => {
 	describe('typography', () => {
 		for (const childType of TYPOGRAPHY_CHILDREN_TO_TEST) {
 			for (const flavor of TYPOGRAPHY_FLAVORS_TO_TEST) {
-				it(`should have set typography correct (childe type '${childType}', flavor '${flavor}')`, async () => {
+				it(`should have set typography correct (child type '${childType}', flavor '${flavor}')`, async () => {
 					const [list] = addElement(
 						textToDomToParent(
 							`<vwc-list><${childType} ${flavor}>Item 1</${childType}></vwc-list>`
