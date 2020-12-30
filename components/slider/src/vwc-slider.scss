@@ -17,7 +17,10 @@
 	.mdc-slider__thumb {
 		transform: scale3d(0.6, 0.6, 0.6);
 	}
+}
 
+// behaviours
+:host(:not([disabled])) {
 	.mdc-slider--focus,
 	.mdc-slider__thumb-container:hover {
 		.mdc-slider__focus-ring {
@@ -31,10 +34,6 @@
 	}
 
 	.mdc-slider--active {
-		.mdc-slider__thumb {
-			transform: scale3d(0.6, 0.6, 0.6);
-		}
-
 		.mdc-slider__thumb-container:hover .mdc-slider__focus-ring {
 			transform: scale3d(1.8, 1.8, 1.8);
 			opacity: 0.25;
