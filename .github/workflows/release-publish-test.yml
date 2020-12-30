@@ -1,0 +1,40 @@
+name: Release Vivid (GitHub)
+
+on:
+  push:
+    branches:
+      - no_jira_icon_generation_script_moved
+
+jobs:
+  build-publish:
+    runs-on: ubuntu-latest
+    env:
+      ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_VIVID_DEMO_PROD_ACCESS }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_VIVID_DEMO_PROD_SECRET }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.CI_AT }}
+
+      - name: Setup NodeJS 12
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+
+      - name: Install yarn
+        run: npm install -g yarn
+
+      - name: Install dependencies
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn install
+
+      # Build and publish
+      - name: Build components
+        run: yarn compile
+
+      - name: Build CDN icon resolver
+        run: lerna run "generate-icon-resolver" --parallel --scope="@vonage/vwc-icon" -- --verboseOutput --resolveStrategy=cdn --awsBucketName=vivid-icons-prod --awsBaseUrl=https://icons.resources.vonage.com --awsAccessKey=${{ secrets.AWS_VIVID_DEMO_PROD_ACCESS }} --awsAccessSecret=${{ secrets.AWS_VIVID_DEMO_PROD_SECRET }}
