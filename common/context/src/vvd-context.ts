@@ -29,8 +29,7 @@ async function mount(
 	}
 
 	const styleElement = await obtainStyleElement(target);
-
-	if (!styleElement.parentNode) {
+	if (!target.querySelector(`.${CONTEXT_STYLE_CLASS_IDENTIFIER}`)) {
 		if (target.nodeType === Node.DOCUMENT_NODE) {
 			(target as Document).head.appendChild(styleElement);
 		} else {
@@ -42,17 +41,13 @@ async function mount(
 async function obtainStyleElement(
 	target: Document | DocumentFragment
 ): Promise<HTMLStyleElement> {
-	let styleElement = target.querySelector(
-		`.${CONTEXT_STYLE_CLASS_IDENTIFIER}`
-	) as HTMLStyleElement;
-
-	if (!styleElement) {
-		const styleContent = await obtainStyleContent();
-		styleElement = (target.ownerDocument ?? target).createElement('style');
-		styleElement.className = CONTEXT_STYLE_CLASS_IDENTIFIER;
-		styleElement.innerHTML = styleContent.cssText;
-	}
-
+	const styleContent = await obtainStyleContent();
+	const styleElement = (target.ownerDocument
+		? target.ownerDocument
+		: target
+	).createElement('style');
+	styleElement.className = CONTEXT_STYLE_CLASS_IDENTIFIER;
+	styleElement.innerHTML = styleContent.cssText;
 	return styleElement;
 }
 
