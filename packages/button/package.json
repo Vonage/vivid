@@ -2,7 +2,7 @@
 	"name": "@vonage/vwc-button",
 	"version": "0.17.2",
 	"description": "button component",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/button#readme",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/packages/button#readme",
 	"license": "ISC",
 	"main": "vwc-button.js",
 	"module": "vwc-button.js",
@@ -14,7 +14,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/button"
+		"directory": "packages/button"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"

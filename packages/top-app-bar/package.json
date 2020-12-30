@@ -2,7 +2,7 @@
 	"name": "@vonage/vwc-top-app-bar",
 	"version": "0.17.2",
 	"description": "top-app-bar component",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/top-app-bar#readme",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/packages/top-app-bar#readme",
 	"license": "ISC",
 	"main": "vwc-top-app-bar.js",
 	"module": "vwc-top-app-bar.js",
@@ -14,7 +14,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/top-app-bar"
+		"directory": "packages/top-app-bar"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"

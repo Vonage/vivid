@@ -2,7 +2,7 @@
 	"name": "@vonage/vwc-formfield",
 	"version": "0.17.2",
 	"description": "> TODO: description",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/formfield#readme",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/packages/formfield#readme",
 	"license": "ISC",
 	"main": "vwc-formfield.js",
 	"module": "vwc-formfield.js",
@@ -15,7 +15,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/formfield"
+		"directory": "packages/formfield"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"

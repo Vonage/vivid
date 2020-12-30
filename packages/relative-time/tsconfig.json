@@ -1,5 +1,5 @@
 {
-	"extends": "../../tsconfig.json",
+	"extends": "../tsconfig.settings.json",
 	"compilerOptions": {
 		"allowJs": true,
 		"composite": true,
@@ -7,15 +7,11 @@
 		"outDir": ".",
 		"tsBuildInfoFile": ".tsbuildinfo"
 	},
-	"include": [
-		"src/**/*"
-	],
-	"exclude": [
-		"src/test/*.ts"
-	],
+	"include": ["src/**/*"],
+	"exclude": ["src/test/*.ts"],
 	"references": [
 		{
-			"path": "../../common/core"
+			"path": "../core"
 		}
 	]
 }

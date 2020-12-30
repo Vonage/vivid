@@ -1,12 +1,12 @@
 {
-  "extends": "../../tsconfig.json",
-  "compilerOptions": {
+	"extends": "../tsconfig.settings.json",
+	"compilerOptions": {
 		"composite": true,
-    "rootDir": "src",
-    "outDir": ".",
-    "tsBuildInfoFile": ".tsbuildinfo"
-  },
-  "include": ["src/**/*"],
-  "exclude": ["src/test/*.ts"],
-  "references": []
+		"rootDir": "src",
+		"outDir": ".",
+		"tsBuildInfoFile": ".tsbuildinfo"
+	},
+	"include": ["src/**/*"],
+	"exclude": ["src/test/*.ts"],
+	"references": []
 }

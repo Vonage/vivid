@@ -6,11 +6,11 @@ module.exports = config => {
 	const defaultConfig = createDefaultConfig(config);
 	const extendedDefaultConfig = merge(defaultConfig, {
 		files: [
-			{ pattern: config.grep ? config.grep : '{common,components}/**/test/**/*.test.js', type: 'module' },
-			{ pattern: 'common/design-tokens/build/**/*.scss', included: false }
+			{ pattern: config.grep ? config.grep : 'packages/**/test/**/*.test.js', type: 'module' },
+			{ pattern: 'packages/design-tokens/build/**/*.scss', included: false }
 		],
 		preprocessors: {
-			'common/design-tokens/build/scss/schemes/**/*.scss': ['file-fixtures'],
+			'packages/design-tokens/build/scss/schemes/**/*.scss': ['file-fixtures'],
 		},
 		esm: {
 			nodeResolve: true,
@@ -26,11 +26,11 @@ module.exports = config => {
 		client: {
 			karmaHTML: {
 				source: [
-					{ tag: 'contextSetupTest', src: 'common/context/test/context-setup.test.html' },
-					{ tag: 'coreSetupTest', src: 'common/core/test/core-setup.test.html' },
-					{ tag: 'fontsSetupTest', src: 'common/fonts/test/fonts-setup.test.html' },
-					{ tag: 'schemeSetupTest', src: 'common/scheme/test/scheme-setup.test.html' },
-					{ tag: 'drawerSetupTest', src: 'components/drawer/test/drawer-setup.test.html' },
+					{ tag: 'contextSetupTest', src: 'packages/context/test/context-setup.test.html' },
+					{ tag: 'coreSetupTest', src: 'packages/core/test/core-setup.test.html' },
+					{ tag: 'fontsSetupTest', src: 'packages/fonts/test/fonts-setup.test.html' },
+					{ tag: 'schemeSetupTest', src: 'packages/scheme/test/scheme-setup.test.html' },
+					{ tag: 'drawerSetupTest', src: 'packages/drawer/test/drawer-setup.test.html' },
 				]
 			}
 		},

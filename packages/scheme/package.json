@@ -3,14 +3,14 @@
 	"version": "0.17.2",
 	"description": "Vivid scheme management service",
 	"author": "yinonov <yinon@hotmail.com>",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/scheme#readme",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/packages/scheme#readme",
 	"license": "ISC",
 	"main": "vvd-scheme.js",
 	"module": "vvd-scheme.js",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/scheme"
+		"directory": "packages/scheme"
 	},
 	"scripts": {
 		"build": "yarn --cwd ../../ wca:json && node scripts/parseComponentsList.js",

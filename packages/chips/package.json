@@ -2,7 +2,7 @@
 	"name": "@vonage/vwc-chips",
 	"version": "0.17.2",
 	"description": "> TODO: description",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/menu#readme",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/packages/menu#readme",
 	"license": "ISC",
 	"main": "vwc-chip.js",
 	"module": "vwc-chip.js",
@@ -14,7 +14,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/chip"
+		"directory": "packages/chip"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"

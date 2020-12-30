@@ -3,7 +3,7 @@
 	"version": "0.17.2",
 	"description": "drawer component",
 	"author": "yinonov <yinon@hotmail.com>",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/drawer#readme",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/packages/drawer#readme",
 	"license": "ISC",
 	"main": "vwc-drawer.js",
 	"module": "vwc-drawer.js",
@@ -16,7 +16,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/drawer"
+		"directory": "packages/drawer"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"

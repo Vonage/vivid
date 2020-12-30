@@ -32,10 +32,11 @@ rules:
   max-len: off
   block-spacing: off
 
-  "@typescript-eslint/explicit-member-accessibility": [error, {"accessibility": "no-public"}]
+  "@typescript-eslint/explicit-member-accessibility":
+    [error, { "accessibility": "no-public" }]
 
   no-new: warn
-  quotes: [error, single, {"avoidEscape": true}]
+  quotes: [error, single, { "avoidEscape": true }]
   no-var: error
   curly: error
   no-floating-decimal: error
@@ -60,7 +61,7 @@ rules:
   mocha/no-pending-tests: error
   mocha/no-skipped-tests: error
 overrides:
-  - files: ["common/**/*.ts", "components/**/*.ts"]
+  - files: ["packages/**/*.ts"]
     rules:
       no-unused-vars: off
       no-invalid-this: off

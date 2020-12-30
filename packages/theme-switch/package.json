@@ -3,7 +3,7 @@
 	"version": "0.17.2",
 	"description": "scheme switch component",
 	"author": "yinonov <yinon@hotmail.com>",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/theme-switch#readme",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/packages/theme-switch#readme",
 	"license": "ISC",
 	"main": "vwc-theme-switch.js",
 	"module": "vwc-theme-switch.js",
@@ -16,7 +16,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/theme-switch"
+		"directory": "packages/theme-switch"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"

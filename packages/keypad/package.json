@@ -3,7 +3,7 @@
 	"version": "0.17.2",
 	"description": "Web Component vwc-keypad following open-wc recommendations for Vonage Vivid",
 	"author": "Dwane <Dwane.Hemmings@vonage.com>",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/keypad#readme",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/packages/keypad#readme",
 	"license": "ISC",
 	"main": "vwc-keypad.js",
 	"module": "vwc-keypad.js",
@@ -16,7 +16,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/keypad"
+		"directory": "packages/keypad"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"

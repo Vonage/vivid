@@ -2,7 +2,7 @@
 	"name": "@vonage/vwc-tab-bar",
 	"version": "0.17.2",
 	"description": "tab bar component",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/tab-bar#readme",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/packages/tab-bar#readme",
 	"license": "ISC",
 	"main": "vwc-tab-bar.js",
 	"module": "vwc-tab-bar.js",
@@ -14,7 +14,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/tab-bar"
+		"directory": "packages/tab-bar"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"

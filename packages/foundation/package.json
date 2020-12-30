@@ -2,7 +2,7 @@
 	"name": "@vonage/vvd-foundation",
 	"version": "0.17.2",
 	"description": "internal package to hold constants, definitions and primitives to be used in the rest of Vivid ecosystem",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/foundation#readme",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/packages/foundation#readme",
 	"license": "ISC",
 	"files": [
 		"scss",
@@ -14,7 +14,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/foundation"
+		"directory": "packages/foundation"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"

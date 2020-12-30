@@ -32,9 +32,7 @@ async function onChange(path) {
 }
 
 const watchPath = [
-	'common/design-tokens/properties/**/*.json',
-	'common/**/src/**',
-	'components/**/src/**',
+	'packages/**/src/**'
 ];
 
 // Initialize watcher.

@@ -1,5 +1,5 @@
 {
-	"extends": "../../tsconfig.json",
+	"extends": "../tsconfig.settings.json",
 	"compilerOptions": {
 		"composite": true,
 		"rootDir": "src",
@@ -10,10 +10,10 @@
 	"exclude": ["src/test/*.ts"],
 	"references": [
 		{
-			"path": "../../common/foundation"
+			"path": "../foundation"
 		},
 		{
-			"path": "../../common/core"
+			"path": "../core"
 		}
 	]
 }

@@ -1,5 +1,5 @@
 {
-	"extends": "../../tsconfig.json",
+	"extends": "../tsconfig.settings.json",
 	"compilerOptions": {
 		"composite": true,
 		"rootDir": "src",
@@ -10,16 +10,16 @@
 	"exclude": ["src/test/*.ts"],
 	"references": [
 		{
-			"path": "../../common/core"
+			"path": "../core"
 		},
 		{
-			"path": "../../common/foundation"
+			"path": "../foundation"
 		},
 		{
-			"path": "../../common/style-coupling"
+			"path": "../style-coupling"
 		},
 		{
-			"path": "../../components/expansion-panel"
+			"path": "../expansion-panel"
 		}
 	]
 }

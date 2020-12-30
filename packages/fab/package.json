@@ -2,7 +2,7 @@
 	"name": "@vonage/vwc-fab",
 	"version": "0.17.2",
 	"description": "fab component",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/fab#readme",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/packages/fab#readme",
 	"license": "ISC",
 	"main": "vwc-fab.js",
 	"module": "vwc-fab.js",
@@ -15,7 +15,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/fab"
+		"directory": "packages/fab"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"

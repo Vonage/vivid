@@ -3,7 +3,7 @@
 	"version": "0.17.2",
 	"description": "menu component",
 	"author": "yinonov <yinon@hotmail.com>",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/menu#readme",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/packages/menu#readme",
 	"license": "ISC",
 	"main": "vwc-menu.js",
 	"module": "vwc-menu.js",
@@ -16,7 +16,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/menu"
+		"directory": "packages/menu"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"

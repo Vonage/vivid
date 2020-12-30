@@ -2,7 +2,7 @@
 	"name": "@vonage/vwc-circular-progress",
 	"version": "0.17.2",
 	"description": "circular progress component",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/circular-progress#readme",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/packages/circular-progress#readme",
 	"license": "ISC",
 	"main": "vwc-circular-progress.js",
 	"module": "vwc-circular-progress.js",
@@ -14,7 +14,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/circular-progress"
+		"directory": "packages/circular-progress"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"

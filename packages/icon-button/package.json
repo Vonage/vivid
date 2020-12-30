@@ -2,7 +2,7 @@
 	"name": "@vonage/vwc-icon-button",
 	"version": "0.17.2",
 	"description": "icon button component",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/icon-button#readme",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/packages/icon-button#readme",
 	"license": "ISC",
 	"main": "vwc-icon-button.js",
 	"module": "vwc-icon-button.js",
@@ -14,7 +14,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/icon-button"
+		"directory": "packages/icon-button"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"

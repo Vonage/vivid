@@ -2,7 +2,7 @@
 	"name": "@vonage/vwc-top-app-bar-fixed",
 	"version": "0.17.2",
 	"description": "top-app-bar-fixed component",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/top-app-bar-fixed#readme",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/packages/top-app-bar-fixed#readme",
 	"license": "ISC",
 	"main": "vwc-top-app-bar-fixed.js",
 	"module": "vwc-top-app-bar-fixed.js",
@@ -15,7 +15,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/top-app-bar-fixed"
+		"directory": "packages/top-app-bar-fixed"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"

@@ -2,7 +2,7 @@
 	"name": "@vonage/vwc-carousel",
 	"version": "0.17.2",
 	"description": "carousel component",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/carousel#readme",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/packages/carousel#readme",
 	"license": "ISC",
 	"main": "vwc-carousel.js",
 	"module": "vwc-carousel.js",
@@ -15,7 +15,7 @@
 	"repository": {
 		"type": "git",
 		"url": "ssh://github.com/vonage/vivid.git",
-		"directory": "components/carousel"
+		"directory": "packages/carousel"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"

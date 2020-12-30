@@ -2,7 +2,7 @@
 	"name": "@vonage/vvd-fonts",
 	"version": "0.17.2",
 	"description": "Vivid fonts initialisation service",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/common/fonts",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/packages/fonts",
 	"license": "ISC",
 	"main": "vvd-fonts.js",
 	"module": "vvd-fonts.js",

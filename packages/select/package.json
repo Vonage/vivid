@@ -3,7 +3,7 @@
 	"version": "0.17.2",
 	"description": "select component",
 	"author": "yinonov <yinon@hotmail.com>",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/select#readme",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/packages/select#readme",
 	"license": "ISC",
 	"main": "vwc-select.js",
 	"module": "vwc-select.js",
@@ -16,7 +16,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/select"
+		"directory": "packages/select"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"

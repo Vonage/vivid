@@ -3,14 +3,14 @@
 	"version": "0.17.2",
 	"description": "> TODO: description",
 	"author": "yinonov <yinon@hotmail.com>",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/style-coupling#readme",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/packages/style-coupling#readme",
 	"license": "ISC",
 	"main": "vvd-style-coupling.css.js",
 	"module": "vvd-style-coupling.css.js",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/style-coupling"
+		"directory": "packages/style-coupling"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"

@@ -3,7 +3,7 @@
 	"version": "0.17.2",
 	"description": "switch component",
 	"author": "yinonov <yinon@hotmail.com>",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/switch#readme",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/packages/switch#readme",
 	"license": "ISC",
 	"main": "vwc-switch.js",
 	"module": "vwc-switch.js",
@@ -16,7 +16,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/switch"
+		"directory": "packages/switch"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"

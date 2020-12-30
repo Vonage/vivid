@@ -3,12 +3,12 @@
 	"version": "0.17.2",
 	"description": "> TODO: description",
 	"author": "yinonov <yinon@hotmail.com>",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/typography#readme",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/packages/typography#readme",
 	"license": "ISC",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/typography"
+		"directory": "packages/typography"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"

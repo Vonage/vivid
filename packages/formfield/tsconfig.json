@@ -1,20 +1,16 @@
 {
-	"extends": "../../tsconfig.json",
+	"extends": "../tsconfig.settings.json",
 	"compilerOptions": {
 		"composite": true,
 		"rootDir": "src",
 		"outDir": ".",
 		"tsBuildInfoFile": ".tsbuildinfo"
 	},
-	"include": [
-		"src/*.ts"
-	],
-	"exclude": [
-		"src/test/*.ts"
-	],
+	"include": ["src/*.ts"],
+	"exclude": ["src/test/*.ts"],
 	"references": [
 		{
-			"path": "../../common/core"
+			"path": "../core"
 		}
 	]
 }

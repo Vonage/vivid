@@ -2,7 +2,7 @@
 	"name": "@vonage/vwc-radio",
 	"version": "0.17.2",
 	"description": "radio component",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/radio#readme",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/packages/radio#readme",
 	"license": "ISC",
 	"main": "vwc-radio.js",
 	"module": "vwc-radio.js",
@@ -15,7 +15,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/radio"
+		"directory": "packages/radio"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"

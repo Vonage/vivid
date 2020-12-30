@@ -1,5 +1,5 @@
 {
-	"extends": "../../tsconfig.json",
+	"extends": "../tsconfig.settings.json",
 	"compilerOptions": {
 		"module": "ESNext",
 		"composite": true,
@@ -7,18 +7,14 @@
 		"outDir": ".",
 		"tsBuildInfoFile": ".tsbuildinfo"
 	},
-	"include": [
-		"src/*.ts"
-	],
-	"exclude": [
-		"src/test/*.ts"
-	],
+	"include": ["src/*.ts"],
+	"exclude": ["src/test/*.ts"],
 	"references": [
 		{
-			"path": "../../common/core"
+			"path": "../core"
 		},
 		{
-			"path": "../../common/scheme"
+			"path": "../scheme"
 		}
 	]
 }

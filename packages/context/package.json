@@ -2,7 +2,7 @@
 	"name": "@vonage/vvd-context",
 	"version": "0.17.2",
 	"description": "> TODO: description",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/context#readme",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/packages/context#readme",
 	"license": "ISC",
 	"type": "module",
 	"main": "vvd-context.js",
@@ -16,7 +16,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/context"
+		"directory": "packages/context"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"

@@ -2,7 +2,7 @@
 	"name": "@vonage/vwc-file-picker",
 	"version": "0.17.2",
 	"description": "File/s picker component",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/upload#readme",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/packages/upload#readme",
 	"license": "ISC",
 	"main": "vwc-file-picker.js",
 	"module": "vwc-file-picker.js",
@@ -14,7 +14,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/file-picker"
+		"directory": "packages/file-picker"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"

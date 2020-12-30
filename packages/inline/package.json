@@ -3,7 +3,7 @@
 	"version": "0.17.2",
 	"description": "scheme switch component",
 	"author": "yinonov <yinon@hotmail.com>",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/inline#readme",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/packages/inline#readme",
 	"license": "ISC",
 	"main": "vwc-inline.js",
 	"module": "vwc-inline.js",
@@ -16,7 +16,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/inline"
+		"directory": "packages/inline"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1"
