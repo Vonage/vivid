@@ -25,6 +25,7 @@ async function run() {
 					['Introduction'],
 					'Components',
 					['Atoms', 'Composite'],
+					'Core',
 				],
 				method: 'alphabetical'
 			},
