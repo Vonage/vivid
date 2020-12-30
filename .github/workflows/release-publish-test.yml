@@ -32,9 +32,5 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
 
-      # Build and publish
-      - name: Build components
-        run: yarn compile
-
       - name: Build CDN icon resolver
         run: npx lerna run "generate-icon-resolver" --parallel --scope="@vonage/vwc-icon" -- --verboseOutput --resolveStrategy=cdn --awsBucketName=vivid-icons-prod --awsBaseUrl=https://icons.resources.vonage.com --awsAccessKey=${{ secrets.AWS_VIVID_DEMO_PROD_ACCESS }} --awsAccessSecret=${{ secrets.AWS_VIVID_DEMO_PROD_SECRET }}
