@@ -9,7 +9,7 @@ import { getTypographyStyle } from '../../../test/typography-utils.js';
 
 const COMPONENT_NAME = 'vwc-note';
 
-describe.only('note typography', async () => {
+describe('note typography', async () => {
 	let addElement = isolatedElementsCreation();
 
 	it('should have set typography for a header', async () => {
