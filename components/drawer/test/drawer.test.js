@@ -1,3 +1,4 @@
+import '../vwc-drawer';
 import {
 	getFrameLoadedInjected,
 	cleanFrame,

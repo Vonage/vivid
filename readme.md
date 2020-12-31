@@ -21,12 +21,31 @@ Below there are few essential highlights about the project, complemented by the 
 
 We are working hard to make a our consumers' experience as smooth as possible.
 
+#### Design System
 
+Design System is maintained by the designers team in Figma.
+Many of those 'raw' materials are automatically pulled into the Vivid's components implementation - so that we'll all rely on a single source of truth.
+
+See more on this aspect in the **Design System** documentation section.
+
+#### Components & Services
+
+Developing over Vivid is to actually use our services and components.
+
+See detailed guides on How To in the Guides documentation section.
+
+#### Examples
+
+We are using **Storybook** platform to exemplify our deliveries.
+There are several Storybooks available, each for it's own sake:
+- the latest production version is shown here: [vivid.vonage.com](https://vivid.vonage.com)
+- the currently development state (reflecting our main branch) is here: [dev.vivid.vonage.com](https://dev.vivid.vonage.com)
+- each pull-request also has it's own deployment, so that any feature in progress can be reviewed instantly - those dynamic deployments can be found in the GitHub's PR pages
+
+---
 ---
 
 Old content
-
-Demos, tutorials and living examples are at [vivid.vonage.com](https://vivid.vonage.com).
 
 Our architectural approach in general is [here](https://github.com/Vonage/vivid/docs/architecture.md).
 
