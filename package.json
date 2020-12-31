@@ -37,7 +37,6 @@
 		"compile": "yarn packages:build && yarn compile:styles && yarn compile:typescript",
 		"compile:styles": "node ./scripts/build-styles.js",
 		"compile:typescript": "tsc --build",
-		"build:icon-resolver": "cd ./components/icon && node ./build/vwc-icon-resolver-factory.js",
 		"git:clean": "git clean -xdf",
 		"watch": "node scripts/watcher.js",
 		"wca:json": "wca analyze components/*/src/*.?s --outFile custom-elements.json",
