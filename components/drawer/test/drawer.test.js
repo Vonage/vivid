@@ -1,4 +1,4 @@
-import '../vwc-drawer';
+import { VVD_THEME_ALTERNATE, THEME_ALTERNATE } from '../vwc-drawer';
 import {
 	getFrameLoadedInjected,
 	cleanFrame,
@@ -6,7 +6,6 @@ import {
 } from '../../../test/test-helpers.js';
 const VWC_DRAWER = 'vwc-drawer';
 const DRAWER_SETUP_HTML_TAG = 'drawerSetupTest';
-import { VVD_THEME_ALTERNATE, THEME_ALTERNATE } from '../vwc-drawer';
 
 describe('vwc-drawer', () => {
 	/* eslint-disable no-undef */
@@ -122,5 +121,5 @@ describe('vwc-drawer', () => {
 
 // FUNCTIONS
 async function drawerDefined(iframeWindow) {
-	return await iframeWindow.customElements.whenDefined(VWC_DRAWER);
+	return iframeWindow.customElements.whenDefined(VWC_DRAWER);
 }
