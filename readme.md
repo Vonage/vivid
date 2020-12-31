@@ -3,9 +3,9 @@
 
 # Meet VIVID,
 
-## Vonage's design system
+### Vonage's design system
 
-### Vivid provides components and tools to help product teams work more efficiently, deliver faster and safer, while providing end-users single Vonage unique look & feel.
+###### Vivid provides components and tools to help product teams work more efficiently, deliver faster and safer, while providing end-users single Vonage unique look & feel.
 
 <img src="assets/images/meet-vivid.svg"></img>
 
