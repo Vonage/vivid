@@ -5,12 +5,21 @@
 
 ## Vonage's design system
 
-### Vivid provides components and tools to help product teams work more efficiently, and to make Vonage's products and applications more cohesive.
+### Vivid provides components and tools to help product teams work more efficiently, deliver faster and safer, while providing end-users single Vonage unique look & feel.
 
 <img src="assets/images/meet-vivid.svg"></img>
 
-Vivid provides a Design System comprised of ready-to-use web components and services, aligned with the Vonage's design guidelines.
-Providing well-thought APIs and striving to stick to the best practices in every possible aspect, Vivid team's goal is to provide high quality and convenient to use UI platform for all Vonage.
+Vivid delivers a Design System built along Vonage's branding guidelines - all this by providing a ready-to-use web components and services.
+
+Striving to stick to the best practices and most up to date starndards, Vivid's goal is to provide high quality, easy to use, well-maintained and well documented UI platform for all Vonage products.
+
+Below there are few essential highlights about the project, complemented by the relevant links for a deep-divers whereever relevant.
+
+---
+
+### Getting started
+
+We are working hard to make a our consumers' experience as smooth as possible.
 
 
 ---
