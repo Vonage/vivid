@@ -7,9 +7,7 @@
 
 ### Vivid provides components and tools to help product teams work more efficiently, and to make Vonage's products and applications more cohesive.
 
-<p align="center">
-  <img src="assets/images/meet-vivid.svg"></img>
-</p>
+<img src="assets/images/meet-vivid.svg"></img>
 
 Vivid provides a Design System comprised of ready-to-use web components and services, aligned with the Vonage's design guidelines.
 Providing well-thought APIs and striving to stick to the best practices in every possible aspect, Vivid team's goal is to provide high quality and convenient to use UI platform for all Vonage.
@@ -21,9 +19,9 @@ Old content
 
 Demos, tutorials and living examples are at [vivid.vonage.com](https://vivid.vonage.com).
 
-Our architectural approach in general is [here](docs/architecture.md).
+Our architectural approach in general is [here](https://github.com/Vonage/vivid/docs/architecture.md).
 
-Contributor guidance is [here](docs/contributing.md).
+Contributor guidance is [here](https://github.com/Vonage/vivid/docs/contributing.md).
 
 ---
 
