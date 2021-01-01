@@ -45,7 +45,8 @@ function processJsonConfiguration(configPath) {
 	const configDir = dirname(configPath);
 	const mdInput = fs.readFileSync(resolve(configDir, config.sourcePath), FS_OPTIONS);
 	const htmlOut = converter.makeHtml(mdInput);
-	const storyJs = buildStoryJs(config.story, htmlOut);
+	const htmlFinal = applyTransformations(htmlOut);
+	const storyJs = buildStoryJs(config.story, htmlFinal);
 
 	//	dump
 	const outputFileName = config.outputName + (config.outputName.endsWith('.js')
@@ -75,6 +76,13 @@ function validateConfig(config) {
 	if (!config.story.name || typeof config.story.name !== 'string') {
 		throw new Error(`'story.name' MUST be a non-empty string; got '${config.story.name}'`);
 	}
+}
+
+function applyTransformations(htmlInput) {
+	return `
+		<link rel="stylesheet" href="assets/css/md-stories.css">
+		${htmlInput}
+	`;
 }
 
 function buildStoryJs(story, html) {

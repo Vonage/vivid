@@ -1,12 +1,10 @@
 # Architecture
 
-## Vivid Design System architecture
+### Vivid Design System architecture
 
-### Providing Design System requires some architectural decisions to be set in place. This page dedicated to outline the most important ones, providing some reasoning wherever possible.
+###### Providing Design System requires some architectural decisions to be set in place. This page dedicated to outline the most important ones, providing some reasoning wherever possible.
 
-<p align="center">
-  <img src="assets/images/architecture.svg"></img>
-</p>
+![Architecture](assets/images/architecture.svg)
 
 ### What we deliver
 
