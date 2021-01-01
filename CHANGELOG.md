@@ -3,20 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [0.18.0](https://github.com/Vonage/vivid/compare/v0.17.2...v0.18.0) (2021-01-01)
-
-
-### Features
-
-* **icon:** moved icon generation script ([#535](https://github.com/Vonage/vivid/issues/535)) ([efaddf4](https://github.com/Vonage/vivid/commit/efaddf4f2052e69103bcad96832fd6a320cb0d86))
-* iss 520/viv 212 headers elements ([#524](https://github.com/Vonage/vivid/issues/524)) ([20eaa8c](https://github.com/Vonage/vivid/commit/20eaa8c26b3771b226d0478eccfdac23e8a3a3b0)), closes [#520](https://github.com/Vonage/vivid/issues/520) [#520](https://github.com/Vonage/vivid/issues/520) [#520](https://github.com/Vonage/vivid/issues/520) [#520](https://github.com/Vonage/vivid/issues/520) [#520](https://github.com/Vonage/vivid/issues/520) [#520](https://github.com/Vonage/vivid/issues/520) [#520](https://github.com/Vonage/vivid/issues/520) [#520](https://github.com/Vonage/vivid/issues/520) [#520](https://github.com/Vonage/vivid/issues/520)
-* **icon:** added annotations ([95cf387](https://github.com/Vonage/vivid/commit/95cf387da05ef6ab86a0b95ae31833d7096d2fa4))
-* **list:** list expansion panel ([#518](https://github.com/Vonage/vivid/issues/518)) ([dce3f50](https://github.com/Vonage/vivid/commit/dce3f504d9158611414d389884c8142af1f8d504))
-
-
-
-
-
 ## [0.17.2](https://github.com/Vonage/vivid/compare/v0.17.1...v0.17.2) (2020-12-17)
 
 

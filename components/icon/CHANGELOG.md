@@ -1,20 +1,3 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-# [0.18.0](https://github.com/vonage/vivid/compare/v0.17.2...v0.18.0) (2021-01-01)
-
-
-### Features
-
-* **icon:** added annotations ([95cf387](https://github.com/vonage/vivid/commit/95cf387da05ef6ab86a0b95ae31833d7096d2fa4))
-* **icon:** moved icon generation script ([#535](https://github.com/vonage/vivid/issues/535)) ([efaddf4](https://github.com/vonage/vivid/commit/efaddf4f2052e69103bcad96832fd6a320cb0d86))
-
-
-
-
-
 ## [0.17.2](https://github.com/vonage/vivid/compare/v0.17.1...v0.17.2) (2020-12-17)
 
 
@@ -135,3 +118,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * touchup ([02903b4](https://github.com/vonage/vivid/commit/02903b4d87d96892bf7659fc6cd196dc823f1dd0))
 * **icon:** Added 104 new brand icons ([6e503ca](https://github.com/vonage/vivid/commit/6e503cab0666241ae31208fd607f25d7366c0006))
 * **icon:** added add-full and add-outline icons ([3b2f915](https://github.com/vonage/vivid/commit/3b2f915606e576dea0b62cf4724098da5afc4b1d))
+
+
+

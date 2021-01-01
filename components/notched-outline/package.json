@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-notched-outline",
-	"version": "0.18.0",
+	"version": "0.17.2",
 	"description": "notched-outline component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/notched-outline#readme",
 	"license": "ISC",

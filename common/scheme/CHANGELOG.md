@@ -1,16 +1,3 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-# [0.18.0](https://github.com/vonage/vivid/compare/v0.17.2...v0.18.0) (2021-01-01)
-
-**Note:** Version bump only for package @vonage/vvd-scheme
-
-
-
-
-
 ## [0.17.2](https://github.com/vonage/vivid/compare/v0.17.1...v0.17.2) (2020-12-17)
 
 
@@ -132,3 +119,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **scheme:** emitting event output ([790e7fc](https://github.com/vonage/vivid/commit/790e7fc716f737a82b6e25775360a0a2bff5a848))
 * **scheme:** scheme selection interacts with scheme loader ([a4b5dc0](https://github.com/vonage/vivid/commit/a4b5dc0f1e1dc9d5ca3874e75ae560a051ea0f2d))
+
+
+

@@ -1,16 +1,3 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-# [0.18.0](https://github.com/vonage/vivid/compare/v0.17.2...v0.18.0) (2021-01-01)
-
-**Note:** Version bump only for package @vonage/vwc-note
-
-
-
-
-
 ## [0.17.2](https://github.com/vonage/vivid/compare/v0.17.1...v0.17.2) (2020-12-17)
 
 
@@ -47,3 +34,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 * iss-454 / viv-158 vwc-note component ([#455](https://github.com/vonage/vivid/issues/455)) ([137d772](https://github.com/vonage/vivid/commit/137d772bc66d570c61fd9fad0367c9d528c45d11)), closes [#454](https://github.com/vonage/vivid/issues/454) [#454](https://github.com/vonage/vivid/issues/454) [#454](https://github.com/vonage/vivid/issues/454) [#454](https://github.com/vonage/vivid/issues/454) [#454](https://github.com/vonage/vivid/issues/454) [#454](https://github.com/vonage/vivid/issues/454) [#454](https://github.com/vonage/vivid/issues/454) [#454](https://github.com/vonage/vivid/issues/454) [#454](https://github.com/vonage/vivid/issues/454) [#454](https://github.com/vonage/vivid/issues/454) [#454](https://github.com/vonage/vivid/issues/454) [#454](https://github.com/vonage/vivid/issues/454) [#454](https://github.com/vonage/vivid/issues/454)
+
+
+

@@ -1,16 +1,3 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-# [0.18.0](https://github.com/vonage/vivid/compare/v0.17.2...v0.18.0) (2021-01-01)
-
-**Note:** Version bump only for package @vonage/vwc-audio
-
-
-
-
-
 ## [0.17.2](https://github.com/vonage/vivid/compare/v0.17.1...v0.17.2) (2020-12-17)
 
 
@@ -71,3 +58,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **audio:** removed redundant ts ([2694149](https://github.com/vonage/vivid/commit/26941497ca17d134cf5de24b523593c097ef2714))
 * **audio:** removed redundant ts ([71256ba](https://github.com/vonage/vivid/commit/71256ba620fa79e632dbda6a74ea7aa23491b818))
 * **chip:** linter overrides ([c3c0fa2](https://github.com/vonage/vivid/commit/c3c0fa23a81fecc819b564d04570312f57b6354f))
+
+
+

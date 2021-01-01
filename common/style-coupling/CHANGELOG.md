@@ -1,16 +1,3 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-# [0.18.0](https://github.com/vonage/vivid/compare/v0.17.2...v0.18.0) (2021-01-01)
-
-**Note:** Version bump only for package @vonage/vvd-style-coupling
-
-
-
-
-
 ## [0.17.2](https://github.com/vonage/vivid/compare/v0.17.1...v0.17.2) (2020-12-17)
 
 
@@ -103,3 +90,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 * **common:** added style-coupling package ([ba744cd](https://github.com/vonage/vivid/commit/ba744cdf12d0f963770a476e9198ac3126266fd0))
+
+
+

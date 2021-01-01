@@ -1,16 +1,3 @@
-# Change Log
-
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
-
-# [0.18.0](https://github.com/vonage/vivid/compare/v0.17.2...v0.18.0) (2021-01-01)
-
-**Note:** Version bump only for package @vonage/vwc-textfield
-
-
-
-
-
 ## [0.17.2](https://github.com/vonage/vivid/compare/v0.17.1...v0.17.2) (2020-12-17)
 
 
@@ -119,3 +106,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **form elements:** form association cleanup ([#321](https://github.com/vonage/vivid/issues/321)) ([a4f89d3](https://github.com/vonage/vivid/commit/a4f89d38861f7486c9f1fc142c873e0f1bb73efc))
 * **textarea:** textarea form association ([#300](https://github.com/vonage/vivid/issues/300)) ([19ebd4e](https://github.com/vonage/vivid/commit/19ebd4e5f694738d2687f2a9d2a24ef2fa9beb4b))
+
+
+

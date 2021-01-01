@@ -1,6 +1,6 @@
 {
 	"name": "@material/mwc-chips",
-	"version": "0.18.0",
+	"version": "0.2.0",
 	"description": "",
 	"main": "mwc-chips.js",
 	"module": "mwc-chips.js",
