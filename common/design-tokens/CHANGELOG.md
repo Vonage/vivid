@@ -1,3 +1,19 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [0.18.0](https://github.com/vonage/vivid/compare/v0.17.2...v0.18.0) (2021-01-01)
+
+
+### Features
+
+* iss 520/viv 212 headers elements ([#524](https://github.com/vonage/vivid/issues/524)) ([20eaa8c](https://github.com/vonage/vivid/commit/20eaa8c26b3771b226d0478eccfdac23e8a3a3b0)), closes [#520](https://github.com/vonage/vivid/issues/520) [#520](https://github.com/vonage/vivid/issues/520) [#520](https://github.com/vonage/vivid/issues/520) [#520](https://github.com/vonage/vivid/issues/520) [#520](https://github.com/vonage/vivid/issues/520) [#520](https://github.com/vonage/vivid/issues/520) [#520](https://github.com/vonage/vivid/issues/520) [#520](https://github.com/vonage/vivid/issues/520) [#520](https://github.com/vonage/vivid/issues/520)
+
+
+
+
+
 ## [0.17.2](https://github.com/vonage/vivid/compare/v0.17.1...v0.17.2) (2020-12-17)
 
 
@@ -121,6 +137,3 @@
 ### Features
 
 * **common:** added style-coupling package ([ba744cd](https://github.com/vonage/vivid/commit/ba744cdf12d0f963770a476e9198ac3126266fd0))
-
-
-

@@ -1,3 +1,16 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [0.18.0](https://github.com/vonage/vivid/compare/v0.17.2...v0.18.0) (2021-01-01)
+
+**Note:** Version bump only for package @vonage/vwc-chips
+
+
+
+
+
 ## [0.17.2](https://github.com/vonage/vivid/compare/v0.17.1...v0.17.2) (2020-12-17)
 
 
@@ -101,6 +114,3 @@
 
 * **chip:** integrated vwc-icon and revised stories ([e4a84af](https://github.com/vonage/vivid/commit/e4a84af429b34e444b5eb0b099c28199f601aa06))
 * **chips:** handled pr remarks ([485e710](https://github.com/vonage/vivid/commit/485e7101c8669ea84aba62e97ac0f4ae2cfead64))
-
-
-

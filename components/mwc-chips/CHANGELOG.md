@@ -1,3 +1,16 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [0.18.0](https://github.com/material-components/material-components-web-components/compare/v0.17.2...v0.18.0) (2021-01-01)
+
+**Note:** Version bump only for package @material/mwc-chips
+
+
+
+
+
 # [0.2.0](https://github.com/material-components/material-components-web-components/compare/v0.17.1...v0.2.0) (2020-12-17)
 
 
@@ -76,6 +89,3 @@
 ### Features
 
 * **chips:** handled pr remarks ([485e710](https://github.com/material-components/material-components-web-components/commit/485e7101c8669ea84aba62e97ac0f4ae2cfead64))
-
-
-

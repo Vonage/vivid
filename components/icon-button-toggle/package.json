@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-icon-button-toggle",
-	"version": "0.17.2",
+	"version": "0.18.0",
 	"description": "icon button component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/icon-button-toggle#readme",
 	"license": "ISC",
@@ -25,9 +25,9 @@
 	"dependencies": {
 		"@material/mwc-icon-button": "^0.20.0",
 		"@material/mwc-icon-button-toggle": "^0.20.0",
-		"@vonage/vvd-core": "^0.17.2",
-		"@vonage/vvd-style-coupling": "^0.17.2",
-		"@vonage/vwc-icon-button": "^0.17.2",
+		"@vonage/vvd-core": "^0.18.0",
+		"@vonage/vvd-style-coupling": "^0.18.0",
+		"@vonage/vwc-icon-button": "^0.18.0",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.3"
 	}

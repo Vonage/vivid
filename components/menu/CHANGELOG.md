@@ -1,3 +1,16 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# [0.18.0](https://github.com/vonage/vivid/compare/v0.17.2...v0.18.0) (2021-01-01)
+
+**Note:** Version bump only for package @vonage/vwc-menu
+
+
+
+
+
 ## [0.17.2](https://github.com/vonage/vivid/compare/v0.17.1...v0.17.2) (2020-12-17)
 
 
@@ -80,6 +93,3 @@
 ### Bug Fixes
 
 * menu border radius to 6px ([2859540](https://github.com/vonage/vivid/commit/2859540ed912b9ab5a6e50912b6e2904d328d6d3))
-
-
-
