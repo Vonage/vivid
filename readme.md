@@ -1,4 +1,4 @@
-![Quality](https://github.com/Vonage/vivid/workflows/Compile%20&%20Test/badge.svg)
+[![Quality Status](https://github.com/Vonage/vivid/workflows/Compile%20&%20Test/badge.svg)](https://github.com/Vonage/vivid/actions?query=workflow%3A%22Compile+%26+Test%22)
 [![Coverage Status](https://coveralls.io/repos/github/Vonage/vivid/badge.svg?t=v9CrbP)](https://coveralls.io/github/Vonage/vivid)
 
 # Meet VIVID,
@@ -65,31 +65,6 @@ Obviously, most likely Vivid products will be consumed as **npm** dependencies i
 
 ---
 
-#### Roadmap
-
-The system contains these aspects:
-
-- general services/facilities (fonts management, scheme management etc)
-- atomic/generic components
-- high level business-logic specific components
-
-The overall roadmap may be split into the the following:
-
-- alpha (0.0.x versions; alpha-romeo :)) - initial release (month to few months?), deliverables of this release are likely to have breaking changes
-  - establishing infra of the CI/CD, deployment space for development and for production
-  - establishing a process of feedback-based delivery in a short loops, levereging GitHub issues engine for feedback and discussion
-  - actual delivery of a few simple base elements as for an early feedback collection and establishing overall design pattern to be expected by the consuming community
-- beta (0.x.x versions; bugatti :)) - wide and verify release (few months?), deliverables of this release are expected to be stable from API perspective
-  - applying the feedback collected from the alpha release
-  - adding more components to the pool
-  - finalizing anything API related
-- GA (1.x.x versions; ) - first stable release
-  - APIs are finalized and any future breaking changes will require deprecation-removal cycle
-  - all of the basic components are implemented
-  - some of the high-level components implemented
-
-> As part of our 'go to market' plan, we are focusing first on the essential components, those that are already exist in Volta and used. Quick transition of Volta's components towards Vivid's ones will allow us early-feedback/early-treatment, incremental development and prevent double development and future re-write of the new components.
-
 ##### Common
 
 | Component    | Package                                                                                                                                      | Status | Issues                                                                                        |
@@ -135,14 +110,3 @@ The overall roadmap may be split into the the following:
 
 ---
 
-#### Issues
-
-We use GitHub Issues as the official bug tracker for **Vivid** Please check the [existing issues](https://github.com/vonage/vivid/issues). It's possible someone has already reported the same problem.
-
-If your problem or idea is not addressed yet, [open a new issue](https://github.com/vonage/vivid/issues/new).
-
----
-
-#### Suggestions
-
-Go through the [board](https://github.com/vonage/vivid/projects/1) to search for existing feedbacks and share yours if not already addressed.
