@@ -2,7 +2,7 @@
 
 ### We are planning amazing things!
 
-##### Our system conteins the following aspects - general services, atomic components and high level business-logic specific components.
+###### Our system contains the following aspects - general services, atomic components and high level business-logic specific components.
 
 ![Roadmap](assets/images/roadmap.svg)
 

@@ -62,4 +62,4 @@ Below is the chart, that roughtly outlines the source code transformations from 
 
 ![Code transformation flow](assets/images/vivid-code-transformation-flow.svg)
 
-Higher level flow, CI/CD perspective of the things is motion, is outlined in the [Dev/Ops process documentation](./dev-ops-process.md).
+Higher level flow, CI/CD perspective of the things is motion, is outlined in the [Dev/Ops process documentation](https://github.com/Vonage/vivid/blob/master/docs/dev-ops-process.md).
