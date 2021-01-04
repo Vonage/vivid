@@ -18,14 +18,15 @@ async function run() {
 			storySort: {
 				order: [
 					'Introduction',
-					['Meet Vivid', 'Getting Started', 'Architecture', 'Roadmap', 'Contact Us', 'Components List'],
+					['Meet Vivid', 'Getting Started', 'Architecture', 'Roadmap', 'Contact Us'],
 					'Guides',
-					['Installation', 'Context'],
+					['Installation'],
 					'Design System',
 					['Introduction'],
-					'Components',
-					['Atoms', 'Composite'],
 					'Core',
+					['Context', 'Fonts', 'Typography'],
+					'Components',
+					['Components List', 'Atoms', 'Composite'],
 				],
 				method: 'alphabetical'
 			},
