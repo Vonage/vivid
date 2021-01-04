@@ -7,7 +7,7 @@ export default {
 export const ComponentsList = () => html`
 	<link rel="stylesheet" href="assets/css/md-stories.css">
 	<h1 id="components">Components</h1>
-	<h3>Browser all components</h3>
+	<h3>Browse all components</h3>
 	<p>
 		<img src="assets/images/components.svg">
 	</p>
@@ -15,6 +15,7 @@ export const ComponentsList = () => html`
 `;
 ComponentsList.parameters = {
 	options: {
-		showPanel: false
+		showPanel: false,
+		isToolshown: false
 	}
 }
