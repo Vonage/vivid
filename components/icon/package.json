@@ -5,6 +5,7 @@
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/icon#readme",
 	"license": "ISC",
 	"main": "./src/vwc-icon.js",
+	"types": "./src/vwc-icon.d.ts",
 	"exports": "./src/vwc-icon.js",
 	"type": "module",
 	"files": [
@@ -19,7 +20,8 @@
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1",
-		"build": "node ./build/vwc-icon-resolver-factory.js"
+		"generate-icon-resolver": "node ./build/vwc-icon-resolver-factory.js",
+		"build": "tsc --allowJs --emitDeclarationOnly -d ./src/vwc-icon.js && yarn generate-icon-resolver"
 	},
 	"bugs": {
 		"url": "https://github.com/Vonage/vivid/issues"

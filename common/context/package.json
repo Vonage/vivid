@@ -4,6 +4,7 @@
 	"description": "> TODO: description",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/context#readme",
 	"license": "ISC",
+	"type": "module",
 	"main": "vvd-context.js",
 	"module": "vvd-context.js",
 	"files": [

@@ -4,7 +4,7 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Atoms/Textarea',
+	title: 'Components/Atoms/Textarea',
 	component: 'vwc-textarea',
 	argTypes
 }

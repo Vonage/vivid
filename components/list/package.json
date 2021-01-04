@@ -26,6 +26,9 @@
 	"dependencies": {
 		"@material/mwc-list": "^0.20.0",
 		"@vonage/vvd-core": "^0.17.2",
+		"@vonage/vwc-icon": "^0.17.2",
+		"@vonage/vwc-expansion-panel": "^0.17.2-pre.1",
+		"@vonage/vvd-foundation": "^0.17.2",
 		"@vonage/vvd-style-coupling": "^0.17.2",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.3"

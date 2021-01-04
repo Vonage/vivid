@@ -2,7 +2,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/Vonage/vivid/badge.svg?t=v9CrbP)](https://coveralls.io/github/Vonage/vivid)
 
 <p align="center">
-  <img src="./assets/images/vivid-hero.png"></img>
+  <img src="assets/images/vivid-hero.png"></img>
 </p>
 
 # Vivid UI components
@@ -11,9 +11,9 @@ Vivid provides a Design System comprised of ready-to-use web components and serv
 
 Demos, tutorials and living examples are at [vivid.vonage.com](https://vivid.vonage.com).
 
-Our architectural approach in general is [here](./docs/architecture.md).
+Our architectural approach in general is [here](docs/architecture.md).
 
-Contributor guidance is [here](./docs/contributing.md).
+Contributor guidance is [here](docs/contributing.md).
 
 ---
 

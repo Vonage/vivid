@@ -4,7 +4,7 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Atoms/IconButtonToggle',
+	title: 'Components/Atoms/IconButtonToggle',
 	component: 'vwc-icon-button-toggle',
 	argTypes
 };

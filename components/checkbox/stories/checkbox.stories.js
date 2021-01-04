@@ -5,7 +5,7 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Atoms/Checkbox',
+	title: 'Components/Atoms/Checkbox',
 	component: 'vwc-checkbox',
 	argTypes
 }
