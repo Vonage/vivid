@@ -6,23 +6,32 @@
 
 ![Contact Us](assets/images/contact-us.svg)
 
-### Slack
+### ![Logo Slack](assets/images/logo-slack.svg) Slack
 
-The fastest way to reach out to the Vivid team or get updated on the lastest stuff is via [the Slack channel](https://vonage.slack.com/archives/GVC6M0QF2).
+The fastest way to reach out to the Vivid team or get updated on the lastest stuff is via the Slack channels.
+We are interacting through, monitoring and frequently updating the following channels:
+* [ask-vivid](https://vonage.slack.com/archives/C013F0YKH99) - public channel for any open conversation (well, Vivid related too :) )
+* [vivid-engineering](https://vonage.slack.com/archives/GVC6M0QF2) - join-by-invitation channel for a more thorough technical discussions, please ask some of us to join you if needed
 
 ---
 
-### Issues
+### ![Logo GitHub](assets/images/logo-github.svg) GitHub
 
 Vivid uses Jira and GitHub Issues as the official bug trackers. While Jira is more for our own internal stuff management, GitHub Issues is probably the fastest channel to notify us on any issue. 
 
-Please check the [existing issues](https://github.com/vonage/vivid/issues) first.
+Please check the [existing issues](https://github.com/Vonage/vivid/issues) first.
 It's possible someone has already reported the same problem.
 
-If your problem or idea is not addressed yet, [open a new one](https://github.com/vonage/vivid/issues/new).
+If your problem or idea is not addressed yet, [open a new one](https://github.com/Vonage/vivid/issues/new).
+
+---
+
+### ![Logo Workspace](assets/images/logo-workspace.svg) Workspace
+
+Join our [Workspace group](https://vonage.workplace.com/groups/532641777422792) to stay on top of new releases.
 
 ---
 
 ### Suggestions
 
-Go through the [board](https://github.com/vonage/vivid/projects/1) to search for existing feedbacks and share yours if not already addressed.
+Go through the [board](https://github.com/Vonage/vivid/projects/1) to search for existing feedbacks and share yours if not already addressed.

@@ -37,7 +37,6 @@ async function processJsConfiguration(configPath) {
 	let mdText = fs.readFileSync(resolve(configDir, config.sourcePath), FS_OPTIONS);
 	if (config.mdPreProcess) {
 		mdText = config.mdPreProcess(mdText);
-		console.log(mdText);
 	}
 	let htmlText = converter.makeHtml(mdText);
 	if (config.htmlPostProcess) {

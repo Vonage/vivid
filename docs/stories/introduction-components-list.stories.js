@@ -1,7 +1,7 @@
 import { html } from 'lit-element';
 
 export default {
-	title: 'Introduction/Components List',
+	title: 'Components/Components List',
 };
 
 export const ComponentsList = () => html`
