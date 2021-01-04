@@ -15,14 +15,18 @@ Striving to stick to the best practices and most up to date starndards, Vivid's 
 
 ---
 
-### Documentation links
+### Documentation
 
-link to getting started
-link to architecture
-link to contributor guide
+For the convenience, we've organized all our documentation under the following topics.
 
+#### Introductory
 
+[Getting started](docs/getting-started.md)
+[Architecture](docs/architecture.md)
+[Roadmap](docs/roadmap.md)
+[Contact us](docs/contact-us.md)
 
-Our architectural approach in general is [here](https://github.com/Vonage/vivid/docs/architecture.md).
+#### Guides
 
-Contributor guidance is [here](https://github.com/Vonage/vivid/docs/contributing.md).
+[Installation](docs/installation.md)
+[Contribution](docs/contribution.md)
