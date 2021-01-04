@@ -1,5 +1,6 @@
 import path from "path";
 import kefir from "kefir";
+import got from "got";
 import aws from "aws-sdk";
 import parseArgs from "minimist";
 import { createHash } from "crypto";
@@ -13,7 +14,9 @@ const
 	DEFAULT_SKIP = false,
 	DEFAULT_RESOLVE_STRATEGY = "esm", // cdn/esm
 	DEFAULT_CDN_CACHE_CONTROL = "public, max-age=604800",
-	DEFAULT_VERBOSE = false;
+	DEFAULT_VERBOSE = false,
+	DEFAULT_ICON_SOURCE_BASE_URL = "http://ec2-3-210-186-204.compute-1.amazonaws.com:8881",
+	DEFAULT_ICON_SOURCE = "fs";
 
 const
 	{
@@ -25,29 +28,67 @@ const
 		iconFolder = DEFAULT_ICON_FOLDER,
 		outputFolder = DEFAULT_OUTPUT_FOLDER,
 		resolveStrategy = DEFAULT_RESOLVE_STRATEGY,
-		verboseOutput = DEFAULT_VERBOSE
+		iconSource = DEFAULT_ICON_SOURCE,
+		verboseOutput = DEFAULT_VERBOSE,
+		iconSetVersion
 	} = parseArgs(process.argv.slice(2), { alias: { "skip": "awsSkipUpload", "v": "verboseOutput" } }),
 	log = (message)=> console.log(["✓", message].join(' ')),
 	warn = (message)=> console.warn(["✘", message].join(' '));
 
 const
-	baseDir = (filename)=> path.resolve(...[iconFolder, filename].filter(Boolean)),
-	sha256 = (text)=>{
+	sha256 = (text)=> {
 		const hasher = createHash('sha256');
 		hasher.update(text);
 		return hasher.digest('hex');
 	};
 
-const iconStream = kefir
-	.fromNodeCallback((cb)=> readdir(baseDir(), cb))
-	.flatten()
-	.filter((filename)=> path.extname(filename.toLowerCase()) === ".svg")
-	.map(baseDir)
-	.flatMap((filename)=> {
-		return kefir
-			.fromNodeCallback((cb) => readFile(filename, 'utf8', cb))
-			.map((content)=> ({ content, filename }));
-	});
+const createFsIconStream = function(){
+	const baseDir = (filename)=> path.resolve(...[iconFolder, filename].filter(Boolean));
+	return kefir
+		.fromNodeCallback((cb)=> readdir(baseDir(), cb))
+		.flatten()
+		.filter((filename)=> path.extname(filename.toLowerCase()) === ".svg")
+		.map(baseDir)
+		.flatMap((filename)=> {
+			return kefir
+				.fromNodeCallback((cb) => readFile(filename, 'utf8', cb))
+				.map((content)=> ({ content, filename }));
+		});
+};
+
+const createWebIconStream = function(){
+	const DOWNLOAD_CONCURRENCY = 50;
+
+	const
+		manifestUrlTemplate = (version)=> `${DEFAULT_ICON_SOURCE_BASE_URL}/set/${version}/catalog.json`,
+		iconUrlTemplate = (iconHash)=> `${DEFAULT_ICON_SOURCE_BASE_URL}/icon/${iconHash}.svg`;
+
+	return kefir
+		.fromPromise(
+			got({
+				url: manifestUrlTemplate(iconSetVersion),
+				responseType: 'json',
+				resolveBodyOnly: true
+			})
+		)
+		.flatten()
+		.flatMapConcurLimit(({ id, hash })=> {
+			return kefir
+				.fromNodeCallback((cb)=>
+					got({
+						url: iconUrlTemplate(hash),
+						resolveBodyOnly: true,
+						encoding: 'utf8'
+					}).then(cb.bind(null, null), cb)
+				)
+				.map((content)=> ({ content, filename: [id, 'svg'].join('.') }))
+		}, DOWNLOAD_CONCURRENCY);
+};
+
+const iconStream = ({
+	'fs': createFsIconStream,
+	'web': createWebIconStream
+}[iconSource])();
 
 const createAwsResolver = function({ awsAccessKey, awsAccessSecret, awsBucketName, awsSkipUpload }){
 	const pushToS3Bucket = (iconStream)=> {
