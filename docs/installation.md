@@ -6,6 +6,8 @@
 
 ![Installation](assets/images/installation.svg)
 
+[Back to main page](../readme.md)
+
 Our deliveries are available as GitHub packages, they are privately accessible within Vonage organization.
 
 Please visit [Vivid packages page](https://github.com/Vonage/vivid/packages) to enlist our latest releases. You may further drill into each package to read its specific documentation, review previous versions etc.

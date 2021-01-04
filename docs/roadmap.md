@@ -6,6 +6,8 @@
 
 ![Roadmap](assets/images/roadmap.svg)
 
+[Back to main page](../readme.md)
+
 ### Volta parity
 
 As part of our 'go to market' plan, we are focusing first on the essential components, those that are already exist in Volta and are in use.

@@ -6,6 +6,9 @@
 
 ![Architecture](assets/images/architecture.svg)
 
+
+[Back to main page](../readme.md)
+
 ### What we deliver
 
 Vivid's approach is mostly relies on the [Open-WC](https://open-wc.org/guide/) guidelines. As a such, we provide our products as a __web-components__, namely: components defined as custom elements, featuring templating, shadow DOM etc.

@@ -6,6 +6,8 @@
 
 ![Contact Us](assets/images/contact-us.svg)
 
+[Back to main page](../readme.md)
+
 ### ![Logo Slack](assets/images/logo-slack.svg) Slack
 
 The fastest way to reach out to the Vivid team or get updated on the lastest stuff is via the Slack channels.

@@ -6,6 +6,8 @@
 
 ![Contribution]()
 
+[Back to main page](../readme.md)
+
 We believe, that this project should be managed as an internal open source, so any contributions are most welcome.
 
 As with any other platform-like case, responsibility for a stable and quality code for all, requires some process to be followed and some reasonable gatekeepers to pass through.

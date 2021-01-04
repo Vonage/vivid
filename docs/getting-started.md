@@ -10,6 +10,8 @@ We are working hard to make a our consumers' experience as smooth as possible.
 
 Vivid team produces contents for and with both, the designers team and the Web developers.
 
+[Back to main page](../readme.md)
+
 ### Design System
 
 Design System is maintained by the designers team across Vonage in Figma tool.
