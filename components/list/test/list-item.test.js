@@ -45,6 +45,16 @@ describe('list item', () => {
 			await waitNextTask();
 			assertListItemDimensions(actualElements[0].children, itemsNum, 48);
 		});
+
+		it('should have dense size when dense', async () => {
+			const itemsNum = 3;
+			const actualElements = addElement(
+				buildListOfNItems(itemsNum, VWC_LIST_ITEM)
+			);
+			for (let item of actualElements[0].children) item.dense = true;
+			await waitNextTask();
+			assertListItemDimensions(actualElements[0].children, itemsNum, 40);
+		});
 	});
 
 	describe(`performance issue`, function () {
