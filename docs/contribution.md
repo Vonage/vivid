@@ -4,7 +4,7 @@
 
 ###### We always appreciate code contributions and collaborations as our mission is to make it easy and useful for you.
 
-![Contribution](assets/images/contribution.md)
+![Contribution](assets/images/contribution.svg)
 
 [Back to main page](../readme.md)
 
