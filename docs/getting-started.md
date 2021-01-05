@@ -6,7 +6,7 @@
 
 ![Getting started](assets/images/getting-started.svg)
 
-We are working hard to make a our consumers' experience as smooth as possible.
+We are working hard to make our consumers' experience as smooth as possible.
 
 Vivid team produces contents for and with both, the designers team and the Web developers.
 
