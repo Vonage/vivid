@@ -28,9 +28,9 @@ If your problem or idea is not addressed yet, [open a new one](https://github.co
 
 ---
 
-### ![Logo Workspace](assets/images/logo-workspace.svg) Workspace
+### ![Logo Workplace](assets/images/logo-workplace.svg) Workplace
 
-Join our [Workspace group](https://vonage.workplace.com/groups/532641777422792) to stay on top of new releases.
+Join our [Workplace group](https://vonage.workplace.com/groups/532641777422792) to stay on top of new releases.
 
 ---
 

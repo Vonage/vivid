@@ -46,8 +46,11 @@ On top of those, we are going to deliver, and actually already have some, of the
 
 ### Preview
 
-We are using **Storybook** platform to exemplify our deliveries.
+We are using **Storybook** platform to document and exemplify our deliveries.
 There are several Storybooks available, each for it's own sake:
 - the latest production version is shown here: [vivid.vonage.com](https://vivid.vonage.com)
 - the currently development state (reflecting our main branch) is here: [dev.vivid.vonage.com](https://dev.vivid.vonage.com)
 - each pull-request also has it's own deployment, so that any feature in progress can be reviewed instantly - those dynamic deployments can be found in the GitHub's PR pages
+
+Additionally, we maintain the following showcases:
+* [Icons gallery](https://icons.vivid.vonage.com)

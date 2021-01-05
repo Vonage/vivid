@@ -12,7 +12,16 @@ export default {
 		}
 	},
 	htmlPostProcess: htmlText => {
-		return htmlText
+		let result = htmlText
 			.replace('href="../readme.md"', 'href="/?path=/story/introduction-meet-vivid--meet-vivid"');
+		result += `
+			<style>
+				h3 > img {
+					height: 36px;
+					width: auto;
+				}
+			</style>
+		`;
+		return result;
 	}
 };
