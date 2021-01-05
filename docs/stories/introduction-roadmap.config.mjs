@@ -10,5 +10,9 @@ export default {
 				isToolshown: false
 			}
 		}
+	},
+	htmlPostProcess: htmlText => {
+		return htmlText
+			.replace('href="../readme.md"', 'href="/?path=/story/introduction-meet-vivid--meet-vivid"');
 	}
 }
