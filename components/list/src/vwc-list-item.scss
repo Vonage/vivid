@@ -1,12 +1,27 @@
+@use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+
+$vvd-list-item-block-size: --vvd-list-item-block-size;
 
 :host {
 	$gutter: 12px;
 	border-radius: 6px;
+	#{$vvd-list-item-block-size}: 48px;
+	height: var(#{$vvd-list-item-block-size});
+	block-size: var(#{$vvd-list-item-block-size});
 	--mdc-list-side-padding: #{$gutter};
 	--mdc-list-item-graphic-margin: #{$gutter};
 	--mdc-list-item-graphic-size: 20px;
+	--mdc-list-item-meta-size: 20px;
 	--mdc-theme-text-icon-on-background: var(
 		#{scheme-variables.$vvd-color-on-base}
 	);
+	--mdc-theme-text-hint-on-background: var(
+		#{scheme-variables.$vvd-color-on-base}
+	);
+	@include typography.typography-cat-shorthand('body-2');
+}
+
+:host([dense]) {
+	#{$vvd-list-item-block-size}: 40px;
 }

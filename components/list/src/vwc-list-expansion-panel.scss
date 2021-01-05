@@ -9,7 +9,7 @@ $indent: 44px;
 		content: '';
 		block-size: 100%;
 		border-inline-start: 1px solid
-			var(#{scheme-variables.$vvd-color-contrast-faint});
+			var(#{scheme-variables.$vvd-color-contrast-soft});
 		position: absolute;
 		left: $indent / -2;
 	}
