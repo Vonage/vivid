@@ -29,7 +29,7 @@
 		"git:sync": "git submodule sync && git submodule update --init --recursive --remote",
 		"postinstall": "yarn bootstrap",
 		"bootstrap": "lerna bootstrap",
-		"packages:build": "lerna run build",
+		"packages:build": "lerna run --parallel build",
 		"storybook:vivid:pre": "yarn compile && yarn wca:json && node ./.storybook/build-scripts/build-pre.mjs",
 		"storybook:vivid:post": "node ./.storybook/build-scripts/build-post.mjs",
 		"storybook:build": "yarn storybook:vivid:pre && build-storybook -c .storybook -o .out -s ./.storybook/static && yarn storybook:vivid:post",
