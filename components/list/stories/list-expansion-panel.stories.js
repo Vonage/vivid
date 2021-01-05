@@ -17,38 +17,38 @@ const listStyles = {
 
 const Template = () => html`
 	<div style=${styleMap(listStyles)}>
-		<vwc-list-item graphic="icon">
+		<vwc-list-item dense graphic="icon">
 			<vwc-icon slot="graphic" type="home"></vwc-icon>
 			Parent 1
 		</vwc-list-item>
 		<vwc-list-expansion-panel open>
-			<vwc-list-item slot="header" graphic="icon">
+			<vwc-list-item dense slot="header" graphic="icon">
 				<vwc-icon slot="graphic" type="profile"></vwc-icon>
 				Parent 2
 			</vwc-list-item>
-			<vwc-list-item>
+			<vwc-list-item dense>
 				Child 1
 			</vwc-list-item>
-			<vwc-list-item>
+			<vwc-list-item dense>
 				Child 2
 			</vwc-list-item>
 		</vwc-list-expansion-panel>
 		<vwc-list-expansion-panel>
-			<vwc-list-item slot="header" graphic="icon">
+			<vwc-list-item dense slot="header" graphic="icon">
 				<vwc-icon slot="graphic" type="gear"></vwc-icon>
 				Parent 3
 			</vwc-list-item>
-			<vwc-list-item>
+			<vwc-list-item dense>
 				Child 1
 			</vwc-list-item>
 			<vwc-list-expansion-panel>
-				<vwc-list-item slot="header">
+				<vwc-list-item dense slot="header">
 					Child 2
 				</vwc-list-item>
-				<vwc-list-item>
+				<vwc-list-item dense>
 					Grand child 1
 				</vwc-list-item>
-				<vwc-list-item>
+				<vwc-list-item dense>
 					Grand child 2
 				</vwc-list-item>
 			</vwc-list-expansion-panel>

@@ -1,4 +1,10 @@
 export const argTypes = {
+	dense: {
+		control: {
+			type: 'inline-radio',
+			options: { 'true': '', 'false': undefined }
+		}
+	},
 	twoline: {
 		control: {
 			type: 'inline-radio',

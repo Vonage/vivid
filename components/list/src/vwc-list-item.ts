@@ -1,4 +1,4 @@
-import { customElement } from 'lit-element';
+import { customElement, property } from 'lit-element';
 import { ListItem as MWCListItem } from '@material/mwc-list/mwc-list-item';
 import { style as vwcListItemStyle } from './vwc-list-item.css.js';
 import { style as mwcListItemStyle } from '@material/mwc-list/mwc-list-item-css.js';
@@ -19,6 +19,9 @@ MWCListItem.styles = [styleCoupling, mwcListItemStyle, vwcListItemStyle];
  */
 @customElement('vwc-list-item')
 export class VWCListItem extends MWCListItem {
+	@property({ type: Boolean, reflect: true })
+	dense = false;
+
 	disconnectedCallback(): void {
 		for (const listener of this.listeners) {
 			for (const eventName of listener.eventNames) {

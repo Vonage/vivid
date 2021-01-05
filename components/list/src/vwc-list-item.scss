@@ -1,5 +1,6 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 
 $vvd-list-item-block-size: --vvd-list-item-block-size;
 
@@ -8,7 +9,6 @@ $vvd-list-item-block-size: --vvd-list-item-block-size;
 	border-radius: 6px;
 	#{$vvd-list-item-block-size}: 48px;
 	height: var(#{$vvd-list-item-block-size});
-	block-size: var(#{$vvd-list-item-block-size});
 	--mdc-list-side-padding: #{$gutter};
 	--mdc-list-item-graphic-margin: #{$gutter};
 	--mdc-list-item-graphic-size: 20px;
@@ -24,4 +24,21 @@ $vvd-list-item-block-size: --vvd-list-item-block-size;
 
 :host([dense]) {
 	#{$vvd-list-item-block-size}: 40px;
+}
+
+:host([disabled]) {
+	--mdc-theme-text-icon-on-background: var(
+		#{color-semantic.$formfield-disabled-ink}
+	);
+	--mdc-theme-text-hint-on-background: var(
+		#{color-semantic.$formfield-disabled-ink}
+	);
+
+	.mdc-list-item__text {
+		color: var(#{color-semantic.$formfield-disabled-ink});
+	}
+}
+
+:host([graphic="icon"]:not([twoline])) {
+	height: var(#{$vvd-list-item-block-size});
 }
