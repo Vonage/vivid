@@ -10,5 +10,9 @@ export default {
 				isToolshown: false
 			}
 		}
+	},
+	htmlPostProcess: htmlText => {
+		return htmlText
+			.replace('href="./architecture.md"', 'href="/?path=/story/introduction-architecture--architecture"');
 	}
 };
