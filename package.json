@@ -34,7 +34,7 @@
 		"storybook:vivid:post": "node ./.storybook/build-scripts/build-post.mjs",
 		"storybook:build": "yarn storybook:vivid:pre && build-storybook -c .storybook -o .out -s ./.storybook/static && yarn storybook:vivid:post",
 		"start": "yarn storybook:vivid:pre && start-storybook -s ./.storybook/static -p 9000",
-		"compile": "yarn packages:build --parallel && yarn compile:styles && yarn compile:typescript",
+		"compile": "yarn packages:build && yarn compile:styles && yarn compile:typescript",
 		"compile:styles": "node ./scripts/build-styles.js",
 		"compile:typescript": "tsc --build",
 		"git:clean": "git clean -xdf",
