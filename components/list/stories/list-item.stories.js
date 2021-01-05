@@ -36,4 +36,7 @@ const Template = args => html`
 	</vwc-list>`;
 
 export const TwoLine = Template.bind({});
-TwoLine.args = { twoline: '', hasMeta: '' }
+TwoLine.args = { twoline: '', hasMeta: '' };
+
+export const Dense = Template.bind({});
+Dense.args = { dense: '', hasMeta: '' };
