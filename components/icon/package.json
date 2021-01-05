@@ -29,8 +29,7 @@
 	"dependencies": {
 		"@vonage/vvd-core": "^0.17.2",
 		"kefir": "^3.8.7",
-		"lit-element": "^2.4.0",
-		"tslib": "^2.0.3"
+		"lit-element": "^2.4.0"
 	},
 	"devDependencies": {
 		"aws-sdk": "^2.730.0",
