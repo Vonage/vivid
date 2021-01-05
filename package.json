@@ -10,7 +10,7 @@
 	"scripts": {
 		"dep-check": "lerna exec --stream --no-bail depcheck",
 		"changelog": "yarn lerna exec --concurrency 1 --stream 'conventional-changelog --preset angular --release-count 0 --commit-path $PWD --pkg $PWD/package.json --outfile $PWD/CHANGELOG.md --verbose'",
-		"lint:eslint": "eslint packages/** --no-error-on-unmatched-pattern --ignore-path .eslintignore --config .eslintrc.yaml",
+		"lint:eslint": "eslint components/** common/** --no-error-on-unmatched-pattern --ignore-path .eslintignore --config .eslintrc.yaml",
 		"format:eslint": "eslint --ext .js,.html . --fix --ignore-path .eslintignore",
 		"lint:prettier": "prettier \"**/*.ts\" \"**/test/*.test.js\" --check --ignore-path .prettierignore",
 		"format:prettier": "prettier \"**/*.ts\" \"**/test/*.test.js\" --write --ignore-path .prettierignore",
@@ -26,8 +26,8 @@
 		"test:prune-snapshots": "karma start --prune-snapshots",
 		"test:bs": "karma start karma.bs.config.js --coverage",
 		"git:sync": "git submodule sync && git submodule update --init --recursive --remote",
-		"postinstall": "yarn bootstrap",
-		"bootstrap": "lerna bootstrap",
+		"postinstall": "yarn link",
+		"link": "lerna link",
 		"packages:build": "lerna run build",
 		"storybook:vivid:pre": "yarn compile && yarn wca:json && node ./.storybook/build-scripts/build-pre.mjs",
 		"storybook:vivid:post": "node ./.storybook/build-scripts/build-post.mjs",
@@ -36,7 +36,9 @@
 		"compile": "yarn packages:build && yarn compile:styles && yarn compile:typescript",
 		"compile:styles": "node ./scripts/build-styles.js",
 		"compile:typescript": "tsc -b ./packages",
-		"git:clean": "git clean -xdf",
+		"clean:typescript": "tsc -b --clean",
+		"clean:git": "git clean -xdf",
+		"clean": "yarn clean:typescript && yarn clean:git",
 		"watch": "node scripts/watcher.js",
 		"wca:json": "wca analyze packages/*/src/*.?s --outFile custom-elements.json",
 		"wca:compile:json": "yarn compile && yarn wca:custom-elements"
@@ -135,9 +137,5 @@
 	},
 	"engines": {
 		"node": ">=12.18.4"
-	},
-	"volta": {
-		"node": "14.15.1",
-		"yarn": "1.22.10"
 	}
 }

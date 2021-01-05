@@ -20,7 +20,8 @@
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1",
-		"build": "node ./build/vwc-icon-resolver-factory.js && tsc --allowJs --emitDeclarationOnly -d ./src/vwc-icon.js"
+		"generate-icon-resolver": "node ./build/vwc-icon-resolver-factory.js",
+		"build": "tsc --allowJs --emitDeclarationOnly -d ./src/vwc-icon.js && yarn generate-icon-resolver"
 	},
 	"bugs": {
 		"url": "https://github.com/Vonage/vivid/issues"
