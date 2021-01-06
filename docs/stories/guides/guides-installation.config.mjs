@@ -1,3 +1,5 @@
+import { relocateStaticResources } from '../../../.storybook/build-scripts/create-stories-from-md.mjs';
+
 export default {
 	sourcePath: '../../installation.md',
 	outputName: 'guides-installation',
@@ -10,5 +12,8 @@ export default {
 				isToolshown: false
 			}
 		}
+	},
+	htmlPostProcess: htmlText => {
+		return relocateStaticResources(htmlText, ['assets/images/installation.svg'], 'docs');
 	}
 };

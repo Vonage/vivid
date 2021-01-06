@@ -1,3 +1,5 @@
+import { relocateStaticResources } from '../../.storybook/build-scripts/create-stories-from-md.mjs';
+
 export default {
 	sourcePath: '../contact-us.md',
 	outputName: 'introduction-contact-us',
@@ -12,7 +14,7 @@ export default {
 		}
 	},
 	htmlPostProcess: htmlText => {
-		let result = htmlText
+		let result = relocateStaticResources(htmlText, ['assets/images/contact-us.svg', 'assets/images/logo-slack.svg', 'assets/images/logo-github.svg', 'assets/images/logo-workplace.svg'], 'docs')
 			.replace('href="../readme.md"', 'href="/?path=/story/introduction-meet-vivid--meet-vivid"');
 		result += `
 			<style>

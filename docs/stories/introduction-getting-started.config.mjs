@@ -1,3 +1,5 @@
+import { relocateStaticResources } from '../../.storybook/build-scripts/create-stories-from-md.mjs';
+
 export default {
 	sourcePath: '../getting-started.md',
 	outputName: 'introduction-getting-started',
@@ -12,7 +14,7 @@ export default {
 		}
 	},
 	htmlPostProcess: htmlText => {
-		return htmlText
+		return relocateStaticResources(htmlText, ['assets/images/getting-started.svg'], 'docs')
 			.replace('href="../readme.md"', 'href="/?path=/story/introduction-meet-vivid--meet-vivid"');
 	}
 };
