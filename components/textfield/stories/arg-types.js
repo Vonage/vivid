@@ -21,11 +21,13 @@ export const argTypes = {
     },
   },
   shape: {
-    control: {
-      type: 'select',
-      options: Object.values(Shape),
-    }
-  },
+		control: {
+			type: 'select',
+			options: Object.values(Shape).filter(s => [
+				Shape.Rounded, Shape.Pill
+			].includes(s)),
+		}
+	},
   required: {
     control: {
       type: 'inline-radio',
