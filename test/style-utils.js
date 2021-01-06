@@ -1,19 +1,76 @@
+export const topLevelSelectors = {
+	'vwc-button': '.mdc-button',
+	'vwc-icon-button': '.mdc-icon-button',
+	'vwc-select': '.mdc-select',
+	'vwc-textfield': '.mdc-text-field',
+}
+
 function borderRadiusStyles(expectedRadius) {
 	return {
-		borderTopLeftRadius: `${expectedRadius}px`,
-		borderTopRightRadius: `${expectedRadius}px`,
-		borderBottomLeftRadius: `${expectedRadius}px`,
-		borderBottomRightRadius: `${expectedRadius}px`,
+		borderTopLeftRadius: expectedRadius,
+		borderTopRightRadius: expectedRadius,
+		borderBottomLeftRadius: expectedRadius,
+		borderBottomRightRadius: expectedRadius,
 	};
 }
 
 export function shapeStyles(shape, element) {
 	const shapeRadius = {
-		rounded: element === 'badge' ? 4 : 6,
-		pill: element === 'badge' ? 14 : 24,
+		rounded: element === 'badge' ? '4px' : '6px',
+		pill: element === 'badge' ? '14px' : '24px',
+		circled: '50%',
 	}
 
 	return borderRadiusStyles(shapeRadius[shape]);
+}
+
+export function sizeStyles(size) {
+	const sizes = {
+		dense: 32,
+		enlarged: 48,
+		default: 40,
+	}
+
+	return { height: `${sizes[size]}px` };
+}
+
+export function layoutStyles(layout) {
+	const layouts = {
+		filled: {
+			backgroundColor: 'rgb(0, 0, 0)',
+			borderTopWidth: '0px',
+			borderRightWidth: '0px',
+			borderBottomWidth: '0px',
+			borderLeftWidth: '0px',
+			color: 'rgb(255, 255, 255)',
+		},
+		outlined: {
+			backgroundColor: 'rgba(0, 0, 0, 0)',
+			borderTopWidth: '1px',
+			borderRightWidth: '1px',
+			borderBottomWidth: '1px',
+			borderLeftWidth: '1px',
+			borderTopStyle: 'solid',
+			borderRightStyle: 'solid',
+			borderBottomStyle: 'solid',
+			borderLeftStyle: 'solid',
+			borderTopColor: 'rgb(0, 0, 0)',
+			borderRightColor: 'rgb(0, 0, 0)',
+			borderBottomColor: 'rgb(0, 0, 0)',
+			borderLeftColor: 'rgb(0, 0, 0)',
+			color: 'rgb(0, 0, 0)',
+		},
+		ghost: {
+			backgroundColor: 'rgba(0, 0, 0, 0)',
+			borderTopWidth: '0px',
+			borderRightWidth: '0px',
+			borderBottomWidth: '0px',
+			borderLeftWidth: '0px',
+			color: 'rgb(0, 0, 0)',
+		},
+	}
+
+	return layouts[layout];
 }
 
 export const PRINCIPAL_SCHEME_VARIABLES_FILTER = /-(on-|)(base|surface|primary)$/;

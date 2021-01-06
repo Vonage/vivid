@@ -26,9 +26,9 @@
 		"test:prune-snapshots": "karma start --prune-snapshots",
 		"test:bs": "karma start karma.bs.config.js --coverage",
 		"git:sync": "git submodule sync && git submodule update --init --recursive --remote",
-		"postinstall": "yarn bootstrap",
-		"bootstrap": "lerna bootstrap",
-		"packages:build": "lerna run build",
+		"postinstall": "yarn link",
+		"link": "lerna link",
+		"packages:build": "lerna run --parallel build",
 		"storybook:vivid:pre": "yarn compile && yarn wca:json && node ./.storybook/build-scripts/build-pre.mjs",
 		"storybook:vivid:post": "node ./.storybook/build-scripts/build-post.mjs",
 		"storybook:build": "yarn storybook:vivid:pre && build-storybook -c .storybook -o .out -s ./.storybook/static && yarn storybook:vivid:post",
@@ -36,7 +36,9 @@
 		"compile": "yarn packages:build && yarn compile:styles && yarn compile:typescript",
 		"compile:styles": "node ./scripts/build-styles.js",
 		"compile:typescript": "tsc -b ./packages",
-		"git:clean": "git clean -xdf",
+		"clean:typescript": "tsc -b --clean",
+		"clean:git": "git clean -xdf",
+		"clean": "yarn clean:typescript && yarn clean:git",
 		"watch": "node scripts/watcher.js",
 		"wca:json": "wca analyze packages/*/src/*.?s --outFile custom-elements.json",
 		"wca:compile:json": "yarn compile && yarn wca:custom-elements"
@@ -135,9 +137,5 @@
 	},
 	"engines": {
 		"node": ">=12.18.4"
-	},
-	"volta": {
-		"node": "14.15.1",
-		"yarn": "1.22.10"
 	}
 }
