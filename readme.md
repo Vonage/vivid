@@ -17,7 +17,7 @@ Striving to stick to the best practices and most up to date starndards, Vivid's 
 
 ### Documentation
 
-For the convenience, we've organized all our documentation under the following topics.
+For your convenience, we've organized all our documentation under the following topics.
 
 #### Introductory
 
