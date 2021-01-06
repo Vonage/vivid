@@ -18,6 +18,7 @@ yarn-error.log
 
 ## temp folders
 /.tmp/
+/temp
 
 # build
 /build

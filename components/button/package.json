@@ -17,7 +17,7 @@
 		"directory": "components/button"
 	},
 	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1"
+		"api-report": "yarn api-extractor run --local"
 	},
 	"bugs": {
 		"url": "https://github.com/Vonage/vivid/issues"
