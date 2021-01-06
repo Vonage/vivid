@@ -17,12 +17,14 @@ type BadgeLayout = Extract<
 	Layout.Filled | Layout.Outlined | Layout.Soft
 >;
 
+type BadgeShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
+
 export class BadgeBase extends LitElement {
 	@property({ type: String, reflect: true })
 	connotation: BadgeConnotation = Connotation.Primary;
 
 	@property({ type: String, reflect: true })
-	shape?: Shape;
+	shape?: BadgeShape;
 
 	@property({ type: String, reflect: true })
 	layout: BadgeLayout = Layout.Filled;
