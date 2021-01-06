@@ -15,7 +15,7 @@ jobs:
           ref: ${{ github.ref }}
 
       - name: WhiteSource CI integration
-        uses: Idancc/WhiteSource-CI-Integration@2.4.0
+        uses: Idancc/WhiteSource-CI-Integration@v2.4.0
         env:
           WHITESOURCE_PRODUCT_NAME: ${{ secrets.WHITESOURCE_PRODUCT_NAME }}
           WHITESOURCE_PROJECT_NAME: ${{ github.event.repository.name }}
