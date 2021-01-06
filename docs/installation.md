@@ -23,44 +23,54 @@ Obviously, most likely Vivid products will be consumed as **npm** dependencies i
 The preferred way to make our package available to your application is to install the whole Vivid's bundle.
 For a specific cases, one may also chose to 'cherry-pick' the specific packages one by one.
 
-#### Bundle installation
+#### Installation
 
-To install it in the current folder and to add to the `dependencies` of the `package.json` do:
-```
-npm install @vonage/vivid@0.18.0 --save-prod
-```
+If you're using a bundler that's capable of tree-shaking to bundle up your application's code (such as WebPack), you can install Vivid by running this command:
 
-One may of course simple add the following to the `dependencies` of the `package.json` and execute a regular installation command (`yarn`, `npm` etc):
 ```
-"@vonage/vivid": "0.18.0"
+npm install @vonage/vivid --save-prod
 ```
 
-> Please, make sure to replace the version with the most recent one.
+This will make the latest `@vonage/vivid` package available in your project, so you can begin using any of it's components.
+For instance, if you'd like to use the [`<vwc-button>`](https://vivid.vonage.com/?path=/story/components-atoms-button--filled) component, you can import it like this:
 
-Bundle installation will bring all the packages of the Vivid to the `node_modules`.
-Now you can use Vivid's services and/or components in your application.
-If you use a **WebPack** as your application bundler, it will automatically take only the relevant code into your application while tree-shake away anything unused.
+```javascript
+import { VWCButton } from '@vonage/vivid';
 
-Few points to pay attention for:
-* When components used only as HTML elements, you still need to import the component class even if it's a side-effect import, in order to prevent them to be tree-shaken away
-* If the bundler of your choice is not a WebPack, you probably will not benefit from tree- shaking cleanup, in this case you may consider it better to use a `cherry-pick` approach, see below
-
-#### Cherry-pick installation
-
-In some cases one may prefer to install Vivid packages one-by-one, enhancing that used components list as the usage grows.
-
-In general, this approach may end up less convenient, specifically due to the fact that each version bump will require careful update of all components. Yet, there are justifications to do so, see the remark regarding the tree-shaking and bundlers support in the section above.
-
-Attention! As of now, all Vivid packages used in one's system MUST be of the same version exactly. While a bundle installation approach takes care for that, 'cherry-picking' of the packages implies an extra care to preserve this manually.
-
-Installing the package is, again, as simple as the usual NPM package installation. It is either running:
+VWCButton;  // This line is required to indicate to your bundler that VWCButton is used, and should therefore not be "shaken" out of its resulting code bundle
 ```
-npm install @vonage/vwc-button@0.18.0 --save-prod
+> To find out the export name for the component you use (`VWCButton` in the example above), please refer to it's documentation.
+
+> Notice that the returned value is the Custom Element definition class (inhreits from HTMLElement), but you don't need to directly use it, as we will already register it for you. You may, however, wish to keep a reference to that imported variable to prevent bundlers from "shaking off" the component definition.
+
+From now on, `vwc-button` will be registered in your DOM API, so you can instantly use it, like this:
+
+```javascript
+const myButton = document.createElement('vwc-button');
 ```
 
-or adding the following to the `package.json`'s `dependencies` section:
+##### Installing Components Individually
+
+In cases where your bundler can't perform "tree-shaking" (remove parts of code that are not actually used within your code), you may wish to install and use Vivid packages individually.
+
+> Attention! Using Vivid components individually is discouraged and should be strictly confined to cases where the "@vonage/vivid" package cannot be used.
+
+To install a specific package, for example `@vonage/vwc-button`, run:
+
 ```
-"@vonage/vwc-button": "0.18.0"
+npm install @vonage/vwc-button --save-prod
+```
+ 
+> Notice that all Vivid packages installed within a single project should match in version! Make sure that all of Vivid's components listed in your `package.json` point to the exact same version!
+
+Then you can import a component like this:
+
+```javascript
+import "@vonage/vwc-button";
 ```
 
-> Pay attention: we strongly advice to NOT use a range versioning syntax, but stick to the strict version, having it the same for all of the Vivid's packages.
+And use it:
+
+```javascript
+const myButton = document.createElement('vwc-button');
+```
