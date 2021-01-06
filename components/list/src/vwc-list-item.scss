@@ -3,14 +3,16 @@
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 
 $vvd-list-item-block-size: --vvd-list-item-block-size;
+$vvd-list-item-side-padding: --vvd-list-item-side-padding;
+$vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 
 :host {
-	$side-gutter: 24px;
-	$graphic-gutter: 16px;
+	#{$vvd-list-item-graphic-margin}: 24px;
+	#{$vvd-list-item-graphic-margin}: 16px;
 	#{$vvd-list-item-block-size}: 48px;
 	height: var(#{$vvd-list-item-block-size});
-	--mdc-list-side-padding: #{$side-gutter};
-	--mdc-list-item-graphic-margin: #{$graphic-gutter};
+	--mdc-list-side-padding: var(#{$vvd-list-item-side-padding});
+	--mdc-list-item-graphic-margin: var(#{$vvd-list-item-graphic-margin});
 	--mdc-list-item-graphic-size: 20px;
 	--mdc-list-item-meta-size: 20px;
 	--mdc-theme-text-icon-on-background: var(
@@ -26,6 +28,53 @@ $vvd-list-item-block-size: --vvd-list-item-block-size;
 	#{$vvd-list-item-block-size}: 40px;
 }
 
+:host([dense][twoline]) {
+	#{$vvd-list-item-block-size}: 64px;
+
+	.mdc-list-item__primary-text::before {
+		height: 26px;
+	}
+}
+
+:host([twoline]) {
+	#{$vvd-list-item-block-size}: 72px;
+	#{$vvd-list-item-side-padding}: 16px;
+	#{$vvd-list-item-graphic-margin}: 12px;
+
+	&::after {
+		content: '';
+		height: 1px;
+		border-bottom: 1px solid
+			var(#{scheme-variables.$vvd-color-contrast-soft});
+		position: absolute;
+		bottom: 0;
+		left: var(#{$vvd-list-item-side-padding});
+		right: var(#{$vvd-list-item-side-padding});
+	}
+
+	.mdc-list-item__primary-text {
+		@include typography.typography-cat-shorthand('body-2-bold');
+
+		&::before {
+			height: 30px;
+		}
+	}
+	
+	.mdc-list-item__secondary-text {
+		@include typography.typography-cat-shorthand('caption');
+
+		&::before {
+			height: 22px;
+		}
+	}
+}
+
+// override mwc fixed height
+:host([twoline]),
+:host([graphic="icon"]:not([twoline])) {
+	height: var(#{$vvd-list-item-block-size});
+}
+
 :host([disabled]) {
 	--mdc-theme-text-icon-on-background: var(
 		#{color-semantic.$formfield-disabled-ink}
@@ -37,8 +86,4 @@ $vvd-list-item-block-size: --vvd-list-item-block-size;
 	.mdc-list-item__text {
 		color: var(#{color-semantic.$formfield-disabled-ink});
 	}
-}
-
-:host([graphic="icon"]:not([twoline])) {
-	height: var(#{$vvd-list-item-block-size});
 }
