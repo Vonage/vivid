@@ -39,3 +39,12 @@ $indent: 44px;
 		opacity: 1;
 	}
 }
+
+::slotted(vwc-list-item) {
+	$gutter: 12px;
+	--mdc-list-side-padding: #{$gutter};
+	--mdc-list-item-graphic-margin: #{$gutter};
+	border-radius: 6px;
+	margin: 2px 0;
+	height: 40px;
+}

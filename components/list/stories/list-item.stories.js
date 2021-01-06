@@ -22,21 +22,30 @@ const Template = args => html`
 			Item A
 			<span slot="secondary">Secondary line</span>
 			<vwc-icon slot="meta" type="info" size="small"></vwc-icon>
+			<vwc-icon slot="graphic" type="download" size="small"></vwc-icon>
 		</vwc-list-item>
 		<vwc-list-item ...=${spread(args)}>
 			Item B
 			<span slot="secondary">Secondary line</span>
 			<vwc-icon slot="meta" type="info" size="small"></vwc-icon>
+			<vwc-icon slot="graphic" type="download" size="small"></vwc-icon>
 		</vwc-list-item>
 		<vwc-list-item ...=${spread(args)}>
 			Item C
 			<span slot="secondary">Secondary line</span>
 			<vwc-icon slot="meta" type="info" size="small"></vwc-icon>
+			<vwc-icon slot="graphic" type="download" size="small"></vwc-icon>
 		</vwc-list-item>
 	</vwc-list>`;
 
 export const TwoLine = Template.bind({});
 TwoLine.args = { twoline: '', hasMeta: '' };
 
+export const MetaIcon = Template.bind({});
+MetaIcon.args = { hasMeta: '' };
+
 export const Dense = Template.bind({});
 Dense.args = { dense: '', hasMeta: '' };
+
+export const Icon = Template.bind({});
+Icon.args = { graphic: 'icon' };

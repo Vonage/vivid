@@ -5,12 +5,12 @@
 $vvd-list-item-block-size: --vvd-list-item-block-size;
 
 :host {
-	$gutter: 12px;
-	border-radius: 6px;
+	$side-gutter: 24px;
+	$graphic-gutter: 16px;
 	#{$vvd-list-item-block-size}: 48px;
 	height: var(#{$vvd-list-item-block-size});
-	--mdc-list-side-padding: #{$gutter};
-	--mdc-list-item-graphic-margin: #{$gutter};
+	--mdc-list-side-padding: #{$side-gutter};
+	--mdc-list-item-graphic-margin: #{$graphic-gutter};
 	--mdc-list-item-graphic-size: 20px;
 	--mdc-list-item-meta-size: 20px;
 	--mdc-theme-text-icon-on-background: var(
