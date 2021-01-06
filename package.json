@@ -36,7 +36,7 @@
 		"compile": "yarn packages:build && yarn compile:styles && yarn compile:typescript",
 		"compile:styles": "node ./scripts/build-styles.js",
 		"compile:typescript": "tsc -b ./packages",
-		"clean:typescript": "tsc -b --clean",
+		"clean:typescript": "tsc -b ./packages --clean",
 		"clean:git": "git clean -xdf",
 		"clean": "yarn clean:typescript && yarn clean:git",
 		"watch": "node scripts/watcher.js",
