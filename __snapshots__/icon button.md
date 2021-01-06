@@ -4,13 +4,13 @@
 
 ```html
 <button
-  aria-label=""
+  aria-label="bin"
   class="mdc-icon-button"
 >
   <vwc-icon
-    class="icon"
+    class="vwc-icon"
     size="small"
-    type=""
+    type="bin"
   >
   </vwc-icon>
   <span class="default-slot-container">

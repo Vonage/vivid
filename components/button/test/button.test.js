@@ -4,7 +4,12 @@ import {
 	textToDomToParent,
 	assertComputedStyle,
 } from '../../../test/test-helpers.js';
-import { shapeStyles } from '../../../test/style-utils.js';
+import {
+	sizingTestCases,
+	shapeRoundedTestCases,
+	shapePillTestCases,
+} from '../../../test/shared';
+import { connotationTestCases } from './button.connotation.test.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	isolatedElementsCreation,
@@ -362,65 +367,15 @@ describe('button', () => {
 	});
 
 	describe('sizing', () => {
-		it('should have normal size by default', async () => {
-			const addedElements = addElement(
-				textToDomToParent(`<${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}>`)
-			);
-			const actualElement = addedElements[0];
-			await waitNextTask();
-			assertComputedStyle(actualElement, { height: '40px' });
-		});
-
-		it('should have dense size when dense', async () => {
-			const addedElements = addElement(
-				textToDomToParent(
-					`<${COMPONENT_NAME} dense>Button Text</${COMPONENT_NAME}>`
-				)
-			);
-			const actualElement = addedElements[0];
-			await waitNextTask();
-			assertComputedStyle(actualElement, { height: '32px' });
-		});
-
-		it('should have enlarged size when enlarged', async () => {
-			const addedElements = addElement(
-				textToDomToParent(
-					`<${COMPONENT_NAME} enlarged>Button Text</${COMPONENT_NAME}>`
-				)
-			);
-			const actualElement = addedElements[0];
-			await waitNextTask();
-			assertComputedStyle(actualElement, { height: '48px' });
-		});
+		sizingTestCases(COMPONENT_NAME);
 	});
 
 	describe('shape', () => {
-		let formElement, actualElement;
-		beforeEach(async () => {
-			const addedElements = addElement(
-				textToDomToParent(
-					`<${COMPONENT_NAME} layout="filled">Button Text</${COMPONENT_NAME}>`
-				)
-			);
-			await waitNextTask();
-			formElement = addedElements[0];
-			actualElement = formElement.shadowRoot.querySelector('#button');
-		});
+		shapeRoundedTestCases(COMPONENT_NAME);
+		shapePillTestCases(COMPONENT_NAME);
+	});
 
-		it('should have rounded shape by default', async () => {
-			assertComputedStyle(actualElement, shapeStyles('rounded'));
-		});
-
-		it('should have rounded shape when shape set to rounded', async () => {
-			formElement.shape = 'rounded';
-			await waitNextTask();
-			assertComputedStyle(actualElement, shapeStyles('rounded'));
-		});
-
-		it('should have pill shape when shape set to pill', async () => {
-			formElement.shape = 'pill';
-			await waitNextTask();
-			assertComputedStyle(actualElement, shapeStyles('pill'));
-		});
+	describe('button connotation', () => {
+		connotationTestCases(COMPONENT_NAME);
 	});
 });
