@@ -1,0 +1,281 @@
+name: Compile & Test
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  # cache-yarn:
+  #   runs-on: ubuntu-20.04
+  #   env:
+  #     ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+  #       with:
+  #         token: ${{ secrets.PAT }}
+
+  #     - name: Setup NodeJS 12
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 12
+
+  #     - name: Install yarn
+  #       run: npm install -g yarn
+
+  #     - name: Cache yarn dependencies
+  #       uses: actions/cache@v2
+  #       id: yarn-cache
+  #       with:
+  #         path: |
+  #           ${{ steps.yarn-cache-dir-path.outputs.dir }}
+  #           **\node_modules
+  #         key: vivid-cache-yarn-${{ hashFiles('**/yarn.lock') }}
+  #         restore-keys: |
+  #           vivid-cache-yarn-
+
+  #     - name: Install packages
+  #       if: steps.yarn-cache.outputs.cache-hit != 'true'
+  #       run: yarn install
+
+  # test-safari:
+  #   needs: cache-yarn
+  #   runs-on: macOS-latest
+  #   env:
+  #     ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+  #       with:
+  #         token: ${{ secrets.PAT }}
+
+  #     - name: Setup NodeJS 14
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 14
+
+  #     - name: Install yarn
+  #       run: npm install -g yarn
+
+  #     - name: Cache yarn dependencies
+  #       uses: actions/cache@v2
+  #       id: yarn-cache
+  #       with:
+  #         path: |
+  #           ${{ steps.yarn-cache-dir-path.outputs.dir }}
+  #           **\node_modules
+  #         key: vivid-cache-yarn-${{ hashFiles('**/yarn.lock') }}
+  #         restore-keys: |
+  #           vivid-cache-yarn-
+
+  #     - name: Install packages
+  #       if: steps.yarn-cache.outputs.cache-hit != 'true'
+  #       run: yarn install
+
+  #     - name: Build components
+  #       run: yarn compile
+
+  #     - name: Test components
+  #       run: yarn test:safari
+
+  #     - name: Upload Safari coverage as an artifact
+  #       uses: actions/upload-artifact@v2
+  #       with:
+  #         name: safari-coverage
+  #         path: ./coverage/report-cobertura/coverage.xml
+
+  # test-firefox:
+  #   needs: cache-yarn
+  #   runs-on: ubuntu-20.04
+  #   env:
+  #     ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+  #       with:
+  #         token: ${{ secrets.PAT }}
+
+  #     - name: Setup NodeJS 14
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 14
+
+  #     - name: Install yarn
+  #       run: npm install -g yarn
+
+  #     - name: Cache yarn dependencies
+  #       uses: actions/cache@v2
+  #       id: yarn-cache
+  #       with:
+  #         path: |
+  #           ${{ steps.yarn-cache-dir-path.outputs.dir }}
+  #           **\node_modules
+  #         key: vivid-cache-yarn-${{ hashFiles('**/yarn.lock') }}
+  #         restore-keys: |
+  #           vivid-cache-yarn-
+
+  #     - name: Install packages
+  #       if: steps.yarn-cache.outputs.cache-hit != 'true'
+  #       run: yarn install
+
+  #     - name: Build components
+  #       run: yarn compile
+
+  #     - name: Test components
+  #       run: yarn test:firefox
+
+  #     - name: Upload firefox coverage as an artifact
+  #       uses: actions/upload-artifact@v2
+  #       with:
+  #         name: firefox-coverage
+  #         path: ./coverage/report-cobertura/coverage.xml
+
+  test-chrome:
+    needs: cache-yarn
+    runs-on: ubuntu-20.04
+    env:
+      ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.PAT }}
+
+      - name: Setup NodeJS 14
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14
+
+      - name: Install yarn
+        run: npm install -g yarn
+
+      # - name: Cache yarn dependencies
+      #   uses: actions/cache@v2
+      #   id: yarn-cache
+      #   with:
+      #     path: |
+      #       ${{ steps.yarn-cache-dir-path.outputs.dir }}
+      #       **\node_modules
+      #     key: vivid-cache-yarn-${{ hashFiles('**/yarn.lock') }}
+      #     restore-keys: |
+            vivid-cache-yarn-
+
+      - name: Install packages
+        # if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn install
+
+      - name: Build components
+        run: yarn compile
+
+      - name: Test components
+        run: yarn test:chrome
+
+      - name: Upload chrome coverage as an artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: chrome-coverage
+          path: ./coverage/report-cobertura/coverage.xml
+
+      - name: Upload chrome lcov coverage as an artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: chrome-lcov-coverage
+          path: ./coverage/report-lcov/lcov.info
+
+  # code-standards:
+  #   needs: cache-yarn
+  #   runs-on: ubuntu-20.04
+  #   env:
+  #     ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+  #       with:
+  #         token: ${{ secrets.PAT }}
+
+  #     - name: Setup NodeJS 14
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 14
+
+  #     - name: Install yarn
+  #       run: npm install -g yarn
+
+  #     - name: Cache yarn dependencies
+  #       uses: actions/cache@v2
+  #       id: yarn-cache
+  #       with:
+  #         path: |
+  #           ${{ steps.yarn-cache-dir-path.outputs.dir }}
+  #           **\node_modules
+  #         key: vivid-cache-yarn-${{ hashFiles('**/yarn.lock') }}
+  #         restore-keys: |
+  #           vivid-cache-yarn-
+
+  #     - name: Install packages
+  #       if: steps.yarn-cache.outputs.cache-hit != 'true'
+  #       run: yarn install
+
+  #     - name: Build components
+  #       run: yarn compile
+
+  #     - name: Dependencies check
+  #       run: yarn dep-check
+
+  #     - name: Lint sources
+  #       run: yarn lint
+
+  #     - name: Ensure all autogenerated files committed
+  #       run: sh ./scripts/ensure-all-committed.sh
+
+  # code-coverage:
+  #   needs: test-chrome
+  #   runs-on: ubuntu-20.04
+
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+  #       with:
+  #         token: ${{ secrets.PAT }}
+
+  #     - name: Setup NodeJS 14
+  #       uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 14
+
+  #     - name: Download artifact chrome-lcov-coverage
+  #       uses: actions/download-artifact@v2
+  #       with:
+  #         name: chrome-lcov-coverage
+
+  #     - name: Coveralls
+  #       uses: coverallsapp/github-action@master
+  #       with:
+  #         github-token: ${{ secrets.GITHUB_TOKEN }}
+  #         path-to-lcov: ./lcov.info
+  #         flag-name: Unit
+
+  # coverage-report:
+    strategy:
+      matrix:
+        browser: [chrome]
+
+    needs: [test-chrome]
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Download artifact pass_status_job01
+        uses: actions/download-artifact@v2
+        with:
+          name: ${{matrix.browser}}-coverage
+
+      - uses: 5monkeys/cobertura-action@master
+        with:
+          path: ./coverage.xml
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          minimum_coverage: 75
