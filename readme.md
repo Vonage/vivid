@@ -7,7 +7,7 @@
 
 ###### Vivid provides components and tools to help product teams work more efficiently, deliver faster and safer, while providing end-users single Vonage unique look & feel.
 
-![Meed Vivid](assets/images/meet-vivid.svg)
+![Meed Vivid](docs/assets/images/meet-vivid.svg)
 
 Vivid delivers a Design System built along Vonage's branding guidelines - all this by providing a ready-to-use web components and services.
 
