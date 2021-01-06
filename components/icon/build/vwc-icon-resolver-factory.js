@@ -170,7 +170,7 @@ kefir
 			.map(({ value })=> value)
 	])
 	.onValue(log)
-	.onError((message)=> {
-		warn(message);
+	.onError((error = {})=> {
+		warn(["message", "code"].map((field)=> error[field]).find(Boolean) || error);
 		process.exit(1);
 	});
