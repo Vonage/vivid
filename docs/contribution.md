@@ -1,20 +1,18 @@
-# Contributor guideline
+# Contribution
 
-Vivid team is dedicated to deliver and support the services and the components for the front end teams across the Vonage.
+### We'd love you to contribute!
+
+###### We always appreciate code contributions and collaborations as our mission is to make it easy and useful for you.
+
+![Contribution](assets/images/contribution.svg)
+
+[Back to main page](../readme.md)
 
 We believe, that this project should be managed as an internal open source, so any contributions are most welcome.
 
 As with any other platform-like case, responsibility for a stable and quality code for all, requires some process to be followed and some reasonable gatekeepers to pass through.
 
-It might also be helpful to read the following docs as well:
-* [Architectural approach](./architecture.md) should give you an intro into the main design principals and decisions implemented in Vivid
-* [Dev/Ops process](./dev-ops-process.md) should give you a more technical and detailed overview of all automated and manual steps in the 'contributing new feature cycle', which apply equally to a contributors within Vivid as well as to guests
-
-[Back to the main readme.](/readme.md)
-
 ---
-
-## Process
 
 ### Feature request
 
@@ -28,6 +26,8 @@ Once the action items lands on our table, we'll contact you, do an initial triag
 
 > Important! We do ask to follow this process even if the one who is going to implement the feature is the reporter.
 
+---
+
 ### Coding time
 
 Have you decided to implement something cool as part of the Vivid project? Great! 
@@ -38,7 +38,7 @@ We can't promise that everything will be fixed as we are opinionated people as w
 
 #### Getting up and running
 
-* Ask to be added to the Vonage github organization (if you are already there, skip this part) from `githubowners@vonage.com` or fill i [this form](https://jira.vonage.com/servicedesk/customer/portal/16/create/96).
+* Ask to be added to the Vonage github organization (if you are already there, skip this part) from `githubowners@vonage.com` or fill [this form](https://jira.vonage.com/servicedesk/customer/portal/16/create/96).
 * Ask access to the `vivid` repo from a `onestack` member
 * Authentication - you can choose one of the following:
     * Generate a token in github [Click here to see how](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token)
@@ -51,21 +51,20 @@ We can't promise that everything will be fixed as we are opinionated people as w
         * [Read this](https://docs.github.com/en/github/using-git/updating-credentials-from-the-osx-keychain)
 * run `yarn` in order to build the repo once / bring the dependencies
 * run the following steps as the normal build-and-see flow:
-	* `yarn compile` - builds `css` from `scss`, compiles `ts` into `js`
-	* `yarn dev:server` - runs dev server on `localhost` in order to see the demo pages
-		* OR `yarn start` - this is a shortcut for `compile` and `dev:server`, for your convenience
+	* `yarn compile` - builds `css` from `scss`, compiles `ts` into `js` and performs other specific machinery
+	* `yarn start` - builds and runs a Stirybook locally in order to see the demo pages
 	* `yarn watch` - watches for changes in scss / ts files in src folders and recompiles whatever is needed (run in another terminal)
-* navigate to `http://localhost:5424/index.html` and start hacking with the components in the browser
+* navigate to `http://localhost:9000` and start hacking with the components in the browser
 * Welcome! :)
-* just before getting into the change, please make sure to branch out from the `develop` branch, giving your branch some good and descriptive name
-* during the coding time, it is best to sync with `develop` rather frequently, we'll do our best to keep it evergreen
+* just before getting into the change, please make sure to branch out from the main branch, giving your branch some good and descriptive name
+* during the coding time, it is best to sync with the main branch rather frequently, we'll do our best to keep it evergreen
 
 #### Coded, looks okay, now quality time
 
 In order to ensure certain level of quality we rely on automation. Our CI will run the checks on each of your pushes to remote, reflecting the current feature queality status.
 But even before you code hits the CI you can run some preliminary checks locally:
-* `yarn lint` - runs the linter (ESLint) on your code (I'm always surprised how it finds typos in my best crafted code :))
-* `yarn test` - runs test suite (Karma); this one will ensure that you've not broken stuff of anyone else; but it is even better to add you own tests to the new functionality too, trust us, you'll sleep better this way :)
+- `yarn lint` - runs the linter (ESLint) on your code (I'm always surprised how it finds typos in my best crafted code :))
+- `yarn test:chrome` - runs test suite (Karma); this one will ensure that you've not broken stuff of anyone else; but it is even better to add you own tests to the new functionality too, trust us, you'll sleep better this way :)
 
 > We do have a coverage collected (Istanbul) but its level is not yet enforced at this point. Full report may be found in a nice UI layout in the coverage folder after the tests ran.
 
@@ -73,15 +72,33 @@ But even before you code hits the CI you can run some preliminary checks locally
 
 #### All good, let's deliver
 
-When you happy with what you've done, push your branch to and open a PR back to the `develop` branch.
-You may specify a reviewer if relevant.
+When you happy with what you've done, push your branch to and open a PR back to our main branch.
+Please provide a short adn informative message of what has been done and for what need.
+We are welcoming any labels if appropriate.
+You may also pick some reviewer for our core team.
 
-## CI/CD and workflow
+--- 
+
+### CI/CD and workflow
 
 Automation is a heart of any vibrant and quickly evolving project, especially when it's a community oriented one. [Here](./dev-ops-process.md) you can see a more technical and detailed description of the full 'requirement-to-production' flow from an automation perspective.
 
 ---
 
-## Useful scripts
+### Useful CLI commands
 
-- `build` builds demo app for production
+* `yarn compile` - builds a whole project
+* `yarn start` - builds and runs a local Storybook
+* `yarn lint` - will run a static code analysis and notify if any issues found
+* `yarn test:dev` - builds and runs tests in a watch mode (headful Chromium)
+* `yarn test:chrome` / `yarn test:firefox` / `yarn test:safari` - runs tests on the specified platform
+	* Safari will be running in headful mode, the rest will run headless
+	* no build performed for these ones, if you need - please do `yarn compile` beforehand
+
+---
+
+### Useful links
+
+It might also be helpful to read the following docs as well:
+* [Architectural approach](./architecture.md) should give you an intro into the main design principals and decisions implemented in Vivid
+* [Dev/Ops process](./dev-ops-process.md) should give you a more technical and detailed overview of all automated and manual steps in the 'contributing new feature cycle', which apply equally to a contributors within Vivid as well as to guests

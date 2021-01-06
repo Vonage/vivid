@@ -46,4 +46,4 @@ Merging PR into the `master` has a 'side effect' of new [__dev demo site__](http
 
 Chart below visualizes the Vivid's dev flow for a single feature plan-to-release cycle.
 
-![DevOps flow](../assets/images/vivid-devops-flow-c.svg)
+![DevOps flow](assets/images/vivid-devops-flow.svg)
