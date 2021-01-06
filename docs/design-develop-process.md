@@ -25,4 +25,4 @@ The flow, roughly, goes as following:
 
 Chart below visualizes the Vivid's implementaton of design tokens incorporation into the living code flow.
 
-![Design Tokens flow](../assets/images/design-tokens-automation.svg)
+![Design Tokens flow](assets/images/design-tokens-automation.svg)
