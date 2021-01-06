@@ -3,7 +3,7 @@
 @use '../functions';
 
 // override to apply relevance
-$layouts: filled outlined soft text !default;
+$layouts: filled outlined soft text ghost !default;
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
 $allLayouts: (
@@ -11,6 +11,7 @@ $allLayouts: (
 	outlined: 'outlined',
 	soft: 'soft',
 	text: 'text',
+	ghost: 'ghost',
 );
 
 $bg: var(#{color-semantic.$vvd-color-connotation});
@@ -30,6 +31,12 @@ $bg: var(#{color-semantic.$vvd-color-connotation});
 	--background-color: #{$bg};
 	--color: var(#{scheme-variables.$vvd-color-on-base});
 	--opaque: 20;
+}
+
+%text,
+%ghost {
+	--background-color: transparent;
+	--color: var(#{scheme-variables.$vvd-color-on-base});
 }
 
 @mixin layout() {

@@ -1,0 +1,9 @@
+.sb-show-main.sb-main-padded {
+	max-width: 800px;
+	margin: 0 auto;
+	overflow-x: hidden;
+}
+
+p > img {
+	width: 100%;
+}

@@ -18,6 +18,7 @@
 	$shapes: (
 		rounded: var(#{shape-var-names.$shape-border-radius-md-css-variable-name}),
 		pill: var(#{shape-var-names.$shape-border-radius-lg-css-variable-name}),
+		circled: 50%,
 	),
 	$default: rounded
 ) {

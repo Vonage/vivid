@@ -14,11 +14,20 @@ const Template = args => html`<vwc-icon-button ...=${spread(args)}></vwc-icon-bu
 export const Basic = Template.bind({});
 Basic.args = { icon: 'bin' };
 
+export const Filled = Template.bind({});
+Filled.args = { icon: 'bin', layout: 'filled' };
+
+export const Outlined = Template.bind({});
+Outlined.args = { icon: 'bin', layout: 'outlined' };
+
+export const CircledShape = Template.bind({});
+CircledShape.args = { icon: 'bin', shape: 'circled', layout: 'filled' };
+
 export const Dense = Template.bind({});
-Dense.args = { icon: 'home', dense: true };
+Dense.args = { icon: 'home', dense: true, layout: 'filled' };
 
 export const Enlarged = Template.bind({});
-Enlarged.args = { icon: 'home', enlarged: true };
+Enlarged.args = { icon: 'home', enlarged: true, layout: 'filled' };
 
 export const Disabled = Template.bind({});
-Disabled.args = { icon: 'code', disabled: true };
+Disabled.args = { icon: 'code', disabled: true, layout: 'filled' };

@@ -27,6 +27,8 @@ declare global {
 // @ts-ignore
 MWCSelect.styles = [styleCoupling, mwcSelectStyle, vwcSelectStyle];
 
+type SelectShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
+
 /**
  * This component is an extension of [<mwc-select>](https://github.com/material-components/material-components-web-components/tree/master/packages/select)
  */
@@ -36,7 +38,7 @@ export class VWCSelect extends MWCSelect {
 	dense = false;
 
 	@property({ type: String, reflect: true })
-	shape?: Shape;
+	shape?: SelectShape;
 
 	@property({ type: String, reflect: true })
 	form: string | undefined;
