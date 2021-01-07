@@ -1,3 +1,12 @@
+# [0.19.0](https://github.com/vonage/vivid/compare/v0.17.2...v0.19.0) (2021-01-07)
+
+
+### Features
+
+* iss 520/viv 212 headers elements ([#524](https://github.com/vonage/vivid/issues/524)) ([20eaa8c](https://github.com/vonage/vivid/commit/20eaa8c26b3771b226d0478eccfdac23e8a3a3b0)), closes [#520](https://github.com/vonage/vivid/issues/520) [#520](https://github.com/vonage/vivid/issues/520) [#520](https://github.com/vonage/vivid/issues/520) [#520](https://github.com/vonage/vivid/issues/520) [#520](https://github.com/vonage/vivid/issues/520) [#520](https://github.com/vonage/vivid/issues/520) [#520](https://github.com/vonage/vivid/issues/520) [#520](https://github.com/vonage/vivid/issues/520) [#520](https://github.com/vonage/vivid/issues/520)
+
+
+
 ## [0.17.2](https://github.com/vonage/vivid/compare/v0.17.1...v0.17.2) (2020-12-17)
 
 
