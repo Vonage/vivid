@@ -5,6 +5,8 @@ import { IconButton as MWCIconButton } from '@material/mwc-icon-button';
 import { style as vwcButtonStyle } from './vwc-icon-button.css';
 import { style as mwcIconButtonStyle } from '@material/mwc-icon-button/mwc-icon-button-css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
+import { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
+import { handleMultipleDenseProps } from '@vonage/vvd-foundation/general-utils';
 import { html, TemplateResult } from 'lit-element';
 
 declare global {
@@ -17,11 +19,37 @@ declare global {
 // @ts-ignore
 MWCIconButton.styles = [styleCoupling, mwcIconButtonStyle, vwcButtonStyle];
 
+type IconButtonLayout = Extract<
+	Layout,
+	Layout.Filled | Layout.Outlined | Layout.Ghost
+>;
+
+type IconButtonShape = Extract<Shape, Shape.Rounded | Shape.Circled>;
+
+type IconButtonConnotation = Extract<
+	Connotation,
+	| Connotation.Primary
+	| Connotation.CTA
+	| Connotation.Success
+	| Connotation.Alert
+	| Connotation.Info
+	| Connotation.Announcement
+>;
+
 /**
  * This component is an extension of [<mwc-icon-button>](https://github.com/material-components/material-components-web-components/tree/master/packages/icon-button)
  */
 @customElement('vwc-icon-button')
 export class VWCIconButton extends MWCIconButton {
+	@property({ type: String, reflect: true })
+	layout: IconButtonLayout = Layout.Ghost;
+
+	@property({ type: String, reflect: true })
+	connotation: IconButtonConnotation = Connotation.Primary;
+
+	@property({ type: String, reflect: true })
+	shape?: IconButtonShape;
+
 	@property({ type: Boolean, reflect: true })
 	dense = false;
 
@@ -29,18 +57,7 @@ export class VWCIconButton extends MWCIconButton {
 	enlarged = false;
 
 	protected updated(changes: Map<string, boolean>): void {
-		if (changes.has('dense')) {
-			if (this.dense && this.enlarged) {
-				this.enlarged = false;
-			}
-		}
-
-		if (changes.has('enlarged')) {
-			if (this.enlarged && this.dense) {
-				this.removeAttribute('dense');
-				this.dense = false;
-			}
-		}
+		handleMultipleDenseProps(this, changes);
 	}
 
 	protected render(): TemplateResult {
@@ -66,9 +83,15 @@ export class VWCIconButton extends MWCIconButton {
 
 	protected renderIcon(): TemplateResult {
 		return html`<vwc-icon
-			class="icon"
+			class="vwc-icon"
 			size="small"
 			type="${this.icon}"
 		></vwc-icon>`;
+	}
+
+	renderRipple(): TemplateResult | '' {
+		return this.shouldRenderRipple
+			? html` <mwc-ripple .disabled="${this.disabled}"></mwc-ripple>`
+			: '';
 	}
 }

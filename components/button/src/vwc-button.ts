@@ -35,6 +35,8 @@ type ButtonConnotation = Extract<
 	| Connotation.Announcement
 >;
 
+type ButtonShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
+
 /**
  * This component is an extension of [<mwc-button>](https://github.com/material-components/material-components-web-components/tree/master/packages/button)
  * Our button supports native features like the 'form' and 'type' attributes
@@ -51,7 +53,7 @@ export class VWCButton extends MWCButton {
 	connotation: ButtonConnotation = Connotation.Primary;
 
 	@property({ type: String, reflect: true })
-	shape?: Shape;
+	shape?: ButtonShape;
 
 	@property({ type: String, reflect: true })
 	type: ButtonType[number] = 'submit';

@@ -19,7 +19,9 @@ export const argTypes = {
 	shape: {
 		control: {
 			type: 'select',
-			options: Object.values(Shape),
+			options: Object.values(Shape).filter(s => [
+				Shape.Rounded, Shape.Pill
+			].includes(s)),
 		}
 	},
 	dense: {
