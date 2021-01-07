@@ -6,6 +6,7 @@
 	"license": "ISC",
 	"main": "vwc-button.js",
 	"module": "vwc-button.js",
+	"types": "vwc-button.d.ts",
 	"files": [
 		"*.js",
 		"*.ts",
@@ -17,7 +18,9 @@
 		"directory": "components/button"
 	},
 	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1"
+		"build": "tsc -b",
+		"test": "karma start --coverage --browsers=ChromeHeadless",
+		"lint": "yarn eslint src"
 	},
 	"bugs": {
 		"url": "https://github.com/Vonage/vivid/issues"
@@ -32,6 +35,9 @@
 		"tslib": "^2.0.3"
 	},
 	"devDependencies": {
-		"@vonage/vvd-typography": "^0.17.2"
+		"@vonage/vvd-typography": "^0.17.2",
+		"eslint": "^7.17.0",
+		"karma": "^5.2.3",
+		"typescript": "^4.1.3"
 	}
 }
