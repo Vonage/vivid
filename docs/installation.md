@@ -21,9 +21,12 @@ Obviously, most likely Vivid products will be consumed as **npm** dependencies i
 ### Getting the packages
 
 The preferred way to make our package available to your application is to install the whole Vivid's bundle.
-For a specific cases, one may also chose to 'cherry-pick' the specific packages one by one.
+In some specific cases, one may chose to install components individually, as described in a second section below.
 
-#### Installation
+Whichever path you'll decide to take, Vonage's **artifactory** access setup required,
+see more on that in the third secton below.
+
+#### Installing the bundle
 
 If you're using a bundler that is capable of tree-shaking to bundle up your application's code (such as WebPack), you can install Vivid by running this command:
 
@@ -50,7 +53,7 @@ From now on, `vwc-button` will be registered in your DOM API, so you can instant
 const myButton = document.createElement('vwc-button');
 ```
 
-##### Installing Components Individually
+#### Installing components individually
 
 In cases where your bundler can't perform 'tree-shaking' (remove parts of code that are not actually used within your code), you may wish to install and use Vivid packages individually.
 
@@ -75,3 +78,7 @@ And use it:
 ```javascript
 const myButton = document.createElement('vwc-button');
 ```
+
+#### Artifactory setup
+
+TODO...
