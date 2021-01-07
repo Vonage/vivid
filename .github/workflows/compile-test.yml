@@ -17,10 +17,10 @@ jobs:
         with:
           token: ${{ secrets.PAT }}
 
-      - name: Setup NodeJS 12
-        uses: actions/setup-node@v1
+      - name: Setup NodeJS 14
+        uses: actions/setup-node@v2
         with:
-          node-version: 12
+          node-version: 14
 
       - name: Install yarn
         run: npm install -g yarn
@@ -53,7 +53,7 @@ jobs:
           token: ${{ secrets.PAT }}
 
       - name: Setup NodeJS 14
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: 14
 
@@ -100,7 +100,7 @@ jobs:
           token: ${{ secrets.PAT }}
 
       - name: Setup NodeJS 14
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: 14
 
@@ -147,7 +147,7 @@ jobs:
           token: ${{ secrets.PAT }}
 
       - name: Setup NodeJS 14
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: 14
 
@@ -200,7 +200,7 @@ jobs:
           token: ${{ secrets.PAT }}
 
       - name: Setup NodeJS 14
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: 14
 
@@ -245,7 +245,7 @@ jobs:
             token: ${{ secrets.PAT }}
 
         - name: Setup NodeJS 14
-          uses: actions/setup-node@v1
+          uses: actions/setup-node@v2
           with:
             node-version: 14
 
