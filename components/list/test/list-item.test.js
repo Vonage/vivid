@@ -36,24 +36,38 @@ describe('list item', () => {
 		});
 	});
 
-	describe('general styling', async () => {
-		it('should have correct dimensions', async () => {
-			const itemsNum = 3;
-			const actualElements = addElement(
+	describe('sizing', async () => {
+		let actualElements, itemsNum = 3;
+		beforeEach(async () => {
+			actualElements = addElement(
 				buildListOfNItems(itemsNum, VWC_LIST_ITEM)
 			);
 			await waitNextTask();
+		});
+
+		it('should have correct size by default', async () => {
 			assertListItemDimensions(actualElements[0].children, itemsNum, 48);
 		});
 
+		it('should have correct size when twoline', async () => {
+			for (let item of actualElements[0].children) item.twoline = true;
+			await waitNextTask();
+			assertListItemDimensions(actualElements[0].children, itemsNum, 72);
+		});
+
 		it('should have dense size when dense', async () => {
-			const itemsNum = 3;
-			const actualElements = addElement(
-				buildListOfNItems(itemsNum, VWC_LIST_ITEM)
-			);
 			for (let item of actualElements[0].children) item.dense = true;
 			await waitNextTask();
 			assertListItemDimensions(actualElements[0].children, itemsNum, 40);
+		});
+
+		it('should have dense size when dense and twoline', async () => {
+			for (let item of actualElements[0].children) {
+				item.dense = true;
+				item.twoline = true;
+			}
+			await waitNextTask();
+			assertListItemDimensions(actualElements[0].children, itemsNum, 64);
 		});
 	});
 
