@@ -32,11 +32,6 @@
     @include typography.typography-cat-shorthand('subtitle-2');
   }
 
-  p {
-    width: 60ch;
-    max-width: 100%;
-	}
-
 	code,
 	kbd,
 	samp {
@@ -53,7 +48,7 @@
 	}
 
   var {
-		@include typography.typography-cat-shorthand('body-1-code');
+		font-family: 'SpeziaMonoWebVariable', monospace;
     display: block;
     border-radius: 4px;
   }
