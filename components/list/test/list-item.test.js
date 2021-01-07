@@ -37,11 +37,10 @@ describe('list item', () => {
 	});
 
 	describe('sizing', async () => {
-		let actualElements, itemsNum = 3;
+		let actualElements;
+		const itemsNum = 3;
 		beforeEach(async () => {
-			actualElements = addElement(
-				buildListOfNItems(itemsNum, VWC_LIST_ITEM)
-			);
+			actualElements = addElement(buildListOfNItems(itemsNum, VWC_LIST_ITEM));
 			await waitNextTask();
 		});
 
