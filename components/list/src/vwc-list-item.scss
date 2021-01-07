@@ -31,6 +31,10 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 :host([dense][twoline]) {
 	#{$vvd-list-item-block-size}: 64px;
 
+	.mdc-list-item__graphic {
+		margin-top: 10px;
+	}
+
 	.mdc-list-item__primary-text::before {
 		height: 26px;
 	}
@@ -50,6 +54,11 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 		bottom: 0;
 		left: var(#{$vvd-list-item-side-padding});
 		right: var(#{$vvd-list-item-side-padding});
+	}
+
+	.mdc-list-item__graphic {
+		align-self: flex-start;
+		margin-top: 16px;
 	}
 
 	.mdc-list-item__primary-text {

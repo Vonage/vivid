@@ -52,4 +52,4 @@ const Template = () => html`
 	</div>
 `;
 
-export const ExpansionPanel = Template.bind({});
+// export const ExpansionPanel = Template.bind({});
