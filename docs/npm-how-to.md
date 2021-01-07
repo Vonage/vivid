@@ -76,6 +76,6 @@ email = ${ARTIFACTORY_USER}
 
 Enable `repo` and `read:packages` scopes and don't forget to enable SSO for your tokens:
 
-![Enable SSO](../assets/images/github-sso.jpg)
+![Enable SSO](assets/images/github-sso.jpg)
 
 > **Attention:** You need to authorise as well for **Vonage** GitHub org in the case you haven't so far. If Vonage org now showing up please reach out `#ask-github` Slack channel and request access.
