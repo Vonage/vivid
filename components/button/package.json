@@ -18,7 +18,9 @@
 		"directory": "components/button"
 	},
 	"scripts": {
-		"build": "tsc -b",
+		"build:styles": "node ../../scripts/sass-render/new-sass-render.js",
+		"build:typescript": "tsc -b",
+		"build": "yarn build:styles",
 		"test": "karma start --coverage --browsers=ChromeHeadless",
 		"lint": "yarn eslint src"
 	},
