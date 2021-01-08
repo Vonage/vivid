@@ -192,15 +192,17 @@ vwc-notched-outline {
 }
 
 // helper / error message line
-:host([helper]:not([helper=''])) {
+:host([helper]:not([helper=''])),
+:host([validationmessage]) {
   .mdc-text-field  + .mdc-text-field-helper-line {
-    margin-top: 7px;
+    margin-top: 4px;
   }
 }
 
 .mdc-text-field {
 	& + .mdc-text-field-helper-line {
-		--mdc-theme-error: var(--mdc-text-field-ink-color);
+    --mdc-theme-error: var(--mdc-text-field-ink-color);
+    height: 16px;
 		padding: 0;
 		align-items: center;
 		justify-content: initial;
@@ -225,14 +227,12 @@ vwc-notched-outline {
 	}
 
 	+ .mdc-text-field-helper-text--validation-msg {
-    margin-top: 7px;
-
 		.mdc-text-field-helper-icon {
 			display: flex;
 		}
 
 		.spacer {
-			flex-basis: 6px;
+			flex-basis: 4px;
 		}
 	}
 }
