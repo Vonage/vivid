@@ -7,12 +7,16 @@
     color: var(#{scheme-variables.$vvd-color-on-base});
 	}
 
+	a {
+		color: color-base.$purple-600;
+	}
+
 	code {
 		background-color:var(#{scheme-variables.$vvd-color-surface});
 		color: color-base.$orange-600;
 	}
 
-	a {
-		color: color-base.$purple-600;
+	pre {
+		background-color:var(#{scheme-variables.$vvd-color-surface});
 	}
 }
