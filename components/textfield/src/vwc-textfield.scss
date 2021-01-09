@@ -202,7 +202,6 @@ vwc-notched-outline {
 .mdc-text-field {
 	& + .mdc-text-field-helper-line {
     --mdc-theme-error: var(--mdc-text-field-ink-color);
-    height: 16px;
 		padding: 0;
 		align-items: center;
 		justify-content: initial;
@@ -215,10 +214,6 @@ vwc-notched-outline {
 
     .mdc-text-field-helper-text:not(.mdc-text-field-helper-text--validation-msg) {
 			opacity: 1;
-		}
-
-    .mdc-text-field-helper-text::before {
-			display: none;
 		}
 
 		.spacer {
@@ -235,6 +230,10 @@ vwc-notched-outline {
 			flex-basis: 4px;
 		}
 	}
+}
+
+.mdc-text-field-helper-text::before{
+	height: 1em;
 }
 
 @include shape-mixins.shape(
