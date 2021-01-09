@@ -233,7 +233,7 @@ vwc-notched-outline {
 }
 
 .mdc-text-field-helper-text::before{
-	height: 1em;
+	block-size: max(16px, 1em); // set to match the prefix -small- icon block size as a minimum
 }
 
 @include shape-mixins.shape(
