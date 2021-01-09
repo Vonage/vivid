@@ -14,6 +14,10 @@ async function run() {
 		controls: {
 			expanded: true
 		},
+		html: {
+			root: '#root-inner',
+			removeEmptyComments: true,
+		},
 		options: {
 			storySort: {
 				order: [
