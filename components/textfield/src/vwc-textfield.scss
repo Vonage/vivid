@@ -195,7 +195,7 @@ vwc-notched-outline {
 :host([helper]:not([helper=''])),
 :host([validationmessage]) {
   .mdc-text-field  + .mdc-text-field-helper-line {
-    margin-top: 4px;
+    margin-block-start: 4px;
   }
 }
 
