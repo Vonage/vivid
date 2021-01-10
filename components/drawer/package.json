@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-drawer",
-	"version": "0.17.2",
+	"version": "0.19.1",
 	"description": "drawer component",
 	"author": "yinonov <yinon@hotmail.com>",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/drawer#readme",
@@ -26,13 +26,13 @@
 	},
 	"dependencies": {
 		"@material/mwc-drawer": "^0.20.0",
-		"@vonage/vvd-core": "^0.17.2",
-		"@vonage/vvd-style-coupling": "^0.17.2",
+		"@vonage/vvd-core": "^0.19.1",
+		"@vonage/vvd-style-coupling": "^0.19.1",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.3"
 	},
 	"devDependencies": {
-		"@vonage/vvd-design-tokens": "^0.17.2",
-		"@vonage/vvd-typography": "^0.17.2"
+		"@vonage/vvd-design-tokens": "^0.19.1",
+		"@vonage/vvd-typography": "^0.19.1"
 	}
 }
