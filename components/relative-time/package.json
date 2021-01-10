@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-relative-time",
-	"version": "0.17.2",
+	"version": "0.19.0",
 	"description": "A web component for displaying a timestamp relative to the current time",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/relative-time#readme",
 	"license": "ISC",
@@ -23,7 +23,7 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@vonage/vvd-core": "^0.17.2",
+		"@vonage/vvd-core": "^0.19.0",
 		"date-fns": "^2.14.0",
 		"kefir": "^3.8.7"
 	}
