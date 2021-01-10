@@ -6514,6 +6514,11 @@ ci-info@^2.0.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ci-info/-/ci-info-2.0.0.tgz#67a9e964be31a51e15e5010d58e6f12834002f46"
   integrity sha1-Z6npZL4xpR4V5QENWObxKDQAL0Y=
 
+ci-job-number@^0.3.1:
+  version "0.3.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ci-job-number/-/ci-job-number-0.3.1.tgz#4354e45bb3ed5a7301f09358d2876d510d4a570e"
+  integrity sha1-Q1TkW7PtWnMB8JNY0odtUQ1KVw4=
+
 cipher-base@^1.0.0, cipher-base@^1.0.1, cipher-base@^1.0.3:
   version "1.0.4"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/cipher-base/-/cipher-base-1.0.4.tgz#8760e4ecc272f4c363532f926d874aae2c1397de"
@@ -7657,10 +7662,12 @@ depcheck@YonatanKra/depcheck#vivid-version:
     minimatch "^3.0.4"
     multimatch "^4.0.0"
     please-upgrade-node "^3.2.0"
+    query-ast "^1.0.3"
     readdirp "^3.4.0"
     require-package-name "^2.0.1"
     resolve "^1.17.0"
     sass "^1.26.10"
+    scss-parser "^1.0.4"
     vue-template-compiler "^2.6.11"
     yargs "^15.4.0"
 
@@ -8081,6 +8088,15 @@ emotion-theming@^10.0.19:
     "@babel/runtime" "^7.5.5"
     "@emotion/weak-memoize" "0.2.5"
     hoist-non-react-statics "^3.3.0"
+
+emscripten-wasm-loader@^3.0.3:
+  version "3.0.3"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/emscripten-wasm-loader/-/emscripten-wasm-loader-3.0.3.tgz#60d4f33dd62fc41cf6d98fbca94b24bc246f133b"
+  integrity sha1-YNTzPdYvxBz22Y+8qUskvCRvEzs=
+  dependencies:
+    getroot "^1.0.0"
+    nanoid "^2.0.3"
+    unixify "^1.0.0"
 
 encodeurl@^1.0.2, encodeurl@~1.0.2:
   version "1.0.2"
@@ -9448,6 +9464,13 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
+getroot@^1.0.0:
+  version "1.0.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/getroot/-/getroot-1.0.0.tgz#ac4635c5fa4037741d6ead61ccc16367439efcbe"
+  integrity sha1-rEY1xfpAN3Qdbq1hzMFjZ0Oe/L4=
+  dependencies:
+    tslib "^1.7.1"
+
 git-raw-commits@2.0.0:
   version "2.0.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/git-raw-commits/-/git-raw-commits-2.0.0.tgz#d92addf74440c14bcc5c83ecce3fb7f8a79118b5"
@@ -10125,6 +10148,14 @@ humanize-ms@^1.2.1:
   integrity sha1-xG4xWaKT9riW2ikxbYtv6Lt5u+0=
   dependencies:
     ms "^2.0.0"
+
+hunspell-asm@^4.0.1:
+  version "4.0.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/hunspell-asm/-/hunspell-asm-4.0.2.tgz#20c50ea50a52467534a809b3095a064231e7171e"
+  integrity sha1-IMUOpQpSRnU0qAmzCVoGQjHnFx4=
+  dependencies:
+    emscripten-wasm-loader "^3.0.3"
+    nanoid "^2.1.5"
 
 husky@^4.2.5:
   version "4.3.0"
@@ -12566,6 +12597,11 @@ nanoid@3.1.12:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/nanoid/-/nanoid-3.1.12.tgz#6f7736c62e8d39421601e4a0c77623a97ea69654"
   integrity sha1-b3c2xi6NOUIWAeSgx3YjqX6mllQ=
 
+nanoid@^2.0.3, nanoid@^2.1.5:
+  version "2.1.11"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/nanoid/-/nanoid-2.1.11.tgz#ec24b8a758d591561531b4176a01e3ab4f0f0280"
+  integrity sha1-7CS4p1jVkVYVMbQXagHjq08PAoA=
+
 nanomatch@^1.2.9:
   version "1.2.13"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/nanomatch/-/nanomatch-1.2.13.tgz#b87a8aa4fc0de8fe6be88895b38983ff265bd119"
@@ -13278,6 +13314,11 @@ p-waterfall@^1.0.0:
   integrity sha1-ftlLPOszMngjU69qrhGqn8I1uwA=
   dependencies:
     p-reduce "^1.0.0"
+
+package-options@^0.1.1:
+  version "0.1.4"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/package-options/-/package-options-0.1.4.tgz#83b55d2787f3cadaeb1682b74e13d3930b2197fa"
+  integrity sha1-g7VdJ4fzytrrFoK3ThPTkwshl/o=
 
 pako@~1.0.5:
   version "1.0.11"
@@ -15592,6 +15633,16 @@ spdx-license-ids@^3.0.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/spdx-license-ids/-/spdx-license-ids-3.0.6.tgz#c80757383c28abf7296744998cbc106ae8b854ce"
   integrity sha1-yAdXODwoq/cpZ0SZjLwQaui4VM4=
 
+spech@^0.2.1:
+  version "0.2.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/spech/-/spech-0.2.1.tgz#7435f70bf5594566842e6d8c26b0b15870916e80"
+  integrity sha1-dDX3C/VZRWaELm2MJrCxWHCRboA=
+  dependencies:
+    ci-job-number "^0.3.1"
+    glob "^7.1.6"
+    hunspell-asm "^4.0.1"
+    package-options "^0.1.1"
+
 split-string@^3.0.1, split-string@^3.0.2:
   version "3.1.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/split-string/-/split-string-3.1.0.tgz#7cb09dda3a86585705c64b39a6466038682e8fe2"
@@ -16487,7 +16538,7 @@ tsconfig-paths@^3.9.0:
     minimist "^1.2.0"
     strip-bom "^3.0.0"
 
-tslib@^1.10.0, tslib@^1.11.1, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
+tslib@^1.10.0, tslib@^1.11.1, tslib@^1.7.1, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
   version "1.14.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha1-zy04vcNKE0vK8QkcQfZhni9nLQA=
@@ -16854,6 +16905,13 @@ universalify@^1.0.0:
   version "1.0.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/universalify/-/universalify-1.0.0.tgz#b61a1da173e8435b2fe3c67d29b9adf8594bd16d"
   integrity sha1-thodoXPoQ1sv48Z9Kbmt+FlL0W0=
+
+unixify@^1.0.0:
+  version "1.0.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/unixify/-/unixify-1.0.0.tgz#3a641c8c2ffbce4da683a5c70f03a462940c2090"
+  integrity sha1-OmQcjC/7zk2mg6XHDwOkYpQMIJA=
+  dependencies:
+    normalize-path "^2.1.1"
 
 unpipe@1.0.0, unpipe@~1.0.0:
   version "1.0.0"
