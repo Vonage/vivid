@@ -9,6 +9,6 @@ export default {
 
 const Template = () => html`<vwc-loading-veil></vwc-loading-veil>`;
 
-export const Default = Template.bind({});
+export const AlwaysSeen = Template.bind({});
 
-export const Indeterminate = Template.bind({});
+export const RemoveUpon = Template.bind({});
