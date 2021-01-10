@@ -4,8 +4,17 @@
     padding: 0;
 	}
 
+	pre,
 	code {
 		padding: 3px 4px;
 		border-radius: 6px;
+	}
+
+	pre {
+		overflow: auto;
+
+		code {
+			padding: initial;
+		}
 	}
 }

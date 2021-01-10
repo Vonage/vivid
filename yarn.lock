@@ -100,7 +100,7 @@
     jsesc "^2.5.1"
     source-map "^0.5.0"
 
-"@babel/generator@^7.12.10", "@babel/generator@^7.12.5":
+"@babel/generator@^7.12.10", "@babel/generator@^7.12.11", "@babel/generator@^7.12.5":
   version "7.12.11"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@babel/generator/-/generator-7.12.11.tgz#98a7df7b8c358c9a37ab07a24056853016aba3af"
   integrity sha1-mKffe4w1jJo3qweiQFaFMBaro68=
@@ -393,7 +393,7 @@
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@babel/parser/-/parser-7.12.3.tgz#a305415ebe7a6c7023b40b5122a0662d928334cd"
   integrity sha1-owVBXr56bHAjtAtRIqBmLZKDNM0=
 
-"@babel/parser@^7.12.10", "@babel/parser@^7.12.7", "@babel/parser@^7.9.4":
+"@babel/parser@^7.12.10", "@babel/parser@^7.12.11", "@babel/parser@^7.12.7", "@babel/parser@^7.9.4":
   version "7.12.11"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@babel/parser/-/parser-7.12.11.tgz#9ce3595bcd74bc5c466905e86c535b8b25011e79"
   integrity sha1-nONZW810vFxGaQXobFNbiyUBHnk=
@@ -3640,7 +3640,7 @@
     global "^4.3.2"
     regenerator-runtime "^0.13.7"
 
-"@storybook/api@6.1.11", "@storybook/api@^6.1.10":
+"@storybook/api@6.1.11", "@storybook/api@^6.1.11":
   version "6.1.11"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/api/-/api-6.1.11.tgz#1e0b798203df823ac21184386258cf8b5f17f440"
   integrity sha1-Hgt5ggPfgjrCEYQ4YljPi18X9EA=
@@ -3719,7 +3719,7 @@
     core-js "^3.0.1"
     global "^4.3.2"
 
-"@storybook/components@6.1.11", "@storybook/components@^6.1.10":
+"@storybook/components@6.1.11", "@storybook/components@^6.1.11":
   version "6.1.11"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@storybook/components/-/components-6.1.11.tgz#edd5db7fe43f47b5a7ab515840795a89d931512e"
   integrity sha1-7dXbf+Q/R7Wnq1FYQHlaidkxUS4=
@@ -4816,15 +4816,15 @@
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@webcomponents/webcomponentsjs/-/webcomponentsjs-2.5.0.tgz#61b27785a6ad5bfd68fa018201fe418b118cb38d"
   integrity sha1-YbJ3haatW/1o+gGCAf5BixGMs40=
 
-"@whitespace/storybook-addon-html@^4.0.2":
-  version "4.0.2"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@whitespace/storybook-addon-html/-/storybook-addon-html-4.0.2.tgz#9c027255df1874ffddff50e80a12128958f90bcf"
-  integrity sha1-nAJyVd8YdP/d/1DoChISiVj5C88=
+"@whitespace/storybook-addon-html@^4.2.0":
+  version "4.2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@whitespace/storybook-addon-html/-/storybook-addon-html-4.2.0.tgz#d91512b2959fa9d8c137c6daa910460cc2c30e09"
+  integrity sha1-2RUSspWfqdjBN8baqRBGDMLDDgk=
   dependencies:
-    "@babel/generator" "^7.12.10"
-    "@babel/parser" "^7.12.10"
-    "@storybook/api" "^6.1.10"
-    "@storybook/components" "^6.1.10"
+    "@babel/generator" "^7.12.11"
+    "@babel/parser" "^7.12.11"
+    "@storybook/api" "^6.1.11"
+    "@storybook/components" "^6.1.11"
     prettier "^2.2.1"
     react-syntax-highlighter "^15.4.3"
 
