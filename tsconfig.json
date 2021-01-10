@@ -53,6 +53,7 @@
 		{ "path": "components/keypad" },
 		{ "path": "components/linear-progress" },
 		{ "path": "components/list" },
+		{ "path": "components/loading-veil" },
 		{ "path": "components/media-controller" },
 		{ "path": "components/menu" },
 		{ "path": "components/mwc-chips" },

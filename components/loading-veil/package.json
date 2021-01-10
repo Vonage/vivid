@@ -1,0 +1,30 @@
+{
+	"name": "@vonage/vwc-loading-veil",
+	"version": "0.17.2",
+	"description": "loading veil component",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/loading-veil#readme",
+	"license": "ISC",
+	"main": "vwc-loading-veil.js",
+	"module": "vwc-loading-veil.js",
+	"files": [
+		"src",
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/vonage/vivid.git",
+		"directory": "components/loading-veil"
+	},
+	"scripts": {
+		"test": "echo \"Error: run tests from root\" && exit 1"
+	},
+	"bugs": {
+		"url": "https://github.com/Vonage/vivid/issues"
+	},
+	"dependencies": {
+		"lit-element": "^2.4.0",
+		"tslib": "^2.0.3"
+	}
+}
