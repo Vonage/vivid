@@ -8,10 +8,10 @@ Any of those involves internal mechanics initialization: fetching __fonts__ for 
 We call those __vivid core__.
 
 There is a lifecycle here.
-We've designed Vivid overlay lifecycle to be self contained, agnostic to other contexts and to not interfere nor require alignment to the existing application lifecycle or any other framework in place.
+We've designed Vivid overlay lifecycle to be self-contained, agnostic to other contexts and to not interfere nor require alignment to the existing application lifecycle or any other framework in place.
 
  __vivid core__ initialization may go 2 main paths:
-- __auto-init__: this is the default behaviour, Vivid will auto init itself upon the first usage unless specified otherwise
+- __auto-init__: this is the default behavior, Vivid will auto init itself upon the first usage unless specified otherwise
 - __manual__: see below how to configure Vivid this way and when to use it
 
 # Readiness hook
@@ -30,7 +30,7 @@ vvdCore.settled.then(() => {
 });
 ```
 
-Most obvious use of the `settled` is to remove the loading vilon, which could be put over the site in order to prevent FOUC (flash of unstyled content).
+Most obvious use of the `settled` is to remove the loading veil, which could be put over the site in order to prevent FOUC (flash of unstyled content).
 
 # Auto init
 
@@ -56,7 +56,7 @@ The below example will auto-initialize __vivid core__ with the dark theme.
 
 Advanced consumer might like to manage the visual application state (we mean Vivid's part, eg theming) as per user setting.
 
-This case would involve an async work to be done client side, eg fetching personalised settings from the server or from a local storage like IndexedDB.
+This case would involve an async work to be done client side, eg fetching personalized settings from the server or from a local storage like IndexedDB.
 
 Init with __none__ keyword designed exactly for that. It will prevent auto init of the __vivid core__. It can be done in the following manner:
 

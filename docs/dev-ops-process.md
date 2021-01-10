@@ -19,7 +19,7 @@ We follow a CI/CD approach as below:
     * generate changelog
     * build and test packages
     * commit and push the bumped versions
-    * create tag named `v<version>` (following the example above `v0.5.2`)
+    * create tag `v<version>` (following the example above `v0.5.2`)
     * publish the packages
     * build & deploy the [__release demo site__](https://vivid.vonage.com)
 

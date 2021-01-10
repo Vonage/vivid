@@ -81,7 +81,7 @@ const myButton = document.createElement('vwc-button');
 
 #### Artifactory setup
 
-It is a preferred Vonage's strategy as well as widely used organisational best practice to manage code dependencies in a dedicated, internally managed artifactory.
+It is a preferred Vonage's strategy as well as widely used organizational best practice to manage code dependencies in a dedicated, internally managed artifactory.
 
 Vivid is aligned with this approach, hence a list of steps to help you to set up the artifactory access on local machines as well as in CI environment.
 
@@ -101,7 +101,7 @@ Here we defined 2 primary things:
 * NPM should pull the package from that registry (Vonage's artifactory) rather than from generic public one
 * Since the artifactory is protected, it should use the specified **authentication token**
 
-Obviously, authentication token better NOT to be hard-coded in your sources, but read from environment (_secrets_), meaning that all local dev machines and CI should have it set apriory.
+Obviously, authentication token better NOT to be hard-coded in your sources, but read from environment (_secrets_), meaning that all local dev machines and CI should have it set a priory.
 
 > You may read more info about `.npmrc` configuration [here](https://docs.npmjs.com/cli/v6/configuring-npm/npmrc).
 

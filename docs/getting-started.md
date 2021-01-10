@@ -36,7 +36,7 @@ Another noticeable service is `vvd-context`, which is responsible for setting up
 #### Components
 
 Most of the Vivid's value can be achieved via directly using our components.
-Encapsulated by means of `ShadowDOM`, scrutinely styles and funcionalized according to the Design System UI/UX and thoroughly tested - those are a solid building blocks for any Vonage web application.
+Encapsulated by means of `ShadowDOM`, scrutinely styles and functionalized according to the Design System UI/UX and thoroughly tested - those are a solid building blocks for any Vonage web application.
 
 We are set first to deliver the simple building blocks - **atom** components, like `vwc-button`, `vwc- icon`, `vwc-select` etc. 
 
