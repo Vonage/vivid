@@ -3,7 +3,7 @@
 In order to build, test and deploy our product we use [GitHub actions](https://help.github.com/en/actions), aka workflows.
 Most of the routine tasks are automated, leaving only the actual release part (including versioning) manual, as of now.
 
-Most of the processes may and should be run locally to save the time and the resouces of both the developer/contributor self and the CI system.
+Most of the processes may and should be run locally to save the time and the resources of both the developer/contributor self and the CI system.
 
 ## Process flow
 

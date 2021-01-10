@@ -8,7 +8,7 @@ Any of those involves internal mechanics initialization: fetching __fonts__ for 
 We call those __vivid core__.
 
 There is a lifecycle here.
-We've designed Vivid overlay lifecycle to be selfcontained, agnostic to other contexts and to not interfere nor require alignment to the existing application lifecycle or any other framework in place.
+We've designed Vivid overlay lifecycle to be self contained, agnostic to other contexts and to not interfere nor require alignment to the existing application lifecycle or any other framework in place.
 
  __vivid core__ initialization may go 2 main paths:
 - __auto-init__: this is the default behaviour, Vivid will auto init itself upon the first usage unless specified otherwise
@@ -16,9 +16,9 @@ We've designed Vivid overlay lifecycle to be selfcontained, agnostic to other co
 
 # Readiness hook
 
-In order to allow ourselves and consuming applications to run code __after__ initialization is done, __vivid core__ exposes a `settled` Promise. This Promise will resolve once all of the __core__ services done and ready.
+In order to allow ourselves and consuming applications to run code __after__ initialization is done, __vivid core__ exposes a `settled` Promise. This Promise will resolve once all the __core__ services are done and ready.
 
-> Important: in case of __manual__ initialization, `settled` will be immediatelly rejected.
+> Important: in case of __manual__ initialization, `settled` will be immediately rejected.
 
 ```javascript
 import vvdCore from '@vonage/vvd-core.js';
@@ -26,7 +26,7 @@ import vvdCore from '@vonage/vvd-core.js';
 ...
 
 vvdCore.settled.then(() => {
-	//	do whatever after the init, eg remove the loading vilon
+	//	do whatever after the init, eg remove the loading "curtain"
 });
 ```
 
@@ -38,7 +38,7 @@ If consuming application took no special action, the first use of the Vivid's co
 
 ## Default init
 
-All of the __vivid core__ services know to init themselves to the default values if not specified otherwise.
+All the __vivid core__ services auto-initialize to default values if not specified otherwise.
 
 ## Pre-configured init
 
@@ -50,7 +50,7 @@ The below example will auto-initialize __vivid core__ with the dark theme.
 ...
 ```
 
-> Important: the attribute is being examined at the moment of initialization ONLY, so it should be in place BEFORE the initialization performed. We suggest to use this feature as a purely static setup OOTB.
+> Important: the attribute is being examined at the moment of initialization ONLY, so it should be in place BEFORE the initialization performed. We suggest using this feature as a purely static setup OOTB.
 
 # Manual init
 
@@ -81,4 +81,4 @@ vividCore
 
 Pay attention: `set` API is not limited to the init use case only, it may be used for any runtime (re-)configuration of the Vivid overlay.
 
-> Reminder: `settled` Promise of the __vivid core__ is immediatelly rejuected when __none__ initialization flavor is used.
+> Reminder: `settled` Promise of the __vivid core__ is immediately rejected when __none__ initialization flavor is used.

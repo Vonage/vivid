@@ -16,7 +16,7 @@ Vivid team produces contents for and with both, the designers team and the Web d
 
 Design System is maintained by the designers team across Vonage in Figma tool.
 Many of those 'raw' materials are automatically pulled into the Vivid's components implementation - so that we'll all rely on a single source of truth.
-We are constanly working to make that automation process more robust, while still widening the automated area.
+We are constantly working to make that automation process more robust, while still widening the automated area.
 
 See more on this aspect in the **Design System** documentation section.
 
@@ -31,7 +31,7 @@ Indeed, we can primarily split our product into **services** and **components**.
 
 Some of the generic functionalities are provided as services.
 For example, one can user `vvd-scheme` service to manage the scheme, be notified of scheme changes etc.
-Another noticable service is `vvd-context`, which is responsible for setting up a Vivid's styling of the generic HTML elements (`h1`, `p`, `code` etc).
+Another noticeable service is `vvd-context`, which is responsible for setting up a Vivid's styling of the generic HTML elements (`h1`, `p`, `code` etc).
 
 #### Components
 
@@ -47,10 +47,10 @@ On top of those, we are going to deliver, and actually already have some, of the
 ### Preview
 
 We are using **Storybook** platform to document and exemplify our deliveries.
-There are several Storybooks available, each for it's own sake:
+There are several Storybooks available, each for its own sake:
 - the latest production version is shown here: [vivid.vonage.com](https://vivid.vonage.com)
-- the currently development state (reflecting our main branch) is here: [dev.vivid.vonage.com](https://dev.vivid.vonage.com)
-- each pull-request also has it's own deployment, so that any feature in progress can be reviewed instantly - those dynamic deployments can be found in the GitHub's PR pages
+- the current development state (reflecting our main branch) is here: [dev.vivid.vonage.com](https://dev.vivid.vonage.com)
+- each pull-request also has its own deployment, so that any feature in progress can be reviewed instantly - those dynamic deployments can be found in the GitHub's PR pages
 
 Additionally, we maintain the following showcases:
 * [Icons gallery](https://icons.vivid.vonage.com)

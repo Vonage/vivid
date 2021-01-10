@@ -2,7 +2,7 @@
 
 ### Get started with our services and components
 
-###### There are just a few steps to perform to get Vivid eco-system up and running within a hosting application. This guide explains how to do it and describes possible 'gotchas' along the way.
+###### There are just a few steps to perform to get Vivid ecosystem up and running within a hosting application. This guide explains how to do it and describes possible 'gotchas' along the way.
 
 ![Installation](assets/images/installation.svg)
 
@@ -21,10 +21,10 @@ Obviously, most likely Vivid products will be consumed as **npm** dependencies i
 ### Getting the packages
 
 The preferred way to make our package available to your application is to install the whole Vivid's bundle.
-In some specific cases, one may chose to install components individually, as described in a second section below.
+In some specific cases, one may choose to install components individually, as described in the [2nd section](#installing-the-bundle) below.
 
 Whichever path you'll decide to take, Vonage's **artifactory** access setup required,
-see more on that in the third secton below.
+see more on that in the third section below.
 
 #### Installing the bundle
 
@@ -83,7 +83,7 @@ const myButton = document.createElement('vwc-button');
 
 It is a preferred Vonage's strategy as well as widely used organisational best practice to manage code dependencies in a dedicated, internally managed artifactory.
 
-Vivid is aligned with this approach, hence a list of steps to help you to setup the artifactory access on local machines as well as in CI environment.
+Vivid is aligned with this approach, hence a list of steps to help you to set up the artifactory access on local machines as well as in CI environment.
 
 ##### Configure `.npmrc`
 
@@ -101,7 +101,7 @@ Here we defined 2 primary things:
 * NPM should pull the package from that registry (Vonage's artifactory) rather than from generic public one
 * Since the artifactory is protected, it should use the specified **authentication token**
 
-Obviously, authentication token better NOT to be hard-coded in your sources, but taken from environment, meaning that all local dev machines and the CI should have it set apriory.
+Obviously, authentication token better NOT to be hard-coded in your sources, but read from environment (_secrets_), meaning that all local dev machines and CI should have it set apriory.
 
 > You may read more info about `.npmrc` configuration [here](https://docs.npmjs.com/cli/v6/configuring-npm/npmrc).
 
@@ -111,7 +111,7 @@ Each developer in a team that does `npm install` will need to get her/his access
 Additionally, team is advised to obtain one more token for automation.
 
 The steps to follow are:
-* for each user reach out to CloudOps team and ask for an access to JFrog artifactory (welcome to copy this exact wording to the Jira ticket :) ) - this may take a few days
+* for each user reach out to CloudOps team and ask for access to JFrog artifactory (welcome to copy this exact wording to the Jira ticket :) ) - this may take a few days
 * once allowed, do login into the **JFrog** portal (application will appear in your Vonage app page), navigate to **User Profile** and copy your **API Key**
 * run on your local machine the following
   
@@ -120,6 +120,6 @@ The steps to follow are:
 	```
 	
 	while replacing 'username' and 'api_key' with your JFrog username and the just copied API Key correspondingly
-* in the response you'll see an `_auth` value - this is the token to be exported as `ARTIFACTORY_AUTH_TOKEN` as per our example above (in your case the variable name may differ, your choice)
+* in the response you'll see a `_auth` value - this is the token to be exported as `ARTIFACTORY_AUTH_TOKEN` per our example above (in your case the variable name may differ, your choice)
 
 Done!
