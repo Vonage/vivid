@@ -1,14 +1,39 @@
-import '@vonage/vwc-loading-veil.js';
+import '@vonage/vwc-loading-veil';
 import { html } from 'lit-element';
+import { spread } from '@open-wc/lit-helpers';
 
 export default {
-	title: 'Components/Composites/Loading Veil',
-	component: 'vwc-loading-veil',
-	argTypes
+	title: 'Components/Composite/Loading Veil',
+	component: 'vwc-loading-veil'
 }
 
-const Template = () => html`<vwc-loading-veil></vwc-loading-veil>`;
+const TemplateA = args => html`
+	<vwc-loading-veil ...=${spread(args)}></vwc-loading-veil>
+	<h4>Site content unveiled</h4>
+	<p>
+		This content in see once the loading veil is removed.
+		In order to see the flow again you may switch to and from the story or reload the whole page.
+	</p>
+`;
 
-export const AlwaysSeen = Template.bind({});
+export const DefaultDelay = TemplateA.bind({});
 
-export const RemoveUpon = Template.bind({});
+export const RemoveFast = TemplateA.bind({});
+RemoveFast.args = { timeout: 3000 };
+
+const TemplateB = args => html`
+	<vwc-loading-veil ...=${spread(args)}>
+		<span style="pointer-events: all" @click='${removeVeil}'>Click to remove veil</span>
+	</vwc-loading-veil>
+	<h4>Site content unveiled</h4>
+	<p>
+		This content in see once the loading veil is removed.
+		In order to see the flow again you may switch to and from the story or reload the whole page.
+	</p>
+`;
+
+export const CustomContent = TemplateB.bind({});
+
+function removeVeil(e) {
+	e.target.parentNode.remove();
+}
