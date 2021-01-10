@@ -24,10 +24,10 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
+		"lit-element": "^2.4.0",
 		"tslib": "^2.0.3"
 	},
 	"devDependencies": {
-		"@vonage/vvd-foundation": "^0.17.2",
-		"lit-element": "^2.4.0"
+		"@vonage/vvd-foundation": "^0.17.2"
 	}
 }
