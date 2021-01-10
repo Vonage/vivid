@@ -21,12 +21,12 @@ For your convenience, we've organized all our documentation under the following 
 
 #### Introductory
 
-- [Getting started](docs/getting-started.md)
-- [Architecture](docs/architecture.md)
-- [Roadmap](docs/roadmap.md)
-- [Contact us](docs/contact-us.md)
+* [Getting started](docs/getting-started.md)
+* [Architecture](docs/architecture.md)
+* [Roadmap](docs/roadmap.md)
+* [Contact us](docs/contact-us.md)
 
 #### Guides
 
-- [Installation](docs/installation.md)
-- [Contribution](docs/contribution.md)
+* [Installation](docs/installation.md)
+* [Contribution](docs/contribution.md)

@@ -6,11 +6,12 @@
 
 ![Architecture](assets/images/architecture.svg)
 
+
 [Back to main page](../readme.md)
 
 ### What we deliver
 
-Vivid's approach is mostly relies on the [Open-WC](https://open-wc.org/guide/) guidelines. As a such, we provide our products as a **web-components**, namely: components defined as custom elements, featuring templating, shadow DOM etc.
+Vivid's approach is mostly relies on the [Open-WC](https://open-wc.org/guide/) guidelines. As a such, we provide our products as a __web-components__, namely: components defined as custom elements, featuring templating, shadow DOM etc.
 
 Some of those components are rather generic, 'atomic' ones, like button or text input. Others are complex, business-logic oriented micro-frontends. Yet, the design principle apply to all of them alike.
 
@@ -20,25 +21,24 @@ Beside the components which are actual DOM elements used on the page, we also pr
 
 ### How it is packed
 
-All of our packages are to be consumed by the end-using application as an **ES6 modules**.
+All of our packages are to be consumed by the end-using application as an __ES6 modules__.
 There are some cases where additional provisioning exists, like pure CSS linking for the fonts import, but those are rather exceptional cases.
 
-We are **not** bundling/transpile our packages, as we believe that the final packing of the code, our own and our dependencies, is an end-using application concern:
-
-- end-using applications mostly already have such a build process in place
-- each end-using application may take a different approach to solve this task
-- being 'open' from our side allows the end-using application to resolve any peer-dependencies conflicts, be it Vivid's dependencies or app's own ones, correctly and in one place
-- this is the optimal way to deliver minimal required code, that is actually used in application
+We are __not__ bundling/transpile our packages, as we believe that the final packing of the code, our own and our dependencies, is an end-using application concern:
+* end-using applications mostly already have such a build process in place
+* each end-using application may take a different approach to solve this task
+* being 'open' from our side allows the end-using application to resolve any peer-dependencies conflicts, be it Vivid's dependencies or app's own ones, correctly and in one place
+* this is the optimal way to deliver minimal required code, that is actually used in application
 
 ---
 
 ### Compatibility
 
-Our product written mostly in **TS**/**SCSS**. When shipping the code we **do** transpile it into **JS**/**CSS**, where the target format is **ES6**.
+Our product written mostly in __TS__/__SCSS__. When shipping the code we __do__ transpile it into __JS__/__CSS__, where the target format is __ES6__.
 
 Any modern browser is capable of running our code as-is.
 This is a 'buildless' approach, advocated by Open-WC, among others.
-Yet, it also means that our products **require** an additional transpilation in order to run on an older browsers, such as IE11.
+Yet, it also means that our products __require__ an additional transpilation in order to run on an older browsers, such as IE11.
 
 End-using application may and most likely will perform build steps of its own choice. That is the place, where any final adjustments of our packages and their dependencies should take place, be it transpilation, bundling, minification or else, all this along with the end-using application's own code.
 
