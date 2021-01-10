@@ -9,7 +9,7 @@ transpilation
 buildless
 minification
 productized
-Jira
+jira
 
 # Regexp
 /Component.ts?/
