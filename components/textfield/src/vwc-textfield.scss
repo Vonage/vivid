@@ -202,6 +202,7 @@ vwc-notched-outline {
 .mdc-text-field {
 	& + .mdc-text-field-helper-line {
     --mdc-theme-error: var(--mdc-text-field-ink-color);
+    block-size: 16px;
 		padding: 0;
 		align-items: center;
 		justify-content: initial;
@@ -233,7 +234,7 @@ vwc-notched-outline {
 }
 
 .mdc-text-field-helper-text::before{
-	block-size: max(16px, 1em); // set to match the prefix -small- icon block size as a minimum
+	display: none; // originally inline-block breaks layout with 3px extra white space
 }
 
 @include shape-mixins.shape(
