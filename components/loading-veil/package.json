@@ -9,7 +9,6 @@
 	"module": "vwc-loading-veil.js",
 	"browser": "vwc-loading-veil.js",
 	"files": [
-		"src",
 		"*.js",
 		"*.ts",
 		"*.map"
