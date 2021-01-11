@@ -10,7 +10,7 @@
 
 ### ![Logo Slack](assets/images/logo-slack.svg) Slack
 
-The fastest way to reach out to the Vivid team or get updated on the lastest stuff is via the Slack channels.
+The fastest way to reach out to the Vivid team or get updated on the latest _on-goings_ is via the Slack channels.
 We are interacting through, monitoring and frequently updating the following channels:
 * [ask-vivid](https://vonage.slack.com/archives/C013F0YKH99) - public channel for any open conversation (well, Vivid related too :) )
 * [vivid-engineering](https://vonage.slack.com/archives/GVC6M0QF2) - join-by-invitation channel for a more thorough technical discussions, please ask some of us to join you if needed
@@ -36,4 +36,4 @@ Join our [Workplace group](https://vonage.workplace.com/groups/532641777422792) 
 
 ### Suggestions
 
-Go through the [board](https://github.com/Vonage/vivid/projects/1) to search for existing feedbacks and share yours if not already addressed.
+Go through the [board](https://github.com/Vonage/vivid/projects/1) to search for existing feedback and share yours if not already addressed.
