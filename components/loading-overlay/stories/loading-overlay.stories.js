@@ -1,10 +1,12 @@
 import '@vonage/vwc-loading-overlay';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
+import { argTypes } from './arg-types.js';
 
 export default {
 	title: 'Components/Composite/Loading Overlay',
-	component: 'vwc-loading-overlay'
+	component: 'vwc-loading-overlay',
+	argTypes
 }
 
 const TemplateA = args => html`
