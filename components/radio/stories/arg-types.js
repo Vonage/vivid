@@ -12,6 +12,8 @@ export const argTypes = {
 		}
 	},
 	styles: { table: { disable: true } },
+	reducedTouchTarget: { table: { disable: true } },
+	isRippleActive: { table: { disable: true } },
 	ripple: { table: { disable: true } },
 	global: { table: { disable: true } }
 }
