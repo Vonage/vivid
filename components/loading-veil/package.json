@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-loading-veil",
-	"version": "0.17.2",
+	"version": "0.19.1",
 	"description": "loading veil component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/loading-veil#readme",
 	"license": "ISC",
