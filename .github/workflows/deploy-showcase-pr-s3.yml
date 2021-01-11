@@ -44,11 +44,15 @@ jobs:
           path: |
             ${{ steps.yarn-cache-dir-path.outputs.dir }}
             **/node_modules
-          key: vivid-cache-yarn-${{ hashFiles('**/package.json') }}
+          key: vivid-cache-yarn-${{ hashFiles('**/yarn.lock') }}
 
-      - name: Install dependencies
+      - name: Install dependencies (if not cached)
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
+
+      - name: Link dependencies (if cached)
+        if: steps.yarn-cache.outputs.cache-hit == 'true'
+        run: yarn link
 
       - name: Build storybook
         run: yarn storybook:build base-url=${{ github.event.number }}
