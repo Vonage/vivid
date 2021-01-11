@@ -36,7 +36,7 @@ function collectConfigurations() {
 }
 
 async function processJsConfiguration(configPath) {
-	console.info(`processing '${configPath}'...`);
+	console.info(`\tprocessing '${configPath}'...`);
 
 	const config = (await import(resolve(configPath))).default;
 	validateConfig(config);
@@ -60,7 +60,7 @@ async function processJsConfiguration(configPath) {
 		: DEFAULT_OUTPUT_FILE_SUFFIX);
 	fs.writeFileSync(resolve(configDir, outputFileName), storyJs, FS_OPTIONS);
 
-	console.info('... done');
+	console.info('\t... done');
 }
 
 function validateConfig(config) {
