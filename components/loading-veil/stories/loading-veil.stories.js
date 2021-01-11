@@ -16,10 +16,10 @@ const TemplateA = args => html`
 	</p>
 `;
 
-export const DefaultDelay = TemplateA.bind({});
+export const DefaultTimings = TemplateA.bind({});
 
 export const RemoveFast = TemplateA.bind({});
-RemoveFast.args = { delay: 15000, timeout: 3000000 };
+RemoveFast.args = { timeout: 2000 };
 
 const TemplateB = args => html`
 	<vwc-loading-veil ...=${spread(args)}>
@@ -32,8 +32,8 @@ const TemplateB = args => html`
 	</p>
 `;
 
-export const CustomContent = TemplateB.bind({});
-CustomContent.args = { delay: 20000, timeout: 200000 };
+export const CustomContentWithDelay = TemplateB.bind({});
+CustomContentWithDelay.args = { delay: 1000 };
 
 function removeVeil(e) {
 	e.target.parentNode.remove();

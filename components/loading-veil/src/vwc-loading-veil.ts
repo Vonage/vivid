@@ -1,12 +1,4 @@
-import {
-	customElement,
-	property,
-	html,
-	LitElement,
-	CSSResult,
-	TemplateResult,
-} from 'lit-element';
-import { style as vwcLoadingVeilStyle } from './vwc-loading-veil.css';
+import { CSSResult } from 'lit-element';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -16,29 +8,65 @@ declare global {
 
 const DEFAULT_DELAY = 360;
 const DEFAULT_TIMEOUT = 12000;
-let defaultContentCSSPromise: Promise<{ style: CSSResult }> | null = null;
 
-@customElement('vwc-loading-veil')
-export class VWCLoadingVeil extends LitElement {
-	static styles = [vwcLoadingVeilStyle];
+/**
+ * `vwc-loading-veil` is a UX improvement purposed component
+ * It allows to present to the user a fast feedback on action while not yet presenting the content while the relevant resources are still being loaded.
+ */
+export class VWCLoadingVeil extends HTMLElement {
+	private awaiteesCount = 0;
 
-	private awaitees: Promise<unknown>[] = [];
+	constructor() {
+		super();
+		this.attachShadow({ mode: 'open' }).innerHTML = `
+			<style>
+				:host {
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background-color: var(--vvd-color-base, #fff);
+					pointer-events: none;
+					z-index: 999999;
+					transition: opacity 160ms;
+				}
 
-	@property({ type: Number, reflect: true })
-	private delay = DEFAULT_DELAY;
+				:host(:not(.entertain)) > * {
+					display: none;
+				}
 
-	@property({ type: Number, reflect: true })
-	private timeout = DEFAULT_TIMEOUT;
+				.default-veil-content,
+				::slotted(*) {
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+				}
+			</style>
+			<slot><div class="default-veil-content"></div></slot>
+		`;
+	}
 
 	connectedCallback(): void {
-		super.connectedCallback();
-		if (!this.childElementCount) {
-			this.installDefaultContent();
-		}
+		const delayAttr = parseInt(this.getAttribute('delay') as string);
+		const delay = isNaN(delayAttr) ? DEFAULT_DELAY : delayAttr;
+		const timeoutAttr = parseInt(this.getAttribute('timeout') as string);
+		const timeout = isNaN(timeoutAttr) ? DEFAULT_TIMEOUT : timeoutAttr;
 
 		/* eslint-disable wc/no-self-class */
-		setTimeout(() => this.classList.add('entertain'), this.delay);
-		setTimeout(() => this.remove(), this.timeout);
+		setTimeout(() => this.classList.add('entertain'), delay);
+		setTimeout(() => this.remove(), timeout);
+
+		if (!this.childElementCount) {
+			installDefaultContentStyling(this.shadowRoot as ShadowRoot);
+		}
+	}
+
+	disconnectedCallback(): void {
+		this.dispatchEvent(
+			new CustomEvent('dismissed', { bubbles: true, composed: true })
+		);
 	}
 
 	remove(): void {
@@ -46,25 +74,38 @@ export class VWCLoadingVeil extends LitElement {
 		this.style.opacity = '0';
 	}
 
-	protected render(): TemplateResult {
-		return html`<slot><div class="default-veil-content"></div></slot>`;
+	/**
+	 * adds one or more awaited promises; veil will be removed when ALL of the promises are settled (or timed out)
+	 * - awaiting is for 'settled' state, regardless of resolved or rejected
+	 *
+	 * @param {Promise<unknown>[] | Promise<unknown>} awaitees - one or more promises to wait for
+	 */
+	waitFor(awaitees: Promise<unknown>[] | Promise<unknown>): void {
+		for (const awaitee of Array.isArray(awaitees) ? awaitees : [awaitees]) {
+			this.awaiteesCount++;
+			awaitee.finally(() => this.awaiteeDone());
+		}
 	}
 
-	addAwaited(awaitees: Promise<unknown>[]): void {
-		if (!Array.isArray(awaitees) || !awaitees.length) {
-			console.error(`'awaitees' MUST be a non-empty array; got '${awaitees}'`);
-			return;
+	private awaiteeDone(): void {
+		if (--this.awaiteesCount === 0) {
+			this.remove();
 		}
-		this.awaitees.push(...awaitees);
 	}
+}
+customElements.define('vwc-loading-veil', VWCLoadingVeil);
 
-	private async installDefaultContent(): Promise<void> {
-		if (!defaultContentCSSPromise) {
-			defaultContentCSSPromise = import('./vwc-loading-veil-default.css');
-		}
-		const cssText = (await defaultContentCSSPromise).style.cssText;
-		const se = document.createElement('style');
-		se.innerHTML = cssText;
-		this.shadowRoot?.appendChild(se);
+//	private commons
+//
+let defaultContentCSSPromise: Promise<{ style: CSSResult }> | null = null;
+async function installDefaultContentStyling(
+	shadowRoot: ShadowRoot
+): Promise<void> {
+	if (!defaultContentCSSPromise) {
+		defaultContentCSSPromise = import('./vwc-loading-veil-default.css');
 	}
+	const cssText = (await defaultContentCSSPromise).style.cssText;
+	const se = document.createElement('style');
+	se.innerHTML = cssText;
+	shadowRoot.appendChild(se);
 }

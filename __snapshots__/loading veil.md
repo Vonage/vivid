@@ -4,15 +4,19 @@
 
 ```html
 <slot>
+  <div class="default-veil-content">
+  </div>
 </slot>
-<div class="default-veil-content">
-</div>
+
 ```
 
 #### `should have custom internal contents when slotted (no default)`
 
 ```html
 <slot>
+  <div class="default-veil-content">
+  </div>
 </slot>
 
 ```
+
