@@ -6,15 +6,7 @@
 		"outDir": "./",
 		"tsBuildInfoFile": ".tsbuildinfo"
 	},
-	"include": [
-		"src/*.ts"
-	],
-	"exclude": [
-		"src/test/*.ts"
-	],
-	"references": [
-		{
-			"path": "../../common/foundation"
-		}
-	]
+	"include": ["src/*.ts"],
+	"exclude": ["src/test/*.ts"],
+	"references": []
 }
