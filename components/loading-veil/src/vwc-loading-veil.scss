@@ -7,6 +7,7 @@
 	background-color: var(--vvd-color-base, #fff);
 	pointer-events: none;
 	z-index: 999999;
+	transition: opacity 160ms;
 
 	.default-veil-content,
 	::slotted(*) {
@@ -15,4 +16,8 @@
 		left: 50%;
 		transform: translate(-50%, -50%);
 	}
+}
+
+:host(:not(.entertain)) > * {
+	display: none;
 }

@@ -14,6 +14,7 @@ declare global {
 	}
 }
 
+const DEFAULT_DELAY = 360;
 const DEFAULT_TIMEOUT = 12000;
 let defaultContentCSSPromise: Promise<{ style: CSSResult }> | null = null;
 
@@ -21,47 +22,32 @@ let defaultContentCSSPromise: Promise<{ style: CSSResult }> | null = null;
 export class VWCLoadingVeil extends LitElement {
 	static styles = [vwcLoadingVeilStyle];
 
-	private useDefaultContent = false;
-	private timeoutHandle = 0;
 	private awaitees: Promise<unknown>[] = [];
 
-	@property({
-		type: Number,
-		reflect: true,
-		converter: (v) => {
-			if (!v || isNaN(parseInt(v)) || parseInt(v) < 1) {
-				console.warn(
-					`timeout MUST be a positive number greater than 0; got '${v}'; falling back to default ${DEFAULT_TIMEOUT}`
-				);
-				return DEFAULT_TIMEOUT;
-			} else {
-				return parseInt(v);
-			}
-		},
-	})
+	@property({ type: Number, reflect: true })
+	private delay = DEFAULT_DELAY;
+
+	@property({ type: Number, reflect: true })
 	private timeout = DEFAULT_TIMEOUT;
 
-	connectedCallback() {
+	connectedCallback(): void {
 		super.connectedCallback();
 		if (!this.childElementCount) {
-			this.useDefaultContent = true;
-			this.importDefaultContent();
+			this.installDefaultContent();
 		}
-		this.timeoutHandle = (setTimeout(
-			() => this.remove(),
-			this.timeout
-		) as unknown) as number;
+
+		/* eslint-disable wc/no-self-class */
+		setTimeout(() => this.classList.add('entertain'), this.delay);
+		setTimeout(() => this.remove(), this.timeout);
 	}
 
-	disconnectedCallback(): void {
-		clearTimeout(this.timeoutHandle);
+	remove(): void {
+		this.addEventListener('transitionend', () => super.remove());
+		this.style.opacity = '0';
 	}
 
 	protected render(): TemplateResult {
-		return html`
-			<slot></slot>
-			${this.renderDefaultContent()}
-		`;
+		return html`<slot><div class="default-veil-content"></div></slot>`;
 	}
 
 	addAwaited(awaitees: Promise<unknown>[]): void {
@@ -72,13 +58,7 @@ export class VWCLoadingVeil extends LitElement {
 		this.awaitees.push(...awaitees);
 	}
 
-	private renderDefaultContent(): TemplateResult | string {
-		return this.useDefaultContent
-			? html`<div class="default-veil-content"></div>`
-			: '';
-	}
-
-	private async importDefaultContent(): Promise<void> {
+	private async installDefaultContent(): Promise<void> {
 		if (!defaultContentCSSPromise) {
 			defaultContentCSSPromise = import('./vwc-loading-veil-default.css');
 		}
