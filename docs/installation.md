@@ -2,7 +2,7 @@
 
 ### Get started with our services and components
 
-###### There are just a few steps to perform to get Vivid eco-system up and running within a hosting application. This guide explains how to do it and describes possible 'gotchas' along the way.
+###### There are just a few steps to perform to get Vivid ecosystem up and running within a hosting application. This guide explains how to do it and describes possible 'gotchas' along the way.
 
 ![Installation](assets/images/installation.svg)
 
@@ -21,9 +21,12 @@ Obviously, most likely Vivid products will be consumed as **npm** dependencies i
 ### Getting the packages
 
 The preferred way to make our package available to your application is to install the whole Vivid's bundle.
-For a specific cases, one may also chose to 'cherry-pick' the specific packages one by one.
+In some specific cases, one may choose to install components individually, as described in the [2nd section](#installing-the-bundle) below.
 
-#### Installation
+Whichever path you'll decide to take, Vonage's **artifactory** access setup required,
+see more on that in the third section below.
+
+#### Installing the bundle
 
 If you're using a bundler that is capable of tree-shaking to bundle up your application's code (such as WebPack), you can install Vivid by running this command:
 
@@ -32,7 +35,7 @@ npm install @vonage/vivid --save-prod
 ```
 
 This will make the latest `@vonage/vivid` package available in your project, so you can begin using any of its components.
-For instance, if you'd like to use the [`<vwc-button>`](https://vivid.vonage.com/?path=/story/components-atoms-button--filled) component, you can import it like this:
+For instance, if you'd like to use the `vwc-button` component, you can import it like this:
 
 ```javascript
 import { VWCButton } from '@vonage/vivid';
@@ -50,7 +53,7 @@ From now on, `vwc-button` will be registered in your DOM API, so you can instant
 const myButton = document.createElement('vwc-button');
 ```
 
-##### Installing Components Individually
+#### Installing components individually
 
 In cases where your bundler can't perform 'tree-shaking' (remove parts of code that are not actually used within your code), you may wish to install and use Vivid packages individually.
 
@@ -75,3 +78,48 @@ And use it:
 ```javascript
 const myButton = document.createElement('vwc-button');
 ```
+
+#### Artifactory setup
+
+It is a preferred Vonage's strategy as well as widely used organizational best practice to manage code dependencies in a dedicated, internally managed artifactory.
+
+Vivid is aligned with this approach, hence a list of steps to help you to set up the artifactory access on local machines as well as in CI environment.
+
+##### Configure `.npmrc`
+
+`.npmrc` file should be located in the same folder the `package.json` resides and it's content should include the following:
+
+```
+ca = null
+always-auth = true
+
+registry = https://vonagecc.jfrog.io/vonagecc/api/npm/npm/
+_auth = \${ARTIFACTORY_AUTH_TOKEN}
+```
+
+Here we defined 2 primary things:
+* NPM should pull the package from that registry (Vonage's artifactory) rather than from generic public one
+* Since the artifactory is protected, it should use the specified **authentication token**
+
+Obviously, authentication token better NOT to be hard-coded in your sources, but read from environment (_secrets_), meaning that all local dev machines and CI should have it set a priory.
+
+> You may read more info about `.npmrc` configuration [here](https://docs.npmjs.com/cli/v6/configuring-npm/npmrc).
+
+##### Obtaining artifactory token
+
+Each developer in a team that does `npm install` will need to get her/his access token.
+Additionally, team is advised to obtain one more token for automation.
+
+The steps to follow are:
+* for each user reach out to CloudOps team and ask for access to JFrog artifactory (welcome to copy this exact wording to the Jira ticket :) ) - this may take a few days
+* once allowed, do login into the **JFrog** portal (application will appear in your Vonage app page), navigate to **User Profile** and copy your **API Key**
+* run on your local machine the following
+  
+	```
+	curl --silent --show-error --fail -u "username:api_key" https://vonagecc.jfrog.io/vonagecc/api/npm/auth
+	```
+	
+	while replacing 'username' and 'api_key' with your JFrog username and the just copied API Key correspondingly
+* in the response you'll see a `_auth` value - this is the token to be exported as `ARTIFACTORY_AUTH_TOKEN` per our example above (in your case the variable name may differ, your choice)
+
+Done!

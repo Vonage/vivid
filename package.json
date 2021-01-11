@@ -42,7 +42,8 @@
 		"clean": "yarn clean:typescript && yarn clean:git",
 		"watch": "node scripts/watcher.js",
 		"wca:json": "wca analyze components/*/src/*.?s --outFile custom-elements.json",
-		"wca:compile:json": "yarn compile && yarn wca:custom-elements"
+		"wca:compile:json": "yarn compile && yarn wca:custom-elements",
+		"docs:spell-check": "spech readme.md docs/*.md"
 	},
 	"devDependencies": {
 		"@open-wc/eslint-config": "^3.0.0",
@@ -63,7 +64,7 @@
 		"@typescript-eslint/eslint-plugin": "^4.6.1",
 		"@typescript-eslint/parser": "^4.6.1",
 		"@webcomponents/webcomponentsjs": "^2.5.0",
-		"@whitespace/storybook-addon-html": "^4.0.2",
+		"@whitespace/storybook-addon-html": "^4.2.0",
 		"chai": "^4.2.0",
 		"chai-a11y-axe": "^1.3.1",
 		"chai-karma-snapshot": "^0.8.0",
@@ -110,6 +111,7 @@
 		"semver-compare": "^1.0.0",
 		"semver-diff": "^3.1.1",
 		"showdown": "^1.9.1",
+		"spech": "^0.2.1",
 		"tar-stream": "^2.1.4",
 		"tslib": "^2.0.3",
 		"typescript": "^4.1.3",
