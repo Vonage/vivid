@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.19.1](https://github.com/Vonage/vivid/compare/v0.19.0...v0.19.1) (2021-01-10)
+
+
+### Bug Fixes
+
+* **icon:** fixed israel and usa flags ([#555](https://github.com/Vonage/vivid/issues/555)) ([1dde165](https://github.com/Vonage/vivid/commit/1dde165d4e3adb4af34f2ffe6669e25e160e0739))
+* **vvd-fonts:** issue [#562](https://github.com/Vonage/vivid/issues/562) fixing dependencies of fonts package ([#563](https://github.com/Vonage/vivid/issues/563)) ([50cafab](https://github.com/Vonage/vivid/commit/50cafab831f9d4b9634da465a2926790f9cd2205))
+
+
+
+
+
 # [0.19.0](https://github.com/Vonage/vivid/compare/v0.17.2...v0.19.0) (2021-01-07)
 
 

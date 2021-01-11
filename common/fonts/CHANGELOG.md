@@ -1,3 +1,12 @@
+## [0.19.1](https://github.com/vonage/vivid/compare/v0.19.0...v0.19.1) (2021-01-10)
+
+
+### Bug Fixes
+
+* **vvd-fonts:** issue [#562](https://github.com/vonage/vivid/issues/562) fixing dependencies of fonts package ([#563](https://github.com/vonage/vivid/issues/563)) ([50cafab](https://github.com/vonage/vivid/commit/50cafab831f9d4b9634da465a2926790f9cd2205))
+
+
+
 # [0.19.0](https://github.com/vonage/vivid/compare/v0.17.2...v0.19.0) (2021-01-07)
 
 
