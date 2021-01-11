@@ -1,10 +1,10 @@
-# `loading veil`
+# `loading overlay`
 
 #### `should have default internal contents when nothing slotted`
 
 ```html
 <slot>
-  <div class="default-veil-content">
+  <div class="default-overlay-content">
   </div>
 </slot>
 
@@ -14,7 +14,7 @@
 
 ```html
 <slot>
-  <div class="default-veil-content">
+  <div class="default-overlay-content">
   </div>
 </slot>
 

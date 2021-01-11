@@ -1,4 +1,4 @@
-import '../vwc-loading-veil.js';
+import '../vwc-loading-overlay.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	isolatedElementsCreation,
@@ -10,10 +10,10 @@ import {
 
 chai.use(chaiDomDiff);
 
-const COMPONENT_NAME = 'vwc-loading-veil';
+const COMPONENT_NAME = 'vwc-loading-overlay';
 const DISMISS_TRANSITION_TIME = 160;
 
-describe('loading veil', () => {
+describe('loading overlay', () => {
 	const addElement = isolatedElementsCreation();
 
 	it('should be defined as a custom element', () => {
@@ -44,7 +44,7 @@ describe('loading veil', () => {
 	});
 
 	describe('behaviors', () => {
-		it('should put a veil and remove it by given timeout (no awaitees)', async () => {
+		it('should put an overlay and remove it by given timeout (no awaitees)', async () => {
 			const id = randomAlpha();
 			const [e] = addElement(
 				textToDomToParent(
@@ -65,7 +65,7 @@ describe('loading veil', () => {
 			});
 		});
 
-		it('should put a veil and remove it when all awaitees done', async () => {
+		it('should put an overlay and remove it when all awaitees done', async () => {
 			const id = randomAlpha();
 			const [e] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} id="${id}"></${COMPONENT_NAME}>`)
@@ -89,7 +89,7 @@ describe('loading veil', () => {
 			return done;
 		});
 
-		it('should put a veil and remove it when all awaitees done (awaitees added dynamically)', async () => {
+		it('should put an overlay and remove it when all awaitees done (awaitees added dynamically)', async () => {
 			const id = randomAlpha();
 			const [e] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} id="${id}"></${COMPONENT_NAME}>`)
@@ -114,7 +114,7 @@ describe('loading veil', () => {
 			return done;
 		});
 
-		it('should put a veil and remove it by given timeout (awaitees take too much)', async () => {
+		it('should put an overlay and remove it by given timeout (awaitees take too much)', async () => {
 			const id = randomAlpha();
 			const [e] = addElement(
 				textToDomToParent(

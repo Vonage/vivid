@@ -1,7 +1,7 @@
 import fs from 'fs';
 
 const DEFAULT_ANIMATION_PATH = `src/vonage-logo-spinner.gif`;
-const CSS_DEFINITION_OUTPUT_PATH = `src/vwc-loading-veil-default.scss`;
+const CSS_DEFINITION_OUTPUT_PATH = `src/vwc-loading-overlay-default.scss`;
 const CSS_DEFINITION_TEMPLATE_PATH = `${CSS_DEFINITION_OUTPUT_PATH}.template`;
 const DEFAULT_ANIMATION_PLACEHOLDER = 'DEFAULT_ANIMATION_PLACEHOLDER';
 

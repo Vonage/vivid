@@ -1,4 +1,4 @@
-.default-veil-content {
+.default-overlay-content {
 	width: 160px;
 	height: 120px;
 	background: center no-repeat url(data:application/octet-stream;base64,DEFAULT_ANIMATION_PLACEHOLDER);

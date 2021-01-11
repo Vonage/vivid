@@ -2,7 +2,7 @@ import { CSSResult } from 'lit-element';
 
 declare global {
 	interface HTMLElementTagNameMap {
-		'vwc-loading-veil': VWCLoadingVeil;
+		'vwc-loading-overlay': VWCLoadingOverlay;
 	}
 }
 
@@ -10,10 +10,10 @@ const DEFAULT_DELAY = 360;
 const DEFAULT_TIMEOUT = 12000;
 
 /**
- * `vwc-loading-veil` is a UX improvement purposed component
+ * `vwc-loading-overlay` is a UX improvement purposed component
  * It allows to present to the user a fast feedback on action while not yet presenting the content while the relevant resources are still being loaded.
  */
-export class VWCLoadingVeil extends HTMLElement {
+export class VWCLoadingOverlay extends HTMLElement {
 	private awaiteesCount = 0;
 
 	constructor() {
@@ -36,7 +36,7 @@ export class VWCLoadingVeil extends HTMLElement {
 					display: none;
 				}
 
-				.default-veil-content,
+				.default-overlay-content,
 				::slotted(*) {
 					position: absolute;
 					top: 50%;
@@ -44,7 +44,7 @@ export class VWCLoadingVeil extends HTMLElement {
 					transform: translate(-50%, -50%);
 				}
 			</style>
-			<slot><div class="default-veil-content"></div></slot>
+			<slot><div class="default-overlay-content"></div></slot>
 		`;
 	}
 
@@ -75,7 +75,7 @@ export class VWCLoadingVeil extends HTMLElement {
 	}
 
 	/**
-	 * adds one or more awaited promises; veil will be removed when ALL of the promises are settled (or timed out)
+	 * adds one or more awaited promises; overlay will be removed when ALL of the promises are settled (or timed out)
 	 * - awaiting is for 'settled' state, regardless of resolved or rejected
 	 *
 	 * @param {Promise<unknown>[] | Promise<unknown>} awaitees - one or more promises to wait for
@@ -93,7 +93,7 @@ export class VWCLoadingVeil extends HTMLElement {
 		}
 	}
 }
-customElements.define('vwc-loading-veil', VWCLoadingVeil);
+customElements.define('vwc-loading-overlay', VWCLoadingOverlay);
 
 //	private commons
 //
@@ -102,7 +102,7 @@ async function installDefaultContentStyling(
 	shadowRoot: ShadowRoot
 ): Promise<void> {
 	if (!defaultContentCSSPromise) {
-		defaultContentCSSPromise = import('./vwc-loading-veil-default.css');
+		defaultContentCSSPromise = import('./vwc-loading-overlay-default.css');
 	}
 	const cssText = (await defaultContentCSSPromise).style.cssText;
 	const se = document.createElement('style');

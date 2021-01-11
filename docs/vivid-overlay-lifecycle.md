@@ -30,7 +30,7 @@ vvdCore.settled.then(() => {
 });
 ```
 
-Most obvious use of the `settled` is to remove the loading veil, which could be put over the site in order to prevent FOUC (flash of unstyled content).
+Most obvious use of the `settled` is to remove the loading overlay, which could be put over the site in order to prevent FOUC (flash of unstyled content).
 
 # Auto init
 

@@ -1,17 +1,17 @@
-import '@vonage/vwc-loading-veil';
+import '@vonage/vwc-loading-overlay';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 
 export default {
-	title: 'Components/Composite/Loading Veil',
-	component: 'vwc-loading-veil'
+	title: 'Components/Composite/Loading Overlay',
+	component: 'vwc-loading-overlay'
 }
 
 const TemplateA = args => html`
-	<vwc-loading-veil ...=${spread(args)}></vwc-loading-veil>
+	<vwc-loading-overlay ...=${spread(args)}></vwc-loading-overlay>
 	<h4>Site content unveiled</h4>
 	<p>
-		This content in see once the loading veil is removed.
+		This content in see once the loading overlay is removed.
 		In order to see the flow again you may switch to and from the story or reload the whole page.
 	</p>
 `;
@@ -22,12 +22,12 @@ export const RemoveFast = TemplateA.bind({});
 RemoveFast.args = { timeout: 2000 };
 
 const TemplateB = args => html`
-	<vwc-loading-veil ...=${spread(args)}>
-		<span style="pointer-events: all" @click='${removeVeil}'>Click to remove veil</span>
-	</vwc-loading-veil>
+	<vwc-loading-overlay ...=${spread(args)}>
+		<span style="pointer-events: all" @click='${removeOverlay}'>Click to remove overlay</span>
+	</vwc-loading-overlay>
 	<h4>Site content unveiled</h4>
 	<p>
-		This content in see once the loading veil is removed.
+		This content in see once the loading overlay is removed.
 		In order to see the flow again you may switch to and from the story or reload the whole page.
 	</p>
 `;
@@ -35,6 +35,6 @@ const TemplateB = args => html`
 export const CustomContentWithDelay = TemplateB.bind({});
 CustomContentWithDelay.args = { delay: 1000 };
 
-function removeVeil(e) {
+function removeOverlay(e) {
 	e.target.parentNode.remove();
 }
