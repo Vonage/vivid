@@ -9,8 +9,9 @@
     "author",
     "toolkit"
   ],
+	"private": true,
   "bin": {
-    "style-modules": "./style-modules"
+    "create-style-modules": "./create-style-modules"
   },
   "author": "Tal Weinfeld <tal.weinfeld@vonage.com>",
   "homepage": "https://github.com/Vonage/vivid#readme",
