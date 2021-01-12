@@ -35,6 +35,7 @@ custom-elements.json
 /common/*/src/*.css.ts
 !/common/**/test/**/*.test.js
 !**/rollup.config.js
+!/common/workbox/**/*.js
 
 /components/**/*.js
 /components/**/*.js.map
