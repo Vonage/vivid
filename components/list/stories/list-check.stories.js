@@ -20,9 +20,9 @@ export default {
 
 const Template = args => html`
 	<style>
-	vwc-list {
-		width: 240px;
-	}
+		vwc-list {
+			width: 240px;
+		}
 	</style>
 
 	<vwc-list multi>
@@ -36,7 +36,7 @@ const Template = args => html`
 export const Checklist = Template.bind({});
 Checklist.args = { selected: '', left: '' }
 
-export const checklist = args => html`
+export const CheckListSelected = args => html`
 	<style>
 		vwc-list {
 			width: 240px;

@@ -8,7 +8,7 @@ vvdContext.mount()
 	.then(() => console.info('init Vivid core done (preview frame)'))
 	.catch(e => console.error(e));
 
-async function run() {
+function run() {
 	setCustomElements(customElements);
 	addParameters({
 		controls: {
