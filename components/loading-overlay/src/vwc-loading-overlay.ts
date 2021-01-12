@@ -10,8 +10,13 @@ const DEFAULT_DELAY = 360;
 const DEFAULT_TIMEOUT = 12000;
 
 /**
- * `vwc-loading-overlay` is a UX improvement purposed component
+ * `vwc-loaading-overlay` is a UX improvement purposed component, to temporarily viel over a not-yet ready content
  * It allows to present to the user a fast feedback on action while not yet presenting the content while the relevant resources are still being loaded.
+ *
+ * @element vwc-loading-overlay
+ *
+ * @param {number} [delay=360] - number of millis to wait before show 'entertaining' content; attribute only; used only once upon element attachment to DOM
+ * @param {number} [timeout=12000] - number of millis of maximum time the overlay is shown; attribute only; used only once upon element attachment to DOM
  */
 export class VWCLoadingOverlay extends HTMLElement {
 	private awaiteesCount = 0;
