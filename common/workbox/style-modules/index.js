@@ -49,20 +49,19 @@ fileStreamFromGlob(joinPath(process.cwd(), basePath, '**/*.s[ac]ss'))
 		)
 		.map(({ css })=>({
 			sass_path: sassFile,
-			css: css.toString()
+			css_content: css.toString()
 		}));
 	})
-	.map(({ css, ...rest })=> {
+	.map(({ css_content, sass_path })=> {
 		return {
-			module_content: tsTemplate(css),
-			...rest
+			module_path: joinPath(...[getDir(sass_path), [getBase(sass_path, getExtension(sass_path)), 'css.ts'].join('.')]),
+			module_content: tsTemplate(css_content),
 		};
 	})
-	.flatMap(({ sass_path, module_content })=> {
-		const outputPath = joinPath(...[getDir(sass_path), [getBase(sass_path, getExtension(sass_path)), 'css.ts'].join('.')]);
-		return kefir.fromNodeCallback((cb)=>
-			writeFile(outputPath, module_content, cb)
-		).map(()=> ` ✔ ${outputPath}`)
+	.flatMap(({ module_path, module_content })=> {
+		return kefir
+			.fromNodeCallback((cb)=>writeFile(module_path, module_content, cb))
+			.map(()=> ` ✔ ${module_path}`);
 	})
 	.onValue(console.log)
 	.onEnd(()=> console.timeEnd('Total'));
