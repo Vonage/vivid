@@ -53,7 +53,7 @@
 		}
 
 		blockquote {
-
+			@include typography.typography-cat-shorthand('body-2');
 		}
 
 		var {
