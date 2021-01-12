@@ -58,7 +58,7 @@ describe('loading overlay', () => {
 					const endTime = performance.now();
 					expect(endTime - startTime)
 						.gte(300 + DISMISS_TRANSITION_TIME)
-						.lt(350 + DISMISS_TRANSITION_TIME);
+						.lte(360 + DISMISS_TRANSITION_TIME);
 					expect(document.getElementById(id)).not.exist;
 					resolve();
 				});
@@ -78,7 +78,7 @@ describe('loading overlay', () => {
 					const endTime = performance.now();
 					expect(endTime - startTime)
 						.gte(400 + DISMISS_TRANSITION_TIME)
-						.lt(450 + DISMISS_TRANSITION_TIME);
+						.lte(460 + DISMISS_TRANSITION_TIME);
 					expect(document.getElementById(id)).not.exist;
 					resolve();
 				});
@@ -101,7 +101,7 @@ describe('loading overlay', () => {
 					const endTime = performance.now();
 					expect(endTime - startTime)
 						.gte(300 + DISMISS_TRANSITION_TIME)
-						.lt(350 + DISMISS_TRANSITION_TIME);
+						.lte(360 + DISMISS_TRANSITION_TIME);
 					expect(document.getElementById(id)).not.exist;
 					resolve();
 				});
@@ -129,7 +129,7 @@ describe('loading overlay', () => {
 					const endTime = performance.now();
 					expect(endTime - startTime)
 						.gte(300 + DISMISS_TRANSITION_TIME)
-						.lt(350 + DISMISS_TRANSITION_TIME);
+						.lte(360 + DISMISS_TRANSITION_TIME);
 					expect(document.getElementById(id)).not.exist;
 					resolve();
 				});
