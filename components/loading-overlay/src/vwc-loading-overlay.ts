@@ -17,6 +17,8 @@ const DEFAULT_TIMEOUT = 12000;
  *
  * @param {number} [delay=360] - number of millis to wait before show 'entertaining' content; attribute only; used only once upon element attachment to DOM
  * @param {number} [timeout=12000] - number of millis of maximum time the overlay is shown; attribute only; used only once upon element attachment to DOM
+ *
+ * @fires dismissed - notifies when the overlay is completely removed from the DOM
  */
 export class VWCLoadingOverlay extends HTMLElement {
 	private awaiteesCount = 0;
