@@ -38,14 +38,14 @@ const Template = args => html`
 		</vwc-list-item>
 	</vwc-list>`;
 
+export const Shape = Template.bind({});
+Shape.args = { shape: 'rounded' };
+
 export const TwoLine = Template.bind({});
 TwoLine.args = { twoline: '', hasMeta: '' };
 
 export const MetaIcon = Template.bind({});
 MetaIcon.args = { hasMeta: '' };
-
-export const Dense = Template.bind({});
-Dense.args = { dense: '', hasMeta: '' };
 
 export const Icon = Template.bind({});
 Icon.args = { graphic: 'icon' };

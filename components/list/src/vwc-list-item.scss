@@ -1,6 +1,7 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
+@use '@vonage/vvd-foundation/scss/mixins/shape-mixins';
 
 $vvd-list-item-block-size: --vvd-list-item-block-size;
 $vvd-list-item-side-padding: --vvd-list-item-side-padding;
@@ -10,7 +11,6 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 	#{$vvd-list-item-graphic-margin}: 24px;
 	#{$vvd-list-item-graphic-margin}: 16px;
 	#{$vvd-list-item-block-size}: 48px;
-	height: var(#{$vvd-list-item-block-size});
 	--mdc-list-side-padding: var(#{$vvd-list-item-side-padding});
 	--mdc-list-item-graphic-margin: var(#{$vvd-list-item-graphic-margin});
 	--mdc-list-item-graphic-size: 20px;
@@ -21,24 +21,27 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 	--mdc-theme-text-hint-on-background: var(
 		#{scheme-variables.$vvd-color-on-base}
 	);
+
+	border-radius: var(--border-radius, 0);
+	height: var(#{$vvd-list-item-block-size});
 	@include typography.typography-cat-shorthand('body-2');
 }
 
-:host([dense]) {
-	#{$vvd-list-item-block-size}: 40px;
-}
+// :host([dense]) {
+// 	#{$vvd-list-item-block-size}: 40px;
+// }
 
-:host([dense][twoline]) {
-	#{$vvd-list-item-block-size}: 64px;
+// :host([dense][twoline]) {
+// 	#{$vvd-list-item-block-size}: 64px;
 
-	.mdc-list-item__graphic {
-		margin-top: 10px;
-	}
+// 	.mdc-list-item__graphic {
+// 		margin-top: 10px;
+// 	}
 
-	.mdc-list-item__primary-text::before {
-		height: 26px;
-	}
-}
+// 	.mdc-list-item__primary-text::before {
+// 		height: 26px;
+// 	}
+// }
 
 :host([twoline]) {
 	#{$vvd-list-item-block-size}: 72px;
@@ -68,9 +71,10 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 			height: 30px;
 		}
 	}
-	
+
 	.mdc-list-item__secondary-text {
 		@include typography.typography-cat-shorthand('caption');
+
 
 		&::before {
 			height: 22px;
@@ -78,10 +82,9 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 	}
 }
 
-// override mwc fixed height
 :host([twoline]),
 :host([graphic="icon"]:not([twoline])) {
-	height: var(#{$vvd-list-item-block-size});
+	height: var(#{$vvd-list-item-block-size}); // override mwc fixed height
 }
 
 :host([disabled]) {
@@ -96,3 +99,10 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 		color: var(#{color-semantic.$formfield-disabled-ink});
 	}
 }
+
+@include shape-mixins.shape(
+	$shapes: (
+		rounded: 6px
+	),
+	$default: ''
+);
