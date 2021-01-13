@@ -22,7 +22,7 @@ An up-to-date status of the Volta parity progress can be seen [here](https://air
 We are entering 2021 while most of the basic, **atom** components are implemented and are in GA state.
 We also already have quite a mature DevOps process including rich build, test and publish automation.
 
-Product-wise, we are targeting to complete the missing functions in the **atom** and focus on a more complex rich components to come along the way - **composites**. In fact, we already have a handsome of those as well.
+Product-wise, we are targeting to complete the missing functions in the **atom** and focus on a more complex rich components to come along the way - **composites**. In fact, we already have a few of those as well.
 
 Moreover, many of the work-on-the-go processes are also automated, most notably pulling the data from the design tool (Figma) and incorporating it into the Vivid's living code.
 
