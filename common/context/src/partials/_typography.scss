@@ -35,7 +35,8 @@
 
 		code,
 		kbd,
-		samp {
+		samp,
+		var {
 			font-family: 'SpeziaMonoWebVariable', monospace;
 		}
 
@@ -54,12 +55,6 @@
 
 		blockquote {
 			@include typography.typography-cat-shorthand('body-2');
-		}
-
-		var {
-			font-family: 'SpeziaMonoWebVariable', monospace;
-			display: block;
-			border-radius: 4px;
 		}
 	}
 }

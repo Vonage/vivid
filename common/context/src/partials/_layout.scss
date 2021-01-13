@@ -6,7 +6,10 @@
 
 	.vivid-scope-tmp {
 		pre,
-		code {
+		code,
+		kbd,
+		samp,
+		var {
 			padding: 3px 4px;
 			border-radius: 6px;
 		}
@@ -14,7 +17,10 @@
 		pre {
 			overflow: auto;
 
-			code {
+			code,
+			kbd,
+			samp,
+			var {
 				padding: initial;
 			}
 		}

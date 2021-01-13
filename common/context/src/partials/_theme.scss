@@ -16,7 +16,10 @@
 			color: color-base.$purple-600;
 		}
 
-		code {
+		code,
+		kbd,
+		samp,
+		var {
 			background-color:var(#{scheme-variables.$vvd-color-surface});
 			color: color-base.$orange-600;
 		}
