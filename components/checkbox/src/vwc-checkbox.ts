@@ -1,5 +1,5 @@
 import '@vonage/vvd-core';
-import { customElement } from 'lit-element';
+import { customElement, html, TemplateResult } from 'lit-element';
 import { Checkbox as MWCCheckbox } from '@material/mwc-checkbox';
 import { style as vwcCheckboxStyle } from './vwc-checkbox.css';
 import { style as mwcCheckboxStyle } from '@material/mwc-checkbox/mwc-checkbox-css.js';
@@ -29,5 +29,9 @@ export class VWCCheckbox extends MWCCheckbox {
 	focus(): void {
 		super.focus();
 		this.formElement.focus();
+	}
+
+	protected renderRipple(): TemplateResult {
+		return html``;
 	}
 }
