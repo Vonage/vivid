@@ -1,3 +1,4 @@
+import '@vonage/vvd-core';
 import { customElement, html, LitElement, TemplateResult } from 'lit-element';
 import { style } from './vwc-calendar.css';
 
