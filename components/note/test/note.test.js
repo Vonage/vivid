@@ -43,12 +43,17 @@ describe('note', () => {
 			textToDomToParent(`<${COMPONENT_NAME}>Internal contents</${COMPONENT_NAME}>`)
 		);
 		await waitNextTask();
-		assertComputedStyle(note, { width: '8px' }, '::before');
-		assertComputedStyle(
-			note,
-			{ height: getComputedStyle(note).height },
-			'::before'
+		assertComputedStyle(note, { borderInlineStartWidth: '8px' });
+	});
+
+	it('should have base sizing correct', async () => {
+		const [note] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}>Internal contents</${COMPONENT_NAME}>`)
 		);
+		await waitNextTask();
+		assertComputedStyle(note, { height: '24px' });
+		assertComputedStyle(note, { paddingBlockStart: '20px' });
+		assertComputedStyle(note, { paddingBlockEnd: '20px' });
 	});
 
 	describe('header', () => {

@@ -30,22 +30,20 @@ describe('note connotation', () => {
 
 	for (const connotation of CONNOTATIONS_SUPPORTED) {
 		it(`should reflect '${connotation}' connotation (attribute) visually`, async () => {
-			const [badge] = addElement(textToDomToParent(`<${VWC_NOTE}></${VWC_NOTE}>`));
+			const [note] = addElement(textToDomToParent(`<${VWC_NOTE}></${VWC_NOTE}>`));
 			await assertConnotationAttribute({
-				element: badge,
+				element: note,
 				connotation: connotation,
-				childrenAffected: ['::before'],
-				stylesAffected: ['backgroundColor'],
+				stylesAffected: ['borderInlineStartColor'],
 			});
 		});
 
 		it(`should reflect '${connotation}' connotation (property) visually`, async () => {
-			const [badge] = addElement(textToDomToParent(`<${VWC_NOTE}></${VWC_NOTE}>`));
+			const [note] = addElement(textToDomToParent(`<${VWC_NOTE}></${VWC_NOTE}>`));
 			await assertConnotationProperty({
-				element: badge,
+				element: note,
 				connotation: connotation,
-				childrenAffected: ['::before'],
-				stylesAffected: ['backgroundColor'],
+				stylesAffected: ['borderInlineStartColor'],
 			});
 		});
 	}
