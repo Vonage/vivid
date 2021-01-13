@@ -113,30 +113,16 @@ export function assertComputedStyle(element, expectedStyles, pseudoSelector = nu
 		switch (styleKey) {
 			//	color transformers
 			case 'color':
-				actualValue = computedStyle[styleKey].replaceAll(/\s/g, '');
-				expectedValue = expectedStyles[styleKey].replaceAll(/\s/g, '');
-				break;
 			case 'backgroundColor':
-				actualValue = computedStyle[styleKey].replaceAll(/\s/g, '');
-				expectedValue = expectedStyles[styleKey].replaceAll(/\s/g, '');
-				break;
 			case 'borderColor':
-				actualValue = computedStyle[styleKey].replaceAll(/\s/g, '');
-				expectedValue = expectedStyles[styleKey].replaceAll(/\s/g, '');
-				break;
 			case 'borderTopColor':
-				actualValue = computedStyle[styleKey].replaceAll(/\s/g, '');
-				expectedValue = expectedStyles[styleKey].replaceAll(/\s/g, '');
-				break;
 			case 'borderRightColor':
-				actualValue = computedStyle[styleKey].replaceAll(/\s/g, '');
-				expectedValue = expectedStyles[styleKey].replaceAll(/\s/g, '');
-				break;
 			case 'borderBottomColor':
-				actualValue = computedStyle[styleKey].replaceAll(/\s/g, '');
-				expectedValue = expectedStyles[styleKey].replaceAll(/\s/g, '');
-				break;
 			case 'borderLeftColor':
+			case 'borderInlineStartColor':
+			case 'borderInlineEndColor':
+			case 'borderBlockStartColor':
+			case 'borderBlockEndColor':
 				actualValue = computedStyle[styleKey].replaceAll(/\s/g, '');
 				expectedValue = expectedStyles[styleKey].replaceAll(/\s/g, '');
 				break;

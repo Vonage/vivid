@@ -22,10 +22,21 @@ export const IconLess = TemplatePlain.bind({});
 IconLess.args = { icon: '', header: `Pascal's theological argument` };
 
 export const HeaderLess = TemplatePlain.bind({});
-HeaderLess.args = { connotation: 'announcement', icon: 'notification', header: '', };
+HeaderLess.args = { connotation: 'alert', icon: 'notification', header: '', };
 
 export const HeaderAndIconLess = TemplatePlain.bind({});
-HeaderAndIconLess.args = { connotation: 'cta', icon: '', header: '' };
+HeaderAndIconLess.args = { connotation: 'warning', icon: '', header: '' };
+
+const TemplateShort = args => html`
+	<vwc-note ...=${spread(args)}>
+		<div>
+			Pascal argues that a rational person should live as though God exists and seek to believe in God.
+		</div>
+	</vwc-note>
+`;
+
+export const ShortMessage = TemplateShort.bind({});
+ShortMessage.args = { connotation: 'info', icon: 'megaphone' };
 
 const TemplateComplex = args => html`
 	<vwc-note ...=${spread(args)}>
