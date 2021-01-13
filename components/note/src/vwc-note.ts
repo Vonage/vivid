@@ -20,10 +20,10 @@ type NoteConnotation = Extract<
 >;
 
 /**
- * `vwc-note` component is designated to layout connotated notification content.
+ * `vwc-note` component is designated to layout connotated notification content
  *
- * `vwc-note` exposes API to manage the connotation, header and icon features.
- * Any light DOM within `vwc-note` becomes a body of the message.
+ * `vwc-note` exposes APIs to set the connotation, header and icon features
+ * any light DOM within `vwc-note` becomes a body of the message.
  */
 @customElement('vwc-note')
 export class VWCNote extends LitElement {
@@ -50,9 +50,7 @@ export class VWCNote extends LitElement {
 	}
 
 	private renderIcon(): TemplateResult {
-		return html`<div class="note-icon">
-			<vwc-icon type="${this.icon}"></vwc-icon>
-		</div>`;
+		return html`<vwc-icon class="note-icon" type="${this.icon}"></vwc-icon>`;
 	}
 
 	private renderHeader(): TemplateResult {

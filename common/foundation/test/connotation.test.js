@@ -16,7 +16,12 @@ async function assertConnotationAttribute({
 
 	element.setAttribute('connotation', connotation);
 	await waitNextTask();
-	assertChildrenAffected(connotation, element, childrenAffected, stylesAffected);
+	assertSelfOrChildrenAffected(
+		connotation,
+		element,
+		childrenAffected,
+		stylesAffected
+	);
 }
 
 async function assertConnotationProperty({
@@ -29,7 +34,12 @@ async function assertConnotationProperty({
 
 	element.connotation = connotation;
 	await waitNextTask();
-	assertChildrenAffected(connotation, element, childrenAffected, stylesAffected);
+	assertSelfOrChildrenAffected(
+		connotation,
+		element,
+		childrenAffected,
+		stylesAffected
+	);
 }
 
 function validateParams(
@@ -44,9 +54,12 @@ function validateParams(
 	if (!connotation || typeof connotation !== 'string') {
 		throw new Error(`connotation MUST be a non-empty string, got ${connotation}`);
 	}
-	if (!Array.isArray(childrenAffected) || !childrenAffected.length) {
+	if (
+		childrenAffected &&
+		(!Array.isArray(childrenAffected) || !childrenAffected.length)
+	) {
 		throw new Error(
-			`children affected array expected to have at least 1 value, got ${childrenAffected}`
+			`children affected, when/if specified, MUST be an array having at least 1 value, got ${childrenAffected}`
 		);
 	}
 	if (!Array.isArray(stylesAffected) || !stylesAffected.length) {
@@ -56,7 +69,7 @@ function validateParams(
 	}
 }
 
-function assertChildrenAffected(
+function assertSelfOrChildrenAffected(
 	connotation,
 	element,
 	childrenSelectors,
@@ -74,17 +87,21 @@ function assertChildrenAffected(
 		acc[v] = expectedColor;
 		return acc;
 	}, {});
-	for (const s of childrenSelectors) {
-		if (s.startsWith(':')) {
-			assertComputedStyle(element, expectedStyles, s);
-		} else {
-			const ae = (element.shadowRoot || element).querySelector(s);
-			if (!ae) {
-				throw new Error(
-					`failed to query an affected element from ${element} by selector '${s}'`
-				);
+	if (childrenSelectors) {
+		for (const s of childrenSelectors) {
+			if (s.startsWith(':')) {
+				assertComputedStyle(element, expectedStyles, s);
+			} else {
+				const ae = (element.shadowRoot || element).querySelector(s);
+				if (!ae) {
+					throw new Error(
+						`failed to query an affected element from ${element} by selector '${s}'`
+					);
+				}
+				assertComputedStyle(ae, expectedStyles);
 			}
-			assertComputedStyle(ae, expectedStyles);
 		}
+	} else {
+		assertComputedStyle(element, expectedStyles);
 	}
 }
