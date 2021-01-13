@@ -79,12 +79,11 @@ export class VWCSelect extends MWCSelect {
 		return html`
 			<div class="mdc-select-helper-line">
 				<vwc-icon
-					class="mdc-select-helper-icon"
+					class="mdc-select-helper-icon vvd-helper-icon"
 					type="info-negative"
 					size="small"
 				></vwc-icon>
-				<span class="spacer"></span>
-				<div id="helper-text" class="${classes}">${validationMessage}</div>
+				<div class="${classes}">${validationMessage}</div>
 			</div>
 		`;
 	}

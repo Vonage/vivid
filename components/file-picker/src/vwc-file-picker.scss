@@ -75,6 +75,7 @@
 
 //	footer
 .footer {
+	margin-block-start: 4px;
 	cursor: default;
 
 	.error-icon {
@@ -82,12 +83,9 @@
 		color: var(#{color-semantic.$formfield-label-error-ink});
 	}
 
-	.spacer {
-		flex-basis: 14px;
-	}
-
 	.text {
 		@include typography.typography-cat-shorthand('caption');
+		margin-inline-start: 14px;
 		color: #666;
 	}
 }
@@ -97,11 +95,8 @@
 		display: flex;
 	}
 
-	.spacer {
-		flex-basis: 6px;
-	}
-
 	.text {
+		margin-inline-start: 4px;
 		color: #000;
 	}
 }

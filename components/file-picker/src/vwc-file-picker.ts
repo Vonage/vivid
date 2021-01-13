@@ -101,7 +101,6 @@ export class VWCFilePicker extends LitElement {
 			return html`
 				<div class="footer part">
 					<vwc-icon class="error-icon" type="info-negative" size="small"></vwc-icon>
-					<span class="spacer"></span>
 					<span class="text">${text}</span>
 				</div>
 			`;

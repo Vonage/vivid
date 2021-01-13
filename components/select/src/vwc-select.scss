@@ -146,14 +146,15 @@ vwc-notched-outline {
 
 // helper / error message line
 :host([helper]:not([helper=''])) {
-  .mdc-select  + .mdc-select-helper-line {
-    margin-top: 7px;
+  .mdc-select + .mdc-select-helper-line {
+    margin-block-start: 4px;
   }
 }
 
 .mdc-select {
 	& + .mdc-select-helper-line {
 		--mdc-theme-error: var(--mdc-select-ink-color);
+		min-height: 16px;
 		display: flex;
 		padding: 0;
 		align-items: center;
@@ -170,24 +171,24 @@ vwc-notched-outline {
 			opacity: 1;
 		}
 
-		.mdc-select-helper-text::before {
-			display: inline;
+		.mdc-select-helper-text {
+			margin-inline-start: 14px;
 		}
 
-		.spacer {
-			flex-basis: 14px;
+		.mdc-select-helper-text::before {
+			display: inline;
 		}
 	}
 
 	&.mdc-select--invalid + .mdc-select-helper-line {
-    margin-top: 7px;
+    margin-block-start: 4px;
 
 		.mdc-select-helper-icon {
 			display: flex;
 		}
 
-		.spacer {
-			flex-basis: 6px;
+		.mdc-select-helper-text {
+			margin-inline-start: 4px;
 		}
 	}
 }

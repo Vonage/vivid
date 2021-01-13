@@ -208,27 +208,27 @@ vwc-notched-outline {
 		justify-content: initial;
 		cursor: default;
 
-		.mdc-text-field-helper-icon {
+		.vvd-helper-icon {
 			display: none;
 			color: var(--mdc-text-field-error-color);
-    }
+		}
+
+		.mdc-text-field-helper-text {
+			margin-inline-start: 14px;
+		}
 
     .mdc-text-field-helper-text:not(.mdc-text-field-helper-text--validation-msg) {
 			opacity: 1;
 		}
-
-		.spacer {
-			flex-basis: 14px;
-		}
 	}
 
 	+ .mdc-text-field-helper-text--validation-msg {
-		.mdc-text-field-helper-icon {
+		.vvd-helper-icon {
 			display: flex;
 		}
 
-		.spacer {
-			flex-basis: 4px;
+		.mdc-text-field-helper-text {
+			margin-inline-start: 4px;
 		}
 	}
 }
