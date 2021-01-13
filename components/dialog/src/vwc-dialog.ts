@@ -1,5 +1,5 @@
 import { customElement, LitElement, property } from 'lit-element';
-import { style as vwcDialogStyle } from './vwc-dialog.css';
+import { style } from './vwc-dialog.css';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -7,16 +7,13 @@ declare global {
 	}
 }
 
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-// @ts-ignore
-VwcDialog.styles = [vwcDialogStyle];
-
-/**
- * This component is an extension of [<mwc-button>](https://github.com/material-components/material-components-web-components/tree/master/packages/button)
- * Our button supports native features like the 'form' and 'type' attributes
- */
 @customElement('vwc-dialog')
 export class VwcDialog extends LitElement {
+	/**
+	 * @internal
+	 */
+	static styles = style;
+
 	@property({ type: Boolean, reflect: true })
 	enlarged = false;
 
