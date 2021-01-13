@@ -78,7 +78,7 @@ export class VWCCalendar extends LitElement {
 
 	protected renderTimeCells(): TemplateResult[] {
 		const templates = [];
-		for (let i = 0; i < this.#hoursOfDay.length * this.#daysLength; i++) {
+		for (let i = 0; i < (this.#hoursOfDay.length + 1) * this.#daysLength; i++) {
 			templates.push(html`<li></li>`);
 		}
 		return templates;
@@ -108,15 +108,29 @@ export class VWCCalendar extends LitElement {
 				</ol>
 				<ol class="calendar">
 					${this.renderTimeCells()}
+					<!-- TODO: should be presented as a custom element. then could look for siblings and indent by js  -->
+					<section
+						class="task"
+						style="--column: 1; --row: 9 / span 24; --color: #4cc3d2;"
+					></section>
+					<section
+						class="task"
+						style="--column: 6; --row: 5 / span 16; --color:#d6219c;"
+					></section>
+					<section
+						class="task"
+						style="--column: 4; --row: 13 / span 10;	--color: #b779ff;"
+					></section>
+					<section
+						class="task"
+						style="--column: 1; --row: 13 / span 32;	--color: #b779ff;--overlap-count: 2;"
+					></section>
+					<section
+						class="task"
+						style="--column: 1;--row: 15 / span 8; --color: #d6219c;--overlap-count: 1;"
+					></section>
 				</ol>
 			</div>
-			ol.calendar - for (var x = 0; x < 15 * 7; x++) li
-			section.task.task-1(style="--column: 1; --row: 9 / span 24; --color:
-			#4cc3d2;") section.task(style="--column: 6; --row: 5 / span 16; --color:
-			#d6219c;") section.task(style="--column: 4; --row: 13 / span 10; --color:
-			#b779ff;") section.task(style="--column: 1; --row: 13 / span 32; --color:
-			#b779ff;--overlap-count: 2;") section.task(style="--column: 1; --row: 15 /
-			span 8; --color: #d6219c;--overlap-count: 1;")
 		`;
 	}
 }
