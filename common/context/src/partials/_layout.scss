@@ -4,17 +4,42 @@
     padding: 0;
 	}
 
-	pre,
-	code {
-		padding: 3px 4px;
-		border-radius: 6px;
-	}
+	.vivid-scope-tmp {
+		pre,
+		code,
+		kbd,
+		samp,
+		var {
+			padding: 3px 4px;
+			border-radius: 6px;
+		}
 
-	pre {
-		overflow: auto;
+		pre {
+			overflow: auto;
 
-		code {
-			padding: initial;
+			code,
+			kbd,
+			samp,
+			var {
+				padding: initial;
+			}
+		}
+
+		blockquote {
+			margin-left: 0;
+			margin-right: 0;
+			padding: 20px 22px;
+			border-radius: 6px;
+
+			:first-child {
+				margin-block-start: 0;
+				padding-block-start: 0;
+			}
+
+			:last-child {
+				margin-block-end: 0;
+				padding-block-end: 0;
+			}
 		}
 	}
 }
