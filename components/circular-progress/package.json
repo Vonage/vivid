@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-circular-progress",
-	"version": "0.19.1",
+	"version": "1.0.0",
 	"description": "circular progress component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/circular-progress#readme",
 	"license": "ISC",
@@ -24,8 +24,8 @@
 	},
 	"dependencies": {
 		"@material/mwc-circular-progress": "^0.20.0",
-		"@vonage/vvd-core": "^0.19.1",
-		"@vonage/vvd-style-coupling": "^0.19.1",
+		"@vonage/vvd-core": "^1.0.0",
+		"@vonage/vvd-style-coupling": "^1.0.0",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.3"
 	}
