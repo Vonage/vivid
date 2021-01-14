@@ -114,11 +114,10 @@ function associateFormCleanupFactory(
 }
 
 export function associateWithForm(
-	customInputElement: unknown,
+	customInputElement: HTMLInputElement,
 	internalFormElement: HTMLInputElement
 ): void {
-	const castedCustomInputElement = customInputElement as HTMLInputElement;
-	const hostingForm = getFormByIdOrClosest(castedCustomInputElement);
+	const hostingForm = getFormByIdOrClosest(customInputElement);
 
 	if (!hostingForm) {
 		return;
@@ -128,11 +127,11 @@ export function associateWithForm(
 		hostingForm,
 		internalFormElement.nodeName
 	);
-	setHiddenInputInitialValuesAndStyle(hiddenInput, castedCustomInputElement);
+	setHiddenInputInitialValuesAndStyle(hiddenInput, customInputElement);
 	suspendInvalidEvent(hiddenInput);
 
 	const resetFormHandler = resetFormFactory(
-		castedCustomInputElement,
+		customInputElement,
 		internalFormElement,
 		hiddenInput
 	);
@@ -145,19 +144,16 @@ export function associateWithForm(
 
 	setInternalValueAndValidityInHiddenInput(
 		hiddenInput,
-		castedCustomInputElement.value,
+		customInputElement.value,
 		internalFormElement.validationMessage
 	);
 
 	hostingForm.addEventListener('reset', resetFormHandler);
 
-	appendDisconnectionCleanupElement(
-		castedCustomInputElement,
-		disconnectionCallback
-	);
+	appendDisconnectionCleanupElement(customInputElement, disconnectionCallback);
 
 	syncValueAndValidityOnChanges(
-		castedCustomInputElement,
+		customInputElement,
 		internalFormElement,
 		hiddenInput
 	);

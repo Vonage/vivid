@@ -41,7 +41,7 @@ export class VWCTextArea extends MWCTextArea {
 
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
-		associateWithForm(this, this.formElement);
+		associateWithForm((this as unknown) as HTMLInputElement, this.formElement);
 		handleAutofocus(this);
 	}
 

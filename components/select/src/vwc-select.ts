@@ -49,7 +49,7 @@ export class VWCSelect extends MWCSelect {
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
 		this.replaceIcon();
-		associateWithForm(this, this.formElement);
+		associateWithForm((this as unknown) as HTMLInputElement, this.formElement);
 		handleAutofocus(this);
 	}
 
