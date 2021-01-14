@@ -16,11 +16,14 @@ window.customElements.define(
 
 function setHiddenInputInitialValuesAndStyle(
 	hiddenInput: HTMLInputElement,
-	{ name, value: initialValue }: InputElement
+	{ name, type, value: initialValue }: HTMLInputElement
 ) {
 	hiddenInput.style.display = 'none';
 	if (name) {
 		hiddenInput.setAttribute('name', name);
+	}
+	if (type) {
+		hiddenInput.setAttribute('type', type);
 	}
 	hiddenInput.defaultValue = initialValue;
 }
@@ -110,11 +113,12 @@ function associateFormCleanupFactory(
 	};
 }
 
-export function associateWithForm<T extends InputElement>(
-	inputElement: T,
+export function associateWithForm(
+	customInputElement: unknown,
 	internalFormElement: HTMLInputElement
 ): void {
-	const hostingForm = getFormByIdOrClosest(inputElement);
+	const castedCustomInputElement = customInputElement as HTMLInputElement;
+	const hostingForm = getFormByIdOrClosest(castedCustomInputElement);
 
 	if (!hostingForm) {
 		return;
@@ -124,11 +128,11 @@ export function associateWithForm<T extends InputElement>(
 		hostingForm,
 		internalFormElement.nodeName
 	);
-	setHiddenInputInitialValuesAndStyle(hiddenInput, inputElement);
+	setHiddenInputInitialValuesAndStyle(hiddenInput, castedCustomInputElement);
 	suspendInvalidEvent(hiddenInput);
 
 	const resetFormHandler = resetFormFactory(
-		inputElement,
+		castedCustomInputElement,
 		internalFormElement,
 		hiddenInput
 	);
@@ -141,13 +145,20 @@ export function associateWithForm<T extends InputElement>(
 
 	setInternalValueAndValidityInHiddenInput(
 		hiddenInput,
-		inputElement.value,
+		castedCustomInputElement.value,
 		internalFormElement.validationMessage
 	);
 
 	hostingForm.addEventListener('reset', resetFormHandler);
 
-	appendDisconnectionCleanupElement(inputElement, disconnectionCallback);
+	appendDisconnectionCleanupElement(
+		castedCustomInputElement,
+		disconnectionCallback
+	);
 
-	syncValueAndValidityOnChanges(inputElement, internalFormElement, hiddenInput);
+	syncValueAndValidityOnChanges(
+		castedCustomInputElement,
+		internalFormElement,
+		hiddenInput
+	);
 }
