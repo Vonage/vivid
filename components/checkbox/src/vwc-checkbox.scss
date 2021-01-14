@@ -2,8 +2,10 @@
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 
 :host {
-	--mdc-checkbox-unchecked-color: var(--vvd-color-unchecked);
-	--mdc-checkbox-disabled-color: var(--vvd-color-disabled-unchecked);
+	--mdc-checkbox-ink-color: var(#{scheme-variables.$vvd-color-surface});
+	--mdc-checkbox-checked-color: var(#{scheme-variables.$vvd-color-on-base});
+	--mdc-checkbox-unchecked-color: var(#{scheme-variables.$vvd-color-on-base});
+	--mdc-checkbox-disabled-color: var(#{scheme-variables.$vvd-color-contrast-soft});
 }
 
 .mdc-checkbox {
@@ -48,16 +50,11 @@
 		width: 12px;
 	}
 
-	.mdc-checkbox__native-control:enabled:not(:checked):not(:indeterminate):not([data-indeterminate="true"]) {
-		~ .mdc-checkbox__background {
-			background-color: var(#{color-semantic.$formfield-disabled-fill});
-		}
-
+	.mdc-checkbox__native-control:enabled {
 		&:hover,
 		&:focus {
 			~ .mdc-checkbox__background {
-				background-color: var(#{scheme-variables.$vvd-color-base});
-				--mdc-checkbox-unchecked-color: var(#{scheme-variables.$vvd-color-on-base});
+				box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
 			}
 		}
 	}
@@ -66,11 +63,7 @@
 	.mdc-checkbox__native-control[disabled]:indeterminate,
 	.mdc-checkbox__native-control[data-indeterminate="true"][disabled] {
 		~ .mdc-checkbox__background {
-			--mdc-checkbox-disabled-color: rgba(19, 20, 21, 0.3);
+			--mdc-checkbox-disabled-color: var(#{scheme-variables.$vvd-color-contrast-soft});
 		}
 	}
-}
-
-mwc-ripple {
-	display: none;
 }

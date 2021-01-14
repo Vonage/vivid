@@ -13,10 +13,11 @@
 #### `should have internal contents (full layout)`
 
 ```html
-<div class="note-icon">
-  <vwc-icon type="home">
-  </vwc-icon>
-</div>
+<vwc-icon
+  class="note-icon"
+  type="home"
+>
+</vwc-icon>
 <div class="note-text">
   <div class="note-header">
     Title
@@ -93,10 +94,11 @@
 ####   `should have icon when icon is set`
 
 ```html
-<div class="note-icon">
-  <vwc-icon type="home">
-  </vwc-icon>
-</div>
+<vwc-icon
+  class="note-icon"
+  type="home"
+>
+</vwc-icon>
 <div class="note-text">
   <slot class="note-message">
   </slot>
@@ -107,10 +109,11 @@
 ####   `should have icon added when icon is set dynamically (property)`
 
 ```html
-<div class="note-icon">
-  <vwc-icon type="home">
-  </vwc-icon>
-</div>
+<vwc-icon
+  class="note-icon"
+  type="home"
+>
+</vwc-icon>
 <div class="note-text">
   <slot class="note-message">
   </slot>
@@ -121,10 +124,11 @@
 ####   `should have icon added when icon is set dynamically (attribute)`
 
 ```html
-<div class="note-icon">
-  <vwc-icon type="home">
-  </vwc-icon>
-</div>
+<vwc-icon
+  class="note-icon"
+  type="home"
+>
+</vwc-icon>
 <div class="note-text">
   <slot class="note-message">
   </slot>

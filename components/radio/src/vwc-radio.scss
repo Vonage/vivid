@@ -2,18 +2,28 @@
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 
 :host {
-	--mdc-radio-unchecked-color: var(--vvd-color-unchecked);
-	--mdc-radio-disabled-color: var(--vvd-color-disabled-unchecked);
+	--mdc-radio-unchecked-color: var(#{scheme-variables.$vvd-color-on-base});
+	--mdc-radio-disabled-color: var(#{scheme-variables.$vvd-color-contrast-soft});
 }
 
 .mdc-radio {
 	padding: 0;
 
+	&--touch {
+		margin: 0;
+
+		.mdc-radio__native-control {
+			top: 0;
+			right: 0;
+			left: 0;
+		}
+	}
+
 	.mdc-radio__native-control:enabled {
 		&:hover,
 		&:focus {
 			+ .mdc-radio__background .mdc-radio__outer-circle {
-				border-color: var(#{scheme-variables.$vvd-color-on-base});
+				box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
 			}
 		}
 	}
@@ -23,12 +33,6 @@
 	.mdc-radio__background {
 		height: 22px;
 		width: 22px;
-	}
-
-	&--disabled {
-		.mdc-radio__outer-circle {
-			background-color: var(#{color-semantic.$formfield-disabled-fill});
-		}
 	}
 }
 
@@ -40,7 +44,6 @@
 	border-width: 11px;
 }
 
-.mdc-radio__ripple,
 .mdc-radio__background:before  {
 	display: none;
 }
