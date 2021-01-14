@@ -68,7 +68,10 @@ export class VWCSelect extends MWCSelect {
 		const isError = this.validationMessage && !this.isUiValid;
 		const text = isError ? this.validationMessage : this.helper;
 
-		return html`<vwc-helper-message is-error="${isError}"
+		return html`<vwc-helper-message
+			class="helper-message"
+			?disabled="${this.disabled}"
+			?is-error="${isError}"
 			>${text}</vwc-helper-message
 		>`;
 	}

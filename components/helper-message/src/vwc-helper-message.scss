@@ -1,10 +1,11 @@
 @use '@vonage/vvd-typography/scss/typography';
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as sem-col;
 
 :host {
 	@include typography.typography-cat-shorthand('caption');
 
-	min-height: 16px;
+	min-block-size: 16px;
 	margin-block-start: 4px;
 	display: flex;
 	align-items: center;
@@ -20,7 +21,9 @@
 	}
 }
 
-:host([is-error="true"]) {
+:host([is-error]) {
+	color: var(#{scheme-variables.$vvd-color-on-base});
+
 	.helper-icon {
 		display: flex;
 	}
@@ -28,4 +31,8 @@
 	.helper-text {
 		margin-inline-start: 4px;
 	}
+}
+
+:host([disabled]) {
+	color: var(#{#{sem-col.$formfield-disabled-ink}});
 }

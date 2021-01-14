@@ -64,9 +64,7 @@ describe('select helper', () => {
 	it('should have the error message colored', async () => {
 		await turnValidityWaitReported(addedElements[0], false);
 		const errorLine = getAsErrorLine(addedElements[0]);
-		const vwcIcon = addedElements[0].shadowRoot.querySelector(
-			'.mdc-select-helper-icon'
-		);
+		const vwcIcon = errorLine.shadowRoot.querySelector('.helper-icon');
 
 		assertComputedStyle(errorLine, { color: 'rgb(0, 0, 0)' });
 		assertComputedStyle(vwcIcon, { color: 'rgb(230, 29, 29)' });
@@ -100,16 +98,12 @@ describe('select helper', () => {
 
 //	internal util functions
 //
-function getAsHelperLine(addedElement) {
-	return addedElement.shadowRoot.querySelector(
-		'vwc-helper-message[is-error="false"]'
-	);
+function getAsHelperLine(baseElement) {
+	return baseElement.shadowRoot.querySelector('.helper-message:not([is-error])');
 }
 
-function getAsErrorLine(addedElement) {
-	return addedElement.shadowRoot.querySelector(
-		'vwc-helper-message[is-error="true"]'
-	);
+function getAsErrorLine(baseElement) {
+	return baseElement.shadowRoot.querySelector('.helper-message[is-error]');
 }
 
 function assertExistWithMessage(helperLine, messageExpected) {
