@@ -10,7 +10,7 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 :host {
 	#{$vvd-list-item-graphic-margin}: 24px;
 	#{$vvd-list-item-graphic-margin}: 16px;
-	#{$vvd-list-item-block-size}: 48px;
+	#{$vvd-list-item-block-size}: 40px;
 	--mdc-list-side-padding: var(#{$vvd-list-item-side-padding});
 	--mdc-list-item-graphic-margin: var(#{$vvd-list-item-graphic-margin});
 	--mdc-list-item-graphic-size: 20px;
@@ -27,26 +27,17 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 	@include typography.typography-cat-shorthand('body-2');
 }
 
-// :host([dense]) {
-// 	#{$vvd-list-item-block-size}: 40px;
-// }
-
-// :host([dense][twoline]) {
-// 	#{$vvd-list-item-block-size}: 64px;
-
-// 	.mdc-list-item__graphic {
-// 		margin-top: 10px;
-// 	}
-
-// 	.mdc-list-item__primary-text::before {
-// 		height: 26px;
-// 	}
-// }
+:host([graphic="icon"]:not([twoline])) {
+	height: var(#{$vvd-list-item-block-size}); // override mwc fixed height
+}
 
 :host([twoline]) {
-	#{$vvd-list-item-block-size}: 72px;
+	#{$vvd-list-item-block-size}: 64px;
 	#{$vvd-list-item-side-padding}: 16px;
 	#{$vvd-list-item-graphic-margin}: 12px;
+
+	height: auto;
+	min-block-size: var(#{$vvd-list-item-block-size});
 
 	&::after {
 		content: '';
@@ -61,30 +52,32 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 
 	.mdc-list-item__graphic {
 		align-self: flex-start;
-		margin-top: 16px;
+		margin-block-start: 10px;
 	}
 
 	.mdc-list-item__primary-text {
 		@include typography.typography-cat-shorthand('body-2-bold');
+		margin-block: 12px 4px;
 
-		&::before {
-			height: 30px;
+		&::before,
+		&::after {
+			display: none;
 		}
 	}
 
 	.mdc-list-item__secondary-text {
 		@include typography.typography-cat-shorthand('caption');
-
+		margin-block-end: 12px;
+		white-space: normal;
 
 		&::before {
-			height: 22px;
+			display: none;
 		}
 	}
-}
 
-:host([twoline]),
-:host([graphic="icon"]:not([twoline])) {
-	height: var(#{$vvd-list-item-block-size}); // override mwc fixed height
+	.mdc-list-item__meta {
+		flex-shrink: 0;
+	}
 }
 
 :host([disabled]) {

@@ -47,13 +47,13 @@ describe('list item', () => {
 		});
 
 		it('should have correct size by default', async () => {
-			assertListItemDimensions(actualElements[0].children, itemsNum, 48);
+			assertListItemDimensions(actualElements[0].children, itemsNum, 40);
 		});
 
 		it('should have correct size when twoline', async () => {
 			for (let item of actualElements[0].children) item.twoline = true;
 			await waitNextTask();
-			assertListItemDimensions(actualElements[0].children, itemsNum, 72);
+			assertListItemDimensions(actualElements[0].children, itemsNum, 64);
 		});
 	});
 
