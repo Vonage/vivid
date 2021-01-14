@@ -18,6 +18,9 @@
 
 	.helper-text {
 		margin-inline-start: 16px;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
 	}
 }
 
@@ -26,6 +29,7 @@
 
 	.helper-icon {
 		display: flex;
+		flex-shrink: 0;
 	}
 
 	.helper-text {
