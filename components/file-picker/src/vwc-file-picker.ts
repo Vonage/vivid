@@ -99,7 +99,7 @@ export class VWCFilePicker extends LitElement {
 		const isError = !!this.validationMessage;
 		const text = this.validationMessage || this.helper || '';
 		if (text) {
-			return html`<vwc-helper-message is-error="${isError}"
+			return html`<vwc-helper-message ?is-error="${isError}"
 				>${text}</vwc-helper-message
 			>`;
 		} else {
