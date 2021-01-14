@@ -47,21 +47,21 @@ fileStreamFromGlob(joinPath(process.cwd(), basePath, '**/*.s[ac]ss'))
 				outputStyle: "compressed"
 			}, cb)
 		)
-		.map(({ css })=>({
+		.map(({ css })=> ({
 			sass_path: sassFile,
 			css_content: css.toString()
 		}));
 	})
-	.map(({ css_content, sass_path })=> {
-		return {
+	.map(({ css_content, sass_path })=> ({
 			module_path: joinPath(...[getDir(sass_path), [getBase(sass_path, getExtension(sass_path)), 'css.ts'].join('.')]),
 			module_content: tsTemplate(css_content),
-		};
-	})
-	.flatMap(({ module_path, module_content })=> {
-		return kefir
+		})
+	)
+	.flatMap(({ module_path, module_content })=>
+		kefir
 			.fromNodeCallback((cb)=>writeFile(module_path, module_content, cb))
-			.map(()=> ` ✔ ${module_path}`);
-	})
+			.map(()=> ` ✔ ${module_path}`)
+	)
 	.onValue(console.log)
-	.onEnd(()=> console.timeEnd('Total'));
+	.onEnd(()=> console.timeEnd('Total'))
+	.onError(console.warn);
