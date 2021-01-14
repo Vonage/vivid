@@ -4,7 +4,6 @@ import {
 	textToDomToParent,
 	assertComputedStyle,
 } from '../../../test/test-helpers.js';
-import { layoutStyles, topLevelSelectors } from '../../../test/style-utils.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import { isolatedElementsCreation } from '../../../test/test-helpers';
 
@@ -24,13 +23,45 @@ describe('helper message', () => {
 		);
 	});
 
-	it('should internal contents', async () => {
+	it(`should internal contents when 'is-error="false"'`, async () => {
 		const [e] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+			textToDomToParent(
+				`<${COMPONENT_NAME} is-error="false">Message text</${COMPONENT_NAME}>`
+			)
 		);
 		await waitNextTask();
 		expect(e.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
-	describe('sizing', () => {});
+	it(`should internal contents when 'is-error="true"'`, async () => {
+		const [e] = addElement(
+			textToDomToParent(
+				`<${COMPONENT_NAME} is-error="true">Message text</${COMPONENT_NAME}>`
+			)
+		);
+		await waitNextTask();
+		expect(e.shadowRoot.innerHTML).to.equalSnapshot();
+	});
+
+	describe('sizing', () => {
+		it(`should have correct sizing when 'is-error=false'`, async () => {
+			const [e] = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} is-error="false">Message text</${COMPONENT_NAME}>`
+				)
+			);
+			await waitNextTask();
+			assertComputedStyle(e, { height: '16px', marginBlockStart: '4px' });
+		});
+
+		it(`should have correct sizing when 'is-error=true'`, async () => {
+			const [e] = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} is-error="true">Message text</${COMPONENT_NAME}>`
+				)
+			);
+			await waitNextTask();
+			assertComputedStyle(e, { height: '16px', marginBlockStart: '4px' });
+		});
+	});
 });

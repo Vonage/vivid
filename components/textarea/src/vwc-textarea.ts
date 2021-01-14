@@ -53,10 +53,7 @@ export class VWCTextArea extends MWCTextArea {
 			  </vwc-notched-outline>`;
 	}
 
-	renderHelperText(
-		shouldRenderHelperText: boolean,
-		_shouldRenderCharCounter: boolean
-	): TemplateResult | string {
+	renderHelperText(shouldRenderHelperText: boolean): TemplateResult | string {
 		if (!shouldRenderHelperText) {
 			return '';
 		}

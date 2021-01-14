@@ -92,10 +92,7 @@ export class VWCTextField extends MWCTextField {
 			  </vwc-notched-outline>`;
 	}
 
-	renderHelperText(
-		shouldRenderHelperText: boolean,
-		_shouldRenderCharCounter: boolean
-	): TemplateResult | string {
+	renderHelperText(shouldRenderHelperText: boolean): TemplateResult | string {
 		if (!shouldRenderHelperText) {
 			return '';
 		}

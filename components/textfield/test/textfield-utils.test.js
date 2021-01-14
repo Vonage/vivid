@@ -48,7 +48,7 @@ export async function typographyTestCases(COMPONENT_NAME) {
 		formElement.helper = 'Helper text';
 		await waitNextTask();
 		const helperElement = formElement.shadowRoot.querySelector(
-			'.mdc-text-field-helper-text'
+			'vwc-helper-message'
 		);
 		assertComputedStyle(helperElement, await getTypographyStyle('caption'));
 	});

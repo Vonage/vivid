@@ -101,12 +101,14 @@ describe('select helper', () => {
 //	internal util functions
 //
 function getAsHelperLine(addedElement) {
-	return addedElement.shadowRoot.querySelector('.mdc-select-helper-text');
+	return addedElement.shadowRoot.querySelector(
+		'vwc-helper-message[is-error="false"]'
+	);
 }
 
 function getAsErrorLine(addedElement) {
 	return addedElement.shadowRoot.querySelector(
-		'.mdc-select-helper-text--validation-msg'
+		'vwc-helper-message[is-error="true"]'
 	);
 }
 
