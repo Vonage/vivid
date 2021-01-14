@@ -35,7 +35,6 @@
 		"tslib": "^2.0.3"
 	},
 	"devDependencies": {
-    "@vonage/vvd-design-tokens": "1.0.0",
 		"@vonage/vvd-typography": "1.0.0"
 	}
 }
