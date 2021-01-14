@@ -78,7 +78,7 @@ export class VWCFilePicker extends LitElement {
 					<slot class="${INPUT_FILE_SLOT}"></slot>
 					${this.renderFilesCount()}
 				</div>
-				${this.renderFooter()}
+				${this.renderHelperMessage()}
 			</label>
 		`;
 	}
@@ -95,18 +95,15 @@ export class VWCFilePicker extends LitElement {
 		}
 	}
 
-	private renderFooter(): TemplateResult {
+	private renderHelperMessage(): TemplateResult | string {
+		const isError = !!this.validationMessage;
 		const text = this.validationMessage || this.helper || '';
 		if (text) {
-			return html`
-				<div class="footer part">
-					<vwc-icon class="error-icon" type="info-negative" size="small"></vwc-icon>
-					<span class="spacer"></span>
-					<span class="text">${text}</span>
-				</div>
-			`;
+			return html`<vwc-helper-message is-error="${isError}"
+				>${text}</vwc-helper-message
+			>`;
 		} else {
-			return html``;
+			return '';
 		}
 	}
 
