@@ -50,7 +50,7 @@ export class VWCTextField extends MWCTextField {
 			?.querySelector('.mdc-notched-outline')
 			?.shadowRoot?.querySelector('.mdc-notched-outline')
 			?.classList.add('vvd-notch');
-		associateWithForm((this as unknown) as HTMLInputElement, this.formElement);
+		associateWithForm(this, this.formElement);
 		submitOnEnter((this as unknown) as HTMLInputElement);
 		handleAutofocus(this);
 	}

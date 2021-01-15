@@ -1,5 +1,6 @@
 export interface InputElement extends HTMLElement {
 	name: string | undefined;
+	type?: string | undefined;
 	value: string;
 }
 

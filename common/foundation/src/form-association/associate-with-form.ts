@@ -16,7 +16,7 @@ window.customElements.define(
 
 function setHiddenInputInitialValuesAndStyle(
 	hiddenInput: HTMLInputElement,
-	{ name, type, value: initialValue }: HTMLInputElement
+	{ name, type, value: initialValue }: InputElement
 ) {
 	hiddenInput.style.display = 'none';
 	if (name) {
@@ -114,7 +114,7 @@ function associateFormCleanupFactory(
 }
 
 export function associateWithForm(
-	customInputElement: HTMLInputElement,
+	customInputElement: InputElement,
 	internalFormElement: HTMLInputElement
 ): void {
 	const hostingForm = getFormByIdOrClosest(customInputElement);
