@@ -25,14 +25,15 @@
 	"dependencies": {
 		"@material/mwc-textarea": "^0.20.0",
 		"@material/mwc-textfield": "^0.20.0",
-		"@vonage/vvd-core": "^1.0.1",
-		"@vonage/vvd-foundation": "^1.0.1",
-		"@vonage/vvd-style-coupling": "^1.0.1",
-		"@vonage/vwc-notched-outline": "^1.0.1",
+		"@vonage/vvd-core": "1.0.1",
+		"@vonage/vvd-foundation": "1.0.1",
+		"@vonage/vvd-style-coupling": "1.0.1",
+		"@vonage/vwc-helper-message": "1.0.1",
+		"@vonage/vwc-notched-outline": "1.0.1",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.3"
 	},
 	"devDependencies": {
-		"@vonage/vwc-textfield": "^1.0.1"
+		"@vonage/vwc-textfield": "1.0.1"
 	}
 }

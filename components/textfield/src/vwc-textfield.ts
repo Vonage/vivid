@@ -1,4 +1,5 @@
 import '@vonage/vvd-core';
+import '@vonage/vwc-helper-message';
 import '@vonage/vwc-icon';
 import '@vonage/vwc-notched-outline';
 import {
@@ -91,33 +92,19 @@ export class VWCTextField extends MWCTextField {
 			  </vwc-notched-outline>`;
 	}
 
-	renderHelperText(
-		shouldRenderHelperText: boolean,
-		shouldRenderCharCounter: boolean
-	): TemplateResult | string {
+	renderHelperText(shouldRenderHelperText: boolean): TemplateResult | string {
 		if (!shouldRenderHelperText) {
 			return '';
 		}
-		const showValidationMessage = this.validationMessage && !this.isUiValid;
-		const classesMap = {
-			'mdc-text-field-helper-text--persistent': this.helperPersistent,
-			'mdc-text-field-helper-text--validation-msg': showValidationMessage,
-		};
-		const validationMessage = showValidationMessage
-			? this.validationMessage
-			: this.helper;
-		const classes = mapToClasses(classesMap).join(' ');
-		return html`
-			<div class="mdc-text-field-helper-line ${classes}">
-				<vwc-icon
-					class="mdc-text-field-helper-icon"
-					type="info-negative"
-					size="small"
-				></vwc-icon>
-				<span class="spacer"></span>
-				<div class="mdc-text-field-helper-text">${validationMessage}</div>
-				${this.renderCharCounter(shouldRenderCharCounter)}
-			</div>
-		`;
+
+		const isError = this.validationMessage && !this.isUiValid;
+		const text = isError ? this.validationMessage : this.helper;
+
+		return html`<vwc-helper-message
+			class="helper-message"
+			?disabled="${this.disabled}"
+			?is-error="${isError}"
+			>${text}</vwc-helper-message
+		>`;
 	}
 }

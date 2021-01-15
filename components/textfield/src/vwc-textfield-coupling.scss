@@ -1,4 +1,4 @@
-@use '@vonage/vvd-typography/scss/typography' as typography;
+@use '@vonage/vvd-typography/scss/typography';
 
 :host {
 	@include typography.typography-mdc-coupling('subtitle1', 'body-2');
@@ -9,10 +9,6 @@
 
 	.mdc-floating-label--float-above {
 		@include typography.typography-mdc-coupling('subtitle1', 'caption');
-	}
-
-	.mdc-text-field-helper-text {
-		@include typography.typography-mdc-coupling('caption', 'caption');
 	}
 }
 

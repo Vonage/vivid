@@ -20,16 +20,7 @@
 			"path": "../../common/foundation"
 		},
 		{
-			"path": "../../common/style-coupling"
-		},
-		{
-			"path": "../helper-message"
-		},
-		{
 			"path": "../icon"
-		},
-		{
-			"path": "../notched-outline"
 		}
 	]
 }
