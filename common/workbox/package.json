@@ -1,6 +1,6 @@
 {
   "name": "@vonage/vvd-workbox",
-  "version": "0.19.1",
+  "version": "1.0.0",
   "description": "Supplies various tools for authoring, testing and building Vivid components",
   "keywords": [
     "build",
