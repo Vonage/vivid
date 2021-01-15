@@ -1,3 +1,12 @@
+## [1.0.1](https://github.com/vonage/vivid/compare/v1.0.0...v1.0.1) (2021-01-15)
+
+
+### Features
+
+* **autofill support:** adding type to the list of propagated attributes of enlightened inputs ([#576](https://github.com/vonage/vivid/issues/576)) ([63d6876](https://github.com/vonage/vivid/commit/63d6876e40337fdd10549ee352c7212c9bf2832d))
+
+
+
 # [1.0.0](https://github.com/vonage/vivid/compare/v0.19.1...v1.0.0) (2021-01-13)
 
 
