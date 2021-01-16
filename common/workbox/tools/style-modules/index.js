@@ -29,13 +29,15 @@ fileStreamFromGlob(joinPath(process.cwd(), basePath, '**/*.s[ac]ss'))
 				importer: (path, prev, done)=> {
 					kefir
 						.concat(
-							["", "_"]
-								.map(prefixWith(path))
-								.flatMap((basePath)=> ["", "scss", "sass"].map(suffixWith(basePath)))
-								.map((probePath)=> kefir.fromNodeCallback((cb) => {
-									const res = fp.attempt(() => require.resolve(probePath));
-									cb(fp.isError(res) && res, res);
-								}))
+							[
+								[path, "_index.scss"].join('/'),
+								...["", "_"]
+									.map(prefixWith(path))
+									.flatMap((basePath)=> ["", "scss", "sass"].map(suffixWith(basePath)))
+							].map((probePath)=> kefir.fromNodeCallback((cb) => {
+								const res = fp.attempt(() => require.resolve(probePath));
+								cb(fp.isError(res) && res, res);
+							}))
 						)
 						.ignoreErrors()
 						.map((outPath)=> ({ file: outPath }))
@@ -62,6 +64,10 @@ fileStreamFromGlob(joinPath(process.cwd(), basePath, '**/*.s[ac]ss'))
 			.fromNodeCallback((cb)=>writeFile(module_path, module_content, cb))
 			.map(()=> ` ✔ ${module_path}`)
 	)
+	.takeErrors(1)
 	.onValue(console.log)
 	.onEnd(()=> console.timeEnd('Total'))
-	.onError(console.warn);
+	.onError((err)=>{
+		console.warn(err);
+		process.exit(1);
+	});
