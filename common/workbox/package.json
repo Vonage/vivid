@@ -11,7 +11,7 @@
   ],
   "private": true,
   "bin": {
-    "create-style-modules": "./tools/create-style-modules/index.js"
+    "workbox-style-modules": "./tools/style-modules/index.js"
   },
   "author": "Tal Weinfeld <tal.weinfeld@vonage.com>",
   "homepage": "https://github.com/Vonage/vivid#readme",
