@@ -22,7 +22,7 @@ const
 	prefixWith = (path)=> (pre)=> joinPath(...[getDir(path), [pre, getBase(path)].join('')]),
 	suffixWith = (path)=> (suf)=> joinPath(...[getDir(path), [getBase(path), suf].filter(Boolean).join('.')]);
 
-fileStreamFromGlob(joinPath(process.cwd(), basePath, '**/*.s[ac]ss'))
+fileStreamFromGlob(joinPath(process.cwd(), basePath, './src/*.s[ac]ss'))
 	.flatMapConcat((sassFile)=> {
 		return kefir.fromNodeCallback((cb)=>
 			renderSass({
