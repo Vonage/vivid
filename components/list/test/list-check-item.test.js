@@ -47,7 +47,7 @@ describe('check list item', () => {
 				buildListOfNItems(itemsNum, VWC_CHECK_LIST_ITEM)
 			);
 			await waitNextTask();
-			assertListItemDimensions(actualElements[0].children, itemsNum, 56);
+			assertListItemDimensions(actualElements[0].children, itemsNum, 40);
 		});
 	});
 });
