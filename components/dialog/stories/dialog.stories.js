@@ -5,7 +5,7 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Components/Atoms/Calendar',
+	title: 'Components/Atoms/Dialog',
 	component: 'vwc-dialog',
 	argTypes
 };
