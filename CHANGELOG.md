@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://github.com/Vonage/vivid/compare/v1.0.1...v1.0.2) (2021-01-15)
+
+
+### Features
+
+* **vwc-helper-message:** commonalize text helper component ([#575](https://github.com/Vonage/vivid/issues/575)) ([5c152d5](https://github.com/Vonage/vivid/commit/5c152d5405290249fe9c7e990ea0596e51c271c9))
+
+
+
+
+
+## [1.0.1](https://github.com/Vonage/vivid/compare/v1.0.0...v1.0.1) (2021-01-15)
+
+
+### Features
+
+* **autofill support:** adding type to the list of propagated attributes of enlightened inputs ([#576](https://github.com/Vonage/vivid/issues/576)) ([63d6876](https://github.com/Vonage/vivid/commit/63d6876e40337fdd10549ee352c7212c9bf2832d))
+* context supplements a ([#569](https://github.com/Vonage/vivid/issues/569)) ([a3f4a2c](https://github.com/Vonage/vivid/commit/a3f4a2c71c1a7242234c7889b2b346f37e9250a9))
+
+
+
+
+
+# [1.0.0](https://github.com/Vonage/vivid/compare/v0.19.1...v1.0.0) (2021-01-13)
+
+**Note:** Version bump only for package @vivid/root
+
+
+
+
+
 ## [0.19.1](https://github.com/Vonage/vivid/compare/v0.19.0...v0.19.1) (2021-01-10)
 
 

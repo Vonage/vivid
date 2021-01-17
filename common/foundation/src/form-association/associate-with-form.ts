@@ -16,11 +16,14 @@ window.customElements.define(
 
 function setHiddenInputInitialValuesAndStyle(
 	hiddenInput: HTMLInputElement,
-	{ name, value: initialValue }: InputElement
+	{ name, type, value: initialValue }: InputElement
 ) {
 	hiddenInput.style.display = 'none';
 	if (name) {
 		hiddenInput.setAttribute('name', name);
+	}
+	if (type) {
+		hiddenInput.setAttribute('type', type);
 	}
 	hiddenInput.defaultValue = initialValue;
 }
@@ -110,11 +113,11 @@ function associateFormCleanupFactory(
 	};
 }
 
-export function associateWithForm<T extends InputElement>(
-	inputElement: T,
+export function associateWithForm(
+	customInputElement: InputElement,
 	internalFormElement: HTMLInputElement
 ): void {
-	const hostingForm = getFormByIdOrClosest(inputElement);
+	const hostingForm = getFormByIdOrClosest(customInputElement);
 
 	if (!hostingForm) {
 		return;
@@ -124,11 +127,11 @@ export function associateWithForm<T extends InputElement>(
 		hostingForm,
 		internalFormElement.nodeName
 	);
-	setHiddenInputInitialValuesAndStyle(hiddenInput, inputElement);
+	setHiddenInputInitialValuesAndStyle(hiddenInput, customInputElement);
 	suspendInvalidEvent(hiddenInput);
 
 	const resetFormHandler = resetFormFactory(
-		inputElement,
+		customInputElement,
 		internalFormElement,
 		hiddenInput
 	);
@@ -141,13 +144,17 @@ export function associateWithForm<T extends InputElement>(
 
 	setInternalValueAndValidityInHiddenInput(
 		hiddenInput,
-		inputElement.value,
+		customInputElement.value,
 		internalFormElement.validationMessage
 	);
 
 	hostingForm.addEventListener('reset', resetFormHandler);
 
-	appendDisconnectionCleanupElement(inputElement, disconnectionCallback);
+	appendDisconnectionCleanupElement(customInputElement, disconnectionCallback);
 
-	syncValueAndValidityOnChanges(inputElement, internalFormElement, hiddenInput);
+	syncValueAndValidityOnChanges(
+		customInputElement,
+		internalFormElement,
+		hiddenInput
+	);
 }

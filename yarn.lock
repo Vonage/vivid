@@ -4705,6 +4705,13 @@
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@vonage/vvd-design-tokens-properties/0.5.4/7a5aa317678207ddbc2be97ee322d3721f09226dbeb9b7372cb74ced7a6608a4#9f7443829dcc9c7bfee308fe6a4dbdff954b5019"
   integrity sha1-n3RDgp3MnHv+4wj+ak29/5VLUBk=
 
+"@vonage/vvd-foundation@^0.19.1":
+  version "0.19.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@vonage/vvd-foundation/0.19.1/20b94f973bbfca8f9a20a6681fee1e1ec563ef538a8100afd00c3cea84d6aad2#04050067d5b1c6a25472f4278cac66827e7bd9db"
+  integrity sha1-BAUAZ9WxxqJUcvQnjKxmgn572ds=
+  dependencies:
+    tslib "^2.0.3"
+
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@webassemblyjs/ast/-/ast-1.9.0.tgz#bd850604b4042459a5a41cd7d338cbed695ed964"
@@ -15145,9 +15152,9 @@ sass-graph@2.2.5:
     yargs "^13.3.2"
 
 sass@^1.26.10:
-  version "1.27.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/sass/-/sass-1.27.0.tgz#0657ff674206b95ec20dc638a93e179c78f6ada2"
-  integrity sha1-Blf/Z0IGuV7CDcY4qT4XnHj2raI=
+  version "1.32.4"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/sass/-/sass-1.32.4.tgz#308bf29dd7f53d44ae4f06580e9a910ad9aa411e"
+  integrity sha1-MIvyndf1PUSuTwZYDpqRCtmqQR4=
   dependencies:
     chokidar ">=2.0.0 <4.0.0"
 

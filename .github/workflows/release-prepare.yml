@@ -38,7 +38,7 @@ jobs:
           path: |
             ${{ steps.yarn-cache-dir-path.outputs.dir }}
             **/node_modules
-          key: vivid-cache-yarn-${{ hashFiles('**/yarn.lock') }}
+          key: vivid-cache-yarn-${{ hashFiles('**/package.json') }}
 
       - name: Install dependencies
         if: steps.yarn-cache.outputs.cache-hit != 'true'

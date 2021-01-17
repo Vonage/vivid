@@ -47,9 +47,7 @@ export async function typographyTestCases(COMPONENT_NAME) {
 	it('should have set typography for a helper', async () => {
 		formElement.helper = 'Helper text';
 		await waitNextTask();
-		const helperElement = formElement.shadowRoot.querySelector(
-			'.mdc-text-field-helper-text'
-		);
+		const helperElement = formElement.shadowRoot.querySelector('.helper-message');
 		assertComputedStyle(helperElement, await getTypographyStyle('caption'));
 	});
 }
