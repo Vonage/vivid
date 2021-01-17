@@ -17,7 +17,7 @@
     "directory": "common/design-tokens"
   },
   "scripts": {
-    "build": "yarn run build:style-modules && node src/index.js",
+    "build": "node src/index.js && yarn run build:style-modules",
     "test": "echo \"Error: run tests from root\" && exit 1",
     "build:style-modules": "workbox-style-modules"
   },
