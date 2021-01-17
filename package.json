@@ -143,6 +143,5 @@
 		"node": ">=12.18.4"
 	},
 	"dependencies": {
-		"@material/mwc-dialog": "^0.20.0"
 	}
 }
