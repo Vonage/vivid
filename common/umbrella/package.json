@@ -1,0 +1,38 @@
+{
+  "name": "@vonage/vvd-umbrella",
+  "version": "1.0.0",
+  "description": "Supplies various tools for authoring, testing and building Vivid components",
+  "keywords": [
+    "build",
+    "test",
+    "compile",
+    "author",
+    "toolkit"
+  ],
+  "private": true,
+  "bin": {
+    "umbrella-style-modules": "./tools/style-modules/index.js"
+  },
+  "author": "Tal Weinfeld <tal.weinfeld@vonage.com>",
+  "homepage": "https://github.com/Vonage/vivid#readme",
+  "license": "ISC",
+  "publishConfig": {
+    "registry": "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vonage/vivid.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/Vonage/vivid/issues"
+  },
+  "dependencies": {
+    "glob": "^7.1.6",
+    "minimist": "^1.2.5",
+    "sass": "^1.32.4",
+		"kefir": "^3.8.8"
+  }
+}
