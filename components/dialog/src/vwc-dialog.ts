@@ -2,7 +2,6 @@ import { customElement } from 'lit-element';
 import { style } from './vwc-dialog.css';
 import { Dialog as MwcDialog } from '@material/mwc-dialog';
 import { style as mwcDialogStyle } from '@material/mwc-dialog/mwc-dialog-css';
-import { Button as MWCButton } from '@material/mwc-button';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling';
 
 declare global {
