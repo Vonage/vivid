@@ -1,6 +1,6 @@
 # How To Consume Vivid NPM Packages
 
-Vivid packages are internal to Vonage organisation and are served from a secured and private registry - GitHub packages. This document describes how to consume packages as a developer and also offers guidance for automation admins.
+Vivid packages are internal to Vonage organization and are served from a secured and private registry - GitHub packages. This document describes how to consume packages as a developer and also offers guidance for automation admins.
 
 - [Consuming NPM packages directly from GitHub](#consuming-npm-packages-directly-from-github)
 - [Consuming packages from your internal packages source](#consuming-packages-from-your-internal-packages-source)
@@ -76,6 +76,6 @@ email = ${ARTIFACTORY_USER}
 
 Enable `repo` and `read:packages` scopes and don't forget to enable SSO for your tokens:
 
-![Enable SSO](../assets/images/github-sso.jpg)
+![Enable SSO](assets/images/github-sso.jpg)
 
-> **Attention:** You need to authorise as well for **Vonage** GitHub org in the case you haven't so far. If Vonage org now showing up please reach out `#ask-github` Slack channel and request access.
+> **Attention:** You need to authorize as well for **Vonage** GitHub org in the case you haven't so far. If Vonage org now showing up please reach out `#ask-github` Slack channel and request access.

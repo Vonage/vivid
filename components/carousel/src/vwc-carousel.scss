@@ -45,20 +45,20 @@ vwc-casousel:active {
 
 $themeColor: var(#{scheme-variables.$vvd-color-on-base}) !default;
 
-@import ".../../../node_modules/swiper/scss/functions";
-@import "../../../node_modules/swiper/components/core/core";
+@import "swiper/scss/functions";
+@import "swiper/components/core/core";
 
 //IMPORT_COMPONENTS
-@import "../../../node_modules/swiper/components/a11y/a11y";
-@import "../../../node_modules/swiper/components/controller/controller";
-@import "../../../node_modules/swiper/components/effect-coverflow/effect-coverflow";
-@import "../../../node_modules/swiper/components/effect-cube/effect-cube";
-@import "../../../node_modules/swiper/components/effect-fade/effect-fade";
-@import "../../../node_modules/swiper/components/effect-flip/effect-flip";
-@import "../../../node_modules/swiper/components/lazy/lazy";
-@import "../../../node_modules/swiper/components/scrollbar/scrollbar";
-@import "../../../node_modules/swiper/components/thumbs/thumbs";
-@import "../../../node_modules/swiper/components/zoom/zoom";
+@import "swiper/components/a11y/a11y";
+@import "swiper/components/controller/controller";
+@import "swiper/components/effect-coverflow/effect-coverflow";
+@import "swiper/components/effect-cube/effect-cube";
+@import "swiper/components/effect-fade/effect-fade";
+@import "swiper/components/effect-flip/effect-flip";
+@import "swiper/components/lazy/lazy";
+@import "swiper/components/scrollbar/scrollbar";
+@import "swiper/components/thumbs/thumbs";
+@import "swiper/components/zoom/zoom";
 
 //IMPORT NAVIGATION/PAGINATION
 @import "./vwc-carousel-navigation";

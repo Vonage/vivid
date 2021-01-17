@@ -1,3 +1,38 @@
+## [1.0.2](https://github.com/vonage/vivid/compare/v1.0.1...v1.0.2) (2021-01-15)
+
+
+### Features
+
+* **vwc-helper-message:** commonalize text helper component ([#575](https://github.com/vonage/vivid/issues/575)) ([5c152d5](https://github.com/vonage/vivid/commit/5c152d5405290249fe9c7e990ea0596e51c271c9))
+
+
+
+## [1.0.1](https://github.com/vonage/vivid/compare/v1.0.0...v1.0.1) (2021-01-15)
+
+
+### Features
+
+* **autofill support:** adding type to the list of propagated attributes of enlightened inputs ([#576](https://github.com/vonage/vivid/issues/576)) ([63d6876](https://github.com/vonage/vivid/commit/63d6876e40337fdd10549ee352c7212c9bf2832d))
+
+
+
+# [1.0.0](https://github.com/vonage/vivid/compare/v0.19.1...v1.0.0) (2021-01-13)
+
+
+
+## [0.19.1](https://github.com/vonage/vivid/compare/v0.19.0...v0.19.1) (2021-01-10)
+
+
+
+# [0.19.0](https://github.com/vonage/vivid/compare/v0.17.2...v0.19.0) (2021-01-07)
+
+
+### Features
+
+* **vwc-icon-button:** viv-306 layout, shape, connotation support ([#504](https://github.com/vonage/vivid/issues/504)) ([4b864bc](https://github.com/vonage/vivid/commit/4b864bc496a2acaf561c4903efb8d1e0d3d24c69))
+
+
+
 ## [0.17.2](https://github.com/vonage/vivid/compare/v0.17.1...v0.17.2) (2020-12-17)
 
 

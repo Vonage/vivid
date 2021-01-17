@@ -7,6 +7,7 @@ import vvdContext from '@vonage/vvd-context';
 vvdContext.mount()
 	.then(() => console.info('init Vivid core done (preview frame)'))
 	.catch(e => console.error(e));
+document.body.classList.add('vivid-scope-tmp');
 
 async function run() {
 	setCustomElements(customElements);
@@ -14,18 +15,23 @@ async function run() {
 		controls: {
 			expanded: true
 		},
+		html: {
+			root: '#root-inner',
+			removeEmptyComments: true,
+		},
 		options: {
 			storySort: {
 				order: [
 					'Introduction',
-					['General', 'Architecture', 'Components List'],
+					['Meet Vivid', 'Getting Started', 'Architecture', 'Roadmap', 'Contact Us'],
 					'Guides',
-					['Installation', 'Context'],
+					['Installation'],
 					'Design System',
 					['Introduction'],
-					'Components',
-					['Atoms', 'Composite'],
 					'Core',
+					['Context', 'Fonts', 'Typography'],
+					'Components',
+					['Components List', 'Atoms', 'Composite'],
 				],
 				method: 'alphabetical'
 			},

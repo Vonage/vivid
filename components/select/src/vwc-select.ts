@@ -1,4 +1,5 @@
 import '@vonage/vvd-core';
+import '@vonage/vwc-helper-message';
 import '@vonage/vwc-icon';
 import '@vonage/vwc-notched-outline';
 import {
@@ -8,7 +9,6 @@ import {
 	TemplateResult,
 	PropertyValues,
 } from 'lit-element';
-import { mapToClasses } from '@vonage/vvd-foundation/class-utils.js';
 import { Select as MWCSelect } from '@material/mwc-select';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import { style as vwcSelectStyle } from './vwc-select.css';
@@ -27,6 +27,8 @@ declare global {
 // @ts-ignore
 MWCSelect.styles = [styleCoupling, mwcSelectStyle, vwcSelectStyle];
 
+type SelectShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
+
 /**
  * This component is an extension of [<mwc-select>](https://github.com/material-components/material-components-web-components/tree/master/packages/select)
  */
@@ -36,7 +38,7 @@ export class VWCSelect extends MWCSelect {
 	dense = false;
 
 	@property({ type: String, reflect: true })
-	shape?: Shape;
+	shape?: SelectShape;
 
 	@property({ type: String, reflect: true })
 	form: string | undefined;
@@ -47,7 +49,7 @@ export class VWCSelect extends MWCSelect {
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
 		this.replaceIcon();
-		associateWithForm<VWCSelect>(this, this.formElement);
+		associateWithForm(this, this.formElement);
 		handleAutofocus(this);
 	}
 
@@ -58,33 +60,20 @@ export class VWCSelect extends MWCSelect {
 		}
 	}
 
-	protected renderHelperText(): TemplateResult {
+	protected renderHelperText(): TemplateResult | string {
 		if (!this.shouldRenderHelperText) {
-			return html``;
+			return '';
 		}
 
-		const showValidationMessage = this.validationMessage && !this.isUiValid;
-		const classesMap = {
-			'mdc-select-helper-text--validation-msg': showValidationMessage,
-		};
+		const isError = this.validationMessage && !this.isUiValid;
+		const text = isError ? this.validationMessage : this.helper;
 
-		const classes = ['mdc-select-helper-text', ...mapToClasses(classesMap)].join(
-			' '
-		);
-		const validationMessage = showValidationMessage
-			? this.validationMessage
-			: this.helper;
-		return html`
-			<div class="mdc-select-helper-line">
-				<vwc-icon
-					class="mdc-select-helper-icon"
-					type="info-negative"
-					size="small"
-				></vwc-icon>
-				<span class="spacer"></span>
-				<div id="helper-text" class="${classes}">${validationMessage}</div>
-			</div>
-		`;
+		return html`<vwc-helper-message
+			class="helper-message"
+			?disabled="${this.disabled}"
+			?is-error="${isError}"
+			>${text}</vwc-helper-message
+		>`;
 	}
 
 	private replaceIcon(): void {
@@ -100,7 +89,7 @@ export class VWCSelect extends MWCSelect {
 			return {};
 		}
 
-		return html` <vwc-notched-outline class="mdc-notched-outline vvd-notch">
+		return html`<vwc-notched-outline class="mdc-notched-outline vvd-notch">
 			${this.renderLabel()}
 		</vwc-notched-outline>`;
 	}

@@ -16,39 +16,39 @@ const listStyles = {
 };
 
 const Template = () => html`
-	<div style=${styleMap(listStyles)}>
-		<vwc-list-item graphic="icon">
-			<vwc-icon slot="graphic" type="home"></vwc-icon>
-			Parent 1
-		</vwc-list-item>
+  <div style=${styleMap(listStyles)}>
+    <vwc-list-item shape="rounded" graphic="icon">
+      <vwc-icon slot="graphic" type="home"></vwc-icon>
+      Parent 1
+    </vwc-list-item>
 		<vwc-list-expansion-panel open>
-			<vwc-list-item slot="header" graphic="icon">
+			<vwc-list-item slot="header" shape="rounded" graphic="icon">
 				<vwc-icon slot="graphic" type="profile"></vwc-icon>
-				Parent 2
+				Parent 1
 			</vwc-list-item>
-			<vwc-list-item>
+			<vwc-list-item shape="rounded">
 				Child 1
 			</vwc-list-item>
-			<vwc-list-item>
+			<vwc-list-item shape="rounded">
 				Child 2
 			</vwc-list-item>
 		</vwc-list-expansion-panel>
 		<vwc-list-expansion-panel>
-			<vwc-list-item slot="header" graphic="icon">
+			<vwc-list-item slot="header" shape="rounded" graphic="icon">
 				<vwc-icon slot="graphic" type="gear"></vwc-icon>
-				Parent 3
+				Parent 2
 			</vwc-list-item>
-			<vwc-list-item>
+			<vwc-list-item shape="rounded">
 				Child 1
 			</vwc-list-item>
 			<vwc-list-expansion-panel>
-				<vwc-list-item slot="header">
+				<vwc-list-item slot="header" shape="rounded">
 					Child 2
 				</vwc-list-item>
-				<vwc-list-item>
+				<vwc-list-item shape="rounded">
 					Grand child 1
 				</vwc-list-item>
-				<vwc-list-item>
+				<vwc-list-item shape="rounded">
 					Grand child 2
 				</vwc-list-item>
 			</vwc-list-expansion-panel>

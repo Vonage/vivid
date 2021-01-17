@@ -21,7 +21,8 @@ const
 		"@vonage/vwc-chips"						// Dependency not available (from MWC)
 	],
 	ALWAYS_INCLUDE = [
-		{ name: "@vonage/vvd-core", export_as: "VVDCore" }
+		{ name: "@vonage/vvd-core", export_as: "VVDCore" },
+		{ name: "@vonage/vvd-context", export_as: "VVDContext" }
 	];
 
 const
@@ -76,7 +77,7 @@ const packageJsonProperty = kefir
 			version: fp.pipe(fp.map(fp.get('version')), (arr)=> arr.sort(semverCmp), fp.last)(packages),
 			dependencies:
 				packages
-					.map(({ name, version }) => ({ [name]: `^${version}` }))
+					.map(({ name, version }) => ({ [name]: `${version}` }))
 					.reduce((ac, line) => Object.assign(ac, line)),
 			component_map
 		});

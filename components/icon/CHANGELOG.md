@@ -1,3 +1,34 @@
+## [1.0.2](https://github.com/vonage/vivid/compare/v1.0.1...v1.0.2) (2021-01-15)
+
+
+
+## [1.0.1](https://github.com/vonage/vivid/compare/v1.0.0...v1.0.1) (2021-01-15)
+
+
+
+# [1.0.0](https://github.com/vonage/vivid/compare/v0.19.1...v1.0.0) (2021-01-13)
+
+
+
+## [0.19.1](https://github.com/vonage/vivid/compare/v0.19.0...v0.19.1) (2021-01-10)
+
+
+### Bug Fixes
+
+* **icon:** fixed israel and usa flags ([#555](https://github.com/vonage/vivid/issues/555)) ([1dde165](https://github.com/vonage/vivid/commit/1dde165d4e3adb4af34f2ffe6669e25e160e0739))
+
+
+
+# [0.19.0](https://github.com/vonage/vivid/compare/v0.17.2...v0.19.0) (2021-01-07)
+
+
+### Features
+
+* **icon:** added annotations ([95cf387](https://github.com/vonage/vivid/commit/95cf387da05ef6ab86a0b95ae31833d7096d2fa4))
+* **icon:** moved icon generation script ([#535](https://github.com/vonage/vivid/issues/535)) ([efaddf4](https://github.com/vonage/vivid/commit/efaddf4f2052e69103bcad96832fd6a320cb0d86))
+
+
+
 ## [0.17.2](https://github.com/vonage/vivid/compare/v0.17.1...v0.17.2) (2020-12-17)
 
 

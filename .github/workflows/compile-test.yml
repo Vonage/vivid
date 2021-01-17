@@ -17,13 +17,17 @@ jobs:
         with:
           token: ${{ secrets.PAT }}
 
-      - name: Setup NodeJS 12
-        uses: actions/setup-node@v1
+      - name: Setup NodeJS 14
+        uses: actions/setup-node@v2
         with:
-          node-version: 12
+          node-version: 14
 
       - name: Install yarn
         run: npm install -g yarn
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
 
       - name: Cache yarn dependencies
         uses: actions/cache@v2
@@ -31,10 +35,8 @@ jobs:
         with:
           path: |
             ${{ steps.yarn-cache-dir-path.outputs.dir }}
-            **\node_modules
-          key: vivid-cache-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            vivid-cache-yarn-
+            **/node_modules
+          key: vivid-cache-yarn-${{ hashFiles('**/package.json') }}
 
       - name: Install packages
         if: steps.yarn-cache.outputs.cache-hit != 'true'
@@ -53,12 +55,16 @@ jobs:
           token: ${{ secrets.PAT }}
 
       - name: Setup NodeJS 14
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: 14
 
       - name: Install yarn
         run: npm install -g yarn
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
 
       - name: Cache yarn dependencies
         uses: actions/cache@v2
@@ -66,10 +72,8 @@ jobs:
         with:
           path: |
             ${{ steps.yarn-cache-dir-path.outputs.dir }}
-            **\node_modules
-          key: vivid-cache-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            vivid-cache-yarn-
+            **/node_modules
+          key: vivid-cache-yarn-${{ hashFiles('**/package.json') }}
 
       - name: Install packages
         if: steps.yarn-cache.outputs.cache-hit != 'true'
@@ -100,12 +104,16 @@ jobs:
           token: ${{ secrets.PAT }}
 
       - name: Setup NodeJS 14
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: 14
 
       - name: Install yarn
         run: npm install -g yarn
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
 
       - name: Cache yarn dependencies
         uses: actions/cache@v2
@@ -113,10 +121,8 @@ jobs:
         with:
           path: |
             ${{ steps.yarn-cache-dir-path.outputs.dir }}
-            **\node_modules
-          key: vivid-cache-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            vivid-cache-yarn-
+            **/node_modules
+          key: vivid-cache-yarn-${{ hashFiles('**/package.json') }}
 
       - name: Install packages
         if: steps.yarn-cache.outputs.cache-hit != 'true'
@@ -147,12 +153,16 @@ jobs:
           token: ${{ secrets.PAT }}
 
       - name: Setup NodeJS 14
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: 14
 
       - name: Install yarn
         run: npm install -g yarn
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
 
       - name: Cache yarn dependencies
         uses: actions/cache@v2
@@ -160,10 +170,8 @@ jobs:
         with:
           path: |
             ${{ steps.yarn-cache-dir-path.outputs.dir }}
-            **\node_modules
-          key: vivid-cache-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            vivid-cache-yarn-
+            **/node_modules
+          key: vivid-cache-yarn-${{ hashFiles('**/package.json') }}
 
       - name: Install packages
         if: steps.yarn-cache.outputs.cache-hit != 'true'
@@ -200,12 +208,16 @@ jobs:
           token: ${{ secrets.PAT }}
 
       - name: Setup NodeJS 14
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: 14
 
       - name: Install yarn
         run: npm install -g yarn
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
 
       - name: Cache yarn dependencies
         uses: actions/cache@v2
@@ -213,10 +225,8 @@ jobs:
         with:
           path: |
             ${{ steps.yarn-cache-dir-path.outputs.dir }}
-            **\node_modules
-          key: vivid-cache-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            vivid-cache-yarn-
+            **/node_modules
+          key: vivid-cache-yarn-${{ hashFiles('**/package.json') }}
 
       - name: Install packages
         if: steps.yarn-cache.outputs.cache-hit != 'true'
@@ -245,7 +255,7 @@ jobs:
             token: ${{ secrets.PAT }}
 
         - name: Setup NodeJS 14
-          uses: actions/setup-node@v1
+          uses: actions/setup-node@v2
           with:
             node-version: 14
 

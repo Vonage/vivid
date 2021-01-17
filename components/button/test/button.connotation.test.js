@@ -1,4 +1,3 @@
-import '../vwc-button.js';
 import {
 	textToDomToParent,
 	isolatedElementsCreation,
@@ -7,16 +6,19 @@ import {
 	assertConnotationAttribute,
 	assertConnotationProperty,
 } from '@vonage/vvd-foundation/test/connotation.test.js';
+import { Connotation } from '@vonage/vvd-foundation/constants';
 
-const VWC_BUTTON = 'vwc-button';
-const CONNOTATIONS_SUPPORTED = [
-	'primary',
-	'cta',
-	'success',
-	'alert',
-	'info',
-	'announcement',
-];
+const CONNOTATIONS_SUPPORTED = Object.values(Connotation).filter((c) =>
+	[
+		Connotation.Primary,
+		Connotation.CTA,
+		Connotation.Success,
+		Connotation.Alert,
+		Connotation.Info,
+		Connotation.Announcement,
+	].includes(c)
+);
+
 const LAYOUTS_AFFECTED = [
 	{
 		layout: 'filled',
@@ -36,7 +38,7 @@ const LAYOUTS_AFFECTED = [
 	},
 ];
 
-describe('button connotation', () => {
+export async function connotationTestCases(COMPONENT_NAME) {
 	const addElement = isolatedElementsCreation();
 
 	for (const { layout, childrenAffected, stylesAffected } of LAYOUTS_AFFECTED) {
@@ -44,7 +46,9 @@ describe('button connotation', () => {
 			it(`should reflect '${connotation}' connotation (attribute) visually, ${layout}`, async () => {
 				const [button] = addElement(
 					textToDomToParent(
-						`<${VWC_BUTTON} layout="${layout}">Button</${VWC_BUTTON}>`
+						`<${COMPONENT_NAME} layout="${layout}" icon="bin">
+							${COMPONENT_NAME === 'vwc-button' ? 'Button' : ''}
+						</${COMPONENT_NAME}>`
 					)
 				);
 				await assertConnotationAttribute({
@@ -58,7 +62,9 @@ describe('button connotation', () => {
 			it(`should reflect '${connotation}' connotation (property) visually, ${layout}`, async () => {
 				const [button] = addElement(
 					textToDomToParent(
-						`<${VWC_BUTTON} layout="${layout}">Button</${VWC_BUTTON}>`
+						`<${COMPONENT_NAME} layout="${layout}" icon="bin">
+							${COMPONENT_NAME === 'vwc-button' ? 'Button' : ''}
+						</${COMPONENT_NAME}>`
 					)
 				);
 				await assertConnotationProperty({
@@ -70,4 +76,4 @@ describe('button connotation', () => {
 			});
 		}
 	}
-});
+}
