@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-carousel",
-	"version": "0.19.0",
+	"version": "1.0.2",
 	"description": "carousel component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/carousel#readme",
 	"license": "ISC",
@@ -24,15 +24,15 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@vonage/vvd-core": "^0.19.0",
-		"@vonage/vvd-style-coupling": "^0.19.0",
-		"@vonage/vwc-icon": "^0.19.0",
+		"@vonage/vvd-core": "^1.0.2",
+		"@vonage/vvd-style-coupling": "^1.0.2",
+		"@vonage/vwc-icon": "^1.0.2",
 		"lit-element": "^2.4.0",
 		"swiper": "^5.4.5",
 		"tslib": "^2.0.3"
 	},
 	"devDependencies": {
 		"@types/swiper": "^5.4.0",
-		"@vonage/vvd-design-tokens": "^0.19.0"
+		"@vonage/vvd-design-tokens": "^1.0.2"
 	}
 }

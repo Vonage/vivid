@@ -97,11 +97,6 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
   border-bottom-left-radius: var(--mdc-shape-small);
   height: var(#{$vvd-text-field-size-block});
 
-  &,
-  & + .mdc-text-field-helper-line {
-    padding: 0 14px;
-  }
-
   .mdc-floating-label,
   .mdc-text-field__input {
     font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
@@ -189,52 +184,6 @@ vwc-notched-outline {
 
 :host(:not([disabled]):hover) :not(.mdc-text-field--invalid):not(.mdc-text-field--focused) vwc-notched-outline {
   --mdc-notched-outline-border-color: var(--mdc-text-field-outlined-hover-border-color);
-}
-
-// helper / error message line
-:host([helper]:not([helper=''])) {
-  .mdc-text-field  + .mdc-text-field-helper-line {
-    margin-top: 7px;
-  }
-}
-
-.mdc-text-field {
-	& + .mdc-text-field-helper-line {
-		--mdc-theme-error: var(--mdc-text-field-ink-color);
-		padding: 0;
-		align-items: center;
-		justify-content: initial;
-		cursor: default;
-
-		.mdc-text-field-helper-icon {
-			display: none;
-			color: var(--mdc-text-field-error-color);
-    }
-
-    .mdc-text-field-helper-text:not(.mdc-text-field-helper-text--validation-msg) {
-			opacity: 1;
-		}
-
-    .mdc-text-field-helper-text::before {
-			display: inline;
-		}
-
-		.spacer {
-			flex-basis: 14px;
-		}
-	}
-
-	+ .mdc-text-field-helper-text--validation-msg {
-    margin-top: 7px;
-
-		.mdc-text-field-helper-icon {
-			display: flex;
-		}
-
-		.spacer {
-			flex-basis: 6px;
-		}
-	}
 }
 
 @include shape-mixins.shape(

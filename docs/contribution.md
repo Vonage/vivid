@@ -22,7 +22,7 @@ If nothing suitable found, please search the [issues](https://github.com/Vonage/
 
 If yet nothing found, create a new feature request / issue. Of course, everyone is more than welcome to contact Vivid team directly too.
 
-Once the action items lands on our table, we'll contact you, do an initial triage of the requirements and the functional spec and some high level archiectural design review.
+Once the action items lands on our table, we'll contact you, do an initial triage of the requirements and the functional spec and some high level architectural design review.
 
 > Important! We do ask to follow this process even if the one who is going to implement the feature is the reporter.
 
@@ -52,8 +52,8 @@ We can't promise that everything will be fixed as we are opinionated people as w
 * run `yarn` in order to build the repo once / bring the dependencies
 * run the following steps as the normal build-and-see flow:
 	* `yarn compile` - builds `css` from `scss`, compiles `ts` into `js` and performs other specific machinery
-	* `yarn start` - builds and runs a Stirybook locally in order to see the demo pages
-	* `yarn watch` - watches for changes in scss / ts files in src folders and recompiles whatever is needed (run in another terminal)
+	* `yarn start` - builds and runs a Storybook locally in order to see the demo pages
+	* `yarn watch` - watches for changes in scss / ts files in src folders and re-compiles changes (runs in another terminal)
 * navigate to `http://localhost:9000` and start hacking with the components in the browser
 * Welcome! :)
 * just before getting into the change, please make sure to branch out from the main branch, giving your branch some good and descriptive name
@@ -61,19 +61,19 @@ We can't promise that everything will be fixed as we are opinionated people as w
 
 #### Coded, looks okay, now quality time
 
-In order to ensure certain level of quality we rely on automation. Our CI will run the checks on each of your pushes to remote, reflecting the current feature queality status.
+In order to ensure certain level of quality we rely on automation. Our CI will run the checks on each of your pushes to remote, reflecting the current feature quality status.
 But even before you code hits the CI you can run some preliminary checks locally:
 - `yarn lint` - runs the linter (ESLint) on your code (I'm always surprised how it finds typos in my best crafted code :))
 - `yarn test:chrome` - runs test suite (Karma); this one will ensure that you've not broken stuff of anyone else; but it is even better to add you own tests to the new functionality too, trust us, you'll sleep better this way :)
 
 > We do have a coverage collected (Istanbul) but its level is not yet enforced at this point. Full report may be found in a nice UI layout in the coverage folder after the tests ran.
 
-> See [here](./dev-ops-process.md) more details about the full 'fork-push-pullrequest-merge-release' flow.
+> See [here](./dev-ops-process.md) more details about the full 'fork-push-pull-request-merge-release' flow.
 
 #### All good, let's deliver
 
 When you happy with what you've done, push your branch to and open a PR back to our main branch.
-Please provide a short adn informative message of what has been done and for what need.
+Please provide a short and informative message of what has been done and for what need.
 We are welcoming any labels if appropriate.
 You may also pick some reviewer for our core team.
 
@@ -93,12 +93,12 @@ Automation is a heart of any vibrant and quickly evolving project, especially wh
 * `yarn test:dev` - builds and runs tests in a watch mode (headful Chromium)
 * `yarn test:chrome` / `yarn test:firefox` / `yarn test:safari` - runs tests on the specified platform
 	* Safari will be running in headful mode, the rest will run headless
-	* no build performed for these ones, if you need - please do `yarn compile` beforehand
+	* no build performed for these, if need - please run `yarn compile` beforehand
 
 ---
 
 ### Useful links
 
 It might also be helpful to read the following docs as well:
-* [Architectural approach](./architecture.md) should give you an intro into the main design principals and decisions implemented in Vivid
-* [Dev/Ops process](./dev-ops-process.md) should give you a more technical and detailed overview of all automated and manual steps in the 'contributing new feature cycle', which apply equally to a contributors within Vivid as well as to guests
+* [Architectural approach](./architecture.md) should give you an intro into the main design principles and decisions implemented in Vivid
+* [Dev/Ops process](./dev-ops-process.md) should give you a more technical and detailed overview of all automated and manual steps in the 'contributing new feature cycle', which apply equally to contributors within Vivid as well as to guests

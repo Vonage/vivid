@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-scheme-select",
-	"version": "0.19.0",
+	"version": "1.0.2",
 	"description": "scheme select component",
 	"author": "yinonov <yinon@hotmail.com>",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/scheme-select#readme",
@@ -25,9 +25,9 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@vonage/vvd-core": "^0.19.0",
-		"@vonage/vvd-scheme": "^0.19.0",
-		"@vonage/vwc-button": "^0.19.0",
+		"@vonage/vvd-core": "^1.0.2",
+		"@vonage/vvd-scheme": "^1.0.2",
+		"@vonage/vwc-button": "^1.0.2",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.3"
 	}

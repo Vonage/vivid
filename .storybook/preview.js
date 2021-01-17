@@ -7,12 +7,17 @@ import vvdContext from '@vonage/vvd-context';
 vvdContext.mount()
 	.then(() => console.info('init Vivid core done (preview frame)'))
 	.catch(e => console.error(e));
+document.body.classList.add('vivid-scope-tmp');
 
 async function run() {
 	setCustomElements(customElements);
 	addParameters({
 		controls: {
 			expanded: true
+		},
+		html: {
+			root: '#root-inner',
+			removeEmptyComments: true,
 		},
 		options: {
 			storySort: {

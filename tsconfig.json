@@ -1,34 +1,5 @@
 {
-	"compilerOptions": {
-		"target": "es2017",
-		"module": "es2015",
-		"moduleResolution": "node",
-		"lib": ["es2017", "dom", "dom.iterable"],
-		"declaration": true,
-		"sourceMap": true,
-		"inlineSources": true,
-		"noFallthroughCasesInSwitch": true,
-		"noImplicitReturns": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
-		"experimentalDecorators": true,
-		"stripInternal": true,
-		"forceConsistentCasingInFileNames": true,
-		// "skipLibCheck": true, // would force consumers to enable this as well
-		"strict": true,
-		"outDir": "./",
-		"baseUrl": "./",
-		"paths": {
-			"@vivid/vvd-*": ["./*.src"],
-			"@vivid/vwc-*": ["./*/src"]
-		},
-		"composite": true,
-		"importHelpers": true,
-		"allowSyntheticDefaultImports": true
-		// "esModuleInterop": true // would force consumers to enable this as well
-	},
-	"include": ["custom_typings/**/*.ts", "src/*.ts"],
-	"exclude": [],
+	"files": [],
 	"references": [
 		{ "path": "common/context" },
 		{ "path": "common/core" },
@@ -39,17 +10,21 @@
 		{ "path": "components/audio" },
 		{ "path": "components/badge" },
 		{ "path": "components/button" },
+		{ "path": "components/calendar" },
 		{ "path": "components/carousel" },
 		{ "path": "components/checkbox" },
 		{ "path": "components/chips" },
 		{ "path": "components/circular-progress" },
 		{ "path": "components/drawer" },
+		{ "path": "components/expansion-panel" },
 		{ "path": "components/fab" },
 		{ "path": "components/file-picker" },
 		{ "path": "components/formfield" },
+		{ "path": "components/helper-message" },
 		{ "path": "components/icon" },
 		{ "path": "components/icon-button" },
 		{ "path": "components/icon-button-toggle" },
+		{ "path": "components/inline" },
 		{ "path": "components/keypad" },
 		{ "path": "components/linear-progress" },
 		{ "path": "components/list" },
@@ -69,8 +44,6 @@
 		{ "path": "components/textfield" },
 		{ "path": "components/theme-switch" },
 		{ "path": "components/top-app-bar" },
-		{ "path": "components/top-app-bar-fixed" },
-		{ "path": "components/expansion-panel" },
-		{ "path": "components/inline" }
+		{ "path": "components/top-app-bar-fixed" }
 	]
 }
