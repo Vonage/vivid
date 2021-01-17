@@ -1,3 +1,11 @@
+:host {
+	--mdc-list-side-padding: 24px;
+}
+
+:host(:not([twoline])) {
+	height: 40px;
+}
+
 :host(:not([left])) > .mdc-list-item__meta {
 	width: 22px;
 	height: 22px;

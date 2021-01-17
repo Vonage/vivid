@@ -1,4 +1,12 @@
+import { Shape } from '@vonage/vvd-foundation/constants';
+	
 export const argTypes = {
+	shape: {
+		control: {
+			type: 'select',
+			options: [...Object.values(Shape).filter(s => [Shape.Rounded].includes(s)), undefined]
+		}
+	},
 	twoline: {
 		control: {
 			type: 'inline-radio',
