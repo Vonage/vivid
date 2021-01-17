@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-menu",
-	"version": "0.19.1",
+	"version": "1.0.2",
 	"description": "menu component",
 	"author": "yinonov <yinon@hotmail.com>",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/menu#readme",
@@ -26,7 +26,7 @@
 	},
 	"dependencies": {
 		"@material/mwc-menu": "^0.20.0",
-		"@vonage/vvd-core": "^0.19.1",
+		"@vonage/vvd-core": "^1.0.2",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.3"
 	}

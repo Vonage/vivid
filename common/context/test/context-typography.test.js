@@ -18,6 +18,9 @@ describe('vvd-context typography', () => {
 					it(`should have '${deviatingElement}' element styled withing '${contextElement}'`, async () => {
 						const iframe = await setupLocalIframe();
 						const d = iframe.contentWindow.document;
+
+						d.body.classList.add('vivid-scope-tmp');
+
 						await vvdContext.mount(d);
 
 						const ce = d.createElement(contextElement);
