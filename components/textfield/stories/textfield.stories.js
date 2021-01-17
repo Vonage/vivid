@@ -26,7 +26,7 @@ export const Disabled = Template.bind({});
 Disabled.args = { outlined: '', disabled: '', label: 'Hint test', value: 'Text' };
 
 export const Validation = Template.bind({});
-Validation.args = { outlined: '', label: 'Numbers only', required: '', pattern: '[0-9]+', validationMessage: 'Numbers only', value: 'Text' };
+Validation.args = { outlined: '', label: 'Numbers only', required: '', pattern: '[0-9]+', validationMessage: 'Numbers only', helper: 'State your numbers, please!', value: 'Text' };
 
 export const Icon = Template.bind({});
 Icon.args = {

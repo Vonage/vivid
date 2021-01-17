@@ -15113,9 +15113,9 @@ sass-graph@2.2.5:
     yargs "^13.3.2"
 
 sass@^1.26.10:
-  version "1.27.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/sass/-/sass-1.27.0.tgz#0657ff674206b95ec20dc638a93e179c78f6ada2"
-  integrity sha1-Blf/Z0IGuV7CDcY4qT4XnHj2raI=
+  version "1.32.4"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/sass/-/sass-1.32.4.tgz#308bf29dd7f53d44ae4f06580e9a910ad9aa411e"
+  integrity sha1-MIvyndf1PUSuTwZYDpqRCtmqQR4=
   dependencies:
     chokidar ">=2.0.0 <4.0.0"
 
