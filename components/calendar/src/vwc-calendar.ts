@@ -18,7 +18,7 @@ export class VWCCalendar extends LitElement {
 	 * assign styles
 	 * @internal
 	 * */
-	static styles = style;
+	static styles = [style];
 
 	#daysLength = 7;
 	#hoursOfDay = [

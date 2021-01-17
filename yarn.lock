@@ -7662,12 +7662,10 @@ depcheck@YonatanKra/depcheck#vivid-version:
     minimatch "^3.0.4"
     multimatch "^4.0.0"
     please-upgrade-node "^3.2.0"
-    query-ast "^1.0.3"
     readdirp "^3.4.0"
     require-package-name "^2.0.1"
     resolve "^1.17.0"
     sass "^1.26.10"
-    scss-parser "^1.0.4"
     vue-template-compiler "^2.6.11"
     yargs "^15.4.0"
 
@@ -16570,11 +16568,6 @@ tslib@^2.0.0, tslib@^2.0.1, tslib@^2.0.3:
   version "2.0.3"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/tslib/-/tslib-2.0.3.tgz#8e0741ac45fc0c226e58a17bfc3e64b9bc6ca61c"
   integrity sha1-jgdBrEX8DCJuWKF7/D5kubxsphw=
-
-tslib@^2.0.2:
-  version "2.1.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/tslib/-/tslib-2.1.0.tgz#da60860f1c2ecaa5703ab7d39bc05b6bf988b97a"
-  integrity sha1-2mCGDxwuyqVwOrfTm8Bba/mIuXo=
 
 tsscmp@1.0.6:
   version "1.0.6"
