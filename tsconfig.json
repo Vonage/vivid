@@ -10,11 +10,13 @@
 		{ "path": "components/audio" },
 		{ "path": "components/badge" },
 		{ "path": "components/button" },
+		{ "path": "components/calendar" },
 		{ "path": "components/carousel" },
 		{ "path": "components/checkbox" },
 		{ "path": "components/chips" },
 		{ "path": "components/circular-progress" },
 		{ "path": "components/drawer" },
+		{ "path": "components/expansion-panel" },
 		{ "path": "components/fab" },
 		{ "path": "components/file-picker" },
 		{ "path": "components/formfield" },
@@ -22,6 +24,7 @@
 		{ "path": "components/icon" },
 		{ "path": "components/icon-button" },
 		{ "path": "components/icon-button-toggle" },
+		{ "path": "components/inline" },
 		{ "path": "components/keypad" },
 		{ "path": "components/linear-progress" },
 		{ "path": "components/list" },
@@ -41,8 +44,6 @@
 		{ "path": "components/textfield" },
 		{ "path": "components/theme-switch" },
 		{ "path": "components/top-app-bar" },
-		{ "path": "components/top-app-bar-fixed" },
-		{ "path": "components/expansion-panel" },
-		{ "path": "components/inline" }
+		{ "path": "components/top-app-bar-fixed" }
 	]
 }

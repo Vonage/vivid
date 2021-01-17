@@ -1,0 +1,35 @@
+{
+	"name": "@vonage/vwc-calendar",
+	"version": "1.0.2",
+	"description": "calendar component",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/calendar#readme",
+	"license": "ISC",
+	"main": "vwc-calendar.js",
+	"module": "vwc-calendar.js",
+	"types": "vwc-calendar.d.ts",
+	"files": [
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/vonage/vivid.git",
+		"directory": "components/calendar"
+	},
+	"scripts": {
+		"test": "echo \"Error: run tests from root\" && exit 1"
+	},
+	"bugs": {
+		"url": "https://github.com/Vonage/vivid/issues"
+	},
+	"dependencies": {
+		"@vonage/vvd-core": "1.0.2",
+		"lit-element": "^2.4.0",
+		"tslib": "^2.0.3"
+	},
+	"devDependencies": {
+		"@vonage/vvd-design-tokens": "1.0.2",
+		"@vonage/vvd-typography": "1.0.2"
+	}
+}
