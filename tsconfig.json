@@ -18,6 +18,7 @@
 		{ "path": "components/fab" },
 		{ "path": "components/file-picker" },
 		{ "path": "components/formfield" },
+		{ "path": "components/helper-message" },
 		{ "path": "components/icon" },
 		{ "path": "components/icon-button" },
 		{ "path": "components/icon-button-toggle" },

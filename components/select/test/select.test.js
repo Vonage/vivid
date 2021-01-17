@@ -295,7 +295,7 @@ describe('select', () => {
 			formElement.helper = 'Helper text';
 			await waitNextTask();
 			const helperElement = formElement.shadowRoot.querySelector(
-				'.mdc-select-helper-text'
+				'vwc-helper-message'
 			);
 			assertComputedStyle(helperElement, await getTypographyStyle('caption'));
 		});

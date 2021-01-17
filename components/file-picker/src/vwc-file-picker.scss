@@ -73,39 +73,6 @@
 	}
 }
 
-//	footer
-.footer {
-	cursor: default;
-
-	.error-icon {
-		display: none;
-		color: var(#{color-semantic.$formfield-label-error-ink});
-	}
-
-	.spacer {
-		flex-basis: 14px;
-	}
-
-	.text {
-		@include typography.typography-cat-shorthand('caption');
-		color: #666;
-	}
-}
-
-.invalid .footer {
-	.error-icon {
-		display: flex;
-	}
-
-	.spacer {
-		flex-basis: 6px;
-	}
-
-	.text {
-		color: #000;
-	}
-}
-
 :host([drop-zone='false']) {
 	display: inline-flex;
 

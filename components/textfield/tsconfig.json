@@ -19,10 +19,13 @@
 			"path": "../../common/style-coupling"
 		},
 		{
-			"path": "../notched-outline"
+			"path": "../helper-message"
 		},
 		{
 			"path": "../icon"
+		},
+		{
+			"path": "../notched-outline"
 		}
 	]
 }

@@ -55,13 +55,36 @@ describe(`Form Association Foundation`, function () {
 			});
 
 			const numberOfNamedInputsBefore = formElement.querySelectorAll(
-				`input[name="${fieldName}]"`
+				`input[name="${fieldName}"]`
 			).length;
 
 			associateWithForm(inputElementWrapper, inputElementWrapper.formElement);
 			expect(numberOfNamedInputsBefore).to.equal(0);
 			expect(
 				formElement.querySelectorAll(`input[name="${fieldName}"]`).length
+			).to.equal(1);
+		});
+
+		it(`should attach a hidden input to form with given type`, function () {
+			const fieldType = 'password';
+			const [formElement] = addElement(
+				textToDomToParent(`<form><div><input></input></div></form>`)
+			);
+			const inputElementWrapper = formElement.children[0];
+
+			setInputElementProperties(inputElementWrapper, {
+				formElement: inputElementWrapper.querySelector('input'),
+				type: fieldType,
+			});
+
+			const numberOfNamedInputsBefore = formElement.querySelectorAll(
+				`input[type="${fieldType}"]`
+			).length;
+
+			associateWithForm(inputElementWrapper, inputElementWrapper.formElement);
+			expect(numberOfNamedInputsBefore).to.equal(0);
+			expect(
+				formElement.querySelectorAll(`input[type="${fieldType}"]`).length
 			).to.equal(1);
 		});
 
