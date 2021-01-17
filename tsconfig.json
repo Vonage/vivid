@@ -1,43 +1,5 @@
 {
-	"compilerOptions": {
-		"target": "es2017",
-		"module": "es2015",
-		"moduleResolution": "node",
-		"lib": [
-			"es2017",
-			"dom",
-			"dom.iterable"
-		],
-		"declaration": true,
-		"sourceMap": true,
-		"inlineSources": true,
-		"noFallthroughCasesInSwitch": true,
-		"noImplicitReturns": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
-		"experimentalDecorators": true,
-		"stripInternal": true,
-		"forceConsistentCasingInFileNames": true,
-		"strict": true,
-		"outDir": "./",
-		"baseUrl": "./",
-		"paths": {
-			"@vivid/vvd-*": [
-				"./*.src"
-			],
-			"@vivid/vwc-*": [
-				"./*/src"
-			]
-		},
-		"composite": true,
-		"importHelpers": true,
-		"allowSyntheticDefaultImports": true
-	},
-	"include": [
-		"custom_typings/**/*.ts",
-		"src/*.ts"
-	],
-	"exclude": [],
+	"files": [],
 	"references": [
 		{
 			"path": "common/context"

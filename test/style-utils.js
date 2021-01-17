@@ -5,7 +5,7 @@ export const topLevelSelectors = {
 	'vwc-textfield': '.mdc-text-field',
 }
 
-function borderRadiusStyles(expectedRadius) {
+export function borderRadiusStyles(expectedRadius) {
 	return {
 		borderTopLeftRadius: expectedRadius,
 		borderTopRightRadius: expectedRadius,
