@@ -14,16 +14,16 @@ const Template = args => html`
 	<vwc-button @click="${handleOpenDialogClick}">Open dialog</vwc-button>
 	<vwc-dialog ...=${spread(args)}>
 		<div>Discard draft?</div>
-		<mwc-button
+		<vwc-button
 			slot="primaryAction"
 			dialogAction="discard">
 			Discard
-		</mwc-button>
-		<mwc-button
+		</vwc-button>
+		<vwc-button
 			slot="secondaryAction"
 			dialogAction="cancel">
 			Cancel
-		</mwc-button>
+		</vwc-button>
 	</vwc-dialog>
 `;
 
