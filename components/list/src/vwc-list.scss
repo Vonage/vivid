@@ -2,6 +2,7 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 
 :host {
+	--mdc-menu-item-height: 40px;
 	--mdc-list-item-meta-size: 16px;
 	--mdc-ripple-color: var(#{scheme-variables.$vvd-color-on-base});
 	--mdc-theme-text-hint-on-background: var(

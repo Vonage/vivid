@@ -1,10 +1,12 @@
 import '@vonage/vwc-list';
 import '@vonage/vwc-list/vwc-list-item';
 import {
+	assertComputedStyle,
 	textToDomToParent,
 	waitNextTask,
 	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
+import { borderRadiusStyles, shapeStyles } from '../../../test/style-utils';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	assertListItemDimensions,
@@ -36,14 +38,43 @@ describe('list item', () => {
 		});
 	});
 
-	describe('general styling', async () => {
-		it('should have correct dimensions', async () => {
-			const itemsNum = 3;
-			const actualElements = addElement(
-				buildListOfNItems(itemsNum, VWC_LIST_ITEM)
-			);
+	describe('sizing', () => {
+		let actualElements;
+		const itemsNum = 3;
+		beforeEach(async () => {
+			actualElements = addElement(buildListOfNItems(itemsNum, VWC_LIST_ITEM));
 			await waitNextTask();
-			assertListItemDimensions(actualElements[0].children, itemsNum, 48);
+		});
+
+		it('should have correct size by default', async () => {
+			assertListItemDimensions(actualElements[0].children, itemsNum, 40);
+		});
+
+		it('should have correct size when twoline', async () => {
+			for (let item of actualElements[0].children) item.twoline = true;
+			await waitNextTask();
+			assertListItemDimensions(actualElements[0].children, itemsNum, 64);
+		});
+	});
+
+	describe('shape', () => {
+		let actualElement;
+		beforeEach(async () => {
+			const addedElements = addElement(
+				textToDomToParent(`<${VWC_LIST_ITEM}>Item 0</${VWC_LIST_ITEM}>`)
+			);
+			actualElement = addedElements[0];
+			await waitNextTask();
+		});
+
+		it('should have no shape by default', async () => {
+			assertComputedStyle(actualElement, borderRadiusStyles('0px'));
+		});
+
+		it('should have rounded shape when shape set to rounded', async () => {
+			actualElement.shape = 'rounded';
+			await waitNextTask();
+			assertComputedStyle(actualElement, shapeStyles('rounded'));
 		});
 	});
 
