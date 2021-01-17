@@ -1,5 +1,5 @@
 {
-	"extends": "../../tsconfig.settings.json",
+	"extends": "@vonage/vvd-umbrella/configs/tsconfig.settings.json",
 	"compilerOptions": {
 		"module": "ESNext",
 		"composite": true,
@@ -8,13 +8,5 @@
 		"tsBuildInfoFile": ".tsbuildinfo"
 	},
 	"include": ["src/*.ts"],
-	"exclude": ["src/test/*.ts"],
-	"references": [
-		{
-			"path": "../fonts"
-		},
-		{
-			"path": "../scheme"
-		}
-	]
+	"exclude": ["src/test/*.ts"]
 }

@@ -13,6 +13,7 @@
 		"directory": "components/scheme"
 	},
 	"scripts": {
+		"build:tsc": "tsc",
 		"build": "yarn --cwd ../../ wca:json && node scripts/parseComponentsList.js",
 		"test": "echo \"Error: run tests from root\" && exit 1"
 	},
@@ -24,6 +25,7 @@
 	},
 	"devDependencies": {
 		"@vonage/vvd-design-tokens": "^1.0.2",
-		"lit-element": "^2.4.0"
+		"lit-element": "^2.4.0",
+		"@vonage/vvd-umbrella": "^1.0.2"
 	}
 }

@@ -18,6 +18,7 @@
 		"directory": "commmon/fonts"
 	},
 	"scripts": {
+		"build:tsc": "tsc",
 		"test": "echo \"Error: run tests from root\" && exit 1"
 	},
 	"bugs": {
@@ -28,6 +29,7 @@
 		"tslib": "^2.0.3"
 	},
 	"devDependencies": {
-		"@vonage/vvd-foundation": "^1.0.2"
+		"@vonage/vvd-foundation": "^1.0.2",
+		"@vonage/vvd-umbrella": "^1.0.2"
 	}
 }

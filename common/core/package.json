@@ -18,6 +18,7 @@
 		"directory": "components/core"
 	},
 	"scripts": {
+		"build:tsc": "tsc",
 		"test": "echo \"Error: run tests from root\" && exit 1"
 	},
 	"bugs": {
@@ -26,6 +27,7 @@
 	"dependencies": {
 		"@vonage/vvd-fonts": "^1.0.2",
 		"@vonage/vvd-scheme": "^1.0.2",
+		"@vonage/vvd-umbrella": "^1.0.2",
 		"tslib": "^2.0.3"
 	}
 }

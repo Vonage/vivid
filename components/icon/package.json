@@ -19,6 +19,7 @@
 		"directory": "components/icon"
 	},
 	"scripts": {
+		"build:tsc": "tsc --allowJs --emitDeclarationOnly -d ./src/vwc-icon.js",
 		"test": "echo \"Error: run tests from root\" && exit 1",
 		"generate-icon-resolver": "node ./build/vwc-icon-resolver-factory.js",
 		"build": "tsc --allowJs --emitDeclarationOnly -d ./src/vwc-icon.js && yarn generate-icon-resolver"
@@ -34,7 +35,8 @@
 	},
 	"devDependencies": {
 		"aws-sdk": "^2.730.0",
-		"minimist": "^1.2.5"
+		"minimist": "^1.2.5",
+		"@vonage/vvd-umbrella": "^1.0.2"
 	},
 	"engines": {
 		"node": ">=v12.0.0"
