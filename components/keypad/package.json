@@ -1,34 +1,39 @@
 {
-	"name": "@vonage/vwc-keypad",
-	"version": "1.0.2",
-	"description": "Web Component vwc-keypad following open-wc recommendations for Vonage Vivid",
-	"author": "Dwane <Dwane.Hemmings@vonage.com>",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/keypad#readme",
-	"license": "ISC",
-	"main": "vwc-keypad.js",
-	"module": "vwc-keypad.js",
-	"files": [
-		"src",
-		"*.js",
-		"*.ts",
-		"*.map"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/keypad"
-	},
-	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1"
-	},
-	"bugs": {
-		"url": "https://github.com/Vonage/vivid/issues"
-	},
-	"dependencies": {
-		"@vonage/vvd-style-coupling": "^1.0.2",
-		"@vonage/vwc-button": "^1.0.2",
-		"@vonage/vwc-textfield": "^1.0.2",
-		"lit-element": "^2.4.0",
-		"tslib": "^2.0.3"
-	}
+  "name": "@vonage/vwc-keypad",
+  "version": "1.0.2",
+  "description": "Web Component vwc-keypad following open-wc recommendations for Vonage Vivid",
+  "author": "Dwane <Dwane.Hemmings@vonage.com>",
+  "homepage": "https://github.com/Vonage/vivid/tree/master/components/keypad#readme",
+  "license": "ISC",
+  "main": "vwc-keypad.js",
+  "module": "vwc-keypad.js",
+  "files": [
+    "src",
+    "*.js",
+    "*.ts",
+    "*.map"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vonage/vivid.git",
+    "directory": "components/keypad"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build:style-modules": "workbox-style-modules",
+    "build": "yarn run build:style-modules"
+  },
+  "bugs": {
+    "url": "https://github.com/Vonage/vivid/issues"
+  },
+  "dependencies": {
+    "@vonage/vvd-style-coupling": "^1.0.2",
+    "@vonage/vwc-button": "^1.0.2",
+    "@vonage/vwc-textfield": "^1.0.2",
+    "lit-element": "^2.4.0",
+    "tslib": "^2.0.3"
+  },
+  "devDependencies": {
+    "@vonage/vvd-workbox": "^1.0.0"
+  }
 }

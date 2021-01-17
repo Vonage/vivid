@@ -1,39 +1,42 @@
 {
-	"name": "@vonage/vwc-file-picker",
-	"version": "1.0.2",
-	"description": "File/s picker component",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/upload#readme",
-	"license": "ISC",
-	"main": "vwc-file-picker.js",
-	"module": "vwc-file-picker.js",
-	"files": [
-		"*.js",
-		"*.ts",
-		"*.map"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/file-picker"
-	},
-	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1"
-	},
-	"bugs": {
-		"url": "https://github.com/Vonage/vivid/issues"
-	},
-	"dependencies": {
-		"@vonage/vvd-core": "^1.0.2",
-		"@vonage/vvd-foundation": "^1.0.2",
-		"@vonage/vvd-style-coupling": "^1.0.2",
-		"@vonage/vwc-badge": "^1.0.2",
-		"@vonage/vwc-button": "^1.0.2",
-		"@vonage/vwc-icon": "^1.0.2",
-		"lit-element": "^2.4.0",
-		"tslib": "^2.0.3"
-	},
-	"devDependencies": {
-		"@vonage/vvd-design-tokens": "^1.0.2",
-		"@vonage/vvd-typography": "^1.0.2"
-	}
+  "name": "@vonage/vwc-file-picker",
+  "version": "1.0.2",
+  "description": "File/s picker component",
+  "homepage": "https://github.com/Vonage/vivid/tree/master/components/upload#readme",
+  "license": "ISC",
+  "main": "vwc-file-picker.js",
+  "module": "vwc-file-picker.js",
+  "files": [
+    "*.js",
+    "*.ts",
+    "*.map"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vonage/vivid.git",
+    "directory": "components/file-picker"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build:style-modules": "workbox-style-modules",
+    "build": "yarn run build:style-modules"
+  },
+  "bugs": {
+    "url": "https://github.com/Vonage/vivid/issues"
+  },
+  "dependencies": {
+    "@vonage/vvd-core": "^1.0.2",
+    "@vonage/vvd-foundation": "^1.0.2",
+    "@vonage/vvd-style-coupling": "^1.0.2",
+    "@vonage/vwc-badge": "^1.0.2",
+    "@vonage/vwc-button": "^1.0.2",
+    "@vonage/vwc-icon": "^1.0.2",
+    "lit-element": "^2.4.0",
+    "tslib": "^2.0.3"
+  },
+  "devDependencies": {
+    "@vonage/vvd-design-tokens": "^1.0.2",
+    "@vonage/vvd-typography": "^1.0.2",
+    "@vonage/vvd-workbox": "^1.0.0"
+  }
 }

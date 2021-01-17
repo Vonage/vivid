@@ -19,7 +19,9 @@
     "directory": "components/badge"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build:style-modules": "workbox-style-modules",
+    "build": "yarn run build:style-modules"
   },
   "bugs": {
     "url": "https://github.com/Vonage/vivid/issues"
@@ -32,6 +34,7 @@
   },
   "devDependencies": {
     "@vonage/vvd-design-tokens": "^1.0.2",
-    "@vonage/vvd-typography": "^1.0.2"
+    "@vonage/vvd-typography": "^1.0.2",
+    "@vonage/vvd-workbox": "^1.0.0"
   }
 }

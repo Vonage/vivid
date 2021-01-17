@@ -1,36 +1,39 @@
 {
-	"name": "@vonage/vwc-tab-bar",
-	"version": "1.0.2",
-	"description": "tab bar component",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/tab-bar#readme",
-	"license": "ISC",
-	"main": "vwc-tab-bar.js",
-	"module": "vwc-tab-bar.js",
-	"files": [
-		"*.js",
-		"*.ts",
-		"*.map"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/tab-bar"
-	},
-	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1"
-	},
-	"bugs": {
-		"url": "https://github.com/Vonage/vivid/issues"
-	},
-	"dependencies": {
-		"@material/mwc-tab": "^0.20.0",
-		"@material/mwc-tab-bar": "^0.20.0",
-		"@vonage/vvd-core": "^1.0.2",
-		"@vonage/vvd-style-coupling": "^1.0.2",
-		"lit-element": "^2.4.0",
-		"tslib": "^2.0.3"
-	},
-	"devDependencies": {
-		"@vonage/vvd-typography": "^1.0.2"
-	}
+  "name": "@vonage/vwc-tab-bar",
+  "version": "1.0.2",
+  "description": "tab bar component",
+  "homepage": "https://github.com/Vonage/vivid/tree/master/components/tab-bar#readme",
+  "license": "ISC",
+  "main": "vwc-tab-bar.js",
+  "module": "vwc-tab-bar.js",
+  "files": [
+    "*.js",
+    "*.ts",
+    "*.map"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vonage/vivid.git",
+    "directory": "components/tab-bar"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build:style-modules": "workbox-style-modules",
+    "build": "yarn run build:style-modules"
+  },
+  "bugs": {
+    "url": "https://github.com/Vonage/vivid/issues"
+  },
+  "dependencies": {
+    "@material/mwc-tab": "^0.20.0",
+    "@material/mwc-tab-bar": "^0.20.0",
+    "@vonage/vvd-core": "^1.0.2",
+    "@vonage/vvd-style-coupling": "^1.0.2",
+    "lit-element": "^2.4.0",
+    "tslib": "^2.0.3"
+  },
+  "devDependencies": {
+    "@vonage/vvd-typography": "^1.0.2",
+    "@vonage/vvd-workbox": "^1.0.0"
+  }
 }

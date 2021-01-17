@@ -1,22 +1,25 @@
 {
-	"name": "@vonage/vvd-typography",
-	"version": "1.0.2",
-	"description": "> TODO: description",
-	"author": "yinonov <yinon@hotmail.com>",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/typography#readme",
-	"license": "ISC",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/typography"
-	},
-	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1"
-	},
-	"bugs": {
-		"url": "https://github.com/Vonage/vivid/issues"
-	},
-	"devDependencies": {
-		"@vonage/vvd-design-tokens": "^1.0.2"
-	}
+  "name": "@vonage/vvd-typography",
+  "version": "1.0.2",
+  "description": "> TODO: description",
+  "author": "yinonov <yinon@hotmail.com>",
+  "homepage": "https://github.com/Vonage/vivid/tree/master/components/typography#readme",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vonage/vivid.git",
+    "directory": "components/typography"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build:style-modules": "workbox-style-modules",
+    "build": "yarn run build:style-modules"
+  },
+  "bugs": {
+    "url": "https://github.com/Vonage/vivid/issues"
+  },
+  "devDependencies": {
+    "@vonage/vvd-design-tokens": "^1.0.2",
+    "@vonage/vvd-workbox": "^1.0.0"
+  }
 }

@@ -1,42 +1,44 @@
 {
-	"name": "@vonage/vwc-icon",
-	"version": "1.0.2",
-	"description": "icon component",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/icon#readme",
-	"license": "ISC",
-	"main": "./src/vwc-icon.js",
-	"types": "./src/vwc-icon.d.ts",
-	"exports": "./src/vwc-icon.js",
-	"type": "module",
-	"files": [
-		"src",
-		"*.js",
-		"*.map"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/icon"
-	},
-	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1",
-		"generate-icon-resolver": "node ./build/vwc-icon-resolver-factory.js",
-		"build": "tsc --allowJs --emitDeclarationOnly -d ./src/vwc-icon.js && yarn generate-icon-resolver"
-	},
-	"bugs": {
-		"url": "https://github.com/Vonage/vivid/issues"
-	},
-	"dependencies": {
-		"@vonage/vvd-core": "^1.0.2",
-		"kefir": "^3.8.7",
-		"lit-element": "^2.4.0",
-		"tslib": "^2.0.3"
-	},
-	"devDependencies": {
-		"aws-sdk": "^2.730.0",
-		"minimist": "^1.2.5"
-	},
-	"engines": {
-		"node": ">=v12.0.0"
-	}
+  "name": "@vonage/vwc-icon",
+  "version": "1.0.2",
+  "description": "icon component",
+  "homepage": "https://github.com/Vonage/vivid/tree/master/components/icon#readme",
+  "license": "ISC",
+  "main": "./src/vwc-icon.js",
+  "types": "./src/vwc-icon.d.ts",
+  "exports": "./src/vwc-icon.js",
+  "type": "module",
+  "files": [
+    "src",
+    "*.js",
+    "*.map"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vonage/vivid.git",
+    "directory": "components/icon"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "generate-icon-resolver": "node ./build/vwc-icon-resolver-factory.js",
+    "build": "yarn run build:style-modules && tsc --allowJs --emitDeclarationOnly -d ./src/vwc-icon.js && yarn generate-icon-resolver",
+    "build:style-modules": "workbox-style-modules"
+  },
+  "bugs": {
+    "url": "https://github.com/Vonage/vivid/issues"
+  },
+  "dependencies": {
+    "@vonage/vvd-core": "^1.0.2",
+    "kefir": "^3.8.7",
+    "lit-element": "^2.4.0",
+    "tslib": "^2.0.3"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.730.0",
+    "minimist": "^1.2.5",
+    "@vonage/vvd-workbox": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=v12.0.0"
+  }
 }

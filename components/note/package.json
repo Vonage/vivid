@@ -1,36 +1,39 @@
 {
-	"name": "@vonage/vwc-note",
-	"version": "1.0.2",
-	"description": "Note component",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/note#readme",
-	"license": "ISC",
-	"main": "vwc-note.js",
-	"module": "vwc-note.js",
-	"files": [
-		"*.js",
-		"*.ts",
-		"*.map"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/note"
-	},
-	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1"
-	},
-	"bugs": {
-		"url": "https://github.com/Vonage/vivid/issues"
-	},
-	"dependencies": {
-		"@vonage/vvd-core": "^1.0.2",
-		"@vonage/vvd-foundation": "^1.0.2",
-		"@vonage/vwc-icon": "^1.0.2",
-		"lit-element": "^2.4.0",
-		"tslib": "^2.0.3"
-	},
-	"devDependencies": {
-		"@vonage/vvd-design-tokens": "^1.0.2",
-		"@vonage/vvd-typography": "^1.0.2"
-	}
+  "name": "@vonage/vwc-note",
+  "version": "1.0.2",
+  "description": "Note component",
+  "homepage": "https://github.com/Vonage/vivid/tree/master/components/note#readme",
+  "license": "ISC",
+  "main": "vwc-note.js",
+  "module": "vwc-note.js",
+  "files": [
+    "*.js",
+    "*.ts",
+    "*.map"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vonage/vivid.git",
+    "directory": "components/note"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build:style-modules": "workbox-style-modules",
+    "build": "yarn run build:style-modules"
+  },
+  "bugs": {
+    "url": "https://github.com/Vonage/vivid/issues"
+  },
+  "dependencies": {
+    "@vonage/vvd-core": "^1.0.2",
+    "@vonage/vvd-foundation": "^1.0.2",
+    "@vonage/vwc-icon": "^1.0.2",
+    "lit-element": "^2.4.0",
+    "tslib": "^2.0.3"
+  },
+  "devDependencies": {
+    "@vonage/vvd-design-tokens": "^1.0.2",
+    "@vonage/vvd-typography": "^1.0.2",
+    "@vonage/vvd-workbox": "^1.0.0"
+  }
 }

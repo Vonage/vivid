@@ -1,31 +1,36 @@
 {
-	"name": "@vonage/vwc-notched-outline",
-	"version": "1.0.2",
-	"description": "notched-outline component",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/notched-outline#readme",
-	"license": "ISC",
-	"main": "vwc-notched-outline.js",
-	"module": "vwc-notched-outline.js",
-	"files": [
-		"src",
-		"*.js",
-		"*.ts",
-		"*.map"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/notched-outline"
-	},
-	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1"
-	},
-	"bugs": {
-		"url": "https://github.com/Vonage/vivid/issues"
-	},
-	"dependencies": {
-		"@material/mwc-notched-outline": "^0.20.0",
-		"lit-element": "^2.4.0",
-		"tslib": "^2.0.3"
-	}
+  "name": "@vonage/vwc-notched-outline",
+  "version": "1.0.2",
+  "description": "notched-outline component",
+  "homepage": "https://github.com/Vonage/vivid/tree/master/components/notched-outline#readme",
+  "license": "ISC",
+  "main": "vwc-notched-outline.js",
+  "module": "vwc-notched-outline.js",
+  "files": [
+    "src",
+    "*.js",
+    "*.ts",
+    "*.map"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vonage/vivid.git",
+    "directory": "components/notched-outline"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build:style-modules": "workbox-style-modules",
+    "build": "yarn run build:style-modules"
+  },
+  "bugs": {
+    "url": "https://github.com/Vonage/vivid/issues"
+  },
+  "dependencies": {
+    "@material/mwc-notched-outline": "^0.20.0",
+    "lit-element": "^2.4.0",
+    "tslib": "^2.0.3"
+  },
+  "devDependencies": {
+    "@vonage/vvd-workbox": "^1.0.0"
+  }
 }

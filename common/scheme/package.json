@@ -1,29 +1,31 @@
 {
-	"name": "@vonage/vvd-scheme",
-	"version": "1.0.2",
-	"description": "Vivid scheme management service",
-	"author": "yinonov <yinon@hotmail.com>",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/scheme#readme",
-	"license": "ISC",
-	"main": "vvd-scheme.js",
-	"module": "vvd-scheme.js",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/scheme"
-	},
-	"scripts": {
-		"build": "yarn --cwd ../../ wca:json && node scripts/parseComponentsList.js",
-		"test": "echo \"Error: run tests from root\" && exit 1"
-	},
-	"bugs": {
-		"url": "https://github.com/Vonage/vivid/issues"
-	},
-	"dependencies": {
-		"tslib": "^2.0.3"
-	},
-	"devDependencies": {
-		"@vonage/vvd-design-tokens": "^1.0.2",
-		"lit-element": "^2.4.0"
-	}
+  "name": "@vonage/vvd-scheme",
+  "version": "1.0.2",
+  "description": "Vivid scheme management service",
+  "author": "yinonov <yinon@hotmail.com>",
+  "homepage": "https://github.com/Vonage/vivid/tree/master/components/scheme#readme",
+  "license": "ISC",
+  "main": "vvd-scheme.js",
+  "module": "vvd-scheme.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vonage/vivid.git",
+    "directory": "components/scheme"
+  },
+  "scripts": {
+    "build": "yarn run build:style-modules && yarn --cwd ../../ wca:json && node scripts/parseComponentsList.js",
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build:style-modules": "workbox-style-modules"
+  },
+  "bugs": {
+    "url": "https://github.com/Vonage/vivid/issues"
+  },
+  "dependencies": {
+    "tslib": "^2.0.3"
+  },
+  "devDependencies": {
+    "@vonage/vvd-design-tokens": "^1.0.2",
+    "lit-element": "^2.4.0",
+    "@vonage/vvd-workbox": "^1.0.0"
+  }
 }

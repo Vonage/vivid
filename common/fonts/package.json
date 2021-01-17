@@ -1,33 +1,36 @@
 {
-	"name": "@vonage/vvd-fonts",
-	"version": "1.0.2",
-	"description": "Vivid fonts initialisation service",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/common/fonts",
-	"license": "ISC",
-	"main": "vvd-fonts.js",
-	"module": "vvd-fonts.js",
-	"files": [
-		"*.js",
-		"*.d.ts",
-		"*.js.map",
-		"*.css"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/vonage/vivid.git",
-		"directory": "commmon/fonts"
-	},
-	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1"
-	},
-	"bugs": {
-		"url": "https://github.com/Vonage/vivid/issues"
-	},
-	"dependencies": {
-		"lit-element": "^2.4.0",
-		"tslib": "^2.0.3"
-	},
-	"devDependencies": {
-		"@vonage/vvd-foundation": "^1.0.2"
-	}
+  "name": "@vonage/vvd-fonts",
+  "version": "1.0.2",
+  "description": "Vivid fonts initialisation service",
+  "homepage": "https://github.com/Vonage/vivid/tree/master/common/fonts",
+  "license": "ISC",
+  "main": "vvd-fonts.js",
+  "module": "vvd-fonts.js",
+  "files": [
+    "*.js",
+    "*.d.ts",
+    "*.js.map",
+    "*.css"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vonage/vivid.git",
+    "directory": "commmon/fonts"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build:style-modules": "workbox-style-modules",
+    "build": "yarn run build:style-modules"
+  },
+  "bugs": {
+    "url": "https://github.com/Vonage/vivid/issues"
+  },
+  "dependencies": {
+    "lit-element": "^2.4.0",
+    "tslib": "^2.0.3"
+  },
+  "devDependencies": {
+    "@vonage/vvd-foundation": "^1.0.2",
+    "@vonage/vvd-workbox": "^1.0.0"
+  }
 }

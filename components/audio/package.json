@@ -1,29 +1,34 @@
 {
-	"name": "@vonage/vwc-audio",
-	"version": "1.0.2",
-	"description": "Plays audio files",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/audio#readme",
-	"license": "ISC",
-	"main": "./vwc-audio.js",
-	"files": [
-		"*.js",
-		"*.ts",
-		"*.map"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/audio"
-	},
-	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1"
-	},
-	"bugs": {
-		"url": "https://github.com/Vonage/vivid/issues"
-	},
-	"dependencies": {
-		"@types/kefir": "^3.8.5",
-		"@vonage/vwc-media-controller": "^1.0.2",
-		"kefir": "^3.8.7"
-	}
+  "name": "@vonage/vwc-audio",
+  "version": "1.0.2",
+  "description": "Plays audio files",
+  "homepage": "https://github.com/Vonage/vivid/tree/master/components/audio#readme",
+  "license": "ISC",
+  "main": "./vwc-audio.js",
+  "files": [
+    "*.js",
+    "*.ts",
+    "*.map"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vonage/vivid.git",
+    "directory": "components/audio"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build:style-modules": "workbox-style-modules",
+    "build": "yarn run build:style-modules"
+  },
+  "bugs": {
+    "url": "https://github.com/Vonage/vivid/issues"
+  },
+  "dependencies": {
+    "@types/kefir": "^3.8.5",
+    "@vonage/vwc-media-controller": "^1.0.2",
+    "kefir": "^3.8.7"
+  },
+  "devDependencies": {
+    "@vonage/vvd-workbox": "^1.0.0"
+  }
 }

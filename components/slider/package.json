@@ -1,37 +1,40 @@
 {
-	"name": "@vonage/vwc-slider",
-	"version": "1.0.2",
-	"description": "slider component",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/slider#readme",
-	"license": "ISC",
-	"main": "vwc-slider.js",
-	"module": "vwc-slider.js",
-	"files": [
-		"src",
-		"*.js",
-		"*.ts",
-		"*.map"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/slider"
-	},
-	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1"
-	},
-	"bugs": {
-		"url": "https://github.com/Vonage/vivid/issues"
-	},
-	"dependencies": {
-		"@material/mwc-slider": "^0.20.0",
-		"@vonage/vvd-core": "^1.0.2",
-		"@vonage/vvd-foundation": "^1.0.2",
-		"@vonage/vvd-style-coupling": "^1.0.2",
-		"lit-element": "^2.4.0",
-		"tslib": "^2.0.3"
-	},
-	"devDependencies": {
-		"@vonage/vvd-typography": "^1.0.2"
-	}
+  "name": "@vonage/vwc-slider",
+  "version": "1.0.2",
+  "description": "slider component",
+  "homepage": "https://github.com/Vonage/vivid/tree/master/components/slider#readme",
+  "license": "ISC",
+  "main": "vwc-slider.js",
+  "module": "vwc-slider.js",
+  "files": [
+    "src",
+    "*.js",
+    "*.ts",
+    "*.map"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vonage/vivid.git",
+    "directory": "components/slider"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build:style-modules": "workbox-style-modules",
+    "build": "yarn run build:style-modules"
+  },
+  "bugs": {
+    "url": "https://github.com/Vonage/vivid/issues"
+  },
+  "dependencies": {
+    "@material/mwc-slider": "^0.20.0",
+    "@vonage/vvd-core": "^1.0.2",
+    "@vonage/vvd-foundation": "^1.0.2",
+    "@vonage/vvd-style-coupling": "^1.0.2",
+    "lit-element": "^2.4.0",
+    "tslib": "^2.0.3"
+  },
+  "devDependencies": {
+    "@vonage/vvd-typography": "^1.0.2",
+    "@vonage/vvd-workbox": "^1.0.0"
+  }
 }

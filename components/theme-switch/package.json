@@ -1,34 +1,39 @@
 {
-	"name": "@vonage/vwc-theme-switch",
-	"version": "1.0.2",
-	"description": "scheme switch component",
-	"author": "yinonov <yinon@hotmail.com>",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/theme-switch#readme",
-	"license": "ISC",
-	"main": "vwc-theme-switch.js",
-	"module": "vwc-theme-switch.js",
-	"files": [
-		"src",
-		"*.js",
-		"*.ts",
-		"*.map"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/theme-switch"
-	},
-	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1"
-	},
-	"bugs": {
-		"url": "https://github.com/Vonage/vivid/issues"
-	},
-	"dependencies": {
-		"@vonage/vvd-core": "^1.0.2",
-		"@vonage/vvd-scheme": "^1.0.2",
-		"@vonage/vwc-switch": "^1.0.2",
-		"lit-element": "^2.4.0",
-		"tslib": "^2.0.3"
-	}
+  "name": "@vonage/vwc-theme-switch",
+  "version": "1.0.2",
+  "description": "scheme switch component",
+  "author": "yinonov <yinon@hotmail.com>",
+  "homepage": "https://github.com/Vonage/vivid/tree/master/components/theme-switch#readme",
+  "license": "ISC",
+  "main": "vwc-theme-switch.js",
+  "module": "vwc-theme-switch.js",
+  "files": [
+    "src",
+    "*.js",
+    "*.ts",
+    "*.map"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vonage/vivid.git",
+    "directory": "components/theme-switch"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build:style-modules": "workbox-style-modules",
+    "build": "yarn run build:style-modules"
+  },
+  "bugs": {
+    "url": "https://github.com/Vonage/vivid/issues"
+  },
+  "dependencies": {
+    "@vonage/vvd-core": "^1.0.2",
+    "@vonage/vvd-scheme": "^1.0.2",
+    "@vonage/vwc-switch": "^1.0.2",
+    "lit-element": "^2.4.0",
+    "tslib": "^2.0.3"
+  },
+  "devDependencies": {
+    "@vonage/vvd-workbox": "^1.0.0"
+  }
 }
