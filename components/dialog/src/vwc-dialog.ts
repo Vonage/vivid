@@ -12,7 +12,7 @@ declare global {
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-MWCButton.styles = [styleCoupling, mwcDialogStyle, style];
+MwcDialog.styles = [styleCoupling, mwcDialogStyle, style];
 
 @customElement('vwc-dialog')
 export class VwcDialog extends MwcDialog {
