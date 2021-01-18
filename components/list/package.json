@@ -1,45 +1,45 @@
 {
-  "name": "@vonage/vwc-list",
-  "version": "1.0.3",
-  "description": "list and list item components",
-  "homepage": "https://github.com/Vonage/vivid/tree/master/components/list#readme",
-  "license": "ISC",
-  "main": "vwc-list.js",
-  "module": "vwc-list.js",
-  "files": [
-    "src",
-    "*.js",
-    "*.ts",
-    "*.map"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/vonage/vivid.git",
-    "directory": "components/list"
-  },
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1",
-    "build:typescript": "tsc --listEmittedFiles",
-    "build:style-modules": "umbrella-style-modules",
-    "build": "yarn run build:style-modules && yarn run build:typescript"
-  },
-  "bugs": {
-    "url": "https://github.com/Vonage/vivid/issues"
-  },
-  "dependencies": {
-    "@material/mwc-list": "^0.20.0",
-    "@vonage/vvd-core": "^1.0.2",
-    "@vonage/vvd-foundation": "^1.0.2",
-    "@vonage/vvd-style-coupling": "^1.0.2",
-    "@vonage/vwc-expansion-panel": "^1.0.2",
-    "@vonage/vwc-icon": "^1.0.2",
-    "lit-element": "^2.4.0",
-    "tslib": "^2.0.3"
-  },
-  "devDependencies": {
-    "@vonage/vvd-design-tokens": "^1.0.2",
-    "@vonage/vvd-typography": "^1.0.2",
-    "@vonage/vvd-umbrella": "^1.0.2",
-    "typescript": "^4.1.3"
-  }
+	"name": "@vonage/vwc-list",
+	"version": "1.0.3",
+	"description": "list and list item components",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/list#readme",
+	"license": "ISC",
+	"main": "vwc-list.js",
+	"module": "vwc-list.js",
+	"files": [
+		"src",
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/vonage/vivid.git",
+		"directory": "components/list"
+	},
+	"scripts": {
+		"test": "echo \"Error: run tests from root\" && exit 1",
+		"build:typescript": "tsc --listEmittedFiles",
+		"build:style-modules": "umbrella-style-modules",
+		"build": "yarn run build:style-modules && yarn run build:typescript"
+	},
+	"bugs": {
+		"url": "https://github.com/Vonage/vivid/issues"
+	},
+	"dependencies": {
+		"@material/mwc-list": "^0.20.0",
+		"@vonage/vvd-core": "^1.0.3",
+		"@vonage/vvd-foundation": "^1.0.3",
+		"@vonage/vvd-style-coupling": "^1.0.3",
+		"@vonage/vwc-expansion-panel": "^1.0.3",
+		"@vonage/vwc-icon": "^1.0.3",
+		"lit-element": "^2.4.0",
+		"tslib": "^2.0.3"
+	},
+	"devDependencies": {
+		"@vonage/vvd-design-tokens": "^1.0.3",
+		"@vonage/vvd-typography": "^1.0.3",
+		"@vonage/vvd-umbrella": "^1.0.3",
+		"typescript": "^4.1.3"
+	}
 }

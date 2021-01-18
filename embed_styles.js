@@ -38,7 +38,7 @@ kefir
 				return {
 					content: _.merge(package, {
 						"devDependencies": {
-							[UMBRELLA_PACKAGE_NAME]: "^1.0.2",
+							[UMBRELLA_PACKAGE_NAME]: "^1.0.3",
 							"typescript": "^4.1.3",
 						},
 						"scripts": {

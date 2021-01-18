@@ -1,42 +1,42 @@
 {
-  "name": "@vonage/vwc-button",
-  "version": "1.0.3",
-  "description": "button component",
-  "homepage": "https://github.com/Vonage/vivid/tree/master/components/button#readme",
-  "license": "ISC",
-  "main": "vwc-button.js",
-  "module": "vwc-button.js",
-  "files": [
-    "*.js",
-    "*.ts",
-    "*.map"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/vonage/vivid.git",
-    "directory": "components/button"
-  },
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1",
-    "build:typescript": "tsc --listEmittedFiles",
-    "build:style-modules": "umbrella-style-modules",
-    "build": "yarn run build:style-modules && yarn run build:typescript"
-  },
-  "bugs": {
-    "url": "https://github.com/Vonage/vivid/issues"
-  },
-  "dependencies": {
-    "@material/mwc-button": "^0.20.0",
-    "@vonage/vvd-core": "^1.0.2",
-    "@vonage/vvd-foundation": "^1.0.2",
-    "@vonage/vvd-style-coupling": "^1.0.2",
-    "@vonage/vwc-icon": "^1.0.2",
-    "lit-element": "^2.4.0",
-    "tslib": "^2.0.3"
-  },
-  "devDependencies": {
-    "@vonage/vvd-typography": "^1.0.2",
-    "@vonage/vvd-umbrella": "^1.0.2",
-    "typescript": "^4.1.3"
-  }
+	"name": "@vonage/vwc-button",
+	"version": "1.0.3",
+	"description": "button component",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/button#readme",
+	"license": "ISC",
+	"main": "vwc-button.js",
+	"module": "vwc-button.js",
+	"files": [
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/vonage/vivid.git",
+		"directory": "components/button"
+	},
+	"scripts": {
+		"test": "echo \"Error: run tests from root\" && exit 1",
+		"build:typescript": "tsc --listEmittedFiles",
+		"build:style-modules": "umbrella-style-modules",
+		"build": "yarn run build:style-modules && yarn run build:typescript"
+	},
+	"bugs": {
+		"url": "https://github.com/Vonage/vivid/issues"
+	},
+	"dependencies": {
+		"@material/mwc-button": "^0.20.0",
+		"@vonage/vvd-core": "^1.0.3",
+		"@vonage/vvd-foundation": "^1.0.3",
+		"@vonage/vvd-style-coupling": "^1.0.3",
+		"@vonage/vwc-icon": "^1.0.3",
+		"lit-element": "^2.4.0",
+		"tslib": "^2.0.3"
+	},
+	"devDependencies": {
+		"@vonage/vvd-typography": "^1.0.3",
+		"@vonage/vvd-umbrella": "^1.0.3",
+		"typescript": "^4.1.3"
+	}
 }
