@@ -67,11 +67,11 @@ export class VWCTab extends MWCTab {
 	}
 
 	_handleClick() {
-		super.handleRippleFocus();
-		super.mdcFoundation.handleClick();
+		this.handleRippleFocus();
+		this.mdcFoundation.handleClick();
 	}
 
 	_handleBlur() {
-		super.handleRippleBlur();
+		this.handleRippleBlur();
 	}
 }

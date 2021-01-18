@@ -1,8 +1,12 @@
 @forward './vwc-tab-coupling';
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 
 :host {
   --mdc-tab-height: 44px;
-  --mdc-tab-horizontal-padding: 20px;
+  --mdc-tab-horizontal-padding: 24px;
+  --mdc-tab-text-label-color-default: var(
+		#{scheme-variables.$vvd-color-contrast-tinted}
+	);
   flex: initial;
 }
 
@@ -11,7 +15,24 @@
 }
 
 .vvd-icon {
-  margin-inline-end: 12px;
   height: 20px;
   width: 20px;
+}
+
+:host([label]) {
+  .vvd-icon {
+    margin-inline-end: 12px;
+  }
+}
+
+:host([icon]:not([label])) {
+  .mdc-tab {
+    min-width: auto;
+  }
+}
+
+:host(:not([active])) {
+  .vvd-icon {
+    color: var(--mdc-tab-text-label-color-default);
+  }
 }

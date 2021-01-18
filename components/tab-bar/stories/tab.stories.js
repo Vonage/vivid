@@ -20,8 +20,11 @@ const Template = args => html`
 export const Basic = Template.bind({});
 Basic.args = { label: 'Tab' }
 
-export const Icon = Template.bind({});
-Icon.args = { icon: 'chat', label: 'Tab' }
+export const WithIcon = Template.bind({});
+WithIcon.args = { icon: 'chat', label: 'Tab' }
+
+export const IconOnly = Template.bind({});
+IconOnly.args = { icon: 'chat' }
 
 function handleInteraction() {
   console.log('MDCTab:interacted event');

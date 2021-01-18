@@ -1,0 +1,5 @@
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+
+:host {
+  border-bottom: 1px solid var(#{scheme-variables.$vvd-color-contrast-soft});;
+}
