@@ -16,7 +16,7 @@
 		color: var(#{sem-col.$formfield-label-error-ink});
 	}
 
-	.helper-text {
+	#helper-text {
 		margin-inline-start: 16px;
 		overflow: hidden;
 		white-space: nowrap;
@@ -32,7 +32,7 @@
 		flex-shrink: 0;
 	}
 
-	.helper-text {
+	#helper-text {
 		margin-inline-start: 4px;
 	}
 }
