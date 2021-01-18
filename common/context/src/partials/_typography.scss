@@ -8,7 +8,7 @@
     @include typography.typography-cat-shorthand('body-1');
   }
 
-	.vivid-scope-tmp {
+	.vivid-scope {
 		h1 {
 			@include typography.typography-cat-shorthand('headline-1');
 		}
