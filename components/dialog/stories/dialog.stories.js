@@ -13,7 +13,7 @@ export default {
 const Template = args => html`
 	<vwc-button @click="${handleOpenDialogClick}">Open dialog</vwc-button>
 	<vwc-dialog ...=${spread(args)}>
-		<div>Discard draft?</div>
+		<div>This is the modal's content.</div>
 		<vwc-button
 			slot="primaryAction"
 			dialogAction="discard">
@@ -29,6 +29,12 @@ const Template = args => html`
 
 export const Basic = Template.bind({});
 Basic.args = { id: 'dialog-a' };
+
+export const Heading = Template.bind({});
+Heading.args = { id: 'dialog-a', heading: 'Hello Modal!'};
+
+export const Stacked = Template.bind({});
+Stacked.args = { id: 'dialog-a', stacked: ''};
 
 function handleOpenDialogClick(e) {
 	e.target.parentNode.querySelector('#dialog-a').show();
