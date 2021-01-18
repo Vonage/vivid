@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-expansion-panel",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "> TODO: description",
 	"author": "yinonov <yinon@hotmail.com>",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/expansion-panel#readme",
@@ -26,7 +26,7 @@
 	},
 	"dependencies": {
 		"@material/mwc-base": "0.20.0",
-		"lit-element": "^2.4.0",
-		"tslib": "^2.1.0"
+		"lit-element": "2.4.0",
+		"tslib": "2.1.0"
 	}
 }
