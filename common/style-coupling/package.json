@@ -13,6 +13,7 @@
 		"directory": "components/style-coupling"
 	},
 	"scripts": {
+		"build:tsc": "tsc",
 		"test": "echo \"Error: run tests from root\" && exit 1"
 	},
 	"bugs": {
@@ -24,6 +25,7 @@
 	"devDependencies": {
 		"@vonage/vvd-design-tokens": "^1.0.2",
 		"@vonage/vvd-foundation": "^1.0.2",
-		"lit-element": "^2.4.0"
+		"lit-element": "^2.4.0",
+		"@vonage/vvd-umbrella":  "^1.0.2"
 	}
 }

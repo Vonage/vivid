@@ -18,6 +18,7 @@
 		"directory": "components/button"
 	},
 	"scripts": {
+		"build:tsc": "tsc",
 		"build:styles": "node ../../scripts/sass-render/new-sass-render.js",
 		"build:typescript": "tsc -b",
 		"build": "yarn build:styles",

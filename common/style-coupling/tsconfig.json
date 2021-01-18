@@ -8,10 +8,5 @@
 		"tsBuildInfoFile": ".tsbuildinfo"
 	},
 	"include": ["src/*.ts"],
-	"exclude": ["src/test/*.ts"],
-	"references": [
-		{
-			"path": "../scheme"
-		}
-	]
+	"exclude": ["src/test/*.ts"]
 }
