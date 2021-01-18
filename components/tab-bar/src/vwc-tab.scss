@@ -1,5 +1,17 @@
 @forward './vwc-tab-coupling';
 
+:host {
+  --mdc-tab-height: 44px;
+  --mdc-tab-horizontal-padding: 20px;
+  flex: initial;
+}
+
 .mdc-tab {
   font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
+}
+
+.vvd-icon {
+  margin-inline-end: 12px;
+  height: 20px;
+  width: 20px;
 }
