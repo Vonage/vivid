@@ -62,6 +62,7 @@ export class VWCTextArea extends MWCTextArea {
 		const text = isError ? this.validationMessage : this.helper;
 
 		return html`<vwc-helper-message
+			id="heper-text"
 			class="helper-message"
 			?disabled="${this.disabled}"
 			?is-error="${isError}"

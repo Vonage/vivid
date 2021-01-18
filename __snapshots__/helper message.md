@@ -4,13 +4,12 @@
 
 ```html
 <vwc-icon
-  aria-describedby="helper-text"
   class="helper-icon"
   size="small"
   type="info-negative"
 >
 </vwc-icon>
-<span id="helper-text">
+<span class="helper-text">
   <slot>
   </slot>
 </span>
@@ -21,13 +20,12 @@
 
 ```html
 <vwc-icon
-  aria-describedby="helper-text"
   class="helper-icon"
   size="small"
   type="info-negative"
 >
 </vwc-icon>
-<span id="helper-text">
+<span class="helper-text">
   <slot>
   </slot>
 </span>

@@ -32,13 +32,8 @@ export class VWCHelperMessage extends LitElement {
 
 	protected render(): TemplateResult {
 		return html`
-			<vwc-icon
-				class="helper-icon"
-				type="info-negative"
-				size="small"
-				aria-describedby="helper-text"
-			></vwc-icon>
-			<span id="helper-text"><slot></slot></span>
+			<vwc-icon class="helper-icon" type="info-negative" size="small"></vwc-icon>
+			<span class="helper-text"><slot></slot></span>
 		`;
 	}
 }
