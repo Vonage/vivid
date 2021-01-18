@@ -15,6 +15,7 @@
 		{ "path": "components/checkbox" },
 		{ "path": "components/chips" },
 		{ "path": "components/circular-progress" },
+		{ "path": "components/dialog" },
 		{ "path": "components/drawer" },
 		{ "path": "components/expansion-panel" },
 		{ "path": "components/fab" },

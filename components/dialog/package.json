@@ -1,0 +1,32 @@
+{
+	"name": "@vonage/vwc-dialog",
+	"version": "1.0.3",
+	"description": "dialog component",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/dialog#readme",
+	"license": "ISC",
+	"main": "vwc-dialog.js",
+	"module": "vwc-dialog.js",
+	"files": [
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/vonage/vivid.git",
+		"directory": "components/dialog"
+	},
+	"scripts": {
+		"test": "echo \"Error: run tests from root\" && exit 1"
+	},
+	"bugs": {
+		"url": "https://github.com/Vonage/vivid/issues"
+	},
+	"dependencies": {
+		"@material/mwc-dialog": "^0.20.0",
+		"@vonage/vvd-foundation": "^1.0.3",
+		"@vonage/vvd-style-coupling": "^1.0.3",
+		"lit-element": "^2.4.0",
+		"tslib": "^2.0.3"
+	}
+}
