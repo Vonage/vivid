@@ -3,6 +3,7 @@ import {
 	requestSubmit,
 	submitOnEnter,
 } from '../form-association';
+
 import {
 	textToDomToParent,
 	randomAlpha,
@@ -371,6 +372,11 @@ describe(`Form Association Foundation`, function () {
 
 			dispatchKeyEvent(keyName);
 			expect(otherFormSubmitted).to.equal(1);
+		});
+
+		it(`should not throw if cannot find a form`, function() {
+			textAreaElement.setAttribute('form', 'noneExistentForId');
+			expect(dispatchKeyEvent(keyName)).to.equal(undefined);
 		});
 	});
 });
