@@ -15,8 +15,15 @@
 }
 
 .vvd-icon {
+  color: var(--mdc-tab-text-label-color-default);
   height: 20px;
   width: 20px;
+}
+
+:host([active]) {
+  .vvd-icon {
+    color: var(--mdc-theme-primary);
+  }
 }
 
 :host([label]) {
@@ -31,8 +38,16 @@
   }
 }
 
-:host(:not([active])) {
+:host([disabled]) {
+  --mdc-theme-primary: var(
+    #{scheme-variables.$vvd-color-contrast-soft}
+  );
+  --mdc-tab-text-label-color-default: var(
+    #{scheme-variables.$vvd-color-contrast-soft}
+  );
+  pointer-events: none;
+
   .vvd-icon {
-    color: var(--mdc-tab-text-label-color-default);
+    color: var(#{scheme-variables.$vvd-color-contrast-soft});
   }
 }

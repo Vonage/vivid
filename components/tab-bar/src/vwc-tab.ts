@@ -1,5 +1,5 @@
 import '@vonage/vvd-core';
-import { customElement, html, TemplateResult } from 'lit-element';
+import { customElement, property, html, TemplateResult } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
 import { Tab as MWCTab } from '@material/mwc-tab';
 import { style as vwcTabStyle } from './vwc-tab.css';
@@ -18,6 +18,9 @@ MWCTab.styles = [styleCoupling, mwcTabStyle, vwcTabStyle];
 
 @customElement('vwc-tab')
 export class VWCTab extends MWCTab {
+	@property({ type: Boolean, reflect: true })
+	disabled = false;
+
 	protected renderIcon(): TemplateResult {
 		return html`<vwc-icon
 			class="vvd-icon"
