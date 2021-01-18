@@ -55,11 +55,14 @@ kefir
 				};
 			})
 	])
+	.flatMap(({ filename, content })=>{
+		return kefir
+			.fromNodeCallback((cb)=> writeFile(filename, stringify(content), cb))
+			.map(fp.always(filename));
+	})
 	.log();
 
 	/*.flatMap(()=> {
-		return kefir
-			.fromNodeCallback((cb) => writeFile(filename, JSON.stringify(package, null, '  '), cb))
-			.map(fp.always(filename));
+
 	})*/
 	//.log();
