@@ -61,8 +61,3 @@ kefir
 			.map(fp.always(filename));
 	})
 	.log();
-
-	/*.flatMap(()=> {
-
-	})*/
-	//.log();
