@@ -11372,7 +11372,7 @@ listr2@^3.2.2:
     rxjs "^6.6.3"
     through "^2.3.8"
 
-lit-element@2.4.0, lit-element@^2.3.0, lit-element@^2.3.1, lit-element@^2.4.0:
+lit-element@2.4.0, lit-element@^2.3.0, lit-element@^2.3.1:
   version "2.4.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/lit-element/-/lit-element-2.4.0.tgz#b22607a037a8fc08f5a80736dddf7f3f5d401452"
   integrity sha1-siYHoDeo/Aj1qAc23d9/P11AFFI=
@@ -16301,14 +16301,6 @@ tslib@^1.11.1, tslib@^1.7.1, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha1-zy04vcNKE0vK8QkcQfZhni9nLQA=
 
-<<<<<<< HEAD
-=======
-tslib@^2.0.0, tslib@^2.0.1, tslib@^2.0.3:
-  version "2.1.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/tslib/-/tslib-2.1.0.tgz#da60860f1c2ecaa5703ab7d39bc05b6bf988b97a"
-  integrity sha1-2mCGDxwuyqVwOrfTm8Bba/mIuXo=
-
->>>>>>> fd84e36b610bb964ae704d9df5828af5692597f3
 tsscmp@1.0.6:
   version "1.0.6"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/tsscmp/-/tsscmp-1.0.6.tgz#85b99583ac3589ec4bfef825b5000aa911d605eb"
