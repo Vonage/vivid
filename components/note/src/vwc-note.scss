@@ -39,5 +39,6 @@
 
 	.note-message {
 		@include typography.typography-cat-shorthand('body-2');
+		display: block;
 	}
 }
