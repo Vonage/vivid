@@ -375,7 +375,7 @@ describe(`Form Association Foundation`, function () {
 		});
 
 		it(`should not throw if cannot find a form`, function () {
-			textAreaElement.setAttribute('form', 'noneExistentForId');
+			textAreaElement.setAttribute('form', 'noneExistentFormId');
 			expect(dispatchKeyEvent(keyName)).to.equal(undefined);
 		});
 	});
