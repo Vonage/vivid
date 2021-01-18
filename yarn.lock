@@ -1983,6 +1983,21 @@
   dependencies:
     tslib "^1.9.3"
 
+"@material/button@9.0.0-canary.1c156d69d.0":
+  version "9.0.0-canary.1c156d69d.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/button/-/button-9.0.0-canary.1c156d69d.0.tgz#b35540ed085006d65562ed56fe2b5540d6712712"
+  integrity sha1-s1VA7QhQBtZVYu1W/itVQNZxJxI=
+  dependencies:
+    "@material/density" "9.0.0-canary.1c156d69d.0"
+    "@material/elevation" "9.0.0-canary.1c156d69d.0"
+    "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
+    "@material/ripple" "9.0.0-canary.1c156d69d.0"
+    "@material/rtl" "9.0.0-canary.1c156d69d.0"
+    "@material/shape" "9.0.0-canary.1c156d69d.0"
+    "@material/theme" "9.0.0-canary.1c156d69d.0"
+    "@material/touch-target" "9.0.0-canary.1c156d69d.0"
+    "@material/typography" "9.0.0-canary.1c156d69d.0"
+
 "@material/checkbox@^8.0.0":
   version "8.0.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/checkbox/-/checkbox-8.0.0.tgz#97cea98c4b4d728dadc0e658d7cd15badb184df1"
@@ -2039,6 +2054,25 @@
   version "8.0.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/density/-/density-8.0.0.tgz#f9dc87e5ea035134be5745b00a8bf440d05cca65"
   integrity sha1-+dyH5eoDUTS+V0WwCov0QNBcymU=
+
+"@material/dialog@=9.0.0-canary.1c156d69d.0":
+  version "9.0.0-canary.1c156d69d.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/dialog/-/dialog-9.0.0-canary.1c156d69d.0.tgz#15a0c38d322679f3fcf372eabd21a9c70061f788"
+  integrity sha1-FaDDjTImefP883LqvSGpxwBh94g=
+  dependencies:
+    "@material/animation" "9.0.0-canary.1c156d69d.0"
+    "@material/base" "9.0.0-canary.1c156d69d.0"
+    "@material/button" "9.0.0-canary.1c156d69d.0"
+    "@material/dom" "9.0.0-canary.1c156d69d.0"
+    "@material/elevation" "9.0.0-canary.1c156d69d.0"
+    "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
+    "@material/ripple" "9.0.0-canary.1c156d69d.0"
+    "@material/rtl" "9.0.0-canary.1c156d69d.0"
+    "@material/shape" "9.0.0-canary.1c156d69d.0"
+    "@material/theme" "9.0.0-canary.1c156d69d.0"
+    "@material/touch-target" "9.0.0-canary.1c156d69d.0"
+    "@material/typography" "9.0.0-canary.1c156d69d.0"
+    tslib "^1.9.3"
 
 "@material/dom@8.0.0-canary.01db89053.0":
   version "8.0.0-canary.01db89053.0"
@@ -2269,6 +2303,21 @@
     lit-element "^2.3.0"
     lit-html "^1.1.2"
     tslib "^2.0.1"
+
+"@material/mwc-dialog@^0.20.0":
+  version "0.20.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-dialog/-/mwc-dialog-0.20.0.tgz#3169f71a049c61cfd53d16b761b8313645bdba01"
+  integrity sha1-MWn3GgScYc/VPRa3YbgxNkW9ugE=
+  dependencies:
+    "@material/dialog" "=9.0.0-canary.1c156d69d.0"
+    "@material/dom" "=9.0.0-canary.1c156d69d.0"
+    "@material/mwc-base" "^0.20.0"
+    "@material/mwc-button" "^0.20.0"
+    blocking-elements "^0.1.0"
+    lit-element "^2.3.0"
+    lit-html "^1.1.2"
+    tslib "^2.0.1"
+    wicg-inert "^3.0.0"
 
 "@material/mwc-drawer@^0.20.0":
   version "0.20.0"
@@ -4368,10 +4417,29 @@
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@ungap/promise-all-settled/-/promise-all-settled-1.1.2.tgz#aa58042711d6e3275dd37dc597e5d31e8c290a44"
   integrity sha1-qlgEJxHW4ydd033Fl+XTHowpCkQ=
 
+"@vonage/vvd-core@1.0.2":
+  version "1.0.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@vonage/vvd-core/1.0.2/b76371129ef90c8f42b14a5ca8110836ee4a7544155bdae81aa42066ba8c6b9b#f6f446db5f95708f7073a4dc2bc2fc4473094ae0"
+  integrity sha1-9vRG21+VcI9wc6TcK8L8RHMJSuA=
+  dependencies:
+    "@vonage/vvd-fonts" "^1.0.2"
+    "@vonage/vvd-scheme" "^1.0.2"
+    tslib "^2.0.3"
+
 "@vonage/vvd-design-tokens-properties@^0.5.4":
   version "0.5.4"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@vonage/vvd-design-tokens-properties/0.5.4/7a5aa317678207ddbc2be97ee322d3721f09226dbeb9b7372cb74ced7a6608a4#9f7443829dcc9c7bfee308fe6a4dbdff954b5019"
   integrity sha1-n3RDgp3MnHv+4wj+ak29/5VLUBk=
+
+"@vonage/vvd-design-tokens@1.0.2":
+  version "1.0.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@vonage/vvd-design-tokens/1.0.2/1a87ca9fdbdfce3cc3521b05a5d201b2ed9cabb30e1c599a335c7761cda94d21#2293ee1829383433ada9cc064077e9ec4d3c5ce2"
+  integrity sha1-IpPuGCk4NDOtqcwGQHfp7E08XOI=
+
+"@vonage/vvd-typography@1.0.2":
+  version "1.0.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@vonage/vvd-typography/1.0.2/85dcb6cd7d794937fe042aa22ee3277c16c961dd70a4a8f764db308f4cdf5044#57071c659a20856d21b8f86d8ba72462639c53d9"
+  integrity sha1-VwccZZoghW0huPhti6ckYmOcU9k=
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
@@ -7363,10 +7431,12 @@ depcheck@YonatanKra/depcheck#vivid-version:
     minimatch "^3.0.4"
     multimatch "^4.0.0"
     please-upgrade-node "^3.2.0"
+    query-ast "^1.0.3"
     readdirp "^3.4.0"
     require-package-name "^2.0.1"
     resolve "^1.17.0"
     sass "^1.26.10"
+    scss-parser "^1.0.4"
     vue-template-compiler "^2.6.11"
     yargs "^15.4.0"
 
