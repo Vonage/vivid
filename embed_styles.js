@@ -42,7 +42,7 @@ kefir
 							"typescript": "^4.1.3",
 						},
 						"scripts": {
-							"build:typescript": "tsc",
+							"build:typescript": "tsc --listEmittedFiles",
 							"build:style-modules": "umbrella-style-modules",
 							"build": _([
 								"yarn run build:style-modules",
