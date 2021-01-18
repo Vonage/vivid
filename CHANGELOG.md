@@ -15,6 +15,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
+## [1.0.3](https://github.com/Vonage/vivid/compare/v1.0.2...v1.0.3) (2021-01-18)
+
+
+### Features
+
+* **dialog:** the dialog component ([#580](https://github.com/Vonage/vivid/issues/580)) ([456ac7b](https://github.com/Vonage/vivid/commit/456ac7b742b54c201505b379b5542a6e6c4895ea))
+* **vwc-calendar:** calendar 1st draft ([#564](https://github.com/Vonage/vivid/issues/564)) ([b0c5162](https://github.com/Vonage/vivid/commit/b0c516268b68f3adf9fa40141fcd87e1962a1b22))
+
+
+
+
+
 ## [1.0.2](https://github.com/Vonage/vivid/compare/v1.0.1...v1.0.2) (2021-01-15)
 
 
