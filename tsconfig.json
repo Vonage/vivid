@@ -1,134 +1,50 @@
 {
 	"files": [],
 	"references": [
-		{
-			"path": "common/context"
-		},
-		{
-			"path": "common/core"
-		},
-		{
-			"path": "common/fonts"
-		},
-		{
-			"path": "common/foundation"
-		},
-		{
-			"path": "common/scheme"
-		},
-		{
-			"path": "common/style-coupling"
-		},
-		{
-			"path": "components/audio"
-		},
-		{
-			"path": "components/badge"
-		},
-		{
-			"path": "components/button"
-		},
-		{
-			"path": "components/carousel"
-		},
-		{
-			"path": "components/checkbox"
-		},
-		{
-			"path": "components/chips"
-		},
-		{
-			"path": "components/circular-progress"
-		},
-		{
-			"path": "components/drawer"
-		},
-		{
-			"path": "components/fab"
-		},
-		{
-			"path": "components/file-picker"
-		},
-		{
-			"path": "components/formfield"
-		},
-		{
-			"path": "components/icon"
-		},
-		{
-			"path": "components/icon-button"
-		},
-		{
-			"path": "components/icon-button-toggle"
-		},
-		{
-			"path": "components/keypad"
-		},
-		{
-			"path": "components/linear-progress"
-		},
-		{
-			"path": "components/list"
-		},
-		{
-			"path": "components/media-controller"
-		},
-		{
-			"path": "components/menu"
-		},
-		{
-			"path": "components/mwc-chips"
-		},
-		{
-			"path": "components/notched-outline"
-		},
-		{
-			"path": "components/note"
-		},
-		{
-			"path": "components/radio"
-		},
-		{
-			"path": "components/relative-time"
-		},
-		{
-			"path": "components/scheme-select"
-		},
-		{
-			"path": "components/select"
-		},
-		{
-			"path": "components/slider"
-		},
-		{
-			"path": "components/switch"
-		},
-		{
-			"path": "components/tab-bar"
-		},
-		{
-			"path": "components/textarea"
-		},
-		{
-			"path": "components/textfield"
-		},
-		{
-			"path": "components/theme-switch"
-		},
-		{
-			"path": "components/top-app-bar"
-		},
-		{
-			"path": "components/top-app-bar-fixed"
-		},
-		{
-			"path": "components/expansion-panel"
-		},
-		{
-			"path": "components/inline"
-		},
-		{
-			"path": "components/dialog"
-		}
+		{ "path": "common/context" },
+		{ "path": "common/core" },
+		{ "path": "common/fonts" },
+		{ "path": "common/foundation" },
+		{ "path": "common/scheme" },
+		{ "path": "common/style-coupling" },
+		{ "path": "components/audio" },
+		{ "path": "components/badge" },
+		{ "path": "components/button" },
+		{ "path": "components/calendar" },
+		{ "path": "components/carousel" },
+		{ "path": "components/checkbox" },
+		{ "path": "components/chips" },
+		{ "path": "components/circular-progress" },
+		{ "path": "components/dialog" },
+		{ "path": "components/drawer" },
+		{ "path": "components/expansion-panel" },
+		{ "path": "components/fab" },
+		{ "path": "components/file-picker" },
+		{ "path": "components/formfield" },
+		{ "path": "components/helper-message" },
+		{ "path": "components/icon" },
+		{ "path": "components/icon-button" },
+		{ "path": "components/icon-button-toggle" },
+		{ "path": "components/inline" },
+		{ "path": "components/keypad" },
+		{ "path": "components/linear-progress" },
+		{ "path": "components/list" },
+		{ "path": "components/media-controller" },
+		{ "path": "components/menu" },
+		{ "path": "components/mwc-chips" },
+		{ "path": "components/notched-outline" },
+		{ "path": "components/note" },
+		{ "path": "components/radio" },
+		{ "path": "components/relative-time" },
+		{ "path": "components/scheme-select" },
+		{ "path": "components/select" },
+		{ "path": "components/slider" },
+		{ "path": "components/switch" },
+		{ "path": "components/tab-bar" },
+		{ "path": "components/textarea" },
+		{ "path": "components/textfield" },
+		{ "path": "components/theme-switch" },
+		{ "path": "components/top-app-bar" },
+		{ "path": "components/top-app-bar-fixed" }
 	]
 }
