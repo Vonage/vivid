@@ -26,9 +26,13 @@
   }
 }
 
-:host([label]) {
-  .vvd-icon {
+:host([label]:not([stacked])) {
+  .leading-icon .vvd-icon {
     margin-inline-end: 12px;
+  }
+  
+  .trailing-icon .vvd-icon {
+    margin-inline-start: 12px;
   }
 }
 

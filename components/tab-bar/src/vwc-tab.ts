@@ -21,6 +21,9 @@ export class VWCTab extends MWCTab {
 	@property({ type: Boolean, reflect: true })
 	disabled = false;
 
+	@property({ type: Boolean, reflect: true })
+	trailingIcon = false;
+
 	protected renderIcon(): TemplateResult {
 		return html`<vwc-icon
 			class="vvd-icon"
@@ -29,18 +32,13 @@ export class VWCTab extends MWCTab {
 		></vwc-icon>`;
 	}
 
-	render() {
+	// ! copy & paste code from original mwc tab
+	// ! to replace icon handling
+	render(): TemplateResult {
 		const classes = {
 			'mdc-tab--min-width': this.minWidth,
 			'mdc-tab--stacked': this.stacked,
 		};
-		let iconTemplate = html``;
-		if (this.hasImageIcon || this.icon) {
-			// NOTE: MUST be on same line as spaces will cause vert alignment issues
-			// in IE
-			iconTemplate = this.renderIcon();
-			// <span class="mdc-tab__icon material-icons"><slot name="icon">${this.icon}</slot></span>
-		}
 		let labelTemplate = html``;
 		if (this.label) {
 			labelTemplate = html`<span class="mdc-tab__text-label">${this.label}</span>`;
@@ -61,7 +59,21 @@ export class VWCTab extends MWCTab {
 			@touchcancel="${this.handleRippleDeactivate}"
 		>
 			<span class="mdc-tab__content">
-				${iconTemplate} ${labelTemplate}
+				<span class="leading-icon">
+					<slot name="icon">
+						${(this.hasImageIcon || this.icon) && !this.trailingIcon
+							? this.renderIcon()
+							: ''}
+					</slot>
+				</span>
+				${labelTemplate}
+				<span class="trailing-icon">
+					<slot name="trailingIcon">
+						${(this.hasImageIcon || this.icon) && this.trailingIcon
+							? this.renderIcon()
+							: ''}
+					</slot>
+				</span>
 				${this.isMinWidthIndicator ? this.renderIndicator() : ''}
 			</span>
 			${this.isMinWidthIndicator ? '' : this.renderIndicator()}
@@ -69,12 +81,12 @@ export class VWCTab extends MWCTab {
 		</button>`;
 	}
 
-	_handleClick() {
+	protected _handleClick(): void {
 		this.handleRippleFocus();
 		this.mdcFoundation.handleClick();
 	}
 
-	_handleBlur() {
+	protected _handleBlur(): void {
 		this.handleRippleBlur();
 	}
 }
