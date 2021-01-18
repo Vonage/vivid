@@ -15,7 +15,7 @@
   "scripts": {
     "build": "yarn --cwd ../../ wca:json && node scripts/parseComponentsList.js && yarn run build:style-modules && yarn run build:typescript",
     "test": "echo \"Error: run tests from root\" && exit 1",
-    "build:typescript": "tsc",
+    "build:typescript": "tsc --listEmittedFiles",
     "build:style-modules": "umbrella-style-modules"
   },
   "bugs": {

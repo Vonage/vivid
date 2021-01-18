@@ -12,7 +12,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:typescript": "tsc",
+    "build:typescript": "tsc --listEmittedFiles",
     "build:style-modules": "umbrella-style-modules",
     "build": "yarn run build:style-modules && yarn run build:typescript"
   },
