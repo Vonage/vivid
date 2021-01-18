@@ -1,6 +1,6 @@
 {
   "name": "@vonage/vwc-list",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "list and list item components",
   "homepage": "https://github.com/Vonage/vivid/tree/master/components/list#readme",
   "license": "ISC",

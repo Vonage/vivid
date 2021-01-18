@@ -1,6 +1,6 @@
 {
   "name": "@vonage/vwc-linear-progress",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "linear progress component",
   "author": "yinonov <yinon@hotmail.com>",
   "homepage": "https://github.com/Vonage/vivid/tree/master/components/linear-progress#readme",

@@ -1,6 +1,6 @@
 {
   "name": "@vonage/vwc-audio",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Plays audio files",
   "homepage": "https://github.com/Vonage/vivid/tree/master/components/audio#readme",
   "license": "ISC",

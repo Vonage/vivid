@@ -1,6 +1,6 @@
 {
   "name": "@vonage/vwc-button",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "button component",
   "homepage": "https://github.com/Vonage/vivid/tree/master/components/button#readme",
   "license": "ISC",

@@ -1,6 +1,6 @@
 {
   "name": "@vonage/vwc-file-picker",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "File/s picker component",
   "homepage": "https://github.com/Vonage/vivid/tree/master/components/upload#readme",
   "license": "ISC",

@@ -1,6 +1,6 @@
 {
   "name": "@vonage/vwc-tab-bar",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "tab bar component",
   "homepage": "https://github.com/Vonage/vivid/tree/master/components/tab-bar#readme",
   "license": "ISC",
