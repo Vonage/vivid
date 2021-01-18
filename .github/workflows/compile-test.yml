@@ -271,23 +271,4 @@ jobs:
             path-to-lcov: ./lcov.info
             flag-name: Unit
 
-  coverage-report:
-      strategy:
-        matrix:
-          browser: [chrome]
-
-      needs: [test-chrome]
-      runs-on: ubuntu-20.04
-      steps:
-        - name: Download artifact pass_status_job01
-          uses: actions/download-artifact@v2
-          with:
-            name: ${{matrix.browser}}-coverage
-
-        - uses: 5monkeys/cobertura-action@master
-          with:
-            path: ./coverage.xml
-            repo_token: ${{ secrets.GITHUB_TOKEN }}
-            minimum_coverage: 75
-
 
