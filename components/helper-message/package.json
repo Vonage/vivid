@@ -1,36 +1,41 @@
 {
-	"name": "@vonage/vwc-helper-message",
-	"version": "1.0.2",
-	"description": "[internal] helper message component to be used in textfield / textarea / select / file-picker etc",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/helper-message#readme",
-	"license": "ISC",
-	"main": "vwc-helper-message.js",
-	"module": "vwc-helper-message.js",
-	"files": [
-		"*.js",
-		"*.ts",
-		"*.map"
-	],
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/helper-message"
-	},
-	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1"
-	},
-	"bugs": {
-		"url": "https://github.com/Vonage/vivid/issues"
-	},
-	"dependencies": {
-		"@vonage/vvd-core": "^1.0.2",
-		"@vonage/vvd-foundation": "^1.0.2",
-		"@vonage/vwc-icon": "^1.0.2",
-		"lit-element": "^2.4.0",
-		"tslib": "^2.0.3"
-	},
-	"devDependencies": {
-		"@vonage/vvd-design-tokens": "^1.0.2",
-		"@vonage/vvd-typography": "^1.0.2"
-	}
+  "name": "@vonage/vwc-helper-message",
+  "version": "1.0.2",
+  "description": "[internal] helper message component to be used in textfield / textarea / select / file-picker etc",
+  "homepage": "https://github.com/Vonage/vivid/tree/master/components/helper-message#readme",
+  "license": "ISC",
+  "main": "vwc-helper-message.js",
+  "module": "vwc-helper-message.js",
+  "files": [
+    "*.js",
+    "*.ts",
+    "*.map"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vonage/vivid.git",
+    "directory": "components/helper-message"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "build:typescript": "tsc",
+    "build:style-modules": "umbrella-style-modules",
+    "build": "yarn run build:style-modules && yarn run build:typescript"
+  },
+  "bugs": {
+    "url": "https://github.com/Vonage/vivid/issues"
+  },
+  "dependencies": {
+    "@vonage/vvd-core": "^1.0.2",
+    "@vonage/vvd-foundation": "^1.0.2",
+    "@vonage/vwc-icon": "^1.0.2",
+    "lit-element": "^2.4.0",
+    "tslib": "^2.0.3"
+  },
+  "devDependencies": {
+    "@vonage/vvd-design-tokens": "^1.0.2",
+    "@vonage/vvd-typography": "^1.0.2",
+    "@vonage/vvd-umbrella": "^1.0.2",
+    "typescript": "^4.1.3"
+  }
 }

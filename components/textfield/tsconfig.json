@@ -1,31 +1,15 @@
 {
-	"extends": "../../tsconfig.settings.json",
-	"compilerOptions": {
-		"composite": true,
-		"rootDir": "src",
-		"outDir": ".",
-		"tsBuildInfoFile": ".tsbuildinfo"
-	},
-	"include": ["src/*.ts"],
-	"exclude": ["src/test/*.ts"],
-	"references": [
-		{
-			"path": "../../common/core"
-		},
-		{
-			"path": "../../common/foundation"
-		},
-		{
-			"path": "../../common/style-coupling"
-		},
-		{
-			"path": "../helper-message"
-		},
-		{
-			"path": "../icon"
-		},
-		{
-			"path": "../notched-outline"
-		}
-	]
+  "extends": "@vonage/vvd-umbrella/configs/tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "rootDir": "src",
+    "outDir": ".",
+    "tsBuildInfoFile": ".tsbuildinfo"
+  },
+  "include": [
+    "src/*.ts"
+  ],
+  "exclude": [
+    "src/test/*.ts"
+  ]
 }
