@@ -23,10 +23,10 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@material/mwc-circular-progress": "^0.20.0",
-		"@vonage/vvd-core": "^1.0.2",
-		"@vonage/vvd-style-coupling": "^1.0.2",
+		"@material/mwc-circular-progress": "0.20.0",
+		"@vonage/vvd-core": "1.0.2",
+		"@vonage/vvd-style-coupling": "1.0.2",
 		"lit-element": "^2.4.0",
-		"tslib": "^2.0.3"
+		"tslib": "^2.1.0"
 	}
 }

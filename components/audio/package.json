@@ -23,7 +23,7 @@
 	},
 	"dependencies": {
 		"@types/kefir": "^3.8.5",
-		"@vonage/vwc-media-controller": "^1.0.2",
+		"@vonage/vwc-media-controller": "1.0.2",
 		"kefir": "^3.8.7"
 	}
 }

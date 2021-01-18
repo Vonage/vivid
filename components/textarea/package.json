@@ -23,17 +23,17 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@material/mwc-textarea": "^0.20.0",
-		"@material/mwc-textfield": "^0.20.0",
-		"@vonage/vvd-core": "^1.0.2",
-		"@vonage/vvd-foundation": "^1.0.2",
-		"@vonage/vvd-style-coupling": "^1.0.2",
-		"@vonage/vwc-helper-message": "^1.0.2",
-		"@vonage/vwc-notched-outline": "^1.0.2",
-		"lit-element": "^2.4.0",
-		"tslib": "^2.0.3"
+		"@material/mwc-textarea": "0.20.0",
+		"@material/mwc-textfield": "0.20.0",
+		"@vonage/vvd-core": "1.0.2",
+		"@vonage/vvd-foundation": "1.0.2",
+		"@vonage/vvd-style-coupling": "1.0.2",
+		"@vonage/vwc-helper-message": "1.0.2",
+		"@vonage/vwc-notched-outline": "1.0.2",
+		"lit-element": "2.4.0",
+		"tslib": "2.1.0"
 	},
 	"devDependencies": {
-		"@vonage/vwc-textfield": "^1.0.2"
+		"@vonage/vwc-textfield": "1.0.2"
 	}
 }

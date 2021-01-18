@@ -24,8 +24,8 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@material/mwc-notched-outline": "^0.20.0",
-		"lit-element": "^2.4.0",
-		"tslib": "^2.0.3"
+		"@material/mwc-notched-outline": "0.20.0",
+		"lit-element": "2.4.0",
+		"tslib": "2.1.0"
 	}
 }
