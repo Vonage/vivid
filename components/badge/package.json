@@ -34,14 +34,9 @@
     "tslib": "^2.0.3"
   },
   "devDependencies": {
-<<<<<<< HEAD
     "@vonage/vvd-design-tokens": "^1.0.2",
     "@vonage/vvd-typography": "^1.0.2",
     "@vonage/vvd-umbrella": "^1.0.2",
     "typescript": "^4.1.3"
-=======
-    "@vonage/vvd-design-tokens": "^1.0.3",
-    "@vonage/vvd-typography": "^1.0.3"
->>>>>>> master
   }
 }
