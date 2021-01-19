@@ -10,7 +10,7 @@ standardVersion({
 	bumpFiles: [{ filename: TMP_VERSION_HOLDER, type: 'json' }],
 	packageFiles: [{ filename: CURRENT_VERSION_SOURCE, type: 'json' }],
 	dryRun: false,
-	silent: false,
+	silent: true,
 	skip: {
 		changelog: true,
 		commit: true,
