@@ -49,18 +49,19 @@ const curriedGetStyleDictionaryConfig = R.curry(getStyleDictionaryConfig);
 const baseConfig = curriedGetStyleDictionaryConfig(R.__, 'main');
 const alternateConfig = curriedGetStyleDictionaryConfig(R.__, 'alternate');
 
+
 // PROCESS THE DESIGN TOKENS FOR THE DIFFERENT SCHEMES AND PLATFORMS
 // TODO: [VIV-41] add accessible colors scheme
 export const render = () => {
 	fs.rmdirSync(OUTPUT_FOLDER, { recursive: true });
 
 	['light', 'dark'].forEach(function (scheme) {
-		console.log('\n==============================================');
-		console.log(`\nProcessing: [${scheme}]`);
+
+		console.log(`\n🎨\x1b[2mProcessing: [\x1b[0m\x1b[36m${scheme}\x1b[0m\x1b[2m]`, "\x1b[0m");
 
 		StyleDictionaryPackage.extend(baseConfig(scheme)).buildPlatform('web');
 		StyleDictionaryPackage.extend(alternateConfig(scheme)).buildPlatform('web');
 
-		console.log('\nEnd processing');
+		console.log('\n\x1b[2m================================================================', "\x1b[0m");
 	});
 };
