@@ -17,10 +17,10 @@
 		"directory": "common/design-tokens"
 	},
 	"scripts": {
-		"build": "node src/index.js && yarn run build:style-modules && yarn run build:typescript",
+		"build": "node src/index.js && yarn run build:styles && yarn run build:typescript",
 		"test": "echo \"Error: run tests from root\" && exit 1",
 		"build:typescript": "tsc --listEmittedFiles",
-		"build:style-modules": "umbrella-style-modules"
+		"build:styles": "umbrella-style-modules"
 	},
 	"bugs": {
 		"url": "https://github.com/Vonage/vivid/issues"

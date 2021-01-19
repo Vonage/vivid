@@ -36,7 +36,7 @@
 		"storybook:build": "yarn storybook:vivid:pre && build-storybook -c .storybook -o .out -s ./.storybook/static && yarn storybook:vivid:post",
 		"start": "yarn storybook:vivid:pre && start-storybook -s ./.storybook/static -p 9000",
 		"compile": "lerna run build --stream",
-		"compile:styles": "lerna run build:style-modules --stream",
+		"compile:styles": "lerna run build:styles --stream",
 		"compile:typescript": "lerna run build:typescript --stream",
 		"clean:typescript": "tsc -b --clean",
 		"clean:git": "git clean -xdf",

@@ -13,8 +13,8 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"build:typescript": "tsc --listEmittedFiles",
-		"build:style-modules": "umbrella-style-modules",
-		"build": "yarn run build:style-modules && yarn run build:typescript"
+		"build:styles": "umbrella-style-modules",
+		"build": "yarn run build:styles && yarn run build:typescript"
 	},
 	"author": "",
 	"license": "Apache-2.0",
