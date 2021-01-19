@@ -19,7 +19,7 @@ describe('vvd-context typography', () => {
 						const iframe = await setupLocalIframe();
 						const d = iframe.contentWindow.document;
 
-						d.body.classList.add('vivid-scope-tmp');
+						d.body.classList.add('vivid-scope');
 
 						await vvdContext.mount(d);
 
