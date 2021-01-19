@@ -22,14 +22,8 @@ jobs:
         with:
           node-version: 14
 
-      - name: Obtain release version - test
-        run: |
-          echo "RELEASE_VERSION << $(node ./scripts/suggest-bump.mjs)" >> $GITHUB_ENV
-
       - name: Install yarn
-        run: |
-          echo ${{ env.RELEASE_VERSION }}
-          npm install -g yarn
+        run: npm install -g yarn
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -47,6 +41,11 @@ jobs:
       - name: Install packages
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
+
+      - name: Obtain release version - test
+        run: |
+          echo "RELEASE_VERSION << $(node ./scripts/suggest-bump.mjs)" >> $GITHUB_ENV
+          echo ${{ env.RELEASE_VERSION }}
 
   test-safari:
     needs: cache-yarn
