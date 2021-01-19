@@ -10,6 +10,10 @@ The service is optional, but most likely will be needed in any Vonage applicatio
 
 ### API
 
+Attention! As an initial step, to provide smoother migration and lesser friction with an existing systems (especially those heavily dependent on Volta's legacy), we are scoping most of the Vivid context impact by special class: `vivid-scope`.
+
+Please, put `vivid-scope` class at the root of the DOM tree, that is ready to be styled by Vivid.
+
 #### `mount(target)`
 
 **Description**:
