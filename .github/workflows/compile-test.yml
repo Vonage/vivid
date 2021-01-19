@@ -22,6 +22,11 @@ jobs:
         with:
           node-version: 14
 
+      - name: Obtain release version - test
+        run: |
+          echo "RELEASE_VERSION=$(echo ${ node ./scripts/suggest-bump.mjs })" >> $GITHUB_ENV
+          echo ${{ env.RELEASE_VERSION }}
+
       - name: Install yarn
         run: npm install -g yarn
 
