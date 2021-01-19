@@ -3,7 +3,10 @@
 #### `should have the expected internal contents`
 
 ```html
-<label class="wrapper">
+<label
+  aria-describedby="helper"
+  class="wrapper"
+>
   <div class="content drop-zone part">
     <slot name="dd-hint">
       <span class="dd-hint">

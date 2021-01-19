@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-tab-bar",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "tab bar component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/tab-bar#readme",
 	"license": "ISC",
@@ -25,12 +25,12 @@
 	"dependencies": {
 		"@material/mwc-tab": "^0.20.0",
 		"@material/mwc-tab-bar": "^0.20.0",
-		"@vonage/vvd-core": "^1.0.3",
-		"@vonage/vvd-style-coupling": "^1.0.3",
+		"@vonage/vvd-core": "^1.0.4",
+		"@vonage/vvd-style-coupling": "^1.0.4",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.3"
 	},
 	"devDependencies": {
-		"@vonage/vvd-typography": "^1.0.3"
+		"@vonage/vvd-typography": "^1.0.4"
 	}
 }
