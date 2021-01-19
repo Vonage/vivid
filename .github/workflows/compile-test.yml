@@ -42,12 +42,6 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
 
-      - name: Obtain release version - test
-        run: echo "RELEASE_VERSION=$(node ./scripts/suggest-bump.mjs)" >> $GITHUB_ENV
-
-      - name: Print release version - test
-        run: echo "${{ env.RELEASE_VERSION }}"
-
   test-safari:
     needs: cache-yarn
     runs-on: macOS-latest
