@@ -1,7 +1,14 @@
-# Change Log
+# Changelog
 
-All notable changes to this project will be documented in this file.
-See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [1.1.0](https://github.com/Vonage/vivid/compare/v1.0.4...v1.1.0) (2021-01-19)
+
+
+### Features
+
+* testing stuff ([00aed6a](https://github.com/Vonage/vivid/commit/00aed6a510af379e94f3f18260908ebb252afa00))
+* **autobump:** version automation ([c81eb0a](https://github.com/Vonage/vivid/commit/c81eb0ac24b97df33e94caf0152161a6a9d4f350))
 
 ## [1.0.4](https://github.com/Vonage/vivid/compare/v1.0.3...v1.0.4) (2021-01-19)
 
