@@ -35,7 +35,7 @@ jobs:
 
       # Update to a new version
       - name: Obtain release version
-        run: echo "RELEASE_VERSION=$(echo ${ node ./scripts/suggest-bump.mjs })" >> $GITHUB_ENV
+        run: echo "RELEASE_VERSION=$(node ./scripts/suggest-bump.mjs)" >> $GITHUB_ENV
 
       - name: Bump version to ${{ env.RELEASE_VERSION }}
         run: |
