@@ -43,8 +43,7 @@ function getStyleDictionaryConfig(type, defsFolder, dataFolder) {
 }
 
 export const render = () => {
-	console.log('\n==============================================');
-	console.log('\nProcessing typography variables');
+	console.log(`\n📖\x1b[2mProcessing typography variables`, "\x1b[0m");
 
 	fs.rmdirSync(OUTPUT_FOLDER, { recursive: true });
 	const propertiesFolder = resolve('../../node_modules/@vonage/vvd-design-tokens-properties');
@@ -56,5 +55,5 @@ export const render = () => {
 		StyleDictionaryPackage.extend(dictionaryConfig).buildPlatform('web');
 	}
 
-	console.log('\ntypography processing DONE');
+	console.log('\n\x1b[2m================================================================', "\x1b[0m");
 };

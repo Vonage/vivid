@@ -1,10 +1,12 @@
+@use './constants';
+
 @mixin spacing {
   body {
     margin: 0;
     padding: 0;
 	}
 
-	.vivid-scope-tmp {
+	#{constants.$vivid-scope-class} {
 		pre,
 		code,
 		kbd,

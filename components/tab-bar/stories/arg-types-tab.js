@@ -1,4 +1,16 @@
 export const argTypes = {
+	trailingIcon: {
+		control: {
+			type: 'inline-radio',
+			options: { 'true': '', 'false': undefined }
+		}
+	},
+	disabled: {
+		control: {
+			type: 'inline-radio',
+			options: { 'true': '', 'false': undefined }
+		}
+	},
 	hasImageIcon: {
 		control: {
 			type: 'inline-radio',
