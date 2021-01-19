@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.4](https://github.com/Vonage/vivid/compare/v1.0.3...v1.0.4) (2021-01-19)
+
+
+### Features
+
+* **vwc-helper-message:** iss 578 a11y for helper ([#586](https://github.com/Vonage/vivid/issues/586)) ([5b49f3c](https://github.com/Vonage/vivid/commit/5b49f3cfaf49d70d6f9f02063d2249794481d15f)), closes [#578](https://github.com/Vonage/vivid/issues/578) [#578](https://github.com/Vonage/vivid/issues/578) [#578](https://github.com/Vonage/vivid/issues/578)
+
+
+
+
+
 ## [1.0.3](https://github.com/Vonage/vivid/compare/v1.0.2...v1.0.3) (2021-01-18)
 
 
