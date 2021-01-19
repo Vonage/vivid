@@ -44,7 +44,7 @@ jobs:
 
       - name: Obtain release version - test
         run: |
-          echo "RELEASE_VERSION<<$(node ./scripts/suggest-bump.mjs)" >> $GITHUB_ENV
+          echo "RELEASE_VERSION = $(node ./scripts/suggest-bump.mjs)" >> $GITHUB_ENV
           echo ${{ env.RELEASE_VERSION }}
 
   test-safari:
