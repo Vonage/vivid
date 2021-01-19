@@ -1,3 +1,4 @@
+@use './constants';
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-foundation/scss/variable-names/color-base-variable-names' as color-base;
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
@@ -11,7 +12,7 @@
     color: var(#{scheme-variables.$vvd-color-on-base});
 	}
 
-	.vivid-scope {
+	#{constants.$vivid-scope-class} {
 		a {
 			color: color-base.$purple-600;
 		}
