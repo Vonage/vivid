@@ -70,7 +70,7 @@ export class VWCFilePicker extends LitElement {
 
 	protected render(): TemplateResult {
 		return html`
-			<label class="wrapper">
+			<label class="wrapper" aria-describedby="helper">
 				${this.renderHeader()}
 				<div class="content drop-zone part">
 					<slot name="dd-hint">${this.renderDragNDropHint()}</slot>
@@ -99,7 +99,7 @@ export class VWCFilePicker extends LitElement {
 		const isError = !!this.validationMessage;
 		const text = this.validationMessage || this.helper || '';
 		if (text) {
-			return html`<vwc-helper-message ?is-error="${isError}"
+			return html`<vwc-helper-message id="helper" ?is-error="${isError}"
 				>${text}</vwc-helper-message
 			>`;
 		} else {
