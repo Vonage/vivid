@@ -1,18 +1,21 @@
 ### Introduction
 
 Vivid components are fully taking care of their styling.
-Yet there are usually also a simple native HTML elements in use.
-Those elements should also comply with the Vivid Design System.
+Yet there are also a simple native HTML elements, that should also comply with the Vivid Design System.
 
-For this reason we are providing **Vivid Context** service, responsible of mounting the Vivid styling into a document context.
+For this reason we are providing **Vivid Context** service, responsible of mounting the Vivid styling into a document.
 
 The service is optional, but most likely will be needed in any Vonage application.
+
+> Attention! `vvd-context` uses internally `vvd-core`, which sets up the core services like theming and typography, thus `vvd-context` user may safely omit any own setup of the core.
 
 ### API
 
 Attention! As an initial step, to provide smoother migration and lesser friction with an existing systems (especially those heavily dependent on Volta's legacy), we are scoping most of the Vivid context impact by special class: `vivid-scope`.
 
 Please, put `vivid-scope` class at the root of the DOM tree, that is ready to be styled by Vivid.
+
+> Any new application should just safely put that class on the application DOM root (usually `body`).
 
 #### `mount(target)`
 
@@ -36,13 +39,13 @@ The API is idempotent, the style/s will be mounted only once, even if API called
 import vvdContext from '@vonage/vvd-context';
 ```
 
-#### Mount context to current document scope
+#### Mount context into the current document scope
 
 ```js
 vvdContext.mount();
 ```
 
-#### Mount context to a document of choice
+#### Mount context into a document of choice
 
 ```js
 const shadowRoot = someElement.shadowRoot;
