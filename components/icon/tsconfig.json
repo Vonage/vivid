@@ -1,12 +1,15 @@
 {
-  "extends": "@vonage/vvd-umbrella/configs/tsconfig.json",
-  "compilerOptions": {
-    "composite": true,
-    "rootDir": "src",
-    "outDir": ".",
-    "tsBuildInfoFile": ".tsbuildinfo"
-  },
-  "include": [
-    "src/*.ts"
-  ]
+	"extends": "../../tsconfig.settings.json",
+	"compilerOptions": {
+		"composite": true,
+		"rootDir": "src",
+		"outDir": ".",
+		"tsBuildInfoFile": ".tsbuildinfo"
+	},
+	"include": ["src/*.ts"],
+	"references": [
+		{
+			"path": "../../common/core"
+		}
+	]
 }
