@@ -1,47 +1,45 @@
 @use './constants';
 
-@mixin spacing {
-  body {
-    margin: 0;
-    padding: 0;
+body {
+	margin: 0;
+	padding: 0;
+}
+
+#{constants.$vivid-scope-class} {
+	pre,
+	code,
+	kbd,
+	samp,
+	var {
+		padding: 3px 4px;
+		border-radius: 6px;
 	}
 
-	#{constants.$vivid-scope-class} {
-		pre,
+	pre {
+		overflow: auto;
+
 		code,
 		kbd,
 		samp,
 		var {
-			padding: 3px 4px;
-			border-radius: 6px;
+			padding: initial;
+		}
+	}
+
+	blockquote {
+		margin-left: 0;
+		margin-right: 0;
+		padding: 20px 22px;
+		border-radius: 6px;
+
+		:first-child {
+			margin-block-start: 0;
+			padding-block-start: 0;
 		}
 
-		pre {
-			overflow: auto;
-
-			code,
-			kbd,
-			samp,
-			var {
-				padding: initial;
-			}
-		}
-
-		blockquote {
-			margin-left: 0;
-			margin-right: 0;
-			padding: 20px 22px;
-			border-radius: 6px;
-
-			:first-child {
-				margin-block-start: 0;
-				padding-block-start: 0;
-			}
-
-			:last-child {
-				margin-block-end: 0;
-				padding-block-end: 0;
-			}
+		:last-child {
+			margin-block-end: 0;
+			padding-block-end: 0;
 		}
 	}
 }

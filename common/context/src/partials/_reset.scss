@@ -1,0 +1,11 @@
+* {
+	all: unset;
+	display: revert;
+}
+
+/* preferred box-sizing value */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
