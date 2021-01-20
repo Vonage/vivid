@@ -46,10 +46,10 @@ function getStyleDictionaryConfig() {
 // PROCESS THE DESIGN TOKENS FOR THE DIFFERENT SCHEMES AND PLATFORMS
 // TODO: [VIV-41] add accessible colors scheme
 export const render = () => {
-	console.log('\n==============================================');
-	console.log(`\nProcessing scheme variables coupling`);
+	console.log(`\n🔁\x1b[2mProcessing scheme variables coupling`, "\x1b[0m");
 
 	StyleDictionaryPackage.extend(getStyleDictionaryConfig()).buildPlatform('web');
 
-	console.log('\nEnd processing');
+	console.log('\n\x1b[2m================================================================', "\x1b[0m");
+
 };
