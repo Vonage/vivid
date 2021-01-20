@@ -17,7 +17,10 @@
 		"directory": "components/circular-progress"
 	},
 	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1"
+		"test": "echo \"Error: run tests from root\" && exit 1",
+		"build:typescript": "tsc -b",
+		"build:styles": "umbrella-style-modules",
+		"build": "yarn run build:styles && yarn run build:typescript"
 	},
 	"bugs": {
 		"url": "https://github.com/Vonage/vivid/issues"
@@ -28,5 +31,9 @@
 		"@vonage/vvd-style-coupling": "^1.0.4",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.3"
+	},
+	"devDependencies": {
+		"@vonage/vvd-umbrella": "^1.0.4",
+		"typescript": "^4.1.3"
 	}
 }

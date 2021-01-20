@@ -18,7 +18,10 @@
 		"directory": "components/carousel"
 	},
 	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1"
+		"test": "echo \"Error: run tests from root\" && exit 1",
+		"build:typescript": "tsc -b",
+		"build:styles": "umbrella-style-modules",
+		"build": "yarn run build:styles && yarn run build:typescript"
 	},
 	"bugs": {
 		"url": "https://github.com/Vonage/vivid/issues"
@@ -33,6 +36,8 @@
 	},
 	"devDependencies": {
 		"@types/swiper": "^5.4.0",
-		"@vonage/vvd-design-tokens": "^1.0.4"
+		"@vonage/vvd-design-tokens": "^1.0.4",
+		"@vonage/vvd-umbrella": "^1.0.4",
+		"typescript": "^4.1.3"
 	}
 }
