@@ -11,7 +11,10 @@
 		"directory": "packages/chips"
 	},
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"build:typescript": "tsc -b",
+		"build:styles": "umbrella-style-modules",
+		"build": "yarn run build:styles && yarn run build:typescript"
 	},
 	"author": "",
 	"license": "Apache-2.0",
@@ -23,5 +26,9 @@
 		"lit-element": "^2.3.1",
 		"lit-html": "^1.2.1",
 		"tslib": "^2.0.3"
+	},
+	"devDependencies": {
+		"@vonage/vvd-umbrella": "^1.0.4",
+		"typescript": "^4.1.3"
 	}
 }

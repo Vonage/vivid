@@ -1,5 +1,5 @@
 import { CSSResult } from 'lit-element';
-import { preSchemeLoadingCssText } from './pre-scheme-loading.css.js';
+import { preSchemeLoadingCssText } from './pre-scheme-loading.css';
 import { PredefinedScheme } from './vvd-scheme-foundation';
 
 type ModuleType =
