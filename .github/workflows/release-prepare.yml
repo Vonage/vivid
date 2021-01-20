@@ -3,7 +3,7 @@ name: Prepare Vivid for release
 on:
   push:
     tags:
-      - release-*
+      - release
 
 jobs:
   prepare-verify:
@@ -19,6 +19,9 @@ jobs:
           ref: master
           token: ${{ secrets.CI_AT }}
 
+      - name: Delete temporary trigger tag
+        run: git push origin --delete release
+
       - name: Use Node.js 14
         uses: actions/setup-node@v2
         with:
@@ -27,29 +30,12 @@ jobs:
       - name: Install yarn
         run: npm install -g yarn
 
-      - name: Get yarn cache directory path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
-
-      - name: Cache yarn dependencies
-        uses: actions/cache@v2
-        id: yarn-cache
-        with:
-          path: |
-            ${{ steps.yarn-cache-dir-path.outputs.dir }}
-            **/node_modules
-          key: vivid-cache-yarn-${{ hashFiles('**/package.json') }}
-
       - name: Install dependencies
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
 
       # Update to a new version
-      - name: Extract release version
-        run: echo "RELEASE_VERSION=$(echo ${GITHUB_REF##*/release-})" >> $GITHUB_ENV
-
-      - name: Delete temporary trigger tag
-        run: git push origin --delete release-${{ env.RELEASE_VERSION }}
+      - name: Obtain release version
+        run: echo "RELEASE_VERSION=$(node ./scripts/suggest-bump.mjs)" >> $GITHUB_ENV
 
       - name: Bump version to ${{ env.RELEASE_VERSION }}
         run: |
