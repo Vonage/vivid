@@ -192,3 +192,12 @@ vwc-notched-outline {
 		pill: 24px,
 	)
 );
+
+// autofill enhancements
+
+::slotted(input) {
+	padding: 0;
+	background: transparent;
+	border: none;
+	outline: none;
+}

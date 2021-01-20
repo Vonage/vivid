@@ -111,16 +111,16 @@ export class VWCTextField extends MWCTextField {
 
 	// autofill refactor enhancements
 
-	#lightFormElement: HTMLInputElement = this.createInputElement();
-
 	constructor() {
 		super();
-		Object.defineProperty(this, 'formElement', { value: this.#lightFormElement });
+		Object.defineProperty(this, 'formElement', {
+			value: this.createInputElement(),
+		});
 	}
 
 	connectedCallback() {
 		super.connectedCallback();
-		this.appendChild(this.#lightFormElement);
+		this.appendChild(this.formElement);
 	}
 
 	protected renderInput(): TemplateResult {
@@ -135,7 +135,7 @@ export class VWCTextField extends MWCTextField {
 	}
 
 	private updateInputElement(): void {
-		const fe = this.#lightFormElement;
+		const fe = this.formElement;
 
 		//	event listeners
 		fe.oninput = this.handleInputChange.bind(this);
