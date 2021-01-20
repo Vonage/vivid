@@ -33,7 +33,7 @@ type TextfieldShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 MWCTextField.styles = [styleCoupling, mwcTextFieldStyle, vwcTextFieldStyle];
-
+const INPUT_ELEMENT_SLOT_NAME = "formInputElement";
 @customElement('vwc-textfield')
 export class VWCTextField extends MWCTextField {
 	@property({ type: Boolean, reflect: true })
@@ -44,6 +44,7 @@ export class VWCTextField extends MWCTextField {
 
 	@property({ type: String, reflect: true })
 	form: string | undefined;
+	#lightFormElement: HTMLInputElement | null = null;
 
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
@@ -109,9 +110,31 @@ export class VWCTextField extends MWCTextField {
 		>`;
 	}
 
-	protected renderInput(shouldRenderHelperText: boolean): TemplateResult {
-		super.renderInput(shouldRenderHelperText);
-
-		return html`<slot name="formInputElement"></slot>`;
+	protected renderInput(): TemplateResult {
+		this.formElement.setAttribute('value', this.value);
+		return html`<slot name="${INPUT_ELEMENT_SLOT_NAME}"></slot>`;
 	}
+
+	connectedCallback() {
+		super.connectedCallback();
+
+		if (!this.formElement) {
+			if (this.#lightFormElement = createInputElement()) {
+				this.#lightFormElement.oninput = (event) => {
+					this.value = (event.target as unknown as HTMLInputElement).value;
+				};
+				Object.defineProperty(this, 'formElement', {
+					get: () => { return this.#lightFormElement }
+				});
+				this.appendChild(this.formElement);
+			}
+		}
+	}
+}
+
+function createInputElement(): HTMLInputElement {
+	const element = document.createElement('input');
+	element.setAttribute('slot', INPUT_ELEMENT_SLOT_NAME);
+	element.classList.add('mdc-text-field__input');
+	return element;
 }
