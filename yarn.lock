@@ -7431,12 +7431,10 @@ depcheck@YonatanKra/depcheck#vivid-version:
     minimatch "^3.0.4"
     multimatch "^4.0.0"
     please-upgrade-node "^3.2.0"
-    query-ast "^1.0.3"
     readdirp "^3.4.0"
     require-package-name "^2.0.1"
     resolve "^1.17.0"
     sass "^1.26.10"
-    scss-parser "^1.0.4"
     vue-template-compiler "^2.6.11"
     yargs "^15.4.0"
 
@@ -15167,7 +15165,14 @@ shelljs@^0.8.3, shelljs@^0.8.4:
     interpret "^1.0.0"
     rechoir "^0.6.2"
 
-showdown@^1.9.1:
+showdown-htmlescape@^0.1.9:
+  version "0.1.9"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/showdown-htmlescape/-/showdown-htmlescape-0.1.9.tgz#4299676a209016c9fbdabe60c38408eef3eb1800"
+  integrity sha1-QplnaiCQFsn72r5gw4QI7vPrGAA=
+  dependencies:
+    showdown "^1.2.3"
+
+showdown@^1.2.3, showdown@^1.9.1:
   version "1.9.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/showdown/-/showdown-1.9.1.tgz#134e148e75cd4623e09c21b0511977d79b5ad0ef"
   integrity sha1-E04UjnXNRiPgnCGwURl315ta0O8=

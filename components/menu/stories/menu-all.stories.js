@@ -11,6 +11,6 @@ export default {
 	argTypes
 }
 
-export { Basic } from './menu-basic.js';
+export { WithDivItems, WithVWCListItem, WithVWCListItemComplex } from './menu-basic.js';
 
-// export { cascading } from './menu-cascading.js';
+// export { Cascading } from './menu-cascading.js';
