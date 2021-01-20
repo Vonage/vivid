@@ -2,8 +2,8 @@ export default {
 	sourcePath: '../readme.md',
 	outputName: 'context-introduction',
 	story: {
-		title: 'Core/Context/Intoduction',
-		name: 'Intoduction',
+		title: 'Core/Context/Introduction',
+		name: 'Introduction',
 		parameters: {
 			options: {
 				showPanel: false,

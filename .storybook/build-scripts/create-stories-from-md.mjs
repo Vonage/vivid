@@ -26,7 +26,7 @@ async function build() {
 	for (const configPath of configPaths) {
 		await processJsConfiguration(configPath);
 	}
-	console.log(`... transformation of MDs to stories DONE (${Math.round(performance.now() - startTime)}ms)${os.EOL}`);
+	console.log(`... transformation of ${configPaths.length} MDs to stories DONE (${Math.round(performance.now() - startTime)}ms)${os.EOL}`);
 }
 
 function collectConfigurations() {

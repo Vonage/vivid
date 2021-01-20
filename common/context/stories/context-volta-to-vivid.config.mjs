@@ -1,8 +1,8 @@
 export default {
-	sourcePath: '../readme.md',
+	sourcePath: '../volta-to-vivid.md',
 	outputName: 'context-volta-to-vivid',
 	story: {
-		title: 'Core/Context/VoltaToVividMigration',
+		title: 'Core/Context/Volta To Vivid Migration',
 		name: 'VoltaToVividMigration',
 		parameters: {
 			options: {
