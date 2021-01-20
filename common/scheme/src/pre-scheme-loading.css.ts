@@ -1,0 +1,3 @@
+export const preSchemeLoadingCssText = `vwc-audio, vwc-badge, vwc-button, vwc-calendar, vwc-carousel-item, vwc-carousel, vwc-checkbox, vwc-chip-set, vwc-chip, vwc-circular-progress, vwc-drawer, vwc-fab, vwc-file-picker, vwc-formfield, vwc-helper-message, vwc-icon-button-toggle, vwc-icon-button, vwc-icon, vwc-inline, vwc-keypad, vwc-linear-progress, vwc-check-list-item, vwc-list-expansion-panel, vwc-list-item, vwc-list, vwc-radio-list-item, vwc-media-controller, vwc-menu, mwc-chip-set, mwc-chip, vwc-notched-outline, vwc-note, vwc-radio, vwc-relative-time, vwc-scheme-select, vwc-select, vwc-slider, vwc-switch, vwc-tab-bar, vwc-tab, vwc-textarea, vwc-textfield, vwc-theme-switch, vwc-top-app-bar-fixed, vwc-top-app-bar {
+	visibility: hidden;
+}`
