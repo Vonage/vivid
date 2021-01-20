@@ -108,4 +108,10 @@ export class VWCTextField extends MWCTextField {
 			>${text}</vwc-helper-message
 		>`;
 	}
+
+	protected renderInput(shouldRenderHelperText: boolean): TemplateResult {
+		super.renderInput(shouldRenderHelperText);
+
+		return html`<slot name="formInputElement"></slot>`;
+	}
 }
