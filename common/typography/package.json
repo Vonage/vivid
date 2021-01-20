@@ -11,10 +11,7 @@
 		"directory": "components/typography"
 	},
 	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1",
-		"build:typescript": "tsc --listEmittedFiles",
-		"build:styles": "umbrella-style-modules",
-		"build": "yarn run build:styles && yarn run build:typescript"
+		"test": "echo \"Error: run tests from root\" && exit 1"
 	},
 	"bugs": {
 		"url": "https://github.com/Vonage/vivid/issues"

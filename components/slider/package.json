@@ -19,7 +19,7 @@
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1",
-		"build:typescript": "tsc --listEmittedFiles",
+		"build:typescript": "tsc -b",
 		"build:styles": "umbrella-style-modules",
 		"build": "yarn run build:styles && yarn run build:typescript"
 	},
