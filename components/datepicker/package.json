@@ -1,0 +1,37 @@
+{
+	"name": "@vonage/vwc-datepicker",
+	"version": "1.0.4",
+	"description": "datepicker component",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/datepicker#readme",
+	"license": "ISC",
+	"main": "vwc-datepicker.js",
+	"module": "vwc-datepicker.js",
+	"files": [
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/vonage/vivid.git",
+		"directory": "components/datepicker"
+	},
+	"scripts": {
+		"test": "echo \"Error: run tests from root\" && exit 1"
+	},
+	"bugs": {
+		"url": "https://github.com/Vonage/vivid/issues"
+	},
+	"dependencies": {
+		"lit-flatpickr": "^0.2.4",
+		"@vonage/vvd-core": "^1.0.4",
+		"@vonage/vvd-foundation": "^1.0.4",
+		"@vonage/vvd-style-coupling": "^1.0.4",
+		"@vonage/vwc-icon": "^1.0.4",
+		"lit-element": "^2.4.0",
+		"tslib": "^2.0.3"
+	},
+	"devDependencies": {
+		"@vonage/vvd-typography": "^1.0.4"
+	}
+}
