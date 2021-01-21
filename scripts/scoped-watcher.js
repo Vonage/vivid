@@ -58,7 +58,7 @@ const fsActivityStream = rootFoldersProperty
 				followSymlinks: false,
 				persistent: true,
 				ignoreInitial: true
-			}, 'all');
+			});
 
 		return kefir
 			.merge([
@@ -96,7 +96,7 @@ const workerLog = kefir
 		EXECUTION_PLAN.map(({ name, patterns, commandLine, delayBy })=>{
 			const executionScopeStream = scopeActivityStream.filter(fp.pipe(fp.get('filename'), patterns));
 			return executionScopeStream
-				.bufferBy(scopeActivityStream.debounce(delayBy ?? DEFAULT_DEBOUNCE_SCOPE_ACTION))
+				.bufferBy(executionScopeStream.debounce(delayBy ?? DEFAULT_DEBOUNCE_SCOPE_ACTION))
 				.map(fp.pipe(fp.map('scope'), fp.uniq, fp.compact))
 				.filter(fp.negate(fp.isEmpty))
 				.flatMapConcat((scopes)=>{
