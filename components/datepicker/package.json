@@ -27,7 +27,7 @@
 	},
 	"dependencies": {
 		"@vonage/vvd-core": "^1.0.4",
-		"lit-flatpickr": "^0.2.4",
+		"lit-flatpickr": "^0.2.5",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.3"
 	},

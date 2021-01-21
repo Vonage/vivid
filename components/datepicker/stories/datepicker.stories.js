@@ -27,10 +27,10 @@ export const Range = Template.bind({});
 Range.args = { mode: 'range' };
 
 export const DateTime = Template.bind({});
-DateTime.args = { enableTime: '', minTime: "09:00" };
+DateTime.args = { enableTime: '', dateFormat: 'Y-m-d H:i' };
 
 export const Time = Template.bind({});
-Time.args = { enableTime: '', noCalendar: '', dateFormat: "H:i" };
+Time.args = { enableTime: '', noCalendar: '', dateFormat: 'H:i' };
 
 export const Inline = Template.bind({});
 Inline.args = { inline: '' };

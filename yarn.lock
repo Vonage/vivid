@@ -8873,7 +8873,7 @@ flat@^5.0.2:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/flat/-/flat-5.0.2.tgz#8ca6fe332069ffa9d324c327198c598259ceb241"
   integrity sha1-jKb+MyBp/6nTJMMnGYxZglnOskE=
 
-flatpickr@^4.6.3:
+flatpickr@^4.6.9:
   version "4.6.9"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/flatpickr/-/flatpickr-4.6.9.tgz#9a13383e8a6814bda5d232eae3fcdccb97dc1499"
   integrity sha1-mhM4PopoFL2l0jLq4/zcy5fcFJk=
@@ -11437,12 +11437,12 @@ lit-element@^2.2.1, lit-element@^2.3.0, lit-element@^2.3.1, lit-element@^2.4.0:
   dependencies:
     lit-html "^1.1.1"
 
-lit-flatpickr@^0.2.4:
-  version "0.2.4"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/lit-flatpickr/-/lit-flatpickr-0.2.4.tgz#3cf59676af31667adad8d6a5f62716ce42900654"
-  integrity sha1-PPWWdq8xZnra2Nal9icWzkKQBlQ=
+lit-flatpickr@^0.2.5:
+  version "0.2.5"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/lit-flatpickr/-/lit-flatpickr-0.2.5.tgz#26d50cab020c27d55a4c2423979ef2d063fdf783"
+  integrity sha1-JtUMqwIMJ9VaTCQjl57y0GP994M=
   dependencies:
-    flatpickr "^4.6.3"
+    flatpickr "^4.6.9"
     lit-element "^2.2.1"
     lit-html "^1.1.2"
     tslib "^1.11.0"
