@@ -111,8 +111,8 @@ const workerLog = kefir
 							.stream(({ emit, error, end })=> {
 
 								const process = spawn(...commandLine(scopes), { stdio: [0, 'pipe', 'pipe'] });
-								const lineStream = pipeline(process.stdout, split(), _.noop);
-								const lineErrorStream = pipeline(process.stderr, split(), _.noop);
+								const lineStream = pipeline(process.stdout, split(null, null, { trailing: false }), _.noop);
+								const lineErrorStream = pipeline(process.stderr, split(null, null, { trailing: false }), _.noop);
 
 								signalProcess(true);
 								process.on('exit', end);
