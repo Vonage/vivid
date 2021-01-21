@@ -197,16 +197,12 @@ vwc-notched-outline {
 	left: 0;
 	width: 100%;
 	height: 100%;
+	padding: 0 16px;
 	box-sizing: border-box;
 	border-radius: var(--border-radius);
 	border: none;
 	background: transparent;
 	outline: none;
-
-	padding: 0 16px;
-
-	// tmp
-	background-color: antiquewhite;
 }
 
 :host(:not([dense])) {

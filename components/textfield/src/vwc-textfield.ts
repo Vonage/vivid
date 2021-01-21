@@ -123,6 +123,7 @@ export class VWCTextField extends MWCTextField {
 		if (!this.hasAttribute('outlined')) {
 			this.outlined = true;
 		}
+		this.formElement.value = this.value;
 		this.appendChild(this.formElement);
 	}
 
