@@ -120,12 +120,18 @@ export class VWCTextField extends MWCTextField {
 
 	connectedCallback() {
 		super.connectedCallback();
+		if (!this.hasAttribute('outlined')) {
+			this.outlined = true;
+		}
 		this.appendChild(this.formElement);
 	}
 
 	protected renderInput(): TemplateResult {
 		this.updateInputElement();
-		return html`<slot name="${INPUT_ELEMENT_SLOT_NAME}"></slot>`;
+		return html`
+			<div class="mdc-text-field__input"></div>
+			<slot name="${INPUT_ELEMENT_SLOT_NAME}"></slot>
+		`;
 	}
 
 	private createInputElement(): HTMLInputElement {
@@ -161,7 +167,5 @@ export class VWCTextField extends MWCTextField {
 		} else {
 			fe.removeAttribute('pattern');
 		}
-		//	.value="${live(this.value)}" ======>>>>>>> WTF????
-		//fe.setAttribute('value', this.value);
 	}
 }

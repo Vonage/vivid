@@ -31,7 +31,9 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
   --mdc-text-field-error-fill-color: var(
     #{color-semantic.$formfield-error-fill}
   );
-  --mdc-shape-small: var(--border-radius);
+	--mdc-shape-small: var(--border-radius);
+
+	min-width: 160px;
 
   font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
 }
@@ -65,11 +67,6 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 
 :host(:not([dense])) {
   #{$vvd-text-field-size-block}: 48px;
-
-  .mdc-text-field__input {
-    align-self: flex-end;
-    height: 32px;
-  }
 }
 
 :host([dense][label]:not([label=''])) {
@@ -97,8 +94,7 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
   border-bottom-left-radius: var(--mdc-shape-small);
   height: var(#{$vvd-text-field-size-block});
 
-  .mdc-floating-label,
-  .mdc-text-field__input {
+  .mdc-floating-label {
     font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
   }
 
@@ -196,8 +192,25 @@ vwc-notched-outline {
 // autofill enhancements
 
 ::slotted(input) {
-	padding: 0;
-	background: transparent;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	border-radius: var(--border-radius);
 	border: none;
+	background: transparent;
 	outline: none;
+
+	padding: 0 16px;
+
+	// tmp
+	background-color: antiquewhite;
+}
+
+:host(:not([dense])) {
+	::slotted(input) {
+		padding-block-start: calc(var(#{$vvd-text-field-size-block}) - 32px);
+	}
 }
