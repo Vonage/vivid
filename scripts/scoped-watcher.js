@@ -10,8 +10,8 @@ const
 	{ spawn } = require('child_process'),
 	{ readFile } = require('fs'),
 	{ pipeline } = require('stream'),
-	{ dirname, sep, join: joinPath } = require('path'),
-	{ createHash } = require('crypto');
+	{ createHash } = require('crypto'),
+	{ dirname, sep, join: joinPath } = require('path');
 
 const stringValue = (text)=> createHash('md5').update(text).digest()[0];
 const globFunction = (pattern)=> (filename)=> minimatch(filename, pattern, { matchBase: true });
@@ -93,27 +93,35 @@ const scopeActivityStream = fsActivityStream.flatMap(({ filepath })=>{
 
 const workerLog = kefir
 	.merge(
-		EXECUTION_PLAN.map(({ name, patterns, commandLine, delayBy })=>{
+		EXECUTION_PLAN.map(({ name, patterns, commandLine, delayBy })=> {
+
+			let signalProcess;
+			const processStateProperty = kefir.stream(({ emit })=> signalProcess = emit).toProperty(fp.always(false));
 			const executionScopeStream = scopeActivityStream.filter(fp.pipe(fp.get('filename'), patterns));
+
 			return executionScopeStream
 				.bufferBy(executionScopeStream.debounce(delayBy ?? DEFAULT_DEBOUNCE_SCOPE_ACTION))
-				.map(fp.pipe(fp.map('scope'), fp.uniq, fp.compact))
+				.bufferWhileBy(processStateProperty, { flushOnChange: false })
+				.map(fp.pipe(fp.flatten, fp.map('scope'), fp.uniq, fp.compact))
 				.filter(fp.negate(fp.isEmpty))
 				.flatMapConcat((scopes)=>{
 					return kefir.concat([
 						kefir.constant(chalk.bold(`Starting execution for scopes ${_.truncate(scopes.join(',', 30))} (${scopes.length} in total)`)),
 						kefir
-							.stream(({ emit, error, end })=>{
+							.stream(({ emit, error, end })=> {
+
 								const process = spawn(...commandLine(scopes), { stdio: [0, 'pipe', 'pipe'] });
+								const lineStream = pipeline(process.stdout, split(), _.noop);
+								const lineErrorStream = pipeline(process.stderr, split(), _.noop);
+
+								signalProcess(true);
 								process.on('exit', end);
 								process.on('error', error);
-
-								const lineStream = pipeline(process.stdout, split(), _.noop)
-								const lineErrorStream = pipeline(process.stderr, split(), _.noop)
 								lineStream.on('data', emit);
 								lineErrorStream.on('data', emit);
 
 								return ()=> {
+									signalProcess(false);
 									process.off('exit', end);
 									process.off('error', error);
 									lineStream.off('data', emit);
@@ -121,7 +129,7 @@ const workerLog = kefir
 								};
 							})
 							.takeErrors(1)
-							.map((line)=> ["  ", line].join(''))
+							.map((line)=> [" ", line].join(''))
 					])
 				})
 				.map((message)=> [chalk[COLORS[stringValue(name) % COLORS.length]](name), message].join(': '));
