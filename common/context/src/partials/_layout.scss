@@ -1,41 +1,45 @@
+@use 'variables';
+
 body {
 	padding: env(safe-area-inset-top, 20px) env(safe-area-inset-right, 20px)
 		env(safe-area-inset-bottom, 20px) env(safe-area-inset-left, 20px);
 }
 
-pre,
-code,
-kbd,
-samp,
-var {
-	padding: 3px 4px;
-	border-radius: 6px;
-}
-
-pre {
-	overflow: auto;
-
+#{variables.$vivid-scope-selector} {
+	pre,
 	code,
 	kbd,
 	samp,
 	var {
-		padding: initial;
-	}
-}
-
-blockquote {
-	margin-left: 0;
-	margin-right: 0;
-	padding: 20px 22px;
-	border-radius: 6px;
-
-	:first-child {
-		margin-block-start: 0;
-		padding-block-start: 0;
+		padding: 3px 4px;
+		border-radius: 6px;
 	}
 
-	:last-child {
-		margin-block-end: 0;
-		padding-block-end: 0;
+	pre {
+		overflow: auto;
+
+		code,
+		kbd,
+		samp,
+		var {
+			padding: initial;
+		}
+	}
+
+	blockquote {
+		margin-left: 0;
+		margin-right: 0;
+		padding: 20px 22px;
+		border-radius: 6px;
+
+		:first-child {
+			margin-block-start: 0;
+			padding-block-start: 0;
+		}
+
+		:last-child {
+			margin-block-end: 0;
+			padding-block-end: 0;
+		}
 	}
 }

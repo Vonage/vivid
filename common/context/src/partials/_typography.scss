@@ -1,4 +1,5 @@
 @use '@vonage/vvd-typography/scss/typography';
+@use 'variables';
 
 body {
 	@supports (font-size-adjust: 1) {
@@ -7,50 +8,52 @@ body {
 	@include typography.typography-cat-shorthand('body-1');
 }
 
-h1 {
-	@include typography.typography-cat-shorthand('headline-1');
-}
+#{variables.$vivid-scope-selector} {
+	h1 {
+		@include typography.typography-cat-shorthand('headline-1');
+	}
 
-h2 {
-	@include typography.typography-cat-shorthand('headline-2');
-}
+	h2 {
+		@include typography.typography-cat-shorthand('headline-2');
+	}
 
-h3 {
-	@include typography.typography-cat-shorthand('title-1');
-}
+	h3 {
+		@include typography.typography-cat-shorthand('title-1');
+	}
 
-h4 {
-	@include typography.typography-cat-shorthand('title-2');
-}
+	h4 {
+		@include typography.typography-cat-shorthand('title-2');
+	}
 
-h5 {
-	@include typography.typography-cat-shorthand('subtitle-1');
-}
+	h5 {
+		@include typography.typography-cat-shorthand('subtitle-1');
+	}
 
-h6 {
-	@include typography.typography-cat-shorthand('subtitle-2');
-}
+	h6 {
+		@include typography.typography-cat-shorthand('subtitle-2');
+	}
 
-code,
-kbd,
-samp,
-var {
-	font-family: 'SpeziaMonoWebVariable', monospace;
-}
+	code,
+	kbd,
+	samp,
+	var {
+		font-family: 'SpeziaMonoWebVariable', monospace;
+	}
 
-b,
-strong {
-	font-weight: 600;
-}
+	b,
+	strong {
+		font-weight: 600;
+	}
 
-small {
-	@include typography.typography-cat-shorthand('body-2');
-}
+	small {
+		@include typography.typography-cat-shorthand('body-2');
+	}
 
-a {
-	text-decoration: underline;
-}
+	a {
+		text-decoration: underline;
+	}
 
-blockquote {
-	@include typography.typography-cat-shorthand('body-2');
+	blockquote {
+		@include typography.typography-cat-shorthand('body-2');
+	}
 }
