@@ -41,3 +41,20 @@ blockquote {
 		padding-block-end: 0;
 	}
 }
+
+$container: vvd-container;
+[class*='#{$container}'i] {
+	background: beige;
+	margin: 0 auto;
+	max-inline-size: calc(100% - 20px);
+	inline-size: var(--basis, 100%);
+	&:not(.#{$container}-fluid) {
+		--basis: 80rem;
+		&.#{$container}-condense {
+			--basis: 50rem;
+		}
+		&.#{$container}-ultra-condense {
+			--basis: 30rem;
+		}
+	}
+}
