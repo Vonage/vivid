@@ -1,5 +1,5 @@
 {
-	"extends": "../../tsconfig.settings.json",
+	"extends": "@vonage/vvd-umbrella/configs/tsconfig.json",
 	"compilerOptions": {
 		"composite": true,
 		"rootDir": "src",
@@ -11,15 +11,6 @@
 	"references": [
 		{
 			"path": "../../common/core"
-		},
-		{
-			"path": "../../common/foundation"
-		},
-		{
-			"path": "../../common/style-coupling"
-		},
-		{
-			"path": "../icon"
 		}
 	]
 }
