@@ -1,5 +1,5 @@
 $vivid-scope-class: '.vivid-scope';
-#{constants.$vivid-scope-class} {
+#{$vivid-scope-class} {
 	@import 'partials/reset';
 	@import 'partials/typography';
 	@import 'partials/theme';
