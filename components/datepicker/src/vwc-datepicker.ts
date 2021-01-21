@@ -1,5 +1,5 @@
 import '@vonage/vvd-core';
-import { customElement } from 'lit-element';
+import { customElement, property } from 'lit-element';
 import { LitFlatpickr } from 'lit-flatpickr';
 
 declare global {
@@ -13,14 +13,25 @@ declare global {
  */
 @customElement('vwc-datepicker')
 export class VWCDatepicker extends LitFlatpickr {
-	// override LitFlatpickr to work with flatpickr dependency
-	// enable key needs to be undefined to enable all days by default
-	getOptions() {
+	// required to prevent flatpickr from being appended to slotted components
+	@property({ type: HTMLElement, reflect: true })
+	appendTo: (Node & ParentNode) | null = this.parentNode;
+
+	// override LitFlatpickr to work with [flatpickr change](https://github.com/flatpickr/flatpickr/blame/07cf1b1ba5ec71da511c295f622d60eed3bf3eb7/src/index.ts#L1522)
+	// flatpickr now requires `enable` to be `undefined` by default rather than `[]`
+	constructor() {
+		super();
+		this.enable = <any>undefined;
+	}
+
+	getOptions(): any {
 		return {
 			altFormat: this.altFormat,
 			altInput: this.altInput,
 			altInputClass: this.altInputClass,
 			allowInput: this.allowInput,
+			// add appendTo option
+			...(this.inline && { appendTo: this.appendTo }),
 			ariaDateFormat: this.ariaDateFormat,
 			clickOpens: this.clickOpens,
 			dateFormat: this.dateFormat,
@@ -29,7 +40,8 @@ export class VWCDatepicker extends LitFlatpickr {
 			defaultMinute: this.defaultMinute,
 			disable: this.disable,
 			disableMobile: this.disableMobile,
-			// enable: this.enable,
+			// enable is undefined unless prop provided
+			...(this.enable && { enable: this.enable }),
 			enableTime: this.enableTime,
 			enableSeconds: this.enableSeconds,
 			formatDate: this.formatDateFn,

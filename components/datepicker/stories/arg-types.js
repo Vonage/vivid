@@ -1,4 +1,10 @@
 export const argTypes = {
+	mode: {
+		control: {
+			type: 'select',
+			options: ['single', 'multiple', 'range'],
+		}
+	},
 	altInput: {
 		control: {
 			type: 'inline-radio',
