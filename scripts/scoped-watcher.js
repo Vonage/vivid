@@ -30,14 +30,17 @@ const EXECUTION_PLAN = [
 		patterns: fp.overSome(["*.sass", "*.scss"].map(globFunction)),
 		commandLine: (scopes)=> ["lerna", ["run", "build:styles", ...scopes.flatMap((scope)=> ["--scope", scope])]],
 		delayBy: SECOND
-	},
-	{
+	}
+];
+
+/* This will be added to EXECUTION_PLAN once typescript build is included in package scripts
+{
 		name: "typescript",
 		patterns: (filename)=> /(?<!\.d)\.ts$/i.test(filename),
 		commandLine: (scopes)=> ["lerna", ["run", "build:typescript", ...scopes.flatMap((scope)=> ["--scope", scope])]],
 		delayBy: 3 * SECOND
 	}
-];
+*/
 
 const rootFoldersProperty = kefir
 	.concat([
