@@ -23,6 +23,15 @@ const Template = args => html`
 export const Basic = Template.bind({});
 Basic.args = { dateFormat: 'Y-m-d', altInput: '', altFormat: 'F j, Y' };
 
+export const MaxDate = Template.bind({});
+MaxDate.args = { dateFormat: 'Y-m-d', altInput: '', altFormat: 'F j, Y', MaxDate: 'today' };
+
+export const WeekPicker = Template.bind({});
+WeekPicker.args = { weekSelect: '', altInput: '' };
+
+export const MonthPicker = Template.bind({});
+MonthPicker.args = { monthSelect: '', altInput: '' };
+
 export const Range = Template.bind({});
 Range.args = { mode: 'range' };
 
