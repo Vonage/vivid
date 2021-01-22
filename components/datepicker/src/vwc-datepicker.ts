@@ -49,6 +49,8 @@ export class VWCDatepicker extends LitFlatpickr {
 		}
 	}
 
+	// copied from lit-flatpickr
+	// add additional config options
 	getOptions(): any {
 		return {
 			altFormat: this.altFormat,
@@ -90,7 +92,7 @@ export class VWCDatepicker extends LitFlatpickr {
 			time_24hr: this.time_24hr,
 			weekNumbers: this.weekNumbers,
 			wrap: this.wrap,
-			// add conditional config settings
+			// additional config options
 			...(this.inline && { appendTo: this.appendTo }),
 			...(this.enable && { enable: this.enable }),
 			...(this.plugins.length && { plugins: this.plugins }),
