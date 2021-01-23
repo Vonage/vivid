@@ -18,32 +18,8 @@ export {
 	AutoScheme,
 	SchemeOption,
 } from './vvd-scheme-foundation';
-
-class Emitter {
-	#delegate = document.createDocumentFragment();
-
-	addEventListener(
-		type: string,
-		listener: EventListener | EventListenerObject | null,
-		options?: boolean | AddEventListenerOptions | undefined
-	) {
-		this.#delegate.addEventListener(type, listener, options);
-	}
-
-	dispatchEvent(event: Event) {
-		this.#delegate.dispatchEvent(event);
-	}
-
-	removeEventListener(
-		type: string,
-		callback: EventListener | EventListenerObject | null,
-		options?: boolean | EventListenerOptions | undefined
-	) {
-		this.#delegate.removeEventListener(type, callback, options);
-	}
-}
-
-const eventBus = new Emitter();
+import { Emitter } from '@vonage/vvd-foundation/general-utils';
+const eventBus = new Emitter(); // !refactored due to lack of support of EventTarget as a constructor (new EventTarget()) in safari 12
 
 let _selectedScheme: PredefinedScheme;
 function getSelectedScheme(): PredefinedScheme {

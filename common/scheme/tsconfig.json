@@ -1,12 +1,17 @@
 {
 	"extends": "@vonage/vvd-umbrella/configs/tsconfig.json",
 	"compilerOptions": {
-		"module": "ESNext",
+		"module": "ES2015",
 		"composite": true,
 		"rootDir": "src",
 		"outDir": ".",
 		"tsBuildInfoFile": ".tsbuildinfo"
 	},
 	"include": ["src/*.ts"],
-	"exclude": ["src/test/*.ts"]
+	"exclude": ["src/test/*.ts"],
+	"references": [
+		{
+			"path": "../../common/foundation"
+		}
+	]
 }
