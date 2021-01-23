@@ -210,6 +210,7 @@ vwc-notched-outline {
 
 ::slotted(input) {
 	all: unset;
+	cursor: revert;
 	position: absolute;
 	top: 0;
 	right: 0;
