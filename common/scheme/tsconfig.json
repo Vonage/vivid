@@ -1,7 +1,7 @@
 {
 	"extends": "@vonage/vvd-umbrella/configs/tsconfig.json",
 	"compilerOptions": {
-		"module": "ES2015",
+		"module": "ESNext",
 		"composite": true,
 		"rootDir": "src",
 		"outDir": ".",
