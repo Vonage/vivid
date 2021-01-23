@@ -19,7 +19,31 @@ export {
 	SchemeOption,
 } from './vvd-scheme-foundation';
 
-const eventBus = new EventTarget();
+class Emitter {
+	#delegate = document.createDocumentFragment();
+
+	addEventListener(
+		type: string,
+		listener: EventListener | EventListenerObject | null,
+		options?: boolean | AddEventListenerOptions | undefined
+	) {
+		this.#delegate.addEventListener(type, listener, options);
+	}
+
+	dispatchEvent(event: Event) {
+		this.#delegate.dispatchEvent(event);
+	}
+
+	removeEventListener(
+		type: string,
+		callback: EventListener | EventListenerObject | null,
+		options?: boolean | EventListenerOptions | undefined
+	) {
+		this.#delegate.removeEventListener(type, callback, options);
+	}
+}
+
+const eventBus = new Emitter();
 
 let _selectedScheme: PredefinedScheme;
 function getSelectedScheme(): PredefinedScheme {
