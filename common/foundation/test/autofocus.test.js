@@ -1,8 +1,9 @@
 import { handleAutofocus } from '@vonage/vvd-foundation/general-utils.js';
 import {
+	isolatedElementsCreation,
 	isSafari,
 	textToDomToParent,
-	waitNextTask,
+	waitNextTask
 } from '../../../test/test-helpers';
 import '@vonage/vwc-textarea';
 import '@vonage/vwc-textfield';
@@ -18,6 +19,8 @@ const vwcElementsSupported = [
 ];
 
 describe('autofocus', () => {
+	const addElement = isolatedElementsCreation();
+
 	it('should NOT throw on invalid input', async () => {
 		handleAutofocus();
 		handleAutofocus(null);
@@ -32,7 +35,7 @@ describe('autofocus', () => {
 				}
 				clearAnyFocus();
 
-				const [e] = textToDomToParent(`<${vwcElement} autofocus></${vwcElement}>`);
+				const [e] = addElement(textToDomToParent(`<${vwcElement} autofocus></${vwcElement}>`));
 				await waitNextTask();
 
 				assertFocusStatus(e, true);
@@ -40,10 +43,10 @@ describe('autofocus', () => {
 			});
 
 			it('should NOT "steal" focus from already focused element if any', async () => {
-				const [input] = textToDomToParent('<input/>');
+				const [input] = addElement(textToDomToParent('<input/>'));
 				input.focus();
 
-				const [e] = textToDomToParent(`<${vwcElement} autofocus></${vwcElement}>`);
+				const [e] = addElement(textToDomToParent(`<${vwcElement} autofocus></${vwcElement}>`));
 				await waitNextTask();
 
 				assertFocusStatus(e, false);
@@ -56,7 +59,7 @@ describe('autofocus', () => {
 			it('should NOT focus when "autofocus" not specified', async () => {
 				clearAnyFocus();
 
-				const [e] = textToDomToParent(`<${vwcElement}></${vwcElement}>`);
+				const [e] = addElement(textToDomToParent(`<${vwcElement}></${vwcElement}>`));
 				await waitNextTask();
 
 				assertFocusStatus(e, false);
