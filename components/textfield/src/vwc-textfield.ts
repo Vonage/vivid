@@ -14,10 +14,6 @@ import { TextField as MWCTextField } from '@material/mwc-textfield';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import { style as vwcTextFieldStyle } from './vwc-textfield.css';
 import { style as mwcTextFieldStyle } from '@material/mwc-textfield/mwc-textfield-css.js';
-import {
-	associateWithForm,
-	submitOnEnter,
-} from '@vonage/vvd-foundation/form-association';
 import { Shape } from '@vonage/vvd-foundation/constants';
 import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
 export { TextFieldType } from '@material/mwc-textfield';
@@ -51,8 +47,6 @@ export class VWCTextField extends MWCTextField {
 			?.querySelector('.mdc-notched-outline')
 			?.shadowRoot?.querySelector('.mdc-notched-outline')
 			?.classList.add('vvd-notch');
-		associateWithForm(this, this.formElement);
-		submitOnEnter((this as unknown) as HTMLInputElement);
 		handleAutofocus(this);
 	}
 
@@ -137,6 +131,8 @@ export class VWCTextField extends MWCTextField {
 
 	private createInputElement(): HTMLInputElement {
 		const element = document.createElement('input');
+		const defaultValue = this.getAttribute('value');
+		element.defaultValue = defaultValue ? defaultValue : '';
 		element.setAttribute('slot', INPUT_ELEMENT_SLOT_NAME);
 		return element;
 	}
@@ -153,6 +149,12 @@ export class VWCTextField extends MWCTextField {
 		fe.setAttribute('id', this.id);
 		fe.setAttribute('name', this.name);
 		fe.setAttribute('type', this.type);
+
+		if (this.form) {
+			fe.setAttribute('form', this.form);
+		} else {
+			fe.removeAttribute('form');
+		}
 		if (this.disabled) {
 			fe.setAttribute('disabled', '');
 		} else {
