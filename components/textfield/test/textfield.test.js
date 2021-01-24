@@ -31,7 +31,7 @@ function getHiddenInput(formElement, fieldName) {
 	return formElement.querySelector(`input[name="${fieldName}"]`);
 }
 
-describe.only('textfield', () => {
+describe('textfield', () => {
 	const addElement = isolatedElementsCreation();
 
 	it('should be defined as a custom element', async () => {
@@ -103,7 +103,9 @@ describe.only('textfield', () => {
 
 			const formElement = addedElements[0];
 			const externalForm = addedElements[1];
-			const inputElement = formElement.querySelector(COMPONENT_NAME).querySelector(`input[name="${fieldName}"`);
+			const inputElement = formElement
+				.querySelector(COMPONENT_NAME)
+				.querySelector(`input[name="${fieldName}"`);
 
 			const submitPromise = listenToSubmission(externalForm);
 
@@ -120,9 +122,7 @@ describe.only('textfield', () => {
 
 		describe(`value binding`, function () {
 			it(`should reset the value of the custom element to default on form reset`, async function () {
-				const [formElement] = (
-					createElementInForm(fieldName, fieldValue)
-				);
+				const [formElement] = createElementInForm(fieldName, fieldValue);
 				const actualElement = formElement.querySelector(COMPONENT_NAME);
 				await waitNextTask();
 				actualElement.value = '5';

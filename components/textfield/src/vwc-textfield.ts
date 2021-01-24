@@ -110,6 +110,14 @@ export class VWCTextField extends MWCTextField {
 		Object.defineProperty(this, 'formElement', {
 			value: this.createInputElement(),
 		});
+		Object.defineProperty(this, 'value', {
+			get: function () {
+				return this.formElement.value;
+			},
+			set: function (newValue: string) {
+				this.formElement.value = newValue;
+			},
+		});
 	}
 
 	connectedCallback() {
