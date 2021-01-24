@@ -1,10 +1,6 @@
 @use '@vonage/vvd-typography/scss/typography';
 
 :host {
-	::slotted(input) {
-		@include typography.typography-cat-shorthand('body-2');
-	}
-
 	.mdc-floating-label {
 		@include typography.typography-mdc-coupling('subtitle1', 'body-1');
 	}
@@ -18,4 +14,8 @@
 	.mdc-floating-label {
 		@include typography.typography-mdc-coupling('subtitle1', 'body-2');
 	}
+}
+
+::slotted(input) {
+	@include typography.typography-cat-shorthand('body-2');
 }
