@@ -160,15 +160,15 @@ export class VWCTextField extends MWCTextField {
 		} else {
 			fe.removeAttribute('disabled');
 		}
-		if (this.required) {
-			fe.setAttribute('required', '');
-		} else {
-			fe.removeAttribute('required');
-		}
 		if (this.pattern) {
 			fe.setAttribute('pattern', this.pattern);
 		} else {
 			fe.removeAttribute('pattern');
+		}
+		if (this.required) {
+			fe.setAttribute('required', '');
+		} else {
+			fe.removeAttribute('required');
 		}
 	}
 }

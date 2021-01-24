@@ -209,27 +209,44 @@ vwc-notched-outline {
 // autofill enhancements
 
 ::slotted(input) {
-	all: unset;
-	cursor: revert;
+	border: unset;
+	outline: unset;
+	background: unset;
+	color: var(--mdc-text-field-ink-color);
 	position: absolute;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
 	inset: 0;
+	block-size: 100%;
+	inline-size: 100%;
 	padding-inline-start: var(--padding-inline-start);
 	padding-inline-end: var(--padding-inline-end);
 	box-sizing: border-box;
 	border-radius: var(--border-radius);
 }
 
+// ::slotted(input:-webkit-autofill),
+// ::slotted(input:-webkit-autofill:hover),
+// ::slotted(input:-webkit-autofill:focus) {
+// 	-webkit-text-fill-color: transparent;
+// 	-webkit-box-shadow: none;
+// }
+
 :host([outlined]) {
 	--padding-inline-start: max(16px, calc(var(--mdc-shape-small, 4px) + 4px));
 	--padding-inline-end: max(16px, var(--mdc-shape-small, 4px));
 }
 
+$icon-gutter: calc(18px + 12px * 2);
+
 :host(:not([disabled])[icon]) {
-	--padding-inline-start: 42px;
+	--padding-inline-start: $icon-gutter;
+}
+
+:host(:not([disabled])[icontrailing]) {
+	--padding-inline-end: $icon-gutter;
 }
 
 :host(:not([dense])) {

@@ -38,7 +38,9 @@ export async function typographyTestCases(COMPONENT_NAME) {
 	});
 
 	it('should have set typography for an input', async () => {
-		const inputElement = formElement.querySelector('input');
+		const inputElement = formElement.shadowRoot.querySelector(
+			'.mdc-text-field__input'
+		);
 		assertComputedStyle(inputElement, await getTypographyStyle('body-2'));
 	});
 

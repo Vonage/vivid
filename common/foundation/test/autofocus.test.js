@@ -3,7 +3,8 @@ import {
 	isolatedElementsCreation,
 	isSafari,
 	textToDomToParent,
-	waitNextTask
+	waitNextTask,
+	isolatedElementsCreation,
 } from '../../../test/test-helpers';
 import '@vonage/vwc-textarea';
 import '@vonage/vwc-textfield';
@@ -19,11 +20,17 @@ const vwcElementsSupported = [
 ];
 
 describe('autofocus', () => {
-	const addElement = isolatedElementsCreation();
+	let addElement = isolatedElementsCreation();
 
-	it('should NOT throw on invalid input', async () => {
+	it('should NOT throw on invalid input (no argument)', async () => {
 		handleAutofocus();
+	});
+
+	it('should NOT throw on invalid input (null)', async () => {
 		handleAutofocus(null);
+	});
+
+	it('should NOT throw on invalid input (string)', async () => {
 		handleAutofocus('some');
 	});
 
@@ -35,22 +42,24 @@ describe('autofocus', () => {
 				}
 				clearAnyFocus();
 
-				const [e] = addElement(textToDomToParent(`<${vwcElement} autofocus></${vwcElement}>`));
+				const [e] = addElement(
+					textToDomToParent(`<${vwcElement} autofocus></${vwcElement}>`)
+				);
 				await waitNextTask();
 
 				assertFocusStatus(e, true);
-				e.remove();
 			});
 
 			it('should NOT "steal" focus from already focused element if any', async () => {
 				const [input] = addElement(textToDomToParent('<input/>'));
 				input.focus();
 
-				const [e] = addElement(textToDomToParent(`<${vwcElement} autofocus></${vwcElement}>`));
+				const [e] = addElement(
+					textToDomToParent(`<${vwcElement} autofocus></${vwcElement}>`)
+				);
 				await waitNextTask();
 
 				assertFocusStatus(e, false);
-				e.remove();
 				input.blur();
 				input.remove();
 				document.body.blur();
@@ -59,7 +68,9 @@ describe('autofocus', () => {
 			it('should NOT focus when "autofocus" not specified', async () => {
 				clearAnyFocus();
 
-				const [e] = addElement(textToDomToParent(`<${vwcElement}></${vwcElement}>`));
+				const [e] = addElement(
+					textToDomToParent(`<${vwcElement}></${vwcElement}>`)
+				);
 				await waitNextTask();
 
 				assertFocusStatus(e, false);
@@ -75,11 +86,18 @@ function clearAnyFocus() {
 
 function assertFocusStatus(vividInput, status) {
 	expect(vividInput.matches(':focus-within')).equal(status);
-	if (vividInput.nodeName.toLowerCase() !== 'vwc-select') {
-		expect(
-			vividInput.shadowRoot
-				.querySelector('input, textarea, .mdc-slider')
-				.matches(':focus')
-		).equal(status);
+	if (vividInput.nodeName.toLowerCase() === 'vwc-select') {
+		return;
 	}
+
+	let inputToValidate;
+	if (vividInput.nodeName.toLowerCase() === 'vwc-textfield') {
+		inputToValidate = vividInput.querySelector('input');
+	} else {
+		inputToValidate = vividInput.shadowRoot.querySelector(
+			'input, textarea, .mdc-slider'
+		);
+	}
+
+	expect(inputToValidate.matches(':focus')).equal(status);
 }
