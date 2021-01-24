@@ -107,9 +107,6 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 		font-stretch: var(
 			--mdc-typography-subtitle1-font-stretch
 		); // ! this was supposed to be set by MDC
-	}
-
-	.mdc-floating-label {
 		left: 14px;
 		line-height: var(--mdc-typography-subtitle1-line-height);
 		transition-property: transform, font-size;
