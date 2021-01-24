@@ -151,7 +151,6 @@ export class VWCTextField extends MWCTextField {
 		const fe = this.formElement;
 
 		//	event listeners
-		fe.oninput = this.handleInputChange.bind(this);
 		fe.onfocus = this.onInputFocus.bind(this);
 		fe.onblur = this.onInputBlur.bind(this);
 
