@@ -93,7 +93,7 @@ export class VWCCalendar extends LitElement {
 		return html`
 			<div class="container">
 				<ol class="headline">
-					${this.getWeekdaysByDate(new Date('01-01-2021')).map(
+					${this.getWeekdaysByDate(new Date(Date.UTC(2021, 1, 1))).map(
 						(date) =>
 							html`<li>
 								<time datetime=${this.getValidDateString(date)}
