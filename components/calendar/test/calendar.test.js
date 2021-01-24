@@ -17,12 +17,12 @@ describe('calendar', () => {
 		assert.exists(customElements.get(COMPONENT_NAME));
 	});
 
-	// it('should match internal contents', async () => {
-	// 	const addedElements = addElement(
-	// 		textToDomToParent(`<${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}>`)
-	// 	);
-	// 	const actualElement = addedElements[0];
-	// 	await waitNextTask();
-	// 	expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
-	// });
+	it('should match internal contents', async () => {
+		const addedElements = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}>`)
+		);
+		const actualElement = addedElements[0];
+		await waitNextTask();
+		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
+	});
 });
