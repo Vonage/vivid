@@ -1,16 +1,16 @@
 export class Emitter {
-	private _delegate = document.createDocumentFragment();
+	#delegate = document.createDocumentFragment();
 
 	addEventListener(
 		type: string,
 		listener: EventListener | EventListenerObject | null,
 		options?: boolean | AddEventListenerOptions | undefined
 	): void {
-		this._delegate.addEventListener(type, listener, options);
+		this.#delegate.addEventListener(type, listener, options);
 	}
 
 	dispatchEvent(event: Event): void {
-		this._delegate.dispatchEvent(event);
+		this.#delegate.dispatchEvent(event);
 	}
 
 	removeEventListener(
@@ -18,6 +18,6 @@ export class Emitter {
 		callback: EventListener | EventListenerObject | null,
 		options?: boolean | EventListenerOptions | undefined
 	): void {
-		this._delegate.removeEventListener(type, callback, options);
+		this.#delegate.removeEventListener(type, callback, options);
 	}
 }
