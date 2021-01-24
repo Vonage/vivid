@@ -175,6 +175,7 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 	}
 
 	vwc-icon {
+		z-index: 1;
 		align-self: center;
 		margin: 0 12px;
 		min-height: 18px;
@@ -202,6 +203,15 @@ vwc-notched-outline {
 		pill: 24px,
 	)
 );
+
+.mdc-text-field--with-leading-icon.mdc-text-field--outlined
+	.mdc-floating-label--float-above {
+	transform: translateY(-18px);
+}
+.mdc-text-field--with-leading-icon.mdc-text-field--outlined
+	.mdc-floating-label {
+	left: 30px;
+}
 
 // autofill enhancements
 
@@ -239,11 +249,11 @@ vwc-notched-outline {
 $icon-gutter: calc(18px + 12px * 2);
 
 :host(:not([disabled])[icon]) {
-	--padding-inline-start: $icon-gutter;
+	--padding-inline-start: #{$icon-gutter};
 }
 
 :host(:not([disabled])[icontrailing]) {
-	--padding-inline-end: $icon-gutter;
+	--padding-inline-end: #{$icon-gutter};
 }
 
 :host(:not([dense])) {
