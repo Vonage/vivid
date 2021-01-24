@@ -19,7 +19,7 @@ import {
 	submitOnEnter,
 } from '@vonage/vvd-foundation/form-association';
 import { Shape } from '@vonage/vvd-foundation/constants';
-// import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
+import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
 export { TextFieldType } from '@material/mwc-textfield';
 
 declare global {
@@ -53,7 +53,7 @@ export class VWCTextField extends MWCTextField {
 			?.classList.add('vvd-notch');
 		associateWithForm(this, this.formElement);
 		submitOnEnter((this as unknown) as HTMLInputElement);
-		// handleAutofocus(this);
+		handleAutofocus(this);
 	}
 
 	updated(changedProperties: PropertyValues): void {
@@ -158,15 +158,15 @@ export class VWCTextField extends MWCTextField {
 		} else {
 			fe.removeAttribute('disabled');
 		}
-		if (this.required) {
-			fe.setAttribute('required', '');
-		} else {
-			fe.removeAttribute('required');
-		}
 		if (this.pattern) {
 			fe.setAttribute('pattern', this.pattern);
 		} else {
 			fe.removeAttribute('pattern');
+		}
+		if (this.required) {
+			fe.setAttribute('required', '');
+		} else {
+			fe.removeAttribute('required');
 		}
 	}
 }

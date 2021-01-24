@@ -17,7 +17,7 @@ const vwcElementsSupported = [
 	'vwc-textfield',
 ];
 
-describe('autofocus', () => {
+describe.only('autofocus', () => {
 	it('should NOT throw on invalid input', async () => {
 		handleAutofocus();
 		handleAutofocus(null);
@@ -72,11 +72,18 @@ function clearAnyFocus() {
 
 function assertFocusStatus(vividInput, status) {
 	expect(vividInput.matches(':focus-within')).equal(status);
-	if (vividInput.nodeName.toLowerCase() !== 'vwc-select') {
-		expect(
-			vividInput.shadowRoot
-				.querySelector('input, textarea, .mdc-slider')
-				.matches(':focus')
-		).equal(status);
+	if (vividInput.nodeName.toLowerCase() === 'vwc-select') {
+		return;
 	}
+
+	let inputToValidate;
+	if (vividInput.nodeName.toLowerCase() === 'vwc-textfield') {
+		inputToValidate = vividInput.querySelector('input');
+	} else {
+		inputToValidate = vividInput.shadowRoot.querySelector(
+			'input, textarea, .mdc-slider'
+		);
+	}
+
+	expect(inputToValidate.matches(':focus')).equal(status);
 }
