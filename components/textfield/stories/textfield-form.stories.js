@@ -4,11 +4,6 @@ import '@vonage/vwc-textfield';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 
-const FORM_MODEL = {
-	username: '',
-	password: ''
-};
-
 const Template = args => html`
 	<style>
 		form {
@@ -25,8 +20,8 @@ const Template = args => html`
 		</div>
 		<hr>
 		<div>
-			<div><span>Username: </span><span>${FORM_MODEL.username}</span></div>
-			<div><span>Password: </span><span>${FORM_MODEL.password}</span></div>
+			<div><span>Username: </span><span id="username-view"></span></div>
+			<div><span>Password: </span><span id="password-view"></span></div>
 		</div>
 	</form>
 `;
@@ -34,12 +29,16 @@ const Template = args => html`
 export const LoginForm = Template.bind({});
 LoginForm.args = {
 	username: { name: 'username', label: 'username', icon: 'user' },
-	password: { name: 'password', label: 'password', icon: 'lock', type: 'password' }
+	password: { name: 'password', label: 'password', icon: 'lock', type: 'password' },
+	model: {
+		username: '',
+		password: ''
+	}
 };
 
 function onSubmit(e) {
 	e.preventDefault();
-	const fd = new FormData(e.tartget);
-	FORM_MODEL.username = fd.get('username');
-	FORM_MODEL.password = fd.get('password');
+	const fd = new FormData(e.target);
+	document.getElementById('username-view').textContent = fd.get('username');
+	document.getElementById('password-view').textContent = fd.get('password');
 }

@@ -146,6 +146,11 @@ export class VWCTextField extends MWCTextField {
 		return element;
 	}
 
+	//	not yet implemented:
+	// aria-controls="${ifDefined(ariaControlsOrUndef)}"
+	// aria-describedby="${ifDefined(ariaDescribedbyOrUndef)}"
+	// aria-errortext="${ifDefined(ariaErrortextOrUndef)}"
+	// autocapitalize="${ifDefined(autocapitalizeOrUndef)}"
 	private updateInputElement(): void {
 		const fe = this.formElement;
 
@@ -153,30 +158,57 @@ export class VWCTextField extends MWCTextField {
 		fe.onfocus = this.onInputFocus.bind(this);
 		fe.onblur = this.onInputBlur.bind(this);
 
-		//	attributes/properties
-		fe.setAttribute('id', this.id);
-		fe.setAttribute('name', this.name);
-		fe.setAttribute('type', this.type);
+		//	attributes - basic
+		setAttributeIfDefined('id', this.id, fe);
+		setAttributeIfDefined('name', this.name, fe);
+		setAttributeIfDefined('type', this.type, fe);
+		setAttributeIfDefined('form', this.form, fe);
+		setAttributeIfDefined('placeholder', this.placeholder, fe);
 
-		if (this.form) {
-			fe.setAttribute('form', this.form);
-		} else {
-			fe.removeAttribute('form');
-		}
-		if (this.disabled) {
-			fe.setAttribute('disabled', '');
-		} else {
-			fe.removeAttribute('disabled');
-		}
-		if (this.pattern) {
-			fe.setAttribute('pattern', this.pattern);
-		} else {
-			fe.removeAttribute('pattern');
-		}
-		if (this.required) {
-			fe.setAttribute('required', '');
-		} else {
-			fe.removeAttribute('required');
-		}
+		setAttributeIfDefined('min', this.min, fe);
+		setAttributeIfDefined('max', this.max, fe);
+		setAttributeIfDefined('step', this.step, fe);
+		setAttributeIfDefined('size', this.size, fe);
+
+		setAttributeIfDefined('inputmode', this.inputMode, fe);
+		setAttributeIfDefined(
+			'minlength',
+			this.minLength === -1 ? undefined : this.minLength,
+			fe
+		);
+		setAttributeIfDefined(
+			'maxlength',
+			this.maxLength === -1 ? undefined : this.maxLength,
+			fe
+		);
+		setAttributeIfDefined('pattern', this.pattern, fe);
+
+		addAttributeByCondition('disabled', this.disabled, fe);
+		addAttributeByCondition('readonly', this.readOnly, fe);
+		addAttributeByCondition('required', this.required, fe);
+	}
+}
+
+function addAttributeByCondition(
+	attributeName: string,
+	condition: boolean,
+	target: HTMLInputElement
+): void {
+	if (condition) {
+		target.setAttribute(attributeName, '');
+	} else {
+		target.removeAttribute(attributeName);
+	}
+}
+
+function setAttributeIfDefined(
+	attributeName: string,
+	value: unknown,
+	target: HTMLInputElement
+): void {
+	if (value) {
+		target.setAttribute(attributeName, String(value));
+	} else {
+		target.removeAttribute(attributeName);
 	}
 }
