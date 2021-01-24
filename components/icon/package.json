@@ -21,7 +21,7 @@
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1",
 		"generate-icon-resolver": "node ./build/vwc-icon-resolver-factory.js",
-		"build": "yarn run build:styles && yarn run build:typescript && tsc --allowJs --emitDeclarationOnly -d ./src/vwc-icon.js && yarn generate-icon-resolver",
+		"build": "yarn run build:styles && yarn run build:typescript && tsc -p ./tsconfig.def.json && yarn generate-icon-resolver",
 		"build:typescript": "tsc -b",
 		"build:styles": "umbrella-style-modules"
 	},
