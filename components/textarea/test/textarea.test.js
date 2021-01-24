@@ -12,7 +12,7 @@ import {
 	typographyTestCases,
 	hasNotchedOutline,
 	validateMultipleShadowLayers,
-} from '../../textfield/test/textfield-utils.test';
+} from './textarea-utils.test';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
