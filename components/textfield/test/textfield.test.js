@@ -19,7 +19,7 @@ import {
 	hasNotchedOutline,
 	validateMultipleShadowLayers,
 	validateOnReset,
-} from './textfield-utils.test.js';
+} from '@vonage/vvd-foundation/test/input-utils.test.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 

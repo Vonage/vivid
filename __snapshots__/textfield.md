@@ -4,7 +4,6 @@
 
 ```html
 <input
-  name=""
   slot="formInputElement"
   type="text"
   value=""
