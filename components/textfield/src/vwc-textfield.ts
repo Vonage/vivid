@@ -29,6 +29,7 @@ type TextfieldShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 MWCTextField.styles = [styleCoupling, mwcTextFieldStyle, vwcTextFieldStyle];
+
 const INPUT_ELEMENT_SLOT_NAME = 'formInputElement';
 @customElement('vwc-textfield')
 export class VWCTextField extends MWCTextField {
