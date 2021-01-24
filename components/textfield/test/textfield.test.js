@@ -39,12 +39,12 @@ describe('textfield', () => {
 	});
 
 	it('should have internal contents', async () => {
-		const addedElements = addElement(
+		const [e] = addElement(
 			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 		);
-		const actualElement = addedElements[0];
 		await waitNextTask();
-		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
+		expect(e).lightDom.equalSnapshot();
+		expect(e).shadowDom.equalSnapshot();
 	});
 
 	describe('typography', () => {
