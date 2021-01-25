@@ -1,3 +1,12 @@
+# [1.1.0](https://github.com/vonage/vivid/compare/v1.0.4...v1.1.0) (2021-01-25)
+
+
+### Bug Fixes
+
+* **calendar:** impersistent dates fail snapshot matching tests ([#605](https://github.com/vonage/vivid/issues/605)) ([2c4ee98](https://github.com/vonage/vivid/commit/2c4ee9804d04776067d4a0fbce0bfa4d6a533fb3))
+
+
+
 ## [1.0.4](https://github.com/vonage/vivid/compare/v1.0.3...v1.0.4) (2021-01-19)
 
 
