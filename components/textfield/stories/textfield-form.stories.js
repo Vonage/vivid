@@ -18,7 +18,6 @@ const Template = args => html`
 			<vwc-button layout="outlined" type="reset">Reset</vwc-button>
 			<vwc-button layout="filled" type="submit">Submit</vwc-button>
 		</div>
-		<hr>
 		<div>
 			<div><span>Username: </span><span id="username-view"></span></div>
 			<div><span>Password: </span><span id="password-view"></span></div>
