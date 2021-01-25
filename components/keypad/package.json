@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-keypad",
-	"version": "1.0.4",
+	"version": "1.1.1",
 	"description": "Web Component vwc-keypad following open-wc recommendations for Vonage Vivid",
 	"author": "Dwane <Dwane.Hemmings@vonage.com>",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/keypad#readme",
@@ -28,9 +28,9 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@vonage/vvd-style-coupling": "^1.0.4",
-		"@vonage/vwc-button": "^1.0.4",
-		"@vonage/vwc-textfield": "^1.0.4",
+		"@vonage/vvd-style-coupling": "^1.1.1",
+		"@vonage/vwc-button": "^1.1.1",
+		"@vonage/vwc-textfield": "^1.1.1",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.3"
 	},
