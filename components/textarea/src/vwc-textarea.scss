@@ -1,3 +1,4 @@
+@use '@vonage/vvd-typography/scss/typography';
 @use '@vonage/vwc-textfield/src/vwc-textfield' as textfield;
 
 :host {
@@ -25,6 +26,8 @@
 	padding-right: 0;
 
 	.mdc-text-field__input {
+		@include typography.typography-cat-shorthand('body-2');
+
 		padding-left: 14px;
 		padding-right: 14px;
 	}
