@@ -122,7 +122,9 @@ describe('textfield', () => {
 
 		describe(`value binding`, function () {
 			it(`should reset the value of the custom element to default on form reset`, async function () {
-				const [formElement] = createElementInForm(fieldName, fieldValue);
+				const [formElement] = addElement(
+					createElementInForm(fieldName, fieldValue)
+				);
 				const actualElement = formElement.querySelector(COMPONENT_NAME);
 				await waitNextTask();
 				actualElement.value = '5';
@@ -133,11 +135,10 @@ describe('textfield', () => {
 			});
 
 			it(`should change the value of the mock input on internal input change`, async function () {
-				const addedElements = addElement(
+				const [formElement] = addElement(
 					createElementInForm(fieldName, fieldValue)
 				);
 
-				const formElement = addedElements[0];
 				const actualElement = formElement.querySelector(COMPONENT_NAME);
 				await waitNextTask();
 
