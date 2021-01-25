@@ -122,7 +122,9 @@ describe('textfield', () => {
 
 		describe(`value binding`, function () {
 			it(`should reset the value of the custom element to default on form reset`, async function () {
-				const [formElement] = createElementInForm(fieldName, fieldValue);
+				const [formElement] = addElement(
+					createElementInForm(fieldName, fieldValue)
+				);
 				const actualElement = formElement.querySelector(COMPONENT_NAME);
 				await waitNextTask();
 				actualElement.value = '5';
