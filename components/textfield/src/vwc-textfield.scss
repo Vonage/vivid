@@ -234,16 +234,9 @@ vwc-notched-outline {
 	border-radius: var(--border-radius);
 }
 
-// ::slotted(input:-webkit-autofill),
-// ::slotted(input:-webkit-autofill:hover),
-// ::slotted(input:-webkit-autofill:focus) {
-// 	-webkit-text-fill-color: transparent;
-// 	-webkit-box-shadow: none;
-// }
-
 :host([outlined]) {
-	--padding-inline-start: max(16px, calc(var(--mdc-shape-small, 4px) + 4px));
-	--padding-inline-end: max(16px, var(--mdc-shape-small, 4px));
+	--padding-inline-start: max(14px, calc(var(--mdc-shape-small, 4px) + 4px));
+	--padding-inline-end: max(14px, var(--mdc-shape-small, 4px));
 }
 
 $icon-gutter: calc(18px + 12px * 2);
