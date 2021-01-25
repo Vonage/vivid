@@ -2,9 +2,7 @@ export default Object.freeze({
 	init: init,
 });
 
-const READY_PROMISE_TIMEOUT = 12000,
-	FONTS_BASE_URL_TOKEN = 'FONTS_BASE_URL',
-	CDN_BASE_URL = '//fonts.resources.vonage.com/fonts/v1';
+const READY_PROMISE_TIMEOUT = 12000;
 
 let INIT_PROMISE: Promise<Record<string, unknown>> | null = null;
 
@@ -18,13 +16,8 @@ async function init(): Promise<Record<string, unknown>> {
 
 			import('./vvd-fonts.css.js')
 				.then((cssDefs) => {
-					const cssText = cssDefs.style.cssText;
-					const finalCSS = cssText.replace(
-						new RegExp(FONTS_BASE_URL_TOKEN, 'g'),
-						CDN_BASE_URL
-					);
 					const ds = document.createElement('style');
-					ds.innerHTML = finalCSS;
+					ds.innerHTML = cssDefs.style.cssText;
 					document.head.appendChild(ds);
 					return ensureInit(testElements);
 				})
