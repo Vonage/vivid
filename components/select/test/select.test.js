@@ -18,7 +18,7 @@ import {
 	assertDenseStyles,
 	hasNotchedOutline,
 	validateOnReset,
-} from '../../textfield/test/textfield-utils.test';
+} from '@vonage/vvd-foundation/test/input-utils.test.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
