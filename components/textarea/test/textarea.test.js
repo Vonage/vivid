@@ -12,7 +12,7 @@ import {
 	typographyTestCases,
 	hasNotchedOutline,
 	validateMultipleShadowLayers,
-} from '../../textfield/test/textfield-utils.test';
+} from '@vonage/vvd-foundation/test/input-utils.test.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
@@ -215,7 +215,9 @@ describe('textarea', () => {
 	});
 
 	describe('typography', () => {
-		typographyTestCases(COMPONENT_NAME);
+		typographyTestCases(COMPONENT_NAME, (vwcTextarea) =>
+			vwcTextarea.shadowRoot.querySelector('.mdc-text-field__input')
+		);
 	});
 
 	describe('notched outlined', () => {

@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-media-controller",
-	"version": "1.0.4",
+	"version": "1.1.1",
 	"description": "A web component for displaying a simple media playback controller consisting of a play/pause button and a scrub bar",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/media-playback-controller#readme",
 	"license": "ISC",
@@ -25,7 +25,7 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@vonage/vvd-core": "^1.0.4",
+		"@vonage/vvd-core": "^1.1.1",
 		"kefir": "^3.8.7",
 		"lit-element": "^2.4.0",
 		"ramda": "^0.27.1"

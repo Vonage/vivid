@@ -19,7 +19,7 @@ import {
 	hasNotchedOutline,
 	validateMultipleShadowLayers,
 	validateOnReset,
-} from './textfield-utils.test.js';
+} from '@vonage/vvd-foundation/test/input-utils.test.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
@@ -39,12 +39,12 @@ describe('textfield', () => {
 	});
 
 	it('should have internal contents', async () => {
-		const addedElements = addElement(
+		const [e] = addElement(
 			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 		);
-		const actualElement = addedElements[0];
 		await waitNextTask();
-		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
+		expect(e).lightDom.equalSnapshot();
+		expect(e).shadowDom.equalSnapshot();
 	});
 
 	describe('typography', () => {
@@ -88,7 +88,7 @@ describe('textfield', () => {
 			}
 
 			expect(
-				formElement.querySelectorAll(`input[name="${fieldName}"`).length
+				formElement.querySelectorAll(`input[name="${fieldName}"]`).length
 			).to.equal(1);
 		});
 
@@ -103,6 +103,9 @@ describe('textfield', () => {
 
 			const formElement = addedElements[0];
 			const externalForm = addedElements[1];
+			const inputElement = formElement
+				.querySelector(COMPONENT_NAME)
+				.querySelector(`input[name="${fieldName}"`);
 
 			const submitPromise = listenToSubmission(externalForm);
 
@@ -113,22 +116,8 @@ describe('textfield', () => {
 				expect(formDataValue).to.equal(fieldValue);
 			}
 
-			expect(formElement.querySelector(`input[name="${fieldName}"`)).to.equal(
-				null
-			);
-			expect(
-				externalForm.querySelectorAll(`input[name="${fieldName}"`).length
-			).to.equal(1);
-		});
-
-		it(`should do nothing if form value resolves to a non form element`, async function () {
-			const nonExistentFormId = 'noneExistentForm';
-			const [formElement] = addElement(
-				createElementInForm(fieldName, fieldValue, nonExistentFormId)
-			);
-			await waitNextTask();
-
-			expect(formElement.querySelector('input')).to.equal(null);
+			expect([...formElement.elements].includes(inputElement)).to.equal(false);
+			expect([...externalForm.elements].includes(inputElement)).to.equal(true);
 		});
 
 		describe(`value binding`, function () {
@@ -146,11 +135,10 @@ describe('textfield', () => {
 			});
 
 			it(`should change the value of the mock input on internal input change`, async function () {
-				const addedElements = addElement(
+				const [formElement] = addElement(
 					createElementInForm(fieldName, fieldValue)
 				);
 
-				const formElement = addedElements[0];
 				const actualElement = formElement.querySelector(COMPONENT_NAME);
 				await waitNextTask();
 
@@ -202,70 +190,6 @@ describe('textfield', () => {
 
 		it(`should work under multiple shadow layers`, async function () {
 			validateMultipleShadowLayers(COMPONENT_NAME, 'input');
-		});
-
-		describe(`submit form on Enter key`, function () {
-			let actualElement, formElement, externalForm;
-			const externalFormID = 'externalForm';
-			const fieldNameEnterSubmit = 'test-field';
-			const fieldValueEnterSubmit = Math.random().toString();
-
-			function dispatchKeyEvent(keyName) {
-				const ke = new KeyboardEvent('keydown', {
-					bubbles: true,
-					cancelable: true,
-					key: keyName,
-				});
-				actualElement.dispatchEvent(ke);
-			}
-
-			beforeEach(async function () {
-				[formElement, externalForm] = addElement(
-					textToDomToParent(`
-				<form onsubmit="return false" name="testForm" id="testForm">
-					<${COMPONENT_NAME} name="${fieldNameEnterSubmit}" value="${fieldValueEnterSubmit}" form="${externalFormID}">
-					</${COMPONENT_NAME}>
-				</form>
-				<form onsubmit="return false" name="externalForm" id="${externalFormID}"></form>`)
-				);
-				actualElement = formElement.querySelector(COMPONENT_NAME);
-				await waitNextTask();
-			});
-
-			it(`should submit form on enter key press with button without a type`, async function () {
-				const submitPromise = listenToSubmission(externalForm);
-				externalForm.appendChild(document.createElement('button'));
-
-				dispatchKeyEvent('Enter');
-
-				for (let [formDataKey, formDataValue] of (await submitPromise).entries()) {
-					expect(formDataKey).to.equal(fieldNameEnterSubmit);
-					expect(formDataValue).to.equal(fieldValueEnterSubmit);
-				}
-			});
-
-			it(`should submit form on enter key press with input of type "submit"`, async function () {
-				const submitElement = document.createElement('input');
-				submitElement.setAttribute('type', 'submit');
-				externalForm.appendChild(submitElement);
-				const submitPromise = listenToSubmission(externalForm);
-
-				dispatchKeyEvent('Enter');
-
-				for (let [formDataKey, formDataValue] of (await submitPromise).entries()) {
-					expect(formDataKey).to.equal(fieldNameEnterSubmit);
-					expect(formDataValue).to.equal(fieldValueEnterSubmit);
-				}
-			});
-
-			it(`should not submit form without a button or input submit`, async function () {
-				let called = false;
-				externalForm.addEventListener('submit', () => (called = true));
-
-				dispatchKeyEvent('Enter');
-
-				expect(called).to.equal(false);
-			});
 		});
 	});
 
