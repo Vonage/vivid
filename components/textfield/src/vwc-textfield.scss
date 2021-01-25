@@ -175,7 +175,6 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 	}
 
 	vwc-icon {
-		z-index: 1;
 		align-self: center;
 		margin: 0 12px;
 		min-height: 18px;
@@ -232,6 +231,14 @@ vwc-notched-outline {
 	padding-inline-end: var(--padding-inline-end);
 	box-sizing: border-box;
 	border-radius: var(--border-radius);
+}
+
+::slotted(input:-webkit-autofill),
+::slotted(input:-webkit-autofill:hover),
+::slotted(input:-webkit-autofill:focus) {
+	z-index: -1;
+	// -webkit-text-fill-color: green;
+	// -webkit-box-shadow: none;
 }
 
 :host([outlined]) {
