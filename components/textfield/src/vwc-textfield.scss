@@ -39,7 +39,7 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 	);
 	--mdc-shape-small: var(--border-radius);
 
-	min-width: 160px;
+	min-width: 180px;
 
 	font-stretch: var(
 		--mdc-typography-subtitle1-font-stretch
@@ -180,6 +180,7 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 
 	vwc-icon {
 		align-self: center;
+		padding: 0;
 		margin: 0 #{$horizontal-gutter};
 		min-block-size: $icon-size;
 		min-inline-size: $icon-size;
@@ -213,7 +214,7 @@ vwc-notched-outline {
 }
 .mdc-text-field--with-leading-icon.mdc-text-field--outlined
 	.mdc-floating-label {
-	left: 30px;
+	left: 40px;
 }
 
 // autofill enhancements
