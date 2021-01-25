@@ -18,8 +18,8 @@ export {
 	AutoScheme,
 	SchemeOption,
 } from './vvd-scheme-foundation';
-
-const eventBus = new EventTarget();
+import { Emitter } from '@vonage/vvd-foundation/general-utils';
+const eventBus = new Emitter(); // !refactored due to lack of support of EventTarget as a constructor (new EventTarget()) in safari 12
 
 let _selectedScheme: PredefinedScheme;
 function getSelectedScheme(): PredefinedScheme {
