@@ -238,7 +238,7 @@ vwc-notched-outline {
 ::slotted(input:-webkit-autofill:focus) {
 	z-index: -1;
 	// -webkit-text-fill-color: green;
-	// -webkit-box-shadow: none;
+	// -webkit-box-shadow: 0 0 0 30px red inset;
 }
 
 :host([outlined]) {
