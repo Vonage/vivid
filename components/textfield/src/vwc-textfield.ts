@@ -43,6 +43,9 @@ export class VWCTextField extends MWCTextField {
 	@property({ type: String, reflect: true })
 	form: string | undefined;
 
+	@property({ type: String, reflect: true, converter: (v) => (v ? v : ' ') })
+	placeholder = ' ';
+
 	constructor() {
 		super();
 		Object.defineProperty(this, 'formElement', {
@@ -54,7 +57,7 @@ export class VWCTextField extends MWCTextField {
 			},
 			set: function (newValue: string) {
 				this.formElement.value = newValue;
-				this.layout();
+				this.floatLabel();
 			},
 		});
 	}
@@ -66,6 +69,9 @@ export class VWCTextField extends MWCTextField {
 		}
 		this.formElement.value = this.value;
 		this.appendChild(this.formElement);
+		this.formElement.addEventListener('transitionend', () => {
+			this.floatLabel();
+		});
 	}
 
 	async firstUpdated(): Promise<void> {
@@ -186,6 +192,21 @@ export class VWCTextField extends MWCTextField {
 		setAttributeIfDefined('aria-controls', ariaLabel, fe);
 		setAttributeIfDefined('aria-describedby', ariaLabel, fe);
 		setAttributeIfDefined('aria-errortext', ariaError, fe);
+	}
+
+	private floatLabel(): void {
+		const floatingLabelElement = this.shadowRoot?.querySelector(
+			'.mdc-floating-label'
+		);
+		const isUp = this.value || this.focused;
+		if (!floatingLabelElement) {
+			return;
+		}
+		if (isUp) {
+			floatingLabelElement.classList.add('mdc-floating-label--float-above');
+		} else {
+			floatingLabelElement.classList.remove('mdc-floating-label--float-above');
+		}
 	}
 }
 
