@@ -30,6 +30,8 @@ type TextfieldShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
 MWCTextField.styles = [styleCoupling, mwcTextFieldStyle, vwcTextFieldStyle];
 
 const INPUT_ELEMENT_SLOT_NAME = 'formInputElement';
+const INPUT_ELEMENT_CLASS_NAME = 'vivid-input-internal';
+
 @customElement('vwc-textfield')
 export class VWCTextField extends MWCTextField {
 	@property({ type: Boolean, reflect: true })
@@ -142,6 +144,7 @@ export class VWCTextField extends MWCTextField {
 		const defaultValue = this.getAttribute('value');
 		element.defaultValue = defaultValue ? defaultValue : '';
 		element.setAttribute('slot', INPUT_ELEMENT_SLOT_NAME);
+		element.className = INPUT_ELEMENT_CLASS_NAME;
 		return element;
 	}
 

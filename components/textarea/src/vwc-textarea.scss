@@ -1,5 +1,5 @@
 @use '@vonage/vvd-typography/scss/typography';
-@use '@vonage/vwc-textfield/src/vwc-textfield' as textfield;
+@use '@vonage/vwc-textfield/src/vwc-textfield-variables' as textfield-variables;
 
 :host {
 	display: inline-flex;
@@ -21,7 +21,7 @@
 
 .mdc-text-field--textarea {
 	height: 100%;
-	min-height: var(#{textfield.$vvd-text-field-size-block});
+	min-height: var(#{textfield-variables.$vvd-text-field-size-block});
 	padding-left: 0;
 	padding-right: 0;
 

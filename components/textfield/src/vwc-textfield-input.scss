@@ -1,0 +1,30 @@
+@use './vwc-textfield-variables' as textfield-variables;
+
+::slotted(.vivid-input-internal) {
+	border: unset;
+	outline: unset;
+	background: unset;
+	color: var(--mdc-text-field-ink-color);
+	position: absolute;
+	top: 0;
+	left: 0;
+	block-size: 100%;
+	inline-size: 100%;
+	padding-inline-start: var(--padding-inline-start);
+	padding-inline-end: var(--padding-inline-end);
+	border-radius: var(--border-radius);
+	box-sizing: border-box !important;
+	transition: opacity 100ms;
+}
+
+::slotted(.vivid-input-internal:-webkit-autofill),
+::slotted(.vivid-input-internal:-webkit-autofill:hover),
+::slotted(.vivid-input-internal:-webkit-autofill:focus) {
+	z-index: -1;
+}
+
+:host(:not([dense])) {
+	::slotted(.vivid-input-internal) {
+		padding-block-start: calc(var(#{textfield-variables.$vvd-text-field-size-block}) - 32px);
+	}
+}
