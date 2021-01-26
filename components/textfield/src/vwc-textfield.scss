@@ -5,12 +5,6 @@
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins;
 
-$horizontal-gutter: 16px;
-$icon-size: 20px;
-$icon-gutter: calc(#{$icon-size} + #{$horizontal-gutter} * 2);
-
-$vvd-text-field-size-block: --vvd-text-field-size-block;
-
 :host {
 	--mdc-theme-error: #{color-semantic.$formfield-label-error-ink};
 	--mdc-text-field-fill-color: var(#{scheme-variables.$vvd-color-base});
@@ -183,9 +177,9 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 	vwc-icon {
 		align-self: center;
 		padding: 0;
-		margin: 0 #{$horizontal-gutter};
-		min-block-size: $icon-size;
-		min-inline-size: $icon-size;
+		margin: 0 #{textfield-variables.$horizontal-gutter};
+		min-block-size: textfield-variables.$icon-size;
+		min-inline-size: textfield-variables.$icon-size;
 	}
 }
 
@@ -221,16 +215,16 @@ vwc-notched-outline {
 
 :host([outlined]) {
 	--padding-inline-start: max(
-		#{$horizontal-gutter},
+		#{textfield-variables.$horizontal-gutter},
 		calc(var(--mdc-shape-small, 4px) + 4px)
 	);
-	--padding-inline-end: max(#{$horizontal-gutter}, var(--mdc-shape-small, 4px));
+	--padding-inline-end: max(#{textfield-variables.$horizontal-gutter}, var(--mdc-shape-small, 4px));
 }
 
 :host(:not([disabled])[icon]) {
-	--padding-inline-start: #{$icon-gutter};
+	--padding-inline-start: #{textfield-variables.$icon-gutter};
 }
 
 :host(:not([disabled])[icontrailing]) {
-	--padding-inline-end: #{$icon-gutter};
+	--padding-inline-end: #{textfield-variables.$icon-gutter};
 }

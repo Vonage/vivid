@@ -31,7 +31,11 @@
 }
 
 :host(:not([dense])) {
-	::slotted(input) {
+	::slotted(#{textfield-variables.$vvd-input-selector}) {
 		padding-block-start: calc(var(#{textfield-variables.$vvd-text-field-size-block}) - 32px);
+	}
+
+	::slotted(#{textfield-variables.$vvd-input-selector}:placeholder-shown:not(:focus)) {
+		opacity: 0;
 	}
 }
