@@ -5,6 +5,12 @@
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins;
 
+$horizontal-gutter: 16px;
+$icon-size: 20px;
+$icon-gutter: calc(#{$icon-size} + #{$horizontal-gutter} * 2);
+
+$vvd-text-field-size-block: --vvd-text-field-size-block;
+
 :host {
 	--mdc-theme-error: #{color-semantic.$formfield-label-error-ink};
 	--mdc-text-field-fill-color: var(#{scheme-variables.$vvd-color-base});
@@ -35,7 +41,7 @@
 	);
 	--mdc-shape-small: var(--border-radius);
 
-	min-width: 160px;
+	min-width: 180px;
 
 	font-stretch: var(
 		--mdc-typography-subtitle1-font-stretch
@@ -125,7 +131,7 @@
 		background-color: var(--mdc-text-field-fill-color);
 
 		.mdc-floating-label {
-			left: 2px;
+			left: 4px;
 		}
 	}
 
@@ -145,7 +151,7 @@
 
 	&:not(.mdc-text-field--disabled) {
 		.mdc-text-field__icon--leading {
-			color: var(--mdc-text-field-ink-color);
+			color: var(--mdc-text-field-label-ink-color);
 		}
 	}
 
@@ -176,9 +182,10 @@
 
 	vwc-icon {
 		align-self: center;
-		margin: 0 12px;
-		min-height: 18px;
-		min-width: 18px;
+		padding: 0;
+		margin: 0 #{$horizontal-gutter};
+		min-block-size: $icon-size;
+		min-inline-size: $icon-size;
 	}
 }
 
@@ -209,15 +216,16 @@ vwc-notched-outline {
 }
 .mdc-text-field--with-leading-icon.mdc-text-field--outlined
 	.mdc-floating-label {
-	left: 30px;
+	left: 40px;
 }
 
 :host([outlined]) {
-	--padding-inline-start: max(14px, calc(var(--mdc-shape-small, 4px) + 4px));
-	--padding-inline-end: max(14px, var(--mdc-shape-small, 4px));
+	--padding-inline-start: max(
+		#{$horizontal-gutter},
+		calc(var(--mdc-shape-small, 4px) + 4px)
+	);
+	--padding-inline-end: max(#{$horizontal-gutter}, var(--mdc-shape-small, 4px));
 }
-
-$icon-gutter: calc(18px + 12px * 2);
 
 :host(:not([disabled])[icon]) {
 	--padding-inline-start: #{$icon-gutter};
