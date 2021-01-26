@@ -1,0 +1,3 @@
+{
+	"extends": ["../../common/umbrella/configs/.hintrc.settings"]
+}
