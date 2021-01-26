@@ -1,0 +1,15 @@
+{
+	"extends": ["development"],
+	"connector": {
+		"name": "local"
+	},
+	"formatters": ["stylish"],
+	"hints": {
+		"typescript-config/is-valid": "error",
+		"typescript-config/target": "error",
+		"compat-api/css": "error",
+		"compat-api/html": "error",
+		"css-prefix-order": "error"
+	},
+	"parsers": ["typescript-config", "sass"]
+}

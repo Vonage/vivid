@@ -1,9 +1,3 @@
 {
-	"extends": ["development"],
-	"connector": {
-		"name": "local"
-	},
-	"formatters": ["stylish"],
-	"hints": {},
-	"parsers": ["typescript-config", "sass"]
+	"extends": ["../../common/umbrella/configs/.hintrc.settings"]
 }

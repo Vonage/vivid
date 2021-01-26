@@ -23,7 +23,7 @@
 		"build:typescript": "tsc -b",
 		"build:styles": "umbrella-style-modules",
 		"build": "yarn run build:styles && yarn run build:typescript",
-		"webhint": "hint ./src"
+		"webhint": "hint src"
 	},
 	"bugs": {
 		"url": "https://github.com/Vonage/vivid/issues"
