@@ -29,3 +29,9 @@
 	-webkit-box-shadow: 0 0 0 30px
 		var(#{scheme-variables.$vvd-color-contrast-faint}) inset;
 }
+
+:host(:not([dense])) {
+	::slotted(input) {
+		padding-block-start: calc(var(#{textfield-variables.$vvd-text-field-size-block}) - 32px);
+	}
+}
