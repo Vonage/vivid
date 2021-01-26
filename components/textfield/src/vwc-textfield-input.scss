@@ -1,7 +1,11 @@
 @use './vwc-textfield-variables' as textfield-variables;
+@use '@vonage/vvd-typography/scss/typography';
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 
 ::slotted(#{textfield-variables.$vvd-input-selector}) {
+		@include typography.typography-cat-shorthand('body-2');
+
 		border: unset;
 		outline: unset;
 		background: unset;
@@ -19,6 +23,13 @@
 		box-sizing: border-box;
 		border-radius: var(--border-radius);
 		transition: opacity 100ms;
+}
+
+:host([disabled]) {
+	::slotted(#{textfield-variables.$vvd-input-selector}),
+	::slotted(#{textfield-variables.$vvd-input-selector})::placeholder {
+		color: var(#{color-semantic.$formfield-disabled-ink});
+	}
 }
 
 ::slotted(#{textfield-variables.$vvd-input-selector}:-webkit-autofill),
