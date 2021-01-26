@@ -3,7 +3,7 @@
 	"connector": {
 		"name": "local",
 		"options": {
-			"pattern": ["**"]
+			"pattern": ["src"]
 		}
 	},
 	"formatters": ["summary"],
