@@ -1,12 +1,9 @@
 {
 	"extends": ["development"],
 	"connector": {
-		"name": "local",
-		"options": {
-			"pattern": ["src"]
-		}
+		"name": "local"
 	},
-	"formatters": ["summary"],
+	"formatters": ["stylish"],
 	"hints": {},
 	"parsers": ["typescript-config", "sass"]
 }
