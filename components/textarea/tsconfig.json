@@ -23,6 +23,9 @@
 		},
 		{
 			"path": "../notched-outline"
+		},
+		{
+			"path": "../elevation-overlay"
 		}
 	]
 }

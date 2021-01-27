@@ -1,6 +1,7 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-helper-message';
 import '@vonage/vwc-notched-outline';
+import '@vonage/vwc-elevation-overlay';
 import { customElement, html, property, TemplateResult } from 'lit-element';
 import { TextArea as MWCTextArea } from '@material/mwc-textarea';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
@@ -43,6 +44,10 @@ export class VWCTextArea extends MWCTextArea {
 		await super.firstUpdated();
 		associateWithForm(this, this.formElement);
 		handleAutofocus(this);
+	}
+
+	protected renderRipple(): TemplateResult {
+		return html`<vwc-elevation-overlay></vwc-elevation-overlay>`;
 	}
 
 	protected renderOutline(): TemplateResult | string {

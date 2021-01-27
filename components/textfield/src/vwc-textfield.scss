@@ -131,9 +131,6 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 	}
 
 	&--invalid {
-		--mdc-elevation-overlay-opacity: 0.08;
-		--mdc-elevation-overlay-fill-color: var(#{scheme-variables.$vvd-color-alert});;
-
 		&.mdc-text-field--outlined {
 			vwc-notched-outline {
 				--mdc-notched-outline-border-color: var(--mdc-text-field-error-color);
@@ -143,6 +140,11 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 				color: var(--mdc-text-field-error-color);
 			}
 		}
+
+		vwc-elevation-overlay {
+      --mdc-elevation-overlay-opacity: 0.08;
+      --mdc-elevation-overlay-fill-color: var(#{scheme-variables.$vvd-color-alert});
+    }
 	}
 
 	&:not(.mdc-text-field--disabled) {

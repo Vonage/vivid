@@ -2,6 +2,7 @@ import '@vonage/vvd-core';
 import '@vonage/vwc-helper-message';
 import '@vonage/vwc-icon';
 import '@vonage/vwc-notched-outline';
+import '@vonage/vwc-elevation-overlay';
 import {
 	customElement,
 	property,
@@ -58,6 +59,10 @@ export class VWCSelect extends MWCSelect {
 		if (this.shape === 'pill') {
 			this.dense = true;
 		}
+	}
+
+	protected renderRipple(): TemplateResult {
+		return html`<vwc-elevation-overlay></vwc-elevation-overlay>`;
 	}
 
 	protected renderHelperText(): TemplateResult | string {
