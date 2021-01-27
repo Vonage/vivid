@@ -69,6 +69,7 @@ export class VWCTextField extends MWCTextField {
 			this.outlined = true;
 		}
 		this.formElement.value = this.value;
+		this.floatLabel();
 		this.appendChild(this.formElement);
 		this.formElement.addEventListener('transitionend', () => {
 			this.floatLabel();
