@@ -17,6 +17,7 @@
 		{ "path": "components/circular-progress" },
 		{ "path": "components/dialog" },
 		{ "path": "components/drawer" },
+		{ "path": "components/elevation-overlay" },
 		{ "path": "components/expansion-panel" },
 		{ "path": "components/fab" },
 		{ "path": "components/file-picker" },

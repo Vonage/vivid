@@ -2332,6 +2332,14 @@
     tslib "^2.0.1"
     wicg-inert "^3.0.0"
 
+"@material/mwc-elevation-overlay@^0.20.0":
+  version "0.20.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-elevation-overlay/-/mwc-elevation-overlay-0.20.0.tgz#ba6bb6460891595715f4781bee49c79f9298af93"
+  integrity sha1-umu2RgiRWVcV9Hgb7knHn5KYr5M=
+  dependencies:
+    lit-element "^2.3.0"
+    tslib "^2.0.1"
+
 "@material/mwc-fab@^0.20.0":
   version "0.20.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-fab/-/mwc-fab-0.20.0.tgz#bcd77bd9a6e06855b174944f0267e2b5512fab45"

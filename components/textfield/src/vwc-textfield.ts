@@ -2,6 +2,7 @@ import '@vonage/vvd-core';
 import '@vonage/vwc-helper-message';
 import '@vonage/vwc-icon';
 import '@vonage/vwc-notched-outline';
+import '@vonage/vwc-elevation-overlay';
 import {
 	customElement,
 	property,
@@ -130,7 +131,7 @@ export class VWCTextField extends MWCTextField {
 	}
 
 	protected renderRipple(): TemplateResult {
-		return html``;
+		return html`<vwc-elevation-overlay></vwc-elevation-overlay>`;
 	}
 
 	protected renderLineRipple(): TemplateResult {

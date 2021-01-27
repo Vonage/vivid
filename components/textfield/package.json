@@ -34,6 +34,7 @@
 		"@vonage/vwc-helper-message": "^1.1.1",
 		"@vonage/vwc-icon": "^1.1.1",
 		"@vonage/vwc-notched-outline": "^1.1.1",
+		"@vonage/vwc-elevation-overlay": "^1.1.1",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.3"
 	},
