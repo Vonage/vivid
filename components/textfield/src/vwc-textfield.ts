@@ -12,7 +12,7 @@ import {
 } from 'lit-element';
 import { TextField as MWCTextField } from '@material/mwc-textfield';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
-import { style as vwcTextFieldStyle } from './vwc-textfield.css';
+import { style as vwcTextFieldStyle } from './vwc-textfield.css.js';
 import { style as mwcTextFieldStyle } from '@material/mwc-textfield/mwc-textfield-css.js';
 import { Shape } from '@vonage/vvd-foundation/constants';
 import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
