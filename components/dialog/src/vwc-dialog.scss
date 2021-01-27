@@ -6,6 +6,11 @@
 
 }
 
+:host #title, #content, #actions {
+	padding-right: 32px;
+	padding-left: 32px;
+}
+
 #title {
 	@include typography.typography-cat-shorthand('subtitle-2');
 }
