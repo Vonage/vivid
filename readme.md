@@ -34,6 +34,9 @@ For your convenience, we've organized all our documentation under the following 
 #### Support
 
 We are running Vivid's compliance against [webhint](https://github.com/webhintio/hint) in accordance to [browserslist](https://github.com/browserslist/browserslist) query - which returns the following support matrix:
+
 ![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![Edge](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)
 --- | --- | --- | --- |
-Latest ✔ | Latest ✔ | 88+ ✔ | 13+ ✔ |
+87+ ✔ | 83+ ✔ | 88+ ✔ | 13+ ✔ |
+
+> Attention! This is an initial matrix we've tested so far. While any greater versions are supported for sure, we are working on getting this 'waterline' even lower.
