@@ -6,13 +6,14 @@
 
 }
 
-:host #title, #content, #actions {
+:host #title, #content, #actions, #dialog_icon {
 	padding-right: 32px;
 	padding-left: 32px;
 }
 
-#title {
+:host #title {
 	@include typography.typography-cat-shorthand('subtitle-2');
+	padding-bottom: 0;
 }
 
 #content {
@@ -21,4 +22,12 @@
 
 #actions {
 	@include typography.typography-cat-shorthand('body-2-bold');
+}
+
+.mdc-dialog__surface {
+	padding-top: 40px;
+}
+
+.mdc-dialog__title::before {
+	height: 0;
 }
