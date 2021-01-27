@@ -30,6 +30,9 @@ type TextfieldShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
 MWCTextField.styles = [styleCoupling, mwcTextFieldStyle, vwcTextFieldStyle];
 
 const INPUT_ELEMENT_SLOT_NAME = 'formInputElement';
+const INPUT_ELEMENT_CLASS_NAME = 'vivid-input-internal';
+const MDC_FLOAT_ABOVE_CLASS_NAME = 'mdc-floating-label--float-above';
+
 @customElement('vwc-textfield')
 export class VWCTextField extends MWCTextField {
 	@property({ type: Boolean, reflect: true })
@@ -40,6 +43,9 @@ export class VWCTextField extends MWCTextField {
 
 	@property({ type: String, reflect: true })
 	form: string | undefined;
+
+	@property({ type: String, reflect: true, converter: (v) => (v ? v : ' ') })
+	placeholder = ' ';
 
 	constructor() {
 		super();
@@ -52,7 +58,7 @@ export class VWCTextField extends MWCTextField {
 			},
 			set: function (newValue: string) {
 				this.formElement.value = newValue;
-				this.layout();
+				this.floatLabel();
 			},
 		});
 	}
@@ -64,6 +70,9 @@ export class VWCTextField extends MWCTextField {
 		}
 		this.formElement.value = this.value;
 		this.appendChild(this.formElement);
+		this.formElement.addEventListener('transitionend', () => {
+			this.floatLabel();
+		});
 	}
 
 	async firstUpdated(): Promise<void> {
@@ -142,6 +151,7 @@ export class VWCTextField extends MWCTextField {
 		const defaultValue = this.getAttribute('value');
 		element.defaultValue = defaultValue ? defaultValue : '';
 		element.setAttribute('slot', INPUT_ELEMENT_SLOT_NAME);
+		element.className = INPUT_ELEMENT_CLASS_NAME;
 		return element;
 	}
 
@@ -153,58 +163,60 @@ export class VWCTextField extends MWCTextField {
 		fe.onblur = this.onInputBlur.bind(this);
 
 		//	attributes
-		setAttributeIfDefined('id', this.id, fe);
-		setAttributeIfDefined('name', this.name, fe);
-		setAttributeIfDefined('type', this.type, fe);
-		setAttributeIfDefined('form', this.form, fe);
-		setAttributeIfDefined('placeholder', this.placeholder, fe);
+		setAttributeByValue('id', this.id, fe);
+		setAttributeByValue('name', this.name, fe);
+		setAttributeByValue('type', this.type, fe);
+		setAttributeByValue('form', this.form, fe);
+		setAttributeByValue('placeholder', this.placeholder, fe);
 
-		setAttributeIfDefined('min', this.min, fe);
-		setAttributeIfDefined('max', this.max, fe);
-		setAttributeIfDefined('step', this.step, fe);
-		setAttributeIfDefined('size', this.size, fe);
+		setAttributeByValue('min', this.min, fe);
+		setAttributeByValue('max', this.max, fe);
+		setAttributeByValue('step', this.step, fe);
+		setAttributeByValue('size', this.size, fe);
 
 		const autoCapOrNone = this.autocapitalize ? this.autocapitalize : undefined;
 		const minOrNone = this.minLength === -1 ? undefined : this.minLength;
 		const maxOrNone = this.maxLength === -1 ? undefined : this.maxLength;
-		setAttributeIfDefined('autocapitalize', autoCapOrNone, fe);
-		setAttributeIfDefined('minlength', minOrNone, fe);
-		setAttributeIfDefined('maxlength', maxOrNone, fe);
-		setAttributeIfDefined('pattern', this.pattern, fe);
-		setAttributeIfDefined('inputmode', this.inputMode, fe);
+		setAttributeByValue('autocapitalize', autoCapOrNone, fe);
+		setAttributeByValue('minlength', minOrNone, fe);
+		setAttributeByValue('maxlength', maxOrNone, fe);
+		setAttributeByValue('pattern', this.pattern, fe);
+		setAttributeByValue('inputmode', this.inputMode, fe);
 
-		addAttributeByCondition('disabled', this.disabled, fe);
-		addAttributeByCondition('readonly', this.readOnly, fe);
-		addAttributeByCondition('required', this.required, fe);
+		setAttributeByValue('disabled', this.disabled, fe, true);
+		setAttributeByValue('readonly', this.readOnly, fe, true);
+		setAttributeByValue('required', this.required, fe, true);
 
 		const ariaLabel = shouldRenderHelperText ? 'helper-text' : undefined;
 		const ariaError =
 			this.validationMessage && !this.isUiValid ? 'helper-text' : undefined;
-		setAttributeIfDefined('aria-controls', ariaLabel, fe);
-		setAttributeIfDefined('aria-describedby', ariaLabel, fe);
-		setAttributeIfDefined('aria-errortext', ariaError, fe);
+		setAttributeByValue('aria-controls', ariaLabel, fe);
+		setAttributeByValue('aria-describedby', ariaLabel, fe);
+		setAttributeByValue('aria-errortext', ariaError, fe);
+	}
+
+	private floatLabel(): void {
+		const fle = this.shadowRoot?.querySelector('.mdc-floating-label');
+		const isUp = this.value || this.focused;
+		if (!fle) {
+			return;
+		}
+		if (isUp) {
+			fle.classList.add(MDC_FLOAT_ABOVE_CLASS_NAME);
+		} else {
+			fle.classList.remove(MDC_FLOAT_ABOVE_CLASS_NAME);
+		}
 	}
 }
 
-function addAttributeByCondition(
-	attributeName: string,
-	condition: boolean,
-	target: HTMLInputElement
-): void {
-	if (condition) {
-		target.setAttribute(attributeName, '');
-	} else {
-		target.removeAttribute(attributeName);
-	}
-}
-
-function setAttributeIfDefined(
+function setAttributeByValue(
 	attributeName: string,
 	value: unknown,
-	target: HTMLInputElement
+	target: HTMLInputElement,
+	asEmpty = false
 ): void {
 	if (value) {
-		target.setAttribute(attributeName, String(value));
+		target.setAttribute(attributeName, asEmpty ? '' : String(value));
 	} else {
 		target.removeAttribute(attributeName);
 	}
