@@ -20,7 +20,7 @@
 		inline-size: 100%;
 		padding-inline-start: var(--padding-inline-start);
 		padding-inline-end: var(--padding-inline-end);
-		box-sizing: border-box;
+		box-sizing: border-box !important;
 		border-radius: var(--border-radius);
 }
 
