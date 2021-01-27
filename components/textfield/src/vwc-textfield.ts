@@ -69,7 +69,6 @@ export class VWCTextField extends MWCTextField {
 			this.outlined = true;
 		}
 		this.formElement.value = this.value;
-		this.floatLabel();
 		this.appendChild(this.formElement);
 		this.formElement.addEventListener('transitionend', () => {
 			this.floatLabel();
@@ -82,6 +81,7 @@ export class VWCTextField extends MWCTextField {
 			?.querySelector('.mdc-notched-outline')
 			?.shadowRoot?.querySelector('.mdc-notched-outline')
 			?.classList.add('vvd-notch');
+		this.floatLabel();
 		handleAutofocus(this);
 	}
 
