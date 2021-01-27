@@ -67,9 +67,10 @@
 	}
 
 	&.drag-invalid {
-		.content {
-			background-color: var(#{color-semantic.$formfield-error-fill});
-		}
+		vwc-elevation-overlay {
+      --mdc-elevation-overlay-opacity: 0.08;
+      --mdc-elevation-overlay-fill-color: var(#{scheme-variables.$vvd-color-alert});
+    }
 	}
 }
 

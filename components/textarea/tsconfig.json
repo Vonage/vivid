@@ -19,13 +19,13 @@
 			"path": "../../common/style-coupling"
 		},
 		{
+			"path": "../elevation-overlay"
+		},
+		{
 			"path": "../helper-message"
 		},
 		{
 			"path": "../notched-outline"
-		},
-		{
-			"path": "../elevation-overlay"
 		}
 	]
 }

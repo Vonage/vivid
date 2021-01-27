@@ -25,6 +25,9 @@
 			"path": "../button"
 		},
 		{
+			"path": "../elevation-overlay"
+		},
+		{
 			"path": "../icon"
 		}
 	]

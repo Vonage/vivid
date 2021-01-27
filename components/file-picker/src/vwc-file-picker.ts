@@ -2,6 +2,7 @@ import '@vonage/vvd-core';
 import '@vonage/vwc-badge';
 import '@vonage/vwc-button';
 import '@vonage/vwc-icon';
+import '@vonage/vwc-elevation-overlay';
 import {
 	customElement,
 	html,
@@ -73,6 +74,7 @@ export class VWCFilePicker extends LitElement {
 			<label class="wrapper" aria-describedby="helper">
 				${this.renderHeader()}
 				<div class="content drop-zone part">
+					<vwc-elevation-overlay></vwc-elevation-overlay>
 					<slot name="dd-hint">${this.renderDragNDropHint()}</slot>
 					<slot name="${BUTTON_SLOT}" @click=${this.triggerFileInput}></slot>
 					<slot class="${INPUT_FILE_SLOT}"></slot>
