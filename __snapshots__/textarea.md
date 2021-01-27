@@ -4,8 +4,8 @@
 
 ```html
 <label class="mdc-text-field mdc-text-field--filled mdc-text-field--no-label mdc-text-field--textarea">
-  <span class="mdc-text-field__ripple">
-  </span>
+  <vwc-elevation-overlay>
+  </vwc-elevation-overlay>
   <textarea
     aria-labelledby="label"
     class="mdc-text-field__input"

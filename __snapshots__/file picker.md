@@ -8,6 +8,8 @@
   class="wrapper"
 >
   <div class="content drop-zone part">
+    <vwc-elevation-overlay>
+    </vwc-elevation-overlay>
     <slot name="dd-hint">
       <span class="dd-hint">
         Drag & Drop files here
