@@ -73,6 +73,7 @@ export class VWCTextField extends MWCTextField {
 		this.formElement.addEventListener('transitionend', () => {
 			this.floatLabel();
 		});
+		setTimeout(this.floatLabel, 200);
 	}
 
 	async firstUpdated(): Promise<void> {
