@@ -44,7 +44,22 @@ module.exports = config => {
 					type: 'lcovonly', subdir: 'report-lcov', file: 'lcov.info'
 				}
 			]
-		}
+		},
+		browserStack: {
+			username: 'yonatankra1',
+			accessKey: 'x41Q5a1idSa7aiUSr6Fi'
+		},
+		// define browsers
+		customLaunchers: {
+			bs_safari_12: {
+				base: 'BrowserStack',
+				browser: 'safari',
+				browser_version: '12.1',
+				os: 'OS X',
+				os_version: 'Mojave'
+			}
+		},
+		browsers: ['bs_safari_12']
 	});
 
 	config.set(extendedDefaultConfig);
