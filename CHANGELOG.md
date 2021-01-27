@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2](https://github.com/Vonage/vivid/compare/v1.1.1...v1.1.2) (2021-01-27)
+
+
+### Bug Fixes
+
+* **textfield:** textfield fixes in styling and behaviour ([#612](https://github.com/Vonage/vivid/issues/612)) ([da699b1](https://github.com/Vonage/vivid/commit/da699b12db6f4bbad346d060f89abb207fb14744))
+
+
+
+
+
 ## [1.1.1](https://github.com/Vonage/vivid/compare/v1.1.0...v1.1.1) (2021-01-25)
 
 **Note:** Version bump only for package @vivid/root

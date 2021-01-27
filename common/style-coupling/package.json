@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vvd-style-coupling",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"description": "> TODO: description",
 	"author": "yinonov <yinon@hotmail.com>",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/style-coupling#readme",
@@ -25,8 +25,8 @@
 		"tslib": "^2.0.3"
 	},
 	"devDependencies": {
-		"@vonage/vvd-design-tokens": "^1.1.1",
-		"@vonage/vvd-foundation": "^1.1.1",
+		"@vonage/vvd-design-tokens": "^1.1.2",
+		"@vonage/vvd-foundation": "^1.1.2",
 		"@vonage/vvd-umbrella": "^1.0.4",
 		"lit-element": "^2.4.0",
 		"typescript": "^4.1.3"
