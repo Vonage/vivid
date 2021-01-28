@@ -2,7 +2,7 @@
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 @use '@vonage/vvd-typography/scss/typography' as typography;
 
-:host #title, #content, #actions, #dialog_icon {
+#title, #content, #actions, #dialog_icon {
 	padding-right: 0;
 	padding-left: 0;
 	display: flex;
