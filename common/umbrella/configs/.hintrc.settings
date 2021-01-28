@@ -11,5 +11,5 @@
 		"compat-api/html": "error",
 		"css-prefix-order": "error"
 	},
-	"parsers": ["typescript-config", "sass"]
+	"parsers": ["typescript-config", "jsx", "typescript", "sass"]
 }

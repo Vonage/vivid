@@ -3755,6 +3755,13 @@
     "@material/feature-targeting" "^8.0.0"
     "@material/theme" "^8.0.0"
 
+"@mdn/browser-compat-data@^2.0.7":
+  version "2.0.7"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@mdn/browser-compat-data/-/browser-compat-data-2.0.7.tgz#72ec37b9c1e00ce0b4e0309d753be18e2da12ee3"
+  integrity sha1-cuw3ucHgDOC04DCddTvhji2hLuM=
+  dependencies:
+    extend "3.0.2"
+
 "@mdx-js/loader@^1.6.19":
   version "1.6.22"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@mdx-js/loader/-/loader-1.6.22.tgz#d9e8fe7f8185ff13c9c8639c048b123e30d322c4"
@@ -6069,6 +6076,11 @@ assign-symbols@^1.0.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/assign-symbols/-/assign-symbols-1.0.0.tgz#59667f41fadd4f20ccbc2bb96b8d4f7f78ec0367"
   integrity sha1-WWZ/QfrdTyDMvCu5a41Pf3jsA2c=
 
+ast-metadata-inferer@^0.4.0:
+  version "0.4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ast-metadata-inferer/-/ast-metadata-inferer-0.4.0.tgz#6be85ceeffcf267bd79db8e1ae731da44880b45f"
+  integrity sha1-a+hc7v/PJnvXnbjhrnMdpEiAtF8=
+
 ast-types@0.x.x, ast-types@^0.14.2:
   version "0.14.2"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ast-types/-/ast-types-0.14.2.tgz#600b882df8583e3cd4f2df5fa20fa83759d4bdfd"
@@ -6796,7 +6808,7 @@ browserslist@4.10.0:
     node-releases "^1.1.52"
     pkg-up "^3.1.0"
 
-browserslist@^4.0.0, browserslist@^4.12.0, browserslist@^4.14.1, browserslist@^4.14.5, browserslist@^4.16.0, browserslist@^4.9.1:
+browserslist@^4.0.0, browserslist@^4.12.0, browserslist@^4.12.2, browserslist@^4.14.1, browserslist@^4.14.5, browserslist@^4.16.0, browserslist@^4.9.1:
   version "4.16.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/browserslist/-/browserslist-4.16.1.tgz#bf757a2da376b3447b800a16f0f1c96358138766"
   integrity sha1-v3V6LaN2s0R7gAoW8PHJY1gTh2Y=
@@ -7076,7 +7088,7 @@ caniuse-api@^3.0.0:
     lodash.memoize "^4.1.2"
     lodash.uniq "^4.5.0"
 
-caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001033, caniuse-lite@^1.0.30001035, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001173:
+caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001033, caniuse-lite@^1.0.30001035, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001166, caniuse-lite@^1.0.30001173:
   version "1.0.30001180"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/caniuse-lite/-/caniuse-lite-1.0.30001180.tgz#67abcd6d1edf48fa5e7d1e84091d1d65ab76e33b"
   integrity sha1-Z6vNbR7fSPpefR6ECR0dZat24zs=
@@ -9455,6 +9467,20 @@ eslint-module-utils@^2.6.0:
   dependencies:
     debug "^2.6.9"
     pkg-dir "^2.0.0"
+
+eslint-plugin-compat@^3.9.0:
+  version "3.9.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/eslint-plugin-compat/-/eslint-plugin-compat-3.9.0.tgz#a7a224e09b102b58e7f7dff52c936428ff3e0186"
+  integrity sha1-p6Ik4JsQK1jn99/1LJNkKP8+AYY=
+  dependencies:
+    "@mdn/browser-compat-data" "^2.0.7"
+    ast-metadata-inferer "^0.4.0"
+    browserslist "^4.12.2"
+    caniuse-lite "^1.0.30001166"
+    core-js "^3.6.5"
+    find-up "^4.1.0"
+    lodash.memoize "4.1.2"
+    semver "7.3.2"
 
 eslint-plugin-html@^6.0.0:
   version "6.1.1"
@@ -13118,7 +13144,7 @@ lodash.ismatch@^4.4.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/lodash.ismatch/-/lodash.ismatch-4.4.0.tgz#756cb5150ca3ba6f11085a78849645f188f85f37"
   integrity sha1-dWy1FQyjum8RCFp4hJZF8Yj4Xzc=
 
-lodash.memoize@^4.1.2:
+lodash.memoize@4.1.2, lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
   integrity sha1-vMbEmkKihA7Zl/Mj6tpezRguC/4=
@@ -16990,6 +17016,11 @@ semver@7.0.0:
   version "7.0.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/semver/-/semver-7.0.0.tgz#5f3ca35761e47e05b206c6daff2cf814f0316b8e"
   integrity sha1-XzyjV2HkfgWyBsba/yz4FPAxa44=
+
+semver@7.3.2:
+  version "7.3.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/semver/-/semver-7.3.2.tgz#604962b052b81ed0786aae84389ffba70ffd3938"
+  integrity sha1-YElisFK4HtB4aq6EOJ/7pw/9OTg=
 
 semver@^6.0.0, semver@^6.2.0, semver@^6.3.0:
   version "6.3.0"
