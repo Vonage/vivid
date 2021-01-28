@@ -31,6 +31,10 @@
 	padding: 32px;
 }
 
+.mdc-dialog .mdc-dialog__content {
+	padding-top: 0;
+}
+
 .mdc-dialog__content.last {
 	padding-bottom: 0;
 }
