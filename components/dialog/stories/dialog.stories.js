@@ -31,7 +31,7 @@ const IconTemplate = args => html`
 	<vwc-button @click="${handleOpenDialogClick}">Open dialog</vwc-button>
 	<vwc-dialog ...=${spread(args)}>
 		<div>This is the modal's content.</div>
-		<vwc-icon slot="icon" type="home"></vwc-icon>
+		<vwc-icon slot="icon" size="large" type="home"></vwc-icon>
 		<vwc-button
 			slot="primaryAction"
 			dialogAction="discard">

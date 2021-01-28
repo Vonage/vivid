@@ -2,18 +2,20 @@
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 @use '@vonage/vvd-typography/scss/typography' as typography;
 
-:host {
-
+:host #title, #content, #actions, #dialog_icon {
+	padding-right: 0;
+	padding-left: 0;
+	display: flex;
 }
 
-:host #title, #content, #actions, #dialog_icon {
-	padding-right: 32px;
-	padding-left: 32px;
+:host #dialog_icon {
+	margin-bottom: 18px;
 }
 
 :host #title {
 	@include typography.typography-cat-shorthand('subtitle-2');
 	padding-bottom: 0;
+	margin-bottom: 8px;
 }
 
 #content {
@@ -22,10 +24,11 @@
 
 #actions {
 	@include typography.typography-cat-shorthand('body-2-bold');
+	padding-bottom: 0;
 }
 
 .mdc-dialog__surface {
-	padding-top: 40px;
+	padding: 32px;
 }
 
 .mdc-dialog__title::before {
