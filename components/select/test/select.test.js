@@ -17,6 +17,7 @@ import {
 import {
 	assertDenseStyles,
 	hasNotchedOutline,
+	hasElevationOverlay,
 	validateOnReset,
 } from '@vonage/vvd-foundation/test/input-utils.test.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
@@ -304,6 +305,12 @@ describe('select', () => {
 	describe('notched outlined', () => {
 		it('should have vwc-notched-outline defined', async () => {
 			hasNotchedOutline(COMPONENT_NAME);
+		});
+	});
+
+	describe('elevation overlay', () => {
+		it('should have vwc-elevation-overlay defined', async () => {
+			hasElevationOverlay(COMPONENT_NAME);
 		});
 	});
 

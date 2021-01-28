@@ -66,6 +66,17 @@ export async function hasNotchedOutline(COMPONENT_NAME) {
 	expect(notchedOutline).to.exist;
 }
 
+export async function hasElevationOverlay(COMPONENT_NAME) {
+	const addedElements = addElement(
+		textToDomToParent(`<${COMPONENT_NAME} outlined></${COMPONENT_NAME}>`)
+	);
+	await waitNextTask();
+	const elevationOverlay = addedElements[0].shadowRoot.querySelector(
+		'vwc-elevation-overlay'
+	);
+	expect(elevationOverlay).to.exist;
+}
+
 export async function assertDenseStyles(COMPONENT_NAME) {
 	const addedElements = addElement(
 		textToDomToParent(`

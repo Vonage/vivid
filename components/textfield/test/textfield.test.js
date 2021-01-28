@@ -17,6 +17,7 @@ import {
 	typographyTestCases,
 	assertDenseStyles,
 	hasNotchedOutline,
+	hasElevationOverlay,
 	validateMultipleShadowLayers,
 	validateOnReset,
 } from '@vonage/vvd-foundation/test/input-utils.test.js';
@@ -196,6 +197,12 @@ describe('textfield', () => {
 	describe('notched outlined', () => {
 		it('should have vwc-notched-outline defined', async () => {
 			hasNotchedOutline(COMPONENT_NAME);
+		});
+	});
+
+	describe('elevation overlay', () => {
+		it('should have vwc-elevation-overlay defined', async () => {
+			hasElevationOverlay(COMPONENT_NAME);
 		});
 	});
 
