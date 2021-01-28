@@ -17,7 +17,7 @@
         </slot>
       </div>
       <div
-        class="mdc-dialog__content"
+        class="last mdc-dialog__content"
         id="content"
       >
         <slot id="contentSlot">
