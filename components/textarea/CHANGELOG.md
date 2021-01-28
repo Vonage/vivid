@@ -1,3 +1,16 @@
+## [1.1.3](https://github.com/vonage/vivid/compare/v1.1.2...v1.1.3) (2021-01-27)
+
+
+
+## [1.1.2](https://github.com/vonage/vivid/compare/v1.1.1...v1.1.2) (2021-01-27)
+
+
+### Bug Fixes
+
+* **textfield:** textfield fixes in styling and behaviour ([#612](https://github.com/vonage/vivid/issues/612)) ([da699b1](https://github.com/vonage/vivid/commit/da699b12db6f4bbad346d060f89abb207fb14744))
+
+
+
 ## [1.1.1](https://github.com/vonage/vivid/compare/v1.1.0...v1.1.1) (2021-01-25)
 
 

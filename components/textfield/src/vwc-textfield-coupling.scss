@@ -15,7 +15,3 @@
 		@include typography.typography-mdc-coupling('subtitle1', 'body-2');
 	}
 }
-
-::slotted(input) {
-	@include typography.typography-cat-shorthand('body-2');
-}
