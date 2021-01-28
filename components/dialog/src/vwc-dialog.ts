@@ -11,13 +11,11 @@ declare global {
 }
 
 const iconTemplate = document.createElement('template');
-iconTemplate.innerHTML =
-	`
+iconTemplate.innerHTML = `
 	<div id="dialog_icon">
 		<slot name="icon"></slot>
 </div>
 `;
-
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
@@ -25,16 +23,21 @@ MWCDialog.styles = [styleCoupling, mwcDialogStyle, style];
 
 @customElement('vwc-dialog')
 export class VWCDialog extends MWCDialog {
-	protected updated(_changedProperties: PropertyValues) {
+	protected updated(_changedProperties: PropertyValues): void {
 		super.updated(_changedProperties);
 		if (!this.renderRoot.querySelector('#dialog_icon')) {
-			this.renderRoot.querySelector('.mdc-dialog__surface')?.prepend(iconTemplate.content.cloneNode(true));
+			this.renderRoot
+				.querySelector('.mdc-dialog__surface')
+				?.prepend(iconTemplate.content.cloneNode(true));
 		}
 		if (_changedProperties.get('hideActions') != undefined) {
 			const contentElement = this.renderRoot.querySelector('#content');
-			if (!contentElement) return;
-			_changedProperties.get('hideActions') ? contentElement.classList.remove('last')
-			 : contentElement.classList.add('last');
+			if (!contentElement) {
+				return;
+			}
+			_changedProperties.get('hideActions')
+				? contentElement.classList.remove('last')
+				: contentElement.classList.add('last');
 		}
 	}
 
