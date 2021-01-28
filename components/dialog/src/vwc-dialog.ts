@@ -30,6 +30,12 @@ export class VWCDialog extends MWCDialog {
 		if (!this.renderRoot.querySelector('#dialog_icon')) {
 			this.renderRoot.querySelector('.mdc-dialog__surface')?.prepend(iconTemplate.content.cloneNode(true));
 		}
+		if (_changedProperties.get('hideActions') != undefined) {
+			const contentElement = this.renderRoot.querySelector('#content');
+			if (!contentElement) return;
+			_changedProperties.get('hideActions') ? contentElement.classList.remove('last')
+			 : contentElement.classList.add('last');
+		}
 	}
 
 	connectedCallback(): void {

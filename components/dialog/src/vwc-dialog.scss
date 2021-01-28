@@ -31,6 +31,10 @@
 	padding: 32px;
 }
 
+.mdc-dialog__content.last {
+	padding-bottom: 0;
+}
+
 .mdc-dialog__title::before {
 	height: 0;
 }
