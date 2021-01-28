@@ -11,11 +11,12 @@
 	"scripts": {
 		"dep-check": "lerna exec --stream --no-bail depcheck",
 		"changelog": "yarn lerna exec --concurrency 1 --stream 'conventional-changelog --preset angular --release-count 0 --commit-path $PWD --pkg $PWD/package.json --outfile $PWD/CHANGELOG.md --verbose'",
+		"lint:webhint": "yarn hint common/**/src components/**/src",
 		"lint:eslint": "eslint components/** common/** --no-error-on-unmatched-pattern --ignore-path .eslintignore --config .eslintrc.yaml",
 		"format:eslint": "eslint --ext .js,.html . --fix --ignore-path .eslintignore",
 		"lint:prettier": "prettier \"**/*.ts\" \"**/test/*.test.js\" --check --ignore-path .prettierignore",
 		"format:prettier": "prettier \"**/*.ts\" \"**/test/*.test.js\" --write --ignore-path .prettierignore",
-		"lint": "yarn lint:eslint && yarn lint:prettier",
+		"lint": "yarn lint:eslint && yarn lint:prettier && yarn lint:webhint",
 		"format": "yarn format:eslint && yarn format:prettier",
 		"tsc:watch": "tsc --build --watch",
 		"test:prepublish": "karma start --coverage --browsers=ChromeHeadless,FirefoxHeadless",
@@ -118,6 +119,8 @@
 		"tslib": "^2.0.3",
 		"typescript": "^4.1.3",
 		"uuid": "^8.3.1",
+		"@hint/configuration-development": "^8.1.0",
+		"hint": "^6.1.1",
 		"web-component-analyzer": "^1.1.6"
 	},
 	"eslintConfig": {
