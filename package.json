@@ -26,7 +26,6 @@
 		"test:dev:ci": "yarn compile && concurrently \"yarn tsc:watch\" \"RUN=CI karma start karma.conf.spec.js\"",
 		"test:update-snapshots": "karma start --update-snapshots",
 		"test:prune-snapshots": "karma start --prune-snapshots",
-		"test:bs": "karma start karma.bs.config.js --coverage",
 		"git:sync": "git submodule sync && git submodule update --init --recursive --remote",
 		"postinstall": "yarn link",
 		"link": "lerna link",
