@@ -73,6 +73,7 @@ export class VWCTextField extends MWCTextField {
 		this.formElement.addEventListener('transitionend', () => {
 			this.floatLabel();
 		});
+		this.floatLabel();
 	}
 
 	async firstUpdated(): Promise<void> {
@@ -81,6 +82,7 @@ export class VWCTextField extends MWCTextField {
 			?.querySelector('.mdc-notched-outline')
 			?.shadowRoot?.querySelector('.mdc-notched-outline')
 			?.classList.add('vvd-notch');
+		this.floatLabel();
 		handleAutofocus(this);
 	}
 

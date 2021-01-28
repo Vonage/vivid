@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.3](https://github.com/Vonage/vivid/compare/v1.1.2...v1.1.3) (2021-01-27)
+
+
+### Bug Fixes
+
+* **textfield:** fixing the box-sizing take 2 ([#614](https://github.com/Vonage/vivid/issues/614)) ([247fb52](https://github.com/Vonage/vivid/commit/247fb524eb545275a358097a524117ecef5493df))
+
+
+
+
+
 ## [1.1.2](https://github.com/Vonage/vivid/compare/v1.1.1...v1.1.2) (2021-01-27)
 
 
