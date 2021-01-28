@@ -57,9 +57,16 @@ module.exports = config => {
 				browser_version: '12.1',
 				os: 'OS X',
 				os_version: 'Mojave'
+			},
+			bs_safari_13: {
+				base: 'BrowserStack',
+				browser: 'safari',
+				browser_version: '13.1',
+				os: 'OS X',
+				os_version: 'Catalina'
 			}
 		},
-		browsers: ['bs_safari_12']
+		browsers: ['bs_safari_12', 'bs_safari_13']
 	});
 
 	config.set(extendedDefaultConfig);
