@@ -1,4 +1,10 @@
-import { LitElement, customElement, html, TemplateResult } from 'lit-element';
+import {
+	LitElement,
+	customElement,
+	html,
+	TemplateResult,
+	CSSResult,
+} from 'lit-element';
 import { style as vwcElevationOverlayStyle } from './vwc-elevation-overlay.css.js';
 import { style as mwcElevationOverlayStyle } from '@material/mwc-elevation-overlay/mwc-elevation-overlay-css.js';
 
@@ -14,7 +20,7 @@ declare global {
  */
 @customElement('vwc-elevation-overlay')
 export class VWCElevationOverlay extends LitElement {
-	static get styles() {
+	static get styles(): CSSResult[] {
 		return [mwcElevationOverlayStyle, vwcElevationOverlayStyle];
 	}
 
