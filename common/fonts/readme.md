@@ -47,4 +47,6 @@ Additionally, we suggest to 'decorate' your main HTML with the following optimiz
 Explanation:
 * The first link, `preload`, says to browser that it MUST load our basic, used everywhere font immediatelly.
 While this will still be performed asyncronously, it'll prioritize our main font resource high.
-* The second link, `prefetch`, says to browser that it MAY load our secondary, monospace font sooner than later.
+* The second link, `prefetch`, hints the browser to load our secondary, _monospace_ font, sooner than later.
+
+> Attention! We've found, that `preload` and `prefetch` are **not supported** in Safari (up and include 14) if used in **`iframe`**. Although `iframe` usage is quite rare nowadays, if there is any chance that some HTML will find itself loaded via `iframe`, please do not use the above hints as of now.
