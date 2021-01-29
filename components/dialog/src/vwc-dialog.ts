@@ -3,6 +3,7 @@ import { style } from './vwc-dialog.css';
 import { Dialog as MWCDialog } from '@material/mwc-dialog';
 import { style as mwcDialogStyle } from '@material/mwc-dialog/mwc-dialog-css';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling';
+import '@vonage/vvd-core';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -39,13 +40,5 @@ export class VWCDialog extends MWCDialog {
 					: contentElement.classList.add('last');
 			}
 		}
-	}
-
-	connectedCallback(): void {
-		super.connectedCallback();
-	}
-
-	disconnectedCallback(): void {
-		super.disconnectedCallback();
 	}
 }
