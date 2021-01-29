@@ -5,6 +5,7 @@ import {
 	waitNextTask,
 	waitInterval,
 	assertComputedStyle,
+	assertDistancePixels,
 	listenToSubmission,
 	changeValueAndNotify,
 	isolatedElementsCreation,
@@ -307,7 +308,7 @@ describe('select', () => {
 		});
 	});
 
-	describe('dense', () => {
+	describe('density', () => {
 		it('should have normal size by default', async () => {
 			const addedElements = addElement(
 				textToDomToParent(`
@@ -324,6 +325,26 @@ describe('select', () => {
 
 		it('should have dense size when dense', async () => {
 			assertDenseStyles(COMPONENT_NAME);
+		});
+
+		it('should have 16px space between edge and the selection (outlined)', async () => {
+			const [e] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} outlined></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			const i = e.shadowRoot.querySelector('.mdc-select__selected-text');
+			assertDistancePixels(e, i, 'left', 16);
+		});
+
+		it('should have 16px space between edge and the label (outlined)', async () => {
+			const [e] = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} outlined label="Label"></${COMPONENT_NAME}>`
+				)
+			);
+			await waitNextTask();
+			const l = e.shadowRoot.querySelector('.mdc-floating-label');
+			assertDistancePixels(e, l, 'left', 16);
 		});
 	});
 
