@@ -12,7 +12,7 @@
 	margin-bottom: 18px;
 }
 
-:host #title {
+#title {
 	@include typography.typography-cat-shorthand('subtitle-2');
 	padding-bottom: 0;
 	margin-bottom: 8px;
