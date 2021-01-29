@@ -1,8 +1,23 @@
 export { getTypographyStyle } from './typography-utils.js';
+export {
+	assertComputedStyle,
+	assertDistancePixels,
+	listenToSubmission,
+	changeValueAndNotify,
+	isolatedElementsCreation,
+	textToDocumentFragment,
+	textToDomToParent,
+	waitNextTask,
+	waitInterval,
+	randomAlpha,
+	isSafari,
+	getFrameLoadedInjected,
+	cleanFrame
+}
 
 const tmpTemple = document.createElement('template');
 
-export function listenToSubmission(formElement) {
+function listenToSubmission(formElement) {
 	return new Promise((res) => {
 		formElement.addEventListener('submit', () => {
 			const formData = new FormData(formElement);
@@ -11,7 +26,7 @@ export function listenToSubmission(formElement) {
 	});
 }
 
-export async function changeValueAndNotify(
+async function changeValueAndNotify(
 	actualElement,
 	value,
 	eventName = 'change'
@@ -22,7 +37,7 @@ export async function changeValueAndNotify(
 	actualElement.dispatchEvent(new Event(eventName));
 }
 
-export function isolatedElementsCreation() {
+function isolatedElementsCreation() {
 	function addElementToBeCleared(elementsToBeCleared) {
 		elements.push.apply(elements, elementsToBeCleared);
 		return elementsToBeCleared;
@@ -36,7 +51,7 @@ export function isolatedElementsCreation() {
 	return addElementToBeCleared;
 }
 
-export function textToDocumentFragment(html) {
+function textToDocumentFragment(html) {
 	if (!html) {
 		throw new Error(`html parameter MUST NOT be NULL nor EMPTY, got ${html}`);
 	}
@@ -46,23 +61,23 @@ export function textToDocumentFragment(html) {
 	return result;
 }
 
-export function textToDomToParent(html, parentNode = document.body) {
+function textToDomToParent(html, parentNode = document.body) {
 	const documentFragment = textToDocumentFragment(html);
 	const result = Array.from(documentFragment.children);
 	parentNode.appendChild(documentFragment);
 	return result;
 }
 
-export async function waitNextTask() {
+async function waitNextTask() {
 	return new Promise(resolve => setTimeout(resolve));
 }
 
-export async function waitInterval(millis) {
+async function waitInterval(millis) {
 	await new Promise(resolve => setTimeout(resolve, millis));
 }
 
 const ALPHA_CHARSET = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-export function randomAlpha(length = 8) {
+function randomAlpha(length = 8) {
 	if (!length || length < 0 || typeof length !== 'number') {
 		throw new Error(`unexpected length type '${typeof length}'`);
 	}
@@ -93,7 +108,7 @@ const
 		'ultra-expanded': 200
 	};
 
-export function assertComputedStyle(element, expectedStyles, pseudoSelector = null) {
+function assertComputedStyle(element, expectedStyles, pseudoSelector = null) {
 	if (!element) {
 		throw new Error(`'element' parameter MUST be a valid element, got ${element}`);
 	}
@@ -182,7 +197,16 @@ export function assertComputedStyle(element, expectedStyles, pseudoSelector = nu
 	}
 }
 
-export function isSafari() {
+function assertDistancePixels(e1, e2, property, expected) {
+	const cr1 = e1.getBoundingClientRect();
+	const cr2 = e2.getBoundingClientRect();
+	const actual = Math.abs(cr1[property] - cr2[property]);
+	if (actual !== expected) {
+		throw new Error(`expected distance between '${property}' to be ${expected}, found ${actual}`);
+	}
+}
+
+function isSafari() {
 	return window.navigator.userAgent.toLowerCase().includes('safari') &&
 		!window.navigator.userAgent.toLowerCase().includes('chrome');
 }
@@ -197,7 +221,7 @@ export function isSafari() {
  * @param {function} testCode logic to run on the contentWindow of the newly created iframe
  * @returns created and initialised iFrame element
  */
-export async function getFrameLoadedInjected(htmlTag, testCode) {
+async function getFrameLoadedInjected(htmlTag, testCode) {
 	if (!htmlTag || typeof htmlTag !== 'string') {
 		throw new Error(`htmlTag MUST be a non-null nor-empty string, got '${htmlTag}'`);
 	}
@@ -221,7 +245,7 @@ export async function getFrameLoadedInjected(htmlTag, testCode) {
 	});
 }
 
-export function cleanFrame(htmlTag) {
+function cleanFrame(htmlTag) {
 	karmaHTML[htmlTag].close();
 }
 

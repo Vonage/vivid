@@ -4,8 +4,6 @@ extends:
   - plugin:@typescript-eslint/eslint-recommended
   - plugin:@typescript-eslint/recommended
   - plugin:wc/recommended
-globals:
-  goog: false
 env:
   browser: true
   node: true
@@ -81,7 +79,6 @@ overrides:
       prefer-const: off
       comma-dangle: off
     globals:
-      goog: false
       chai: false
       it: false
       describe: false
@@ -89,6 +86,3 @@ overrides:
       assert: false
       afterEach: false
       beforeEach: false
-      Promise: false
-      before: false
-      aefore: false
