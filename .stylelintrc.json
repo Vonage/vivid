@@ -1,8 +1,12 @@
 {
-	"extends": ["stylelint-config-sass-guidelines"],
+	"extends": [
+		"stylelint-config-sass-guidelines",
+		"./node_modules/prettier-stylelint/config.js"
+	],
 	"plugins": ["stylelint-no-unsupported-browser-features"],
 	"rules": {
-		"indentation": 2,
+		"indentation": 4,
+		"string-quotes": "single",
 		"plugin/no-unsupported-browser-features": [
 			true,
 			{
