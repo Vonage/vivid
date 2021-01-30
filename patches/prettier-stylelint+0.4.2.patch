@@ -10,3 +10,4 @@ index 124c00d..a6f12ec 100644
 +    prettierOptions.parser = 'css';
      debug('prettier %O', prettierOptions);
      debug('linter %O', stylelintConfig);
+

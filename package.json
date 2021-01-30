@@ -9,6 +9,8 @@
 		"components/*"
 	],
 	"scripts": {
+		"fix-code": "prettier-eslint {common,components}/**/src/*.ts",
+		"fix-styles": "prettier-stylelint --fix {common,components}/**/src/*.scss",
 		"dep-check": "lerna exec --stream --no-bail depcheck",
 		"changelog": "yarn lerna exec --concurrency 1 --stream 'conventional-changelog --preset angular --release-count 0 --commit-path $PWD --pkg $PWD/package.json --outfile $PWD/CHANGELOG.md --verbose'",
 		"stylelint-check": "stylelint-config-prettier-check",
@@ -114,6 +116,8 @@
 		"node-sass": "^5.0.0",
 		"patch-package": "^6.2.2",
 		"prettier": "^2.2.1",
+		"prettier-eslint": "^12.0.0",
+		"prettier-eslint-cli": "^5.0.0",
 		"prettier-stylelint": "^0.4.2",
 		"prism": "^4.1.2",
 		"sass": "^1.30.0",
