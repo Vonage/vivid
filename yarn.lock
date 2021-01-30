@@ -6889,7 +6889,7 @@ browserslist@^2.11.3:
     caniuse-lite "^1.0.30000792"
     electron-to-chromium "^1.3.30"
 
-browserslist@^4.0.0, browserslist@^4.12.0, browserslist@^4.12.2, browserslist@^4.14.1, browserslist@^4.14.5, browserslist@^4.16.0, browserslist@^4.9.1:
+browserslist@^4.0.0, browserslist@^4.12.0, browserslist@^4.12.2, browserslist@^4.14.1, browserslist@^4.14.5, browserslist@^4.16.0, browserslist@^4.16.1, browserslist@^4.9.1:
   version "4.16.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/browserslist/-/browserslist-4.16.1.tgz#bf757a2da376b3447b800a16f0f1c96358138766"
   integrity sha1-v3V6LaN2s0R7gAoW8PHJY1gTh2Y=
@@ -7174,7 +7174,7 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001033, caniuse-lite@^1.0.30001035, can
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/caniuse-lite/-/caniuse-lite-1.0.30001180.tgz#67abcd6d1edf48fa5e7d1e84091d1d65ab76e33b"
   integrity sha1-Z6vNbR7fSPpefR6ECR0dZat24zs=
 
-caniuse-lite@^1.0.30000792, caniuse-lite@^1.0.30000805:
+caniuse-lite@^1.0.30000792, caniuse-lite@^1.0.30000805, caniuse-lite@^1.0.30001179:
   version "1.0.30001181"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/caniuse-lite/-/caniuse-lite-1.0.30001181.tgz#4f0e5184e1ea7c3bf2727e735cbe7ca9a451d673"
   integrity sha1-Tw5RhOHqfDvycn5zXL58qaRR1nM=
@@ -7524,6 +7524,15 @@ cliui@^6.0.0:
     string-width "^4.2.0"
     strip-ansi "^6.0.0"
     wrap-ansi "^6.2.0"
+
+cliui@^7.0.2:
+  version "7.0.4"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/cliui/-/cliui-7.0.4.tgz#a0265ee655476fc807aea9df3df8df7783808b4f"
+  integrity sha1-oCZe5lVHb8gHrqnfPfjfd4OAi08=
+  dependencies:
+    string-width "^4.2.0"
+    strip-ansi "^6.0.0"
+    wrap-ansi "^7.0.0"
 
 clone-deep@^4.0.1:
   version "4.0.1"
@@ -8437,6 +8446,16 @@ css-loader@^3.5.3:
     schema-utils "^2.7.0"
     semver "^6.3.0"
 
+css-rule-stream@^1.1.0:
+  version "1.1.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/css-rule-stream/-/css-rule-stream-1.1.0.tgz#3786e7198983d965a26e31957e09078cbb7705a2"
+  integrity sha1-N4bnGYmD2WWibjGVfgkHjLt3BaI=
+  dependencies:
+    css-tokenize "^1.0.1"
+    duplexer2 "0.0.2"
+    ldjson-stream "^1.2.1"
+    through2 "^0.6.3"
+
 css-select@^2.0.2, css-select@^2.1.0:
   version "2.1.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/css-select/-/css-select-2.1.0.tgz#6a34653356635934a81baca68d0255432105dbef"
@@ -8446,6 +8465,14 @@ css-select@^2.0.2, css-select@^2.1.0:
     css-what "^3.2.1"
     domutils "^1.7.0"
     nth-check "^1.0.2"
+
+css-tokenize@^1.0.1:
+  version "1.0.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/css-tokenize/-/css-tokenize-1.0.1.tgz#4625cb1eda21c143858b7f81d6803c1d26fc14be"
+  integrity sha1-RiXLHtohwUOFi3+B1oA8HSb8FL4=
+  dependencies:
+    inherits "^2.0.1"
+    readable-stream "^1.0.33"
 
 css-what@^3.2.1:
   version "3.4.2"
@@ -8969,6 +8996,22 @@ doctrine@^3.0.0:
   dependencies:
     esutils "^2.0.2"
 
+doiuse@^4.3.1:
+  version "4.4.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/doiuse/-/doiuse-4.4.1.tgz#efea4ecb6b04ed3228de28f5c6ad704f2c578c80"
+  integrity sha1-7+pOy2sE7TIo3ij1xq1wTyxXjIA=
+  dependencies:
+    browserslist "^4.16.1"
+    caniuse-lite "^1.0.30001179"
+    css-rule-stream "^1.1.0"
+    duplexer2 "0.0.2"
+    ldjson-stream "^1.2.1"
+    multimatch "^5.0.0"
+    postcss "^8.2.4"
+    source-map "^0.7.3"
+    through2 "^4.0.2"
+    yargs "^16.2.0"
+
 dom-converter@^0.2:
   version "0.2.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/dom-converter/-/dom-converter-0.2.0.tgz#6721a9daee2e293682955b6afe416771627bb768"
@@ -9143,6 +9186,13 @@ downshift@^6.0.6:
     compute-scroll-into-view "^1.0.16"
     prop-types "^15.7.2"
     react-is "^17.0.1"
+
+duplexer2@0.0.2:
+  version "0.0.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/duplexer2/-/duplexer2-0.0.2.tgz#c614dcf67e2fb14995a91711e5a617e8a60a31db"
+  integrity sha1-xhTc9n4vsUmVqRcR5aYX6KYKMds=
+  dependencies:
+    readable-stream "~1.1.9"
 
 duplexer3@^0.1.4:
   version "0.1.4"
@@ -10726,7 +10776,7 @@ gensync@^1.0.0-beta.1:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/gensync/-/gensync-1.0.0-beta.2.tgz#32a6ee76c3d7f52d46b2b1ae5d93fea8580a25e0"
   integrity sha1-MqbudsPX9S1GsrGuXZP+qFgKJeA=
 
-get-caller-file@^2.0.1:
+get-caller-file@^2.0.1, get-caller-file@^2.0.5:
   version "2.0.5"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/get-caller-file/-/get-caller-file-2.0.5.tgz#4f94412a82db32f36e3b0b9741f8a97feb031f7e"
   integrity sha1-T5RBKoLbMvNuOwuXQfipf+sDH34=
@@ -13389,6 +13439,14 @@ lcid@^3.0.0:
   dependencies:
     invert-kv "^3.0.0"
 
+ldjson-stream@^1.2.1:
+  version "1.2.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ldjson-stream/-/ldjson-stream-1.2.1.tgz#91beceda5ac4ed2b17e649fb777e7abfa0189c2b"
+  integrity sha1-kb7O2lrE7SsX5kn7d356v6AYnCs=
+  dependencies:
+    split2 "^0.2.1"
+    through2 "^0.6.1"
+
 lerna@^3.22.1:
   version "3.22.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/lerna/-/lerna-3.22.1.tgz#82027ac3da9c627fd8bf02ccfeff806a98e65b62"
@@ -14616,6 +14674,17 @@ multimatch@^4.0.0:
   version "4.0.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/multimatch/-/multimatch-4.0.0.tgz#8c3c0f6e3e8449ada0af3dd29efb491a375191b3"
   integrity sha1-jDwPbj6ESa2grz3SnvtJGjdRkbM=
+  dependencies:
+    "@types/minimatch" "^3.0.3"
+    array-differ "^3.0.0"
+    array-union "^2.1.0"
+    arrify "^2.0.1"
+    minimatch "^3.0.4"
+
+multimatch@^5.0.0:
+  version "5.0.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/multimatch/-/multimatch-5.0.0.tgz#932b800963cea7a31a033328fa1e0c3a1874dbe6"
+  integrity sha1-kyuACWPOp6MaAzMo+h4MOhh02+Y=
   dependencies:
     "@types/minimatch" "^3.0.3"
     array-differ "^3.0.0"
@@ -16234,7 +16303,7 @@ postcss@^7.0.0, postcss@^7.0.14, postcss@^7.0.17, postcss@^7.0.2, postcss@^7.0.2
     source-map "^0.6.1"
     supports-color "^6.1.0"
 
-postcss@^8.1.0, postcss@^8.1.1, postcss@^8.1.6:
+postcss@^8.1.0, postcss@^8.1.1, postcss@^8.1.4, postcss@^8.1.6, postcss@^8.2.4:
   version "8.2.4"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/postcss/-/postcss-8.2.4.tgz#20a98a39cf303d15129c2865a9ec37eda0031d04"
   integrity sha1-IKmKOc8wPRUSnChlqew37aADHQQ=
@@ -17074,7 +17143,7 @@ read@1, read@~1.0.1:
     string_decoder "~1.1.1"
     util-deprecate "~1.0.1"
 
-readable-stream@1.1.x:
+readable-stream@1.1.x, readable-stream@^1.0.33, readable-stream@~1.1.9:
   version "1.1.14"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/readable-stream/-/readable-stream-1.1.14.tgz#7cf4c54ef648e3813084c636dd2079e166c081d9"
   integrity sha1-fPTFTvZI44EwhMY23SB54WbAgdk=
@@ -17092,6 +17161,16 @@ readable-stream@1.1.x:
     inherits "^2.0.3"
     string_decoder "^1.1.1"
     util-deprecate "^1.0.1"
+
+"readable-stream@>=1.0.33-1 <1.1.0-0":
+  version "1.0.34"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/readable-stream/-/readable-stream-1.0.34.tgz#125820e34bc842d2f2aaafafe4c2916ee32c157c"
+  integrity sha1-Elgg40vIQtLyqq+v5MKRbuMsFXw=
+  dependencies:
+    core-util-is "~1.0.0"
+    inherits "~2.0.1"
+    isarray "0.0.1"
+    string_decoder "~0.10.x"
 
 readable-web-to-node-stream@^2.0.0:
   version "2.0.0"
@@ -18432,6 +18511,13 @@ split-string@^3.0.1, split-string@^3.0.2:
   dependencies:
     extend-shallow "^3.0.0"
 
+split2@^0.2.1:
+  version "0.2.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/split2/-/split2-0.2.1.tgz#02ddac9adc03ec0bb78c1282ec079ca6e85ae900"
+  integrity sha1-At2smtwD7Au3jBKC7Aecpuha6QA=
+  dependencies:
+    through2 "~0.6.1"
+
 split2@^2.0.0:
   version "2.2.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/split2/-/split2-2.2.0.tgz#186b2575bcf83e85b7d18465756238ee4ee42493"
@@ -18905,6 +18991,15 @@ stylelint-config-sass-guidelines@^7.1.0:
   dependencies:
     stylelint-order "^4.0.0"
     stylelint-scss "^3.18.0"
+
+stylelint-no-unsupported-browser-features@^4.1.4:
+  version "4.1.4"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/stylelint-no-unsupported-browser-features/-/stylelint-no-unsupported-browser-features-4.1.4.tgz#14c58167ba101ab5f1d26b98dd1a0d75c9e0a423"
+  integrity sha1-FMWBZ7oQGrXx0muY3RoNdcngpCM=
+  dependencies:
+    doiuse "^4.3.1"
+    lodash "^4.17.15"
+    postcss "^8.1.4"
 
 stylelint-order@^4.0.0:
   version "4.1.0"
@@ -19396,6 +19491,14 @@ throttle-debounce@^2.1.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/throttle-debounce/-/throttle-debounce-2.3.0.tgz#fd31865e66502071e411817e241465b3e9c372e2"
   integrity sha1-/TGGXmZQIHHkEYF+JBRls+nDcuI=
 
+through2@^0.6.1, through2@^0.6.3, through2@~0.6.1:
+  version "0.6.5"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/through2/-/through2-0.6.5.tgz#41ab9c67b29d57209071410e1d7a7a968cd3ad48"
+  integrity sha1-QaucZ7KdVyCQcUEOHXp6lozTrUg=
+  dependencies:
+    readable-stream ">=1.0.33-1 <1.1.0-0"
+    xtend ">=4.0.0 <4.1.0-0"
+
 through2@^2.0.0, through2@^2.0.2:
   version "2.0.5"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/through2/-/through2-2.0.5.tgz#01c1e39eb31d07cb7d03a96a70823260b23132cd"
@@ -19412,7 +19515,7 @@ through2@^3.0.0:
     inherits "^2.0.4"
     readable-stream "2 || 3"
 
-through2@^4.0.0:
+through2@^4.0.0, through2@^4.0.2:
   version "4.0.2"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/through2/-/through2-4.0.2.tgz#a7ce3ac2a7a8b0b966c80e7c49f0484c3b239764"
   integrity sha1-p846wqeosLlmyA58SfBITDsjl2Q=
@@ -20707,6 +20810,15 @@ wrap-ansi@^6.2.0:
     string-width "^4.1.0"
     strip-ansi "^6.0.0"
 
+wrap-ansi@^7.0.0:
+  version "7.0.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/wrap-ansi/-/wrap-ansi-7.0.0.tgz#67e145cff510a6a6984bdf1152911d69d2eb9e43"
+  integrity sha1-Z+FFz/UQpqaYS98RUpEdadLrnkM=
+  dependencies:
+    ansi-styles "^4.0.0"
+    string-width "^4.1.0"
+    strip-ansi "^6.0.0"
+
 wrappy@1:
   version "1.0.2"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
@@ -20828,7 +20940,7 @@ xregexp@2.0.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/xregexp/-/xregexp-2.0.0.tgz#52a63e56ca0b84a7f3a5f3d61872f126ad7a5943"
   integrity sha1-UqY+VsoLhKfzpfPWGHLxJq16WUM=
 
-xtend@^4.0.0, xtend@^4.0.1, xtend@~4.0.1:
+"xtend@>=4.0.0 <4.1.0-0", xtend@^4.0.0, xtend@^4.0.1, xtend@~4.0.1:
   version "4.0.2"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/xtend/-/xtend-4.0.2.tgz#bb72779f5fa465186b1f438f674fa347fdb5db54"
   integrity sha1-u3J3n1+kZRhrH0OPZ0+jR/2121Q=
@@ -20837,6 +20949,11 @@ y18n@^4.0.0:
   version "4.0.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/y18n/-/y18n-4.0.1.tgz#8db2b83c31c5d75099bb890b23f3094891e247d4"
   integrity sha1-jbK4PDHF11CZu4kLI/MJSJHiR9Q=
+
+y18n@^5.0.5:
+  version "5.0.5"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/y18n/-/y18n-5.0.5.tgz#8769ec08d03b1ea2df2500acef561743bbb9ab18"
+  integrity sha1-h2nsCNA7HqLfJQCs71YXQ7u5qxg=
 
 yallist@^2.1.2:
   version "2.1.2"
@@ -20882,7 +20999,7 @@ yargs-parser@^18.1.2:
     camelcase "^5.0.0"
     decamelize "^1.2.0"
 
-yargs-parser@^20.2.3:
+yargs-parser@^20.2.2, yargs-parser@^20.2.3:
   version "20.2.4"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/yargs-parser/-/yargs-parser-20.2.4.tgz#b42890f14566796f85ae8e3a25290d205f154a54"
   integrity sha1-tCiQ8UVmeW+Fro46JSkNIF8VSlQ=
@@ -20955,6 +21072,19 @@ yargs@^15.3.1, yargs@^15.4.0:
     which-module "^2.0.0"
     y18n "^4.0.0"
     yargs-parser "^18.1.2"
+
+yargs@^16.2.0:
+  version "16.2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/yargs/-/yargs-16.2.0.tgz#1c82bf0f6b6a66eafce7ef30e376f49a12477f66"
+  integrity sha1-HIK/D2tqZur85+8w43b0mhJHf2Y=
+  dependencies:
+    cliui "^7.0.2"
+    escalade "^3.1.1"
+    get-caller-file "^2.0.5"
+    require-directory "^2.1.1"
+    string-width "^4.2.0"
+    y18n "^5.0.5"
+    yargs-parser "^20.2.2"
 
 yauzl@^2.10.0:
   version "2.10.0"
