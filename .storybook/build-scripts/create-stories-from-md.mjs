@@ -1,5 +1,6 @@
 import os from 'os';
 import fs from 'fs';
+import { pathToFileURL } from 'url';
 import { dirname, resolve } from 'path';
 import { performance } from 'perf_hooks';
 import glob from 'glob';
@@ -39,7 +40,9 @@ function collectConfigurations() {
 async function processJsConfiguration(configPath) {
 	console.info(`processing '${configPath}'...`);
 
-	const config = (await import(resolve(configPath))).default;
+	//	import config
+	const importPath = pathToFileURL(resolve(configPath)).href;
+	const config = (await import(importPath)).default;
 	validateConfig(config);
 
 	//	convert
