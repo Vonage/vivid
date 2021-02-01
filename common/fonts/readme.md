@@ -49,4 +49,4 @@ Explanation:
 While this will still be performed asyncronously, it'll prioritize our main font resource high.
 * The second link, `prefetch`, hints the browser to load our secondary, _monospace_ font, sooner than later.
 
-> Attention! We've found, that `preload` and `prefetch` are **not supported** in Safari (up and include 14) if used in **`iframe`**. Although `iframe` usage is quite rare nowadays, if there is any chance that some HTML will find itself loaded via `iframe`, please do not use the above hints as of now.
+> Attention! We've found, that `preload` and `prefetch` are **not supported** in Safari (up and include 14), specifially some inconsistensies found when browsing from and between `iframe` elements. Although `iframe` usage is quite rare nowadays, if there is any chance that some HTML will find itself loaded via `iframe`, please do not use the above hints as of now.

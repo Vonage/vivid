@@ -23,7 +23,7 @@ export default {
 			.replace('href="docs/architecture.md"', 'href="/?path=/story/introduction-architecture--architecture"')
 			.replace('href="docs/roadmap.md"', 'href="/?path=/story/introduction-roadmap--roadmap"')
 			.replace('href="docs/contact-us.md"', 'href="/?path=/story/introduction-contact-us--contact-us"')
-			.replace('href="docs/installation.md"', 'href="/?path=/story/introduction-installation--installation"')
-			.replace('href="docs/contribution.md"', 'href="/?path=/story/introduction-contribution--contribution"');
+			.replace('href="docs/installation.md"', 'href="?path=/story/guides-installation--installation"')
+			.replace('href="docs/contribution.md"', 'href="?path=/story/guides-contribution--contribution"');
 	}
 };
