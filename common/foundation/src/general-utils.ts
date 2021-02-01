@@ -1,3 +1,5 @@
+export * from './utils/emitter';
+
 export function handleAutofocus(targetElement: HTMLElement): void {
 	if (!targetElement || !targetElement.hasAttribute) {
 		console.error(`HTMLElement target expected, got '${targetElement}'`);

@@ -3,13 +3,24 @@
 #### `should have internal contents`
 
 ```html
-<label class="mdc-text-field mdc-text-field--filled mdc-text-field--no-label">
-  <input
-    aria-labelledby="label"
-    class="mdc-text-field__input"
-    placeholder=""
-    type="text"
-  >
+<input
+  class="vivid-input-internal"
+  placeholder=" "
+  slot="formInputElement"
+  type="text"
+  value=""
+>
+
+```
+
+```html
+<label class="mdc-text-field mdc-text-field--no-label mdc-text-field--outlined">
+  <vwc-notched-outline class="mdc-notched-outline vvd-notch">
+  </vwc-notched-outline>
+  <div class="mdc-text-field__input">
+  </div>
+  <slot name="formInputElement">
+  </slot>
 </label>
 
 ```

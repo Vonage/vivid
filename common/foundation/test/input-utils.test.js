@@ -12,7 +12,10 @@ import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
 let addElement = isolatedElementsCreation();
 
-export async function typographyTestCases(COMPONENT_NAME) {
+export async function typographyTestCases(
+	COMPONENT_NAME,
+	inputResolver = null
+) {
 	let addedElements, formElement, labelElement;
 	beforeEach(async () => {
 		addedElements = addElement(
@@ -38,9 +41,9 @@ export async function typographyTestCases(COMPONENT_NAME) {
 	});
 
 	it('should have set typography for an input', async () => {
-		const inputElement = formElement.shadowRoot.querySelector(
-			'.mdc-text-field__input'
-		);
+		const inputElement = inputResolver
+			? inputResolver(formElement)
+			: formElement.querySelector('input');
 		assertComputedStyle(inputElement, await getTypographyStyle('body-2'));
 	});
 

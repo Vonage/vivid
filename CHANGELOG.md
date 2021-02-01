@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.3](https://github.com/Vonage/vivid/compare/v1.1.2...v1.1.3) (2021-01-27)
+
+
+### Bug Fixes
+
+* **textfield:** fixing the box-sizing take 2 ([#614](https://github.com/Vonage/vivid/issues/614)) ([247fb52](https://github.com/Vonage/vivid/commit/247fb524eb545275a358097a524117ecef5493df))
+
+
+
+
+
+## [1.1.2](https://github.com/Vonage/vivid/compare/v1.1.1...v1.1.2) (2021-01-27)
+
+
+### Bug Fixes
+
+* **textfield:** textfield fixes in styling and behaviour ([#612](https://github.com/Vonage/vivid/issues/612)) ([da699b1](https://github.com/Vonage/vivid/commit/da699b12db6f4bbad346d060f89abb207fb14744))
+
+
+
+
+
+## [1.1.1](https://github.com/Vonage/vivid/compare/v1.1.0...v1.1.1) (2021-01-25)
+
+**Note:** Version bump only for package @vivid/root
+
+
+
+
+
+# [1.1.0](https://github.com/Vonage/vivid/compare/v1.0.4...v1.1.0) (2021-01-25)
+
+
+### Bug Fixes
+
+* **build:** make storybook stories generation script runnable on windows platform ([#606](https://github.com/Vonage/vivid/issues/606)) ([ba93066](https://github.com/Vonage/vivid/commit/ba930660219e476dfafd4149ccacb34b8a681eb6))
+* **calendar:** impersistent dates fail snapshot matching tests ([#605](https://github.com/Vonage/vivid/issues/605)) ([2c4ee98](https://github.com/Vonage/vivid/commit/2c4ee9804d04776067d4a0fbce0bfa4d6a533fb3))
+
+
+### Features
+
+* autofill solution ([#599](https://github.com/Vonage/vivid/issues/599)) ([284a5f0](https://github.com/Vonage/vivid/commit/284a5f003ca98a26ba12cd91a13772c902635766))
+* **autoversion:** iss 591/viv 349 version auto bump ([#594](https://github.com/Vonage/vivid/issues/594)) ([81e5875](https://github.com/Vonage/vivid/commit/81e5875d39107903e3588093abc4d5f6c9ab14bc)), closes [#591](https://github.com/Vonage/vivid/issues/591) [#591](https://github.com/Vonage/vivid/issues/591) [#591](https://github.com/Vonage/vivid/issues/591) [#591](https://github.com/Vonage/vivid/issues/591) [#591](https://github.com/Vonage/vivid/issues/591) [#591](https://github.com/Vonage/vivid/issues/591) [#591](https://github.com/Vonage/vivid/issues/591) [#591](https://github.com/Vonage/vivid/issues/591) [#591](https://github.com/Vonage/vivid/issues/591) [#591](https://github.com/Vonage/vivid/issues/591) [#591](https://github.com/Vonage/vivid/issues/591) [#591](https://github.com/Vonage/vivid/issues/591) [#591](https://github.com/Vonage/vivid/issues/591) [#591](https://github.com/Vonage/vivid/issues/591) [#591](https://github.com/Vonage/vivid/issues/591) [#591](https://github.com/Vonage/vivid/issues/591) [#591](https://github.com/Vonage/vivid/issues/591) [#591](https://github.com/Vonage/vivid/issues/591)
+
+
+
+
+
 ## [1.0.4](https://github.com/Vonage/vivid/compare/v1.0.3...v1.0.4) (2021-01-19)
 
 
