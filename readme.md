@@ -31,7 +31,7 @@ For your convenience, we've organized all our documentation under the following 
 - [Installation](docs/installation.md)
 - [Contribution](docs/contribution.md)
 
-#### Support
+#### Browsers support matrix
 
 We are running Vivid's compliance against [webhint](https://github.com/webhintio/hint) in accordance to [browserslist](https://github.com/browserslist/browserslist) query - which returns the following support matrix:
 
