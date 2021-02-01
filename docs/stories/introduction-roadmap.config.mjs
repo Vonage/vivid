@@ -1,4 +1,7 @@
-import { relocateStaticResources } from '../../.storybook/build-scripts/create-stories-from-md.mjs';
+import {
+	hrefLinkProcessing,
+	relocateStaticResources
+} from '../../.storybook/build-scripts/create-stories-from-md.mjs';
 
 export default {
 	sourcePath: '../roadmap.md',
@@ -14,7 +17,9 @@ export default {
 		}
 	},
 	htmlPostProcess: htmlText => {
-		return relocateStaticResources(htmlText, ['assets/images/roadmap.svg'], 'docs')
-			.replace('href="../readme.md"', 'href="/?path=/story/introduction-meet-vivid--meet-vivid"');
+		let r = relocateStaticResources(htmlText, ['assets/images/roadmap.svg'], 'docs')
+		return hrefLinkProcessing(r, [
+			['href="../readme.md"', '?path=/story/introduction-meet-vivid--meet-vivid']
+		]);
 	}
 }
