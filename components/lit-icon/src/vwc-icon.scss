@@ -1,6 +1,0 @@
-:host { display: inline-block; fill: currentColor; width: 24px; height: 24px; }
-:host > slot { margin: 0; padding: 0; display: block; position: relative; width: 100%; height: 100%; }
-:host > slot > svg { width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
-:host([size=small]) { width: 16px; height: 16px; }
-:host([size=medium]) { width: 24px; height: 24px; }
-:host([size=large]) { width: 32px; height: 32px; }

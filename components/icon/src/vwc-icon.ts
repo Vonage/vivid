@@ -1,0 +1,83 @@
+import {
+	LitElement,
+	html,
+	property,
+	customElement,
+	CSSResult,
+	TemplateResult,
+} from 'lit-element';
+import { unsafeSVG } from 'lit-html/directives/unsafe-svg';
+import { until } from 'lit-html/directives/until.js';
+import { memoizeWith, identity, always } from 'ramda';
+import { style } from './vwc-icon.css';
+
+declare global {
+	interface HTMLElementTagNameMap {
+		'vwc-icon': VWCIcon;
+	}
+}
+
+type IconSize = 'large' | 'medium' | 'small';
+
+// noinspection CssUnresolvedCustomProperty
+const BASE_URL =
+		'https://icons.resources.vonage.com/3f7739a0-a898-4f69-a82b-ad9d743170b6',
+	ICON_SET_VERSION = '1.0.0',
+	PLACEHOLDER_ICON =
+		'<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><style>@keyframes rotation { from { transform: rotate(0deg) } to { transform: rotate(360deg) } } g#circle { transform-origin: center center; animation: 1s rotation 0s linear infinite; } path { fill: var(--vvd-color-base-faint) }</style> <g id="circle"> <path d="M7.5 2C3.91014 2 1 4.91014 1 8.5C1 12.0899 3.91014 15 7.5 15C11.0899 15 14 12.0899 14 8.5C14 8.22386 14.2239 8 14.5 8C14.7761 8 15 8.22386 15 8.5C15 12.6421 11.6421 16 7.5 16C3.35786 16 0 12.6421 0 8.5C0 4.35786 3.35786 1 7.5 1C10.3622 1 12.7088 2.78366 13.9478 5.27753C14.0706 5.52484 13.9698 5.82492 13.7225 5.94778C13.4752 6.07065 13.1751 5.96977 13.0522 5.72247C11.9472 3.49834 9.90985 2 7.5 2Z"/><path d="M13.5 0C13.7761 0 14 0.223858 14 0.5V5.5C14 5.77614 13.7761 6 13.5 6H8.5C8.22386 6 8 5.77614 8 5.5C8 5.22386 8.22386 5 8.5 5H13V0.5C13 0.223858 13.2239 0 13.5 0Z"/></g></svg>',
+	PLACEHOLDER_DELAY = 500, // Start displaying placeholder if waiting more than this period of time
+	PLACEHOLDER_TIMEOUT = 2000, // Stop displaying placeholder if exceeding this period of time (will also stop one an icon is loaded)
+	DEFAULT_ICON_SIZE: IconSize = 'medium';
+
+const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
+const baseUrlTemplate = (resource: string, version?: string) =>
+	[BASE_URL, version && `v${ICON_SET_VERSION}`, resource]
+		.filter(Boolean)
+		.join('/');
+const resolveIcon = memoizeWith(identity as () => string, (iconId = '') =>
+	iconId.trim()
+		? fetch(baseUrlTemplate([iconId, 'svg'].join('.'), ICON_SET_VERSION))
+				.then((res) =>
+					res.headers.has('x-amz-website-redirect-location')
+						? fetch(
+								baseUrlTemplate(
+									(res.headers.get('x-amz-website-redirect-location') ?? '').slice(1)
+								)
+						  )
+						: res
+				)
+				.then((res) =>
+					res.headers.get('content-type') === 'image/svg+xml' ? res.text() : ''
+				)
+				.then(unsafeSVG)
+		: Promise.resolve('')
+);
+
+@customElement('vwc-icon')
+export class VWCIcon extends LitElement {
+	static get styles(): CSSResult {
+		return style;
+	}
+
+	@property({
+		attribute: true,
+		type: String,
+		reflect: true,
+	})
+	type?: string;
+
+	@property({
+		attribute: true,
+		type: String,
+		reflect: true,
+	})
+	size: IconSize = DEFAULT_ICON_SIZE;
+
+	render(): TemplateResult {
+		return html`${until(
+			resolveIcon(this.type),
+			delay(PLACEHOLDER_TIMEOUT),
+			delay(PLACEHOLDER_DELAY).then(always(unsafeSVG(PLACEHOLDER_ICON)))
+		)}`;
+	}
+}
