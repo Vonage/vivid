@@ -2,6 +2,7 @@
 **/*.d.ts
 **/*.js.map
 
+*.css.ts
 **/*.js
 !**/test/*.js
 !**/stories/**/*.js

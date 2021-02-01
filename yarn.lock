@@ -951,6 +951,14 @@
     pirates "^4.0.0"
     source-map-support "^0.5.16"
 
+"@babel/runtime-corejs3@^7.10.2":
+  version "7.12.5"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@babel/runtime-corejs3/-/runtime-corejs3-7.12.5.tgz#ffee91da0eb4c6dae080774e94ba606368e414f4"
+  integrity sha1-/+6R2g60xtrggHdOlLpgY2jkFPQ=
+  dependencies:
+    core-js-pure "^3.0.0"
+    regenerator-runtime "^0.13.4"
+
 "@babel/runtime@^7.0.0", "@babel/runtime@^7.10.2", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.5", "@babel/runtime@^7.3.1", "@babel/runtime@^7.5.0", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.7.6", "@babel/runtime@^7.8.4", "@babel/runtime@^7.9.2":
   version "7.12.5"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@babel/runtime/-/runtime-7.12.5.tgz#410e7e487441e1b360c29be715d870d9b985882e"
@@ -5098,6 +5106,13 @@
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@types/parse-json/4.0.0/cb4ae580ea575775c583a94c40beca9cb2b689d52563c17d9f53864ccd51479c#b1f82f2971ff98a729bff1f163b9a3a1e4f9c9ff"
   integrity sha1-sfgvKXH/mKcpv/HxY7mjoeT5yf8=
 
+"@types/parse5@^2.2.34":
+  version "2.2.34"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@types/parse5/-/parse5-2.2.34.tgz#e3870a10e82735a720f62d71dcd183ba78ef3a9d"
+  integrity sha1-44cKEOgnNacg9i1x3NGDunjvOp0=
+  dependencies:
+    "@types/node" "*"
+
 "@types/parse5@^5.0.0", "@types/parse5@^5.0.3":
   version "5.0.3"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@types/parse5/5.0.3/095b6c054ec4199d5a2ef6af0afc3ea62f9fb5725095cc24a225797dd80d08b2#e7b5aebbac150f8b5fdd4a46e7f0bd8e65e19109"
@@ -5260,13 +5275,13 @@
   dependencies:
     "@types/node" "*"
 
-"@typescript-eslint/eslint-plugin@^4.6.1":
-  version "4.13.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@typescript-eslint/eslint-plugin/-/eslint-plugin-4.13.0.tgz#5f580ea520fa46442deb82c038460c3dd3524bb6"
-  integrity sha1-X1gOpSD6RkQt64LAOEYMPdNSS7Y=
+"@typescript-eslint/eslint-plugin@^4.14.2":
+  version "4.14.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@typescript-eslint/eslint-plugin/-/eslint-plugin-4.14.2.tgz#47a15803cfab89580b96933d348c2721f3d2f6fe"
+  integrity sha1-R6FYA8+riVgLlpM9NIwnIfPS9v4=
   dependencies:
-    "@typescript-eslint/experimental-utils" "4.13.0"
-    "@typescript-eslint/scope-manager" "4.13.0"
+    "@typescript-eslint/experimental-utils" "4.14.2"
+    "@typescript-eslint/scope-manager" "4.14.2"
     debug "^4.1.1"
     functional-red-black-tree "^1.0.1"
     lodash "^4.17.15"
@@ -5294,15 +5309,15 @@
     eslint-scope "^5.0.0"
     eslint-utils "^2.0.0"
 
-"@typescript-eslint/experimental-utils@4.13.0":
-  version "4.13.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@typescript-eslint/experimental-utils/-/experimental-utils-4.13.0.tgz#9dc9ab375d65603b43d938a0786190a0c72be44e"
-  integrity sha1-ncmrN11lYDtD2TigeGGQoMcr5E4=
+"@typescript-eslint/experimental-utils@4.14.2":
+  version "4.14.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@typescript-eslint/experimental-utils/-/experimental-utils-4.14.2.tgz#9df35049d1d36b6cbaba534d703648b9e1f05cbb"
+  integrity sha1-nfNQSdHTa2y6ulNNcDZIueHwXLs=
   dependencies:
     "@types/json-schema" "^7.0.3"
-    "@typescript-eslint/scope-manager" "4.13.0"
-    "@typescript-eslint/types" "4.13.0"
-    "@typescript-eslint/typescript-estree" "4.13.0"
+    "@typescript-eslint/scope-manager" "4.14.2"
+    "@typescript-eslint/types" "4.14.2"
+    "@typescript-eslint/typescript-estree" "4.14.2"
     eslint-scope "^5.0.0"
     eslint-utils "^2.0.0"
 
@@ -5327,38 +5342,38 @@
     "@typescript-eslint/typescript-estree" "3.10.1"
     eslint-visitor-keys "^1.1.0"
 
-"@typescript-eslint/parser@^4.6.1":
-  version "4.13.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@typescript-eslint/parser/-/parser-4.13.0.tgz#c413d640ea66120cfcc37f891e8cb3fd1c9d247d"
-  integrity sha1-xBPWQOpmEgz8w3+JHoyz/RydJH0=
+"@typescript-eslint/parser@^4.14.2":
+  version "4.14.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@typescript-eslint/parser/-/parser-4.14.2.tgz#31e216e4baab678a56e539f9db9862e2542c98d0"
+  integrity sha1-MeIW5LqrZ4pW5Tn525hi4lQsmNA=
   dependencies:
-    "@typescript-eslint/scope-manager" "4.13.0"
-    "@typescript-eslint/types" "4.13.0"
-    "@typescript-eslint/typescript-estree" "4.13.0"
+    "@typescript-eslint/scope-manager" "4.14.2"
+    "@typescript-eslint/types" "4.14.2"
+    "@typescript-eslint/typescript-estree" "4.14.2"
     debug "^4.1.1"
 
-"@typescript-eslint/scope-manager@4.13.0":
-  version "4.13.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@typescript-eslint/scope-manager/-/scope-manager-4.13.0.tgz#5b45912a9aa26b29603d8fa28f5e09088b947141"
-  integrity sha1-W0WRKpqiaylgPY+ij14JCIuUcUE=
+"@typescript-eslint/scope-manager@4.14.2":
+  version "4.14.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@typescript-eslint/scope-manager/-/scope-manager-4.14.2.tgz#64cbc9ca64b60069aae0c060b2bf81163243b266"
+  integrity sha1-ZMvJymS2AGmq4MBgsr+BFjJDsmY=
   dependencies:
-    "@typescript-eslint/types" "4.13.0"
-    "@typescript-eslint/visitor-keys" "4.13.0"
+    "@typescript-eslint/types" "4.14.2"
+    "@typescript-eslint/visitor-keys" "4.14.2"
 
 "@typescript-eslint/types@3.10.1":
   version "3.10.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@typescript-eslint/types/-/types-3.10.1.tgz#1d7463fa7c32d8a23ab508a803ca2fe26e758727"
   integrity sha1-HXRj+nwy2KI6tQioA8ov4m51hyc=
 
-"@typescript-eslint/types@4.13.0":
-  version "4.13.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@typescript-eslint/types/-/types-4.13.0.tgz#6a7c6015a59a08fbd70daa8c83dfff86250502f8"
-  integrity sha1-anxgFaWaCPvXDaqMg9//hiUFAvg=
-
 "@typescript-eslint/types@4.14.1":
   version "4.14.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@typescript-eslint/types/-/types-4.14.1.tgz#b3d2eb91dafd0fd8b3fce7c61512ac66bd0364aa"
   integrity sha1-s9Lrkdr9D9iz/OfGFRKsZr0DZKo=
+
+"@typescript-eslint/types@4.14.2":
+  version "4.14.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@typescript-eslint/types/-/types-4.14.2.tgz#d96da62be22dc9dc6a06647f3633815350fb3174"
+  integrity sha1-2W2mK+ItydxqBmR/NjOBU1D7MXQ=
 
 "@typescript-eslint/typescript-estree@1.13.0":
   version "1.13.0"
@@ -5382,13 +5397,13 @@
     semver "^7.3.2"
     tsutils "^3.17.1"
 
-"@typescript-eslint/typescript-estree@4.13.0":
-  version "4.13.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@typescript-eslint/typescript-estree/-/typescript-estree-4.13.0.tgz#cf6e2207c7d760f5dfd8d18051428fadfc37b45e"
-  integrity sha1-z24iB8fXYPXf2NGAUUKPrfw3tF4=
+"@typescript-eslint/typescript-estree@4.14.2":
+  version "4.14.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@typescript-eslint/typescript-estree/-/typescript-estree-4.14.2.tgz#9c5ebd8cae4d7b014f890acd81e8e17f309c9df9"
+  integrity sha1-nF69jK5NewFPiQrNgejhfzCcnfk=
   dependencies:
-    "@typescript-eslint/types" "4.13.0"
-    "@typescript-eslint/visitor-keys" "4.13.0"
+    "@typescript-eslint/types" "4.14.2"
+    "@typescript-eslint/visitor-keys" "4.14.2"
     debug "^4.1.1"
     globby "^11.0.1"
     is-glob "^4.0.1"
@@ -5417,20 +5432,20 @@
   dependencies:
     eslint-visitor-keys "^1.1.0"
 
-"@typescript-eslint/visitor-keys@4.13.0":
-  version "4.13.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@typescript-eslint/visitor-keys/-/visitor-keys-4.13.0.tgz#9acb1772d3b3183182b6540d3734143dce9476fe"
-  integrity sha1-mssXctOzGDGCtlQNNzQUPc6Udv4=
-  dependencies:
-    "@typescript-eslint/types" "4.13.0"
-    eslint-visitor-keys "^2.0.0"
-
 "@typescript-eslint/visitor-keys@4.14.1":
   version "4.14.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@typescript-eslint/visitor-keys/-/visitor-keys-4.14.1.tgz#e93c2ff27f47ee477a929b970ca89d60a117da91"
   integrity sha1-6Twv8n9H7kd6kpuXDKidYKEX2pE=
   dependencies:
     "@typescript-eslint/types" "4.14.1"
+    eslint-visitor-keys "^2.0.0"
+
+"@typescript-eslint/visitor-keys@4.14.2":
+  version "4.14.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@typescript-eslint/visitor-keys/-/visitor-keys-4.14.2.tgz#997cbe2cb0690e1f384a833f64794e98727c70c6"
+  integrity sha1-mXy+LLBpDh84SoM/ZHlOmHJ8cMY=
+  dependencies:
+    "@typescript-eslint/types" "4.14.2"
     eslint-visitor-keys "^2.0.0"
 
 "@ungap/promise-all-settled@1.1.2":
@@ -6008,6 +6023,14 @@ argparse@^1.0.7:
   dependencies:
     sprintf-js "~1.0.2"
 
+aria-query@^4.2.2:
+  version "4.2.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/aria-query/-/aria-query-4.2.2.tgz#0d2ca6c9aceb56b8977e9fed6aed7e15bbd2f83b"
+  integrity sha1-DSymyazrVriXfp/tau1+FbvS+Ds=
+  dependencies:
+    "@babel/runtime" "^7.10.2"
+    "@babel/runtime-corejs3" "^7.10.2"
+
 arr-diff@^2.0.0:
   version "2.0.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/arr-diff/-/arr-diff-2.0.0.tgz#8f3b827f955a8bd669697e4a4256ac3ceae356cf"
@@ -6345,6 +6368,11 @@ axe-core@^4.0.1, axe-core@^4.0.2:
   version "4.1.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/axe-core/-/axe-core-4.1.1.tgz#70a7855888e287f7add66002211a423937063eaf"
   integrity sha1-cKeFWIjih/et1mACIRpCOTcGPq8=
+
+axobject-query@^2.2.0:
+  version "2.2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/axobject-query/-/axobject-query-2.2.0.tgz#943d47e10c0b704aa42275e20edf3722648989be"
+  integrity sha1-lD1H4QwLcEqkInXiDt83ImSJib4=
 
 babel-code-frame@^6.22.0:
   version "6.26.0"
@@ -7677,7 +7705,7 @@ clone@^1.0.2:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/clone/-/clone-1.0.4.tgz#da309cc263df15994c688ca902179ca3c7cd7c7e"
   integrity sha1-2jCcwmPfFZlMaIypAheco8fNfH4=
 
-clone@^2.1.2:
+clone@^2.1.0, clone@^2.1.2:
   version "2.1.2"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/clone/-/clone-2.1.2.tgz#1b7f4b9f591f1e8f83670401600345a02887435f"
   integrity sha1-G39Ln1kfHo+DZwQBYANFoCiHQ18=
@@ -8330,6 +8358,11 @@ core-js-compat@^3.8.0:
   dependencies:
     browserslist "^4.16.0"
     semver "7.0.0"
+
+core-js-pure@^3.0.0:
+  version "3.8.3"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/core-js-pure/-/core-js-pure-3.8.3.tgz#10e9e3b2592ecaede4283e8f3ad7020811587c02"
+  integrity sha1-EOnjslkuyu3kKD6POtcCCBFYfAI=
 
 core-js-pure@^3.0.1:
   version "3.8.2"
@@ -9173,6 +9206,15 @@ dom-walk@^0.1.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/dom-walk/-/dom-walk-0.1.2.tgz#0c548bef048f4d1f2a97249002236060daa3fd84"
   integrity sha1-DFSL7wSPTR8qlySQAiNgYNqj/YQ=
 
+dom5@^3.0.1:
+  version "3.0.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/dom5/-/dom5-3.0.1.tgz#cdfc7331f376e284bf379e6ea054afc136702944"
+  integrity sha1-zfxzMfN24oS/N55uoFSvwTZwKUQ=
+  dependencies:
+    "@types/parse5" "^2.2.34"
+    clone "^2.1.0"
+    parse5 "^4.0.0"
+
 dom7@^2.1.5:
   version "2.1.5"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/dom7/-/dom7-2.1.5.tgz#a79411017800b31d8400070cdaebbfc92c1f6377"
@@ -9412,6 +9454,11 @@ emoji-regex@^8.0.0:
   version "8.0.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/emoji-regex/-/emoji-regex-8.0.0.tgz#e818fd69ce5ccfcb404594f842963bf53164cc37"
   integrity sha1-6Bj9ac5cz8tARZT4QpY79TFkzDc=
+
+emoji-regex@^9.0.0:
+  version "9.2.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/emoji-regex/-/emoji-regex-9.2.1.tgz#c9b25604256bb3428964bead3ab63069d736f7ee"
+  integrity sha1-ybJWBCVrs0KJZL6tOrYwadc29+4=
 
 emojis-list@^2.0.0:
   version "2.1.0"
@@ -9854,6 +9901,23 @@ eslint-plugin-import@^2.18.2, eslint-plugin-import@^2.22.1:
     resolve "^1.17.0"
     tsconfig-paths "^3.9.0"
 
+eslint-plugin-lit-a11y@^1.0.1:
+  version "1.0.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/eslint-plugin-lit-a11y/-/eslint-plugin-lit-a11y-1.0.1.tgz#0454d2b4df972d5d064d31473388e2a6968c782c"
+  integrity sha1-BFTStN+XLV0GTTFHM4jippaMeCw=
+  dependencies:
+    aria-query "^4.2.2"
+    axe-core "^4.0.2"
+    axobject-query "^2.2.0"
+    dom5 "^3.0.1"
+    emoji-regex "^9.0.0"
+    eslint "^7.6.0"
+    eslint-rule-extender "0.0.1"
+    intl-list-format "^1.0.3"
+    parse5 "^5.1.1"
+    parse5-htmlparser2-tree-adapter "^6.0.0"
+    requireindex "~1.1.0"
+
 eslint-plugin-lit@^1.2.0, eslint-plugin-lit@^1.2.4:
   version "1.3.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/eslint-plugin-lit/-/eslint-plugin-lit-1.3.0.tgz#9971743d8d4f469bdf70b120908dcbc6ce958f2e"
@@ -9883,6 +9947,11 @@ eslint-plugin-wc@^1.2.0:
   dependencies:
     js-levenshtein-esm "^1.2.0"
     validate-element-name "^2.1.1"
+
+eslint-rule-extender@0.0.1:
+  version "0.0.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/eslint-rule-extender/-/eslint-rule-extender-0.0.1.tgz#ae9faf15d1e651a714d579af0961fd80456f3b16"
+  integrity sha1-rp+vFdHmUacU1XmvCWH9gEVvOxY=
 
 eslint-scope@^3.7.1:
   version "3.7.3"
@@ -12287,6 +12356,11 @@ intersection-observer@^0.7.0:
   version "0.7.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/intersection-observer/-/intersection-observer-0.7.0.tgz#ee16bee978db53516ead2f0a8154b09b400bbdc9"
   integrity sha1-7ha+6XjbU1FurS8KgVSwm0ALvck=
+
+intl-list-format@^1.0.3:
+  version "1.0.3"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/intl-list-format/-/intl-list-format-1.0.3.tgz#f9b3c3d69b4647d63218f49aae5d3816c6e55b5b"
+  integrity sha1-+bPD1ptGR9YyGPSarl04FsblW1s=
 
 invariant@2.2.2:
   version "2.2.2"
@@ -16033,7 +16107,7 @@ parse-url@^5.0.0:
     parse-path "^4.0.0"
     protocols "^1.4.0"
 
-parse5-htmlparser2-tree-adapter@^6.0.1:
+parse5-htmlparser2-tree-adapter@^6.0.0, parse5-htmlparser2-tree-adapter@^6.0.1:
   version "6.0.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/parse5-htmlparser2-tree-adapter/-/parse5-htmlparser2-tree-adapter-6.0.1.tgz#2cdf9ad823321140370d4dbf5d3e92c7c8ddc6e6"
   integrity sha1-LN+a2CMyEUA3DU2/XT6Sx8jdxuY=
@@ -16044,6 +16118,11 @@ parse5@5.1.1, parse5@^5.1.1:
   version "5.1.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/parse5/-/parse5-5.1.1.tgz#f68e4e5ba1852ac2cadc00f4555fff6c2abb6178"
   integrity sha1-9o5OW6GFKsLK3AD0VV//bCq7YXg=
+
+parse5@^4.0.0:
+  version "4.0.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/parse5/-/parse5-4.0.0.tgz#6d78656e3da8d78b4ec0b906f7c08ef1dfe3f608"
+  integrity sha1-bXhlbj2o14tOwLkG98CO8d/j9gg=
 
 parse5@^6.0.0, parse5@^6.0.1:
   version "6.0.1"
@@ -18007,6 +18086,11 @@ requireindex@^1.2.0:
   version "1.2.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/requireindex/-/requireindex-1.2.0.tgz#3463cdb22ee151902635aa6c9535d4de9c2ef1ef"
   integrity sha1-NGPNsi7hUZAmNapslTXU3pwu8e8=
+
+requireindex@~1.1.0:
+  version "1.1.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/requireindex/-/requireindex-1.1.0.tgz#e5404b81557ef75db6e49c5a72004893fe03e162"
+  integrity sha1-5UBLgVV+91225JxacgBIk/4D4WI=
 
 requires-port@^1.0.0:
   version "1.0.0"
