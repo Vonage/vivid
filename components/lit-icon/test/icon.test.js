@@ -3,7 +3,7 @@ import '@vonage/vwc-lit-icon';
 const LOAD_TIME = 400;
 const sleep = (ms)=> new Promise((res)=> setTimeout(res, ms));
 
-describe('vwc-lit-icon', () => {
+describe('vwc-lit-icon', ()=> {
 
 	describe('custom component registration', function() {
 		it('Should be defined', function() {
