@@ -31,7 +31,7 @@ For your convenience, we've organized all our documentation under the following 
 * [Installation](docs/installation.md)
 * [Contribution](docs/contribution.md)
 
-#### Support
+#### Browsers support matrix
 
 We are continuously running our tests on 3 major browsers: Chrome, FireFox and Safari.
 The below matrix reflects a thoroughtly verified browsers / versions.
