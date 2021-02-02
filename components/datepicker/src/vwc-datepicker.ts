@@ -8,8 +8,10 @@ import 'flatpickr/dist/plugins/monthSelect/style.css';
 
 /**
  * TODO:
- * - update types
- * - add button to clear selection
+ * - style header
+ * - style range picker
+ * - week and month picker error on mobile
+ * - update <any> types
  */
 
 declare global {
@@ -55,7 +57,24 @@ export class VWCDatepicker extends LitFlatpickr {
 
 		this.onOpen = () => {
 			this._instance?.calendarContainer.classList.add('vvd-datepicker');
+			this.renderFooter();
 		};
+	}
+
+	renderFooter(): void {
+		if (
+			!this._instance?.calendarContainer.querySelector('.vvd-datepicker-footer')
+		) {
+			const footer = document.createElement('div');
+			footer.classList.add('vvd-datepicker-footer');
+
+			const clearButton = document.createElement('button');
+			clearButton.innerText = 'Clear';
+			clearButton.onclick = () => this._instance?.clear();
+
+			footer.appendChild(clearButton);
+			this._instance?.calendarContainer.appendChild(footer);
+		}
 	}
 
 	firstUpdated(): void {

@@ -1,7 +1,11 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 
+//////////////////////
+// flatpickr overrides
+//////////////////////
 .flatpickr-calendar.vvd-datepicker {
+  background: var(#{scheme-variables.$vvd-color-base});
   border: 1px solid var(#{scheme-variables.$vvd-color-contrast-faint});
   border-radius: 6px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, .1);
@@ -157,6 +161,7 @@
     }
   
     &-innerContainer {
+      border: none;
       padding: 17px 25px 0px;
     }
   }
@@ -165,6 +170,26 @@
   &.flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n+1)),
   &.flatpickr-day.endRange.startRange + .endRange:not(:nth-child(7n+1)) {
     box-shadow: none;
+  }
+}
+
+.vvd-datepicker-footer {
+  padding: 0px 25px 20px;
+  text-align: right;
+
+  button{
+    appearance: none;
+    background: 0 0;
+    border: 0;
+    color: var(#{scheme-variables.$vvd-color-on-base});
+    cursor: pointer;
+    font-size: 12px;
+    outline: 0;
+    padding: 0;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 
@@ -373,23 +398,6 @@
   //                 cursor: default;
   //                 pointer-events: none;
   //             }
-  //         }
-  //     }
-
-  //     &__footer {
-  //         padding: 0px 25px 20px;
-  //         text-align: right;
-  //     }
-
-  //     &__clear {
-  //         @extend %Vlt-text-link;
-  //         @extend .reset-button;
-  //         color: $black;
-  //         font-size: 1.2rem;
-  //         line-height: 2.1rem;
-
-  //         &:hover {
-  //             color: $black;
   //         }
   //     }
   // }
