@@ -1,4 +1,4 @@
-{
+module.exports = {
 	"env": {
 		"browser": true,
 		"node": true
@@ -9,14 +9,15 @@
 		"plugin:@typescript-eslint/recommended",
 		"plugin:wc/recommended",
 		"plugin:compat/recommended",
-		"plugin:lit-a11y/recommended"
+		"plugin:lit-a11y/recommended",
+		"plugin:markdown/recommended"
 	],
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
 		"ecmaVersion": 12,
 		"sourceType": "module"
 	},
-	"plugins": ["@typescript-eslint", "mocha", "wc", "no-only-tests", "lit-a11y"],
+	"plugins": ["@typescript-eslint", "mocha", "wc", "no-only-tests", "lit-a11y","markdown"],
 	"settings": {
 		"wc": {
 			"elementBaseClasses": ["BaseElement", "LitElement", "FormElement"]
@@ -90,6 +91,20 @@
 				"assert": false,
 				"afterEach": false,
 				"beforeEach": false
+			}
+		},
+		{
+			// 2. Enable the Markdown processor for all .md files.
+			files: ["**/*.md"],
+			processor: "markdown/markdown"
+		},
+		{
+			// 1. Target ```js code blocks in .md files.
+			files: ["**/*.md/*.js"],
+			rules: {
+					// 2. Disable other rules.
+					"no-console": "off",
+					"import/no-unresolved": "off"
 			}
 		}
 	]

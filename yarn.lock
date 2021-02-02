@@ -9927,6 +9927,14 @@ eslint-plugin-lit@^1.2.0, eslint-plugin-lit@^1.2.4:
     parse5-htmlparser2-tree-adapter "^6.0.1"
     requireindex "^1.2.0"
 
+eslint-plugin-markdown@^2.0.0-rc.2:
+  version "2.0.0-rc.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/eslint-plugin-markdown/-/eslint-plugin-markdown-2.0.0-rc.2.tgz#0826da576df004f9823453fc8e66bd8cab8477d3"
+  integrity sha1-CCbaV23wBPmCNFP8jma9jKuEd9M=
+  dependencies:
+    remark-parse "^5.0.0"
+    unified "^6.1.2"
+
 eslint-plugin-mocha@^8.0.0:
   version "8.0.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/eslint-plugin-mocha/-/eslint-plugin-mocha-8.0.0.tgz#7ec5d228bcb3735301701dfbc3376320a1ca3791"
@@ -16016,7 +16024,7 @@ parse-asn1@^5.0.0, parse-asn1@^5.1.5:
     pbkdf2 "^3.0.3"
     safe-buffer "^5.1.1"
 
-parse-entities@^1.0.2:
+parse-entities@^1.0.2, parse-entities@^1.1.0:
   version "1.2.2"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/parse-entities/-/parse-entities-1.2.2.tgz#c31bf0f653b6661354f8973559cb86dd1d5edf50"
   integrity sha1-wxvw9lO2ZhNU+Jc1WcuG3R1e31A=
@@ -17900,6 +17908,27 @@ remark-parse@^4.0.0:
     is-word-character "^1.0.0"
     markdown-escapes "^1.0.0"
     parse-entities "^1.0.2"
+    repeat-string "^1.5.4"
+    state-toggle "^1.0.0"
+    trim "0.0.1"
+    trim-trailing-lines "^1.0.0"
+    unherit "^1.0.4"
+    unist-util-remove-position "^1.0.0"
+    vfile-location "^2.0.0"
+    xtend "^4.0.1"
+
+remark-parse@^5.0.0:
+  version "5.0.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/remark-parse/-/remark-parse-5.0.0.tgz#4c077f9e499044d1d5c13f80d7a98cf7b9285d95"
+  integrity sha1-TAd/nkmQRNHVwT+A16mM97koXZU=
+  dependencies:
+    collapse-white-space "^1.0.2"
+    is-alphabetical "^1.0.0"
+    is-decimal "^1.0.0"
+    is-whitespace-character "^1.0.0"
+    is-word-character "^1.0.0"
+    markdown-escapes "^1.0.0"
+    parse-entities "^1.1.0"
     repeat-string "^1.5.4"
     state-toggle "^1.0.0"
     trim "0.0.1"
@@ -20436,7 +20465,7 @@ unified@9.2.0, unified@^9.1.0:
     trough "^1.0.0"
     vfile "^4.0.0"
 
-unified@^6.0.0, unified@^6.1.5:
+unified@^6.0.0, unified@^6.1.2, unified@^6.1.5:
   version "6.2.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/unified/-/unified-6.2.0.tgz#7fbd630f719126d67d40c644b7e3f617035f6dba"
   integrity sha1-f71jD3GRJtZ9QMZEt+P2FwNfbbo=
