@@ -11,9 +11,9 @@ import '@vonage/vwc-list/vwc-list-item.js';
 ```
 
 We suggest as a rule of thumb to use `vwc-list-item` component to provide the list of options.
-Event if you need some complex HTML content, put it within the `vwc-list-item`.
+`vwc-list-item` is capable of holding any content, from simple text to rich HTML.
 
-The following HTML should provide you with a working example:
+The following should provide you with a working example:
 ```html
 <vwc-select outlined label="VWC Select" helper="Helper text">
 	<vwc-list-item></vwc-list-item>
@@ -32,22 +32,17 @@ the text/content within the items is for **labeling** purposes only, should be c
 | Property                  | Modifiers | Type                                             | Description                                      |
 |---------------------------|-----------|--------------------------------------------------|--------------------------------------------------|
 | `disabled`                |           | `boolean`                                        |                                                  |
-| `floatingLabelFoundation` |           | `MDCFloatingLabelFoundation \| undefined`        |                                                  |
 | `helper`                  |           | `string`                                         |                                                  |
 | `icon`                    |           | `string`                                         |                                                  |
 | `index`                   | readonly  | `number`                                         |                                                  |
 | `items`                   | readonly  | `ListItemBase[]`                                 |                                                  |
 | `label`                   |           | `string`                                         |                                                  |
-| `lineRippleFoundation`    |           | `MDCLineRippleFoundation \| undefined`           |                                                  |
 | `naturalMenuWidth`        |           | `boolean`                                        |                                                  |
 | `outlined`                |           | `boolean`                                        |                                                  |
 | `required`                |           | `boolean`                                        |                                                  |
-| `ripple`                  | readonly  | `RippleInterface \| Promise<RippleInterface \| null> \| undefined` | Implement ripple getter for Ripple integration with mwc-formfield |
 | `selected`                | readonly  | `ListItemBase \| null`                           |                                                  |
 | `validateOnInitialRender` |           | `boolean`                                        |                                                  |
 | `validationMessage`       |           | `string`                                         |                                                  |
-| `validity`                | readonly  | `ValidityState`                                  |                                                  |
-| `validityTransform`       |           | `((value: string, nativeValidity: ValidityState) => Partial<ValidityState>) \| null` |                                                  |
 | `value`                   |           | `string`                                         |                                                  |
 
 ## Methods
