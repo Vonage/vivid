@@ -1,9 +1,18 @@
 import '@vonage/vvd-core';
 import { customElement, property } from 'lit-element';
+import { style as vwcDatepickerStyles } from './vwc-datepicker.css.js';
 import { LitFlatpickr } from 'lit-flatpickr';
 import weekSelect from 'flatpickr/dist/plugins/weekSelect/weekSelect';
 import monthSelectPlugin from 'flatpickr/dist/plugins/monthSelect';
 import 'flatpickr/dist/plugins/monthSelect/style.css';
+
+/**
+ * TODO:
+ * - update types
+ * - altInput not working
+ * - broken on mobile device
+ * - add button to clear selection
+ */
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -31,6 +40,15 @@ export class VWCDatepicker extends LitFlatpickr {
 		// override LitFlatpickr to work with [flatpickr change](https://github.com/flatpickr/flatpickr/blame/07cf1b1ba5ec71da511c295f622d60eed3bf3eb7/src/index.ts#L1522)
 		// flatpickr now requires `enable` to be `undefined` by default rather than `[]`
 		this.enable = <any>undefined;
+
+		// inject custom flatpicker styles
+		const style = document.createElement('style');
+		style.innerHTML = vwcDatepickerStyles.cssText;
+		document.head.appendChild(style);
+
+		this.onOpen = () => {
+			this._instance?.calendarContainer.classList.add('vvd-datepicker');
+		};
 	}
 
 	firstUpdated(): void {
