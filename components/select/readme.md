@@ -1,12 +1,19 @@
-# vwc-select
+# `vwc-select`
 
-This component is an extension of [\<mwc-select\>](https://github.com/material-components/material-components-web-components/tree/master/packages/select).
+`vwc-select` is a drop-down kind of input element.
 
-## Usage
+> This component is an extension of [\<mwc-select\>](https://github.com/material-components/material-components-web-components/tree/master/packages/select).
+
+# Usage
 
 Import the component in your context, to get it initialized:
 ```js
 import '@vonage/vwc-select/vwc-select.js';
+
+//	or, to be able to use casting in TypeScript, do
+
+import { VWCSelect } from '@vonage/vwc-select/vwc-select.js';
+
 import '@vonage/vwc-list/vwc-list-item.js';
 ```
 
@@ -24,8 +31,12 @@ The following should provide you with a working example:
 
 Few points to pay attention to, in order to get the expected result:
 * Select will preselect the first item in the list (much like the native HTML select), so if one would like to start with empty value, stare the list with an empty item
-* Items MUST HAVE an attribute value with the actual value that you'd like to use in your application logic (except the empty choice);
+* Items MUST HAVE an attribute value with an actual values that you'd like to use in your applicative logic (except the empty choice);
 the text/content within the items is for **labeling** purposes only, should be considered as not logically reliable (think of localization down the road, or some rich HTML)
+
+# API
+
+`vwc-select` exposes the following properties, methods and events:
 
 ## Properties
 

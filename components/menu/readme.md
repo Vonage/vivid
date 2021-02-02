@@ -1,11 +1,13 @@
-### `vwc-menu`
+# `vwc-menu`
 
 `vwc-menu` is a surfacing menu component, showing up on demand, eg upon user action.
-`vwc-menu` fetured with internal list, while all LightDOM elements of it become children of that list.
+`vwc-menu` fetured with an internal list, while all LightDOM elements of it become children of that list.
 
-> This component is an extension of [<mwc-menu>](https://github.com/material-components/material-components-web-components/tree/master/packages/menu).
+> This component is an extension of [\<mwc-menu\>](https://github.com/material-components/material-components-web-components/tree/master/packages/menu).
 
-Usage example in HTML:
+# Usage
+
+Usage example:
 ```html
 <vwc-menu>
 	<vwc-list-item>Item 1</vwc-list-item>
@@ -15,9 +17,7 @@ Usage example in HTML:
 </vwc-menu>
 ```
 
-One may, if required, to use any HTML element as a menu item.
-Yet, we strongly suggest to use `vwc-list-item`, putting any of you custom content within.
-Otherwise, the whole machinery of menu item states and events, as well as binding to the menu state, will have to be implemented by consumer.
+`vwc-list-item` should be used for the menu items, putting any of you custom content within, including rich HTML if needed.
 
 > It is still consumer's responsibility to initiate `vwc-list-item`, as any other Vivid component.
 
@@ -28,13 +28,15 @@ import '@vonage/vwc-menu';
 //	or, to be able to use casting in TypeScript, do
 
 import { VWCMenu } from '@vonage/vwc-menu';
+
+import '@vonage/vwc-list/vwc-list-item.js';
 ```
 
-### API
+# API
 
-`vwc-menu` provides several API to manage it's state and presentation.
+`vwc-menu` exposes several APIs to provide its fuctionality, namely properties, methods and events.
 
-#### Properties
+## Properties
 
 | Property                  | Modifiers | Type                                             | Description                                      |
 |---------------------------|-----------|--------------------------------------------------|--------------------------------------------------|
@@ -59,7 +61,7 @@ import { VWCMenu } from '@vonage/vwc-menu';
 | `x`                       |           | `number \| null`                                 |                                                  |
 | `y`                       |           | `number \| null`                                 |                                                  |
 
-#### Methods
+## Methods
 
 | Method                | Type                                         |
 |-----------------------|----------------------------------------------|
@@ -70,7 +72,7 @@ import { VWCMenu } from '@vonage/vwc-menu';
 | `select`              | `(index: MWCListIndex): void`                |
 | `show`                | `(): void`                                   |
 
-#### Events
+## Events
 
 | Event           | Description      |
 |-----------------|------------------|
