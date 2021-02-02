@@ -111,6 +111,7 @@
 		"semver-compare": "^1.0.0",
 		"semver-diff": "^3.1.1",
 		"showdown": "^1.9.1",
+		"showdown-htmlescape": "^0.1.9",
 		"spech": "^0.2.1",
 		"standard-version": "^9.1.0",
 		"tar-stream": "^2.1.4",
