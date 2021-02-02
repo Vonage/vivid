@@ -9,8 +9,6 @@ import 'flatpickr/dist/plugins/monthSelect/style.css';
 /**
  * TODO:
  * - update types
- * - altInput not working
- * - broken on mobile device
  * - add button to clear selection
  */
 
@@ -45,6 +43,15 @@ export class VWCDatepicker extends LitFlatpickr {
 		const style = document.createElement('style');
 		style.innerHTML = vwcDatepickerStyles.cssText;
 		document.head.appendChild(style);
+
+		this.onReady = () => {
+			// slot flatpickr alt/mobile input in vwc-textfield
+			// mobileInput is underfined onReady
+			setTimeout(() => {
+				this._instance?.altInput?.setAttribute('slot', 'formInputElement');
+				this._instance?.mobileInput?.setAttribute('slot', 'formInputElement');
+			}, 1);
+		};
 
 		this.onOpen = () => {
 			this._instance?.calendarContainer.classList.add('vvd-datepicker');

@@ -21,7 +21,7 @@ const Template = args => html`
   </div>`;
 
 export const Basic = Template.bind({});
-Basic.args = { dateFormat: 'Y-m-d' }; // altInput: '', altFormat: 'F j, Y'
+Basic.args = { dateFormat: 'Y-m-d', altInput: '', altFormat: 'F j, Y' };
 
 export const MaxDate = Template.bind({});
 MaxDate.args = { dateFormat: 'Y-m-d', MaxDate: 'today' };
