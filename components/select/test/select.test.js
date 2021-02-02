@@ -53,6 +53,14 @@ describe('select', () => {
 			await waitNextTask();
 			expect(addedElements).dom.to.equalSnapshot();
 		});
+
+		it('should be outlined by default', async () => {
+			const [addedElements] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			expect(addedElements.outlined).true;
+		});
 	});
 
 	describe(`form association`, function () {
@@ -262,7 +270,7 @@ describe('select', () => {
 		beforeEach(async () => {
 			addedElements = addElement(
 				textToDomToParent(`
-				<${COMPONENT_NAME} outlined label="VWC Select">
+				<${COMPONENT_NAME} label="VWC Select">
 					<vwc-list-item value="0">Item 1</vwc-list-item>
 					<vwc-list-item value="1">Item 2</vwc-list-item>
 				</${COMPONENT_NAME}>
@@ -312,7 +320,7 @@ describe('select', () => {
 		it('should have normal size by default', async () => {
 			const addedElements = addElement(
 				textToDomToParent(`
-				<${COMPONENT_NAME} outlined>
+				<${COMPONENT_NAME}>
 					<vwc-list-item>Item 1</vwc-list-item>
 					<vwc-list-item>Item 2</vwc-list-item>
 				</${COMPONENT_NAME}>
@@ -327,20 +335,18 @@ describe('select', () => {
 			assertDenseStyles(COMPONENT_NAME);
 		});
 
-		it('should have 16px space between edge and the selection (outlined)', async () => {
+		it('should have 16px space between edge and the selection', async () => {
 			const [e] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} outlined></${COMPONENT_NAME}>`)
+				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
 			await waitNextTask();
 			const i = e.shadowRoot.querySelector('.mdc-select__selected-text');
 			assertDistancePixels(e, i, 'left', 16);
 		});
 
-		it('should have 16px space between edge and the label (outlined)', async () => {
+		it('should have 16px space between edge and the label', async () => {
 			const [e] = addElement(
-				textToDomToParent(
-					`<${COMPONENT_NAME} outlined label="Label"></${COMPONENT_NAME}>`
-				)
+				textToDomToParent(`<${COMPONENT_NAME} label="Label"></${COMPONENT_NAME}>`)
 			);
 			await waitNextTask();
 			const l = e.shadowRoot.querySelector('.mdc-floating-label');
