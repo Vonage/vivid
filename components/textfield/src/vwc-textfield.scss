@@ -1,9 +1,9 @@
 @forward './vwc-textfield-coupling';
+@forward './vwc-textfield-input';
+@use './vwc-textfield-variables' as textfield-variables;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins;
-
-$vvd-text-field-size-block: --vvd-text-field-size-block;
 
 :host {
 	--mdc-theme-error: #{color-semantic.$formfield-label-error-ink};
@@ -35,7 +35,7 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 	);
 	--mdc-shape-small: var(--border-radius);
 
-	min-width: 160px;
+	min-width: 180px;
 
 	font-stretch: var(
 		--mdc-typography-subtitle1-font-stretch
@@ -70,11 +70,11 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 }
 
 :host([dense]) {
-	#{$vvd-text-field-size-block}: 40px;
+	#{textfield-variables.$vvd-text-field-size-block}: 40px;
 }
 
 :host(:not([dense])) {
-	#{$vvd-text-field-size-block}: 48px;
+	#{textfield-variables.$vvd-text-field-size-block}: 48px;
 }
 
 :host([dense][label]:not([label=''])) {
@@ -101,7 +101,7 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 	// prevent fill overflowing bottom corners
 	border-bottom-right-radius: var(--mdc-shape-small);
 	border-bottom-left-radius: var(--mdc-shape-small);
-	height: var(#{$vvd-text-field-size-block});
+	height: var(#{textfield-variables.$vvd-text-field-size-block});
 
 	.mdc-floating-label {
 		font-stretch: var(
@@ -125,7 +125,7 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 		background-color: var(--mdc-text-field-fill-color);
 
 		.mdc-floating-label {
-			left: 2px;
+			left: 4px;
 		}
 	}
 
@@ -145,7 +145,7 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 
 	&:not(.mdc-text-field--disabled) {
 		.mdc-text-field__icon--leading {
-			color: var(--mdc-text-field-ink-color);
+			color: var(--mdc-text-field-label-ink-color);
 		}
 	}
 
@@ -176,9 +176,10 @@ $vvd-text-field-size-block: --vvd-text-field-size-block;
 
 	vwc-icon {
 		align-self: center;
-		margin: 0 12px;
-		min-height: 18px;
-		min-width: 18px;
+		padding: 0;
+		margin: 0 #{textfield-variables.$horizontal-gutter};
+		min-block-size: textfield-variables.$icon-size;
+		min-inline-size: textfield-variables.$icon-size;
 	}
 }
 
@@ -209,55 +210,21 @@ vwc-notched-outline {
 }
 .mdc-text-field--with-leading-icon.mdc-text-field--outlined
 	.mdc-floating-label {
-	left: 30px;
-}
-
-// autofill enhancements
-
-::slotted(input) {
-	border: unset;
-	outline: unset;
-	background: unset;
-	color: var(--mdc-text-field-ink-color);
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	inset: 0;
-	block-size: 100%;
-	inline-size: 100%;
-	padding-inline-start: var(--padding-inline-start);
-	padding-inline-end: var(--padding-inline-end);
-	box-sizing: border-box;
-	border-radius: var(--border-radius);
-}
-
-::slotted(input:-webkit-autofill),
-::slotted(input:-webkit-autofill:hover),
-::slotted(input:-webkit-autofill:focus) {
-	z-index: -1;
-	// -webkit-text-fill-color: green;
-	// -webkit-box-shadow: 0 0 0 30px red inset;
+	left: 40px;
 }
 
 :host([outlined]) {
-	--padding-inline-start: max(14px, calc(var(--mdc-shape-small, 4px) + 4px));
-	--padding-inline-end: max(14px, var(--mdc-shape-small, 4px));
+	--padding-inline-start: max(
+		#{textfield-variables.$horizontal-gutter},
+		calc(var(--mdc-shape-small, 4px) + 4px)
+	);
+	--padding-inline-end: max(#{textfield-variables.$horizontal-gutter}, var(--mdc-shape-small, 4px));
 }
 
-$icon-gutter: calc(18px + 12px * 2);
-
 :host(:not([disabled])[icon]) {
-	--padding-inline-start: #{$icon-gutter};
+	--padding-inline-start: #{textfield-variables.$icon-gutter};
 }
 
 :host(:not([disabled])[icontrailing]) {
-	--padding-inline-end: #{$icon-gutter};
-}
-
-:host(:not([dense])) {
-	::slotted(input) {
-		padding-block-start: calc(var(#{$vvd-text-field-size-block}) - 32px);
-	}
+	--padding-inline-end: #{textfield-variables.$icon-gutter};
 }

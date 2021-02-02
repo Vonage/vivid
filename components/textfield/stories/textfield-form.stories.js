@@ -10,6 +10,11 @@ const Template = args => html`
 			display: grid;
 			gap: 20px;
 		}
+		.controls {
+			display: flex;
+			justify-content: flex-end;
+			gap: 10px;
+		}
 	</style>
 	<form @submit="${onSubmit}">
 		<vwc-textfield ...=${spread(args.username)}></vwc-textfield>
@@ -18,7 +23,6 @@ const Template = args => html`
 			<vwc-button layout="outlined" type="reset">Reset</vwc-button>
 			<vwc-button layout="filled" type="submit">Submit</vwc-button>
 		</div>
-		<hr>
 		<div>
 			<div><span>Username: </span><span id="username-view"></span></div>
 			<div><span>Password: </span><span id="password-view"></span></div>
