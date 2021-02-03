@@ -8,10 +8,9 @@ import 'flatpickr/dist/plugins/monthSelect/style.css';
 
 /**
  * TODO:
- * - style header
- * - style range picker
- * - week and month picker error on mobile
  * - update <any> types
+ * - style header
+ * - week and month picker error on mobile (native datepicker should be used here anyway)
  */
 
 declare global {
@@ -55,10 +54,60 @@ export class VWCDatepicker extends LitFlatpickr {
 			}, 1);
 		};
 
+		this.onChange = (e) => {
+			this.changeHandler(e);
+		};
+
 		this.onOpen = () => {
 			this._instance?.calendarContainer.classList.add('vvd-datepicker');
+			this.renderRange();
 			this.renderFooter();
 		};
+	}
+
+	changeHandler(e: any): void {
+		if (this._instance && this.mode === 'range') {
+			const startDate = e[0] ? this._instance.formatDate(e[0], 'M j, Y') : '';
+			const endDate = e[1] ? this._instance.formatDate(e[1], 'M j, Y') : '';
+
+			const rangeStart = this._instance.calendarContainer.querySelector(
+				'.vvd-datepicker-range-start'
+			);
+			const rangeEnd = this._instance.calendarContainer.querySelector(
+				'.vvd-datepicker-range-end'
+			);
+
+			if (rangeStart) {
+				rangeStart.textContent = startDate;
+				startDate
+					? rangeStart.classList.add('selected')
+					: rangeStart.classList.remove('selected');
+			}
+			if (rangeEnd) {
+				rangeEnd.textContent = endDate;
+				endDate
+					? rangeEnd.classList.add('selected')
+					: rangeEnd.classList.remove('selected');
+			}
+		}
+	}
+
+	renderRange(): void {
+		if (
+			this.mode === 'range' &&
+			!this._instance?.calendarContainer.querySelector('.vvd-datepicker-range')
+		) {
+			const rangeContainer = document.createElement('div');
+			const rangeStart = document.createElement('div');
+			const rangeEnd = document.createElement('div');
+
+			rangeContainer.classList.add('vvd-datepicker-range');
+			rangeStart.classList.add('vvd-datepicker-range-start');
+			rangeEnd.classList.add('vvd-datepicker-range-end');
+
+			rangeContainer.append(rangeStart, rangeEnd);
+			this._instance?.monthNav.insertAdjacentElement('afterend', rangeContainer);
+		}
 	}
 
 	renderFooter(): void {

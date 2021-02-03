@@ -118,13 +118,13 @@
         &:before {
           animation-duration: 0.1s;
           animation-name: selected;
-          background-color: var(#{scheme-variables.$vvd-color-cta});
+          background-color: var(#{scheme-variables.$vvd-color-announcement});
         }
       }
   
       @keyframes selected {
         0%   {background-color: var(#{scheme-variables.$vvd-color-primary});}
-        100% {background-color: var(#{scheme-variables.$vvd-color-cta});}
+        100% {background-color: var(#{scheme-variables.$vvd-color-announcement});}
       }
   
       &.startRange + .inRange,
@@ -171,6 +171,62 @@
   .flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n+1)),
   .flatpickr-day.startRange + .selected.endRange:not(:nth-child(7n+1)) {
     box-shadow: none;
+  }
+}
+
+.vvd-datepicker-range {
+  align-items: center;
+  background-color: var(#{scheme-variables.$vvd-color-announcement});
+  box-sizing: border-box;
+  color: var(#{scheme-variables.$vvd-color-on-announcement});
+  display: flex;
+  height: 54px;
+  justify-content: space-between;
+  padding: 5px 28px 5px;
+  position: relative;
+
+  &-start,
+  &-end {
+    @include typography.typography-cat-shorthand('body-1-bold');
+
+    &:before {
+      display: flex;
+      @include typography.typography-cat-shorthand('body-1');
+    }
+
+    &.selected {
+      align-self: flex-end;
+      
+      &:before {
+        @include typography.typography-cat-shorthand('caption');
+      }
+    }
+  }
+
+  &-start:before {
+    content: 'Start';
+  }
+  
+  &-end {
+    flex-basis: 100px;
+    text-align: left;
+
+    &:before {
+      content: 'End';
+    }
+  }
+
+  &:after {
+    background-color: var(#{scheme-variables.$vvd-color-on-announcement});
+    content: '';
+    height: 40px;
+    left: 50%;
+    margin-left: -1px;
+    opacity: 0.5;
+    position: absolute;
+    top: 8px;
+    transform: rotate(35deg);
+    width: 1px;
   }
 }
 
