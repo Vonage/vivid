@@ -15,7 +15,7 @@ describe('vvd-context typography', () => {
 				CONTEXT_PROVIDING_ELEMENTS
 			)) {
 				for (const deviatingElement of deviation.elements) {
-					it(`should have '${deviatingElement}' element styled withing '${contextElement}'`, async () => {
+					it(`should have '${deviatingElement}' element styled within '${contextElement}'`, async () => {
 						const iframe = await setupLocalIframe();
 						const d = iframe.contentWindow.document;
 
