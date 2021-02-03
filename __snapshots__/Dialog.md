@@ -12,8 +12,12 @@
 >
   <div class="mdc-dialog__container">
     <div class="mdc-dialog__surface">
+      <div id="dialog_icon">
+        <slot name="icon">
+        </slot>
+      </div>
       <div
-        class="mdc-dialog__content"
+        class="last mdc-dialog__content"
         id="content"
       >
         <slot id="contentSlot">

@@ -1,3 +1,43 @@
+# [1.2.0](https://github.com/vonage/vivid/compare/v1.1.3...v1.2.0) (2021-02-03)
+
+
+### Bug Fixes
+
+* **select:** issue [#627](https://github.com/vonage/vivid/issues/627) select dense label ([#628](https://github.com/vonage/vivid/issues/628)) ([b421b6c](https://github.com/vonage/vivid/commit/b421b6c527ed91971be4b4ff718f286108728b95))
+
+
+### Features
+
+* **vwc-menu:** issue [#592](https://github.com/vonage/vivid/issues/592) menu docs and better stories ([#596](https://github.com/vonage/vivid/issues/596)) ([67dbda5](https://github.com/vonage/vivid/commit/67dbda5f6634a94c0fabaab90704dddf468e88fb))
+
+
+
+## [1.1.3](https://github.com/vonage/vivid/compare/v1.1.2...v1.1.3) (2021-01-27)
+
+
+
+## [1.1.2](https://github.com/vonage/vivid/compare/v1.1.1...v1.1.2) (2021-01-27)
+
+
+### Bug Fixes
+
+* **textfield:** textfield fixes in styling and behaviour ([#612](https://github.com/vonage/vivid/issues/612)) ([da699b1](https://github.com/vonage/vivid/commit/da699b12db6f4bbad346d060f89abb207fb14744))
+
+
+
+## [1.1.1](https://github.com/vonage/vivid/compare/v1.1.0...v1.1.1) (2021-01-25)
+
+
+
+# [1.1.0](https://github.com/vonage/vivid/compare/v1.0.4...v1.1.0) (2021-01-25)
+
+
+### Features
+
+* autofill solution ([#599](https://github.com/vonage/vivid/issues/599)) ([284a5f0](https://github.com/vonage/vivid/commit/284a5f003ca98a26ba12cd91a13772c902635766))
+
+
+
 ## [1.0.4](https://github.com/vonage/vivid/compare/v1.0.3...v1.0.4) (2021-01-19)
 
 

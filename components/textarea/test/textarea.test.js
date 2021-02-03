@@ -3,6 +3,7 @@ import {
 	textToDomToParent,
 	waitNextTask,
 	assertComputedStyle,
+	assertDistancePixels,
 	changeValueAndNotify,
 	isolatedElementsCreation,
 	listenToSubmission,
@@ -12,7 +13,7 @@ import {
 	typographyTestCases,
 	hasNotchedOutline,
 	validateMultipleShadowLayers,
-} from '../../textfield/test/textfield-utils.test';
+} from '@vonage/vvd-foundation/test/input-utils.test.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
@@ -215,7 +216,9 @@ describe('textarea', () => {
 	});
 
 	describe('typography', () => {
-		typographyTestCases(COMPONENT_NAME);
+		typographyTestCases(COMPONENT_NAME, (vwcTextarea) =>
+			vwcTextarea.shadowRoot.querySelector('.mdc-text-field__input')
+		);
 	});
 
 	describe('notched outlined', () => {
@@ -224,7 +227,7 @@ describe('textarea', () => {
 		});
 	});
 
-	describe('dense', () => {
+	describe('density', () => {
 		it('should have normal size by default', async () => {
 			const addedElements = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} outlined></${COMPONENT_NAME}>`)
@@ -259,6 +262,27 @@ describe('textarea', () => {
 				left: '-12px',
 				transform: 'none',
 			});
+		});
+
+		it('should have 16px space between edge and the textarea (outlined)', async () => {
+			const [e] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} outlined></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			const i = e.shadowRoot.querySelector('textarea');
+			assertDistancePixels(e, i, 'left', 0);
+			assertComputedStyle(i, { paddingInlineStart: '16px' });
+		});
+
+		it('should have 16px space between edge and the label (outlined)', async () => {
+			const [e] = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} outlined label="Label"></${COMPONENT_NAME}>`
+				)
+			);
+			await waitNextTask();
+			const l = e.shadowRoot.querySelector('#label');
+			assertDistancePixels(e, l, 'left', 16);
 		});
 	});
 

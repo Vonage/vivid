@@ -1,3 +1,28 @@
+# [1.2.0](https://github.com/vonage/vivid/compare/v1.1.3...v1.2.0) (2021-02-03)
+
+
+### Bug Fixes
+
+* **select:** issue [#627](https://github.com/vonage/vivid/issues/627) select dense label ([#628](https://github.com/vonage/vivid/issues/628)) ([b421b6c](https://github.com/vonage/vivid/commit/b421b6c527ed91971be4b4ff718f286108728b95))
+
+
+
+## [1.1.3](https://github.com/vonage/vivid/compare/v1.1.2...v1.1.3) (2021-01-27)
+
+
+
+## [1.1.2](https://github.com/vonage/vivid/compare/v1.1.1...v1.1.2) (2021-01-27)
+
+
+
+## [1.1.1](https://github.com/vonage/vivid/compare/v1.1.0...v1.1.1) (2021-01-25)
+
+
+
+# [1.1.0](https://github.com/vonage/vivid/compare/v1.0.4...v1.1.0) (2021-01-25)
+
+
+
 ## [1.0.4](https://github.com/vonage/vivid/compare/v1.0.3...v1.0.4) (2021-01-19)
 
 

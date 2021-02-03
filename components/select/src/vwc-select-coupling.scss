@@ -10,10 +10,6 @@
 	.mdc-floating-label--float-above {
 		@include typography.typography-mdc-coupling('subtitle1', 'caption');
 	}
-
-	.mdc-select-helper-text {
-		@include typography.typography-mdc-coupling('caption', 'caption');
-	}
 }
 
 :host([dense]) {
