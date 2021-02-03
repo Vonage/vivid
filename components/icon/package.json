@@ -33,7 +33,7 @@
 		"@vonage/vvd-core": "^1.2.0"
 	},
 	"devDependencies": {
-		"@vonage/vvd-umbrella": "^1.2.0",
+		"@vonage/vvd-umbrella": "^1.0.4",
 		"@types/ramda": "^0.27.36",
 		"tslib": "^2.0.3"
 	}
