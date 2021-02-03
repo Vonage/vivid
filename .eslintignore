@@ -9,5 +9,3 @@
 **/*.tsbuildinfo
 **/storybook-static
 **/coverage
-
-components/mwc-chips

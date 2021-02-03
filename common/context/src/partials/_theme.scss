@@ -11,11 +11,11 @@ body {
 	color: var(#{scheme-variables.$vvd-color-on-base});
 }
 
-#{constants.$vivid-scope-class} {
-  a {
-    color: color-base.$purple-600;
+#{variables.$vivid-scope-selector} {
+	a {
+		color: color-base.$purple-600;
     cursor: pointer;
-  }
+	}
 
 	code,
 	kbd,

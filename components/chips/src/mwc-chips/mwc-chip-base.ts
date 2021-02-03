@@ -6,7 +6,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+		http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
@@ -27,9 +27,13 @@ import {
 	MDCChipNavigationEventDetail,
 } from '@material/chips/chip/types';
 import { html, property, query } from 'lit-element';
-import { nothing } from 'lit-html';
+import { nothing, TemplateResult } from 'lit-html';
 import { classMap } from 'lit-html/directives/class-map';
 import { ifDefined } from 'lit-html/directives/if-defined';
+
+function NOOP(): void {
+	void 0;
+}
 
 export class ChipBase extends BaseElement {
 	@query('.mdc-chip') protected mdcRoot!: HTMLElement;
@@ -41,11 +45,11 @@ export class ChipBase extends BaseElement {
 	@property({ reflect: true })
 	type?: ChipType;
 	@property({ type: Boolean })
-	get selected() {
+	get selected(): boolean {
 		return this._selected;
 	}
 
-	set selected(selected) {
+	set selected(selected: boolean) {
 		this._selected = selected;
 		this.mdcFoundation.setSelected(selected);
 	}
@@ -111,6 +115,7 @@ export class ChipBase extends BaseElement {
 			isTrailingActionNavigable: () => {
 				return (
 					this.trailingActionElement &&
+					/* eslint-disable @typescript-eslint/no-explicit-any */
 					(this.trailingActionElement as any).isNavigable()
 				);
 			},
@@ -166,8 +171,8 @@ export class ChipBase extends BaseElement {
 					)
 				);
 			},
-			notifyEditStart: () => {},
-			notifyEditFinish: () => {},
+			notifyEditStart: NOOP,
+			notifyEditFinish: NOOP,
 			removeClassFromLeadingIcon: (className: string) => {
 				if (this.leadingIconElement) {
 					this.leadingIconElement.classList.remove(className);
@@ -175,7 +180,8 @@ export class ChipBase extends BaseElement {
 			},
 			removeTrailingActionFocus: () => {
 				if (this.trailingActionElement) {
-					(this.trailingActionElement as any).removeFocus();
+					((this
+						.trailingActionElement as unknown) as MDCChipFoundation).removeFocus();
 				}
 			},
 			setPrimaryActionAttr: (attr: string, value: string) => {
@@ -188,30 +194,30 @@ export class ChipBase extends BaseElement {
 		};
 	}
 
-	focusPrimaryAction() {
+	focusPrimaryAction(): void {
 		this.mdcFoundation.focusPrimaryAction();
 	}
 
-	focusTrailingAction() {
+	focusTrailingAction(): void {
 		this.mdcFoundation.focusTrailingAction();
 	}
 
-	removeFocus() {
+	removeFocus(): void {
 		this.mdcFoundation.removeFocus();
 	}
 
-	setSelectedFromChipSet(selected: boolean, shouldNotifyClients: boolean) {
+	setSelectedFromChipSet(selected: boolean, shouldNotifyClients: boolean): void {
 		const oldValue = this._selected;
 		this._selected = selected;
 		this.mdcFoundation.setSelectedFromChipSet(selected, shouldNotifyClients);
 		this.requestUpdate('selected', oldValue);
 	}
 
-	removeWithAnimation() {
+	removeWithAnimation(): void {
 		this.mdcFoundation.beginExit();
 	}
 
-	render() {
+	render(): TemplateResult {
 		const classes = {
 			'mdc-chip--selected': this.selected,
 			'mdc-chip--deletable': this.removable,
@@ -233,13 +239,13 @@ export class ChipBase extends BaseElement {
 		`;
 	}
 
-	renderLabel() {
+	renderLabel(): TemplateResult {
 		return html`${this.label}`;
 	}
 
-	renderThumbnail() {
+	renderThumbnail(): TemplateResult {
 		if (this.icon) {
-			return html` <i
+			return html`<i
 				class="mdc-chip__icon mdc-chip__icon--leading ${this.iconClass}"
 			>
 				${this.icon}
@@ -253,7 +259,7 @@ export class ChipBase extends BaseElement {
 		}
 	}
 
-	renderCheckmark() {
+	renderCheckmark(): TemplateResult {
 		return html`${this.type === 'filter'
 			? html` <span class="mdc-chip__checkmark">
 					<svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
@@ -268,7 +274,7 @@ export class ChipBase extends BaseElement {
 			: nothing}`;
 	}
 
-	renderPrimaryAction() {
+	renderPrimaryAction(): TemplateResult {
 		const isFilter = this.type === 'filter';
 		const role = isFilter ? 'checkbox' : 'button';
 		const ariaChecked = isFilter ? String(this.selected) : undefined;
@@ -282,7 +288,7 @@ export class ChipBase extends BaseElement {
 		</span>`;
 	}
 
-	renderRemoveIcon() {
+	renderRemoveIcon(): TemplateResult {
 		const classes = {
 			'mdc-chip__trailing-action': this.removeIconFocusable,
 			[this.removeIconClass]: true,
@@ -307,7 +313,7 @@ export class ChipBase extends BaseElement {
 		}
 	}
 
-	private dispatchRemovalEvent() {
+	private dispatchRemovalEvent(): void {
 		const detail: MDCChipRemovalEventDetail = {
 			chipId: this.id,
 			removedAnnouncement: null,
@@ -321,19 +327,19 @@ export class ChipBase extends BaseElement {
 		);
 	}
 
-	private handleInteraction(_e: MouseEvent | KeyboardEvent) {
+	private handleInteraction(): void {
 		this.mdcFoundation.handleClick();
 	}
 
-	private handleTransitionEnd(e: TransitionEvent) {
+	private handleTransitionEnd(e: TransitionEvent): void {
 		this.mdcFoundation.handleTransitionEnd(e);
 	}
 
-	private handleTrailingIconInteraction(_e: MouseEvent | KeyboardEvent) {
+	private handleTrailingIconInteraction(): void {
 		this.mdcFoundation.handleTrailingActionInteraction();
 	}
 
-	private handleKeydown(e: KeyboardEvent) {
+	private handleKeydown(e: KeyboardEvent): void {
 		this.mdcFoundation.handleKeydown(e);
 	}
 }
