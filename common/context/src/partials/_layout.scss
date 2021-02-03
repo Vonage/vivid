@@ -32,12 +32,12 @@ body {
 		padding: 20px 22px;
 		border-radius: 6px;
 
-		:first-child {
+		> :first-child {
 			margin-block-start: 0;
 			padding-block-start: 0;
 		}
 
-		:last-child {
+		> :last-child {
 			margin-block-end: 0;
 			padding-block-end: 0;
 		}

@@ -26,9 +26,15 @@ $vvd-select-size-block: --vvd-select-size-block;
 
   --mdc-shape-small: var(--border-radius);
 
+	#{$vvd-select-size-block}: 48px;
+
 	display: inline-flex;
 	flex-direction: column;
 	font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
+
+  .mdc-select__selected-text {
+    padding: 22px 0 6px;
+  }
 }
 
 :host(:not([disabled])) .mdc-select.mdc-select--focused:not(.mdc-select--invalid) {
@@ -57,18 +63,11 @@ $vvd-select-size-block: --vvd-select-size-block;
 
 :host([dense]) {
   #{$vvd-select-size-block}: 40px;
-}
+	padding-top: 24px;
 
-:host(:not([dense])) {
-  #{$vvd-select-size-block}: 48px;
-
-  .mdc-select__selected-text {
-    padding: 22px 0 6px;
+	.mdc-select__selected-text {
+    padding: 0;
   }
-}
-
-:host([dense][label]:not([label=''])) {
-  padding-top: 24px;
 
   .mdc-select {
     .mdc-floating-label {
@@ -103,10 +102,9 @@ $vvd-select-size-block: --vvd-select-size-block;
 
     .mdc-select__anchor {
       height: var(#{$vvd-select-size-block});
-      padding-left: 14px;
+      padding-inline-start: 16px;
 
       .mdc-floating-label {
-        left: 2px;
 				line-height: var(--mdc-typography-subtitle1-line-height);
         padding-right: 8px;
         transition: transform 0.15s, font-size 0.15s;
@@ -142,54 +140,6 @@ vwc-notched-outline {
 :host(:not([disabled])) .mdc-select.mdc-select--focused vwc-notched-outline,
 :host(:not([disabled]):hover) .mdc-select:not(.mdc-select--invalid):not(.mdc-select--focused) vwc-notched-outline {
   --mdc-notched-outline-border-color: var(--mdc-select-outlined-hover-border-color);
-}
-
-// helper / error message line
-:host([helper]:not([helper=''])) {
-  .mdc-select  + .mdc-select-helper-line {
-    margin-top: 7px;
-  }
-}
-
-.mdc-select {
-	& + .mdc-select-helper-line {
-		--mdc-theme-error: var(--mdc-select-ink-color);
-		display: flex;
-		padding: 0;
-		align-items: center;
-		justify-content: initial;
-		cursor: default;
-
-		.mdc-select-helper-icon {
-			display: none;
-			color: var(--mdc-select-error-color);
-		}
-
-		.mdc-select-helper-text {
-			margin: 0;
-			opacity: 1;
-		}
-
-		.mdc-select-helper-text::before {
-			display: inline;
-		}
-
-		.spacer {
-			flex-basis: 14px;
-		}
-	}
-
-	&.mdc-select--invalid + .mdc-select-helper-line {
-    margin-top: 7px;
-
-		.mdc-select-helper-icon {
-			display: flex;
-		}
-
-		.spacer {
-			flex-basis: 6px;
-		}
-	}
 }
 
 @include shape-mixins.shape(
