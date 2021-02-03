@@ -39,15 +39,6 @@ const resolveIcon = memoizeWith(identity as () => string, (iconId = '') =>
 	iconId.trim()
 		? fetch(baseUrlTemplate([iconId, 'svg'].join('.'), ICON_SET_VERSION))
 				.then((res) =>
-					res.headers.has('x-amz-website-redirect-location')
-						? fetch(
-								baseUrlTemplate(
-									(res.headers.get('x-amz-website-redirect-location') ?? '').slice(1)
-								)
-						  )
-						: res
-				)
-				.then((res) =>
 					res.headers.get('content-type') === 'image/svg+xml' ? res.text() : ''
 				)
 				.then(unsafeSVG)
