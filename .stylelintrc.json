@@ -1,17 +1,19 @@
 {
 	"extends": [
 		"stylelint-config-sass-guidelines",
-		"./node_modules/prettier-stylelint/config.js"
+		"stylelint-a11y/recommended",
+		"stylelint-config-idiomatic-order",
+		"stylelint-config-prettier"
 	],
-	"plugins": ["stylelint-no-unsupported-browser-features"],
+	"plugins": ["stylelint-no-unsupported-browser-features", "stylelint-a11y"],
 	"rules": {
-		"indentation": 4,
-		"string-quotes": "single",
 		"plugin/no-unsupported-browser-features": [
 			true,
 			{
 				"severity": "warning"
 			}
-		]
+		],
+		"length-zero-no-unit": null,
+		"order/properties-alphabetical-order": null
 	}
 }
