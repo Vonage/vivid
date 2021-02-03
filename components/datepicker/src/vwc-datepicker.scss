@@ -64,17 +64,18 @@
         &.flatpickr-day.inRange {
           border-bottom-right-radius: 15px;
           border-top-right-radius: 15px;
-          box-shadow: -5px 0 0 var(#{scheme-variables.$vvd-color-contrast-soft});
+          box-shadow: -5px 0 0 var(#{scheme-variables.$vvd-color-contrast-faint});
         }
       }
   
-      &:nth-child(7n +1) {
+      &:nth-child(7n+1) {
         &.flatpickr-day.inRange {
           border-bottom-left-radius: 15px;
           border-top-left-radius: 15px;
-          box-shadow: 5px 0 0 var(#{scheme-variables.$vvd-color-contrast-soft});
+          box-shadow: 5px 0 0 var(#{scheme-variables.$vvd-color-contrast-faint});
         }
   
+        &.flatpickr-day.inRange,
         &.flatpickr-day.endRange {
           &:after {
             display: none;
@@ -129,7 +130,7 @@
       &.startRange + .inRange,
       &.endRange {
         &:after {
-          background-color: var(#{scheme-variables.$vvd-color-contrast-soft});
+          background-color: var(#{scheme-variables.$vvd-color-contrast-faint});
           content: '';
           height: 30px;
           position: absolute;
@@ -139,7 +140,7 @@
         }
       }
   
-      &.startRange  {
+      &.startRange {
         &.endRange {
           &:after {
             display: none;
@@ -155,7 +156,7 @@
         font-weight: 600;
   
         &:hover {
-          color: var(#{scheme-variables.$vvd-color-contrast-faint});
+          color: var(#{scheme-variables.$vvd-color-contrast-tinted});
         }
       }
     }
@@ -166,9 +167,9 @@
     }
   }
   
-  &flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n+1)),
-  &.flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n+1)),
-  &.flatpickr-day.endRange.startRange + .endRange:not(:nth-child(7n+1)) {
+  // remove box-shadow on adjacent days in range mode
+  .flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n+1)),
+  .flatpickr-day.startRange + .selected.endRange:not(:nth-child(7n+1)) {
     box-shadow: none;
   }
 }
