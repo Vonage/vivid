@@ -30,7 +30,7 @@ const PLACEHOLDER_TIMEOUT = 2000; // Stop displaying placeholder if exceeding th
 const DEFAULT_ICON_SIZE: IconSize = 'medium';
 
 const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
-const baseUrlTemplate = (resource: string, version?: string) =>
+const baseUrlTemplate = (resource: string, version: string) =>
 	[BASE_URL, version && `v${ICON_SET_VERSION}`, resource]
 		.filter(Boolean)
 		.join('/');
