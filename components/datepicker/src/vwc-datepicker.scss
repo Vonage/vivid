@@ -305,21 +305,6 @@
   // }
 
   // .Vlt-datepicker {
-  //     &__header {
-  //         padding: 25px 30px 16px;
-  //         position: relative;
-  //         text-align: left;
-  //     }
-
-  //     &__header-month,
-  //     &__header-year {
-  //         color: $black;
-  //         font-size: 2.2rem;
-  //         font-weight: 800;
-  //         line-height: 3rem;
-  //         transition: color 0.2s;
-  //     }
-
   //     &__header-month {
   //         cursor: pointer;
 
@@ -361,68 +346,6 @@
   //         &-prev {
   //             margin-right: 10px;
   //             transform: rotate(90deg);
-  //         }
-  //     }
-
-  //     &__range {
-  //         background: linear-gradient(to right, $gradient-pink, $gradient-peach);
-  //         color: $white;
-  //         display: none;
-  //         font-size: 1.6rem;
-  //         font-weight: 600;
-  //         line-height: 2.4rem;
-  //         padding: 22px 30px 8px;
-  //         position: relative;
-  //         text-align: left;
-
-  //         &:after {
-  //             background-color: rgba($white, 0.5);
-  //             content: '';
-  //             height: 40px;
-  //             left: 50%;
-  //             margin-left: -1px;
-  //             position: absolute;
-  //             top: 9px;
-  //             transform: rotate(35deg);
-  //             width: 1px;
-  //         }
-
-  //         &-start,
-  //         &-end {
-  //             display: inline-block;
-
-  //             &:before {
-  //                 font-size: 1.6rem;
-  //                 font-weight: 400;
-  //                 line-height: 1.6rem;
-  //                 position: absolute;
-  //                 top: 19px;
-  //                 transition: font-size 0.2s, top 0.2s;
-  //             }
-
-  //             &.selected {
-  //                 &:before {
-  //                     font-size: 1.2rem;
-  //                     top: 10px;
-  //                 }
-  //             }
-  //         }
-
-  //         &-start {
-  //             width: 165px;
-
-  //             &:before {
-  //                 content: 'Start';
-  //             }
-  //         }
-
-  //         &-end {
-  //             white-space: nowrap;
-  //             width: 102px;
-
-  //             &:before {
-  //                 content: 'End';
-  //             }
   //         }
   //     }
 
