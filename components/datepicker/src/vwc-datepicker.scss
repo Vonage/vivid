@@ -14,6 +14,10 @@
   @include typography.typography-cat-shorthand('body-2');
 
   .flatpickr {
+    &-months {
+      display: none;
+    }
+
     &-rContainer,
     &-weekdays,
     &-days,
@@ -174,6 +178,28 @@
   }
 }
 
+.vvd-datepicker-header {
+  align-items: center;
+  display: flex;
+  height: 72px;
+  padding: 0 25px;
+  @include typography.typography-cat-shorthand('subtitle-2');
+
+  .month {
+    margin-right: 8px;
+  }
+
+  vwc-icon-button {
+    display: flex;
+    --border: 1px solid var(#{scheme-variables.$vvd-color-contrast-faint});
+
+    &:first-of-type {
+      margin-left: auto;
+      margin-right: 8px;
+    }
+  }
+}
+
 .vvd-datepicker-range {
   align-items: center;
   background-color: var(#{scheme-variables.$vvd-color-announcement});
@@ -196,7 +222,7 @@
 
     &.selected {
       align-self: flex-end;
-      
+
       &:before {
         @include typography.typography-cat-shorthand('caption');
       }

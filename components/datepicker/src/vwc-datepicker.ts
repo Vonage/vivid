@@ -9,7 +9,8 @@ import 'flatpickr/dist/plugins/monthSelect/style.css';
 /**
  * TODO:
  * - update <any> types
- * - style header
+ * - update header on month navigation
+ * - use flatpicker instance _createElement
  * - week and month picker error on mobile (native datepicker should be used here anyway)
  */
 
@@ -60,6 +61,7 @@ export class VWCDatepicker extends LitFlatpickr {
 
 		this.onOpen = () => {
 			this._instance?.calendarContainer.classList.add('vvd-datepicker');
+			this.renderHeader();
 			this.renderRange();
 			this.renderFooter();
 		};
@@ -89,6 +91,55 @@ export class VWCDatepicker extends LitFlatpickr {
 					? rangeEnd.classList.add('selected')
 					: rangeEnd.classList.remove('selected');
 			}
+		}
+	}
+
+	renderHeader(): void {
+		if (
+			!this._instance?.calendarContainer.querySelector('.vvd-datepicker-header')
+		) {
+			const header = document.createElement('div');
+			header.classList.add('vvd-datepicker-header');
+
+			const prevMonth: any = document.createElement('vwc-icon-button');
+			prevMonth.icon = 'left';
+			prevMonth.shape = 'circled';
+			prevMonth.dense = true;
+
+			const nextMonth: any = document.createElement('vwc-icon-button');
+			nextMonth.icon = 'right';
+			nextMonth.shape = 'circled';
+			nextMonth.dense = true;
+
+			const currentMonthContainer = document.createElement('div');
+			currentMonthContainer.classList.add('month');
+			const currentMonth = this._instance?.l10n.months['longhand'][
+				this._instance.currentMonth
+			];
+			currentMonthContainer.textContent = currentMonth ? currentMonth : '';
+
+			const currentYearContainer = document.createElement('div');
+			currentYearContainer.classList.add('year');
+			const currentYear = this._instance?.currentYear.toString();
+			currentYearContainer.textContent = currentYear ? currentYear : '';
+
+			header.appendChild(currentMonthContainer);
+			header.appendChild(currentYearContainer);
+			header.appendChild(prevMonth);
+			header.appendChild(nextMonth);
+			this._instance?.calendarContainer.prepend(header);
+
+			prevMonth.addEventListener('mousedown', (e: InputEvent) => {
+				e.preventDefault();
+				e.stopPropagation();
+				this._instance?.changeMonth(-1);
+			});
+
+			nextMonth.addEventListener('mousedown', (e: InputEvent) => {
+				e.preventDefault();
+				e.stopPropagation();
+				this._instance?.changeMonth(1);
+			});
 		}
 	}
 
@@ -189,6 +240,7 @@ export class VWCDatepicker extends LitFlatpickr {
 			...(this.inline && { appendTo: this.appendTo }),
 			...(this.enable && { enable: this.enable }),
 			...(this.plugins.length && { plugins: this.plugins }),
+			// closeOnSelect: false
 		};
 	}
 }
