@@ -4,16 +4,10 @@
 	"description": "Web Components based on branded design system by Vonage, following open-wc recommendations",
 	"author": "Vonage",
 	"license": "ISC",
-	"workspaces": {
-		"packages": [
-			"common/*",
-			"components/*"
-		],
-		"nohoist": [
-			"@vonage/vwc-lit-icon/**",
-			"lit-element"
-		]
-	},
+	"workspaces": [
+		"common/*",
+		"components/*"
+	],
 	"scripts": {
 		"dep-check": "lerna exec --stream --no-bail depcheck",
 		"changelog": "yarn lerna exec --concurrency 1 --stream 'conventional-changelog --preset angular --release-count 0 --commit-path $PWD --pkg $PWD/package.json --outfile $PWD/CHANGELOG.md --verbose'",
