@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-inline",
-	"version": "1.1.2",
+	"version": "1.2.0",
 	"description": "scheme switch component",
 	"author": "yinonov <yinon@hotmail.com>",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/inline#readme",
@@ -28,7 +28,7 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@vonage/vvd-foundation": "^1.1.2",
+		"@vonage/vvd-foundation": "^1.2.0",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.3"
 	},

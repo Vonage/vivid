@@ -1,3 +1,21 @@
+# [1.2.0](https://github.com/vonage/vivid/compare/v1.1.3...v1.2.0) (2021-02-03)
+
+
+### Bug Fixes
+
+* **storybook:** attempt to fix the fonts preload ([#624](https://github.com/vonage/vivid/issues/624)) ([7cdf9ff](https://github.com/vonage/vivid/commit/7cdf9ff55f1dc010052173fabddd5954df30eb9a))
+
+
+### Features
+
+* **vwc-menu:** issue [#592](https://github.com/vonage/vivid/issues/592) menu docs and better stories ([#596](https://github.com/vonage/vivid/issues/596)) ([67dbda5](https://github.com/vonage/vivid/commit/67dbda5f6634a94c0fabaab90704dddf468e88fb))
+
+
+
+## [1.1.3](https://github.com/vonage/vivid/compare/v1.1.2...v1.1.3) (2021-01-27)
+
+
+
 ## [1.1.2](https://github.com/vonage/vivid/compare/v1.1.1...v1.1.2) (2021-01-27)
 
 

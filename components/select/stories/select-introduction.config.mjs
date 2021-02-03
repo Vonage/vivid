@@ -1,9 +1,9 @@
 export default {
 	sourcePath: '../readme.md',
-	outputName: 'context-basic',
+	outputName: 'select-introduction',
 	story: {
-		title: 'Core/Context',
-		name: 'Context',
+		title: 'Components/Atoms/Select/Introduction',
+		name: 'Introduction',
 		parameters: {
 			options: {
 				showPanel: false,

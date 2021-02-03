@@ -1,0 +1,15 @@
+@use 'variables';
+
+#{variables.$vivid-scope-selector} {
+	* {
+		all: unset;
+		display: revert;
+	}
+
+	/* preferred box-sizing value */
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+}

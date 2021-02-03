@@ -4,6 +4,7 @@ import {
 	textToDomToParent,
 	waitNextTask,
 	assertComputedStyle,
+	assertDistancePixels,
 	changeValueAndNotify,
 	isolatedElementsCreation,
 	randomAlpha,
@@ -199,18 +200,36 @@ describe('textfield', () => {
 		});
 	});
 
-	describe('dense', () => {
+	describe('density', () => {
 		it('should have normal size by default', async () => {
-			const addedElements = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} outlined></${COMPONENT_NAME}>`)
+			const [e] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
 			await waitNextTask();
-			const formElement = addedElements[0];
-			assertComputedStyle(formElement, { height: '48px' });
+			assertComputedStyle(e, { height: '48px' });
 		});
 
 		it('should have dense size when dense', async () => {
 			assertDenseStyles(COMPONENT_NAME);
+		});
+
+		it('should have 16px space between edge and the input (outlined)', async () => {
+			const [e] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			const i = e.querySelector('input');
+			assertDistancePixels(e, i, 'left', 0);
+			assertComputedStyle(i, { paddingInlineStart: '16px' });
+		});
+
+		it('should have 16px space between edge and the label (outlined)', async () => {
+			const [e] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} label="Label"></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			const l = e.shadowRoot.querySelector('.mdc-floating-label');
+			assertDistancePixels(e, l, 'left', 16);
 		});
 	});
 

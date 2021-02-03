@@ -1,41 +1,41 @@
-@use './constants';
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-foundation/scss/variable-names/color-base-variable-names' as color-base;
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins' with (
 	$connotations: success alert warning info announcement
-);
+	);
+@use 'variables';
 
-@mixin scheme-variables-coupling {
-  body {
-    background-color: var(#{scheme-variables.$vvd-color-base});
-    color: var(#{scheme-variables.$vvd-color-on-base});
+body {
+	background-color: var(#{scheme-variables.$vvd-color-base});
+	color: var(#{scheme-variables.$vvd-color-on-base});
+}
+
+#{variables.$vivid-scope-selector} {
+	a {
+		color: color-base.$purple-600;
+    cursor: pointer;
 	}
 
-	#{constants.$vivid-scope-class} {
-		a {
-			color: color-base.$purple-600;
-		}
-
-		code,
-		kbd,
-		samp,
-		var {
-			background-color:var(#{scheme-variables.$vvd-color-surface});
-			color: color-base.$orange-600;
-		}
-
-		pre {
-			background-color:var(#{scheme-variables.$vvd-color-surface});
-		}
-
-		blockquote {
-			border-inline-start: 8px solid var(#{color-semantic.$vvd-color-connotation});
-			box-shadow: inset 0 1px 0 0 #b3b3b3, inset 0 -1px 0 0 #b3b3b3, inset -1px 0 0 0 #b3b3b3;
-		}
-		@include color-connotation-mixins.connotations-context(
-			'blockquote#{color-connotation-mixins.$connotation-placeholder}',
-			'info'
-		);
+	code,
+	kbd,
+	samp,
+	var {
+		background-color: var(#{scheme-variables.$vvd-color-surface});
+		color: color-base.$orange-600;
 	}
+
+	pre {
+		background-color: var(#{scheme-variables.$vvd-color-surface});
+	}
+
+	blockquote {
+		border-inline-start: 8px solid var(#{color-semantic.$vvd-color-connotation});
+		box-shadow: inset 0 1px 0 0 #b3b3b3, inset 0 -1px 0 0 #b3b3b3,
+			inset -1px 0 0 0 #b3b3b3;
+	}
+	@include color-connotation-mixins.connotations-context(
+		'blockquote#{color-connotation-mixins.$connotation-placeholder}',
+		'info'
+	);
 }
