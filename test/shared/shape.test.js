@@ -6,7 +6,7 @@ import {
 } from '../test-helpers.js';
 import {
 	shapeStyles,
-  topLevelSelectors,
+	topLevelSelectors,
 } from '../style-utils.js';
 
 export async function shapeRoundedTestCases(COMPONENT_NAME) {
@@ -30,24 +30,29 @@ export async function shapeRoundedTestCases(COMPONENT_NAME) {
 	});
 }
 
-export async function shapePillTestCases(COMPONENT_NAME) {
+export async function shapePillTestCases(COMPONENT_NAME, assertDense = true) {
 	const addElement = isolatedElementsCreation();
 
-	const addedElements = addElement(
+	const [e] = addElement(
 		textToDomToParent(`<${COMPONENT_NAME} shape="pill"></${COMPONENT_NAME}>`)
 	);
 	await waitNextTask();
-	const formElement = addedElements[0];
-	const actualElement = formElement.shadowRoot.querySelector(topLevelSelectors[COMPONENT_NAME]);
+	const actualElement = e.shadowRoot.querySelector(topLevelSelectors[COMPONENT_NAME]);
 
-	it('should have pill shape when shape set to pill', async () => {
+	it(`${COMPONENT_NAME} should have pill shape when shape set to pill`, async () => {
 		assertComputedStyle(actualElement, shapeStyles('pill'));
 	});
+
+	if (assertDense) {
+		it(`${COMPONENT_NAME} should be dense when have pill shape`, async () => {
+			expect(e.dense).true;
+		});
+	}
 }
 
 export async function shapeCircledTestCases(COMPONENT_NAME) {
 	const addElement = isolatedElementsCreation();
-	
+
 	const addedElements = addElement(
 		textToDomToParent(`<${COMPONENT_NAME} shape="circled"></${COMPONENT_NAME}>`)
 	);
