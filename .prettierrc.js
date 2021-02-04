@@ -1,4 +1,3 @@
 module.exports = {
-	...require("@vonage/vvd-umbrella/prettier-config"),
-	"useTabs": true
+	...require("@vonage/vvd-umbrella/prettier-config")
 };
