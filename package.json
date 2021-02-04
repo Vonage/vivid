@@ -82,6 +82,7 @@
 		"depcheck": "YonatanKra/depcheck#vivid-version",
 		"es-dev-server": "^1.50.8",
 		"eslint": "^7.13.0",
+		"eslint-config-prettier": "^7.2.0",
 		"eslint-plugin-compat": "^3.9.0",
 		"eslint-plugin-import": "^2.22.1",
 		"eslint-plugin-lit": "^1.2.4",
