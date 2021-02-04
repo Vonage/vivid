@@ -8,10 +8,11 @@ import 'flatpickr/dist/plugins/monthSelect/style.css';
 
 /**
  * TODO:
+ * - apply styles to inline mode
  * - update <any> types
- * - update header on month navigation
  * - use flatpicker instance _createElement
- * - week and month picker error on mobile (native datepicker should be used here anyway)
+ * - week and month picker plugin
+ * - remove flatpickr and event listeners on unmount
  */
 
 declare global {
@@ -67,7 +68,7 @@ export class VWCDatepicker extends LitFlatpickr {
 		};
 	}
 
-	changeHandler(e: any): void {
+	private changeHandler(e: any): void {
 		if (this._instance && this.mode === 'range') {
 			const startDate = e[0] ? this._instance.formatDate(e[0], 'M j, Y') : '';
 			const endDate = e[1] ? this._instance.formatDate(e[1], 'M j, Y') : '';
@@ -94,8 +95,9 @@ export class VWCDatepicker extends LitFlatpickr {
 		}
 	}
 
-	renderHeader(): void {
+	private renderHeader(): void {
 		if (
+			!this.noCalendar &&
 			!this._instance?.calendarContainer.querySelector('.vvd-datepicker-header')
 		) {
 			const header = document.createElement('div');
@@ -113,15 +115,9 @@ export class VWCDatepicker extends LitFlatpickr {
 
 			const currentMonthContainer = document.createElement('div');
 			currentMonthContainer.classList.add('month');
-			const currentMonth = this._instance?.l10n.months['longhand'][
-				this._instance.currentMonth
-			];
-			currentMonthContainer.textContent = currentMonth ? currentMonth : '';
 
 			const currentYearContainer = document.createElement('div');
 			currentYearContainer.classList.add('year');
-			const currentYear = this._instance?.currentYear.toString();
-			currentYearContainer.textContent = currentYear ? currentYear : '';
 
 			header.appendChild(currentMonthContainer);
 			header.appendChild(currentYearContainer);
@@ -129,21 +125,50 @@ export class VWCDatepicker extends LitFlatpickr {
 			header.appendChild(nextMonth);
 			this._instance?.calendarContainer.prepend(header);
 
+			this.updateCurrentMonth();
+			this.updateCurrentYear();
+
 			prevMonth.addEventListener('mousedown', (e: InputEvent) => {
-				e.preventDefault();
-				e.stopPropagation();
-				this._instance?.changeMonth(-1);
+				this.navigateMonths(e, -1);
 			});
 
 			nextMonth.addEventListener('mousedown', (e: InputEvent) => {
-				e.preventDefault();
-				e.stopPropagation();
-				this._instance?.changeMonth(1);
+				this.navigateMonths(e, 1);
 			});
 		}
 	}
 
-	renderRange(): void {
+	private navigateMonths(e: InputEvent, delta: number): void {
+		e.preventDefault();
+		e.stopPropagation();
+		this._instance?.changeMonth(delta);
+		this.updateCurrentMonth();
+		this.updateCurrentYear();
+	}
+
+	private updateCurrentMonth(): void {
+		const currentMonthContainer = this._instance?.calendarContainer.querySelector(
+			'.vvd-datepicker-header .month'
+		);
+		const currentMonth = this._instance?.l10n.months['longhand'][
+			this._instance.currentMonth
+		];
+		if (currentMonthContainer) {
+			currentMonthContainer.textContent = currentMonth ? currentMonth : '';
+		}
+	}
+
+	private updateCurrentYear(): void {
+		const currentYearContainer = this._instance?.calendarContainer.querySelector(
+			'.vvd-datepicker-header .year'
+		);
+		const currentYear = this._instance?.currentYear.toString();
+		if (currentYearContainer) {
+			currentYearContainer.textContent = currentYear ? currentYear : '';
+		}
+	}
+
+	private renderRange(): void {
 		if (
 			this.mode === 'range' &&
 			!this._instance?.calendarContainer.querySelector('.vvd-datepicker-range')
@@ -161,8 +186,9 @@ export class VWCDatepicker extends LitFlatpickr {
 		}
 	}
 
-	renderFooter(): void {
+	private renderFooter(): void {
 		if (
+			!this.noCalendar &&
 			!this._instance?.calendarContainer.querySelector('.vvd-datepicker-footer')
 		) {
 			const footer = document.createElement('div');

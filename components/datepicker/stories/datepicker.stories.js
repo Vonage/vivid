@@ -26,11 +26,11 @@ Basic.args = { dateFormat: 'Y-m-d', altInput: '', altFormat: 'F j, Y' };
 export const MaxDate = Template.bind({});
 MaxDate.args = { dateFormat: 'Y-m-d', MaxDate: 'today' };
 
-export const WeekPicker = Template.bind({});
-WeekPicker.args = { weekSelect: '' };
+// export const WeekPicker = Template.bind({});
+// WeekPicker.args = { weekSelect: '' };
 
-export const MonthPicker = Template.bind({});
-MonthPicker.args = { monthSelect: '' };
+// export const MonthPicker = Template.bind({});
+// MonthPicker.args = { monthSelect: '' };
 
 export const Range = Template.bind({});
 Range.args = { mode: 'range' };
