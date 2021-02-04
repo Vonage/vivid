@@ -1,10 +1,29 @@
 import '@vonage/vwc-icon';
 import _ from 'lodash';
-import { default as icons } from './icon.story.json';
 import { storiesOf } from '@storybook/web-components';
 import storyCssContent from './icon.story.css.js';
+import icons from "./icon-manifest.json";
 
-const PATH_SEPARATOR = '/';
+const
+	PATH_SEPARATOR = '/',
+	CATEGORIES_TITLES = {
+		"check": "Checks",
+		"arrows": "Arrows",
+		"file": "File",
+		"sort": "Sorting",
+		"emoji": "Emojis",
+		"delete": "Delete and Cancel",
+		"devices": "Devices",
+		"chevrons": "Chevrons",
+		"tools": "Tools",
+		"social": "Social",
+		"messaging": "Messaging",
+		"charts": "Charts",
+		"view": "View",
+		"flags": "Flags",
+		"alert": "Alert",
+		"connectivity": "Connectivity"
+	};
 
 const registerCategory = (categoryTitle, content) => storiesOf(['Components', 'Atoms', 'Icon', 'Types'].join(PATH_SEPARATOR), module)
 	.add(categoryTitle, () => {
@@ -19,11 +38,10 @@ const registerCategory = (categoryTitle, content) => storiesOf(['Components', 'A
 	});
 
 _(icons)
-	.groupBy('category_id')
-	.map((list) => {
-		return [
-			_(list).chain().first().get('category_title').value().replace(new RegExp(_.escapeRegExp(PATH_SEPARATOR), 'g'), ' & '),
-			list.map(({ icon_id }) => `<figure><vwc-icon title=${icon_id} size="large" type="${icon_id}"></vwc-icon><figcaption>${icon_id}</figcaption></figure>`).join('\n')
-		];
-	})
-	.forEach(_.spread(registerCategory));
+	.groupBy(({ tag })=> tag.map((content) => (content.match(/^category_(.+)/) || [])[1]).find(Boolean))
+	.forEach((list, category)=> {
+			registerCategory(
+				CATEGORIES_TITLES[category] || "General",
+				list.map(({ id: icon_id }) => `<figure><vwc-icon title=${icon_id} size="large" type="${icon_id}"></vwc-icon><figcaption>${icon_id}</figcaption></figure>`).join('\n')
+			);
+	});

@@ -84,6 +84,7 @@
 		"eslint-plugin-wc": "^1.2.0",
 		"fibers": "^5.0.0",
 		"glob": "^7.1.6",
+		"got": "^11.8.1",
 		"highlight.js": "^10.4.0",
 		"husky": "^4.2.5",
 		"immer": "^8.0.1",
