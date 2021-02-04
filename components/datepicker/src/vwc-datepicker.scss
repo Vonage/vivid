@@ -188,7 +188,7 @@
 .vvd-datepicker-header {
   align-items: center;
   display: flex;
-  height: 36px;
+  height: 32px;
   padding: 0 16px;
   @include typography.typography-cat-shorthand('subtitle-2');
 
@@ -201,7 +201,6 @@
 
     &:first-of-type {
       margin-left: auto;
-      margin-right: 8px;
     }
   }
 }
@@ -213,10 +212,10 @@
   box-sizing: border-box;
   color: var(#{scheme-variables.$vvd-color-on-announcement});
   display: flex;
-  height: 54px;
+  height: 56px;
   justify-content: space-between;
   margin-top: 16px;
-  padding: 5px 28px 5px;
+  padding: 0 16px;
   position: relative;
 
   &-start,
@@ -229,8 +228,6 @@
     }
 
     &.selected {
-      align-self: flex-end;
-
       &:before {
         @include typography.typography-cat-shorthand('caption');
       }
@@ -242,7 +239,7 @@
   }
   
   &-end {
-    flex-basis: 100px;
+    flex-basis: 120px;
     text-align: left;
 
     &:before {
@@ -253,13 +250,13 @@
   &:after {
     background-color: var(#{scheme-variables.$vvd-color-on-announcement});
     content: '';
-    height: 40px;
+    height: 38px;
     left: 50%;
     margin-left: -1px;
     opacity: 0.5;
     position: absolute;
     top: 8px;
-    transform: rotate(35deg);
+    transform: rotate(36deg);
     width: 1px;
   }
 }
@@ -268,21 +265,6 @@
 .vvd-datepicker-footer {
   padding: 0 16px;
   text-align: right;
-
-  button{
-    appearance: none;
-    background: 0 0;
-    border: 0;
-    color: var(#{scheme-variables.$vvd-color-on-base});
-    cursor: pointer;
-    font-size: 12px;
-    outline: 0;
-    padding: 8px 12px;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
 }
 
 // style dump from volta

@@ -8,7 +8,6 @@ import 'flatpickr/dist/plugins/monthSelect/style.css';
 
 /**
  * TODO:
- * - use vwc-button for clear button
  * - apply styles to inline mode
  * - update <any> types
  * - use flatpicker instance _createElement
@@ -195,9 +194,15 @@ export class VWCDatepicker extends LitFlatpickr {
 			const footer = document.createElement('div');
 			footer.classList.add('vvd-datepicker-footer');
 
-			const clearButton = document.createElement('button');
-			clearButton.innerText = 'Clear';
-			clearButton.onclick = () => this._instance?.clear();
+			const clearButton: any = document.createElement('vwc-button');
+			clearButton.label = 'Clear';
+			clearButton.shape = 'pill';
+			clearButton.dense = true; // css preventing programmatic update
+			clearButton.addEventListener('mousedown', (e: InputEvent) => {
+				e.preventDefault();
+				e.stopPropagation();
+				this._instance?.clear();
+			});
 
 			footer.appendChild(clearButton);
 			this._instance?.calendarContainer.appendChild(footer);
