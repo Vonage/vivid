@@ -1,47 +1,62 @@
-@use './constants';
+@use 'variables';
 
-@mixin spacing {
-  body {
-    margin: 0;
-    padding: 0;
+body {
+	padding: env(safe-area-inset-top, 20px) env(safe-area-inset-right, 20px)
+		env(safe-area-inset-bottom, 20px) env(safe-area-inset-left, 20px);
+}
+
+#{variables.$vivid-scope-selector} {
+	pre,
+	code,
+	kbd,
+	samp,
+	var {
+		padding: 3px 4px;
+		border-radius: 6px;
 	}
 
-	#{constants.$vivid-scope-class} {
-		pre,
+	pre {
+		overflow: auto;
+
 		code,
 		kbd,
 		samp,
 		var {
-			padding: 3px 4px;
-			border-radius: 6px;
+			padding: initial;
+		}
+	}
+
+	blockquote {
+		margin-left: 0;
+		margin-right: 0;
+		padding: 20px 22px;
+		border-radius: 6px;
+
+		> :first-child {
+			margin-block-start: 0;
+			padding-block-start: 0;
 		}
 
-		pre {
-			overflow: auto;
-
-			code,
-			kbd,
-			samp,
-			var {
-				padding: initial;
-			}
+		> :last-child {
+			margin-block-end: 0;
+			padding-block-end: 0;
 		}
+	}
+}
 
-		blockquote {
-			margin-left: 0;
-			margin-right: 0;
-			padding: 20px 22px;
-			border-radius: 6px;
-
-			:first-child {
-				margin-block-start: 0;
-				padding-block-start: 0;
-			}
-
-			:last-child {
-				margin-block-end: 0;
-				padding-block-end: 0;
-			}
+$container: vvd-container;
+[class*='#{$container}'i] {
+	background: beige;
+	margin: 0 auto;
+	max-inline-size: calc(100% - 20px);
+	inline-size: var(--basis, 100%);
+	&:not(.#{$container}-fluid) {
+		--basis: 80rem;
+		&.#{$container}-condense {
+			--basis: 50rem;
+		}
+		&.#{$container}-ultra-condense {
+			--basis: 30rem;
 		}
 	}
 }

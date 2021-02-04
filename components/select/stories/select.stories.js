@@ -24,22 +24,25 @@ const Template = (args) => html`
 	</vwc-select>`;
 
 export const Default = Template.bind({});
-Default.args = { outlined: '', label: 'VWC Select', helper: 'Helper Text' };
+Default.args = { label: 'VWC Select', helper: 'Helper Text' };
 
 export const Dense = Template.bind({});
-Dense.args = { dense: '', outlined: '', label: 'VWC Select' };
+Dense.args = { dense: '', label: 'VWC Select' };
 
-export const PillShape = Template.bind({});
-PillShape.args = { shape: 'pill', dense: '', outlined: '' };
+export const DenseNoLabel = Template.bind({});
+DenseNoLabel.args = { dense: '' };
+
+export const PillAutoDense = Template.bind({});
+PillAutoDense.args = { shape: 'pill', label: 'VWC Select' };
 
 export const Disabled = Template.bind({});
-Disabled.args = { disabled: '', outlined: '', label: 'VWC Select', helper: 'Helper Text' };
+Disabled.args = { disabled: '', label: 'VWC Select', helper: 'Helper Text' };
 
 export const Required = Template.bind({});
-Required.args = { required: '', outlined: '', label: 'VWC Select', helper: 'Select your preference', validationMessage: 'This Field is Required' };
+Required.args = { required: '', label: 'VWC Select', helper: 'Select your preference', validationMessage: 'This Field is Required' };
 
 export const Autofocus = Template.bind({});
-Autofocus.args = { outlined: '', label: 'VWC Select', helper: 'Select your preference', autofocus: true };
+Autofocus.args = { label: 'VWC Select', helper: 'Select your preference', autofocus: true };
 
 function onSelected(e) {
 	console.log(e);

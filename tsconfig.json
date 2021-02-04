@@ -32,7 +32,6 @@
 		{ "path": "components/list" },
 		{ "path": "components/media-controller" },
 		{ "path": "components/menu" },
-		{ "path": "components/mwc-chips" },
 		{ "path": "components/notched-outline" },
 		{ "path": "components/note" },
 		{ "path": "components/radio" },

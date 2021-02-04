@@ -7,6 +7,7 @@
 		"tsBuildInfoFile": ".tsbuildinfo"
 	},
 	"include": ["src/*.ts"],
+	"exclude": ["src/test/*.ts"],
 	"references": [
 		{
 			"path": "../../common/core"
