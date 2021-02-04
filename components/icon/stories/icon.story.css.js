@@ -14,8 +14,6 @@ const css = `.container {
 	position: relative;
 	border-radius: 4px;
 	overflow: hidden;
-	color: #eee;
-	fill: #eee;
 }
 
 .container > figure > vwc-icon {
