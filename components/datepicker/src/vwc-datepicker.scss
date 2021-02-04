@@ -10,8 +10,12 @@
   border-radius: 6px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, .1);
   overflow: hidden;
-  width: 329px;
+  width: 320px;
   @include typography.typography-cat-shorthand('body-2');
+
+  &:not(.noCalendar) {
+    padding: 24px 0 16px;
+  }
 
   .flatpickr {
     &-months {
@@ -24,15 +28,15 @@
     &-days .dayContainer,
     &-dayContainer {
       border: none;
-      min-width: 279px;
-      width: 279px;
+      min-width: 286px;
+      width: 286px;
     }
   
     &-weekdays {
       background: none;
       border-bottom: 1px solid var(#{scheme-variables.$vvd-color-contrast-faint});
-      height: 30px;
-      margin-bottom: 10px;
+      height: 20px;
+      margin-bottom: 8px;
       text-transform: uppercase;
     }
   
@@ -87,8 +91,9 @@
         }
       }
   
-      &.today {
-        border: 0;
+      &.today:before {
+        border: 1px solid var(#{scheme-variables.$vvd-color-primary});
+        box-sizing: border-box;
       }
   
       &.prevMonthDay,
@@ -167,22 +172,24 @@
   
     &-innerContainer {
       border: none;
-      padding: 17px 25px 0px;
+      padding: 16px 16px 0;
     }
   }
   
-  // remove box-shadow on adjacent days in range mode
+  // removes box-shadow on adjacent days in range mode
   .flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n+1)),
   .flatpickr-day.startRange + .selected.endRange:not(:nth-child(7n+1)) {
     box-shadow: none;
   }
 }
 
+
+// custom header
 .vvd-datepicker-header {
   align-items: center;
   display: flex;
-  height: 72px;
-  padding: 0 25px;
+  height: 36px;
+  padding: 0 16px;
   @include typography.typography-cat-shorthand('subtitle-2');
 
   .month {
@@ -191,7 +198,6 @@
 
   vwc-icon-button {
     display: flex;
-    --border: 1px solid var(#{scheme-variables.$vvd-color-contrast-faint});
 
     &:first-of-type {
       margin-left: auto;
@@ -200,6 +206,7 @@
   }
 }
 
+// custom range container
 .vvd-datepicker-range {
   align-items: center;
   background-color: var(#{scheme-variables.$vvd-color-announcement});
@@ -208,6 +215,7 @@
   display: flex;
   height: 54px;
   justify-content: space-between;
+  margin-top: 16px;
   padding: 5px 28px 5px;
   position: relative;
 
@@ -256,8 +264,9 @@
   }
 }
 
+// custom footer
 .vvd-datepicker-footer {
-  padding: 0px 25px 20px;
+  padding: 0 16px;
   text-align: right;
 
   button{
@@ -268,13 +277,15 @@
     cursor: pointer;
     font-size: 12px;
     outline: 0;
-    padding: 0;
+    padding: 8px 12px;
 
     &:hover {
       text-decoration: underline;
     }
   }
 }
+
+// style dump from volta
 
 // .Vlt-datepicker {
   // &.rangeMode {

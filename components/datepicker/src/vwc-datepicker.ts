@@ -8,11 +8,12 @@ import 'flatpickr/dist/plugins/monthSelect/style.css';
 
 /**
  * TODO:
+ * - use vwc-button for clear button
  * - apply styles to inline mode
  * - update <any> types
  * - use flatpicker instance _createElement
  * - week and month picker plugin
- * - remove flatpickr and event listeners on unmount
+ * - remove flatpickr from DOM and event listeners on unmount
  */
 
 declare global {
@@ -104,12 +105,12 @@ export class VWCDatepicker extends LitFlatpickr {
 			header.classList.add('vvd-datepicker-header');
 
 			const prevMonth: any = document.createElement('vwc-icon-button');
-			prevMonth.icon = 'left';
+			prevMonth.icon = 'left-full';
 			prevMonth.shape = 'circled';
 			prevMonth.dense = true;
 
 			const nextMonth: any = document.createElement('vwc-icon-button');
-			nextMonth.icon = 'right';
+			nextMonth.icon = 'right-full';
 			nextMonth.shape = 'circled';
 			nextMonth.dense = true;
 
