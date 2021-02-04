@@ -1,0 +1,14 @@
+@use '@ag-grid-community/all-modules/dist/styles/ag-grid.css';
+@use '@ag-grid-community/all-modules/dist/styles/ag-theme-material.css';
+
+// @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+// @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
+
+:host {
+    width: 100%;
+    height: 100%;
+}
+
+.ag-theme-material {
+    font-family: inherit;
+}
