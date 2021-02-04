@@ -15,7 +15,7 @@
 		"lint:stylelint": "stylelint --config .stylelintrc.js {common,components}/**/*.scss",
 		"lint:eslint": "eslint {common,components}/** docs --no-error-on-unmatched-pattern --ignore-path .eslintignore --config .eslintrc.js",
 		"lint:prettier": "prettier {common,components}/**/*.{ts,scss} **/stories **/test/*.test.js --config .prettierrc.js --ignore-path .prettierignore --check",
-		"lint": "yarn build:design-tokens && yarn lint:eslint && yarn lint:stylelint && yarn lint:prettier",
+		"lint": "yarn lint:eslint && yarn lint:stylelint && yarn lint:prettier",
 		"format:stylelint": "yarn lint:stylelint --fix",
 		"format:eslint": "yarn lint:eslint --fix",
 		"format:prettier": "yarn lint:prettier --write",
