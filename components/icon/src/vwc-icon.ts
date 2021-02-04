@@ -30,9 +30,7 @@ const DEFAULT_ICON_SIZE: IconSize = IconSize.Medium;
 
 const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 const baseUrlTemplate = (resource: string, version: string) =>
-	[BASE_URL, version && `v${ICON_SET_VERSION}`, resource]
-		.filter(Boolean)
-		.join('/');
+	[BASE_URL, `v${version}`, resource].join('/');
 
 const resolveIcon = memoizeWith(identity as () => string, (iconId = '') =>
 	iconId.trim()
