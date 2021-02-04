@@ -1,4 +1,4 @@
-# Introduction
+### Introduction
 
 Vivid provides typography definitions as part of it's underlying design system.
 
@@ -6,7 +6,7 @@ In majority of cases consumer will have the typography set correctly either via 
 
 ![Vivid typography structure](typography-system-topology.svg)
 
-# Types and Variations
+### Types and Variations
 
 Vivid typography is built from the **Spezia** font family, namely the regular one and the monospace one.
 
@@ -19,7 +19,7 @@ Principal distinction between the **types** and the **variations** is, that **va
 
 ![Vivid typography permutations](typography-system-permutations.svg)
 
-## Types
+#### Types
 
 Vivid typography types are principally split into 2 categories: **Heading** and **Content**.
 
@@ -30,7 +30,7 @@ Usage of these kinds of typographies is simple and straight forward - just putti
 Content typographies comprised from 3 types: **Body 1**, **Body 2** and **Caption**.
 In this case, too, the usage is bound to the components or the HTML context.
 
-## Variations
+#### Variations
 
 Be it heading line or regular paragraph text, we might need to style some of the words in a slightly deviating way.
 Take for example the `code` element. The way this element deviates from the surrounding context is by usage of Monospaced font-family, while the rest of the typography attributes are staying the same.

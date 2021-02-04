@@ -1,23 +1,22 @@
-# vwc-slider
+### vwc-slider
 
-This component is an extension of [<mwc-slider>](https://github.com/material-components/material-components-web-components/tree/master/packages/slider)
+This component is an extension of [\<mwc-slider\>](https://github.com/material-components/material-components-web-components/tree/master/packages/slider)
 
-## Properties
+### API
+
+#### Properties
 
 | Property                  | Modifiers | Type                                             | Description                                      |
 |---------------------------|-----------|--------------------------------------------------|--------------------------------------------------|
 | `disabled`                |           | `boolean`                                        |                                                  |
-| `floatingLabelFoundation` |           | `MDCFloatingLabelFoundation \| undefined`        |                                                  |
-| `lineRippleFoundation`    |           | `MDCLineRippleFoundation \| undefined`           |                                                  |
 | `markers`                 |           | `boolean`                                        |                                                  |
 | `max`                     |           | `number`                                         |                                                  |
 | `min`                     |           | `number`                                         |                                                  |
 | `pin`                     |           | `boolean`                                        |                                                  |
-| `ripple`                  | readonly  | `RippleInterface \| Promise<RippleInterface \| null> \| undefined` | Implement ripple getter for Ripple integration with mwc-formfield |
 | `step`                    |           | `number`                                         |                                                  |
 | `value`                   |           | `number`                                         |                                                  |
 
-## Methods
+#### Methods
 
 | Method         | Type                    | Description                                      |
 |----------------|-------------------------|--------------------------------------------------|
