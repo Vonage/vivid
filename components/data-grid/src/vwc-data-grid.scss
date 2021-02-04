@@ -1,8 +1,9 @@
 @use '@ag-grid-community/all-modules/dist/styles/ag-grid.css';
 @use '@ag-grid-community/all-modules/dist/styles/ag-theme-material.css';
 
-// @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
-// @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+//@use '@vonage/vvd-foundation/scss/variable-names/color-base-variable-names' as color-base;
+//@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 
 :host {
     width: 100%;
@@ -10,5 +11,109 @@
 }
 
 .ag-theme-material {
+
+    // --ag-disabled-foreground-color: ag-derived(foreground-color, $opacity: 0.38);
+    // --ag-header-background-color: #fff;
+    // --ag-subheader-background-color: #eee;
+    // --ag-header-cell-hover-background-color: ag-derived(header-background-color, $darken: 5%);
+    // --ag-chip-background-color: #e2e2e2;
+    // --ag-range-selection-background-color: rgba(122, 134, 203, 0.1);
+    // --ag-range-selection-highlight-color: #fce4ec;
+    // --ag-row-hover-color: #fafafa;
+    // --ag-control-panel-background-color: #fafafa;
+    // --ag-selected-row-background-color: #eee;
+    // --ag-range-selection-border-color: ag-derived(material-primary-color);
+    // --ag-checkbox-checked-color: ag-derived(material-accent-color);
+    // --ag-checkbox-unchecked-color: #333;
+    // --ag-value-change-value-highlight-background-color: #00acc1;
+
+    --ag-background-color: var(#{scheme-variables.$vvd-color-base});
+    --ag-foreground-color: var(#{scheme-variables.$vvd-color-on-base});
+    --ag-secondary-foreground-color: var(#{scheme-variables.$vvd-color-on-surface});
+    --ag-border-color: var(#{scheme-variables.$vvd-color-contrast-faint});
+
     font-family: inherit;
+
+    .ag-root {
+        border: none;
+    }
+
+    .ag-header-cell::after, .ag-header-group-cell::after {
+        display: none;
+    }
+
+    .ag-header-cell-text {
+        margin-right: 5px;
+    }
+
+    .ag-row-hover {
+        background-color: var(#{scheme-variables.$vvd-color-contrast-faint}) !important;
+    }
+
+    .ag-row-odd {
+        background-color: var(#{scheme-variables.$vvd-color-base});
+    }
+
+    .ag-row-even {
+        background-color: var(#{scheme-variables.$vvd-color-base});
+    }
+
+    .ag-row {
+        border: none;
+    }
+
+    .ag-select {
+        color: var(#{scheme-variables.$vvd-color-on-surface}) !important;
+    }
+
+    .ag-picker-field-display {
+        color: var(#{scheme-variables.$vvd-color-on-surface}) !important;
+    }
+
+    .ag-filter-body-wrapper {
+        background-color: var(#{scheme-variables.$vvd-color-surface}) !important;
+        color: var(#{scheme-variables.$vvd-color-on-surface}) !important;
+    }
+
+    .ag-icon {
+        color: var(#{scheme-variables.$vvd-color-on-surface}) !important;
+        fill: var(#{scheme-variables.$vvd-color-on-surface}) !important;
+    }
+
+    .ag-header {
+        background-color: var(#{scheme-variables.$vvd-color-surface}) !important;
+        color: var(#{scheme-variables.$vvd-color-on-surface}) !important;
+        border-bottom: 1px solid var(#{scheme-variables.$vvd-color-contrast-dim}) !important;
+        border-top: 1px solid var(#{scheme-variables.$vvd-color-contrast-faint}) !important;
+    }
+
+    .ag-header-active {
+        background-color: var(#{scheme-variables.$vvd-color-contrast-faint}) !important;
+    }
+
+    .ag-cell {
+        line-height: 2rem;
+        vertical-align: middle;        
+        border-left: 1px solid var(#{scheme-variables.$vvd-color-contrast-faint});
+        border-bottom: 1px solid var(#{scheme-variables.$vvd-color-contrast-faint});
+        color: var(#{scheme-variables.$vvd-color-on-base}) !important;
+    }
+
+    [class*="ag-cell"][style*="left: 0px;"] {
+        border-left: none;
+    }
+
+    .ag-header-cell {
+        display: table-cell;        
+        font-weight: 600;
+        line-height: 2rem;
+        text-align: left;
+        vertical-align: middle;
+        border-left: 1px solid var(#{scheme-variables.$vvd-color-contrast-faint});
+        color: var(#{scheme-variables.$vvd-color-on-surface});
+    }
+
+    [class*="ag-header-cell"][style*="left: 0px;"] {
+        border-left: none;
+    }
 }

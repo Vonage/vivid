@@ -29,13 +29,15 @@ declare global {
 }
 
 const sendCustomEventFactory = (target: HTMLElement) => (
-	eventType: string,
-	detail: unknown,
-	options = { bubbles: true, composed: true }
-) => {
-	const event = new CustomEvent(eventType, { ...options, detail });
-	target.dispatchEvent(event);
-};
+		eventType: string,
+		detail: unknown,
+		options = { bubbles: true, composed: true }
+	) => {
+		const event = new CustomEvent(eventType, { ...options, detail });
+		target.dispatchEvent(event);
+	},
+	hypenateAndLowercase = (input: string): string =>
+		input.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 
 /**
  * `vwc-data-grid` component is designated to render Rich/Responsive/Data tables/grids
@@ -140,7 +142,7 @@ export class VWCDataGrid extends LitElement {
 		ComponentUtil.ALL_PROPERTIES.concat(ComponentUtil.getEventCallbacks()).reduce(
 			(map: { [key: string]: string }, name: string) => {
 				map[name.toLowerCase()] = name;
-				map[this.hypenateAndLowercase(name)] = name;
+				map[hypenateAndLowercase(name)] = name;
 				return map;
 			},
 			{}
@@ -218,11 +220,7 @@ export class VWCDataGrid extends LitElement {
 			!this.#gridOptions.popupParent
 		) {
 			this.#defaultPopupParentSet = true;
-
 			this.api.setPopupParent(this.gridElement);
 		}
 	}
-
-	protected hypenateAndLowercase = (input: string): string =>
-		input.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 }
