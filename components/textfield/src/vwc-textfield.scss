@@ -218,7 +218,10 @@ vwc-notched-outline {
 		#{textfield-variables.$horizontal-gutter},
 		calc(var(--mdc-shape-small, 4px) + 4px)
 	);
-	--padding-inline-end: max(#{textfield-variables.$horizontal-gutter}, var(--mdc-shape-small, 4px));
+	--padding-inline-end: max(
+		#{textfield-variables.$horizontal-gutter},
+		var(--mdc-shape-small, 4px)
+	);
 }
 
 :host(:not([disabled])[icon]) {

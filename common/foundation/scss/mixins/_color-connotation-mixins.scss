@@ -8,7 +8,7 @@ $connotations: primary cta success alert warning info announcement !default;
 $connotation-placeholder: '[connotation-specifier]' !default;
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
-$allConnotations: (
+$all-connotations: (
 	primary: 'primary',
 	cta: 'cta',
 	success: 'success',
@@ -20,7 +20,7 @@ $allConnotations: (
 
 // selector can be altered by relevance
 @mixin connotations-context($selector: ':host(#{$connotation-placeholder})', $default-fallback: null) {
-	@each $connotation in functions.pick($connotations, $allConnotations) {
+	@each $connotation in functions.pick($connotations, $all-connotations) {
 		$attr: '[connotation="#{$connotation}" i]';
 
 		$scoped-selector: $selector; // prevents overriding argument

@@ -5,7 +5,7 @@
 	$connotations: success alert warning info announcement
 );
 
-$border-value:  8px solid var(#{color-semantic.$vvd-color-connotation});
+$border-value: 8px solid var(#{color-semantic.$vvd-color-connotation});
 
 :host {
 	padding: 20px;

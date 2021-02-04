@@ -36,7 +36,7 @@
 ::slotted(#{textfield-variables.$vvd-input-selector}:-webkit-autofill:focus) {
 	z-index: -1;
 	-webkit-text-fill-color: var(#{scheme-variables.$vvd-color-on-base});
-	-webkit-box-shadow: 0 0 0 30px
+	box-shadow: 0 0 0 30px
 		var(#{scheme-variables.$vvd-color-contrast-faint}) inset;
 }
 
