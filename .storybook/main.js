@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
 	stories: [
 		'../common/**/stories/*.stories.js',
@@ -12,4 +14,14 @@ module.exports = {
 		'@storybook/addon-viewport',
 		'@whitespace/storybook-addon-html',
 	],
+	webpackFinal: (config)=>{
+		config.module.rules.push({
+			test: /icon-manifest\.json$/,
+			use: {
+				loader: path.resolve(__dirname, './icon-manifest-loader.js'),
+				options: {}
+			}
+		});
+		return config;
+	}
 };
