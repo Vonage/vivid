@@ -1,9 +1,9 @@
-{
+module.exports = {
 	"extends": [
 		"stylelint-config-sass-guidelines",
 		"stylelint-a11y/recommended",
 		"stylelint-config-idiomatic-order",
-		"stylelint-config-prettier"
+		"stylelint-config-prettier" // should always be last
 	],
 	"plugins": ["stylelint-no-unsupported-browser-features", "stylelint-a11y"],
 	"rules": {

@@ -4,13 +4,17 @@ module.exports = {
 		"node": true
 	},
 	"extends": [
+		"@open-wc/eslint-config",
 		"eslint:recommended",
 		"plugin:@typescript-eslint/eslint-recommended",
 		"plugin:@typescript-eslint/recommended",
 		"plugin:wc/recommended",
 		"plugin:compat/recommended",
 		"plugin:lit-a11y/recommended",
-		"plugin:markdown/recommended"
+		"plugin:markdown/recommended",
+		// the followings should always be last
+		"prettier",
+		"prettier/@typescript-eslint"
 	],
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
