@@ -12,7 +12,6 @@ import 'flatpickr/dist/plugins/monthSelect/style.css';
  * - update <any> types
  * - use flatpicker instance _createElement
  * - week and month picker plugin
- * - remove flatpickr from DOM and event listeners on unmount
  */
 
 declare global {
@@ -68,7 +67,29 @@ export class VWCDatepicker extends LitFlatpickr {
 		};
 	}
 
+	firstUpdated(): void {
+		super.firstUpdated();
+
+		if (this.monthSelect) {
+			this.plugins.push(
+				monthSelectPlugin({
+					shorthand: true,
+					dateFormat: 'm.y',
+					altFormat: 'F Y',
+				})
+			);
+		} else if (this.weekSelect) {
+			this.plugins.push(weekSelect());
+		}
+	}
+
+	disconnectedCallback(): void {
+		super.disconnectedCallback();
+		this._instance?.destroy();
+	}
+
 	private changeHandler(e: any): void {
+		// populate dates in custom range container
 		if (this._instance && this.mode === 'range') {
 			const startDate = e[0] ? this._instance.formatDate(e[0], 'M j, Y') : '';
 			const endDate = e[1] ? this._instance.formatDate(e[1], 'M j, Y') : '';
@@ -206,22 +227,6 @@ export class VWCDatepicker extends LitFlatpickr {
 
 			footer.appendChild(clearButton);
 			this._instance?.calendarContainer.appendChild(footer);
-		}
-	}
-
-	firstUpdated(): void {
-		super.firstUpdated();
-
-		if (this.monthSelect) {
-			this.plugins.push(
-				monthSelectPlugin({
-					shorthand: true,
-					dateFormat: 'm.y',
-					altFormat: 'F Y',
-				})
-			);
-		} else if (this.weekSelect) {
-			this.plugins.push(weekSelect());
 		}
 	}
 
