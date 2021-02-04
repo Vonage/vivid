@@ -46,6 +46,13 @@ export class VWCSelect extends MWCSelect {
 	@property({ type: String, reflect: true })
 	name: string | undefined;
 
+	connectedCallback(): void {
+		super.connectedCallback();
+		if (!this.hasAttribute('outlined')) {
+			this.outlined = true;
+		}
+	}
+
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
 		this.replaceIcon();
@@ -53,10 +60,21 @@ export class VWCSelect extends MWCSelect {
 		handleAutofocus(this);
 	}
 
-	protected updated(changedProperties: PropertyValues): void {
-		super.updated(changedProperties);
+	protected update(changedProperties: PropertyValues): void {
+		super.update(changedProperties);
 		if (this.shape === 'pill') {
 			this.dense = true;
+		}
+	}
+
+	protected updated(changedProperties: PropertyValues): void {
+		super.updated(changedProperties);
+		const selectedText = this.shadowRoot?.querySelector(
+			'.mdc-select__selected-text'
+		);
+		if (selectedText) {
+			selectedText.setAttribute('aria-label', 'current selection');
+			selectedText.setAttribute('role', 'textbox');
 		}
 	}
 

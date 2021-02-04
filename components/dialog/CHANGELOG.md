@@ -1,3 +1,12 @@
+# [1.2.0](https://github.com/vonage/vivid/compare/v1.1.3...v1.2.0) (2021-02-03)
+
+
+### Bug Fixes
+
+* **dialog:** dialog design fixes ([#616](https://github.com/vonage/vivid/issues/616)) ([96dadab](https://github.com/vonage/vivid/commit/96dadab1d54bd4eef4a516e3234330daf9d1fe77))
+
+
+
 ## [1.1.3](https://github.com/vonage/vivid/compare/v1.1.2...v1.1.3) (2021-01-27)
 
 

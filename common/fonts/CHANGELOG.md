@@ -1,3 +1,13 @@
+# [1.2.0](https://github.com/vonage/vivid/compare/v1.1.3...v1.2.0) (2021-02-03)
+
+
+### Bug Fixes
+
+* **fonts:** viv-384 iss-621 prefetch preload are not to be used in iframe due to Safa… ([#622](https://github.com/vonage/vivid/issues/622)) ([45aeb4e](https://github.com/vonage/vivid/commit/45aeb4ef95fd55e55e8fc064570182ea55e09e85)), closes [#621](https://github.com/vonage/vivid/issues/621)
+* **storybook:** attempt to fix the fonts preload ([#624](https://github.com/vonage/vivid/issues/624)) ([7cdf9ff](https://github.com/vonage/vivid/commit/7cdf9ff55f1dc010052173fabddd5954df30eb9a))
+
+
+
 ## [1.1.3](https://github.com/vonage/vivid/compare/v1.1.2...v1.1.3) (2021-01-27)
 
 

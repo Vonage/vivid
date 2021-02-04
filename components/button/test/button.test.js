@@ -372,7 +372,7 @@ describe('button', () => {
 
 	describe('shape', () => {
 		shapeRoundedTestCases(COMPONENT_NAME);
-		shapePillTestCases(COMPONENT_NAME);
+		shapePillTestCases(COMPONENT_NAME, false);
 	});
 
 	describe('button connotation', () => {
