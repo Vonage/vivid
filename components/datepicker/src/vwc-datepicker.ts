@@ -1,3 +1,4 @@
+import '@vonage/vvd-core';
 import { customElement, property } from 'lit-element';
 import { style as vwcDatepickerStyles } from './vwc-datepicker.css.js';
 import { LitFlatpickr } from 'lit-flatpickr';
