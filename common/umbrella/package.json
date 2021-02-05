@@ -35,5 +35,5 @@
 		"sass": "^1.32.4",
 		"kefir": "^3.8.8"
 	},
-	"prettier": "@vonage/prettier-config"
+	"prettier": "@vonage/vvd-umbrella/prettier-config"
 }

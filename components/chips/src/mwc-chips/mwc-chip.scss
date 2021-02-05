@@ -21,11 +21,11 @@ limitations under the License.
 @include mdc-ripple-common(mdc-feature-all());
 
 :host {
-  /* See mwc-icon-button.scss for explanation. */
-  display: inline-flex;
-  vertical-align: top;
+	/* See mwc-icon-button.scss for explanation. */
+	display: inline-flex;
+	vertical-align: top;
 }
 
 .material-icons {
-  @extend %material-icons;
+	@extend %material-icons;
 }

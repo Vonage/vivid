@@ -9,13 +9,13 @@
 }
 
 :host([dense][label]:not([label=''])) {
-  .mdc-text-field--outlined {
+	.mdc-text-field--outlined {
 		padding-top: 8px;
 	}
 }
 
 :host([resizable]) {
-  .mdc-text-field__input {
+	.mdc-text-field__input {
 		resize: vertical;
 	}
 }

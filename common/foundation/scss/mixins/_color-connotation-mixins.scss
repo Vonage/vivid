@@ -19,7 +19,10 @@ $all-connotations: (
 );
 
 // selector can be altered by relevance
-@mixin connotations-context($selector: ':host(#{$connotation-placeholder})', $default-fallback: null) {
+@mixin connotations-context(
+	$selector: ':host(#{$connotation-placeholder})',
+	$default-fallback: null
+) {
 	@each $connotation in functions.pick($connotations, $all-connotations) {
 		$attr: '[connotation="#{$connotation}" i]';
 
@@ -48,7 +51,9 @@ $all-connotations: (
 		);
 
 		#{$processed-selector} {
-			#{color-semantic.$vvd-color-connotation}: var(--vvd-color-#{$default-fallback});
+			#{color-semantic.$vvd-color-connotation}: var(
+				--vvd-color-#{$default-fallback}
+			);
 			#{color-semantic.$vvd-color-on-connotation}: var(
 				--vvd-color-on-#{$default-fallback}
 			);
