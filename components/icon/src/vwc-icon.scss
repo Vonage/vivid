@@ -1,4 +1,4 @@
-$size-variable-name: --size;
+$size-variable-name: --icon-size;
 
 :host([size=small]) {
 	#{$size-variable-name}: 16px;
