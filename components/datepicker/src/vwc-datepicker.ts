@@ -31,6 +31,9 @@ export class VWCDatepicker extends LitFlatpickr {
 	@property({ type: Boolean, reflect: true })
 	monthSelect = false;
 
+	@property({ type: Boolean, reflect: true })
+	closeOnSelect = false;
+
 	// prevents flatpickr from being appended to slotted components when inline
 	private appendTo: (Node & ParentNode) | null = this.parentNode;
 	private plugins: Array<any> = [];
@@ -49,10 +52,12 @@ export class VWCDatepicker extends LitFlatpickr {
 		this.onReady = () => {
 			// wait for DOM
 			setTimeout(() => {
-				this._instance?.calendarContainer.classList.add('vvd-datepicker');
-				this.renderHeader();
-				this.renderRange();
-				this.renderFooter();
+				if (!this._instance?.isMobile || this.disableMobile) {
+					this._instance?.calendarContainer.classList.add('vvd-datepicker');
+					this.renderHeader();
+					this.renderRange();
+					this.renderFooter();
+				}
 				// slot flatpickr alt/mobile input in vwc-textfield
 				this._instance?.altInput?.setAttribute('slot', 'formInputElement');
 				this._instance?.mobileInput?.setAttribute('slot', 'formInputElement');
@@ -146,13 +151,19 @@ export class VWCDatepicker extends LitFlatpickr {
 			this.updateCurrentMonth();
 			this.updateCurrentYear();
 
-			prevMonth.addEventListener('mousedown', (e: InputEvent) => {
-				this.navigateMonths(e, -1);
-			});
+			prevMonth.addEventListener('mousedown', (e: InputEvent) =>
+				this.navigateMonths(e, -1)
+			);
+			prevMonth.addEventListener('touchstart', (e: InputEvent) =>
+				this.navigateMonths(e, -1)
+			);
 
-			nextMonth.addEventListener('mousedown', (e: InputEvent) => {
-				this.navigateMonths(e, 1);
-			});
+			nextMonth.addEventListener('mousedown', (e: InputEvent) =>
+				this.navigateMonths(e, 1)
+			);
+			nextMonth.addEventListener('touchstart', (e: InputEvent) =>
+				this.navigateMonths(e, 1)
+			);
 		}
 	}
 
@@ -215,16 +226,23 @@ export class VWCDatepicker extends LitFlatpickr {
 			const clearButton: any = document.createElement('vwc-button');
 			clearButton.label = 'Clear';
 			clearButton.shape = 'pill';
-			clearButton.dense = true; // css preventing programmatic update
-			clearButton.addEventListener('mousedown', (e: InputEvent) => {
-				e.preventDefault();
-				e.stopPropagation();
-				this._instance?.clear();
-			});
+			clearButton.dense = true; // vwc-button css preventing programmatic update
+			clearButton.addEventListener('mousedown', (e: InputEvent) =>
+				this.clearSelection(e)
+			);
+			clearButton.addEventListener('touchstart', (e: InputEvent) =>
+				this.clearSelection(e)
+			);
 
 			footer.appendChild(clearButton);
 			this._instance?.calendarContainer.appendChild(footer);
 		}
+	}
+
+	private clearSelection(e: InputEvent) {
+		e.preventDefault();
+		e.stopPropagation();
+		this._instance?.clear();
 	}
 
 	// copied from lit-flatpickr
@@ -274,7 +292,7 @@ export class VWCDatepicker extends LitFlatpickr {
 			...(this.inline && { appendTo: this.appendTo }),
 			...(this.enable && { enable: this.enable }),
 			...(this.plugins.length && { plugins: this.plugins }),
-			// closeOnSelect: false
+			closeOnSelect: this.closeOnSelect,
 		};
 	}
 }

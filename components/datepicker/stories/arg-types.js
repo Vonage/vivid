@@ -23,6 +23,12 @@ export const argTypes = {
 			options: { 'true': '', 'false': undefined }
 		}
 	},
+	closeOnSelect: {
+		control: {
+			type: 'inline-radio',
+			options: { 'true': '', 'false': undefined }
+		}
+	},
 	disableMobile: {
 		control: {
 			type: 'inline-radio',
