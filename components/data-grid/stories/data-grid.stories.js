@@ -6,15 +6,17 @@ import { spread } from '@open-wc/lit-helpers';
 export const defaultOptions = {
     suppressMovableColumns: true,
     "columnDefs": [
-        { "headerName": "Make", "field": "make", sortable: true },
+        { "headerName": "Maker", "field": "maker", sortable: true },
         { "headerName": "Model", "field": "model" },
         { "headerName": "Price", "field": "price", sortable: true, filter: 'agNumberColumnFilter' }
     ],
     "rowData": [
-        { "make": "Toyota", "model": "Celica", "price": 35000 },
-        { "make": "Ford", "model": "Mondeo", "price": 32000 },
-        { "make": "Porsche", "model": "Boxter", "price": 72000 }
-    ]
+        { "maker": "Toyota", "model": "Celica", "price": 35000 },
+        { "maker": "Ford", "model": "Mondeo", "price": 32000 },
+        { "maker": "Porsche", "model": "Boxter", "price": 72000 },
+        { "maker": "Toyota", "model": "Celica", "price": 35000 },
+        { "maker": "Ford", "model": "Mondeo", "price": 32000 },
+        { "maker": "Porsche", "model": "Boxter", "price": 72000 }    ]
 }
 
 export default {

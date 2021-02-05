@@ -1,0 +1,8 @@
+@import 'ag-theme-vivid-mixin';
+
+// Including this file emits CSS for the Vivid theme. If you want to extend the Vivid theme,
+// @import ag-theme-vivid-mixin.scss and @include ag-theme-vivid($params) instead of using this file.
+
+.ag-theme-vivid {
+	@include ag-theme-vivid($ag-theme-vivid-default-params);
+}

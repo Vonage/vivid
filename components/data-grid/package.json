@@ -19,7 +19,7 @@
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1",
 		"build:typescript": "tsc -b",
-		"build:styles": "umbrella-style-modules",
+		"build:styles": "node themes/generate-web-fonts.js ./themes && umbrella-style-modules",
 		"build": "yarn run build:styles && yarn run build:typescript"
 	},
 	"bugs": {
@@ -37,6 +37,11 @@
 		"@vonage/vvd-design-tokens": "^1.2.0",
 		"@vonage/vvd-typography": "^1.2.0",
 		"@vonage/vvd-umbrella": "^1.0.4",
+		"@vusion/webfonts-generator": "0.6.0",
+		"glob": "^7.1.6",	
 		"typescript": "^4.1.3"
+	},
+	"engines": {
+		"node": "<=12.18.4"
 	}
 }

@@ -7,6 +7,7 @@ import {
 	PropertyValues,
 	PropertyDeclarations,
 	PropertyDeclaration,
+	CSSResult,
 } from 'lit-element';
 import { style as vwcDataGridStyle } from './vwc-data-grid.css';
 import {
@@ -49,7 +50,7 @@ const sendCustomEventFactory = (target: HTMLElement) => (
  */
 @customElement('vwc-data-grid')
 export class VWCDataGrid extends LitElement {
-	static DEFAULT_ROW_HEIGHT = 37;
+	static DEFAULT_ROW_HEIGHT = 30;
 
 	static get properties(): PropertyDeclarations {
 		const addProperties = (
@@ -148,6 +149,12 @@ export class VWCDataGrid extends LitElement {
 			{}
 		);
 
+	protected appendStyle(css: CSSResult): void {
+		const style = document.createElement('style');
+		style.textContent = css.cssText;
+		this.renderRoot.appendChild(style);
+	}
+
 	protected createGrid(): void {
 		if (this.#initialized) {
 			return;
@@ -175,11 +182,10 @@ export class VWCDataGrid extends LitElement {
 			this.options,
 			gridParams
 		);
-		this.gridElement?.classList.add('ag-theme-material');
+		this.gridElement?.classList.add('ag-theme-vivid');
 
-		const style = document.createElement('style');
-		style.textContent = vwcDataGridStyle.cssText;
-		this.renderRoot.appendChild(style);
+		this.appendStyle(vwcDataGridStyle);
+
 		this.#initialized = true;
 	}
 
