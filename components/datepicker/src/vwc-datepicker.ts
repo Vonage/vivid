@@ -47,23 +47,20 @@ export class VWCDatepicker extends LitFlatpickr {
 		document.head.appendChild(style);
 
 		this.onReady = () => {
-			// slot flatpickr alt/mobile input in vwc-textfield
-			// mobileInput is underfined onReady
+			// wait for DOM
 			setTimeout(() => {
+				this._instance?.calendarContainer.classList.add('vvd-datepicker');
+				this.renderHeader();
+				this.renderRange();
+				this.renderFooter();
+				// slot flatpickr alt/mobile input in vwc-textfield
 				this._instance?.altInput?.setAttribute('slot', 'formInputElement');
 				this._instance?.mobileInput?.setAttribute('slot', 'formInputElement');
-			}, 1);
+			}, 0);
 		};
 
 		this.onChange = (e) => {
 			this.changeHandler(e);
-		};
-
-		this.onOpen = () => {
-			this._instance?.calendarContainer.classList.add('vvd-datepicker');
-			this.renderHeader();
-			this.renderRange();
-			this.renderFooter();
 		};
 	}
 
