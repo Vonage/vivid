@@ -25,3 +25,4 @@ components/**/*.js
 # handled by stylelint
 *.scss
 *.svg
+*.md
