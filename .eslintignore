@@ -24,3 +24,4 @@ components/**/*.js
 *.json
 # handled by stylelint
 *.scss
+*.svg
