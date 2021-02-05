@@ -1,22 +1,21 @@
-$small: 16px;
-$medium: 24px;
-$large: 32px;
+// sizing
+:host([size=small]) {
+	#{$size-variable-name}: 16px;
+}
+:host, :host([size=medium]) {
+	#{$size-variable-name}: 24px;
+}
+:host([size=large]) {
+	#{$size-variable-name}: 32px;
+}
+
+$size-variable-name: --size;
 
 :host {
 	display: inline-flex;
 	fill: currentColor;
-}
-
-// sizing
-:host([size=small]) {
-	width: $small;
-	height: $small;
-}
-:host, :host([size=medium]) {
-	width: $medium;
-	height: $medium;
-}
-:host([size=large]) {
-	width: $large;
-	height: $large;
+	width: var(#{$size-variable-name});
+	height: var(#{$size-variable-name});
+	inline-size: var(#{$size-variable-name});
+	block-size: var(#{$size-variable-name});
 }
