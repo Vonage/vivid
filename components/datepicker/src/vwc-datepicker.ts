@@ -8,9 +8,7 @@ import 'flatpickr/dist/plugins/monthSelect/style.css';
 
 /**
  * TODO:
- * - apply styles to inline mode
- * - update <any> types
- * - use flatpicker instance _createElement
+ * - tidy up <any> types
  * - week and month picker plugin
  */
 
@@ -50,18 +48,7 @@ export class VWCDatepicker extends LitFlatpickr {
 		document.head.appendChild(style);
 
 		this.onReady = () => {
-			// wait for DOM
-			setTimeout(() => {
-				if (!this._instance?.isMobile || this.disableMobile) {
-					this._instance?.calendarContainer.classList.add('vvd-datepicker');
-					this.renderHeader();
-					this.renderRange();
-					this.renderFooter();
-				}
-				// slot flatpickr alt/mobile input in vwc-textfield
-				this._instance?.altInput?.setAttribute('slot', 'formInputElement');
-				this._instance?.mobileInput?.setAttribute('slot', 'formInputElement');
-			}, 0);
+			this.readyHandler();
 		};
 
 		this.onChange = (e) => {
@@ -88,6 +75,21 @@ export class VWCDatepicker extends LitFlatpickr {
 	disconnectedCallback(): void {
 		super.disconnectedCallback();
 		this._instance?.destroy();
+	}
+
+	private readyHandler(): void {
+		// wait for DOM
+		setTimeout(() => {
+			if (!this._instance?.isMobile || this.disableMobile) {
+				this._instance?.calendarContainer.classList.add('vvd-datepicker');
+				this.renderHeader();
+				this.renderRange();
+				this.renderFooter();
+			}
+			// slot flatpickr alt/mobile input in vwc-textfield
+			this._instance?.altInput?.setAttribute('slot', 'formInputElement');
+			this._instance?.mobileInput?.setAttribute('slot', 'formInputElement');
+		}, 0);
 	}
 
 	private changeHandler(e: any): void {

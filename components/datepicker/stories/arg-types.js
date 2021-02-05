@@ -1,4 +1,10 @@
 export const argTypes = {
+	closeOnSelect: {
+		control: {
+			type: 'inline-radio',
+			options: { 'true': '', 'false': undefined }
+		}
+	},
 	mode: {
 		control: {
 			type: 'select',
@@ -18,12 +24,6 @@ export const argTypes = {
 		}
 	},
 	clickOpens: {
-		control: {
-			type: 'inline-radio',
-			options: { 'true': '', 'false': undefined }
-		}
-	},
-	closeOnSelect: {
 		control: {
 			type: 'inline-radio',
 			options: { 'true': '', 'false': undefined }
