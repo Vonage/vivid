@@ -19,9 +19,7 @@ $size-variable-name: --icon-size;
 	block-size: var(#{$size-variable-name});
 
 	svg {
-		width: 100%;
-		height: 100%;
-		inline-size: 100%;
-		block-size: 100%;
+		flex-grow: 1;
+		align-items: stretch;
 	}
 }
