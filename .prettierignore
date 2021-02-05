@@ -7,3 +7,4 @@
 **/*.tsbuildinfo
 **/storybook-static
 **/coverage
+**/build
