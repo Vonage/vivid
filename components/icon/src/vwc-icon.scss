@@ -1,4 +1,5 @@
-// sizing
+$size-variable-name: --size;
+
 :host([size=small]) {
 	#{$size-variable-name}: 16px;
 }
@@ -8,8 +9,6 @@
 :host([size=large]) {
 	#{$size-variable-name}: 32px;
 }
-
-$size-variable-name: --size;
 
 :host {
 	display: inline-flex;
