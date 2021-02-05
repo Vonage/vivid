@@ -19,7 +19,7 @@ module.exports = {
 		'ecmaVersion': 12,
 		'sourceType': 'module'
 	},
-	'plugins': ['@typescript-eslint', 'mocha', 'wc', 'no-only-tests', 'lit-a11y','markdown'],
+	'plugins': ['@typescript-eslint', 'mocha', 'wc', 'no-only-tests', 'lit-a11y'],
 	'settings': {
 		'wc': {
 			'elementBaseClasses': ['BaseElement', 'LitElement', 'FormElement']
@@ -143,20 +143,6 @@ module.exports = {
 				'assert': false,
 				'afterEach': false,
 				'beforeEach': false
-			}
-		},
-		{
-			// 2. Enable the Markdown processor for all .md files.
-			files: ['**/*.md'],
-			processor: 'markdown/markdown'
-		},
-		{
-			// 1. Target ```js code blocks in .md files.
-			files: ['**/*.md/*.js'],
-			rules: {
-					// 2. Disable other rules.
-					'no-console': 'off',
-					'import/no-unresolved': 'off'
 			}
 		}
 	]
