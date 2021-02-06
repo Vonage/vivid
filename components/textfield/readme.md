@@ -1,6 +1,10 @@
-# vwc-textfield
+### vwc-textfield
 
-## Properties
+This component is an extension of [\<mwc-textfield\>](https://github.com/material-components/material-components-web-components/tree/master/packages/textfield)
+
+### API
+
+#### Properties
 
 | Property                  | Modifiers | Type                                             | Description                                      |
 |---------------------------|-----------|--------------------------------------------------|--------------------------------------------------|
@@ -9,14 +13,12 @@
 | `charCounter`             |           | `boolean \| "external" \| "internal"`            |                                                  |
 | `disabled`                |           | `boolean`                                        |                                                  |
 | `endAligned`              |           | `boolean`                                        |                                                  |
-| `floatingLabelFoundation` |           | `MDCFloatingLabelFoundation \| undefined`        |                                                  |
 | `helper`                  |           | `string`                                         |                                                  |
 | `helperPersistent`        |           | `boolean`                                        |                                                  |
 | `icon`                    |           | `string`                                         |                                                  |
 | `iconTrailing`            |           | `string`                                         |                                                  |
 | `inputMode`               |           | `TextFieldInputMode`                             |                                                  |
 | `label`                   |           | `string`                                         |                                                  |
-| `lineRippleFoundation`    |           | `MDCLineRippleFoundation \| undefined`           |                                                  |
 | `max`                     |           | `string \| number`                               |                                                  |
 | `maxLength`               |           | `number`                                         |                                                  |
 | `min`                     |           | `string \| number`                               |                                                  |
@@ -28,7 +30,6 @@
 | `prefix`                  |           | `string`                                         |                                                  |
 | `readOnly`                |           | `boolean`                                        |                                                  |
 | `required`                |           | `boolean`                                        |                                                  |
-| `ripple`                  | readonly  | `RippleInterface \| Promise<RippleInterface \| null> \| undefined` | Implement ripple getter for Ripple integration with mwc-formfield |
 | `selectionEnd`            | readonly  | `number \| null`                                 |                                                  |
 | `selectionStart`          | readonly  | `number \| null`                                 |                                                  |
 | `size`                    |           | `number \| null`                                 |                                                  |
@@ -42,7 +43,7 @@
 | `value`                   |           | `string`                                         |                                                  |
 | `willValidate`            | readonly  | `boolean`                                        |                                                  |
 
-## Methods
+#### Methods
 
 | Method              | Type                                             |
 |---------------------|--------------------------------------------------|
