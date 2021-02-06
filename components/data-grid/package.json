@@ -17,7 +17,7 @@
 		"directory": "components/data-grid"
 	},
 	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1",
+		"test": "cross-env KARMA_PATTERN=components/data-grid/**/test/**/*.test.js karma start ../../karma.conf.spec.js",
 		"build:typescript": "tsc -b",
 		"build:styles": "node themes/generate-web-fonts.js ./themes && umbrella-style-modules",
 		"build": "yarn run build:styles && yarn run build:typescript"
@@ -29,7 +29,6 @@
 		"@ag-grid-community/all-modules": "^25.0.1",
 		"@vonage/vvd-core": "^1.2.0",
 		"@vonage/vvd-foundation": "^1.2.0",
-		"@vonage/vwc-icon": "^1.2.0",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.3"
 	},
@@ -37,7 +36,9 @@
 		"@vonage/vvd-design-tokens": "^1.2.0",
 		"@vonage/vvd-typography": "^1.2.0",
 		"@vonage/vvd-umbrella": "^1.0.4",
+		"@vonage/vwc-icon": "^1.2.0",
 		"@vusion/webfonts-generator": "0.6.0",
+		"cross-env": "^7.0.3",
 		"glob": "^7.1.6",	
 		"typescript": "^4.1.3"
 	},

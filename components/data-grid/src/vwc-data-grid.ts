@@ -1,5 +1,4 @@
 import '@vonage/vvd-core';
-import '@vonage/vwc-icon';
 import {
 	customElement,
 	property,
@@ -29,7 +28,7 @@ declare global {
 	}
 }
 
-const sendCustomEventFactory = (target: HTMLElement) => (
+const emitCustomEventFactory = (target: HTMLElement) => (
 		eventType: string,
 		detail: unknown,
 		options = { bubbles: true, composed: true }
@@ -84,10 +83,10 @@ export class VWCDataGrid extends LitElement {
 				...this.#gridOptions,
 				...value,
 			};
-			this.requestUpdate('options');
+			this.requestUpdate('options', null);
 		} else {
-			console.warn(
-				'Grid already instantiated, please use grid API directly to mutate options in runtime'
+			throw new Error(
+				'Grid already instantiated, please use "element.api" directly to mutate options in runtime'
 			);
 		}
 	}
@@ -105,7 +104,7 @@ export class VWCDataGrid extends LitElement {
 	#attributes: { [key: string]: unknown } = {};
 	#propertyMap: { [key: string]: string } = {};
 
-	sendCustomEvent = sendCustomEventFactory(this);
+	emitCustomEvent = emitCustomEventFactory(this);
 
 	constructor() {
 		super();
@@ -215,7 +214,7 @@ export class VWCDataGrid extends LitElement {
 			this.setDefaultPopupParent();
 		}
 
-		this.sendCustomEvent('agGridEvent', event);
+		this.emitCustomEvent('agGridEvent', event);
 	}
 
 	protected setDefaultPopupParent(): void {
