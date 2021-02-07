@@ -1,4 +1,11 @@
 import '@vonage/vwc-icon';
+import {
+	waitInterval,
+	isolatedElementsCreation,
+	textToDomToParent,
+	assertDistancePixels,
+	assertComputedStyle,
+} from '../../../test/test-helpers.js';
 
 const LOAD_TIME = 400;
 const sleep = (ms) => new Promise((res) => setTimeout(res, ms));
@@ -42,5 +49,36 @@ describe('vwc-icon', () => {
 				);
 			});
 		});
+	});
+
+	describe('icon layout', () => {
+		const addElement = isolatedElementsCreation();
+		const ICON_SIZES = {
+			small: '16px',
+			medium: '24px',
+			large: '32px',
+		};
+
+		for (const [sizeName, sizeValue] of Object.entries(ICON_SIZES)) {
+			it(`'${sizeName}' icon should be sized property`, async () => {
+				const [e] = addElement(
+					textToDomToParent(`<vwc-icon type="home" size="${sizeName}"></vwc-icon>`)
+				);
+				await waitInterval(LOAD_TIME);
+				const svg = e.shadowRoot.querySelector('svg');
+				assertComputedStyle(e, { width: sizeValue, height: sizeValue });
+				assertComputedStyle(svg, { width: sizeValue, height: sizeValue });
+			});
+
+			it(`'${sizeName}' icon should be located property`, async () => {
+				const [e] = addElement(
+					textToDomToParent(`<vwc-icon type="home" size="${sizeName}"></vwc-icon>`)
+				);
+				await waitInterval(LOAD_TIME);
+				const svg = e.shadowRoot.querySelector('svg');
+				assertDistancePixels(e, svg, 'top', 0);
+				assertDistancePixels(e, svg, 'left', 0);
+			});
+		}
 	});
 });

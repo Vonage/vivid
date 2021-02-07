@@ -1,15 +1,27 @@
 # Simple word
-vonage
-vonage's
-vivid
-vivid's
-frontends
-transpile
-transpilation
+artboard
+artifactory
 buildless
+bundler
+dev-experience
+enable
+figma
+frontends
+headful
+init
+jira
+linter
+micro-frontends
 minification
 productized
-jira
+vivid
+vivid's
+vonage
+vonage's
+theming
+transpile
+transpilation
+unstyled
 
 # Regexp
 /Component.ts?/

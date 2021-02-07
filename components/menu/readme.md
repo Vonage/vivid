@@ -1,11 +1,11 @@
-# `vwc-menu`
+### `vwc-menu`
 
 `vwc-menu` is a surfacing menu component, showing up on demand, eg upon user action.
 `vwc-menu` fetured with an internal list, while all LightDOM elements of it become children of that list.
 
 > This component is an extension of [\<mwc-menu\>](https://github.com/material-components/material-components-web-components/tree/master/packages/menu).
 
-# Usage
+### Usage
 
 Usage example:
 ```html
@@ -32,11 +32,11 @@ import { VWCMenu } from '@vonage/vwc-menu';
 import '@vonage/vwc-list/vwc-list-item.js';
 ```
 
-# API
+### API
 
 `vwc-menu` exposes several APIs to provide its fuctionality, namely properties, methods and events.
 
-## Properties
+#### Properties
 
 | Property                  | Modifiers | Type                                             | Description                                      |
 |---------------------------|-----------|--------------------------------------------------|--------------------------------------------------|
@@ -61,7 +61,7 @@ import '@vonage/vwc-list/vwc-list-item.js';
 | `x`                       |           | `number \| null`                                 |                                                  |
 | `y`                       |           | `number \| null`                                 |                                                  |
 
-## Methods
+#### Methods
 
 | Method                | Type                                         |
 |-----------------------|----------------------------------------------|
@@ -72,7 +72,7 @@ import '@vonage/vwc-list/vwc-list-item.js';
 | `select`              | `(index: MWCListIndex): void`                |
 | `show`                | `(): void`                                   |
 
-## Events
+#### Events
 
 | Event           | Description      |
 |-----------------|------------------|
