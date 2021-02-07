@@ -9,8 +9,11 @@
 	border-radius: 0;
 	font-size: 0;
 	background-color: var(#{scheme-variables.$vvd-color-contrast-neutral});
-	transition: transform 0.1s;
 	cursor: pointer;
+
+	@media (prefers-reduced-motion: no-preference) {
+		transition: transform 0.1s;
+	}
 
 	&-active {
 		background-color: var(#{scheme-variables.$vvd-color-on-base});

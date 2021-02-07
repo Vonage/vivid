@@ -6,9 +6,9 @@
 #content,
 #actions,
 #dialog_icon {
+	display: flex;
 	padding-right: 0;
 	padding-left: 0;
-	display: flex;
 }
 
 ::slotted([slot='icon']) {

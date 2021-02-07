@@ -12,7 +12,10 @@
 	overflow: hidden;
 	outline: none;
 	cursor: pointer;
-	transition: fill 0.2s;
+
+	@media (prefers-reduced-motion: no-preference) {
+		transition: fill 0.2s;
+	}
 }
 
 .swiper-nav:hover {
@@ -20,10 +23,10 @@
 }
 
 .swiper-button-prev {
-	border-top-left-radius: 6px;
 	border-bottom-left-radius: 6px;
+	border-top-left-radius: 6px;
 }
 .swiper-button-next {
-	border-top-right-radius: 6px;
 	border-bottom-right-radius: 6px;
+	border-top-right-radius: 6px;
 }

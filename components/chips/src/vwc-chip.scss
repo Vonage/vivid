@@ -42,6 +42,9 @@
 
 	.mdc-chip__icon--trailing {
 		cursor: pointer;
-		transition: color variables.$color-animation-duration linear;
+
+		@media (prefers-reduced-motion: no-preference) {
+			transition: color variables.$color-animation-duration linear;
+		}
 	}
 }
