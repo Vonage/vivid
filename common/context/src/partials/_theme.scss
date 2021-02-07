@@ -38,4 +38,14 @@ body {
 		'blockquote#{color-connotation-mixins.$connotation-placeholder}',
 		'info'
 	);
+
+	table {
+		thead tr {
+			border-bottom-color: var(#{scheme-variables.$vvd-color-on-base});
+		}
+
+		tr {
+			border-bottom-color: var(#{scheme-variables.$vvd-color-contrast-faint});
+		}
+	}
 }
