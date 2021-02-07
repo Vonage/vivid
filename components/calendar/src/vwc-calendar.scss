@@ -83,7 +83,7 @@ $total-columns: 7;
 		li:nth-child(1n + #{$next}):nth-last-child(1n + #{$sum}) {
 			--column: #{$i};
 		}
-		$next: $next + $total-rows;
+		$next: $next + $total-rows; /* stylelint-disable-line order/order */
 	}
 }
 
