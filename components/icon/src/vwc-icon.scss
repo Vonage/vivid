@@ -1,12 +1,13 @@
 $size-variable-name: --icon-size;
 
-:host([size=small]) {
+:host([size='small']) {
 	#{$size-variable-name}: 16px;
 }
-:host, :host([size=medium]) {
+:host,
+:host([size='medium']) {
 	#{$size-variable-name}: 24px;
 }
-:host([size=large]) {
+:host([size='large']) {
 	#{$size-variable-name}: 32px;
 }
 
