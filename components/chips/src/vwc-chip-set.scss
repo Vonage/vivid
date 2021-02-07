@@ -1,5 +1,5 @@
 @use './variables';
 
 ::slotted(vwc-chip) {
-  margin: variables.$chip-set-gap-size;
+	margin: variables.$chip-set-gap-size;
 }

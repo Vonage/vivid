@@ -2,13 +2,16 @@
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 @use '@vonage/vvd-typography/scss/typography' as typography;
 
-#title, #content, #actions, #dialog_icon {
+#title,
+#content,
+#actions,
+#dialog_icon {
 	padding-right: 0;
 	padding-left: 0;
 	display: flex;
 }
 
-::slotted([slot=icon]) {
+::slotted([slot='icon']) {
 	margin-bottom: 18px;
 }
 
