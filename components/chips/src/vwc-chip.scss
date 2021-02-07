@@ -4,18 +4,24 @@
 @use './variables';
 
 .mdc-chip {
-  @include chips.fill-color(var(#{scheme-variables.$vvd-color-contrast-tinged}));
-  @include chips.trailing-icon-color(var(#{scheme-variables.$vvd-color-on-base}), variables.$trailing-icon-opacity, variables.$trailing-icon-opacity-hover);
-  @include chips.height(map-get(variables.$height, default));
-  @include chips.horizontal-padding(map-get(variables.$horizontal-padding, default));
-  @include chips.shape-radius(map-get(variables.$shape-radius, default));
-  @include chips.trailing-icon-margin(variables.$trailing-icon-margin-left);
-  @include chips.trailing-icon-size(variables.$trailing-icon-size);
+	@include chips.fill-color(var(#{scheme-variables.$vvd-color-contrast-tinged}));
+	@include chips.trailing-icon-color(
+		var(#{scheme-variables.$vvd-color-on-base}),
+		variables.$trailing-icon-opacity,
+		variables.$trailing-icon-opacity-hover
+	);
+	@include chips.height(map-get(variables.$height, default));
+	@include chips.horizontal-padding(
+		map-get(variables.$horizontal-padding, default)
+	);
+	@include chips.shape-radius(map-get(variables.$shape-radius, default));
+	@include chips.trailing-icon-margin(variables.$trailing-icon-margin-left);
+	@include chips.trailing-icon-size(variables.$trailing-icon-size);
 	@include typography.typography-cat-shorthand('body-2-bold');
 
 	cursor: auto;
-  color: var(#{scheme-variables.$vvd-color-on-base});
-  font-size: map-get(variables.$font-size, default);
+	color: var(#{scheme-variables.$vvd-color-on-base});
+	font-size: map-get(variables.$font-size, default);
 
 	vwc-icon.leading {
 		vertical-align: middle;
@@ -26,16 +32,16 @@
 		margin-top: -1px;
 	}
 
-  :host([type="filter"]) & {
-    cursor: pointer;
-  }
+	:host([type='filter']) & {
+		cursor: pointer;
+	}
 
-  .mdc-chip__ripple {
-    display: none;
-  }
+	.mdc-chip__ripple {
+		display: none;
+	}
 
-  .mdc-chip__icon--trailing {
-    cursor: pointer;
-    transition: color variables.$color-animation-duration linear;
-  }
+	.mdc-chip__icon--trailing {
+		cursor: pointer;
+		transition: color variables.$color-animation-duration linear;
+	}
 }

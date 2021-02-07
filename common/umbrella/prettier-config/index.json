@@ -1,0 +1,6 @@
+{
+	"$schema": "http://json.schemastore.org/prettierrc",
+	"singleQuote": true,
+	"tabWidth": 1,
+	"useTabs": true
+}

@@ -1,7 +1,7 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 
 :host {
-  @include typography.typography-mdc-coupling('body2', 'caption-bold');
+	@include typography.typography-mdc-coupling('body2', 'caption-bold');
 	font-stretch: var(--mdc-typography-body2-font-stretch);
 
 	.mdc-slider__pin-value-marker {
