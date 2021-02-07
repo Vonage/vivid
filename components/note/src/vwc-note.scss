@@ -10,7 +10,6 @@ $border-value: 8px solid var(#{color-semantic.$vvd-color-connotation});
 :host {
 	display: flex;
 	overflow: hidden;
-	overflow: hidden;
 	align-items: stretch;
 	padding: 20px;
 	border-left: $border-value;

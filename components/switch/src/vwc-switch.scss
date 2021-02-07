@@ -7,6 +7,33 @@
 
 // sizing parts only
 :host {
+	// colors/shadowing
+	--mdc-theme-secondary: var(
+		#{color-semantic-variable-names.$vvd-color-connotation}
+	);
+
+	--vvd-switch-unchecked-background: var(
+		#{scheme-variables.$vvd-color-contrast-neutral}
+	);
+	--vvd-switch-unchecked-background-hover: var(
+		#{scheme-variables.$vvd-color-contrast-neutral}
+	);
+	--vvd-switch-unchecked-background-focus: var(
+		#{scheme-variables.$vvd-color-contrast-neutral}
+	);
+
+	--vvd-switch-disabled-background: var(
+		#{scheme-variables.$vvd-color-contrast-soft}
+	);
+	--vvd-switch-shadow-focus: 0, 0, 0, 0.5;
+
+	--mdc-theme-surface: var(
+		#{scheme-variables.$vvd-color-surface}
+	); // unchecked thumb
+	--mdc-theme-on-surface: var(
+		--vvd-switch-unchecked-background
+	); // unchecked track
+
 	border-radius: 16px;
 
 	.mdc-switch,
@@ -44,66 +71,6 @@
 			transform: translateX(-10px);
 		}
 	}
-}
-
-:host([enlarged]) {
-	.mdc-switch,
-	.mdc-switch__native-control {
-		width: 50px;
-		height: 32px;
-	}
-
-	.mdc-switch__thumb-underlay {
-		width: 32px;
-
-		.mdc-switch__thumb {
-			width: 24px;
-			height: 24px;
-		}
-	}
-
-	.mdc-switch--checked {
-		.mdc-switch__thumb-underlay {
-			transform: translateX(18px);
-		}
-
-		.mdc-switch__native-control {
-			transform: translateX(-18px);
-		}
-	}
-}
-
-@include color-connotation-mixins.connotations-context(
-	':host(#{color-connotation-mixins.$connotation-placeholder})'
-);
-
-// colors/shadowing
-:host {
-	--mdc-theme-secondary: var(
-		#{color-semantic-variable-names.$vvd-color-connotation}
-	);
-
-	--vvd-switch-unchecked-background: var(
-		#{scheme-variables.$vvd-color-contrast-neutral}
-	);
-	--vvd-switch-unchecked-background-hover: var(
-		#{scheme-variables.$vvd-color-contrast-neutral}
-	);
-	--vvd-switch-unchecked-background-focus: var(
-		#{scheme-variables.$vvd-color-contrast-neutral}
-	);
-
-	--vvd-switch-disabled-background: var(
-		#{scheme-variables.$vvd-color-contrast-soft}
-	);
-	--vvd-switch-shadow-focus: 0, 0, 0, 0.5;
-
-	--mdc-theme-surface: var(
-		#{scheme-variables.$vvd-color-surface}
-	); // unchecked thumb
-	--mdc-theme-on-surface: var(
-		--vvd-switch-unchecked-background
-	); // unchecked track
 
 	.mdc-switch {
 		.mdc-switch__thumb {
@@ -137,6 +104,37 @@
 		}
 	}
 }
+
+:host([enlarged]) {
+	.mdc-switch,
+	.mdc-switch__native-control {
+		width: 50px;
+		height: 32px;
+	}
+
+	.mdc-switch__thumb-underlay {
+		width: 32px;
+
+		.mdc-switch__thumb {
+			width: 24px;
+			height: 24px;
+		}
+	}
+
+	.mdc-switch--checked {
+		.mdc-switch__thumb-underlay {
+			transform: translateX(18px);
+		}
+
+		.mdc-switch__native-control {
+			transform: translateX(-18px);
+		}
+	}
+}
+
+@include color-connotation-mixins.connotations-context(
+	':host(#{color-connotation-mixins.$connotation-placeholder})'
+);
 
 :host(:not([disabled]):focus-within) {
 	.mdc-switch__track {

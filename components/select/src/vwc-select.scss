@@ -65,11 +65,6 @@ $vvd-select-size-block: --vvd-select-size-block;
 			--mdc-select-outlined-disabled-border-color
 		);
 	}
-	vwc-notched-outline {
-		--mdc-notched-outline-border-color: var(
-			--mdc-select-outlined-disabled-border-color
-		);
-	}
 
 	.mdc-select__selected-text {
 		color: var(--mdc-select-disabled-ink-color);
@@ -154,9 +149,6 @@ $vvd-select-size-block: --vvd-select-size-block;
 	&--invalid {
 		&.mdc-select--outlined {
 			background-color: var(--mdc-select-error-fill-color);
-			vwc-notched-outline {
-				--mdc-notched-outline-border-color: var(--mdc-select-error-color);
-			}
 			vwc-notched-outline {
 				--mdc-notched-outline-border-color: var(--mdc-select-error-color);
 			}

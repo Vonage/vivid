@@ -9,6 +9,9 @@
 );
 
 :host {
+	// sizing
+	--mdc-icon-button-size: 40px;
+
 	.mdc-icon-button {
 		display: inline-flex;
 		overflow: hidden;
@@ -18,6 +21,9 @@
 		background-color: var(--background-color);
 		border-radius: var(--border-radius);
 		color: var(--color);
+		&:disabled {
+			color: var(#{color-semantic.$formfield-disabled-ink});
+		}
 	}
 
 	.vvd-icon {
@@ -40,17 +46,6 @@
 	.mdc-icon-button:disabled {
 		border-color: var(#{color-semantic.$formfield-disabled-ink});
 	}
-}
-
-:host {
-	.mdc-icon-button:disabled {
-		color: var(#{color-semantic.$formfield-disabled-ink});
-	}
-}
-
-// sizing
-:host {
-	--mdc-icon-button-size: 40px;
 }
 
 :host([dense]) {

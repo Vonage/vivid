@@ -130,6 +130,8 @@
 	}
 
 	&--invalid {
+		--vvd-outline-color: var(--mdc-text-field-error-color);
+
 		&.mdc-text-field--outlined {
 			background-color: var(--mdc-text-field-error-fill-color);
 			vwc-notched-outline {
@@ -139,6 +141,10 @@
 			.mdc-floating-label {
 				color: var(--mdc-text-field-error-color);
 			}
+		}
+
+		.mdc-text-field__icon--trailing {
+			color: var(--mdc-text-field-label-ink-color);
 		}
 	}
 
@@ -155,14 +161,6 @@
 
 		&.mdc-text-field--invalid {
 			--vvd-outline-color: var(--mdc-text-field-error-color);
-		}
-	}
-
-	&--invalid {
-		--vvd-outline-color: var(--mdc-text-field-error-color);
-
-		.mdc-text-field__icon--trailing {
-			color: var(--mdc-text-field-label-ink-color);
 		}
 	}
 

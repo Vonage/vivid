@@ -6,6 +6,17 @@
 );
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins';
 
+@mixin size($type, $unit) {
+	:host([#{$type}]) & {
+		height: $unit * 8px;
+
+		.vvd-icon {
+			--icon-size: #{$unit * 4px};
+		}
+		@content;
+	}
+}
+
 :host {
 	--mdc-button-disabled-ink-color: var(
 		#{color-semantic.$formfield-disabled-ink}
@@ -30,7 +41,6 @@
 }
 /////////////////////////////////////////////////////////////////////////////
 .mdc-button {
-
 	$gutter: 8px;
 	height: 40px;
 	border-radius: var(--border-radius);
@@ -58,28 +68,8 @@
 			margin-inline-end: $gutter;
 		}
 	}
-}
 
-:host([dense]) {
-	--mdc-button-horizontal-padding: 12px;
-}
-
-:host([enlarged]) {
-	--mdc-button-horizontal-padding: 24px;
-}
-
-@mixin size($type, $unit) {
-	:host([#{$type}]) & {
-		height: $unit * 8px;
-
-		.vvd-icon {
-			--icon-size: #{$unit * 4px};
-		}
-		@content;
-	}
-}
-
-.mdc-button {
+	/* stylelint-disable-next-line order/order -- variants */
 	@include size(dense, 4);
 	@include size(dense, 6) {
 		$gutter: 10px;
@@ -95,6 +85,14 @@
 			}
 		}
 	}
+}
+
+:host([dense]) {
+	--mdc-button-horizontal-padding: 12px;
+}
+
+:host([enlarged]) {
+	--mdc-button-horizontal-padding: 24px;
 }
 
 @include shape-mixins.shape(

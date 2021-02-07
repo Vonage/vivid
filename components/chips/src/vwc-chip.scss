@@ -19,7 +19,6 @@
 	@include chips.trailing-icon-size(variables.$trailing-icon-size);
 	@include typography.typography-cat-shorthand('body-2-bold');
 	color: var(#{scheme-variables.$vvd-color-on-base});
-	color: var(#{scheme-variables.$vvd-color-on-base});
 
 	cursor: auto;
 	font-size: map-get(variables.$font-size, default);

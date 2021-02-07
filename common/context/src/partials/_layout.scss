@@ -48,7 +48,6 @@ $container: vvd-container;
 [class*='#{$container}'i] {
 	margin: 0 auto;
 	background: #f5f5dc;
-	background: #f5f5dc;
 	inline-size: var(--basis, 100%);
 	max-inline-size: calc(100% - 20px);
 	&:not(.#{$container}-fluid) {
