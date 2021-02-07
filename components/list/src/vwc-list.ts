@@ -16,12 +16,12 @@ function debounce(
 	callback: <T>(this: T, ...args: any[]) => void,
 	waitInMS = 50
 ) {
-	let timeoutId: NodeJS.Timeout;
+	let timeoutId: number;
 	return function <T>(this: T, ...args: any[]) {
 		clearTimeout(timeoutId);
 		// eslint-disable-next-line @typescript-eslint/no-this-alias
 		const context = this;
-		timeoutId = setTimeout(() => callback.apply(context, args), waitInMS);
+		timeoutId = window.setTimeout(() => callback.apply(context, args), waitInMS);
 	};
 }
 
