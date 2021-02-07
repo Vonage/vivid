@@ -1,4 +1,5 @@
 :host {
+	$button-size: 16px;
 	display: block;
 	box-sizing: border-box;
 
@@ -6,7 +7,6 @@
 		$scrub-size: 12px;
 		$basic: #b779ff;
 		$track: #e1e2e6;
-		$button-size: 16px;
 		display: flex;
 		align-items: center;
 		padding: 5px;
