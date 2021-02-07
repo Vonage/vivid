@@ -32,6 +32,7 @@ import { classMap } from 'lit-html/directives/class-map';
 import { ifDefined } from 'lit-html/directives/if-defined';
 
 function NOOP(): void {
+	// eslint-disable-next-line no-void
 	void 0;
 }
 

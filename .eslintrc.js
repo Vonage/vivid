@@ -78,16 +78,12 @@ module.exports = {
 		'lit-a11y/iframe-title': 'off', //! should remove after PR merge
 		'lit-a11y/alt-text': 'off', //! should remove after PR merge
 		'no-unneeded-ternary': 'off', //! should remove after PR merge
-		'@typescript-eslint/no-unused-vars': 'off', //! should remove after PR merge
-		'lit/no-invalid-html': 'off', //! should remove after PR merge
-		'wc/attach-shadow-constructor': 'off', //! should remove after PR merge
-		'no-void': 'off', //! should remove after PR merge
-		'no-unused-vars': 'off'/*[
+		'no-unused-vars': [
 			'error',
 			{
 				'varsIgnorePattern': '^(?:(?:MDC(?:(?:[A-Z][a-z0-9]+)+)Adapter)|(?:(?:(?:[A-Z][a-z0-9]+)+)Type))$'
 			}
-		]*/, //! should ENABLE after PR merge
+		],
 		'@typescript-eslint/explicit-function-return-type': 'off',
 		'@typescript-eslint/indent': 'off',
 		'max-len': 'off',
