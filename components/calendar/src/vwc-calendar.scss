@@ -51,7 +51,6 @@ ol.headline {
 }
 
 ol.calendar {
-
 	$sum: $total-rows * $total-columns;
 	$next: 1;
 	display: grid;

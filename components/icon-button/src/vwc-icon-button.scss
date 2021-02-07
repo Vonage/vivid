@@ -20,10 +20,8 @@
 		color: var(--color);
 	}
 
-	.vwc-icon {
-		--size: 20px;
-		width: var(--size);
-		height: var(--size);
+	.vvd-icon {
+		--icon-size: 20px;
 	}
 }
 
@@ -58,16 +56,16 @@
 :host([dense]) {
 	--mdc-icon-button-size: 32px;
 
-	.vwc-icon {
-		--size: 16px;
+	.vvd-icon {
+		--icon-size: 16px;
 	}
 }
 
 :host([enlarged]) {
 	--mdc-icon-button-size: 48px;
 
-	.vwc-icon {
-		--size: 24px;
+	.vvd-icon {
+		--icon-size: 24px;
 	}
 }
 

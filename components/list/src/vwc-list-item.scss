@@ -32,7 +32,6 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 }
 
 :host([twoline]) {
-
 	height: auto;
 	min-block-size: var(#{$vvd-list-item-block-size});
 
@@ -42,7 +41,10 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 		bottom: 0;
 		left: var(#{$vvd-list-item-side-padding});
 		height: 1px;
+		height: 1px;
 		border-bottom: 1px solid var(#{scheme-variables.$vvd-color-contrast-soft});
+		border-bottom: 1px solid var(#{scheme-variables.$vvd-color-contrast-soft});
+		content: '';
 		content: '';
 	}
 

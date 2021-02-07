@@ -30,10 +30,12 @@
 .content {
 	position: relative;
 	box-sizing: border-box;
+	box-sizing: border-box;
 	flex-basis: 100px;
 	justify-content: center;
 	border: 1px dashed #ccc;
 	background-color: var(#{scheme-variables.$vvd-color-base});
+	border-radius: 6px;
 	border-radius: 6px;
 
 	.files-count {

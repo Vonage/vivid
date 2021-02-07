@@ -1,11 +1,11 @@
-# Vivid Fonts
+### Vivid Fonts
 
 As part of the One Vonage unified branding and look'n'feel experience, we are providing a common Web fonts set.
 Our font loading service will load a [variable fonts](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Fonts/Variable_Fonts_Guide) for any supporting platform, while falling back to the static fonts on the non-supporting ones.
 
 ---
 
-# Usage
+### Usage
 
 Im most majority of the cases, consuming application should __do nothing__ with regard to fonts initialization.
 Fonts service is automatically initialized (fonts pulled and installed into the global document scope) as part of the Vivid Core.
@@ -24,7 +24,7 @@ fonts.init().then(() =>
 
 ---
 
-# Performance hints
+### Performance hints
 
 We are initializing fonts asynchronously.
 This approach won't block site's contents rendering, so you'll most likely to experience FOUC behaviour.

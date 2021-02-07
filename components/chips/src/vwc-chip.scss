@@ -19,6 +19,7 @@
 	@include chips.trailing-icon-size(variables.$trailing-icon-size);
 	@include typography.typography-cat-shorthand('body-2-bold');
 	color: var(#{scheme-variables.$vvd-color-on-base});
+	color: var(#{scheme-variables.$vvd-color-on-base});
 
 	cursor: auto;
 	font-size: map-get(variables.$font-size, default);
@@ -39,12 +40,15 @@
 	.mdc-chip__ripple {
 		display: none;
 	}
+	@media screen and (prefers-reduced-motion: reduce) {
+		.mdc-chip__icon--trailing {
+			cursor: pointer;
+			transition: none;
+		}
+	}
 
 	.mdc-chip__icon--trailing {
 		cursor: pointer;
-
-		@media (prefers-reduced-motion: no-preference) {
-			transition: color variables.$color-animation-duration linear;
-		}
+		transition: color variables.$color-animation-duration linear;
 	}
 }

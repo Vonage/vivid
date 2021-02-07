@@ -131,7 +131,6 @@
 
 	&--invalid {
 		&.mdc-text-field--outlined {
-
 			background-color: var(--mdc-text-field-error-fill-color);
 			vwc-notched-outline {
 				--mdc-notched-outline-border-color: var(--mdc-text-field-error-color);
@@ -175,11 +174,10 @@
 	}
 
 	vwc-icon {
+		--icon-size: #{textfield-variables.$icon-size};
 		align-self: center;
 		padding: 0;
 		margin: 0 #{textfield-variables.$horizontal-gutter};
-		min-block-size: textfield-variables.$icon-size;
-		min-inline-size: textfield-variables.$icon-size;
 	}
 }
 

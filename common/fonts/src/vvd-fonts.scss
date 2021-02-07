@@ -8,6 +8,7 @@
 	regular (regular width)
 */
 @font-face {
+	font-display: block;
 	font-family: 'SpeziaWeb';
 	font-style: normal;
 	font-weight: 400;
@@ -19,6 +20,7 @@
 	medium (wide width)
 */
 @font-face {
+	font-display: block;
 	font-family: 'SpeziaWeb';
 	font-style: normal;
 	font-weight: 500;
@@ -30,6 +32,7 @@
 	semi-bold (regular width)
 */
 @font-face {
+	font-display: block;
 	font-family: 'SpeziaWeb';
 	font-style: normal;
 	font-weight: 600;
@@ -41,6 +44,7 @@
 	monospace (regular width)
 */
 @font-face {
+	font-display: block;
 	font-family: 'SpeziaMonoWeb';
 	font-style: normal;
 	font-weight: 400;
@@ -54,6 +58,7 @@
 	}
 
 	@font-face {
+		font-display: block;
 		font-family: 'SpeziaWebVariable';
 		font-stretch: 50% 200%;
 		font-style: normal;
@@ -63,6 +68,7 @@
 	}
 
 	@font-face {
+		font-display: block;
 		font-family: 'SpeziaMonoWebVariable';
 		font-stretch: 50% 200%;
 		font-style: normal;

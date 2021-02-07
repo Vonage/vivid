@@ -1,8 +1,10 @@
-# vwc-textarea
+### vwc-textarea
 
-This component is an extension of [<mwc-textarea>](https://github.com/material-components/material-components-web-components/tree/master/packages/textarea)
+This component is an extension of [\<mwc-textarea\>](https://github.com/material-components/material-components-web-components/tree/master/packages/textarea)
 
-## Properties
+### API
+
+#### Properties
 
 | Property                  | Modifiers | Type                                             | Description                                      |
 |---------------------------|-----------|--------------------------------------------------|--------------------------------------------------|
@@ -12,14 +14,12 @@ This component is an extension of [<mwc-textarea>](https://github.com/material-c
 | `cols`                    |           | `number`                                         |                                                  |
 | `disabled`                |           | `boolean`                                        |                                                  |
 | `endAligned`              |           | `boolean`                                        |                                                  |
-| `floatingLabelFoundation` |           | `MDCFloatingLabelFoundation \| undefined`        |                                                  |
 | `helper`                  |           | `string`                                         |                                                  |
 | `helperPersistent`        |           | `boolean`                                        |                                                  |
 | `icon`                    |           | `string`                                         |                                                  |
 | `iconTrailing`            |           | `string`                                         |                                                  |
 | `inputMode`               |           | `TextFieldInputMode`                             |                                                  |
 | `label`                   |           | `string`                                         |                                                  |
-| `lineRippleFoundation`    |           | `MDCLineRippleFoundation \| undefined`           |                                                  |
 | `max`                     |           | `string \| number`                               |                                                  |
 | `maxLength`               |           | `number`                                         |                                                  |
 | `min`                     |           | `string \| number`                               |                                                  |
@@ -31,7 +31,6 @@ This component is an extension of [<mwc-textarea>](https://github.com/material-c
 | `prefix`                  |           | `string`                                         |                                                  |
 | `readOnly`                |           | `boolean`                                        |                                                  |
 | `required`                |           | `boolean`                                        |                                                  |
-| `ripple`                  | readonly  | `RippleInterface \| Promise<RippleInterface \| null> \| undefined` | Implement ripple getter for Ripple integration with mwc-formfield |
 | `rows`                    |           | `number`                                         |                                                  |
 | `selectionEnd`            | readonly  | `number \| null`                                 |                                                  |
 | `selectionStart`          | readonly  | `number \| null`                                 |                                                  |
@@ -46,7 +45,7 @@ This component is an extension of [<mwc-textarea>](https://github.com/material-c
 | `value`                   |           | `string`                                         |                                                  |
 | `willValidate`            | readonly  | `boolean`                                        |                                                  |
 
-## Methods
+#### Methods
 
 | Method              | Type                                             |
 |---------------------|--------------------------------------------------|

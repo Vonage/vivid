@@ -10,6 +10,7 @@ $border-value: 8px solid var(#{color-semantic.$vvd-color-connotation});
 :host {
 	display: flex;
 	overflow: hidden;
+	overflow: hidden;
 	align-items: stretch;
 	padding: 20px;
 	border-left: $border-value;
@@ -19,7 +20,6 @@ $border-value: 8px solid var(#{color-semantic.$vvd-color-connotation});
 	box-shadow: inset 0 1px 0 0 var(#{scheme-variables.$vvd-color-contrast-tinged}),
 		inset -1px 0 0 0 var(#{scheme-variables.$vvd-color-contrast-tinged}),
 		inset 0 -1px 0 0 var(#{scheme-variables.$vvd-color-contrast-tinged});
-	color: var(#{scheme-variables.$vvd-color-on-base});
 	contain: content;
 }
 @include color-connotation-mixins.connotations-context(
