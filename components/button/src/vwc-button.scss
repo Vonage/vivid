@@ -30,6 +30,8 @@
 }
 /////////////////////////////////////////////////////////////////////////////
 .mdc-button {
+
+	$gutter: 8px;
 	height: 40px;
 	border-radius: var(--border-radius);
 	// ! this was supposed to be set by MDC
@@ -45,51 +47,51 @@
 	.vvd-icon {
 		vertical-align: sub;
 	}
-
-	> span.trailing-icon {
+	> .trailing-icon {
 		.vvd-icon {
-			margin-inline-start: 8px;
+			margin-inline-start: $gutter;
 		}
 	}
 
-	> span.leading-icon {
+	> .leading-icon {
 		.vvd-icon {
-			margin-inline-end: 8px;
+			margin-inline-end: $gutter;
 		}
 	}
 }
 
 :host([dense]) {
 	--mdc-button-horizontal-padding: 12px;
-
-	.mdc-button {
-		height: 32px;
-
-		.vvd-icon {
-			--icon-size: 16px;
-		}
-	}
 }
 
 :host([enlarged]) {
 	--mdc-button-horizontal-padding: 24px;
+}
 
-	.mdc-button {
-		height: 48px;
+@mixin size($type, $unit) {
+	:host([#{$type}]) & {
+		height: $unit * 8px;
 
 		.vvd-icon {
-			--icon-size: 24px;
+			--icon-size: #{$unit * 4px};
 		}
+		@content;
+	}
+}
 
-		> span.trailing-icon {
+.mdc-button {
+	@include size(dense, 4);
+	@include size(dense, 6) {
+		$gutter: 10px;
+		> .trailing-icon {
 			.vvd-icon {
-				margin-inline-start: 10px;
+				margin-inline-start: $gutter;
 			}
 		}
 
-		> span.leading-icon {
+		> .leading-icon {
 			.vvd-icon {
-				margin-inline-end: 10px;
+				margin-inline-end: $gutter;
 			}
 		}
 	}
