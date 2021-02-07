@@ -10,20 +10,20 @@
 
 :host {
 	.mdc-icon-button {
-		background-color: var(--background-color);
-		border: var(--border);
-		border-radius: var(--border-radius);
-		color: var(--color);
 		display: inline-flex;
+		overflow: hidden;
 		align-items: center;
 		justify-content: center;
-		overflow: hidden;
+		border: var(--border);
+		background-color: var(--background-color);
+		border-radius: var(--border-radius);
+		color: var(--color);
 	}
 
 	.vwc-icon {
 		--size: 20px;
-		height: var(--size);
 		width: var(--size);
+		height: var(--size);
 	}
 }
 

@@ -82,8 +82,8 @@
 
 	.mdc-text-field {
 		.mdc-floating-label {
-			left: -12px;
 			top: -25px;
+			left: -12px;
 			transform: none;
 		}
 
@@ -98,16 +98,16 @@
 }
 
 .mdc-text-field {
+	height: var(#{textfield-variables.$vvd-text-field-size-block});
+	border-bottom-left-radius: var(--mdc-shape-small);
 	// prevent fill overflowing bottom corners
 	border-bottom-right-radius: var(--mdc-shape-small);
-	border-bottom-left-radius: var(--mdc-shape-small);
-	height: var(#{textfield-variables.$vvd-text-field-size-block});
 
 	.mdc-floating-label {
+		left: 14px;
 		font-stretch: var(
 			--mdc-typography-subtitle1-font-stretch
 		); // ! this was supposed to be set by MDC
-		left: 14px;
 		line-height: var(--mdc-typography-subtitle1-line-height);
 		transition-property: transform, font-size;
 	}
@@ -131,11 +131,11 @@
 
 	&--invalid {
 		&.mdc-text-field--outlined {
+
+			background-color: var(--mdc-text-field-error-fill-color);
 			vwc-notched-outline {
 				--mdc-notched-outline-border-color: var(--mdc-text-field-error-color);
 			}
-
-			background-color: var(--mdc-text-field-error-fill-color);
 
 			.mdc-floating-label {
 				color: var(--mdc-text-field-error-color);

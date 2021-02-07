@@ -38,8 +38,6 @@ $vvd-select-size-block: --vvd-select-size-block;
 
 	--mdc-shape-small: var(--border-radius);
 
-	#{$vvd-select-size-block}: 48px;
-
 	display: inline-flex;
 	flex-direction: column;
 	font-stretch: var(
@@ -49,6 +47,8 @@ $vvd-select-size-block: --vvd-select-size-block;
 	.mdc-select__selected-text {
 		padding: 22px 0 6px;
 	}
+
+	#{$vvd-select-size-block}: 48px;
 }
 
 :host(:not([disabled]))
@@ -59,13 +59,13 @@ $vvd-select-size-block: --vvd-select-size-block;
 }
 
 :host([disabled]) .mdc-select {
+
+	background-color: var(--mdc-select-disabled-fill-color);
 	vwc-notched-outline {
 		--mdc-notched-outline-border-color: var(
 			--mdc-select-outlined-disabled-border-color
 		);
 	}
-
-	background-color: var(--mdc-select-disabled-fill-color);
 
 	.mdc-select__selected-text {
 		color: var(--mdc-select-disabled-ink-color);
@@ -79,7 +79,6 @@ $vvd-select-size-block: --vvd-select-size-block;
 }
 
 :host([dense]) {
-	#{$vvd-select-size-block}: 40px;
 	padding-top: 24px;
 
 	.mdc-select__selected-text {
@@ -100,11 +99,16 @@ $vvd-select-size-block: --vvd-select-size-block;
 			color: var(--mdc-select-ink-color);
 		}
 	}
+	#{$vvd-select-size-block}: 40px;
 }
 
 .mdc-select {
 	// prevent fill overflowing corners
-	border-radius: var(--mdc-shape-small);
+	border-radius: var(--mdc-shape-small);@media screen and (prefers-reduced-motion: reduce) {
+.mdc-select__dropdown-icon {
+		transition: none;
+}
+}
 
 	.mdc-select__dropdown-icon {
 		transition: transform 200ms;
@@ -119,11 +123,17 @@ $vvd-select-size-block: --vvd-select-size-block;
 
 		.mdc-select__anchor {
 			height: var(#{$vvd-select-size-block});
-			padding-inline-start: 16px;
+			padding-inline-start: 16px;@media screen and (prefers-reduced-motion: reduce) {
+.mdc-floating-label {
+				padding-right: 8px;
+				line-height: var(--mdc-typography-subtitle1-line-height);
+				transition: none;
+}
+}
 
 			.mdc-floating-label {
-				line-height: var(--mdc-typography-subtitle1-line-height);
 				padding-right: 8px;
+				line-height: var(--mdc-typography-subtitle1-line-height);
 				transition: transform 0.15s, font-size 0.15s;
 			}
 
@@ -137,11 +147,11 @@ $vvd-select-size-block: --vvd-select-size-block;
 
 	&--invalid {
 		&.mdc-select--outlined {
+
+			background-color: var(--mdc-select-error-fill-color);
 			vwc-notched-outline {
 				--mdc-notched-outline-border-color: var(--mdc-select-error-color);
 			}
-
-			background-color: var(--mdc-select-error-fill-color);
 
 			.mdc-floating-label {
 				color: var(--mdc-select-error-color);

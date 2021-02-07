@@ -30,16 +30,16 @@
 }
 /////////////////////////////////////////////////////////////////////////////
 .mdc-button {
+	height: 40px;
 	border-radius: var(--border-radius);
 	// ! this was supposed to be set by MDC
 	font-stretch: var(--mdc-typography-button-font-stretch);
-	height: 40px;
 	letter-spacing: normal;
 
 	&:not(.mdc-button--dense) {
 		.vvd-icon {
-			min-height: 18px;
 			min-width: 18px;
+			min-height: 18px;
 		}
 	}
 
@@ -75,8 +75,8 @@
 		height: 48px;
 
 		.vvd-icon {
-			min-height: 20px;
 			min-width: 20px;
+			min-height: 20px;
 		}
 
 		> span.trailing-icon {
