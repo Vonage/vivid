@@ -20,7 +20,6 @@ declare global {
  *
  * @module vwc-helper-message
  *
- * @property {string} message - the message to be shown
  * @property {boolean} [isError=false] - is the component showing the error state (will show the error icon); reflected attribute is `is-error`
  */
 @customElement('vwc-helper-message')

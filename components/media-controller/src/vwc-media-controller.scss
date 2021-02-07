@@ -4,23 +4,23 @@
 
 	> div {
 		$scrub_size: 12px;
-		$basic: #B779FF;
-		$track: #E1E2E6;
+		$basic: #b779ff;
+		$track: #e1e2e6;
 		$button_size: 16px;
 		display: flex;
 		align-items: center;
-		padding: 5px 5px;
+		padding: 5px;
 
 		> button {
 			flex: 0 0 $button_size;
-			background-image: url(data:image/svg+xml,%3Csvg%20width%3D%2264%22%20height%3D%2232%22%20viewBox%3D%220%200%2064%2032%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20d%3D%22M27.0826%2014.872C28.3058%2015.5955%2028.3058%2017.4045%2027.0826%2018.128L5.7523%2030.7453C4.52905%2031.4689%203%2030.5644%203%2029.1173L3%203.8827C3%202.43556%204.52905%201.53109%205.75229%202.25466L27.0826%2014.872Z%22%20fill%3D%22%23B779FF%22%2F%3E%0A%3Crect%20x%3D%2251.2174%22%20y%3D%222%22%20width%3D%229.78261%22%20height%3D%2229%22%20rx%3D%221%22%20fill%3D%22%23B779FF%22%2F%3E%0A%3Crect%20x%3D%2236%22%20y%3D%222%22%20width%3D%229.78261%22%20height%3D%2229%22%20rx%3D%221%22%20fill%3D%22%23B779FF%22%2F%3E%0A%3C%2Fsvg%3E%0A);
+			background-image: url('data:image/svg+xml,%3Csvg%20width%3D%2264%22%20height%3D%2232%22%20viewBox%3D%220%200%2064%2032%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Cpath%20d%3D%22M27.0826%2014.872C28.3058%2015.5955%2028.3058%2017.4045%2027.0826%2018.128L5.7523%2030.7453C4.52905%2031.4689%203%2030.5644%203%2029.1173L3%203.8827C3%202.43556%204.52905%201.53109%205.75229%202.25466L27.0826%2014.872Z%22%20fill%3D%22%23B779FF%22%2F%3E%0A%3Crect%20x%3D%2251.2174%22%20y%3D%222%22%20width%3D%229.78261%22%20height%3D%2229%22%20rx%3D%221%22%20fill%3D%22%23B779FF%22%2F%3E%0A%3Crect%20x%3D%2236%22%20y%3D%222%22%20width%3D%229.78261%22%20height%3D%2229%22%20rx%3D%221%22%20fill%3D%22%23B779FF%22%2F%3E%0A%3C%2Fsvg%3E%0A');
 			background-repeat: no-repeat;
 			background-color: transparent;
 			background-size: $button_size * 2 $button_size;
 			width: $button_size;
 			height: $button_size;
 			background-position: 0 center;
-			border: none;
+			border: 0 none;
 			cursor: pointer;
 			box-sizing: border-box;
 			overflow: hidden;
@@ -59,9 +59,9 @@
 				height: $scrub_size;
 				border-radius: $scrub_size/2;
 				background-color: $basic;
-				border: none;
+				border: 0 none;
 				transition: background-color 0.2s, box-shadow 200ms, border-radius 0.2s;
-				box-shadow: 0 0 0 0 #00000000;
+				box-shadow: 0 0 0 0 #0000;
 				cursor: pointer;
 				-webkit-tap-highlight-color: transparent;
 

@@ -1,6 +1,6 @@
 import { html } from 'lit-element';
 
-export const cascading = () => html`
+export const Cascading = () => html`
 	<div style="position: relative">
 		<vwc-fab id="context-menu-anchor" style="display: inline-flex" mini icon="more_vert" @click="${anchorAClickHandler}"></vwc-fab>
 		<vwc-menu id="context-menu-base">

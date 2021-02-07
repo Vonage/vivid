@@ -2,56 +2,56 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 
 :host {
-  --mdc-tab-height: 44px;
-  --mdc-tab-horizontal-padding: 24px;
-  --mdc-tab-text-label-color-default: var(
+	--mdc-tab-height: 44px;
+	--mdc-tab-horizontal-padding: 24px;
+	--mdc-tab-text-label-color-default: var(
 		#{scheme-variables.$vvd-color-contrast-tinted}
 	);
-  flex: initial;
+	flex: initial;
 }
 
 .mdc-tab {
-  font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
+	font-stretch: var(
+		--mdc-typography-subtitle1-font-stretch
+	); // ! this was supposed to be set by MDC
 }
 
 .vvd-icon {
-  color: var(--mdc-tab-text-label-color-default);
-  height: 20px;
-  width: 20px;
+	--icon-size: 20px;
+	color: var(--mdc-tab-text-label-color-default);
+	vertical-align: sub;
 }
 
 :host([active]) {
-  .vvd-icon {
-    color: var(--mdc-theme-primary);
-  }
+	.vvd-icon {
+		color: var(--mdc-theme-primary);
+	}
 }
 
 :host([label]:not([stacked])) {
-  .leading-icon .vvd-icon {
-    margin-inline-end: 12px;
-  }
-  
-  .trailing-icon .vvd-icon {
-    margin-inline-start: 12px;
-  }
+	.leading-icon .vvd-icon {
+		margin-inline-end: 12px;
+	}
+
+	.trailing-icon .vvd-icon {
+		margin-inline-start: 12px;
+	}
 }
 
 :host([icon]:not([label])) {
-  .mdc-tab {
-    min-width: auto;
-  }
+	.mdc-tab {
+		min-width: auto;
+	}
 }
 
 :host([disabled]) {
-  --mdc-theme-primary: var(
-    #{scheme-variables.$vvd-color-contrast-soft}
-  );
-  --mdc-tab-text-label-color-default: var(
-    #{scheme-variables.$vvd-color-contrast-soft}
-  );
-  pointer-events: none;
+	--mdc-theme-primary: var(#{scheme-variables.$vvd-color-contrast-soft});
+	--mdc-tab-text-label-color-default: var(
+		#{scheme-variables.$vvd-color-contrast-soft}
+	);
+	pointer-events: none;
 
-  .vvd-icon {
-    color: var(#{scheme-variables.$vvd-color-contrast-soft});
-  }
+	.vvd-icon {
+		color: var(#{scheme-variables.$vvd-color-contrast-soft});
+	}
 }

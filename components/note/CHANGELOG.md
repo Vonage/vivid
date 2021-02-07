@@ -1,3 +1,28 @@
+# [1.2.0](https://github.com/vonage/vivid/compare/v1.1.3...v1.2.0) (2021-02-03)
+
+
+### Bug Fixes
+
+* **note:** viv-383 issue-619 fixing the safari 13 compliance ([#620](https://github.com/vonage/vivid/issues/620)) ([9a7224a](https://github.com/vonage/vivid/commit/9a7224a6067f39ee70589238cfffe8bcb57dcbd4)), closes [#619](https://github.com/vonage/vivid/issues/619)
+
+
+
+## [1.1.3](https://github.com/vonage/vivid/compare/v1.1.2...v1.1.3) (2021-01-27)
+
+
+
+## [1.1.2](https://github.com/vonage/vivid/compare/v1.1.1...v1.1.2) (2021-01-27)
+
+
+
+## [1.1.1](https://github.com/vonage/vivid/compare/v1.1.0...v1.1.1) (2021-01-25)
+
+
+
+# [1.1.0](https://github.com/vonage/vivid/compare/v1.0.4...v1.1.0) (2021-01-25)
+
+
+
 ## [1.0.4](https://github.com/vonage/vivid/compare/v1.0.3...v1.0.4) (2021-01-19)
 
 

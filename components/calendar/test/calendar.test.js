@@ -10,14 +10,14 @@ chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-calendar';
 
-describe('Calendar', () => {
+describe('calendar', () => {
 	let addElement = isolatedElementsCreation();
 
 	it(`${COMPONENT_NAME} is defined as a custom element`, async () => {
 		assert.exists(customElements.get(COMPONENT_NAME));
 	});
 
-	it('should internal contents', async () => {
+	it('should match internal contents', async () => {
 		const addedElements = addElement(
 			textToDomToParent(`<${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}>`)
 		);

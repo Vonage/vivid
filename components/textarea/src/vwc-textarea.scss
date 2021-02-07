@@ -1,4 +1,6 @@
-@use '@vonage/vwc-textfield/src/vwc-textfield' as textfield;
+@use '@vonage/vvd-typography/scss/typography';
+@use '@vonage/vwc-textfield/src/vwc-textfield';
+@use '@vonage/vwc-textfield/src/vwc-textfield-variables' as textfield-variables;
 
 :host {
 	display: inline-flex;
@@ -7,26 +9,28 @@
 }
 
 :host([dense][label]:not([label=''])) {
-  .mdc-text-field--outlined {
+	.mdc-text-field--outlined {
 		padding-top: 8px;
 	}
 }
 
 :host([resizable]) {
-  .mdc-text-field__input {
+	.mdc-text-field__input {
 		resize: vertical;
 	}
 }
 
 .mdc-text-field--textarea {
 	height: 100%;
-	min-height: var(#{textfield.$vvd-text-field-size-block});
+	min-height: var(#{textfield-variables.$vvd-text-field-size-block});
 	padding-left: 0;
 	padding-right: 0;
 
 	.mdc-text-field__input {
-		padding-left: 14px;
-		padding-right: 14px;
+		@include typography.typography-cat-shorthand('body-2');
+
+		padding-inline-start: textfield-variables.$horizontal-gutter;
+		padding-inline-end: textfield-variables.$horizontal-gutter;
 	}
 
 	&.mdc-text-field--outlined {

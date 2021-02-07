@@ -1,0 +1,53 @@
+@use './vwc-textfield-variables' as textfield-variables;
+@use '@vonage/vvd-typography/scss/typography';
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
+
+::slotted(#{textfield-variables.$vvd-input-selector}) {
+	@include typography.typography-cat-shorthand('body-2');
+
+	border: unset;
+	outline: unset;
+	background: unset;
+	color: var(#{scheme-variables.$vvd-color-on-base});
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	inset: 0;
+	block-size: 100%;
+	inline-size: 100%;
+	padding-inline-start: var(--padding-inline-start);
+	padding-inline-end: var(--padding-inline-end);
+	box-sizing: border-box !important;
+	border-radius: var(--border-radius);
+}
+
+:host([disabled]) {
+	::slotted(#{textfield-variables.$vvd-input-selector}),
+	::slotted(#{textfield-variables.$vvd-input-selector})::placeholder {
+		color: var(#{color-semantic.$formfield-disabled-ink});
+	}
+}
+
+::slotted(#{textfield-variables.$vvd-input-selector}:-webkit-autofill),
+::slotted(#{textfield-variables.$vvd-input-selector}:-webkit-autofill:hover),
+::slotted(#{textfield-variables.$vvd-input-selector}:-webkit-autofill:focus) {
+	z-index: -1;
+	-webkit-text-fill-color: var(#{scheme-variables.$vvd-color-on-base});
+	box-shadow: 0 0 0 30px var(#{scheme-variables.$vvd-color-contrast-faint}) inset;
+}
+
+:host(:not([dense])) {
+	::slotted(#{textfield-variables.$vvd-input-selector}) {
+		padding-block-start: calc(
+			var(#{textfield-variables.$vvd-text-field-size-block}) - 32px
+		);
+		transition: opacity 100ms;
+	}
+
+	::slotted(#{textfield-variables.$vvd-input-selector}:placeholder-shown:not(:focus)) {
+		opacity: 0;
+	}
+}
