@@ -21,7 +21,7 @@ function debounce(
 		clearTimeout(timeoutId);
 		// eslint-disable-next-line @typescript-eslint/no-this-alias
 		const context = this;
-		timeoutId = globalThis.setTimeout(() => callback.apply(context, args), waitInMS);
+		timeoutId = window.setTimeout(() => callback.apply(context, args), waitInMS);
 	};
 }
 
