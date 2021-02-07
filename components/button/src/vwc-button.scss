@@ -71,7 +71,7 @@
 
 	/* stylelint-disable-next-line order/order -- variants */
 	@include size(dense, 4);
-	@include size(dense, 6) {
+	@include size(enlarged, 6) {
 		$gutter: 10px;
 		> .trailing-icon {
 			.vvd-icon {
