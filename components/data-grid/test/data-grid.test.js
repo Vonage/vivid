@@ -1,25 +1,10 @@
-import '@vonage/vwc-data-grid';
-import {
-	isolatedElementsCreation,
-	textToDomToParent,
-	waitInterval,
-	waitNextTask,
-} from '../../../test/test-helpers';
-import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
+import '@vonage/vwc-data-grid/index';
+import { waitNextTask } from '../../../test/test-helpers';
 import { html } from 'lit-element';
-import { render } from 'lit-html';
-
-chai.use(chaiDomDiff);
+import { renderGridElement } from './helpers';
 
 describe('vwc-data-grid', () => {
-	const renderGridElement = (gridHtml) => {
-		const [container] = addElement(textToDomToParent('<div></div>'));
-		render(gridHtml, container);
-		return container.querySelector('vwc-data-grid');
-	};
-	const addElement = isolatedElementsCreation();
 	const gridOptions = {
-		onGridReady: (x) => console.log('Grid Ready', x),
 		columnDefs: [
 			{ headerName: 'Maker', field: 'maker', sortable: true },
 			{ headerName: 'Model', field: 'model' },
@@ -44,6 +29,15 @@ describe('vwc-data-grid', () => {
 		);
 	});
 
+	it('vwc-data-grid-column is defined as a custom element', async () => {
+		assert.exists(
+			customElements.get(
+				'vwc-data-grid-column',
+				'vwc-data-grid-column element is not defined'
+			)
+		);
+	});
+
 	it('validates "options" property could not be set AFTER element initialization', async () => {
 		const gridElement = renderGridElement(html`<vwc-data-grid></vwc-data-grid>`);
 		await waitNextTask();
@@ -60,6 +54,16 @@ describe('vwc-data-grid', () => {
 		};
 		const gridElement = renderGridElement(
 			html`<vwc-data-grid .options=${options}></vwc-data-grid>`
+		);
+		await waitNextTask();
+	});
+
+	it('columns definitions can be given as a child vwc-data-grid-column elements', async () => {
+		const gridElement = renderGridElement(
+			html`<vwc-data-grid>
+				<vwc-data-grid-column headerName="A"></vwc-data-grid-column>
+				<vwc-data-grid-column headerName="B"></vwc-data-grid-column>
+			</vwc-data-grid>`
 		);
 		await waitNextTask();
 	});

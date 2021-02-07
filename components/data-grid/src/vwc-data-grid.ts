@@ -20,24 +20,15 @@ import {
 	GridApi,
 	ColumnApi,
 	GridCore,
+	ColDef,
 } from '@ag-grid-community/all-modules';
+import { emitCustomEventFactory, hypenateAndLowercase } from './utils';
 
 declare global {
 	interface HTMLElementTagNameMap {
 		'vwc-data-grid': VWCDataGrid;
 	}
 }
-
-const emitCustomEventFactory = (target: HTMLElement) => (
-		eventType: string,
-		detail: unknown,
-		options = { bubbles: true, composed: true }
-	) => {
-		const event = new CustomEvent(eventType, { ...options, detail });
-		target.dispatchEvent(event);
-	},
-	hypenateAndLowercase = (input: string): string =>
-		input.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 
 /**
  * `vwc-data-grid` component is designated to render Rich/Responsive/Data tables/grids
@@ -97,6 +88,7 @@ export class VWCDataGrid extends LitElement {
 
 	#initialized = false;
 	#defaultPopupParentSet = false;
+	#inlineColumnDefinitions: ColDef[] = [];
 	#gridOptions = <GridOptions>{
 		headerHeight: VWCDataGrid.DEFAULT_ROW_HEIGHT,
 		rowHeight: VWCDataGrid.DEFAULT_ROW_HEIGHT,
@@ -131,6 +123,7 @@ export class VWCDataGrid extends LitElement {
 	protected updated(changedProperties: PropertyValues): void {
 		super.updated(changedProperties);
 
+		this.fetchChildColumnDefinitions();
 		this.createGrid();
 
 		for (const key of changedProperties.keys()) {
@@ -154,6 +147,21 @@ export class VWCDataGrid extends LitElement {
 		this.renderRoot.appendChild(style);
 	}
 
+	protected fetchChildColumnDefinitions(): void {
+		if (this.#initialized) {
+			return;
+		}
+		const childColumnDefinitions = Array.from(
+			this.querySelectorAll('vwc-data-grid-column')
+		);
+		childColumnDefinitions.forEach((columnElement) =>
+			this.removeChild(columnElement)
+		);
+		this.#inlineColumnDefinitions = childColumnDefinitions.map((x) =>
+			x.toColDef()
+		);
+	}
+
 	protected createGrid(): void {
 		if (this.#initialized) {
 			return;
@@ -170,6 +178,17 @@ export class VWCDataGrid extends LitElement {
 			this.#gridOptions,
 			this.#attributes
 		);
+
+		// blend-in inline column definitions
+		if (this.#inlineColumnDefinitions.length > 0) {
+			if (!this.#gridOptions.columnDefs) {
+				this.#gridOptions.columnDefs = [];
+			}
+			this.#gridOptions.columnDefs = [
+				...this.#gridOptions.columnDefs,
+				...this.#inlineColumnDefinitions,
+			];
+		}
 
 		const gridParams = <GridParams>{
 			globalEventListener: this.globalEventListener.bind(this),

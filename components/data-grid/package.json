@@ -4,8 +4,8 @@
 	"description": "Data Grid component, based on The Best JavaScript Grid in the World = Ag-Grid.com",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/data-grid#readme",
 	"license": "ISC",
-	"main": "vwc-data-grid.js",
-	"module": "vwc-data-grid.js",
+	"main": "index.js",
+	"module": "index.js",
 	"files": [
 		"*.js",
 		"*.ts",
