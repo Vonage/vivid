@@ -27,7 +27,7 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 	@include typography.typography-cat-shorthand('body-2');
 }
 
-:host([graphic="icon"]:not([twoline])) {
+:host([graphic='icon']:not([twoline])) {
 	height: var(#{$vvd-list-item-block-size}); // override mwc fixed height
 }
 
@@ -42,8 +42,7 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 	&::after {
 		content: '';
 		height: 1px;
-		border-bottom: 1px solid
-			var(#{scheme-variables.$vvd-color-contrast-soft});
+		border-bottom: 1px solid var(#{scheme-variables.$vvd-color-contrast-soft});
 		position: absolute;
 		bottom: 0;
 		left: var(#{$vvd-list-item-side-padding});
@@ -95,7 +94,7 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 
 @include shape-mixins.shape(
 	$shapes: (
-		rounded: 6px
+		rounded: 6px,
 	),
 	$default: ''
 );

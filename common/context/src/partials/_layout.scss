@@ -46,7 +46,7 @@ body {
 
 $container: vvd-container;
 [class*='#{$container}'i] {
-	background: beige;
+	background: #f5f5dc;
 	margin: 0 auto;
 	max-inline-size: calc(100% - 20px);
 	inline-size: var(--basis, 100%);

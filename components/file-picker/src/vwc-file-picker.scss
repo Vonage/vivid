@@ -31,7 +31,7 @@
 	position: relative;
 	flex-basis: 100px;
 	justify-content: center;
-	border: 1px dashed #cccccc;
+	border: 1px dashed #ccc;
 	border-radius: 6px;
 	box-sizing: border-box;
 	background-color: var(#{scheme-variables.$vvd-color-base});
@@ -78,7 +78,7 @@
 
 	.content {
 		flex-basis: initial;
-		border: none;
+		border: 0 none;
 	}
 
 	.part > [name='dd-hint']::slotted(*) {
