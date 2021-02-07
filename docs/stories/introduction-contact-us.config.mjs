@@ -1,6 +1,6 @@
 import {
 	hrefLinkProcessing,
-	relocateStaticResources
+	relocateStaticResources,
 } from '../../.storybook/build-scripts/create-stories-from-md.mjs';
 
 export default {
@@ -12,14 +12,23 @@ export default {
 		parameters: {
 			options: {
 				showPanel: false,
-				isToolshown: false
-			}
-		}
+				isToolshown: false,
+			},
+		},
 	},
-	htmlPostProcess: htmlText => {
-		let result = relocateStaticResources(htmlText, ['assets/images/contact-us.svg', 'assets/images/logo-slack.svg', 'assets/images/logo-github.svg', 'assets/images/logo-workplace.svg'], 'docs');
+	htmlPostProcess: (htmlText) => {
+		let result = relocateStaticResources(
+			htmlText,
+			[
+				'assets/images/contact-us.svg',
+				'assets/images/logo-slack.svg',
+				'assets/images/logo-github.svg',
+				'assets/images/logo-workplace.svg',
+			],
+			'docs'
+		);
 		result = hrefLinkProcessing(result, [
-			['href="../readme.md"', '?path=/story/introduction-meet-vivid--meet-vivid']
+			['href="../readme.md"', '?path=/story/introduction-meet-vivid--meet-vivid'],
 		]);
 		result += `
 			<style>
@@ -30,5 +39,5 @@ export default {
 			</style>
 		`;
 		return result;
-	}
+	},
 };

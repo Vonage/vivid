@@ -1,6 +1,4 @@
-import {
-	hrefLinkProcessing
-} from '../../../.storybook/build-scripts/create-stories-from-md.mjs';
+import { hrefLinkProcessing } from '../../../.storybook/build-scripts/create-stories-from-md.mjs';
 
 export default {
 	sourcePath: '../../volta-to-vivid.md',
@@ -11,14 +9,17 @@ export default {
 		parameters: {
 			options: {
 				showPanel: false,
-				isToolshown: false
-			}
-		}
+				isToolshown: false,
+			},
+		},
 	},
-	htmlPostProcess: htmlText => {
+	htmlPostProcess: (htmlText) => {
 		return hrefLinkProcessing(htmlText, [
 			['href="../readme.md"', '?path=/story/introduction-meet-vivid--meet-vivid'],
-			['href="./architecture.md"', '?path=/story/introduction-architecture--architecture']
+			[
+				'href="./architecture.md"',
+				'?path=/story/introduction-architecture--architecture',
+			],
 		]);
-	}
+	},
 };
