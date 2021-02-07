@@ -43,7 +43,8 @@ vwc-casousel:active {
 	contain: strict;
 }
 
-$theme-color: var(#{scheme-variables.$vvd-color-on-base}) !default;
+/* stylelint-disable-next-line scss/dollar-variable-pattern -- (used in swiper lib) */
+$themeColor: var(#{scheme-variables.$vvd-color-on-base}) !default;
 
 @import 'swiper/scss/functions';
 @import 'swiper/components/core/core';
