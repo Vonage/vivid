@@ -24,12 +24,14 @@
 	cursor: auto;
 	font-size: map-get(variables.$font-size, default);
 
-	vwc-icon.leading {
+	// vwc-icon
+	.leading {
 		margin: 0 5px 0 0;
 		vertical-align: middle;
 	}
 
-	vwc-icon.trailing {
+	// vwc-icon
+	.trailing {
 		margin-top: -1px;
 	}
 

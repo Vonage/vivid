@@ -43,7 +43,7 @@ vwc-casousel:active {
 	contain: strict;
 }
 
-$themeColor: var(#{scheme-variables.$vvd-color-on-base}) !default;
+$theme-color: var(#{scheme-variables.$vvd-color-on-base}) !default;
 
 @import 'swiper/scss/functions';
 @import 'swiper/components/core/core';

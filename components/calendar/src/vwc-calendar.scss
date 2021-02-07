@@ -21,7 +21,7 @@ $total-columns: 7;
 	grid-template-columns: min-content auto;
 }
 
-ol.time {
+.time {
 	display: grid;
 	grid-area: time;
 	grid-template-rows: repeat($total-rows, 1fr);
@@ -40,7 +40,7 @@ ol.time {
 	}
 }
 
-ol.headline {
+.headline {
 	display: grid;
 	grid-area: headline;
 	grid-template-columns: repeat($total-columns, 1fr);
@@ -50,7 +50,7 @@ ol.headline {
 	}
 }
 
-ol.calendar {
+.calendar {
 	$sum: $total-rows * $total-columns;
 	$next: 1;
 	display: grid;
