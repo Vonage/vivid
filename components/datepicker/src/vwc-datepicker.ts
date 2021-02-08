@@ -154,10 +154,12 @@ export class VWCDatepicker extends LitFlatpickr {
 			this.updateCurrentMonth();
 			this.updateCurrentYear();
 
-			currentMonthContainer.onclick = () =>
+			currentMonthContainer.onclick = () => {
 				this._instance?.calendarContainer.classList.toggle(
 					'vvd-datepicker-month-view'
 				);
+				this.highlightMonth();
+			};
 
 			prevMonth.addEventListener('mousedown', (e: InputEvent) =>
 				this.navigateMonths(e, -1)
@@ -178,9 +180,18 @@ export class VWCDatepicker extends LitFlatpickr {
 	private navigateMonths(e: InputEvent, delta: number): void {
 		e.preventDefault();
 		e.stopPropagation();
+
 		this._instance?.changeMonth(delta);
 		this.updateCurrentMonth();
 		this.updateCurrentYear();
+
+		if (
+			this._instance?.calendarContainer.classList.contains(
+				'vvd-datepicker-month-view'
+			)
+		) {
+			this.highlightMonth();
+		}
 	}
 
 	private updateCurrentMonth(): void {
@@ -286,6 +297,39 @@ export class VWCDatepicker extends LitFlatpickr {
 		this._instance?.changeMonth(selectedMonth - this._instance.currentMonth);
 		this.updateCurrentMonth();
 		this.updateCurrentYear();
+	}
+
+	private highlightMonth(): void {
+		const months = this._instance?.calendarContainer.querySelectorAll(
+			'[data-month]'
+		);
+		const startDate = this._instance?.selectedDates[0];
+		const endDate = this._instance?.selectedDates[1];
+		const currentYear = this._instance?.currentYear;
+
+		// clear previous selected class
+		const selected = this._instance?.calendarContainer.querySelectorAll(
+			'.vvd-datepicker-months .vvd-selected'
+		);
+		selected?.forEach((element: Element) => {
+			element.classList.remove('vvd-selected');
+		});
+
+		if (startDate) {
+			if (startDate.getFullYear() == currentYear) {
+				months?.[startDate.getMonth()].classList.add('vvd-selected');
+			} else {
+				months?.[startDate.getMonth()].classList.remove('vvd-selected');
+			}
+		}
+
+		if (endDate) {
+			if (endDate.getFullYear() == currentYear) {
+				months?.[endDate.getMonth()].classList.add('vvd-selected');
+			} else {
+				months?.[endDate.getMonth()].classList.remove('vvd-selected');
+			}
+		}
 	}
 
 	// copied from lit-flatpickr
