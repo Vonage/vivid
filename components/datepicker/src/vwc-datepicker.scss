@@ -5,13 +5,13 @@
 // flatpickr overrides
 //--------------------
 .flatpickr-calendar.vvd-datepicker {
-	background: var(#{scheme-variables.$vvd-color-base});
-	border: 1px solid var(#{scheme-variables.$vvd-color-contrast-faint});
-	border-radius: 6px;
-	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+	@include typography.typography-cat-shorthand('body-2');
 	overflow: hidden;
 	width: 320px;
-	@include typography.typography-cat-shorthand('body-2');
+	border: 1px solid var(#{scheme-variables.$vvd-color-contrast-faint});
+	background: var(#{scheme-variables.$vvd-color-base});
+	border-radius: 6px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 
 	&:not(.noCalendar) {
 		padding: 24px 0 16px;
@@ -27,16 +27,16 @@
 		&-days,
 		&-days .dayContainer,
 		&-dayContainer {
-			border: none;
-			min-width: 286px;
 			width: 286px;
+			min-width: 286px;
+			border: 0;
 		}
 
 		&-weekdays {
-			background: none;
-			border-bottom: 1px solid var(#{scheme-variables.$vvd-color-contrast-faint});
 			height: 20px;
+			border-bottom: 1px solid var(#{scheme-variables.$vvd-color-contrast-faint});
 			margin-bottom: 8px;
+			background: none;
 			text-transform: uppercase;
 		}
 
@@ -48,22 +48,22 @@
 		}
 
 		&-day {
-			border: 0;
-			color: var(#{scheme-variables.$vvd-color-on-base});
 			height: 30px;
-			line-height: 30px;
+			border: 0;
 			margin-top: 4px;
+			color: var(#{scheme-variables.$vvd-color-on-base});
+			line-height: 30px;
 
 			&::before {
+				position: absolute;
+				z-index: -1;
+				left: 50%;
+				width: 30px;
+				height: 30px;
+				margin-left: -15px;
 				background-color: transparent;
 				border-radius: 50%;
 				content: '';
-				height: 30px;
-				left: 50%;
-				margin-left: -15px;
-				position: absolute;
-				width: 30px;
-				z-index: -1;
 			}
 
 			&:nth-child(7n) {
@@ -90,8 +90,8 @@
 			}
 
 			&.today::before {
-				border: 1px solid var(#{scheme-variables.$vvd-color-primary});
 				box-sizing: border-box;
+				border: 1px solid var(#{scheme-variables.$vvd-color-primary});
 			}
 
 			&.prevMonthDay,
@@ -110,11 +110,11 @@
 			&.startRange,
 			&.endRange,
 			&.selected {
-				background: none;
+				position: relative;
 				border: 0;
+				background: none;
 				color: var(#{scheme-variables.$vvd-color-on-primary});
 				font-weight: 600;
-				position: relative;
 
 				&::before {
 					background-color: var(#{scheme-variables.$vvd-color-primary});
@@ -137,13 +137,13 @@
 			&.startRange + .inRange,
 			&.endRange {
 				&::after {
-					background-color: var(#{scheme-variables.$vvd-color-contrast-faint});
-					content: '';
-					height: 30px;
 					position: absolute;
+					z-index: -2;
 					right: 50%;
 					width: 100%;
-					z-index: -2;
+					height: 30px;
+					background-color: var(#{scheme-variables.$vvd-color-contrast-faint});
+					content: '';
 				}
 			}
 
@@ -157,8 +157,8 @@
 
 			&.inRange,
 			&.inRange.today {
-				background-color: var(#{scheme-variables.$vvd-color-contrast-faint});
 				border-color: var(#{scheme-variables.$vvd-color-contrast-faint});
+				background-color: var(#{scheme-variables.$vvd-color-contrast-faint});
 				box-shadow: -5px 0 0 var(#{scheme-variables.$vvd-color-contrast-faint}),
 					5px 0 0 var(#{scheme-variables.$vvd-color-contrast-faint});
 				font-weight: 600;
@@ -170,8 +170,8 @@
 		}
 
 		&-innerContainer {
-			border: none;
 			padding: 16px 16px 0;
+			border: 0;
 		}
 	}
 
@@ -186,15 +186,15 @@
 // custom header
 //--------------
 .vvd-datepicker-header {
-	align-items: center;
+	@include typography.typography-cat-shorthand('subtitle-2');
 	display: flex;
 	height: 32px;
+	align-items: center;
 	padding: 0 16px;
-	@include typography.typography-cat-shorthand('subtitle-2');
 
 	.vvd-month {
-		cursor: pointer;
 		margin-right: 8px;
+		cursor: pointer;
 
 		&:hover {
 			color: var(#{scheme-variables.$vvd-color-contrast-tinted});
@@ -214,24 +214,24 @@
 // custom range container
 //-----------------------
 .vvd-datepicker-range {
-	align-items: center;
-	background-color: var(#{scheme-variables.$vvd-color-announcement});
-	box-sizing: border-box;
-	color: var(#{scheme-variables.$vvd-color-on-announcement});
+	position: relative;
 	display: flex;
 	height: 56px;
+	box-sizing: border-box;
+	align-items: center;
 	justify-content: space-between;
-	margin-top: 16px;
 	padding: 0 16px;
-	position: relative;
+	margin-top: 16px;
+	background-color: var(#{scheme-variables.$vvd-color-announcement});
+	color: var(#{scheme-variables.$vvd-color-on-announcement});
 
 	&-start,
 	&-end {
 		@include typography.typography-cat-shorthand('body-1-bold');
 
 		&::before {
-			display: flex;
 			@include typography.typography-cat-shorthand('body-1');
+			display: flex;
 		}
 
 		&.vvd-selected {
@@ -255,16 +255,16 @@
 	}
 
 	&::after {
-		background-color: var(#{scheme-variables.$vvd-color-on-announcement});
-		content: '';
-		height: 38px;
-		left: 50%;
-		margin-left: -1px;
-		opacity: 0.5;
 		position: absolute;
 		top: 8px;
-		transform: rotate(36deg);
+		left: 50%;
 		width: 1px;
+		height: 38px;
+		margin-left: -1px;
+		background-color: var(#{scheme-variables.$vvd-color-on-announcement});
+		content: '';
+		opacity: 0.5;
+		transform: rotate(36deg);
 	}
 }
 
@@ -292,38 +292,38 @@
 }
 
 .vvd-datepicker-months {
-	background-color: var(#{scheme-variables.$vvd-color-base});
-	display: none;
-	padding: 40px 16px 0;
 	position: absolute;
 	top: 56px;
-	left: 0;
-	bottom: 0;
 	right: 0;
+	bottom: 0;
+	left: 0;
+	display: none;
+	padding: 40px 16px 0;
+	background-color: var(#{scheme-variables.$vvd-color-base});
 
 	.vvd-month {
-		cursor: pointer;
-		display: inline-block;
-		justify-content: center;
-		margin-bottom: 24px;
-		padding: 12px 0;
 		position: relative;
-		text-transform: uppercase;
-		width: 25%;
 		z-index: 1;
+		display: inline-block;
+		width: 25%;
+		justify-content: center;
+		padding: 12px 0;
+		margin-bottom: 24px;
+		cursor: pointer;
+		text-transform: uppercase;
 
 		&::after {
+			position: absolute;
+			z-index: -1;
+			top: -3px;
+			bottom: 0;
+			left: 50%;
+			width: 48px;
+			height: 48px;
 			background-color: transparent;
 			border-radius: 50%;
-			bottom: 0;
 			content: '';
-			height: 48px;
-			left: 50%;
-			position: absolute;
-			top: -3px;
 			transform: translateX(-50%);
-			width: 48px;
-			z-index: -1;
 		}
 
 		&:hover,
