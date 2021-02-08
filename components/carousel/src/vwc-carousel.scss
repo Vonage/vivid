@@ -1,21 +1,21 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 
 vwc-carousel {
+	display: inline-flex;
 	width: 300px;
 	height: 200px;
-	display: inline-flex;
 	flex-direction: column;
-	user-select: none;
 	outline: none;
+	user-select: none;
 }
 
 .upper-pane {
 	position: relative;
-	flex: 1;
 	display: flex;
+	overflow: hidden;
+	flex: 1;
 	flex-direction: row;
 	border-radius: 6px;
-	overflow: hidden;
 }
 
 vwc-carousel:focus-within,
@@ -26,9 +26,9 @@ vwc-casousel:active {
 }
 
 .lower-pane {
-	flex: 0 0 15px;
-	overflow: hidden;
 	display: flex;
+	overflow: hidden;
+	flex: 0 0 15px;
 	align-items: flex-end;
 	justify-content: center;
 }
@@ -38,11 +38,12 @@ vwc-casousel:active {
 }
 
 .swiper-slide {
-	contain: strict;
-	overflow: hidden;
 	display: flex;
+	overflow: hidden;
+	contain: strict;
 }
 
+/* stylelint-disable-next-line scss/dollar-variable-pattern -- (used in swiper lib) */
 $themeColor: var(#{scheme-variables.$vvd-color-on-base}) !default;
 
 @import 'swiper/scss/functions';

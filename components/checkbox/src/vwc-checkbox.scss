@@ -25,20 +25,20 @@
 	}
 
 	.mdc-checkbox__native-control {
-		left: 0;
 		top: 0;
+		left: 0;
 	}
 
 	.mdc-checkbox__background {
 		top: 0;
 		left: 0;
-		border-width: 2px;
-		border-radius: 3px;
-		transition-property: background-color, border-color !important;
-		transition-duration: 0.2s !important;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		border-width: 2px;
+		border-radius: 3px;
+		transition-duration: 0.2s !important;
+		transition-property: background-color, border-color !important;
 	}
 
 	.mdc-checkbox__checkmark {

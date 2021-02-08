@@ -14,27 +14,28 @@
 $vvd-badge-block-size: --vvd-badge-block-size;
 
 :host {
-	display: inline-flex;
-	align-items: center;
 	#{$vvd-badge-block-size}: 24px;
-	height: var(#{$vvd-badge-block-size});
-	block-size: var(#{$vvd-badge-block-size});
-	padding: 0 10px;
-	position: relative;
-	color: var(--color);
 	@include typography.typography-cat-shorthand('caption-bold');
+	position: relative;
+	display: inline-flex;
+	height: var(#{$vvd-badge-block-size});
+	align-items: center;
+	padding: 0 10px;
+	block-size: var(#{$vvd-badge-block-size});
+	color: var(--color);
 
 	&::before {
-		content: '';
-		z-index: -1;
 		position: absolute;
+		z-index: -1;
 		top: 0;
 		right: 0;
 		bottom: 0;
 		left: 0;
+		border: var(--border);
 		background-color: var(--background-color);
 		border-radius: var(--border-radius);
-		border: var(--border);
+		content: '';
+		inset: 0;
 		opacity: calc(var(--opaque) * 0.01);
 	}
 }

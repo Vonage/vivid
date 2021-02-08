@@ -6,6 +6,17 @@
 );
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins';
 
+@mixin size($type, $unit) {
+	:host([#{$type}]) & {
+		height: $unit * 8px;
+
+		.vvd-icon {
+			--icon-size: #{$unit * 4px};
+		}
+		@content;
+	}
+}
+
 :host {
 	--mdc-button-disabled-ink-color: var(
 		#{color-semantic.$formfield-disabled-ink}
@@ -30,10 +41,11 @@
 }
 /////////////////////////////////////////////////////////////////////////////
 .mdc-button {
+	$gutter: 8px;
+	height: 40px;
 	border-radius: var(--border-radius);
 	// ! this was supposed to be set by MDC
 	font-stretch: var(--mdc-typography-button-font-stretch);
-	height: 40px;
 	letter-spacing: normal;
 
 	&:not(.mdc-button--dense) {
@@ -45,54 +57,42 @@
 	.vvd-icon {
 		vertical-align: sub;
 	}
-
-	> span.trailing-icon {
+	> .trailing-icon {
 		.vvd-icon {
-			margin-inline-start: 8px;
+			margin-inline-start: $gutter;
 		}
 	}
 
-	> span.leading-icon {
+	> .leading-icon {
 		.vvd-icon {
-			margin-inline-end: 8px;
+			margin-inline-end: $gutter;
+		}
+	}
+
+	/* stylelint-disable-next-line order/order -- variants */
+	@include size(dense, 4);
+	@include size(enlarged, 6) {
+		$gutter: 10px;
+		> .trailing-icon {
+			.vvd-icon {
+				margin-inline-start: $gutter;
+			}
+		}
+
+		> .leading-icon {
+			.vvd-icon {
+				margin-inline-end: $gutter;
+			}
 		}
 	}
 }
 
 :host([dense]) {
 	--mdc-button-horizontal-padding: 12px;
-
-	.mdc-button {
-		height: 32px;
-
-		.vvd-icon {
-			--icon-size: 16px;
-		}
-	}
 }
 
 :host([enlarged]) {
 	--mdc-button-horizontal-padding: 24px;
-
-	.mdc-button {
-		height: 48px;
-
-		.vvd-icon {
-			--icon-size: 24px;
-		}
-
-		> span.trailing-icon {
-			.vvd-icon {
-				margin-inline-start: 10px;
-			}
-		}
-
-		> span.leading-icon {
-			.vvd-icon {
-				margin-inline-end: 10px;
-			}
-		}
-	}
 }
 
 @include shape-mixins.shape(
