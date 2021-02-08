@@ -1,16 +1,43 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 
+@media screen and (prefers-reduced-motion: reduce) {
+	.swiper-pagination-bullet {
+		display: inline-block;
+		width: 24px;
+		height: 3px;
+		margin: 0 3px;
+		background-color: var(#{scheme-variables.$vvd-color-contrast-neutral});
+		border-radius: 0;
+		cursor: pointer;
+		font-size: 0;
+		outline: none;
+		transition: none;
+
+		@media (prefers-reduced-motion: no-preference) {
+			transition: transform 0.1s;
+		}
+
+		&-active {
+			background-color: var(#{scheme-variables.$vvd-color-on-base});
+		}
+	}
+}
+
 .swiper-pagination-bullet {
 	display: inline-block;
 	width: 24px;
 	height: 3px;
-	outline: none;
 	margin: 0 3px;
-	border-radius: 0;
-	font-size: 0;
 	background-color: var(#{scheme-variables.$vvd-color-contrast-neutral});
-	transition: transform 0.1s;
+	border-radius: 0;
 	cursor: pointer;
+	font-size: 0;
+	outline: none;
+	transition: transform 0.1s;
+
+	@media (prefers-reduced-motion: no-preference) {
+		transition: transform 0.1s;
+	}
 
 	&-active {
 		background-color: var(#{scheme-variables.$vvd-color-on-base});
