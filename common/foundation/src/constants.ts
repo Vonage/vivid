@@ -30,3 +30,9 @@ export enum Layout {
 	Soft = 'soft',
 	Ghost = 'ghost',
 }
+
+export enum IconSize {
+	Small = 'small',
+	Medium = 'medium',
+	Large = 'large',
+}

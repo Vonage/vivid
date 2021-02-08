@@ -27,9 +27,9 @@ body {
 	}
 
 	blockquote {
-		margin-left: 0;
-		margin-right: 0;
 		padding: 20px 22px;
+		margin-right: 0;
+		margin-left: 0;
 		border-radius: 6px;
 
 		> :first-child {
@@ -46,10 +46,10 @@ body {
 
 $container: vvd-container;
 [class*='#{$container}'i] {
-	background: beige;
 	margin: 0 auto;
-	max-inline-size: calc(100% - 20px);
+	background: #f5f5dc;
 	inline-size: var(--basis, 100%);
+	max-inline-size: calc(100% - 20px);
 	&:not(.#{$container}-fluid) {
 		--basis: 80rem;
 		&.#{$container}-condense {

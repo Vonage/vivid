@@ -15,17 +15,17 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-@import '@material/chips/chip/mdc-chip.scss';
-@import '@material/mwc-icon/_mwc-icon.scss';
+@import '@material/chips/chip/mdc-chip';
+@import '@material/mwc-icon/mwc-icon';
 
 @include mdc-ripple-common(mdc-feature-all());
 
 :host {
-  /* See mwc-icon-button.scss for explanation. */
-  display: inline-flex;
-  vertical-align: top;
+	/* See mwc-icon-button.scss for explanation. */
+	display: inline-flex;
+	vertical-align: top;
 }
 
 .material-icons {
-  @extend %material-icons;
+	@extend %material-icons;
 }

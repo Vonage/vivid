@@ -1,10 +1,10 @@
-# `vwc-select`
+### `vwc-select`
 
 `vwc-select` is a drop-down kind of input element.
 
 > This component is an extension of [\<mwc-select\>](https://github.com/material-components/material-components-web-components/tree/master/packages/select).
 
-# Usage
+### Usage
 
 Import the component in your context, to get it initialized:
 ```js
@@ -34,11 +34,11 @@ Few points to pay attention to, in order to get the expected result:
 * Items MUST HAVE an attribute value with an actual values that you'd like to use in your applicative logic (except the empty choice);
 the text/content within the items is for **labeling** purposes only, should be considered as not logically reliable (think of localization down the road, or some rich HTML)
 
-# API
+### API
 
 `vwc-select` exposes the following properties, methods and events:
 
-## Properties
+#### Properties
 
 | Property                  | Modifiers | Type                                             | Description                                      |
 |---------------------------|-----------|--------------------------------------------------|--------------------------------------------------|
@@ -56,7 +56,7 @@ the text/content within the items is for **labeling** purposes only, should be c
 | `validationMessage`       |           | `string`                                         |                                                  |
 | `value`                   |           | `string`                                         |                                                  |
 
-## Methods
+#### Methods
 
 | Method              | Type                                             |
 |---------------------|--------------------------------------------------|
@@ -70,7 +70,7 @@ the text/content within the items is for **labeling** purposes only, should be c
 | `setAriaLabel`      | `(label: string): void`                          |
 | `setCustomValidity` | `(message: string): void`                        |
 
-## Events
+#### Events
 
 | Event      | Description      |
 |------------|------------------|

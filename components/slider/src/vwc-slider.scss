@@ -1,17 +1,17 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 
 :host {
-  @include typography.typography-mdc-coupling('body2', 'caption-bold');
+	@include typography.typography-mdc-coupling('body2', 'caption-bold');
 	font-stretch: var(--mdc-typography-body2-font-stretch);
 
 	.mdc-slider__pin-value-marker {
+		display: flex;
 		width: 100%;
 		height: 100%;
-		border-radius: 3px;
-		display: flex;
 		align-items: center;
 		justify-content: center;
 		background-color: var(--mdc-theme-secondary);
+		border-radius: 3px;
 	}
 
 	.mdc-slider__thumb {
@@ -24,8 +24,8 @@
 	.mdc-slider--focus,
 	.mdc-slider__thumb-container:hover {
 		.mdc-slider__focus-ring {
-			transform: scale3d(1.55, 1.55, 1.55);
 			opacity: 0.12;
+			transform: scale3d(1.55, 1.55, 1.55);
 		}
 
 		.mdc-slider__pin {
@@ -35,8 +35,8 @@
 
 	.mdc-slider--active {
 		.mdc-slider__thumb-container:hover .mdc-slider__focus-ring {
-			transform: scale3d(1.8, 1.8, 1.8);
 			opacity: 0.25;
+			transform: scale3d(1.8, 1.8, 1.8);
 		}
 	}
 }

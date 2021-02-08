@@ -2,9 +2,9 @@
 @use '@vonage/vvd-typography/scss/typography';
 
 ol {
-	list-style: none;
-	margin: 0;
 	padding: 0;
+	margin: 0;
+	list-style: none;
 }
 
 $fraction: 4;
@@ -12,18 +12,18 @@ $total-rows: 15;
 $total-columns: 7;
 
 .container {
+	display: grid;
 	width: max(100%, 500px);
 	margin: auto;
-	display: grid;
-	grid-template-columns: min-content auto;
 	grid-template-areas:
 		'. headline'
 		'time calendar';
+	grid-template-columns: min-content auto;
 }
 
-ol.time {
-	grid-area: time;
+.time {
 	display: grid;
+	grid-area: time;
 	grid-template-rows: repeat($total-rows, 1fr);
 	margin-inline-end: 15px;
 	> li {
@@ -31,18 +31,18 @@ ol.time {
 		align-items: flex-end;
 		justify-content: flex-end;
 		> time {
-			line-height: 1;
-			font-size: small;
-			white-space: nowrap;
 			@include typography.typography-cat-shorthand('caption');
+			font-size: small;
+			line-height: 1;
 			text-transform: uppercase;
+			white-space: nowrap;
 		}
 	}
 }
 
-ol.headline {
-	grid-area: headline;
+.headline {
 	display: grid;
+	grid-area: headline;
 	grid-template-columns: repeat($total-columns, 1fr);
 	> li > time {
 		@include typography.typography-cat-shorthand('caption');
@@ -50,24 +50,26 @@ ol.headline {
 	}
 }
 
-ol.calendar {
-	grid-area: calendar;
+.calendar {
+	$sum: $total-rows * $total-columns;
+	$next: 1;
 	display: grid;
+	overflow: hidden;
+	background-color: var(#{scheme-variables.$vvd-color-contrast-faint});
+	border-radius: 3.64752px;
+	box-shadow: 0 0 3.64752px rgba(0, 0, 0, 0.15);
 	gap: 1px;
+	grid-area: calendar;
+	grid-auto-flow: column;
 	grid-template: repeat($total-rows * $fraction, 1fr) / repeat(
 			$total-columns,
 			1fr
 		);
-	grid-auto-flow: column;
-	background-color: var(#{scheme-variables.$vvd-color-contrast-faint});
-	box-shadow: 0px 0 3.64752px rgba(0, 0, 0, 0.15);
-	border-radius: 3.64752px;
-	overflow: hidden;
 	> li {
 		height: 35px;
+		background-color: var(#{scheme-variables.$vvd-color-base});
 		grid-column: var(--column);
 		grid-row: var(--row);
-		background-color: var(#{scheme-variables.$vvd-color-base});
 	}
 
 	@for $i from 1 through $total-rows {
@@ -76,24 +78,22 @@ ol.calendar {
 			--row: #{$current-row} / span #{$fraction};
 		}
 	}
-
-	$sum: $total-rows * $total-columns;
-	$next: 1;
 	@for $i from 1 through $total-columns {
 		$sum: $sum - $total-rows + 1;
 		li:nth-child(1n + #{$next}):nth-last-child(1n + #{$sum}) {
 			--column: #{$i};
 		}
+		/* stylelint-disable-next-line order/order */
 		$next: $next + $total-rows;
 	}
 }
 
 .task {
-	grid-column: var(--column);
-	grid-row: var(--row);
-	background-color: var(--color);
-	border-radius: 3.64752px;
 	// width: 90%;
 	--indent: calc(var(--overlap-count, 0) * 8px);
 	margin: 1px 1px 1px calc(1px + var(--indent));
+	background-color: var(--color);
+	border-radius: 3.64752px;
+	grid-column: var(--column);
+	grid-row: var(--row);
 }

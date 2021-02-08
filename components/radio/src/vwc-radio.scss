@@ -31,8 +31,8 @@
 	&,
 	.mdc-radio__native-control,
 	.mdc-radio__background {
-		height: 22px;
 		width: 22px;
+		height: 22px;
 	}
 }
 
@@ -44,6 +44,6 @@
 	border-width: 11px;
 }
 
-.mdc-radio__background:before  {
+.mdc-radio__background::before {
 	display: none;
 }

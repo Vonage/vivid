@@ -82,8 +82,8 @@
 
 	.mdc-text-field {
 		.mdc-floating-label {
-			left: -12px;
 			top: -25px;
+			left: -12px;
 			transform: none;
 		}
 
@@ -98,16 +98,16 @@
 }
 
 .mdc-text-field {
+	height: var(#{textfield-variables.$vvd-text-field-size-block});
+	border-bottom-left-radius: var(--mdc-shape-small);
 	// prevent fill overflowing bottom corners
 	border-bottom-right-radius: var(--mdc-shape-small);
-	border-bottom-left-radius: var(--mdc-shape-small);
-	height: var(#{textfield-variables.$vvd-text-field-size-block});
 
 	.mdc-floating-label {
+		left: 14px;
 		font-stretch: var(
 			--mdc-typography-subtitle1-font-stretch
 		); // ! this was supposed to be set by MDC
-		left: 14px;
 		line-height: var(--mdc-typography-subtitle1-line-height);
 		transition-property: transform, font-size;
 	}
@@ -130,16 +130,21 @@
 	}
 
 	&--invalid {
+		--vvd-outline-color: var(--mdc-text-field-error-color);
+
 		&.mdc-text-field--outlined {
+			background-color: var(--mdc-text-field-error-fill-color);
 			vwc-notched-outline {
 				--mdc-notched-outline-border-color: var(--mdc-text-field-error-color);
 			}
 
-			background-color: var(--mdc-text-field-error-fill-color);
-
 			.mdc-floating-label {
 				color: var(--mdc-text-field-error-color);
 			}
+		}
+
+		.mdc-text-field__icon--trailing {
+			color: var(--mdc-text-field-label-ink-color);
 		}
 	}
 
@@ -159,14 +164,6 @@
 		}
 	}
 
-	&--invalid {
-		--vvd-outline-color: var(--mdc-text-field-error-color);
-
-		.mdc-text-field__icon--trailing {
-			color: var(--mdc-text-field-label-ink-color);
-		}
-	}
-
 	&--disabled {
 		.mdc-text-field__icon--leading,
 		.mdc-text-field__icon--trailing {
@@ -175,11 +172,10 @@
 	}
 
 	vwc-icon {
+		--icon-size: #{textfield-variables.$icon-size};
 		align-self: center;
 		padding: 0;
 		margin: 0 #{textfield-variables.$horizontal-gutter};
-		min-block-size: textfield-variables.$icon-size;
-		min-inline-size: textfield-variables.$icon-size;
 	}
 }
 
@@ -218,7 +214,10 @@ vwc-notched-outline {
 		#{textfield-variables.$horizontal-gutter},
 		calc(var(--mdc-shape-small, 4px) + 4px)
 	);
-	--padding-inline-end: max(#{textfield-variables.$horizontal-gutter}, var(--mdc-shape-small, 4px));
+	--padding-inline-end: max(
+		#{textfield-variables.$horizontal-gutter},
+		var(--mdc-shape-small, 4px)
+	);
 }
 
 :host(:not([disabled])[icon]) {
