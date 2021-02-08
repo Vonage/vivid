@@ -1,10 +1,10 @@
 import '../vwc-switch.js';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	waitNextTask,
 	textToDomToParent,
 	assertComputedStyle,
 } from '../../../test/test-helpers.js';
-import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
 

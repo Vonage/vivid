@@ -2,20 +2,20 @@ import '../vwc-media-controller';
 import kefir from 'kefir';
 import { textToDomToParent } from '../../../test/test-helpers';
 
-const CENTER_Y = 8,
-	TRACK_X = 37,
-	TRACK_X_MARGIN = 5,
-	BUTTON_X = 6,
-	PERCENTAGE_TOLERANCE = 2,
-	RESPONSE_TIMEOUT = 100; //ms
+const CENTER_Y = 8;
+	const TRACK_X = 37;
+	const TRACK_X_MARGIN = 5;
+	const BUTTON_X = 6;
+	const PERCENTAGE_TOLERANCE = 2;
+	const RESPONSE_TIMEOUT = 100; // ms
 
-const setStyle = (el, style = {}) => {
+const setStyle = (el, style = {}) => 
 	// eslint-disable-next-line
-	return Object.entries(style).reduce((el, [k, v]) => {
+	 Object.entries(style).reduce((el, [k, v]) => {
 		el.style[k] = v;
 		return el;
-	}, el);
-};
+	}, el)
+;
 
 const simulateMouseFactory = ({ x: baseX = 0, y: baseY = 0 }) => {
 	let findTarget = (root = document, x, y) => {
@@ -28,8 +28,8 @@ const simulateMouseFactory = ({ x: baseX = 0, y: baseY = 0 }) => {
 	};
 
 	return (x, y, eventType, options = { bubbles: true, composed: true }) => {
-		let targetX = baseX + x,
-			targetY = baseY + y;
+		let targetX = baseX + x;
+			let targetY = baseY + y;
 
 		findTarget(document, targetX, targetY).dispatchEvent(
 			new MouseEvent(eventType, {
@@ -41,9 +41,9 @@ const simulateMouseFactory = ({ x: baseX = 0, y: baseY = 0 }) => {
 	};
 };
 
-describe('vwc-media-controller', function () {
-	describe('Custom Component', function () {
-		it('Should register as a custom element', function () {
+describe('vwc-media-controller', () => {
+	describe('Custom Component', () => {
+		it('Should register as a custom element', () => {
 			assert.exists(
 				customElements.get(
 					`vwc-media-controller`,
@@ -53,15 +53,15 @@ describe('vwc-media-controller', function () {
 		});
 	});
 
-	describe(`Component Interaction`, function () {
-		let addedElements,
-			controllerEl,
-			componentX,
-			componentY,
-			componentWidth,
-			simulateMouse;
+	describe(`Component Interaction`, () => {
+		let addedElements;
+			let controllerEl;
+			let componentX;
+			let componentY;
+			let componentWidth;
+			let simulateMouse;
 
-		beforeEach(function () {
+		beforeEach(() => {
 			addedElements = textToDomToParent(
 				'<vwc-media-controller></vwc-media-controller>'
 			);
@@ -79,12 +79,11 @@ describe('vwc-media-controller', function () {
 			simulateMouse = simulateMouseFactory({ x: componentX, y: componentY });
 		});
 
-		afterEach(function () {
+		afterEach(() => {
 			addedElements.forEach((elm) => elm.remove());
 		});
 
-		it('Should emit an event when clicking play/pause ', function () {
-			return new Promise((resolve, reject) => {
+		it('Should emit an event when clicking play/pause ', () => new Promise((resolve, reject) => {
 				controllerEl.addEventListener('userPlayPauseRequest', resolve);
 				simulateMouse(BUTTON_X, CENTER_Y, 'click');
 				setTimeout(
@@ -94,10 +93,9 @@ describe('vwc-media-controller', function () {
 						"Play/pause button did not emit an event, make sure the layout's hasn't changed"
 					)
 				);
-			});
-		});
+			}));
 
-		it('Should report userScrubRequest events when clicking the trackbar', function () {
+		it('Should report userScrubRequest events when clicking the trackbar', () => {
 			const SAMPLES = 10;
 			return kefir
 				.concat(
@@ -111,8 +109,7 @@ describe('vwc-media-controller', function () {
 							y: CENTER_Y,
 							expected: Math.floor((index / SAMPLES) * 100),
 						}))
-						.map(({ x, y, expected }) => {
-							return kefir
+						.map(({ x, y, expected }) => kefir
 								.merge([
 									kefir
 										.fromEvents(controllerEl, 'userScrubRequest')
@@ -146,8 +143,7 @@ describe('vwc-media-controller', function () {
 										.ignoreValues(),
 								])
 								.take(1)
-								.takeErrors(1);
-						})
+								.takeErrors(1))
 				)
 				.takeErrors(1)
 				.mapErrors((des) => new Error(des))

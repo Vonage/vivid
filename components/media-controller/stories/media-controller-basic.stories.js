@@ -4,7 +4,7 @@ import '@vonage/vwc-media-controller';
 export default {
 	title: 'Components/Composite/Media Controller',
 	component: 'vwc-media-controller'
-}
+};
 
 export const basic = () => html`
 	<style>

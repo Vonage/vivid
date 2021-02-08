@@ -7,7 +7,7 @@ export default {
 	title: 'Components/Atoms/Circular Progress',
 	component: 'vwc-circular-progress',
 	argTypes
-}
+};
 
 const Template = args => html`<vwc-circular-progress ...=${spread(args)}></vwc-circular-progress>`;
 

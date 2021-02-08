@@ -8,7 +8,7 @@ export default {
 	title: 'Components/Atoms/List (list item)',
 	component: 'vwc-list-item',
 	argTypes
-}
+};
 
 const Template = args => html`
 	<style>

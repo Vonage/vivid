@@ -20,7 +20,7 @@ describe('button typography', async () => {
 	for (const flavor in SIZE_FLAVORS) {
 		const expectedTypography = SIZE_FLAVORS[flavor];
 
-		it(`should have set button (${flavor}, text, rounded) typography correct`, async function () {
+		it(`should have set button (${flavor}, text, rounded) typography correct`, async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(
 					`<${COMPONENT_NAME} ${flavor}>Button Text</${COMPONENT_NAME}>`
@@ -30,7 +30,7 @@ describe('button typography', async () => {
 			assertComputedStyle(button, expectedTypography);
 		});
 
-		it(`should have set button (${flavor}, outlined, pill) typography correct`, async function () {
+		it(`should have set button (${flavor}, outlined, pill) typography correct`, async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(
 					`<${COMPONENT_NAME} ${flavor} layout="outlined" shape="pill">Button Text</${COMPONENT_NAME}>`
@@ -40,7 +40,7 @@ describe('button typography', async () => {
 			assertComputedStyle(button, expectedTypography);
 		});
 
-		it(`should have set button (${flavor}, filled, disabled, pill) typography correct`, async function () {
+		it(`should have set button (${flavor}, filled, disabled, pill) typography correct`, async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(
 					`<${COMPONENT_NAME} ${flavor} layout="filled" disabled shape="pill">Button Text</${COMPONENT_NAME}>`

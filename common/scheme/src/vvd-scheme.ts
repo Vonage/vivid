@@ -1,3 +1,4 @@
+import { Emitter } from '@vonage/vvd-foundation/general-utils';
 import { applySchemeCSS } from './vvd-scheme-style-tag-handler';
 
 import {
@@ -12,13 +13,13 @@ import {
 	AutoScheme,
 	SchemeOption,
 } from './vvd-scheme-foundation';
+
 export {
 	SelectedDetail,
 	PredefinedScheme,
 	AutoScheme,
 	SchemeOption,
 } from './vvd-scheme-foundation';
-import { Emitter } from '@vonage/vvd-foundation/general-utils';
 const eventBus = new Emitter(); // !refactored due to lack of support of EventTarget as a constructor (new EventTarget()) in safari 12
 
 let _selectedScheme: PredefinedScheme;
@@ -43,11 +44,7 @@ function getDefaultSchemeOption(): SchemeOption {
 function getEffectiveSchemeOption(
 	destOption: SchemeOption | null = null
 ): SchemeOption {
-	return destOption
-		? destOption
-		: _selectedSchemeOption
-		? _selectedSchemeOption
-		: getDefaultSchemeOption();
+	return destOption || (_selectedSchemeOption || getDefaultSchemeOption());
 }
 
 async function syncWithOSSettings() {
@@ -124,6 +121,6 @@ export default Object.freeze({
 	getSelectedSchemeOption,
 });
 
-//TODO add the following tests:
-//!scheme change event
-//!add / remove Listener when toggling 'syncWithOSSettings' selected option
+// TODO add the following tests:
+//! scheme change event
+//! add / remove Listener when toggling 'syncWithOSSettings' selected option

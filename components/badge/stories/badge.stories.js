@@ -7,7 +7,7 @@ export default {
 	title: 'Components/Atoms/Badge',
 	component: 'vwc-badge',
 	argTypes
-}
+};
 
 const Template = args => html`<vwc-badge ...=${spread(args)}>I'm a badge</vwc-badge>`;
 

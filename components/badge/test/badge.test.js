@@ -1,4 +1,5 @@
 import '../vwc-badge.js';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	waitNextTask,
 	textToDomToParent,
@@ -7,7 +8,6 @@ import {
 	getTypographyStyle,
 } from '../../../test/test-helpers.js';
 import { shapeStyles } from '../../../test/style-utils.js';
-import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
 
@@ -30,8 +30,8 @@ describe('badge', () => {
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
-	describe('typography', function () {
-		it(`should have set badge (text, default) typography correct`, async function () {
+	describe('typography', () => {
+		it(`should have set badge (text, default) typography correct`, async () => {
 			const [badge] = addElement(
 				textToDomToParent(`<${VWC_BADGE}>Badge Text</${VWC_BADGE}>`)
 			);

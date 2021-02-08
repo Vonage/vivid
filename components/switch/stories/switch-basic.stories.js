@@ -7,7 +7,7 @@ export default {
 	title: 'Components/Atoms/Switch',
 	component: 'vwc-switch',
 	argTypes
-}
+};
 
 const Template = args => html`<vwc-switch ...=${spread(args)}></vwc-switch>`;
 

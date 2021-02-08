@@ -1,12 +1,12 @@
 import {
-	textToDomToParent,
-	isolatedElementsCreation,
-} from '../../../test/test-helpers.js';
-import {
 	assertConnotationAttribute,
 	assertConnotationProperty,
 } from '@vonage/vvd-foundation/test/connotation.test.js';
 import { Connotation } from '@vonage/vvd-foundation/constants';
+import {
+	textToDomToParent,
+	isolatedElementsCreation,
+} from '../../../test/test-helpers.js';
 
 const CONNOTATIONS_SUPPORTED = Object.values(Connotation).filter((c) =>
 	[
@@ -53,9 +53,9 @@ export async function connotationTestCases(COMPONENT_NAME) {
 				);
 				await assertConnotationAttribute({
 					element: button,
-					connotation: connotation,
-					childrenAffected: childrenAffected,
-					stylesAffected: stylesAffected,
+					connotation,
+					childrenAffected,
+					stylesAffected,
 				});
 			});
 
@@ -69,9 +69,9 @@ export async function connotationTestCases(COMPONENT_NAME) {
 				);
 				await assertConnotationProperty({
 					element: button,
-					connotation: connotation,
-					childrenAffected: childrenAffected,
-					stylesAffected: stylesAffected,
+					connotation,
+					childrenAffected,
+					stylesAffected,
 				});
 			});
 		}

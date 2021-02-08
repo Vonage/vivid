@@ -3,9 +3,9 @@ import { resolve } from 'path';
 import _ from 'lodash';
 import StyleDictionaryPackage from 'style-dictionary';
 
-const TYPOGRAPHY_TYPES = ['web'],
-	CUSTOM_TYPOGRAPHY_FORMAT = 'custom/web/scss/typography',
-	OUTPUT_FOLDER = 'build/scss/typography-variables';
+const TYPOGRAPHY_TYPES = ['web'];
+	const CUSTOM_TYPOGRAPHY_FORMAT = 'custom/web/scss/typography';
+	const OUTPUT_FOLDER = 'build/scss/typography-variables';
 
 StyleDictionaryPackage.registerFormat({
 	name: CUSTOM_TYPOGRAPHY_FORMAT,

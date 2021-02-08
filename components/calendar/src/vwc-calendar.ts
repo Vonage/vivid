@@ -21,6 +21,7 @@ export class VWCCalendar extends LitElement {
 	static styles = [style];
 
 	#daysLength = 7;
+
 	#hoursOfDay = [
 		'8 am',
 		'9 am',

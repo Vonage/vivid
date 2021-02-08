@@ -3,8 +3,8 @@ import { customElement } from 'lit-element';
 import { Slider as MWCSlider } from '@material/mwc-slider';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import { style as mwcSliderStyle } from '@material/mwc-slider/mwc-slider-css.js';
-import { style as vwcSliderStyle } from './vwc-slider.css';
 import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
+import { style as vwcSliderStyle } from './vwc-slider.css';
 
 declare global {
 	interface HTMLElementTagNameMap {

@@ -5,8 +5,8 @@ import storyCssContent from './icon.story.css.js';
 import icons from "./icon-manifest.json";
 
 const
-	PATH_SEPARATOR = '/',
-	CATEGORIES_TITLES = {
+	PATH_SEPARATOR = '/';
+	const CATEGORIES_TITLES = {
 		"check": "Checks",
 		"arrows": "Arrows",
 		"file": "File",

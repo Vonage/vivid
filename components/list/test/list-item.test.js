@@ -1,5 +1,6 @@
 import '@vonage/vwc-list';
 import '@vonage/vwc-list/vwc-list-item';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	assertComputedStyle,
 	textToDomToParent,
@@ -7,7 +8,6 @@ import {
 	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
 import { borderRadiusStyles, shapeStyles } from '../../../test/style-utils';
-import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	assertListItemDimensions,
 	buildListOfNItems,
@@ -78,7 +78,7 @@ describe('list item', () => {
 		});
 	});
 
-	describe(`performance issue`, function () {
+	describe(`performance issue`, () => {
 		function createElement(index) {
 			return `<vwc-list-item value=${index}>Item ${index}</vwc-list-item>`;
 		}
@@ -87,7 +87,7 @@ describe('list item', () => {
 			.map((_, index) => index)
 			.reduce((last, next) => (last += createElement(next)), '');
 
-		it(`should not take more than 50ms to remove the list from the DOM`, async function () {
+		it(`should not take more than 50ms to remove the list from the DOM`, async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`<vwc-list>${selectItems}</vwc-list>`)
 			);

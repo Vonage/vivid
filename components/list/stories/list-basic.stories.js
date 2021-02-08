@@ -10,7 +10,7 @@ export default {
 	component: 'vwc-list',
 	subcomponents: 'vwc-list-item',
 	argTypes
-}
+};
 
 export const Basic = args => html`
 	<style>

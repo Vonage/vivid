@@ -9,8 +9,8 @@ import {
 	LitElement,
 	TemplateResult,
 } from 'lit-element';
-import { style as filePickerStyle } from './vwc-file-picker.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
+import { style as filePickerStyle } from './vwc-file-picker.css.js';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -18,12 +18,13 @@ declare global {
 	}
 }
 
-const BUTTON_SLOT = 'button',
-	INPUT_FILE_SLOT = 'input-file-slot';
+const BUTTON_SLOT = 'button';
+	const INPUT_FILE_SLOT = 'input-file-slot';
 
 @customElement('vwc-file-picker')
 export class VWCFilePicker extends LitElement {
 	static styles = [styleCoupling, filePickerStyle];
+
 	#container: HTMLElement | null = null;
 
 	@property({ type: Number, reflect: false })
@@ -90,9 +91,9 @@ export class VWCFilePicker extends LitElement {
 	private renderHeader(): TemplateResult {
 		if (this.label) {
 			return html`<span class="label part">${this.label}</span>`;
-		} else {
+		} 
 			return html``;
-		}
+		
 	}
 
 	private renderHelperMessage(): TemplateResult | string {
@@ -102,9 +103,9 @@ export class VWCFilePicker extends LitElement {
 			return html`<vwc-helper-message id="helper" ?is-error="${isError}"
 				>${text}</vwc-helper-message
 			>`;
-		} else {
+		} 
 			return '';
-		}
+		
 	}
 
 	private renderDragNDropHint(): TemplateResult {
@@ -118,9 +119,9 @@ export class VWCFilePicker extends LitElement {
 					<vwc-badge connotation="alert" shape="pill">${this.filesCount}</vwc-badge>
 				</div>
 			`;
-		} else {
+		} 
 			return html``;
-		}
+		
 	}
 
 	private setupDragNDrop(): void {

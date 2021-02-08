@@ -1,4 +1,5 @@
 import '../vwc-tab.js';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	assertComputedStyle,
 	textToDomToParent,
@@ -6,7 +7,6 @@ import {
 	waitInterval,
 	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
-import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
 

@@ -21,4 +21,4 @@ export const argTypes = {
 	isRippleActive: { table: { disable: true } },
 	styles: { table: { disable: true } },
 	ripple: { table: { disable: true } }
-}
+};

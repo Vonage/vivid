@@ -1,11 +1,11 @@
 import '../vwc-helper-message.js';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	waitNextTask,
 	textToDomToParent,
 	assertComputedStyle,
-} from '../../../test/test-helpers.js';
-import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
-import { isolatedElementsCreation } from '../../../test/test-helpers';
+ isolatedElementsCreation } from '../../../test/test-helpers.js';
+
 
 chai.use(chaiDomDiff);
 

@@ -4,9 +4,9 @@ class TestComponent extends HTMLElement {}
 
 window.customElements.define('general-utils-test-component', TestComponent);
 
-describe(`general-utils`, function () {
-	describe(`handleMultipleDenseProps`, function () {
-		it(`should set enlarged attribute to false if recieved dense`, function () {
+describe(`general-utils`, () => {
+	describe(`handleMultipleDenseProps`, () => {
+		it(`should set enlarged attribute to false if recieved dense`, () => {
 			const testComponent = document.createElement('general-utils-test-component');
 			testComponent.dense = true;
 			testComponent.enlarged = true;
@@ -14,7 +14,7 @@ describe(`general-utils`, function () {
 			expect(testComponent.enlarged).to.equal(false);
 		});
 
-		it(`should set dense attribute to false if recieved enlarged`, function () {
+		it(`should set dense attribute to false if recieved enlarged`, () => {
 			const testComponent = document.createElement('general-utils-test-component');
 			testComponent.setAttribute('dense', 'true');
 			testComponent.dense = true;

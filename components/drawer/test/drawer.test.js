@@ -4,6 +4,7 @@ import {
 	cleanFrame,
 	waitNextTask,
 } from '../../../test/test-helpers.js';
+
 const VWC_DRAWER = 'vwc-drawer';
 const DRAWER_SETUP_HTML_TAG = 'drawerSetupTest';
 

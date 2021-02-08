@@ -16,7 +16,7 @@ export default {
 			}
 		}
 	}
-}
+};
 
 const Template = args => html`
 	<style>
@@ -34,7 +34,7 @@ const Template = args => html`
 	</vwc-list>`;
 
 export const Checklist = Template.bind({});
-Checklist.args = { selected: '', left: '' }
+Checklist.args = { selected: '', left: '' };
 
 export const checklist = args => html`
 	<style>

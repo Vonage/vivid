@@ -1,6 +1,17 @@
 import '../vwc-select.js';
 import '@vonage/vwc-list/vwc-list-item.js';
 import {
+	assertDenseStyles,
+	hasNotchedOutline,
+	validateOnReset,
+} from '@vonage/vvd-foundation/test/input-utils.test.js';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
+import { requestSubmit } from '@vonage/vvd-foundation/form-association';
+import {
+	shapeRoundedTestCases,
+	shapePillTestCases,
+} from '../../../test/shared';
+import {
 	textToDomToParent,
 	waitNextTask,
 	waitInterval,
@@ -11,17 +22,6 @@ import {
 	isolatedElementsCreation,
 	getTypographyStyle,
 } from '../../../test/test-helpers.js';
-import {
-	shapeRoundedTestCases,
-	shapePillTestCases,
-} from '../../../test/shared';
-import {
-	assertDenseStyles,
-	hasNotchedOutline,
-	validateOnReset,
-} from '@vonage/vvd-foundation/test/input-utils.test.js';
-import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
-import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
 chai.use(chaiDomDiff);
 
@@ -63,7 +63,7 @@ describe('select', () => {
 		});
 	});
 
-	describe(`form association`, function () {
+	describe(`form association`, () => {
 		function createElementInForm(fieldName, values, formId, otherFormId) {
 			const otherForm = otherFormId
 				? `<form onsubmit="return false" id="${otherFormId}"><button></button></form>`
@@ -81,9 +81,9 @@ describe('select', () => {
 			);
 		}
 
-		let values = [],
-			fieldName,
-			formId;
+		let values = [];
+			let fieldName;
+			let formId;
 
 		beforeEach(() => {
 			values = [Math.random().toString(), Math.random().toString()];
@@ -91,7 +91,7 @@ describe('select', () => {
 			formId = 'testForm';
 		});
 
-		it(`should attach to closest form`, async function () {
+		it(`should attach to closest form`, async () => {
 			const [formElement] = addElement(createElementInForm(fieldName, values));
 			await waitNextTask();
 
@@ -109,7 +109,7 @@ describe('select', () => {
 			).to.equal(1);
 		});
 
-		it(`should attach to form when given form id`, async function () {
+		it(`should attach to form when given form id`, async () => {
 			const externalFormID = 'externalForm';
 			const [formElement, externalForm] = addElement(
 				createElementInForm(fieldName, values, externalFormID, externalFormID)
@@ -131,7 +131,7 @@ describe('select', () => {
 			).to.equal(1);
 		});
 
-		it(`should do nothing if form value resolves to a non form element`, async function () {
+		it(`should do nothing if form value resolves to a non form element`, async () => {
 			const nonExistentFormId = 'noneExistentForm';
 			const [formElement] = addElement(
 				createElementInForm(fieldName, values, nonExistentFormId)
@@ -141,8 +141,8 @@ describe('select', () => {
 			expect(formElement.querySelector('input')).to.equal(null);
 		});
 
-		describe(`value binding`, function () {
-			it(`should reset the value of the custom element to default on form reset`, async function () {
+		describe(`value binding`, () => {
+			it(`should reset the value of the custom element to default on form reset`, async () => {
 				const [formElement] = addElement(createElementInForm(fieldName, values));
 				const actualElement = formElement.querySelector(COMPONENT_NAME);
 				await waitNextTask();
@@ -153,7 +153,7 @@ describe('select', () => {
 				expect(actualElement.value).to.equal(values[1]);
 			});
 
-			it(`should change the value of the mock input on internal input change`, async function () {
+			it(`should change the value of the mock input on internal input change`, async () => {
 				const [formElement] = addElement(createElementInForm(fieldName, values));
 				const actualElement = formElement.querySelector(COMPONENT_NAME);
 				await waitNextTask();
@@ -165,14 +165,14 @@ describe('select', () => {
 			});
 		});
 
-		describe(`validation`, function () {
+		describe(`validation`, () => {
 			const invalidValue = '';
 			const validValue1 = Math.random().toString();
 			const validValue2 = Math.random().toString();
 			const valuesValidation = [validValue1, validValue2];
-			let formElement, actualElement;
+			let formElement; let actualElement;
 
-			beforeEach(async function () {
+			beforeEach(async () => {
 				[formElement] = addElement(
 					createElementInForm(fieldName, valuesValidation)
 				);
@@ -180,7 +180,7 @@ describe('select', () => {
 				actualElement.setAttribute('required', 'true');
 				await waitNextTask();
 			});
-			it(`should get validity from the element's validationMessage`, async function () {
+			it(`should get validity from the element's validationMessage`, async () => {
 				await changeValueAndNotify(actualElement, invalidValue, 'change');
 
 				const invalidity = formElement.checkValidity();
@@ -191,11 +191,11 @@ describe('select', () => {
 				expect(formElement.checkValidity()).to.equal(true);
 			});
 
-			it(`should validate on reset`, async function () {
+			it(`should validate on reset`, async () => {
 				validateOnReset(actualElement, formElement, invalidValue);
 			});
 
-			it(`should not submit an invalid form`, async function () {
+			it(`should not submit an invalid form`, async () => {
 				let submitted = false;
 
 				await changeValueAndNotify(actualElement, invalidValue, 'change');
@@ -223,7 +223,7 @@ describe('select', () => {
 			});
 		});
 
-		it(`should work under multiple shadow layers`, async function () {
+		it(`should work under multiple shadow layers`, async () => {
 			const formTemplate = `
 				<form onsubmit="return false" name="testForm" id="testForm">
 					<vivid-tests-component></vivid-tests-component>
@@ -266,7 +266,7 @@ describe('select', () => {
 	});
 
 	describe('typography', () => {
-		let addedElements, formElement, labelElement;
+		let addedElements; let formElement; let labelElement;
 		beforeEach(async () => {
 			addedElements = addElement(
 				textToDomToParent(`
@@ -359,7 +359,7 @@ describe('select', () => {
 		shapePillTestCases(COMPONENT_NAME);
 	});
 
-	describe(`performance acceptability`, function () {
+	describe(`performance acceptability`, () => {
 		function createElement(index) {
 			return `<vwc-list-item value=${index}>Item ${index}</vwc-list-item>`;
 		}
@@ -369,7 +369,7 @@ describe('select', () => {
 			.map((_, index) => index)
 			.reduce((last, next) => (last += createElement(next)), '');
 
-		it(`should not take more than 50ms to remove the list from the DOM`, async function () {
+		it(`should not take more than 50ms to remove the list from the DOM`, async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}>${selectItems}</${COMPONENT_NAME}>`)
 			);

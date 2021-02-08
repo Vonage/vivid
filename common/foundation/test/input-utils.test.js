@@ -1,3 +1,4 @@
+import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 import {
 	assertComputedStyle,
 	textToDomToParent,
@@ -8,7 +9,6 @@ import {
 	listenToSubmission,
 	getTypographyStyle,
 } from '../../../test/test-helpers.js';
-import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
 let addElement = isolatedElementsCreation();
 
@@ -16,7 +16,7 @@ export async function typographyTestCases(
 	COMPONENT_NAME,
 	inputResolver = null
 ) {
-	let addedElements, formElement, labelElement;
+	let addedElements; let formElement; let labelElement;
 	beforeEach(async () => {
 		addedElements = addElement(
 			textToDomToParent(

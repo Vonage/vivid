@@ -1,11 +1,11 @@
 import '@vonage/vvd-core';
-import { customElement, property } from 'lit-element';
+import { customElement, property , html, TemplateResult } from 'lit-element';
 import { Button as MWCButton } from '@material/mwc-button';
 import { style as vwcButtonStyle } from './vwc-button.css';
 import { style as mwcButtonStyle } from '@material/mwc-button/styles-css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import { Connotation, Shape } from '@vonage/vvd-foundation/constants';
-import { html, TemplateResult } from 'lit-element';
+
 import '@vonage/vwc-icon';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
@@ -95,7 +95,7 @@ export class VWCButton extends MWCButton {
 			this.#_hiddenButton?.setAttribute('type', this.getAttribute('type') ?? '');
 		}
 
-		const layout: ButtonLayout[number] = this.layout;
+		const {layout} = this;
 		this.toggleAttribute('outlined', layout === 'outlined');
 		this.toggleAttribute('unelevated', layout === 'filled');
 

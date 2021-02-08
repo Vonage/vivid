@@ -7,7 +7,7 @@ export default {
 	title: 'Components/Atoms/Textarea',
 	component: 'vwc-textarea',
 	argTypes
-}
+};
 
 const Template = (args) =>
 	html`<vwc-textarea ...=${spread(args)} @keydown=${handleKeyDown}></vwc-textarea>`;

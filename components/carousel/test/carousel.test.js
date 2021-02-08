@@ -1,17 +1,18 @@
 import '@vonage/vwc-carousel';
 import schemeService from '@vonage/vvd-scheme';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	textToDomToParent,
 	waitNextTask,
 	waitInterval,
 	assertComputedStyle,
-} from '../../../test/test-helpers.js';
-import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
-import { isolatedElementsCreation } from '../../../test/test-helpers';
+ isolatedElementsCreation } from '../../../test/test-helpers.js';
+
+
 chai.use(chaiDomDiff);
 
-const VWC_CAROUSEL = 'vwc-carousel',
-	VWC_CAROUSEL_ITEM = 'vwc-carousel-item';
+const VWC_CAROUSEL = 'vwc-carousel';
+	const VWC_CAROUSEL_ITEM = 'vwc-carousel-item';
 
 let addElement = isolatedElementsCreation();
 describe('carousel', () => {
@@ -141,7 +142,7 @@ describe('carousel', () => {
 		});
 	});
 
-	describe('click on slide', function () {
+	describe('click on slide', () => {
 		it('should preserve click listeners of slides after sliding', async () => {
 			const carousel = await initCarousel(['a', 'b', 'c']);
 			const slides = extractSlides(carousel);
@@ -216,12 +217,10 @@ function buildSlidesText(keys) {
 }
 
 function buildCarouselText(slidesText, options) {
-	const opts = Object.assign(
-		{
-			autoplay: false,
-		},
-		options
-	);
+	const opts = {
+		autoplay: false,
+		...options
+	};
 
 	return `
 		<${VWC_CAROUSEL} autoplay="${opts.autoplay}">

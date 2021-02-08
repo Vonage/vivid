@@ -24,4 +24,4 @@ export const argTypes = {
 		},
 		defaultValue: ['dismissible']
 	},
-}
+};

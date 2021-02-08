@@ -7,7 +7,7 @@ export default {
 	title: 'Components/Atoms/Slider',
 	component: 'vwc-slider',
 	argTypes
-}
+};
 
 const Template = ({ change, ...args }) => html`
 	<style>vwc-slider { width: 240px; }</style>

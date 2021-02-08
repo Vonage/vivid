@@ -7,7 +7,7 @@ export default {
 	title: 'Components/Atoms/Inline',
 	component: 'vwc-inline',
 	argTypes
-}
+};
 
 const Template = args => html`
 <style>

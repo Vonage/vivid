@@ -4,8 +4,8 @@ import {
 	PRINCIPAL_SCHEME_VARIABLES_FILTER,
 } from '../../../test/style-utils.js';
 
-const ALTERNATE = 'alternate',
-	MAIN = 'main';
+const ALTERNATE = 'alternate';
+	const MAIN = 'main';
 
 describe('design tokens service', () => {
 	describe('scheme design tokens', () => {

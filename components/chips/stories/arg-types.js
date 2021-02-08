@@ -18,4 +18,4 @@ export const argTypes = {
 	removeIcon: { table: { disable: true } },
 	removeIconClass: { table: { disable: true } },
 	removeIconFocusable: { table: { disable: true } },
-}
+};

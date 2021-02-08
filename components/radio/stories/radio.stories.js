@@ -8,7 +8,7 @@ export default {
 	title: 'Components/Atoms/Radio',
 	component: 'vwc-radio',
 	argTypes
-}
+};
 
 const Template = args => html`
 	<vwc-formfield label="London">

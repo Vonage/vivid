@@ -4,7 +4,7 @@ import '@vonage/vwc-audio';
 export default {
 	title: 'Components/Composite/Audio Player',
 	component: 'vwc-audio'
-}
+};
 
 export const basic = () => html`
 	<style>

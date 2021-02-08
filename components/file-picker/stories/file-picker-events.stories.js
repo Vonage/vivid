@@ -8,7 +8,7 @@ export default {
 	title: 'Components/Composite/File Picker/Events',
 	component: 'vwc-file-picker',
 	argTypes
-}
+};
 
 const Template = args => html`
 	<vwc-file-picker ...=${spread(args.self)} @change="${onChange}">

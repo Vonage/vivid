@@ -1,10 +1,10 @@
 import '../vwc-keypad.js';
+import { chaiA11yAxe } from 'chai-a11y-axe';
 import {
 	textToDomToParent,
 	waitNextTask,
 	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
-import { chaiA11yAxe } from 'chai-a11y-axe';
 
 chai.use(chaiA11yAxe);
 

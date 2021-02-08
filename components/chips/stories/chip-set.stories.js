@@ -10,7 +10,7 @@ export default {
 		chips: { table: { disable: true } },
 		chipArgs: { table: { disable: true } }
 	}
-}
+};
 
 const Template = ({ chipArgs, ...args }) => html`
 	<vwc-chip-set id="chipSet" @MDCChip:selection="${handleSelection}" @MDCChip:removal="${handleRemoval}" ...=${spread(args)}>
@@ -33,7 +33,7 @@ function handleSelection(e) {
 			chipId: e.detail.chipId,
 			selected: e.detail.selected
 		}
-	}
+	};
 
 	const chipSet = this.closest('#chipSet');
 	console.log('chipSet.chips method', chipSet.chips);
@@ -46,7 +46,7 @@ function handleRemoval(e) {
 		detail: {
 			chipId: e.detail.chipId
 		}
-	}
+	};
 
 	const chipSet = this.closest('#chipSet');
 	console.log('chipSet.chips method', chipSet.chips);

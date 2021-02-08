@@ -8,7 +8,7 @@ export default {
 	title: 'Components/Atoms/Checkbox',
 	component: 'vwc-checkbox',
 	argTypes
-}
+};
 
 const Template = ({ label, ...args }) => html`
 	<vwc-formfield label=${label}>

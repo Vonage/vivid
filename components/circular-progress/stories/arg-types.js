@@ -19,4 +19,4 @@ export const argTypes = {
 	circleRadius: { table: { disable: true } },
 	determinateStrokeDashOffset: { table: { disable: true } },
 	strokeWidth: { table: { disable: true } },
-}
+};

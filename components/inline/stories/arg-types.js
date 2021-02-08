@@ -14,4 +14,4 @@ export const argTypes = {
 			options: Object.values(Size).filter(s => [Size.Small, Size.Medium].includes(s)),
 		}
 	}
-}
+};

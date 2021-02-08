@@ -1,4 +1,5 @@
 import '@vonage/vwc-scheme-select';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	isolatedElementsCreation,
 	textToDomToParent,
@@ -10,7 +11,6 @@ import {
 	assertBaseVarsMatch,
 	PRINCIPAL_SCHEME_VARIABLES_FILTER,
 } from '../../../test/style-utils.js';
-import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
 

@@ -1,11 +1,11 @@
 import '@vonage/vvd-core';
 import { customElement, property, html, TemplateResult } from 'lit-element';
 import { Switch as MWCSwitch } from '@material/mwc-switch';
-import { style as vwcSwitchStyle } from './vwc-switch.css';
 import { style as mwcSwitchStyle } from '@material/mwc-switch/mwc-switch-css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling';
 import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
 import { Connotation } from '@vonage/vvd-foundation/constants';
+import { style as vwcSwitchStyle } from './vwc-switch.css';
 
 declare global {
 	interface HTMLElementTagNameMap {

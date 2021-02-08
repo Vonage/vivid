@@ -54,13 +54,13 @@ export class VWCChip extends MWCChip {
 				type="${this.icon}"
 				class="leading"
 			></vwc-icon>`;
-		} else if (this.childElementCount > 0) {
+		} if (this.childElementCount > 0) {
 			return html` <span class="mdc-chip__icon mdc-chip__icon--leading">
 				<slot name="thumbnail"></slot>
 			</span>`;
-		} else {
+		} 
 			return html``;
-		}
+		
 	}
 
 	renderRemoveIcon(): TemplateResult {
@@ -83,9 +83,9 @@ export class VWCChip extends MWCChip {
 
 		if (this.removeIconFocusable) {
 			return html`<span role="gridcell">${icon}</span>`;
-		} else {
+		} 
 			return icon;
-		}
+		
 	}
 
 	clickHandler(): void {

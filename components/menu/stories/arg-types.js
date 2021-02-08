@@ -69,4 +69,4 @@ export const argTypes = {
 	ripple: { table: { disable: true } },
 	slotElement: { table: { disable: true } },
 	mdcRoot: { table: { disable: true } },
-}
+};

@@ -1,6 +1,19 @@
 import '../vwc-textfield.js';
 import '@vonage/vwc-formfield';
 import {
+	typographyTestCases,
+	assertDenseStyles,
+	hasNotchedOutline,
+	validateMultipleShadowLayers,
+	validateOnReset,
+} from '@vonage/vvd-foundation/test/input-utils.test.js';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
+import { requestSubmit } from '@vonage/vvd-foundation/form-association';
+import {
+	shapeRoundedTestCases,
+	shapePillTestCases,
+} from '../../../test/shared';
+import {
 	textToDomToParent,
 	waitNextTask,
 	assertComputedStyle,
@@ -10,19 +23,6 @@ import {
 	randomAlpha,
 	listenToSubmission,
 } from '../../../test/test-helpers.js';
-import {
-	shapeRoundedTestCases,
-	shapePillTestCases,
-} from '../../../test/shared';
-import {
-	typographyTestCases,
-	assertDenseStyles,
-	hasNotchedOutline,
-	validateMultipleShadowLayers,
-	validateOnReset,
-} from '@vonage/vvd-foundation/test/input-utils.test.js';
-import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
-import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
 chai.use(chaiDomDiff);
 
@@ -52,7 +52,7 @@ describe('textfield', () => {
 		typographyTestCases(COMPONENT_NAME);
 	});
 
-	describe(`form association`, function () {
+	describe(`form association`, () => {
 		function createElementInForm(fieldName, fieldValue, formId, otherFormId) {
 			const otherForm = otherFormId
 				? `<form onsubmit="return false" id="${otherFormId}"><button></button></form>`
@@ -69,13 +69,13 @@ describe('textfield', () => {
 			);
 		}
 
-		let fieldValue, fieldName;
-		beforeEach(function () {
+		let fieldValue; let fieldName;
+		beforeEach(() => {
 			fieldValue = Math.random().toString();
 			fieldName = 'test-field';
 		});
 
-		it(`should attach to closest form`, async function () {
+		it(`should attach to closest form`, async () => {
 			const [formElement] = addElement(createElementInForm(fieldName, fieldValue));
 			await waitNextTask();
 
@@ -93,7 +93,7 @@ describe('textfield', () => {
 			).to.equal(1);
 		});
 
-		it(`should attach to form when given form id`, async function () {
+		it(`should attach to form when given form id`, async () => {
 			const externalFormID = randomAlpha();
 
 			const addedElements = addElement(
@@ -121,8 +121,8 @@ describe('textfield', () => {
 			expect([...externalForm.elements].includes(inputElement)).to.equal(true);
 		});
 
-		describe(`value binding`, function () {
-			it(`should reset the value of the custom element to default on form reset`, async function () {
+		describe(`value binding`, () => {
+			it(`should reset the value of the custom element to default on form reset`, async () => {
 				const [formElement] = addElement(
 					createElementInForm(fieldName, fieldValue)
 				);
@@ -135,7 +135,7 @@ describe('textfield', () => {
 				expect(actualElement.value).to.equal(fieldValue);
 			});
 
-			it(`should change the value of the mock input on internal input change`, async function () {
+			it(`should change the value of the mock input on internal input change`, async () => {
 				const [formElement] = addElement(
 					createElementInForm(fieldName, fieldValue)
 				);
@@ -149,19 +149,19 @@ describe('textfield', () => {
 			});
 		});
 
-		describe(`validation`, function () {
+		describe(`validation`, () => {
 			const invalidValue = '';
 			const validValue = 'abc';
-			let formElement, actualElement;
+			let formElement; let actualElement;
 
-			beforeEach(async function () {
+			beforeEach(async () => {
 				[formElement] = addElement(createElementInForm(fieldName, validValue));
 				actualElement = formElement.querySelector(COMPONENT_NAME);
 				actualElement.setAttribute('required', 'true');
 				await waitNextTask();
 			});
 
-			it(`should set validity on the form`, async function () {
+			it(`should set validity on the form`, async () => {
 				await changeValueAndNotify(actualElement, invalidValue);
 				const invalidity = formElement.checkValidity();
 
@@ -171,11 +171,11 @@ describe('textfield', () => {
 				expect(formElement.checkValidity()).to.equal(true);
 			});
 
-			it(`should validate on reset`, async function () {
+			it(`should validate on reset`, async () => {
 				validateOnReset(actualElement, formElement, invalidValue);
 			});
 
-			it(`should not submit an invalid form`, async function () {
+			it(`should not submit an invalid form`, async () => {
 				let submitted = false;
 				formElement.addEventListener('submit', () => {
 					submitted = true;
@@ -189,7 +189,7 @@ describe('textfield', () => {
 			});
 		});
 
-		it(`should work under multiple shadow layers`, async function () {
+		it(`should work under multiple shadow layers`, async () => {
 			validateMultipleShadowLayers(COMPONENT_NAME, 'input');
 		});
 	});

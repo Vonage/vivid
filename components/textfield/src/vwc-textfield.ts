@@ -11,10 +11,11 @@ import {
 } from 'lit-element';
 import { TextField as MWCTextField } from '@material/mwc-textfield';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
-import { style as vwcTextFieldStyle } from './vwc-textfield.css';
 import { style as mwcTextFieldStyle } from '@material/mwc-textfield/mwc-textfield-css.js';
 import { Shape } from '@vonage/vvd-foundation/constants';
 import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
+import { style as vwcTextFieldStyle } from './vwc-textfield.css';
+
 export { TextFieldType } from '@material/mwc-textfield';
 
 declare global {
@@ -44,7 +45,7 @@ export class VWCTextField extends MWCTextField {
 	@property({ type: String, reflect: true })
 	form: string | undefined;
 
-	@property({ type: String, reflect: true, converter: (v) => (v ? v : ' ') })
+	@property({ type: String, reflect: true, converter: (v) => (v || ' ') })
 	placeholder = ' ';
 
 	constructor() {
@@ -53,10 +54,10 @@ export class VWCTextField extends MWCTextField {
 			value: this.createInputElement(),
 		});
 		Object.defineProperty(this, 'value', {
-			get: function () {
+			get () {
 				return this.formElement.value;
 			},
-			set: function (newValue: string) {
+			set (newValue: string) {
 				this.formElement.value = newValue;
 				this.floatLabel();
 			},
@@ -151,7 +152,7 @@ export class VWCTextField extends MWCTextField {
 	private createInputElement(): HTMLInputElement {
 		const element = document.createElement('input');
 		const defaultValue = this.getAttribute('value');
-		element.defaultValue = defaultValue ? defaultValue : '';
+		element.defaultValue = defaultValue || '';
 		element.setAttribute('slot', INPUT_ELEMENT_SLOT_NAME);
 		element.className = INPUT_ELEMENT_CLASS_NAME;
 		return element;

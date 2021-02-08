@@ -2,8 +2,8 @@ import '@vonage/vvd-core';
 import { customElement } from 'lit-element';
 import { TopAppBar as MWCTopAppBar } from '@material/mwc-top-app-bar';
 import { style as MWCTopAppBarStyle } from '@material/mwc-top-app-bar/mwc-top-app-bar-css.js';
-import { style as VWCTopAppBarStyle } from './vwc-top-app-bar.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
+import { style as VWCTopAppBarStyle } from './vwc-top-app-bar.css.js';
 
 declare global {
 	interface HTMLElementTagNameMap {

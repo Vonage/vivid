@@ -2,14 +2,14 @@ import '@vonage/vwc-list/vwc-list-item.js';
 import '@vonage/vwc-list/vwc-list-expansion-panel.js';
 import '@vonage/vwc-icon';
 import { html } from 'lit-element';
-import { argTypes } from './arg-types-list-item.js';
 import { styleMap } from 'lit-html/directives/style-map';
+import { argTypes } from './arg-types-list-item.js';
 
 export default {
 	title: 'Components/Atoms/List expansion panel',
 	component: 'vwc-list-expansion-panel',
 	argTypes
-}
+};
 
 const listStyles = {
 	'inline-size': '240px',

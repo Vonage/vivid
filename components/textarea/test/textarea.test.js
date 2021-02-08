@@ -1,5 +1,12 @@
 import '../vwc-textarea.js';
 import {
+	typographyTestCases,
+	hasNotchedOutline,
+	validateMultipleShadowLayers,
+} from '@vonage/vvd-foundation/test/input-utils.test.js';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
+import { requestSubmit } from '@vonage/vvd-foundation/form-association';
+import {
 	textToDomToParent,
 	waitNextTask,
 	assertComputedStyle,
@@ -9,13 +16,6 @@ import {
 	listenToSubmission,
 	getTypographyStyle,
 } from '../../../test/test-helpers.js';
-import {
-	typographyTestCases,
-	hasNotchedOutline,
-	validateMultipleShadowLayers,
-} from '@vonage/vvd-foundation/test/input-utils.test.js';
-import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
-import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
 chai.use(chaiDomDiff);
 
@@ -42,7 +42,7 @@ describe('textarea', () => {
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
-	describe(`form association`, function () {
+	describe(`form association`, () => {
 		function createElementInForm(fieldName, fieldValue, formId, otherFormId) {
 			const otherForm = otherFormId
 				? `<form onsubmit="return false" id="${otherFormId}"><button></button></form>`
@@ -67,7 +67,7 @@ describe('textarea', () => {
 			`;
 		const fieldName = 'test-field';
 
-		it(`should attach to closest form`, async function () {
+		it(`should attach to closest form`, async () => {
 			const [formElement] = createElementInForm(fieldName, fieldValue);
 			const submitPromise = listenToSubmission(formElement);
 			await waitNextTask();
@@ -83,7 +83,7 @@ describe('textarea', () => {
 			).to.equal(1);
 		});
 
-		it(`should attach to form when given form id`, async function () {
+		it(`should attach to form when given form id`, async () => {
 			const externalFormID = 'externalForm';
 			const [formElement, externalForm] = createElementInForm(
 				fieldName,
@@ -111,7 +111,7 @@ describe('textarea', () => {
 			).to.equal(1);
 		});
 
-		it(`should do nothing if form value resolves to a non form element`, async function () {
+		it(`should do nothing if form value resolves to a non form element`, async () => {
 			const noneExistentFormId = 'noneExistentFormId';
 			const [formElement] = createElementInForm(
 				fieldName,
@@ -124,8 +124,8 @@ describe('textarea', () => {
 			expect(formElement.querySelector('textarea')).to.equal(null);
 		});
 
-		describe(`value binding`, function () {
-			it(`should reset the value of the custom element to default on form reset`, async function () {
+		describe(`value binding`, () => {
+			it(`should reset the value of the custom element to default on form reset`, async () => {
 				const [formElement] = createElementInForm(fieldName, fieldValue);
 				const actualElement = formElement.querySelector(COMPONENT_NAME);
 				await waitNextTask();
@@ -136,7 +136,7 @@ describe('textarea', () => {
 				expect(actualElement.value).to.equal(fieldValue);
 			});
 
-			it(`should change the value of the mock input on internal input change`, async function () {
+			it(`should change the value of the mock input on internal input change`, async () => {
 				const [formElement] = createElementInForm(fieldName, fieldValue);
 				const actualElement = formElement.querySelector(COMPONENT_NAME);
 				await waitNextTask();
@@ -147,11 +147,11 @@ describe('textarea', () => {
 			});
 		});
 
-		describe(`validation`, function () {
+		describe(`validation`, () => {
 			const validValue = 'abc';
 			const invalidValue = '';
 
-			it(`should get validity from the element's validationMessage`, async function () {
+			it(`should get validity from the element's validationMessage`, async () => {
 				const [formElement] = createElementInForm(fieldName, invalidValue);
 				const actualElement = formElement.querySelector(COMPONENT_NAME);
 				actualElement.setAttribute('required', 'true');
@@ -165,7 +165,7 @@ describe('textarea', () => {
 				expect(formElement.checkValidity()).to.equal(true);
 			});
 
-			it(`should validate on reset`, async function () {
+			it(`should validate on reset`, async () => {
 				const [formElement] = createElementInForm(fieldName, validValue);
 				const actualElement = formElement.querySelector(COMPONENT_NAME);
 				actualElement.setAttribute('required', 'true');
@@ -182,7 +182,7 @@ describe('textarea', () => {
 				expect(formElement.checkValidity()).to.equal(true);
 			});
 
-			it(`should not submit an invalid form`, async function () {
+			it(`should not submit an invalid form`, async () => {
 				let submitted = false;
 				const [formElement] = createElementInForm(fieldName, validValue);
 				const actualElement = formElement.querySelector(COMPONENT_NAME);
@@ -210,7 +210,7 @@ describe('textarea', () => {
 			});
 		});
 
-		it(`should work under multiple shadow layers`, async function () {
+		it(`should work under multiple shadow layers`, async () => {
 			validateMultipleShadowLayers(COMPONENT_NAME, 'textarea');
 		});
 	});
@@ -287,7 +287,7 @@ describe('textarea', () => {
 	});
 
 	describe('resizable', () => {
-		let formElement, actualElement;
+		let formElement; let actualElement;
 		beforeEach(async () => {
 			const addedElements = addElement(
 				textToDomToParent(

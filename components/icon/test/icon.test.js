@@ -11,13 +11,13 @@ const LOAD_TIME = 400;
 const sleep = (ms) => new Promise((res) => setTimeout(res, ms));
 
 describe('vwc-icon', () => {
-	describe('custom component registration', function () {
-		it('Should be defined', function () {
+	describe('custom component registration', () => {
+		it('Should be defined', () => {
 			assert.exists(customElements.get('vwc-icon', 'vwc-icon element is defined'));
 		});
 	});
 
-	describe('component behaviour', function () {
+	describe('component behaviour', () => {
 		let iconEl;
 		const ICON_SAMPLE = {
 			'arrow-right-solid': `M0 10.5H13.5V3L24 12L13.5 21V13.5H0V10.5Z`,
@@ -38,7 +38,7 @@ describe('vwc-icon', () => {
 		});
 
 		Object.entries(ICON_SAMPLE).forEach(([iconName, iconData]) => {
-			it(`Should contain "${iconName}" path`, async function () {
+			it(`Should contain "${iconName}" path`, async () => {
 				iconEl.setAttribute('type', iconName);
 				await sleep(LOAD_TIME);
 				assert.equal(

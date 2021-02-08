@@ -1,11 +1,11 @@
 import '@vonage/vwc-list';
 import '../vwc-radio-list-item.js';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	textToDomToParent,
 	waitNextTask,
 	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
-import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	assertListItemDimensions,
 	buildListOfNItems,

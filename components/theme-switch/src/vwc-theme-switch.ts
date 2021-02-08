@@ -7,16 +7,16 @@ import {
 	html,
 	TemplateResult,
 } from 'lit-element';
-import { style } from './vwc-theme-switch.css';
 import {
 	default as vvdScheme,
 	PredefinedScheme,
 	SchemeOption,
 	SelectedDetail,
 } from '@vonage/vvd-scheme/vvd-scheme.js';
+import { style } from './vwc-theme-switch.css';
 
-const VVD_SCHEME_SELECT = 'vvd-scheme-select',
-	EVENT_LISTENER_KEY = Symbol('scheme.select.listener');
+const VVD_SCHEME_SELECT = 'vvd-scheme-select';
+	const EVENT_LISTENER_KEY = Symbol('scheme.select.listener');
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -27,6 +27,7 @@ declare global {
 @customElement('vwc-theme-switch')
 export class VWCThemeSwitch extends LitElement {
 	static styles = style;
+
 	@property({ reflect: true })
 	scheme?: SchemeOption;
 

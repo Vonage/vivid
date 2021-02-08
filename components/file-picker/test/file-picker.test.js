@@ -1,4 +1,5 @@
 import '@vonage/vwc-file-picker';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	waitNextTask,
 	textToDomToParent,
@@ -10,7 +11,6 @@ import {
 	simulateFilesSelect,
 	simulateFilesDrop,
 } from './file-picker-utils.test.js';
-import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
 

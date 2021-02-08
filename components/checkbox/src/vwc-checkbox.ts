@@ -1,10 +1,10 @@
 import '@vonage/vvd-core';
 import { customElement, html, TemplateResult } from 'lit-element';
 import { Checkbox as MWCCheckbox } from '@material/mwc-checkbox';
-import { style as vwcCheckboxStyle } from './vwc-checkbox.css';
 import { style as mwcCheckboxStyle } from '@material/mwc-checkbox/mwc-checkbox-css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling';
 import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
+import { style as vwcCheckboxStyle } from './vwc-checkbox.css';
 
 declare global {
 	interface HTMLElementTagNameMap {

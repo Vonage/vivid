@@ -1,7 +1,8 @@
 import '../vwc-menu.js';
 import '../../button/vwc-button.js';
-import { textToDomToParent, waitNextTask } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
+import { textToDomToParent, waitNextTask } from '../../../test/test-helpers.js';
+
 chai.use(chaiDomDiff);
 
 describe('vwc-menu', () => {

@@ -1,18 +1,18 @@
 import '../vwc-select.js';
 import '@vonage/vwc-list/vwc-list-item.js';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	textToDomToParent,
 	waitNextTask,
 	waitInterval,
 	assertComputedStyle,
 } from '../../../test/test-helpers.js';
-import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
 
-const COMPONENT_NAME = 'vwc-select',
-	HELPER_MESSAGE = 'helper',
-	ERROR_MESSAGE = 'error';
+const COMPONENT_NAME = 'vwc-select';
+	const HELPER_MESSAGE = 'helper';
+	const ERROR_MESSAGE = 'error';
 
 describe('select helper', () => {
 	let addedElements = [];

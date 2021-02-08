@@ -34,7 +34,9 @@ let chipIdCounter = 0;
 
 export class ChipSetBase extends BaseElement {
 	@query('.mdc-chip-set') protected mdcRoot!: HTMLElement;
+
 	protected mdcFoundation!: MDCChipSetFoundation;
+
 	protected readonly mdcFoundationClass = MDCChipSetFoundation;
 
 	@property()
@@ -50,12 +52,13 @@ export class ChipSetBase extends BaseElement {
 	}
 
 	private chipsArray: ChipBase[] = [];
+
 	private chipsObserver = new MutationObserver(() => this.syncChips());
 
 	protected createAdapter(): MDCChipSetAdapter {
 		return {
 			hasClass: addHasRemoveClass(this.mdcRoot).hasClass,
-			announceMessage: function (message) {
+			announceMessage (message) {
 				announce(message);
 			},
 			removeChipAtIndex: (index) => {

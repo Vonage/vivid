@@ -23,4 +23,4 @@ export const argTypes = {
 	styles: { table: { disable: true } },
 	bufferFlexBasisValue: { table: { disable: true } },
 	primaryTransformValue: { table: { disable: true } }
-}
+};

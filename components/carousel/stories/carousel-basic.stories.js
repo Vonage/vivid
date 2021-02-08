@@ -4,7 +4,7 @@ import { html } from 'lit-element';
 export default {
 	title: 'Components/Composite/Carousel',
 	component: 'vwc-carousel'
-}
+};
 
 export const basic = () => html`
 	<style>

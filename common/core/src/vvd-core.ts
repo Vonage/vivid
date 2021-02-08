@@ -1,9 +1,9 @@
 import fonts from '@vonage/vvd-fonts/vvd-fonts.js';
 import schemeService, { SchemeOption } from '@vonage/vvd-scheme';
 
-const VVD_CONTEXT_ATTRIBUTE = 'data-vvd-context',
-	NONE_INIT_VALUE = 'none',
-	VALID_CONFIGURATION_KEYS = ['scheme'];
+const VVD_CONTEXT_ATTRIBUTE = 'data-vvd-context';
+	const NONE_INIT_VALUE = 'none';
+	const VALID_CONFIGURATION_KEYS = ['scheme'];
 
 export interface Configuration {
 	scheme?: SchemeOption;

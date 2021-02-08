@@ -1,5 +1,5 @@
 export default Object.freeze({
-	init: init,
+	init,
 });
 
 const READY_PROMISE_TIMEOUT = 12000;

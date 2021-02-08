@@ -1,13 +1,13 @@
 import '../vwc-note.js';
 import {
-	textToDomToParent,
-	isolatedElementsCreation,
-} from '../../../test/test-helpers.js';
-import {
 	assertConnotationAttribute,
 	assertConnotationProperty,
 } from '@vonage/vvd-foundation/test/connotation.test.js';
 import { Connotation } from '@vonage/vvd-foundation/constants';
+import {
+	textToDomToParent,
+	isolatedElementsCreation,
+} from '../../../test/test-helpers.js';
 
 const VWC_NOTE = 'vwc-note';
 const CONNOTATIONS_SUPPORTED = Object.values(Connotation).filter((c) =>
@@ -33,7 +33,7 @@ describe('note connotation', () => {
 			const [note] = addElement(textToDomToParent(`<${VWC_NOTE}></${VWC_NOTE}>`));
 			await assertConnotationAttribute({
 				element: note,
-				connotation: connotation,
+				connotation,
 				stylesAffected: ['borderInlineStartColor'],
 			});
 		});
@@ -42,7 +42,7 @@ describe('note connotation', () => {
 			const [note] = addElement(textToDomToParent(`<${VWC_NOTE}></${VWC_NOTE}>`));
 			await assertConnotationProperty({
 				element: note,
-				connotation: connotation,
+				connotation,
 				stylesAffected: ['borderInlineStartColor'],
 			});
 		});

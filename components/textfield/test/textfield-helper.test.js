@@ -1,17 +1,17 @@
 import '../vwc-textfield.js';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	textToDomToParent,
 	waitNextTask,
 	waitInterval,
 	assertComputedStyle,
 } from '../../../test/test-helpers.js';
-import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
 
-const COMPONENT_NAME = 'vwc-textfield',
-	HELPER_MESSAGE = 'helper',
-	ERROR_MESSAGE = 'error';
+const COMPONENT_NAME = 'vwc-textfield';
+	const HELPER_MESSAGE = 'helper';
+	const ERROR_MESSAGE = 'error';
 
 describe('textfield helper', () => {
 	let addedElement;

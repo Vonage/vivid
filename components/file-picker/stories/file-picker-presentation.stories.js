@@ -8,7 +8,7 @@ export default {
 	title: 'Components/Composite/File Picker/Presentation',
 	component: 'vwc-file-picker',
 	argTypes
-}
+};
 
 const TemplateA = args => html`
 	<vwc-file-picker ...=${spread(args.self)}><input type="file" name="fi-name" ...=${spread(args.input)}/></vwc-file-picker>

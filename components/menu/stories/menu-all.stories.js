@@ -9,7 +9,7 @@ export default {
 	title: 'Components/Atoms/Menu',
 	component: 'vwc-menu',
 	argTypes
-}
+};
 
 export { WithVWCListItem, WithVWCListItemComplex } from './menu-basic.js';
 

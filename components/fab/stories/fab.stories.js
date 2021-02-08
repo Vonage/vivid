@@ -7,7 +7,7 @@ export default {
 	title: 'Components/Atoms/Fab',
 	component: 'vwc-fab',
 	argTypes
-}
+};
 
 const Template = args => html`<vwc-fab ...=${spread(args)} @click="${onClick}"></vwc-fab>`;
 

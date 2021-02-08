@@ -38,13 +38,17 @@ function NOOP(): void {
 
 export class ChipBase extends BaseElement {
 	@query('.mdc-chip') protected mdcRoot!: HTMLElement;
+
 	protected mdcFoundation!: MDCChipFoundation;
+
 	protected readonly mdcFoundationClass = MDCChipFoundation;
 
 	@property()
 	label = '';
+
 	@property({ reflect: true })
 	type?: ChipType;
+
 	@property({ type: Boolean })
 	get selected(): boolean {
 		return this._selected;
@@ -59,26 +63,34 @@ export class ChipBase extends BaseElement {
 
 	@property()
 	icon = '';
+
 	@property()
 	iconClass = 'material-icons';
+
 	@property({ type: Boolean })
 	@observer(function (this: ChipBase, value: boolean) {
 		this.mdcFoundation.setShouldRemoveOnTrailingIconClick(value);
 	})
 	removable = false;
+
 	@property()
 	removeIcon = 'close';
+
 	@property()
 	removeIconClass = 'material-icons';
+
 	@property({ type: Boolean })
 	removeIconFocusable = false;
 
 	@query(MDCChipFoundation.strings.LEADING_ICON_SELECTOR)
 	protected leadingIconElement!: HTMLElement | null;
+
 	@query(MDCChipFoundation.strings.CHECKMARK_SELECTOR)
 	protected checkmarkElement!: HTMLElement | null;
+
 	@query(MDCChipFoundation.strings.PRIMARY_ACTION_SELECTOR)
 	protected primaryActionElement!: HTMLElement | null;
+
 	@query(MDCChipFoundation.strings.TRAILING_ACTION_SELECTOR)
 	protected trailingActionElement!: HTMLElement | null;
 
@@ -102,9 +114,7 @@ export class ChipBase extends BaseElement {
 					this.trailingActionElement.focus();
 				}
 			},
-			getAttribute: (attrName: string) => {
-				return this.mdcRoot.getAttribute(attrName);
-			},
+			getAttribute: (attrName: string) => this.mdcRoot.getAttribute(attrName),
 			getCheckmarkBoundingClientRect: () =>
 				this.checkmarkElement && this.checkmarkElement.getBoundingClientRect(),
 			getComputedStyleValue: (propertyName) =>
@@ -113,13 +123,11 @@ export class ChipBase extends BaseElement {
 			hasLeadingIcon: () => !!this.leadingIconElement,
 			isRTL: () =>
 				getComputedStyle(this.mdcRoot).getPropertyValue('direction') === 'rtl',
-			isTrailingActionNavigable: () => {
-				return (
+			isTrailingActionNavigable: () => (
 					this.trailingActionElement &&
 					/* eslint-disable @typescript-eslint/no-explicit-any */
 					(this.trailingActionElement as any).isNavigable()
-				);
-			},
+				),
 			notifyInteraction: () => {
 				const detail: MDCChipInteractionEventDetail = { chipId: this.id };
 				this.dispatchEvent(
@@ -251,13 +259,13 @@ export class ChipBase extends BaseElement {
 			>
 				${this.icon}
 			</i>`;
-		} else if (this.childElementCount > 0) {
+		} if (this.childElementCount > 0) {
 			return html` <span class="mdc-chip__icon mdc-chip__icon--leading">
 				<slot name="thumbnail"></slot>
 			</span>`;
-		} else {
+		} 
 			return html``;
-		}
+		
 	}
 
 	renderCheckmark(): TemplateResult {
@@ -309,9 +317,9 @@ export class ChipBase extends BaseElement {
 
 		if (this.removeIconFocusable) {
 			return html`<span role="gridcell">${icon}</span>`;
-		} else {
+		} 
 			return icon;
-		}
+		
 	}
 
 	private dispatchRemovalEvent(): void {

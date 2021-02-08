@@ -6,10 +6,10 @@ import {
 	queryAssignedNodes,
 	TemplateResult,
 } from 'lit-element';
-import { style } from './vwc-list-expansion-panel.css';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 import { VWCExpansionPanelBase } from '@vonage/vwc-expansion-panel/vwc-expansion-panel-base';
 import { assert } from '@vonage/vvd-foundation/general-utils';
+import { style } from './vwc-list-expansion-panel.css';
 
 declare global {
 	interface HTMLElementTagNameMap {

@@ -18,16 +18,16 @@ const Template = args => html`
   </vwc-tab-bar>`;
 
 export const Basic = Template.bind({});
-Basic.args = { label: 'Tab' }
+Basic.args = { label: 'Tab' };
 
 export const WithIcon = Template.bind({});
-WithIcon.args = { label: 'Tab', icon: 'chat' }
+WithIcon.args = { label: 'Tab', icon: 'chat' };
 
 export const IconOnly = Template.bind({});
-IconOnly.args = { icon: 'chat' }
+IconOnly.args = { icon: 'chat' };
 
 export const Disabled = Template.bind({});
-Disabled.args = { label: 'Tab', icon: 'chat', disabled: '' }
+Disabled.args = { label: 'Tab', icon: 'chat', disabled: '' };
 
 function handleInteraction() {
   console.log('MDCTab:interacted event');

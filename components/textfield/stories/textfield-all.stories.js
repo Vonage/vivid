@@ -17,4 +17,4 @@ export {
 	Icon,
 	PillShape,
 	Validation
-} from './textfield-variants.stories.js'
+} from './textfield-variants.stories.js';

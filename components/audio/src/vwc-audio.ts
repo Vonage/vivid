@@ -3,13 +3,13 @@
 import '@vonage/vwc-media-controller';
 import kefir from 'kefir';
 
-const SYMBOL_TRIGGER = Symbol('trigger'),
-	SYMBOL_AUDIO_EL = Symbol('audio_el');
+const SYMBOL_TRIGGER = Symbol('trigger');
+	const SYMBOL_AUDIO_EL = Symbol('audio_el');
 
 const filterByValue = (filterValue: string) => (value: string) =>
-		value === filterValue,
+		value === filterValue;
 	// eslint-disable-next-line
-	createConnectedProperty = (ingestStream: any) => {
+	const createConnectedProperty = (ingestStream: any) => {
 		return kefir
 			.merge([
 				ingestStream.filter(filterByValue('connected')).map(() => true),
@@ -39,8 +39,8 @@ class VWCAudio extends HTMLElement {
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				// @ts-ignore
 				this[SYMBOL_TRIGGER] = emit;
-			}),
-			connectedProperty = ingestStream.thru(createConnectedProperty);
+			});
+			const connectedProperty = ingestStream.thru(createConnectedProperty);
 
 		connectedProperty
 			.filter(Boolean)
@@ -58,24 +58,24 @@ class VWCAudio extends HTMLElement {
 		const userPlayRequestStream = kefir.fromEvents(
 				controllerEl,
 				'userPlayPauseRequest'
-			),
-			userScrubRequestStream = kefir
+			);
+			const userScrubRequestStream = kefir
 				.fromEvents(controllerEl, 'userScrubRequest')
 				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 				// @ts-ignore
 				// eslint-disable-next-line
-				.map(({ detail }): any => detail),
-			playerTimeUpdatedProperty = kefir
+				.map(({ detail }): any => detail);
+			const playerTimeUpdatedProperty = kefir
 				.fromEvents(audioEl, 'timeupdate')
 				.map(() => audioEl.currentTime)
-				.toProperty(),
-			playerAudioLoadedProperty = kefir
+				.toProperty();
+			const playerAudioLoadedProperty = kefir
 				.merge([
 					kefir.fromEvents(audioEl, 'loadstart').map(() => false),
 					kefir.fromEvents(audioEl, 'canplay').map(() => true),
 				])
-				.toProperty(),
-			playerIsPlayingProperty = kefir
+				.toProperty();
+			const playerIsPlayingProperty = kefir
 				.merge([
 					kefir.fromEvents(audioEl, 'play').map(() => true),
 					kefir
@@ -127,7 +127,7 @@ class VWCAudio extends HTMLElement {
 	/**
 	 * Gets/Sets the playhead position
 	 * @param {number} time - The timestamp (in seconds) to jump to
-	 **/
+	 * */
 	get currentTime(): number {
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
@@ -143,7 +143,7 @@ class VWCAudio extends HTMLElement {
 	/**
 	 * Gets/Sets the audio source
 	 * @param {string} source - The media source file to play
-	 **/
+	 * */
 	get src(): string {
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
@@ -158,7 +158,7 @@ class VWCAudio extends HTMLElement {
 
 	/**
 	 * Starts playback
-	 **/
+	 * */
 	play(): void {
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
@@ -167,7 +167,7 @@ class VWCAudio extends HTMLElement {
 
 	/**
 	 * Pauses playback
-	 **/
+	 * */
 	pause(): void {
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore

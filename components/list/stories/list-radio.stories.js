@@ -16,7 +16,7 @@ export default {
 			}
 		}
 	}
-}
+};
 
 export const radioList = args => html`
 	<style>

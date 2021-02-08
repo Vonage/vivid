@@ -1,12 +1,12 @@
 import '../vwc-switch.js';
 import {
-	textToDomToParent,
-	isolatedElementsCreation,
-} from '../../../test/test-helpers.js';
-import {
 	assertConnotationAttribute,
 	assertConnotationProperty,
 } from '@vonage/vvd-foundation/test/connotation.test.js';
+import {
+	textToDomToParent,
+	isolatedElementsCreation,
+} from '../../../test/test-helpers.js';
 
 const VWC_SWITCH = 'vwc-switch';
 const CONNOTATIONS_SUPPORTED = ['primary', 'cta', 'success', 'alert'];
@@ -21,7 +21,7 @@ describe('switch connotation', () => {
 			);
 			await assertConnotationAttribute({
 				element: vwcSwitch,
-				connotation: connotation,
+				connotation,
 				childrenAffected: ['.mdc-switch__track'],
 				stylesAffected: ['backgroundColor'],
 			});
@@ -33,7 +33,7 @@ describe('switch connotation', () => {
 			);
 			await assertConnotationProperty({
 				element: vwcSwitch,
-				connotation: connotation,
+				connotation,
 				childrenAffected: ['.mdc-switch__track'],
 				stylesAffected: ['backgroundColor'],
 			});

@@ -1,13 +1,13 @@
 import '../vwc-badge.js';
 import {
+	assertConnotationAttribute,
+	assertConnotationProperty,
+} from '@vonage/vvd-foundation/test/connotation.test.js';
+import {
 	waitNextTask,
 	textToDomToParent,
 	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
-import {
-	assertConnotationAttribute,
-	assertConnotationProperty,
-} from '@vonage/vvd-foundation/test/connotation.test.js';
 
 const VWC_BADGE = 'vwc-badge';
 const CONNOTATIONS_SUPPORTED = [
@@ -22,7 +22,7 @@ const CONNOTATIONS_SUPPORTED = [
 describe('badge connotation', () => {
 	const addElement = isolatedElementsCreation();
 
-	it(`should sync badge class member 'connotation' and html attribute 'connotation'`, async function () {
+	it(`should sync badge class member 'connotation' and html attribute 'connotation'`, async () => {
 		const [badge] = addElement(
 			textToDomToParent(`<${VWC_BADGE}>Badge Text</${VWC_BADGE}>`)
 		);
@@ -59,7 +59,7 @@ describe('badge connotation', () => {
 			);
 			await assertConnotationAttribute({
 				element: badge,
-				connotation: connotation,
+				connotation,
 				childrenAffected: ['::before'],
 				stylesAffected: ['backgroundColor'],
 			});
@@ -71,7 +71,7 @@ describe('badge connotation', () => {
 			);
 			await assertConnotationProperty({
 				element: badge,
-				connotation: connotation,
+				connotation,
 				childrenAffected: ['::before'],
 				stylesAffected: ['backgroundColor'],
 			});

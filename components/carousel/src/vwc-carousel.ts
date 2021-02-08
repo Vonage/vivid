@@ -8,9 +8,9 @@ import {
 	CSSResult,
 	TemplateResult,
 } from 'lit-element';
-import { style } from './vwc-carousel.css';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import Swiper, { SwiperOptions } from 'swiper';
+import { style } from './vwc-carousel.css';
 import '@vonage/vwc-icon';
 import './vwc-carousel-item.js';
 
@@ -30,20 +30,27 @@ export class VWCCarousel extends LitElement {
 	@property({
 		type: Boolean,
 		reflect: true,
-		converter: (v) => (v && v === 'false' ? false : true),
+		converter: (v) => (!(v && v === 'false')),
 	})
 	autoplay = true;
+
 	@query('.swiper-container')
 	private swiperContainer?: HTMLElement;
+
 	@query('.swiper-wrapper')
 	private swiperWrapper?: HTMLElement;
+
 	@query('.swiper-button-next')
 	private swiperButtonNext?: HTMLElement;
+
 	@query('.swiper-button-prev')
 	private swiperButtonPrev?: HTMLElement;
+
 	@query('.swiper-pagination')
 	private swiperPagination?: HTMLElement;
+
 	private swiper?: Swiper;
+
 	private slideRefs: HTMLElement[] = [];
 
 	static get styles(): CSSResult[] {
@@ -147,7 +154,7 @@ export class VWCCarousel extends LitElement {
 	}
 
 	private collectSlideRefs(swiper: Swiper): void {
-		const slides = swiper.slides;
+		const {slides} = swiper;
 		for (let i = 0, l = slides.length; i < l; i++) {
 			this.slideRefs[i] = slides[i];
 		}
@@ -155,7 +162,7 @@ export class VWCCarousel extends LitElement {
 
 	private moveFirstIfNeeded(swiper?: Swiper): void {
 		const s = swiper ?? ((this as unknown) as Swiper);
-		const slides = s.slides;
+		const {slides} = s;
 		if (slides.length > 2 && s.isEnd) {
 			const first = slides[0];
 			s.removeSlide(0);
@@ -165,7 +172,7 @@ export class VWCCarousel extends LitElement {
 
 	private moveLastIfNeeded(swiper?: Swiper): void {
 		const s = swiper ?? ((this as unknown) as Swiper);
-		const slides = s.slides;
+		const {slides} = s;
 		if (slides.length > 2 && s.isBeginning) {
 			const last = slides[slides.length - 1];
 			s.removeSlide(slides.length - 1);
@@ -217,7 +224,7 @@ export class VWCCarousel extends LitElement {
 
 	private calculateActiveIndex(swiper: Swiper): number {
 		const nai = swiper.activeIndex;
-		const slides = swiper.slides;
+		const {slides} = swiper;
 		return this.slideRefs.indexOf(slides[nai]);
 	}
 }

@@ -9,4 +9,4 @@ export const argTypes = {
 			].includes(c)),
 		}
 	}
-}
+};

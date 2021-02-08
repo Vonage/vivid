@@ -10,7 +10,7 @@ export default {
 	title: 'Components/Atoms/Drawer',
 	component: 'vwc-drawer',
 	argTypes
-}
+};
 
 const Template = args => html`
 		<vwc-drawer id="drawer" @MDCDrawer:opened="${handleOpened}" @MDCDrawer:closed="${handleClosed}" ...=${spread(args)}>

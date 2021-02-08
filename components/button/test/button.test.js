@@ -1,8 +1,12 @@
 import '../vwc-button.js';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	waitNextTask,
 	textToDomToParent,
 	assertComputedStyle,
+
+	isolatedElementsCreation,
+	randomAlpha,
 } from '../../../test/test-helpers.js';
 import {
 	sizingTestCases,
@@ -10,11 +14,7 @@ import {
 	shapePillTestCases,
 } from '../../../test/shared';
 import { connotationTestCases } from './button.connotation.test.js';
-import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
-import {
-	isolatedElementsCreation,
-	randomAlpha,
-} from '../../../test/test-helpers';
+
 
 chai.use(chaiDomDiff);
 
@@ -38,12 +38,12 @@ describe('button', () => {
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
-	describe('Form Association', function () {
+	describe('Form Association', () => {
 		function hiddenButtonExists(formElement) {
 			return formElement.querySelector('button') !== null;
 		}
 
-		it('should submit form when inside a form', async function () {
+		it('should submit form when inside a form', async () => {
 			let submitted = false;
 			const addedElements = addElement(
 				textToDomToParent(
@@ -60,7 +60,7 @@ describe('button', () => {
 			expect(submitted).to.equal(true);
 		});
 
-		it('should submit form when of type submit', async function () {
+		it('should submit form when of type submit', async () => {
 			let submitted = false;
 			const addedElements = addElement(
 				textToDomToParent(
@@ -77,7 +77,7 @@ describe('button', () => {
 			expect(submitted).to.equal(true);
 		});
 
-		it('should reset form when of type reset', async function () {
+		it('should reset form when of type reset', async () => {
 			let submitted = false;
 			let reset = false;
 			const addedElements = addElement(
@@ -97,7 +97,7 @@ describe('button', () => {
 			expect(submitted).to.equal(false);
 		});
 
-		it('should associate with external form attribute is set with form id', async function () {
+		it('should associate with external form attribute is set with form id', async () => {
 			const submitted = {
 				external: false,
 				internal: false,
@@ -149,7 +149,7 @@ describe('button', () => {
 			);
 		});
 
-		it('should associate with form even if the form is added after the button', async function () {
+		it('should associate with form even if the form is added after the button', async () => {
 			const afterSubmit = {
 				external: false,
 				internal: false,
@@ -199,7 +199,7 @@ describe('button', () => {
 			expect(afterSubmit).to.eql(expectedAfterSubmitted);
 		});
 
-		it('should associate with no form if form attribute is set with nonexistent id', async function () {
+		it('should associate with no form if form attribute is set with nonexistent id', async () => {
 			const submitted = {
 				external: false,
 				internal: false,
@@ -247,7 +247,7 @@ describe('button', () => {
 			expect(submitted).to.eql(expectedSubmitted);
 		});
 
-		it(`should do nothing when of type button`, async function () {
+		it(`should do nothing when of type button`, async () => {
 			let submitted = false;
 			let reset = false;
 			const addedElements = addElement(
@@ -267,7 +267,7 @@ describe('button', () => {
 			expect(submitted, 'submit was initiated').to.equal(false);
 		});
 
-		it(`should submit even when requestSubmit is not supported`, async function () {
+		it(`should submit even when requestSubmit is not supported`, async () => {
 			let submitted = false;
 			const addedElements = addElement(
 				textToDomToParent(
@@ -285,7 +285,7 @@ describe('button', () => {
 			expect(submitted, 'submit was not initiated').to.equal(true);
 		});
 
-		it(`should cleanup the hidden button on disconnection`, async function () {
+		it(`should cleanup the hidden button on disconnection`, async () => {
 			const [formElement] = addElement(
 				textToDomToParent(
 					`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}></form>`
@@ -300,7 +300,7 @@ describe('button', () => {
 			expect(hiddenButtonExists(formElement)).to.equal(false);
 		});
 
-		it(`should set the form property to parent form`, async function () {
+		it(`should set the form property to parent form`, async () => {
 			const [formElement] = addElement(
 				textToDomToParent(
 					`<form onsubmit="return false" name="testForm" id="testForm">
@@ -313,7 +313,7 @@ describe('button', () => {
 			expect(actualElement.form).to.equal(formElement);
 		});
 
-		it(`should set the form property to form with the form's attribute`, async function () {
+		it(`should set the form property to form with the form's attribute`, async () => {
 			const otherFormId = randomAlpha();
 			const [formElement, otherForm] = addElement(
 				textToDomToParent(
@@ -330,7 +330,7 @@ describe('button', () => {
 			expect(actualElement.form).to.equal(otherForm);
 		});
 
-		it(`should have display:none on the hidden button`, async function () {
+		it(`should have display:none on the hidden button`, async () => {
 			const [formElement] = addElement(
 				textToDomToParent(
 					`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}></form>`
@@ -345,21 +345,21 @@ describe('button', () => {
 		});
 	});
 
-	describe(`Safari Fiasco`, function () {
+	describe(`Safari Fiasco`, () => {
 		const originalAttachShadow = HTMLElement.prototype.attachShadow;
 		let attachShadowConfig = {};
 
-		beforeEach(function () {
+		beforeEach(() => {
 			HTMLElement.prototype.attachShadow = function (config) {
 				attachShadowConfig = config;
 			};
 		});
 
-		afterEach(function () {
+		afterEach(() => {
 			HTMLElement.prototype.attachShadow = originalAttachShadow;
 		});
 
-		it(`should set the shadowroot without delegatesFocus: true on Safari`, function () {
+		it(`should set the shadowroot without delegatesFocus: true on Safari`, () => {
 			const isOnSafari = !HTMLFormElement.prototype.requestSubmit;
 			addElement(textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`));
 			expect(Boolean(attachShadowConfig.delegatesFocus)).to.equal(!isOnSafari);

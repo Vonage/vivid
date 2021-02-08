@@ -8,7 +8,7 @@ export default {
 	component: 'vwc-chip',
 	argTypes,
 	args: { label: 'Chip' }
-}
+};
 
 const Template = args => html`<vwc-chip ...=${spread(args)}></vwc-chip>`;
 

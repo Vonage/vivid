@@ -27,12 +27,12 @@ class TestComponent extends HTMLElement {}
 
 window.customElements.define('test-component', TestComponent);
 
-describe(`Form Association Foundation`, function () {
+describe(`Form Association Foundation`, () => {
 	let addElement = isolatedElementsCreation();
 
-	describe(`associateWithForm`, function () {
+	describe(`associateWithForm`, () => {
 		let originalSetCustomValidity;
-		beforeEach(function () {
+		beforeEach(() => {
 			originalSetCustomValidity = HTMLElement.prototype.setCustomValidity;
 			HTMLElement.prototype.setCustomValidity = function () {
 				return 5;
@@ -43,7 +43,7 @@ describe(`Form Association Foundation`, function () {
 			HTMLElement.prototype.setCustomValidity = originalSetCustomValidity;
 		});
 
-		it(`should attach a hidden input to form with given name`, function () {
+		it(`should attach a hidden input to form with given name`, () => {
 			const fieldName = 'fieldName';
 			const [formElement] = addElement(
 				textToDomToParent(`<form><div><input></input></div></form>`)
@@ -66,7 +66,7 @@ describe(`Form Association Foundation`, function () {
 			).to.equal(1);
 		});
 
-		it(`should attach a hidden input to form with given type`, function () {
+		it(`should attach a hidden input to form with given type`, () => {
 			const fieldType = 'password';
 			const [formElement] = addElement(
 				textToDomToParent(`<form><div><input></input></div></form>`)
@@ -89,7 +89,7 @@ describe(`Form Association Foundation`, function () {
 			).to.equal(1);
 		});
 
-		it(`should attach a hidden input to form with given id`, function () {
+		it(`should attach a hidden input to form with given id`, () => {
 			const otherFormId = randomAlpha();
 			const [formElement, otherForm] = addElement(
 				textToDomToParent(`
@@ -112,7 +112,7 @@ describe(`Form Association Foundation`, function () {
 			expect(otherForm.querySelectorAll('input').length).to.equal(1);
 		});
 
-		it(`should attach to no form if given form id is not found`, function () {
+		it(`should attach to no form if given form id is not found`, () => {
 			const otherFormId = randomAlpha();
 			const nonExistentFormId = 'someOtherFormId';
 			const fieldName = 'fieldName';
@@ -138,7 +138,7 @@ describe(`Form Association Foundation`, function () {
 			).to.equal(0);
 		});
 
-		it(`should reset value of the internal input, the wrapper and the hidden input on form reset`, function () {
+		it(`should reset value of the internal input, the wrapper and the hidden input on form reset`, () => {
 			const otherFormId = randomAlpha();
 			const defaultValue = 'defaultValue';
 			const fieldName = 'fieldName';
@@ -171,7 +171,7 @@ describe(`Form Association Foundation`, function () {
 			expect(inputElementWrapper.value).to.equal(defaultValue);
 		});
 
-		it(`should set the validity and value of the hidden input according to the internal input`, function () {
+		it(`should set the validity and value of the hidden input according to the internal input`, () => {
 			const otherFormId = randomAlpha();
 			const validValue = 'defaultValue';
 			const invalidValue = 'defaultValue';
@@ -213,7 +213,7 @@ describe(`Form Association Foundation`, function () {
 			});
 		});
 
-		it(`should add hidden element according to internalFormElement type`, function () {
+		it(`should add hidden element according to internalFormElement type`, () => {
 			const hiddenElementType = 'DIGGERING';
 			const fieldName = 'inputName';
 
@@ -236,14 +236,14 @@ describe(`Form Association Foundation`, function () {
 			);
 		});
 
-		describe(`cleanup`, function () {
+		describe(`cleanup`, () => {
 			function getHiddenInput(fieldName) {
 				return document.querySelector(`input[name="${fieldName}"]`);
 			}
 
-			let inputElementWrapper, hiddenInput, fieldName, formElement, defaultValue;
+			let inputElementWrapper; let hiddenInput; let fieldName; let formElement; let defaultValue;
 
-			beforeEach(function () {
+			beforeEach(() => {
 				fieldName = 'fieldName';
 				defaultValue = 'abc';
 
@@ -265,14 +265,14 @@ describe(`Form Association Foundation`, function () {
 				hiddenInput = getHiddenInput(fieldName);
 			});
 
-			it(`should remove hidden input on removal from the DOM`, async function () {
+			it(`should remove hidden input on removal from the DOM`, async () => {
 				inputElementWrapper.remove();
 				await waitNextTask();
 				expect(hiddenInput !== null).to.equal(true);
 				expect(getHiddenInput(fieldName)).to.equal(null);
 			});
 
-			it(`should remove external event listeners on removal from DOM`, async function () {
+			it(`should remove external event listeners on removal from DOM`, async () => {
 				const inputElementValue = '5';
 
 				inputElementWrapper.value = inputElementWrapper.formElement.value = inputElementValue;
@@ -295,8 +295,8 @@ describe(`Form Association Foundation`, function () {
 		});
 	});
 
-	describe(`requestSubmit`, function () {
-		it(`should submit a form on requestSubmit when given a form with a submit button`, function () {
+	describe(`requestSubmit`, () => {
+		it(`should submit a form on requestSubmit when given a form with a submit button`, () => {
 			let formSubmitted = false;
 
 			const [formElement] = addElement(
@@ -313,7 +313,7 @@ describe(`Form Association Foundation`, function () {
 		});
 	});
 
-	describe(`submitOnEnter`, function () {
+	describe(`submitOnEnter`, () => {
 		function dispatchKeyEvent(keyName) {
 			const ke = new KeyboardEvent('keydown', {
 				bubbles: true,
@@ -341,23 +341,23 @@ describe(`Form Association Foundation`, function () {
 			submitOnEnter(textAreaElement);
 		}
 
-		beforeEach(function () {
+		beforeEach(() => {
 			setupTest();
 		});
 
-		it(`should submit the form when hitting the "Enter" key`, function () {
+		it(`should submit the form when hitting the "Enter" key`, () => {
 			dispatchKeyEvent(keyName);
 			dispatchKeyEvent(keyName);
 			expect(formSubmitted).to.equal(2);
 		});
 
-		it(`should not fire submit when hitting a non "Enter" key`, function () {
+		it(`should not fire submit when hitting a non "Enter" key`, () => {
 			const nonDesignatedKey = 'e';
 			dispatchKeyEvent(nonDesignatedKey);
 			expect(formSubmitted).to.equal(0);
 		});
 
-		it(`should bind to external form according to form attribute`, function () {
+		it(`should bind to external form according to form attribute`, () => {
 			const otherFormId = randomAlpha();
 			const [otherFormElement] = addElement(
 				textToDomToParent(
@@ -374,7 +374,7 @@ describe(`Form Association Foundation`, function () {
 			expect(otherFormSubmitted).to.equal(1);
 		});
 
-		it(`should not throw if cannot find a form`, function () {
+		it(`should not throw if cannot find a form`, () => {
 			textAreaElement.setAttribute('form', 'noneExistentFormId');
 			expect(dispatchKeyEvent(keyName)).to.equal(undefined);
 		});

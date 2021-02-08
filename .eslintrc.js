@@ -31,53 +31,7 @@ module.exports = {
 		'compat/compat': 'error',
 		'indent': 'off',
 		'linebreak-style': ['error', 'unix'],
-		'semi': 'off', // ['error', 'always'], //! should ENABLE after PR merge
-		'no-use-before-define': 'off', //! should remove after PR merge
-		'import/no-extraneous-dependencies': 'off', //! should remove after PR merge
-		'object-shorthand': 'off', //! should remove after PR merge
-		'import/order': 'off', //! should remove after PR merge
-		'import/newline-after-import': 'off', //! should remove after PR merge
-		'import/no-extraneous-dependencies': 'off', //! should remove after PR merge
-		'import/no-unresolved': 'off', //! should remove after PR merge
-		'import/no-named-default': 'off', //! should remove after PR merge
-		'one-var': 'off', //! should remove after PR merge
-		'prefer-arrow-callback': 'off', //! should remove after PR merge
-		'func-names': 'off', //! should remove after PR merge
-		'import/extensions': 'off', //! should remove after PR merge
-		'spaced-comment': 'off', //! should remove after PR merge
-		'prefer-destructuring': 'off', //! should remove after PR merge
-		'arrow-body-style': 'off', //! should remove after PR merge
-		'import/no-duplicates': 'off', //! should remove after PR merge
-		'prefer-promise-reject-errors': 'off', //! should remove after PR merge
-		'no-console': 'off', //! should remove after PR merge
-		'no-param-reassign': 'off', //! should remove after PR merge
-		'array-callback-return': 'off', //! should remove after PR merge
-		'consistent-return': 'off', //! should remove after PR merge
-		'no-restricted-syntax': 'off', //! should remove after PR merge
-		'guard-for-in': 'off', //! should remove after PR merge
-		'no-cond-assign': 'off', //! should remove after PR merge
-		'camelcase': 'off', //! should remove after PR merge
-		'no-return-assign': 'off', //! should remove after PR merge
-		'no-plusplus': 'off', //! should remove after PR merge
-		'no-nested-ternary': 'off', //! should remove after PR merge
-		'class-methods-use-this': 'off', //! should remove after PR merge
-		'lit/attribute-value-entities': 'off', //! should remove after PR merge
-		'lines-between-class-members': 'off', //! should remove after PR merge
-		'prefer-object-spread': 'off', //! should remove after PR merge
-		'no-multi-assign': 'off', //! should remove after PR merge
-		'import/first': 'off', //! should remove after PR merge
-		'no-unused-expressions': 'off', //! should remove after PR merge
-		'eqeqeq': 'off', //! should remove after PR merge
-		'wc/guard-super-call': 'off', //! should remove after PR merge
-		'lit/no-template-bind': 'off', //! should remove after PR merge
-		'no-bitwise': 'off', //! should remove after PR merge
-		'radix': 'off', //! should remove after PR merge
-		'lit-a11y/anchor-is-valid': 'off', //! should remove after PR merge
-		'no-else-return': 'off', //! should remove after PR merge
-		'lit-a11y/click-events-have-key-events': 'off', //! should remove after PR merge
-		'lit-a11y/iframe-title': 'off', //! should remove after PR merge
-		'lit-a11y/alt-text': 'off', //! should remove after PR merge
-		'no-unneeded-ternary': 'off', //! should remove after PR merge
+		'semi': ['error', 'always'],
 		'no-unused-vars': [
 			'error',
 			{

@@ -1,12 +1,13 @@
 import '@vonage/vwc-slider';
 import schemeService from '@vonage/vvd-scheme';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	isolatedElementsCreation,
 	textToDomToParent,
 	waitNextTask,
 	assertComputedStyle,
 } from '../../../test/test-helpers.js';
-import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
+
 chai.use(chaiDomDiff);
 
 const VWC_SLIDER = 'vwc-slider';

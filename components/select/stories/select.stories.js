@@ -9,7 +9,7 @@ export default {
 	title: 'Components/Atoms/Select',
 	component: 'vwc-select',
 	argTypes
-}
+};
 
 const Template = (args) => html`
 	<vwc-select ...=${spread(args)} @selected=${onSelected}>

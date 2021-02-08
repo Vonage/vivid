@@ -4,7 +4,7 @@ import { html } from 'lit-element';
 export default {
 	title: 'Components/Composite/Keypad',
 	component: 'vwc-keypad'
-}
+};
 
 export const basic = () => html`
 	<h3>Default</h3>

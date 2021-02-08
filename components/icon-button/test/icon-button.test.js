@@ -1,9 +1,10 @@
 import '../vwc-icon-button.js';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	waitNextTask,
 	textToDomToParent,
 	assertComputedStyle,
-} from '../../../test/test-helpers.js';
+ isolatedElementsCreation } from '../../../test/test-helpers.js';
 import { layoutStyles, topLevelSelectors } from '../../../test/style-utils.js';
 import {
 	sizingTestCases,
@@ -11,8 +12,7 @@ import {
 	shapeCircledTestCases,
 } from '../../../test/shared';
 import { connotationTestCases } from '../../button/test/button.connotation.test.js';
-import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
-import { isolatedElementsCreation } from '../../../test/test-helpers';
+
 
 chai.use(chaiDomDiff);
 
@@ -49,7 +49,7 @@ describe('icon button', () => {
 	});
 
 	describe('icon button layout', () => {
-		let formElement, actualElement;
+		let formElement; let actualElement;
 		beforeEach(async () => {
 			const addedElements = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} icon="bin"></${COMPONENT_NAME}>`)

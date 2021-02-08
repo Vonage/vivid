@@ -1,10 +1,10 @@
 import '../vwc-checkbox.js';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	textToDomToParent,
 	waitNextTask,
 	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
-import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
 

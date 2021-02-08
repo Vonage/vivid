@@ -6,9 +6,9 @@ import _ from 'lodash';
 import R from 'ramda';
 
 const
-	propertiesPath = resolve('../../node_modules/@vonage/vvd-design-tokens-properties'),
-	CUSTOM_SCHEMES_FORMAT = 'custom/web/scss/schemes',
-	OUTPUT_FOLDER = 'build/scss/schemes';
+	propertiesPath = resolve('../../node_modules/@vonage/vvd-design-tokens-properties');
+	const CUSTOM_SCHEMES_FORMAT = 'custom/web/scss/schemes';
+	const OUTPUT_FOLDER = 'build/scss/schemes';
 
 StyleDictionaryPackage.registerFormat({
 	name: CUSTOM_SCHEMES_FORMAT,
@@ -56,7 +56,7 @@ const alternateConfig = curriedGetStyleDictionaryConfig(R.__, 'alternate');
 export const render = () => {
 	fs.rmdirSync(OUTPUT_FOLDER, { recursive: true });
 
-	['light', 'dark'].forEach(function (scheme) {
+	['light', 'dark'].forEach((scheme) => {
 
 		console.log(`\n🎨\x1b[2mProcessing: [\x1b[0m\x1b[36m${scheme}\x1b[0m\x1b[2m]\x1b[0m`);
 

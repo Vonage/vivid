@@ -2,9 +2,9 @@ import '@vonage/vvd-core';
 import { customElement, property, html, TemplateResult } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
 import { Tab as MWCTab } from '@material/mwc-tab';
-import { style as vwcTabStyle } from './vwc-tab.css';
 import { style as mwcTabStyle } from '@material/mwc-tab/mwc-tab-css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
+import { style as vwcTabStyle } from './vwc-tab.css';
 
 declare global {
 	interface HTMLElementTagNameMap {

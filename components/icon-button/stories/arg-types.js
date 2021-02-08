@@ -46,4 +46,4 @@ export const argTypes = {
 	styles: { table: { disable: true } },
 	buttonElement: { table: { disable: true } },
 	ripple: { table: { disable: true } }
-}
+};

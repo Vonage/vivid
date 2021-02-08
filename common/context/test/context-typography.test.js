@@ -30,11 +30,11 @@ describe('vvd-context typography', () => {
 						te.textContent = 'sample';
 						ce.appendChild(te);
 
-						const expectedStyle = Object.assign(
-							{},
-							await getTypographyStyle(typographyContext),
-							deviation.deviations
-						);
+						const expectedStyle = {
+							
+							...await getTypographyStyle(typographyContext),
+							...deviation.deviations
+						};
 						assertComputedStyle(te, expectedStyle);
 
 						iframe.remove();

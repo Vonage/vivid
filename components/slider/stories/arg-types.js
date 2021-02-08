@@ -19,4 +19,4 @@ export const argTypes = {
 	},
 	styles: { table: { disable: true } },
 	ripple: { table: { disable: true } }
-}
+};
