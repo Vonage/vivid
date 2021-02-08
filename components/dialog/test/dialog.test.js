@@ -9,7 +9,7 @@ chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-dialog';
 
-describe.only('Dialog', () => {
+describe('Dialog', () => {
 	async function openDialog(actualElement) {
 		actualElement.open = true;
 		await actualElement.updateComplete;
@@ -17,7 +17,9 @@ describe.only('Dialog', () => {
 
 	async function getScrimElement(actualElement) {
 		await actualElement.updateComplete;
-		const scrimElement = actualElement.shadowRoot.querySelector('.mdc-dialog__scrim');
+		const scrimElement = actualElement.shadowRoot.querySelector(
+			'.mdc-dialog__scrim'
+		);
 		return scrimElement;
 	}
 
@@ -45,8 +47,7 @@ describe.only('Dialog', () => {
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
-
-	it(`should not close dialog when clicking on scrimshaw if modal is set`, async function() {
+	it(`should not close dialog when clicking on scrimshaw if modal is set`, async function () {
 		const actualElement = await getDialogElement();
 
 		const scrimElement = await getScrimElement(actualElement);
@@ -59,6 +60,4 @@ describe.only('Dialog', () => {
 
 		expect(actualElement.open).to.equal(true);
 	});
-
-
 });

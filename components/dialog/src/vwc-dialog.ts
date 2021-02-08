@@ -59,10 +59,10 @@ export class VWCDialog extends MWCDialog {
 				?.prepend(iconTemplate.content.cloneNode(true));
 		}
 
-		_changedProperties.forEach((value: any, key) => {
+		_changedProperties.forEach((value: unknown, key) => {
 			const cb = PROPERTIES_CHANGE_HANDLERS[key as string];
 			cb &&
-				(cb as (context: VWCDialog, value: unknown) => void) (this, value);
+				(cb as (context: VWCDialog, val: unknown) => void) (this, value);
 		});
 	}
 }
