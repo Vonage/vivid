@@ -31,7 +31,7 @@
 		"test:prune-snapshots": "karma start --prune-snapshots",
 		"test:bs": "karma start karma.bs.config.js --coverage",
 		"git:sync": "git submodule sync && git submodule update --init --recursive --remote",
-		"postinstall": "yarn link",
+		"postinstall": "husky install && yarn link",
 		"link": "lerna link",
 		"storybook:vivid:pre": "yarn compile && yarn wca:json && node ./.storybook/build-scripts/build-pre.mjs",
 		"storybook:vivid:post": "node ./.storybook/build-scripts/build-post.mjs",
