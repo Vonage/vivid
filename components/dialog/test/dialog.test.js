@@ -22,7 +22,7 @@ describe.only('Dialog', () => {
 	}
 
 	async function toggleModalMode(actualElement, mode = true) {
-		actualElement.modal = mode;
+		actualElement.modalMode = mode;
 		await actualElement.updateComplete;
 	}
 

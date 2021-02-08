@@ -22,10 +22,34 @@ iconTemplate.innerHTML = `
 // @ts-ignore
 MWCDialog.styles = [styleCoupling, mwcDialogStyle, style];
 
+
+function modalMode(context: VWCDialog, value: unknown): void {
+	const contentElement = context.renderRoot.querySelector('.mdc-dialog__scrim');
+	if (contentElement) {
+		value
+			? context.scrimClickAction = 'closed'
+			: context.scrimClickAction = '';
+	}
+}
+
+function hideActions(context: VWCDialog, value: unknown): void {
+	const contentElement = context.renderRoot.querySelector('#content');
+	if (contentElement) {
+		value
+			? contentElement.classList.remove('last')
+			: contentElement.classList.add('last');
+	}
+}
+
+const PROPERTIES_CHANGE_HANDLERS: {[key: string]: unknown} = {
+	modalMode,
+	hideActions
+};
+
 @customElement('vwc-dialog')
 export class VWCDialog extends MWCDialog {
 	@property({ type: Boolean, reflect: true })
-	modal = false;
+	modalMode = false;
 
 	protected updated(_changedProperties: PropertyValues): void {
 		super.updated(_changedProperties);
@@ -35,22 +59,10 @@ export class VWCDialog extends MWCDialog {
 				?.prepend(iconTemplate.content.cloneNode(true));
 		}
 
-		if (_changedProperties.has('hideActions')) {
-			const contentElement = this.renderRoot.querySelector('#content');
-			if (contentElement) {
-				_changedProperties.get('hideActions')
-					? contentElement.classList.remove('last')
-					: contentElement.classList.add('last');
-			}
-		}
-
-		if (_changedProperties.has('modal')) {
-			const contentElement = this.renderRoot.querySelector('.mdc-dialog__scrim');
-			if (contentElement) {
-				_changedProperties.get('modal')
-					? this.scrimClickAction = "closed"
-					: this.scrimClickAction = "";
-			}
-		}
+		_changedProperties.forEach((value: any, key) => {
+			const cb = PROPERTIES_CHANGE_HANDLERS[key as string];
+			cb &&
+				(cb as (context: VWCDialog, value: unknown) => void) (this, value);
+		});
 	}
 }
