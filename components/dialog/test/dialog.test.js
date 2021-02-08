@@ -29,8 +29,8 @@ describe('Dialog', () => {
 	}
 
 	async function getDialogElement() {
-		const [actualElement] = (
-			textToDomToParent(`<${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}>`)
+		const [actualElement] = textToDomToParent(
+			`<${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}>`
 		);
 		await actualElement.updateComplete;
 		return actualElement;
@@ -61,7 +61,7 @@ describe('Dialog', () => {
 		expect(actualElement.open).to.equal(true);
 	});
 
-	it(`should close dialog when clicking on scrim if modal is not set`, async function() {
+	it(`should close dialog when clicking on scrim if modal is not set`, async function () {
 		const actualElement = await getDialogElement();
 
 		const scrimElement = await getScrimElement(actualElement);
