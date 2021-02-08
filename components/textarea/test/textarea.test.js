@@ -287,7 +287,8 @@ describe('textarea', () => {
 	});
 
 	describe('resizable', () => {
-		let formElement; let actualElement;
+		let formElement;
+		let actualElement;
 		beforeEach(async () => {
 			const addedElements = addElement(
 				textToDomToParent(

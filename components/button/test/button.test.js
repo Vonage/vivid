@@ -4,7 +4,6 @@ import {
 	waitNextTask,
 	textToDomToParent,
 	assertComputedStyle,
-
 	isolatedElementsCreation,
 	randomAlpha,
 } from '../../../test/test-helpers.js';
@@ -14,7 +13,6 @@ import {
 	shapePillTestCases,
 } from '../../../test/shared';
 import { connotationTestCases } from './button.connotation.test.js';
-
 
 chai.use(chaiDomDiff);
 

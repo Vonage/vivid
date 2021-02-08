@@ -9,18 +9,18 @@ describe('vwc-audio', () => {
 
 	it('should deliver method calls to Audio', async () => {
 		let fail = [];
-			let counter = 0;
-			let _Audio = window.Audio;
+		let counter = 0;
+		let _Audio = window.Audio;
 
 		const failCheck = (message) => (val) => val || fail.push(message);
-			const tests = {
-				currentTimeSetter: failCheck(
-					"currentTime setter wasn't called with right arg!"
-				),
-				currentTimeGetter: failCheck(''),
-				play: failCheck(''),
-				pause: failCheck(''),
-			};
+		const tests = {
+			currentTimeSetter: failCheck(
+				"currentTime setter wasn't called with right arg!"
+			),
+			currentTimeGetter: failCheck(''),
+			play: failCheck(''),
+			pause: failCheck(''),
+		};
 
 		const exp = (testId, res) => {
 			tests[testId](res);
@@ -32,10 +32,10 @@ describe('vwc-audio', () => {
 		Audio.prototype = Object.assign(
 			Object.create(null, {
 				currentTime: {
-					set (val) {
+					set(val) {
 						exp('currentTimeSetter', val === 5);
 					},
-					get () {
+					get() {
 						exp('currentTimeGetter', true);
 						return 5;
 					},

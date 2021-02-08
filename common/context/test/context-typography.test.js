@@ -31,9 +31,8 @@ describe('vvd-context typography', () => {
 						ce.appendChild(te);
 
 						const expectedStyle = {
-							
-							...await getTypographyStyle(typographyContext),
-							...deviation.deviations
+							...(await getTypographyStyle(typographyContext)),
+							...deviation.deviations,
 						};
 						assertComputedStyle(te, expectedStyle);
 

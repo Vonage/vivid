@@ -11,8 +11,8 @@ import {
 chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-select';
-	const HELPER_MESSAGE = 'helper';
-	const ERROR_MESSAGE = 'error';
+const HELPER_MESSAGE = 'helper';
+const ERROR_MESSAGE = 'error';
 
 describe('select helper', () => {
 	let addedElements = [];

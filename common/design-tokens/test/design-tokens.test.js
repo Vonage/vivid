@@ -5,7 +5,7 @@ import {
 } from '../../../test/style-utils.js';
 
 const ALTERNATE = 'alternate';
-	const MAIN = 'main';
+const MAIN = 'main';
 
 describe('design tokens service', () => {
 	describe('scheme design tokens', () => {

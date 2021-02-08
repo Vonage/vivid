@@ -6,13 +6,13 @@ import {
 	waitNextTask,
 	waitInterval,
 	assertComputedStyle,
- isolatedElementsCreation } from '../../../test/test-helpers.js';
-
+	isolatedElementsCreation,
+} from '../../../test/test-helpers.js';
 
 chai.use(chaiDomDiff);
 
 const VWC_CAROUSEL = 'vwc-carousel';
-	const VWC_CAROUSEL_ITEM = 'vwc-carousel-item';
+const VWC_CAROUSEL_ITEM = 'vwc-carousel-item';
 
 let addElement = isolatedElementsCreation();
 describe('carousel', () => {
@@ -219,7 +219,7 @@ function buildSlidesText(keys) {
 function buildCarouselText(slidesText, options) {
 	const opts = {
 		autoplay: false,
-		...options
+		...options,
 	};
 
 	return `

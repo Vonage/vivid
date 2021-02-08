@@ -4,8 +4,8 @@ import {
 	waitNextTask,
 	textToDomToParent,
 	assertComputedStyle,
- isolatedElementsCreation } from '../../../test/test-helpers.js';
-
+	isolatedElementsCreation,
+} from '../../../test/test-helpers.js';
 
 chai.use(chaiDomDiff);
 

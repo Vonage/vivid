@@ -3,20 +3,18 @@ import kefir from 'kefir';
 import { textToDomToParent } from '../../../test/test-helpers';
 
 const CENTER_Y = 8;
-	const TRACK_X = 37;
-	const TRACK_X_MARGIN = 5;
-	const BUTTON_X = 6;
-	const PERCENTAGE_TOLERANCE = 2;
-	const RESPONSE_TIMEOUT = 100; // ms
+const TRACK_X = 37;
+const TRACK_X_MARGIN = 5;
+const BUTTON_X = 6;
+const PERCENTAGE_TOLERANCE = 2;
+const RESPONSE_TIMEOUT = 100; // ms
 
-const setStyle = (el, style = {}) => 
+const setStyle = (el, style = {}) =>
 	// eslint-disable-next-line
-	 Object.entries(style).reduce((el, [k, v]) => {
+	Object.entries(style).reduce((el, [k, v]) => {
 		el.style[k] = v;
 		return el;
-	}, el)
-;
-
+	}, el);
 const simulateMouseFactory = ({ x: baseX = 0, y: baseY = 0 }) => {
 	let findTarget = (root = document, x, y) => {
 		let target = root.elementFromPoint(x, y);
@@ -29,7 +27,7 @@ const simulateMouseFactory = ({ x: baseX = 0, y: baseY = 0 }) => {
 
 	return (x, y, eventType, options = { bubbles: true, composed: true }) => {
 		let targetX = baseX + x;
-			let targetY = baseY + y;
+		let targetY = baseY + y;
 
 		findTarget(document, targetX, targetY).dispatchEvent(
 			new MouseEvent(eventType, {
@@ -55,11 +53,11 @@ describe('vwc-media-controller', () => {
 
 	describe(`Component Interaction`, () => {
 		let addedElements;
-			let controllerEl;
-			let componentX;
-			let componentY;
-			let componentWidth;
-			let simulateMouse;
+		let controllerEl;
+		let componentX;
+		let componentY;
+		let componentWidth;
+		let simulateMouse;
 
 		beforeEach(() => {
 			addedElements = textToDomToParent(
@@ -83,7 +81,8 @@ describe('vwc-media-controller', () => {
 			addedElements.forEach((elm) => elm.remove());
 		});
 
-		it('Should emit an event when clicking play/pause ', () => new Promise((resolve, reject) => {
+		it('Should emit an event when clicking play/pause ', () =>
+			new Promise((resolve, reject) => {
 				controllerEl.addEventListener('userPlayPauseRequest', resolve);
 				simulateMouse(BUTTON_X, CENTER_Y, 'click');
 				setTimeout(
@@ -109,7 +108,8 @@ describe('vwc-media-controller', () => {
 							y: CENTER_Y,
 							expected: Math.floor((index / SAMPLES) * 100),
 						}))
-						.map(({ x, y, expected }) => kefir
+						.map(({ x, y, expected }) =>
+							kefir
 								.merge([
 									kefir
 										.fromEvents(controllerEl, 'userScrubRequest')
@@ -143,7 +143,8 @@ describe('vwc-media-controller', () => {
 										.ignoreValues(),
 								])
 								.take(1)
-								.takeErrors(1))
+								.takeErrors(1)
+						)
 				)
 				.takeErrors(1)
 				.mapErrors((des) => new Error(des))

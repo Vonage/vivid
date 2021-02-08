@@ -82,8 +82,8 @@ describe('select', () => {
 		}
 
 		let values = [];
-			let fieldName;
-			let formId;
+		let fieldName;
+		let formId;
 
 		beforeEach(() => {
 			values = [Math.random().toString(), Math.random().toString()];
@@ -170,7 +170,8 @@ describe('select', () => {
 			const validValue1 = Math.random().toString();
 			const validValue2 = Math.random().toString();
 			const valuesValidation = [validValue1, validValue2];
-			let formElement; let actualElement;
+			let formElement;
+			let actualElement;
 
 			beforeEach(async () => {
 				[formElement] = addElement(
@@ -266,7 +267,9 @@ describe('select', () => {
 	});
 
 	describe('typography', () => {
-		let addedElements; let formElement; let labelElement;
+		let addedElements;
+		let formElement;
+		let labelElement;
 		beforeEach(async () => {
 			addedElements = addElement(
 				textToDomToParent(`

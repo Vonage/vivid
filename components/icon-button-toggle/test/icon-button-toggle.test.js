@@ -1,7 +1,10 @@
 import '../vwc-icon-button-toggle.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
-import { waitNextTask, textToDomToParent , isolatedElementsCreation } from '../../../test/test-helpers.js';
-
+import {
+	waitNextTask,
+	textToDomToParent,
+	isolatedElementsCreation,
+} from '../../../test/test-helpers.js';
 
 chai.use(chaiDomDiff);
 

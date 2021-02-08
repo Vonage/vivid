@@ -10,8 +10,8 @@ import {
 chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-textfield';
-	const HELPER_MESSAGE = 'helper';
-	const ERROR_MESSAGE = 'error';
+const HELPER_MESSAGE = 'helper';
+const ERROR_MESSAGE = 'error';
 
 describe('textfield helper', () => {
 	let addedElement;
