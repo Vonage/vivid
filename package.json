@@ -14,7 +14,7 @@
 		"stylelint-check": "stylelint-config-prettier-check",
 		"lint:stylelint": "stylelint --config .stylelintrc.js {common,components}/**/*.scss",
 		"lint:eslint": "eslint {common,components}/** --no-error-on-unmatched-pattern",
-		"lint:prettier": "prettier {common,components}/**/*.{ts,scss} **/stories **/test/*.test.js --config .prettierrc.js --ignore-path .prettierignore --check",
+		"lint:prettier": "prettier {common,components}/**/src/*.{js,ts,scss} **/test/*.test.js --config .prettierrc.js --ignore-path .prettierignore --check",
 		"lint": "yarn lint:eslint && yarn lint:stylelint && yarn lint:prettier",
 		"format:stylelint": "yarn lint:stylelint --fix",
 		"format:eslint": "yarn lint:eslint --fix",

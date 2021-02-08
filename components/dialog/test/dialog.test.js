@@ -29,9 +29,9 @@ describe('Dialog', () => {
 	}
 
 	async function getDialogElement() {
-		const [actualElement] = addElement(textToDomToParent(
-			`<${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}>`
-		));
+		const [actualElement] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}>`)
+		);
 		await actualElement.updateComplete;
 		return actualElement;
 	}

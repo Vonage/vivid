@@ -60,7 +60,9 @@ export class VWCDialog extends MWCDialog {
 
 		_changedProperties.forEach((value: unknown, key) => {
 			const cb = PROPERTIES_CHANGE_HANDLERS[key as string];
-			cb && value != undefined && (cb as (context: VWCDialog, val: unknown) => void)(this, value);
+			cb &&
+				value != undefined &&
+				(cb as (context: VWCDialog, val: unknown) => void)(this, value);
 		});
 	}
 }
