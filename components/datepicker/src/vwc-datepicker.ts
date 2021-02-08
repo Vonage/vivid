@@ -3,13 +3,11 @@ import { customElement, property } from 'lit-element';
 import { style as vwcDatepickerStyles } from './vwc-datepicker.css.js';
 import { LitFlatpickr } from 'lit-flatpickr';
 // import weekSelect from 'flatpickr/dist/plugins/weekSelect/weekSelect';
-// import monthSelectPlugin from 'flatpickr/dist/plugins/monthSelect';
-import 'flatpickr/dist/plugins/monthSelect/style.css';
 
 /**
  * TODO:
  * - tidy up <any> types
- * - week and month picker plugin
+ * - setup week and month picker
  */
 
 declare global {
@@ -25,9 +23,6 @@ declare global {
 export class VWCDatepicker extends LitFlatpickr {
 	// @property({ type: Boolean, reflect: true })
 	// weekSelect = false;
-
-	// @property({ type: Boolean, reflect: true })
-	// monthSelect = false;
 
 	@property({ type: Boolean, reflect: true })
 	closeOnSelect = false;
@@ -59,15 +54,7 @@ export class VWCDatepicker extends LitFlatpickr {
 	// firstUpdated(): void {
 	// 	super.firstUpdated();
 
-	// 	if (this.monthSelect) {
-	// 		this.plugins.push(
-	// 			monthSelectPlugin({
-	// 				shorthand: true,
-	// 				dateFormat: 'm.y',
-	// 				altFormat: 'F Y',
-	// 			})
-	// 		);
-	// 	} else if (this.weekSelect) {
+	// 	if (this.weekSelect) {
 	// 		this.plugins.push(weekSelect());
 	// 	}
 	// }
@@ -108,15 +95,11 @@ export class VWCDatepicker extends LitFlatpickr {
 
 			if (rangeStart) {
 				rangeStart.textContent = startDate;
-				startDate
-					? rangeStart.classList.add('selected')
-					: rangeStart.classList.remove('selected');
+				rangeStart.classList.toggle('vvd-selected', !!startDate);
 			}
 			if (rangeEnd) {
 				rangeEnd.textContent = endDate;
-				endDate
-					? rangeEnd.classList.add('selected')
-					: rangeEnd.classList.remove('selected');
+				rangeEnd.classList.toggle('vvd-selected', !!endDate);
 			}
 		}
 	}
@@ -245,7 +228,7 @@ export class VWCDatepicker extends LitFlatpickr {
 			const clearButton: any = document.createElement('vwc-button');
 			clearButton.label = 'Clear';
 			clearButton.shape = 'pill';
-			clearButton.dense = true; // vwc-button css preventing programmatic update
+
 			clearButton.addEventListener('mousedown', (e: InputEvent) =>
 				this.clearSelection(e)
 			);
@@ -275,9 +258,14 @@ export class VWCDatepicker extends LitFlatpickr {
 			for (let i = 0; i < 12; i++) {
 				const month: any = document.createElement('span');
 				month.classList.add('vvd-month');
+
 				// if (this.maxDate && i > this._instance?.config?.maxDate?.getMonth()) {
 				// 	month.classList.add('vvd-disabled');
 				// }
+				if (i === this._instance?.currentMonth) {
+					month.classList.add('vvd-current-month');
+				}
+
 				month.setAttribute('data-month', i);
 				month.textContent = this._instance?.l10n.months.shorthand[i] || '';
 				month.onclick = (e: any) => this.selectMonth(e);
@@ -292,7 +280,6 @@ export class VWCDatepicker extends LitFlatpickr {
 		this._instance?.calendarContainer.classList.remove(
 			'vvd-datepicker-month-view'
 		);
-		// e.target.classList.add('vvd-selected');
 		const selectedMonth = parseInt(e.target.attributes['data-month'].value);
 		this._instance?.changeMonth(selectedMonth - this._instance.currentMonth);
 		this.updateCurrentMonth();
@@ -305,7 +292,9 @@ export class VWCDatepicker extends LitFlatpickr {
 		);
 		const startDate = this._instance?.selectedDates[0];
 		const endDate = this._instance?.selectedDates[1];
+		const todaysMonth = this._instance?.now.getMonth();
 		const currentYear = this._instance?.currentYear;
+		const isTodaysYear = currentYear === this._instance?.now.getFullYear();
 
 		// clear previous selected class
 		const selected = this._instance?.calendarContainer.querySelectorAll(
@@ -315,21 +304,20 @@ export class VWCDatepicker extends LitFlatpickr {
 			element.classList.remove('vvd-selected');
 		});
 
-		if (startDate) {
-			if (startDate.getFullYear() == currentYear) {
-				months?.[startDate.getMonth()].classList.add('vvd-selected');
-			} else {
-				months?.[startDate.getMonth()].classList.remove('vvd-selected');
-			}
-		}
-
-		if (endDate) {
-			if (endDate.getFullYear() == currentYear) {
-				months?.[endDate.getMonth()].classList.add('vvd-selected');
-			} else {
-				months?.[endDate.getMonth()].classList.remove('vvd-selected');
-			}
-		}
+		// toggle current month class
+		todaysMonth &&
+			months?.[todaysMonth].classList.toggle('vvd-current-month', isTodaysYear);
+		// toggle selected month class
+		startDate &&
+			months?.[startDate.getMonth()].classList.toggle(
+				'vvd-selected',
+				startDate.getFullYear() === currentYear
+			);
+		endDate &&
+			months?.[endDate.getMonth()].classList.toggle(
+				'vvd-selected',
+				endDate.getFullYear() === currentYear
+			);
 	}
 
 	// copied from lit-flatpickr

@@ -91,6 +91,5 @@ export const argTypes = {
 	},
 	styles: { table: { disable: true } },
 	theme: { table: { disable: true } },
-	weekSelect: { table: { disable: true } },
-	monthSelect: { table: { disable: true } }
+	weekSelect: { table: { disable: true } }
 }
