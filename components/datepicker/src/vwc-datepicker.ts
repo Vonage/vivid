@@ -2,8 +2,8 @@ import '@vonage/vvd-core';
 import { customElement, property } from 'lit-element';
 import { style as vwcDatepickerStyles } from './vwc-datepicker.css.js';
 import { LitFlatpickr } from 'lit-flatpickr';
-import weekSelect from 'flatpickr/dist/plugins/weekSelect/weekSelect';
-import monthSelectPlugin from 'flatpickr/dist/plugins/monthSelect';
+// import weekSelect from 'flatpickr/dist/plugins/weekSelect/weekSelect';
+// import monthSelectPlugin from 'flatpickr/dist/plugins/monthSelect';
 import 'flatpickr/dist/plugins/monthSelect/style.css';
 
 /**
@@ -23,11 +23,11 @@ declare global {
  */
 @customElement('vwc-datepicker')
 export class VWCDatepicker extends LitFlatpickr {
-	@property({ type: Boolean, reflect: true })
-	weekSelect = false;
+	// @property({ type: Boolean, reflect: true })
+	// weekSelect = false;
 
-	@property({ type: Boolean, reflect: true })
-	monthSelect = false;
+	// @property({ type: Boolean, reflect: true })
+	// monthSelect = false;
 
 	@property({ type: Boolean, reflect: true })
 	closeOnSelect = false;
@@ -56,21 +56,21 @@ export class VWCDatepicker extends LitFlatpickr {
 		};
 	}
 
-	firstUpdated(): void {
-		super.firstUpdated();
+	// firstUpdated(): void {
+	// 	super.firstUpdated();
 
-		if (this.monthSelect) {
-			this.plugins.push(
-				monthSelectPlugin({
-					shorthand: true,
-					dateFormat: 'm.y',
-					altFormat: 'F Y',
-				})
-			);
-		} else if (this.weekSelect) {
-			this.plugins.push(weekSelect());
-		}
-	}
+	// 	if (this.monthSelect) {
+	// 		this.plugins.push(
+	// 			monthSelectPlugin({
+	// 				shorthand: true,
+	// 				dateFormat: 'm.y',
+	// 				altFormat: 'F Y',
+	// 			})
+	// 		);
+	// 	} else if (this.weekSelect) {
+	// 		this.plugins.push(weekSelect());
+	// 	}
+	// }
 
 	disconnectedCallback(): void {
 		super.disconnectedCallback();
@@ -85,6 +85,7 @@ export class VWCDatepicker extends LitFlatpickr {
 				this.renderHeader();
 				this.renderRange();
 				this.renderFooter();
+				this.renderMonthPicker();
 			}
 			// slot flatpickr alt/mobile input in vwc-textfield
 			this._instance?.altInput?.setAttribute('slot', 'formInputElement');
@@ -139,10 +140,10 @@ export class VWCDatepicker extends LitFlatpickr {
 			nextMonth.dense = true;
 
 			const currentMonthContainer = document.createElement('div');
-			currentMonthContainer.classList.add('month');
+			currentMonthContainer.classList.add('vvd-month');
 
 			const currentYearContainer = document.createElement('div');
-			currentYearContainer.classList.add('year');
+			currentYearContainer.classList.add('vvd-year');
 
 			header.appendChild(currentMonthContainer);
 			header.appendChild(currentYearContainer);
@@ -152,6 +153,11 @@ export class VWCDatepicker extends LitFlatpickr {
 
 			this.updateCurrentMonth();
 			this.updateCurrentYear();
+
+			currentMonthContainer.onclick = () =>
+				this._instance?.calendarContainer.classList.toggle(
+					'vvd-datepicker-month-view'
+				);
 
 			prevMonth.addEventListener('mousedown', (e: InputEvent) =>
 				this.navigateMonths(e, -1)
@@ -179,9 +185,9 @@ export class VWCDatepicker extends LitFlatpickr {
 
 	private updateCurrentMonth(): void {
 		const currentMonthContainer = this._instance?.calendarContainer.querySelector(
-			'.vvd-datepicker-header .month'
+			'.vvd-datepicker-header .vvd-month'
 		);
-		const currentMonth = this._instance?.l10n.months['longhand'][
+		const currentMonth = this._instance?.l10n.months.longhand[
 			this._instance.currentMonth
 		];
 		if (currentMonthContainer) {
@@ -191,7 +197,7 @@ export class VWCDatepicker extends LitFlatpickr {
 
 	private updateCurrentYear(): void {
 		const currentYearContainer = this._instance?.calendarContainer.querySelector(
-			'.vvd-datepicker-header .year'
+			'.vvd-datepicker-header .vvd-year'
 		);
 		const currentYear = this._instance?.currentYear.toString();
 		if (currentYearContainer) {
@@ -241,10 +247,45 @@ export class VWCDatepicker extends LitFlatpickr {
 		}
 	}
 
-	private clearSelection(e: InputEvent) {
+	private clearSelection(e: InputEvent): void {
 		e.preventDefault();
 		e.stopPropagation();
 		this._instance?.clear();
+	}
+
+	private renderMonthPicker(): void {
+		if (
+			!this.noCalendar &&
+			!this._instance?.calendarContainer.querySelector('.vvd-datepicker-months')
+		) {
+			const monthPicker = document.createElement('div');
+			monthPicker.classList.add('vvd-datepicker-months');
+
+			for (let i = 0; i < 12; i++) {
+				const month: any = document.createElement('span');
+				month.classList.add('vvd-month');
+				// if (this.maxDate && i > this._instance?.config?.maxDate?.getMonth()) {
+				// 	month.classList.add('vvd-disabled');
+				// }
+				month.setAttribute('data-month', i);
+				month.textContent = this._instance?.l10n.months.shorthand[i] || '';
+				month.onclick = (e: any) => this.selectMonth(e);
+				monthPicker.appendChild(month);
+			}
+
+			this._instance?.calendarContainer.appendChild(monthPicker);
+		}
+	}
+
+	private selectMonth(e: any): void {
+		this._instance?.calendarContainer.classList.remove(
+			'vvd-datepicker-month-view'
+		);
+		// e.target.classList.add('vvd-selected');
+		const selectedMonth = parseInt(e.target.attributes['data-month'].value);
+		this._instance?.changeMonth(selectedMonth - this._instance.currentMonth);
+		this.updateCurrentMonth();
+		this.updateCurrentYear();
 	}
 
 	// copied from lit-flatpickr
