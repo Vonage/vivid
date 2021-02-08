@@ -5,23 +5,23 @@
 
 ::slotted(#{textfield-variables.$vvd-input-selector}) {
 	@include typography.typography-cat-shorthand('body-2');
-
-	border: unset;
-	outline: unset;
-	background: unset;
-	color: var(#{scheme-variables.$vvd-color-on-base});
 	position: absolute;
 	top: 0;
 	right: 0;
 	bottom: 0;
 	left: 0;
-	inset: 0;
-	block-size: 100%;
-	inline-size: 100%;
-	padding-inline-start: var(--padding-inline-start);
-	padding-inline-end: var(--padding-inline-end);
 	box-sizing: border-box !important;
+
+	border: unset;
+	background: unset;
+	block-size: 100%;
 	border-radius: var(--border-radius);
+	color: var(#{scheme-variables.$vvd-color-on-base});
+	inline-size: 100%;
+	inset: 0;
+	outline: unset;
+	padding-inline-end: var(--padding-inline-end);
+	padding-inline-start: var(--padding-inline-start);
 }
 
 :host([disabled]) {
@@ -35,8 +35,8 @@
 ::slotted(#{textfield-variables.$vvd-input-selector}:-webkit-autofill:hover),
 ::slotted(#{textfield-variables.$vvd-input-selector}:-webkit-autofill:focus) {
 	z-index: -1;
-	-webkit-text-fill-color: var(#{scheme-variables.$vvd-color-on-base});
 	box-shadow: 0 0 0 30px var(#{scheme-variables.$vvd-color-contrast-faint}) inset;
+	-webkit-text-fill-color: var(#{scheme-variables.$vvd-color-on-base});
 }
 
 :host(:not([dense])) {
