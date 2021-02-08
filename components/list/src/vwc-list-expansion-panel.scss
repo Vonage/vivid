@@ -3,15 +3,15 @@
 $indent: 44px;
 
 .body {
-	margin-inline-start: $indent;
 	position: relative;
+	margin-inline-start: $indent;
 	&::before {
-		content: '';
+		position: absolute;
+		left: $indent / -2;
 		block-size: 100%;
 		border-inline-start: 1px solid
 			var(#{scheme-variables.$vvd-color-contrast-soft});
-		position: absolute;
-		left: $indent / -2;
+		content: '';
 	}
 	:host(:not([open])) & {
 		display: none;
@@ -31,11 +31,11 @@ $indent: 44px;
  */
 @keyframes fade-in-left {
 	0% {
-		transform: translateX(-10px);
 		opacity: 0;
+		transform: translateX(-10px);
 	}
 	100% {
-		transform: translateX(0);
 		opacity: 1;
+		transform: translateX(0);
 	}
 }

@@ -2,11 +2,11 @@
 
 :host {
 	@include typography.typography-mdc-coupling('body2', 'body-2');
+
+	display: block;
 	font-stretch: var(
 		--mdc-typography-body2-font-stretch
 	); // ! this was supposed to be set by MDC
-
-	display: block;
 }
 
 .mdc-form-field {
