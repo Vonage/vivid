@@ -29,7 +29,7 @@ describe('Dialog', () => {
 	}
 
 	async function getDialogElement() {
-		const [actualElement] = addElement(
+		const [actualElement] = (
 			textToDomToParent(`<${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}>`)
 		);
 		await actualElement.updateComplete;
@@ -59,5 +59,17 @@ describe('Dialog', () => {
 		scrimElement.click();
 
 		expect(actualElement.open).to.equal(true);
+	});
+
+	it(`should close dialog when clicking on scrim if modal is not set`, async function() {
+		const actualElement = await getDialogElement();
+
+		const scrimElement = await getScrimElement(actualElement);
+
+		await openDialog(actualElement);
+
+		scrimElement.click();
+
+		expect(actualElement.open).to.equal(false);
 	});
 });
