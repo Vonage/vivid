@@ -22,13 +22,12 @@ iconTemplate.innerHTML = `
 // @ts-ignore
 MWCDialog.styles = [styleCoupling, mwcDialogStyle, style];
 
-
 function modalMode(context: VWCDialog, value: unknown): void {
 	const contentElement = context.renderRoot.querySelector('.mdc-dialog__scrim');
 	if (contentElement) {
 		value
-			? context.scrimClickAction = 'closed'
-			: context.scrimClickAction = '';
+			? (context.scrimClickAction = 'closed')
+			: (context.scrimClickAction = '');
 	}
 }
 
@@ -41,9 +40,9 @@ function hideActions(context: VWCDialog, value: unknown): void {
 	}
 }
 
-const PROPERTIES_CHANGE_HANDLERS: {[key: string]: unknown} = {
+const PROPERTIES_CHANGE_HANDLERS: { [key: string]: unknown } = {
 	modalMode,
-	hideActions
+	hideActions,
 };
 
 @customElement('vwc-dialog')
@@ -61,8 +60,7 @@ export class VWCDialog extends MWCDialog {
 
 		_changedProperties.forEach((value: unknown, key) => {
 			const cb = PROPERTIES_CHANGE_HANDLERS[key as string];
-			cb &&
-				(cb as (context: VWCDialog, val: unknown) => void) (this, value);
+			cb && (cb as (context: VWCDialog, val: unknown) => void)(this, value);
 		});
 	}
 }
