@@ -44,14 +44,14 @@ body {
 	}
 
 	table {
-		border-collapse: collapse;
-		min-width: min-content;
 		width: 100%;
+		min-width: min-content;
+		border-collapse: collapse;
 
 		tr {
-			block-size: 44px;
-			border-bottom-style: solid;
 			border-bottom-width: 1px;
+			border-bottom-style: solid;
+			block-size: 44px;
 		}
 
 		th,
