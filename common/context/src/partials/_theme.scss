@@ -12,6 +12,10 @@ body {
 }
 
 #{variables.$vivid-scope-selector} {
+	@include color-connotation-mixins.connotations-context(
+		'blockquote#{color-connotation-mixins.$connotation-placeholder}',
+		'info'
+	);
 	a {
 		color: color-base.$purple-600;
 		cursor: pointer;
@@ -34,10 +38,6 @@ body {
 		box-shadow: inset 0 1px 0 0 #b3b3b3, inset 0 -1px 0 0 #b3b3b3,
 			inset -1px 0 0 0 #b3b3b3;
 	}
-	@include color-connotation-mixins.connotations-context(
-		'blockquote#{color-connotation-mixins.$connotation-placeholder}',
-		'info'
-	);
 
 	table {
 		thead tr {
