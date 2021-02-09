@@ -125,14 +125,14 @@
 				&::before {
 					background-color: var(#{scheme-variables.$vvd-color-announcement});
 				}
-      }
+			}
 
-        // &.selected {
-        //   &::before {
-        //       animation-name: none;
-        //       background-color: $black;
-        //   }
-        // }
+			// &.selected {
+			//   &::before {
+			//       animation-name: none;
+			//       background-color: $black;
+			//   }
+			// }
 
 			&.startRange + .inRange,
 			&.endRange {
@@ -193,14 +193,14 @@
 	padding: 0 16px;
 
 	.vvd-month {
-    display: block;
+		display: block;
 		margin-right: 8px;
 		cursor: pointer;
 
 		&:hover {
 			color: var(#{scheme-variables.$vvd-color-contrast-tinted});
 		}
-  }
+	}
 
 	vwc-icon-button {
 		display: flex;
@@ -212,14 +212,14 @@
 }
 
 .vvd-datepicker-month-view .vvd-datepicker-header {
-  .vvd-month {
-    display: none;
-  }
-  
-  .vvd-year::before {
-    margin-right: 8px;
-    content: 'Year';
-  }
+	.vvd-month {
+		display: none;
+	}
+
+	.vvd-year::before {
+		margin-right: 8px;
+		content: 'Year';
+	}
 }
 
 //-----------------------
@@ -292,24 +292,24 @@
 // custom month picker
 //--------------------
 .vvd-datepicker-month-view {
-  min-height: 324px;
+	min-height: 324px;
 
-  &.rangeMode {
-    min-height: 396px;
+	&.rangeMode {
+		min-height: 396px;
 
-    .vvd-datepicker-months {
-      top: 128px;
-    }
-  }
+		.vvd-datepicker-months {
+			top: 128px;
+		}
+	}
 
-  .vvd-datepicker-months {
-    display: block;
-  }
+	.vvd-datepicker-months {
+		display: block;
+	}
 
-  .flatpickr-innerContainer,
-  .vvd-datepicker-footer {
-    display: none;
-  }
+	.flatpickr-innerContainer,
+	.vvd-datepicker-footer {
+		display: none;
+	}
 }
 
 .vvd-datepicker-months {
