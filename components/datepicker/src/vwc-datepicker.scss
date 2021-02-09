@@ -292,6 +292,13 @@
 // custom month picker
 //--------------------
 .vvd-datepicker-month-view {
+  min-height: 324px;
+
+  .flatpickr-innerContainer,
+  .vvd-datepicker-footer {
+    display: none;
+  }
+
   .vvd-datepicker-months {
     display: block;
   }

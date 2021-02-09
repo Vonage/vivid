@@ -25,6 +25,9 @@ export class VWCDatepicker extends LitFlatpickr {
 	// weekSelect = false;
 
 	@property({ type: Boolean, reflect: true })
+	monthPicker = false;
+
+	@property({ type: Boolean, reflect: true })
 	closeOnSelect = false;
 
 	// prevents flatpickr from being appended to slotted components when inline
@@ -69,10 +72,18 @@ export class VWCDatepicker extends LitFlatpickr {
 		setTimeout(() => {
 			if (!this._instance?.isMobile || this.disableMobile) {
 				this._instance?.calendarContainer.classList.add('vvd-datepicker');
+
 				this.renderHeader();
 				this.renderRange();
 				this.renderFooter();
 				this.renderMonthPicker();
+
+				if (this.monthPicker) {
+					this._instance?.calendarContainer.classList.add(
+						'vvd-datepicker-month-view'
+					);
+					this.highlightMonth();
+				}
 			}
 			// slot flatpickr alt/mobile input in vwc-textfield
 			this._instance?.altInput?.setAttribute('slot', 'formInputElement');
@@ -279,13 +290,26 @@ export class VWCDatepicker extends LitFlatpickr {
 	}
 
 	private selectMonth(e: any): void {
-		this._instance?.calendarContainer.classList.remove(
-			'vvd-datepicker-month-view'
-		);
 		const selectedMonth = parseInt(e.target.attributes['data-month'].value);
-		this._instance?.changeMonth(selectedMonth - this._instance.currentMonth);
-		this.updateCurrentMonth();
-		this.updateCurrentYear();
+		const selectedDate = this._instance
+			? new Date(this._instance.currentYear, selectedMonth)
+			: '';
+
+		if (this.monthPicker && selectedDate) {
+			this._instance?.setDate(selectedDate, true);
+			this.highlightMonth();
+
+			if (this.closeOnSelect) {
+				this._instance?.close();
+			}
+		} else {
+			this._instance?.calendarContainer.classList.remove(
+				'vvd-datepicker-month-view'
+			);
+			this._instance?.changeMonth(selectedMonth - this._instance.currentMonth);
+			this.updateCurrentMonth();
+			this.updateCurrentYear();
+		}
 	}
 
 	private highlightMonth(): void {

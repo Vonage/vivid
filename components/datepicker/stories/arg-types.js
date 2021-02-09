@@ -8,7 +8,13 @@ export const argTypes = {
 	mode: {
 		control: {
 			type: 'select',
-			options: ['single', 'multiple', 'range'],
+			options: ['single', 'multiple', 'range']
+		}
+	},
+	monthPicker: {
+		control: {
+			type: 'inline-radio',
+			options: { 'true': '', 'false': undefined }
 		}
 	},
 	altInput: {
