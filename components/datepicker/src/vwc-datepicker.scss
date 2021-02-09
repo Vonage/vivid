@@ -193,13 +193,14 @@
 	padding: 0 16px;
 
 	.vvd-month {
+    display: block;
 		margin-right: 8px;
 		cursor: pointer;
 
 		&:hover {
 			color: var(#{scheme-variables.$vvd-color-contrast-tinted});
 		}
-	}
+  }
 
 	vwc-icon-button {
 		display: flex;
@@ -208,6 +209,17 @@
 			margin-left: auto;
 		}
 	}
+}
+
+.vvd-datepicker-month-view .vvd-datepicker-header {
+  .vvd-month {
+    display: none;
+  }
+  
+  .vvd-year::before {
+    content: 'Year';
+    margin-right: 8px;
+  }
 }
 
 //-----------------------

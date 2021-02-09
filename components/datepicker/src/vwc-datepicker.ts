@@ -29,7 +29,7 @@ export class VWCDatepicker extends LitFlatpickr {
 
 	// prevents flatpickr from being appended to slotted components when inline
 	private appendTo: (Node & ParentNode) | null = this.parentNode;
-	private plugins: Array<any> = [];
+	// private plugins: Array<any> = [];
 
 	constructor() {
 		super();
@@ -138,43 +138,45 @@ export class VWCDatepicker extends LitFlatpickr {
 			this.updateCurrentYear();
 
 			currentMonthContainer.onclick = () => {
-				this._instance?.calendarContainer.classList.toggle(
+				this._instance?.calendarContainer.classList.add(
 					'vvd-datepicker-month-view'
 				);
 				this.highlightMonth();
 			};
 
 			prevMonth.addEventListener('mousedown', (e: InputEvent) =>
-				this.navigateMonths(e, -1)
+				this.navigateCalendar(e, -1)
 			);
 			prevMonth.addEventListener('touchstart', (e: InputEvent) =>
-				this.navigateMonths(e, -1)
+				this.navigateCalendar(e, -1)
 			);
 
 			nextMonth.addEventListener('mousedown', (e: InputEvent) =>
-				this.navigateMonths(e, 1)
+				this.navigateCalendar(e, 1)
 			);
 			nextMonth.addEventListener('touchstart', (e: InputEvent) =>
-				this.navigateMonths(e, 1)
+				this.navigateCalendar(e, 1)
 			);
 		}
 	}
 
-	private navigateMonths(e: InputEvent, delta: number): void {
+	private navigateCalendar(e: InputEvent, delta: number): void {
 		e.preventDefault();
 		e.stopPropagation();
-
-		this._instance?.changeMonth(delta);
-		this.updateCurrentMonth();
-		this.updateCurrentYear();
 
 		if (
 			this._instance?.calendarContainer.classList.contains(
 				'vvd-datepicker-month-view'
 			)
 		) {
+			this._instance?.changeYear(this._instance?.currentYear + delta);
 			this.highlightMonth();
+		} else {
+			this._instance?.changeMonth(delta);
 		}
+
+		this.updateCurrentMonth();
+		this.updateCurrentYear();
 	}
 
 	private updateCurrentMonth(): void {
@@ -307,6 +309,7 @@ export class VWCDatepicker extends LitFlatpickr {
 		// toggle current month class
 		todaysMonth &&
 			months?.[todaysMonth].classList.toggle('vvd-current-month', isTodaysYear);
+
 		// toggle selected month class
 		startDate &&
 			months?.[startDate.getMonth()].classList.toggle(
@@ -366,7 +369,7 @@ export class VWCDatepicker extends LitFlatpickr {
 			// additional config options
 			...(this.inline && { appendTo: this.appendTo }),
 			...(this.enable && { enable: this.enable }),
-			...(this.plugins.length && { plugins: this.plugins }),
+			// ...(this.plugins.length && { plugins: this.plugins }),
 			closeOnSelect: this.closeOnSelect,
 		};
 	}
