@@ -1,19 +1,20 @@
 module.exports = {
-	'env': {
-		'browser': true,
-		'node': true
-	},
 	'extends': [
-		'@open-wc/eslint-config',
-		'plugin:@typescript-eslint/eslint-recommended',
-		'plugin:@typescript-eslint/recommended',
+		'eslint:recommended',
 		'plugin:wc/recommended',
+		'@open-wc/eslint-config',
 		'plugin:compat/recommended',
 		'plugin:lit-a11y/recommended',
+		'plugin:@typescript-eslint/recommended',
+		'plugin:@typescript-eslint/eslint-recommended',
 		// the followings should always be last
 		'prettier',
 		'prettier/@typescript-eslint'
 	],
+	'env': {
+		'browser': true,
+		'node': true
+	},
 	'parser': '@typescript-eslint/parser',
 	'parserOptions': {
 		'ecmaVersion': 12,
@@ -28,7 +29,6 @@ module.exports = {
 	'rules': {
 		'no-shadow': 'error',
 		'no-mixed-spaces-and-tabs': 'off',
-		'compat/compat': 'error',
 		'indent': 'off',
 		'linebreak-style': ['error', 'unix'],
 		'semi': 'off', // ['error', 'always'], //! should ENABLE after PR merge
@@ -37,7 +37,6 @@ module.exports = {
 		'object-shorthand': 'off', //! should remove after PR merge
 		'import/order': 'off', //! should remove after PR merge
 		'import/newline-after-import': 'off', //! should remove after PR merge
-		'import/no-extraneous-dependencies': 'off', //! should remove after PR merge
 		'import/no-unresolved': 'off', //! should remove after PR merge
 		'import/no-named-default': 'off', //! should remove after PR merge
 		'one-var': 'off', //! should remove after PR merge
@@ -61,7 +60,6 @@ module.exports = {
 		'no-plusplus': 'off', //! should remove after PR merge
 		'no-nested-ternary': 'off', //! should remove after PR merge
 		'class-methods-use-this': 'off', //! should remove after PR merge
-		'lit/attribute-value-entities': 'off', //! should remove after PR merge
 		'lines-between-class-members': 'off', //! should remove after PR merge
 		'prefer-object-spread': 'off', //! should remove after PR merge
 		'no-multi-assign': 'off', //! should remove after PR merge
@@ -69,7 +67,6 @@ module.exports = {
 		'no-unused-expressions': 'off', //! should remove after PR merge
 		'eqeqeq': 'off', //! should remove after PR merge
 		'wc/guard-super-call': 'off', //! should remove after PR merge
-		'lit/no-template-bind': 'off', //! should remove after PR merge
 		'no-bitwise': 'off', //! should remove after PR merge
 		'radix': 'off', //! should remove after PR merge
 		'lit-a11y/anchor-is-valid': 'off', //! should remove after PR merge
@@ -79,7 +76,6 @@ module.exports = {
 		'lit-a11y/alt-text': 'off', //! should remove after PR merge
 		'no-unneeded-ternary': 'off', //! should remove after PR merge
 		'@typescript-eslint/no-unused-vars': 'off', //! should remove after PR merge
-		'lit/no-invalid-html': 'off', //! should remove after PR merge
 		'wc/attach-shadow-constructor': 'off', //! should remove after PR merge
 		'no-void': 'off', //! should remove after PR merge
 		'no-unused-vars': 'off'/*[
