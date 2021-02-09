@@ -282,9 +282,6 @@ export class VWCDatepicker extends LitFlatpickr {
 				const month = document.createElement('span');
 				month.classList.add('vvd-month');
 
-				// if (this.maxDate && i > this._instance?.config?.maxDate?.getMonth()) {
-				// 	month.classList.add('vvd-disabled');
-				// }
 				if (i === this._instance?.currentMonth) {
 					month.classList.add('vvd-current-month');
 				}
@@ -331,8 +328,10 @@ export class VWCDatepicker extends LitFlatpickr {
 		const startDate = this._instance?.selectedDates[0];
 		const endDate = this._instance?.selectedDates[1];
 		const todaysMonth = this._instance?.now.getMonth();
+		const todaysYear = this._instance?.now.getFullYear();
+		const maxMonth = this._instance?.config?.maxDate?.getMonth();
+		const maxYear = this._instance?.config?.maxDate?.getFullYear();
 		const currentYear = this._instance?.currentYear;
-		const isTodaysYear = currentYear === this._instance?.now.getFullYear();
 
 		// clear previous selected class
 		const selected = this._instance?.calendarContainer.querySelectorAll(
@@ -344,7 +343,10 @@ export class VWCDatepicker extends LitFlatpickr {
 
 		// toggle current month class
 		todaysMonth &&
-			months?.[todaysMonth].classList.toggle('vvd-current-month', isTodaysYear);
+			months?.[todaysMonth].classList.toggle(
+				'vvd-current-month',
+				currentYear === todaysYear
+			);
 
 		// toggle selected month class
 		startDate &&
@@ -357,6 +359,16 @@ export class VWCDatepicker extends LitFlatpickr {
 				'vvd-selected',
 				endDate.getFullYear() === currentYear
 			);
+
+		// toggle disabled month class
+		if (this.maxDate && maxMonth && currentYear && todaysYear) {
+			months?.forEach((month, i) => {
+				month.classList.toggle(
+					'vvd-month-disabled',
+					i > maxMonth && currentYear === maxYear
+				);
+			});
+		}
 	}
 
 	// copied from lit-flatpickr

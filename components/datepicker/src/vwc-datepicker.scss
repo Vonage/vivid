@@ -370,10 +370,10 @@
 			}
 		}
 
-		// &.vvd-month-disabled {
-		//   color: $grey;
-		//   cursor: default;
-		//   pointer-events: none;
-		// }
+		&.vvd-month-disabled {
+			color: var(#{scheme-variables.$vvd-color-contrast-dim});
+			cursor: default;
+			pointer-events: none;
+		}
 	}
 }
