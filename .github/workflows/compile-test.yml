@@ -52,7 +52,7 @@ jobs:
           path: |
             common
             components
-          key: vivid-cache-build-${GITHUB_SHA}
+          key: vivid-cache-build-${{ github.event.pull_request.head.sha }}
 
   test-safari:
     needs: cache-yarn-and-build
@@ -98,7 +98,7 @@ jobs:
           path: |
             common
             components
-          key: vivid-cache-build-${GITHUB_SHA}
+          key: vivid-cache-build-${{ github.event.pull_request.head.sha }}
 
       - name: Build components
         if: steps.build-cache.outputs.cache-hit != 'true'
@@ -157,7 +157,7 @@ jobs:
           path: |
             common
             components
-          key: vivid-cache-build-${GITHUB_SHA}
+          key: vivid-cache-build-${{ github.event.pull_request.head.sha }}
 
       - name: Build components
         if: steps.build-cache.outputs.cache-hit != 'true'
@@ -216,7 +216,7 @@ jobs:
           path: |
             common
             components
-          key: vivid-cache-build-${GITHUB_SHA}
+          key: vivid-cache-build-${{ github.event.pull_request.head.sha }}
 
       - name: Build components
         if: steps.build-cache.outputs.cache-hit != 'true'
@@ -281,7 +281,7 @@ jobs:
           path: |
             common
             components
-          key: vivid-cache-build-${GITHUB_SHA}
+          key: vivid-cache-build-${{ github.event.pull_request.head.sha }}
 
       - name: Build components
         if: steps.build-cache.outputs.cache-hit != 'true'
