@@ -1,13 +1,18 @@
 import '@vonage/vvd-core';
+import '@vonage/vwc-button';
+import '@vonage/vwc-icon-button';
 import { customElement, property } from 'lit-element';
-import { style as vwcDatepickerStyles } from './vwc-datepicker.css.js';
 import { LitFlatpickr } from 'lit-flatpickr';
+import { Options } from 'flatpickr/dist/types/options';
+import { style as vwcDatepickerStyles } from './vwc-datepicker.css.js';
+import { VWCButton } from '@vonage/vwc-button';
+import { VWCIconButton } from '@vonage/vwc-icon-button';
+import { Shape } from '@vonage/vvd-foundation/constants';
 // import weekSelect from 'flatpickr/dist/plugins/weekSelect/weekSelect';
 
 /**
  * TODO:
- * - tidy up <any> types
- * - setup week and month picker
+ * - setup week picker
  */
 
 declare global {
@@ -31,14 +36,16 @@ export class VWCDatepicker extends LitFlatpickr {
 	closeOnSelect = false;
 
 	// prevents flatpickr from being appended to slotted components when inline
-	private appendTo: (Node & ParentNode) | null = this.parentNode;
+	private appendTo: HTMLElement | undefined = this.parentElement
+		? this.parentElement
+		: undefined;
 	// private plugins: Array<any> = [];
 
 	constructor() {
 		super();
 		// override LitFlatpickr to work with [flatpickr change](https://github.com/flatpickr/flatpickr/blame/07cf1b1ba5ec71da511c295f622d60eed3bf3eb7/src/index.ts#L1522)
 		// flatpickr now requires `enable` to be `undefined` by default rather than `[]`
-		this.enable = <any>undefined;
+		(<undefined>(<unknown>this.enable)) = undefined;
 
 		// inject custom flatpicker styles
 		const style = document.createElement('style');
@@ -91,7 +98,7 @@ export class VWCDatepicker extends LitFlatpickr {
 		}, 0);
 	}
 
-	private changeHandler(e: any): void {
+	private changeHandler(e: Date[]): void {
 		// populate dates in custom range container
 		if (this._instance && this.mode === 'range') {
 			const startDate = e[0] ? this._instance.formatDate(e[0], 'M j, Y') : '';
@@ -123,14 +130,14 @@ export class VWCDatepicker extends LitFlatpickr {
 			const header = document.createElement('div');
 			header.classList.add('vvd-datepicker-header');
 
-			const prevMonth: any = document.createElement('vwc-icon-button');
+			const prevMonth: VWCIconButton = document.createElement('vwc-icon-button');
 			prevMonth.icon = 'left-full';
-			prevMonth.shape = 'circled';
+			prevMonth.shape = Shape.Circled;
 			prevMonth.dense = true;
 
-			const nextMonth: any = document.createElement('vwc-icon-button');
+			const nextMonth: VWCIconButton = document.createElement('vwc-icon-button');
 			nextMonth.icon = 'right-full';
-			nextMonth.shape = 'circled';
+			nextMonth.shape = Shape.Circled;
 			nextMonth.dense = true;
 
 			const currentMonthContainer = document.createElement('div');
@@ -155,23 +162,23 @@ export class VWCDatepicker extends LitFlatpickr {
 				this.highlightMonth();
 			};
 
-			prevMonth.addEventListener('mousedown', (e: InputEvent) =>
+			prevMonth.addEventListener('mousedown', (e: MouseEvent) =>
 				this.navigateCalendar(e, -1)
 			);
-			prevMonth.addEventListener('touchstart', (e: InputEvent) =>
+			prevMonth.addEventListener('touchstart', (e: TouchEvent) =>
 				this.navigateCalendar(e, -1)
 			);
 
-			nextMonth.addEventListener('mousedown', (e: InputEvent) =>
+			nextMonth.addEventListener('mousedown', (e: MouseEvent) =>
 				this.navigateCalendar(e, 1)
 			);
-			nextMonth.addEventListener('touchstart', (e: InputEvent) =>
+			nextMonth.addEventListener('touchstart', (e: TouchEvent) =>
 				this.navigateCalendar(e, 1)
 			);
 		}
 	}
 
-	private navigateCalendar(e: InputEvent, delta: number): void {
+	private navigateCalendar(e: MouseEvent | TouchEvent, delta: number): void {
 		e.preventDefault();
 		e.stopPropagation();
 
@@ -238,14 +245,14 @@ export class VWCDatepicker extends LitFlatpickr {
 			const footer = document.createElement('div');
 			footer.classList.add('vvd-datepicker-footer');
 
-			const clearButton: any = document.createElement('vwc-button');
+			const clearButton: VWCButton = document.createElement('vwc-button');
 			clearButton.label = 'Clear';
-			clearButton.shape = 'pill';
+			clearButton.shape = Shape.Pill;
 
-			clearButton.addEventListener('mousedown', (e: InputEvent) =>
+			clearButton.addEventListener('mousedown', (e: MouseEvent) =>
 				this.clearSelection(e)
 			);
-			clearButton.addEventListener('touchstart', (e: InputEvent) =>
+			clearButton.addEventListener('touchstart', (e: TouchEvent) =>
 				this.clearSelection(e)
 			);
 
@@ -254,10 +261,13 @@ export class VWCDatepicker extends LitFlatpickr {
 		}
 	}
 
-	private clearSelection(e: InputEvent): void {
+	private clearSelection(e: MouseEvent | TouchEvent): void {
 		e.preventDefault();
 		e.stopPropagation();
+
 		this._instance?.clear();
+		this.updateCurrentMonth();
+		this.updateCurrentYear();
 	}
 
 	private renderMonthPicker(): void {
@@ -269,7 +279,7 @@ export class VWCDatepicker extends LitFlatpickr {
 			monthPicker.classList.add('vvd-datepicker-months');
 
 			for (let i = 0; i < 12; i++) {
-				const month: any = document.createElement('span');
+				const month = document.createElement('span');
 				month.classList.add('vvd-month');
 
 				// if (this.maxDate && i > this._instance?.config?.maxDate?.getMonth()) {
@@ -279,9 +289,9 @@ export class VWCDatepicker extends LitFlatpickr {
 					month.classList.add('vvd-current-month');
 				}
 
-				month.setAttribute('data-month', i);
+				month.setAttribute('data-month', i.toString());
 				month.textContent = this._instance?.l10n.months.shorthand[i] || '';
-				month.onclick = (e: any) => this.selectMonth(e);
+				month.onclick = (e: MouseEvent) => this.selectMonth(e);
 				monthPicker.appendChild(month);
 			}
 
@@ -289,8 +299,10 @@ export class VWCDatepicker extends LitFlatpickr {
 		}
 	}
 
-	private selectMonth(e: any): void {
-		const selectedMonth = parseInt(e.target.attributes['data-month'].value);
+	private selectMonth(e: MouseEvent): void {
+		const selectedMonth = parseInt(
+			(<HTMLElement>e.target).attributes[<number>(<unknown>'data-month')].value
+		);
 		const selectedDate = this._instance
 			? new Date(this._instance.currentYear, selectedMonth)
 			: '';
@@ -349,7 +361,7 @@ export class VWCDatepicker extends LitFlatpickr {
 
 	// copied from lit-flatpickr
 	// add additional config options
-	getOptions(): any {
+	getOptions(): Options {
 		return {
 			altFormat: this.altFormat,
 			altInput: this.altInput,

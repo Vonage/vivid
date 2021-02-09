@@ -217,8 +217,8 @@
   }
   
   .vvd-year::before {
-    content: 'Year';
     margin-right: 8px;
+    content: 'Year';
   }
 }
 
@@ -294,19 +294,21 @@
 .vvd-datepicker-month-view {
   min-height: 324px;
 
-  .flatpickr-innerContainer,
-  .vvd-datepicker-footer {
-    display: none;
+  &.rangeMode {
+    min-height: 396px;
+
+    .vvd-datepicker-months {
+      top: 128px;
+    }
   }
 
   .vvd-datepicker-months {
     display: block;
   }
 
-  &.rangeMode {
-    .vvd-datepicker-months {
-      top: 128px;
-    }
+  .flatpickr-innerContainer,
+  .vvd-datepicker-footer {
+    display: none;
   }
 }
 
