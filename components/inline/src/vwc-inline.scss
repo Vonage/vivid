@@ -32,9 +32,8 @@ $items-spacings: (
 /* #endregion */
 
 :host {
-	width: 100%;
-	inline-size: 100%;
 	display: grid;
+	width: 100%;
 	gap: var(#{$items-spacing-v-name}, #{map.get($items-spacings, md)});
 	grid-auto-rows: min-content;
 	grid-template-columns: repeat(
@@ -47,4 +46,5 @@ $items-spacings: (
 			1fr
 		)
 	);
+	inline-size: 100%;
 }
