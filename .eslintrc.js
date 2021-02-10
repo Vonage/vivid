@@ -4,6 +4,7 @@ module.exports = {
 		'plugin:wc/recommended',
 		'@open-wc/eslint-config',
 		'plugin:compat/recommended',
+		'plugin:lit/recommended',
 		'plugin:lit-a11y/recommended',
 		'plugin:@typescript-eslint/recommended',
 		'plugin:@typescript-eslint/eslint-recommended',
@@ -67,6 +68,7 @@ module.exports = {
 		'no-else-return': 'off', //! should remove after PR merge
 		'no-unused-vars': 'error',
 		'lit/no-template-bind': 'off',
+		'lit/binding-positions': 'off',
 		'@typescript-eslint/no-extra-semi': 'off',
 		'@typescript-eslint/explicit-function-return-type': 'off',
 		'@typescript-eslint/indent': 'off',
