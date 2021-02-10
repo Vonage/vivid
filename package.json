@@ -12,7 +12,7 @@
 		"dep-check": "lerna exec --stream --no-bail depcheck",
 		"changelog": "yarn lerna exec --concurrency 1 --stream 'conventional-changelog --preset angular --release-count 0 --commit-path $PWD --pkg $PWD/package.json --outfile $PWD/CHANGELOG.md --verbose'",
 		"stylelint-check": "stylelint-config-prettier-check",
-		"lint:stylelint": "stylelint {common,components}/**/*.scss",
+		"lint:stylelint": "stylelint {common,components}/**/*.scss --quiet",
 		"lint:eslint": "eslint {common,components}/** --no-error-on-unmatched-pattern",
 		"lint:prettier": "prettier {common,components}/**/*.{ts,scss} **/stories **/test/*.test.js --check",
 		"lint": "yarn lint:eslint && yarn lint:stylelint && yarn lint:prettier",
