@@ -14,7 +14,7 @@
 		"stylelint-check": "stylelint-config-prettier-check",
 		"lint:stylelint": "stylelint {common,components}/**/*.scss --quiet",
 		"lint:eslint": "eslint {common,components}/** --no-error-on-unmatched-pattern",
-		"lint:prettier": "prettier {common,components}/**/*.{ts,scss} **/stories **/test/*.test.js --config .prettierrc.js --ignore-path .prettierignore --check",
+		"lint:prettier": "prettier {common,components}/**/*.{ts,scss} **/stories **/test/*.test.js --check",
 		"lint": "yarn lint:eslint && yarn lint:stylelint && yarn lint:prettier",
 		"format:stylelint": "yarn lint:stylelint --fix",
 		"format:eslint": "yarn lint:eslint --fix",
@@ -31,7 +31,7 @@
 		"test:prune-snapshots": "karma start --prune-snapshots",
 		"test:bs": "karma start karma.bs.config.js --coverage",
 		"git:sync": "git submodule sync && git submodule update --init --recursive --remote",
-		"postinstall": "yarn link",
+		"postinstall": "husky install && yarn link",
 		"link": "lerna link",
 		"storybook:vivid:pre": "yarn compile && yarn wca:json && node ./.storybook/build-scripts/build-pre.mjs",
 		"storybook:vivid:post": "node ./.storybook/build-scripts/build-post.mjs",
@@ -95,10 +95,9 @@
 		"got": "^11.8.1",
 		"highlight.js": "^10.4.0",
 		"hint": "^6.1.1",
-		"husky": "^4.2.5",
+		"husky": "^5.0.8",
 		"immer": "^8.0.1",
 		"ini": "^1.3.6",
-		"jsdoc-to-markdown": "^6.0.1",
 		"karma": "^5.2.3",
 		"karma-chai": "^0.1.0",
 		"karma-chrome-launcher": "^3.1.0",
@@ -137,20 +136,6 @@
 		"typescript": "^4.1.3",
 		"uuid": "^8.3.1",
 		"web-component-analyzer": "^1.1.6"
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "lint-staged"
-		}
-	},
-	"lint-staged": {
-		"*.ts": [
-			"prettier --write",
-			"eslint"
-		],
-		"*.test.js": [
-			"prettier --write"
-		]
 	},
 	"engines": {
 		"node": ">=12.18.4"
