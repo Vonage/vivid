@@ -78,6 +78,7 @@ module.exports = {
 					'^(?:(?:MDC(?:(?:[A-Z][a-z0-9]+)+)Adapter)|(?:(?:(?:[A-Z][a-z0-9]+)+)Type))$',
 			},
 		],
+		'lit/no-template-bind': 'off',
 		'@typescript-eslint/no-extra-semi': 'off',
 		'@typescript-eslint/explicit-function-return-type': 'off',
 		'@typescript-eslint/indent': 'off',
