@@ -69,13 +69,17 @@ export class VWCFilePicker extends LitElement {
 	}
 
 	protected render(): TemplateResult {
-		/* eslint-disable lit-a11y/click-events-have-key-events */
 		return html`
 			<label class="wrapper" aria-describedby="helper">
 				${this.renderHeader()}
-				<div class="content drop-zone part">
+				<div
+					class="content drop-zone part"
+					tabindex="0"
+					@click=${this.triggerFileInput}
+					@keypress=${this.triggerFileInput}
+				>
 					<slot name="dd-hint">${this.renderDragNDropHint()}</slot>
-					<slot name="${BUTTON_SLOT}" @click=${this.triggerFileInput}></slot>
+					<slot name="${BUTTON_SLOT}"></slot>
 					<slot class="${INPUT_FILE_SLOT}"></slot>
 					${this.renderFilesCount()}
 				</div>
@@ -170,7 +174,18 @@ export class VWCFilePicker extends LitElement {
 		}
 	}
 
-	private triggerFileInput(): void {
+	private triggerFileInput(e: MouseEvent | KeyboardEvent): void {
+		const isOfButtonSlot = (e.target as HTMLElement).slot === BUTTON_SLOT;
+		if (e.type === 'click' && !isOfButtonSlot) {
+			return;
+		}
+		if (e.type === 'keypress') {
+			const code = (e as KeyboardEvent).code;
+			if (code !== 'Space') {
+				return;
+			}
+		}
+
 		this.setCustomValidity('');
 		const fi = this.getActualInput();
 		if (fi) {
