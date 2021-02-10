@@ -66,11 +66,7 @@ module.exports = {
 		'wc/guard-super-call': 'off', //! should remove after PR merge
 		'no-bitwise': 'off', //! should remove after PR merge
 		radix: 'off', //! should remove after PR merge
-		'lit-a11y/anchor-is-valid': 'off', //! should remove after PR merge
 		'no-else-return': 'off', //! should remove after PR merge
-		'lit-a11y/click-events-have-key-events': 'off', //! should remove after PR merge
-		'lit-a11y/iframe-title': 'off', //! should remove after PR merge
-		'lit-a11y/alt-text': 'off', //! should remove after PR merge
 		'no-unneeded-ternary': 'off', //! should remove after PR merge
 		'@typescript-eslint/no-unused-vars': 'off', //! should remove after PR merge
 		'wc/attach-shadow-constructor': 'off', //! should remove after PR merge
