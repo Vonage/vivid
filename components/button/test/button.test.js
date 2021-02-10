@@ -2,6 +2,7 @@ import '../vwc-button.js';
 import {
 	waitNextTask,
 	textToDomToParent,
+	assertDistancePixels,
 	assertComputedStyle,
 } from '../../../test/test-helpers.js';
 import {
@@ -30,12 +31,11 @@ describe('button', () => {
 	});
 
 	it('should internal contents', async () => {
-		const addedElements = addElement(
+		const [b] = addElement(
 			textToDomToParent(`<${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}>`)
 		);
-		const actualElement = addedElements[0];
 		await waitNextTask();
-		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
+		expect(b.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
 	describe('Form Association', function () {
@@ -377,5 +377,20 @@ describe('button', () => {
 
 	describe('button connotation', () => {
 		connotationTestCases(COMPONENT_NAME);
+	});
+
+	describe('button layout', () => {
+		it('should have icon vertically centered', async () => {
+			const [b] = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} icon="info">Button Text</${COMPONENT_NAME}>`
+				)
+			);
+			await waitNextTask();
+			const i = b.shadowRoot.querySelector('.vvd-icon');
+			expect(i).exist;
+			expect(i.offsetHeight).equal(20);
+			assertDistancePixels(i, b, 'top', (b.offsetHeight - i.offsetHeight) / 2);
+		});
 	});
 });
