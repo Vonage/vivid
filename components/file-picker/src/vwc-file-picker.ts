@@ -69,6 +69,7 @@ export class VWCFilePicker extends LitElement {
 	}
 
 	protected render(): TemplateResult {
+		/* eslint-disable lit-a11y/click-events-have-key-events */
 		return html`
 			<label class="wrapper" aria-describedby="helper">
 				${this.renderHeader()}

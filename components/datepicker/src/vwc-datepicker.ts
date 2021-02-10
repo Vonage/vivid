@@ -205,7 +205,7 @@ export class VWCDatepicker extends LitFlatpickr {
 			this._instance.currentMonth
 		];
 		if (currentMonthContainer) {
-			currentMonthContainer.textContent = currentMonth ? currentMonth : '';
+			currentMonthContainer.textContent = currentMonth || '';
 		}
 	}
 
@@ -215,7 +215,7 @@ export class VWCDatepicker extends LitFlatpickr {
 		);
 		const currentYear = this._instance?.currentYear.toString();
 		if (currentYearContainer) {
-			currentYearContainer.textContent = currentYear ? currentYear : '';
+			currentYearContainer.textContent = currentYear || '';
 		}
 	}
 

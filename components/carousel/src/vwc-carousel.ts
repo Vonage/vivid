@@ -30,7 +30,7 @@ export class VWCCarousel extends LitElement {
 	@property({
 		type: Boolean,
 		reflect: true,
-		converter: (v) => (v && v === 'false' ? false : true),
+		converter: (v) => !(v && v === 'false'),
 	})
 	autoplay = true;
 	@query('.swiper-container')
