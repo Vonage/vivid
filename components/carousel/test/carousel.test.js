@@ -164,7 +164,7 @@ describe('carousel', () => {
 		});
 	});
 
-	describe('styling applyed', () => {
+	describe('styling applied', () => {
 		it('should have the pagination bullets colored', async () => {
 			const carousel = await initCarousel(['a', 'b', 'c']);
 			const bullets = extractBullets(carousel);

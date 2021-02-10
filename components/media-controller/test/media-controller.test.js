@@ -20,11 +20,9 @@ const setStyle = (el, style = {}) => {
 const simulateMouseFactory = ({ x: baseX = 0, y: baseY = 0 }) => {
 	let findTarget = (root = document, x, y) => {
 		let target = root.elementFromPoint(x, y);
-		return !target
-			? root
-			: !target.shadowRoot
-			? target
-			: findTarget(target.shadowRoot, x, y);
+		return target && target.shadowRoot
+			? findTarget(target.shadowRoot, x, y)
+			: target || root;
 	};
 
 	return (x, y, eventType, options = { bubbles: true, composed: true }) => {

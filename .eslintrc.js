@@ -55,29 +55,17 @@ module.exports = {
 		camelcase: 'off', //! should remove after PR merge
 		'no-return-assign': 'off', //! should remove after PR merge
 		'no-plusplus': 'off', //! should remove after PR merge
-		'no-nested-ternary': 'off', //! should remove after PR merge
 		'class-methods-use-this': 'off', //! should remove after PR merge
 		'lines-between-class-members': 'off', //! should remove after PR merge
 		'prefer-object-spread': 'off', //! should remove after PR merge
 		'no-multi-assign': 'off', //! should remove after PR merge
-		'import/first': 'off', //! should remove after PR merge
 		'no-unused-expressions': 'off', //! should remove after PR merge
 		eqeqeq: 'off', //! should remove after PR merge
 		'wc/guard-super-call': 'off', //! should remove after PR merge
 		'no-bitwise': 'off', //! should remove after PR merge
 		radix: 'off', //! should remove after PR merge
 		'no-else-return': 'off', //! should remove after PR merge
-		'no-unneeded-ternary': 'off', //! should remove after PR merge
-		'@typescript-eslint/no-unused-vars': 'off', //! should remove after PR merge
-		'wc/attach-shadow-constructor': 'off', //! should remove after PR merge
-		'no-void': 'off', //! should remove after PR merge
-		'no-unused-vars': [
-			'error',
-			{
-				varsIgnorePattern:
-					'^(?:(?:MDC(?:(?:[A-Z][a-z0-9]+)+)Adapter)|(?:(?:(?:[A-Z][a-z0-9]+)+)Type))$',
-			},
-		],
+		'no-unused-vars': 'error',
 		'lit/no-template-bind': 'off',
 		'@typescript-eslint/no-extra-semi': 'off',
 		'@typescript-eslint/explicit-function-return-type': 'off',
