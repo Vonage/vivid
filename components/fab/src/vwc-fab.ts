@@ -30,7 +30,7 @@ export class VWCFab extends MWCFab {
 	protected renderIcon(): TemplateResult {
 		return html`${this.icon
 			? html`<vwc-icon
-					class="mdc-fab__icon"
+					class="vvd-icon"
 					type="${this.icon}"
 					size="${this.mini ? 'small' : 'medium'}"
 			  ></vwc-icon>`
