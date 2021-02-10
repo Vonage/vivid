@@ -8716,6 +8716,15 @@ diagnostic-channel@0.3.1:
   dependencies:
     semver "^5.3.0"
 
+didyoumean2@4.1.0:
+  version "4.1.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/didyoumean2/-/didyoumean2-4.1.0.tgz#f813cb7c82c249443e599be077f76e88f24b85e4"
+  integrity sha1-+BPLfILCSUQ+WZvgd/duiPJLheQ=
+  dependencies:
+    "@babel/runtime" "^7.10.2"
+    leven "^3.1.0"
+    lodash.deburr "^4.1.0"
+
 diff@3.5.0:
   version "3.5.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/diff/-/diff-3.5.0.tgz#800c0dd1e0a8bfbc95835c202ad220fe317e5a12"
@@ -12939,6 +12948,11 @@ lerna@^3.22.1:
     import-local "^2.0.0"
     npmlog "^4.1.2"
 
+leven@^3.1.0:
+  version "3.1.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/leven/-/leven-3.1.0.tgz#77891de834064cccba82ae7842bb6b14a13ed7f2"
+  integrity sha1-d4kd6DQGTMy6gq54QrtrFKE+1/I=
+
 levn@^0.4.1:
   version "0.4.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/levn/-/levn-0.4.1.tgz#ae4562c007473b932a6200d403268dd2fffc6ade"
@@ -12995,6 +13009,20 @@ listr2@^3.2.2:
     rxjs "^6.6.3"
     through "^2.3.8"
     wrap-ansi "^7.0.0"
+
+lit-analyzer@^1.2.1:
+  version "1.2.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/lit-analyzer/-/lit-analyzer-1.2.1.tgz#725331a4019ae870dd631d4dd709d39a237161ea"
+  integrity sha1-clMxpAGa6HDdYx1N1wnTmiNxYeo=
+  dependencies:
+    chalk "^2.4.2"
+    didyoumean2 "4.1.0"
+    fast-glob "^2.2.6"
+    parse5 "5.1.0"
+    ts-simple-type "~1.0.5"
+    vscode-css-languageservice "4.3.0"
+    vscode-html-languageservice "3.1.0"
+    web-component-analyzer "~1.1.1"
 
 lit-element@^2.2.1, lit-element@^2.3.0, lit-element@^2.4.0:
   version "2.4.0"
@@ -13148,6 +13176,11 @@ lodash.clonedeep@^4.5.0:
   version "4.5.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/lodash.clonedeep/-/lodash.clonedeep-4.5.0.tgz#e23f3f9c4f8fbdde872529c1071857a086e5ccef"
   integrity sha1-4j8/nE+Pvd6HJSnBBxhXoIblzO8=
+
+lodash.deburr@^4.1.0:
+  version "4.1.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/lodash.deburr/-/lodash.deburr-4.1.0.tgz#ddb1bbb3ef07458c0177ba07de14422cb033ff9b"
+  integrity sha1-3bG7s+8HRYwBd7oH3hRCLLAz/5s=
 
 lodash.get@^4.4.2:
   version "4.4.2"
@@ -15119,6 +15152,11 @@ parse5-htmlparser2-tree-adapter@^6.0.0, parse5-htmlparser2-tree-adapter@^6.0.1:
   integrity sha1-LN+a2CMyEUA3DU2/XT6Sx8jdxuY=
   dependencies:
     parse5 "^6.0.1"
+
+parse5@5.1.0:
+  version "5.1.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/parse5/-/parse5-5.1.0.tgz#c59341c9723f414c452975564c7c00a68d58acd2"
+  integrity sha1-xZNByXI/QUxFKXVWTHwApo1YrNI=
 
 parse5@5.1.1, parse5@^5.1.1:
   version "5.1.1"
@@ -19392,6 +19430,46 @@ void-elements@^2.0.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/void-elements/-/void-elements-2.0.1.tgz#c066afb582bb1cb4128d60ea92392e94d5e9dbec"
   integrity sha1-wGavtYK7HLQSjWDqkjkulNXp2+w=
 
+vscode-css-languageservice@4.3.0:
+  version "4.3.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/vscode-css-languageservice/-/vscode-css-languageservice-4.3.0.tgz#40c797d664ab6188cace33cfbb19b037580a9318"
+  integrity sha1-QMeX1mSrYYjKzjPPuxmwN1gKkxg=
+  dependencies:
+    vscode-languageserver-textdocument "^1.0.1"
+    vscode-languageserver-types "3.16.0-next.2"
+    vscode-nls "^4.1.2"
+    vscode-uri "^2.1.2"
+
+vscode-html-languageservice@3.1.0:
+  version "3.1.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/vscode-html-languageservice/-/vscode-html-languageservice-3.1.0.tgz#265b53bda595e6947b16b0fb8c604e1e58685393"
+  integrity sha1-JltTvaWV5pR7FrD7jGBOHlhoU5M=
+  dependencies:
+    vscode-languageserver-textdocument "^1.0.1"
+    vscode-languageserver-types "3.16.0-next.2"
+    vscode-nls "^4.1.2"
+    vscode-uri "^2.1.2"
+
+vscode-languageserver-textdocument@^1.0.1:
+  version "1.0.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/vscode-languageserver-textdocument/-/vscode-languageserver-textdocument-1.0.1.tgz#178168e87efad6171b372add1dea34f53e5d330f"
+  integrity sha1-F4Fo6H761hcbNyrdHeo09T5dMw8=
+
+vscode-languageserver-types@3.16.0-next.2:
+  version "3.16.0-next.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/vscode-languageserver-types/-/vscode-languageserver-types-3.16.0-next.2.tgz#940bd15c992295a65eae8ab6b8568a1e8daa3083"
+  integrity sha1-lAvRXJkilaZeroq2uFaKHo2qMIM=
+
+vscode-nls@^4.1.2:
+  version "4.1.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/vscode-nls/-/vscode-nls-4.1.2.tgz#ca8bf8bb82a0987b32801f9fddfdd2fb9fd3c167"
+  integrity sha1-yov4u4KgmHsygB+f3f3S+5/TwWc=
+
+vscode-uri@^2.1.2:
+  version "2.1.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/vscode-uri/-/vscode-uri-2.1.2.tgz#c8d40de93eb57af31f3c715dd650e2ca2c096f1c"
+  integrity sha1-yNQN6T61evMfPHFd1lDiyiwJbxw=
+
 vue-template-compiler@^2.6.11:
   version "2.6.12"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/vue-template-compiler/-/vue-template-compiler-2.6.12.tgz#947ed7196744c8a5285ebe1233fe960437fcc57e"
@@ -19453,7 +19531,7 @@ wcwidth@^1.0.0, wcwidth@^1.0.1:
   dependencies:
     defaults "^1.0.3"
 
-web-component-analyzer@^1.1.6:
+web-component-analyzer@^1.1.6, web-component-analyzer@~1.1.1:
   version "1.1.6"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/web-component-analyzer/-/web-component-analyzer-1.1.6.tgz#d9bd904d904a711c19ba6046a45b60a7ee3ed2e9"
   integrity sha1-2b2QTZBKcRwZumBGpFtgp+4+0uk=
