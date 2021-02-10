@@ -9,6 +9,10 @@
 	); // ! this was supposed to be set by MDC
 	letter-spacing: initial;
 	text-transform: initial;
+
+	&--extended .vvd-icon {
+		margin-inline-end: 12px;
+	}
 }
 
 :host([connotation='primary']) .mdc-fab {
