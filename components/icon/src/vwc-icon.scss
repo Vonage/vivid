@@ -15,6 +15,7 @@ $size-variable-name: --icon-size;
 	display: flex;
 	width: var(#{$size-variable-name});
 	height: var(#{$size-variable-name});
+	flex: 0 0 var(#{$size-variable-name});
 	block-size: var(#{$size-variable-name});
 	fill: currentColor;
 	inline-size: var(#{$size-variable-name});

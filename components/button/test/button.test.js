@@ -380,7 +380,7 @@ describe('button', () => {
 	});
 
 	describe('button layout', () => {
-		it('should have icon vertically centered', async () => {
+		it('should have icon sized and vertically centered', async () => {
 			const [b] = addElement(
 				textToDomToParent(
 					`<${COMPONENT_NAME} icon="info">Button Text</${COMPONENT_NAME}>`
@@ -390,6 +390,7 @@ describe('button', () => {
 			const i = b.shadowRoot.querySelector('.vvd-icon');
 			expect(i).exist;
 			expect(i.offsetHeight).equal(20);
+			expect(i.offsetWidth).equal(20);
 			assertDistancePixels(i, b, 'top', (b.offsetHeight - i.offsetHeight) / 2);
 		});
 	});

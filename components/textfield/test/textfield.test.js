@@ -231,6 +231,42 @@ describe('textfield', () => {
 			const l = e.shadowRoot.querySelector('.mdc-floating-label');
 			assertDistancePixels(e, l, 'left', 16);
 		});
+
+		it('should have leading icon positioned correctly (outlined)', async () => {
+			const [e] = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} label="Label" icon="info"></${COMPONENT_NAME}>`
+				)
+			);
+			await waitNextTask();
+			const i = e.shadowRoot.querySelector('vwc-icon');
+			expect(i).exist;
+			expect(i.offsetHeight).equal(20);
+			expect(i.offsetWidth).equal(20);
+			assertDistancePixels(e, i, 'left', 16);
+			assertDistancePixels(e, i, 'top', (e.offsetHeight - i.offsetHeight) / 2);
+		});
+
+		it('should have leading icon positioned correctly (dense)', async () => {
+			const [e] = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} dense label="Label" icon="info"></${COMPONENT_NAME}>`
+				)
+			);
+			await waitNextTask();
+			const icn = e.shadowRoot.querySelector('vwc-icon');
+			const inp = e.querySelector('input');
+			expect(icn).exist;
+			expect(icn.offsetHeight).equal(20);
+			expect(icn.offsetWidth).equal(20);
+			assertDistancePixels(inp, icn, 'left', 16);
+			assertDistancePixels(
+				inp,
+				icn,
+				'top',
+				(inp.offsetHeight - icn.offsetHeight) / 2
+			);
+		});
 	});
 
 	describe('shape', () => {
