@@ -1,17 +1,17 @@
 module.exports = {
-	"extends": [
+	extends: [
 		"stylelint-config-sass-guidelines",
 		"stylelint-a11y/recommended",
 		"stylelint-config-idiomatic-order",
-		"stylelint-config-prettier" // should always be last
 	],
-	"plugins": ["stylelint-no-unsupported-browser-features", "stylelint-a11y"],
-	"rules": {
+	plugins: ["stylelint-no-unsupported-browser-features", "stylelint-a11y"],
+	rules: {
+		indentation: "tab",
 		"plugin/no-unsupported-browser-features": [
 			true,
 			{
-				"severity": "warning"
-			}
+				severity: "warning",
+			},
 		],
 		"order/properties-alphabetical-order": null,
 		"selector-max-id": null,
@@ -21,6 +21,6 @@ module.exports = {
 		"a11y/selector-pseudo-class-focus": null,
 		"a11y/no-outline-none": null,
 		"no-duplicate-selectors": true,
-		"declaration-block-no-duplicate-properties": true
-	}
-}
+		"declaration-block-no-duplicate-properties": true,
+	},
+};
