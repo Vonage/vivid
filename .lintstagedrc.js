@@ -3,4 +3,5 @@ module.exports = {
 	"{common,components}/*/src/**/*.{js,ts}": [
 		"eslint --fix --no-error-on-unmatched-pattern",
 	],
+	'{common,components}/*/src/**/*.ts': ["lit-analyzer  --strict --quiet --format"],
 };

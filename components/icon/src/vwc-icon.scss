@@ -3,18 +3,21 @@ $size-variable-name: --icon-size;
 :host([size='small']) {
 	#{$size-variable-name}: 16px;
 }
+
 :host,
 :host([size='medium']) {
 	#{$size-variable-name}: 24px;
 }
+
 :host([size='large']) {
 	#{$size-variable-name}: 32px;
 }
 
 :host {
-	display: inline-flex;
+	display: flex;
 	width: var(#{$size-variable-name});
 	height: var(#{$size-variable-name});
+	flex: 0 0 var(#{$size-variable-name});
 	block-size: var(#{$size-variable-name});
 	fill: currentColor;
 	inline-size: var(#{$size-variable-name});
