@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/Vonage/vivid/compare/v1.2.0...v1.3.0) (2021-02-11)
+
+
+### Bug Fixes
+
+* **button/icon:** fixing the icon disposition in button ([#653](https://github.com/Vonage/vivid/issues/653)) ([9d15d14](https://github.com/Vonage/vivid/commit/9d15d14d9af7c4b68b26d58977fd2b50b8598020))
+* **icon:** issue 637 fixing icon misplacement ([#638](https://github.com/Vonage/vivid/issues/638)) ([2de7e94](https://github.com/Vonage/vivid/commit/2de7e9462994987ca84bde11260c915e420f661c)), closes [#637](https://github.com/Vonage/vivid/issues/637)
+
+
+### Features
+
+* **datepicker:** lit-flatpicker proof of concept ([#600](https://github.com/Vonage/vivid/issues/600)) ([95a8ecc](https://github.com/Vonage/vivid/commit/95a8eccc89c0d9b1df83d698333d2ddaad1081a2))
+* **fonts:** issue [#631](https://github.com/Vonage/vivid/issues/631) font-display deterministic resolution ([#632](https://github.com/Vonage/vivid/issues/632)) ([74befed](https://github.com/Vonage/vivid/commit/74befedba27e4997ea9e5aa63c24a23ffe21b984))
+
+
+
+
+
 # [1.2.0](https://github.com/Vonage/vivid/compare/v1.1.3...v1.2.0) (2021-02-03)
 
 

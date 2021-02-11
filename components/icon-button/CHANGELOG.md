@@ -1,3 +1,12 @@
+# [1.3.0](https://github.com/vonage/vivid/compare/v1.2.0...v1.3.0) (2021-02-11)
+
+
+### Bug Fixes
+
+* **icon:** issue 637 fixing icon misplacement ([#638](https://github.com/vonage/vivid/issues/638)) ([2de7e94](https://github.com/vonage/vivid/commit/2de7e9462994987ca84bde11260c915e420f661c)), closes [#637](https://github.com/vonage/vivid/issues/637)
+
+
+
 # [1.2.0](https://github.com/vonage/vivid/compare/v1.1.3...v1.2.0) (2021-02-03)
 
 
