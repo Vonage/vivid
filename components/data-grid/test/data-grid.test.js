@@ -56,6 +56,7 @@ describe('vwc-data-grid', () => {
 			html`<vwc-data-grid .options=${options}></vwc-data-grid>`
 		);
 		await waitNextTask();
+		// TODO: Find a way to use Spy on 'onGridReady' callback to check if it's being called
 	});
 
 	it('columns definitions can be given as a child vwc-data-grid-column elements', async () => {
@@ -66,5 +67,8 @@ describe('vwc-data-grid', () => {
 			</vwc-data-grid>`
 		);
 		await waitNextTask();
+		assert.equal(gridElement.options.columnDefs.length, 2);
+		assert.equal(gridElement.options.columnDefs[0].headerName, 'A');
+		assert.equal(gridElement.options.columnDefs[1].headerName, 'B');
 	});
 });

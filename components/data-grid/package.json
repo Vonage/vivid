@@ -2,6 +2,7 @@
 	"name": "@vonage/vwc-data-grid",
 	"version": "1.2.0",
 	"description": "Data Grid component, based on The Best JavaScript Grid in the World = Ag-Grid.com",
+	"author": "Alexander Mazuruk <oleksandr.mazuruk@vonage.com>",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/data-grid#readme",
 	"license": "ISC",
 	"main": "index.js",

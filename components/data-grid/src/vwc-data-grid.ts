@@ -113,6 +113,7 @@ export class VWCDataGrid extends LitElement {
 	}
 
 	get gridCore(): GridCore | null | undefined {
+		// eslint-disable-next-line dot-notation
 		return this.api ? this.api['gridCore'] : undefined;
 	}
 
@@ -181,11 +182,8 @@ export class VWCDataGrid extends LitElement {
 
 		// blend-in inline column definitions
 		if (this.#inlineColumnDefinitions.length > 0) {
-			if (!this.#gridOptions.columnDefs) {
-				this.#gridOptions.columnDefs = [];
-			}
 			this.#gridOptions.columnDefs = [
-				...this.#gridOptions.columnDefs,
+				...(this.#gridOptions.columnDefs || []),
 				...this.#inlineColumnDefinitions,
 			];
 		}
