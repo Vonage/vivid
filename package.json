@@ -16,7 +16,7 @@
 		"lint:stylelint": "stylelint {common,components}/**/*.scss --quiet",
 		"lint:lit": "lit-analyzer {common,components}/**/src/*.ts --strict --quiet",
 		"lint:eslint": "eslint {common,components}/** --no-error-on-unmatched-pattern",
-		"lint:prettier": "prettier {common,components}/**/*.{ts,scss} **/stories **/test/*.test.js --check",
+		"lint:prettier": "yarn prettier {common,components}/**/src/*.{js,ts,scss} **/stories **/test/*.test.js --check",
 		"lint": "yarn lint:stylelint && yarn lint:eslint && yarn lint:lit && yarn lint:prettier",
 		"format": "yarn lint:stylelint --fix && yarn lint:eslint --fix && yarn lint:lit --format && yarn lint:prettier --write",
 		"tsc:watch": "tsc --build --watch",
