@@ -7,6 +7,12 @@ import {
 } from 'lit-element';
 import { hypenateAndLowercase } from './utils';
 
+declare global {
+	interface HTMLElementTagNameMap {
+		'vwc-data-grid-column': VWCDataGridColumn;
+	}
+}
+
 @customElement('vwc-data-grid-column')
 export class VWCDataGridColumn extends LitElement {
 	static get properties(): PropertyDeclarations {
@@ -67,11 +73,5 @@ export class VWCDataGridColumn extends LitElement {
 
 	protected createRenderRoot(): HTMLElement {
 		return this;
-	}
-}
-
-declare global {
-	interface HTMLElementTagNameMap {
-		'vwc-data-grid-column': VWCDataGridColumn;
 	}
 }
