@@ -1,5 +1,5 @@
 import { CSSResult } from 'lit-element';
-import { preSchemeLoadingCssText } from './pre-scheme-loading.css';
+import { style as preSchemeLoadingStyle } from './pre-scheme-loading.css';
 import { PredefinedScheme } from './vvd-scheme-foundation';
 
 type ModuleType =
@@ -32,7 +32,7 @@ function ensureStyleMount(schemeStylesheetClass: string): HTMLStyleElement {
 	} else {
 		result = document.createElement('style');
 		result.className = STYLE_ELEMENT_CLASS;
-		result.innerHTML = preSchemeLoadingCssText;
+		result.innerHTML = preSchemeLoadingStyle.cssText;
 		document.head.appendChild(result);
 	}
 	return result;
