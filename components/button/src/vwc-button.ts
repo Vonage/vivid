@@ -59,7 +59,7 @@ export class VWCButton extends MWCButton {
 	type: ButtonType[number] = 'submit';
 
 	@property({ attribute: 'form', reflect: true })
-	formId = null;
+	formId: string | null = null;
 
 	#_hiddenButton: HTMLButtonElement = VWCButton.createHiddenButton();
 

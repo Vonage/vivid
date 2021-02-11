@@ -18,17 +18,19 @@
 	@include chips.trailing-icon-margin(variables.$trailing-icon-margin-left);
 	@include chips.trailing-icon-size(variables.$trailing-icon-size);
 	@include typography.typography-cat-shorthand('body-2-bold');
+	color: var(#{scheme-variables.$vvd-color-on-base});
 
 	cursor: auto;
-	color: var(#{scheme-variables.$vvd-color-on-base});
 	font-size: map-get(variables.$font-size, default);
 
-	vwc-icon.leading {
-		vertical-align: middle;
+	// vwc-icon
+	.leading {
 		margin: 0 5px 0 0;
+		vertical-align: middle;
 	}
 
-	vwc-icon.trailing {
+	// vwc-icon
+	.trailing {
 		margin-top: -1px;
 	}
 
@@ -38,6 +40,12 @@
 
 	.mdc-chip__ripple {
 		display: none;
+	}
+	@media screen and (prefers-reduced-motion: reduce) {
+		.mdc-chip__icon--trailing {
+			cursor: pointer;
+			transition: none;
+		}
 	}
 
 	.mdc-chip__icon--trailing {

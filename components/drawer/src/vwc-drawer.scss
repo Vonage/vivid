@@ -2,11 +2,11 @@
 @forward './vwc-drawer-coupling';
 
 .mdc-drawer {
-	top: 0;
 	position: sticky;
+	top: 0;
+	border-color: var(#{scheme-variables.$vvd-color-contrast-faint});
 	block-size: 100%;
 	max-block-size: 100vh;
-	border-color: var(#{scheme-variables.$vvd-color-contrast-faint});
 
 	&.mdc-drawer--dismissible {
 		:host([theme-alternate]) & {

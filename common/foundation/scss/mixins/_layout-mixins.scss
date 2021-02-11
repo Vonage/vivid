@@ -6,7 +6,7 @@
 $layouts: filled outlined soft text ghost !default;
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
-$allLayouts: (
+$all-layouts: (
 	filled: 'filled',
 	outlined: 'outlined',
 	soft: 'soft',
@@ -40,7 +40,7 @@ $bg: var(#{color-semantic.$vvd-color-connotation});
 }
 
 @mixin layout() {
-	@each $layout in functions.pick($layouts, $allLayouts) {
+	@each $layout in functions.pick($layouts, $all-layouts) {
 		#{':host([layout="#{$layout}"])'} {
 			@extend %#{$layout};
 		}

@@ -12,12 +12,13 @@ $size-variable-name: --icon-size;
 }
 
 :host {
-	display: inline-flex;
-	fill: currentColor;
+	display: flex;
 	width: var(#{$size-variable-name});
 	height: var(#{$size-variable-name});
-	inline-size: var(#{$size-variable-name});
+	flex: 0 0 var(#{$size-variable-name});
 	block-size: var(#{$size-variable-name});
+	fill: currentColor;
+	inline-size: var(#{$size-variable-name});
 
 	svg {
 		flex-grow: 1;
