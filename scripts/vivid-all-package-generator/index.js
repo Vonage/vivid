@@ -9,9 +9,9 @@ const
 	{ createGzip } = require('zlib'),
 	{ pipeline } = require('stream'),
 	semverCmp = require('semver-compare'),
-	locatePackage = require('./locate-package'),
+	locatePackage = require('../lib/locate-package'),
 	{ createWriteStream, readFile } = require('fs'),
-	mapCustomElements = require('./map-custom-elements'),
+	mapCustomElements = require('../lib/map-custom-elements'),
 	packageJsonTemplate = require('./template/package.json.js');
 
 const PACKAGE_NAME = "@vonage/vivid";
