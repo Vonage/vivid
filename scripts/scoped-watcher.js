@@ -19,28 +19,22 @@ const readFileStream = (filename)=> kefir.fromNodeCallback((cb)=> readFile(filen
 
 const
 	SECOND = 1000,
-	COLORS = ["blue", "yellow", "cyan", "green", "orange"],
-	DEFAULT_ROOT_FOLDERS = ["common", "components"],
-	DEFAULT_IGNORE_PATHS = ["**/node_modules/**", "./.*"],
+	COLORS = ['blue', 'yellow', 'cyan', 'green', 'orange'],
+	DEFAULT_ROOT_FOLDERS = ['common', 'components'],
+	DEFAULT_IGNORE_PATHS = ['**/node_modules/**', './.*'],
 	DEFAULT_DEBOUNCE_SCOPE_ACTION = 0.8 * SECOND;
 
 const EXECUTION_PLAN = [
 	{
-		name: "styles",
-		patterns: fp.overSome(["*.sass", "*.scss"].map(globFunction)),
-		commandLine: (scopes)=> ["lerna", ["run", "build:styles", ...scopes.flatMap((scope)=> ["--scope", scope])]],
+		name: 'Build Packages',
+		patterns: fp.overEvery([
+			fp.overSome(['*.sass', '*.scss', '*.ts'].map(globFunction)),
+			fp.negate(fp.overSome(['*.css.ts', '*.d.ts', '**/build/**'].map(globFunction)))
+		]),
+		commandLine: (scopes)=> ['yarn', ['lerna', 'run', 'build', ...scopes.flatMap((scope)=> ['--scope', scope]), '--include-dependents']],
 		delayBy: SECOND
 	}
 ];
-
-/* This will be added to EXECUTION_PLAN once typescript build is included in package scripts
-{
-		name: "typescript",
-		patterns: (filename)=> /(?<!\.d)\.ts$/i.test(filename),
-		commandLine: (scopes)=> ["lerna", ["run", "build:typescript", ...scopes.flatMap((scope)=> ["--scope", scope])]],
-		delayBy: 3 * SECOND
-	}
-*/
 
 const rootFoldersProperty = kefir
 	.concat([
@@ -60,7 +54,7 @@ const fsActivityStream = rootFoldersProperty
 				ignored: DEFAULT_IGNORE_PATHS,
 				followSymlinks: false,
 				persistent: true,
-				ignoreInitial: true
+				//usePolling: false
 			});
 
 		return kefir
@@ -104,35 +98,35 @@ const workerLog = kefir
 
 			return executionScopeStream
 				.bufferBy(executionScopeStream.debounce(delayBy ?? DEFAULT_DEBOUNCE_SCOPE_ACTION))
-				.bufferWhileBy(processStateProperty, { flushOnChange: false })
+				.bufferWhileBy(processStateProperty, { flushOnChange: true })
 				.map(fp.pipe(fp.flatten, fp.map('scope'), fp.uniq, fp.compact))
 				.filter(fp.negate(fp.isEmpty))
-				.flatMapConcat((scopes)=>{
+				.flatMapConcat((scopes)=> {
 					return kefir.concat([
 						kefir.constant(chalk.bold(`Starting execution for scopes ${_.truncate(scopes.join(',', 30))} (${scopes.length} in total)`)),
 						kefir
 							.stream(({ emit, error, end })=> {
 
-								const process = spawn(...commandLine(scopes), { stdio: [0, 'pipe', 'pipe'] });
-								const lineStream = pipeline(process.stdout, split(null, null, { trailing: false }), _.noop);
-								const lineErrorStream = pipeline(process.stderr, split(null, null, { trailing: false }), _.noop);
+								const subprocess = spawn(...commandLine(scopes), { stdio: [0, 'pipe', 'pipe'] });
+								const lineStream = pipeline(subprocess.stdout, split(null, null, { trailing: false }), _.noop);
+								const lineErrorStream = pipeline(subprocess.stderr, split(null, null, { trailing: false }), _.noop);
 
 								signalProcess(true);
-								process.on('exit', end);
-								process.on('error', error);
+								subprocess.on('exit', end);
+								subprocess.on('error', error);
 								lineStream.on('data', emit);
 								lineErrorStream.on('data', emit);
 
 								return ()=> {
 									signalProcess(false);
-									process.off('exit', end);
-									process.off('error', error);
+									subprocess.off('exit', end);
+									subprocess.off('error', error);
 									lineStream.off('data', emit);
 									lineErrorStream.off('data', emit);
 								};
 							})
 							.takeErrors(1)
-							.map((line)=> [" ", line].join(''))
+							.map(fp.pipe((line)=> [' ', line].join(''), ))
 					])
 				})
 				.map((message)=> [chalk[COLORS[stringValue(name) % COLORS.length]](name), message].join(': '));
