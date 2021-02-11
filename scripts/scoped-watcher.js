@@ -31,7 +31,7 @@ const EXECUTION_PLAN = [
 			fp.overSome(['*.sass', '*.scss', '*.ts'].map(globFunction)),
 			fp.negate(fp.overSome(['*.css.ts', '*.d.ts', '**/build/**'].map(globFunction)))
 		]),
-		commandLine: (scopes)=> ['yarn', ['lerna', 'run', 'build', ...scopes.flatMap((scope)=> ['--scope', scope]), '--include-dependents']],
+		commandLine: (scopes)=> ['yarn', ['lerna', 'run', 'build', ...scopes.flatMap((scope)=> ['--scope', scope]), '--include-dependents', '--stream']],
 		delayBy: SECOND
 	}
 ];
@@ -54,7 +54,8 @@ const fsActivityStream = rootFoldersProperty
 				ignored: DEFAULT_IGNORE_PATHS,
 				followSymlinks: false,
 				persistent: true,
-				//usePolling: false
+				usePolling: false,
+				ignoreInitial: true
 			});
 
 		return kefir
