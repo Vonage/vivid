@@ -80,12 +80,14 @@ module.exports = {
 		'wc/attach-shadow-constructor': 'off', //! should remove after PR merge
 		'no-void': 'off', //! should remove after PR merge
 		'no-unused-vars':
-			'off' /*[
+			'off', /*[
 			'error',
 			{
 				'varsIgnorePattern': '^(?:(?:MDC(?:(?:[A-Z][a-z0-9]+)+)Adapter)|(?:(?:(?:[A-Z][a-z0-9]+)+)Type))$'
 			}
-		]*/, //! should ENABLE after PR merge
+		]*/ //! should ENABLE after PR merge
+		'object-curly-newline': 'off',
+		'arrow-parens': 'off',
 		'@typescript-eslint/explicit-function-return-type': 'off',
 		'@typescript-eslint/indent': 'off',
 		'@typescript-eslint/explicit-member-accessibility': [

@@ -55,8 +55,8 @@ export class VWCCarousel extends LitElement {
 			loop: false,
 			autoplay: this.autoplay
 				? {
-						delay: 2500,
-						disableOnInteraction: true,
+					delay: 2500,
+					disableOnInteraction: true,
 				  }
 				: false,
 			cssMode: false,
