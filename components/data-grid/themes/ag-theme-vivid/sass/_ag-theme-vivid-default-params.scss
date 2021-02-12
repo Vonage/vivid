@@ -17,15 +17,15 @@ $ag-theme-vivid-default-params: (
 	subheader-background-color: var(#{scheme-variables.$vvd-color-surface}),
 	header-cell-hover-background-color:
 		var(#{scheme-variables.$vvd-color-contrast-faint}),
-	chip-background-color: #e2e2e2,
+	chip-background-color: var(#{scheme-variables.$vvd-color-base}),
 	range-selection-background-color: rgba(122, 134, 203, 0.1),
 	range-selection-highlight-color: var(#{scheme-variables.$vvd-color-cta}),
-	row-hover-color: #fafafa,
-	control-panel-background-color: #fafafa,
+	row-hover-color: var(#{scheme-variables.$vvd-color-contrast-faint}),
+	control-panel-background-color: var(#{scheme-variables.$vvd-color-base}),
 	selected-row-background-color: var(#{scheme-variables.$vvd-color-base}),
 	range-selection-border-color: var(#{scheme-variables.$vvd-color-cta}),
 	checkbox-checked-color: var(#{scheme-variables.$vvd-color-cta}),
-	checkbox-unchecked-color: #333,
+	checkbox-unchecked-color: var(#{scheme-variables.$vvd-color-base}),
 	value-change-value-highlight-background-color:
 		var(#{scheme-variables.$vvd-color-cta}),
 	// Borders
