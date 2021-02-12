@@ -1,0 +1,61 @@
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+@use '@vonage/vvd-typography/scss/typography';
+
+// Todo - spacing vars
+
+:host {
+	display: flex;
+	flex-direction: column;
+}
+
+:host(:not([open])) {
+	.expansion-panel-body {
+		display: none;
+	}
+}
+
+.expansion-panel {
+	border-bottom: 1px solid var(#{scheme-variables.$vvd-color-contrast-soft});
+
+	&:hover {
+		background-color: var(#{scheme-variables.$vvd-color-contrast-faint});
+	}
+}
+
+.expansion-panel-header {
+	@include typography.typography-cat-shorthand('subtitle-2');
+	display: flex;
+	align-items: center;
+	padding: 12px 16px;
+	cursor: pointer;
+
+	.leading-icon,
+	.trailing-icon {
+		.vvd-icon {
+			--icon-size: 20px;
+		}
+	}
+
+	.leading-icon .vvd-icon {
+		margin-inline-end: 16px;
+	}
+
+	.trailing-icon {
+		margin-left: auto;
+
+		.vvd-icon {
+			margin-inline-start: 16px;
+		}
+	}
+}
+
+.expansion-panel-body {
+	@include typography.typography-cat-shorthand('body-2');
+	padding: 0 16px 24px 56px;
+}
+
+:host(:not([icon])[trailingToggle]) {
+	.expansion-panel-body {
+		padding: 0 16px 24px;
+	}
+}
