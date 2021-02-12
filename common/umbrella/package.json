@@ -24,16 +24,21 @@
 		"url": "git+https://github.com/Vonage/vivid.git"
 	},
 	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1"
+		"test": "echo \"Error: run tests from root\" && exit 1",
+		"build": "yarn wca:json",
+		"wca:json": "wca analyze ../../components/*/src/*.?s --outFile custom-elements.json"
 	},
 	"bugs": {
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
 		"glob": "^7.1.6",
+		"kefir": "^3.8.8",
 		"minimist": "^1.2.5",
-		"sass": "^1.32.4",
-		"kefir": "^3.8.8"
+		"sass": "^1.32.4"
 	},
-	"prettier": "@vonage/vvd-umbrella/prettier-config"
+	"prettier": "@vonage/vvd-umbrella/prettier-config",
+	"devDependencies": {
+		"web-component-analyzer": "^1.1.6"
+	}
 }
