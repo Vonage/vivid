@@ -9,9 +9,8 @@
 	--mdc-theme-error: #{color-semantic.$formfield-label-error-ink};
 	--mdc-text-field-fill-color: var(#{scheme-variables.$vvd-color-base});
 	--mdc-text-field-ink-color: var(#{scheme-variables.$vvd-color-on-base});
-	--mdc-text-field-label-ink-color: var(
-		#{color-semantic.$formfield-label-idle-ink}
-	);
+	--mdc-text-field-label-ink-color: var(		#{color-semantic.$formfield-label-idle-ink}
+);
 	--mdc-text-field-disabled-ink-color: var(
 		#{color-semantic.$formfield-disabled-ink}
 	);
@@ -90,8 +89,9 @@
 		.mdc-floating-label,
 		&--invalid.mdc-text-field--outlined .mdc-floating-label,
 		&:not(.mdc-text-field--invalid):not(.mdc-text-field--focused)
-			.mdc-floating-label,
-		&:not(.mdc-text-field--invalid).mdc-text-field--focused .mdc-floating-label {
+		.mdc-floating-label,
+		&:not(.mdc-text-field--invalid).mdc-text-field--focused
+		.mdc-floating-label {
 			color: var(--mdc-text-field-ink-color);
 		}
 	}
@@ -186,8 +186,8 @@ vwc-notched-outline {
 }
 
 :host(:not([disabled]):hover)
-	:not(.mdc-text-field--invalid):not(.mdc-text-field--focused)
-	vwc-notched-outline {
+:not(.mdc-text-field--invalid):not(.mdc-text-field--focused)
+vwc-notched-outline {
 	--mdc-notched-outline-border-color: var(
 		--mdc-text-field-outlined-hover-border-color
 	);
@@ -201,11 +201,11 @@ vwc-notched-outline {
 );
 
 .mdc-text-field--with-leading-icon.mdc-text-field--outlined
-	.mdc-floating-label--float-above {
+.mdc-floating-label--float-above {
 	transform: translateY(-18px);
 }
 .mdc-text-field--with-leading-icon.mdc-text-field--outlined
-	.mdc-floating-label {
+.mdc-floating-label {
 	left: 40px;
 }
 
