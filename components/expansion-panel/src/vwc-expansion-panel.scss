@@ -54,7 +54,7 @@
 	padding: 0 16px 24px 56px;
 }
 
-:host(:not([icon])[trailingToggle]) {
+:host([icon=''][trailingToggle]) {
 	.expansion-panel-body {
 		padding: 0 16px 24px;
 	}

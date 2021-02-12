@@ -19,7 +19,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	header = '';
 
 	@property({ type: String, reflect: true })
-	icon?: string;
+	icon = '';
 
 	@property({ type: Boolean, reflect: true })
 	chevronToggle = false;
