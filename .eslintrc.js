@@ -88,12 +88,14 @@ module.exports = {
 		]*/, //! should ENABLE after PR merge
 		'@typescript-eslint/explicit-function-return-type': 'off',
 		'@typescript-eslint/indent': 'off',
-		'max-len': 'off',
-		'block-spacing': 'off',
 		'@typescript-eslint/explicit-member-accessibility': [
 			'error',
 			{ accessibility: 'no-public' },
 		],
+		'no-multiple-empty-lines': 'off',
+		'operator-linebreak': 'off',
+		'max-len': 'off',
+		'block-spacing': 'off',
 		'no-new': 'warn',
 		quotes: ['error', 'single', { avoidEscape: true }],
 		'no-var': 'error',
