@@ -12,7 +12,7 @@ const customElementsJson = readFileSync(
 );
 
 const { tags } = JSON.parse(customElementsJson);
-const cssSelector = tags.reduce(
+const cssRule = `${ tags.map(({name})=> name).join(',') } { visibility: hidden; }`;
   (acc, { name }, i) => (acc += `${name}${i < tags.length - 1 ? ',\n' : ''}`),
   ''
 );
