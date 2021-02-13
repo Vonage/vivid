@@ -15,7 +15,7 @@
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1",
 		"build": "yarn run generate:pre-scheme-style && yarn run build:styles && yarn run build:typescript",
-		"generate:pre-scheme-style": "node scripts/generate-pre-scheme-style.mjs",
+		"generate:pre-scheme-style": "node --experimental-json-modules scripts/generate-pre-scheme-style.mjs",
 		"build:typescript": "tsc -b",
 		"build:styles": "umbrella-style-modules"
 	},
