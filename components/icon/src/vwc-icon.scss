@@ -19,13 +19,14 @@ $size-variable-name: --icon-size;
 
 :host {
 	display: inline-block;
+	width: var(#{$size-variable-name});
+	height: var(#{$size-variable-name});
+	inline-size: var(#{$size-variable-name});
+	block-size: var(#{$size-variable-name});
 	line-height: 1;
 
 	svg {
-		width: var(#{$size-variable-name});
-		height: var(#{$size-variable-name});
-		inline-size: var(#{$size-variable-name});
-		block-size: var(#{$size-variable-name});
 		fill: currentColor;
+		vertical-align: super;
 	}
 }
