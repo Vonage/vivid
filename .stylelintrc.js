@@ -14,6 +14,7 @@ module.exports = {
 			}
 		],
 		"order/properties-alphabetical-order": null,
+		"order/properties-order": null,
 		"selector-max-id": null,
 		"selector-class-pattern": null,
 		"max-nesting-depth": null,

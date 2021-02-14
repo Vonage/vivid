@@ -11,17 +11,21 @@ $size-variable-name: --icon-size;
 	#{$size-variable-name}: 32px;
 }
 
+:host([inline]) {
+	#{$size-variable-name}: 1em;
+	line-height: 1;
+	vertical-align: middle;
+}
+
 :host {
-	display: flex;
-	width: var(#{$size-variable-name});
-	height: var(#{$size-variable-name});
-	flex: 0 0 var(#{$size-variable-name});
-	block-size: var(#{$size-variable-name});
-	fill: currentColor;
-	inline-size: var(#{$size-variable-name});
+	display: inline-block;
+	line-height: 1;
 
 	svg {
-		flex-grow: 1;
-		align-items: stretch;
+		width: var(#{$size-variable-name});
+		height: var(#{$size-variable-name});
+		inline-size: var(#{$size-variable-name});
+		block-size: var(#{$size-variable-name});
+		fill: currentColor;
 	}
 }
