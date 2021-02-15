@@ -24,9 +24,12 @@ $size-variable-name: --icon-size;
 	inline-size: var(#{$size-variable-name});
 	block-size: var(#{$size-variable-name});
 	line-height: 1;
+	vertical-align: middle;
 
 	svg {
-		fill: currentColor;
+		max-inline-size: 100%;
+		max-block-size: 100%;
 		vertical-align: super;
+		fill: currentColor;
 	}
 }
