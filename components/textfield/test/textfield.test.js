@@ -242,7 +242,7 @@ describe('textfield', () => {
 			const i = e.shadowRoot.querySelector('vwc-icon');
 			expect(i).exist;
 			expect(i.offsetHeight).equal(20);
-			expect(i.offsetWidth).equal(20);
+			expect(i.offsetWidth).equal(14);
 			assertDistancePixels(e, i, 'left', 16);
 			assertDistancePixels(e, i, 'top', (e.offsetHeight - i.offsetHeight) / 2);
 		});
@@ -258,7 +258,7 @@ describe('textfield', () => {
 			const inp = e.querySelector('input');
 			expect(icn).exist;
 			expect(icn.offsetHeight).equal(20);
-			expect(icn.offsetWidth).equal(20);
+			expect(icn.offsetWidth).equal(14);
 			assertDistancePixels(inp, icn, 'left', 16);
 			assertDistancePixels(
 				inp,

@@ -41,6 +41,10 @@
 	--mdc-theme-on-primary: var(#{color-semantic.$vvd-color-on-connotation});
 }
 /////////////////////////////////////////////////////////////////////////////
+.vvd-icon {
+	vertical-align: middle;
+}
+
 .mdc-button {
 	$gutter: 8px;
 	height: 40px;
