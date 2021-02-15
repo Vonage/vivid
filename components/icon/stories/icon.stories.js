@@ -13,4 +13,4 @@ export default {
 const Template = args => html`I <vwc-icon ...=${spread(args)}></vwc-icon> VIVID!`;
 
 export const Basic = Template.bind({});
-Basic.args = { size: 'medium', inline: true, type: 'heart', style: 'color: red' };
+Basic.args = { size: 'medium', inline: '', type: 'heart', style: 'color: red' };
