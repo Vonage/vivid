@@ -43,9 +43,7 @@ const
 		'brands': 'Brands',
 		'audio': 'Audio',
 		'arrows': 'Arrows',
-		'alert': 'Alert',
-		'id': 'ai',
-		'title': 'AI'
+		'alert': 'Alert'
 	};
 
 const registerCategory = (categoryTitle, content) => storiesOf(['Components', 'Atoms', 'Icon', 'Types'].join(PATH_SEPARATOR), module)
