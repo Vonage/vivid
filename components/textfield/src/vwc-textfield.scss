@@ -173,9 +173,10 @@
 
 	.mdc-text-field__icon--leading,
 	.mdc-text-field__icon--trailing {
+		display: flex;
+		align-self: center;
 		padding: 0;
 		margin: 0 #{textfield-variables.$horizontal-gutter};
-		align-self: center;
 
 		vwc-icon {
 			--icon-size: #{textfield-variables.$icon-size};
