@@ -62,7 +62,9 @@ describe('vwc-icon', () => {
 		for (const [sizeName, sizeValue] of Object.entries(ICON_SIZES)) {
 			it(`'${sizeName}' icon should be sized property`, async () => {
 				const [e] = addElement(
-					textToDomToParent(`<vwc-icon type="home" size="${sizeName}"></vwc-icon>`)
+					textToDomToParent(
+						`<vwc-icon type="happy-line" size="${sizeName}"></vwc-icon>`
+					)
 				);
 				await waitInterval(LOAD_TIME);
 				const svg = e.shadowRoot.querySelector('svg');
@@ -72,7 +74,9 @@ describe('vwc-icon', () => {
 
 			it(`'${sizeName}' icon should be located property`, async () => {
 				const [e] = addElement(
-					textToDomToParent(`<vwc-icon type="home" size="${sizeName}"></vwc-icon>`)
+					textToDomToParent(
+						`<vwc-icon type="happy-line" size="${sizeName}"></vwc-icon>`
+					)
 				);
 				await waitInterval(LOAD_TIME);
 				const svg = e.shadowRoot.querySelector('svg');
