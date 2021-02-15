@@ -11,7 +11,8 @@
 		height: $unit * 8px;
 
 		.vvd-icon {
-			--icon-size: #{$unit * 4px};
+			width: #{$unit * 4px};
+			height: #{$unit * 4px};
 		}
 		@content;
 	}
@@ -50,7 +51,8 @@
 
 	&:not(.mdc-button--dense) {
 		.vvd-icon {
-			--icon-size: 20px;
+			width: 20px;
+			height: 20px;
 		}
 	}
 

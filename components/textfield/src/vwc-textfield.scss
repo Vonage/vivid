@@ -172,7 +172,8 @@
 	}
 
 	vwc-icon {
-		--icon-size: #{textfield-variables.$icon-size};
+		width: #{textfield-variables.$icon-size};
+		height: #{textfield-variables.$icon-size};
 		align-self: center;
 		padding: 0;
 		margin: 0 #{textfield-variables.$horizontal-gutter};
