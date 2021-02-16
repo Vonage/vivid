@@ -131,7 +131,7 @@ export class VWCFilePicker extends LitElement {
 	private setupDragNDrop(): void {
 		const ddZone = this.shadowRoot?.querySelector('.content') as HTMLElement;
 		if (ddZone) {
-			ddZone.ondragover = (e) => e.preventDefault();
+			ddZone.ondragover = e => e.preventDefault();
 
 			ddZone.addEventListener('dragenter', (e) => {
 				e.preventDefault();
@@ -217,7 +217,7 @@ export class VWCFilePicker extends LitElement {
 		if (!this.#container) {
 			return;
 		}
-		const ctr = Array.from(this.#container.classList).filter((c) => c.startsWith('drag-'));
+		const ctr = Array.from(this.#container.classList).filter(c => c.startsWith('drag-'));
 		this.#container?.classList.remove(...ctr);
 	}
 
@@ -230,7 +230,7 @@ export class VWCFilePicker extends LitElement {
 	private validateSlottedInput(slot: HTMLSlotElement): void {
 		const assignedElements = slot
 			.assignedNodes()
-			.filter((n) => n.nodeType === Node.ELEMENT_NODE);
+			.filter(n => n.nodeType === Node.ELEMENT_NODE);
 		if (assignedElements.length > 1) {
 			console.error(
 				`only a single slotted INPUT expected; found ${assignedElements.length}`
@@ -264,7 +264,7 @@ export class VWCFilePicker extends LitElement {
 
 		const ddl = dataTransfer.items;
 		if (ddl) {
-			if (Array.from(ddl).some((i) => i.kind !== 'file')) {
+			if (Array.from(ddl).some(i => i.kind !== 'file')) {
 				return this.notAFileError;
 			}
 			if (!fi.hasAttribute('multiple') && ddl.length > 1) {

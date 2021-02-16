@@ -2,7 +2,9 @@
 // @ts-nocheck
 import '@vonage/vvd-core';
 import kefir from 'kefir';
-import { pipe, partial, clamp, prop, always, not, identity, path } from 'ramda';
+import {
+	pipe, partial, clamp, prop, always, not, identity, path
+} from 'ramda';
 import { style as vwcMediaControllerStyle } from './vwc-media-controller.css';
 
 const SIGNAL = Symbol('signal'),
@@ -11,17 +13,17 @@ const SIGNAL = Symbol('signal'),
 	TRACK_INACTIVE_COLOR = '#E1E2E6',
 	TRACK_ACTIVE_COLOR = '#999';
 
-const byType = (typeName) => ({ type }) => type === typeName,
+const byType = typeName => ({ type }) => type === typeName,
 	createTag = function (tagName, ...children) {
 		const el = document.createElement(tagName);
-		children.forEach((child) => (typeof child === 'string' ? (el.innerHTML += child) : el.appendChild(child)));
+		children.forEach(child => (typeof child === 'string' ? (el.innerHTML += child) : el.appendChild(child)));
 		return el;
 	},
 	preventDefault = (e) => {
 		e.preventDefault();
 		return e;
 	},
-	sendCustomEventFactory = (target) => (
+	sendCustomEventFactory = target => (
 		eventType,
 		detail,
 		options = { bubbles: true, composed: true }
@@ -29,7 +31,9 @@ const byType = (typeName) => ({ type }) => type === typeName,
 		const event = new CustomEvent(eventType, { ...options, detail });
 		target.dispatchEvent(event);
 	},
-	addRectMargin = ({ marginX = 0, marginY = 0 }, { x, y, width, height }) => ({
+	addRectMargin = ({ marginX = 0, marginY = 0 }, {
+		x, y, width, height
+	}) => ({
 		x: x - marginX,
 		y: y - marginY,
 		width: width + marginX * 2,
@@ -38,7 +42,9 @@ const byType = (typeName) => ({ type }) => type === typeName,
 	isBetween = (value, min, max) => value >= min && value <= max,
 	isInRect = (
 		{ x: sourceX, y: sourceY },
-		{ x: rectX, y: rectY, width: rectWidth, height: rectHeight }
+		{
+			x: rectX, y: rectY, width: rectWidth, height: rectHeight
+		}
 	) => [
 		isBetween(sourceX, rectX, rectX + rectWidth),
 		isBetween(sourceY, rectY, rectY + rectHeight),
@@ -70,7 +76,7 @@ class VWCMediaController extends HTMLElement {
 			rootEl;
 
 		const componentContent = (function () {
-			const [style, div, button] = ['style', 'div', 'button'].map((tagName) => partial(createTag, [tagName]));
+			const [style, div, button] = ['style', 'div', 'button'].map(tagName => partial(createTag, [tagName]));
 			return [
 				style(vwcMediaControllerStyle.cssText),
 				(rootEl = div(
@@ -94,14 +100,14 @@ class VWCMediaController extends HTMLElement {
 				})
 				.map(preventDefault),
 			touchEndStream = kefir.merge(
-				['touchend', 'touchcancel'].map((eventName) => kefir.fromEvents(window, eventName))
+				['touchend', 'touchcancel'].map(eventName => kefir.fromEvents(window, eventName))
 			),
 			[mouseUpStream, mouseMoveStream, contextMenuStream, windowResizeStream] = [
 				'mouseup',
 				'mousemove',
 				'contextmenu',
 				'resize',
-			].map((eventName) => kefir.fromEvents(window, eventName)),
+			].map(eventName => kefir.fromEvents(window, eventName)),
 			trackBarEnabledProperty = componentConnectedStream
 				.take(1)
 				.map(() => {
@@ -127,7 +133,11 @@ class VWCMediaController extends HTMLElement {
 						mouseX,
 						mouseY,
 						identifier,
-						...(({ x, y, width, height }) => ({ x, y, width, height }))(
+						...(({
+							x, y, width, height
+						}) => ({
+							x, y, width, height
+						}))(
 							trackEl.getBoundingClientRect()
 						),
 					}))
@@ -167,7 +177,7 @@ class VWCMediaController extends HTMLElement {
 												rectX + TRACK_KNOB_HORIZONTAL_MARGIN,
 												rectX + rectWidth - TRACK_KNOB_HORIZONTAL_MARGIN
 											),
-											(pos) => (pos - (rectX + TRACK_KNOB_HORIZONTAL_MARGIN)) /
+											pos => (pos - (rectX + TRACK_KNOB_HORIZONTAL_MARGIN)) /
 												(rectWidth - TRACK_KNOB_HORIZONTAL_MARGIN * 2)
 										)
 									)
@@ -182,7 +192,7 @@ class VWCMediaController extends HTMLElement {
 											])
 											.take(1)
 									)
-									.map((position) => ({ type: 'position_change', position })),
+									.map(position => ({ type: 'position_change', position })),
 								kefir.constant({ type: 'end' }),
 							]);
 						}
@@ -190,7 +200,7 @@ class VWCMediaController extends HTMLElement {
 
 				const userScrubInteractionProperty = kefir
 					.merge(
-						['start', 'end'].map((eventType) => userScrubStream
+						['start', 'end'].map(eventType => userScrubStream
 							.filter(byType(eventType))
 							.map(always(eventType === 'start')))
 					)
@@ -216,23 +226,23 @@ class VWCMediaController extends HTMLElement {
 											.skipDuplicates(),
 										windowResizeStream.toProperty(always(0)),
 									],
-									(val) => val
+									val => val
 								)
-								.flatMapLatest((value) => rafStream.take(1).map(always(value)))
-								.map((position) => ({
+								.flatMapLatest(value => rafStream.take(1).map(always(value)))
+								.map(position => ({
 									type: 'update_knob_position',
 									value: position,
 								})),
-							apiPositionProperty.skipDuplicates().map((percentage) => ({
+							apiPositionProperty.skipDuplicates().map(percentage => ({
 								type: 'update_progress_position',
 								value: percentage,
 							})),
-							userScrubInteractionProperty.map((state) => ({
+							userScrubInteractionProperty.map(state => ({
 								type: 'update_scrub_state',
 								value: state,
 							})),
 							userScrubStream.filter(byType('position_change')).map(
-								pipe(prop('position'), (position) => ({
+								pipe(prop('position'), position => ({
 									type: 'update_user_scrub_request',
 									value: position,
 								}))
@@ -244,11 +254,11 @@ class VWCMediaController extends HTMLElement {
 
 		// Draw component internals
 		componentConnectedStream.take(1).onValue(() => {
-			componentContent.forEach((el) => rootDoc.appendChild(el));
+			componentContent.forEach(el => rootDoc.appendChild(el));
 		});
 
 		trackBarEnabledProperty.onValue(
-			(enabled) => (trackEl.style.display = enabled ? 'block' : 'none')
+			enabled => (trackEl.style.display = enabled ? 'block' : 'none')
 		);
 
 		// Update knob position
@@ -267,7 +277,7 @@ class VWCMediaController extends HTMLElement {
 			.filter(byType('update_progress_position'))
 			.map(prop('value'))
 			.onValue(
-				(percentage) => (trackEl.style.backgroundImage = `linear-gradient(90deg, ${TRACK_ACTIVE_COLOR} 0%, ${TRACK_ACTIVE_COLOR} ${
+				percentage => (trackEl.style.backgroundImage = `linear-gradient(90deg, ${TRACK_ACTIVE_COLOR} 0%, ${TRACK_ACTIVE_COLOR} ${
 					percentage * 100
 				}%, ${TRACK_INACTIVE_COLOR} ${
 					percentage * 100
@@ -277,7 +287,7 @@ class VWCMediaController extends HTMLElement {
 		trackBarStream
 			.filter(byType('update_scrub_state'))
 			.map(prop('value'))
-			.onValue((scrub) => rootEl.classList.toggle('scrub', scrub));
+			.onValue(scrub => rootEl.classList.toggle('scrub', scrub));
 
 		// Send user scrub event
 		trackBarStream
@@ -291,7 +301,7 @@ class VWCMediaController extends HTMLElement {
 			.toProperty(always(false));
 
 		// Update play state
-		playStateProperty.onValue((isPlaying) => rootEl.classList.toggle('play', isPlaying));
+		playStateProperty.onValue(isPlaying => rootEl.classList.toggle('play', isPlaying));
 
 		// Send user play/pause event
 		mouseClickStream

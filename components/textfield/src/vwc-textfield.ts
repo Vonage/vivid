@@ -44,7 +44,7 @@ export class VWCTextField extends MWCTextField {
 	@property({ type: String, reflect: true })
 	form: string | undefined;
 
-	@property({ type: String, reflect: true, converter: (v) => v || ' ' })
+	@property({ type: String, reflect: true, converter: v => v || ' ' })
 	placeholder = ' ';
 
 	constructor() {
