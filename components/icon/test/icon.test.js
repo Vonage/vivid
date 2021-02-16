@@ -84,5 +84,18 @@ describe('vwc-icon', () => {
 				assertDistancePixels(e, svg, 'left', 0);
 			});
 		}
+
+		it('icon should be inline', async () => {
+			const [e] = addElement(
+				textToDomToParent(`<vwc-icon type="happy-line" inline></vwc-icon>`)
+			);
+			await waitInterval(LOAD_TIME);
+			const svg = e.shadowRoot.querySelector('svg');
+			assertComputedStyle(svg, {
+				display: 'inline',
+				width: ICON_SIZES.small,
+				height: ICON_SIZES.small,
+			});
+		});
 	});
 });
