@@ -5,7 +5,9 @@
 	--mdc-checkbox-ink-color: var(#{scheme-variables.$vvd-color-surface});
 	--mdc-checkbox-checked-color: var(#{scheme-variables.$vvd-color-on-base});
 	--mdc-checkbox-unchecked-color: var(#{scheme-variables.$vvd-color-on-base});
-	--mdc-checkbox-disabled-color: var(#{scheme-variables.$vvd-color-contrast-soft});
+	--mdc-checkbox-disabled-color: var(
+		#{scheme-variables.$vvd-color-contrast-soft}
+	);
 }
 
 .mdc-checkbox {
@@ -23,20 +25,20 @@
 	}
 
 	.mdc-checkbox__native-control {
-		left: 0;
 		top: 0;
+		left: 0;
 	}
 
 	.mdc-checkbox__background {
 		top: 0;
 		left: 0;
-		border-width: 2px;
-		border-radius: 3px;
-		transition-property: background-color, border-color !important;
-		transition-duration: 0.2s !important;
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		border-width: 2px;
+		border-radius: 3px;
+		transition-duration: 0.2s !important;
+		transition-property: background-color, border-color !important;
 	}
 
 	.mdc-checkbox__checkmark {
@@ -61,9 +63,11 @@
 
 	.mdc-checkbox__native-control[disabled]:checked,
 	.mdc-checkbox__native-control[disabled]:indeterminate,
-	.mdc-checkbox__native-control[data-indeterminate="true"][disabled] {
+	.mdc-checkbox__native-control[data-indeterminate='true'][disabled] {
 		~ .mdc-checkbox__background {
-			--mdc-checkbox-disabled-color: var(#{scheme-variables.$vvd-color-contrast-soft});
+			--mdc-checkbox-disabled-color: var(
+				#{scheme-variables.$vvd-color-contrast-soft}
+			);
 		}
 	}
 }

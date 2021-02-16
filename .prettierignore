@@ -1,9 +1,0 @@
-**/node_modules
-**/*.d.ts
-**/*.css.ts
-**/*.js
-!**/test/*.test.js
-**/*.js.map
-**/*.tsbuildinfo
-**/storybook-static
-**/coverage

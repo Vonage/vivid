@@ -29,7 +29,7 @@ export const radioList = args => html`
 		<vwc-radio-list-item group="b" ...=${spread(args)}>Item 0</vwc-radio-list-item>
 		<vwc-radio-list-item group="b" selected ...=${spread(args)}>Item 1</vwc-radio-list-item>
 		<li divider role="separator" ...=${spread(args)}></li>
-		<vwc-radio-list-item group="c" selected ...=${spread(args)}>Item 2</vwc-radio-list-item>
-		<vwc-radio-list-item group="c" ...=${spread(args)}>Item 3</vwc-radio-list-item>
+		<vwc-radio-list-item left group="c" selected ...=${spread(args)}>Item 2</vwc-radio-list-item>
+		<vwc-radio-list-item left group="c" ...=${spread(args)}>Item 3</vwc-radio-list-item>
 	</vwc-list>
 `;

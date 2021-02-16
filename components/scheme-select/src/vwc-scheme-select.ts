@@ -24,8 +24,7 @@ export class VWCSchemeSelect extends LitElement {
 	render(): TemplateResult {
 		return html`
 			${this.schemes.map(
-				(scheme) =>
-					html`
+		(scheme) => html`
 						<vwc-button
 							dense
 							unelevated
@@ -37,7 +36,7 @@ export class VWCSchemeSelect extends LitElement {
 							${scheme}
 						</vwc-button>
 					`
-			)}
+	)}
 		`;
 	}
 }

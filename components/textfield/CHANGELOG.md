@@ -1,3 +1,57 @@
+## [1.3.1](https://github.com/vonage/vivid/compare/v1.3.0...v1.3.1) (2021-02-11)
+
+
+
+# [1.3.0](https://github.com/vonage/vivid/compare/v1.2.0...v1.3.0) (2021-02-11)
+
+
+### Bug Fixes
+
+* **button/icon:** fixing the icon disposition in button ([#653](https://github.com/vonage/vivid/issues/653)) ([9d15d14](https://github.com/vonage/vivid/commit/9d15d14d9af7c4b68b26d58977fd2b50b8598020))
+* **icon:** issue 637 fixing icon misplacement ([#638](https://github.com/vonage/vivid/issues/638)) ([2de7e94](https://github.com/vonage/vivid/commit/2de7e9462994987ca84bde11260c915e420f661c)), closes [#637](https://github.com/vonage/vivid/issues/637)
+
+
+### Features
+
+* **fonts:** issue [#631](https://github.com/vonage/vivid/issues/631) font-display deterministic resolution ([#632](https://github.com/vonage/vivid/issues/632)) ([74befed](https://github.com/vonage/vivid/commit/74befedba27e4997ea9e5aa63c24a23ffe21b984))
+
+
+
+# [1.2.0](https://github.com/vonage/vivid/compare/v1.1.3...v1.2.0) (2021-02-03)
+
+
+
+## [1.1.3](https://github.com/vonage/vivid/compare/v1.1.2...v1.1.3) (2021-01-27)
+
+
+### Bug Fixes
+
+* **textfield:** fixing the box-sizing take 2 ([#614](https://github.com/vonage/vivid/issues/614)) ([247fb52](https://github.com/vonage/vivid/commit/247fb524eb545275a358097a524117ecef5493df))
+
+
+
+## [1.1.2](https://github.com/vonage/vivid/compare/v1.1.1...v1.1.2) (2021-01-27)
+
+
+### Bug Fixes
+
+* **textfield:** textfield fixes in styling and behaviour ([#612](https://github.com/vonage/vivid/issues/612)) ([da699b1](https://github.com/vonage/vivid/commit/da699b12db6f4bbad346d060f89abb207fb14744))
+
+
+
+## [1.1.1](https://github.com/vonage/vivid/compare/v1.1.0...v1.1.1) (2021-01-25)
+
+
+
+# [1.1.0](https://github.com/vonage/vivid/compare/v1.0.4...v1.1.0) (2021-01-25)
+
+
+### Features
+
+* autofill solution ([#599](https://github.com/vonage/vivid/issues/599)) ([284a5f0](https://github.com/vonage/vivid/commit/284a5f003ca98a26ba12cd91a13772c902635766))
+
+
+
 ## [1.0.4](https://github.com/vonage/vivid/compare/v1.0.3...v1.0.4) (2021-01-19)
 
 

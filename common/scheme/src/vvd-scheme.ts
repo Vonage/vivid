@@ -46,8 +46,8 @@ function getEffectiveSchemeOption(
 	return destOption
 		? destOption
 		: _selectedSchemeOption
-		? _selectedSchemeOption
-		: getDefaultSchemeOption();
+			? _selectedSchemeOption
+			: getDefaultSchemeOption();
 }
 
 async function syncWithOSSettings() {

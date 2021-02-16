@@ -1,7 +1,7 @@
 import { customElement } from 'lit-element';
-import { ChipSet as MWCChipSet } from '@material/mwc-chips/mwc-chip-set';
+import { ChipSet as MWCChipSet } from './mwc-chips/mwc-chip-set.js';
 import { style as vwcChipSetStyle } from './vwc-chip-set.css';
-import { style as mwcChipSetStyle } from '@material/mwc-chips/mwc-chip-set.css.js';
+import { style as mwcChipSetStyle } from './mwc-chips/mwc-chip-set.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 
 declare global {

@@ -93,14 +93,13 @@ export class VWCCalendar extends LitElement {
 		return html`
 			<div class="container">
 				<ol class="headline">
-					${this.getWeekdaysByDate(new Date()).map(
-						(date) =>
-							html`<li>
+					${this.getWeekdaysByDate(new Date(Date.UTC(2021, 1, 1))).map(
+		(date) => html`<li>
 								<time datetime=${this.getValidDateString(date)}
 									>${this.getStyledWeekday(date)}</time
 								>
 							</li>`
-					)}
+	)}
 				</ol>
 				<ol class="time">
 					<!-- TODO: align to convention of generation from first hour in day and a length of hours. -->

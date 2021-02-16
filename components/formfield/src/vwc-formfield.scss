@@ -2,15 +2,17 @@
 
 :host {
 	@include typography.typography-mdc-coupling('body2', 'body-2');
-	font-stretch: var(--mdc-typography-body2-font-stretch); // ! this was supposed to be set by MDC
 
-  display: block;
+	display: block;
+	font-stretch: var(
+		--mdc-typography-body2-font-stretch
+	); // ! this was supposed to be set by MDC
 }
 
 .mdc-form-field {
-  padding: 8px 0;
+	padding: 8px 0;
 }
 
 .mdc-form-field > label {
-  padding-left: 10px;
+	padding-left: 10px;
 }

@@ -8,7 +8,7 @@
   class="mdc-icon-button"
 >
   <vwc-icon
-    class="vwc-icon"
+    class="vvd-icon"
     size="small"
     type="bin"
   >

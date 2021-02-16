@@ -1,67 +1,79 @@
 @use '@vonage/vvd-foundation/scss/variable-names/font-variable-names' as font-var-names;
 
 :root {
-  #{font-var-names.$font-family-css-variable-name}: 'SpeziaWeb';
+	#{font-var-names.$font-family-css-variable-name}: 'SpeziaWeb';
 }
 
 /*
 	regular (regular width)
 */
 @font-face {
-  font-family: 'SpeziaWeb';
-  src: url('FONTS_BASE_URL/SpeziaWeb-Regular.woff2') format('woff2');
-  font-style: normal;
-  font-weight: 400;
+	font-display: block;
+	font-family: 'SpeziaWeb';
+	font-style: normal;
+	font-weight: 400;
+	src: url('//fonts.resources.vonage.com/fonts/v1/SpeziaWeb-Regular.woff2')
+		format('woff2');
 }
 
 /*
 	medium (wide width)
 */
 @font-face {
-  font-family: 'SpeziaWeb';
-  src: url('FONTS_BASE_URL/SpeziaWeb-WideMedium.woff2') format('woff2');
-  font-style: normal;
-  font-weight: 500;
+	font-display: block;
+	font-family: 'SpeziaWeb';
+	font-style: normal;
+	font-weight: 500;
+	src: url('//fonts.resources.vonage.com/fonts/v1/SpeziaWeb-WideMedium.woff2')
+		format('woff2');
 }
 
 /*
 	semi-bold (regular width)
 */
 @font-face {
-  font-family: 'SpeziaWeb';
-  src: url('FONTS_BASE_URL/SpeziaWeb-SemiBold.woff2') format('woff2');
-  font-style: normal;
-  font-weight: 600;
+	font-display: block;
+	font-family: 'SpeziaWeb';
+	font-style: normal;
+	font-weight: 600;
+	src: url('//fonts.resources.vonage.com/fonts/v1/SpeziaWeb-SemiBold.woff2')
+		format('woff2');
 }
 
 /*
 	monospace (regular width)
 */
 @font-face {
-  font-family: 'SpeziaMonoWeb';
-  src: url('FONTS_BASE_URL/SpeziaWeb-MonoRegular.woff2') format('woff2');
-  font-style: normal;
-  font-weight: 400;
+	font-display: block;
+	font-family: 'SpeziaMonoWeb';
+	font-style: normal;
+	font-weight: 400;
+	src: url('//fonts.resources.vonage.com/fonts/v1/SpeziaWeb-MonoRegular.woff2')
+		format('woff2');
 }
 
 @supports (font-variation-settings: 'wdth' 9) {
-  :root {
-    #{font-var-names.$font-family-css-variable-name}: 'SpeziaWebVariable';
+	:root {
+		#{font-var-names.$font-family-css-variable-name}: 'SpeziaWebVariable';
 	}
 
 	@font-face {
-    font-family: 'SpeziaWebVariable';
-    src: url('FONTS_BASE_URL/Spezia_Web_Complete_Upright.woff2') format('woff2-variations');
-    font-style: normal;
-    font-weight: 1 1000;
-    font-stretch: 50% 200%;
+		font-display: block;
+		font-family: 'SpeziaWebVariable';
+		font-stretch: 50% 200%;
+		font-style: normal;
+		font-weight: 1 1000;
+		src: url('//fonts.resources.vonage.com/fonts/v1/Spezia_Web_Complete_Upright.woff2')
+			format('woff2-variations');
 	}
 
-  @font-face {
-    font-family: 'SpeziaMonoWebVariable';
-    src: url('FONTS_BASE_URL/Spezia_Web_Monospace_Complete.woff2') format('woff2-variations');
-    font-style: normal;
-    font-weight: 1 1000;
-    font-stretch: 50% 200%;
+	@font-face {
+		font-display: block;
+		font-family: 'SpeziaMonoWebVariable';
+		font-stretch: 50% 200%;
+		font-style: normal;
+		font-weight: 1 1000;
+		src: url('//fonts.resources.vonage.com/fonts/v1/Spezia_Web_Monospace_Complete.woff2')
+			format('woff2-variations');
 	}
 }
