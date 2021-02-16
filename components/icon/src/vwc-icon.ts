@@ -57,6 +57,13 @@ export class VWCIcon extends LitElement {
 
 	@property({
 		attribute: true,
+		type: Boolean,
+		reflect: true,
+	})
+	inline?: boolean;
+
+	@property({
+		attribute: true,
 		type: String,
 		reflect: true,
 	})
