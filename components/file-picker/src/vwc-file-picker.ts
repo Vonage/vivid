@@ -201,9 +201,7 @@ export class VWCFilePicker extends LitElement {
 		if (!this.#container) {
 			return;
 		}
-		const ctr = Array.from(this.#container.classList).filter((c) =>
-			c.startsWith('drag-')
-		);
+		const ctr = Array.from(this.#container.classList).filter((c) => c.startsWith('drag-'));
 		this.#container?.classList.remove(...ctr);
 	}
 

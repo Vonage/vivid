@@ -18,15 +18,9 @@
 }
 
 :host {
-	--mdc-button-disabled-ink-color: var(
-		#{color-semantic.$formfield-disabled-ink}
-	);
-	--mdc-button-disabled-fill-color: var(
-		#{scheme-variables.$vvd-color-contrast-soft}
-	);
-	--mdc-button-disabled-outline-color: var(
-		#{color-semantic.$formfield-disabled-ink}
-	);
+	--mdc-button-disabled-ink-color: var(#{color-semantic.$formfield-disabled-ink});
+	--mdc-button-disabled-fill-color: var(#{scheme-variables.$vvd-color-contrast-soft});
+	--mdc-button-disabled-outline-color: var(#{color-semantic.$formfield-disabled-ink});
 	--mdc-button-outline-color: var(--mdc-theme-primary);
 	--mdc-button-horizontal-padding: 14px;
 }
@@ -34,6 +28,7 @@
 @include color-connotation-mixins.connotations-context(
 	':host([unelevated]#{color-connotation-mixins.$connotation-placeholder}),:host([outlined]#{color-connotation-mixins.$connotation-placeholder})'
 );
+
 :host([unelevated]),
 :host([outlined]) {
 	--mdc-theme-primary: var(#{color-semantic.$vvd-color-connotation});
@@ -75,6 +70,7 @@
 	@include size(dense, 4);
 	@include size(enlarged, 6) {
 		$gutter: 10px;
+
 		> .trailing-icon {
 			.vvd-icon {
 				margin-inline-start: $gutter;
