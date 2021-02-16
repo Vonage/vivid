@@ -49,6 +49,11 @@
 		}
 	}
 
+	.leading-icon,
+	.trailing-icon {
+		display: flex;
+	}
+
 	> .trailing-icon {
 		.vvd-icon {
 			margin-inline-start: $gutter;

@@ -171,11 +171,16 @@
 		}
 	}
 
-	vwc-icon {
-		--icon-size: #{textfield-variables.$icon-size};
+	.mdc-text-field__icon--leading,
+	.mdc-text-field__icon--trailing {
+		display: flex;
 		align-self: center;
 		padding: 0;
 		margin: 0 #{textfield-variables.$horizontal-gutter};
+
+		vwc-icon {
+			--icon-size: #{textfield-variables.$icon-size};
+		}
 	}
 }
 
