@@ -23,15 +23,15 @@ $size-variable-name: --icon-size;
 	display: inline-block;
 	width: var(#{$size-variable-name});
 	height: var(#{$size-variable-name});
-	inline-size: var(#{$size-variable-name});
 	block-size: var(#{$size-variable-name});
+	inline-size: var(#{$size-variable-name});
 	line-height: 1;
 	vertical-align: middle;
 
 	svg {
-		max-inline-size: 100%;
-		max-block-size: 100%;
-		vertical-align: super;
 		fill: currentColor;
+		max-block-size: 100%;
+		max-inline-size: 100%;
+		vertical-align: super;
 	}
 }
