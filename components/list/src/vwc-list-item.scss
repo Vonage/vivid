@@ -91,6 +91,10 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 	}
 }
 
+.mdc-list-item__meta {
+	display: flex;
+}
+
 @include shape-mixins.shape(
 	$shapes: (
 		rounded: 6px,

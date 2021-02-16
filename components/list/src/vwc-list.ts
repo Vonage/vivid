@@ -17,7 +17,7 @@ function debounce(
 	waitInMS = 50
 ) {
 	let timeoutId: number;
-	return function <T>(this: T, ...args: any[]) {
+	return function <T> (this: T, ...args: any[]) {
 		clearTimeout(timeoutId);
 		// eslint-disable-next-line @typescript-eslint/no-this-alias
 		const context = this;

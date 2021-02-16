@@ -62,16 +62,16 @@ export class VWCTab extends MWCTab {
 				<span class="leading-icon">
 					<slot name="icon">
 						${(this.hasImageIcon || this.icon) && !this.trailingIcon
-							? this.renderIcon()
-							: ''}
+		? this.renderIcon()
+		: ''}
 					</slot>
 				</span>
 				${labelTemplate}
 				<span class="trailing-icon">
 					<slot name="trailingIcon">
 						${(this.hasImageIcon || this.icon) && this.trailingIcon
-							? this.renderIcon()
-							: ''}
+		? this.renderIcon()
+		: ''}
 					</slot>
 				</span>
 				${this.isMinWidthIndicator ? this.renderIndicator() : ''}

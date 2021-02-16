@@ -1,47 +1,16 @@
 import '@vonage/vwc-icon';
-import _ from 'lodash';
-import { storiesOf } from '@storybook/web-components';
-import storyCssContent from './icon.story.css.js';
-import icons from "./icon-manifest.json";
+import '@vonage/vwc-button/vwc-button.js';
+import { html } from 'lit-element';
+import { spread } from '@open-wc/lit-helpers';
+import { argTypes } from './arg-types.js';
 
-const
-	PATH_SEPARATOR = '/',
-	CATEGORIES_TITLES = {
-		"check": "Checks",
-		"arrows": "Arrows",
-		"file": "File",
-		"sort": "Sorting",
-		"emoji": "Emojis",
-		"delete": "Delete and Cancel",
-		"devices": "Devices",
-		"chevrons": "Chevrons",
-		"tools": "Tools",
-		"social": "Social",
-		"messaging": "Messaging",
-		"charts": "Charts",
-		"view": "View",
-		"flags": "Flags",
-		"alert": "Alert",
-		"connectivity": "Connectivity"
-	};
+export default {
+	title: 'Components/Atoms/Icon',
+	component: 'vwc-icon',
+	argTypes
+};
 
-const registerCategory = (categoryTitle, content) => storiesOf(['Components', 'Atoms', 'Icon', 'Types'].join(PATH_SEPARATOR), module)
-	.add(categoryTitle, () => {
-		const styleEl = document.createElement('style');
-		styleEl.innerHTML = storyCssContent;
-		const divEl = document.createElement('div');
-		divEl.className = "container";
-		divEl.innerHTML = content;
-		const fragment = document.createDocumentFragment();
-		[styleEl, divEl].forEach((el) => fragment.appendChild(el));
-		return fragment;
-	});
+const Template = args => html`I <vwc-icon ...=${spread(args)}></vwc-icon> VIVID!`;
 
-_(icons)
-	.groupBy(({ tag })=> tag.map((content) => (content.match(/^category_(.+)/) || [])[1]).find(Boolean))
-	.forEach((list, category)=> {
-			registerCategory(
-				CATEGORIES_TITLES[category] || "General",
-				list.map(({ id: icon_id }) => `<figure><vwc-icon title=${icon_id} size="large" type="${icon_id}"></vwc-icon><figcaption>${icon_id}</figcaption></figure>`).join('\n')
-			);
-	});
+export const Basic = Template.bind({});
+Basic.args = { size: 'medium', inline: '', type: 'heart', style: 'color: red' };

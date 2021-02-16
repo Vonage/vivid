@@ -62,9 +62,9 @@ $total-columns: 7;
 	grid-area: calendar;
 	grid-auto-flow: column;
 	grid-template: repeat($total-rows * $fraction, 1fr) / repeat(
-			$total-columns,
-			1fr
-		);
+		$total-columns,
+		1fr
+	);
 	> li {
 		height: 35px;
 		background-color: var(#{scheme-variables.$vvd-color-base});
