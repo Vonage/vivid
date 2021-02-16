@@ -1,20 +1,18 @@
 module.exports = {
+	env: {
+		browser: true,
+		node: true,
+	},
 	extends: [
-		'eslint:recommended',
+		'@open-wc/eslint-config',
+		'plugin:@typescript-eslint/eslint-recommended',
+		'plugin:@typescript-eslint/recommended',
 		'plugin:wc/recommended',
 		'@open-wc/eslint-config',
 		'plugin:compat/recommended',
 		'plugin:lit/recommended',
 		'plugin:lit-a11y/recommended',
-		'plugin:@typescript-eslint/recommended',
-		'plugin:@typescript-eslint/eslint-recommended',
-		// the followings should always be last
-		'prettier',
 	],
-	env: {
-		browser: true,
-		node: true,
-	},
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
 		ecmaVersion: 12,
@@ -27,9 +25,13 @@ module.exports = {
 		},
 	},
 	rules: {
+		indent: ['error', 'tab'],
+		'no-tabs': 'off',
 		'no-shadow': 'error',
 		'no-mixed-spaces-and-tabs': 'off',
-		indent: 'off',
+		'compat/compat': 'error',
+		'linebreak-style': ['error', 'unix'],
+		semi: ['error', 'always'],
 		'no-use-before-define': 'off', //! should remove after PR merge
 		'import/no-extraneous-dependencies': 'off', //! should remove after PR merge
 		'object-shorthand': 'off', //! should remove after PR merge
@@ -65,21 +67,52 @@ module.exports = {
 		'wc/guard-super-call': 'off', //! should remove after PR merge
 		'no-bitwise': 'off', //! should remove after PR merge
 		radix: 'off', //! should remove after PR merge
+<<<<<<< HEAD
 		'no-else-return': 'off', //! should remove after PR merge
 		'no-unused-vars': 'error',
 		'lit/no-template-bind': 'off',
 		'lit/binding-positions': 'off',
 		'@typescript-eslint/no-extra-semi': 'off',
+=======
+		'lit-a11y/anchor-is-valid': 'off', //! should remove after PR merge
+		'no-else-return': 'off', //! should remove after PR merge
+		'lit-a11y/click-events-have-key-events': 'off', //! should remove after PR merge
+		'lit-a11y/iframe-title': 'off', //! should remove after PR merge
+		'lit-a11y/alt-text': 'off', //! should remove after PR merge
+		'no-unneeded-ternary': 'off', //! should remove after PR merge
+		'@typescript-eslint/no-unused-vars': 'off', //! should remove after PR merge
+		'lit/no-invalid-html': 'off', //! should remove after PR merge
+		'wc/attach-shadow-constructor': 'off', //! should remove after PR merge
+		'no-void': 'off', //! should remove after PR merge
+		'no-unused-vars':
+			'off', /*[
+			'error',
+			{
+				'varsIgnorePattern': '^(?:(?:MDC(?:(?:[A-Z][a-z0-9]+)+)Adapter)|(?:(?:(?:[A-Z][a-z0-9]+)+)Type))$'
+			}
+		]*/ //! should ENABLE after PR merge
+		'object-curly-newline': 'off',
+		'arrow-parens': 'off',
+>>>>>>> master
 		'@typescript-eslint/explicit-function-return-type': 'off',
 		'@typescript-eslint/indent': 'off',
-		'max-len': 'off',
-		'block-spacing': 'off',
 		'@typescript-eslint/explicit-member-accessibility': [
 			'error',
 			{ accessibility: 'no-public' },
 		],
+		'no-multiple-empty-lines': 'off',
+		'operator-linebreak': 'off',
+		'max-len': 'off',
+		'block-spacing': 'off',
 		'no-new': 'warn',
+<<<<<<< HEAD
 		'no-var': 'error',
+=======
+		quotes: ['error', 'single', { avoidEscape: true }],
+		'no-var': 'error',
+		curly: 'error',
+		'no-floating-decimal': 'error',
+>>>>>>> master
 		'require-jsdoc': 'off',
 		'valid-jsdoc': 'off',
 		'prefer-const': 'error',

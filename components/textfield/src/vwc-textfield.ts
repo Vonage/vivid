@@ -106,11 +106,11 @@ export class VWCTextField extends MWCTextField {
 			? 'mdc-text-field__icon--trailing'
 			: 'mdc-text-field__icon--leading';
 
-		return html`<vwc-icon
-			type="${icon}"
-			size="small"
-			class="${iconClass}"
-		></vwc-icon>`;
+		return html`
+			<span class="${iconClass}">
+				<vwc-icon type="${icon}" size="small"></vwc-icon>
+			</span>
+		`;
 	}
 
 	protected renderOutline(): TemplateResult | string {

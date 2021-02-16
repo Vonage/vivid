@@ -45,7 +45,7 @@ export class VWCDatepicker extends LitFlatpickr {
 		super();
 		// override LitFlatpickr to work with [flatpickr change](https://github.com/flatpickr/flatpickr/blame/07cf1b1ba5ec71da511c295f622d60eed3bf3eb7/src/index.ts#L1522)
 		// flatpickr now requires `enable` to be `undefined` by default rather than `[]`
-		(<undefined>(<unknown>this.enable)) = undefined;
+		(<undefined>(<unknown> this.enable)) = undefined;
 
 		// inject custom flatpicker styles
 		const style = document.createElement('style');
@@ -124,8 +124,8 @@ export class VWCDatepicker extends LitFlatpickr {
 
 	private renderHeader(): void {
 		if (
-			!this.noCalendar &&
-			!this._instance?.calendarContainer.querySelector('.vvd-datepicker-header')
+			!this.noCalendar
+			&& !this._instance?.calendarContainer.querySelector('.vvd-datepicker-header')
 		) {
 			const header = document.createElement('div');
 			header.classList.add('vvd-datepicker-header');
@@ -162,19 +162,11 @@ export class VWCDatepicker extends LitFlatpickr {
 				this.highlightMonth();
 			};
 
-			prevMonth.addEventListener('mousedown', (e: MouseEvent) =>
-				this.navigateCalendar(e, -1)
-			);
-			prevMonth.addEventListener('touchstart', (e: TouchEvent) =>
-				this.navigateCalendar(e, -1)
-			);
+			prevMonth.addEventListener('mousedown', (e: MouseEvent) => this.navigateCalendar(e, -1));
+			prevMonth.addEventListener('touchstart', (e: TouchEvent) => this.navigateCalendar(e, -1));
 
-			nextMonth.addEventListener('mousedown', (e: MouseEvent) =>
-				this.navigateCalendar(e, 1)
-			);
-			nextMonth.addEventListener('touchstart', (e: TouchEvent) =>
-				this.navigateCalendar(e, 1)
-			);
+			nextMonth.addEventListener('mousedown', (e: MouseEvent) => this.navigateCalendar(e, 1));
+			nextMonth.addEventListener('touchstart', (e: TouchEvent) => this.navigateCalendar(e, 1));
 		}
 	}
 
@@ -221,8 +213,8 @@ export class VWCDatepicker extends LitFlatpickr {
 
 	private renderRange(): void {
 		if (
-			this.mode === 'range' &&
-			!this._instance?.calendarContainer.querySelector('.vvd-datepicker-range')
+			this.mode === 'range'
+			&& !this._instance?.calendarContainer.querySelector('.vvd-datepicker-range')
 		) {
 			const rangeContainer = document.createElement('div');
 			const rangeStart = document.createElement('div');
@@ -239,8 +231,8 @@ export class VWCDatepicker extends LitFlatpickr {
 
 	private renderFooter(): void {
 		if (
-			!this.noCalendar &&
-			!this._instance?.calendarContainer.querySelector('.vvd-datepicker-footer')
+			!this.noCalendar
+			&& !this._instance?.calendarContainer.querySelector('.vvd-datepicker-footer')
 		) {
 			const footer = document.createElement('div');
 			footer.classList.add('vvd-datepicker-footer');
@@ -249,12 +241,8 @@ export class VWCDatepicker extends LitFlatpickr {
 			clearButton.label = 'Clear';
 			clearButton.shape = Shape.Pill;
 
-			clearButton.addEventListener('mousedown', (e: MouseEvent) =>
-				this.clearSelection(e)
-			);
-			clearButton.addEventListener('touchstart', (e: TouchEvent) =>
-				this.clearSelection(e)
-			);
+			clearButton.addEventListener('mousedown', (e: MouseEvent) => this.clearSelection(e));
+			clearButton.addEventListener('touchstart', (e: TouchEvent) => this.clearSelection(e));
 
 			footer.appendChild(clearButton);
 			this._instance?.calendarContainer.appendChild(footer);
@@ -272,8 +260,8 @@ export class VWCDatepicker extends LitFlatpickr {
 
 	private renderMonthPicker(): void {
 		if (
-			!this.noCalendar &&
-			!this._instance?.calendarContainer.querySelector('.vvd-datepicker-months')
+			!this.noCalendar
+			&& !this._instance?.calendarContainer.querySelector('.vvd-datepicker-months')
 		) {
 			const monthPicker = document.createElement('div');
 			monthPicker.classList.add('vvd-datepicker-months');
@@ -342,20 +330,20 @@ export class VWCDatepicker extends LitFlatpickr {
 		});
 
 		// toggle current month class
-		todaysMonth &&
-			months?.[todaysMonth].classList.toggle(
+		todaysMonth
+			&& months?.[todaysMonth].classList.toggle(
 				'vvd-current-month',
 				currentYear === todaysYear
 			);
 
 		// toggle selected month class
-		startDate &&
-			months?.[startDate.getMonth()].classList.toggle(
+		startDate
+			&& months?.[startDate.getMonth()].classList.toggle(
 				'vvd-selected',
 				startDate.getFullYear() === currentYear
 			);
-		endDate &&
-			months?.[endDate.getMonth()].classList.toggle(
+		endDate
+			&& months?.[endDate.getMonth()].classList.toggle(
 				'vvd-selected',
 				endDate.getFullYear() === currentYear
 			);
