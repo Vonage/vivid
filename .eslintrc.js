@@ -69,6 +69,7 @@ module.exports = {
 		radix: 'off', //! should remove after PR merge
 		'no-else-return': 'off', //! should remove after PR merge
 		'no-unused-vars': 'error',
+		'no-undef': 'off',
 		'lit/no-template-bind': 'off',
 		'lit/binding-positions': 'off',
 		'@typescript-eslint/no-extra-semi': 'off',
