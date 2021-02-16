@@ -10,11 +10,11 @@ const getSchemeModule: (scheme: PredefinedScheme) => Promise<ModuleType> = (
 	scheme: PredefinedScheme
 ) => {
 	switch (scheme) {
-		case PredefinedScheme.DARK:
-			return import('./scheme.dark.css');
-		case PredefinedScheme.LIGHT:
-		default:
-			return import('./scheme.light.css');
+	case PredefinedScheme.DARK:
+		return import('./scheme.dark.css');
+	case PredefinedScheme.LIGHT:
+	default:
+		return import('./scheme.light.css');
 	}
 };
 

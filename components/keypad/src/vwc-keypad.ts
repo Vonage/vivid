@@ -87,8 +87,8 @@ export class VWCKeypad extends LitElement {
 		return html`
 			<div id="container">
 				${this.noDisplay
-					? ''
-					: html`<vwc-textfield
+		? ''
+		: html`<vwc-textfield
 							id="digits-display"
 							outlined
 							label="Enter"
@@ -130,8 +130,8 @@ export class VWCKeypad extends LitElement {
 				</div>
 				<div class="button-row">
 					${this.noAsterisk
-						? ''
-						: html`<vwc-button
+		? ''
+		: html`<vwc-button
 								id="asterisk-digit"
 								unelevated
 								@click=${() => this.addDigit('*')}
@@ -141,8 +141,8 @@ export class VWCKeypad extends LitElement {
 						>0</vwc-button
 					>
 					${this.noHash
-						? ''
-						: html`<vwc-button
+		? ''
+		: html`<vwc-button
 								id="hash-digit"
 								unelevated
 								@click=${() => this.addDigit('#')}
@@ -151,14 +151,14 @@ export class VWCKeypad extends LitElement {
 				</div>
 				<div class="button-row">
 					${this.actionStarted
-						? html`<vwc-button
+		? html`<vwc-button
 								id="cancel-button"
 								unelevated
 								fullwidth
 								@click=${this.endAction}
 								>${this.cancelText}</vwc-button
 						  >`
-						: html`<vwc-button
+		: html`<vwc-button
 								id="action-button"
 								unelevated
 								fullwidth
