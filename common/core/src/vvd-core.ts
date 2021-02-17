@@ -66,7 +66,7 @@ function _buildConfiguration(): InitialConfiguration {
 
 function _validateConfiguration(configuration: Partial<Configuration>) {
 	const extraParams = Object.keys(configuration).filter(
-		(k) => !VALID_CONFIGURATION_KEYS.includes(k)
+		k => !VALID_CONFIGURATION_KEYS.includes(k)
 	);
 
 	if (extraParams.length) {

@@ -80,7 +80,7 @@ class VWCAudio extends HTMLElement {
 					kefir
 						.merge([
 							kefir.fromEvents(audioEl, 'pause'),
-							playerAudioLoadedProperty.filter((loaded) => !loaded),
+							playerAudioLoadedProperty.filter(loaded => !loaded),
 						])
 						.map(() => false),
 				])
@@ -104,7 +104,7 @@ class VWCAudio extends HTMLElement {
 				(position: number) => (audioEl.currentTime = audioEl.duration * position)
 			);
 		connectedProperty
-			.filter((connected) => !connected)
+			.filter(connected => !connected)
 			.onValue(() => audioEl.pause());
 	}
 
