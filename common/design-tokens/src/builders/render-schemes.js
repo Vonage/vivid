@@ -57,7 +57,6 @@ export const render = () => {
 	fs.rmdirSync(OUTPUT_FOLDER, { recursive: true });
 
 	['light', 'dark'].forEach(function (scheme) {
-
 		console.log(`\n🎨\x1b[2mProcessing: [\x1b[0m\x1b[36m${scheme}\x1b[0m\x1b[2m]\x1b[0m`);
 
 		StyleDictionaryPackage.extend(baseConfig(scheme)).buildPlatform('web');
