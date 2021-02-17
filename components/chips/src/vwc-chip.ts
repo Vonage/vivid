@@ -77,8 +77,10 @@ export class VWCChip extends MWCChip {
 					aria-hidden=${ifDefined(this.removeIconFocusable ? undefined : 'true')}
 					@click=${this.clickHandler}
 					@keydown=${this.clickHandler}
-					><vwc-icon size="small" class="trailing" type="cross-circle-negative"
-			  /></i>`
+			  >
+					<vwc-icon size="small" class="trailing" type="cross-circle-negative">
+					</vwc-icon>
+			  </i>`
 			: nothing}`;
 
 		if (this.removeIconFocusable) {
