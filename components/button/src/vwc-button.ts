@@ -124,14 +124,14 @@ export class VWCButton extends MWCButton {
 	protected _handleClick(): void {
 		if (this.form) {
 			switch (this.getAttribute('type')) {
-				case 'reset':
-					this.form.reset();
-					break;
-				case 'button':
-					break;
-				default:
-					requestSubmit(this.form);
-					break;
+			case 'reset':
+				this.form.reset();
+				break;
+			case 'button':
+				break;
+			default:
+				requestSubmit(this.form);
+				break;
 			}
 		}
 	}
