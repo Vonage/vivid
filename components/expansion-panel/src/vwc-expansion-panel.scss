@@ -9,8 +9,19 @@
 }
 
 :host(:not([open])) {
+	.toggle-close,
 	.expansion-panel-body {
 		display: none;
+	}
+}
+
+:host([open]) {
+	.toggle-open {
+		display: none;
+	}
+
+	.toggle-close {
+		display: flex;
 	}
 }
 

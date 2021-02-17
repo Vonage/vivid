@@ -4,7 +4,7 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-  title: 'Components/Composite/Expansion Panel',
+  title: 'Components/Atoms/Expansion Panel',
   component: 'vwc-expansion-panel',
   argTypes
 };

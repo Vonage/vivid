@@ -1,7 +1,6 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
 import { customElement, html, property, TemplateResult } from 'lit-element';
-import { classMap } from 'lit-html/directives/class-map';
 import { VWCExpansionPanelBase } from './vwc-expansion-panel-base.js';
 import { style } from './vwc-expansion-panel.css.js';
 
@@ -40,20 +39,10 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	openChanged(isOpen: boolean): void {
 		super.openChanged(isOpen);
 		this.toggleAttribute('open', isOpen);
-
-		if (this.chevronToggle) {
-			this.shadowRoot
-				?.querySelector('.chevron')
-				?.setAttribute('type', isOpen ? 'chevron-up-solid' : 'chevron-down-solid');
-		} else {
-			this.shadowRoot
-				?.querySelector('.plus-minus')
-				?.setAttribute('type', isOpen ? 'minus-solid' : 'plus-solid');
-		}
 	}
 
 	protected render(): TemplateResult {
-		return html` <div class="expansion-panel">
+		return html`<div class="expansion-panel">
 			<div class="expansion-panel-header">
 				<span class="leading-icon">
 					<slot name="icon">
@@ -82,14 +71,17 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	}
 
 	protected renderToggle(): TemplateResult {
-		const classes = {
-			chevron: this.chevronToggle,
-			'plus-minus': !this.chevronToggle,
-		};
-
-		return html`<vwc-icon
-			class="vvd-icon ${classMap(classes)}"
-			type="${this.chevronToggle ? 'chevron-down-solid' : 'plus-solid'}"
-		></vwc-icon>`;
+		return html`
+			<vwc-icon
+				class="vvd-icon toggle-open"
+				type="${this.chevronToggle ? 'chevron-down-solid' : 'plus-solid'}"
+			>
+			</vwc-icon>
+			<vwc-icon
+				class="vvd-icon toggle-close"
+				type="${this.chevronToggle ? 'chevron-up-solid' : 'minus-solid'}"
+			>
+			</vwc-icon>
+		`;
 	}
 }
