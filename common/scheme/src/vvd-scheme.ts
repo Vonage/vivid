@@ -1,24 +1,24 @@
 import { applySchemeCSS } from './vvd-scheme-style-tag-handler';
-
 import {
 	pcs,
 	getPreferedColorScheme,
 	// prefersColorSchemeSupported,
 } from './os-sync.utils';
-
 import {
-	SelectedDetail,
-	PredefinedScheme,
-	AutoScheme,
-	SchemeOption,
-} from './vvd-scheme-foundation';
-export {
 	SelectedDetail,
 	PredefinedScheme,
 	AutoScheme,
 	SchemeOption,
 } from './vvd-scheme-foundation';
 import { Emitter } from '@vonage/vvd-foundation/general-utils';
+
+export {
+	SelectedDetail,
+	PredefinedScheme,
+	AutoScheme,
+	SchemeOption,
+} from './vvd-scheme-foundation';
+
 const eventBus = new Emitter(); // !refactored due to lack of support of EventTarget as a constructor (new EventTarget()) in safari 12
 
 let _selectedScheme: PredefinedScheme;
@@ -43,11 +43,7 @@ function getDefaultSchemeOption(): SchemeOption {
 function getEffectiveSchemeOption(
 	destOption: SchemeOption | null = null
 ): SchemeOption {
-	return destOption
-		? destOption
-		: _selectedSchemeOption
-			? _selectedSchemeOption
-			: getDefaultSchemeOption();
+	return destOption || _selectedSchemeOption || getDefaultSchemeOption();
 }
 
 async function syncWithOSSettings() {

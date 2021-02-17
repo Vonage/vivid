@@ -31,6 +31,7 @@ import { nothing, TemplateResult } from 'lit-html';
 import { classMap } from 'lit-html/directives/class-map';
 import { ifDefined } from 'lit-html/directives/if-defined';
 
+/* eslint-disable no-void */
 function NOOP(): void {
 	void 0;
 }

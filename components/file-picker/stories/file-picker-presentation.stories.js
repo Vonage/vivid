@@ -71,13 +71,13 @@ const TemplateD = args => html`
 	<vwc-file-picker ...=${spread(args.self)}>
 		<input type="file" name="fi-name" ...=${spread(args.input)}/>
 		<span slot="dd-hint"></span>
-		<a slot="button">Click here to select files</a>
+		<span style="text-decoration: underline; cursor: pointer" slot="button">Click here to select files</span>
 	</vwc-file-picker>
 `;
 
 export const CustomLinkClickNoMessage = TemplateD.bind({});
 CustomLinkClickNoMessage.args = {
-	self: { label: 'Select your PDF' }
+	self: { label: 'Select your file' }
 };
 
 const TemplateE = args => html`
