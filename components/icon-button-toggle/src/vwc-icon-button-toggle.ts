@@ -1,5 +1,7 @@
 import '@vonage/vvd-core';
-import { customElement, html, property, TemplateResult } from 'lit-element';
+import {
+	customElement, html, property, TemplateResult
+} from 'lit-element';
 import { IconButtonToggle as MWCIconButtonToggle } from '@material/mwc-icon-button-toggle';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import { style as vwcButtonStyle } from '@vonage/vwc-icon-button/vwc-icon-button.css';

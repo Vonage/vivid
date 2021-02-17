@@ -1,6 +1,8 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
-import { customElement, property, LitElement, CSSResult } from 'lit-element';
+import {
+	customElement, property, LitElement, CSSResult
+} from 'lit-element';
 import { style as vwcNoteStyle } from './vwc-note.css';
 import { Connotation } from '@vonage/vvd-foundation/constants';
 import { html, TemplateResult } from 'lit-element';
