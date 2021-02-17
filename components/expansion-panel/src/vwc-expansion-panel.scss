@@ -21,7 +21,7 @@
 	}
 
 	.toggle-close {
-		display: flex;
+		display: initial;
 	}
 }
 
@@ -42,6 +42,8 @@
 
 	.leading-icon,
 	.trailing-icon {
+		display: flex;
+
 		.vvd-icon {
 			--icon-size: 20px;
 		}
