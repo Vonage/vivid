@@ -44,7 +44,8 @@ const TemplateComplexA = args => html`
 			Pascal argues that a rational person should live as though God exists and seek to believe in God. If God does not actually exist, such a person will have only a finite loss (some pleasures, luxury, etc.), whereas if God does exist, he stands to receive infinite gains (as represented by eternity in Heaven) and avoid infinite losses (eternity in Hell).
 		</div>
 		<div>
-			Read more <a href="https://en.wikipedia.org/wiki/Pascal%27s_wager#:~:text=Pascal's%20wager%20is%20an%20argument,Pascal%20(1623%E2%80%931662).&text=Pascal%20argues%20that%20a%20rational,seek%20to%20believe%20in%20God.">here</a>.
+			Read more
+			<a href="https://en.wikipedia.org/wiki/Pascal's_wager#:~:text=Pascal's wager is an argument,either exists or does not.">here</a>.
 		</div>
 	</vwc-note>
 `;
@@ -54,7 +55,7 @@ ComplexMessageBlocks.args = { connotation: 'info', icon: 'megaphone', header: `P
 
 const TemplateComplexB = args => html`
 	<vwc-note ...=${spread(args)}>
-		Pascal arguesthat a rational person should live as though God exists and seek to believe in God. If God does not actually exist, such a person will have only a finite loss (some pleasures, luxury, etc.), whereas if God does exist, he stands to receive infinite gains (as represented by eternity in Heaven) and avoid infinite losses (eternity in Hell). Read more <a href="https://en.wikipedia.org/wiki/Pascal%27s_wager#:~:text=Pascal's%20wager%20is%20an%20argument,Pascal%20(1623%E2%80%931662).&text=Pascal%20argues%20that%20a%20rational,seek%20to%20believe%20in%20God.">here</a>.
+		Pascal argues that a rational person should live as though God exists and seek to believe in God. If God does not actually exist, such a person will have only a finite loss (some pleasures, luxury, etc.), whereas if God does exist, he stands to receive infinite gains (as represented by eternity in Heaven) and avoid infinite losses (eternity in Hell). Read more <a href="https://en.wikipedia.org/wiki/Pascal's_wager#:~:text=Pascal's wager is an argument,either exists or does not.">here</a>.
 	</vwc-note>
 `;
 

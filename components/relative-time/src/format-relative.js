@@ -19,7 +19,7 @@ export default ({
 				round = val => Math.trunc(val);
 
 			return {
-				[justNowSecondCount * SECOND]: function (ts) {
+				[justNowSecondCount * SECOND]: function () {
 					return justNowCaption;
 				},
 				[MINUTE]: function (ts) {

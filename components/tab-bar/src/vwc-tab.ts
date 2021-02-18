@@ -1,5 +1,7 @@
 import '@vonage/vvd-core';
-import { customElement, property, html, TemplateResult } from 'lit-element';
+import {
+	customElement, property, html, TemplateResult
+} from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
 import { Tab as MWCTab } from '@material/mwc-tab';
 import { style as vwcTabStyle } from './vwc-tab.css';
