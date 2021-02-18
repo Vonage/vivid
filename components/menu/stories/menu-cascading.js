@@ -16,7 +16,7 @@ export const Cascading = () => html`
 				Nested menu item A
 				<span slot="secondary">Secondary line</span>
 				<vwc-icon slot="graphic">folder</vwc-icon>
-			</vwc-list-item graphic="icon" twoline>
+			</vwc-list-item>
 			<li divider role="separator"></li>
 			<vwc-list-item graphic="icon" twoline>
 				Nested menu item B

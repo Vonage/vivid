@@ -24,7 +24,7 @@ export const basic = () => html`
 
 	<vwc-carousel class="carousel">
 		<vwc-carousel-item>
-			<div class="item text" style="padding:24px;background-color:lightblue;width:100%;" @click="${onClick}">
+			<div class="item text" style="padding:24px;background-color:lightblue;width:100%;" @click="${onClick}" @keyPress=${onKeyed}>
 				Some textual explanation of what's going on here...
 			</div>
 		</vwc-carousel-item>
@@ -44,7 +44,11 @@ export const basic = () => html`
 `;
 
 function onClick() {
-	console.log('something');
+	console.log('slide clicked');
+}
+
+function onKeyed() {
+	console.log('slide keyed');
 }
 
 export const events = () => html`
@@ -59,17 +63,17 @@ export const events = () => html`
 
 	<vwc-carousel class="carousel" autoplay="true">
 		<vwc-carousel-item>
-			<div class="item text" style="padding:24px;background-color:lightblue;width:100%;" @click="${onClick1}">
+			<div class="item text" style="padding:24px;background-color:lightblue;width:100%;" @click="${onClick1}" @keyPress=${onKeyed}>
 				Slide 1
 			</div>
 		</vwc-carousel-item>
 		<vwc-carousel-item>
-			<div class="item text" style="padding:24px;background-color:lightblue;width:100%;" @click="${onClick2}">
+			<div class="item text" style="padding:24px;background-color:lightblue;width:100%;" @click="${onClick2}" @keyPress=${onKeyed}>
 				Slide 2
 			</div>
 		</vwc-carousel-item>
 		<vwc-carousel-item>
-			<div class="item text" style="padding:24px;background-color:lightblue;width:100%;" @click="${onClick3}">
+			<div class="item text" style="padding:24px;background-color:lightblue;width:100%;" @click="${onClick3}" @keyPress=${onKeyed}>
 				Slide 3
 			</div>
 		</vwc-carousel-item>

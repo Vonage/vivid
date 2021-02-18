@@ -7,22 +7,43 @@ import icons from "./icon-manifest.json";
 const
 	PATH_SEPARATOR = '/',
 	CATEGORIES_TITLES = {
-		"check": "Checks",
-		"arrows": "Arrows",
-		"file": "File",
-		"sort": "Sorting",
-		"emoji": "Emojis",
-		"delete": "Delete and Cancel",
-		"devices": "Devices",
-		"chevrons": "Chevrons",
-		"tools": "Tools",
-		"social": "Social",
-		"messaging": "Messaging",
-		"charts": "Charts",
-		"view": "View",
-		"flags": "Flags",
-		"alert": "Alert",
-		"connectivity": "Connectivity"
+		windows: 'Windows',
+		view: 'View',
+		video: 'Video',
+		utilities_objects: 'Utilities & Objects',
+		user_avatar: 'User & Avatar',
+		user: 'User',
+		travel_places: 'Travel & Places',
+		tools: 'Tools',
+		time: 'Time',
+		sort: 'Sort',
+		social: 'Social',
+		science: 'Science',
+		phone: 'Phone',
+		objects: 'Objects',
+		messaging: 'Messaging',
+		media: 'Media',
+		location: 'Location',
+		layout: 'Layout',
+		flags: 'Flags',
+		file: 'File',
+		emoji: 'Emoji',
+		elements: 'Elements',
+		devices: 'Devices',
+		delete: 'Delete',
+		date_time: 'Date & Time',
+		date: 'Date',
+		connectivity: 'Connectivity',
+		commerce_shapes: 'Commerce shapes',
+		commerce: 'Commerce',
+		chevrons: 'Chevrons',
+		check: 'Check',
+		charts: 'Charts',
+		cancel: 'Cancel',
+		brands: 'Brands',
+		audio: 'Audio',
+		arrows: 'Arrows',
+		alert: 'Alert'
 	};
 
 const registerCategory = (categoryTitle, content) => storiesOf(['Components', 'Atoms', 'Icon', 'Types'].join(PATH_SEPARATOR), module)
@@ -38,10 +59,10 @@ const registerCategory = (categoryTitle, content) => storiesOf(['Components', 'A
 	});
 
 _(icons)
-	.groupBy(({ tag })=> tag.map((content) => (content.match(/^category_(.+)/) || [])[1]).find(Boolean))
-	.forEach((list, category)=> {
-			registerCategory(
-				CATEGORIES_TITLES[category] || "General",
-				list.map(({ id: icon_id }) => `<figure><vwc-icon title=${icon_id} size="large" type="${icon_id}"></vwc-icon><figcaption>${icon_id}</figcaption></figure>`).join('\n')
-			);
+	.groupBy(({ tag }) => tag.map((content) => (content.match(/^category_(.+)/) || [])[1]).find(Boolean))
+	.forEach((list, category) => {
+		registerCategory(
+			CATEGORIES_TITLES[category] || "General",
+			list.map(({ id: icon_id }) => `<figure><vwc-icon title=${icon_id} size="large" type="${icon_id}"></vwc-icon><figcaption>${icon_id}</figcaption></figure>`).join('\n')
+		);
 	});
