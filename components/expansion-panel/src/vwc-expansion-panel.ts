@@ -1,6 +1,11 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
-import { customElement, html, property, TemplateResult } from 'lit-element';
+import {
+	customElement,
+	html,
+	property,
+	TemplateResult
+} from 'lit-element';
 import { VWCExpansionPanelBase } from './vwc-expansion-panel-base.js';
 import { style } from './vwc-expansion-panel.css.js';
 
@@ -46,11 +51,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 			<div class="expansion-panel-header">
 				<span class="leading-icon">
 					<slot name="icon">
-						${this.icon
-							? this.renderIcon()
-							: !this.trailingToggle
-							? this.renderToggle()
-							: ''}
+						${this.icon || !this.trailingToggle ? this.renderIconOrToggle() : ''}
 					</slot>
 				</span>
 				${this.header}
@@ -66,8 +67,12 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 		</div>`;
 	}
 
-	protected renderIcon(): TemplateResult {
-		return html`<vwc-icon class="vvd-icon" type="${this.icon}"></vwc-icon>`;
+	protected renderIconOrToggle(): TemplateResult {
+		if (this.icon) {
+			return html`<vwc-icon class="vvd-icon" type="${this.icon}"></vwc-icon>`;
+		} else {
+			return this.renderToggle();
+		}
 	}
 
 	protected renderToggle(): TemplateResult {
