@@ -1,15 +1,24 @@
 @use 'variables';
 
 #{variables.$vivid-scope-selector} {
-	* {
-		all: unset;
-		display: revert;
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		all: revert;
 	}
 
+	// * {
+	// 	all: unset;
+	// 	display: revert;
+	// }
+
 	/* preferred box-sizing value */
-	*,
-	*::before,
-	*::after {
-		box-sizing: border-box;
-	}
+	// *,
+	// *::before,
+	// *::after {
+	// 	box-sizing: border-box;
+	// }
 }
