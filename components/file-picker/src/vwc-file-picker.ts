@@ -72,9 +72,14 @@ export class VWCFilePicker extends LitElement {
 		return html`
 			<label class="wrapper" aria-describedby="helper">
 				${this.renderHeader()}
-				<div class="content drop-zone part">
+				<div
+					class="content drop-zone part"
+					tabindex="0"
+					@click=${this.triggerFileInput}
+					@keypress=${this.triggerFileInput}
+				>
 					<slot name="dd-hint">${this.renderDragNDropHint()}</slot>
-					<slot name="${BUTTON_SLOT}" @click=${this.triggerFileInput}></slot>
+					<slot name="${BUTTON_SLOT}"></slot>
 					<slot class="${INPUT_FILE_SLOT}"></slot>
 					${this.renderFilesCount()}
 				</div>
@@ -126,7 +131,7 @@ export class VWCFilePicker extends LitElement {
 	private setupDragNDrop(): void {
 		const ddZone = this.shadowRoot?.querySelector('.content') as HTMLElement;
 		if (ddZone) {
-			ddZone.ondragover = (e) => e.preventDefault();
+			ddZone.ondragover = e => e.preventDefault();
 
 			ddZone.addEventListener('dragenter', (e) => {
 				e.preventDefault();
@@ -169,7 +174,18 @@ export class VWCFilePicker extends LitElement {
 		}
 	}
 
-	private triggerFileInput(): void {
+	private triggerFileInput(e: MouseEvent | KeyboardEvent): void {
+		const isOfButtonSlot = (e.target as HTMLElement).slot === BUTTON_SLOT;
+		if (e.type === 'click' && !isOfButtonSlot) {
+			return;
+		}
+		if (e.type === 'keypress') {
+			const code = (e as KeyboardEvent).code;
+			if (code !== 'Space') {
+				return;
+			}
+		}
+
 		this.setCustomValidity('');
 		const fi = this.getActualInput();
 		if (fi) {
@@ -201,9 +217,7 @@ export class VWCFilePicker extends LitElement {
 		if (!this.#container) {
 			return;
 		}
-		const ctr = Array.from(this.#container.classList).filter((c) =>
-			c.startsWith('drag-')
-		);
+		const ctr = Array.from(this.#container.classList).filter(c => c.startsWith('drag-'));
 		this.#container?.classList.remove(...ctr);
 	}
 
@@ -216,7 +230,7 @@ export class VWCFilePicker extends LitElement {
 	private validateSlottedInput(slot: HTMLSlotElement): void {
 		const assignedElements = slot
 			.assignedNodes()
-			.filter((n) => n.nodeType === Node.ELEMENT_NODE);
+			.filter(n => n.nodeType === Node.ELEMENT_NODE);
 		if (assignedElements.length > 1) {
 			console.error(
 				`only a single slotted INPUT expected; found ${assignedElements.length}`
@@ -250,7 +264,7 @@ export class VWCFilePicker extends LitElement {
 
 		const ddl = dataTransfer.items;
 		if (ddl) {
-			if (Array.from(ddl).some((i) => i.kind !== 'file')) {
+			if (Array.from(ddl).some(i => i.kind !== 'file')) {
 				return this.notAFileError;
 			}
 			if (!fi.hasAttribute('multiple') && ddl.length > 1) {
