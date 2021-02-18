@@ -6,6 +6,20 @@ body {
 }
 
 #{variables.$vivid-scope-selector} {
+	h1,
+	h2 {
+		padding: 0;
+		margin: 48px 0;
+	}
+
+	h3,
+	h4,
+	h5,
+	h6 {
+		padding: 0;
+		margin: 40px 0;
+	}
+
 	pre,
 	code,
 	kbd,
