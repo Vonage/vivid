@@ -1,4 +1,9 @@
-export { CONTEXT_PROVIDING_ELEMENTS, DEVIATIVE_ELEMENTS };
+export {
+	CONTEXT_PROVIDING_ELEMENTS,
+	DEVIATIVE_ELEMENTS,
+	PADDING_DEFINITIONS,
+	MARGIN_DEFINITIONS
+};
 
 const CONTEXT_PROVIDING_ELEMENTS = {
 	h1: 'headline-1',
@@ -9,6 +14,24 @@ const CONTEXT_PROVIDING_ELEMENTS = {
 	h6: 'subtitle-2',
 	div: 'body-1',
 	p: 'body-1',
+};
+
+const PADDING_DEFINITIONS = {
+	h1: ['0px', '0px', '0px', '0px'],
+	h2: ['0px', '0px', '0px', '0px'],
+	h3: ['0px', '0px', '0px', '0px'],
+	h4: ['0px', '0px', '0px', '0px'],
+	h5: ['0px', '0px', '0px', '0px'],
+	h6: ['0px', '0px', '0px', '0px'],
+};
+
+const MARGIN_DEFINITIONS = {
+	h1: ['48px', '0px', '48px', '0px'],
+	h2: ['48px', '0px', '48px', '0px'],
+	h3: ['40px', '0px', '40px', '0px'],
+	h4: ['40px', '0px', '40px', '0px'],
+	h5: ['40px', '0px', '40px', '0px'],
+	h6: ['40px', '0px', '40px', '0px'],
 };
 
 const DEVIATIVE_ELEMENTS = [
