@@ -6,8 +6,7 @@ import kefir from 'kefir';
 const SYMBOL_TRIGGER = Symbol('trigger'),
 	SYMBOL_AUDIO_EL = Symbol('audio_el');
 
-const filterByValue = (filterValue: string) => (value: string) =>
-		value === filterValue,
+const filterByValue = (filterValue: string) => (value: string) => value === filterValue,
 	// eslint-disable-next-line
 	createConnectedProperty = (ingestStream: any) => {
 		return kefir
@@ -81,7 +80,7 @@ class VWCAudio extends HTMLElement {
 					kefir
 						.merge([
 							kefir.fromEvents(audioEl, 'pause'),
-							playerAudioLoadedProperty.filter((loaded) => !loaded),
+							playerAudioLoadedProperty.filter(loaded => !loaded),
 						])
 						.map(() => false),
 				])
@@ -89,11 +88,9 @@ class VWCAudio extends HTMLElement {
 
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
-		playerTimeUpdatedProperty.onValue(() =>
-			controllerEl.setPosition(
-				audioEl.currentTime === 0 ? 0 : audioEl.currentTime / audioEl.duration
-			)
-		);
+		playerTimeUpdatedProperty.onValue(() => controllerEl.setPosition(
+			audioEl.currentTime === 0 ? 0 : audioEl.currentTime / audioEl.duration
+		));
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
 		playerIsPlayingProperty.onValue(controllerEl.setPlayState.bind(controllerEl));
@@ -107,7 +104,7 @@ class VWCAudio extends HTMLElement {
 				(position: number) => (audioEl.currentTime = audioEl.duration * position)
 			);
 		connectedProperty
-			.filter((connected) => !connected)
+			.filter(connected => !connected)
 			.onValue(() => audioEl.pause());
 	}
 

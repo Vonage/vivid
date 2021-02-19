@@ -31,7 +31,7 @@ Validation.args = {
 export const Icon = Template.bind({});
 Icon.args = {
 	icon: 'search',
-	iconTrailing: 'cross-bold',
+	iconTrailing: 'close-small-line',
 	dense: '',
 	shape: 'pill',
 	placeholder: 'Search',

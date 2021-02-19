@@ -8,9 +8,6 @@ $vvd-list-item-side-padding: --vvd-list-item-side-padding;
 $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 
 :host {
-	#{$vvd-list-item-block-size}: 40px;
-	#{$vvd-list-item-side-padding}: 24px;
-	#{$vvd-list-item-graphic-margin}: 16px;
 	--mdc-list-side-padding: var(#{$vvd-list-item-side-padding});
 	--mdc-list-item-graphic-margin: var(#{$vvd-list-item-graphic-margin});
 	--mdc-list-item-graphic-size: 20px;
@@ -21,10 +18,13 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 	--mdc-theme-text-hint-on-background: var(
 		#{scheme-variables.$vvd-color-on-base}
 	);
+	@include typography.typography-cat-shorthand('body-2');
+	height: var(#{$vvd-list-item-block-size});
 
 	border-radius: var(--border-radius, 0);
-	height: var(#{$vvd-list-item-block-size});
-	@include typography.typography-cat-shorthand('body-2');
+	#{$vvd-list-item-block-size}: 40px;
+	#{$vvd-list-item-side-padding}: 24px;
+	#{$vvd-list-item-graphic-margin}: 16px;
 }
 
 :host([graphic='icon']:not([twoline])) {
@@ -32,21 +32,17 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 }
 
 :host([twoline]) {
-	#{$vvd-list-item-block-size}: 64px;
-	#{$vvd-list-item-side-padding}: 16px;
-	#{$vvd-list-item-graphic-margin}: 12px;
-
 	height: auto;
 	min-block-size: var(#{$vvd-list-item-block-size});
 
 	&::after {
-		content: '';
-		height: 1px;
-		border-bottom: 1px solid var(#{scheme-variables.$vvd-color-contrast-soft});
 		position: absolute;
+		right: var(#{$vvd-list-item-side-padding});
 		bottom: 0;
 		left: var(#{$vvd-list-item-side-padding});
-		right: var(#{$vvd-list-item-side-padding});
+		height: 1px;
+		border-bottom: 1px solid var(#{scheme-variables.$vvd-color-contrast-soft});
+		content: '';
 	}
 
 	.mdc-list-item__graphic {
@@ -77,6 +73,9 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 	.mdc-list-item__meta {
 		flex-shrink: 0;
 	}
+	#{$vvd-list-item-block-size}: 64px;
+	#{$vvd-list-item-side-padding}: 16px;
+	#{$vvd-list-item-graphic-margin}: 12px;
 }
 
 :host([disabled]) {
@@ -90,6 +89,10 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 	.mdc-list-item__text {
 		color: var(#{color-semantic.$formfield-disabled-ink});
 	}
+}
+
+.mdc-list-item__meta {
+	display: flex;
 }
 
 @include shape-mixins.shape(

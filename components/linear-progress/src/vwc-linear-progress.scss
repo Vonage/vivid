@@ -5,16 +5,16 @@
 }
 
 .mdc-linear-progress {
-	border-radius: 10px;
 	height: 6px;
+	border-radius: 10px;
 }
 
 .mdc-linear-progress__bar-inner {
+	height: 6px;
+	border-top: 0;
 	background-color: transparent;
 	background-image: linear-gradient(to right, #7fc6f4, #8728fb);
 	border-radius: 10px;
-	border-top: 0;
-	height: 6px;
 }
 
 .mdc-linear-progress__buffer-bar {

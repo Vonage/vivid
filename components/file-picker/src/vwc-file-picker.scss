@@ -4,8 +4,8 @@
 
 :host {
 	display: inline-block;
-	min-inline-size: 320px;
 	max-inline-size: 100%;
+	min-inline-size: 320px;
 }
 
 .input-file-slot::slotted(*) {
@@ -29,18 +29,19 @@
 
 .content {
 	position: relative;
+	box-sizing: border-box;
 	flex-basis: 100px;
 	justify-content: center;
 	border: 1px dashed #ccc;
-	border-radius: 6px;
-	box-sizing: border-box;
 	background-color: var(#{scheme-variables.$vvd-color-base});
+	border-radius: 6px;
+	outline: none;
 
 	.files-count {
 		position: absolute;
+		z-index: 1;
 		top: 0;
 		right: 0;
-		z-index: 1;
 		transform: translate(12px, -50%);
 	}
 }

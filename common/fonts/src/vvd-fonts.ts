@@ -43,11 +43,11 @@ function setupInitTestElements(): HTMLElement[] {
 		return e;
 	});
 	if (document.body) {
-		result.forEach((e) => document.body.appendChild(e));
+		result.forEach(e => document.body.appendChild(e));
 	} else {
 		document.addEventListener(
 			'DOMContentLoaded',
-			() => result.forEach((e) => document.body.appendChild(e)),
+			() => result.forEach(e => document.body.appendChild(e)),
 			{ once: true }
 		);
 	}
@@ -74,5 +74,5 @@ async function ensureInit(
 }
 
 function cleanInitTestElements(testElements: HTMLElement[]): void {
-	testElements.forEach((e) => e.remove());
+	testElements.forEach(e => e.remove());
 }

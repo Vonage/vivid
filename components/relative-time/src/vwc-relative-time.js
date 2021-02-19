@@ -1,6 +1,7 @@
+/* eslint-disable */
 import '@vonage/vvd-core';
-import kefir from "kefir";
-import relativeTimeFactory from "./format-relative.js";
+import kefir from 'kefir';
+import relativeTimeFactory from './format-relative.js';
 
 const
 	SECOND = 1000,
@@ -11,7 +12,7 @@ const
 		SYMBOL_PROPERTY_LIVE_SET,
 		SYMBOL_PROPERTY_TARGET,
 		SYMBOL_PROPERTY_TARGET_SET
-	] = ["connect", "disconnect", "property-live", "property-live-set", "property-target", "property-target-set"].map((name) => Symbol(name));
+	] = ['connect', 'disconnect', 'property-live', 'property-live-set', 'property-target', 'property-target-set'].map(name => Symbol(name));
 
 /**
  * Displays a timestamp relative to current time in human readable language
@@ -23,20 +24,19 @@ const
  *
  */
 class VWCRelativeTime extends HTMLElement {
-
 	constructor() {
 		super();
 		const
-			rootEl = this.attachShadow({ mode: "closed" }),
+			rootEl = this.attachShadow({ mode: 'closed' }),
 			el = document.createElement('time');
 
-		[SYMBOL_CONNECT, SYMBOL_DISCONNECT, SYMBOL_PROPERTY_LIVE_SET, SYMBOL_PROPERTY_TARGET_SET].forEach((symbol) => this[symbol] = () => { });
+		[SYMBOL_CONNECT, SYMBOL_DISCONNECT, SYMBOL_PROPERTY_LIVE_SET, SYMBOL_PROPERTY_TARGET_SET].forEach(symbol => this[symbol] = () => { });
 		rootEl.appendChild(el);
 
 		const
 			liveProperty = kefir
 				.stream(({ emit }) => this[SYMBOL_PROPERTY_LIVE_SET] = emit)
-				.toProperty(() => this.getAttribute('live') === "true"),
+				.toProperty(() => this.getAttribute('live') === 'true'),
 			targetTimestampProperty = kefir
 				.stream(({ emit }) => this[SYMBOL_PROPERTY_TARGET_SET] = emit)
 				.toProperty(() => Number(this.getAttribute('datetime'))),
@@ -51,10 +51,10 @@ class VWCRelativeTime extends HTMLElement {
 			this[SYMBOL_PROPERTY_LIVE] = val;
 			this.setAttribute('datetime', val.toString());
 			el.setAttribute('datetime', new Date(val).toISOString());
-			el.title = ["toLocaleDateString", "toLocaleTimeString"].map((methodName) => (new Date(val))[methodName]()).join(' ');
+			el.title = ['toLocaleDateString', 'toLocaleTimeString'].map(methodName => (new Date(val))[methodName]()).join(' ');
 		});
 
-		targetTimestampProperty.onValue((val) => this[SYMBOL_PROPERTY_TARGET] = val);
+		targetTimestampProperty.onValue(val => this[SYMBOL_PROPERTY_TARGET] = val);
 
 		connectStream
 			.flatMapLatest(() => {
@@ -67,16 +67,16 @@ class VWCRelativeTime extends HTMLElement {
 						const formatter = relativeTimeFactory();
 						return live
 							? kefir.fromPoll(SECOND, formatter.bind(null, target))
-							: kefir.constant(formatter(target))
+							: kefir.constant(formatter(target));
 					})
 					.skipDuplicates()
-					.takeUntilBy(kefir.fromCallback((cb) => this[SYMBOL_DISCONNECT] = cb))
+					.takeUntilBy(kefir.fromCallback(cb => this[SYMBOL_DISCONNECT] = cb));
 			})
-			.onValue((formattedTime) => el.textContent = formattedTime);
+			.onValue(formattedTime => el.textContent = formattedTime);
 	}
 
 	static get observedAttributes() {
-		return ["live", "datetime"];
+		return ['live', 'datetime'];
 	}
 
 	get live() {
@@ -84,8 +84,8 @@ class VWCRelativeTime extends HTMLElement {
 	}
 
 	set live(value) {
-		if (typeof (value) !== "boolean") {
-			console.error(`The "live" property must be boolean`);
+		if (typeof (value) !== 'boolean') {
+			console.error('The "live" property must be boolean');
 			return;
 		}
 		this[SYMBOL_PROPERTY_LIVE_SET](value);
@@ -97,7 +97,7 @@ class VWCRelativeTime extends HTMLElement {
 
 	set datetime(value) {
 		if (!Number.isInteger(value)) {
-			console.error(`The "datetime" must be an integer (milliseconds since Unix Epoch)`);
+			console.error('The "datetime" must be an integer (milliseconds since Unix Epoch)');
 			return;
 		}
 		this[SYMBOL_PROPERTY_TARGET_SET](value);
@@ -105,8 +105,8 @@ class VWCRelativeTime extends HTMLElement {
 
 	attributeChangedCallback(attrName, oldValue, newValue) {
 		({
-			"live": (value) => this.live = value === "true",
-			"datetime": (value) => this.datetime = Number(value)
+			live: value => this.live = value === 'true',
+			datetime: value => this.datetime = Number(value)
 		})[attrName](newValue);
 	}
 

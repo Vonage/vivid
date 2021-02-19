@@ -2,7 +2,9 @@
 // @ts-nocheck
 import '@vonage/vvd-core';
 import kefir from 'kefir';
-import { pipe, partial, clamp, prop, always, not, identity, path } from 'ramda';
+import {
+	pipe, partial, clamp, prop, always, not, identity, path
+} from 'ramda';
 import { style as vwcMediaControllerStyle } from './vwc-media-controller.css';
 
 const SIGNAL = Symbol('signal'),
@@ -11,19 +13,17 @@ const SIGNAL = Symbol('signal'),
 	TRACK_INACTIVE_COLOR = '#E1E2E6',
 	TRACK_ACTIVE_COLOR = '#999';
 
-const byType = (typeName) => ({ type }) => type === typeName,
+const byType = typeName => ({ type }) => type === typeName,
 	createTag = function (tagName, ...children) {
 		const el = document.createElement(tagName);
-		children.forEach((child) =>
-			typeof child === 'string' ? (el.innerHTML += child) : el.appendChild(child)
-		);
+		children.forEach(child => (typeof child === 'string' ? (el.innerHTML += child) : el.appendChild(child)));
 		return el;
 	},
 	preventDefault = (e) => {
 		e.preventDefault();
 		return e;
 	},
-	sendCustomEventFactory = (target) => (
+	sendCustomEventFactory = target => (
 		eventType,
 		detail,
 		options = { bubbles: true, composed: true }
@@ -31,7 +31,9 @@ const byType = (typeName) => ({ type }) => type === typeName,
 		const event = new CustomEvent(eventType, { ...options, detail });
 		target.dispatchEvent(event);
 	},
-	addRectMargin = ({ marginX = 0, marginY = 0 }, { x, y, width, height }) => ({
+	addRectMargin = ({ marginX = 0, marginY = 0 }, {
+		x, y, width, height
+	}) => ({
 		x: x - marginX,
 		y: y - marginY,
 		width: width + marginX * 2,
@@ -40,12 +42,13 @@ const byType = (typeName) => ({ type }) => type === typeName,
 	isBetween = (value, min, max) => value >= min && value <= max,
 	isInRect = (
 		{ x: sourceX, y: sourceY },
-		{ x: rectX, y: rectY, width: rectWidth, height: rectHeight }
-	) =>
-		[
-			isBetween(sourceX, rectX, rectX + rectWidth),
-			isBetween(sourceY, rectY, rectY + rectHeight),
-		].every(identity);
+		{
+			x: rectX, y: rectY, width: rectWidth, height: rectHeight
+		}
+	) => [
+		isBetween(sourceX, rectX, rectX + rectWidth),
+		isBetween(sourceY, rectY, rectY + rectHeight),
+	].every(identity);
 
 /**
  * Displays controllers for media playback. Includes play/pause button and a scrub bar
@@ -67,12 +70,13 @@ class VWCMediaController extends HTMLElement {
 
 		// Set component's elemental structure
 		const rootDoc = this.attachShadow({ mode: 'open' });
-		let trackEl, ScrubberKnobEl, playPauseControlEl, rootEl;
+		let trackEl,
+			ScrubberKnobEl,
+			playPauseControlEl,
+			rootEl;
 
 		const componentContent = (function () {
-			const [style, div, button] = ['style', 'div', 'button'].map((tagName) =>
-				partial(createTag, [tagName])
-			);
+			const [style, div, button] = ['style', 'div', 'button'].map(tagName => partial(createTag, [tagName]));
 			return [
 				style(vwcMediaControllerStyle.cssText),
 				(rootEl = div(
@@ -80,11 +84,9 @@ class VWCMediaController extends HTMLElement {
 					(trackEl = div((ScrubberKnobEl = button())))
 				)),
 			];
-		})();
+		}());
 
-		const rafStream = kefir.repeat(() =>
-				kefir.fromCallback(requestAnimationFrame)
-			),
+		const rafStream = kefir.repeat(() => kefir.fromCallback(requestAnimationFrame)),
 			componentConnectedStream = apiBus.filter(byType('component_connected')),
 			mouseClickStream = kefir.fromEvents(rootDoc, 'click'),
 			mouseDownStream = kefir.fromEvents(rootDoc, 'mousedown'),
@@ -98,16 +100,14 @@ class VWCMediaController extends HTMLElement {
 				})
 				.map(preventDefault),
 			touchEndStream = kefir.merge(
-				['touchend', 'touchcancel'].map((eventName) =>
-					kefir.fromEvents(window, eventName)
-				)
+				['touchend', 'touchcancel'].map(eventName => kefir.fromEvents(window, eventName))
 			),
 			[mouseUpStream, mouseMoveStream, contextMenuStream, windowResizeStream] = [
 				'mouseup',
 				'mousemove',
 				'contextmenu',
 				'resize',
-			].map((eventName) => kefir.fromEvents(window, eventName)),
+			].map(eventName => kefir.fromEvents(window, eventName)),
 			trackBarEnabledProperty = componentConnectedStream
 				.take(1)
 				.map(() => {
@@ -133,16 +133,18 @@ class VWCMediaController extends HTMLElement {
 						mouseX,
 						mouseY,
 						identifier,
-						...(({ x, y, width, height }) => ({ x, y, width, height }))(
+						...(({
+							x, y, width, height
+						}) => ({
+							x, y, width, height
+						}))(
 							trackEl.getBoundingClientRect()
 						),
 					}))
-					.filter(({ mouseX, mouseY, ...rect }) =>
-						isInRect(
-							{ x: mouseX, y: mouseY },
-							addRectMargin({ marginY: TRACK_VERTICAL_RESPONSIVITY_MARGIN }, rect)
-						)
-					)
+					.filter(({ mouseX, mouseY, ...rect }) => isInRect(
+						{ x: mouseX, y: mouseY },
+						addRectMargin({ marginY: TRACK_VERTICAL_RESPONSIVITY_MARGIN }, rect)
+					))
 					.flatMapLatest(
 						({
 							mouseX,
@@ -160,12 +162,9 @@ class VWCMediaController extends HTMLElement {
 											.merge([
 												mouseMoveStream,
 												touchMoveStream
-													.map(({ touches }) =>
-														Array.from(touches).find(
-															({ identifier: currentIdentifier }) =>
-																currentIdentifier === touchIdentifier
-														)
-													)
+													.map(({ touches }) => Array.from(touches).find(
+														({ identifier: currentIdentifier }) => currentIdentifier === touchIdentifier
+													))
 													.filter(Boolean),
 											])
 											// eslint-disable-next-line
@@ -178,8 +177,7 @@ class VWCMediaController extends HTMLElement {
 												rectX + TRACK_KNOB_HORIZONTAL_MARGIN,
 												rectX + rectWidth - TRACK_KNOB_HORIZONTAL_MARGIN
 											),
-											(pos) =>
-												(pos - (rectX + TRACK_KNOB_HORIZONTAL_MARGIN)) /
+											pos => (pos - (rectX + TRACK_KNOB_HORIZONTAL_MARGIN)) /
 												(rectWidth - TRACK_KNOB_HORIZONTAL_MARGIN * 2)
 										)
 									)
@@ -188,15 +186,13 @@ class VWCMediaController extends HTMLElement {
 											.merge([
 												mouseUpStream,
 												contextMenuStream,
-												touchEndStream.filter(({ changedTouches }) =>
-													Array.from(changedTouches)
-														.map(prop('identifier'))
-														.includes(touchIdentifier)
-												),
+												touchEndStream.filter(({ changedTouches }) => Array.from(changedTouches)
+													.map(prop('identifier'))
+													.includes(touchIdentifier)),
 											])
 											.take(1)
 									)
-									.map((position) => ({ type: 'position_change', position })),
+									.map(position => ({ type: 'position_change', position })),
 								kefir.constant({ type: 'end' }),
 							]);
 						}
@@ -204,67 +200,65 @@ class VWCMediaController extends HTMLElement {
 
 				const userScrubInteractionProperty = kefir
 					.merge(
-						['start', 'end'].map((eventType) =>
-							userScrubStream
-								.filter(byType(eventType))
-								.map(always(eventType === 'start'))
-						)
+						['start', 'end'].map(eventType => userScrubStream
+							.filter(byType(eventType))
+							.map(always(eventType === 'start')))
 					)
 					.skipDuplicates()
 					.toProperty(always(false));
 
 				return trackEnabled
 					? kefir
-							.merge([
-								kefir
-									.combine(
-										[
-											userScrubInteractionProperty
-												.flatMap((active) => {
-													return active
-														? userScrubStream
-																.filter(byType('position_change'))
-																.map(prop('position'))
-														: apiPositionProperty.filterBy(
-																userScrubInteractionProperty.map(not)
+						.merge([
+							kefir
+								.combine(
+									[
+										userScrubInteractionProperty
+											.flatMap((active) => {
+												return active
+													? userScrubStream
+														.filter(byType('position_change'))
+														.map(prop('position'))
+													: apiPositionProperty.filterBy(
+														userScrubInteractionProperty.map(not)
 														  );
-												})
-												.skipDuplicates(),
-											windowResizeStream.toProperty(always(0)),
-										],
-										(val) => val
-									)
-									.flatMapLatest((value) => rafStream.take(1).map(always(value)))
-									.map((position) => ({
-										type: 'update_knob_position',
-										value: position,
-									})),
-								apiPositionProperty.skipDuplicates().map((percentage) => ({
-									type: 'update_progress_position',
-									value: percentage,
+											})
+											.skipDuplicates(),
+										windowResizeStream.toProperty(always(0)),
+									],
+									val => val
+								)
+								.flatMapLatest(value => rafStream.take(1).map(always(value)))
+								.map(position => ({
+									type: 'update_knob_position',
+									value: position,
 								})),
-								userScrubInteractionProperty.map((state) => ({
-									type: 'update_scrub_state',
-									value: state,
-								})),
-								userScrubStream.filter(byType('position_change')).map(
-									pipe(prop('position'), (position) => ({
-										type: 'update_user_scrub_request',
-										value: position,
-									}))
-								),
-							])
-							.takeUntilBy(apiBus.filter(byType('component_disconnected')).take(1))
+							apiPositionProperty.skipDuplicates().map(percentage => ({
+								type: 'update_progress_position',
+								value: percentage,
+							})),
+							userScrubInteractionProperty.map(state => ({
+								type: 'update_scrub_state',
+								value: state,
+							})),
+							userScrubStream.filter(byType('position_change')).map(
+								pipe(prop('position'), position => ({
+									type: 'update_user_scrub_request',
+									value: position,
+								}))
+							),
+						])
+						.takeUntilBy(apiBus.filter(byType('component_disconnected')).take(1))
 					: kefir.constant({ type: 'update_scrub_state', value: false });
 			});
 
 		// Draw component internals
 		componentConnectedStream.take(1).onValue(() => {
-			componentContent.forEach((el) => rootDoc.appendChild(el));
+			componentContent.forEach(el => rootDoc.appendChild(el));
 		});
 
 		trackBarEnabledProperty.onValue(
-			(enabled) => (trackEl.style.display = enabled ? 'block' : 'none')
+			enabled => (trackEl.style.display = enabled ? 'block' : 'none')
 		);
 
 		// Update knob position
@@ -283,18 +277,17 @@ class VWCMediaController extends HTMLElement {
 			.filter(byType('update_progress_position'))
 			.map(prop('value'))
 			.onValue(
-				(percentage) =>
-					(trackEl.style.backgroundImage = `linear-gradient(90deg, ${TRACK_ACTIVE_COLOR} 0%, ${TRACK_ACTIVE_COLOR} ${
-						percentage * 100
-					}%, ${TRACK_INACTIVE_COLOR} ${
-						percentage * 100
-					}%, ${TRACK_INACTIVE_COLOR} 100%)`)
+				percentage => (trackEl.style.backgroundImage = `linear-gradient(90deg, ${TRACK_ACTIVE_COLOR} 0%, ${TRACK_ACTIVE_COLOR} ${
+					percentage * 100
+				}%, ${TRACK_INACTIVE_COLOR} ${
+					percentage * 100
+				}%, ${TRACK_INACTIVE_COLOR} 100%)`)
 			);
 
 		trackBarStream
 			.filter(byType('update_scrub_state'))
 			.map(prop('value'))
-			.onValue((scrub) => rootEl.classList.toggle('scrub', scrub));
+			.onValue(scrub => rootEl.classList.toggle('scrub', scrub));
 
 		// Send user scrub event
 		trackBarStream
@@ -308,9 +301,7 @@ class VWCMediaController extends HTMLElement {
 			.toProperty(always(false));
 
 		// Update play state
-		playStateProperty.onValue((isPlaying) =>
-			rootEl.classList.toggle('play', isPlaying)
-		);
+		playStateProperty.onValue(isPlaying => rootEl.classList.toggle('play', isPlaying));
 
 		// Send user play/pause event
 		mouseClickStream

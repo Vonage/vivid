@@ -4,22 +4,17 @@
 :host {
 	--mdc-tab-height: 44px;
 	--mdc-tab-horizontal-padding: 24px;
-	--mdc-tab-text-label-color-default: var(
-		#{scheme-variables.$vvd-color-contrast-tinted}
-	);
+	--mdc-tab-text-label-color-default: var(#{scheme-variables.$vvd-color-contrast-tinted});
 	flex: initial;
 }
 
 .mdc-tab {
-	font-stretch: var(
-		--mdc-typography-subtitle1-font-stretch
-	); // ! this was supposed to be set by MDC
+	font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
 }
 
 .vvd-icon {
 	--icon-size: 20px;
 	color: var(--mdc-tab-text-label-color-default);
-	vertical-align: sub;
 }
 
 :host([active]) {
@@ -46,9 +41,7 @@
 
 :host([disabled]) {
 	--mdc-theme-primary: var(#{scheme-variables.$vvd-color-contrast-soft});
-	--mdc-tab-text-label-color-default: var(
-		#{scheme-variables.$vvd-color-contrast-soft}
-	);
+	--mdc-tab-text-label-color-default: var(#{scheme-variables.$vvd-color-contrast-soft});
 	pointer-events: none;
 
 	.vvd-icon {

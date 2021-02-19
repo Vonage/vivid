@@ -4,11 +4,13 @@
 
 .mdc-fab {
 	@include typography.typography-mdc-coupling('button', 'body-2-bold');
-	font-stretch: var(
-		--mdc-typography-button-font-stretch
-	); // ! this was supposed to be set by MDC
+	font-stretch: var(--mdc-typography-button-font-stretch); // ! this was supposed to be set by MDC
 	letter-spacing: initial;
 	text-transform: initial;
+
+	&--extended .vvd-icon {
+		margin-inline-end: 12px;
+	}
 }
 
 :host([connotation='primary']) .mdc-fab {
