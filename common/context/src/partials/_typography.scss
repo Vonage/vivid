@@ -56,4 +56,12 @@ body {
 	blockquote {
 		@include typography.typography-cat-shorthand('body-2');
 	}
+
+	table {
+		@include typography.typography-cat-shorthand('body-2');
+
+		thead {
+			@include typography.typography-cat-shorthand('body-2-bold');
+		}
+	}
 }
