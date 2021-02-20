@@ -88,7 +88,7 @@ describe('datepicker', () => {
 		});
 
 		it('should have month picker when monthPicker set', async () => {
-			const [actualElement] = addElement(
+			addElement(
 				textToDomToParent(`
 					<${COMPONENT_NAME} inline monthPicker></${COMPONENT_NAME}>
 				`)
@@ -100,7 +100,7 @@ describe('datepicker', () => {
 		});
 
 		it('should have custom range when mode set to range', async () => {
-			const [actualElement] = addElement(
+			addElement(
 				textToDomToParent(`
 					<${COMPONENT_NAME} inline mode="range"></${COMPONENT_NAME}>
 				`)
