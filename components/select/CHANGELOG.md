@@ -1,3 +1,30 @@
+## [1.3.1](https://github.com/vonage/vivid/compare/v1.3.0...v1.3.1) (2021-02-11)
+
+
+
+# [1.3.0](https://github.com/vonage/vivid/compare/v1.2.0...v1.3.0) (2021-02-11)
+
+
+### Features
+
+* **fonts:** issue [#631](https://github.com/vonage/vivid/issues/631) font-display deterministic resolution ([#632](https://github.com/vonage/vivid/issues/632)) ([74befed](https://github.com/vonage/vivid/commit/74befedba27e4997ea9e5aa63c24a23ffe21b984))
+
+
+
+# [1.2.0](https://github.com/vonage/vivid/compare/v1.1.3...v1.2.0) (2021-02-03)
+
+
+### Bug Fixes
+
+* **select:** issue [#627](https://github.com/vonage/vivid/issues/627) select dense label ([#628](https://github.com/vonage/vivid/issues/628)) ([b421b6c](https://github.com/vonage/vivid/commit/b421b6c527ed91971be4b4ff718f286108728b95))
+
+
+### Features
+
+* **vwc-menu:** issue [#592](https://github.com/vonage/vivid/issues/592) menu docs and better stories ([#596](https://github.com/vonage/vivid/issues/596)) ([67dbda5](https://github.com/vonage/vivid/commit/67dbda5f6634a94c0fabaab90704dddf468e88fb))
+
+
+
 ## [1.1.3](https://github.com/vonage/vivid/compare/v1.1.2...v1.1.3) (2021-01-27)
 
 

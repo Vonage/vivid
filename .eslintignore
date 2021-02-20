@@ -1,13 +1,2 @@
-**/node_modules
-**/*.d.ts
-**/*.js.map
-
-**/*.js
-!**/test/*.js
-!**/stories/**/*.js
-
-**/*.tsbuildinfo
-**/storybook-static
-**/coverage
-
-components/mwc-chips
+*.css.ts
+components/chips/src/mwc-chips

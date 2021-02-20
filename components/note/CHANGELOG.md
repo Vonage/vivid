@@ -1,3 +1,25 @@
+## [1.3.1](https://github.com/vonage/vivid/compare/v1.3.0...v1.3.1) (2021-02-11)
+
+
+
+# [1.3.0](https://github.com/vonage/vivid/compare/v1.2.0...v1.3.0) (2021-02-11)
+
+
+### Features
+
+* **fonts:** issue [#631](https://github.com/vonage/vivid/issues/631) font-display deterministic resolution ([#632](https://github.com/vonage/vivid/issues/632)) ([74befed](https://github.com/vonage/vivid/commit/74befedba27e4997ea9e5aa63c24a23ffe21b984))
+
+
+
+# [1.2.0](https://github.com/vonage/vivid/compare/v1.1.3...v1.2.0) (2021-02-03)
+
+
+### Bug Fixes
+
+* **note:** viv-383 issue-619 fixing the safari 13 compliance ([#620](https://github.com/vonage/vivid/issues/620)) ([9a7224a](https://github.com/vonage/vivid/commit/9a7224a6067f39ee70589238cfffe8bcb57dcbd4)), closes [#619](https://github.com/vonage/vivid/issues/619)
+
+
+
 ## [1.1.3](https://github.com/vonage/vivid/compare/v1.1.2...v1.1.3) (2021-01-27)
 
 

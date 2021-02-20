@@ -1,6 +1,6 @@
 @use '../variable-names/shape-variable-names' as shape-var-names;
 
-@function getDefaultSelector($list, $default) {
+@function get-default-selector($list, $default) {
 	$selectors: '';
 	@each $key, $_ in $list {
 		@if $key != $default {
@@ -29,7 +29,7 @@
 
 			$selector: join(
 				$selector,
-				getDefaultSelector($shapes, $default),
+				get-default-selector($shapes, $default),
 				$separator: comma
 			);
 		}

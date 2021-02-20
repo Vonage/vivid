@@ -1,5 +1,7 @@
 import '@vonage/vvd-core';
-import { customElement, property, html, TemplateResult } from 'lit-element';
+import {
+	customElement, property, html, TemplateResult
+} from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
 import { Tab as MWCTab } from '@material/mwc-tab';
 import { style as vwcTabStyle } from './vwc-tab.css';
@@ -62,16 +64,16 @@ export class VWCTab extends MWCTab {
 				<span class="leading-icon">
 					<slot name="icon">
 						${(this.hasImageIcon || this.icon) && !this.trailingIcon
-							? this.renderIcon()
-							: ''}
+		? this.renderIcon()
+		: ''}
 					</slot>
 				</span>
 				${labelTemplate}
 				<span class="trailing-icon">
 					<slot name="trailingIcon">
 						${(this.hasImageIcon || this.icon) && this.trailingIcon
-							? this.renderIcon()
-							: ''}
+		? this.renderIcon()
+		: ''}
 					</slot>
 				</span>
 				${this.isMinWidthIndicator ? this.renderIndicator() : ''}

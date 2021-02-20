@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  cache-yarn:
+  cache-yarn-and-build:
     runs-on: ubuntu-20.04
     env:
       ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
@@ -42,8 +42,20 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
 
+      - name: Build components
+        run: yarn compile
+
+      - name: Cache build
+        uses: actions/cache@v2
+        id: build-cache
+        with:
+          path: |
+            common
+            components
+          key: vivid-cache-build-${{ github.event.pull_request.head.sha }}
+
   test-safari:
-    needs: cache-yarn
+    needs: cache-yarn-and-build
     runs-on: macOS-latest
     env:
       ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
@@ -79,7 +91,17 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
 
+      - name: Cache build
+        uses: actions/cache@v2
+        id: build-cache
+        with:
+          path: |
+            common
+            components
+          key: vivid-cache-build-${{ github.event.pull_request.head.sha }}
+
       - name: Build components
+        if: steps.build-cache.outputs.cache-hit != 'true'
         run: yarn compile
 
       - name: Test components
@@ -92,7 +114,7 @@ jobs:
           path: ./coverage/report-cobertura/coverage.xml
 
   test-firefox:
-    needs: cache-yarn
+    needs: cache-yarn-and-build
     runs-on: ubuntu-20.04
     env:
       ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
@@ -128,7 +150,17 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
 
+      - name: Cache build
+        uses: actions/cache@v2
+        id: build-cache
+        with:
+          path: |
+            common
+            components
+          key: vivid-cache-build-${{ github.event.pull_request.head.sha }}
+
       - name: Build components
+        if: steps.build-cache.outputs.cache-hit != 'true'
         run: yarn compile
 
       - name: Test components
@@ -141,7 +173,7 @@ jobs:
           path: ./coverage/report-cobertura/coverage.xml
 
   test-chrome:
-    needs: cache-yarn
+    needs: cache-yarn-and-build
     runs-on: ubuntu-20.04
     env:
       ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
@@ -177,7 +209,17 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
 
+      - name: Cache build
+        uses: actions/cache@v2
+        id: build-cache
+        with:
+          path: |
+            common
+            components
+          key: vivid-cache-build-${{ github.event.pull_request.head.sha }}
+
       - name: Build components
+        if: steps.build-cache.outputs.cache-hit != 'true'
         run: yarn compile
 
       - name: Test components
@@ -196,7 +238,7 @@ jobs:
           path: ./coverage/report-lcov/lcov.info
 
   code-standards:
-    needs: cache-yarn
+    needs: cache-yarn-and-build
     runs-on: ubuntu-20.04
     env:
       ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
@@ -232,7 +274,17 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
 
+      - name: Cache build
+        uses: actions/cache@v2
+        id: build-cache
+        with:
+          path: |
+            common
+            components
+          key: vivid-cache-build-${{ github.event.pull_request.head.sha }}
+
       - name: Build components
+        if: steps.build-cache.outputs.cache-hit != 'true'
         run: yarn compile
 
       - name: Dependencies check

@@ -1,4 +1,7 @@
-import { relocateStaticResources } from '../../../.storybook/build-scripts/create-stories-from-md.mjs';
+import {
+	hrefLinkProcessing,
+	relocateStaticResources,
+} from '../../../.storybook/build-scripts/create-stories-from-md.mjs';
 
 export default {
 	sourcePath: '../../contribution.md',
@@ -9,12 +12,22 @@ export default {
 		parameters: {
 			options: {
 				showPanel: false,
-				isToolshown: false
-			}
-		}
+				isToolshown: false,
+			},
+		},
 	},
-	htmlPostProcess: htmlText => {
-		return relocateStaticResources(htmlText, ['assets/images/contribution.svg'], 'docs')
-			.replace('href="./architecture.md"', 'href="/?path=/story/introduction-architecture--architecture"');
-	}
+	htmlPostProcess: (htmlText) => {
+		let r = relocateStaticResources(
+			htmlText,
+			['assets/images/contribution.svg'],
+			'docs'
+		);
+		return hrefLinkProcessing(r, [
+			['href="../readme.md"', '?path=/story/introduction-meet-vivid--meet-vivid'],
+			[
+				'href="./architecture.md"',
+				'?path=/story/introduction-architecture--architecture',
+			],
+		]);
+	},
 };

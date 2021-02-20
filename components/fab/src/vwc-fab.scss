@@ -7,14 +7,18 @@
 	font-stretch: var(--mdc-typography-button-font-stretch); // ! this was supposed to be set by MDC
 	letter-spacing: initial;
 	text-transform: initial;
+
+	&--extended .vvd-icon {
+		margin-inline-end: 12px;
+	}
 }
 
-:host([connotation="primary"]) .mdc-fab {
+:host([connotation='primary']) .mdc-fab {
 	--mdc-theme-secondary: var(#{scheme-variables.$vvd-color-primary});
 	--mdc-theme-on-secondary: var(#{scheme-variables.$vvd-color-on-primary});
 }
 
-:host([connotation="cta"]) .mdc-fab {
+:host([connotation='cta']) .mdc-fab {
 	--mdc-theme-secondary: var(#{scheme-variables.$vvd-color-cta});
 	--mdc-theme-on-secondary: var(#{scheme-variables.$vvd-color-on-cta});
 }

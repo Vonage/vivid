@@ -1,23 +1,22 @@
 :host {
-  --mdc-theme-primary: #8728fb;
-  --mdc-linear-progress-buffer-color: rgba(97,98,102,0.45);
-  --mdc-linear-progress-buffering-dots-image:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' enable-background='new 0 0 5 2' xml:space='preserve' viewBox='0 0 5 2' preserveAspectRatio='none slice'%3E%3Ccircle cx='1' cy='1' r='1' fill='%23616266'/%3E%3C/svg%3E");
+	--mdc-theme-primary: #8728fb;
+	--mdc-linear-progress-buffer-color: rgba(97, 98, 102, 0.45);
+	--mdc-linear-progress-buffering-dots-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' enable-background='new 0 0 5 2' xml:space='preserve' viewBox='0 0 5 2' preserveAspectRatio='none slice'%3E%3Ccircle cx='1' cy='1' r='1' fill='%23616266'/%3E%3C/svg%3E");
 }
 
 .mdc-linear-progress {
-  border-radius: 10px;
-  height: 6px;
+	height: 6px;
+	border-radius: 10px;
 }
 
 .mdc-linear-progress__bar-inner {
-  background-color: transparent;
-  background-image: linear-gradient(to right, #7fc6f4, #8728fb);
-  border-radius: 10px;
-  border-top: 0;
-  height: 6px;
+	height: 6px;
+	border-top: 0;
+	background-color: transparent;
+	background-image: linear-gradient(to right, #7fc6f4, #8728fb);
+	border-radius: 10px;
 }
 
 .mdc-linear-progress__buffer-bar {
-  border-radius: 10px;
+	border-radius: 10px;
 }

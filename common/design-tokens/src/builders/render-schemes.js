@@ -52,16 +52,16 @@ const alternateConfig = curriedGetStyleDictionaryConfig(R.__, 'alternate');
 
 // PROCESS THE DESIGN TOKENS FOR THE DIFFERENT SCHEMES AND PLATFORMS
 // TODO: [VIV-41] add accessible colors scheme
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const render = () => {
 	fs.rmdirSync(OUTPUT_FOLDER, { recursive: true });
 
 	['light', 'dark'].forEach(function (scheme) {
-
-		console.log(`\n🎨\x1b[2mProcessing: [\x1b[0m\x1b[36m${scheme}\x1b[0m\x1b[2m]`, "\x1b[0m");
+		console.log(`\n🎨\x1b[2mProcessing: [\x1b[0m\x1b[36m${scheme}\x1b[0m\x1b[2m]\x1b[0m`);
 
 		StyleDictionaryPackage.extend(baseConfig(scheme)).buildPlatform('web');
 		StyleDictionaryPackage.extend(alternateConfig(scheme)).buildPlatform('web');
 
-		console.log('\n\x1b[2m================================================================', "\x1b[0m");
+		console.log('\n\x1b[2m================================================================\x1b[0m');
 	});
 };

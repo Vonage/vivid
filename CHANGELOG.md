@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.1](https://github.com/Vonage/vivid/compare/v1.3.0...v1.3.1) (2021-02-11)
+
+**Note:** Version bump only for package @vivid/root
+
+
+
+
+
+# [1.3.0](https://github.com/Vonage/vivid/compare/v1.2.0...v1.3.0) (2021-02-11)
+
+
+### Bug Fixes
+
+* **button/icon:** fixing the icon disposition in button ([#653](https://github.com/Vonage/vivid/issues/653)) ([9d15d14](https://github.com/Vonage/vivid/commit/9d15d14d9af7c4b68b26d58977fd2b50b8598020))
+* **icon:** issue 637 fixing icon misplacement ([#638](https://github.com/Vonage/vivid/issues/638)) ([2de7e94](https://github.com/Vonage/vivid/commit/2de7e9462994987ca84bde11260c915e420f661c)), closes [#637](https://github.com/Vonage/vivid/issues/637)
+
+
+### Features
+
+* **datepicker:** lit-flatpicker proof of concept ([#600](https://github.com/Vonage/vivid/issues/600)) ([95a8ecc](https://github.com/Vonage/vivid/commit/95a8eccc89c0d9b1df83d698333d2ddaad1081a2))
+* **fonts:** issue [#631](https://github.com/Vonage/vivid/issues/631) font-display deterministic resolution ([#632](https://github.com/Vonage/vivid/issues/632)) ([74befed](https://github.com/Vonage/vivid/commit/74befedba27e4997ea9e5aa63c24a23ffe21b984))
+
+
+
+
+
+# [1.2.0](https://github.com/Vonage/vivid/compare/v1.1.3...v1.2.0) (2021-02-03)
+
+
+### Bug Fixes
+
+* **dialog:** dialog design fixes ([#616](https://github.com/Vonage/vivid/issues/616)) ([96dadab](https://github.com/Vonage/vivid/commit/96dadab1d54bd4eef4a516e3234330daf9d1fe77))
+* **fonts:** viv-384 iss-621 prefetch preload are not to be used in iframe due to Safa… ([#622](https://github.com/Vonage/vivid/issues/622)) ([45aeb4e](https://github.com/Vonage/vivid/commit/45aeb4ef95fd55e55e8fc064570182ea55e09e85)), closes [#621](https://github.com/Vonage/vivid/issues/621)
+* **note:** viv-383 issue-619 fixing the safari 13 compliance ([#620](https://github.com/Vonage/vivid/issues/620)) ([9a7224a](https://github.com/Vonage/vivid/commit/9a7224a6067f39ee70589238cfffe8bcb57dcbd4)), closes [#619](https://github.com/Vonage/vivid/issues/619)
+* **select:** issue [#627](https://github.com/Vonage/vivid/issues/627) select dense label ([#628](https://github.com/Vonage/vivid/issues/628)) ([b421b6c](https://github.com/Vonage/vivid/commit/b421b6c527ed91971be4b4ff718f286108728b95))
+* **storybook:** attempt to fix the fonts preload ([#624](https://github.com/Vonage/vivid/issues/624)) ([7cdf9ff](https://github.com/Vonage/vivid/commit/7cdf9ff55f1dc010052173fabddd5954df30eb9a))
+
+
+### Features
+
+* **vwc-menu:** issue [#592](https://github.com/Vonage/vivid/issues/592) menu docs and better stories ([#596](https://github.com/Vonage/vivid/issues/596)) ([67dbda5](https://github.com/Vonage/vivid/commit/67dbda5f6634a94c0fabaab90704dddf468e88fb))
+
+
+
+
+
 ## [1.1.3](https://github.com/Vonage/vivid/compare/v1.1.2...v1.1.3) (2021-01-27)
 
 

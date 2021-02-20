@@ -83,7 +83,7 @@ export class VWCIconButton extends MWCIconButton {
 
 	protected renderIcon(): TemplateResult {
 		return html`<vwc-icon
-			class="vwc-icon"
+			class="vvd-icon"
 			size="small"
 			type="${this.icon}"
 		></vwc-icon>`;

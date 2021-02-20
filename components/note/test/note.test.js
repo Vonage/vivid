@@ -56,6 +56,17 @@ describe('note', () => {
 		assertComputedStyle(note, { paddingBlockEnd: '20px' });
 	});
 
+	it('should have border appearing correct', async () => {
+		const [note] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}>Internal contents</${COMPONENT_NAME}>`)
+		);
+		await waitNextTask();
+		assertComputedStyle(note, {
+			boxShadow:
+				'rgb(179, 179, 179) 0px 1px 0px 0px inset, rgb(179, 179, 179) -1px 0px 0px 0px inset, rgb(179, 179, 179) 0px -1px 0px 0px inset',
+		});
+	});
+
 	describe('header', () => {
 		it('should have header when header is set', async () => {
 			const [note] = addElement(

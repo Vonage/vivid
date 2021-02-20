@@ -9,9 +9,8 @@
 	--mdc-theme-error: #{color-semantic.$formfield-label-error-ink};
 	--mdc-text-field-fill-color: var(#{scheme-variables.$vvd-color-base});
 	--mdc-text-field-ink-color: var(#{scheme-variables.$vvd-color-on-base});
-	--mdc-text-field-label-ink-color: var(
-		#{color-semantic.$formfield-label-idle-ink}
-	);
+	--mdc-text-field-label-ink-color: var(		#{color-semantic.$formfield-label-idle-ink}
+);
 	--mdc-text-field-disabled-ink-color: var(
 		#{color-semantic.$formfield-disabled-ink}
 	);
@@ -82,32 +81,33 @@
 
 	.mdc-text-field {
 		.mdc-floating-label {
-			left: -12px;
 			top: -25px;
+			left: -12px;
 			transform: none;
 		}
 
 		.mdc-floating-label,
 		&--invalid.mdc-text-field--outlined .mdc-floating-label,
 		&:not(.mdc-text-field--invalid):not(.mdc-text-field--focused)
-			.mdc-floating-label,
-		&:not(.mdc-text-field--invalid).mdc-text-field--focused .mdc-floating-label {
+		.mdc-floating-label,
+		&:not(.mdc-text-field--invalid).mdc-text-field--focused
+		.mdc-floating-label {
 			color: var(--mdc-text-field-ink-color);
 		}
 	}
 }
 
 .mdc-text-field {
+	height: var(#{textfield-variables.$vvd-text-field-size-block});
+	border-bottom-left-radius: var(--mdc-shape-small);
 	// prevent fill overflowing bottom corners
 	border-bottom-right-radius: var(--mdc-shape-small);
-	border-bottom-left-radius: var(--mdc-shape-small);
-	height: var(#{textfield-variables.$vvd-text-field-size-block});
 
 	.mdc-floating-label {
+		left: 14px;
 		font-stretch: var(
 			--mdc-typography-subtitle1-font-stretch
 		); // ! this was supposed to be set by MDC
-		left: 14px;
 		line-height: var(--mdc-typography-subtitle1-line-height);
 		transition-property: transform, font-size;
 	}
@@ -130,16 +130,21 @@
 	}
 
 	&--invalid {
+		--vvd-outline-color: var(--mdc-text-field-error-color);
+
 		&.mdc-text-field--outlined {
+			background-color: var(--mdc-text-field-error-fill-color);
 			vwc-notched-outline {
 				--mdc-notched-outline-border-color: var(--mdc-text-field-error-color);
 			}
 
-			background-color: var(--mdc-text-field-error-fill-color);
-
 			.mdc-floating-label {
 				color: var(--mdc-text-field-error-color);
 			}
+		}
+
+		.mdc-text-field__icon--trailing {
+			color: var(--mdc-text-field-label-ink-color);
 		}
 	}
 
@@ -159,14 +164,6 @@
 		}
 	}
 
-	&--invalid {
-		--vvd-outline-color: var(--mdc-text-field-error-color);
-
-		.mdc-text-field__icon--trailing {
-			color: var(--mdc-text-field-label-ink-color);
-		}
-	}
-
 	&--disabled {
 		.mdc-text-field__icon--leading,
 		.mdc-text-field__icon--trailing {
@@ -174,12 +171,16 @@
 		}
 	}
 
-	vwc-icon {
+	.mdc-text-field__icon--leading,
+	.mdc-text-field__icon--trailing {
+		display: flex;
 		align-self: center;
 		padding: 0;
 		margin: 0 #{textfield-variables.$horizontal-gutter};
-		min-block-size: textfield-variables.$icon-size;
-		min-inline-size: textfield-variables.$icon-size;
+
+		vwc-icon {
+			--icon-size: #{textfield-variables.$icon-size};
+		}
 	}
 }
 
@@ -190,8 +191,8 @@ vwc-notched-outline {
 }
 
 :host(:not([disabled]):hover)
-	:not(.mdc-text-field--invalid):not(.mdc-text-field--focused)
-	vwc-notched-outline {
+:not(.mdc-text-field--invalid):not(.mdc-text-field--focused)
+vwc-notched-outline {
 	--mdc-notched-outline-border-color: var(
 		--mdc-text-field-outlined-hover-border-color
 	);
@@ -205,11 +206,11 @@ vwc-notched-outline {
 );
 
 .mdc-text-field--with-leading-icon.mdc-text-field--outlined
-	.mdc-floating-label--float-above {
+.mdc-floating-label--float-above {
 	transform: translateY(-18px);
 }
 .mdc-text-field--with-leading-icon.mdc-text-field--outlined
-	.mdc-floating-label {
+.mdc-floating-label {
 	left: 40px;
 }
 
@@ -218,7 +219,10 @@ vwc-notched-outline {
 		#{textfield-variables.$horizontal-gutter},
 		calc(var(--mdc-shape-small, 4px) + 4px)
 	);
-	--padding-inline-end: max(#{textfield-variables.$horizontal-gutter}, var(--mdc-shape-small, 4px));
+	--padding-inline-end: max(
+		#{textfield-variables.$horizontal-gutter},
+		var(--mdc-shape-small, 4px)
+	);
 }
 
 :host(:not([disabled])[icon]) {
