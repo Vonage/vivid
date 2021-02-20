@@ -44,7 +44,7 @@ export class VWCTextField extends MWCTextField {
 	@property({ type: String, reflect: true })
 	form: string | undefined;
 
-	@property({ type: String, reflect: true, converter: (v) => (v ? v : ' ') })
+	@property({ type: String, reflect: true, converter: v => v || ' ' })
 	placeholder = ' ';
 
 	constructor() {
@@ -106,11 +106,11 @@ export class VWCTextField extends MWCTextField {
 			? 'mdc-text-field__icon--trailing'
 			: 'mdc-text-field__icon--leading';
 
-		return html`<vwc-icon
-			type="${icon}"
-			size="small"
-			class="${iconClass}"
-		></vwc-icon>`;
+		return html`
+			<span class="${iconClass}">
+				<vwc-icon type="${icon}" size="small"></vwc-icon>
+			</span>
+		`;
 	}
 
 	protected renderOutline(): TemplateResult | string {
@@ -151,7 +151,7 @@ export class VWCTextField extends MWCTextField {
 	private createInputElement(): HTMLInputElement {
 		const element = document.createElement('input');
 		const defaultValue = this.getAttribute('value');
-		element.defaultValue = defaultValue ? defaultValue : '';
+		element.defaultValue = defaultValue || '';
 		element.setAttribute('slot', INPUT_ELEMENT_SLOT_NAME);
 		element.className = INPUT_ELEMENT_CLASS_NAME;
 		return element;
