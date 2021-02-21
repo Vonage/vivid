@@ -14,6 +14,15 @@
 		},
 		{
 			"path": "../../common/foundation"
-		}
+		},
+		{
+			"path": "../button"
+		},
+		{
+			"path": "../icon-button"
+		},
+		{
+			"path": "../textfield"
+		},
 	]
 }
