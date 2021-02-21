@@ -14,7 +14,7 @@
 			color: var(#{scheme-variables.$vvd-color-on-base});
 		}
 		:host(:not([theme-alternate])) & {
-			background-color: var(#{scheme-variables.$vvd-color-surface});
+			background-color: var(#{scheme-variables.$vvd-color-surface-faint});
 			color: var(#{scheme-variables.$vvd-color-on-surface});
 		}
 	}

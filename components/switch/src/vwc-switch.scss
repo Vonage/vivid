@@ -28,7 +28,7 @@
 	--vvd-switch-shadow-focus: 0, 0, 0, 0.5;
 
 	--mdc-theme-surface: var(
-		#{scheme-variables.$vvd-color-surface}
+		#{scheme-variables.$vvd-color-base}
 	); // unchecked thumb
 	--mdc-theme-on-surface: var(
 		--vvd-switch-unchecked-background
@@ -78,7 +78,7 @@
 		}
 
 		&.mdc-switch--checked .mdc-switch__thumb {
-			background-color: var(#{scheme-variables.$vvd-color-surface});
+			background-color: var(#{scheme-variables.$vvd-color-base});
 		}
 
 		&:hover .mdc-switch__thumb {
