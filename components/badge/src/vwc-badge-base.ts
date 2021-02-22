@@ -1,4 +1,6 @@
-import { html, LitElement, property, TemplateResult } from 'lit-element';
+import {
+	html, LitElement, property, TemplateResult
+} from 'lit-element';
 import { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
 import { handleMultipleDenseProps } from '@vonage/vvd-foundation/general-utils';
 

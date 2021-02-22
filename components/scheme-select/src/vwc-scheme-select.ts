@@ -1,6 +1,8 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-button';
-import { customElement, html, LitElement, TemplateResult } from 'lit-element';
+import {
+	customElement, html, LitElement, TemplateResult
+} from 'lit-element';
 import vvdScheme, {
 	AutoScheme,
 	PredefinedScheme,
@@ -24,8 +26,7 @@ export class VWCSchemeSelect extends LitElement {
 	render(): TemplateResult {
 		return html`
 			${this.schemes.map(
-				(scheme) =>
-					html`
+		scheme => html`
 						<vwc-button
 							dense
 							unelevated
@@ -37,7 +38,7 @@ export class VWCSchemeSelect extends LitElement {
 							${scheme}
 						</vwc-button>
 					`
-			)}
+	)}
 		`;
 	}
 }

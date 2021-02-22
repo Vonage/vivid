@@ -7,7 +7,10 @@
   aria-describedby="helper"
   class="wrapper"
 >
-  <div class="content drop-zone part">
+  <div
+    class="content drop-zone part"
+    tabindex="0"
+  >
     <slot name="dd-hint">
       <span class="dd-hint">
         Drag & Drop files here

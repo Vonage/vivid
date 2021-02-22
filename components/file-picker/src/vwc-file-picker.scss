@@ -35,6 +35,7 @@
 	border: 1px dashed #ccc;
 	background-color: var(#{scheme-variables.$vvd-color-base});
 	border-radius: 6px;
+	outline: none;
 
 	.files-count {
 		position: absolute;

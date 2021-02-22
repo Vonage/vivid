@@ -14,6 +14,6 @@ export function mapToClasses(input: Record<string, unknown>): Array<string> {
 		return [];
 	}
 	return Object.entries(input)
-		.filter((entryPair) => entryPair[1])
-		.map((entryPair) => entryPair[0]);
+		.filter(entryPair => entryPair[1])
+		.map(entryPair => entryPair[0]);
 }

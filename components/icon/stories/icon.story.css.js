@@ -8,7 +8,7 @@ const css = `.container {
 .container > figure {
 	margin: 8px;
 	box-shadow: 0px 0px 3px 1px #12131411;
-	padding: 14px 50px 26px 50px;
+	padding: 14px 50px 25px 50px;
 	text-align: center;
 	box-sizing: border-box;
 	position: relative;

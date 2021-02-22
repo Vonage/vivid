@@ -53,7 +53,7 @@ async function obtainStyleElement(
 
 async function obtainStyleContent(): Promise<CSSResult> {
 	if (!STYLE_FETCHED_PROMISE) {
-		STYLE_FETCHED_PROMISE = import('./vvd-context.css.js').then((d) => d.style);
+		STYLE_FETCHED_PROMISE = import('./vvd-context.css.js').then(d => d.style);
 	}
 	return STYLE_FETCHED_PROMISE;
 }

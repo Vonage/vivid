@@ -9474,11 +9474,6 @@ eslint-config-airbnb-base@^14.0.0:
     object.assign "^4.1.2"
     object.entries "^1.1.2"
 
-eslint-config-prettier@^7.2.0:
-  version "7.2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/eslint-config-prettier/-/eslint-config-prettier-7.2.0.tgz#f4a4bd2832e810e8cc7c1411ec85b3e85c0c53f9"
-  integrity sha1-9KS9KDLoEOjMfBQR7IWz6FwMU/k=
-
 eslint-import-resolver-node@^0.3.4:
   version "0.3.4"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/eslint-import-resolver-node/-/eslint-import-resolver-node-0.3.4.tgz#85ffa81942c25012d8231096ddf679c03042c717"
@@ -9552,7 +9547,7 @@ eslint-plugin-lit-a11y@^1.0.1:
     parse5-htmlparser2-tree-adapter "^6.0.0"
     requireindex "~1.1.0"
 
-eslint-plugin-lit@^1.2.0, eslint-plugin-lit@^1.2.4:
+eslint-plugin-lit@^1.2.0, eslint-plugin-lit@^1.3.0:
   version "1.3.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/eslint-plugin-lit/-/eslint-plugin-lit-1.3.0.tgz#9971743d8d4f469bdf70b120908dcbc6ce958f2e"
   integrity sha1-mXF0PY1PRpvfcLEgkI3Lxs6Vjy4=
@@ -9906,11 +9901,6 @@ fast-deep-equal@^3.1.1:
   version "3.1.3"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz#3a7d56b559d6cbc3eb512325244e619a65c6c525"
   integrity sha1-On1WtVnWy8PrUSMlJE5hmmXGxSU=
-
-fast-diff@^1.1.2:
-  version "1.2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/fast-diff/-/fast-diff-1.2.0.tgz#73ee11982d86caaf7959828d519cfe927fac5f03"
-  integrity sha1-c+4RmC2Gyq95WYKNUZz+kn+sXwM=
 
 fast-glob@^2.0.2, fast-glob@^2.2.6:
   version "2.2.7"
@@ -11707,7 +11697,14 @@ intl-list-format@^1.0.3:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/intl-list-format/-/intl-list-format-1.0.3.tgz#f9b3c3d69b4647d63218f49aae5d3816c6e55b5b"
   integrity sha1-+bPD1ptGR9YyGPSarl04FsblW1s=
 
-invariant@^2.2.3, invariant@^2.2.4:
+invariant@2.2.2:
+  version "2.2.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/invariant/-/invariant-2.2.2.tgz#9e1f56ac0acdb6bf303306f338be3b204ae60360"
+  integrity sha1-nh9WrArNtr8wMwbzOL47IErmA2A=
+  dependencies:
+    loose-envify "^1.0.0"
+
+invariant@2.2.4, invariant@^2.2.3, invariant@^2.2.4:
   version "2.2.4"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   integrity sha1-YQ88ksk1nOHbYW5TgAjSP/NRWOY=
@@ -13222,7 +13219,7 @@ lodash.uniq@4.5.0, lodash.uniq@^4.5.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
-lodash@^4.0.0, lodash@^4.0.1, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.2.1, lodash@~4.17.10:
+lodash@^4.0.0, lodash@^4.0.1, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.4, lodash@^4.2.1, lodash@~4.17.10:
   version "4.17.20"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
   integrity sha1-tEqbYpe8tpjxxRo1RaKzs2jVnFI=
@@ -15614,13 +15611,6 @@ prepend-http@^2.0.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/prepend-http/-/prepend-http-2.0.0.tgz#e92434bfa5ea8c19f41cdfd401d741a3c819d897"
   integrity sha1-6SQ0v6XqjBn0HN/UAddBo8gZ2Jc=
 
-prettier-linter-helpers@^1.0.0:
-  version "1.0.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/prettier-linter-helpers/-/prettier-linter-helpers-1.0.0.tgz#d23d41fe1375646de2d0104d3454a3008802cf7b"
-  integrity sha1-0j1B/hN1ZG3i0BBNNFSjAIgCz3s=
-  dependencies:
-    fast-diff "^1.1.2"
-
 prettier@^2.2.1:
   version "2.2.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/prettier/-/prettier-2.2.1.tgz#795a1a78dd52f073da0cd42b21f9c91381923ff5"
@@ -15918,6 +15908,14 @@ qs@~6.5.2:
   version "6.5.2"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
   integrity sha1-yzroBuh0BERYTvFUzo7pjUA/PjY=
+
+query-ast@^1.0.3:
+  version "1.0.3"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/query-ast/-/query-ast-1.0.3.tgz#4a18374950fa80cbf9b03d7b945bbac8bb4250bf"
+  integrity sha1-Shg3SVD6gMv5sD17lFu6yLtCUL8=
+  dependencies:
+    invariant "2.2.2"
+    lodash "^4.17.15"
 
 query-string@^6.13.8:
   version "6.13.8"
@@ -17107,6 +17105,14 @@ schema-utils@^3.0.0:
     ajv "^6.12.5"
     ajv-keywords "^3.5.2"
 
+scss-parser@^1.0.4:
+  version "1.0.4"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/scss-parser/-/scss-parser-1.0.4.tgz#61cdeb28701ffcb497954b9b05729c6d38eb8b9f"
+  integrity sha1-Yc3rKHAf/LSXlUubBXKcbTjri58=
+  dependencies:
+    invariant "2.2.4"
+    lodash "^4.17.4"
+
 scss-tokenizer@^0.2.3:
   version "0.2.3"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/scss-tokenizer/-/scss-tokenizer-0.2.3.tgz#8eb06db9a9723333824d3f5530641149847ce5d1"
@@ -18107,11 +18113,6 @@ stylelint-config-idiomatic-order@^8.1.0:
   dependencies:
     stylelint-order "^3.1.1"
 
-stylelint-config-prettier@^8.0.2:
-  version "8.0.2"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/stylelint-config-prettier/-/stylelint-config-prettier-8.0.2.tgz#da9de33da4c56893cbe7e26df239a7374045e14e"
-  integrity sha1-2p3jPaTFaJPL5+Jt8jmnN0BF4U4=
-
 stylelint-config-sass-guidelines@^7.1.0:
   version "7.1.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/stylelint-config-sass-guidelines/-/stylelint-config-sass-guidelines-7.1.0.tgz#7838fe04eee649a2444b568a32c904a26b5d6c1e"
@@ -18146,13 +18147,6 @@ stylelint-order@^4.0.0:
     lodash "^4.17.15"
     postcss "^7.0.31"
     postcss-sorting "^5.0.1"
-
-stylelint-prettier@^1.1.2:
-  version "1.1.2"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/stylelint-prettier/-/stylelint-prettier-1.1.2.tgz#2b19abe40789c380bffee3d4267c413d981a86ea"
-  integrity sha1-Kxmr5AeJw4C//uPUJnxBPZgahuo=
-  dependencies:
-    prettier-linter-helpers "^1.0.0"
 
 stylelint-scss@^3.18.0:
   version "3.18.0"

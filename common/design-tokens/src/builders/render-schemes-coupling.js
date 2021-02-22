@@ -52,5 +52,4 @@ export const render = () => {
 	StyleDictionaryPackage.extend(getStyleDictionaryConfig()).buildPlatform('web');
 
 	console.log('\n\x1b[2m================================================================\x1b[0m');
-
 };
