@@ -33,5 +33,7 @@
 	"devDependencies": {
 		"@vonage/vvd-umbrella": "^1.0.4",
 		"typescript": "^4.1.3"
-	}
+	},
+	"#comment": "keeping it private until further developed",
+	"private": true
 }
