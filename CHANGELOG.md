@@ -27,7 +27,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### BREAKING CHANGES
 
-* **vwc-list:** remove me
+* **vwc-icon:** style: display flow change might break usages in applications
+* **vwc-relative-time:** dropped support, no longer maintained
 
 
 
