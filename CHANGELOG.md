@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/Vonage/vivid/compare/v1.3.1...v2.0.0) (2021-02-22)
+
+
+### Bug Fixes
+
+* **vwc-datepicker:** datepicker missing deps ([#671](https://github.com/Vonage/vivid/issues/671)) ([c333254](https://github.com/Vonage/vivid/commit/c33325425a7da4be2dee53ea71d83f2398c40782))
+* **vwc-icon:** icon flow defaults to inline-block ([#663](https://github.com/Vonage/vivid/issues/663)) ([303dd74](https://github.com/Vonage/vivid/commit/303dd74648880c573d266cc2fe9f51d053207d1e))
+* **vwc-media-controller:** stylelint formatting duplication of selector ([#669](https://github.com/Vonage/vivid/issues/669)) ([343d62b](https://github.com/Vonage/vivid/commit/343d62b5799f589530de076506006149bf4c838f))
+
+
+### Documentation
+
+* **vwc-list:** adding a story for interactive meta icon button ([#667](https://github.com/Vonage/vivid/issues/667)) ([0dedadd](https://github.com/Vonage/vivid/commit/0dedadd58027d0f4b7cda150abf1d0cbe8560884))
+
+
+### Features
+
+* **context:** adding reset to headers and setting our own padding margin ([#668](https://github.com/Vonage/vivid/issues/668)) ([3918275](https://github.com/Vonage/vivid/commit/39182758c9f11d2fcedd8390bb5babdec4c6f73b))
+* **expansion-panel:** viv-387 expansion panel draft component ([#661](https://github.com/Vonage/vivid/issues/661)) ([ed37c66](https://github.com/Vonage/vivid/commit/ed37c66b6f069272e9047d12dc1933264e35b655))
+* **native table:** adding styles for native tables ([#643](https://github.com/Vonage/vivid/issues/643)) ([98c880c](https://github.com/Vonage/vivid/commit/98c880ca2778a51ecaad211243719bda637af690))
+
+
+### BREAKING CHANGES
+
+* **vwc-icon:** style: display flow change might break usages in applications
+* **vwc-relative-time:** dropped support, no longer maintained
+
+
+
+
+
 ## [1.3.1](https://github.com/Vonage/vivid/compare/v1.3.0...v1.3.1) (2021-02-11)
 
 **Note:** Version bump only for package @vivid/root

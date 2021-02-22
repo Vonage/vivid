@@ -1,3 +1,13 @@
+# [2.0.0](https://github.com/vonage/vivid/compare/v1.3.1...v2.0.0) (2021-02-22)
+
+
+### Features
+
+* **context:** adding reset to headers and setting our own padding margin ([#668](https://github.com/vonage/vivid/issues/668)) ([3918275](https://github.com/vonage/vivid/commit/39182758c9f11d2fcedd8390bb5babdec4c6f73b))
+* **native table:** adding styles for native tables ([#643](https://github.com/vonage/vivid/issues/643)) ([98c880c](https://github.com/vonage/vivid/commit/98c880ca2778a51ecaad211243719bda637af690))
+
+
+
 ## [1.3.1](https://github.com/vonage/vivid/compare/v1.3.0...v1.3.1) (2021-02-11)
 
 
