@@ -34,7 +34,10 @@ jobs:
         run: yarn install
 
       # Update to a new version
-      - name: Obtain release version
+      - name: Extract release version manually set
+        run: echo "RELEASE_VERSION=$(echo ${GITHUB_REF##*/release-})" >> $GITHUB_ENV
+      - name: Obtain release version if not manually set
+        if: ${{ env.RELEASE_VERSION }} == ''
         run: echo "RELEASE_VERSION=$(node ./scripts/suggest-bump.mjs)" >> $GITHUB_ENV
 
       - name: Bump version to ${{ env.RELEASE_VERSION }}
