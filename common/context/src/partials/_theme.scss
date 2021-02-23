@@ -25,12 +25,12 @@ body {
 	kbd,
 	samp,
 	var {
-		background-color: var(#{scheme-variables.$vvd-color-surface-faint});
+		background-color: var(#{scheme-variables.$vvd-color-surface-contrast-50});
 		color: color-base.$orange-600;
 	}
 
 	pre {
-		background-color: var(#{scheme-variables.$vvd-color-surface-faint});
+		background-color: var(#{scheme-variables.$vvd-color-surface-contrast-50});
 	}
 
 	blockquote {
