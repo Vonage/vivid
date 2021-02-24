@@ -1,10 +1,11 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-button';
 import '@vonage/vwc-icon-button';
-import { customElement, property } from 'lit-element';
+import { customElement, property, CSSResult } from 'lit-element';
 import { LitFlatpickr } from 'lit-flatpickr';
 import { Options } from 'flatpickr/dist/types/options';
 import { style as vwcDatepickerStyles } from './vwc-datepicker.css.js';
+import { style as vwcDatepickerHeadStyles } from './vwc-datepicker-head.css.js';
 import { VWCButton } from '@vonage/vwc-button';
 import { VWCIconButton } from '@vonage/vwc-icon-button';
 import { Shape } from '@vonage/vvd-foundation/constants';
@@ -26,6 +27,10 @@ declare global {
  */
 @customElement('vwc-datepicker')
 export class VWCDatepicker extends LitFlatpickr {
+	static get styles(): CSSResult {
+		return vwcDatepickerStyles;
+	}
+
 	// @property({ type: Boolean, reflect: true })
 	// weekSelect = false;
 
@@ -48,12 +53,17 @@ export class VWCDatepicker extends LitFlatpickr {
 		(<undefined>(<unknown> this.enable)) = undefined;
 
 		// inject custom flatpicker styles
-		const style = document.createElement('style');
-		style.innerHTML = vwcDatepickerStyles.cssText;
-		document.head.appendChild(style);
+		const headStyle = document.createElement('style');
+		headStyle.innerHTML = vwcDatepickerHeadStyles.cssText;
+		document.head.appendChild(headStyle);
 
 		this.onReady = () => {
 			this.readyHandler();
+		};
+
+		this.onOpen = () => {
+			// allow interaction when dialog open
+			this._instance?.calendarContainer?.removeAttribute('inert');
 		};
 
 		this.onChange = (e) => {
