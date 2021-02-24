@@ -34,6 +34,7 @@ $border-value: 8px solid var(#{color-semantic.$vvd-color-connotation});
 	flex: 1;
 	flex-direction: column;
 	justify-content: center;
+	text-align: start;
 
 	.note-header {
 		@include typography.typography-cat-shorthand('body-2-bold');
