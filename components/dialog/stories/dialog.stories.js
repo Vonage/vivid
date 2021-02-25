@@ -49,13 +49,16 @@ export const Basic = Template.bind({});
 Basic.args = { id: 'dialog-a' };
 
 export const Heading = Template.bind({});
-Heading.args = { id: 'dialog-a', heading: 'Hello Modal!'};
+Heading.args = { id: 'dialog-with-heading', heading: 'Hello Modal!'};
 
 export const Icon = IconTemplate.bind({});
-Icon.args = { id: 'dialog-a', heading: 'Homey feeling'};
+Icon.args = { id: 'dialog-with-icon', heading: 'Homey feeling'};
 
 export const Stacked = Template.bind({});
-Stacked.args = { id: 'dialog-a', stacked: ''};
+Stacked.args = { id: 'dialog-stacked', stacked: ''};
+
+export const Modal = Template.bind({});
+Modal.args = { id: 'dialog-modal', heading: 'This is a modal window', scrimClickAction: ''};
 
 function handleOpenDialogClick(e) {
 	e.target.parentNode.querySelector('#dialog-a').show();
