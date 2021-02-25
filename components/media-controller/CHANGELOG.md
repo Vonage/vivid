@@ -1,3 +1,20 @@
+## [2.0.2](https://github.com/vonage/vivid/compare/v2.0.1...v2.0.2) (2021-02-24)
+
+
+
+## [2.0.1](https://github.com/vonage/vivid/compare/v2.0.0...v2.0.1) (2021-02-23)
+
+
+
+# [2.0.0](https://github.com/vonage/vivid/compare/v1.3.1...v2.0.0) (2021-02-22)
+
+
+### Bug Fixes
+
+* **vwc-media-controller:** stylelint formatting duplication of selector ([#669](https://github.com/vonage/vivid/issues/669)) ([343d62b](https://github.com/vonage/vivid/commit/343d62b5799f589530de076506006149bf4c838f))
+
+
+
 ## [1.3.1](https://github.com/vonage/vivid/compare/v1.3.0...v1.3.1) (2021-02-11)
 
 

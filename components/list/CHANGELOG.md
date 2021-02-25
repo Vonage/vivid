@@ -1,3 +1,30 @@
+## [2.0.2](https://github.com/vonage/vivid/compare/v2.0.1...v2.0.2) (2021-02-24)
+
+
+
+## [2.0.1](https://github.com/vonage/vivid/compare/v2.0.0...v2.0.1) (2021-02-23)
+
+
+
+# [2.0.0](https://github.com/vonage/vivid/compare/v1.3.1...v2.0.0) (2021-02-22)
+
+
+### Bug Fixes
+
+* **vwc-icon:** icon flow defaults to inline-block ([#663](https://github.com/vonage/vivid/issues/663)) ([303dd74](https://github.com/vonage/vivid/commit/303dd74648880c573d266cc2fe9f51d053207d1e))
+
+
+### Documentation
+
+* **vwc-list:** adding a story for interactive meta icon button ([#667](https://github.com/vonage/vivid/issues/667)) ([0dedadd](https://github.com/vonage/vivid/commit/0dedadd58027d0f4b7cda150abf1d0cbe8560884))
+
+
+### BREAKING CHANGES
+
+* **vwc-list:** remove me
+
+
+
 ## [1.3.1](https://github.com/vonage/vivid/compare/v1.3.0...v1.3.1) (2021-02-11)
 
 
