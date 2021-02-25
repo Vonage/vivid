@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-dialog",
-	"version": "2.0.1",
+	"version": "2.0.2",
 	"description": "dialog component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/dialog#readme",
 	"license": "ISC",
@@ -27,16 +27,16 @@
 	},
 	"dependencies": {
 		"@material/mwc-dialog": "^0.20.0",
-		"@vonage/vvd-core": "^2.0.1",
-		"@vonage/vvd-design-tokens": "^2.0.1",
-		"@vonage/vvd-foundation": "^2.0.1",
-		"@vonage/vvd-style-coupling": "^2.0.1",
-		"@vonage/vvd-typography": "^2.0.1",
+		"@vonage/vvd-core": "^2.0.2",
+		"@vonage/vvd-design-tokens": "^2.0.2",
+		"@vonage/vvd-foundation": "^2.0.2",
+		"@vonage/vvd-style-coupling": "^2.0.2",
+		"@vonage/vvd-typography": "^2.0.2",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.3"
 	},
 	"devDependencies": {
-		"@vonage/vvd-umbrella": "^2.0.1",
+		"@vonage/vvd-umbrella": "^2.0.2",
 		"typescript": "^4.1.3"
 	}
 }
