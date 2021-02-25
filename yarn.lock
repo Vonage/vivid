@@ -3159,6 +3159,58 @@
     schema-utils "^2.6.5"
     source-map "^0.7.3"
 
+"@polymer/iron-flex-layout@^3.0.0-pre.26":
+  version "3.0.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@polymer/iron-flex-layout/-/iron-flex-layout-3.0.1.tgz#36f9e1a8eb792d279b2bc75d362628721ad37f0c"
+  integrity sha1-NvnhqOt5LSebK8ddNiYochrTfww=
+  dependencies:
+    "@polymer/polymer" "^3.0.0"
+
+"@polymer/iron-icon@^3.0.0":
+  version "3.0.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@polymer/iron-icon/-/iron-icon-3.0.1.tgz#93211c39d8825fe4965a68419566036c1df291eb"
+  integrity sha1-kyEcOdiCX+SWWmhBlWYDbB3ykes=
+  dependencies:
+    "@polymer/iron-flex-layout" "^3.0.0-pre.26"
+    "@polymer/iron-meta" "^3.0.0-pre.26"
+    "@polymer/polymer" "^3.0.0"
+
+"@polymer/iron-iconset-svg@^3.0.0":
+  version "3.0.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@polymer/iron-iconset-svg/-/iron-iconset-svg-3.0.1.tgz#568d6e7dbc120299dae63be3600aeba0d30ddbea"
+  integrity sha1-Vo1ufbwSApna5jvjYArroNMN2+o=
+  dependencies:
+    "@polymer/iron-meta" "^3.0.0-pre.26"
+    "@polymer/polymer" "^3.0.0"
+
+"@polymer/iron-meta@^3.0.0-pre.26":
+  version "3.0.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@polymer/iron-meta/-/iron-meta-3.0.1.tgz#7f140628d127b0a284f882f1bb323a261bc125f5"
+  integrity sha1-fxQGKNEnsKKE+ILxuzI6JhvBJfU=
+  dependencies:
+    "@polymer/polymer" "^3.0.0"
+
+"@polymer/iron-resizable-behavior@^3.0.0":
+  version "3.0.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@polymer/iron-resizable-behavior/-/iron-resizable-behavior-3.0.1.tgz#e284348ed7c1c7e263f7039297532fa954025ea2"
+  integrity sha1-4oQ0jtfBx+Jj9wOSl1MvqVQCXqI=
+  dependencies:
+    "@polymer/polymer" "^3.0.0"
+
+"@polymer/iron-scroll-target-behavior@^3.0.0":
+  version "3.0.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@polymer/iron-scroll-target-behavior/-/iron-scroll-target-behavior-3.0.1.tgz#29fa644b320fb29ab6c68eb6d08a6520157764ac"
+  integrity sha1-KfpkSzIPspq2xo620IplIBV3ZKw=
+  dependencies:
+    "@polymer/polymer" "^3.0.0"
+
+"@polymer/polymer@^3.0.0":
+  version "3.4.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@polymer/polymer/-/polymer-3.4.1.tgz#333bef25711f8411bb5624fb3eba8212ef8bee96"
+  integrity sha1-MzvvJXEfhBG7ViT7PrqCEu+L7pY=
+  dependencies:
+    "@webcomponents/shadycss" "^1.9.1"
+
 "@popperjs/core@^2.5.4":
   version "2.6.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@popperjs/core/-/core-2.6.0.tgz#f022195afdfc942e088ee2101285a1d31c7d727f"
@@ -4421,6 +4473,97 @@
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@ungap/promise-all-settled/-/promise-all-settled-1.1.2.tgz#aa58042711d6e3275dd37dc597e5d31e8c290a44"
   integrity sha1-qlgEJxHW4ydd033Fl+XTHowpCkQ=
 
+"@vaadin/vaadin-checkbox@^3.0.0":
+  version "3.0.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@vaadin/vaadin-checkbox/-/vaadin-checkbox-3.0.0.tgz#15f63edd0c5e2d7d1c73e2b194b8cb65da95e71f"
+  integrity sha1-FfY+3QxeLX0cc+KxlLjLZdqV5x8=
+  dependencies:
+    "@polymer/polymer" "^3.0.0"
+    "@vaadin/vaadin-control-state-mixin" "^2.2.1"
+    "@vaadin/vaadin-element-mixin" "^2.4.1"
+    "@vaadin/vaadin-lumo-styles" "^1.6.1"
+    "@vaadin/vaadin-material-styles" "^1.3.2"
+    "@vaadin/vaadin-themable-mixin" "^1.6.2"
+
+"@vaadin/vaadin-control-state-mixin@^2.2.1":
+  version "2.2.4"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@vaadin/vaadin-control-state-mixin/-/vaadin-control-state-mixin-2.2.4.tgz#9c3779228ada8a9062ad18356e6a9a4317b8a162"
+  integrity sha1-nDd5IoraipBirRg1bmqaQxe4oWI=
+  dependencies:
+    "@polymer/polymer" "^3.0.0"
+
+"@vaadin/vaadin-development-mode-detector@^2.0.0":
+  version "2.0.4"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@vaadin/vaadin-development-mode-detector/-/vaadin-development-mode-detector-2.0.4.tgz#f49c8009856bead92d248377c36b295b5aae78e5"
+  integrity sha1-9JyACYVr6tktJIN3w2spW1queOU=
+
+"@vaadin/vaadin-element-mixin@^2.4.1":
+  version "2.4.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@vaadin/vaadin-element-mixin/-/vaadin-element-mixin-2.4.2.tgz#3c8040a8e756bc274b7777723b1fba2b9895cd41"
+  integrity sha1-PIBAqOdWvCdLd3dyOx+6K5iVzUE=
+  dependencies:
+    "@polymer/polymer" "^3.0.0"
+    "@vaadin/vaadin-development-mode-detector" "^2.0.0"
+    "@vaadin/vaadin-usage-statistics" "^2.1.0"
+
+"@vaadin/vaadin-grid@6.0.0":
+  version "6.0.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@vaadin/vaadin-grid/-/vaadin-grid-6.0.0.tgz#de1d7136fb8b4c9dbcfd7fb9f4fc2fb657268e70"
+  integrity sha1-3h1xNvuLTJ28/X+59PwvtlcmjnA=
+  dependencies:
+    "@polymer/iron-resizable-behavior" "^3.0.0"
+    "@polymer/iron-scroll-target-behavior" "^3.0.0"
+    "@polymer/polymer" "^3.0.0"
+    "@vaadin/vaadin-checkbox" "^3.0.0"
+    "@vaadin/vaadin-element-mixin" "^2.4.1"
+    "@vaadin/vaadin-lumo-styles" "^1.6.1"
+    "@vaadin/vaadin-material-styles" "^1.3.2"
+    "@vaadin/vaadin-text-field" "^3.0.0"
+    "@vaadin/vaadin-themable-mixin" "^1.6.1"
+
+"@vaadin/vaadin-lumo-styles@^1.6.1":
+  version "1.6.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@vaadin/vaadin-lumo-styles/-/vaadin-lumo-styles-1.6.1.tgz#2099227b0f646ead16f7289e704b6a793594bf5c"
+  integrity sha1-IJkiew9kbq0W9yiecEtqeTWUv1w=
+  dependencies:
+    "@polymer/iron-icon" "^3.0.0"
+    "@polymer/iron-iconset-svg" "^3.0.0"
+    "@polymer/polymer" "^3.0.0"
+
+"@vaadin/vaadin-material-styles@^1.3.2":
+  version "1.3.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@vaadin/vaadin-material-styles/-/vaadin-material-styles-1.3.2.tgz#d2c1bd290db16721152ae672dbe052c381686696"
+  integrity sha1-0sG9KQ2xZyEVKuZy2+BSw4FoZpY=
+  dependencies:
+    "@polymer/polymer" "^3.0.0"
+
+"@vaadin/vaadin-text-field@^3.0.0":
+  version "3.0.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@vaadin/vaadin-text-field/-/vaadin-text-field-3.0.1.tgz#85239696f37fb7433c49c11e0f73032f09d0ccda"
+  integrity sha1-hSOWlvN/t0M8ScEeD3MDLwnQzNo=
+  dependencies:
+    "@polymer/polymer" "^3.0.0"
+    "@vaadin/vaadin-control-state-mixin" "^2.2.1"
+    "@vaadin/vaadin-element-mixin" "^2.4.1"
+    "@vaadin/vaadin-lumo-styles" "^1.6.1"
+    "@vaadin/vaadin-material-styles" "^1.3.2"
+    "@vaadin/vaadin-themable-mixin" "^1.6.2"
+
+"@vaadin/vaadin-themable-mixin@^1.6.1", "@vaadin/vaadin-themable-mixin@^1.6.2":
+  version "1.6.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@vaadin/vaadin-themable-mixin/-/vaadin-themable-mixin-1.6.2.tgz#8d619722819ba850af777579a550ff8b1d2b960f"
+  integrity sha1-jWGXIoGbqFCvd3V5pVD/ix0rlg8=
+  dependencies:
+    "@polymer/polymer" "^3.0.0"
+    lit-element "^2.0.0"
+
+"@vaadin/vaadin-usage-statistics@^2.1.0":
+  version "2.1.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@vaadin/vaadin-usage-statistics/-/vaadin-usage-statistics-2.1.0.tgz#9c0fd71dded80f401bcdfbcb3f45b5640fc4256d"
+  integrity sha1-nA/XHd7YD0AbzfvLP0W1ZA/EJW0=
+  dependencies:
+    "@vaadin/vaadin-development-mode-detector" "^2.0.0"
+
 "@vonage/vvd-design-tokens-properties@^0.5.4":
   version "0.5.4"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@vonage/vvd-design-tokens-properties/0.5.4/7a5aa317678207ddbc2be97ee322d3721f09226dbeb9b7372cb74ced7a6608a4#9f7443829dcc9c7bfee308fe6a4dbdff954b5019"
@@ -4571,7 +4714,7 @@
     "@webassemblyjs/wast-parser" "1.9.0"
     "@xtuc/long" "4.2.2"
 
-"@webcomponents/shadycss@^1.9.4":
+"@webcomponents/shadycss@^1.9.1", "@webcomponents/shadycss@^1.9.4":
   version "1.10.2"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@webcomponents/shadycss/-/shadycss-1.10.2.tgz#40e03cab6dc5e12f199949ba2b79e02f183d1e7b"
   integrity sha1-QOA8q23F4S8ZmUm6K3ngLxg9Hns=
@@ -7442,12 +7585,10 @@ depcheck@YonatanKra/depcheck#vivid-version:
     minimatch "^3.0.4"
     multimatch "^4.0.0"
     please-upgrade-node "^3.2.0"
-    query-ast "^1.0.3"
     readdirp "^3.4.0"
     require-package-name "^2.0.1"
     resolve "^1.17.0"
     sass "^1.26.10"
-    scss-parser "^1.0.4"
     vue-template-compiler "^2.6.11"
     yargs "^15.4.0"
 
@@ -10314,14 +10455,7 @@ intl-list-format@^1.0.3:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/intl-list-format/-/intl-list-format-1.0.3.tgz#f9b3c3d69b4647d63218f49aae5d3816c6e55b5b"
   integrity sha1-+bPD1ptGR9YyGPSarl04FsblW1s=
 
-invariant@2.2.2:
-  version "2.2.2"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/invariant/-/invariant-2.2.2.tgz#9e1f56ac0acdb6bf303306f338be3b204ae60360"
-  integrity sha1-nh9WrArNtr8wMwbzOL47IErmA2A=
-  dependencies:
-    loose-envify "^1.0.0"
-
-invariant@2.2.4, invariant@^2.2.3, invariant@^2.2.4:
+invariant@^2.2.3, invariant@^2.2.4:
   version "2.2.4"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   integrity sha1-YQ88ksk1nOHbYW5TgAjSP/NRWOY=
@@ -11510,7 +11644,7 @@ lit-analyzer@^1.2.1:
     vscode-html-languageservice "3.1.0"
     web-component-analyzer "~1.1.1"
 
-lit-element@^2.2.1, lit-element@^2.3.0, lit-element@^2.4.0:
+lit-element@^2.0.0, lit-element@^2.2.1, lit-element@^2.3.0, lit-element@^2.4.0:
   version "2.4.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/lit-element/-/lit-element-2.4.0.tgz#b22607a037a8fc08f5a80736dddf7f3f5d401452"
   integrity sha1-siYHoDeo/Aj1qAc23d9/P11AFFI=
@@ -11706,7 +11840,7 @@ lodash.uniq@4.5.0, lodash.uniq@^4.5.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
-lodash@^4.0.0, lodash@^4.0.1, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.4, lodash@^4.2.1, lodash@~4.17.10:
+lodash@^4.0.0, lodash@^4.0.1, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.2.1, lodash@~4.17.10:
   version "4.17.20"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
   integrity sha1-tEqbYpe8tpjxxRo1RaKzs2jVnFI=
@@ -14085,14 +14219,6 @@ qs@~6.5.2:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
   integrity sha1-yzroBuh0BERYTvFUzo7pjUA/PjY=
 
-query-ast@^1.0.3:
-  version "1.0.3"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/query-ast/-/query-ast-1.0.3.tgz#4a18374950fa80cbf9b03d7b945bbac8bb4250bf"
-  integrity sha1-Shg3SVD6gMv5sD17lFu6yLtCUL8=
-  dependencies:
-    invariant "2.2.2"
-    lodash "^4.17.15"
-
 query-string@^6.13.8:
   version "6.13.8"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/query-string/-/query-string-6.13.8.tgz#8cf231759c85484da3cf05a851810d8e825c1159"
@@ -15199,14 +15325,6 @@ schema-utils@^3.0.0:
     "@types/json-schema" "^7.0.6"
     ajv "^6.12.5"
     ajv-keywords "^3.5.2"
-
-scss-parser@^1.0.4:
-  version "1.0.4"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/scss-parser/-/scss-parser-1.0.4.tgz#61cdeb28701ffcb497954b9b05729c6d38eb8b9f"
-  integrity sha1-Yc3rKHAf/LSXlUubBXKcbTjri58=
-  dependencies:
-    invariant "2.2.4"
-    lodash "^4.17.4"
 
 scss-tokenizer@^0.2.3:
   version "0.2.3"
