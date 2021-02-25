@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-fab",
-	"version": "2.0.0",
+	"version": "2.0.2",
 	"description": "fab component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/fab#readme",
 	"license": "ISC",
@@ -28,16 +28,16 @@
 	},
 	"dependencies": {
 		"@material/mwc-fab": "^0.20.0",
-		"@vonage/vvd-core": "^2.0.0",
-		"@vonage/vvd-style-coupling": "^2.0.0",
-		"@vonage/vwc-icon": "^2.0.0",
+		"@vonage/vvd-core": "^2.0.2",
+		"@vonage/vvd-style-coupling": "^2.0.2",
+		"@vonage/vwc-icon": "^2.0.2",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.3"
 	},
 	"devDependencies": {
-		"@vonage/vvd-design-tokens": "^2.0.0",
-		"@vonage/vvd-typography": "^2.0.0",
-		"@vonage/vvd-umbrella": "^2.0.0",
+		"@vonage/vvd-design-tokens": "^2.0.2",
+		"@vonage/vvd-typography": "^2.0.2",
+		"@vonage/vvd-umbrella": "^2.0.2",
 		"typescript": "^4.1.3"
 	}
 }
