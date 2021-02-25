@@ -9,20 +9,14 @@ const Template = args => html`
   <vwc-datepicker id="datepicker" ...=${spread(args)}></vwc-datepicker>
 
   <script>
-    const input = document.querySelector('#input');
-    const datepicker = document.querySelector('#datepicker');
-
-    datepicker.positionElement = document.querySelector('#trigger');
+    datepicker.positionElement = trigger;
     datepicker.onValueUpdate = () => {
-      input.value = datepicker.getValue();
+      input[0].value = datepicker.getValue();
     };
   </script>
 
   <pre><code class="js language-js">
-    const input = document.querySelector('#input');
-    const datepicker = document.querySelector('#datepicker');
-
-    datepicker.positionElement = document.querySelector('#trigger');
+    datepicker.positionElement = trigger;
     datepicker.onValueUpdate = () => {
       input.value = datepicker.getValue();
     };
@@ -33,6 +27,5 @@ export const Position = Template.bind({});
 Position.args = { closeOnSelect: '' };
 
 function handleOpenDatepicker() {
-  const datepicker = document.querySelector('#datepicker');
   datepicker.open();
 }

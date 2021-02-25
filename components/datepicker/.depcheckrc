@@ -1,1 +1,9 @@
-ignores: ["flatpickr", "lit-flatpickr", "@vonage/vvd-core", "@vonage/vwc-datepicker", "@open-wc/*"]
+ignores: [
+  "flatpickr",
+  "lit-flatpickr",
+  "@vonage/vvd-core",
+  "@vonage/vwc-datepicker",
+  "@vonage/vwc-textfield",
+  "@vonage/vwc-dialog",
+  "@open-wc/*"
+]
