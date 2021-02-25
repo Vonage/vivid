@@ -40,7 +40,6 @@ export class VWCDatepicker extends LitFlatpickr {
 	@property({ type: Boolean, reflect: true })
 	closeOnSelect = false;
 
-	@property({ type: HTMLElement, reflect: false })
 	positionElement = undefined;
 
 	// prevents flatpickr from being appended to slotted components when inline
