@@ -1,11 +1,6 @@
 import { LitElement, property } from 'lit-element';
 import { VWCExpansionPanelBase } from './vwc-expansion-panel-base.js';
 
-/* TODO
- * - add nested panel support
- * - verify items in expansionPanels list
- */
-
 export abstract class VWCExpansionPanelListBase extends LitElement {
 	@property({ type: Boolean, reflect: true })
 	multi = false;
