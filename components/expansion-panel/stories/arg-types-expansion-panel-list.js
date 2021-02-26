@@ -1,5 +1,5 @@
 export const argTypes = {
-	chevronToggle: {
+	multi: {
 		control: {
 			type: 'inline-radio',
 			options: { 'true': '', 'false': undefined }

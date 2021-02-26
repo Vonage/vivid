@@ -20,4 +20,6 @@ const Template = args => html`
 `;
 
 export const Basic = Template.bind({});
-// Basic.args = { header: 'Campaign Details' };
+
+export const Multi = Template.bind({});
+Multi.args = { multi: '' };
