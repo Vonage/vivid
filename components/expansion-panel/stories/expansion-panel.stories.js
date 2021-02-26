@@ -2,7 +2,7 @@ import '@vonage/vwc-expansion-panel/vwc-expansion-panel.js';
 import '@vonage/vwc-textfield/vwc-textfield.js';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
-import { argTypes } from './arg-types.js';
+import { argTypes } from './arg-types-expansion-panel.js';
 
 export default {
   title: 'Components/Atoms/Expansion Panel',
