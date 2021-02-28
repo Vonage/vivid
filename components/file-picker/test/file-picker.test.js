@@ -5,6 +5,7 @@ import {
 	textToDomToParent,
 	randomAlpha,
 	isSafari,
+	isFirefox,
 } from '../../../test/test-helpers.js';
 import {
 	getInput,
@@ -21,7 +22,7 @@ chai.use(chaiDomDiff);
 
 const VWC_COMPONENT = 'vwc-file-picker';
 
-describe('file picker', () => {
+describe.only('file picker', () => {
 	let addElements = isolatedElementsCreation();
 
 	it('is defined as a custom element', async () => {
@@ -170,6 +171,9 @@ describe('file picker', () => {
 		});
 
 		it('should un-set invalid state when new input triggered by click', async () => {
+			if (isFirefox()) {
+				return;
+			}
 			const errorText = 'error';
 			const [filePicker] = addElements(textToDomToParent(
 				`<${VWC_COMPONENT}><input slot="button" type="file"/></${VWC_COMPONENT}>`
@@ -182,6 +186,9 @@ describe('file picker', () => {
 		});
 
 		it('should un-set invalid state when new input triggered by keypress (Space)', async () => {
+			if (isFirefox()) {
+				return;
+			}
 			const errorText = 'error';
 			const [filePicker] = addElements(textToDomToParent(
 				`<${VWC_COMPONENT}><input slot="button" type="file"/></${VWC_COMPONENT}>`

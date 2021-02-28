@@ -11,6 +11,7 @@ export {
 	waitInterval,
 	randomAlpha,
 	isSafari,
+	isFirefox,
 	getFrameLoadedInjected,
 	cleanFrame,
 	getRandom,
@@ -210,6 +211,10 @@ function assertDistancePixels(e1, e2, property, expected) {
 function isSafari() {
 	return window.navigator.userAgent.toLowerCase().includes('safari') &&
 		!window.navigator.userAgent.toLowerCase().includes('chrome');
+}
+
+function isFirefox() {
+	return window.navigator.userAgent.toLowerCase().includes('firefox');
 }
 
 /**
