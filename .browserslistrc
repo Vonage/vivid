@@ -6,3 +6,8 @@ Firefox ESR
 not dead
 not IE 11
 not op_mini all
+not ios_saf > 0
+not baidu > 0
+not and_uc > 0
+not kaios > 0
+not op_mob > 0

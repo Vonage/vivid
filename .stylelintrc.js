@@ -10,7 +10,7 @@ module.exports = {
 		'plugin/no-unsupported-browser-features': [
 			true,
 			{
-				severity: 'warning',
+				severity: 'error',
 			},
 		],
 		'order/properties-alphabetical-order': null,
