@@ -45,20 +45,8 @@ module.exports = config => {
 				}
 			]
 		},
-		browserStack: {
-			username: 'yonatankra1',
-			accessKey: 'x41Q5a1idSa7aiUSr6Fi'
-		},
-		// define browsers
 		customLaunchers: {
-			bs_safari_12: {
-				base: 'BrowserStack',
-				browser: 'safari',
-				browser_version: '12.1',
-				os: 'OS X',
-				os_version: 'Mojave'
-			},
-			bs_safari_13: {
+			Safari_13_BS: {
 				base: 'BrowserStack',
 				browser: 'safari',
 				browser_version: '13.1',
@@ -66,7 +54,7 @@ module.exports = config => {
 				os_version: 'Catalina'
 			}
 		},
-		browsers: ['bs_safari_12', 'bs_safari_13']
+		browsers: ['Safari_13_BS']
 	});
 
 	config.set(extendedDefaultConfig);
