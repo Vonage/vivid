@@ -54,6 +54,14 @@ describe.only('vwc-audio', () => {
 		expect(audioElement instanceof VWCAudio).to.eq(true);
 	});
 
+
+	it(`should set the noseek attribute on the controller noseek attribute is set`, function() {
+		const url = 'asdfasdfasdf';
+		const [actualElement] = addElements(textToDomToParent(`<vwc-audio noseek></vwc-audio>`));
+		const controllerElement = actualElement.children[0];
+		expect(controllerElement.getAttribute('noseek')).to.eq("");
+	});
+
 	describe(`userScrubRequest`, function() {
 		it(`should respond to controller element userScrubRequest`, function() {
 			const duration = 10;
