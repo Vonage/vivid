@@ -123,7 +123,7 @@ class VWCAudio extends HTMLElement {
 
 	/**
 	 * Gets/Sets the playhead position
-	 * @param {number} time - The timestamp (in seconds) to jump to
+	 * @type {number} - The timestamp (in seconds) to jump to
 	 **/
 	get currentTime(): number {
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -139,12 +139,12 @@ class VWCAudio extends HTMLElement {
 
 	/**
 	 * Gets/Sets the audio source
-	 * @param {string} source - The media source file to play
+	 * @type {string} - The media source file to play
 	 **/
 	get src(): string {
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
-		return [SYMBOL_AUDIO_EL].src;
+		return this[SYMBOL_AUDIO_EL].src;
 	}
 
 	set src(source: string) {
