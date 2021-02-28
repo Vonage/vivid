@@ -57,6 +57,27 @@ describe('list item', () => {
 		});
 	});
 
+	describe('spacing', () => {
+		let actualElements;
+		const itemsNum = 1;
+		beforeEach(async () => {
+			actualElements = addElement(buildListOfNItems(itemsNum, VWC_LIST_ITEM));
+			await waitNextTask();
+		});
+
+		it('should have correct spacing when twoline', async () => {
+			const [item] = actualElements[0].children;
+			item.twoline = true;
+			await waitNextTask();
+			const primary = item.shadowRoot.querySelector('.mdc-list-item__primary-text');
+			const secondary = item.shadowRoot.querySelector('.mdc-list-item__secondary-text');
+			const { y: primaryY, height: priamryHeight } = primary.getClientRects()[0];
+			const { y: secondaryY } = secondary.getClientRects()[0];
+			const distanceBetweenLines = secondaryY - (primaryY + priamryHeight);
+			expect(distanceBetweenLines).to.equal(4);
+		});
+	});
+
 	describe('shape', () => {
 		let actualElement;
 		beforeEach(async () => {
