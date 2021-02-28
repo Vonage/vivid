@@ -1,5 +1,6 @@
 import '@vonage/vwc-file-picker';
 import {
+	isolatedElementsCreation,
 	waitNextTask,
 	textToDomToParent,
 	randomAlpha,
@@ -8,7 +9,11 @@ import {
 import {
 	getInput,
 	simulateFilesSelect,
+	simulateFilesDrag,
 	simulateFilesDrop,
+	simulateFilesDragEnd,
+	simulateButtonSlotClick,
+	simulateInputKeyTrigger,
 } from './file-picker-utils.test.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
@@ -17,11 +22,7 @@ chai.use(chaiDomDiff);
 const VWC_COMPONENT = 'vwc-file-picker';
 
 describe('file picker', () => {
-	let addedElements = [];
-
-	afterEach(() => {
-		addedElements.forEach((elm) => elm.remove());
-	});
+	let addElements = isolatedElementsCreation();
 
 	it('is defined as a custom element', async () => {
 		assert.exists(
@@ -30,18 +31,22 @@ describe('file picker', () => {
 	});
 
 	it('should have the expected internal contents', async () => {
-		addedElements = textToDomToParent(`<${VWC_COMPONENT}></${VWC_COMPONENT}>`);
-		const actualElement = addedElements[0];
+		const [fp] = addElements(textToDomToParent(`<${VWC_COMPONENT}></${VWC_COMPONENT}>`));
 		await waitNextTask();
-		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
+		expect(fp.shadowRoot.innerHTML).to.equalSnapshot();
+	});
+
+	it('should have the expected internal contents (with label)', async () => {
+		const [fp] = addElements(textToDomToParent(`<${VWC_COMPONENT} label="Label"></${VWC_COMPONENT}>`));
+		await waitNextTask();
+		expect(fp.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
 	describe('form association', () => {
 		it('should have an associated form as a read-only property', async () => {
-			addedElements = textToDomToParent(
+			const [form] = addElements(textToDomToParent(
 				`<form><${VWC_COMPONENT}><input type="file"/></${VWC_COMPONENT}></form>`
-			);
-			const form = addedElements[0];
+			));
 			const filePicker = form.querySelector(VWC_COMPONENT);
 
 			await waitNextTask();
@@ -51,15 +56,14 @@ describe('file picker', () => {
 
 		it('should be associated with the wrapping form', async () => {
 			const filePickerName = randomAlpha();
-			addedElements = textToDomToParent(`
+			const [form] = addElements(textToDomToParent(`
 				<form>
 					<${VWC_COMPONENT}><input type="file" name="${filePickerName}" multiple/></${VWC_COMPONENT}>
 					<button></button>
 				</form>
-			`);
+			`));
 			await waitNextTask();
 
-			const form = addedElements[0];
 			const filePicker = form.querySelector(VWC_COMPONENT);
 			const internalInput = getInput(filePicker);
 			const filesTotal = 3;
@@ -86,17 +90,15 @@ describe('file picker', () => {
 
 		it('should re-associate itself upon moving in the DOM', async () => {
 			const filePickerName = randomAlpha();
-			addedElements = textToDomToParent(`
+			const [formA, formB] = addElements(textToDomToParent(`
 				<form>
 					<${VWC_COMPONENT}><input type="file" name="${filePickerName}" multiple/></${VWC_COMPONENT}>
 					<button></button>
 				</form>
 				<form><button></button></form>
-			`);
+			`));
 			await waitNextTask();
 
-			const formA = addedElements[0];
-			const formB = addedElements[1];
 			const filePicker = formA.querySelector(VWC_COMPONENT);
 			const internalInput = getInput(filePicker);
 
@@ -130,14 +132,11 @@ describe('file picker', () => {
 			const formAId = randomAlpha();
 			const formBId = randomAlpha();
 			const filePickerName = randomAlpha();
-			addedElements = textToDomToParent(`
+			const [formA, formB, filePicker] = addElements(textToDomToParent(`
 				<form id="${formAId}"></form>
 				<form id="${formBId}"></form>
 				<${VWC_COMPONENT}><input type="file" name="${filePickerName}"/></${VWC_COMPONENT}>
-			`);
-			const formA = addedElements[0];
-			const formB = addedElements[1];
-			const filePicker = addedElements[2];
+			`));
 			const internalInput = getInput(filePicker);
 
 			expect(internalInput.form).null;
@@ -149,4 +148,146 @@ describe('file picker', () => {
 			expect(internalInput.form).equal(formB);
 		});
 	});
+
+	describe('validation', () => {
+		it('should set to invalid state when setCustomValidity with text', async () => {
+			const errorText = 'error';
+			const [filePicker] = addElements(textToDomToParent(
+				`<${VWC_COMPONENT}><input type="file"/></${VWC_COMPONENT}>`
+			));
+
+			await setValidityAssertError(filePicker, errorText);
+		});
+
+		it('should un-set invalid state when setCustomValidity with empty', async () => {
+			const errorText = 'error';
+			const [filePicker] = addElements(textToDomToParent(
+				`<${VWC_COMPONENT}><input type="file"/></${VWC_COMPONENT}>`
+			));
+
+			await setValidityAssertError(filePicker, errorText);
+			await setValidityAssertError(filePicker, '');
+		});
+
+		it('should un-set invalid state when new input triggered by click', async () => {
+			const errorText = 'error';
+			const [filePicker] = addElements(textToDomToParent(
+				`<${VWC_COMPONENT}><input slot="button" type="file"/></${VWC_COMPONENT}>`
+			));
+
+			await setValidityAssertError(filePicker, errorText);
+			await simulateButtonSlotClick(filePicker);
+			const helper = filePicker.shadowRoot.querySelector('#helper');
+			expect(helper).not.exist;
+		});
+
+		it('should un-set invalid state when new input triggered by keypress (Space)', async () => {
+			const errorText = 'error';
+			const [filePicker] = addElements(textToDomToParent(
+				`<${VWC_COMPONENT}><input slot="button" type="file"/></${VWC_COMPONENT}>`
+			));
+
+			await setValidityAssertError(filePicker, errorText);
+			await simulateInputKeyTrigger(filePicker, 'Space');
+			const helper = filePicker.shadowRoot.querySelector('#helper');
+			expect(helper).not.exist;
+		});
+
+		it('should reject drop of non-file items', async () => {
+			if (isSafari()) {
+				return;
+			}
+
+			const filePickerName = randomAlpha();
+			const [filePicker] = addElements(textToDomToParent(`
+					<${VWC_COMPONENT}><input type="file" name="${filePickerName}" multiple/></${VWC_COMPONENT}>
+			`));
+			await waitNextTask();
+
+			const itemsTotal = 3;
+			const nonFileOne = true;
+			await simulateFilesDrop(filePicker, itemsTotal, nonFileOne);
+
+			const helper = filePicker.shadowRoot.querySelector('#helper');
+			expect(helper).exist;
+			expect(helper.textContent).equal('only file/s drop allowed');
+			expect(filePicker.filesCount).equal(0);
+		});
+
+		it('should allow drag of file items', async () => {
+			if (isSafari()) {
+				return;
+			}
+
+			const filePickerName = randomAlpha();
+			const [filePicker] = addElements(textToDomToParent(`
+					<${VWC_COMPONENT}><input type="file" name="${filePickerName}" multiple/></${VWC_COMPONENT}>
+			`));
+			await waitNextTask();
+
+			const itemsTotal = 3;
+			await simulateFilesDrag(filePicker, itemsTotal);
+
+			const wrapper = filePicker.shadowRoot.querySelector('.wrapper');
+			expect(wrapper).exist;
+			expect(wrapper.classList.contains('drag-over')).true;
+		});
+
+		it('should reflect drag of invalid items', async () => {
+			if (isSafari()) {
+				return;
+			}
+
+			const filePickerName = randomAlpha();
+			const [filePicker] = addElements(textToDomToParent(`
+					<${VWC_COMPONENT}><input type="file" name="${filePickerName}" multiple/></${VWC_COMPONENT}>
+			`));
+			await waitNextTask();
+
+			const itemsTotal = 3;
+			const nonFileOne = true;
+			await simulateFilesDrag(filePicker, itemsTotal, nonFileOne);
+
+			const wrapper = filePicker.shadowRoot.querySelector('.wrapper');
+			expect(wrapper).exist;
+			expect(wrapper.classList.contains('drag-over')).true;
+			expect(wrapper.classList.contains('drag-invalid')).true;
+		});
+
+		it('should clean all drag hints upon leave', async () => {
+			if (isSafari()) {
+				return;
+			}
+
+			const filePickerName = randomAlpha();
+			const [filePicker] = addElements(textToDomToParent(`
+					<${VWC_COMPONENT}><input type="file" name="${filePickerName}" multiple/></${VWC_COMPONENT}>
+			`));
+			await waitNextTask();
+
+			const itemsTotal = 3;
+			const nonFileOne = true;
+			await simulateFilesDrag(filePicker, itemsTotal, nonFileOne);
+
+			const wrapper = filePicker.shadowRoot.querySelector('.wrapper');
+			expect(wrapper.classList.contains('drag-over')).true;
+			expect(wrapper.classList.contains('drag-invalid')).true;
+
+			await simulateFilesDragEnd(filePicker);
+			expect(wrapper.classList.contains('drag-over')).false;
+			expect(wrapper.classList.contains('drag-invalid')).false;
+		});
+	});
 });
+
+async function setValidityAssertError(filePicker, validationMessage) {
+	filePicker.setCustomValidity(validationMessage);
+	await waitNextTask();
+	const helper = filePicker.shadowRoot.querySelector('#helper');
+	if (validationMessage) {
+		expect(helper).exist;
+		expect(helper.textContent).equal(validationMessage);
+	} else {
+		expect(helper).not.exist;
+	}
+}
