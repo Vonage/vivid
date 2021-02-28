@@ -12,7 +12,8 @@ export {
 	randomAlpha,
 	isSafari,
 	getFrameLoadedInjected,
-	cleanFrame
+	cleanFrame,
+	getRandom,
 }
 
 const tmpTemple = document.createElement('template');
@@ -247,6 +248,10 @@ async function getFrameLoadedInjected(htmlTag, testCode) {
 
 function cleanFrame(htmlTag) {
 	karmaHTML[htmlTag].close();
+}
+
+function getRandom() {
+	return crypto.getRandomValues(new Uint8Array(1))[0] / 256;
 }
 
 class TestComponent extends HTMLElement {

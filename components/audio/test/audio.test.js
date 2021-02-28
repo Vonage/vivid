@@ -1,15 +1,17 @@
 import '@vonage/vwc-audio';
-import { isolatedElementsCreation, textToDomToParent } from '../../../test/test-helpers';
+import {
+	isolatedElementsCreation,
+	textToDomToParent,
+	getRandom,
+} from '../../../test/test-helpers';
 import { VWCAudio } from '../vwc-audio';
-
-
 
 describe('vwc-audio', () => {
 	const addElements = isolatedElementsCreation();
 	let AudioMock, audioEl;
 
 	function resetAudioMock() {
-		AudioMock = function() {
+		AudioMock = function () {
 			audioEl = this;
 		};
 		AudioMock.prototype = Object.assign(
@@ -20,24 +22,24 @@ describe('vwc-audio', () => {
 					if (!this.listeners[event]) this.listeners[event] = [];
 					this.listeners[event].push(cb);
 				},
-				removeEventListener: function() {
+				removeEventListener: function () {
 
 				},
-				dispatchEvent: function({ type }) {
+				dispatchEvent: function ({ type }) {
 					if (!this.listeners[type]) return;
 					this.listeners[type].forEach(cb => cb({}));
 				},
-				play: function() {
+				play: function () {
 
 				},
-				pause: function() {
+				pause: function () {
 
 				}
 			}
 		);
 	}
 
-	beforeEach(function() {
+	beforeEach(function () {
 		resetAudioMock();
 
 		window.Audio = AudioMock;
@@ -49,31 +51,28 @@ describe('vwc-audio', () => {
 		);
 	});
 
-	it(`should live in the DOM`, function() {
+	it(`should live in the DOM`, function () {
 		const [audioElement] = addElements(textToDomToParent(`<vwc-audio></vwc-audio>`));
 		expect(audioElement instanceof VWCAudio).to.eq(true);
 	});
 
-
-	it(`should set the noseek attribute on the controller noseek attribute is set`, function() {
-		const url = 'asdfasdfasdf';
+	it(`should set the noseek attribute on the controller noseek attribute is set`, function () {
 		const [actualElement] = addElements(textToDomToParent(`<vwc-audio noseek></vwc-audio>`));
 		const controllerElement = actualElement.children[0];
 		expect(controllerElement.getAttribute('noseek')).to.eq("");
 	});
 
-	describe(`userScrubRequest`, function() {
-		it(`should respond to controller element userScrubRequest`, function() {
+	describe(`userScrubRequest`, function () {
+		it(`should respond to controller element userScrubRequest`, function () {
 			const duration = 10;
-			const scrubValue = Math.random();
+			const scrubValue = getRandom();
 			const expected = duration * scrubValue;
-
 
 			const [audioElement] = addElements(textToDomToParent(`<vwc-audio></vwc-audio>`));
 			const controllerElement = audioElement.children[0];
 			audioEl.duration = duration;
 			audioEl.dispatchEvent(new Event('canplay'));
-			controllerElement.dispatchEvent(new CustomEvent('userScrubRequest', {detail: scrubValue}));
+			controllerElement.dispatchEvent(new CustomEvent('userScrubRequest', { detail: scrubValue }));
 			expect(expected).to.equal(audioEl.currentTime);
 		});
 	});
@@ -84,10 +83,10 @@ describe('vwc-audio', () => {
 			AudioMock.prototype,
 			{
 				currentTime: {
-					set: function(val) {
+					set: function (val) {
 						this._time = val;
 					},
-					get: function() {
+					get: function () {
 						return this._time;
 					}
 				},
