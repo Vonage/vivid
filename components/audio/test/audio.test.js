@@ -4,7 +4,7 @@ import { VWCAudio } from '../vwc-audio';
 
 
 
-describe.only('vwc-audio', () => {
+describe('vwc-audio', () => {
 	const addElements = isolatedElementsCreation();
 	let AudioMock, audioEl;
 
