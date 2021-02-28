@@ -1,4 +1,7 @@
-import { relocateStaticResources } from '../../.storybook/build-scripts/create-stories-from-md.mjs';
+import {
+	hrefLinkProcessing,
+	relocateStaticResources,
+} from '../../.storybook/build-scripts/create-stories-from-md.mjs';
 
 export default {
 	sourcePath: '../architecture.md',
@@ -9,12 +12,21 @@ export default {
 		parameters: {
 			options: {
 				showPanel: false,
-				isToolshown: false
-			}
-		}
+				isToolshown: false,
+			},
+		},
 	},
-	htmlPostProcess: htmlText => {
-		return relocateStaticResources(htmlText, ['assets/images/architecture.svg', 'assets/images/vivid-code-transformation-flow.svg'], 'docs')
-			.replace('href="../readme.md"', 'href="/?path=/story/introduction-meet-vivid--meet-vivid"');
-	}
+	htmlPostProcess: (htmlText) => {
+		let r = relocateStaticResources(
+			htmlText,
+			[
+				'assets/images/architecture.svg',
+				'assets/images/vivid-code-transformation-flow.svg',
+			],
+			'docs'
+		);
+		return hrefLinkProcessing(r, [
+			['href="../readme.md"', '?path=/story/introduction-meet-vivid--meet-vivid'],
+		]);
+	},
 };

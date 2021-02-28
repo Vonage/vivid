@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vvd-umbrella",
-	"version": "1.0.4",
+	"version": "2.0.3",
 	"description": "Supplies various tools for authoring, testing and building Vivid components",
 	"keywords": [
 		"build",
@@ -31,8 +31,8 @@
 	},
 	"dependencies": {
 		"glob": "^7.1.6",
+		"kefir": "^3.8.8",
 		"minimist": "^1.2.5",
-		"sass": "^1.32.4",
-		"kefir": "^3.8.8"
+		"sass": "^1.32.4"
 	}
 }

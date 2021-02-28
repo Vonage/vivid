@@ -8,9 +8,6 @@ $vvd-list-item-side-padding: --vvd-list-item-side-padding;
 $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 
 :host {
-	#{$vvd-list-item-block-size}: 40px;
-	#{$vvd-list-item-side-padding}: 24px;
-	#{$vvd-list-item-graphic-margin}: 16px;
 	--mdc-list-side-padding: var(#{$vvd-list-item-side-padding});
 	--mdc-list-item-graphic-margin: var(#{$vvd-list-item-graphic-margin});
 	--mdc-list-item-graphic-size: 20px;
@@ -21,33 +18,31 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 	--mdc-theme-text-hint-on-background: var(
 		#{scheme-variables.$vvd-color-on-base}
 	);
+	@include typography.typography-cat-shorthand('body-2');
+	height: var(#{$vvd-list-item-block-size});
 
 	border-radius: var(--border-radius, 0);
-	height: var(#{$vvd-list-item-block-size});
-	@include typography.typography-cat-shorthand('body-2');
+	#{$vvd-list-item-block-size}: 40px;
+	#{$vvd-list-item-side-padding}: 24px;
+	#{$vvd-list-item-graphic-margin}: 16px;
 }
 
-:host([graphic="icon"]:not([twoline])) {
+:host([graphic='icon']:not([twoline])) {
 	height: var(#{$vvd-list-item-block-size}); // override mwc fixed height
 }
 
 :host([twoline]) {
-	#{$vvd-list-item-block-size}: 64px;
-	#{$vvd-list-item-side-padding}: 16px;
-	#{$vvd-list-item-graphic-margin}: 12px;
-
 	height: auto;
 	min-block-size: var(#{$vvd-list-item-block-size});
 
 	&::after {
-		content: '';
-		height: 1px;
-		border-bottom: 1px solid
-			var(#{scheme-variables.$vvd-color-contrast-soft});
 		position: absolute;
+		right: var(#{$vvd-list-item-side-padding});
 		bottom: 0;
 		left: var(#{$vvd-list-item-side-padding});
-		right: var(#{$vvd-list-item-side-padding});
+		height: 1px;
+		border-bottom: 1px solid var(#{scheme-variables.$vvd-color-contrast-soft});
+		content: '';
 	}
 
 	.mdc-list-item__graphic {
@@ -57,7 +52,10 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 
 	.mdc-list-item__primary-text {
 		@include typography.typography-cat-shorthand('body-2-bold');
-		margin-block: 12px 4px;
+		margin-top: 12px;
+		margin-bottom: 4px;
+		// margin-block-end: 4px; // TODO uncomment with safari 13.1 test support
+		// margin-block-start: 12px; // TODO uncomment with safari 13.1 test support
 
 		&::before,
 		&::after {
@@ -67,7 +65,8 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 
 	.mdc-list-item__secondary-text {
 		@include typography.typography-cat-shorthand('caption');
-		margin-block-end: 12px;
+		margin-bottom: 12px;
+		// margin-block-end: 12px; // TODO uncomment with safari 13.1 test support
 		white-space: normal;
 
 		&::before {
@@ -78,6 +77,9 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 	.mdc-list-item__meta {
 		flex-shrink: 0;
 	}
+	#{$vvd-list-item-block-size}: 64px;
+	#{$vvd-list-item-side-padding}: 16px;
+	#{$vvd-list-item-graphic-margin}: 12px;
 }
 
 :host([disabled]) {
@@ -93,9 +95,13 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 	}
 }
 
+.mdc-list-item__meta {
+	display: flex;
+}
+
 @include shape-mixins.shape(
 	$shapes: (
-		rounded: 6px
+		rounded: 6px,
 	),
 	$default: ''
 );

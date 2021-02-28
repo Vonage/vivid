@@ -7,13 +7,13 @@ const Template = (args) =>
 	html`<vwc-textfield ...=${spread(args)} @keydown=${handleKeyDown} @change=${onChange} @input=${onInput}></vwc-textfield>`;
 
 export const Default = Template.bind({});
-Default.args = { label: 'e.g. username', value: 'some initial value' };
+Default.args = { label: 'e.g. username', value: 'Initial value', placeholder: 'Placeholder' };
 
 export const Dense = Template.bind({});
 Dense.args = { dense: '', label: 'VWC Textfield' };
 
 export const PillShape = Template.bind({});
-PillShape.args = { shape: 'pill', dense: '' };
+PillShape.args = { shape: 'pill', dense: '', label: 'VWC Textfield', helper: 'helper message' };
 
 export const Disabled = Template.bind({});
 Disabled.args = { disabled: '', label: 'Hint test', value: 'Text' };
@@ -31,7 +31,7 @@ Validation.args = {
 export const Icon = Template.bind({});
 Icon.args = {
 	icon: 'search',
-	iconTrailing: 'cross-bold',
+	iconTrailing: 'close-small-line',
 	dense: '',
 	shape: 'pill',
 	placeholder: 'Search',

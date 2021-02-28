@@ -4,6 +4,7 @@ import {
 	textToDomToParent,
 	waitNextTask,
 	assertComputedStyle,
+	assertDistancePixels,
 	changeValueAndNotify,
 	isolatedElementsCreation,
 	randomAlpha,
@@ -199,18 +200,72 @@ describe('textfield', () => {
 		});
 	});
 
-	describe('dense', () => {
+	describe('density', () => {
 		it('should have normal size by default', async () => {
-			const addedElements = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} outlined></${COMPONENT_NAME}>`)
+			const [e] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
 			await waitNextTask();
-			const formElement = addedElements[0];
-			assertComputedStyle(formElement, { height: '48px' });
+			assertComputedStyle(e, { height: '48px' });
 		});
 
 		it('should have dense size when dense', async () => {
 			assertDenseStyles(COMPONENT_NAME);
+		});
+
+		it('should have 16px space between edge and the input (outlined)', async () => {
+			const [e] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			const i = e.querySelector('input');
+			assertDistancePixels(e, i, 'left', 0);
+			assertComputedStyle(i, { paddingInlineStart: '16px' });
+		});
+
+		it('should have 16px space between edge and the label (outlined)', async () => {
+			const [e] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} label="Label"></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			const l = e.shadowRoot.querySelector('.mdc-floating-label');
+			assertDistancePixels(e, l, 'left', 16);
+		});
+
+		it('should have leading icon positioned correctly (outlined)', async () => {
+			const [e] = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} label="Label" icon="info"></${COMPONENT_NAME}>`
+				)
+			);
+			await waitNextTask();
+			const i = e.shadowRoot.querySelector('vwc-icon');
+			expect(i).exist;
+			expect(i.offsetHeight).equal(20);
+			expect(i.offsetWidth).equal(20);
+			assertDistancePixels(e, i, 'left', 16);
+			assertDistancePixels(e, i, 'top', (e.offsetHeight - i.offsetHeight) / 2);
+		});
+
+		it('should have leading icon positioned correctly (dense)', async () => {
+			const [e] = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} dense label="Label" icon="info"></${COMPONENT_NAME}>`
+				)
+			);
+			await waitNextTask();
+			const icn = e.shadowRoot.querySelector('vwc-icon');
+			const inp = e.querySelector('input');
+			expect(icn).exist;
+			expect(icn.offsetHeight).equal(20);
+			expect(icn.offsetWidth).equal(20);
+			assertDistancePixels(inp, icn, 'left', 16);
+			assertDistancePixels(
+				inp,
+				icn,
+				'top',
+				(inp.offsetHeight - icn.offsetHeight) / 2
+			);
 		});
 	});
 

@@ -1,6 +1,6 @@
 import { html } from 'lit-element';
 
-export const cascading = () => html`
+export const Cascading = () => html`
 	<div style="position: relative">
 		<vwc-fab id="context-menu-anchor" style="display: inline-flex" mini icon="more_vert" @click="${anchorAClickHandler}"></vwc-fab>
 		<vwc-menu id="context-menu-base">
@@ -16,7 +16,7 @@ export const cascading = () => html`
 				Nested menu item A
 				<span slot="secondary">Secondary line</span>
 				<vwc-icon slot="graphic">folder</vwc-icon>
-			</vwc-list-item graphic="icon" twoline>
+			</vwc-list-item>
 			<li divider role="separator"></li>
 			<vwc-list-item graphic="icon" twoline>
 				Nested menu item B

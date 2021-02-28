@@ -1,47 +1,94 @@
-@use './constants';
+@use 'variables';
 
-@mixin spacing {
-  body {
-    margin: 0;
-    padding: 0;
+body {
+	padding: env(safe-area-inset-top, 20px) env(safe-area-inset-right, 20px)
+		env(safe-area-inset-bottom, 20px) env(safe-area-inset-left, 20px);
+}
+
+#{variables.$vivid-scope-selector} {
+	h1,
+	h2 {
+		padding: 0;
+		margin: 48px 0;
 	}
 
-	#{constants.$vivid-scope-class} {
-		pre,
+	h3,
+	h4,
+	h5,
+	h6 {
+		padding: 0;
+		margin: 40px 0;
+	}
+
+	pre,
+	code,
+	kbd,
+	samp,
+	var {
+		padding: 3px 4px;
+		border-radius: 6px;
+	}
+
+	pre {
+		overflow: auto;
+
 		code,
 		kbd,
 		samp,
 		var {
-			padding: 3px 4px;
-			border-radius: 6px;
+			padding: initial;
+		}
+	}
+
+	blockquote {
+		padding: 20px 22px;
+		margin-right: 0;
+		margin-left: 0;
+		border-radius: 6px;
+
+		> :first-child {
+			margin-block-start: 0;
+			padding-block-start: 0;
 		}
 
-		pre {
-			overflow: auto;
+		> :last-child {
+			margin-block-end: 0;
+			padding-block-end: 0;
+		}
+	}
 
-			code,
-			kbd,
-			samp,
-			var {
-				padding: initial;
-			}
+	table {
+		width: 100%;
+		min-width: min-content;
+		border-collapse: collapse;
+
+		tr {
+			border-bottom-width: 1px;
+			border-bottom-style: solid;
+			block-size: 44px;
 		}
 
-		blockquote {
-			margin-left: 0;
-			margin-right: 0;
-			padding: 20px 22px;
-			border-radius: 6px;
+		th,
+		td {
+			padding: 12px 16px;
+			text-align: start;
+		}
+	}
+}
 
-			:first-child {
-				margin-block-start: 0;
-				padding-block-start: 0;
-			}
-
-			:last-child {
-				margin-block-end: 0;
-				padding-block-end: 0;
-			}
+$container: vvd-container;
+[class*='#{$container}'i] {
+	margin: 0 auto;
+	background: #f5f5dc;
+	inline-size: var(--basis, 100%);
+	max-inline-size: calc(100% - 20px);
+	&:not(.#{$container}-fluid) {
+		--basis: 80rem;
+		&.#{$container}-condense {
+			--basis: 50rem;
+		}
+		&.#{$container}-ultra-condense {
+			--basis: 30rem;
 		}
 	}
 }

@@ -1,8 +1,8 @@
 import '@vonage/vvd-core';
 import { customElement, html } from 'lit-element';
-import { Chip as MWCChip } from '@material/mwc-chips/mwc-chip';
+import { Chip as MWCChip } from './mwc-chips/mwc-chip';
 import { style as vwcChipStyle } from './vwc-chip.css';
-import { style as mwcChipStyle } from '@material/mwc-chips/mwc-chip.css.js';
+import { style as mwcChipStyle } from './mwc-chips/mwc-chip.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import '@vonage/vwc-icon';
 import { classMap } from 'lit-html/directives/class-map';
@@ -77,8 +77,10 @@ export class VWCChip extends MWCChip {
 					aria-hidden=${ifDefined(this.removeIconFocusable ? undefined : 'true')}
 					@click=${this.clickHandler}
 					@keydown=${this.clickHandler}
-					><vwc-icon size="small" class="trailing" type="cross-circle-negative"
-			  /></i>`
+			  >
+					<vwc-icon size="small" class="trailing" type="cross-circle-negative">
+					</vwc-icon>
+			  </i>`
 			: nothing}`;
 
 		if (this.removeIconFocusable) {

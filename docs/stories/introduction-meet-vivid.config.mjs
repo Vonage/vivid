@@ -1,4 +1,7 @@
-import { relocateStaticResources } from '../../.storybook/build-scripts/create-stories-from-md.mjs';
+import {
+	hrefLinkProcessing,
+	relocateStaticResources,
+} from '../../.storybook/build-scripts/create-stories-from-md.mjs';
 
 export default {
 	sourcePath: '../../readme.md',
@@ -9,21 +12,40 @@ export default {
 		parameters: {
 			options: {
 				showPanel: false,
-				isToolshown: false
-			}
-		}
+				isToolshown: false,
+			},
+		},
 	},
-	mdPreProcess: mdText => {
-		return mdText
-			.replace(/^[^#]*/, '');
+	mdPreProcess: (mdText) => {
+		return mdText.replace(/^[^#]*/, '');
 	},
-	htmlPostProcess: htmlText => {
-		return relocateStaticResources(htmlText, ['docs/assets/images/meet-vivid.svg'])
-			.replace('href="docs/getting-started.md"', 'href="/?path=/story/introduction-getting-started--getting-started"')
-			.replace('href="docs/architecture.md"', 'href="/?path=/story/introduction-architecture--architecture"')
-			.replace('href="docs/roadmap.md"', 'href="/?path=/story/introduction-roadmap--roadmap"')
-			.replace('href="docs/contact-us.md"', 'href="/?path=/story/introduction-contact-us--contact-us"')
-			.replace('href="docs/installation.md"', 'href="/?path=/story/introduction-installation--installation"')
-			.replace('href="docs/contribution.md"', 'href="/?path=/story/introduction-contribution--contribution"');
-	}
+	htmlPostProcess: (htmlText) => {
+		let r = relocateStaticResources(htmlText, [
+			'docs/assets/images/meet-vivid.svg',
+		]);
+		r = hrefLinkProcessing(r, [
+			[
+				'href="docs/getting-started.md"',
+				'?path=/story/introduction-getting-started--getting-started',
+			],
+			[
+				'href="docs/architecture.md"',
+				'?path=/story/introduction-architecture--architecture',
+			],
+			['href="docs/roadmap.md"', '?path=/story/introduction-roadmap--roadmap'],
+			[
+				'href="docs/contact-us.md"',
+				'?path=/story/introduction-contact-us--contact-us',
+			],
+			[
+				'href="docs/installation.md"',
+				'?path=/story/guides-installation--installation',
+			],
+			[
+				'href="docs/contribution.md"',
+				'?path=/story/guides-contribution--contribution',
+			],
+		]);
+		return r;
+	},
 };

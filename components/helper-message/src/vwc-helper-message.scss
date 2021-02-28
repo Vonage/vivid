@@ -4,12 +4,12 @@
 
 :host {
 	@include typography.typography-cat-shorthand('caption');
-
-	min-block-size: 16px;
-	margin-block-start: 4px;
 	display: flex;
 	align-items: center;
 	color: var(#{sem-col.$formfield-label-idle-ink});
+	margin-block-start: 4px;
+
+	min-block-size: 16px;
 
 	.helper-icon {
 		display: none;
@@ -17,10 +17,10 @@
 	}
 
 	.helper-text {
-		margin-inline-start: 16px;
 		overflow: hidden;
-		white-space: nowrap;
+		margin-inline-start: 16px;
 		text-overflow: ellipsis;
+		white-space: nowrap;
 	}
 }
 

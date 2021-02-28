@@ -4,6 +4,8 @@
 
 ```html
 <input
+  class="vivid-input-internal"
+  placeholder=" "
   slot="formInputElement"
   type="text"
   value=""

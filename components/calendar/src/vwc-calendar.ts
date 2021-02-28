@@ -1,5 +1,7 @@
 import '@vonage/vvd-core';
-import { customElement, html, LitElement, TemplateResult } from 'lit-element';
+import {
+	customElement, html, LitElement, TemplateResult
+} from 'lit-element';
 import { style } from './vwc-calendar.css';
 
 declare global {
@@ -94,18 +96,17 @@ export class VWCCalendar extends LitElement {
 			<div class="container">
 				<ol class="headline">
 					${this.getWeekdaysByDate(new Date(Date.UTC(2021, 1, 1))).map(
-						(date) =>
-							html`<li>
+		date => html`<li>
 								<time datetime=${this.getValidDateString(date)}
 									>${this.getStyledWeekday(date)}</time
 								>
 							</li>`
-					)}
+	)}
 				</ol>
 				<ol class="time">
 					<!-- TODO: align to convention of generation from first hour in day and a length of hours. -->
 					<!-- TODO: get styled hour and datetime value -->
-					${this.#hoursOfDay.map((h) => html`<li><time>${h}</time></li>`)}
+					${this.#hoursOfDay.map(h => html`<li><time>${h}</time></li>`)}
 				</ol>
 				<ol class="calendar">
 					${this.renderTimeCells()}
