@@ -56,7 +56,13 @@ describe('vwc-audio', () => {
 		expect(audioElement instanceof VWCAudio).to.eq(true);
 	});
 
-	it(`should set the noseek attribute on the controller noseek attribute is set`, function () {
+	it(`should set the src property if src attribute is set`, function() {
+		const url = 'asdfasdfasdf';
+		const [actualElement] = addElements(textToDomToParent(`<vwc-audio src="${url}"></vwc-audio>`));
+		expect(actualElement.src).to.eq(url);
+	});
+
+	it(`should set the noseek attribute on the controller noseek attribute is set`, function() {
 		const [actualElement] = addElements(textToDomToParent(`<vwc-audio noseek></vwc-audio>`));
 		const controllerElement = actualElement.children[0];
 		expect(controllerElement.getAttribute('noseek')).to.eq("");
