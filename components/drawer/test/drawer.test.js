@@ -9,7 +9,7 @@ import {
 const VWC_COMPONENT = 'vwc-drawer';
 const DRAWER_SETUP_HTML_TAG = 'drawerSetupTest';
 
-describe.only('vwc-drawer', () => {
+describe('vwc-drawer', () => {
 	let addElement = isolatedElementsCreation();
 
 	/* eslint-disable no-undef */
