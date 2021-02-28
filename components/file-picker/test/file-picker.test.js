@@ -22,7 +22,7 @@ chai.use(chaiDomDiff);
 
 const VWC_COMPONENT = 'vwc-file-picker';
 
-describe.only('file picker', () => {
+describe('file picker', () => {
 	let addElements = isolatedElementsCreation();
 
 	it('is defined as a custom element', async () => {
