@@ -107,4 +107,7 @@ jobs:
         run: yarn compile
 
       - name: Test components
+        env:
+          BROWSERSTACK_ACCESS: ${{ secrets.BROWSERSTACK_ACCESS }}
+          BROWSERSTACK_SECRET: ${{ secrets.BROWSERSTACK_SECRET }}
         run: yarn test:bs --browsers=Safari_13_BS
