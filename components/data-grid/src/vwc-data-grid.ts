@@ -1,4 +1,5 @@
 import '@vonage/vvd-core';
+import './vwc-data-grid-column.js';
 import { style as vwcDataGridStyle } from './vwc-data-grid.css';
 import {
 	customElement,
