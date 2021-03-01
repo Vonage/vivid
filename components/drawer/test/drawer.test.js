@@ -1,13 +1,17 @@
 import { VVD_THEME_ALTERNATE, THEME_ALTERNATE } from '../vwc-drawer';
 import {
+	isolatedElementsCreation,
+	textToDomToParent,
 	getFrameLoadedInjected,
 	cleanFrame,
 	waitNextTask,
 } from '../../../test/test-helpers.js';
-const VWC_DRAWER = 'vwc-drawer';
+const VWC_COMPONENT = 'vwc-drawer';
 const DRAWER_SETUP_HTML_TAG = 'drawerSetupTest';
 
 describe('vwc-drawer', () => {
+	let addElement = isolatedElementsCreation();
+
 	/* eslint-disable no-undef */
 	after(() => {
 		cleanFrame(DRAWER_SETUP_HTML_TAG);
@@ -18,37 +22,58 @@ describe('vwc-drawer', () => {
 			await getFrameLoadedInjected(DRAWER_SETUP_HTML_TAG, async (iframe) => {
 				const iframeWindow = iframe.contentWindow;
 				await drawerDefined(iframeWindow);
-				const drawerElClass = iframeWindow.customElements.get(VWC_DRAWER);
+				const drawerElClass = iframeWindow.customElements.get(VWC_COMPONENT);
 
 				expect(drawerElClass).to.be.a('function');
 			});
 		});
 
 		it('should show drawer by default', async () => {
-			await getFrameLoadedInjected(DRAWER_SETUP_HTML_TAG, async (iframe) => {
-				const iframeWindow = iframe.contentWindow;
-				await drawerDefined(iframeWindow);
+			const [drawer] = addElement(
+				textToDomToParent(`
+					<${VWC_COMPONENT} hasHeader>
+						<span slot="title">Drawer Title</span>
+						<span slot="subtitle">subtitle</span>
+						<span slot="header">lorem ipsum dolor sit amet</span>
+						<div slot="appContent"></div>
+					</${VWC_COMPONENT}>`)
+			);
+			await waitNextTask();
 
-				const drawerEl = iframeWindow.document.querySelector(VWC_DRAWER);
-
-				const shadowDrawer = drawerEl.shadowRoot.querySelector('.mdc-drawer');
-				expect(shadowDrawer.offsetWidth).to.be.above(0);
-			});
+			const shadowDrawer = drawer.shadowRoot.querySelector('.mdc-drawer');
+			expect(shadowDrawer.offsetWidth).to.be.above(0);
 		});
 
 		it('should not show drawer by default', async () => {
-			await getFrameLoadedInjected(DRAWER_SETUP_HTML_TAG, async (iframe) => {
-				const iframeWindow = iframe.contentWindow;
-				await drawerDefined(iframeWindow);
+			const [drawer] = addElement(
+				textToDomToParent(`
+					<${VWC_COMPONENT} hasHeader type="dismissible">
+						<span slot="title">Drawer Title</span>
+						<div slot="appContent"></div>
+					</${VWC_COMPONENT}>`)
+			);
+			await waitNextTask();
 
-				const drawerEl = iframeWindow.document.querySelector(VWC_DRAWER);
-				drawerEl.setAttribute('type', 'dismissible');
-				drawerEl.removeAttribute('open');
-				await waitNextTask();
+			const shadowDrawer = drawer.shadowRoot.querySelector('.mdc-drawer');
+			expect(shadowDrawer.offsetWidth).to.be.equal(0);
+		});
 
-				const shadowDrawer = drawerEl.shadowRoot.querySelector('.mdc-drawer');
-				expect(shadowDrawer.offsetWidth).to.be.equal(0);
-			});
+		it('should show drawer by "open" API', async () => {
+			const [drawer] = addElement(
+				textToDomToParent(`
+					<${VWC_COMPONENT} hasHeader type="dismissible">
+						<span slot="title">Drawer Title</span>
+						<div slot="appContent"></div>
+					</${VWC_COMPONENT}>`)
+			);
+			await waitNextTask();
+
+			const shadowDrawer = drawer.shadowRoot.querySelector('.mdc-drawer');
+			expect(shadowDrawer.offsetWidth).to.be.equal(0);
+
+			drawer.open = true;
+			await waitNextTask();
+			expect(shadowDrawer.offsetWidth).to.be.equal(256);
 		});
 	});
 
@@ -58,7 +83,7 @@ describe('vwc-drawer', () => {
 				const iframeWindow = iframe.contentWindow;
 				await drawerDefined(iframeWindow);
 
-				const drawerEl = iframeWindow.document.querySelector(VWC_DRAWER);
+				const drawerEl = iframeWindow.document.querySelector(VWC_COMPONENT);
 				await waitNextTask();
 
 				const shadowDrawer = drawerEl.shadowRoot.querySelector('.mdc-drawer');
@@ -83,20 +108,18 @@ describe('vwc-drawer', () => {
 		});
 
 		it(`should set 'isThemeAlternate' property member as true on '${THEME_ALTERNATE}' attribute value set to true`, async () => {
-			await getFrameLoadedInjected(DRAWER_SETUP_HTML_TAG, async (iframe) => {
-				const iframeWindow = iframe.contentWindow;
-				await drawerDefined(iframeWindow);
+			const [drawer] = addElement(
+				textToDomToParent(`
+					<${VWC_COMPONENT} hasHeader>
+						<span slot="title">Drawer Title</span>
+						<div slot="appContent"></div>
+					</${VWC_COMPONENT}>`)
+			);
+			await waitNextTask();
 
-				const drawerEl = iframeWindow.document.querySelector(VWC_DRAWER);
-
-				drawerEl.setAttribute(THEME_ALTERNATE, true);
-				await waitNextTask();
-
-				const { isThemeAlternate } = drawerEl;
-				await waitNextTask();
-
-				expect(isThemeAlternate).to.equal(true);
-			});
+			expect(drawer.isThemeAlternate).to.equal(false);
+			drawer.setAttribute(THEME_ALTERNATE, true);
+			expect(drawer.isThemeAlternate).to.equal(true);
 		});
 
 		it(`should set <aside> '::part' attribute value as '${VVD_THEME_ALTERNATE}' on isThemeAlternate property set to true`, async () => {
@@ -104,7 +127,7 @@ describe('vwc-drawer', () => {
 				const iframeWindow = iframe.contentWindow;
 				await drawerDefined(iframeWindow);
 
-				const drawerEl = iframeWindow.document.querySelector(VWC_DRAWER);
+				const drawerEl = iframeWindow.document.querySelector(VWC_COMPONENT);
 
 				drawerEl.isThemeAlternate = true;
 
@@ -121,5 +144,5 @@ describe('vwc-drawer', () => {
 
 // FUNCTIONS
 async function drawerDefined(iframeWindow) {
-	return iframeWindow.customElements.whenDefined(VWC_DRAWER);
+	return iframeWindow.customElements.whenDefined(VWC_COMPONENT);
 }

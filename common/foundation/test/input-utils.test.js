@@ -7,6 +7,7 @@ import {
 	changeValueAndNotify,
 	listenToSubmission,
 	getTypographyStyle,
+	getRandom,
 } from '../../../test/test-helpers.js';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
@@ -94,7 +95,7 @@ export async function assertDenseStyles(COMPONENT_NAME) {
 }
 
 export async function validateMultipleShadowLayers(COMPONENT_NAME, elementTag) {
-	const fieldValue = Math.random().toString();
+	const fieldValue = getRandom().toString();
 	const fieldName = 'test-field';
 	const formTemplate = `
     <form onsubmit="return false" name="testForm" id="testForm">
