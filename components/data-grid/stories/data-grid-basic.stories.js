@@ -1,6 +1,5 @@
 import '@vonage/vwc-data-grid';
 import { html } from 'lit-element';
-import { spread } from '@open-wc/lit-helpers';
 
 export default {
 	title: 'Components/Composite/DataGrid',
@@ -20,7 +19,7 @@ Basic.args = {
 			{ header: 'Last Name', path: 'lname' }
 		]
 	},
-	items: Array(100000).fill(0).map((v, i) => {
+	items: Array(100000).fill(0).map((_v, i) => {
 		return { fname: `A${i}`, lname: `B${i}` };
 	})
 };
