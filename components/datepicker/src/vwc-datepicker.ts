@@ -1,6 +1,7 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-button';
 import '@vonage/vwc-icon-button';
+import 'flatpickr/dist/flatpickr.css';
 import { customElement, property, CSSResult } from 'lit-element';
 import { LitFlatpickr } from 'lit-flatpickr';
 import { Options } from 'flatpickr/dist/types/options';
@@ -40,12 +41,14 @@ export class VWCDatepicker extends LitFlatpickr {
 	@property({ type: Boolean, reflect: true })
 	closeOnSelect = false;
 
+	@property({ type: Boolean, reflect: true })
+	fixed = false;
+
 	positionElement = undefined;
 
-	// prevents flatpickr from being appended to slotted components when inline
-	private appendTo: HTMLElement | undefined = this.parentElement
-		? this.parentElement
-		: undefined;
+	// prevents flatpickr being appended to document body
+	private appendTo: HTMLElement | undefined = this;
+
 	// private plugins: Array<any> = [];
 
 	constructor() {
@@ -61,11 +64,6 @@ export class VWCDatepicker extends LitFlatpickr {
 
 		this.onReady = () => {
 			this.readyHandler();
-		};
-
-		this.onOpen = () => {
-			// allow interaction when dialog open
-			this._instance?.calendarContainer?.removeAttribute('inert');
 		};
 
 		this.onChange = (e) => {
@@ -86,11 +84,17 @@ export class VWCDatepicker extends LitFlatpickr {
 		this._instance?.destroy();
 	}
 
+	// override LitFlatpickr to remove cdn styles
+	async init() {
+		this.initializeComponent();
+	}
+
 	private readyHandler(): void {
 		// wait for DOM
 		setTimeout(() => {
 			if (!this._instance?.isMobile || this.disableMobile) {
 				this._instance?.calendarContainer.classList.add('vvd-datepicker');
+				if (this.fixed) this._instance?.calendarContainer.classList.add('vvd-datepicker-fixed');
 
 				this.renderHeader();
 				this.renderRange();
@@ -415,9 +419,9 @@ export class VWCDatepicker extends LitFlatpickr {
 			weekNumbers: this.weekNumbers,
 			wrap: this.wrap,
 			// additional config options
-			...(this.inline && { appendTo: this.appendTo }),
 			...(this.enable && { enable: this.enable }),
 			// ...(this.plugins.length && { plugins: this.plugins }),
+			appendTo: this.appendTo,
 			closeOnSelect: this.closeOnSelect,
 			positionElement: this.positionElement
 		};

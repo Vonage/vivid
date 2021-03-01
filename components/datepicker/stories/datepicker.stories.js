@@ -10,16 +10,14 @@ export default {
   argTypes
 };
 
-// outer div required for inline mode
 const Template = args => html`
   <style>
     vwc-textfield { width: 260px; }
   </style>
-  <div>
-    <vwc-datepicker ...=${spread(args)}>
-      <vwc-textfield dense icon='calendar' placeholder='Datepicker'></vwc-textfield>
-    </vwc-datepicker>
-  </div>`;
+  <vwc-datepicker ...=${spread(args)}>
+    <vwc-textfield dense icon='calendar' placeholder='Datepicker'></vwc-textfield>
+  </vwc-datepicker>
+`;
 
 export const Basic = Template.bind({});
 Basic.args = { dateFormat: 'Y-m-d', altInput: '', altFormat: 'F j, Y', closeOnSelect: '' };
@@ -42,7 +40,9 @@ DateTime.args = { enableTime: '', dateFormat: 'Y-m-d H:i' };
 export const Time = Template.bind({});
 Time.args = { enableTime: '', noCalendar: '', dateFormat: 'H:i' };
 
-export const Inline = Template.bind({});
+const InlineTemplate = args => html`<vwc-datepicker ...=${spread(args)}></vwc-datepicker>`;
+
+export const Inline = InlineTemplate.bind({});
 Inline.args = { inline: '' };
 
 export {

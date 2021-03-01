@@ -12,6 +12,7 @@
 	background: var(#{scheme-variables.$vvd-color-base});
 	border-radius: 6px;
 	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+	color: var(#{scheme-variables.$vvd-color-on-base});
 
 	&:not(.noCalendar) {
 		padding: 24px 0 16px;
@@ -180,6 +181,10 @@
 	.flatpickr-day.startRange + .selected.endRange:not(:nth-child(7n + 1)) {
 		box-shadow: none;
 	}
+}
+
+.vvd-datepicker-fixed {
+	position: fixed;
 }
 
 //--------------
