@@ -8,6 +8,7 @@ import {
 	isolatedElementsCreation,
 	listenToSubmission,
 	getTypographyStyle,
+	getRandom,
 } from '../../../test/test-helpers.js';
 import {
 	typographyTestCases,
@@ -62,8 +63,8 @@ describe('textarea', () => {
 		}
 
 		const fieldValue = `
-				${Math.random().toString()}
-				${Math.random().toString()}
+				${getRandom().toString()}
+				${getRandom().toString()}
 			`;
 		const fieldName = 'test-field';
 

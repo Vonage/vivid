@@ -26,10 +26,6 @@ export class VWCDrawer extends MWCDrawer {
 	@property({ type: Boolean, reflect: true, attribute: THEME_ALTERNATE })
 	isThemeAlternate = false;
 
-	get drawerEl(): Element | null | undefined {
-		return this.shadowRoot?.querySelector('.mdc-drawer');
-	}
-
 	protected updated(changes: Map<string, boolean>): void {
 		super.updated(changes);
 		if (changes.has('isThemeAlternate')) {
@@ -38,10 +34,18 @@ export class VWCDrawer extends MWCDrawer {
 	}
 
 	private togglePart(isAlternate: boolean) {
-		if (isAlternate) {
-			this.drawerEl?.setAttribute('part', VVD_THEME_ALTERNATE);
-		} else {
-			this.drawerEl?.removeAttribute('part');
+		const del = this.getInternalDrawerElement();
+		if (!del) {
+			return;
 		}
+		if (isAlternate) {
+			del.setAttribute('part', VVD_THEME_ALTERNATE);
+		} else {
+			del.removeAttribute('part');
+		}
+	}
+
+	private getInternalDrawerElement(): Element | null | undefined {
+		return this.shadowRoot?.querySelector('.mdc-drawer');
 	}
 }
