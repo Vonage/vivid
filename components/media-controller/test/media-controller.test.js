@@ -78,7 +78,7 @@ describe('vwc-media-controller', function () {
 		});
 
 		afterEach(function () {
-			addedElements.forEach((elm) => elm.remove());
+			addedElements.forEach(elm => elm.remove());
 		});
 
 		it('Should emit an event when clicking play/pause ', function () {
@@ -128,19 +128,13 @@ describe('vwc-media-controller', function () {
 										}),
 									kefir
 										.later(RESPONSE_TIMEOUT)
-										.flatMap(() =>
-											kefir.constantError(
-												'Did not receive a "userScrubRequest" event following a click on the trackbar'
-											)
-										),
+										.flatMap(() => kefir.constantError(
+											'Did not receive a "userScrubRequest" event following a click on the trackbar'
+										)),
 									kefir
-										.fromCallback((cb) =>
-											cb(
-												['mousedown', 'mouseup'].forEach((eventName) =>
-													simulateMouse(x, y, eventName)
-												)
-											)
-										)
+										.fromCallback(cb => cb(
+											['mousedown', 'mouseup'].forEach(eventName => simulateMouse(x, y, eventName))
+										))
 										.ignoreValues(),
 								])
 								.take(1)
@@ -148,7 +142,7 @@ describe('vwc-media-controller', function () {
 						})
 				)
 				.takeErrors(1)
-				.mapErrors((des) => new Error(des))
+				.mapErrors(des => new Error(des))
 				.toPromise();
 		});
 	});

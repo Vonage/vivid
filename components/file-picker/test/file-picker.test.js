@@ -20,7 +20,7 @@ describe('file picker', () => {
 	let addedElements = [];
 
 	afterEach(() => {
-		addedElements.forEach((elm) => elm.remove());
+		addedElements.forEach(elm => elm.remove());
 	});
 
 	it('is defined as a custom element', async () => {

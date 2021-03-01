@@ -216,9 +216,7 @@ describe('textarea', () => {
 	});
 
 	describe('typography', () => {
-		typographyTestCases(COMPONENT_NAME, (vwcTextarea) =>
-			vwcTextarea.shadowRoot.querySelector('.mdc-text-field__input')
-		);
+		typographyTestCases(COMPONENT_NAME, vwcTextarea => vwcTextarea.shadowRoot.querySelector('.mdc-text-field__input'));
 	});
 
 	describe('notched outlined', () => {
@@ -287,7 +285,8 @@ describe('textarea', () => {
 	});
 
 	describe('resizable', () => {
-		let formElement, actualElement;
+		let formElement,
+			actualElement;
 		beforeEach(async () => {
 			const addedElements = addElement(
 				textToDomToParent(

@@ -148,16 +148,14 @@ describe('carousel', () => {
 			const nextButton = carousel.querySelector('.swiper-button-next');
 
 			const clicked = [];
-			slides.forEach((s) =>
-				s.addEventListener('click', (e) => clicked.push(e.target))
-			);
+			slides.forEach(s => s.addEventListener('click', e => clicked.push(e.target)));
 
 			nextButton.click();
 			nextButton.click();
 
 			await waitInterval(600);
 
-			slides.forEach((s) => s.click());
+			slides.forEach(s => s.click());
 			slides.forEach((s, i) => expect(s).to.equal(clicked[i]));
 
 			carousel.remove();
@@ -209,8 +207,7 @@ describe('carousel', () => {
 function buildSlidesText(keys) {
 	return keys
 		.map(
-			(key) =>
-				`<${VWC_CAROUSEL_ITEM} data-key="${key}">Slide ${key}</${VWC_CAROUSEL_ITEM}>`
+			key => `<${VWC_CAROUSEL_ITEM} data-key="${key}">Slide ${key}</${VWC_CAROUSEL_ITEM}>`
 		)
 		.join();
 }

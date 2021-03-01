@@ -12,7 +12,7 @@ describe('vwc-audio', () => {
 			counter = 0,
 			_Audio = window.Audio;
 
-		const failCheck = (message) => (val) => val || fail.push(message),
+		const failCheck = message => val => val || fail.push(message),
 			tests = {
 				currentTimeSetter: failCheck(
 					"currentTime setter wasn't called with right arg!"

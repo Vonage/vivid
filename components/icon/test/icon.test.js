@@ -8,7 +8,7 @@ import {
 } from '../../../test/test-helpers.js';
 
 const LOAD_TIME = 400;
-const sleep = (ms) => new Promise((res) => setTimeout(res, ms));
+const sleep = ms => new Promise(res => setTimeout(res, ms));
 
 describe('vwc-icon', () => {
 	describe('custom component registration', function () {

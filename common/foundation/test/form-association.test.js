@@ -241,7 +241,11 @@ describe(`Form Association Foundation`, function () {
 				return document.querySelector(`input[name="${fieldName}"]`);
 			}
 
-			let inputElementWrapper, hiddenInput, fieldName, formElement, defaultValue;
+			let inputElementWrapper,
+				hiddenInput,
+				fieldName,
+				formElement,
+				defaultValue;
 
 			beforeEach(function () {
 				fieldName = 'fieldName';

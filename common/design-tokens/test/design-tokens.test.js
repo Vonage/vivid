@@ -26,7 +26,7 @@ describe('design tokens service', () => {
 		it("should have symmetric variables number in each scheme's **base** variables", async () => {
 			const schemeVariables = getSchemeVariables();
 			Object.values(schemeVariables)
-				.map((schemeVars) => Object.keys(schemeVars).length)
+				.map(schemeVars => Object.keys(schemeVars).length)
 				.reduce((result, schemeVarsLength) => {
 					if (result) {
 						expect(schemeVarsLength).equal(result);
@@ -40,7 +40,7 @@ describe('design tokens service', () => {
 			const testSet = {};
 			const schemeVariables = getSchemeVariables();
 			Object.keys(schemeVariables)
-				.filter((schemeName) => schemeName.includes(MAIN))
+				.filter(schemeName => schemeName.includes(MAIN))
 				.forEach((schemeName) => {
 					Object.keys(schemeVariables[schemeName]).forEach((cssVarName) => {
 						const set = testSet[cssVarName] || (testSet[cssVarName] = new Set());
@@ -51,9 +51,7 @@ describe('design tokens service', () => {
 			expect(Object.values(testSet)).not.empty;
 			const expectedCount = Object.values(testSet)[0].size;
 			expect(expectedCount).greaterThan(0);
-			Object.values(testSet).forEach((set) =>
-				expect(set.size).equal(expectedCount)
-			);
+			Object.values(testSet).forEach(set => expect(set.size).equal(expectedCount));
 		});
 
 		//	we have a matrix of schemes and flavors: each scheme hase 2 flavors (main/alternate)
@@ -122,7 +120,7 @@ function assertListsOfDistinct(setOfLists) {
 		const numOfItems = list.length;
 		for (const item in list[0]) {
 			if (PRINCIPAL_SCHEME_VARIABLES_FILTER.test(item)) {
-				const checkSet = new Set(list.map((sf) => sf[item]));
+				const checkSet = new Set(list.map(sf => sf[item]));
 				expect(checkSet.size).equal(
 					numOfItems,
 					`${item} distinctness is not as expected`

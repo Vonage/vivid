@@ -17,7 +17,7 @@ describe('file picker - count files hint', () => {
 	let addedElements = [];
 
 	afterEach(() => {
-		addedElements.forEach((elm) => elm.remove());
+		addedElements.forEach(elm => elm.remove());
 	});
 
 	it('should have initial counter set to 0 and no badge rendered', async () => {
