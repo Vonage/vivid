@@ -25,4 +25,13 @@ describe('Dialog', () => {
 		await waitNextTask();
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
+
+	it(`should hide the actions section`, async function() {
+		const [actualElement] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}>`)
+		);
+		actualElement.hideActions = true;
+		await actualElement.updateComplete;
+		expect(actualElement.shadowRoot.querySelector('#content').classList.contains('last')).to.equal(true);
+	});
 });

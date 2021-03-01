@@ -1,74 +1,117 @@
 import '@vonage/vwc-audio';
+import {
+	isolatedElementsCreation,
+	textToDomToParent,
+	getRandom,
+} from '../../../test/test-helpers';
+import { VWCAudio } from '../vwc-audio';
 
 describe('vwc-audio', () => {
+	const addElements = isolatedElementsCreation();
+	let AudioMock, audioEl;
+
+	function resetAudioMock() {
+		AudioMock = function () {
+			audioEl = this;
+		};
+		AudioMock.prototype = Object.assign(
+			AudioMock.prototype,
+			{
+				addEventListener: function addEventListener(event, cb) {
+					if (!this.listeners) this.listeners = {};
+					if (!this.listeners[event]) this.listeners[event] = [];
+					this.listeners[event].push(cb);
+				},
+				removeEventListener: function () {
+
+				},
+				dispatchEvent: function ({ type }) {
+					if (!this.listeners[type]) return;
+					this.listeners[type].forEach(cb => cb({}));
+				},
+				play: function () {
+
+				},
+				pause: function () {
+
+				}
+			}
+		);
+	}
+
+	beforeEach(function () {
+		resetAudioMock();
+
+		window.Audio = AudioMock;
+	});
+
 	it('should register as a custom element', async () => {
 		assert.exists(
 			customElements.get('vwc-audio', 'vwc-audio element is not defined')
 		);
 	});
 
+	it(`should live in the DOM`, function () {
+		const [audioElement] = addElements(textToDomToParent(`<vwc-audio></vwc-audio>`));
+		expect(audioElement instanceof VWCAudio).to.eq(true);
+	});
+
+	it(`should set the src property if src attribute is set`, function() {
+		const url = 'asdfasdfasdf';
+		const [actualElement] = addElements(textToDomToParent(`<vwc-audio src="${url}"></vwc-audio>`));
+		expect(actualElement.src).to.eq(url);
+	});
+
+	it(`should set the noseek attribute on the controller noseek attribute is set`, function() {
+		const [actualElement] = addElements(textToDomToParent(`<vwc-audio noseek></vwc-audio>`));
+		const controllerElement = actualElement.children[0];
+		expect(controllerElement.getAttribute('noseek')).to.eq("");
+	});
+
+	describe(`userScrubRequest`, function () {
+		it(`should respond to controller element userScrubRequest`, function () {
+			const duration = 10;
+			const scrubValue = getRandom();
+			const expected = duration * scrubValue;
+
+			const [audioElement] = addElements(textToDomToParent(`<vwc-audio></vwc-audio>`));
+			const controllerElement = audioElement.children[0];
+			audioEl.duration = duration;
+			audioEl.dispatchEvent(new Event('canplay'));
+			controllerElement.dispatchEvent(new CustomEvent('userScrubRequest', { detail: scrubValue }));
+			expect(expected).to.equal(audioEl.currentTime);
+		});
+	});
+
 	it('should deliver method calls to Audio', async () => {
-		let fail = [],
-			counter = 0,
-			_Audio = window.Audio;
-
-		const failCheck = (message) => (val) => val || fail.push(message),
-			tests = {
-				currentTimeSetter: failCheck(
-					"currentTime setter wasn't called with right arg!"
-				),
-				currentTimeGetter: failCheck(''),
-				play: failCheck(''),
-				pause: failCheck(''),
-			};
-
-		const exp = (testId, res) => {
-			tests[testId](res);
-			counter++;
-		};
-
-		// eslint-disable-next-line
-		const Audio = function () {};
-		Audio.prototype = Object.assign(
-			Object.create(null, {
+		let pauseCalled = false, playCalled = false;
+		AudioMock.prototype = Object.assign(
+			AudioMock.prototype,
+			{
 				currentTime: {
 					set: function (val) {
-						exp('currentTimeSetter', val === 5);
+						this._time = val;
 					},
 					get: function () {
-						exp('currentTimeGetter', true);
-						return 5;
-					},
+						return this._time;
+					}
 				},
-			}),
-			{
-				// eslint-disable-next-line
-				on: () => {},
-				// eslint-disable-next-line
-				off: () => {},
 				pause: () => {
-					exp('pause', true);
+					pauseCalled = true;
 				},
 				play: () => {
-					exp('play', true);
-				},
-			}
-		);
+					playCalled = true;
+				}
+			});
 
-		window.Audio = Audio;
 		const audio = document.createElement('vwc-audio');
-		window.Audio = _Audio;
+
 		audio.currentTime = 5;
-		assert.equal(audio.currentTime, 5);
 		audio.pause();
 		audio.play();
-		assert(
-			fail.length === 0 && counter > Object.keys(tests).length,
-			fail
-				.concat(
-					counter <= Object.keys(tests).length && 'Not all methods were called'
-				)
-				.join('\n')
-		);
+		assert.equal(audio.currentTime, 5);
+		expect(audioEl.currentTime).to.equal(audio.currentTime);
+		expect(playCalled).to.equal(true);
+		expect(pauseCalled).to.equal(true);
 	});
 });
