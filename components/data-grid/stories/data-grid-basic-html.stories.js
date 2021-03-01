@@ -7,18 +7,14 @@ export default {
 }
 
 const Template = args => html`
-	<vwc-data-grid .configuration="${args.config}" .items="${args.items}">
+	<vwc-data-grid .items="${args.items}">
+		<vwc-data-grid-column path="fname" header="First Name" sortable></vwc-data-grid-column>
+		<vwc-data-grid-column path="lname" header="Last Name"></vwc-data-grid-column>
 	</vwc-data-grid>
 `;
 
-export const Basic = Template.bind({});
-Basic.args = {
-	config: {
-		columns: [
-			{ header: 'First Name', path: 'fname', sortable: true },
-			{ header: 'Last Name', path: 'lname' }
-		]
-	},
+export const BasicHTML = Template.bind({});
+BasicHTML.args = {
 	items: Array(100000).fill(0).map((_v, i) => {
 		return { fname: `A${i}`, lname: `B${i}` };
 	})
