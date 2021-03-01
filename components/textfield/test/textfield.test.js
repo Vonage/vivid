@@ -9,6 +9,7 @@ import {
 	isolatedElementsCreation,
 	randomAlpha,
 	listenToSubmission,
+	getRandom,
 } from '../../../test/test-helpers.js';
 import {
 	shapeRoundedTestCases,
@@ -71,7 +72,7 @@ describe('textfield', () => {
 
 		let fieldValue, fieldName;
 		beforeEach(function () {
-			fieldValue = Math.random().toString();
+			fieldValue = getRandom().toString();
 			fieldName = 'test-field';
 		});
 
