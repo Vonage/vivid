@@ -1,3 +1,12 @@
+## [2.0.3](https://github.com/vonage/vivid/compare/v2.0.2...v2.0.3) (2021-02-28)
+
+
+### Bug Fixes
+
+* **vwc-list:** list items twoline breaks on safari ([#684](https://github.com/vonage/vivid/issues/684)) ([0d6becf](https://github.com/vonage/vivid/commit/0d6becf2328e779a172b5f317d5817c8e83c630c))
+
+
+
 ## [2.0.2](https://github.com/vonage/vivid/compare/v2.0.1...v2.0.2) (2021-02-24)
 
 

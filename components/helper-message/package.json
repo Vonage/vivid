@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-helper-message",
-	"version": "2.0.2",
+	"version": "2.0.3",
 	"description": "[internal] helper message component to be used in textfield / textarea / select / file-picker etc",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/helper-message#readme",
 	"license": "ISC",
@@ -26,16 +26,16 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@vonage/vvd-core": "^2.0.2",
-		"@vonage/vvd-foundation": "^2.0.2",
-		"@vonage/vwc-icon": "^2.0.2",
+		"@vonage/vvd-core": "^2.0.3",
+		"@vonage/vvd-foundation": "^2.0.3",
+		"@vonage/vwc-icon": "^2.0.3",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.3"
 	},
 	"devDependencies": {
-		"@vonage/vvd-design-tokens": "^2.0.2",
-		"@vonage/vvd-typography": "^2.0.2",
-		"@vonage/vvd-umbrella": "^2.0.2",
+		"@vonage/vvd-design-tokens": "^2.0.3",
+		"@vonage/vvd-typography": "^2.0.3",
+		"@vonage/vvd-umbrella": "^2.0.3",
 		"typescript": "^4.1.3"
 	}
 }
