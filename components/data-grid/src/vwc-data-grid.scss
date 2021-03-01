@@ -1,7 +1,13 @@
+@use '@vonage/vvd-typography/scss/typography';
+
 :host {
+	@include typography.typography-cat-shorthand('body-2');
+
 	display: block;
 	min-width: 200px;
 	min-height: 150px;
 
-	outline: 5px solid #f00;
+	thead {
+		@include typography.typography-cat-shorthand('body-2-bold');
+	}
 }

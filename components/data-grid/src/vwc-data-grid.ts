@@ -36,12 +36,22 @@ export {
  */
 @customElement('vwc-data-grid')
 export class VWCDataGrid extends LitElement {
+	#items: unknown[] = [];
+
 	@property({ type: Object, reflect: false })
 	configuration: VwcGridConfiguration = { columns: [] };
 
+	set items(items: unknown[]) {
+		this.#items = items;
+		const vg = this.shadowRoot?.querySelector('vaadin-grid');
+		if (vg) {
+			vg.items = items;
+		}
+	}
+
 	protected render(): TemplateResult {
 		return html`
-			<vaadin-grid class="grid-impl">
+			<vaadin-grid>
 				${this.configuration.columns.map(cc => this.renderColumnDef(cc))}
 			</vaadin-grid>
 		`;
@@ -50,14 +60,18 @@ export class VWCDataGrid extends LitElement {
 	protected firstUpdated(): void {
 		const vwcStyle = document.createElement('style');
 		vwcStyle.innerHTML = vwcDataGridStyle.cssText;
-		this.shadowRoot?.querySelector('.grid-impl')?.shadowRoot?.appendChild(vwcStyle);
+		const vg = this.shadowRoot?.querySelector('vaadin-grid');
+		if (vg) {
+			vg.shadowRoot?.appendChild(vwcStyle);
+			vg.items = this.#items;
+		}
 	}
 
 	private renderColumnDef(cc: VwcGridColumnConfiguration): TemplateResult {
 		if (cc.sortable) {
-			return html`<vaadin-grid-sort-column header="${cc.header}"></vaadin-grid-sort-column>`;
+			return html`<vaadin-grid-sort-column path="${cc.path}" header="${cc.header}"></vaadin-grid-sort-column>`;
 		} else {
-			return html`<vaadin-grid-column header="${cc.header}"></vaadin-grid-column>`;
+			return html`<vaadin-grid-column path="${cc.path}" header="${cc.header}"></vaadin-grid-column>`;
 		}
 	}
 }

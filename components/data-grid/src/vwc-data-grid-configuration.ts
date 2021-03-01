@@ -1,6 +1,8 @@
 export interface VwcGridColumnConfiguration {
+	key?: string,
+	path: string,
 	header: string;
-	sortable: boolean;
+	sortable?: boolean;
 }
 
 export interface VwcGridConfiguration {
