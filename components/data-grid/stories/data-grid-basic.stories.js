@@ -8,8 +8,16 @@ export default {
 }
 
 const Template = args => html`
-	<vwc-data-grid></vwc-data-grid>
+	<vwc-data-grid .configuration="${args.config}">
+	</vwc-data-grid>
 `;
 
 export const Basic = Template.bind({});
-Basic.args = {};
+Basic.args = {
+	config: {
+		columns: [
+			{ header: 'First Name', sortable: true },
+			{ header: 'Last Name' }
+		]
+	}
+};
