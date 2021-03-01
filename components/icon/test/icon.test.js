@@ -7,7 +7,9 @@ import {
 	assertComputedStyle,
 } from '../../../test/test-helpers.js';
 
-const LOAD_TIME = 400;
+
+const LOAD_TRIAL_COUNT = 6;
+const LOAD_TIME = 200;
 const sleep = ms => new Promise(res => setTimeout(res, ms));
 
 describe('vwc-icon', () => {
@@ -38,15 +40,17 @@ describe('vwc-icon', () => {
 		});
 
 		Object.entries(ICON_SAMPLE).forEach(([iconName, iconData]) => {
-			it(`Should contain "${iconName}" path`, async function () {
+			it(`Should contain "${iconName}" path`, function () {
 				iconEl.setAttribute('type', iconName);
-				await sleep(LOAD_TIME);
-				assert.equal(
-					iconEl.shadowRoot
-						.querySelector('svg > path:first-child')
-						.getAttribute('d'),
-					iconData
-				);
+				return Array(LOAD_TRIAL_COUNT)
+					.fill(0)
+					.reduce(promise => promise
+						.then(status => status || sleep(LOAD_TIME)
+							.then(() => iconEl.shadowRoot
+								?.querySelector('svg > path:first-child')
+								?.getAttribute('d') === iconData)),
+					 Promise.resolve(false))
+					.then(status => assert(status, `Icon ${iconName} failed to verify`));
 			});
 		});
 	});
