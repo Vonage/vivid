@@ -52,7 +52,7 @@ jobs:
           path: |
             common
             components
-          key: vivid-cache-build-${{ github.event.pull_request.head.sha }}
+          key: vivid-cache-build-$GITHUB_SHA
 
   test-safari:
     needs: cache-yarn-and-build
