@@ -270,18 +270,18 @@ function extractNavButtons(carousel) {
 	return carousel.querySelectorAll('.swiper-nav');
 }
 
-async function moveNextAndWait(carousel) {
+function moveNextAndWait(carousel) {
 	const nextButton = carousel.querySelector('.swiper-button-next');
 	return new Promise((r) => {
-		carousel.swiper.once('slideNextTransitionEnd', async () => r());
+		carousel.swiper.once('slideNextTransitionEnd', r);
 		nextButton.click();
 	});
 }
 
-async function movePrevAndWait(carousel) {
+function movePrevAndWait(carousel) {
 	const nextButton = carousel.querySelector('.swiper-button-prev');
 	return new Promise((r) => {
-		carousel.swiper.once('slidePrevTransitionEnd', async () => r());
+		carousel.swiper.once('slidePrevTransitionEnd', r);
 		nextButton.click();
 	});
 }
