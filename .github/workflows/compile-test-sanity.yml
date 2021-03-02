@@ -108,6 +108,6 @@ jobs:
 
       - name: Test components
         env:
-          BROWSERSTACK_ACCESS: ${{ secrets.BROWSERSTACK_ACCESS }}
-          BROWSERSTACK_SECRET: ${{ secrets.BROWSERSTACK_SECRET }}
+          BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_ACCESS }}
+          BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_SECRET }}
         run: yarn test:bs --browsers=Safari_13_BS
