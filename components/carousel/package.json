@@ -7,7 +7,6 @@
 	"main": "vwc-carousel.js",
 	"module": "vwc-carousel.js",
 	"files": [
-		"src",
 		"*.js",
 		"*.ts",
 		"*.map"
