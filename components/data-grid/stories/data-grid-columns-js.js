@@ -5,15 +5,15 @@ import { html } from 'lit-element';
 import { sequentalData } from './data-grid-demo-data-provider';
 
 const Template = args => html`
-	<div class="sort-controls">
-		<vwc-formfield label="Multisort">
-			<vwc-checkbox class="multi-sort" @change="${multisortToggle}"></vwc-checkbox>
+	<div class="column-controls">
+		<vwc-formfield label="Reordering">
+			<vwc-checkbox class="multi-sort" @change="${reorderingToggle}"></vwc-checkbox>
 		</vwc-formfield>
-		<vwc-formfield label="First Name sortable">
-			<vwc-checkbox class="fn-sortable" @change="${sortableToggle}"></vwc-checkbox>
+		<vwc-formfield label="First Name resizable">
+			<vwc-checkbox class="fn-resizable" @change="${resizableToggle}"></vwc-checkbox>
 		</vwc-formfield>
-		<vwc-formfield label="Last Name sortable">
-			<vwc-checkbox class="ln-sortable" @change="${sortableToggle}"></vwc-checkbox>
+		<vwc-formfield label="Last Name resizable">
+			<vwc-checkbox class="ln-resizable" @change="${resizableToggle}"></vwc-checkbox>
 		</vwc-formfield>
 	</div>
 	<vwc-data-grid .columns="${args.columns}" .items="${args.items}">
@@ -29,19 +29,19 @@ SortJavascript.args = {
 	items: sequentalData({ fname: 'A-{i}', lname: 'B-{i}' }, 100000)
 };
 
-function multisortToggle(e) {
+function reorderingToggle(e) {
 	const v = e.target.checked;
 	const grid = document.querySelector('vwc-data-grid');
-	grid.multiSort = v;
+	grid.reordering = v;
 }
 
-function sortableToggle(e) {
+function resizableToggle(e) {
 	const v = e.target.checked;
 	const grid = document.querySelector('vwc-data-grid');
-	if (e.target.classList.contains('fn-sortable')) {
-		grid.columns[0].sortable = v;
+	if (e.target.classList.contains('fn-resizable')) {
+		grid.columns[0].resizable = v;
 	} else {
-		grid.columns[1].sortable = v;
+		grid.columns[1].resizable = v;
 	}
 	grid.requestUpdate();
 }

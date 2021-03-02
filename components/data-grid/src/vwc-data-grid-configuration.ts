@@ -1,6 +1,6 @@
 export interface VwcGridColumnConfiguration {
-	key?: string,
-	path: string,
+	path: string;
 	header: string;
 	sortable?: boolean;
+	resizable?: boolean;
 }

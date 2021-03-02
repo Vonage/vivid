@@ -35,18 +35,16 @@ export {
  */
 @customElement('vwc-data-grid')
 export class VWCDataGrid extends LitElement {
-	#columns: VwcGridColumnConfiguration[] = [];
 	#items: unknown[] = [];
 
 	@property({ type: Boolean, reflect: true, attribute: 'multi-sort' })
 	multiSort = false;
 
-	set columns(columns: VwcGridColumnConfiguration[]) {
-		//	TODO: validations
-		const oldColumns = this.#columns;
-		this.#columns = columns;
-		this.requestUpdate('columns', oldColumns);
-	}
+	@property({ type: Boolean, reflect: true })
+	reordering = false;
+
+	@property({ type: Object, reflect: false })
+	columns: VwcGridColumnConfiguration[] = [];
 
 	set items(items: unknown[]) {
 		//	TODO: validations
@@ -59,8 +57,8 @@ export class VWCDataGrid extends LitElement {
 
 	protected render(): TemplateResult {
 		return html`
-			<vaadin-grid ?multi-sort="${this.multiSort}">
-				${this.#columns.map(cc => this.renderColumnDef(cc))}
+			<vaadin-grid ?multi-sort="${this.multiSort}" ?column-reordering-allowed="${this.reordering}">
+				${this.columns.map(cc => this.renderColumnDef(cc))}
 			</vaadin-grid>
 		`;
 	}
@@ -79,7 +77,11 @@ export class VWCDataGrid extends LitElement {
 		if (cc.sortable) {
 			return html`<vaadin-grid-sort-column path="${cc.path}" header="${cc.header}"></vaadin-grid-sort-column>`;
 		} else {
-			return html`<vaadin-grid-column path="${cc.path}" header="${cc.header}"></vaadin-grid-column>`;
+			return html`<vaadin-grid-column path="${cc.path}" header="${cc.header}" .footerRenderer="${this.test}"></vaadin-grid-column>`;
 		}
+	}
+
+	private test() {
+		console.log('something');
 	}
 }
