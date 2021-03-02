@@ -1,19 +1,20 @@
 import '@vonage/vwc-carousel';
 import schemeService from '@vonage/vvd-scheme';
 import {
+	isolatedElementsCreation,
 	textToDomToParent,
 	waitNextTask,
 	waitInterval,
 	assertComputedStyle,
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
-import { isolatedElementsCreation } from '../../../test/test-helpers';
 chai.use(chaiDomDiff);
 
 const VWC_CAROUSEL = 'vwc-carousel',
 	VWC_CAROUSEL_ITEM = 'vwc-carousel-item';
 
-let addElement = isolatedElementsCreation();
+const addElements = isolatedElementsCreation();
+
 describe('carousel', () => {
 	beforeEach(async () => {
 		await schemeService.set('light');
@@ -33,11 +34,11 @@ describe('carousel', () => {
 
 	describe('init flow', () => {
 		it('should have the required elements', async () => {
-			const actualElements = addElement(
-				textToDomToParent(`<${VWC_CAROUSEL} id="carousel-a"></${VWC_CAROUSEL}>`)
+			const [c] = addElements(
+				textToDomToParent(`<${VWC_CAROUSEL}></${VWC_CAROUSEL}>`)
 			);
 			await waitInterval(70);
-			expect(actualElements[0]).dom.to.equalSnapshot();
+			expect(c).dom.to.equalSnapshot();
 		});
 	});
 
@@ -55,97 +56,97 @@ describe('carousel', () => {
 		});
 
 		it('should slide to the right when click on next', async function () {
-			this.timeout(5000);
+			this.timeout(12000);
 
-			const carousel = await initCarousel(['a', 'b', 'c', 'd', 'e']);
+			const c = await initCarousel(['a', 'b', 'c', 'd', 'e']);
 
-			assertOrder(carousel, ['e', 'a', 'b', 'c', 'd'], 1);
+			assertOrder(c, ['e', 'a', 'b', 'c', 'd'], 1);
 
-			await moveNextAndWait(carousel);
-			assertOrder(carousel, ['e', 'a', 'b', 'c', 'd'], 2);
+			await moveNextAndWait(c);
+			assertOrder(c, ['e', 'a', 'b', 'c', 'd'], 2);
 
-			await moveNextAndWait(carousel);
-			assertOrder(carousel, ['e', 'a', 'b', 'c', 'd'], 3);
+			await moveNextAndWait(c);
+			assertOrder(c, ['e', 'a', 'b', 'c', 'd'], 3);
 
-			await moveNextAndWait(carousel);
-			assertOrder(carousel, ['a', 'b', 'c', 'd', 'e'], 3);
+			await moveNextAndWait(c);
+			assertOrder(c, ['a', 'b', 'c', 'd', 'e'], 3);
 
 			//	back and forth in the middle
-			await movePrevAndWait(carousel);
-			assertOrder(carousel, ['a', 'b', 'c', 'd', 'e'], 2);
-			await moveNextAndWait(carousel);
-			assertOrder(carousel, ['a', 'b', 'c', 'd', 'e'], 3);
+			await movePrevAndWait(c);
+			assertOrder(c, ['a', 'b', 'c', 'd', 'e'], 2);
+			await moveNextAndWait(c);
+			assertOrder(c, ['a', 'b', 'c', 'd', 'e'], 3);
 
-			await moveNextAndWait(carousel);
-			assertOrder(carousel, ['b', 'c', 'd', 'e', 'a'], 3);
+			await moveNextAndWait(c);
+			assertOrder(c, ['b', 'c', 'd', 'e', 'a'], 3);
 
-			await moveNextAndWait(carousel);
-			assertOrder(carousel, ['c', 'd', 'e', 'a', 'b'], 3);
+			await moveNextAndWait(c);
+			assertOrder(c, ['c', 'd', 'e', 'a', 'b'], 3);
 
-			carousel.remove();
+			c.remove();
 		});
 
 		it('should slide to the left when click on prev', async function () {
-			this.timeout(5000);
+			this.timeout(12000);
 
-			const carousel = await initCarousel(['a', 'b', 'c', 'd', 'e']);
+			const c = await initCarousel(['a', 'b', 'c', 'd', 'e']);
 
-			assertOrder(carousel, ['e', 'a', 'b', 'c', 'd'], 1);
-
-			await waitInterval(20);
-			await movePrevAndWait(carousel);
-			assertOrder(carousel, ['d', 'e', 'a', 'b', 'c'], 1);
+			assertOrder(c, ['e', 'a', 'b', 'c', 'd'], 1);
 
 			await waitInterval(20);
-			await movePrevAndWait(carousel);
-			assertOrder(carousel, ['c', 'd', 'e', 'a', 'b'], 1);
+			await movePrevAndWait(c);
+			assertOrder(c, ['d', 'e', 'a', 'b', 'c'], 1);
 
 			await waitInterval(20);
-			await movePrevAndWait(carousel);
-			assertOrder(carousel, ['b', 'c', 'd', 'e', 'a'], 1);
+			await movePrevAndWait(c);
+			assertOrder(c, ['c', 'd', 'e', 'a', 'b'], 1);
+
+			await waitInterval(20);
+			await movePrevAndWait(c);
+			assertOrder(c, ['b', 'c', 'd', 'e', 'a'], 1);
 
 			//	back and forth in the middle
-			await moveNextAndWait(carousel);
-			assertOrder(carousel, ['b', 'c', 'd', 'e', 'a'], 2);
-			await movePrevAndWait(carousel);
-			assertOrder(carousel, ['b', 'c', 'd', 'e', 'a'], 1);
+			await moveNextAndWait(c);
+			assertOrder(c, ['b', 'c', 'd', 'e', 'a'], 2);
+			await movePrevAndWait(c);
+			assertOrder(c, ['b', 'c', 'd', 'e', 'a'], 1);
 
 			await waitInterval(20);
-			await movePrevAndWait(carousel);
-			assertOrder(carousel, ['a', 'b', 'c', 'd', 'e'], 1);
+			await movePrevAndWait(c);
+			assertOrder(c, ['a', 'b', 'c', 'd', 'e'], 1);
 
 			await waitInterval(20);
-			await movePrevAndWait(carousel);
-			assertOrder(carousel, ['e', 'a', 'b', 'c', 'd'], 1);
+			await movePrevAndWait(c);
+			assertOrder(c, ['e', 'a', 'b', 'c', 'd'], 1);
 
-			carousel.remove();
+			c.remove();
 		});
 	});
 
 	describe('autoplay', () => {
 		it('should move slides automatically when autoplay is true', async function () {
 			this.timeout(3000);
-			const carousel = await initCarousel(['a', 'b', 'c'], { autoplay: true });
-			let slides = extractSlides(carousel);
+			const c = await initCarousel(['a', 'b', 'c'], { autoplay: true });
+			let slides = extractSlides(c);
 
 			expect(slides[1].dataset.key).to.equal('a');
 			expect(slides[1].classList.contains('swiper-slide-active'));
 
 			await waitInterval(2900);
-			slides = extractSlides(carousel);
+			slides = extractSlides(c);
 
 			expect(slides[1].dataset.key).to.equal('b');
 			expect(slides[1].classList.contains('swiper-slide-active'));
 
-			carousel.remove();
+			c.remove();
 		});
 	});
 
 	describe('click on slide', function () {
 		it('should preserve click listeners of slides after sliding', async () => {
-			const carousel = await initCarousel(['a', 'b', 'c']);
-			const slides = extractSlides(carousel);
-			const nextButton = carousel.querySelector('.swiper-button-next');
+			const c = await initCarousel(['a', 'b', 'c']);
+			const slides = extractSlides(c);
+			const nextButton = c.querySelector('.swiper-button-next');
 
 			const clicked = [];
 			slides.forEach((s) =>
@@ -160,14 +161,14 @@ describe('carousel', () => {
 			slides.forEach((s) => s.click());
 			slides.forEach((s, i) => expect(s).to.equal(clicked[i]));
 
-			carousel.remove();
+			c.remove();
 		});
 	});
 
 	describe('styling applied', () => {
 		it('should have the pagination bullets colored', async () => {
-			const carousel = await initCarousel(['a', 'b', 'c']);
-			const bullets = extractBullets(carousel);
+			const c = await initCarousel(['a', 'b', 'c']);
+			const bullets = extractBullets(c);
 			const scheme = schemeService.getSelectedScheme();
 			const expectedStyleActive = {
 				backgroundColor: scheme === 'light' ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)',
@@ -179,12 +180,12 @@ describe('carousel', () => {
 			assertComputedStyle(bullets[1], expectedStyleInactive);
 			assertComputedStyle(bullets[2], expectedStyleInactive);
 
-			carousel.remove();
+			c.remove();
 		});
 
 		it('should have the navigation buttons colored', async () => {
-			const carousel = await initCarousel(['a', 'b', 'c']);
-			const navButtons = extractNavButtons(carousel);
+			const c = await initCarousel(['a', 'b', 'c']);
+			const navButtons = extractNavButtons(c);
 			const scheme = schemeService.getSelectedScheme();
 			const expectedStyle = {
 				fill: scheme === 'light' ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)',
@@ -198,7 +199,7 @@ describe('carousel', () => {
 			assertComputedStyle(navButtons[0], expectedStyle);
 			assertComputedStyle(navButtons[1], expectedStyle);
 
-			carousel.remove();
+			c.remove();
 		});
 	});
 });
@@ -239,10 +240,10 @@ async function initCarousel(slideKeys, carouselOptions) {
 
 	const slidesText = buildSlidesText(slideKeys);
 	const carouselText = buildCarouselText(slidesText, carouselOptions);
-	const carouselDOM = addElement(textToDomToParent(carouselText, document.body));
+	const [c] = addElements(textToDomToParent(carouselText, document.body));
 
 	await waitNextTask();
-	return carouselDOM[0];
+	return c;
 }
 
 function extractSlides(carousel) {
