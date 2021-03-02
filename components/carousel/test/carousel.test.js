@@ -62,12 +62,15 @@ describe('carousel', () => {
 
 			assertOrder(c, ['e', 'a', 'b', 'c', 'd'], 1);
 
+			await waitInterval(20);
 			await moveNextAndWait(c);
 			assertOrder(c, ['e', 'a', 'b', 'c', 'd'], 2);
 
+			await waitInterval(20);
 			await moveNextAndWait(c);
 			assertOrder(c, ['e', 'a', 'b', 'c', 'd'], 3);
 
+			await waitInterval(20);
 			await moveNextAndWait(c);
 			assertOrder(c, ['a', 'b', 'c', 'd', 'e'], 3);
 
