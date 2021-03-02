@@ -52,7 +52,7 @@ jobs:
           path: |
             common
             components
-          key: vivid-cache-build-${GITHUB_SHA}
+          key: vivid-cache-build-$GITHUB_SHA
 
   test-safari:
     needs: cache-yarn-and-build
@@ -98,7 +98,7 @@ jobs:
           path: |
             common
             components
-          key: vivid-cache-build-${GITHUB_SHA}
+          key: vivid-cache-build-$GITHUB_SHA
 
       - name: Build components
         if: steps.build-cache.outputs.cache-hit != 'true'
