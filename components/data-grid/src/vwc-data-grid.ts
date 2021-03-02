@@ -1,6 +1,5 @@
 import '@vonage/vvd-core';
 import {
-	VwcGridConfiguration,
 	VwcGridColumnConfiguration
 } from './vwc-data-grid-configuration';
 
@@ -26,7 +25,7 @@ declare global {
 }
 
 export {
-	VwcGridConfiguration
+	VwcGridColumnConfiguration
 };
 
 /**
@@ -36,12 +35,21 @@ export {
  */
 @customElement('vwc-data-grid')
 export class VWCDataGrid extends LitElement {
+	#columns: VwcGridColumnConfiguration[] = [];
 	#items: unknown[] = [];
 
-	@property({ type: Object, reflect: false })
-	configuration: VwcGridConfiguration = { columns: [] };
+	@property({ type: Boolean, reflect: true, attribute: 'multi-sort' })
+	multiSort = false;
+
+	set columns(columns: VwcGridColumnConfiguration[]) {
+		//	TODO: validations
+		const oldColumns = this.#columns;
+		this.#columns = columns;
+		this.requestUpdate('columns', oldColumns);
+	}
 
 	set items(items: unknown[]) {
+		//	TODO: validations
 		this.#items = items;
 		const vg = this.shadowRoot?.querySelector('vaadin-grid');
 		if (vg) {
@@ -51,8 +59,8 @@ export class VWCDataGrid extends LitElement {
 
 	protected render(): TemplateResult {
 		return html`
-			<vaadin-grid>
-				${this.configuration.columns.map(cc => this.renderColumnDef(cc))}
+			<vaadin-grid ?multi-sort="${this.multiSort}">
+				${this.#columns.map(cc => this.renderColumnDef(cc))}
 			</vaadin-grid>
 		`;
 	}

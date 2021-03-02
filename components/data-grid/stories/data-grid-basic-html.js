@@ -1,11 +1,6 @@
 import '@vonage/vwc-data-grid';
 import { html } from 'lit-element';
 
-export default {
-	title: 'Components/Composite/DataGrid',
-	component: 'vwc-data-grid',
-}
-
 const Template = args => html`
 	<vwc-data-grid .items="${args.items}">
 		<vwc-data-grid-column path="fname" header="First Name" sortable></vwc-data-grid-column>
