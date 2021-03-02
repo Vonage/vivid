@@ -53,6 +53,12 @@ export const argTypes = {
 			options: { 'true': '', 'false': undefined }
 		}
 	},
+	fixed: {
+		control: {
+			type: 'inline-radio',
+			options: { 'true': '', 'false': undefined }
+		}
+	},
 	inline: {
 		control: {
 			type: 'inline-radio',

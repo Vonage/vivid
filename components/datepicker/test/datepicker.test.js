@@ -35,7 +35,7 @@ describe('datepicker', () => {
 		addElement(
 			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 		);
-		await waitInterval(800);
+		await waitInterval(500);
 
 		const datepicker = document.querySelector('.vvd-datepicker');
 		const customHeader = datepicker.querySelector('.vvd-datepicker-header');
@@ -56,7 +56,7 @@ describe('datepicker', () => {
 				</${COMPONENT_NAME}>
 			`)
 		);
-		await waitInterval(800);
+		await waitInterval(500);
 
 		actualElement.defaultDate = 'today';
 		await waitNextTask();
@@ -71,7 +71,7 @@ describe('datepicker', () => {
 				<${COMPONENT_NAME} fixed></${COMPONENT_NAME}>
 			`)
 		);
-		await waitInterval(800);
+		await waitInterval(500);
 
 		const datepicker = document.querySelector('.vvd-datepicker');
 		assertComputedStyle(datepicker, { position: 'fixed' });
@@ -86,7 +86,7 @@ describe('datepicker', () => {
 					</${COMPONENT_NAME}>
 				`)
 			);
-			await waitInterval(800);
+			await waitInterval(500);
 
 			let datepicker = document.querySelector('.vvd-datepicker');
 			assertComputedStyle(datepicker, { display: 'none' });
@@ -105,7 +105,7 @@ describe('datepicker', () => {
 					<${COMPONENT_NAME} inline monthPicker></${COMPONENT_NAME}>
 				`)
 			);
-			await waitInterval(800);
+			await waitInterval(500);
 
 			const months = document.querySelector('.vvd-datepicker-month-view .vvd-datepicker-months');
 			assertComputedStyle(months, { display: 'block' });
@@ -117,7 +117,7 @@ describe('datepicker', () => {
 					<${COMPONENT_NAME} inline mode="range"></${COMPONENT_NAME}>
 				`)
 			);
-			await waitInterval(800);
+			await waitInterval(500);
 
 			const range = document.querySelector('.vvd-datepicker-range');
 			assertComputedStyle(range, { display: 'flex' });
