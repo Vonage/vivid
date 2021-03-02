@@ -144,7 +144,7 @@ class VWCAudio extends HTMLElement {
 	get src(): string {
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		// @ts-ignore
-		return [SYMBOL_AUDIO_EL].src;
+		return this[SYMBOL_AUDIO_EL].src;
 	}
 
 	set src(source: string) {
