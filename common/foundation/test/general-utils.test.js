@@ -10,7 +10,7 @@ describe(`general-utils`, function () {
 			const testComponent = document.createElement('general-utils-test-component');
 			testComponent.dense = true;
 			testComponent.enlarged = true;
-			handleMultipleDenseProps(testComponent, { has: (type) => type === 'dense' });
+			handleMultipleDenseProps(testComponent, { has: type => type === 'dense' });
 			expect(testComponent.enlarged).to.equal(false);
 		});
 
@@ -20,7 +20,7 @@ describe(`general-utils`, function () {
 			testComponent.dense = true;
 			testComponent.enlarged = true;
 			handleMultipleDenseProps(testComponent, {
-				has: (type) => type === 'enlarged',
+				has: type => type === 'enlarged',
 			});
 			expect(testComponent.dense).to.equal(false);
 			expect(testComponent.getAttribute('dense')).to.equal(null);

@@ -49,6 +49,17 @@ describe('textfield', () => {
 		expect(e).shadowDom.equalSnapshot();
 	});
 
+	it('should have the MWC input class transparent for events', async () => {
+		const [e] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+		);
+		await waitNextTask();
+		const te = e.shadowRoot.querySelector('.mdc-text-field__input');
+		expect(te).exist;
+		console.log(getComputedStyle(te));
+		assertComputedStyle(te, { pointerEvents: 'none' });
+	});
+
 	describe('typography', () => {
 		typographyTestCases(COMPONENT_NAME);
 	});
@@ -70,7 +81,8 @@ describe('textfield', () => {
 			);
 		}
 
-		let fieldValue, fieldName;
+		let fieldValue,
+			fieldName;
 		beforeEach(function () {
 			fieldValue = getRandom().toString();
 			fieldName = 'test-field';
@@ -153,7 +165,8 @@ describe('textfield', () => {
 		describe(`validation`, function () {
 			const invalidValue = '';
 			const validValue = 'abc';
-			let formElement, actualElement;
+			let formElement,
+				actualElement;
 
 			beforeEach(async function () {
 				[formElement] = addElement(createElementInForm(fieldName, validValue));

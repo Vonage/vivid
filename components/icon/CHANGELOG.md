@@ -1,3 +1,12 @@
+## [2.0.4](https://github.com/Vonage/vivid/compare/v2.0.3...v2.0.4) (2021-03-03)
+
+
+### Bug Fixes
+
+* **icon:** retry loading icon on test (jira-417) ([#682](https://github.com/Vonage/vivid/issues/682)) ([ef583d5](https://github.com/Vonage/vivid/commit/ef583d502491570c2903e54eccb4caf000c31014))
+
+
+
 ## [2.0.3](https://github.com/Vonage/vivid/compare/v2.0.2...v2.0.3) (2021-02-28)
 
 
