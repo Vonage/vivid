@@ -3,4 +3,5 @@ export interface VwcGridColumnConfiguration {
 	header: string;
 	sortable?: boolean;
 	resizable?: boolean;
+	footerRenderer?(): void;
 }
