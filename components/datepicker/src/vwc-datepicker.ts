@@ -44,7 +44,7 @@ export class VWCDatepicker extends LitFlatpickr {
 	@property({ type: Boolean, reflect: true })
 	fixed = false;
 
-	positionElement = undefined;
+	positionElement: HTMLElement | undefined = undefined;
 
 	// prevents flatpickr being appended to document body
 	private appendTo: HTMLElement | undefined = this;
@@ -62,13 +62,8 @@ export class VWCDatepicker extends LitFlatpickr {
 		headStyle.innerHTML = vwcDatepickerHeadStyles.cssText;
 		document.head.appendChild(headStyle);
 
-		this.onReady = () => {
-			this.readyHandler();
-		};
-
-		this.onChange = (e) => {
-			this.changeHandler(e);
-		};
+		// dispatched by flatpickr on date change
+		this.addEventListener('change', this.changeHandler);
 	}
 
 	// firstUpdated(): void {
@@ -86,10 +81,11 @@ export class VWCDatepicker extends LitFlatpickr {
 
 	// override LitFlatpickr to remove cdn styles
 	async init() {
+		this.renderCustomParts();
 		this.initializeComponent();
 	}
 
-	private readyHandler(): void {
+	private renderCustomParts(): void {
 		// wait for DOM
 		setTimeout(() => {
 			if (!this._instance?.isMobile || this.disableMobile) {
@@ -114,11 +110,13 @@ export class VWCDatepicker extends LitFlatpickr {
 		}, 0);
 	}
 
-	private changeHandler(e: Date[]): void {
+	private changeHandler(): void {
 		// populate dates in custom range container
 		if (this._instance && this.mode === 'range') {
-			const startDate = e[0] ? this._instance.formatDate(e[0], 'M j, Y') : '';
-			const endDate = e[1] ? this._instance.formatDate(e[1], 'M j, Y') : '';
+			const dates = this._instance?.selectedDates;
+
+			const startDate = dates[0] ? this._instance.formatDate(dates[0], 'M j, Y') : '';
+			const endDate = dates[1] ? this._instance.formatDate(dates[1], 'M j, Y') : '';
 
 			const rangeStart = this._instance.calendarContainer.querySelector(
 				'.vvd-datepicker-range-start'
