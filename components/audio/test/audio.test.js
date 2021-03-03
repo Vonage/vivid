@@ -27,9 +27,11 @@ describe('vwc-audio', () => {
 					if (!this.listeners[type]) return;
 					this.listeners[type].forEach(cb => cb({}));
 				},
-				// removeEventListener: function () {},
-				// play: function () {},
-				// pause: function () {}
+				/* eslint-disable @typescript-eslint/no-empty-function */
+				removeEventListener: function () {},
+				play: function () {},
+				pause: function () {}
+				/* eslint-enable @typescript-eslint/no-empty-function */
 			}
 		);
 	}
