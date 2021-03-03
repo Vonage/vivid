@@ -87,7 +87,15 @@ export class VWCDataGrid extends LitElement implements VwcGridAPI {
 	//	TODO: optimize the logic below
 	private renderColumnDef(cc: VwcGridColumnAPI): TemplateResult {
 		if (cc.tree) {
-			return html`<vaadin-grid-tree-column path="${cc.path}" header="${cc.header}" ?hidden="${cc.hidden}" ?resizable="${cc.resizable}" .renderer="${cc.cellRenderer}" .footerRenderer="${cc.footerRenderer}"></vaadin-grid-tree-column>`;
+			return html`<vaadin-grid-tree-column
+				path="${cc.path}"
+				header="${cc.header}"
+				?hidden="${cc.hidden}"
+				?resizable="${cc.resizable}"
+				.renderer="${cc.cellRenderer}"
+				.footerRenderer="${cc.footerRenderer}"
+			>
+			</vaadin-grid-tree-column>`;
 		} else {
 			return html`<vaadin-grid-column
 				path="${cc.path}"
@@ -96,10 +104,14 @@ export class VWCDataGrid extends LitElement implements VwcGridAPI {
 				.renderer="${cc.cellRenderer}"
 				.footerRenderer="${cc.footerRenderer}"
 			>
-				${cc.sortable
-		? html`<template class="header"><vaadin-grid-sorter path="${cc.path}">${cc.header}</vaadin-grid-sorter></template>`
-		: html`<template class="header">${cc.header}</template>`}
+				${this.renderInColumnExtension(cc)}
 			</vaadin-grid-column>`;
 		}
+	}
+
+	private renderInColumnExtension(cc: VwcGridColumnAPI): TemplateResult {
+		return cc.sortable
+			? html`<template class="header"><vaadin-grid-sorter path="${cc.path}">${cc.header}</vaadin-grid-sorter></template>`
+			: html`<template class="header">${cc.header}</template>`;
 	}
 }
