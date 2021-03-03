@@ -28,8 +28,7 @@ describe('badge connotation', () => {
 		);
 		await waitNextTask();
 
-		const syncMatchFn = (connotation) =>
-			badge.connotation == connotation &&
+		const syncMatchFn = connotation => badge.connotation == connotation &&
 			badge.getAttribute('connotation') == connotation;
 
 		let connotationValue = 'cta';

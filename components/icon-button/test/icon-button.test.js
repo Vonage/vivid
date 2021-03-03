@@ -49,7 +49,8 @@ describe('icon button', () => {
 	});
 
 	describe('icon button layout', () => {
-		let formElement, actualElement;
+		let formElement,
+			actualElement;
 		beforeEach(async () => {
 			const addedElements = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} icon="bin"></${COMPONENT_NAME}>`)

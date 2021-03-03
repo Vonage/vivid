@@ -13,7 +13,7 @@ describe('file picker - negative cases', () => {
 	it('should alert on mulitple elements slotted', async () => {
 		const oce = console.error;
 		let eMessage = null;
-		console.error = m => {
+		console.error = (m) => {
 			eMessage = m;
 		};
 		addElements(textToDomToParent(`<${VWC_COMPONENT}><input/><input/></${VWC_COMPONENT}>`));
@@ -25,7 +25,7 @@ describe('file picker - negative cases', () => {
 	it('should alert on non-input slotted', async () => {
 		const oce = console.error;
 		let eMessage = null;
-		console.error = m => {
+		console.error = (m) => {
 			eMessage = m;
 		};
 		addElements(textToDomToParent(`<${VWC_COMPONENT}><div></div></${VWC_COMPONENT}>`));
@@ -37,19 +37,7 @@ describe('file picker - negative cases', () => {
 	it('should alert on non-file input slotted', async () => {
 		const oce = console.error;
 		let eMessage = null;
-		console.error = m => {
-			eMessage = m;
-		};
-		addElements(textToDomToParent(`<${VWC_COMPONENT}><input/></${VWC_COMPONENT}>`));
-		await waitNextTask();
-		expect(eMessage).equal(`only an INPUT of type 'file' expected; found 'null'`);
-		console.error = oce;
-	});
-
-	it('should alert on non-file input slotted', async () => {
-		const oce = console.error;
-		let eMessage = null;
-		console.error = m => {
+		console.error = (m) => {
 			eMessage = m;
 		};
 		addElements(textToDomToParent(`<${VWC_COMPONENT}><input/></${VWC_COMPONENT}>`));

@@ -49,9 +49,7 @@ describe('vvd-fonts service', () => {
 					iframe.contentDocument
 				);
 				if (iframe.contentDocument.readyState !== 'complete') {
-					await new Promise((resolve) =>
-						iframe.contentDocument.addEventListener('DOMContentLoaded', resolve)
-					);
+					await new Promise(resolve => iframe.contentDocument.addEventListener('DOMContentLoaded', resolve));
 				}
 				await iframe.contentWindow.vvdFonts.init();
 				assertTestElementAndClean(testElement, baseElement);
