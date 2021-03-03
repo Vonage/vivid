@@ -43,6 +43,9 @@ export class VWCDataGrid extends LitElement {
 	@property({ type: Boolean, reflect: true })
 	reordering = false;
 
+	@property({ type: Function, reflect: false })
+	rowDetailsRenderer = null;
+
 	@property({ type: Object, reflect: false })
 	columns: VwcGridColumnConfiguration[] = [];
 
@@ -57,7 +60,7 @@ export class VWCDataGrid extends LitElement {
 
 	protected render(): TemplateResult {
 		return html`
-			<vaadin-grid ?multi-sort="${this.multiSort}" ?column-reordering-allowed="${this.reordering}">
+			<vaadin-grid ?multi-sort="${this.multiSort}" ?column-reordering-allowed="${this.reordering}" .rowDetailsRenderer="${this.rowDetailsRenderer}">
 				${this.columns.map(cc => this.renderColumnDef(cc))}
 			</vaadin-grid>
 		`;
@@ -73,11 +76,12 @@ export class VWCDataGrid extends LitElement {
 		}
 	}
 
+	//	TODO: optimize the logic below
 	private renderColumnDef(cc: VwcGridColumnConfiguration): TemplateResult {
 		if (cc.sortable) {
-			return html`<vaadin-grid-sort-column path="${cc.path}" header="${cc.header}" ?resizable="${cc.resizable}" .footerRenderer="${cc.footerRenderer}"></vaadin-grid-sort-column>`;
+			return html`<vaadin-grid-sort-column path="${cc.path}" header="${cc.header}" ?hidden="${cc.hidden}" ?resizable="${cc.resizable}" .renderer="${cc.cellRenderer}" .footerRenderer="${cc.footerRenderer}"></vaadin-grid-sort-column>`;
 		} else {
-			return html`<vaadin-grid-column path="${cc.path}" header="${cc.header}" ?resizable="${cc.resizable}" .footerRenderer="${cc.footerRenderer}"></vaadin-grid-column>`;
+			return html`<vaadin-grid-column path="${cc.path}" header="${cc.header}" ?hidden="${cc.hidden}" ?resizable="${cc.resizable}" .renderer="${cc.cellRenderer}" .footerRenderer="${cc.footerRenderer}"></vaadin-grid-column>`;
 		}
 	}
 }

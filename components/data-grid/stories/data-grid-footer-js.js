@@ -7,8 +7,8 @@ const Template = args => html`
 	</vwc-data-grid>
 `;
 
-export const FooterJavascript = Template.bind({});
-FooterJavascript.args = {
+export const FooterJS = Template.bind({});
+FooterJS.args = {
 	columns: [
 		{ header: 'First Name', path: 'fname' },
 		{ header: 'Last Name', path: 'lname', footerRenderer: lNameFooter }
@@ -16,6 +16,6 @@ FooterJavascript.args = {
 	items: sequentalData({ fname: 'A-{i}', lname: 'B-{i}' }, 100000)
 };
 
-function lNameFooter() {
-	console.log(arguments);
+function lNameFooter(container) {
+	container.textContent = `Total: ${FooterJS.args.items.length}`;
 }
