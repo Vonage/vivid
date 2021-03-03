@@ -5,16 +5,11 @@
 		"rootDir": "src",
 		"outDir": ".",
 		"tsBuildInfoFile": ".tsbuildinfo",
-		"experimentalDecorators": true
 	},
-	"include": ["src/*.ts"],
-	"exclude": ["src/test/*.ts"],
-	"references": [
-		{
-			"path": "../../common/core"
-		},
-		{
-			"path": "../../common/foundation"
-		}
+	"include": [
+		"src/*.ts"
+	],
+	"exclude": [
+		"src/test/*.ts"
 	]
 }

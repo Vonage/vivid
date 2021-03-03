@@ -20,21 +20,25 @@ BasicJS.args = {
 };
 
 function cellRenderer(container, column, data) {
-	if (!container.childElementCount) {
-		const t = document.createElement('vwc-checkbox');
-		container.appendChild(t);
-		t.addEventListener('change', e => {
+	const grid = column.parentNode;
+	let toggler = container.firstElementChild;
+	if (!toggler) {
+		toggler = document.createElement('vwc-checkbox');
+		container.appendChild(toggler);
+		toggler.addEventListener('change', e => {
 			if (e.target.checked) {
-				column.parentNode.openItemDetails(data.item);
+				grid.openItemDetails(container.data.item);
 			} else {
-				column.parentNode.closeItemDetails(data.item);
+				grid.closeItemDetails(container.data.item);
 			}
 		});
 	}
+	container.data = data;
+	toggler.checked = data.detailsOpened;
 }
 
 function expandedRowRenderer(container, grid, data) {
-	if (!container.childElementCount) {
+	if (!container.firstElementChild) {
 		const n = document.createElement('vwc-note');
 		n.connotation = 'info';
 		n.icon = 'info';

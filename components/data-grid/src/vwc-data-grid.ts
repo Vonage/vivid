@@ -1,7 +1,8 @@
 import '@vonage/vvd-core';
 import {
-	VwcGridColumnConfiguration
-} from './vwc-data-grid-configuration';
+	VwcGridAPI,
+	VwcGridColumnAPI
+} from './vwc-data-grid-api';
 
 import '@vaadin/vaadin-grid/vaadin-grid.js';
 import '@vaadin/vaadin-grid/vaadin-grid-column';
@@ -25,7 +26,8 @@ declare global {
 }
 
 export {
-	VwcGridColumnConfiguration
+	VwcGridAPI,
+	VwcGridColumnAPI
 };
 
 /**
@@ -34,7 +36,8 @@ export {
  * @element vwc-data-grid
  */
 @customElement('vwc-data-grid')
-export class VWCDataGrid extends LitElement {
+export class VWCDataGrid extends LitElement implements VwcGridAPI {
+	#columns: VwcGridColumnAPI[] = [];
 	#items: unknown[] = [];
 
 	@property({ type: Boolean, reflect: true, attribute: 'multi-sort' })
@@ -44,10 +47,14 @@ export class VWCDataGrid extends LitElement {
 	reordering = false;
 
 	@property({ type: Function, reflect: false })
-	rowDetailsRenderer = null;
+	rowDetailsRenderer = undefined;
 
-	@property({ type: Object, reflect: false })
-	columns: VwcGridColumnConfiguration[] = [];
+	@property()
+	set columns(columns: VwcGridColumnAPI[]) {
+		//	TODO: validate data
+		this.#columns = columns;
+		this.requestUpdate();
+	}
 
 	set items(items: unknown[]) {
 		//	TODO: validations
@@ -61,7 +68,7 @@ export class VWCDataGrid extends LitElement {
 	protected render(): TemplateResult {
 		return html`
 			<vaadin-grid ?multi-sort="${this.multiSort}" ?column-reordering-allowed="${this.reordering}" .rowDetailsRenderer="${this.rowDetailsRenderer}">
-				${this.columns.map(cc => this.renderColumnDef(cc))}
+				${this.#columns.map(cc => this.renderColumnDef(cc))}
 			</vaadin-grid>
 		`;
 	}
@@ -77,7 +84,7 @@ export class VWCDataGrid extends LitElement {
 	}
 
 	//	TODO: optimize the logic below
-	private renderColumnDef(cc: VwcGridColumnConfiguration): TemplateResult {
+	private renderColumnDef(cc: VwcGridColumnAPI): TemplateResult {
 		if (cc.sortable) {
 			return html`<vaadin-grid-sort-column path="${cc.path}" header="${cc.header}" ?hidden="${cc.hidden}" ?resizable="${cc.resizable}" .renderer="${cc.cellRenderer}" .footerRenderer="${cc.footerRenderer}"></vaadin-grid-sort-column>`;
 		} else {
