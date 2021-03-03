@@ -62,12 +62,15 @@ describe('carousel', () => {
 
 			assertOrder(c, ['e', 'a', 'b', 'c', 'd'], 1);
 
+			await waitInterval(20);
 			await moveNextAndWait(c);
 			assertOrder(c, ['e', 'a', 'b', 'c', 'd'], 2);
 
+			await waitInterval(20);
 			await moveNextAndWait(c);
 			assertOrder(c, ['e', 'a', 'b', 'c', 'd'], 3);
 
+			await waitInterval(20);
 			await moveNextAndWait(c);
 			assertOrder(c, ['a', 'b', 'c', 'd', 'e'], 3);
 
@@ -267,18 +270,18 @@ function extractNavButtons(carousel) {
 	return carousel.querySelectorAll('.swiper-nav');
 }
 
-async function moveNextAndWait(carousel) {
+function moveNextAndWait(carousel) {
 	const nextButton = carousel.querySelector('.swiper-button-next');
 	return new Promise((r) => {
-		carousel.swiper.once('slideNextTransitionEnd', async () => r());
+		carousel.swiper.once('slideNextTransitionEnd', r);
 		nextButton.click();
 	});
 }
 
-async function movePrevAndWait(carousel) {
+function movePrevAndWait(carousel) {
 	const nextButton = carousel.querySelector('.swiper-button-prev');
 	return new Promise((r) => {
-		carousel.swiper.once('slidePrevTransitionEnd', async () => r());
+		carousel.swiper.once('slidePrevTransitionEnd', r);
 		nextButton.click();
 	});
 }
