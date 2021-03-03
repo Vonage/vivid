@@ -7,8 +7,8 @@ const Template = args => html`
 	</vwc-data-grid>
 `;
 
-export const BasicJavascript = Template.bind({});
-BasicJavascript.args = {
+export const FooterJavascript = Template.bind({});
+FooterJavascript.args = {
 	columns: [
 		{ header: 'First Name', path: 'fname' },
 		{ header: 'Last Name', path: 'lname', footerRenderer: lNameFooter }

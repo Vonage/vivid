@@ -20,8 +20,8 @@ const Template = args => html`
 	</vwc-data-grid>
 `;
 
-export const SortJavascript = Template.bind({});
-SortJavascript.args = {
+export const ColumnsJavascript = Template.bind({});
+ColumnsJavascript.args = {
 	columns: [
 		{ header: 'First Name', path: 'fname' },
 		{ header: 'Last Name', path: 'lname' }

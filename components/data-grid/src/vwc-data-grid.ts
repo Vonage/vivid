@@ -75,13 +75,9 @@ export class VWCDataGrid extends LitElement {
 
 	private renderColumnDef(cc: VwcGridColumnConfiguration): TemplateResult {
 		if (cc.sortable) {
-			return html`<vaadin-grid-sort-column path="${cc.path}" header="${cc.header}"></vaadin-grid-sort-column>`;
+			return html`<vaadin-grid-sort-column path="${cc.path}" header="${cc.header}" ?resizable="${cc.resizable}" .footerRenderer="${cc.footerRenderer}"></vaadin-grid-sort-column>`;
 		} else {
-			return html`<vaadin-grid-column path="${cc.path}" header="${cc.header}" .footerRenderer="${cc.f}"></vaadin-grid-column>`;
+			return html`<vaadin-grid-column path="${cc.path}" header="${cc.header}" ?resizable="${cc.resizable}" .footerRenderer="${cc.footerRenderer}"></vaadin-grid-column>`;
 		}
-	}
-
-	private test() {
-		console.log('something');
 	}
 }
