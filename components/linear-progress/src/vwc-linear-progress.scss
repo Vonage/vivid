@@ -1,36 +1,41 @@
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins' with (
 	$connotations: primary cta success alert
 );
 
+$block-size: 6px;
+$border-radius: 10px;
+
+@include color-connotation-mixins.connotations-context(
+	':host(#{color-connotation-mixins.$connotation-placeholder})'
+);
+
 :host {
-	--mdc-theme-primary: #8728fb;
-	--mdc-linear-progress-buffer-color: rgba(97, 98, 102, 0.45);
+	--mdc-theme-primary: var(#{color-semantic.$vvd-color-connotation}, transparent);
+	--mdc-linear-progress-buffer-color: var(#{scheme-variables.$vvd-color-contrast-soft});
 	--mdc-linear-progress-buffering-dots-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' enable-background='new 0 0 5 2' xml:space='preserve' viewBox='0 0 5 2' preserveAspectRatio='none slice'%3E%3Ccircle cx='1' cy='1' r='1' fill='%23616266'/%3E%3C/svg%3E");
 }
 
+%layout {
+	height: $block-size;
+	block-size: $block-size;
+	border-radius: $border-radius;
+}
+
 .mdc-linear-progress {
-	height: 6px;
-	border-radius: 10px;
+	@extend %layout;
 }
 
 .mdc-linear-progress__bar-inner {
-	height: 6px;
-	border-top: 0;
-	border-radius: 10px;
-	:host([connotation]) & {
-		background-color: var(#{color-semantic.$vvd-color-connotation});
-	}
+	@extend %layout;
+	border-top: $block-size;
 	:host(:not([connotation])) & {
-		background-color: transparent;
 		background-image: linear-gradient(to right, #7fc6f4, #8728fb);
 	}
 }
 
 .mdc-linear-progress__buffer-bar {
-	border-radius: 10px;
+	border-radius: $border-radius;
 }
 
-@include color-connotation-mixins.connotations-context(
-	':host(#{color-connotation-mixins.$connotation-placeholder})'
-);

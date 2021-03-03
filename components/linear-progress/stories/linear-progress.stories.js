@@ -12,7 +12,7 @@ export default {
 const Template = args => html`<vwc-linear-progress ...=${spread(args)}></vwc-linear-progress>`;
 
 export const Default = Template.bind({});
-Default.args = { progress: '0.5' };
+Default.args = { progress: '0.25', buffer: '0.5' };
 
 export const Indeterminate = Template.bind({});
 Indeterminate.args = { indeterminate: '', progress: '' };
