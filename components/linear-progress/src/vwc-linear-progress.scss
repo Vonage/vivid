@@ -29,7 +29,7 @@ $border-radius: 10px;
 
 .mdc-linear-progress__bar-inner {
 	@extend %layout;
-	border-top: $block-size;
+	border-top-width: $block-size;
 	:host(:not([connotation])) & {
 		background-image: linear-gradient(to right, #7fc6f4, #8728fb);
 	}
