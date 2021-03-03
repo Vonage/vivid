@@ -18,10 +18,10 @@
 	height: 6px;
 	border-top: 0;
 	border-radius: 10px;
-	:host([connotation]) {
+	:host([connotation]) & {
 		background-color: var(#{color-semantic.$vvd-color-connotation});
 	}
-	:host(:not([connotation])) {
+	:host(:not([connotation])) & {
 		background-color: transparent;
 		background-image: linear-gradient(to right, #7fc6f4, #8728fb);
 	}
