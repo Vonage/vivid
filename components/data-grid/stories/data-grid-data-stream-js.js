@@ -17,7 +17,6 @@ DataStreamJS.args = {
 	]
 };
 
-
 const dataSourceSimulated = sequentalData({ fname: 'A-{i}', lname: 'B-{i}' }, 100000);
 function dataProvider(params, callback) {
 	const startIndex = params.page * params.pageSize;

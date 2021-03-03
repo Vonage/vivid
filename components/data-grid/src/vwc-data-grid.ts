@@ -56,8 +56,15 @@ export class VWCDataGrid extends LitElement implements VwcGridAPI {
 	dataProvider: ((params: unknown, callback: (pageItems: unknown[], treeLevelSize: number) => void) => void) | undefined = undefined;
 
 	protected render(): TemplateResult {
+		//	TODO: do mutually exclusive validations and elliminations with errors in console
 		return html`
-			<vaadin-grid ?multi-sort="${this.multiSort}" ?column-reordering-allowed="${this.reordering}" .rowDetailsRenderer="${this.rowDetailsRenderer}" .items="${this.items}" .dataProvider="${this.dataProvider}">
+			<vaadin-grid
+				?multi-sort="${this.multiSort}"
+				?column-reordering-allowed="${this.reordering}"
+				.rowDetailsRenderer="${this.rowDetailsRenderer}"
+				.items="${this.items}"
+				.dataProvider="${this.dataProvider}"
+			>
 				${this.columns.map(cc => this.renderColumnDef(cc))}
 			</vaadin-grid>
 		`;
