@@ -1,3 +1,8 @@
+@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
+@use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins' with (
+	$connotations: primary cta success alert
+);
+
 :host {
 	--mdc-theme-primary: #8728fb;
 	--mdc-linear-progress-buffer-color: rgba(97, 98, 102, 0.45);
@@ -12,11 +17,20 @@
 .mdc-linear-progress__bar-inner {
 	height: 6px;
 	border-top: 0;
-	background-color: transparent;
-	background-image: linear-gradient(to right, #7fc6f4, #8728fb);
 	border-radius: 10px;
+	:host([connotation]) {
+		background-color: var(#{color-semantic.$vvd-color-connotation});
+	}
+	:host(:not([connotation])) {
+		background-color: transparent;
+		background-image: linear-gradient(to right, #7fc6f4, #8728fb);
+	}
 }
 
 .mdc-linear-progress__buffer-bar {
 	border-radius: 10px;
 }
+
+@include color-connotation-mixins.connotations-context(
+	':host(#{color-connotation-mixins.$connotation-placeholder})'
+);
