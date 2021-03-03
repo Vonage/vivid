@@ -70,7 +70,8 @@ describe('textfield', () => {
 			);
 		}
 
-		let fieldValue, fieldName;
+		let fieldValue,
+			fieldName;
 		beforeEach(function () {
 			fieldValue = getRandom().toString();
 			fieldName = 'test-field';
@@ -153,7 +154,8 @@ describe('textfield', () => {
 		describe(`validation`, function () {
 			const invalidValue = '';
 			const validValue = 'abc';
-			let formElement, actualElement;
+			let formElement,
+				actualElement;
 
 			beforeEach(async function () {
 				[formElement] = addElement(createElementInForm(fieldName, validValue));

@@ -12,7 +12,7 @@
 		"dep-check": "lerna exec --stream --no-bail depcheck",
 		"changelog": "yarn lerna exec --concurrency 1 --stream 'conventional-changelog --preset angular --release-count 0 --commit-path $PWD --pkg $PWD/package.json --outfile $PWD/CHANGELOG.md --verbose'",
 		"lint:stylelint": "stylelint {common,components}/**/*.scss --quiet",
-		"lint:eslint": "eslint {common,components}/*/src/**/*.{js,ts} --no-error-on-unmatched-pattern --quiet",
+		"lint:eslint": "eslint {common,components}/*/{src,test}/**/*.{js,ts} --no-error-on-unmatched-pattern --quiet",
 		"lint:lit": "lit-analyzer {common,components}/*/src/**/*.ts --rules.no-incompatible-type-binding off --strict --quiet",
 		"lint": "yarn lint:stylelint && yarn lint:eslint && yarn lint:lit",
 		"format:stylelint": "yarn lint:stylelint --fix",
@@ -134,3 +134,5 @@
 		"node": ">=12.18.4"
 	}
 }
+
+

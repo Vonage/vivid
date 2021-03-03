@@ -47,7 +47,7 @@ describe('datepicker', () => {
 		expect(customMonths).to.exist;
 		expect(customFooter).to.exist;
 	});
-	
+
 	it('should update input value when date selected', async () => {
 		const [actualElement] = addElement(
 			textToDomToParent(`
@@ -78,7 +78,7 @@ describe('datepicker', () => {
 
 			let datepicker = document.querySelector('.vvd-datepicker');
 			assertComputedStyle(datepicker, { display: 'none' });
-			
+
 			const input = actualElement.querySelector('.vivid-input-internal.flatpickr-input');
 			input.click();
 			await waitNextTask();

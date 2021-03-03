@@ -26,7 +26,7 @@ describe('Dialog', () => {
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
-	it(`should hide the actions section`, async function() {
+	it(`should hide the actions section`, async function () {
 		const [actualElement] = addElement(
 			textToDomToParent(`<${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}>`)
 		);
