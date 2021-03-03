@@ -8,7 +8,8 @@ import { VWCAudio } from '../vwc-audio';
 
 describe('vwc-audio', () => {
 	const addElements = isolatedElementsCreation();
-	let AudioMock, audioEl;
+	let AudioMock,
+		audioEl;
 
 	function resetAudioMock() {
 		AudioMock = function () {
@@ -22,19 +23,15 @@ describe('vwc-audio', () => {
 					if (!this.listeners[event]) this.listeners[event] = [];
 					this.listeners[event].push(cb);
 				},
-				removeEventListener: function () {
-
-				},
 				dispatchEvent: function ({ type }) {
 					if (!this.listeners[type]) return;
 					this.listeners[type].forEach(cb => cb({}));
 				},
-				play: function () {
-
-				},
-				pause: function () {
-
-				}
+				/* eslint-disable @typescript-eslint/no-empty-function */
+				removeEventListener: function () {},
+				play: function () {},
+				pause: function () {}
+				/* eslint-enable @typescript-eslint/no-empty-function */
 			}
 		);
 	}
@@ -56,13 +53,13 @@ describe('vwc-audio', () => {
 		expect(audioElement instanceof VWCAudio).to.eq(true);
 	});
 
-	it(`should set the src property if src attribute is set`, function() {
+	it(`should set the src property if src attribute is set`, function () {
 		const url = 'asdfasdfasdf';
 		const [actualElement] = addElements(textToDomToParent(`<vwc-audio src="${url}"></vwc-audio>`));
 		expect(actualElement.src).to.eq(url);
 	});
 
-	it(`should set the noseek attribute on the controller noseek attribute is set`, function() {
+	it(`should set the noseek attribute on the controller noseek attribute is set`, function () {
 		const [actualElement] = addElements(textToDomToParent(`<vwc-audio noseek></vwc-audio>`));
 		const controllerElement = actualElement.children[0];
 		expect(controllerElement.getAttribute('noseek')).to.eq("");
@@ -84,7 +81,8 @@ describe('vwc-audio', () => {
 	});
 
 	it('should deliver method calls to Audio', async () => {
-		let pauseCalled = false, playCalled = false;
+		let pauseCalled = false,
+			playCalled = false;
 		AudioMock.prototype = Object.assign(
 			AudioMock.prototype,
 			{
@@ -102,7 +100,8 @@ describe('vwc-audio', () => {
 				play: () => {
 					playCalled = true;
 				}
-			});
+			}
+		);
 
 		const audio = document.createElement('vwc-audio');
 

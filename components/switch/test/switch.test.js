@@ -13,7 +13,7 @@ const VWC_SWITCH = 'vwc-switch';
 describe('switch', () => {
 	let addedElements = [];
 	afterEach(() => {
-		addedElements.forEach((elm) => elm.remove());
+		addedElements.forEach(elm => elm.remove());
 	});
 
 	it('should have vwc-switch defined', async () => {
