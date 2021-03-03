@@ -7,7 +7,6 @@
 ```html
 <vwc-carousel
   autoplay=""
-  id="carousel-a"
   tabindex="0"
 >
   <div class="upper-pane">
