@@ -46,13 +46,13 @@ export class VWCDataGrid extends LitElement implements VwcGridAPI {
 	@property({ type: Function, reflect: false })
 	rowDetailsRenderer = undefined;
 
-	@property({ reflect: false })
+	@property({ type: Array, reflect: false })
 	columns: VwcGridColumnAPI[] = [];
 
-	@property({ reflect: false })
+	@property({ type: Array, reflect: false })
 	items: unknown[] = [];
 
-	@property({ reflect: false })
+	@property({ type: Function, reflect: false })
 	dataProvider: ((params: unknown, callback: (pageItems: unknown[], treeLevelSize: number) => void) => void) | undefined = undefined;
 
 	protected render(): TemplateResult {
