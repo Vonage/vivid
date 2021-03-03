@@ -2,7 +2,6 @@ import '../vwc-datepicker.js';
 import '@vonage/vwc-textfield/vwc-textfield.js';
 import {
 	waitNextTask,
-	waitInterval,
 	textToDomToParent,
 	assertComputedStyle
 } from '../../../test/test-helpers.js';
@@ -26,26 +25,28 @@ describe('datepicker', () => {
 		const [actualElement] = addElement(
 			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 		);
-		await waitNextTask();
-		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
+
+		actualElement.onReady = () => {
+			expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
+		};
 	});
 
-	// tests may fail if waitInterval insufficient
 	it('should have lit-flatpickr instance in DOM', async () => {
 		addElement(
 			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 		);
-		await waitInterval(500);
 
-		const datepicker = document.querySelector('.vvd-datepicker');
-		const customHeader = datepicker.querySelector('.vvd-datepicker-header');
-		const customMonths = datepicker.querySelector('.vvd-datepicker-months');
-		const customFooter = datepicker.querySelector('.vvd-datepicker-footer');
+		actualElement.onReady = () => {
+			const datepicker = document.querySelector('.vvd-datepicker');
+			const customHeader = datepicker.querySelector('.vvd-datepicker-header');
+			const customMonths = datepicker.querySelector('.vvd-datepicker-months');
+			const customFooter = datepicker.querySelector('.vvd-datepicker-footer');
 
-		expect(datepicker).to.exist;
-		expect(customHeader).to.exist;
-		expect(customMonths).to.exist;
-		expect(customFooter).to.exist;
+			expect(datepicker).to.exist;
+			expect(customHeader).to.exist;
+			expect(customMonths).to.exist;
+			expect(customFooter).to.exist;
+		};
 	});
 
 	it('should update input value when date selected', async () => {
@@ -56,13 +57,14 @@ describe('datepicker', () => {
 				</${COMPONENT_NAME}>
 			`)
 		);
-		await waitInterval(500);
 
-		actualElement.defaultDate = 'today';
-		await waitNextTask();
+		actualElement.onReady = async () => {
+			actualElement.defaultDate = 'today';
+			await waitNextTask();
 
-		const input = actualElement.querySelector('.vivid-input-internal.flatpickr-input');
-		expect(input.value).not.empty;
+			const input = actualElement.querySelector('.vivid-input-internal.flatpickr-input');
+			expect(input.value).not.empty;
+		};
 	});
 
 	it('should have fixed position when fixed set', async () => {
@@ -71,10 +73,11 @@ describe('datepicker', () => {
 				<${COMPONENT_NAME} fixed></${COMPONENT_NAME}>
 			`)
 		);
-		await waitInterval(500);
 
-		const datepicker = document.querySelector('.vvd-datepicker');
-		assertComputedStyle(datepicker, { position: 'fixed' });
+		actualElement.onReady = () => {
+			const datepicker = document.querySelector('.vvd-datepicker');
+			assertComputedStyle(datepicker, { position: 'fixed' });
+		};
 	});
 
 	describe('visibility', () => {
@@ -86,17 +89,18 @@ describe('datepicker', () => {
 					</${COMPONENT_NAME}>
 				`)
 			);
-			await waitInterval(500);
 
-			let datepicker = document.querySelector('.vvd-datepicker');
-			assertComputedStyle(datepicker, { display: 'none' });
+			actualElement.onReady = async () => {
+				let datepicker = document.querySelector('.vvd-datepicker');
+				assertComputedStyle(datepicker, { display: 'none' });
 
-			const input = actualElement.querySelector('.vivid-input-internal.flatpickr-input');
-			input.click();
-			await waitNextTask();
+				const input = actualElement.querySelector('.vivid-input-internal.flatpickr-input');
+				input.click();
+				await waitNextTask();
 
-			datepicker = document.querySelector('.vvd-datepicker.open');
-			assertComputedStyle(datepicker, { display: 'block' });
+				datepicker = document.querySelector('.vvd-datepicker.open');
+				assertComputedStyle(datepicker, { display: 'block' });
+			};
 		});
 
 		it('should have month picker when monthPicker set', async () => {
@@ -105,10 +109,11 @@ describe('datepicker', () => {
 					<${COMPONENT_NAME} inline monthPicker></${COMPONENT_NAME}>
 				`)
 			);
-			await waitInterval(500);
 
-			const months = document.querySelector('.vvd-datepicker-month-view .vvd-datepicker-months');
-			assertComputedStyle(months, { display: 'block' });
+			actualElement.onReady = () => {
+				const months = document.querySelector('.vvd-datepicker-month-view .vvd-datepicker-months');
+				assertComputedStyle(months, { display: 'block' });
+			};
 		});
 
 		it('should have custom range when mode set to range', async () => {
@@ -117,10 +122,11 @@ describe('datepicker', () => {
 					<${COMPONENT_NAME} inline mode="range"></${COMPONENT_NAME}>
 				`)
 			);
-			await waitInterval(500);
 
-			const range = document.querySelector('.vvd-datepicker-range');
-			assertComputedStyle(range, { display: 'flex' });
+			actualElement.onReady = () => {
+				const range = document.querySelector('.vvd-datepicker-range');
+				assertComputedStyle(range, { display: 'flex' });
+			};
 		});
 	});
 });

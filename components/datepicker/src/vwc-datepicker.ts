@@ -81,33 +81,30 @@ export class VWCDatepicker extends LitFlatpickr {
 
 	// override LitFlatpickr to remove cdn styles
 	async init() {
-		this.renderCustomParts();
 		this.initializeComponent();
+		this.renderCustomParts();
 	}
 
 	private renderCustomParts(): void {
-		// wait for DOM
-		setTimeout(() => {
-			if (!this._instance?.isMobile || this.disableMobile) {
-				this._instance?.calendarContainer.classList.add('vvd-datepicker');
-				if (this.fixed) this._instance?.calendarContainer.classList.add('vvd-datepicker-fixed');
+		if (!this._instance?.isMobile || this.disableMobile) {
+			this._instance?.calendarContainer.classList.add('vvd-datepicker');
+			if (this.fixed) this._instance?.calendarContainer.classList.add('vvd-datepicker-fixed');
 
-				this.renderHeader();
-				this.renderRange();
-				this.renderFooter();
-				this.renderMonthPicker();
+			this.renderHeader();
+			this.renderRange();
+			this.renderFooter();
+			this.renderMonthPicker();
 
-				if (this.monthPicker) {
-					this._instance?.calendarContainer.classList.add(
-						'vvd-datepicker-month-view'
-					);
-					this.highlightMonth();
-				}
+			if (this.monthPicker) {
+				this._instance?.calendarContainer.classList.add(
+					'vvd-datepicker-month-view'
+				);
+				this.highlightMonth();
 			}
-			// slot flatpickr alt/mobile input in vwc-textfield
-			this._instance?.altInput?.setAttribute('slot', 'formInputElement');
-			this._instance?.mobileInput?.setAttribute('slot', 'formInputElement');
-		}, 0);
+		}
+		// slot flatpickr alt/mobile input in vwc-textfield
+		this._instance?.altInput?.setAttribute('slot', 'formInputElement');
+		this._instance?.mobileInput?.setAttribute('slot', 'formInputElement');
 	}
 
 	private changeHandler(): void {
