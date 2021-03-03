@@ -21,5 +21,5 @@ const dataSourceSimulated = sequentalData({ fname: 'A-{i}', lname: 'B-{i}' }, 10
 function dataProvider(params, callback) {
 	const startIndex = params.page * params.pageSize;
 	const pageItems = dataSourceSimulated.slice(startIndex, startIndex + params.pageSize);
-	callback(pageItems, 200);
+	callback(pageItems, dataSourceSimulated.length);
 }

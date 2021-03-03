@@ -7,7 +7,7 @@ import {
 import '@vaadin/vaadin-grid/vaadin-grid.js';
 import '@vaadin/vaadin-grid/vaadin-grid-column';
 import '@vaadin/vaadin-grid/vaadin-grid-filter-column';
-import '@vaadin/vaadin-grid/vaadin-grid-sort-column';
+import '@vaadin/vaadin-grid/vaadin-grid-sorter';
 import '@vaadin/vaadin-grid/vaadin-grid-tree-column';
 
 import { style as vwcDataGridStyle } from './vwc-data-grid.css';
@@ -50,20 +50,25 @@ export class VWCDataGrid extends LitElement implements VwcGridAPI {
 	columns: VwcGridColumnAPI[] = [];
 
 	@property({ type: Array, reflect: false })
-	items: unknown[] = [];
+	items: unknown[] | undefined = undefined;
 
 	@property({ type: Function, reflect: false })
 	dataProvider: ((params: unknown, callback: (pageItems: unknown[], treeLevelSize: number) => void) => void) | undefined = undefined;
 
 	protected render(): TemplateResult {
-		//	TODO: do mutually exclusive validations and elliminations with errors in console
+		const _dataProvider = this.dataProvider;
+		let _items = this.items;
+		if (this.dataProvider && this.items) {
+			console.error('\'items\' and \'dataProvider\' MUST NOT be used both; \'dataProvider\' will be used');
+			_items = undefined;
+		}
 		return html`
 			<vaadin-grid
 				?multi-sort="${this.multiSort}"
 				?column-reordering-allowed="${this.reordering}"
 				.rowDetailsRenderer="${this.rowDetailsRenderer}"
-				.items="${this.items}"
-				.dataProvider="${this.dataProvider}"
+				.items="${_items}"
+				.dataProvider="${_dataProvider}"
 			>
 				${this.columns.map(cc => this.renderColumnDef(cc))}
 			</vaadin-grid>
@@ -81,12 +86,20 @@ export class VWCDataGrid extends LitElement implements VwcGridAPI {
 
 	//	TODO: optimize the logic below
 	private renderColumnDef(cc: VwcGridColumnAPI): TemplateResult {
-		if (cc.sortable) {
-			return html`<vaadin-grid-sort-column path="${cc.path}" header="${cc.header}" ?hidden="${cc.hidden}" ?resizable="${cc.resizable}" .renderer="${cc.cellRenderer}" .footerRenderer="${cc.footerRenderer}"></vaadin-grid-sort-column>`;
-		} else if (cc.tree) {
+		if (cc.tree) {
 			return html`<vaadin-grid-tree-column path="${cc.path}" header="${cc.header}" ?hidden="${cc.hidden}" ?resizable="${cc.resizable}" .renderer="${cc.cellRenderer}" .footerRenderer="${cc.footerRenderer}"></vaadin-grid-tree-column>`;
 		} else {
-			return html`<vaadin-grid-column path="${cc.path}" header="${cc.header}" ?hidden="${cc.hidden}" ?resizable="${cc.resizable}" .renderer="${cc.cellRenderer}" .footerRenderer="${cc.footerRenderer}"></vaadin-grid-column>`;
+			return html`<vaadin-grid-column
+				path="${cc.path}"
+				?hidden="${cc.hidden}"
+				?resizable="${cc.resizable}"
+				.renderer="${cc.cellRenderer}"
+				.footerRenderer="${cc.footerRenderer}"
+			>
+				${cc.sortable
+		? html`<template class="header"><vaadin-grid-sorter path="${cc.path}">${cc.header}</vaadin-grid-sorter></template>`
+		: html`<template class="header">${cc.header}</template>`}
+			</vaadin-grid-column>`;
 		}
 	}
 }

@@ -1,9 +1,10 @@
 export interface VwcGridAPI {
 	multiSort: boolean;
 	reordering: boolean;
-	rowDetailsRenderer?(container: HTMLElement): void;
 	columns: VwcGridColumnAPI[];
-	items: unknown[];
+	rowDetailsRenderer?(container: HTMLElement): void;
+
+	items?: unknown[];
 	dataProvider?(params: unknown, callback: (pageItems: unknown[], treeLevelSize: number) => void): void;
 }
 

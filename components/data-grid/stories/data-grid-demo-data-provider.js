@@ -19,75 +19,70 @@ function sequentalData(rowBlueprint, totalRows) {
 function treeData() {
 	return [
 		{
-			name: "Admins", children: [
-				{
-					name: {
-						first: "fabien",
-						last: "le gall"
-					},
-					city: "nanterre",
-					email: "fabien.legall@example.com",
-					username: "goldenlion501"
-				}, {
-					name: {
-						first: "ruben",
-						last: "leclercq"
-					},
-					city: "clermont-ferrand",
-					email: "ruben.leclercq@example.com",
-					username: "crazymouse343"
-				}
-			]
+			role: 'Admin',
+			name: {
+				first: 'Fabien',
+				last: 'Le gall'
+			},
+			city: 'Nanterre',
+			email: 'fabien.legall@example.com',
+			username: 'goldenlion501'
+		}, {
+			role: 'Admin',
+			name: {
+				first: 'Ruben',
+				last: 'Leclercq'
+			},
+			city: 'Clermont-Ferrand',
+			email: 'ruben.leclercq@example.com',
+			username: 'crazymouse343'
 		},
 		{
-			name: "Editors", children: [
-				{
-					name: {
-						first: "kelya",
-						last: "roy"
-					},
-					city: "avignon",
-					email: "kelya.roy@example.com",
-					username: "tinymouse185"
-				}, {
-					name: {
-						first: "roxane",
-						last: "guillaume"
-					},
-					city: "marseille",
-					email: "roxane.guillaume@example.com",
-					username: "redswan463"
-				}, {
-					name: {
-						first: "marius",
-						last: "moulin"
-					},
-					city: "mulhouse",
-					email: "marius.moulin@example.com",
-					username: "ticklishduck726"
-				}
-			]
+			role: 'Editor',
+			name: {
+				first: 'Kelya',
+				last: 'Roy'
+			},
+			city: 'Avignon',
+			email: 'kelya.roy@example.com',
+			username: 'tinymouse185'
+		}, {
+			role: 'Editor',
+			name: {
+				first: 'Roxane',
+				last: 'Guillaume'
+			},
+			city: 'Marseille',
+			email: 'roxane.guillaume@example.com',
+			username: 'redswan463'
+		}, {
+			role: 'Editor',
+			name: {
+				first: 'Marius',
+				last: 'Moulin'
+			},
+			city: 'Mulhouse',
+			email: 'marius.moulin@example.com',
+			username: 'ticklishduck726'
 		},
 		{
-			name: "Subscribers", children: [
-				{
-					name: {
-						first: "nina",
-						last: "barbier"
-					},
-					city: "versailles",
-					email: "nina.barbier@example.com",
-					username: "orangemouse715"
-				}, {
-					name: {
-						first: "marceau",
-						last: "lucas"
-					},
-					city: "strasbourg",
-					email: "marceau.lucas@example.com",
-					username: "beautifulfish844"
-				}
-			]
+			role: 'Subscriber',
+			name: {
+				first: 'Nina',
+				last: 'Barbier'
+			},
+			city: 'Versailles',
+			email: 'nina.barbier@example.com',
+			username: 'orangemouse715'
+		}, {
+			role: 'Subscriber',
+			name: {
+				first: 'Marceau',
+				last: 'Lucas'
+			},
+			city: 'Strasbourg',
+			email: 'marceau.lucas@example.com',
+			username: 'beautifulfish844'
 		}
 	];
 }

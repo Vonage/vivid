@@ -12,7 +12,7 @@ const Template = args => html`
 export const TreeJS = Template.bind({});
 TreeJS.args = {
 	columns: [
-		{ header: 'Role', path: 'name', tree: true },
+		{ header: 'Role', path: 'role', tree: true },
 		{ header: 'User', path: 'username' },
 		{ header: 'City', path: 'city' },
 		{ header: 'First Name', path: 'name.first' },
@@ -20,11 +20,20 @@ TreeJS.args = {
 	]
 };
 
+const treeDataSimulated = treeData();
 function dataProvider(params, callback) {
-	const dataArray = params.parentItem ? params.parentItem.children : treeData();
+	const dataArray = params.parentItem ? params.parentItem.children : groupByRole(treeDataSimulated);
 
 	const startIndex = params.page * params.pageSize;
 	const pageItems = dataArray.slice(startIndex, startIndex + params.pageSize);
-	const treeLevelSize = dataArray.length;
-	callback(pageItems, treeLevelSize);
+	callback(pageItems, dataArray.length);
+}
+
+function groupByRole(data) {
+	const groups = {};
+	for (const item of data) {
+		let a = groups[item.role] || (groups[item.role] = []);
+		a.push(item);
+	}
+	return Object.entries(groups).map(([key, group]) => { return { role: key, children: group }; });
 }
