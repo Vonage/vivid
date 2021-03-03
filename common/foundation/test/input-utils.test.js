@@ -17,7 +17,9 @@ export async function typographyTestCases(
 	COMPONENT_NAME,
 	inputResolver = null
 ) {
-	let addedElements, formElement, labelElement;
+	let addedElements,
+		formElement,
+		labelElement;
 	beforeEach(async () => {
 		addedElements = addElement(
 			textToDomToParent(

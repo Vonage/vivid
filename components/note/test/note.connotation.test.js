@@ -10,15 +10,13 @@ import {
 import { Connotation } from '@vonage/vvd-foundation/constants';
 
 const VWC_NOTE = 'vwc-note';
-const CONNOTATIONS_SUPPORTED = Object.values(Connotation).filter((c) =>
-	[
-		Connotation.Success,
-		Connotation.Alert,
-		Connotation.Warning,
-		Connotation.Info,
-		Connotation.Announcement,
-	].includes(c)
-);
+const CONNOTATIONS_SUPPORTED = Object.values(Connotation).filter(c => [
+	Connotation.Success,
+	Connotation.Alert,
+	Connotation.Warning,
+	Connotation.Info,
+	Connotation.Announcement,
+].includes(c));
 
 // TODO @gullerya can extend this test to make sure unsupported connotations aren't reflected
 // const CONNOTATIONS_UNSUPPORTED = Object.values(Connotation).filter(
