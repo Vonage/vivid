@@ -3,7 +3,7 @@ import {
 	DataGrid,
 	DataGridColumn
 } from './vwc-data-grid-api';
-import { VWCDataGridColumn } from './vwc-data-grid-column-def';
+import { VWCDataGridColumn } from './vwc-data-grid-column';
 import { vwcDataGridProvider } from './vwc-data-grid-provider-vaadin';
 
 import { style as vwcDataGridStyle } from './vwc-data-grid.css';
