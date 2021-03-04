@@ -8,6 +8,7 @@ This component is an extension of [<mwc-dialog>](https://github.com/material-com
 
 | Name              |	Description
 | ----------------- | -------------
+| `icon`					  |	A slot meant for an icon. Appears above the heading.
 | `primaryAction`   |	A focusable and clickable target. Typically a button such as  `<mwc-button>`. Placed on the bottom right of the dialog (LTR) and above the secondary action when stacked. Automatically clicked when `Enter` key is pressed in the dialog.
 | `secondaryAction` |	A focusable and clickable target. Typically a button such as  `<mwc-button>`. Placed immediately to the left of the `primaryAction` (LTR) or below when stacked.
 | _default_         |	Content to display in the dialog's content area.
