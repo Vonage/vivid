@@ -1,15 +1,14 @@
 import '@vonage/vvd-core';
 import {
-	VwcGrid,
-	VwcGridColumn
+	DataGrid,
+	DataGridColumn
 } from './vwc-data-grid-api';
-import { VWCDataGridColumnDef } from './vwc-data-grid-column-def';
+import { VWCDataGridColumn } from './vwc-data-grid-column-def';
 import { vwcDataGridProvider } from './vwc-data-grid-provider-vaadin';
 
 import { style as vwcDataGridStyle } from './vwc-data-grid.css';
 import {
 	customElement,
-	html,
 	property,
 	LitElement,
 	TemplateResult,
@@ -22,8 +21,8 @@ declare global {
 }
 
 export {
-	VwcGrid,
-	VwcGridColumn
+	DataGrid,
+	DataGridColumn
 };
 
 /**
@@ -32,7 +31,7 @@ export {
  * @element vwc-data-grid
  */
 @customElement('vwc-data-grid')
-export class VWCDataGrid extends LitElement implements VwcGrid {
+export class VWCDataGrid extends LitElement implements DataGrid {
 	static styles = [vwcDataGridStyle, ...vwcDataGridProvider.getStylesOverlay()];
 
 	@property({ type: Boolean, reflect: true, attribute: 'multi-sort' })
@@ -45,7 +44,7 @@ export class VWCDataGrid extends LitElement implements VwcGrid {
 	rowDetailsRenderer = undefined;
 
 	@property({ type: Array, reflect: false })
-	columns: VwcGridColumn[] = [];
+	columns: DataGridColumn[] = [];
 
 	@property({ type: Array, reflect: false })
 	items: unknown[] | undefined = undefined;
@@ -54,22 +53,28 @@ export class VWCDataGrid extends LitElement implements VwcGrid {
 	dataProvider: ((params: unknown, callback: (pageItems: unknown[], treeLevelSize: number) => void) => void) | undefined = undefined;
 
 	protected render(): TemplateResult {
-		return html`
-			<slot class="column-defs"></slot>
-			${vwcDataGridProvider.render(this)}
-		`;
+		return vwcDataGridProvider.render(this);
 	}
 
 	protected firstUpdated(): void {
-		const assignedElements = (this.shadowRoot?.querySelector('column-defs') as HTMLSlotElement).assignedElements();
-		const columnDefs = assignedElements.map(ae => (ae as VWCDataGridColumnDef).getColumnConfig());
-		this.processColumnDefs(columnDefs);
+		this.addEventListener('column-definition-update', () => this.processColumnDefs());
+		this.processColumnDefs();
 	}
 
-	private processColumnDefs(columnDefs: VwcGridColumn[]) {
-		console.log(columnDefs);
-		//	TODO: build columns
-		//	TODO: set the columns on self
-		//	trigger update
+	private processColumnDefs() {
+		//	collect
+		const columnDefinitionElements = this.querySelectorAll('vwc-data-grid-column');
+		if (!columnDefinitionElements.length) {
+			return;
+		}
+
+		//	transform
+		const columnDefs = [];
+		for (const ae of columnDefinitionElements) {
+			columnDefs.push((ae as VWCDataGridColumn).getColumnConfig());
+		}
+
+		//	apply
+		this.columns = columnDefs;
 	}
 }

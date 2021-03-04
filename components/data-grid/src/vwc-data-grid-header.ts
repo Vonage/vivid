@@ -1,8 +1,4 @@
 import '@vonage/vvd-core';
-import {
-	VwcGrid,
-	VwcGridColumn
-} from './vwc-data-grid-api';
 
 import { style as vwcDataGridHeaderStyle } from './vwc-data-grid-header.css';
 import {
@@ -18,11 +14,6 @@ declare global {
 		'vwc-data-grid-header': VWCDataGridHeader;
 	}
 }
-
-export {
-	VwcGrid,
-	VwcGridColumn
-};
 
 /**
  * `vwc-data-grid-header` component is designated to render VWC specific header for the data grids

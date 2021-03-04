@@ -1,22 +1,22 @@
 import { TemplateResult, CSSResult } from 'lit-element';
 
 export {
-	VwcGrid,
-	VwcGridColumn,
-	VwcDataGridProvider
+	DataGrid,
+	DataGridColumn,
+	DataGridProvider
 };
 
-interface VwcGrid {
+interface DataGrid {
 	multiSort: boolean;
 	reordering: boolean;
-	columns: VwcGridColumn[];
+	columns: DataGridColumn[];
 	rowDetailsRenderer?(container: HTMLElement): void;
 
 	items?: unknown[];
 	dataProvider?(params: unknown, callback: (pageItems: unknown[], treeLevelSize: number) => void): void;
 }
 
-interface VwcGridColumn {
+interface DataGridColumn {
 	path: string;
 	header: string;
 
@@ -33,7 +33,7 @@ interface VwcGridColumn {
 	footerRenderer?(container: HTMLElement): void;
 }
 
-interface VwcDataGridProvider {
-	render(configuration: VwcGrid): TemplateResult;
+interface DataGridProvider {
+	render(configuration: DataGrid): TemplateResult;
 	getStylesOverlay(): CSSResult[];
 }
