@@ -1,8 +1,9 @@
 import '@vonage/vvd-core';
 import {
-	VwcGridAPI,
-	VwcGridColumnAPI
+	VwcGrid,
+	VwcGridColumn
 } from './vwc-data-grid-api';
+import { VWCDataGridColumnDef } from './vwc-data-grid-column-def';
 import { vwcDataGridProvider } from './vwc-data-grid-provider-vaadin';
 
 import { style as vwcDataGridStyle } from './vwc-data-grid.css';
@@ -21,8 +22,8 @@ declare global {
 }
 
 export {
-	VwcGridAPI,
-	VwcGridColumnAPI
+	VwcGrid,
+	VwcGridColumn
 };
 
 /**
@@ -31,7 +32,7 @@ export {
  * @element vwc-data-grid
  */
 @customElement('vwc-data-grid')
-export class VWCDataGrid extends LitElement implements VwcGridAPI {
+export class VWCDataGrid extends LitElement implements VwcGrid {
 	static styles = [vwcDataGridStyle, ...vwcDataGridProvider.getStylesOverlay()];
 
 	@property({ type: Boolean, reflect: true, attribute: 'multi-sort' })
@@ -44,7 +45,7 @@ export class VWCDataGrid extends LitElement implements VwcGridAPI {
 	rowDetailsRenderer = undefined;
 
 	@property({ type: Array, reflect: false })
-	columns: VwcGridColumnAPI[] | undefined = undefined;
+	columns: VwcGridColumn[] = [];
 
 	@property({ type: Array, reflect: false })
 	items: unknown[] | undefined = undefined;
@@ -60,12 +61,13 @@ export class VWCDataGrid extends LitElement implements VwcGridAPI {
 	}
 
 	protected firstUpdated(): void {
-		const assignedElements = this.shadowRoot?.querySelector('column-defs').assignedElements();
-		const columnDefs = assignedElements.map((ae: unknown) => ae.getColumnConfig());
+		const assignedElements = (this.shadowRoot?.querySelector('column-defs') as HTMLSlotElement).assignedElements();
+		const columnDefs = assignedElements.map(ae => (ae as VWCDataGridColumnDef).getColumnConfig());
 		this.processColumnDefs(columnDefs);
 	}
 
-	private processColumnDefs(columnDefs: VwcGridColumnAPI[]) {
+	private processColumnDefs(columnDefs: VwcGridColumn[]) {
+		console.log(columnDefs);
 		//	TODO: build columns
 		//	TODO: set the columns on self
 		//	trigger update

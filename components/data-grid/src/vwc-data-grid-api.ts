@@ -1,22 +1,22 @@
 import { TemplateResult, CSSResult } from 'lit-element';
 
 export {
-	VwcGridAPI,
-	VwcGridColumnAPI,
+	VwcGrid,
+	VwcGridColumn,
 	VwcDataGridProvider
 };
 
-interface VwcGridAPI {
+interface VwcGrid {
 	multiSort: boolean;
 	reordering: boolean;
-	columns?: VwcGridColumnAPI[];
+	columns: VwcGridColumn[];
 	rowDetailsRenderer?(container: HTMLElement): void;
 
 	items?: unknown[];
 	dataProvider?(params: unknown, callback: (pageItems: unknown[], treeLevelSize: number) => void): void;
 }
 
-interface VwcGridColumnAPI {
+interface VwcGridColumn {
 	path: string;
 	header: string;
 
@@ -34,6 +34,6 @@ interface VwcGridColumnAPI {
 }
 
 interface VwcDataGridProvider {
-	render(configuration: VwcGridAPI): TemplateResult;
+	render(configuration: VwcGrid): TemplateResult;
 	getStylesOverlay(): CSSResult[];
 }

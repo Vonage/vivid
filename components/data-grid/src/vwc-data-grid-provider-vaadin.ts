@@ -7,8 +7,8 @@ import { CSSResult, html, TemplateResult } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import {
 	VwcDataGridProvider,
-	VwcGridAPI,
-	VwcGridColumnAPI
+	VwcGrid,
+	VwcGridColumn
 } from './vwc-data-grid-api';
 import { style as vwcDataGridStyleVaadin } from './vwc-data-grid-provider-vaadin.css';
 
@@ -17,7 +17,7 @@ export {
 };
 
 class VWCDataGridProviderVaadin implements VwcDataGridProvider {
-	render(config: VwcGridAPI): TemplateResult {
+	render(config: VwcGrid): TemplateResult {
 		const _dataProvider = config.dataProvider;
 		let _items = config.items;
 		if (config.dataProvider && config.items) {
@@ -42,7 +42,7 @@ class VWCDataGridProviderVaadin implements VwcDataGridProvider {
 		return [vwcDataGridStyleVaadin];
 	}
 
-	private renderColumnDef(cc: VwcGridColumnAPI): TemplateResult {
+	private renderColumnDef(cc: VwcGridColumn): TemplateResult {
 		const _width = cc.width;
 		let _autoWidth = cc.autoWidth;
 		if (_width && _autoWidth) {
@@ -78,7 +78,7 @@ class VWCDataGridProviderVaadin implements VwcDataGridProvider {
 		}
 	}
 
-	private renderInColumnExtension(cc: VwcGridColumnAPI): TemplateResult {
+	private renderInColumnExtension(cc: VwcGridColumn): TemplateResult {
 		return cc.sortable
 			? html`<template class="header"><vaadin-grid-sorter path="${cc.path}">${cc.header}</vaadin-grid-sorter></template>`
 			: html`<template class="header">${cc.header}</template>`;

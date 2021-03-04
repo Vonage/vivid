@@ -1,6 +1,6 @@
 import '@vonage/vvd-core';
 import {
-	VwcGridColumnAPI
+	VwcGridColumn
 } from './vwc-data-grid-api';
 
 import {
@@ -16,7 +16,7 @@ declare global {
 }
 
 @customElement('vwc-column-def')
-export class VWCDataGridColumnDef extends LitElement implements VwcGridColumnAPI {
+export class VWCDataGridColumnDef extends LitElement implements VwcGridColumn {
 	@property({ type: String, reflect: true })
 	path = '';
 
@@ -41,7 +41,7 @@ export class VWCDataGridColumnDef extends LitElement implements VwcGridColumnAPI
 	@property({ type: Boolean, reflect: true })
 	tree?: boolean | undefined;
 
-	getColumnConfig(): VwcGridColumnAPI {
+	getColumnConfig(): VwcGridColumn {
 		const {
 			path, header, frozen, sortable, resizable, autoWidth, width, tree
 		} = this;

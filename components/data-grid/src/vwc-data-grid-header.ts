@@ -1,7 +1,7 @@
 import '@vonage/vvd-core';
 import {
-	VwcGridAPI,
-	VwcGridColumnAPI
+	VwcGrid,
+	VwcGridColumn
 } from './vwc-data-grid-api';
 
 import { style as vwcDataGridHeaderStyle } from './vwc-data-grid-header.css';
@@ -20,8 +20,8 @@ declare global {
 }
 
 export {
-	VwcGridAPI,
-	VwcGridColumnAPI
+	VwcGrid,
+	VwcGridColumn
 };
 
 /**
