@@ -49,10 +49,10 @@ ColumnsCustomizationJS.args = {
 	columns: [
 		{ header: 'First Name', path: 'fname', autoWidth: true },
 		{ header: 'Last Name', path: 'lname', autoWidth: true },
-		{ header: 'W Name', path: 'wname', width: '200px' },
-		{ header: 'X Name', path: 'xname', width: '200px' },
-		{ header: 'Y Name', path: 'yname', width: '200px' },
-		{ header: 'Z Name', path: 'zname', width: '200px' }
+		{ header: 'W Name', path: 'wname', width: '300px' },
+		{ header: 'X Name', path: 'xname', width: '30%' },
+		{ header: 'Y Name', path: 'yname', width: '30em' },
+		{ header: 'Z Name', path: 'zname', width: '300px' }
 	],
 	items: sequentalData({
 		fname: 'A-{i}',

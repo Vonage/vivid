@@ -1,4 +1,12 @@
-export interface VwcGridAPI {
+import { TemplateResult, CSSResult } from 'lit-element';
+
+export {
+	VwcGridAPI,
+	VwcGridColumnAPI,
+	VwcDataGridProvider
+};
+
+interface VwcGridAPI {
 	multiSort: boolean;
 	reordering: boolean;
 	columns: VwcGridColumnAPI[];
@@ -8,7 +16,7 @@ export interface VwcGridAPI {
 	dataProvider?(params: unknown, callback: (pageItems: unknown[], treeLevelSize: number) => void): void;
 }
 
-export interface VwcGridColumnAPI {
+interface VwcGridColumnAPI {
 	path: string;
 	header: string;
 
@@ -23,4 +31,9 @@ export interface VwcGridColumnAPI {
 	cellRenderer?(container: HTMLElement): void;
 	headerRenderer?(container: HTMLElement): void;
 	footerRenderer?(container: HTMLElement): void;
+}
+
+interface VwcDataGridProvider {
+	render(configuration: VwcGridAPI): TemplateResult;
+	getStylesOverlay(): CSSResult[];
 }
