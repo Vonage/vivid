@@ -56,7 +56,6 @@ describe('textfield', () => {
 		await waitNextTask();
 		const te = e.shadowRoot.querySelector('.mdc-text-field__input');
 		expect(te).exist;
-		console.log(getComputedStyle(te));
 		assertComputedStyle(te, { pointerEvents: 'none' });
 	});
 
