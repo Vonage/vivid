@@ -8,6 +8,7 @@ import { vwcDataGridProvider } from './vwc-data-grid-provider-vaadin';
 import { style as vwcDataGridStyle } from './vwc-data-grid.css';
 import {
 	customElement,
+	html,
 	property,
 	LitElement,
 	TemplateResult,
@@ -43,7 +44,7 @@ export class VWCDataGrid extends LitElement implements VwcGridAPI {
 	rowDetailsRenderer = undefined;
 
 	@property({ type: Array, reflect: false })
-	columns: VwcGridColumnAPI[] = [];
+	columns: VwcGridColumnAPI[] | undefined = undefined;
 
 	@property({ type: Array, reflect: false })
 	items: unknown[] | undefined = undefined;
@@ -52,6 +53,21 @@ export class VWCDataGrid extends LitElement implements VwcGridAPI {
 	dataProvider: ((params: unknown, callback: (pageItems: unknown[], treeLevelSize: number) => void) => void) | undefined = undefined;
 
 	protected render(): TemplateResult {
-		return vwcDataGridProvider.render(this);
+		return html`
+			<slot class="column-defs"></slot>
+			${vwcDataGridProvider.render(this)}
+		`;
+	}
+
+	protected firstUpdated(): void {
+		const assignedElements = this.shadowRoot?.querySelector('column-defs').assignedElements();
+		const columnDefs = assignedElements.map((ae: unknown) => ae.getColumnConfig());
+		this.processColumnDefs(columnDefs);
+	}
+
+	private processColumnDefs(columnDefs: VwcGridColumnAPI[]) {
+		//	TODO: build columns
+		//	TODO: set the columns on self
+		//	trigger update
 	}
 }

@@ -9,7 +9,7 @@ export {
 interface VwcGridAPI {
 	multiSort: boolean;
 	reordering: boolean;
-	columns: VwcGridColumnAPI[];
+	columns?: VwcGridColumnAPI[];
 	rowDetailsRenderer?(container: HTMLElement): void;
 
 	items?: unknown[];
