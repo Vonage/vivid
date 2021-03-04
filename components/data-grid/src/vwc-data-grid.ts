@@ -1,4 +1,5 @@
 import '@vonage/vvd-core';
+import './vwc-data-grid-column';
 import {
 	DataGrid,
 	DataGridColumn
