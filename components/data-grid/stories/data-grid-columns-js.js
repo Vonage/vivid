@@ -31,6 +31,14 @@ const Template = args => html`
 				<vwc-checkbox class="ln-hidden" @change="${hiddenToggle}"></vwc-checkbox>
 			</vwc-formfield>
 		</div>
+		<div>
+			<vwc-formfield label="First Name frozen">
+				<vwc-checkbox class="fn-frozen" @change="${frozenToggle}"></vwc-checkbox>
+			</vwc-formfield>
+			<vwc-formfield label="Last Name frozen">
+				<vwc-checkbox class="ln-frozen" @change="${frozenToggle}"></vwc-checkbox>
+			</vwc-formfield>
+		</div>
 	</div>
 	<vwc-data-grid .columns="${args.columns}" .items="${args.items}">
 	</vwc-data-grid>
@@ -39,10 +47,21 @@ const Template = args => html`
 export const ColumnsCustomizationJS = Template.bind({});
 ColumnsCustomizationJS.args = {
 	columns: [
-		{ header: 'First Name', path: 'fname' },
-		{ header: 'Last Name', path: 'lname' }
+		{ header: 'First Name', path: 'fname', autoWidth: true },
+		{ header: 'Last Name', path: 'lname', autoWidth: true },
+		{ header: 'W Name', path: 'wname', width: '200px' },
+		{ header: 'X Name', path: 'xname', width: '200px' },
+		{ header: 'Y Name', path: 'yname', width: '200px' },
+		{ header: 'Z Name', path: 'zname', width: '200px' }
 	],
-	items: sequentalData({ fname: 'A-{i}', lname: 'B-{i}' }, 100000)
+	items: sequentalData({
+		fname: 'A-{i}',
+		lname: 'B-{i}',
+		wname: 'W-{i}',
+		xname: 'X-{i}',
+		yname: 'Y-{i}',
+		zname: 'Z-{i}'
+	}, 100000)
 };
 
 function reorderingToggle(e) {
@@ -69,6 +88,17 @@ function hiddenToggle(e) {
 		grid.columns[0].hidden = v;
 	} else {
 		grid.columns[1].hidden = v;
+	}
+	grid.requestUpdate();
+}
+
+function frozenToggle(e) {
+	const v = e.target.checked;
+	const grid = document.querySelector('vwc-data-grid');
+	if (e.target.classList.contains('fn-frozen')) {
+		grid.columns[0].frozen = v;
+	} else {
+		grid.columns[1].frozen = v;
 	}
 	grid.requestUpdate();
 }

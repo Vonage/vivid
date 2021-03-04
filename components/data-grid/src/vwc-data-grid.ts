@@ -18,6 +18,7 @@ import {
 	LitElement,
 	TemplateResult,
 } from 'lit-element';
+import { ifDefined } from 'lit-html/directives/if-defined';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -84,14 +85,22 @@ export class VWCDataGrid extends LitElement implements VwcGridAPI {
 		}
 	}
 
-	//	TODO: optimize the logic below
 	private renderColumnDef(cc: VwcGridColumnAPI): TemplateResult {
+		const _width = cc.width;
+		let _autoWidth = cc.autoWidth;
+		if (_width && _autoWidth) {
+			console.error('\'width\' and \'autoWidth\' MUST NOT be used both; \'width\' will be used');
+			_autoWidth = undefined;
+		}
 		if (cc.tree) {
 			return html`<vaadin-grid-tree-column
 				path="${cc.path}"
 				header="${cc.header}"
 				?hidden="${cc.hidden}"
+				?frozen="${cc.frozen}"
 				?resizable="${cc.resizable}"
+				?auto-width="${_autoWidth}"
+				width="${ifDefined(_width || undefined)}"
 				.renderer="${cc.cellRenderer}"
 				.footerRenderer="${cc.footerRenderer}"
 			>
@@ -100,7 +109,10 @@ export class VWCDataGrid extends LitElement implements VwcGridAPI {
 			return html`<vaadin-grid-column
 				path="${cc.path}"
 				?hidden="${cc.hidden}"
+				?frozen="${cc.frozen}"
 				?resizable="${cc.resizable}"
+				?auto-width="${_autoWidth}"
+				width="${ifDefined(_width || undefined)}"
 				.renderer="${cc.cellRenderer}"
 				.footerRenderer="${cc.footerRenderer}"
 			>
