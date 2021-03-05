@@ -4,9 +4,9 @@ export const argTypes = {
 	connotation: {
 		control: {
 			type: 'select',
-			options: [undefined].concat(Object.values(Connotation).filter(c => [
+			options: Object.values(Connotation).filter(c => [
 				Connotation.Primary, Connotation.CTA, Connotation.Success, Connotation.Alert
-			].includes(c))),
+			].includes(c)).concat(['decorative']),
 		}
 	},
 	indeterminate: {
