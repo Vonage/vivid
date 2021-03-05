@@ -25,7 +25,7 @@ $border-radius: 10px;
 
 .mdc-linear-progress__bar-inner {
 	border-top-width: $block-size;
-	border-radius: calc(#{$border-radius}/var(--mdc-linear-progress-progress))/ calc(#{$border-radius}/1);
+	border-radius: calc(#{$border-radius} / var(--mdc-linear-progress-progress)) / calc(#{$border-radius} / 1);
 	:host([connotation="decorative"i]) & {
 		height: $block-size;
 		border-top: 0 none;
