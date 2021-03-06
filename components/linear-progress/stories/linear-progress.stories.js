@@ -7,7 +7,7 @@ export default {
 	title: 'Components/Atoms/Linear Progress',
 	component: 'vwc-linear-progress',
 	argTypes
-}
+};
 
 const Template = args => html`<vwc-linear-progress ...=${spread(args)}></vwc-linear-progress>`;
 
