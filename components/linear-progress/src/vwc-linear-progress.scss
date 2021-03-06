@@ -3,6 +3,7 @@
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins' with (
 	$connotations: primary cta success alert
 );
+@use '@vonage/vvd-foundation/scss/mixins/color-decoration-mixins';
 
 $block-size: 6px;
 $border-radius: 10px;
@@ -11,8 +12,11 @@ $border-radius: 10px;
 	':host(#{color-connotation-mixins.$connotation-placeholder})'
 );
 
+@include color-decoration-mixins.decorations;
+
 :host {
-	--mdc-theme-primary: var(#{color-semantic.$vvd-color-connotation}, transparent);
+	--mdc-theme-primary: var(#{color-semantic.$vvd-color-connotation},
+	var(#{scheme-variables.$vvd-color-primary}));
 	--mdc-linear-progress-buffer-color: var(#{scheme-variables.$vvd-color-contrast-soft});
 	--mdc-linear-progress-buffering-dots-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' enable-background='new 0 0 5 2' xml:space='preserve' viewBox='0 0 5 2' preserveAspectRatio='none slice'%3E%3Ccircle cx='1' cy='1' r='1' fill='%23616266'/%3E%3C/svg%3E");
 }
@@ -25,11 +29,14 @@ $border-radius: 10px;
 
 .mdc-linear-progress__bar-inner {
 	border-top-width: $block-size;
+	border-top-style: solid;
+	border-top-color: var(--mdc-theme-primary);
 	border-radius: calc(#{$border-radius} / var(--mdc-linear-progress-progress)) / calc(#{$border-radius} / 1);
-	:host([connotation="decorative"i]) & {
+	:host([decoration]) & {
 		height: $block-size;
+		border-color: transparent;
 		border-top: 0 none;
-		background-image: linear-gradient(to right, #7fc6f4, #8728fb);
+		background-image: var(#{color-semantic.$vvd-color-decoration});
 		block-size: $block-size;
 	}
 }

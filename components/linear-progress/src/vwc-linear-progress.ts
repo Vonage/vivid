@@ -1,10 +1,11 @@
+// eslint-disable-next-line max-classes-per-file
 import '@vonage/vvd-core';
 import { customElement, property, query } from 'lit-element';
 import { LinearProgress as MWCLinearProgress } from '@material/mwc-linear-progress';
 import { style as vwcLinearProgressStyle } from './vwc-linear-progress.css';
 import { style as mwcLinearProgressStyle } from '@material/mwc-linear-progress/mwc-linear-progress-css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
-import { Connotation } from '@vonage/vvd-foundation/constants';
+import { Connotation, Decoration } from '@vonage/vvd-foundation/constants';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -26,17 +27,37 @@ type LinearProgressConnotation = Extract<
 	| Connotation.CTA
 	| Connotation.Success
 	| Connotation.Alert
-	>
-	| 'decorative';
+	>;
+
+type LinearProgressDecoration = Extract<Decoration, Decoration.Primary>;
+
+function precedeOne<T extends { new(...args: any[]): VWCLinearProgress }>(constructor: T) {
+	return class extends constructor {
+		protected updated(changes: Map<string, boolean>): void {
+			super.updated(changes);
+			if (changes.has('connotation')) {
+				console.log('updated', changes, this);
+				this.decoration = undefined;
+			}
+			if (changes.has('decoration')) {
+				this.connotation = undefined;
+			}
+		}
+	};
+}
 @customElement('vwc-linear-progress')
+@precedeOne//('connotation', 'decoration')
 export class VWCLinearProgress extends MWCLinearProgress {
   @query('.mdc-linear-progress') protected mdcLinearProgress!: HTMLElement; // ! patch. remove after mwc expose 'progress' css variable
 
 	@property({ type: String, reflect: true })
-	connotation: LinearProgressConnotation = 'decorative';
+	connotation?: LinearProgressConnotation;
 
-	// ! patch. remove after mwc expose 'progress' css variable
+	@property({ type: String, reflect: true })
+	decoration?: LinearProgressDecoration = Decoration.Primary;
+
 	protected updated(changes: Map<string, boolean>): void {
+		// ! patch. remove after mwc expose 'progress' css variable
 		super.updated(changes);
 		if (changes.has('progress')) {
 			this.mdcLinearProgress.style.setProperty('--mdc-linear-progress-progress', this.progress.toString());

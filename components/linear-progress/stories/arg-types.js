@@ -1,12 +1,16 @@
-import { Connotation } from '@vonage/vvd-foundation/constants';
+import { Connotation, Decoration } from '@vonage/vvd-foundation/constants';
 
 export const argTypes = {
 	connotation: {
 		control: {
 			type: 'select',
-			options: Object.values(Connotation).filter(c => [
-				Connotation.Primary, Connotation.CTA, Connotation.Success, Connotation.Alert
-			].includes(c)).concat(['decorative']),
+			options: [Connotation.Primary, Connotation.CTA, Connotation.Success, Connotation.Alert],
+		}
+	},
+	decoration: {
+		control: {
+			type: 'select',
+			options: [Decoration.Primary],
 		}
 	},
 	indeterminate: {

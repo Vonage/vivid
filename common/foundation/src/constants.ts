@@ -9,6 +9,10 @@ export enum Connotation {
 	Announcement = 'announcement',
 }
 
+export enum Decoration {
+	Primary = 'primary'
+}
+
 /* eslint-disable no-shadow */
 export enum Shape {
 	Rounded = 'rounded',

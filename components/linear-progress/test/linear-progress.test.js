@@ -99,3 +99,10 @@ describe('linear progress connotation', () => {
 		});
 	}
 });
+
+//!tests to fullfil
+// should init to decoration
+// decoration should set gradient of blue and purple
+// set connotation should remove decoration property
+// set decoration should remove connotation property
+// wrong connotation should show primary fallback color
