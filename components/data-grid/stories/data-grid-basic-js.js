@@ -9,6 +9,11 @@ const Template = args => html`
 	</vwc-data-grid>
 `;
 
+export {
+	cellRenderer,
+	expandedRowRenderer
+}
+
 export const BasicJS = Template.bind({});
 BasicJS.args = {
 	columns: [

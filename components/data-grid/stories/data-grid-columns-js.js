@@ -5,44 +5,18 @@ import { html } from 'lit-element';
 import { sequentalData } from './data-grid-demo-data-provider';
 
 const Template = args => html`
-	<style>
-		.column-controls {
-			display: flex;
-			justify-content: space-between;
-		}
-	</style>
-	<div class="column-controls">
-		<vwc-formfield label="Reordering">
-			<vwc-checkbox class="multi-sort" @change="${reorderingToggle}"></vwc-checkbox>
-		</vwc-formfield>
-		<div>
-			<vwc-formfield label="First Name resizable">
-				<vwc-checkbox class="fn-resizable" @change="${resizableToggle}"></vwc-checkbox>
-			</vwc-formfield>
-			<vwc-formfield label="Last Name resizable">
-				<vwc-checkbox class="ln-resizable" @change="${resizableToggle}"></vwc-checkbox>
-			</vwc-formfield>
-		</div>
-		<div>
-			<vwc-formfield label="First Name hidden">
-				<vwc-checkbox class="fn-hidden" @change="${hiddenToggle}"></vwc-checkbox>
-			</vwc-formfield>
-			<vwc-formfield label="Last Name hidden">
-				<vwc-checkbox class="ln-hidden" @change="${hiddenToggle}"></vwc-checkbox>
-			</vwc-formfield>
-		</div>
-		<div>
-			<vwc-formfield label="First Name frozen">
-				<vwc-checkbox class="fn-frozen" @change="${frozenToggle}"></vwc-checkbox>
-			</vwc-formfield>
-			<vwc-formfield label="Last Name frozen">
-				<vwc-checkbox class="ln-frozen" @change="${frozenToggle}"></vwc-checkbox>
-			</vwc-formfield>
-		</div>
-	</div>
+	${getControlsSegment()}
 	<vwc-data-grid .columns="${args.columns}" .items="${args.items}">
 	</vwc-data-grid>
 `;
+
+export {
+	getControlsSegment,
+	reorderingToggle,
+	resizableToggle,
+	hiddenToggle,
+	frozenToggle
+}
 
 export const ColumnsCustomizationJS = Template.bind({});
 ColumnsCustomizationJS.args = {
@@ -63,6 +37,46 @@ ColumnsCustomizationJS.args = {
 		zname: 'Z-{i}'
 	}, 100000)
 };
+
+function getControlsSegment() {
+	return html`
+		<style>
+			.column-controls {
+				display: flex;
+				justify-content: space-between;
+			}
+		</style>
+		<div class="column-controls">
+			<vwc-formfield label="Reordering">
+				<vwc-checkbox class="multi-sort" @change="${reorderingToggle}"></vwc-checkbox>
+			</vwc-formfield>
+			<div>
+				<vwc-formfield label="First Name resizable">
+					<vwc-checkbox class="fn-resizable" @change="${resizableToggle}"></vwc-checkbox>
+				</vwc-formfield>
+				<vwc-formfield label="Last Name resizable">
+					<vwc-checkbox class="ln-resizable" @change="${resizableToggle}"></vwc-checkbox>
+				</vwc-formfield>
+			</div>
+			<div>
+				<vwc-formfield label="First Name hidden">
+					<vwc-checkbox class="fn-hidden" @change="${hiddenToggle}"></vwc-checkbox>
+				</vwc-formfield>
+				<vwc-formfield label="Last Name hidden">
+					<vwc-checkbox class="ln-hidden" @change="${hiddenToggle}"></vwc-checkbox>
+				</vwc-formfield>
+			</div>
+			<div>
+				<vwc-formfield label="First Name frozen">
+					<vwc-checkbox class="fn-frozen" @change="${frozenToggle}"></vwc-checkbox>
+				</vwc-formfield>
+				<vwc-formfield label="Last Name frozen">
+					<vwc-checkbox class="ln-frozen" @change="${frozenToggle}"></vwc-checkbox>
+				</vwc-formfield>
+			</div>
+		</div>
+	`;
+}
 
 function reorderingToggle(e) {
 	const v = e.target.checked;
