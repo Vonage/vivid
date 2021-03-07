@@ -1,5 +1,5 @@
 import '@vonage/vvd-core';
-
+import { DataGridHeader } from './vwc-data-grid-api';
 import { style as vwcDataGridHeaderStyle } from './vwc-data-grid-header.css';
 import {
 	html,
@@ -21,7 +21,7 @@ declare global {
  * @element vwc-data-grid-header
  */
 @customElement('vwc-data-grid-header')
-export class VWCDataGridHeader extends LitElement {
+export class VWCDataGridHeader extends LitElement implements DataGridHeader {
 	static styles = [vwcDataGridHeaderStyle];
 
 	@property({ type: String, reflect: true })

@@ -5,11 +5,8 @@ import '@vaadin/vaadin-grid/vaadin-grid-sorter';
 import '@vaadin/vaadin-grid/vaadin-grid-tree-column';
 import { CSSResult, html, TemplateResult } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
-import {
-	DataGrid,
-	DataGridColumn,
-	DataGridProvider
-} from './vwc-data-grid-api';
+import { DataGrid, DataGridColumn } from './vwc-data-grid-api';
+import { DataGridProvider } from './vwc-data-grid-provider-api';
 import { style as vwcDataGridStyleVaadin } from './vwc-data-grid-provider-vaadin.css';
 
 export {
