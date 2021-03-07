@@ -32,10 +32,11 @@ $border-radius: 10px;
 	border-top-style: solid;
 	border-top-color: var(--mdc-theme-primary);
 	border-radius: calc(#{$border-radius} / var(--mdc-linear-progress-progress)) / calc(#{$border-radius} / 1);
-	:host([decoration]) & {
+	:host([decoration="primary"i]) & {
 		height: $block-size;
-		border-color: transparent;
-		border-top: 0 none;
+		border-top-width: 0;
+		border-top-style: none;
+		border-top-color: transparent;
 		background-image: var(#{color-semantic.$vvd-color-decoration});
 		block-size: $block-size;
 	}
