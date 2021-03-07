@@ -170,7 +170,7 @@ describe('Linear Progress', () => {
 					element: linearProgress,
 					connotation: connotation,
 					childrenAffected: ['.mdc-linear-progress__bar-inner'],
-					stylesAffected: ['borderColor'],
+					stylesAffected: ['borderTopColor'],
 				});
 			});
 
@@ -182,7 +182,7 @@ describe('Linear Progress', () => {
 					element: linearProgress,
 					connotation: connotation,
 					childrenAffected: ['.mdc-linear-progress__bar-inner'],
-					stylesAffected: ['borderColor'],
+					stylesAffected: ['borderTopColor'],
 				});
 			});
 		}
