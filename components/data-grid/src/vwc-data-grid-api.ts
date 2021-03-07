@@ -15,7 +15,7 @@ interface DataGrid {
 	rowDetailsRenderer?(container: HTMLElement): void;
 
 	items?: unknown[];
-	dataProvider?(params: unknown, callback: (pageItems: unknown[], treeLevelSize: number) => void): void;
+	dataProvider?(params: { page: number, pageSize: number }, callback: (pageItems: unknown[], treeLevelSize: number) => void): void;
 }
 
 /**
