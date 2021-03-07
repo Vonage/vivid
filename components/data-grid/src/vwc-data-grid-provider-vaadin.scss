@@ -2,8 +2,6 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 
 ::part(header-cell) {
-	@include typography.typography-cat-shorthand('body-2-bold');
-
 	border-bottom: 1px solid var(#{scheme-variables.$vvd-color-on-base});
 	min-block-size: 44px;
 }

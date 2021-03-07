@@ -1,8 +1,9 @@
-import '@vaadin/vaadin-grid/vaadin-grid.js';
+import '@vaadin/vaadin-grid/vaadin-grid';
 import '@vaadin/vaadin-grid/vaadin-grid-column';
 import '@vaadin/vaadin-grid/vaadin-grid-filter-column';
 import '@vaadin/vaadin-grid/vaadin-grid-sorter';
 import '@vaadin/vaadin-grid/vaadin-grid-tree-column';
+import '@vaadin/vaadin-grid/vaadin-grid-tree-toggle';
 import { CSSResult, html, TemplateResult } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import { DataGrid, DataGridColumn } from './vwc-data-grid-api';
@@ -78,8 +79,8 @@ class VWCDataGridProviderVaadin implements DataGridProvider {
 
 	private renderInColumnExtension(cc: DataGridColumn): TemplateResult {
 		return cc.sortable
-			? html`<vaadin-grid-sorter path="${cc.path}" header="${cc.header}"></vaadin-grid-sorter>`
-			: html``;
+			? html`<template class="header"><vaadin-grid-sorter path="${cc.path}"><span class="vvd-data-grid-header">${cc.header}</span></vaadin-grid-sorter></template>`
+			: html`<template class="header"><span class="vvd-data-grid-header">${cc.header}</span></template>`;
 	}
 }
 
