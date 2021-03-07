@@ -4,7 +4,7 @@ import {
 	DataGrid,
 	DataGridColumn
 } from './vwc-data-grid-api';
-import { VWCDataGridColumn } from './vwc-data-grid-column';
+import { VWCDataGridColumn, COLUMN_DEFINITION_UPDATE_EVENT } from './vwc-data-grid-column';
 import { vwcDataGridProvider } from './vwc-data-grid-provider-vaadin';
 
 import { style as vwcDataGridStyle } from './vwc-data-grid.css';
@@ -58,7 +58,7 @@ export class VWCDataGrid extends LitElement implements DataGrid {
 	}
 
 	protected firstUpdated(): void {
-		this.addEventListener('column-definition-update', () => this.processColumnDefs());
+		this.addEventListener(COLUMN_DEFINITION_UPDATE_EVENT, () => this.processColumnDefs());
 		this.processColumnDefs();
 	}
 

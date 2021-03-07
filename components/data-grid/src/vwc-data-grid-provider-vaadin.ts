@@ -47,7 +47,7 @@ class VWCDataGridProviderVaadin implements DataGridProvider {
 		let _autoWidth = cc.autoWidth;
 		if (_width && _autoWidth) {
 			console.error('\'width\' and \'autoWidth\' MUST NOT be used both; \'width\' will be used');
-			_autoWidth = undefined;
+			_autoWidth = false;
 		}
 		if (cc.tree) {
 			return html`<vaadin-grid-tree-column

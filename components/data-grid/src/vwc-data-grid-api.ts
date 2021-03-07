@@ -20,13 +20,13 @@ interface DataGridColumn {
 	path: string;
 	header: string;
 
-	hidden?: boolean;
-	frozen?: boolean;
-	sortable?: boolean;
-	resizable?: boolean;
-	autoWidth?: boolean;
+	hidden: boolean;
+	frozen: boolean;
+	sortable: boolean;
+	resizable: boolean;
+	autoWidth: boolean;
 	width?: string;
-	tree?: boolean;
+	tree: boolean;
 
 	cellRenderer?(container: HTMLElement): void;
 	headerRenderer?(container: HTMLElement): void;

@@ -9,11 +9,17 @@ import {
 	LitElement,
 } from 'lit-element';
 
+export {
+	COLUMN_DEFINITION_UPDATE_EVENT
+};
+
 declare global {
 	interface HTMLElementTagNameMap {
 		'vwc-data-grid-column': VWCDataGridColumn;
 	}
 }
+
+const COLUMN_DEFINITION_UPDATE_EVENT = 'column-definition-update';
 
 @customElement('vwc-data-grid-column')
 export class VWCDataGridColumn extends LitElement implements DataGridColumn {
@@ -24,22 +30,25 @@ export class VWCDataGridColumn extends LitElement implements DataGridColumn {
 	header = '';
 
 	@property({ type: Boolean, reflect: true })
-	frozen: boolean | undefined;
+	hidden = false;
 
 	@property({ type: Boolean, reflect: true })
-	sortable: boolean | undefined;
+	frozen = false;
 
 	@property({ type: Boolean, reflect: true })
-	resizable: boolean | undefined;
+	sortable = false;
 
 	@property({ type: Boolean, reflect: true })
-	autoWidth: boolean | undefined;
+	resizable = false;
+
+	@property({ type: Boolean, reflect: true, attribute: 'auto-width' })
+	autoWidth = false;
 
 	@property({ type: String, reflect: true })
 	width: string | undefined;
 
 	@property({ type: Boolean, reflect: true })
-	tree: boolean | undefined;
+	tree = false;
 
 	@property({ type: Function, reflect: false })
 	cellRenderer = undefined;
@@ -54,6 +63,7 @@ export class VWCDataGridColumn extends LitElement implements DataGridColumn {
 		return {
 			path: this.path,
 			header: this.header,
+			hidden: this.hidden,
 			frozen: this.frozen,
 			sortable: this.sortable,
 			resizable: this.resizable,
@@ -71,6 +81,6 @@ export class VWCDataGridColumn extends LitElement implements DataGridColumn {
 	}
 
 	protected updated(): void {
-		this.dispatchEvent(new Event('column-definition-update'));
+		this.dispatchEvent(new Event(COLUMN_DEFINITION_UPDATE_EVENT, { bubbles: true }));
 	}
 }
