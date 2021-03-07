@@ -7,8 +7,9 @@ export {
 
 /**
  * API definition of the Vivid data grid provider
- * - this API allows to abstract the data grid APIs from an internal implementation
- * - this API defines Vivid data grid provisioning via any underlying engine (eg Vaadin, ag-grid, custom)
+ * - should be considered as an internal API for Vivid's needs only
+ * - allows to abstract the data grid APIs from an internal implementation
+ * - defines Vivid data grid provisioning via any underlying engine (eg Vaadin, ag-grid, custom)
  */
 interface DataGridProvider {
 	render(configuration: DataGrid): TemplateResult;

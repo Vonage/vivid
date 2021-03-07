@@ -1,9 +1,6 @@
 import '@vonage/vvd-core';
 import './vwc-data-grid-column';
-import {
-	DataGrid,
-	DataGridColumn
-} from './vwc-data-grid-api';
+import { DataGrid, DataGridColumn, DataGridHeader } from './vwc-data-grid-api';
 import { VWCDataGridColumn, COLUMN_DEFINITION_UPDATE_EVENT } from './vwc-data-grid-column';
 import { vwcDataGridProvider } from './vwc-data-grid-provider-vaadin';
 
@@ -23,7 +20,8 @@ declare global {
 
 export {
 	DataGrid,
-	DataGridColumn
+	DataGridColumn,
+	DataGridHeader
 };
 
 /**
