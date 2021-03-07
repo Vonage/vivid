@@ -48,7 +48,7 @@ export class VWCDataGrid extends LitElement implements DataGrid {
 	@property({ type: Boolean, reflect: true })
 	reordering = false;
 
-	@property({ type: Function, reflect: false })
+	@property({ reflect: false, attribute: false })
 	rowDetailsRenderer = undefined;
 
 	@property({ type: Array, reflect: false })
@@ -57,7 +57,7 @@ export class VWCDataGrid extends LitElement implements DataGrid {
 	@property({ type: Array, reflect: false })
 	items: unknown[] | undefined = undefined;
 
-	@property({ type: Function, reflect: false })
+	@property({ reflect: false, attribute: false })
 	dataProvider: ((params: unknown, callback: (pageItems: unknown[], treeLevelSize: number) => void) => void) | undefined = undefined;
 
 	protected render(): TemplateResult {

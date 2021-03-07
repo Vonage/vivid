@@ -45,13 +45,13 @@ export class VWCDataGridColumn extends LitElement implements DataGridColumn {
 	@property({ type: Boolean, reflect: true })
 	tree = false;
 
-	@property({ type: Function, reflect: false })
+	@property({ reflect: false, attribute: false })
 	cellRenderer = undefined;
 
-	@property({ type: Function, reflect: false })
+	@property({ reflect: false, attribute: false })
 	headerRenderer = undefined;
 
-	@property({ type: Function, reflect: false })
+	@property({ reflect: false, attribute: false })
 	footerRenderer = undefined;
 
 	getColumnConfig(): DataGridColumn {
