@@ -54,7 +54,9 @@ describe('Linear Progress', () => {
 		};
 
 		const decorationPrimaryStyle = {
-			borderTop: '0px none rgba(0, 0, 0, 0)',
+			borderTopWidth: '0px',
+			borderTopStyle: 'none',
+			borderTopColor: 'rgba(0, 0, 0, 0)',
 			height: '6px',
 			blockSize: '6px',
 			backgroundImage: 'linear-gradient(to right, rgb(127, 198, 244), rgb(135, 40, 251))'
