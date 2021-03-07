@@ -1,27 +1,22 @@
 import '@vonage/vvd-core';
 import {
+	COLUMN_DEFINITION_COMPONENT,
+	COLUMN_DEFINITION_UPDATE_EVENT,
 	DataGridColumn
 } from './vwc-data-grid-api';
-
 import {
 	customElement,
 	property,
 	LitElement,
 } from 'lit-element';
 
-export {
-	COLUMN_DEFINITION_UPDATE_EVENT
-};
-
 declare global {
 	interface HTMLElementTagNameMap {
-		'vwc-data-grid-column': VWCDataGridColumn;
+		[COLUMN_DEFINITION_COMPONENT]: VWCDataGridColumn;
 	}
 }
 
-const COLUMN_DEFINITION_UPDATE_EVENT = 'column-definition-update';
-
-@customElement('vwc-data-grid-column')
+@customElement(COLUMN_DEFINITION_COMPONENT)
 export class VWCDataGridColumn extends LitElement implements DataGridColumn {
 	@property({ type: String, reflect: true })
 	path = '';

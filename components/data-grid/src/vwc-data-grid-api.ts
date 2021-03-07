@@ -1,8 +1,15 @@
 export {
+	GRID_COMPONENT,
+	COLUMN_DEFINITION_COMPONENT,
+	COLUMN_DEFINITION_UPDATE_EVENT,
 	DataGrid,
 	DataGridColumn,
 	DataGridHeader
 };
+
+const GRID_COMPONENT = 'vwc-data-grid',
+	COLUMN_DEFINITION_COMPONENT = 'vwc-data-grid-column',
+	COLUMN_DEFINITION_UPDATE_EVENT = 'column-definition-update';
 
 /**
  * API definition of the Vivid data grid, component
@@ -11,8 +18,8 @@ export {
 interface DataGrid {
 	multiSort: boolean;
 	reordering: boolean;
+	rowDetailsRenderer?(container: HTMLElement, grid: DataGrid, data: { item: unknown }): void;
 	columns: DataGridColumn[];
-	rowDetailsRenderer?(container: HTMLElement): void;
 
 	items?: unknown[];
 	dataProvider?(params: { page: number, pageSize: number }, callback: (pageItems: unknown[], treeLevelSize: number) => void): void;
