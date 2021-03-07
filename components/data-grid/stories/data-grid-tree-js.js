@@ -12,7 +12,7 @@ const Template = args => html`
 export const TreeJS = Template.bind({});
 TreeJS.args = {
 	columns: [
-		{ header: 'Role', path: 'role', tree: true },
+		{ header: 'Role', path: 'role', tree: true, sortable: true },
 		{ header: 'User', path: 'username' },
 		{ header: 'City', path: 'city' },
 		{ header: 'First Name', path: 'name.first' },

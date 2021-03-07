@@ -56,6 +56,7 @@ class VWCDataGridProviderVaadin implements DataGridProvider {
 				?auto-width="${_autoWidth}"
 				width="${ifDefined(_width || undefined)}"
 				.renderer="${cc.cellRenderer}"
+				.headerRenderer="${cc.headerRenderer}"
 				.footerRenderer="${cc.footerRenderer}"
 			>
 			</vaadin-grid-tree-column>`;
@@ -77,8 +78,8 @@ class VWCDataGridProviderVaadin implements DataGridProvider {
 
 	private renderInColumnExtension(cc: DataGridColumn): TemplateResult {
 		return cc.sortable
-			? html`<template class="header"><vaadin-grid-sorter path="${cc.path}">${cc.header}</vaadin-grid-sorter></template>`
-			: html`<template class="header">${cc.header}</template>`;
+			? html`<vaadin-grid-sorter path="${cc.path}" header="${cc.header}"></vaadin-grid-sorter>`
+			: html``;
 	}
 }
 

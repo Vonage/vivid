@@ -21,5 +21,5 @@ function fNameHeader(container) {
 }
 
 function lNameFooter(container) {
-	container.textContent = `Total: ${FooterJS.args.items.length}`;
+	container.textContent = `Total: ${HeaderFooterJS.args.items.length}`;
 }
