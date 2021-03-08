@@ -53,5 +53,6 @@ interface DataGridColumn {
  * - header here is a web component representing each column's header
  */
 interface DataGridHeader {
-	label: string;
+	sortable?: boolean;
+	direction?: string;
 }

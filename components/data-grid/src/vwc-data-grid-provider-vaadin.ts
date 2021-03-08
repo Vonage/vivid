@@ -8,6 +8,7 @@ import { CSSResult, html, TemplateResult } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import { DataGrid, DataGridColumn } from './vwc-data-grid-api';
 import { DataGridProvider } from './vwc-data-grid-provider-api';
+import './vwc-data-grid-header';
 import { style as vwcDataGridStyleVaadin } from './vwc-data-grid-provider-vaadin.css';
 
 export {
@@ -79,8 +80,8 @@ class VWCDataGridProviderVaadin implements DataGridProvider {
 
 	private renderInColumnExtension(cc: DataGridColumn): TemplateResult {
 		return cc.sortable
-			? html`<template class="header"><vaadin-grid-sorter path="${cc.path}"><span class="vvd-data-grid-header">${cc.header}</span></vaadin-grid-sorter></template>`
-			: html`<template class="header"><span class="vvd-data-grid-header">${cc.header}</span></template>`;
+			? html`<template class="header"><vaadin-grid-sorter path="${cc.path}"><vwc-data-grid-header>${cc.header}</vwc-data-grid-header></vaadin-grid-sorter></template>`
+			: html`<template class="header"><vwc-data-grid-header>${cc.header}</vwc-data-grid-header></template>`;
 	}
 }
 

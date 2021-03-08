@@ -24,12 +24,15 @@ declare global {
 export class VWCDataGridHeader extends LitElement implements DataGridHeader {
 	static styles = [vwcDataGridHeaderStyle];
 
+	@property({ type: Boolean, reflect: true })
+	sortable = false;
+
 	@property({ type: String, reflect: true })
-	label = '';
+	direction = undefined;
 
 	protected render(): TemplateResult {
 		return html`
-			<span>${this.label}</span>
+			<slot></slot>
 		`;
 	}
 }

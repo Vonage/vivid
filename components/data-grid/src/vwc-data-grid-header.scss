@@ -1,5 +1,9 @@
+@use '@vonage/vvd-typography/scss/typography';
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+
 :host {
-	display: block;
-	min-width: 200px;
-	min-height: 150px;
+	@include typography.typography-cat-shorthand('body-2-bold');
+
+	display: inline-flex;
+	color: var(#{scheme-variables.$vvd-color-on-base});
 }

@@ -1,12 +1,5 @@
-@use '@vonage/vvd-typography/scss/typography';
-
 :host {
 	display: block;
 	min-width: 200px;
 	min-height: 150px;
 }
-
-.vvd-data-grid-header {
-	@include typography.typography-cat-shorthand('body-2-bold');
-}
-
