@@ -6,7 +6,7 @@ import { style as vwcLinearProgressStyle } from './vwc-linear-progress.css';
 import { style as mwcLinearProgressStyle } from '@material/mwc-linear-progress/mwc-linear-progress-css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import { Connotation, Decoration } from '@vonage/vvd-foundation/constants';
-import { precedeOne } from '@vonage/vvd-foundation/decorators';
+import { interceptCoexistence } from '@vonage/vvd-foundation/decorators';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -32,7 +32,7 @@ type LinearProgressConnotation = Extract<
 
 type LinearProgressDecoration = Extract<Decoration, Decoration.Primary>;
 @customElement('vwc-linear-progress')
-@precedeOne('decoration', 'connotation')
+@interceptCoexistence('decoration', 'connotation')
 export class VWCLinearProgress extends MWCLinearProgress {
   @query('.mdc-linear-progress') protected mdcLinearProgress!: HTMLElement; // ! patch. remove after mwc expose 'progress' css variable
 

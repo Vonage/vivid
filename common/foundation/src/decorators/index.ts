@@ -1,1 +1,1 @@
-export * from './precede-one';
+export * from './intercept-coexistence';

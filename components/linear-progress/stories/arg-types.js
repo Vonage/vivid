@@ -4,13 +4,13 @@ export const argTypes = {
 	connotation: {
 		control: {
 			type: 'select',
-			options: [Connotation.Primary, Connotation.CTA, Connotation.Success, Connotation.Alert],
+			options: [null, Connotation.Primary, Connotation.CTA, Connotation.Success, Connotation.Alert],
 		}
 	},
 	decoration: {
 		control: {
 			type: 'select',
-			options: [Decoration.Primary],
+			options: [null, Decoration.Primary],
 		}
 	},
 	indeterminate: {

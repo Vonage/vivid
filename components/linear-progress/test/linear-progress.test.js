@@ -106,7 +106,10 @@ describe('Linear Progress', () => {
 			assertComputedStyle(progressBar, decorationPrimaryStyle);
 		});
 
-		it('should unset decoration if set connotation and vice versa', async () => {
+		it('should warn if connotation conflict with decoration', async () => {
+			let warnMessage;
+			console.warn = str => warnMessage = str;
+
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} progress="0.5" decoration="primary"></${COMPONENT_NAME}>`)
 			);
@@ -117,13 +120,24 @@ describe('Linear Progress', () => {
 
 			await waitNextTask();
 
-			expect(actualElement.decoration).to.equal(null);
+			expect(warnMessage).to.equal('"connotation" conflict with "decoration"');
+		});
+
+		it('should warn if decoration conflict with connotation', async () => {
+			let warnMessage;
+			console.warn = str => warnMessage = str;
+
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} progress="0.5" connotation="cta"></${COMPONENT_NAME}>`)
+			);
+
+			await waitNextTask();
 
 			actualElement.decoration = 'primary';
 
 			await waitNextTask();
 
-			expect(actualElement.connotation).to.equal(null);
+			expect(warnMessage).to.equal('"decoration" conflict with "connotation"');
 		});
 	});
 
