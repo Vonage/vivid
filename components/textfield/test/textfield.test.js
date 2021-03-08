@@ -49,6 +49,16 @@ describe('textfield', () => {
 		expect(e).shadowDom.equalSnapshot();
 	});
 
+	it('should have the MWC input class transparent for events', async () => {
+		const [e] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+		);
+		await waitNextTask();
+		const te = e.shadowRoot.querySelector('.mdc-text-field__input');
+		expect(te).exist;
+		assertComputedStyle(te, { pointerEvents: 'none' });
+	});
+
 	describe('typography', () => {
 		typographyTestCases(COMPONENT_NAME);
 	});
