@@ -10,13 +10,39 @@
 	color: var(#{scheme-variables.$vvd-color-on-base});
 }
 
-.sort-controls {
+.sorters {
 	position: absolute;
 	left: -16px;
 	display: inline-flex;
 	flex-direction: column;
+	color: var(#{scheme-variables.$vvd-color-contrast-neutral});
 
-	.sort-control {
+	.sorter {
 		--icon-size: 12px;
+
+		&.asc {
+			margin-bottom: -2px;
+		}
+		&.desc {
+			margin-top: -2px;
+		}
+	}
+}
+
+:host([direction='asc']) {
+	.asc {
+		color: var(#{scheme-variables.$vvd-color-on-base});
+	}
+	.desc {
+		color: transparent;
+	}
+}
+
+:host([direction='desc']) {
+	.asc {
+		color: transparent;
+	}
+	.desc {
+		color: var(#{scheme-variables.$vvd-color-on-base});
 	}
 }

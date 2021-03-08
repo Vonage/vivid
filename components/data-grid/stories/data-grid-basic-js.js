@@ -5,6 +5,11 @@ import { html } from 'lit-element';
 import { sequentalData } from './data-grid-demo-data-provider';
 
 const Template = args => html`
+	<style>
+		vwc-checkbox {
+			vertical-align: middle;
+		}
+	</style>
 	<vwc-data-grid .columns="${args.columns}" .items="${args.items}" .rowDetailsRenderer="${expandedRowRenderer}">
 	</vwc-data-grid>
 `;

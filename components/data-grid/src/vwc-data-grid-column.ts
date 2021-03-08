@@ -21,9 +21,6 @@ export class VWCDataGridColumn extends LitElement implements DataGridColumn {
 	@property({ type: String, reflect: true })
 	path = '';
 
-	@property({ type: String, reflect: true })
-	header = '';
-
 	@property({ type: Boolean, reflect: true })
 	hidden = false;
 
@@ -48,8 +45,14 @@ export class VWCDataGridColumn extends LitElement implements DataGridColumn {
 	@property({ reflect: false, attribute: false })
 	cellRenderer = undefined;
 
+	@property({ type: String, reflect: true })
+	header = '';
+
 	@property({ reflect: false, attribute: false })
 	headerRenderer = undefined;
+
+	@property({ type: String, reflect: true })
+	footer = '';
 
 	@property({ reflect: false, attribute: false })
 	footerRenderer = undefined;
@@ -57,7 +60,6 @@ export class VWCDataGridColumn extends LitElement implements DataGridColumn {
 	getColumnConfig(): DataGridColumn {
 		return {
 			path: this.path,
-			header: this.header,
 			hidden: this.hidden,
 			frozen: this.frozen,
 			sortable: this.sortable,
@@ -66,7 +68,9 @@ export class VWCDataGridColumn extends LitElement implements DataGridColumn {
 			width: this.width,
 			tree: this.tree,
 			cellRenderer: this.cellRenderer,
+			header: this.header,
 			headerRenderer: this.headerRenderer,
+			footer: this.footer,
 			footerRenderer: this.footerRenderer
 		};
 	}

@@ -29,10 +29,10 @@ export class VWCDataGridHeader extends LitElement implements DataGridHeader {
 	static styles = [vwcDataGridHeaderStyle];
 
 	@property({ type: Boolean, reflect: true })
-	sortable?: boolean = false;
+	sortable = false;
 
 	@property({ type: String, reflect: true })
-	direction?: string = undefined;
+	direction: string | null = null;
 
 	@property({ type: String, reflect: true })
 	path?: string = undefined;
@@ -52,18 +52,15 @@ export class VWCDataGridHeader extends LitElement implements DataGridHeader {
 
 	protected render(): TemplateResult {
 		return html`
-			${this.renderSortControls()}
+			${this.sortable ? this.renderSortControls() : ''}
 			<slot></slot>
 		`;
 	}
 
 	private renderSortControls(): TemplateResult | string {
-		if (!this.sortable) {
-			return '';
-		}
-		return html`<span class="sort-controls">
-			<vwc-icon class="sort-control" type="up-full"></vwc-icon>
-			<vwc-icon class="sort-control" type="down-full"></vwc-icon>
+		return html`<span class="sorters">
+			<vwc-icon class="sorter asc" type="up-full"></vwc-icon>
+			<vwc-icon class="sorter desc" type="down-full"></vwc-icon>
 		</span>`;
 	}
 
@@ -76,12 +73,12 @@ export class VWCDataGridHeader extends LitElement implements DataGridHeader {
 	}
 
 	private onSortableClick() {
-		if (this.direction === undefined) {
+		if (!this.direction) {
 			this.direction = 'asc';
 		} else if (this.direction === 'asc') {
 			this.direction = 'desc';
 		} else {
-			this.direction = undefined;
+			this.direction = null;
 		}
 	}
 

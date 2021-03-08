@@ -33,7 +33,6 @@ interface DataGrid {
  */
 interface DataGridColumn {
 	path: string;
-	header: string;
 
 	hidden: boolean;
 	frozen: boolean;
@@ -44,7 +43,11 @@ interface DataGridColumn {
 	tree: boolean;
 
 	cellRenderer?(container: HTMLElement): void;
+
+	header: string;
 	headerRenderer?(container: HTMLElement): void;
+
+	footer: string;
 	footerRenderer?(container: HTMLElement): void;
 }
 
@@ -53,7 +56,7 @@ interface DataGridColumn {
  * - header here is a web component representing each column's header
  */
 interface DataGridHeader {
-	sortable?: boolean;
-	direction?: string;
+	sortable: boolean;
+	direction: string | null;
 	path?: string;
 }
