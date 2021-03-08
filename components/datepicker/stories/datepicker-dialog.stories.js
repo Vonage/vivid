@@ -34,7 +34,7 @@ const DialogTemplate = args => html`
 `;
 
 export const Dialog = DialogTemplate.bind({});
-Dialog.args = { fixed: '', dateFormat: 'Y-m-d', altInput: '', altFormat: 'F j, Y', closeOnSelect: '' };
+Dialog.args = { fixedMenuPosition: '', dateFormat: 'Y-m-d', altInput: '', altFormat: 'F j, Y', closeOnSelect: '' };
 
 function handleOpenDialogClick(e) {
   e.target.parentNode.querySelector('#dialog-a').show();

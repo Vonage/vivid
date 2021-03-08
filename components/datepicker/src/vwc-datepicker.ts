@@ -1,21 +1,16 @@
 import '@vonage/vvd-core';
-import '@vonage/vwc-button';
-import '@vonage/vwc-icon-button';
-import 'flatpickr/dist/flatpickr.css';
-import { customElement, property, CSSResult } from 'lit-element';
+import '@vonage/vwc-menu';
+import '@vonage/vwc-textfield';
+import {
+	customElement, property, html, CSSResult, query
+} from 'lit-element';
 import { LitFlatpickr } from 'lit-flatpickr';
 import { Options } from 'flatpickr/dist/types/options';
 import { style as vwcDatepickerStyles } from './vwc-datepicker.css.js';
-import { style as vwcDatepickerHeadStyles } from './vwc-datepicker-head.css.js';
+import { style as flatpickrStyles } from './flatpickr.css.js';
 import { VWCButton } from '@vonage/vwc-button';
 import { VWCIconButton } from '@vonage/vwc-icon-button';
 import { Shape } from '@vonage/vvd-foundation/constants';
-// import weekSelect from 'flatpickr/dist/plugins/weekSelect/weekSelect';
-
-/**
- * TODO:
- * - setup week picker
- */
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -29,11 +24,11 @@ declare global {
 @customElement('vwc-datepicker')
 export class VWCDatepicker extends LitFlatpickr {
 	static get styles(): CSSResult {
-		return vwcDatepickerStyles;
+		return [flatpickrStyles, vwcDatepickerStyles] as any;
 	}
 
-	// @property({ type: Boolean, reflect: true })
-	// weekSelect = false;
+	@query('.vvd-datepicker-wrapper')
+	private datepickerWrapper?: HTMLElement;
 
 	@property({ type: Boolean, reflect: true })
 	monthPicker = false;
@@ -42,45 +37,72 @@ export class VWCDatepicker extends LitFlatpickr {
 	closeOnSelect = false;
 
 	@property({ type: Boolean, reflect: true })
-	fixed = false;
+	fixedMenuPosition = false;
 
-	positionElement: HTMLElement | undefined = undefined;
+	anchor: HTMLElement | null = this;
 
-	// prevents flatpickr being appended to document body
-	private appendTo: HTMLElement | undefined = this;
-
-	// private plugins: Array<any> = [];
+	private appendTo: HTMLElement | undefined;
 
 	constructor() {
 		super();
 		// override LitFlatpickr to work with [flatpickr change](https://github.com/flatpickr/flatpickr/blame/07cf1b1ba5ec71da511c295f622d60eed3bf3eb7/src/index.ts#L1522)
 		// flatpickr now requires `enable` to be `undefined` by default rather than `[]`
-		(<undefined>(<unknown> this.enable)) = undefined;
+		(this.enable as unknown) = undefined;
 
-		// inject custom flatpicker styles
-		const headStyle = document.createElement('style');
-		headStyle.innerHTML = vwcDatepickerHeadStyles.cssText;
-		document.head.appendChild(headStyle);
+		// use custom open handler instead of lit-flatpickr
+		this.clickOpens = false;
 
 		// dispatched by flatpickr on date change
 		this.addEventListener('change', this.changeHandler);
 	}
 
-	// firstUpdated(): void {
-	// 	super.firstUpdated();
+	firstUpdated(): void {
+		super.firstUpdated();
 
-	// 	if (this.weekSelect) {
-	// 		this.plugins.push(weekSelect());
-	// 	}
-	// }
+		const input = this.querySelector('vwc-textfield');
+		if (input) input.onclick = () => this.open();
+
+		// find alternative to free up this hook
+		this.onClose = () => {
+			const menu = this.shadowRoot?.querySelector('vwc-menu');
+			if (menu) menu.open = false;
+		};
+	}
+
+	// override lit-flatpicker
+	open(): void {
+		const menu = this.shadowRoot?.querySelector('vwc-menu');
+		const datepicker = this.datepickerWrapper?.querySelector('.vvd-datepicker');
+
+		if (menu) menu.open = true;
+		datepicker?.classList.add('open');
+	}
 
 	disconnectedCallback(): void {
 		super.disconnectedCallback();
 		this._instance?.destroy();
 	}
 
-	// override LitFlatpickr to remove cdn styles
+	render() {
+		return html`
+			${!this._hasSlottedElement ? html`<input class="lit-flatpickr flatpickr flatpickr-input" />` : html``}
+			<slot></slot>
+			${this.inline
+		? html`<div class="vvd-datepicker-wrapper"></div>`
+		: html`<vwc-menu 
+						.anchor=${this.anchor}
+						.absolute=${!this.fixedMenuPosition} 
+						.fixed=${this.fixedMenuPosition}
+						corner='BOTTOM_START'
+					>
+						<div class="vvd-datepicker-wrapper"></div>
+					</vwc-menu>`
+}	
+		`;
+	}
+
 	async init() {
+		this.appendTo = this.datepickerWrapper;
 		this.initializeComponent();
 		this.renderCustomParts();
 	}
@@ -88,7 +110,6 @@ export class VWCDatepicker extends LitFlatpickr {
 	private renderCustomParts(): void {
 		if (!this._instance?.isMobile || this.disableMobile) {
 			this._instance?.calendarContainer.classList.add('vvd-datepicker');
-			if (this.fixed) this._instance?.calendarContainer.classList.add('vvd-datepicker-fixed');
 
 			this.renderHeader();
 			this.renderRange();
@@ -415,10 +436,8 @@ export class VWCDatepicker extends LitFlatpickr {
 			wrap: this.wrap,
 			// additional config options
 			...(this.enable && { enable: this.enable }),
-			// ...(this.plugins.length && { plugins: this.plugins }),
 			appendTo: this.appendTo,
-			closeOnSelect: this.closeOnSelect,
-			positionElement: this.positionElement
+			closeOnSelect: this.closeOnSelect
 		};
 	}
 }

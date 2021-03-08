@@ -1,5 +1,4 @@
 ignores: [
-  "flatpickr",
   "lit-flatpickr",
   "@vonage/vvd-core",
   "@vonage/vwc-datepicker",

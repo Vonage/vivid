@@ -30,6 +30,8 @@
 		"@vonage/vvd-foundation": "^2.0.3",
 		"@vonage/vwc-button": "^2.0.3",
 		"@vonage/vwc-icon-button": "^2.0.3",
+		"@vonage/vwc-menu": "^2.0.3",
+		"@vonage/vwc-textfield": "^2.0.3",
 		"flatpickr": "^4.6.9",
 		"lit-element": "^2.4.0",
 		"lit-flatpickr": "^0.2.5",

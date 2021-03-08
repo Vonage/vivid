@@ -9,22 +9,24 @@ const Template = args => html`
   <vwc-datepicker id="datepicker" ...=${spread(args)}></vwc-datepicker>
 
   <script>
-    datepicker.positionElement = trigger;
+    datepicker.anchor = trigger;
     datepicker.onValueUpdate = () => {
       input[0].value = datepicker.getValue();
     };
   </script>
 
   <pre><code class="js language-js">
-    datepicker.positionElement = trigger;
+    trigger.onclick = () => datepicker.open();
+
+    datepicker.anchor = trigger;
     datepicker.onValueUpdate = () => {
       input.value = datepicker.getValue();
     };
   </code></pre>
 `;
 
-export const Position = Template.bind({});
-Position.args = { closeOnSelect: '' };
+export const Anchor = Template.bind({});
+Anchor.args = { closeOnSelect: '' };
 
 function handleOpenDatepicker() {
   datepicker.open();
