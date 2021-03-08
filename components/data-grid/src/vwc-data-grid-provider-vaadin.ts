@@ -51,7 +51,6 @@ class VWCDataGridProviderVaadin implements DataGridProvider {
 		}
 		if (cc.tree) {
 			return html`<vaadin-grid-tree-column
-				vvdc="${cc}"
 				path="${cc.path}"
 				?hidden="${cc.hidden}"
 				?frozen="${cc.frozen}"
