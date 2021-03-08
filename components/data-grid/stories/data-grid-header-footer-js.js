@@ -10,7 +10,7 @@ const Template = args => html`
 export const HeaderFooterJS = Template.bind({});
 HeaderFooterJS.args = {
 	columns: [
-		{ header: 'First Name', path: 'fname', headerRenderer: fNameHeader, footer: 'Totals' },
+		{ header: 'First Name', path: 'fname', headerRenderer: fNameHeader, footer: 'Totals:' },
 		{ header: 'Last Name', path: 'lname', footerRenderer: lNameFooter }
 	],
 	items: sequentalData({ fname: 'A-{i}', lname: 'B-{i}' }, 100000)
