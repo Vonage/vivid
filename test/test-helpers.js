@@ -140,6 +140,7 @@ function assertComputedStyle(element, expectedStyles, pseudoSelector = null) {
 			case 'borderInlineEndColor':
 			case 'borderBlockStartColor':
 			case 'borderBlockEndColor':
+			case 'fill':
 			case 'stroke':
 				actualValue = computedStyle[styleKey].replaceAll(/\s/g, '');
 				expectedValue = expectedStyles[styleKey].replaceAll(/\s/g, '');
