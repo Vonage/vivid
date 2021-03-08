@@ -73,15 +73,11 @@ class VWCDataGridProviderVaadin implements DataGridProvider {
 				.renderer="${cc.cellRenderer}"
 				.footerRenderer="${cc.footerRenderer}"
 			>
-				${this.renderInColumnExtension(cc)}
+				<template class="header">
+					<vwc-data-grid-header ?sortable="${cc.sortable}" path="${cc.path}">${cc.header}</vwc-data-grid-header>
+				</template>
 			</vaadin-grid-column>`;
 		}
-	}
-
-	private renderInColumnExtension(cc: DataGridColumn): TemplateResult {
-		return cc.sortable
-			? html`<template class="header"><vaadin-grid-sorter path="${cc.path}"><vwc-data-grid-header>${cc.header}</vwc-data-grid-header></vaadin-grid-sorter></template>`
-			: html`<template class="header"><vwc-data-grid-header>${cc.header}</vwc-data-grid-header></template>`;
 	}
 }
 

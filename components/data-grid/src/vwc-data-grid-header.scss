@@ -3,7 +3,20 @@
 
 :host {
 	@include typography.typography-cat-shorthand('body-2-bold');
+	position: relative;
 
 	display: inline-flex;
+	align-items: center;
 	color: var(#{scheme-variables.$vvd-color-on-base});
+}
+
+.sort-controls {
+	position: absolute;
+	left: -16px;
+	display: inline-flex;
+	flex-direction: column;
+
+	.sort-control {
+		--icon-size: 12px;
+	}
 }

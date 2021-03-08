@@ -55,4 +55,5 @@ interface DataGridColumn {
 interface DataGridHeader {
 	sortable?: boolean;
 	direction?: string;
+	path?: string;
 }
