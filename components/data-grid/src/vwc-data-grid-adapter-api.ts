@@ -1,4 +1,4 @@
-import { TemplateResult, CSSResult } from 'lit-element';
+import { TemplateResult } from 'lit-element';
 import { DataGrid } from './vwc-data-grid-api';
 
 export {
@@ -12,6 +12,11 @@ export {
  * - defines Vivid data grid provisioning via any underlying engine (eg Vaadin, ag-grid, custom)
  */
 interface DataGridAdapter {
+	//	rendering
 	render(configuration: DataGrid): TemplateResult;
-	getStylesOverlay(): CSSResult[];
+
+	//	selection
+	getSelectedItems(vwcDataGrid: HTMLElement): unknown[];
+	selectItem(item: unknown): void;
+	deselectItem(item: unknown): void;
 }

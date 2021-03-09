@@ -9,3 +9,7 @@
 .vvd-grid-footer {
 	@include typography.typography-cat-shorthand('body-2-bold');
 }
+
+.vvd-row-selector {
+	vertical-align: middle;
+}

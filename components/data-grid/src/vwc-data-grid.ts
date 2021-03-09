@@ -9,7 +9,7 @@ import {
 	DataGridHeader
 } from './vwc-data-grid-api';
 import { VWCDataGridColumn } from './vwc-data-grid-column';
-import { vwcDataGridAdapterVaadin } from './adapters/vwc-data-grid-adapter-vaadin';
+import { VWCDataGridAdapterVaadin } from './adapters/vwc-data-grid-adapter-vaadin';
 import { style as vwcDataGridStyle } from './vwc-data-grid.css';
 import {
 	customElement,
@@ -40,7 +40,8 @@ export {
  */
 @customElement(GRID_COMPONENT)
 export class VWCDataGrid extends LitElement implements DataGrid {
-	static styles = [vwcDataGridStyle, ...vwcDataGridAdapterVaadin.getStylesOverlay()];
+	static styles = [vwcDataGridStyle, ...VWCDataGridAdapterVaadin.getStylesOverlay()];
+	#gridAdapter = new VWCDataGridAdapterVaadin(this);
 
 	@property({ type: Boolean, reflect: true, attribute: 'multi-sort' })
 	multiSort = false;
@@ -57,13 +58,28 @@ export class VWCDataGrid extends LitElement implements DataGrid {
 	@property({ reflect: false, attribute: false })
 	dataProvider: ((params: unknown, callback: (pageItems: unknown[], treeLevelSize: number) => void) => void) | undefined = undefined;
 
+	get selectedItems(): unknown[] {
+		return this.#gridAdapter.getSelectedItems();
+	}
+
+	selectItem(item: unknown) {
+		this.#gridAdapter.selectItem(item);
+	}
+
+	deselectItem(item: unknown) {
+		this.#gridAdapter.deselectItem(item);
+	}
+
 	protected render(): TemplateResult {
-		return vwcDataGridAdapterVaadin.render(this);
+		return this.#gridAdapter.render();
 	}
 
 	protected firstUpdated(): void {
 		this.addEventListener(COLUMN_DEFINITION_UPDATE_EVENT, () => this.processColumnDefs());
 		this.processColumnDefs();
+		this.shadowRoot?.firstElementChild?.addEventListener('selected-items-changed', () => {
+			this.dispatchEvent(new Event('selected-items-changed', { bubbles: true, composed: true }));
+		});
 	}
 
 	private processColumnDefs() {

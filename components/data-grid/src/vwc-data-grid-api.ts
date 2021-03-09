@@ -29,6 +29,10 @@ interface DataGrid {
 
 	items?: unknown[];
 	dataProvider?(params: { page: number, pageSize: number }, callback: (pageItems: unknown[], treeLevelSize: number) => void): void;
+
+	selectedItems: unknown[];
+	selectItem(item: unknown): void;
+	deselectItem(item: unknown): void;
 }
 
 /**

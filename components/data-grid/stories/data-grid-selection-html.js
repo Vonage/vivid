@@ -8,14 +8,21 @@ const Template = args => html`
 			vertical-align: middle;
 		}
 	</style>
-	<vwc-data-grid .items="${args.items}">
+	<vwc-data-grid .items="${args.items}" @selected-items-changed="${onSelect}">
 		<vwc-data-grid-column selector="multi"></vwc-data-grid-column>
 		<vwc-data-grid-column path="fname" header="First Name" sortable></vwc-data-grid-column>
 		<vwc-data-grid-column path="lname" header="Last Name"></vwc-data-grid-column>
 	</vwc-data-grid>
+	<p>
+		<span>Total selected: </span><span class="selected-count"></span>
+	</p>
 `;
 
 export const SelectionHTML = Template.bind({});
 SelectionHTML.args = {
 	items: sequentalData({ fname: 'A-{i}', lname: 'B-{i}' }, 10000)
 };
+
+function onSelect(e) {
+	document.querySelector('.selected-count').textContent = e.target.selectedItems.length;
+}
