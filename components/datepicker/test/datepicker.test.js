@@ -34,6 +34,7 @@ describe('datepicker', () => {
 			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 		);
 		await actualElement.onReady;
+		await waitNextTask();
 
 		const datepicker = actualElement.shadowRoot.querySelector('.vvd-datepicker');
 		const customHeader = datepicker.querySelector('.vvd-datepicker-header');
@@ -55,6 +56,7 @@ describe('datepicker', () => {
 			`)
 		);
 		await actualElement.onReady;
+		await waitNextTask();
 
 		actualElement.defaultDate = 'today';
 		await waitNextTask();
@@ -70,10 +72,9 @@ describe('datepicker', () => {
 			`)
 		);
 		await actualElement.onReady;
-
-		const vwcMenu = actualElement.shadowRoot.querySelector('vwc-menu');
 		await waitNextTask();
 
+		const vwcMenu = actualElement.shadowRoot.querySelector('vwc-menu');
 		const mwcMenuSurface = vwcMenu.shadowRoot.querySelector('mwc-menu-surface');
 		const menuSurface = mwcMenuSurface.shadowRoot.querySelector('.mdc-menu-surface');
 
@@ -90,9 +91,9 @@ describe('datepicker', () => {
 				`)
 			);
 			await actualElement.onReady;
+			await waitNextTask();
 
 			const vwcMenu = actualElement.shadowRoot.querySelector('vwc-menu');
-			await waitNextTask();
 
 			let datepicker = vwcMenu.querySelector('.vvd-datepicker');
 			assertComputedStyle(datepicker, { display: 'none' });
@@ -112,6 +113,7 @@ describe('datepicker', () => {
 				`)
 			);
 			await actualElement.onReady;
+			await waitNextTask();
 
 			const months = actualElement.shadowRoot.querySelector('.vvd-datepicker-month-view .vvd-datepicker-months');
 			assertComputedStyle(months, { display: 'block' });
@@ -124,6 +126,7 @@ describe('datepicker', () => {
 				`)
 			);
 			await actualElement.onReady;
+			await waitNextTask();
 
 			const range = actualElement.shadowRoot.querySelector('.vvd-datepicker-range');
 			assertComputedStyle(range, { display: 'flex' });
