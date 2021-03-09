@@ -101,6 +101,7 @@ describe('datepicker', () => {
 			const input = actualElement.querySelector('.vivid-input-internal.flatpickr-input');
 			input.click();
 			await actualElement.onOpen;
+			await waitNextTask();
 
 			datepicker = vwcMenu.querySelector('.vvd-datepicker.open');
 			assertComputedStyle(datepicker, { display: 'block' });
