@@ -185,7 +185,7 @@ describe('vvd-scheme service', () => {
 			});
 
 			expect(testSet).not.empty;
-			Object.values(testSet).forEach((varSet) => expect(varSet.size).equal(2));
+			Object.values(testSet).forEach(varSet => expect(varSet.size).equal(2));
 		});
 	});
 });
