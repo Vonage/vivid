@@ -9,7 +9,7 @@ const Template = args => html`
 		}
 	</style>
 	<vwc-data-grid .items="${args.items}">
-		<vwc-data-grid-column selector="one"></vwc-data-grid-column>
+		<vwc-data-grid-column selector="multi"></vwc-data-grid-column>
 		<vwc-data-grid-column path="fname" header="First Name" sortable></vwc-data-grid-column>
 		<vwc-data-grid-column path="lname" header="Last Name"></vwc-data-grid-column>
 	</vwc-data-grid>
@@ -17,5 +17,5 @@ const Template = args => html`
 
 export const SelectionHTML = Template.bind({});
 SelectionHTML.args = {
-	items: sequentalData({ fname: 'A-{i}', lname: 'B-{i}' }, 100000)
+	items: sequentalData({ fname: 'A-{i}', lname: 'B-{i}' }, 10000)
 };

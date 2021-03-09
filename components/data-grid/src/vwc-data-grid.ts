@@ -1,5 +1,5 @@
 import '@vonage/vvd-core';
-import './vwc-data-grid-column';
+import './vwc-data-grid-column';		//	do NOT remove, MUST have to not be elliminated
 import {
 	GRID_COMPONENT,
 	COLUMN_DEFINITION_COMPONENT,

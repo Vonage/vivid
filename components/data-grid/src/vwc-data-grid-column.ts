@@ -1,4 +1,3 @@
-import '@vonage/vvd-core';
 import {
 	COLUMN_DEFINITION_COMPONENT,
 	COLUMN_DEFINITION_UPDATE_EVENT,
@@ -25,7 +24,7 @@ declare global {
 @customElement(COLUMN_DEFINITION_COMPONENT)
 export class VWCDataGridColumn extends LitElement implements DataGridColumn {
 	@property({ type: String, reflect: true })
-	path = '';
+	path = undefined;
 
 	@property({ type: Boolean, reflect: true })
 	tree = false;
@@ -43,7 +42,7 @@ export class VWCDataGridColumn extends LitElement implements DataGridColumn {
 	@property({ type: Boolean, reflect: true, attribute: 'auto-width' })
 	autoWidth = false;
 	@property({ type: String, reflect: true })
-	width: string | undefined;
+	width = undefined;
 
 	@property({ type: String, reflect: true })
 	header = '';
@@ -64,17 +63,17 @@ export class VWCDataGridColumn extends LitElement implements DataGridColumn {
 			hidden: this.selector ? false : this.hidden,
 			frozen: this.frozen,
 			sortable: this.selector ? false : this.sortable,
-			resizable: this.selector ? false : this.resizable,
+			resizable: this.resizable,
 			selector: this.selector,
 
-			autoWidth: (this.width || this.selector) ? false : this.autoWidth,
-			width: this.selector ? '60px' : this.width,
+			autoWidth: this.width ? false : this.autoWidth,
+			width: this.width,
 
 			header: this.header,
 			headerRenderer: this.headerRenderer,
 			footer: this.footer,
 			footerRenderer: this.footerRenderer,
-			cellRenderer: this.selector ? undefined : this.cellRenderer
+			cellRenderer: this.cellRenderer
 		};
 	}
 
@@ -94,11 +93,11 @@ export class VWCDataGridColumn extends LitElement implements DataGridColumn {
 	}
 
 	private verifySelectorViolations() {
-		if (this.cellRenderer) {
-			console.warn('column MAY NOT have both \'selector\' and \'cellRenderer\'; \'cellRenderer\' will be ignored');
+		if (this.sortable) {
+			console.warn('column MAY NOT have both \'selector\' and \'sortable\'; \'sortable\' will be ignored');
 		}
-		if (this.width || this.autoWidth) {
-			console.warn('column MAY NOT have both \'selector\' and \'width\'/\'autoWidth\'; \'width\'/\'autoWidth\' will be ignored');
+		if (this.hidden) {
+			console.warn('column MAY NOT have both \'selector\' and \'hidden\'; \'hidden\' will be ignored');
 		}
 	}
 

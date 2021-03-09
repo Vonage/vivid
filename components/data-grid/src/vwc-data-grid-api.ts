@@ -1,13 +1,18 @@
 export {
 	GRID_COMPONENT,
+	GRID_HEADER_COMPONENT,
+	GRID_SELECT_HEADER_COMPONENT,
 	COLUMN_DEFINITION_COMPONENT,
 	COLUMN_DEFINITION_UPDATE_EVENT,
 	DataGrid,
 	DataGridColumn,
-	DataGridHeader
+	DataGridHeader,
+	DataGridSelectHeader
 };
 
 const GRID_COMPONENT = 'vwc-data-grid',
+	GRID_HEADER_COMPONENT = 'vwc-data-grid-header',
+	GRID_SELECT_HEADER_COMPONENT = 'vwc-data-grid-select-header',
 	COLUMN_DEFINITION_COMPONENT = 'vwc-data-grid-column',
 	COLUMN_DEFINITION_UPDATE_EVENT = 'column-definition-update';
 
@@ -33,7 +38,7 @@ interface DataGrid {
  * - this API is to be applied to each column in the data grid
  */
 interface DataGridColumn {
-	path: string;
+	path?: string;
 
 	tree: boolean;
 	hidden: boolean;
@@ -49,15 +54,23 @@ interface DataGridColumn {
 	headerRenderer?(column: DataGridColumn, container: HTMLElement): void;
 	footer: string;
 	footerRenderer?(column: DataGridColumn, container: HTMLElement): void;
-	cellRenderer?(container: HTMLElement): void;
+	cellRenderer?(column: DataGridColumn, container: HTMLElement): void;
 }
 
 /**
  * API definition of the Vivid data grid header, component
- * - header here is a web component representing each column's header
+ * - web component representing each column's header
  */
 interface DataGridHeader {
 	sortable: boolean;
 	direction: string | null;
 	path?: string;
+}
+
+/**
+ * API definition of the Vivid data grid selector header, component
+ * - web component representing selector column's header
+ */
+interface DataGridSelectHeader {
+	selectMode?: string
 }
