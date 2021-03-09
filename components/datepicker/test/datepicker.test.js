@@ -21,32 +21,29 @@ describe('datepicker', () => {
 		);
 	});
 
-	it('should have internal contents', async () => {
+	// it('should have internal contents', async () => {
+	// 	const [actualElement] = addElement(
+	// 		textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+	// 	);
+	// 	await actualElement.onReady;
+	// 	expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
+	// });
+
+	it('should have lit-flatpickr instance in DOM', async () => {
 		const [actualElement] = addElement(
 			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 		);
+		await actualElement.onReady;
 
-		actualElement.onReady = () => {
-			expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
-		};
-	});
+		const datepicker = actualElement.shadowRoot.querySelector('.vvd-datepicker');
+		const customHeader = datepicker.querySelector('.vvd-datepicker-header');
+		const customMonths = datepicker.querySelector('.vvd-datepicker-months');
+		const customFooter = datepicker.querySelector('.vvd-datepicker-footer');
 
-	it('should have lit-flatpickr instance in DOM', async () => {
-		addElement(
-			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-		);
-
-		actualElement.onReady = () => {
-			const datepicker = document.querySelector('.vvd-datepicker');
-			const customHeader = datepicker.querySelector('.vvd-datepicker-header');
-			const customMonths = datepicker.querySelector('.vvd-datepicker-months');
-			const customFooter = datepicker.querySelector('.vvd-datepicker-footer');
-
-			expect(datepicker).to.exist;
-			expect(customHeader).to.exist;
-			expect(customMonths).to.exist;
-			expect(customFooter).to.exist;
-		};
+		expect(datepicker).to.exist;
+		expect(customHeader).to.exist;
+		expect(customMonths).to.exist;
+		expect(customFooter).to.exist;
 	});
 
 	it('should update input value when date selected', async () => {
@@ -57,30 +54,33 @@ describe('datepicker', () => {
 				</${COMPONENT_NAME}>
 			`)
 		);
+		await actualElement.onReady;
 
-		actualElement.onReady = async () => {
-			actualElement.defaultDate = 'today';
-			await waitNextTask();
+		actualElement.defaultDate = 'today';
+		await waitNextTask();
 
-			const input = actualElement.querySelector('.vivid-input-internal.flatpickr-input');
-			expect(input.value).not.empty;
-		};
+		const input = actualElement.querySelector('.vivid-input-internal.flatpickr-input');
+		expect(input.value).not.empty;
 	});
 
-	it('should have fixed position when fixed set', async () => {
-		addElement(
+	it('should have fixed menu position when fixedMenuPosition set', async () => {
+		const [actualElement] = addElement(
 			textToDomToParent(`
-				<${COMPONENT_NAME} fixed></${COMPONENT_NAME}>
+				<${COMPONENT_NAME} fixedMenuPosition></${COMPONENT_NAME}>
 			`)
 		);
+		await actualElement.onReady;
 
-		actualElement.onReady = () => {
-			const datepicker = document.querySelector('.vvd-datepicker');
-			assertComputedStyle(datepicker, { position: 'fixed' });
-		};
+		const vwcMenu = actualElement.shadowRoot.querySelector('vwc-menu');
+		await waitNextTask();
+
+		const mwcMenuSurface = vwcMenu.shadowRoot.querySelector('mwc-menu-surface');
+		const menuSurface = mwcMenuSurface.shadowRoot.querySelector('.mdc-menu-surface');
+
+		assertComputedStyle(menuSurface, { position: 'fixed' });
 	});
 
-	describe('visibility', () => {
+	describe('visibility', async () => {
 		it('should have datepicker visible when input clicked', async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`
@@ -89,44 +89,44 @@ describe('datepicker', () => {
 					</${COMPONENT_NAME}>
 				`)
 			);
+			await actualElement.onReady;
 
-			actualElement.onReady = async () => {
-				let datepicker = document.querySelector('.vvd-datepicker');
-				assertComputedStyle(datepicker, { display: 'none' });
+			const vwcMenu = actualElement.shadowRoot.querySelector('vwc-menu');
+			await waitNextTask();
 
-				const input = actualElement.querySelector('.vivid-input-internal.flatpickr-input');
-				input.click();
-				await waitNextTask();
+			let datepicker = vwcMenu.querySelector('.vvd-datepicker');
+			assertComputedStyle(datepicker, { display: 'none' });
 
-				datepicker = document.querySelector('.vvd-datepicker.open');
-				assertComputedStyle(datepicker, { display: 'block' });
-			};
+			const input = actualElement.querySelector('.vivid-input-internal.flatpickr-input');
+			input.click();
+			await actualElement.onOpen;
+
+			datepicker = vwcMenu.querySelector('.vvd-datepicker.open');
+			assertComputedStyle(datepicker, { display: 'block' });
 		});
 
 		it('should have month picker when monthPicker set', async () => {
-			addElement(
+			const [actualElement] = addElement(
 				textToDomToParent(`
 					<${COMPONENT_NAME} inline monthPicker></${COMPONENT_NAME}>
 				`)
 			);
+			await actualElement.onReady;
 
-			actualElement.onReady = () => {
-				const months = document.querySelector('.vvd-datepicker-month-view .vvd-datepicker-months');
-				assertComputedStyle(months, { display: 'block' });
-			};
+			const months = actualElement.shadowRoot.querySelector('.vvd-datepicker-month-view .vvd-datepicker-months');
+			assertComputedStyle(months, { display: 'block' });
 		});
 
 		it('should have custom range when mode set to range', async () => {
-			addElement(
+			const [actualElement] = addElement(
 				textToDomToParent(`
 					<${COMPONENT_NAME} inline mode="range"></${COMPONENT_NAME}>
 				`)
 			);
+			await actualElement.onReady;
 
-			actualElement.onReady = () => {
-				const range = document.querySelector('.vvd-datepicker-range');
-				assertComputedStyle(range, { display: 'flex' });
-			};
+			const range = actualElement.shadowRoot.querySelector('.vvd-datepicker-range');
+			assertComputedStyle(range, { display: 'flex' });
 		});
 	});
 });
