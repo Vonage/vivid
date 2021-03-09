@@ -1,4 +1,12 @@
+import { Connotation } from '@vonage/vvd-foundation/constants';
+
 export const argTypes = {
+	connotation: {
+		control: {
+			type: 'select',
+			options: [Connotation.Primary, Connotation.CTA, Connotation.Success, Connotation.Alert],
+		}
+	},
 	indeterminate: {
 		control: {
 			type: 'inline-radio',
