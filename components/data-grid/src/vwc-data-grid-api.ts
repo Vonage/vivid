@@ -18,8 +18,9 @@ const GRID_COMPONENT = 'vwc-data-grid',
 interface DataGrid {
 	multiSort: boolean;
 	reordering: boolean;
-	rowDetailsRenderer?(container: HTMLElement, grid: DataGrid, data: { item: unknown }): void;
 	columns: DataGridColumn[];
+
+	rowDetailsRenderer?(container: HTMLElement, grid: DataGrid, data: { item: unknown }): void;
 
 	items?: unknown[];
 	dataProvider?(params: { page: number, pageSize: number }, callback: (pageItems: unknown[], treeLevelSize: number) => void): void;
@@ -34,21 +35,21 @@ interface DataGrid {
 interface DataGridColumn {
 	path: string;
 
+	tree: boolean;
 	hidden: boolean;
 	frozen: boolean;
 	sortable: boolean;
 	resizable: boolean;
+	selector?: string;
+
 	autoWidth: boolean;
 	width?: string;
-	tree: boolean;
-
-	cellRenderer?(container: HTMLElement): void;
 
 	header: string;
-	headerRenderer?(container: HTMLElement): void;
-
+	headerRenderer?(column: DataGridColumn, container: HTMLElement): void;
 	footer: string;
-	footerRenderer?(container: HTMLElement): void;
+	footerRenderer?(column: DataGridColumn, container: HTMLElement): void;
+	cellRenderer?(container: HTMLElement): void;
 }
 
 /**

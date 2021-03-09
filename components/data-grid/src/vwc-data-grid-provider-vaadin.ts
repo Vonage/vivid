@@ -1,9 +1,7 @@
 import '@vaadin/vaadin-grid/vaadin-grid';
 import '@vaadin/vaadin-grid/vaadin-grid-column';
 import '@vaadin/vaadin-grid/vaadin-grid-filter-column';
-import '@vaadin/vaadin-grid/vaadin-grid-sorter';
 import '@vaadin/vaadin-grid/vaadin-grid-tree-column';
-import '@vaadin/vaadin-grid/vaadin-grid-tree-toggle';
 import { CSSResult, html, TemplateResult } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import { DataGrid, DataGridColumn } from './vwc-data-grid-api';
@@ -16,6 +14,10 @@ export {
 	vwcDataGridProvider
 };
 
+/**
+ * VWCDataGridProviderVaadin service implements DataGridProvider API
+ * - it provides the whole rendering functionality of Vivid data grid over the Vaadin grid engine
+ */
 class VWCDataGridProviderVaadin implements DataGridProvider {
 	render(config: DataGrid): TemplateResult {
 		const _dataProvider = config.dataProvider;
@@ -43,82 +45,80 @@ class VWCDataGridProviderVaadin implements DataGridProvider {
 	}
 
 	private renderColumnDef(cc: DataGridColumn): TemplateResult {
-		const _width = cc.width;
-		let _autoWidth = cc.autoWidth;
-		if (_width && _autoWidth) {
-			console.error('\'width\' and \'autoWidth\' MUST NOT be used both; \'width\' will be used');
-			_autoWidth = false;
-		}
 		if (cc.tree) {
 			return html`<vaadin-grid-tree-column
-				path="${cc.path}"
-				?hidden="${cc.hidden}"
+			path="${ifDefined(cc.path)}"
+			?hidden="${cc.hidden}"
 				?frozen="${cc.frozen}"
 				?resizable="${cc.resizable}"
-				?auto-width="${_autoWidth}"
-				width="${ifDefined(_width || undefined)}"
-				.renderer="${cc.cellRenderer}"
-				header="${cc.header}"
+				?auto-width="${cc.autoWidth}"
+				width="${ifDefined(cc.width || undefined)}"
 				.headerRenderer="${this.getHeaderRenderer(cc)}"
-				.footer="${cc.footer}"
 				.footerRenderer="${this.getFooterRenderer(cc)}"
+				.renderer="${cc.cellRenderer}"
 			>
 			</vaadin-grid-tree-column>`;
 		} else {
 			return html`<vaadin-grid-column
-				path="${cc.path}"
+				path="${ifDefined(cc.path)}"
 				?hidden="${cc.hidden}"
 				?frozen="${cc.frozen}"
 				?resizable="${cc.resizable}"
-				?auto-width="${_autoWidth}"
-				width="${ifDefined(_width || undefined)}"
-				.renderer="${cc.cellRenderer}"
-				header="${cc.header}"
+				?auto-width="${cc.autoWidth}"
+				width="${ifDefined(cc.width || undefined)}"
 				.headerRenderer="${this.getHeaderRenderer(cc)}"
-				.footer="${cc.footer}"
 				.footerRenderer="${this.getFooterRenderer(cc)}"
+				.renderer="${cc.cellRenderer}"
 			>
 			</vaadin-grid-column>`;
 		}
 	}
 
-	private getHeaderRenderer(cc: DataGridColumn): ((container: HTMLElement, column: DataGridColumn) => void) | null {
+	private getHeaderRenderer(cc: DataGridColumn): ((column: DataGridColumn, container: HTMLElement) => void) | null {
+		let result;
 		if (cc.headerRenderer) {
-			return cc.headerRenderer;
+			result = cc.headerRenderer;
 		} else if (cc.sortable) {
-			return this.sortingHeaderRenderer;
+			result = this.sortingHeaderRenderer;
 		} else if (cc.header) {
-			return this.simpleHeaderRenderer;
-		} else {
-			return null;
+			result = this.simpleHeaderRenderer;
 		}
+		return result
+			? this.contextualizeHandler(result, cc)
+			: null;
 	}
 
-	private getFooterRenderer(cc: DataGridColumn): ((container: HTMLElement, column: DataGridColumn) => void) | null {
+	private getFooterRenderer(cc: DataGridColumn): ((column: DataGridColumn, container: HTMLElement) => void) | null {
+		let result;
 		if (cc.footerRenderer) {
-			return cc.footerRenderer;
+			result = cc.footerRenderer;
 		} else if (cc.footer) {
-			return this.simpleFooterRenderer;
-		} else {
-			return null;
+			result = this.simpleFooterRenderer;
 		}
+		return result
+			? this.contextualizeHandler(result, cc)
+			: null;
 	}
 
-	private simpleHeaderRenderer(container: HTMLElement, column: DataGridColumn): void {
+	private contextualizeHandler(handler: (column: DataGridColumn, container: HTMLElement) => void, cc: DataGridColumn): (column: DataGridColumn, container: HTMLElement) => void {
+		return handler.bind(undefined, cc) as unknown as ((column: DataGridColumn, container: HTMLElement) => void);
+	}
+
+	private simpleHeaderRenderer(column: DataGridColumn, container: HTMLElement): void {
 		const gh = VWCDataGridProviderVaadin.ensureHeaderIn(container);
 		gh.removeAttribute('path');
 		gh.removeAttribute('sortable');
 		gh.textContent = column.header || '';
 	}
 
-	private sortingHeaderRenderer(container: HTMLElement, column: DataGridColumn): void {
+	private sortingHeaderRenderer(column: DataGridColumn, container: HTMLElement): void {
 		const gh = VWCDataGridProviderVaadin.ensureHeaderIn(container);
 		gh.setAttribute('path', column.path || '');
 		gh.setAttribute('sortable', '');
 		gh.textContent = column.header || '';
 	}
 
-	private simpleFooterRenderer(container: HTMLElement, column: DataGridColumn): void {
+	private simpleFooterRenderer(column: DataGridColumn, container: HTMLElement): void {
 		container.classList.add('vvd-grid-footer');
 		container.textContent = column.footer;
 	}

@@ -16,10 +16,10 @@ HeaderFooterJS.args = {
 	items: sequentalData({ fname: 'A-{i}', lname: 'B-{i}' }, 100000)
 };
 
-function fNameHeader(container, column) {
+function fNameHeader(column, container) {
 	container.innerHTML = `<span style="font-weight: 600">${column.header} (customized)</span>`
 }
 
-function lNameFooter(container) {
+function lNameFooter(column, container) {
 	container.innerHTML = `<span style="font-weight: 600">Total: ${HeaderFooterJS.args.items.length}</span>`;
 }
