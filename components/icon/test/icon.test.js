@@ -8,7 +8,7 @@ import {
 } from '../../../test/test-helpers.js';
 
 
-const LOAD_TRIAL_COUNT = 6;
+const LOAD_TRIAL_COUNT = 15;
 const LOAD_TIME = 200;
 const sleep = ms => new Promise(res => setTimeout(res, ms));
 
