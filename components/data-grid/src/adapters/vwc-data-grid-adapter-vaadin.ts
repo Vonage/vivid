@@ -89,12 +89,8 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 		if (cc.selector) {
 			return html`<vaadin-grid-selection-column
 				auto-select
-				?frozen="${cc.frozen}"
-				?resizable="${cc.resizable}"
-				?auto-width="${cc.autoWidth}"
-				width="${ifDefined(cc.width)}"
+				select
 				.headerRenderer="${this.getHeaderRenderer(cc)}"
-				.footerRenderer="${this.getFooterRenderer(cc)}"
 				.renderer="${this.getCellRenderer(cc)}"
 			>
 			</vaadin-grid-selection-column>
@@ -166,9 +162,8 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 		return handler.bind(undefined, cc) as unknown as ((column: DataGridColumn, container: HTMLElement) => void);
 	}
 
-	private selectingHeaderRenderer(column: DataGridColumn, container: HTMLElement): void {
+	private selectingHeaderRenderer(_column: DataGridColumn, container: HTMLElement): void {
 		VWCDataGridAdapterVaadin.ensureSelectHeaderIn(container);
-		console.info(column);
 	}
 
 	private sortingHeaderRenderer(column: DataGridColumn, container: HTMLElement): void {
@@ -204,7 +199,6 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 				} else {
 					g.deselectItem(cb._data.item);
 				}
-				g.render();
 			});
 			container.appendChild(gs);
 		}

@@ -77,8 +77,14 @@ export class VWCDataGrid extends LitElement implements DataGrid {
 	protected firstUpdated(): void {
 		this.addEventListener(COLUMN_DEFINITION_UPDATE_EVENT, () => this.processColumnDefs());
 		this.processColumnDefs();
-		this.shadowRoot?.firstElementChild?.addEventListener('selected-items-changed', () => {
-			this.dispatchEvent(new Event('selected-items-changed', { bubbles: true, composed: true }));
+		this.shadowRoot?.firstElementChild?.addEventListener('selected-items-changed', (e) => {
+			//	this will happen twice: https://github.com/vaadin/vaadin-grid/issues/859, therefore treatment:
+			const ne = e as CustomEvent;
+			if (ne.detail && typeof ne.detail.path === 'string' && ne.detail.path.includes('length')) {
+				this.dispatchEvent(new CustomEvent('selected-items-length-changed', { bubbles: true, composed: true }));
+			} else {
+				this.dispatchEvent(new CustomEvent('selected-items-changed', { bubbles: true, composed: true }));
+			}
 		});
 	}
 
