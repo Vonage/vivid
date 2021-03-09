@@ -2,28 +2,28 @@ import '@vaadin/vaadin-grid/vaadin-grid';
 import '@vaadin/vaadin-grid/vaadin-grid-column';
 import '@vaadin/vaadin-grid/vaadin-grid-selection-column';
 import '@vaadin/vaadin-grid/vaadin-grid-tree-column';
-import './headers/vwc-data-grid-header';									//	do NOT remove, MUST be present to not be cleaned by post TS
-import './headers/vwc-data-grid-select-header';						//	do NOT remove, MUST be present to not be cleaned by post TS
+import '../headers/vwc-data-grid-header';									//	do NOT remove, MUST be present to not be cleaned by post TS
+import '../headers/vwc-data-grid-select-header';						//	do NOT remove, MUST be present to not be cleaned by post TS
 import {
 	DataGrid, DataGridColumn, GRID_HEADER_COMPONENT, GRID_SELECT_HEADER_COMPONENT
-} from './vwc-data-grid-api';
-import { DataGridProvider } from './vwc-data-grid-provider-api';
-import { VWCDataGridHeader } from './headers/vwc-data-grid-header';
-import { VWCDataGridSelectHeader } from './headers/vwc-data-grid-select-header';
-import { style as vwcDataGridStyleVaadin } from './vwc-data-grid-provider-vaadin.css';
+} from '../vwc-data-grid-api';
+import { DataGridAdapter } from '../vwc-data-grid-adapter-api';
+import { VWCDataGridHeader } from '../headers/vwc-data-grid-header';
+import { VWCDataGridSelectHeader } from '../headers/vwc-data-grid-select-header';
+import { style as vwcDataGridStyleVaadin } from './vwc-data-grid-adapter-vaadin.css';
 import { CSSResult, html, TemplateResult } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import { VWCCheckbox } from '@vonage/vwc-checkbox';
 
 export {
-	vwcDataGridProvider
+	vwcDataGridAdapterVaadin
 };
 
 /**
  * VWCDataGridProviderVaadin service implements DataGridProvider API
  * - it provides the whole rendering functionality of Vivid data grid over the Vaadin grid engine
  */
-class VWCDataGridProviderVaadin implements DataGridProvider {
+class VWCDataGridAdapterVaadin implements DataGridAdapter {
 	render(config: DataGrid): TemplateResult {
 		const _dataProvider = config.dataProvider;
 		let _items = config.items;
@@ -131,19 +131,19 @@ class VWCDataGridProviderVaadin implements DataGridProvider {
 	}
 
 	private selectingHeaderRenderer(column: DataGridColumn, container: HTMLElement): void {
-		VWCDataGridProviderVaadin.ensureSelectHeaderIn(container);
+		VWCDataGridAdapterVaadin.ensureSelectHeaderIn(container);
 		console.info(column);
 	}
 
 	private sortingHeaderRenderer(column: DataGridColumn, container: HTMLElement): void {
-		const gh = VWCDataGridProviderVaadin.ensureHeaderIn(container);
+		const gh = VWCDataGridAdapterVaadin.ensureHeaderIn(container);
 		gh.setAttribute('path', column.path || '');
 		gh.setAttribute('sortable', '');
 		gh.textContent = column.header || '';
 	}
 
 	private simpleHeaderRenderer(column: DataGridColumn, container: HTMLElement): void {
-		const gh = VWCDataGridProviderVaadin.ensureHeaderIn(container);
+		const gh = VWCDataGridAdapterVaadin.ensureHeaderIn(container);
 		gh.removeAttribute('path');
 		gh.removeAttribute('sortable');
 		gh.textContent = column.header || '';
@@ -194,4 +194,4 @@ class VWCDataGridProviderVaadin implements DataGridProvider {
 	}
 }
 
-const vwcDataGridProvider = new VWCDataGridProviderVaadin();
+const vwcDataGridAdapterVaadin = new VWCDataGridAdapterVaadin();

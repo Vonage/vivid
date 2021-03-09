@@ -26,8 +26,8 @@ declare global {
 export class VWCDataGridSelectHeader extends LitElement implements DataGridSelectHeader {
 	static styles = [vwcDataGridSelectHeaderStyle];
 
-	@property({ type: Boolean, reflect: true })
-	selectMode = undefined;
+	@property({ type: String, reflect: true })
+	selectMode?: string = undefined;
 
 	// protected updated(changes: PropertyValues): void {
 	// }

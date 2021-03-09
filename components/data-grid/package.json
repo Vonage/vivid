@@ -7,6 +7,7 @@
 	"main": "vwc-data-grid.js",
 	"module": "vwc-data-grid.js",
 	"files": [
+		"adapters",
 		"headers",
 		"*.js",
 		"*.ts",

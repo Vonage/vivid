@@ -9,7 +9,7 @@ import {
 	DataGridHeader
 } from './vwc-data-grid-api';
 import { VWCDataGridColumn } from './vwc-data-grid-column';
-import { vwcDataGridProvider } from './vwc-data-grid-provider-vaadin';
+import { vwcDataGridAdapterVaadin } from './adapters/vwc-data-grid-adapter-vaadin';
 import { style as vwcDataGridStyle } from './vwc-data-grid.css';
 import {
 	customElement,
@@ -40,7 +40,7 @@ export {
  */
 @customElement(GRID_COMPONENT)
 export class VWCDataGrid extends LitElement implements DataGrid {
-	static styles = [vwcDataGridStyle, ...vwcDataGridProvider.getStylesOverlay()];
+	static styles = [vwcDataGridStyle, ...vwcDataGridAdapterVaadin.getStylesOverlay()];
 
 	@property({ type: Boolean, reflect: true, attribute: 'multi-sort' })
 	multiSort = false;
@@ -58,7 +58,7 @@ export class VWCDataGrid extends LitElement implements DataGrid {
 	dataProvider: ((params: unknown, callback: (pageItems: unknown[], treeLevelSize: number) => void) => void) | undefined = undefined;
 
 	protected render(): TemplateResult {
-		return vwcDataGridProvider.render(this);
+		return vwcDataGridAdapterVaadin.render(this);
 	}
 
 	protected firstUpdated(): void {
