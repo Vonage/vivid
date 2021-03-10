@@ -58,9 +58,9 @@ export class VWCDataGridHeader extends LitElement implements DataGridHeader {
 	}
 
 	private renderSortControls(): TemplateResult | string {
+		const iconType = this.direction ? `sort-${this.direction}-solid` : 'sort-solid';
 		return html`<span class="sorters">
-			<vwc-icon class="sorter asc" type="up-full"></vwc-icon>
-			<vwc-icon class="sorter desc" type="down-full"></vwc-icon>
+			<vwc-icon class="sorter asc" type="${iconType}"></vwc-icon>
 		</span>`;
 	}
 

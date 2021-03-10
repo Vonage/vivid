@@ -19,30 +19,12 @@
 
 	.sorter {
 		--icon-size: 12px;
-
-		&.asc {
-			margin-bottom: -2px;
-		}
-		&.desc {
-			margin-top: -2px;
-		}
 	}
 }
 
-:host([direction='asc']) {
-	.asc {
-		color: var(#{scheme-variables.$vvd-color-on-base});
-	}
-	.desc {
-		color: transparent;
-	}
-}
-
+:host([direction='asc']),
 :host([direction='desc']) {
 	.asc {
-		color: transparent;
-	}
-	.desc {
 		color: var(#{scheme-variables.$vvd-color-on-base});
 	}
 }
