@@ -1,8 +1,6 @@
 ignores: [
-  "lit-flatpickr",
-  "@vonage/vvd-core",
   "@vonage/vwc-datepicker",
-  "@vonage/vwc-textfield",
   "@vonage/vwc-dialog",
-  "@open-wc/*"
+  "@open-wc/lit-helpers",
+  "@open-wc/semantic-dom-diff"
 ]
