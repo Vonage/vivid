@@ -2,13 +2,17 @@ import '@vonage/vvd-core';
 import './vwc-data-grid-column';		//	do NOT remove, MUST have to not be elliminated
 import {
 	GRID_COMPONENT,
-	COLUMN_DEFINITION_COMPONENT,
-	COLUMN_DEFINITION_UPDATE_EVENT,
 	DataGrid,
-	DataGridColumn,
 	DataGridHeader
 } from './vwc-data-grid-api';
-import { VWCDataGridColumn } from './vwc-data-grid-column';
+import {
+	COLUMN_DEFINITION_COMPONENT,
+	COLUMN_DEFINITION_UPDATE_EVENT,
+	DataGridColumn,
+} from './vwc-data-grid-column-api';
+import {
+	VWCDataGridColumn
+} from './vwc-data-grid-column';
 import { VWCDataGridAdapterVaadin } from './adapters/vwc-data-grid-adapter-vaadin';
 import { style as vwcDataGridStyle } from './vwc-data-grid.css';
 import {
@@ -62,12 +66,20 @@ export class VWCDataGrid extends LitElement implements DataGrid {
 		return this.#gridAdapter.getSelectedItems();
 	}
 
-	selectItem(item: unknown) {
+	selectItem(item: unknown): void {
 		this.#gridAdapter.selectItem(item);
 	}
 
-	deselectItem(item: unknown) {
+	deselectItem(item: unknown): void {
 		this.#gridAdapter.deselectItem(item);
+	}
+
+	selectAll(): void {
+		this.#gridAdapter.selectAll();
+	}
+
+	deselectAll(): void {
+		this.#gridAdapter.deselectAll();
 	}
 
 	protected render(): TemplateResult {

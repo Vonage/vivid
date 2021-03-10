@@ -2,7 +2,7 @@ import {
 	COLUMN_DEFINITION_COMPONENT,
 	COLUMN_DEFINITION_UPDATE_EVENT,
 	DataGridColumn
-} from './vwc-data-grid-api';
+} from './vwc-data-grid-column-api';
 import {
 	customElement,
 	property,

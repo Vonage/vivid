@@ -5,8 +5,9 @@ import { GridColumnElement, GridElement } from '@vaadin/vaadin-grid/vaadin-grid'
 import '../headers/vwc-data-grid-header';									//	do NOT remove, MUST be present to not be cleaned by post TS
 import '../headers/vwc-data-grid-select-header';						//	do NOT remove, MUST be present to not be cleaned by post TS
 import {
-	DataGrid, DataGridColumn, GRID_COMPONENT, GRID_HEADER_COMPONENT
+	DataGrid, GRID_COMPONENT, GRID_HEADER_COMPONENT
 } from '../vwc-data-grid-api';
+import { DataGridColumn } from '../vwc-data-grid-column-api';
 import { DataGridAdapter } from '../vwc-data-grid-adapter-api';
 import { VWCDataGridHeader } from '../headers/vwc-data-grid-header';
 import { style as vwcDataGridStyleVaadin } from './vwc-data-grid-adapter-vaadin.css';
@@ -72,6 +73,16 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 	deselectItem(item: unknown) {
 		const iGrid = this.getImplementationOrThrow();
 		iGrid.deselectItem(item);
+	}
+
+	selectAll(): void {
+		const iGrid = this.getImplementationOrThrow();
+		iGrid.selectedItems = Array.isArray(iGrid.items) ? iGrid._filter(iGrid.items) : EMPTY_ARRAY;
+	}
+
+	deselectAll(): void {
+		const iGrid = this.getImplementationOrThrow();
+		iGrid.selectedItems = EMPTY_ARRAY;
 	}
 
 	private getImplementationOrThrow(): GridElement {
@@ -166,7 +177,7 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 		sh.setAttribute('aria-label', 'Select All');
 		sh.addEventListener('change', ({ target }) => {
 			const toSelectAll = (target as VWCCheckbox).checked;
-			g.selectedItems = toSelectAll && Array.isArray(g.items) ? g._filter(g.items) : [];
+			g.selectedItems = toSelectAll && Array.isArray(g.items) ? g._filter(g.items) : EMPTY_ARRAY;
 		});
 		g.addEventListener('selected-items-changed', (e) => {
 			const ig = e.target as GridElement;
@@ -185,15 +196,15 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 
 	private sortingHeaderRenderer(column: DataGridColumn, container: HTMLElement): void {
 		const gh = VWCDataGridAdapterVaadin.ensureHeaderIn(container);
-		gh.setAttribute('path', column.path || '');
-		gh.setAttribute('sortable', '');
+		gh.sortable = true;
+		gh.path = column.path;
 		gh.textContent = column.header || '';
 	}
 
 	private simpleHeaderRenderer(column: DataGridColumn, container: HTMLElement): void {
 		const gh = VWCDataGridAdapterVaadin.ensureHeaderIn(container);
-		gh.removeAttribute('path');
-		gh.removeAttribute('sortable');
+		gh.sortable = false;
+		gh.path = column.path;
 		gh.textContent = column.header || '';
 	}
 

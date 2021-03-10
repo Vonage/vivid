@@ -19,4 +19,6 @@ interface DataGridAdapter {
 	getSelectedItems(vwcDataGrid: HTMLElement): unknown[];
 	selectItem(item: unknown): void;
 	deselectItem(item: unknown): void;
+	selectAll(): void;
+	deselectAll(): void;
 }

@@ -58,7 +58,10 @@ export class VWCDataGridHeader extends LitElement implements DataGridHeader {
 	}
 
 	private renderSortControls(): TemplateResult | string {
-		const iconType = this.direction ? `sort-${this.direction}-solid` : 'sort-solid';
+		let iconType = 'sort-solid';
+		if (this.direction) {
+			iconType = this.direction === 'asc' ? 'sort-asc-solid' : 'sort-desc-solid';
+		}
 		return html`<span class="sorters">
 			<vwc-icon class="sorter asc" type="${iconType}"></vwc-icon>
 		</span>`;
@@ -83,8 +86,6 @@ export class VWCDataGridHeader extends LitElement implements DataGridHeader {
 	}
 
 	private requestSort(): void {
-		if (this.sortable && this.path) {
-			this.dispatchEvent(new CustomEvent('sorter-changed', { bubbles: true, composed: true }));
-		}
+		this.dispatchEvent(new CustomEvent('sorter-changed', { bubbles: true, composed: true }));
 	}
 }
