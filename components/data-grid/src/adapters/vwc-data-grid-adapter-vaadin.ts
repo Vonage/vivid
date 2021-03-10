@@ -18,8 +18,6 @@ export {
 	VWCDataGridAdapterVaadin
 };
 
-const EMPTY_ARRAY: unknown[] = [];
-
 /**
  * VWCDataGridProviderVaadin service implements DataGridProvider API
  * - it provides the whole rendering functionality of Vivid data grid over the Vaadin grid engine
@@ -61,7 +59,7 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 
 	getSelectedItems(): unknown[] {
 		const iGrid = this.getImplementationOrThrow();
-		return iGrid.selectedItems || EMPTY_ARRAY;
+		return iGrid.selectedItems || (iGrid.selectedItems = []);
 	}
 
 	selectItem(item: unknown) {
@@ -76,12 +74,12 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 
 	selectAll(): void {
 		const iGrid = this.getImplementationOrThrow();
-		iGrid.selectedItems = Array.isArray(iGrid.items) ? iGrid._filter(iGrid.items) : EMPTY_ARRAY;
+		iGrid.selectedItems = Array.isArray(iGrid.items) ? iGrid._filter(iGrid.items) : [];
 	}
 
 	deselectAll(): void {
 		const iGrid = this.getImplementationOrThrow();
-		iGrid.selectedItems = EMPTY_ARRAY;
+		iGrid.selectedItems = [];
 	}
 
 	private getImplementationOrThrow(): GridElement {
@@ -176,7 +174,7 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 		sh.setAttribute('aria-label', 'Select All');
 		sh.addEventListener('change', ({ target }) => {
 			const toSelectAll = (target as VWCCheckbox).checked;
-			g.selectedItems = toSelectAll && Array.isArray(g.items) ? g._filter(g.items) : EMPTY_ARRAY;
+			g.selectedItems = toSelectAll && Array.isArray(g.items) ? g._filter(g.items) : [];
 		});
 		g.addEventListener('selected-items-changed', (e) => {
 			const ig = e.target as GridElement;
