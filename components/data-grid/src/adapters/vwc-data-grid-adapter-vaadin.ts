@@ -6,11 +6,10 @@ import { GridElement } from '@vaadin/vaadin-grid/vaadin-grid';
 import '../headers/vwc-data-grid-header';									//	do NOT remove, MUST be present to not be cleaned by post TS
 import '../headers/vwc-data-grid-select-header';						//	do NOT remove, MUST be present to not be cleaned by post TS
 import {
-	DataGrid, DataGridColumn, GRID_COMPONENT, GRID_HEADER_COMPONENT, GRID_SELECT_HEADER_COMPONENT
+	DataGrid, DataGridColumn, GRID_COMPONENT, GRID_HEADER_COMPONENT
 } from '../vwc-data-grid-api';
 import { DataGridAdapter } from '../vwc-data-grid-adapter-api';
 import { VWCDataGridHeader } from '../headers/vwc-data-grid-header';
-import { VWCDataGridSelectHeader } from '../headers/vwc-data-grid-select-header';
 import { style as vwcDataGridStyleVaadin } from './vwc-data-grid-adapter-vaadin.css';
 import { CSSResult, html, TemplateResult } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
@@ -89,12 +88,10 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 		if (cc.selector) {
 			return html`<vaadin-grid-selection-column
 				auto-select
-				select
 				.headerRenderer="${this.getHeaderRenderer(cc)}"
 				.renderer="${this.getCellRenderer(cc)}"
 			>
-			</vaadin-grid-selection-column>
-			`;
+			</vaadin-grid-selection-column>`;
 		} else if (cc.tree) {
 			return html`<vaadin-grid-tree-column
 				path="${ifDefined(cc.path)}"
@@ -163,7 +160,11 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 	}
 
 	private selectingHeaderRenderer(_column: DataGridColumn, container: HTMLElement): void {
-		VWCDataGridAdapterVaadin.ensureSelectHeaderIn(container);
+		const sh = VWCDataGridAdapterVaadin.ensureSelectHeaderIn(container);
+		sh.setAttribute('aria-label', 'Select All');
+		sh.addEventListener('change', (e) => {
+			console.log(e);
+		});
 	}
 
 	private sortingHeaderRenderer(column: DataGridColumn, container: HTMLElement): void {
@@ -186,12 +187,12 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 	}
 
 	private simpleSelectorCellRenderer(_column: DataGridColumn, container: HTMLElement, nativeColumn?: HTMLElement, data?: { item: unknown, selected: boolean }): void {
-		let gs = container.firstElementChild as VWCCheckbox;
-		if (!gs) {
-			gs = document.createElement('vwc-checkbox');
-			gs.classList.add('vvd-row-selector');
-			gs.setAttribute('aria-label', 'Select Row');
-			gs.addEventListener('change', (e) => {
+		let rs = container.firstElementChild as VWCCheckbox;
+		if (!rs) {
+			rs = document.createElement('vwc-checkbox');
+			rs.classList.add('vvd-row-selector');
+			rs.setAttribute('aria-label', 'Select Row');
+			rs.addEventListener('change', (e) => {
 				const cb = e.target as unknown as { checked: boolean, _data: { item: unknown } };
 				const g = nativeColumn?.parentElement as unknown as { selectItem: (i: unknown) => void, deselectItem: (i: unknown) => void, render: () => void };
 				if (cb.checked) {
@@ -200,10 +201,10 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 					g.deselectItem(cb._data.item);
 				}
 			});
-			container.appendChild(gs);
+			container.appendChild(rs);
 		}
-		(gs as unknown as { _data: unknown })._data = data;
-		gs.checked = Boolean(data?.selected);
+		(rs as unknown as { _data: unknown })._data = data;
+		rs.checked = Boolean(data?.selected);
 	}
 
 	private static ensureHeaderIn(container: HTMLElement): VWCDataGridHeader {
@@ -215,10 +216,10 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 		return result;
 	}
 
-	private static ensureSelectHeaderIn(container: HTMLElement): VWCDataGridSelectHeader {
-		let result = container.querySelector(GRID_SELECT_HEADER_COMPONENT);
+	private static ensureSelectHeaderIn(container: HTMLElement): VWCCheckbox {
+		let result = container.firstElementChild as VWCCheckbox;
 		if (!result) {
-			result = document.createElement(GRID_SELECT_HEADER_COMPONENT);
+			result = document.createElement('vwc-checkbox');
 			container.appendChild(result);
 		}
 		return result;
