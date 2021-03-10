@@ -7,7 +7,6 @@ import {
 import { LitFlatpickr } from 'lit-flatpickr';
 import { Options } from 'flatpickr/dist/types/options';
 import { style as vwcDatepickerStyles } from './vwc-datepicker.css.js';
-import { style as flatpickrStyles } from './flatpickr.css.js';
 import { VWCButton } from '@vonage/vwc-button';
 import { VWCIconButton } from '@vonage/vwc-icon-button';
 import { Shape } from '@vonage/vvd-foundation/constants';
@@ -24,7 +23,7 @@ declare global {
 @customElement('vwc-datepicker')
 export class VWCDatepicker extends LitFlatpickr {
 	static get styles(): CSSResult {
-		return [flatpickrStyles, vwcDatepickerStyles] as any;
+		return [vwcDatepickerStyles] as any;
 	}
 
 	@query('.vvd-datepicker-wrapper')
@@ -89,15 +88,15 @@ export class VWCDatepicker extends LitFlatpickr {
 			<slot></slot>
 			${this.inline
 		? html`<div class="vvd-datepicker-wrapper"></div>`
-		: html`<vwc-menu 
+		: html`<vwc-menu
 						.anchor=${this.anchor}
-						.absolute=${!this.fixedMenuPosition} 
+						.absolute=${!this.fixedMenuPosition}
 						.fixed=${this.fixedMenuPosition}
 						corner='BOTTOM_START'
 					>
 						<div class="vvd-datepicker-wrapper"></div>
 					</vwc-menu>`
-}	
+}
 		`;
 	}
 
