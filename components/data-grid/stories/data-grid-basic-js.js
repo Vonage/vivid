@@ -1,12 +1,12 @@
 import '@vonage/vwc-data-grid';
-import '@vonage/vwc-checkbox';
+import '@vonage/vwc-switch';
 import '@vonage/vwc-note';
 import { html } from 'lit-element';
 import { sequentalData } from './data-grid-demo-data-provider';
 
 const Template = args => html`
 	<style>
-		vwc-checkbox {
+		vwc-switch {
 			vertical-align: middle;
 		}
 	</style>
@@ -33,7 +33,8 @@ function cellRenderer(container, column, data) {
 	const grid = column.parentNode;
 	let toggler = container.firstElementChild;
 	if (!toggler) {
-		toggler = document.createElement('vwc-checkbox');
+		toggler = document.createElement('vwc-switch');
+		toggler.setAttribute('connotation', 'cta');
 		container.appendChild(toggler);
 		toggler.addEventListener('change', e => {
 			if (e.target.checked) {
