@@ -1,8 +1,7 @@
 import '@vaadin/vaadin-grid/vaadin-grid';
 import '@vaadin/vaadin-grid/vaadin-grid-column';
-import '@vaadin/vaadin-grid/vaadin-grid-selection-column';
 import '@vaadin/vaadin-grid/vaadin-grid-tree-column';
-import { GridElement } from '@vaadin/vaadin-grid/vaadin-grid';
+import { GridColumnElement, GridElement } from '@vaadin/vaadin-grid/vaadin-grid';
 import '../headers/vwc-data-grid-header';									//	do NOT remove, MUST be present to not be cleaned by post TS
 import '../headers/vwc-data-grid-select-header';						//	do NOT remove, MUST be present to not be cleaned by post TS
 import {
@@ -86,12 +85,13 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 
 	private renderColumnDef(cc: DataGridColumn): TemplateResult {
 		if (cc.selector) {
-			return html`<vaadin-grid-selection-column
-				auto-select
+			return html`<vaadin-grid-column
+				width="56px"
+				flex-grow="0"
 				.headerRenderer="${this.getHeaderRenderer(cc)}"
 				.renderer="${this.getCellRenderer(cc)}"
 			>
-			</vaadin-grid-selection-column>`;
+			</vaadin-grid-column>`;
 		} else if (cc.tree) {
 			return html`<vaadin-grid-tree-column
 				path="${ifDefined(cc.path)}"
@@ -159,11 +159,27 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 		return handler.bind(undefined, cc) as unknown as ((column: DataGridColumn, container: HTMLElement) => void);
 	}
 
-	private selectingHeaderRenderer(_column: DataGridColumn, container: HTMLElement): void {
+	private selectingHeaderRenderer(_column: DataGridColumn, container: HTMLElement, nativeColumn?: GridColumnElement): void {
 		const sh = VWCDataGridAdapterVaadin.ensureSelectHeaderIn(container);
+		const g = nativeColumn?.parentElement as GridElement;
+		sh.classList.add('vvd-all-selector');
 		sh.setAttribute('aria-label', 'Select All');
-		sh.addEventListener('change', (e) => {
-			console.log(e);
+		sh.addEventListener('change', ({ target }) => {
+			const toSelectAll = (target as VWCCheckbox).checked;
+			g.selectedItems = toSelectAll && Array.isArray(g.items) ? g._filter(g.items) : [];
+		});
+		g.addEventListener('selected-items-changed', (e) => {
+			const ig = e.target as GridElement;
+			const totalSelected = ig.selectedItems?.length || 0;
+			if (totalSelected === 0) {
+				sh.indeterminate = sh.checked = false;
+			} else if (totalSelected === ig.items?.length) {
+				sh.checked = true;
+				sh.indeterminate = false;
+			} else {
+				sh.checked = true;
+				sh.indeterminate = true;
+			}
 		});
 	}
 
@@ -186,7 +202,7 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 		container.textContent = column.footer;
 	}
 
-	private simpleSelectorCellRenderer(_column: DataGridColumn, container: HTMLElement, nativeColumn?: HTMLElement, data?: { item: unknown, selected: boolean }): void {
+	private simpleSelectorCellRenderer(_column: DataGridColumn, container: HTMLElement, nativeColumn?: GridColumnElement, data?: { item: unknown, selected: boolean }): void {
 		let rs = container.firstElementChild as VWCCheckbox;
 		if (!rs) {
 			rs = document.createElement('vwc-checkbox');
@@ -194,7 +210,7 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 			rs.setAttribute('aria-label', 'Select Row');
 			rs.addEventListener('change', (e) => {
 				const cb = e.target as unknown as { checked: boolean, _data: { item: unknown } };
-				const g = nativeColumn?.parentElement as unknown as { selectItem: (i: unknown) => void, deselectItem: (i: unknown) => void, render: () => void };
+				const g = nativeColumn?.parentElement as GridElement;
 				if (cb.checked) {
 					g.selectItem(cb._data.item);
 				} else {
