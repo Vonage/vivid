@@ -3,7 +3,6 @@ import '@vaadin/vaadin-grid/vaadin-grid-column';
 import '@vaadin/vaadin-grid/vaadin-grid-tree-column';
 import { GridColumnElement, GridElement } from '@vaadin/vaadin-grid/vaadin-grid';
 import '../headers/vwc-data-grid-header';									//	do NOT remove, MUST be present to not be cleaned by post TS
-import '../headers/vwc-data-grid-select-header';						//	do NOT remove, MUST be present to not be cleaned by post TS
 import {
 	DataGrid, GRID_COMPONENT, GRID_HEADER_COMPONENT
 } from '../vwc-data-grid-api';

@@ -14,6 +14,7 @@ Highlights:
 	- reordering
 	- resizing
 	- freezing
+	- selection (one / all)
 - customization
 	- columns management features opt in/out
 	- header custom rendering
@@ -46,7 +47,10 @@ In case of collision between those 2 (both set to something contentful), error w
 
 Each new assignment to grid's items property will refresh the grid's content.
 
-Array manipulation (eg `grid.items.splice(0, 1)`) **wont't** trigger grid update.
+Array manipulation (eg `grid.items.splice(0, 1)`) **wont't** trigger grid update. In such cases the best way to trigger the update is by reassigning **new** array:
+```js
+grid.items = oldItems.slice(0);			// even being the same items, the array is new by ref, so will trigger the update
+```
 
 ### `dataProvider`
 

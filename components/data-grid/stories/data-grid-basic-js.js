@@ -5,11 +5,6 @@ import { html } from 'lit-element';
 import { sequentalData } from './data-grid-demo-data-provider';
 
 const Template = args => html`
-	<style>
-		vwc-switch {
-			vertical-align: middle;
-		}
-	</style>
 	<vwc-data-grid .columns="${args.columns}" .items="${args.items}" .rowDetailsRenderer="${expandedRowRenderer}">
 	</vwc-data-grid>
 `;
@@ -35,6 +30,7 @@ function cellRenderer(container, column, data) {
 	if (!toggler) {
 		toggler = document.createElement('vwc-switch');
 		toggler.setAttribute('connotation', 'cta');
+		toggler.style.verticalAlign = 'middle';
 		container.appendChild(toggler);
 		toggler.addEventListener('change', e => {
 			if (e.target.checked) {
