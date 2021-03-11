@@ -28,7 +28,9 @@
 		#{scheme-variables.$vvd-color-neutral-50}
 	);
 
-	#{color-semantic.$formfield-error-fill}: color-base.$red-100;
+	#{color-semantic.$formfield-error-fill}: var(
+		#{scheme-variables.$vvd-color-alert-20}
+	);
 	#{color-semantic.$formfield-border-error}: var(
 		#{scheme-variables.$vvd-color-alert}
 	);
