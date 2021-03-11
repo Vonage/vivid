@@ -1,17 +1,37 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+@forward 'flatpickr/dist/flatpickr.min.css';
+
+:host {
+	display: inline-flex;
+}
+
+.flatpickr-input {
+	display: none;
+}
+
+vwc-menu {
+	--mdc-list-vertical-padding: 0;
+	--mdc-menu-max-height: none;
+}
 
 //--------------------
 // flatpickr overrides
 //--------------------
 .flatpickr-calendar.vvd-datepicker {
 	@include typography.typography-cat-shorthand('body-2');
+	position: initial;
 	overflow: hidden;
 	width: 320px;
 	border: 1px solid var(#{scheme-variables.$vvd-color-contrast-faint});
 	background: var(#{scheme-variables.$vvd-color-base});
 	border-radius: 6px;
-	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+	box-shadow: none;
+	color: var(#{scheme-variables.$vvd-color-on-base});
+
+	&.open {
+		display: block;
+	}
 
 	&:not(.noCalendar) {
 		padding: 24px 0 16px;
@@ -192,7 +212,7 @@
 	align-items: center;
 	padding: 0 16px;
 
-	.vvd-month {
+	.vvd-header-month {
 		display: block;
 		margin-right: 8px;
 		cursor: pointer;
@@ -212,11 +232,11 @@
 }
 
 .vvd-datepicker-month-view .vvd-datepicker-header {
-	.vvd-month {
+	.vvd-header-month {
 		display: none;
 	}
 
-	.vvd-year::before {
+	.vvd-header-year::before {
 		margin-right: 8px;
 		content: 'Year';
 	}
