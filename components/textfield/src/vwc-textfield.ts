@@ -161,8 +161,15 @@ export class VWCTextField extends MWCTextField {
 		const fe = this.formElement;
 
 		//	event listeners
-		fe.onfocus = this.onInputFocus.bind(this);
-		fe.onblur = this.onInputBlur.bind(this);
+		fe.onfocus = () => {
+			this.dispatchEvent(new FocusEvent('focus', { composed: true }));
+			this.onInputFocus();
+		};
+
+		fe.onblur = () => {
+			this.dispatchEvent(new FocusEvent('blur', { composed: true }));
+			this.onInputBlur();
+		};
 
 		//	attributes
 		setAttributeByValue('id', this.id, fe);
