@@ -23,3 +23,7 @@ function dataProvider(params, callback) {
 	const pageItems = dataSourceSimulated.slice(startIndex, startIndex + params.pageSize);
 	callback(pageItems, dataSourceSimulated.length);
 }
+
+setTimeout(() => {
+	dataSourceSimulated[0].fname = "something else";
+}, 5000);

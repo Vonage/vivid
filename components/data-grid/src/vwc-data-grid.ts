@@ -53,7 +53,6 @@ export class VWCDataGrid extends LitElement implements DataGrid {
 	reordering = false;
 	@property({ type: Array, reflect: false })
 	columns: DataGridColumn[] = [];
-
 	@property({ reflect: false, attribute: false })
 	rowDetailsRenderer: ((container: HTMLElement, grid: DataGrid, data: { item: unknown }) => void) | undefined = undefined;
 
@@ -61,6 +60,18 @@ export class VWCDataGrid extends LitElement implements DataGrid {
 	items: unknown[] | undefined = undefined;
 	@property({ reflect: false, attribute: false })
 	dataProvider: ((params: unknown, callback: (pageItems: unknown[], treeLevelSize: number) => void) => void) | undefined = undefined;
+
+	refreshConfiguration(): void {
+		this.requestUpdate('columns');
+	}
+
+	refreshData(): void {
+		if (this.dataProvider) {
+			this.dataProvider = this.dataProvider.bind(undefined);
+		} else if (this.items && this.items.length) {
+			this.items = this.items.slice(0);
+		}
+	}
 
 	get selectedItems(): unknown[] {
 		return this.#gridAdapter.getSelectedItems();

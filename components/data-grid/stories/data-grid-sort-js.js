@@ -51,5 +51,5 @@ function sortableToggle(e) {
 	} else {
 		grid.columns[1].sortable = v;
 	}
-	grid.requestUpdate();
+	grid.refreshConfiguration();
 }

@@ -20,11 +20,12 @@ interface DataGrid {
 	multiSort: boolean;
 	reordering: boolean;
 	columns: DataGridColumn[];
-
 	rowDetailsRenderer?(container: HTMLElement, grid: DataGrid, data: { item: unknown }): void;
+	refreshConfiguration(): void;
 
 	items?: unknown[];
 	dataProvider?(params: { page: number, pageSize: number }, callback: (pageItems: unknown[], treeLevelSize: number) => void): void;
+	refreshData(): void;
 
 	selectedItems: unknown[];
 	selectItem(item: unknown): void;

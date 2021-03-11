@@ -72,8 +72,8 @@ In those cases attribute and property may be used interchangeably.
 |----------------------|--------------|----------------------------------|-------------|------------|
 | `multiSort`          | `multi-sort` | `boolean`                        | `false`     | sorting by multiple columns |
 | `reordering`         | `reordering` | `boolean`                        | `false`     | columns reordering via UI (drag'n'drop') |
-| `rowDetailsRenderer` |              | `(container: HTMLElement, grid: DataGrid, data: { item: unknown }): void` | `undefined` | when provided, will handle an expanded / detailed row part rendering |
 | `columns`            |              | `DataGridColumn[]`               | `[]`        | columns definitions, the majority of grid configuration, see below more |
+| `rowDetailsRenderer` |              | `(container: HTMLElement, grid: DataGrid, data: { item: unknown }): void` | `undefined` | when provided, will handle an expanded / detailed row part rendering |
 | `items`              |              | `unknown[]`                      | `undefined` | see Data API above |
 | `dataProvider`       |              | `(params: { page: number, pageSize: number }, callback: (pageItems: unknown[], treeLevelSize: number) => void): void` | `undefined` | see Data API above |
 
@@ -85,7 +85,7 @@ There are 2 ways to configure grid's columns:
 	- add/remove columns in the flavor is not supported
 	- direct changes of the `columns` configuration object are NOT further-reflected in the components
 - via configuration object manipulation by JavaScript and `columns` property of the grid component
-	- direct Array manipulations on `columns` as well as deep changes to the `DataGridColumn` won't result in auto update of the grid, `grid.requestUpdate()`
+	- direct Array manipulations on `columns` as well as deep changes to the `DataGridColumn` won't result in auto update of the grid, do `<grid>.refreshConfiguration()`
 
 > Note: both flavors adhere to the same configuration interface, namely `DataGridColumn` API (see below).
 
@@ -147,10 +147,10 @@ In order to customize columns at runtime use the following pattern:
 ```js
 const grid = document.querySelector('vwc-data-grid');
 grid.columns[0].frozen = true;
-grid.requestUpdate();
+grid.refreshConfiguration();
 ```
 
-> Attention: the `requestUpdate` invokation is required as of now, due to internals of `columns` data structure not being observed for a change. In any change of this in the future further notice will be provided.
+> Attention: the `refreshConfiguration` invokation is required as of now, due to internals of `columns` data structure not being observed for a change. In any change of this in the future further notice will be provided.
 
 ### HTML oriented
 

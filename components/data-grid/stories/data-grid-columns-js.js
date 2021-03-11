@@ -92,7 +92,7 @@ function resizableToggle(e) {
 	} else {
 		grid.columns[1].resizable = v;
 	}
-	grid.requestUpdate();
+	grid.refreshConfiguration();
 }
 
 function hiddenToggle(e) {
@@ -103,7 +103,7 @@ function hiddenToggle(e) {
 	} else {
 		grid.columns[1].hidden = v;
 	}
-	grid.requestUpdate();
+	grid.refreshConfiguration();
 }
 
 function frozenToggle(e) {
@@ -114,5 +114,5 @@ function frozenToggle(e) {
 	} else {
 		grid.columns[1].frozen = v;
 	}
-	grid.requestUpdate();
+	grid.refreshConfiguration();
 }
