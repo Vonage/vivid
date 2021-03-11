@@ -23,7 +23,7 @@ vwc-menu {
 	position: initial;
 	overflow: hidden;
 	width: 320px;
-	border: 1px solid var(#{scheme-variables.$vvd-color-contrast-faint});
+	border: 1px solid var(#{scheme-variables.$vvd-color-20-neutral});
 	background: var(#{scheme-variables.$vvd-color-base});
 	border-radius: 6px;
 	box-shadow: none;
@@ -54,7 +54,7 @@ vwc-menu {
 
 		&-weekdays {
 			height: 20px;
-			border-bottom: 1px solid var(#{scheme-variables.$vvd-color-contrast-faint});
+			border-bottom: 1px solid var(#{scheme-variables.$vvd-color-20-neutral});
 			margin-bottom: 8px;
 			background: none;
 			text-transform: uppercase;
@@ -90,7 +90,7 @@ vwc-menu {
 				&.flatpickr-day.inRange {
 					border-bottom-right-radius: 15px;
 					border-top-right-radius: 15px;
-					box-shadow: -5px 0 0 var(#{scheme-variables.$vvd-color-contrast-faint});
+					box-shadow: -5px 0 0 var(#{scheme-variables.$vvd-color-20-neutral});
 				}
 			}
 
@@ -98,7 +98,7 @@ vwc-menu {
 				&.flatpickr-day.inRange {
 					border-bottom-left-radius: 15px;
 					border-top-left-radius: 15px;
-					box-shadow: 5px 0 0 var(#{scheme-variables.$vvd-color-contrast-faint});
+					box-shadow: 5px 0 0 var(#{scheme-variables.$vvd-color-20-neutral});
 				}
 
 				&.flatpickr-day.inRange,
@@ -116,7 +116,7 @@ vwc-menu {
 
 			&.prevMonthDay,
 			&.flatpickr-disabled {
-				color: var(#{scheme-variables.$vvd-color-contrast-dim});
+				color: var(#{scheme-variables.$vvd-color-50-neutral});
 				cursor: default;
 				pointer-events: none;
 			}
@@ -162,7 +162,7 @@ vwc-menu {
 					right: 50%;
 					width: 100%;
 					height: 30px;
-					background-color: var(#{scheme-variables.$vvd-color-contrast-faint});
+					background-color: var(#{scheme-variables.$vvd-color-20-neutral});
 					content: '';
 				}
 			}
@@ -177,14 +177,14 @@ vwc-menu {
 
 			&.inRange,
 			&.inRange.today {
-				border-color: var(#{scheme-variables.$vvd-color-contrast-faint});
-				background-color: var(#{scheme-variables.$vvd-color-contrast-faint});
-				box-shadow: -5px 0 0 var(#{scheme-variables.$vvd-color-contrast-faint}),
-					5px 0 0 var(#{scheme-variables.$vvd-color-contrast-faint});
+				border-color: var(#{scheme-variables.$vvd-color-20-neutral});
+				background-color: var(#{scheme-variables.$vvd-color-20-neutral});
+				box-shadow: -5px 0 0 var(#{scheme-variables.$vvd-color-20-neutral}),
+					5px 0 0 var(#{scheme-variables.$vvd-color-20-neutral});
 				font-weight: 600;
 
 				&:hover {
-					color: var(#{scheme-variables.$vvd-color-contrast-tinted});
+					color: var(#{scheme-variables.$vvd-color-70-neutral});
 				}
 			}
 		}
@@ -218,7 +218,7 @@ vwc-menu {
 		cursor: pointer;
 
 		&:hover {
-			color: var(#{scheme-variables.$vvd-color-contrast-tinted});
+			color: var(#{scheme-variables.$vvd-color-70-neutral});
 		}
 	}
 
@@ -391,7 +391,7 @@ vwc-menu {
 		}
 
 		&.vvd-month-disabled {
-			color: var(#{scheme-variables.$vvd-color-contrast-dim});
+			color: var(#{scheme-variables.$vvd-color-50-neutral});
 			cursor: default;
 			pointer-events: none;
 		}

@@ -25,12 +25,12 @@ body {
 	kbd,
 	samp,
 	var {
-		background-color: var(#{scheme-variables.$vvd-color-surface});
+		background-color: var(#{scheme-variables.$vvd-color-10-neutral});
 		color: color-base.$orange-600;
 	}
 
 	pre {
-		background-color: var(#{scheme-variables.$vvd-color-surface});
+		background-color: var(#{scheme-variables.$vvd-color-10-neutral});
 	}
 
 	blockquote {
@@ -45,7 +45,7 @@ body {
 		}
 
 		tr {
-			border-bottom-color: var(#{scheme-variables.$vvd-color-contrast-faint});
+			border-bottom-color: var(#{scheme-variables.$vvd-color-20-neutral});
 		}
 	}
 }

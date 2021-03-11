@@ -4,7 +4,7 @@
 @use './variables';
 
 .mdc-chip {
-	@include chips.fill-color(var(#{scheme-variables.$vvd-color-contrast-tinged}));
+	@include chips.fill-color(var(#{scheme-variables.$vvd-color-40-neutral}));
 	@include chips.trailing-icon-color(
 		var(#{scheme-variables.$vvd-color-on-base}),
 		variables.$trailing-icon-opacity,

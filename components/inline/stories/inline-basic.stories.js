@@ -16,7 +16,7 @@ const Template = args => html`
 		color: var(--on-connotation);
 		border-radius: 6px;
 		overflow: hidden;
-		border: 1px solid var(--vvd-color-contrast-faint);
+		border: 1px solid var(--vvd-color-20-neutral);
 	}
 	.story figure{
 		margin: 0;
@@ -34,7 +34,7 @@ const Template = args => html`
 		--connotation: var(--vvd-color-main);
 	}
 	.story:nth-child(even){
-		--connotation: var(--vvd-color-contrast-faint);
+		--connotation: var(--vvd-color-20-neutral);
 	}
 </style>
 
@@ -99,4 +99,4 @@ const Template = args => html`
 </vwc-inline>`;
 
 export const Basic = Template.bind({});
-Basic.args = {  };
+Basic.args = {};
