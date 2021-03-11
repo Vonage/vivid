@@ -162,12 +162,12 @@ export class VWCTextField extends MWCTextField {
 
 		//	event listeners
 		fe.onfocus = () => {
-			this.dispatchEvent(new Event('focus'));
-			this.onInputFocus;
+			this.dispatchEvent(new FocusEvent('focus', { composed: true }));
+			this.onInputFocus();
 		};
 
 		fe.onblur = () => {
-			this.dispatchEvent(new Event('blur'));
+			this.dispatchEvent(new FocusEvent('blur', { composed: true }));
 			this.onInputBlur();
 		};
 

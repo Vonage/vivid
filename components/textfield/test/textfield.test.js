@@ -71,8 +71,12 @@ describe('textfield', () => {
 			const input = textfield.querySelector('input');
 			input.focus();
 			await waitNextTask();
+			expect(textfield.focused).true;
+
 			input.blur();
 			await waitNextTask();
+			expect(textfield.focused).false;
+
 			expect(count).to.equal(2);
 		});
 	});
