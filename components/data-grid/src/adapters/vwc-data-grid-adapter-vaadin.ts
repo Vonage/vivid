@@ -74,12 +74,18 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 
 	selectAll(): void {
 		const iGrid = this.getImplementationOrThrow();
-		iGrid.selectedItems = Array.isArray(iGrid.items) ? iGrid._filter(iGrid.items) : [];
+		const selectAllCandidates = Array.isArray(iGrid.items) ? iGrid._filter(iGrid.items) : [];
+		if (selectAllCandidates.length === 0 && iGrid.selectedItems?.length === 0) {
+			return;
+		}
+		iGrid.selectedItems = selectAllCandidates;
 	}
 
 	deselectAll(): void {
 		const iGrid = this.getImplementationOrThrow();
-		iGrid.selectedItems = [];
+		if (iGrid.selectedItems?.length) {
+			iGrid.selectedItems = [];
+		}
 	}
 
 	private getImplementationOrThrow(): GridElement {
@@ -174,6 +180,7 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 		sh.setAttribute('aria-label', 'Select All');
 		sh.addEventListener('change', ({ target }) => {
 			const toSelectAll = (target as VWCCheckbox).checked;
+			//	TODO: use grid API (or adapter API)
 			g.selectedItems = toSelectAll && Array.isArray(g.items) ? g._filter(g.items) : [];
 		});
 		g.addEventListener('selected-items-changed', (e) => {
