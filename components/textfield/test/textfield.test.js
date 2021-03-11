@@ -59,6 +59,28 @@ describe('textfield', () => {
 		assertComputedStyle(te, { pointerEvents: 'none' });
 	});
 
+	describe('events', () => {
+		it(`should trigger ${COMPONENT_NAME} focus & blur`, async function () {
+			let count = 0;
+			const [textfield] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			textfield.addEventListener('focus', () => count++);
+			textfield.addEventListener('blur', () => count++);
+			const input = textfield.querySelector('input');
+			input.focus();
+			await waitNextTask();
+			expect(textfield.focused).true;
+
+			input.blur();
+			await waitNextTask();
+			expect(textfield.focused).false;
+
+			expect(count).to.equal(2);
+		});
+	});
+
 	describe('typography', () => {
 		typographyTestCases(COMPONENT_NAME);
 	});
