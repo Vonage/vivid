@@ -23,12 +23,12 @@
 	);
 
 	--vvd-switch-disabled-background: var(
-		#{scheme-variables.$vvd-color-30-neutral}
+		#{scheme-variables.$vvd-color-neutral-30}
 	);
 	--vvd-switch-shadow-focus: 0, 0, 0, 0.5;
 
 	--mdc-theme-surface: var(
-		#{scheme-variables.$vvd-color-10-neutral}
+		#{scheme-variables.$vvd-color-neutral-10}
 	); // unchecked thumb
 	--mdc-theme-on-surface: var(
 		--vvd-switch-unchecked-background
@@ -78,7 +78,7 @@
 		}
 
 		&.mdc-switch--checked .mdc-switch__thumb {
-			background-color: var(#{scheme-variables.$vvd-color-10-neutral});
+			background-color: var(#{scheme-variables.$vvd-color-neutral-10});
 		}
 
 		&:hover .mdc-switch__thumb {

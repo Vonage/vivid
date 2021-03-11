@@ -10,7 +10,7 @@ $indent: 44px;
 		left: $indent / -2;
 		block-size: 100%;
 		border-inline-start: 1px solid
-			var(#{scheme-variables.$vvd-color-30-neutral});
+			var(#{scheme-variables.$vvd-color-neutral-30});
 		content: '';
 	}
 	:host(:not([open])) & {

@@ -16,7 +16,7 @@ const Template = args => html`
 		color: var(--on-connotation);
 		border-radius: 6px;
 		overflow: hidden;
-		border: 1px solid var(--vvd-color-20-neutral);
+		border: 1px solid var(--vvd-color-neutral-20);
 	}
 	.story figure{
 		margin: 0;
@@ -34,7 +34,7 @@ const Template = args => html`
 		--connotation: var(--vvd-color-main);
 	}
 	.story:nth-child(even){
-		--connotation: var(--vvd-color-20-neutral);
+		--connotation: var(--vvd-color-neutral-20);
 	}
 </style>
 

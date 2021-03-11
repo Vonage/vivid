@@ -2,11 +2,11 @@
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 
 :host {
-	--mdc-checkbox-ink-color: var(#{scheme-variables.$vvd-color-10-neutral});
+	--mdc-checkbox-ink-color: var(#{scheme-variables.$vvd-color-neutral-10});
 	--mdc-checkbox-checked-color: var(#{scheme-variables.$vvd-color-on-base});
 	--mdc-checkbox-unchecked-color: var(#{scheme-variables.$vvd-color-on-base});
 	--mdc-checkbox-disabled-color: var(
-		#{scheme-variables.$vvd-color-30-neutral}
+		#{scheme-variables.$vvd-color-neutral-30}
 	);
 }
 
@@ -66,7 +66,7 @@
 	.mdc-checkbox__native-control[data-indeterminate='true'][disabled] {
 		~ .mdc-checkbox__background {
 			--mdc-checkbox-disabled-color: var(
-				#{scheme-variables.$vvd-color-30-neutral}
+				#{scheme-variables.$vvd-color-neutral-30}
 			);
 		}
 	}
