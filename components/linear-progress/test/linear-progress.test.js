@@ -62,6 +62,23 @@ describe('Linear Progress', () => {
 			backgroundImage: 'linear-gradient(to right, rgb(127, 198, 244), rgb(135, 40, 251))'
 		};
 
+		it('should reflect progress in css variable"', async () => {
+			let progress = 0.57;
+			const testProgressCssReflection = () => expect(wrapper.computedStyleMap().get('--linear-progress-progress')[0]).to.equal(progress.toString());
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} progress="${progress}"></${COMPONENT_NAME}>`)
+			);
+
+			await waitNextTask();
+			const wrapper = actualElement.shadowRoot.querySelector('.mdc-linear-progress');
+			testProgressCssReflection();
+
+			progress = 0.24;
+			actualElement.progress = progress;
+			await waitNextTask();
+			testProgressCssReflection();
+		});
+
 		it('should default and style as "connotation > primary"', async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} progress="0.5"></${COMPONENT_NAME}>`)

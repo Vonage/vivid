@@ -34,7 +34,7 @@ type LinearProgressDecoration = Extract<Decoration, Decoration.Primary>;
 @customElement('vwc-linear-progress')
 @interceptCoexistence('decoration', 'connotation')
 export class VWCLinearProgress extends MWCLinearProgress {
-  @query('.mdc-linear-progress') protected mdcLinearProgress!: HTMLElement; // ! patch. remove after mwc expose 'progress' css variable
+  @query('.mdc-linear-progress') protected mdcLinearProgress!: HTMLElement;
 
 	@property({ type: String, reflect: true })
 	connotation?: LinearProgressConnotation | null;
@@ -43,10 +43,9 @@ export class VWCLinearProgress extends MWCLinearProgress {
 	decoration?: LinearProgressDecoration | null
 
 	protected updated(changes: Map<string, boolean>): void {
-		// ! patch. remove after mwc expose 'progress' css variable
 		super.updated(changes);
 		if (changes.has('progress')) {
-			this.mdcLinearProgress.style.setProperty('--mdc-linear-progress-progress', this.progress.toString());
+			this.mdcLinearProgress.style.setProperty('--linear-progress-progress', this.progress.toString());
 		}
 	}
 }

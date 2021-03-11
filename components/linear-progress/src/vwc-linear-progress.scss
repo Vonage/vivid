@@ -31,7 +31,7 @@ $border-radius: 10px;
 	border-top-width: $block-size;
 	border-top-style: solid;
 	border-top-color: var(--mdc-theme-primary);
-	border-radius: calc(#{$border-radius} / var(--mdc-linear-progress-progress)) / calc(#{$border-radius} / 1);
+	border-radius: calc(#{$border-radius} / var(--linear-progress-progress)) / calc(#{$border-radius} / 1);
 	:host([decoration="primary"i]) & {
 		height: $block-size;
 		border-top-width: 0;
