@@ -1,6 +1,0 @@
-ignores: [
-  "@vonage/vwc-datepicker",
-  "@vonage/vwc-dialog",
-  "@open-wc/lit-helpers",
-  "@open-wc/semantic-dom-diff"
-]

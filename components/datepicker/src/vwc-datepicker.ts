@@ -23,7 +23,7 @@ declare global {
 @customElement('vwc-datepicker')
 export class VWCDatepicker extends LitFlatpickr {
 	static get styles(): CSSResult {
-		return [vwcDatepickerStyles] as any;
+		return vwcDatepickerStyles;
 	}
 
 	@query('.vvd-datepicker-wrapper')
@@ -171,22 +171,22 @@ export class VWCDatepicker extends LitFlatpickr {
 			nextMonth.shape = Shape.Circled;
 			nextMonth.dense = true;
 
-			const currentMonthContainer = document.createElement('div');
-			currentMonthContainer.classList.add('vvd-month');
+			const headerMonthContainer = document.createElement('div');
+			headerMonthContainer.classList.add('vvd-header-month');
 
-			const currentYearContainer = document.createElement('div');
-			currentYearContainer.classList.add('vvd-year');
+			const headerYearContainer = document.createElement('div');
+			headerYearContainer.classList.add('vvd-header-year');
 
-			header.appendChild(currentMonthContainer);
-			header.appendChild(currentYearContainer);
+			header.appendChild(headerMonthContainer);
+			header.appendChild(headerYearContainer);
 			header.appendChild(prevMonth);
 			header.appendChild(nextMonth);
 			this._instance?.calendarContainer.prepend(header);
 
-			this.updateCurrentMonth();
-			this.updateCurrentYear();
+			this.updateHeaderMonth();
+			this.updateHeaderYear();
 
-			currentMonthContainer.onclick = () => {
+			headerMonthContainer.onclick = () => {
 				this._instance?.calendarContainer.classList.add(
 					'vvd-datepicker-month-view'
 				);
@@ -216,13 +216,13 @@ export class VWCDatepicker extends LitFlatpickr {
 			this._instance?.changeMonth(delta);
 		}
 
-		this.updateCurrentMonth();
-		this.updateCurrentYear();
+		this.updateHeaderMonth();
+		this.updateHeaderYear();
 	}
 
-	private updateCurrentMonth(): void {
+	private updateHeaderMonth(): void {
 		const currentMonthContainer = this._instance?.calendarContainer.querySelector(
-			'.vvd-datepicker-header .vvd-month'
+			'.vvd-datepicker-header .vvd-header-month'
 		);
 		const currentMonth = this._instance?.l10n.months.longhand[
 			this._instance.currentMonth
@@ -232,13 +232,13 @@ export class VWCDatepicker extends LitFlatpickr {
 		}
 	}
 
-	private updateCurrentYear(): void {
-		const currentYearContainer = this._instance?.calendarContainer.querySelector(
-			'.vvd-datepicker-header .vvd-year'
+	private updateHeaderYear(): void {
+		const headerYearContainer = this._instance?.calendarContainer.querySelector(
+			'.vvd-datepicker-header .vvd-header-year'
 		);
 		const currentYear = this._instance?.currentYear.toString();
-		if (currentYearContainer) {
-			currentYearContainer.textContent = currentYear || '';
+		if (headerYearContainer) {
+			headerYearContainer.textContent = currentYear || '';
 		}
 	}
 
@@ -285,8 +285,8 @@ export class VWCDatepicker extends LitFlatpickr {
 		e.stopPropagation();
 
 		this._instance?.clear();
-		this.updateCurrentMonth();
-		this.updateCurrentYear();
+		this.updateHeaderMonth();
+		this.updateHeaderYear();
 	}
 
 	private renderMonthPicker(): void {
@@ -305,9 +305,8 @@ export class VWCDatepicker extends LitFlatpickr {
 					month.classList.add('vvd-current-month');
 				}
 
-				month.setAttribute('data-month', i.toString());
 				month.textContent = this._instance?.l10n.months.shorthand[i] || '';
-				month.onclick = (e: MouseEvent) => this.selectMonth(e);
+				month.onclick = () => this.selectMonth(i);
 				monthPicker.appendChild(month);
 			}
 
@@ -315,10 +314,7 @@ export class VWCDatepicker extends LitFlatpickr {
 		}
 	}
 
-	private selectMonth(e: MouseEvent): void {
-		const selectedMonth = parseInt(
-			(<HTMLElement>e.target).attributes[<number>(<unknown>'data-month')].value
-		);
+	private selectMonth(selectedMonth: number): void {
 		const selectedDate = this._instance
 			? new Date(this._instance.currentYear, selectedMonth)
 			: '';
@@ -335,15 +331,13 @@ export class VWCDatepicker extends LitFlatpickr {
 				'vvd-datepicker-month-view'
 			);
 			this._instance?.changeMonth(selectedMonth - this._instance.currentMonth);
-			this.updateCurrentMonth();
-			this.updateCurrentYear();
+			this.updateHeaderMonth();
+			this.updateHeaderYear();
 		}
 	}
 
 	private highlightMonth(): void {
-		const months = this._instance?.calendarContainer.querySelectorAll(
-			'[data-month]'
-		);
+		const months = this._instance?.calendarContainer.querySelectorAll('.vvd-month');
 		const startDate = this._instance?.selectedDates[0];
 		const endDate = this._instance?.selectedDates[1];
 		const todaysMonth = this._instance?.now.getMonth();
