@@ -53,7 +53,9 @@
 	);
 	--mdc-theme-secondary: var(#{scheme-variables.$vvd-color-primary});
 	--mdc-theme-on-secondary: var(#{scheme-variables.$vvd-color-on-primary});
-	--mdc-theme-surface: var(#{scheme-variables.$vvd-color-base});
-	--mdc-theme-on-surface: var(#{scheme-variables.$vvd-color-on-base});
+	//! currently missing & breaks. I feel we need to expose this token even if refers to neutral shade.
+	//! it might be a different reference in different themes. e.g. dark theme needs a contrast on surface while light theme does not
+	--mdc-theme-surface: var(#{scheme-variables.$vvd-color-surface});
+	--mdc-theme-on-surface: var(#{scheme-variables.$vvd-color-on-surface});
 	--mdc-theme-error: var(#{scheme-variables.$vvd-color-alert});
 }
