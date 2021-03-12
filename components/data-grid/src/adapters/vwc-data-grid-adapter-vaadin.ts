@@ -12,7 +12,7 @@ import { VWCDataGridHeader } from '../headers/vwc-data-grid-header';
 import { style as vwcDataGridStyleVaadin } from './vwc-data-grid-adapter-vaadin.css';
 import { CSSResult, html, TemplateResult } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
-import { VWCCheckbox } from '@vonage/vwc-checkbox';
+import { VWCCheckbox, CHECKBOX_COMPONENT } from '@vonage/vwc-checkbox';
 
 export {
 	VWCDataGridAdapterVaadin
@@ -174,28 +174,33 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 	}
 
 	private selectingHeaderRenderer(_column: DataGridColumn, container: HTMLElement, nativeColumn?: GridColumnElement): void {
-		const sh = VWCDataGridAdapterVaadin.ensureSelectHeaderIn(container);
-		const g = nativeColumn?.parentElement as GridElement;
-		sh.classList.add('vvd-all-selector');
-		sh.setAttribute('aria-label', 'Select All');
-		sh.addEventListener('change', ({ target }) => {
-			const toSelectAll = (target as VWCCheckbox).checked;
-			//	TODO: use grid API (or adapter API)
-			g.selectedItems = toSelectAll && Array.isArray(g.items) ? g._filter(g.items) : [];
-		});
-		g.addEventListener('selected-items-changed', (e) => {
-			const ig = e.target as GridElement;
-			const totalSelected = ig.selectedItems?.length || 0;
-			if (totalSelected === 0) {
-				sh.indeterminate = sh.checked = false;
-			} else if (totalSelected === ig.items?.length) {
-				sh.checked = true;
-				sh.indeterminate = false;
-			} else {
-				sh.checked = true;
-				sh.indeterminate = true;
-			}
-		});
+		let sh = container.querySelector(CHECKBOX_COMPONENT) as VWCCheckbox;
+		if (!sh) {
+			//	TODO: switch or our grid here and use API as below + will solve the issue of double event
+			const g = nativeColumn?.parentElement as GridElement;
+			sh = document.createElement(CHECKBOX_COMPONENT);
+			sh.classList.add('vvd-all-selector');
+			sh.setAttribute('aria-label', 'Select All');
+			sh.addEventListener('change', ({ target }) => {
+				const toSelectAll = (target as VWCCheckbox).checked;
+				//	TODO: use grid API (or adapter API)
+				g.selectedItems = toSelectAll && Array.isArray(g.items) ? g._filter(g.items) : [];
+			});
+			g.addEventListener('selected-items-changed', (e) => {
+				const ig = e.target as GridElement;
+				const totalSelected = ig.selectedItems?.length || 0;
+				if (totalSelected === 0) {
+					sh.indeterminate = sh.checked = false;
+				} else if (totalSelected === ig.items?.length) {
+					sh.checked = true;
+					sh.indeterminate = false;
+				} else {
+					sh.checked = true;
+					sh.indeterminate = true;
+				}
+			});
+			container.appendChild(sh);
+		}
 	}
 
 	private sortingHeaderRenderer(column: DataGridColumn, container: HTMLElement): void {
@@ -218,9 +223,9 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 	}
 
 	private simpleSelectorCellRenderer(_column: DataGridColumn, container: HTMLElement, nativeColumn?: GridColumnElement, data?: { item: unknown, selected: boolean }): void {
-		let rs = container.firstElementChild as VWCCheckbox;
+		let rs = container.querySelector(CHECKBOX_COMPONENT) as VWCCheckbox;
 		if (!rs) {
-			rs = document.createElement('vwc-checkbox');
+			rs = document.createElement(CHECKBOX_COMPONENT);
 			rs.classList.add('vvd-row-selector');
 			rs.setAttribute('aria-label', 'Select Row');
 			rs.addEventListener('change', (e) => {
@@ -242,15 +247,6 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 		let result = container.querySelector(GRID_HEADER_COMPONENT);
 		if (!result) {
 			result = document.createElement(GRID_HEADER_COMPONENT);
-			container.appendChild(result);
-		}
-		return result;
-	}
-
-	private static ensureSelectHeaderIn(container: HTMLElement): VWCCheckbox {
-		let result = container.firstElementChild as VWCCheckbox;
-		if (!result) {
-			result = document.createElement('vwc-checkbox');
 			container.appendChild(result);
 		}
 		return result;
