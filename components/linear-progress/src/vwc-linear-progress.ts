@@ -29,8 +29,8 @@ type LinearProgressConnotation = Extract<
 	| Connotation.Alert
 	>
 	| Extract<
-		ConnotationDecorative,
-		ConnotationDecorative.Pacific
+	ConnotationDecorative,
+	| ConnotationDecorative.Pacific
 	>;
 
 @customElement('vwc-linear-progress')
@@ -38,7 +38,7 @@ export class VWCLinearProgress extends MWCLinearProgress {
   @query('.mdc-linear-progress') protected mdcLinearProgress!: HTMLElement;
 
 	@property({ type: String, reflect: true })
-	connotation?: LinearProgressConnotation | null;
+	connotation?: LinearProgressConnotation;
 
 	protected updated(changes: Map<string, boolean>): void {
 		super.updated(changes);

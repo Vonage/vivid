@@ -4,7 +4,7 @@ export const argTypes = {
 	connotation: {
 		control: {
 			type: 'select',
-			options: [Connotation.Primary, Connotation.CTA, Connotation.Success, Connotation.Alert, ConnotationDecorative.pacific],
+			options: [Connotation.Primary, Connotation.CTA, Connotation.Success, Connotation.Alert, ConnotationDecorative.Pacific],
 		}
 	},
 	indeterminate: {

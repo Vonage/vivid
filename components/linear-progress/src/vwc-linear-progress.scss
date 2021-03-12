@@ -1,23 +1,24 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins' with (
-	$connotations: primary cta success alert
+	$connotations: primary cta success alert,
+	$connotations-decorative: pacific
 );
-@use '@vonage/vvd-foundation/scss/mixins/color-decoration-mixins';
 
 $block-size: 6px;
 $border-radius: 10px;
+$connotation-mixin-selector: ':host(#{color-connotation-mixins.$connotation-placeholder})';
 
 @include color-connotation-mixins.connotations-context(
-	':host(#{color-connotation-mixins.$connotation-placeholder})'
+	$connotation-mixin-selector,
+	primary
 );
 
-@include color-decoration-mixins.decorations;
+@include color-connotation-mixins.connotations-decorative($connotation-mixin-selector);
 
 :host {
-	--mdc-theme-primary: var(#{color-semantic.$vvd-color-connotation},
-	var(#{scheme-variables.$vvd-color-primary}));
-	--mdc-linear-progress-buffer-color: var(#{scheme-variables.$vvd-color-contrast-soft});
+	--mdc-theme-primary: var(#{color-semantic.$vvd-color-connotation});
+	--mdc-linear-progress-buffer-color: var(#{scheme-variables.$vvd-color-neutral-30});
 	--mdc-linear-progress-buffering-dots-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' enable-background='new 0 0 5 2' xml:space='preserve' viewBox='0 0 5 2' preserveAspectRatio='none slice'%3E%3Ccircle cx='1' cy='1' r='1' fill='%23616266'/%3E%3C/svg%3E");
 }
 
@@ -32,12 +33,12 @@ $border-radius: 10px;
 	border-top-style: solid;
 	border-top-color: var(--mdc-theme-primary);
 	border-radius: calc(#{$border-radius} / var(--linear-progress-progress)) / calc(#{$border-radius} / 1);
-	:host([decoration="primary"i]) & {
+	:host([connotation="pacific"i]) & {
 		height: $block-size;
 		border-top-width: 0;
 		border-top-style: none;
 		border-top-color: transparent;
-		background-image: var(#{color-semantic.$vvd-color-decoration});
+		background-image: var(--mdc-theme-primary);
 		block-size: $block-size;
 	}
 }
