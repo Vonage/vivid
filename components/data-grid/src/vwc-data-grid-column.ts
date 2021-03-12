@@ -24,7 +24,7 @@ declare global {
 @customElement(COLUMN_DEFINITION_COMPONENT)
 export class VWCDataGridColumn extends LitElement implements DataGridColumn {
 	@property({ type: String, reflect: true })
-	path? = undefined;
+	path?: string = undefined;
 
 	@property({ type: Boolean, reflect: true })
 	tree = false;
@@ -37,12 +37,12 @@ export class VWCDataGridColumn extends LitElement implements DataGridColumn {
 	@property({ type: Boolean, reflect: true })
 	resizable = false;
 	@property({ type: String, reflect: true })
-	selector? = undefined;
+	selector?: string = undefined;
 
 	@property({ type: Boolean, reflect: true, attribute: 'auto-width' })
 	autoWidth = false;
 	@property({ type: String, reflect: true })
-	width? = undefined;
+	width?: string = undefined;
 
 	@property({ type: String, reflect: true })
 	header = '';
