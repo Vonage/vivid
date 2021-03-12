@@ -18,6 +18,7 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 	--mdc-theme-text-hint-on-background: var(
 		#{scheme-variables.$vvd-color-on-base}
 	);
+	--border-radius: 0;
 	@include typography.typography-cat-shorthand('body-2');
 	height: var(#{$vvd-list-item-block-size});
 
