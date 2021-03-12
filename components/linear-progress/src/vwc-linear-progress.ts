@@ -5,8 +5,7 @@ import { LinearProgress as MWCLinearProgress } from '@material/mwc-linear-progre
 import { style as vwcLinearProgressStyle } from './vwc-linear-progress.css';
 import { style as mwcLinearProgressStyle } from '@material/mwc-linear-progress/mwc-linear-progress-css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
-import { Connotation, Decoration } from '@vonage/vvd-foundation/constants';
-import { interceptCoexistence } from '@vonage/vvd-foundation/decorators';
+import { Connotation, ConnotationDecorative } from '@vonage/vvd-foundation/constants';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -28,19 +27,18 @@ type LinearProgressConnotation = Extract<
 	| Connotation.CTA
 	| Connotation.Success
 	| Connotation.Alert
+	>
+	| Extract<
+		ConnotationDecorative,
+		ConnotationDecorative.Pacific
 	>;
 
-type LinearProgressDecoration = Extract<Decoration, Decoration.Primary>;
 @customElement('vwc-linear-progress')
-@interceptCoexistence('decoration', 'connotation')
 export class VWCLinearProgress extends MWCLinearProgress {
   @query('.mdc-linear-progress') protected mdcLinearProgress!: HTMLElement;
 
 	@property({ type: String, reflect: true })
 	connotation?: LinearProgressConnotation | null;
-
-	@property({ type: String, reflect: true })
-	decoration?: LinearProgressDecoration | null
 
 	protected updated(changes: Map<string, boolean>): void {
 		super.updated(changes);

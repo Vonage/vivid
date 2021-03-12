@@ -9,8 +9,8 @@ export enum Connotation {
 	Announcement = 'announcement',
 }
 
-export enum Decoration {
-	Primary = 'primary'
+export enum ConnotationDecorative {
+	Pacific = 'pacific'
 }
 
 /* eslint-disable no-shadow */
