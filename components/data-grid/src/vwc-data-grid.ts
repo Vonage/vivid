@@ -78,8 +78,8 @@ export class VWCDataGrid extends LitElement implements DataGrid {
 		return this.#gridAdapter.getSelectedItems();
 	}
 
-	selectItem(item: unknown): void {
-		this.#gridAdapter.selectItem(item);
+	selectItem(item: unknown, singleSelectMode = false): void {
+		this.#gridAdapter.selectItem(item, singleSelectMode);
 	}
 
 	deselectItem(item: unknown): void {

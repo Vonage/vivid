@@ -7,6 +7,11 @@ export {
 	cellRendererProvider
 };
 
+interface VVDSelector {
+	_data: { item: unknown };
+	_mode: string | undefined;
+}
+
 const cellRendererProvider: DataRendererProvider = (column: DataGridColumn): DataRenderer | undefined => {
 	let result;
 	if (column.cellRenderer) {
@@ -18,26 +23,22 @@ const cellRendererProvider: DataRendererProvider = (column: DataGridColumn): Dat
 };
 
 function selectorRenderer(container: HTMLElement, configuration: RendererConfiguration, data: { item: unknown, selected: boolean }): void {
-	let rs = container.querySelector(CHECKBOX_COMPONENT) as VWCCheckbox;
+	let rs = container.querySelector(CHECKBOX_COMPONENT) as VWCCheckbox & VVDSelector;
 	if (!rs) {
-		rs = document.createElement(CHECKBOX_COMPONENT);
+		rs = document.createElement(CHECKBOX_COMPONENT) as VWCCheckbox & VVDSelector;
 		rs.classList.add('vvd-row-selector');
 		rs.setAttribute('aria-label', 'Select Row');
 		rs.addEventListener('change', (e) => {
-			const cb = e.target as unknown as { checked: boolean, _data: { item: unknown }, _mode: string | undefined };
+			const cb = e.target as VWCCheckbox & VVDSelector;
 			if (cb.checked) {
-				//	TODO: enhance select API to override instead of add, optionally
-				if (cb._mode === SELECTOR_SINGLE) {
-					configuration.grid.deselectAll();
-				}
-				configuration.grid.selectItem(cb._data.item);
+				configuration.grid.selectItem(cb._data.item, cb._mode === SELECTOR_SINGLE);
 			} else {
 				configuration.grid.deselectItem(cb._data.item);
 			}
 		});
 		container.appendChild(rs);
 	}
-	(rs as unknown as { _data: unknown })._data = data;
-	(rs as unknown as { _mode: string | undefined })._mode = configuration.column.selector;
+	rs._data = data;
+	rs._mode = configuration.column.selector;
 	rs.checked = Boolean(data?.selected);
 }

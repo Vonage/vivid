@@ -80,9 +80,15 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 		return iGrid.selectedItems || (iGrid.selectedItems = []);
 	}
 
-	selectItem(item: unknown) {
+	selectItem(item: unknown, singleSelectMode = false) {
 		const iGrid = this.getImplementationOrThrow();
-		iGrid.selectItem(item);
+		if (singleSelectMode) {
+			if (iGrid.selectedItems?.length !== 1 || iGrid.selectedItems[0] !== item) {
+				iGrid.selectedItems = [item];
+			}
+		} else {
+			iGrid.selectItem(item);
+		}
 	}
 
 	deselectItem(item: unknown) {

@@ -32,7 +32,7 @@ interface DataGrid extends EventTarget {
 	refreshData(): void;
 
 	selectedItems: unknown[];
-	selectItem(item: unknown): void;
+	selectItem(item: unknown, singleSelectMode?: boolean): void;
 	deselectItem(item: unknown): void;
 	selectAll(): void;
 	deselectAll(): void;
