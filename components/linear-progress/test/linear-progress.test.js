@@ -44,24 +44,6 @@ describe('Linear Progress', () => {
 	describe('API configuration', () => {
 		const addElement = isolatedElementsCreation();
 
-		const connotationPrimaryStyle = {
-			borderTopWidth: '6px',
-			borderTopStyle: 'solid',
-			borderTopColor: 'rgb(0, 0, 0)',
-			height: '0px',
-			blockSize: '0px',
-			backgroundImage: 'none'
-		};
-
-		const decorationPrimaryStyle = {
-			borderTopWidth: '0px',
-			borderTopStyle: 'none',
-			borderTopColor: 'rgba(0, 0, 0, 0)',
-			height: '6px',
-			blockSize: '6px',
-			backgroundImage: 'linear-gradient(to right, rgb(127, 198, 244), rgb(135, 40, 251))'
-		};
-
 		it('should reflect progress in css variable"', async () => {
 			let progress = 0.57;
 			const testProgressCssReflection = () => expect(wrapper.computedStyleMap().get('--linear-progress-progress')[0]).to.equal(progress.toString());
@@ -78,6 +60,30 @@ describe('Linear Progress', () => {
 			await waitNextTask();
 			testProgressCssReflection();
 		});
+	});
+
+	describe('Connotation', () => {
+		const CONNOTATIONS_SUPPORTED = [Connotation.Primary, Connotation.CTA, Connotation.Success, Connotation.Alert];
+
+		const addElement = isolatedElementsCreation();
+
+		const connotationPrimaryStyle = {
+			borderTopWidth: '6px',
+			borderTopStyle: 'solid',
+			borderTopColor: 'rgb(0, 0, 0)',
+			height: '0px',
+			blockSize: '0px',
+			backgroundImage: 'none'
+		};
+
+		const connotationDecorativePacificStyle = {
+			borderTopWidth: '0px',
+			borderTopStyle: 'none',
+			borderTopColor: 'rgba(0, 0, 0, 0)',
+			height: '6px',
+			blockSize: '6px',
+			backgroundImage: 'linear-gradient(to right, rgb(157, 210, 254), rgb(135, 30, 255))'
+		};
 
 		it('should default and style as "connotation > primary"', async () => {
 			const [actualElement] = addElement(
@@ -101,67 +107,16 @@ describe('Linear Progress', () => {
 			assertComputedStyle(progressBar, connotationPrimaryStyle);
 		});
 
-		it('should default incorrect decoration value to "connotation > primary" style', async () => {
+		it(`should set connotation decorative 'pacific' style`, async () => {
 			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} progress="0.5" decoration="incorrectValue"></${COMPONENT_NAME}>`)
+				textToDomToParent(`<${COMPONENT_NAME} progress="0.5" connotation="pacific"></${COMPONENT_NAME}>`)
 			);
 
 			await waitNextTask();
 			const progressBar = actualElement.shadowRoot.querySelector('.mdc-linear-progress__primary-bar > .mdc-linear-progress__bar-inner');
 
-			assertComputedStyle(progressBar, connotationPrimaryStyle);
+			assertComputedStyle(progressBar, connotationDecorativePacificStyle);
 		});
-
-		it('should set decoration style', async () => {
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} progress="0.5" decoration="primary"></${COMPONENT_NAME}>`)
-			);
-
-			await waitNextTask();
-			const progressBar = actualElement.shadowRoot.querySelector('.mdc-linear-progress__primary-bar > .mdc-linear-progress__bar-inner');
-
-			assertComputedStyle(progressBar, decorationPrimaryStyle);
-		});
-
-		it('should warn if connotation conflict with decoration', async () => {
-			let warnMessage;
-			console.warn = str => warnMessage = str;
-
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} progress="0.5" decoration="primary"></${COMPONENT_NAME}>`)
-			);
-
-			await waitNextTask();
-
-			actualElement.connotation = 'primary';
-
-			await waitNextTask();
-
-			expect(warnMessage).to.equal('"connotation" conflict with "decoration"');
-		});
-
-		it('should warn if decoration conflict with connotation', async () => {
-			let warnMessage;
-			console.warn = str => warnMessage = str;
-
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} progress="0.5" connotation="cta"></${COMPONENT_NAME}>`)
-			);
-
-			await waitNextTask();
-
-			actualElement.decoration = 'primary';
-
-			await waitNextTask();
-
-			expect(warnMessage).to.equal('"decoration" conflict with "connotation"');
-		});
-	});
-
-	describe('Connotation', () => {
-		const CONNOTATIONS_SUPPORTED = [Connotation.Primary, Connotation.CTA, Connotation.Success, Connotation.Alert];
-
-		const addElement = isolatedElementsCreation();
 
 		it(`should sync linear progress class member 'connotation' and html attribute 'connotation'`, async function () {
 			const [linearProgress] = addElement(
