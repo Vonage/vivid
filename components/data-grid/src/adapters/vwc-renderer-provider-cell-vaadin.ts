@@ -24,10 +24,10 @@ function selectorRenderer(container: HTMLElement, configuration: RendererConfigu
 		rs.classList.add('vvd-row-selector');
 		rs.setAttribute('aria-label', 'Select Row');
 		rs.addEventListener('change', (e) => {
-			const cb = e.target as unknown as { checked: boolean, _data: { item: unknown } };
+			const cb = e.target as unknown as { checked: boolean, _data: { item: unknown }, _mode: string | undefined };
 			if (cb.checked) {
 				//	TODO: enhance select API to override instead of add, optionally
-				if (configuration.column.selector === SELECTOR_SINGLE) {
+				if (cb._mode === SELECTOR_SINGLE) {
 					configuration.grid.deselectAll();
 				}
 				configuration.grid.selectItem(cb._data.item);
@@ -38,5 +38,6 @@ function selectorRenderer(container: HTMLElement, configuration: RendererConfigu
 		container.appendChild(rs);
 	}
 	(rs as unknown as { _data: unknown })._data = data;
+	(rs as unknown as { _mode: string | undefined })._mode = configuration.column.selector;
 	rs.checked = Boolean(data?.selected);
 }
