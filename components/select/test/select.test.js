@@ -10,6 +10,7 @@ import {
 	changeValueAndNotify,
 	isolatedElementsCreation,
 	getTypographyStyle,
+	getRandom,
 } from '../../../test/test-helpers.js';
 import {
 	shapeRoundedTestCases,
@@ -86,7 +87,7 @@ describe('select', () => {
 			formId;
 
 		beforeEach(() => {
-			values = [Math.random().toString(), Math.random().toString()];
+			values = [getRandom().toString(), getRandom().toString()];
 			fieldName = 'test-field';
 			formId = 'testForm';
 		});
@@ -167,10 +168,11 @@ describe('select', () => {
 
 		describe(`validation`, function () {
 			const invalidValue = '';
-			const validValue1 = Math.random().toString();
-			const validValue2 = Math.random().toString();
+			const validValue1 = getRandom().toString();
+			const validValue2 = getRandom().toString();
 			const valuesValidation = [validValue1, validValue2];
-			let formElement, actualElement;
+			let formElement,
+				actualElement;
 
 			beforeEach(async function () {
 				[formElement] = addElement(
@@ -266,7 +268,9 @@ describe('select', () => {
 	});
 
 	describe('typography', () => {
-		let addedElements, formElement, labelElement;
+		let addedElements,
+			formElement,
+			labelElement;
 		beforeEach(async () => {
 			addedElements = addElement(
 				textToDomToParent(`

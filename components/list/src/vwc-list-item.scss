@@ -41,7 +41,7 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 		bottom: 0;
 		left: var(#{$vvd-list-item-side-padding});
 		height: 1px;
-		border-bottom: 1px solid var(#{scheme-variables.$vvd-color-contrast-soft});
+		border-bottom: 1px solid var(#{scheme-variables.$vvd-color-neutral-30});
 		content: '';
 	}
 
@@ -52,7 +52,10 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 
 	.mdc-list-item__primary-text {
 		@include typography.typography-cat-shorthand('body-2-bold');
-		margin-block: 12px 4px;
+		margin-top: 12px;
+		margin-bottom: 4px;
+		// margin-block-end: 4px; // TODO uncomment with safari 13.1 test support
+		// margin-block-start: 12px; // TODO uncomment with safari 13.1 test support
 
 		&::before,
 		&::after {
@@ -62,7 +65,8 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 
 	.mdc-list-item__secondary-text {
 		@include typography.typography-cat-shorthand('caption');
-		margin-block-end: 12px;
+		margin-bottom: 12px;
+		// margin-block-end: 12px; // TODO uncomment with safari 13.1 test support
 		white-space: normal;
 
 		&::before {

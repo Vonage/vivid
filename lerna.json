@@ -1,11 +1,7 @@
 {
-	"packages": [
-		"common/**",
-		"components/**"
-	],
 	"npmClient": "yarn",
 	"useWorkspaces": true,
-	"version": "2.0.0",
+	"version": "2.0.4",
 	"command": {
 		"publish": {
 			"conventionalCommits": true,

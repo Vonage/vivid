@@ -17,7 +17,9 @@ body {
 		'info'
 	);
 	a {
-		color: color-base.$purple-600;
+		color: var(
+			#{scheme-variables.$vvd-color-cta-70}
+		);
 		cursor: pointer;
 	}
 
@@ -25,12 +27,12 @@ body {
 	kbd,
 	samp,
 	var {
-		background-color: var(#{scheme-variables.$vvd-color-surface-contrast-50});
+		background-color: var(#{scheme-variables.$vvd-color-neutral-10});
 		color: color-base.$orange-600;
 	}
 
 	pre {
-		background-color: var(#{scheme-variables.$vvd-color-surface-contrast-50});
+		background-color: var(#{scheme-variables.$vvd-color-neutral-10});
 	}
 
 	blockquote {
@@ -45,7 +47,7 @@ body {
 		}
 
 		tr {
-			border-bottom-color: var(#{scheme-variables.$vvd-color-contrast-faint});
+			border-bottom-color: var(#{scheme-variables.$vvd-color-neutral-20});
 		}
 	}
 }

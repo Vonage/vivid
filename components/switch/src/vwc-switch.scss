@@ -13,22 +13,22 @@
 	);
 
 	--vvd-switch-unchecked-background: var(
-		#{scheme-variables.$vvd-color-contrast-neutral}
+		#{scheme-variables.$vvd-color-neutral}
 	);
 	--vvd-switch-unchecked-background-hover: var(
-		#{scheme-variables.$vvd-color-contrast-neutral}
+		#{scheme-variables.$vvd-color-neutral}
 	);
 	--vvd-switch-unchecked-background-focus: var(
-		#{scheme-variables.$vvd-color-contrast-neutral}
+		#{scheme-variables.$vvd-color-neutral}
 	);
 
 	--vvd-switch-disabled-background: var(
-		#{scheme-variables.$vvd-color-contrast-soft}
+		#{scheme-variables.$vvd-color-neutral-30}
 	);
 	--vvd-switch-shadow-focus: 0, 0, 0, 0.5;
 
 	--mdc-theme-surface: var(
-		#{scheme-variables.$vvd-color-base}
+		#{scheme-variables.$vvd-color-neutral-10}
 	); // unchecked thumb
 	--mdc-theme-on-surface: var(
 		--vvd-switch-unchecked-background
@@ -78,7 +78,7 @@
 		}
 
 		&.mdc-switch--checked .mdc-switch__thumb {
-			background-color: var(#{scheme-variables.$vvd-color-base});
+			background-color: var(#{scheme-variables.$vvd-color-neutral-10});
 		}
 
 		&:hover .mdc-switch__thumb {

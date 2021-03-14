@@ -14,11 +14,10 @@ $border-value: 8px solid var(#{color-semantic.$vvd-color-connotation});
 	padding: 20px;
 	border-left: $border-value;
 	background-color: var(#{scheme-variables.$vvd-color-base});
-	border-inline-start: $border-value;
 	border-radius: 6px;
-	box-shadow: inset 0 1px 0 0 var(#{scheme-variables.$vvd-color-contrast-tinged}),
-		inset -1px 0 0 0 var(#{scheme-variables.$vvd-color-contrast-tinged}),
-		inset 0 -1px 0 0 var(#{scheme-variables.$vvd-color-contrast-tinged});
+	box-shadow: inset 0 1px 0 0 var(#{scheme-variables.$vvd-color-neutral-40}),
+		inset -1px 0 0 0 var(#{scheme-variables.$vvd-color-neutral-40}),
+		inset 0 -1px 0 0 var(#{scheme-variables.$vvd-color-neutral-40});
 	contain: content;
 }
 @include color-connotation-mixins.connotations-context(
@@ -35,6 +34,7 @@ $border-value: 8px solid var(#{color-semantic.$vvd-color-connotation});
 	flex: 1;
 	flex-direction: column;
 	justify-content: center;
+	text-align: start;
 
 	.note-header {
 		@include typography.typography-cat-shorthand('body-2-bold');

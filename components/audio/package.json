@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-audio",
-	"version": "2.0.0",
+	"version": "2.0.4",
 	"description": "Plays audio files",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/audio#readme",
 	"license": "ISC",
@@ -26,11 +26,11 @@
 	},
 	"dependencies": {
 		"@types/kefir": "^3.8.5",
-		"@vonage/vwc-media-controller": "^2.0.0",
+		"@vonage/vwc-media-controller": "^2.0.4",
 		"kefir": "^3.8.7"
 	},
 	"devDependencies": {
-		"@vonage/vvd-umbrella": "^2.0.0",
+		"@vonage/vvd-umbrella": "^2.0.4",
 		"typescript": "^4.1.3"
 	}
 }

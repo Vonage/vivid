@@ -29,12 +29,6 @@ export const argTypes = {
 			options: { 'true': '', 'false': undefined }
 		}
 	},
-	clickOpens: {
-		control: {
-			type: 'inline-radio',
-			options: { 'true': '', 'false': undefined }
-		}
-	},
 	disableMobile: {
 		control: {
 			type: 'inline-radio',
@@ -48,6 +42,12 @@ export const argTypes = {
 		}
 	},
 	enableSeconds: {
+		control: {
+			type: 'inline-radio',
+			options: { 'true': '', 'false': undefined }
+		}
+	},
+	fixedMenuPosition: {
 		control: {
 			type: 'inline-radio',
 			options: { 'true': '', 'false': undefined }
@@ -97,5 +97,6 @@ export const argTypes = {
 	},
 	styles: { table: { disable: true } },
 	theme: { table: { disable: true } },
-	weekSelect: { table: { disable: true } }
+	weekSelect: { table: { disable: true } },
+	clickOpens: { table: { disable: true } }
 }

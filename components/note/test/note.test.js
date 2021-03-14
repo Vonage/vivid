@@ -67,6 +67,20 @@ describe('note', () => {
 		});
 	});
 
+	it('should heve text aligned correctly (start)', async () => {
+		const [wrapper] = addElement(
+			textToDomToParent(`
+				<div style="text-align: center !important">
+					<${COMPONENT_NAME} header="Header"><p>Internal contents</p></${COMPONENT_NAME}>
+				</div>`)
+		);
+		await waitNextTask();
+		const note = wrapper.firstElementChild;
+		expect(note).exist;
+		assertComputedStyle(note.shadowRoot.querySelector('.note-header'), { textAlign: 'start' });
+		assertComputedStyle(note.firstElementChild, { textAlign: 'start' });
+	});
+
 	describe('header', () => {
 		it('should have header when header is set', async () => {
 			const [note] = addElement(

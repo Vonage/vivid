@@ -28,6 +28,7 @@ yarn-error.log
 custom-elements.json
 *.tgz
 *.log
+*.err
 
 /common/**/*.js
 /common/**/*.js.map
