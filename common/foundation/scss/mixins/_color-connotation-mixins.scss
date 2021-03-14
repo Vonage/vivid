@@ -18,7 +18,7 @@ $all-connotations: (
 	warning: 'warning',
 	info: 'info',
 	announcement: 'announcement',
-	pacific: linear-gradient(to right, var(#{scheme-variables.$vvd-color-info}), var(#{scheme-variables.$vvd-color-cta})),
+	pacific: linear-gradient(to right, var(#{scheme-variables.$vvd-color-info-30}), var(#{scheme-variables.$vvd-color-cta-70})),
 );
 
 // selector can be altered by relevance
