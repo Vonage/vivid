@@ -90,19 +90,19 @@ describe('vwc-drawer', () => {
 
 				const surfaceBackgroundBody = getComputedStyle(
 					iframeWindow.document.body
-				).getPropertyValue('--vvd-color-surface');
+				).getPropertyValue('--vvd-color-base');
 				const surfaceBackgroundDrawer = getComputedStyle(
 					shadowDrawer
-				).getPropertyValue('--vvd-color-surface');
+				).getPropertyValue('--vvd-color-base');
 
 				expect(surfaceBackgroundBody).to.equal(surfaceBackgroundDrawer);
 
 				const surfaceForegroundBody = getComputedStyle(
 					iframeWindow.document.body
-				).getPropertyValue('--vvd-color-on-surface');
+				).getPropertyValue('--vvd-color-on-base');
 				const surfaceForegroundDrawer = getComputedStyle(
 					shadowDrawer
-				).getPropertyValue('--vvd-color-on-surface');
+				).getPropertyValue('--vvd-color-on-base');
 				expect(surfaceForegroundBody).to.equal(surfaceForegroundDrawer);
 			});
 		});
