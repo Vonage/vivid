@@ -26,4 +26,5 @@ function dataProvider(params, callback) {
 
 setTimeout(() => {
 	dataSourceSimulated[0].fname = "something else";
+	document.querySelector('vwc-data-grid').refreshData();
 }, 5000);
