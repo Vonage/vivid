@@ -26,10 +26,10 @@
 }
 
 .expansion-panel {
-	border-bottom: 1px solid var(#{scheme-variables.$vvd-color-contrast-soft});
+	border-bottom: 1px solid var(#{scheme-variables.$vvd-color-neutral-30});
 
 	&:hover {
-		background-color: var(#{scheme-variables.$vvd-color-contrast-faint});
+		background-color: var(#{scheme-variables.$vvd-color-neutral-20});
 	}
 }
 
