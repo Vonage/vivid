@@ -44,21 +44,21 @@ describe('Linear Progress', () => {
 	describe('API configuration', () => {
 		const addElement = isolatedElementsCreation();
 
-		it('should reflect progress in css variable"', async () => {
+		it('should reflect progress in css variable', async () => {
 			let progress = 0.57;
-			const testProgressCssReflection = () => expect(wrapper.computedStyleMap().get('--linear-progress-progress')[0]).to.equal(progress.toString());
+			const testProgressCssReflection = wrapper => expect(getComputedStyle(wrapper).getPropertyValue('--linear-progress-progress')).to.equal(progress.toString());
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} progress="${progress}"></${COMPONENT_NAME}>`)
 			);
 
 			await waitNextTask();
 			const wrapper = actualElement.shadowRoot.querySelector('.mdc-linear-progress');
-			testProgressCssReflection();
+			testProgressCssReflection(wrapper);
 
 			progress = 0.24;
 			actualElement.progress = progress;
 			await waitNextTask();
-			testProgressCssReflection();
+			testProgressCssReflection(wrapper);
 		});
 	});
 
