@@ -39,6 +39,10 @@
 	font-stretch: var(
 		--mdc-typography-subtitle1-font-stretch
 	); // ! this was supposed to be set by MDC
+
+	.mdc-text-field__input {
+		pointer-events: none;
+	}
 }
 
 :host([readonly]),

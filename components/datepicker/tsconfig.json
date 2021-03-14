@@ -22,6 +22,9 @@
 			"path": "../icon-button"
 		},
 		{
+			"path": "../menu"
+		},
+		{
 			"path": "../textfield"
 		},
 	]

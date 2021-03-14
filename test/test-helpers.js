@@ -11,8 +11,10 @@ export {
 	waitInterval,
 	randomAlpha,
 	isSafari,
+	isFirefox,
 	getFrameLoadedInjected,
-	cleanFrame
+	cleanFrame,
+	getRandom,
 }
 
 const tmpTemple = document.createElement('template');
@@ -138,6 +140,8 @@ function assertComputedStyle(element, expectedStyles, pseudoSelector = null) {
 			case 'borderInlineEndColor':
 			case 'borderBlockStartColor':
 			case 'borderBlockEndColor':
+			case 'fill':
+			case 'stroke':
 				actualValue = computedStyle[styleKey].replaceAll(/\s/g, '');
 				expectedValue = expectedStyles[styleKey].replaceAll(/\s/g, '');
 				break;
@@ -211,6 +215,10 @@ function isSafari() {
 		!window.navigator.userAgent.toLowerCase().includes('chrome');
 }
 
+function isFirefox() {
+	return window.navigator.userAgent.toLowerCase().includes('firefox');
+}
+
 /**
  * creates iFrame with the specified HTML (via karmaHTML framework)
  * waits until the iFrame is loaded
@@ -247,6 +255,10 @@ async function getFrameLoadedInjected(htmlTag, testCode) {
 
 function cleanFrame(htmlTag) {
 	karmaHTML[htmlTag].close();
+}
+
+function getRandom() {
+	return crypto.getRandomValues(new Uint8Array(1))[0] / 256;
 }
 
 class TestComponent extends HTMLElement {

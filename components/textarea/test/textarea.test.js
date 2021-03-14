@@ -8,6 +8,7 @@ import {
 	isolatedElementsCreation,
 	listenToSubmission,
 	getTypographyStyle,
+	getRandom,
 } from '../../../test/test-helpers.js';
 import {
 	typographyTestCases,
@@ -62,8 +63,8 @@ describe('textarea', () => {
 		}
 
 		const fieldValue = `
-				${Math.random().toString()}
-				${Math.random().toString()}
+				${getRandom().toString()}
+				${getRandom().toString()}
 			`;
 		const fieldName = 'test-field';
 
@@ -216,9 +217,7 @@ describe('textarea', () => {
 	});
 
 	describe('typography', () => {
-		typographyTestCases(COMPONENT_NAME, (vwcTextarea) =>
-			vwcTextarea.shadowRoot.querySelector('.mdc-text-field__input')
-		);
+		typographyTestCases(COMPONENT_NAME, vwcTextarea => vwcTextarea.shadowRoot.querySelector('.mdc-text-field__input'));
 	});
 
 	describe('notched outlined', () => {
@@ -287,7 +286,8 @@ describe('textarea', () => {
 	});
 
 	describe('resizable', () => {
-		let formElement, actualElement;
+		let formElement,
+			actualElement;
 		beforeEach(async () => {
 			const addedElements = addElement(
 				textToDomToParent(

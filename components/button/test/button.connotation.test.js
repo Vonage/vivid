@@ -8,16 +8,14 @@ import {
 } from '@vonage/vvd-foundation/test/connotation.test.js';
 import { Connotation } from '@vonage/vvd-foundation/constants';
 
-const CONNOTATIONS_SUPPORTED = Object.values(Connotation).filter((c) =>
-	[
-		Connotation.Primary,
-		Connotation.CTA,
-		Connotation.Success,
-		Connotation.Alert,
-		Connotation.Info,
-		Connotation.Announcement,
-	].includes(c)
-);
+const CONNOTATIONS_SUPPORTED = Object.values(Connotation).filter(c => [
+	Connotation.Primary,
+	Connotation.CTA,
+	Connotation.Success,
+	Connotation.Alert,
+	Connotation.Info,
+	Connotation.Announcement,
+].includes(c));
 
 const LAYOUTS_AFFECTED = [
 	{

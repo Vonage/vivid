@@ -44,7 +44,17 @@ module.exports = config => {
 					type: 'lcovonly', subdir: 'report-lcov', file: 'lcov.info'
 				}
 			]
-		}
+		},
+		customLaunchers: {
+			Safari_13_BS: {
+				base: 'BrowserStack',
+				browser: 'safari',
+				browser_version: '13.1',
+				os: 'OS X',
+				os_version: 'Catalina'
+			}
+		},
+		browsers: ['Safari_13_BS']
 	});
 
 	config.set(extendedDefaultConfig);

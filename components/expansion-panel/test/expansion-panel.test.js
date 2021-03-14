@@ -84,7 +84,7 @@ describe('expansion panel', () => {
 				display: 'none',
 			});
 		});
-		
+
 		it('should have chevron toggle icon when chevronToggle', async () => {
 			actualElement.chevronToggle = true;
 			await waitNextTask();
