@@ -58,7 +58,9 @@
 	);
 	--mdc-theme-secondary: var(#{scheme-variables.$vvd-color-primary});
 	--mdc-theme-on-secondary: var(#{scheme-variables.$vvd-color-on-primary});
+
 	--mdc-theme-surface: var(#{scheme-variables.$vvd-color-base});
 	--mdc-theme-on-surface: var(#{scheme-variables.$vvd-color-on-base});
+
 	--mdc-theme-error: var(#{scheme-variables.$vvd-color-alert});
 }
