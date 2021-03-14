@@ -1,3 +1,5 @@
+import { DataRenderer, MetaRenderer } from './vwc-data-grid-render-provider-api';
+
 export {
 	COLUMN_DEFINITION_COMPONENT,
 	COLUMN_DEFINITION_UPDATE_EVENT,
@@ -31,8 +33,8 @@ interface DataGridColumn {
 	width?: string;
 
 	header: string;
-	headerRenderer?(column: DataGridColumn, container: HTMLElement): void;
+	headerRenderer?: MetaRenderer;
 	footer: string;
-	footerRenderer?(column: DataGridColumn, container: HTMLElement): void;
-	cellRenderer?(column: DataGridColumn, container: HTMLElement): void;
+	footerRenderer?: MetaRenderer;
+	cellRenderer?: DataRenderer;
 }

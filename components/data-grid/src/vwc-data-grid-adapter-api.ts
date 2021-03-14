@@ -14,6 +14,8 @@ export {
 interface DataGridAdapter {
 	//	rendering
 	render(configuration: DataGrid): TemplateResult;
+	openItemDetails(item: unknown): void;
+	closeItemDetails(item: unknown): void;
 
 	//	selection
 	getSelectedItems(vwcDataGrid: HTMLElement): unknown[];

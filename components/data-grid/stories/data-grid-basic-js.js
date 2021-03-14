@@ -24,8 +24,8 @@ BasicJS.args = {
 	items: sequentalData({ fname: 'A-{i}', lname: 'B-{i}' }, 100000)
 };
 
-function cellRenderer(container, column, data) {
-	const grid = column.parentNode;
+function cellRenderer(container, configuration, data) {
+	const grid = configuration.grid;
 	let toggler = container.firstElementChild;
 	if (!toggler) {
 		toggler = document.createElement('vwc-switch');
@@ -44,7 +44,7 @@ function cellRenderer(container, column, data) {
 	toggler.checked = data.detailsOpened;
 }
 
-function expandedRowRenderer(container, grid, data) {
+function expandedRowRenderer(container, configuration, data) {
 	if (!container.firstElementChild) {
 		const n = document.createElement('vwc-note');
 		n.connotation = 'info';

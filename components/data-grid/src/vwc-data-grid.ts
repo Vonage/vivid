@@ -1,5 +1,5 @@
 import '@vonage/vvd-core';
-import './vwc-data-grid-column';		//	do NOT remove, MUST have to not be elliminated
+import './vwc-data-grid-column';
 import {
 	GRID_COMPONENT,
 	DataGrid,
@@ -10,6 +10,7 @@ import {
 	COLUMN_DEFINITION_UPDATE_EVENT,
 	DataGridColumn,
 } from './vwc-data-grid-column-api';
+import { DataRenderer } from './vwc-data-grid-render-provider-api';
 import {
 	VWCDataGridColumn
 } from './vwc-data-grid-column';
@@ -54,7 +55,7 @@ export class VWCDataGrid extends LitElement implements DataGrid {
 	@property({ type: Array, reflect: false })
 	columns: DataGridColumn[] = [];
 	@property({ reflect: false, attribute: false })
-	rowDetailsRenderer: ((container: HTMLElement, grid: DataGrid, data: { item: unknown }) => void) | undefined = undefined;
+	rowDetailsRenderer?: DataRenderer | undefined = undefined;
 
 	@property({ type: Array, reflect: false })
 	items: unknown[] | undefined = undefined;
@@ -91,6 +92,14 @@ export class VWCDataGrid extends LitElement implements DataGrid {
 
 	deselectAll(): void {
 		this.#gridAdapter.deselectAll();
+	}
+
+	openItemDetails(item: unknown): void {
+		this.#gridAdapter.openItemDetails(item);
+	}
+
+	closeItemDetails(item: unknown): void {
+		this.#gridAdapter.closeItemDetails(item);
 	}
 
 	protected render(): TemplateResult {

@@ -1,4 +1,5 @@
 import { DataGridColumn } from './vwc-data-grid-column-api';
+import { DataRenderer } from './vwc-data-grid-render-provider-api';
 
 export {
 	GRID_COMPONENT,
@@ -16,12 +17,15 @@ const GRID_COMPONENT = 'vwc-data-grid',
  * API definition of the Vivid data grid, component
  * - this is the definitions of the top level APIs relevant to the grid as a whole
  */
-interface DataGrid {
+interface DataGrid extends EventTarget {
 	multiSort: boolean;
 	reordering: boolean;
 	columns: DataGridColumn[];
-	rowDetailsRenderer?(container: HTMLElement, grid: DataGrid, data: { item: unknown }): void;
 	refreshConfiguration(): void;
+
+	rowDetailsRenderer?: DataRenderer;
+	openItemDetails(item: unknown): void;
+	closeItemDetails(item: unknown): void;
 
 	items?: unknown[];
 	dataProvider?(params: { page: number, pageSize: number }, callback: (pageItems: unknown[], treeLevelSize: number) => void): void;
