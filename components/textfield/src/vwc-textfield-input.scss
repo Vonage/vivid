@@ -35,7 +35,7 @@
 ::slotted(#{textfield-variables.$vvd-input-selector}:-webkit-autofill:hover),
 ::slotted(#{textfield-variables.$vvd-input-selector}:-webkit-autofill:focus) {
 	z-index: -1;
-	box-shadow: 0 0 0 30px var(#{scheme-variables.$vvd-color-contrast-faint}) inset;
+	box-shadow: 0 0 0 30px var(#{scheme-variables.$vvd-color-neutral-20}) inset;
 	-webkit-text-fill-color: var(#{scheme-variables.$vvd-color-on-base});
 }
 

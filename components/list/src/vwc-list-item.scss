@@ -43,7 +43,7 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 		bottom: 0;
 		left: var(#{$vvd-list-item-side-padding});
 		height: 1px;
-		border-bottom: 1px solid var(#{scheme-variables.$vvd-color-contrast-soft});
+		border-bottom: 1px solid var(#{scheme-variables.$vvd-color-neutral-30});
 		content: '';
 	}
 

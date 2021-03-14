@@ -43,11 +43,11 @@ $vvd-badge-block-size: --vvd-badge-block-size;
 }
 
 :host([disabled]) {
-	color: var(#{scheme-variables.$vvd-color-contrast-dim});
+	color: var(#{scheme-variables.$vvd-color-neutral-50});
 
 	&::before {
 		--opaque: 100;
-		background-color: var(#{scheme-variables.$vvd-color-contrast-soft});
+		background-color: var(#{scheme-variables.$vvd-color-neutral-30});
 	}
 }
 
