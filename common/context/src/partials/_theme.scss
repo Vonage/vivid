@@ -17,7 +17,9 @@ body {
 		'info'
 	);
 	a {
-		color: color-base.$purple-600;
+		color: var(
+			#{scheme-variables.$vvd-color-cta-70}
+		);
 		cursor: pointer;
 	}
 
