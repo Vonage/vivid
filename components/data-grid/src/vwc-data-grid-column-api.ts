@@ -1,11 +1,15 @@
 export {
 	COLUMN_DEFINITION_COMPONENT,
 	COLUMN_DEFINITION_UPDATE_EVENT,
+	SELECTOR_SINGLE,
+	SELECTOR_MULTI,
 	DataGridColumn,
 };
 
 const COLUMN_DEFINITION_COMPONENT = 'vwc-data-grid-column',
-	COLUMN_DEFINITION_UPDATE_EVENT = 'column-definition-update';
+	COLUMN_DEFINITION_UPDATE_EVENT = 'column-definition-update',
+	SELECTOR_SINGLE = 'single',
+	SELECTOR_MULTI = 'multi';
 
 /**
  * API definition of the Vivid data grid column, component

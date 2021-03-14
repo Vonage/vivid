@@ -6,7 +6,9 @@ import '../headers/vwc-data-grid-header';									//	do NOT remove, MUST be pres
 import {
 	DataGrid, GRID_COMPONENT, GRID_HEADER_COMPONENT
 } from '../vwc-data-grid-api';
-import { DataGridColumn } from '../vwc-data-grid-column-api';
+import {
+	DataGridColumn, SELECTOR_SINGLE, SELECTOR_MULTI
+} from '../vwc-data-grid-column-api';
 import { DataGridAdapter } from '../vwc-data-grid-adapter-api';
 import { VWCDataGridHeader } from '../headers/vwc-data-grid-header';
 import { style as vwcDataGridStyleVaadin } from './vwc-data-grid-adapter-vaadin.css';
@@ -175,7 +177,7 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 
 	private selectingHeaderRenderer(_column: DataGridColumn, container: HTMLElement, nativeColumn?: GridColumnElement): void {
 		let sh = container.querySelector(CHECKBOX_COMPONENT) as VWCCheckbox;
-		if (!sh) {
+		if (!sh && _column.selector === SELECTOR_MULTI) {
 			//	TODO: switch or our grid here and use API as below + will solve the issue of double event
 			const g = nativeColumn?.parentElement as GridElement;
 			sh = document.createElement(CHECKBOX_COMPONENT);
@@ -200,6 +202,8 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 				}
 			});
 			container.appendChild(sh);
+		} else if (sh && _column.selector === SELECTOR_SINGLE) {
+			sh.remove();
 		}
 	}
 

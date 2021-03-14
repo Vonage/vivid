@@ -5,16 +5,16 @@ import { sequentalData } from './data-grid-demo-data-provider';
 
 const Template = args => html`
 	<style>
-		vwc-checkbox {
-			vertical-align: middle;
-		}
 	</style>
 	<div class="controls">
+		<vwc-formfield label="Multi select">
+			<vwc-checkbox class="multi-select" @change="${multiselectToggle}" checked></vwc-checkbox>
+		</vwc-formfield>
 		<vwc-button layout="outlined" @click="${selectAll}">Select all (API)</vwc-button>
 		<vwc-button layout="outlined" @click="${deselectAll}">Deselect all (API)</vwc-button>
 	</div>
 	<vwc-data-grid .items="${args.items}" @selected-items-changed="${onSelect}">
-		<vwc-data-grid-column selector="multi"></vwc-data-grid-column>
+		<vwc-data-grid-column class="selector" selector="multi"></vwc-data-grid-column>
 		<vwc-data-grid-column path="fname" header="First Name" sortable></vwc-data-grid-column>
 		<vwc-data-grid-column path="lname" header="Last Name"></vwc-data-grid-column>
 	</vwc-data-grid>
@@ -30,6 +30,11 @@ SelectionHTML.args = {
 
 function onSelect(e) {
 	document.querySelector('.selected-count').textContent = e.target.selectedItems.length;
+}
+
+function multiselectToggle(e) {
+	const v = e.target.checked;
+	document.querySelector('.selector').setAttribute('selector', v ? 'multi' : 'single');
 }
 
 function selectAll() {

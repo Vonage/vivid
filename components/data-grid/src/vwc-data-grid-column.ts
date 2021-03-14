@@ -1,6 +1,8 @@
 import {
 	COLUMN_DEFINITION_COMPONENT,
 	COLUMN_DEFINITION_UPDATE_EVENT,
+	SELECTOR_SINGLE,
+	SELECTOR_MULTI,
 	DataGridColumn
 } from './vwc-data-grid-column-api';
 import {
@@ -36,7 +38,11 @@ export class VWCDataGridColumn extends LitElement implements DataGridColumn {
 	sortable = false;
 	@property({ type: Boolean, reflect: true })
 	resizable = false;
-	@property({ type: String, reflect: true })
+	@property({
+		type: String,
+		reflect: true,
+		converter: v => (v === SELECTOR_SINGLE || v === SELECTOR_MULTI ? v : undefined)
+	})
 	selector?: string = undefined;
 
 	@property({ type: Boolean, reflect: true, attribute: 'auto-width' })
