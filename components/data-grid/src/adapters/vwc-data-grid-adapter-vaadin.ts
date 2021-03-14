@@ -236,6 +236,10 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 				const cb = e.target as unknown as { checked: boolean, _data: { item: unknown } };
 				const g = nativeColumn?.parentElement as GridElement;
 				if (cb.checked) {
+					if (_column.selector === SELECTOR_SINGLE) {
+						//	TODO: use grid API (or adapter API)
+						g.selectedItems = [];
+					}
 					g.selectItem(cb._data.item);
 				} else {
 					g.deselectItem(cb._data.item);

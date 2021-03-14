@@ -5,16 +5,21 @@ import { sequentalData } from './data-grid-demo-data-provider';
 
 const Template = args => html`
 	<style>
+		.controls {
+			display: flex;
+			margin-bottom: 16px;
+			justify-content: space-between;
+		}
 	</style>
 	<div class="controls">
 		<vwc-formfield label="Multi select">
-			<vwc-checkbox class="multi-select" @change="${multiselectToggle}" checked></vwc-checkbox>
+			<vwc-checkbox class="multi-select" @change="${multiselectToggle}"></vwc-checkbox>
 		</vwc-formfield>
 		<vwc-button layout="outlined" @click="${selectAll}">Select all (API)</vwc-button>
 		<vwc-button layout="outlined" @click="${deselectAll}">Deselect all (API)</vwc-button>
 	</div>
 	<vwc-data-grid .items="${args.items}" @selected-items-changed="${onSelect}">
-		<vwc-data-grid-column class="selector" selector="multi"></vwc-data-grid-column>
+		<vwc-data-grid-column class="selector" selector="single"></vwc-data-grid-column>
 		<vwc-data-grid-column path="fname" header="First Name" sortable></vwc-data-grid-column>
 		<vwc-data-grid-column path="lname" header="Last Name"></vwc-data-grid-column>
 	</vwc-data-grid>
