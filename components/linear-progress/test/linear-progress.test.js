@@ -46,7 +46,8 @@ describe('Linear Progress', () => {
 
 		it('should reflect progress in css variable', async () => {
 			let progress = 0.57;
-			const testProgressCssReflection = wrapper => expect(getComputedStyle(wrapper).getPropertyValue('--linear-progress-progress')).to.equal(progress.toString());
+			const testProgressCssReflection = wrapper => expect(getComputedStyle(wrapper)
+				.getPropertyValue('--linear-progress-progress')).to.equal(progress.toString());
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} progress="${progress}"></${COMPONENT_NAME}>`)
 			);
