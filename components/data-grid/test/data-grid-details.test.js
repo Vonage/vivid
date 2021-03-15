@@ -14,10 +14,24 @@ const COMPONENT_NAME = 'vwc-data-grid';
 describe('data grid expand details', () => {
 	let addElement = isolatedElementsCreation();
 
-	it('vwc-note is defined as a custom element', async () => {
+	it('should render expanded item when opened', async () => {
 		const [g] = addElement(
 			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 		);
 		await waitNextTask();
+		g.columns = getColumns();
+		g.items = getItems(3);
+		g.rowDetailsRenderer = (container, _config, data) => {
+			container.innerHTML = `<span>${data.item.x} - ${data.item.y}</span>`;
+		};
+
+		await waitNextTask();
+		g.openItemDetails(g.items[1]);
+		await waitNextTask();
+		expect(g).shadowDom.equalSnapshot();
+
+		g.closeItemDetails(g.items[1]);
+		await waitNextTask();
+		expect(g).shadowDom.equalSnapshot();
 	});
 });
