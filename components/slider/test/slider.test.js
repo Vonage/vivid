@@ -40,7 +40,7 @@ describe('slider', () => {
 		it('should style the basic slider', async () => {
 			const actualElements = addElement(
 				textToDomToParent(
-					`<${VWC_SLIDER} min="0" max="100" value="50"></${VWC_SLIDER}>`
+					`<${VWC_SLIDER} min="0" max="100" value="50" pin></${VWC_SLIDER}>`
 				)
 			);
 			await waitNextTask();
@@ -63,6 +63,16 @@ describe('slider', () => {
 				fill: scheme === 'light' ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)',
 			};
 			assertComputedStyle(sliderThumb, expectedStylesThumb);
+
+			const sliderPin = actualElements[0].shadowRoot.querySelector(
+				'.mdc-slider__pin'
+			);
+			expect(sliderPin).to.exist;
+			const expectedStylesPin = {
+				backgroundColor: scheme === 'light' ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)',
+				color: scheme === 'light' ? 'rgb(255, 255, 255)' : 'rgb(0, 0, 0)',
+			};
+			assertComputedStyle(sliderPin, expectedStylesPin);
 		});
 	});
 });
