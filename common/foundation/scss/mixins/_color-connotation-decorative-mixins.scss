@@ -1,0 +1,7 @@
+@use '../variable-names/color-semantic-variable-names' as color-semantic;
+
+@mixin connotation-decorative {
+	:host([decoration="primary"i]) {
+		#{color-semantic.$vvd-color-decoration}: linear-gradient(to right, #7fc6f4, #8728fb);
+	}
+}

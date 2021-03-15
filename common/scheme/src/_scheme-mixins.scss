@@ -1,0 +1,14 @@
+@mixin scheme-main-variables {
+	body,
+	.vvd-scheme-main,
+	::part(vvd-theme-base) {
+		@content;
+	}
+}
+
+@mixin scheme-alternate-variables {
+	.vvd-scheme-alternate,
+	::part(vvd-theme-alternate) {
+		@content;
+	}
+}
