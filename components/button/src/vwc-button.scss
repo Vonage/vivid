@@ -4,7 +4,9 @@
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins' with (
 	$connotations: primary cta success alert info announcement
 );
-@use '@vonage/vvd-foundation/scss/mixins/shape-mixins';
+@use '@vonage/vvd-foundation/scss/mixins/shape-mixins' with(
+	$variable-name: --vvd-button-shape
+);
 
 @mixin size($type, $unit) {
 	:host([#{$type}]) & {
@@ -19,7 +21,7 @@
 
 :host {
 	--mdc-button-disabled-ink-color: var(#{color-semantic.$formfield-disabled-ink});
-	--mdc-button-disabled-fill-color: var(#{scheme-variables.$vvd-color-contrast-soft});
+	--mdc-button-disabled-fill-color: var(#{scheme-variables.$vvd-color-neutral-30});
 	--mdc-button-disabled-outline-color: var(#{color-semantic.$formfield-disabled-ink});
 	--mdc-button-outline-color: var(--mdc-theme-primary);
 	--mdc-button-horizontal-padding: 14px;
@@ -38,7 +40,7 @@
 .mdc-button {
 	$gutter: 8px;
 	height: 40px;
-	border-radius: var(--border-radius);
+	border-radius: var(--vvd-button-shape);
 	// ! this was supposed to be set by MDC
 	font-stretch: var(--mdc-typography-button-font-stretch);
 	letter-spacing: normal;

@@ -1,3 +1,4 @@
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-typography/scss/typography' as typography;
 
 :host {
@@ -39,4 +40,8 @@
 			transform: scale3d(1.8, 1.8, 1.8);
 		}
 	}
+}
+
+.mdc-slider:not(.mdc-slider--disabled) .mdc-slider__pin {
+	color: var(#{scheme-variables.$vvd-color-on-primary});
 }

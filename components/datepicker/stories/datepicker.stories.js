@@ -1,4 +1,5 @@
-import '@vonage/vwc-datepicker/vwc-datepicker.js';
+import '@vonage/vwc-datepicker';
+import '@vonage/vwc-textfield';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
@@ -9,25 +10,20 @@ export default {
   argTypes
 };
 
-// outer div required for inline mode
 const Template = args => html`
   <style>
     vwc-textfield { width: 260px; }
   </style>
-  <div>
-    <vwc-datepicker ...=${spread(args)}>
-      <vwc-textfield outlined dense icon='calendar' placeholder='Datepicker'></vwc-textfield>
-    </vwc-datepicker>
-  </div>`;
+  <vwc-datepicker ...=${spread(args)}>
+    <vwc-textfield dense icon='calendar' placeholder='Datepicker'></vwc-textfield>
+  </vwc-datepicker>
+`;
 
 export const Basic = Template.bind({});
 Basic.args = { dateFormat: 'Y-m-d', altInput: '', altFormat: 'F j, Y', closeOnSelect: '' };
 
 export const MaxDate = Template.bind({});
 MaxDate.args = { dateFormat: 'Y-m-d', MaxDate: 'today', closeOnSelect: '' };
-
-// export const WeekPicker = Template.bind({});
-// WeekPicker.args = { weekSelect: '' };
 
 export const MonthPicker = Template.bind({});
 MonthPicker.args = { dateFormat: 'F Y', monthPicker: '', closeOnSelect: '' };
@@ -41,5 +37,15 @@ DateTime.args = { enableTime: '', dateFormat: 'Y-m-d H:i' };
 export const Time = Template.bind({});
 Time.args = { enableTime: '', noCalendar: '', dateFormat: 'H:i' };
 
-export const Inline = Template.bind({});
+const InlineTemplate = args => html`<vwc-datepicker ...=${spread(args)}></vwc-datepicker>`;
+
+export const Inline = InlineTemplate.bind({});
 Inline.args = { inline: '' };
+
+export {
+	Dialog
+} from './datepicker-dialog.stories.js';
+
+export {
+	Anchor
+} from './datepicker-anchor.stories.js';
