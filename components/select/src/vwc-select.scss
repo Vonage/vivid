@@ -1,7 +1,10 @@
 @forward './vwc-select-coupling';
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/_scheme-variables' as scheme-variables;
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
-@use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins;
+@use '@vonage/vvd-foundation/scss/mixins/shape-mixins' with (
+	//! may consider replacing with own component variable to prevent delegation
+	$variable-name: --mdc-shape-small
+);
 
 $vvd-select-size-block: --vvd-select-size-block;
 
