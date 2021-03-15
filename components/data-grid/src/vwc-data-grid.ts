@@ -87,6 +87,9 @@ export class VWCDataGrid extends LitElement implements DataGrid {
 	}
 
 	selectAll(): void {
+		if (this.dataProvider) {
+			throw new Error('\'selectAll\' is NOT supported when grid data supplied by \'dataProvider\' method');
+		}
 		this.#gridAdapter.selectAll();
 	}
 

@@ -30,7 +30,7 @@ function simpleRenderer(container: HTMLElement, configuration: RendererConfigura
 function selectorRenderer(container: HTMLElement, configuration: RendererConfiguration): void {
 	const grid = configuration.grid;
 	let sh = container.querySelector(CHECKBOX_COMPONENT) as VWCCheckbox;
-	if (!sh && configuration.column.selector === SELECTOR_MULTI) {
+	if (!sh && configuration.column.selector === SELECTOR_MULTI && !configuration.grid.dataProvider) {
 		sh = document.createElement(CHECKBOX_COMPONENT);
 		sh.classList.add('vvd-all-selector');
 		sh.setAttribute('aria-label', 'Select All');
@@ -55,7 +55,7 @@ function selectorRenderer(container: HTMLElement, configuration: RendererConfigu
 			}
 		});
 		container.appendChild(sh);
-	} else if (sh && configuration.column.selector === SELECTOR_SINGLE) {
+	} else if (sh && configuration.column.selector === SELECTOR_SINGLE && configuration.grid.dataProvider) {
 		sh.remove();
 	}
 }
