@@ -69,6 +69,23 @@ describe('data grid selection API', () => {
 		expect(fires).equal(1);
 	});
 
+	it('should not do anything when empty items on select all', async () => {
+		let fires = 0;
+		const [g] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+		);
+		await waitNextTask();
+		g.addEventListener('selected-items-changed', () => fires++);
+		g.columns = getColumns();
+		g.items = [];
+
+		await waitNextTask();
+		g.selectAll();
+		expect(g.selectedItems.length).equal(0);
+
+		expect(fires).equal(0);
+	});
+
 	it('should unset all items selected on de-select all', async () => {
 		let fires = 0;
 		const [g] = addElement(
