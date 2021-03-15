@@ -70,16 +70,25 @@ Similarly to the said above, in case the internal conditions changing and you'd 
 There are few APIs to manage items selection:
 - `selectedItems: unknown[]`
 	- an Array of selected items (item references taken from the `items` or this provided by `dataProvider`)
-- `selectItem(item: unknown, singleSelectMode: boolena = false): void`
+- `selectItem(item: unknown, singleSelectMode: boolean = false): void`
 	- will add the item to the selected ones (and reflect it in UI if selector column used, or any custom UI that reflects selection)
 	- if the `singleSelectMode` switch set to `true`, the API will unselect all previously selected items and leave the provided item as the only selected one
 - `unselectItem(item: unkown): void`
 	- will remove item from the selected ones
 - `selectAll(): void`
-	- will add the item to the selected ones (and reflect it in UI if selector column used, or any custom UI that reflects selection)
+	- will add the item to the selected ones (and reflect it in UI if selector column used, or any custom UI that reflects selection); this methid will __throw__ if the data provisioning is done via `dataProvider` method
 - `unselectAll(): void`
 	- will unselect all selected items
 - event `selected-items-changed` will be fired on any selection change
+
+#### Selector UI column
+
+In addition to the selection APIs, `vwc-data-grid` provides an OOTB selector UI, column that:
+- will auto render checkbox per row, this checkbox will add/remove corresponding item to/from selection
+- will auto render checkbox header to perform select / deselect all
+	- this checkbox will reflect the current selection state, being in indeterminate state when some of the items selected
+	- 'select all' header won't be rendered when the selector column is said to work in `single` select mode
+	- 'select all' header won't be renderer when the data provisioning method is via `dataProvider`
 
 ## Configuration / Customization / Management
 
