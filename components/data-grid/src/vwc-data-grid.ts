@@ -10,11 +10,11 @@ import {
 	COLUMN_DEFINITION_UPDATE_EVENT,
 	DataGridColumn,
 } from './vwc-data-grid-column-api';
-import { DataRenderer } from './vwc-data-grid-render-provider-api';
+import { DataRenderer } from './vwc-data-grid-renderer-api';
 import {
 	VWCDataGridColumn
 } from './vwc-data-grid-column';
-import { VWCDataGridAdapterVaadin } from './adapters/vwc-data-grid-adapter-vaadin';
+import { VWCDataGridAdapterVaadin } from './adapters/vaadin/vwc-data-grid-adapter-vaadin';
 import { style as vwcDataGridStyle } from './vwc-data-grid.css';
 import {
 	customElement,

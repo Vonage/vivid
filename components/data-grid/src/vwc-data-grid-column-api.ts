@@ -1,4 +1,4 @@
-import { DataRenderer, MetaRenderer } from './vwc-data-grid-render-provider-api';
+import { DataRenderer, MetaRenderer } from './vwc-data-grid-renderer-api';
 
 export {
 	COLUMN_DEFINITION_COMPONENT,

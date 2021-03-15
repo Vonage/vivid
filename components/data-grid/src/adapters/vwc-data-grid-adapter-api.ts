@@ -1,5 +1,5 @@
 import { TemplateResult } from 'lit-element';
-import { DataGrid } from './vwc-data-grid-api';
+import { DataGrid } from '../vwc-data-grid-api';
 
 export {
 	DataGridAdapter

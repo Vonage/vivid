@@ -1,7 +1,8 @@
 import '@vonage/vwc-checkbox';
 import { CHECKBOX_COMPONENT, VWCCheckbox } from '@vonage/vwc-checkbox';
-import { DataGridColumn, SELECTOR_SINGLE } from '../vwc-data-grid-column-api';
-import { DataRenderer, DataRendererProvider, RendererConfiguration } from '../vwc-data-grid-render-provider-api';
+import { DataGridColumn, SELECTOR_SINGLE } from '../../vwc-data-grid-column-api';
+import { DataRenderer, RendererConfiguration } from '../../vwc-data-grid-renderer-api';
+import { DataRendererProvider } from '../vwc-data-grid-render-provider-api';
 
 export {
 	cellRendererProvider
