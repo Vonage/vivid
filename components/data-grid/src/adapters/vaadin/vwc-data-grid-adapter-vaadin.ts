@@ -2,7 +2,7 @@ import '@vaadin/vaadin-grid/vaadin-grid';
 import '@vaadin/vaadin-grid/vaadin-grid-column';
 import '@vaadin/vaadin-grid/vaadin-grid-tree-column';
 import { GridColumnElement, GridElement } from '@vaadin/vaadin-grid/vaadin-grid';
-import '../../headers/vwc-data-grid-header';									//	do NOT remove, MUST be present to not be cleaned by post TS
+import '../../headers/vwc-data-grid-header';
 import { DataGrid, GRID_COMPONENT } from '../../vwc-data-grid-api';
 import { DataGridColumn } from '../../vwc-data-grid-column-api';
 import { DataGridAdapter } from '../vwc-data-grid-adapter-api';

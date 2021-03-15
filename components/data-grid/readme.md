@@ -48,8 +48,6 @@ Use API below to refresh the data:
 - `refreshData(): void`
 	- will rerender the visible data in the grid
 
-
-
 ### `items`
 
 Each new assignment to grid's items property will refresh the grid's content.
@@ -158,7 +156,6 @@ There are 2 ways to configure grid's columns:
 | `footer`         | `footer`     | `string`       | `''`        | footer text |
 | `footerRenderer` |              | `MetaRenderer` | `undefined` | custom footer rendering; see `MetaRenderer` details below |
 | `cellRenderer`   |              | `DataRenderer` | `undefined` | custom cell rendering; see `DataRenderer` details below   |
-
 
 ### `MetaRenderer`
 
