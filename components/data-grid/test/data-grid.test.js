@@ -49,6 +49,7 @@ describe('data grid', () => {
 
 		g.refreshConfiguration();
 		await waitNextTask();
+		await waitNextTask();
 		expect(g).shadowDom.equalSnapshot();
 	});
 
