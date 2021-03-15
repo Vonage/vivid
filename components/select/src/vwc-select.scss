@@ -78,6 +78,10 @@ $vvd-select-size-block: --vvd-select-size-block;
 			--mdc-theme-primary: var(--mdc-select-label-ink-color);
 		}
 	}
+
+	.mdc-select__dropdown-icon {
+		color: var(--mdc-select-disabled-dropdown-icon-color, rgba(0, 0, 0, 0.38));
+	}
 }
 
 :host([dense]) {
