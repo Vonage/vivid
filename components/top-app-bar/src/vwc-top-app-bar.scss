@@ -1,1 +1,5 @@
 @forward './vwc-top-app-bar-coupling';
+
+.mdc-top-app-bar {
+	right: 0; // prevent horizontal shift caused by parent padding
+}
