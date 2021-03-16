@@ -9,12 +9,12 @@ Highlights:
 - sorting
 - tree view (group view)
 - expanded row view
+- rows selection (one / all / partial)
 - columns management
 	- hiding
 	- reordering
 	- resizing
 	- freezing
-	- selection (one / all)
 - customization
 	- columns management features opt in/out
 	- header custom rendering
