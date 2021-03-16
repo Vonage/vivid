@@ -74,4 +74,21 @@ describe('data grid columns', () => {
 		expect(g.columns[1].frozen).false;
 		expect(g.columns[2].selector).equal('single');
 	});
+
+	it('should reflect tree column', async () => {
+		const [g] = addElement(
+			textToDomToParent(`
+				<vwc-data-grid>
+					<${COMPONENT_NAME} header="A" tree></${COMPONENT_NAME}>
+					<${COMPONENT_NAME} header="B" resizable></${COMPONENT_NAME}>
+					<${COMPONENT_NAME} header="C"></${COMPONENT_NAME}>
+				</vwc-data-grid>
+			`)
+		);
+		await waitNextTask();
+		expect(g.columns).exist;
+		expect(g.columns.length).equal(3);
+		expect(g.columns[0].tree).true;
+		expect(g.columns[1].resizable).true;
+	});
 });

@@ -2,6 +2,7 @@ import '@vonage/vwc-data-grid';
 import { getColumns, getItems } from './helper-utils.test';
 import {
 	waitNextTask,
+	waitInterval,
 	textToDomToParent,
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
@@ -102,8 +103,7 @@ describe('data grid data API', () => {
 
 		d.push(d[0]);
 		g.refreshData();
-		await waitNextTask();
-		await waitNextTask();
+		await waitInterval(40);
 		expect(g).shadowDom.equalSnapshot();
 	});
 });
