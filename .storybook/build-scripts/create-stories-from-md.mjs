@@ -99,7 +99,7 @@ function validateConfig(config) {
 function applyCommonTransformations(htmlInput) {
 	return `
 		<link rel="stylesheet" href="assets/css/md-stories.css">
-		${htmlInput}
+		${htmlInput.replace(/\$/g, '\\$')}
 	`;
 }
 

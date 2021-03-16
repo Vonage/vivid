@@ -1,4 +1,4 @@
-# `vwc-data-grid`
+### `vwc-data-grid`
 
 `vwc-data-grid` component provides a tabular data view.
 
@@ -21,13 +21,13 @@ Highlights:
 	- footer custom rendering
 	- cell custom rendering
 
-# API
+### API
 
 Grid API may roughly split into 2 categories:
 - configuration / customization
 - data
 
-## Data API
+#### Data API
 
 Let's introduce shortly the Data API.
 More formal description of them found below in the section of the Grid Configuraion / Customization APIs.
@@ -48,14 +48,14 @@ Use API below to refresh the data:
 - `refreshData(): void`
 	- will rerender the visible data in the grid
 
-### `items`
+##### `items`
 
 Each new assignment to grid's items property will refresh the grid's content.
 
 Array manipulation (eg `grid.items.splice(0, 1)`) as well is 'deep' data mutations **wont't** trigger grid update.
 In such a cases you need to trigger data refresh on demand, via `refreshData` API.
 
-### `dataProvider`
+##### `dataProvider`
 
 Grid will call `dataProvider` each time new chunk of data needed.
 First argument will hold an needed chunk params, page number, page size etc.
@@ -63,7 +63,7 @@ Second argumet is the grid's own callback to be called with the fetched / prepar
 
 Similarly to the said above, in case the internal conditions changing and you'd like to refresh the data in the grid, call `refreshData` API.
 
-### Selection API
+##### Selection API
 
 There are few APIs to manage items selection:
 - `selectedItems: unknown[]`
@@ -79,7 +79,7 @@ There are few APIs to manage items selection:
 	- will unselect all selected items
 - event `selected-items-changed` will be fired on any selection change
 
-#### Selector UI column
+###### Selector UI column
 
 In addition to the selection APIs, `vwc-data-grid` provides an OOTB selector UI, column that:
 - will auto render checkbox per row, this checkbox will add/remove corresponding item to/from selection
@@ -88,12 +88,12 @@ In addition to the selection APIs, `vwc-data-grid` provides an OOTB selector UI,
 	- 'select all' header won't be rendered when the selector column is said to work in `single` select mode
 	- 'select all' header won't be renderer when the data provisioning method is via `dataProvider`
 
-## Configuration / Customization / Management
+#### Configuration / Customization / Management
 
 Some of the grid's features are configured via __column/s configuration__, see below on that.
 Others are related to the grid as a whole, we'll describe them first.
 
-### Grid
+##### Grid
 
 Some of the properties of grid are also reflected via attributes.
 All those cases explicitly mention the attribute name in the table below.
@@ -122,7 +122,7 @@ These are the methods available on grid component:
 | `selectAll`            | `(): void`              | select __all__ items; this method will __throw__ when the data provisioning is set to work with `dataProvider` |
 | `deselectAll`          | `(): void`              | unselects __all__ selected items |
 
- ### `DataGridColumn`
+##### `DataGridColumn`
 
 Configuration of the grid **columns** is the major part of the whole grid setup.
 There are 2 ways to configure grid's columns:
@@ -157,7 +157,7 @@ There are 2 ways to configure grid's columns:
 | `footerRenderer` |              | `MetaRenderer` | `undefined` | custom footer rendering; see `MetaRenderer` details below |
 | `cellRenderer`   |              | `DataRenderer` | `undefined` | custom cell rendering; see `DataRenderer` details below   |
 
-### `MetaRenderer`
+##### `MetaRenderer`
 
 `MetaRenderer` is a __functional__ interface, defining the signature of the method to be used as renderer of meta elements like headers and footers.
 Signature:
@@ -171,7 +171,7 @@ Each time grid component will require fresh render of the header/s and/or footer
 
 > `MetaRenderer` API is used internally for sorting header and selector column's header. You may see the implementation details correspondingly.
 
-### `DataRenderer`
+##### `DataRenderer`
 
 `DataRenderer` is a __functional__ interface, defining the signature of the method to be used as renderer of cell contents.
 Signature:
@@ -185,14 +185,14 @@ Each time grid component will require fresh render of the cell/s content, it'll 
 
 > `DataRenderer` API is used internally for selector column's cells. You may see the implementation details there.
 
-## Examples
+#### Examples
 
 Few examples of grid definition in several flavors.
 All of them employ `LitHtml` binding notation, which of course can be replaced by any other data-centric framework.
 
-> Note: the dot (`.`) leaded notaion reads 'assign the said object to the said property **by reference**'. For the sake of simplicity we'll assume that all of th top level objects are accessible from the current templating scope.
+> Note: the dot (`.`) leaded notaion reads 'assign the said object to the said property **by reference**'. For the sake of simplicity we'll assume that all of the top level objects are reachable from the current templating scope.
 
-### JavaScript oriented
+##### JavaScript oriented
 
 ```html
 <vwc-data-grid
@@ -227,7 +227,7 @@ grid.refreshConfiguration();
 
 > Attention: the `refreshConfiguration` invokation is required as of now, due to internals of `columns` data structure not being observed for a change. In any change of this in the future further notice will be provided.
 
-### HTML oriented
+##### HTML oriented
 
 ```html
 <vwc-data-grid .items="${items}" .rowDetailsRenderer="${expandedRowRenderer}">
