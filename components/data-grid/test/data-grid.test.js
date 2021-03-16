@@ -2,6 +2,7 @@ import '@vonage/vwc-data-grid';
 import { getColumns } from './helper-utils.test';
 import {
 	waitNextTask,
+	waitInterval,
 	textToDomToParent
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
@@ -28,8 +29,6 @@ describe('data grid', () => {
 		g.columns = getColumns();
 		expect(g.reordering).true;
 		expect(g).shadowDom.equalSnapshot();
-
-		//	TODO: add actual simulation of drag'n'drop
 	});
 
 	it('should reflect columns redefinition on refreshConfiguration (header, hidden, frozen)', async () => {
@@ -48,8 +47,7 @@ describe('data grid', () => {
 		expect(g).shadowDom.equalSnapshot();
 
 		g.refreshConfiguration();
-		await waitNextTask();
-		await waitNextTask();
+		await waitInterval(40);
 		expect(g).shadowDom.equalSnapshot();
 	});
 
