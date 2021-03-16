@@ -45,3 +45,8 @@
 .mdc-slider:not(.mdc-slider--disabled) .mdc-slider__pin {
 	color: var(#{scheme-variables.$vvd-color-on-primary});
 }
+
+.mdc-slider.mdc-slider--disabled .mdc-slider__thumb {
+	stroke: var(#{scheme-variables.$vvd-color-base});
+}
+
