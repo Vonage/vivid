@@ -1,3 +1,12 @@
+# [2.1.0](https://github.com/vonage/vivid/compare/v2.0.4...v2.1.0) (2021-03-16)
+
+
+### Bug Fixes
+
+* select list-item border-radius ([#700](https://github.com/vonage/vivid/issues/700)) ([4b4a058](https://github.com/vonage/vivid/commit/4b4a058bc132781cacb0f78aebf03e79b5da436c))
+
+
+
 ## [2.0.4](https://github.com/vonage/vivid/compare/v2.0.3...v2.0.4) (2021-03-03)
 
 

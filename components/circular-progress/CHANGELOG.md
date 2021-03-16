@@ -1,3 +1,12 @@
+# [2.1.0](https://github.com/vonage/vivid/compare/v2.0.4...v2.1.0) (2021-03-16)
+
+
+### Features
+
+* **vwc-circular-progress:** added connotation support ([#694](https://github.com/vonage/vivid/issues/694)) ([09792e3](https://github.com/vonage/vivid/commit/09792e35288bd049d5f1b0b602805a6d8498adb2))
+
+
+
 ## [2.0.4](https://github.com/vonage/vivid/compare/v2.0.3...v2.0.4) (2021-03-03)
 
 
