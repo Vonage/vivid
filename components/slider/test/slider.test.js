@@ -74,5 +74,43 @@ describe('slider', () => {
 			};
 			assertComputedStyle(sliderPin, expectedStylesPin);
 		});
+
+		it('should style the disabled slider', async () => {
+			const actualElements = addElement(
+				textToDomToParent(
+					`<${VWC_SLIDER} disabled min="0" max="100" value="50" pin></${VWC_SLIDER}>`
+				)
+			);
+			await waitNextTask();
+			const scheme = schemeService.getSelectedScheme();
+
+			const sliderTrack = actualElements[0].shadowRoot.querySelector(
+				'.mdc-slider__track'
+			);
+			expect(sliderTrack).to.exist;
+			const expectedStylesTrack = {
+				backgroundColor: scheme === 'light' ? 'rgb(154, 154, 154)' : 'rgb(255, 255, 255)',
+			};
+			assertComputedStyle(sliderTrack, expectedStylesTrack);
+
+			const sliderThumb = actualElements[0].shadowRoot.querySelector(
+				'.mdc-slider__thumb'
+			);
+			expect(sliderThumb).to.exist;
+			const expectedStylesThumb = {
+				stroke: scheme === 'light' ? 'rgb(0, 0, 0)' : 'rgb(154, 154, 154)',
+			};
+			assertComputedStyle(sliderThumb, expectedStylesThumb);
+
+			const sliderPin = actualElements[0].shadowRoot.querySelector(
+				'.mdc-slider__pin'
+			);
+			expect(sliderPin).to.exist;
+			const expectedStylesPin = {
+				backgroundColor: scheme === 'light' ? 'rgba(0, 0, 0, 0)' : 'rgba(255, 255, 255, 0)',
+				color: scheme === 'light' ? 'rgb(0, 0, 0)' : 'rgb(0, 0, 0)',
+			};
+			assertComputedStyle(sliderPin, expectedStylesPin);
+		});
 	});
 });
