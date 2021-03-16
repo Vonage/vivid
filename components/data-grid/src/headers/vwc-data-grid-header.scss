@@ -1,0 +1,30 @@
+@use '@vonage/vvd-typography/scss/typography';
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+
+:host {
+	@include typography.typography-cat-shorthand('body-2-bold');
+	position: relative;
+
+	display: inline-flex;
+	align-items: center;
+	color: var(#{scheme-variables.$vvd-color-on-base});
+}
+
+.sorters {
+	position: absolute;
+	left: -16px;
+	display: inline-flex;
+	flex-direction: column;
+	color: var(#{scheme-variables.$vvd-color-neutral});
+
+	.sorter {
+		--icon-size: 12px;
+	}
+}
+
+:host([direction='asc']),
+:host([direction='desc']) {
+	.asc {
+		color: var(#{scheme-variables.$vvd-color-on-base});
+	}
+}

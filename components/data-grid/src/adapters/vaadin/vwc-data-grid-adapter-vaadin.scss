@@ -1,0 +1,17 @@
+@use '@vonage/vvd-typography/scss/typography';
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+
+::part(cell) {
+	background-color: var(#{scheme-variables.$vvd-color-base});
+	color: var(#{scheme-variables.$vvd-color-on-base});
+	min-block-size: 44px;
+}
+
+::part(body-cell) {
+	@include typography.typography-cat-shorthand('body-2');
+	border-top: 1px solid var(#{scheme-variables.$vvd-color-neutral-20});
+}
+
+::part(header-cell) {
+	border-bottom: 1px solid var(#{scheme-variables.$vvd-color-on-base});
+}

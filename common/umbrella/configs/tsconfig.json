@@ -3,7 +3,12 @@
 		"target": "es2017",
 		"module": "es2015",
 		"moduleResolution": "node",
-		"lib": ["es2017", "dom", "dom.iterable", "es2018.promise"],
+		"lib": [
+			"es2017",
+			"dom",
+			"dom.iterable",
+			"es2018.promise"
+		],
 		"types": [],
 		"declaration": true,
 		"sourceMap": true,
@@ -20,14 +25,21 @@
 		"outDir": "./",
 		"baseUrl": "./",
 		"paths": {
-		"@vivid/vvd-*": ["./*.src"],
-			"@vivid/vwc-*": ["./*/src"]
-	},
-	"composite": true,
+			"@vivid/vvd-*": [
+				"./*.src"
+			],
+			"@vivid/vwc-*": [
+				"./*/src"
+			]
+		},
+		"composite": true,
 		"importHelpers": true,
 		"allowSyntheticDefaultImports": true
-	// "esModuleInterop": true // would force consumers to enable this as well
-},
-	"include": ["custom_typings/**/*.ts", "src/*.ts"],
+		// "esModuleInterop": true // would force consumers to enable this as well
+	},
+	"include": [
+		"custom_typings/**/*.ts",
+		"src/**/*.ts"
+	],
 	"exclude": []
 }
