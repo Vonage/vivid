@@ -1,3 +1,13 @@
+# [2.1.0](https://github.com/vonage/vivid/compare/v2.0.4...v2.1.0) (2021-03-16)
+
+
+### Bug Fixes
+
+* **slider, dialog:** fix slider disabled ring and dialog story ([#705](https://github.com/vonage/vivid/issues/705)) ([1f99f6c](https://github.com/vonage/vivid/commit/1f99f6c1834bbad7c10a416896254c962ffe0450))
+* **vwc-slider:** viv-433 slider pin text not visible in dark mode ([#702](https://github.com/vonage/vivid/issues/702)) ([0edc9cb](https://github.com/vonage/vivid/commit/0edc9cb1facf4a29a34f5b6e8cb4a7839c64ba55))
+
+
+
 ## [2.0.4](https://github.com/vonage/vivid/compare/v2.0.3...v2.0.4) (2021-03-03)
 
 

@@ -1,3 +1,12 @@
+# [2.1.0](https://github.com/vonage/vivid/compare/v2.0.4...v2.1.0) (2021-03-16)
+
+
+### Bug Fixes
+
+* **vwc-select:** update styles to correct references ([#701](https://github.com/vonage/vivid/issues/701)) ([1fe2bee](https://github.com/vonage/vivid/commit/1fe2bee7ecb53938831709f85b91c41b297ad069))
+
+
+
 ## [2.0.4](https://github.com/vonage/vivid/compare/v2.0.3...v2.0.4) (2021-03-03)
 
 
