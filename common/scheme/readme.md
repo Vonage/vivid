@@ -9,15 +9,7 @@ By default (if not explicitly defined otherwise by consumer) scheme will result 
   
 Each scheme will provide the same exact color tokens to support **main** context and its **alternating** - contrasting - context . Once imported and set, these tokens are reflected as CSS variables.
 
-```mermaid
-graph TB
-A(Scheme semantic variables list) --> B((Theme - Light))
-A --> C((Theme - Dark))
-B --> D[Main context]
-B --> E[Alternate context]
-C --> D
-C --> E
-```
+![Scheme graph](scheme-graph.png)
 
 Scheme will apply **main** context on _body_ selector while never apply alternate unless explicitly set.
 To also be able to modify HTML scopes manually in apps, we include the following css selectors:
@@ -46,7 +38,7 @@ npm i @vonage/vvd-scheme
 ```
 or
 ```js
-import schemeService from '@vonage/vvd-scheme';
+import scheme from '@vonage/vvd-scheme';
 ```
 
 As colors are critical identities of our style, it's advised to include a [link type:modulepreload](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/modulepreload) to hint the browser of the module importance, its high priority and preemptively fetch it. 
@@ -54,20 +46,14 @@ As colors are critical identities of our style, it's advised to include a [link 
 <script rel="modulepreload" src="../node_modules/@vonage/scheme/vvd-scheme.js"></script>
 ```
 
-  
-
-
-
-
-## Features:
+### Features:
 | name | description |
 |--|--|
 | set | a method to set the scheme. options: _light_, _dark_, _syncWithOsSettings_ (defaults to _syncWithOsSettings_) |
-| eventBus |  |
-
-getSelectedScheme,
-
-getSelectedSchemeOption,
+| eventBus | acts as **EventTarget** to polyfill the absence of element. can be hooked and callback upon selection - `eventBus.addEventListener('vvd-scheme-select', console.log);`  |
+| getSelectedScheme | get current applied scheme (_light_, _dark_)|
+| getSelectedSchemeOption | get current option (_light_, _dark_, _syncWithOsSettings_) |
 
 
 ### vwc-scheme-select
+Scheme is nicely paired with the [theme-switch](https://github.com/Vonage/vivid/tree/master/components/theme-switch) UI component
