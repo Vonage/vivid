@@ -89,7 +89,7 @@ describe('slider', () => {
 			);
 			expect(sliderTrack).to.exist;
 			const expectedStylesTrack = {
-				backgroundColor: scheme === 'light' ? 'rgb(154, 154, 154)' : 'rgb(255, 255, 255)',
+				backgroundColor: 'rgb(154, 154, 154)'
 			};
 			assertComputedStyle(sliderTrack, expectedStylesTrack);
 
@@ -98,7 +98,7 @@ describe('slider', () => {
 			);
 			expect(sliderThumb).to.exist;
 			const expectedStylesThumb = {
-				stroke: scheme === 'light' ? 'rgb(0, 0, 0)' : 'rgb(154, 154, 154)',
+				stroke: scheme === 'light' ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)',
 			};
 			assertComputedStyle(sliderThumb, expectedStylesThumb);
 
