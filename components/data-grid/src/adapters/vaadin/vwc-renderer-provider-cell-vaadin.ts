@@ -41,5 +41,5 @@ function selectorRenderer(container: HTMLElement, configuration: RendererConfigu
 	}
 	rs._data = data;
 	rs._mode = configuration.column.selector;
-	rs.checked = Boolean(data?.selected);
+	rs.checked = Boolean(data.selected);
 }

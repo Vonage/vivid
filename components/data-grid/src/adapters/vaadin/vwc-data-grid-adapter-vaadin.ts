@@ -115,7 +115,7 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 	private getImplementationOrThrow(): GridElement {
 		const vaadinGrid = this.#vwcGrid.shadowRoot?.querySelector('vaadin-grid');
 		if (!vaadinGrid) {
-			throw new Error(`'${GRID_COMPONENT}' is un-initialized, adapted implementation is not found`);
+			throw new Error(`'${GRID_COMPONENT}' is not yet fully initialized`);
 		} else {
 			return vaadinGrid;
 		}
