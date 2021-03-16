@@ -4,7 +4,7 @@
 Scheme provides color context to Vivid components & applications.
 It is an integral part of packages, which are subject to its color tokens.
 
-Scheme is imported by default in all _core_ dependent packages but can also be [consumed on its own](#installation).
+Scheme is imported by default in all [core](https://github.com/Vonage/vivid/tree/master/common/core) dependent packages but can also be [consumed on its own](#installation).
 By default, (if not explicitly defined otherwise by consumer) scheme will result to user's preferred os option (***light***|***dark***|***auto***)
   
 Each scheme will provide the same exact color tokens to support **main** context and its **alternating** - contrasting - context . Once imported and set, these tokens are reflected as CSS variables.
