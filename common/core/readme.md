@@ -1,4 +1,4 @@
-# Vivid overlay lifecycle
+### Core - Vivid overlay lifecycle
 
 Vivid content may be consumed on different levels.
 One may consume a single component, like `vwc-button`.
@@ -14,13 +14,13 @@ We've designed Vivid overlay lifecycle to be self-contained, agnostic to other c
 - __auto-init__: this is the default behavior, Vivid will auto init itself upon the first usage unless specified otherwise
 - __manual__: see below how to configure Vivid this way and when to use it
 
-# Readiness hook
+#### Readiness hook
 
 In order to allow ourselves and consuming applications to run code __after__ initialization is done, __vivid core__ exposes a `settled` Promise. This Promise will resolve once all the __core__ services are done and ready.
 
 > Important: in case of __manual__ initialization, `settled` will be immediately rejected.
 
-```javascript
+```js
 import vvdCore from '@vonage/vvd-core.js';
 
 ...
@@ -32,15 +32,15 @@ vvdCore.settled.then(() => {
 
 Most obvious use of the `settled` is to remove the loading veil, which could be put over the site in order to prevent FOUC (flash of unstyled content).
 
-# Auto init
+#### Auto init
 
 If consuming application took no special action, the first use of the Vivid's component/s will auto initialize the __vivid core__.
 
-## Default init
+##### Default init
 
 All the __vivid core__ services auto-initialize to default values if not specified otherwise.
 
-## Pre-configured init
+##### Pre-configured init
 
 In order to help Vivid overlay to initialize itself to some specific state, consuming application should use `data-vvd-context` attribute on `html` element.
 The below example will auto-initialize __vivid core__ with the dark theme.
@@ -52,7 +52,7 @@ The below example will auto-initialize __vivid core__ with the dark theme.
 
 > Important: the attribute is being examined at the moment of initialization ONLY, so it should be in place BEFORE the initialization performed. We suggest using this feature as a purely static setup OOTB.
 
-# Manual init
+#### Manual init
 
 Advanced consumer might like to manage the visual application state (we mean Vivid's part, eg theming) as per user setting.
 
@@ -67,7 +67,7 @@ Set the `data-vvd-context` to `none` in HTML:
 ```
 
 Use the __vivid core__ API to set configuration dynamically:
-```javascript
+```js
 import vvdCore from '@vonage/vvd-core.js';
 
 vividCore
