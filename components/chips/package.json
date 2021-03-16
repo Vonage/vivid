@@ -29,7 +29,6 @@
 	"dependencies": {
 		"@material/chips": "9.0.0-canary.1c156d69d.0",
 		"@material/mwc-base": "^0.20.0",
-		"@material/mwc-icon": "^0.20.0",
 		"@material/mwc-ripple": "^0.20.0",
 		"@vonage/vvd-core": "^2.1.0",
 		"@vonage/vvd-style-coupling": "^2.1.0",

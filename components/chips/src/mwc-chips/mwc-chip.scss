@@ -16,7 +16,6 @@ limitations under the License.
 */
 
 @import '@material/chips/chip/mdc-chip';
-@import '@material/mwc-icon/mwc-icon';
 
 @include mdc-ripple-common(mdc-feature-all());
 
@@ -24,8 +23,4 @@ limitations under the License.
 	/* See mwc-icon-button.scss for explanation. */
 	display: inline-flex;
 	vertical-align: top;
-}
-
-.material-icons {
-	@extend %material-icons;
 }
