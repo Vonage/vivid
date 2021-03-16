@@ -16,6 +16,9 @@
 			"path": "../../common/style-coupling"
 		},
 		{
+			"path": "../../common/foundation"
+		},
+		{
 			"path": "../icon"
 		}
 	]
