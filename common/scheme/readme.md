@@ -5,13 +5,13 @@ Scheme provides color context to Vivid components & applications.
 It is an integral part of packages, which are subject to its color tokens.
 
 Scheme is imported by default in all _core_ dependent packages but can also be [consumed on its own](#installation).
-By default (if not explicitly defined otherwise by consumer) scheme will result to user's preferred os option (***light***|***dark***|***auto***)
+By default, (if not explicitly defined otherwise by consumer) scheme will result to user's preferred os option (***light***|***dark***|***auto***)
   
 Each scheme will provide the same exact color tokens to support **main** context and its **alternating** - contrasting - context . Once imported and set, these tokens are reflected as CSS variables.
 
 ![Scheme graph](scheme-graph.png)
 
-Scheme will apply **main** context on _body_ selector while never apply alternate unless explicitly set.
+Scheme will apply **main** context on _body_ selector and will never apply **alternate** unless explicitly set.
 To also be able to modify HTML scopes manually in apps, we include the following css selectors:
 ##### main
 - `body`
