@@ -1,8 +1,8 @@
 export default {
 	sourcePath: '../readme.md',
-	outputName: 'context-introduction',
+	outputName: 'scheme-introduction',
 	story: {
-		title: 'Core/Context/Introduction',
+		title: 'Core/Scheme/Introduction',
 		name: 'Introduction',
 		parameters: {
 			options: {
