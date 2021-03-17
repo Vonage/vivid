@@ -2,7 +2,7 @@
 @use '@vonage/vvd-design-tokens/build/scss/schemes/light/alternate.scss';
 @use 'scheme-mixins';
 
-@include scheme-mixins.scheme-main-variables {
+@include scheme-mixins.scheme-context-variables {
 	@include main.variables;
 }
 

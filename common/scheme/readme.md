@@ -18,10 +18,10 @@ To also be able to modify HTML scopes manually in apps, we include the following
 ##### main
 - `body`
 - `.vvd-scheme-main`
-- `::part(vvd-theme-base)` - for elements within a shadow tree with a matching part attribute
+- `::part(vvd-scheme-main)` - for elements within a shadow tree with a matching part attribute
 ##### alternate
 - `.vvd-scheme-alternate`
-- `::part(vvd-theme-alternate)` - for elements within a shadow tree with a matching part attribute
+- `::part(vvd-scheme-alternate)` - for elements within a shadow tree with a matching part attribute
 
 ### Installation
 
