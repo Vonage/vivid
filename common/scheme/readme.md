@@ -49,11 +49,12 @@ As colors are critical identities of our style, it's advised to include a [link 
 ```
 
 ### Features:
-| name | description |
-|--|--|
-| set | a method to set the scheme. options: _light_, _dark_, _syncWithOsSettings_ (defaults to _syncWithOsSettings_) |
-| eventBus | acts as **EventTarget** to polyfill the absence of element. can be hooked and callback upon selection - `eventBus.addEventListener('vvd-scheme-select', console.log);`  |
-| getSelectedScheme | get current applied scheme (_light_, _dark_)|
+
+| Name                    | Description |
+|-------------------------|-------------|
+| set                     | a method to set the scheme. options: _light_, _dark_, _syncWithOsSettings_ (defaults to _syncWithOsSettings_) |
+| eventBus                | acts as **EventTarget** to polyfill the absence of element. can be hooked and callback upon selection - `eventBus.addEventListener('vvd-scheme-select', console.log);`  |
+| getSelectedScheme       | get current applied scheme (_light_, _dark_)|
 | getSelectedSchemeOption | get current option (_light_, _dark_, _syncWithOsSettings_) |
 
 
