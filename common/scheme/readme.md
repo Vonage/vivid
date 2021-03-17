@@ -2,9 +2,11 @@
 # Vivid Scheme
 
 Scheme provides color context to Vivid components & applications.
-It is an integral part of packages, which are subject to its color tokens.
+It is an integral part of packages, which are subject to the scheme's color tokens.
 
-Scheme is imported by default in all [core](https://github.com/Vonage/vivid/tree/master/common/core) dependent packages but can also be [consumed on its own](#installation).
+![Scheme Featured Image](scheme-featured-image.svg)
+
+Scheme is imported by default in all [core](/common/core) dependent packages but can also be [consumed on its own](#installation).
 By default, (if not explicitly defined otherwise by consumer) scheme will result to user's preferred os option (***light***|***dark***|***auto***)
   
 Each scheme will provide the same exact color tokens to support **main** context and its **alternating** - contrasting - context . Once imported and set, these tokens are reflected as CSS variables.
@@ -56,4 +58,4 @@ As colors are critical identities of our style, it's advised to include a [link 
 
 
 ### vwc-scheme-select
-Scheme is nicely paired with the [theme-switch](https://github.com/Vonage/vivid/tree/master/components/theme-switch) UI component
+Scheme is nicely paired with the [theme-switch](/components/theme-switch) UI component

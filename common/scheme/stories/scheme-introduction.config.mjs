@@ -1,3 +1,8 @@
+import {
+	hrefLinkProcessing,
+	relocateStaticResources,
+} from '../../../.storybook/build-scripts/create-stories-from-md.mjs';
+
 export default {
 	sourcePath: '../readme.md',
 	outputName: 'scheme-introduction',
@@ -10,5 +15,22 @@ export default {
 				isToolshown: false
 			}
 		}
-	}
+	},
+	htmlPostProcess: (htmlText) => {
+		let r = relocateStaticResources(htmlText, [
+			'scheme-graph.png',
+			'scheme-featured-image.svg',
+		]);
+		r = hrefLinkProcessing(r, [
+			// [
+			// 	'href="/common/core"',
+			// 	'?path=/story/core-introduction--introduction',
+			// ],
+			[
+				'href="/components/theme-switch"',
+				'?path=/story/components-composite-theme-switch--basic',
+			]
+		]);
+		return r;
+	},
 };
