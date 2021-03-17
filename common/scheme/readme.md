@@ -1,8 +1,7 @@
 
 # Vivid Scheme
 
-Scheme provides color context to Vivid components & applications.
-It is an integral part of packages, which are subject to the scheme's color tokens.
+### Scheme provides color context to Vivid components & applications. It is an integral part of packages, which are subject to the scheme's color tokens.
 
 ![Scheme Featured Image](assets/scheme-featured-image.svg)
 
@@ -23,7 +22,7 @@ To also be able to modify HTML scopes manually in apps, we include the following
 - `.vvd-scheme-alternate`
 - `::part(vvd-scheme-alternate)` - for elements within a shadow tree with a matching part attribute
 
-### Installation
+## Installation
 
 ```bash
 yarn add @vonage/vvd-scheme
@@ -33,7 +32,7 @@ or
 npm i @vonage/vvd-scheme
 ```
 
-### Consumption
+## Consumption
 
 ```html
 <script type="module" src="../node_modules/@vonage/scheme/vvd-scheme.js"></script>
@@ -48,7 +47,7 @@ As colors are critical identities of our style, it's advised to include a [link 
 <script rel="modulepreload" src="../node_modules/@vonage/scheme/vvd-scheme.js"></script>
 ```
 
-### Features:
+## Features:
 
 | Name                    | Description |
 |-------------------------|-------------|
@@ -59,4 +58,4 @@ As colors are critical identities of our style, it's advised to include a [link 
 
 
 ### vwc-scheme-select
-Scheme is nicely paired with the [theme-switch](/components/theme-switch) UI component
+Scheme is nicely paired with the [theme-switch](/components/theme-switch) UI component to toggle options.
