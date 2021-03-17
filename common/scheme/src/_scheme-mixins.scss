@@ -1,14 +1,17 @@
-@mixin scheme-main-variables {
+$scheme-main: vvd-scheme-main;
+$scheme-alternate: vvd-scheme-alternate;
+
+@mixin scheme-context-variables {
 	body,
-	.vvd-scheme-main,
-	::part(vvd-theme-base) {
+	.#{$selector-key},
+	::part(#{$selector-key}) {
 		@content;
 	}
 }
 
 @mixin scheme-alternate-variables {
-	.vvd-scheme-alternate,
-	::part(vvd-theme-alternate) {
+	.#{$scheme-alternate},
+	::part(#{$scheme-alternate}) {
 		@content;
 	}
 }
