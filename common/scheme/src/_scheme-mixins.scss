@@ -3,8 +3,8 @@ $scheme-alternate: vvd-scheme-alternate;
 
 @mixin scheme-context-variables {
 	body,
-	.#{$selector-key},
-	::part(#{$selector-key}) {
+	.#{$scheme-main},
+	::part(#{$scheme-main}) {
 		@content;
 	}
 }
