@@ -11,7 +11,7 @@ declare global {
 	}
 }
 
-export const SCHEME_ALTERNATE = 'scheme-alternate';
+export const DRAWER_ALTERNATE = 'drawer-alternate';
 export const VVD_SCHEME_ALTERNATE = 'vvd-scheme-alternate';
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
@@ -23,13 +23,13 @@ MWCDrawer.styles = [styleCoupling, mwcDrawerStyle, vwcDrawerStyle];
  */
 @customElement('vwc-drawer')
 export class VWCDrawer extends MWCDrawer {
-	@property({ type: Boolean, reflect: true, attribute: SCHEME_ALTERNATE })
-	isThemeAlternate = false;
+	@property({ type: Boolean, reflect: true, attribute: DRAWER_ALTERNATE })
+	drawerAlternate = false;
 
 	protected updated(changes: Map<string, boolean>): void {
 		super.updated(changes);
-		if (changes.has('isThemeAlternate')) {
-			this.togglePart(this.isThemeAlternate);
+		if (changes.has('drawerAlternate')) {
+			this.togglePart(this.drawerAlternate);
 		}
 	}
 

@@ -1,11 +1,13 @@
-import { VVD_SCHEME_ALTERNATE, SCHEME_ALTERNATE } from '../vwc-drawer';
+import { VVD_SCHEME_ALTERNATE, DRAWER_ALTERNATE } from '../vwc-drawer';
 import {
 	isolatedElementsCreation,
 	textToDomToParent,
 	getFrameLoadedInjected,
+	assertComputedStyle,
 	cleanFrame,
 	waitNextTask,
 } from '../../../test/test-helpers.js';
+
 const VWC_COMPONENT = 'vwc-drawer';
 const DRAWER_SETUP_HTML_TAG = 'drawerSetupTest';
 
@@ -78,6 +80,34 @@ describe('vwc-drawer', () => {
 	});
 
 	describe('colors context API', () => {
+		it('should set drawer default colors', async () => {
+			await getFrameLoadedInjected(DRAWER_SETUP_HTML_TAG, async (iframe) => {
+				const iframeWindow = iframe.contentWindow;
+				await drawerDefined(iframeWindow);
+
+				const drawerEl = iframeWindow.document.querySelector(VWC_COMPONENT);
+				await waitNextTask();
+
+				const shadowDrawer = drawerEl.shadowRoot.querySelector('.mdc-drawer');
+				assertComputedStyle(shadowDrawer, { backgroundColor: 'white', color: 'black' });
+			});
+		});
+
+		it('should set drawer alternate colors', async () => {
+			await getFrameLoadedInjected(DRAWER_SETUP_HTML_TAG, async (iframe) => {
+				const iframeWindow = iframe.contentWindow;
+				await drawerDefined(iframeWindow);
+
+				const drawerEl = iframeWindow.document.querySelector(VWC_COMPONENT);
+				await waitNextTask();
+				drawerEl.drawerAlternate = true;
+				await waitNextTask();
+
+				const shadowDrawer = drawerEl.shadowRoot.querySelector('.mdc-drawer');
+				assertComputedStyle(shadowDrawer, { backgroundColor: 'white', color: 'black' });
+			});
+		});
+
 		it('should define drawer aside surface variables by default', async () => {
 			await getFrameLoadedInjected(DRAWER_SETUP_HTML_TAG, async (iframe) => {
 				const iframeWindow = iframe.contentWindow;
@@ -107,7 +137,7 @@ describe('vwc-drawer', () => {
 			});
 		});
 
-		it(`should set 'isThemeAlternate' property member as true on '${SCHEME_ALTERNATE}' attribute value set to true`, async () => {
+		it(`should set 'drawerAlternate' property member as true on '${DRAWER_ALTERNATE}' attribute value set to true`, async () => {
 			const [drawer] = addElement(
 				textToDomToParent(`
 					<${VWC_COMPONENT} hasHeader>
@@ -117,19 +147,19 @@ describe('vwc-drawer', () => {
 			);
 			await waitNextTask();
 
-			expect(drawer.isThemeAlternate).to.equal(false);
-			drawer.setAttribute(SCHEME_ALTERNATE, true);
-			expect(drawer.isThemeAlternate).to.equal(true);
+			expect(drawer.drawerAlternate).to.equal(false);
+			drawer.setAttribute(DRAWER_ALTERNATE, true);
+			expect(drawer.drawerAlternate).to.equal(true);
 		});
 
-		it(`should set <aside> '::part' attribute value as '${VVD_SCHEME_ALTERNATE}' on isThemeAlternate property set to true`, async () => {
+		it(`should set <aside> '::part' attribute value as '${VVD_SCHEME_ALTERNATE}' on drawerAlternate property set to true`, async () => {
 			await getFrameLoadedInjected(DRAWER_SETUP_HTML_TAG, async (iframe) => {
 				const iframeWindow = iframe.contentWindow;
 				await drawerDefined(iframeWindow);
 
 				const drawerEl = iframeWindow.document.querySelector(VWC_COMPONENT);
 
-				drawerEl.isThemeAlternate = true;
+				drawerEl.drawerAlternate = true;
 
 				const shadowDrawer = drawerEl.shadowRoot.querySelector('.mdc-drawer');
 				await waitNextTask();
