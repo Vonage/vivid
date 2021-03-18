@@ -7,7 +7,8 @@ module.exports = config => {
 	const extendedDefaultConfig = merge(defaultConfig, {
 		files: [
 			{ pattern: config.grep ? config.grep : '{common,components}/**/test/**/*.test.js', type: 'module' },
-			{ pattern: 'common/design-tokens/build/**/*.scss', included: false }
+			{ pattern: 'common/design-tokens/build/**/*.scss', included: false },
+			'node_modules/axe-core/axe.js'
 		],
 		preprocessors: {
 			'common/design-tokens/build/scss/schemes/**/*.scss': ['file-fixtures'],
