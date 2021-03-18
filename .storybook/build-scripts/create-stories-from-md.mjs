@@ -99,7 +99,7 @@ function validateConfig(config) {
 function applyCommonTransformations(htmlInput) {
 	return `
 		<link rel="stylesheet" href="assets/css/md-stories.css">
-		${htmlInput.replace(/\$/g, '\\$')}
+		${htmlInput}
 	`;
 }
 
@@ -111,8 +111,13 @@ function buildStoryJs(story, html) {
 		title: '${story.title}'
 	};
 
-	export const ${story.name} = () => String.raw\`${html.replace(/([`$])/g, '` + "$1" + String.raw\`')}\`;
+	export const ${story.name} = () => String.raw\`${
+		html
+			.replace(/([`$])/g, '` + "$1" + String.raw\`')
+			.replace(/(\\+)`/g, '` + "$1$1"')
+	}\`;
 	`;
+
 
 	if (story.parameters) {
 		result += `
