@@ -1,4 +1,4 @@
-import { VVD_THEME_ALTERNATE, THEME_ALTERNATE } from '../vwc-drawer';
+import { VVD_SCHEME_ALTERNATE, SCHEME_ALTERNATE } from '../vwc-drawer';
 import {
 	isolatedElementsCreation,
 	textToDomToParent,
@@ -107,7 +107,7 @@ describe('vwc-drawer', () => {
 			});
 		});
 
-		it(`should set 'isThemeAlternate' property member as true on '${THEME_ALTERNATE}' attribute value set to true`, async () => {
+		it(`should set 'isThemeAlternate' property member as true on '${SCHEME_ALTERNATE}' attribute value set to true`, async () => {
 			const [drawer] = addElement(
 				textToDomToParent(`
 					<${VWC_COMPONENT} hasHeader>
@@ -118,11 +118,11 @@ describe('vwc-drawer', () => {
 			await waitNextTask();
 
 			expect(drawer.isThemeAlternate).to.equal(false);
-			drawer.setAttribute(THEME_ALTERNATE, true);
+			drawer.setAttribute(SCHEME_ALTERNATE, true);
 			expect(drawer.isThemeAlternate).to.equal(true);
 		});
 
-		it(`should set <aside> '::part' attribute value as '${VVD_THEME_ALTERNATE}' on isThemeAlternate property set to true`, async () => {
+		it(`should set <aside> '::part' attribute value as '${VVD_SCHEME_ALTERNATE}' on isThemeAlternate property set to true`, async () => {
 			await getFrameLoadedInjected(DRAWER_SETUP_HTML_TAG, async (iframe) => {
 				const iframeWindow = iframe.contentWindow;
 				await drawerDefined(iframeWindow);
@@ -136,7 +136,7 @@ describe('vwc-drawer', () => {
 
 				const partValue = shadowDrawer.getAttribute('part');
 
-				expect(partValue).to.equal(VVD_THEME_ALTERNATE);
+				expect(partValue).to.equal(VVD_SCHEME_ALTERNATE);
 			});
 		});
 	});
