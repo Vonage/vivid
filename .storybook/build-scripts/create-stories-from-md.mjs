@@ -111,7 +111,7 @@ function buildStoryJs(story, html) {
 		title: '${story.title}'
 	};
 
-	export const ${story.name} = () => \`${html}\`;
+	export const ${story.name} = () => String.raw\`${html.replace(/([`$])/g, '` + "$1" + String.raw\`')}\`;
 	`;
 
 	if (story.parameters) {
