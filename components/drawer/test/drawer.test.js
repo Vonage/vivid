@@ -6,12 +6,13 @@ import {
 	assertComputedStyle,
 	cleanFrame,
 	waitNextTask,
+	waitInterval
 } from '../../../test/test-helpers.js';
 
 const VWC_COMPONENT = 'vwc-drawer';
 const DRAWER_SETUP_HTML_TAG = 'drawerSetupTest';
 
-describe('vwc-drawer', () => {
+describe('Drawer', () => {
 	let addElement = isolatedElementsCreation();
 
 	/* eslint-disable no-undef */
@@ -86,10 +87,11 @@ describe('vwc-drawer', () => {
 				await drawerDefined(iframeWindow);
 
 				const drawerEl = iframeWindow.document.querySelector(VWC_COMPONENT);
-				await waitNextTask();
+				await waitInterval(50);
 
 				const shadowDrawer = drawerEl.shadowRoot.querySelector('.mdc-drawer');
-				assertComputedStyle(shadowDrawer, { backgroundColor: 'white', color: 'black' });
+
+				assertComputedStyle(shadowDrawer, { backgroundColor: 'rgb(242, 242, 242)', color: 'rgb(0, 0, 0)' });
 			});
 		});
 
@@ -99,12 +101,12 @@ describe('vwc-drawer', () => {
 				await drawerDefined(iframeWindow);
 
 				const drawerEl = iframeWindow.document.querySelector(VWC_COMPONENT);
-				await waitNextTask();
 				drawerEl.drawerAlternate = true;
-				await waitNextTask();
+				await waitInterval(50);
 
 				const shadowDrawer = drawerEl.shadowRoot.querySelector('.mdc-drawer');
-				assertComputedStyle(shadowDrawer, { backgroundColor: 'white', color: 'black' });
+
+				assertComputedStyle(shadowDrawer, { backgroundColor: 'rgb(13,13,13)', color: 'rgb(255, 255, 255)' });
 			});
 		});
 

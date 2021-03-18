@@ -6,16 +6,14 @@
 	top: 0;
 	border-color: var(#{scheme-variables.$vvd-color-neutral-20});
 	block-size: 100%;
+	color: var(#{scheme-variables.$vvd-color-on-base});
 	max-block-size: 100vh;
 
-	&.mdc-drawer--dismissible {
-		color: var(#{scheme-variables.$vvd-color-on-base});
-		:host([drawer-alternate]) & {
-			--mdc-theme-surface: var(#{scheme-variables.$vvd-color-base});
-		}
-		:host(:not([drawer-alternate])) & {
-			--mdc-theme-surface: var(#{scheme-variables.$vvd-color-neutral-10});
-		}
+	:host([drawer-alternate]) & {
+		--mdc-theme-surface: var(#{scheme-variables.$vvd-color-base});
+	}
+	:host(:not([drawer-alternate])) & {
+		--mdc-theme-surface: var(#{scheme-variables.$vvd-color-neutral-10});
 	}
 
 	.mdc-drawer__title {
