@@ -6,7 +6,7 @@
 ![Scheme Featured Image](assets/scheme-featured-image.svg)
 
 This package is imported and executed by default in all [core](/common/core) dependent packages but can also be [consumed on its own](#installation).
-By default, (if not explicitly defined otherwise by consumer) scheme will result to user's preferred os option (***light***|***dark***|***auto***)
+By default, (if not explicitly defined otherwise by the consumer) scheme will result in the user's preferred os option (***light***|***dark***|***auto***)
   
 Each scheme will provide the same exact color tokens to support **main** context and its **alternating** - contrasting - context . Once imported and set, these tokens are reflected as CSS variables.
 
