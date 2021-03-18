@@ -6,11 +6,9 @@ import { style as mwcCheckboxStyle } from '@material/mwc-checkbox/mwc-checkbox-c
 import { style as styleCoupling } from '@vonage/vvd-style-coupling';
 import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
 
-export const CHECKBOX_COMPONENT = 'vwc-checkbox';
-
 declare global {
 	interface HTMLElementTagNameMap {
-		[CHECKBOX_COMPONENT]: VWCCheckbox;
+		'vwc-checkbox': VWCCheckbox;
 	}
 }
 
@@ -21,7 +19,7 @@ MWCCheckbox.styles = [styleCoupling, mwcCheckboxStyle, vwcCheckboxStyle];
 /**
  * This component is an extension of [<mwc-checkbox>](https://github.com/material-components/material-components-web-components/tree/master/packages/checkbox)
  */
-@customElement(CHECKBOX_COMPONENT)
+@customElement('vwc-checkbox')
 export class VWCCheckbox extends MWCCheckbox {
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
