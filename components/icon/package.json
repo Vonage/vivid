@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-icon",
-	"version": "2.2.1",
+	"version": "2.2.2",
 	"description": "Displays an icon",
 	"author": "Tal Weinfeld <tal.weinfeld@vonage.com>",
 	"homepage": "https://github.com/Vonage/vivid#readme",
@@ -27,15 +27,15 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@vonage/vvd-core": "^2.2.1",
-		"@vonage/vvd-foundation": "^2.2.1",
+		"@vonage/vvd-core": "^2.2.2",
+		"@vonage/vvd-foundation": "^2.2.2",
 		"lit-element": "^2.4.0",
 		"lit-html": "^1.3.0",
 		"ramda": "^0.27.1"
 	},
 	"devDependencies": {
 		"@types/ramda": "^0.27.36",
-		"@vonage/vvd-umbrella": "^2.2.1",
+		"@vonage/vvd-umbrella": "^2.2.2",
 		"tslib": "^2.0.3"
 	}
 }
