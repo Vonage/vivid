@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-datepicker",
-	"version": "2.2.1",
+	"version": "2.2.2",
 	"description": "Datepicker component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/datepicker#readme",
 	"license": "ISC",
@@ -26,21 +26,21 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@vonage/vvd-core": "^2.2.1",
-		"@vonage/vvd-foundation": "^2.2.1",
-		"@vonage/vwc-button": "^2.2.1",
-		"@vonage/vwc-icon-button": "^2.2.1",
-		"@vonage/vwc-menu": "^2.2.1",
-		"@vonage/vwc-textfield": "^2.2.1",
+		"@vonage/vvd-core": "^2.2.2",
+		"@vonage/vvd-foundation": "^2.2.2",
+		"@vonage/vwc-button": "^2.2.2",
+		"@vonage/vwc-icon-button": "^2.2.2",
+		"@vonage/vwc-menu": "^2.2.2",
+		"@vonage/vwc-textfield": "^2.2.2",
 		"flatpickr": "^4.6.9",
 		"lit-element": "^2.4.0",
 		"lit-flatpickr": "^0.2.5",
 		"tslib": "^2.0.3"
 	},
 	"devDependencies": {
-		"@vonage/vvd-design-tokens": "^2.2.1",
-		"@vonage/vvd-typography": "^2.2.1",
-		"@vonage/vvd-umbrella": "^2.2.1",
+		"@vonage/vvd-design-tokens": "^2.2.2",
+		"@vonage/vvd-typography": "^2.2.2",
+		"@vonage/vvd-umbrella": "^2.2.2",
 		"typescript": "^4.1.3"
 	}
 }
