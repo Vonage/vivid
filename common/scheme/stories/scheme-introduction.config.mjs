@@ -18,8 +18,8 @@ export default {
 	},
 	htmlPostProcess: (htmlText) => {
 		let r = relocateStaticResources(htmlText, [
-			'assets/scheme-graph.png',
-			'assets/scheme-featured-image.svg'
+			'assets/images/scheme-graph.svg',
+			'assets/images/scheme-featured-image.svg'
 		], 'common/scheme');
 		r = hrefLinkProcessing(r, [
 			// [
