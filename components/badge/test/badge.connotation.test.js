@@ -59,7 +59,6 @@ describe('badge connotation', () => {
 			await assertConnotationAttribute({
 				element: badge,
 				connotation: connotation,
-				childrenAffected: ['::before'],
 				stylesAffected: ['backgroundColor'],
 			});
 		});
@@ -71,7 +70,6 @@ describe('badge connotation', () => {
 			await assertConnotationProperty({
 				element: badge,
 				connotation: connotation,
-				childrenAffected: ['::before'],
 				stylesAffected: ['backgroundColor'],
 			});
 		});
