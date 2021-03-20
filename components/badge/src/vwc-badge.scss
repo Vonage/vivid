@@ -18,37 +18,21 @@ $vvd-badge-block-size: --vvd-badge-block-size;
 :host {
 	#{$vvd-badge-block-size}: 24px;
 	@include typography.typography-cat-shorthand('caption-bold');
-	position: relative;
-	display: inline-flex;
-	height: var(#{$vvd-badge-block-size});
-	align-items: center;
+	display: inline-block;
 	padding: 0 10px;
-	block-size: var(#{$vvd-badge-block-size});
+	border: var(--border);
+	background-color: var(--background-color);
+	border-radius: var(--vvd-badge-shape);
 	color: var(--color);
+	line-height: var(#{$vvd-badge-block-size});
+	opacity: calc(var(--opaque) * 0.01);
 
-	&::before {
-		position: absolute;
-		z-index: -1;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		border: var(--border);
-		background-color: var(--background-color);
-		border-radius: var(--vvd-badge-shape);
-		content: '';
-		inset: 0;
-		opacity: calc(var(--opaque) * 0.01);
-	}
 }
 
 :host([disabled]) {
+	--opaque: 100;
+	background-color: var(#{scheme-variables.$vvd-color-neutral-30});
 	color: var(#{scheme-variables.$vvd-color-neutral-50});
-
-	&::before {
-		--opaque: 100;
-		background-color: var(#{scheme-variables.$vvd-color-neutral-30});
-	}
 }
 
 :host([dense]) {
