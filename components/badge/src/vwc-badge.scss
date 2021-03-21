@@ -30,6 +30,7 @@ $vvd-badge-block-size: --vvd-badge-block-size;
 	#{$vvd-badge-block-size}: 24px;
 	@include typography.typography-cat-shorthand('caption-bold');
 	display: inline-block;
+	box-sizing: border-box;
 	padding: 0 10px;
 	border: var(--border);
 	background-color: var(--background-color);

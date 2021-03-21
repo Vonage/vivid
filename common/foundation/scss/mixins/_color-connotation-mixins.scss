@@ -42,7 +42,7 @@ $all-connotations: (
 			#{color-semantic.$vvd-color-connotation}: var(--vvd-color-#{$name});
 			@if ($shades) {
 				@each $shade in $shades {
-					#{color-semantic.$vvd-color-connotation}: var(--vvd-color-#{$name}-#{$shade});
+					#{color-semantic.$vvd-color-connotation}-#{$shade}: var(--vvd-color-#{$name}-#{$shade});
 				}
 			};
 			#{color-semantic.$vvd-color-on-connotation}: var(

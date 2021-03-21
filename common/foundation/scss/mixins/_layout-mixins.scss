@@ -26,7 +26,7 @@ $all-layouts: (
 }
 
 %soft {
-	--background-color: var(#{color-semantic.$vvd-color-connotation});
+	--background-color: var(#{color-semantic.$vvd-color-connotation}-20);
 	--color: var(#{scheme-variables.$vvd-color-on-base});
 }
 
