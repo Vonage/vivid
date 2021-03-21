@@ -30,13 +30,16 @@ $vvd-badge-block-size: --vvd-badge-block-size;
 	#{$vvd-badge-block-size}: 24px;
 	@include typography.typography-cat-shorthand('caption-bold');
 	display: inline-block;
-	box-sizing: border-box;
 	padding: 0 10px;
 	border: var(--border);
 	background-color: var(--background-color);
 	border-radius: var(--vvd-badge-shape);
 	color: var(--color);
 	line-height: var(#{$vvd-badge-block-size});
+}
+
+:host([layout="outlined"i]) {
+	--color: var(#{scheme-variables.$vvd-color-on-base});
 }
 
 :host([disabled]) {

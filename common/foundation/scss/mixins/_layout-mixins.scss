@@ -22,7 +22,7 @@ $all-layouts: (
 %outlined {
 	--background-color: transparent;
 	--border: 1px solid var(#{color-semantic.$vvd-color-connotation});
-	--color: var(#{scheme-variables.$vvd-color-on-base});
+	--color: var(#{color-semantic.$vvd-color-connotation});
 }
 
 %soft {
