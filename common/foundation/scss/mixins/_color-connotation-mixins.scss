@@ -24,7 +24,8 @@ $all-connotations: (
 // selector can be altered by relevance
 @mixin connotations-context(
 	$selector: ':host(#{$connotation-placeholder})',
-	$default-fallback: null
+	$default-fallback: null,
+	$shades: null
 ) {
 	@each $name in functions.pick-list($connotations, $all-connotations) {
 		$attr: '[connotation="#{$name}" i]';
@@ -39,6 +40,11 @@ $all-connotations: (
 
 		#{$scoped-selector} {
 			#{color-semantic.$vvd-color-connotation}: var(--vvd-color-#{$name});
+			@if ($shades) {
+				@each $shade in $shades {
+					#{color-semantic.$vvd-color-connotation}: var(--vvd-color-#{$name}-#{$shade});
+				}
+			};
 			#{color-semantic.$vvd-color-on-connotation}: var(
 				--vvd-color-on-#{$name}
 			);

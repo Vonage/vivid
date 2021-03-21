@@ -10,8 +10,19 @@
 );
 
 @include color-connotation-mixins.connotations-context(
-	':host(#{color-connotation-mixins.$connotation-placeholder})'
+	':host(#{color-connotation-mixins.$connotation-placeholder})',
+	null,
+	('20') // array of shades
 );
+
+@include shape-mixins.shape(
+	$shapes: (
+		rounded: 4px,
+		pill: 14px,
+	)
+);
+
+@include layout-mixins.layout();
 
 $vvd-badge-block-size: --vvd-badge-block-size;
 
@@ -25,12 +36,9 @@ $vvd-badge-block-size: --vvd-badge-block-size;
 	border-radius: var(--vvd-badge-shape);
 	color: var(--color);
 	line-height: var(#{$vvd-badge-block-size});
-	opacity: calc(var(--opaque) * 0.01);
-
 }
 
 :host([disabled]) {
-	--opaque: 100;
 	background-color: var(#{scheme-variables.$vvd-color-neutral-30});
 	color: var(#{scheme-variables.$vvd-color-neutral-50});
 }
@@ -44,12 +52,3 @@ $vvd-badge-block-size: --vvd-badge-block-size;
 	#{$vvd-badge-block-size}: 28px;
 	padding: 0 12px;
 }
-
-@include shape-mixins.shape(
-	$shapes: (
-		rounded: 4px,
-		pill: 14px,
-	)
-);
-
-@include layout-mixins.layout();

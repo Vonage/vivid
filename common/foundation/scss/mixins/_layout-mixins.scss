@@ -14,23 +14,20 @@ $all-layouts: (
 	ghost: 'ghost',
 );
 
-$bg: var(#{color-semantic.$vvd-color-connotation});
-
 %filled {
-	--background-color: #{$bg};
+	--background-color: var(#{color-semantic.$vvd-color-connotation});
 	--color: var(#{color-semantic.$vvd-color-on-connotation});
 }
 
 %outlined {
 	--background-color: transparent;
-	--border: 1px solid #{$bg};
-	--color: #{$bg};
+	--border: 1px solid var(#{color-semantic.$vvd-color-connotation});
+	--color: var(#{scheme-variables.$vvd-color-on-base});
 }
 
 %soft {
-	--background-color: #{$bg};
+	--background-color: var(#{color-semantic.$vvd-color-connotation});
 	--color: var(#{scheme-variables.$vvd-color-on-base});
-	--opaque: 20;
 }
 
 %text,
