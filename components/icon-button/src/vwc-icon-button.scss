@@ -8,7 +8,7 @@
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout-mixins' with (
 	$layouts: filled outlined ghost,
-	$variable-name-prefix: '--vvd-icon-button-'
+	$variables-scope-prefix: 'vvd-icon-button'
 );
 
 :host {

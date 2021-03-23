@@ -7,7 +7,7 @@
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout-mixins' with (
 	$layouts: filled	outlined	soft,
-	$variable-name-prefix: '--vvd-badge-'
+	$variables-scope-prefix: 'vvd-badge'
 );
 
 @include color-connotation-mixins.connotations-context(
