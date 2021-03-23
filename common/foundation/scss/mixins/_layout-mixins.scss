@@ -4,6 +4,8 @@
 
 // override to apply relevance
 $layouts: filled outlined soft text ghost !default;
+
+$variable-name-prefix: '--' !default;
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
 $all-layouts: (
@@ -17,26 +19,26 @@ $all-layouts: (
 $bg: var(#{color-semantic.$vvd-color-connotation});
 
 %filled {
-	--background-color: #{$bg};
-	--color: var(#{color-semantic.$vvd-color-on-connotation});
+	#{$variable-name-prefix}background-color: #{$bg};
+	#{$variable-name-prefix}color: var(#{color-semantic.$vvd-color-on-connotation});
 }
 
 %outlined {
-	--background-color: transparent;
-	--border: 1px solid #{$bg};
-	--color: #{$bg};
+	#{$variable-name-prefix}background-color: transparent;
+	#{$variable-name-prefix}border: 1px solid #{$bg};
+	#{$variable-name-prefix}color: #{$bg};
 }
 
 %soft {
-	--background-color: #{$bg};
-	--color: var(#{scheme-variables.$vvd-color-on-base});
-	--opaque: 20;
+	#{$variable-name-prefix}background-color: #{$bg};
+	#{$variable-name-prefix}color: var(#{scheme-variables.$vvd-color-on-base});
+	#{$variable-name-prefix}opaque: 20;
 }
 
 %text,
 %ghost {
-	--background-color: transparent;
-	--color: var(#{scheme-variables.$vvd-color-on-base});
+	#{$variable-name-prefix}background-color: transparent;
+	#{$variable-name-prefix}color: var(#{scheme-variables.$vvd-color-on-base});
 }
 
 @mixin layout() {

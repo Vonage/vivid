@@ -6,7 +6,8 @@
 	$variable-name: --vvd-badge-shape
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout-mixins' with (
-	$layouts: filled	outlined	soft
+	$layouts: filled	outlined	soft,
+	$variable-name-prefix: '--vvd-badge-'
 );
 
 @include color-connotation-mixins.connotations-context(
@@ -24,7 +25,7 @@ $vvd-badge-block-size: --vvd-badge-block-size;
 	align-items: center;
 	padding: 0 10px;
 	block-size: var(#{$vvd-badge-block-size});
-	color: var(--color);
+	color: var(--vvd-badge-color);
 
 	&::before {
 		position: absolute;
@@ -33,12 +34,12 @@ $vvd-badge-block-size: --vvd-badge-block-size;
 		right: 0;
 		bottom: 0;
 		left: 0;
-		border: var(--border);
-		background-color: var(--background-color);
+		border: var(--vvd-badge-border);
+		background-color: var(--vvd-badge-background-color);
 		border-radius: var(--vvd-badge-shape);
 		content: '';
 		inset: 0;
-		opacity: calc(var(--opaque) * 0.01);
+		opacity: calc(var(--vvd-badge-opaque) * 0.01);
 	}
 }
 

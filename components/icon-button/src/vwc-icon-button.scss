@@ -7,7 +7,8 @@
 	$connotations: primary cta success alert info announcement
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout-mixins' with (
-	$layouts: filled outlined ghost
+	$layouts: filled outlined ghost,
+	$variable-name-prefix: '--vvd-icon-button-'
 );
 
 :host {
@@ -19,10 +20,10 @@
 		overflow: hidden;
 		align-items: center;
 		justify-content: center;
-		border: var(--border);
-		background-color: var(--background-color);
+		border: var(--vvd-icon-button-border);
+		background-color: var(--vvd-icon-button-background-color);
 		border-radius: var(--vvd-icon-button-shape);
-		color: var(--color);
+		color: var(--vvd-icon-button-color);
 		&:disabled {
 			color: var(#{color-semantic.$formfield-disabled-ink});
 		}
