@@ -7,8 +7,8 @@ const css = `.container {
 
 .container > figure {
 	margin: 8px;
-	box-shadow: 0px 0px 3px 1px #12131411;
-	padding: 14px 50px 25px 50px;
+	box-shadow: 0px 0px 3px 1px var(--vvd-color-neutral-10);
+	padding: 14px 50px 34px 50px;
 	text-align: center;
 	box-sizing: border-box;
 	position: relative;
@@ -17,7 +17,7 @@ const css = `.container {
 }
 
 .container > figure > vwc-icon {
-	color: #121314;
+	color: var(--vvd-color-on-base);
 }
 
 .container > figure > figcaption {
@@ -31,8 +31,8 @@ const css = `.container {
 	width: 100%;
 	box-sizing: border-box;
 	font-weight: bold;
-	color: #121314;
-	background-color: #12131422;
+	color: var(--vvd-color-on-base);
+	background-color: var(--vvd-color-neutral-20);
 	line-height: 18px;
 	padding: 0;
 }`;
