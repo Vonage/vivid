@@ -1,4 +1,4 @@
-import '../vwc-checkbox.js';
+import { COMPONENT_NAME } from '../vwc-checkbox.js';
 import {
 	textToDomToParent,
 	waitNextTask,
@@ -7,8 +7,6 @@ import {
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
-
-const COMPONENT_NAME = 'vwc-checkbox';
 
 describe('checkbox', () => {
 	const addElement = isolatedElementsCreation();
