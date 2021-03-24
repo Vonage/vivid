@@ -23,12 +23,6 @@ import {
 	TemplateResult,
 } from 'lit-element';
 
-declare global {
-	interface HTMLElementTagNameMap {
-		[GRID_COMPONENT]: VWCDataGrid;
-	}
-}
-
 export {
 	GRID_COMPONENT,
 	COLUMN_DEFINITION_COMPONENT,
@@ -37,6 +31,12 @@ export {
 	DataGridColumn,
 	DataGridHeader
 };
+
+declare global {
+	interface HTMLElementTagNameMap {
+		[GRID_COMPONENT]: VWCDataGrid;
+	}
+}
 
 /**
  * `vwc-data-grid` component is designated to render Rich/Responsive/Data tables/grids

@@ -1,6 +1,6 @@
 import '@vonage/vwc-checkbox';
 import { VWCCheckbox } from '@vonage/vwc-checkbox';
-import { GRID_HEADER_COMPONENT } from '../../vwc-data-grid-api';
+import { DataGrid, GRID_HEADER_COMPONENT } from '../../vwc-data-grid-api';
 import { DataGridColumn, SELECTOR_MULTI, SELECTOR_SINGLE } from '../../vwc-data-grid-column-api';
 import { MetaRendererProvider } from '../vwc-data-grid-render-provider-api';
 import { MetaRenderer, RendererConfiguration } from '../../vwc-data-grid-renderer-api';
@@ -46,19 +46,11 @@ function selectorRenderer(container: HTMLElement, configuration: RendererConfigu
 			}
 		});
 		grid.addEventListener('selected-items-changed', () => {
-			const totalSelected = grid.selectedItems?.length || 0;
-			if (totalSelected === 0) {
-				sh.indeterminate = sh.checked = false;
-			} else if (totalSelected === grid.items?.length) {
-				sh.checked = true;
-				sh.indeterminate = false;
-			} else {
-				sh.checked = true;
-				sh.indeterminate = true;
-			}
+			setSelectAllState(grid, sh);
 		});
+		setSelectAllState(grid, sh);
 		container.appendChild(sh);
-	} else if (sh && configuration.column.selector === SELECTOR_SINGLE && configuration.grid.dataProvider) {
+	} else if (sh && (configuration.column.selector === SELECTOR_SINGLE || configuration.grid.dataProvider)) {
 		sh.remove();
 	}
 }
@@ -77,4 +69,17 @@ function ensureHeaderIn(container: HTMLElement) {
 		container.appendChild(result);
 	}
 	return result;
+}
+
+function setSelectAllState(grid: DataGrid, selectAllHeader: VWCCheckbox) {
+	const totalSelected = grid.selectedItems?.length || 0;
+	if (totalSelected === 0) {
+		selectAllHeader.indeterminate = selectAllHeader.checked = false;
+	} else if (totalSelected === grid.items?.length) {
+		selectAllHeader.checked = true;
+		selectAllHeader.indeterminate = false;
+	} else {
+		selectAllHeader.checked = true;
+		selectAllHeader.indeterminate = true;
+	}
 }

@@ -1,4 +1,4 @@
-import '@vonage/vwc-data-grid';
+import { GRID_COMPONENT as COMPONENT_NAME } from '@vonage/vwc-data-grid';
 import { getColumns, getItems } from './helper-utils.test';
 import {
 	waitNextTask,
@@ -8,8 +8,6 @@ import { isolatedElementsCreation } from '../../../test/test-helpers';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
-
-const COMPONENT_NAME = 'vwc-data-grid';
 
 describe('data grid selection UI', () => {
 	let addElement = isolatedElementsCreation();
@@ -71,9 +69,9 @@ describe('data grid selection UI', () => {
 		g.items = getItems(3);
 		await waitNextTask();
 
-		const selectAll = g.shadowRoot.querySelector('.vvd-all-selector');
-		expect(selectAll).exist;
+		assertSelectAllState(g, true, false, false);
 
+		const selectAll = getSelectAllHeader(g);
 		selectAll.click();
 		await waitNextTask();
 		expect(g.selectedItems.length).equal(3);
@@ -96,11 +94,9 @@ describe('data grid selection UI', () => {
 		await waitNextTask();
 		expect(g.selectedItems.length).equal(2);
 
-		const selectAll = g.shadowRoot.querySelector('.vvd-all-selector');
-		expect(selectAll).exist;
-		expect(selectAll.checked).true;
-		expect(selectAll.indeterminate).true;
+		assertSelectAllState(g, true, true, true);
 
+		const selectAll = getSelectAllHeader(g);
 		selectAll.click();
 		await waitNextTask();
 		expect(g.selectedItems.length).equal(0);
@@ -191,10 +187,7 @@ describe('data grid selection UI', () => {
 		await waitNextTask();
 		expect(g.selectedItems.length).equal(0);
 
-		const selectAll = g.shadowRoot.querySelector('.vvd-all-selector');
-		expect(selectAll).exist;
-		expect(selectAll.checked).false;
-		expect(selectAll.indeterminate).false;
+		assertSelectAllState(g, true, false, false);
 	});
 
 	it('should show header indeterminate when some of the items selected', async () => {
@@ -214,10 +207,7 @@ describe('data grid selection UI', () => {
 		await waitNextTask();
 		expect(g.selectedItems.length).equal(2);
 
-		const selectAll = g.shadowRoot.querySelector('.vvd-all-selector');
-		expect(selectAll).exist;
-		expect(selectAll.checked).true;
-		expect(selectAll.indeterminate).true;
+		assertSelectAllState(g, true, true, true);
 	});
 
 	it('should show header checked when all of the items selected', async () => {
@@ -236,9 +226,124 @@ describe('data grid selection UI', () => {
 		await waitNextTask();
 		expect(g.selectedItems.length).equal(3);
 
-		const selectAll = g.shadowRoot.querySelector('.vvd-all-selector');
-		expect(selectAll).exist;
-		expect(selectAll.checked).true;
-		expect(selectAll.indeterminate).false;
+		assertSelectAllState(g, true, true, false);
+	});
+
+	it('should show header when switching from single to multi (items data provider)', async () => {
+		const [g] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+		);
+		await waitNextTask();
+
+		const c = getColumns();
+		c[0].selector = 'single';
+		g.columns = c;
+		g.items = getItems(3);
+		await waitNextTask();
+
+		g.columns[0].selector = 'multi';
+		g.refreshConfiguration();
+		await waitNextTask();
+
+		assertSelectAllState(g, true, false, false);
+	});
+
+	it('should show header when switching from single to multi, indeterminate when some selected (items data provider)', async () => {
+		const [g] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+		);
+		await waitNextTask();
+
+		const c = getColumns();
+		c[0].selector = 'single';
+		g.columns = c;
+		g.items = getItems(3);
+		await waitNextTask();
+
+		g.selectItem(g.items[0]);
+		await waitNextTask();
+
+		g.columns[0].selector = 'multi';
+		g.refreshConfiguration();
+		await waitNextTask();
+
+		assertSelectAllState(g, true, true, true);
+	});
+
+
+	it('should show header when switching from single to multi, selected when all selected (items data provider)', async () => {
+		const [g] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+		);
+		await waitNextTask();
+
+		const c = getColumns();
+		c[0].selector = 'single';
+		g.columns = c;
+		g.items = getItems(3);
+		await waitNextTask();
+
+		g.selectAll();
+		await waitNextTask();
+
+		g.columns[0].selector = 'multi';
+		g.refreshConfiguration();
+		await waitNextTask();
+
+		assertSelectAllState(g, true, true, false);
+	});
+
+	it('should hide header when switching from multi to single (items data provider)', async () => {
+		const [g] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+		);
+		await waitNextTask();
+
+		const c = getColumns();
+		c[0].selector = 'multi';
+		g.columns = c;
+		g.items = getItems(3);
+		await waitNextTask();
+
+		g.columns[0].selector = 'single';
+		g.refreshConfiguration();
+		await waitNextTask();
+
+		expect(g).shadowDom.equalSnapshot();
+	});
+
+	it('should hide header when switching from items to data provider (multi mode)', async () => {
+		const [g] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+		);
+		await waitNextTask();
+
+		const c = getColumns();
+		const i = getItems(3);
+		c[0].selector = 'multi';
+		g.columns = c;
+		g.items = i;
+		await waitNextTask();
+
+		g.dataProvider = (_params, callback) => callback(i, i.length);
+		g.refreshConfiguration();
+		await waitNextTask();
+
+		assertSelectAllState(g, false);
 	});
 });
+
+function assertSelectAllState(grid, exist, checked, indeterminate) {
+	const selectAll = getSelectAllHeader(grid);
+	if (exist) {
+		expect(selectAll).exist;
+		expect(selectAll.checked).equal(checked);
+		expect(selectAll.indeterminate).equal(indeterminate);
+	} else {
+		expect(selectAll).not.exist;
+	}
+}
+
+function getSelectAllHeader(grid) {
+	return grid.shadowRoot.querySelector('vwc-checkbox.vvd-all-selector');
+}
