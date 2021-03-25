@@ -41,6 +41,7 @@ $all-connotations: (
 		#{$scoped-selector} {
 			#{color-semantic.$vvd-color-connotation}: var(--vvd-color-#{$name});
 			@if ($shades) {
+				//! TODO function to get shades of primary
 				@each $shade in $shades {
 					#{color-semantic.$vvd-color-connotation}-#{$shade}: var(--vvd-color-#{$name}-#{$shade});
 				}
