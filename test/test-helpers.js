@@ -262,8 +262,8 @@ function getRandom() {
 	return crypto.getRandomValues(new Uint8Array(1))[0] / 256;
 }
 
-async function runAxeCore(element) {
-	const result = await axe.run(element);
+async function runAxeCore(element, options) {
+	const result = await axe.run(element, options);
 
 	expect(result.violations.length).to.equal(0);
 }
