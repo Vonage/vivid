@@ -20,9 +20,6 @@ describe('slider a11y', () => {
 		);
 		await waitNextTask();
 
-		/*************************************
-    TODO: slider needs aria-labal support
-    **************************************/
 		const options = {
 			rules: {
 				'aria-input-field-name': { enabled: false }
