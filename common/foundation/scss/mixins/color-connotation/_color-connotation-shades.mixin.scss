@@ -1,0 +1,40 @@
+@use 'sass:selector';
+@use '../../functions';
+@use '../../variable-names/color-semantic-variable-names' as color-semantic;
+
+$native: (soft: 30, accent: 60);
+$full-contrast: (soft: 50, accent: 30);
+
+$_predefined-connotations: (
+	primary: $full-contrast,
+	cta: $native,
+	success: $native,
+	alert: $native,
+	warning: $native,
+	info: $native,
+	announcement: $native
+);
+
+// override to apply relevance
+$applied-connotations: primary cta success alert warning info announcement !default;
+$compound-placeholder: '[compound]';
+$selector: ':host(#{$compound-placeholder})' !default;
+
+@mixin connotations-shades {
+	@each $c_name, $value in functions.pick-map($applied-connotations, $_predefined-connotations) {
+		$compound: '[connotation="#{$c_name}" i]';
+
+		$local-selector: selector.replace(
+			#{$selector},
+			#{$compound-placeholder},
+			#{$compound}
+		);
+
+		#{$local-selector} {
+			@each $s_name, $s_value in $value {
+				#{color-semantic.$vvd-color-connotation}-#{$s_name}: var(--vvd-color-#{$c_name}-#{$s_value});
+			}
+		}
+	}
+}
+
