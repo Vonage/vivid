@@ -14,6 +14,7 @@
 
 @include color-connotation.connotations-shades;
 @include color-connotation.connotations-main;
+@include color-connotation.connotations-main-default(primary);
 
 @include shape-mixins.shape(
 	$shapes: (

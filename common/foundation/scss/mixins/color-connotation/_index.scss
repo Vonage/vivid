@@ -2,7 +2,7 @@
 
 $connotations-set: predefined-connotations.$connotations-set !default;
 
-@forward 'color-connotation-main.mixin' show connotations-main with (
+@forward 'color-connotation-main.mixin' show connotations-main, connotations-main-default with (
 	$connotations-set: $connotations-set
 );
 

@@ -32,8 +32,26 @@ $selector: ':host(#{$compound-placeholder})' !default;
 		);
 
 		#{$local-selector} {
-			#{color-semantic.$vvd-color-connotation}: var(--vvd-color-#{$name});
-			#{color-semantic.$vvd-color-on-connotation}: var(--vvd-color-on-#{$name});
+			@include connotation-main-variables($name);
 		}
 	}
+}
+
+@mixin connotations-main-default($name) {
+	$compound: ':not([connotation])';
+
+	$local-selector: selector.replace(
+		#{$selector},
+		#{$compound-placeholder},
+		#{$compound}
+	);
+
+	#{$local-selector} {
+		@include connotation-main-variables($name);
+	}
+}
+
+@mixin connotation-main-variables($name) {
+	#{color-semantic.$vvd-color-connotation}: var(--vvd-color-#{$name});
+	#{color-semantic.$vvd-color-on-connotation}: var(--vvd-color-on-#{$name});
 }
