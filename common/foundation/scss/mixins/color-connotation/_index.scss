@@ -1,0 +1,11 @@
+@use 'predefined-connotations';
+
+$connotations-set: predefined-connotations.$connotations-set !default;
+
+@forward 'color-connotation-main.mixin' show connotations-main with (
+	$connotations-set: $connotations-set
+);
+
+@forward 'color-connotation-shades.mixin' show connotations-shades with (
+	$connotations-set: $connotations-set
+);

@@ -1,0 +1,39 @@
+@use 'sass:selector';
+
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+@use '../../variable-names/color-semantic-variable-names' as color-semantic;
+@use '../../functions';
+@use 'predefined-connotations';
+
+$_connotations-definition: (
+	primary: 'primary',
+	cta: 'cta',
+	success: 'success',
+	alert: 'alert',
+	warning: 'warning',
+	info: 'info',
+	announcement: 'announcement',
+);
+
+// override to apply relevance
+$connotations-set: predefined-connotations.$connotations-set !default;
+$compound-placeholder: '[compound]';
+$selector: ':host(#{$compound-placeholder})' !default;
+
+// selector can be altered by relevance
+@mixin connotations-main {
+	@each $name in functions.pick-list($connotations-set, $_connotations-definition) {
+		$compound: '[connotation="#{$name}" i]';
+
+		$local-selector: selector.replace(
+			#{$selector},
+			#{$compound-placeholder},
+			#{$compound}
+		);
+
+		#{$local-selector} {
+			#{color-semantic.$vvd-color-connotation}: var(--vvd-color-#{$name});
+			#{color-semantic.$vvd-color-on-connotation}: var(--vvd-color-on-#{$name});
+		}
+	}
+}
