@@ -6,6 +6,8 @@ import { style as mwcCheckboxStyle } from '@material/mwc-checkbox/mwc-checkbox-c
 import { style as styleCoupling } from '@vonage/vvd-style-coupling';
 import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
 
+export const COMPONENT_NAME = 'vwc-checkbox';
+
 declare global {
 	interface HTMLElementTagNameMap {
 		'vwc-checkbox': VWCCheckbox;
