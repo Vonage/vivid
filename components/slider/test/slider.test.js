@@ -5,6 +5,7 @@ import {
 	textToDomToParent,
 	waitNextTask,
 	assertComputedStyle,
+	assertDistancePixels,
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 chai.use(chaiDomDiff);
@@ -76,7 +77,7 @@ describe('slider', () => {
 		});
 
 		it('should style the disabled slider', async () => {
-			const actualElements = addElement(
+			const [slider] = addElement(
 				textToDomToParent(
 					`<${VWC_SLIDER} disabled min="0" max="100" value="50" pin></${VWC_SLIDER}>`
 				)
@@ -84,7 +85,7 @@ describe('slider', () => {
 			await waitNextTask();
 			const scheme = schemeService.getSelectedScheme();
 
-			const sliderTrack = actualElements[0].shadowRoot.querySelector(
+			const sliderTrack = slider.shadowRoot.querySelector(
 				'.mdc-slider__track'
 			);
 			expect(sliderTrack).to.exist;
@@ -93,7 +94,7 @@ describe('slider', () => {
 			};
 			assertComputedStyle(sliderTrack, expectedStylesTrack);
 
-			const sliderThumb = actualElements[0].shadowRoot.querySelector(
+			const sliderThumb = slider.shadowRoot.querySelector(
 				'.mdc-slider__thumb'
 			);
 			expect(sliderThumb).to.exist;
@@ -102,16 +103,10 @@ describe('slider', () => {
 			};
 			assertComputedStyle(sliderThumb, expectedStylesThumb);
 
-			const sliderPin = actualElements[0].shadowRoot.querySelector(
+			const sliderPin = slider.shadowRoot.querySelector(
 				'.mdc-slider__pin'
 			);
 			expect(sliderPin).to.exist;
-			console.log(getComputedStyle(sliderPin));
-			// const expectedStylesPin = {
-			// 	backgroundColor: scheme === 'light' ? 'rgba(0, 0, 0, 0)' : 'rgba(255, 255, 255, 0)',
-			// 	color: scheme === 'light' ? 'rgb(0, 0, 0)' : 'rgb(0, 0, 0)',
-			// };
-			// assertComputedStyle(sliderPin, expectedStylesPin);
 		});
 	});
 });
