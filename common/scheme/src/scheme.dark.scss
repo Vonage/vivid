@@ -1,11 +1,11 @@
 @use '@vonage/vvd-design-tokens/build/scss/schemes/dark/main.scss';
 @use '@vonage/vvd-design-tokens/build/scss/schemes/dark/alternate.scss';
+@use 'scheme-mixins';
 
-body,
-::part(vvd-theme-base) {
+@include scheme-mixins.scheme-context-variables {
 	@include main.variables;
 }
 
-::part(vvd-theme-alternate) {
+@include scheme-mixins.scheme-alternate-variables {
 	@include alternate.variables;
 }
