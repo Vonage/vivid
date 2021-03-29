@@ -43,7 +43,7 @@ declare global {
  *
  * @element vwc-data-grid
  */
-@customElement(GRID_COMPONENT)
+@customElement('vwc-data-grid')
 export class VWCDataGrid extends LitElement implements DataGrid {
 	static styles = [vwcDataGridStyle, ...VWCDataGridAdapterVaadin.getStylesOverlay()];
 	#gridAdapter = new VWCDataGridAdapterVaadin(this);
