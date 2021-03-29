@@ -69,7 +69,8 @@ describe('data grid selection UI', () => {
 		grid.items = getItems(3);
 		await waitNextTask();
 
-		assertSelectAllState(grid, true, false, false);
+		const expectations = { exists: true, checked: false, indeterminate: false };
+		assertSelectAllState(grid, expectations);
 
 		const selectAll = getSelectAllHeader(grid);
 		selectAll.click();
@@ -94,7 +95,8 @@ describe('data grid selection UI', () => {
 		await waitNextTask();
 		expect(grid.selectedItems.length).equal(2);
 
-		assertSelectAllState(grid, true, true, true);
+		const expectations = { exists: true, checked: true, indeterminate: true };
+		assertSelectAllState(grid, expectations);
 
 		const selectAll = getSelectAllHeader(grid);
 		selectAll.click();
@@ -187,7 +189,8 @@ describe('data grid selection UI', () => {
 		await waitNextTask();
 		expect(grid.selectedItems.length).equal(0);
 
-		assertSelectAllState(grid, true, false, false);
+		const expectations = { exists: true, checked: false, indeterminate: false };
+		assertSelectAllState(grid, expectations);
 	});
 
 	it('should show header indeterminate when some of the items selected', async () => {
@@ -207,7 +210,8 @@ describe('data grid selection UI', () => {
 		await waitNextTask();
 		expect(grid.selectedItems.length).equal(2);
 
-		assertSelectAllState(grid, true, true, true);
+		const expectations = { exists: true, checked: true, indeterminate: true };
+		assertSelectAllState(grid, expectations);
 	});
 
 	it('should show header checked when all of the items selected', async () => {
@@ -226,7 +230,8 @@ describe('data grid selection UI', () => {
 		await waitNextTask();
 		expect(grid.selectedItems.length).equal(3);
 
-		assertSelectAllState(grid, true, true, false);
+		const expectations = { exists: true, checked: true, indeterminate: false };
+		assertSelectAllState(grid, expectations);
 	});
 
 	it('should show header when switching from single to multi (items data provider)', async () => {
@@ -245,7 +250,8 @@ describe('data grid selection UI', () => {
 		grid.refreshConfiguration();
 		await waitNextTask();
 
-		assertSelectAllState(grid, true, false, false);
+		const expectations = { exists: true, checked: false, indeterminate: false };
+		assertSelectAllState(grid, expectations);
 	});
 
 	it('should show header when switching from single to multi, indeterminate when some selected (items data provider)', async () => {
@@ -267,7 +273,8 @@ describe('data grid selection UI', () => {
 		grid.refreshConfiguration();
 		await waitNextTask();
 
-		assertSelectAllState(grid, true, true, true);
+		const expectations = { exists: true, checked: true, indeterminate: true };
+		assertSelectAllState(grid, expectations);
 	});
 
 
@@ -290,7 +297,8 @@ describe('data grid selection UI', () => {
 		grid.refreshConfiguration();
 		await waitNextTask();
 
-		assertSelectAllState(grid, true, true, false);
+		const expectations = { exists: true, checked: true, indeterminate: false };
+		assertSelectAllState(grid, expectations);
 	});
 
 	it('should hide header when switching from multi to single (items data provider)', async () => {
@@ -329,13 +337,14 @@ describe('data grid selection UI', () => {
 		grid.refreshConfiguration();
 		await waitNextTask();
 
-		assertSelectAllState(grid, false);
+		const expectations = { exists: false };
+		assertSelectAllState(grid, expectations);
 	});
 });
 
-function assertSelectAllState(grid, exist, checked, indeterminate) {
+function assertSelectAllState(grid, { exists, checked, indeterminate }) {
 	const selectAll = getSelectAllHeader(grid);
-	if (exist) {
+	if (exists) {
 		expect(selectAll).exist;
 		expect(selectAll.checked).equal(checked);
 		expect(selectAll.indeterminate).equal(indeterminate);
