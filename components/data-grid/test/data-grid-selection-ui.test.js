@@ -13,61 +13,41 @@ describe('data grid selection UI', () => {
 	let addElement = isolatedElementsCreation();
 
 	it('should render selector column with header (multi select)', async () => {
-		const [grid] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-		);
-		await waitNextTask();
-
-		const columns = getColumns();
-		columns[0].selector = 'multi';
-		grid.columns = columns;
-		grid.items = getItems(3);
-		await waitNextTask();
+		const grid = await setupGrid({
+			columns: getColumns(),
+			items: getItems(3),
+			selectorType: 'multi'
+		});
 
 		expect(grid).shadowDom.equalSnapshot();
 	});
 
 	it('should not render selector header when single mode', async () => {
-		const [grid] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-		);
-		await waitNextTask();
-
-		const columns = getColumns();
-		columns[0].selector = 'single';
-		grid.columns = columns;
-		grid.items = getItems(3);
-		await waitNextTask();
+		const grid = await setupGrid({
+			columns: getColumns(),
+			items: getItems(3),
+			selectorType: 'single'
+		});
 
 		expect(grid).shadowDom.equalSnapshot();
 	});
 
 	it('should not render selector header when dataProvider used (even if multi mode)', async () => {
-		const [grid] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-		);
-		await waitNextTask();
-
-		const columns = getColumns();
-		columns[0].selector = 'multi';
-		grid.columns = columns;
-		grid.dataProvider = (_params, cb) => cb(getItems(3), 3);
-		await waitNextTask();
+		const grid = await setupGrid({
+			columns: getColumns(),
+			dataProvider: (_params, cb) => cb(getItems(3), 3),
+			selectorType: 'multi'
+		});
 
 		expect(grid).shadowDom.equalSnapshot();
 	});
 
 	it('should select all when header checked', async () => {
-		const [grid] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-		);
-		await waitNextTask();
-
-		const columns = getColumns();
-		columns[0].selector = 'multi';
-		grid.columns = columns;
-		grid.items = getItems(3);
-		await waitNextTask();
+		const grid = await setupGrid({
+			columns: getColumns(),
+			items: getItems(3),
+			selectorType: 'multi'
+		});
 
 		const expectations = { exists: true, checked: false, indeterminate: false };
 		assertSelectAllState(grid, expectations);
@@ -79,16 +59,11 @@ describe('data grid selection UI', () => {
 	});
 
 	it('should deselect all when header uncheched', async () => {
-		const [grid] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-		);
-		await waitNextTask();
-
-		const columns = getColumns();
-		columns[0].selector = 'multi';
-		grid.columns = columns;
-		grid.items = getItems(3);
-		await waitNextTask();
+		const grid = await setupGrid({
+			columns: getColumns(),
+			items: getItems(3),
+			selectorType: 'multi'
+		});
 
 		grid.selectItem(grid.items[0]);
 		grid.selectItem(grid.items[1]);
@@ -105,16 +80,11 @@ describe('data grid selection UI', () => {
 	});
 
 	it('should select item when its selector checked', async () => {
-		const [grid] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-		);
-		await waitNextTask();
-
-		const columns = getColumns();
-		columns[0].selector = 'multi';
-		grid.columns = columns;
-		grid.items = getItems(3);
-		await waitNextTask();
+		const grid = await setupGrid({
+			columns: getColumns(),
+			items: getItems(3),
+			selectorType: 'multi'
+		});
 		expect(grid.selectedItems.length).equal(0);
 
 		const selectRowEls = grid.shadowRoot.querySelectorAll('.vvd-row-selector');
@@ -127,16 +97,11 @@ describe('data grid selection UI', () => {
 	});
 
 	it('should deselect item when its selector unchecked', async () => {
-		const [grid] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-		);
-		await waitNextTask();
-
-		const columns = getColumns();
-		columns[0].selector = 'multi';
-		grid.columns = columns;
-		grid.items = getItems(3);
-		await waitNextTask();
+		const grid = await setupGrid({
+			columns: getColumns(),
+			items: getItems(3),
+			selectorType: 'multi'
+		});
 
 		grid.selectAll();
 		await waitNextTask();
@@ -152,16 +117,11 @@ describe('data grid selection UI', () => {
 	});
 
 	it('should deselect other items when new one checked (single mode)', async () => {
-		const [grid] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-		);
-		await waitNextTask();
-
-		const columns = getColumns();
-		columns[0].selector = 'single';
-		grid.columns = columns;
-		grid.items = getItems(3);
-		await waitNextTask();
+		const grid = await setupGrid({
+			columns: getColumns(),
+			items: getItems(3),
+			selectorType: 'single'
+		});
 		expect(grid.selectedItems.length).equal(0);
 
 		const selectRowEls = grid.shadowRoot.querySelectorAll('.vvd-row-selector');
@@ -177,16 +137,11 @@ describe('data grid selection UI', () => {
 	});
 
 	it('should show header unchecked when none selected', async () => {
-		const [grid] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-		);
-		await waitNextTask();
-
-		const columns = getColumns();
-		columns[0].selector = 'multi';
-		grid.columns = columns;
-		grid.items = getItems(3);
-		await waitNextTask();
+		const grid = await setupGrid({
+			columns: getColumns(),
+			items: getItems(3),
+			selectorType: 'multi'
+		});
 		expect(grid.selectedItems.length).equal(0);
 
 		const expectations = { exists: true, checked: false, indeterminate: false };
@@ -194,16 +149,11 @@ describe('data grid selection UI', () => {
 	});
 
 	it('should show header indeterminate when some of the items selected', async () => {
-		const [grid] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-		);
-		await waitNextTask();
-
-		const columns = getColumns();
-		columns[0].selector = 'multi';
-		grid.columns = columns;
-		grid.items = getItems(3);
-		await waitNextTask();
+		const grid = await setupGrid({
+			columns: getColumns(),
+			items: getItems(3),
+			selectorType: 'multi'
+		});
 
 		grid.selectItem(grid.items[0]);
 		grid.selectItem(grid.items[1]);
@@ -215,16 +165,11 @@ describe('data grid selection UI', () => {
 	});
 
 	it('should show header checked when all of the items selected', async () => {
-		const [grid] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-		);
-		await waitNextTask();
-
-		const columns = getColumns();
-		columns[0].selector = 'multi';
-		grid.columns = columns;
-		grid.items = getItems(3);
-		await waitNextTask();
+		const grid = await setupGrid({
+			columns: getColumns(),
+			items: getItems(3),
+			selectorType: 'multi'
+		});
 
 		grid.selectAll();
 		await waitNextTask();
@@ -235,16 +180,11 @@ describe('data grid selection UI', () => {
 	});
 
 	it('should show header when switching from single to multi (items data provider)', async () => {
-		const [grid] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-		);
-		await waitNextTask();
-
-		const columns = getColumns();
-		columns[0].selector = 'single';
-		grid.columns = columns;
-		grid.items = getItems(3);
-		await waitNextTask();
+		const grid = await setupGrid({
+			columns: getColumns(),
+			items: getItems(3),
+			selectorType: 'single'
+		});
 
 		grid.columns[0].selector = 'multi';
 		grid.refreshConfiguration();
@@ -255,16 +195,11 @@ describe('data grid selection UI', () => {
 	});
 
 	it('should show header when switching from single to multi, indeterminate when some selected (items data provider)', async () => {
-		const [grid] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-		);
-		await waitNextTask();
-
-		const columns = getColumns();
-		columns[0].selector = 'single';
-		grid.columns = columns;
-		grid.items = getItems(3);
-		await waitNextTask();
+		const grid = await setupGrid({
+			columns: getColumns(),
+			items: getItems(3),
+			selectorType: 'single'
+		});
 
 		grid.selectItem(grid.items[0]);
 		await waitNextTask();
@@ -279,16 +214,11 @@ describe('data grid selection UI', () => {
 
 
 	it('should show header when switching from single to multi, selected when all selected (items data provider)', async () => {
-		const [grid] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-		);
-		await waitNextTask();
-
-		const columns = getColumns();
-		columns[0].selector = 'single';
-		grid.columns = columns;
-		grid.items = getItems(3);
-		await waitNextTask();
+		const grid = await setupGrid({
+			columns: getColumns(),
+			items: getItems(3),
+			selectorType: 'single'
+		});
 
 		grid.selectAll();
 		await waitNextTask();
@@ -302,16 +232,11 @@ describe('data grid selection UI', () => {
 	});
 
 	it('should hide header when switching from multi to single (items data provider)', async () => {
-		const [grid] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-		);
-		await waitNextTask();
-
-		const columns = getColumns();
-		columns[0].selector = 'multi';
-		grid.columns = columns;
-		grid.items = getItems(3);
-		await waitNextTask();
+		const grid = await setupGrid({
+			columns: getColumns(),
+			items: getItems(3),
+			selectorType: 'multi'
+		});
 
 		grid.columns[0].selector = 'single';
 		grid.refreshConfiguration();
@@ -321,17 +246,12 @@ describe('data grid selection UI', () => {
 	});
 
 	it('should hide header when switching from items to data provider (multi mode)', async () => {
-		const [grid] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-		);
-		await waitNextTask();
-
-		const columns = getColumns();
 		const items = getItems(3);
-		columns[0].selector = 'multi';
-		grid.columns = columns;
-		grid.items = items;
-		await waitNextTask();
+		const grid = await setupGrid({
+			columns: getColumns(),
+			items: items,
+			selectorType: 'multi'
+		});
 
 		grid.dataProvider = (_params, callback) => callback(items, items.length);
 		grid.refreshConfiguration();
@@ -340,6 +260,26 @@ describe('data grid selection UI', () => {
 		const expectations = { exists: false };
 		assertSelectAllState(grid, expectations);
 	});
+
+	async function setupGrid({
+		columns, items, dataProvider, selectorType
+	}) {
+		const [grid] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+		);
+		await waitNextTask();
+
+		columns[0].selector = selectorType;
+		grid.columns = columns;
+		if (items) {
+			grid.items = items;
+		} else if (dataProvider) {
+			grid.dataProvider = dataProvider;
+		}
+		await waitNextTask();
+
+		return grid;
+	}
 });
 
 function assertSelectAllState(grid, { exists, checked, indeterminate }) {
