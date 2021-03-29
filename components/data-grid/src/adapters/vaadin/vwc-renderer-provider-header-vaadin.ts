@@ -1,11 +1,8 @@
-import '@vonage/vwc-checkbox';
-import { VWCCheckbox } from '@vonage/vwc-checkbox';
+import { VWCCheckbox, COMPONENT_NAME as CHECKBOX_COMPONENT } from '@vonage/vwc-checkbox';
 import { GRID_HEADER_COMPONENT } from '../../vwc-data-grid-api';
 import { DataGridColumn, SELECTOR_MULTI, SELECTOR_SINGLE } from '../../vwc-data-grid-column-api';
 import { MetaRendererProvider } from '../vwc-data-grid-render-provider-api';
 import { MetaRenderer, RendererConfiguration } from '../../vwc-data-grid-renderer-api';
-
-const CHECKBOX_COMPONENT = 'vwc-checkbox';
 
 export {
 	headerRendererProvider
