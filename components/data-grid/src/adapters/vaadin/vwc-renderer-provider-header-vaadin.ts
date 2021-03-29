@@ -1,5 +1,5 @@
 import { VWCCheckbox, COMPONENT_NAME as CHECKBOX_COMPONENT } from '@vonage/vwc-checkbox';
-import { GRID_HEADER_COMPONENT } from '../../vwc-data-grid-api';
+import { DataGrid, GRID_HEADER_COMPONENT } from '../../vwc-data-grid-api';
 import { DataGridColumn, SELECTOR_MULTI, SELECTOR_SINGLE } from '../../vwc-data-grid-column-api';
 import { MetaRendererProvider } from '../vwc-data-grid-render-provider-api';
 import { MetaRenderer, RendererConfiguration } from '../../vwc-data-grid-renderer-api';
@@ -21,20 +21,20 @@ const headerRendererProvider: MetaRendererProvider = (column: DataGridColumn): M
 };
 
 function simpleRenderer(container: HTMLElement, configuration: RendererConfiguration): void {
-	const gh = ensureHeaderIn(container);
-	gh.sortable = false;
-	gh.path = configuration.column.path;
-	gh.textContent = configuration.column.header || '';
+	const genericHeader = ensureHeaderIn(container);
+	genericHeader.sortable = false;
+	genericHeader.path = configuration.column.path;
+	genericHeader.textContent = configuration.column.header || '';
 }
 
 function selectorRenderer(container: HTMLElement, configuration: RendererConfiguration): void {
 	const grid = configuration.grid;
-	let sh = container.querySelector(CHECKBOX_COMPONENT) as VWCCheckbox;
-	if (!sh && configuration.column.selector === SELECTOR_MULTI && !configuration.grid.dataProvider) {
-		sh = document.createElement(CHECKBOX_COMPONENT);
-		sh.classList.add('vvd-all-selector');
-		sh.setAttribute('aria-label', 'Select All');
-		sh.addEventListener('change', ({ target }) => {
+	let selectHeader = container.querySelector(CHECKBOX_COMPONENT) as VWCCheckbox;
+	if (!selectHeader && configuration.column.selector === SELECTOR_MULTI && !configuration.grid.dataProvider) {
+		selectHeader = document.createElement(CHECKBOX_COMPONENT);
+		selectHeader.classList.add('vvd-all-selector');
+		selectHeader.setAttribute('aria-label', 'Select All');
+		selectHeader.addEventListener('change', ({ target }) => {
 			const toSelectAll = (target as VWCCheckbox).checked;
 			if (toSelectAll) {
 				grid.selectAll();
@@ -43,20 +43,12 @@ function selectorRenderer(container: HTMLElement, configuration: RendererConfigu
 			}
 		});
 		grid.addEventListener('selected-items-changed', () => {
-			const totalSelected = grid.selectedItems?.length || 0;
-			if (totalSelected === 0) {
-				sh.indeterminate = sh.checked = false;
-			} else if (totalSelected === grid.items?.length) {
-				sh.checked = true;
-				sh.indeterminate = false;
-			} else {
-				sh.checked = true;
-				sh.indeterminate = true;
-			}
+			setSelectAllState(grid, selectHeader);
 		});
-		container.appendChild(sh);
-	} else if (sh && configuration.column.selector === SELECTOR_SINGLE && configuration.grid.dataProvider) {
-		sh.remove();
+		setSelectAllState(grid, selectHeader);
+		container.appendChild(selectHeader);
+	} else if (selectHeader && (configuration.column.selector === SELECTOR_SINGLE || configuration.grid.dataProvider)) {
+		selectHeader.remove();
 	}
 }
 
@@ -74,4 +66,17 @@ function ensureHeaderIn(container: HTMLElement) {
 		container.appendChild(result);
 	}
 	return result;
+}
+
+function setSelectAllState(grid: DataGrid, selectAllHeader: VWCCheckbox) {
+	const totalSelected = grid.selectedItems?.length || 0;
+	if (totalSelected === 0) {
+		selectAllHeader.indeterminate = selectAllHeader.checked = false;
+	} else if (totalSelected === grid.items?.length) {
+		selectAllHeader.checked = true;
+		selectAllHeader.indeterminate = false;
+	} else {
+		selectAllHeader.checked = true;
+		selectAllHeader.indeterminate = true;
+	}
 }
