@@ -5,7 +5,6 @@ import {
 	textToDomToParent,
 	waitNextTask,
 	assertComputedStyle,
-	assertDistancePixels,
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 chai.use(chaiDomDiff);
