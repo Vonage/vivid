@@ -23,12 +23,6 @@ import {
 	TemplateResult,
 } from 'lit-element';
 
-declare global {
-	interface HTMLElementTagNameMap {
-		[GRID_COMPONENT]: VWCDataGrid;
-	}
-}
-
 export {
 	GRID_COMPONENT,
 	COLUMN_DEFINITION_COMPONENT,
@@ -38,12 +32,18 @@ export {
 	DataGridHeader
 };
 
+declare global {
+	interface HTMLElementTagNameMap {
+		[GRID_COMPONENT]: VWCDataGrid;
+	}
+}
+
 /**
  * `vwc-data-grid` component is designated to render Rich/Responsive/Data tables/grids
  *
  * @element vwc-data-grid
  */
-@customElement(GRID_COMPONENT)
+@customElement('vwc-data-grid')
 export class VWCDataGrid extends LitElement implements DataGrid {
 	static styles = [vwcDataGridStyle, ...VWCDataGridAdapterVaadin.getStylesOverlay()];
 	#gridAdapter = new VWCDataGridAdapterVaadin(this);
