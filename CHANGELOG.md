@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.3](https://github.com/Vonage/vivid/compare/v2.2.2...v2.2.3) (2021-03-30)
+
+
+### Bug Fixes
+
+* **data-grid, select all:** issue 722 VIV-449 select all disappears when going into single ([#723](https://github.com/Vonage/vivid/issues/723)) ([f1f8309](https://github.com/Vonage/vivid/commit/f1f83097fd7c655ef909f328cb573aa6cb24481d)), closes [#722](https://github.com/Vonage/vivid/issues/722)
+* **storybook-generator:** unescaped md content may break storybook ([#713](https://github.com/Vonage/vivid/issues/713)) ([5f24b81](https://github.com/Vonage/vivid/commit/5f24b81639ca14397ffdf2d161c126e6a01fe655))
+
+
+
+
+
 ## [2.2.2](https://github.com/Vonage/vivid/compare/v2.2.1...v2.2.2) (2021-03-19)
 
 **Note:** Version bump only for package @vivid/root
