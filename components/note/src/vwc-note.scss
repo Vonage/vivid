@@ -7,7 +7,6 @@
 
 $border-value: 8px solid var(#{color-semantic.$vvd-color-connotation});
 
-@include color-connotation.connotations-shades;
 @include color-connotation.connotations-main;
 @include color-connotation.connotations-main-default(announcement);
 
