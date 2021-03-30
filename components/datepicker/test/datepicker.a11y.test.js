@@ -17,8 +17,7 @@ describe('datepicker a11y', () => {
 		);
 		await waitNextTask();
 
-		// .prevMonthDay fails contrast check
-		// we disable interaction with css so lets consider aria-disabled
+		// .prevMonthDay - add aria-disabled
 		const options = {
 			rules: {
 				'color-contrast': { enabled: false }

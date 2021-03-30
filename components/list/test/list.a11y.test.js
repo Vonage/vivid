@@ -24,6 +24,7 @@ describe('list a11y', () => {
 		);
 		await waitNextTask();
 
+		// Axe warns <ul>, <ol> should only directly contain <li>
 		const options = {
 			rules: {
 				list: { enabled: false }

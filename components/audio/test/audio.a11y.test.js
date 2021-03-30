@@ -17,6 +17,7 @@ describe('audio a11y', () => {
 		);
 		await waitNextTask();
 
+		// TODO: buttons should have aria-label
 		const options = {
 			rules: {
 				'button-name': { enabled: false }

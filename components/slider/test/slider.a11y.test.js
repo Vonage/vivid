@@ -20,6 +20,7 @@ describe('slider a11y', () => {
 		);
 		await waitNextTask();
 
+		// TODO: requires aria-label support from mwc
 		const options = {
 			rules: {
 				'aria-input-field-name': { enabled: false }

@@ -18,6 +18,7 @@ describe('top app bar a11y', () => {
 		);
 		await waitNextTask();
 
+		// TODO: investigate invalid aria-roles
 		const options = {
 			rules: {
 				'aria-allowed-role': { enabled: false }
