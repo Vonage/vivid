@@ -50,7 +50,7 @@ export class VWCButton extends MWCButton {
 	layout: ButtonLayout[number] = 'text';
 
 	@property({ type: String, reflect: true })
-	connotation: ButtonConnotation = Connotation.Primary;
+	connotation?: ButtonConnotation;
 
 	@property({ type: String, reflect: true })
 	shape?: ButtonShape;
