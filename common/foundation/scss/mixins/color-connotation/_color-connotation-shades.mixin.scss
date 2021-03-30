@@ -2,6 +2,7 @@
 @use '../../functions';
 @use '../../variable-names/color-semantic-variable-names' as color-semantic;
 @use 'predefined-connotations';
+@use 'variables';
 
 $_connotations-definition: (
 	primary: (soft: neutral-20, accent: neutral-30),
@@ -15,8 +16,7 @@ $_connotations-definition: (
 
 // override to apply relevance
 $connotations-set: predefined-connotations.$connotations-set !default;
-$compound-placeholder: '[compound]';
-$selector: ':host(#{$compound-placeholder})' !default;
+$selector: variables.$selector !default;
 
 @mixin connotations-shades {
 	@each $c_name, $value in functions.pick-map($connotations-set, $_connotations-definition) {
@@ -24,7 +24,7 @@ $selector: ':host(#{$compound-placeholder})' !default;
 
 		$local-selector: selector.replace(
 			#{$selector},
-			#{$compound-placeholder},
+			#{variables.$compound-placeholder},
 			#{$compound}
 		);
 

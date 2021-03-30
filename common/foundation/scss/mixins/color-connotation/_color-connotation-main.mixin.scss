@@ -4,6 +4,7 @@
 @use '../../variable-names/color-semantic-variable-names' as color-semantic;
 @use '../../functions';
 @use 'predefined-connotations';
+@use 'variables';
 
 $_connotations-definition: (
 	primary: 'primary',
@@ -17,8 +18,7 @@ $_connotations-definition: (
 
 // override to apply relevance
 $connotations-set: predefined-connotations.$connotations-set !default;
-$compound-placeholder: '[compound]';
-$selector: ':host(#{$compound-placeholder})' !default;
+$selector: variables.$selector !default;
 
 // selector can be altered by relevance
 @mixin connotations-main {
@@ -27,7 +27,7 @@ $selector: ':host(#{$compound-placeholder})' !default;
 
 		$local-selector: selector.replace(
 			#{$selector},
-			#{$compound-placeholder},
+			#{variables.$compound-placeholder},
 			#{$compound}
 		);
 
@@ -42,7 +42,7 @@ $selector: ':host(#{$compound-placeholder})' !default;
 
 	$local-selector: selector.replace(
 		#{$selector},
-		#{$compound-placeholder},
+		#{variables.$compound-placeholder},
 		#{$compound}
 	);
 
