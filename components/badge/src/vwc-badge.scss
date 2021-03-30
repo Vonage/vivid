@@ -12,6 +12,8 @@
 	$layouts: filled outlined soft
 );
 
+$vvd-badge-block-size: --vvd-badge-block-size;
+
 @include color-connotation.connotations-shades;
 @include color-connotation.connotations-main;
 @include color-connotation.connotations-main-default(primary);
@@ -24,8 +26,6 @@
 );
 
 @include layout-mixins.layout();
-
-$vvd-badge-block-size: --vvd-badge-block-size;
 
 :host {
 	#{$vvd-badge-block-size}: 24px;

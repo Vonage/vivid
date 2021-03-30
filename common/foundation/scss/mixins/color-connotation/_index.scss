@@ -1,6 +1,7 @@
 @use 'predefined-connotations';
 
 $connotations-set: predefined-connotations.$connotations-set !default;
+$connotations-decorative-set: predefined-connotations.$connotations-decorative-set !default;
 
 @forward 'color-connotation-main.mixin' show connotations-main, connotations-main-default with (
 	$connotations-set: $connotations-set
@@ -8,4 +9,8 @@ $connotations-set: predefined-connotations.$connotations-set !default;
 
 @forward 'color-connotation-shades.mixin' show connotations-shades with (
 	$connotations-set: $connotations-set
+);
+
+@forward 'color-connotation-decorative.mixin' show connotations-decorative with (
+	$connotations-decorative-set: $connotations-decorative-set
 );
