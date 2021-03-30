@@ -1,9 +1,13 @@
 @use 'sass:selector';
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names';
-@use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins' with (
-	$connotations: primary cta success alert
+@use '@vonage/vvd-foundation/scss/mixins/color-connotation' with (
+	$connotations-set: primary cta success alert
 );
+
+@include color-connotation.connotations-shades;
+@include color-connotation.connotations-main;
+@include color-connotation.connotations-main-default(primary);
 
 // sizing parts only
 :host {
@@ -131,10 +135,6 @@
 		}
 	}
 }
-
-@include color-connotation-mixins.connotations-context(
-	':host(#{color-connotation-mixins.$connotation-placeholder})'
-);
 
 :host(:not([disabled]):focus-within) {
 	.mdc-switch__track {
