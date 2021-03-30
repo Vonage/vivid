@@ -94,7 +94,7 @@ ca = null
 always-auth = true
 
 registry = https://vonagecc.jfrog.io/vonagecc/api/npm/npm/
-_auth = \${ARTIFACTORY_AUTH_TOKEN}
+_auth = ${ARTIFACTORY_AUTH_TOKEN}
 ```
 
 Here we defined 2 primary things:

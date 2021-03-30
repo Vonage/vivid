@@ -74,5 +74,38 @@ describe('slider', () => {
 			};
 			assertComputedStyle(sliderPin, expectedStylesPin);
 		});
+
+		it('should style the disabled slider', async () => {
+			const [slider] = addElement(
+				textToDomToParent(
+					`<${VWC_SLIDER} disabled min="0" max="100" value="50" pin></${VWC_SLIDER}>`
+				)
+			);
+			await waitNextTask();
+			const scheme = schemeService.getSelectedScheme();
+
+			const sliderTrack = slider.shadowRoot.querySelector(
+				'.mdc-slider__track'
+			);
+			expect(sliderTrack).to.exist;
+			const expectedStylesTrack = {
+				backgroundColor: 'rgb(154, 154, 154)'
+			};
+			assertComputedStyle(sliderTrack, expectedStylesTrack);
+
+			const sliderThumb = slider.shadowRoot.querySelector(
+				'.mdc-slider__thumb'
+			);
+			expect(sliderThumb).to.exist;
+			const expectedStylesThumb = {
+				stroke: scheme === 'light' ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)',
+			};
+			assertComputedStyle(sliderThumb, expectedStylesThumb);
+
+			const sliderPin = slider.shadowRoot.querySelector(
+				'.mdc-slider__pin'
+			);
+			expect(sliderPin).to.exist;
+		});
 	});
 });

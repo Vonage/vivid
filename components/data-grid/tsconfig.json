@@ -1,0 +1,15 @@
+{
+	"extends": "@vonage/vvd-umbrella/configs/tsconfig.json",
+	"compilerOptions": {
+		"composite": true,
+		"rootDir": "src",
+		"outDir": ".",
+		"tsBuildInfoFile": ".tsbuildinfo",
+	},
+	"include": [
+		"src/**/*.ts",
+	],
+	"exclude": [
+		"src/test/*.ts"
+	]
+}

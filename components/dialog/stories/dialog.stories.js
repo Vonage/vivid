@@ -46,20 +46,20 @@ const IconTemplate = args => html`
 `;
 
 export const Basic = Template.bind({});
-Basic.args = { };
+Basic.args = {};
 
 export const Heading = Template.bind({});
-Heading.args = { heading: 'Hello Modal!'};
+Heading.args = { heading: 'Hello Modal!' };
 
 export const Icon = IconTemplate.bind({});
-Icon.args = { heading: 'Homey feeling'};
+Icon.args = { heading: 'Homey feeling' };
 
 export const Stacked = Template.bind({});
-Stacked.args = { stacked: ''};
+Stacked.args = { stacked: '' };
 
 export const Modal = Template.bind({});
-Modal.args = { heading: 'This is a modal window', scrimClickAction: ''};
+Modal.args = { heading: 'This is a modal window', scrimClickAction: '' };
 
 function handleOpenDialogClick(e) {
-	e.target.parentNode.querySelector('#dialog-a').show();
+	document.querySelector('vwc-dialog').show();
 }

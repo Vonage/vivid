@@ -40,7 +40,7 @@ export class VWCThemeSwitch extends LitElement {
 	connectedCallback(): void {
 		super.connectedCallback();
 		vvdScheme.eventBus.addEventListener(
-			VVD_SCHEME_SELECT,
+			'vvd-scheme-select',
 			this[EVENT_LISTENER_KEY] as EventListener
 		);
 		this.scheme = vvdScheme.getSelectedSchemeOption();

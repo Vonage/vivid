@@ -7,7 +7,7 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Components/Atoms/Drawer',
+	title: 'Components/Beta/Drawer',
 	component: 'vwc-drawer',
 	argTypes
 }

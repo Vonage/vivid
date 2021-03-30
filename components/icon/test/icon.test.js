@@ -8,7 +8,7 @@ import {
 } from '../../../test/test-helpers.js';
 
 
-const LOAD_TRIAL_COUNT = 15;
+const LOAD_TRIAL_COUNT = 20;
 const LOAD_TIME = 200;
 const sleep = ms => new Promise(res => setTimeout(res, ms));
 
@@ -41,6 +41,7 @@ describe('vwc-icon', () => {
 
 		Object.entries(ICON_SAMPLE).forEach(([iconName, iconData]) => {
 			it(`Should contain "${iconName}" path`, function () {
+				this.timeout((LOAD_TRIAL_COUNT + 1) * LOAD_TIME);
 				iconEl.setAttribute('type', iconName);
 				return Array(LOAD_TRIAL_COUNT)
 					.fill(0)
