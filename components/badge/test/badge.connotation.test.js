@@ -16,7 +16,6 @@ const CONNOTATIONS_SUPPORTED = [
 	'success',
 	'alert',
 	'info',
-	'announcement',
 ];
 
 describe('badge connotation', () => {
