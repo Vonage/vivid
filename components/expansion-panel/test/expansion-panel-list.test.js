@@ -48,7 +48,7 @@ describe('expansion panel list', () => {
 
 		it('should only allow one expansion panel open at a time', async () => {
 			const openExpansionPanels = actualElement.getOpened();
-			expect(openExpansionPanels.length).to.equal(1)
+			expect(openExpansionPanels.length).to.equal(1);
 		});
 
 		it('should allow multiple expansion panels open when set to multi', async () => {
@@ -56,13 +56,13 @@ describe('expansion panel list', () => {
 			await waitNextTask();
 			actualElement.openAll();
 			const openExpansionPanels = actualElement.getOpened();
-			expect(openExpansionPanels.length).to.equal(4)
+			expect(openExpansionPanels.length).to.equal(4);
 		});
 
-		it('should have all expansion panels closed', async () => {	
+		it('should have all expansion panels closed', async () => {
 			actualElement.closeAll();
 			const openExpansionPanels = actualElement.getOpened();
-			expect(openExpansionPanels.length).to.equal(0)
+			expect(openExpansionPanels.length).to.equal(0);
 		});
 	});
 });
