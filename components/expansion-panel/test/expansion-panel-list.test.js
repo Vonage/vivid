@@ -31,35 +31,44 @@ describe('expansion panel list', () => {
 	});
 
 	describe(`expansion panel visibility`, function () {
-		let actualElement;
-		beforeEach(async () => {
-			[actualElement] = addElement(
+		it('should only allow one expansion panel open at a time', async () => {
+			const [actualElement] = addElement(
 				textToDomToParent(`
 					<${COMPONENT_NAME}>
 						<vwc-expansion-panel header="panel 1" open></vwc-expansion-panel>
 						<vwc-expansion-panel header="panel 2" open></vwc-expansion-panel>
-						<vwc-expansion-panel header="panel 3"></vwc-expansion-panel>
-						<vwc-expansion-panel header="panel 3"></vwc-expansion-panel>
 					</${COMPONENT_NAME}>
 				`)
 			);
 			await waitNextTask();
-		});
-
-		it('should only allow one expansion panel open at a time', async () => {
 			const openExpansionPanels = actualElement.getOpened();
 			expect(openExpansionPanels.length).to.equal(1);
 		});
 
-		it('should allow multiple expansion panels open when set to multi', async () => {
-			actualElement.multi = true;
+		it('should have all expansion panels open when set to multi and openAll', async () => {
+			const [actualElement] = addElement(
+				textToDomToParent(`
+					<${COMPONENT_NAME} multi openAll>
+						<vwc-expansion-panel header="panel 1"></vwc-expansion-panel>
+						<vwc-expansion-panel header="panel 2"></vwc-expansion-panel>
+					</${COMPONENT_NAME}>
+				`)
+			);
 			await waitNextTask();
-			actualElement.openAll();
 			const openExpansionPanels = actualElement.getOpened();
-			expect(openExpansionPanels.length).to.equal(4);
+			expect(openExpansionPanels.length).to.equal(2);
 		});
 
 		it('should have all expansion panels closed', async () => {
+			const [actualElement] = addElement(
+				textToDomToParent(`
+					<${COMPONENT_NAME}>
+						<vwc-expansion-panel header="panel 1" open></vwc-expansion-panel>
+						<vwc-expansion-panel header="panel 2"></vwc-expansion-panel>
+					</${COMPONENT_NAME}>
+				`)
+			);
+			await waitNextTask();
 			actualElement.closeAll();
 			const openExpansionPanels = actualElement.getOpened();
 			expect(openExpansionPanels.length).to.equal(0);
