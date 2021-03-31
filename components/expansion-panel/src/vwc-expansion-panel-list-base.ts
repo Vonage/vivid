@@ -5,6 +5,9 @@ export abstract class VWCExpansionPanelListBase extends LitElement {
 	@property({ type: Boolean, reflect: true })
 	multi = false;
 
+	@property({ type: Boolean, reflect: true })
+	openAll = false;
+
 	private expansionPanels: HTMLCollectionOf<VWCExpansionPanelBase> | undefined = undefined;
 
 	constructor() {
@@ -15,6 +18,12 @@ export abstract class VWCExpansionPanelListBase extends LitElement {
 	connectedCallback(): void {
 		super.connectedCallback();
 		this.expansionPanels = this.children as HTMLCollectionOf<VWCExpansionPanelBase>;
+
+		if (this.multi && this.openAll && this.expansionPanels) {
+			for (const expansionPanel of this.expansionPanels) {
+				expansionPanel.open = true;
+			}
+		}
 	}
 
 	handleOpened(e: Event): any {
@@ -35,14 +44,6 @@ export abstract class VWCExpansionPanelListBase extends LitElement {
 		}
 
 		return opened;
-	}
-
-	openAll(): void {
-		if (this.multi && this.expansionPanels) {
-			for (const expansionPanel of this.expansionPanels) {
-				expansionPanel.show();
-			}
-		}
 	}
 
 	closeAll(): void {

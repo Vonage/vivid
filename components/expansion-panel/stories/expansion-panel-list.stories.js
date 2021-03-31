@@ -23,3 +23,6 @@ export const Basic = Template.bind({});
 
 export const Multi = Template.bind({});
 Multi.args = { multi: '' };
+
+export const openAll = Template.bind({});
+openAll.args = { multi: '', openAll: '' };
