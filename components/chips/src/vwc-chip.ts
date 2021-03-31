@@ -78,7 +78,7 @@ export class VWCChip extends MWCChip {
 					@click=${this.clickHandler}
 					@keydown=${this.clickHandler}
 			  >
-					<vwc-icon size="small" class="trailing" type="cross-circle-negative">
+					<vwc-icon inline class="trailing" type="cross-circle-negative">
 					</vwc-icon>
 			  </i>`
 			: nothing}`;

@@ -3,6 +3,7 @@
 @use '@material/chips';
 @use './variables';
 
+$icon-size: 14px;
 .mdc-chip {
 	@include chips.fill-color(var(#{scheme-variables.$vvd-color-neutral-40}));
 	@include chips.trailing-icon-color(
@@ -29,11 +30,6 @@
 		vertical-align: middle;
 	}
 
-	// vwc-icon
-	.trailing {
-		margin-top: -1px;
-	}
-
 	:host([type='filter']) & {
 		cursor: pointer;
 	}
@@ -49,6 +45,7 @@
 	}
 
 	.mdc-chip__icon--trailing {
+		display: flex;
 		cursor: pointer;
 		transition: color variables.$color-animation-duration linear;
 	}
