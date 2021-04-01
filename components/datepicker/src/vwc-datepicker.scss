@@ -29,6 +29,12 @@ vwc-menu {
 	box-shadow: none;
 	color: var(#{scheme-variables.$vvd-color-on-base});
 
+	&::before,
+ 
+	&::after {
+		display: none;
+	}
+
 	&.open {
 		display: block;
 	}
