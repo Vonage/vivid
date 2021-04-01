@@ -1,3 +1,12 @@
+## [2.2.3](https://github.com/vonage/vivid/compare/v2.2.2...v2.2.3) (2021-03-30)
+
+
+### Bug Fixes
+
+* **data-grid, select all:** issue 722 VIV-449 select all disappears when going into single ([#723](https://github.com/vonage/vivid/issues/723)) ([f1f8309](https://github.com/vonage/vivid/commit/f1f83097fd7c655ef909f328cb573aa6cb24481d)), closes [#722](https://github.com/vonage/vivid/issues/722)
+
+
+
 ## [2.2.2](https://github.com/vonage/vivid/compare/v2.2.1...v2.2.2) (2021-03-19)
 
 
