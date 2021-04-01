@@ -11,8 +11,8 @@ declare global {
 	}
 }
 
-export const THEME_ALTERNATE = 'theme-alternate';
-export const VVD_THEME_ALTERNATE = 'vvd-theme-alternate';
+export const DRAWER_ALTERNATE = 'drawer-alternate';
+export const VVD_SCHEME_ALTERNATE = 'vvd-scheme-alternate';
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
@@ -23,13 +23,13 @@ MWCDrawer.styles = [styleCoupling, mwcDrawerStyle, vwcDrawerStyle];
  */
 @customElement('vwc-drawer')
 export class VWCDrawer extends MWCDrawer {
-	@property({ type: Boolean, reflect: true, attribute: THEME_ALTERNATE })
-	isThemeAlternate = false;
+	@property({ type: Boolean, reflect: true, attribute: DRAWER_ALTERNATE })
+	drawerAlternate = false;
 
 	protected updated(changes: Map<string, boolean>): void {
 		super.updated(changes);
-		if (changes.has('isThemeAlternate')) {
-			this.togglePart(this.isThemeAlternate);
+		if (changes.has('drawerAlternate')) {
+			this.togglePart(this.drawerAlternate);
 		}
 	}
 
@@ -39,7 +39,7 @@ export class VWCDrawer extends MWCDrawer {
 			return;
 		}
 		if (isAlternate) {
-			del.setAttribute('part', VVD_THEME_ALTERNATE);
+			del.setAttribute('part', VVD_SCHEME_ALTERNATE);
 		} else {
 			del.removeAttribute('part');
 		}

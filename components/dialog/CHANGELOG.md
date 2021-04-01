@@ -1,3 +1,28 @@
+## [2.2.3](https://github.com/vonage/vivid/compare/v2.2.2...v2.2.3) (2021-03-30)
+
+
+
+## [2.2.2](https://github.com/vonage/vivid/compare/v2.2.1...v2.2.2) (2021-03-19)
+
+
+
+## [2.2.1](https://github.com/vonage/vivid/compare/v2.2.0...v2.2.1) (2021-03-18)
+
+
+
+# [2.2.0](https://github.com/vonage/vivid/compare/v2.1.0...v2.2.0) (2021-03-17)
+
+
+
+# [2.1.0](https://github.com/vonage/vivid/compare/v2.0.4...v2.1.0) (2021-03-16)
+
+
+### Bug Fixes
+
+* **slider, dialog:** fix slider disabled ring and dialog story ([#705](https://github.com/vonage/vivid/issues/705)) ([1f99f6c](https://github.com/vonage/vivid/commit/1f99f6c1834bbad7c10a416896254c962ffe0450))
+
+
+
 ## [2.0.4](https://github.com/vonage/vivid/compare/v2.0.3...v2.0.4) (2021-03-03)
 
 

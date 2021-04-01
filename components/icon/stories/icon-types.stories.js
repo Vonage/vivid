@@ -40,7 +40,8 @@ const
 		check: 'Check',
 		charts: 'Charts',
 		cancel: 'Cancel',
-		brands: 'Brands',
+		brand: 'Brands',
+		calling: 'Calling',
 		audio: 'Audio',
 		arrows: 'Arrows',
 		alert: 'Alert'

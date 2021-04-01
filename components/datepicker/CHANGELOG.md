@@ -1,3 +1,28 @@
+## [2.2.3](https://github.com/vonage/vivid/compare/v2.2.2...v2.2.3) (2021-03-30)
+
+
+
+## [2.2.2](https://github.com/vonage/vivid/compare/v2.2.1...v2.2.2) (2021-03-19)
+
+
+
+## [2.2.1](https://github.com/vonage/vivid/compare/v2.2.0...v2.2.1) (2021-03-18)
+
+
+
+# [2.2.0](https://github.com/vonage/vivid/compare/v2.1.0...v2.2.0) (2021-03-17)
+
+
+
+# [2.1.0](https://github.com/vonage/vivid/compare/v2.0.4...v2.1.0) (2021-03-16)
+
+
+### Bug Fixes
+
+* make datepicker compatible with dialog ([#680](https://github.com/vonage/vivid/issues/680)) ([4d31499](https://github.com/vonage/vivid/commit/4d31499a08caa0430e53ce0970fd4d938f736fe4))
+
+
+
 ## [2.0.4](https://github.com/vonage/vivid/compare/v2.0.3...v2.0.4) (2021-03-03)
 
 

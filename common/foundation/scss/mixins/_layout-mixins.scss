@@ -40,7 +40,7 @@ $bg: var(#{color-semantic.$vvd-color-connotation});
 }
 
 @mixin layout() {
-	@each $layout in functions.pick($layouts, $all-layouts) {
+	@each $layout in functions.pick-list($layouts, $all-layouts) {
 		#{':host([layout="#{$layout}"])'} {
 			@extend %#{$layout};
 		}

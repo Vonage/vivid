@@ -1,10 +1,12 @@
 @use 'sass:selector';
 
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '../variable-names/color-semantic-variable-names' as color-semantic;
 @use '../functions';
 
 // override to apply relevance
 $connotations: primary cta success alert warning info announcement !default;
+$connotations-decorative: pacific !default;
 $connotation-placeholder: '[connotation-specifier]' !default;
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
@@ -16,6 +18,7 @@ $all-connotations: (
 	warning: 'warning',
 	info: 'info',
 	announcement: 'announcement',
+	pacific: linear-gradient(to right, var(#{scheme-variables.$vvd-color-info-30}), var(#{scheme-variables.$vvd-color-cta-70})),
 );
 
 // selector can be altered by relevance
@@ -23,8 +26,8 @@ $all-connotations: (
 	$selector: ':host(#{$connotation-placeholder})',
 	$default-fallback: null
 ) {
-	@each $connotation in functions.pick($connotations, $all-connotations) {
-		$attr: '[connotation="#{$connotation}" i]';
+	@each $name in functions.pick-list($connotations, $all-connotations) {
+		$attr: '[connotation="#{$name}" i]';
 
 		$scoped-selector: $selector; // prevents overriding argument
 
@@ -35,9 +38,9 @@ $all-connotations: (
 		);
 
 		#{$scoped-selector} {
-			#{color-semantic.$vvd-color-connotation}: var(--vvd-color-#{$connotation});
+			#{color-semantic.$vvd-color-connotation}: var(--vvd-color-#{$name});
 			#{color-semantic.$vvd-color-on-connotation}: var(
-				--vvd-color-on-#{$connotation}
+				--vvd-color-on-#{$name}
 			);
 		}
 	}
@@ -57,6 +60,26 @@ $all-connotations: (
 			#{color-semantic.$vvd-color-on-connotation}: var(
 				--vvd-color-on-#{$default-fallback}
 			);
+		}
+	}
+}
+
+@mixin connotations-decorative(
+	$selector: ':host(#{$connotation-placeholder})'
+) {
+	@each $name, $value in functions.pick-map($connotations-decorative, $all-connotations) {
+		$attr: '[connotation="#{$name}" i]';
+
+		$scoped-selector: $selector; // prevents overriding argument
+
+		$scoped-selector: selector.replace(
+			#{$selector},
+			#{$connotation-placeholder},
+			#{$attr}
+		);
+
+		#{$scoped-selector} {
+			#{color-semantic.$vvd-color-connotation}: $value;
 		}
 	}
 }

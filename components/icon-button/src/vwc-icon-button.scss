@@ -1,6 +1,8 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
-@use '@vonage/vvd-foundation/scss/mixins/shape-mixins';
+@use '@vonage/vvd-foundation/scss/mixins/shape-mixins' with (
+	$variable-name: --vvd-icon-button-shape
+);
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins' with (
 	$connotations: primary cta success alert info announcement
 );
@@ -19,7 +21,7 @@
 		justify-content: center;
 		border: var(--border);
 		background-color: var(--background-color);
-		border-radius: var(--border-radius);
+		border-radius: var(--vvd-icon-button-shape);
 		color: var(--color);
 		&:disabled {
 			color: var(#{color-semantic.$formfield-disabled-ink});
