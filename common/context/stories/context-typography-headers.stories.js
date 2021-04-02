@@ -3,7 +3,7 @@ import '@vonage/vwc-note';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Core/Typography',
+	title: 'Core/Context/Typography',
 };
 
 export const Typography = () => html`

@@ -3,6 +3,70 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.3](https://github.com/Vonage/vivid/compare/v2.2.2...v2.2.3) (2021-03-30)
+
+
+### Bug Fixes
+
+* **data-grid, select all:** issue 722 VIV-449 select all disappears when going into single ([#723](https://github.com/Vonage/vivid/issues/723)) ([f1f8309](https://github.com/Vonage/vivid/commit/f1f83097fd7c655ef909f328cb573aa6cb24481d)), closes [#722](https://github.com/Vonage/vivid/issues/722)
+* **storybook-generator:** unescaped md content may break storybook ([#713](https://github.com/Vonage/vivid/issues/713)) ([5f24b81](https://github.com/Vonage/vivid/commit/5f24b81639ca14397ffdf2d161c126e6a01fe655))
+
+
+
+
+
+## [2.2.2](https://github.com/Vonage/vivid/compare/v2.2.1...v2.2.2) (2021-03-19)
+
+**Note:** Version bump only for package @vivid/root
+
+
+
+
+
+## [2.2.1](https://github.com/Vonage/vivid/compare/v2.2.0...v2.2.1) (2021-03-18)
+
+
+### Bug Fixes
+
+* **vivid:** reverted change to vwc-checkbox ([#715](https://github.com/Vonage/vivid/issues/715)) ([e606f2d](https://github.com/Vonage/vivid/commit/e606f2d394642fbcd52762d4dd90db854efeaa27))
+
+
+
+
+
+# [2.2.0](https://github.com/Vonage/vivid/compare/v2.1.0...v2.2.0) (2021-03-17)
+
+
+### Features
+
+* **data-grid:** iss 677 viv 394 vwc data grid ([#690](https://github.com/Vonage/vivid/issues/690)) ([4539874](https://github.com/Vonage/vivid/commit/45398741a3d7c8f1840a13d00bd485f2bec6726b)), closes [#677](https://github.com/Vonage/vivid/issues/677) [#677](https://github.com/Vonage/vivid/issues/677) [#677](https://github.com/Vonage/vivid/issues/677) [#677](https://github.com/Vonage/vivid/issues/677) [#677](https://github.com/Vonage/vivid/issues/677) [#677](https://github.com/Vonage/vivid/issues/677) [#677](https://github.com/Vonage/vivid/issues/677) [#677](https://github.com/Vonage/vivid/issues/677) [#677](https://github.com/Vonage/vivid/issues/677) [#677](https://github.com/Vonage/vivid/issues/677) [#677](https://github.com/Vonage/vivid/issues/677) [#677](https://github.com/Vonage/vivid/issues/677) [#677](https://github.com/Vonage/vivid/issues/677) [#677](https://github.com/Vonage/vivid/issues/677) [#677](https://github.com/Vonage/vivid/issues/677) [#677](https://github.com/Vonage/vivid/issues/677) [#677](https://github.com/Vonage/vivid/issues/677) [#677](https://github.com/Vonage/vivid/issues/677) [#677](https://github.com/Vonage/vivid/issues/677) [#677](https://github.com/Vonage/vivid/issues/677) [#677](https://github.com/Vonage/vivid/issues/677) [#677](https://github.com/Vonage/vivid/issues/677) [#677](https://github.com/Vonage/vivid/issues/677) [#677](https://github.com/Vonage/vivid/issues/677) [#677](https://github.com/Vonage/vivid/issues/677) [#677](https://github.com/Vonage/vivid/issues/677)
+
+
+
+
+
+# [2.1.0](https://github.com/Vonage/vivid/compare/v2.0.4...v2.1.0) (2021-03-16)
+
+
+### Bug Fixes
+
+* **general:** removed redundant lerna.json parameter (see documentation at https://github.com/lerna/lerna/tree/main/commands/bootstrap) ([#696](https://github.com/Vonage/vivid/issues/696)) ([d0ed5f0](https://github.com/Vonage/vivid/commit/d0ed5f0c9b5cd5ed8a2fe209b85db19c2ca50fc2))
+* **slider, dialog:** fix slider disabled ring and dialog story ([#705](https://github.com/Vonage/vivid/issues/705)) ([1f99f6c](https://github.com/Vonage/vivid/commit/1f99f6c1834bbad7c10a416896254c962ffe0450))
+* **vwc-select:** update styles to correct references ([#701](https://github.com/Vonage/vivid/issues/701)) ([1fe2bee](https://github.com/Vonage/vivid/commit/1fe2bee7ecb53938831709f85b91c41b297ad069))
+* **vwc-slider:** viv-433 slider pin text not visible in dark mode ([#702](https://github.com/Vonage/vivid/issues/702)) ([0edc9cb](https://github.com/Vonage/vivid/commit/0edc9cb1facf4a29a34f5b6e8cb4a7839c64ba55))
+* select list-item border-radius ([#700](https://github.com/Vonage/vivid/issues/700)) ([4b4a058](https://github.com/Vonage/vivid/commit/4b4a058bc132781cacb0f78aebf03e79b5da436c))
+* **vwc-textfield:** dispatch focus/blur events programmatically ([#697](https://github.com/Vonage/vivid/issues/697)) ([ff68295](https://github.com/Vonage/vivid/commit/ff682956e81cb6469bbe5daf4e94eaf1d40a2dc7))
+* make datepicker compatible with dialog ([#680](https://github.com/Vonage/vivid/issues/680)) ([4d31499](https://github.com/Vonage/vivid/commit/4d31499a08caa0430e53ce0970fd4d938f736fe4))
+
+
+### Features
+
+* **vwc-circular-progress:** added connotation support ([#694](https://github.com/Vonage/vivid/issues/694)) ([09792e3](https://github.com/Vonage/vivid/commit/09792e35288bd049d5f1b0b602805a6d8498adb2))
+
+
+
+
+
 ## [2.0.4](https://github.com/Vonage/vivid/compare/v2.0.3...v2.0.4) (2021-03-03)
 
 

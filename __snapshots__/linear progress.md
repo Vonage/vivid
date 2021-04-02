@@ -1,6 +1,8 @@
-# `linear progress`
+# `Linear Progress`
 
-#### `should have internal contents`
+## `Basics`
+
+####   `should have internal contents`
 
 ```html
 <div

@@ -15,6 +15,7 @@
 		{ "path": "components/checkbox" },
 		{ "path": "components/chips" },
 		{ "path": "components/circular-progress" },
+		{ "path": "components/data-grid" },
 		{ "path": "components/datepicker" },
 		{ "path": "components/dialog" },
 		{ "path": "components/drawer" },

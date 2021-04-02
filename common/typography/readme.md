@@ -4,7 +4,7 @@ Vivid provides typography definitions as part of it's underlying design system.
 
 In majority of cases consumer will have the typography set correctly either via the Vivid components or Vivid context, so nothing has to be done to get it be used.
 
-![Vivid typography structure](typography-system-topology.svg)
+![Vivid typography structure](assets/images/typography-system-topology.svg)
 
 ### Types and Variations
 
@@ -17,7 +17,7 @@ By **variation** term we mean either a base typography type taken as it is, or s
 
 Principal distinction between the **types** and the **variations** is, that **variation** may be applied to the 'current' type, without knowing much of it. This way we can achieve the following carthesian matrix of typography flavors:
 
-![Vivid typography permutations](typography-system-permutations.svg)
+![Vivid typography permutations](assets/images/typography-system-permutations.svg)
 
 #### Types
 

@@ -1,7 +1,9 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
-@use '@vonage/vvd-foundation/scss/mixins/shape-mixins';
+@use '@vonage/vvd-foundation/scss/mixins/shape-mixins' with (
+	$variable-name: --vvd-list-item-shape
+);
 
 $vvd-list-item-block-size: --vvd-list-item-block-size;
 $vvd-list-item-side-padding: --vvd-list-item-side-padding;
@@ -21,7 +23,7 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 	@include typography.typography-cat-shorthand('body-2');
 	height: var(#{$vvd-list-item-block-size});
 
-	border-radius: var(--border-radius, 0);
+	border-radius: var(--vvd-list-item-shape);
 	#{$vvd-list-item-block-size}: 40px;
 	#{$vvd-list-item-side-padding}: 24px;
 	#{$vvd-list-item-graphic-margin}: 16px;
