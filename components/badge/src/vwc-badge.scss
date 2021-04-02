@@ -4,14 +4,18 @@
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation' with (
 	$connotations-set: primary cta success alert warning info
 );
+
+$namespace: vvd-badge;
+
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' with (
-	$variable-name: --vvd-badge-shape
+	$variable-name: --#{$namespace}-shape
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout-mixins' with (
-	$layouts: filled outlined soft
+	$layouts: filled	outlined	soft,
+	$variables-scope-prefix: 'vvd-badge'
 );
 
-$vvd-badge-block-size: --vvd-badge-block-size;
+$vvd-badge-block-size: --#{$namespace}-block-size;
 
 @include color-connotation.connotations-shades;
 @include color-connotation.connotations-main;
@@ -31,10 +35,10 @@ $vvd-badge-block-size: --vvd-badge-block-size;
 	@include typography.typography-cat-shorthand('caption-bold');
 	display: inline-block;
 	padding: 0 10px;
-	border: var(--border);
-	background-color: var(--background-color);
-	border-radius: var(--vvd-badge-shape);
-	color: var(--color);
+	border: var(--#{$namespace}-border);
+	background-color: var(--#{$namespace}-background-color);
+	border-radius: var(--#{$namespace}-shape);
+	color: var(--#{$namespace}-color);
 	line-height: var(#{$vvd-badge-block-size});
 }
 
