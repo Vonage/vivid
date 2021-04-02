@@ -3,7 +3,6 @@
 @use '@material/chips';
 @use './variables';
 
-$icon-size: 14px;
 .mdc-chip {
 	@include chips.fill-color(var(#{scheme-variables.$vvd-color-neutral-40}));
 	@include chips.trailing-icon-color(
