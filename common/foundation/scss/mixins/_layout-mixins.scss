@@ -4,6 +4,9 @@
 
 // override to apply relevance
 $layouts: filled outlined soft text ghost !default;
+
+$variables-scope-prefix: false !default;
+$_prefix: if($variables-scope-prefix, '--#{$variables-scope-prefix}-', '--');
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
 $all-layouts: (
@@ -17,26 +20,26 @@ $all-layouts: (
 $bg: var(#{color-semantic.$vvd-color-connotation});
 
 %filled {
-	--background-color: #{$bg};
-	--color: var(#{color-semantic.$vvd-color-on-connotation});
+	#{$_prefix}background-color: #{$bg};
+	#{$_prefix}color: var(#{color-semantic.$vvd-color-on-connotation});
 }
 
 %outlined {
-	--background-color: transparent;
-	--border: 1px solid #{$bg};
-	--color: #{$bg};
+	#{$_prefix}background-color: transparent;
+	#{$_prefix}border: 1px solid #{$bg};
+	#{$_prefix}color: #{$bg};
 }
 
 %soft {
-	--background-color: #{$bg};
-	--color: var(#{scheme-variables.$vvd-color-on-base});
-	--opaque: 20;
+	#{$_prefix}background-color: #{$bg};
+	#{$_prefix}color: var(#{scheme-variables.$vvd-color-on-base});
+	#{$_prefix}opaque: 20;
 }
 
 %text,
 %ghost {
-	--background-color: transparent;
-	--color: var(#{scheme-variables.$vvd-color-on-base});
+	#{$_prefix}background-color: transparent;
+	#{$_prefix}color: var(#{scheme-variables.$vvd-color-on-base});
 }
 
 @mixin layout() {
