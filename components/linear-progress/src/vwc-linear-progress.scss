@@ -1,20 +1,17 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
-@use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins' with (
-	$connotations: primary cta success alert,
-	$connotations-decorative: pacific
+@use '@vonage/vvd-foundation/scss/mixins/color-connotation' with (
+	$connotations-set: primary cta success alert,
+	$connotations-decorative-set: pacific
 );
 
 $block-size: 6px;
 $border-radius: 10px;
-$connotation-mixin-selector: ':host(#{color-connotation-mixins.$connotation-placeholder})';
 
-@include color-connotation-mixins.connotations-context(
-	$connotation-mixin-selector,
-	primary
-);
-
-@include color-connotation-mixins.connotations-decorative($connotation-mixin-selector);
+@include color-connotation.connotations-shades;
+@include color-connotation.connotations-main;
+@include color-connotation.connotations-main-default(primary);
+@include color-connotation.connotations-decorative;
 
 :host {
 	--mdc-theme-primary: var(#{color-semantic.$vvd-color-connotation});

@@ -1,8 +1,8 @@
 @forward './vwc-button-coupling';
 @use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
-@use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins' with (
-	$connotations: primary cta success alert info announcement
+@use '@vonage/vvd-foundation/scss/mixins/color-connotation' with (
+	$connotations-set: primary cta success alert info announcement
 );
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' with(
 	$variable-name: --vvd-button-shape
@@ -19,6 +19,9 @@
 	}
 }
 
+@include color-connotation.connotations-main;
+@include color-connotation.connotations-main-default(primary);
+
 :host {
 	--mdc-button-disabled-ink-color: var(#{color-semantic.$formfield-disabled-ink});
 	--mdc-button-disabled-fill-color: var(#{scheme-variables.$vvd-color-neutral-30});
@@ -26,10 +29,6 @@
 	--mdc-button-outline-color: var(--mdc-theme-primary);
 	--mdc-button-horizontal-padding: 14px;
 }
-
-@include color-connotation-mixins.connotations-context(
-	':host([unelevated]#{color-connotation-mixins.$connotation-placeholder}),:host([outlined]#{color-connotation-mixins.$connotation-placeholder})'
-);
 
 :host([unelevated]),
 :host([outlined]) {

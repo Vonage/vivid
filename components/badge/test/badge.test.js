@@ -37,7 +37,7 @@ describe('badge', () => {
 			);
 			await waitNextTask();
 			expect(badge).to.exist;
-			assertComputedStyle(badge, await getTypographyStyle('caption-bold'));
+			assertComputedStyle(badge, { ...(await getTypographyStyle('caption-bold')), lineHeight: '24px' });
 		});
 	});
 
@@ -85,8 +85,7 @@ describe('badge', () => {
 		it('should have rounded shape by default', async () => {
 			assertComputedStyle(
 				actualElement,
-				shapeStyles('rounded', 'badge'),
-				'::before'
+				shapeStyles('rounded', 'badge')
 			);
 		});
 
@@ -95,15 +94,14 @@ describe('badge', () => {
 			await waitNextTask();
 			assertComputedStyle(
 				actualElement,
-				shapeStyles('rounded', 'badge'),
-				'::before'
+				shapeStyles('rounded', 'badge')
 			);
 		});
 
 		it('should have pill shape when shape set to pill', async () => {
 			actualElement.shape = 'pill';
 			await waitNextTask();
-			assertComputedStyle(actualElement, shapeStyles('pill', 'badge'), '::before');
+			assertComputedStyle(actualElement, shapeStyles('pill', 'badge'));
 		});
 	});
 });

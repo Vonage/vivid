@@ -3,13 +3,16 @@
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' with (
 	$variable-name: --vvd-icon-button-shape
 );
-@use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins' with (
-	$connotations: primary cta success alert info announcement
+@use '@vonage/vvd-foundation/scss/mixins/color-connotation' with (
+	$connotations-set: primary cta success alert info announcement
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout-mixins' with (
 	$layouts: filled outlined ghost,
 	$variables-scope-prefix: 'vvd-icon-button'
 );
+
+@include color-connotation.connotations-main;
+@include color-connotation.connotations-main-default(primary);
 
 :host {
 	// sizing
@@ -33,11 +36,6 @@
 		--icon-size: 20px;
 	}
 }
-
-// theming
-@include color-connotation-mixins.connotations-context(
-	':host([layout="filled"]#{color-connotation-mixins.$connotation-placeholder}),:host([layout="outlined"]#{color-connotation-mixins.$connotation-placeholder})'
-);
 
 :host([layout='filled']) {
 	.mdc-icon-button:disabled {

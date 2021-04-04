@@ -45,7 +45,7 @@ export class VWCIconButton extends MWCIconButton {
 	layout: IconButtonLayout = Layout.Ghost;
 
 	@property({ type: String, reflect: true })
-	connotation: IconButtonConnotation = Connotation.Primary;
+	connotation?: IconButtonConnotation;
 
 	@property({ type: String, reflect: true })
 	shape?: IconButtonShape;
