@@ -3,9 +3,11 @@ import '../vwc-top-app-bar.js';
 import {
 	isolatedElementsCreation,
 	waitNextTask,
-	textToDomToParent,
-	runAxeCore,
+	textToDomToParent
 } from '../../../test/test-helpers.js';
+import { chaiA11yAxe } from 'chai-a11y-axe';
+
+chai.use(chaiA11yAxe);
 
 const COMPONENT_NAME = 'vwc-top-app-bar';
 
@@ -18,13 +20,8 @@ describe('top app bar a11y', () => {
 		);
 		await waitNextTask();
 
-		// TODO: investigate invalid aria-roles
-		const options = {
-			rules: {
-				'aria-allowed-role': { enabled: false }
-			}
-		};
-
-		await runAxeCore(actualElement, options);
+		await expect(actualElement).shadowDom.to.be.accessible({
+			ignoredRules: ['aria-allowed-role'],
+		});
 	});
 });

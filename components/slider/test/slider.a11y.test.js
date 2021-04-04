@@ -3,9 +3,11 @@ import '@vonage/vwc-list/vwc-list-item';
 import {
 	isolatedElementsCreation,
 	waitNextTask,
-	textToDomToParent,
-	runAxeCore,
+	textToDomToParent
 } from '../../../test/test-helpers.js';
+import { chaiA11yAxe } from 'chai-a11y-axe';
+
+chai.use(chaiA11yAxe);
 
 const COMPONENT_NAME = 'vwc-slider';
 
@@ -20,13 +22,8 @@ describe('slider a11y', () => {
 		);
 		await waitNextTask();
 
-		// TODO: requires aria-label support from mwc
-		const options = {
-			rules: {
-				'aria-input-field-name': { enabled: false }
-			}
-		};
-
-		await runAxeCore(actualElement, options);
+		await expect(actualElement).shadowDom.to.be.accessible({
+			ignoredRules: ['aria-input-field-name'],
+		});
 	});
 });
