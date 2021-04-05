@@ -415,7 +415,13 @@ describe('button', () => {
 			await waitNextTask();
 			const innerButton = b.shadowRoot.querySelector('.mdc-button.mdc-button--outlined');
 			expect(innerButton).exist;
-			assertComputedStyle(innerButton, { color: 'rgb(153,153,153)', borderColor: 'rgb(153,153,153)' });
+			assertComputedStyle(innerButton, {
+				color: 'rgb(153,153,153)',
+				borderTopColor: 'rgb(153,153,153)',
+				borderRightColor: 'rgb(153,153,153)',
+				borderBottomColor: 'rgb(153,153,153)',
+				borderLeftColor: 'rgb(153,153,153)'
+			});
 		});
 	});
 });

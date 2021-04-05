@@ -95,7 +95,13 @@ describe('icon button', () => {
 			formElement.layout = 'outlined';
 			formElement.disabled = true;
 			await waitNextTask();
-			assertComputedStyle(actualElement, { color: 'rgb(153,153,153)', borderColor: 'rgb(153,153,153)' });
+			assertComputedStyle(actualElement, {
+				color: 'rgb(153,153,153)',
+				borderTopColor: 'rgb(153,153,153)',
+				borderRightColor: 'rgb(153,153,153)',
+				borderBottomColor: 'rgb(153,153,153)',
+				borderLeftColor: 'rgb(153,153,153)'
+			});
 		});
 	});
 });

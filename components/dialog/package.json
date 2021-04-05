@@ -28,8 +28,6 @@
 	"dependencies": {
 		"@material/mwc-dialog": "^0.20.0",
 		"@vonage/vvd-core": "^2.2.4",
-		"@vonage/vvd-design-tokens": "^2.2.4",
-		"@vonage/vvd-foundation": "^2.2.4",
 		"@vonage/vvd-style-coupling": "^2.2.4",
 		"@vonage/vvd-typography": "^2.2.4",
 		"lit-element": "^2.4.0",
