@@ -83,5 +83,19 @@ describe('icon button', () => {
 			await waitNextTask();
 			assertComputedStyle(actualElement, layoutStyles('outlined'));
 		});
+
+		it('should have disabled layout when disabled (filled)', async () => {
+			formElement.layout = 'filled';
+			formElement.disabled = true;
+			await waitNextTask();
+			assertComputedStyle(actualElement, { color: 'rgb(153,153,153)', backgroundColor: 'rgb(204,204,204)' });
+		});
+
+		it('should have disabled layout when disabled (outlined)', async () => {
+			formElement.layout = 'outlined';
+			formElement.disabled = true;
+			await waitNextTask();
+			assertComputedStyle(actualElement, { color: 'rgb(153,153,153)', borderColor: 'rgb(153,153,153)' });
+		});
 	});
 });
