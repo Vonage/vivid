@@ -1,3 +1,12 @@
+## [2.2.4](https://github.com/vonage/vivid/compare/v2.2.3...v2.2.4) (2021-04-05)
+
+
+### Bug Fixes
+
+* **vwc-chip:** trailing icon offset fixed ([#735](https://github.com/vonage/vivid/issues/735)) ([c580773](https://github.com/vonage/vivid/commit/c580773f61f0ca978bd87a33cdab9b9f26d9b53c))
+
+
+
 ## [2.2.3](https://github.com/vonage/vivid/compare/v2.2.2...v2.2.3) (2021-03-30)
 
 
