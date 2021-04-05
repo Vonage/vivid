@@ -20,7 +20,10 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 	--mdc-theme-text-hint-on-background: var(
 		#{scheme-variables.$vvd-color-on-base}
 	);
+
 	@include typography.typography-cat-shorthand('body-2');
+	@include vvd-formfield.couplings;
+
 	height: var(#{$vvd-list-item-block-size});
 
 	border-radius: var(--vvd-list-item-shape);
@@ -85,12 +88,8 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 }
 
 :host([disabled]) {
-	--mdc-theme-text-icon-on-background: var(
-		#{vvd-formfield.$formfield-disabled-ink}
-	);
-	--mdc-theme-text-hint-on-background: var(
-		#{vvd-formfield.$formfield-disabled-ink}
-	);
+	--mdc-theme-text-icon-on-background: var(#{vvd-formfield.$formfield-disabled-ink});
+	--mdc-theme-text-hint-on-background: var(#{vvd-formfield.$formfield-disabled-ink});
 
 	.mdc-list-item__text {
 		color: var(#{vvd-formfield.$formfield-disabled-ink});
