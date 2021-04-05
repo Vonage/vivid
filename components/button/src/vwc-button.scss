@@ -28,6 +28,8 @@
 	--mdc-button-disabled-outline-color: var(#{vvd-formfield.$formfield-disabled-ink});
 	--mdc-button-outline-color: var(--mdc-theme-primary);
 	--mdc-button-horizontal-padding: 14px;
+
+	@include vvd-formfield.couplings;
 }
 
 :host([unelevated]),
