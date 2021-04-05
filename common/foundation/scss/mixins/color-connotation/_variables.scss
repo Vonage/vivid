@@ -1,2 +1,5 @@
 $compound-placeholder: '[compound]';
 $selector: ':host(#{$compound-placeholder})' !default;
+
+$vvd-color-connotation: --vvd-color-connotation;
+$vvd-color-on-connotation: --vvd-color-on-connotation;

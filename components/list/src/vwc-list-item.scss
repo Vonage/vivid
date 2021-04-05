@@ -1,6 +1,6 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
-@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
-@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
+@use '@vonage/vvd-style-coupling/src/vvd-formfield' as vvd-formfield;
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' with (
 	$variable-name: --vvd-list-item-shape
 );
@@ -86,14 +86,14 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 
 :host([disabled]) {
 	--mdc-theme-text-icon-on-background: var(
-		#{color-semantic.$formfield-disabled-ink}
+		#{vvd-formfield.$formfield-disabled-ink}
 	);
 	--mdc-theme-text-hint-on-background: var(
-		#{color-semantic.$formfield-disabled-ink}
+		#{vvd-formfield.$formfield-disabled-ink}
 	);
 
 	.mdc-list-item__text {
-		color: var(#{color-semantic.$formfield-disabled-ink});
+		color: var(#{vvd-formfield.$formfield-disabled-ink});
 	}
 }
 

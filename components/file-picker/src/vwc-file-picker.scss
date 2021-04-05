@@ -1,5 +1,5 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
-@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
+@use '@vonage/vvd-style-coupling/src/vvd-formfield' as vvd-formfield;
 @use '@vonage/vvd-typography/scss/typography' as typography;
 
 :host {
@@ -69,7 +69,7 @@
 
 	&.drag-invalid {
 		.content {
-			background-color: var(#{color-semantic.$formfield-error-fill});
+			background-color: var(#{vvd-formfield.$formfield-error-fill});
 		}
 	}
 }

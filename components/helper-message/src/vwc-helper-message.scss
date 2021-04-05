@@ -1,19 +1,20 @@
-@use '@vonage/vvd-typography/scss/typography';
-@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
-@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as sem-col;
+@use '@vonage/vvd-typography/scss/typography' as typography;
+@use '@vonage/vvd-style-coupling/src/vvd-formfield' as vvd-formfield;
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 
 :host {
 	@include typography.typography-cat-shorthand('caption');
+	@include vvd-formfield.couplings;
 	display: flex;
 	align-items: center;
-	color: var(#{sem-col.$formfield-label-idle-ink});
+	color: var(#{vvd-formfield.$formfield-label-idle-ink});
 	margin-block-start: 4px;
 
 	min-block-size: 16px;
 
 	.helper-icon {
 		display: none;
-		color: var(#{sem-col.$formfield-label-error-ink});
+		color: var(#{vvd-formfield.$formfield-label-error-ink});
 	}
 
 	.helper-text {
@@ -38,5 +39,5 @@
 }
 
 :host([disabled]) {
-	color: var(#{#{sem-col.$formfield-disabled-ink}});
+	color: var(#{#{vvd-formfield.$formfield-disabled-ink}});
 }

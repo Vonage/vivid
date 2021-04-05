@@ -1,0 +1,27 @@
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+
+$formfield-disabled-ink: --vvd-formfield-disabled-ink;
+$formfield-disabled-fill: --vvd-formfield-disabled-fill;
+
+$formfield-label-idle-ink: --vvd-formfield-label-idle-ink;
+
+$formfield-border-idle: --vvd-formfield-border-idle;
+$formfield-border-hover: --vvd-formfield-border-hover;
+$formfield-border-disabled: --vvd-formfield-border-disabled;
+
+$formfield-error-fill: --vvd-formfield-error-fill;
+$formfield-label-error-ink: --vvd-formfield-label-error-ink;
+
+@mixin couplings {
+	#{$formfield-disabled-ink}: var(#{scheme-variables.$vvd-color-neutral-50});
+	#{$formfield-disabled-fill}: var(#{scheme-variables.$vvd-color-neutral-20});
+
+	#{$formfield-label-idle-ink}: var(#{scheme-variables.$vvd-color-neutral-70});
+
+	#{$formfield-border-idle}: var(#{scheme-variables.$vvd-color-neutral-50});
+	#{$formfield-border-hover}: var(#{scheme-variables.$vvd-color-on-base});
+	#{$formfield-border-disabled}: var(#{scheme-variables.$vvd-color-neutral-50});
+
+	#{$formfield-error-fill}: var(#{scheme-variables.$vvd-color-alert-20});
+	#{$formfield-label-error-ink}: var(#{scheme-variables.$vvd-color-alert});
+}

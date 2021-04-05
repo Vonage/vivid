@@ -1,6 +1,5 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
-@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
-@use '@vonage/vvd-foundation/scss/mixins/color-connotation' with (
+@use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation with (
 	$connotations-set: primary cta success alert,
 	$connotations-decorative-set: pacific
 );
@@ -14,7 +13,7 @@ $border-radius: 10px;
 @include color-connotation.connotations-decorative;
 
 :host {
-	--mdc-theme-primary: var(#{color-semantic.$vvd-color-connotation});
+	--mdc-theme-primary: var(#{color-connotation.$vvd-color-connotation});
 	--mdc-linear-progress-buffer-color: var(#{scheme-variables.$vvd-color-neutral-30});
 	--mdc-linear-progress-buffering-dots-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' enable-background='new 0 0 5 2' xml:space='preserve' viewBox='0 0 5 2' preserveAspectRatio='none slice'%3E%3Ccircle cx='1' cy='1' r='1' fill='%23616266'/%3E%3C/svg%3E");
 }

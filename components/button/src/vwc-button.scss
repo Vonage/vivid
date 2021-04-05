@@ -1,7 +1,7 @@
 @forward './vwc-button-coupling';
-@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
-@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
-@use '@vonage/vvd-foundation/scss/mixins/color-connotation' with (
+@use '@vonage/vvd-style-coupling/src/vvd-formfield' as vvd-formfield;
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
+@use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation with (
 	$connotations-set: primary cta success alert info announcement
 );
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' with(
@@ -23,17 +23,17 @@
 @include color-connotation.connotations-main-default(primary);
 
 :host {
-	--mdc-button-disabled-ink-color: var(#{color-semantic.$formfield-disabled-ink});
+	--mdc-button-disabled-ink-color: var(#{vvd-formfield.$formfield-disabled-ink});
 	--mdc-button-disabled-fill-color: var(#{scheme-variables.$vvd-color-neutral-30});
-	--mdc-button-disabled-outline-color: var(#{color-semantic.$formfield-disabled-ink});
+	--mdc-button-disabled-outline-color: var(#{vvd-formfield.$formfield-disabled-ink});
 	--mdc-button-outline-color: var(--mdc-theme-primary);
 	--mdc-button-horizontal-padding: 14px;
 }
 
 :host([unelevated]),
 :host([outlined]) {
-	--mdc-theme-primary: var(#{color-semantic.$vvd-color-connotation});
-	--mdc-theme-on-primary: var(#{color-semantic.$vvd-color-on-connotation});
+	--mdc-theme-primary: var(#{color-connotation.$vvd-color-connotation});
+	--mdc-theme-on-primary: var(#{color-connotation.$vvd-color-on-connotation});
 }
 /////////////////////////////////////////////////////////////////////////////
 .mdc-button {

@@ -1,5 +1,5 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
-@use '../variable-names/color-semantic-variable-names' as color-semantic;
+@use './color-connotation';
 @use '../functions';
 
 // override to apply relevance
@@ -18,18 +18,18 @@ $all-layouts: (
 );
 
 %filled {
-	#{$_prefix}background-color: var(#{color-semantic.$vvd-color-connotation});
-	#{$_prefix}color: var(#{color-semantic.$vvd-color-on-connotation});
+	#{$_prefix}background-color: var(#{color-connotation.$vvd-color-connotation});
+	#{$_prefix}color: var(#{color-connotation.$vvd-color-on-connotation});
 }
 
 %outlined {
 	#{$_prefix}background-color: transparent;
-	#{$_prefix}border: 1px solid var(#{color-semantic.$vvd-color-connotation});
-	#{$_prefix}color: var(#{color-semantic.$vvd-color-connotation});
+	#{$_prefix}border: 1px solid var(#{color-connotation.$vvd-color-connotation});
+	#{$_prefix}color: var(#{color-connotation.$vvd-color-connotation});
 }
 
 %soft {
-	#{$_prefix}background-color: var(#{color-semantic.$vvd-color-connotation}-soft);
+	#{$_prefix}background-color: var(#{color-connotation.$vvd-color-connotation}-soft);
 	#{$_prefix}color: var(#{scheme-variables.$vvd-color-on-base});
 }
 
