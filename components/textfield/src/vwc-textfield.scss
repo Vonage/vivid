@@ -35,6 +35,8 @@
 		#{vvd-formfield.$formfield-error-fill}
 	);
 
+	@include vvd-formfield.couplings;
+
 	min-width: 180px;
 
 	font-stretch: var(
