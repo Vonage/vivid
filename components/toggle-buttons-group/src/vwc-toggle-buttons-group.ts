@@ -30,9 +30,16 @@ export class VwcToggleButtonsGroup extends LitElement {
 				}
 				this.dispatchEvent(new CustomEvent('toggle', {
 					detail: {
+						state: [...this.children].map((button, index) => {
+							return {
+								index,
+								value: button.getAttribute('value'),
+								active: this.#_selected === index
+							}
+						}),
 						toggled: {
 							activeIndex,
-							state: this.#_selected === activeIndex
+							active: this.#_selected === activeIndex
 						}
 					}
 				}));
