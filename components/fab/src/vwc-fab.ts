@@ -5,7 +5,7 @@ import {
 import { Fab as MWCFab } from '@material/mwc-fab';
 import { style as mwcFabStyle } from '@material/mwc-fab/mwc-fab-css.js';
 import { style as vwcFabStyle } from './vwc-fab.css.js';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-couplings.css';
 import '@vonage/vwc-icon';
 
 declare global {

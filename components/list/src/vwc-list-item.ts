@@ -2,7 +2,7 @@ import { customElement, property } from 'lit-element';
 import { ListItem as MWCListItem } from '@material/mwc-list/mwc-list-item';
 import { style as vwcListItemStyle } from './vwc-list-item.css.js';
 import { style as mwcListItemStyle } from '@material/mwc-list/mwc-list-item-css.js';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-couplings.css';
 import { Shape } from '@vonage/vvd-foundation/constants';
 
 declare global {

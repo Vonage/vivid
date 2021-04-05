@@ -3,7 +3,7 @@ import {
 	customElement, html, property, TemplateResult
 } from 'lit-element';
 import { IconButtonToggle as MWCIconButtonToggle } from '@material/mwc-icon-button-toggle';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-couplings.css';
 import { style as vwcButtonStyle } from '@vonage/vwc-icon-button/vwc-icon-button.css';
 import { style as mwcIconButtonStyle } from '@material/mwc-icon-button/mwc-icon-button-css.js';
 import { style as vwcIconButtonToggleStyle } from './vwc-icon-button-toggle.css';

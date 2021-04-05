@@ -1,7 +1,7 @@
 @use './vwc-textfield-variables' as textfield-variables;
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
-@use '@vonage/vvd-style-coupling/src/vvd-formfield' as vvd-formfield;
+@use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
 
 ::slotted(#{textfield-variables.$vvd-input-selector}) {
 	@include typography.typography-cat-shorthand('body-2');

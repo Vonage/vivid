@@ -1,10 +1,11 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
-@use '@vonage/vvd-style-coupling/src/vvd-formfield' as vvd-formfield;
+@use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 
 :host {
 	@include typography.typography-cat-shorthand('caption');
 	@include vvd-formfield.couplings;
+	
 	display: flex;
 	align-items: center;
 	color: var(#{vvd-formfield.$formfield-label-idle-ink});

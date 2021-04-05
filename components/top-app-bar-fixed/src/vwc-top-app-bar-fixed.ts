@@ -3,7 +3,7 @@ import { customElement } from 'lit-element';
 import { TopAppBarFixed as MWCTopAppBarFixed } from '@material/mwc-top-app-bar-fixed';
 import { style as MWCTopAppBarStyle } from '@material/mwc-top-app-bar/mwc-top-app-bar-css.js';
 import { style as VWCTopAppBarFixedStyle } from './vwc-top-app-bar-fixed.css.js';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-couplings.css';
 
 declare global {
 	interface HTMLElementTagNameMap {

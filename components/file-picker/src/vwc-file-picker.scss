@@ -1,5 +1,5 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
-@use '@vonage/vvd-style-coupling/src/vvd-formfield' as vvd-formfield;
+@use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
 @use '@vonage/vvd-typography/scss/typography' as typography;
 
 :host {
@@ -74,7 +74,7 @@
 	}
 }
 
-:host([drop-zone='false']) {
+:host([drop-zone='false']) { 
 	display: inline-flex;
 
 	.content {

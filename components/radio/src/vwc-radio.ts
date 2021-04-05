@@ -1,7 +1,7 @@
 import '@vonage/vvd-core';
 import { customElement, html, TemplateResult } from 'lit-element';
 import { Radio as MWCRadio } from '@material/mwc-radio';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-couplings.css';
 import { style as vwcRadioStyle } from './vwc-radio.css';
 import { style as mwcRadioStyle } from '@material/mwc-radio/mwc-radio-css.js';
 import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';

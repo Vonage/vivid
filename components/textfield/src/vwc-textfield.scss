@@ -2,7 +2,7 @@
 @forward './vwc-textfield-input';
 @use './vwc-textfield-variables' as textfield-variables;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
-@use '@vonage/vvd-style-coupling/src/vvd-formfield' as vvd-formfield;
+@use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
 	//! may consider replacing with own component variable to prevent delegation
 	$variable-name: --mdc-shape-small

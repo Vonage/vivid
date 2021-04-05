@@ -1,5 +1,5 @@
 @forward './vwc-button-coupling';
-@use '@vonage/vvd-style-coupling/src/vvd-formfield' as vvd-formfield;
+@use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation with (
 	$connotations-set: primary cta success alert info announcement

@@ -10,7 +10,7 @@ import {
 	PropertyValues,
 } from 'lit-element';
 import { Select as MWCSelect } from '@material/mwc-select';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-couplings.css';
 import { style as vwcSelectStyle } from './vwc-select.css';
 import { style as mwcSelectStyle } from '@material/mwc-select/mwc-select-css.js';
 import { associateWithForm } from '@vonage/vvd-foundation/form-association';
