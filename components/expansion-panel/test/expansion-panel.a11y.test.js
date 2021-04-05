@@ -2,9 +2,11 @@ import '../vwc-expansion-panel.js';
 import {
 	isolatedElementsCreation,
 	waitNextTask,
-	textToDomToParent,
-	runAxeCore,
+	textToDomToParent
 } from '../../../test/test-helpers.js';
+import { chaiA11yAxe } from 'chai-a11y-axe';
+
+chai.use(chaiA11yAxe);
 
 const COMPONENT_NAME = 'vwc-expansion-panel';
 
@@ -21,6 +23,6 @@ describe('expansion-panel a11y', () => {
 		);
 		await waitNextTask();
 
-		await runAxeCore(actualElement);
+		await expect(actualElement).shadowDom.to.be.accessible();
 	});
 });
