@@ -3,8 +3,10 @@ import {
 	isolatedElementsCreation,
 	waitNextTask,
 	textToDomToParent,
-	runAxeCore,
 } from '../../../test/test-helpers.js';
+import { chaiA11yAxe } from 'chai-a11y-axe';
+
+chai.use(chaiA11yAxe);
 
 const COMPONENT_NAME = 'vwc-audio';
 
@@ -17,13 +19,8 @@ describe('audio a11y', () => {
 		);
 		await waitNextTask();
 
-		// TODO: buttons should have aria-label
-		const options = {
-			rules: {
-				'button-name': { enabled: false }
-			}
-		};
-
-		await runAxeCore(actualElement, options);
+		await expect(actualElement).shadowDom.to.be.accessible({
+			ignoredRules: ['button-name'],
+		});
 	});
 });
