@@ -17,7 +17,9 @@
 		"directory": "components/toggle-buttons-group"
 	},
 	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1"
+		"build:typescript": "tsc -b",
+		"build:styles": "umbrella-style-modules",
+		"build": "yarn run build:styles && yarn run build:typescript"
 	},
 	"bugs": {
 		"url": "https://github.com/Vonage/vivid/issues"
@@ -28,6 +30,6 @@
 		"tslib": "^2.0.2"
 	},
 	"devDependencies": {
-
+		"@vonage/vvd-umbrella": "^2.2.3"
 	}
 }

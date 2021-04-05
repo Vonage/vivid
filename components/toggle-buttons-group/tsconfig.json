@@ -1,9 +1,10 @@
 {
-	"extends": "../../tsconfig.json",
+	"extends": "@vonage/vvd-umbrella/configs/tsconfig.json",
 	"compilerOptions": {
+		"module": "ESNext",
 		"composite": true,
 		"rootDir": "src",
-		"outDir": "./",
+		"outDir": ".",
 		"tsBuildInfoFile": ".tsbuildinfo"
 	},
 	"include": [
@@ -11,10 +12,5 @@
 	],
 	"exclude": [
 		"src/test/*.ts"
-	],
-	"references": [
-		{
-			"path": "../../common/foundation"
-		}
 	]
 }

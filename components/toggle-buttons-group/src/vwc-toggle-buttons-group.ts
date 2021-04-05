@@ -1,4 +1,4 @@
-import { customElement, LitElement, property } from 'lit-element';
+import { customElement, LitElement } from 'lit-element';
 import { style } from './vwc-toggle-buttons-group.css';
 
 declare global {
@@ -7,6 +7,8 @@ declare global {
 	}
 }
 
+export const VALID_BUTTON_ELEMENTS = ['vwc-button'];
+
 @customElement('vwc-toggle-buttons-group')
 export class VwcToggleButtonsGroup extends LitElement {
 	/**
@@ -14,21 +16,27 @@ export class VwcToggleButtonsGroup extends LitElement {
 	 */
 	static styles = style;
 
-	@property({ type: Boolean, reflect: true })
-	enlarged = false;
+	#_selected: null | number = null
 
-	@property({ attribute: 'some-attribute', reflect: true })
-	someAttribute = null;
-
-	protected updated(changes: Map<string, boolean>): void {
-		super.updated();
-	}
-
-	connectedCallback(): void {
-		super.connectedCallback();
-	}
-
-	disconnectedCallback(): void {
-		super.disconnectedCallback();
+	constructor() {
+		super();
+		[...this.children].forEach((buttonElement, activeIndex) => {
+			if (!VALID_BUTTON_ELEMENTS.includes(buttonElement.tagName.toLowerCase())) return;
+			buttonElement.addEventListener('click', () => {
+				if (this.#_selected === activeIndex) {
+					this.#_selected = null;
+				} else {
+					this.#_selected = activeIndex
+				}
+				this.dispatchEvent(new CustomEvent('toggle', {
+					detail: {
+						toggled: {
+							activeIndex,
+							state: this.#_selected === activeIndex
+						}
+					}
+				}));
+			});
+		});
 	}
 }
