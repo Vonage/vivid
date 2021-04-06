@@ -3,7 +3,7 @@ import { RadioListItem as MWCRadioListItem } from '@material/mwc-list/mwc-radio-
 import { style as mwcListItemStyle } from '@material/mwc-list/mwc-list-item-css.js';
 import { style as mwcControlListItemStyle } from '@material/mwc-list/mwc-control-list-item-css.js';
 import { style as vwcRadioListItemStyle } from './vwc-radio-list-item.css';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-couplings.css';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -24,4 +24,4 @@ MWCRadioListItem.styles = [
  * This component is an extension of [<mwc-radio-list-item>](https://github.com/material-components/material-components-web-components/tree/master/packages/list)
  */
 @customElement('vwc-radio-list-item')
-export class VWCRadioListItem extends MWCRadioListItem {}
+export class VWCRadioListItem extends MWCRadioListItem { }

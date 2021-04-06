@@ -3,7 +3,7 @@ import {
 	customElement, html, property, TemplateResult
 } from 'lit-element';
 import { IconButtonToggle as MWCIconButtonToggle } from '@material/mwc-icon-button-toggle';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-couplings.css';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 import { style as vwcButtonStyle } from '@vonage/vwc-icon-button/vwc-icon-button.css';
 import { style as mwcIconButtonStyle } from '@material/mwc-icon-button/mwc-icon-button-css.js';
 import { style as vwcIconButtonToggleStyle } from './vwc-icon-button-toggle.css';
@@ -29,10 +29,10 @@ MWCIconButtonToggle.styles = [
 @customElement('vwc-icon-button-toggle')
 export class VWCIconButtonToggle extends MWCIconButtonToggle {
 	@property({ type: Boolean, reflect: true })
-	dense? = false;
+	dense?= false;
 
 	@property({ type: Boolean, reflect: true })
-	enlarged? = false;
+	enlarged?= false;
 
 	protected updated(changes: Map<string, boolean>): void {
 		if (changes.has('dense')) {

@@ -3,7 +3,7 @@ import { customElement, property } from 'lit-element';
 import { CircularProgress as MWCCircularProgress } from '@material/mwc-circular-progress';
 import { style as mwcCircularProgressStyle } from '@material/mwc-circular-progress/mwc-circular-progress-css.js';
 import { style as vwcCircularProgressStyle } from './vwc-circular-progress.css';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-couplings.css';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 import { Connotation } from '@vonage/vvd-foundation/constants';
 
 declare global {
@@ -18,7 +18,7 @@ type CircularProgressConnotation = Extract<
 	| Connotation.CTA
 	| Connotation.Success
 	| Connotation.Alert
-	>;
+>;
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
