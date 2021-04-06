@@ -29,7 +29,7 @@
 	--mdc-button-outline-color: var(--mdc-theme-primary);
 	--mdc-button-horizontal-padding: 14px;
 
-	@include vvd-formfield.couplings;
+	@include vvd-formfield.coupling;
 }
 
 :host([unelevated]),

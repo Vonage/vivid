@@ -3,7 +3,7 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 
 :host {
-	@include vvd-formfield.couplings;
+	@include vvd-formfield.coupling;
 
 	display: inline-block;
 	max-inline-size: 100%;

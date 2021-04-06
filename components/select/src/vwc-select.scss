@@ -41,7 +41,7 @@ $vvd-select-size-block: --vvd-select-size-block;
 
 	--mdc-shape-small: var(--border-radius);
 
-	@include vvd-formfield.couplings;
+	@include vvd-formfield.coupling;
 
 	display: inline-flex;
 	flex-direction: column;

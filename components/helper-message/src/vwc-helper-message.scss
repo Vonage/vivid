@@ -4,8 +4,8 @@
 
 :host {
 	@include typography.typography-cat-shorthand('caption');
-	@include vvd-formfield.couplings;
-	
+	@include vvd-formfield.coupling;
+
 	display: flex;
 	align-items: center;
 	color: var(#{vvd-formfield.$formfield-label-idle-ink});

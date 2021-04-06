@@ -18,7 +18,7 @@
 
 	// sizing
 	--mdc-icon-button-size: 40px;
-	@include vvd-formfield.couplings;
+	@include vvd-formfield.coupling;
 
 	.mdc-icon-button {
 		display: inline-flex;

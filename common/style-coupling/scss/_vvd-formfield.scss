@@ -14,7 +14,7 @@ $formfield-border-disabled: --vvd-formfield-border-disabled;
 $formfield-error-fill: --vvd-formfield-error-fill;
 $formfield-label-error-ink: --vvd-formfield-label-error-ink;
 
-@mixin couplings {
+@mixin coupling {
 	#{$formfield-disabled-ink}: var(#{scheme-variables.$vvd-color-neutral-50});
 	#{$formfield-disabled-fill}: var(#{scheme-variables.$vvd-color-neutral-20});
 
