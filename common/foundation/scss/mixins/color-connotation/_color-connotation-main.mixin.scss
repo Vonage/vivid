@@ -1,7 +1,6 @@
 @use 'sass:selector';
 
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
-@use '../../variable-names/color-semantic-variable-names' as color-semantic;
 @use '../../functions';
 @use 'predefined-connotations';
 @use 'variables';
@@ -52,6 +51,6 @@ $selector: variables.$selector !default;
 }
 
 @mixin connotation-main-variables($name) {
-	#{color-semantic.$vvd-color-connotation}: var(--vvd-color-#{$name});
-	#{color-semantic.$vvd-color-on-connotation}: var(--vvd-color-on-#{$name});
+	#{variables.$vvd-color-connotation}: var(--vvd-color-#{$name});
+	#{variables.$vvd-color-on-connotation}: var(--vvd-color-on-#{$name});
 }

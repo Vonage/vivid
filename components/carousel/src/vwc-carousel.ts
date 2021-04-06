@@ -9,7 +9,6 @@ import {
 	TemplateResult,
 } from 'lit-element';
 import { style } from './vwc-carousel.css';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 import Swiper, { SwiperOptions } from 'swiper';
 import '@vonage/vwc-icon';
 import './vwc-carousel-item.js';
@@ -47,7 +46,7 @@ export class VWCCarousel extends LitElement {
 	private slideRefs: HTMLElement[] = [];
 
 	static get styles(): CSSResult[] {
-		return [style, styleCoupling];
+		return [style];
 	}
 
 	private get swiperOptions(): SwiperOptions {

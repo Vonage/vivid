@@ -1,6 +1,5 @@
 @use 'sass:selector';
 @use '../../functions';
-@use '../../variable-names/color-semantic-variable-names' as color-semantic;
 @use 'predefined-connotations';
 @use 'variables';
 
@@ -30,7 +29,7 @@ $selector: variables.$selector !default;
 
 		#{$local-selector} {
 			@each $s_name, $s_value in $value {
-				#{color-semantic.$vvd-color-connotation}-#{$s_name}: var(--vvd-color-#{$s_value});
+				#{variables.$vvd-color-connotation}-#{$s_name}: var(--vvd-color-#{$s_value});
 			}
 		}
 	}

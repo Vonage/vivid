@@ -4,6 +4,7 @@ import {
 	waitNextTask,
 	textToDomToParent,
 	randomAlpha,
+	assertComputedStyle,
 	isSafari,
 	isFirefox,
 } from '../../../test/test-helpers.js';
@@ -218,6 +219,28 @@ describe('file picker', () => {
 			const helper = filePicker.shadowRoot.querySelector('#helper');
 			expect(helper).exist;
 			expect(helper.textContent).equal('only file/s drop allowed');
+			expect(filePicker.filesCount).equal(0);
+		});
+
+		it('should forbid drag of non-file items (feedback)', async () => {
+			if (isSafari()) {
+				return;
+			}
+
+			const filePickerName = randomAlpha();
+			const [filePicker] = addElements(textToDomToParent(`
+					<${VWC_COMPONENT}><input type="file" name="${filePickerName}" multiple/></${VWC_COMPONENT}>
+			`));
+			await waitNextTask();
+
+			const itemsTotal = 3;
+			await simulateFilesDrag(filePicker, itemsTotal, true);
+
+			const content = filePicker.shadowRoot.querySelector('.content');
+			expect(content).exist;
+			console.log(filePicker.className);
+			assertComputedStyle(content, { backgroundColor: 'rgb(254,223,223)' });
+
 			expect(filePicker.filesCount).equal(0);
 		});
 

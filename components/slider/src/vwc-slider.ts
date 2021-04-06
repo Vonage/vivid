@@ -1,7 +1,7 @@
 import '@vonage/vvd-core';
 import { customElement } from 'lit-element';
 import { Slider as MWCSlider } from '@material/mwc-slider';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 import { style as mwcSliderStyle } from '@material/mwc-slider/mwc-slider-css.js';
 import { style as vwcSliderStyle } from './vwc-slider.css';
 import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
