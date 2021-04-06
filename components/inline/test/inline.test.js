@@ -18,7 +18,7 @@ const inlineHtmlStr = `<${VWC_INLINE}>
 
 const getNewElement = () => isolatedElementsCreation()(textToDomToParent(inlineHtmlStr))[0];
 
-describe(VWC_INLINE, () => {
+describe('inline', () => {
 	describe('basics', () => {
 		it(`${VWC_INLINE} is defined as a custom element`, async () => {
 			assert.exists(
@@ -34,10 +34,27 @@ describe(VWC_INLINE, () => {
 	});
 
 	describe('API', () => {
-		it(`should be set to auto-fit`, async () => {
+		it(`should set template fit`, async () => {
 			const actualElement = getNewElement();
+			actualElement.template = "fit";
+			actualElement.style.width = "1300px";
 			await waitNextTask();
-			expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
+			const { shadowRoot: { firstElementChild: slot } } = actualElement;
+			const assignedElements = slot.assignedElements();
+			const [childEl] = assignedElements;
+			await waitNextTask();
+			expect(childEl.clientWidth).to.equal(307);
+		});
+		it(`should set template fill`, async () => {
+			const actualElement = getNewElement();
+			actualElement.template = "fill";
+			actualElement.style.width = "1300px";
+			await waitNextTask();
+			const { shadowRoot: { firstElementChild: slot } } = actualElement;
+			const assignedElements = slot.assignedElements();
+			const [childEl] = assignedElements;
+			await waitNextTask();
+			expect(childEl.clientWidth).to.equal(165);
 		});
 	});
 });
