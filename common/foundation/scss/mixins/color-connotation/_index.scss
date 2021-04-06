@@ -19,3 +19,5 @@ $connotations-decorative-set: predefined-connotations.$connotations-decorative-s
 	$connotations-decorative-set: $connotations-decorative-set,
 	$selector: $selector
 );
+
+@forward 'variables' show $vvd-color-connotation, $vvd-color-on-connotation;
