@@ -10,7 +10,6 @@ import {
 	TemplateResult,
 } from 'lit-element';
 import { style as filePickerStyle } from './vwc-file-picker.css.js';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -23,7 +22,7 @@ const BUTTON_SLOT = 'button',
 
 @customElement('vwc-file-picker')
 export class VWCFilePicker extends LitElement {
-	static styles = [styleCoupling, filePickerStyle];
+	static styles = [filePickerStyle];
 	#container: HTMLElement | null = null;
 
 	@property({ type: Number, reflect: false })

@@ -28,7 +28,6 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@vonage/vvd-style-coupling": "^2.2.4",
 		"@vonage/vwc-button": "^2.2.4",
 		"@vonage/vwc-textfield": "^2.2.4",
 		"lit-element": "^2.4.0",

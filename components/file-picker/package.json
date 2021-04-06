@@ -27,7 +27,6 @@
 	},
 	"dependencies": {
 		"@vonage/vvd-core": "^2.2.4",
-		"@vonage/vvd-foundation": "^2.2.4",
 		"@vonage/vvd-style-coupling": "^2.2.4",
 		"@vonage/vwc-badge": "^2.2.4",
 		"@vonage/vwc-button": "^2.2.4",
