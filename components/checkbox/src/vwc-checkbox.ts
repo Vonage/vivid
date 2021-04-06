@@ -10,7 +10,7 @@ export const COMPONENT_NAME = 'vwc-checkbox';
 
 declare global {
 	interface HTMLElementTagNameMap {
-		'vwc-checkbox': VWCCheckbox;
+		[COMPONENT_NAME]: VWCCheckbox;
 	}
 }
 
