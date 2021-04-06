@@ -1,9 +1,6 @@
 @use 'predefined-connotations';
 @use 'variables';
 
-$vvd-color-connotation: variables.$vvd-color-connotation;
-$vvd-color-on-connotation: variables.$vvd-color-on-connotation;
-
 $selector: variables.$selector !default;
 $connotations-set: predefined-connotations.$connotations-set !default;
 $connotations-decorative-set: predefined-connotations.$connotations-decorative-set !default;
@@ -22,3 +19,5 @@ $connotations-decorative-set: predefined-connotations.$connotations-decorative-s
 	$connotations-decorative-set: $connotations-decorative-set,
 	$selector: $selector
 );
+
+@forward 'variables' show $vvd-color-connotation, $vvd-color-on-connotation;
