@@ -1,6 +1,6 @@
-@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
-@use './color-connotation';
-@use '../functions';
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
+@use './color-connotation' as color-connotaion;
+@use '../functions' as functions;
 
 // override to apply relevance
 $layouts: filled outlined soft text ghost !default;
