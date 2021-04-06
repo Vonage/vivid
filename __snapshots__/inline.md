@@ -1,4 +1,4 @@
-# `vwc-inline`
+# `inline`
 
 ## `basics`
 
