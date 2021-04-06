@@ -3,7 +3,7 @@ import { customElement, html, TemplateResult } from 'lit-element';
 import { Checkbox as MWCCheckbox } from '@material/mwc-checkbox';
 import { style as vwcCheckboxStyle } from './vwc-checkbox.css';
 import { style as mwcCheckboxStyle } from '@material/mwc-checkbox/mwc-checkbox-css.js';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
 
 export const COMPONENT_NAME = 'vwc-checkbox';
