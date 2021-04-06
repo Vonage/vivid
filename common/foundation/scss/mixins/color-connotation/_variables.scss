@@ -1,5 +1,7 @@
 $compound-placeholder: '[compound]';
 $selector: ':host(#{$compound-placeholder})' !default;
 
+// use SASS pointers below to refer to CSS variables in a type-safe fashion
+
 $vvd-color-connotation: --vvd-color-connotation;
 $vvd-color-on-connotation: --vvd-color-on-connotation;

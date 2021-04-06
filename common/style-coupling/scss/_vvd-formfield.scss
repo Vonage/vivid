@@ -1,5 +1,7 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 
+// use SASS pointers below to refer to CSS variables in a type-safe fashion
+
 $formfield-disabled-ink: --vvd-formfield-disabled-ink;
 $formfield-disabled-fill: --vvd-formfield-disabled-fill;
 
