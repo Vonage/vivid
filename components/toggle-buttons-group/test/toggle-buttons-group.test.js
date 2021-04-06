@@ -11,6 +11,11 @@ import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-toggle-buttons-group';
+const SELECTED_EVENT_NAME = 'selected';
+
+function listenToToggleEvent(element, callback) {
+	element.addEventListener(SELECTED_EVENT_NAME, callback);
+}
 
 describe.only('Toggle-buttons-group', () => {
 	let addElement = isolatedElementsCreation();
@@ -21,7 +26,7 @@ describe.only('Toggle-buttons-group', () => {
 		);
 	});
 
-	it('should internal contents', async () => {
+	it('should have internal contents', async () => {
 		const addedElements = addElement(
 			textToDomToParent(`<${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}>`)
 		);
@@ -41,7 +46,7 @@ describe.only('Toggle-buttons-group', () => {
 </${COMPONENT_NAME}>`)
 		);
 		let clickIndex = 0;
-		actualElement.addEventListener('toggle', () => {
+		actualElement.addEventListener(SELECTED_EVENT_NAME, () => {
 			clickIndex++;
 		});
 		const buttons = actualElement.children;
@@ -64,7 +69,7 @@ describe.only('Toggle-buttons-group', () => {
 		`));
 
 		let clickIndex = 0;
-		actualElement.addEventListener('toggle', () => {
+		actualElement.addEventListener(SELECTED_EVENT_NAME, () => {
 			clickIndex++;
 		});
 		const buttons = actualElement.children;
@@ -85,7 +90,7 @@ describe.only('Toggle-buttons-group', () => {
 </${COMPONENT_NAME}>`)
 		);
 		let eventData = {};
-		actualElement.addEventListener('toggle', (event) => {
+		actualElement.addEventListener(SELECTED_EVENT_NAME, (event) => {
 			eventData = event.detail
 		});
 		const button = actualElement.children[0];
@@ -109,17 +114,21 @@ describe.only('Toggle-buttons-group', () => {
 <${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 </${COMPONENT_NAME}>`)
 		);
+
 		let eventData = {};
-		actualElement.addEventListener('toggle', (event) => {
+		actualElement.addEventListener(SELECTED_EVENT_NAME, (event) => {
 			eventData = event.detail
 		});
+
 		const button = actualElement.children[1];
+
 		button.click();
 		eventData.state.forEach((state, index) => {
 			expect(state.index).to.equal(index);
 			expect(state.value).to.equal(buttonValues[index]);
 			expect(state.active).to.equal(index === 1);
 		});
+
 		button.click();
 		eventData.state.forEach((state, index) => {
 			expect(state.index).to.equal(index);
