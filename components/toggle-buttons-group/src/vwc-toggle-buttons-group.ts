@@ -37,7 +37,7 @@ export class VwcToggleButtonsGroup extends LitElement {
 				} else {
 					this.#_selected = index
 				}
-				this.dispatchToggleEvent(index);
+				this.dispatchToggleEvent();
 			});
 		});
 	}
@@ -52,16 +52,11 @@ export class VwcToggleButtonsGroup extends LitElement {
 		})
 	}
 
-	private dispatchToggleEvent(activeIndex: number) {
-		this.dispatchEvent(new CustomEvent(SELECTED_EVENT_NAME, {
-			detail: {
-				state: this.groupState,
-				toggled: {
-					activeIndex,
-					active: this.isIndexActive(activeIndex)
-				}
-			}
-		}));
+	get values() {
+		return [...new Set([...this.children].map(child => child.getAttribute('value')))];
+	}
+	private dispatchToggleEvent() {
+		this.dispatchEvent(new Event(SELECTED_EVENT_NAME));
 	}
 
 	protected render(): unknown {

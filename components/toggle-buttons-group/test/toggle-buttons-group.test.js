@@ -81,30 +81,11 @@ describe.only('Toggle-buttons-group', () => {
 			.equal(1);
 	});
 
-	it(`should send the value of the clicked button and the toggle state in the event`, function () {
-		const buttonValue = 'button value';
-
-		const [actualElement] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}>
-<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValue}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-</${COMPONENT_NAME}>`)
-		);
-		let eventData = {};
-		actualElement.addEventListener(SELECTED_EVENT_NAME, (event) => {
-			eventData = event.detail
-		});
-		const button = actualElement.children[0];
-		button.click();
-		expect(eventData.toggled.activeIndex).to.equal(0);
-		expect(eventData.toggled.active).to.equal(true);
-		button.click();
-		expect(eventData.toggled.activeIndex).to.equal(0);
-		expect(eventData.toggled.active).to.equal(false);
-	});
-
-	it(`should send the state of the group in the event`, function () {
+	it(`should return the values of the selected`, function () {
 		const buttonValues = [
-			'11', '12', '13'
+			Math.random().toString(),
+			Math.random().toString(),
+			Math.random().toString(),
 		];
 
 		const [actualElement] = addElement(
@@ -115,25 +96,9 @@ describe.only('Toggle-buttons-group', () => {
 </${COMPONENT_NAME}>`)
 		);
 
-		let eventData = {};
-		actualElement.addEventListener(SELECTED_EVENT_NAME, (event) => {
-			eventData = event.detail
+		actualElement.values.forEach((value, index) => {
+			expect(value).to.equal(buttonValues[index]);
 		});
 
-		const button = actualElement.children[1];
-
-		button.click();
-		eventData.state.forEach((state, index) => {
-			expect(state.index).to.equal(index);
-			expect(state.value).to.equal(buttonValues[index]);
-			expect(state.active).to.equal(index === 1);
-		});
-
-		button.click();
-		eventData.state.forEach((state, index) => {
-			expect(state.index).to.equal(index);
-			expect(state.value).to.equal(buttonValues[index]);
-			expect(state.active).to.equal(false);
-		});
 	});
 });
