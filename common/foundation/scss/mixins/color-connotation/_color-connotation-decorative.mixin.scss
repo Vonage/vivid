@@ -1,0 +1,29 @@
+@use 'sass:selector';
+
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+@use '../../functions';
+@use 'variables';
+
+$_connotations-definition: (
+	pacific: linear-gradient(to right, var(#{scheme-variables.$vvd-color-info-30}), var(#{scheme-variables.$vvd-color-cta-70})),
+);
+
+// override to apply relevance
+$connotations-decorative-set: predefined-connotations.$connotations-decorative-set !default;
+$selector: variables.$selector !default;
+
+@mixin connotations-decorative {
+	@each $name, $value in functions.pick-map($connotations-decorative-set, $_connotations-definition) {
+		$compound: '[connotation="#{$name}" i]';
+
+		$local-selector: selector.replace(
+			#{$selector},
+			#{variables.$compound-placeholder},
+			#{$compound}
+		);
+
+		#{$local-selector} {
+			#{variables.$vvd-color-connotation}: $value;
+		}
+	}
+}

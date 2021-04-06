@@ -1,7 +1,7 @@
 @forward './vwc-select-coupling';
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/_scheme-variables' as scheme-variables;
-@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
-@use '@vonage/vvd-foundation/scss/mixins/shape-mixins' with (
+@use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
+@use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
 	//! may consider replacing with own component variable to prevent delegation
 	$variable-name: --mdc-shape-small
 );
@@ -11,12 +11,12 @@ $vvd-select-size-block: --vvd-select-size-block;
 :host {
 	--mdc-select-fill-color: var(#{scheme-variables.$vvd-color-base});
 	--mdc-select-ink-color: var(#{scheme-variables.$vvd-color-on-base});
-	--mdc-select-label-ink-color: var(#{color-semantic.$formfield-label-idle-ink});
+	--mdc-select-label-ink-color: var(#{vvd-formfield.$formfield-label-idle-ink});
 	--mdc-select-disabled-ink-color: var(
-		#{color-semantic.$formfield-disabled-ink}
+		#{vvd-formfield.$formfield-disabled-ink}
 	);
 	--mdc-select-disabled-fill-color: var(
-		#{color-semantic.$formfield-disabled-fill}
+		#{vvd-formfield.$formfield-disabled-fill}
 	);
 
 	--mdc-select-dropdown-icon-color: var(--mdc-select-ink-color);
@@ -26,20 +26,22 @@ $vvd-select-size-block: --vvd-select-size-block;
 	);
 
 	--mdc-select-outlined-idle-border-color: var(
-		#{color-semantic.$formfield-border-idle}
+		#{vvd-formfield.$formfield-border-idle}
 	);
 	--mdc-select-outlined-hover-border-color: var(
-		#{color-semantic.$formfield-border-hover}
+		#{vvd-formfield.$formfield-border-hover}
 	);
 	--mdc-select-outlined-disabled-border-color: var(
-		#{color-semantic.$formfield-border-disabled}
+		#{vvd-formfield.$formfield-border-disabled}
 	);
 
-	--mdc-select-error-color: var(#{color-semantic.$formfield-label-error-ink});
-	--mdc-select-error-fill-color: var(#{color-semantic.$formfield-error-fill});
+	--mdc-select-error-color: var(#{vvd-formfield.$formfield-label-error-ink});
+	--mdc-select-error-fill-color: var(#{vvd-formfield.$formfield-error-fill});
 	--mdc-select-error-dropdown-icon-color: var(--mdc-select-error-color);
 
 	--mdc-shape-small: var(--border-radius);
+
+	@include vvd-formfield.coupling;
 
 	display: inline-flex;
 	flex-direction: column;
@@ -111,11 +113,6 @@ $vvd-select-size-block: --vvd-select-size-block;
 .mdc-select {
 	// prevent fill overflowing corners
 	border-radius: var(--mdc-shape-small);
-	@media screen and (prefers-reduced-motion: reduce) {
-		.mdc-select__dropdown-icon {
-			transition: none;
-		}
-	}
 
 	.mdc-select__dropdown-icon {
 		transition: transform 200ms;
@@ -131,13 +128,6 @@ $vvd-select-size-block: --vvd-select-size-block;
 		.mdc-select__anchor {
 			height: var(#{$vvd-select-size-block});
 			padding-inline-start: 16px;
-			@media screen and (prefers-reduced-motion: reduce) {
-				.mdc-floating-label {
-					padding-right: 8px;
-					line-height: var(--mdc-typography-subtitle1-line-height);
-					transition: none;
-				}
-			}
 
 			.mdc-floating-label {
 				padding-right: 8px;
@@ -149,6 +139,13 @@ $vvd-select-size-block: --vvd-select-size-block;
 				color: var(--mdc-select-label-ink-color);
 				font-size: var(--mdc-typography-subtitle1-font-size);
 				transform: translateY(-100%);
+			}
+			@media screen and (prefers-reduced-motion: reduce) {
+				.mdc-floating-label {
+					padding-right: 8px;
+					line-height: var(--mdc-typography-subtitle1-line-height);
+					transition: none;
+				}
 			}
 		}
 	}
@@ -163,6 +160,11 @@ $vvd-select-size-block: --vvd-select-size-block;
 			.mdc-floating-label {
 				color: var(--mdc-select-error-color);
 			}
+		}
+	}
+	@media screen and (prefers-reduced-motion: reduce) {
+		.mdc-select__dropdown-icon {
+			transition: none;
 		}
 	}
 }

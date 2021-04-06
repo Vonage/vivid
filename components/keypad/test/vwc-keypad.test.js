@@ -4,9 +4,6 @@ import {
 	waitNextTask,
 	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
-import { chaiA11yAxe } from 'chai-a11y-axe';
-
-chai.use(chaiA11yAxe);
 
 const COMPONENT_NAME = 'vwc-keypad';
 
@@ -151,14 +148,6 @@ describe('VwcKeypad', () => {
 
 		await waitNextTask();
 		expect(el.digits).to.equal('1256734');
-	});
-
-	it('passes the a11y audit', async () => {
-		const el = addElement(
-			await textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-		)[0];
-
-		expect(el).shadowDom.to.be.accessible();
 	});
 });
 

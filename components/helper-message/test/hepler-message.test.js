@@ -23,24 +23,30 @@ describe('helper message', () => {
 		);
 	});
 
-	it(`should internal contents when 'is-error="false"'`, async () => {
+	it(`should have correct internal contents when 'is-error' absent`, async () => {
 		const [e] = addElement(
 			textToDomToParent(
-				`<${COMPONENT_NAME} is-error="false">Message text</${COMPONENT_NAME}>`
+				`<${COMPONENT_NAME}>Message text</${COMPONENT_NAME}>`
 			)
 		);
 		await waitNextTask();
 		expect(e.shadowRoot.innerHTML).to.equalSnapshot();
+		const icon = e.shadowRoot.querySelector('.helper-icon');
+		expect(icon).exist;
+		assertComputedStyle(icon, { display: 'none' });
 	});
 
-	it(`should internal contents when 'is-error="true"'`, async () => {
+	it(`should have correct internal contents when 'is-error' present'`, async () => {
 		const [e] = addElement(
 			textToDomToParent(
-				`<${COMPONENT_NAME} is-error="true">Message text</${COMPONENT_NAME}>`
+				`<${COMPONENT_NAME} is-error>Message text</${COMPONENT_NAME}>`
 			)
 		);
 		await waitNextTask();
 		expect(e.shadowRoot.innerHTML).to.equalSnapshot();
+		const icon = e.shadowRoot.querySelector('.helper-icon');
+		expect(icon).exist;
+		assertComputedStyle(icon, { display: 'flex', color: 'rgb(230,29,29)' });
 	});
 
 	describe('sizing', () => {

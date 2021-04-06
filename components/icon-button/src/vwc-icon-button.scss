@@ -1,19 +1,24 @@
-@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
-@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
-@use '@vonage/vvd-foundation/scss/mixins/shape-mixins' with (
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
+@use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
+@use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
 	$variable-name: --vvd-icon-button-shape
 );
-@use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins' with (
-	$connotations: primary cta success alert info announcement
+@use '@vonage/vvd-foundation/scss/mixins/color-connotation' with (
+	$connotations-set: primary cta success alert info announcement
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout-mixins' with (
 	$layouts: filled outlined ghost,
 	$variables-scope-prefix: 'vvd-icon-button'
 );
 
+@include color-connotation.connotations-main;
+@include color-connotation.connotations-main-default(primary);
+
 :host {
+
 	// sizing
 	--mdc-icon-button-size: 40px;
+	@include vvd-formfield.coupling;
 
 	.mdc-icon-button {
 		display: inline-flex;
@@ -25,7 +30,7 @@
 		border-radius: var(--vvd-icon-button-shape);
 		color: var(--vvd-icon-button-color);
 		&:disabled {
-			color: var(#{color-semantic.$formfield-disabled-ink});
+			color: var(#{vvd-formfield.$formfield-disabled-ink});
 		}
 	}
 
@@ -34,20 +39,15 @@
 	}
 }
 
-// theming
-@include color-connotation-mixins.connotations-context(
-	':host([layout="filled"]#{color-connotation-mixins.$connotation-placeholder}),:host([layout="outlined"]#{color-connotation-mixins.$connotation-placeholder})'
-);
-
-:host([layout='filled']) {
+:host([layout=filled]) {
 	.mdc-icon-button:disabled {
 		background-color: var(#{scheme-variables.$vvd-color-neutral-30});
 	}
 }
 
-:host([layout='outlined']) {
+:host([layout=outlined]) {
 	.mdc-icon-button:disabled {
-		border-color: var(#{color-semantic.$formfield-disabled-ink});
+		border-color: var(#{vvd-formfield.$formfield-disabled-ink});
 	}
 }
 

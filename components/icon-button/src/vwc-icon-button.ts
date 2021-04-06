@@ -4,7 +4,7 @@ import { customElement, property } from 'lit-element';
 import { IconButton as MWCIconButton } from '@material/mwc-icon-button';
 import { style as vwcButtonStyle } from './vwc-icon-button.css';
 import { style as mwcIconButtonStyle } from '@material/mwc-icon-button/mwc-icon-button-css.js';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 import { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
 import { handleMultipleDenseProps } from '@vonage/vvd-foundation/general-utils';
 import { html, TemplateResult } from 'lit-element';
@@ -45,7 +45,7 @@ export class VWCIconButton extends MWCIconButton {
 	layout: IconButtonLayout = Layout.Ghost;
 
 	@property({ type: String, reflect: true })
-	connotation: IconButtonConnotation = Connotation.Primary;
+	connotation?: IconButtonConnotation;
 
 	@property({ type: String, reflect: true })
 	shape?: IconButtonShape;
