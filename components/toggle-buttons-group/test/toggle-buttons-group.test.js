@@ -81,6 +81,45 @@ describe.only('Toggle-buttons-group', () => {
 			.equal(1);
 	});
 
+	describe(`selected`, function () {
+		let actualElement;
+
+		const buttonValues = [
+			Math.random().toString(),
+			Math.random().toString(),
+			Math.random().toString(),
+		];
+
+		beforeEach(function () {
+			[actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[0]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[1]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+</${COMPONENT_NAME}>`)
+			);
+		});
+
+		it(`should return the an empty array if none is selected`, function () {
+			expect(actualElement.selected.length).to.equal(0);
+		});
+
+		it(`should return an array with the selected element`, function () {
+			actualElement.children[1].click();
+
+			expect(actualElement.selected.length).to.equal(1);
+			expect(actualElement.selected[0]).to.equal(actualElement.children[1]);
+		});
+
+		it(`should set the elements in the array of the last button that was clicked`, function () {
+			actualElement.children[1].click();
+			actualElement.children[2].click();
+
+			expect(actualElement.selected.length).to.equal(1);
+			expect(actualElement.selected[0]).to.equal(actualElement.children[2]);
+		});
+	});
+
 	describe(`values`, function () {
 		let actualElement;
 
@@ -101,10 +140,7 @@ describe.only('Toggle-buttons-group', () => {
 		});
 
 		it(`should return the an empty array if none is selected`, function () {
-			const button = actualElement.children[1];
-
 			expect(actualElement.values.length).to.equal(0);
-
 		});
 
 		it(`should return an array with the selected value`, function () {
@@ -127,12 +163,58 @@ describe.only('Toggle-buttons-group', () => {
 			actualElement.values = [buttonValues[0], buttonValues[2]];
 			const newValues = actualElement.values;
 			expect(oldValues.length).to.equal(0);
+			expect(newValues.length).to.equal(1);
+			expect(newValues[0]).to.equal(buttonValues[0]);
+		});
+	});
+
+	describe(`multi`, function () {
+		let actualElement;
+
+		const buttonValues = [
+			Math.random().toString(),
+			Math.random().toString(),
+			Math.random().toString(),
+		];
+
+		beforeEach(function () {
+			[actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} multi>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[0]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[1]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+</${COMPONENT_NAME}>`)
+			);
+		});
+
+		it(`should set the value in the array of the last button that was clicked`, function () {
+			actualElement.children[1].click();
+			actualElement.children[2].click();
+
+			expect(actualElement.values.length).to.equal(2);
+			expect(actualElement.values[0]).to.equal(buttonValues[1]);
+			expect(actualElement.values[1]).to.equal(buttonValues[2]);
+		});
+
+		it(`should set the group's state according to set values`, function () {
+			const oldValues = actualElement.values;
+			actualElement.values = [buttonValues[0], buttonValues[2]];
+			const newValues = actualElement.values;
+			expect(oldValues.length).to.equal(0);
 			expect(newValues.length).to.equal(2);
 			expect(newValues[0]).to.equal(buttonValues[0]);
 			expect(newValues[1]).to.equal(buttonValues[2]);
 		});
-	});
+		
+		it(`should return an array with the selected elements`, function () {
+			actualElement.children[1].click();
+			actualElement.children[2].click();
 
+			expect(actualElement.selected.length).to.equal(2);
+			expect(actualElement.selected[0]).to.equal(actualElement.children[1]);
+			expect(actualElement.selected[1]).to.equal(actualElement.children[2]);
+		});
+	});
 
 	it(`should `, function () {
 

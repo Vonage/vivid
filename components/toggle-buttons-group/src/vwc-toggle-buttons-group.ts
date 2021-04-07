@@ -10,6 +10,7 @@ declare global {
 export const VALID_BUTTON_ELEMENTS = ['vwc-button'];
 const SELECTED_EVENT_NAME = 'selected';
 const SELECTED_ATTRIBUTE_NAME = 'selected';
+const MULTIPLE_ATTRIBUTE_NAME = 'multi';
 
 function isValidButton(buttonElement: Element) {
 	return VALID_BUTTON_ELEMENTS.includes(buttonElement.tagName.toLowerCase());
@@ -30,10 +31,12 @@ export class VwcToggleButtonsGroup extends LitElement {
 		super();
 		this.items.forEach((buttonElement) => {
 			buttonElement.addEventListener('click', () => {
-				this.items.forEach(button => {
-					if (button === buttonElement) return;
-					button.removeAttribute(SELECTED_ATTRIBUTE_NAME);
-				});
+				if (!this.multi) {
+					this.items.forEach(button => {
+						if (button === buttonElement) return;
+						button.removeAttribute(SELECTED_ATTRIBUTE_NAME);
+					});
+				}
 				if (isButtonActive(buttonElement)) {
 					buttonElement.removeAttribute(SELECTED_ATTRIBUTE_NAME);
 				} else {
@@ -44,6 +47,14 @@ export class VwcToggleButtonsGroup extends LitElement {
 		});
 	}
 
+	get multi() {
+		return this.hasAttribute(MULTIPLE_ATTRIBUTE_NAME);
+	}
+
+	get selected() {
+		return this.items.filter(button => isButtonActive(button));
+	}
+
 	get values() {
 		return [...new Set(
 			this.items
@@ -52,6 +63,12 @@ export class VwcToggleButtonsGroup extends LitElement {
 	}
 
 	set values(values: (string|false|null)[]) {
+		this.items.forEach(button => {
+			button.removeAttribute(SELECTED_ATTRIBUTE_NAME);
+		});
+		if (!this.multi) {
+			values = [values[0]];
+		}
 		this.items.forEach(child => {
 			values.includes(child.getAttribute('value')) ?
 				child.setAttribute(SELECTED_ATTRIBUTE_NAME, '') :
