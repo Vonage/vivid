@@ -216,7 +216,39 @@ describe.only('Toggle-buttons-group', () => {
 		});
 	});
 
-	it(`should `, function () {
+	describe(`dynamically assigned elements`, function () {
+		let actualElement;
 
+		const buttonValues = [
+			Math.random().toString(),
+			Math.random().toString(),
+			Math.random().toString(),
+		];
+
+		beforeEach(async function () {
+			[actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[0]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[1]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+</${COMPONENT_NAME}>`)
+			);
+
+			await actualElement.updateComplete;
+		});
+
+		function waitForSlotChange() {
+			return waitNextTask();
+		}
+
+		it(`should listen to click event of dynamically assigned valid element`, async function () {
+			const element = document.createElement(VALID_BUTTON_ELEMENTS[0]);
+			element.setAttribute('value', '22');
+			actualElement.appendChild(element);
+			await waitForSlotChange();
+			element.click();
+			expect(actualElement.values[0]).to.equal('22');
+		});
 	});
+
 });
