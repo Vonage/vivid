@@ -1,4 +1,4 @@
-import { customElement, html, LitElement } from 'lit-element';
+import { customElement, html, LitElement, property } from 'lit-element';
 import { style } from './vwc-toggle-buttons-group.css';
 
 declare global {
@@ -47,9 +47,8 @@ export class VwcToggleButtonsGroup extends LitElement {
 		});
 	}
 
-	get multi() {
-		return this.hasAttribute(MULTIPLE_ATTRIBUTE_NAME);
-	}
+	@property({ attribute: MULTIPLE_ATTRIBUTE_NAME, type: Boolean, reflect: true })
+	multi = false;
 
 	get selected() {
 		return this.items.filter(button => isButtonActive(button));

@@ -205,7 +205,7 @@ describe.only('Toggle-buttons-group', () => {
 			expect(newValues[0]).to.equal(buttonValues[0]);
 			expect(newValues[1]).to.equal(buttonValues[2]);
 		});
-		
+
 		it(`should return an array with the selected elements`, function () {
 			actualElement.children[1].click();
 			actualElement.children[2].click();
