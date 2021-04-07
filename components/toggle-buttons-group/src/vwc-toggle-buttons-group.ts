@@ -12,7 +12,7 @@ const SELECTED_EVENT_NAME = 'selected';
 const SELECTED_ATTRIBUTE_NAME = 'selected';
 
 function isValidButton(buttonElement: Element) {
-	return !VALID_BUTTON_ELEMENTS.includes(buttonElement.tagName.toLowerCase());
+	return VALID_BUTTON_ELEMENTS.includes(buttonElement.tagName.toLowerCase());
 }
 
 function isButtonActive(buttonElement: Element) {
@@ -28,10 +28,9 @@ export class VwcToggleButtonsGroup extends LitElement {
 
 	constructor() {
 		super();
-		[...this.children].forEach((buttonElement) => {
-			if (isValidButton(buttonElement)) return;
+		this.items.forEach((buttonElement) => {
 			buttonElement.addEventListener('click', () => {
-				[...this.children].forEach(button => {
+				this.items.forEach(button => {
 					if (button === buttonElement) return;
 					button.removeAttribute(SELECTED_ATTRIBUTE_NAME);
 				});
@@ -47,12 +46,22 @@ export class VwcToggleButtonsGroup extends LitElement {
 
 	get values() {
 		return [...new Set(
-			[...this.children]
+			this.items
 				.map(child => isButtonActive(child) ? child.getAttribute('value') : false)
 				.filter(value => value !== false))];
 	}
 
+	set values(values: (string|false|null)[]) {
+		this.items.forEach(child => {
+			values.includes(child.getAttribute('value')) ?
+				child.setAttribute(SELECTED_ATTRIBUTE_NAME, '') :
+				child.removeAttribute(SELECTED_ATTRIBUTE_NAME);
+		});
+	}
 
+	get items(): Element[] {
+		return [...this.children].filter(child => isValidButton(child));
+	}
 
 	protected render(): unknown {
 		return html`

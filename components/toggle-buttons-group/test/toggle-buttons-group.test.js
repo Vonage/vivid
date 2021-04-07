@@ -121,6 +121,16 @@ describe.only('Toggle-buttons-group', () => {
 			expect(actualElement.values.length).to.equal(1);
 			expect(actualElement.values[0]).to.equal(buttonValues[2]);
 		});
+
+		it(`should set the group's state according to set values`, function () {
+			const oldValues = actualElement.values;
+			actualElement.values = [buttonValues[0], buttonValues[2]];
+			const newValues = actualElement.values;
+			expect(oldValues.length).to.equal(0);
+			expect(newValues.length).to.equal(2);
+			expect(newValues[0]).to.equal(buttonValues[0]);
+			expect(newValues[1]).to.equal(buttonValues[2]);
+		});
 	});
 
 
