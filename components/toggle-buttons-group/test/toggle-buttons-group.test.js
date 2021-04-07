@@ -81,24 +81,50 @@ describe.only('Toggle-buttons-group', () => {
 			.equal(1);
 	});
 
-	it(`should return the values of the selected`, function () {
+	describe(`values`, function () {
+		let actualElement;
+
 		const buttonValues = [
 			Math.random().toString(),
 			Math.random().toString(),
 			Math.random().toString(),
 		];
 
-		const [actualElement] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}>
+		beforeEach(function () {
+			[actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}>
 <${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[0]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 <${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[1]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 <${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 </${COMPONENT_NAME}>`)
-		);
-
-		actualElement.values.forEach((value, index) => {
-			expect(value).to.equal(buttonValues[index]);
+			);
 		});
+
+		it(`should return the an empty array if none is selected`, function () {
+			const button = actualElement.children[1];
+
+			expect(actualElement.values.length).to.equal(0);
+
+		});
+
+		it(`should return an array with the selected value`, function () {
+			actualElement.children[1].click();
+
+			expect(actualElement.values.length).to.equal(1);
+			expect(actualElement.values[0]).to.equal(buttonValues[1]);
+		});
+
+		it(`should set the value in the array of the last button that was clicked`, function () {
+			actualElement.children[1].click();
+			actualElement.children[2].click();
+
+			expect(actualElement.values.length).to.equal(1);
+			expect(actualElement.values[0]).to.equal(buttonValues[2]);
+		});
+	});
+
+
+	it(`should `, function () {
 
 	});
 });
