@@ -34,42 +34,8 @@ export class VwcToggleButtonsGroup extends LitElement {
 	 * @internal
 	 */
 	static styles = style;
+
 	#_items: Element[] | null = null;
-
-	protected firstUpdated(_changedProperties: PropertyValues) {
-		super.firstUpdated(_changedProperties);
-		let slot = this.shadowRoot?.querySelector('slot') as HTMLSlotElement;
-		slot.addEventListener('slotchange', () => {
-			let nodes = slot.assignedElements().filter(node => (isValidButton(node) && !this.items.includes(node)));
-			this.setNodesClickEvents(nodes);
-			this.#_items = null;
-			this.items;
-		});
-	};
-
-	private setNodesClickEvents(nodes: Element[]) {
-		nodes.forEach((buttonElement) => {
-			buttonElement.addEventListener('click', () => {
-				if (!this.multi) {
-					this.clearSelection(buttonElement);
-				}
-				toggleButton(buttonElement);
-				this.dispatchToggleEvent();
-			});
-		});
-	}
-
-	constructor() {
-		super();
-		this.setNodesClickEvents(this.items);
-	}
-
-	private clearSelection(buttonElement?: Element) {
-		this.items.forEach(button => {
-			if (button === buttonElement) return;
-			button.removeAttribute(SELECTED_ATTRIBUTE_NAME);
-		});
-	}
 
 	@property({ attribute: MULTIPLE_ATTRIBUTE_NAME, type: Boolean, reflect: true })
 	multi = false;
@@ -101,6 +67,36 @@ export class VwcToggleButtonsGroup extends LitElement {
 		return this.#_items ? this.#_items : (this.#_items = [...this.children].filter(child => isValidButton(child)));
 	}
 
+	protected firstUpdated(_changedProperties: PropertyValues) {
+		super.firstUpdated(_changedProperties);
+		let slot = this.shadowRoot?.querySelector('slot') as HTMLSlotElement;
+		slot.addEventListener('slotchange', () => {
+			let nodes = slot.assignedElements().filter(node => (isValidButton(node) && !this.items.includes(node)));
+			this.setNodesClickEvents(nodes);
+			this.#_items = null;
+			this.items;
+		});
+	};
+
+	private setNodesClickEvents(nodes: Element[]) {
+		nodes.forEach((buttonElement) => {
+			buttonElement.addEventListener('click', () => {
+				if (!this.multi) {
+					this.clearSelection(buttonElement);
+				}
+				toggleButton(buttonElement);
+				this.dispatchToggleEvent();
+			});
+		});
+	}
+
+	private clearSelection(buttonElement?: Element) {
+		this.items.forEach(button => {
+			if (button === buttonElement) return;
+			button.removeAttribute(SELECTED_ATTRIBUTE_NAME);
+		});
+	}
+
 	protected render(): unknown {
 		return html`
 			<slot></slot>`;
@@ -109,4 +105,10 @@ export class VwcToggleButtonsGroup extends LitElement {
 	private dispatchToggleEvent() {
 		this.dispatchEvent(new Event(SELECTED_EVENT_NAME));
 	}
+
+	constructor() {
+		super();
+		this.setNodesClickEvents(this.items);
+	}
+
 }
