@@ -7,8 +7,6 @@ import { style } from './vwc-pagination.css';
 import { html, TemplateResult } from 'lit-element';
 
 export const COMPONENT_NAME = 'vwc-pagination';
-const TOTAL_KEY = 'total';
-const SELECTED_INDEX_KEY = 'selectedIndex';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -19,7 +17,7 @@ declare global {
 /**
  * `vwc-pagination` component is designated to reflect and 'manage' state of the paged content views
  *
- * `vwc-pagination` exposes APIs to set the `total` of pages and `selected` page
+ * `vwc-pagination` exposes APIs to set the `total` of pages and `selectedIndex`
  */
 @customElement('vwc-pagination')
 export class VWCPagination extends LitElement {
@@ -28,30 +26,29 @@ export class VWCPagination extends LitElement {
 	}
 
 	@property({ type: Number, reflect: true })
-	[TOTAL_KEY] = 0;
+	total = 0;
 
 	@property({ type: Number, reflect: true, attribute: 'selected-index' })
-	[SELECTED_INDEX_KEY] = -1;
+	selectedIndex = -1;
 
 	protected updated(changes: PropertyValues): void {
-		let effectiveTotal = this[TOTAL_KEY];
+		let effectiveTotal = this.total;
 		if (typeof effectiveTotal !== 'number' || Number.isNaN(effectiveTotal) || effectiveTotal < 0) {
 			effectiveTotal = 0;
 		}
-		if (this[TOTAL_KEY] !== effectiveTotal) {
-			this[TOTAL_KEY] = effectiveTotal;
+		if (this.total !== effectiveTotal) {
+			this.total = effectiveTotal;
 		}
 
-		let effectiveSelectedIndex = this[SELECTED_INDEX_KEY];
-		console.log(effectiveSelectedIndex);
+		let effectiveSelectedIndex = this.selectedIndex;
 		if (typeof effectiveSelectedIndex !== 'number' || Number.isNaN(effectiveSelectedIndex) || effectiveSelectedIndex < 0) {
 			effectiveSelectedIndex = 0;
 		}
 		if (effectiveSelectedIndex >= effectiveTotal) {
 			effectiveSelectedIndex = effectiveTotal - 1;
 		}
-		if (this[SELECTED_INDEX_KEY] !== effectiveSelectedIndex) {
-			this[SELECTED_INDEX_KEY] = effectiveSelectedIndex;
+		if (this.selectedIndex !== effectiveSelectedIndex) {
+			this.selectedIndex = effectiveSelectedIndex;
 		}
 
 		super.updated(changes);
@@ -65,10 +62,22 @@ export class VWCPagination extends LitElement {
 	}
 
 	private renderPrev(): TemplateResult {
-		return html``;
+		return html`
+			<span>
+				<slot name="prev-control">
+					<vwc-icon type="left"></vwc-icon>
+				</slot>
+			</span>
+		`;
 	}
 
 	private renderNext(): TemplateResult {
-		return html``;
+		return html`
+			<span>
+				<slot name="next-control">
+					<vwc-icon type="right"></vwc-icon>
+				</slot>
+			</span>
+		`;
 	}
 }
