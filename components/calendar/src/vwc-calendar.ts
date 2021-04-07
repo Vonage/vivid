@@ -111,31 +111,40 @@ export class VWCCalendar extends LitElement {
 				<div class="calendar" role="list">
 					${this.renderTimeCells()}
 					<!-- TODO: should be presented as a custom element. then could look for siblings and indent by js  -->
-					<section
-						role="presentation"
-						class="task"
-						style="--column: 1; --row: 9 / span 24; --color: #4cc3d2;"
-					></section>
-					<section
-						role="presentation"
-						class="task"
-						style="--column: 6; --row: 5 / span 16; --color:#d6219c;"
-					></section>
-					<section
-						role="presentation"
-						class="task"
-						style="--column: 4; --row: 13 / span 10;	--color: #b779ff;"
-					></section>
-					<section
-						role="presentation"
-						class="task"
-						style="--column: 1; --row: 13 / span 32;	--color: #b779ff;--overlap-count: 2;"
-					></section>
-					<section
-						role="presentation"
-						class="task"
-						style="--column: 1;--row: 15 / span 8; --color: #d6219c;--overlap-count: 1;"
-					></section>
+					<div role="presentation">
+
+						<section
+							role="button"
+							tabindex="0"
+							class="task"
+							style="--column: 1; --row: 9 / span 24; --color: #4cc3d2;"
+						></section>
+						<section
+							role="button"
+							tabindex="0"
+							class="task"
+							style="--column: 6; --row: 5 / span 16; --color:#d6219c;"
+						></section>
+						<section
+							role="button"
+							tabindex="0"
+							class="task"
+							style="--column: 4; --row: 13 / span 10;	--color: #b779ff;"
+						></section>
+						<section
+							role="button"
+							tabindex="0"
+							class="task"
+							style="--column: 1; --row: 13 / span 32;	--color: #b779ff;--overlap-count: 2;"
+						></section>
+						<section
+							role="button"
+							tabindex="0"
+							class="task"
+							style="--column: 1;--row: 15 / span 8; --color: #d6219c;--overlap-count: 1;"
+						></section>
+
+					</div>
 				</div>
 			</div>
 		`;

@@ -105,3 +105,7 @@ $total-columns: 7;
 	grid-column: var(--column);
 	grid-row: var(--row);
 }
+
+[role="presentation"i] {
+	display: contents;
+}
