@@ -1,7 +1,45 @@
-@use '@vonage/vvd-typography/scss/typography';
+@use '@vonage/vvd-typography/scss/typography' as typography;
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 
 :host {
 	@include typography.typography-cat-shorthand('caption');
 
 	display: flex;
+	align-items: center;
+}
+
+.item {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	block-size: 24px;
+	border-radius: 4px;
+	inline-size: 24px;
+
+	outline: none;
+	user-select: none;
+
+	&.prev {
+		margin-inline-end: 8px;
+	}
+
+	&.next {
+		margin-inline-start: 8px;
+	}
+
+	&.ellipsis {
+		pointer-events: none;
+	}
+}
+
+.item:not([disabled]):hover {
+	background-color: var(#{scheme-variables.$vvd-color-neutral-20});
+}
+
+.item[selected],
+.item:not([disabled]):active {
+	@include typography.typography-cat-shorthand('caption-bold');
+
+	background-color: var(#{scheme-variables.$vvd-color-neutral-30});
 }

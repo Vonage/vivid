@@ -1,7 +1,7 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
 import {
-	customElement, property, LitElement, CSSResult, PropertyValues
+	customElement, property, LitElement, CSSResult
 } from 'lit-element';
 import { style } from './vwc-pagination.css';
 import { html, TemplateResult } from 'lit-element';
@@ -31,7 +31,25 @@ export class VWCPagination extends LitElement {
 	@property({ type: Number, reflect: true, attribute: 'selected-index' })
 	selectedIndex = -1;
 
-	protected updated(changes: PropertyValues): void {
+	connectedCallback() {
+		super.connectedCallback();
+		this.shadowRoot?.addEventListener('click', (e) => {
+			const target = e.target as HTMLElement;
+			const targetItem = target.closest('.item') as HTMLElement;
+			if (!targetItem) {
+				return;
+			}
+			if (targetItem.classList.contains('prev')) {
+				this.goPrev();
+			} else if (targetItem.classList.contains('next')) {
+				this.goNext();
+			} else if (targetItem.dataset.index) {
+				this.goTo(parseInt(targetItem.dataset.index));
+			}
+		});
+	}
+
+	protected updated(): void {
 		let effectiveTotal = this.total;
 		if (typeof effectiveTotal !== 'number' || Number.isNaN(effectiveTotal) || effectiveTotal < 0) {
 			effectiveTotal = 0;
@@ -51,21 +69,22 @@ export class VWCPagination extends LitElement {
 			this.selectedIndex = effectiveSelectedIndex;
 		}
 
-		super.updated(changes);
+		console.log(this.selectedIndex);
 	}
 
 	protected render(): TemplateResult {
 		return html`
 			${this.renderPrev()}
+			${this.renderPages()}
 			${this.renderNext()}
 		`;
 	}
 
 	private renderPrev(): TemplateResult {
 		return html`
-			<span>
+			<span class="prev item" tabindex="0">
 				<slot name="prev-control">
-					<vwc-icon type="left"></vwc-icon>
+					<vwc-icon type="chevron-left-line" size="small"></vwc-icon>
 				</slot>
 			</span>
 		`;
@@ -73,11 +92,39 @@ export class VWCPagination extends LitElement {
 
 	private renderNext(): TemplateResult {
 		return html`
-			<span>
+			<span class="item next" tabindex="0">
 				<slot name="next-control">
-					<vwc-icon type="right"></vwc-icon>
+					<vwc-icon type="chevron-right-line" size="small"></vwc-icon>
 				</slot>
 			</span>
 		`;
+	}
+
+	private renderPages(): TemplateResult {
+		return html`
+			${this.renderPage(0)}
+			${this.renderEllipsis()}
+			${this.renderPage(9)}
+		`;
+	}
+
+	private renderPage(index: number): TemplateResult {
+		return html`<span class="item page" tabindex="0" data-index="${index}">${index + 1}</span>`;
+	}
+
+	private renderEllipsis(): TemplateResult {
+		return html`<span class="item ellipsis">...</span>`;
+	}
+
+	private goPrev(): void {
+		this.selectedIndex -= 1;
+	}
+
+	private goNext(): void {
+		this.selectedIndex += 1;
+	}
+
+	private goTo(index: number): void {
+		this.selectedIndex = index;
 	}
 }

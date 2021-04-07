@@ -202,6 +202,32 @@ describe('pagination', () => {
 			expect(pagination.getAttribute('selected-index')).equal('0');
 		});
 
+		it('should have selectedIndex set to (total - 1) if set above total (property)', async () => {
+			const [pagination] = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} total="3"></${COMPONENT_NAME}>`
+				)
+			);
+			pagination.selectedIndex = 4;
+			await waitNextTask();
+
+			expect(pagination.selectedIndex).equal(2);
+			expect(pagination.getAttribute('selected-index')).equal('2');
+		});
+
+		it('should have selectedIndex set to (total - 1) if set above total (attribute)', async () => {
+			const [pagination] = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} total="3"></${COMPONENT_NAME}>`
+				)
+			);
+			pagination.setAttribute('selected-index', '3');
+			await waitNextTask();
+
+			expect(pagination.selectedIndex).equal(2);
+			expect(pagination.getAttribute('selected-index')).equal('2');
+		});
+
 		it('should have selectedIndex set to -1 when set to non-sense and total=0 (property)', async () => {
 			const [pagination] = addElement(
 				textToDomToParent(
