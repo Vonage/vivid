@@ -228,9 +228,9 @@ describe.only('Toggle-buttons-group', () => {
 		beforeEach(async function () {
 			[actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}>
-<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[0]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[1]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} layout="filled" value="${buttonValues[0]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} layout="filled" value="${buttonValues[1]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} layout="filled" value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 </${COMPONENT_NAME}>`)
 			);
 
@@ -244,6 +244,7 @@ describe.only('Toggle-buttons-group', () => {
 		it(`should listen to click event of dynamically assigned valid element`, async function () {
 			const element = document.createElement(VALID_BUTTON_ELEMENTS[0]);
 			element.setAttribute('value', '22');
+			element.setAttribute('layout', 'filled');
 			actualElement.appendChild(element);
 			await waitForSlotChange();
 			element.click();
