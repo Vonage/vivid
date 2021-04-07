@@ -23,8 +23,8 @@ $connotations-set: predefined-connotations.$connotations-set !default;
 $selector: variables.$selector !default;
 
 @mixin connotations-shades {
-	@each $c_name, $value in functions.pick-map($connotations-set, $_connotations-definition) {
-		$compound: '[connotation="#{$c_name}" i]';
+	@each $name, $_ in functions.pick-map($connotations-set, $_connotations-definition) {
+		$compound: '[connotation="#{$name}" i]';
 
 		$local-selector: selector.replace(
 			#{$selector},
@@ -33,9 +33,7 @@ $selector: variables.$selector !default;
 		);
 
 		#{$local-selector} {
-			@each $s_name, $s_value in $value {
-				#{variables.$vvd-color-connotation}-#{$s_name}: var(--vvd-color-#{$s_value});
-			}
+			@include connotation-shades-variables($name);
 		}
 	}
 }
@@ -50,15 +48,13 @@ $selector: variables.$selector !default;
 	);
 
 	#{$local-selector} {
-		// @include connotation-main-variables($name);
-		$connotation-shades-map: map.get($_connotations-definition, $name);
-		@each $key, $value in $connotation-shades-map {
-			#{variables.$vvd-color-connotation}-#{$key}: var(--vvd-color-#{$value});
-		}
+		@include connotation-shades-variables($name);
 	}
 }
 
-// @mixin connotation-shades-variables($name) {
-// 	#{variables.$vvd-color-connotation}: var(--vvd-color-#{$name});
-// 	#{variables.$vvd-color-on-connotation}: var(--vvd-color-on-#{$name});
-// }
+@mixin connotation-shades-variables($name) {
+	$connotation-shades-map: map.get($_connotations-definition, $name);
+	@each $key, $value in $connotation-shades-map {
+		#{variables.$vvd-color-connotation}-#{$key}: var(--vvd-color-#{$value});
+	}
+}
