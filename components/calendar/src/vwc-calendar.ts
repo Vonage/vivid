@@ -82,7 +82,7 @@ export class VWCCalendar extends LitElement {
 	protected renderTimeCells(): TemplateResult[] {
 		const templates = [];
 		for (let i = 0; i < (this.#hoursOfDay.length + 1) * this.#daysLength; i++) {
-			templates.push(html`<li></li>`);
+			templates.push(html`<div role="listitem" tabindex="0"></div>`);
 		}
 		return templates;
 	}
@@ -108,30 +108,35 @@ export class VWCCalendar extends LitElement {
 					<!-- TODO: get styled hour and datetime value -->
 					${this.#hoursOfDay.map(h => html`<li><time>${h}</time></li>`)}
 				</ol>
-				<ol class="calendar">
+				<div class="calendar" role="list">
 					${this.renderTimeCells()}
 					<!-- TODO: should be presented as a custom element. then could look for siblings and indent by js  -->
 					<section
+						role="presentation"
 						class="task"
 						style="--column: 1; --row: 9 / span 24; --color: #4cc3d2;"
 					></section>
 					<section
+						role="presentation"
 						class="task"
 						style="--column: 6; --row: 5 / span 16; --color:#d6219c;"
 					></section>
 					<section
+						role="presentation"
 						class="task"
 						style="--column: 4; --row: 13 / span 10;	--color: #b779ff;"
 					></section>
 					<section
+						role="presentation"
 						class="task"
 						style="--column: 1; --row: 13 / span 32;	--color: #b779ff;--overlap-count: 2;"
 					></section>
 					<section
+						role="presentation"
 						class="task"
 						style="--column: 1;--row: 15 / span 8; --color: #d6219c;--overlap-count: 1;"
 					></section>
-				</ol>
+				</div>
 			</div>
 		`;
 	}
