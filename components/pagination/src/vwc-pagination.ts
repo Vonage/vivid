@@ -67,6 +67,14 @@ export class VWCPagination extends LitElement {
 		}
 		if (this.selectedIndex !== effectiveSelectedIndex) {
 			this.selectedIndex = effectiveSelectedIndex;
+			this.dispatchEvent(new CustomEvent('change', {
+				bubbles: true,
+				composed: true,
+				detail: {
+					selectedIndex: effectiveSelectedIndex,
+					total: this.total
+				}
+			}));
 		}
 
 		console.log(this.selectedIndex);
