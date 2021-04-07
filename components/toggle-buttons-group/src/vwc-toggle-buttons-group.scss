@@ -1,8 +1,11 @@
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' with(
-$variable-name: --vvd-button-toggle-shape
+	$variable-name: --vvd-button-toggle-shape
 );
+@use '@vonage/vvd-foundation/scss/mixins/color-connotation/variables' as connotation-variables;
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation' with (
-	$connotations-set: primary
+	$connotations-set: primary,
+	$selector: '::slotted(vwc-button#{connotation-variables.$compound-placeholder})'
 );
 
 @include shape-mixins.shape(
@@ -13,19 +16,21 @@ $variable-name: --vvd-button-toggle-shape
 );
 
 @include color-connotation.connotations-shades;
+@include color-connotation.connotations-shades-default(primary);
 
 :host {
 	display: flex;
-
 }
 
-::slotted(vwc-button){
-	#{color-connotation.$vvd-color-connotation}: #{color-connotation.$vvd-color-connotation}-soft;
-	--vvd-color-on-connotation: black;
+::slotted(vwc-button) {
+	#{color-connotation.$vvd-color-connotation}: var(#{color-connotation.$vvd-color-connotation-soft});
+	#{color-connotation.$vvd-color-on-connotation}: var(#{scheme-variables.$vvd-color-on-base});
 }
+
+// stylelint-disable selector-no-qualifying-type
 ::slotted(vwc-button[selected]) {
-	--vvd-color-connotation: blue;
-	--vvd-color-on-connotation: white;
+	// stylelint-enable selector-no-qualifying-type
+	#{color-connotation.$vvd-color-connotation}: var(#{color-connotation.$vvd-color-connotation-underemphasis});
 }
 
 ::slotted(vwc-button:not(:first-child):not(:last-child)) {

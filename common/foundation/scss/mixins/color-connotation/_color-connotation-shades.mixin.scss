@@ -1,16 +1,21 @@
 @use 'sass:selector';
+@use 'sass:map';
 @use '../../functions';
 @use 'predefined-connotations';
 @use 'variables';
 
+$soft: soft;
+$underemphasis: underemphasis;
+$accent: accent;
+
 $_connotations-definition: (
-	primary: (soft: neutral-20, accent: neutral-30),
-	cta: (soft: cta-20, accent: cta-60),
-	success: (soft: success-20, accent: success-60),
-	alert: (soft: alert-20, accent: alert-60),
-	warning: (soft: warning-20, accent: warning-60),
-	info: (soft: info-20, accent: info-60),
-	announcement: (soft: announcement-20, accent: announcement-60)
+	primary: (#{soft}: neutral-20, #{underemphasis}: neutral-40, #{accent}: neutral-30),
+	cta: (#{soft}: cta-20, #{underemphasis}: cta-40, #{accent}: cta-60),
+	success: (#{soft}: success-20, #{underemphasis}: success-40, #{accent}: success-60),
+	alert: (#{soft}: alert-20, #{underemphasis}: alert-40, #{accent}: alert-60),
+	warning: (#{soft}: warning-20, #{underemphasis}: warning-40, #{accent}: warning-60),
+	info: (#{soft}: info-20, #{underemphasis}: info-40, #{accent}: info-60),
+	announcement: (#{soft}: announcement-20, #{underemphasis}: announcement-40, #{accent}: announcement-60)
 );
 
 // override to apply relevance
@@ -35,3 +40,25 @@ $selector: variables.$selector !default;
 	}
 }
 
+@mixin connotations-shades-default($name) {
+	$compound: ':not([connotation])';
+
+	$local-selector: selector.replace(
+		#{$selector},
+		#{variables.$compound-placeholder},
+		#{$compound}
+	);
+
+	#{$local-selector} {
+		// @include connotation-main-variables($name);
+		$connotation-shades-map: map.get($_connotations-definition, $name);
+		@each $key, $value in $connotation-shades-map {
+			#{variables.$vvd-color-connotation}-#{$key}: var(--vvd-color-#{$value});
+		}
+	}
+}
+
+// @mixin connotation-shades-variables($name) {
+// 	#{variables.$vvd-color-connotation}: var(--vvd-color-#{$name});
+// 	#{variables.$vvd-color-on-connotation}: var(--vvd-color-on-#{$name});
+// }
