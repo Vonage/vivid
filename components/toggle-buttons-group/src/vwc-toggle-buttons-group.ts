@@ -20,6 +20,14 @@ function isButtonActive(buttonElement: Element) {
 	return buttonElement.hasAttribute(SELECTED_ATTRIBUTE_NAME);
 }
 
+function toggleButton(buttonElement: Element) {
+	if (isButtonActive(buttonElement)) {
+		buttonElement.removeAttribute(SELECTED_ATTRIBUTE_NAME);
+	} else {
+		buttonElement.setAttribute(SELECTED_ATTRIBUTE_NAME, '');
+	}
+}
+
 @customElement('vwc-toggle-buttons-group')
 export class VwcToggleButtonsGroup extends LitElement {
 	/**
@@ -32,18 +40,18 @@ export class VwcToggleButtonsGroup extends LitElement {
 		this.items.forEach((buttonElement) => {
 			buttonElement.addEventListener('click', () => {
 				if (!this.multi) {
-					this.items.forEach(button => {
-						if (button === buttonElement) return;
-						button.removeAttribute(SELECTED_ATTRIBUTE_NAME);
-					});
+					this.clearSelection(buttonElement);
 				}
-				if (isButtonActive(buttonElement)) {
-					buttonElement.removeAttribute(SELECTED_ATTRIBUTE_NAME);
-				} else {
-					buttonElement.setAttribute(SELECTED_ATTRIBUTE_NAME, '');
-				}
+				toggleButton(buttonElement);
 				this.dispatchToggleEvent();
 			});
+		});
+	}
+
+	private clearSelection(buttonElement?: Element) {
+		this.items.forEach(button => {
+			if (button === buttonElement) return;
+			button.removeAttribute(SELECTED_ATTRIBUTE_NAME);
 		});
 	}
 
@@ -62,9 +70,7 @@ export class VwcToggleButtonsGroup extends LitElement {
 	}
 
 	set values(values: (string|false|null)[]) {
-		this.items.forEach(button => {
-			button.removeAttribute(SELECTED_ATTRIBUTE_NAME);
-		});
+		this.clearSelection();
 		if (!this.multi) {
 			values = [values[0]];
 		}
