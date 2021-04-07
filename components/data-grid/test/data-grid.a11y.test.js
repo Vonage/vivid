@@ -3,9 +3,11 @@ import '../vwc-data-grid-column.js';
 import {
 	isolatedElementsCreation,
 	waitNextTask,
-	textToDomToParent,
-	runAxeCore,
+	textToDomToParent
 } from '../../../test/test-helpers.js';
+import { chaiA11yAxe } from 'chai-a11y-axe';
+
+chai.use(chaiA11yAxe);
 
 const COMPONENT_NAME = 'vwc-data-grid';
 
@@ -22,6 +24,6 @@ describe('data grid a11y', () => {
 		);
 		await waitNextTask();
 
-		await runAxeCore(actualElement);
+		await expect(actualElement).shadowDom.to.be.accessible();
 	});
 });

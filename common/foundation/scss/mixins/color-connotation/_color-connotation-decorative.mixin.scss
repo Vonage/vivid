@@ -1,7 +1,6 @@
 @use 'sass:selector';
 
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
-@use '../../variable-names/color-semantic-variable-names' as color-semantic;
 @use '../../functions';
 @use 'variables';
 
@@ -24,7 +23,7 @@ $selector: variables.$selector !default;
 		);
 
 		#{$local-selector} {
-			#{color-semantic.$vvd-color-connotation}: $value;
+			#{variables.$vvd-color-connotation}: $value;
 		}
 	}
 }

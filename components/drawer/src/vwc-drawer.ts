@@ -3,7 +3,7 @@ import { customElement, property } from 'lit-element';
 import { Drawer as MWCDrawer } from '@material/mwc-drawer';
 import { style as vwcDrawerStyle } from './vwc-drawer.css';
 import { style as mwcDrawerStyle } from '@material/mwc-drawer/mwc-drawer-css.js';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 
 declare global {
 	interface HTMLElementTagNameMap {

@@ -393,5 +393,35 @@ describe('button', () => {
 			expect(i.offsetWidth).equal(20);
 			assertDistancePixels(i, b, 'top', (b.offsetHeight - i.offsetHeight) / 2);
 		});
+
+		it('should style disabled state correctly (filled)', async () => {
+			const [b] = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} disabled layout="filled">Button Text</${COMPONENT_NAME}>`
+				)
+			);
+			await waitNextTask();
+			const innerButton = b.shadowRoot.querySelector('.mdc-button.mdc-button--unelevated');
+			expect(innerButton).exist;
+			assertComputedStyle(innerButton, { color: 'rgb(153,153,153)', backgroundColor: 'rgb(204,204,204)' });
+		});
+
+		it('should style disabled state correctly (outlined)', async () => {
+			const [b] = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} disabled layout="outlined">Button Text</${COMPONENT_NAME}>`
+				)
+			);
+			await waitNextTask();
+			const innerButton = b.shadowRoot.querySelector('.mdc-button.mdc-button--outlined');
+			expect(innerButton).exist;
+			assertComputedStyle(innerButton, {
+				color: 'rgb(153,153,153)',
+				borderTopColor: 'rgb(153,153,153)',
+				borderRightColor: 'rgb(153,153,153)',
+				borderBottomColor: 'rgb(153,153,153)',
+				borderLeftColor: 'rgb(153,153,153)'
+			});
+		});
 	});
 });

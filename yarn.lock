@@ -5847,7 +5847,7 @@ aws4@^1.8.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/aws4/-/aws4-1.11.0.tgz#d61f46d83b2519250e2784daf5b09479a8b41c59"
   integrity sha1-1h9G2DslGSUOJ4Ta9bCUeai0HFk=
 
-axe-core@^4.0.2, axe-core@^4.1.1, axe-core@^4.1.3:
+axe-core@^4.0.2, axe-core@^4.1.1:
   version "4.1.3"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/axe-core/-/axe-core-4.1.3.tgz#64a4c85509e0991f5168340edc4bedd1ceea6966"
   integrity sha1-ZKTIVQngmR9RaDQO3Evt0c7qaWY=

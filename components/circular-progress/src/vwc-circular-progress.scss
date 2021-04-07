@@ -1,6 +1,5 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
-@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
-@use '@vonage/vvd-foundation/scss/mixins/color-connotation' with (
+@use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation with (
 	$connotations-set: primary cta success alert
 );
 
@@ -8,5 +7,5 @@
 @include color-connotation.connotations-main-default(primary);
 
 :host {
-	--mdc-theme-primary: var(#{color-semantic.$vvd-color-connotation});
+	--mdc-theme-primary: var(#{color-connotation.$vvd-color-connotation});
 }

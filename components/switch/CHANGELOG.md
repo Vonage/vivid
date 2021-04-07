@@ -1,3 +1,12 @@
+## [2.2.4](https://github.com/vonage/vivid/compare/v2.2.3...v2.2.4) (2021-04-05)
+
+
+### Bug Fixes
+
+* **vwc-badge:** element invisibility due to wrong z-indexing ([#717](https://github.com/vonage/vivid/issues/717)) ([2e9a91f](https://github.com/vonage/vivid/commit/2e9a91ffa914c12f7c64cce12dc1e7c19d39cbac)), closes [#31](https://github.com/vonage/vivid/issues/31)
+
+
+
 ## [2.2.3](https://github.com/vonage/vivid/compare/v2.2.2...v2.2.3) (2021-03-30)
 
 

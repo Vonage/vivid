@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.4](https://github.com/Vonage/vivid/compare/v2.2.3...v2.2.4) (2021-04-05)
+
+
+### Bug Fixes
+
+* **datepicker:** viv-446 remove vertical scrollbar in time picker ([#736](https://github.com/Vonage/vivid/issues/736)) ([6d7a2cb](https://github.com/Vonage/vivid/commit/6d7a2cbd283cce3e12f9effc35bd087dec75a0c6))
+* **vwc-badge:** element invisibility due to wrong z-indexing ([#717](https://github.com/Vonage/vivid/issues/717)) ([2e9a91f](https://github.com/Vonage/vivid/commit/2e9a91ffa914c12f7c64cce12dc1e7c19d39cbac)), closes [#31](https://github.com/Vonage/vivid/issues/31)
+* **vwc-chip:** trailing icon offset fixed ([#735](https://github.com/Vonage/vivid/issues/735)) ([c580773](https://github.com/Vonage/vivid/commit/c580773f61f0ca978bd87a33cdab9b9f26d9b53c))
+* **workspace:** watch scss files instead of sass ([#731](https://github.com/Vonage/vivid/issues/731)) ([5823a65](https://github.com/Vonage/vivid/commit/5823a65eb5e27e17b4911e5bc6681ab6253577da))
+
+
+
+
+
 ## [2.2.3](https://github.com/Vonage/vivid/compare/v2.2.2...v2.2.3) (2021-03-30)
 
 

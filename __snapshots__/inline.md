@@ -1,6 +1,8 @@
 # `inline`
 
-#### `should have internal contents`
+## `basics`
+
+####   `should have internal contents`
 
 ```html
 <slot>
