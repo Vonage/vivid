@@ -58,6 +58,7 @@ $total-columns: 7;
 	background-color: var(#{scheme-variables.$vvd-color-neutral-20});
 	border-radius: 3.64752px;
 	box-shadow: 0 0 3.64752px rgba(0, 0, 0, 0.15);
+	counter-reset: listing;
 	gap: 1px;
 	grid-area: calendar;
 	grid-auto-flow: column;
@@ -65,22 +66,29 @@ $total-columns: 7;
 		$total-columns,
 		1fr
 	);
-	> li {
+	> [role="listitem"i] {
 		height: 35px;
 		background-color: var(#{scheme-variables.$vvd-color-base});
 		grid-column: var(--column);
 		grid-row: var(--row);
+		&::before {
+			position: absolute;
+			content: counter(listing);
+			counter-increment: listing;
+			opacity: 0;
+			pointer-events: none;
+		}
 	}
 
 	@for $i from 1 through $total-rows {
 		$current-row: $i * $fraction - $fraction + 1;
-		li:nth-child(#{$total-rows}n + #{$i}) {
+		[role="listitem"i]:nth-child(#{$total-rows}n + #{$i}) {
 			--row: #{$current-row} / span #{$fraction};
 		}
 	}
 	@for $i from 1 through $total-columns {
 		$sum: $sum - $total-rows + 1;
-		li:nth-child(1n + #{$next}):nth-last-child(1n + #{$sum}) {
+		[role="listitem"i]:nth-child(1n + #{$next}):nth-last-child(1n + #{$sum}) {
 			--column: #{$i};
 		}
 		/* stylelint-disable-next-line order/order */
@@ -88,12 +96,6 @@ $total-columns: 7;
 	}
 }
 
-.task {
-	// width: 90%;
-	--indent: calc(var(--overlap-count, 0) * 8px);
-	margin: 1px 1px 1px calc(1px + var(--indent));
-	background-color: var(--color);
-	border-radius: 3.64752px;
-	grid-column: var(--column);
-	grid-row: var(--row);
+[role="presentation"i] {
+	display: contents;
 }

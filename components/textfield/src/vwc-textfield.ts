@@ -17,9 +17,11 @@ import { Shape } from '@vonage/vvd-foundation/constants';
 import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
 export { TextFieldType } from '@material/mwc-textfield';
 
+export const COMPONENT_NAME = 'vwc-textfield';
+
 declare global {
 	interface HTMLElementTagNameMap {
-		'vwc-textfield': VWCTextField;
+		[COMPONENT_NAME]: VWCTextField;
 	}
 }
 
@@ -59,6 +61,7 @@ export class VWCTextField extends MWCTextField {
 			set: function (newValue: string) {
 				this.formElement.value = newValue;
 				this.floatLabel();
+				this.requestUpdate('value', null);
 			},
 		});
 	}
@@ -169,6 +172,12 @@ export class VWCTextField extends MWCTextField {
 		fe.onblur = () => {
 			this.dispatchEvent(new FocusEvent('blur', { composed: true }));
 			this.onInputBlur();
+		};
+
+		fe.oninput = (e) => {
+			e.stopImmediatePropagation();
+			this.dispatchEvent(new InputEvent('input', { bubbles: true }));
+			this.handleInputChange();
 		};
 
 		//	attributes

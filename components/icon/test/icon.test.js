@@ -9,7 +9,7 @@ import {
 
 
 const LOAD_TRIAL_COUNT = 20;
-const LOAD_TIME = 200;
+const LOAD_TIME = 600;
 const sleep = ms => new Promise(res => setTimeout(res, ms));
 
 describe('vwc-icon', () => {

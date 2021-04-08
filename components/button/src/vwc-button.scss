@@ -32,6 +32,11 @@
 	@include vvd-formfield.coupling;
 }
 
+:host([raised]),
+:host([unelevated]) {
+	--mdc-ripple-color: var(#{color-connotation.$vvd-color-on-connotation});
+}
+
 :host([unelevated]),
 :host([outlined]) {
 	--mdc-theme-primary: var(#{color-connotation.$vvd-color-connotation});
