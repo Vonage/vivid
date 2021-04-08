@@ -28,6 +28,17 @@ Validation.args = {
 	value: 'Text'
 };
 
+export const AutoValidation = Template.bind({});
+AutoValidation.args = {
+	label: 'Numbers only',
+	autoValidate: '',
+	required: '',
+	pattern: '[0-9]+',
+	validationMessage: 'Numbers only',
+	helper: 'State your numbers, please!',
+	value: 'Text'
+};
+
 export const Icon = Template.bind({});
 Icon.args = {
 	icon: 'search',
