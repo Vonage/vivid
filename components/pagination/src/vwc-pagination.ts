@@ -1,7 +1,7 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
 import {
-	customElement, property, LitElement, CSSResult
+	customElement, property, LitElement, CSSResult, PropertyValues
 } from 'lit-element';
 import { style } from './vwc-pagination.css';
 import { html, TemplateResult } from 'lit-element';
@@ -49,7 +49,7 @@ export class VWCPagination extends LitElement {
 		});
 	}
 
-	protected updated(): void {
+	protected updated(changes: PropertyValues): void {
 		let effectiveTotal = this.total;
 		if (typeof effectiveTotal !== 'number' || Number.isNaN(effectiveTotal) || effectiveTotal < 0) {
 			effectiveTotal = 0;
@@ -65,7 +65,8 @@ export class VWCPagination extends LitElement {
 		if (effectiveSelectedIndex >= effectiveTotal) {
 			effectiveSelectedIndex = effectiveTotal - 1;
 		}
-		if (this.selectedIndex !== effectiveSelectedIndex) {
+
+		if (this.selectedIndex !== effectiveSelectedIndex || (changes.get('selectedIndex') !== undefined && this.selectedIndex !== changes.get('selectedIndex'))) {
 			this.selectedIndex = effectiveSelectedIndex;
 			this.dispatchEvent(new CustomEvent('change', {
 				bubbles: true,
@@ -76,8 +77,6 @@ export class VWCPagination extends LitElement {
 				}
 			}));
 		}
-
-		console.log(this.selectedIndex);
 	}
 
 	protected render(): TemplateResult {
