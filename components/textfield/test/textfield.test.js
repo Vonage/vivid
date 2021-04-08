@@ -1,4 +1,4 @@
-import '../vwc-textfield.js';
+import { COMPONENT_NAME } from '../vwc-textfield.js';
 import '@vonage/vwc-formfield';
 import {
 	textToDomToParent,
@@ -26,8 +26,6 @@ import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
 chai.use(chaiDomDiff);
-
-const COMPONENT_NAME = 'vwc-textfield';
 
 function getHiddenInput(formElement, fieldName) {
 	return formElement.querySelector(`input[name="${fieldName}"]`);
