@@ -22,5 +22,5 @@ export {
 } from './textfield-variants.stories.js';
 
 export {
-	Combo
-} from './textfield-combo.stories';
+	Autocomplete
+} from './textfield-autocomplete.stories';
