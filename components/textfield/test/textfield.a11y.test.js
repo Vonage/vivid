@@ -1,4 +1,4 @@
-import '../vwc-textfield.js';
+import { COMPONENT_NAME } from '../vwc-textfield.js';
 import {
 	isolatedElementsCreation,
 	waitNextTask,
@@ -7,8 +7,6 @@ import {
 import { chaiA11yAxe } from 'chai-a11y-axe';
 
 chai.use(chaiA11yAxe);
-
-const COMPONENT_NAME = 'vwc-textfield';
 
 describe('textfield a11y', () => {
 	const addElement = isolatedElementsCreation();

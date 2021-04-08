@@ -18,7 +18,8 @@ export {
 	Disabled,
 	Icon,
 	PillShape,
-	Validation
+	Validation,
+  AutoValidation
 } from './textfield-variants.stories.js';
 
 export {
