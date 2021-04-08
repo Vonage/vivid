@@ -29,9 +29,9 @@ $size-variable-name: --icon-size;
 	vertical-align: middle;
 
 	svg {
+		block-size: 100%;
 		fill: currentColor;
-		max-block-size: 100%;
-		max-inline-size: 100%;
+		inline-size: 100%;
 		vertical-align: super;
 	}
 }
