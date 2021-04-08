@@ -1,0 +1,15 @@
+:host {
+	display: contents;
+}
+
+section {
+	--indent: calc(var(--overlap-count, 0) * 8px);
+	margin: 1px 1px 1px calc(1px + var(--indent));
+	background-color: var(--event-color);
+	border-radius: 3.64752px;
+	grid-column: var(--event-day);
+	grid-row: var(--event-row);
+	&:focus {
+		z-index: 1;
+	}
+}
