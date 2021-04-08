@@ -22,19 +22,19 @@
 	display: flex;
 }
 
-::slotted(vwc-button) {
+::slotted([group-button]) {
 	--mdc-theme-primary: var(#{color-connotation.$vvd-color-connotation-soft});
 	--mdc-theme-on-primary: var(#{scheme-variables.$vvd-color-on-base});
 }
 
-::slotted(vwc-button:not(:first-child):not(:last-child)) {
+::slotted([group-button]:not(:first-child):not(:last-child)) {
 	--vvd-button-shape: 0;
 }
 
-::slotted(vwc-button:first-child:not(:last-child)) {
+::slotted([group-button]:first-child:not(:last-child)) {
 	--vvd-button-shape: var(--vvd-button-toggle-shape) 0 0 var(--vvd-button-toggle-shape);
 }
 
-::slotted(vwc-button:last-child:not(:first-child)) {
+::slotted([group-button]:last-child:not(:first-child)) {
 	--vvd-button-shape: 0 var(--vvd-button-toggle-shape) var(--vvd-button-toggle-shape) 0;
 }

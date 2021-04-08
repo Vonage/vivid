@@ -11,6 +11,7 @@ export const VALID_BUTTON_ELEMENTS = ['vwc-button'];
 const SELECTED_EVENT_NAME = 'selected';
 const SELECTED_ATTRIBUTE_NAME = 'selected';
 const MULTIPLE_ATTRIBUTE_NAME = 'multi';
+const GROUP_BUTTON_ATTRIBUTE = 'group-button';
 
 function isValidButton(buttonElement: Element) {
 	return VALID_BUTTON_ELEMENTS.includes(buttonElement.tagName.toLowerCase());
@@ -72,14 +73,15 @@ export class VwcToggleButtonGroup extends LitElement {
 		let slot = this.shadowRoot?.querySelector('slot') as HTMLSlotElement;
 		slot.addEventListener('slotchange', () => {
 			let nodes = slot.assignedElements().filter(node => (isValidButton(node) && !this.items.includes(node)));
-			this.setNodesClickEvents(nodes);
+			this.setNodesAndClickEvents(nodes);
 			this.#_items = null;
 			this.items;
 		});
 	};
 
-	private setNodesClickEvents(nodes: Element[]) {
+	private setNodesAndClickEvents(nodes: Element[]) {
 		nodes.forEach((buttonElement) => {
+			buttonElement.setAttribute(GROUP_BUTTON_ATTRIBUTE, '');
 			buttonElement.addEventListener('click', () => {
 				if (!this.multi) {
 					this.clearSelection(buttonElement);
@@ -109,7 +111,7 @@ export class VwcToggleButtonGroup extends LitElement {
 
 	constructor() {
 		super();
-		this.setNodesClickEvents(this.items);
+		this.setNodesAndClickEvents(this.items);
 	}
 
 }
