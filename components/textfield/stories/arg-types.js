@@ -1,25 +1,22 @@
 import { Shape } from '@vonage/vvd-foundation/constants';
 
+const BOOLEAN_DEFAULT_SETUP = {
+	control: {
+		type: 'inline-radio',
+		options: { true: '', false: undefined }
+	}
+};
+const DISABLED_DEFAULT_SETUP = {
+	table: {
+		disable: true
+	}
+};
 
 export const argTypes = {
-	outlined: {
-		control: {
-			type: 'inline-radio',
-			options: { true: '' },
-		},
-	},
-	dense: {
-		control: {
-			type: 'inline-radio',
-			options: { true: '', false: undefined },
-		},
-	},
-	disabled: {
-		control: {
-			type: 'inline-radio',
-			options: { true: '', false: undefined },
-		},
-	},
+	outlined: BOOLEAN_DEFAULT_SETUP,
+	autoValdiate: BOOLEAN_DEFAULT_SETUP,
+	dense: BOOLEAN_DEFAULT_SETUP,
+	disabled: BOOLEAN_DEFAULT_SETUP,
 	shape: {
 		control: {
 			type: 'select',
@@ -28,23 +25,13 @@ export const argTypes = {
 			].includes(s)),
 		}
 	},
-	required: {
-		control: {
-			type: 'inline-radio',
-			options: { true: '', false: undefined },
-		},
-	},
-	readOnly: {
-		control: {
-			type: 'inline-radio',
-			options: { true: '', false: undefined },
-		},
-	},
-	form: { table: { disable: true } },
-	formElement: { table: { disable: true } },
-	outlineOpen: { table: { disable: true } },
-	ripple: { table: { disable: true } },
-	styles: { table: { disable: true } },
-	validity: { table: { disable: true } },
-	validityTransform: { table: { disable: true } },
+	required: BOOLEAN_DEFAULT_SETUP,
+	readOnly: BOOLEAN_DEFAULT_SETUP,
+	form: DISABLED_DEFAULT_SETUP,
+	formElement: DISABLED_DEFAULT_SETUP,
+	outlineOpen: DISABLED_DEFAULT_SETUP,
+	ripple: DISABLED_DEFAULT_SETUP,
+	styles: DISABLED_DEFAULT_SETUP,
+	validity: DISABLED_DEFAULT_SETUP,
+	validityTransform: DISABLED_DEFAULT_SETUP,
 };
