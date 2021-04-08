@@ -1,3 +1,12 @@
+# [2.3.0](https://github.com/vonage/vivid/compare/v2.2.4...v2.3.0) (2021-04-08)
+
+
+### Bug Fixes
+
+* **vwc-button:** ripple color css variables not defined ([#756](https://github.com/vonage/vivid/issues/756)) ([0e90e0e](https://github.com/vonage/vivid/commit/0e90e0e75ca3930a757b399a2cbc799c657b094d))
+
+
+
 ## [2.2.4](https://github.com/vonage/vivid/compare/v2.2.3...v2.2.4) (2021-04-05)
 
 
