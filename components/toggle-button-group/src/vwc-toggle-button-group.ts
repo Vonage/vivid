@@ -1,9 +1,9 @@
 import { customElement, html, LitElement, property, PropertyValues } from 'lit-element';
-import { style } from './vwc-toggle-buttons-group.css';
+import { style } from './vwc-toggle-button-group.css';
 
 declare global {
 	interface HTMLElementTagNameMap {
-		'vwc-toggle-buttons-group': VwcToggleButtonsGroup;
+		'vwc-toggle-button-group': VwcToggleButtonGroup;
 	}
 }
 
@@ -28,8 +28,8 @@ function toggleButton(buttonElement: Element) {
 	}
 }
 
-@customElement('vwc-toggle-buttons-group')
-export class VwcToggleButtonsGroup extends LitElement {
+@customElement('vwc-toggle-button-group')
+export class VwcToggleButtonGroup extends LitElement {
 	/**
 	 * @internal
 	 */

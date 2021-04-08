@@ -140,7 +140,7 @@
 			"path": "components/top-app-bar-fixed"
 		},
 		{
-			"path": "components/toggle-buttons-group"
+			"path": "components/toggle-button-group"
 		}
 	]
 }
