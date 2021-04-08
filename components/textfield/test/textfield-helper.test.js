@@ -1,4 +1,4 @@
-import '../vwc-textfield.js';
+import { COMPONENT_NAME } from '../vwc-textfield.js';
 import {
 	textToDomToParent,
 	waitNextTask,
@@ -9,8 +9,7 @@ import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
 
-const COMPONENT_NAME = 'vwc-textfield',
-	HELPER_MESSAGE = 'helper',
+const HELPER_MESSAGE = 'helper',
 	ERROR_MESSAGE = 'error';
 
 describe('textfield helper', () => {
