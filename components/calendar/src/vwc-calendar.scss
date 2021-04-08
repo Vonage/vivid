@@ -96,16 +96,6 @@ $total-columns: 7;
 	}
 }
 
-.task {
-	// width: 90%;
-	--indent: calc(var(--overlap-count, 0) * 8px);
-	margin: 1px 1px 1px calc(1px + var(--indent));
-	background-color: var(--color);
-	border-radius: 3.64752px;
-	grid-column: var(--column);
-	grid-row: var(--row);
-}
-
 [role="presentation"i] {
 	display: contents;
 }
