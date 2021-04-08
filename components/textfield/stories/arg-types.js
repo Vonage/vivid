@@ -8,6 +8,12 @@ export const argTypes = {
 			options: { true: '' },
 		},
 	},
+	autoValdiate: {
+		control: {
+			type: 'inline-radio',
+			options: { true: '', false: undefined },
+		},
+	},
 	dense: {
 		control: {
 			type: 'inline-radio',
