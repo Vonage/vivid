@@ -23,24 +23,18 @@
 }
 
 ::slotted(vwc-button) {
-	#{color-connotation.$vvd-color-connotation}: var(#{color-connotation.$vvd-color-connotation-soft});
-	#{color-connotation.$vvd-color-on-connotation}: var(#{scheme-variables.$vvd-color-on-base});
-}
-
-// stylelint-disable selector-no-qualifying-type
-::slotted(vwc-button[selected]) {
-	// stylelint-enable selector-no-qualifying-type
-	#{color-connotation.$vvd-color-connotation}: var(#{color-connotation.$vvd-color-connotation-underemphasis});
+	--mdc-theme-primary: var(#{color-connotation.$vvd-color-connotation-soft});
+	--mdc-theme-on-primary: var(#{scheme-variables.$vvd-color-on-base});
 }
 
 ::slotted(vwc-button:not(:first-child):not(:last-child)) {
 	--vvd-button-shape: 0;
 }
 
-::slotted(vwc-button:first-child) {
+::slotted(vwc-button:first-child:not(:last-child)) {
 	--vvd-button-shape: var(--vvd-button-toggle-shape) 0 0 var(--vvd-button-toggle-shape);
 }
 
-::slotted(vwc-button:last-child) {
+::slotted(vwc-button:last-child:not(:first-child)) {
 	--vvd-button-shape: 0 var(--vvd-button-toggle-shape) var(--vvd-button-toggle-shape) 0;
 }
