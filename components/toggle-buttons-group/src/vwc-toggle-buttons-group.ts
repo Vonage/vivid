@@ -86,6 +86,7 @@ export class VwcToggleButtonsGroup extends LitElement {
 				}
 				toggleButton(buttonElement);
 				this.dispatchToggleEvent();
+				(buttonElement.shadowRoot?.activeElement as HTMLElement)?.blur();
 			});
 		});
 	}
