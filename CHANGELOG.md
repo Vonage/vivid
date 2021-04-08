@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/Vonage/vivid/compare/v2.2.4...v2.3.0) (2021-04-08)
+
+
+### Bug Fixes
+
+* **vwc-button:** ripple color css variables not defined ([#756](https://github.com/Vonage/vivid/issues/756)) ([0e90e0e](https://github.com/Vonage/vivid/commit/0e90e0e75ca3930a757b399a2cbc799c657b094d))
+* **vwc-textfield:** iss-754 viv-480 textfield autovalidate ([#755](https://github.com/Vonage/vivid/issues/755)) ([d1350f8](https://github.com/Vonage/vivid/commit/d1350f8074c01dd3f581bda6bc610cfd2135fa3a)), closes [#754](https://github.com/Vonage/vivid/issues/754) [#754](https://github.com/Vonage/vivid/issues/754) [#754](https://github.com/Vonage/vivid/issues/754) [#754](https://github.com/Vonage/vivid/issues/754)
+
+
+### Features
+
+* **vwc-inline:** add support for auto-fill/fit variance ([#746](https://github.com/Vonage/vivid/issues/746)) ([17732b3](https://github.com/Vonage/vivid/commit/17732b372d14cbba7708e3cf9332e1899850d3cd))
+
+
+
+
+
 ## [2.2.4](https://github.com/Vonage/vivid/compare/v2.2.3...v2.2.4) (2021-04-05)
 
 

@@ -8322,6 +8322,11 @@ electron-to-chromium@^1.3.564, electron-to-chromium@^1.3.649:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/electron-to-chromium/-/electron-to-chromium-1.3.685.tgz#f636d17c9c232c925f8bbfbff4f86303da091ff9"
   integrity sha1-9jbRfJwjLJJfi7+/9PhjA9oJH/k=
 
+element-f@^2.0.0:
+  version "2.0.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/element-f/-/element-f-2.0.0.tgz#12ace777df4999fc20c7733abba69d0c171a1c3f"
+  integrity sha1-Eqznd99Jmfwgx3M6u6adDBcaHD8=
+
 element-resize-detector@^1.2.2:
   version "1.2.2"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/element-resize-detector/-/element-resize-detector-1.2.2.tgz#bf7c3ff915957e4e62e86241ed2f9c86b078892b"
