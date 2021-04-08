@@ -174,7 +174,8 @@ export class VWCTextField extends MWCTextField {
 			this.onInputBlur();
 		};
 
-		fe.oninput = () => {
+		fe.oninput = (e) => {
+			e.stopImmediatePropagation();
 			this.dispatchEvent(new InputEvent('input', { bubbles: true }));
 			this.handleInputChange();
 		};
