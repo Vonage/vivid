@@ -123,7 +123,7 @@ export class VWCPagination extends LitElement {
 	private renderPagesRange(from: number, to: number): TemplateResult | TemplateResult[] | string {
 		if (to < from || from > to) {
 			return '';
-		} else if (to - from < 2) {
+		} else if (to - from < 3) {
 			return new Array(to - from + 1)
 				.fill(from)
 				.map((f, i) => this.renderPage(f + i));
