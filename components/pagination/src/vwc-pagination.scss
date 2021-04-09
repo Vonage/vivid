@@ -4,8 +4,19 @@
 :host {
 	@include typography.typography-cat-shorthand('caption');
 
-	display: flex;
-	align-items: center;
+	.container {
+		display: inline-flex;
+		align-items: center;
+
+		&.all {
+			min-width: 240px;
+			justify-content: space-between;
+		}
+
+		&.pages {
+			justify-content: center;
+		}
+	}
 }
 
 .item {

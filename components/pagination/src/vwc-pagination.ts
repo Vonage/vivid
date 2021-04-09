@@ -80,11 +80,13 @@ export class VWCPagination extends LitElement {
 	}
 
 	protected render(): TemplateResult {
-		return html`
+		return html`<div class="container all">
 			${this.renderPrev()}
-			${this.renderPages()}
+			<div class="container pages">
+				${this.renderPages(this.total, this.selectedIndex)}
+			</div>
 			${this.renderNext()}
-		`;
+		</div>`;
 	}
 
 	private renderPrev(): TemplateResult {
@@ -107,16 +109,35 @@ export class VWCPagination extends LitElement {
 		`;
 	}
 
-	private renderPages(): TemplateResult {
+	private renderPages(total: number, pivot: number): TemplateResult | string {
+		if (total === 0) {
+			return '';
+		}
 		return html`
-			${this.renderPage(0)}
-			${this.renderEllipsis()}
-			${this.renderPage(9)}
+			${this.renderPagesRange(0, pivot - 1)}
+			${this.renderPage(pivot, true)}
+			${this.renderPagesRange(pivot + 1, total - 1)}
 		`;
 	}
 
-	private renderPage(index: number): TemplateResult {
-		return html`<span class="item page" tabindex="0" data-index="${index}">${index + 1}</span>`;
+	private renderPagesRange(from: number, to: number): TemplateResult | TemplateResult[] | string {
+		if (to < from || from > to) {
+			return '';
+		} else if (to - from < 2) {
+			return new Array(to - from + 1)
+				.fill(from)
+				.map((f, i) => this.renderPage(f + i));
+		} else {
+			return html`
+				${this.renderPage(from)}
+				${this.renderEllipsis()}
+				${this.renderPage(to)}
+			`;
+		}
+	}
+
+	private renderPage(index: number, isSelected = false): TemplateResult {
+		return html`<span class="item page" tabindex="0" data-index="${index}" ?selected="${isSelected}">${index + 1}</span>`;
 	}
 
 	private renderEllipsis(): TemplateResult {
