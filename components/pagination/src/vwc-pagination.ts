@@ -29,7 +29,7 @@ export class VWCPagination extends LitElement {
 	total = 0;
 
 	@property({ type: Number, reflect: true, attribute: 'selected-index' })
-	selectedIndex = -1;
+	selectedIndex = this.total - 1;
 
 	connectedCallback() {
 		super.connectedCallback();
@@ -37,24 +37,31 @@ export class VWCPagination extends LitElement {
 	}
 
 	protected updated(changes: PropertyValues): void {
+		//	validate and adjust total
 		let effectiveTotal = this.total;
 		if (typeof effectiveTotal !== 'number' || Number.isNaN(effectiveTotal) || effectiveTotal < 0) {
 			effectiveTotal = 0;
-		}
-		if (this.total !== effectiveTotal) {
 			this.total = effectiveTotal;
 		}
 
+		//	validate and adjust selected index
 		let effectiveSelectedIndex = this.selectedIndex;
-		if (typeof effectiveSelectedIndex !== 'number' || Number.isNaN(effectiveSelectedIndex) || effectiveSelectedIndex < 0) {
-			effectiveSelectedIndex = 0;
+		if (typeof effectiveSelectedIndex !== 'number' || Number.isNaN(effectiveSelectedIndex) || effectiveSelectedIndex < -1) {
+			effectiveSelectedIndex = -1;
 		}
-		if (effectiveSelectedIndex >= effectiveTotal) {
+
+		//	validate and adjust selected index relative to effective total
+		if (effectiveTotal > 0 && effectiveSelectedIndex < 0) {
+			effectiveSelectedIndex = 0;
+		} else if (effectiveSelectedIndex >= effectiveTotal) {
 			effectiveSelectedIndex = effectiveTotal - 1;
 		}
 
-		if (this.selectedIndex !== effectiveSelectedIndex || (changes.get('selectedIndex') !== undefined && this.selectedIndex !== changes.get('selectedIndex'))) {
+		if (effectiveSelectedIndex !== this.selectedIndex) {
 			this.selectedIndex = effectiveSelectedIndex;
+		}
+
+		if (changes.get('selectedIndex') !== undefined && this.selectedIndex !== changes.get('selectedIndex')) {
 			this.notifyChange();
 		}
 	}

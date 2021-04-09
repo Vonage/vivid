@@ -27,9 +27,9 @@ describe('pagination events', () => {
 					`<${COMPONENT_NAME} total="5" selected-index="2"></${COMPONENT_NAME}>`
 				)
 			);
+			const events = getEventsCollector(pagination);
 			await waitNextTask();
 
-			const events = getEventsCollector(pagination);
 			pagination.selectedIndex = 3;
 			await waitNextTask();
 
@@ -45,9 +45,9 @@ describe('pagination events', () => {
 					`<${COMPONENT_NAME} total="5" selected-index="2"></${COMPONENT_NAME}>`
 				)
 			);
+			const events = getEventsCollector(pagination);
 			await waitNextTask();
 
-			const events = getEventsCollector(pagination);
 			pagination.selectedIndex = 2;
 			await waitNextTask();
 
@@ -63,8 +63,8 @@ describe('pagination events', () => {
 				)
 			);
 			await waitNextTask();
-
 			const events = getEventsCollector(pagination);
+
 			pagination.total = 7;
 			await waitNextTask();
 
