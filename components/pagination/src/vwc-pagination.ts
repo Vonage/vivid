@@ -144,7 +144,7 @@ export class VWCPagination extends LitElement {
 	}
 
 	private setupPointerListeners(): void {
-		this.shadowRoot?.addEventListener('click', (e) => {
+		this.shadowRoot?.addEventListener('pointerup', (e) => {
 			const target = e.target as HTMLElement;
 			const targetItem = target.closest('.item') as HTMLElement;
 			if (!targetItem) {
