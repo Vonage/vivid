@@ -33,20 +33,7 @@ export class VWCPagination extends LitElement {
 
 	connectedCallback() {
 		super.connectedCallback();
-		this.shadowRoot?.addEventListener('click', (e) => {
-			const target = e.target as HTMLElement;
-			const targetItem = target.closest('.item') as HTMLElement;
-			if (!targetItem) {
-				return;
-			}
-			if (targetItem.classList.contains('prev')) {
-				this.goPrev();
-			} else if (targetItem.classList.contains('next')) {
-				this.goNext();
-			} else if (targetItem.dataset.index) {
-				this.goTo(parseInt(targetItem.dataset.index));
-			}
-		});
+		this.setupPointerListeners();
 	}
 
 	protected updated(changes: PropertyValues): void {
@@ -68,14 +55,7 @@ export class VWCPagination extends LitElement {
 
 		if (this.selectedIndex !== effectiveSelectedIndex || (changes.get('selectedIndex') !== undefined && this.selectedIndex !== changes.get('selectedIndex'))) {
 			this.selectedIndex = effectiveSelectedIndex;
-			this.dispatchEvent(new CustomEvent('change', {
-				bubbles: true,
-				composed: true,
-				detail: {
-					selectedIndex: effectiveSelectedIndex,
-					total: this.total
-				}
-			}));
+			this.notifyChange();
 		}
 	}
 
@@ -154,5 +134,34 @@ export class VWCPagination extends LitElement {
 
 	private goTo(index: number): void {
 		this.selectedIndex = index;
+	}
+
+	private setupPointerListeners(): void {
+		this.shadowRoot?.addEventListener('click', (e) => {
+			const target = e.target as HTMLElement;
+			const targetItem = target.closest('.item') as HTMLElement;
+			if (!targetItem) {
+				return;
+			}
+			if (targetItem.classList.contains('prev')) {
+				this.goPrev();
+			} else if (targetItem.classList.contains('next')) {
+				this.goNext();
+			} else if (targetItem.dataset.index) {
+				this.goTo(parseInt(targetItem.dataset.index));
+			}
+		});
+	}
+
+	private notifyChange(): void {
+		const changeEvent = new CustomEvent('change', {
+			bubbles: true,
+			composed: true,
+			detail: {
+				selectedIndex: this.selectedIndex,
+				total: this.total
+			}
+		});
+		this.dispatchEvent(changeEvent);
 	}
 }
