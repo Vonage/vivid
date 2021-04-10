@@ -30,6 +30,7 @@ $toggle-buttons-type-selectors: selector.append('vwc-', list.join($scopes, '', $
 	display: flex;
 }
 
+//! @yonatanKra notice ':is' isn't supported in opera and we might want to breakdown to individual selectors instead
 ::slotted(:is(#{$toggle-buttons-type-selectors})) {
 	//! TODO: remove next line on viv-485 resolve
 	--mdc-theme-primary: var(#{color-connotation.$vvd-color-connotation-soft});
