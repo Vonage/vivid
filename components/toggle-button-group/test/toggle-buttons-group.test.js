@@ -15,6 +15,11 @@ const SELECTED_EVENT_NAME = 'selected';
 const GROUP_BUTTON_ATTRIBUTE = 'group-button';
 
 describe('Toggle-buttons-group', () => {
+	const buttonValues = [
+		Math.random().toString(),
+		Math.random().toString(),
+		Math.random().toString(),
+	];
 	let addElement = isolatedElementsCreation();
 
 	it(`${COMPONENT_NAME} is defined as a custom element`, async () => {
@@ -98,12 +103,6 @@ describe('Toggle-buttons-group', () => {
 	describe(`selected`, function () {
 		let actualElement;
 
-		const buttonValues = [
-			Math.random().toString(),
-			Math.random().toString(),
-			Math.random().toString(),
-		];
-
 		beforeEach(function () {
 			[actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}>
@@ -137,11 +136,7 @@ describe('Toggle-buttons-group', () => {
 	describe(`values`, function () {
 		let actualElement;
 
-		const buttonValues = [
-			Math.random().toString(),
-			Math.random().toString(),
-			Math.random().toString(),
-		];
+
 
 		beforeEach(function () {
 			[actualElement] = addElement(
@@ -185,12 +180,6 @@ describe('Toggle-buttons-group', () => {
 	describe(`multi`, function () {
 		let actualElement;
 
-		const buttonValues = [
-			Math.random().toString(),
-			Math.random().toString(),
-			Math.random().toString(),
-		];
-
 		beforeEach(function () {
 			[actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} multi>
@@ -222,7 +211,9 @@ describe('Toggle-buttons-group', () => {
 
 		it(`should return an array with the selected elements`, function () {
 			actualElement.children[1].click();
+			actualElement.children[0].click();
 			actualElement.children[2].click();
+			actualElement.children[0].click();
 
 			expect(actualElement.selected.length).to.equal(2);
 			expect(actualElement.selected[0]).to.equal(actualElement.children[1]);
@@ -232,12 +223,6 @@ describe('Toggle-buttons-group', () => {
 
 	describe(`dynamically assigned elements`, function () {
 		let actualElement;
-
-		const buttonValues = [
-			Math.random().toString(),
-			Math.random().toString(),
-			Math.random().toString(),
-		];
 
 		beforeEach(async function () {
 			[actualElement] = addElement(
