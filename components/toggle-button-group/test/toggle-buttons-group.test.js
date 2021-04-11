@@ -14,11 +14,7 @@ const COMPONENT_NAME = 'vwc-toggle-button-group';
 const SELECTED_EVENT_NAME = 'selected';
 const GROUP_BUTTON_ATTRIBUTE = 'group-button';
 
-function listenToToggleEvent(element, callback) {
-	element.addEventListener(SELECTED_EVENT_NAME, callback);
-}
-
-describe.only('Toggle-buttons-group', () => {
+describe('Toggle-buttons-group', () => {
 	let addElement = isolatedElementsCreation();
 
 	it(`${COMPONENT_NAME} is defined as a custom element`, async () => {
