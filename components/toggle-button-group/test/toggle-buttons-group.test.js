@@ -240,7 +240,7 @@ describe('Toggle-buttons-group', () => {
 		];
 
 		beforeEach(async function () {
-			[actualElement] = (
+			[actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} multi>
 <${VALID_BUTTON_ELEMENTS[0]} layout="filled" value="${buttonValues[0]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 <${VALID_BUTTON_ELEMENTS[0]} layout="filled" value="${buttonValues[1]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>

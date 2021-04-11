@@ -68,7 +68,3 @@ $toggle-buttons-type-selectors: selector.append('vwc-', list.join($scopes, '', $
 		--vvd-#{$scope}-shape: 0 var(#{$vvd-toggle-button-group-shape}) var(#{$vvd-toggle-button-group-shape}) 0;
 	}
 }
-
-::slotted([aria-pressed="true"]) {
-	--mdc-theme-primary: var(#{color-connotation.$vvd-color-connotation-underemphasis});
-}
