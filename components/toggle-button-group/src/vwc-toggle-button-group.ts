@@ -1,4 +1,6 @@
-import { customElement, html, LitElement, property, PropertyValues } from 'lit-element';
+import {
+	customElement, html, LitElement, property, PropertyValues
+} from 'lit-element';
 import { style } from './vwc-toggle-button-group.css';
 
 declare global {
@@ -60,8 +62,9 @@ export class VwcToggleButtonGroup extends LitElement {
 	get values() {
 		return [...new Set(
 			this.items
-				.map(child => isButtonActive(child) ? child.getAttribute('value') : false)
-				.filter(value => value !== false))];
+				.map(child => (isButtonActive(child) ? child.getAttribute('value') : false))
+				.filter(value => value !== false)
+		)];
 	}
 
 	set values(values: (string | false | null)[]) {
@@ -69,7 +72,7 @@ export class VwcToggleButtonGroup extends LitElement {
 		if (!this.multi) {
 			values = [values[0]];
 		}
-		this.items.forEach(child => {
+		this.items.forEach((child) => {
 			values.includes(child.getAttribute('value')) ?
 				child.setAttribute(SELECTED_ATTRIBUTE_NAME, '') :
 				child.removeAttribute(SELECTED_ATTRIBUTE_NAME);
@@ -78,15 +81,15 @@ export class VwcToggleButtonGroup extends LitElement {
 
 	protected firstUpdated(_changedProperties: PropertyValues) {
 		super.firstUpdated(_changedProperties);
-		let slot = this.shadowRoot?.querySelector('slot') as HTMLSlotElement;
+		const slot = this.shadowRoot?.querySelector('slot') as HTMLSlotElement;
 		slot.addEventListener('slotchange', () => {
-			let nodes = slot.assignedElements()
+			const nodes = slot.assignedElements()
 				.filter(node => (isValidButton(node) && !this.items.includes(node)));
 			this.setNodesAndClickEvents(nodes);
 			this.#_items = null;
 			this.items;
 		});
-	};
+	}
 
 	protected render(): unknown {
 		return html`
@@ -107,7 +110,7 @@ export class VwcToggleButtonGroup extends LitElement {
 	}
 
 	private clearSelection(buttonElement?: Element) {
-		this.items.forEach(button => {
+		this.items.forEach((button) => {
 			if (button === buttonElement) return;
 			button.removeAttribute(SELECTED_ATTRIBUTE_NAME);
 		});
@@ -116,5 +119,4 @@ export class VwcToggleButtonGroup extends LitElement {
 	private dispatchToggleEvent() {
 		this.dispatchEvent(new Event(SELECTED_EVENT_NAME));
 	}
-
 }
