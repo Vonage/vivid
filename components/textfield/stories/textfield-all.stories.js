@@ -1,3 +1,5 @@
+import '@vonage/vwc-textfield';
+import '@vonage/vwc-list';
 import { argTypes } from './arg-types.js';
 
 export default {
@@ -16,5 +18,10 @@ export {
 	Disabled,
 	Icon,
 	PillShape,
-	Validation
-} from './textfield-variants.stories.js'
+	Validation,
+  AutoValidation
+} from './textfield-variants.stories.js';
+
+export {
+	Autocomplete
+} from './textfield-autocomplete.stories';

@@ -249,6 +249,7 @@ describe.only('Toggle-buttons-group', () => {
 <${VALID_BUTTON_ELEMENTS[0]} layout="filled" value="${buttonValues[0]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 <${VALID_BUTTON_ELEMENTS[0]} layout="filled" value="${buttonValues[1]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 <${VALID_BUTTON_ELEMENTS[0]} layout="filled" value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[1]} layout="filled" value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 </${COMPONENT_NAME}>`)
 			);
 

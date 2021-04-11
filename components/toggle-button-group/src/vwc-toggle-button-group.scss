@@ -1,13 +1,21 @@
+@use 'sass:list';
+@use 'sass:selector';
+
+$vvd-toggle-button-group-shape: --vvd-toggle-button-group-shape;
+$scopes: button icon-button;
+$toggle-buttons-type-selectors: selector.append('vwc-', list.join($scopes, '', $separator: comma));
+
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' with(
-	$variable-name: --vvd-button-toggle-shape
+	$variable-name: #{$vvd-toggle-button-group-shape}
 );
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation/variables' as connotation-variables;
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation' with (
 	$connotations-set: primary,
-	$selector: '::slotted(vwc-button#{connotation-variables.$compound-placeholder})'
+	$selector: '::slotted(:is(#{$toggle-buttons-type-selectors})#{connotation-variables.$compound-placeholder})'
 );
 
+// TODO: support all shapes as property with annotated type
 @include shape-mixins.shape(
 	$shapes: (
 		rounded: 6px,
@@ -24,20 +32,40 @@
 
 ::slotted([group-button]) {
 	--mdc-theme-primary: var(#{color-connotation.$vvd-color-connotation-soft});
+	//! TODO: remove next line on viv-485 resolve
 	--mdc-theme-on-primary: var(#{scheme-variables.$vvd-color-on-base});
-	--mdc-ripple-focus-opacity: 0;
+	--mdc-ripple-color: var(#{scheme-variables.$vvd-color-on-base});
 }
 
-::slotted([group-button]:not(:first-child):not(:last-child)) {
-	--vvd-button-shape: 0;
+::slotted(:is(#{$toggle-buttons-type-selectors})[selected]) {
+	//! TODO: remove next line on viv-485 resolve
+	--mdc-theme-primary: var(#{color-connotation.$vvd-color-connotation-underemphasis});
 }
 
-::slotted([group-button]:first-child:not(:last-child)) {
-	--vvd-button-shape: var(--vvd-button-toggle-shape) 0 0 var(--vvd-button-toggle-shape);
-}
+@each $scope in $scopes {
+	::slotted(vwc-#{$scope}) {
+		--vvd-#{$scope}-background-color: var(#{color-connotation.$vvd-color-connotation-soft});
+		--vvd-#{$scope}-color: var(#{scheme-variables.$vvd-color-on-base});
+		--vvd-#{$scope}-shape: var(#{$vvd-toggle-button-group-shape});
+	}
 
-::slotted([group-button]:last-child:not(:first-child)) {
-	--vvd-button-shape: 0 var(--vvd-button-toggle-shape) var(--vvd-button-toggle-shape) 0;
+	//! @YonatanKra note: replacing selected with wai-aria-attribute will enforce
+	//! consumer to comply and might override consumer's different preference for such attribute
+	::slotted(vwc-#{$scope}[selected]) {
+		--vvd-#{$scope}-background-color: var(#{color-connotation.$vvd-color-connotation-underemphasis});
+	}
+
+	::slotted(vwc-#{$scope}:not(:first-child):not(:last-child)) {
+		--vvd-#{$scope}-shape: 0;
+	}
+
+	::slotted(vwc-#{$scope}:first-child:not(:last-child)) {
+		--vvd-#{$scope}-shape: var(#{$vvd-toggle-button-group-shape}) 0 0 var(#{$vvd-toggle-button-group-shape});
+	}
+
+	::slotted(vwc-#{$scope}:last-child:not(:first-child)) {
+		--vvd-#{$scope}-shape: 0 var(#{$vvd-toggle-button-group-shape}) var(#{$vvd-toggle-button-group-shape}) 0;
+	}
 }
 
 ::slotted([aria-pressed="true"]) {

@@ -7,7 +7,7 @@ declare global {
 	}
 }
 
-export const VALID_BUTTON_ELEMENTS = ['vwc-button'];
+export const VALID_BUTTON_ELEMENTS = ['vwc-button', 'vwc-icon-button'];
 const SELECTED_EVENT_NAME = 'selected';
 const SELECTED_ATTRIBUTE_NAME = 'aria-pressed';
 const MULTIPLE_ATTRIBUTE_NAME = 'multi';
