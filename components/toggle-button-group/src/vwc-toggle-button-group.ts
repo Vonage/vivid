@@ -35,11 +35,23 @@ export class VwcToggleButtonGroup extends LitElement {
 	 * @internal
 	 */
 	static styles = style;
+	@property({
+		attribute: MULTIPLE_ATTRIBUTE_NAME,
+		type: Boolean,
+		reflect: true
+	})
+	multi = false;
+
+	constructor() {
+		super();
+		this.setNodesAndClickEvents(this.items);
+	}
 
 	#_items: Element[] | null = null;
 
-	@property({ attribute: MULTIPLE_ATTRIBUTE_NAME, type: Boolean, reflect: true })
-	multi = false;
+	get items(): Element[] {
+		return this.#_items ? this.#_items : (this.#_items = [...this.children].filter(child => isValidButton(child)));
+	}
 
 	get selected() {
 		return this.items.filter(button => isButtonActive(button));
@@ -52,7 +64,7 @@ export class VwcToggleButtonGroup extends LitElement {
 				.filter(value => value !== false))];
 	}
 
-	set values(values: (string|false|null)[]) {
+	set values(values: (string | false | null)[]) {
 		this.clearSelection();
 		if (!this.multi) {
 			values = [values[0]];
@@ -64,20 +76,22 @@ export class VwcToggleButtonGroup extends LitElement {
 		});
 	}
 
-	get items(): Element[] {
-		return this.#_items ? this.#_items : (this.#_items = [...this.children].filter(child => isValidButton(child)));
-	}
-
 	protected firstUpdated(_changedProperties: PropertyValues) {
 		super.firstUpdated(_changedProperties);
 		let slot = this.shadowRoot?.querySelector('slot') as HTMLSlotElement;
 		slot.addEventListener('slotchange', () => {
-			let nodes = slot.assignedElements().filter(node => (isValidButton(node) && !this.items.includes(node)));
+			let nodes = slot.assignedElements()
+				.filter(node => (isValidButton(node) && !this.items.includes(node)));
 			this.setNodesAndClickEvents(nodes);
 			this.#_items = null;
 			this.items;
 		});
 	};
+
+	protected render(): unknown {
+		return html`
+			<slot></slot>`;
+	}
 
 	private setNodesAndClickEvents(nodes: Element[]) {
 		nodes.forEach((buttonElement) => {
@@ -99,18 +113,8 @@ export class VwcToggleButtonGroup extends LitElement {
 		});
 	}
 
-	protected render(): unknown {
-		return html`
-			<slot></slot>`;
-	}
-
 	private dispatchToggleEvent() {
 		this.dispatchEvent(new Event(SELECTED_EVENT_NAME));
-	}
-
-	constructor() {
-		super();
-		this.setNodesAndClickEvents(this.items);
 	}
 
 }

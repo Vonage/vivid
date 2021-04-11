@@ -16,9 +16,12 @@ const GROUP_BUTTON_ATTRIBUTE = 'group-button';
 
 describe('Toggle-buttons-group', () => {
 	const buttonValues = [
-		Math.random().toString(),
-		Math.random().toString(),
-		Math.random().toString(),
+		Math.random()
+			.toString(),
+		Math.random()
+			.toString(),
+		Math.random()
+			.toString(),
 	];
 	let addElement = isolatedElementsCreation();
 
@@ -85,7 +88,8 @@ describe('Toggle-buttons-group', () => {
 								<div>BUTTON</div>
 								<${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 								</${COMPONENT_NAME}>
-		`));
+		`)
+		);
 
 		let clickIndex = 0;
 		actualElement.addEventListener(SELECTED_EVENT_NAME, () => {
@@ -114,28 +118,37 @@ describe('Toggle-buttons-group', () => {
 		});
 
 		it(`should return the an empty array if none is selected`, function () {
-			expect(actualElement.selected.length).to.equal(0);
+			expect(actualElement.selected.length)
+				.to
+				.equal(0);
 		});
 
 		it(`should return an array with the selected element`, function () {
 			actualElement.children[1].click();
 
-			expect(actualElement.selected.length).to.equal(1);
-			expect(actualElement.selected[0]).to.equal(actualElement.children[1]);
+			expect(actualElement.selected.length)
+				.to
+				.equal(1);
+			expect(actualElement.selected[0])
+				.to
+				.equal(actualElement.children[1]);
 		});
 
 		it(`should set the elements in the array of the last button that was clicked`, function () {
 			actualElement.children[1].click();
 			actualElement.children[2].click();
 
-			expect(actualElement.selected.length).to.equal(1);
-			expect(actualElement.selected[0]).to.equal(actualElement.children[2]);
+			expect(actualElement.selected.length)
+				.to
+				.equal(1);
+			expect(actualElement.selected[0])
+				.to
+				.equal(actualElement.children[2]);
 		});
 	});
 
 	describe(`values`, function () {
 		let actualElement;
-
 
 
 		beforeEach(function () {
@@ -149,31 +162,47 @@ describe('Toggle-buttons-group', () => {
 		});
 
 		it(`should return the an empty array if none is selected`, function () {
-			expect(actualElement.values.length).to.equal(0);
+			expect(actualElement.values.length)
+				.to
+				.equal(0);
 		});
 
 		it(`should return an array with the selected value`, function () {
 			actualElement.children[1].click();
 
-			expect(actualElement.values.length).to.equal(1);
-			expect(actualElement.values[0]).to.equal(buttonValues[1]);
+			expect(actualElement.values.length)
+				.to
+				.equal(1);
+			expect(actualElement.values[0])
+				.to
+				.equal(buttonValues[1]);
 		});
 
 		it(`should set the value in the array of the last button that was clicked`, function () {
 			actualElement.children[1].click();
 			actualElement.children[2].click();
 
-			expect(actualElement.values.length).to.equal(1);
-			expect(actualElement.values[0]).to.equal(buttonValues[2]);
+			expect(actualElement.values.length)
+				.to
+				.equal(1);
+			expect(actualElement.values[0])
+				.to
+				.equal(buttonValues[2]);
 		});
 
 		it(`should set the group's state according to set values`, function () {
 			const oldValues = actualElement.values;
 			actualElement.values = [buttonValues[0], buttonValues[2]];
 			const newValues = actualElement.values;
-			expect(oldValues.length).to.equal(0);
-			expect(newValues.length).to.equal(1);
-			expect(newValues[0]).to.equal(buttonValues[0]);
+			expect(oldValues.length)
+				.to
+				.equal(0);
+			expect(newValues.length)
+				.to
+				.equal(1);
+			expect(newValues[0])
+				.to
+				.equal(buttonValues[0]);
 		});
 	});
 
@@ -194,19 +223,33 @@ describe('Toggle-buttons-group', () => {
 			actualElement.children[1].click();
 			actualElement.children[2].click();
 
-			expect(actualElement.values.length).to.equal(2);
-			expect(actualElement.values[0]).to.equal(buttonValues[1]);
-			expect(actualElement.values[1]).to.equal(buttonValues[2]);
+			expect(actualElement.values.length)
+				.to
+				.equal(2);
+			expect(actualElement.values[0])
+				.to
+				.equal(buttonValues[1]);
+			expect(actualElement.values[1])
+				.to
+				.equal(buttonValues[2]);
 		});
 
 		it(`should set the group's state according to set values`, function () {
 			const oldValues = actualElement.values;
 			actualElement.values = [buttonValues[0], buttonValues[2]];
 			const newValues = actualElement.values;
-			expect(oldValues.length).to.equal(0);
-			expect(newValues.length).to.equal(2);
-			expect(newValues[0]).to.equal(buttonValues[0]);
-			expect(newValues[1]).to.equal(buttonValues[2]);
+			expect(oldValues.length)
+				.to
+				.equal(0);
+			expect(newValues.length)
+				.to
+				.equal(2);
+			expect(newValues[0])
+				.to
+				.equal(buttonValues[0]);
+			expect(newValues[1])
+				.to
+				.equal(buttonValues[2]);
 		});
 
 		it(`should return an array with the selected elements`, function () {
@@ -215,9 +258,15 @@ describe('Toggle-buttons-group', () => {
 			actualElement.children[2].click();
 			actualElement.children[0].click();
 
-			expect(actualElement.selected.length).to.equal(2);
-			expect(actualElement.selected[0]).to.equal(actualElement.children[1]);
-			expect(actualElement.selected[1]).to.equal(actualElement.children[2]);
+			expect(actualElement.selected.length)
+				.to
+				.equal(2);
+			expect(actualElement.selected[0])
+				.to
+				.equal(actualElement.children[1]);
+			expect(actualElement.selected[1])
+				.to
+				.equal(actualElement.children[2]);
 		});
 	});
 
@@ -248,8 +297,9 @@ describe('Toggle-buttons-group', () => {
 			actualElement.appendChild(element);
 			await waitForSlotChange();
 			element.click();
-			expect(actualElement.values[0]).to.equal('22');
+			expect(actualElement.values[0])
+				.to
+				.equal('22');
 		});
 	});
-
 });
