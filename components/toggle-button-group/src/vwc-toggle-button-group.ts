@@ -55,11 +55,11 @@ export class VwcToggleButtonGroup extends LitElement {
 		return this.#_items ? this.#_items : (this.#_items = [...this.children].filter(child => isValidButton(child)));
 	}
 
-	get selected() {
+	get selected(): Element[] {
 		return this.items.filter(button => isButtonActive(button));
 	}
 
-	get values() {
+	get values(): (string | false | null)[] {
 		return [...new Set(
 			this.items
 				.map(child => (isButtonActive(child) ? child.getAttribute('value') : false))
@@ -79,7 +79,7 @@ export class VwcToggleButtonGroup extends LitElement {
 		});
 	}
 
-	protected firstUpdated(_changedProperties: PropertyValues) {
+	protected firstUpdated(_changedProperties: PropertyValues): void {
 		super.firstUpdated(_changedProperties);
 		const slot = this.shadowRoot?.querySelector('slot') as HTMLSlotElement;
 		slot.addEventListener('slotchange', () => {
