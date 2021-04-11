@@ -245,7 +245,7 @@ describe.only('Toggle-buttons-group', () => {
 
 		beforeEach(async function () {
 			[actualElement] = (
-				textToDomToParent(`<${COMPONENT_NAME}>
+				textToDomToParent(`<${COMPONENT_NAME} multi>
 <${VALID_BUTTON_ELEMENTS[0]} layout="filled" value="${buttonValues[0]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 <${VALID_BUTTON_ELEMENTS[0]} layout="filled" value="${buttonValues[1]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 <${VALID_BUTTON_ELEMENTS[0]} layout="filled" value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>

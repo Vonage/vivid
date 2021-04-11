@@ -9,7 +9,7 @@ declare global {
 
 export const VALID_BUTTON_ELEMENTS = ['vwc-button'];
 const SELECTED_EVENT_NAME = 'selected';
-const SELECTED_ATTRIBUTE_NAME = 'selected';
+const SELECTED_ATTRIBUTE_NAME = 'aria-pressed';
 const MULTIPLE_ATTRIBUTE_NAME = 'multi';
 const GROUP_BUTTON_ATTRIBUTE = 'group-button';
 
@@ -18,14 +18,14 @@ function isValidButton(buttonElement: Element) {
 }
 
 function isButtonActive(buttonElement: Element) {
-	return buttonElement.hasAttribute(SELECTED_ATTRIBUTE_NAME);
+	return buttonElement.getAttribute(SELECTED_ATTRIBUTE_NAME) === "true";
 }
 
 function toggleButton(buttonElement: Element) {
 	if (isButtonActive(buttonElement)) {
-		buttonElement.removeAttribute(SELECTED_ATTRIBUTE_NAME);
+		buttonElement.setAttribute(SELECTED_ATTRIBUTE_NAME, "false");
 	} else {
-		buttonElement.setAttribute(SELECTED_ATTRIBUTE_NAME, '');
+		buttonElement.setAttribute(SELECTED_ATTRIBUTE_NAME, 'true');
 	}
 }
 
@@ -58,9 +58,7 @@ export class VwcToggleButtonGroup extends LitElement {
 			values = [values[0]];
 		}
 		this.items.forEach(child => {
-			values.includes(child.getAttribute('value')) ?
-				child.setAttribute(SELECTED_ATTRIBUTE_NAME, '') :
-				child.removeAttribute(SELECTED_ATTRIBUTE_NAME);
+				child.setAttribute(SELECTED_ATTRIBUTE_NAME, values.includes(child.getAttribute('value')).toString());
 		});
 	}
 
@@ -88,7 +86,6 @@ export class VwcToggleButtonGroup extends LitElement {
 				}
 				toggleButton(buttonElement);
 				this.dispatchToggleEvent();
-				(buttonElement.shadowRoot?.activeElement as HTMLElement)?.blur();
 			});
 		});
 	}
@@ -96,7 +93,7 @@ export class VwcToggleButtonGroup extends LitElement {
 	private clearSelection(buttonElement?: Element) {
 		this.items.forEach(button => {
 			if (button === buttonElement) return;
-			button.removeAttribute(SELECTED_ATTRIBUTE_NAME);
+			button.setAttribute(SELECTED_ATTRIBUTE_NAME, 'false');
 		});
 	}
 

@@ -25,6 +25,7 @@
 ::slotted([group-button]) {
 	--mdc-theme-primary: var(#{color-connotation.$vvd-color-connotation-soft});
 	--mdc-theme-on-primary: var(#{scheme-variables.$vvd-color-on-base});
+	--mdc-ripple-focus-opacity: 0;
 }
 
 ::slotted([group-button]:not(:first-child):not(:last-child)) {
@@ -37,4 +38,8 @@
 
 ::slotted([group-button]:last-child:not(:first-child)) {
 	--vvd-button-shape: 0 var(--vvd-button-toggle-shape) var(--vvd-button-toggle-shape) 0;
+}
+
+::slotted([aria-pressed="true"]) {
+	--mdc-theme-primary: var(#{color-connotation.$vvd-color-connotation-underemphasis});
 }
