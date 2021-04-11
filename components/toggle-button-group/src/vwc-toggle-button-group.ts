@@ -9,7 +9,7 @@ declare global {
 
 export const VALID_BUTTON_ELEMENTS = ['vwc-button', 'vwc-icon-button'];
 const SELECTED_EVENT_NAME = 'selected';
-const SELECTED_ATTRIBUTE_NAME = 'aria-pressed';
+const SELECTED_ATTRIBUTE_NAME = 'selected';
 const MULTIPLE_ATTRIBUTE_NAME = 'multi';
 const GROUP_BUTTON_ATTRIBUTE = 'group-button';
 
@@ -18,12 +18,12 @@ function isValidButton(buttonElement: Element) {
 }
 
 function isButtonActive(buttonElement: Element) {
-	return buttonElement.getAttribute(SELECTED_ATTRIBUTE_NAME) === "true";
+	return buttonElement.hasAttribute(SELECTED_ATTRIBUTE_NAME);
 }
 
 function toggleButton(buttonElement: Element) {
 	if (isButtonActive(buttonElement)) {
-		buttonElement.setAttribute(SELECTED_ATTRIBUTE_NAME, "false");
+		buttonElement.removeAttribute(SELECTED_ATTRIBUTE_NAME);
 	} else {
 		buttonElement.setAttribute(SELECTED_ATTRIBUTE_NAME, 'true');
 	}
@@ -58,7 +58,9 @@ export class VwcToggleButtonGroup extends LitElement {
 			values = [values[0]];
 		}
 		this.items.forEach(child => {
-				child.setAttribute(SELECTED_ATTRIBUTE_NAME, values.includes(child.getAttribute('value')).toString());
+			values.includes(child.getAttribute('value')) ?
+				child.setAttribute(SELECTED_ATTRIBUTE_NAME, '') :
+				child.removeAttribute(SELECTED_ATTRIBUTE_NAME);
 		});
 	}
 
@@ -93,7 +95,7 @@ export class VwcToggleButtonGroup extends LitElement {
 	private clearSelection(buttonElement?: Element) {
 		this.items.forEach(button => {
 			if (button === buttonElement) return;
-			button.setAttribute(SELECTED_ATTRIBUTE_NAME, 'false');
+			button.removeAttribute(SELECTED_ATTRIBUTE_NAME);
 		});
 	}
 
