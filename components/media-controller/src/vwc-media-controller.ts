@@ -14,8 +14,9 @@ const SIGNAL = Symbol('signal'),
 	TRACK_ACTIVE_COLOR = '#999';
 
 const byType = typeName => ({ type }) => type === typeName,
-	createTag = function (tagName, ...children) {
+	createTag = function (tagName, tagAttrs = {}, ...children) {
 		const el = document.createElement(tagName);
+		Object.entries(tagAttrs).forEach(([attributeName, attributeValue]) => el.setAttribute(attributeName, attributeValue));
 		children.forEach(child => (typeof child === 'string' ? (el.innerHTML += child) : el.appendChild(child)));
 		return el;
 	},
@@ -78,11 +79,10 @@ class VWCMediaController extends HTMLElement {
 		const componentContent = (function () {
 			const [style, div, button] = ['style', 'div', 'button'].map(tagName => partial(createTag, [tagName]));
 			return [
-				style(vwcMediaControllerStyle.cssText),
-				(rootEl = div(
-					(playPauseControlEl = button()),
-					(trackEl = div((ScrubberKnobEl = button())))
-				)),
+				style({}, vwcMediaControllerStyle.cssText),
+				(rootEl = div({},
+					(playPauseControlEl = button({ 'aria-label': 'Play/Pause' })),
+					(trackEl = div({}, (ScrubberKnobEl = button({ 'aria-label': 'Seek' })))))),
 			];
 		}());
 
