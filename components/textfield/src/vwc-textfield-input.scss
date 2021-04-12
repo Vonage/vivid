@@ -50,4 +50,10 @@
 	::slotted(#{textfield-variables.$vvd-input-selector}:placeholder-shown:not(:focus)) {
 		opacity: 0;
 	}
+
+	.mdc-text-field--no-label {
+		::slotted(#{textfield-variables.$vvd-input-selector}) {
+			padding-bottom: 16px;
+		}
+	}
 }
