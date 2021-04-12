@@ -227,15 +227,28 @@ export class VWCTextField extends MWCTextField {
 	}
 }
 
-function setAttributeByValue(
-	attributeName: string,
-	value: unknown,
-	target: HTMLInputElement,
-	asEmpty = false
-): void {
-	if (value) {
-		target.setAttribute(attributeName, asEmpty ? '' : String(value));
-	} else {
-		target.removeAttribute(attributeName);
-	}
-}
+const setAttributeByValue = (function () {
+	const NOT_ASSIGNED = Symbol('NotAssigned');
+	return function (
+		attributeName: string,
+		value: unknown,
+		target: HTMLInputElement,
+		asEmpty = false
+	): void {
+		const newValue:unknown = value
+			? (() => { return asEmpty ? '' : String(value); })()
+			: NOT_ASSIGNED;
+
+		const currentValue:unknown = target.hasAttribute(attributeName)
+			? target.getAttribute(attributeName)
+			: NOT_ASSIGNED;
+
+		if (newValue !== currentValue) {
+			if (newValue === NOT_ASSIGNED) {
+				target.removeAttribute(attributeName);
+			} else {
+				target.setAttribute(attributeName, newValue as string);
+			}
+		}
+	};
+}());
