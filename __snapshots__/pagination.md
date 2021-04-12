@@ -6,7 +6,7 @@
 <div class="all container">
   <span
     class="item prev"
-    tabindex="0"
+    disabled=""
   >
     <slot name="prev-control">
       <vwc-icon
@@ -20,7 +20,7 @@
   </div>
   <span
     class="item next"
-    tabindex="0"
+    disabled=""
   >
     <slot name="next-control">
       <vwc-icon

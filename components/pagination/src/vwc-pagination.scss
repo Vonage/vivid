@@ -44,7 +44,7 @@
 	}
 }
 
-.item:not([disabled]):hover {
+.item:not([disabled]):not([selected]):hover {
 	background-color: var(#{scheme-variables.$vvd-color-neutral-20});
 }
 
@@ -53,4 +53,8 @@
 	@include typography.typography-cat-shorthand('caption-bold');
 
 	background-color: var(#{scheme-variables.$vvd-color-neutral-30});
+}
+
+.item[disabled] {
+	color: var(#{scheme-variables.$vvd-color-neutral-50});
 }

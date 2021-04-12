@@ -78,7 +78,7 @@ export class VWCPagination extends LitElement {
 
 	private renderPrev(): TemplateResult {
 		return html`
-			<span class="prev item" tabindex="0">
+			<span class="prev item" ?disabled="${this.selectedIndex < 1}">
 				<slot name="prev-control">
 					<vwc-icon type="chevron-left-line" size="small"></vwc-icon>
 				</slot>
@@ -88,7 +88,7 @@ export class VWCPagination extends LitElement {
 
 	private renderNext(): TemplateResult {
 		return html`
-			<span class="item next" tabindex="0">
+			<span class="item next" ?disabled="${this.selectedIndex > this.total - 2}">
 				<slot name="next-control">
 					<vwc-icon type="chevron-right-line" size="small"></vwc-icon>
 				</slot>
@@ -97,34 +97,27 @@ export class VWCPagination extends LitElement {
 	}
 
 	private renderPages(total: number, pivot: number): TemplateResult | string {
-		if (total === 0) {
+		if (total <= 0) {
 			return '';
 		}
+		const pagesMap = VWCPagination.buildPagesMap(total, pivot);
+		let actualIndex = 0;
 		return html`
-			${this.renderPagesRange(0, pivot - 1)}
-			${this.renderPage(pivot, true)}
-			${this.renderPagesRange(pivot + 1, total - 1)}
+			${pagesMap.map((page) => {
+		if (page === 0 || page === 1) {
+			return this.renderPage(actualIndex++, page === 1);
+		} else {
+			actualIndex += page;
+			return this.renderEllipsis();
+		}
+	})}
 		`;
 	}
 
-	private renderPagesRange(from: number, to: number): TemplateResult | TemplateResult[] | string {
-		if (to < from || from > to) {
-			return '';
-		} else if (to - from < 3) {
-			return new Array(to - from + 1)
-				.fill(from)
-				.map((f, i) => this.renderPage(f + i));
-		} else {
-			return html`
-				${this.renderPage(from)}
-				${this.renderEllipsis()}
-				${this.renderPage(to)}
-			`;
-		}
-	}
-
 	private renderPage(index: number, isSelected = false): TemplateResult {
-		return html`<span class="item page" tabindex="0" data-index="${index}" ?selected="${isSelected}">${index + 1}</span>`;
+		return html`<span class="item page" data-index="${index}" ?selected="${isSelected}">
+			${index + 1}
+		</span>`;
 	}
 
 	private renderEllipsis(): TemplateResult {
@@ -170,5 +163,36 @@ export class VWCPagination extends LitElement {
 			}
 		});
 		this.dispatchEvent(changeEvent);
+	}
+
+	private static buildPagesMap(total: number, pivot: number, minBeforeEllipse = 7): number[] {
+		const result = new Array(total).fill(0);
+		result[pivot] = 1;
+
+		if (pivot >= total / 2) {
+			const removed = VWCPagination.reduceRange(0, pivot - 1, result.length - minBeforeEllipse + 1, result) - 1;
+			VWCPagination.reduceRange(pivot + 1 - removed, total - 1 - removed, result.length - minBeforeEllipse + 1, result);
+		} else {
+			VWCPagination.reduceRange(pivot + 1, total - 1, result.length - minBeforeEllipse + 1, result);
+			VWCPagination.reduceRange(0, pivot - 1, result.length - minBeforeEllipse + 1, result);
+		}
+
+		return result;
+	}
+
+	private static reduceRange(from: number, to: number, maxToRemove: number, data: number[]): number {
+		if (maxToRemove < 2 || to - from < 3) {
+			return 0;
+		}
+		const numToReplace = Math.min(maxToRemove, (to - from - 1));
+		const lean = from === 0 ? Math.floor : Math.ceil;
+
+		data.splice(
+			from + lean((to - from - numToReplace + 1) / 2),
+			numToReplace,
+			numToReplace
+		);
+
+		return numToReplace;
 	}
 }

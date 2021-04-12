@@ -37,7 +37,7 @@ describe('pagination', () => {
 			expect(pagination.getAttribute('total')).equal('0');
 		});
 
-		it('should have total set to total when set to positive (property)', async () => {
+		it('should have total set to 8 when set to 8 (property)', async () => {
 			const [pagination] = addElement(
 				textToDomToParent(
 					`<${COMPONENT_NAME}></${COMPONENT_NAME}>`
@@ -50,7 +50,7 @@ describe('pagination', () => {
 			expect(pagination.getAttribute('total')).equal('8');
 		});
 
-		it('should have total set to total when set to positive (attribute)', async () => {
+		it('should have total set to 4 when set to 4 (attribute)', async () => {
 			const [pagination] = addElement(
 				textToDomToParent(
 					`<${COMPONENT_NAME} total="4"></${COMPONENT_NAME}>`

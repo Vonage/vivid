@@ -6,7 +6,7 @@
 <div class="all container">
   <span
     class="item prev"
-    tabindex="0"
+    disabled=""
   >
     <slot name="prev-control">
       <vwc-icon
@@ -20,7 +20,7 @@
   </div>
   <span
     class="item next"
-    tabindex="0"
+    disabled=""
   >
     <slot name="next-control">
       <vwc-icon
@@ -40,7 +40,7 @@
 <div class="all container">
   <span
     class="item prev"
-    tabindex="0"
+    disabled=""
   >
     <slot name="prev-control">
       <vwc-icon
@@ -55,14 +55,13 @@
       class="item page"
       data-index="0"
       selected=""
-      tabindex="0"
     >
       1
     </span>
   </div>
   <span
     class="item next"
-    tabindex="0"
+    disabled=""
   >
     <slot name="next-control">
       <vwc-icon
@@ -82,7 +81,7 @@
 <div class="all container">
   <span
     class="item prev"
-    tabindex="0"
+    disabled=""
   >
     <slot name="prev-control">
       <vwc-icon
@@ -97,22 +96,17 @@
       class="item page"
       data-index="0"
       selected=""
-      tabindex="0"
     >
       1
     </span>
     <span
       class="item page"
       data-index="1"
-      tabindex="0"
     >
       2
     </span>
   </div>
-  <span
-    class="item next"
-    tabindex="0"
-  >
+  <span class="item next">
     <slot name="next-control">
       <vwc-icon
         size="small"
@@ -131,7 +125,7 @@
 <div class="all container">
   <span
     class="item prev"
-    tabindex="0"
+    disabled=""
   >
     <slot name="prev-control">
       <vwc-icon
@@ -146,29 +140,23 @@
       class="item page"
       data-index="0"
       selected=""
-      tabindex="0"
     >
       1
     </span>
     <span
       class="item page"
       data-index="1"
-      tabindex="0"
     >
       2
     </span>
     <span
       class="item page"
       data-index="2"
-      tabindex="0"
     >
       3
     </span>
   </div>
-  <span
-    class="item next"
-    tabindex="0"
-  >
+  <span class="item next">
     <slot name="next-control">
       <vwc-icon
         size="small"
@@ -187,7 +175,7 @@
 <div class="all container">
   <span
     class="item prev"
-    tabindex="0"
+    disabled=""
   >
     <slot name="prev-control">
       <vwc-icon
@@ -202,36 +190,29 @@
       class="item page"
       data-index="0"
       selected=""
-      tabindex="0"
     >
       1
     </span>
     <span
       class="item page"
       data-index="1"
-      tabindex="0"
     >
       2
     </span>
     <span
       class="item page"
       data-index="2"
-      tabindex="0"
     >
       3
     </span>
     <span
       class="item page"
       data-index="3"
-      tabindex="0"
     >
       4
     </span>
   </div>
-  <span
-    class="item next"
-    tabindex="0"
-  >
+  <span class="item next">
     <slot name="next-control">
       <vwc-icon
         size="small"
@@ -250,7 +231,7 @@
 <div class="all container">
   <span
     class="item prev"
-    tabindex="0"
+    disabled=""
   >
     <slot name="prev-control">
       <vwc-icon
@@ -265,32 +246,35 @@
       class="item page"
       data-index="0"
       selected=""
-      tabindex="0"
     >
       1
     </span>
     <span
       class="item page"
       data-index="1"
-      tabindex="0"
     >
       2
     </span>
-    <span class="ellipsis item">
-      ...
+    <span
+      class="item page"
+      data-index="2"
+    >
+      3
+    </span>
+    <span
+      class="item page"
+      data-index="3"
+    >
+      4
     </span>
     <span
       class="item page"
       data-index="4"
-      tabindex="0"
     >
       5
     </span>
   </div>
-  <span
-    class="item next"
-    tabindex="0"
-  >
+  <span class="item next">
     <slot name="next-control">
       <vwc-icon
         size="small"
@@ -309,7 +293,7 @@
 <div class="all container">
   <span
     class="item prev"
-    tabindex="0"
+    disabled=""
   >
     <slot name="prev-control">
       <vwc-icon
@@ -323,7 +307,7 @@
   </div>
   <span
     class="item next"
-    tabindex="0"
+    disabled=""
   >
     <slot name="next-control">
       <vwc-icon
@@ -341,10 +325,7 @@
 
 ```html
 <div class="all container">
-  <span
-    class="item prev"
-    tabindex="0"
-  >
+  <span class="item prev">
     <slot name="prev-control">
       <vwc-icon
         size="small"
@@ -357,7 +338,6 @@
     <span
       class="item page"
       data-index="0"
-      tabindex="0"
     >
       1
     </span>
@@ -365,14 +345,13 @@
       class="item page"
       data-index="1"
       selected=""
-      tabindex="0"
     >
       2
     </span>
   </div>
   <span
     class="item next"
-    tabindex="0"
+    disabled=""
   >
     <slot name="next-control">
       <vwc-icon
@@ -390,10 +369,7 @@
 
 ```html
 <div class="all container">
-  <span
-    class="item prev"
-    tabindex="0"
-  >
+  <span class="item prev">
     <slot name="prev-control">
       <vwc-icon
         size="small"
@@ -406,14 +382,12 @@
     <span
       class="item page"
       data-index="0"
-      tabindex="0"
     >
       1
     </span>
     <span
       class="item page"
       data-index="1"
-      tabindex="0"
     >
       2
     </span>
@@ -421,14 +395,13 @@
       class="item page"
       data-index="2"
       selected=""
-      tabindex="0"
     >
       3
     </span>
   </div>
   <span
     class="item next"
-    tabindex="0"
+    disabled=""
   >
     <slot name="next-control">
       <vwc-icon
@@ -446,10 +419,7 @@
 
 ```html
 <div class="all container">
-  <span
-    class="item prev"
-    tabindex="0"
-  >
+  <span class="item prev">
     <slot name="prev-control">
       <vwc-icon
         size="small"
@@ -462,21 +432,18 @@
     <span
       class="item page"
       data-index="0"
-      tabindex="0"
     >
       1
     </span>
     <span
       class="item page"
       data-index="1"
-      tabindex="0"
     >
       2
     </span>
     <span
       class="item page"
       data-index="2"
-      tabindex="0"
     >
       3
     </span>
@@ -484,14 +451,13 @@
       class="item page"
       data-index="3"
       selected=""
-      tabindex="0"
     >
       4
     </span>
   </div>
   <span
     class="item next"
-    tabindex="0"
+    disabled=""
   >
     <slot name="next-control">
       <vwc-icon
@@ -509,10 +475,7 @@
 
 ```html
 <div class="all container">
-  <span
-    class="item prev"
-    tabindex="0"
-  >
+  <span class="item prev">
     <slot name="prev-control">
       <vwc-icon
         size="small"
@@ -525,17 +488,24 @@
     <span
       class="item page"
       data-index="0"
-      tabindex="0"
     >
       1
     </span>
-    <span class="ellipsis item">
-      ...
+    <span
+      class="item page"
+      data-index="1"
+    >
+      2
+    </span>
+    <span
+      class="item page"
+      data-index="2"
+    >
+      3
     </span>
     <span
       class="item page"
       data-index="3"
-      tabindex="0"
     >
       4
     </span>
@@ -543,14 +513,13 @@
       class="item page"
       data-index="4"
       selected=""
-      tabindex="0"
     >
       5
     </span>
   </div>
   <span
     class="item next"
-    tabindex="0"
+    disabled=""
   >
     <slot name="next-control">
       <vwc-icon
@@ -570,7 +539,7 @@
 <div class="all container">
   <span
     class="item prev"
-    tabindex="0"
+    disabled=""
   >
     <slot name="prev-control">
       <vwc-icon
@@ -585,32 +554,44 @@
       class="item page"
       data-index="0"
       selected=""
-      tabindex="0"
     >
       1
     </span>
     <span
       class="item page"
       data-index="1"
-      tabindex="0"
     >
       2
+    </span>
+    <span
+      class="item page"
+      data-index="2"
+    >
+      3
+    </span>
+    <span
+      class="item page"
+      data-index="3"
+    >
+      4
     </span>
     <span class="ellipsis item">
       ...
     </span>
     <span
       class="item page"
+      data-index="8"
+    >
+      9
+    </span>
+    <span
+      class="item page"
       data-index="9"
-      tabindex="0"
     >
       10
     </span>
   </div>
-  <span
-    class="item next"
-    tabindex="0"
-  >
+  <span class="item next">
     <slot name="next-control">
       <vwc-icon
         size="small"
@@ -627,10 +608,7 @@
 
 ```html
 <div class="all container">
-  <span
-    class="item prev"
-    tabindex="0"
-  >
+  <span class="item prev">
     <slot name="prev-control">
       <vwc-icon
         size="small"
@@ -643,7 +621,6 @@
     <span
       class="item page"
       data-index="0"
-      tabindex="0"
     >
       1
     </span>
@@ -651,32 +628,38 @@
       class="item page"
       data-index="1"
       selected=""
-      tabindex="0"
     >
       2
     </span>
     <span
       class="item page"
       data-index="2"
-      tabindex="0"
     >
       3
+    </span>
+    <span
+      class="item page"
+      data-index="3"
+    >
+      4
     </span>
     <span class="ellipsis item">
       ...
     </span>
     <span
       class="item page"
+      data-index="8"
+    >
+      9
+    </span>
+    <span
+      class="item page"
       data-index="9"
-      tabindex="0"
     >
       10
     </span>
   </div>
-  <span
-    class="item next"
-    tabindex="0"
-  >
+  <span class="item next">
     <slot name="next-control">
       <vwc-icon
         size="small"
@@ -693,10 +676,7 @@
 
 ```html
 <div class="all container">
-  <span
-    class="item prev"
-    tabindex="0"
-  >
+  <span class="item prev">
     <slot name="prev-control">
       <vwc-icon
         size="small"
@@ -709,14 +689,12 @@
     <span
       class="item page"
       data-index="0"
-      tabindex="0"
     >
       1
     </span>
     <span
       class="item page"
       data-index="1"
-      tabindex="0"
     >
       2
     </span>
@@ -724,16 +702,20 @@
       class="item page"
       data-index="2"
       selected=""
-      tabindex="0"
     >
       3
     </span>
     <span
       class="item page"
       data-index="3"
-      tabindex="0"
     >
       4
+    </span>
+    <span
+      class="item page"
+      data-index="4"
+    >
+      5
     </span>
     <span class="ellipsis item">
       ...
@@ -741,15 +723,11 @@
     <span
       class="item page"
       data-index="9"
-      tabindex="0"
     >
       10
     </span>
   </div>
-  <span
-    class="item next"
-    tabindex="0"
-  >
+  <span class="item next">
     <slot name="next-control">
       <vwc-icon
         size="small"
@@ -766,10 +744,7 @@
 
 ```html
 <div class="all container">
-  <span
-    class="item prev"
-    tabindex="0"
-  >
+  <span class="item prev">
     <slot name="prev-control">
       <vwc-icon
         size="small"
@@ -782,21 +757,18 @@
     <span
       class="item page"
       data-index="0"
-      tabindex="0"
     >
       1
     </span>
     <span
       class="item page"
       data-index="1"
-      tabindex="0"
     >
       2
     </span>
     <span
       class="item page"
       data-index="2"
-      tabindex="0"
     >
       3
     </span>
@@ -804,14 +776,12 @@
       class="item page"
       data-index="3"
       selected=""
-      tabindex="0"
     >
       4
     </span>
     <span
       class="item page"
       data-index="4"
-      tabindex="0"
     >
       5
     </span>
@@ -821,15 +791,11 @@
     <span
       class="item page"
       data-index="9"
-      tabindex="0"
     >
       10
     </span>
   </div>
-  <span
-    class="item next"
-    tabindex="0"
-  >
+  <span class="item next">
     <slot name="next-control">
       <vwc-icon
         size="small"
@@ -846,10 +812,7 @@
 
 ```html
 <div class="all container">
-  <span
-    class="item prev"
-    tabindex="0"
-  >
+  <span class="item prev">
     <slot name="prev-control">
       <vwc-icon
         size="small"
@@ -862,7 +825,6 @@
     <span
       class="item page"
       data-index="0"
-      tabindex="0"
     >
       1
     </span>
@@ -872,7 +834,6 @@
     <span
       class="item page"
       data-index="3"
-      tabindex="0"
     >
       4
     </span>
@@ -880,14 +841,12 @@
       class="item page"
       data-index="4"
       selected=""
-      tabindex="0"
     >
       5
     </span>
     <span
       class="item page"
       data-index="5"
-      tabindex="0"
     >
       6
     </span>
@@ -897,15 +856,11 @@
     <span
       class="item page"
       data-index="9"
-      tabindex="0"
     >
       10
     </span>
   </div>
-  <span
-    class="item next"
-    tabindex="0"
-  >
+  <span class="item next">
     <slot name="next-control">
       <vwc-icon
         size="small"
@@ -922,10 +877,7 @@
 
 ```html
 <div class="all container">
-  <span
-    class="item prev"
-    tabindex="0"
-  >
+  <span class="item prev">
     <slot name="prev-control">
       <vwc-icon
         size="small"
@@ -938,7 +890,6 @@
     <span
       class="item page"
       data-index="0"
-      tabindex="0"
     >
       1
     </span>
@@ -948,7 +899,6 @@
     <span
       class="item page"
       data-index="4"
-      tabindex="0"
     >
       5
     </span>
@@ -956,14 +906,12 @@
       class="item page"
       data-index="5"
       selected=""
-      tabindex="0"
     >
       6
     </span>
     <span
       class="item page"
       data-index="6"
-      tabindex="0"
     >
       7
     </span>
@@ -973,15 +921,11 @@
     <span
       class="item page"
       data-index="9"
-      tabindex="0"
     >
       10
     </span>
   </div>
-  <span
-    class="item next"
-    tabindex="0"
-  >
+  <span class="item next">
     <slot name="next-control">
       <vwc-icon
         size="small"
@@ -998,10 +942,7 @@
 
 ```html
 <div class="all container">
-  <span
-    class="item prev"
-    tabindex="0"
-  >
+  <span class="item prev">
     <slot name="prev-control">
       <vwc-icon
         size="small"
@@ -1014,7 +955,6 @@
     <span
       class="item page"
       data-index="0"
-      tabindex="0"
     >
       1
     </span>
@@ -1024,7 +964,6 @@
     <span
       class="item page"
       data-index="5"
-      tabindex="0"
     >
       6
     </span>
@@ -1032,36 +971,29 @@
       class="item page"
       data-index="6"
       selected=""
-      tabindex="0"
     >
       7
     </span>
     <span
       class="item page"
       data-index="7"
-      tabindex="0"
     >
       8
     </span>
     <span
       class="item page"
       data-index="8"
-      tabindex="0"
     >
       9
     </span>
     <span
       class="item page"
       data-index="9"
-      tabindex="0"
     >
       10
     </span>
   </div>
-  <span
-    class="item next"
-    tabindex="0"
-  >
+  <span class="item next">
     <slot name="next-control">
       <vwc-icon
         size="small"
@@ -1078,10 +1010,7 @@
 
 ```html
 <div class="all container">
-  <span
-    class="item prev"
-    tabindex="0"
-  >
+  <span class="item prev">
     <slot name="prev-control">
       <vwc-icon
         size="small"
@@ -1094,7 +1023,6 @@
     <span
       class="item page"
       data-index="0"
-      tabindex="0"
     >
       1
     </span>
@@ -1103,8 +1031,13 @@
     </span>
     <span
       class="item page"
+      data-index="5"
+    >
+      6
+    </span>
+    <span
+      class="item page"
       data-index="6"
-      tabindex="0"
     >
       7
     </span>
@@ -1112,29 +1045,23 @@
       class="item page"
       data-index="7"
       selected=""
-      tabindex="0"
     >
       8
     </span>
     <span
       class="item page"
       data-index="8"
-      tabindex="0"
     >
       9
     </span>
     <span
       class="item page"
       data-index="9"
-      tabindex="0"
     >
       10
     </span>
   </div>
-  <span
-    class="item next"
-    tabindex="0"
-  >
+  <span class="item next">
     <slot name="next-control">
       <vwc-icon
         size="small"
@@ -1151,10 +1078,7 @@
 
 ```html
 <div class="all container">
-  <span
-    class="item prev"
-    tabindex="0"
-  >
+  <span class="item prev">
     <slot name="prev-control">
       <vwc-icon
         size="small"
@@ -1167,17 +1091,27 @@
     <span
       class="item page"
       data-index="0"
-      tabindex="0"
     >
       1
+    </span>
+    <span
+      class="item page"
+      data-index="1"
+    >
+      2
     </span>
     <span class="ellipsis item">
       ...
     </span>
     <span
       class="item page"
+      data-index="6"
+    >
+      7
+    </span>
+    <span
+      class="item page"
       data-index="7"
-      tabindex="0"
     >
       8
     </span>
@@ -1185,22 +1119,17 @@
       class="item page"
       data-index="8"
       selected=""
-      tabindex="0"
     >
       9
     </span>
     <span
       class="item page"
       data-index="9"
-      tabindex="0"
     >
       10
     </span>
   </div>
-  <span
-    class="item next"
-    tabindex="0"
-  >
+  <span class="item next">
     <slot name="next-control">
       <vwc-icon
         size="small"
@@ -1217,10 +1146,7 @@
 
 ```html
 <div class="all container">
-  <span
-    class="item prev"
-    tabindex="0"
-  >
+  <span class="item prev">
     <slot name="prev-control">
       <vwc-icon
         size="small"
@@ -1233,17 +1159,33 @@
     <span
       class="item page"
       data-index="0"
-      tabindex="0"
     >
       1
+    </span>
+    <span
+      class="item page"
+      data-index="1"
+    >
+      2
     </span>
     <span class="ellipsis item">
       ...
     </span>
     <span
       class="item page"
+      data-index="6"
+    >
+      7
+    </span>
+    <span
+      class="item page"
+      data-index="7"
+    >
+      8
+    </span>
+    <span
+      class="item page"
       data-index="8"
-      tabindex="0"
     >
       9
     </span>
@@ -1251,14 +1193,13 @@
       class="item page"
       data-index="9"
       selected=""
-      tabindex="0"
     >
       10
     </span>
   </div>
   <span
     class="item next"
-    tabindex="0"
+    disabled=""
   >
     <slot name="next-control">
       <vwc-icon
