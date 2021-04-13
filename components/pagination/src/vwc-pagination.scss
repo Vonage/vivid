@@ -20,7 +20,9 @@
 }
 
 .item {
+	position: relative;
 	display: flex;
+	overflow: hidden;
 	align-items: center;
 	justify-content: center;
 
@@ -39,6 +41,10 @@
 
 	&.ellipsis {
 		pointer-events: none;
+	}
+
+	.control {
+		display: inline-flex;
 	}
 }
 

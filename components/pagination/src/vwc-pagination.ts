@@ -1,6 +1,7 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
 import '@material/mwc-ripple';
+import { Ripple } from '@material/mwc-ripple';
 import {
 	customElement, property, LitElement, CSSResult, PropertyValues
 } from 'lit-element';
@@ -81,7 +82,13 @@ export class VWCPagination extends LitElement {
 		return html`
 			<span class="prev item" ?disabled="${this.selectedIndex < 1}" @pointerup="${this.goPrev}">
 				<slot name="prev-control">
+				<span class="control"
+					@pointerdown="${this.handleRippleActivateControl}"
+					@pointerup="${this.handleRippleDeactivateControl}"
+				>
+					<mwc-ripple class="ripple"></mwc-ripple>
 					<vwc-icon class="icon" type="chevron-left-line" size="small"></vwc-icon>
+					</span>
 				</slot>
 			</span>
 		`;
@@ -89,9 +96,16 @@ export class VWCPagination extends LitElement {
 
 	private renderNext(): TemplateResult {
 		return html`
-			<span class="item next" ?disabled="${this.selectedIndex > this.total - 2}" @pointerup="${this.goNext}">
+			<span
+			 	class="item next" ?disabled="${this.selectedIndex > this.total - 2}" @pointerup="${this.goNext}">
 				<slot name="next-control">
-					<vwc-icon class="icon" type="chevron-right-line" size="small"></vwc-icon>
+					<span class="control"
+						@pointerdown="${this.handleRippleActivateControl}"
+						@pointerup="${this.handleRippleDeactivateControl}"
+					>
+						<mwc-ripple class="ripple"></mwc-ripple>
+						<vwc-icon class="icon" type="chevron-right-line" size="small"></vwc-icon>
+					</span>
 				</slot>
 			</span>
 		`;
@@ -116,8 +130,14 @@ export class VWCPagination extends LitElement {
 	}
 
 	private renderPage(index: number, isSelected = false): TemplateResult {
-		return html`<span class="item page" data-index="${index}" ?selected="${isSelected}">
-			<mwc-ripple></mwc-ripple>
+		return html`<span
+			class="item page"
+			data-index="${index}"
+			?selected="${isSelected}"
+			@pointerdown="${this.handleRippleActivatePage}"
+			@pointerup="${this.handleRippleDeactivatePage}"
+		>
+			<mwc-ripple class="ripple"></mwc-ripple>
 			${index + 1}
 		</span>`;
 	}
@@ -157,6 +177,50 @@ export class VWCPagination extends LitElement {
 			}
 		});
 		this.dispatchEvent(changeEvent);
+	}
+
+	private handleRippleActivatePage(e: PointerEvent) {
+		const ripple = (e.target as HTMLElement).querySelector('.ripple') as Ripple;
+		if (!ripple) {
+			return;
+		}
+
+		const onUp = (pe: PointerEvent) => {
+			window.removeEventListener('pointerup', onUp);
+			this.handleRippleDeactivatePage(pe);
+		};
+		window.addEventListener('pointerup', onUp);
+		ripple.startPress(e);
+	}
+	private handleRippleDeactivatePage(e: PointerEvent) {
+		const ripple = (e.target as HTMLElement).querySelector('.ripple') as Ripple;
+		if (ripple) {
+			ripple.endPress();
+		}
+	}
+
+	private handleRippleActivateControl(e: PointerEvent) {
+		const ripple = (e.target as HTMLElement)
+			.closest('.item:not([disabled])')
+			?.querySelector('.ripple') as Ripple;
+
+		if (ripple) {
+			const onUp = (pe: PointerEvent) => {
+				window.removeEventListener('pointerup', onUp);
+				this.handleRippleDeactivateControl(pe);
+			};
+			window.addEventListener('pointerup', onUp);
+			ripple.startPress(e);
+		}
+	}
+	private handleRippleDeactivateControl(e: PointerEvent) {
+		const ripple = (e.target as HTMLElement)
+			.closest('.item:not([disabled])')
+			?.querySelector('.ripple') as Ripple;
+
+		if (ripple) {
+			ripple.endPress();
+		}
 	}
 
 	private static buildPagesMap(total: number, pivot: number, minBeforeEllipse = 7): number[] {

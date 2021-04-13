@@ -9,12 +9,16 @@
     disabled=""
   >
     <slot name="prev-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-left-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-left-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
   <div class="container pages">
@@ -24,12 +28,16 @@
     disabled=""
   >
     <slot name="next-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-right-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-right-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
 </div>
@@ -45,12 +53,16 @@
     disabled=""
   >
     <slot name="prev-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-left-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-left-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
   <div class="container pages">
@@ -59,7 +71,7 @@
       data-index="0"
       selected=""
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       1
     </span>
@@ -69,12 +81,16 @@
     disabled=""
   >
     <slot name="next-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-right-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-right-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
 </div>
@@ -90,12 +106,16 @@
     disabled=""
   >
     <slot name="prev-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-left-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-left-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
   <div class="container pages">
@@ -104,7 +124,7 @@
       data-index="0"
       selected=""
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       1
     </span>
@@ -112,19 +132,23 @@
       class="item page"
       data-index="1"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       2
     </span>
   </div>
   <span class="item next">
     <slot name="next-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-right-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-right-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
 </div>
@@ -140,12 +164,16 @@
     disabled=""
   >
     <slot name="prev-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-left-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-left-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
   <div class="container pages">
@@ -154,7 +182,7 @@
       data-index="0"
       selected=""
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       1
     </span>
@@ -162,7 +190,7 @@
       class="item page"
       data-index="1"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       2
     </span>
@@ -170,19 +198,23 @@
       class="item page"
       data-index="2"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       3
     </span>
   </div>
   <span class="item next">
     <slot name="next-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-right-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-right-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
 </div>
@@ -198,12 +230,16 @@
     disabled=""
   >
     <slot name="prev-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-left-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-left-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
   <div class="container pages">
@@ -212,7 +248,7 @@
       data-index="0"
       selected=""
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       1
     </span>
@@ -220,7 +256,7 @@
       class="item page"
       data-index="1"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       2
     </span>
@@ -228,7 +264,7 @@
       class="item page"
       data-index="2"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       3
     </span>
@@ -236,19 +272,23 @@
       class="item page"
       data-index="3"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       4
     </span>
   </div>
   <span class="item next">
     <slot name="next-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-right-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-right-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
 </div>
@@ -264,12 +304,16 @@
     disabled=""
   >
     <slot name="prev-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-left-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-left-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
   <div class="container pages">
@@ -278,7 +322,7 @@
       data-index="0"
       selected=""
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       1
     </span>
@@ -286,7 +330,7 @@
       class="item page"
       data-index="1"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       2
     </span>
@@ -294,7 +338,7 @@
       class="item page"
       data-index="2"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       3
     </span>
@@ -302,7 +346,7 @@
       class="item page"
       data-index="3"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       4
     </span>
@@ -310,19 +354,23 @@
       class="item page"
       data-index="4"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       5
     </span>
   </div>
   <span class="item next">
     <slot name="next-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-right-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-right-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
 </div>
@@ -338,12 +386,16 @@
     disabled=""
   >
     <slot name="prev-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-left-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-left-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
   <div class="container pages">
@@ -353,12 +405,16 @@
     disabled=""
   >
     <slot name="next-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-right-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-right-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
 </div>
@@ -371,12 +427,16 @@
 <div class="all container">
   <span class="item prev">
     <slot name="prev-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-left-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-left-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
   <div class="container pages">
@@ -384,7 +444,7 @@
       class="item page"
       data-index="0"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       1
     </span>
@@ -393,7 +453,7 @@
       data-index="1"
       selected=""
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       2
     </span>
@@ -403,12 +463,16 @@
     disabled=""
   >
     <slot name="next-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-right-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-right-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
 </div>
@@ -421,12 +485,16 @@
 <div class="all container">
   <span class="item prev">
     <slot name="prev-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-left-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-left-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
   <div class="container pages">
@@ -434,7 +502,7 @@
       class="item page"
       data-index="0"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       1
     </span>
@@ -442,7 +510,7 @@
       class="item page"
       data-index="1"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       2
     </span>
@@ -451,7 +519,7 @@
       data-index="2"
       selected=""
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       3
     </span>
@@ -461,12 +529,16 @@
     disabled=""
   >
     <slot name="next-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-right-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-right-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
 </div>
@@ -479,12 +551,16 @@
 <div class="all container">
   <span class="item prev">
     <slot name="prev-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-left-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-left-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
   <div class="container pages">
@@ -492,7 +568,7 @@
       class="item page"
       data-index="0"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       1
     </span>
@@ -500,7 +576,7 @@
       class="item page"
       data-index="1"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       2
     </span>
@@ -508,7 +584,7 @@
       class="item page"
       data-index="2"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       3
     </span>
@@ -517,7 +593,7 @@
       data-index="3"
       selected=""
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       4
     </span>
@@ -527,12 +603,16 @@
     disabled=""
   >
     <slot name="next-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-right-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-right-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
 </div>
@@ -545,12 +625,16 @@
 <div class="all container">
   <span class="item prev">
     <slot name="prev-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-left-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-left-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
   <div class="container pages">
@@ -558,7 +642,7 @@
       class="item page"
       data-index="0"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       1
     </span>
@@ -566,7 +650,7 @@
       class="item page"
       data-index="1"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       2
     </span>
@@ -574,7 +658,7 @@
       class="item page"
       data-index="2"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       3
     </span>
@@ -582,7 +666,7 @@
       class="item page"
       data-index="3"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       4
     </span>
@@ -591,7 +675,7 @@
       data-index="4"
       selected=""
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       5
     </span>
@@ -601,12 +685,16 @@
     disabled=""
   >
     <slot name="next-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-right-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-right-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
 </div>
@@ -622,12 +710,16 @@
     disabled=""
   >
     <slot name="prev-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-left-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-left-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
   <div class="container pages">
@@ -636,7 +728,7 @@
       data-index="0"
       selected=""
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       1
     </span>
@@ -644,7 +736,7 @@
       class="item page"
       data-index="1"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       2
     </span>
@@ -652,7 +744,7 @@
       class="item page"
       data-index="2"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       3
     </span>
@@ -660,7 +752,7 @@
       class="item page"
       data-index="3"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       4
     </span>
@@ -671,7 +763,7 @@
       class="item page"
       data-index="8"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       9
     </span>
@@ -679,19 +771,23 @@
       class="item page"
       data-index="9"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       10
     </span>
   </div>
   <span class="item next">
     <slot name="next-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-right-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-right-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
 </div>
@@ -704,12 +800,16 @@
 <div class="all container">
   <span class="item prev">
     <slot name="prev-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-left-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-left-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
   <div class="container pages">
@@ -717,7 +817,7 @@
       class="item page"
       data-index="0"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       1
     </span>
@@ -726,7 +826,7 @@
       data-index="1"
       selected=""
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       2
     </span>
@@ -734,7 +834,7 @@
       class="item page"
       data-index="2"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       3
     </span>
@@ -742,7 +842,7 @@
       class="item page"
       data-index="3"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       4
     </span>
@@ -753,7 +853,7 @@
       class="item page"
       data-index="8"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       9
     </span>
@@ -761,19 +861,23 @@
       class="item page"
       data-index="9"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       10
     </span>
   </div>
   <span class="item next">
     <slot name="next-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-right-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-right-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
 </div>
@@ -786,12 +890,16 @@
 <div class="all container">
   <span class="item prev">
     <slot name="prev-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-left-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-left-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
   <div class="container pages">
@@ -799,7 +907,7 @@
       class="item page"
       data-index="0"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       1
     </span>
@@ -807,7 +915,7 @@
       class="item page"
       data-index="1"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       2
     </span>
@@ -816,7 +924,7 @@
       data-index="2"
       selected=""
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       3
     </span>
@@ -824,7 +932,7 @@
       class="item page"
       data-index="3"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       4
     </span>
@@ -832,7 +940,7 @@
       class="item page"
       data-index="4"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       5
     </span>
@@ -843,19 +951,23 @@
       class="item page"
       data-index="9"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       10
     </span>
   </div>
   <span class="item next">
     <slot name="next-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-right-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-right-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
 </div>
@@ -868,12 +980,16 @@
 <div class="all container">
   <span class="item prev">
     <slot name="prev-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-left-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-left-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
   <div class="container pages">
@@ -881,7 +997,7 @@
       class="item page"
       data-index="0"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       1
     </span>
@@ -889,7 +1005,7 @@
       class="item page"
       data-index="1"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       2
     </span>
@@ -897,7 +1013,7 @@
       class="item page"
       data-index="2"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       3
     </span>
@@ -906,7 +1022,7 @@
       data-index="3"
       selected=""
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       4
     </span>
@@ -914,7 +1030,7 @@
       class="item page"
       data-index="4"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       5
     </span>
@@ -925,19 +1041,23 @@
       class="item page"
       data-index="9"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       10
     </span>
   </div>
   <span class="item next">
     <slot name="next-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-right-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-right-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
 </div>
@@ -950,12 +1070,16 @@
 <div class="all container">
   <span class="item prev">
     <slot name="prev-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-left-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-left-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
   <div class="container pages">
@@ -963,7 +1087,7 @@
       class="item page"
       data-index="0"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       1
     </span>
@@ -974,7 +1098,7 @@
       class="item page"
       data-index="3"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       4
     </span>
@@ -983,7 +1107,7 @@
       data-index="4"
       selected=""
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       5
     </span>
@@ -991,7 +1115,7 @@
       class="item page"
       data-index="5"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       6
     </span>
@@ -1002,19 +1126,23 @@
       class="item page"
       data-index="9"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       10
     </span>
   </div>
   <span class="item next">
     <slot name="next-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-right-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-right-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
 </div>
@@ -1027,12 +1155,16 @@
 <div class="all container">
   <span class="item prev">
     <slot name="prev-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-left-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-left-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
   <div class="container pages">
@@ -1040,7 +1172,7 @@
       class="item page"
       data-index="0"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       1
     </span>
@@ -1051,7 +1183,7 @@
       class="item page"
       data-index="4"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       5
     </span>
@@ -1060,7 +1192,7 @@
       data-index="5"
       selected=""
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       6
     </span>
@@ -1068,7 +1200,7 @@
       class="item page"
       data-index="6"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       7
     </span>
@@ -1079,19 +1211,23 @@
       class="item page"
       data-index="9"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       10
     </span>
   </div>
   <span class="item next">
     <slot name="next-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-right-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-right-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
 </div>
@@ -1104,12 +1240,16 @@
 <div class="all container">
   <span class="item prev">
     <slot name="prev-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-left-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-left-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
   <div class="container pages">
@@ -1117,7 +1257,7 @@
       class="item page"
       data-index="0"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       1
     </span>
@@ -1128,7 +1268,7 @@
       class="item page"
       data-index="5"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       6
     </span>
@@ -1137,7 +1277,7 @@
       data-index="6"
       selected=""
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       7
     </span>
@@ -1145,7 +1285,7 @@
       class="item page"
       data-index="7"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       8
     </span>
@@ -1153,7 +1293,7 @@
       class="item page"
       data-index="8"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       9
     </span>
@@ -1161,19 +1301,23 @@
       class="item page"
       data-index="9"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       10
     </span>
   </div>
   <span class="item next">
     <slot name="next-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-right-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-right-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
 </div>
@@ -1186,12 +1330,16 @@
 <div class="all container">
   <span class="item prev">
     <slot name="prev-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-left-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-left-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
   <div class="container pages">
@@ -1199,7 +1347,7 @@
       class="item page"
       data-index="0"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       1
     </span>
@@ -1210,7 +1358,7 @@
       class="item page"
       data-index="5"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       6
     </span>
@@ -1218,7 +1366,7 @@
       class="item page"
       data-index="6"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       7
     </span>
@@ -1227,7 +1375,7 @@
       data-index="7"
       selected=""
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       8
     </span>
@@ -1235,7 +1383,7 @@
       class="item page"
       data-index="8"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       9
     </span>
@@ -1243,19 +1391,23 @@
       class="item page"
       data-index="9"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       10
     </span>
   </div>
   <span class="item next">
     <slot name="next-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-right-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-right-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
 </div>
@@ -1268,12 +1420,16 @@
 <div class="all container">
   <span class="item prev">
     <slot name="prev-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-left-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-left-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
   <div class="container pages">
@@ -1281,7 +1437,7 @@
       class="item page"
       data-index="0"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       1
     </span>
@@ -1289,7 +1445,7 @@
       class="item page"
       data-index="1"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       2
     </span>
@@ -1300,7 +1456,7 @@
       class="item page"
       data-index="6"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       7
     </span>
@@ -1308,7 +1464,7 @@
       class="item page"
       data-index="7"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       8
     </span>
@@ -1317,7 +1473,7 @@
       data-index="8"
       selected=""
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       9
     </span>
@@ -1325,19 +1481,23 @@
       class="item page"
       data-index="9"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       10
     </span>
   </div>
   <span class="item next">
     <slot name="next-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-right-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-right-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
 </div>
@@ -1350,12 +1510,16 @@
 <div class="all container">
   <span class="item prev">
     <slot name="prev-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-left-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-left-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
   <div class="container pages">
@@ -1363,7 +1527,7 @@
       class="item page"
       data-index="0"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       1
     </span>
@@ -1371,7 +1535,7 @@
       class="item page"
       data-index="1"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       2
     </span>
@@ -1382,7 +1546,7 @@
       class="item page"
       data-index="6"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       7
     </span>
@@ -1390,7 +1554,7 @@
       class="item page"
       data-index="7"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       8
     </span>
@@ -1398,7 +1562,7 @@
       class="item page"
       data-index="8"
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       9
     </span>
@@ -1407,7 +1571,7 @@
       data-index="9"
       selected=""
     >
-      <mwc-ripple>
+      <mwc-ripple class="ripple">
       </mwc-ripple>
       10
     </span>
@@ -1417,12 +1581,16 @@
     disabled=""
   >
     <slot name="next-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-right-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-right-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
 </div>
@@ -1486,3 +1654,4 @@
   </span>
 </div>
 ```
+

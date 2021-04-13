@@ -9,12 +9,16 @@
     disabled=""
   >
     <slot name="prev-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-left-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-left-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
   <div class="container pages">
@@ -24,12 +28,16 @@
     disabled=""
   >
     <slot name="next-control">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type="chevron-right-line"
-      >
-      </vwc-icon>
+      <span class="control">
+        <mwc-ripple class="ripple">
+        </mwc-ripple>
+        <vwc-icon
+          class="icon"
+          size="small"
+          type="chevron-right-line"
+        >
+        </vwc-icon>
+      </span>
     </slot>
   </span>
 </div>
