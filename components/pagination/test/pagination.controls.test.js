@@ -18,7 +18,7 @@ describe('pagination controls', () => {
 			await waitNextTask();
 			expect(pagination.selectedIndex).equal(3);
 
-			await hitNext(pagination);
+			await hitControl(pagination, '.next');
 			expect(pagination.selectedIndex).equal(4);
 		});
 
@@ -31,7 +31,7 @@ describe('pagination controls', () => {
 			await waitNextTask();
 			expect(pagination.selectedIndex).equal(3);
 
-			await hitPrev(pagination);
+			await hitControl(pagination, '.prev');
 			expect(pagination.selectedIndex).equal(2);
 		});
 
@@ -57,32 +57,27 @@ describe('pagination controls', () => {
 			await waitNextTask();
 			expect(pagination.selectedIndex).equal(-1);
 
-			await hitNext(pagination);
+			await hitControl(pagination, '.next');
 			expect(pagination.selectedIndex).equal(-1);
 
-			await hitPrev(pagination);
+			await hitControl(pagination, '.prev');
 			expect(pagination.selectedIndex).equal(-1);
 		});
 	});
 });
 
-async function hitNext(pagination) {
-	pagination.shadowRoot.querySelector('.next').dispatchEvent(
-		new PointerEvent('pointerup', { bubbles: true })
-	);
-	await waitNextTask();
-}
-
-async function hitPrev(pagination) {
-	pagination.shadowRoot.querySelector('.prev').dispatchEvent(
-		new PointerEvent('pointerup', { bubbles: true })
-	);
+async function hitControl(pagination, selector) {
+	const target = pagination.shadowRoot.querySelector(`${selector} .control`);
+	for (const event of ['pointerdown', 'pointerup']) {
+		target.dispatchEvent(new PointerEvent(event, { bubbles: true }));
+	}
 	await waitNextTask();
 }
 
 async function hitPage(pagination, pageIndex) {
-	pagination.shadowRoot.querySelector(`[data-index="${pageIndex}"]`).dispatchEvent(
-		new PointerEvent('pointerup', { bubbles: true })
-	);
+	const target = pagination.shadowRoot.querySelector(`[data-index="${pageIndex}"]`);
+	for (const event of ['pointerdown', 'pointerup']) {
+		target.dispatchEvent(new PointerEvent(event, { bubbles: true }));
+	}
 	await waitNextTask();
 }
