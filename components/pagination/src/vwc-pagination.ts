@@ -1,5 +1,6 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
+import '@material/mwc-ripple';
 import {
 	customElement, property, LitElement, CSSResult, PropertyValues
 } from 'lit-element';
@@ -78,9 +79,9 @@ export class VWCPagination extends LitElement {
 
 	private renderPrev(): TemplateResult {
 		return html`
-			<span class="prev item" ?disabled="${this.selectedIndex < 1}">
+			<span class="prev item" ?disabled="${this.selectedIndex < 1}" @pointerup="${this.goPrev}">
 				<slot name="prev-control">
-					<vwc-icon type="chevron-left-line" size="small"></vwc-icon>
+					<vwc-icon class="icon" type="chevron-left-line" size="small"></vwc-icon>
 				</slot>
 			</span>
 		`;
@@ -88,9 +89,9 @@ export class VWCPagination extends LitElement {
 
 	private renderNext(): TemplateResult {
 		return html`
-			<span class="item next" ?disabled="${this.selectedIndex > this.total - 2}">
+			<span class="item next" ?disabled="${this.selectedIndex > this.total - 2}" @pointerup="${this.goNext}">
 				<slot name="next-control">
-					<vwc-icon type="chevron-right-line" size="small"></vwc-icon>
+					<vwc-icon class="icon" type="chevron-right-line" size="small"></vwc-icon>
 				</slot>
 			</span>
 		`;
@@ -116,6 +117,7 @@ export class VWCPagination extends LitElement {
 
 	private renderPage(index: number, isSelected = false): TemplateResult {
 		return html`<span class="item page" data-index="${index}" ?selected="${isSelected}">
+			<mwc-ripple></mwc-ripple>
 			${index + 1}
 		</span>`;
 	}
@@ -139,16 +141,8 @@ export class VWCPagination extends LitElement {
 	private setupPointerListeners(): void {
 		this.shadowRoot?.addEventListener('pointerup', (e) => {
 			const target = e.target as HTMLElement;
-			const targetItem = target.closest('.item') as HTMLElement;
-			if (!targetItem) {
-				return;
-			}
-			if (targetItem.classList.contains('prev')) {
-				this.goPrev();
-			} else if (targetItem.classList.contains('next')) {
-				this.goNext();
-			} else if (targetItem.dataset.index) {
-				this.goTo(parseInt(targetItem.dataset.index));
+			if (target.dataset.index) {
+				this.goTo(parseInt(target.dataset.index));
 			}
 		});
 	}

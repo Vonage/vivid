@@ -26,8 +26,6 @@
 
 	block-size: 24px;
 	border-radius: 4px;
-	inline-size: 24px;
-
 	outline: none;
 	user-select: none;
 
@@ -42,6 +40,11 @@
 	&.ellipsis {
 		pointer-events: none;
 	}
+}
+
+.item .icon,
+.item:not(.prev):not(.next) {
+	inline-size: 24px;
 }
 
 .item:not([disabled]):not([selected]):hover {

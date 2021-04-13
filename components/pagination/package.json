@@ -26,10 +26,11 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
+		"@material/mwc-ripple": "0.20.0",
 		"@vonage/vvd-core": "2.3.0",
 		"@vonage/vwc-icon": "2.3.0",
 		"lit-element": "2.3.0",
-		"tslib": "^2.0.3"
+		"tslib": "2.0.3"
 	},
 	"devDependencies": {
 		"@vonage/vvd-design-tokens": "2.3.0",

@@ -2694,7 +2694,7 @@
     lit-element "^2.3.0"
     tslib "^2.0.1"
 
-"@material/mwc-ripple@^0.20.0":
+"@material/mwc-ripple@0.20.0", "@material/mwc-ripple@^0.20.0":
   version "0.20.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-ripple/-/mwc-ripple-0.20.0.tgz#ac83eda314b712c2fba293d2732f550dd1c6023b"
   integrity sha1-rIPtoxS3EsL7opPScy9VDdHGAjs=
@@ -17231,6 +17231,11 @@ tsconfig-paths@^3.9.0:
     json5 "^1.0.1"
     minimist "^1.2.0"
     strip-bom "^3.0.0"
+
+tslib@2.0.3:
+  version "2.0.3"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/tslib/-/tslib-2.0.3.tgz#8e0741ac45fc0c226e58a17bfc3e64b9bc6ca61c"
+  integrity sha1-jgdBrEX8DCJuWKF7/D5kubxsphw=
 
 tslib@^1.11.0, tslib@^1.11.1, tslib@^1.7.1, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
   version "1.14.1"

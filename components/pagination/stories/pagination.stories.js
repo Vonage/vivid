@@ -13,3 +13,11 @@ const TemplatePlain = args => html`<vwc-pagination ...=${spread(args)}></vwc-pag
 
 export const Basic = TemplatePlain.bind({});
 Basic.args = { total: 20 };
+
+const TemplateSlottedControl = args => html`<vwc-pagination ...=${spread(args)}>
+	<span slot="prev-control">Previous</span>
+	<span slot="next-control">Next</span>
+</vwc-pagination>`;
+
+export const CustomPrevNext = TemplateSlottedControl.bind({});
+CustomPrevNext.args = { total: 20 };

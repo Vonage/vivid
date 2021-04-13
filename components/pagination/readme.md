@@ -28,3 +28,14 @@ This component would be used with another, relevant, layouts, like `vwc-data-gri
 | Event    | Description |
 |----------|-------------|
 | `change` | fired each time selected page changed (also when the initial selection happens, or when total is changed and as an outcome the selected page changed; `event.detail: { selectedIndex: number; total: number })` |
+
+#### Customization
+
+##### Slots
+
+`vwc-pagination` allows the customization via the slots.
+
+| Slot name      | Description |
+|----------------|-------------|
+| `prev-control` | allows to override the default layout of the 'go to previous page' control button |
+| `next-control` | allows to override the default layout of the 'go to next page' control button |

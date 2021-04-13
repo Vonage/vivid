@@ -10,6 +10,7 @@
   >
     <slot name="prev-control">
       <vwc-icon
+        class="icon"
         size="small"
         type="chevron-left-line"
       >
@@ -24,6 +25,7 @@
   >
     <slot name="next-control">
       <vwc-icon
+        class="icon"
         size="small"
         type="chevron-right-line"
       >
