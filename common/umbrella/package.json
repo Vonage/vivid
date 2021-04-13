@@ -10,6 +10,7 @@
 		"toolkit"
 	],
 	"private": true,
+	"main":  "",
 	"bin": {
 		"umbrella-style-modules": "./tools/style-modules/index.js"
 	},
