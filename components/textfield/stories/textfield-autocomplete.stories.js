@@ -72,6 +72,10 @@ const Combo = function (args) {
 
 	const userKeyword$ = uiStream.thru(filterByType('userInput'));
 
+	const userKeyDown$ = uiStream
+		.thru(filterByType('userKey'))
+		.filter(({ code }) => code === 'ArrowDown');
+
 	const keyword$ = Kefir.merge([userSelect$, userKeyword$]).skipDuplicates().toProperty(() => '');
 
 	const results$ = keyword$
@@ -94,7 +98,7 @@ const Combo = function (args) {
 		.combine([
 			focus$,
 			results$,
-			keyword$
+			keyword$,
 		], (active, results, keyword) => active && !!results.length && !results.some(result => result.toLowerCase() === keyword.toLowerCase()))
 		.skipDuplicates()
 		.toProperty(() => false);
@@ -113,6 +117,7 @@ const Combo = function (args) {
 					>
 					<vwc-textfield
 						@input=${({ target }) => sendUi('userInput', target.value)}
+						@keydown=${e => sendUi('userKey', e)}
 						value="${live(keyword)}"
 						...=${spread(args)}></vwc-textfield>
 					<vwc-menu
@@ -128,13 +133,20 @@ const Combo = function (args) {
 		const
 			parent = e.target.parentNode,
 			menu = parent.querySelector('vwc-menu');
-
 		menu.anchor = parent.querySelector('vwc-textfield');
 		menu.defaultFocus = "NONE";
 		menu.corner = "BOTTOM_START";
+		menu.defaultFocusState = "FIRST_ITEM";
 		menu.multi = false;
 		menu.fullWidth = true;
 		menu.stayOpenOnBodyClick = true;
+		userKeyDown$.onValue((ev) => {
+			const firstChild = menu.children[0];
+			if (firstChild) {
+				ev.preventDefault();
+				firstChild.focus();
+			}
+		});
 	}
 }
 				/>
