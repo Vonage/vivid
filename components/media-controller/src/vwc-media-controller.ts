@@ -85,7 +85,7 @@ class VWCMediaController extends HTMLElement {
 			const [style, div, button] = ['style', 'div', 'button'].map(tagName => partial(createTag, [tagName]));
 			return [
 				style({}, vwcMediaControllerStyle.cssText),
-				(rootEl = div({},
+				(rootEl = div({ tabindex: '-1' },
 					(playPauseControlEl = button({ tabindex: '0', 'aria-label': 'Play/Pause' })),
 					(trackEl = div({}, (ScrubberKnobEl = button({ tabindex: '0', 'aria-label': 'Seek' })))))),
 			];
