@@ -3,9 +3,11 @@ import '../vwc-list-item.js';
 import {
 	isolatedElementsCreation,
 	waitNextTask,
-	textToDomToParent,
-	runAxeCore,
+	textToDomToParent
 } from '../../../test/test-helpers.js';
+import { chaiA11yAxe } from 'chai-a11y-axe';
+
+chai.use(chaiA11yAxe);
 
 const COMPONENT_NAME = 'vwc-list';
 
@@ -24,13 +26,8 @@ describe('list a11y', () => {
 		);
 		await waitNextTask();
 
-		// Axe warns <ul>, <ol> should only directly contain <li>
-		const options = {
-			rules: {
-				list: { enabled: false }
-			}
-		};
-
-		await runAxeCore(actualElement, options);
+		await expect(actualElement).shadowDom.to.be.accessible({
+			ignoredRules: ['list'],
+		});
 	});
 });

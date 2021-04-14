@@ -34,7 +34,7 @@ export class VWCNote extends LitElement {
 	}
 
 	@property({ type: String, reflect: true })
-	connotation: NoteConnotation = Connotation.Announcement;
+	connotation?: NoteConnotation;
 
 	@property({ type: String, reflect: true })
 	icon = '';

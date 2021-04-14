@@ -23,7 +23,7 @@ type BadgeShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
 
 export class BadgeBase extends LitElement {
 	@property({ type: String, reflect: true })
-	connotation: BadgeConnotation = Connotation.Primary;
+	connotation?: BadgeConnotation;
 
 	@property({ type: String, reflect: true })
 	shape?: BadgeShape;

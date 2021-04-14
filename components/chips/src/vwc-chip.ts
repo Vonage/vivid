@@ -3,7 +3,7 @@ import { customElement, html } from 'lit-element';
 import { Chip as MWCChip } from './mwc-chips/mwc-chip';
 import { style as vwcChipStyle } from './vwc-chip.css';
 import { style as mwcChipStyle } from './mwc-chips/mwc-chip.css.js';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 import '@vonage/vwc-icon';
 import { classMap } from 'lit-html/directives/class-map';
 import { ifDefined } from 'lit-html/directives/if-defined';
@@ -78,7 +78,7 @@ export class VWCChip extends MWCChip {
 					@click=${this.clickHandler}
 					@keydown=${this.clickHandler}
 			  >
-					<vwc-icon size="small" class="trailing" type="cross-circle-negative">
+					<vwc-icon inline class="trailing" type="cross-circle-negative">
 					</vwc-icon>
 			  </i>`
 			: nothing}`;

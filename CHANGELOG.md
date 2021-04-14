@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/Vonage/vivid/compare/v2.2.4...v2.3.0) (2021-04-08)
+
+
+### Bug Fixes
+
+* **vwc-button:** ripple color css variables not defined ([#756](https://github.com/Vonage/vivid/issues/756)) ([0e90e0e](https://github.com/Vonage/vivid/commit/0e90e0e75ca3930a757b399a2cbc799c657b094d))
+* **vwc-textfield:** iss-754 viv-480 textfield autovalidate ([#755](https://github.com/Vonage/vivid/issues/755)) ([d1350f8](https://github.com/Vonage/vivid/commit/d1350f8074c01dd3f581bda6bc610cfd2135fa3a)), closes [#754](https://github.com/Vonage/vivid/issues/754) [#754](https://github.com/Vonage/vivid/issues/754) [#754](https://github.com/Vonage/vivid/issues/754) [#754](https://github.com/Vonage/vivid/issues/754)
+
+
+### Features
+
+* **vwc-inline:** add support for auto-fill/fit variance ([#746](https://github.com/Vonage/vivid/issues/746)) ([17732b3](https://github.com/Vonage/vivid/commit/17732b372d14cbba7708e3cf9332e1899850d3cd))
+
+
+
+
+
+## [2.2.4](https://github.com/Vonage/vivid/compare/v2.2.3...v2.2.4) (2021-04-05)
+
+
+### Bug Fixes
+
+* **datepicker:** viv-446 remove vertical scrollbar in time picker ([#736](https://github.com/Vonage/vivid/issues/736)) ([6d7a2cb](https://github.com/Vonage/vivid/commit/6d7a2cbd283cce3e12f9effc35bd087dec75a0c6))
+* **vwc-badge:** element invisibility due to wrong z-indexing ([#717](https://github.com/Vonage/vivid/issues/717)) ([2e9a91f](https://github.com/Vonage/vivid/commit/2e9a91ffa914c12f7c64cce12dc1e7c19d39cbac)), closes [#31](https://github.com/Vonage/vivid/issues/31)
+* **vwc-chip:** trailing icon offset fixed ([#735](https://github.com/Vonage/vivid/issues/735)) ([c580773](https://github.com/Vonage/vivid/commit/c580773f61f0ca978bd87a33cdab9b9f26d9b53c))
+* **workspace:** watch scss files instead of sass ([#731](https://github.com/Vonage/vivid/issues/731)) ([5823a65](https://github.com/Vonage/vivid/commit/5823a65eb5e27e17b4911e5bc6681ab6253577da))
+
+
+
+
+
 ## [2.2.3](https://github.com/Vonage/vivid/compare/v2.2.2...v2.2.3) (2021-03-30)
 
 
