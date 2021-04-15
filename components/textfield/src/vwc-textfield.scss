@@ -156,7 +156,8 @@
 	}
 
 	&:not(.mdc-text-field--disabled) {
-		.mdc-text-field__icon--leading {
+		.mdc-text-field__icon--leading,
+		.mdc-text-field__icon--trailing {
 			color: var(--mdc-text-field-label-ink-color);
 		}
 	}
