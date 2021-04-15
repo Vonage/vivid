@@ -119,6 +119,16 @@ export const basic = () => html`
 		  updateStatusView();
 		});
 
+		vwcMediaControllerEl.addEventListener('userSkipForwardRequest', () => {
+			scrubberPosition = Math.min(scrubberPosition + 0.005, 1);
+			updateStatusView();
+		});
+
+		vwcMediaControllerEl.addEventListener('userSkipBackwardsRequest', () => {
+			scrubberPosition = Math.max(scrubberPosition - 0.005, 0);
+			updateStatusView();
+		});
+
 		updateStatusView();
 	</script>
 `;
