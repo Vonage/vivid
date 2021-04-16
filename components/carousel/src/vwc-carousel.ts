@@ -9,7 +9,7 @@ import {
 	TemplateResult,
 } from 'lit-element';
 import { style } from './vwc-carousel.css';
-import Swiper, { SwiperOptions } from 'swiper';
+import { Swiper, SwiperOptions } from 'swiper';
 import '@vonage/vwc-icon';
 import './vwc-carousel-item.js';
 
@@ -43,7 +43,7 @@ export class VWCCarousel extends LitElement {
 	@query('.swiper-pagination')
 	private swiperPagination?: HTMLElement;
 	private swiper?: Swiper;
-	private slideRefs: HTMLElement[] = [];
+	private slideRefs: unknown[] = [];
 
 	static get styles(): CSSResult[] {
 		return [style];
@@ -158,7 +158,7 @@ export class VWCCarousel extends LitElement {
 		if (slides.length > 2 && s.isEnd) {
 			const first = slides[0];
 			s.removeSlide(0);
-			s.appendSlide(first);
+			s.appendSlide(first as HTMLElement);
 		}
 	}
 
@@ -168,7 +168,7 @@ export class VWCCarousel extends LitElement {
 		if (slides.length > 2 && s.isBeginning) {
 			const last = slides[slides.length - 1];
 			s.removeSlide(slides.length - 1);
-			s.prependSlide(last);
+			s.prependSlide(last as HTMLElement);
 		}
 	}
 
@@ -206,7 +206,7 @@ export class VWCCarousel extends LitElement {
 				event.target as HTMLElement
 			);
 			const domIndex = Array.from(this.swiperWrapper.children).indexOf(
-				this.slideRefs[logicalIndex]
+				(this.slideRefs as Element[])[logicalIndex]
 			);
 			if (domIndex >= 0) {
 				this.swiper.slideTo(domIndex);

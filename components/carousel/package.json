@@ -33,7 +33,6 @@
 		"tslib": "^2.0.3"
 	},
 	"devDependencies": {
-		"@types/swiper": "^5.4.2",
 		"@vonage/vvd-design-tokens": "2.3.0",
 		"@vonage/vvd-umbrella": "2.3.0",
 		"typescript": "^4.1.3"
