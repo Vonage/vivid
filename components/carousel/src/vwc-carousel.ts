@@ -36,10 +36,6 @@ export class VWCCarousel extends LitElement {
 	private swiperContainer?: HTMLElement;
 	@query('.swiper-wrapper')
 	private swiperWrapper?: HTMLElement;
-	@query('.swiper-button-next')
-	private swiperButtonNext?: HTMLElement;
-	@query('.swiper-button-prev')
-	private swiperButtonPrev?: HTMLElement;
 	@query('.swiper-pagination')
 	private swiperPagination?: HTMLElement;
 	private swiper?: Swiper;
@@ -59,10 +55,6 @@ export class VWCCarousel extends LitElement {
 				  }
 				: false,
 			cssMode: false,
-			navigation: {
-				prevEl: this.swiperButtonPrev as HTMLElement,
-				nextEl: this.swiperButtonNext as HTMLElement,
-			},
 			mousewheel: true,
 			keyboard: true,
 			on: {
@@ -87,20 +79,23 @@ export class VWCCarousel extends LitElement {
 			}
 		});
 
+		/* eslint-disable lit-a11y/click-events-have-key-events */
 		return html`
 			<div class="upper-pane">
-				<div class="swiper-nav swiper-button-prev">
+
+				<div class="swiper-nav swiper-button-prev" role="button" @click="${() => this.swiper?.slidePrev()}">
 					<vwc-icon type="left"></vwc-icon>
 				</div>
 				<div class="swiper-container">
 					<div class="swiper-wrapper">${slides}</div>
 				</div>
-				<div class="swiper-nav swiper-button-next">
+				<div class="swiper-nav swiper-button-next" role="button" @click="${() => this.swiper?.slideNext()}">
 					<vwc-icon type="right"></vwc-icon>
 				</div>
 			</div>
 			<div class="lower-pane swiper-pagination"></div>
 		`;
+		/* eslint-enable lit-a11y/click-events-have-key-events */
 	}
 
 	protected firstUpdated(): void {
