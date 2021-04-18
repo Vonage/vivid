@@ -9,7 +9,9 @@ import {
 	TemplateResult,
 } from 'lit-element';
 import { style } from './vwc-carousel.css';
-import { Swiper, SwiperOptions } from 'swiper';
+import {
+	Swiper, SwiperOptions, Autoplay, Keyboard, Mousewheel, Navigation
+} from 'swiper';
 import '@vonage/vwc-icon';
 import './vwc-carousel-item.js';
 
@@ -20,6 +22,8 @@ declare global {
 }
 
 const CAROUSEL_STYLE_ID = 'vwc-carousel-style-id';
+
+Swiper.use([Autoplay, Keyboard, Mousewheel, Navigation]);
 
 /**
  * This component is a carousel
@@ -36,10 +40,6 @@ export class VWCCarousel extends LitElement {
 	private swiperContainer?: HTMLElement;
 	@query('.swiper-wrapper')
 	private swiperWrapper?: HTMLElement;
-	@query('.swiper-button-next')
-	private swiperButtonNext?: HTMLElement;
-	@query('.swiper-button-prev')
-	private swiperButtonPrev?: HTMLElement;
 	@query('.swiper-pagination')
 	private swiperPagination?: HTMLElement;
 	private swiper?: Swiper;
@@ -54,17 +54,16 @@ export class VWCCarousel extends LitElement {
 			loop: false,
 			autoplay: this.autoplay
 				? {
-					delay: 2500,
-					disableOnInteraction: true,
-				  }
+					delay: 2500
+				}
 				: false,
 			cssMode: false,
-			navigation: {
-				prevEl: this.swiperButtonPrev as HTMLElement,
-				nextEl: this.swiperButtonNext as HTMLElement,
-			},
-			mousewheel: true,
 			keyboard: true,
+			uniqueNavElements: true,
+			navigation: {
+				prevEl: '.swiper-button-prev',
+				nextEl: '.swiper-button-next',
+			},
 			on: {
 				slideNextTransitionEnd: this.moveFirstIfNeeded,
 				slidePrevTransitionEnd: this.moveLastIfNeeded,

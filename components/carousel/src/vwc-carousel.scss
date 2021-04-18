@@ -7,24 +7,11 @@
 //IMPORT_COMPONENTS
 @forward 'swiper/components/a11y/a11y';
 @forward 'swiper/components/controller/controller';
-@forward 'swiper/components/effect-coverflow/effect-coverflow';
-@forward 'swiper/components/effect-cube/effect-cube';
-@forward 'swiper/components/effect-fade/effect-fade';
-@forward 'swiper/components/effect-flip/effect-flip';
-@forward 'swiper/components/lazy/lazy';
 // @forward 'swiper/components/navigation/navigation' hide $themeColor, $colors;
 // @forward 'swiper/components/pagination/pagination' hide $themeColor, $colors;
-@forward 'swiper/components/scrollbar/scrollbar';
-@forward 'swiper/components/thumbs/thumbs';
-@forward 'swiper/components/zoom/zoom';
 
 @forward 'vwc-carousel-navigation';
 @forward 'vwc-carousel-pagination';
-
-:root {
-	--swiper-theme-color: var(#{scheme-variables.$vvd-color-on-base});
-	--swiper-navigation-size: 144px;
-}
 
 vwc-carousel {
 	display: inline-flex;

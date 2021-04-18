@@ -10,13 +10,13 @@
   tabindex="0"
 >
   <div class="upper-pane">
-    <div class="swiper-button-prev swiper-nav">
+    <button class="swiper-button-prev swiper-nav">
       <vwc-icon
         size="medium"
         type="left"
       >
       </vwc-icon>
-    </div>
+    </button>
     <div class="swiper-container swiper-container-horizontal swiper-container-initialized swiper-container-pointer-events">
       <div class="swiper-wrapper">
       </div>
