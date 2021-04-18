@@ -156,9 +156,9 @@ export class VWCCarousel extends LitElement {
 		const s = swiper ?? ((this as unknown) as Swiper);
 		const slides = s.slides;
 		if (slides.length > 2 && s.isEnd) {
-			const first = slides[0];
+			const first = slides[0] as HTMLElement;
 			s.removeSlide(0);
-			s.appendSlide(first as HTMLElement);
+			s.appendSlide(first);
 		}
 	}
 
@@ -166,9 +166,9 @@ export class VWCCarousel extends LitElement {
 		const s = swiper ?? ((this as unknown) as Swiper);
 		const slides = s.slides;
 		if (slides.length > 2 && s.isBeginning) {
-			const last = slides[slides.length - 1];
+			const last = slides[slides.length - 1] as HTMLElement;
 			s.removeSlide(slides.length - 1);
-			s.prependSlide(last as HTMLElement);
+			s.prependSlide(last);
 		}
 	}
 
