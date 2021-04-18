@@ -4,7 +4,7 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Components/Atoms/Toggle Buttons Group',
+	title: 'Components/Beta/Toggle Buttons Group',
 	component: 'vwc-toggle-button-group',
 	argTypes
 };
@@ -17,15 +17,6 @@ const Template = args => html`<vwc-toggle-button-group ...=${spread(args)}>
 
 export const Basic = Template.bind({});
 Basic.args = { };
-
-const TemplateLabels = args => html`<vwc-toggle-button-group ...=${spread(args)}>
-	<vwc-button label="Standard" layout="outlined"></vwc-button>
-	<vwc-button label="Hybrid" layout="outlined"></vwc-button>
-	<vwc-button label="Satellite" layout="outlined"></vwc-button>
-</vwc-toggle-button-group>`;
-
-export const Labeled = TemplateLabels.bind({});
-Labeled.args = { };
 
 const TemplateIcons = args => html`<vwc-toggle-button-group ...=${spread(args)}>
 	<vwc-icon-button icon="bullet-list-line" layout="filled"></vwc-icon-button>
