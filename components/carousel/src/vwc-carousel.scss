@@ -1,14 +1,8 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 
-/* stylelint-disable-next-line scss/dollar-variable-pattern -- (used in swiper lib) */
-// $themeColor: var(#{scheme-variables.$vvd-color-on-base}) !default;
-
 @forward 'swiper/swiper';
-//IMPORT_COMPONENTS
 @forward 'swiper/components/a11y/a11y';
 @forward 'swiper/components/controller/controller';
-// @forward 'swiper/components/navigation/navigation' hide $themeColor, $colors;
-// @forward 'swiper/components/pagination/pagination' hide $themeColor, $colors;
 
 @forward 'vwc-carousel-navigation';
 @forward 'vwc-carousel-pagination';

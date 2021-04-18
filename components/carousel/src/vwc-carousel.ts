@@ -59,6 +59,7 @@ export class VWCCarousel extends LitElement {
 				: false,
 			cssMode: false,
 			keyboard: true,
+			mousewheel: true,
 			uniqueNavElements: true,
 			navigation: {
 				prevEl: '.swiper-button-prev',
