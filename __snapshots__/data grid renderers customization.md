@@ -68,6 +68,7 @@
   <vaadin-grid-cell-content slot="vaadin-grid-cell-content-17">
   </vaadin-grid-cell-content>
 </vaadin-grid>
+
 ```
 
 #### `should render footer text by default`
@@ -142,6 +143,7 @@
   <vaadin-grid-cell-content slot="vaadin-grid-cell-content-17">
   </vaadin-grid-cell-content>
 </vaadin-grid>
+
 ```
 
 #### `should render custom header when renderer provided`
@@ -212,6 +214,7 @@
   <vaadin-grid-cell-content slot="vaadin-grid-cell-content-17">
   </vaadin-grid-cell-content>
 </vaadin-grid>
+
 ```
 
 #### `should render custom footer when renderer provided`
@@ -285,6 +288,7 @@
   <vaadin-grid-cell-content slot="vaadin-grid-cell-content-17">
   </vaadin-grid-cell-content>
 </vaadin-grid>
+
 ```
 
 #### `should render custom cell when renderer provided`
