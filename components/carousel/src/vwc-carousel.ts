@@ -87,7 +87,6 @@ export class VWCCarousel extends LitElement {
 			}
 		});
 
-		/* eslint-disable lit-a11y/click-events-have-key-events */
 		return html`
 			<div class="upper-pane">
 				<div class="swiper-nav swiper-button-prev">
@@ -102,7 +101,6 @@ export class VWCCarousel extends LitElement {
 			</div>
 			<div class="lower-pane swiper-pagination"></div>
 		`;
-		/* eslint-enable lit-a11y/click-events-have-key-events */
 	}
 
 	protected firstUpdated(): void {
