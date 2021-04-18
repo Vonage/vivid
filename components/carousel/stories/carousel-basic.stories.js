@@ -22,7 +22,7 @@ export const basic = () => html`
 		}
 	</style>
 
-	<vwc-carousel class="carousel">
+	<vwc-carousel class="carousel" autoplay="false">
 		<vwc-carousel-item>
 			<div class="item text" style="padding:24px;background-color:lightblue;width:100%;" @click="${onClick}" @keyPress=${onKeyed}>
 				Some textual explanation of what's going on here...
@@ -61,7 +61,7 @@ export const events = () => html`
 		}
 	</style>
 
-	<vwc-carousel class="carousel" autoplay="true">
+	<vwc-carousel class="carousel">
 		<vwc-carousel-item>
 			<div class="item text" style="padding:24px;background-color:lightblue;width:100%;" @click="${onClick1}" @keyPress=${onKeyed}>
 				Slide 1

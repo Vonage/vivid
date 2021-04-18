@@ -5,7 +5,7 @@
 @forward 'vwc-carousel-navigation';
 @forward 'vwc-carousel-pagination';
 
-vwc-carousel {
+:host {
 	display: inline-flex;
 	width: 300px;
 	height: 200px;
@@ -23,8 +23,8 @@ vwc-carousel {
 	border-radius: 6px;
 }
 
-vwc-carousel:focus-within,
-vwc-casousel:active {
+:host(:focus-within),
+:host(:active) {
 	.upper-pane {
 		box-shadow: 0 0 5px 1px #e1e2e6;
 	}

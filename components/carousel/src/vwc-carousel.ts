@@ -21,8 +21,6 @@ declare global {
 	}
 }
 
-const CAROUSEL_STYLE_ID = 'vwc-carousel-style-id';
-
 SwiperCore.use([Autoplay, Keyboard, Mousewheel, Navigation]);
 
 /**
@@ -42,6 +40,10 @@ export class VWCCarousel extends LitElement {
 	private swiperWrapper?: HTMLElement;
 	@query('.swiper-pagination')
 	private swiperPagination?: HTMLElement;
+	@query('.swiper-button-prev')
+	private prevControl?: HTMLElement;
+	@query('.swiper-button-next')
+	private nextControl?: HTMLElement;
 	private swiper?: Swiper;
 	private slideRefs: Element[] = [];
 
@@ -62,8 +64,8 @@ export class VWCCarousel extends LitElement {
 			mousewheel: true,
 			uniqueNavElements: true,
 			navigation: {
-				prevEl: '.swiper-button-prev',
-				nextEl: '.swiper-button-next',
+				prevEl: this.prevControl,
+				nextEl: this.nextControl,
 			},
 			on: {
 				slideNextTransitionEnd: this.moveFirstIfNeeded,
@@ -75,12 +77,11 @@ export class VWCCarousel extends LitElement {
 
 	connectedCallback(): void {
 		super.connectedCallback();
-		this.ensureStyleApplied();
 		this.tabIndex = 0;
 	}
 
 	render(): TemplateResult {
-		const slides = Array.from(this.children);
+		const slides = Array.from((this.firstElementChild as HTMLElement).children);
 		slides.forEach((s) => {
 			if (s.nodeName.toLowerCase() === 'vwc-carousel-item') {
 				s.classList.add('swiper-slide');
@@ -126,23 +127,6 @@ export class VWCCarousel extends LitElement {
 		if (this.autoplay) {
 			this.swiper.autoplay?.start();
 		}
-	}
-
-	protected createRenderRoot(): HTMLElement {
-		return this;
-	}
-
-	private ensureStyleApplied() {
-		VWCCarousel.styles.forEach((styleResult, index) => {
-			const tmpId = `${CAROUSEL_STYLE_ID}-${index}`;
-			if (!document.head.querySelector(`#${tmpId}`)) {
-				const cs = document.createElement('style');
-				cs.id = tmpId;
-				cs.type = 'text/css';
-				cs.innerHTML = styleResult.cssText;
-				document.head.appendChild(cs);
-			}
-		});
 	}
 
 	private collectSlideRefs(swiper: Swiper): void {
