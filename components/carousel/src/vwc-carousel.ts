@@ -9,9 +9,9 @@ import {
 	TemplateResult,
 } from 'lit-element';
 import { style } from './vwc-carousel.css';
-import {
+import SwiperCore, {
 	Swiper, SwiperOptions, Autoplay, Keyboard, Mousewheel, Navigation
-} from 'swiper';
+} from 'swiper/core';
 import '@vonage/vwc-icon';
 import './vwc-carousel-item.js';
 
@@ -23,7 +23,7 @@ declare global {
 
 const CAROUSEL_STYLE_ID = 'vwc-carousel-style-id';
 
-Swiper.use([Autoplay, Keyboard, Mousewheel, Navigation]);
+SwiperCore.use([Autoplay, Keyboard, Mousewheel, Navigation]);
 
 /**
  * This component is a carousel

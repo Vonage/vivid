@@ -1,8 +1,6 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 
 @forward 'swiper/swiper';
-@forward 'swiper/components/a11y/a11y';
-@forward 'swiper/components/controller/controller';
 
 @forward 'vwc-carousel-navigation';
 @forward 'vwc-carousel-pagination';
