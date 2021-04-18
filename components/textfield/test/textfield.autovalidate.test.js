@@ -87,10 +87,10 @@ describe('textfield validation', () => {
 
 function assertValidityState(texfield, valid, assertHelper = false) {
 	// TODO: unmark the lines below when the invlalid class issue settled
-	// const labelHint = texfield.shadowRoot.querySelector('.mdc-text-field--invalid');
-	// if ((valid && labelHint) || (!valid && !labelHint)) {
-	// 	throw new Error(`expected textfield validity to be '${valid}', but the invalid label state ${labelHint ? '' : 'NOT'} found`);
-	// }
+	const labelHint = texfield.shadowRoot.querySelector('.mdc-text-field--invalid');
+	if ((valid && labelHint) || (!valid && !labelHint)) {
+		throw new Error(`expected textfield validity to be '${valid}', but the invalid label state ${labelHint ? '' : 'NOT'} found`);
+	}
 	if (assertHelper) {
 		const helperHint = texfield.shadowRoot.querySelector('vwc-helper-message[is-error]');
 		if ((valid && helperHint) || (!valid && !helperHint)) {
