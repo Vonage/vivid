@@ -81,7 +81,7 @@ export class VWCCarousel extends LitElement {
 	}
 
 	render(): TemplateResult {
-		const slides = Array.from((this.firstElementChild as HTMLElement).children);
+		const slides = Array.from(this.children);
 		slides.forEach((s) => {
 			if (s.nodeName.toLowerCase() === 'vwc-carousel-item') {
 				s.classList.add('swiper-slide');
