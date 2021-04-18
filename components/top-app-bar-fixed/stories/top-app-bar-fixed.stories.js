@@ -6,7 +6,7 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Components/Atoms/Top App Bar Fixed',
+	title: 'Components/Top App Bar Fixed',
 	component: 'vwc-top-app-bar-fixed',
 	argTypes
 }
