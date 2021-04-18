@@ -43,7 +43,7 @@ export class VWCCarousel extends LitElement {
 	@query('.swiper-pagination')
 	private swiperPagination?: HTMLElement;
 	private swiper?: Swiper;
-	private slideRefs: unknown[] = [];
+	private slideRefs: Element[] = [];
 
 	static get styles(): CSSResult[] {
 		return [style];
@@ -208,7 +208,7 @@ export class VWCCarousel extends LitElement {
 				event.target as HTMLElement
 			);
 			const domIndex = Array.from(this.swiperWrapper.children).indexOf(
-				(this.slideRefs as Element[])[logicalIndex]
+				this.slideRefs[logicalIndex]
 			);
 			if (domIndex >= 0) {
 				this.swiper.slideTo(domIndex);
