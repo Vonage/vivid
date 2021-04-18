@@ -36,6 +36,7 @@
 		{ "path": "components/notched-outline" },
 		{ "path": "components/note" },
 		{ "path": "components/radio" },
+		{ "path": "components/pagination" },
 		{ "path": "components/relative-time" },
 		{ "path": "components/scheme-select" },
 		{ "path": "components/select" },
