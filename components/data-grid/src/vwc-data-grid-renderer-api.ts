@@ -4,7 +4,8 @@ import { DataGridColumn } from './vwc-data-grid-column-api';
 export {
 	RendererConfiguration,
 	MetaRenderer,
-	DataRenderer
+	DataRenderer,
+	RowDetailsRenderer
 };
 
 /**
@@ -21,6 +22,17 @@ interface RendererConfiguration {
 	 * column configuration, the renderer is belonging to
 	 */
 	column: DataGridColumn
+}
+
+/**
+ * Configuration structure supplied to the whole-row kind renderers
+ */
+ interface RowRendererConfiguration {
+
+	/**
+	 * `grid` component, the renderer is belonging to
+	 */
+	grid: DataGrid,
 }
 
 /**
@@ -42,4 +54,15 @@ interface MetaRenderer {
  */
 interface DataRenderer {
 	(container: HTMLElement, configuration: RendererConfiguration, data: { item: unknown, selected: boolean }): void;
+}
+
+/**
+ * Renderer of row details
+ * - renderer should perform the rendering of the content into the `container` element provided
+ * - relevant configuration supplied
+ * - relevant data item supplied
+ * - attention: the renderer MAY run multiple times, so it is it's own responsibility ot ensure idempotency of the rendered content
+ */
+ interface RowDetailsRenderer {
+	(container: HTMLElement, configuration: RowRendererConfiguration, data: { item: unknown, selected: boolean }): void;
 }
