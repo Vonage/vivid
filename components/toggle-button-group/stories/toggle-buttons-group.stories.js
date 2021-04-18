@@ -18,6 +18,15 @@ const Template = args => html`<vwc-toggle-button-group ...=${spread(args)}>
 export const Basic = Template.bind({});
 Basic.args = { };
 
+const TemplatePilled = args => html`<vwc-toggle-button-group shape="pill" ...=${spread(args)}>
+	<vwc-button label="Standard" layout="filled"></vwc-button>
+	<vwc-button label="Hybrid" layout="filled"></vwc-button>
+	<vwc-button label="Satellite" layout="filled"></vwc-button>
+</vwc-toggle-button-group>`;
+
+export const PillShape = TemplatePilled.bind({});
+PillShape.args = { };
+
 const TemplateIcons = args => html`<vwc-toggle-button-group ...=${spread(args)}>
 	<vwc-icon-button icon="bullet-list-line" layout="filled"></vwc-icon-button>
 	<vwc-icon-button icon="list-numbered-line" layout="filled"></vwc-icon-button>
