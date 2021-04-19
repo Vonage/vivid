@@ -5,10 +5,10 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Components/Atoms/Checkbox',
+	title: 'Components/Checkbox',
 	component: 'vwc-checkbox',
 	argTypes
-}
+};
 
 const Template = ({ label, ...args }) => html`
 	<vwc-formfield label=${label}>

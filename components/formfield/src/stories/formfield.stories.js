@@ -6,7 +6,7 @@ import { html } from 'lit-element';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Components/Atoms/Formfield',
+	title: 'Components/Formfield',
 	component: 'vwc-formfield',
 	argTypes
 };

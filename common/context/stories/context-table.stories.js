@@ -4,7 +4,7 @@ import '@vonage/vwc-checkbox';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Core/Context/Table',
+	title: 'Alpha/Core/Context/Table',
 };
 
 export const Table = () => html`
