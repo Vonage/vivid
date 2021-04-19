@@ -4,11 +4,11 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Components/Atoms/Chip',
+	title: 'Alpha/Components/Chip',
 	component: 'vwc-chip',
 	argTypes,
 	args: { label: 'Chip' }
-}
+};
 
 const Template = args => html`<vwc-chip ...=${spread(args)}></vwc-chip>`;
 
