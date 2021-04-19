@@ -6,7 +6,7 @@ import '../../headers/vwc-data-grid-header';
 import { DataGrid, GRID_COMPONENT } from '../../vwc-data-grid-api';
 import { DataGridColumn } from '../../vwc-data-grid-column-api';
 import { DataGridAdapter } from '../vwc-data-grid-adapter-api';
-import { DataRendererProvider, MetaRendererProvider, RowDetailsRendererProvider } from '../vwc-data-grid-render-provider-api';
+import { MetaRendererProvider, DataRendererProvider, RowDetailsRendererProvider } from '../vwc-data-grid-render-provider-api';
 import { headerRendererProvider } from './vwc-renderer-provider-header-vaadin';
 import { footerRendererProvider } from './vwc-renderer-provider-footer-vaadin';
 import { cellRendererProvider } from './vwc-renderer-provider-cell-vaadin';
