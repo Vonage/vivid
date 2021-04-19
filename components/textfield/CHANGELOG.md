@@ -1,3 +1,12 @@
+# [2.4.0](https://github.com/vonage/vivid/compare/v2.3.0...v2.4.0) (2021-04-19)
+
+
+### Bug Fixes
+
+* **textfield:** reportValidity() doesn't work ([#760](https://github.com/vonage/vivid/issues/760)) ([600f26a](https://github.com/vonage/vivid/commit/600f26a7defa8d09a51270475344019885369357))
+
+
+
 # [2.3.0](https://github.com/vonage/vivid/compare/v2.2.4...v2.3.0) (2021-04-08)
 
 
