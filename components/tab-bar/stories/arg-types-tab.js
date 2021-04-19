@@ -1,11 +1,23 @@
 export const argTypes = {
-	trailingIcon: {
+	dense: {
 		control: {
 			type: 'inline-radio',
 			options: { 'true': '', 'false': undefined }
 		}
 	},
 	disabled: {
+		control: {
+			type: 'inline-radio',
+			options: { 'true': '', 'false': undefined }
+		}
+	},
+	left: {
+		control: {
+			type: 'inline-radio',
+			options: { 'true': '', 'false': undefined }
+		}
+	},
+	trailingIcon: {
 		control: {
 			type: 'inline-radio',
 			options: { 'true': '', 'false': undefined }
