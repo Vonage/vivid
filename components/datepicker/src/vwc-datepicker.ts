@@ -122,8 +122,13 @@ export class VWCDatepicker extends LitFlatpickr {
 				this.highlightMonth();
 			}
 		}
+
 		// slot flatpickr alt/mobile input in vwc-textfield
-		this._instance?.altInput?.setAttribute('slot', 'formInputElement');
+		if (this._instance?.altInput) {
+			this._instance.input.style.visibility = 'hidden';
+			this._instance.altInput.setAttribute('slot', 'formInputElement');
+			this._instance.altInput.classList.add('vvd-datepicker-alt-input');
+		}
 		this._instance?.mobileInput?.setAttribute('slot', 'formInputElement');
 	}
 
