@@ -6,7 +6,7 @@ import '@vonage/vwc-fab/vwc-fab.js';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Components/Atoms/Menu',
+	title: 'Components/Menu',
 	component: 'vwc-menu',
 	argTypes
 }

@@ -5,7 +5,7 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types-tab.js';
 
 export default {
-  title: 'Components/Atoms/Tab',
+  title: 'Components/Tab',
   component: 'vwc-tab',
   argTypes
 };
