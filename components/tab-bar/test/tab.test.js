@@ -31,19 +31,49 @@ describe('tab', () => {
 
 	it('should be disabled', async () => {
 		const actualElements = addElement(
-			textToDomToParent(
-				`<${COMPONENT_NAME} disabled label='Tab'></${COMPONENT_NAME}>`
-			)
+			textToDomToParent(`<${COMPONENT_NAME} disabled label="Tab"></${COMPONENT_NAME}>`)
 		);
 		await waitNextTask();
 		assertComputedStyle(actualElements[0], { pointerEvents: 'none' });
+	});
+
+	describe('sizing', () => {
+		it('should have normal size by default', async () => {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} label="Tab"></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+
+			const tab = actualElement.shadowRoot.querySelector('.mdc-tab');
+
+			assertComputedStyle(actualElement, { flex: '1 1 0%' });
+			assertComputedStyle(tab, { paddingLeft: '24px', paddingRight: '24px' });
+		});
+
+		it('should have dense size when dense', async () => {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} dense label="Tab"></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+
+			const tab = actualElement.shadowRoot.querySelector('.mdc-tab');
+			assertComputedStyle(tab, { paddingLeft: '12px', paddingRight: '12px' });
+		});
+
+		it('should have initial size when left', async () => {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} left label="Tab"></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			assertComputedStyle(actualElement, { flex: '0 1 auto' });
+		});
 	});
 
 	describe('icon', () => {
 		it('should have leading icon by default', async () => {
 			const addedElements = addElement(
 				textToDomToParent(
-					`<${COMPONENT_NAME} icon='chat' label='Tab'></${COMPONENT_NAME}>`
+					`<${COMPONENT_NAME} icon="chat" label="Tab"></${COMPONENT_NAME}>`
 				)
 			);
 			const actualElement = addedElements[0];
@@ -57,7 +87,7 @@ describe('tab', () => {
 		it('should have trailing icon when trailingIcon', async () => {
 			const addedElements = addElement(
 				textToDomToParent(
-					`<${COMPONENT_NAME} icon='chat' trailingIcon label='Tab'></${COMPONENT_NAME}>`
+					`<${COMPONENT_NAME} icon="chat" trailingIcon label="Tab"></${COMPONENT_NAME}>`
 				)
 			);
 			const actualElement = addedElements[0];
