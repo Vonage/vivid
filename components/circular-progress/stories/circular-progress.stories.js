@@ -4,7 +4,7 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Components/Atoms/Circular Progress',
+	title: 'Components/Circular Progress',
 	component: 'vwc-circular-progress',
 	argTypes
 }
