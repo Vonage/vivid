@@ -10,36 +10,18 @@
   tabindex="0"
 >
   <div class="upper-pane">
-    <div
-      aria-disabled="true"
-      aria-label="Previous slide"
-      class="swiper-button-disabled swiper-button-prev swiper-nav"
-      role="button"
-      tabindex="-1"
-    >
+    <div class="swiper-button-disabled swiper-button-prev swiper-nav">
       <vwc-icon
         size="medium"
         type="left"
       >
       </vwc-icon>
     </div>
-    <div class="swiper-container swiper-container-horizontal swiper-container-initialized">
+    <div class="swiper-container swiper-container-horizontal swiper-container-initialized swiper-container-pointer-events">
       <div class="swiper-wrapper">
       </div>
-      <span
-        aria-atomic="true"
-        aria-live="assertive"
-        class="swiper-notification"
-      >
-      </span>
     </div>
-    <div
-      aria-disabled="true"
-      aria-label="Next slide"
-      class="swiper-button-disabled swiper-button-next swiper-nav"
-      role="button"
-      tabindex="-1"
-    >
+    <div class="swiper-button-disabled swiper-button-next swiper-nav">
       <vwc-icon
         size="medium"
         type="right"

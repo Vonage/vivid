@@ -1,0 +1,69 @@
+@use '@vonage/vvd-typography/scss/typography' as typography;
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
+
+:host {
+	@include typography.typography-cat-shorthand('caption');
+
+	.container {
+		display: inline-flex;
+		align-items: center;
+
+		&.all {
+			min-width: 240px;
+			justify-content: space-between;
+		}
+
+		&.pages {
+			justify-content: center;
+		}
+	}
+}
+
+.item {
+	position: relative;
+	display: flex;
+	overflow: hidden;
+	align-items: center;
+	justify-content: center;
+
+	block-size: 24px;
+	border-radius: 4px;
+	outline: none;
+	user-select: none;
+
+	&.prev {
+		margin-inline-end: 8px;
+	}
+
+	&.next {
+		margin-inline-start: 8px;
+	}
+
+	&.ellipsis {
+		pointer-events: none;
+	}
+
+	.control {
+		display: inline-flex;
+	}
+}
+
+.item .icon,
+.item:not(.prev):not(.next) {
+	inline-size: 24px;
+}
+
+.item:not([disabled]):not([selected]):hover {
+	background-color: var(#{scheme-variables.$vvd-color-neutral-20});
+}
+
+.item[selected],
+.item:not([disabled]):active {
+	@include typography.typography-cat-shorthand('caption-bold');
+
+	background-color: var(#{scheme-variables.$vvd-color-neutral-30});
+}
+
+.item[disabled] {
+	color: var(#{scheme-variables.$vvd-color-neutral-50});
+}

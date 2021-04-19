@@ -22,6 +22,7 @@
     </slot>
   </div>
 </label>
+
 ```
 
 #### `should have the expected internal contents (with label)`

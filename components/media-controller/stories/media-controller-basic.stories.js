@@ -2,7 +2,7 @@ import { html } from 'lit-element';
 import '@vonage/vwc-media-controller';
 
 export default {
-	title: 'Components/Composite/Media Controller',
+	title: 'Components/Media Controller',
 	component: 'vwc-media-controller',
 	parameters: {
 		controls: {
