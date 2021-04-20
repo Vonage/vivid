@@ -23,9 +23,6 @@ Basic.args = { label: 'Tab' }
 export const Block = Template.bind({});
 Block.args = { label: 'Tab', block: '' }
 
-export const Dense = Template.bind({});
-Dense.args = { label: 'Tab', dense: '' }
-
 export const WithIcon = Template.bind({});
 WithIcon.args = { label: 'Tab', icon: 'chat' }
 

@@ -21,9 +21,6 @@ MWCTab.styles = [styleCoupling, mwcTabStyle, vwcTabStyle];
 @customElement('vwc-tab')
 export class VWCTab extends MWCTab {
 	@property({ type: Boolean, reflect: true })
-	dense = false;
-
-	@property({ type: Boolean, reflect: true })
 	disabled = false;
 
 	@property({ type: Boolean, reflect: true })
