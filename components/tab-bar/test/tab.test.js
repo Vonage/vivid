@@ -46,18 +46,8 @@ describe('tab', () => {
 
 			const tab = actualElement.shadowRoot.querySelector('.mdc-tab');
 
+			assertComputedStyle(tab, { paddingLeft: '16px', paddingRight: '16px' });
 			assertComputedStyle(actualElement, { flexGrow: '0', flexShrink: '1', flexBasis: 'auto' });
-			assertComputedStyle(tab, { paddingLeft: '24px', paddingRight: '24px' });
-		});
-
-		it('should have dense size when dense', async () => {
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} dense label="Tab"></${COMPONENT_NAME}>`)
-			);
-			await waitNextTask();
-
-			const tab = actualElement.shadowRoot.querySelector('.mdc-tab');
-			assertComputedStyle(tab, { paddingLeft: '12px', paddingRight: '12px' });
 		});
 
 		it('should have block size when block', async () => {
