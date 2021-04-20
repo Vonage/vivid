@@ -1,3 +1,12 @@
+# [2.4.0](https://github.com/vonage/vivid/compare/v2.3.0...v2.4.0) (2021-04-19)
+
+
+### Bug Fixes
+
+* **vwc-carousel:** white source report high severity for carousel ([#774](https://github.com/vonage/vivid/issues/774)) ([3c93585](https://github.com/vonage/vivid/commit/3c9358520195aa49d3a3f69f7ccf49e06793d63b)), closes [#493](https://github.com/vonage/vivid/issues/493)
+
+
+
 # [2.3.0](https://github.com/vonage/vivid/compare/v2.2.4...v2.3.0) (2021-04-08)
 
 
