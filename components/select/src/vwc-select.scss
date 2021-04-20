@@ -6,6 +6,8 @@
 	$variable-name: --mdc-shape-small
 );
 
+$horizontal-gutter: 16px;
+$icon-size: 20px;
 $vvd-select-size-block: --vvd-select-size-block;
 
 :host {
@@ -53,6 +55,14 @@ $vvd-select-size-block: --vvd-select-size-block;
 		padding: 22px 0 6px;
 	}
 
+	.vvd-select-icon {
+		--icon-size: #{$icon-size};
+		display: inline-flex;
+		align-self: center;
+		margin: 0 #{$horizontal-gutter};
+		color: var(--mdc-select-label-ink-color);
+	}
+
 	#{$vvd-select-size-block}: 48px;
 }
 
@@ -72,6 +82,10 @@ $vvd-select-size-block: --vvd-select-size-block;
 	}
 
 	.mdc-select__selected-text {
+		color: var(--mdc-select-disabled-ink-color);
+	}
+
+	.vvd-select-icon {
 		color: var(--mdc-select-disabled-ink-color);
 	}
 
@@ -124,6 +138,10 @@ $vvd-select-size-block: --vvd-select-size-block;
 
 	&--outlined {
 		background-color: var(--mdc-select-fill-color);
+
+		&.mdc-select--with-leading-icon .mdc-floating-label {
+			left: calc(#{$icon-size} + #{$horizontal-gutter} * 2 - 12px);
+		}
 
 		.mdc-select__anchor {
 			height: var(#{$vvd-select-size-block});
