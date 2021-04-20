@@ -20,11 +20,11 @@ const Template = args => html`
 export const Basic = Template.bind({});
 Basic.args = { label: 'Tab' }
 
-export const Left = Template.bind({});
-Left.args = { label: 'Tab', left: '' }
+export const Block = Template.bind({});
+Block.args = { label: 'Tab', block: '' }
 
-export const DenseLeft = Template.bind({});
-DenseLeft.args = { label: 'Tab', dense: '', left: '' }
+export const Dense = Template.bind({});
+Dense.args = { label: 'Tab', dense: '' }
 
 export const WithIcon = Template.bind({});
 WithIcon.args = { label: 'Tab', icon: 'chat' }

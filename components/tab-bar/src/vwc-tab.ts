@@ -27,7 +27,7 @@ export class VWCTab extends MWCTab {
 	disabled = false;
 
 	@property({ type: Boolean, reflect: true })
-	left = false;
+	block = false;
 
 	@property({ type: Boolean, reflect: true })
 	trailingIcon = false;

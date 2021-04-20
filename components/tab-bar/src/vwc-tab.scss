@@ -5,15 +5,15 @@
 	--mdc-tab-height: 44px;
 	--mdc-tab-horizontal-padding: 24px;
 	--mdc-tab-text-label-color-default: var(#{scheme-variables.$vvd-color-neutral-70});
-	flex: 1;
+	flex: initial;
 }
 
 :host([dense]) {
 	--mdc-tab-horizontal-padding: 12px;
 }
 
-:host([left]) {
-	flex: initial;
+:host([block]) {
+	flex: 1;
 }
 
 .mdc-tab {

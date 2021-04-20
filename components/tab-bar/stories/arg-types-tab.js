@@ -11,7 +11,7 @@ export const argTypes = {
 			options: { 'true': '', 'false': undefined }
 		}
 	},
-	left: {
+	block: {
 		control: {
 			type: 'inline-radio',
 			options: { 'true': '', 'false': undefined }
