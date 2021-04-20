@@ -37,3 +37,16 @@ export function assert(condition: unknown, msg?: string): asserts condition {
 		throw new Error(msg);
 	}
 }
+
+/* eslint-disable @typescript-eslint/no-explicit-any */
+export function debounce(
+	callback: (...args: any[]) => void,
+	context: unknown,
+	waitInMS = 50
+) {
+	let timeoutId: number;
+	return (...args: any[]) => {
+		globalThis.clearTimeout(timeoutId);
+		timeoutId = globalThis.setTimeout(() => callback.apply(context, args), waitInMS);
+	};
+}

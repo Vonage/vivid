@@ -4,6 +4,7 @@ import {
 	isolatedElementsCreation,
 	textToDomToParent,
 	waitNextTask,
+	waitInterval,
 	assertComputedStyle,
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
@@ -26,13 +27,27 @@ describe('slider', () => {
 		});
 
 		it('should have internal contents', async () => {
-			const actualElements = addElement(
+			const [slider] = addElement(
 				textToDomToParent(`<${VWC_SLIDER}></${VWC_SLIDER}>`)
 			);
 			await waitNextTask();
-			expect(actualElements[0]).shadowDom.to.equalSnapshot({
+			expect(slider).shadowDom.to.equalSnapshot({
 				ignoreAttributes: ['style'],
 			});
+		});
+
+		it('should have thumb positioned correctly when rendered first in hidden space', async () => {
+			const [wrapper] = addElement(
+				textToDomToParent(`<div style="display: none"><${VWC_SLIDER} min="0" max="100" value="50"></${VWC_SLIDER}></div>`)
+			);
+			await waitNextTask();
+			const slider = wrapper.firstElementChild;
+			const thumb = slider.shadowRoot.querySelector('.mdc-slider__thumb-container');
+
+			wrapper.style.display = 'block';
+			assertComputedStyle(slider, { width: '120px' });
+			await waitInterval(120);
+			assertComputedStyle(thumb, { transform: 'matrix(1, 0, 0, 1, 49.5, 0)' });
 		});
 	});
 
