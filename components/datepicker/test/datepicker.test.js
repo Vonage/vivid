@@ -132,5 +132,18 @@ describe('datepicker', () => {
 			const range = actualElement.shadowRoot.querySelector('.vvd-datepicker-range');
 			assertComputedStyle(range, { display: 'flex' });
 		});
+
+		it('should not have footer when mode set to inline', async () => {
+			const [actualElement] = addElement(
+				textToDomToParent(`
+					<${COMPONENT_NAME} inline></${COMPONENT_NAME}>
+				`)
+			);
+			await actualElement.onReady;
+			await waitNextTask();
+
+			const customFooter = actualElement.shadowRoot.querySelector('.vvd-datepicker-footer');
+			expect(customFooter).to.not.exist;
+		});
 	});
 });
