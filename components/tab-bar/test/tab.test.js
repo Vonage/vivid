@@ -46,7 +46,7 @@ describe('tab', () => {
 
 			const tab = actualElement.shadowRoot.querySelector('.mdc-tab');
 
-			assertComputedStyle(actualElement, { flex: '0 1 auto' });
+			assertComputedStyle(actualElement, { flexGrow: '0', flexShrink: '1', flexBasis: 'auto' });
 			assertComputedStyle(tab, { paddingLeft: '24px', paddingRight: '24px' });
 		});
 
@@ -65,7 +65,7 @@ describe('tab', () => {
 				textToDomToParent(`<${COMPONENT_NAME} block label="Tab"></${COMPONENT_NAME}>`)
 			);
 			await waitNextTask();
-			assertComputedStyle(actualElement, { flex: '1 1 0%' });
+			assertComputedStyle(actualElement, { flexGrow: '1', flexShrink: '1', flexBasis: '0%' });
 		});
 	});
 
