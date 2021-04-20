@@ -5,9 +5,9 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-  title: 'Components/Composite/Datepicker',
-  component: 'vwc-datepicker',
-  argTypes
+	title: 'Components/Datepicker',
+	component: 'vwc-datepicker',
+	argTypes
 };
 
 const Template = args => html`

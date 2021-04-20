@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/Vonage/vivid/compare/v2.3.0...v2.4.0) (2021-04-19)
+
+
+### Bug Fixes
+
+* **icon:** wrong "error-star-line" icon (viv-491) ([#767](https://github.com/Vonage/vivid/issues/767)) ([c466f84](https://github.com/Vonage/vivid/commit/c466f849fc3206f000283b28e223af633e9560f4))
+* **textfield:** reportValidity() doesn't work ([#760](https://github.com/Vonage/vivid/issues/760)) ([600f26a](https://github.com/Vonage/vivid/commit/600f26a7defa8d09a51270475344019885369357))
+* **vwc-carousel:** white source report high severity for carousel ([#774](https://github.com/Vonage/vivid/issues/774)) ([3c93585](https://github.com/Vonage/vivid/commit/3c9358520195aa49d3a3f69f7ccf49e06793d63b)), closes [#493](https://github.com/Vonage/vivid/issues/493)
+
+
+### Features
+
+* **pagination:** iss 747 viv 392 pagination ([#759](https://github.com/Vonage/vivid/issues/759)) ([9b35300](https://github.com/Vonage/vivid/commit/9b35300baff80dcc3c2412f92628a4d92814f774)), closes [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747)
+
+
+
+
+
 # [2.3.0](https://github.com/Vonage/vivid/compare/v2.2.4...v2.3.0) (2021-04-08)
 
 

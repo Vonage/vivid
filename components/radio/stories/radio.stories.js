@@ -5,7 +5,7 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Components/Atoms/Radio',
+	title: 'Components/Radio',
 	component: 'vwc-radio',
 	argTypes
 }
