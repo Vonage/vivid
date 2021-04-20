@@ -2,9 +2,9 @@ import '@vonage/vwc-keypad/vwc-keypad.js';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Components/Composite/Keypad',
+	title: 'Alpha/Components/Keypad',
 	component: 'vwc-keypad'
-}
+};
 
 export const basic = () => html`
 	<h3>Default</h3>
