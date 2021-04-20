@@ -9,7 +9,9 @@ import {
 	TemplateResult,
 } from 'lit-element';
 import { style } from './vwc-carousel.css';
-import Swiper, { SwiperOptions } from 'swiper';
+import SwiperCore, {
+	Swiper, SwiperOptions, Autoplay, Keyboard, Mousewheel, Navigation
+} from 'swiper/core';
 import '@vonage/vwc-icon';
 import './vwc-carousel-item.js';
 
@@ -20,6 +22,8 @@ declare global {
 }
 
 const CAROUSEL_STYLE_ID = 'vwc-carousel-style-id';
+
+SwiperCore.use([Autoplay, Keyboard, Mousewheel, Navigation]);
 
 /**
  * This component is a carousel
@@ -36,14 +40,10 @@ export class VWCCarousel extends LitElement {
 	private swiperContainer?: HTMLElement;
 	@query('.swiper-wrapper')
 	private swiperWrapper?: HTMLElement;
-	@query('.swiper-button-next')
-	private swiperButtonNext?: HTMLElement;
-	@query('.swiper-button-prev')
-	private swiperButtonPrev?: HTMLElement;
 	@query('.swiper-pagination')
 	private swiperPagination?: HTMLElement;
 	private swiper?: Swiper;
-	private slideRefs: HTMLElement[] = [];
+	private slideRefs: Element[] = [];
 
 	static get styles(): CSSResult[] {
 		return [style];
@@ -54,17 +54,17 @@ export class VWCCarousel extends LitElement {
 			loop: false,
 			autoplay: this.autoplay
 				? {
-					delay: 2500,
-					disableOnInteraction: true,
-				  }
+					delay: 2500
+				}
 				: false,
 			cssMode: false,
-			navigation: {
-				prevEl: this.swiperButtonPrev as HTMLElement,
-				nextEl: this.swiperButtonNext as HTMLElement,
-			},
-			mousewheel: true,
 			keyboard: true,
+			mousewheel: true,
+			uniqueNavElements: true,
+			navigation: {
+				prevEl: '.swiper-button-prev',
+				nextEl: '.swiper-button-next',
+			},
 			on: {
 				slideNextTransitionEnd: this.moveFirstIfNeeded,
 				slidePrevTransitionEnd: this.moveLastIfNeeded,
@@ -156,7 +156,7 @@ export class VWCCarousel extends LitElement {
 		const s = swiper ?? ((this as unknown) as Swiper);
 		const slides = s.slides;
 		if (slides.length > 2 && s.isEnd) {
-			const first = slides[0];
+			const first = slides[0] as HTMLElement;
 			s.removeSlide(0);
 			s.appendSlide(first);
 		}
@@ -166,7 +166,7 @@ export class VWCCarousel extends LitElement {
 		const s = swiper ?? ((this as unknown) as Swiper);
 		const slides = s.slides;
 		if (slides.length > 2 && s.isBeginning) {
-			const last = slides[slides.length - 1];
+			const last = slides[slides.length - 1] as HTMLElement;
 			s.removeSlide(slides.length - 1);
 			s.prependSlide(last);
 		}
