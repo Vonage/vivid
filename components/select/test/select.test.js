@@ -320,6 +320,41 @@ describe('select', () => {
 		});
 	});
 
+	describe('select with icon', () => {
+		it('should have vwc-icon when used with icon', async () => {
+			const [select] = addElement(
+				textToDomToParent(`
+				<${COMPONENT_NAME} icon="home">
+					<vwc-list-item>Item 1</vwc-list-item>
+					<vwc-list-item>Item 2</vwc-list-item>
+				</${COMPONENT_NAME}>
+			`)
+			);
+			await waitNextTask();
+			expect(select).shadowDom.equalSnapshot();
+		});
+
+		it('icon should be correctly positioned', async () => {
+			const [select] = addElement(
+				textToDomToParent(`
+				<${COMPONENT_NAME} icon="home">
+					<vwc-list-item>Item 1</vwc-list-item>
+					<vwc-list-item>Item 2</vwc-list-item>
+				</${COMPONENT_NAME}>
+			`)
+			);
+			await waitNextTask();
+			const icon = select.shadowRoot.querySelector('.vvd-select-icon');
+			expect(icon).exist;
+			assertComputedStyle(icon, {
+				width: '20px',
+				height: '20px',
+				marginLeft: '16px',
+				marginRight: '16px'
+			});
+		});
+	});
+
 	describe('density', () => {
 		it('should have normal size by default', async () => {
 			const addedElements = addElement(
