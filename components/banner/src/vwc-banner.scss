@@ -1,0 +1,108 @@
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
+@use '@vonage/vvd-foundation/scss/variable-names/font-variable-names' as font-var-names;
+@use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation with (
+	$connotations-set: success info alert announcement warning
+);
+@use '@vonage/vvd-typography/scss/typography';
+
+@include color-connotation.connotations-main;
+@include color-connotation.connotations-main-default(info);
+
+:host {@media screen and (prefers-reduced-motion: reduce) {
+		> header {
+			@include typography.typography-cat-shorthand('body-2-bold');
+			position: relative;
+			display: flex;
+			overflow: hidden;
+			box-sizing: border-box;
+			align-items: center;
+			justify-content: center;
+			padding: 16px 54px 16px 16px;
+			background-color: var(#{color-connotation.$vvd-color-connotation});
+			color: var(#{color-connotation.$vvd-color-on-connotation});
+			font-size: 14px;
+			font-style: normal;
+			font-weight: 600;
+			line-height: 20px;
+			opacity: 0;
+			transform: translateY(-100%);
+			transition: none;
+
+			> slot {
+				display: flex;
+				align-items: center;
+			}
+
+			> vwc-icon {
+				flex: 0 0 24px;
+				align-self: flex-start;
+				margin-right: 10px;
+				text-align: left;
+			}
+
+			> vwc-icon-button {
+				--vvd-icon-button-color: inherit;
+				position: absolute;
+				top: 50%;
+				right: 16px;
+				flex: 0 0 140px;
+				transform: translateY(-50%);
+			}
+		}
+	}
+
+	> header {
+		@include typography.typography-cat-shorthand('body-2-bold');
+		position: relative;
+		display: flex;
+		overflow: hidden;
+		box-sizing: border-box;
+		align-items: center;
+		justify-content: center;
+		padding: 16px 54px 16px 16px;
+		background-color: var(#{color-connotation.$vvd-color-connotation});
+		color: var(#{color-connotation.$vvd-color-on-connotation});
+		font-size: 14px;
+		font-style: normal;
+		font-weight: 600;
+		line-height: 20px;
+		opacity: 0;
+		transform: translateY(-100%);
+		transition: transform 0.2s, opacity 0.2s;
+
+		> slot {
+			display: flex;
+			align-items: center;
+		}
+
+		> vwc-icon {
+			flex: 0 0 24px;
+			align-self: flex-start;
+			margin-right: 10px;
+			text-align: left;
+		}
+
+		> vwc-icon-button {
+			--vvd-icon-button-color: inherit;
+			position: absolute;
+			top: 50%;
+			right: 16px;
+			flex: 0 0 140px;
+			transform: translateY(-50%);
+		}
+	}
+}
+/*
+::slotted(*) {
+	display: inline-block;
+	vertical-align: middle;
+}*/
+
+:host([open]) {
+	> header {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+
