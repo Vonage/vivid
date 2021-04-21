@@ -33,6 +33,10 @@ $toggle-buttons-type-selectors: selector.append('vwc-', list.join($scopes, '', $
 	--mdc-theme-on-primary: var(#{scheme-variables.$vvd-color-on-primary});
 }
 
+:host([accent]) ::slotted([group-button]:hover) {
+	--mdc-theme-primary: var(#{scheme-variables-neutral-50});
+}
+
 ::slotted(vwc-button) {
 	--mdc-theme-primary: var(#{scheme-variables.$vvd-color-neutral-30});
 }
@@ -71,6 +75,10 @@ $toggle-buttons-type-selectors: selector.append('vwc-', list.join($scopes, '', $
 
 	::slotted(vwc-#{$scope}:hover) {
 		--vvd-#{$scope}-background-color: var(#{scheme-variables.$vvd-color-neutral-40});
+	}
+
+	:host([accent]) ::slotted(vwc-#{$scope}:hover) {
+		--vvd-#{$scope}-background-color: var(#{scheme-variables.$vvd-color-neutral-50});
 	}
 
 	::slotted(vwc-#{$scope}:not(:first-child):not(:last-child)) {
