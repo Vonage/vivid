@@ -5,16 +5,16 @@
 	@include typography.typography-cat-shorthand('caption');
 
 	.container {
-		display: inline-flex;
-		align-items: center;
+		display: inline-grid;
+		grid-auto-flow: column;
 
 		&.all {
 			min-width: 240px;
-			justify-content: space-between;
+			column-gap: 8px;
 		}
 
 		&.pages {
-			justify-content: center;
+			column-gap: 4px;
 		}
 	}
 }
@@ -30,14 +30,6 @@
 	border-radius: 4px;
 	outline: none;
 	user-select: none;
-
-	&.prev {
-		margin-inline-end: 8px;
-	}
-
-	&.next {
-		margin-inline-start: 8px;
-	}
 
 	&.ellipsis {
 		pointer-events: none;
@@ -66,4 +58,8 @@
 
 .item[disabled] {
 	color: var(#{scheme-variables.$vvd-color-neutral-50});
+}
+
+.item ::slotted(*) {
+	padding: 0 4px;
 }
