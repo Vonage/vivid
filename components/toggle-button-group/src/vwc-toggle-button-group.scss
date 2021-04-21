@@ -28,7 +28,12 @@ $toggle-buttons-type-selectors: selector.append('vwc-', list.join($scopes, '', $
 }
 
 // TODO::remove these when viv-485 is complete
-::slotted([group-button]) {
+:host([accent]) ::slotted([group-button][selected]) {
+	--mdc-theme-primary: var(#{scheme-variables.$vvd-color-primary});
+	--mdc-theme-on-primary: var(#{scheme-variables.$vvd-color-on-primary});
+}
+
+::slotted(vwc-button) {
 	--mdc-theme-primary: var(#{scheme-variables.$vvd-color-neutral-30});
 }
 
@@ -56,6 +61,12 @@ $toggle-buttons-type-selectors: selector.append('vwc-', list.join($scopes, '', $
 
 	::slotted(vwc-#{$scope}[selected]) {
 		--vvd-#{$scope}-background-color: var(#{scheme-variables.$vvd-color-neutral-50});
+	}
+
+	:host([accent]) ::slotted([group-button][selected]) {
+		--vvd-#{$scope}-background-color: var(#{scheme-variables.$vvd-color-primary});
+		--vvd-#{$scope}-color: var(#{scheme-variables.$vvd-color-on-primary});
+		background-color: var(#{scheme-variables.$vvd-color-neutral-30});
 	}
 
 	::slotted(vwc-#{$scope}:hover) {
