@@ -19,8 +19,8 @@ const TemplateSlotted = args => html`<vwc-pagination ...=${spread(args)}>
 	<span slot="next-control">Next</span>
 </vwc-pagination>`;
 
-export const CustomPrevNext = TemplateSlotted.bind({});
-CustomPrevNext.args = { total: 20 };
+export const PrevNextSimpleText = TemplateSlotted.bind({});
+PrevNextSimpleText.args = { total: 20 };
 
 const TemplateSlottedLinks = args => html`
 <style>
@@ -30,10 +30,15 @@ const TemplateSlottedLinks = args => html`
 	::part(control):hover {
 		background-color: initial;
 	}
+	[prev-disabled] .prev,
+	[next-disabled] .next {
+		color: grey;
+		pointer-events: none;
+	}
 </style>
 <vwc-pagination ...=${spread(args)}>
-  <a class="page-control" slot="prev-control">Previous</a>
-	<a class="page-control" slot="next-control">Next</a>
+  <a class="page-control prev" slot="prev-control">Previous</a>
+	<a class="page-control next" slot="next-control">Next</a>
 </vwc-pagination>`;
 
 export const PrevNextAsLinks = TemplateSlottedLinks.bind({});

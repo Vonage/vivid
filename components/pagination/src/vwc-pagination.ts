@@ -9,6 +9,8 @@ import { style } from './vwc-pagination.css';
 import { html, TemplateResult } from 'lit-element';
 
 export const COMPONENT_NAME = 'vwc-pagination';
+const PREV_DISABLED_ATTR_NAME = 'prev-disabled';
+const NEXT_DISABLED_ATTR_NAME = 'next-disabled';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -64,6 +66,7 @@ export class VWCPagination extends LitElement {
 		}
 
 		if (changes.get('selectedIndex') !== undefined && this.selectedIndex !== changes.get('selectedIndex')) {
+			this.reflectControlsState();
 			this.notifyChange();
 		}
 	}
@@ -147,11 +150,15 @@ export class VWCPagination extends LitElement {
 	}
 
 	private goPrev(): void {
-		this.selectedIndex -= 1;
+		if (this.selectedIndex > 0) {
+			this.selectedIndex -= 1;
+		}
 	}
 
 	private goNext(): void {
-		this.selectedIndex += 1;
+		if (this.selectedIndex < this.total - 2) {
+			this.selectedIndex += 1;
+		}
 	}
 
 	private goTo(index: number): void {
@@ -165,6 +172,19 @@ export class VWCPagination extends LitElement {
 				this.goTo(parseInt(target.dataset.index));
 			}
 		});
+	}
+
+	private reflectControlsState() {
+		if (this.selectedIndex < 1) {
+			this.setAttribute(PREV_DISABLED_ATTR_NAME, '');
+		} else {
+			this.removeAttribute(PREV_DISABLED_ATTR_NAME);
+		}
+		if (this.selectedIndex > this.total - 2) {
+			this.setAttribute(NEXT_DISABLED_ATTR_NAME, '');
+		} else {
+			this.removeAttribute(NEXT_DISABLED_ATTR_NAME);
+		}
 	}
 
 	private notifyChange(): void {

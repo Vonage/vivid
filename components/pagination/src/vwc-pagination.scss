@@ -3,6 +3,7 @@
 
 :host {
 	@include typography.typography-cat-shorthand('caption');
+	display: inline-flex;
 
 	.container {
 		display: inline-grid;
@@ -21,28 +22,26 @@
 
 .item {
 	position: relative;
-	display: flex;
+	display: inline-flex;
 	overflow: hidden;
 	align-items: center;
-	justify-content: center;
-
-	block-size: 24px;
 	border-radius: 4px;
 	outline: none;
 	user-select: none;
 
+	&.page,
+	&.ellipsis,
+	.control {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		block-size: 24px;
+		inline-size: 24px;
+	}
+
 	&.ellipsis {
 		pointer-events: none;
 	}
-
-	.control {
-		display: inline-flex;
-	}
-}
-
-.item .icon,
-.item:not(.prev):not(.next) {
-	inline-size: 24px;
 }
 
 .item:not([disabled]):not([selected]):hover {
