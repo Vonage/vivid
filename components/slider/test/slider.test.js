@@ -46,7 +46,7 @@ describe('slider', () => {
 
 			wrapper.style.display = 'block';
 			assertComputedStyle(slider, { width: '120px' });
-			await waitInterval(120);
+			await waitInterval(160);
 			assertComputedStyle(thumb, { transform: 'matrix(1, 0, 0, 1, 49.5, 0)' });
 		});
 	});

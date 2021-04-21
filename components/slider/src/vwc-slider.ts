@@ -1,5 +1,5 @@
 import '@vonage/vvd-core';
-import { debounce } from '@vonage/vvd-foundation/general-utils';
+import { debounced } from '@vonage/vvd-foundation/general-utils';
 import { customElement } from 'lit-element';
 import { Slider as MWCSlider } from '@material/mwc-slider';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
@@ -24,9 +24,8 @@ MWCSlider.styles = [styleCoupling, mwcSliderStyle, vwcSliderStyle];
  */
 @customElement('vwc-slider')
 export class VWCSlider extends MWCSlider {
-	#debouncedLayout = debounce(this.layout, this, 96);
 	/* eslint-disable compat/compat */
-	#resizeObserver = new ResizeObserver(this.#debouncedLayout);
+	#resizeObserver = new ResizeObserver(() => this.layout());
 
 	connectedCallback() {
 		super.connectedCallback();
@@ -47,5 +46,10 @@ export class VWCSlider extends MWCSlider {
 	focus(): void {
 		super.focus();
 		this.formElement.focus();
+	}
+
+	@debounced(96)
+	layout() {
+		super.layout();
 	}
 }

@@ -1,5 +1,5 @@
 import '@vonage/vvd-core';
-import { debounce } from '@vonage/vvd-foundation/general-utils';
+import { debounced } from '@vonage/vvd-foundation/general-utils';
 import { customElement } from 'lit-element';
 import { List as MWCList } from '@material/mwc-list/mwc-list';
 import { style as vwcListStyle } from './vwc-list.css.js';
@@ -21,8 +21,8 @@ MWCList.styles = [styleCoupling, mwcListStyle, vwcListStyle];
  */
 @customElement('vwc-list')
 export class VWCList extends MWCList {
-	constructor() {
-		super();
-		this.layout = debounce(super.layout, this);
+	@debounced()
+	layout() {
+		super.layout();
 	}
 }

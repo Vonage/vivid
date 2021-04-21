@@ -39,14 +39,13 @@ export function assert(condition: unknown, msg?: string): asserts condition {
 }
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export function debounce(
-	callback: (...args: any[]) => void,
-	context: unknown,
-	waitInMS = 50
-) {
+export function debounced(waitInMS = 50) {
 	let timeoutId: number;
-	return (...args: any[]) => {
-		globalThis.clearTimeout(timeoutId);
-		timeoutId = globalThis.setTimeout(() => callback.apply(context, args), waitInMS);
+	return function (target: any, propertyKey: string) {
+		const result = function (...args: []) {
+			globalThis.clearTimeout(timeoutId);
+			timeoutId = globalThis.setTimeout(() => target[propertyKey](...args), waitInMS);
+		};
+		return result as TypedPropertyDescriptor<() => void>;
 	};
 }
