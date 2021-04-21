@@ -114,13 +114,6 @@ $vvd-select-size-block: --vvd-select-size-block;
 			left: -12px;
 			transform: none;
 		}
-
-		// .mdc-floating-label,
-		// &--invalid.mdc-select--outlined .mdc-floating-label,
-		// &:not(.mdc-select--invalid):not(.mdc-select--focused) .mdc-floating-label,
-		// &:not(.mdc-select--invalid).mdc-select--focused .mdc-floating-label {
-		// 	color: var(--mdc-select-ink-color);
-		// }
 	}
 	#{$vvd-select-size-block}: 40px;
 }
