@@ -1,4 +1,5 @@
 import '@vonage/vvd-core';
+import { debounced } from '@vonage/vvd-foundation/general-utils';
 import { customElement } from 'lit-element';
 import { Slider as MWCSlider } from '@material/mwc-slider';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
@@ -23,6 +24,19 @@ MWCSlider.styles = [styleCoupling, mwcSliderStyle, vwcSliderStyle];
  */
 @customElement('vwc-slider')
 export class VWCSlider extends MWCSlider {
+	/* eslint-disable compat/compat */
+	#resizeObserver = new ResizeObserver(() => this.layout());
+
+	connectedCallback() {
+		super.connectedCallback();
+		this.#resizeObserver.observe(this);
+	}
+
+	disconnectedCallback() {
+		super.disconnectedCallback();
+		this.#resizeObserver.unobserve(this);
+	}
+
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
 		this.pinMarkerText = this.value?.toLocaleString();
@@ -32,5 +46,10 @@ export class VWCSlider extends MWCSlider {
 	focus(): void {
 		super.focus();
 		this.formElement.focus();
+	}
+
+	@debounced()
+	layout() {
+		super.layout();
 	}
 }
