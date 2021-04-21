@@ -1,5 +1,34 @@
 # `select`
 
+## `init flow`
+
+####   `should have the required elements`
+
+```html
+<vwc-select>
+  <vwc-list-item
+    activated=""
+    aria-disabled="false"
+    aria-selected="true"
+    mwc-list-item=""
+    role="option"
+    selected=""
+    tabindex="0"
+  >
+    Item 1
+  </vwc-list-item>
+  <vwc-list-item
+    aria-disabled="false"
+    mwc-list-item=""
+    role="option"
+    tabindex="-1"
+  >
+    Item 2
+  </vwc-list-item>
+</vwc-select>
+
+```
+
 ## `select with icon`
 
 ####   `should have vwc-icon when used with icon`
@@ -40,7 +69,7 @@
       </span>
     </span>
     <vwc-icon
-      class="mdc-select__dropdown-icon"
+      class="vvd-select-dropdown-icon"
       size="medium"
       type="down"
     >
@@ -57,33 +86,5 @@
   </mwc-menu>
 </div>
 
-```
-
-## `init flow`
-
-####   `should have the required elements`
-
-```html
-<vwc-select>
-  <vwc-list-item
-    activated=""
-    aria-disabled="false"
-    aria-selected="true"
-    mwc-list-item=""
-    role="option"
-    selected=""
-    tabindex="0"
-  >
-    Item 1
-  </vwc-list-item>
-  <vwc-list-item
-    aria-disabled="false"
-    mwc-list-item=""
-    role="option"
-    tabindex="-1"
-  >
-    Item 2
-  </vwc-list-item>
-</vwc-select>
 ```
 
