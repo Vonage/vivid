@@ -38,7 +38,6 @@ export function assert(condition: unknown, msg?: string): asserts condition {
 	}
 }
 
-/* eslint-disable @typescript-eslint/no-explicit-any */
 export function debounced(waitInMS = 50) {
 	let timeoutId: number;
 	return function (target: any, propertyKey: string) {
