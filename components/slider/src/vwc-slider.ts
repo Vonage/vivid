@@ -48,7 +48,7 @@ export class VWCSlider extends MWCSlider {
 		this.formElement.focus();
 	}
 
-	@debounced(96)
+	@debounced()
 	layout() {
 		super.layout();
 	}
