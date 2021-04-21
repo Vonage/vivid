@@ -80,7 +80,7 @@ export class VWCPagination extends LitElement {
 
 	private renderPrev(): TemplateResult {
 		return html`
-			<span class="prev item" ?disabled="${this.selectedIndex < 1}" @pointerup="${this.goPrev}">
+			<span class="item prev" part="control prev" ?disabled="${this.selectedIndex < 1}" @pointerup="${this.goPrev}">
 				<slot name="prev-control">
 				<span class="control"
 					@pointerdown="${this.handleRippleActivateControl}"
@@ -97,7 +97,7 @@ export class VWCPagination extends LitElement {
 	private renderNext(): TemplateResult {
 		return html`
 			<span
-			 	class="item next" ?disabled="${this.selectedIndex > this.total - 2}" @pointerup="${this.goNext}">
+			 	class="item next" part="control next" ?disabled="${this.selectedIndex > this.total - 2}" @pointerup="${this.goNext}">
 				<slot name="next-control">
 					<span class="control"
 						@pointerdown="${this.handleRippleActivateControl}"
