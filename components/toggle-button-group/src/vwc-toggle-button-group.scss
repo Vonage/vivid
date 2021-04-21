@@ -6,11 +6,9 @@ $scopes: button icon-button;
 $toggle-buttons-type-selectors: selector.append('vwc-', list.join($scopes, '', $separator: comma));
 
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
-@use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins
-	with
-	(
-	$variable-name: #{$vvd-toggle-button-group-shape})
-;
+@use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
+	$variable-name: #{$vvd-toggle-button-group-shape}
+);
 
 @include shape-mixins.shape(
 	$shapes: (
