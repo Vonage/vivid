@@ -2,10 +2,15 @@ import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
 import {
 	customElement,
+	eventOptions,
 	html,
 	property,
+	queryAsync,
 	TemplateResult
 } from 'lit-element';
+import '@material/mwc-ripple/mwc-ripple';
+import { Ripple } from '@material/mwc-ripple/mwc-ripple';
+import { RippleHandlers } from '@material/mwc-ripple/ripple-handlers';
 import { VWCExpansionPanelBase } from './vwc-expansion-panel-base.js';
 import { style } from './vwc-expansion-panel.css.js';
 
@@ -31,6 +36,12 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	@property({ type: Boolean, reflect: true })
 	trailingToggle = false;
 
+	@queryAsync('mwc-ripple') ripple!: Promise<Ripple>;
+
+	protected rippleHandlers = new RippleHandlers(() => {
+		return this.ripple;
+	});
+
 	protected firstUpdated(): void {
 		const header = this.shadowRoot?.querySelector('.expansion-panel-header');
 		header?.addEventListener('click', this.toggleOpen.bind(this));
@@ -48,7 +59,17 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 
 	protected render(): TemplateResult {
 		return html`<div class="expansion-panel">
-			<div class="expansion-panel-header">
+			<div class="expansion-panel-header"
+				@focus="${this.handleRippleFocus}"
+				@blur="${this.handleRippleBlur}"
+				@mousedown="${this.handleRippleActivate}"
+				@mouseenter="${this.handleRippleMouseEnter}"
+				@mouseleave="${this.handleRippleMouseLeave}"
+				@touchstart="${this.handleRippleActivate}"
+				@touchend="${this.handleRippleDeactivate}"
+				@touchcancel="${this.handleRippleDeactivate}"
+			>
+				<mwc-ripple class="ripple"></mwc-ripple>
 				<span class="leading-icon">
 					<slot name="icon">
 						${this.icon || !this.trailingToggle ? this.renderIconOrToggle() : ''}
@@ -88,5 +109,37 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 			>
 			</vwc-icon>
 		`;
+	}
+
+	@eventOptions({ passive: true })
+	private handleRippleActivate(evt?: Event) {
+		const onUp = () => {
+			window.removeEventListener('mouseup', onUp);
+
+			this.handleRippleDeactivate();
+		};
+
+		window.addEventListener('mouseup', onUp);
+		this.rippleHandlers.startPress(evt);
+	}
+
+	private handleRippleDeactivate() {
+		this.rippleHandlers.endPress();
+	}
+
+	private handleRippleMouseEnter() {
+		this.rippleHandlers.startHover();
+	}
+
+	private handleRippleMouseLeave() {
+		this.rippleHandlers.endHover();
+	}
+
+	private handleRippleFocus() {
+		this.rippleHandlers.startFocus();
+	}
+
+	private handleRippleBlur() {
+		this.rippleHandlers.endFocus();
 	}
 }

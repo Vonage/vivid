@@ -31,18 +31,11 @@
 
 .expansion-panel-header {
 	@include typography.typography-cat-shorthand('subtitle-2');
+	position: relative;
 	display: flex;
 	align-items: center;
 	padding: 12px 16px;
 	cursor: pointer;
-
-	&:hover {
-		background-color: var(#{scheme-variables.$vvd-color-neutral-10});
-	}
-
-	&:active {
-		background-color: var(#{scheme-variables.$vvd-color-neutral-20});
-	}
 
 	.leading-icon,
 	.trailing-icon {
