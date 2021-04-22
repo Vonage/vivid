@@ -3,8 +3,11 @@ import '@vonage/vwc-button';
 import { html } from 'lit-element';
 import { argTypes } from './arg-types';
 import { ifDefined } from 'lit-html/directives/if-defined';
-import { asyncReplace } from 'lit-html/directives/async-replace';
 import noop from 'lodash/fp/noop';
+import pipe from 'lodash/fp/pipe';
+import { createTimeline, generateAsyncCallback, createUpdatableStory } from '@vonage/vvd-umbrella/libs/storybook_tools';
+
+const REOPEN_BANNER_DELAY = 1500;
 
 export default {
 	title: 'Components/Beta/Banner',
@@ -12,54 +15,24 @@ export default {
 	argTypes
 };
 
-const generateAsyncCallback = function () {
-	const buffer = [];
-	let releaseValue = noop;
-	return [
-		(payload) => {
-			buffer.push(payload);
-			releaseValue();
-		},
-		{
-			[Symbol.asyncIterator]: () => ({
-				next: () => {
-					return Promise
-						.resolve()
-						.then(() => (!buffer.length ? new Promise(resolve => releaseValue = resolve) : Promise.resolve()))
-						.then(() => buffer.shift())
-						.then(value => ({ value, done: false }));
-				}
-			})
-		}
-	];
-};
-
-const createUpdatableStory = function (updatableTemplate) {
-	return (...args) => {
-		const [requestUpdate, updateStream] = generateAsyncCallback();
-		updatableTemplate(requestUpdate, ...args);
-		return html`${asyncReplace(updateStream)}`;
-	};
-};
-
-export const Basic = Object.assign(
-	createUpdatableStory(function (
+export const Basic = (function () {
+	let cancelAnimations = noop;
+	return createUpdatableStory(function (
 		sendUpdate,
 		{
 			connotation,
 			dismissible,
 			icon
-		}) {
-
+		}
+	) {
+		cancelAnimations();
 		let open = true;
 
-		const onClose = function(){
-			open = false;
-			setTimeout(function () {
-				open = true;
-				updateStory();
-			}, 1000);
-			updateStory();
+		const onClose = function () {
+			cancelAnimations = createTimeline([
+				{ frameFunc: pipe(() => open = false, updateStory), delay: 0 },
+				{ frameFunc: pipe(() => open = true, updateStory), delay: REOPEN_BANNER_DELAY }
+			]);
 		};
 
 		const updateStory = () => {
@@ -90,22 +63,21 @@ export const Basic = Object.assign(
 				</vwc-banner>
 			</div>`);
 		};
-
 		updateStory();
-	}),
-	{
-		args: {
-			connotation: "info",
-			dismissible: true
-		},
-		argTypes: {
-			open: {
-				control: {
-					type: null
-				}
-			}
-		}
 	});
+})();
+
+Basic.args = {
+	connotation: "info",
+	dismissible: true
+};
+Basic.argTypes = {
+	open: {
+		control: {
+			type: null
+		}
+	}
+};
 
 const basicStory = function (text, {
 	dismissible = true,
