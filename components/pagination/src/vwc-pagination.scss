@@ -3,65 +3,61 @@
 
 :host {
 	@include typography.typography-cat-shorthand('caption');
+	display: inline-flex;
 
 	.container {
-		display: inline-flex;
-		align-items: center;
+		display: inline-grid;
+		grid-auto-flow: column;
 
 		&.all {
 			min-width: 240px;
-			justify-content: space-between;
+			column-gap: 8px;
 		}
 
 		&.pages {
-			justify-content: center;
+			column-gap: 4px;
 		}
 	}
 }
 
 .item {
 	position: relative;
-	display: flex;
+	display: inline-flex;
 	overflow: hidden;
 	align-items: center;
-	justify-content: center;
-
-	block-size: 24px;
 	border-radius: 4px;
 	outline: none;
 	user-select: none;
 
-	&.prev {
-		margin-inline-end: 8px;
-	}
-
-	&.next {
-		margin-inline-start: 8px;
+	&.page,
+	&.ellipsis,
+	.control {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		block-size: 24px;
+		inline-size: 24px;
 	}
 
 	&.ellipsis {
 		pointer-events: none;
 	}
-
-	.control {
-		display: inline-flex;
-	}
-}
-
-.item .icon,
-.item:not(.prev):not(.next) {
-	inline-size: 24px;
 }
 
 .item:not([disabled]):not([selected]):hover {
-	background-color: var(#{scheme-variables.$vvd-color-neutral-20});
+	&.page,
+	.control {
+		background-color: var(#{scheme-variables.$vvd-color-neutral-20});
+	}
 }
 
 .item[selected],
 .item:not([disabled]):active {
-	@include typography.typography-cat-shorthand('caption-bold');
-
-	background-color: var(#{scheme-variables.$vvd-color-neutral-30});
+	&.page,
+	.control {
+		@include typography.typography-cat-shorthand('caption-bold');
+		background-color: var(#{scheme-variables.$vvd-color-neutral-30});
+	}
 }
 
 .item[disabled] {
