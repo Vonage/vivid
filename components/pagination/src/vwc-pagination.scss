@@ -45,20 +45,21 @@
 }
 
 .item:not([disabled]):not([selected]):hover {
-	background-color: var(#{scheme-variables.$vvd-color-neutral-20});
+	&.page,
+	.control {
+		background-color: var(#{scheme-variables.$vvd-color-neutral-20});
+	}
 }
 
 .item[selected],
 .item:not([disabled]):active {
-	@include typography.typography-cat-shorthand('caption-bold');
-
-	background-color: var(#{scheme-variables.$vvd-color-neutral-30});
+	&.page,
+	.control {
+		@include typography.typography-cat-shorthand('caption-bold');
+		background-color: var(#{scheme-variables.$vvd-color-neutral-30});
+	}
 }
 
 .item[disabled] {
 	color: var(#{scheme-variables.$vvd-color-neutral-50});
-}
-
-.item ::slotted(*) {
-	padding: 0 4px;
 }

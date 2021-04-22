@@ -50,6 +50,8 @@ describe('pagination layout', () => {
 			);
 			await waitNextTask();
 			expect(pagination.shadowRoot.innerHTML).to.equalSnapshot();
+			expect(pagination.hasAttribute('prev-disabled')).equal(pagination.selectedIndex === 0);
+			expect(pagination.hasAttribute('next-disabled')).equal(pagination.selectedIndex === 9);
 		});
 	}
 

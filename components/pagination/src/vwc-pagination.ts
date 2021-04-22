@@ -83,7 +83,7 @@ export class VWCPagination extends LitElement {
 
 	private renderPrev(): TemplateResult {
 		return html`
-			<span class="item prev" part="control prev" ?disabled="${this.selectedIndex < 1}" @pointerup="${this.goPrev}">
+			<span class="item prev" part="control prev" ?disabled="${this.prevDisabled}" @pointerup="${this.goPrev}">
 				<slot name="prev-control">
 				<span class="control"
 					@pointerdown="${this.handleRippleActivateControl}"
@@ -100,7 +100,7 @@ export class VWCPagination extends LitElement {
 	private renderNext(): TemplateResult {
 		return html`
 			<span
-			 	class="item next" part="control next" ?disabled="${this.selectedIndex > this.total - 2}" @pointerup="${this.goNext}">
+			 	class="item next" part="control next" ?disabled="${this.nextDisabled}" @pointerup="${this.goNext}">
 				<slot name="next-control">
 					<span class="control"
 						@pointerdown="${this.handleRippleActivateControl}"
@@ -150,13 +150,13 @@ export class VWCPagination extends LitElement {
 	}
 
 	private goPrev(): void {
-		if (this.selectedIndex > 0) {
+		if (!this.prevDisabled) {
 			this.selectedIndex -= 1;
 		}
 	}
 
 	private goNext(): void {
-		if (this.selectedIndex < this.total - 2) {
+		if (!this.nextDisabled) {
 			this.selectedIndex += 1;
 		}
 	}
@@ -175,12 +175,12 @@ export class VWCPagination extends LitElement {
 	}
 
 	private reflectControlsState() {
-		if (this.selectedIndex < 1) {
+		if (this.prevDisabled) {
 			this.setAttribute(PREV_DISABLED_ATTR_NAME, '');
 		} else {
 			this.removeAttribute(PREV_DISABLED_ATTR_NAME);
 		}
-		if (this.selectedIndex > this.total - 2) {
+		if (this.nextDisabled) {
 			this.setAttribute(NEXT_DISABLED_ATTR_NAME, '');
 		} else {
 			this.removeAttribute(NEXT_DISABLED_ATTR_NAME);
@@ -241,6 +241,14 @@ export class VWCPagination extends LitElement {
 		if (ripple) {
 			ripple.endPress();
 		}
+	}
+
+	private get prevDisabled(): boolean {
+		return this.selectedIndex < 1;
+	}
+
+	private get nextDisabled(): boolean {
+		return this.selectedIndex > this.total - 2;
 	}
 
 	private static buildPagesMap(total: number, pivot: number, minBeforeEllipse = 7): number[] {
