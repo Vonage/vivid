@@ -110,7 +110,8 @@ $vvd-select-size-block: --vvd-select-size-block;
 
 	.mdc-select {
 		.mdc-floating-label {
-			--mdc-select-label-ink-color: var(--mdc-select-ink-color);
+			--mdc-select-label-ink-color: var(#{scheme-variables.$vvd-color-on-base});
+			--mdc-select-error-color: var(#{scheme-variables.$vvd-color-on-base});
 			top: -24px;
 			left: -12px;
 			transform: none;

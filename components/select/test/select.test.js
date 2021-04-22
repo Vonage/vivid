@@ -409,10 +409,21 @@ describe('select', () => {
 			assertDistancePixels(select, label, 'left', 16);
 		});
 
-		it('should have label colored as expected', async () => {
+		it('should have label colored as expected (dense regular)', async () => {
 			const [select] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} label="Label" dense></${COMPONENT_NAME}>`)
 			);
+			await waitNextTask();
+			const label = select.shadowRoot.querySelector('.mdc-floating-label');
+			assertComputedStyle(label, { color: 'rgb(0,0,0)' });
+		});
+
+		it('should have label colored as expected (dense invalid)', async () => {
+			const [select] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} label="Label" dense required></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			select.reportValidity();
 			await waitNextTask();
 			const label = select.shadowRoot.querySelector('.mdc-floating-label');
 			assertComputedStyle(label, { color: 'rgb(0,0,0)' });
