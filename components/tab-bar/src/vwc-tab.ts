@@ -24,6 +24,9 @@ export class VWCTab extends MWCTab {
 	disabled = false;
 
 	@property({ type: Boolean, reflect: true })
+	block = false;
+
+	@property({ type: Boolean, reflect: true })
 	trailingIcon = false;
 
 	protected renderIcon(): TemplateResult {
