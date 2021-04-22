@@ -29,7 +29,7 @@ $all-layouts: (
 }
 
 %soft {
-	#{$_prefix}background-color: var(#{color-connotation.$vvd-color-connotation-soft});
+	#{$_prefix}background-color: var(#{color-connotation.$vvd-color-connotation}-soft);
 	#{$_prefix}color: var(#{scheme-variables.$vvd-color-on-base});
 }
 

@@ -10,7 +10,7 @@ $connotations-decorative-set: predefined-connotations.$connotations-decorative-s
 	$selector: $selector
 );
 
-@forward 'color-connotation-shades.mixin' show connotations-shades, connotations-shades-default with (
+@forward 'color-connotation-shades.mixin' show connotations-shades with (
 	$connotations-set: $connotations-set,
 	$selector: $selector
 );
@@ -20,4 +20,4 @@ $connotations-decorative-set: predefined-connotations.$connotations-decorative-s
 	$selector: $selector
 );
 
-@forward 'variables' show $vvd-color-connotation, $vvd-color-on-connotation, $vvd-color-connotation-soft, $vvd-color-connotation-underemphasis;
+@forward 'variables' show $vvd-color-connotation, $vvd-color-on-connotation;
