@@ -31,19 +31,39 @@ describe('tab', () => {
 
 	it('should be disabled', async () => {
 		const actualElements = addElement(
-			textToDomToParent(
-				`<${COMPONENT_NAME} disabled label='Tab'></${COMPONENT_NAME}>`
-			)
+			textToDomToParent(`<${COMPONENT_NAME} disabled label="Tab"></${COMPONENT_NAME}>`)
 		);
 		await waitNextTask();
 		assertComputedStyle(actualElements[0], { pointerEvents: 'none' });
+	});
+
+	describe('sizing', () => {
+		it('should have normal size by default', async () => {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} label="Tab"></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+
+			const tab = actualElement.shadowRoot.querySelector('.mdc-tab');
+
+			assertComputedStyle(tab, { paddingLeft: '16px', paddingRight: '16px' });
+			assertComputedStyle(actualElement, { flexGrow: '0', flexShrink: '1', flexBasis: 'auto' });
+		});
+
+		it('should have block size when block', async () => {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} block label="Tab"></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			assertComputedStyle(actualElement, { flexGrow: '1', flexShrink: '1', flexBasis: '0%' });
+		});
 	});
 
 	describe('icon', () => {
 		it('should have leading icon by default', async () => {
 			const addedElements = addElement(
 				textToDomToParent(
-					`<${COMPONENT_NAME} icon='chat' label='Tab'></${COMPONENT_NAME}>`
+					`<${COMPONENT_NAME} icon="chat" label="Tab"></${COMPONENT_NAME}>`
 				)
 			);
 			const actualElement = addedElements[0];
@@ -57,7 +77,7 @@ describe('tab', () => {
 		it('should have trailing icon when trailingIcon', async () => {
 			const addedElements = addElement(
 				textToDomToParent(
-					`<${COMPONENT_NAME} icon='chat' trailingIcon label='Tab'></${COMPONENT_NAME}>`
+					`<${COMPONENT_NAME} icon="chat" trailingIcon label="Tab"></${COMPONENT_NAME}>`
 				)
 			);
 			const actualElement = addedElements[0];
