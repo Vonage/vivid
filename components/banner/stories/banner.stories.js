@@ -10,7 +10,7 @@ import { createTimeline, generateAsyncCallback, createUpdatableStory } from '@vo
 const REOPEN_BANNER_DELAY = 1500;
 
 export default {
-	title: 'Components/Beta/Banner',
+	title: 'Alpha/Components/Banner',
 	component: 'vwc-banner',
 	argTypes
 };
