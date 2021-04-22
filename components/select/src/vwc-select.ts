@@ -23,6 +23,8 @@ declare global {
 	}
 }
 
+const DROPDOWN_ICON_CLASS = 'vvd-select-dropdown-icon';
+
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 MWCSelect.styles = [styleCoupling, mwcSelectStyle, vwcSelectStyle];
@@ -113,10 +115,9 @@ export class VWCSelect extends MWCSelect {
 	}
 
 	private replaceDropDownIcon(): void {
-		const ddIconClass = 'mdc-select__dropdown-icon';
 		const chevronIcon = document.createElement('vwc-icon');
-		chevronIcon.classList.add(ddIconClass);
+		chevronIcon.classList.add(DROPDOWN_ICON_CLASS);
 		chevronIcon.setAttribute('type', 'down');
-		this.shadowRoot?.querySelector(`.${ddIconClass}`)?.replaceWith(chevronIcon);
+		this.shadowRoot?.querySelector('.mdc-select__dropdown-icon')?.replaceWith(chevronIcon);
 	}
 }

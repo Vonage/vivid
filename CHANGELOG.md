@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.1](https://github.com/Vonage/vivid/compare/v2.4.0...v2.4.1) (2021-04-21)
+
+
+### Bug Fixes
+
+* **vwc-slider:** issue [#789](https://github.com/Vonage/vivid/issues/789) fixing the slider miscalc when rendered in display none or resized ([#791](https://github.com/Vonage/vivid/issues/791)) ([75e3cc9](https://github.com/Vonage/vivid/commit/75e3cc9b9548b0fa4b0bd6bdef428a5f2791af12))
+
+
+
+
+
 # [2.4.0](https://github.com/Vonage/vivid/compare/v2.3.0...v2.4.0) (2021-04-19)
 
 
