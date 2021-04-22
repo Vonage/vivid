@@ -84,7 +84,7 @@ export class VWCPagination extends LitElement {
 
 	private renderPrev(): TemplateResult {
 		return html`
-			<span class="item prev" ?disabled="${this.prevDisabled}" @pointerup="${this.goPrev}">
+			<span class="item prev" ?disabled="${this.isPrevDisabled()}" @pointerup="${this.goPrev}">
 				<slot name="prev-control">
 				<span class="control"
 					@pointerdown="${this.handleRippleActivateControl}"
@@ -101,7 +101,7 @@ export class VWCPagination extends LitElement {
 	private renderNext(): TemplateResult {
 		return html`
 			<span
-			 	class="item next" ?disabled="${this.nextDisabled}" @pointerup="${this.goNext}">
+			 	class="item next" ?disabled="${this.isNextDisabled()}" @pointerup="${this.goNext}">
 				<slot name="next-control">
 					<span class="control"
 						@pointerdown="${this.handleRippleActivateControl}"
@@ -151,13 +151,13 @@ export class VWCPagination extends LitElement {
 	}
 
 	private goPrev(): void {
-		if (!this.prevDisabled) {
+		if (!this.isPrevDisabled()) {
 			this.selectedIndex -= 1;
 		}
 	}
 
 	private goNext(): void {
-		if (!this.nextDisabled) {
+		if (!this.isNextDisabled()) {
 			this.selectedIndex += 1;
 		}
 	}
@@ -175,13 +175,13 @@ export class VWCPagination extends LitElement {
 		});
 	}
 
-	private reflectControlsState() {
-		if (this.prevDisabled) {
+	private reflectControlsState(): void {
+		if (this.isPrevDisabled()) {
 			this.setAttribute(PREV_DISABLED_ATTR_NAME, '');
 		} else {
 			this.removeAttribute(PREV_DISABLED_ATTR_NAME);
 		}
-		if (this.nextDisabled) {
+		if (this.isNextDisabled()) {
 			this.setAttribute(NEXT_DISABLED_ATTR_NAME, '');
 		} else {
 			this.removeAttribute(NEXT_DISABLED_ATTR_NAME);
@@ -200,7 +200,7 @@ export class VWCPagination extends LitElement {
 		this.dispatchEvent(changeEvent);
 	}
 
-	private handleRippleActivatePage(e: PointerEvent) {
+	private handleRippleActivatePage(e: PointerEvent): void {
 		const ripple = (e.target as HTMLElement).querySelector('.ripple') as Ripple;
 		if (!ripple) {
 			return;
@@ -213,14 +213,14 @@ export class VWCPagination extends LitElement {
 		window.addEventListener('pointerup', onUp);
 		ripple.startPress(e);
 	}
-	private handleRippleDeactivatePage(e: PointerEvent) {
+	private handleRippleDeactivatePage(e: PointerEvent): void {
 		const ripple = (e.target as HTMLElement).querySelector('.ripple') as Ripple;
 		if (ripple) {
 			ripple.endPress();
 		}
 	}
 
-	private handleRippleActivateControl(e: PointerEvent) {
+	private handleRippleActivateControl(e: PointerEvent): void {
 		const ripple = (e.target as HTMLElement)
 			.closest('.item:not([disabled])')
 			?.querySelector('.ripple') as Ripple;
@@ -234,7 +234,7 @@ export class VWCPagination extends LitElement {
 			ripple.startPress(e);
 		}
 	}
-	private handleRippleDeactivateControl(e: PointerEvent) {
+	private handleRippleDeactivateControl(e: PointerEvent): void {
 		const ripple = (e.target as HTMLElement)
 			.closest('.item:not([disabled])')
 			?.querySelector('.ripple') as Ripple;
@@ -244,11 +244,11 @@ export class VWCPagination extends LitElement {
 		}
 	}
 
-	private get prevDisabled(): boolean {
+	private isPrevDisabled(): boolean {
 		return this.selectedIndex < 1;
 	}
 
-	private get nextDisabled(): boolean {
+	private isNextDisabled(): boolean {
 		return this.selectedIndex > this.total - 2;
 	}
 
