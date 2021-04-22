@@ -3,12 +3,17 @@
 
 :host {
 	--mdc-tab-height: 44px;
-	--mdc-tab-horizontal-padding: 24px;
+	--mdc-tab-horizontal-padding: 16px;
 	--mdc-tab-text-label-color-default: var(#{scheme-variables.$vvd-color-neutral-70});
 	flex: initial;
 }
 
+:host([block]) {
+	flex: 1;
+}
+
 .mdc-tab {
+	min-width: auto;
 	font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
 }
 
