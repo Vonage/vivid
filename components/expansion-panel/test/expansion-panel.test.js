@@ -147,4 +147,26 @@ describe('expansion panel', () => {
 			expect(getComputedStyle(body).display).to.equal('none');
 		});
 	});
+
+	describe('ripple', () => {
+		it('should have ripple by default', async () => {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+
+			const ripple = actualElement.shadowRoot.querySelector('mwc-ripple');
+			expect(ripple).to.exist;
+		});
+
+		it('should have no ripple when set to noRipple', async () => {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} noRipple></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+
+			const ripple = actualElement.shadowRoot.querySelector('mwc-ripple');
+			expect(ripple).to.not.exist;
+		});
+	});
 });

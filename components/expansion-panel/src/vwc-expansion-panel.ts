@@ -4,7 +4,6 @@ import {
 	customElement,
 	eventOptions,
 	html,
-	internalProperty,
 	property,
 	queryAsync,
 	TemplateResult
@@ -37,12 +36,12 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	@property({ type: Boolean, reflect: true })
 	trailingToggle = false;
 
+	@property({ type: Boolean, reflect: true })
+	noRipple = false;
+
 	@queryAsync('mwc-ripple') ripple!: Promise<Ripple>;
 
-	@internalProperty() protected shouldRenderRipple = false;
-
 	protected rippleHandlers = new RippleHandlers(() => {
-		this.shouldRenderRipple = true;
 		return this.ripple;
 	});
 
@@ -62,7 +61,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	}
 
 	protected renderRipple(): TemplateResult|string {
-		return this.shouldRenderRipple ? html`<mwc-ripple></mwc-ripple>` : '';
+		return !this.noRipple ? html`<mwc-ripple></mwc-ripple>` : '';
 	}
 
 	protected render(): TemplateResult {

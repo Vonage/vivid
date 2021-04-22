@@ -21,6 +21,12 @@ export const argTypes = {
 			type: 'text'
 		}
 	},
+	noRipple: {
+		control: {
+			type: 'inline-radio',
+			options: { 'true': '', 'false': undefined }
+		}
+	},
 	open: {
 		control: {
 			type: 'inline-radio',
