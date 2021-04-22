@@ -4,6 +4,7 @@ import {
 	customElement,
 	eventOptions,
 	html,
+	internalProperty,
 	property,
 	queryAsync,
 	TemplateResult
@@ -38,7 +39,10 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 
 	@queryAsync('mwc-ripple') ripple!: Promise<Ripple>;
 
+	@internalProperty() protected shouldRenderRipple = false;
+
 	protected rippleHandlers = new RippleHandlers(() => {
+		this.shouldRenderRipple = true;
 		return this.ripple;
 	});
 
@@ -57,11 +61,13 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 		this.toggleAttribute('open', isOpen);
 	}
 
+	protected renderRipple(): TemplateResult|string {
+		return this.shouldRenderRipple ? html`<mwc-ripple></mwc-ripple>` : '';
+	}
+
 	protected render(): TemplateResult {
 		return html`<div class="expansion-panel">
 			<div class="expansion-panel-header"
-				@focus="${this.handleRippleFocus}"
-				@blur="${this.handleRippleBlur}"
 				@mousedown="${this.handleRippleActivate}"
 				@mouseenter="${this.handleRippleMouseEnter}"
 				@mouseleave="${this.handleRippleMouseLeave}"
@@ -69,7 +75,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 				@touchend="${this.handleRippleDeactivate}"
 				@touchcancel="${this.handleRippleDeactivate}"
 			>
-				<mwc-ripple class="ripple"></mwc-ripple>
+				${this.renderRipple()}
 				<span class="leading-icon">
 					<slot name="icon">
 						${this.icon || !this.trailingToggle ? this.renderIconOrToggle() : ''}
@@ -133,13 +139,5 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 
 	private handleRippleMouseLeave() {
 		this.rippleHandlers.endHover();
-	}
-
-	private handleRippleFocus() {
-		this.rippleHandlers.startFocus();
-	}
-
-	private handleRippleBlur() {
-		this.rippleHandlers.endFocus();
 	}
 }
