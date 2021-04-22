@@ -5,7 +5,7 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types-tab.js';
 
 export default {
-  title: 'Components/Atoms/Tab',
+  title: 'Components/Tab',
   component: 'vwc-tab',
   argTypes
 };
@@ -19,6 +19,9 @@ const Template = args => html`
 
 export const Basic = Template.bind({});
 Basic.args = { label: 'Tab' }
+
+export const Block = Template.bind({});
+Block.args = { label: 'Tab', block: '' }
 
 export const WithIcon = Template.bind({});
 WithIcon.args = { label: 'Tab', icon: 'chat' }

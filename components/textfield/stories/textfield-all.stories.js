@@ -3,7 +3,7 @@ import '@vonage/vwc-list';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Components/Atoms/Textfield',
+	title: 'Components/Textfield',
 	component: 'vwc-textfield',
 	argTypes
 };

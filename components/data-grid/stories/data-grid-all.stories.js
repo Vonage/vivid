@@ -1,7 +1,7 @@
 import { argTypes } from './arg-types';
 
 export default {
-	title: 'Components/Beta/DataGrid',
+	title: 'Alpha/Components/DataGrid',
 	component: 'vwc-data-grid',
 	argTypes
 }

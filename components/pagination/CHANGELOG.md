@@ -1,0 +1,22 @@
+# [2.5.0](https://github.com/vonage/vivid/compare/v2.4.1...v2.5.0) (2021-04-22)
+
+
+### Bug Fixes
+
+* **vwc-pagination:** iss 793 viv 511 pagination UI fixes ([#794](https://github.com/vonage/vivid/issues/794)) ([94e388f](https://github.com/vonage/vivid/commit/94e388f9f4891af1ecf4ebcdc7c0ba2562fbcbdb)), closes [#793](https://github.com/vonage/vivid/issues/793) [#793](https://github.com/vonage/vivid/issues/793) [#793](https://github.com/vonage/vivid/issues/793) [#793](https://github.com/vonage/vivid/issues/793) [#793](https://github.com/vonage/vivid/issues/793) [#793](https://github.com/vonage/vivid/issues/793)
+
+
+
+## [2.4.1](https://github.com/vonage/vivid/compare/v2.4.0...v2.4.1) (2021-04-21)
+
+
+
+# [2.4.0](https://github.com/vonage/vivid/compare/v2.3.0...v2.4.0) (2021-04-19)
+
+
+### Features
+
+* **pagination:** iss 747 viv 392 pagination ([#759](https://github.com/vonage/vivid/issues/759)) ([9b35300](https://github.com/vonage/vivid/commit/9b35300baff80dcc3c2412f92628a4d92814f774)), closes [#747](https://github.com/vonage/vivid/issues/747) [#747](https://github.com/vonage/vivid/issues/747) [#747](https://github.com/vonage/vivid/issues/747) [#747](https://github.com/vonage/vivid/issues/747) [#747](https://github.com/vonage/vivid/issues/747) [#747](https://github.com/vonage/vivid/issues/747) [#747](https://github.com/vonage/vivid/issues/747) [#747](https://github.com/vonage/vivid/issues/747) [#747](https://github.com/vonage/vivid/issues/747) [#747](https://github.com/vonage/vivid/issues/747) [#747](https://github.com/vonage/vivid/issues/747) [#747](https://github.com/vonage/vivid/issues/747) [#747](https://github.com/vonage/vivid/issues/747) [#747](https://github.com/vonage/vivid/issues/747) [#747](https://github.com/vonage/vivid/issues/747) [#747](https://github.com/vonage/vivid/issues/747) [#747](https://github.com/vonage/vivid/issues/747) [#747](https://github.com/vonage/vivid/issues/747)
+
+
+
