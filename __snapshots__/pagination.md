@@ -7,7 +7,6 @@
   <span
     class="item prev"
     disabled=""
-    part="control prev"
   >
     <slot name="prev-control">
       <span class="control">
@@ -27,7 +26,6 @@
   <span
     class="item next"
     disabled=""
-    part="control next"
   >
     <slot name="next-control">
       <span class="control">

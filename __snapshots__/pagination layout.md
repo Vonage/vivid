@@ -7,7 +7,6 @@
   <span
     class="item prev"
     disabled=""
-    part="control prev"
   >
     <slot name="prev-control">
       <span class="control">
@@ -27,7 +26,6 @@
   <span
     class="item next"
     disabled=""
-    part="control next"
   >
     <slot name="next-control">
       <span class="control">
@@ -53,7 +51,6 @@
   <span
     class="item prev"
     disabled=""
-    part="control prev"
   >
     <slot name="prev-control">
       <span class="control">
@@ -82,7 +79,6 @@
   <span
     class="item next"
     disabled=""
-    part="control next"
   >
     <slot name="next-control">
       <span class="control">
@@ -108,7 +104,6 @@
   <span
     class="item prev"
     disabled=""
-    part="control prev"
   >
     <slot name="prev-control">
       <span class="control">
@@ -142,10 +137,7 @@
       2
     </span>
   </div>
-  <span
-    class="item next"
-    part="control next"
-  >
+  <span class="item next">
     <slot name="next-control">
       <span class="control">
         <mwc-ripple class="ripple">
@@ -170,7 +162,6 @@
   <span
     class="item prev"
     disabled=""
-    part="control prev"
   >
     <slot name="prev-control">
       <span class="control">
@@ -212,10 +203,7 @@
       3
     </span>
   </div>
-  <span
-    class="item next"
-    part="control next"
-  >
+  <span class="item next">
     <slot name="next-control">
       <span class="control">
         <mwc-ripple class="ripple">
@@ -240,7 +228,6 @@
   <span
     class="item prev"
     disabled=""
-    part="control prev"
   >
     <slot name="prev-control">
       <span class="control">
@@ -290,10 +277,7 @@
       4
     </span>
   </div>
-  <span
-    class="item next"
-    part="control next"
-  >
+  <span class="item next">
     <slot name="next-control">
       <span class="control">
         <mwc-ripple class="ripple">
@@ -318,7 +302,6 @@
   <span
     class="item prev"
     disabled=""
-    part="control prev"
   >
     <slot name="prev-control">
       <span class="control">
@@ -376,10 +359,7 @@
       5
     </span>
   </div>
-  <span
-    class="item next"
-    part="control next"
-  >
+  <span class="item next">
     <slot name="next-control">
       <span class="control">
         <mwc-ripple class="ripple">
@@ -404,7 +384,6 @@
   <span
     class="item prev"
     disabled=""
-    part="control prev"
   >
     <slot name="prev-control">
       <span class="control">
@@ -424,7 +403,6 @@
   <span
     class="item next"
     disabled=""
-    part="control next"
   >
     <slot name="next-control">
       <span class="control">
@@ -447,10 +425,7 @@
 
 ```html
 <div class="all container">
-  <span
-    class="item prev"
-    part="control prev"
-  >
+  <span class="item prev">
     <slot name="prev-control">
       <span class="control">
         <mwc-ripple class="ripple">
@@ -486,7 +461,6 @@
   <span
     class="item next"
     disabled=""
-    part="control next"
   >
     <slot name="next-control">
       <span class="control">
@@ -509,10 +483,7 @@
 
 ```html
 <div class="all container">
-  <span
-    class="item prev"
-    part="control prev"
-  >
+  <span class="item prev">
     <slot name="prev-control">
       <span class="control">
         <mwc-ripple class="ripple">
@@ -556,7 +527,6 @@
   <span
     class="item next"
     disabled=""
-    part="control next"
   >
     <slot name="next-control">
       <span class="control">
@@ -579,10 +549,7 @@
 
 ```html
 <div class="all container">
-  <span
-    class="item prev"
-    part="control prev"
-  >
+  <span class="item prev">
     <slot name="prev-control">
       <span class="control">
         <mwc-ripple class="ripple">
@@ -634,7 +601,6 @@
   <span
     class="item next"
     disabled=""
-    part="control next"
   >
     <slot name="next-control">
       <span class="control">
@@ -657,10 +623,7 @@
 
 ```html
 <div class="all container">
-  <span
-    class="item prev"
-    part="control prev"
-  >
+  <span class="item prev">
     <slot name="prev-control">
       <span class="control">
         <mwc-ripple class="ripple">
@@ -720,7 +683,6 @@
   <span
     class="item next"
     disabled=""
-    part="control next"
   >
     <slot name="next-control">
       <span class="control">
@@ -746,7 +708,6 @@
   <span
     class="item prev"
     disabled=""
-    part="control prev"
   >
     <slot name="prev-control">
       <span class="control">
@@ -815,10 +776,7 @@
       10
     </span>
   </div>
-  <span
-    class="item next"
-    part="control next"
-  >
+  <span class="item next">
     <slot name="next-control">
       <span class="control">
         <mwc-ripple class="ripple">
@@ -840,10 +798,7 @@
 
 ```html
 <div class="all container">
-  <span
-    class="item prev"
-    part="control prev"
-  >
+  <span class="item prev">
     <slot name="prev-control">
       <span class="control">
         <mwc-ripple class="ripple">
@@ -911,10 +866,7 @@
       10
     </span>
   </div>
-  <span
-    class="item next"
-    part="control next"
-  >
+  <span class="item next">
     <slot name="next-control">
       <span class="control">
         <mwc-ripple class="ripple">
@@ -936,10 +888,7 @@
 
 ```html
 <div class="all container">
-  <span
-    class="item prev"
-    part="control prev"
-  >
+  <span class="item prev">
     <slot name="prev-control">
       <span class="control">
         <mwc-ripple class="ripple">
@@ -1007,10 +956,7 @@
       10
     </span>
   </div>
-  <span
-    class="item next"
-    part="control next"
-  >
+  <span class="item next">
     <slot name="next-control">
       <span class="control">
         <mwc-ripple class="ripple">
@@ -1032,10 +978,7 @@
 
 ```html
 <div class="all container">
-  <span
-    class="item prev"
-    part="control prev"
-  >
+  <span class="item prev">
     <slot name="prev-control">
       <span class="control">
         <mwc-ripple class="ripple">
@@ -1103,10 +1046,7 @@
       10
     </span>
   </div>
-  <span
-    class="item next"
-    part="control next"
-  >
+  <span class="item next">
     <slot name="next-control">
       <span class="control">
         <mwc-ripple class="ripple">
@@ -1128,10 +1068,7 @@
 
 ```html
 <div class="all container">
-  <span
-    class="item prev"
-    part="control prev"
-  >
+  <span class="item prev">
     <slot name="prev-control">
       <span class="control">
         <mwc-ripple class="ripple">
@@ -1194,10 +1131,7 @@
       10
     </span>
   </div>
-  <span
-    class="item next"
-    part="control next"
-  >
+  <span class="item next">
     <slot name="next-control">
       <span class="control">
         <mwc-ripple class="ripple">
@@ -1219,10 +1153,7 @@
 
 ```html
 <div class="all container">
-  <span
-    class="item prev"
-    part="control prev"
-  >
+  <span class="item prev">
     <slot name="prev-control">
       <span class="control">
         <mwc-ripple class="ripple">
@@ -1285,10 +1216,7 @@
       10
     </span>
   </div>
-  <span
-    class="item next"
-    part="control next"
-  >
+  <span class="item next">
     <slot name="next-control">
       <span class="control">
         <mwc-ripple class="ripple">
@@ -1310,10 +1238,7 @@
 
 ```html
 <div class="all container">
-  <span
-    class="item prev"
-    part="control prev"
-  >
+  <span class="item prev">
     <slot name="prev-control">
       <span class="control">
         <mwc-ripple class="ripple">
@@ -1381,10 +1306,7 @@
       10
     </span>
   </div>
-  <span
-    class="item next"
-    part="control next"
-  >
+  <span class="item next">
     <slot name="next-control">
       <span class="control">
         <mwc-ripple class="ripple">
@@ -1406,10 +1328,7 @@
 
 ```html
 <div class="all container">
-  <span
-    class="item prev"
-    part="control prev"
-  >
+  <span class="item prev">
     <slot name="prev-control">
       <span class="control">
         <mwc-ripple class="ripple">
@@ -1477,10 +1396,7 @@
       10
     </span>
   </div>
-  <span
-    class="item next"
-    part="control next"
-  >
+  <span class="item next">
     <slot name="next-control">
       <span class="control">
         <mwc-ripple class="ripple">
@@ -1502,10 +1418,7 @@
 
 ```html
 <div class="all container">
-  <span
-    class="item prev"
-    part="control prev"
-  >
+  <span class="item prev">
     <slot name="prev-control">
       <span class="control">
         <mwc-ripple class="ripple">
@@ -1573,10 +1486,7 @@
       10
     </span>
   </div>
-  <span
-    class="item next"
-    part="control next"
-  >
+  <span class="item next">
     <slot name="next-control">
       <span class="control">
         <mwc-ripple class="ripple">
@@ -1598,10 +1508,7 @@
 
 ```html
 <div class="all container">
-  <span
-    class="item prev"
-    part="control prev"
-  >
+  <span class="item prev">
     <slot name="prev-control">
       <span class="control">
         <mwc-ripple class="ripple">
@@ -1672,7 +1579,6 @@
   <span
     class="item next"
     disabled=""
-    part="control next"
   >
     <slot name="next-control">
       <span class="control">
