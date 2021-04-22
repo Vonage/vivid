@@ -5,7 +5,7 @@ import { argTypes } from './arg-types';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import noop from 'lodash/fp/noop';
 import pipe from 'lodash/fp/pipe';
-import { createTimeline, generateAsyncCallback, createUpdatableStory } from '@vonage/vvd-umbrella/libs/storybook_tools';
+import { createTimeline, createUpdatableStory } from '@vonage/vvd-umbrella/libs/storybook_tools';
 
 const REOPEN_BANNER_DELAY = 1500;
 
