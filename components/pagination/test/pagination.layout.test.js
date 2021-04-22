@@ -1,4 +1,4 @@
-import { COMPONENT_NAME } from '@vonage/vwc-pagination';
+import { COMPONENT_NAME, PREV_DISABLED_ATTR_NAME, NEXT_DISABLED_ATTR_NAME } from '@vonage/vwc-pagination';
 import {
 	waitNextTask,
 	textToDomToParent,
@@ -50,8 +50,8 @@ describe('pagination layout', () => {
 			);
 			await waitNextTask();
 			expect(pagination.shadowRoot.innerHTML).to.equalSnapshot();
-			expect(pagination.hasAttribute('prev-disabled')).equal(pagination.selectedIndex === 0);
-			expect(pagination.hasAttribute('next-disabled')).equal(pagination.selectedIndex === 9);
+			expect(pagination.hasAttribute(PREV_DISABLED_ATTR_NAME)).equal(pagination.selectedIndex === 0);
+			expect(pagination.hasAttribute(NEXT_DISABLED_ATTR_NAME)).equal(pagination.selectedIndex === 9);
 		});
 	}
 

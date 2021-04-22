@@ -9,8 +9,8 @@ import { style } from './vwc-pagination.css';
 import { html, TemplateResult } from 'lit-element';
 
 export const COMPONENT_NAME = 'vwc-pagination';
-const PREV_DISABLED_ATTR_NAME = 'prev-disabled';
-const NEXT_DISABLED_ATTR_NAME = 'next-disabled';
+export const PREV_DISABLED_ATTR_NAME = 'prev-disabled';
+export const NEXT_DISABLED_ATTR_NAME = 'next-disabled';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -38,6 +38,7 @@ export class VWCPagination extends LitElement {
 	connectedCallback() {
 		super.connectedCallback();
 		this.setupPointerListeners();
+		this.reflectControlsState();
 	}
 
 	protected updated(changes: PropertyValues): void {
@@ -83,7 +84,7 @@ export class VWCPagination extends LitElement {
 
 	private renderPrev(): TemplateResult {
 		return html`
-			<span class="item prev" part="control prev" ?disabled="${this.prevDisabled}" @pointerup="${this.goPrev}">
+			<span class="item prev" ?disabled="${this.prevDisabled}" @pointerup="${this.goPrev}">
 				<slot name="prev-control">
 				<span class="control"
 					@pointerdown="${this.handleRippleActivateControl}"
@@ -100,7 +101,7 @@ export class VWCPagination extends LitElement {
 	private renderNext(): TemplateResult {
 		return html`
 			<span
-			 	class="item next" part="control next" ?disabled="${this.nextDisabled}" @pointerup="${this.goNext}">
+			 	class="item next" ?disabled="${this.nextDisabled}" @pointerup="${this.goNext}">
 				<slot name="next-control">
 					<span class="control"
 						@pointerdown="${this.handleRippleActivateControl}"
@@ -162,7 +163,7 @@ export class VWCPagination extends LitElement {
 	}
 
 	private goTo(index: number): void {
-		this.selectedIndex = index;
+		this.selectedIndex = Math.max(0, Math.min(this.total - 1, index));
 	}
 
 	private setupPointerListeners(): void {
