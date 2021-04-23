@@ -1,3 +1,16 @@
+# [2.5.0](https://github.com/vonage/vivid/compare/v2.4.1...v2.5.0) (2021-04-22)
+
+
+### Features
+
+* **tab:** add dense and left support ([#780](https://github.com/vonage/vivid/issues/780)) ([d0acd62](https://github.com/vonage/vivid/commit/d0acd620ef30c389fe7f45205a6ab51fdb2871e7))
+
+
+
+## [2.4.1](https://github.com/vonage/vivid/compare/v2.4.0...v2.4.1) (2021-04-21)
+
+
+
 # [2.4.0](https://github.com/vonage/vivid/compare/v2.3.0...v2.4.0) (2021-04-19)
 
 

@@ -78,6 +78,26 @@ describe('select', () => {
 			expect(dropDownIcon).exist;
 			assertComputedStyle(dropDownIcon, iconsLayoutExpectation);
 		});
+
+		it('should have label colored as expected (regular valid)', async () => {
+			const [select] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} label="Label"></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			const label = select.shadowRoot.querySelector('.mdc-floating-label');
+			assertComputedStyle(label, { color: 'rgb(102,102,102)' });
+		});
+
+		it('should have label colored as expected (regular invalid)', async () => {
+			const [select] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} label="Label" required></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			select.reportValidity();
+			await waitNextTask();
+			const label = select.shadowRoot.querySelector('.mdc-floating-label');
+			assertComputedStyle(label, { color: 'rgb(230,29,29)' });
+		});
 	});
 
 	describe(`form association`, function () {
@@ -383,21 +403,41 @@ describe('select', () => {
 		});
 
 		it('should have 16px space between edge and the selection', async () => {
-			const [e] = addElement(
+			const [select] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
 			await waitNextTask();
-			const i = e.shadowRoot.querySelector('.mdc-select__selected-text');
-			assertDistancePixels(e, i, 'left', 16);
+			const i = select.shadowRoot.querySelector('.mdc-select__selected-text');
+			assertDistancePixels(select, i, 'left', 16);
 		});
 
 		it('should have 16px space between edge and the label', async () => {
-			const [e] = addElement(
+			const [select] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} label="Label"></${COMPONENT_NAME}>`)
 			);
 			await waitNextTask();
-			const l = e.shadowRoot.querySelector('.mdc-floating-label');
-			assertDistancePixels(e, l, 'left', 16);
+			const label = select.shadowRoot.querySelector('.mdc-floating-label');
+			assertDistancePixels(select, label, 'left', 16);
+		});
+
+		it('should have label colored as expected (dense valid)', async () => {
+			const [select] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} label="Label" dense></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			const label = select.shadowRoot.querySelector('.mdc-floating-label');
+			assertComputedStyle(label, { color: 'rgb(0,0,0)' });
+		});
+
+		it('should have label colored as expected (dense invalid)', async () => {
+			const [select] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} label="Label" dense required></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			select.reportValidity();
+			await waitNextTask();
+			const label = select.shadowRoot.querySelector('.mdc-floating-label');
+			assertComputedStyle(label, { color: 'rgb(0,0,0)' });
 		});
 	});
 

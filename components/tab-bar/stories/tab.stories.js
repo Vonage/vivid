@@ -20,6 +20,9 @@ const Template = args => html`
 export const Basic = Template.bind({});
 Basic.args = { label: 'Tab' }
 
+export const Block = Template.bind({});
+Block.args = { label: 'Tab', block: '' }
+
 export const WithIcon = Template.bind({});
 WithIcon.args = { label: 'Tab', icon: 'chat' }
 
