@@ -19,8 +19,6 @@ describe('datepicker a11y', () => {
 		);
 		await waitNextTask();
 
-		await expect(actualElement).shadowDom.to.be.accessible({
-			ignoredRules: ['color-contrast'],
-		});
+		await expect(actualElement).shadowDom.to.be.accessible();
 	});
 });

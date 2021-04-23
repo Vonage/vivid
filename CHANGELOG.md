@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/Vonage/vivid/compare/v2.4.1...v2.5.0) (2021-04-22)
+
+
+### Bug Fixes
+
+* **vwc-pagination:** iss 793 viv 511 pagination UI fixes ([#794](https://github.com/Vonage/vivid/issues/794)) ([94e388f](https://github.com/Vonage/vivid/commit/94e388f9f4891af1ecf4ebcdc7c0ba2562fbcbdb)), closes [#793](https://github.com/Vonage/vivid/issues/793) [#793](https://github.com/Vonage/vivid/issues/793) [#793](https://github.com/Vonage/vivid/issues/793) [#793](https://github.com/Vonage/vivid/issues/793) [#793](https://github.com/Vonage/vivid/issues/793) [#793](https://github.com/Vonage/vivid/issues/793)
+* **vwc-select:** fixing the label color in dense mode ([#795](https://github.com/Vonage/vivid/issues/795)) ([a4a99cb](https://github.com/Vonage/vivid/commit/a4a99cb72ca542f216a851a7cd90f5f5ea105edd))
+
+
+### Features
+
+* **tab:** add dense and left support ([#780](https://github.com/Vonage/vivid/issues/780)) ([d0acd62](https://github.com/Vonage/vivid/commit/d0acd620ef30c389fe7f45205a6ab51fdb2871e7))
+
+
+
+
+
+## [2.4.1](https://github.com/Vonage/vivid/compare/v2.4.0...v2.4.1) (2021-04-21)
+
+
+### Bug Fixes
+
+* **vwc-slider:** issue [#789](https://github.com/Vonage/vivid/issues/789) fixing the slider miscalc when rendered in display none or resized ([#791](https://github.com/Vonage/vivid/issues/791)) ([75e3cc9](https://github.com/Vonage/vivid/commit/75e3cc9b9548b0fa4b0bd6bdef428a5f2791af12))
+
+
+
+
+
 # [2.4.0](https://github.com/Vonage/vivid/compare/v2.3.0...v2.4.0) (2021-04-19)
 
 
