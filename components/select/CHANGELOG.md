@@ -1,3 +1,12 @@
+# [2.5.0](https://github.com/vonage/vivid/compare/v2.4.1...v2.5.0) (2021-04-22)
+
+
+### Bug Fixes
+
+* **vwc-select:** fixing the label color in dense mode ([#795](https://github.com/vonage/vivid/issues/795)) ([a4a99cb](https://github.com/vonage/vivid/commit/a4a99cb72ca542f216a851a7cd90f5f5ea105edd))
+
+
+
 ## [2.4.1](https://github.com/vonage/vivid/compare/v2.4.0...v2.4.1) (2021-04-21)
 
 

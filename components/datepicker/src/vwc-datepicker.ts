@@ -130,6 +130,8 @@ export class VWCDatepicker extends LitFlatpickr {
 			this._instance.altInput.classList.add('vvd-datepicker-alt-input');
 		}
 		this._instance?.mobileInput?.setAttribute('slot', 'formInputElement');
+
+		this.disablePrevMonthDays();
 	}
 
 	private changeHandler(): void {
@@ -387,6 +389,13 @@ export class VWCDatepicker extends LitFlatpickr {
 				);
 			});
 		}
+	}
+
+	private disablePrevMonthDays(): void {
+		const prevMonthDays = this._instance?.calendarContainer.querySelectorAll('.prevMonthDay');
+		prevMonthDays?.forEach((day) => {
+			day.setAttribute('aria-disabled', 'true');
+		});
 	}
 
 	// copied from lit-flatpickr
