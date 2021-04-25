@@ -1,9 +1,11 @@
+import { DataGrid } from '../vwc-data-grid-api';
 import { DataGridColumn } from '../vwc-data-grid-column-api';
-import { DataRenderer, MetaRenderer } from '../vwc-data-grid-renderer-api';
+import { MetaRenderer, DataRenderer, RowDetailsRenderer } from '../vwc-data-grid-renderer-api';
 
 export {
 	MetaRendererProvider,
-	DataRendererProvider
+	DataRendererProvider,
+	RowDetailsRendererProvider
 };
 
 interface MetaRendererProvider {
@@ -12,4 +14,8 @@ interface MetaRendererProvider {
 
 interface DataRendererProvider {
 	(column: DataGridColumn): DataRenderer | undefined;
+}
+
+interface RowDetailsRendererProvider {
+	(grid: DataGrid): RowDetailsRenderer | undefined;
 }

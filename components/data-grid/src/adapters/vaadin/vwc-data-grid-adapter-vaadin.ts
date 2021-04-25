@@ -6,10 +6,11 @@ import '../../headers/vwc-data-grid-header';
 import { DataGrid, GRID_COMPONENT } from '../../vwc-data-grid-api';
 import { DataGridColumn } from '../../vwc-data-grid-column-api';
 import { DataGridAdapter } from '../vwc-data-grid-adapter-api';
-import { DataRendererProvider, MetaRendererProvider } from '../vwc-data-grid-render-provider-api';
+import { MetaRendererProvider, DataRendererProvider, RowDetailsRendererProvider } from '../vwc-data-grid-render-provider-api';
 import { headerRendererProvider } from './vwc-renderer-provider-header-vaadin';
 import { footerRendererProvider } from './vwc-renderer-provider-footer-vaadin';
 import { cellRendererProvider } from './vwc-renderer-provider-cell-vaadin';
+import { rowDetailsRendererProvider } from './vwc-renderer-provider-row-details-vaadin';
 import { style as vwcDataGridStyleVaadin } from './vwc-data-grid-adapter-vaadin.css';
 import { CSSResult, html, TemplateResult } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
@@ -24,6 +25,10 @@ interface VaadinMetaRenderer {
 
 interface VaadinDataRenderer {
 	(container: HTMLElement, column: GridColumnElement, data: { item: unknown, selected: boolean }): void;
+}
+
+interface VaadinRowDetailsRenderer {
+	(container: HTMLElement, grid: GridElement, data: { item: unknown, selected: boolean }): void;
 }
 
 /**
@@ -56,7 +61,7 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 				theme="no-border"
 				?multi-sort="${this.#vwcGrid.multiSort}"
 				?column-reordering-allowed="${this.#vwcGrid.reordering}"
-				.rowDetailsRenderer="${this.#vwcGrid.rowDetailsRenderer}"
+				.rowDetailsRenderer="${this.adaptRowDetailsRenderer(rowDetailsRendererProvider, this.#vwcGrid)}"
 				.items="${_items}"
 				.dataProvider="${_dataProvider}"
 			>
@@ -183,6 +188,18 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 			renderer(container, {
 				grid: grid,
 				column: grid.columns[vvdColumnIndex]
+			}, data);
+		};
+	}
+
+	private adaptRowDetailsRenderer(rendererProvider: RowDetailsRendererProvider, grid: DataGrid): VaadinRowDetailsRenderer | undefined {
+		const renderer = rendererProvider(grid);
+		if (!renderer) {
+			return;
+		}
+		return (container: HTMLElement, _grid: GridElement, data: { item: unknown, selected: boolean }): void => {
+			renderer(container, {
+				grid: grid
 			}, data);
 		};
 	}
