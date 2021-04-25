@@ -10,7 +10,7 @@ import {
 	COLUMN_DEFINITION_UPDATE_EVENT,
 	DataGridColumn,
 } from './vwc-data-grid-column-api';
-import { DataRenderer } from './vwc-data-grid-renderer-api';
+import { RowDetailsRenderer } from './vwc-data-grid-renderer-api';
 import {
 	VWCDataGridColumn
 } from './vwc-data-grid-column';
@@ -55,7 +55,7 @@ export class VWCDataGrid extends LitElement implements DataGrid {
 	@property({ type: Array, reflect: false })
 	columns: DataGridColumn[] = [];
 	@property({ reflect: false, attribute: false })
-	rowDetailsRenderer?: DataRenderer | undefined = undefined;
+	rowDetailsRenderer?: RowDetailsRenderer | undefined = undefined;
 
 	@property({ type: Array, reflect: false })
 	items: unknown[] | undefined = undefined;
