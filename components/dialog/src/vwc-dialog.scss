@@ -1,5 +1,6 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
+@use "sass:color";
 
 #title,
 #content,
@@ -44,5 +45,10 @@
 
 .mdc-dialog__title::before {
 	height: 0;
+}
+
+.mdc-dialog .mdc-dialog__scrim {
+	--mdc-dialog-scrim-color: var(#{scheme-variables.$vvd-color-neutral});
+	opacity: 0.32;
 }
 
