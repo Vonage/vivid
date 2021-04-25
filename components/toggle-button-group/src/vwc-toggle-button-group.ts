@@ -44,6 +44,20 @@ export class VwcToggleButtonGroup extends LitElement {
 	})
 	multi = false;
 
+	@property({
+		attribute: 'enlarged',
+		type: Boolean,
+		reflect: true
+	})
+	enlarged = false;
+
+	@property({
+		attribute: 'dense',
+		type: Boolean,
+		reflect: true
+	})
+	dense = false;
+
 	constructor() {
 		super();
 		this.setNodesAndClickEvents(this.items);
@@ -79,6 +93,30 @@ export class VwcToggleButtonGroup extends LitElement {
 		});
 	}
 
+	private get size() {
+		return {
+			dense: this.hasAttribute('dense'),
+			enlarged: this.hasAttribute('enlarged'),
+			noSize: !this.hasAttribute('dense') && !this.hasAttribute('enlarged')
+		};
+	}
+
+	protected updated(changes: Map<string, boolean>): void {
+		if (changes.has('dense')) {
+			if (this.dense && this.enlarged) {
+				this.enlarged = false;
+			}
+			this.updateComplete.then(() => this.#_items?.forEach(buttonElement => this.setVwcButtonSize(buttonElement)));
+		}
+
+		if (changes.has('enlarged')) {
+			if (this.enlarged && this.dense) {
+				this.dense = false;
+			}
+			this.updateComplete.then(() => this.#_items?.forEach(buttonElement => this.setVwcButtonSize(buttonElement)));
+		}
+	}
+
 	protected firstUpdated(_changedProperties: PropertyValues): void {
 		super.firstUpdated(_changedProperties);
 		const slot = this.shadowRoot?.querySelector('slot') as HTMLSlotElement;
@@ -98,6 +136,8 @@ export class VwcToggleButtonGroup extends LitElement {
 
 	private setNodesAndClickEvents(nodes: Element[]) {
 		nodes.forEach((buttonElement) => {
+			this.setVwcButtonSize(buttonElement);
+
 			buttonElement.setAttribute('layout', 'filled');
 			buttonElement.setAttribute(GROUP_BUTTON_ATTRIBUTE, '');
 			buttonElement.addEventListener('click', () => {
@@ -108,6 +148,25 @@ export class VwcToggleButtonGroup extends LitElement {
 				this.dispatchToggleEvent();
 			});
 		});
+	}
+
+	private setVwcButtonSize(buttonElement: Element) {
+		const size = this.size;
+
+		if (size.dense) {
+			buttonElement.setAttribute('dense', '');
+			buttonElement.removeAttribute('enlarged');
+		}
+
+		if (size.enlarged) {
+			buttonElement.setAttribute('enlarged', '');
+			buttonElement.removeAttribute('dense');
+		}
+
+		if (size.noSize) {
+			buttonElement.removeAttribute('dense');
+			buttonElement.removeAttribute('enlarged');
+		}
 	}
 
 	private clearSelection(buttonElement?: Element) {

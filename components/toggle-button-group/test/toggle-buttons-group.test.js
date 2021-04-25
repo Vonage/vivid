@@ -14,7 +14,7 @@ const COMPONENT_NAME = 'vwc-toggle-button-group';
 const SELECTED_EVENT_NAME = 'selected';
 const GROUP_BUTTON_ATTRIBUTE = 'group-button';
 
-describe.only('Toggle-buttons-group', () => {
+describe('Toggle-buttons-group', () => {
 	const buttonValues = [
 		Math.random()
 			.toString(),
@@ -43,7 +43,7 @@ describe.only('Toggle-buttons-group', () => {
 	});
 
 	it(`should add group-button attr to group buttons`, function () {
-		const [actualElement] = (
+		const [actualElement] = addElement(
 			textToDomToParent(`<${COMPONENT_NAME}>
 <${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 <${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
@@ -113,7 +113,9 @@ describe.only('Toggle-buttons-group', () => {
 </${COMPONENT_NAME}>`)
 		);
 
-		[...actualElement.children].forEach(childNode => expect(childNode.getAttribute('layout')).to.equal('filled'));
+		[...actualElement.children].forEach(childNode => expect(childNode.getAttribute('layout'))
+			.to
+			.equal('filled'));
 	});
 
 	describe(`selected`, function () {
@@ -316,6 +318,104 @@ describe.only('Toggle-buttons-group', () => {
 	});
 
 	describe(`size`, function () {
+		it(`should set every button size to dense if dense is set`, function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} dense>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[0]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[1]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+</${COMPONENT_NAME}>`)
+			);
 
+			[...actualElement.children].forEach(childNode => expect(childNode.hasAttribute('dense'))
+				.to
+				.equal(true));
+		});
+
+		it(`should set every button size to enlaeged if enlarged is set`, function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} enlarged>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[0]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[1]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+</${COMPONENT_NAME}>`)
+			);
+
+			[...actualElement.children].forEach(childNode => expect(childNode.hasAttribute('enlarged'))
+				.to
+				.equal(true));
+		});
+
+		it(`should remove enlarged and dense if none is declared`, function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[0]}" enlarged>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[1]}" dense>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[2]}" enlarged>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+</${COMPONENT_NAME}>`)
+			);
+
+			[...actualElement.children].forEach(childNode => expect(childNode.hasAttribute('enlarged'))
+				.to
+				.equal(false));
+
+			[...actualElement.children].forEach(childNode => expect(childNode.hasAttribute('dense'))
+				.to
+				.equal(false));
+		});
+
+		it(`should remove enlarged if dense is declared`, function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} dense>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[0]}" enlarged>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[1]}" dense>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[2]}" >BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+</${COMPONENT_NAME}>`)
+			);
+
+			[...actualElement.children].forEach(childNode => expect(childNode.hasAttribute('enlarged'))
+				.to
+				.equal(false));
+
+			[...actualElement.children].forEach(childNode => expect(childNode.hasAttribute('dense'))
+				.to
+				.equal(true));
+		});
+
+		it(`should remove dense if enlarged is declared`, function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} dense>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[0]}" enlarged>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[1]}" dense>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[2]}" >BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+</${COMPONENT_NAME}>`)
+			);
+
+			[...actualElement.children].forEach(childNode => expect(childNode.hasAttribute('enlarged'))
+				.to
+				.equal(false));
+
+			[...actualElement.children].forEach(childNode => expect(childNode.hasAttribute('dense'))
+				.to
+				.equal(true));
+		});
+
+		it(`should change the size if changed dynamically`, async function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} enlarged>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[0]}" enlarged>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[1]}" dense>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[2]}" >BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+</${COMPONENT_NAME}>`)
+			);
+
+			actualElement.dense = true;
+			await actualElement.updateComplete;
+			await waitNextTask();
+
+			[...actualElement.children].forEach(childNode => expect(childNode.hasAttribute('dense'))
+				.to
+				.equal(true));
+		});
 	});
 });
