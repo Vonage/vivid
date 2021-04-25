@@ -2,7 +2,7 @@ import { VWCCheckbox, COMPONENT_NAME as CHECKBOX_COMPONENT } from '@vonage/vwc-c
 import { DataGrid, GRID_HEADER_COMPONENT } from '../../vwc-data-grid-api';
 import { DataGridColumn, SELECTOR_MULTI, SELECTOR_SINGLE } from '../../vwc-data-grid-column-api';
 import { MetaRendererProvider } from '../vwc-data-grid-render-provider-api';
-import { MetaRenderer, RendererConfiguration } from '../../vwc-data-grid-renderer-api';
+import { MetaRenderer, CellRendererConfiguration } from '../../vwc-data-grid-renderer-api';
 
 export {
 	headerRendererProvider
@@ -20,14 +20,14 @@ const headerRendererProvider: MetaRendererProvider = (column: DataGridColumn): M
 	return result;
 };
 
-function simpleRenderer(container: HTMLElement, configuration: RendererConfiguration): void {
+function simpleRenderer(container: HTMLElement, configuration: CellRendererConfiguration): void {
 	const genericHeader = ensureHeaderIn(container);
 	genericHeader.sortable = false;
 	genericHeader.path = configuration.column.path;
 	genericHeader.textContent = configuration.column.header || '';
 }
 
-function selectorRenderer(container: HTMLElement, configuration: RendererConfiguration): void {
+function selectorRenderer(container: HTMLElement, configuration: CellRendererConfiguration): void {
 	const grid = configuration.grid;
 	let selectHeader = container.querySelector(CHECKBOX_COMPONENT) as VWCCheckbox;
 	if (!selectHeader && configuration.column.selector === SELECTOR_MULTI && !configuration.grid.dataProvider) {
@@ -52,7 +52,7 @@ function selectorRenderer(container: HTMLElement, configuration: RendererConfigu
 	}
 }
 
-function sorterRenderer(container: HTMLElement, configuration: RendererConfiguration): void {
+function sorterRenderer(container: HTMLElement, configuration: CellRendererConfiguration): void {
 	const gh = ensureHeaderIn(container);
 	gh.sortable = true;
 	gh.path = configuration.column.path;
