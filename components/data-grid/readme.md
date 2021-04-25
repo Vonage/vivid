@@ -20,6 +20,7 @@ Highlights:
 	- header custom rendering
 	- footer custom rendering
 	- cell custom rendering
+	- full row (aka row details, aka expanded row) custom rendering
 
 ### API
 
@@ -29,28 +30,28 @@ Grid API may roughly split into 2 categories:
 
 #### Data API
 
-Let's introduce shortly the Data API.
-More formal description of them found below in the section of the Grid Configuraion / Customization APIs.
+More formal description of these APIs found below in the Grid Configuration / Customization / Management section.
 
 There are 2 ways to supply data to grid, via the following grid component properties:
 - `items: unknown[]`
 	- simplest
 	- all data upfront
-	- suitale for small to medium amounts of data (in terms of memory occupation)
+	- suitable for small to medium amounts of data (in terms of memory occupation)
 - `dataProvider: (params: { page: number, pageSize: number }, callback: (pageItems: unknown[], totalItems?: number) => void) => void`
 	- stream of chunks, on demand
-	- should be used when memory usage concern present (from the data perspectve)
+	- should be used when memory usage concern present (from the data perspective)
+	- should be used when pulling data from the backend on the fly
 
 > In case of collision between those 2 (both set to something contentful), error will be printed to the console and `dataProvider` will take precedence.
 
-Some changes to the data, eg 'deep' change within `items` or logical conditions that `dataProvided` works with, won't trigger the refresh of the grid.
+Some changes to the data, eg 'deep' change within `items` or logical conditions that `dataProvider` works with, won't trigger the refresh of the grid.
 Use API below to refresh the data:
 - `refreshData(): void`
-	- will rerender the visible data in the grid
+	- will re-render the visible data in the grid
 
 ##### `items`
 
-Each new assignment to grid's items property will refresh the grid's content.
+Each new assignment to grid's `items` property will refresh the grid's content.
 
 Array manipulation (eg `grid.items.splice(0, 1)`) as well is 'deep' data mutations **wont't** trigger grid update.
 In such a cases you need to trigger data refresh on demand, via `refreshData` API.
@@ -58,8 +59,8 @@ In such a cases you need to trigger data refresh on demand, via `refreshData` AP
 ##### `dataProvider`
 
 Grid will call `dataProvider` each time new chunk of data needed.
-First argument will hold an needed chunk params, page number, page size etc.
-Second argumet is the grid's own callback to be called with the fetched / prepared data.
+First argument will hold all needed chunk params, page number, page size etc.
+Second argument is the grid's own callback to be called with the fetched / prepared data.
 
 Similarly to the said above, in case the internal conditions changing and you'd like to refresh the data in the grid, call `refreshData` API.
 
@@ -67,14 +68,14 @@ Similarly to the said above, in case the internal conditions changing and you'd 
 
 There are few APIs to manage items selection:
 - `selectedItems: unknown[]`
-	- an Array of selected items (item references taken from the `items` or this provided by `dataProvider`)
+	- an Array of selected items (item references taken from the `items` or those provided by `dataProvider`)
 - `selectItem(item: unknown, singleSelectMode: boolean = false): void`
 	- will add the item to the selected ones (and reflect it in UI if selector column used, or any custom UI that reflects selection)
 	- if the `singleSelectMode` switch set to `true`, the API will unselect all previously selected items and leave the provided item as the only selected one
 - `unselectItem(item: unkown): void`
 	- will remove item from the selected ones
 - `selectAll(): void`
-	- will add the item to the selected ones (and reflect it in UI if selector column used, or any custom UI that reflects selection); this methid will __throw__ if the data provisioning is done via `dataProvider` method
+	- will add the item to the selected ones (and reflect it in UI if selector column used, or any custom UI that reflects selection); this method will __throw__ if the data provisioning is done via `dataProvider` method
 - `unselectAll(): void`
 	- will unselect all selected items
 - event `selected-items-changed` will be fired on any selection change
@@ -99,15 +100,15 @@ Some of the properties of grid are also reflected via attributes.
 All those cases explicitly mention the attribute name in the table below.
 In those cases attribute and property may be used interchangeably.
 
-| Property             | Attribute    | Type               | Default     | Description |
-|----------------------|--------------|--------------------|-------------|------------|
-| `multiSort`          | `multi-sort` | `boolean`          | `false`     | sorting by multiple columns |
-| `reordering`         | `reordering` | `boolean`          | `false`     | columns reordering via UI (drag'n'drop') |
-| `columns`            |              | `DataGridColumn[]` | `[]`        | columns definitions, the majority of grid configuration, see below more |
-| `rowDetailsRenderer` |              | `DataRenderer`     | `undefined` | when provided, will handle an expanded / detailed row part rendering; see more details on `DataRenderer` below |
-| `items`              |              | `unknown[]`        | `undefined` | see Data API above |
+| Property             | Attribute    | Type                 | Default     | Description |
+|----------------------|--------------|----------------------|-------------|------------|
+| `multiSort`          | `multi-sort` | `boolean`            | `false`     | sorting by multiple columns |
+| `reordering`         | `reordering` | `boolean`            | `false`     | columns reordering via UI (drag'n'drop') |
+| `columns`            |              | `DataGridColumn[]`   | `[]`        | columns definitions, the majority of grid configuration, see below more |
+| `rowDetailsRenderer` |              | `RowDetailsRenderer` | `undefined` | when provided, will handle an expanded / detailed row part rendering; see more details on `RowDetailsRenderer` below |
+| `items`              |              | `unknown[]`          | `undefined` | see Data API above |
 | `dataProvider`       |              | `(params: { page: number, pageSize: number }, callback: (pageItems: unknown[], treeLevelSize: number) => void): void` | `undefined` | see Data API above |
-| `selectedItems`      |              | `unknown[]`        | `[]`        | see Data API above |
+| `selectedItems`      |              | `unknown[]`          | `[]`        | see Data API above |
 
 These are the methods available on grid component:
 
@@ -160,12 +161,15 @@ There are 2 ways to configure grid's columns:
 ##### `MetaRenderer`
 
 `MetaRenderer` is a __functional__ interface, defining the signature of the method to be used as renderer of meta elements like headers and footers.
+
 Signature:
 ```js
-(container: HTMLElement, configuration: RendererConfiguration): void
+(container: HTMLElement, configuration: CellRendererConfiguration): void
 ```
 
 Each time grid component will require fresh render of the header/s and/or footer/s, it'll call the custom renderers, if provided.
+
+See more details on `CellRendererConfiguration` below.
 
 > Attention: the renderer MAY and WILL be called several times for the same container, it is your responsibility to enforce idempotency of its logic.
 
@@ -174,16 +178,57 @@ Each time grid component will require fresh render of the header/s and/or footer
 ##### `DataRenderer`
 
 `DataRenderer` is a __functional__ interface, defining the signature of the method to be used as renderer of cell contents.
+
 Signature:
 ```js
-(container: HTMLElement, configuration: RendererConfiguration, data: { item: unknown, selected: boolean }): void
+(container: HTMLElement, configuration: CellRendererConfiguration, data: { item: unknown, selected: boolean }): void
 ```
 
 Each time grid component will require fresh render of the cell/s content, it'll call the custom renderer, if provided.
 
+See more details on `CellRendererConfiguration` below.
+
 > Attention: the renderer MAY and WILL be called several times for the same container, it is your responsibility to enforce idempotency of its logic.
 
 > `DataRenderer` API is used internally for selector column's cells. You may see the implementation details there.
+
+##### `RowDetailsRenderer`
+
+`RowDetailsRenderer` is a __functional__ interface, defining the signature of the method to be used as renderer of the row details (expanded row view).
+
+Signature:
+```js
+(container: HTMLElement, configuration: RowRendererConfiguration, data: { item: unknown, selected: boolean }): void
+```
+
+##### `CellRendererConfiguration`
+
+`CellRendererConfiguration` supplied to any cell-level custom renderer, namely: header, footer and cell custom renderers.
+
+Interface:
+```js
+/**
+ * `grid` component, the renderer is belonging to
+ */
+grid: DataGrid,
+
+/**
+ * column configuration, the renderer is belonging to
+ */
+column: DataGridColumn
+```
+
+##### `RowRendererConfiguration`
+
+`RowRendererConfiguration` supplied to any row-level custom renderer, namely: expanded row details custom renderer.
+
+Interface:
+```js
+/**
+ * `grid` component, the renderer is belonging to
+ */
+grid: DataGrid,
+```
 
 #### Examples
 
