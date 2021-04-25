@@ -4,7 +4,7 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Components/Atoms/Linear Progress',
+	title: 'Components/Linear Progress',
 	component: 'vwc-linear-progress',
 	argTypes
 };

@@ -47,7 +47,7 @@ const
 		alert: 'Alert'
 	};
 
-const registerCategory = (categoryTitle, content) => storiesOf(['Components', 'Atoms', 'Icon', 'Types'].join(PATH_SEPARATOR), module)
+const registerCategory = (categoryTitle, content) => storiesOf(['Components', 'Icon', 'Types'].join(PATH_SEPARATOR), module)
 	.add(categoryTitle, () => {
 		const styleEl = document.createElement('style');
 		styleEl.innerHTML = storyCssContent;

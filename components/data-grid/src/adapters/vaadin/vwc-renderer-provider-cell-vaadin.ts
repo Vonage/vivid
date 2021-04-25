@@ -1,6 +1,6 @@
 import { VWCCheckbox, COMPONENT_NAME as CHECKBOX_COMPONENT } from '@vonage/vwc-checkbox';
 import { DataGridColumn, SELECTOR_SINGLE } from '../../vwc-data-grid-column-api';
-import { DataRenderer, RendererConfiguration } from '../../vwc-data-grid-renderer-api';
+import { DataRenderer, CellRendererConfiguration } from '../../vwc-data-grid-renderer-api';
 import { DataRendererProvider } from '../vwc-data-grid-render-provider-api';
 
 export {
@@ -22,7 +22,7 @@ const cellRendererProvider: DataRendererProvider = (column: DataGridColumn): Dat
 	return result;
 };
 
-function selectorRenderer(container: HTMLElement, configuration: RendererConfiguration, data: { item: unknown, selected: boolean }): void {
+function selectorRenderer(container: HTMLElement, configuration: CellRendererConfiguration, data: { item: unknown, selected: boolean }): void {
 	let rs = container.querySelector(CHECKBOX_COMPONENT) as VWCCheckbox & VVDSelector;
 	if (!rs) {
 		rs = document.createElement(CHECKBOX_COMPONENT) as VWCCheckbox & VVDSelector;
