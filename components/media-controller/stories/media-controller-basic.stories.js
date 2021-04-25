@@ -2,7 +2,7 @@ import { html } from 'lit-element';
 import '@vonage/vwc-media-controller';
 
 export default {
-	title: 'Components/Composite/Media Controller',
+	title: 'Components/Media Controller',
 	component: 'vwc-media-controller',
 	parameters: {
 		controls: {
@@ -117,6 +117,16 @@ export const basic = () => html`
 		vwcMediaControllerEl.addEventListener('userPlayPauseRequest', ()=> {
 			isPlaying = !isPlaying;
 		  updateStatusView();
+		});
+
+		vwcMediaControllerEl.addEventListener('userSkipForwardRequest', () => {
+			scrubberPosition = Math.min(scrubberPosition + 0.005, 1);
+			updateStatusView();
+		});
+
+		vwcMediaControllerEl.addEventListener('userSkipBackwardsRequest', () => {
+			scrubberPosition = Math.max(scrubberPosition - 0.005, 0);
+			updateStatusView();
 		});
 
 		updateStatusView();

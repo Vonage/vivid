@@ -1,39 +1,41 @@
 @forward './vwc-textfield-coupling';
 @forward './vwc-textfield-input';
 @use './vwc-textfield-variables' as textfield-variables;
-@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
-@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
-@use '@vonage/vvd-foundation/scss/mixins/shape-mixins' with (
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
+@use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
+@use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
 	//! may consider replacing with own component variable to prevent delegation
 	$variable-name: --mdc-shape-small
 );
 
 :host {
-	--mdc-theme-error: #{color-semantic.$formfield-label-error-ink};
+	--mdc-theme-error: #{vvd-formfield.$formfield-label-error-ink};
 	--mdc-text-field-fill-color: var(#{scheme-variables.$vvd-color-base});
 	--mdc-text-field-ink-color: var(#{scheme-variables.$vvd-color-on-base});
-	--mdc-text-field-label-ink-color: var(#{color-semantic.$formfield-label-idle-ink});
+	--mdc-text-field-label-ink-color: var(#{vvd-formfield.$formfield-label-idle-ink});
 	--mdc-text-field-disabled-ink-color: var(
-		#{color-semantic.$formfield-disabled-ink}
+		#{vvd-formfield.$formfield-disabled-ink}
 	);
 	--mdc-text-field-disabled-fill-color: var(
-		#{color-semantic.$formfield-disabled-fill}
+		#{vvd-formfield.$formfield-disabled-fill}
 	);
 	--mdc-text-field-outlined-idle-border-color: var(
-		#{color-semantic.$formfield-border-idle}
+		#{vvd-formfield.$formfield-border-idle}
 	);
 	--mdc-text-field-outlined-hover-border-color: var(
-		#{color-semantic.$formfield-border-hover}
+		#{vvd-formfield.$formfield-border-hover}
 	);
 	--mdc-text-field-outlined-disabled-border-color: var(
-		#{color-semantic.$formfield-border-disabled}
+		#{vvd-formfield.$formfield-border-disabled}
 	);
 	--mdc-text-field-error-color: var(
-		#{color-semantic.$formfield-label-error-ink}
+		#{vvd-formfield.$formfield-label-error-ink}
 	);
 	--mdc-text-field-error-fill-color: var(
-		#{color-semantic.$formfield-error-fill}
+		#{vvd-formfield.$formfield-error-fill}
 	);
+
+	@include vvd-formfield.coupling;
 
 	min-width: 180px;
 
@@ -154,7 +156,8 @@
 	}
 
 	&:not(.mdc-text-field--disabled) {
-		.mdc-text-field__icon--leading {
+		.mdc-text-field__icon--leading,
+		.mdc-text-field__icon--trailing {
 			color: var(--mdc-text-field-label-ink-color);
 		}
 	}

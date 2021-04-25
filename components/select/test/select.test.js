@@ -27,6 +27,12 @@ import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-select';
+const iconsLayoutExpectation = {
+	width: '20px',
+	height: '20px',
+	marginLeft: '16px',
+	marginRight: '16px'
+};
 
 function getHiddenInput(formElement, fieldName) {
 	return formElement.querySelector(`input[name="${fieldName}"]`);
@@ -43,7 +49,7 @@ describe('select', () => {
 
 	describe('init flow', () => {
 		it('should have the required elements', async () => {
-			const [addedElements] = addElement(
+			const [select] = addElement(
 				textToDomToParent(`
 				<${COMPONENT_NAME}>
 					<vwc-list-item>Item 1</vwc-list-item>
@@ -52,15 +58,45 @@ describe('select', () => {
 			`)
 			);
 			await waitNextTask();
-			expect(addedElements).dom.to.equalSnapshot();
+			expect(select).dom.to.equalSnapshot();
 		});
 
 		it('should be outlined by default', async () => {
-			const [addedElements] = addElement(
+			const [select] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
 			await waitNextTask();
-			expect(addedElements.outlined).true;
+			expect(select.outlined).true;
+		});
+
+		it('should have correct drop down icon', async () => {
+			const [select] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			const dropDownIcon = select.shadowRoot.querySelector('.vvd-select-dropdown-icon');
+			expect(dropDownIcon).exist;
+			assertComputedStyle(dropDownIcon, iconsLayoutExpectation);
+		});
+
+		it('should have label colored as expected (regular valid)', async () => {
+			const [select] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} label="Label"></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			const label = select.shadowRoot.querySelector('.mdc-floating-label');
+			assertComputedStyle(label, { color: 'rgb(102,102,102)' });
+		});
+
+		it('should have label colored as expected (regular invalid)', async () => {
+			const [select] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} label="Label" required></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			select.reportValidity();
+			await waitNextTask();
+			const label = select.shadowRoot.querySelector('.mdc-floating-label');
+			assertComputedStyle(label, { color: 'rgb(230,29,29)' });
 		});
 	});
 
@@ -268,11 +304,10 @@ describe('select', () => {
 	});
 
 	describe('typography', () => {
-		let addedElements,
-			formElement,
+		let select,
 			labelElement;
 		beforeEach(async () => {
-			addedElements = addElement(
+			[select] = addElement(
 				textToDomToParent(`
 				<${COMPONENT_NAME} label="VWC Select">
 					<vwc-list-item value="0">Item 1</vwc-list-item>
@@ -281,8 +316,7 @@ describe('select', () => {
 			`)
 			);
 			await waitNextTask();
-			formElement = addedElements[0];
-			labelElement = formElement.shadowRoot
+			labelElement = select.shadowRoot
 				.querySelector('.mdc-notched-outline')
 				.querySelector('#label');
 		});
@@ -292,22 +326,22 @@ describe('select', () => {
 		});
 
 		it('should have set typography for a floating label', async () => {
-			formElement.select(1);
+			select.select(1);
 			await waitInterval(200); // font transition
 			assertComputedStyle(labelElement, await getTypographyStyle('caption'));
 		});
 
 		it('should have set typography for a selected text', async () => {
-			const selectedText = formElement.shadowRoot.querySelector(
+			const selectedText = select.shadowRoot.querySelector(
 				'.mdc-select__selected-text'
 			);
 			assertComputedStyle(selectedText, await getTypographyStyle('body-2'));
 		});
 
 		it('should have set typography for a helper', async () => {
-			formElement.helper = 'Helper text';
+			select.helper = 'Helper text';
 			await waitNextTask();
-			const helperElement = formElement.shadowRoot.querySelector(
+			const helperElement = select.shadowRoot.querySelector(
 				'vwc-helper-message'
 			);
 			assertComputedStyle(helperElement, await getTypographyStyle('caption'));
@@ -320,9 +354,39 @@ describe('select', () => {
 		});
 	});
 
+	describe('select with icon', () => {
+		it('should have vwc-icon when used with icon', async () => {
+			const [select] = addElement(
+				textToDomToParent(`
+				<${COMPONENT_NAME} icon="home">
+					<vwc-list-item>Item 1</vwc-list-item>
+					<vwc-list-item>Item 2</vwc-list-item>
+				</${COMPONENT_NAME}>
+			`)
+			);
+			await waitNextTask();
+			expect(select).shadowDom.equalSnapshot();
+		});
+
+		it('icon should be correctly positioned', async () => {
+			const [select] = addElement(
+				textToDomToParent(`
+				<${COMPONENT_NAME} icon="home">
+					<vwc-list-item>Item 1</vwc-list-item>
+					<vwc-list-item>Item 2</vwc-list-item>
+				</${COMPONENT_NAME}>
+			`)
+			);
+			await waitNextTask();
+			const icon = select.shadowRoot.querySelector('.vvd-select-icon');
+			expect(icon).exist;
+			assertComputedStyle(icon, iconsLayoutExpectation);
+		});
+	});
+
 	describe('density', () => {
 		it('should have normal size by default', async () => {
-			const addedElements = addElement(
+			const [select] = addElement(
 				textToDomToParent(`
 				<${COMPONENT_NAME}>
 					<vwc-list-item>Item 1</vwc-list-item>
@@ -331,8 +395,7 @@ describe('select', () => {
 			`)
 			);
 			await waitNextTask();
-			const formElement = addedElements[0];
-			assertComputedStyle(formElement, { height: '48px' });
+			assertComputedStyle(select, { height: '48px' });
 		});
 
 		it('should have dense size when dense', async () => {
@@ -340,21 +403,41 @@ describe('select', () => {
 		});
 
 		it('should have 16px space between edge and the selection', async () => {
-			const [e] = addElement(
+			const [select] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
 			await waitNextTask();
-			const i = e.shadowRoot.querySelector('.mdc-select__selected-text');
-			assertDistancePixels(e, i, 'left', 16);
+			const i = select.shadowRoot.querySelector('.mdc-select__selected-text');
+			assertDistancePixels(select, i, 'left', 16);
 		});
 
 		it('should have 16px space between edge and the label', async () => {
-			const [e] = addElement(
+			const [select] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} label="Label"></${COMPONENT_NAME}>`)
 			);
 			await waitNextTask();
-			const l = e.shadowRoot.querySelector('.mdc-floating-label');
-			assertDistancePixels(e, l, 'left', 16);
+			const label = select.shadowRoot.querySelector('.mdc-floating-label');
+			assertDistancePixels(select, label, 'left', 16);
+		});
+
+		it('should have label colored as expected (dense valid)', async () => {
+			const [select] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} label="Label" dense></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			const label = select.shadowRoot.querySelector('.mdc-floating-label');
+			assertComputedStyle(label, { color: 'rgb(0,0,0)' });
+		});
+
+		it('should have label colored as expected (dense invalid)', async () => {
+			const [select] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} label="Label" dense required></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			select.reportValidity();
+			await waitNextTask();
+			const label = select.shadowRoot.querySelector('.mdc-floating-label');
+			assertComputedStyle(label, { color: 'rgb(0,0,0)' });
 		});
 	});
 

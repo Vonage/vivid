@@ -1,3 +1,33 @@
+# [2.5.0](https://github.com/vonage/vivid/compare/v2.4.1...v2.5.0) (2021-04-22)
+
+
+
+## [2.4.1](https://github.com/vonage/vivid/compare/v2.4.0...v2.4.1) (2021-04-21)
+
+
+
+# [2.4.0](https://github.com/vonage/vivid/compare/v2.3.0...v2.4.0) (2021-04-19)
+
+
+### Bug Fixes
+
+* **textfield:** reportValidity() doesn't work ([#760](https://github.com/vonage/vivid/issues/760)) ([600f26a](https://github.com/vonage/vivid/commit/600f26a7defa8d09a51270475344019885369357))
+
+
+
+# [2.3.0](https://github.com/vonage/vivid/compare/v2.2.4...v2.3.0) (2021-04-08)
+
+
+### Bug Fixes
+
+* **vwc-textfield:** iss-754 viv-480 textfield autovalidate ([#755](https://github.com/vonage/vivid/issues/755)) ([d1350f8](https://github.com/vonage/vivid/commit/d1350f8074c01dd3f581bda6bc610cfd2135fa3a)), closes [#754](https://github.com/vonage/vivid/issues/754) [#754](https://github.com/vonage/vivid/issues/754) [#754](https://github.com/vonage/vivid/issues/754) [#754](https://github.com/vonage/vivid/issues/754)
+
+
+
+## [2.2.4](https://github.com/vonage/vivid/compare/v2.2.3...v2.2.4) (2021-04-05)
+
+
+
 ## [2.2.3](https://github.com/vonage/vivid/compare/v2.2.2...v2.2.3) (2021-03-30)
 
 

@@ -4,10 +4,10 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Components/Atoms/Inline',
+	title: 'Alpha/Components/Inline',
 	component: 'vwc-inline',
 	argTypes
-}
+};
 
 const Template = args => html`
 <style>

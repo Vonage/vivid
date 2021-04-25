@@ -1,11 +1,13 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
-@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 @use '@vonage/vvd-typography/scss/typography';
-@use '@vonage/vvd-foundation/scss/mixins/color-connotation-mixins' with (
-	$connotations: success alert warning info announcement
+@use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation with (
+	$connotations-set: success alert warning info announcement
 );
 
-$border-value: 8px solid var(#{color-semantic.$vvd-color-connotation});
+$border-value: 8px solid var(#{color-connotation.$vvd-color-connotation});
+
+@include color-connotation.connotations-main;
+@include color-connotation.connotations-main-default(announcement);
 
 :host {
 	display: flex;
@@ -20,9 +22,6 @@ $border-value: 8px solid var(#{color-semantic.$vvd-color-connotation});
 		inset 0 -1px 0 0 var(#{scheme-variables.$vvd-color-neutral-40});
 	contain: content;
 }
-@include color-connotation-mixins.connotations-context(
-	':host(#{color-connotation-mixins.$connotation-placeholder})'
-);
 
 .note-icon {
 	margin-inline-end: 16px;

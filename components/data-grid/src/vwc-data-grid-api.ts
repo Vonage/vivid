@@ -1,5 +1,5 @@
 import { DataGridColumn } from './vwc-data-grid-column-api';
-import { DataRenderer } from './vwc-data-grid-renderer-api';
+import { RowDetailsRenderer } from './vwc-data-grid-renderer-api';
 
 export {
 	GRID_COMPONENT,
@@ -23,7 +23,7 @@ interface DataGrid extends EventTarget {
 	columns: DataGridColumn[];
 	refreshConfiguration(): void;
 
-	rowDetailsRenderer?: DataRenderer;
+	rowDetailsRenderer?: RowDetailsRenderer;
 	openItemDetails(item: unknown): void;
 	closeItemDetails(item: unknown): void;
 

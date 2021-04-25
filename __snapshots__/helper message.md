@@ -1,6 +1,6 @@
 # `helper message`
 
-#### `should internal contents when 'is-error="false"'`
+#### `should have correct internal contents when 'is-error' absent`
 
 ```html
 <vwc-icon
@@ -16,7 +16,7 @@
 
 ```
 
-#### `should internal contents when 'is-error="true"'`
+#### `should have correct internal contents when 'is-error' present'`
 
 ```html
 <vwc-icon

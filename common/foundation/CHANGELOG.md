@@ -1,3 +1,33 @@
+# [2.5.0](https://github.com/vonage/vivid/compare/v2.4.1...v2.5.0) (2021-04-22)
+
+
+
+## [2.4.1](https://github.com/vonage/vivid/compare/v2.4.0...v2.4.1) (2021-04-21)
+
+
+### Bug Fixes
+
+* **vwc-slider:** issue [#789](https://github.com/vonage/vivid/issues/789) fixing the slider miscalc when rendered in display none or resized ([#791](https://github.com/vonage/vivid/issues/791)) ([75e3cc9](https://github.com/vonage/vivid/commit/75e3cc9b9548b0fa4b0bd6bdef428a5f2791af12))
+
+
+
+# [2.4.0](https://github.com/vonage/vivid/compare/v2.3.0...v2.4.0) (2021-04-19)
+
+
+
+# [2.3.0](https://github.com/vonage/vivid/compare/v2.2.4...v2.3.0) (2021-04-08)
+
+
+
+## [2.2.4](https://github.com/vonage/vivid/compare/v2.2.3...v2.2.4) (2021-04-05)
+
+
+### Bug Fixes
+
+* **vwc-badge:** element invisibility due to wrong z-indexing ([#717](https://github.com/vonage/vivid/issues/717)) ([2e9a91f](https://github.com/vonage/vivid/commit/2e9a91ffa914c12f7c64cce12dc1e7c19d39cbac)), closes [#31](https://github.com/vonage/vivid/issues/31)
+
+
+
 ## [2.2.3](https://github.com/vonage/vivid/compare/v2.2.2...v2.2.3) (2021-03-30)
 
 

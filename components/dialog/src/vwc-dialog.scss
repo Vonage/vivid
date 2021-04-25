@@ -1,6 +1,5 @@
-@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
-@use '@vonage/vvd-foundation/scss/variable-names/color-semantic-variable-names' as color-semantic;
 @use '@vonage/vvd-typography/scss/typography' as typography;
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 
 #title,
 #content,
@@ -18,10 +17,12 @@
 	@include typography.typography-cat-shorthand('subtitle-2');
 	padding-bottom: 0;
 	margin-bottom: 8px;
+	color: var(#{scheme-variables.$vvd-color-on-base});
 }
 
 #content {
 	@include typography.typography-cat-shorthand('body-2');
+	color: var(#{scheme-variables.$vvd-color-on-base});
 }
 
 #actions {
@@ -44,3 +45,9 @@
 .mdc-dialog__title::before {
 	height: 0;
 }
+
+.mdc-dialog .mdc-dialog__scrim {
+	--mdc-dialog-scrim-color: var(#{scheme-variables.$vvd-color-neutral});
+	opacity: 0.32;
+}
+

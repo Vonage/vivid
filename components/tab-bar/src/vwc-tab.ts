@@ -6,7 +6,7 @@ import { classMap } from 'lit-html/directives/class-map';
 import { Tab as MWCTab } from '@material/mwc-tab';
 import { style as vwcTabStyle } from './vwc-tab.css';
 import { style as mwcTabStyle } from '@material/mwc-tab/mwc-tab-css.js';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -22,6 +22,9 @@ MWCTab.styles = [styleCoupling, mwcTabStyle, vwcTabStyle];
 export class VWCTab extends MWCTab {
 	@property({ type: Boolean, reflect: true })
 	disabled = false;
+
+	@property({ type: Boolean, reflect: true })
+	block = false;
 
 	@property({ type: Boolean, reflect: true })
 	trailingIcon = false;

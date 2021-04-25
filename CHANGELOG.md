@@ -3,6 +3,83 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/Vonage/vivid/compare/v2.4.1...v2.5.0) (2021-04-22)
+
+
+### Bug Fixes
+
+* **vwc-pagination:** iss 793 viv 511 pagination UI fixes ([#794](https://github.com/Vonage/vivid/issues/794)) ([94e388f](https://github.com/Vonage/vivid/commit/94e388f9f4891af1ecf4ebcdc7c0ba2562fbcbdb)), closes [#793](https://github.com/Vonage/vivid/issues/793) [#793](https://github.com/Vonage/vivid/issues/793) [#793](https://github.com/Vonage/vivid/issues/793) [#793](https://github.com/Vonage/vivid/issues/793) [#793](https://github.com/Vonage/vivid/issues/793) [#793](https://github.com/Vonage/vivid/issues/793)
+* **vwc-select:** fixing the label color in dense mode ([#795](https://github.com/Vonage/vivid/issues/795)) ([a4a99cb](https://github.com/Vonage/vivid/commit/a4a99cb72ca542f216a851a7cd90f5f5ea105edd))
+
+
+### Features
+
+* **tab:** add dense and left support ([#780](https://github.com/Vonage/vivid/issues/780)) ([d0acd62](https://github.com/Vonage/vivid/commit/d0acd620ef30c389fe7f45205a6ab51fdb2871e7))
+
+
+
+
+
+## [2.4.1](https://github.com/Vonage/vivid/compare/v2.4.0...v2.4.1) (2021-04-21)
+
+
+### Bug Fixes
+
+* **vwc-slider:** issue [#789](https://github.com/Vonage/vivid/issues/789) fixing the slider miscalc when rendered in display none or resized ([#791](https://github.com/Vonage/vivid/issues/791)) ([75e3cc9](https://github.com/Vonage/vivid/commit/75e3cc9b9548b0fa4b0bd6bdef428a5f2791af12))
+
+
+
+
+
+# [2.4.0](https://github.com/Vonage/vivid/compare/v2.3.0...v2.4.0) (2021-04-19)
+
+
+### Bug Fixes
+
+* **icon:** wrong "error-star-line" icon (viv-491) ([#767](https://github.com/Vonage/vivid/issues/767)) ([c466f84](https://github.com/Vonage/vivid/commit/c466f849fc3206f000283b28e223af633e9560f4))
+* **textfield:** reportValidity() doesn't work ([#760](https://github.com/Vonage/vivid/issues/760)) ([600f26a](https://github.com/Vonage/vivid/commit/600f26a7defa8d09a51270475344019885369357))
+* **vwc-carousel:** white source report high severity for carousel ([#774](https://github.com/Vonage/vivid/issues/774)) ([3c93585](https://github.com/Vonage/vivid/commit/3c9358520195aa49d3a3f69f7ccf49e06793d63b)), closes [#493](https://github.com/Vonage/vivid/issues/493)
+
+
+### Features
+
+* **pagination:** iss 747 viv 392 pagination ([#759](https://github.com/Vonage/vivid/issues/759)) ([9b35300](https://github.com/Vonage/vivid/commit/9b35300baff80dcc3c2412f92628a4d92814f774)), closes [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747) [#747](https://github.com/Vonage/vivid/issues/747)
+
+
+
+
+
+# [2.3.0](https://github.com/Vonage/vivid/compare/v2.2.4...v2.3.0) (2021-04-08)
+
+
+### Bug Fixes
+
+* **vwc-button:** ripple color css variables not defined ([#756](https://github.com/Vonage/vivid/issues/756)) ([0e90e0e](https://github.com/Vonage/vivid/commit/0e90e0e75ca3930a757b399a2cbc799c657b094d))
+* **vwc-textfield:** iss-754 viv-480 textfield autovalidate ([#755](https://github.com/Vonage/vivid/issues/755)) ([d1350f8](https://github.com/Vonage/vivid/commit/d1350f8074c01dd3f581bda6bc610cfd2135fa3a)), closes [#754](https://github.com/Vonage/vivid/issues/754) [#754](https://github.com/Vonage/vivid/issues/754) [#754](https://github.com/Vonage/vivid/issues/754) [#754](https://github.com/Vonage/vivid/issues/754)
+
+
+### Features
+
+* **vwc-inline:** add support for auto-fill/fit variance ([#746](https://github.com/Vonage/vivid/issues/746)) ([17732b3](https://github.com/Vonage/vivid/commit/17732b372d14cbba7708e3cf9332e1899850d3cd))
+
+
+
+
+
+## [2.2.4](https://github.com/Vonage/vivid/compare/v2.2.3...v2.2.4) (2021-04-05)
+
+
+### Bug Fixes
+
+* **datepicker:** viv-446 remove vertical scrollbar in time picker ([#736](https://github.com/Vonage/vivid/issues/736)) ([6d7a2cb](https://github.com/Vonage/vivid/commit/6d7a2cbd283cce3e12f9effc35bd087dec75a0c6))
+* **vwc-badge:** element invisibility due to wrong z-indexing ([#717](https://github.com/Vonage/vivid/issues/717)) ([2e9a91f](https://github.com/Vonage/vivid/commit/2e9a91ffa914c12f7c64cce12dc1e7c19d39cbac)), closes [#31](https://github.com/Vonage/vivid/issues/31)
+* **vwc-chip:** trailing icon offset fixed ([#735](https://github.com/Vonage/vivid/issues/735)) ([c580773](https://github.com/Vonage/vivid/commit/c580773f61f0ca978bd87a33cdab9b9f26d9b53c))
+* **workspace:** watch scss files instead of sass ([#731](https://github.com/Vonage/vivid/issues/731)) ([5823a65](https://github.com/Vonage/vivid/commit/5823a65eb5e27e17b4911e5bc6681ab6253577da))
+
+
+
+
+
 ## [2.2.3](https://github.com/Vonage/vivid/compare/v2.2.2...v2.2.3) (2021-03-30)
 
 

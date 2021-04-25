@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vvd-umbrella",
-	"version": "2.2.3",
+	"version": "2.5.0",
 	"description": "Supplies various tools for authoring, testing and building Vivid components",
 	"keywords": [
 		"build",
@@ -10,6 +10,7 @@
 		"toolkit"
 	],
 	"private": true,
+	"main": "",
 	"bin": {
 		"umbrella-style-modules": "./tools/style-modules/index.js"
 	},

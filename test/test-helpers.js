@@ -14,8 +14,7 @@ export {
 	isFirefox,
 	getFrameLoadedInjected,
 	cleanFrame,
-	getRandom,
-	runAxeCore
+	getRandom
 }
 
 const tmpTemple = document.createElement('template');
@@ -260,17 +259,6 @@ function cleanFrame(htmlTag) {
 
 function getRandom() {
 	return crypto.getRandomValues(new Uint8Array(1))[0] / 256;
-}
-
-async function runAxeCore(element, options) {
-	const result = await axe.run(element, options);
-
-	if (result.violations) {
-		console.log(result.violations);
-		console.log(result.violations[0]?.nodes);
-	}
-
-	expect(result.violations.length).to.equal(0);
 }
 
 class TestComponent extends HTMLElement {

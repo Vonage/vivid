@@ -31,7 +31,7 @@ async function run() {
 					'Core',
 					['Context', 'Fonts', 'Typography'],
 					'Components',
-					['Components List', 'Atoms', 'Composite'],
+					['Components List', 'Alpha', 'Composite'],
 				],
 				method: 'alphabetical'
 			},

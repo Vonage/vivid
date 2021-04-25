@@ -1,12 +1,12 @@
-import '../vwc-textfield.js';
+import { COMPONENT_NAME } from '../vwc-textfield.js';
 import {
 	isolatedElementsCreation,
 	waitNextTask,
-	textToDomToParent,
-	runAxeCore,
+	textToDomToParent
 } from '../../../test/test-helpers.js';
+import { chaiA11yAxe } from 'chai-a11y-axe';
 
-const COMPONENT_NAME = 'vwc-textfield';
+chai.use(chaiA11yAxe);
 
 describe('textfield a11y', () => {
 	const addElement = isolatedElementsCreation();
@@ -17,6 +17,6 @@ describe('textfield a11y', () => {
 		);
 		await waitNextTask();
 
-		await runAxeCore(actualElement);
+		await expect(actualElement).shadowDom.to.be.accessible();
 	});
 });

@@ -1,3 +1,28 @@
+# [2.5.0](https://github.com/vonage/vivid/compare/v2.4.1...v2.5.0) (2021-04-22)
+
+
+
+## [2.4.1](https://github.com/vonage/vivid/compare/v2.4.0...v2.4.1) (2021-04-21)
+
+
+
+# [2.4.0](https://github.com/vonage/vivid/compare/v2.3.0...v2.4.0) (2021-04-19)
+
+
+
+# [2.3.0](https://github.com/vonage/vivid/compare/v2.2.4...v2.3.0) (2021-04-08)
+
+
+
+## [2.2.4](https://github.com/vonage/vivid/compare/v2.2.3...v2.2.4) (2021-04-05)
+
+
+### Bug Fixes
+
+* **datepicker:** viv-446 remove vertical scrollbar in time picker ([#736](https://github.com/vonage/vivid/issues/736)) ([6d7a2cb](https://github.com/vonage/vivid/commit/6d7a2cbd283cce3e12f9effc35bd087dec75a0c6))
+
+
+
 ## [2.2.3](https://github.com/vonage/vivid/compare/v2.2.2...v2.2.3) (2021-03-30)
 
 

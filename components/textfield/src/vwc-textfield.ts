@@ -10,16 +10,18 @@ import {
 	PropertyValues,
 } from 'lit-element';
 import { TextField as MWCTextField } from '@material/mwc-textfield';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/vvd-style-coupling.css.js';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 import { style as vwcTextFieldStyle } from './vwc-textfield.css';
 import { style as mwcTextFieldStyle } from '@material/mwc-textfield/mwc-textfield-css.js';
 import { Shape } from '@vonage/vvd-foundation/constants';
 import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
 export { TextFieldType } from '@material/mwc-textfield';
 
+export const COMPONENT_NAME = 'vwc-textfield';
+
 declare global {
 	interface HTMLElementTagNameMap {
-		'vwc-textfield': VWCTextField;
+		[COMPONENT_NAME]: VWCTextField;
 	}
 }
 
@@ -59,6 +61,7 @@ export class VWCTextField extends MWCTextField {
 			set: function (newValue: string) {
 				this.formElement.value = newValue;
 				this.floatLabel();
+				this.requestUpdate('value', null);
 			},
 		});
 	}
@@ -171,6 +174,12 @@ export class VWCTextField extends MWCTextField {
 			this.onInputBlur();
 		};
 
+		fe.oninput = (e) => {
+			e.stopImmediatePropagation();
+			this.dispatchEvent(new InputEvent('input', { bubbles: true }));
+			this.handleInputChange();
+		};
+
 		//	attributes
 		setAttributeByValue('id', this.id, fe);
 		setAttributeByValue('name', this.name, fe);
@@ -218,15 +227,28 @@ export class VWCTextField extends MWCTextField {
 	}
 }
 
-function setAttributeByValue(
-	attributeName: string,
-	value: unknown,
-	target: HTMLInputElement,
-	asEmpty = false
-): void {
-	if (value) {
-		target.setAttribute(attributeName, asEmpty ? '' : String(value));
-	} else {
-		target.removeAttribute(attributeName);
-	}
-}
+const setAttributeByValue = (function () {
+	const NOT_ASSIGNED = Symbol('NotAssigned');
+	return function (
+		attributeName: string,
+		value: unknown,
+		target: HTMLInputElement,
+		asEmpty = false
+	): void {
+		const newValue:unknown = value
+			? (() => { return asEmpty ? '' : String(value); })()
+			: NOT_ASSIGNED;
+
+		const currentValue:unknown = target.hasAttribute(attributeName)
+			? target.getAttribute(attributeName)
+			: NOT_ASSIGNED;
+
+		if (newValue !== currentValue) {
+			if (newValue === NOT_ASSIGNED) {
+				target.removeAttribute(attributeName);
+			} else {
+				target.setAttribute(attributeName, newValue as string);
+			}
+		}
+	};
+}());
