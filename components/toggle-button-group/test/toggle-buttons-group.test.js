@@ -14,7 +14,7 @@ const COMPONENT_NAME = 'vwc-toggle-button-group';
 const SELECTED_EVENT_NAME = 'selected';
 const GROUP_BUTTON_ATTRIBUTE = 'group-button';
 
-describe('Toggle-buttons-group', () => {
+describe.only('Toggle-buttons-group', () => {
 	const buttonValues = [
 		Math.random()
 			.toString(),
@@ -43,7 +43,7 @@ describe('Toggle-buttons-group', () => {
 	});
 
 	it(`should add group-button attr to group buttons`, function () {
-		const [actualElement] = addElement(
+		const [actualElement] = (
 			textToDomToParent(`<${COMPONENT_NAME}>
 <${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 <${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
@@ -102,6 +102,18 @@ describe('Toggle-buttons-group', () => {
 		expect(clickIndex)
 			.to
 			.equal(1);
+	});
+
+	it(`should set layout filled for all child buttons`, function () {
+		const [actualElement] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}>
+<${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+</${COMPONENT_NAME}>`)
+		);
+
+		[...actualElement.children].forEach(childNode => expect(childNode.getAttribute('layout')).to.equal('filled'));
 	});
 
 	describe(`selected`, function () {
@@ -301,5 +313,9 @@ describe('Toggle-buttons-group', () => {
 				.to
 				.equal('22');
 		});
+	});
+
+	describe(`size`, function () {
+
 	});
 });

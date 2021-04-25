@@ -98,6 +98,7 @@ export class VwcToggleButtonGroup extends LitElement {
 
 	private setNodesAndClickEvents(nodes: Element[]) {
 		nodes.forEach((buttonElement) => {
+			buttonElement.setAttribute('layout', 'filled');
 			buttonElement.setAttribute(GROUP_BUTTON_ATTRIBUTE, '');
 			buttonElement.addEventListener('click', () => {
 				if (!this.multi) {
