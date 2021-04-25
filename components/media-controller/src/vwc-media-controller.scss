@@ -1,7 +1,17 @@
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+
 :host {
 	$button-size: 16px;
 	display: block;
 	box-sizing: border-box;
+
+	*:focus:not(:focus-visible) {
+		outline: none;
+	}
+
+	:focus-visible {
+		outline: var(#{scheme-variables.$vvd-color-on-base}) solid 2px;
+	}
 
 	> div {
 		$scrub-size: 12px;
@@ -25,10 +35,6 @@
 			background-size: $button-size * 2 $button-size;
 			cursor: pointer;
 			-webkit-tap-highlight-color: transparent;
-
-			&:focus {
-				outline: none;
-			}
 		}
 
 		> div {
@@ -58,10 +64,6 @@
 				transform-origin: center;
 				@media screen and (prefers-reduced-motion: reduce) {
 					transition: background-color 0.2s, box-shadow 200ms, border-radius 0.2s;
-				}
-
-				&:focus {
-					outline: none;
 				}
 			}
 		}
