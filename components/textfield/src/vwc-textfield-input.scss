@@ -40,10 +40,16 @@
 }
 
 :host(:not([dense])) {
+
+	:not(.mdc-text-field--no-label) {
+		::slotted(#{textfield-variables.$vvd-input-selector}) {
+			padding-block-start: calc(
+				var(#{textfield-variables.$vvd-text-field-size-block}) - 32px
+			);
+		}
+	}
+
 	::slotted(#{textfield-variables.$vvd-input-selector}) {
-		padding-block-start: calc(
-			var(#{textfield-variables.$vvd-text-field-size-block}) - 32px
-		);
 		transition: opacity 100ms;
 	}
 
