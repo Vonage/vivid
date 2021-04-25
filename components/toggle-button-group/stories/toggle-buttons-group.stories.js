@@ -45,7 +45,6 @@ export const Accent = AccentTemplate.bind({});
 Accent.args = { };
 
 const MultiTemplate = args => html`<vwc-toggle-button-group multi
-																														accent
 																														...=${spread(args)}>
 	<vwc-button label="Standard"></vwc-button>
 	<vwc-button label="Hybrid"></vwc-button>
@@ -54,4 +53,34 @@ const MultiTemplate = args => html`<vwc-toggle-button-group multi
 </vwc-toggle-button-group>`;
 
 export const Multi = MultiTemplate.bind({});
+Multi.args = { };
+
+const SizesTemplate = args => html`
+	<h5>Dense</h5>
+	<vwc-toggle-button-group dense
+																														...=${spread(args)}>
+	<vwc-button label="Standard"></vwc-button>
+	<vwc-button label="Hybrid"></vwc-button>
+	<vwc-icon-button icon="home"></vwc-icon-button>
+	<vwc-button label="Satellite"></vwc-button>
+</vwc-toggle-button-group>
+<h5>Normal</h5>
+<vwc-toggle-button-group
+												 ...=${spread(args)}>
+	<vwc-button label="Standard"></vwc-button>
+	<vwc-button label="Hybrid"></vwc-button>
+	<vwc-icon-button icon="home"></vwc-icon-button>
+	<vwc-button label="Satellite"></vwc-button>
+</vwc-toggle-button-group>
+<h5>Enlarged</h5>
+<vwc-toggle-button-group enlarged
+												 ...=${spread(args)}>
+	<vwc-button label="Standard"></vwc-button>
+	<vwc-button label="Hybrid"></vwc-button>
+	<vwc-icon-button icon="home"></vwc-icon-button>
+	<vwc-button label="Satellite"></vwc-button>
+</vwc-toggle-button-group>
+`;
+
+export const Sizes = SizesTemplate.bind({});
 Multi.args = { };
