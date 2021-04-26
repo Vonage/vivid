@@ -318,14 +318,18 @@ describe('Toggle-buttons-group', () => {
 	});
 
 	describe(`size`, function () {
-		it(`should set every button size to dense if dense is set`, function () {
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} dense>
+		function createElement(sizeProperty) {
+			return addElement(
+				textToDomToParent(`<${COMPONENT_NAME} ${sizeProperty}>
 <${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[0]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 <${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[1]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 <${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 </${COMPONENT_NAME}>`)
 			);
+		}
+
+		it(`should set every button size to dense if dense is set`, function () {
+			const [actualElement] = createElement('dense');
 
 			[...actualElement.children].forEach(childNode => expect(childNode.hasAttribute('dense'))
 				.to
@@ -333,13 +337,7 @@ describe('Toggle-buttons-group', () => {
 		});
 
 		it(`should set every button size to enlaeged if enlarged is set`, function () {
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} enlarged>
-<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[0]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[1]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-</${COMPONENT_NAME}>`)
-			);
+			const [actualElement] = createElement('enlarged');
 
 			[...actualElement.children].forEach(childNode => expect(childNode.hasAttribute('enlarged'))
 				.to
@@ -347,13 +345,7 @@ describe('Toggle-buttons-group', () => {
 		});
 
 		it(`should remove enlarged and dense if none is declared`, function () {
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME}>
-<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[0]}" enlarged>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[1]}" dense>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[2]}" enlarged>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-</${COMPONENT_NAME}>`)
-			);
+			const [actualElement] = createElement('');
 
 			[...actualElement.children].forEach(childNode => expect(childNode.hasAttribute('enlarged'))
 				.to
@@ -365,13 +357,7 @@ describe('Toggle-buttons-group', () => {
 		});
 
 		it(`should remove enlarged if dense is declared`, function () {
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} dense>
-<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[0]}" enlarged>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[1]}" dense>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[2]}" >BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-</${COMPONENT_NAME}>`)
-			);
+			const [actualElement] = createElement('dense');
 
 			[...actualElement.children].forEach(childNode => expect(childNode.hasAttribute('enlarged'))
 				.to
@@ -383,13 +369,7 @@ describe('Toggle-buttons-group', () => {
 		});
 
 		it(`should remove dense if enlarged is declared`, function () {
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} dense>
-<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[0]}" enlarged>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[1]}" dense>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[2]}" >BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-</${COMPONENT_NAME}>`)
-			);
+			const [actualElement] = createElement('dense');
 
 			[...actualElement.children].forEach(childNode => expect(childNode.hasAttribute('enlarged'))
 				.to
@@ -401,13 +381,7 @@ describe('Toggle-buttons-group', () => {
 		});
 
 		it(`should change the size if changed dynamically`, async function () {
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} enlarged>
-<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[0]}" enlarged>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[1]}" dense>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[2]}" >BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-</${COMPONENT_NAME}>`)
-			);
+			const [actualElement] = createElement('enlarged');
 
 			actualElement.dense = true;
 			await actualElement.updateComplete;
