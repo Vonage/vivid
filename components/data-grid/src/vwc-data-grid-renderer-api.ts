@@ -2,20 +2,28 @@ import { DataGrid } from './vwc-data-grid-api';
 import { DataGridColumn } from './vwc-data-grid-column-api';
 
 export {
-	RendererConfiguration,
+	RowRendererConfiguration,
+	CellRendererConfiguration,
 	MetaRenderer,
-	DataRenderer
+	DataRenderer,
+	RowDetailsRenderer
 };
 
 /**
- * Configuration structure supplied to the various grid renderers
+ * Configuration structure supplied to the whole-row kind renderers
  */
-interface RendererConfiguration {
+ interface RowRendererConfiguration {
 
 	/**
 	 * `grid` component, the renderer is belonging to
 	 */
 	grid: DataGrid,
+}
+
+/**
+ * Configuration structure supplied to the various grid renderers
+ */
+interface CellRendererConfiguration extends RowRendererConfiguration {
 
 	/**
 	 * column configuration, the renderer is belonging to
@@ -30,7 +38,7 @@ interface RendererConfiguration {
  * - attention: the renderer MAY run multiple times, so it is it's own responsibility ot ensure idempotency of the rendered content
  */
 interface MetaRenderer {
-	(container: HTMLElement, configuration: RendererConfiguration): void;
+	(container: HTMLElement, configuration: CellRendererConfiguration): void;
 }
 
 /**
@@ -41,5 +49,16 @@ interface MetaRenderer {
  * - attention: the renderer MAY run multiple times, so it is it's own responsibility ot ensure idempotency of the rendered content
  */
 interface DataRenderer {
-	(container: HTMLElement, configuration: RendererConfiguration, data: { item: unknown, selected: boolean }): void;
+	(container: HTMLElement, configuration: CellRendererConfiguration, data: { item: unknown, selected: boolean }): void;
+}
+
+/**
+ * Renderer of row details
+ * - renderer should perform the rendering of the content into the `container` element provided
+ * - relevant configuration supplied
+ * - relevant data item supplied
+ * - attention: the renderer MAY run multiple times, so it is it's own responsibility ot ensure idempotency of the rendered content
+ */
+ interface RowDetailsRenderer {
+	(container: HTMLElement, configuration: RowRendererConfiguration, data: { item: unknown, selected: boolean }): void;
 }

@@ -19,8 +19,6 @@ describe('media controller a11y', () => {
 		);
 		await waitNextTask();
 
-		await expect(actualElement).shadowDom.to.be.accessible({
-			ignoredRules: ['button-name'],
-		});
+		await expect(actualElement).shadowDom.to.be.accessible();
 	});
 });

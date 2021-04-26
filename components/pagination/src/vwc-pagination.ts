@@ -9,6 +9,8 @@ import { style } from './vwc-pagination.css';
 import { html, TemplateResult } from 'lit-element';
 
 export const COMPONENT_NAME = 'vwc-pagination';
+export const PREV_DISABLED_ATTR_NAME = 'prev-disabled';
+export const NEXT_DISABLED_ATTR_NAME = 'next-disabled';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -36,6 +38,7 @@ export class VWCPagination extends LitElement {
 	connectedCallback() {
 		super.connectedCallback();
 		this.setupPointerListeners();
+		this.reflectControlsState();
 	}
 
 	protected updated(changes: PropertyValues): void {
@@ -64,6 +67,7 @@ export class VWCPagination extends LitElement {
 		}
 
 		if (changes.get('selectedIndex') !== undefined && this.selectedIndex !== changes.get('selectedIndex')) {
+			this.reflectControlsState();
 			this.notifyChange();
 		}
 	}
@@ -80,7 +84,7 @@ export class VWCPagination extends LitElement {
 
 	private renderPrev(): TemplateResult {
 		return html`
-			<span class="prev item" ?disabled="${this.selectedIndex < 1}" @pointerup="${this.goPrev}">
+			<span class="item prev" ?disabled="${this.isPrevDisabled()}" @pointerup="${this.goPrev}">
 				<slot name="prev-control">
 				<span class="control"
 					@pointerdown="${this.handleRippleActivateControl}"
@@ -97,7 +101,7 @@ export class VWCPagination extends LitElement {
 	private renderNext(): TemplateResult {
 		return html`
 			<span
-			 	class="item next" ?disabled="${this.selectedIndex > this.total - 2}" @pointerup="${this.goNext}">
+			 	class="item next" ?disabled="${this.isNextDisabled()}" @pointerup="${this.goNext}">
 				<slot name="next-control">
 					<span class="control"
 						@pointerdown="${this.handleRippleActivateControl}"
@@ -147,15 +151,19 @@ export class VWCPagination extends LitElement {
 	}
 
 	private goPrev(): void {
-		this.selectedIndex -= 1;
+		if (!this.isPrevDisabled()) {
+			this.selectedIndex -= 1;
+		}
 	}
 
 	private goNext(): void {
-		this.selectedIndex += 1;
+		if (!this.isNextDisabled()) {
+			this.selectedIndex += 1;
+		}
 	}
 
 	private goTo(index: number): void {
-		this.selectedIndex = index;
+		this.selectedIndex = Math.max(0, Math.min(this.total - 1, index));
 	}
 
 	private setupPointerListeners(): void {
@@ -165,6 +173,19 @@ export class VWCPagination extends LitElement {
 				this.goTo(parseInt(target.dataset.index));
 			}
 		});
+	}
+
+	private reflectControlsState(): void {
+		if (this.isPrevDisabled()) {
+			this.setAttribute(PREV_DISABLED_ATTR_NAME, '');
+		} else {
+			this.removeAttribute(PREV_DISABLED_ATTR_NAME);
+		}
+		if (this.isNextDisabled()) {
+			this.setAttribute(NEXT_DISABLED_ATTR_NAME, '');
+		} else {
+			this.removeAttribute(NEXT_DISABLED_ATTR_NAME);
+		}
 	}
 
 	private notifyChange(): void {
@@ -179,7 +200,7 @@ export class VWCPagination extends LitElement {
 		this.dispatchEvent(changeEvent);
 	}
 
-	private handleRippleActivatePage(e: PointerEvent) {
+	private handleRippleActivatePage(e: PointerEvent): void {
 		const ripple = (e.target as HTMLElement).querySelector('.ripple') as Ripple;
 		if (!ripple) {
 			return;
@@ -192,14 +213,14 @@ export class VWCPagination extends LitElement {
 		window.addEventListener('pointerup', onUp);
 		ripple.startPress(e);
 	}
-	private handleRippleDeactivatePage(e: PointerEvent) {
+	private handleRippleDeactivatePage(e: PointerEvent): void {
 		const ripple = (e.target as HTMLElement).querySelector('.ripple') as Ripple;
 		if (ripple) {
 			ripple.endPress();
 		}
 	}
 
-	private handleRippleActivateControl(e: PointerEvent) {
+	private handleRippleActivateControl(e: PointerEvent): void {
 		const ripple = (e.target as HTMLElement)
 			.closest('.item:not([disabled])')
 			?.querySelector('.ripple') as Ripple;
@@ -213,7 +234,7 @@ export class VWCPagination extends LitElement {
 			ripple.startPress(e);
 		}
 	}
-	private handleRippleDeactivateControl(e: PointerEvent) {
+	private handleRippleDeactivateControl(e: PointerEvent): void {
 		const ripple = (e.target as HTMLElement)
 			.closest('.item:not([disabled])')
 			?.querySelector('.ripple') as Ripple;
@@ -221,6 +242,14 @@ export class VWCPagination extends LitElement {
 		if (ripple) {
 			ripple.endPress();
 		}
+	}
+
+	private isPrevDisabled(): boolean {
+		return this.selectedIndex < 1;
+	}
+
+	private isNextDisabled(): boolean {
+		return this.selectedIndex > this.total - 2;
 	}
 
 	private static buildPagesMap(total: number, pivot: number, minBeforeEllipse = 7): number[] {
