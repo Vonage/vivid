@@ -5,6 +5,7 @@ import {
 	customElement, property, html, CSSResult, query
 } from 'lit-element';
 import { LitFlatpickr } from 'lit-flatpickr';
+import weekSelect from 'flatpickr/dist/plugins/weekSelect/weekSelect';
 import { Options } from 'flatpickr/dist/types/options';
 import { style as vwcDatepickerStyles } from './vwc-datepicker.css.js';
 import { VWCButton } from '@vonage/vwc-button';
@@ -33,6 +34,9 @@ export class VWCDatepicker extends LitFlatpickr {
 	monthPicker = false;
 
 	@property({ type: Boolean, reflect: true })
+	weekSelect = false;
+
+	@property({ type: Boolean, reflect: true })
 	closeOnSelect = false;
 
 	@property({ type: Boolean, reflect: true })
@@ -41,6 +45,8 @@ export class VWCDatepicker extends LitFlatpickr {
 	anchor: HTMLElement | null = this;
 
 	private appendTo: HTMLElement | undefined;
+
+	private plugins: Array<any> = [];
 
 	constructor() {
 		super();
@@ -66,6 +72,10 @@ export class VWCDatepicker extends LitFlatpickr {
 			const menu = this.shadowRoot?.querySelector('vwc-menu');
 			if (menu) menu.open = false;
 		};
+
+		if (this.weekSelect) {
+			this.plugins.push(weekSelect());
+		}
 	}
 
 	// override lit-flatpicker
@@ -438,6 +448,7 @@ export class VWCDatepicker extends LitFlatpickr {
 			wrap: this.wrap,
 			// additional config options
 			...(this.enable && { enable: this.enable }),
+			...(this.plugins.length && { plugins: this.plugins }),
 			appendTo: this.appendTo,
 			closeOnSelect: this.closeOnSelect
 		};

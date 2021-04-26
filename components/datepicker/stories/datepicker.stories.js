@@ -25,6 +25,9 @@ Basic.args = { dateFormat: 'Y-m-d', altInput: '', altFormat: 'F j, Y', closeOnSe
 export const MaxDate = Template.bind({});
 MaxDate.args = { dateFormat: 'Y-m-d', MaxDate: 'today', closeOnSelect: '' };
 
+export const weekSelect = Template.bind({});
+weekSelect.args = { weekSelect: '', closeOnSelect: '' };
+
 export const MonthPicker = Template.bind({});
 MonthPicker.args = { dateFormat: 'F Y', monthPicker: '', closeOnSelect: '' };
 

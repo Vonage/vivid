@@ -11,6 +11,12 @@ export const argTypes = {
 			options: ['single', 'multiple', 'range']
 		}
 	},
+	weekSelect: {
+		control: {
+			type: 'inline-radio',
+			options: { 'true': '', 'false': undefined }
+		}
+	},
 	monthPicker: {
 		control: {
 			type: 'inline-radio',
