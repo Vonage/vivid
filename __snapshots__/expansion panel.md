@@ -10,13 +10,13 @@
         <vwc-icon
           class="toggle-open vvd-icon"
           size="medium"
-          type="plus-solid"
+          type="chevron-down-solid"
         >
         </vwc-icon>
         <vwc-icon
           class="toggle-close vvd-icon"
           size="medium"
-          type="minus-solid"
+          type="chevron-up-solid"
         >
         </vwc-icon>
       </slot>

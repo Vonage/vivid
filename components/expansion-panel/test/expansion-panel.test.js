@@ -67,28 +67,7 @@ describe('expansion panel', () => {
 			await waitNextTask();
 		});
 
-		it('should have plus/minus toggle icon by default', async () => {
-			const toggleOpenIcon = actualElement.shadowRoot.querySelector('.toggle-open');
-			const toggleCloseIcon = actualElement.shadowRoot.querySelector('.toggle-close');
-
-			expect(toggleOpenIcon.type).to.equal('plus-solid');
-			assertComputedStyle(toggleCloseIcon, {
-				display: 'none',
-			});
-
-			actualElement.open = true;
-			await waitNextTask();
-
-			expect(toggleCloseIcon.type).to.equal('minus-solid');
-			assertComputedStyle(toggleOpenIcon, {
-				display: 'none',
-			});
-		});
-
-		it('should have chevron toggle icon when chevronToggle', async () => {
-			actualElement.chevronToggle = true;
-			await waitNextTask();
-
+		it('should have chevron toggle icon by default', async () => {
 			const toggleOpenIcon = actualElement.shadowRoot.querySelector('.toggle-open');
 			const toggleCloseIcon = actualElement.shadowRoot.querySelector('.toggle-close');
 
@@ -101,6 +80,27 @@ describe('expansion panel', () => {
 			await waitNextTask();
 
 			expect(toggleCloseIcon.type).to.equal('chevron-up-solid');
+			assertComputedStyle(toggleOpenIcon, {
+				display: 'none',
+			});
+		});
+
+		it('should have plus/minus toggle icon when indicatorIconSet set to binary', async () => {
+			actualElement.indicatorIconSet = 'binary';
+			await waitNextTask();
+
+			const toggleOpenIcon = actualElement.shadowRoot.querySelector('.toggle-open');
+			const toggleCloseIcon = actualElement.shadowRoot.querySelector('.toggle-close');
+
+			expect(toggleOpenIcon.type).to.equal('plus-solid');
+			assertComputedStyle(toggleCloseIcon, {
+				display: 'none',
+			});
+
+			actualElement.open = true;
+			await waitNextTask();
+
+			expect(toggleCloseIcon.type).to.equal('minus-solid');
 			assertComputedStyle(toggleOpenIcon, {
 				display: 'none',
 			});
@@ -120,11 +120,20 @@ describe('expansion panel', () => {
 		});
 
 		it('should have custom leading icon', async () => {
+			actualElement.trailingToggle = true;
 			actualElement.icon = 'chat-solid';
 			await waitNextTask();
 
 			const customIcon = actualElement.shadowRoot.querySelector('.leading-icon .vvd-icon');
 			expect(customIcon.type).to.equal('chat-solid');
+		});
+
+		it('should not override leading toggle when leading icon set', async () => {
+			actualElement.icon = 'chat-solid';
+			await waitNextTask();
+
+			const customIcon = actualElement.shadowRoot.querySelector('.leading-icon .vvd-icon');
+			expect(customIcon.type).to.equal('chevron-down-solid');
 		});
 	});
 
