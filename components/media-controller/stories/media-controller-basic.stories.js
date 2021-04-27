@@ -84,51 +84,55 @@ export const basic = () => html`
 	</p>
 	<script>
 
-		const [
-		  playbackStatusEl,
-			scrubberStatusEl,
-			vwcMediaControllerEl,
-			screenEl
-		] = [
-			'code#playbackStatus',
-			'code#scrubberStatus',
-			'vwc-media-controller',
-			'div#screen'
-		].map((tagName)=> document.querySelector(tagName));
+		(function(){
 
-		let
-			scrubberPosition = 0,
-			isPlaying = false;
+		  const [
+				playbackStatusEl,
+				scrubberStatusEl,
+				vwcMediaControllerEl,
+				screenEl
+			] = [
+				'code#playbackStatus',
+				'code#scrubberStatus',
+				'vwc-media-controller',
+				'div#screen'
+			].map((tagName) => document.querySelector(tagName));
 
-		const updateStatusView = ()=> {
-			screenEl.textContent = [
-			  ["Scrubber is at", (scrubberPosition * 100).toFixed(2) + "%"].join(' '),
-				["Playback state is", isPlaying ? "PLAYING" : "STOPPED"].join(': ')
-			].join('\\n');
-			vwcMediaControllerEl.setPosition(scrubberPosition);
-			vwcMediaControllerEl.setPlayState(isPlaying);
-		};
+			let
+				scrubberPosition = 0,
+				isPlaying = false;
 
-		vwcMediaControllerEl.addEventListener('userScrubRequest', ({ detail })=> {
-			scrubberPosition = detail;
+			const updateStatusView = () => {
+				screenEl.textContent = [
+					["Scrubber is at", (scrubberPosition * 100).toFixed(2) + "%"].join(' '),
+					["Playback state is", isPlaying ? "PLAYING" : "STOPPED"].join(': ')
+				].join('\\n');
+				vwcMediaControllerEl.setPosition(scrubberPosition);
+				vwcMediaControllerEl.setPlayState(isPlaying);
+			};
+
+			vwcMediaControllerEl.addEventListener('userScrubRequest', ({ detail }) => {
+				scrubberPosition = detail;
+				updateStatusView();
+			});
+
+			vwcMediaControllerEl.addEventListener('userPlayPauseRequest', () => {
+				isPlaying = !isPlaying;
+				updateStatusView();
+			});
+
+			vwcMediaControllerEl.addEventListener('userSkipForwardRequest', () => {
+				scrubberPosition = Math.min(scrubberPosition + 0.005, 1);
+				updateStatusView();
+			});
+
+			vwcMediaControllerEl.addEventListener('userSkipBackwardsRequest', () => {
+				scrubberPosition = Math.max(scrubberPosition - 0.005, 0);
+				updateStatusView();
+			});
+
 			updateStatusView();
-		});
+		})();
 
-		vwcMediaControllerEl.addEventListener('userPlayPauseRequest', ()=> {
-			isPlaying = !isPlaying;
-		  updateStatusView();
-		});
-
-		vwcMediaControllerEl.addEventListener('userSkipForwardRequest', () => {
-			scrubberPosition = Math.min(scrubberPosition + 0.005, 1);
-			updateStatusView();
-		});
-
-		vwcMediaControllerEl.addEventListener('userSkipBackwardsRequest', () => {
-			scrubberPosition = Math.max(scrubberPosition - 0.005, 0);
-			updateStatusView();
-		});
-
-		updateStatusView();
 	</script>
 `;
