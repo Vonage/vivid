@@ -51,7 +51,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 			<div class="expansion-panel-header">
 				<span class="leading-icon">
 					<slot name="icon">
-						${this.icon || !this.trailingToggle ? this.renderIconOrToggle() : ''}
+						${this.renderIconOrToggle()}
 					</slot>
 				</span>
 				${this.header}
@@ -67,11 +67,13 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 		</div>`;
 	}
 
-	protected renderIconOrToggle(): TemplateResult {
-		if (this.icon) {
+	protected renderIconOrToggle(): TemplateResult | string {
+		if (!this.trailingToggle) {
+			return this.renderToggle();
+		} else if (this.icon) {
 			return html`<vwc-icon class="vvd-icon" type="${this.icon}"></vwc-icon>`;
 		} else {
-			return this.renderToggle();
+			return '';
 		}
 	}
 
