@@ -1,5 +1,5 @@
+import '../vwc-accordion.js';
 import '../vwc-expansion-panel.js';
-import '../vwc-expansion-panel-list.js';
 import {
 	textToDomToParent,
 	waitNextTask,
@@ -9,14 +9,14 @@ import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
 
-const COMPONENT_NAME = 'vwc-expansion-panel-list';
+const COMPONENT_NAME = 'vwc-accordion';
 
-describe('expansion panel list', () => {
+describe('accordion', () => {
 	let addElement = isolatedElementsCreation();
 
 	it('should be defined as a custom element', () => {
 		assert.exists(
-			customElements.get(COMPONENT_NAME, 'vwc-expansion-panel-list element is not defined')
+			customElements.get(COMPONENT_NAME, 'vwc-accordion element is not defined')
 		);
 	});
 
@@ -30,7 +30,7 @@ describe('expansion panel list', () => {
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
-	describe(`expansion panel visibility`, function () {
+	describe(`accordion visibility`, function () {
 		it('should only allow one expansion panel open at a time', async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`
@@ -45,12 +45,12 @@ describe('expansion panel list', () => {
 			expect(openExpansionPanels.length).to.equal(1);
 		});
 
-		it('should have all expansion panels open when set to multi and openAll', async () => {
+		it('should have all expansion panels open when set to multi', async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`
-					<${COMPONENT_NAME} multi openAll>
-						<vwc-expansion-panel header="panel 1"></vwc-expansion-panel>
-						<vwc-expansion-panel header="panel 2"></vwc-expansion-panel>
+					<${COMPONENT_NAME} multi>
+						<vwc-expansion-panel open header="panel 1"></vwc-expansion-panel>
+						<vwc-expansion-panel open header="panel 2"></vwc-expansion-panel>
 					</${COMPONENT_NAME}>
 				`)
 			);

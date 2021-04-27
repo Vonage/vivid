@@ -1,9 +1,9 @@
-# `expansion panel list`
+# `accordion`
 
 #### `should have internal contents`
 
 ```html
-<div class="expansion-panel-list">
+<div class="accordion">
   <slot>
   </slot>
 </div>

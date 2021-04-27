@@ -1,12 +1,9 @@
 import { LitElement, property } from 'lit-element';
 import { VWCExpansionPanelBase } from './vwc-expansion-panel-base.js';
 
-export abstract class VWCExpansionPanelListBase extends LitElement {
+export abstract class VWCAccordionBase extends LitElement {
 	@property({ type: Boolean, reflect: true })
 	multi = false;
-
-	@property({ type: Boolean, reflect: true })
-	openAll = false;
 
 	private expansionPanels: HTMLCollectionOf<VWCExpansionPanelBase> | undefined = undefined;
 
@@ -18,12 +15,6 @@ export abstract class VWCExpansionPanelListBase extends LitElement {
 	connectedCallback(): void {
 		super.connectedCallback();
 		this.expansionPanels = this.children as HTMLCollectionOf<VWCExpansionPanelBase>;
-
-		if (this.multi && this.openAll && this.expansionPanels) {
-			for (const expansionPanel of this.expansionPanels) {
-				expansionPanel.open = true;
-			}
-		}
 	}
 
 	handleOpened(e: Event): any {
