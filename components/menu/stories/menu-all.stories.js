@@ -12,5 +12,4 @@ export default {
 }
 
 export { WithVWCListItem, WithVWCListItemComplex } from './menu-basic.js';
-
-// export { Cascading } from './menu-cascading.js';
+export { CheckboxItems } from './menu-checkbox-items.js'

@@ -19,4 +19,15 @@ MWCMenu.styles = [styleCoupling, mwcMenuStyle, vwcMenuStyle];
  * This component is an extension of [<mwc-menu>](https://github.com/material-components/material-components-web-components/tree/master/packages/menu)
  */
 @customElement('vwc-menu')
-export class VWCMenu extends MWCMenu { }
+export class VWCMenu extends MWCMenu {
+	createAdapter(): any {
+		const baseAdapter = super.createAdapter();
+		const baseCloseSurface = baseAdapter.closeSurface;
+		baseAdapter.closeSurface = () => {
+			if (!this.multi) {
+				baseCloseSurface();
+			}
+		};
+		return baseAdapter;
+	}
+}
