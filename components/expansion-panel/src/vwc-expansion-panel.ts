@@ -15,6 +15,9 @@ declare global {
 	}
 }
 
+const iconSets = ['chevron', 'binary'];
+export type IndicatorIconSets = typeof iconSets;
+
 @customElement('vwc-expansion-panel')
 export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	static styles = style;
@@ -25,8 +28,8 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	@property({ type: String, reflect: true })
 	icon = '';
 
-	@property({ type: Boolean, reflect: true })
-	chevronToggle = false;
+	@property({ type: String, reflect: true })
+	indicatorIconSet: IndicatorIconSets[number] = 'chevron';
 
 	@property({ type: Boolean, reflect: true })
 	trailingToggle = false;
@@ -81,12 +84,12 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 		return html`
 			<vwc-icon
 				class="vvd-icon toggle-open"
-				type="${this.chevronToggle ? 'chevron-down-solid' : 'plus-solid'}"
+				type="${this.indicatorIconSet === 'chevron' ? 'chevron-down-solid' : 'plus-solid'}"
 			>
 			</vwc-icon>
 			<vwc-icon
 				class="vvd-icon toggle-close"
-				type="${this.chevronToggle ? 'chevron-up-solid' : 'minus-solid'}"
+				type="${this.indicatorIconSet === 'chevron' ? 'chevron-up-solid' : 'minus-solid'}"
 			>
 			</vwc-icon>
 		`;

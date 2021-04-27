@@ -4,10 +4,10 @@ export const argTypes = {
 			type: 'text'
 		}
 	},
-	chevronToggle: {
+	indicatorIconSet: {
 		control: {
-			type: 'inline-radio',
-			options: { 'true': '', 'false': undefined }
+			type: 'select',
+			options: ['chevron', 'binary'],
 		}
 	},
 	trailingToggle: {

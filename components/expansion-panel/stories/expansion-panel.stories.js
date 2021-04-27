@@ -31,11 +31,11 @@ const Template = args => html`
 export const Basic = Template.bind({});
 Basic.args = { header: 'Campaign Details' };
 
-export const ChevronToggle = Template.bind({});
-ChevronToggle.args = { header: 'Campaign Details', chevronToggle: '' };
+export const IndicatorIconSet = Template.bind({});
+IndicatorIconSet.args = { header: 'Campaign Details', indicatorIconSet: 'binary' };
 
 export const TrailingToggle = Template.bind({});
-TrailingToggle.args = { header: 'Campaign Details', trailingToggle: '', chevronToggle: '' };
+TrailingToggle.args = { header: 'Campaign Details', trailingToggle: '' };
 
 export const IconWithTrailingToggle = Template.bind({});
-IconWithTrailingToggle.args = { header: 'Campaign Details', icon: 'chat-solid', trailingToggle: '', chevronToggle: '' };
+IconWithTrailingToggle.args = { header: 'Campaign Details', icon: 'chat-solid', trailingToggle: '' };
