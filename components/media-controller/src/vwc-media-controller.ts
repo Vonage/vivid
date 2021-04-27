@@ -1,6 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-nocheck
 import '@vonage/vvd-core';
+import '@vonage/vwc-icon';
 import kefir from 'kefir';
 import {
 	pipe, partial, clamp, prop, always, not, identity, path
@@ -10,8 +11,8 @@ import { style as vwcMediaControllerStyle } from './vwc-media-controller.css';
 const SIGNAL = Symbol('signal'),
 	TRACK_KNOB_HORIZONTAL_MARGIN = 5,
 	TRACK_VERTICAL_RESPONSIVITY_MARGIN = 10,
-	TRACK_INACTIVE_COLOR = '#E1E2E6',
-	TRACK_ACTIVE_COLOR = '#999',
+	TRACK_INACTIVE_COLOR = 'var(--vvd-color-neutral-70)',
+	TRACK_ACTIVE_COLOR = 'var(--vvd-color-neutral-30)',
 	KEY_LEFT = 'ArrowLeft',
 	KEY_RIGHT = 'ArrowRight';
 
@@ -82,11 +83,15 @@ class VWCMediaController extends HTMLElement {
 			rootEl;
 
 		const componentContent = (function () {
-			const [style, div, button] = ['style', 'div', 'button'].map(tagName => partial(createTag, [tagName]));
+			const [style, div, button, vwcIcon] = ['style', 'div', 'button', 'vwc-icon'].map(tagName => partial(createTag, [tagName]));
 			return [
 				style({}, vwcMediaControllerStyle.cssText),
 				(rootEl = div({ tabindex: '-1' },
-					(playPauseControlEl = button({ tabindex: '0', 'aria-label': 'Play/Pause' })),
+					(playPauseControlEl =
+						button({ tabindex: '0', 'aria-label': 'Play/Pause' },
+							vwcIcon({ class: 'play', type: 'play-solid' }),
+							vwcIcon({ class: 'pause', type: 'pause-solid' }))
+					),
 					(trackEl = div({}, (ScrubberKnobEl = button({ tabindex: '0', 'aria-label': 'Seek' })))))),
 			];
 		}());
