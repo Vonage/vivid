@@ -25,7 +25,7 @@ export class VWCMenu extends MWCMenu {
 		const baseAdapter = super.createAdapter();
 		const baseCloseSurface = baseAdapter.closeSurface;
 		baseAdapter.closeSurface = () => {
-			if (!this.multi) {
+			if (!this.multi && !this.activatable) {
 				baseCloseSurface();
 			}
 		};
