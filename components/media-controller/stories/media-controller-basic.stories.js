@@ -40,7 +40,7 @@ export const basic = () => html`
 		}
 
 		section#player {
-			background-color: #fff;
+			background-color: var(--vvd-color-on-primary);
 			box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
 			margin: auto;
 			display: flex;
