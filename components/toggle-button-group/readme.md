@@ -1,18 +1,32 @@
 # vwc-toggle-buttons-group
 
-## Usage
+
+# Usage
+
 
 ```
 <vwc-toggle-buttons-group>
-  <vwc-button value="11" layout="text">BUTTON</vwc-button>
-  <vwc-button value="12" layout="text">BUTTON</vwc-button>
-  <vwc-button value="13" layout="text">BUTTON</vwc-button>
+  <vwc-button value="11" layout="text" type="submit">BUTTON</vwc-button>
+  <vwc-button value="12" layout="text" type="submit">BUTTON</vwc-button>
+  <vwc-button value="13" layout="text" type="submit">BUTTON</vwc-button>
 </vwc-toggle-buttons-group>
 ```
 
-## API
 
-### Properties/Attributes
+
+# Template
+
+
+```
+<slot></slot>
+```
+
+
+
+# API
+
+
+## Properties/Attributes
 
 
 <table>
@@ -28,7 +42,7 @@
   </tr>
   <tr>
    <td>
-<h4>multi</h4>
+<h3>multi</h3>
 
 
    </td>
@@ -41,7 +55,7 @@
   </tr>
   <tr>
    <td>
-<h4>selected (readonly)</h4>
+<h3>selected (readonly)</h3>
 
 
    </td>
@@ -54,7 +68,7 @@
   </tr>
   <tr>
    <td>
-<h4>values</h4>
+<h3>values</h3>
 
 
    </td>
@@ -67,7 +81,7 @@
   </tr>
   <tr>
    <td>
-<h4>items</h4>
+<h3>items</h3>
 
 
    </td>
@@ -78,11 +92,65 @@
    <td>A list of valid toggle elements
    </td>
   </tr>
+  <tr>
+   <td>
+<h3>shape</h3>
+
+
+   </td>
+   <td>reflected
+   </td>
+   <td>“pill”/”rounded”
+   </td>
+   <td>
+   </td>
+  </tr>
+  <tr>
+   <td>
+<h3>accent</h3>
+
+
+   </td>
+   <td>reflected
+   </td>
+   <td>boolean
+   </td>
+   <td>
+   </td>
+  </tr>
+  <tr>
+   <td>
+<h3>dense</h3>
+
+
+   </td>
+   <td>reflected
+   </td>
+   <td>boolean
+   </td>
+   <td>
+		Set the size of the buttons as dense
+   </td>
+  </tr>
+  <tr>
+   <td>
+<h3>enlarged</h3>
+
+
+   </td>
+   <td>reflected
+   </td>
+   <td>boolean
+   </td>
+   <td>
+		Set the size of the buttons as enlarged
+   </td>
+  </tr>
 </table>
 
 
 
-### Events
+## Events
 
 
 <table>
@@ -96,20 +164,20 @@
   </tr>
   <tr>
    <td>
-<h4>selected</h4>
+<h3>selected</h3>
 
 
    </td>
    <td>
    </td>
-   <td>Fires when 
+   <td>Fires when a button is toggled
    </td>
   </tr>
 </table>
 
 
 
-## Notes for consumers:
+# Notes for consumers:
 
 
 
@@ -120,4 +188,6 @@
 	*   When handling a `selected` event one would probably like to query the element.values or element.selected to get the current state after the change
 *   One can add more buttons dynamically
 	*   If you remove an item and not destroy it, remember that there’s a listener on this item
-*   Selected items have the `selected` 
+*   Selected items have the `selected`
+*   In order to enforce styles, the following attributes are automatically removed:
+	*   `layout=”outlined”`
