@@ -329,7 +329,7 @@ describe('Toggle-buttons-group', () => {
 		}
 
 		function checkSizeProperty(actualElement, sizeProperty, exists = true) {
-			[...actualElement.children].forEach(childNode => expect(childNode.hasAttribute(sizeProperty))
+			[...actualElement.children].forEach((childNode, i) => expect(childNode.hasAttribute(sizeProperty), `Failed to test ${sizeProperty} index ${i}`)
 				.to
 				.equal(exists));
 		}
@@ -360,16 +360,16 @@ describe('Toggle-buttons-group', () => {
 			checkSizeProperty(actualElement, 'dense', true);
 		});
 
-		it(`should remove dense if enlarged is declared`, function () {
+		it(`should remove dense if enlarged is declared`, async function () {
 			const [actualElement] = createElement('dense');
 
-			[...actualElement.children].forEach(childNode => expect(childNode.hasAttribute('enlarged'))
-				.to
-				.equal(false));
+			await actualElement.updateComplete;
+			actualElement.enlarged = true;
+			await actualElement.updateComplete;
+			await waitNextTask();
 
-			[...actualElement.children].forEach(childNode => expect(childNode.hasAttribute('dense'))
-				.to
-				.equal(true));
+			checkSizeProperty(actualElement, 'enlarged', true);
+			checkSizeProperty(actualElement, 'dense', false);
 		});
 
 		it(`should change the size if changed dynamically`, async function () {
