@@ -25,30 +25,55 @@ describe('vwc-menu', () => {
 		expect(menu.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
-	const preventAutoCloseCases = ['multi', 'activatable'];
-	describe(`non auto-closable menu (${preventAutoCloseCases.join(', ')})`, () => {
-		for (const configCase of preventAutoCloseCases) {
-			it(`should keep the menu opened when '${configCase}'`, async () => {
-				const [menu] = addElement(textToDomToParent(
-					`<vwc-menu ${configCase}>
-						<vwc-check-list-item>Test A</vwc-check-list-item>
-						<vwc-check-list-item>Test B</vwc-check-list-item>
-					</vwc-menu>`
-				));
-				await menu.updateComplete;
-				menu.open = true;
-				await menu.updateComplete;
-				expect(menu.shadowRoot.querySelector('.mdc-menu-surface').hasAttribute('open')).true;
+	describe('non auto-closable menu', () => {
+		it(`should keep the menu opened when 'multi'`, async () => {
+			const [menu] = addElement(textToDomToParent(
+				getListWithNItems(2, 'multi')
+			));
+			await menu.updateComplete;
+			menu.open = true;
+			await menu.updateComplete;
+			expect(menu.shadowRoot.querySelector('.mdc-menu-surface').hasAttribute('open')).true;
 
-				/* eslint-disable no-await-in-loop */
-				for (const checkListItem of menu.children) {
-					checkListItem.click();
-					await checkListItem.updateComplete;
-					expect(checkListItem.hasAttribute('selected')).true;
-				}
-
-				expect(menu.shadowRoot.querySelector('.mdc-menu-surface').hasAttribute('open')).true;
+			const allClickedPromises = Array.from(menu.children).map((checkListItem) => {
+				checkListItem.click();
+				return checkListItem.updateComplete;
 			});
-		}
+			await Promise.all(allClickedPromises);
+			for (const checkListItem of menu.children) {
+				expect(checkListItem.hasAttribute('selected')).true;
+			}
+
+			expect(menu.shadowRoot.querySelector('.mdc-menu-surface').hasAttribute('open')).true;
+		});
+
+		it(`should keep the menu opened when 'activatable'`, async () => {
+			const [menu] = addElement(textToDomToParent(
+				getListWithNItems(2, 'activatable')
+			));
+			await menu.updateComplete;
+			menu.open = true;
+			await menu.updateComplete;
+			expect(menu.shadowRoot.querySelector('.mdc-menu-surface').hasAttribute('open')).true;
+
+			const firstListItem = menu.children[0];
+			firstListItem.click();
+			await firstListItem.updateComplete;
+
+			expect(firstListItem.hasAttribute('selected')).true;
+			expect(firstListItem.hasAttribute('activated')).true;
+			expect(menu.shadowRoot.querySelector('.mdc-menu-surface').hasAttribute('open')).true;
+		});
 	});
 });
+
+function getListWithNItems(n, attributes = []) {
+	const attrs = Array.isArray(attributes) ? attributes : [attributes];
+	return `<vwc-menu ${attrs.join(' ')}>
+		${new Array(n)
+		.fill(0)
+		.map((_v, i) => `<vwc-check-list-item>Item ${i}</vwc-check-list-item>`)
+		.join()
+}
+	</vwc-menu>`;
+}
