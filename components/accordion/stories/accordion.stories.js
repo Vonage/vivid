@@ -1,8 +1,8 @@
-import '@vonage/vwc-expansion-panel/vwc-accordion.js';
+import '@vonage/vwc-accordion/vwc-accordion.js';
 import '@vonage/vwc-expansion-panel/vwc-expansion-panel.js';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
-import { argTypes } from './arg-types-accordion.js';
+import { argTypes } from './arg-types.js';
 
 export default {
   title: 'Alpha/Components/Accordion',

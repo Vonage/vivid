@@ -1,5 +1,5 @@
-import '../vwc-accordion.js';
-import '../vwc-expansion-panel.js';
+import '@vonage/vwc-accordion/vwc-accordion';
+import '@vonage/vwc-expansion-panel/vwc-expansion-panel';
 import {
 	textToDomToParent,
 	waitNextTask,
