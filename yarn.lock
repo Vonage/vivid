@@ -2407,7 +2407,7 @@
     "@material/typography" "9.0.0-canary.1c156d69d.0"
     tslib "^1.9.3"
 
-"@material/icon-button@=9.0.0-canary.1c156d69d.0":
+"@material/icon-button@9.0.0-canary.1c156d69d.0", "@material/icon-button@=9.0.0-canary.1c156d69d.0":
   version "9.0.0-canary.1c156d69d.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/icon-button/-/icon-button-9.0.0-canary.1c156d69d.0.tgz#076205e1fa563f946c65429a58b7553e2e50b68d"
   integrity sha1-B2IF4fpWP5RsZUKaWLdVPi5Qto0=
@@ -2739,6 +2739,17 @@
     lit-html "^1.1.2"
     tslib "^2.0.1"
 
+"@material/mwc-snackbar@0.20.0":
+  version "0.20.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-snackbar/-/mwc-snackbar-0.20.0.tgz#46b52ee8ad64a3ad4b5a8959f8970d2d1b74b205"
+  integrity sha1-RrUu6K1ko61LWolZ+JcNLRt0sgU=
+  dependencies:
+    "@material/mwc-base" "^0.20.0"
+    "@material/snackbar" "=9.0.0-canary.1c156d69d.0"
+    lit-element "^2.3.0"
+    lit-html "^1.1.2"
+    tslib "^2.0.1"
+
 "@material/mwc-switch@^0.20.0":
   version "0.20.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-switch/-/mwc-switch-0.20.0.tgz#e4b3c3f512e7c2c497f07828795aa543320e81f9"
@@ -2951,6 +2962,25 @@
     "@material/rtl" "8.0.0-canary.01db89053.0"
     "@material/theme" "8.0.0-canary.01db89053.0"
     "@material/typography" "8.0.0-canary.01db89053.0"
+    tslib "^1.9.3"
+
+"@material/snackbar@=9.0.0-canary.1c156d69d.0":
+  version "9.0.0-canary.1c156d69d.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/snackbar/-/snackbar-9.0.0-canary.1c156d69d.0.tgz#80249c5e79092bd2e2118ec9e4344b09759fba5a"
+  integrity sha1-gCScXnkJK9LiEY7J5DRLCXWfulo=
+  dependencies:
+    "@material/animation" "9.0.0-canary.1c156d69d.0"
+    "@material/base" "9.0.0-canary.1c156d69d.0"
+    "@material/button" "9.0.0-canary.1c156d69d.0"
+    "@material/dom" "9.0.0-canary.1c156d69d.0"
+    "@material/elevation" "9.0.0-canary.1c156d69d.0"
+    "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
+    "@material/icon-button" "9.0.0-canary.1c156d69d.0"
+    "@material/ripple" "9.0.0-canary.1c156d69d.0"
+    "@material/rtl" "9.0.0-canary.1c156d69d.0"
+    "@material/shape" "9.0.0-canary.1c156d69d.0"
+    "@material/theme" "9.0.0-canary.1c156d69d.0"
+    "@material/typography" "9.0.0-canary.1c156d69d.0"
     tslib "^1.9.3"
 
 "@material/switch@=9.0.0-canary.1c156d69d.0":
