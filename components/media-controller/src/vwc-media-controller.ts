@@ -11,11 +11,14 @@ const SIGNAL = Symbol('signal'),
 	TRACK_KNOB_HORIZONTAL_MARGIN = 5,
 	TRACK_VERTICAL_RESPONSIVITY_MARGIN = 10,
 	TRACK_INACTIVE_COLOR = '#E1E2E6',
-	TRACK_ACTIVE_COLOR = '#999';
+	TRACK_ACTIVE_COLOR = '#999',
+	KEY_LEFT = 'ArrowLeft',
+	KEY_RIGHT = 'ArrowRight';
 
 const byType = typeName => ({ type }) => type === typeName,
-	createTag = function (tagName, ...children) {
+	createTag = function (tagName, tagAttrs = {}, ...children) {
 		const el = document.createElement(tagName);
+		Object.entries(tagAttrs).forEach(([attributeName, attributeValue]) => el.setAttribute(attributeName, attributeValue));
 		children.forEach(child => (typeof child === 'string' ? (el.innerHTML += child) : el.appendChild(child)));
 		return el;
 	},
@@ -57,13 +60,16 @@ const byType = typeName => ({ type }) => type === typeName,
  *
  * @fires userScrubRequest - Fires while the user modifies the scrubber's knob location.
  * @fires {number} userPlayPauseRequest - Fires when the user clicks the play/pause button, the "detail" event field will contain a number between zero and one describing the user's relative selected position.
+ * @fires userSkipForwardRequest - Fires when the user requests a skip forward
+ * @fires userSkipBackwardsRequest - Fires when the user requests a skip backwards
  */
 class VWCMediaController extends HTMLElement {
 	constructor() {
 		super();
 
 		// Local bus for collecting signals from the end-user/custom element api
-		const apiBus = kefir.pool(),
+		const
+			apiBus = kefir.pool(),
 			sendCustomEvent = sendCustomEventFactory(this);
 
 		this[SIGNAL] = pipe(kefir.constant, apiBus.plug.bind(apiBus));
@@ -78,11 +84,10 @@ class VWCMediaController extends HTMLElement {
 		const componentContent = (function () {
 			const [style, div, button] = ['style', 'div', 'button'].map(tagName => partial(createTag, [tagName]));
 			return [
-				style(vwcMediaControllerStyle.cssText),
-				(rootEl = div(
-					(playPauseControlEl = button()),
-					(trackEl = div((ScrubberKnobEl = button())))
-				)),
+				style({}, vwcMediaControllerStyle.cssText),
+				(rootEl = div({ tabindex: '-1' },
+					(playPauseControlEl = button({ tabindex: '0', 'aria-label': 'Play/Pause' })),
+					(trackEl = div({}, (ScrubberKnobEl = button({ tabindex: '0', 'aria-label': 'Seek' })))))),
 			];
 		}());
 
@@ -90,6 +95,7 @@ class VWCMediaController extends HTMLElement {
 			componentConnectedStream = apiBus.filter(byType('component_connected')),
 			mouseClickStream = kefir.fromEvents(rootDoc, 'click'),
 			mouseDownStream = kefir.fromEvents(rootDoc, 'mousedown'),
+			keyPressStream = kefir.fromEvents(this, 'keydown'),
 			touchStartStream = kefir
 				.fromEvents(window, 'touchstart')
 				.map(preventDefault),
@@ -295,6 +301,18 @@ class VWCMediaController extends HTMLElement {
 			.map(prop('value'))
 			.onValue(partial(sendCustomEvent, ['userScrubRequest']));
 
+		// Send user skip events
+		keyPressStream
+			.map(prop('key'))
+			.filter(keyCode => [KEY_LEFT, KEY_RIGHT].includes(keyCode))
+			.onValue((keyCode) => {
+				sendCustomEvent(({
+					[KEY_LEFT]: 'userSkipBackwardsRequest',
+					[KEY_RIGHT]: 'userSkipForwardRequest'
+				})[keyCode]);
+			});
+
+		// Send user play/pause event
 		const playStateProperty = apiBus
 			.filter(byType('set_play_state'))
 			.map(prop('value'))

@@ -34,23 +34,24 @@ function cellRenderer(container, configuration, data) {
 		container.appendChild(toggler);
 		toggler.addEventListener('change', e => {
 			if (e.target.checked) {
-				grid.openItemDetails(container.data.item);
+				grid.openItemDetails(container.item);
 			} else {
-				grid.closeItemDetails(container.data.item);
+				grid.closeItemDetails(container.item);
 			}
 		});
 	}
-	container.data = data;
+	container.item = data.item;
 	toggler.checked = data.detailsOpened;
 }
 
 function expandedRowRenderer(container, configuration, data) {
-	if (!container.firstElementChild) {
-		const n = document.createElement('vwc-note');
-		n.connotation = 'info';
-		n.icon = 'info';
-		n.header = `${data.item.fname} ${data.item.lname}`;
-		n.textContent = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
-		container.appendChild(n);
+	let details = container.firstElementChild;
+	if (!details) {
+		details = document.createElement('vwc-note');
+		details.connotation = 'info';
+		details.icon = 'info';
+		details.textContent = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.';
+		container.appendChild(details);
 	}
+	details.header = `${data.item.fname} ${data.item.lname}`;
 }

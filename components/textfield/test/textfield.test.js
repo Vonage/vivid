@@ -306,4 +306,33 @@ describe('textfield', () => {
 		shapeRoundedTestCases(COMPONENT_NAME);
 		shapePillTestCases(COMPONENT_NAME);
 	});
+
+	describe('label', () => {
+		let textFieldEl;
+
+		beforeEach(() => {
+			textFieldEl = document.createElement('vwc-textfield');
+			document.body.appendChild(textFieldEl);
+		});
+
+		it('Should have altering bottom-padding when focused for labeled/unlabeled fields', async function () {
+			const scenarios = [
+				{ labelText: "this is a label", expectedPaddingBlockStart: "16px" },
+				{ labelText: "", expectedPaddingBlockStart: "1px" }
+			];
+
+			return scenarios.reduce((promise, { labelText, expectedPaddingBlockStart }) => {
+				return promise.then(async () => {
+					textFieldEl.setAttribute('label', labelText);
+					textFieldEl.focus();
+					await waitNextTask();
+					expect(window.getComputedStyle(textFieldEl.querySelector('input')).paddingBlockStart).to.equal(expectedPaddingBlockStart);
+				});
+			}, Promise.resolve());
+		});
+
+		afterEach(() => {
+			document.body.removeChild(textFieldEl);
+		});
+	});
 });
