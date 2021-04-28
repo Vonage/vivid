@@ -1,3 +1,24 @@
+# [2.5.0](https://github.com/vonage/vivid/compare/v2.4.1...v2.5.0) (2021-04-22)
+
+
+
+## [2.4.1](https://github.com/vonage/vivid/compare/v2.4.0...v2.4.1) (2021-04-21)
+
+
+
+# [2.4.0](https://github.com/vonage/vivid/compare/v2.3.0...v2.4.0) (2021-04-19)
+
+
+
+# [2.3.0](https://github.com/vonage/vivid/compare/v2.2.4...v2.3.0) (2021-04-08)
+
+
+### Features
+
+* **vwc-inline:** add support for auto-fill/fit variance ([#746](https://github.com/vonage/vivid/issues/746)) ([17732b3](https://github.com/vonage/vivid/commit/17732b372d14cbba7708e3cf9332e1899850d3cd))
+
+
+
 ## [2.2.4](https://github.com/vonage/vivid/compare/v2.2.3...v2.2.4) (2021-04-05)
 
 

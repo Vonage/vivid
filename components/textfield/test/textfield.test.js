@@ -1,4 +1,4 @@
-import '../vwc-textfield.js';
+import { COMPONENT_NAME } from '../vwc-textfield.js';
 import '@vonage/vwc-formfield';
 import {
 	textToDomToParent,
@@ -26,8 +26,6 @@ import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
 chai.use(chaiDomDiff);
-
-const COMPONENT_NAME = 'vwc-textfield';
 
 function getHiddenInput(formElement, fieldName) {
 	return formElement.querySelector(`input[name="${fieldName}"]`);
@@ -307,5 +305,34 @@ describe('textfield', () => {
 	describe('shape', () => {
 		shapeRoundedTestCases(COMPONENT_NAME);
 		shapePillTestCases(COMPONENT_NAME);
+	});
+
+	describe('label', () => {
+		let textFieldEl;
+
+		beforeEach(() => {
+			textFieldEl = document.createElement('vwc-textfield');
+			document.body.appendChild(textFieldEl);
+		});
+
+		it('Should have altering bottom-padding when focused for labeled/unlabeled fields', async function () {
+			const scenarios = [
+				{ labelText: "this is a label", expectedPaddingBlockStart: "16px" },
+				{ labelText: "", expectedPaddingBlockStart: "1px" }
+			];
+
+			return scenarios.reduce((promise, { labelText, expectedPaddingBlockStart }) => {
+				return promise.then(async () => {
+					textFieldEl.setAttribute('label', labelText);
+					textFieldEl.focus();
+					await waitNextTask();
+					expect(window.getComputedStyle(textFieldEl.querySelector('input')).paddingBlockStart).to.equal(expectedPaddingBlockStart);
+				});
+			}, Promise.resolve());
+		});
+
+		afterEach(() => {
+			document.body.removeChild(textFieldEl);
+		});
 	});
 });

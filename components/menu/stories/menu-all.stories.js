@@ -6,11 +6,10 @@ import '@vonage/vwc-fab/vwc-fab.js';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Components/Atoms/Menu',
+	title: 'Components/Menu',
 	component: 'vwc-menu',
 	argTypes
 }
 
 export { WithVWCListItem, WithVWCListItemComplex } from './menu-basic.js';
-
-// export { Cascading } from './menu-cascading.js';
+export { CheckboxItems } from './menu-checkbox-items.js'

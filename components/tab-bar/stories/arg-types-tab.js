@@ -1,11 +1,17 @@
 export const argTypes = {
-	trailingIcon: {
+	disabled: {
 		control: {
 			type: 'inline-radio',
 			options: { 'true': '', 'false': undefined }
 		}
 	},
-	disabled: {
+	block: {
+		control: {
+			type: 'inline-radio',
+			options: { 'true': '', 'false': undefined }
+		}
+	},
+	trailingIcon: {
 		control: {
 			type: 'inline-radio',
 			options: { 'true': '', 'false': undefined }

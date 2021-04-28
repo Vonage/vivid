@@ -4,8 +4,9 @@
     "composite": true,
     "rootDir": "src",
     "outDir": ".",
-    "tsBuildInfoFile": ".tsbuildinfo"
-  },
+    "tsBuildInfoFile": ".tsbuildinfo",
+		"emitDecoratorMetadata": true,
+	},
   "include": [
     "src/**/*.ts"
   ],

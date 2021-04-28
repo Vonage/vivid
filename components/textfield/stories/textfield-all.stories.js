@@ -1,7 +1,9 @@
+import '@vonage/vwc-textfield';
+import '@vonage/vwc-list';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Components/Atoms/Textfield',
+	title: 'Components/Textfield',
 	component: 'vwc-textfield',
 	argTypes
 };
@@ -16,5 +18,10 @@ export {
 	Disabled,
 	Icon,
 	PillShape,
-	Validation
-} from './textfield-variants.stories.js'
+	Validation,
+  AutoValidation
+} from './textfield-variants.stories.js';
+
+export {
+	Autocomplete
+} from './textfield-autocomplete.stories';

@@ -1,5 +1,5 @@
 import { DataGridColumn } from '../../vwc-data-grid-column-api';
-import { MetaRenderer, RendererConfiguration } from '../../vwc-data-grid-renderer-api';
+import { MetaRenderer, CellRendererConfiguration } from '../../vwc-data-grid-renderer-api';
 import { MetaRendererProvider } from '../vwc-data-grid-render-provider-api';
 
 export {
@@ -16,7 +16,7 @@ const footerRendererProvider: MetaRendererProvider = (column: DataGridColumn): M
 	return result;
 };
 
-function simpleRenderer(container: HTMLElement, configuration: RendererConfiguration): void {
+function simpleRenderer(container: HTMLElement, configuration: CellRendererConfiguration): void {
 	container.classList.add('vvd-grid-footer');
 	container.textContent = configuration.column.footer;
 }

@@ -11,6 +11,12 @@ import { style } from './vwc-inline.css.js';
 
 type SizeSpacing = Extract<Size, Size.Small | Size.Medium>;
 
+// eslint-disable-next-line no-shadow
+export enum InlineTemplate {
+	Fit = 'fit',
+	Fill = 'fill',
+}
+
 @customElement('vwc-inline')
 export class Inline extends LitElement {
 	static styles = style;
@@ -20,6 +26,9 @@ export class Inline extends LitElement {
 
 	@property({ type: String, reflect: true })
 	spacing: SizeSpacing = Size.Small;
+
+	@property({ type: String, reflect: true })
+	template?: InlineTemplate;
 
 	protected render(): TemplateResult {
 		return html`<slot></slot>`;

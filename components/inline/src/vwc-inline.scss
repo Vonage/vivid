@@ -3,6 +3,8 @@
 $items-min-inline-size-v-name: --items-min-inline-size;
 $items-spacing-v-name: --items-spacing;
 
+$inline-template: --inline-template;
+
 /* #region SIZE */
 $items-min-inline-sizes: (
 	'sm': 10rem,
@@ -37,7 +39,7 @@ $items-spacings: (
 	gap: var(#{$items-spacing-v-name}, #{map.get($items-spacings, md)});
 	grid-auto-rows: min-content;
 	grid-template-columns: repeat(
-		auto-fit,
+		var(#{$inline-template}),
 		minmax(
 			var(
 				#{$items-min-inline-size-v-name},
@@ -47,4 +49,13 @@ $items-spacings: (
 		)
 	);
 	inline-size: 100%;
+}
+
+:host(:not(template)),
+:host([template="fit"i]) {
+	#{$inline-template}: auto-fit;
+}
+
+:host([template="fill"i]) {
+	#{$inline-template}: auto-fill;
 }
