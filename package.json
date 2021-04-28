@@ -38,7 +38,7 @@
 		"build:design-tokens": "lerna run build --scope @vonage/vvd-design-tokens",
 		"compile": "lerna run build --stream",
 		"compile:styles": "lerna run build:styles --stream",
-		"compile:typescript": "tsc -b",
+		"compile:typescript": "lerna run build:typescript",
 		"clean:typescript": "tsc -b --clean",
 		"clean:git": "git clean -xdf",
 		"clean": "yarn clean:typescript && yarn clean:git",
