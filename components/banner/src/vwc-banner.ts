@@ -56,12 +56,14 @@ export class VWCBanner extends LitElement {
 
 	render() {
 		return html`
-			<div>
-				<header>
+			<div class="alert">
+				<figure class="decorative-icon">
 					<vwc-icon type="${this.icon ?? connotationToIconType(this.connotation)}"></vwc-icon>
+				</figure>
+				<p role="alert">
 					<slot></slot>
-					${this.dismissible ? html`<vwc-icon-button @click="${clickCloseHandler.bind(this)}" icon="close-line"></vwc-icon-button>` : nothing}
-				</header>
+				</p>
+				${this.dismissible ? html`<vwc-icon-button @click="${clickCloseHandler.bind(this)}" icon="close-line"></vwc-icon-button>` : nothing}
 			</div>
 		`;
 	}
