@@ -104,6 +104,20 @@ describe('Toggle-buttons-group', () => {
 			.equal(1);
 	});
 
+	it(`should set layout filled for all child buttons`, function () {
+		const [actualElement] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}>
+<${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+</${COMPONENT_NAME}>`)
+		);
+
+		[...actualElement.children].forEach(childNode => expect(childNode.getAttribute('layout'))
+			.to
+			.equal('filled'));
+	});
+
 	describe(`selected`, function () {
 		let actualElement;
 
@@ -300,6 +314,72 @@ describe('Toggle-buttons-group', () => {
 			expect(actualElement.values[0])
 				.to
 				.equal('22');
+		});
+	});
+
+	describe(`size`, function () {
+		function createElement(sizeProperty, childrenSizeProps = ['', '', '']) {
+			return addElement(
+				textToDomToParent(`<${COMPONENT_NAME} ${sizeProperty}>
+<${VALID_BUTTON_ELEMENTS[0]} ${childrenSizeProps[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} ${childrenSizeProps[1]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} ${childrenSizeProps[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+</${COMPONENT_NAME}>`)
+			);
+		}
+
+		function checkSizeProperty(actualElement, sizeProperty, exists = true) {
+			[...actualElement.children].forEach((childNode, i) => expect(childNode.hasAttribute(sizeProperty), `Failed to test ${sizeProperty} index ${i}`)
+				.to
+				.equal(exists));
+		}
+
+		it(`should set every button size to dense if dense is set`, function () {
+			const [actualElement] = createElement('dense');
+
+			checkSizeProperty(actualElement, 'dense');
+		});
+
+		it(`should set every button size to enlarged if enlarged is set`, function () {
+			const [actualElement] = createElement('enlarged');
+
+			checkSizeProperty(actualElement, 'enlarged');
+		});
+
+		it(`should remove enlarged and dense if none is declared`, function () {
+			const [actualElement] = createElement('', ['enlarged', 'dense', 'enlarged']);
+
+			checkSizeProperty(actualElement, 'enlarged', false);
+			checkSizeProperty(actualElement, 'dense', false);
+		});
+
+		it(`should remove enlarged if dense is declared`, function () {
+			const [actualElement] = createElement('dense', ['enlarged', 'enlarged']);
+
+			checkSizeProperty(actualElement, 'enlarged', false);
+			checkSizeProperty(actualElement, 'dense', true);
+		});
+
+		it(`should remove dense if enlarged is declared`, async function () {
+			const [actualElement] = createElement('dense');
+
+			await actualElement.updateComplete;
+			actualElement.enlarged = true;
+			await actualElement.updateComplete;
+			await waitNextTask();
+
+			checkSizeProperty(actualElement, 'enlarged', true);
+			checkSizeProperty(actualElement, 'dense', false);
+		});
+
+		it(`should change the size if changed dynamically`, async function () {
+			const [actualElement] = createElement('enlarged', ['enlarged', 'dense']);
+
+			actualElement.dense = true;
+			await actualElement.updateComplete;
+			await waitNextTask();
+
+			checkSizeProperty(actualElement, 'dense', true);
 		});
 	});
 });
