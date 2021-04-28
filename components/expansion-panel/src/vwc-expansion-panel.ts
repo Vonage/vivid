@@ -32,7 +32,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	indicatorIconSet: IndicatorIconSets[number] = 'chevron';
 
 	@property({ type: Boolean, reflect: true })
-	trailingToggle = false;
+	leadingToggle = false;
 
 	protected firstUpdated(): void {
 		const header = this.shadowRoot?.querySelector('.expansion-panel-header');
@@ -60,7 +60,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 				${this.header}
 				<span class="trailing-icon">
 					<slot name="trailingIcon">
-						${this.trailingToggle ? this.renderToggle() : ''}
+						${!this.leadingToggle ? this.renderToggle() : ''}
 					</slot>
 				</span>
 			</div>
@@ -71,7 +71,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	}
 
 	protected renderIconOrToggle(): TemplateResult | string {
-		if (!this.trailingToggle) {
+		if (this.leadingToggle) {
 			return this.renderToggle();
 		} else if (this.icon) {
 			return html`<vwc-icon class="vvd-icon" type="${this.icon}"></vwc-icon>`;

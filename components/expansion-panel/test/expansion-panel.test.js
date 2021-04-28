@@ -106,21 +106,20 @@ describe('expansion panel', () => {
 			});
 		});
 
-		it('should have leading toggle icon by default', async () => {
-			const toggleIcon = actualElement.shadowRoot.querySelector('.leading-icon .toggle-open');
-			expect(toggleIcon).to.exist;
-		});
-
-		it('should have trailing toggle icon when trailingToggle', async () => {
-			actualElement.trailingToggle = true;
-			await waitNextTask();
-
+		it('should have trailing toggle icon by default', async () => {
 			const toggleIcon = actualElement.shadowRoot.querySelector('.trailing-icon .toggle-open');
 			expect(toggleIcon).to.exist;
 		});
 
+		it('should have leading toggle icon when leadingToggle', async () => {
+			actualElement.leadingToggle = true;
+			await waitNextTask();
+
+			const toggleIcon = actualElement.shadowRoot.querySelector('.leading-icon .toggle-open');
+			expect(toggleIcon).to.exist;
+		});
+
 		it('should have custom leading icon', async () => {
-			actualElement.trailingToggle = true;
 			actualElement.icon = 'chat-solid';
 			await waitNextTask();
 
@@ -129,6 +128,7 @@ describe('expansion panel', () => {
 		});
 
 		it('should not override leading toggle when leading icon set', async () => {
+			actualElement.leadingToggle = true;
 			actualElement.icon = 'chat-solid';
 			await waitNextTask();
 

@@ -10,7 +10,7 @@ export const argTypes = {
 			options: ['chevron', 'binary'],
 		}
 	},
-	trailingToggle: {
+	leadingToggle: {
 		control: {
 			type: 'inline-radio',
 			options: { 'true': '', 'false': undefined }

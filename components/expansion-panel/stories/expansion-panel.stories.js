@@ -34,8 +34,8 @@ Basic.args = { header: 'Campaign Details' };
 export const IndicatorIconSet = Template.bind({});
 IndicatorIconSet.args = { header: 'Campaign Details', indicatorIconSet: 'binary' };
 
-export const TrailingToggle = Template.bind({});
-TrailingToggle.args = { header: 'Campaign Details', trailingToggle: '' };
+export const LeadingToggle = Template.bind({});
+LeadingToggle.args = { header: 'Campaign Details', leadingToggle: '' };
 
-export const IconWithTrailingToggle = Template.bind({});
-IconWithTrailingToggle.args = { header: 'Campaign Details', icon: 'chat-solid', trailingToggle: '' };
+export const Icon = Template.bind({});
+Icon.args = { header: 'Campaign Details', icon: 'chat-solid' };

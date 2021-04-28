@@ -7,6 +7,11 @@
   <div class="expansion-panel-header">
     <span class="leading-icon">
       <slot name="icon">
+      </slot>
+    </span>
+    click me
+    <span class="trailing-icon">
+      <slot name="trailingIcon">
         <vwc-icon
           class="toggle-open vvd-icon"
           size="medium"
@@ -19,11 +24,6 @@
           type="chevron-up-solid"
         >
         </vwc-icon>
-      </slot>
-    </span>
-    click me
-    <span class="trailing-icon">
-      <slot name="trailingIcon">
       </slot>
     </span>
   </div>

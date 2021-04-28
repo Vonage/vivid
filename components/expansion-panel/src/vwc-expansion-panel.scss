@@ -64,11 +64,12 @@
 
 .expansion-panel-body {
 	@include typography.typography-cat-shorthand('body-2');
-	padding: 0 16px 24px 56px;
+	padding: 0 16px 24px;
 }
 
-:host([icon=''][trailingToggle]) {
+:host(:not([icon=''])),
+:host([leadingToggle]) {
 	.expansion-panel-body {
-		padding: 0 16px 24px;
+		padding: 0 16px 24px 56px;
 	}
 }
