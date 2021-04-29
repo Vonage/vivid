@@ -4,6 +4,12 @@ export const argTypes = {
 			type: 'text'
 		}
 	},
+	dense: {
+		control: {
+			type: 'inline-radio',
+			options: { 'true': '', 'false': undefined }
+		}
+	},
 	chevronToggle: {
 		control: {
 			type: 'inline-radio',

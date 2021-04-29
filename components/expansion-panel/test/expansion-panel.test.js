@@ -169,4 +169,29 @@ describe('expansion panel', () => {
 			expect(ripple).to.not.exist;
 		});
 	});
+
+	describe('sizing', () => {
+		it('should have normal size by default', async () => {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+
+			const header = actualElement.shadowRoot.querySelector('.expansion-panel-header');
+			assertComputedStyle(header, { fontSize: '20px' });
+		});
+
+		it('should have dense size when dense', async () => {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} dense></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+
+			const header = actualElement.shadowRoot.querySelector('.expansion-panel-header');
+			const body = actualElement.shadowRoot.querySelector('.expansion-panel-body');
+
+			assertComputedStyle(header, { fontSize: '14px' });
+			assertComputedStyle(body, { paddingTop: '0px' });
+		});
+	});
 });
