@@ -1,7 +1,8 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
 import {
-	customElement
+	customElement,
+	html,
 } from 'lit-element';
 import { SnackbarBase as MWCSnackbarBase } from '@material/mwc-snackbar/mwc-snackbar-base';
 import { style as vwcSnackbarStyle } from './vwc-snackbar.css';
@@ -35,6 +36,21 @@ export class VWCSnackbar extends MWCSnackbarBase {
 		this.setupEventListeners();
 	}
 
+	/* eslint-disable  lit-a11y/click-events-have-key-events */
+	render() {
+		return html`
+			<div class="mdc-snackbar">
+				<div class="mdc-snackbar__surface">
+					<slot></slot>
+					<div class="mdc-snackbar__actions">
+						<slot name="action" @click="${this.handleActionClick}"></slot>
+						<slot name="dismiss" @click="${this.handleDismissClick}"></slot>
+					</div>
+				</div>
+			</div>
+		`;
+	}
+
 	private setupEventListeners(): void {
 		const MDCEventPrefix = 'MDCSnackbar';
 		for (const eventName of [OPENING_EVENT, OPENED_EVENT, CLOSING_EVENT, CLOSED_EVENT]) {
@@ -50,5 +66,12 @@ export class VWCSnackbar extends MWCSnackbarBase {
 			const forwardedEvent = new CustomEvent(event, { bubbles: true, composed: true, detail: detail });
 			this.dispatchEvent(forwardedEvent);
 		};
+	}
+
+	private handleActionClick(event: MouseEvent): void {
+		this.mdcFoundation.handleActionButtonClick(event);
+	}
+	private handleDismissClick(event: MouseEvent): void {
+		this.mdcFoundation.handleActionIconClick(event);
 	}
 }

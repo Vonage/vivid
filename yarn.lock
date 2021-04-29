@@ -5125,10 +5125,10 @@
   dependencies:
     "@vaadin/vaadin-development-mode-detector" "^2.0.0"
 
-"@vonage/monowatch@^0.0.4":
-  version "0.0.4"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@vonage/monowatch/0.0.4/2fada9e4edae034bc6304120685e59701fb64030dc5329de8e0dffe65b2c2ada#b59e23129765233151e16f245d8b6f360f78106f"
-  integrity sha1-tZ4jEpdlIzFR4W8kXYtvNg94EG8=
+"@vonage/monowatch@^0.0.5":
+  version "0.0.5"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@vonage/monowatch/0.0.5/c7e27827dc6d056eec448713fc2f9050eb01f660f37a1f0182518a7727810d5f#cfac0426d9a5824b75a62700caae51272b9187e3"
+  integrity sha1-z6wEJtmlgkt1picAyq5RJyuRh+M=
   dependencies:
     chokidar "^3.5.1"
     concat-stream "^2.0.0"

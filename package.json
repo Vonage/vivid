@@ -65,7 +65,7 @@
 		"@storybook/web-components": "^6.2.1",
 		"@typescript-eslint/eslint-plugin": "^4.14.2",
 		"@typescript-eslint/parser": "^4.14.2",
-		"@vonage/monowatch": "^0.0.4",
+		"@vonage/monowatch": "^0.0.5",
 		"@webcomponents/webcomponentsjs": "^2.5.0",
 		"@whitespace/storybook-addon-html": "^4.2.0",
 		"chai": "^4.2.0",

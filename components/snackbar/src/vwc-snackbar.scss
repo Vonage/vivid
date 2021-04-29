@@ -4,3 +4,9 @@
 :host {
 	@include typography.typography-cat-shorthand('caption');
 }
+
+.mdc-snackbar__surface {
+	padding: 0;
+	background: none;
+	border-radius: 6px;
+}
