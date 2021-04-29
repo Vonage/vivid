@@ -19,4 +19,4 @@ const Template = args => html`<vwc-calendar ...=${spread(args)}>
 </vwc-calendar>`;
 
 export const Basic = Template.bind({});
-Basic.args = { datetime: '2021-05-01' };
+Basic.args = { datetime: '2021-01-01' };

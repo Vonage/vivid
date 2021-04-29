@@ -84,13 +84,25 @@ export class VWCCalendar extends LitElement {
 	 * @param date - js date object
 	 * @internal
 	 * */
-	private getWeekdaysByDate(date: Date = new Date()): Date[] {
-		let firstDateOfTheWeek = date.getDate() - date.getDay();
+	// private getWeekdaysByDate(date: Date = new Date()): Date[] {
+	// 	let firstDateOfTheWeek = date.getDate() - date.getDay();
+	// 	console.log('firstDateOfTheWeek', firstDateOfTheWeek);
+	// 	return Array.from(
+	// 		{ length: this.#daysLength },
+	// 		() => new Date(date.setDate(firstDateOfTheWeek++))
+	// 	);
+	// }
 
-		return Array.from(
-			{ length: this.#daysLength },
-			() => new Date(date.setDate(firstDateOfTheWeek++))
-		);
+	private getFirstDateOfTheWeek(date: Date = new Date()): Date {
+		return new Date(date.setDate(date.getDate() - date.getDay()));
+	}
+
+	private getDaysArr(dateArr: Date[]): Date[] {
+		if (dateArr.length == this.#daysLength) { return dateArr; }
+		const lastDate = new Date(dateArr[dateArr.length - 1]);
+		lastDate.setDate(lastDate.getDate() + 1);
+		const concatenatedDateArr = [...dateArr, lastDate];
+		return this.getDaysArr(concatenatedDateArr);
 	}
 
 	/**
@@ -133,12 +145,10 @@ export class VWCCalendar extends LitElement {
 		return html`
 			<div class="container">
 				<ol class="headline">
-					${this.getWeekdaysByDate(this.datetime).map(
+					${this.getDaysArr([this.getFirstDateOfTheWeek(this.datetime)]).map(
 		date => html`<li>
-								<time datetime=${this.getValidDateString(date)}
-									>${this.getStyledWeekday(date)}</time
-								>
-							</li>`
+			<time datetime=${this.getValidDateString(date)}>${this.getStyledWeekday(date)}</time>
+		</li>`
 	)}
 				</ol>
 				<ol class="time">
