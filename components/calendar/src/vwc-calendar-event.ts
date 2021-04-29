@@ -23,6 +23,13 @@ export class VWCCalendarEvent extends LitElement {
 	static styles = [style];
 
 	/**
+	 * @prop the label of the event
+	 * @public
+	 * */
+	@property({ type: String, reflect: true })
+	label?: string;
+
+	/**
 	 * @prop index - day of the week (starts from 0)
 	 * @public
 	 * */
@@ -39,7 +46,9 @@ export class VWCCalendarEvent extends LitElement {
 				role="button"
 				tabindex="0"
 				style="--event-day: ${this.index}"
-			></section>
+			>
+				<label>${this.label}</label>
+			</section>
 		`;
 	}
 }

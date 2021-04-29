@@ -1,6 +1,6 @@
 import '@vonage/vvd-core';
 import {
-	customElement, html, LitElement, TemplateResult
+	customElement, html, LitElement, property, TemplateResult
 } from 'lit-element';
 import { style } from './vwc-calendar.css';
 
@@ -8,6 +8,15 @@ declare global {
 	interface HTMLElementTagNameMap {
 		'vwc-calendar': VWCCalendar;
 	}
+}
+
+function assertIsString(d: unknown): asserts d is string {
+	if (!(typeof d == 'string')) throw new Error(`Not a string: ${d}`);
+}
+
+function assertIsValidDateStringRepresentation(d: unknown): asserts d is Date {
+	assertIsString(d);
+	if (Number.isNaN(Date.parse(d))) throw new Error(`Not a valid date string representation: ${d}`);
 }
 
 /**
@@ -22,8 +31,35 @@ export class VWCCalendar extends LitElement {
 	 * */
 	static styles = [style];
 
+	/**
+	 * The date within a week of choice.
+	 * Accepts any valid date string representation
+	 * @example
+	 * 2021-01-01
+	 * @public
+	 * */
+	@property({
+		reflect: true,
+		converter: {
+			fromAttribute(value) {
+				// throw if not a valid date string representation
+				assertIsValidDateStringRepresentation(value);
+				return new Date(value);
+			}
+		}
+	})
+	datetime?: Date;
+
 	#daysLength = 7;
 	#hoursOfDay = [
+		'1 am',
+		'2 am',
+		'3 am',
+		'4 am',
+		'5 am',
+		'6 am',
+		'7 am',
+		'8 am',
 		'8 am',
 		'9 am',
 		'10 am',
@@ -38,6 +74,8 @@ export class VWCCalendar extends LitElement {
 		'7 pm',
 		'8 pm',
 		'9 pm',
+		'10 pm',
+		'11 pm',
 	];
 
 	/**
@@ -46,7 +84,7 @@ export class VWCCalendar extends LitElement {
 	 * @param date - js date object
 	 * @internal
 	 * */
-	private getWeekdaysByDate(date: Date): Date[] {
+	private getWeekdaysByDate(date: Date = new Date()): Date[] {
 		let firstDateOfTheWeek = date.getDate() - date.getDay();
 
 		return Array.from(
@@ -95,7 +133,7 @@ export class VWCCalendar extends LitElement {
 		return html`
 			<div class="container">
 				<ol class="headline">
-					${this.getWeekdaysByDate(new Date(Date.UTC(2021, 1, 1))).map(
+					${this.getWeekdaysByDate(this.datetime).map(
 		date => html`<li>
 								<time datetime=${this.getValidDateString(date)}
 									>${this.getStyledWeekday(date)}</time
