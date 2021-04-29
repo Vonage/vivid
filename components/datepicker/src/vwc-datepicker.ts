@@ -168,6 +168,8 @@ export class VWCDatepicker extends LitFlatpickr {
 				rangeEnd.classList.toggle('vvd-selected', !!endDate);
 			}
 		}
+
+		this.highlightSelectedWeekDay();
 	}
 
 	private renderHeader(): void {
@@ -235,6 +237,7 @@ export class VWCDatepicker extends LitFlatpickr {
 
 		this.updateHeaderMonth();
 		this.updateHeaderYear();
+		this.highlightSelectedWeekDay();
 	}
 
 	private updateHeaderMonth(): void {
@@ -350,6 +353,7 @@ export class VWCDatepicker extends LitFlatpickr {
 			this._instance?.changeMonth(selectedMonth - this._instance.currentMonth);
 			this.updateHeaderMonth();
 			this.updateHeaderYear();
+			this.highlightSelectedWeekDay();
 		}
 	}
 
@@ -398,6 +402,15 @@ export class VWCDatepicker extends LitFlatpickr {
 					i > maxMonth && currentYear === maxYear
 				);
 			});
+		}
+	}
+
+	private highlightSelectedWeekDay(): void {
+		if (this._instance && this.weekSelect) {
+			const className = 'vvd-selected-week-day';
+			const selectedWeekDay = this._instance.calendarContainer.querySelector(`.${className}`);
+			selectedWeekDay?.classList.remove(className);
+			this._instance.selectedDateElem?.classList.add(className);
 		}
 	}
 

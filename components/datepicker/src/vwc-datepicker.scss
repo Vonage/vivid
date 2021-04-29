@@ -236,6 +236,15 @@ vwc-menu {
 					color: var(#{scheme-variables.$vvd-color-on-primary});
 				}
 			}
+
+			&.vvd-selected-week-day {
+				z-index: 0;
+				color: var(#{scheme-variables.$vvd-color-on-announcement});
+
+				&::before {
+					background-color: var(#{scheme-variables.$vvd-color-announcement});
+				}
+			}
 		}
 
 		&.today {
