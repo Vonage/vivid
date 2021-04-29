@@ -8,93 +8,46 @@
 @include color-connotation.connotations-main;
 @include color-connotation.connotations-main-default(info);
 
-:host {@media screen and (prefers-reduced-motion: reduce) {
-		> div {
-
-			overflow: hidden;
-			max-height: 0;
-			transition: none;
-
-			> header {
-				@include typography.typography-cat-shorthand('body-2-bold');
-				position: relative;
-				display: flex;
-				overflow: hidden;
-				box-sizing: border-box;
-				align-items: center;
-				justify-content: center;
-				padding: 16px 54px 16px 16px;
-				background-color: var(#{color-connotation.$vvd-color-connotation});
-				color: var(#{color-connotation.$vvd-color-on-connotation});
-				font-size: 14px;
-				font-style: normal;
-				font-weight: 600;
-				line-height: 20px;
-
-				> slot {
-					align-items: center;
-				}
-
-				> vwc-icon {
-					flex: 0 0 24px;
-					align-self: flex-start;
-					margin-top: 3px;
-					margin-right: 10px;
-					text-align: left;
-				}
-
-				> vwc-icon-button {
-					--vvd-icon-button-color: inherit;
-					position: absolute;
-					top: 50%;
-					right: 16px;
-					flex: 0 0 140px;
-					transform: translateY(-50%);
-				}
-			}
-		}
-	}
-
-	> div {
+:host {
+	> .container {
 
 		overflow: hidden;
 		max-height: 0;
-		transition: max-height 0.2s;
+		transition: none;
 
-		> header {
+		> .header {
 			@include typography.typography-cat-shorthand('body-2-bold');
 			position: relative;
 			display: flex;
 			overflow: hidden;
-			min-height: 60px;
 			box-sizing: border-box;
 			align-items: center;
 			justify-content: center;
-			padding: 14px 54px 14px 16px;
+			padding: 16px 54px 16px 16px;
 			background-color: var(#{color-connotation.$vvd-color-connotation});
 			color: var(#{color-connotation.$vvd-color-on-connotation});
 			font-size: 14px;
 			font-style: normal;
 			font-weight: 600;
-			line-height: 32px;
+			line-height: 20px;
 
-			> slot {
+			> .user-content {
 				align-items: center;
 			}
 
-			> vwc-icon {
-				--icon-size: 20px;
-				flex: 0 0 20px;
-				align-self: center;
-				margin-right: 16px;
+			> .icon {
+				flex: 0 0 24px;
+				align-self: flex-start;
+				margin-top: 3px;
+				margin-right: 10px;
 				text-align: left;
 			}
 
-			> vwc-icon-button {
+			> .action-button {
 				--vvd-icon-button-color: inherit;
 				position: absolute;
 				top: 50%;
-				right: 8px;
+				right: 16px;
 				flex: 0 0 140px;
 				transform: translateY(-50%);
 			}
@@ -103,14 +56,14 @@
 }
 
 :host([open]) {
-	> div {
+	> .container {
 		max-height: 10rem;
 	}
 }
 
 :host(:not([dismissible])) {
-	> div {
-		> header {
+	> .container {
+		> .header {
 			padding-right: 16px;
 		}
 	}
