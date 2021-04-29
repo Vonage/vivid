@@ -1,8 +1,10 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
+import { Connotation } from '@vonage/vvd-foundation/constants';
 import {
 	customElement,
 	html,
+	property,
 } from 'lit-element';
 import { SnackbarBase as MWCSnackbarBase } from '@material/mwc-snackbar/mwc-snackbar-base';
 import { style as vwcSnackbarStyle } from './vwc-snackbar.css';
@@ -24,6 +26,15 @@ declare global {
 // @ts-ignore
 MWCSnackbarBase.styles = [mwcSnackbarStyle, vwcSnackbarStyle];
 
+type NoteConnotation = Extract<
+	Connotation,
+	| Connotation.Success
+	| Connotation.Alert
+	| Connotation.Warning
+	| Connotation.Info
+	| Connotation.Announcement
+>;
+
 /**
  * `vwc-snackbar` component is designated to show a short-time-living, non-intrusive user notification
  *
@@ -31,6 +42,18 @@ MWCSnackbarBase.styles = [mwcSnackbarStyle, vwcSnackbarStyle];
  */
 @customElement('vwc-snackbar')
 export class VWCSnackbar extends MWCSnackbarBase {
+	@property({ type: String, reflect: true })
+	connotation?: NoteConnotation;
+
+	@property({ type: String, reflect: true })
+	icon = '';
+
+	@property({ type: String, reflect: true })
+	header = '';
+
+	@property({ type: String, reflect: true })
+	message = '';
+
 	connectedCallback() {
 		super.connectedCallback();
 		this.setupEventListeners();
@@ -41,7 +64,12 @@ export class VWCSnackbar extends MWCSnackbarBase {
 		return html`
 			<div class="mdc-snackbar">
 				<div class="mdc-snackbar__surface">
-					<slot></slot>
+					<slot>
+						<vwc-note
+							icon="${this.icon}"
+							connotation="${this.connotation}"
+							header="${this.header}">${this.message}</vwc-note>
+					</slot>
 					<div class="mdc-snackbar__actions">
 						<slot name="action" @click="${this.handleActionClick}"></slot>
 						<slot name="dismiss" @click="${this.handleDismissClick}"></slot>
