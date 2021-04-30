@@ -5,7 +5,7 @@ import {
 	customElement, property, html, CSSResult, query
 } from 'lit-element';
 import { LitFlatpickr } from 'lit-flatpickr';
-import weekSelect from 'flatpickr/dist/plugins/weekSelect/weekSelect';
+import * as weekSelectPlugin from 'flatpickr/dist/plugins/weekSelect/weekSelect';
 import { Options } from 'flatpickr/dist/types/options';
 import { style as vwcDatepickerStyles } from './vwc-datepicker.css.js';
 import { VWCButton } from '@vonage/vwc-button';
@@ -74,7 +74,7 @@ export class VWCDatepicker extends LitFlatpickr {
 		};
 
 		if (this.weekSelect) {
-			this.plugins.push(weekSelect());
+			this.plugins.push(weekSelectPlugin.default());
 		}
 	}
 

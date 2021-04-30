@@ -146,4 +146,21 @@ describe('datepicker', () => {
 			expect(customFooter).to.not.exist;
 		});
 	});
+
+	it('should have week class when set to weekSelect', async () => {
+		const [actualElement] = addElement(
+			textToDomToParent(`
+				<${COMPONENT_NAME} inline weekSelect></${COMPONENT_NAME}>
+			`)
+		);
+		await actualElement.onReady;
+		await waitNextTask();
+
+		actualElement.defaultDate = 'today';
+		await waitNextTask();
+
+		const selectedWeekDay = actualElement._instance.selectedDateElem;
+		expect(selectedWeekDay).to.exist;
+		expect(selectedWeekDay.classList.contains('week'));
+	});
 });
