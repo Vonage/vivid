@@ -120,7 +120,7 @@ export class VWCCalendar extends LitElement {
 	}
 
 	/**
-	 * the html days markup
+	 * The html days markup
 	 * @internal
 	 * */
 	protected renderDays(): TemplateResult {
