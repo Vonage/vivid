@@ -147,7 +147,7 @@ describe('datepicker', () => {
 		});
 	});
 
-	it('should have week class when set to weekSelect', async () => {
+	it('should highlight selected week day when set to weekSelect', async () => {
 		const [actualElement] = addElement(
 			textToDomToParent(`
 				<${COMPONENT_NAME} inline weekSelect></${COMPONENT_NAME}>
@@ -159,8 +159,10 @@ describe('datepicker', () => {
 		actualElement.defaultDate = 'today';
 		await waitNextTask();
 
+		actualElement.highlightSelectedWeekDay();
+
 		const selectedWeekDay = actualElement._instance.selectedDateElem;
 		expect(selectedWeekDay).to.exist;
-		expect(selectedWeekDay.classList.contains('week'));
+		expect(selectedWeekDay.classList.contains('vvd-selected-week-day')).true;
 	});
 });
