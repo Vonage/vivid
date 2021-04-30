@@ -65,22 +65,18 @@
 
 :host([trailingToggle]) {
 	.expansion-panel-body {
-		padding: 8px 36px 24px 16px;
+		padding-right: 32px;
 	}
 }
 
-:host([trailingToggle][dense]) {
+:host([icon=''][trailingToggle]) {
 	.expansion-panel-body {
-		padding-right: 32px;
+		padding-left: 16px;
 	}
 }
 
 :host([dense]) {
 	.expansion-panel-header {
 		@include typography.typography-cat-shorthand('body-2-bold');
-	}
-
-	.expansion-panel-body {
-		padding-top: 0;
 	}
 }

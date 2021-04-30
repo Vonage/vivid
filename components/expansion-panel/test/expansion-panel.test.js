@@ -188,10 +188,7 @@ describe('expansion panel', () => {
 			await waitNextTask();
 
 			const header = actualElement.shadowRoot.querySelector('.expansion-panel-header');
-			const body = actualElement.shadowRoot.querySelector('.expansion-panel-body');
-
 			assertComputedStyle(header, { fontSize: '14px' });
-			assertComputedStyle(body, { paddingTop: '0px' });
 		});
 	});
 });
