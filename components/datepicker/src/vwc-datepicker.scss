@@ -201,6 +201,61 @@ vwc-menu {
 	.flatpickr-day.startRange + .selected.endRange:not(:nth-child(7n + 1)) {
 		box-shadow: none;
 	}
+
+	&.inline {
+		position: relative;
+		width: 288px;
+		padding: 0;
+		border: 0;
+		background: none;
+
+		.vvd-datepicker-header {
+			padding: 0;
+		}
+
+		.flatpickr-innerContainer {
+			padding: 16px 0 0;
+		}
+
+		.flatpickr-rContainer,
+		.flatpickr-days,
+		.dayContainer {
+			width: 100%;
+			min-width: initial;
+		}
+
+		.flatpickr-weekdaycontainer {
+			justify-content: space-between;
+
+			.flatpickr-weekday {
+				flex: initial;
+				flex-basis: 30px;
+			}
+		}
+
+		.flatpickr-days {
+			.dayContainer {
+				.flatpickr-day {
+					flex-basis: 30px;
+					margin-right: 4.166%;
+
+					&:nth-child(7n) {
+						margin-right: 0;
+					}
+				}
+			}
+		}
+
+		&.vvd-datepicker-month-view {
+			min-height: initial;
+
+			.vvd-datepicker-months {
+				position: relative;
+				top: 0;
+				padding: 40px 0 0;
+			}
+		}
+	}
 }
 
 
