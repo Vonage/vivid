@@ -20,6 +20,20 @@ function assertIsValidDateStringRepresentation(d: unknown): asserts d is Date {
 }
 
 /**
+ * Returns a valid date string from date object e.g. 2020-01-01
+ *
+ * @remarks
+ * This method returns valid date string to be used as html time tag datetime value
+ *
+ * @param date - js date object
+ *
+ * @internal
+ * */
+function getValidDatetimeString(date: Date) {
+	return date.toISOString().split('T')[0];
+}
+
+/**
  * Represents a calendar custom element.
  * @alpha
  */
@@ -41,10 +55,15 @@ export class VWCCalendar extends LitElement {
 	@property({
 		reflect: true,
 		converter: {
-			fromAttribute(value) {
+			toAttribute(v) {
 				// throw if not a valid date string representation
-				assertIsValidDateStringRepresentation(value);
-				return new Date(value);
+				assertIsValidDateStringRepresentation(v);
+				return v;
+			},
+			fromAttribute(v) {
+				// throw if not a valid date string representation
+				assertIsValidDateStringRepresentation(v);
+				return new Date(v);
 			}
 		}
 	})
@@ -58,7 +77,7 @@ export class VWCCalendar extends LitElement {
 	/**
 	 * generate dates array of days of the week by given date
 	 *
-	 * @param date - js date object
+	 * @param dateOrDateString - js date object
 	 * @internal
 	 * */
 	// private getWeekdaysByDate(date: Date = new Date()): Date[] {
@@ -70,8 +89,11 @@ export class VWCCalendar extends LitElement {
 	// 	);
 	// }
 
-	private getFirstDateOfTheWeek(date: Date = new Date()): Date {
-		return new Date(date.setDate(date.getDate() - date.getDay()));
+	private getFirstDateOfTheWeek(dateOrDateString: Date | string = new Date()): Date {
+		if (typeof dateOrDateString === 'string') {
+			dateOrDateString = new Date(dateOrDateString);
+		}
+		return new Date(dateOrDateString.setDate(dateOrDateString.getDate() - dateOrDateString.getDay()));
 	}
 
 	private getDaysArr(dateArr: Date[]): Date[] {
@@ -97,20 +119,6 @@ export class VWCCalendar extends LitElement {
 		return new Intl.DateTimeFormat('en-US', options).format(date);
 	}
 
-	/**
-	 * Returns a valid date string from date object e.g. 2020-01-01
-	 *
-	 * @remarks
-	 * This method returns valid date string to be used as html time tag datetime value
-	 *
-	 * @param date - js date object
-	 *
-	 * @internal
-	 * */
-	private getValidDatetimeString(date: Date) {
-		return date.toISOString().split('T')[0];
-	}
-
 	protected renderTimeCells(): TemplateResult[] {
 		const templates = [];
 		for (let i = 0; i < (this.#hoursOfDay.length + 1) * this.#daysLength; i++) {
@@ -128,7 +136,7 @@ export class VWCCalendar extends LitElement {
 			<ol class="headline">
 					${this.getDaysArr([this.getFirstDateOfTheWeek(this.datetime)]).map(date => html`
 					<li>
-						<time datetime=${this.getValidDatetimeString(date)}>
+						<time datetime=${getValidDatetimeString(date)}>
 							${this.formatDate(date, {	day: '2-digit',	weekday: 'short' })}
 						</time>
 					</li>`)}
@@ -157,7 +165,6 @@ export class VWCCalendar extends LitElement {
 	 * @internal
 	 * */
 	protected render(): TemplateResult {
-		console.log(this.#hoursOfDay.length);
 		return html`
 			<div class="container">
 				${this.renderDays()}
