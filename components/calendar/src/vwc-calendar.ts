@@ -3,34 +3,15 @@ import {
 	customElement, html, LitElement, property, TemplateResult
 } from 'lit-element';
 import { style } from './vwc-calendar.css';
+import {
+	assertIsValidDateStringRepresentation,
+	getValidDatetimeString
+} from './vwc-calendar-date-functions';
 
 declare global {
 	interface HTMLElementTagNameMap {
 		'vwc-calendar': VWCCalendar;
 	}
-}
-
-function assertIsString(d: unknown): asserts d is string {
-	if (!(typeof d == 'string')) throw new Error(`Not a string: ${d}`);
-}
-
-function assertIsValidDateStringRepresentation(d: unknown): asserts d is Date {
-	assertIsString(d);
-	if (Number.isNaN(Date.parse(d))) throw new Error(`Not a valid date string representation: ${d}`);
-}
-
-/**
- * Returns a valid date string from date object e.g. 2020-01-01
- *
- * @remarks
- * This method returns valid date string to be used as html time tag datetime value
- *
- * @param date - js date object
- *
- * @internal
- * */
-function getValidDatetimeString(date: Date) {
-	return date.toISOString().split('T')[0];
 }
 
 /**
