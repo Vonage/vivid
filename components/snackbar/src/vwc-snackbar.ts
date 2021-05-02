@@ -54,12 +54,15 @@ export class VWCSnackbar extends MWCSnackbarBase {
 	@property({ type: String, reflect: true })
 	message = '';
 
+	@property({ type: Boolean, reflect: true })
+	dismissible = true;
+
 	connectedCallback() {
 		super.connectedCallback();
 		this.setupEventListeners();
 	}
 
-	/* eslint-disable  lit-a11y/click-events-have-key-events */
+	/* eslint-disable lit-a11y/click-events-have-key-events */
 	render() {
 		return html`
 			<div class="mdc-snackbar">
