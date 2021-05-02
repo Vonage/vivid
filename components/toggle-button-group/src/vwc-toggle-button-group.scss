@@ -57,7 +57,6 @@ $sizes: (
 	}
 }
 
-
 ::slotted(vwc-button) {
 	--mdc-theme-primary: var(#{scheme-variables.$vvd-color-neutral-30});
 }
@@ -103,11 +102,11 @@ $sizes: (
 		::slotted(vwc-#{$scope}[selected]) {
 			--vvd-#{$scope}-background-color: var(#{scheme-variables.$vvd-color-primary});
 			--vvd-#{$scope}-color: var(#{scheme-variables.$vvd-color-on-primary});
-			--vvd-button-shape: 6px;
+			--vvd-#{$scope}-shape: 6px;
 		}
 
 		::slotted(vwc-#{$scope}:hover:not([selected])) {
-			--vvd-button-shape: 6px;
+			--vvd-#{$scope}-shape: 6px;
 			--vvd-#{$scope}-background-color: var(#{scheme-variables.$vvd-color-neutral-50});
 		}
 	}

@@ -14,10 +14,14 @@
 @include color-connotation.connotations-main;
 @include color-connotation.connotations-main-default(primary);
 
+$dense-height: 32px;
+$default-height: 40px;
+$enlarged-height: 48px;
+
 :host {
 
 	// sizing
-	--mdc-icon-button-size: 40px;
+	--mdc-icon-button-size: var(--vvd-icon-button-height, #{$default-height});
 	@include vvd-formfield.coupling;
 
 	.mdc-icon-button {
@@ -52,7 +56,8 @@
 }
 
 :host([dense]) {
-	--mdc-icon-button-size: 32px;
+
+	--mdc-icon-button-size: var(--vvd-icon-button-height, #{$dense-height});
 
 	.vvd-icon {
 		--icon-size: 16px;
@@ -60,7 +65,7 @@
 }
 
 :host([enlarged]) {
-	--mdc-icon-button-size: 48px;
+	--mdc-icon-button-size: var(--vvd-icon-button-height, #{$enlarged-height});
 
 	.vvd-icon {
 		--icon-size: 24px;
