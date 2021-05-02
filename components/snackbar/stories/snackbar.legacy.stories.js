@@ -16,11 +16,7 @@ const TemplateLegacy = args => html`
 			<div>Use buttons below to raise the snackbar</div>
 			<vwc-button id="${args.openerId}" layout="filled" @click="${args.opener}">Show snackbar</vwc-button>
 		</div>
-		<vwc-snackbar ...=${spread(args.snackbarArgs)} legacy>
-			<vwc-note icon="megaphone" connotation="info">
-				${args.snackbarArgs.labelText}
-			</vwc-note>
-		</vwc-snackbar>
+		<vwc-snackbar ...=${spread(args.snackbarArgs)} legacy></vwc-snackbar>
 `;
 
 export const Legacy = TemplateLegacy.bind({});
@@ -28,7 +24,59 @@ Legacy.args = {
 	snackbarArgs: {
 		id: 'snackbar-a',
 		timeoutMs: 10000,
-		labelText: 'Pascal argues that a rational person should live as though God exists and seek to believe in God.',
+		icon: 'megaphone',
+		connotation: 'info',
+		message: 'Pascal argues that a rational person should live as though God exists and seek to believe in God.'
+	},
+	openerId: 'opener-a',
+	opener: e => {
+		e.target.setAttribute('disabled', '');
+		const sb = document.querySelector('#snackbar-a');
+		sb.addEventListener('closed', () => {
+			document.querySelector('#opener-a').removeAttribute('disabled');
+		}, { once: true });
+		sb.show();
+	}
+};
+
+export const LegacyDismissible = TemplateLegacy.bind({});
+LegacyDismissible.args = {
+	snackbarArgs: {
+		id: 'snackbar-a',
+		timeoutMs: 10000,
+		message: 'Pascal argues that a rational person should live as though God exists and seek to believe in God.',
+		dismissible: true
+	},
+	openerId: 'opener-a',
+	opener: e => {
+		e.target.setAttribute('disabled', '');
+		const sb = document.querySelector('#snackbar-a');
+		sb.addEventListener('closed', () => {
+			document.querySelector('#opener-a').removeAttribute('disabled');
+		}, { once: true });
+		sb.show();
+	}
+};
+
+const TemplateLegacyWithAction = args => html`
+		<div>
+			<div>Use buttons below to raise the snackbar</div>
+			<vwc-button id="${args.openerId}" layout="filled" @click="${args.opener}">Show snackbar</vwc-button>
+		</div>
+		<vwc-snackbar ...=${spread(args.snackbarArgs)} legacy>
+			<vwc-button slot="action" layout="filled">Show more</vwc-button>
+		</vwc-snackbar>
+`;
+
+export const LegacyFull = TemplateLegacyWithAction.bind({});
+LegacyFull.args = {
+	snackbarArgs: {
+		id: 'snackbar-a',
+		timeoutMs: 10000,
+		icon: 'megaphone',
+		connotation: 'info',
+		message: 'Pascal argues that a rational person should live as though God exists and seek to believe in God.',
+		dismissible: true
 	},
 	openerId: 'opener-a',
 	opener: e => {

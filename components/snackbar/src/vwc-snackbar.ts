@@ -1,11 +1,13 @@
 import '@vonage/vvd-core';
-import '@vonage/vwc-icon';
+import '@vonage/vwc-icon-button';
 import { Connotation } from '@vonage/vvd-foundation/constants';
 import {
 	customElement,
 	html,
 	property,
+	TemplateResult,
 } from 'lit-element';
+import { ifDefined } from 'lit-html/directives/if-defined';
 import { SnackbarBase as MWCSnackbarBase } from '@material/mwc-snackbar/mwc-snackbar-base';
 import { style as vwcSnackbarStyle } from './vwc-snackbar.css';
 import { style as mwcSnackbarStyle } from '@material/mwc-snackbar/mwc-snackbar-css';
@@ -46,16 +48,16 @@ export class VWCSnackbar extends MWCSnackbarBase {
 	connotation?: NoteConnotation;
 
 	@property({ type: String, reflect: true })
-	icon = '';
+	icon = undefined;
 
 	@property({ type: String, reflect: true })
-	header = '';
+	header = undefined;
 
 	@property({ type: String, reflect: true })
-	message = '';
+	message = undefined;
 
 	@property({ type: Boolean, reflect: true })
-	dismissible = true;
+	dismissible = undefined;
 
 	connectedCallback() {
 		super.connectedCallback();
@@ -67,15 +69,27 @@ export class VWCSnackbar extends MWCSnackbarBase {
 		return html`
 			<div class="mdc-snackbar">
 				<div class="mdc-snackbar__surface">
-					<slot>
+					<div class="legacy-flavor">
 						<vwc-note
-							icon="${this.icon}"
-							connotation="${this.connotation}"
-							header="${this.header}">${this.message}</vwc-note>
-					</slot>
-					<div class="mdc-snackbar__actions">
-						<slot name="action" @click="${this.handleActionClick}"></slot>
-						<slot name="dismiss" @click="${this.handleDismissClick}"></slot>
+							icon="${ifDefined(this.icon)}"
+							connotation="${ifDefined(this.connotation)}"
+							header="${ifDefined(this.header)}"
+						>
+							<div class="snackbar-content">
+								<div>
+									${this.message}
+									<div class="action-container">
+										<slot name="action" @click="${this.handleActionClick}"></slot>
+									</div>
+								</div>
+								<div class="dismiss-container">
+									${this.renderDismissAction()}
+								</div>
+							</div>
+						</vwc-note>
+					</div>
+					<div class="modern-flavor">
+						Unsupported flavor
 					</div>
 				</div>
 			</div>
@@ -104,5 +118,22 @@ export class VWCSnackbar extends MWCSnackbarBase {
 	}
 	private handleDismissClick(event: MouseEvent): void {
 		this.mdcFoundation.handleActionIconClick(event);
+	}
+
+	private renderDismissAction(): TemplateResult | string {
+		if (!this.dismissible) {
+			return '';
+		}
+
+		return html`
+			<vwc-icon-button
+				class="dismiss-button"
+				icon="close-line"
+				shape="circled"
+				dense
+				@click="${this.handleDismissClick}"
+			>
+			</vwc-icon-button>
+		`;
 	}
 }

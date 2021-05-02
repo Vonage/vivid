@@ -3,10 +3,42 @@
 
 :host {
 	@include typography.typography-cat-shorthand('caption');
+
+	.legacy-flavor {
+		display: none;
+	}
+
+	.mdc-snackbar__surface {
+		padding: 0;
+		background: none;
+		border-radius: 6px;
+	}
 }
 
-.mdc-snackbar__surface {
-	padding: 0;
-	background: none;
-	border-radius: 6px;
+.snackbar-content {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+}
+
+// legacy
+:host([legacy]) {
+	.modern-flavor {
+		display: none;
+	}
+	.legacy-flavor {
+		display: initial;
+	}
+
+	.action-container {
+		display: flex;
+	}
+
+	.action-container ::slotted(*) {
+		margin-block-start: 16px;
+	}
+
+	.dismiss-container .dismiss-button {
+		transform: translate(4px, -4px);
+	}
 }
