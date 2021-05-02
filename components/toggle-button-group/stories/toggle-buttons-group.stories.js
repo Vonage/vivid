@@ -58,7 +58,7 @@ Multi.args = { };
 const SizesTemplate = args => html`
 	<h5>Dense</h5>
 	<div style="float: left;"><label>Standard</label>
-	<vwc-toggle-button-group dense>
+	<vwc-toggle-button-group dense shape="pill">
 	<vwc-button label="Standard"></vwc-button>
 	<vwc-button label="Hybrid"></vwc-button>
 	<vwc-icon-button icon="home"></vwc-icon-button>
@@ -77,7 +77,7 @@ const SizesTemplate = args => html`
 	<br style="clear: both;"/>
 <h5>Normal</h5>
 	<div style="float: left;"><label>Standard</label>
-<vwc-toggle-button-group>
+<vwc-toggle-button-group shape="pill">
 	<vwc-button label="Standard"></vwc-button>
 	<vwc-button label="Hybrid"></vwc-button>
 	<vwc-icon-button icon="home"></vwc-icon-button>
@@ -96,7 +96,7 @@ const SizesTemplate = args => html`
 	<br style="clear: both;"/>
 <h5>Enlarged</h5>
 	<div style="float: left;"><label>Standard</label>
-<vwc-toggle-button-group enlarged>
+<vwc-toggle-button-group enlarged shape="pill">
 	<vwc-button label="Standard"></vwc-button>
 	<vwc-button label="Hybrid"></vwc-button>
 	<vwc-icon-button icon="home"></vwc-icon-button>
