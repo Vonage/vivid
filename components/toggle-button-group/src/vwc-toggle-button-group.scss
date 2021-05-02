@@ -1,5 +1,6 @@
 @use 'sass:list';
 @use 'sass:selector';
+@use 'sass:map';
 
 $vvd-toggle-button-group-shape: --vvd-toggle-button-group-shape;
 $scopes: button icon-button;
@@ -15,6 +16,23 @@ $toggle-buttons-type-selectors: selector.append('vwc-', list.join($scopes, '', $
 		rounded: 6px,
 		pill: 24px,
 	)
+);
+
+@mixin size($type) {
+	:host([#{$type}]) & {
+		--button-height: #{$unit * 8px};
+
+		.vvd-icon {
+			--icon-size: #{$unit * 4px};
+		}
+		@content;
+	}
+}
+
+$sizes: (
+	'default': 40px,
+	'enlarged': 48px,
+	'dense': 32px,
 );
 
 :host {
@@ -72,21 +90,38 @@ $toggle-buttons-type-selectors: selector.append('vwc-', list.join($scopes, '', $
 	}
 
 	:host([accent]) {
-		::slotted(vwc-#{$scope}[selected]) {
-			--vvd-#{$scope}-background-color: var(#{scheme-variables.$vvd-color-primary});
-			--vvd-#{$scope}-color: var(#{scheme-variables.$vvd-color-on-primary});
+
+		--vwc-#{$scope}-padding: 2px;
+		--vvd-#{$scope}-height: calc(#{map.get($sizes, 'default')} - 2*var(--vwc-#{$scope}-padding));
+
+		::slotted(vwc-#{$scope}) {
+			padding: var(--vwc-#{$scope}-padding, 0);
 			background-color: var(#{scheme-variables.$vvd-color-neutral-30});
 		}
 
+		::slotted(vwc-#{$scope}[selected]) {
+			--vvd-#{$scope}-background-color: var(#{scheme-variables.$vvd-color-primary});
+			--vvd-#{$scope}-color: var(#{scheme-variables.$vvd-color-on-primary});
+			--vvd-button-shape: 6px;
+		}
+
 		::slotted(vwc-#{$scope}:hover:not([selected])) {
+			--vvd-button-shape: 6px;
 			--vvd-#{$scope}-background-color: var(#{scheme-variables.$vvd-color-neutral-50});
 		}
+	}
+
+	:host([accent][dense]) {
+		--vvd-#{$scope}-height: calc(#{map.get($sizes, 'dense')} - 2*var(--vwc-#{$scope}-padding));
+	}
+
+	:host([accent][enlarged]) {
+		--vvd-#{$scope}-height: calc(#{map.get($sizes, 'enlarged')} - 2*var(--vwc-#{$scope}-padding));
 	}
 
 	::slotted(vwc-#{$scope}:hover:not([selected])) {
 		--vvd-#{$scope}-background-color: var(#{scheme-variables.$vvd-color-neutral-40});
 	}
-
 
 	::slotted(vwc-#{$scope}:not(:first-child):not(:last-child)) {
 		--vvd-#{$scope}-shape: 0;
@@ -94,10 +129,12 @@ $toggle-buttons-type-selectors: selector.append('vwc-', list.join($scopes, '', $
 
 	::slotted(vwc-#{$scope}:first-child:not(:last-child)) {
 		--vvd-#{$scope}-shape: var(#{$vvd-toggle-button-group-shape}) 0 0 var(#{$vvd-toggle-button-group-shape});
+		border-radius: var(#{$vvd-toggle-button-group-shape}) 0 0 var(#{$vvd-toggle-button-group-shape});
 	}
 
 	::slotted(vwc-#{$scope}:last-child:not(:first-child)) {
 		--vvd-#{$scope}-shape: 0 var(#{$vvd-toggle-button-group-shape}) var(#{$vvd-toggle-button-group-shape}) 0;
+		border-radius: 0 var(#{$vvd-toggle-button-group-shape}) var(#{$vvd-toggle-button-group-shape}) 0;
 	}
 
 	:host([disabled]) ::slotted([group-button]) {

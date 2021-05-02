@@ -57,29 +57,62 @@ Multi.args = { };
 
 const SizesTemplate = args => html`
 	<h5>Dense</h5>
-	<vwc-toggle-button-group dense
-																														...=${spread(args)}>
+	<div style="float: left;"><label>Standard</label>
+	<vwc-toggle-button-group dense>
 	<vwc-button label="Standard"></vwc-button>
 	<vwc-button label="Hybrid"></vwc-button>
 	<vwc-icon-button icon="home"></vwc-icon-button>
 	<vwc-button label="Satellite"></vwc-button>
 </vwc-toggle-button-group>
+	</div>
+	<br style="clear: both;"/>
+		<div style="float: left;"><label>Accent</label>
+	<vwc-toggle-button-group accent dense>
+		<vwc-button label="Standard"></vwc-button>
+		<vwc-button label="Hybrid"></vwc-button>
+		<vwc-icon-button icon="home"></vwc-icon-button>
+		<vwc-button label="Satellite"></vwc-button>
+	</vwc-toggle-button-group>
+		</div>
+	<br style="clear: both;"/>
 <h5>Normal</h5>
-<vwc-toggle-button-group
-												 ...=${spread(args)}>
+	<div style="float: left;"><label>Standard</label>
+<vwc-toggle-button-group>
 	<vwc-button label="Standard"></vwc-button>
 	<vwc-button label="Hybrid"></vwc-button>
 	<vwc-icon-button icon="home"></vwc-icon-button>
 	<vwc-button label="Satellite"></vwc-button>
 </vwc-toggle-button-group>
+	</div>
+	<br style="clear: both;"/>
+	<div style="float: left;"><label>Accent</label>
+	<vwc-toggle-button-group accent>
+		<vwc-button label="Standard"></vwc-button>
+		<vwc-button label="Hybrid"></vwc-button>
+		<vwc-icon-button icon="home"></vwc-icon-button>
+		<vwc-button label="Satellite"></vwc-button>
+	</vwc-toggle-button-group>
+	</div>
+	<br style="clear: both;"/>
 <h5>Enlarged</h5>
-<vwc-toggle-button-group enlarged
-												 ...=${spread(args)}>
+	<div style="float: left;"><label>Standard</label>
+<vwc-toggle-button-group enlarged>
 	<vwc-button label="Standard"></vwc-button>
 	<vwc-button label="Hybrid"></vwc-button>
 	<vwc-icon-button icon="home"></vwc-icon-button>
 	<vwc-button label="Satellite"></vwc-button>
 </vwc-toggle-button-group>
+	</div>
+	<br style="clear: both;"/>
+	<div style="float: left;"><label>Accent</label>
+	<vwc-toggle-button-group accent enlarged>
+		<vwc-button label="Standard"></vwc-button>
+		<vwc-button label="Hybrid"></vwc-button>
+		<vwc-icon-button icon="home"></vwc-icon-button>
+		<vwc-button label="Satellite"></vwc-button>
+	</vwc-toggle-button-group>
+	</div>
+	<br style="clear: both;"/>
 `;
 
 export const Sizes = SizesTemplate.bind({});
