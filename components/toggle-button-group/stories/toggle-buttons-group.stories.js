@@ -44,8 +44,7 @@ const AccentTemplate = args => html`<vwc-toggle-button-group accent ...=${spread
 export const Accent = AccentTemplate.bind({});
 Accent.args = { };
 
-const MultiTemplate = args => html`<vwc-toggle-button-group multi
-																														...=${spread(args)}>
+const MultiTemplate = args => html`<vwc-toggle-button-group multi>
 	<vwc-button label="Standard"></vwc-button>
 	<vwc-button label="Hybrid"></vwc-button>
 	<vwc-icon-button icon="home"></vwc-icon-button>
@@ -116,4 +115,4 @@ const SizesTemplate = args => html`
 `;
 
 export const Sizes = SizesTemplate.bind({});
-Multi.args = { };
+Sizes.args = { };
