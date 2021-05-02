@@ -31,6 +31,9 @@ const Template = args => html`
 export const Basic = Template.bind({});
 Basic.args = { header: 'Campaign Details' };
 
+export const Dense = Template.bind({});
+Dense.args = { header: 'Campaign Details', dense: '' };
+
 export const ChevronToggle = Template.bind({});
 ChevronToggle.args = { header: 'Campaign Details', chevronToggle: '' };
 
