@@ -5,6 +5,7 @@
 ```html
 <div class="expansion-panel">
   <div class="expansion-panel-header">
+    <mwc-ripple></mwc-ripple>
     <span class="leading-icon">
       <slot name="icon">
         <vwc-icon
