@@ -4,5 +4,6 @@ export const argTypes = {
 	opener: { table: { disable: true } },
 	openerId: { table: { disable: true } },
 	ripple: { table: { disable: true } },
+	snackbarArgs: { table: { disable: true } },
 	stacked: { table: { disable: true } },
 }

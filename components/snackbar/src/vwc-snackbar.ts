@@ -76,7 +76,6 @@ export class VWCSnackbar extends MWCSnackbarBase {
 	/* eslint-disable lit-a11y/click-events-have-key-events */
 	render() {
 		const [vpos, hpos] = VWCSnackbar.extractPositionConfig(this.position);
-		console.log(vpos, hpos);
 		return html`
 			<div class="mdc-snackbar ${vpos} ${hpos}">
 				<div class="mdc-snackbar__surface">
