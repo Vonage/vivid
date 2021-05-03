@@ -15,13 +15,13 @@
 @include color-connotation.connotations-main-default(primary);
 
 $dense-height: 32px;
-$default-height: 40px;
+$normal-height: 40px;
 $enlarged-height: 48px;
 
 :host {
 
 	// sizing
-	--mdc-icon-button-size: var(--vvd-icon-button-height, #{$default-height});
+	--mdc-icon-button-size: var(--vvd-icon-button-height, #{$normal-height});
 	@include vvd-formfield.coupling;
 
 	.mdc-icon-button {
