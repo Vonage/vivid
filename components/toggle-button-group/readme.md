@@ -146,6 +146,21 @@
 		Set the size of the buttons as enlarged
    </td>
   </tr>
+
+  <tr>
+   <td>
+<h3>mandatory</h3>
+
+
+   </td>
+   <td>reflected
+   </td>
+   <td>boolean
+   </td>
+   <td>
+		Prevents toggling off the last selection. Also does not send event of non toggled selection.
+   </td>
+  </tr>
 </table>
 
 

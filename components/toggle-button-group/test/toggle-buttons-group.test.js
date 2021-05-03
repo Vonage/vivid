@@ -14,7 +14,7 @@ const COMPONENT_NAME = 'vwc-toggle-button-group';
 const SELECTED_EVENT_NAME = 'selected';
 const GROUP_BUTTON_ATTRIBUTE = 'group-button';
 
-describe.only('Toggle-buttons-group', () => {
+describe('Toggle-buttons-group', () => {
 	const buttonValues = [
 		Math.random()
 			.toString(),
@@ -386,10 +386,10 @@ describe.only('Toggle-buttons-group', () => {
 	describe(`Mandatory Selection`, function () {
 		function generateTemplate(props = [], childrenProps = [[], [], [], []]) {
 			return textToDomToParent(`<${COMPONENT_NAME} ${props.join(' ')}>
-<${VALID_BUTTON_ELEMENTS[0]} ${childrenProps[0].join(' ')} layout="filled" value="${buttonValues[0]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]} ${childrenProps[1].join(' ')} layout="filled" value="${buttonValues[1]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]} ${childrenProps[2].join(' ')} layout="filled" value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[1]} ${childrenProps[3].join(' ')} layout="filled" value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} ${childrenProps[0].join(' ')} layout="filled">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} ${childrenProps[1].join(' ')} layout="filled">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} ${childrenProps[2].join(' ')} layout="filled">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[1]} ${childrenProps[3].join(' ')} layout="filled">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 </${COMPONENT_NAME}>`);
 		}
 
@@ -398,23 +398,23 @@ describe.only('Toggle-buttons-group', () => {
 
 			await actualElement.updateComplete;
 
-			const valuesBeforeClick = actualElement.values.length;
+			const valuesBeforeClick = actualElement.selected.length;
 			const selectedButton = actualElement.children[0];
 			selectedButton.click();
-			const valueAfterClick = actualElement.values[0];
+			const valueAfterClick = actualElement.selected[0];
 			selectedButton.click();
 
 			expect(valueAfterClick, 'Button not selected!')
 				.to
-				.equal(buttonValues[0]);
+				.equal(selectedButton);
 
 			expect(valuesBeforeClick)
 				.to
 				.equal(0);
 
-			expect(actualElement.values[0], 'Button should not be deselected!')
+			expect(actualElement.selected[0], 'Button should not be deselected!')
 				.to
-				.equal(buttonValues[0]);
+				.equal(selectedButton);
 		});
 
 		it(`should not cancel the last selection`, async function () {
@@ -423,22 +423,22 @@ describe.only('Toggle-buttons-group', () => {
 
 			await actualElement.updateComplete;
 
-			const valuesBeforeClick = actualElement.values.length;
+			const valuesBeforeClick = actualElement.selected.length;
 			const selectedButton = actualElement.children[0];
-			const valueBeforeClick = actualElement.values[0];
+			const valueBeforeClick = actualElement.selected[0];
 			selectedButton.click();
 
 			expect(valueBeforeClick, 'Button not selected!')
 				.to
-				.equal(buttonValues[0]);
+				.equal(selectedButton);
 
 			expect(valuesBeforeClick)
 				.to
 				.equal(1);
 
-			expect(actualElement.values[0], 'Button should not be deselected!')
+			expect(actualElement.selected[0], 'Button should not be deselected!')
 				.to
-				.equal(buttonValues[0]);
+				.equal(selectedButton);
 		});
 
 		it(`should not send an event if not canceling`, async function () {

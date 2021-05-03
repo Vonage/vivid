@@ -151,7 +151,7 @@ export class VwcToggleButtonGroup extends LitElement {
 					this.clearSelection(buttonElement);
 				}
 				if (!this.mandatory || this.values.length > 1 ||
-					(this.mandatory && this.values[0] !== buttonElement.getAttribute('value'))) {
+					(this.mandatory && !buttonElement.hasAttribute(SELECTED_ATTRIBUTE_NAME))) {
 					toggleButton(buttonElement);
 					this.dispatchToggleEvent();
 				}
