@@ -5,7 +5,7 @@
 ####   `should have internal contents`
 
 ```html
-<span class="mdc-list-item__text">
+<span class="mdc-deprecated-list-item__text">
   <slot>
   </slot>
 </span>

@@ -4,7 +4,6 @@
 
 ```html
 <button
-  aria-label=""
   aria-pressed="false"
   class="mdc-icon-button"
 >
