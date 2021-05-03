@@ -6,8 +6,8 @@ export const argTypes = {
 	},
 	indicatorIconSet: {
 		control: {
-			type: 'inline-radio',
-			options: { 'true': '', 'false': undefined }
+			type: 'select',
+			options: ['chevron', 'binary'],
 		}
 	},
 	dense: {
@@ -42,5 +42,6 @@ export const argTypes = {
 	styles: { table: { disable: true } },
 	closeOnSelect: { table: { disable: true } },
 	headerListItemIcon: { table: { disable: true } },
-	trailingIcon: { table: { disable: true } }
+	trailingIcon: { table: { disable: true } },
+	ripple: { table: { disable: true } }
 }

@@ -66,8 +66,13 @@
 :host(:not([icon=''])),
 :host([leadingToggle]) {
 	.expansion-panel-body {
-		padding-right: 16px;
 		padding-left: 48px;
+	}
+}
+
+:host([leadingToggle]) {
+	.expansion-panel-body {
+		padding-right: 16px;
 	}
 }
 
