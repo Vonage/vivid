@@ -1,3 +1,12 @@
+# [2.6.0](https://github.com/vonage/vivid/compare/v2.5.0...v2.6.0) (2021-05-03)
+
+
+### Bug Fixes
+
+* **vwc-data-grid:** expanded rows renderer API adjustment and story fix ([#782](https://github.com/vonage/vivid/issues/782)) ([6bfaa60](https://github.com/vonage/vivid/commit/6bfaa6075c86b29495fb10b2129bf20376a9a60e)), closes [#771](https://github.com/vonage/vivid/issues/771) [#771](https://github.com/vonage/vivid/issues/771) [#771](https://github.com/vonage/vivid/issues/771)
+
+
+
 # [2.5.0](https://github.com/vonage/vivid/compare/v2.4.1...v2.5.0) (2021-04-22)
 
 

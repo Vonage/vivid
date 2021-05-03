@@ -1,3 +1,12 @@
+# [2.6.0](https://github.com/vonage/vivid/compare/v2.5.0...v2.6.0) (2021-05-03)
+
+
+### Features
+
+* **toggle-buttons-group:** adds toggle buttons group ([#753](https://github.com/vonage/vivid/issues/753)) ([3352688](https://github.com/vonage/vivid/commit/3352688fc90d27b59dd850991fdfe2c26510693d))
+
+
+
 # [2.5.0](https://github.com/vonage/vivid/compare/v2.4.1...v2.5.0) (2021-04-22)
 
 
