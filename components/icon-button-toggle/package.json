@@ -26,8 +26,8 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@material/mwc-icon-button": "^0.20.0",
-		"@material/mwc-icon-button-toggle": "^0.20.0",
+		"@material/mwc-icon-button": "^0.21.0",
+		"@material/mwc-icon-button-toggle": "^0.21.0",
 		"@vonage/vvd-core": "2.6.0",
 		"@vonage/vvd-style-coupling": "2.6.0",
 		"@vonage/vwc-icon-button": "2.6.0",
