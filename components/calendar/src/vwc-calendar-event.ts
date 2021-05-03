@@ -1,6 +1,6 @@
 import '@vonage/vvd-core';
 import {
-	customElement, html, LitElement, property, TemplateResult
+	customElement, html, LitElement, property, TemplateResult, unsafeCSS
 } from 'lit-element';
 import { style } from './vwc-calendar-event.css';
 
@@ -23,11 +23,18 @@ export class VWCCalendarEvent extends LitElement {
 	static styles = [style];
 
 	/**
-	 * @prop index - day of the week (starts from 0)
+	 * @prop the label of the event
+	 * @public
+	 * */
+	@property({ type: String, reflect: true })
+	label?: string;
+
+	/**
+	 * @prop day - day of the week (starts from 0)
 	 * @public
 	 * */
 	@property({ type: Number, reflect: true })
-	index?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+	day?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
 
 	/**
 	 * the html markup
@@ -38,8 +45,12 @@ export class VWCCalendarEvent extends LitElement {
 			<section
 				role="button"
 				tabindex="0"
-				style="--event-day: ${this.index}"
-			></section>
+				style="--vvd-calendar-event-event-day: ${unsafeCSS(this.day)}"
+			>
+				<label>${this.label}</label>
+			</section>
 		`;
 	}
 }
+
+
