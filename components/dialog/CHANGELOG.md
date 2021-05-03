@@ -1,3 +1,12 @@
+# [2.6.0](https://github.com/vonage/vivid/compare/v2.5.0...v2.6.0) (2021-05-03)
+
+
+### Bug Fixes
+
+* **dialog:** fix backdrop and content scheme color ([#797](https://github.com/vonage/vivid/issues/797)) ([6d10df8](https://github.com/vonage/vivid/commit/6d10df8b8d6811116aa39459bc7409fe4d3101fe))
+
+
+
 # [2.5.0](https://github.com/vonage/vivid/compare/v2.4.1...v2.5.0) (2021-04-22)
 
 
