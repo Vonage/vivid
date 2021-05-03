@@ -82,7 +82,7 @@ export class VWCSnackbar extends MWCSnackbarBase {
 		return html`
 			<div class="mdc-snackbar" position="${position}">
 				<div class="mdc-snackbar__surface">
-					${this.legacy ? this.renderLegacy() : this.renderModern()}
+					${this.renderFlavor(this.legacy)}
 				</div>
 			</div>
 		`;
@@ -112,30 +112,10 @@ export class VWCSnackbar extends MWCSnackbarBase {
 		this.mdcFoundation.handleActionIconClick(event);
 	}
 
-	private renderLegacy(): TemplateResult {
-		return html`<div class="legacy-flavor">
-				<vwc-note
-					icon="${ifDefined(this.icon)}"
-					connotation="${ifDefined(this.connotation)}"
-					header="${ifDefined(this.header)}"
-				>
-					<div class="snackbar-content">
-						<div>
-							${this.message}
-							<div class="action-container">
-								<slot name="action" @click="${this.handleActionClick}"></slot>
-							</div>
-						</div>
-						<div class="dismiss-container">
-							${this.renderDismissAction()}
-						</div>
-					</div>
-				</vwc-note>
-			</div>`;
-	}
-
-	private renderModern(): TemplateResult {
-		return html`<div class="modern-flavor" part="vvd-scheme-alternate">
+	private renderFlavor(legacy: boolean): TemplateResult {
+		const classValue = legacy ? 'legacy-flavor' : 'modern-flavor';
+		const partValue = legacy ? undefined : 'vvd-scheme-alternate';
+		return html`<div class="${classValue}" part="${ifDefined(partValue)}">
 				<vwc-note
 					icon="${ifDefined(this.icon)}"
 					connotation="${ifDefined(this.connotation)}"

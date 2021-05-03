@@ -3,7 +3,10 @@
 #### `should have internal contents`
 
 ```html
-<div class="BOTTOM CENTER mdc-snackbar">
+<div
+  class="mdc-snackbar"
+  position="BOTTOM-CENTER"
+>
   <div class="mdc-snackbar__surface">
     <div
       class="modern-flavor"
