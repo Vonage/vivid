@@ -1,3 +1,4 @@
+@use 'sass:map';
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
@@ -13,11 +14,18 @@
 
 @include color-connotation.connotations-main;
 @include color-connotation.connotations-main-default(primary);
+$block-sizes: (
+	'dense': 32px,
+	'normal': 40px,
+	'enlarged': 48px
+);
+
+$vvd-icon-button-block-size: --vvd-icon-button-block-size;
 
 :host {
 
 	// sizing
-	--mdc-icon-button-size: 40px;
+	--mdc-icon-button-size: var(#{$vvd-icon-button-block-size}, #{map.get($block-sizes, 'normal')});
 	@include vvd-formfield.coupling;
 
 	.mdc-icon-button {
@@ -52,7 +60,8 @@
 }
 
 :host([dense]) {
-	--mdc-icon-button-size: 32px;
+
+	--mdc-icon-button-size: var(#{$vvd-icon-button-block-size}, #{map.get($block-sizes, 'dense')});
 
 	.vvd-icon {
 		--icon-size: 16px;
@@ -60,7 +69,7 @@
 }
 
 :host([enlarged]) {
-	--mdc-icon-button-size: 48px;
+	--mdc-icon-button-size: var(#{$vvd-icon-button-block-size}, #{map.get($block-sizes, 'enlarged')});
 
 	.vvd-icon {
 		--icon-size: 24px;
