@@ -17,8 +17,28 @@ export function assertIsValidDateStringRepresentation(d: unknown): asserts d is 
  *
  * @returns a date as a string value in ISO format.
  *
- * @internal
  * */
 export function getValidDatetimeString(date: Date): string {
 	return date.toISOString().split('T')[0];
+}
+
+/**
+ * Date formatter
+ *
+ * @remarks
+ * Uses IntlDateTimeFormat API
+ *
+ * @param date - js date object
+ * @param options - Intl.DateTimeFormatOptions
+ *
+ * */
+export function formatDate(date: Date, options: Intl.DateTimeFormatOptions): string {
+	return new Intl.DateTimeFormat('en-US', options).format(date);
+}
+
+export function getFirstDateOfTheWeek(dateOrDateString: Date | string = new Date()): Date {
+	if (typeof dateOrDateString === 'string') {
+		dateOrDateString = new Date(dateOrDateString);
+	}
+	return new Date(dateOrDateString.setDate(dateOrDateString.getDate() - dateOrDateString.getDay()));
 }

@@ -5,7 +5,9 @@ import {
 import { style } from './vwc-calendar.css';
 import {
 	assertIsValidDateStringRepresentation,
-	getValidDatetimeString
+	getValidDatetimeString,
+	formatDate,
+	getFirstDateOfTheWeek
 } from './vwc-calendar-date-functions';
 
 declare global {
@@ -70,34 +72,12 @@ export class VWCCalendar extends LitElement {
 	// 	);
 	// }
 
-	private getFirstDateOfTheWeek(dateOrDateString: Date | string = new Date()): Date {
-		if (typeof dateOrDateString === 'string') {
-			dateOrDateString = new Date(dateOrDateString);
-		}
-		return new Date(dateOrDateString.setDate(dateOrDateString.getDate() - dateOrDateString.getDay()));
-	}
-
 	private getDaysArr(dateArr: Date[]): Date[] {
 		if (dateArr.length == this.#daysLength) { return dateArr; }
 		const lastDate = new Date(dateArr[dateArr.length - 1]);
 		lastDate.setDate(lastDate.getDate() + 1);
 		const concatenatedDateArr = [...dateArr, lastDate];
 		return this.getDaysArr(concatenatedDateArr);
-	}
-
-	/**
-	 * Date formatter
-	 *
-	 * @remarks
-	 * Uses IntlDateTimeFormat API
-	 *
-	 * @param date - js date object
-	 * @param options - Intl.DateTimeFormatOptions
-	 *
-	 * @internal
-	 * */
-	private formatDate(date: Date, options: Intl.DateTimeFormatOptions) {
-		return new Intl.DateTimeFormat('en-US', options).format(date);
 	}
 
 	protected renderTimeCells(): TemplateResult[] {
@@ -115,10 +95,10 @@ export class VWCCalendar extends LitElement {
 	protected renderDays(): TemplateResult {
 		return html`
 			<ol class="headline">
-					${this.getDaysArr([this.getFirstDateOfTheWeek(this.datetime)]).map(date => html`
+					${this.getDaysArr([getFirstDateOfTheWeek(this.datetime)]).map(date => html`
 					<li>
 						<time datetime=${getValidDatetimeString(date)}>
-							${this.formatDate(date, {	day: '2-digit',	weekday: 'short' })}
+							${formatDate(date, {	day: '2-digit',	weekday: 'short' })}
 						</time>
 					</li>`)}
 			</ol>`;
@@ -134,8 +114,8 @@ export class VWCCalendar extends LitElement {
 				<!-- TODO: align to convention of generation from first hour in day and a length of hours. -->
 				<!-- TODO: get styled hour and datetime value -->
 				${this.#hoursOfDay.map(h => html`<li>
-					<time datetime="${this.formatDate(h, { hour: 'numeric', minute: 'numeric', hour12: false })}">
-						${this.formatDate(h, { hour: 'numeric', hour12: true })}
+					<time datetime="${formatDate(h, { hour: 'numeric', minute: 'numeric', hour12: false })}">
+						${formatDate(h, { hour: 'numeric', hour12: true })}
 					</time>
 				</li>`)}
 			</ol>`;
