@@ -18,19 +18,8 @@ $toggle-buttons-type-selectors: selector.append('vwc-', list.join($scopes, '', $
 	)
 );
 
-@mixin size($type) {
-	:host([#{$type}]) & {
-		--button-height: #{$unit * 8px};
-
-		.vvd-icon {
-			--icon-size: #{$unit * 4px};
-		}
-		@content;
-	}
-}
-
 $sizes: (
-	'default': 40px,
+	'normal': 40px,
 	'enlarged': 48px,
 	'dense': 32px,
 );
@@ -92,7 +81,7 @@ $sizes: (
 
 		--vwc-#{$scope}-vertical-padding: 2px;
 		--vwc-#{$scope}-horizontal-padding: 1px;
-		--vvd-#{$scope}-height: calc(#{map.get($sizes, 'default')} - 2 * var(--vwc-#{$scope}-vertical-padding));
+		--vvd-#{$scope}-height: calc(#{map.get($sizes, 'normal')} - 2 * var(--vwc-#{$scope}-vertical-padding));
 
 		::slotted(vwc-#{$scope}) {
 			padding: var(--vwc-#{$scope}-vertical-padding, 0) var(--vwc-#{$scope}-horizontal-padding, 0);
