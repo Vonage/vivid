@@ -2,7 +2,7 @@ import '@vonage/vwc-banner';
 import 'chai-dom';
 import { html } from 'lit-html';
 import {
-	fixture, elementUpdated, aTimeout, nextFrame
+	fixture, aTimeout
 } from '@open-wc/testing-helpers';
 
 describe('banner', function () {
