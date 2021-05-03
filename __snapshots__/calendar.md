@@ -6,8 +6,28 @@
 <div class="container">
   <ol class="headline">
     <li>
-      <time datetime="2021-01-31">
-        31 Sun
+      <time datetime="2020-12-27">
+        27 Sun
+      </time>
+    </li>
+    <li>
+      <time datetime="2020-12-28">
+        28 Mon
+      </time>
+    </li>
+    <li>
+      <time datetime="2020-12-29">
+        29 Tue
+      </time>
+    </li>
+    <li>
+      <time datetime="2020-12-30">
+        30 Wed
+      </time>
+    </li>
+    <li>
+      <time datetime="2020-12-31">
+        31 Thu
       </time>
     </li>
     <li>
@@ -20,96 +40,121 @@
         02 Sat
       </time>
     </li>
-    <li>
-      <time datetime="2021-01-03">
-        03 Sun
-      </time>
-    </li>
-    <li>
-      <time datetime="2021-01-04">
-        04 Mon
-      </time>
-    </li>
-    <li>
-      <time datetime="2021-01-05">
-        05 Tue
-      </time>
-    </li>
-    <li>
-      <time datetime="2021-01-06">
-        06 Wed
-      </time>
-    </li>
   </ol>
   <ol class="time">
     <li>
-      <time>
-        8 am
+      <time datetime="01:00">
+        1 AM
       </time>
     </li>
     <li>
-      <time>
-        9 am
+      <time datetime="02:00">
+        2 AM
       </time>
     </li>
     <li>
-      <time>
-        10 am
+      <time datetime="03:00">
+        3 AM
       </time>
     </li>
     <li>
-      <time>
-        11 am
+      <time datetime="04:00">
+        4 AM
       </time>
     </li>
     <li>
-      <time>
-        12 am
+      <time datetime="05:00">
+        5 AM
       </time>
     </li>
     <li>
-      <time>
-        1 pm
+      <time datetime="06:00">
+        6 AM
       </time>
     </li>
     <li>
-      <time>
-        2 pm
+      <time datetime="07:00">
+        7 AM
       </time>
     </li>
     <li>
-      <time>
-        3 pm
+      <time datetime="08:00">
+        8 AM
       </time>
     </li>
     <li>
-      <time>
-        4 pm
+      <time datetime="09:00">
+        9 AM
       </time>
     </li>
     <li>
-      <time>
-        5 pm
+      <time datetime="10:00">
+        10 AM
       </time>
     </li>
     <li>
-      <time>
-        6 pm
+      <time datetime="11:00">
+        11 AM
       </time>
     </li>
     <li>
-      <time>
-        7 pm
+      <time datetime="12:00">
+        12 PM
       </time>
     </li>
     <li>
-      <time>
-        8 pm
+      <time datetime="13:00">
+        1 PM
       </time>
     </li>
     <li>
-      <time>
-        9 pm
+      <time datetime="14:00">
+        2 PM
+      </time>
+    </li>
+    <li>
+      <time datetime="15:00">
+        3 PM
+      </time>
+    </li>
+    <li>
+      <time datetime="16:00">
+        4 PM
+      </time>
+    </li>
+    <li>
+      <time datetime="17:00">
+        5 PM
+      </time>
+    </li>
+    <li>
+      <time datetime="18:00">
+        6 PM
+      </time>
+    </li>
+    <li>
+      <time datetime="19:00">
+        7 PM
+      </time>
+    </li>
+    <li>
+      <time datetime="20:00">
+        8 PM
+      </time>
+    </li>
+    <li>
+      <time datetime="21:00">
+        9 PM
+      </time>
+    </li>
+    <li>
+      <time datetime="22:00">
+        10 PM
+      </time>
+    </li>
+    <li>
+      <time datetime="23:00">
+        11 PM
       </time>
     </li>
   </ol>
@@ -117,6 +162,321 @@
     class="calendar"
     role="list"
   >
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
+    <div
+      role="listitem"
+      tabindex="0"
+    >
+    </div>
     <div
       role="listitem"
       tabindex="0"
