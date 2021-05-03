@@ -73,25 +73,7 @@
 					transform: translate(-50%, -50%);
 					transform-origin: center;
 					transition: none;
-					@media screen and (prefers-reduced-motion: reduce) {
-						&::before {
-							position: absolute;
-							z-index: -1;
-							top: 50%;
-							left: 50%;
-							display: block;
-							overflow: hidden;
-							width: $scrub-size;
-							height: $scrub-size;
-							background-color: var(#{scheme-variables.$vvd-color-neutral-10});
-							border-radius: 27px;
-							content: '';
-							opacity: 0;
-							pointer-events: none;
-							transform: translate(-50%, -50%);
-							transition: none;
-						}
-					}
+
 					&::before {
 						position: absolute;
 						z-index: -1;
@@ -148,6 +130,7 @@
 						transition: none;
 					}
 				}
+
 				&::before {
 					position: absolute;
 					z-index: -1;
