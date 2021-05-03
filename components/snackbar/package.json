@@ -28,7 +28,6 @@
 	"dependencies": {
 		"@vonage/vvd-core": "2.6.0",
 		"@vonage/vvd-foundation": "2.6.0",
-		"@vonage/vwc-icon": "2.6.0",
 		"@vonage/vwc-icon-button": "2.6.0",
 		"@material/mwc-snackbar": "0.20.0",
 		"lit-element": "2.3.0",
