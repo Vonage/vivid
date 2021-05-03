@@ -46,7 +46,7 @@
 /////////////////////////////////////////////////////////////////////////////
 .mdc-button {
 	$gutter: 8px;
-	height: var(--vvd-button-height, var(--button-height));
+	height: var(--vvd-button-block-height, var(--button-height));
 	border-radius: var(--vvd-button-shape);
 	// ! this was supposed to be set by MDC
 	font-stretch: var(--mdc-typography-button-font-stretch);

@@ -81,7 +81,7 @@ $sizes: (
 
 		--vwc-#{$scope}-vertical-padding: 2px;
 		--vwc-#{$scope}-horizontal-padding: 1px;
-		--vvd-#{$scope}-height: calc(#{map.get($sizes, 'normal')} - 2 * var(--vwc-#{$scope}-vertical-padding));
+		--vvd-#{$scope}-block-height: calc(#{map.get($sizes, 'normal')} - 2 * var(--vwc-#{$scope}-vertical-padding));
 
 		::slotted(vwc-#{$scope}) {
 			padding: var(--vwc-#{$scope}-vertical-padding, 0) var(--vwc-#{$scope}-horizontal-padding, 0);
@@ -101,11 +101,11 @@ $sizes: (
 	}
 
 	:host([accent][dense]) {
-		--vvd-#{$scope}-height: calc(#{map.get($sizes, 'dense')} - 2 * var(--vwc-#{$scope}-vertical-padding));
+		--vvd-#{$scope}-block-height: calc(#{map.get($sizes, 'dense')} - 2 * var(--vwc-#{$scope}-vertical-padding));
 	}
 
 	:host([accent][enlarged]) {
-		--vvd-#{$scope}-height: calc(#{map.get($sizes, 'enlarged')} - 2 * var(--vwc-#{$scope}-vertical-padding));
+		--vvd-#{$scope}-block-height: calc(#{map.get($sizes, 'enlarged')} - 2 * var(--vwc-#{$scope}-vertical-padding));
 	}
 
 	::slotted(vwc-#{$scope}:hover:not([selected])) {
