@@ -18,10 +18,12 @@ $dense-height: 32px;
 $normal-height: 40px;
 $enlarged-height: 48px;
 
+$vvd-icon-button-block-height: --vvd-icon-button-height;
+
 :host {
 
 	// sizing
-	--mdc-icon-button-size: var(--vvd-icon-button-height, #{$normal-height});
+	--mdc-icon-button-size: var(#{$vvd-icon-button-block-height}, #{$normal-height});
 	@include vvd-formfield.coupling;
 
 	.mdc-icon-button {
@@ -57,7 +59,7 @@ $enlarged-height: 48px;
 
 :host([dense]) {
 
-	--mdc-icon-button-size: var(--vvd-icon-button-height, #{$dense-height});
+	--mdc-icon-button-size: var(#{$vvd-icon-button-block-height}, #{$dense-height});
 
 	.vvd-icon {
 		--icon-size: 16px;
@@ -65,7 +67,7 @@ $enlarged-height: 48px;
 }
 
 :host([enlarged]) {
-	--mdc-icon-button-size: var(--vvd-icon-button-height, #{$enlarged-height});
+	--mdc-icon-button-size: var(#{$vvd-icon-button-block-height}, #{$enlarged-height});
 
 	.vvd-icon {
 		--icon-size: 24px;
