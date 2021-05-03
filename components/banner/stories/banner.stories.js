@@ -53,13 +53,13 @@ export const Basic = (function () {
 				</style>
 				<div class="demo">
 				<vwc-banner
-					@close=${onClose}
+					@closing=${onClose}
 					?open=${open}
 					?dismissible=${dismissible}
 					icon=${ifDefined(icon)}
-					connotation=${connotation}>
-						Here's some information that you may find important!
-						<vwc-button layout="filled" @click=${onClose} dense>Learn More</vwc-button>
+					connotation=${connotation}
+					message="Here's some information that you may find important!">
+					<vwc-button slot="actionItems" layout="filled" @click=${onClose} dense>Learn More</vwc-button>
 				</vwc-banner>
 			</div>`);
 		};
@@ -80,19 +80,19 @@ Basic.argTypes = {
 };
 
 const basicStory = function (text, {
-	dismissible = true,
+	dismissible = false,
 	connotation = "info",
 	icon,
 	open = true,
 	onClose = noop
 }) {
 	return html`<vwc-banner
-		@close=${onClose}
+		@closing=${onClose}
 		?open=${open}
 		?dismissible=${dismissible}
 		icon=${ifDefined(icon)}
-		connotation=${connotation}>
-		${text}
+		connotation=${connotation}
+		message=${text}>
 	</vwc-banner>`;
 };
 
