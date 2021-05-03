@@ -26,8 +26,8 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@material/mwc-tab": "^0.20.0",
-		"@material/mwc-tab-bar": "^0.20.0",
+		"@material/mwc-tab": "^0.21.0",
+		"@material/mwc-tab-bar": "^0.21.0",
 		"@vonage/vvd-core": "2.5.0",
 		"@vonage/vvd-style-coupling": "2.5.0",
 		"lit-element": "^2.4.0",
