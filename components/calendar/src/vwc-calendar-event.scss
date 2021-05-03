@@ -1,15 +1,22 @@
+$indent: --vvd-calendar-event-indent;
+$overlap-count: --vvd-calendar-event-overlap-count;
+$event-color: --vvd-calendar-event-event-color;
+$event-day: --vvd-calendar-event-event-day;
+$event-row: --vvd-calendar-event-event-row;
+
 :host {
 	display: contents;
 }
 
 section {
-	--indent: calc(var(--overlap-count, 0) * 8px);
-	margin: 1px 1px 1px calc(1px + var(--indent));
-	background-color: var(--event-color);
+	#{$indent}: calc(var(#{$overlap-count}, 0) * 8px);
+	z-index: var(#{$overlap-count});
+	margin: 1px 1px 1px calc(1px + var(#{$indent}));
+	background-color: var(#{$event-color});
 	border-radius: 3.64752px;
-	grid-column: var(--event-day);
-	grid-row: var(--event-row);
+	grid-column: var(#{$event-day});
+	grid-row: var(#{$event-row});
 	&:focus {
-		z-index: 1;
+		z-index: 2000;
 	}
 }
