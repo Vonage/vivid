@@ -1,8 +1,12 @@
 import '@vonage/vvd-core';
 import {
-	customElement, html, LitElement, TemplateResult
+	customElement, html, LitElement, property, TemplateResult
 } from 'lit-element';
 import { style } from './vwc-calendar.css';
+import {
+	assertIsValidDateStringRepresentation,
+	getValidDatetimeString
+} from './vwc-calendar-date-functions';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -22,61 +26,78 @@ export class VWCCalendar extends LitElement {
 	 * */
 	static styles = [style];
 
+	/**
+	 * The date within a week of choice.
+	 * Accepts any valid date string representation
+	 * @example
+	 * 2021-01-01
+	 * @public
+	 * */
+	@property({
+		reflect: true,
+		converter: {
+			toAttribute(v) {
+				// throw if not a valid date string representation
+				assertIsValidDateStringRepresentation(v);
+				return v;
+			},
+			fromAttribute(v) {
+				// throw if not a valid date string representation
+				assertIsValidDateStringRepresentation(v);
+				return new Date(v);
+			}
+		}
+	})
+	datetime?: Date;
+
 	#daysLength = 7;
-	#hoursOfDay = [
-		'8 am',
-		'9 am',
-		'10 am',
-		'11 am',
-		'12 am',
-		'1 pm',
-		'2 pm',
-		'3 pm',
-		'4 pm',
-		'5 pm',
-		'6 pm',
-		'7 pm',
-		'8 pm',
-		'9 pm',
-	];
+	#hoursOfDay = (Array.from({ length: 23 }) as Date[])
+		.fill(new Date(new Date().setHours(0, 0, 0)))
+		.map((d, i) => new Date(d.setHours(++i)))
 
 	/**
 	 * generate dates array of days of the week by given date
 	 *
-	 * @param date - js date object
+	 * @param dateOrDateString - js date object
 	 * @internal
 	 * */
-	private getWeekdaysByDate(date: Date): Date[] {
-		let firstDateOfTheWeek = date.getDate() - date.getDay();
+	// private getWeekdaysByDate(date: Date = new Date()): Date[] {
+	// 	let firstDateOfTheWeek = date.getDate() - date.getDay();
+	// 	console.log('firstDateOfTheWeek', firstDateOfTheWeek);
+	// 	return Array.from(
+	// 		{ length: this.#daysLength },
+	// 		() => new Date(date.setDate(firstDateOfTheWeek++))
+	// 	);
+	// }
 
-		return Array.from(
-			{ length: this.#daysLength },
-			() => new Date(date.setDate(firstDateOfTheWeek++))
-		);
+	private getFirstDateOfTheWeek(dateOrDateString: Date | string = new Date()): Date {
+		if (typeof dateOrDateString === 'string') {
+			dateOrDateString = new Date(dateOrDateString);
+		}
+		return new Date(dateOrDateString.setDate(dateOrDateString.getDate() - dateOrDateString.getDay()));
+	}
+
+	private getDaysArr(dateArr: Date[]): Date[] {
+		if (dateArr.length == this.#daysLength) { return dateArr; }
+		const lastDate = new Date(dateArr[dateArr.length - 1]);
+		lastDate.setDate(lastDate.getDate() + 1);
+		const concatenatedDateArr = [...dateArr, lastDate];
+		return this.getDaysArr(concatenatedDateArr);
 	}
 
 	/**
-	 * assign styles
-	 * @internal
-	 * */
-	private getStyledWeekday(date: Date) {
-		return new Intl.DateTimeFormat('en-US', {
-			day: '2-digit',
-			weekday: 'short',
-		}).format(date);
-	}
-
-	/**
-	 * Returns a valid date string from date object e.g. 2020-01-01
+	 * Date formatter
 	 *
 	 * @remarks
-	 * This method is part of the html time tag, used for datetime attribute value.
+	 * Uses IntlDateTimeFormat API
 	 *
 	 * @param date - js date object
+	 * @param options - Intl.DateTimeFormatOptions
+	 *
 	 * @internal
 	 * */
-	private getValidDateString(date: Date) {
-		return date.toISOString().split('T')[0];
+	private formatDate(date: Date, options: Intl.DateTimeFormatOptions) {
+		return new Intl.DateTimeFormat('en-US', options).format(date);
 	}
 
 	protected renderTimeCells(): TemplateResult[] {
@@ -88,26 +109,47 @@ export class VWCCalendar extends LitElement {
 	}
 
 	/**
+	 * The html days markup
+	 * @internal
+	 * */
+	protected renderDays(): TemplateResult {
+		return html`
+			<ol class="headline">
+					${this.getDaysArr([this.getFirstDateOfTheWeek(this.datetime)]).map(date => html`
+					<li>
+						<time datetime=${getValidDatetimeString(date)}>
+							${this.formatDate(date, {	day: '2-digit',	weekday: 'short' })}
+						</time>
+					</li>`)}
+			</ol>`;
+	}
+
+	/**
+	 * the html days markup
+	 * @internal
+	 * */
+	protected renderHours(): TemplateResult {
+		return html`
+			<ol class="time">
+				<!-- TODO: align to convention of generation from first hour in day and a length of hours. -->
+				<!-- TODO: get styled hour and datetime value -->
+				${this.#hoursOfDay.map(h => html`<li>
+					<time datetime="${this.formatDate(h, { hour: 'numeric', minute: 'numeric', hour12: false })}">
+						${this.formatDate(h, { hour: 'numeric', hour12: true })}
+					</time>
+				</li>`)}
+			</ol>`;
+	}
+
+	/**
 	 * the html markup
 	 * @internal
 	 * */
 	protected render(): TemplateResult {
 		return html`
 			<div class="container">
-				<ol class="headline">
-					${this.getWeekdaysByDate(new Date(Date.UTC(2021, 1, 1))).map(
-		date => html`<li>
-								<time datetime=${this.getValidDateString(date)}
-									>${this.getStyledWeekday(date)}</time
-								>
-							</li>`
-	)}
-				</ol>
-				<ol class="time">
-					<!-- TODO: align to convention of generation from first hour in day and a length of hours. -->
-					<!-- TODO: get styled hour and datetime value -->
-					${this.#hoursOfDay.map(h => html`<li><time>${h}</time></li>`)}
-				</ol>
+				${this.renderDays()}
+				${this.renderHours()}
 				<div class="calendar" role="list">
 					${this.renderTimeCells()}
 					<!-- TODO: should be presented as a custom element. then could look for siblings and indent by js  -->
