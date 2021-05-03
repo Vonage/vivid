@@ -1,7 +1,9 @@
 import '@vonage/vwc-banner';
 import 'chai-dom';
 import { html } from 'lit-html';
-import { fixture } from '@open-wc/testing-helpers';
+import {
+	fixture, elementUpdated, aTimeout, nextFrame
+} from '@open-wc/testing-helpers';
 
 describe('banner', function () {
 	it('should match icon', async function () {
@@ -9,10 +11,13 @@ describe('banner', function () {
 		expect(bannerEl.shadowRoot.querySelector('vwc-icon:first-child')).to.have.attribute('type', 'ambulance');
 	});
 
-	it('should send "close" event upon dismissal', async function () {
-		const closeHandler = chai.spy();
-		const bannerEl = await fixture(html`<vwc-banner @close=${closeHandler} dismissible></vwc-banner>`);
+	it('should send "close" events upon dismissal', async function () {
+		const closingHandler = chai.spy();
+		const closedHandler = chai.spy();
+		const bannerEl = await fixture(html`<vwc-banner message="Hello" open @closed=${closedHandler} @closing=${closingHandler} dismissible></vwc-banner>`);
 		bannerEl.shadowRoot.querySelector('vwc-icon-button')?.click();
-		closeHandler.should.have.been.called();
+		await aTimeout(200);
+		closingHandler.should.have.been.called();
+		closedHandler.should.have.been.called();
 	});
 });

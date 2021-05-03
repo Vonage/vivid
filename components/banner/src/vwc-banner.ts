@@ -8,6 +8,8 @@ import {
 import { nothing } from 'lit-html';
 import { Connotation } from '@vonage/vvd-foundation/constants';
 
+const ANIMATION_DURATION = 100;
+
 type BannerConnotation =
 	Connotation.Info |
 	Connotation.Announcement |
@@ -31,16 +33,24 @@ const connotationToIconType = function (connotation:BannerConnotation):string {
 	})[connotation];
 };
 
-const clickCloseHandler = function (this:VWCBanner) {
-	this.dispatchEvent(new CustomEvent('close', {
+const createCustomEvent = function (eventName:string, props = {}):CustomEvent {
+	return new CustomEvent(eventName, {
 		bubbles: true,
-		composed: true
-	}));
+		composed: true,
+		cancelable: false,
+		...props
+	});
 };
 
 @customElement('vwc-banner')
 export class VWCBanner extends LitElement {
 	static styles = [BannerStyle];
+
+	@property({ type: String, reflect: true })
+	message = '';
+
+	@property({ type: Boolean, reflect: true })
+	dismissible?:boolean;
 
 	@property({ type: String, reflect: true })
 	connotation:BannerConnotation = Connotation.Info;
@@ -49,20 +59,45 @@ export class VWCBanner extends LitElement {
 	icon?:string;
 
 	@property({ type: Boolean, reflect: true })
-	dismissible?:boolean;
+	open = false;
 
-	@property({ type: Boolean, reflect: true })
-	open = true;
+	private clickCloseHandler() {
+		this.open = false;
+	}
+
+	#transitionTimer?:number;
+
+	protected firstUpdated() {
+		(this.shadowRoot?.querySelector('.container') as HTMLElement).style.setProperty('--transition-delay', `${ANIMATION_DURATION}ms`);
+	}
+
+	attributeChangedCallback(attributeName: string, oldValue: string | null, newValue: string | null) {
+		super.attributeChangedCallback(attributeName, oldValue, newValue);
+		if (attributeName === 'open' && oldValue !== newValue) {
+			clearTimeout(this.#transitionTimer);
+			this.dispatchEvent(createCustomEvent(!this.hasAttribute('open') ? 'closing' : 'opening'));
+			this.#transitionTimer = setTimeout(() => {
+				this.dispatchEvent(createCustomEvent(this.hasAttribute('open') ? 'opened' : 'closed'));
+			}, ANIMATION_DURATION);
+		}
+	}
 
 	render() {
 		return html`
 			<div class="container">
 				<header class="header">
-					<vwc-icon class="icon" type="${this.icon ?? connotationToIconType(this.connotation)}"></vwc-icon>
-					<slot class="user-content"></slot>
+					<span class="user-content">
+						<vwc-icon class="icon" type="${this.icon ?? connotationToIconType(this.connotation)}"></vwc-icon>
+						<div class="message">${this.message}</div>
+						<slot class="action-items" name="actionItems"></slot>
+					</span>
 					${
 	this.dismissible
-		? html`<vwc-icon-button class="action-button" @click="${clickCloseHandler.bind(this)}" icon="close-line"></vwc-icon-button>`
+		? html`<vwc-icon-button
+								class="dismiss-button"
+								icon="close-line"
+								@click="${this.clickCloseHandler}"
+								dense></vwc-icon-button>`
 		: nothing
 }
 				</header>

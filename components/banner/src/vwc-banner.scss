@@ -9,47 +9,50 @@
 @include color-connotation.connotations-main-default(info);
 
 :host {
+	/* stylelint-disable */
 	> .container {
-
+		/* stylelint-enable */
 		overflow: hidden;
 		max-height: 0;
-		transition: none;
+		transition: max-height var(--transition-delay, 200ms);
 
 		> .header {
 			@include typography.typography-cat-shorthand('body-2-bold');
-			position: relative;
 			display: flex;
-			overflow: hidden;
-			box-sizing: border-box;
 			align-items: center;
-			justify-content: center;
-			padding: 16px 54px 16px 16px;
+			justify-content: flex-start;
+			padding: 20px 0;
 			background-color: var(#{color-connotation.$vvd-color-connotation});
 			color: var(#{color-connotation.$vvd-color-on-connotation});
-			font-size: 14px;
-			font-style: normal;
-			font-weight: 600;
-			line-height: 20px;
+
+			&::before {
+				flex: 0 0 16px;
+				content: '';
+			}
 
 			> .user-content {
+				display: flex;
+				flex: 1 0;
 				align-items: center;
+				justify-content: center;
+
+				> .icon {
+					--icon-size: 20px;
+					flex: 0 0 auto;
+					padding-inline-end: 15px;
+				}
+
+				> .action-items {
+					display: inline-block;
+					flex: 0 0 auto;
+					padding-inline-start: 15px;
+				}
 			}
 
-			> .icon {
-				flex: 0 0 24px;
-				align-self: flex-start;
-				margin-top: 3px;
-				margin-right: 10px;
-				text-align: left;
-			}
-
-			> .action-button {
+			> .dismiss-button {
 				--vvd-icon-button-color: inherit;
-				position: absolute;
-				top: 50%;
-				right: 16px;
-				flex: 0 0 140px;
-				transform: translateY(-50%);
+				flex: 0 0 auto;
+				padding-inline-end: 8px;
 			}
 		}
 	}
@@ -60,17 +63,3 @@
 		max-height: 10rem;
 	}
 }
-
-:host(:not([dismissible])) {
-	> .container {
-		> .header {
-			padding-right: 16px;
-		}
-	}
-}
-
-::slotted(vwc-button) {
-	margin-inline: 1rem;
-}
-
-
