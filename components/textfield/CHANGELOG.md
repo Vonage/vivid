@@ -1,3 +1,12 @@
+# [2.6.0](https://github.com/vonage/vivid/compare/v2.5.0...v2.6.0) (2021-05-03)
+
+
+### Bug Fixes
+
+* **textfield:** value is not vertically centered when hint is not def… ([#763](https://github.com/vonage/vivid/issues/763)) ([594470a](https://github.com/vonage/vivid/commit/594470a7d06c7f8447525d2d640880b1657c317d))
+
+
+
 # [2.5.0](https://github.com/vonage/vivid/compare/v2.4.1...v2.5.0) (2021-04-22)
 
 

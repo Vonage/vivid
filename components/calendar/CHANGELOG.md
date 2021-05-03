@@ -1,3 +1,12 @@
+# [2.6.0](https://github.com/vonage/vivid/compare/v2.5.0...v2.6.0) (2021-05-03)
+
+
+### Features
+
+* **vwc-calendar:** api support for datetime of week ([#807](https://github.com/vonage/vivid/issues/807)) ([394a6da](https://github.com/vonage/vivid/commit/394a6dabee5b6300ed3b59e2bfb263dd8c64b13c))
+
+
+
 # [2.5.0](https://github.com/vonage/vivid/compare/v2.4.1...v2.5.0) (2021-04-22)
 
 
