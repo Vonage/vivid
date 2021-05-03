@@ -37,10 +37,10 @@ export class VWCNote extends LitElement {
 	connotation?: NoteConnotation;
 
 	@property({ type: String, reflect: true })
-	icon = '';
+	icon?: string;
 
 	@property({ type: String, reflect: true })
-	header = '';
+	header?: string;
 
 	protected render(): TemplateResult {
 		return html`
@@ -52,7 +52,7 @@ export class VWCNote extends LitElement {
 	}
 
 	private renderIcon(): TemplateResult {
-		return html`<vwc-icon class="note-icon" type="${this.icon}"></vwc-icon>`;
+		return html`<vwc-icon class="note-icon" type="${this.icon}" part="icon"></vwc-icon>`;
 	}
 
 	private renderHeader(): TemplateResult {

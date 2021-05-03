@@ -51,22 +51,22 @@ export class VWCSnackbar extends MWCSnackbarBase {
 	legacy = false;
 
 	@property({ type: String, reflect: true })
-	connotation?: NoteConnotation;
-
-	@property({ type: String, reflect: true })
 	position = `${Position.Bottom} ${Position.Center}`;
 
 	@property({ type: String, reflect: true })
-	icon = undefined;
+	connotation?: NoteConnotation;
 
 	@property({ type: String, reflect: true })
-	header = undefined;
+	icon?: string;
 
 	@property({ type: String, reflect: true })
-	message = undefined;
+	header?: string;
+
+	@property({ type: String, reflect: true })
+	message?: string;
 
 	@property({ type: Boolean, reflect: true })
-	dismissible = undefined;
+	dismissible?: boolean;
 
 	connectedCallback() {
 		super.connectedCallback();
@@ -132,8 +132,24 @@ export class VWCSnackbar extends MWCSnackbarBase {
 	}
 
 	private renderModern(): TemplateResult {
-		return html`<div class="modern-flavor">
-				Unsupported flavor
+		return html`<div class="modern-flavor" part="vvd-scheme-alternate">
+				<vwc-note
+					icon="${ifDefined(this.icon)}"
+					connotation="${ifDefined(this.connotation)}"
+					header="${ifDefined(this.header)}"
+				>
+					<div class="snackbar-content">
+						<div>
+							${this.message}
+							<div class="action-container">
+								<slot name="action" @click="${this.handleActionClick}"></slot>
+							</div>
+						</div>
+						<div class="dismiss-container">
+							${this.renderDismissAction()}
+						</div>
+					</div>
+				</vwc-note>
 			</div>`;
 	}
 

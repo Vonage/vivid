@@ -1,5 +1,6 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
+@use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation;
 
 :host {
 	@include typography.typography-cat-shorthand('caption');
@@ -29,12 +30,30 @@
 		border-radius: 6px;
 		box-shadow: 0 6px 8px rgba(0, 0, 0, 0.05), 0 12px 16px rgba(0, 0, 0, 0.05), 0 4px 24px rgba(0, 0, 0, 0.1);
 	}
-}
 
-.snackbar-content {
-	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
+	.snackbar-content {
+		display: flex;
+		flex-direction: row;
+		align-items: flex-start;
+	}
+
+	.action-container {
+		display: flex;
+
+		::slotted(*) {
+			margin-block-start: 16px;
+		}
+	}
+
+	.dismiss-container .dismiss-button {
+		transform: translate(4px, -4px);
+	}
+
+	[header] {
+		.dismiss-container .dismiss-button {
+			transform: translate(4px, -28px);
+		}
+	}
 }
 
 // legacy
@@ -45,16 +64,13 @@
 	.legacy-flavor {
 		display: initial;
 	}
-
-	.action-container {
-		display: flex;
+}
+:host(:not([legacy])) {
+	vwc-note {
+		border: 0;
+		box-shadow: none;
 	}
-
-	.action-container ::slotted(*) {
-		margin-block-start: 16px;
-	}
-
-	.dismiss-container .dismiss-button {
-		transform: translate(4px, -4px);
+	::part(icon) {
+		color: var(#{color-connotation.$vvd-color-connotation});
 	}
 }

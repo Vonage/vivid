@@ -13,42 +13,42 @@ export default {
 	argTypes
 };
 
-const TemplateLegacy = args => html`
+const TemplateBasic = args => html`
 	<div>
 		${getPositionControls()}
 		<vwc-button layout="filled" @click="${openSnackbar}">Show snackbar</vwc-button>
 	</div>
-	<vwc-snackbar ...=${spread(args)} legacy></vwc-snackbar>
+	<vwc-snackbar ...=${spread(args)}></vwc-snackbar>
 `;
 
-export const Legacy = TemplateLegacy.bind({});
-Legacy.args = {
-	icon: 'megaphone',
+export const Basic = TemplateBasic.bind({});
+Basic.args = {
+	icon: 'megaphone-solid',
 	connotation: 'info',
 	message: 'Pascal argues that a rational person should live as though God exists and seek to believe in God.',
 };
 
-export const LegacyDismissible = TemplateLegacy.bind({});
-LegacyDismissible.args = {
+export const Dismissible = TemplateBasic.bind({});
+Dismissible.args = {
 	timeoutMs: 10000,
 	message: 'Pascal argues that a rational person should live as though God exists and seek to believe in God.',
 	dismissible: true
 };
 
-const TemplateLegacyAction = args => html`
+const TemplateAction = args => html`
 	<div>
 		${getPositionControls()}
 		<vwc-button layout="filled" @click="${openSnackbar}">Show snackbar</vwc-button>
 	</div>
-	<vwc-snackbar ...=${spread(args)} legacy>
-		<vwc-button slot="action" layout="filled">Show more</vwc-button>
+	<vwc-snackbar ...=${spread(args)}>
+		<vwc-button slot="action" layout="outlined">Show more</vwc-button>
 	</vwc-snackbar>
 `;
 
-export const LegacyAction = TemplateLegacyAction.bind({});
-LegacyAction.args = {
+export const Action = TemplateAction.bind({});
+Action.args = {
 	timeoutMs: 10000,
-	icon: 'megaphone',
+	icon: 'megaphone-solid',
 	connotation: 'success',
 	header: 'Pascal heritage',
 	message: 'Pascal argues that a rational person should live as though God exists and seek to believe in God.',
