@@ -21,8 +21,8 @@ const TemplatePlain = args => html`
 		</vwc-snackbar>
 `;
 
-export const Basic = TemplatePlain.bind({});
-Basic.args = {
+export const Modern = TemplatePlain.bind({});
+Modern.args = {
 	snackbarArgs: {
 		id: 'snackbar-a',
 		labelText: 'Pascal argues that a rational person should live as though God exists and seek to believe in God.',

@@ -54,7 +54,7 @@ export class VWCSnackbar extends MWCSnackbarBase {
 	connotation?: NoteConnotation;
 
 	@property({ type: String, reflect: true })
-	position = undefined;
+	position = `${Position.Bottom} ${Position.Center}`;
 
 	@property({ type: String, reflect: true })
 	icon = undefined;

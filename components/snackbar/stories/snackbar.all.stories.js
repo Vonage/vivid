@@ -7,6 +7,6 @@ export default {
 	argTypes
 };
 
-export { Basic } from './snackbar.modern';
+export { Modern } from './snackbar.modern';
 
 export { Legacy, LegacyDismissible, LegacyFull } from './snackbar.legacy';
