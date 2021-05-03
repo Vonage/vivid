@@ -18,7 +18,7 @@ const TemplateLegacy = args => html`
 		${getPositionControls()}
 		<vwc-button layout="filled" @click="${openSnackbar}">Show snackbar</vwc-button>
 	</div>
-	<vwc-snackbar ...=${spread(args)} legacy></vwc-snackbar>
+	<vwc-snackbar ...=${spread(args)}></vwc-snackbar>
 `;
 
 export const Legacy = TemplateLegacy.bind({});
@@ -32,7 +32,8 @@ export const LegacyDismissible = TemplateLegacy.bind({});
 LegacyDismissible.args = {
 	timeoutMs: 10000,
 	message: 'Pascal argues that a rational person should live as though God exists and seek to believe in God.',
-	dismissible: true
+	dismissible: true,
+	legacy: true
 };
 
 const TemplateLegacyAction = args => html`
@@ -40,7 +41,7 @@ const TemplateLegacyAction = args => html`
 		${getPositionControls()}
 		<vwc-button layout="filled" @click="${openSnackbar}">Show snackbar</vwc-button>
 	</div>
-	<vwc-snackbar ...=${spread(args)} legacy>
+	<vwc-snackbar ...=${spread(args)}>
 		<vwc-button slot="action" layout="filled">Show more</vwc-button>
 	</vwc-snackbar>
 `;
@@ -52,7 +53,8 @@ LegacyAction.args = {
 	connotation: 'success',
 	header: 'Pascal heritage',
 	message: 'Pascal argues that a rational person should live as though God exists and seek to believe in God.',
-	dismissible: true
+	dismissible: true,
+	legacy: true
 };
 
 function openSnackbar(e) {

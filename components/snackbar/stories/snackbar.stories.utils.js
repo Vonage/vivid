@@ -22,22 +22,22 @@ function getPositionControls() {
 		<div class="group">
 			Vertical position:
 			<vwc-formfield label="Top">
-				<vwc-radio name="group-v" value="top"></vwc-radio>
+				<vwc-radio name="group-v" value="TOP"></vwc-radio>
 			</vwc-formfield>
 			<vwc-formfield label="Bottom">
-				<vwc-radio name="group-v" value="bottom" checked></vwc-radio>
+				<vwc-radio name="group-v" value="BOTTOM" checked></vwc-radio>
 			</vwc-formfield>
 		</div>
 		<div class="group">
 			Horizontal position:
 			<vwc-formfield label="Start">
-				<vwc-radio name="group-h" value="start"></vwc-radio>
+				<vwc-radio name="group-h" value="START"></vwc-radio>
 			</vwc-formfield>
 			<vwc-formfield label="Center">
-				<vwc-radio name="group-h" value="center" checked></vwc-radio>
+				<vwc-radio name="group-h" value="CENTER" checked></vwc-radio>
 			</vwc-formfield>
 			<vwc-formfield label="End">
-				<vwc-radio name="group-h" value="end"></vwc-radio>
+				<vwc-radio name="group-h" value="END"></vwc-radio>
 			</vwc-formfield>
 		</div>
 	</div>`;
@@ -55,5 +55,5 @@ function getPositionValue() {
 			result.push(radio.value);
 		}
 	}
-	return result.join(' ');
+	return result.join('-');
 }

@@ -42,9 +42,9 @@ export enum IconSize {
 }
 
 export enum Position {
-	Top = 'top',
-	Bottom = 'bottom',
-	Start = 'start',
-	Center = 'center',
-	End = 'end'
+	Top = 'TOP',
+	Bottom = 'BOTTOM',
+	Start = 'START',
+	Center = 'CENTER',
+	End = 'END'
 }

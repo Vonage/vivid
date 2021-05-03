@@ -37,8 +37,11 @@ type NoteConnotation = Extract<
 	| Connotation.Announcement
 >;
 
-const DEFAULT_VERTICAL_POSITION = Position.Bottom;
-const DEFAULT_HORIZONTAL_POSITION = Position.Center;
+type PositionPair = `${Position.Top | Position.Bottom}-${Position.Start | Position.Center | Position.End}`;
+
+const DEFAULT_POSITION: PositionPair = `${Position.Bottom}-${Position.Center}` as PositionPair;
+
+const POSITION_VALIDATOR = new RegExp(`^(${Position.Top}|${Position.Bottom})-(${Position.Start}|${Position.Center}|${Position.End})$`);
 
 /**
  * `vwc-snackbar` component is designated to show a short-time-living, non-intrusive user notification
@@ -50,8 +53,8 @@ export class VWCSnackbar extends MWCSnackbarBase {
 	@property({ type: Boolean, reflect: true })
 	legacy = false;
 
-	@property({ type: String, reflect: true })
-	position = `${Position.Bottom} ${Position.Center}`;
+	@property({ reflect: true })
+	position: PositionPair = DEFAULT_POSITION;
 
 	@property({ type: String, reflect: true })
 	connotation?: NoteConnotation;
@@ -75,9 +78,9 @@ export class VWCSnackbar extends MWCSnackbarBase {
 
 	/* eslint-disable lit-a11y/click-events-have-key-events */
 	render() {
-		const [vpos, hpos] = VWCSnackbar.extractPositionConfig(this.position);
+		const position = VWCSnackbar.preprocessPositionConfig(this.position);
 		return html`
-			<div class="mdc-snackbar ${vpos} ${hpos}">
+			<div class="mdc-snackbar" position="${position}">
 				<div class="mdc-snackbar__surface">
 					${this.legacy ? this.renderLegacy() : this.renderModern()}
 				</div>
@@ -169,26 +172,13 @@ export class VWCSnackbar extends MWCSnackbarBase {
 		`;
 	}
 
-	private static extractPositionConfig(input: string | undefined): Position[] {
-		let vpos = DEFAULT_VERTICAL_POSITION;
-		let hpos = DEFAULT_HORIZONTAL_POSITION;
-		if (typeof input === 'string') {
-			for (const token of input.split(/\s+/)) {
-				switch (token) {
-				case Position.Top:
-				case Position.Bottom:
-					vpos = token;
-					break;
-				case Position.Start:
-				case Position.Center:
-				case Position.End:
-					hpos = token;
-					break;
-				default:
-					break;
-				}
-			}
+	private static preprocessPositionConfig(input: PositionPair | undefined): PositionPair {
+		let result = DEFAULT_POSITION;
+
+		if (typeof input === 'string' && POSITION_VALIDATOR.test(input)) {
+			result = input;
 		}
-		return [vpos, hpos];
+
+		return result;
 	}
 }

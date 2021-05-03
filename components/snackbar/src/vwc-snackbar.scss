@@ -10,16 +10,16 @@
 	}
 
 	.mdc-snackbar {
-		&.top {
+		&[position^=TOP] {
 			top: 0;
 			bottom: initial;
 		}
 
-		&.start {
+		&[position$=START] {
 			justify-content: flex-start;
 		}
 
-		&.end {
+		&[position$=END] {
 			justify-content: flex-end;
 		}
 	}
