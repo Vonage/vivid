@@ -10,7 +10,7 @@
 
 @mixin size($type, $unit) {
 	:host([#{$type}]) & {
-		--button-height: #{$unit * 8px};
+		--button-block-size: #{$unit * 8px};
 
 		.vvd-icon {
 			--icon-size: #{$unit * 4px};
@@ -28,7 +28,7 @@
 	--mdc-button-disabled-outline-color: var(#{vvd-formfield.$formfield-disabled-ink});
 	--mdc-button-outline-color: var(--mdc-theme-primary);
 	--mdc-button-horizontal-padding: 14px;
-	--button-height: 40px;
+	--button-block-size: 40px;
 
 	@include vvd-formfield.coupling;
 }
@@ -46,7 +46,7 @@
 /////////////////////////////////////////////////////////////////////////////
 .mdc-button {
 	$gutter: 8px;
-	height: var(--vvd-button-block-height, var(--button-height));
+	height: var(--vvd-button-block-size, var(--button-block-size));
 	border-radius: var(--vvd-button-shape);
 	// ! this was supposed to be set by MDC
 	font-stretch: var(--mdc-typography-button-font-stretch);
