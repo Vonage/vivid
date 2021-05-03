@@ -88,14 +88,16 @@ $sizes: (
 			background-color: var(#{scheme-variables.$vvd-color-neutral-30});
 		}
 
+		::slotted(vwc-#{$scope}[selected], vwc-#{$scope}:hover:not([selected])) {
+			--vvd-#{$scope}-shape: var(#{$vvd-toggle-button-group-shape});
+		}
+
 		::slotted(vwc-#{$scope}[selected]) {
 			--vvd-#{$scope}-background-color: var(#{scheme-variables.$vvd-color-primary});
 			--vvd-#{$scope}-color: var(#{scheme-variables.$vvd-color-on-primary});
-			--vvd-#{$scope}-shape: 6px;
 		}
 
 		::slotted(vwc-#{$scope}:hover:not([selected])) {
-			--vvd-#{$scope}-shape: 6px;
 			--vvd-#{$scope}-background-color: var(#{scheme-variables.$vvd-color-neutral-50});
 		}
 	}
@@ -113,19 +115,25 @@ $sizes: (
 	}
 
 	::slotted(vwc-#{$scope}:not(:first-child):not(:last-child)) {
-		--vvd-#{$scope}-shape: 0;
+		:host(:not([accent])) & {
+			--vvd-#{$scope}-shape: 0;
+		}
 	}
 
 	::slotted(vwc-#{$scope}:first-child:not(:last-child)) {
-		--vvd-#{$scope}-shape: var(#{$vvd-toggle-button-group-shape}) 0 0 var(#{$vvd-toggle-button-group-shape});
 		padding-left: var(--vwc-#{$scope}-vertical-padding, 0);
 		border-radius: var(#{$vvd-toggle-button-group-shape}) 0 0 var(#{$vvd-toggle-button-group-shape});
+		:host(:not([accent])) & {
+			--vvd-#{$scope}-shape: var(#{$vvd-toggle-button-group-shape}) 0 0 var(#{$vvd-toggle-button-group-shape});
+		}
 	}
 
 	::slotted(vwc-#{$scope}:last-child:not(:first-child)) {
-		--vvd-#{$scope}-shape: 0 var(#{$vvd-toggle-button-group-shape}) var(#{$vvd-toggle-button-group-shape}) 0;
 		padding-right: var(--vwc-#{$scope}-vertical-padding, 0);
 		border-radius: 0 var(#{$vvd-toggle-button-group-shape}) var(#{$vvd-toggle-button-group-shape}) 0;
+		:host(:not([accent])) & {
+			--vvd-#{$scope}-shape: 0 var(#{$vvd-toggle-button-group-shape}) var(#{$vvd-toggle-button-group-shape}) 0;
+		}
 	}
 
 	:host([disabled]) ::slotted([group-button]) {
