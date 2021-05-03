@@ -4,10 +4,16 @@ export const argTypes = {
 			type: 'text'
 		}
 	},
+	dense: {
+		control: {
+			type: 'inline-radio',
+			options: { 'true': '', 'false': undefined }
+		}
+	},
 	indicatorIconSet: {
 		control: {
-			type: 'select',
-			options: ['chevron', 'binary'],
+			type: 'inline-radio',
+			options: { 'true': '', 'false': undefined }
 		}
 	},
 	leadingToggle: {
@@ -19,6 +25,12 @@ export const argTypes = {
 	icon: {
 		control: {
 			type: 'text'
+		}
+	},
+	noRipple: {
+		control: {
+			type: 'inline-radio',
+			options: { 'true': '', 'false': undefined }
 		}
 	},
 	open: {

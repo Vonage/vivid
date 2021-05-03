@@ -156,4 +156,48 @@ describe('expansion panel', () => {
 			expect(getComputedStyle(body).display).to.equal('none');
 		});
 	});
+
+	describe('ripple', () => {
+		it('should have ripple by default', async () => {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+
+			const ripple = actualElement.shadowRoot.querySelector('mwc-ripple');
+			expect(ripple).to.exist;
+		});
+
+		it('should have no ripple when set to noRipple', async () => {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} noRipple></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+
+			const ripple = actualElement.shadowRoot.querySelector('mwc-ripple');
+			expect(ripple).to.not.exist;
+		});
+	});
+
+	describe('sizing', () => {
+		it('should have normal size by default', async () => {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+
+			const header = actualElement.shadowRoot.querySelector('.expansion-panel-header');
+			assertComputedStyle(header, { fontSize: '20px' });
+		});
+
+		it('should have dense size when dense', async () => {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} dense></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+
+			const header = actualElement.shadowRoot.querySelector('.expansion-panel-header');
+			assertComputedStyle(header, { fontSize: '14px' });
+		});
+	});
 });

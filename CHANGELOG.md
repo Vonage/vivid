@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0](https://github.com/Vonage/vivid/compare/v2.5.0...v2.6.0) (2021-05-03)
+
+
+### Bug Fixes
+
+* issue [#800](https://github.com/Vonage/vivid/issues/800) fixing the menu multi being closed by click ([#802](https://github.com/Vonage/vivid/issues/802)) ([fea9d90](https://github.com/Vonage/vivid/commit/fea9d903c27dfe23cad38c8c7ed005a1d54956ad))
+* **dialog:** fix backdrop and content scheme color ([#797](https://github.com/Vonage/vivid/issues/797)) ([6d10df8](https://github.com/Vonage/vivid/commit/6d10df8b8d6811116aa39459bc7409fe4d3101fe))
+* **textfield:** value is not vertically centered when hint is not def… ([#763](https://github.com/Vonage/vivid/issues/763)) ([594470a](https://github.com/Vonage/vivid/commit/594470a7d06c7f8447525d2d640880b1657c317d))
+* **vwc-data-grid:** expanded rows renderer API adjustment and story fix ([#782](https://github.com/Vonage/vivid/issues/782)) ([6bfaa60](https://github.com/Vonage/vivid/commit/6bfaa6075c86b29495fb10b2129bf20376a9a60e)), closes [#771](https://github.com/Vonage/vivid/issues/771) [#771](https://github.com/Vonage/vivid/issues/771) [#771](https://github.com/Vonage/vivid/issues/771)
+
+
+### Features
+
+* **toggle-button-group:** force defaults and add sizeson toggle button group ([#798](https://github.com/Vonage/vivid/issues/798)) ([67ff4e0](https://github.com/Vonage/vivid/commit/67ff4e015c74d50f8eb2532cb927555c581b3db2))
+* **toggle-buttons-group:** adds toggle buttons group ([#753](https://github.com/Vonage/vivid/issues/753)) ([3352688](https://github.com/Vonage/vivid/commit/3352688fc90d27b59dd850991fdfe2c26510693d))
+* **vwc-calendar:** api support for datetime of week ([#807](https://github.com/Vonage/vivid/issues/807)) ([394a6da](https://github.com/Vonage/vivid/commit/394a6dabee5b6300ed3b59e2bfb263dd8c64b13c))
+
+
+
+
+
 # [2.5.0](https://github.com/Vonage/vivid/compare/v2.4.1...v2.5.0) (2021-04-22)
 
 
