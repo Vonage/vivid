@@ -31,11 +31,11 @@ const Template = args => html`
 export const Basic = Template.bind({});
 Basic.args = { header: 'Campaign Details' };
 
-export const Dense = Template.bind({});
-Dense.args = { header: 'Campaign Details', dense: '' };
-
 export const IndicatorIconSet = Template.bind({});
 IndicatorIconSet.args = { header: 'Campaign Details', indicatorIconSet: 'binary' };
+
+export const Dense = Template.bind({});
+Dense.args = { header: 'Campaign Details', dense: '' };
 
 export const LeadingToggle = Template.bind({});
 LeadingToggle.args = { header: 'Campaign Details', leadingToggle: '' };

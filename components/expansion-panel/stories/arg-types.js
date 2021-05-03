@@ -4,13 +4,13 @@ export const argTypes = {
 			type: 'text'
 		}
 	},
-	dense: {
+	indicatorIconSet: {
 		control: {
 			type: 'inline-radio',
 			options: { 'true': '', 'false': undefined }
 		}
 	},
-	indicatorIconSet: {
+	dense: {
 		control: {
 			type: 'inline-radio',
 			options: { 'true': '', 'false': undefined }
