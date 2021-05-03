@@ -12,11 +12,12 @@ describe('banner', function () {
 	});
 
 	it('should send "close" events upon dismissal', async function () {
+		const TRANSITION_TIME = 200; // 200ms
 		const closingHandler = chai.spy();
 		const closedHandler = chai.spy();
 		const bannerEl = await fixture(html`<vwc-banner message="Hello" open @closed=${closedHandler} @closing=${closingHandler} dismissible></vwc-banner>`);
 		bannerEl.shadowRoot.querySelector('vwc-icon-button')?.click();
-		await aTimeout(200);
+		await aTimeout(TRANSITION_TIME * 1.1); // additional 10% for good measure ;)
 		closingHandler.should.have.been.called();
 		closedHandler.should.have.been.called();
 	});
