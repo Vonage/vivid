@@ -14,7 +14,7 @@ const COMPONENT_NAME = 'vwc-toggle-button-group';
 const SELECTED_EVENT_NAME = 'selected';
 const GROUP_BUTTON_ATTRIBUTE = 'group-button';
 
-describe('Toggle-buttons-group', () => {
+describe.only('Toggle-buttons-group', () => {
 	const buttonValues = [
 		Math.random()
 			.toString(),
@@ -380,6 +380,82 @@ describe('Toggle-buttons-group', () => {
 			await waitNextTask();
 
 			checkSizeProperty(actualElement, 'dense', true);
+		});
+	});
+
+	describe(`Mandatory Selection`, function () {
+		function generateTemplate(props = [], childrenProps = [[], [], [], []]) {
+			return textToDomToParent(`<${COMPONENT_NAME} ${props.join(' ')}>
+<${VALID_BUTTON_ELEMENTS[0]} ${childrenProps[0].join(' ')} layout="filled" value="${buttonValues[0]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} ${childrenProps[1].join(' ')} layout="filled" value="${buttonValues[1]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} ${childrenProps[2].join(' ')} layout="filled" value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[1]} ${childrenProps[3].join(' ')} layout="filled" value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+</${COMPONENT_NAME}>`);
+		}
+
+		it(`should not cancel the last selection`, async function () {
+			const [actualElement] = (generateTemplate(['mandatory', 'multi']));
+
+			await actualElement.updateComplete;
+
+			const valuesBeforeClick = actualElement.values.length;
+			const selectedButton = actualElement.children[0];
+			selectedButton.click();
+			const valueAfterClick = actualElement.values[0];
+			selectedButton.click();
+
+			expect(valueAfterClick, 'Button not selected!')
+				.to
+				.equal(buttonValues[0]);
+
+			expect(valuesBeforeClick)
+				.to
+				.equal(0);
+
+			expect(actualElement.values[0], 'Button should not be deselected!')
+				.to
+				.equal(buttonValues[0]);
+		});
+
+		it(`should not cancel the last selection`, async function () {
+			const [actualElement] = addElement(generateTemplate(['mandatory', 'multi'],
+				[['selected'], [], [], []]));
+
+			await actualElement.updateComplete;
+
+			const valuesBeforeClick = actualElement.values.length;
+			const selectedButton = actualElement.children[0];
+			const valueBeforeClick = actualElement.values[0];
+			selectedButton.click();
+
+			expect(valueBeforeClick, 'Button not selected!')
+				.to
+				.equal(buttonValues[0]);
+
+			expect(valuesBeforeClick)
+				.to
+				.equal(1);
+
+			expect(actualElement.values[0], 'Button should not be deselected!')
+				.to
+				.equal(buttonValues[0]);
+		});
+
+		it(`should not send an event if not canceling`, async function () {
+			const [actualElement] = addElement(generateTemplate(['mandatory', 'multi'],
+				[['selected'], [], [], []]));
+
+			await actualElement.updateComplete;
+
+			let eventFired = false;
+			actualElement.addEventListener(SELECTED_EVENT_NAME, () => {
+				eventFired = true;
+			});
+
+			const selectedButton = actualElement.children[0];
+			selectedButton.click();
+
+			expect(eventFired).to.equal(false);
 		});
 	});
 });

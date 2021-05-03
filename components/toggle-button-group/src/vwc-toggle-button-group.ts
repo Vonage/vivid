@@ -58,6 +58,12 @@ export class VwcToggleButtonGroup extends LitElement {
 	})
 	dense = false;
 
+	@property({
+		type: Boolean,
+		reflect: true
+	})
+	mandatory = false;
+
 	constructor() {
 		super();
 		this.setNodesAndClickEvents(this.items);
@@ -144,8 +150,11 @@ export class VwcToggleButtonGroup extends LitElement {
 				if (!this.multi) {
 					this.clearSelection(buttonElement);
 				}
-				toggleButton(buttonElement);
-				this.dispatchToggleEvent();
+				if (!this.mandatory || this.values.length > 1 ||
+					(this.mandatory && this.values[0] !== buttonElement.getAttribute('value'))) {
+					toggleButton(buttonElement);
+					this.dispatchToggleEvent();
+				}
 			});
 		});
 	}
