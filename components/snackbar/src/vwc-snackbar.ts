@@ -30,11 +30,12 @@ MWCSnackbarBase.styles = [mwcSnackbarStyle, vwcSnackbarStyle];
 
 type NoteConnotation = Extract<
 	Connotation,
-	| Connotation.Success
 	| Connotation.Alert
-	| Connotation.Warning
-	| Connotation.Info
 	| Connotation.Announcement
+	| Connotation.CTA
+	| Connotation.Info
+	| Connotation.Success
+	| Connotation.Warning
 >;
 
 type PositionPair = `${Position.Top | Position.Bottom}-${Position.Start | Position.Center | Position.End}`;

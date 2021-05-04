@@ -36,7 +36,7 @@ Position of the component, as well as its contents, are customizable.
 | Property        | Attribute        | Type     | Default | Description |
 |-----------------|------------------|----------|---------|-------------|
 | `position`      | `position`       | `"TOP-START" | "TOP-CENTER" | "TOP-END" | "BOTTOM-START" | "BOTTOM-CENTER" | "BOTTOM-END" ` | `"BOTTOM-CENTER"` | defines the position of the snackbar |
-| `connotaion`    | `connotation`    | `"success" | "alert" | "warning" | "info" | "announcement"` | `"announcement"` |  | connotation color will be reflected in icon color, if present |
+| `connotaion`    | `connotation`    | `"alert" | "announcement" | "cta" | "info" | "success" | "warning"` | `"announcement"` |  | connotation color will be reflected in icon color, if present |
 | `icon`          | `icon`           | `string`  | `undefined` | icon type to show, if any |
 | `header`        | `header`         | `string`  | `undefined` | header of the message body |
 | `message`       | `message`        | `string`  | `undefined` | message of the message body |
