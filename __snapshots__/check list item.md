@@ -5,11 +5,11 @@
 ####   `should have expected HTML`
 
 ```html
-<span class="mdc-list-item__text">
+<span class="mdc-deprecated-list-item__text">
   <slot>
   </slot>
 </span>
-<span class="mdc-list-item__meta">
+<span class="mdc-deprecated-list-item__meta">
   <mwc-checkbox
     reducedtouchtarget=""
     tabindex="-1"

@@ -4,7 +4,7 @@
 
 ```html
 <ul
-  class="mdc-list"
+  class="mdc-deprecated-list"
   tabindex="-1"
 >
   <slot>
