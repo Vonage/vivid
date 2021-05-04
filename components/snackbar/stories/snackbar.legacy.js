@@ -24,6 +24,7 @@ Legacy.args = {
 	icon: 'megaphone',
 	connotation: 'info',
 	message: 'Pascal argues that a rational person should live as though God exists and seek to believe in God.',
+	legacy: true
 };
 
 export const LegacyDismissible = TemplateLegacy.bind({});
