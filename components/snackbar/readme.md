@@ -27,7 +27,7 @@ To have the `vwc-snackbar` appearance matching the legacy Volta, please use `leg
 ### Structure
 
 `vwc-snackbar` is a 'floating' component.
-Position of the component, as well as its contents, are customizable.
+Position of the `vwc-snackbar` is determined by `fixed` and thus relative to the `viewport` in vast majority of cases. Relative position (top/bottom etc), as well as snackbar's contents, are customizable.
 
 ### API
 
