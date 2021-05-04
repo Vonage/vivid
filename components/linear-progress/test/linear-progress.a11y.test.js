@@ -15,7 +15,7 @@ describe('linear progress a11y', () => {
 
 	it('should have 0 accessibility violations', async () => {
 		const [actualElement] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME} ariaLabel="Example progress bar"></${COMPONENT_NAME}>`)
+			textToDomToParent(`<${COMPONENT_NAME} aria-label="Example progress bar"></${COMPONENT_NAME}>`)
 		);
 		await waitNextTask();
 

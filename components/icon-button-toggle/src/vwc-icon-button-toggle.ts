@@ -2,6 +2,8 @@ import '@vonage/vvd-core';
 import {
 	customElement, html, property, TemplateResult
 } from 'lit-element';
+import { classMap } from 'lit-html/directives/class-map';
+import { ifDefined } from 'lit-html/directives/if-defined';
 import { IconButtonToggle as MWCIconButtonToggle } from '@material/mwc-icon-button-toggle';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 import { style as vwcButtonStyle } from '@vonage/vwc-icon-button/vwc-icon-button.css';
@@ -55,27 +57,44 @@ export class VWCIconButtonToggle extends MWCIconButtonToggle {
 	// ! copy & paste code from original mwc icon button toggle
 	// ! to replace icon handling
 	protected render(): TemplateResult {
-		return html` <button
-			class="mdc-icon-button"
-			@click="${this.handleClick}"
-			aria-label="${this.label}"
-			?disabled="${this.disabled}"
-			@focus="${this.handleRippleFocus}"
-			@blur="${this.handleRippleBlur}"
-			@mousedown="${this.handleRippleMouseDown}"
-			@mouseenter="${this.handleRippleMouseEnter}"
-			@mouseleave="${this.handleRippleMouseLeave}"
-			@touchstart="${this.handleRippleTouchStart}"
-			@touchend="${this.handleRippleDeactivate}"
-			@touchcancel="${this.handleRippleDeactivate}"
-		>
-			${this.renderRipple()}
-			<span class="mdc-icon-button__icon">
-				<slot name="offIcon"> ${this.renderIcon(this.offIcon)} </slot>
-			</span>
-			<span class="mdc-icon-button__icon mdc-icon-button__icon--on">
-				<slot name="onIcon"> ${this.renderIcon(this.onIcon)} </slot>
-			</span>
-		</button>`;
+		/** @classMap */
+		const classes = {
+			'mdc-icon-button--on': this.on,
+		};
+		const hasToggledAriaLabel =
+				this.ariaLabelOn !== undefined && this.ariaLabelOff !== undefined;
+		const ariaPressedValue = hasToggledAriaLabel ? undefined : this.on;
+		// @tveinfeld 👇
+		// eslint-disable-next-line no-nested-ternary
+		const ariaLabelValue = hasToggledAriaLabel ?
+			(this.on ? this.ariaLabelOn : this.ariaLabelOff) :
+			this.ariaLabel;
+		return html`<button
+          class="mdc-icon-button ${classMap(classes)}"
+          aria-pressed="${ifDefined(ariaPressedValue)}"
+          aria-label="${ifDefined(ariaLabelValue)}"
+          @click="${this.handleClick}"
+          ?disabled="${this.disabled}"
+          @focus="${this.handleRippleFocus}"
+          @blur="${this.handleRippleBlur}"
+          @mousedown="${this.handleRippleMouseDown}"
+          @mouseenter="${this.handleRippleMouseEnter}"
+          @mouseleave="${this.handleRippleMouseLeave}"
+          @touchstart="${this.handleRippleTouchStart}"
+          @touchend="${this.handleRippleDeactivate}"
+          @touchcancel="${this.handleRippleDeactivate}"
+        >${this.renderRipple()}
+        <span class="mdc-icon-button__icon"
+          ><slot name="offIcon">
+						${this.renderIcon(this.offIcon)}
+						</slot
+        ></span>
+        <span class="mdc-icon-button__icon mdc-icon-button__icon--on"
+          ><slot name="onIcon"
+            >
+						${this.renderIcon(this.onIcon)}
+						</slot
+        ></span>
+      </button>`;
 	}
 }

@@ -17,7 +17,7 @@ describe('icon button toggle a11y', () => {
 		const [actualElement] = addElement(
 			textToDomToParent(`
 				<${COMPONENT_NAME}
-					label="toggle bookmark"
+					aria-label="toggle bookmark"
 					onicon="bookmark-full"
 					officon="bookmark"
 				></${COMPONENT_NAME}>
