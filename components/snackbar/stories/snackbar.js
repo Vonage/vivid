@@ -5,7 +5,6 @@ import '@vonage/vwc-radio';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
-import { getPositionControls, getPositionValue } from './snackbar.stories.utils';
 
 export default {
 	title: 'Alpha/Components/Snackbar',
@@ -15,7 +14,6 @@ export default {
 
 const TemplateBasic = args => html`
 	<div>
-		${getPositionControls()}
 		<vwc-button layout="filled" @click="${openSnackbar}">Show snackbar</vwc-button>
 	</div>
 	<vwc-snackbar ...=${spread(args)}></vwc-snackbar>
@@ -38,7 +36,6 @@ Dismissible.args = {
 
 const TemplateAction = args => html`
 	<div>
-		${getPositionControls()}
 		<vwc-button layout="filled" @click="${openSnackbar}">Show snackbar</vwc-button>
 	</div>
 	<vwc-snackbar ...=${spread(args)}>
@@ -61,7 +58,6 @@ function openSnackbar(e) {
 	e.target.setAttribute('disabled', '');
 
 	const sb = document.querySelector('vwc-snackbar');
-	sb.position = getPositionValue();
 	sb.addEventListener('closed', () => {
 		opener.removeAttribute('disabled');
 	}, { once: true });
