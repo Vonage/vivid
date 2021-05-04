@@ -394,7 +394,7 @@ describe('Toggle-buttons-group', () => {
 		}
 
 		it(`should not cancel the last selection`, async function () {
-			const [actualElement] = (generateTemplate(['mandatory', 'multi']));
+			const [actualElement] = (generateTemplate(['required', 'multi']));
 
 			await actualElement.updateComplete;
 
@@ -418,7 +418,7 @@ describe('Toggle-buttons-group', () => {
 		});
 
 		it(`should not cancel the last selection`, async function () {
-			const [actualElement] = addElement(generateTemplate(['mandatory', 'multi'],
+			const [actualElement] = addElement(generateTemplate(['required', 'multi'],
 				[['selected'], [], [], []]));
 
 			await actualElement.updateComplete;
@@ -442,7 +442,7 @@ describe('Toggle-buttons-group', () => {
 		});
 
 		it(`should not send an event if not canceling`, async function () {
-			const [actualElement] = addElement(generateTemplate(['mandatory', 'multi'],
+			const [actualElement] = addElement(generateTemplate(['required', 'multi'],
 				[['selected'], [], [], []]));
 
 			await actualElement.updateComplete;

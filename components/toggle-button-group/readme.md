@@ -38,7 +38,7 @@
 |accent|reflected|boolean||
 |dense|reflected|boolean|Set the size of the buttons as dense|
 |enlarged|reflected|boolean|Set the size of the buttons as enlarged|
-|mandatory|reflected|boolean|Prevents toggling off the last selection. Also does not send event of non toggled selection.|
+|required|reflected|boolean|Prevents toggling off the last selection. Also does not send event of non toggled selection.|
 
 
 

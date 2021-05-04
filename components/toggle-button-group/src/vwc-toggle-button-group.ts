@@ -62,7 +62,7 @@ export class VwcToggleButtonGroup extends LitElement {
 		type: Boolean,
 		reflect: true
 	})
-	mandatory = false;
+	required = false;
 
 	constructor() {
 		super();
@@ -145,8 +145,8 @@ export class VwcToggleButtonGroup extends LitElement {
 	}
 
 	private isButtonValidForToggle(buttonElement: Element) {
-		return !this.mandatory || this.values.length > 1 ||
-			(this.mandatory && !isButtonActive(buttonElement));
+		return !this.required || this.values.length > 1 ||
+			(this.required && !isButtonActive(buttonElement));
 	}
 
 	private setNodeAndClickEvent(buttonElement: Element) {
