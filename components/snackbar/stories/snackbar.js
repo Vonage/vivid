@@ -31,6 +31,7 @@ Basic.args = {
 export const Dismissible = TemplateBasic.bind({});
 Dismissible.args = {
 	timeoutMs: 10000,
+	icon: 'megaphone-solid',
 	message: 'Pascal argues that a rational person should live as though God exists and seek to believe in God.',
 	dismissible: true
 };
