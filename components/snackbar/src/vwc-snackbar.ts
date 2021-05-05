@@ -99,8 +99,8 @@ export class VWCSnackbar extends MWCSnackbarBase {
 	private getEventHandler(eventName: string): (event: Event) => void {
 		return (e) => {
 			const event = eventName;
-			const reason = (e as any).reason;
-			const detail = reason ? { reason: reason } : null;
+			const originalDetail = (e as CustomEvent).detail;
+			const detail = originalDetail ? Object.assign({}, originalDetail) : null;
 			const forwardedEvent = new CustomEvent(event, { bubbles: true, composed: true, detail: detail });
 			this.dispatchEvent(forwardedEvent);
 		};
@@ -114,9 +114,8 @@ export class VWCSnackbar extends MWCSnackbarBase {
 	}
 
 	private renderFlavor(legacy: boolean): TemplateResult {
-		const classValue = legacy ? 'legacy-flavor' : 'modern-flavor';
 		const partValue = legacy ? undefined : 'vvd-scheme-alternate';
-		return html`<div class="${classValue}" part="${ifDefined(partValue)}">
+		return html`<div class="vivid-snackbar" part="${ifDefined(partValue)}">
 				<vwc-note
 					icon="${ifDefined(this.icon)}"
 					connotation="${ifDefined(this.connotation)}"

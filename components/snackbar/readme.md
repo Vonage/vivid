@@ -43,6 +43,13 @@ Position of the `vwc-snackbar` is determined by `fixed` and thus relative to the
 | `dismissible`   | `dismissible`    | `boolean` | absent (`false`) | when property set to `true` (attribute present) the dismiss button will be shown |
 | `timeoutMs`     | `timeoutms`      | `number` (4000-10000) | `5000`      | time to wait (in millis) till the snackbar auto dismiss |
 
+#### Methods
+
+| Method  | Arguments          | Result | Description |
+|---------|--------------------|--------|-------------|
+| `open`  |                    | `void` | opens the snackbar |
+| `close` | `(reason: string)` | `void` | closes the snackbar with specified reason, if any (this reason will be passed on via the `closing`/`closed` events `detail.reason`) |
+
 #### Events
 
 Closing events are supplied with detailed `reason`, which may be either `action` in case the action button used, or `dismiss`.

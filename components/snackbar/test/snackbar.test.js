@@ -1,7 +1,6 @@
 import { COMPONENT_NAME } from '@vonage/vwc-snackbar';
 import '@vonage/vwc-button';
 import {
-	waitNextTask,
 	textToDomToParent,
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
@@ -23,7 +22,7 @@ describe('snackbar', () => {
 			const [snackbar] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} ${flavor}></${COMPONENT_NAME}>`)
 			);
-			await waitNextTask();
+			await snackbar.updateComplete;
 			expect(snackbar.shadowRoot.innerHTML).to.equalSnapshot();
 		});
 
@@ -31,7 +30,7 @@ describe('snackbar', () => {
 			const [snackbar] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} header="Header" ${flavor}></${COMPONENT_NAME}>`)
 			);
-			await waitNextTask();
+			await snackbar.updateComplete;
 			expect(snackbar.shadowRoot.innerHTML).to.equalSnapshot();
 		});
 
@@ -39,7 +38,7 @@ describe('snackbar', () => {
 			const [snackbar] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} message="Message" ${flavor}></${COMPONENT_NAME}>`)
 			);
-			await waitNextTask();
+			await snackbar.updateComplete;
 			expect(snackbar.shadowRoot.innerHTML).to.equalSnapshot();
 		});
 
@@ -47,7 +46,7 @@ describe('snackbar', () => {
 			const [snackbar] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} icon="home" ${flavor}></${COMPONENT_NAME}>`)
 			);
-			await waitNextTask();
+			await snackbar.updateComplete;
 			expect(snackbar.shadowRoot.innerHTML).to.equalSnapshot();
 		});
 
@@ -55,7 +54,7 @@ describe('snackbar', () => {
 			const [snackbar] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} dismissible ${flavor}></${COMPONENT_NAME}>`)
 			);
-			await waitNextTask();
+			await snackbar.updateComplete;
 			expect(snackbar.shadowRoot.innerHTML).to.equalSnapshot();
 		});
 
@@ -63,7 +62,7 @@ describe('snackbar', () => {
 			const [snackbar] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} ${flavor}><vwc-button>Action</vwc-button></${COMPONENT_NAME}>`)
 			);
-			await waitNextTask();
+			await snackbar.updateComplete;
 			expect(snackbar.shadowRoot.innerHTML).to.equalSnapshot();
 		});
 	}

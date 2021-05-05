@@ -9,7 +9,7 @@
 >
   <div class="mdc-snackbar__surface">
     <div
-      class="modern-flavor"
+      class="vivid-snackbar"
       part="vvd-scheme-alternate"
     >
       <vwc-note>
@@ -27,6 +27,7 @@
     </div>
   </div>
 </div>
+
 ```
 
 #### `should have internal contents (header) - flavor = ''`
@@ -38,7 +39,7 @@
 >
   <div class="mdc-snackbar__surface">
     <div
-      class="modern-flavor"
+      class="vivid-snackbar"
       part="vvd-scheme-alternate"
     >
       <vwc-note header="Header">
@@ -56,6 +57,7 @@
     </div>
   </div>
 </div>
+
 ```
 
 #### `should have internal contents (message) - flavor = ''`
@@ -67,7 +69,7 @@
 >
   <div class="mdc-snackbar__surface">
     <div
-      class="modern-flavor"
+      class="vivid-snackbar"
       part="vvd-scheme-alternate"
     >
       <vwc-note>
@@ -86,6 +88,7 @@
     </div>
   </div>
 </div>
+
 ```
 
 #### `should have internal contents (icon) - flavor = ''`
@@ -97,7 +100,7 @@
 >
   <div class="mdc-snackbar__surface">
     <div
-      class="modern-flavor"
+      class="vivid-snackbar"
       part="vvd-scheme-alternate"
     >
       <vwc-note icon="home">
@@ -115,6 +118,7 @@
     </div>
   </div>
 </div>
+
 ```
 
 #### `should have internal contents (dismissible) - flavor = ''`
@@ -126,7 +130,7 @@
 >
   <div class="mdc-snackbar__surface">
     <div
-      class="modern-flavor"
+      class="vivid-snackbar"
       part="vvd-scheme-alternate"
     >
       <vwc-note>
@@ -151,6 +155,7 @@
     </div>
   </div>
 </div>
+
 ```
 
 #### `should have internal contents (slotted action) - flavor = ''`
@@ -162,7 +167,7 @@
 >
   <div class="mdc-snackbar__surface">
     <div
-      class="modern-flavor"
+      class="vivid-snackbar"
       part="vvd-scheme-alternate"
     >
       <vwc-note>
@@ -191,7 +196,7 @@
   position="BOTTOM-CENTER"
 >
   <div class="mdc-snackbar__surface">
-    <div class="legacy-flavor">
+    <div class="vivid-snackbar">
       <vwc-note>
         <div class="snackbar-content">
           <div>
@@ -207,6 +212,7 @@
     </div>
   </div>
 </div>
+
 ```
 
 #### `should have internal contents (header) - flavor = 'legacy'`
@@ -217,7 +223,7 @@
   position="BOTTOM-CENTER"
 >
   <div class="mdc-snackbar__surface">
-    <div class="legacy-flavor">
+    <div class="vivid-snackbar">
       <vwc-note header="Header">
         <div class="snackbar-content">
           <div>
@@ -233,6 +239,7 @@
     </div>
   </div>
 </div>
+
 ```
 
 #### `should have internal contents (message) - flavor = 'legacy'`
@@ -243,7 +250,7 @@
   position="BOTTOM-CENTER"
 >
   <div class="mdc-snackbar__surface">
-    <div class="legacy-flavor">
+    <div class="vivid-snackbar">
       <vwc-note>
         <div class="snackbar-content">
           <div>
@@ -260,6 +267,7 @@
     </div>
   </div>
 </div>
+
 ```
 
 #### `should have internal contents (icon) - flavor = 'legacy'`
@@ -270,7 +278,7 @@
   position="BOTTOM-CENTER"
 >
   <div class="mdc-snackbar__surface">
-    <div class="legacy-flavor">
+    <div class="vivid-snackbar">
       <vwc-note icon="home">
         <div class="snackbar-content">
           <div>
@@ -286,6 +294,7 @@
     </div>
   </div>
 </div>
+
 ```
 
 #### `should have internal contents (dismissible) - flavor = 'legacy'`
@@ -296,7 +305,7 @@
   position="BOTTOM-CENTER"
 >
   <div class="mdc-snackbar__surface">
-    <div class="legacy-flavor">
+    <div class="vivid-snackbar">
       <vwc-note>
         <div class="snackbar-content">
           <div>
@@ -319,6 +328,7 @@
     </div>
   </div>
 </div>
+
 ```
 
 #### `should have internal contents (slotted action) - flavor = 'legacy'`
@@ -329,7 +339,7 @@
   position="BOTTOM-CENTER"
 >
   <div class="mdc-snackbar__surface">
-    <div class="legacy-flavor">
+    <div class="vivid-snackbar">
       <vwc-note>
         <div class="snackbar-content">
           <div>
