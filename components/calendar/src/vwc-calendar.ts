@@ -1,5 +1,8 @@
 import '@vonage/vvd-core';
 import {
+	DirectiveFn
+} from 'lit-html';
+import {
 	customElement, html, LitElement, property, TemplateResult
 } from 'lit-element';
 import { style } from './vwc-calendar.css';
@@ -9,6 +12,7 @@ import {
 	formatDate,
 	getFirstDateOfTheWeek
 } from './vwc-calendar-date-functions';
+import { repeat } from 'lit-html/directives/repeat';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -80,12 +84,12 @@ export class VWCCalendar extends LitElement {
 		return this.getDaysArr(concatenatedDateArr);
 	}
 
-	protected renderTimeCells(): TemplateResult[] {
-		const templates = [];
-		for (let i = 0; i < (this.#hoursOfDay.length + 1) * this.#daysLength; i++) {
-			templates.push(html`<div role="listitem" tabindex="0"></div>`);
-		}
-		return templates;
+	protected renderTimeCells(): DirectiveFn {
+		const length = (this.#hoursOfDay.length + 1) * this.#daysLength;
+		return repeat(
+			Array.from({ length }),
+			() => html`<div role="listitem" tabindex="0"></div>`
+		);
 	}
 
 	/**
@@ -95,7 +99,7 @@ export class VWCCalendar extends LitElement {
 	protected renderDays(): TemplateResult {
 		return html`
 			<ol class="headline">
-					${this.getDaysArr([getFirstDateOfTheWeek(this.datetime)]).map(date => html`
+					${repeat(this.getDaysArr([getFirstDateOfTheWeek(this.datetime)]), date => html`
 					<li>
 						<time datetime=${getValidDatetimeString(date)}>
 							${formatDate(date, {	day: '2-digit',	weekday: 'short' })}
@@ -113,7 +117,7 @@ export class VWCCalendar extends LitElement {
 			<ol class="time">
 				<!-- TODO: align to convention of generation from first hour in day and a length of hours. -->
 				<!-- TODO: get styled hour and datetime value -->
-				${this.#hoursOfDay.map(h => html`<li>
+				${repeat(this.#hoursOfDay, h => html`<li>
 					<time datetime="${formatDate(h, { hour: 'numeric', minute: 'numeric', hour12: false })}">
 						${formatDate(h, { hour: 'numeric', hour12: true })}
 					</time>
