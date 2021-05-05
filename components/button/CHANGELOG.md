@@ -1,3 +1,16 @@
+## [2.6.2](https://github.com/vonage/vivid/compare/v2.6.1...v2.6.2) (2021-05-05)
+
+
+
+## [2.6.1](https://github.com/vonage/vivid/compare/v2.6.0...v2.6.1) (2021-05-04)
+
+
+### Features
+
+* **toggle-button-group:** design qa fixes for accent ([#809](https://github.com/vonage/vivid/issues/809)) ([d8faf46](https://github.com/vonage/vivid/commit/d8faf461b18939694232172279a656b5cd5af20d))
+
+
+
 # [2.6.0](https://github.com/vonage/vivid/compare/v2.5.0...v2.6.0) (2021-05-03)
 
 

@@ -181,7 +181,6 @@ export class VWCTextField extends MWCTextField {
 		};
 
 		//	attributes
-		setAttributeByValue('id', this.id, fe);
 		setAttributeByValue('name', this.name, fe);
 		setAttributeByValue('type', this.type, fe);
 		setAttributeByValue('form', this.form, fe);
