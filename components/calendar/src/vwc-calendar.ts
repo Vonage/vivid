@@ -50,6 +50,33 @@ export class VWCCalendar extends LitElement {
 	})
 	datetime?: Date;
 
+	/**
+	 * A locale string or array of locale strings that contain one or more language or locale tags.
+	 * If you include more than one locale string, list them in descending order of priority so that the first entry is the preferred locale.
+	 * If you omit this parameter, the default locale of the JavaScript runtime is used.
+	 * This parameter must conform to BCP 47 standards; see the Intl.Collator object for details.
+	 * @example
+	 * en-US | en-US, he-IL
+	 *
+	 * @public
+	 * */
+	@property({
+		reflect: false,
+		converter: {
+			toAttribute(v) {
+				// throw if not a valid date string representation
+				assertIsValidDateStringRepresentation(v);
+				return v;
+			},
+			fromAttribute(v) {
+				// throw if not a valid date string representation
+				assertIsValidDateStringRepresentation(v);
+				return new Date(v);
+			}
+		}
+	})
+	locales = 'en-US';
+
 	#daysLength = 7;
 	#hoursOfDay = (Array.from({ length: 23 }) as Date[])
 		.fill(new Date(new Date().setHours(0, 0, 0)))
@@ -97,7 +124,7 @@ export class VWCCalendar extends LitElement {
 	 * @internal
 	 * */
 	private formatDate(date: Date, options: Intl.DateTimeFormatOptions) {
-		return new Intl.DateTimeFormat('en-US', options).format(date);
+		return new Intl.DateTimeFormat(this.locale, options).format(date);
 	}
 
 	protected renderTimeCells(): TemplateResult[] {
