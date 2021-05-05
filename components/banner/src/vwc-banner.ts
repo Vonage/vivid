@@ -88,7 +88,7 @@ export class VWCBanner extends LitElement {
 				<header class="header">
 					<span class="user-content">
 						<vwc-icon class="icon" type="${this.icon ?? connotationToIconType(this.connotation)}"></vwc-icon>
-						<div class="message">${this.message}</div>
+						<div role="alert" class="message">${this.message}</div>
 						<slot class="action-items" name="actionItems"></slot>
 					</span>
 					${
