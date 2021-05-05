@@ -58,6 +58,12 @@ export class VwcToggleButtonGroup extends LitElement {
 	})
 	dense = false;
 
+	@property({
+		type: Boolean,
+		reflect: true
+	})
+	required = false;
+
 	constructor() {
 		super();
 		this.setNodesAndClickEvents(this.items);
@@ -135,19 +141,37 @@ export class VwcToggleButtonGroup extends LitElement {
 	}
 
 	private setNodesAndClickEvents(nodes: Element[]) {
-		nodes.forEach((buttonElement) => {
-			this.setVwcButtonSize(buttonElement);
+		nodes.forEach(buttonElement => this.setNodeAndClickEvent(buttonElement));
+	}
 
-			buttonElement.setAttribute('layout', 'filled');
-			buttonElement.setAttribute(GROUP_BUTTON_ATTRIBUTE, '');
-			buttonElement.addEventListener('click', () => {
-				if (!this.multi) {
-					this.clearSelection(buttonElement);
-				}
-				toggleButton(buttonElement);
-				this.dispatchToggleEvent();
-			});
+	private isButtonValidForToggle(buttonElement: Element) {
+		return !this.required || this.values.length > 1 ||
+			(this.required && !isButtonActive(buttonElement));
+	}
+
+	private setNodeAndClickEvent(buttonElement: Element) {
+		this.setVwcButtonSize(buttonElement);
+
+		this.setNodeAttributes(buttonElement);
+
+		buttonElement.addEventListener('click', () => {
+			this.handleButtonClick(buttonElement);
 		});
+	}
+
+	private handleButtonClick(buttonElement: Element) {
+		if (!this.multi) {
+			this.clearSelection(buttonElement);
+		}
+		if (this.isButtonValidForToggle(buttonElement)) {
+			toggleButton(buttonElement);
+			this.dispatchToggleEvent();
+		}
+	}
+
+	private setNodeAttributes(buttonElement: Element) {
+		buttonElement.setAttribute('layout', 'filled');
+		buttonElement.setAttribute(GROUP_BUTTON_ATTRIBUTE, '');
 	}
 
 	private setVwcButtonSize(buttonElement: Element) {
