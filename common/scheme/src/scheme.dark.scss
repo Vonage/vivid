@@ -1,6 +1,6 @@
 @use '@vonage/vvd-design-tokens/build/scss/schemes/dark/main.scss';
 @use '@vonage/vvd-design-tokens/build/scss/schemes/dark/alternate.scss';
-@use 'scheme-mixins';
+@use '_scheme-mixins';
 
 @include scheme-mixins.scheme-context-variables {
 	@include main.variables;
