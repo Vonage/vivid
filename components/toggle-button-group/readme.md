@@ -6,9 +6,9 @@
 
 ```
 <vwc-toggle-buttons-group>
-  <vwc-button value="11" layout="text" type="submit">BUTTON</vwc-button>
-  <vwc-button value="12" layout="text" type="submit">BUTTON</vwc-button>
-  <vwc-button value="13" layout="text" type="submit">BUTTON</vwc-button>
+  <vwc-button value="11" layout="filled">BUTTON</vwc-button>
+  <vwc-button value="12" layout="filled">BUTTON</vwc-button>
+  <vwc-button value="13" layout="filled">BUTTON</vwc-button>
 </vwc-toggle-buttons-group>
 ```
 

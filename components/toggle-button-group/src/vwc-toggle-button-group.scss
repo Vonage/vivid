@@ -132,13 +132,13 @@ $sizes: (
 	::slotted(vwc-#{$scope}:last-child:not(:first-child)) {
 		padding-right: var(--vwc-#{$scope}-vertical-padding, 0);
 		border-radius: 0 var(#{$vvd-toggle-button-group-shape}) var(#{$vvd-toggle-button-group-shape}) 0;
-		
+
 		:host(:not([accent])) & {
 			--vvd-#{$scope}-shape: 0 var(#{$vvd-toggle-button-group-shape}) var(#{$vvd-toggle-button-group-shape}) 0;
 		}
 	}
 
-	:host([disabled]) ::slotted([group-button]) {
+	:host([disabled]) ::slotted([vwc-#{$scope}]) {
 		--vvd-#{$scope}-background-color: var(#{scheme-variables.$vvd-color-neutral-30});
 		--vvd-#{$scope}-color: var(#{scheme-variables.$vvd-color-neutral-50});
 		pointer-events: none;
