@@ -5,10 +5,11 @@
 
 
 ```
-<vwc-toggle-buttons-group>
-  <vwc-button value="11" layout="text" type="submit">BUTTON</vwc-button>
-  <vwc-button value="12" layout="text" type="submit">BUTTON</vwc-button>
-  <vwc-button value="13" layout="text" type="submit">BUTTON</vwc-button>
+<vwc-toggle-button-group>
+  <vwc-button value="11" layout="text">BUTTON</vwc-button>
+  <vwc-button value="12" layout="text">BUTTON</vwc-button>
+  <vwc-icon-button icon="home" value="22">BUTTON</vwc-button>
+  <vwc-button value="13" layout="text">BUTTON</vwc-button>
 </vwc-toggle-buttons-group>
 ```
 
