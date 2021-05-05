@@ -36,9 +36,9 @@ export function formatDate(date: Date, options: Intl.DateTimeFormatOptions): str
 	return new Intl.DateTimeFormat('en-US', options).format(date);
 }
 
-export function getFirstDateOfTheWeek(dateOrDateString: Date | string = new Date()): Date {
-	if (typeof dateOrDateString === 'string') {
-		dateOrDateString = new Date(dateOrDateString);
+export function getFirstDateOfTheWeek(date: Date = new Date()): Date {
+	if (typeof date === 'string') {
+		date = new Date(date);
 	}
-	return new Date(dateOrDateString.setDate(dateOrDateString.getDate() - dateOrDateString.getDay()));
+	return new Date(date.setDate(date.getDate() - date.getDay()));
 }
