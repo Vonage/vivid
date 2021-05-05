@@ -50,12 +50,12 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 		content: '';
 	}
 
-	.mdc-list-item__graphic {
+	.mdc-deprecated-list-item__graphic {
 		align-self: flex-start;
 		margin-block-start: 10px;
 	}
 
-	.mdc-list-item__primary-text {
+	.mdc-deprecated-list-item__primary-text {
 		@include typography.typography-cat-shorthand('body-2-bold');
 		margin-top: 12px;
 		margin-bottom: 4px;
@@ -68,7 +68,7 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 		}
 	}
 
-	.mdc-list-item__secondary-text {
+	.mdc-deprecated-list-item__secondary-text {
 		@include typography.typography-cat-shorthand('caption');
 		margin-bottom: 12px;
 		// margin-block-end: 12px; // TODO uncomment with safari 13.1 test support
@@ -79,7 +79,7 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 		}
 	}
 
-	.mdc-list-item__meta {
+	.mdc-deprecated-list-item__meta {
 		flex-shrink: 0;
 	}
 	#{$vvd-list-item-block-size}: 64px;
@@ -91,12 +91,12 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 	--mdc-theme-text-icon-on-background: var(#{vvd-formfield.$formfield-disabled-ink});
 	--mdc-theme-text-hint-on-background: var(#{vvd-formfield.$formfield-disabled-ink});
 
-	.mdc-list-item__text {
+	.mdc-deprecated-list-item__text {
 		color: var(#{vvd-formfield.$formfield-disabled-ink});
 	}
 }
 
-.mdc-list-item__meta {
+.mdc-deprecated-list-item__meta {
 	display: flex;
 }
 

@@ -1,9 +1,11 @@
 name: Prepare Vivid for release
 
 on:
-  push:
-    tags:
-      - release
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to bump to'
+        required: false
 
 jobs:
   prepare-verify:
@@ -19,9 +21,6 @@ jobs:
           ref: master
           token: ${{ secrets.CI_AT }}
 
-      - name: Delete temporary trigger tag
-        run: git push origin --delete release
-
       - name: Use Node.js 14
         uses: actions/setup-node@v2
         with:
@@ -35,7 +34,8 @@ jobs:
 
       # Update to a new version
       - name: Extract release version manually set
-        run: echo "RELEASE_VERSION=$(echo ${GITHUB_REF##*/release-})" >> $GITHUB_ENV
+        if: ${{ github.event.inputs.version }}
+        run: echo "RELEASE_VERSION=${{ github.event.inputs.version }}" >> $GITHUB_ENV
       - name: Obtain release version if not manually set
         if: ${{ env.RELEASE_VERSION }} == ''
         run: echo "RELEASE_VERSION=$(node ./scripts/suggest-bump.mjs)" >> $GITHUB_ENV

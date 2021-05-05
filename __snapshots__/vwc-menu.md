@@ -8,7 +8,7 @@
   hidden=""
 >
   <mwc-list
-    class="mdc-list"
+    class="mdc-deprecated-list"
     roottabbable=""
   >
     <slot>

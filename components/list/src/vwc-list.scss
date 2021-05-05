@@ -12,7 +12,7 @@
 		#{scheme-variables.$vvd-color-neutral-70}
 	);
 
-	.mdc-list {
+	.mdc-deprecated-list {
 		@include typography.typography-cat-shorthand('body-2');
 	}
 }

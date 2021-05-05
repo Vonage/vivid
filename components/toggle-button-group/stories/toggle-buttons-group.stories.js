@@ -54,6 +54,16 @@ const MultiTemplate = args => html`<vwc-toggle-button-group multi>
 export const Multi = MultiTemplate.bind({});
 Multi.args = { };
 
+const MandatoryTemplate = args => html`<vwc-toggle-button-group required multi>
+	<vwc-button label="Standard" selected value="1"></vwc-button>
+	<vwc-button label="Hybrid" value="2"></vwc-button>
+	<vwc-icon-button icon="home" value="3"></vwc-icon-button>
+	<vwc-button label="Satellite" value="4"></vwc-button>
+</vwc-toggle-button-group>`;
+
+export const Mandatory = MandatoryTemplate.bind({});
+Mandatory.args = { };
+
 const SizesTemplate = args => html`
 	<h5>Dense</h5>
 	<div style="float: left;"><label>Standard</label>

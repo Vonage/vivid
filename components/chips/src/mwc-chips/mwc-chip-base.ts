@@ -17,7 +17,6 @@ limitations under the License.
 import { BaseElement } from '@material/mwc-base/base-element.js';
 import { observer } from '@material/mwc-base/observer.js';
 import { addHasRemoveClass } from '@material/mwc-base/utils.js';
-import { ripple } from '@material/mwc-ripple/ripple-directive.js';
 import { MDCChipAdapter } from '@material/chips/chip/adapter.js';
 import { MDCChipFoundation } from '@material/chips/chip/foundation.js';
 import {
@@ -228,12 +227,10 @@ export class ChipBase extends BaseElement {
 			<div
 				class="mdc-chip ${classMap(classes)}"
 				role="row"
-				.ripple=${ripple()}
 				@click=${this.handleInteraction}
 				@keydown=${this.handleKeydown}
 				@transitionend=${this.handleTransitionEnd}
 			>
-				<div class="mdc-chip__ripple"></div>
 				${this.renderThumbnail()} ${this.renderCheckmark()}
 				${this.renderPrimaryAction()} ${this.renderRemoveIcon()}
 			</div>
