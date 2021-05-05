@@ -4,7 +4,7 @@ import {
 	textToDomToParent,
 } from '../../../test/test-helpers.js';
 import { isolatedElementsCreation } from '../../../test/test-helpers';
-import { showAndWait } from './snackbar-utils.test';
+import { showAndWait, assertEventWithReason } from './snackbar-utils.test';
 
 describe('snackbar API', () => {
 	let addElement = isolatedElementsCreation();
@@ -28,15 +28,7 @@ describe('snackbar API', () => {
 		snackbar.close(reason);
 
 		const [closingEvent, closedEvent] = await Promise.all([closingPromise, closedPromise]);
-
-		expect(closingEvent).exist;
-		expect(closingEvent.type).equal('closing');
-		expect(closingEvent.detail).exist;
-		expect(closingEvent.detail.reason).equal(reason);
-
-		expect(closedEvent).exist;
-		expect(closedEvent.type).equal('closed');
-		expect(closedEvent.detail).exist;
-		expect(closedEvent.detail.reason).equal(reason);
+		assertEventWithReason(closingEvent, 'closing', reason);
+		assertEventWithReason(closedEvent, 'closed', reason);
 	});
 });

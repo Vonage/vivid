@@ -4,7 +4,7 @@ import {
 	textToDomToParent,
 } from '../../../test/test-helpers.js';
 import { isolatedElementsCreation } from '../../../test/test-helpers';
-import { showAndWait } from './snackbar-utils.test';
+import { showAndWait, assertEventWithReason } from './snackbar-utils.test';
 
 describe('snackbar events', () => {
 	let addElement = isolatedElementsCreation();
@@ -31,16 +31,8 @@ describe('snackbar events', () => {
 		dismissButton.click();
 
 		const [closingEvent, closedEvent] = await Promise.all([closingPromise, closedPromise]);
-
-		expect(closingEvent).exist;
-		expect(closingEvent.type).equal('closing');
-		expect(closingEvent.detail).exist;
-		expect(closingEvent.detail.reason).equal('dismiss');
-
-		expect(closedEvent).exist;
-		expect(closedEvent.type).equal('closed');
-		expect(closedEvent.detail).exist;
-		expect(closedEvent.detail.reason).equal('dismiss');
+		assertEventWithReason(closingEvent, 'closing', 'action');
+		assertEventWithReason(closedEvent, 'closed', 'action');
 	});
 
 	it(`should close on action with reason 'action'`, async () => {
@@ -65,15 +57,7 @@ describe('snackbar events', () => {
 		actionButton.click();
 
 		const [closingEvent, closedEvent] = await Promise.all([closingPromise, closedPromise]);
-
-		expect(closingEvent).exist;
-		expect(closingEvent.type).equal('closing');
-		expect(closingEvent.detail).exist;
-		expect(closingEvent.detail.reason).equal('action');
-
-		expect(closedEvent).exist;
-		expect(closedEvent.type).equal('closed');
-		expect(closedEvent.detail).exist;
-		expect(closedEvent.detail.reason).equal('action');
+		assertEventWithReason(closingEvent, 'closing', 'action');
+		assertEventWithReason(closedEvent, 'closed', 'action');
 	});
 });
