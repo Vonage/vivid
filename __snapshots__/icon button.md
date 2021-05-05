@@ -13,7 +13,7 @@
     type="bin"
   >
   </vwc-icon>
-  <span class="default-slot-container">
+  <span>
     <slot>
     </slot>
   </span>

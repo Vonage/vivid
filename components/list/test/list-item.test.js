@@ -69,8 +69,11 @@ describe('list item', () => {
 			const [item] = actualElements[0].children;
 			item.twoline = true;
 			await waitNextTask();
-			const primary = item.shadowRoot.querySelector('.mdc-list-item__primary-text');
-			const secondary = item.shadowRoot.querySelector('.mdc-list-item__secondary-text');
+			console.log(item.shadowRoot);
+			const primary = item.shadowRoot.querySelector('.mdc-deprecated-list-item__primary-text');
+			const secondary = item.shadowRoot.querySelector('.mdc-deprecated-list-item__secondary-text');
+			expect(primary).exist;
+			expect(secondary).exist;
 			const { y: primaryY, height: priamryHeight } = primary.getClientRects()[0];
 			const { y: secondaryY } = secondary.getClientRects()[0];
 			const distanceBetweenLines = secondaryY - (primaryY + priamryHeight);
