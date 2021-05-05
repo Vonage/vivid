@@ -15,7 +15,7 @@ describe('circular-progress a11y', () => {
 
 	it('should have 0 accessibility violations', async () => {
 		const [actualElement] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME} ariaLabel="example progress spinner"></${COMPONENT_NAME}>`)
+			textToDomToParent(`<${COMPONENT_NAME} aria-label="example progress spinner"></${COMPONENT_NAME}>`)
 		);
 		await waitNextTask();
 

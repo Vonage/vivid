@@ -382,4 +382,80 @@ describe('Toggle-buttons-group', () => {
 			checkSizeProperty(actualElement, 'dense', true);
 		});
 	});
+
+	describe(`Mandatory Selection`, function () {
+		function generateTemplate(props = [], childrenProps = [[], [], [], []]) {
+			return textToDomToParent(`<${COMPONENT_NAME} ${props.join(' ')}>
+<${VALID_BUTTON_ELEMENTS[0]} ${childrenProps[0].join(' ')} layout="filled">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} ${childrenProps[1].join(' ')} layout="filled">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} ${childrenProps[2].join(' ')} layout="filled">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[1]} ${childrenProps[3].join(' ')} layout="filled">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+</${COMPONENT_NAME}>`);
+		}
+
+		it(`should not cancel the last selection`, async function () {
+			const [actualElement] = (generateTemplate(['required', 'multi']));
+
+			await actualElement.updateComplete;
+
+			const valuesBeforeClick = actualElement.selected.length;
+			const selectedButton = actualElement.children[0];
+			selectedButton.click();
+			const valueAfterClick = actualElement.selected[0];
+			selectedButton.click();
+
+			expect(valueAfterClick, 'Button not selected!')
+				.to
+				.equal(selectedButton);
+
+			expect(valuesBeforeClick)
+				.to
+				.equal(0);
+
+			expect(actualElement.selected[0], 'Button should not be deselected!')
+				.to
+				.equal(selectedButton);
+		});
+
+		it(`should not cancel the last selection`, async function () {
+			const [actualElement] = addElement(generateTemplate(['required', 'multi'],
+				[['selected'], [], [], []]));
+
+			await actualElement.updateComplete;
+
+			const valuesBeforeClick = actualElement.selected.length;
+			const selectedButton = actualElement.children[0];
+			const valueBeforeClick = actualElement.selected[0];
+			selectedButton.click();
+
+			expect(valueBeforeClick, 'Button not selected!')
+				.to
+				.equal(selectedButton);
+
+			expect(valuesBeforeClick)
+				.to
+				.equal(1);
+
+			expect(actualElement.selected[0], 'Button should not be deselected!')
+				.to
+				.equal(selectedButton);
+		});
+
+		it(`should not send an event if not canceling`, async function () {
+			const [actualElement] = addElement(generateTemplate(['required', 'multi'],
+				[['selected'], [], [], []]));
+
+			await actualElement.updateComplete;
+
+			let eventFired = false;
+			actualElement.addEventListener(SELECTED_EVENT_NAME, () => {
+				eventFired = true;
+			});
+
+			const selectedButton = actualElement.children[0];
+			selectedButton.click();
+
+			expect(eventFired).to.equal(false);
+		});
+	});
 });
