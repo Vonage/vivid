@@ -1,4 +1,5 @@
 import { COMPONENT_NAME } from '@vonage/vwc-snackbar';
+import '@vonage/vwc-button';
 import {
 	waitNextTask,
 	textToDomToParent,
@@ -17,11 +18,53 @@ describe('snackbar', () => {
 		);
 	});
 
-	it('should have internal contents', async () => {
-		const [snackbar] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-		);
-		await waitNextTask();
-		expect(snackbar.shadowRoot.innerHTML).to.equalSnapshot();
-	});
+	for (const flavor of ['', 'legacy']) {
+		it(`should have internal contents - flavor = '${flavor}'`, async () => {
+			const [snackbar] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} ${flavor}></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			expect(snackbar.shadowRoot.innerHTML).to.equalSnapshot();
+		});
+
+		it(`should have internal contents (header) - flavor = '${flavor}'`, async () => {
+			const [snackbar] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} header="Header" ${flavor}></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			expect(snackbar.shadowRoot.innerHTML).to.equalSnapshot();
+		});
+
+		it(`should have internal contents (message) - flavor = '${flavor}'`, async () => {
+			const [snackbar] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} message="Message" ${flavor}></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			expect(snackbar.shadowRoot.innerHTML).to.equalSnapshot();
+		});
+
+		it(`should have internal contents (icon) - flavor = '${flavor}'`, async () => {
+			const [snackbar] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} icon="home" ${flavor}></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			expect(snackbar.shadowRoot.innerHTML).to.equalSnapshot();
+		});
+
+		it(`should have internal contents (dismissible) - flavor = '${flavor}'`, async () => {
+			const [snackbar] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} dismissible ${flavor}></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			expect(snackbar.shadowRoot.innerHTML).to.equalSnapshot();
+		});
+
+		it(`should have internal contents (slotted action) - flavor = '${flavor}'`, async () => {
+			const [snackbar] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} ${flavor}><vwc-button>Action</vwc-button></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			expect(snackbar.shadowRoot.innerHTML).to.equalSnapshot();
+		});
+	}
 });
