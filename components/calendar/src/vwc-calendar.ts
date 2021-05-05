@@ -64,14 +64,13 @@ export class VWCCalendar extends LitElement {
 		reflect: false,
 		converter: {
 			toAttribute(v) {
-				// throw if not a valid date string representation
-				assertIsValidDateStringRepresentation(v);
+				// console.log(Array.isArray(v));
+				console.log(v);
 				return v;
 			},
 			fromAttribute(v) {
-				// throw if not a valid date string representation
-				assertIsValidDateStringRepresentation(v);
-				return new Date(v);
+				console.log(v);
+				return v;
 			}
 		}
 	})
