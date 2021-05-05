@@ -22,20 +22,6 @@ export function getValidDatetimeString(date: Date): string {
 	return date.toISOString().split('T')[0];
 }
 
-/**
- * Date formatter
- *
- * @remarks
- * Uses IntlDateTimeFormat API
- *
- * @param date - js date object
- * @param options - Intl.DateTimeFormatOptions
- *
- * */
-export function formatDate(date: Date, options: Intl.DateTimeFormatOptions): string {
-	return new Intl.DateTimeFormat('en-US', options).format(date);
-}
-
 export function getFirstDateOfTheWeek(date: Date = new Date()): Date {
 	if (typeof date === 'string') {
 		date = new Date(date);

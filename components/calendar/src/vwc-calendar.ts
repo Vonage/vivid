@@ -9,7 +9,6 @@ import { style } from './vwc-calendar.css';
 import {
 	assertIsValidDateStringRepresentation,
 	getValidDatetimeString,
-	formatDate,
 	getFirstDateOfTheWeek
 } from './vwc-calendar-date-functions';
 import { repeat } from 'lit-html/directives/repeat';
@@ -102,7 +101,7 @@ export class VWCCalendar extends LitElement {
 					${repeat(this.getDaysArr([getFirstDateOfTheWeek(this.datetime)]), date => html`
 					<li>
 						<time datetime=${getValidDatetimeString(date)}>
-							${formatDate(date, {	day: '2-digit',	weekday: 'short' })}
+							${new Intl.DateTimeFormat('en-US', {	day: '2-digit',	weekday: 'short' }).format(date)}
 						</time>
 					</li>`)}
 			</ol>`;
@@ -118,8 +117,8 @@ export class VWCCalendar extends LitElement {
 				<!-- TODO: align to convention of generation from first hour in day and a length of hours. -->
 				<!-- TODO: get styled hour and datetime value -->
 				${repeat(this.#hoursOfDay, h => html`<li>
-					<time datetime="${formatDate(h, { hour: 'numeric', minute: 'numeric', hour12: false })}">
-						${formatDate(h, { hour: 'numeric', hour12: true })}
+					<time datetime="${new Intl.DateTimeFormat('en-US', { hour: 'numeric', minute: 'numeric', hour12: false }).format(h)}">
+						${new Intl.DateTimeFormat('en-US', { hour: 'numeric', hour12: true }).format(h)}
 					</time>
 				</li>`)}
 			</ol>`;
