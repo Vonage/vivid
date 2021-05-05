@@ -31,8 +31,8 @@ describe('snackbar events', () => {
 		dismissButton.click();
 
 		const [closingEvent, closedEvent] = await Promise.all([closingPromise, closedPromise]);
-		assertEventWithReason(closingEvent, 'closing', 'action');
-		assertEventWithReason(closedEvent, 'closed', 'action');
+		assertEventWithReason(closingEvent, 'closing', 'dismiss');
+		assertEventWithReason(closedEvent, 'closed', 'dismiss');
 	});
 
 	it(`should close on action with reason 'action'`, async () => {
