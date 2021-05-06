@@ -64,5 +64,5 @@
 *   One can add more buttons dynamically
 	*   If you remove an item and not destroy it, remember that there’s a listener on this item
 *   Selected items have the `selected`
-*   In order to enforce styles, the following attributes are automatically removed:
+*   In order to enforce styles, the following attributes are automatically altered:
 	*   `layout` - will be set `layout="filled"` on load (note that changing this after initial load will change the way it looks)
