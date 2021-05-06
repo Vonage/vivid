@@ -44,6 +44,16 @@ const AccentTemplate = args => html`<vwc-toggle-button-group accent ...=${spread
 export const Accent = AccentTemplate.bind({});
 Accent.args = { };
 
+const DisabledTemplate = args => html`<vwc-toggle-button-group accent disabled ...=${spread(args)}>
+	<vwc-button selected label="Standard"></vwc-button>
+	<vwc-button label="Hybrid"></vwc-button>
+	<vwc-button label="Satellite"></vwc-button>
+	<vwc-icon-button selected icon="home"></vwc-icon-button>
+</vwc-toggle-button-group>`;
+
+export const Disabled = DisabledTemplate.bind({});
+Accent.args = { };
+
 const MultiTemplate = args => html`<vwc-toggle-button-group multi>
 	<vwc-button label="Standard"></vwc-button>
 	<vwc-button label="Hybrid"></vwc-button>

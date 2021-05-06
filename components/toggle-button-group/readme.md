@@ -6,10 +6,10 @@
 
 ```
 <vwc-toggle-button-group>
-  <vwc-button value="11" layout="text">BUTTON</vwc-button>
-  <vwc-button value="12" layout="text">BUTTON</vwc-button>
+  <vwc-button value="11">BUTTON</vwc-button>
+  <vwc-button value="12">BUTTON</vwc-button>
   <vwc-icon-button icon="home" value="22">BUTTON</vwc-button>
-  <vwc-button value="13" layout="text">BUTTON</vwc-button>
+  <vwc-button value="13">BUTTON</vwc-button>
 </vwc-toggle-buttons-group>
 ```
 
@@ -64,5 +64,5 @@
 *   One can add more buttons dynamically
 	*   If you remove an item and not destroy it, remember that there’s a listener on this item
 *   Selected items have the `selected`
-*   In order to enforce styles, the following attributes are automatically removed:
-	*   `layout=”outlined”`
+*   In order to enforce styles, the following attributes are automatically altered:
+	*   `layout` - will be set `layout="filled"` on load (note that changing this after initial load will change the way it looks)
