@@ -1,9 +1,9 @@
 ### Introduction
 
 `vwc-helper-message` component is a common helper/error message presenter.
-It is mostly to be used as an additional, mid length, informative hint provides below a functional blocks or elements.
+It is mostly to be used as an additional, mid length, informative hint located below a functional blocks or elements.
 
-This component featured with constance font style, 1 level lesser than the regular body content one,
+This component featured with constant font style, 1 level lesser than the regular body content one,
 single-liner appearance and optional error icon when `is-error` attribute set.
 
 > `vwc-helper-message` is internally used in: `vwc-file-picker`, `vwc-select`, `vwc-textarea`, `vwc-textfield` and more to come.
@@ -19,8 +19,14 @@ import '@vonage/vwc-helper-message';
 
 Then use in HTML as following:
 ```html
-<vwc-helper-message is-error="false">Message text</vwc-helper-message>
+<div aria-describedby="content-description">
+	some content requiring description
+</div>
+<vwc-helper-message id="content-description" is-error="false">Message text</vwc-helper-message>
 ```
+
+A11Y: please, add a relevant `id` attribute to the `vwc-helper-message` and use that `id` with the `aria-describedby` attribute in the base content as in the example above.
+Read more on `aria-describedby` usage [here](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-describedby_attribute).
 
 ### API
 
