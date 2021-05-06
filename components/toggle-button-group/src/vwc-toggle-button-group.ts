@@ -13,7 +13,6 @@ export const VALID_BUTTON_ELEMENTS = ['vwc-button', 'vwc-icon-button'];
 const SELECTED_EVENT_NAME = 'selected';
 const SELECTED_ATTRIBUTE_NAME = 'selected';
 const MULTIPLE_ATTRIBUTE_NAME = 'multi';
-const GROUP_BUTTON_ATTRIBUTE = 'group-button';
 
 function isValidButton(buttonElement: Element) {
 	return VALID_BUTTON_ELEMENTS.includes(buttonElement.tagName.toLowerCase());
@@ -171,7 +170,6 @@ export class VwcToggleButtonGroup extends LitElement {
 
 	private setNodeAttributes(buttonElement: Element) {
 		buttonElement.setAttribute('layout', 'filled');
-		buttonElement.setAttribute(GROUP_BUTTON_ATTRIBUTE, '');
 	}
 
 	private setVwcButtonSize(buttonElement: Element) {
