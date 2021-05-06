@@ -145,6 +145,7 @@ export class VWCSnackbar extends MWCSnackbarBase {
 			<vwc-icon-button
 				class="dismiss-button"
 				icon="close-line"
+				layout="ghost"
 				dense
 				@click="${this.handleDismissClick}"
 			>

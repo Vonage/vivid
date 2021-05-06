@@ -33,7 +33,10 @@ describe('snackbar layout', () => {
 		await snackbar.updateComplete;
 		const snackbarSurface = snackbar.shadowRoot.querySelector('.mdc-snackbar__surface');
 		expect(snackbarSurface).exist;
-		const icon = snackbar.shadowRoot.querySelector('vwc-note').shadowRoot.querySelector('vwc-icon');
+		const innerNote = snackbar.shadowRoot.querySelector('vwc-note');
+		expect(innerNote).exist;
+		await innerNote.updateComplete;
+		const icon = innerNote.shadowRoot.querySelector('.note-icon');
 		expect(icon).exist;
 
 		await showAndWait(snackbar);
