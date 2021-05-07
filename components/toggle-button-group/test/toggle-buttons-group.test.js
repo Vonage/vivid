@@ -12,7 +12,6 @@ chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-toggle-button-group';
 const SELECTED_EVENT_NAME = 'selected';
-const GROUP_BUTTON_ATTRIBUTE = 'group-button';
 
 describe('Toggle-buttons-group', () => {
 	const buttonValues = [
@@ -40,23 +39,6 @@ describe('Toggle-buttons-group', () => {
 		expect(actualElement.shadowRoot.innerHTML)
 			.to
 			.equalSnapshot();
-	});
-
-	it(`should add group-button attr to group buttons`, function () {
-		const [actualElement] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}>
-<${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-</${COMPONENT_NAME}>`)
-		);
-
-		const buttons = actualElement.children;
-		buttons.forEach((button, index) => {
-			expect(button.hasAttribute(GROUP_BUTTON_ATTRIBUTE))
-				.to
-				.equal(true);
-		});
 	});
 
 	it(`should set click listeners on the buttons`, function () {
