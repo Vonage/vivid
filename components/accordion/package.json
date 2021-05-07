@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-accordion",
-	"version": "2.6.1",
+	"version": "2.6.2",
 	"description": "accordion component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/accordion#readme",
 	"license": "ISC",
@@ -27,13 +27,13 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@vonage/vvd-core": "2.6.1",
-		"@vonage/vwc-expansion-panel": "2.6.1",
+		"@vonage/vvd-core": "2.6.2",
+		"@vonage/vwc-expansion-panel": "2.6.2",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.3"
 	},
 	"devDependencies": {
-		"@vonage/vvd-umbrella": "2.6.1",
+		"@vonage/vvd-umbrella": "2.6.2",
 		"typescript": "^4.1.3"
 	}
 }
