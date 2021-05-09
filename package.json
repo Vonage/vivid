@@ -122,6 +122,7 @@
 		"sass": "^1.30.0",
 		"semver-compare": "^1.0.0",
 		"semver-diff": "^3.1.1",
+		"serve": "^11.3.2",
 		"showdown": "^1.9.1",
 		"showdown-htmlescape": "^0.1.9",
 		"spech": "^0.2.1",
