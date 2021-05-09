@@ -58,6 +58,7 @@ We can't promise that everything will be fixed as we are opinionated people as w
 * Welcome! :)
 * just before getting into the change, please make sure to branch out from the main branch, giving your branch some good and descriptive name
 * during the coding time, it is best to sync with the main branch rather frequently, we'll do our best to keep it evergreen
+* Be sure to [familiarize yourself with our design tokens](./vivid-design-tokens.md).
 
 #### Coded, looks okay, now quality time
 
