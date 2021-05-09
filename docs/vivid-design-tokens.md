@@ -6,7 +6,7 @@ The Vivid Design Variables system (ViDeV), is a way to translate css properties 
 ## System and Process Diagram
 
 
-![drawing](https://docs.google.com/drawings/d/10CVYHWFND_B-M0720S3JtdEcVVR7M6xmCdfAS1syFi4/export/png)
+![Vivid Figma Color Pallet](./assets/images/Vivid%20Design%20Variables%20System%20Diagram.svg)
 
 
 ## 
@@ -15,7 +15,7 @@ The Vivid Design Variables system (ViDeV), is a way to translate css properties 
 ## Usage
 
 
-### Get the wanted color from Figma: \
+### Get the wanted color from Figma: 
 
 
 
@@ -23,8 +23,7 @@ The Vivid Design Variables system (ViDeV), is a way to translate css properties 
   <tr>
    <td>
 
-<img src="https://docs.google.com/drawings/d/1dIc3xy7HrWzN1Av-ybXEEpFRhCZj8kewwCgC8w-Bzjs/export/png" width="80%" alt="drawing">
-
+![Vivid Figma Color Pallet](./assets/images/Vivid Figma Color Pallet.svg)
    </td>
   </tr>
   <tr>
@@ -43,7 +42,7 @@ On this page,
   <tr>
    <td>
 
-<img src="https://docs.google.com/drawings/d/1inoaoe5-nCrJT6JgwGpxXtzr6Pp_fpdsRkAus6n7nvg/export/png" width="80%" alt="drawing">
+![Vivid Figma Color Pallet](./assets/images/Vivid Figma Color Pallet for Real.svg)
 
    </td>
   </tr>
@@ -117,14 +116,14 @@ In the `accent` part, we set a different background color using the `primary` co
 
 See the image below for the example:
 
-![drawing](https://docs.google.com/drawings/d/1VFaEVheCgw8mUlQaANoV1gR0eRMKzy1Z3UeeJch4MQk/export/png)
+![Themed Buttons Example](./assets/images/Themed%20buttons%20example.svg)
 
 
 ### Finding color connotations
 
 In some cases, you’d want to use `color connotations`. In this case, you can find the right semantics in the code. Here are two examples to show how this works:
 
-![drawing](https://docs.google.com/drawings/d/1nXBnIQ1SmaagY0qJp1Cgp3HXsRZ7ZOX6yvUIloansDU/export/png)
+![Color Connotation Example](./assets/images/Color%20connotation%20code.svg)
 
 If we need a connotation _cta _with intensity _60,_ we will just pick: _$vvd-color-connotation _(which is the default or main color).
 
