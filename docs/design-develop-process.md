@@ -31,4 +31,4 @@ Chart below visualizes the Vivid's implementation of design tokens incorporation
 
 Please follow this guide for practical steps to use the design tokens: 
 
-[Vivid Design Tokens](docs/vivid-design-tokens.md)
+[Vivid Design Tokens](./vivid-design-tokens.md)
