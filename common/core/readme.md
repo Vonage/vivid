@@ -1,4 +1,4 @@
-### Core - Vivid overlay lifecycle
+### Core - Vivid lifecycle
 
 Vivid content may be consumed on different levels.
 One may consume a single component, like `vwc-button`, `vwc-dialog` etc.
@@ -8,7 +8,7 @@ Any of those involves internal mechanics initialization: fetching __fonts__ for 
 We call those __vivid core__.
 
 There is a lifecycle here.
-We've designed Vivid overlay lifecycle to be self-contained, agnostic to other contexts and to not interfere nor require alignment to the existing application lifecycle or any other framework in place.
+We've designed Vivid lifecycle to be self-contained, agnostic to other contexts and to not interfere nor require alignment to the existing application lifecycle or any other framework in place.
 
 The chart below represents a general runtime initialization flow, while separating the system into the consumer-visible realm and the underlying platform.
 
@@ -50,7 +50,7 @@ All the __vivid core__ services auto-initialize to default values if not specifi
 
 ##### Pre-configured init
 
-In order to help Vivid overlay to initialize itself to some specific state, consuming application should use `data-vvd-context` attribute on `html` element.
+In order to help Vivid to initialize itself to some specific state, consuming application should use `data-vvd-context` attribute on `html` element.
 The below example will auto-initialize __vivid core__ with the dark theme.
 
 ```html
