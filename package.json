@@ -47,7 +47,8 @@
 		"wca:compile:json": "yarn compile && yarn wca:custom-elements",
 		"docs:spell-check": "spech docs/*.md",
 		"build-ui-tests": "webpack -c ./ui-tests/webpack.config.js",
-		"ui-tests": "ts-node ./ui-tests/index.ts"
+		"run-ui-tests": "ts-node ./ui-tests/index.ts",
+		"ui-tests": "yarn build-ui-tests && yarn run-ui-tests"
 	},
 	"devDependencies": {
 		"@open-wc/eslint-config": "^3.0.0",

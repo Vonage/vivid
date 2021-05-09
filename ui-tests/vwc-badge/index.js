@@ -1,16 +1,19 @@
-import { VWCAudio } from '@vonage/vwc-audio';
+import { VWCBadge } from '@vonage/vwc-badge';
 
-VWCAudio;
-
-const ELEMENT_NAME = 'vwc-audio';
+VWCBadge;
 
 export function createElementVariations(wrapper) {
-	const audioElementWrapper = document.createElement('div');
-	audioElementWrapper.innerHTML =
+	const badgeElementWrapper = document.createElement('div');
+	badgeElementWrapper.innerHTML =
 		`
-<vwc-audio></vwc-audio>
-<vwc-audio noseek="true"></vwc-audio>`;
-	wrapper.appendChild(audioElementWrapper);
+<vwc-badge connotation="cta" layout="filled">I'm a badge</vwc-badge>
+<vwc-badge connotation="cta" layout="soft">I'm a badge</vwc-badge>
+<vwc-badge layout="outlined">I'm a badge</vwc-badge>
+<vwc-badge layout="filled" shape="pill">I'm a badge</vwc-badge>
+<vwc-badge layout="filled" dense="">I'm a badge</vwc-badge>
+<vwc-badge layout="filled" enlarged="">I'm a badge</vwc-badge>
+`;
+	wrapper.appendChild(badgeElementWrapper);
 }
 
 
