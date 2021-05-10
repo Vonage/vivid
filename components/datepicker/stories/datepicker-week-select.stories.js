@@ -3,12 +3,7 @@ import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 
 const Template = args => html`
-  <style>
-    vwc-textfield { width: 260px; }
-  </style>
-  <vwc-datepicker id="datepicker" ...=${spread(args)}>
-    <vwc-textfield dense icon='calendar' placeholder='Datepicker'></vwc-textfield>
-  </vwc-datepicker>
+  <vwc-datepicker id="datepicker" ...=${spread(args)}></vwc-datepicker>
 
   <script>
     datepicker.onChange = () => {
@@ -32,4 +27,4 @@ const Template = args => html`
 `;
 
 export const WeekSelect = Template.bind({});
-WeekSelect.args = { weekSelect: '' };
+WeekSelect.args = { weekSelect: '', inline: '' };

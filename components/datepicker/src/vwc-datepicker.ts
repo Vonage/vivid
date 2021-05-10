@@ -114,6 +114,8 @@ export class VWCDatepicker extends LitFlatpickr {
 		this.appendTo = this.datepickerWrapper;
 		this.initializeComponent();
 		this.renderCustomParts();
+		this.disableAdjacentMonthDays();
+		this.inlineDayClickHandlers();
 	}
 
 	private renderCustomParts(): void {
@@ -140,8 +142,6 @@ export class VWCDatepicker extends LitFlatpickr {
 			this._instance.altInput.classList.add('vvd-datepicker-alt-input');
 		}
 		this._instance?.mobileInput?.setAttribute('slot', 'formInputElement');
-
-		this.disableAdjacentMonthDays();
 	}
 
 	private changeHandler(): void {
@@ -238,6 +238,7 @@ export class VWCDatepicker extends LitFlatpickr {
 		this.updateHeaderMonth();
 		this.updateHeaderYear();
 		this.highlightSelectedWeekDay();
+		this.disableAdjacentMonthDays();
 	}
 
 	private updateHeaderMonth(): void {
@@ -412,6 +413,11 @@ export class VWCDatepicker extends LitFlatpickr {
 			selectedWeekDay?.classList.remove(className);
 			this._instance.selectedDateElem?.classList.add(className);
 		}
+
+		// reset inline day handlers after lit-flatpickr update
+		if (this.inline && this.weekSelect) {
+			this.inlineDayClickHandlers();
+		}
 	}
 
 	private disableAdjacentMonthDays(): void {
@@ -420,6 +426,21 @@ export class VWCDatepicker extends LitFlatpickr {
 		disabledMonthDays?.forEach((day) => {
 			day.setAttribute('aria-disabled', 'true');
 		});
+	}
+
+	private inlineDayClickHandlers(): void {
+		// inline mode doesn't dispatch change event on day select so trigger changeHandler here
+		if (this.inline && this.weekSelect) {
+			const days = this._instance?.calendarContainer.querySelectorAll('.flatpickr-day') as NodeListOf<HTMLElement>;
+
+			days.forEach((day) => {
+				day.onclick = () => {
+					setTimeout(() => {
+						this.changeHandler();
+					}, 0);
+				};
+			});
+		}
 	}
 
 	// copied from lit-flatpickr

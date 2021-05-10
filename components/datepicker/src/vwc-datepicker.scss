@@ -303,6 +303,16 @@ vwc-menu {
 			z-index: 0;
 		}
 	}
+
+	.inline {
+		.flatpickr-day {
+			&.inRange,
+			&.week.selected:not(:nth-child(7n)):not(:nth-child(7n + 1)) {
+				box-shadow: -10px 0 0 var(#{scheme-variables.$vvd-color-neutral-20}),
+					10px 0 0 var(#{scheme-variables.$vvd-color-neutral-20});
+			}
+		}
+	}
 }
 
 //--------------
