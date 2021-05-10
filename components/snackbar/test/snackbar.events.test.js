@@ -4,30 +4,28 @@ import {
 	textToDomToParent,
 } from '../../../test/test-helpers.js';
 import { isolatedElementsCreation } from '../../../test/test-helpers';
-import { showAndWait, assertEventWithReason } from './snackbar-utils.test';
+import { openSnackbar, assertEventWithReason, getEventPromise } from './snackbar-utils.test';
 
 describe('snackbar events', () => {
 	let addElement = isolatedElementsCreation();
+	let snackbar;
 
-	it(`should close on dismiss with reason 'dismiss'`, async () => {
-		const [snackbar] = addElement(
+	beforeEach(async () => {
+		const [s] = addElement(
 			textToDomToParent(`<${COMPONENT_NAME} dismissible>
 				<vwc-button slot="action">Action</vwc-button>
 			</${COMPONENT_NAME}>`)
 		);
-		await snackbar.updateComplete;
-		await showAndWait(snackbar);
+		await s.updateComplete;
+		await openSnackbar(s);
+		snackbar = s;
+	});
 
-		expect(snackbar.hasAttribute('open')).true;
+	it(`should close on dismiss with reason 'dismiss'`, async () => {
 		const dismissButton = snackbar.shadowRoot.querySelector('.dismiss-button');
-		expect(dismissButton).exist;
 
-		const closingPromise = new Promise((r) => {
-			snackbar.addEventListener('closing', r);
-		});
-		const closedPromise = new Promise((r) => {
-			snackbar.addEventListener('closed', r);
-		});
+		const closingPromise = getEventPromise(snackbar, 'closing');
+		const closedPromise = getEventPromise(snackbar, 'closed');
 		dismissButton.click();
 
 		const [closingEvent, closedEvent] = await Promise.all([closingPromise, closedPromise]);
@@ -36,24 +34,10 @@ describe('snackbar events', () => {
 	});
 
 	it(`should close on action with reason 'action'`, async () => {
-		const [snackbar] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME} dismissible>
-				<vwc-button slot="action">Action</vwc-button>
-			</${COMPONENT_NAME}>`)
-		);
-		await snackbar.updateComplete;
-		await showAndWait(snackbar);
-
-		expect(snackbar.hasAttribute('open')).true;
 		const actionButton = snackbar.querySelector('vwc-button');
-		expect(actionButton).exist;
 
-		const closingPromise = new Promise((r) => {
-			snackbar.addEventListener('closing', r);
-		});
-		const closedPromise = new Promise((r) => {
-			snackbar.addEventListener('closed', r);
-		});
+		const closingPromise = getEventPromise(snackbar, 'closing');
+		const closedPromise = getEventPromise(snackbar, 'closed');
 		actionButton.click();
 
 		const [closingEvent, closedEvent] = await Promise.all([closingPromise, closedPromise]);

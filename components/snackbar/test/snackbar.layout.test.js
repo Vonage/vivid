@@ -5,7 +5,7 @@ import {
 	assertDistancePixels
 } from '../../../test/test-helpers.js';
 import { isolatedElementsCreation } from '../../../test/test-helpers';
-import { showAndWait } from './snackbar-utils.test';
+import { openSnackbar } from './snackbar-utils.test';
 
 describe('snackbar layout', () => {
 	let addElement = isolatedElementsCreation();
@@ -16,11 +16,9 @@ describe('snackbar layout', () => {
 		);
 		await snackbar.updateComplete;
 		const snackbarSurface = snackbar.shadowRoot.querySelector('.mdc-snackbar__surface');
-		expect(snackbarSurface).exist;
 		const dismissButton = snackbar.shadowRoot.querySelector('.dismiss-button');
-		expect(dismissButton).exist;
 
-		await showAndWait(snackbar);
+		await openSnackbar(snackbar);
 
 		assertDistancePixels(dismissButton, snackbarSurface, 'top', 16);
 		assertDistancePixels(dismissButton, snackbarSurface, 'right', 16);
@@ -32,14 +30,11 @@ describe('snackbar layout', () => {
 		);
 		await snackbar.updateComplete;
 		const snackbarSurface = snackbar.shadowRoot.querySelector('.mdc-snackbar__surface');
-		expect(snackbarSurface).exist;
 		const innerNote = snackbar.shadowRoot.querySelector('vwc-note');
-		expect(innerNote).exist;
 		await innerNote.updateComplete;
 		const icon = innerNote.shadowRoot.querySelector('.note-icon');
-		expect(icon).exist;
 
-		await showAndWait(snackbar);
+		await openSnackbar(snackbar);
 
 		assertDistancePixels(icon, snackbarSurface, 'top', 20);
 		assertDistancePixels(icon, snackbarSurface, 'left', 20);
@@ -62,9 +57,8 @@ describe('snackbar layout', () => {
 				);
 				await snackbar.updateComplete;
 				const snackbarSurface = snackbar.shadowRoot.querySelector('.mdc-snackbar__surface');
-				expect(snackbarSurface).exist;
 
-				await showAndWait(snackbar);
+				await openSnackbar(snackbar);
 				for (const [expectedProperty, expectedValue] of Object.entries(expectations)) {
 					assertDistancePixels(document.body, snackbarSurface, expectedProperty, expectedValue);
 				}
