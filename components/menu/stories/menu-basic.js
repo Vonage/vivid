@@ -2,6 +2,11 @@ import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 
 const TemplateA = args => html`
+	<style>
+		html, body {
+			height: 100%;
+		}
+	</style>
 	<div style="position: relative">
 		<vwc-button id="button" label="Open menu" @click="${anchorClickHandler}"></vwc-button>
 		<vwc-menu id="menu" ...=${spread(args)} @selected="${onMenuSelected}">
@@ -16,6 +21,11 @@ const TemplateA = args => html`
 export const WithVWCListItem = TemplateA.bind({});
 
 const TemplateB = args => html`
+	<style>
+		html, body {
+			height: 100%;
+		}
+	</style>
 	<div style="position: relative">
 		<vwc-button id="button" label="Open menu" @click="${anchorClickHandler}"></vwc-button>
 		<vwc-menu id="menu" ...=${spread(args)} @selected="${onMenuSelected}">
