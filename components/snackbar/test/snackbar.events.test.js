@@ -9,6 +9,8 @@ import { openSnackbar, assertEventWithReason, getEventPromise } from './snackbar
 describe('snackbar events', () => {
 	let addElement = isolatedElementsCreation();
 	let snackbar;
+	let closingPromise;
+	let closedPromise;
 
 	beforeEach(async () => {
 		const [s] = addElement(
@@ -19,13 +21,12 @@ describe('snackbar events', () => {
 		await s.updateComplete;
 		await openSnackbar(s);
 		snackbar = s;
+		closingPromise = getEventPromise(s, 'closing');
+		closedPromise = getEventPromise(s, 'closed');
 	});
 
 	it(`should close on dismiss with reason 'dismiss'`, async () => {
 		const dismissButton = snackbar.shadowRoot.querySelector('.dismiss-button');
-
-		const closingPromise = getEventPromise(snackbar, 'closing');
-		const closedPromise = getEventPromise(snackbar, 'closed');
 		dismissButton.click();
 
 		const [closingEvent, closedEvent] = await Promise.all([closingPromise, closedPromise]);
@@ -35,9 +36,6 @@ describe('snackbar events', () => {
 
 	it(`should close on action with reason 'action'`, async () => {
 		const actionButton = snackbar.querySelector('vwc-button');
-
-		const closingPromise = getEventPromise(snackbar, 'closing');
-		const closedPromise = getEventPromise(snackbar, 'closed');
 		actionButton.click();
 
 		const [closingEvent, closedEvent] = await Promise.all([closingPromise, closedPromise]);

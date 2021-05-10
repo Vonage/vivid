@@ -10,22 +10,22 @@ chai.use(chaiA11yAxe);
 
 describe('snackbar a11y', () => {
 	const addElement = isolatedElementsCreation();
+	let snackbar;
 
-	it('should have 0 accessibility violations (normal flavor)', async () => {
-		const [snackbar] = addElement(
+	beforeEach(async () => {
+		const [s] = addElement(
 			textToDomToParent(`<${COMPONENT_NAME} message="Message"></${COMPONENT_NAME}>`)
 		);
-		await openSnackbar(snackbar);
+		await openSnackbar(s);
+		snackbar = s;
+	});
 
+
+	it('should have 0 accessibility violations (normal flavor)', async () => {
 		await expect(snackbar).shadowDom.accessible();
 	});
 
 	it('should have 0 accessibility violations (legacy flavor)', async () => {
-		const [snackbar] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME} message="Message" legacy></${COMPONENT_NAME}>`)
-		);
-		await openSnackbar(snackbar);
-
 		await expect(snackbar).shadowDom.accessible();
 	});
 });

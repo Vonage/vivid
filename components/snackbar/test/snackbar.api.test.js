@@ -8,24 +8,23 @@ import { openSnackbar, assertEventWithReason, getEventPromise } from './snackbar
 
 describe('snackbar API', () => {
 	let addElement = isolatedElementsCreation();
+	let snackbar;
 
-	it(`should open on show API`, async () => {
-		const [snackbar] = addElement(
+	beforeEach(async () => {
+		const [s] = addElement(
 			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 		);
-		await snackbar.updateComplete;
-		await openSnackbar(snackbar);
+		await s.updateComplete;
+		await openSnackbar(s);
+		snackbar = s;
+	});
 
+	it(`should open on show API`, async () => {
 		expect(snackbar.hasAttribute('open')).true;
 	});
 
 	it(`should close on close API with specified reason`, async () => {
 		const reason = 'some reason';
-		const [snackbar] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-		);
-		await snackbar.updateComplete;
-		await openSnackbar(snackbar);
 
 		const closingPromise = getEventPromise(snackbar, 'closing');
 		const closedPromise = getEventPromise(snackbar, 'closed');
