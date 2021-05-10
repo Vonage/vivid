@@ -13,22 +13,38 @@ Example:
 
 ### Structure
 
+![Structure - full example](assets/structure-full.png)
+
 `vwc-file-picker`'s structure is quite flexible and customizable.
 In general we have the following particles:
-- label, text to appear __above__ the component
-- helper message, textual hint with optional error icon; located __below__ the component
-- drag'n'drop surface
-- drag'n'drop textual hint, which appears __centered within__ the surface
+- label, text to appear __above__ the component ('Pick your favorite' in the picture above)
+- helper message, textual hint with optional error icon; located __below__ the component ('single file of any type' in the picture above)
+- drag'n'drop surface (the dashed area in the picture above)
+- drag'n'drop textual hint, which appears __centered within__ the surface ('Drag & Drop files here' in the picture above)
 - button, triggering file input dialog 
 
 The component structure can be simple to rich, as following list (in the ascending order of complexity):
-- drag'n'drop surface only: only drag and drop files allowed here. Can optionally add a textual hint via the `dd-hint` slot (see API slots section below);
-<vwc-file-picker label="Avatar image" helper="select image of max 1Mb">
-<p slot="dd-hint">Drop the amazing files here!</p>
-  <input type="file" name="some-file" />
-</vwc-file-picker>
-- button only: providing a custom `vwc-button` via `button` slot (see API slots section below) and disabling drop zone (see API properties section below) the component turns to be a button only, that is triggering the file input operating system dialog
-- drag'n'drop surface with button: this flavor has both, the drag'n'drop surface for drag and drop and the button for dialog; here, as well, the drag'n'drop hint text can be customized or removed
+- drag'n'drop surface only: only drag and drop files allowed here; can optionally add a textual hint via the `dd-hint` slot (see API slots section below):
+	```html
+	<vwc-file-picker label="Avatar image" helper="select image of max 1Mb">
+		<p slot="dd-hint">Drop the amazing files here!</p>
+		<input type="file" name="some-file" />
+	</vwc-file-picker>
+	```
+- button only: providing a custom `vwc-button` via the `button` slot (see API slots section below) and disabling drop zone (see API properties section below); the button then triggers the file input operating system dialog:
+	```html
+	<vwc-file-picker label="Avatar image" helper="select image of max 1Mb" drop-zone="false">
+		<vwc-button slot="button">Upload</vwc-button>
+		<input type="file" name="some-file" />
+	</vwc-file-picker>
+	```
+- drag'n'drop surface with button: this flavor has both, the drag'n'drop surface and the button; here, as well, the drag'n'drop hint text can be customized or removed:
+	```html
+	<vwc-file-picker label="Avatar image" helper="select image of max 1Mb">
+		<vwc-button slot="button">Upload</vwc-button>
+		<input type="file" name="some-file" />
+	</vwc-file-picker>
+	```
 
 In addition to those major variations, there are the label and the helper message, mentioned above, which are customizable as well.
 
