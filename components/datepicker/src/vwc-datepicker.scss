@@ -122,15 +122,11 @@ vwc-menu {
 			}
 
 			&.prevMonthDay,
+			&.nextMonthDay,
 			&.flatpickr-disabled {
 				color: var(#{scheme-variables.$vvd-color-neutral-50});
 				cursor: default;
 				pointer-events: none;
-			}
-
-			&.nextMonthDay {
-				height: 0;
-				visibility: hidden;
 			}
 
 			&:hover,

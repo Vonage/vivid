@@ -141,7 +141,7 @@ export class VWCDatepicker extends LitFlatpickr {
 		}
 		this._instance?.mobileInput?.setAttribute('slot', 'formInputElement');
 
-		this.disablePrevMonthDays();
+		this.disableAdjacentMonthDays();
 	}
 
 	private changeHandler(): void {
@@ -414,9 +414,10 @@ export class VWCDatepicker extends LitFlatpickr {
 		}
 	}
 
-	private disablePrevMonthDays(): void {
-		const prevMonthDays = this._instance?.calendarContainer.querySelectorAll('.prevMonthDay');
-		prevMonthDays?.forEach((day) => {
+	private disableAdjacentMonthDays(): void {
+		const disabledMonthDays = this._instance?.calendarContainer.querySelectorAll('.prevMonthDay, .nextMonthDay');
+
+		disabledMonthDays?.forEach((day) => {
 			day.setAttribute('aria-disabled', 'true');
 		});
 	}
