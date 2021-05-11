@@ -38,8 +38,10 @@ const Template = args => html`
 		</vwc-list-item>
 	</vwc-list>`;
 
+export const Basic = Template.bind({});
+
 export const Activated = Template.bind({});
-Activated.args = { activated: '', connotation: 'primary', shape: 'rounded' };
+Activated.args = { activated: '', connotation: 'cta', shape: 'rounded' };
 
 export const Shape = Template.bind({});
 Shape.args = { shape: 'rounded' };
