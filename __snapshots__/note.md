@@ -15,6 +15,7 @@
 ```html
 <vwc-icon
   class="note-icon"
+  part="icon"
   size="medium"
   type="home"
 >
@@ -97,6 +98,7 @@
 ```html
 <vwc-icon
   class="note-icon"
+  part="icon"
   size="medium"
   type="home"
 >
@@ -113,6 +115,7 @@
 ```html
 <vwc-icon
   class="note-icon"
+  part="icon"
   size="medium"
   type="home"
 >
@@ -129,6 +132,7 @@
 ```html
 <vwc-icon
   class="note-icon"
+  part="icon"
   size="medium"
   type="home"
 >
