@@ -69,7 +69,6 @@ describe('list item', () => {
 			const [item] = actualElements[0].children;
 			item.twoline = true;
 			await waitNextTask();
-			console.log(item.shadowRoot);
 			const primary = item.shadowRoot.querySelector('.mdc-deprecated-list-item__primary-text');
 			const secondary = item.shadowRoot.querySelector('.mdc-deprecated-list-item__secondary-text');
 			expect(primary).exist;
