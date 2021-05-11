@@ -16,16 +16,16 @@ const TemplatePlain = args => html`
 `;
 
 export const Full = TemplatePlain.bind({});
-Full.args = { connotation: 'success', icon: 'check-circle', header: `Pascal's theological argument`, };
+Full.args = { connotation: 'success', icon: 'check-circle', header: `Pascal's theological argument` };
 
 export const IconLess = TemplatePlain.bind({});
-IconLess.args = { icon: '', header: `Pascal's theological argument` };
+IconLess.args = { header: `Pascal's theological argument` };
 
 export const HeaderLess = TemplatePlain.bind({});
-HeaderLess.args = { connotation: 'alert', icon: 'notification', header: '', };
+HeaderLess.args = { connotation: 'alert', icon: 'notification' };
 
 export const HeaderAndIconLess = TemplatePlain.bind({});
-HeaderAndIconLess.args = { connotation: 'warning', icon: '', header: '' };
+HeaderAndIconLess.args = { connotation: 'warning' };
 
 const TemplateShort = args => html`
 	<vwc-note ...=${spread(args)}>
