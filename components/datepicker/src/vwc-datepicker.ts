@@ -112,7 +112,7 @@ export class VWCDatepicker extends LitFlatpickr {
 
 			this.renderHeader();
 			this.renderRange();
-			if (!this.inline) this.renderFooter();
+			if (!this.closeOnSelect && !this.inline) this.renderFooter();
 			this.renderMonthPicker();
 
 			if (this.monthPicker) {

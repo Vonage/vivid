@@ -1,14 +1,22 @@
-### Core - Vivid overlay lifecycle
+### Core - Vivid lifecycle
 
 Vivid content may be consumed on different levels.
-One may consume a single component, like `vwc-button`.
+One may consume a single component, like `vwc-button`, `vwc-dialog` etc.
 Another use might be to init a common context via `vvd-context` service to style a common HTML native semantics like `H1`, `p` etc.
 
 Any of those involves internal mechanics initialization: fetching __fonts__ for typography, initializing __schemes__ for a theming / scheme management etc.
 We call those __vivid core__.
 
 There is a lifecycle here.
-We've designed Vivid overlay lifecycle to be self-contained, agnostic to other contexts and to not interfere nor require alignment to the existing application lifecycle or any other framework in place.
+We've designed Vivid lifecycle to be self-contained, agnostic to other contexts and to not interfere nor require alignment to the existing application lifecycle or any other framework in place.
+
+The chart below represents a general runtime initialization flow, while separating the system into the consumer-visible realm and the underlying platform.
+
+Consumer realm's items are to be consumed by the hosting applications directly (API / imports etc). Below the line are the core parts of our system which are transparent to the consumer in vast majority of cases.
+
+![Flow chart](assets/vivid-core-flow.svg)
+
+#### Initialization flavors
 
  __vivid core__ initialization may go 2 main paths:
 - __auto-init__: this is the default behavior, Vivid will auto init itself upon the first usage unless specified otherwise
@@ -42,7 +50,7 @@ All the __vivid core__ services auto-initialize to default values if not specifi
 
 ##### Pre-configured init
 
-In order to help Vivid overlay to initialize itself to some specific state, consuming application should use `data-vvd-context` attribute on `html` element.
+In order to help Vivid to initialize itself to some specific state, consuming application should use `data-vvd-context` attribute on `html` element.
 The below example will auto-initialize __vivid core__ with the dark theme.
 
 ```html
