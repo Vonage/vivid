@@ -82,6 +82,16 @@ export class VWCBanner extends LitElement {
 		}
 	}
 
+	renderDismissButton() {
+		return this.dismissible
+			? html`<vwc-icon-button
+								class="dismiss-button"
+								icon="close-line"
+								@click="${this.clickCloseHandler}"
+								dense></vwc-icon-button>`
+			: nothing;
+	}
+
 	render() {
 		return html`
 			<div class="container">
@@ -91,15 +101,7 @@ export class VWCBanner extends LitElement {
 						<div role="alert" class="message">${this.message}</div>
 						<slot class="action-items" name="actionItems"></slot>
 					</span>
-					${
-	this.dismissible
-		? html`<vwc-icon-button
-								class="dismiss-button"
-								icon="close-line"
-								@click="${this.clickCloseHandler}"
-								dense></vwc-icon-button>`
-		: nothing
-}
+					${this.renderDismissButton()}
 				</header>
 			</div>
 		`;
