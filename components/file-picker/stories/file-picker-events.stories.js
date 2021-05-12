@@ -27,12 +27,12 @@ function onChange(e) {
 
 export const SingleUnrestrictedChangeEvent = Template.bind({});
 SingleUnrestrictedChangeEvent.args = {
-	self: { label: 'Pick your favorive', helper: 'single file of any type' }
+	self: { label: 'Pick your favorite', helper: 'single file of any type' }
 };
 
 export const MultipleRestrictedChangeEvent = Template.bind({});
 MultipleRestrictedChangeEvent.args = {
-	self: { label: 'Pick your favorive', helper: 'multiple files of PDF type only' },
+	self: { label: 'Pick your favorite', helper: 'multiple files of PDF type only' },
 	input: { name: 'sfile-input', multiple: true, accept: '.pdf' }
 };
 
@@ -59,12 +59,12 @@ function onSubmit(e) {
 
 export const SingleRestrictedSubmitEvent = TemplateWithForm.bind({});
 SingleRestrictedSubmitEvent.args = {
-	self: { label: 'Pick your favorive', helper: 'single file of PDF type only' },
+	self: { label: 'Pick your favorite', helper: 'single file of PDF type only' },
 	input: { accept: '.pdf' }
 };
 
 export const MultipleUnestrictedSubmitEvent = TemplateWithForm.bind({});
 MultipleUnestrictedSubmitEvent.args = {
-	self: { label: 'Pick your favorive', helper: 'multiple files of any type' },
+	self: { label: 'Pick your favorite', helper: 'multiple files of any type' },
 	input: { accept: '.pdf', multiple: true }
 };

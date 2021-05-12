@@ -29,8 +29,8 @@
 		"@material/mwc-ripple": "^0.21.0",
 		"@vonage/vvd-core": "2.6.2",
 		"@vonage/vwc-icon": "2.6.2",
-		"lit-element": "2.3.0",
-		"tslib": "2.0.3"
+		"lit-element": "^2.3.0",
+		"tslib": "^2.0.3"
 	},
 	"devDependencies": {
 		"@vonage/vvd-design-tokens": "2.6.2",
