@@ -154,6 +154,7 @@ export class VWCTextField extends MWCTextField {
 	private createInputElement(): HTMLInputElement {
 		const element = document.createElement('input');
 		const defaultValue = this.getAttribute('value');
+		element.type = this.type;
 		element.defaultValue = defaultValue || '';
 		element.setAttribute('slot', INPUT_ELEMENT_SLOT_NAME);
 		element.className = INPUT_ELEMENT_CLASS_NAME;
@@ -174,7 +175,7 @@ export class VWCTextField extends MWCTextField {
 			this.onInputBlur();
 		};
 
-		fe.oninput = (e) => {
+		fe.oninput = () => {
 			e.stopImmediatePropagation();
 			this.dispatchEvent(new InputEvent('input', { bubbles: true }));
 			this.handleInputChange();
@@ -234,11 +235,11 @@ const setAttributeByValue = (function () {
 		target: HTMLInputElement,
 		asEmpty = false
 	): void {
-		const newValue:unknown = value
+		const newValue: unknown = value
 			? (() => { return asEmpty ? '' : String(value); })()
 			: NOT_ASSIGNED;
 
-		const currentValue:unknown = target.hasAttribute(attributeName)
+		const currentValue: unknown = target.hasAttribute(attributeName)
 			? target.getAttribute(attributeName)
 			: NOT_ASSIGNED;
 
@@ -246,6 +247,7 @@ const setAttributeByValue = (function () {
 			if (newValue === NOT_ASSIGNED) {
 				target.removeAttribute(attributeName);
 			} else {
+				console.log(`setting ${attributeName} to ${newValue}`);
 				target.setAttribute(attributeName, newValue as string);
 			}
 		}
