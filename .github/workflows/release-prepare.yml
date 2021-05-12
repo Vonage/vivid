@@ -37,7 +37,7 @@ jobs:
         if: ${{ github.event.inputs.version }}
         run: echo "RELEASE_VERSION=${{ github.event.inputs.version }}" >> $GITHUB_ENV
       - name: Obtain release version if not manually set
-        if: ${{ env.RELEASE_VERSION }} == ''
+        if: ${{ !(env.RELEASE_VERSION) }}
         run: echo "RELEASE_VERSION=$(node ./scripts/suggest-bump.mjs)" >> $GITHUB_ENV
 
       - name: Bump version to ${{ env.RELEASE_VERSION }}

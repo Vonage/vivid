@@ -1,6 +1,11 @@
 import { html } from 'lit-element';
 
 export const Cascading = () => html`
+	<style>
+		html, body {
+			height: 100%;
+		}
+	</style>
 	<div style="position: relative">
 		<vwc-fab id="context-menu-anchor" style="display: inline-flex" mini icon="more_vert" @click="${anchorAClickHandler}"></vwc-fab>
 		<vwc-menu id="context-menu-base">
