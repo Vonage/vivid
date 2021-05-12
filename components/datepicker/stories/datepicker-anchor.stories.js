@@ -11,7 +11,7 @@ const Template = args => html`
   <script>
     datepicker.anchor = trigger;
     datepicker.onValueUpdate = () => {
-      input[0].value = datepicker.getValue();
+      input.value = datepicker.getValue();
     };
   </script>
 
