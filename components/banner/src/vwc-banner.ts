@@ -3,7 +3,7 @@ import '@vonage/vwc-icon';
 import '@vonage/vwc-icon-button';
 import { style as BannerStyle } from './vwc-banner.css';
 import {
-	customElement, html, LitElement, property
+	customElement, html, LitElement, property, PropertyValues
 } from 'lit-element';
 import { nothing } from 'lit-html';
 import { Connotation } from '@vonage/vvd-foundation/constants';
@@ -71,13 +71,12 @@ export class VWCBanner extends LitElement {
 		(this.shadowRoot?.querySelector('.container') as HTMLElement).style.setProperty('--transition-delay', `${ANIMATION_DURATION}ms`);
 	}
 
-	attributeChangedCallback(attributeName: string, oldValue: string | null, newValue: string | null) {
-		super.attributeChangedCallback(attributeName, oldValue, newValue);
-		if (attributeName === 'open' && oldValue !== newValue) {
+	updated(changedProperties:PropertyValues) {
+		if (changedProperties.has('open')) {
 			clearTimeout(this.#transitionTimer);
-			this.dispatchEvent(createCustomEvent(!this.hasAttribute('open') ? 'closing' : 'opening'));
+			this.dispatchEvent(createCustomEvent(!this.open ? 'closing' : 'opening'));
 			this.#transitionTimer = setTimeout(() => {
-				this.dispatchEvent(createCustomEvent(this.hasAttribute('open') ? 'opened' : 'closed'));
+				this.dispatchEvent(createCustomEvent(this.open ? 'opened' : 'closed'));
 			}, ANIMATION_DURATION);
 		}
 	}
