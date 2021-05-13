@@ -1,0 +1,65 @@
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
+@use '@vonage/vvd-foundation/scss/variable-names/font-variable-names' as font-var-names;
+@use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation with (
+	$connotations-set: success info alert announcement warning
+);
+@use '@vonage/vvd-typography/scss/typography';
+
+@include color-connotation.connotations-main;
+@include color-connotation.connotations-main-default(info);
+
+:host {
+	/* stylelint-disable */
+	> .container {
+		/* stylelint-enable */
+		overflow: hidden;
+		max-height: 0;
+		transition: max-height var(--transition-delay, 200ms);
+
+		> .header {
+			@include typography.typography-cat-shorthand('body-2-bold');
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+			padding: 20px 0;
+			background-color: var(#{color-connotation.$vvd-color-connotation});
+			color: var(#{color-connotation.$vvd-color-on-connotation});
+
+			&::before {
+				flex: 0 0 16px;
+				content: '';
+			}
+
+			> .user-content {
+				display: flex;
+				flex: 1 0;
+				align-items: center;
+				justify-content: center;
+
+				> .icon {
+					--icon-size: 20px;
+					flex: 0 0 auto;
+					padding-inline-end: 15px;
+				}
+
+				> .action-items {
+					display: inline-block;
+					flex: 0 0 auto;
+					padding-inline-start: 15px;
+				}
+			}
+
+			> .dismiss-button {
+				--vvd-icon-button-color: inherit;
+				flex: 0 0 auto;
+				padding-inline-end: 8px;
+			}
+		}
+	}
+}
+
+:host([open]) {
+	> .container {
+		max-height: 10rem;
+	}
+}
