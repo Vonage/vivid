@@ -2635,6 +2635,17 @@
     lit-html "^1.1.2"
     tslib "^2.0.1"
 
+"@material/mwc-snackbar@^0.21.0":
+  version "0.21.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-snackbar/-/mwc-snackbar-0.21.0.tgz#0d0132c7538409d1d0e32ba16b79fcf85ea1d400"
+  integrity sha1-DQEyx1OECdHQ4yuha3n8+F6h1AA=
+  dependencies:
+    "@material/mwc-base" "^0.21.0"
+    "@material/snackbar" "=12.0.0-canary.197f64fa2.0"
+    lit-element "~2.4.0"
+    lit-html "^1.1.2"
+    tslib "^2.0.1"
+
 "@material/mwc-switch@^0.21.0":
   version "0.21.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-switch/-/mwc-switch-0.21.0.tgz#35c764cf822084fa7f627a67e4cfc2863fd02951"
@@ -2878,6 +2889,25 @@
     "@material/theme" "8.0.0-canary.01db89053.0"
     "@material/typography" "8.0.0-canary.01db89053.0"
     tslib "^1.9.3"
+
+"@material/snackbar@=12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/snackbar/-/snackbar-12.0.0-canary.197f64fa2.0.tgz#61d0942e29f29213f8daa6ad78c21f94fe0d001d"
+  integrity sha1-YdCULinykhP42qateMIflP4NAB0=
+  dependencies:
+    "@material/animation" "12.0.0-canary.197f64fa2.0"
+    "@material/base" "12.0.0-canary.197f64fa2.0"
+    "@material/button" "12.0.0-canary.197f64fa2.0"
+    "@material/dom" "12.0.0-canary.197f64fa2.0"
+    "@material/elevation" "12.0.0-canary.197f64fa2.0"
+    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    "@material/icon-button" "12.0.0-canary.197f64fa2.0"
+    "@material/ripple" "12.0.0-canary.197f64fa2.0"
+    "@material/rtl" "12.0.0-canary.197f64fa2.0"
+    "@material/shape" "12.0.0-canary.197f64fa2.0"
+    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    "@material/typography" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
 
 "@material/switch@=12.0.0-canary.197f64fa2.0":
   version "12.0.0-canary.197f64fa2.0"
@@ -4895,10 +4925,10 @@
   dependencies:
     "@vaadin/vaadin-development-mode-detector" "^2.0.0"
 
-"@vonage/monowatch@^0.0.4":
-  version "0.0.4"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@vonage/monowatch/0.0.4/2fada9e4edae034bc6304120685e59701fb64030dc5329de8e0dffe65b2c2ada#b59e23129765233151e16f245d8b6f360f78106f"
-  integrity sha1-tZ4jEpdlIzFR4W8kXYtvNg94EG8=
+"@vonage/monowatch@^0.0.5":
+  version "0.0.5"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@vonage/monowatch/0.0.5/c7e27827dc6d056eec448713fc2f9050eb01f660f37a1f0182518a7727810d5f#cfac0426d9a5824b75a62700caae51272b9187e3"
+  integrity sha1-z6wEJtmlgkt1picAyq5RJyuRh+M=
   dependencies:
     chokidar "^3.5.1"
     concat-stream "^2.0.0"
@@ -11910,6 +11940,7 @@ lit-analyzer@^1.2.1:
     vscode-html-languageservice "3.1.0"
     web-component-analyzer "~1.1.1"
 
+
 lit-element@2.3.0:
   version "2.3.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/lit-element/-/lit-element-2.3.0.tgz#a78d98e3c17afdfcfa3ab8335e839ac69f5c204e"
@@ -11925,9 +11956,19 @@ lit-element@^2.0.0, lit-element@^2.2.1, lit-element@^2.4.0:
     lit-html "^1.1.1"
 
 lit-element@~2.4.0:
+
+lit-element@^2.0.0, lit-element@^2.2.1, lit-element@^2.4.0, lit-element@~2.4.0:
+
   version "2.4.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/lit-element/-/lit-element-2.4.0.tgz#b22607a037a8fc08f5a80736dddf7f3f5d401452"
   integrity sha1-siYHoDeo/Aj1qAc23d9/P11AFFI=
+  dependencies:
+    lit-html "^1.1.1"
+
+lit-element@^2.3.0:
+  version "2.5.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/lit-element/-/lit-element-2.5.1.tgz#3fa74b121a6cd22902409ae3859b7847d01aa6b6"
+  integrity sha1-P6dLEhps0ikCQJrjhZt4R9AaprY=
   dependencies:
     lit-html "^1.1.1"
 
@@ -17088,8 +17129,7 @@ timers-browserify@^2.0.4:
   dependencies:
     setimmediate "^1.0.4"
 
-tiny-emitter@^2.0.0:
-  version "2.1.0"
+ version "2.1.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/tiny-emitter/-/tiny-emitter-2.1.0.tgz#1d1a56edfc51c43e863cbb5382a72330e3555423"
   integrity sha1-HRpW7fxRxD6GPLtTgqcjMONVVCM=
 
@@ -17268,11 +17308,6 @@ tsconfig-paths@^3.9.0:
     json5 "^1.0.1"
     minimist "^1.2.0"
     strip-bom "^3.0.0"
-
-tslib@2.0.3:
-  version "2.0.3"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/tslib/-/tslib-2.0.3.tgz#8e0741ac45fc0c226e58a17bfc3e64b9bc6ca61c"
-  integrity sha1-jgdBrEX8DCJuWKF7/D5kubxsphw=
 
 tslib@^1.11.0, tslib@^1.11.1, tslib@^1.7.1, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
   version "1.14.1"

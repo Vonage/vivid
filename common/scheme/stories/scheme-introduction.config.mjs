@@ -22,10 +22,10 @@ export default {
 			'assets/images/scheme-featured-image.svg'
 		], 'common/scheme');
 		r = hrefLinkProcessing(r, [
-			// [
-			// 	'href="/common/core"',
-			// 	'?path=/story/core-introduction--introduction',
-			// ],
+			[
+				'href="/common/core"',
+				'?path=/story/core-introduction--introduction',
+			],
 			[
 				'href="/components/theme-switch"',
 				'?path=/story/components-composite-theme-switch--basic',
