@@ -139,5 +139,5 @@
 	"vaadin": {
 		"disableUsageStatistics": true
 	},
-	"_bust_ci_cache": true
+	"_bust_ci_cache": 2
 }
