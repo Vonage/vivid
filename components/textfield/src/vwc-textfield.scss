@@ -1,5 +1,6 @@
 @forward './vwc-textfield-coupling';
 @forward './vwc-textfield-input';
+@forward './vwc-textfield-action';
 @use './vwc-textfield-variables' as textfield-variables;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;

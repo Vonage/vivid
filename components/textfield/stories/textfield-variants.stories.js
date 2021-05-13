@@ -4,7 +4,9 @@ import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 
 const Template = (args) =>
-	html`<vwc-textfield ...=${spread(args)} @keydown=${handleKeyDown} @change=${onChange} @input=${onInput}></vwc-textfield>`;
+	html`<vwc-textfield ...=${spread(args)} @keydown=${handleKeyDown} @change=${onChange} @input=${onInput}>
+	<vwc-icon-button type="button" icon="image-line" aria-label="Add Photo or Video" slot="action"></vwc-icon-button>
+	<vwc-icon-button icon="message-sent-line" aria-label="Send Message" slot="action"></vwc-icon-button></vwc-textfield>`;
 
 export const Default = Template.bind({});
 Default.args = { label: 'e.g. username', value: 'Initial value', placeholder: 'Placeholder' };

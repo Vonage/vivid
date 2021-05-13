@@ -1,0 +1,13 @@
+/* stylelint-disable selector-no-qualifying-type */
+@use 'vwc-textfield-variables' as variables;
+
+slot[name="action"i]::slotted(vwc-icon-button) {
+	--vvd-icon-button-shape: var(--mdc-shape-small);
+	--vvd-icon-button-block-size: var(--vvd-text-field-size-block);
+	align-self: center;
+}
+
+slot[name="action"i]::slotted(vwc-icon-button:last-of-type) {
+	margin-inline-end: calc(-1 * var(--padding-inline-end));
+}
+/* stylelint-enable selector-no-qualifying-type */

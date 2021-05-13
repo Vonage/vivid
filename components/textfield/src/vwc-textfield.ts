@@ -2,6 +2,7 @@ import '@vonage/vvd-core';
 import '@vonage/vwc-helper-message';
 import '@vonage/vwc-icon';
 import '@vonage/vwc-notched-outline';
+
 import {
 	customElement,
 	property,
@@ -9,6 +10,8 @@ import {
 	TemplateResult,
 	PropertyValues,
 } from 'lit-element';
+import { classMap } from 'lit-html/directives/class-map';
+
 import { TextField as MWCTextField } from '@material/mwc-textfield';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 import { style as vwcTextFieldStyle } from './vwc-textfield.css';
@@ -223,6 +226,39 @@ export class VWCTextField extends MWCTextField {
 		} else {
 			fle.classList.remove(MDC_FLOAT_ABOVE_CLASS_NAME);
 		}
+	}
+
+	/** @soyTemplate */
+	render(): TemplateResult {
+		const shouldRenderCharCounter = this.charCounter && this.maxLength !== -1;
+		const shouldRenderHelperText =
+				!!this.helper || !!this.validationMessage || shouldRenderCharCounter;
+
+		/** @classMap */
+		const classes = {
+			'mdc-text-field--disabled': this.disabled,
+			'mdc-text-field--no-label': !this.label,
+			'mdc-text-field--filled': !this.outlined,
+			'mdc-text-field--outlined': this.outlined,
+			'mdc-text-field--with-leading-icon': this.icon,
+			'mdc-text-field--with-trailing-icon': this.iconTrailing,
+			'mdc-text-field--end-aligned': this.endAligned,
+		};
+
+		return html`
+			<label class="mdc-text-field ${classMap(classes)}">
+				${this.renderRipple()}
+				${this.outlined ? this.renderOutline() : this.renderLabel()}
+				${this.renderLeadingIcon()}
+				${this.renderPrefix()}
+				${this.renderInput(shouldRenderHelperText)}
+				${this.renderSuffix()}
+				${this.renderTrailingIcon()}
+				<slot name="action"></slot>
+				${this.renderLineRipple()}
+			</label>
+			${this.renderHelperText(shouldRenderHelperText)}
+		`;
 	}
 }
 
