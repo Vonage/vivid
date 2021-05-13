@@ -142,6 +142,18 @@ export class VWCDatepicker extends LitFlatpickr {
 			this._instance.altInput.classList.add('vvd-datepicker-alt-input');
 		}
 		this._instance?.mobileInput?.setAttribute('slot', 'formInputElement');
+
+		// clear week select hover on mouseleave
+		if (this.weekSelect) {
+			const daysContainer = this._instance?.daysContainer;
+
+			daysContainer?.addEventListener('mouseleave', () => {
+				const days = daysContainer.querySelectorAll('.flatpickr-day');
+				days.forEach((day) => {
+					day.classList.remove('inRange');
+				});
+			});
+		}
 	}
 
 	private changeHandler(): void {
