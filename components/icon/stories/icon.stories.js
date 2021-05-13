@@ -10,10 +10,6 @@ export default {
 	argTypes
 };
 
-const Helper = html`
-	<footer><small>Altough you'll find any exisiting icon in the next sub-item link <i>Types</i>, the <cite><a href="https://icons.vivid.vonage.com">vivid icons lookup platform</a></cite> might boost your search experience 🚀</small></footer>
-`;
-
 const SizesTemplate = args => html`
 	<style>
 		dd {
@@ -35,12 +31,10 @@ const SizesTemplate = args => html`
 			<vwc-icon size="large" ...=${spread(args)}></vwc-icon>
 		</dd>
 	</dl>
-	${Helper}
 `;
 
 const InlineTemplate = args => html`
 	<p>I <vwc-icon ...=${spread(args)}></vwc-icon> VIVID!</p>
-	${Helper}
 `;
 
 export const Sizes = SizesTemplate.bind({});
