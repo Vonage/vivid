@@ -47,6 +47,12 @@ const
 		alert: 'Alert'
 	};
 
+const helper = (() => {
+	const header = document.createElement('header');
+	header.innerHTML = '<small>Altough you may find any exisiting icons in the following "<i>Types</i>" sub-items, the <cite><a href="https://icons.vivid.vonage.com">vivid icons lookup platform</a></cite> might boost your search experience 🚀</small>';
+	return header;
+})();
+
 const registerCategory = (categoryTitle, content) => storiesOf(['Components', 'Icon', 'Types'].join(PATH_SEPARATOR), module)
 	.add(categoryTitle, () => {
 		const styleEl = document.createElement('style');
@@ -55,7 +61,7 @@ const registerCategory = (categoryTitle, content) => storiesOf(['Components', 'I
 		divEl.className = "container";
 		divEl.innerHTML = content;
 		const fragment = document.createDocumentFragment();
-		[styleEl, divEl].forEach((el) => fragment.appendChild(el));
+		[helper, styleEl, divEl].forEach((el) => fragment.appendChild(el));
 		return fragment;
 	});
 
