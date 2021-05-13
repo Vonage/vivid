@@ -12,6 +12,11 @@ export default {
 }
 
 const Template = (args) => html`
+	<style>
+		html, body {
+			height: 100%;
+		}
+	</style>
 	<vwc-select ...=${spread(args)} @selected=${onSelected}>
 		<vwc-list-item></vwc-list-item>
 		<vwc-list-item value="0">Item 0</vwc-list-item>

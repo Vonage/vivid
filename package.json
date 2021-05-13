@@ -65,7 +65,7 @@
 		"@storybook/web-components": "^6.2.1",
 		"@typescript-eslint/eslint-plugin": "^4.14.2",
 		"@typescript-eslint/parser": "^4.14.2",
-		"@vonage/monowatch": "^0.0.4",
+		"@vonage/monowatch": "^0.0.5",
 		"@webcomponents/webcomponentsjs": "^2.5.0",
 		"@whitespace/storybook-addon-html": "^4.2.0",
 		"chai": "^4.2.0",
@@ -131,8 +131,7 @@
 		"typescript": "^4.1.3",
 		"uuid": "^8.3.2",
 		"web-component-analyzer": "^1.1.6",
-		"query-ast": "1.0.3",
-		"scss-parser": "1.0.4"
+		"xmlhttprequest-ssl": "^1.6.2"
 	},
 	"engines": {
 		"node": ">=12.18.4"

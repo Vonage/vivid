@@ -145,5 +145,18 @@ describe('datepicker', () => {
 			const customFooter = actualElement.shadowRoot.querySelector('.vvd-datepicker-footer');
 			expect(customFooter).to.not.exist;
 		});
+
+		it('should not have footer when mode set to closeOnSelect', async () => {
+			const [actualElement] = addElement(
+				textToDomToParent(`
+					<${COMPONENT_NAME} closeOnSelect></${COMPONENT_NAME}>
+				`)
+			);
+			await actualElement.onReady;
+			await waitNextTask();
+
+			const customFooter = actualElement.shadowRoot.querySelector('.vvd-datepicker-footer');
+			expect(customFooter).to.not.exist;
+		});
 	});
 });

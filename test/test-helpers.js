@@ -201,11 +201,12 @@ function assertComputedStyle(element, expectedStyles, pseudoSelector = null) {
 	}
 }
 
-function assertDistancePixels(e1, e2, property, expected) {
+function assertDistancePixels(e1, e2, property, expected, nonTolerancePower = 0) {
 	const cr1 = e1.getBoundingClientRect();
 	const cr2 = e2.getBoundingClientRect();
 	const actual = Math.abs(cr1[property] - cr2[property]);
-	if (actual !== expected) {
+	const nonToleranceMulitplier = Math.pow(10, nonTolerancePower);
+	if (Math.round(nonToleranceMulitplier * actual) !== Math.round(nonToleranceMulitplier * expected)) {
 		throw new Error(`expected distance between '${property}' to be ${expected}, found ${actual}`);
 	}
 }
