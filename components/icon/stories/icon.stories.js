@@ -10,7 +10,35 @@ export default {
 	argTypes
 };
 
-const Template = args => html`I <vwc-icon ...=${spread(args)}></vwc-icon> VIVID!`;
+const SizesTemplate = args => html`
+	<style>
+		dd {
+			margin:0;
+		}
+	</style>
 
-export const Basic = Template.bind({});
-Basic.args = { size: 'medium', inline: '', type: 'heart', style: 'color: red' };
+	<dl>
+		<dt>Small</dt>
+		<dd>
+			<vwc-icon size="small" ...=${spread(args)}></vwc-icon>
+		</dd>
+		<dt>Medium</dt>
+		<dd>
+			<vwc-icon size="medium" ...=${spread(args)}></vwc-icon>
+		</dd>
+		<dt>Large</dt>
+		<dd>
+			<vwc-icon size="large" ...=${spread(args)}></vwc-icon>
+		</dd>
+	</dl>
+`;
+
+const InlineTemplate = args => html`
+	<p>I <vwc-icon ...=${spread(args)}></vwc-icon> VIVID!</p>
+`;
+
+export const Sizes = SizesTemplate.bind({});
+Sizes.args = { type: 'profile-line' };
+
+export const Inline = InlineTemplate.bind({});
+Inline.args = { size: 'medium', inline: '', type: 'heart', style: 'color: red' };
