@@ -15,7 +15,7 @@
 	border: unset;
 	background: unset;
 	block-size: 100%;
-	border-radius: var(--mdc-shape-small);
+	border-radius: var(#{textfield-variables.$vvd-textfield-shape});
 	color: var(#{scheme-variables.$vvd-color-on-base});
 	inline-size: 100%;
 	inset: 0;
@@ -44,7 +44,7 @@
 	:not(.mdc-text-field--no-label) {
 		::slotted(#{textfield-variables.$vvd-input-selector}) {
 			padding-block-start: calc(
-				var(#{textfield-variables.$vvd-text-field-size-block}) - 32px
+				var(#{textfield-variables.$vvd-textfield-size-block}) - 32px
 			);
 		}
 	}

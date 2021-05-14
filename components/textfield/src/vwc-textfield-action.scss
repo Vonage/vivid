@@ -1,13 +1,18 @@
-/* stylelint-disable selector-no-qualifying-type */
-@use 'vwc-textfield-variables' as variables;
+@use 'vwc-textfield-variables' as textfield-variables;
+@use '@vonage/vwc-icon-button/src/vwc-icon-button-variables' as icon-button-variables;
 
+/* stylelint-disable selector-no-qualifying-type */
 slot[name="action"i]::slotted(vwc-icon-button) {
-	--vvd-icon-button-shape: var(--mdc-shape-small);
-	--vvd-icon-button-block-size: var(--vvd-text-field-size-block);
+	#{icon-button-variables.$vvd-icon-button-shape}: var(#{textfield-variables.$vvd-textfield-shape});
+	#{icon-button-variables.$vvd-icon-button-block-size}: var(#{textfield-variables.$vvd-textfield-size-block});
 	align-self: center;
 }
 
 slot[name="action"i]::slotted(vwc-icon-button:last-of-type) {
-	margin-inline-end: calc(-1 * var(--padding-inline-end));
+	margin-inline-end: calc(-1 * var(#{textfield-variables.$padding-inline-end}));
 }
 /* stylelint-enable selector-no-qualifying-type */
+
+.mdc-text-field__input {
+	min-width: 120px;
+}
