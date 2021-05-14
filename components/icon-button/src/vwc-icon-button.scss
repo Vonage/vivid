@@ -36,7 +36,7 @@ $block-sizes: (
 		justify-content: center;
 		border: var(--vvd-icon-button-border);
 		background-color: var(--vvd-icon-button-background-color);
-		border-radius: var(#{$vvd-icon-button-shape});
+		border-radius: var(#{icon-button-variables.$vvd-icon-button-shape});
 		color: var(--vvd-icon-button-color);
 		&:disabled {
 			color: var(#{vvd-formfield.$formfield-disabled-ink});

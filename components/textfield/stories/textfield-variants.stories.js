@@ -1,5 +1,6 @@
 import '@vonage/vwc-textfield/vwc-textfield.js';
 import '@vonage/vwc-icon';
+import '@vonage/vwc-icon-button';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 
