@@ -41,7 +41,7 @@ const Template = args => html`
 export const Basic = Template.bind({});
 
 export const Activated = Template.bind({});
-Activated.args = { activated: '', connotation: 'cta', shape: 'rounded' };
+Activated.args = { activated: '', connotation: 'cta', shape: 'rounded', graphic: 'icon' };
 
 export const Shape = Template.bind({});
 Shape.args = { shape: 'rounded' };

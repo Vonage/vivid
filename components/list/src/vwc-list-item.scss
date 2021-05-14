@@ -50,6 +50,9 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 	--mdc-ripple-color: var(#{color-connotation.$vvd-color-connotation});
 	--mdc-ripple-activated-opacity: 1;
 
+	@include typography.typography-cat-shorthand('body-2-bold');
+	z-index: 0;
+
 	color: var(#{color-connotation.$vvd-color-on-connotation});
 
 	mwc-ripple,
