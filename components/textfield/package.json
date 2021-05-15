@@ -34,8 +34,8 @@
 		"@vonage/vwc-helper-message": "2.6.2",
 		"@vonage/vwc-icon": "2.6.2",
 		"@vonage/vwc-notched-outline": "2.6.2",
-		"lit-element": "^2.4.0",
-		"tslib": "^2.0.3"
+		"lit-element": "^2.5.1",
+		"tslib": "^2.2.0"
 	},
 	"devDependencies": {
 		"@vonage/vvd-design-tokens": "2.6.2",

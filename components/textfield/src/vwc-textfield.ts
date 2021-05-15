@@ -9,8 +9,11 @@ import {
 	html,
 	TemplateResult,
 	PropertyValues,
+	queryAssignedNodes,
+	internalProperty
 } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
+import { styleMap } from 'lit-html/directives/style-map';
 
 import { TextField as MWCTextField } from '@material/mwc-textfield';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
@@ -51,6 +54,12 @@ export class VWCTextField extends MWCTextField {
 
 	@property({ type: String, reflect: true, converter: v => v || ' ' })
 	placeholder = ' ';
+
+	@queryAssignedNodes('action', true, 'vwc-icon-button')
+	private actionButtons?: NodeListOf<HTMLElement>;
+
+	@internalProperty()
+	private actionIconButtonsCount?: number;
 
 	constructor() {
 		super();
@@ -228,8 +237,17 @@ export class VWCTextField extends MWCTextField {
 		}
 	}
 
+	private _onActionSlotchange(): void {
+		this.actionIconButtonsCount = this.actionButtons?.length;
+	}
+
 	/** @soyTemplate */
 	render(): TemplateResult {
+		const labelStyles = {
+			'--vvd-textfield-action-inline-size': this.actionIconButtonsCount
+				? `calc(${this.actionIconButtonsCount} * var(--vvd-textfield-block-size))`
+				: ''
+		};
 		const shouldRenderCharCounter = this.charCounter && this.maxLength !== -1;
 		const shouldRenderHelperText =
 				!!this.helper || !!this.validationMessage || shouldRenderCharCounter;
@@ -246,7 +264,8 @@ export class VWCTextField extends MWCTextField {
 		};
 
 		return html`
-			<label class="mdc-text-field ${classMap(classes)}">
+			<label class="mdc-text-field ${classMap(classes)}"
+				style="${styleMap(labelStyles)}">
 				${this.renderRipple()}
 				${this.outlined ? this.renderOutline() : this.renderLabel()}
 				${this.renderLeadingIcon()}
@@ -254,7 +273,7 @@ export class VWCTextField extends MWCTextField {
 				${this.renderInput(shouldRenderHelperText)}
 				${this.renderSuffix()}
 				${this.renderTrailingIcon()}
-				<slot name="action"></slot>
+				<slot name="action" @slotchange="${this._onActionSlotchange}"></slot>
 				${this.renderLineRipple()}
 			</label>
 			${this.renderHelperText(shouldRenderHelperText)}

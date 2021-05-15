@@ -20,7 +20,9 @@
 	inline-size: 100%;
 	inset: 0;
 	outline: unset;
-	padding-inline-end: var(--padding-inline-end);
+	/* stylelint-disable length-zero-no-unit */
+	padding-inline-end: calc(var(--padding-inline-end) + var(--vvd-textfield-action-inline-size, 0px));
+	/* stylelint-enable length-zero-no-unit */
 	padding-inline-start: var(--padding-inline-start);
 }
 
