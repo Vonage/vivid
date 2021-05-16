@@ -7,7 +7,7 @@ export default {
 	component: 'vwc-check-list-item'
 }
 
-const TemplateOneLine = () => html`
+export const CheckList = () => html`
 	<style>
 		vwc-list {
 			width: 240px;
@@ -22,9 +22,7 @@ const TemplateOneLine = () => html`
 		<vwc-check-list-item left>Item 3 (left)</vwc-check-list-item>
 	</vwc-list>`;
 
-export const Checklist = TemplateOneLine.bind({});
-
-const TemplatTwoLines = () => html`
+export const CheckListTwoLines = () => html`
 	<style>
 		vwc-list {
 			width: 240px;
@@ -50,5 +48,3 @@ const TemplatTwoLines = () => html`
 			<span slot="secondary">Additional info</span>
 		</vwc-check-list-item>
 	</vwc-list>`;
-
-export const ChecklistTwoLines = TemplatTwoLines.bind({});

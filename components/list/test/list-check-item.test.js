@@ -89,7 +89,7 @@ describe('check list item', () => {
 			textToDomToParent(
 				`<${VWC_CHECK_LIST_ITEM} ${left ? 'left' : ''} ${twoline ? 'twoline' : ''}>
 				Item 0
-				${twoline ? '<span slot="secondary"></span>' : ''}
+				${twoline ? '<span slot="secondary">Additional info</span>' : ''}
 			</${VWC_CHECK_LIST_ITEM}>`
 			)
 		);
