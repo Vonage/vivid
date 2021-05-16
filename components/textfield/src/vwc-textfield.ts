@@ -110,6 +110,8 @@ export class VWCTextField extends MWCTextField {
 
 	protected renderInput(shouldRenderHelperText: boolean): TemplateResult {
 		this.updateInputElement(shouldRenderHelperText);
+		// @gullerya is .mdc-text-field__input still relevant?
+		// if should be removed, please follow reference in textfield style
 		return html`
 			<div class="mdc-text-field__input"></div>
 			<slot name="${INPUT_ELEMENT_SLOT_NAME}"></slot>

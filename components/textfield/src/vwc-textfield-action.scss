@@ -8,11 +8,7 @@ slot[name="action"i]::slotted(vwc-icon-button) {
 	align-self: center;
 }
 
-slot[name="action"i]::slotted(vwc-icon-button:last-of-type) {
+:not(.mdc-text-field--outlined.mdc-text-field--with-trailing-icon) slot[name="action"i]::slotted(vwc-icon-button:last-of-type) {
 	margin-inline-end: calc(-1 * var(#{textfield-variables.$padding-inline-end}));
 }
 /* stylelint-enable selector-no-qualifying-type */
-
-.mdc-text-field__input {
-	min-width: 120px;
-}
