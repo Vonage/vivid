@@ -1,3 +1,12 @@
+# [2.7.0](https://github.com/vonage/vivid/compare/v2.6.2...v2.7.0) (2021-05-17)
+
+
+### Features
+
+* **datepicker:** add week select support ([#806](https://github.com/vonage/vivid/issues/806)) ([a3ac951](https://github.com/vonage/vivid/commit/a3ac95155867101102a8302d1dc29db518c9627b))
+
+
+
 ## [2.6.2](https://github.com/vonage/vivid/compare/v2.6.1...v2.6.2) (2021-05-05)
 
 
