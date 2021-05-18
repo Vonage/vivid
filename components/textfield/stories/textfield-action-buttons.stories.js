@@ -13,4 +13,4 @@ const Template = (args) => html`
 	`;
 
 export const Actions = Template.bind({});
-Actions.args = { placeholder: 'send message...', shape: 'pill' };
+Actions.args = { placeholder: 'Send message...', shape: 'pill' };

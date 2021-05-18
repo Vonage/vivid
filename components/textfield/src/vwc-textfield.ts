@@ -106,6 +106,7 @@ export class VWCTextField extends MWCTextField {
 		if (this.shape === 'pill') {
 			this.dense = true;
 		}
+		this.setActionNodesDisabledState();
 	}
 
 	protected renderInput(shouldRenderHelperText: boolean): TemplateResult {
@@ -236,6 +237,15 @@ export class VWCTextField extends MWCTextField {
 			fle.classList.add(MDC_FLOAT_ABOVE_CLASS_NAME);
 		} else {
 			fle.classList.remove(MDC_FLOAT_ABOVE_CLASS_NAME);
+		}
+	}
+
+	protected setActionNodesDisabledState(): void {
+		const buttons = Array.from(this.actionButtons || []);
+		if (this.disabled) {
+			buttons.forEach(button => button.setAttribute('disabled', ''));
+		} else {
+			buttons.forEach(button => button.removeAttribute('disabled'));
 		}
 	}
 
