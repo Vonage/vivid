@@ -145,5 +145,37 @@ describe('datepicker', () => {
 			const customFooter = actualElement.shadowRoot.querySelector('.vvd-datepicker-footer');
 			expect(customFooter).to.not.exist;
 		});
+
+		it('should not have footer when mode set to closeOnSelect', async () => {
+			const [actualElement] = addElement(
+				textToDomToParent(`
+					<${COMPONENT_NAME} closeOnSelect></${COMPONENT_NAME}>
+				`)
+			);
+			await actualElement.onReady;
+			await waitNextTask();
+
+			const customFooter = actualElement.shadowRoot.querySelector('.vvd-datepicker-footer');
+			expect(customFooter).to.not.exist;
+		});
+	});
+
+	it('should highlight selected week day when set to weekSelect', async () => {
+		const [actualElement] = addElement(
+			textToDomToParent(`
+				<${COMPONENT_NAME} inline weekSelect></${COMPONENT_NAME}>
+			`)
+		);
+		await actualElement.onReady;
+		await waitNextTask();
+
+		actualElement.defaultDate = 'today';
+		await waitNextTask();
+
+		actualElement.highlightSelectedWeekDay();
+
+		const selectedWeekDay = actualElement._instance.selectedDateElem;
+		expect(selectedWeekDay).to.exist;
+		expect(selectedWeekDay.classList.contains('vvd-selected-week-day')).true;
 	});
 });

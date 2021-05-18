@@ -43,6 +43,10 @@ export const Inline = InlineTemplate.bind({});
 Inline.args = { inline: '' };
 
 export {
+	WeekSelect
+} from './datepicker-week-select.stories.js';
+
+export {
 	Dialog
 } from './datepicker-dialog.stories.js';
 

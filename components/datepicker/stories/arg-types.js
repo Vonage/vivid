@@ -11,6 +11,12 @@ export const argTypes = {
 			options: ['single', 'multiple', 'range']
 		}
 	},
+	weekSelect: {
+		control: {
+			type: 'inline-radio',
+			options: { 'true': '', 'false': undefined }
+		}
+	},
 	monthPicker: {
 		control: {
 			type: 'inline-radio',
@@ -97,6 +103,5 @@ export const argTypes = {
 	},
 	styles: { table: { disable: true } },
 	theme: { table: { disable: true } },
-	weekSelect: { table: { disable: true } },
 	clickOpens: { table: { disable: true } }
 }

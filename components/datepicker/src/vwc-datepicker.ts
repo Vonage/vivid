@@ -5,6 +5,7 @@ import {
 	customElement, property, html, CSSResult, query
 } from 'lit-element';
 import { LitFlatpickr } from 'lit-flatpickr';
+import * as weekSelectPlugin from 'flatpickr/dist/plugins/weekSelect/weekSelect';
 import { Options } from 'flatpickr/dist/types/options';
 import { style as vwcDatepickerStyles } from './vwc-datepicker.css.js';
 import { VWCButton } from '@vonage/vwc-button';
@@ -33,6 +34,9 @@ export class VWCDatepicker extends LitFlatpickr {
 	monthPicker = false;
 
 	@property({ type: Boolean, reflect: true })
+	weekSelect = false;
+
+	@property({ type: Boolean, reflect: true })
 	closeOnSelect = false;
 
 	@property({ type: Boolean, reflect: true })
@@ -41,6 +45,8 @@ export class VWCDatepicker extends LitFlatpickr {
 	anchor: HTMLElement | null = this;
 
 	private appendTo: HTMLElement | undefined;
+
+	private plugins: Array<any> = [];
 
 	constructor() {
 		super();
@@ -66,6 +72,10 @@ export class VWCDatepicker extends LitFlatpickr {
 			const menu = this.shadowRoot?.querySelector('vwc-menu');
 			if (menu) menu.open = false;
 		};
+
+		if (this.weekSelect) {
+			this.plugins.push(weekSelectPlugin.default());
+		}
 	}
 
 	// override lit-flatpicker
@@ -104,6 +114,8 @@ export class VWCDatepicker extends LitFlatpickr {
 		this.appendTo = this.datepickerWrapper;
 		this.initializeComponent();
 		this.renderCustomParts();
+		this.disableAdjacentMonthDays();
+		this.inlineDayClickHandlers();
 	}
 
 	private renderCustomParts(): void {
@@ -112,7 +124,7 @@ export class VWCDatepicker extends LitFlatpickr {
 
 			this.renderHeader();
 			this.renderRange();
-			if (!this.inline) this.renderFooter();
+			if (!this.closeOnSelect && !this.inline) this.renderFooter();
 			this.renderMonthPicker();
 
 			if (this.monthPicker) {
@@ -131,7 +143,17 @@ export class VWCDatepicker extends LitFlatpickr {
 		}
 		this._instance?.mobileInput?.setAttribute('slot', 'formInputElement');
 
-		this.disablePrevMonthDays();
+		// clear week select hover on mouseleave
+		if (this.weekSelect) {
+			const daysContainer = this._instance?.daysContainer;
+
+			daysContainer?.addEventListener('mouseleave', () => {
+				const days = daysContainer.querySelectorAll('.flatpickr-day');
+				days.forEach((day) => {
+					day.classList.remove('inRange');
+				});
+			});
+		}
 	}
 
 	private changeHandler(): void {
@@ -158,6 +180,8 @@ export class VWCDatepicker extends LitFlatpickr {
 				rangeEnd.classList.toggle('vvd-selected', !!endDate);
 			}
 		}
+
+		this.highlightSelectedWeekDay();
 	}
 
 	private renderHeader(): void {
@@ -225,6 +249,8 @@ export class VWCDatepicker extends LitFlatpickr {
 
 		this.updateHeaderMonth();
 		this.updateHeaderYear();
+		this.highlightSelectedWeekDay();
+		this.disableAdjacentMonthDays();
 	}
 
 	private updateHeaderMonth(): void {
@@ -340,6 +366,7 @@ export class VWCDatepicker extends LitFlatpickr {
 			this._instance?.changeMonth(selectedMonth - this._instance.currentMonth);
 			this.updateHeaderMonth();
 			this.updateHeaderYear();
+			this.highlightSelectedWeekDay();
 		}
 	}
 
@@ -391,11 +418,41 @@ export class VWCDatepicker extends LitFlatpickr {
 		}
 	}
 
-	private disablePrevMonthDays(): void {
-		const prevMonthDays = this._instance?.calendarContainer.querySelectorAll('.prevMonthDay');
-		prevMonthDays?.forEach((day) => {
+	private highlightSelectedWeekDay(): void {
+		if (this._instance && this.weekSelect) {
+			const className = 'vvd-selected-week-day';
+			const selectedWeekDay = this._instance.calendarContainer.querySelector(`.${className}`);
+			selectedWeekDay?.classList.remove(className);
+			this._instance.selectedDateElem?.classList.add(className);
+		}
+
+		// reset inline day handlers after lit-flatpickr update
+		if (this.inline && this.weekSelect) {
+			this.inlineDayClickHandlers();
+		}
+	}
+
+	private disableAdjacentMonthDays(): void {
+		const disabledMonthDays = this._instance?.calendarContainer.querySelectorAll('.prevMonthDay, .nextMonthDay');
+
+		disabledMonthDays?.forEach((day) => {
 			day.setAttribute('aria-disabled', 'true');
 		});
+	}
+
+	private inlineDayClickHandlers(): void {
+		// inline mode doesn't dispatch change event on day select so trigger changeHandler here
+		if (this.inline && this.weekSelect) {
+			const days = this._instance?.calendarContainer.querySelectorAll('.flatpickr-day') as NodeListOf<HTMLElement>;
+
+			days.forEach((day) => {
+				day.onclick = () => {
+					setTimeout(() => {
+						this.changeHandler();
+					}, 0);
+				};
+			});
+		}
 	}
 
 	// copied from lit-flatpickr
@@ -443,6 +500,7 @@ export class VWCDatepicker extends LitFlatpickr {
 			wrap: this.wrap,
 			// additional config options
 			...(this.enable && { enable: this.enable }),
+			...(this.plugins.length && { plugins: this.plugins }),
 			appendTo: this.appendTo,
 			closeOnSelect: this.closeOnSelect
 		};
