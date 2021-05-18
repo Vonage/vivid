@@ -20,9 +20,18 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.ts?$/,
-				use: 'ts-loader',
-				exclude: /node_modules/,
+				test: /\.m?js$/,
+				use: {
+					loader: 'babel-loader',
+					options: {
+						presets: [
+							['@babel/preset-env']
+						],
+						plugins: [
+							'@babel/plugin-proposal-nullish-coalescing-operator',
+						]
+					}
+				}
 			},
 			// use the html loader
 			{
@@ -39,8 +48,5 @@ module.exports = {
 				]
 			}
 		]
-	},
-	resolve: {
-		extensions: ['.tsx', '.ts', '.js'],
 	}
 };
