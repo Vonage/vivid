@@ -19,9 +19,9 @@
 		> .header {
 			@include typography.typography-cat-shorthand('body-2-bold');
 			display: flex;
+			min-height: 60px;
 			align-items: center;
 			justify-content: flex-start;
-			padding: 20px 0;
 			background-color: var(#{color-connotation.$vvd-color-connotation});
 			color: var(#{color-connotation.$vvd-color-on-connotation});
 
@@ -46,6 +46,10 @@
 					display: inline-block;
 					flex: 0 0 auto;
 					padding-inline-start: 15px;
+				}
+
+				> .message {
+					padding: 20px 0;
 				}
 			}
 
