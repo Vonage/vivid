@@ -5,10 +5,7 @@ import * as handler from 'serve-handler';
 import * as http from 'http';
 
 import * as fs from 'fs';
-
-import { PNG } from 'pngjs';
-
-import * as pixelmatch from 'pixelmatch';
+import * as jimp from 'jimp';
 
 const PORT = 3000;
 const SERVER_URL = `http://localhost:${PORT}`;
@@ -22,36 +19,39 @@ const server = http.createServer((request, response) => {
 
 async function compareToSnapshot(page: Page, snapshotPath: string) {
 	const tmpScreenshotPath = './ui-tests/tmpScreenshot.png';
-	await takeSnapshot(page, SERVER_URL, tmpScreenshotPath);
-
+	const tmpSnapshot = await takeSnapshot(page, SERVER_URL, tmpScreenshotPath);
 	return compareImages(snapshotPath, tmpScreenshotPath);
 }
 
-function compareImages(img1Path, img2Path) {
-	const img1 = PNG.sync.read(fs.readFileSync(img1Path));
-	const img2 = PNG.sync.read(fs.readFileSync(img2Path));
-	const {
-		width,
-		height
-	} = img1;
-	const diff = new PNG({
-		width,
-		height
-	});
+async function compareImages(img1Path, img2Path) {
+	const img1 = await jimp.read(fs.readFileSync(img1Path));
+	const img2 = await jimp.read(fs.readFileSync(img2Path));
+	// const {
+	// 	width,
+	// 	height
+	// } = img1.bitmap;
 
-	const diffPixels = pixelmatch(img1.data, img2.data, diff.data, width, height, { threshold: 0.1 });
+	const diff = jimp.diff(img1, img2, 0.1);
 
-	fs.writeFileSync('./ui-tests/diff.png', PNG.sync.write(diff));
+	const distance = jimp.distance(img1, img2);
+	await diff.image.writeAsync('./ui-tests/diff.png');
 
 	return {
-		diffPixels,
-		diff
+		...diff,
+		distance
 	};
 }
 
 async function takeSnapshot(page, url, snapshotPath) {
-	await page.goto(url);
-	await page.screenshot({ path: snapshotPath });
+	await page.goto(url,
+		{
+			waitUntil: 'networkidle'
+		});
+
+	return page.screenshot({
+		path: snapshotPath,
+		fullPage: true
+	});
 }
 
 async function runImageComparison() {
@@ -63,8 +63,14 @@ async function runImageComparison() {
 		await takeSnapshot(page, SERVER_URL, SNAPSHOT_PATH);
 	} else {
 		const diff = await compareToSnapshot(page, SNAPSHOT_PATH);
-		if (diff.diffPixels) throw new Error('Difference between base and current snapshot!');
-		console.log('Visual Diff Passed!');
+		if (diff.percent === 0) {
+			console.log('Visual Diff Passed!');
+			console.log('Distance: ', diff.distance, ' | Percent: ', diff.percent * 100, '%');
+		} else {
+			await browser.close();
+			console.error('Distance: ', diff.distance, ' | Percent: ', diff.percent * 100, '%');
+			throw new Error('Difference between base and current snapshot!');
+		}
 	}
 	await browser.close();
 }
@@ -75,6 +81,4 @@ server.listen(3000, async () => {
 	await runImageComparison();
 	server.close();
 });
-
-
 
