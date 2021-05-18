@@ -65,10 +65,10 @@ async function runImageComparison() {
 		const diff = await compareToSnapshot(page, SNAPSHOT_PATH);
 		if (diff.percent === 0) {
 			console.log('Visual Diff Passed!');
-			console.log('Distance: ', diff.distance, ' | Percent: ', diff.percent * 100, '%');
+			console.log('Distance: ', diff.distance, ' | Percent: ', (diff.percent * 100).toFixed(2), '%');
 		} else {
 			await browser.close();
-			console.error('Distance: ', diff.distance, ' | Percent: ', diff.percent * 100, '%');
+			console.error('Distance: ', diff.distance, ' | Percent: ', (diff.percent * 100).toFixed(2), '%');
 			throw new Error('Difference between base and current snapshot!');
 		}
 	}
