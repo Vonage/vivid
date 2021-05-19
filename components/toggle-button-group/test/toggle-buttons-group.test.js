@@ -437,7 +437,48 @@ describe('Toggle-buttons-group', () => {
 			const selectedButton = actualElement.children[0];
 			selectedButton.click();
 
-			expect(eventFired).to.equal(false);
+			expect(eventFired)
+				.to
+				.equal(false);
+		});
+	});
+
+	describe(`a11y`, function () {
+		it(`should set 'disabled' property on all children when disabled`, async function () {
+			function checkIfChildrenDisabled() {
+				return [...actualElement.children].reduce((areAllDisabled, childNode) => (areAllDisabled && childNode.hasAttribute('disabled')), true);
+			}
+
+			const [actualElement] = (
+				textToDomToParent(`<${COMPONENT_NAME} disabled>
+<${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+</${COMPONENT_NAME}>`)
+			);
+			await actualElement.updateComplete;
+
+			const initializedWithDisabled = checkIfChildrenDisabled();
+
+			actualElement.removeAttribute('disabled');
+			await actualElement.updateComplete;
+
+			const removedDisabled = !checkIfChildrenDisabled();
+
+			actualElement.setAttribute('disabled', '');
+			await actualElement.updateComplete;
+
+			const addDisabledDynamically = checkIfChildrenDisabled();
+
+			expect(initializedWithDisabled)
+				.to
+				.equal(true);
+			expect(removedDisabled)
+				.to
+				.equal(true);
+			expect(addDisabledDynamically)
+				.to
+				.equal(true);
 		});
 	});
 });
