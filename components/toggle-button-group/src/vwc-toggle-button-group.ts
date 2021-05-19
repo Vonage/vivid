@@ -63,6 +63,13 @@ export class VwcToggleButtonGroup extends LitElement {
 	})
 	required = false;
 
+	@property({
+		attribute: 'disabled',
+		type: Boolean,
+		reflect: true
+	})
+	disabled = false;
+
 	constructor() {
 		super();
 		this.setNodesAndClickEvents(this.items);
@@ -120,6 +127,18 @@ export class VwcToggleButtonGroup extends LitElement {
 			}
 			this.updateComplete.then(() => this.#_items?.forEach(buttonElement => this.setVwcButtonSize(buttonElement)));
 		}
+
+		if (changes.has('disabled')) {
+			this.toggleDisabledState();
+		}
+	}
+
+	private toggleDisabledState() {
+		if (this.disabled) {
+			this.items.forEach(item => item.setAttribute('disabled', ''));
+		} else {
+			this.items.forEach(item => item.removeAttribute('disabled'));
+		}
 	}
 
 	protected firstUpdated(_changedProperties: PropertyValues): void {
@@ -132,6 +151,7 @@ export class VwcToggleButtonGroup extends LitElement {
 			this.#_items = null;
 			this.items;
 		});
+		this.toggleDisabledState();
 	}
 
 	protected render(): unknown {
