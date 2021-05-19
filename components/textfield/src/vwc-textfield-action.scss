@@ -1,14 +1,24 @@
 @use 'vwc-textfield-variables' as textfield-variables;
 @use '@vonage/vwc-icon-button/src/vwc-icon-button-variables' as icon-button-variables;
 
+$gutter: 8px;
+
 /* stylelint-disable selector-no-qualifying-type */
 slot[name="action"i]::slotted(vwc-icon-button) {
 	#{icon-button-variables.$vvd-icon-button-shape}: var(#{textfield-variables.$vvd-textfield-shape});
-	#{icon-button-variables.$vvd-icon-button-block-size}: var(#{textfield-variables.$vvd-textfield-size-block});
+	#{icon-button-variables.$vvd-icon-button-block-size}: calc(var(#{textfield-variables.$vvd-textfield-size-block}) - #{$gutter});
 	align-self: center;
 }
 
+slot[name="action"i]::slotted(vwc-icon-button:not(:first-child)) {
+	margin-inline-start: $gutter / 2;
+}
+
 :not(.mdc-text-field--outlined.mdc-text-field--with-trailing-icon) slot[name="action"i]::slotted(vwc-icon-button:last-of-type) {
-	margin-inline-end: calc(-1 * var(#{textfield-variables.$padding-inline-end}));
+	margin-inline-end: calc(-1 * var(#{textfield-variables.$padding-inline-end}) + #{$gutter / 2});
+}
+
+:host([dense]) slot[name="action"i]::slotted(vwc-icon-button) {
+	--icon-size: 16px;
 }
 /* stylelint-enable selector-no-qualifying-type */
