@@ -54,6 +54,10 @@ async function takeSnapshot(page, url, snapshotPath) {
 	});
 }
 
+function resultsMessage(diff) {
+	return `Distance: ${diff.distance} | Percent: ${(diff.percent * 100).toFixed(2)} %`;
+}
+
 async function runImageComparison() {
 	const browser = await webkit.launch();
 	const page = await browser.newPage();
@@ -65,10 +69,10 @@ async function runImageComparison() {
 		const diff = await compareToSnapshot(page, SNAPSHOT_PATH);
 		if (diff.percent === 0) {
 			console.log('Visual Diff Passed!');
-			console.log('Distance: ', diff.distance, ' | Percent: ', (diff.percent * 100).toFixed(2), '%');
+			console.log(resultsMessage(diff));
 		} else {
 			await browser.close();
-			console.error('Distance: ', diff.distance, ' | Percent: ', (diff.percent * 100).toFixed(2), '%');
+			console.error(resultsMessage(diff));
 			throw new Error('Difference between base and current snapshot!');
 		}
 	}
