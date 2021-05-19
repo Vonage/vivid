@@ -8,6 +8,14 @@ slot[name="action"i]::slotted(vwc-icon-button) {
 	#{icon-button-variables.$vvd-icon-button-shape}: var(#{textfield-variables.$vvd-textfield-shape});
 	#{icon-button-variables.$vvd-icon-button-block-size}: calc(var(#{textfield-variables.$vvd-textfield-size-block}) - #{$gutter});
 	align-self: center;
+
+	:host(:not([dense])) & {
+		font-size: 20px;
+	}
+
+	:host([dense]) & {
+		font-size: 16px;
+	}
 }
 
 slot[name="action"i]::slotted(vwc-icon-button:not(:first-child)) {
@@ -16,9 +24,5 @@ slot[name="action"i]::slotted(vwc-icon-button:not(:first-child)) {
 
 :not(.mdc-text-field--outlined.mdc-text-field--with-trailing-icon) slot[name="action"i]::slotted(vwc-icon-button:last-of-type) {
 	margin-inline-end: calc(-1 * var(#{textfield-variables.$padding-inline-end}) + #{$gutter / 2});
-}
-
-:host([dense]) slot[name="action"i]::slotted(vwc-icon-button) {
-	--icon-size: 16px;
 }
 /* stylelint-enable selector-no-qualifying-type */
