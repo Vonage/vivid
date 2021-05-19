@@ -21,7 +21,7 @@
 	inset: 0;
 	outline: unset;
 	/* stylelint-disable length-zero-no-unit */
-	padding-inline-end: calc(var(--padding-inline-end) + var(--vvd-textfield-action-inline-size, 0px));
+	padding-inline-end: var(--vvd-textfield-action-inline-size, var(--padding-inline-end));
 	/* stylelint-enable length-zero-no-unit */
 	padding-inline-start: var(--padding-inline-start);
 }

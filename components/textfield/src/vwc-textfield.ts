@@ -106,7 +106,9 @@ export class VWCTextField extends MWCTextField {
 		if (this.shape === 'pill') {
 			this.dense = true;
 		}
-		this.setActionNodesDisabledState();
+		if (changedProperties.has('disabled')) {
+			this.setActionNodesDisabledState();
+		}
 	}
 
 	protected renderInput(shouldRenderHelperText: boolean): TemplateResult {
