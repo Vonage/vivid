@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://github.com/Vonage/vivid/compare/v2.6.2...v2.7.0) (2021-05-17)
+
+
+### Bug Fixes
+
+* **docs:** viv-375 added init flow and core dependencies ([#821](https://github.com/Vonage/vivid/issues/821)) ([903c1f6](https://github.com/Vonage/vivid/commit/903c1f643f50f249c94b9d82aca3b55d6164bc04))
+* **toggle-button-group:** reduce content mutataion in toggle button group ([#825](https://github.com/Vonage/vivid/issues/825)) ([5de57a1](https://github.com/Vonage/vivid/commit/5de57a1f3751ebbd6c3983b8a6d6dc9db3f52e52))
+* **vwc-check-list-item:** fixing the layout of the radio and checkbox elements ([#839](https://github.com/Vonage/vivid/issues/839)) ([a8eea1e](https://github.com/Vonage/vivid/commit/a8eea1ed55523a237f56c9b0ac50b3d0627ab158))
+
+
+### Features
+
+* **banner:** new banner component ([#796](https://github.com/Vonage/vivid/issues/796)) ([2407cf2](https://github.com/Vonage/vivid/commit/2407cf245f2650ef01597ca91e70087a3b86c88c))
+* **datepicker:** add week select support ([#806](https://github.com/Vonage/vivid/issues/806)) ([a3ac951](https://github.com/Vonage/vivid/commit/a3ac95155867101102a8302d1dc29db518c9627b))
+* **snackbar:** iss 783 viv 402 snackbar ([#808](https://github.com/Vonage/vivid/issues/808)) ([25c750e](https://github.com/Vonage/vivid/commit/25c750e99253a4f00e9765b30a288c65978a9b68)), closes [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783)
+
+
+
+
+
 ## [2.6.2](https://github.com/Vonage/vivid/compare/v2.6.1...v2.6.2) (2021-05-05)
 
 **Note:** Version bump only for package @vivid/root
