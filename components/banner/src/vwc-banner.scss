@@ -25,16 +25,12 @@
 			background-color: var(#{color-connotation.$vvd-color-connotation});
 			color: var(#{color-connotation.$vvd-color-on-connotation});
 
-			&::before {
-				flex: 0 0 16px;
-				content: '';
-			}
-
 			> .user-content {
 				display: flex;
 				flex: 1 0;
 				align-items: center;
 				justify-content: center;
+				padding-inline: 15px;
 
 				> .icon {
 					--icon-size: 20px;
