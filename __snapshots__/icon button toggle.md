@@ -11,7 +11,7 @@
     <slot name="offIcon">
       <vwc-icon
         class="icon"
-        size="small"
+        inline=""
         type=""
       >
       </vwc-icon>
@@ -21,7 +21,7 @@
     <slot name="onIcon">
       <vwc-icon
         class="icon"
-        size="small"
+        inline=""
         type=""
       >
       </vwc-icon>
