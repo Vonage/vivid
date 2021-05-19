@@ -28,6 +28,7 @@ $block-sizes: (
 	// sizing
 	--mdc-icon-button-size: var(#{icon-button-variables.$vvd-icon-button-block-size}, #{map.get($block-sizes, 'normal')});
 	@include vvd-formfield.coupling;
+	font-size: 20px;
 
 	.mdc-icon-button {
 		display: inline-flex;
@@ -38,13 +39,10 @@ $block-sizes: (
 		background-color: var(--vvd-icon-button-background-color);
 		border-radius: var(#{icon-button-variables.$vvd-icon-button-shape});
 		color: var(--vvd-icon-button-color);
+		font-size: inherit;
 		&:disabled {
 			color: var(#{vvd-formfield.$formfield-disabled-ink});
 		}
-	}
-
-	.vvd-icon {
-		--icon-size: 20px;
 	}
 }
 
@@ -61,20 +59,13 @@ $block-sizes: (
 }
 
 :host([dense]) {
-
 	--mdc-icon-button-size: var(#{icon-button-variables.$vvd-icon-button-block-size}, #{map.get($block-sizes, 'dense')});
-
-	.vvd-icon {
-		--icon-size: 16px;
-	}
+	font-size: 16px;
 }
 
 :host([enlarged]) {
 	--mdc-icon-button-size: var(#{icon-button-variables.$vvd-icon-button-block-size}, #{map.get($block-sizes, 'enlarged')});
-
-	.vvd-icon {
-		--icon-size: 24px;
-	}
+	font-size: 24px;
 }
 
 @include shape-mixins.shape(

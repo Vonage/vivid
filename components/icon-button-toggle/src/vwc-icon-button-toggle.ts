@@ -51,7 +51,7 @@ export class VWCIconButtonToggle extends MWCIconButtonToggle {
 	}
 
 	protected renderIcon(type: string): TemplateResult {
-		return html`<vwc-icon class="icon" size="small" type="${type}"></vwc-icon>`;
+		return html`<vwc-icon class="icon" inline type="${type}"></vwc-icon>`;
 	}
 
 	// ! copy & paste code from original mwc icon button toggle
