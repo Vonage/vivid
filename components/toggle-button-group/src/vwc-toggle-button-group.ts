@@ -44,14 +44,12 @@ export class VwcToggleButtonGroup extends LitElement {
 	multi = false;
 
 	@property({
-		attribute: 'enlarged',
 		type: Boolean,
 		reflect: true
 	})
 	enlarged = false;
 
 	@property({
-		attribute: 'dense',
 		type: Boolean,
 		reflect: true
 	})
@@ -64,7 +62,6 @@ export class VwcToggleButtonGroup extends LitElement {
 	required = false;
 
 	@property({
-		attribute: 'disabled',
 		type: Boolean,
 		reflect: true
 	})
