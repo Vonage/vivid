@@ -1,7 +1,7 @@
 @use 'vwc-textfield-variables' as textfield-variables;
 @use '@vonage/vwc-icon-button/src/vwc-icon-button-variables' as icon-button-variables;
 
-$gutter: 8px;
+$gutter: 10px;
 
 /* stylelint-disable selector-no-qualifying-type */
 slot[name="action"i]::slotted(vwc-icon-button) {
