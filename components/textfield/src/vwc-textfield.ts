@@ -253,6 +253,7 @@ export class VWCTextField extends MWCTextField {
 
 	private _onActionSlotchange(): void {
 		this.actionIconButtonsCount = this.actionButtons?.length;
+		this.setActionNodesDisabledState();
 	}
 
 	/** @soyTemplate */
