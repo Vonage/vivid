@@ -60,6 +60,9 @@ Stacked.args = { stacked: '' };
 export const Modal = Template.bind({});
 Modal.args = { heading: 'This is a modal window', scrimClickAction: '' };
 
+export const CloseButton = Template.bind({});
+CloseButton.args = { 'close-button': 'true' };
+
 function handleOpenDialogClick(e) {
 	document.querySelector('vwc-dialog').show();
 }

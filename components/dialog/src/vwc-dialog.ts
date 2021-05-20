@@ -1,4 +1,4 @@
-import { customElement, PropertyValues } from 'lit-element';
+import { customElement, property, PropertyValues } from 'lit-element';
 import { style } from './vwc-dialog.css';
 import { Dialog as MWCDialog } from '@material/mwc-dialog';
 import { style as mwcDialogStyle } from '@material/mwc-dialog/mwc-dialog-css';
@@ -24,18 +24,16 @@ MWCDialog.styles = [styleCoupling, mwcDialogStyle, style];
 
 @customElement('vwc-dialog')
 export class VWCDialog extends MWCDialog {
+	@property({
+		attribute: 'close-button',
+		type: Boolean,
+		reflect: true
+	})
+	closeButton?: boolean;
+
 	protected firstUpdated() {
 		super.firstUpdated();
-		const closeButtonWrapper = document.createElement('div');
-		closeButtonWrapper.innerHTML = `<vwc-icon-button
-								class="dismiss-button"
-								icon="close-line"
-								dense></vwc-icon-button>`;
-		const closeButton = closeButtonWrapper.children[0];
-		closeButton.addEventListener('click', () => {
-			this.close();
-		});
-		this.shadowRoot?.querySelector('.mdc-dialog__surface')?.appendChild(closeButton);
+		this.addDismissButton();
 	}
 
 	protected updated(_changedProperties: PropertyValues): void {
@@ -54,5 +52,19 @@ export class VWCDialog extends MWCDialog {
 					: contentElement.classList.add('last');
 			}
 		}
+	}
+
+	private addDismissButton() {
+		const closeButtonWrapper = document.createElement('div');
+		closeButtonWrapper.innerHTML = `<vwc-icon-button
+								class="dismiss-button"
+								icon="close-line"
+								dense></vwc-icon-button>`;
+		const closeButton = closeButtonWrapper.children[0];
+		closeButton.addEventListener('click', () => {
+			this.close();
+		});
+		this.shadowRoot?.querySelector('.mdc-dialog__surface')
+			?.appendChild(closeButton);
 	}
 }
