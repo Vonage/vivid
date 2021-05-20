@@ -60,7 +60,7 @@ describe('snackbar layout', () => {
 				const snackbarSurface = snackbar.shadowRoot.querySelector('.mdc-snackbar__surface');
 
 				await openSnackbar(snackbar);
-				await waitInterval(32);
+				await waitInterval(16);
 				for (const [expectedProperty, expectedValue] of Object.entries(expectations)) {
 					assertDistancePixels(document.body, snackbarSurface, expectedProperty, expectedValue);
 				}
