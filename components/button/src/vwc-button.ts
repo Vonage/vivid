@@ -138,11 +138,7 @@ export class VWCButton extends MWCButton {
 	}
 
 	protected renderIcon(): TemplateResult {
-		return html`<vwc-icon
-			class="vvd-icon"
-			size="small"
-			type="${this.icon}"
-		></vwc-icon>`;
+		return html`<vwc-icon	type="${this.icon}"></vwc-icon>`;
 	}
 
 	static createHiddenButton(): HTMLButtonElement {
