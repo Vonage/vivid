@@ -5,13 +5,15 @@ export {
 	GRID_COMPONENT,
 	GRID_HEADER_COMPONENT,
 	GRID_SELECT_HEADER_COMPONENT,
+	GRID_ENGINE_ROOT_CLASS,
 	DataGrid,
 	DataGridHeader,
 };
 
 const GRID_COMPONENT = 'vwc-data-grid',
 	GRID_HEADER_COMPONENT = 'vwc-data-grid-header',
-	GRID_SELECT_HEADER_COMPONENT = 'vwc-data-grid-select-header';
+	GRID_SELECT_HEADER_COMPONENT = 'vwc-data-grid-select-header',
+	GRID_ENGINE_ROOT_CLASS = 'vvd-grid-engine-root';
 
 /**
  * API definition of the Vivid data grid, component

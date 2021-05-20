@@ -1,9 +1,14 @@
 @use '@vonage/vvd-typography/scss/typography';
 
 :host {
-	display: block;
+	display: flex;
 	min-width: 200px;
+	height: 320px;
 	min-height: 150px;
+}
+
+.vvd-grid-engine-root {
+	height: auto;
 }
 
 .vvd-grid-footer {
