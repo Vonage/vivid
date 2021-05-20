@@ -123,7 +123,7 @@ describe('expansion panel', () => {
 			actualElement.icon = 'chat-solid';
 			await waitNextTask();
 
-			const customIcon = actualElement.shadowRoot.querySelector('.leading-icon .vvd-icon');
+			const customIcon = actualElement.shadowRoot.querySelector('.leading-icon vwc-icon');
 			expect(customIcon.type).to.equal('chat-solid');
 		});
 	});
