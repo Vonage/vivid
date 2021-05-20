@@ -130,18 +130,6 @@ export class VwcToggleButtonGroup extends LitElement {
 		}
 	}
 
-	private toggleChildrenDisabledState() {
-		this.items.forEach(item => this.toggleChildDisabledState(item));
-	}
-
-	private toggleChildDisabledState(item: Element) {
-		if (this.disabled) {
-			item.setAttribute('disabled', '');
-		} else {
-			item.removeAttribute('disabled');
-		}
-	}
-
 	protected firstUpdated(_changedProperties: PropertyValues): void {
 		super.firstUpdated(_changedProperties);
 		const slot = this.shadowRoot?.querySelector('slot') as HTMLSlotElement;
@@ -157,6 +145,14 @@ export class VwcToggleButtonGroup extends LitElement {
 	protected render(): unknown {
 		return html`
 			<slot></slot>`;
+	}
+
+	private toggleChildrenDisabledState() {
+		this.items.forEach(item => this.toggleChildDisabledState(item));
+	}
+
+	private toggleChildDisabledState(item: Element) {
+		item.toggleAttribute('disabled', this.disabled);
 	}
 
 	private setNodesAndClickEvents(nodes: Element[]) {
