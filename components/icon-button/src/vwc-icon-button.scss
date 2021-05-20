@@ -1,4 +1,9 @@
+/* VARIABLES */
+$icon-button-icon-size-variable-name: --vvd-icon-button-icon-size;
+/*************/
+
 @use 'sass:map';
+@use '@vonage/vwc-icon/src/vwc-icon';
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
@@ -76,13 +81,13 @@ $vvd-icon-button-block-size: --vvd-icon-button-block-size;
 
 vwc-icon {
 	:host & {
-		--icon-size: var(--vvd-icon-button-icon-size, 20px);
+		#{vwc-icon.$icon-size-variable-name}: var(#{$icon-button-icon-size-variable-name}, 20px);
 	}
 	:host([dense]) & {
-		--icon-size: var(--vvd-icon-button-icon-size, 16px);
+		#{vwc-icon.$icon-size-variable-name}: var(#{$icon-button-icon-size-variable-name}, 16px);
 	}
 	:host([enlarged]) & {
-		--icon-size: var(--vvd-icon-button-icon-size, 24px);
+		#{vwc-icon.$icon-size-variable-name}: var(#{$icon-button-icon-size-variable-name}, 24px);
 	}
 }
 
