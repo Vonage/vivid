@@ -1,3 +1,12 @@
+# [2.8.0](https://github.com/vonage/vivid/compare/v2.7.0...v2.8.0) (2021-05-20)
+
+
+### Features
+
+* **toggle-button-group:** add disabled to children for a11y ([#843](https://github.com/vonage/vivid/issues/843)) ([d66e385](https://github.com/vonage/vivid/commit/d66e385011c8531d9514af260625f89e29f45dc1))
+
+
+
 # [2.7.0](https://github.com/vonage/vivid/compare/v2.6.2...v2.7.0) (2021-05-17)
 
 
