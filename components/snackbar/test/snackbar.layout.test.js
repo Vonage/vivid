@@ -51,6 +51,11 @@ describe('snackbar layout', () => {
 			'BOTTOM-END': { right: 8 }
 		};
 
+		document.documentElement.style.height = '100%';
+		document.documentElement.style.width = '100%';
+		document.body.style.height = '100%';
+		document.body.style.width = '100%';
+
 		for (const [position, expectations] of Object.entries(positions)) {
 			it(`should have snackbar positioned correctly for '${position}'`, async () => {
 				const [snackbar] = addElement(
