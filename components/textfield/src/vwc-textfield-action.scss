@@ -5,8 +5,8 @@ $gutter: 10px;
 
 /* stylelint-disable selector-no-qualifying-type */
 slot[name="action"i]::slotted(vwc-icon-button) {
-	#{icon-button-variables.$vvd-icon-button-shape}: var(#{textfield-variables.$vvd-textfield-shape});
-	#{icon-button-variables.$vvd-icon-button-block-size}: calc(var(#{textfield-variables.$vvd-textfield-size-block}) - #{$gutter});
+	#{icon-button-variables.$icon-button-shape}: var(#{textfield-variables.$vvd-textfield-shape});
+	#{icon-button-variables.$icon-button-block-size}: calc(var(#{textfield-variables.$vvd-textfield-size-block}) - #{$gutter});
 	align-self: center;
 
 	:host(:not([dense])) & {
