@@ -51,3 +51,16 @@
 	opacity: 0.32;
 }
 
+.dismiss-button {
+	display: none;
+}
+
+:host([close-button]) {
+	.dismiss-button {
+		--vvd-icon-button-color: inherit;
+		position: absolute;
+		top: 16px;
+		right: 16px;
+		display: block;
+	}
+}

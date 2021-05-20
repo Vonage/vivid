@@ -24,6 +24,20 @@ MWCDialog.styles = [styleCoupling, mwcDialogStyle, style];
 
 @customElement('vwc-dialog')
 export class VWCDialog extends MWCDialog {
+	protected firstUpdated() {
+		super.firstUpdated();
+		const closeButtonWrapper = document.createElement('div');
+		closeButtonWrapper.innerHTML = `<vwc-icon-button
+								class="dismiss-button"
+								icon="close-line"
+								dense></vwc-icon-button>`;
+		const closeButton = closeButtonWrapper.children[0];
+		closeButton.addEventListener('click', () => {
+			this.close();
+		});
+		this.shadowRoot?.querySelector('.mdc-dialog__surface')?.appendChild(closeButton);
+	}
+
 	protected updated(_changedProperties: PropertyValues): void {
 		super.updated(_changedProperties);
 		if (!this.renderRoot.querySelector('#dialog_icon')) {
