@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-toggle-buttons-group",
-	"version": "2.7.0",
+	"version": "2.8.0",
 	"description": "toggle-buttons-group component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/toggle-buttons-group#readme",
 	"license": "ISC",
@@ -25,12 +25,12 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@vonage/vvd-foundation": "2.7.0",
+		"@vonage/vvd-foundation": "2.8.0",
 		"lit-element": "^2.4.0",
-		"tslib": "^2.0.2"
+		"tslib": "^2.0.3"
 	},
 	"devDependencies": {
-		"@vonage/vvd-design-tokens": "2.7.0",
-		"@vonage/vvd-umbrella": "2.7.0"
+		"@vonage/vvd-design-tokens": "2.8.0",
+		"@vonage/vvd-umbrella": "2.8.0"
 	}
 }
