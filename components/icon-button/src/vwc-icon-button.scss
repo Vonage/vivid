@@ -12,8 +12,18 @@
 	$variables-scope-prefix: 'vvd-icon-button'
 );
 
+@include shape-mixins.shape(
+	$shapes: (
+		rounded: 6px,
+		circled: 50%,
+	)
+);
+
+@include layout-mixins.layout();
+
 @include color-connotation.connotations-main;
 @include color-connotation.connotations-main-default(primary);
+
 $block-sizes: (
 	'dense': 32px,
 	'normal': 40px,
@@ -27,7 +37,6 @@ $vvd-icon-button-block-size: --vvd-icon-button-block-size;
 	// sizing
 	--mdc-icon-button-size: var(#{$vvd-icon-button-block-size}, #{map.get($block-sizes, 'normal')});
 	@include vvd-formfield.coupling;
-	font-size: 20px;
 
 	.mdc-icon-button {
 		display: inline-flex;
@@ -59,19 +68,21 @@ $vvd-icon-button-block-size: --vvd-icon-button-block-size;
 
 :host([dense]) {
 	--mdc-icon-button-size: var(#{$vvd-icon-button-block-size}, #{map.get($block-sizes, 'dense')});
-	font-size: 16px;
 }
 
 :host([enlarged]) {
 	--mdc-icon-button-size: var(#{$vvd-icon-button-block-size}, #{map.get($block-sizes, 'enlarged')});
-	font-size: 24px;
 }
 
-@include shape-mixins.shape(
-	$shapes: (
-		rounded: 6px,
-		circled: 50%,
-	)
-);
+vwc-icon {
+	:host & {
+		--icon-size: var(--vvd-icon-button-icon-size, 20px);
+	}
+	:host([dense]) & {
+		--icon-size: var(--vvd-icon-button-icon-size, 16px);
+	}
+	:host([enlarged]) & {
+		--icon-size: var(--vvd-icon-button-icon-size, 24px);
+	}
+}
 
-@include layout-mixins.layout();

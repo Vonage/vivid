@@ -12,9 +12,10 @@
 	:host([#{$type}]) & {
 		--button-block-size: #{$unit * 8px};
 
-		.vvd-icon {
-			--icon-size: #{$unit * 4px};
+		vwc-icon {
+			--icon-size: var(--vvd-button-icon-size, #{$unit * 4px});
 		}
+
 		@content;
 	}
 }
@@ -53,8 +54,8 @@
 	letter-spacing: normal;
 
 	&:not(.mdc-button--dense) {
-		.vvd-icon {
-			--icon-size: 20px;
+		vwc-icon {
+			--icon-size: var(--vvd-button-icon-size, 20px);
 		}
 	}
 
@@ -64,13 +65,13 @@
 	}
 
 	> .trailing-icon {
-		.vvd-icon {
+		vwc-icon {
 			margin-inline-start: $gutter;
 		}
 	}
 
 	> .leading-icon {
-		.vvd-icon {
+		vwc-icon {
 			margin-inline-end: $gutter;
 		}
 	}
@@ -81,13 +82,13 @@
 		$gutter: 10px;
 
 		> .trailing-icon {
-			.vvd-icon {
+			vwc-icon {
 				margin-inline-start: $gutter;
 			}
 		}
 
 		> .leading-icon {
-			.vvd-icon {
+			vwc-icon {
 				margin-inline-end: $gutter;
 			}
 		}
