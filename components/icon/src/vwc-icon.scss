@@ -1,30 +1,30 @@
-$icon-size-variable-name: --icon-size;
+@use './vwc-icon-variables' as icon-variables;
 
 :host([size='small']) {
-	#{$icon-size-variable-name}: 16px;
+	#{icon-variables.$icon-size-variable-name}: 16px;
 }
 
 :host,
 :host([size='medium']) {
-	#{$icon-size-variable-name}: 24px;
+	#{icon-variables.$icon-size-variable-name}: 24px;
 }
 
 :host([size='large']) {
-	#{$icon-size-variable-name}: 32px;
+	#{icon-variables.$icon-size-variable-name}: 32px;
 }
 
 :host([inline]) {
-	#{$icon-size-variable-name}: 1em;
+	#{icon-variables.$icon-size-variable-name}: 1em;
 	line-height: 1;
 	vertical-align: middle;
 }
 
 :host {
 	display: inline-block;
-	width: var(#{$icon-size-variable-name});
-	height: var(#{$icon-size-variable-name});
-	block-size: var(#{$icon-size-variable-name});
-	inline-size: var(#{$icon-size-variable-name});
+	width: var(#{icon-variables.$icon-size-variable-name});
+	height: var(#{icon-variables.$icon-size-variable-name});
+	block-size: var(#{icon-variables.$icon-size-variable-name});
+	inline-size: var(#{icon-variables.$icon-size-variable-name});
 	line-height: 1;
 	vertical-align: middle;
 
