@@ -126,15 +126,19 @@ export class VwcToggleButtonGroup extends LitElement {
 		}
 
 		if (changes.has('disabled')) {
-			this.toggleDisabledState();
+			this.toggleChildrenDisabledState();
 		}
 	}
 
-	private toggleDisabledState() {
+	private toggleChildrenDisabledState() {
+		this.items.forEach(item => this.toggleChildDisabledState(item));
+	}
+
+	private toggleChildDisabledState(item: Element) {
 		if (this.disabled) {
-			this.items.forEach(item => item.setAttribute('disabled', ''));
+			item.setAttribute('disabled', '');
 		} else {
-			this.items.forEach(item => item.removeAttribute('disabled'));
+			item.removeAttribute('disabled');
 		}
 	}
 
@@ -148,7 +152,6 @@ export class VwcToggleButtonGroup extends LitElement {
 			this.#_items = null;
 			this.items;
 		});
-		this.toggleDisabledState();
 	}
 
 	protected render(): unknown {
@@ -187,6 +190,7 @@ export class VwcToggleButtonGroup extends LitElement {
 
 	private setNodeAttributes(buttonElement: Element) {
 		buttonElement.setAttribute('layout', 'filled');
+		this.toggleChildDisabledState(buttonElement);
 	}
 
 	private setVwcButtonSize(buttonElement: Element) {
