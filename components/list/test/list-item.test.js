@@ -100,26 +100,4 @@ describe('list item', () => {
 			assertComputedStyle(actualElement, shapeStyles('rounded'));
 		});
 	});
-
-	describe(`performance issue`, function () {
-		function createElement(index) {
-			return `<vwc-list-item value=${index}>Item ${index}</vwc-list-item>`;
-		}
-		const selectItems = new Array(300)
-			.fill(0)
-			.map((_, index) => index)
-			.reduce((last, next) => (last += createElement(next)), '');
-
-		it(`should not take more than 50ms to remove the list from the DOM`, async function () {
-			const [actualElement] = addElement(
-				textToDomToParent(`<vwc-list>${selectItems}</vwc-list>`)
-			);
-			await waitNextTask();
-			const startTime = performance.now();
-			actualElement.remove();
-			const endTime = performance.now();
-
-			expect(endTime - startTime).to.be.lessThan(50);
-		});
-	});
 });
