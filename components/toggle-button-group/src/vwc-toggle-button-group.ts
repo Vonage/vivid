@@ -44,14 +44,12 @@ export class VwcToggleButtonGroup extends LitElement {
 	multi = false;
 
 	@property({
-		attribute: 'enlarged',
 		type: Boolean,
 		reflect: true
 	})
 	enlarged = false;
 
 	@property({
-		attribute: 'dense',
 		type: Boolean,
 		reflect: true
 	})
@@ -62,6 +60,12 @@ export class VwcToggleButtonGroup extends LitElement {
 		reflect: true
 	})
 	required = false;
+
+	@property({
+		type: Boolean,
+		reflect: true
+	})
+	disabled = false;
 
 	constructor() {
 		super();
@@ -120,6 +124,10 @@ export class VwcToggleButtonGroup extends LitElement {
 			}
 			this.updateComplete.then(() => this.#_items?.forEach(buttonElement => this.setVwcButtonSize(buttonElement)));
 		}
+
+		if (changes.has('disabled')) {
+			this.toggleChildrenDisabledState();
+		}
 	}
 
 	protected firstUpdated(_changedProperties: PropertyValues): void {
@@ -137,6 +145,14 @@ export class VwcToggleButtonGroup extends LitElement {
 	protected render(): unknown {
 		return html`
 			<slot></slot>`;
+	}
+
+	private toggleChildrenDisabledState() {
+		this.items.forEach(item => this.toggleChildDisabledState(item));
+	}
+
+	private toggleChildDisabledState(item: Element) {
+		item.toggleAttribute('disabled', this.disabled);
 	}
 
 	private setNodesAndClickEvents(nodes: Element[]) {
@@ -170,6 +186,7 @@ export class VwcToggleButtonGroup extends LitElement {
 
 	private setNodeAttributes(buttonElement: Element) {
 		buttonElement.setAttribute('layout', 'filled');
+		this.toggleChildDisabledState(buttonElement);
 	}
 
 	private setVwcButtonSize(buttonElement: Element) {
