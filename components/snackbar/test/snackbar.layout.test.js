@@ -61,7 +61,7 @@ describe('snackbar layout', () => {
 				const snackbarSurface = snackbar.shadowRoot.querySelector('.mdc-snackbar__surface');
 
 				await openSnackbar(snackbar);
-				if (isFirefox) {
+				if (isFirefox()) {
 					await waitInterval(16);
 				}
 				for (const [expectedProperty, expectedValue] of Object.entries(expectations)) {
