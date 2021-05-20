@@ -24,6 +24,7 @@ import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
 export { TextFieldType } from '@material/mwc-textfield';
 
 export const COMPONENT_NAME = 'vwc-textfield';
+export const VALID_BUTTON_ELEMENTS = ['vwc-icon-button'];
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -55,7 +56,7 @@ export class VWCTextField extends MWCTextField {
 	@property({ type: String, reflect: true, converter: v => v || ' ' })
 	placeholder = ' ';
 
-	@queryAssignedNodes('action', true, 'vwc-icon-button')
+	@queryAssignedNodes('action', true, VALID_BUTTON_ELEMENTS.join(', '))
 	private actionButtons?: NodeListOf<HTMLElement>;
 
 	@internalProperty()
@@ -244,11 +245,7 @@ export class VWCTextField extends MWCTextField {
 
 	protected setActionNodesDisabledState(): void {
 		const buttons = Array.from(this.actionButtons || []);
-		if (this.disabled) {
-			buttons.forEach(button => button.setAttribute('disabled', ''));
-		} else {
-			buttons.forEach(button => button.removeAttribute('disabled'));
-		}
+		buttons.forEach(button => button.toggleAttribute('disabled', this.disabled));
 	}
 
 	private _onActionSlotchange(): void {
