@@ -13,7 +13,7 @@ chai.use(chaiDomDiff);
 const COMPONENT_NAME = 'vwc-toggle-button-group';
 const SELECTED_EVENT_NAME = 'selected';
 
-describe.only('Toggle-buttons-group', () => {
+describe('Toggle-buttons-group', () => {
 	function waitForSlotChange() {
 		return waitNextTask();
 	}
