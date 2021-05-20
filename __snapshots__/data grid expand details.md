@@ -4,7 +4,6 @@
 
 ```html
 <vaadin-grid
-  class="vvd-grid-engine-root"
   style="touch-action: none;"
   theme="no-border"
 >
@@ -85,7 +84,6 @@
 
 ```html
 <vaadin-grid
-  class="vvd-grid-engine-root"
   style="touch-action: none;"
   theme="no-border"
 >
