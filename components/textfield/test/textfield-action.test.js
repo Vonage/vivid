@@ -23,18 +23,37 @@ describe('textfield action', () => {
 		async function createDisabledElement() {
 			const [actualElement] = (
 				textToDomToParent(`
-				<${COMPONENT_NAME} disabled>
-					<${iconButton} slot="action"></${iconButton}>
-					<${iconButton} slot="action"></${iconButton}>
-					<${iconButton} slot="action"></${iconButton}>
-				</${COMPONENT_NAME}>
+					<${COMPONENT_NAME} disabled>
+						<${iconButton} slot="action"></${iconButton}>
+						<${iconButton} slot="action"></${iconButton}>
+						<${iconButton} slot="action"></${iconButton}>
+					</${COMPONENT_NAME}>
 				`)
 			);
 			await actualElement.updateComplete;
 			return actualElement;
 		}
 
-		it(`should set  dynamically added child node's 'disabled' property`, async function () {
+		it(`should enforce disable on child nodes`, async function () {
+			const actualElement = await createDisabledElement();
+			const buttons = Array.from(actualElement.querySelectorAll(iconButton));
+
+			const allDisabled = buttons.every(button => button.disabled);
+
+			actualElement.disabled = false;
+			await waitNextTask();
+			const allEnabled = buttons.every(button => !button.disabled);
+
+			expect(allDisabled, `Children not disabled on initialization`)
+				.to
+				.equal(true);
+
+			expect(allEnabled, `Children not enabled on change`)
+				.to
+				.equal(true);
+		});
+
+		it(`should disable dynamically added child node's`, async function () {
 			const actualElement = await createDisabledElement();
 			const newIconButton = document.createElement(iconButton);
 			newIconButton.setAttribute('slot', 'action');
@@ -43,79 +62,5 @@ describe('textfield action', () => {
 			await waitForSlotChange();
 			expect(newIconButton.hasAttribute('disabled')).to.equal(true);
 		});
-
-		// it(`should init 'disabled' property on child nodes`, async function () {
-		// 	async function enableElement() {
-		// 		actualElement.removeAttribute('disabled');
-		// 		await actualElement.updateComplete;
-		// 	}
-
-		// 	async function disableElement() {
-		// 		actualElement.setAttribute('disabled', '');
-		// 		await actualElement.updateComplete;
-		// 	}
-
-		// 	function checkIfChildrenDisabled() {
-		// 		return [...actualElement.children].reduce((areAllDisabled, childNode) => (areAllDisabled && childNode.hasAttribute('disabled')), true);
-		// 	}
-
-		// 	const actualElement = await createDisabledElement();
-		// 	const initializedWithDisabled = checkIfChildrenDisabled();
-
-		// 	await enableElement();
-		// 	const removedDisabledFromChildrenAfterEnable = !checkIfChildrenDisabled();
-
-		// 	await disableElement();
-		// 	const addDisabledDynamically = checkIfChildrenDisabled();
-
-		// 	expect(initializedWithDisabled, `Children not disabled on initialization`)
-		// 		.to
-		// 		.equal(true);
-
-		// 	expect(removedDisabledFromChildrenAfterEnable, `Children are still disabled after removing disabled property`)
-		// 		.to
-		// 		.equal(true);
-
-		// 	expect(addDisabledDynamically, `Children not disabled after disabling the group`)
-		// 		.to
-		// 		.equal(true);
-		// });
-
-		// it(`should set 'disabled' property on child elements`, async function () {
-		// 	async function enableElement() {
-		// 		actualElement.removeAttribute('disabled');
-		// 		await actualElement.updateComplete;
-		// 	}
-
-		// 	async function disableElement() {
-		// 		actualElement.setAttribute('disabled', '');
-		// 		await actualElement.updateComplete;
-		// 	}
-
-		// 	function checkIfChildrenDisabled() {
-		// 		return [...actualElement.children].reduce((areAllDisabled, childNode) => (areAllDisabled && childNode.hasAttribute('disabled')), true);
-		// 	}
-
-		// 	const actualElement = await createDisabledElement();
-		// 	const initializedWithDisabled = checkIfChildrenDisabled();
-
-		// 	await enableElement();
-		// 	const removedDisabledFromChildrenAfterEnable = !checkIfChildrenDisabled();
-
-		// 	await disableElement();
-		// 	const addDisabledDynamically = checkIfChildrenDisabled();
-
-		// 	expect(initializedWithDisabled, `Children not disabled on initialization`)
-		// 		.to
-		// 		.equal(true);
-
-		// 	expect(removedDisabledFromChildrenAfterEnable, `Children are still disabled after removing disabled property`)
-		// 		.to
-		// 		.equal(true);
-
-		// 	expect(addDisabledDynamically, `Children not disabled after disabling the group`)
-		// 		.to
-		// 		.equal(true);
-		// });
 	});
 });
