@@ -36,6 +36,13 @@
           </slot>
         </span>
       </footer>
+      <vwc-icon-button
+        class="dismiss-button"
+        dense=""
+        icon="close-line"
+        layout="ghost"
+      >
+      </vwc-icon-button>
     </div>
   </div>
   <div class="mdc-dialog__scrim">

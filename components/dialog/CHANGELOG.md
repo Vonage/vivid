@@ -1,3 +1,12 @@
+# [2.8.0](https://github.com/vonage/vivid/compare/v2.7.0...v2.8.0) (2021-05-20)
+
+
+### Features
+
+* **dialog:** dialog dismiss button ([#849](https://github.com/vonage/vivid/issues/849)) ([1920c67](https://github.com/vonage/vivid/commit/1920c67959648e3ee361537795fbbfd717e5cf3b))
+
+
+
 # [2.7.0](https://github.com/vonage/vivid/compare/v2.6.2...v2.7.0) (2021-05-17)
 
 
