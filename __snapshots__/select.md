@@ -55,7 +55,6 @@
     </vwc-notched-outline>
     <vwc-icon
       class="vvd-select-icon"
-      size="medium"
       type="home"
     >
     </vwc-icon>
@@ -70,7 +69,6 @@
     </span>
     <vwc-icon
       class="vvd-select-dropdown-icon"
-      size="medium"
       type="down"
     >
     </vwc-icon>
