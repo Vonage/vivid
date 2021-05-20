@@ -11,7 +11,7 @@ export default {
 };
 
 const Template = args => html`
-	<vwc-button @click="${handleOpenDialogClick}">Open dialog</vwc-button>
+	<vwc-button @click="${handleOpenDialogClick}" layout="outlined">Open dialog</vwc-button>
 	<vwc-dialog ...=${spread(args)}>
 		<div>This is the modal's content.</div>
 		<vwc-button
@@ -28,7 +28,7 @@ const Template = args => html`
 `;
 
 const IconTemplate = args => html`
-	<vwc-button @click="${handleOpenDialogClick}">Open dialog</vwc-button>
+	<vwc-button @click="${handleOpenDialogClick}" layout="outlined">Open dialog</vwc-button>
 	<vwc-dialog id="dialog-a" ...=${spread(args)}>
 		<div>This is the modal's content.</div>
 		<vwc-icon slot="icon" size="large" type="home"></vwc-icon>
