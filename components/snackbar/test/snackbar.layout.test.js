@@ -51,11 +51,6 @@ describe('snackbar layout', () => {
 			'BOTTOM-END': { right: 8 }
 		};
 
-		document.documentElement.style.height = '100%';
-		document.documentElement.style.width = '100%';
-		document.body.style.height = '100%';
-		document.body.style.width = '100%';
-
 		for (const [position, expectations] of Object.entries(positions)) {
 			it(`should have snackbar positioned correctly for '${position}'`, async () => {
 				const [snackbar] = addElement(
@@ -67,7 +62,7 @@ describe('snackbar layout', () => {
 				await openSnackbar(snackbar);
 				await waitInterval(16);
 				for (const [expectedProperty, expectedValue] of Object.entries(expectations)) {
-					assertDistancePixels(document.body, snackbarSurface, expectedProperty, expectedValue);
+					assertDistancePixels(document.documentElement, snackbarSurface, expectedProperty, expectedValue);
 				}
 			});
 		}
