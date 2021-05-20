@@ -23,7 +23,9 @@ describe('Dialog', () => {
 		);
 		const actualElement = addedElements[0];
 		await waitNextTask();
-		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
+		expect(actualElement.shadowRoot.innerHTML)
+			.to
+			.equalSnapshot();
 	});
 
 	it(`should hide the actions section`, async function () {
@@ -32,6 +34,25 @@ describe('Dialog', () => {
 		);
 		actualElement.hideActions = true;
 		await actualElement.updateComplete;
-		expect(actualElement.shadowRoot.querySelector('#content').classList.contains('last')).to.equal(true);
+		expect(actualElement.shadowRoot.querySelector('#content')
+			.classList
+			.contains('last'))
+			.to
+			.equal(true);
+	});
+
+	it(`should close when clicking the dismiss button`, async function () {
+		const [actualElement] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME} open>Button Text</${COMPONENT_NAME}>`)
+		);
+		await actualElement.updateComplete;
+
+		const dismissButton = actualElement.shadowRoot.querySelector('.dismiss-button');
+
+		dismissButton.click();
+
+		expect(actualElement.open)
+			.to
+			.equal(false);
 	});
 });
