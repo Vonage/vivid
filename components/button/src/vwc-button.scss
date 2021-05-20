@@ -1,9 +1,7 @@
-/* VARIABLES */
-$button-icon-size-variable-name: --vvd-button-icon-size;
-/*************/
 
 @forward './vwc-button-coupling';
-@use '@vonage/vwc-icon/src/vwc-icon';
+@use './vwc-button-variables' as button-variables;
+@use '@vonage/vwc-icon/src/vwc-icon-variables' as icon-variables;
 @use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation with (
@@ -19,7 +17,7 @@ $button-icon-size-variable-name: --vvd-button-icon-size;
 		--button-block-size: #{$unit * 8px};
 
 		vwc-icon {
-			#{vwc-icon.$icon-size-variable-name}: var(#{$button-icon-size-variable-name}, #{$unit * 4px});
+			#{icon-variables.$icon-size-variable-name}: var(#{button-variables.$button-icon-size-variable-name}, #{$unit * 4px});
 		}
 
 		@content;
@@ -62,7 +60,7 @@ $button-icon-size-variable-name: --vvd-button-icon-size;
 
 	&:not(.mdc-button--dense) {
 		vwc-icon {
-			#{vwc-icon.$icon-size-variable-name}: var(#{$button-icon-size-variable-name}, 20px);
+			#{icon-variables.$icon-size-variable-name}: var(#{button-variables.$button-icon-size-variable-name}, 20px);
 		}
 	}
 

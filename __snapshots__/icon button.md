@@ -7,10 +7,7 @@
   aria-label="bin"
   class="mdc-icon-button"
 >
-  <vwc-icon
-    inline=""
-    type="bin"
-  >
+  <vwc-icon type="bin">
   </vwc-icon>
   <span>
     <slot>

@@ -2,7 +2,7 @@
 $tab-icon-size-variable-name: --vvd-tab-icon-size;
 /*************/
 
-@use '@vonage/vwc-icon/src/vwc-icon';
+@use '@vonage/vwc-icon/src/vwc-icon-variables' as icon-variables;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @forward './vwc-tab-coupling';
 
@@ -23,7 +23,7 @@ $tab-icon-size-variable-name: --vvd-tab-icon-size;
 }
 
 vwc-icon {
-	#{vwc-icon.$icon-size-variable-name}: var(#{$tab-icon-size-variable-name}, 20px);
+	#{icon-variables.$icon-size-variable-name}: var(#{$tab-icon-size-variable-name}, 20px);
 	color: var(--mdc-tab-text-label-color-default);
 }
 

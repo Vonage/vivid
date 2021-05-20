@@ -1,8 +1,5 @@
-/* VARIABLES */
-$expansion-panel-icon-size-variable-name: --vvd-expansion-panel-icon-size;
-/*************/
-
-@use '@vonage/vwc-icon/src/vwc-icon';
+@use './vwc-expansion-panel-variables' as expansion-panel-variables;
+@use '@vonage/vwc-icon/src/vwc-icon-variables' as icon-variables;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-typography/scss/typography';
 
@@ -46,7 +43,7 @@ $expansion-panel-icon-size-variable-name: --vvd-expansion-panel-icon-size;
 		display: flex;
 
 		vwc-icon {
-			#{vwc-icon.$icon-size-variable-name}: var(#{$expansion-panel-icon-size-variable-name}, 16px);
+			#{icon-variables.$icon-size-variable-name}: var(#{expansion-panel-variables.$expansion-panel-icon-size-variable-name}, 16px);
 		}
 	}
 
