@@ -10,12 +10,12 @@
     <span class="leading-icon">
       <slot name="icon">
         <vwc-icon
-          class="toggle-open vvd-icon"
+          class="toggle-open"
           type="plus-solid"
         >
         </vwc-icon>
         <vwc-icon
-          class="toggle-close vvd-icon"
+          class="toggle-close"
           type="minus-solid"
         >
         </vwc-icon>

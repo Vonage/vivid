@@ -9,21 +9,13 @@
 >
   <span class="mdc-icon-button__icon">
     <slot name="offIcon">
-      <vwc-icon
-        class="icon"
-        inline=""
-        type=""
-      >
+      <vwc-icon type="">
       </vwc-icon>
     </slot>
   </span>
   <span class="mdc-icon-button__icon mdc-icon-button__icon--on">
     <slot name="onIcon">
-      <vwc-icon
-        class="icon"
-        inline=""
-        type=""
-      >
+      <vwc-icon type="">
       </vwc-icon>
     </slot>
   </span>
