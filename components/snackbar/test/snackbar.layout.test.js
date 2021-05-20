@@ -54,10 +54,9 @@ describe('snackbar layout', () => {
 
 		for (const [position, expectations] of Object.entries(positions)) {
 			it(`should have snackbar positioned correctly for '${position}'`, async () => {
-				const [snackbarContainer] = addElement(
-					textToDomToParent(`<div style="transform: translate(0); width: 800px; height: 600px;"><${COMPONENT_NAME} position="${position}"></${COMPONENT_NAME}></div>`)
+				const [snackbar] = addElement(
+					textToDomToParent(`<${COMPONENT_NAME} position="${position}"></${COMPONENT_NAME}>`)
 				);
-				const snackbar = snackbarContainer.firstElementChild;
 				await snackbar.updateComplete;
 				const snackbarSurface = snackbar.shadowRoot.querySelector('.mdc-snackbar__surface');
 
@@ -66,7 +65,7 @@ describe('snackbar layout', () => {
 					await waitInterval(16);
 				}
 				for (const [expectedProperty, expectedValue] of Object.entries(expectations)) {
-					assertDistancePixels(snackbarContainer, snackbarSurface, expectedProperty, expectedValue);
+					assertDistancePixels(document.body, snackbarSurface, expectedProperty, expectedValue);
 				}
 			});
 		}
