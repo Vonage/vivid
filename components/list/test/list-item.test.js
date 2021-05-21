@@ -1,12 +1,10 @@
 import '@vonage/vwc-list';
 import '@vonage/vwc-list/vwc-list-item';
 import {
-	assertComputedStyle,
 	textToDomToParent,
 	waitNextTask,
 	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
-import { borderRadiusStyles, shapeStyles } from '../../../test/style-utils';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	assertListItemDimensions,
@@ -77,27 +75,6 @@ describe('list item', () => {
 			const { y: secondaryY } = secondary.getClientRects()[0];
 			const distanceBetweenLines = secondaryY - (primaryY + priamryHeight);
 			expect(distanceBetweenLines).to.equal(4);
-		});
-	});
-
-	describe('shape', () => {
-		let actualElement;
-		beforeEach(async () => {
-			const addedElements = addElement(
-				textToDomToParent(`<${VWC_LIST_ITEM}>Item 0</${VWC_LIST_ITEM}>`)
-			);
-			actualElement = addedElements[0];
-			await waitNextTask();
-		});
-
-		it('should have no shape by default', async () => {
-			assertComputedStyle(actualElement, borderRadiusStyles('0px'));
-		});
-
-		it('should have rounded shape when shape set to rounded', async () => {
-			actualElement.shape = 'rounded';
-			await waitNextTask();
-			assertComputedStyle(actualElement, shapeStyles('rounded'));
 		});
 	});
 });

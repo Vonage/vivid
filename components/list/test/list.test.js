@@ -6,6 +6,7 @@ import {
 	textToDomToParent,
 	waitNextTask,
 } from '../../../test/test-helpers';
+import { borderRadiusStyles, shapeStyles } from '../../../test/style-utils';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
@@ -56,5 +57,31 @@ describe('list', () => {
 				});
 			}
 		}
+	});
+
+	describe('shape', () => {
+		let list,
+			listItem;
+		beforeEach(async () => {
+			[list] = addElement(
+				textToDomToParent(`
+					<vwc-list>
+						<vwc-list-item>Item 1</vwc-list-item>
+					</vwc-list>
+				`)
+			);
+			await waitNextTask();
+			listItem = list.querySelector('vwc-list-item');
+		});
+
+		it('should not proxy shape to list-item by default', async () => {
+			assertComputedStyle(listItem, borderRadiusStyles('0px'));
+		});
+
+		it('should proxy rounded shape to list-item when shape set to rounded', async () => {
+			list.shape = 'rounded';
+			await waitNextTask();
+			assertComputedStyle(listItem, shapeStyles('rounded'));
+		});
 	});
 });
