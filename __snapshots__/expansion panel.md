@@ -15,14 +15,12 @@
     <span class="trailing-icon">
       <slot name="trailingIcon">
         <vwc-icon
-          class="toggle-open vvd-icon"
-          size="medium"
+          class="toggle-open"
           type="chevron-down-solid"
         >
         </vwc-icon>
         <vwc-icon
-          class="toggle-close vvd-icon"
-          size="medium"
+          class="toggle-close"
           type="chevron-up-solid"
         >
         </vwc-icon>

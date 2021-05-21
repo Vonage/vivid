@@ -2,6 +2,7 @@ import '@vonage/vvd-core';
 import './vwc-data-grid-column';
 import {
 	GRID_COMPONENT,
+	GRID_ENGINE_ROOT_CLASS,
 	DataGrid,
 	DataGridHeader
 } from './vwc-data-grid-api';
@@ -27,6 +28,7 @@ export {
 	GRID_COMPONENT,
 	COLUMN_DEFINITION_COMPONENT,
 	COLUMN_DEFINITION_UPDATE_EVENT,
+	GRID_ENGINE_ROOT_CLASS,
 	DataGrid,
 	DataGridColumn,
 	DataGridHeader

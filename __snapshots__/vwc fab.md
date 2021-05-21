@@ -25,7 +25,6 @@
   <span class="icon-slot-container">
     <slot name="icon">
       <vwc-icon
-        class="vvd-icon"
         size="medium"
         type="info"
       >
@@ -46,7 +45,6 @@
   <span class="icon-slot-container">
     <slot name="icon">
       <vwc-icon
-        class="vvd-icon"
         size="small"
         type="info"
       >

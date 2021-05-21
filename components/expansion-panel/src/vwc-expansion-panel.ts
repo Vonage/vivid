@@ -103,7 +103,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 		if (this.leadingToggle) {
 			return this.renderToggle();
 		} else if (this.icon) {
-			return html`<vwc-icon class="vvd-icon" type="${this.icon}"></vwc-icon>`;
+			return html`<vwc-icon type="${this.icon}"></vwc-icon>`;
 		} else {
 			return '';
 		}
@@ -112,12 +112,12 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	protected renderToggle(): TemplateResult {
 		return html`
 			<vwc-icon
-				class="vvd-icon toggle-open"
+				class="toggle-open"
 				type="${this.indicatorIconSet === 'chevron' ? 'chevron-down-solid' : 'plus-solid'}"
 			>
 			</vwc-icon>
 			<vwc-icon
-				class="vvd-icon toggle-close"
+				class="toggle-close"
 				type="${this.indicatorIconSet === 'chevron' ? 'chevron-up-solid' : 'minus-solid'}"
 			>
 			</vwc-icon>

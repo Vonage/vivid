@@ -5,9 +5,10 @@ const
 	https = require('https');
 
 const
+	BANNER_URL = "http://d3fzvwfxu7izti.cloudfront.net/banner-2.png",
 	HOMEPAGE_URL = "https://github.com/Vonage/vivid",
 	COMMIT_BASE_URL = [HOMEPAGE_URL, "commit"].join('/'),
-	PREVIEW_ITEM_COUNT = 20;
+	PREVIEW_ITEM_COUNT = 5;
 
 const nodeStreamToKefir = (stream)=> {
 	return kefir
@@ -35,50 +36,47 @@ const sanitizeSlackText = (function(filters){
     (text)=> text.replace(/>/g, '&gt;')
 ]);
 
-const extractCC = (commitMessage)=> (commitMessage.match(/(?<type>\w+)\s*(\((?<scope>.+?)\))?\s*:\s*(?<body>.+)/) || []).groups || {};
+exports.releaseTemplate = ({ version, log_lines: rawLogLines })=>{
 
-const formatLogLine = ({ comment, sha }) => {
-	const { scope, body } = extractCC(comment);
-	return [].concat(
-		!fp.overSome([fp.isUndefined, fp.includes(["workspace"])])(scope)
-			? [
-				":vivid: ",
-				`*${_.truncate(sanitizeSlackText(_.lowerCase(scope)), { length: 20 })}*: `,
-				_.truncate(sanitizeSlackText(_.capitalize(body)), { length: 80 }),
-				` [<${[COMMIT_BASE_URL, sha].join('/')}|${sha.substr(0, 7)}>]`
-			].join('')
-			: []
-	);
-};
+	const formatLogLine = (icon = "•")=> ({ comment, sha })=> [
+		"",
+		icon,
+		_.truncate(sanitizeSlackText(_.capitalize(comment.replace(/^[\s\S]+:\s*/, ''))), { length: 60 }),
+		`(<${[COMMIT_BASE_URL, sha].join('/')}|${sha.substr(0, 7)}>)`
+	].join(' ');
 
-exports.releaseTemplate = ({ version, log_lines: rawLogLines }) => {
-
-	const lines = _(rawLogLines)
-		.filter(({ comment })=> !/(branch)|(pull request)/i.test(comment))
-		.sortBy(fp.pipe(fp.get('comment'), extractCC, fp.get('scope')))
-		.flatMap(formatLogLine)
-		.value();
+	const
+		validLog = rawLogLines.filter(({ comment })=> !/(branch)|(pull request)/i.test(comment)),
+		bugs = validLog.filter(({ comment })=> /^fix(e[ds])?.*?:/i.test(comment)).map(formatLogLine(':beetle:')),
+		features = validLog.filter(({ comment })=> /^feat(ures?)?.*?:/i.test(comment)).map(formatLogLine(':star:'));
 
 	return {
 		"blocks": [
 			{
-				"type": "header",
-				"text": {
-					"type": "plain_text",
-					"text": `New Vivid release (v${version}) is now available! :${_.sample(["clap", "raised_hands", "smile"])}:`
-				}
+					"type": "header",
+					"text": {
+							"type": "plain_text",
+							"text": `New Vivid release (v${version}) is now available! :${_.sample(["clap", "raised_hands", "smile"])}:`
+					}
 			},
-			lines.length && {
-				"type": "section",
-				"text": {
-					"type": "mrkdwn",
-					"text": [
-						...lines.slice(0, PREVIEW_ITEM_COUNT),
-						lines.length > PREVIEW_ITEM_COUNT && `..and <${HOMEPAGE_URL}|${lines.length - PREVIEW_ITEM_COUNT} more>`
-					].filter(Boolean).join('\n')
-				}
-			}
-		].filter(Boolean)
+			{
+				"type": "image",
+				"image_url": BANNER_URL,
+				"alt_text": "New Vivid Release!"
+			},
+			..._({ "Features": features, "Bug Fixes": bugs })
+				.map((list, title)=>
+					list.length && {
+						"type": "section",
+						"text": {
+							"type": "mrkdwn",
+							"text": [`*${title}*\n`, ...list.slice(0, PREVIEW_ITEM_COUNT), list.length > PREVIEW_ITEM_COUNT && `..and <${HOMEPAGE_URL}|${list.length - PREVIEW_ITEM_COUNT} more>`].filter(Boolean).join('\n')
+						}
+					}
+				)
+				.compact()
+				.value()
+		]
 	};
 };
 

@@ -1,6 +1,8 @@
 import { COMPONENT_NAME } from '@vonage/vwc-snackbar';
 import '@vonage/vwc-button';
 import {
+	isFirefox,
+	waitInterval,
 	textToDomToParent,
 	assertDistancePixels
 } from '../../../test/test-helpers.js';
@@ -59,6 +61,9 @@ describe('snackbar layout', () => {
 				const snackbarSurface = snackbar.shadowRoot.querySelector('.mdc-snackbar__surface');
 
 				await openSnackbar(snackbar);
+				if (isFirefox()) {
+					await waitInterval(16);
+				}
 				for (const [expectedProperty, expectedValue] of Object.entries(expectations)) {
 					assertDistancePixels(document.body, snackbarSurface, expectedProperty, expectedValue);
 				}
