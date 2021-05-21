@@ -13,6 +13,13 @@ export default {
 };
 
 const renderList = args => html`
+	<style>
+		.box,
+		vwc-list {
+			width: 240px;
+		}
+	</style>
+
 	<vwc-list ...=${spread(args)}>
 		<vwc-list-item>Item 0</vwc-list-item>
 		<vwc-list-item>Item 1</vwc-list-item>
@@ -21,30 +28,17 @@ const renderList = args => html`
 	</vwc-list>`;
 
 export const Basic = args => html`
-	<style>
-		.box {
-			width: 240px;
-		}
-	</style>
-
-<h4>Main</h4>
-<div class="box">
-	${renderList(args)}
-</div>
-<h4>Alternate</h4>
-<div class="box vvd-scheme-alternate">
-	${renderList(args)}
-</div>
-
+	<h4>Main</h4>
+	<div class="box">
+		${renderList(args)}
+	</div>
+	<h4>Alternate</h4>
+	<div class="box vvd-scheme-alternate">
+		${renderList(args)}
+	</div>
 `;
 
 export const metaIcon = args => html`
-	<style>
-		vwc-list {
-			width: 240px;
-		}
-	</style>
-
 	<vwc-list ...=${spread(args)}>
 		<vwc-list-item hasMeta>
 			<span>Item A</span>
@@ -64,3 +58,6 @@ export const metaIcon = args => html`
 		</vwc-list-item>
 	</vwc-list>
 `;
+
+export const Shape = renderList.bind({});
+Shape.args = { shape: 'rounded' };

@@ -4,9 +4,6 @@
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation with (
 	$connotations-set: primary cta
 );
-@use '@vonage/vvd-foundation/scss/mixins/shape-mixins' with (
-	$variable-name: --vvd-list-item-shape
-);
 
 $vvd-list-item-block-size: --vvd-list-item-block-size;
 $vvd-list-item-side-padding: --vvd-list-item-side-padding;
@@ -34,7 +31,6 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 
 	height: var(#{$vvd-list-item-block-size});
 
-	border-radius: var(--vvd-list-item-shape);
 	#{$vvd-list-item-block-size}: 40px;
 	#{$vvd-list-item-side-padding}: 24px;
 	#{$vvd-list-item-graphic-margin}: 16px;
@@ -136,10 +132,3 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 .mdc-deprecated-list-item__meta {
 	display: flex;
 }
-
-@include shape-mixins.shape(
-	$shapes: (
-		rounded: 6px,
-	),
-	$default: ''
-);

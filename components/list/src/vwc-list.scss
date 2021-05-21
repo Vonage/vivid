@@ -1,6 +1,13 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 
+$vvd-list-shape: --vvd-list-shape;
+$scopes: list-item check-list-item radio-list-item;
+
+@use '@vonage/vvd-foundation/scss/mixins/shape-mixins' with (
+	$variable-name: #{$vvd-list-shape}
+);
+
 :host {
 	--mdc-menu-item-height: 40px;
 	--mdc-list-item-meta-size: 16px;
@@ -16,3 +23,16 @@
 		@include typography.typography-cat-shorthand('body-2');
 	}
 }
+
+@each $scope in $scopes {
+	::slotted(vwc-#{$scope}) {
+		border-radius: var(#{$vvd-list-shape});
+	}
+}
+
+@include shape-mixins.shape(
+	$shapes: (
+		rounded: 6px,
+	),
+	$default: ''
+);
