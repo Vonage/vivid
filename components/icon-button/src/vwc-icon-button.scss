@@ -1,4 +1,9 @@
+/* VARIABLES */
+$icon-button-icon-size-variable-name: --vvd-icon-button-icon-size;
+/*************/
+
 @use 'sass:map';
+@use '@vonage/vwc-icon/src/vwc-icon-variables' as icon-variables;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
@@ -12,8 +17,18 @@
 	$variables-scope-prefix: 'vvd-icon-button'
 );
 
+@include shape-mixins.shape(
+	$shapes: (
+		rounded: 6px,
+		circled: 50%,
+	)
+);
+
+@include layout-mixins.layout();
+
 @include color-connotation.connotations-main;
 @include color-connotation.connotations-main-default(primary);
+
 $block-sizes: (
 	'dense': 32px,
 	'normal': 40px,
@@ -37,13 +52,10 @@ $vvd-icon-button-block-size: --vvd-icon-button-block-size;
 		background-color: var(--vvd-icon-button-background-color);
 		border-radius: var(--vvd-icon-button-shape);
 		color: var(--vvd-icon-button-color);
+		font-size: inherit;
 		&:disabled {
 			color: var(#{vvd-formfield.$formfield-disabled-ink});
 		}
-	}
-
-	.vvd-icon {
-		--icon-size: 20px;
 	}
 }
 
@@ -60,27 +72,22 @@ $vvd-icon-button-block-size: --vvd-icon-button-block-size;
 }
 
 :host([dense]) {
-
 	--mdc-icon-button-size: var(#{$vvd-icon-button-block-size}, #{map.get($block-sizes, 'dense')});
-
-	.vvd-icon {
-		--icon-size: 16px;
-	}
 }
 
 :host([enlarged]) {
 	--mdc-icon-button-size: var(#{$vvd-icon-button-block-size}, #{map.get($block-sizes, 'enlarged')});
+}
 
-	.vvd-icon {
-		--icon-size: 24px;
+vwc-icon {
+	:host & {
+		#{icon-variables.$icon-size-variable-name}: var(#{$icon-button-icon-size-variable-name}, 20px);
+	}
+	:host([dense]) & {
+		#{icon-variables.$icon-size-variable-name}: var(#{$icon-button-icon-size-variable-name}, 16px);
+	}
+	:host([enlarged]) & {
+		#{icon-variables.$icon-size-variable-name}: var(#{$icon-button-icon-size-variable-name}, 24px);
 	}
 }
 
-@include shape-mixins.shape(
-	$shapes: (
-		rounded: 6px,
-		circled: 50%,
-	)
-);
-
-@include layout-mixins.layout();
