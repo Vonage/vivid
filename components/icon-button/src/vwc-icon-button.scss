@@ -1,3 +1,7 @@
+/* VARIABLES */
+$icon-button-icon-size-variable-name: --vvd-icon-button-icon-size;
+/*************/
+
 @use 'sass:map';
 @use './vwc-icon-button-variables' as icon-button-variables;
 @use '@vonage/vwc-icon/src/vwc-icon-variables' as icon-variables;
