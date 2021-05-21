@@ -14,7 +14,10 @@
 ```
 
 ```html
-<label class="mdc-text-field mdc-text-field--no-label mdc-text-field--outlined">
+<label
+  class="mdc-text-field mdc-text-field--no-label mdc-text-field--outlined"
+  style=""
+>
   <vwc-notched-outline class="mdc-notched-outline vvd-notch">
   </vwc-notched-outline>
   <div class="mdc-text-field__input">
