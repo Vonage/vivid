@@ -1,12 +1,11 @@
 {
-	"name": "@vonage/vwc-expansion-panel",
+	"name": "@vonage/vwc-accordion",
 	"version": "2.8.0",
-	"description": "expansion panel component",
-	"author": "yinonov <yinon@hotmail.com>",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/expansion-panel#readme",
+	"description": "accordion component",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/accordion#readme",
 	"license": "ISC",
-	"main": "vwc-expansion-panel.js",
-	"module": "vwc-expansion-panel.js",
+	"main": "vwc-accordion.js",
+	"module": "vwc-accordion.js",
 	"files": [
 		"src",
 		"*.js",
@@ -16,7 +15,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/expansion-panel"
+		"directory": "components/accordion"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1",
@@ -28,16 +27,12 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@material/mwc-base": "^0.21.0",
-		"@material/mwc-ripple": "^0.21.0",
 		"@vonage/vvd-core": "2.8.0",
-		"@vonage/vwc-icon": "2.8.0",
+		"@vonage/vwc-expansion-panel": "2.8.0",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.3"
 	},
 	"devDependencies": {
-		"@vonage/vvd-design-tokens": "2.8.0",
-		"@vonage/vvd-typography": "2.8.0",
 		"@vonage/vvd-umbrella": "2.8.0",
 		"typescript": "^4.1.3"
 	}

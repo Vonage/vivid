@@ -9,21 +9,21 @@
     </mwc-ripple>
     <span class="leading-icon">
       <slot name="icon">
-        <vwc-icon
-          class="toggle-open"
-          type="plus-solid"
-        >
-        </vwc-icon>
-        <vwc-icon
-          class="toggle-close"
-          type="minus-solid"
-        >
-        </vwc-icon>
       </slot>
     </span>
     click me
     <span class="trailing-icon">
       <slot name="trailingIcon">
+        <vwc-icon
+          class="toggle-open"
+          type="chevron-down-solid"
+        >
+        </vwc-icon>
+        <vwc-icon
+          class="toggle-close"
+          type="chevron-up-solid"
+        >
+        </vwc-icon>
       </slot>
     </span>
   </div>
