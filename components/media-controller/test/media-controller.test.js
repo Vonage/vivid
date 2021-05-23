@@ -1,6 +1,6 @@
 import '../vwc-media-controller';
 import kefir from 'kefir';
-import { textToDomToParent } from '../../../test/test-helpers';
+import { textToDomToParent, waitInterval } from '../../../test/test-helpers';
 
 const CENTER_Y = 8,
 	TRACK_X = 37,
@@ -18,18 +18,28 @@ const setStyle = (el, style = {}) => {
 };
 
 const simulateMouseFactory = ({ x: baseX = 0, y: baseY = 0 }) => {
-	let findTarget = (root = document, x, y) => {
-		let target = root.elementFromPoint(x, y);
-		return target && target.shadowRoot
-			? findTarget(target.shadowRoot, x, y)
-			: target || root;
+	const findTarget = function (x, y) {
+		const
+			scannedRoots = new Set(),
+			scannedEls = new Set(),
+			gatherEls = (root) => {
+				scannedRoots.add(root);
+				const els = [...root.elementsFromPoint(x, y)];
+				els.forEach(el => scannedEls.add(el));
+				els
+					.filter(el => el.shadowRoot && !scannedRoots.has(el.shadowRoot))
+					.forEach(el => gatherEls(el.shadowRoot));
+			};
+
+		gatherEls(document, x, y);
+		return [...scannedEls.values()].reverse().find(el => !el.shadowRoot);
 	};
 
 	return (x, y, eventType, options = { bubbles: true, composed: true }) => {
 		let targetX = baseX + x,
 			targetY = baseY + y;
 
-		findTarget(document, targetX, targetY).dispatchEvent(
+		findTarget(targetX, targetY).dispatchEvent(
 			new MouseEvent(eventType, {
 				clientX: targetX,
 				clientY: targetY,
@@ -59,7 +69,7 @@ describe('vwc-media-controller', function () {
 			componentWidth,
 			simulateMouse;
 
-		beforeEach(function () {
+		beforeEach(async function () {
 			addedElements = textToDomToParent(
 				'<vwc-media-controller></vwc-media-controller>'
 			);
@@ -74,6 +84,7 @@ describe('vwc-media-controller', function () {
 			componentX = rect.x;
 			componentY = rect.y;
 			componentWidth = rect.width;
+			await waitInterval(100);
 			simulateMouse = simulateMouseFactory({ x: componentX, y: componentY });
 		});
 

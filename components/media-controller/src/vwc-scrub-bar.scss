@@ -1,0 +1,62 @@
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+
+:host {
+	$button-size: 16px;
+	display: block;
+	box-sizing: border-box;
+
+	*:focus:not(:focus-visible) {
+		outline: none;
+	}
+
+	:focus-visible {
+		outline: var(#{scheme-variables.$vvd-color-on-base}) solid 2px;
+	}
+
+	> div {
+		$scrub-size: 12px;
+		$basic: #b779ff;
+		$track: #e1e2e6;
+		display: flex;
+		align-items: center;
+		padding: 5px;
+
+		> div {
+			position: relative;
+			width: 100%;
+			min-width: 5rem;
+			height: 3px;
+			box-sizing: border-box;
+			cursor: pointer;
+			user-select: none;
+
+			> button {
+				position: absolute;
+				top: 50%;
+				left: 0;
+				width: $scrub-size;
+				height: $scrub-size;
+				padding: 0;
+				border: 0 none;
+				background-color: var(--vvd-color-connotation, $basic);
+				border-radius: $scrub-size/2;
+				box-shadow: 0 0 0 0 #0000;
+				cursor: pointer;
+				-webkit-tap-highlight-color: transparent;
+				transform: translate(-50%, -50%);
+				transform-origin: center;
+				@media screen and (prefers-reduced-motion: reduce) {
+					transition: background-color 0.2s, box-shadow 200ms, border-radius 0.2s;
+				}
+			}
+		}
+	}
+
+	> .scrub {
+		> div {
+			> button {
+				box-shadow: 0 0 0 15px #00000017;
+			}
+		}
+	}
+}
