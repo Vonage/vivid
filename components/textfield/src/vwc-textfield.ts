@@ -10,17 +10,16 @@ import {
 	TemplateResult,
 	PropertyValues,
 	queryAssignedNodes,
-	internalProperty
+	query,
 } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
-import { styleMap } from 'lit-html/directives/style-map';
 
 import { TextField as MWCTextField } from '@material/mwc-textfield';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 import { style as vwcTextFieldStyle } from './vwc-textfield.css';
 import { style as mwcTextFieldStyle } from '@material/mwc-textfield/mwc-textfield-css.js';
 import { Shape } from '@vonage/vvd-foundation/constants';
-import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
+import { debounced, handleAutofocus } from '@vonage/vvd-foundation/general-utils';
 export { TextFieldType } from '@material/mwc-textfield';
 
 export const COMPONENT_NAME = 'vwc-textfield';
@@ -56,11 +55,12 @@ export class VWCTextField extends MWCTextField {
 	@property({ type: String, reflect: true, converter: v => v || ' ' })
 	placeholder = ' ';
 
+  @query('.mdc-text-field__input') protected inputElementWrapper!: HTMLInputElement;
+
 	@queryAssignedNodes('action', true, VALID_BUTTON_ELEMENTS.join(', '))
 	private actionButtons?: NodeListOf<HTMLElement>;
 
-	@internalProperty()
-	private actionIconButtonsCount?: number;
+	private inputResizeObserver?: ResizeObserver;
 
 	constructor() {
 		super();
@@ -100,22 +100,50 @@ export class VWCTextField extends MWCTextField {
 			?.classList.add('vvd-notch');
 		this.floatLabel();
 		handleAutofocus(this);
+		this.observeInputSize();
 	}
 
-	updated(changedProperties: PropertyValues): void {
-		super.updated(changedProperties);
+	disconnectedCallback(): void {
+		super.disconnectedCallback();
+		this.inputResizeObserver?.disconnect();
+	}
+
+	updated(changes: PropertyValues): void {
+		super.updated(changes);
 		if (this.shape === 'pill') {
 			this.dense = true;
 		}
-		if (changedProperties.has('disabled')) {
-			this.setActionNodesDisabledState();
+		if (
+			changes.has('disabled') ||
+			changes.has('shape') ||
+			changes.has('dense')
+		) {
+			this.enforcePropsOnActionNodes();
 		}
+	}
+
+	@debounced()
+	private syncInputSize() {
+		const { width: hostWidth, left: hostLeft } = this.getBoundingClientRect();
+		const { width: wrapperWidth, left: wrapperLeft } = this.inputElementWrapper.getBoundingClientRect();
+		const paddingLeft = wrapperLeft - hostLeft;
+		const paddingRight = hostWidth - wrapperWidth - paddingLeft;
+		requestAnimationFrame(() => {
+			this.formElement.style.paddingLeft = `${paddingLeft}px`;
+			this.formElement.style.paddingRight = `${paddingRight}px`;
+		});
+	}
+
+	protected observeInputSize(): void {
+		// eslint-disable-next-line compat/compat
+		this.inputResizeObserver = new ResizeObserver(() => {
+			this.syncInputSize();
+		});
+		this.inputResizeObserver.observe(this.inputElementWrapper);
 	}
 
 	protected renderInput(shouldRenderHelperText: boolean): TemplateResult {
 		this.updateInputElement(shouldRenderHelperText);
-		// @gullerya is .mdc-text-field__input still relevant?
-		// if should be removed, please follow reference in textfield style
 		return html`
 			<div class="mdc-text-field__input"></div>
 			<slot name="${INPUT_ELEMENT_SLOT_NAME}"></slot>
@@ -243,23 +271,26 @@ export class VWCTextField extends MWCTextField {
 		}
 	}
 
-	protected setActionNodesDisabledState(): void {
+	protected enforcePropsOnActionNodes(): void {
 		const buttons = Array.from(this.actionButtons || []);
-		buttons.forEach(button => button.toggleAttribute('disabled', this.disabled));
-	}
 
-	private _onActionSlotchange(): void {
-		this.actionIconButtonsCount = this.actionButtons?.length;
-		this.setActionNodesDisabledState();
+		buttons.forEach((button) => {
+			button.toggleAttribute('disabled', this.disabled);
+			button.toggleAttribute('dense', this.dense);
+
+			const buttonShape = this.shape == 'pill'
+				? 'circled'
+				: this.shape;
+			if (buttonShape) {
+				button.setAttribute('shape', buttonShape);
+			} else {
+				button.removeAttribute('shape');
+			}
+		});
 	}
 
 	/** @soyTemplate */
 	render(): TemplateResult {
-		const labelStyles = {
-			'--vvd-textfield-action-inline-size': this.actionIconButtonsCount
-				? `calc(${this.actionIconButtonsCount} * var(--vvd-textfield-block-size))`
-				: ''
-		};
 		const shouldRenderCharCounter = this.charCounter && this.maxLength !== -1;
 		const shouldRenderHelperText =
 				!!this.helper || !!this.validationMessage || shouldRenderCharCounter;
@@ -273,11 +304,11 @@ export class VWCTextField extends MWCTextField {
 			'mdc-text-field--with-leading-icon': this.icon,
 			'mdc-text-field--with-trailing-icon': this.iconTrailing,
 			'mdc-text-field--end-aligned': this.endAligned,
+			'vvd-text-field--with-action': Boolean(this.actionButtons?.length),
 		};
 
 		return html`
-			<label class="mdc-text-field ${classMap(classes)}"
-				style="${styleMap(labelStyles)}">
+			<label class="mdc-text-field ${classMap(classes)}">
 				${this.renderRipple()}
 				${this.outlined ? this.renderOutline() : this.renderLabel()}
 				${this.renderLeadingIcon()}
@@ -285,7 +316,7 @@ export class VWCTextField extends MWCTextField {
 				${this.renderInput(shouldRenderHelperText)}
 				${this.renderSuffix()}
 				${this.renderTrailingIcon()}
-				<slot name="action" @slotchange="${this._onActionSlotchange}"></slot>
+				<slot name="action" @slotchange="${this.enforcePropsOnActionNodes}"></slot>
 				${this.renderLineRipple()}
 			</label>
 			${this.renderHelperText(shouldRenderHelperText)}

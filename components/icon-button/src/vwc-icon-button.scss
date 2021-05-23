@@ -73,12 +73,10 @@ $block-sizes: (
 
 :host([dense]) {
 	--mdc-icon-button-size: var(#{icon-button-variables.$icon-button-block-size}, #{map.get($block-sizes, 'dense')});
-	font-size: 16px;
 }
 
 :host([enlarged]) {
 	--mdc-icon-button-size: var(#{icon-button-variables.$icon-button-block-size}, #{map.get($block-sizes, 'enlarged')});
-	font-size: 24px;
 }
 
 vwc-icon {

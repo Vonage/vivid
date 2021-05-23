@@ -1,7 +1,9 @@
+@use 'sass:map';
 @forward './vwc-textfield-coupling';
 @forward './vwc-textfield-input';
 @forward './vwc-textfield-action';
 @use './vwc-textfield-variables' as textfield-variables;
+@use '@vonage/vwc-icon/src/vwc-icon-variables' as icon-variables;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
@@ -134,6 +136,12 @@
 		.mdc-floating-label {
 			left: 4px;
 		}
+		&.vvd-text-field--with-action {
+			&,
+			&.mdc-text-field--with-trailing-icon {
+				padding-inline-end: textfield-variables.$actions-gap;
+			}
+		}
 	}
 
 	&--invalid {
@@ -187,7 +195,8 @@
 		margin: 0 #{textfield-variables.$horizontal-gutter};
 
 		vwc-icon {
-			--icon-size: #{textfield-variables.$icon-size};
+			#{icon-variables.$icon-size-variable-name}: var(#{textfield-variables.$vvd-textfield-action-icon-size-variable-name},
+			#{map.get(textfield-variables.$icon-sizes, 'medium')});
 		}
 	}
 }
@@ -220,23 +229,4 @@ vwc-notched-outline {
 .mdc-text-field--with-leading-icon.mdc-text-field--outlined
 .mdc-floating-label {
 	left: 40px;
-}
-
-:host([outlined]) {
-	#{textfield-variables.$padding-inline-start}: max(
-		#{textfield-variables.$horizontal-gutter},
-		calc(var(#{textfield-variables.$vvd-textfield-shape}, 4px) + 4px)
-	);
-	#{textfield-variables.$padding-inline-end}: max(
-		#{textfield-variables.$horizontal-gutter},
-		var(#{textfield-variables.$vvd-textfield-shape}, 4px)
-	);
-}
-
-:host(:not([disabled])[icon]) {
-	#{textfield-variables.$padding-inline-start}: #{textfield-variables.$icon-gutter};
-}
-
-:host(:not([disabled])[icontrailing]) {
-	#{textfield-variables.$padding-inline-end}: #{textfield-variables.$icon-gutter};
 }

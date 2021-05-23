@@ -1,28 +1,29 @@
+@use 'sass:map';
 @use 'vwc-textfield-variables' as textfield-variables;
 @use '@vonage/vwc-icon-button/src/vwc-icon-button-variables' as icon-button-variables;
+@use '@vonage/vwc-icon/src/vwc-icon-variables' as icon-variables;
 
-$gutter: 10px;
+
 
 /* stylelint-disable selector-no-qualifying-type */
 slot[name="action"i]::slotted(vwc-icon-button) {
-	#{icon-button-variables.$icon-button-shape}: var(#{textfield-variables.$vvd-textfield-shape});
-	#{icon-button-variables.$icon-button-block-size}: calc(var(#{textfield-variables.$vvd-textfield-size-block}) - #{$gutter});
+	// #{icon-button-variables.$icon-button-shape}: var(#{textfield-variables.$vvd-textfield-shape});
+	// #{icon-button-variables.$icon-button-block-size}: calc(var(#{textfield-variables.$vvd-textfield-size-block}) - #{$actions-gap * 2});
 	align-self: center;
+	margin-inline-start: textfield-variables.$actions-gap;
 
 	:host(:not([dense])) & {
-		font-size: 20px;
+		#{icon-button-variables.$icon-button-icon-size-variable-name}:
+			var(#{textfield-variables.$vvd-textfield-action-icon-size-variable-name},
+			#{map.get(textfield-variables.$icon-sizes, 'medium')});
 	}
 
 	:host([dense]) & {
-		font-size: 16px;
+		#{icon-button-variables.$icon-button-icon-size-variable-name}:
+			var(#{textfield-variables.$vvd-textfield-action-icon-size-variable-name},
+			#{map.get(textfield-variables.$icon-sizes, 'small')});
 	}
 }
-
-slot[name="action"i]::slotted(vwc-icon-button:not(:first-child)) {
-	margin-inline-start: $gutter / 2;
-}
-
-:not(.mdc-text-field--outlined.mdc-text-field--with-trailing-icon) slot[name="action"i]::slotted(vwc-icon-button:last-of-type) {
-	margin-inline-end: calc(-1 * var(#{textfield-variables.$padding-inline-end}) + #{$gutter / 2});
-}
 /* stylelint-enable selector-no-qualifying-type */
+
+
