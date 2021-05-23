@@ -33,7 +33,7 @@
 				padding-inline: 16px;
 
 				> .icon {
-					--icon-size: 20px;
+					--icon-size: var(--vvd-banner-icon-size, 20px);
 					flex: 0 0 auto;
 					padding-inline-end: 15px;
 				}
