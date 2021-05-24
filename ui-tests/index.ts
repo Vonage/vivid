@@ -82,7 +82,10 @@ async function runImageComparison() {
 server.listen(3000, async () => {
 	console.log('Running at http://localhost:3000');
 
-	await runImageComparison();
-	server.close();
+	try {
+		await runImageComparison();
+	} finally {
+		server.close();
+	}
 });
 
