@@ -84,6 +84,9 @@ server.listen(3000, async () => {
 
 	try {
 		await runImageComparison();
+	} catch (e) {
+		console.error(e);
+		process.exitCode = 1;
 	} finally {
 		server.close();
 	}
