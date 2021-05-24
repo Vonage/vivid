@@ -275,7 +275,7 @@ jobs:
         run: yarn install
 
       - name: Install playwright deps
-        run: yarn playwright install-deps
+        run: yarn add playwright -D -W && yarn playwright install-deps
 
       - name: Cache build
         uses: actions/cache@v2
