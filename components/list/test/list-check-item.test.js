@@ -11,7 +11,7 @@ import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	assertListItemDimensions,
 	buildListOfNItems,
-} from './list-items-check-utils.test.js';
+} from './list-items-utils.test.js';
 
 chai.use(chaiDomDiff);
 
@@ -41,8 +41,8 @@ describe('check list item', () => {
 		});
 	});
 
-	describe('general styling', async () => {
-		it('should have correct dimensions', async () => {
+	describe('dimensions', () => {
+		it('should have correct dimensions (one line)', async () => {
 			const itemsNum = 4;
 			const [listOfItems] = addElements(
 				buildListOfNItems(itemsNum, VWC_CHECK_LIST_ITEM)
@@ -51,6 +51,20 @@ describe('check list item', () => {
 			assertListItemDimensions(listOfItems.children, itemsNum, 40);
 		});
 
+		it('should have correct dimensions (two lines)', async () => {
+			const itemsNum = 4;
+			const [listOfItems] = addElements(
+				buildListOfNItems(itemsNum, VWC_CHECK_LIST_ITEM)
+			);
+			for (let item of listOfItems.children) {
+				item.twoline = true;
+			}
+			await waitNextTask();
+			assertListItemDimensions(listOfItems.children, itemsNum, 72);
+		});
+	});
+
+	describe('general styling', async () => {
 		it('should have collectly positioned checkbox (right side, one line)', async () => {
 			const listItem = await prepareConfiguredItem(false, false);
 			const checkbox = listItem.shadowRoot.querySelector('mwc-checkbox');

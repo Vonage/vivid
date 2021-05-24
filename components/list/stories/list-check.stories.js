@@ -15,11 +15,19 @@ export const CheckList = () => html`
 	</style>
 
 	<vwc-list multi>
-		<vwc-check-list-item selected>Item 0</vwc-check-list-item>
-		<vwc-check-list-item>Item 1</vwc-check-list-item>
+		<vwc-check-list-item selected>
+			Item 0
+		</vwc-check-list-item>
+		<vwc-check-list-item>
+			Item 1
+		</vwc-check-list-item>
 		<li divider role="separator" padded></li>
-		<vwc-check-list-item left selected>Item 2 (left)</vwc-check-list-item>
-		<vwc-check-list-item left>Item 3 (left)</vwc-check-list-item>
+		<vwc-check-list-item left selected>
+			Item 2 (left)
+		</vwc-check-list-item>
+		<vwc-check-list-item left disabled>
+			Item 3 (left)
+		</vwc-check-list-item>
 	</vwc-list>`;
 
 export const CheckListTwoLines = () => html`
@@ -43,7 +51,7 @@ export const CheckListTwoLines = () => html`
 			Item 2 (left)
 			<span slot="secondary">Additional info</span>
 		</vwc-check-list-item>
-		<vwc-check-list-item left twoline>
+		<vwc-check-list-item left twoline disabled>
 			Item 3 (left)
 			<span slot="secondary">Additional info</span>
 		</vwc-check-list-item>
