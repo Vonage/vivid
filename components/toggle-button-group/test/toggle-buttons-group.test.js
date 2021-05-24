@@ -14,6 +14,10 @@ const COMPONENT_NAME = 'vwc-toggle-button-group';
 const SELECTED_EVENT_NAME = 'selected';
 
 describe('Toggle-buttons-group', () => {
+	function waitForSlotChange() {
+		return waitNextTask();
+	}
+
 	const buttonValues = [
 		Math.random()
 			.toString(),
@@ -282,10 +286,6 @@ describe('Toggle-buttons-group', () => {
 			await actualElement.updateComplete;
 		});
 
-		function waitForSlotChange() {
-			return waitNextTask();
-		}
-
 		it(`should listen to click event of dynamically assigned valid element`, async function () {
 			const element = document.createElement(VALID_BUTTON_ELEMENTS[0]);
 			element.setAttribute('value', '22');
@@ -437,7 +437,68 @@ describe('Toggle-buttons-group', () => {
 			const selectedButton = actualElement.children[0];
 			selectedButton.click();
 
-			expect(eventFired).to.equal(false);
+			expect(eventFired)
+				.to
+				.equal(false);
+		});
+	});
+
+	describe(`a11y`, function () {
+		async function createDisabledElement() {
+			const [actualElement] = (
+				textToDomToParent(`<${COMPONENT_NAME} disabled>
+<${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+</${COMPONENT_NAME}>`)
+			);
+			await actualElement.updateComplete;
+			return actualElement;
+		}
+
+		it(`should set 'disabled' property to dynamically added children`, async function () {
+			const actualElement = await createDisabledElement();
+			const element = document.createElement(VALID_BUTTON_ELEMENTS[0]);
+			actualElement.appendChild(element);
+			await waitForSlotChange();
+			expect(element.hasAttribute('disabled')).to.equal(true);
+		});
+
+		it(`should set 'disabled' property on all children when disabled`, async function () {
+			async function enableElement() {
+				actualElement.removeAttribute('disabled');
+				await actualElement.updateComplete;
+			}
+
+			async function disableElement() {
+				actualElement.setAttribute('disabled', '');
+				await actualElement.updateComplete;
+			}
+
+			function checkIfChildrenDisabled() {
+				return [...actualElement.children].reduce((areAllDisabled, childNode) => (areAllDisabled && childNode.hasAttribute('disabled')), true);
+			}
+
+			const actualElement = await createDisabledElement();
+			const initializedWithDisabled = checkIfChildrenDisabled();
+
+			await enableElement();
+			const removedDisabledFromChildrenAfterEnable = !checkIfChildrenDisabled();
+
+			await disableElement();
+			const addDisabledDynamically = checkIfChildrenDisabled();
+
+			expect(initializedWithDisabled, `Children not disabled on initialization`)
+				.to
+				.equal(true);
+
+			expect(removedDisabledFromChildrenAfterEnable, `Children are still disabled after removing disabled property`)
+				.to
+				.equal(true);
+
+			expect(addDisabledDynamically, `Children not disabled after disabling the group`)
+				.to
+				.equal(true);
 		});
 	});
 });

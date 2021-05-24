@@ -44,7 +44,10 @@ export class VWCFilePicker extends LitElement {
 	tooManyFilesError = 'only one file allowed';
 
 	@property({ type: Boolean, reflect: true })
-	'drop-zone': true;
+	'drop-zone' = true;
+
+	@property({ type: Boolean, reflect: true, attribute: 'no-counter' })
+	noCounter = false;
 
 	setCustomValidity(message: string): void {
 		this.validationMessage = String(message);
@@ -116,7 +119,7 @@ export class VWCFilePicker extends LitElement {
 	}
 
 	private renderFilesCount(): TemplateResult {
-		if (this.filesCount) {
+		if (this.filesCount && !this.noCounter) {
 			return html`
 				<div class="files-count">
 					<vwc-badge connotation="alert" shape="pill">${this.filesCount}</vwc-badge>

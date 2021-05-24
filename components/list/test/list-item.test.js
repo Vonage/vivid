@@ -11,7 +11,7 @@ import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	assertListItemDimensions,
 	buildListOfNItems,
-} from './list-items-check-utils.test.js';
+} from './list-items-utils.test.js';
 
 chai.use(chaiDomDiff);
 
@@ -38,22 +38,26 @@ describe('list item', () => {
 		});
 	});
 
-	describe('sizing', () => {
-		let actualElements;
-		const itemsNum = 3;
-		beforeEach(async () => {
-			actualElements = addElement(buildListOfNItems(itemsNum, VWC_LIST_ITEM));
+	describe('dimensions', () => {
+		it('should have correct dimensions (one line)', async () => {
+			const itemsNum = 3;
+			const [listOfItems] = addElement(
+				buildListOfNItems(itemsNum, VWC_LIST_ITEM)
+			);
 			await waitNextTask();
+			assertListItemDimensions(listOfItems.children, itemsNum, 40);
 		});
 
-		it('should have correct size by default', async () => {
-			assertListItemDimensions(actualElements[0].children, itemsNum, 40);
-		});
-
-		it('should have correct size when twoline', async () => {
-			for (let item of actualElements[0].children) item.twoline = true;
+		it('should have correct dimensions (two lines)', async () => {
+			const itemsNum = 3;
+			const [listOfItems] = addElement(
+				buildListOfNItems(itemsNum, VWC_LIST_ITEM)
+			);
+			for (let item of listOfItems.children) {
+				item.twoline = true;
+			}
 			await waitNextTask();
-			assertListItemDimensions(actualElements[0].children, itemsNum, 64);
+			assertListItemDimensions(listOfItems.children, itemsNum, 64);
 		});
 	});
 
@@ -98,28 +102,6 @@ describe('list item', () => {
 			actualElement.shape = 'rounded';
 			await waitNextTask();
 			assertComputedStyle(actualElement, shapeStyles('rounded'));
-		});
-	});
-
-	describe(`performance issue`, function () {
-		function createElement(index) {
-			return `<vwc-list-item value=${index}>Item ${index}</vwc-list-item>`;
-		}
-		const selectItems = new Array(300)
-			.fill(0)
-			.map((_, index) => index)
-			.reduce((last, next) => (last += createElement(next)), '');
-
-		it(`should not take more than 50ms to remove the list from the DOM`, async function () {
-			const [actualElement] = addElement(
-				textToDomToParent(`<vwc-list>${selectItems}</vwc-list>`)
-			);
-			await waitNextTask();
-			const startTime = performance.now();
-			actualElement.remove();
-			const endTime = performance.now();
-
-			expect(endTime - startTime).to.be.lessThan(50);
 		});
 	});
 });

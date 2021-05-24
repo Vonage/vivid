@@ -1,3 +1,5 @@
+@use './vwc-expansion-panel-variables' as expansion-panel-variables;
+@use '@vonage/vwc-icon/src/vwc-icon-variables' as icon-variables;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-typography/scss/typography';
 
@@ -40,19 +42,19 @@
 	.trailing-icon {
 		display: flex;
 
-		.vvd-icon {
-			--icon-size: 16px;
+		vwc-icon {
+			#{icon-variables.$icon-size-variable-name}: var(#{expansion-panel-variables.$expansion-panel-icon-size-variable-name}, 16px);
 		}
 	}
 
-	.leading-icon .vvd-icon {
+	.leading-icon vwc-icon {
 		margin-inline-end: 16px;
 	}
 
 	.trailing-icon {
 		margin-left: auto;
 
-		.vvd-icon {
+		vwc-icon {
 			margin-inline-start: 16px;
 		}
 	}
@@ -60,18 +62,19 @@
 
 .expansion-panel-body {
 	@include typography.typography-cat-shorthand('body-2');
-	padding: 8px 16px 24px 48px;
+	padding: 8px 32px 24px 16px;
 }
 
-:host([trailingToggle]) {
+:host(:not([icon=''])),
+:host([leadingToggle]) {
 	.expansion-panel-body {
-		padding-right: 32px;
+		padding-left: 48px;
 	}
 }
 
-:host([icon=''][trailingToggle]) {
+:host([leadingToggle]) {
 	.expansion-panel-body {
-		padding-left: 16px;
+		padding-right: 16px;
 	}
 }
 
