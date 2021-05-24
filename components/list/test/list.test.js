@@ -59,6 +59,33 @@ describe('list', () => {
 		}
 	});
 
+	describe('connotation', () => {
+		let list,
+			ripple;
+		beforeEach(async () => {
+			[list] = addElement(
+				textToDomToParent(`
+					<vwc-list>
+						<vwc-list-item activated>Item 1</vwc-list-item>
+					</vwc-list>
+				`)
+			);
+			await waitNextTask();
+			const listItem = list.querySelector('vwc-list-item');
+			ripple = listItem.shadowRoot.querySelector('.fake-activated-ripple');
+		});
+
+		it('should proxy primary connotation to activated list-item by default', async () => {
+			assertComputedStyle(ripple, { backgroundColor: 'rgb(0,0,0)' }, ':before');
+		});
+
+		it('should proxy cta connotation to activated list-item when connotation set to cta', async () => {
+			list.connotation = 'cta';
+			await waitNextTask();
+			assertComputedStyle(ripple, { backgroundColor: 'rgb(153,65,255)' }, ':before');
+		});
+	});
+
 	describe('shape', () => {
 		let list,
 			listItem;
