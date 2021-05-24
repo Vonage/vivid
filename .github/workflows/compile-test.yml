@@ -257,9 +257,6 @@ jobs:
       - name: Install yarn
         run: npm install -g yarn
 
-      - name: Install playwright
-        run: npx playwright install-deps
-
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
