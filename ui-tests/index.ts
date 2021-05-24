@@ -19,7 +19,7 @@ const server = http.createServer((request, response) => {
 
 async function compareToSnapshot(page: Page, snapshotPath: string) {
 	const tmpScreenshotPath = './ui-tests/tmpScreenshot.png';
-	const tmpSnapshot = await takeSnapshot(page, SERVER_URL, tmpScreenshotPath);
+	await takeSnapshot(page, SERVER_URL, tmpScreenshotPath);
 	return compareImages(snapshotPath, tmpScreenshotPath);
 }
 
