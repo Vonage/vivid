@@ -239,7 +239,7 @@ jobs:
 
   test-UI:
     needs: cache-yarn-and-build
-    runs-on: ubuntu-18.04
+    runs-on: macOS-latest
     env:
       ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
