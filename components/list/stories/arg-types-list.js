@@ -1,6 +1,14 @@
-import { Shape } from '@vonage/vvd-foundation/constants';
+import { Connotation, Shape } from '@vonage/vvd-foundation/constants';
 
 export const argTypes = {
+	connotation: {
+		control: {
+			type: 'select',
+			options: Object.values(Connotation).filter(c => [
+				Connotation.Primary, Connotation.CTA
+			].includes(c)),
+		}
+	},
 	shape: {
 		control: {
 			type: 'select',

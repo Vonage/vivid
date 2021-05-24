@@ -1,14 +1,4 @@
-import { Connotation } from '@vonage/vvd-foundation/constants';
-	
 export const argTypes = {
-	connotation: {
-		control: {
-			type: 'select',
-			options: Object.values(Connotation).filter(c => [
-				Connotation.Primary, Connotation.CTA
-			].includes(c)),
-		}
-	},
 	twoline: {
 		control: {
 			type: 'inline-radio',

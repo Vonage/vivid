@@ -5,7 +5,7 @@ import { List as MWCList } from '@material/mwc-list/mwc-list';
 import { style as vwcListStyle } from './vwc-list.css.js';
 import { style as mwcListStyle } from '@material/mwc-list/mwc-list-css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
-import { Shape } from '@vonage/vvd-foundation/constants';
+import { Connotation, Shape } from '@vonage/vvd-foundation/constants';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -16,6 +16,12 @@ declare global {
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 MWCList.styles = [styleCoupling, mwcListStyle, vwcListStyle];
+
+type ListItemConnotation = Extract<
+Connotation,
+| Connotation.Primary
+| Connotation.CTA
+>;
 
 type ListItemShape = Extract<Shape, Shape.Rounded>;
 
@@ -28,6 +34,9 @@ export class VWCList extends MWCList {
 	layout() {
 		super.layout();
 	}
+
+	@property({ type: String, reflect: true })
+	connotation?: ListItemConnotation;
 
 	@property({ type: String, reflect: true })
 	shape?: ListItemShape;

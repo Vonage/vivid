@@ -1,5 +1,8 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+@use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation with (
+	$connotations-set: primary cta
+);
 
 $vvd-list-shape: --vvd-list-shape;
 $scopes: list-item check-list-item radio-list-item;
@@ -7,6 +10,9 @@ $scopes: list-item check-list-item radio-list-item;
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' with (
 	$variable-name: #{$vvd-list-shape}
 );
+
+@include color-connotation.connotations-main;
+@include color-connotation.connotations-main-default(primary);
 
 :host {
 	--mdc-menu-item-height: 40px;
@@ -28,6 +34,16 @@ $scopes: list-item check-list-item radio-list-item;
 	::slotted(vwc-#{$scope}) {
 		border-radius: var(#{$vvd-list-shape});
 	}
+}
+
+::slotted(#{vwc-list-item}[activated]) {
+	--mdc-theme-text-icon-on-background: var(#{color-connotation.$vvd-color-on-connotation});
+	--mdc-theme-text-hint-on-background: var(#{color-connotation.$vvd-color-on-connotation});
+	--mdc-ripple-color: var(#{color-connotation.$vvd-color-on-connotation});
+
+	--vvd-list-item-activated-color: var(#{color-connotation.$vvd-color-on-connotation});
+	--vvd-list-item-activated-ripple-background: var(#{color-connotation.$vvd-color-connotation});
+	--vvd-list-item-activated-ripple-color: var(#{color-connotation.$vvd-color-connotation});
 }
 
 @include shape-mixins.shape(

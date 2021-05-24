@@ -14,7 +14,6 @@ export default {
 
 const renderList = args => html`
 	<style>
-		.box,
 		vwc-list {
 			width: 240px;
 		}
@@ -28,6 +27,12 @@ const renderList = args => html`
 	</vwc-list>`;
 
 export const Basic = args => html`
+	<style>
+		.box {
+			width: 240px;
+		}
+	</style>
+
 	<h4>Main</h4>
 	<div class="box">
 		${renderList(args)}
@@ -39,6 +44,12 @@ export const Basic = args => html`
 `;
 
 export const metaIcon = args => html`
+	<style>
+		vwc-list {
+			width: 240px;
+		}
+	</style>
+
 	<vwc-list ...=${spread(args)}>
 		<vwc-list-item hasMeta>
 			<span>Item A</span>
@@ -61,3 +72,18 @@ export const metaIcon = args => html`
 
 export const Shape = renderList.bind({});
 Shape.args = { shape: 'rounded' };
+
+export const Connotation = args => html`
+	<style>
+		vwc-list {
+			width: 240px;
+		}
+	</style>
+
+	<vwc-list ...=${spread(args)}>
+		<vwc-list-item>Item 0</vwc-list-item>
+		<vwc-list-item activated>Item 1 (Activated)</vwc-list-item>
+		<vwc-list-item>Item 2</vwc-list-item>
+	</vwc-list>
+`;
+Connotation.args = { connotation: 'cta', shape: 'rounded' };
