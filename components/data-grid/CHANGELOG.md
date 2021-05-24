@@ -1,3 +1,12 @@
+# [2.9.0](https://github.com/vonage/vivid/compare/v2.8.0...v2.9.0) (2021-05-24)
+
+
+### Bug Fixes
+
+* **vwc-data-grid:** viv 565 issue 827 fixing the grid engine height ([#852](https://github.com/vonage/vivid/issues/852)) ([25bdacd](https://github.com/vonage/vivid/commit/25bdacd8473dd2e5e6d225444da03cb4eaa56d68)), closes [#827](https://github.com/vonage/vivid/issues/827)
+
+
+
 # [2.8.0](https://github.com/vonage/vivid/compare/v2.7.0...v2.8.0) (2021-05-20)
 
 

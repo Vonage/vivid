@@ -52,8 +52,25 @@ describe('list', () => {
 					);
 					await waitNextTask();
 					const listItem = list.children[0];
-					expect(listItem).to.exist;
+					expect(listItem).exist;
 					assertComputedStyle(listItem, await getTypographyStyle('body-2'));
+
+					if (listItem.shadowRoot) {
+						const listTextBase = listItem.shadowRoot.querySelector('.mdc-deprecated-list-item__text');
+						expect(listTextBase).exist;
+						assertComputedStyle(listTextBase, await getTypographyStyle('body-2'));
+					}
+
+					if ('twoline' in listItem) {
+						listItem.twoline = true;
+						await listItem.updateComplete;
+						const listTextPrim = listItem.shadowRoot.querySelector('.mdc-deprecated-list-item__primary-text');
+						expect(listTextPrim).exist;
+						assertComputedStyle(listTextPrim, await getTypographyStyle('body-2-bold'));
+						const listTextSecond = listItem.shadowRoot.querySelector('.mdc-deprecated-list-item__secondary-text');
+						expect(listTextSecond).exist;
+						assertComputedStyle(listTextSecond, await getTypographyStyle('caption'));
+					}
 				});
 			}
 		}
