@@ -19,7 +19,7 @@ export async function createElementVariations(wrapper) {
 			const formerString = typeof htmlString === 'string' ?
 				`${htmlString}<br/>` : '';
 
-			return `${formerString} <h2>${currStory}</h2>${tmpWrapper.innerHTML}`;
+			return `${formerString} ${tmpWrapper.innerHTML}`;
 		}, '');
 
 	wrapper.appendChild(textElementWrapper);
