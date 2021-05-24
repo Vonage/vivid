@@ -4,6 +4,7 @@
 	$connotations-set: success info alert announcement warning
 );
 @use '@vonage/vvd-typography/scss/typography';
+@use './vwc-banner-variables.scss' as banner-variables;
 
 @include color-connotation.connotations-main;
 @include color-connotation.connotations-main-default(info);
@@ -14,7 +15,7 @@
 		/* stylelint-enable */
 		overflow: hidden;
 		max-height: 0;
-		transition: max-height var(--transition-delay, 200ms);
+		transition: max-height var(#{banner-variables.$banner-transition-delay}, 200ms);
 
 		> .header {
 			@include typography.typography-cat-shorthand('body-2-bold');
@@ -33,7 +34,7 @@
 				padding-inline: 16px;
 
 				> .icon {
-					--icon-size: var(--vvd-banner-icon-size, 20px);
+					--icon-size: var(#{banner-variables.$banner-icon-size}, 20px);
 					flex: 0 0 auto;
 					padding-inline-end: 15px;
 				}
