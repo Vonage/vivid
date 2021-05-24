@@ -276,6 +276,12 @@ jobs:
       - name: Test components
         run: yarn ui-tests
 
+      - name: Upload chrome coverage as an artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: snapshot
+          path: ./ui-tests/tmpScreenshot.png
+
   code-standards:
     needs: cache-yarn-and-build
     runs-on: ubuntu-20.04
