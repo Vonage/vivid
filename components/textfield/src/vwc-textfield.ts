@@ -11,6 +11,7 @@ import {
 	PropertyValues,
 	queryAssignedNodes,
 	query,
+	internalProperty
 } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
 
@@ -54,6 +55,9 @@ export class VWCTextField extends MWCTextField {
 
 	@property({ type: String, reflect: true, converter: v => v || ' ' })
 	placeholder = ' ';
+
+	@internalProperty()
+	private hasActionButtons = false;
 
   @query('.mdc-text-field__input') protected inputElementWrapper!: HTMLInputElement;
 
@@ -271,6 +275,11 @@ export class VWCTextField extends MWCTextField {
 		}
 	}
 
+	protected onActionSlotChange(): void {
+		this.hasActionButtons = Boolean(this.actionButtons?.length);
+		this.enforcePropsOnActionNodes();
+	}
+
 	protected enforcePropsOnActionNodes(): void {
 		const buttons = Array.from(this.actionButtons || []);
 
@@ -304,7 +313,7 @@ export class VWCTextField extends MWCTextField {
 			'mdc-text-field--with-leading-icon': this.icon,
 			'mdc-text-field--with-trailing-icon': this.iconTrailing,
 			'mdc-text-field--end-aligned': this.endAligned,
-			'vvd-text-field--with-action': Boolean(this.actionButtons?.length),
+			'vvd-text-field--with-action': this.hasActionButtons,
 		};
 
 		return html`
@@ -316,7 +325,7 @@ export class VWCTextField extends MWCTextField {
 				${this.renderInput(shouldRenderHelperText)}
 				${this.renderSuffix()}
 				${this.renderTrailingIcon()}
-				<slot name="action" @slotchange="${this.enforcePropsOnActionNodes}"></slot>
+				<slot name="action" @slotchange="${this.onActionSlotChange}"></slot>
 				${this.renderLineRipple()}
 			</label>
 			${this.renderHelperText(shouldRenderHelperText)}
