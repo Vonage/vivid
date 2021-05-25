@@ -1,10 +1,12 @@
 import '@vonage/vwc-list';
 import '@vonage/vwc-list/vwc-list-item';
 import {
+	assertComputedStyle,
 	textToDomToParent,
 	waitNextTask,
 	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
+import { borderRadiusStyles, shapeStyles } from '../../../test/style-utils';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	assertListItemDimensions,

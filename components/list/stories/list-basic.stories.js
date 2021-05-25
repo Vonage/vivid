@@ -13,12 +13,6 @@ export default {
 };
 
 const renderList = args => html`
-	<style>
-		vwc-list {
-			width: 240px;
-		}
-	</style>
-
 	<vwc-list ...=${spread(args)}>
 		<vwc-list-item>Item 0</vwc-list-item>
 		<vwc-list-item>Item 1</vwc-list-item>
@@ -69,21 +63,3 @@ export const metaIcon = args => html`
 		</vwc-list-item>
 	</vwc-list>
 `;
-
-export const Shape = renderList.bind({});
-Shape.args = { shape: 'rounded' };
-
-export const Connotation = args => html`
-	<style>
-		vwc-list {
-			width: 240px;
-		}
-	</style>
-
-	<vwc-list ...=${spread(args)}>
-		<vwc-list-item>Item 0</vwc-list-item>
-		<vwc-list-item activated>Item 1 (Activated)</vwc-list-item>
-		<vwc-list-item>Item 2</vwc-list-item>
-	</vwc-list>
-`;
-Connotation.args = { connotation: 'cta', shape: 'rounded' };

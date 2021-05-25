@@ -4,9 +4,9 @@ export const argTypes = {
 	connotation: {
 		control: {
 			type: 'select',
-			options: [...Object.values(Connotation).filter(c => [
+			options: Object.values(Connotation).filter(c => [
 				Connotation.Primary, Connotation.CTA
-			].includes(c)), undefined],
+			].includes(c)),
 		}
 	},
 	shape: {
@@ -18,43 +18,43 @@ export const argTypes = {
 	twoline: {
 		control: {
 			type: 'inline-radio',
-			options: { 'true': '', 'false': undefined }
+			options: { true: '', false: undefined }
 		}
 	},
 	disabled: {
 		control: {
 			type: 'inline-radio',
-			options: { 'true': '', 'false': undefined }
+			options: { true: '', false: undefined }
 		}
 	},
 	activated: {
 		control: {
 			type: 'inline-radio',
-			options: { 'true': '', 'false': undefined }
+			options: { true: '', false: undefined }
 		}
 	},
 	selected: {
 		control: {
 			type: 'inline-radio',
-			options: { 'true': '', 'false': undefined }
+			options: { true: '', false: undefined }
 		}
 	},
 	multipleGraphics: {
 		control: {
 			type: 'inline-radio',
-			options: { 'true': '', 'false': undefined }
+			options: { true: '', false: undefined }
 		}
 	},
 	hasMeta: {
 		control: {
 			type: 'inline-radio',
-			options: { 'true': '', 'false': undefined }
+			options: { true: '', false: undefined }
 		}
 	},
 	noninteractive: {
 		control: {
 			type: 'inline-radio',
-			options: { 'true': '', 'false': undefined }
+			options: { true: '', false: undefined }
 		}
 	},
 	ripple: { table: { disable: true } }

@@ -41,6 +41,17 @@ const Template = args => html`
 
 export const Basic = Template.bind({});
 
+export const Shape = Template.bind({});
+Shape.args = { shape: 'rounded' };
+
+export const Connotation = Template.bind({});
+Connotation.args = {
+	connotation: 'cta',
+	activated: '',
+	shape: 'rounded',
+	graphic: 'icon'
+};
+
 export const TwoLine = Template.bind({});
 TwoLine.args = { twoline: '', hasMeta: '' };
 

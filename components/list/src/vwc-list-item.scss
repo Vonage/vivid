@@ -2,10 +2,19 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
+@use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation with (
+	$connotations-set: primary cta
+);
+@use '@vonage/vvd-foundation/scss/mixins/shape-mixins' with (
+	$variable-name: --vvd-list-item-shape
+);
 
 $vvd-list-item-block-size: --vvd-list-item-block-size;
 $vvd-list-item-side-padding: --vvd-list-item-side-padding;
 $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
+
+@include color-connotation.connotations-main;
+@include color-connotation.connotations-main-default(primary);
 
 :host {
 	--mdc-list-side-padding: var(#{$vvd-list-item-side-padding});
@@ -23,8 +32,8 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 	@include vvd-formfield.coupling;
 
 	position: relative;
-
 	height: var(#{$vvd-list-item-block-size});
+	border-radius: var(--vvd-list-item-shape);
 
 	#{$vvd-list-item-block-size}: 40px;
 	#{$vvd-list-item-side-padding}: 24px;
@@ -32,9 +41,17 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 }
 
 :host([activated]) {
+	--mdc-theme-text-icon-on-background: var(
+		#{color-connotation.$vvd-color-on-connotation}
+	);
+	--mdc-theme-text-hint-on-background: var(
+		#{color-connotation.$vvd-color-on-connotation}
+	);
+	--mdc-ripple-color: var(#{color-connotation.$vvd-color-on-connotation});
+
 	@include typography.typography-cat-shorthand('body-2-bold');
 	z-index: 0;
-	color: var(--vvd-list-item-activated-color);
+	color: var(#{color-connotation.$vvd-color-on-connotation});
 
 	mwc-ripple,
 	.fake-activated-ripple {
@@ -43,12 +60,12 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 
 	.fake-activated-ripple {
 		--mdc-ripple-activated-opacity: 1;
-		--mdc-ripple-color: var(--vvd-list-item-activated-ripple-color);
+		--mdc-ripple-color: var(#{color-connotation.$vvd-color-connotation});
 	}
 
 	mwc-ripple {
 		--mdc-ripple-activated-opacity: 0;
-		background-color: var(--vvd-list-item-activated-ripple-background);
+		background-color: var(#{color-connotation.$vvd-color-connotation});
 	}
 }
 
@@ -91,3 +108,10 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 .mdc-deprecated-list-item__meta {
 	display: flex;
 }
+
+@include shape-mixins.shape(
+	$shapes: (
+		rounded: 6px,
+	),
+	$default: ''
+);
