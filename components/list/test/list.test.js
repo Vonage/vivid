@@ -6,7 +6,6 @@ import {
 	textToDomToParent,
 	waitNextTask,
 } from '../../../test/test-helpers';
-import { borderRadiusStyles, shapeStyles } from '../../../test/style-utils';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);

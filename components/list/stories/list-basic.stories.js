@@ -13,12 +13,6 @@ export default {
 };
 
 const renderList = args => html`
-	<style>
-		vwc-list {
-			width: 240px;
-		}
-	</style>
-
 	<vwc-list ...=${spread(args)}>
 		<vwc-list-item>Item 0</vwc-list-item>
 		<vwc-list-item>Item 1</vwc-list-item>
