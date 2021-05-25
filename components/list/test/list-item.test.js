@@ -81,4 +81,47 @@ describe('list item', () => {
 			expect(distanceBetweenLines).to.equal(4);
 		});
 	});
+
+	describe('connotation', () => {
+		let listItem,
+			ripple;
+		beforeEach(async () => {
+			[listItem] = addElement(
+				textToDomToParent(`<vwc-list-item activated>Item 1</vwc-list-item>`)
+			);
+			await waitNextTask();
+			ripple = listItem.shadowRoot.querySelector('.fake-activated-ripple');
+		});
+
+		it('should proxy primary connotation to activated list-item by default', async () => {
+			assertComputedStyle(ripple, { backgroundColor: 'rgb(0,0,0)' }, ':before');
+		});
+
+		it('should proxy cta connotation to activated list-item when connotation set to cta', async () => {
+			listItem.connotation = 'cta';
+			await waitNextTask();
+			assertComputedStyle(ripple, { backgroundColor: 'rgb(153,65,255)' }, ':before');
+		});
+	});
+
+	describe('shape', () => {
+		let actualElement;
+		beforeEach(async () => {
+			const addedElements = addElement(
+				textToDomToParent(`<${VWC_LIST_ITEM}>Item 0</${VWC_LIST_ITEM}>`)
+			);
+			actualElement = addedElements[0];
+			await waitNextTask();
+		});
+
+		it('should have no shape by default', async () => {
+			assertComputedStyle(actualElement, borderRadiusStyles('0px'));
+		});
+
+		it('should have rounded shape when shape set to rounded', async () => {
+			actualElement.shape = 'rounded';
+			await waitNextTask();
+			assertComputedStyle(actualElement, shapeStyles('rounded'));
+		});
+	});
 });
