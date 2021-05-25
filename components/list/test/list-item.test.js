@@ -1,6 +1,7 @@
 import '@vonage/vwc-list';
 import '@vonage/vwc-list/vwc-list-item';
 import {
+	assertComputedStyle,
 	textToDomToParent,
 	waitNextTask,
 	isolatedElementsCreation,

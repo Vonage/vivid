@@ -40,6 +40,9 @@ const Template = args => html`
 
 export const Basic = Template.bind({});
 
+export const Shape = Template.bind({});
+Shape.args = { shape: 'rounded' };
+
 export const Activated = Template.bind({});
 Activated.args = { activated: '', shape: 'rounded', graphic: 'icon' };
 
