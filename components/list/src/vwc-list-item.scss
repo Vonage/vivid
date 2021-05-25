@@ -1,3 +1,4 @@
+@forward './vwc-list-text-parts.scss';
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
@@ -92,30 +93,6 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 		margin-block-start: 10px;
 	}
 
-	.mdc-deprecated-list-item__primary-text {
-		@include typography.typography-cat-shorthand('body-2-bold');
-		margin-top: 12px;
-		margin-bottom: 4px;
-		// margin-block-end: 4px; // TODO uncomment with safari 13.1 test support
-		// margin-block-start: 12px; // TODO uncomment with safari 13.1 test support
-
-		&::before,
-		&::after {
-			display: none;
-		}
-	}
-
-	.mdc-deprecated-list-item__secondary-text {
-		@include typography.typography-cat-shorthand('caption');
-		margin-bottom: 12px;
-		// margin-block-end: 12px; // TODO uncomment with safari 13.1 test support
-		white-space: normal;
-
-		&::before {
-			display: none;
-		}
-	}
-
 	.mdc-deprecated-list-item__meta {
 		flex-shrink: 0;
 	}
@@ -127,10 +104,6 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 :host([disabled]) {
 	--mdc-theme-text-icon-on-background: var(#{vvd-formfield.$formfield-disabled-ink});
 	--mdc-theme-text-hint-on-background: var(#{vvd-formfield.$formfield-disabled-ink});
-
-	.mdc-deprecated-list-item__text {
-		color: var(#{vvd-formfield.$formfield-disabled-ink});
-	}
 }
 
 .mdc-deprecated-list-item__meta {

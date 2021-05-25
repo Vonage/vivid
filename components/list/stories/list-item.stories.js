@@ -30,7 +30,7 @@ const Template = args => html`
 			<vwc-icon slot="meta" type="info" size="small"></vwc-icon>
 			<vwc-icon slot="graphic" type="chat" size="small"></vwc-icon>
 		</vwc-list-item>
-		<vwc-list-item ...=${spread(args)}>
+		<vwc-list-item ...=${spread(args)} disabled>
 			Item C
 			<span slot="secondary">Secondary line</span>
 			<vwc-icon slot="meta" type="info" size="small"></vwc-icon>
@@ -49,11 +49,11 @@ Shape.args = { shape: 'rounded' };
 export const TwoLine = Template.bind({});
 TwoLine.args = { twoline: '', hasMeta: '' };
 
+export const TwoLineIcon = Template.bind({});
+TwoLineIcon.args = { twoline: '', graphic: 'icon' };
+
 export const MetaIcon = Template.bind({});
 MetaIcon.args = { hasMeta: '' };
 
 export const Icon = Template.bind({});
 Icon.args = { graphic: 'icon' };
-
-export const Composed = Template.bind({});
-Composed.args = { twoline: '', graphic: 'icon' };
