@@ -1,3 +1,16 @@
+# [2.9.0](https://github.com/vonage/vivid/compare/v2.8.0...v2.9.0) (2021-05-24)
+
+
+
+# [2.8.0](https://github.com/vonage/vivid/compare/v2.7.0...v2.8.0) (2021-05-20)
+
+
+### Features
+
+* **vwd-file-picker:** issue 844 added option to hide counter badge permanently ([#845](https://github.com/vonage/vivid/issues/845)) ([3e17512](https://github.com/vonage/vivid/commit/3e1751204feb9e2ff3d6ff493b2a4531e7b30f10)), closes [#844](https://github.com/vonage/vivid/issues/844) [#844](https://github.com/vonage/vivid/issues/844)
+
+
+
 # [2.7.0](https://github.com/vonage/vivid/compare/v2.6.2...v2.7.0) (2021-05-17)
 
 

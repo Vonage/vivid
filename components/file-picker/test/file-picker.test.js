@@ -34,13 +34,13 @@ describe('file picker', () => {
 
 	it('should have the expected internal contents', async () => {
 		const [fp] = addElements(textToDomToParent(`<${VWC_COMPONENT}></${VWC_COMPONENT}>`));
-		await waitNextTask();
+		await fp.updateComplete;
 		expect(fp.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
 	it('should have the expected internal contents (with label)', async () => {
 		const [fp] = addElements(textToDomToParent(`<${VWC_COMPONENT} label="Label"></${VWC_COMPONENT}>`));
-		await waitNextTask();
+		await fp.updateComplete;
 		expect(fp.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
@@ -50,8 +50,8 @@ describe('file picker', () => {
 				`<form><${VWC_COMPONENT}><input type="file"/></${VWC_COMPONENT}></form>`
 			));
 			const filePicker = form.querySelector(VWC_COMPONENT);
+			await filePicker.updateComplete;
 
-			await waitNextTask();
 			expect(filePicker).exist;
 			expect(filePicker.firstElementChild.form).equal(form);
 		});
@@ -64,9 +64,9 @@ describe('file picker', () => {
 					<button></button>
 				</form>
 			`));
-			await waitNextTask();
-
 			const filePicker = form.querySelector(VWC_COMPONENT);
+			await filePicker.updateComplete;
+
 			const internalInput = getInput(filePicker);
 			const filesTotal = 3;
 
@@ -99,9 +99,9 @@ describe('file picker', () => {
 				</form>
 				<form><button></button></form>
 			`));
-			await waitNextTask();
-
 			const filePicker = formA.querySelector(VWC_COMPONENT);
+			await filePicker.updateComplete;
+
 			const internalInput = getInput(filePicker);
 
 			expect(internalInput).exist;

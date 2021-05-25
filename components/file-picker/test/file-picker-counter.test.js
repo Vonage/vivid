@@ -33,6 +33,17 @@ describe('file picker - count files hint', () => {
 		assertFilesCount(fp, files, true);
 	});
 
+	it('should have counter set to number but no badge when "no-counter" used', async () => {
+		if (isSafari()) {
+			return;
+		}
+		const fp = await create(true, true);
+		const files = 4;
+		await simulateFilesSelect(fp, files);
+
+		assertFilesCount(fp, files, false);
+	});
+
 	it('should have counter set to number when valid drop', async () => {
 		if (isSafari()) {
 			return;
@@ -60,14 +71,14 @@ describe('file picker - count files hint', () => {
 		assertFilesCount(fp, 0, false);
 	});
 
-	async function create(mulitple) {
+	async function create(mulitple, noCounter = false) {
 		const filePickerName = randomAlpha();
 		const [fp] = addElements(textToDomToParent(`
-			<${VWC_COMPONENT}>
+			<${VWC_COMPONENT} ${noCounter ? 'no-counter' : ''}>
 				<input type="file" name="${filePickerName}" ${mulitple ? 'multiple' : ''}/>
 			</${VWC_COMPONENT}>
 		`));
-		await waitNextTask();
+		await fp.updateComplete;
 		return fp;
 	}
 });

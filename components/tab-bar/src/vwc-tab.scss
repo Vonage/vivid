@@ -1,5 +1,10 @@
-@forward './vwc-tab-coupling';
+/* VARIABLES */
+$tab-icon-size-variable-name: --vvd-tab-icon-size;
+/*************/
+
+@use '@vonage/vwc-icon/src/vwc-icon-variables' as icon-variables;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+@forward './vwc-tab-coupling';
 
 :host {
 	--mdc-tab-height: 44px;
@@ -17,23 +22,23 @@
 	font-stretch: var(--mdc-typography-subtitle1-font-stretch); // ! this was supposed to be set by MDC
 }
 
-.vvd-icon {
-	--icon-size: 20px;
+vwc-icon {
+	#{icon-variables.$icon-size-variable-name}: var(#{$tab-icon-size-variable-name}, 20px);
 	color: var(--mdc-tab-text-label-color-default);
 }
 
 :host([active]) {
-	.vvd-icon {
+	vwc-icon {
 		color: var(--mdc-theme-primary);
 	}
 }
 
 :host([label]:not([stacked])) {
-	.leading-icon .vvd-icon {
+	.leading-icon vwc-icon {
 		margin-inline-end: 12px;
 	}
 
-	.trailing-icon .vvd-icon {
+	.trailing-icon vwc-icon {
 		margin-inline-start: 12px;
 	}
 }
@@ -49,7 +54,7 @@
 	--mdc-tab-text-label-color-default: var(#{scheme-variables.$vvd-color-neutral-30});
 	pointer-events: none;
 
-	.vvd-icon {
+	vwc-icon {
 		color: var(#{scheme-variables.$vvd-color-neutral-30});
 	}
 }

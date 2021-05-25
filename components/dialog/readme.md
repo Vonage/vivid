@@ -26,6 +26,7 @@ This component is an extension of [<mwc-dialog>](https://github.com/material-com
 | `defaultAction`         | `string`  | _Default: 'close'_ – Action to be emitted with the `closing` and `closed` events when `<mwc-dialog>.open` is toggled.
 | `actionAttribute`       | `string`  | _Default: 'dialogAction'_ – Attribute to read in light dom of dialog for closing action value.
 | `initialFocusAttribute` | `string`  | _Default: 'dialogInitialFocus'_ – Attribute to search for in light dom for initial focus on dialog open.
+| `closeButton`						| `boolean`	|	_Default: 'false'_ - show/hide the dismiss button
 
 ### Methods
 

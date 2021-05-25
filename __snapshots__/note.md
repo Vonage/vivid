@@ -16,7 +16,6 @@
 <vwc-icon
   class="note-icon"
   part="icon"
-  size="medium"
   type="home"
 >
 </vwc-icon>
@@ -99,7 +98,6 @@
 <vwc-icon
   class="note-icon"
   part="icon"
-  size="medium"
   type="home"
 >
 </vwc-icon>
@@ -116,7 +114,6 @@
 <vwc-icon
   class="note-icon"
   part="icon"
-  size="medium"
   type="home"
 >
 </vwc-icon>
@@ -133,7 +130,6 @@
 <vwc-icon
   class="note-icon"
   part="icon"
-  size="medium"
   type="home"
 >
 </vwc-icon>

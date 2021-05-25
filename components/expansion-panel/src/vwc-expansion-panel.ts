@@ -20,6 +20,9 @@ declare global {
 	}
 }
 
+const iconSets = ['chevron', 'binary'];
+export type IndicatorIconSets = typeof iconSets;
+
 @customElement('vwc-expansion-panel')
 export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	static styles = style;
@@ -30,14 +33,14 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	@property({ type: String, reflect: true })
 	icon = '';
 
+	@property({ type: String, reflect: true })
+	indicatorIconSet: IndicatorIconSets[number] = 'chevron';
+
 	@property({ type: Boolean, reflect: true })
 	dense = false;
 
 	@property({ type: Boolean, reflect: true })
-	chevronToggle = false;
-
-	@property({ type: Boolean, reflect: true })
-	trailingToggle = false;
+	leadingToggle = false;
 
 	@property({ type: Boolean, reflect: true })
 	noRipple = false;
@@ -80,13 +83,13 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 				${this.renderRipple()}
 				<span class="leading-icon">
 					<slot name="icon">
-						${this.icon || !this.trailingToggle ? this.renderIconOrToggle() : ''}
+						${this.renderIconOrToggle()}
 					</slot>
 				</span>
 				${this.header}
 				<span class="trailing-icon">
 					<slot name="trailingIcon">
-						${this.trailingToggle ? this.renderToggle() : ''}
+						${!this.leadingToggle ? this.renderToggle() : ''}
 					</slot>
 				</span>
 			</div>
@@ -96,24 +99,26 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 		</div>`;
 	}
 
-	protected renderIconOrToggle(): TemplateResult {
-		if (this.icon) {
-			return html`<vwc-icon class="vvd-icon" type="${this.icon}"></vwc-icon>`;
-		} else {
+	protected renderIconOrToggle(): TemplateResult | string {
+		if (this.leadingToggle) {
 			return this.renderToggle();
+		} else if (this.icon) {
+			return html`<vwc-icon type="${this.icon}"></vwc-icon>`;
+		} else {
+			return '';
 		}
 	}
 
 	protected renderToggle(): TemplateResult {
 		return html`
 			<vwc-icon
-				class="vvd-icon toggle-open"
-				type="${this.chevronToggle ? 'chevron-down-solid' : 'plus-solid'}"
+				class="toggle-open"
+				type="${this.indicatorIconSet === 'chevron' ? 'chevron-down-solid' : 'plus-solid'}"
 			>
 			</vwc-icon>
 			<vwc-icon
-				class="vvd-icon toggle-close"
-				type="${this.chevronToggle ? 'chevron-up-solid' : 'minus-solid'}"
+				class="toggle-close"
+				type="${this.indicatorIconSet === 'chevron' ? 'chevron-up-solid' : 'minus-solid'}"
 			>
 			</vwc-icon>
 		`;

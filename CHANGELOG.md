@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.9.0](https://github.com/Vonage/vivid/compare/v2.8.0...v2.9.0) (2021-05-24)
+
+
+### Bug Fixes
+
+* **vwc-data-grid:** viv 565 issue 827 fixing the grid engine height ([#852](https://github.com/Vonage/vivid/issues/852)) ([25bdacd](https://github.com/Vonage/vivid/commit/25bdacd8473dd2e5e6d225444da03cb4eaa56d68)), closes [#827](https://github.com/Vonage/vivid/issues/827)
+* **vwc-list-item:** issue 838 fixing list items bugs ([#854](https://github.com/Vonage/vivid/issues/854)) ([e8ed53b](https://github.com/Vonage/vivid/commit/e8ed53b762308a466b40cafa0f5a780f5d35537a)), closes [#838](https://github.com/Vonage/vivid/issues/838) [#838](https://github.com/Vonage/vivid/issues/838)
+
+
+### Features
+
+* **vwc-accordion:** viv-388 accordion ([#683](https://github.com/Vonage/vivid/issues/683)) ([8b597ab](https://github.com/Vonage/vivid/commit/8b597ab2f800b4d9c954e829b62e52d667012cee))
+
+
+
+
+
+# [2.8.0](https://github.com/Vonage/vivid/compare/v2.7.0...v2.8.0) (2021-05-20)
+
+
+### Features
+
+* **dialog:** dialog dismiss button ([#849](https://github.com/Vonage/vivid/issues/849)) ([1920c67](https://github.com/Vonage/vivid/commit/1920c67959648e3ee361537795fbbfd717e5cf3b))
+* **toggle-button-group:** add disabled to children for a11y ([#843](https://github.com/Vonage/vivid/issues/843)) ([d66e385](https://github.com/Vonage/vivid/commit/d66e385011c8531d9514af260625f89e29f45dc1))
+* **vwd-file-picker:** issue 844 added option to hide counter badge permanently ([#845](https://github.com/Vonage/vivid/issues/845)) ([3e17512](https://github.com/Vonage/vivid/commit/3e1751204feb9e2ff3d6ff493b2a4531e7b30f10)), closes [#844](https://github.com/Vonage/vivid/issues/844) [#844](https://github.com/Vonage/vivid/issues/844)
+
+
+
+
+
 # [2.7.0](https://github.com/Vonage/vivid/compare/v2.6.2...v2.7.0) (2021-05-17)
 
 

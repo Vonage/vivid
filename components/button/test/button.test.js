@@ -387,7 +387,7 @@ describe('button', () => {
 				)
 			);
 			await waitNextTask();
-			const i = b.shadowRoot.querySelector('.vvd-icon');
+			const i = b.shadowRoot.querySelector('vwc-icon');
 			expect(i).exist;
 			expect(i.offsetHeight).equal(20);
 			expect(i.offsetWidth).equal(20);
