@@ -7,7 +7,7 @@ const CENTER_Y = 8,
 	TRACK_X_MARGIN = 5,
 	BUTTON_X = 6,
 	PERCENTAGE_TOLERANCE = 2,
-	RESPONSE_TIMEOUT = 100; //ms
+	RESPONSE_TIMEOUT = 200; //ms
 
 const setStyle = (el, style = {}) => {
 	// eslint-disable-next-line
@@ -75,16 +75,16 @@ describe('vwc-media-controller', function () {
 			);
 			controllerEl = addedElements[0];
 			setStyle(controllerEl, {
-				top: 0,
+				bottom: 0,
 				left: 0,
 				width: '200px',
 				position: 'fixed',
 			});
+			await waitInterval(RESPONSE_TIMEOUT);
 			const rect = controllerEl.getBoundingClientRect();
 			componentX = rect.x;
 			componentY = rect.y;
 			componentWidth = rect.width;
-			await waitInterval(100);
 			simulateMouse = simulateMouseFactory({ x: componentX, y: componentY });
 		});
 
