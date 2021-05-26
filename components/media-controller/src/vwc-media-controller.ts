@@ -1,4 +1,5 @@
 import '@vonage/vvd-core';
+import './vwc-scrub-bar';
 import { VWCScrubBar } from './vwc-scrub-bar';
 import '@vonage/vwc-icon/vwc-icon';
 import { style as vwcMediaControllerStyle } from './vwc-media-controller.css';
@@ -9,8 +10,6 @@ import {
 	TemplateResult
 } from 'lit-element';
 import { query, internalProperty } from 'lit-element/lib/decorators.js';
-
-[VWCScrubBar];
 
 /**
  * Displays controllers for media playback. Includes play/pause button and a scrub bar

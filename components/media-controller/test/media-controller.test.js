@@ -20,19 +20,29 @@ const setStyle = (el, style = {}) => {
 const simulateMouseFactory = ({ x: baseX = 0, y: baseY = 0 }) => {
 	const findTarget = function (x, y) {
 		const
+			depths = new WeakMap(),
 			scannedRoots = new Set(),
 			scannedEls = new Set(),
-			gatherEls = (root) => {
+			gatherEls = (root, depth = 0) => {
 				scannedRoots.add(root);
 				const els = [...root.elementsFromPoint(x, y)];
-				els.forEach(el => scannedEls.add(el));
+
+				els.forEach((el) => {
+					depths.set(el, depth);
+					scannedEls.add(el);
+				});
+
 				els
 					.filter(el => el.shadowRoot && !scannedRoots.has(el.shadowRoot))
-					.forEach(el => gatherEls(el.shadowRoot));
+					.forEach(el => gatherEls(el.shadowRoot, depth + 1));
 			};
 
-		gatherEls(document, x, y);
-		return [...scannedEls.values()].reverse().find(el => !el.shadowRoot);
+		gatherEls(document);
+
+		return [...scannedEls.values()]
+			.filter(el => !el.shadowRoot)
+			.sort((el1, el2) => depths.get(el1) - depths.get(el2))
+			.reverse()[0];
 	};
 
 	return (x, y, eventType, options = { bubbles: true, composed: true }) => {
