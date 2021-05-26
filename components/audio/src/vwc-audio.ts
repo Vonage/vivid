@@ -1,5 +1,6 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-media-controller';
+import { ifDefined } from 'lit-html/directives/if-defined';
 import { pipe } from 'ramda';
 import { VWCScrubBar } from '@vonage/vwc-media-controller/vwc-scrub-bar';
 import { style as AudioStyle } from './vwc-audio.css';
@@ -103,7 +104,7 @@ export class VWCAudio extends LitElement {
 
 	render():TemplateResult {
 		return html`
-			<audio class='audio' src='${this.src}'></audio>
+			<audio class='audio' src='${ifDefined(this.src)}'></audio>
 			<div class="${classMap({ root: true, loading: this._loading })}">
 				<button
 					aria-label="Play/Pause"

@@ -26,7 +26,8 @@
 	},
 	"dependencies": {
 		"lit-element": "^2.4.0",
-		"@vonage/vwc-media-controller": "2.9.0"
+		"@vonage/vwc-media-controller": "2.9.0",
+		"lit-html": "^1.1.0"
 	},
 	"devDependencies": {
 		"@vonage/vvd-umbrella": "2.9.0",
