@@ -111,7 +111,7 @@ Each developer in a team that does `npm install` will need to get her/his access
 Additionally, team is advised to obtain one more token for automation.
 
 The steps to follow are:
-* for each user reach out to CloudOps team and ask for access to JFrog artifactory (welcome to copy this exact wording to the Jira ticket :) ) - this may take a few days
+* for each user reach out to the IAM team and ask for access to JFrog artifactory (welcome to copy this exact wording to the Jira ticket :) ) - this may take a few days
 * once allowed, do login into the **JFrog** portal (application will appear in your Vonage app page), navigate to **User Profile** and copy your **API Key**
 * run on your local machine the following
   
