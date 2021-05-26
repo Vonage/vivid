@@ -25,7 +25,8 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"lit-element": "^2.4.0"
+		"lit-element": "^2.4.0",
+		"@vonage/vwc-media-controller": "2.9.0"
 	},
 	"devDependencies": {
 		"@vonage/vvd-umbrella": "2.9.0",
