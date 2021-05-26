@@ -25,9 +25,7 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@types/kefir": "^3.8.5",
-		"@vonage/vwc-media-controller": "2.9.0",
-		"kefir": "^3.8.7"
+		"lit-element": "^2.4.0"
 	},
 	"devDependencies": {
 		"@vonage/vvd-umbrella": "2.9.0",

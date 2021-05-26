@@ -1,4 +1,5 @@
 import '@vonage/vvd-core';
+import '@vonage/vwc-media-controller';
 import { pipe } from 'ramda';
 import { VWCScrubBar } from '@vonage/vwc-media-controller/vwc-scrub-bar';
 import { style as AudioStyle } from './vwc-audio.css';
@@ -14,8 +15,6 @@ import {
 import { nothing } from 'lit-html';
 import { classMap } from 'lit-html/directives/class-map';
 import { internalProperty, property, query } from 'lit-element/lib/decorators';
-
-[VWCScrubBar];
 
 const setEvents = function (eventSource: HTMLElement, handlersMap: Record<string, ()=> unknown>) {
 	return (<any>pipe)(...Object
