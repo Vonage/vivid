@@ -84,6 +84,28 @@ describe('list item', () => {
 		});
 	});
 
+	describe('connotation', () => {
+		let listItem,
+			ripple;
+		beforeEach(async () => {
+			[listItem] = addElement(
+				textToDomToParent(`<vwc-list-item activated>Item 1</vwc-list-item>`)
+			);
+			await waitNextTask();
+			ripple = listItem.shadowRoot.querySelector('.fake-activated-ripple');
+		});
+
+		it('should proxy primary connotation to activated list-item by default', async () => {
+			assertComputedStyle(ripple, { backgroundColor: 'rgb(0,0,0)' }, ':before');
+		});
+
+		it('should proxy cta connotation to activated list-item when connotation set to cta', async () => {
+			listItem.connotation = 'cta';
+			await waitNextTask();
+			assertComputedStyle(ripple, { backgroundColor: 'rgb(153,65,255)' }, ':before');
+		});
+	});
+
 	describe('shape', () => {
 		let actualElement;
 		beforeEach(async () => {
