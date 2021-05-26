@@ -131,6 +131,7 @@
 	}
 
 	&--outlined {
+		padding-left: max(16px, var(--mdc-shape-small, 4px));
 		background-color: var(--mdc-text-field-fill-color);
 
 		.mdc-floating-label {

@@ -29,6 +29,11 @@
 	}
 }
 
+// hide until resize observer sets the padding
+::slotted(#{textfield-variables.$vvd-input-selector}:not([style*="padding"i])) {
+	display: none;
+}
+
 ::slotted(#{textfield-variables.$vvd-input-selector}:-webkit-autofill),
 ::slotted(#{textfield-variables.$vvd-input-selector}:-webkit-autofill:hover),
 ::slotted(#{textfield-variables.$vvd-input-selector}:-webkit-autofill:focus) {
