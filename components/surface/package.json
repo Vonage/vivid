@@ -1,11 +1,11 @@
 {
-	"name": "@vonage/vwc-snackbar",
+	"name": "@vonage/vwc-surface",
 	"version": "2.9.0",
-	"description": "Snackbar component",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/snackbar#readme",
+	"description": "Surface component",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/surface#readme",
 	"license": "ISC",
-	"main": "vwc-snackbar.js",
-	"module": "vwc-snackbar.js",
+	"main": "vwc-surface.js",
+	"module": "vwc-surface.js",
 	"files": [
 		"*.js",
 		"*.ts",
@@ -14,7 +14,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/snackbar"
+		"directory": "components/surface"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1",

@@ -1,8 +1,8 @@
 export default {
 	sourcePath: '../readme.md',
-	outputName: 'pagination-introduction',
+	outputName: 'surface-introduction',
 	story: {
-		title: 'Alpha/Components/Snackbar/Introduction',
+		title: 'Alpha/Components/Surface/Introduction',
 		name: 'Introduction',
 		parameters: {
 			options: {

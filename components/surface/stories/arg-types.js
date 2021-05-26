@@ -1,47 +1,25 @@
-import { Connotation, Position } from '@vonage/vvd-foundation/constants';
-
 const DISABLED = Object.freeze({ table: { disable: true } });
 
 export const argTypes = {
-	connotation: {
+	activatable: DISABLED,
+
+	corner: {
 		control: {
 			type: 'select',
-			options: [
-				Connotation.Alert,
-				Connotation.Announcement,
-				Connotation.CTA,
-				Connotation.Info,
-				Connotation.Success,
-				Connotation.Warning,
-			],
+			options: ['TOP_LEFT', 'TOP_RIGHT', 'BOTTOM_LEFT', 'BOTTOM_RIGHT', 'TOP_START', 'TOP_END', 'BOTTOM_START', 'BOTTOM_END'],
 		}
 	},
-	dismissible: {
-		control: {
-			type: 'inline-radio',
-			options: { 'true': '', 'false': undefined }
-		}
-	},
-	position: {
+	defaultFocus: {
 		control: {
 			type: 'select',
-			options: [
-				`${Position.Top}-${Position.Start}`,
-				`${Position.Top}-${Position.Center}`,
-				`${Position.Top}-${Position.End}`,
-				`${Position.Bottom}-${Position.Start}`,
-				`${Position.Bottom}-${Position.Center}`,
-				`${Position.Bottom}-${Position.End}`
-			],
+			options: ['NONE', 'LIST_ROOT', 'FIRST_ITEM', 'LAST_ITEM'],
 		}
 	},
 
-	closeOnEscape: DISABLED,
-	labelText: DISABLED,
-	leading: DISABLED,
-	opener: DISABLED,
-	openerId: DISABLED,
+	forceGroupSelection: DISABLED,
+	index: DISABLED,
+	items: DISABLED,
+	mdcRoot: DISABLED,
 	ripple: DISABLED,
-	snackbarArgs: DISABLED,
-	stacked: DISABLED,
+	styles: DISABLED
 }
