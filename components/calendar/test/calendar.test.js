@@ -20,7 +20,7 @@ describe('calendar', () => {
 
 	it('should match internal contents', async () => {
 		const [actualElement] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}>`)
+			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 		);
 		await waitNextTask();
 		actualElement.datetime = '2021-01-01';
@@ -30,7 +30,7 @@ describe('calendar', () => {
 
 	it('should set cells in correct day column', async () => {
 		const [actualElement] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}>`)
+			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 		);
 		await waitNextTask();
 
@@ -46,7 +46,7 @@ describe('calendar', () => {
 	describe('API', () => {
 		it('should reflect weekdays as set by property', async () => {
 			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}>`)
+				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
 			await waitNextTask();
 			actualElement.datetime = '2021-01-01';
@@ -65,7 +65,7 @@ describe('calendar', () => {
 
 		it('should reflect weekdays as set by attribute', async () => {
 			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}>`)
+				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
 			await waitNextTask();
 			actualElement.setAttribute('datetime', '2021-01-01');
