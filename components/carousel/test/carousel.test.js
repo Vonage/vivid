@@ -56,7 +56,7 @@ describe('carousel', () => {
 		});
 
 		it('should slide to the right when click on next', async function () {
-			this.timeout(12000);
+			this.timeout(24000);
 
 			const c = await initCarousel(['a', 'b', 'c', 'd', 'e']);
 

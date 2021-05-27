@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - fix-bs-job
 
 jobs:
   cache-yarn-and-build:
