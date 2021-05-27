@@ -76,11 +76,11 @@ describe('textfield', () => {
 			- parseInt(paddingInlineEnd, 10);
 		const { inlineSize: originInlineSize } = getComputedStyle(inputOrigin);
 
-		const expected = parseInt(originInlineSize, 10);
+		const originalSize = parseInt(originInlineSize, 10);
 
 		expect(inputInlineSize, `input inline size isn't synced`)
 			.to
-			.equal(expected);
+			.equal(originalSize);
 	});
 
 	describe('events', () => {
