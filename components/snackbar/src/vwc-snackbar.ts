@@ -28,11 +28,10 @@ declare global {
 // @ts-ignore
 MWCSnackbarBase.styles = [mwcSnackbarStyle, vwcSnackbarStyle];
 
-type NoteConnotation = Extract<
+type SnackbarConnotation = Extract<
 	Connotation,
 	| Connotation.Alert
 	| Connotation.Announcement
-	| Connotation.CTA
 	| Connotation.Info
 	| Connotation.Success
 	| Connotation.Warning
@@ -58,7 +57,7 @@ export class VWCSnackbar extends MWCSnackbarBase {
 	position: PositionPair = DEFAULT_POSITION;
 
 	@property({ type: String, reflect: true })
-	connotation?: NoteConnotation;
+	connotation?: SnackbarConnotation;
 
 	@property({ type: String, reflect: true })
 	icon?: string;
