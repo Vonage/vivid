@@ -28,6 +28,21 @@ describe('calendar', () => {
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
+	it('should set cells in correct day column', async () => {
+		const [actualElement] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}>`)
+		);
+		await waitNextTask();
+
+		const { shadowRoot } = actualElement;
+		const cells = shadowRoot.querySelectorAll('.calendar > [role="listitem"i]');
+
+		const isCorrectColumns = Array.from(cells).every((cell, i) => getComputedStyle(cell)
+			.getPropertyValue('--column') == ~~(i / 24) + 1);
+
+		expect(isCorrectColumns).to.equal(true);
+	});
+
 	describe('API', () => {
 		it('should reflect weekdays as set by property', async () => {
 			const [actualElement] = addElement(

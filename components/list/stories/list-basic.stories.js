@@ -27,15 +27,14 @@ export const Basic = args => html`
 		}
 	</style>
 
-<h4>Main</h4>
-<div class="box">
-	${renderList(args)}
-</div>
-<h4>Alternate</h4>
-<div class="box vvd-scheme-alternate">
-	${renderList(args)}
-</div>
-
+	<h4>Main</h4>
+	<div class="box">
+		${renderList(args)}
+	</div>
+	<h4>Alternate</h4>
+	<div class="box vvd-scheme-alternate">
+		${renderList(args)}
+	</div>
 `;
 
 export const metaIcon = args => html`
