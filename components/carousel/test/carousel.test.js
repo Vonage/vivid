@@ -1,7 +1,6 @@
 import '@vonage/vwc-carousel';
 import schemeService from '@vonage/vvd-scheme';
 import {
-	isSafari,
 	isolatedElementsCreation,
 	textToDomToParent,
 	waitNextTask,
@@ -268,14 +267,14 @@ function extractNavButtons(carousel) {
 	return carousel.querySelectorAll('.swiper-nav');
 }
 
-async function moveNextAndWait(carousel, timeout = 1000) {
+function moveNextAndWait(carousel, timeout = 1000) {
 	const nextButton = carousel.querySelector('.swiper-button-next');
 	const waitPromise = _timeLimitedEventWait(carousel, 'slideNextTransitionEnd', timeout);
 	nextButton.click();
 	return waitPromise;
 }
 
-async function movePrevAndWait(carousel, timeout = 1000) {
+function movePrevAndWait(carousel, timeout = 1000) {
 	const prevButton = carousel.querySelector('.swiper-button-prev');
 	const waitPromise = _timeLimitedEventWait(carousel, 'slidePrevTransitionEnd', timeout);
 	prevButton.click();
