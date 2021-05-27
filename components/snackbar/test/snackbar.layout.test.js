@@ -12,9 +12,25 @@ import { openSnackbar } from './snackbar-utils.test';
 describe('snackbar layout', () => {
 	let addElement = isolatedElementsCreation();
 
-	it(`should have dismissible button positioned correctly`, async () => {
+	for (const message of ['short', 'long '.repeat(40)]) {
+		it(`should have dismissible button positioned correctly (message len = ${message.length})`, async () => {
+			const [snackbar] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} dismissible message="${message}"></${COMPONENT_NAME}>`)
+			);
+			await snackbar.updateComplete;
+			const snackbarSurface = snackbar.shadowRoot.querySelector('.mdc-snackbar__surface');
+			const dismissButton = snackbar.shadowRoot.querySelector('.dismiss-button');
+
+			await openSnackbar(snackbar);
+
+			assertDistancePixels(dismissButton, snackbarSurface, 'top', (snackbarSurface.offsetHeight - dismissButton.offsetHeight) / 2);
+			assertDistancePixels(dismissButton, snackbarSurface, 'right', 16);
+		});
+	}
+
+	it(`should have dismissible button positioned correctly (legacy)`, async () => {
 		const [snackbar] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME} dismissible></${COMPONENT_NAME}>`)
+			textToDomToParent(`<${COMPONENT_NAME} dismissible legacy></${COMPONENT_NAME}>`)
 		);
 		await snackbar.updateComplete;
 		const snackbarSurface = snackbar.shadowRoot.querySelector('.mdc-snackbar__surface');
@@ -38,8 +54,24 @@ describe('snackbar layout', () => {
 
 		await openSnackbar(snackbar);
 
+		assertDistancePixels(icon, snackbarSurface, 'top', 16);
+		assertDistancePixels(icon, snackbarSurface, 'left', 16);
+	});
+
+	it(`should have icon positioned correctly (legacy)`, async () => {
+		const [snackbar] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME} icon="home" legacy></${COMPONENT_NAME}>`)
+		);
+		await snackbar.updateComplete;
+		const snackbarSurface = snackbar.shadowRoot.querySelector('.mdc-snackbar__surface');
+		const innerNote = snackbar.shadowRoot.querySelector('vwc-note');
+		await innerNote.updateComplete;
+		const icon = innerNote.shadowRoot.querySelector('.note-icon');
+
+		await openSnackbar(snackbar);
+
 		assertDistancePixels(icon, snackbarSurface, 'top', 20);
-		assertDistancePixels(icon, snackbarSurface, 'left', 20);
+		assertDistancePixels(icon, snackbarSurface, 'left', 28);
 	});
 
 	describe('snackbar viewport position', () => {
