@@ -82,7 +82,7 @@ export class VWCSnackbar extends MWCSnackbarBase {
 		return html`
 			<div class="mdc-snackbar" position="${position}">
 				<div class="mdc-snackbar__surface">
-					${this.renderFlavor(this.legacy)}
+					${this.legacy ? this.renderLegacyFlavor() : this.renderDefaultFlavor()}
 				</div>
 			</div>
 		`;
@@ -112,9 +112,24 @@ export class VWCSnackbar extends MWCSnackbarBase {
 		this.mdcFoundation.handleActionIconClick(event);
 	}
 
-	private renderFlavor(legacy: boolean): TemplateResult {
-		const partValue = legacy ? undefined : 'vvd-scheme-alternate';
-		return html`<div class="vivid-snackbar" part="${ifDefined(partValue)}">
+	private renderDefaultFlavor(): TemplateResult {
+		return html`<div class="vivid-snackbar" part="vvd-scheme-alternate">
+				<vwc-note
+					icon="${ifDefined(this.icon)}"
+					connotation="${ifDefined(this.connotation)}"
+					header="${ifDefined(this.header)}"
+				>${this.message}</vwc-note>
+				<div class="actions-container">
+					<div class="action-container">
+						<slot name="action" @click="${this.handleActionClick}"></slot>
+					</div>
+					${this.renderDismissAction()}
+				</div>
+			</div>`;
+	}
+
+	private renderLegacyFlavor(): TemplateResult {
+		return html`<div class="vivid-snackbar">
 				<vwc-note
 					icon="${ifDefined(this.icon)}"
 					connotation="${ifDefined(this.connotation)}"
@@ -127,9 +142,7 @@ export class VWCSnackbar extends MWCSnackbarBase {
 								<slot name="action" @click="${this.handleActionClick}"></slot>
 							</div>
 						</div>
-						<div class="dismiss-container">
-							${this.renderDismissAction()}
-						</div>
+						${this.renderDismissAction()}
 					</div>
 				</vwc-note>
 			</div>`;
@@ -141,14 +154,16 @@ export class VWCSnackbar extends MWCSnackbarBase {
 		}
 
 		return html`
-			<vwc-icon-button
-				class="dismiss-button"
-				icon="close-line"
-				layout="ghost"
-				dense
-				@click="${this.handleDismissClick}"
-			>
-			</vwc-icon-button>
+			<div class="dismiss-container">
+				<vwc-icon-button
+					class="dismiss-button"
+					icon="close-line"
+					layout="ghost"
+					dense
+					@click="${this.handleDismissClick}"
+				>
+				</vwc-icon-button>
+			</div>
 		`;
 	}
 

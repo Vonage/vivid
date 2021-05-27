@@ -19,6 +19,7 @@ The visiblity time is set by default to 4000 ms and may be extended to maximum 1
 This won't change the auto-dismiss behaviour, but will let the user to close the snackbar even earlier.
 
 `vwc-snackbar` allows to add a single action button, if needed.
+This is achievable via the `action` slot, as in example above and read more on this in API section below.
 
 #### Legacy (Volta)
 
