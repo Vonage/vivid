@@ -22,6 +22,8 @@ describe('Drawer', () => {
 
 	describe('basic', () => {
 		it('should be defined in custom elements registry', async () => {
+			this.timeout(8000);
+
 			await getFrameLoadedInjected(DRAWER_SETUP_HTML_TAG, async (iframe) => {
 				const iframeWindow = iframe.contentWindow;
 				await drawerDefined(iframeWindow);
@@ -82,6 +84,8 @@ describe('Drawer', () => {
 
 	describe('colors context API', () => {
 		it('should set drawer default colors', async () => {
+			this.timeout(8000);
+
 			await getFrameLoadedInjected(DRAWER_SETUP_HTML_TAG, async (iframe) => {
 				const iframeWindow = iframe.contentWindow;
 				await drawerDefined(iframeWindow);
@@ -96,6 +100,8 @@ describe('Drawer', () => {
 		});
 
 		it('should set drawer alternate colors', async () => {
+			this.timeout(8000);
+
 			await getFrameLoadedInjected(DRAWER_SETUP_HTML_TAG, async (iframe) => {
 				const iframeWindow = iframe.contentWindow;
 				await drawerDefined(iframeWindow);
@@ -111,6 +117,8 @@ describe('Drawer', () => {
 		});
 
 		it('should define drawer aside surface variables by default', async () => {
+			this.timeout(8000);
+
 			await getFrameLoadedInjected(DRAWER_SETUP_HTML_TAG, async (iframe) => {
 				const iframeWindow = iframe.contentWindow;
 				await drawerDefined(iframeWindow);
@@ -155,6 +163,8 @@ describe('Drawer', () => {
 		});
 
 		it(`should set <aside> '::part' attribute value as '${VVD_SCHEME_ALTERNATE}' on drawerAlternate property set to true`, async () => {
+			this.timeout(8000);
+
 			await getFrameLoadedInjected(DRAWER_SETUP_HTML_TAG, async (iframe) => {
 				const iframeWindow = iframe.contentWindow;
 				await drawerDefined(iframeWindow);

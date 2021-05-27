@@ -90,6 +90,8 @@ describe('vvd-core service', () => {
 
 	describe('switch flows in encapsulated environment and assert variables set', () => {
 		it('should perform auto-init to default when no data-vvd-context provided', async () => {
+			this.timeout(8000);
+
 			await getFrameLoadedInjected(CORE_SETUP_HTML_TAG, async (iframe) => {
 				const iframeWindow = iframe.contentWindow;
 				await iframeWindow.executeSetup();

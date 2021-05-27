@@ -34,6 +34,8 @@ describe('vvd-fonts service', () => {
 		});
 
 		it('should init fonts when init via HEAD element', async () => {
+			this.timeout(8000);
+
 			await getFrameLoadedInjected(FONTS_SETUP_HTML_TAG, async (iframe) => {
 				const [testElement, baseElement] = setupTestElements(
 					iframe.contentDocument
