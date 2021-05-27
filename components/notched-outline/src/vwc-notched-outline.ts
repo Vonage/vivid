@@ -1,7 +1,6 @@
 import { customElement } from 'lit-element';
 import { NotchedOutline as MWCNotchedOutline } from '@material/mwc-notched-outline';
 import { style as mwcNotchedOutlineStyle } from '@material/mwc-notched-outline/mwc-notched-outline-css.js';
-import { style as vwcNotchedOutlineStyle } from './vwc-notched-outline.css';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -11,7 +10,7 @@ declare global {
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-MWCNotchedOutline.styles = [mwcNotchedOutlineStyle, vwcNotchedOutlineStyle];
+MWCNotchedOutline.styles = [mwcNotchedOutlineStyle];
 
 /**
  * This component is an extension of [<mwc-notched-outline>](https://github.com/material-components/material-components-web-components/tree/master/packages/notched-outline)
