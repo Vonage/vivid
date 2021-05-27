@@ -21,6 +21,7 @@ import { style as vwcTextFieldStyle } from './vwc-textfield.css';
 import { style as mwcTextFieldStyle } from '@material/mwc-textfield/mwc-textfield-css.js';
 import { Shape } from '@vonage/vvd-foundation/constants';
 import { debounced, handleAutofocus } from '@vonage/vvd-foundation/general-utils';
+
 export { TextFieldType } from '@material/mwc-textfield';
 
 export const COMPONENT_NAME = 'vwc-textfield';

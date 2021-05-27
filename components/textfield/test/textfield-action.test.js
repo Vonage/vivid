@@ -1,4 +1,3 @@
-import '../vwc-textfield.js';
 import { VALID_BUTTON_ELEMENTS } from '../vwc-textfield.js';
 
 import {
@@ -15,27 +14,25 @@ const COMPONENT_NAME = 'vwc-textfield';
 describe('textfield action', () => {
 	const [iconButton] = VALID_BUTTON_ELEMENTS;
 
-	function waitForSlotChange() {
-		return waitNextTask();
+	async function createElement() {
+		const [actualElement] = (
+			textToDomToParent(`
+				<${COMPONENT_NAME}>
+					<${iconButton} slot="action"></${iconButton}>
+					<${iconButton} slot="action"></${iconButton}>
+					<${iconButton} slot="action"></${iconButton}>
+				</${COMPONENT_NAME}>
+			`)
+		);
+		await actualElement.updateComplete;
+		return actualElement;
 	}
 
 	describe(`a11y`, function () {
-		async function createDisabledElement() {
-			const [actualElement] = (
-				textToDomToParent(`
-					<${COMPONENT_NAME} disabled>
-						<${iconButton} slot="action"></${iconButton}>
-						<${iconButton} slot="action"></${iconButton}>
-						<${iconButton} slot="action"></${iconButton}>
-					</${COMPONENT_NAME}>
-				`)
-			);
-			await actualElement.updateComplete;
-			return actualElement;
-		}
-
 		it(`should enforce disable on child nodes`, async function () {
-			const actualElement = await createDisabledElement();
+			const actualElement = await createElement();
+			actualElement.disabled = true;
+			await waitNextTask();
 			const buttons = Array.from(actualElement.querySelectorAll(iconButton));
 
 			const allDisabled = buttons.every(button => button.disabled);
@@ -54,12 +51,13 @@ describe('textfield action', () => {
 		});
 
 		it(`should disable dynamically added child node's`, async function () {
-			const actualElement = await createDisabledElement();
+			const actualElement = await createElement();
+			actualElement.disabled = true;
 			const newIconButton = document.createElement(iconButton);
 			newIconButton.setAttribute('slot', 'action');
 			actualElement.appendChild(newIconButton);
 
-			await waitForSlotChange();
+			await waitNextTask();
 			expect(newIconButton.hasAttribute('disabled')).to.equal(true);
 		});
 	});

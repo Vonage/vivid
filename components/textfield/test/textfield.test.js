@@ -3,6 +3,7 @@ import '@vonage/vwc-formfield';
 import {
 	textToDomToParent,
 	waitNextTask,
+	waitInterval,
 	assertComputedStyle,
 	assertDistancePixels,
 	changeValueAndNotify,
@@ -55,6 +56,31 @@ describe('textfield', () => {
 		const te = e.shadowRoot.querySelector('.mdc-text-field__input');
 		expect(te).exist;
 		assertComputedStyle(te, { pointerEvents: 'none' });
+	});
+
+	it(`should sync lightDom input inline size`, async function () {
+		const [actualElement] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+		);
+		actualElement.style.inlineSize = 370;
+		actualElement.icon = 'audio-off-line';
+		actualElement.trailingicon = 'backspace-line';
+		await waitNextTask();
+		const input = actualElement.querySelector('.vivid-input-internal');
+		const inputOrigin = actualElement.shadowRoot.querySelector('.mdc-text-field__input');
+		await waitInterval(50);
+
+		const { inlineSize, paddingInlineStart, paddingInlineEnd } = getComputedStyle(input);
+		const inputInlineSize = parseInt(inlineSize, 10)
+			- parseInt(paddingInlineStart, 10)
+			- parseInt(paddingInlineEnd, 10);
+		const { inlineSize: originInlineSize } = getComputedStyle(inputOrigin);
+
+		const expected = parseInt(originInlineSize, 10);
+
+		expect(inputInlineSize, `input inline size isn't synced`)
+			.to
+			.equal(expected);
 	});
 
 	describe('events', () => {
