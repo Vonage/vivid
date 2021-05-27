@@ -52,16 +52,7 @@ Action.args = {
 	message: 'Pascal argues that a rational person should live as though God exists and seek to believe in God.'
 };
 
-const TemplateActionWithDismissible = args => html`
-	<div>
-		<vwc-button layout="filled" @click="${openSnackbar}">Show snackbar</vwc-button>
-	</div>
-	<vwc-snackbar ...=${spread(args)}>
-		<vwc-button slot="action" layout="outlined" shape="pill">Show more</vwc-button>
-	</vwc-snackbar>
-`;
-
-export const ActionWithDismissible = TemplateActionWithDismissible.bind({});
+export const ActionWithDismissible = TemplateAction.bind({});
 ActionWithDismissible.args = {
 	timeoutMs: 10000,
 	icon: 'megaphone-solid',
