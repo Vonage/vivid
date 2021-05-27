@@ -1,3 +1,16 @@
+## [2.9.1](https://github.com/vonage/vivid/compare/v2.9.0...v2.9.1) (2021-05-27)
+
+
+
+# [2.9.0](https://github.com/vonage/vivid/compare/v2.8.0...v2.9.0) (2021-05-24)
+
+
+### Bug Fixes
+
+* **vwc-list-item:** issue 838 fixing list items bugs ([#854](https://github.com/vonage/vivid/issues/854)) ([e8ed53b](https://github.com/vonage/vivid/commit/e8ed53b762308a466b40cafa0f5a780f5d35537a)), closes [#838](https://github.com/vonage/vivid/issues/838) [#838](https://github.com/vonage/vivid/issues/838)
+
+
+
 # [2.8.0](https://github.com/vonage/vivid/compare/v2.7.0...v2.8.0) (2021-05-20)
 
 

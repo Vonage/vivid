@@ -21,7 +21,7 @@ type BadgeLayout = Extract<
 
 type BadgeShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
 
-export class BadgeBase extends LitElement {
+export class VWCBadgeBase extends LitElement {
 	@property({ type: String, reflect: true })
 	connotation?: BadgeConnotation;
 

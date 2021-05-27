@@ -24,7 +24,9 @@ describe('vvd-context service', () => {
 	});
 
 	describe('basic (default) document setup', () => {
-		it('should setup context in default document', async () => {
+		it('should setup context in default document', async function () {
+			this.timeout(8000);
+
 			await getFrameLoadedInjected(CONTEXT_SETUP_HTML_TAG, async (iframe) => {
 				const iframeWindow = iframe.contentWindow;
 
@@ -43,7 +45,9 @@ describe('vvd-context service', () => {
 			});
 		});
 
-		it('should NOT duplicate context in default document', async () => {
+		it('should NOT duplicate context in default document', async function () {
+			this.timeout(8000);
+
 			await getFrameLoadedInjected(CONTEXT_SETUP_HTML_TAG, async (iframe) => {
 				const iframeWindow = iframe.contentWindow;
 

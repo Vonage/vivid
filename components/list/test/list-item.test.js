@@ -11,7 +11,7 @@ import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	assertListItemDimensions,
 	buildListOfNItems,
-} from './list-items-check-utils.test.js';
+} from './list-items-utils.test.js';
 
 chai.use(chaiDomDiff);
 
@@ -38,22 +38,26 @@ describe('list item', () => {
 		});
 	});
 
-	describe('sizing', () => {
-		let actualElements;
-		const itemsNum = 3;
-		beforeEach(async () => {
-			actualElements = addElement(buildListOfNItems(itemsNum, VWC_LIST_ITEM));
+	describe('dimensions', () => {
+		it('should have correct dimensions (one line)', async () => {
+			const itemsNum = 3;
+			const [listOfItems] = addElement(
+				buildListOfNItems(itemsNum, VWC_LIST_ITEM)
+			);
 			await waitNextTask();
+			assertListItemDimensions(listOfItems.children, itemsNum, 40);
 		});
 
-		it('should have correct size by default', async () => {
-			assertListItemDimensions(actualElements[0].children, itemsNum, 40);
-		});
-
-		it('should have correct size when twoline', async () => {
-			for (let item of actualElements[0].children) item.twoline = true;
+		it('should have correct dimensions (two lines)', async () => {
+			const itemsNum = 3;
+			const [listOfItems] = addElement(
+				buildListOfNItems(itemsNum, VWC_LIST_ITEM)
+			);
+			for (let item of listOfItems.children) {
+				item.twoline = true;
+			}
 			await waitNextTask();
-			assertListItemDimensions(actualElements[0].children, itemsNum, 64);
+			assertListItemDimensions(listOfItems.children, itemsNum, 64);
 		});
 	});
 
@@ -77,6 +81,28 @@ describe('list item', () => {
 			const { y: secondaryY } = secondary.getClientRects()[0];
 			const distanceBetweenLines = secondaryY - (primaryY + priamryHeight);
 			expect(distanceBetweenLines).to.equal(4);
+		});
+	});
+
+	describe('connotation', () => {
+		let listItem,
+			ripple;
+		beforeEach(async () => {
+			[listItem] = addElement(
+				textToDomToParent(`<vwc-list-item activated>Item 1</vwc-list-item>`)
+			);
+			await waitNextTask();
+			ripple = listItem.shadowRoot.querySelector('.fake-activated-ripple');
+		});
+
+		it('should proxy primary connotation to activated list-item by default', async () => {
+			assertComputedStyle(ripple, { backgroundColor: 'rgb(0,0,0)' }, ':before');
+		});
+
+		it('should proxy cta connotation to activated list-item when connotation set to cta', async () => {
+			listItem.connotation = 'cta';
+			await waitNextTask();
+			assertComputedStyle(ripple, { backgroundColor: 'rgb(153,65,255)' }, ':before');
 		});
 	});
 

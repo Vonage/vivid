@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.1](https://github.com/Vonage/vivid/compare/v2.9.0...v2.9.1) (2021-05-27)
+
+
+### Bug Fixes
+
+* **vwc-calendar:** cells wrong grid columns ([#862](https://github.com/Vonage/vivid/issues/862)) ([1f77e91](https://github.com/Vonage/vivid/commit/1f77e91c873f17263265b27e9add0ed1d9c89b48))
+
+
+
+
+
+# [2.9.0](https://github.com/Vonage/vivid/compare/v2.8.0...v2.9.0) (2021-05-24)
+
+
+### Bug Fixes
+
+* **vwc-data-grid:** viv 565 issue 827 fixing the grid engine height ([#852](https://github.com/Vonage/vivid/issues/852)) ([25bdacd](https://github.com/Vonage/vivid/commit/25bdacd8473dd2e5e6d225444da03cb4eaa56d68)), closes [#827](https://github.com/Vonage/vivid/issues/827)
+* **vwc-list-item:** issue 838 fixing list items bugs ([#854](https://github.com/Vonage/vivid/issues/854)) ([e8ed53b](https://github.com/Vonage/vivid/commit/e8ed53b762308a466b40cafa0f5a780f5d35537a)), closes [#838](https://github.com/Vonage/vivid/issues/838) [#838](https://github.com/Vonage/vivid/issues/838)
+
+
+### Features
+
+* **vwc-accordion:** viv-388 accordion ([#683](https://github.com/Vonage/vivid/issues/683)) ([8b597ab](https://github.com/Vonage/vivid/commit/8b597ab2f800b4d9c954e829b62e52d667012cee))
+
+
+
+
+
 # [2.8.0](https://github.com/Vonage/vivid/compare/v2.7.0...v2.8.0) (2021-05-20)
 
 
