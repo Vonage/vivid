@@ -33,7 +33,7 @@ describe('vvd-fonts service', () => {
 			cleanFrame(FONTS_SETUP_HTML_TAG);
 		});
 
-		it('should init fonts when init via HEAD element', async () => {
+		it('should init fonts when init via HEAD element', async function () {
 			this.timeout(8000);
 
 			await getFrameLoadedInjected(FONTS_SETUP_HTML_TAG, async (iframe) => {
