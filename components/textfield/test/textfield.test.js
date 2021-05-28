@@ -278,6 +278,8 @@ describe('textfield', () => {
 			);
 			await waitNextTask();
 			const i = e.querySelector('input');
+			await waitInterval(50);
+
 			assertDistancePixels(e, i, 'left', 0);
 			assertComputedStyle(i, { paddingInlineStart: '16px' });
 		});
@@ -315,9 +317,12 @@ describe('textfield', () => {
 			await waitNextTask();
 			const icn = e.shadowRoot.querySelector('vwc-icon');
 			const inp = e.querySelector('input');
+			await waitInterval(50);
+
 			expect(icn).exist;
 			expect(icn.offsetHeight).equal(20);
 			expect(icn.offsetWidth).equal(20);
+
 			assertDistancePixels(inp, icn, 'left', 16);
 			assertDistancePixels(
 				inp,
