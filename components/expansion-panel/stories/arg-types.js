@@ -27,6 +27,12 @@ export const argTypes = {
 			type: 'text'
 		}
 	},
+	lazyLoad: {
+		control: {
+			type: 'inline-radio',
+			options: { 'true': '', 'false': undefined }
+		}
+	},
 	noRipple: {
 		control: {
 			type: 'inline-radio',

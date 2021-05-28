@@ -43,6 +43,9 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	leadingToggle = false;
 
 	@property({ type: Boolean, reflect: true })
+	lazyLoad = false;
+
+	@property({ type: Boolean, reflect: true })
 	noRipple = false;
 
 	@queryAsync('mwc-ripple') ripple!: Promise<Ripple>;
@@ -94,7 +97,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 				</span>
 			</div>
 			<div class="expansion-panel-body">
-				<slot></slot>
+				${this.renderContent()}
 			</div>
 		</div>`;
 	}
@@ -122,6 +125,14 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 			>
 			</vwc-icon>
 		`;
+	}
+
+	protected renderContent(): TemplateResult | string {
+		if (!this.lazyLoad || (this.lazyLoad && this.open)) {
+			return html`<slot></slot>`;
+		} else {
+			return '';
+		}
 	}
 
 	@eventOptions({ passive: true })
