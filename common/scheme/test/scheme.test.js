@@ -137,7 +137,9 @@ describe('vvd-scheme service', () => {
 		assert.equal(r2, r1);
 	});
 
-	it('should install style element only once', async () => {
+	it('should install style element only once', async function () {
+		this.timeout(8000);
+
 		await getFrameLoadedInjected(SCHEME_SETUP_HTML_TAG, async (iframe) => {
 			const iframeWindow = iframe.contentWindow;
 			await Promise.all([
