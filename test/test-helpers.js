@@ -211,9 +211,26 @@ function assertDistancePixels(e1, e2, property, expected, nonTolerancePower = 0)
 	}
 }
 
-function isSafari() {
-	return window.navigator.userAgent.toLowerCase().includes('safari') &&
-		!window.navigator.userAgent.toLowerCase().includes('chrome');
+/**
+ * checks for Safari environment
+ * - if a majorVersion specified - also check that the version of environment match
+ * - if the version is not specified or failed to extract from the environment - this check will be ignored
+ *
+ * @param {number} majorVersion major version to check for
+ */
+function isSafari(majorVersion) {
+	if (majorVersion !== undefined && typeof majorVersion !== 'number') {
+		throw new Error(`'majorVersion', if specified, MUST be a number`);
+	}
+	const userAgent = window.navigator.userAgent.toLowerCase();
+	let result = userAgent.includes('safari') && !userAgent.includes('chrome');
+	if (result && majorVersion) {
+		const matches = userAgent.match(/version\/([\d]+)/);
+		if (matches && matches.length === 2 && matches[1] !== `${majorVersion}`) {
+			result = false;
+		}
+	}
+	return result;
 }
 
 function isFirefox() {

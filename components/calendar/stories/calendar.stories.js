@@ -11,11 +11,13 @@ export default {
 };
 
 const Template = args => html`<vwc-calendar ...=${spread(args)}>
-	<vwc-calendar-event day="2" style="--vvd-calendar-event-event-color: #4cc3d2; --vvd-calendar-event-event-row: 9 / span 24; --vvd-calendar-event-overlap-count: 2"></vwc-calendar-event>
-	<vwc-calendar-event day="2" style="--vvd-calendar-event-event-color: #d6219c; --vvd-calendar-event-event-row: 5 / span 16"></vwc-calendar-event>
-	<vwc-calendar-event day="2" style="--vvd-calendar-event-event-color: #b779ff; --vvd-calendar-event-event-row: 13 / span 10; --vvd-calendar-event-overlap-count: 1"></vwc-calendar-event>
-	<vwc-calendar-event day="4" style="--vvd-calendar-event-event-color: #d6219c; --vvd-calendar-event-event-row: 13 / span 32"></vwc-calendar-event>
-	<vwc-calendar-event day="6" style="--vvd-calendar-event-event-color: #b779ff; --vvd-calendar-event-event-row: 15 / span 8" label="my event"></vwc-calendar-event>
+	<vwc-calendar-event day="1" start="23" duration="9" heading="Summer time" description="All Day"></vwc-calendar-event>
+	<vwc-calendar-event day="1" start="0" duration="12" color="rgb(43, 158, 250)" heading="Summer time" description="All Day"></vwc-calendar-event>
+	<vwc-calendar-event day="3" start="4" duration="17" color="rgb(214, 33, 156)" heading="Summer time" description="All Day"></vwc-calendar-event>
+	<vwc-calendar-event day="7" start="12" duration="24" color="rgb(183, 126, 249)" heading="Summer time" description="All Day"></vwc-calendar-event>
+	<vwc-calendar-event day="7" start="69" duration="27" color="rgb(50, 175, 76)" heading="Summer time" description="All Day"></vwc-calendar-event>
+	<vwc-calendar-event day="4" start="24" duration="12" color="rgb(50, 175, 76)" heading="Summer time" description="All Day" overlap-count="2"></vwc-calendar-event>
+	<vwc-calendar-event day="4" start="26" duration="27" color="rgb(43, 158, 250)" heading="Summer time" description="All Day"></vwc-calendar-event>
 </vwc-calendar>`;
 
 export const Basic = Template.bind({});

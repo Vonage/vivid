@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.9.1](https://github.com/Vonage/vivid/compare/v2.9.0...v2.9.1) (2021-05-27)
+
+
+### Bug Fixes
+
+* **vwc-calendar:** cells wrong grid columns ([#862](https://github.com/Vonage/vivid/issues/862)) ([1f77e91](https://github.com/Vonage/vivid/commit/1f77e91c873f17263265b27e9add0ed1d9c89b48))
+
+
+
+
+
 # [2.9.0](https://github.com/Vonage/vivid/compare/v2.8.0...v2.9.0) (2021-05-24)
 
 
