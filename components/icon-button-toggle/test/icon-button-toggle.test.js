@@ -121,7 +121,9 @@ describe.only('icon button toggle', () => {
 			actualElement.on = true;
 			await waitNextTask();
 
-			expect(actualElement.getAttribute('icon')).to.equal('home');
+			expect(actualElement.getAttribute('icon'))
+				.to
+				.equal('home');
 		});
 
 		it(`should set officon when state is "off"`, async function () {
@@ -130,12 +132,36 @@ describe.only('icon button toggle', () => {
 			);
 			await waitNextTask();
 
-			expect(actualElement.getAttribute('icon')).to.equal('home');
+			expect(actualElement.getAttribute('icon'))
+				.to
+				.equal('home');
 
 			actualElement.on = false;
 			await waitNextTask();
 
-			expect(actualElement.getAttribute('icon')).to.equal('hotel');
+			expect(actualElement.getAttribute('icon'))
+				.to
+				.equal('hotel');
+		});
+
+		it(`should emit an event with the right state`, async function () {
+			let eventsDetails = [];
+
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} onicon="home" officon="hotel" on></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			actualElement.addEventListener('icon-button-toggle-change', e => eventsDetails.push(e.detail.isOn));
+
+			actualElement.click();
+			actualElement.click();
+
+			expect(eventsDetails[0])
+				.to
+				.equal(false);
+			expect(eventsDetails[1])
+				.to
+				.equal(true);
 		});
 	});
 });

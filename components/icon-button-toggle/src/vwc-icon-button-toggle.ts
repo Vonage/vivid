@@ -35,6 +35,7 @@ export class VWCIconButtonToggle extends VWCIconButton {
 
 		this.addEventListener('click', () => {
 			this.toggleAttribute('on');
+			this.dispatchEvent(new CustomEvent('icon-button-toggle-change', { detail: { isOn: this.isOn } }));
 		});
 
 		this.setAttribute('icon', this.currentIcon);
