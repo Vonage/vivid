@@ -111,5 +111,31 @@ describe.only('icon button toggle', () => {
 				.to
 				.equal(true);
 		});
+
+		it(`should set onicon when state is "on"`, async function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} onicon="home"></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+
+			actualElement.on = true;
+			await waitNextTask();
+
+			expect(actualElement.getAttribute('icon')).to.equal('home');
+		});
+
+		it(`should set officon when state is "off"`, async function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} onicon="home" officon="hotel" on></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+
+			expect(actualElement.getAttribute('icon')).to.equal('home');
+
+			actualElement.on = false;
+			await waitNextTask();
+
+			expect(actualElement.getAttribute('icon')).to.equal('hotel');
+		});
 	});
 });

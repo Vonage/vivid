@@ -16,12 +16,34 @@ declare global {
  */
 @customElement('vwc-icon-button-toggle')
 export class VWCIconButtonToggle extends VWCIconButton {
-	@property({ type: Boolean, reflect: true })
+	@property({
+		type: Boolean,
+		reflect: true
+	})
 	on = false;
+
+	protected get isOn() {
+		return this.hasAttribute('on');
+	}
+
+	protected get currentIcon() {
+		return (this.isOn ? this.getAttribute('onicon') : this.getAttribute('officon')) || '';
+	}
 
 	protected firstUpdated(_changedProperties: PropertyValues) {
 		super.firstUpdated(_changedProperties);
 
-		this.addEventListener('click', () => this.toggleAttribute('on'));
+		this.addEventListener('click', () => {
+			this.toggleAttribute('on');
+		});
+
+		this.setAttribute('icon', this.currentIcon);
+	}
+
+	protected updated(changes: Map<string, boolean>) {
+		if (changes.has('on')) {
+			this.setAttribute('icon', this.currentIcon);
+		}
+		super.updated(changes);
 	}
 }
