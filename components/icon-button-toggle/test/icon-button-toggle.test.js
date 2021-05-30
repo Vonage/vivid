@@ -9,7 +9,7 @@ chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-icon-button-toggle';
 
-describe.only('icon button toggle', () => {
+describe('icon button toggle', () => {
 	let addElement = isolatedElementsCreation();
 
 	it(`${COMPONENT_NAME} is defined as a custom element`, async () => {
