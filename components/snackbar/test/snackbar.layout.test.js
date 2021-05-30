@@ -30,12 +30,7 @@ describe('snackbar layout', () => {
 
 	for (const message of ['short', 'long '.repeat(40)]) {
 		it(`should have action button positioned correctly (message len = ${message.length})`, async () => {
-			const [snackbar] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} dismissible message="${message}">
-					<vwc-button slot="action">Action</vwc-button>
-				</${COMPONENT_NAME}>`)
-			);
-			await snackbar.updateComplete;
+			const snackbar = await createSnackbar(message, true);
 			const snackbarSurface = snackbar.shadowRoot.querySelector('.mdc-snackbar__surface');
 			const actionButton = snackbar.querySelector('vwc-button');
 
@@ -120,4 +115,14 @@ describe('snackbar layout', () => {
 			});
 		}
 	});
+
+	async function createSnackbar(message = 'message', dismissible = false) {
+		const [result] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME} ${dismissible ? 'dismissible' : ''} message="${message}">
+				<vwc-button slot="action">Action</vwc-button>
+			</${COMPONENT_NAME}>`)
+		);
+		await result.updateComplete;
+		return result;
+	}
 });
