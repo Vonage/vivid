@@ -1,6 +1,6 @@
 import '@vonage/vvd-core';
 import {
-	customElement,
+	customElement, PropertyValues,
 } from 'lit-element';
 import { VWCIconButton } from '@vonage/vwc-icon-button';
 
@@ -16,5 +16,9 @@ declare global {
  */
 @customElement('vwc-icon-button-toggle')
 export class VWCIconButtonToggle extends VWCIconButton {
+	protected firstUpdated(_changedProperties: PropertyValues) {
+		super.firstUpdated(_changedProperties);
 
+		this.addEventListener('click', () => this.toggleAttribute('on'));
+	}
 }

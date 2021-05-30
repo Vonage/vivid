@@ -26,7 +26,9 @@ describe.only('icon button toggle', () => {
 			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 		);
 		await waitNextTask();
-		expect(e.shadowRoot.innerHTML).to.equalSnapshot();
+		expect(e.shadowRoot.innerHTML)
+			.to
+			.equalSnapshot();
 	});
 
 	describe('sizing', () => {
@@ -40,5 +42,45 @@ describe.only('icon button toggle', () => {
 
 	describe('icon button connotation', () => {
 		connotationTestCases(COMPONENT_NAME);
+	});
+
+	describe(`toggle mode`, function () {
+		it(`should set "on" property when clicked`, async function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+
+			const hasOnOnStartup = actualElement.hasAttribute('on');
+
+			actualElement.click();
+
+			expect(hasOnOnStartup)
+				.to
+				.equal(false);
+
+			expect(actualElement.hasAttribute('on'))
+				.to
+				.equal(true);
+		});
+
+		it(`should remove "on" property when clicked`, async function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} on></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+
+			const hasOnOnStartup = actualElement.hasAttribute('on');
+
+			actualElement.click();
+
+			expect(hasOnOnStartup)
+				.to
+				.equal(true);
+
+			expect(actualElement.hasAttribute('on'))
+				.to
+				.equal(false);
+		});
 	});
 });
