@@ -5,7 +5,7 @@ import {
 import { style } from './vwc-calendar.css';
 import {
 	assertIsValidDateStringRepresentation,
-	getValidDatetimeString
+	getValidDateString
 } from './vwc-calendar-date-functions';
 
 declare global {
@@ -117,7 +117,7 @@ export class VWCCalendar extends LitElement {
 			<ol class="headline">
 					${this.getDaysArr([this.getFirstDateOfTheWeek(this.datetime)]).map(date => html`
 					<li>
-						<time datetime=${getValidDatetimeString(date)}>
+						<time datetime=${getValidDateString(date)}>
 							${this.formatDate(date, {	day: '2-digit',	weekday: 'short' })}
 						</time>
 					</li>`)}

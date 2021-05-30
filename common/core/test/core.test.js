@@ -89,7 +89,9 @@ describe('vvd-core service', () => {
 	});
 
 	describe('switch flows in encapsulated environment and assert variables set', () => {
-		it('should perform auto-init to default when no data-vvd-context provided', async () => {
+		it('should perform auto-init to default when no data-vvd-context provided', async function () {
+			this.timeout(8000);
+
 			await getFrameLoadedInjected(CORE_SETUP_HTML_TAG, async (iframe) => {
 				const iframeWindow = iframe.contentWindow;
 				await iframeWindow.executeSetup();
@@ -104,7 +106,9 @@ describe('vvd-core service', () => {
 			});
 		});
 
-		it('should perform auto-init to a value in data-vvd-context, when provided', async () => {
+		it('should perform auto-init to a value in data-vvd-context, when provided', async function () {
+			this.timeout(8000);
+
 			const vvdContextTheme = DARK;
 			await getFrameLoadedInjected(CORE_SETUP_HTML_TAG, async (iframe) => {
 				iframe.contentDocument.documentElement.setAttribute(
@@ -125,7 +129,9 @@ describe('vvd-core service', () => {
 			});
 		});
 
-		it('should NOT perform auto-init when data-vvd-context is "none"', async () => {
+		it('should NOT perform auto-init when data-vvd-context is "none"', async function () {
+			this.timeout(8000);
+
 			const vvdContextNone = NONE;
 			await getFrameLoadedInjected(CORE_SETUP_HTML_TAG, async (iframe) => {
 				iframe.contentDocument.documentElement.setAttribute(
@@ -145,7 +151,9 @@ describe('vvd-core service', () => {
 			});
 		});
 
-		it('should perform init to a first value in data-vvd-context, when many provided', async () => {
+		it('should perform init to a first value in data-vvd-context, when many provided', async function () {
+			this.timeout(8000);
+
 			const vvdContextTheme = LIGHT;
 			await getFrameLoadedInjected(CORE_SETUP_HTML_TAG, async (iframe) => {
 				iframe.contentDocument.documentElement.setAttribute(
