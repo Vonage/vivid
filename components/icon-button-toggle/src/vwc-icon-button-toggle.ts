@@ -3,6 +3,7 @@ import {
 	customElement, property, PropertyValues,
 } from 'lit-element';
 import { VWCIconButton } from '@vonage/vwc-icon-button';
+import { style as vwcIconButtonToggleStyle } from './vwc-icon-button-toggle.css';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -10,6 +11,8 @@ declare global {
 	}
 }
 
+const styles = VWCIconButton.styles as any;
+styles.push(vwcIconButtonToggleStyle);
 
 /**
  * This component is an extension of [<mwc-icon-button-toggle>](https://github.com/material-components/material-components-web-components/tree/master/packages/icon-button-toggle)
