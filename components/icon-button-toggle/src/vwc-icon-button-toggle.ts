@@ -11,9 +11,6 @@ declare global {
 	}
 }
 
-const styles = VWCIconButton.styles as any;
-styles.push(vwcIconButtonToggleStyle);
-
 /**
  * This component is an extension of [<mwc-icon-button-toggle>](https://github.com/material-components/material-components-web-components/tree/master/packages/icon-button-toggle)
  */
@@ -51,3 +48,7 @@ export class VWCIconButtonToggle extends VWCIconButton {
 		super.updated(changes);
 	}
 }
+
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+// @ts-ignore
+VWCIconButtonToggle.styles = [...VWCIconButton.styles, vwcIconButtonToggleStyle];

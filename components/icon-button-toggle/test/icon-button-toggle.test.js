@@ -3,7 +3,6 @@ import { waitNextTask, textToDomToParent } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import { isolatedElementsCreation } from '../../../test/test-helpers';
 import { shapeCircledTestCases, shapeRoundedTestCases, sizingTestCases } from '../../../test/shared';
-import { connotationTestCases } from '@vonage/vwc-button/test/button.connotation.test';
 
 chai.use(chaiDomDiff);
 
@@ -38,10 +37,6 @@ describe('icon button toggle', () => {
 	describe('shape', () => {
 		shapeRoundedTestCases(COMPONENT_NAME);
 		shapeCircledTestCases(COMPONENT_NAME);
-	});
-
-	describe('icon button connotation', () => {
-		connotationTestCases(COMPONENT_NAME);
 	});
 
 	describe(`toggle mode`, function () {
