@@ -82,5 +82,34 @@ describe.only('icon button toggle', () => {
 				.to
 				.equal(false);
 		});
+
+		it(`should reflect the "on" attribute`, async function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} on></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+
+			const hasOnOnStartup = actualElement.on;
+
+			actualElement.on = false;
+			await waitNextTask();
+			const hasOnWhenPropFalse = actualElement.hasAttribute('on');
+
+			actualElement.on = true;
+			await waitNextTask();
+			const hasOnWhenPropTrue = actualElement.hasAttribute('on');
+
+			expect(hasOnOnStartup)
+				.to
+				.equal(true);
+
+			expect(hasOnWhenPropFalse)
+				.to
+				.equal(false);
+
+			expect(hasOnWhenPropTrue)
+				.to
+				.equal(true);
+		});
 	});
 });

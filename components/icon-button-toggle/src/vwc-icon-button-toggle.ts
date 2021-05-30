@@ -1,6 +1,6 @@
 import '@vonage/vvd-core';
 import {
-	customElement, PropertyValues,
+	customElement, property, PropertyValues,
 } from 'lit-element';
 import { VWCIconButton } from '@vonage/vwc-icon-button';
 
@@ -16,6 +16,9 @@ declare global {
  */
 @customElement('vwc-icon-button-toggle')
 export class VWCIconButtonToggle extends VWCIconButton {
+	@property({ type: Boolean, reflect: true })
+	on = false;
+
 	protected firstUpdated(_changedProperties: PropertyValues) {
 		super.firstUpdated(_changedProperties);
 
