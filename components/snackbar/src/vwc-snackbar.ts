@@ -82,7 +82,7 @@ export class VWCSnackbar extends MWCSnackbarBase {
 		return html`
 			<div class="mdc-snackbar" position="${position}">
 				<div class="mdc-snackbar__surface">
-					${this.legacy ? this.renderLegacyFlavor() : this.renderDefaultFlavor()}
+					${this.legacy ? this.renderUiLegacy() : this.renderUiDefault()}
 				</div>
 			</div>
 		`;
@@ -112,10 +112,10 @@ export class VWCSnackbar extends MWCSnackbarBase {
 		this.mdcFoundation.handleActionIconClick(event);
 	}
 
-	private renderDefaultFlavor(): TemplateResult {
+	private renderUiDefault(): TemplateResult {
 		return html`<div class="vivid-snackbar" part="vvd-scheme-alternate">
 				<vwc-note
-					class="note-internal"
+					class="note"
 					icon="${ifDefined(this.icon)}"
 					connotation="${ifDefined(this.connotation)}"
 				>${this.message}</vwc-note>
@@ -128,7 +128,7 @@ export class VWCSnackbar extends MWCSnackbarBase {
 			</div>`;
 	}
 
-	private renderLegacyFlavor(): TemplateResult {
+	private renderUiLegacy(): TemplateResult {
 		return html`<div class="vivid-snackbar">
 				<vwc-note
 					icon="${ifDefined(this.icon)}"
