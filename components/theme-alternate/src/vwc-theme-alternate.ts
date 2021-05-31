@@ -20,6 +20,9 @@ declare global {
 @customElement('vwc-theme-alternate')
 export class VWCThemeAlternate extends LitElement {
 	protected render(): TemplateResult {
-		return html`<slot part="vvd-scheme-alternate"></slot>`;
+		return html`<div class="container" part="vvd-scheme-alternate">
+				<slot></slot>
+			</div>
+			`;
 	}
 }
