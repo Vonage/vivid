@@ -29,7 +29,8 @@ const TemplateA = args => html`
 					Basic item 4
 				</vwc-check-list-item>
 			</vwc-list>
-			<vwc-button layout="filled" @click="${actionClickHandler}">Done</vwc-button>
+			<vwc-button slot="footer" layout="filled" @click="${actionClickHandler}">Done</vwc-button>
+			<vwc-button slot="footer" @click="${actionClickHandler}">Cancel</vwc-button>
 		</vwc-dropdown>
 	</div>
 `;

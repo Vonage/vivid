@@ -2,4 +2,9 @@
 	.dropdown-container {
 		padding: 16px;
 	}
+
+	[name=footer] {
+		display: flex;
+		gap: 8px;
+	}
 }
