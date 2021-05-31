@@ -90,9 +90,6 @@ const htmlSample = html`
 				</tr>
 			</table>
 		</div>
-
-
-
 `;
 
 const Template = args => html`
