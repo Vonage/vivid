@@ -1,5 +1,6 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-surface';
+import '@material/mwc-list';
 import { MenuBase as MWCMenuBase } from '@material/mwc-menu/mwc-menu-base';
 import { MDCMenuAdapter } from '@material/menu';
 import { customElement, html } from 'lit-element';
@@ -15,7 +16,7 @@ declare global {
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-MWCMenu.styles = [styleCoupling, mwcMenuStyle, vwcMenuStyle];
+MWCMenuBase.styles = [styleCoupling, mwcMenuStyle, vwcMenuStyle];
 
 /**
  * This component is an extension of [<mwc-menu>](https://github.com/material-components/material-components-web-components/tree/master/packages/menu)
@@ -53,7 +54,7 @@ export class VWCMenu extends MWCMenuBase {
 					@closed=${this.onClosed}
 					@opened=${this.onOpened}
 					@keydown=${this.onKeydown}>
-				<vwc-list
+				<mwc-list
 					rootTabbable
 					.innerRole=${this.innerRole}
 					.multi=${this.multi}
@@ -63,7 +64,7 @@ export class VWCMenu extends MWCMenuBase {
 					.activatable=${this.activatable}
 					@action=${this.onAction}>
 					<slot></slot>
-				</vwc-list>
+				</mwc-list>
 			</vwc-surface>
 		`;
 	}

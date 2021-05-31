@@ -29,6 +29,7 @@
 	},
 	"dependencies": {
 		"@material/mwc-menu": "^0.21.0",
+		"@material/mwc-list": "^0.21.0",
 		"@vonage/vvd-core": "2.9.1",
 		"@vonage/vvd-style-coupling": "2.9.1",
 		"@vonage/vwc-surface": "2.9.1",
