@@ -1,12 +1,8 @@
 ### `vwc-surface`
 
-`vwc-surface` component dedicated mostly for internal Vivid's usage.
-
-TODO: usage example
+`vwc-surface` component dedicated for internal Vivid's usage.
 
 ### Structure
-
-TBD
 
 ### API
 
@@ -34,8 +30,6 @@ TBD
 | `closed`  |         | fired when the surface fully closed
 
 #### Customization
-
-TBD
 
 ##### Slots
 
