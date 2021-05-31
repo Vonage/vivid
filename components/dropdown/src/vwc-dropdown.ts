@@ -1,6 +1,5 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-surface';
-import '@material/mwc-list';
 import { VWCMenu } from '@vonage/vwc-menu';
 import { customElement, html } from 'lit-element';
 import { style as vwcDropdownStyle } from './vwc-dropdown.css';
