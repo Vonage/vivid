@@ -1,6 +1,6 @@
 ### `vwc-dropdown`
 
-`vwc-dropdown` is a surfacing menu component, showing up on demand, eg upon user action.
+`vwc-dropdown` is a surfacing content component, dropdown, showing up on demand, eg upon user action.
 `vwc-dropdown`, in contrast to `vwc-menu`, allows a free content provided by consumer, while structuring the internal body with slots: `header`, `footer` and the default content.
 
 ### Usage
@@ -9,6 +9,9 @@ Usage example:
 ```html
 <vwc-menu>
 	<vwc-textfield slot="header">Item 1</vwc-textfield>
+	<div>
+		any HTML content can go here as main body
+	</div>
 	<vwc-button slot="footer">Done</vwc-button>
 </vwc-menu>
 ```
