@@ -115,6 +115,7 @@ export class VWCSnackbar extends MWCSnackbarBase {
 	private renderDefaultFlavor(): TemplateResult {
 		return html`<div class="vivid-snackbar" part="vvd-scheme-alternate">
 				<vwc-note
+					class="note-internal"
 					icon="${ifDefined(this.icon)}"
 					connotation="${ifDefined(this.connotation)}"
 				>${this.message}</vwc-note>

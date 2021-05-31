@@ -12,7 +12,7 @@
       class="vivid-snackbar"
       part="vvd-scheme-alternate"
     >
-      <vwc-note>
+      <vwc-note class="note-internal">
       </vwc-note>
       <div class="actions-container">
         <div class="action-container">
@@ -38,7 +38,7 @@
       class="vivid-snackbar"
       part="vvd-scheme-alternate"
     >
-      <vwc-note>
+      <vwc-note class="note-internal">
       </vwc-note>
       <div class="actions-container">
         <div class="action-container">
@@ -64,7 +64,7 @@
       class="vivid-snackbar"
       part="vvd-scheme-alternate"
     >
-      <vwc-note>
+      <vwc-note class="note-internal">
         Message
       </vwc-note>
       <div class="actions-container">
@@ -91,7 +91,10 @@
       class="vivid-snackbar"
       part="vvd-scheme-alternate"
     >
-      <vwc-note icon="home">
+      <vwc-note
+        class="note-internal"
+        icon="home"
+      >
       </vwc-note>
       <div class="actions-container">
         <div class="action-container">
@@ -117,7 +120,7 @@
       class="vivid-snackbar"
       part="vvd-scheme-alternate"
     >
-      <vwc-note>
+      <vwc-note class="note-internal">
       </vwc-note>
       <div class="actions-container">
         <div class="action-container">
@@ -152,7 +155,7 @@
       class="vivid-snackbar"
       part="vvd-scheme-alternate"
     >
-      <vwc-note>
+      <vwc-note class="note-internal">
       </vwc-note>
       <div class="actions-container">
         <div class="action-container">
