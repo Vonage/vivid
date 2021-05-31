@@ -3,7 +3,7 @@
 #### `should have internal contents`
 
 ```html
-<mwc-menu-surface
+<vwc-surface
   class="mdc-menu mdc-menu-surface"
   hidden=""
 >
@@ -14,7 +14,7 @@
     <slot>
     </slot>
   </mwc-list>
-</mwc-menu-surface>
+</vwc-surface>
 
 ```
 
