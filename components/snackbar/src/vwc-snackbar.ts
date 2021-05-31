@@ -117,7 +117,6 @@ export class VWCSnackbar extends MWCSnackbarBase {
 				<vwc-note
 					icon="${ifDefined(this.icon)}"
 					connotation="${ifDefined(this.connotation)}"
-					header="${ifDefined(this.header)}"
 				>${this.message}</vwc-note>
 				<div class="actions-container">
 					<div class="action-container">

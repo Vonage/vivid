@@ -39,7 +39,7 @@ Position of the `vwc-snackbar` is determined by `fixed` and thus relative to the
 | `position`      | `position`       | `"TOP-START" | "TOP-CENTER" | "TOP-END" | "BOTTOM-START" | "BOTTOM-CENTER" | "BOTTOM-END" ` | `"BOTTOM-CENTER"` | defines the position of the snackbar |
 | `connotaion`    | `connotation`    | `"alert" | "announcement" | "cta" | "info" | "success" | "warning"` | `"announcement"` |  | connotation color will be reflected in icon color, if present |
 | `icon`          | `icon`           | `string`  | `undefined` | icon type to show, if any |
-| `header`        | `header`         | `string`  | `undefined` | header of the message body |
+| `header`        | `header`         | `string`  | `undefined` | header of the message body (will be reflected in __legacy__ flavor ONLY) |
 | `message`       | `message`        | `string`  | `undefined` | message of the message body |
 | `dismissible`   | `dismissible`    | `boolean` | absent (`false`) | when property set to `true` (attribute present) the dismiss button will be shown |
 | `timeoutMs`     | `timeoutms`      | `number` (4000-10000) | `5000`      | time to wait (in millis) till the snackbar auto dismiss |

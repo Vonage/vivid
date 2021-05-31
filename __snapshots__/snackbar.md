@@ -38,7 +38,7 @@
       class="vivid-snackbar"
       part="vvd-scheme-alternate"
     >
-      <vwc-note header="Header">
+      <vwc-note>
       </vwc-note>
       <div class="actions-container">
         <div class="action-container">
