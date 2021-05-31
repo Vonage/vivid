@@ -1,12 +1,11 @@
 {
-	"name": "@vonage/vwc-menu",
+	"name": "@vonage/vwc-dropdown",
 	"version": "2.9.1",
-	"description": "menu component",
-	"author": "yinonov <yinon@hotmail.com>",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/menu#readme",
+	"description": "dropdown component",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/dropdown#readme",
 	"license": "ISC",
-	"main": "vwc-menu.js",
-	"module": "vwc-menu.js",
+	"main": "vwc-dropdown.js",
+	"module": "vwc-dropdown.js",
 	"files": [
 		"*.js",
 		"*.ts",
@@ -15,7 +14,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/menu"
+		"directory": "components/dropdown"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1",
@@ -27,11 +26,8 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@material/mwc-menu": "^0.21.0",
-		"@material/mwc-list": "^0.21.0",
 		"@vonage/vvd-core": "2.9.1",
-		"@vonage/vvd-style-coupling": "2.9.1",
-		"@vonage/vwc-surface": "2.9.1",
+		"@vonage/vwc-menu": "2.9.1",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.3"
 	},
