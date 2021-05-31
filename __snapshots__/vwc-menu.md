@@ -7,13 +7,13 @@
   class="mdc-menu mdc-menu-surface"
   hidden=""
 >
-  <mwc-list
+  <vwc-list
     class="mdc-deprecated-list"
     roottabbable=""
   >
     <slot>
     </slot>
-  </mwc-list>
+  </vwc-list>
 </vwc-surface>
 
 ```

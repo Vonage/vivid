@@ -1,12 +1,13 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-surface';
-import '@material/mwc-list';
+import '@vonage/vwc-list';
 import { MenuBase as MWCMenuBase } from '@material/mwc-menu/mwc-menu-base';
 import { MDCMenuAdapter } from '@material/menu';
 import { customElement, html } from 'lit-element';
 import { style as mwcMenuStyle } from '@material/mwc-menu/mwc-menu-css.js';
 import { style as vwcMenuStyle } from './vwc-menu.css';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
+import { VWCList } from '@vonage/vwc-list';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -23,6 +24,14 @@ MWCMenuBase.styles = [styleCoupling, mwcMenuStyle, vwcMenuStyle];
  */
 @customElement('vwc-menu')
 export class VWCMenu extends MWCMenuBase {
+	get listElement(): VWCList | null {
+		if (!this.listElement_) {
+			this.listElement_ = this.renderRoot.querySelector('.vwc-menu-list');
+			return this.listElement_;
+		}
+		return this.listElement_;
+	}
+
 	createAdapter(): MDCMenuAdapter {
 		const baseAdapter = super.createAdapter();
 		const baseCloseSurface = baseAdapter.closeSurface;
@@ -54,17 +63,17 @@ export class VWCMenu extends MWCMenuBase {
 					@closed=${this.onClosed}
 					@opened=${this.onOpened}
 					@keydown=${this.onKeydown}>
-				<mwc-list
+				<vwc-list
 					rootTabbable
 					.innerRole=${this.innerRole}
 					.multi=${this.multi}
-					class="mdc-deprecated-list"
+					class="vwc-menu-list mdc-deprecated-list"
 					.itemRoles=${itemRoles}
 					.wrapFocus=${this.wrapFocus}
 					.activatable=${this.activatable}
 					@action=${this.onAction}>
 					<slot></slot>
-				</mwc-list>
+				</vwc-list>
 			</vwc-surface>
 		`;
 	}
