@@ -8,7 +8,7 @@
   hidden=""
 >
   <vwc-list
-    class="mdc-deprecated-list"
+    class="mdc-deprecated-list vwc-menu-list"
     roottabbable=""
   >
     <slot>
