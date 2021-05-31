@@ -30,7 +30,6 @@
 		"@material/mwc-menu": "^0.21.0",
 		"@vonage/vvd-core": "2.9.1",
 		"@vonage/vwc-list": "2.9.1",
-		"@vonage/vvd-style-coupling": "2.9.1",
 		"@vonage/vwc-surface": "2.9.1",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.3"

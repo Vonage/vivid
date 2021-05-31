@@ -6,7 +6,6 @@ import { MDCMenuAdapter } from '@material/menu';
 import { customElement, html } from 'lit-element';
 import { style as mwcMenuStyle } from '@material/mwc-menu/mwc-menu-css.js';
 import { style as vwcMenuStyle } from './vwc-menu.css';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 import { VWCList } from '@vonage/vwc-list';
 
 declare global {
@@ -17,7 +16,7 @@ declare global {
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-MWCMenuBase.styles = [styleCoupling, mwcMenuStyle, vwcMenuStyle];
+MWCMenuBase.styles = [mwcMenuStyle, vwcMenuStyle];
 
 /**
  * This component is an extension of [<mwc-menu>](https://github.com/material-components/material-components-web-components/tree/master/packages/menu)
