@@ -46,5 +46,20 @@ Icon.args = { header: 'Campaign Details', icon: 'chat-solid' };
 export const noRipple = Template.bind({});
 noRipple.args = { header: 'Campaign Details', noRipple: '' };
 
-export const LazyLoad = Template.bind({});
-LazyLoad.args = { header: 'Campaign Details', lazyLoad: '' };
+const Lazy = args => html`
+  <style>
+    form {
+      display: grid;
+      gap: 20px;
+    }
+  </style>
+  <vwc-expansion-panel ...=${spread(args)}>
+    <template>
+      <img src="https://via.placeholder.com/350x150" />
+      <p>To lazy load content in the expansion panel wrap the content in <code>template</code> tags.</p>
+    </template>
+  </vwc-expansion-panel>
+`;
+
+export const LazyLoad = Lazy.bind({});
+LazyLoad.args = { header: 'Lazy Load Content' };

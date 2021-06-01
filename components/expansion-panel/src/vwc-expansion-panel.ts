@@ -43,9 +43,6 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	leadingToggle = false;
 
 	@property({ type: Boolean, reflect: true })
-	lazyLoad = false;
-
-	@property({ type: Boolean, reflect: true })
 	noRipple = false;
 
 	@queryAsync('mwc-ripple') ripple!: Promise<Ripple>;
@@ -54,10 +51,16 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 		return this.ripple;
 	});
 
+	private templateContent: DocumentFragment | undefined;
+
 	protected firstUpdated(): void {
 		const header = this.shadowRoot?.querySelector('.expansion-panel-header');
 		header?.addEventListener('click', this.toggleOpen.bind(this));
 		header?.addEventListener('touchstart', this.toggleOpen.bind(this));
+
+		const template = this.querySelector('template');
+		this.templateContent = template?.content;
+		template?.remove();
 	}
 
 	protected toggleOpen(): void {
@@ -67,6 +70,11 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	openChanged(isOpen: boolean): void {
 		super.openChanged(isOpen);
 		this.toggleAttribute('open', isOpen);
+
+		if (isOpen && this.templateContent) {
+			this.appendChild(this.templateContent.cloneNode(true));
+			this.templateContent = undefined;
+		}
 	}
 
 	protected renderRipple(): TemplateResult|string {
@@ -97,7 +105,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 				</span>
 			</div>
 			<div class="expansion-panel-body">
-				${this.renderContent()}
+				<slot></slot>
 			</div>
 		</div>`;
 	}
@@ -125,14 +133,6 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 			>
 			</vwc-icon>
 		`;
-	}
-
-	protected renderContent(): TemplateResult | string {
-		if (!this.lazyLoad || (this.lazyLoad && this.open)) {
-			return html`<slot></slot>`;
-		} else {
-			return '';
-		}
 	}
 
 	@eventOptions({ passive: true })
