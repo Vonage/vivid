@@ -9,7 +9,6 @@ export const argTypes = {
 			options: [
 				Connotation.Alert,
 				Connotation.Announcement,
-				Connotation.CTA,
 				Connotation.Info,
 				Connotation.Success,
 				Connotation.Warning,
