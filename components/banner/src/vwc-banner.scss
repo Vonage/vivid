@@ -4,6 +4,7 @@
 	$connotations-set: success info alert announcement warning
 );
 @use '@vonage/vvd-typography/scss/typography';
+@use './vwc-banner-variables.scss' as banner-variables;
 
 @include color-connotation.connotations-main;
 @include color-connotation.connotations-main-default(info);
@@ -14,30 +15,26 @@
 		/* stylelint-enable */
 		overflow: hidden;
 		max-height: 0;
-		transition: max-height var(--transition-delay, 200ms);
+		transition: max-height var(#{banner-variables.$banner-transition-delay}, 200ms);
 
 		> .header {
 			@include typography.typography-cat-shorthand('body-2-bold');
 			display: flex;
+			min-height: 60px;
 			align-items: center;
 			justify-content: flex-start;
-			padding: 20px 0;
 			background-color: var(#{color-connotation.$vvd-color-connotation});
 			color: var(#{color-connotation.$vvd-color-on-connotation});
-
-			&::before {
-				flex: 0 0 16px;
-				content: '';
-			}
 
 			> .user-content {
 				display: flex;
 				flex: 1 0;
 				align-items: center;
 				justify-content: center;
+				padding-inline: 16px;
 
 				> .icon {
-					--icon-size: 20px;
+					--icon-size: var(#{banner-variables.$banner-icon-size}, 20px);
 					flex: 0 0 auto;
 					padding-inline-end: 15px;
 				}
@@ -46,6 +43,10 @@
 					display: inline-block;
 					flex: 0 0 auto;
 					padding-inline-start: 15px;
+				}
+
+				> .message {
+					padding: 20px 0;
 				}
 			}
 
