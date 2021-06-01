@@ -1,23 +1,42 @@
+$default-dropdown-padding: 24px;
+$vvd-dropdown-padding: '--vvd-dropdown-padding';
+$vvd-dropdown-padding-header: '--vvd-dropdown-padding-header';
+$vvd-dropdown-padding-body: '--vvd-dropdown-padding-body';
+$vvd-dropdown-padding-actions: '--vvd-dropdown-padding-actions';
+
+:host {
+	#{$vvd-dropdown-padding}: $default-dropdown-padding;
+}
+
 .dropdown-content {
-	padding: 24px;
+	padding-block-end: 8px;
+	padding-block-start: 8px;
 }
 
 .section {
 	display: flex;
 }
 
+.section.header {
+	padding-inline-end: var(#{$vvd-dropdown-padding-header}, var(#{$vvd-dropdown-padding}));
+	padding-inline-start: var(#{$vvd-dropdown-padding-header}, var(#{$vvd-dropdown-padding}));
+}
+
 .section.body {
 	display: block;
-	width: calc(100% + 48px);
-	margin-inline-start: -24px;
+	padding-inline-end: var(#{$vvd-dropdown-padding-body}, 0);
+	padding-inline-start: var(#{$vvd-dropdown-padding-body}, 0);
 }
 
 // actions
+//
 .section.actions {
 	display: flex;
 	justify-content: flex-end;
+	padding-inline-end: var(#{$vvd-dropdown-padding-actions}, var(#{$vvd-dropdown-padding}));
+	padding-inline-start: var(#{$vvd-dropdown-padding-actions}, var(#{$vvd-dropdown-padding}));
 
-	::slotted(vwc-button) {
+	::slotted(*) {
 		margin-inline-start: 8px;
 	}
 }

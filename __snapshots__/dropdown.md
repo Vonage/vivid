@@ -20,10 +20,6 @@
       <slot name="actions">
       </slot>
     </div>
-    <div class="footer section">
-      <slot name="footer">
-      </slot>
-    </div>
   </div>
 </vwc-surface>
 

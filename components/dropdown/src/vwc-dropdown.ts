@@ -53,9 +53,6 @@ export class VWCDropdown extends VWCMenu {
 					<div class="section actions">
 						<slot name="actions"></slot>
 					</div>
-					<div class="section footer">
-						<slot name="footer"></slot>
-					</div>
 				</div>
 			</vwc-surface>
 		`;
