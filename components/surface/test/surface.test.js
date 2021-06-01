@@ -7,6 +7,10 @@ chai.use(chaiDomDiff);
 describe('surface', () => {
 	let addElement = isolatedElementsCreation();
 
+	if (!addElement) {
+		return;
+	}
+
 	it('vwc-surface is defined as a custom element', async () => {
 		assert.exists(
 			customElements.get(COMPONENT_NAME, 'vwc-surface element is not defined')
