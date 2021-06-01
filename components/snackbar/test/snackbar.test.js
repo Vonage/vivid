@@ -60,7 +60,9 @@ describe('snackbar', () => {
 
 		it(`should have internal contents (slotted action) - flavor = '${flavor}'`, async () => {
 			const [snackbar] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} ${flavor}><vwc-button>Action</vwc-button></${COMPONENT_NAME}>`)
+				textToDomToParent(`<${COMPONENT_NAME} ${flavor}>
+					<vwc-button slot="action">Action</vwc-button>
+				</${COMPONENT_NAME}>`)
 			);
 			await snackbar.updateComplete;
 			expect(snackbar.shadowRoot.innerHTML).to.equalSnapshot();
