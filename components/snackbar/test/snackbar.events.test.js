@@ -13,16 +13,10 @@ describe('snackbar events', () => {
 	let closedPromise;
 
 	beforeEach(async () => {
-		const [s] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME} dismissible>
-				<vwc-button slot="action">Action</vwc-button>
-			</${COMPONENT_NAME}>`)
-		);
-		await s.updateComplete;
-		await openSnackbar(s);
-		snackbar = s;
-		closingPromise = getEventPromise(s, 'closing');
-		closedPromise = getEventPromise(s, 'closed');
+		snackbar = await createSnackbar('message', true);
+		await openSnackbar(snackbar);
+		closingPromise = getEventPromise(snackbar, 'closing');
+		closedPromise = getEventPromise(snackbar, 'closed');
 	});
 
 	it(`should close on dismiss with reason 'dismiss'`, async () => {
@@ -42,4 +36,14 @@ describe('snackbar events', () => {
 		assertEventWithReason(closingEvent, 'closing', 'action');
 		assertEventWithReason(closedEvent, 'closed', 'action');
 	});
+
+	async function createSnackbar(message = 'message', dismissible = false) {
+		const [result] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME} ${dismissible ? 'dismissible' : ''} message="${message}">
+				<vwc-button slot="action">Action</vwc-button>
+			</${COMPONENT_NAME}>`)
+		);
+		await result.updateComplete;
+		return result;
+	}
 });
