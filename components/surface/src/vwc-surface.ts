@@ -5,10 +5,6 @@ import { style as mwcSurfaceStyle } from '@material/mwc-menu/mwc-menu-surface-cs
 import { style as vwcSurfaceStyle } from './vwc-surface.css';
 
 export const COMPONENT_NAME = 'vwc-surface';
-export const OPENING_EVENT = 'opening';
-export const OPENED_EVENT = 'opened';
-export const CLOSING_EVENT = 'closing';
-export const CLOSED_EVENT = 'closed';
 
 declare global {
 	interface HTMLElementTagNameMap {
