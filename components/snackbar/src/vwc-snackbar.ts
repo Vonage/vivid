@@ -28,11 +28,10 @@ declare global {
 // @ts-ignore
 MWCSnackbarBase.styles = [mwcSnackbarStyle, vwcSnackbarStyle];
 
-type NoteConnotation = Extract<
+type SnackbarConnotation = Extract<
 	Connotation,
 	| Connotation.Alert
 	| Connotation.Announcement
-	| Connotation.CTA
 	| Connotation.Info
 	| Connotation.Success
 	| Connotation.Warning
@@ -58,7 +57,7 @@ export class VWCSnackbar extends MWCSnackbarBase {
 	position: PositionPair = DEFAULT_POSITION;
 
 	@property({ type: String, reflect: true })
-	connotation?: NoteConnotation;
+	connotation?: SnackbarConnotation;
 
 	@property({ type: String, reflect: true })
 	icon?: string;
@@ -83,7 +82,7 @@ export class VWCSnackbar extends MWCSnackbarBase {
 		return html`
 			<div class="mdc-snackbar" position="${position}">
 				<div class="mdc-snackbar__surface">
-					${this.renderFlavor(this.legacy)}
+					${this.legacy ? this.renderUiLegacy() : this.renderUiDefault()}
 				</div>
 			</div>
 		`;
@@ -113,9 +112,24 @@ export class VWCSnackbar extends MWCSnackbarBase {
 		this.mdcFoundation.handleActionIconClick(event);
 	}
 
-	private renderFlavor(legacy: boolean): TemplateResult {
-		const partValue = legacy ? undefined : 'vvd-scheme-alternate';
-		return html`<div class="vivid-snackbar" part="${ifDefined(partValue)}">
+	private renderUiDefault(): TemplateResult {
+		return html`<div class="vivid-snackbar" part="vvd-scheme-alternate">
+				<vwc-note
+					class="note"
+					icon="${ifDefined(this.icon)}"
+					connotation="${ifDefined(this.connotation)}"
+				>${this.message}</vwc-note>
+				<div class="actions-container">
+					<div class="action-container">
+						<slot name="action" @click="${this.handleActionClick}"></slot>
+					</div>
+					${this.renderDismissAction()}
+				</div>
+			</div>`;
+	}
+
+	private renderUiLegacy(): TemplateResult {
+		return html`<div class="vivid-snackbar">
 				<vwc-note
 					icon="${ifDefined(this.icon)}"
 					connotation="${ifDefined(this.connotation)}"
@@ -128,9 +142,7 @@ export class VWCSnackbar extends MWCSnackbarBase {
 								<slot name="action" @click="${this.handleActionClick}"></slot>
 							</div>
 						</div>
-						<div class="dismiss-container">
-							${this.renderDismissAction()}
-						</div>
+						${this.renderDismissAction()}
 					</div>
 				</vwc-note>
 			</div>`;
@@ -142,14 +154,16 @@ export class VWCSnackbar extends MWCSnackbarBase {
 		}
 
 		return html`
-			<vwc-icon-button
-				class="dismiss-button"
-				icon="close-line"
-				layout="ghost"
-				dense
-				@click="${this.handleDismissClick}"
-			>
-			</vwc-icon-button>
+			<div class="dismiss-container">
+				<vwc-icon-button
+					class="dismiss-button"
+					icon="close-line"
+					layout="ghost"
+					dense
+					@click="${this.handleDismissClick}"
+				>
+				</vwc-icon-button>
+			</div>
 		`;
 	}
 

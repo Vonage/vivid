@@ -22,7 +22,8 @@ export const Basic = (function () {
 		{
 			connotation,
 			dismissible,
-			icon
+			icon,
+			message
 		}
 	) {
 		cancelAnimations();
@@ -64,7 +65,7 @@ export const Basic = (function () {
 					?dismissible=${dismissible}
 					icon=${ifDefined(icon)}
 					connotation=${connotation}
-					message="Here's some information that you may find important!">
+					message=${message}>
 					<vwc-button slot="actionItems" layout="filled" @click=${onClose} dense>Learn More</vwc-button>
 				</vwc-banner>
 				<div class="content"></div>
@@ -76,7 +77,8 @@ export const Basic = (function () {
 
 Basic.args = {
 	connotation: "info",
-	dismissible: true
+	dismissible: true,
+	message: "Here's some information that you may find important!"
 };
 Basic.argTypes = {
 	open: {
