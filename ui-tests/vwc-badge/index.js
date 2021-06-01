@@ -1,8 +1,9 @@
+import vvdCore from '@vonage/vvd-core';
 import { VWCBadge } from '@vonage/vwc-badge';
 
 VWCBadge;
 
-export function createElementVariations(wrapper) {
+export async function createElementVariations(wrapper) {
 	const badgeElementWrapper = document.createElement('div');
 	badgeElementWrapper.innerHTML =
 		`
@@ -14,6 +15,8 @@ export function createElementVariations(wrapper) {
 <vwc-badge layout="filled" enlarged="">I'm a badge</vwc-badge>
 `;
 	wrapper.appendChild(badgeElementWrapper);
+
+	await vvdCore.settled;
 }
 
 
