@@ -12,9 +12,9 @@ const TemplateA = args => html`
 		}
 	</style>
 	<div style="position: relative">
-		<vwc-button id="button" label="Open menu" @click="${anchorClickHandler}"></vwc-button>
+		<vwc-button id="button" label="Open dropdown" @click="${anchorClickHandler}"></vwc-button>
 		<vwc-dropdown id="dropdown" ...=${spread(args)}>
-			<vwc-textfield label="Do something..."></vwc-textfield>
+			<vwc-textfield slot="header" label="Do something..."></vwc-textfield>
 			<vwc-list multi>
 				<vwc-check-list-item left>
 					Basic item 1
@@ -29,8 +29,8 @@ const TemplateA = args => html`
 					Basic item 4
 				</vwc-check-list-item>
 			</vwc-list>
-			<vwc-button slot="footer" layout="filled" @click="${actionClickHandler}">Done</vwc-button>
-			<vwc-button slot="footer" @click="${actionClickHandler}">Cancel</vwc-button>
+			<vwc-button slot="actions" @click="${actionClickHandler}">Cancel</vwc-button>
+			<vwc-button slot="actions" layout="filled" @click="${actionClickHandler}">Done</vwc-button>
 		</vwc-dropdown>
 	</div>
 `;

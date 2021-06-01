@@ -43,10 +43,19 @@ export class VWCDropdown extends VWCMenu {
 					@closed=${this.onClosed}
 					@opened=${this.onOpened}
 					@keydown=${this.onKeydown}>
-				<div class="dropdown-container">
-					<slot name="header"></slot>
-					<slot></slot>
-					<slot name="footer"></slot>
+				<div class="dropdown-content">
+					<div class="section header">
+						<slot name="header"></slot>
+					</div>
+					<div class="section body">
+						<slot></slot>
+					</div>
+					<div class="section actions">
+						<slot name="actions"></slot>
+					</div>
+					<div class="section footer">
+						<slot name="footer"></slot>
+					</div>
 				</div>
 			</vwc-surface>
 		`;
