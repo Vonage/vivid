@@ -42,7 +42,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	@property({ type: Boolean, reflect: true })
 	leadingToggle = false;
 
-	@property({ type: String, reflect: false })
+	@property({ type: undefined, reflect: false })
 	templateContent: unknown;
 
 	@property({ type: Boolean, reflect: true })
