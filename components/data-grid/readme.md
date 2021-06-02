@@ -28,6 +28,8 @@ Grid API may roughly split into 2 categories:
 - configuration / customization
 - data
 
+Additionally there is a set of APIs of more general nature, like Events API.
+
 #### Data API
 
 More formal description of these APIs found below in the Grid Configuration / Customization / Management section.
@@ -228,6 +230,36 @@ Interface:
  * `grid` component, the renderer is belonging to
  */
 grid: DataGrid,
+```
+
+#### Events API
+
+`vwc-data-grid` provides a convenient API to handle events happening within the grid.
+
+It is possible and convenient to register a listener for the relevant event on the grid level and then retrieve the actual context the event occured in
+```js
+dataGrid.addEventListener('click', event => {
+	const _dataGrid = event.target;
+	const eventContext = _dataGrid.getEventContext(event);
+	//	work with context as appropriate
+});
+```
+
+`getEventContext(event: Event): EventContext | null`
+The method will return an event contex or `null` in case of non-relevant event.
+
+##### `EventContext` interface
+
+```js
+/**
+ * row number, index, of the interacted row
+ */
+row: number,
+
+/**
+ * actual data item, underlying interacted row
+ */
+item: unknown
 ```
 
 #### Examples
