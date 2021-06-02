@@ -14,7 +14,7 @@ const TemplateA = args => html`
 	<div style="position: relative">
 		<vwc-button id="button" label="Open dropdown" @click="${anchorClickHandler}"></vwc-button>
 		<vwc-dropdown id="dropdown" ...=${spread(args)}>
-			<vwc-textfield slot="header" label="Do something..."></vwc-textfield>
+			<vwc-textfield slot="header" label="Do something..." dense></vwc-textfield>
 			<vwc-list multi>
 				<vwc-check-list-item left>
 					Basic item 1
@@ -37,6 +37,7 @@ const TemplateA = args => html`
 
 export const ComplexContent = TemplateA.bind({});
 ComplexContent.args = {
+	open: true,
 	corner: 'BOTTOM_START'
 }
 
