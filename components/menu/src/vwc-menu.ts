@@ -14,15 +14,13 @@ declare global {
 	}
 }
 
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-// @ts-ignore
-MWCMenuBase.styles = [mwcMenuStyle, vwcMenuStyle];
-
 /**
  * This component is an extension of [<mwc-menu>](https://github.com/material-components/material-components-web-components/tree/master/packages/menu)
  */
 @customElement('vwc-menu')
 export class VWCMenu extends MWCMenuBase {
+	static styles = [mwcMenuStyle, vwcMenuStyle];
+
 	get listElement(): VWCList | null {
 		if (!this.listElement_) {
 			this.listElement_ = this.renderRoot.querySelector('.vwc-menu-list');
