@@ -1,57 +1,48 @@
 import { GRID_COMPONENT as COMPONENT_NAME } from '@vonage/vwc-data-grid';
 import { getColumns, getItems } from './helper-utils.test';
 import {
-	isFirefox,
-	isSafari,
 	textToDomToParent,
 } from '../../../test/test-helpers.js';
 import { isolatedElementsCreation } from '../../../test/test-helpers';
 
 describe('data grid events API', () => {
-	if (isFirefox() || isSafari()) {
-		return;
-	}
-
 	let addElement = isolatedElementsCreation();
 
 	//	items
 	//
 	it('should provide correct event context (click event, items)', async () => {
 		const g = await createGrid(true);
-		const eventPromise = new Promise((r) => {
-			g.addEventListener('click', r, { once: true });
-		});
 
-		const itemToClick = pickCell(g, 2, 1, g.columns.length);
-		itemToClick.click();
+		await new Promise((resolve) => {
+			g.addEventListener('click', async (event) => {
+				const eventContext = g.getEventContext(event);
+				assertEventContext(eventContext, {
+					row: 2,
+					item: { x: 2, y: 'text 2', z: true }
+				});
+				resolve();
+			}, { once: true });
 
-		const event = await eventPromise;
-		event.composedPath = () => event.path;
-
-		const eventContext = g.getEventContext(event);
-		assertEventContext(eventContext, {
-			row: 2,
-			item: { x: 2, y: 'text 2', z: true }
+			const itemToClick = pickCell(g, 2, 1, g.columns.length);
+			itemToClick.click();
 		});
 	});
 
 	it('should provide correct event context (custom event, items)', async () => {
 		const g = await createGrid();
 
-		const eventPromise = new Promise((r) => {
-			g.addEventListener('custom', r, { once: true });
-		});
+		await new Promise((resolve) => {
+			g.addEventListener('custom', async (event) => {
+				const eventContext = g.getEventContext(event);
+				assertEventContext(eventContext, {
+					row: 2,
+					item: { x: 2, y: 'text 2', z: true }
+				});
+				resolve();
+			}, { once: true });
 
-		const itemToClick = pickCell(g, 2, 1, g.columns.length);
-		itemToClick.dispatchEvent(new CustomEvent('custom', { bubbles: true, composed: true }));
-
-		const event = await eventPromise;
-		event.composedPath = () => event.path;
-
-		const eventContext = g.getEventContext(event);
-		assertEventContext(eventContext, {
-			row: 2,
-			item: { x: 2, y: 'text 2', z: true }
+			const itemToClick = pickCell(g, 2, 1, g.columns.length);
+			itemToClick.dispatchEvent(new CustomEvent('custom', { bubbles: true, composed: true }));
 		});
 	});
 
@@ -60,40 +51,36 @@ describe('data grid events API', () => {
 	it('should provide correct event context (click event, data provider)', async () => {
 		const g = await createGrid(true);
 
-		const eventPromise = new Promise((r) => {
-			g.addEventListener('click', r, { once: true });
-		});
+		await new Promise((resolve) => {
+			g.addEventListener('click', async (event) => {
+				const eventContext = g.getEventContext(event);
+				assertEventContext(eventContext, {
+					row: 1,
+					item: { x: 1, y: 'text 1', z: true }
+				});
+				resolve();
+			}, { once: true });
 
-		const itemToClick = pickCell(g, 1, 1, g.columns.length);
-		itemToClick.click();
-
-		const event = await eventPromise;
-		event.composedPath = () => event.path;
-
-		const eventContext = g.getEventContext(event);
-		assertEventContext(eventContext, {
-			row: 1,
-			item: { x: 1, y: 'text 1', z: true }
+			const itemToClick = pickCell(g, 1, 1, g.columns.length);
+			itemToClick.click();
 		});
 	});
 
 	it('should provide correct event context (custom event, data provider)', async () => {
 		const g = await createGrid(true);
 
-		const eventPromise = new Promise((r) => {
-			g.addEventListener('custom', r, { once: true });
-		});
+		await new Promise((resolve) => {
+			g.addEventListener('custom', async (event) => {
+				const eventContext = g.getEventContext(event);
+				assertEventContext(eventContext, {
+					row: 3,
+					item: { x: 3, y: 'text 3', z: true }
+				});
+				resolve();
+			}, { once: true });
 
-		const itemToClick = pickCell(g, 3, 1, g.columns.length);
-		itemToClick.dispatchEvent(new CustomEvent('custom', { bubbles: true, composed: true }));
-
-		const event = await eventPromise;
-		event.composedPath = () => event.path;
-
-		const eventContext = g.getEventContext(event);
-		assertEventContext(eventContext, {
-			row: 3,
-			item: { x: 3, y: 'text 3', z: true }
+			const itemToClick = pickCell(g, 3, 1, g.columns.length);
+			itemToClick.dispatchEvent(new CustomEvent('custom', { bubbles: true, composed: true }));
 		});
 	});
 
