@@ -12,7 +12,7 @@ const TemplateA = args => html`
 		}
 	</style>
 	<div style="position: relative">
-		<vwc-button id="button" label="Open dropdown" @click="${anchorClickHandler}"></vwc-button>
+		<vwc-button id="button" label="Open dropdown" @click="${anchorClickHandler}" icon="chevron-down-line" trailingicon></vwc-button>
 		<vwc-dropdown id="dropdown" ...=${spread(args)}>
 			<vwc-textfield slot="header" label="Do something..." dense></vwc-textfield>
 			<vwc-list multi>
