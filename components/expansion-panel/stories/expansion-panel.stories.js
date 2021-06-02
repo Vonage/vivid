@@ -56,7 +56,8 @@ const Lazy = args => html`
   <vwc-expansion-panel ...=${spread(args)}>
     <template>
       <img src="https://via.placeholder.com/350x150" />
-      <p>To lazy load content in the expansion panel wrap the content in <code>template</code> tags.</p>
+      <p><small>Wrapping HTML in a <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template">HTML Content Template <code>&lt;template&gt;</code> element</a> will hint the panel to lazy render its contents (only when opened)
+</small></p>
     </template>
   </vwc-expansion-panel>
 `;
