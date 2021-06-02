@@ -5,16 +5,19 @@ import '@vonage/vwc-list/vwc-check-list-item.js';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 
-const TemplateA = args => html`
+const Template = args => html`
 	<style>
-		html, body {
-			height: 100%;
+		html {
+			min-block-size: 100%;
+		}
+		body {
+			min-block-size: 100%;
 		}
 	</style>
 	<div style="position: relative">
 		<vwc-button id="button" label="Open dropdown" @click="${anchorClickHandler}" icon="chevron-down-line" trailingicon></vwc-button>
 		<vwc-dropdown id="dropdown" ...=${spread(args)}>
-			<vwc-textfield slot="header" label="Do something..." dense></vwc-textfield>
+			<vwc-textfield slot="header" placeholder="Search..." icon="search-line" dense></vwc-textfield>
 			<vwc-list multi>
 				<vwc-check-list-item left>
 					Basic item 1
@@ -35,11 +38,10 @@ const TemplateA = args => html`
 	</div>
 `;
 
-export const ComplexContent = TemplateA.bind({});
-ComplexContent.args = {
-	open: true,
+export const Basic = Template.bind({});
+Basic.args = {
 	corner: 'BOTTOM_START'
-}
+};
 
 function anchorClickHandler() {
 	const anchor = document.querySelector('#button');
@@ -52,3 +54,5 @@ function actionClickHandler() {
 	const dropdown = document.querySelector('#dropdown');
 	dropdown.open = false;
 }
+
+document.addEventListener('DOMContentLoaded', anchorClickHandler, false);
