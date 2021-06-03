@@ -39,12 +39,21 @@ const TemplateAction = args => html`
 		<vwc-button layout="filled" @click="${openSnackbar}">Show snackbar</vwc-button>
 	</div>
 	<vwc-snackbar ...=${spread(args)}>
-		<vwc-button slot="action" layout="outlined">Show more</vwc-button>
+		<vwc-button slot="action" layout="outlined" shape="pill">Show more</vwc-button>
 	</vwc-snackbar>
 `;
 
 export const Action = TemplateAction.bind({});
 Action.args = {
+	timeoutMs: 10000,
+	icon: 'megaphone-solid',
+	connotation: 'success',
+	header: 'Pascal heritage',
+	message: 'Pascal argues that a rational person should live as though God exists and seek to believe in God.'
+};
+
+export const ActionWithDismissible = TemplateAction.bind({});
+ActionWithDismissible.args = {
 	timeoutMs: 10000,
 	icon: 'megaphone-solid',
 	connotation: 'success',
