@@ -39,6 +39,8 @@ interface DataGrid extends EventTarget {
 	deselectItem(item: unknown): void;
 	selectAll(): void;
 	deselectAll(): void;
+
+	getEventContext(event: Event): EventContext | null;
 }
 
 /**
