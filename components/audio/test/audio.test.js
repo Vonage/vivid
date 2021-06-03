@@ -32,4 +32,11 @@ describe('vwc-audio', () => {
 		await waitNextTask();
 		expect(vwcAudioEl.shadowRoot.querySelector('vwc-scrub-bar')).not.to.exist;
 	});
+
+	it('should cover audio methods', function () {
+		const [audioElement] = addElements(textToDomToParent(`<vwc-audio></vwc-audio>`));
+		audioElement.currentTime = 5;
+		audioElement.pause();
+		audioElement.play();
+	});
 });
