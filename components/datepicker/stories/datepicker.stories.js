@@ -12,8 +12,12 @@ export default {
 
 const Template = args => html`
   <style>
+    html, body {
+      height: 100%;
+    }
     vwc-textfield { width: 260px; }
   </style>
+
   <vwc-datepicker ...=${spread(args)}>
     <vwc-textfield dense icon='calendar' placeholder='Datepicker'></vwc-textfield>
   </vwc-datepicker>
