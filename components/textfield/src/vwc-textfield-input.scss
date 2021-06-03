@@ -31,7 +31,7 @@
 
 // hide until resize observer sets the padding
 ::slotted(#{textfield-variables.$vvd-input-selector}:not([style*="padding"i])) {
-	display: none;
+	opacity: 0;
 }
 
 ::slotted(#{textfield-variables.$vvd-input-selector}:-webkit-autofill),
