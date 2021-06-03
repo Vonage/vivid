@@ -23,8 +23,17 @@ Enlarged.args = { onIcon: 'separator-full', offIcon: 'separator', enlarged: true
 export const Disabled = Template.bind({});
 Disabled.args = { onIcon: 'preferences-full', offIcon: 'preferences', disabled: true };
 
-// on	boolean	false	Whether the toggle is activated.
-// onIcon	string	''	Icon to display when on is true.
-// offIcon	string	''	Icon to display when on is false.
-// label	string	''	Accessible label for the button, sets aria-label.
-// disabled
+export const Outlined = Template.bind({});
+Outlined.args = {
+	onIcon: 'bookmark-full', offIcon: 'bookmark', layout: 'outlined'
+};
+
+export const Connotation = Template.bind({});
+Connotation.args = {
+	onIcon: 'bookmark-full', offIcon: 'bookmark', layout: 'outlined', connotation: 'cta'
+};
+
+export const OnState = Template.bind({});
+OnState.args = {
+	onIcon: 'bookmark-full', offIcon: 'bookmark', layout: 'filled', connotation: 'success', on: true
+};
