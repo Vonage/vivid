@@ -127,7 +127,7 @@ export class VWCTextField extends MWCTextField {
 		}
 	}
 
-	@debounced()
+	@debounced(50)
 	private syncInputSize() {
 		const { width: hostWidth, left: hostLeft } = this.getBoundingClientRect();
 		const { width: wrapperWidth, left: wrapperLeft } = this.inputElementWrapper.getBoundingClientRect();
