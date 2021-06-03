@@ -3,7 +3,7 @@ import kefir from 'kefir';
 import { textToDomToParent, waitInterval } from '../../../test/test-helpers';
 
 const CENTER_Y = 8,
-	TRACK_X = 37,
+	TRACK_X = 40,
 	TRACK_X_MARGIN = 5,
 	BUTTON_X = 6,
 	PERCENTAGE_TOLERANCE = 2,
@@ -18,6 +18,12 @@ const setStyle = (el, style = {}) => {
 };
 
 const simulateMouseFactory = ({ x: baseX = 0, y: baseY = 0 }) => {
+	const getParentCount = (target, parentCount = 1) => {
+		return target.parentElement
+			? getParentCount(target.parentElement, parentCount + 1)
+			: parentCount;
+	};
+
 	const findTarget = function (x, y) {
 		const
 			depths = new WeakMap(),
@@ -39,9 +45,10 @@ const simulateMouseFactory = ({ x: baseX = 0, y: baseY = 0 }) => {
 
 		gatherEls(document);
 
+
 		return [...scannedEls.values()]
 			.filter(el => !el.shadowRoot)
-			.sort((el1, el2) => depths.get(el1) - depths.get(el2))
+			.sort((el1, el2) => depths.get(el1) * getParentCount(el1) - depths.get(el2) * getParentCount(el2))
 			.reverse()[0];
 	};
 
