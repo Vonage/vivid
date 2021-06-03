@@ -33,8 +33,9 @@ describe('vwc-audio', () => {
 		expect(vwcAudioEl.shadowRoot.querySelector('vwc-scrub-bar')).not.to.exist;
 	});
 
-	it('should cover audio methods', function () {
+	it('should cover audio methods', async function () {
 		const [audioElement] = addElements(textToDomToParent(`<vwc-audio></vwc-audio>`));
+		await waitNextTask();
 		audioElement.currentTime = 5;
 		audioElement.pause();
 		audioElement.play();
