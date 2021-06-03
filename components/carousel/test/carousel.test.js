@@ -267,20 +267,25 @@ function extractNavButtons(carousel) {
 	return carousel.querySelectorAll('.swiper-nav');
 }
 
-function moveNextAndWait(carousel) {
+function moveNextAndWait(carousel, timeout = 1000) {
 	const nextButton = carousel.querySelector('.swiper-button-next');
-	return new Promise((r) => {
-		carousel.swiper.once('slideNextTransitionEnd', r);
-		nextButton.click();
-	});
+	const waitPromise = _timeLimitedEventWait(carousel, 'slideNextTransitionEnd', timeout);
+	nextButton.click();
+	return waitPromise;
 }
 
-function movePrevAndWait(carousel) {
-	const nextButton = carousel.querySelector('.swiper-button-prev');
-	return new Promise((r) => {
-		carousel.swiper.once('slidePrevTransitionEnd', r);
-		nextButton.click();
-	});
+function movePrevAndWait(carousel, timeout = 1000) {
+	const prevButton = carousel.querySelector('.swiper-button-prev');
+	const waitPromise = _timeLimitedEventWait(carousel, 'slidePrevTransitionEnd', timeout);
+	prevButton.click();
+	return waitPromise;
+}
+
+async function _timeLimitedEventWait(carousel, event, timeout) {
+	await Promise.race([
+		new Promise(r => setTimeout(r, timeout)),
+		new Promise(r => carousel.swiper.once(event, r))
+	]);
 }
 
 function assertOrder(carousel, expectedArray, expectedActive) {

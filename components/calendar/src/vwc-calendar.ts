@@ -5,7 +5,7 @@ import {
 import { style } from './vwc-calendar.css';
 import {
 	assertIsValidDateStringRepresentation,
-	getValidDatetimeString
+	getValidDateString
 } from './vwc-calendar-date-functions';
 
 declare global {
@@ -51,7 +51,7 @@ export class VWCCalendar extends LitElement {
 	datetime?: Date;
 
 	#daysLength = 7;
-	#hoursOfDay = (Array.from({ length: 23 }) as Date[])
+	#hours = (Array.from({ length: 23 }) as Date[])
 		.fill(new Date(new Date().setHours(0, 0, 0)))
 		.map((d, i) => new Date(d.setHours(++i)))
 
@@ -102,7 +102,7 @@ export class VWCCalendar extends LitElement {
 
 	protected renderTimeCells(): TemplateResult[] {
 		const templates = [];
-		for (let i = 0; i < (this.#hoursOfDay.length + 1) * this.#daysLength; i++) {
+		for (let i = 0; i < (this.#hours.length + 1) * this.#daysLength; i++) {
 			templates.push(html`<div role="listitem" tabindex="0"></div>`);
 		}
 		return templates;
@@ -117,7 +117,7 @@ export class VWCCalendar extends LitElement {
 			<ol class="headline">
 					${this.getDaysArr([this.getFirstDateOfTheWeek(this.datetime)]).map(date => html`
 					<li>
-						<time datetime=${getValidDatetimeString(date)}>
+						<time datetime=${getValidDateString(date)}>
 							${this.formatDate(date, {	day: '2-digit',	weekday: 'short' })}
 						</time>
 					</li>`)}
@@ -133,7 +133,7 @@ export class VWCCalendar extends LitElement {
 			<ol class="time">
 				<!-- TODO: align to convention of generation from first hour in day and a length of hours. -->
 				<!-- TODO: get styled hour and datetime value -->
-				${this.#hoursOfDay.map(h => html`<li>
+				${this.#hours.map(h => html`<li>
 					<time datetime="${this.formatDate(h, { hour: 'numeric', minute: 'numeric', hour12: false })}">
 						${this.formatDate(h, { hour: 'numeric', hour12: true })}
 					</time>
