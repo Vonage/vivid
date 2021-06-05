@@ -1,14 +1,17 @@
+@use 'sass:map';
 @forward './vwc-textfield-coupling';
 @forward './vwc-textfield-input';
+@forward './vwc-textfield-action';
 @use './vwc-textfield-variables' as textfield-variables;
+@use '@vonage/vwc-icon/src/vwc-icon-variables' as icon-variables;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
-	//! may consider replacing with own component variable to prevent delegation
-	$variable-name: --mdc-shape-small
+	$variable-name: textfield-variables.$vvd-textfield-shape
 );
 
 :host {
+	--mdc-shape-small: var(#{textfield-variables.$vvd-textfield-shape});
 	--mdc-theme-error: #{vvd-formfield.$formfield-label-error-ink};
 	--mdc-text-field-fill-color: var(#{scheme-variables.$vvd-color-base});
 	--mdc-text-field-ink-color: var(#{scheme-variables.$vvd-color-on-base});
@@ -76,11 +79,11 @@
 }
 
 :host([dense]) {
-	#{textfield-variables.$vvd-text-field-size-block}: 40px;
+	#{textfield-variables.$vvd-textfield-size-block}: 40px;
 }
 
 :host(:not([dense])) {
-	#{textfield-variables.$vvd-text-field-size-block}: 48px;
+	#{textfield-variables.$vvd-textfield-size-block}: 48px;
 }
 
 :host([dense][label]:not([label=''])) {
@@ -105,11 +108,10 @@
 }
 
 .mdc-text-field {
-	height: var(#{textfield-variables.$vvd-text-field-size-block});
-	border-bottom-left-radius: var(--mdc-shape-small);
+	height: var(#{textfield-variables.$vvd-textfield-size-block});
+	border-bottom-left-radius: var(#{textfield-variables.$vvd-textfield-shape});
 	// prevent fill overflowing bottom corners
-	border-bottom-right-radius: var(--mdc-shape-small);
-
+	border-bottom-right-radius: var(#{textfield-variables.$vvd-textfield-shape});
 	.mdc-floating-label {
 		left: 14px;
 		font-stretch: var(
@@ -129,10 +131,17 @@
 	}
 
 	&--outlined {
+		padding-left: max(16px, var(--mdc-shape-small, 4px));
 		background-color: var(--mdc-text-field-fill-color);
 
 		.mdc-floating-label {
 			left: 4px;
+		}
+		&.vvd-text-field--with-action {
+			&,
+			&.mdc-text-field--with-trailing-icon {
+				padding-inline-end: textfield-variables.$actions-gap;
+			}
 		}
 	}
 
@@ -187,7 +196,8 @@
 		margin: 0 #{textfield-variables.$horizontal-gutter};
 
 		vwc-icon {
-			--icon-size: #{textfield-variables.$icon-size};
+			#{icon-variables.$icon-size-variable-name}: var(#{textfield-variables.$vvd-textfield-action-icon-size-variable-name},
+			#{map.get(textfield-variables.$icon-sizes, 'medium')});
 		}
 	}
 }
@@ -220,23 +230,4 @@ vwc-notched-outline {
 .mdc-text-field--with-leading-icon.mdc-text-field--outlined
 .mdc-floating-label {
 	left: 40px;
-}
-
-:host([outlined]) {
-	--padding-inline-start: max(
-		#{textfield-variables.$horizontal-gutter},
-		calc(var(--mdc-shape-small, 4px) + 4px)
-	);
-	--padding-inline-end: max(
-		#{textfield-variables.$horizontal-gutter},
-		var(--mdc-shape-small, 4px)
-	);
-}
-
-:host(:not([disabled])[icon]) {
-	--padding-inline-start: #{textfield-variables.$icon-gutter};
-}
-
-:host(:not([disabled])[icontrailing]) {
-	--padding-inline-end: #{textfield-variables.$icon-gutter};
 }

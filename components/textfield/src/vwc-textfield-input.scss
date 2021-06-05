@@ -15,13 +15,11 @@
 	border: unset;
 	background: unset;
 	block-size: 100%;
-	border-radius: var(--mdc-shape-small);
+	border-radius: var(#{textfield-variables.$vvd-textfield-shape});
 	color: var(#{scheme-variables.$vvd-color-on-base});
 	inline-size: 100%;
 	inset: 0;
 	outline: unset;
-	padding-inline-end: var(--padding-inline-end);
-	padding-inline-start: var(--padding-inline-start);
 }
 
 :host([disabled]) {
@@ -29,6 +27,11 @@
 	::slotted(#{textfield-variables.$vvd-input-selector})::placeholder {
 		color: var(#{vvd-formfield.$formfield-disabled-ink});
 	}
+}
+
+// hide until resize observer sets the padding
+::slotted(#{textfield-variables.$vvd-input-selector}:not([style*="padding"i])) {
+	opacity: 0;
 }
 
 ::slotted(#{textfield-variables.$vvd-input-selector}:-webkit-autofill),
@@ -44,7 +47,7 @@
 	:not(.mdc-text-field--no-label) {
 		::slotted(#{textfield-variables.$vvd-input-selector}) {
 			padding-block-start: calc(
-				var(#{textfield-variables.$vvd-text-field-size-block}) - 32px
+				var(#{textfield-variables.$vvd-textfield-size-block}) - 32px
 			);
 		}
 	}

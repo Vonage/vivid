@@ -1,3 +1,12 @@
+# [2.10.0](https://github.com/vonage/vivid/compare/v2.9.1...v2.10.0) (2021-06-04)
+
+
+### Features
+
+* **vwc-textfield:** support multiple interactive icon buttons ([#837](https://github.com/vonage/vivid/issues/837)) ([464a725](https://github.com/vonage/vivid/commit/464a7250592f5920d75f5add6e3d1393ab2642e6))
+
+
+
 ## [2.9.1](https://github.com/vonage/vivid/compare/v2.9.0...v2.9.1) (2021-05-27)
 
 

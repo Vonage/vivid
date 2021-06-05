@@ -19,17 +19,13 @@ const server = http.createServer((request, response) => {
 
 async function compareToSnapshot(page: Page, snapshotPath: string) {
 	const tmpScreenshotPath = './ui-tests/tmpScreenshot.png';
-	await takeSnapshot(page, SERVER_URL, tmpScreenshotPath);
+	await takeSnapshot(page, tmpScreenshotPath);
 	return compareImages(snapshotPath, tmpScreenshotPath);
 }
 
 async function compareImages(img1Path, img2Path) {
 	const img1 = await jimp.read(fs.readFileSync(img1Path));
 	const img2 = await jimp.read(fs.readFileSync(img2Path));
-	// const {
-	// 	width,
-	// 	height
-	// } = img1.bitmap;
 
 	const diff = jimp.diff(img1, img2, 0.1);
 
@@ -42,12 +38,7 @@ async function compareImages(img1Path, img2Path) {
 	};
 }
 
-async function takeSnapshot(page, url, snapshotPath) {
-	await page.goto(url,
-		{
-			waitUntil: 'networkidle'
-		});
-
+async function takeSnapshot(page, snapshotPath) {
 	return page.screenshot({
 		path: snapshotPath,
 		fullPage: true
@@ -62,21 +53,36 @@ async function runImageComparison() {
 	const browser = await webkit.launch();
 	const page = await browser.newPage();
 
+	//	setup callback
+	page.context().exposeBinding('doTest', async ({ page }) => {
+		await doTest(page);
+		await browser.close();
+		finalizeTest();
+	});
+
+	//	navigate to page
+	await page.goto(SERVER_URL);
+}
+
+async function doTest(page) {
 	if (process.argv.includes('-u') || !fs.existsSync(SNAPSHOT_PATH)) {
 		console.log('Updating snapshot...');
-		await takeSnapshot(page, SERVER_URL, SNAPSHOT_PATH);
+		await takeSnapshot(page, SNAPSHOT_PATH);
 	} else {
 		const diff = await compareToSnapshot(page, SNAPSHOT_PATH);
 		if (diff.percent === 0) {
 			console.log('Visual Diff Passed!');
 			console.log(resultsMessage(diff));
 		} else {
-			await browser.close();
 			console.error(resultsMessage(diff));
-			throw new Error('Difference between base and current snapshot!');
+			process.exitCode = 1;
 		}
 	}
-	await browser.close();
+}
+
+function finalizeTest() {
+	//	decide process exit code
+	server.close();
 }
 
 server.listen(3000, async () => {
@@ -87,8 +93,6 @@ server.listen(3000, async () => {
 	} catch (e) {
 		console.error(e);
 		process.exitCode = 1;
-	} finally {
 		server.close();
 	}
 });
-

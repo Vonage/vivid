@@ -21,14 +21,6 @@ describe('datepicker', () => {
 		);
 	});
 
-	// it('should have internal contents', async () => {
-	// 	const [actualElement] = addElement(
-	// 		textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-	// 	);
-	// 	await actualElement.onReady;
-	// 	expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
-	// });
-
 	it('should have lit-flatpickr instance in DOM', async () => {
 		const [actualElement] = addElement(
 			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
@@ -75,7 +67,8 @@ describe('datepicker', () => {
 		await waitNextTask();
 
 		const vwcMenu = actualElement.shadowRoot.querySelector('vwc-menu');
-		const mwcMenuSurface = vwcMenu.shadowRoot.querySelector('mwc-menu-surface');
+		console.log(vwcMenu.shadowRoot);
+		const mwcMenuSurface = vwcMenu.shadowRoot.querySelector('vwc-surface');
 		const menuSurface = mwcMenuSurface.shadowRoot.querySelector('.mdc-menu-surface');
 
 		assertComputedStyle(menuSurface, { position: 'fixed' });

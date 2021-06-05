@@ -2,22 +2,30 @@ import '@vonage/vvd-core';
 import '@vonage/vwc-helper-message';
 import '@vonage/vwc-icon';
 import '@vonage/vwc-notched-outline';
+
 import {
 	customElement,
 	property,
 	html,
 	TemplateResult,
 	PropertyValues,
+	queryAssignedNodes,
+	query,
+	internalProperty
 } from 'lit-element';
+import { classMap } from 'lit-html/directives/class-map';
+
 import { TextField as MWCTextField } from '@material/mwc-textfield';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 import { style as vwcTextFieldStyle } from './vwc-textfield.css';
 import { style as mwcTextFieldStyle } from '@material/mwc-textfield/mwc-textfield-css.js';
 import { Shape } from '@vonage/vvd-foundation/constants';
-import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
+import { debounced, handleAutofocus } from '@vonage/vvd-foundation/general-utils';
+
 export { TextFieldType } from '@material/mwc-textfield';
 
 export const COMPONENT_NAME = 'vwc-textfield';
+export const VALID_BUTTON_ELEMENTS = ['vwc-icon-button'];
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -48,6 +56,16 @@ export class VWCTextField extends MWCTextField {
 
 	@property({ type: String, reflect: true, converter: v => v || ' ' })
 	placeholder = ' ';
+
+	@internalProperty()
+	private hasActionButtons = false;
+
+  @query('.mdc-text-field__input') protected inputElementWrapper!: HTMLInputElement;
+
+	@queryAssignedNodes('action', true, VALID_BUTTON_ELEMENTS.join(', '))
+	private actionButtons?: NodeListOf<HTMLElement>;
+
+	private inputResizeObserver?: ResizeObserver;
 
 	constructor() {
 		super();
@@ -87,13 +105,46 @@ export class VWCTextField extends MWCTextField {
 			?.classList.add('vvd-notch');
 		this.floatLabel();
 		handleAutofocus(this);
+		this.observeInputSize();
 	}
 
-	updated(changedProperties: PropertyValues): void {
-		super.updated(changedProperties);
+	disconnectedCallback(): void {
+		super.disconnectedCallback();
+		this.inputResizeObserver?.disconnect();
+	}
+
+	updated(changes: PropertyValues): void {
+		super.updated(changes);
 		if (this.shape === 'pill') {
 			this.dense = true;
 		}
+		if (
+			changes.has('disabled') ||
+			changes.has('shape') ||
+			changes.has('dense')
+		) {
+			this.enforcePropsOnActionNodes();
+		}
+	}
+
+	@debounced(50)
+	private syncInputSize() {
+		const { width: hostWidth, left: hostLeft } = this.getBoundingClientRect();
+		const { width: wrapperWidth, left: wrapperLeft } = this.inputElementWrapper.getBoundingClientRect();
+		const paddingLeft = wrapperLeft - hostLeft;
+		const paddingRight = hostWidth - wrapperWidth - paddingLeft;
+		requestAnimationFrame(() => {
+			this.formElement.style.paddingLeft = `${paddingLeft}px`;
+			this.formElement.style.paddingRight = `${paddingRight}px`;
+		});
+	}
+
+	protected observeInputSize(): void {
+		// eslint-disable-next-line compat/compat
+		this.inputResizeObserver = new ResizeObserver(() => {
+			this.syncInputSize();
+		});
+		this.inputResizeObserver.observe(this.inputElementWrapper);
 	}
 
 	protected renderInput(shouldRenderHelperText: boolean): TemplateResult {
@@ -223,6 +274,63 @@ export class VWCTextField extends MWCTextField {
 		} else {
 			fle.classList.remove(MDC_FLOAT_ABOVE_CLASS_NAME);
 		}
+	}
+
+	protected onActionSlotChange(): void {
+		this.hasActionButtons = Boolean(this.actionButtons?.length);
+		this.enforcePropsOnActionNodes();
+	}
+
+	protected enforcePropsOnActionNodes(): void {
+		const buttons = Array.from(this.actionButtons || []);
+
+		buttons.forEach((button) => {
+			button.toggleAttribute('disabled', this.disabled);
+			button.toggleAttribute('dense', this.dense);
+
+			const buttonShape = this.shape == 'pill'
+				? 'circled'
+				: this.shape;
+			if (buttonShape) {
+				button.setAttribute('shape', buttonShape);
+			} else {
+				button.removeAttribute('shape');
+			}
+		});
+	}
+
+	/** @soyTemplate */
+	render(): TemplateResult {
+		const shouldRenderCharCounter = this.charCounter && this.maxLength !== -1;
+		const shouldRenderHelperText =
+				!!this.helper || !!this.validationMessage || shouldRenderCharCounter;
+
+		/** @classMap */
+		const classes = {
+			'mdc-text-field--disabled': this.disabled,
+			'mdc-text-field--no-label': !this.label,
+			'mdc-text-field--filled': !this.outlined,
+			'mdc-text-field--outlined': this.outlined,
+			'mdc-text-field--with-leading-icon': this.icon,
+			'mdc-text-field--with-trailing-icon': this.iconTrailing,
+			'mdc-text-field--end-aligned': this.endAligned,
+			'vvd-text-field--with-action': this.hasActionButtons,
+		};
+
+		return html`
+			<label class="mdc-text-field ${classMap(classes)}">
+				${this.renderRipple()}
+				${this.outlined ? this.renderOutline() : this.renderLabel()}
+				${this.renderLeadingIcon()}
+				${this.renderPrefix()}
+				${this.renderInput(shouldRenderHelperText)}
+				${this.renderSuffix()}
+				${this.renderTrailingIcon()}
+				<slot name="action" @slotchange="${this.onActionSlotChange}"></slot>
+				${this.renderLineRipple()}
+			</label>
+			${this.renderHelperText(shouldRenderHelperText)}
+		`;
 	}
 }
 
