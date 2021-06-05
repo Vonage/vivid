@@ -19,9 +19,14 @@ export {
 	Icon,
 	PillShape,
 	Validation,
-  AutoValidation
+	AutoValidation
 } from './textfield-variants.stories.js';
+
+export {
+	Actions
+} from './textfield-action-buttons.stories.js';
 
 export {
 	Autocomplete
 } from './textfield-autocomplete.stories';
+
