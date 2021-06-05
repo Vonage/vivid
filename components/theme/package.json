@@ -1,11 +1,11 @@
 {
-	"name": "@vonage/vwc-theme-alternate",
+	"name": "@vonage/vwc-theme",
 	"version": "2.9.1",
-	"description": "theme-alternate component",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/theme-alternate#readme",
+	"description": "theme component",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/theme#readme",
 	"license": "ISC",
-	"main": "vwc-theme-alternate.js",
-	"module": "vwc-theme-alternate.js",
+	"main": "vwc-theme.js",
+	"module": "vwc-theme.js",
 	"files": [
 		"*.js",
 		"*.ts",
@@ -14,12 +14,13 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/theme-alternate"
+		"directory": "components/theme"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1",
 		"build:typescript": "tsc -b",
-		"build": "yarn run build:typescript"
+		"build:styles": "umbrella-style-modules",
+		"build": "yarn run build:styles && yarn run build:typescript"
 	},
 	"bugs": {
 		"url": "https://github.com/Vonage/vivid/issues"

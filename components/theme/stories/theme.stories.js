@@ -1,4 +1,4 @@
-import { COMPONENT_NAME } from '@vonage/vwc-theme-alternate';
+import { COMPONENT_NAME } from '@vonage/vwc-theme';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 import context from '@vonage/vvd-context';
@@ -8,8 +8,8 @@ import '@vonage/vwc-button';
 import '@vonage/vwc-textfield';
 
 export default {
-	title: 'Alpha/Components/Theme Alternate',
-	component: COMPONENT_NAME,
+	title: 'Alpha/Components/Theme',
+	component: COMPONENT_NAME
 };
 
 context.mount(document);
@@ -104,9 +104,9 @@ const Template = args => html`
 			<tr>
 				<td>${htmlSample}</td>
 				<td>
-					<vwc-theme-alternate ...=${spread(args)}>
+					<vwc-theme ...=${spread(args)}>
 						${htmlSample}
-					</vwc-theme-alternate>
+					</vwc-theme>
 				</td>
 			</tr>
 		</tbody>

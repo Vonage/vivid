@@ -5,6 +5,7 @@ import {
 	LitElement,
 	TemplateResult,
 } from 'lit-element';
+import { style } from './vwc-theme-alternate.css';
 
 export const COMPONENT_NAME = 'vwc-theme-alternate';
 
@@ -19,6 +20,8 @@ declare global {
  */
 @customElement('vwc-theme-alternate')
 export class VWCThemeAlternate extends LitElement {
+	static styles = [style];
+
 	protected render(): TemplateResult {
 		return html`<div class="container" part="vvd-scheme-alternate">
 				<slot></slot>
