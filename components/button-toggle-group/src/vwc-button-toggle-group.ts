@@ -1,13 +1,14 @@
 import {
 	customElement, html, LitElement, property, PropertyValues
 } from 'lit-element';
-import { style } from './vwc-toggle-button-group.css';
+import { style } from './vwc-button-toggle-group.css';
 
 declare global {
 	interface HTMLElementTagNameMap {
-		'vwc-toggle-button-group': VwcToggleButtonGroup;
+		'vwc-button-toggle-group': VwcButtonToggleGroup;
 	}
 }
+
 
 export const VALID_BUTTON_ELEMENTS = ['vwc-button', 'vwc-icon-button'];
 const SELECTED_EVENT_NAME = 'selected';
@@ -30,8 +31,8 @@ function toggleButton(buttonElement: Element) {
 	}
 }
 
-@customElement('vwc-toggle-button-group')
-export class VwcToggleButtonGroup extends LitElement {
+@customElement('vwc-button-toggle-group')
+export class VwcButtonToggleGroup extends LitElement {
 	/**
 	 * @internal
 	 */

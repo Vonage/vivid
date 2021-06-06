@@ -1,5 +1,5 @@
-import '../vwc-toggle-button-group.js';
-import { VALID_BUTTON_ELEMENTS } from '../vwc-toggle-button-group';
+import '../vwc-button-toggle-group.js';
+import { VALID_BUTTON_ELEMENTS } from '../vwc-button-toggle-group';
 
 import {
 	waitNextTask,
@@ -10,7 +10,7 @@ import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
 
-const COMPONENT_NAME = 'vwc-toggle-button-group';
+const COMPONENT_NAME = 'vwc-button-toggle-group';
 const SELECTED_EVENT_NAME = 'selected';
 
 describe('Toggle-buttons-group', () => {
