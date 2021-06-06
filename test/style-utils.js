@@ -1,9 +1,10 @@
 export const topLevelSelectors = {
 	'vwc-button': '.mdc-button',
 	'vwc-icon-button': '.mdc-icon-button',
+	'vwc-icon-button-toggle': '.mdc-icon-button',
 	'vwc-select': '.mdc-select',
 	'vwc-textfield': '.mdc-text-field',
-}
+};
 
 export function borderRadiusStyles(expectedRadius) {
 	return {
@@ -19,7 +20,7 @@ export function shapeStyles(shape, element) {
 		rounded: element === 'badge' ? '4px' : '6px',
 		pill: element === 'badge' ? '14px' : '24px',
 		circled: '50%',
-	}
+	};
 
 	return borderRadiusStyles(shapeRadius[shape]);
 }
@@ -29,7 +30,7 @@ export function sizeStyles(size) {
 		dense: 32,
 		enlarged: 48,
 		default: 40,
-	}
+	};
 
 	return { height: `${sizes[size]}px` };
 }
@@ -68,7 +69,7 @@ export function layoutStyles(layout) {
 			borderLeftWidth: '0px',
 			color: 'rgb(0, 0, 0)',
 		},
-	}
+	};
 
 	return layouts[layout];
 }
@@ -94,7 +95,7 @@ export function getSchemeVariables() {
 			.replace(/^[^-]+/, '')
 			.replace(/;[^;]+?$/, '')
 			.split(';')
-			.map((entry) => entry.trim().split(/\s*:\s*/))
+			.map(entry => entry.trim().split(/\s*:\s*/))
 			.reduce((r, [key, value]) => {
 				r[key] = value;
 				return r;
