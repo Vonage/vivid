@@ -5,7 +5,7 @@ import { style } from './vwc-button-toggle-group.css';
 
 declare global {
 	interface HTMLElementTagNameMap {
-		'vwc-button-toggle-group': VwcButtonToggleGroup;
+		'vwc-button-toggle-group': VWCButtonToggleGroup;
 	}
 }
 
@@ -32,7 +32,7 @@ function toggleButton(buttonElement: Element) {
 }
 
 @customElement('vwc-button-toggle-group')
-export class VwcButtonToggleGroup extends LitElement {
+export class VWCButtonToggleGroup extends LitElement {
 	/**
 	 * @internal
 	 */
