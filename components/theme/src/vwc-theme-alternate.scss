@@ -1,3 +1,19 @@
+@use '@vonage/vvd-design-tokens/build/scss/schemes/light/alternate.scss' as alternate-light;
+@use '@vonage/vvd-design-tokens/build/scss/schemes/dark/alternate.scss' as alternate-dark;
+@use 'partials/_scheme-mixins';
+
+.light {
+	@include scheme-mixins.scheme-alternate-variables {
+		@include alternate-light.variables;
+	}
+}
+
+.dark {
+	@include scheme-mixins.scheme-alternate-variables {
+		@include alternate-dark.variables;
+	}
+}
+
 .container {
 	display: block;
 }

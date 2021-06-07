@@ -1,0 +1,16 @@
+@mixin base {
+	background-color: var(--vvd-color-base);
+	color: var(--vvd-color-on-base);
+}
+
+@mixin scheme-context-variables {
+	@content;
+	.container {
+		@include base;
+	}
+}
+
+@mixin scheme-alternate-variables {
+	@content;
+	@include base;
+}

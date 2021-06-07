@@ -1,3 +1,20 @@
+@use '@vonage/vvd-design-tokens/build/scss/schemes/light/main.scss' as main-light;
+@use '@vonage/vvd-design-tokens/build/scss/schemes/dark/main.scss' as main-dark;
+@use 'partials/_scheme-mixins';
+
+:host([scheme="light"i]) {
+	@include scheme-mixins.scheme-context-variables {
+		@include main-light.variables;
+	}
+}
+
+:host([scheme="dark"i]) {
+	@include scheme-mixins.scheme-context-variables {
+		@include main-dark.variables;
+	}
+}
+
 .container {
 	display: block;
 }
+

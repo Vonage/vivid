@@ -1,18 +1,10 @@
-import { COMPONENT_NAME } from '@vonage/vwc-theme';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
-import context from '@vonage/vvd-context';
+import '@vonage/vwc-theme';
 import '@vonage/vwc-banner';
 import '@vonage/vwc-badge';
 import '@vonage/vwc-button';
 import '@vonage/vwc-textfield';
-
-export default {
-	title: 'Alpha/Components/Theme',
-	component: COMPONENT_NAME
-};
-
-context.mount(document);
 
 const htmlSample = html`
 <style>
@@ -102,17 +94,21 @@ const Template = args => html`
 		</thead>
 		<tbody>
 			<tr>
-				<td>${htmlSample}</td>
 				<td>
-					<vwc-theme-alternate ...=${spread(args)}>
+					<vwc-theme ...=${spread(args)} scheme="light">
 						${htmlSample}
-					</vwc-theme-alternate>
+					</vwc-theme>
+				</td>
+				<td>
+					<vwc-theme ...=${spread(args)} scheme="dark">
+						${htmlSample}
+					</vwc-theme>
 				</td>
 			</tr>
 		</tbody>
 	</table>
 `;
 
-export const Alternate = Template.bind({});
-Alternate.args = {};
+export const Basic = Template.bind({});
+Basic.args = {};
 
