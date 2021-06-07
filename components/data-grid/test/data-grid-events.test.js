@@ -14,22 +14,20 @@ describe('data grid events API', () => {
 		const g = await createGrid(true);
 
 		const clickedRow = 2;
-		const done = assertEventPromise(g, 'click', clickedRow);
-
-		const itemToClick = pickCell(g, clickedRow, 1, g.columns.length);
-		itemToClick.click();
-		return done;
+		const contextPromise = waitEventContext(g, 'click');
+		triggerEvent(g, 'click', clickedRow);
+		const eventContext = await contextPromise;
+		assertEventContext(eventContext, buildExpectedEventContext(clickedRow));
 	});
 
 	it('should provide correct event context (custom event, items)', async () => {
 		const g = await createGrid();
 
 		const clickedRow = 2;
-		const done = assertEventPromise(g, 'custom', clickedRow);
-
-		const itemToClick = pickCell(g, clickedRow, 1, g.columns.length);
-		itemToClick.dispatchEvent(new CustomEvent('custom', { bubbles: true, composed: true }));
-		return done;
+		const contextPromise = waitEventContext(g, 'custom');
+		triggerEvent(g, 'custom', clickedRow);
+		const eventContext = await contextPromise;
+		assertEventContext(eventContext, buildExpectedEventContext(clickedRow));
 	});
 
 	//	dataProvider
@@ -38,22 +36,20 @@ describe('data grid events API', () => {
 		const g = await createGrid(true);
 
 		const clickedRow = 1;
-		const done = assertEventPromise(g, 'click', clickedRow);
-
-		const itemToClick = pickCell(g, clickedRow, 1, g.columns.length);
-		itemToClick.click();
-		return done;
+		const contextPromise = waitEventContext(g, 'click');
+		triggerEvent(g, 'click', clickedRow);
+		const eventContext = await contextPromise;
+		assertEventContext(eventContext, buildExpectedEventContext(clickedRow));
 	});
 
 	it('should provide correct event context (custom event, data provider)', async () => {
 		const g = await createGrid(true);
 
 		const clickedRow = 3;
-		const done = assertEventPromise(g, 'custom', clickedRow);
-
-		const itemToClick = pickCell(g, clickedRow, 1, g.columns.length);
-		itemToClick.dispatchEvent(new CustomEvent('custom', { bubbles: true, composed: true }));
-		return done;
+		const contextPromise = waitEventContext(g, 'custom');
+		triggerEvent(g, 'custom', clickedRow);
+		const eventContext = await contextPromise;
+		assertEventContext(eventContext, buildExpectedEventContext(clickedRow));
 	});
 
 	it('should provide null event context on non-relevant event', async () => {
@@ -78,18 +74,25 @@ describe('data grid events API', () => {
 		return result;
 	}
 
-	function assertEventPromise(grid, eventType, clickedRow) {
+	function waitEventContext(grid, eventType) {
 		return new Promise((resolve) => {
 			grid.addEventListener(eventType, async (event) => {
 				const eventContext = grid.getEventContext(event);
-				assertEventContext(eventContext, {
-					row: clickedRow,
-					item: { x: clickedRow, y: `text ${clickedRow}`, z: true }
-				});
-
-				resolve();
+				resolve(eventContext);
 			}, { once: true });
 		});
+	}
+
+	function triggerEvent(grid, event, clickedRow, clickedCol = 1) {
+		const itemToClick = pickCell(grid, clickedRow, clickedCol, grid.columns.length);
+		itemToClick.dispatchEvent(new CustomEvent(event, { bubbles: true, composed: true }));
+	}
+
+	function buildExpectedEventContext(clickedRow) {
+		return {
+			row: clickedRow,
+			item: { x: clickedRow, y: `text ${clickedRow}`, z: true }
+		};
 	}
 
 	function assertEventContext(eventContext, expectedEventContext) {

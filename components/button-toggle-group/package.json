@@ -1,11 +1,11 @@
 {
-	"name": "@vonage/vwc-toggle-buttons-group",
+	"name": "@vonage/vwc-button-toggle-group",
 	"version": "2.10.0",
 	"description": "toggle-buttons-group component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/toggle-buttons-group#readme",
 	"license": "ISC",
-	"main": "vwc-toggle-buttons-group.js",
-	"module": "vwc-toggle-buttons-group.js",
+	"main": "vwc-button-toggle-group.js",
+	"module": "vwc-button-toggle-group.js",
 	"files": [
 		"*.js",
 		"*.ts",
