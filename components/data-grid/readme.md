@@ -326,4 +326,4 @@ const cellRenderer = (container, column, data) {
 ```
 
 Pay attention, how the columns data structure is not maintained in JS anymore.
-Moreover, attributes like `sortable`, `auto-width` etc can be binded to some data structure managed be data-binding framework, thus removing the whole customization part out of scripting scope.
+Moreover, attributes like `sortable`, `auto-width` etc can be bound to some data structure managed by data-binding framework, thus removing the whole customization part out of the scripting scope.
