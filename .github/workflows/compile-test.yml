@@ -356,6 +356,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           buildScriptName: 'storybook:build'
+          exitOnceUploaded: true
 
   code-standards:
     needs: cache-yarn-and-build
