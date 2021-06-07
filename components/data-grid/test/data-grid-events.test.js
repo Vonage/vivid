@@ -5,55 +5,59 @@ import {
 } from '../../../test/test-helpers.js';
 import { isolatedElementsCreation } from '../../../test/test-helpers';
 
+const
+	DATA_AS_ITEMS = true,
+	DATA_AS_DATA_PROVIDER = false;
+
 describe('data grid events API', () => {
 	let addElement = isolatedElementsCreation();
 
-	//	items
-	//
-	it('should provide correct event context (click event, items)', async () => {
-		const g = await createGrid(true);
+	describe('data as items', () => {
+		it('should provide correct event context (click event)', async () => {
+			const g = await createGrid(DATA_AS_ITEMS);
 
-		const clickedRow = 2;
-		const contextPromise = waitEventContext(g, 'click');
-		triggerEvent(g, 'click', clickedRow);
-		const eventContext = await contextPromise;
-		assertEventContext(eventContext, buildExpectedEventContext(clickedRow));
+			const clickedRow = 2;
+			const contextPromise = waitEventContext(g, 'click');
+			triggerEvent(g, 'click', clickedRow);
+			const eventContext = await contextPromise;
+			assertEventContext(eventContext, buildExpectedEventContext(clickedRow));
+		});
+
+		it('should provide correct event context (custom event)', async () => {
+			const g = await createGrid(DATA_AS_ITEMS);
+
+			const clickedRow = 2;
+			const contextPromise = waitEventContext(g, 'custom');
+			triggerEvent(g, 'custom', clickedRow);
+			const eventContext = await contextPromise;
+			assertEventContext(eventContext, buildExpectedEventContext(clickedRow));
+		});
 	});
 
-	it('should provide correct event context (custom event, items)', async () => {
-		const g = await createGrid();
+	describe('data as data provider', () => {
+		it('should provide correct event context (click event, data provider)', async () => {
+			const g = await createGrid(DATA_AS_DATA_PROVIDER);
 
-		const clickedRow = 2;
-		const contextPromise = waitEventContext(g, 'custom');
-		triggerEvent(g, 'custom', clickedRow);
-		const eventContext = await contextPromise;
-		assertEventContext(eventContext, buildExpectedEventContext(clickedRow));
-	});
+			const clickedRow = 1;
+			const contextPromise = waitEventContext(g, 'click');
+			triggerEvent(g, 'click', clickedRow);
+			const eventContext = await contextPromise;
+			assertEventContext(eventContext, buildExpectedEventContext(clickedRow));
+		});
 
-	//	dataProvider
-	//
-	it('should provide correct event context (click event, data provider)', async () => {
-		const g = await createGrid(true);
+		it('should provide correct event context (custom event, data provider)', async () => {
+			const g = await createGrid(DATA_AS_DATA_PROVIDER);
 
-		const clickedRow = 1;
-		const contextPromise = waitEventContext(g, 'click');
-		triggerEvent(g, 'click', clickedRow);
-		const eventContext = await contextPromise;
-		assertEventContext(eventContext, buildExpectedEventContext(clickedRow));
-	});
-
-	it('should provide correct event context (custom event, data provider)', async () => {
-		const g = await createGrid(true);
-
-		const clickedRow = 3;
-		const contextPromise = waitEventContext(g, 'custom');
-		triggerEvent(g, 'custom', clickedRow);
-		const eventContext = await contextPromise;
-		assertEventContext(eventContext, buildExpectedEventContext(clickedRow));
+			const clickedRow = 3;
+			const contextPromise = waitEventContext(g, 'custom');
+			triggerEvent(g, 'custom', clickedRow);
+			const eventContext = await contextPromise;
+			assertEventContext(eventContext, buildExpectedEventContext(clickedRow));
+		});
 	});
 
 	it('should provide null event context on non-relevant event', async () => {
-		const g = await createGrid();
+		const g = await createGrid(DATA_AS_ITEMS);
 		const eventContext = g.getEventContext(new CustomEvent('custom'));
 		expect(eventContext).equal(null);
 	});
@@ -84,7 +88,7 @@ describe('data grid events API', () => {
 	}
 
 	function triggerEvent(grid, event, clickedRow, clickedCol = 1) {
-		const itemToClick = pickCell(grid, clickedRow, clickedCol, grid.columns.length);
+		const itemToClick = pickCell(grid, clickedRow, clickedCol);
 		itemToClick.dispatchEvent(new CustomEvent(event, { bubbles: true, composed: true }));
 	}
 
@@ -108,7 +112,8 @@ describe('data grid events API', () => {
 });
 
 //	note: this works for small grids (up to ~50 rows)
-function pickCell(grid, row, column, rowSize) {
+function pickCell(grid, row, column) {
+	const rowSize = grid.columns.length;
 	if (column >= rowSize) {
 		throw new Error(`column MUST NOT exceed row size, got rowSize = ${rowSize}, column = ${column}`);
 	}
