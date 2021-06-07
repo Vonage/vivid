@@ -1,4 +1,4 @@
-.mdc-icon-button__icon,
-.mdc-icon-button--on .mdc-icon-button__icon.mdc-icon-button__icon--on {
-	display: contents;
+:host([layout='outlined']) {
+	--vvd-icon-button-border: 1px solid #999;
 }
+

@@ -176,7 +176,7 @@ $scopes: button icon-button; // define the states
   ::slotted(vwc-#{$scope}) {
    --vvd-#{$scope}-background-color: var(#{color-connotation.$vvd-color-connotation-soft});
    --vvd-#{$scope}-color: var(#{scheme-variables.$vvd-color-on-base});
-   --vvd-#{$scope}-shape: var(#{$vvd-toggle-button-group-shape});
+   --vvd-#{$scope}-shape: var(#{$vvd-button-toggle-group-shape});
   }
 }
 

@@ -4,7 +4,7 @@ import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 
 const Template = (args) =>
-	html`<vwc-textfield ...=${spread(args)} @keydown=${handleKeyDown} @change=${onChange} @input=${onInput}></vwc-textfield>`;
+	html`<vwc-textfield ...=${spread(args)} @keydown=${handleKeyDown} @change=${onChange} @input=${onInput}>`;
 
 export const Default = Template.bind({});
 Default.args = { label: 'e.g. username', value: 'Initial value', placeholder: 'Placeholder' };
