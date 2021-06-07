@@ -39,7 +39,7 @@ There are 2 ways to supply data to grid, via the following grid component proper
 	- simplest
 	- all data upfront
 	- suitable for small to medium amounts of data (in terms of memory occupation)
-- `dataProvider: (params: { page: number, pageSize: number }, callback: (pageItems: unknown[], totalItems?: number) => void) => void`
+- `dataProvider: (params: { page: number, pageSize: number }, callback: (pageItems: unknown[], totalItems: number) => void) => void`
 	- stream of chunks, on demand
 	- should be used when memory usage concern present (from the data perspective)
 	- should be used when pulling data from the backend on the fly
