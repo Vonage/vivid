@@ -11,7 +11,17 @@ chai.use(chaiDomDiff);
 describe('Theme', () => {
 	let addElement = isolatedElementsCreation();
 
-	it('should have internal contents', async () => {
+	function setSchemedTheme(schemeToDefine) {
+		const addedElements = addElement(
+			textToDomToParent(`<${COMPONENT_NAME} scheme="${schemeToDefine}"></${COMPONENT_NAME}>`)
+		);
+		const [actualElement] = addedElements;
+
+		const { scheme } = actualElement;
+		return scheme;
+	}
+
+	it('check snapshot', async () => {
 		const addedElements = addElement(
 			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 		);
@@ -22,7 +32,7 @@ describe('Theme', () => {
 			.equalSnapshot();
 	});
 
-	it('should default scheme to os settings', () => {
+	it('defaults scheme to os settings', () => {
 		const addedElements = addElement(
 			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 		);
@@ -36,27 +46,13 @@ describe('Theme', () => {
 		expect(scheme).to.equal(osPreferedColorScheme);
 	});
 
-	it('should set scheme to dark', () => {
+	it('sets scheme to dark', () => {
 		const schemeToDefine = 'dark';
-		const addedElements = addElement(
-			textToDomToParent(`<${COMPONENT_NAME} scheme="${schemeToDefine}"></${COMPONENT_NAME}>`)
-		);
-		const [actualElement] = addedElements;
-
-		const { scheme } = actualElement;
-
-		expect(scheme).to.equal(schemeToDefine);
+		expect(setSchemedTheme(schemeToDefine)).to.equal(schemeToDefine);
 	});
 
-	it('should set scheme to light', () => {
+	it('sets scheme to light', () => {
 		const schemeToDefine = 'light';
-		const addedElements = addElement(
-			textToDomToParent(`<${COMPONENT_NAME} scheme="${schemeToDefine}"></${COMPONENT_NAME}>`)
-		);
-		const [actualElement] = addedElements;
-
-		const { scheme } = actualElement;
-
-		expect(scheme).to.equal(schemeToDefine);
+		expect(setSchemedTheme(schemeToDefine)).to.equal(schemeToDefine);
 	});
 });
