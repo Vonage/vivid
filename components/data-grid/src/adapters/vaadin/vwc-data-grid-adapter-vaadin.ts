@@ -1,9 +1,11 @@
 import '@vaadin/vaadin-grid/vaadin-grid';
 import '@vaadin/vaadin-grid/vaadin-grid-column';
 import '@vaadin/vaadin-grid/vaadin-grid-tree-column';
-import { GridColumnElement, GridElement } from '@vaadin/vaadin-grid/vaadin-grid';
+import { GridColumnElement, GridElement, GridEventContext } from '@vaadin/vaadin-grid/vaadin-grid';
 import '../../headers/vwc-data-grid-header';
-import { DataGrid, GRID_COMPONENT, GRID_ENGINE_ROOT_CLASS } from '../../vwc-data-grid-api';
+import {
+	DataGrid, EventContext, GRID_COMPONENT, GRID_ENGINE_ROOT_CLASS
+} from '../../vwc-data-grid-api';
 import { DataGridColumn } from '../../vwc-data-grid-column-api';
 import { DataGridAdapter } from '../vwc-data-grid-adapter-api';
 import { MetaRendererProvider, DataRendererProvider, RowDetailsRendererProvider } from '../vwc-data-grid-render-provider-api';
@@ -116,6 +118,19 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 		if (iGrid.selectedItems?.length) {
 			iGrid.selectedItems = [];
 		}
+	}
+
+	getEventContext(event: Event): EventContext | null {
+		let result = null;
+		const iGrid = this.getImplementationOrThrow();
+		const vContext = iGrid.getEventContext(event) as GridEventContext;
+		if (vContext && typeof vContext.index === 'number') {
+			result = {
+				row: vContext.index,
+				item: vContext.item,
+			};
+		}
+		return result;
 	}
 
 	private getImplementationOrThrow(): GridElement {
