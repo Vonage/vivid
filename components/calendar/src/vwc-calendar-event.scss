@@ -9,11 +9,11 @@
 section {
 	$unit-indent: 8px;
 	$gutter: 2px;
-	#{calendar-variables.$indent}: calc(var(#{calendar-variables.$overlap-count}, 0) * #{$unit-indent});
+	#{calendar-variables.$indent}: calc(#{$unit-indent} + var(#{calendar-variables.$overlap-count}, 0) * #{$unit-indent});
 	z-index: var(#{calendar-variables.$overlap-count});
 	overflow: hidden;
 	padding: 16px;
-	margin: #{$gutter} #{$gutter} #{$gutter} clamp(#{gutter}, var(#{calendar-variables.$indent}), #{$unit-indent * 4});
+	margin: #{$gutter} #{$unit-indent} #{$gutter} min(var(#{calendar-variables.$indent}), #{$unit-indent * 4});
 	background-color: var(#{calendar-variables.$color}, var(#{scheme-variables.$vvd-color-neutral-40}));
 	border-radius: 6px;
 	color: var(#{scheme-variables.$vvd-color-on-primary});

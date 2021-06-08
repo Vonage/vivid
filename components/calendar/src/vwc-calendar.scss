@@ -41,9 +41,23 @@ ol {
 	display: grid;
 	grid-area: headline;
 	grid-template-columns: repeat(calendar-variables.$total-columns, 1fr);
-	> li > time {
-		@include typography.typography-cat-shorthand('caption');
-		text-transform: uppercase;
+	h2 {
+		@include typography.typography-cat-shorthand('subtitle-2');
+		margin: 0;
+		time {
+			position: relative;
+			display: block;
+			text-align: center;
+			&::before {
+				position: absolute;
+				left: 0;
+				content: attr(data-day);
+			}
+			> small {
+				@include typography.typography-cat-shorthand('caption');
+				text-transform: uppercase;
+			}
+		}
 	}
 }
 

@@ -125,9 +125,15 @@ export class VWCCalendar extends LitElement {
 			<ol class="headline">
 					${this.getDaysArr([this.getFirstDateOfTheWeek(this.datetime)]).map(date => html`
 					<li>
-						<time datetime=${getValidDateString(date)}>
-							${this.formatDate(date, {	day: '2-digit',	weekday: 'short' })}
-						</time>
+						<h2>
+							<span role="link" tabindex="0" aria-label=${this.formatDate(date, {	weekday: 'long', month: 'long', day: 'numeric' })}>
+								<time datetime=${getValidDateString(date)} data-day=${this.formatDate(date, {	day: '2-digit' })}>
+									<small>
+										${this.formatDate(date, {	weekday: 'short' })}
+									</small>
+								</time>
+							</span>
+						</h2>
 					</li>`)}
 			</ol>`;
 	}
