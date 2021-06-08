@@ -100,10 +100,18 @@ export class VWCCalendar extends LitElement {
 		return new Intl.DateTimeFormat('en-US', options).format(date);
 	}
 
-	protected renderTimeCells(): TemplateResult[] {
+	protected renderTimeRows(): TemplateResult[] {
 		const templates = [];
-		for (let i = 0; i < (this.#hours.length + 1) * this.#daysLength; i++) {
-			templates.push(html`<div role="listitem" tabindex="0"></div>`);
+		for (let i = 0; i < (this.#hours.length + 1); i++) {
+			templates.push(html`<div role="listitem"></div>`);
+		}
+		return templates;
+	}
+
+	protected renderColumns(): TemplateResult[] {
+		const templates = [];
+		for (let i = 0; i < this.#daysLength; i++) {
+			templates.push(html`<div role="gridcell" tabindex="-1"></div>`);
 		}
 		return templates;
 	}
@@ -151,7 +159,12 @@ export class VWCCalendar extends LitElement {
 				${this.renderDays()}
 				${this.renderHours()}
 				<div class="calendar" role="list">
-					${this.renderTimeCells()}
+					<div class="rows" aria-hidden="true">
+						${this.renderTimeRows()}
+					</div>
+					<div class="columns">
+						${this.renderColumns()}
+					</div>
 					<!-- TODO: should be presented as a custom element. then could look for siblings and indent by js  -->
 					<div role="presentation">
 						<slot></slot>

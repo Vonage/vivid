@@ -1,17 +1,19 @@
 @use '@vonage/vvd-typography/scss/typography';
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
-@use 'vwc-calendar-variables' as calendar-variables;
+@use 'partials/vwc-calendar-variables' as calendar-variables;
 
 :host {
 	display: contents;
 }
 
 section {
-	#{calendar-variables.$indent}: calc(var(#{calendar-variables.$overlap-count}, 0) * 8px);
+	$unit-indent: 8px;
+	$gutter: 2px;
+	#{calendar-variables.$indent}: calc(var(#{calendar-variables.$overlap-count}, 0) * #{$unit-indent});
 	z-index: var(#{calendar-variables.$overlap-count});
 	overflow: hidden;
 	padding: 16px;
-	margin: 1px 1px 1px calc(1px + var(#{calendar-variables.$indent}));
+	margin: #{$gutter} #{$gutter} #{$gutter} clamp(#{gutter}, var(#{calendar-variables.$indent}), #{$unit-indent * 4});
 	background-color: var(#{calendar-variables.$color}, var(#{scheme-variables.$vvd-color-neutral-40}));
 	border-radius: 6px;
 	color: var(#{scheme-variables.$vvd-color-on-primary});
