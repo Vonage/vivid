@@ -33,3 +33,10 @@
 | `S`       | `Seconds, 2 digits`                  | `00 to 59` |
 | `s`       | `Seconds`                            | `1 to 59`  |
 | `K`       | `AM/PM`                              | `AM or PM` |
+
+#### Example
+
+```html
+<vwc-datepicker dateFormat="Y-m-d"></vwc-datepicker>
+```
+Displays: 2021-06-11
