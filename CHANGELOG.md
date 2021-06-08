@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.11.0](https://github.com/Vonage/vivid/compare/v2.10.0...v2.11.0) (2021-06-07)
+
+
+### Features
+
+* **vwc-data-grid events:** viv-577 iss-875 initial implementation of grid events ([#876](https://github.com/Vonage/vivid/issues/876)) ([d538d75](https://github.com/Vonage/vivid/commit/d538d75945018f711bc9026ac00d1e7ff27c4684)), closes [#875](https://github.com/Vonage/vivid/issues/875) [#875](https://github.com/Vonage/vivid/issues/875) [#875](https://github.com/Vonage/vivid/issues/875) [#875](https://github.com/Vonage/vivid/issues/875) [#875](https://github.com/Vonage/vivid/issues/875)
+
+
+
+
+
 # [2.10.0](https://github.com/Vonage/vivid/compare/v2.9.1...v2.10.0) (2021-06-04)
 
 
