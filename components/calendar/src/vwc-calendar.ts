@@ -122,13 +122,16 @@ export class VWCCalendar extends LitElement {
 	 * */
 	protected renderDays(): TemplateResult {
 		return html`
-			<ol class="headline">
+			<ol class="headline" role="row">
 					${this.getDaysArr([this.getFirstDateOfTheWeek(this.datetime)]).map(date => html`
-					<li>
-						<h2>
-							<span role="link" tabindex="0" aria-label=${this.formatDate(date, {	weekday: 'long', month: 'long', day: 'numeric' })}>
-								<time datetime=${getValidDateString(date)} data-day=${this.formatDate(date, {	day: '2-digit' })}>
-									<small>
+					<li role="columnheader" aria-labelledby=${date.getTime()}>
+						<h2 role="presentation">
+							<span id=${date.getTime()} role="link" tabindex="0" aria-label=${this.formatDate(date, {	weekday: 'long', month: 'long', day: 'numeric' })}>
+								<time datetime=${getValidDateString(date)}>
+									<em role="presentation">
+										${this.formatDate(date, { day: '2-digit' })}
+									</em>
+									<small role="presentation">
 										${this.formatDate(date, {	weekday: 'short' })}
 									</small>
 								</time>
@@ -144,10 +147,8 @@ export class VWCCalendar extends LitElement {
 	 * */
 	protected renderHours(): TemplateResult {
 		return html`
-			<ol class="time">
-				<!-- TODO: align to convention of generation from first hour in day and a length of hours. -->
-				<!-- TODO: get styled hour and datetime value -->
-				${this.#hours.map(h => html`<li>
+			<ol class="time" role="row">
+				${this.#hours.map(h => html`<li role="rowheader">
 					<time datetime="${this.formatDate(h, { hour: 'numeric', minute: 'numeric', hour12: false })}">
 						${this.formatDate(h, { hour: 'numeric', hour12: true })}
 					</time>
@@ -161,20 +162,17 @@ export class VWCCalendar extends LitElement {
 	 * */
 	protected render(): TemplateResult {
 		return html`
-			<div class="container">
+			<div class="container" role="grid">
 				${this.renderDays()}
 				${this.renderHours()}
-				<div class="calendar" role="list">
-					<div class="rows" aria-hidden="true">
+				<div class="calendar" role="presentation">
+					<div class="rows" aria-hidden="true" role="list">
 						${this.renderTimeRows()}
 					</div>
-					<div class="columns">
+					<div class="columns" role="row">
 						${this.renderColumns()}
 					</div>
-					<!-- TODO: should be presented as a custom element. then could look for siblings and indent by js  -->
-					<div role="presentation">
-						<slot></slot>
-					</div>
+					<slot></slot>
 				</div>
 			</div>
 		`;

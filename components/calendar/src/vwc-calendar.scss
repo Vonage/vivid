@@ -48,10 +48,11 @@ ol {
 			position: relative;
 			display: block;
 			text-align: center;
-			&::before {
+			> em {
 				position: absolute;
 				left: 0;
-				content: attr(data-day);
+				font: inherit;
+				inset-inline-start: 0;
 			}
 			> small {
 				@include typography.typography-cat-shorthand('caption');
@@ -145,6 +146,3 @@ ol {
 	}
 }
 
-[role="presentation"i] {
-	display: contents;
-}

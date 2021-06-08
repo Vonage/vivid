@@ -44,7 +44,7 @@ describe('calendar', () => {
 	});
 
 	describe('API', () => {
-		it('should reflect weekdays as set by property', async () => {
+		it('reflects weekdays as set by property', async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
@@ -55,15 +55,16 @@ describe('calendar', () => {
 			const { shadowRoot } = actualElement;
 			const headline = shadowRoot.querySelector('.headline');
 
-			const reflectedDates = Array.from(headline.children)
-				.map(child => child.textContent.trim());
+			const reflectedDates = Array.from(headline.querySelectorAll('time'))
+				.map(time => Array.from(time.children)
+					.reduce((acc, curr) => acc.textContent.trim() + curr.textContent.trim()));
 
-			const expectedDates = ['27 Sun', '28 Mon', '29 Tue', '30 Wed', '31 Thu', '01 Fri', '02 Sat'];
+			const expectedDates = ['27Sun', '28Mon', '29Tue', '30Wed', '31Thu', '01Fri', '02Sat'];
 
 			expect(reflectedDates.join()).to.equal(expectedDates.join());
 		});
 
-		it('should reflect weekdays as set by attribute', async () => {
+		it('reflects weekdays as set by attribute', async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
@@ -74,10 +75,11 @@ describe('calendar', () => {
 			const { shadowRoot } = actualElement;
 			const headline = shadowRoot.querySelector('.headline');
 
-			const reflectedDates = Array.from(headline.children)
-				.map(child => child.textContent.trim());
+			const reflectedDates = Array.from(headline.querySelectorAll('time'))
+				.map(time => Array.from(time.children)
+					.reduce((acc, curr) => acc.textContent.trim() + curr.textContent.trim()));
 
-			const expectedDates = ['27 Sun', '28 Mon', '29 Tue', '30 Wed', '31 Thu', '01 Fri', '02 Sat'];
+			const expectedDates = ['27Sun', '28Mon', '29Tue', '30Wed', '31Thu', '01Fri', '02Sat'];
 
 			expect(reflectedDates.join()).to.equal(expectedDates.join());
 		});
