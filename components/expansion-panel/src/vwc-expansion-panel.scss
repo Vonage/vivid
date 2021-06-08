@@ -62,6 +62,7 @@
 
 .expansion-panel-body {
 	@include typography.typography-cat-shorthand('body-2');
+	overflow: hidden;
 	padding: 8px 32px 24px 16px;
 	contain: content;
 }
