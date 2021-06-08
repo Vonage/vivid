@@ -28,6 +28,8 @@ Grid API may roughly split into 2 categories:
 - configuration / customization
 - data
 
+Additionally there is a set of APIs of more general nature, like Events API.
+
 #### Data API
 
 More formal description of these APIs found below in the Grid Configuration / Customization / Management section.
@@ -37,7 +39,7 @@ There are 2 ways to supply data to grid, via the following grid component proper
 	- simplest
 	- all data upfront
 	- suitable for small to medium amounts of data (in terms of memory occupation)
-- `dataProvider: (params: { page: number, pageSize: number }, callback: (pageItems: unknown[], totalItems?: number) => void) => void`
+- `dataProvider: (params: { page: number, pageSize: number }, callback: (pageItems: unknown[], totalItems: number) => void) => void`
 	- stream of chunks, on demand
 	- should be used when memory usage concern present (from the data perspective)
 	- should be used when pulling data from the backend on the fly
@@ -230,6 +232,36 @@ Interface:
 grid: DataGrid,
 ```
 
+#### Events API
+
+`vwc-data-grid` provides a convenient API to handle events happening within the grid.
+
+It is possible and convenient to register a listener for the relevant event on the grid level and then retrieve the actual context the event occured in
+```js
+dataGrid.addEventListener('click', event => {
+	const _dataGrid = event.target;
+	const eventContext = _dataGrid.getEventContext(event);
+	//	work with context as appropriate
+});
+```
+
+`getEventContext(event: Event): EventContext | null`
+The method will return an event contex or `null` in case of non-relevant event.
+
+##### `EventContext` interface
+
+```js
+/**
+ * row number, index, of the interacted row
+ */
+row: number,
+
+/**
+ * actual data item, underlying interacted row
+ */
+item: unknown
+```
+
 #### Examples
 
 Few examples of grid definition in several flavors.
@@ -294,4 +326,4 @@ const cellRenderer = (container, column, data) {
 ```
 
 Pay attention, how the columns data structure is not maintained in JS anymore.
-Moreover, attributes like `sortable`, `auto-width` etc can be binded to some data structure managed be data-binding framework, thus removing the whole customization part out of scripting scope.
+Moreover, attributes like `sortable`, `auto-width` etc can be bound to some data structure managed by data-binding framework, thus removing the whole customization part out of the scripting scope.
