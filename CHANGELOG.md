@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.11.0](https://github.com/Vonage/vivid/compare/v2.10.0...v2.11.0) (2021-06-07)
+
+
+### Features
+
+* **vwc-data-grid events:** viv-577 iss-875 initial implementation of grid events ([#876](https://github.com/Vonage/vivid/issues/876)) ([d538d75](https://github.com/Vonage/vivid/commit/d538d75945018f711bc9026ac00d1e7ff27c4684)), closes [#875](https://github.com/Vonage/vivid/issues/875) [#875](https://github.com/Vonage/vivid/issues/875) [#875](https://github.com/Vonage/vivid/issues/875) [#875](https://github.com/Vonage/vivid/issues/875) [#875](https://github.com/Vonage/vivid/issues/875)
+
+
+
+
+
+# [2.10.0](https://github.com/Vonage/vivid/compare/v2.9.1...v2.10.0) (2021-06-04)
+
+
+### Bug Fixes
+
+* **banner:** height changes when dismissible ([#841](https://github.com/Vonage/vivid/issues/841)) ([e7df184](https://github.com/Vonage/vivid/commit/e7df1844d790fd6b122999d0f0c32422881df88a))
+* **vwc-snackbar:** viv 573 issue 864 visual redesign ([#866](https://github.com/Vonage/vivid/issues/866)) ([f6932fa](https://github.com/Vonage/vivid/commit/f6932fad7386087292a25435c4d0580ad2d3c3f7)), closes [#864](https://github.com/Vonage/vivid/issues/864) [#864](https://github.com/Vonage/vivid/issues/864) [#864](https://github.com/Vonage/vivid/issues/864) [#864](https://github.com/Vonage/vivid/issues/864)
+
+
+### Features
+
+* **vwc-surface:** viv-510 iss-859 complex menu surface ([#863](https://github.com/Vonage/vivid/issues/863)) ([1520570](https://github.com/Vonage/vivid/commit/1520570b3bf0a5dc97074ee5f0de393edc953ec6)), closes [#859](https://github.com/Vonage/vivid/issues/859) [#859](https://github.com/Vonage/vivid/issues/859) [#859](https://github.com/Vonage/vivid/issues/859) [#859](https://github.com/Vonage/vivid/issues/859) [#859](https://github.com/Vonage/vivid/issues/859) [#859](https://github.com/Vonage/vivid/issues/859) [#859](https://github.com/Vonage/vivid/issues/859) [#859](https://github.com/Vonage/vivid/issues/859) [#859](https://github.com/Vonage/vivid/issues/859) [#859](https://github.com/Vonage/vivid/issues/859) [#859](https://github.com/Vonage/vivid/issues/859) [#859](https://github.com/Vonage/vivid/issues/859) [#859](https://github.com/Vonage/vivid/issues/859) [#859](https://github.com/Vonage/vivid/issues/859) [#859](https://github.com/Vonage/vivid/issues/859) [#859](https://github.com/Vonage/vivid/issues/859)
+* **vwc-textfield:** support multiple interactive icon buttons ([#837](https://github.com/Vonage/vivid/issues/837)) ([464a725](https://github.com/Vonage/vivid/commit/464a7250592f5920d75f5add6e3d1393ab2642e6))
+
+
+
+
+
 ## [2.9.1](https://github.com/Vonage/vivid/compare/v2.9.0...v2.9.1) (2021-05-27)
 
 

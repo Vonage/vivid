@@ -20,7 +20,7 @@ const Template = args => html`
 `;
 
 export const Basic = Template.bind({});
-Basic.args = { dateFormat: 'Y-m-d', altInput: '', altFormat: 'F j, Y', closeOnSelect: '' };
+Basic.args = { dateFormat: 'Y-m-d', closeOnSelect: '' };
 
 export const MaxDate = Template.bind({});
 MaxDate.args = { dateFormat: 'Y-m-d', MaxDate: 'today', closeOnSelect: '' };
