@@ -13,7 +13,7 @@ function getTestFolders(workingFolder) {
 	return testFolders;
 }
 
-const template = fs.readFileSync(path.join(__dirname, '../testPage.js.tmpl')).toString();
+const template = fs.readFileSync(path.join(__dirname, '../assets/testPage.js.tmpl')).toString();
 
 function generateTestPage(excludeList = []) {
 	const testsNames = getTestFolders(path.join(__dirname, '../tests')).filter(testName => !excludeList.includes(testName));
