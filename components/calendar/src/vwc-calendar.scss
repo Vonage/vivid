@@ -8,7 +8,7 @@ ol {
 	list-style: none;
 }
 
-.container {
+[role="grid"i] {
 	display: grid;
 	width: max(100%, 500px);
 	margin: auto;
@@ -23,7 +23,7 @@ ol {
 	grid-area: time;
 	grid-template-rows: repeat(calendar-variables.$total-rows, 1fr);
 	margin-inline-end: 15px;
-	> li {
+	> [role="rowheader"i] {
 		display: flex;
 		align-items: flex-end;
 		justify-content: flex-end;
@@ -44,6 +44,7 @@ ol {
 	h2 {
 		@include typography.typography-cat-shorthand('subtitle-2');
 		margin: 0;
+		// font-variant-numeric: tabular-nums;
 		time {
 			position: relative;
 			display: block;
@@ -62,10 +63,13 @@ ol {
 	}
 }
 
-.calendar {
+.calendar-row {
+	display: contents;
+}
+
+.calendar-grid-presentation {
 	display: grid;
 	overflow: hidden;
-	// background-color: var(#{scheme-variables.$vvd-color-neutral-20}, rgb(128, 128, 128));
 	border-radius: 6px;
 	box-shadow: 0 0 3.64752px rgba(0, 0, 0, 0.15);
 	counter-reset: listing;
@@ -76,39 +80,18 @@ ol {
 		calendar-variables.$total-columns,
 		1fr
 	);
-
-	// @for $i from 1 through calendar-variables.$total-columns {
-	// 	/* extra 2 for the sibling events wrapper and the self containment */
-	// 	$total-cells: calendar-variables.$total-columns * calendar-variables.$total-rows + 2;
-
-	// 	$from: $i * calendar-variables.$total-rows - calendar-variables.$total-rows + 1;
-	// 	$less: $total-cells - $i * calendar-variables.$total-rows;
-
-	// 	[role="listitem"i]:nth-child(1n + #{$from}):nth-last-child(1n + #{$less}) {
-	// 		--column: #{$i};
-	// 	}
-	// }
 }
 
-.rows {
+.hours {
 	display: contents;
 	> [role="listitem"i] {
-		// background-color: var(#{scheme-variables.$vvd-color-base}, rgb(255, 255, 255));
 		position: relative;
 		grid-column: 1 / 8;
 		grid-row: var(--row);
 		min-block-size: 48px;
 		pointer-events: none;
-		// &::before {
-		// 	position: absolute;
-		// 	content: counter(listing);
-		// 	counter-increment: listing;
-		// 	opacity: 0;
-		// 	pointer-events: none;
-		// }
 		&:not(:first-child)::after {
 			position: absolute;
-			// z-index: 3;
 			border-block-end: var(#{scheme-variables.$vvd-color-neutral-20}) 1px solid;
 			content: '';
 			inline-size: 100%;
@@ -138,11 +121,9 @@ ol {
 		&:not(:first-child)::after {
 			position: absolute;
 			block-size: 100%;
-			// z-index: 3;
 			border-inline-end: var(#{scheme-variables.$vvd-color-neutral-20}) 1px solid;
 			content: '';
 			margin-inline-start: -1px;
 		}
 	}
 }
-

@@ -122,23 +122,23 @@ export class VWCCalendar extends LitElement {
 	 * */
 	protected renderDays(): TemplateResult {
 		return html`
-			<ol class="headline" role="row">
+			<div class="headline" role="row">
 					${this.getDaysArr([this.getFirstDateOfTheWeek(this.datetime)]).map(date => html`
-					<li role="columnheader" aria-labelledby=${date.getTime()}>
+					<span role="columnheader" aria-labelledby=${date.getTime()}>
 						<h2 role="presentation">
 							<span id=${date.getTime()} role="link" tabindex="0" aria-label=${this.formatDate(date, {	weekday: 'long', month: 'long', day: 'numeric' })}>
 								<time datetime=${getValidDateString(date)}>
-									<em role="presentation">
+									<em>
 										${this.formatDate(date, { day: '2-digit' })}
 									</em>
-									<small role="presentation">
+									<small>
 										${this.formatDate(date, {	weekday: 'short' })}
 									</small>
 								</time>
 							</span>
 						</h2>
-					</li>`)}
-			</ol>`;
+					</span>`)}
+			</div>`;
 	}
 
 	/**
@@ -147,13 +147,13 @@ export class VWCCalendar extends LitElement {
 	 * */
 	protected renderHours(): TemplateResult {
 		return html`
-			<ol class="time" role="row">
-				${this.#hours.map(h => html`<li role="rowheader">
+			<div class="time" role="presentation">
+				${this.#hours.map(h => html`<span role="rowheader">
 					<time datetime="${this.formatDate(h, { hour: 'numeric', minute: 'numeric', hour12: false })}">
 						${this.formatDate(h, { hour: 'numeric', hour12: true })}
 					</time>
-				</li>`)}
-			</ol>`;
+				</span>`)}
+			</div>`;
 	}
 
 	/**
@@ -162,17 +162,19 @@ export class VWCCalendar extends LitElement {
 	 * */
 	protected render(): TemplateResult {
 		return html`
-			<div class="container" role="grid">
+			<div role="grid">
 				${this.renderDays()}
-				${this.renderHours()}
-				<div class="calendar" role="presentation">
-					<div class="rows" aria-hidden="true" role="list">
-						${this.renderTimeRows()}
+				<div class="calendar-row" role="row">
+					${this.renderHours()}
+					<div class="calendar-grid-presentation" role="presentation">
+						<div class="hours" role="list">
+							${this.renderTimeRows()}
+						</div>
+						<div class="columns" role="presentation">
+							${this.renderColumns()}
+						</div>
+						<slot></slot>
 					</div>
-					<div class="columns" role="row">
-						${this.renderColumns()}
-					</div>
-					<slot></slot>
 				</div>
 			</div>
 		`;
