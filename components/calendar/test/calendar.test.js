@@ -55,8 +55,8 @@ describe('calendar', () => {
 			const { shadowRoot } = actualElement;
 			const headline = shadowRoot.querySelector('.headline');
 
-			const reflectedDates = Array.from(headline.querySelectorAll('time'))
-				.map(time => Array.from(time.children)
+			const reflectedDates = Array.from(headline.querySelectorAll('h2'))
+				.map(h2 => Array.from(h2.children)
 					.reduce((acc, curr) => acc.textContent.trim() + curr.textContent.trim()));
 
 			const expectedDates = ['27Sun', '28Mon', '29Tue', '30Wed', '31Thu', '01Fri', '02Sat'];
@@ -75,8 +75,8 @@ describe('calendar', () => {
 			const { shadowRoot } = actualElement;
 			const headline = shadowRoot.querySelector('.headline');
 
-			const reflectedDates = Array.from(headline.querySelectorAll('time'))
-				.map(time => Array.from(time.children)
+			const reflectedDates = Array.from(headline.querySelectorAll('h2'))
+				.map(h2 => Array.from(h2.children)
 					.reduce((acc, curr) => acc.textContent.trim() + curr.textContent.trim()));
 
 			const expectedDates = ['27Sun', '28Mon', '29Tue', '30Wed', '31Thu', '01Fri', '02Sat'];

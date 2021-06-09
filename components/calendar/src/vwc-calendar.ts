@@ -111,7 +111,9 @@ export class VWCCalendar extends LitElement {
 	protected renderColumns(): TemplateResult[] {
 		const templates = [];
 		for (let i = 0; i < this.#daysLength; i++) {
-			templates.push(html`<div role="gridcell" tabindex="-1"></div>`);
+			templates.push(html`<div role="gridcell" tabindex="-1">
+				<slot name="day-${i + 1}"></slot>
+			</div>`);
 		}
 		return templates;
 	}
@@ -123,21 +125,19 @@ export class VWCCalendar extends LitElement {
 	protected renderDays(): TemplateResult {
 		return html`
 			<div class="headline" role="row">
-					${this.getDaysArr([this.getFirstDateOfTheWeek(this.datetime)]).map(date => html`
-					<span role="columnheader" aria-labelledby=${date.getTime()}>
-						<h2 role="presentation">
-							<span id=${date.getTime()} role="link" tabindex="0" aria-label=${this.formatDate(date, {	weekday: 'long', month: 'long', day: 'numeric' })}>
-								<time datetime=${getValidDateString(date)}>
-									<em>
-										${this.formatDate(date, { day: '2-digit' })}
-									</em>
-									<small>
-										${this.formatDate(date, {	weekday: 'short' })}
-									</small>
-								</time>
-							</span>
+				${this.getDaysArr([this.getFirstDateOfTheWeek(this.datetime)]).map(date => html`
+				<div role="columnheader" tabindex="-1">
+					<time datetime=${getValidDateString(date)} aria-readonly="true" aria-label=${this.formatDate(date, {	weekday: 'long', month: 'long', day: 'numeric' })}>
+						<h2>
+							<em>
+								${this.formatDate(date, { day: '2-digit' })}
+							</em>
+							<small>
+								${this.formatDate(date, {	weekday: 'short' })}
+							</small>
 						</h2>
-					</span>`)}
+					</time>
+				</div>`)}
 			</div>`;
 	}
 
