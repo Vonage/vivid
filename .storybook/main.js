@@ -1,8 +1,11 @@
 const path = require('path');
 
+const chromaticIgnoredComponents = ['circular-progress'];
+
 module.exports = {
 	stories: process.env.CHROMATIC ? [
 			'../components/**/stories/*.stories.js',
+			`!(../components/(${chromaticIgnoredComponents.join('|')})/stories/*)`
 		] :
 		[
 		'../common/**/stories/*.stories.js',
