@@ -1,7 +1,9 @@
 const path = require('path');
 
 module.exports = {
-	stories: process.env.CHROMATIC ? [] :
+	stories: process.env.CHROMATIC ? [
+			'../components/**/stories/*.stories.js',
+		] :
 		[
 		'../common/**/stories/*.stories.js',
 		'../components/**/stories/*.stories.js',
