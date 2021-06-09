@@ -1,8 +1,8 @@
 export default {
 	sourcePath: '../readme.md',
-	outputName: 'toggle-button-group-introduction',
+	outputName: 'button-toggle-group-introduction',
 	story: {
-		title: 'Alpha/Components/Toggle Buttons Group',
+		title: 'Alpha/Components/Button Toggle Group',
 		name: 'Introduction',
 		parameters: {
 			options: {

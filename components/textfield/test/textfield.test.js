@@ -3,6 +3,7 @@ import '@vonage/vwc-formfield';
 import {
 	textToDomToParent,
 	waitNextTask,
+	waitInterval,
 	assertComputedStyle,
 	assertDistancePixels,
 	changeValueAndNotify,
@@ -57,6 +58,31 @@ describe('textfield', () => {
 		assertComputedStyle(te, { pointerEvents: 'none' });
 	});
 
+	it(`should sync lightDom input inline size`, async function () {
+		const [actualElement] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+		);
+		actualElement.style.inlineSize = 370;
+		actualElement.icon = 'audio-off-line';
+		actualElement.trailingicon = 'backspace-line';
+		await waitNextTask();
+		const input = actualElement.querySelector('.vivid-input-internal');
+		const inputOrigin = actualElement.shadowRoot.querySelector('.mdc-text-field__input');
+		await waitInterval(100);
+
+		const { inlineSize, paddingInlineStart, paddingInlineEnd } = getComputedStyle(input);
+		const inputInlineSize = parseInt(inlineSize, 10)
+			- parseInt(paddingInlineStart, 10)
+			- parseInt(paddingInlineEnd, 10);
+		const { inlineSize: originInlineSize } = getComputedStyle(inputOrigin);
+
+		const originalSize = parseInt(originInlineSize, 10);
+
+		expect(inputInlineSize, `input inline size isn't synced`)
+			.to
+			.equal(originalSize);
+	});
+
 	describe('events', () => {
 		it(`should trigger ${COMPONENT_NAME} focus & blur`, async function () {
 			let count = 0;
@@ -64,15 +90,18 @@ describe('textfield', () => {
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
 			await waitNextTask();
+
 			textfield.addEventListener('focus', () => count++);
 			textfield.addEventListener('blur', () => count++);
 			const input = textfield.querySelector('input');
 			input.focus();
 			await waitNextTask();
+
 			expect(textfield.focused).true;
 
 			input.blur();
 			await waitNextTask();
+
 			expect(textfield.focused).false;
 
 			expect(count).to.equal(2);
@@ -252,6 +281,8 @@ describe('textfield', () => {
 			);
 			await waitNextTask();
 			const i = e.querySelector('input');
+			await waitInterval(100);
+
 			assertDistancePixels(e, i, 'left', 0);
 			assertComputedStyle(i, { paddingInlineStart: '16px' });
 		});
@@ -289,9 +320,12 @@ describe('textfield', () => {
 			await waitNextTask();
 			const icn = e.shadowRoot.querySelector('vwc-icon');
 			const inp = e.querySelector('input');
+			await waitInterval(100);
+
 			expect(icn).exist;
 			expect(icn.offsetHeight).equal(20);
 			expect(icn.offsetWidth).equal(20);
+
 			assertDistancePixels(inp, icn, 'left', 16);
 			assertDistancePixels(
 				inp,

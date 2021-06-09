@@ -1,6 +1,13 @@
-$horizontal-gutter: 16px;
-$icon-size: 20px;
-$icon-gutter: calc(#{$icon-size} + #{$horizontal-gutter} * 2);
-
-$vvd-text-field-size-block: --vvd-text-field-size-block;
+$vvd-textfield-icon-size-variable-name: --vvd-textfield-icon-size;
+$vvd-textfield-action-icon-size-variable-name: --vvd-textfield-action-icon-size;
+$vvd-textfield-size-block: --vvd-textfield-block-size;
+$vvd-textfield-shape: --vvd-textfield-shape;
 $vvd-input-selector: '.vivid-input-internal';
+
+$actions-gap: 4px;
+$horizontal-gutter: 16px;
+$icon-sizes: (
+	'small': 16px,
+	'medium': 20px,
+	// 'large': 24px
+);

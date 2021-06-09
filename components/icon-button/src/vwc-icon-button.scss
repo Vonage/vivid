@@ -3,11 +3,12 @@ $icon-button-icon-size-variable-name: --vvd-icon-button-icon-size;
 /*************/
 
 @use 'sass:map';
+@use './vwc-icon-button-variables' as icon-button-variables;
 @use '@vonage/vwc-icon/src/vwc-icon-variables' as icon-variables;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
-	$variable-name: --vvd-icon-button-shape
+	$variable-name: #{icon-button-variables.$icon-button-shape}
 );
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation' with (
 	$connotations-set: primary cta success alert info announcement
@@ -35,12 +36,11 @@ $block-sizes: (
 	'enlarged': 48px
 );
 
-$vvd-icon-button-block-size: --vvd-icon-button-block-size;
 
 :host {
 
 	// sizing
-	--mdc-icon-button-size: var(#{$vvd-icon-button-block-size}, #{map.get($block-sizes, 'normal')});
+	--mdc-icon-button-size: var(#{icon-button-variables.$icon-button-block-size}, #{map.get($block-sizes, 'normal')});
 	@include vvd-formfield.coupling;
 
 	.mdc-icon-button {
@@ -50,7 +50,7 @@ $vvd-icon-button-block-size: --vvd-icon-button-block-size;
 		justify-content: center;
 		border: var(--vvd-icon-button-border);
 		background-color: var(--vvd-icon-button-background-color);
-		border-radius: var(--vvd-icon-button-shape);
+		border-radius: var(#{icon-button-variables.$icon-button-shape});
 		color: var(--vvd-icon-button-color);
 		font-size: inherit;
 		&:disabled {
@@ -72,22 +72,22 @@ $vvd-icon-button-block-size: --vvd-icon-button-block-size;
 }
 
 :host([dense]) {
-	--mdc-icon-button-size: var(#{$vvd-icon-button-block-size}, #{map.get($block-sizes, 'dense')});
+	--mdc-icon-button-size: var(#{icon-button-variables.$icon-button-block-size}, #{map.get($block-sizes, 'dense')});
 }
 
 :host([enlarged]) {
-	--mdc-icon-button-size: var(#{$vvd-icon-button-block-size}, #{map.get($block-sizes, 'enlarged')});
+	--mdc-icon-button-size: var(#{icon-button-variables.$icon-button-block-size}, #{map.get($block-sizes, 'enlarged')});
 }
 
 vwc-icon {
 	:host & {
-		#{icon-variables.$icon-size-variable-name}: var(#{$icon-button-icon-size-variable-name}, 20px);
+		#{icon-variables.$icon-size-variable-name}: var(#{icon-button-variables.$icon-button-icon-size-variable-name}, 20px);
 	}
 	:host([dense]) & {
-		#{icon-variables.$icon-size-variable-name}: var(#{$icon-button-icon-size-variable-name}, 16px);
+		#{icon-variables.$icon-size-variable-name}: var(#{icon-button-variables.$icon-button-icon-size-variable-name}, 16px);
 	}
 	:host([enlarged]) & {
-		#{icon-variables.$icon-size-variable-name}: var(#{$icon-button-icon-size-variable-name}, 24px);
+		#{icon-variables.$icon-size-variable-name}: var(#{icon-button-variables.$icon-button-icon-size-variable-name}, 24px);
 	}
 }
 
