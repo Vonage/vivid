@@ -21,6 +21,11 @@ describe('vwc-audio', () => {
 		expect(audioElement instanceof VWCAudio).to.eq(true);
 	});
 
+	it(`should live in the DOM without seekbar`, function () {
+		const [audioElement] = addElements(textToDomToParent(`<vwc-audio noseek></vwc-audio>`));
+		expect(audioElement instanceof VWCAudio).to.eq(true);
+	});
+
 	it(`should set the src property if src attribute is set`, function () {
 		const url = 'asdfasdfasdf';
 		const [actualElement] = addElements(textToDomToParent(`<vwc-audio src="${url}"></vwc-audio>`));

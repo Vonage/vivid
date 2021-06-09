@@ -123,6 +123,11 @@ describe('vwc-media-controller', function () {
 			});
 		});
 
+		it('Should set position and playstate', function () {
+			controllerEl.setPosition(0);
+			controllerEl.setPlayState(true);
+		});
+
 		it('Should report userScrubRequest events when clicking the trackbar', function () {
 			const SAMPLES = 10;
 			return kefir
