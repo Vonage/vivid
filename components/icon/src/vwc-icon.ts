@@ -12,6 +12,7 @@ import { unsafeSVG } from 'lit-html/directives/unsafe-svg';
 import { until } from 'lit-html/directives/until.js';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import { memoizeWith, identity, always } from 'ramda';
+import { ariaProperty } from '@material/mwc-base/aria-property';
 import { style } from './vwc-icon.css';
 
 declare global {
@@ -64,11 +65,10 @@ export class VWCIcon extends LitElement {
 	})
 	size?: IconSize;
 
+	@ariaProperty
 	@property({
 		attribute: 'aria-label',
-		reflect: true,
 		type: String,
-		converter: { toAttribute: always(null) }
 	})
 	ariaLabel?:string;
 
