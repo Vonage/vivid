@@ -17,6 +17,10 @@ import { nothing } from 'lit-html';
 import { classMap } from 'lit-html/directives/class-map';
 import { internalProperty, property, query } from 'lit-element/lib/decorators';
 
+const SECOND = 1;
+const MINUTE = 60 * SECOND;
+const HOUR = 60 * MINUTE;
+
 [VWCScrubBar];
 
 const setEvents = function (eventSource: HTMLElement, handlersMap: Record<string, ()=> unknown>) {
@@ -30,7 +34,7 @@ const setEvents = function (eventSource: HTMLElement, handlersMap: Record<string
 
 const formatTime = (seconds:number) => {
 	const outputTime:Array<number> = [];
-	[24 * 60, 60, 1].reduce((ac:number, divider:number) => {
+	[HOUR, MINUTE, SECOND].reduce((ac:number, divider:number) => {
 		outputTime.push(~~(ac / divider));
 		return ac % divider;
 	}, seconds);
