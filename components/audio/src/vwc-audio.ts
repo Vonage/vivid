@@ -32,6 +32,7 @@ const setEvents = function (eventSource: HTMLElement, handlersMap: Record<string
 		}));
 };
 
+/* istanbul ignore next */
 const formatTime = (seconds:number) => {
 	const outputTime:Array<number> = [];
 	[HOUR, MINUTE, SECOND].reduce((ac:number, divider:number) => {
@@ -78,11 +79,17 @@ export class VWCAudio extends LitElement {
 	protected firstUpdated(_changedProperties: PropertyValues):void {
 		super.firstUpdated(_changedProperties);
 		setEvents(this._audio, {
+			/* istanbul ignore next */
 			loadedmetadata: () => this._duration = this._audio.duration,
+			/* istanbul ignore next */
 			timeupdate: () => this._playheadPosition = this._audio.currentTime,
+			/* istanbul ignore next */
 			loadstart: () => this._loading = true,
+			/* istanbul ignore next */
 			canplay: () => this._loading = false,
+			/* istanbul ignore next */
 			play: () => this._isPlaying = true,
+			/* istanbul ignore next */
 			pause: () => this._isPlaying = false
 		});
 	}
