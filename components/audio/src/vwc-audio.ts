@@ -17,6 +17,8 @@ import { nothing } from 'lit-html';
 import { classMap } from 'lit-html/directives/class-map';
 import { internalProperty, property, query } from 'lit-element/lib/decorators';
 
+[VWCScrubBar];
+
 const setEvents = function (eventSource: HTMLElement, handlersMap: Record<string, ()=> unknown>) {
 	return (<any>pipe)(...Object
 		.entries(handlersMap)
