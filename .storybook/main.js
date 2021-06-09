@@ -1,12 +1,14 @@
 const path = require('path');
 
 module.exports = {
-	stories: [
+	stories: process.env.CHROMATIC ? [] :
+		[
 		'../common/**/stories/*.stories.js',
 		'../components/**/stories/*.stories.js',
 		'../docs/**/stories/**/*.stories.js',
 	],
-	addons: [
+	addons: process.env.CHROMATIC ? [] :
+		[
 		'@storybook/addon-a11y',
 		'@storybook/addon-actions',
 		'@storybook/addon-docs',

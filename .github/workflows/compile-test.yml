@@ -358,6 +358,8 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
           buildScriptName: 'storybook:build'
           exitOnceUploaded: true
+        env:
+          CHROMATIC: true
 
   code-standards:
     needs: cache-yarn-and-build
