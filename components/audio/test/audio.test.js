@@ -2,7 +2,8 @@ import '@vonage/vwc-audio';
 import {
 	isolatedElementsCreation,
 	textToDomToParent,
-	waitNextTask
+	waitNextTask,
+	waitInterval
 } from '../../../test/test-helpers';
 import { VWCAudio } from '../vwc-audio';
 import 'chai-dom';
@@ -26,9 +27,10 @@ describe('vwc-audio', () => {
 		expect(audioElement instanceof VWCAudio).to.eq(true);
 	});
 
-	it(`should set the src property if src attribute is set`, function () {
+	it(`should set the src property if src attribute is set`, async function () {
 		const url = 'https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_5MG.mp3';
 		const [actualElement] = addElements(textToDomToParent(`<vwc-audio src="${url}"></vwc-audio>`));
+		await waitInterval(1000);
 		expect(actualElement.src).to.eq(url);
 	});
 
