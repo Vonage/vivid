@@ -27,7 +27,7 @@ describe('vwc-audio', () => {
 	});
 
 	it(`should set the src property if src attribute is set`, function () {
-		const url = 'asdfasdfasdf';
+		const url = 'https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_5MG.mp3';
 		const [actualElement] = addElements(textToDomToParent(`<vwc-audio src="${url}"></vwc-audio>`));
 		expect(actualElement.src).to.eq(url);
 	});
