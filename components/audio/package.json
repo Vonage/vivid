@@ -27,9 +27,7 @@
 	"dependencies": {
     "lit-element": "^2.4.0",
 		"lit-html": "^1.1.0",
-		"@types/kefir": "^3.8.5",
-		"@vonage/vwc-media-controller": "2.11.0",
-		"kefir": "^3.8.7"
+		"@vonage/vwc-media-controller": "2.11.0"
 	},
 	"devDependencies": {
 		"@vonage/vvd-umbrella": "2.11.0",
