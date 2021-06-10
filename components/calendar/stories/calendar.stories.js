@@ -11,7 +11,7 @@ export default {
 };
 
 const Template = args => html`<vwc-calendar ...=${spread(args)}>
-	<vwc-calendar-event slot="day-1" start="0" duration="12" color="rgb(43, 158, 250)" heading="Pool party" description="2pm"></vwc-calendar-event>
+	<vwc-calendar-event slot="day-1" start="0" duration="1" color="rgb(43, 158, 250)" heading="Pool party" description="2pm"></vwc-calendar-event>
 	<vwc-calendar-event slot="day-1" start="23" duration="9" heading="Summer time" description="All Day"></vwc-calendar-event>
 	<vwc-calendar-event slot="day-3" start="4" duration="17" color="rgb(214, 33, 156)" heading="Team meeting" description="11am - 13pm"></vwc-calendar-event>
 	<vwc-calendar-event slot="day-4" start="24" duration="12" color="rgb(50, 175, 76)" heading="Main event" description="12:30pm" overlap-count="2"></vwc-calendar-event>

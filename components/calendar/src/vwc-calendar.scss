@@ -1,6 +1,18 @@
+$calendar-shape: --vvd-calendar-shape;
+
 @use 'partials/vwc-calendar-variables' as calendar-variables;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-typography/scss/typography';
+@use '@vonage/vvd-foundation/scss/mixins/shape-mixins' with(
+	$variable-name: --vvd-calendar-shape
+);
+
+@include shape-mixins.shape(
+	$shapes: (
+		rounded: 6px,
+	),
+	$default: ''
+);
 
 ol {
 	padding: 0;
@@ -22,7 +34,7 @@ ol {
 	display: grid;
 	grid-area: time;
 	grid-template-rows: repeat(calendar-variables.$total-rows, 1fr);
-	margin-inline-end: 15px;
+	margin-inline-end: 2px;
 	> [role="rowheader"i] {
 		display: flex;
 		align-items: flex-end;
@@ -68,7 +80,7 @@ ol {
 .calendar-grid-presentation {
 	display: grid;
 	overflow: hidden;
-	border-radius: 6px;
+	border-radius: var(#{$calendar-shape});
 	box-shadow: 0 0 3.64752px rgba(0, 0, 0, 0.15);
 	counter-reset: listing;
 	gap: calendar-variables.$gap;
@@ -97,7 +109,7 @@ ol {
 		}
 
 		@for $i from 1 through calendar-variables.$total-rows {
-			$current-row: $i + 1;
+			$current-row: $i;
 			&:nth-child(#{calendar-variables.$total-rows}n + #{$i}) {
 				--row: #{$current-row};
 			}
@@ -130,5 +142,5 @@ ol {
 	display: grid;
 	gap: calendar-variables.$gap;
 	grid-auto-flow: column;
-	grid-template-rows: repeat(calendar-variables.$total-rows * calendar-variables.$fraction, 1fr);
+	// grid-template-rows: repeat(calendar-variables.$total-rows * calendar-variables.$fraction, 1fr);
 }

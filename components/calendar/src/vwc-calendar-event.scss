@@ -12,14 +12,13 @@ section {
 	#{calendar-variables.$indent}: calc(#{$unit-indent} + var(#{calendar-variables.$overlap-count}, 0) * #{$unit-indent});
 	z-index: var(#{calendar-variables.$overlap-count});
 	overflow: hidden;
-	padding: 16px;
 	margin: #{$gutter} #{$unit-indent} #{$gutter} min(var(#{calendar-variables.$indent}), #{$unit-indent * 4});
 	background-color: var(#{calendar-variables.$color}, var(#{scheme-variables.$vvd-color-neutral-40}));
 	border-radius: 6px;
 	color: var(#{scheme-variables.$vvd-color-on-primary});
 	contain: strict;
 	grid-column: var(#{calendar-variables.$day});
-	grid-row: var(#{calendar-variables.$start}) / span var(#{calendar-variables.$duration});
+	grid-row: var(#{calendar-variables.$start}) / var(#{calendar-variables.$duration});
 	&:focus {
 		z-index: 2000;
 	}
@@ -27,7 +26,7 @@ section {
 
 h2 {
 	@include typography.typography-cat-shorthand('body-2-bold');
-	margin: 0 0 4px;
+	margin: 0 16px 4px;
 	> strong {
 		font: inherit;
 	}
@@ -35,5 +34,5 @@ h2 {
 
 p {
 	@include typography.typography-cat-shorthand('caption');
-	margin: 0;
+	margin: 0 16px;
 }
