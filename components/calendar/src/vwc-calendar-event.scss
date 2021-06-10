@@ -8,11 +8,13 @@
 
 section {
 	--shf: 4.9406564584124654e-322; // https://stackoverflow.com/a/64921523/3027703
+
 	$gutter: 4px;
 	$unit-indent: 8px;
-	$indent-calc: min(var(#{calendar-variables.$indent}), #{$unit-indent * 4});
-	$dividers-block-size: calc(1px /* per cell divider */* (var(#{calendar-variables.$duration}) - 1) * var(--shf) / var(--shf));
-	$dividers-top-size: calc(1px /* per cell divider */* var(#{calendar-variables.$start}) * var(--shf) / var(--shf));
+
+	$indent-calc: min(var(#{calendar-variables.$indent}), #{$unit-indent * 4} /* 4 as the indentation limit*/);
+	$dividers-block-size: calc(#{calendar-variables.$gap} /* per cell divider */* (var(#{calendar-variables.$duration}) - 1) * var(--shf) / var(--shf));
+	$dividers-top-size: calc(#{calendar-variables.$gap} /* per cell divider */* var(#{calendar-variables.$start}) * var(--shf) / var(--shf));
 	$top: calc(var(#{calendar-variables.$start}) * (100% - #{calendar-variables.$total-rows - 1}px) / #{calendar-variables.$total-rows} + #{$dividers-top-size});
 	$hour-block-size: calc((100% - #{calendar-variables.$total-rows - 1}px) / #{calendar-variables.$total-rows});
 
@@ -31,10 +33,10 @@ section {
 	contain: strict;
 	inline-size: calc(100% - #{$unit-indent} - #{$indent-calc});
 	max-block-size: calc(100% - #{$top});
-	// grid-column: var(#{calendar-variables.$day});
-	// grid-row: var(#{calendar-variables.$start}) / var(#{calendar-variables.$duration});
 	&:focus {
 		z-index: 2000;
+		box-shadow: 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 12%), 0 3px 5px -1px rgb(0 0 0 / 20%);
+		outline: none;
 	}
 }
 

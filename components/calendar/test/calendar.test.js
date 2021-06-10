@@ -43,6 +43,28 @@ describe('calendar', () => {
 		expect(isCorrectColumns).to.equal(true);
 	});
 
+	it('sets correct size proportions', async () => {
+		const [actualElement] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+		);
+		await waitNextTask();
+
+		const { shadowRoot } = actualElement;
+
+		const grid = shadowRoot.querySelector('.calendar-grid-presentation');
+		const cells = shadowRoot.querySelectorAll('[role="gridcell"i]');
+		const rowHeaders = shadowRoot.querySelector('.row-headers');
+		const columnHeaders = shadowRoot.querySelector('.column-headers');
+
+		const isCellsMatch = Array.from(cells).every(cell => getComputedStyle(cell).blockSize == getComputedStyle(grid).blockSize);
+		const isRowHeadersMatch = getComputedStyle(rowHeaders).blockSize == getComputedStyle(grid).blockSize;
+		const isColumnHeadersMatch = getComputedStyle(columnHeaders).inlineSize == getComputedStyle(grid).inlineSize;
+
+		expect(isCellsMatch).to.equal(true);
+		expect(isRowHeadersMatch).to.equal(true);
+		expect(isColumnHeadersMatch).to.equal(true);
+	});
+
 	describe('API', () => {
 		it('reflects weekdays as set by property', async () => {
 			const [actualElement] = addElement(
@@ -53,9 +75,9 @@ describe('calendar', () => {
 			await waitInterval(100);
 
 			const { shadowRoot } = actualElement;
-			const headline = shadowRoot.querySelector('.headline');
+			const columnHeaders = shadowRoot.querySelector('.column-headers');
 
-			const reflectedDates = Array.from(headline.querySelectorAll('h2'))
+			const reflectedDates = Array.from(columnHeaders.querySelectorAll('h2'))
 				.map(h2 => Array.from(h2.children)
 					.reduce((acc, curr) => acc.textContent.trim() + curr.textContent.trim()));
 
@@ -73,9 +95,9 @@ describe('calendar', () => {
 			await waitInterval(100);
 
 			const { shadowRoot } = actualElement;
-			const headline = shadowRoot.querySelector('.headline');
+			const columnHeaders = shadowRoot.querySelector('.column-headers');
 
-			const reflectedDates = Array.from(headline.querySelectorAll('h2'))
+			const reflectedDates = Array.from(columnHeaders.querySelectorAll('h2'))
 				.map(h2 => Array.from(h2.children)
 					.reduce((acc, curr) => acc.textContent.trim() + curr.textContent.trim()));
 

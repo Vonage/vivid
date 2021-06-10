@@ -5,7 +5,7 @@
 ```html
 <div role="grid">
   <div
-    class="headline"
+    class="column-headers"
     role="row"
   >
     <div
@@ -147,7 +147,7 @@
     role="row"
   >
     <div
-      class="time"
+      class="row-headers"
       role="presentation"
     >
       <span role="rowheader">
@@ -331,6 +331,13 @@
           role="gridcell"
           tabindex="-1"
         >
+          <slot name="day-0">
+          </slot>
+        </div>
+        <div
+          role="gridcell"
+          tabindex="-1"
+        >
           <slot name="day-1">
           </slot>
         </div>
@@ -367,13 +374,6 @@
           tabindex="-1"
         >
           <slot name="day-6">
-          </slot>
-        </div>
-        <div
-          role="gridcell"
-          tabindex="-1"
-        >
-          <slot name="day-7">
           </slot>
         </div>
       </div>
