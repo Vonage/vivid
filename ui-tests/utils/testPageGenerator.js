@@ -22,11 +22,19 @@ function generateTestPage(excludeList = []) {
 	`;
 	}, '');
 	const testsCalls = testsNames.reduce((result, testName) => {
-		return `${result}await ${pascalCase(testName)}(wrapper);
-	`;
+		return `${result}(() => {
+			const wrapperElement = document.createElement('div');
+			wrapperElement.id = "${pascalCase(testName)}";
+			wrapper.appendChild(wrapperElement);
+			return ${pascalCase(testName)}(wrapperElement);
+		})(),
+		`;
 	}, '');
 	const fileContents = (template.replace('${testImports}', testsImports)).replace('${testCalls}', testsCalls);
 	fs.writeFileSync(path.join(__dirname, '../testPage.js'), fileContents);
 }
 
+
 module.exports = generateTestPage;
+
+generateTestPage();

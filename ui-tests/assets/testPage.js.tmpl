@@ -10,7 +10,10 @@ document.body.appendChild(wrapper);
 async function main() {
 	await vvdCore.settled;
 
-	${testCalls}
+	await Promise.all([
+		${testCalls}
+	]);
+
 	await waitInterval(500);
 }
 
