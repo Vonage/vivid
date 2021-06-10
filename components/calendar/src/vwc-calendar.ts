@@ -112,7 +112,7 @@ export class VWCCalendar extends LitElement {
 		const templates = [];
 		for (let i = 0; i < this.#daysLength; i++) {
 			templates.push(html`<div role="gridcell" tabindex="-1">
-				<slot name="day-${i + 1}"></slot>
+				<slot name="day-${i}"></slot>
 			</div>`);
 		}
 		return templates;
@@ -124,7 +124,7 @@ export class VWCCalendar extends LitElement {
 	 * */
 	protected renderDays(): TemplateResult {
 		return html`
-			<div class="headline" role="row">
+			<div class="column-headers" role="row">
 				${this.getDaysArr([this.getFirstDateOfTheWeek(this.datetime)]).map(date => html`
 				<div role="columnheader" tabindex="-1">
 					<time datetime=${getValidDateString(date)} aria-readonly="true" aria-label=${this.formatDate(date, {	weekday: 'long', month: 'long', day: 'numeric' })}>
@@ -147,7 +147,7 @@ export class VWCCalendar extends LitElement {
 	 * */
 	protected renderHours(): TemplateResult {
 		return html`
-			<div class="time" role="presentation">
+			<div class="row-headers" role="presentation">
 				${this.#hours.map(h => html`<span role="rowheader">
 					<time datetime="${this.formatDate(h, { hour: 'numeric', minute: 'numeric', hour12: false })}">
 						${this.formatDate(h, { hour: 'numeric', hour12: true })}

@@ -7,26 +7,40 @@
 }
 
 section {
+	--shf: 4.9406564584124654e-322; // https://stackoverflow.com/a/64921523/3027703
+	$gutter: 4px;
 	$unit-indent: 8px;
-	$gutter: 2px;
-	#{calendar-variables.$indent}: calc(#{$unit-indent} + var(#{calendar-variables.$overlap-count}, 0) * #{$unit-indent});
+	$indent-calc: min(var(#{calendar-variables.$indent}), #{$unit-indent * 4});
+	$dividers-block-size: calc(1px /* per cell divider */* (var(#{calendar-variables.$duration}) - 1) * var(--shf) / var(--shf));
+	$dividers-top-size: calc(1px /* per cell divider */* var(#{calendar-variables.$start}) * var(--shf) / var(--shf));
+	$top: calc(var(#{calendar-variables.$start}) * (100% - #{calendar-variables.$total-rows - 1}px) / #{calendar-variables.$total-rows} + #{$dividers-top-size});
+	$hour-block-size: calc((100% - #{calendar-variables.$total-rows - 1}px) / #{calendar-variables.$total-rows});
+
+	#{calendar-variables.$indent}: calc(0px + var(#{calendar-variables.$overlap-count}, 0) * #{$unit-indent});
+	position: absolute;
 	z-index: var(#{calendar-variables.$overlap-count});
+	top: $top;
 	overflow: hidden;
-	margin: #{$gutter} #{$unit-indent} #{$gutter} min(var(#{calendar-variables.$indent}), #{$unit-indent * 4});
+	box-sizing: border-box;
+	padding: $gutter $gutter*2;
+	margin: 0 #{$unit-indent} 0 #{$indent-calc};
 	background-color: var(#{calendar-variables.$color}, var(#{scheme-variables.$vvd-color-neutral-40}));
-	border-radius: 6px;
+	block-size: calc(var(#{calendar-variables.$duration}) * #{$hour-block-size} + #{$dividers-block-size});
+	border-radius: var(#{calendar-variables.$calendar-shape});
 	color: var(#{scheme-variables.$vvd-color-on-primary});
 	contain: strict;
-	grid-column: var(#{calendar-variables.$day});
-	grid-row: var(#{calendar-variables.$start}) / var(#{calendar-variables.$duration});
+	inline-size: calc(100% - #{$unit-indent} - #{$indent-calc});
+	max-block-size: calc(100% - #{$top});
+	// grid-column: var(#{calendar-variables.$day});
+	// grid-row: var(#{calendar-variables.$start}) / var(#{calendar-variables.$duration});
 	&:focus {
 		z-index: 2000;
 	}
 }
 
 h2 {
-	@include typography.typography-cat-shorthand('body-2-bold');
-	margin: 0 16px 4px;
+	@include typography.typography-cat-shorthand('caption-bold');
+	margin: 0;
 	> strong {
 		font: inherit;
 	}
@@ -34,5 +48,5 @@ h2 {
 
 p {
 	@include typography.typography-cat-shorthand('caption');
-	margin: 0 16px;
+	margin: 0;
 }

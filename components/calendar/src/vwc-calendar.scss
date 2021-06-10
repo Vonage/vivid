@@ -1,17 +1,14 @@
-$calendar-shape: --vvd-calendar-shape;
-
 @use 'partials/vwc-calendar-variables' as calendar-variables;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-typography/scss/typography';
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' with(
-	$variable-name: --vvd-calendar-shape
+	$variable-name: #{calendar-variables.$calendar-shape}
 );
 
 @include shape-mixins.shape(
 	$shapes: (
-		rounded: 6px,
-	),
-	$default: ''
+		rounded: 6px
+	)
 );
 
 ol {
@@ -25,14 +22,14 @@ ol {
 	width: max(100%, 500px);
 	margin: auto;
 	grid-template-areas:
-		'. headline'
-		'time calendar';
+		'. column-headers'
+		'row-headers calendar';
 	grid-template-columns: min-content auto;
 }
 
-.time {
+.row-headers {
 	display: grid;
-	grid-area: time;
+	grid-area: row-headers;
 	grid-template-rows: repeat(calendar-variables.$total-rows, 1fr);
 	margin-inline-end: 2px;
 	> [role="rowheader"i] {
@@ -49,9 +46,9 @@ ol {
 	}
 }
 
-.headline {
+.column-headers {
 	display: grid;
-	grid-area: headline;
+	grid-area: column-headers;
 	grid-template-columns: repeat(calendar-variables.$total-columns, 1fr);
 	[role="columnheader"i] {
 		h2 {
@@ -80,7 +77,7 @@ ol {
 .calendar-grid-presentation {
 	display: grid;
 	overflow: hidden;
-	border-radius: var(#{$calendar-shape});
+	border-radius: var(#{calendar-variables.$calendar-shape});
 	box-shadow: 0 0 3.64752px rgba(0, 0, 0, 0.15);
 	counter-reset: listing;
 	gap: calendar-variables.$gap;
