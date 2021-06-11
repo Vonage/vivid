@@ -1,0 +1,17 @@
+import vvdCore from '@vonage/vvd-core';
+${testImports}
+import { waitInterval } from '../test/test-helpers';
+import './assets/testPage.css';
+
+const wrapper = document.createElement('div');
+wrapper.id = 'main';
+document.body.appendChild(wrapper);
+
+async function main() {
+	await vvdCore.settled;
+
+	${testCalls}
+	await waitInterval(500);
+}
+
+main().then(() => globalThis.doTest());

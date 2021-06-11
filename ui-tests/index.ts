@@ -65,6 +65,7 @@ async function runImageComparison() {
 }
 
 async function doTest(page) {
+	await page.waitForLoadState('networkidle');
 	if (process.argv.includes('-u') || !fs.existsSync(SNAPSHOT_PATH)) {
 		console.log('Updating snapshot...');
 		await takeSnapshot(page, SNAPSHOT_PATH);

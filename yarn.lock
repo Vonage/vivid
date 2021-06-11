@@ -7140,7 +7140,7 @@ callsites@^3.0.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/callsites/-/callsites-3.1.0.tgz#b3630abd8943432f54b3f0519238e33cd7df2f73"
   integrity sha1-s2MKvYlDQy9Us/BRkjjjPNffL3M=
 
-camel-case@^4.1.1:
+camel-case@^4.1.1, camel-case@^4.1.2:
   version "4.1.2"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/camel-case/-/camel-case-4.1.2.tgz#9728072a954f805228225a6deea6b38461e1bd5a"
   integrity sha1-lygHKpVPgFIoIlpt7qazhGHhvVo=
@@ -7213,6 +7213,15 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001033, caniuse-lite@^1.0.30001109, can
   version "1.0.30001198"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/caniuse-lite/-/caniuse-lite-1.0.30001198.tgz#ed2d9b5f060322ba2efa42afdc56dee3255473f4"
   integrity sha1-7S2bXwYDIrou+kKv3Fbe4yVUc/Q=
+
+capital-case@^1.0.4:
+  version "1.0.4"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/capital-case/-/capital-case-1.0.4.tgz#9d130292353c9249f6b00fa5852bee38a717e669"
+  integrity sha1-nRMCkjU8kkn2sA+lhSvuOKcX5mk=
+  dependencies:
+    no-case "^3.0.4"
+    tslib "^2.0.3"
+    upper-case-first "^2.0.2"
 
 capture-exit@^2.0.0:
   version "2.0.0"
@@ -7317,6 +7326,24 @@ chalk@^4.0.0, chalk@^4.1.0:
   dependencies:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
+
+change-case@^4.1.2:
+  version "4.1.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/change-case/-/change-case-4.1.2.tgz#fedfc5f136045e2398c0410ee441f95704641e12"
+  integrity sha1-/t/F8TYEXiOYwEEO5EH5VwRkHhI=
+  dependencies:
+    camel-case "^4.1.2"
+    capital-case "^1.0.4"
+    constant-case "^3.0.4"
+    dot-case "^3.0.4"
+    header-case "^2.0.4"
+    no-case "^3.0.4"
+    param-case "^3.0.4"
+    pascal-case "^3.1.2"
+    path-case "^3.0.4"
+    sentence-case "^3.0.4"
+    snake-case "^3.0.4"
+    tslib "^2.0.3"
 
 change-emitter@^0.1.2:
   version "0.1.6"
@@ -7841,6 +7868,15 @@ consolidate@^0.16.0:
   integrity sha1-oRhkdokw8vGUMWYKZZBmaPX73BY=
   dependencies:
     bluebird "^3.7.2"
+
+constant-case@^3.0.4:
+  version "3.0.4"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/constant-case/-/constant-case-3.0.4.tgz#3b84a9aeaf4cf31ec45e6bf5de91bdfb0589faf1"
+  integrity sha1-O4Sprq9M8x7EXmv13pG9+wWJ+vE=
+  dependencies:
+    no-case "^3.0.4"
+    tslib "^2.0.3"
+    upper-case "^2.0.2"
 
 constants-browserify@^1.0.0:
   version "1.0.0"
@@ -11128,6 +11164,14 @@ he@1.2.0, he@^1.2.0:
   version "1.2.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
   integrity sha1-hK5l+n6vsWX922FWauFLrwVmTw8=
+
+header-case@^2.0.4:
+  version "2.0.4"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/header-case/-/header-case-2.0.4.tgz#5a42e63b55177349cf405beb8d775acabb92c063"
+  integrity sha1-WkLmO1UXc0nPQFvrjXdayruSwGM=
+  dependencies:
+    capital-case "^1.0.4"
+    tslib "^2.0.3"
 
 highlight.js@^10.1.1, highlight.js@^10.4.0, highlight.js@^10.4.1, highlight.js@~10.6.0:
   version "10.6.0"
@@ -14712,7 +14756,7 @@ parallel-transform@^1.1.0:
     inherits "^2.0.3"
     readable-stream "^2.1.5"
 
-param-case@^3.0.3:
+param-case@^3.0.3, param-case@^3.0.4:
   version "3.0.4"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/param-case/-/param-case-3.0.4.tgz#7d17fe4aa12bde34d4a77d91acfb6219caad01c5"
   integrity sha1-fRf+SqEr3jTUp32RrPtiGcqtAcU=
@@ -14894,6 +14938,14 @@ path-browserify@0.0.1:
   version "0.0.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/path-browserify/-/path-browserify-0.0.1.tgz#e6c4ddd7ed3aa27c68a20cc4e50e1a4ee83bbc4a"
   integrity sha1-5sTd1+06onxoogzE5Q4aTug7vEo=
+
+path-case@^3.0.4:
+  version "3.0.4"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/path-case/-/path-case-3.0.4.tgz#9168645334eb942658375c56f80b4c0cb5f82c6f"
+  integrity sha1-kWhkUzTrlCZYN1xW+AtMDLX4LG8=
+  dependencies:
+    dot-case "^3.0.4"
+    tslib "^2.0.3"
 
 path-dirname@^1.0.0:
   version "1.0.2"
@@ -16956,6 +17008,15 @@ send@0.17.1:
     range-parser "~1.2.1"
     statuses "~1.5.0"
 
+sentence-case@^3.0.4:
+  version "3.0.4"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/sentence-case/-/sentence-case-3.0.4.tgz#3645a7b8c117c787fde8702056225bb62a45131f"
+  integrity sha1-NkWnuMEXx4f96HAgViJbtipFEx8=
+  dependencies:
+    no-case "^3.0.4"
+    tslib "^2.0.3"
+    upper-case-first "^2.0.2"
+
 serialize-javascript@5.0.1:
   version "5.0.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/serialize-javascript/-/serialize-javascript-5.0.1.tgz#7886ec848049a462467a97d3d918ebb2aaf934f4"
@@ -17195,6 +17256,14 @@ smart-buffer@^4.1.0:
   version "4.1.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/smart-buffer/-/smart-buffer-4.1.0.tgz#91605c25d91652f4661ea69ccf45f1b331ca21ba"
   integrity sha1-kWBcJdkWUvRmHqacz0XxszHKIbo=
+
+snake-case@^3.0.4:
+  version "3.0.4"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/snake-case/-/snake-case-3.0.4.tgz#4f2bbd568e9935abdfd593f34c691dadb49c452c"
+  integrity sha1-Tyu9Vo6ZNavf1ZPzTGkdrbScRSw=
+  dependencies:
+    dot-case "^3.0.4"
+    tslib "^2.0.3"
 
 snapdragon-node@^2.0.1:
   version "2.1.1"
@@ -18956,6 +19025,20 @@ update-check@1.5.2:
   dependencies:
     registry-auth-token "3.3.2"
     registry-url "3.1.0"
+
+upper-case-first@^2.0.2:
+  version "2.0.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/upper-case-first/-/upper-case-first-2.0.2.tgz#992c3273f882abd19d1e02894cc147117f844324"
+  integrity sha1-mSwyc/iCq9GdHgKJTMFHEX+EQyQ=
+  dependencies:
+    tslib "^2.0.3"
+
+upper-case@^2.0.2:
+  version "2.0.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/upper-case/-/upper-case-2.0.2.tgz#d89810823faab1df1549b7d97a76f8662bae6f7a"
+  integrity sha1-2JgQgj+qsd8VSbfZenb4Ziuub3o=
+  dependencies:
+    tslib "^2.0.3"
 
 uri-js@^4.2.2:
   version "4.4.1"

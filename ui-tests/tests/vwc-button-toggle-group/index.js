@@ -1,7 +1,7 @@
 import vvdCore from '@vonage/vvd-core';
 import * as stories from '@vonage/vwc-button-toggle-group/stories/toggle-buttons-group.stories';
 import { VWCButtonToggleGroup } from '@vonage/vwc-button-toggle-group';
-import { storiesToElement } from '../utils/storiesToElement';
+import { storiesToElement } from '../../utils/storiesToElement';
 
 VWCButtonToggleGroup;
 

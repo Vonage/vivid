@@ -1,7 +1,7 @@
 import vvdCore from '@vonage/vvd-core';
 import { VWCTextField } from '@vonage/vwc-textfield';
 import * as stories from '@vonage/vwc-textfield/stories/textfield-all.stories';
-import { storiesToElement } from '../utils/storiesToElement';
+import { storiesToElement } from '../../utils/storiesToElement';
 
 VWCTextField;
 
