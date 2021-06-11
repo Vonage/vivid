@@ -303,12 +303,22 @@ export class VWCDatepicker extends LitFlatpickr {
 
 			const clearButton: VWCButton = document.createElement('vwc-button');
 			clearButton.label = 'Clear';
+			clearButton.dense = true;
 			clearButton.shape = Shape.Pill;
+
+			const confirmButton: VWCButton = document.createElement('vwc-button');
+			confirmButton.label = 'Confirm';
+			confirmButton.layout = 'outlined';
+			confirmButton.dense = true;
 
 			clearButton.addEventListener('mousedown', (e: MouseEvent) => this.clearSelection(e));
 			clearButton.addEventListener('touchstart', (e: TouchEvent) => this.clearSelection(e));
 
+			confirmButton.addEventListener('mousedown', () => this.close());
+			confirmButton.addEventListener('touchstart', () => this.close());
+
 			footer.appendChild(clearButton);
+			footer.appendChild(confirmButton);
 			this._instance?.calendarContainer.appendChild(footer);
 		}
 	}
