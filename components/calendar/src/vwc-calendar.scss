@@ -19,12 +19,13 @@ ol {
 
 [role="grid"i] {
 	display: grid;
-	width: max(100%, 500px);
 	margin: auto;
 	grid-template-areas:
 		'. column-headers'
 		'row-headers calendar';
 	grid-template-columns: min-content auto;
+	inline-size: max(100%, 500px);
+	min-inline-size: 880px;
 }
 
 .row-headers {
