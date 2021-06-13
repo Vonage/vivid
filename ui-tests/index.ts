@@ -50,7 +50,7 @@ function resultsMessage(diff) {
 }
 
 async function runImageComparison() {
-	const browser = await webkit.launch();
+	const browser = await webkit.launch({ headless: false });
 	const page = await browser.newPage();
 
 	//	setup callback
@@ -89,11 +89,11 @@ function finalizeTest() {
 server.listen(3000, async () => {
 	console.log('Running at http://localhost:3000');
 
-	try {
-		await runImageComparison();
-	} catch (e) {
-		console.error(e);
-		process.exitCode = 1;
-		server.close();
-	}
+	// try {
+	// 	await runImageComparison();
+	// } catch (e) {
+	// 	console.error(e);
+	// 	process.exitCode = 1;
+	// 	server.close();
+	// }
 });

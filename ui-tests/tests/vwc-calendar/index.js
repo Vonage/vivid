@@ -7,7 +7,6 @@ import { storiesToElement } from '../../utils/storiesToElement';
 VWCCalendar;
 
 export async function createElementVariations(wrapper) {
-	wrapper.style.transform = 'scale(.5)';
 	wrapper.appendChild(storiesToElement(stories));
 
 	await wrapper.querySelector('vwc-calendar').updateComplete;

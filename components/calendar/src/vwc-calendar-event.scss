@@ -7,14 +7,12 @@
 }
 
 section {
-	--shf: 4.9406564584124654e-322; // https://stackoverflow.com/a/64921523/3027703
-
 	$gutter: 4px;
 	$unit-indent: 8px;
 
 	$indent-calc: min(var(#{calendar-variables.$indent}), #{$unit-indent * 4} /* 4 as the indentation limit*/);
-	$dividers-block-size: calc(#{calendar-variables.$gap} /* per cell divider */* (var(#{calendar-variables.$duration}) - 1) * var(--shf) / var(--shf));
-	$dividers-top-size: calc(#{calendar-variables.$gap} /* per cell divider */* var(#{calendar-variables.$start}) * var(--shf) / var(--shf));
+	$dividers-block-size: calc(#{calendar-variables.$gap} /* per cell divider */* (var(#{calendar-variables.$duration}) - 1));
+	$dividers-top-size: calc(#{calendar-variables.$gap} /* per cell divider */* var(#{calendar-variables.$start}));
 	$top: calc(var(#{calendar-variables.$start}) * (100% - #{calendar-variables.$total-rows - 1}px) / #{calendar-variables.$total-rows} + #{$dividers-top-size});
 	$hour-block-size: calc((100% - #{calendar-variables.$total-rows - 1}px) / #{calendar-variables.$total-rows});
 
