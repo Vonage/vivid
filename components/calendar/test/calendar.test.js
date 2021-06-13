@@ -122,10 +122,10 @@ describe('calendar', () => {
 
 			const getValue = prop => getComputedStyle(section).getPropertyValue(`--vvd-calendar-event--${prop}`);
 
-			expect(getValue('primary-color', 'wrong color')).to.equal('rgb(43, 158, 250)');
-			expect(getValue('start', 'wrong start')).to.equal('18.5');
-			expect(getValue('duration', 'wrong duration')).to.equal('7.5');
-			expect(getValue('overlap-count', 'wrong indentation')).to.equal('1');
+			expect(getValue('primary-color'), 'wrong color').to.equal('rgb(43, 158, 250)');
+			expect(getValue('start'), 'wrong start').to.equal('18.5');
+			expect(getValue('duration'), 'wrong duration').to.equal('7.5');
+			expect(getValue('overlap-count'), 'wrong indentation').to.equal('1');
 		});
 
 		it('should set correct styles of start & duration', async () => {
