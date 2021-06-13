@@ -4,7 +4,7 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Alpha/Components/Button Toggle Group',
+	title: 'Components/Button Toggle Group',
 	component: 'vwc-button-toggle-group',
 	argTypes
 };
