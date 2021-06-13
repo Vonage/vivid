@@ -1,7 +1,6 @@
 import '../vwc-calendar.js';
 import {
 	waitNextTask,
-	waitInterval,
 	textToDomToParent,
 	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
@@ -24,7 +23,7 @@ describe('calendar', () => {
 		);
 		await waitNextTask();
 		actualElement.datetime = '2021-01-01';
-		await waitInterval(100);
+		await actualElement.updateComplete;
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
@@ -72,7 +71,7 @@ describe('calendar', () => {
 			);
 			await waitNextTask();
 			actualElement.datetime = '2021-01-01';
-			await waitInterval(100);
+			await actualElement.updateComplete;
 
 			const { shadowRoot } = actualElement;
 			const columnHeaders = shadowRoot.querySelector('.column-headers');
@@ -92,7 +91,7 @@ describe('calendar', () => {
 			);
 			await waitNextTask();
 			actualElement.setAttribute('datetime', '2021-01-01');
-			await waitInterval(100);
+			await actualElement.updateComplete;
 
 			const { shadowRoot } = actualElement;
 			const columnHeaders = shadowRoot.querySelector('.column-headers');
