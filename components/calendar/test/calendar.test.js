@@ -64,6 +64,10 @@ describe('calendar', () => {
 		expect(columnHeadersStylesMatch).to.equal(true);
 	});
 
+	const extractDaysTextFromHeaders = columnHeaders => Array.from(columnHeaders.querySelectorAll('h2'))
+		.map(h2 => Array.from(h2.children)
+			.reduce((acc, curr) => acc.textContent.trim() + curr.textContent.trim()));
+
 	describe('API', () => {
 		it('reflects weekdays as set by property', async () => {
 			const [actualElement] = addElement(
@@ -76,9 +80,7 @@ describe('calendar', () => {
 			const { shadowRoot } = actualElement;
 			const columnHeaders = shadowRoot.querySelector('.column-headers');
 
-			const reflectedDates = Array.from(columnHeaders.querySelectorAll('h2'))
-				.map(h2 => Array.from(h2.children)
-					.reduce((acc, curr) => acc.textContent.trim() + curr.textContent.trim()));
+			const reflectedDates = extractDaysTextFromHeaders(columnHeaders);
 
 			const expectedDates = ['27Sun', '28Mon', '29Tue', '30Wed', '31Thu', '01Fri', '02Sat'];
 
@@ -96,9 +98,7 @@ describe('calendar', () => {
 			const { shadowRoot } = actualElement;
 			const columnHeaders = shadowRoot.querySelector('.column-headers');
 
-			const reflectedDates = Array.from(columnHeaders.querySelectorAll('h2'))
-				.map(h2 => Array.from(h2.children)
-					.reduce((acc, curr) => acc.textContent.trim() + curr.textContent.trim()));
+			const reflectedDates = extractDaysTextFromHeaders(columnHeaders);
 
 			const expectedDates = ['27Sun', '28Mon', '29Tue', '30Wed', '31Thu', '01Fri', '02Sat'];
 
