@@ -10,7 +10,9 @@ import {
 } from 'lit-element';
 import { unsafeSVG } from 'lit-html/directives/unsafe-svg';
 import { until } from 'lit-html/directives/until.js';
+import { ifDefined } from 'lit-html/directives/if-defined';
 import { memoizeWith, identity, always } from 'ramda';
+import { ariaProperty } from '@material/mwc-base/aria-property';
 import { style } from './vwc-icon.css';
 
 declare global {
@@ -32,8 +34,9 @@ const baseUrlTemplate = (resource: string, version: string) => [BASE_URL, `v${ve
 const resolveIcon = memoizeWith(identity as () => string, (iconId = '') => (iconId.trim()
 	? fetch(baseUrlTemplate([iconId, 'svg'].join('.'), ICON_SET_VERSION))
 		.then(res => (res.headers.get('content-type') === 'image/svg+xml' ? res.text() : ''))
-		.then(unsafeSVG)
-	: Promise.resolve('')));
+	: Promise.resolve(''))) as (iconId?:string)=> Promise<string>;
+
+const setSvgAttribute = (name: string, value: string) => (svgText = '') => svgText.replace(/<svg[^>]*>/, tagText => tagText.replace(/<svg[^>]+/, attributesText => attributesText.split(' ').concat([name, value].filter(Boolean).join('=')).join(' ')));
 
 @customElement('vwc-icon')
 export class VWCIcon extends LitElement {
@@ -62,11 +65,20 @@ export class VWCIcon extends LitElement {
 	})
 	size?: IconSize;
 
+	@ariaProperty
+	@property({
+		attribute: 'aria-label',
+		type: String,
+	})
+	ariaLabel?:string;
+
 	render(): TemplateResult {
-		return html`${until(
-			resolveIcon(this.type),
+		return html`<figure aria-label="${ifDefined(this.ariaLabel)}">${until(
+			resolveIcon(this.type)
+				.then(setSvgAttribute('aria-hidden', 'true'))
+				.then(unsafeSVG),
 			delay(PLACEHOLDER_TIMEOUT),
 			delay(PLACEHOLDER_DELAY).then(always(unsafeSVG(PLACEHOLDER_ICON)))
-		)}`;
+		)}</figure>`;
 	}
 }
