@@ -56,13 +56,13 @@ describe('calendar', () => {
 		const rowHeaders = shadowRoot.querySelector('.row-headers');
 		const columnHeaders = shadowRoot.querySelector('.column-headers');
 
-		const isCellsMatch = Array.from(cells).every(cell => getComputedStyle(cell).blockSize == getComputedStyle(grid).blockSize);
-		const isRowHeadersMatch = getComputedStyle(rowHeaders).blockSize == getComputedStyle(grid).blockSize;
-		const isColumnHeadersMatch = getComputedStyle(columnHeaders).inlineSize == getComputedStyle(grid).inlineSize;
+		const cellsStylesMatch = Array.from(cells).every(cell => getComputedStyle(cell).blockSize == getComputedStyle(grid).blockSize);
+		const rowHeadersStylesMatch = getComputedStyle(rowHeaders).blockSize == getComputedStyle(grid).blockSize;
+		const columnHeadersStylesMatch = getComputedStyle(columnHeaders).inlineSize == getComputedStyle(grid).inlineSize;
 
-		expect(isCellsMatch).to.equal(true);
-		expect(isRowHeadersMatch).to.equal(true);
-		expect(isColumnHeadersMatch).to.equal(true);
+		expect(cellsStylesMatch).to.equal(true);
+		expect(rowHeadersStylesMatch).to.equal(true);
+		expect(columnHeadersStylesMatch).to.equal(true);
 	});
 
 	describe('API', () => {
