@@ -7,3 +7,4 @@ export default {
 };
 
 export { Basic } from './dropdown-basic.js';
+export { DataGrid } from './dropdown-data-grid.js';
