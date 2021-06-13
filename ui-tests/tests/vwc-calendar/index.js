@@ -9,11 +9,6 @@ VWCCalendar;
 export async function createElementVariations(wrapper) {
 	wrapper.appendChild(storiesToElement(stories));
 
-	await wrapper.querySelector('vwc-calendar').updateComplete;
-
-	const events = Array.from(wrapper.querySelectorAll('vwc-calendar-event'));
-	await Promise.allSettled(events.map(({ updateComplete }) => updateComplete));
-
 	await vvdCore.settled;
 }
 
