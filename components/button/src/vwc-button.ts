@@ -44,6 +44,9 @@ type ButtonShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
 @customElement('vwc-button')
 export class VWCButton extends MWCButton {
 	@property({ type: Boolean, reflect: true })
+	dense = false;
+
+	@property({ type: Boolean, reflect: true })
 	enlarged = false;
 
 	@property({ type: String, reflect: true })
