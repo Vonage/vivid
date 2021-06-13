@@ -1,8 +1,6 @@
-import { VWCSnackbar } from '@vonage/vwc-snackbar';
+import '@vonage/vwc-snackbar';
 
-VWCSnackbar;
 
-const header = 'Snackbar header';
 const message = 'Pascal argues that a rational person should live as though God exists and seek to believe in God.';
 
 export async function createElementVariations(wrapper) {
