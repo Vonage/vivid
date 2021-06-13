@@ -8,10 +8,11 @@ const
 	{ join: joinPath, extname: getExtension, basename: getBase, dirname: getDir } = require('path'),
 	{ render: renderSass } = require('sass');
 
-const DEFAULT_SOURCE = "./src/**/*.s[ac]ss";
+const DEFAULT_PATH = "./src/**/";
+const DEFAULT_SOURCE = "*.s[ac]ss";
 
 const {
-	path: basePath = ".",
+	path: basePath = DEFAULT_PATH,
 	source: sourcePattern = DEFAULT_SOURCE
 } = parseArgs(process.argv.slice(2));
 
