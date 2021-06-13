@@ -8,13 +8,13 @@ $variable-name: --shape !default;
 		@return ':host';
 	}
 
-	$nagated-selectors: '';
+	$compound: '';
 	@each $key, $_ in $list {
 		@if $key != $default {
-			$selectors: $selectors + ':not(#{template($key)})';
+			$compound: $compound + ':not(#{template($key)})';
 		}
 	}
-	@return ':host(#{$selectors})';
+	@return ':host(#{$compound})';
 }
 
 @function template($key) {
