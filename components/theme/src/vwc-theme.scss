@@ -3,12 +3,15 @@
 @use 'partials/_scheme-mixins';
 
 :host([scheme="light"i]) {
+	color-scheme: light;
 	@include scheme-mixins.scheme-context-variables {
 		@include main-light.variables;
 	}
 }
 
 :host([scheme="dark"i]) {
+	color-scheme: dark;
+
 	@include scheme-mixins.scheme-context-variables {
 		@include main-dark.variables;
 	}
