@@ -38,13 +38,6 @@ export class VWCCalendarEvent extends LitElement {
 	description?: string;
 
 	/**
-	 * @prop day - day of the week (starts from 0)
-	 * @public
-	 * */
-	@property({ type: Number, reflect: false })
-	day: 1 | 2 | 3 | 4 | 5 | 6 | 7 = 1;
-
-	/**
 	 * @prop color - color of event card
 	 * @public
 	 * */
@@ -82,7 +75,6 @@ export class VWCCalendarEvent extends LitElement {
 			...this.overlapCount && { '--vvd-calendar-event--overlap-count': this.overlapCount },
 			'--vvd-calendar-event--start': (this.start).toString(),
 			'--vvd-calendar-event--duration': (this.duration).toString(),
-			'--vvd-calendar-event--day': this.day.toString()
 		};
 		return html`
 			<section

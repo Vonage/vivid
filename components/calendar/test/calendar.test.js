@@ -1,4 +1,5 @@
 import '../vwc-calendar.js';
+import '../vwc-calendar-event.js';
 import {
 	waitNextTask,
 	textToDomToParent,
@@ -42,7 +43,7 @@ describe('calendar', () => {
 		expect(isCorrectColumns).to.equal(true);
 	});
 
-	it('sets correct size proportions', async () => {
+	it('should set correct size proportions', async () => {
 		const [actualElement] = addElement(
 			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 		);
@@ -69,7 +70,7 @@ describe('calendar', () => {
 			.reduce((acc, curr) => acc.textContent.trim() + curr.textContent.trim()));
 
 	describe('API', () => {
-		it('reflects weekdays as set by property', async () => {
+		it('should reflect weekdays as set by property', async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
@@ -87,7 +88,7 @@ describe('calendar', () => {
 			expect(reflectedDates.join()).to.equal(expectedDates.join());
 		});
 
-		it('reflects weekdays as set by attribute', async () => {
+		it('should reflect weekdays as set by attribute', async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
@@ -103,6 +104,82 @@ describe('calendar', () => {
 			const expectedDates = ['27Sun', '28Mon', '29Tue', '30Wed', '31Thu', '01Fri', '02Sat'];
 
 			expect(reflectedDates.join()).to.equal(expectedDates.join());
+		});
+
+		it('should delegate attributes to custom properties', async () => {
+			const eventComponent = 'vwc-calendar-event';
+			const [actualElement] = addElement(
+				textToDomToParent(`<${eventComponent}
+					color="rgb(43, 158, 250)"
+					start="18.5"
+					duration="7.5"
+					overlap-count="1">
+				</${eventComponent}>`)
+			);
+
+			await actualElement.updateComplete;
+			const section = actualElement.shadowRoot.querySelector('section');
+
+			const getValue = prop => getComputedStyle(section).getPropertyValue(`--vvd-calendar-event--${prop}`);
+
+			expect(getValue('primary-color', 'wrong color')).to.equal('rgb(43, 158, 250)');
+			expect(getValue('start', 'wrong start')).to.equal('18.5');
+			expect(getValue('duration', 'wrong duration')).to.equal('7.5');
+			expect(getValue('overlap-count', 'wrong indentation')).to.equal('1');
+		});
+
+		it('should set correct styles of start & duration', async () => {
+			const eventComponent = 'vwc-calendar-event';
+			const duration = 5;
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}>
+					<${eventComponent} slot="day-3" start="4" duration="${duration}"></${eventComponent}>
+				</${COMPONENT_NAME}>`)
+			);
+			await actualElement.updateComplete;
+
+			const { shadowRoot } = actualElement;
+			const column = shadowRoot.querySelector('[role=gridcell]:nth-child(4)');
+			const event = actualElement.querySelector(eventComponent);
+			const section = event.shadowRoot.querySelector('section');
+
+			const hour = (column.offsetHeight - 23 /* 23 grid gaps */) / 24;
+			expect(hour * duration + (duration - 1) /* duration less 1 grid gaps */).to.equal(section.offsetHeight);
+		});
+
+		it('should not exceed column block size', async () => {
+			const eventComponent = 'vwc-calendar-event';
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}>
+					<${eventComponent} slot="day-3" start="6" duration="25"></${eventComponent}>
+				</${COMPONENT_NAME}>`)
+			);
+			await actualElement.updateComplete;
+
+			const { shadowRoot } = actualElement;
+			const column = shadowRoot.querySelector('[role=gridcell]:nth-child(4)');
+			const event = actualElement.querySelector(eventComponent);
+			const section = event.shadowRoot.querySelector('section');
+
+			const hour = (column.offsetHeight - 23 /* 23 grid gaps */) / 24;
+			const maxDuration = 18;
+			expect(hour * maxDuration + (maxDuration - 1) /* hours less 1 grid gaps */).to.equal(section.offsetHeight);
+		});
+
+		it('should set event in correct column slot', async () => {
+			const eventComponent = 'vwc-calendar-event';
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}>
+					<${eventComponent} slot="day-3"></${eventComponent}>
+				</${COMPONENT_NAME}>`)
+			);
+			await actualElement.updateComplete;
+
+			const { shadowRoot } = actualElement;
+			const slot = shadowRoot.querySelector('[role=gridcell]:nth-child(4) > slot');
+			const [assignedNode] = Array.from(slot.assignedNodes());
+
+			expect(assignedNode).to.equal(actualElement.querySelector(eventComponent));
 		});
 	});
 });
