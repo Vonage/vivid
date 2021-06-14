@@ -303,7 +303,6 @@ export class VWCDatepicker extends LitFlatpickr {
 
 			const clearButton: VWCButton = document.createElement('vwc-button');
 			clearButton.label = 'Clear';
-			clearButton.shape = Shape.Pill;
 			clearButton.dense = true;
 
 			const confirmButton: VWCButton = document.createElement('vwc-button');
