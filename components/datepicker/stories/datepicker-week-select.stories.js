@@ -3,6 +3,12 @@ import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 
 const Template = args => html`
+  <style>
+    html, body {
+      height: 100%;
+    }
+  </style>
+
   <vwc-datepicker id="datepicker" ...=${spread(args)}></vwc-datepicker>
 
   <script>
