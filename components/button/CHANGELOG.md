@@ -1,3 +1,12 @@
+# [2.12.0](https://github.com/vonage/vivid/compare/v2.11.0...v2.12.0) (2021-06-14)
+
+
+### Bug Fixes
+
+* **vwc-button:** dense prop should reflect to attr ([#892](https://github.com/vonage/vivid/issues/892)) ([9078b3d](https://github.com/vonage/vivid/commit/9078b3d004c04a4e1475929a0a6eca1c5955d648))
+
+
+
 # [2.11.0](https://github.com/vonage/vivid/compare/v2.10.0...v2.11.0) (2021-06-07)
 
 

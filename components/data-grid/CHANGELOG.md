@@ -1,3 +1,12 @@
+# [2.12.0](https://github.com/vonage/vivid/compare/v2.11.0...v2.12.0) (2021-06-14)
+
+
+### Bug Fixes
+
+* **data-grid:** fix the data provider documentation ([#882](https://github.com/vonage/vivid/issues/882)) ([fd231ee](https://github.com/vonage/vivid/commit/fd231ee149b57ebb2527de905fb09b72e58c20f2))
+
+
+
 # [2.11.0](https://github.com/vonage/vivid/compare/v2.10.0...v2.11.0) (2021-06-07)
 
 
