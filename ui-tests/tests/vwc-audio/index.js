@@ -1,7 +1,6 @@
 import vvdCore from '@vonage/vvd-core';
-import { VWCAudio } from '@vonage/vwc-audio';
+import '@vonage/vwc-audio';
 
-VWCAudio;
 
 export async function createElementVariations(wrapper) {
 	const audioElementWrapper = document.createElement('div');

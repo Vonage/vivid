@@ -1,6 +1,5 @@
-import { VWCIconButtonToggle } from '@vonage/vwc-icon-button-toggle';
+import '@vonage/vwc-icon-button-toggle';
 
-VWCIconButtonToggle;
 
 export async function createElementVariations(wrapper) {
 	const textElementWrapper = document.createElement('div');

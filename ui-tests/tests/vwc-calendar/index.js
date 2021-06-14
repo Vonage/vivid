@@ -1,6 +1,7 @@
 import vvdCore from '@vonage/vvd-core';
-import * as stories from '@vonage/vwc-button-toggle-group/stories/toggle-buttons-group.stories';
-import '@vonage/vwc-button-toggle-group';
+import '@vonage/vwc-calendar';
+import '@vonage/vwc-calendar/vwc-calendar-event.js';
+import * as stories from '@vonage/vwc-calendar/stories/calendar.stories';
 import { storiesToElement } from '../../utils/storiesToElement';
 
 

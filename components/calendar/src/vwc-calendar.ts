@@ -100,10 +100,20 @@ export class VWCCalendar extends LitElement {
 		return new Intl.DateTimeFormat('en-US', options).format(date);
 	}
 
-	protected renderTimeCells(): TemplateResult[] {
+	protected renderTimeRows(): TemplateResult[] {
 		const templates = [];
-		for (let i = 0; i < (this.#hours.length + 1) * this.#daysLength; i++) {
-			templates.push(html`<div role="listitem" tabindex="0"></div>`);
+		for (let i = 0; i < (this.#hours.length + 1); i++) {
+			templates.push(html`<div role="listitem"></div>`);
+		}
+		return templates;
+	}
+
+	protected renderColumns(): TemplateResult[] {
+		const templates = [];
+		for (let i = 0; i < this.#daysLength; i++) {
+			templates.push(html`<div role="gridcell" tabindex="-1">
+				<slot name="day-${i}"></slot>
+			</div>`);
 		}
 		return templates;
 	}
@@ -114,14 +124,21 @@ export class VWCCalendar extends LitElement {
 	 * */
 	protected renderDays(): TemplateResult {
 		return html`
-			<ol class="headline">
-					${this.getDaysArr([this.getFirstDateOfTheWeek(this.datetime)]).map(date => html`
-					<li>
-						<time datetime=${getValidDateString(date)}>
-							${this.formatDate(date, {	day: '2-digit',	weekday: 'short' })}
-						</time>
-					</li>`)}
-			</ol>`;
+			<div class="column-headers" role="row">
+				${this.getDaysArr([this.getFirstDateOfTheWeek(this.datetime)]).map(date => html`
+				<div role="columnheader" tabindex="-1">
+					<time datetime=${getValidDateString(date)} aria-readonly="true" aria-label=${this.formatDate(date, {	weekday: 'long', month: 'long', day: 'numeric' })}>
+						<h2>
+							<em>
+								${this.formatDate(date, { day: '2-digit' })}
+							</em>
+							<small>
+								${this.formatDate(date, {	weekday: 'short' })}
+							</small>
+						</h2>
+					</time>
+				</div>`)}
+			</div>`;
 	}
 
 	/**
@@ -130,15 +147,13 @@ export class VWCCalendar extends LitElement {
 	 * */
 	protected renderHours(): TemplateResult {
 		return html`
-			<ol class="time">
-				<!-- TODO: align to convention of generation from first hour in day and a length of hours. -->
-				<!-- TODO: get styled hour and datetime value -->
-				${this.#hours.map(h => html`<li>
+			<div class="row-headers" role="presentation">
+				${this.#hours.map(h => html`<span role="rowheader">
 					<time datetime="${this.formatDate(h, { hour: 'numeric', minute: 'numeric', hour12: false })}">
 						${this.formatDate(h, { hour: 'numeric', hour12: true })}
 					</time>
-				</li>`)}
-			</ol>`;
+				</span>`)}
+			</div>`;
 	}
 
 	/**
@@ -147,13 +162,17 @@ export class VWCCalendar extends LitElement {
 	 * */
 	protected render(): TemplateResult {
 		return html`
-			<div class="container">
+			<div role="grid">
 				${this.renderDays()}
-				${this.renderHours()}
-				<div class="calendar" role="list">
-					${this.renderTimeCells()}
-					<!-- TODO: should be presented as a custom element. then could look for siblings and indent by js  -->
-					<div role="presentation">
+				<div class="calendar-row" role="row">
+					${this.renderHours()}
+					<div class="calendar-grid-presentation" role="presentation">
+						<div class="hours" role="list">
+							${this.renderTimeRows()}
+						</div>
+						<div class="columns" role="presentation">
+							${this.renderColumns()}
+						</div>
 						<slot></slot>
 					</div>
 				</div>
