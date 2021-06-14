@@ -130,10 +130,11 @@ describe('calendar', () => {
 
 		it('should set correct styles of start & duration', async () => {
 			const eventComponent = 'vwc-calendar-event';
+			const start = 4;
 			const duration = 5;
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}>
-					<${eventComponent} slot="day-3" start="4" duration="${duration}"></${eventComponent}>
+					<${eventComponent} slot="day-3" start="${start}" duration="${duration}"></${eventComponent}>
 				</${COMPONENT_NAME}>`)
 			);
 			await actualElement.updateComplete;
@@ -143,8 +144,17 @@ describe('calendar', () => {
 			const event = actualElement.querySelector(eventComponent);
 			const section = event.shadowRoot.querySelector('section');
 
-			const hour = (column.offsetHeight - 23 /* 23 grid gaps */) / 24;
-			expect(hour * duration + (duration - 1) /* duration less 1 grid gaps */).to.equal(section.offsetHeight);
+			const getHoursCalculatedBlockSize = (hours) => {
+				const hourInPx = (column.offsetHeight - 23 /* 23 grid gaps */) / 24/* total hours in calendar */;
+				return hourInPx * hours + (hours - 1 /* duration less 1 grid gap */);
+			};
+
+			expect(getHoursCalculatedBlockSize(duration), 'wrong duration').to.equal(section.offsetHeight);
+
+			const { y: columnY } = column.getBoundingClientRect();
+			const { y: sectionY } = section.getBoundingClientRect();
+
+			expect(sectionY - columnY, 'wrong start position').to.equal(getHoursCalculatedBlockSize(start) + 1);
 		});
 
 		it('should not exceed column block size', async () => {
@@ -163,7 +173,7 @@ describe('calendar', () => {
 
 			const hour = (column.offsetHeight - 23 /* 23 grid gaps */) / 24;
 			const maxDuration = 18;
-			expect(hour * maxDuration + (maxDuration - 1) /* hours less 1 grid gaps */).to.equal(section.offsetHeight);
+			expect(hour * maxDuration + (maxDuration - 1) /* hours less 1 grid gap */).to.equal(section.offsetHeight);
 		});
 
 		it('should set event in correct column slot', async () => {
