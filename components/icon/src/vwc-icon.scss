@@ -28,10 +28,15 @@
 	line-height: 1;
 	vertical-align: middle;
 
-	svg {
-		block-size: 100%;
-		fill: currentColor;
-		inline-size: 100%;
-		vertical-align: super;
+	figure {
+
+		display: contents;
+
+		> svg {
+			block-size: 100%;
+			fill: currentColor;
+			inline-size: 100%;
+			vertical-align: super;
+		}
 	}
 }

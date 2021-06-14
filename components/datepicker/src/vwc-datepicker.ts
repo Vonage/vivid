@@ -224,11 +224,11 @@ export class VWCDatepicker extends LitFlatpickr {
 				this.highlightMonth();
 			};
 
-			prevMonth.addEventListener('mousedown', (e: MouseEvent) => this.navigateCalendar(e, -1));
-			prevMonth.addEventListener('touchstart', (e: TouchEvent) => this.navigateCalendar(e, -1));
+			prevMonth.addEventListener('click', (e: MouseEvent) => this.navigateCalendar(e, -1));
+			prevMonth.addEventListener('touchend', (e: TouchEvent) => this.navigateCalendar(e, -1));
 
-			nextMonth.addEventListener('mousedown', (e: MouseEvent) => this.navigateCalendar(e, 1));
-			nextMonth.addEventListener('touchstart', (e: TouchEvent) => this.navigateCalendar(e, 1));
+			nextMonth.addEventListener('click', (e: MouseEvent) => this.navigateCalendar(e, 1));
+			nextMonth.addEventListener('touchend', (e: TouchEvent) => this.navigateCalendar(e, 1));
 		}
 	}
 
@@ -303,12 +303,21 @@ export class VWCDatepicker extends LitFlatpickr {
 
 			const clearButton: VWCButton = document.createElement('vwc-button');
 			clearButton.label = 'Clear';
-			clearButton.shape = Shape.Pill;
+			clearButton.dense = true;
 
-			clearButton.addEventListener('mousedown', (e: MouseEvent) => this.clearSelection(e));
-			clearButton.addEventListener('touchstart', (e: TouchEvent) => this.clearSelection(e));
+			const confirmButton: VWCButton = document.createElement('vwc-button');
+			confirmButton.label = 'Confirm';
+			confirmButton.layout = 'outlined';
+			confirmButton.dense = true;
+
+			clearButton.addEventListener('click', (e: MouseEvent) => this.clearSelection(e));
+			clearButton.addEventListener('touchend', (e: TouchEvent) => this.clearSelection(e));
+
+			confirmButton.addEventListener('click', () => this.close());
+			confirmButton.addEventListener('touchend', () => this.close());
 
 			footer.appendChild(clearButton);
+			footer.appendChild(confirmButton);
 			this._instance?.calendarContainer.appendChild(footer);
 		}
 	}

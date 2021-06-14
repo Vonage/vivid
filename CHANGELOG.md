@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.12.0](https://github.com/Vonage/vivid/compare/v2.11.0...v2.12.0) (2021-06-14)
+
+
+### Bug Fixes
+
+* **data-grid:** fix the data provider documentation ([#882](https://github.com/Vonage/vivid/issues/882)) ([fd231ee](https://github.com/Vonage/vivid/commit/fd231ee149b57ebb2527de905fb09b72e58c20f2))
+* **vwc-button:** dense prop should reflect to attr ([#892](https://github.com/Vonage/vivid/issues/892)) ([9078b3d](https://github.com/Vonage/vivid/commit/9078b3d004c04a4e1475929a0a6eca1c5955d648))
+
+
+### Features
+
+* **button-toggle-group:** Get button-toggle-group to GA ([#891](https://github.com/Vonage/vivid/issues/891)) ([abb170c](https://github.com/Vonage/vivid/commit/abb170c8eca9a30841e3c868976673db2537de14))
+* **ci:** visual tests auto discovery and documenation ([#885](https://github.com/Vonage/vivid/issues/885)) ([771c849](https://github.com/Vonage/vivid/commit/771c84907f831e3be307e6754573cbf07fc3b184))
+
+
+
+
+
 # [2.11.0](https://github.com/Vonage/vivid/compare/v2.10.0...v2.11.0) (2021-06-07)
 
 

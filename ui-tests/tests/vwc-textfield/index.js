@@ -1,9 +1,7 @@
-import vvdCore from '@vonage/vvd-core';
-import { VWCTextField } from '@vonage/vwc-textfield';
+import '@vonage/vwc-textfield';
 import * as stories from '@vonage/vwc-textfield/stories/textfield-all.stories';
 import { storiesToElement } from '../../utils/storiesToElement';
 
-VWCTextField;
 
 export async function createElementVariations(wrapper) {
 	const textElementWrapper = storiesToElement(stories);
@@ -17,8 +15,6 @@ export async function createElementVariations(wrapper) {
 		});
 		res();
 	}, 0));
-
-	await vvdCore.settled;
 }
 
 
