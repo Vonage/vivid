@@ -2,7 +2,11 @@ name: Compile & Test
 
 on:
   pull_request:
-    types: [opened, synchronize, edited, reopned]
+    types:
+      - opened
+      - synchronize
+      - edited
+      - reopened
     branches:
       - master
 
@@ -15,8 +19,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.PAT }}
 
       - name: Setup NodeJS 14
         uses: actions/setup-node@v2
@@ -57,15 +59,13 @@ jobs:
 
   test-safari:
     needs: cache-yarn-and-build
-    runs-on: macOS-latest
+    runs-on: macos-latest
     env:
       ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.PAT }}
 
       - name: Setup NodeJS 14
         uses: actions/setup-node@v2
@@ -123,8 +123,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.PAT }}
 
       - name: Setup NodeJS 14
         uses: actions/setup-node@v2
@@ -182,8 +180,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.PAT }}
 
       - name: Setup NodeJS 14
         uses: actions/setup-node@v2
@@ -240,15 +236,13 @@ jobs:
 
   test-UI:
     needs: cache-yarn-and-build
-    runs-on: macOS-latest
+    runs-on: macos-latest
     env:
       ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.PAT }}
 
       - name: Setup NodeJS 14
         uses: actions/setup-node@v2
@@ -310,8 +304,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.PAT }}
 
       - name: Setup NodeJS 14
         uses: actions/setup-node@v2
@@ -367,8 +359,6 @@ jobs:
       steps:
         - name: Checkout
           uses: actions/checkout@v2
-          with:
-            token: ${{ secrets.PAT }}
 
         - name: Setup NodeJS 14
           uses: actions/setup-node@v2
