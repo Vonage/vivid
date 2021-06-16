@@ -2,6 +2,10 @@
 @use '@vonage/vvd-design-tokens/build/scss/schemes/dark/alternate.scss';
 @use '_scheme-mixins';
 
+:root {
+	color-scheme: dark;
+}
+
 @include scheme-mixins.scheme-context-variables {
 	@include main.variables;
 }

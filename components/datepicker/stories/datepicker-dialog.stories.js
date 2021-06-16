@@ -7,6 +7,9 @@ import { spread } from '@open-wc/lit-helpers';
 
 const DialogTemplate = args => html`
   <style>
+    html, body {
+      height: 100%;
+    }
     vwc-datepicker { display: flex; }
     vwc-textfield { width: 100%; }
   </style>
