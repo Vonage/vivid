@@ -7,7 +7,7 @@ $tab-icon-size-variable-name: --vvd-tab-icon-size;
 @forward './vwc-tab-coupling';
 
 :host {
-	--mdc-tab-height: 44px;
+	--mdc-tab-height: 48px;
 	--mdc-tab-horizontal-padding: 16px;
 	--mdc-tab-text-label-color-default: var(#{scheme-variables.$vvd-color-neutral-70});
 	flex: initial;
