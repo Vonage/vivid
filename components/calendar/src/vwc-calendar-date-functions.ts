@@ -18,8 +18,9 @@ export function assertIsValidDateStringRepresentation(d: unknown): asserts d is 
  * @returns a date as a string value in ISO format.
  *
  * */
-export function getValidDatetimeString(date: Date): string {
-	return date.toISOString().split('T')[0];
+export function getValidDateString(date: Date): string {
+	const twoDigit = (num: number) => `0${num}`.slice(-2);
+	return `${date.getFullYear()}-${twoDigit(date.getMonth() + 1)}-${twoDigit(date.getDate())}`;
 }
 
 export function getFirstDateOfTheWeek(date: Date = new Date()): Date {

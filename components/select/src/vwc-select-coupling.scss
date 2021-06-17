@@ -1,6 +1,7 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 
 :host {
+	--mdc-shape-medium: 6px;
 	@include typography.typography-mdc-coupling('subtitle1', 'body-2');
 
 	.mdc-floating-label {

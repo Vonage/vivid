@@ -12,18 +12,14 @@
       class="vivid-snackbar"
       part="vvd-scheme-alternate"
     >
-      <vwc-note>
-        <div class="snackbar-content">
-          <div>
-            <div class="action-container">
-              <slot name="action">
-              </slot>
-            </div>
-          </div>
-          <div class="dismiss-container">
-          </div>
-        </div>
+      <vwc-note class="note">
       </vwc-note>
+      <div class="actions-container">
+        <div class="action-container">
+          <slot name="action">
+          </slot>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -42,18 +38,14 @@
       class="vivid-snackbar"
       part="vvd-scheme-alternate"
     >
-      <vwc-note header="Header">
-        <div class="snackbar-content">
-          <div>
-            <div class="action-container">
-              <slot name="action">
-              </slot>
-            </div>
-          </div>
-          <div class="dismiss-container">
-          </div>
-        </div>
+      <vwc-note class="note">
       </vwc-note>
+      <div class="actions-container">
+        <div class="action-container">
+          <slot name="action">
+          </slot>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -72,19 +64,15 @@
       class="vivid-snackbar"
       part="vvd-scheme-alternate"
     >
-      <vwc-note>
-        <div class="snackbar-content">
-          <div>
-            Message
-            <div class="action-container">
-              <slot name="action">
-              </slot>
-            </div>
-          </div>
-          <div class="dismiss-container">
-          </div>
-        </div>
+      <vwc-note class="note">
+        Message
       </vwc-note>
+      <div class="actions-container">
+        <div class="action-container">
+          <slot name="action">
+          </slot>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -103,18 +91,17 @@
       class="vivid-snackbar"
       part="vvd-scheme-alternate"
     >
-      <vwc-note icon="home">
-        <div class="snackbar-content">
-          <div>
-            <div class="action-container">
-              <slot name="action">
-              </slot>
-            </div>
-          </div>
-          <div class="dismiss-container">
-          </div>
-        </div>
+      <vwc-note
+        class="note"
+        icon="home"
+      >
       </vwc-note>
+      <div class="actions-container">
+        <div class="action-container">
+          <slot name="action">
+          </slot>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -133,25 +120,23 @@
       class="vivid-snackbar"
       part="vvd-scheme-alternate"
     >
-      <vwc-note>
-        <div class="snackbar-content">
-          <div>
-            <div class="action-container">
-              <slot name="action">
-              </slot>
-            </div>
-          </div>
-          <div class="dismiss-container">
-            <vwc-icon-button
-              class="dismiss-button"
-              dense=""
-              icon="close-line"
-              layout="ghost"
-            >
-            </vwc-icon-button>
-          </div>
-        </div>
+      <vwc-note class="note">
       </vwc-note>
+      <div class="actions-container">
+        <div class="action-container">
+          <slot name="action">
+          </slot>
+        </div>
+        <div class="dismiss-container">
+          <vwc-icon-button
+            class="dismiss-button"
+            dense=""
+            icon="close-line"
+            layout="ghost"
+          >
+          </vwc-icon-button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -170,18 +155,14 @@
       class="vivid-snackbar"
       part="vvd-scheme-alternate"
     >
-      <vwc-note>
-        <div class="snackbar-content">
-          <div>
-            <div class="action-container">
-              <slot name="action">
-              </slot>
-            </div>
-          </div>
-          <div class="dismiss-container">
-          </div>
-        </div>
+      <vwc-note class="note">
       </vwc-note>
+      <div class="actions-container">
+        <div class="action-container">
+          <slot name="action">
+          </slot>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -204,8 +185,6 @@
               <slot name="action">
               </slot>
             </div>
-          </div>
-          <div class="dismiss-container">
           </div>
         </div>
       </vwc-note>
@@ -231,8 +210,6 @@
               <slot name="action">
               </slot>
             </div>
-          </div>
-          <div class="dismiss-container">
           </div>
         </div>
       </vwc-note>
@@ -260,8 +237,6 @@
               </slot>
             </div>
           </div>
-          <div class="dismiss-container">
-          </div>
         </div>
       </vwc-note>
     </div>
@@ -286,8 +261,6 @@
               <slot name="action">
               </slot>
             </div>
-          </div>
-          <div class="dismiss-container">
           </div>
         </div>
       </vwc-note>
@@ -347,8 +320,6 @@
               <slot name="action">
               </slot>
             </div>
-          </div>
-          <div class="dismiss-container">
           </div>
         </div>
       </vwc-note>

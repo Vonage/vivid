@@ -21,6 +21,8 @@
   </div>
   <slot name="formInputElement">
   </slot>
+  <slot name="action">
+  </slot>
 </label>
 
 ```

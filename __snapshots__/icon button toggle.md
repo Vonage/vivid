@@ -1,33 +1,35 @@
 # `icon button toggle`
 
-#### `should internal contents`
+#### `should have internal contents`
 
 ```html
 <button
-  aria-pressed="false"
+  aria-label=""
   class="mdc-icon-button"
 >
-  <span class="mdc-icon-button__icon">
-    <slot name="offIcon">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type=""
-      >
-      </vwc-icon>
-    </slot>
-  </span>
-  <span class="mdc-icon-button__icon mdc-icon-button__icon--on">
-    <slot name="onIcon">
-      <vwc-icon
-        class="icon"
-        size="small"
-        type=""
-      >
-      </vwc-icon>
+  <vwc-icon type="">
+  </vwc-icon>
+  <span>
+    <slot>
     </slot>
   </span>
 </button>
 
+```
+
+#### `should internal contents`
+
+```html
+<button
+  aria-label=""
+  class="mdc-icon-button"
+>
+  <vwc-icon type="">
+  </vwc-icon>
+  <span>
+    <slot>
+    </slot>
+  </span>
+</button>
 ```
 

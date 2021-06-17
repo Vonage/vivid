@@ -1,16 +1,14 @@
 import '@vonage/vvd-core';
 import {
-	DirectiveFn
-} from 'lit-html';
-import {
 	customElement, html, LitElement, property, TemplateResult
 } from 'lit-element';
 import { style } from './vwc-calendar.css';
 import {
 	assertIsValidDateStringRepresentation,
-	getValidDatetimeString,
+	getValidDateString,
 	getFirstDateOfTheWeek
 } from './vwc-calendar-date-functions';
+import {	DirectiveFn } from 'lit-html';
 import { repeat } from 'lit-html/directives/repeat';
 
 declare global {
@@ -56,7 +54,7 @@ export class VWCCalendar extends LitElement {
 	datetime?: Date;
 
 	#daysLength = 7;
-	#hoursOfDay = (Array.from({ length: 23 }) as Date[])
+	#hours = (Array.from({ length: 23 }) as Date[])
 		.fill(new Date(new Date().setHours(0, 0, 0)))
 		.map((d, i) => new Date(d.setHours(++i)))
 
@@ -83,11 +81,25 @@ export class VWCCalendar extends LitElement {
 		return this.getDaysArr(concatenatedDateArr);
 	}
 
-	protected renderTimeCells(): DirectiveFn {
-		const length = (this.#hoursOfDay.length + 1) * this.#daysLength;
+	protected renderTimeRows(): DirectiveFn {
+		const length = this.#hours.length + 1;
+
 		return repeat(
 			Array.from({ length }),
-			() => html`<div role="listitem" tabindex="0"></div>`
+			() => html`<div role="listitem"></div>`
+		);
+	}
+
+	protected renderColumns(): DirectiveFn {
+		const length = this.#daysLength;
+
+		return repeat(
+			Array.from({ length }),
+			(_, i) => html`
+				<div role="gridcell" tabindex="-1">
+					<slot name="day-${i}"></slot>
+				</div>
+			`
 		);
 	}
 
@@ -97,14 +109,22 @@ export class VWCCalendar extends LitElement {
 	 * */
 	protected renderDays(): TemplateResult {
 		return html`
-			<ol class="headline">
-					${repeat(this.getDaysArr([getFirstDateOfTheWeek(this.datetime)]), date => html`
-					<li>
-						<time datetime=${getValidDatetimeString(date)}>
-							${new Intl.DateTimeFormat('en-US', {	day: '2-digit',	weekday: 'short' }).format(date)}
-						</time>
-					</li>`)}
-			</ol>`;
+			<div class="column-headers" role="row">
+				${this.getDaysArr([getFirstDateOfTheWeek(this.datetime)]).map(date => html`
+				<div role="columnheader" tabindex="-1">
+					<time datetime=${getValidDateString(date)} aria-readonly="true"
+						aria-label=${new Intl.DateTimeFormat('en-US', { weekday: 'long', month: 'long', day: 'numeric' }).format(date)}>
+						<h2>
+							<em>
+								${new Intl.DateTimeFormat('en-US', { day: '2-digit' }).format(date)}
+							</em>
+							<small>
+								${new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(date)}
+							</small>
+						</h2>
+					</time>
+				</div>`)}
+			</div>`;
 	}
 
 	/**
@@ -113,15 +133,13 @@ export class VWCCalendar extends LitElement {
 	 * */
 	protected renderHours(): TemplateResult {
 		return html`
-			<ol class="time">
-				<!-- TODO: align to convention of generation from first hour in day and a length of hours. -->
-				<!-- TODO: get styled hour and datetime value -->
-				${repeat(this.#hoursOfDay, h => html`<li>
+			<div class="row-headers" role="presentation">
+				${this.#hours.map(h => html`<span role="rowheader">
 					<time datetime="${new Intl.DateTimeFormat('en-US', { hour: 'numeric', minute: 'numeric', hour12: false }).format(h)}">
 						${new Intl.DateTimeFormat('en-US', { hour: 'numeric', hour12: true }).format(h)}
 					</time>
-				</li>`)}
-			</ol>`;
+				</span>`)}
+			</div>`;
 	}
 
 	/**
@@ -130,13 +148,17 @@ export class VWCCalendar extends LitElement {
 	 * */
 	protected render(): TemplateResult {
 		return html`
-			<div class="container">
+			<div role="grid">
 				${this.renderDays()}
-				${this.renderHours()}
-				<div class="calendar" role="list">
-					${this.renderTimeCells()}
-					<!-- TODO: should be presented as a custom element. then could look for siblings and indent by js  -->
-					<div role="presentation">
+				<div class="calendar-row" role="row">
+					${this.renderHours()}
+					<div class="calendar-grid-presentation" role="presentation">
+						<div class="hours" role="list">
+							${this.renderTimeRows()}
+						</div>
+						<div class="columns" role="presentation">
+							${this.renderColumns()}
+						</div>
 						<slot></slot>
 					</div>
 				</div>

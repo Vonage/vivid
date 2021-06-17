@@ -1,5 +1,5 @@
 import { TemplateResult } from 'lit-element';
-import { DataGrid } from '../vwc-data-grid-api';
+import { EventContext } from '../vwc-data-grid-api';
 
 export {
 	DataGridAdapter
@@ -13,14 +13,17 @@ export {
  */
 interface DataGridAdapter {
 	//	rendering
-	render(configuration: DataGrid): TemplateResult;
+	render(): TemplateResult;
 	openItemDetails(item: unknown): void;
 	closeItemDetails(item: unknown): void;
 
 	//	selection
-	getSelectedItems(vwcDataGrid: HTMLElement): unknown[];
-	selectItem(item: unknown): void;
+	getSelectedItems(): unknown[];
+	selectItem(item: unknown, singleSelectMode?: boolean): void;
 	deselectItem(item: unknown): void;
 	selectAll(): void;
 	deselectAll(): void;
+
+	//	interop
+	getEventContext(event: Event): EventContext | null;
 }

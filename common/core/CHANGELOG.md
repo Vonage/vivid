@@ -1,3 +1,36 @@
+# [2.12.0](https://github.com/vonage/vivid/compare/v2.11.0...v2.12.0) (2021-06-14)
+
+
+
+# [2.11.0](https://github.com/vonage/vivid/compare/v2.10.0...v2.11.0) (2021-06-07)
+
+
+
+# [2.10.0](https://github.com/vonage/vivid/compare/v2.9.1...v2.10.0) (2021-06-04)
+
+
+
+## [2.9.1](https://github.com/vonage/vivid/compare/v2.9.0...v2.9.1) (2021-05-27)
+
+
+
+# [2.9.0](https://github.com/vonage/vivid/compare/v2.8.0...v2.9.0) (2021-05-24)
+
+
+
+# [2.8.0](https://github.com/vonage/vivid/compare/v2.7.0...v2.8.0) (2021-05-20)
+
+
+
+# [2.7.0](https://github.com/vonage/vivid/compare/v2.6.2...v2.7.0) (2021-05-17)
+
+
+### Bug Fixes
+
+* **docs:** viv-375 added init flow and core dependencies ([#821](https://github.com/vonage/vivid/issues/821)) ([903c1f6](https://github.com/vonage/vivid/commit/903c1f643f50f249c94b9d82aca3b55d6164bc04))
+
+
+
 ## [2.6.2](https://github.com/vonage/vivid/compare/v2.6.1...v2.6.2) (2021-05-05)
 
 

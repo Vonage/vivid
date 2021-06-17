@@ -4,6 +4,12 @@ import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 
 const Template = args => html`
+  <style>
+		html, body {
+			height: 100%;
+		}
+	</style>
+
   <vwc-textfield id="input" dense></vwc-textfield>
   <vwc-icon-button id="trigger" icon="calendar" layout="filled" @click="${handleOpenDatepicker}"></vwc-icon-button>
   <vwc-datepicker id="datepicker" ...=${spread(args)}></vwc-datepicker>

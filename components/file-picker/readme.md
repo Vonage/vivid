@@ -57,6 +57,7 @@ In addition to those major variations, there are the label and the helper messag
 | `label`             | `label`             | `string`  | `''` | label text, if any |
 | `helper`            | `helper`            | `string`  | `''` | text to be shown in helper message in normal (non-errorneous) state |
 |                     | `drop-zone`         | `boolean` | `true` | attribute controlling whether the drop zone should be rendered or not |
+|                     | `no-counter`        | `boolean` | `false` | attribute controlling whether counter badge should be always hidden |
 | `validationMessage` | `validationmessage` | `string`  | `''` | text to be shown in helper message when component is in erroneous state, when empty, the component falls back to the default messages as below |
 | `notAFileError`     | `notafileerror`     | `string`  | `'only file/s drop allowed'` | text to be shown specifically when drag'n'drop of not-a-file attempted |
 | `tooManyFilesError` | `toomanyfileserror` | `string`  | `'only one file allowed'` | text to be shown specifically when multiple files droped while slotted input has no `multiple` attribute defined |
