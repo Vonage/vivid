@@ -58,21 +58,6 @@ export class VWCCalendar extends LitElement {
 		.fill(new Date(new Date().setHours(0, 0, 0)))
 		.map((d, i) => new Date(d.setHours(++i)))
 
-	/**
-	 * generate dates array of days of the week by given date
-	 *
-	 * @param dateOrDateString - js date object
-	 * @internal
-	 * */
-	// private getWeekdaysByDate(date: Date = new Date()): Date[] {
-	// 	let firstDateOfTheWeek = date.getDate() - date.getDay();
-	// 	console.log('firstDateOfTheWeek', firstDateOfTheWeek);
-	// 	return Array.from(
-	// 		{ length: this.#daysLength },
-	// 		() => new Date(date.setDate(firstDateOfTheWeek++))
-	// 	);
-	// }
-
 	private getDaysArr(dateArr: Date[]): Date[] {
 		if (dateArr.length == this.#daysLength) { return dateArr; }
 		const lastDate = new Date(dateArr[dateArr.length - 1]);
