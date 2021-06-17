@@ -12,15 +12,19 @@ export default {
 
 const Template = args => html`
   <style>
+    html, body {
+      height: 100%;
+    }
     vwc-textfield { width: 260px; }
   </style>
+
   <vwc-datepicker ...=${spread(args)}>
     <vwc-textfield dense icon='calendar' placeholder='Datepicker'></vwc-textfield>
   </vwc-datepicker>
 `;
 
 export const Basic = Template.bind({});
-Basic.args = { dateFormat: 'Y-m-d', altInput: '', altFormat: 'F j, Y', closeOnSelect: '' };
+Basic.args = { dateFormat: 'Y-m-d', closeOnSelect: '' };
 
 export const MaxDate = Template.bind({});
 MaxDate.args = { dateFormat: 'Y-m-d', MaxDate: 'today', closeOnSelect: '' };
@@ -41,6 +45,10 @@ const InlineTemplate = args => html`<vwc-datepicker ...=${spread(args)}></vwc-da
 
 export const Inline = InlineTemplate.bind({});
 Inline.args = { inline: '' };
+
+export {
+	WeekSelect
+} from './datepicker-week-select.stories.js';
 
 export {
 	Dialog

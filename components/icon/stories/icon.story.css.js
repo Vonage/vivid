@@ -35,6 +35,11 @@ const css = `.container {
 	background-color: var(--vvd-color-neutral-20);
 	line-height: 18px;
 	padding: 0;
-}`;
+}
+
+header {
+	text-align: center;
+}
+`;
 
 export default css;

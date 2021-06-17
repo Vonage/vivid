@@ -2,8 +2,10 @@ import '@vonage/vvd-core';
 import './vwc-data-grid-column';
 import {
 	GRID_COMPONENT,
+	GRID_ENGINE_ROOT_CLASS,
 	DataGrid,
-	DataGridHeader
+	DataGridHeader,
+	EventContext
 } from './vwc-data-grid-api';
 import {
 	COLUMN_DEFINITION_COMPONENT,
@@ -22,11 +24,13 @@ import {
 	LitElement,
 	TemplateResult,
 } from 'lit-element';
+import { DataGridAdapter } from './adapters/vwc-data-grid-adapter-api';
 
 export {
 	GRID_COMPONENT,
 	COLUMN_DEFINITION_COMPONENT,
 	COLUMN_DEFINITION_UPDATE_EVENT,
+	GRID_ENGINE_ROOT_CLASS,
 	DataGrid,
 	DataGridColumn,
 	DataGridHeader
@@ -46,7 +50,7 @@ declare global {
 @customElement('vwc-data-grid')
 export class VWCDataGrid extends LitElement implements DataGrid {
 	static styles = [vwcDataGridStyle, ...VWCDataGridAdapterVaadin.getStylesOverlay()];
-	#gridAdapter = new VWCDataGridAdapterVaadin(this);
+	#gridAdapter = new VWCDataGridAdapterVaadin(this) as DataGridAdapter;
 
 	@property({ type: Boolean, reflect: true, attribute: 'multi-sort' })
 	multiSort = false;
@@ -103,6 +107,10 @@ export class VWCDataGrid extends LitElement implements DataGrid {
 
 	closeItemDetails(item: unknown): void {
 		this.#gridAdapter.closeItemDetails(item);
+	}
+
+	getEventContext(event: Event): EventContext | null {
+		return this.#gridAdapter.getEventContext(event);
 	}
 
 	protected render(): TemplateResult {

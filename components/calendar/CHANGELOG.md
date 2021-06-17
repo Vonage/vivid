@@ -1,3 +1,36 @@
+# [2.12.0](https://github.com/vonage/vivid/compare/v2.11.0...v2.12.0) (2021-06-14)
+
+
+
+# [2.11.0](https://github.com/vonage/vivid/compare/v2.10.0...v2.11.0) (2021-06-07)
+
+
+
+# [2.10.0](https://github.com/vonage/vivid/compare/v2.9.1...v2.10.0) (2021-06-04)
+
+
+
+## [2.9.1](https://github.com/vonage/vivid/compare/v2.9.0...v2.9.1) (2021-05-27)
+
+
+### Bug Fixes
+
+* **vwc-calendar:** cells wrong grid columns ([#862](https://github.com/vonage/vivid/issues/862)) ([1f77e91](https://github.com/vonage/vivid/commit/1f77e91c873f17263265b27e9add0ed1d9c89b48))
+
+
+
+# [2.9.0](https://github.com/vonage/vivid/compare/v2.8.0...v2.9.0) (2021-05-24)
+
+
+
+# [2.8.0](https://github.com/vonage/vivid/compare/v2.7.0...v2.8.0) (2021-05-20)
+
+
+
+# [2.7.0](https://github.com/vonage/vivid/compare/v2.6.2...v2.7.0) (2021-05-17)
+
+
+
 ## [2.6.2](https://github.com/vonage/vivid/compare/v2.6.1...v2.6.2) (2021-05-05)
 
 

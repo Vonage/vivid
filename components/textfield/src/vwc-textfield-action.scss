@@ -1,0 +1,29 @@
+@use 'sass:map';
+@use 'vwc-textfield-variables' as textfield-variables;
+@use '@vonage/vwc-icon-button/src/vwc-icon-button-variables' as icon-button-variables;
+@use '@vonage/vwc-icon/src/vwc-icon-variables' as icon-variables;
+
+
+
+/* stylelint-disable selector-no-qualifying-type */
+slot[name="action"i]::slotted(vwc-icon-button) {
+	// #{icon-button-variables.$icon-button-shape}: var(#{textfield-variables.$vvd-textfield-shape});
+	// #{icon-button-variables.$icon-button-block-size}: calc(var(#{textfield-variables.$vvd-textfield-size-block}) - #{$actions-gap * 2});
+	align-self: center;
+	margin-inline-start: textfield-variables.$actions-gap;
+
+	:host(:not([dense])) & {
+		#{icon-button-variables.$icon-button-icon-size-variable-name}:
+			var(#{textfield-variables.$vvd-textfield-action-icon-size-variable-name},
+			#{map.get(textfield-variables.$icon-sizes, 'medium')});
+	}
+
+	:host([dense]) & {
+		#{icon-button-variables.$icon-button-icon-size-variable-name}:
+			var(#{textfield-variables.$vvd-textfield-action-icon-size-variable-name},
+			#{map.get(textfield-variables.$icon-sizes, 'small')});
+	}
+}
+/* stylelint-enable selector-no-qualifying-type */
+
+

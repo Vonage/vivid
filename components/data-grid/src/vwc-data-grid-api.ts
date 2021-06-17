@@ -5,13 +5,16 @@ export {
 	GRID_COMPONENT,
 	GRID_HEADER_COMPONENT,
 	GRID_SELECT_HEADER_COMPONENT,
+	GRID_ENGINE_ROOT_CLASS,
 	DataGrid,
 	DataGridHeader,
+	EventContext,
 };
 
 const GRID_COMPONENT = 'vwc-data-grid',
 	GRID_HEADER_COMPONENT = 'vwc-data-grid-header',
-	GRID_SELECT_HEADER_COMPONENT = 'vwc-data-grid-select-header';
+	GRID_SELECT_HEADER_COMPONENT = 'vwc-data-grid-select-header',
+	GRID_ENGINE_ROOT_CLASS = 'vvd-grid-engine-root';
 
 /**
  * API definition of the Vivid data grid, component
@@ -36,6 +39,8 @@ interface DataGrid extends EventTarget {
 	deselectItem(item: unknown): void;
 	selectAll(): void;
 	deselectAll(): void;
+
+	getEventContext(event: Event): EventContext | null;
 }
 
 /**
@@ -46,4 +51,19 @@ interface DataGridHeader {
 	sortable: boolean;
 	direction: string | null;
 	path?: string;
+}
+
+/**
+ * Data structure definition of the event context
+ */
+interface EventContext {
+	/**
+	 * row number, index, of the interacted row
+	 */
+	row?: number,
+
+	/**
+	 * actual data item, underlying interacted row
+	 */
+	item?: unknown
 }
