@@ -8,7 +8,8 @@
     "tsBuildInfoFile": ".tsbuildinfo"
   },
   "include": [
-    "src/*.ts"
+    "src/*.ts",
+    "src/partials/_scheme-mixins.css.ts"
   ],
   "exclude": [
     "src/test/*.ts"
