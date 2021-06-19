@@ -4,9 +4,6 @@
 @use 'partials/scheme-variables' as variables;
 
 
-:root {
-	color-scheme: dark;
-}
 
 #{variables.$scheme-main-selector} {
 	@include main.variables;
