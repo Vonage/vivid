@@ -13,7 +13,7 @@ jobs:
         with:
           node-version: 14
       - run: rm .npmrc
-      - run: echo "${{ secrets.ARTIFACTORY_AUTH_TOKEN }}" | base64
+      - run: echo "${{ secrets.NPM_AUTH }}" | base64
       - run: yarn install
         name: Install NPM dependencies
         env:
