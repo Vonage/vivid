@@ -2,10 +2,6 @@
 @use '@vonage/vvd-design-tokens/build/scss/schemes/light/alternate.scss';
 @use '_scheme-mixins';
 
-// will set system-colors (canvas,canvasText) if not set explicitly
-:root {
-	color-scheme: light;
-}
 
 @include scheme-mixins.scheme-context-variables {
 	@include main.variables;
