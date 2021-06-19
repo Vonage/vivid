@@ -13,7 +13,7 @@ jobs:
         with:
           node-version: 14
       - run: rm .npmrc
-      - run: yarn
+      - run: env
         name: Install NPM dependencies
         env:
           "yarn_always_auth": true,
