@@ -18,5 +18,5 @@ jobs:
         name: Install NPM dependencies
         env:
           "yarn_always_auth": true,
-          "yarn__auth": ${{ secrets.ARTIFACTORY_AUTH_TOKEN }},
+          "yarn__auth": ${{ secrets.NPM_AUTH }},
           "yarn_registry": "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
