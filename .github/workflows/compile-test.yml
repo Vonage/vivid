@@ -13,10 +13,10 @@ jobs:
         with:
           node-version: 14
       - run: rm .npmrc
-      - run: echo "${{ secrets.NPM_AUTH }}" | base64
-      - run: yarn install
+      - run: echo "${{ secrets.ARTIFACTORY_AUTH_TOKEN }}" | base64
+      - run: yarn -v
         name: Install NPM dependencies
         env:
           "yarn_always_auth": true,
-          "yarn__auth": ${{ secrets.NPM_AUTH }},
+          "yarn__auth": ${{ secrets.ARTIFACTORY_AUTH_TOKEN }},
           "yarn_registry": "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
