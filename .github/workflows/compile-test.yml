@@ -18,7 +18,7 @@ jobs:
           "yarn_always_auth": true,
           "yarn__auth": ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
           "yarn_registry": "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
-      - run: yarn compile --concurrency=2 --scope=@vonage/vvd-core
+      - run: yarn compile --concurrency=2 --scope=@vonage/vvd-core --include-dependencies
       - run: tar -zcf vivid-env.tar.gz .
       - uses: actions/upload-artifact@v2
         with:
