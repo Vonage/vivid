@@ -19,11 +19,12 @@ jobs:
           "yarn__auth": ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
           "yarn_registry": "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
       - run: yarn compile
+      - run: tar -zcvf $TMPDIR/vivid-env.tar.gz .
       - uses: actions/upload-artifact@v2
         with:
           name: workspace
           path: |
-            **
+            $TMPDIR/vivid-env.tar.gz
   test:
     needs: build
     name: Test
@@ -32,6 +33,8 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: workspace
+          path: $TMPDIR/vivid-env.tar.gz
+      - run: tar -zxvf $TMPDIR/vivid-env.tar.gz
       - run: yarn test:dev:ci
 
 
