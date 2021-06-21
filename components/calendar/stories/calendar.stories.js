@@ -6,8 +6,7 @@ import { argTypes } from './arg-types.js';
 
 export default {
 	title: 'Alpha/Components/Calendar',
-	component: 'vwc-calendar',
-	argTypes
+	component: 'vwc-calendar'
 };
 
 const Template = args => html`<vwc-calendar ...=${spread(args)}>

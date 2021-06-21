@@ -1,15 +1,19 @@
 import '@vonage/vvd-core';
 import {
-	customElement, html, LitElement, property, TemplateResult
+	customElement,
+	html,
+	LitElement,
+	property,
+	TemplateResult
 } from 'lit-element';
+import { DirectiveFn } from 'lit-html';
+import { repeat } from 'lit-html/directives/repeat';
 import { style } from './vwc-calendar.css';
 import {
 	assertIsValidDateStringRepresentation,
 	getValidDateString,
 	getFirstDateOfTheWeek
 } from './vwc-calendar-date-functions';
-import {	DirectiveFn } from 'lit-html';
-import { repeat } from 'lit-html/directives/repeat';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -64,6 +68,62 @@ export class VWCCalendar extends LitElement {
 		lastDate.setDate(lastDate.getDate() + 1);
 		const concatenatedDateArr = [...dateArr, lastDate];
 		return this.getDaysArr(concatenatedDateArr);
+	}
+
+	arrowKeysInteractionsFactory(arr: Array<Array<HTMLElement>>) {
+		return (key: string): void => {
+			console.log(key, arr);
+		};
+	}
+
+	private arrowKeysInteractions(key: string) {
+		const toggleRowQuery = (f: HTMLElement) => (f.matches('[role="columnheader"i]')
+			? '[role="gridcell"i]'
+			: '[role="columnheader"i]');
+		const focused =
+			this.shadowRoot?.querySelector('[role="columnheader"i][tabindex="0"], [role="gridcell"i][tabindex="0"]');
+
+		let focusNext: Element | null | undefined;
+
+		if (!focused) {
+			focusNext = this.shadowRoot?.querySelector('[role="columnheader"i]');
+		} else {
+			switch (key) {
+			case 'ArrowRight':
+				focusNext = focused.nextElementSibling || focused.parentNode?.firstElementChild;
+				break;
+			case 'ArrowLeft':
+				focusNext = focused.previousElementSibling || focused.parentElement?.lastElementChild;
+				break;
+			case 'ArrowUp':
+			case 'ArrowDown': {
+				const { children } = focused.parentElement as HTMLElement;
+				console.log(children);
+				const i = Array.from(children).indexOf(focused);
+				console.log(i);
+				focusNext = this.shadowRoot?.querySelector(`${toggleRowQuery(focused as HTMLElement)}:nth-child(${i + 1})`);
+				break;
+			}
+			default:
+				break;
+			}
+		}
+		focused?.setAttribute('tabindex', '-1');
+		this.moveTo(focusNext as HTMLElement);
+	}
+
+	private moveTo(el: HTMLElement | null | undefined) {
+		el?.setAttribute('tabindex', '0');
+		el?.focus();
+	}
+
+	private onKeydown(event: KeyboardEvent) {
+		const isArrow = ['ArrowUp', 'ArrowRight', 'ArrowDown', 'ArrowLeft'].includes(event.key);
+		isArrow
+			&& this?.arrowKeysInteractions
+			&& this.arrowKeysInteractions(event.key);
+
+		event.preventDefault();
 	}
 
 	protected renderTimeRows(): DirectiveFn {
@@ -133,7 +193,7 @@ export class VWCCalendar extends LitElement {
 	 * */
 	protected render(): TemplateResult {
 		return html`
-			<div role="grid">
+			<div role="grid" @keydown=${this.onKeydown}>
 				${this.renderDays()}
 				<div class="calendar-row" role="row">
 					${this.renderHours()}
