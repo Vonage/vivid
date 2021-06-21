@@ -260,6 +260,10 @@ jobs:
         run: yarn install
 
       - name: Install playwright deps
+        env:
+          yarn_always_auth: true,
+          yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+          yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
         run: yarn add playwright -D -W && yarn playwright install-deps
 
       - name: Cache build
