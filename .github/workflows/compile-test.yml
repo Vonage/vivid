@@ -29,6 +29,7 @@ jobs:
           path: |
             ${{ steps.yarn-cache-dir-path.outputs.dir }}
             **/node_modules
+            ~/.cache/ms-playwright
           key: vivid-cache-yarn-${{ hashFiles('**/package.json') }}
 
       - name: Install packages
@@ -249,6 +250,7 @@ jobs:
           path: |
             ${{ steps.yarn-cache-dir-path.outputs.dir }}
             **/node_modules
+            ~/.cache/ms-playwright
           key: vivid-cache-yarn-${{ hashFiles('**/package.json') }}
 
       - name: Install packages
