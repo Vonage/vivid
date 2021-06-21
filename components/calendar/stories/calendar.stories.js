@@ -2,7 +2,6 @@ import '@vonage/vwc-calendar/vwc-calendar.js';
 import '@vonage/vwc-calendar/vwc-calendar-event.js';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
-import { argTypes } from './arg-types.js';
 
 export default {
 	title: 'Alpha/Components/Calendar',
