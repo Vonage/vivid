@@ -3082,7 +3082,6 @@
     lit-html "^1.1.2"
     tslib "^2.0.1"
 
-
 "@material/mwc-select@^0.21.0":
   version "0.21.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-select/-/mwc-select-0.21.0.tgz#876d0fd8ba64d5b5912f549321424fb849b2e299"
