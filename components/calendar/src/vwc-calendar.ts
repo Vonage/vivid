@@ -70,12 +70,6 @@ export class VWCCalendar extends LitElement {
 		return this.getDaysArr(concatenatedDateArr);
 	}
 
-	arrowKeysInteractionsFactory(arr: Array<Array<HTMLElement>>) {
-		return (key: string): void => {
-			console.log(key, arr);
-		};
-	}
-
 	private arrowKeysInteractions(key: string) {
 		const toggleRowQuery = (f: HTMLElement) => (f.matches('[role="columnheader"i]')
 			? '[role="gridcell"i]'
@@ -98,9 +92,7 @@ export class VWCCalendar extends LitElement {
 			case 'ArrowUp':
 			case 'ArrowDown': {
 				const { children } = focused.parentElement as HTMLElement;
-				console.log(children);
 				const i = Array.from(children).indexOf(focused);
-				console.log(i);
 				focusNext = this.shadowRoot?.querySelector(`${toggleRowQuery(focused as HTMLElement)}:nth-child(${i + 1})`);
 				break;
 			}
@@ -113,8 +105,11 @@ export class VWCCalendar extends LitElement {
 	}
 
 	private moveTo(el: HTMLElement | null | undefined) {
+		const onBlur = ({ target }: FocusEvent) => (target as HTMLElement)?.setAttribute('tabindex', '-1');
+
 		el?.setAttribute('tabindex', '0');
 		el?.focus();
+		el?.addEventListener('blur', onBlur, { once: true });
 	}
 
 	private onKeydown(event: KeyboardEvent) {
