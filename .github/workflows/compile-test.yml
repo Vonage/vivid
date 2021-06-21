@@ -37,7 +37,8 @@ jobs:
         with:
           path: |
             ~/Library/Caches/ms-playwright
-          key: vivid-cache-playwright
+            **/node_modules/playwright
+          key: vivid-cache-playwright-v1
 
       - name: Install packages
         if: steps.yarn-cache.outputs.cache-hit != 'true'
