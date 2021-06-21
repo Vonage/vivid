@@ -13,6 +13,10 @@ jobs:
         with:
           node-version: 14
       - run: rm .npmrc
+      - uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ hashFiles('yarn.lock') }}
       - run: yarn
         env:
           "yarn_always_auth": true,
