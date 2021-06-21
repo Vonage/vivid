@@ -34,5 +34,6 @@ jobs:
         with:
           name: workspace
           path: /tmp/vivid-env.tar.gz
+      - run: cd /tmp && ls -al
       - run: tar -zxf /tmp/vivid-env.tar.gz
       - run: yarn test:dev:ci
