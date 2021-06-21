@@ -227,6 +227,7 @@ jobs:
           path: ./coverage/report-lcov/lcov.info
 
   test-UI:
+    needs: cache-yarn-and-build
     runs-on: macos-latest
 
     steps:
