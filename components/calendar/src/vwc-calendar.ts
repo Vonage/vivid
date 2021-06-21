@@ -100,16 +100,16 @@ export class VWCCalendar extends LitElement {
 				break;
 			}
 		}
-		focused?.setAttribute('tabindex', '-1');
+
 		this.moveTo(focusNext as HTMLElement);
 	}
 
 	private moveTo(el: HTMLElement | null | undefined) {
 		const onBlur = ({ target }: FocusEvent) => (target as HTMLElement)?.setAttribute('tabindex', '-1');
 
+		el?.addEventListener('blur', onBlur, { once: true });
 		el?.setAttribute('tabindex', '0');
 		el?.focus();
-		el?.addEventListener('blur', onBlur, { once: true });
 	}
 
 	private onKeydown(event: KeyboardEvent) {
