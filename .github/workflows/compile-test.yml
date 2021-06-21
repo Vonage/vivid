@@ -20,9 +20,6 @@ jobs:
         with:
           node-version: 14
 
-      - name: Install yarn
-        run: npm install -g yarn
-
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
@@ -66,9 +63,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
-
-      - name: Install yarn
-        run: npm install -g yarn
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -124,9 +118,6 @@ jobs:
         with:
           node-version: 14
 
-      - name: Install yarn
-        run: npm install -g yarn
-
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
@@ -180,9 +171,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
-
-      - name: Install yarn
-        run: npm install -g yarn
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -244,9 +232,6 @@ jobs:
         with:
           node-version: 14
 
-      - name: Install yarn
-        run: npm install -g yarn
-
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
@@ -304,9 +289,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
-
-      - name: Install yarn
-        run: npm install -g yarn
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
