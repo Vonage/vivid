@@ -8,8 +8,6 @@ on:
 jobs:
   cache-yarn-and-build:
     runs-on: ubuntu-20.04
-    env:
-      ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
     steps:
       - name: Checkout
@@ -40,6 +38,10 @@ jobs:
 
       - name: Install packages
         if: steps.yarn-cache.outputs.cache-hit != 'true'
+        env:
+          yarn_always_auth: true,
+          yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+          yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
         run: yarn install
 
       - name: Build components
@@ -57,8 +59,6 @@ jobs:
   test-safari:
     needs: cache-yarn-and-build
     runs-on: ubuntu-20.04
-    env:
-      ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
     steps:
       - name: Checkout
@@ -89,6 +89,10 @@ jobs:
 
       - name: Install packages
         if: steps.yarn-cache.outputs.cache-hit != 'true'
+        env:
+          yarn_always_auth: true,
+          yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+          yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
         run: yarn install
 
       - name: Cache build
