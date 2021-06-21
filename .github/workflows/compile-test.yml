@@ -277,7 +277,7 @@ jobs:
         run: yarn add playwright -D -W && yarn playwright install-deps
 
       - name: Install playwright deps
-        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        if: steps.playwright-cache.outputs.cache-hit == 'true'
         run: mv ~/Library/Caches/ms-playwright /Users/runner/Library/Caches/ms-playwright
 
       - name: Cache build
