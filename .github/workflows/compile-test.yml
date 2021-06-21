@@ -262,6 +262,7 @@ jobs:
         run: yarn install
 
       - name: Install playwright deps
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
         env:
           yarn_always_auth: true,
           yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
