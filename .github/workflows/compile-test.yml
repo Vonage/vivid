@@ -31,7 +31,8 @@ jobs:
     steps:
       - uses: actions/download-artifact@v2
         with:
-          path: /tmp/artifacts
-      - run: cd /tmp/artifacts && ls -al
-      # - run: tar -zxf /tmp/vivid-env.tar.gz
-      # - run: yarn test:dev:ci
+          name: workspace
+          path: /tmp
+      - run: cd /tmp && ls -al
+      - run: tar -zxf /tmp/vivid-env.tar.gz
+      - run: yarn test:dev:ci
