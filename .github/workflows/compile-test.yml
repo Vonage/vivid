@@ -269,6 +269,10 @@ jobs:
           yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
         run: yarn add playwright -D -W && yarn playwright install-deps
 
+      - name: Use playwright cache for MacOS
+        if: steps.yarn-cache.outputs.cache-hit == 'true'
+        run: mv ~/.cache/ms-playwright ~/Library/Caches/ms-playwright
+
       - name: Cache build
         uses: actions/cache@v2
         id: build-cache
