@@ -28,11 +28,15 @@ jobs:
     needs: build
     name: Test
     runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        browser:
+          - FirefoxHeadless
+          - ChromeHeadless
     steps:
       - uses: actions/download-artifact@v2
         with:
           name: workspace
           path: /tmp
-      - run: cd /tmp && ls -al
       - run: tar -zxf /tmp/vivid-env.tar.gz
-      - run: yarn test:dev:ci
+      - run: yarn karma start --coverage --browsers=${{ matrix.browser }}
