@@ -13,18 +13,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Cache playwright binaries
-        uses: actions/cache@v2
-        id: playwright-cache
-        with:
-          path: |
-            ~/Library/Caches/ms-playwright
-          key: vivid-cache-playwright
-
-      - name: Show playwright contents
-        run: |
-          ls -R ~/Library/Caches/ms-playwright
-
       - name: Setup NodeJS 14
         uses: actions/setup-node@v2
         with:
@@ -287,6 +275,10 @@ jobs:
           yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
           yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
         run: yarn add playwright -D -W && yarn playwright install-deps
+
+      - name: Install playwright deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        run: mv ~/Library/Caches/ms-playwright /Users/runner/Library/Caches/ms-playwright
 
       - name: Cache build
         uses: actions/cache@v2
