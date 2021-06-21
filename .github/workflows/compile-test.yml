@@ -24,7 +24,8 @@ jobs:
         with:
           name: workspace
           path: |
-            ../vivid-env.tar.gz
+            !vivid-env.tar.gz
+            vivid-env.tar.gz
   test:
     needs: build
     name: Test
@@ -35,7 +36,3 @@ jobs:
           name: workspace
       - run: tar -zxf vivid-env.tar.gz
       - run: yarn test:dev:ci
-
-
-
-
