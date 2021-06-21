@@ -23,8 +23,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: workspace
-          path: |
-            /tmp/vivid-env.tar.gz
+          path: /tmp/vivid-env.tar.gz
   test:
     needs: build
     name: Test
