@@ -278,7 +278,9 @@ jobs:
 
       - name: Install playwright deps
         if: steps.playwright-cache.outputs.cache-hit == 'true'
-        run: mv ~/Library/Caches/ms-playwright /Users/runner/Library/Caches/ms-playwright
+        run: |
+          ls -R /Users/runner/Library/Caches/ms-playwright/webkit-1446
+          ls -R ~/Library/Caches/ms-playwright/webkit-1446
 
       - name: Cache build
         uses: actions/cache@v2
