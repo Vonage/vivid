@@ -31,12 +31,21 @@ jobs:
   test:
     needs: build
     name: Test
-    runs-on: ubuntu-20.04
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
+        os:
+          - ubuntu-20.04
+          - macos-latest
         browser:
           - FirefoxHeadless
           - ChromeHeadless
+          - SafariNative
+        exclude:
+          - os: macos-latest
+            browser:
+              - FirefoxHeadless
+              - ChromeHeadless
     steps:
       - uses: actions/download-artifact@v2
         with:
@@ -44,4 +53,3 @@ jobs:
           path: /tmp
       - run: tar -zxf /tmp/vivid-env.tar.gz
       - run: yarn karma start --coverage --browsers=${{ matrix.browser }}
-#
