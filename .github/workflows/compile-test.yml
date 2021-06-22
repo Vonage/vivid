@@ -37,17 +37,14 @@ jobs:
         os:
           - ubuntu-20.04
           - macos-latest
-        browser:
-          - FirefoxHeadless
-          - ChromeHeadless
-          - SafariNative
-        exclude:
+        include:
           - os: ubuntu-20.04
-            browser: SafariNative
+            browser:
+              - FirefoxHeadless
+              - ChromeHeadless
           - os: macos-latest
-            browser: FirefoxHeadless
-          - os: macos-latest
-            browser: ChromeHeadless
+            browser:
+              - SafariNative
     steps:
       - uses: actions/download-artifact@v2
         with:
