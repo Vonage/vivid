@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-18.04
     if: github.event.pull_request.merged == true
     env:
-      ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_B }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY_SECRET_B }}
 
@@ -41,6 +40,10 @@ jobs:
 
       - name: Install dependencies
         if: steps.yarn-cache.outputs.cache-hit != 'true'
+        env:
+          yarn_always_auth: true,
+          yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+          yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
         run: yarn install
 
       - name: Build storybook
