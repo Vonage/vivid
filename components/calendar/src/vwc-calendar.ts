@@ -111,7 +111,7 @@ export class VWCCalendar extends LitElement {
 			}
 		} else {
 			focusNext = this.getCalendarEventContainingCell(this.getFocusedCalendarEvent())
-			/// default first selectable element
+			// default first selectable element
 			|| this.shadowRoot?.querySelector('[role="columnheader"i]');
 		}
 
