@@ -14,6 +14,7 @@ import {
 	getValidDateString,
 	getFirstDateOfTheWeek
 } from './vwc-calendar-date-functions';
+import { VWCCalendarEvent } from './vwc-calendar-event';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -70,7 +71,18 @@ export class VWCCalendar extends LitElement {
 		return this.getDaysArr(concatenatedDateArr);
 	}
 
-	private arrowKeysInteractions(key: string) {
+	private getFocusedCalendarEvent(): VWCCalendarEvent | null {
+		return (document.activeElement?.matches('vwc-calendar-event') && document.activeElement as VWCCalendarEvent) || null;
+	}
+
+	private getCalendarEventContainingCell(calendarEvent: VWCCalendarEvent | null) {
+		if (!calendarEvent) { return;}
+		const daySlot = calendarEvent.getAttribute('slot');
+		const slot = this.shadowRoot?.querySelector(`slot[name="${daySlot}"i]`);
+		return slot?.parentElement;
+	}
+
+	private arrowKeysInteractions(event: KeyboardEvent) {
 		const toggleRowQuery = (f: HTMLElement) => (f.matches('[role="columnheader"i]')
 			? '[role="gridcell"i]'
 			: '[role="columnheader"i]');
@@ -79,10 +91,8 @@ export class VWCCalendar extends LitElement {
 
 		let focusNext: Element | null | undefined;
 
-		if (!focused) {
-			focusNext = this.shadowRoot?.querySelector('[role="columnheader"i]');
-		} else {
-			switch (key) {
+		if (focused) {
+			switch (event.key) {
 			case 'ArrowRight':
 				focusNext = focused.nextElementSibling || focused.parentNode?.firstElementChild;
 				break;
@@ -99,9 +109,15 @@ export class VWCCalendar extends LitElement {
 			default:
 				break;
 			}
+		} else {
+			focusNext = this.getCalendarEventContainingCell(this.getFocusedCalendarEvent())
+			// default first selectable element
+			|| this.shadowRoot?.querySelector('[role="columnheader"i]');
 		}
 
 		this.moveTo(focusNext as HTMLElement);
+
+		event.preventDefault();
 	}
 
 	private moveTo(el: HTMLElement | null | undefined) {
@@ -116,9 +132,7 @@ export class VWCCalendar extends LitElement {
 		const isArrow = ['ArrowUp', 'ArrowRight', 'ArrowDown', 'ArrowLeft'].includes(event.key);
 		isArrow
 			&& this?.arrowKeysInteractions
-			&& this.arrowKeysInteractions(event.key);
-
-		event.preventDefault();
+			&& this.arrowKeysInteractions(event);
 	}
 
 	protected renderTimeRows(): DirectiveFn {
