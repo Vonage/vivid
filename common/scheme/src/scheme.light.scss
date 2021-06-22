@@ -2,9 +2,6 @@
 @use '@vonage/vvd-design-tokens/build/scss/schemes/light/alternate.scss';
 @use '_scheme-mixins';
 
-:root {
-	color-scheme: light;
-}
 
 @include scheme-mixins.scheme-context-variables {
 	@include main.variables;
