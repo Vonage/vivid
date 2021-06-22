@@ -260,10 +260,7 @@ jobs:
             ~/Library/Caches/ms-playwright
             **/node_modules/playwright
           key: vivid-cache-playwright-macos
-
-      - name: List deps
-        run: ls -R ~/Library/Caches/ms-playwright
-        
+          
       - name: Install packages
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         env:
