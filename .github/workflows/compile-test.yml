@@ -21,7 +21,7 @@ jobs:
           key: ${{ hashFiles('yarn.lock') }}
       - run: yarn
         env:
-          PLAYWRIGHT_BROWSERS_PATH: 0
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
           yarn_always_auth: true,
           yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
           yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
@@ -89,8 +89,6 @@ jobs:
       - run: tar -zxf /tmp/vivid-env.tar.gz
       - run: yarn playwright install-deps
       - run: yarn ui-tests
-        env:
-          PLAYWRIGHT_BROWSERS_PATH: 0
       - uses: actions/upload-artifact@v2
         with:
          name: snapshot

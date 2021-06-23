@@ -3828,7 +3828,6 @@
     portfinder "^1.0.21"
     request "^2.88.0"
 
-
 "@open-wc/lit-helpers@^0.3.11":
   version "0.3.12"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@open-wc/lit-helpers/-/lit-helpers-0.3.12.tgz#11bf0731185a88ca50ed740908e91fd4436ba69d"
