@@ -21,9 +21,10 @@ jobs:
           key: ${{ hashFiles('yarn.lock') }}
       - run: yarn
         env:
-          "yarn_always_auth": true,
-          "yarn__auth": ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
-          "yarn_registry": "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
+          PLAYWRIGHT_BROWSERS_PATH: 0
+          yarn_always_auth: true,
+          yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+          yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
       - run: yarn lerna run build --stream --concurrency=15 --include-dependencies
       - run: tar -zcf /tmp/vivid-env.tar.gz .
       - uses: actions/upload-artifact@v2
@@ -88,6 +89,8 @@ jobs:
       - run: tar -zxf /tmp/vivid-env.tar.gz
       - run: yarn playwright install-deps
       - run: yarn ui-tests
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: 0
       - uses: actions/upload-artifact@v2
         with:
          name: snapshot
