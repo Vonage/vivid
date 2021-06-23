@@ -86,24 +86,28 @@ export class VWCCalendar extends LitElement {
 		const toggleRowQuery = (f: HTMLElement) => (f.matches('[role="columnheader"i]')
 			? '[role="gridcell"i]'
 			: '[role="columnheader"i]');
-		const focused =
-			this.shadowRoot?.querySelector('[role="columnheader"i][tabindex="0"], [role="gridcell"i][tabindex="0"]');
+
+		const activeElement = this.shadowRoot?.activeElement;
+		const isValidActiveElement = (el: unknown): el is HTMLElement => el instanceof HTMLElement
+				&& (el.matches('[role="columnheader"i]')
+				|| el.matches('[role="columnheader"i]'));
+
 
 		let focusNext: Element | null | undefined;
 
-		if (focused) {
+		if (isValidActiveElement(activeElement)) {
 			switch (event.key) {
 			case 'ArrowRight':
-				focusNext = focused.nextElementSibling || focused.parentNode?.firstElementChild;
+				focusNext = activeElement.nextElementSibling || activeElement.parentNode?.firstElementChild;
 				break;
 			case 'ArrowLeft':
-				focusNext = focused.previousElementSibling || focused.parentElement?.lastElementChild;
+				focusNext = activeElement.previousElementSibling || activeElement.parentElement?.lastElementChild;
 				break;
 			case 'ArrowUp':
 			case 'ArrowDown': {
-				const { children } = focused.parentElement as HTMLElement;
-				const i = Array.from(children).indexOf(focused);
-				focusNext = this.shadowRoot?.querySelector(`${toggleRowQuery(focused as HTMLElement)}:nth-child(${i + 1})`);
+				const { children } = activeElement?.parentElement as HTMLElement;
+				const i = Array.from(children).indexOf(activeElement);
+				focusNext = this.shadowRoot?.querySelector(`${toggleRowQuery(activeElement as HTMLElement)}:nth-child(${i + 1})`);
 				break;
 			}
 			default:
@@ -129,6 +133,7 @@ export class VWCCalendar extends LitElement {
 	}
 
 	private onKeydown(event: KeyboardEvent) {
+		console.log('logging key', event.key);
 		const isArrow = ['ArrowUp', 'ArrowRight', 'ArrowDown', 'ArrowLeft'].includes(event.key);
 		isArrow
 			&& this?.arrowKeysInteractions
