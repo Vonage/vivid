@@ -89,8 +89,10 @@ export class VWCCalendar extends LitElement {
 
 		const activeElement = this.shadowRoot?.activeElement;
 		const isValidActiveElement = (el: unknown): el is HTMLElement => el instanceof HTMLElement
-				&& (el.matches('[role="columnheader"i]')
-				|| el.matches('[role="columnheader"i]'));
+			&& (
+				el.matches('[role="gridcell"i]')
+				|| el.matches('[role="columnheader"i]')
+			);
 
 
 		let focusNext: Element | null | undefined;
@@ -133,7 +135,6 @@ export class VWCCalendar extends LitElement {
 	}
 
 	private onKeydown(event: KeyboardEvent) {
-		console.log('logging key', event.key);
 		const isArrow = ['ArrowUp', 'ArrowRight', 'ArrowDown', 'ArrowLeft'].includes(event.key);
 		isArrow
 			&& this?.arrowKeysInteractions
