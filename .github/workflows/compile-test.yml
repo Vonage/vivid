@@ -29,7 +29,7 @@ jobs:
           path: /tmp/vivid-env.tar.gz
   test:
     needs: build
-    name: Test (${{ matrix.browser_name }})
+    name: Test (${{ matrix.browser }})
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -48,13 +48,6 @@ jobs:
           - os: ubuntu-20.04
             browser:
               - SafariNative
-        include:
-          - browser: SafariNative
-            browser_name: Safari
-          - browser: FirefoxHeadless
-            browser_name: Firefox
-          - browser: ChromeHeadless
-            browser_name: Chrome
     steps:
       - uses: actions/download-artifact@v2
         with:
@@ -67,7 +60,15 @@ jobs:
           parallel: true
           github-token: ${{ github.token }}
           path-to-lcov: /coverage/report-lcov/lcov.info
-          flag-name: Tested on ${{ matrix.os }}/${{ matrix.browser_name }}
+          flag-name: Tested on ${{ matrix.os }}/${{ matrix.browser }}
+  coveralls_finish:
+    needs: test
+    runs-on: ubuntu-20.04
+    steps:
+    - with:
+        parallel-finished: true
+        github-token: ${{ github.token }}
+
   verify_package_integrity:
     needs: build
     name: Verify Package Integrity
