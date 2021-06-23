@@ -13,23 +13,25 @@ const COMPONENT_NAME = 'vwc-calendar';
 describe('calendar a11y', () => {
 	const addElement = isolatedElementsCreation();
 
-	it('should pass accessibility test', async () => {
+	const addCalendarElement = async (content) => {
 		const [actualElement] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+			textToDomToParent(`<${COMPONENT_NAME}>${content || ''}</${COMPONENT_NAME}>`)
 		);
-		await waitNextTask();
+		await actualElement.updateComplete;
 
-		await expect(actualElement).shadowDom.to.be.accessible();
+		return actualElement;
+	};
+
+	it('should pass accessibility test', async () => {
+		const el = await addCalendarElement();
+		await expect(el).shadowDom.to.be.accessible();
 	});
 
 	describe('keyboard events', () => {
 		it('should init focus on arrow down', async () => {
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-			);
-			await actualElement.updateComplete;
+			const el = await addCalendarElement();
 
-			const { shadowRoot } = actualElement;
+			const { shadowRoot } = el;
 			const grid = shadowRoot.querySelector('[role="grid"i]');
 
 			const event = new KeyboardEvent('keydown', { key: 'ArrowDown' });
@@ -41,12 +43,9 @@ describe('calendar a11y', () => {
 		});
 
 		it('should focus to the right', async () => {
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-			);
-			await actualElement.updateComplete;
+			const el = await addCalendarElement();
 
-			const { shadowRoot } = actualElement;
+			const { shadowRoot } = el;
 			const grid = shadowRoot.querySelector('[role="grid"i]');
 
 			grid.querySelector('[role="columnheader"i]:nth-child(3)').focus();
@@ -60,12 +59,9 @@ describe('calendar a11y', () => {
 		});
 
 		it('should focus to down', async () => {
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-			);
-			await actualElement.updateComplete;
+			const el = await addCalendarElement();
 
-			const { shadowRoot } = actualElement;
+			const { shadowRoot } = el;
 			const grid = shadowRoot.querySelector('[role="grid"i]');
 
 			grid.querySelector('[role="columnheader"i]:nth-child(3)').focus();
@@ -80,14 +76,9 @@ describe('calendar a11y', () => {
 
 		it('should move focus from calendar event to containing column', async () => {
 			const eventComponent = 'vwc-calendar-event';
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME}>
-					<${eventComponent} slot="day-2" start="4" duration="5"></${eventComponent}>
-				</${COMPONENT_NAME}>`)
-			);
-			await actualElement.updateComplete;
+			const el = await addCalendarElement(`<${eventComponent} slot="day-2" start="4" duration="5"></${eventComponent}>`);
 
-			const { shadowRoot } = actualElement;
+			const { shadowRoot } = el;
 			const grid = shadowRoot.querySelector('[role="grid"i]');
 
 			actualElement.querySelector(eventComponent)
