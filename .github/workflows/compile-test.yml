@@ -36,18 +36,21 @@ jobs:
         os:
           - ubuntu-20.04
           - macos-latest
-        include:
+        browsers:
+          - SafariNative
+          - ChromeHeadless
+          - FirefoxHeadless
+        exclude:
           - os: ubuntu-20.04
-            browser: FirefoxHeadless
-          - os: ubuntu-20.04
-            browser: ChromeHeadless
-          - os: macos-latest
             browser: SafariNative
+          - os: macos-latest
+            browser: FirefoxHeadless
+          - os: macos-latest
+            browser: ChromeHeadless
     steps:
       - uses: actions/download-artifact@v2
         with:
           name: workspace
           path: /tmp
       - run: tar -zxf /tmp/vivid-env.tar.gz
-      - run: yarn karma start --coverage --browsers=${{ matrix.browser }}
-
+      - run: yarn karma start --browsers=${{ matrix.browser }}
