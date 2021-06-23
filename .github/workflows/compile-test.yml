@@ -98,7 +98,7 @@ jobs:
          name: snapshot
          path: ./ui-tests/*.png
 
-  verify_package_integrity:
+  test_static:
     needs: build
     name: ${{ matrix.script_name }}
     runs-on: ubuntu-20.04
