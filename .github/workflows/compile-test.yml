@@ -76,7 +76,7 @@ jobs:
           path-to-lcov: ./coverage/report-lcov/lcov.info
           flag-name: Tested on ${{ matrix.os }}/${{ matrix.browser }}
 
-  test-ui:
+  test_graphics:
     needs: build
     name: Test Graphics
     runs-on: macos-latest
@@ -86,7 +86,7 @@ jobs:
           name: workspace
           path: /tmp
       - run: tar -zxf /tmp/vivid-env.tar.gz
-      - run: yarn rebuild playwright && yarn playwright install-deps
+      - run: npm rebuild playwright && yarn playwright install-deps
         env:
           yarn_always_auth: true
           yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
