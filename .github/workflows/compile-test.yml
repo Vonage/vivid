@@ -60,11 +60,11 @@ jobs:
           name: workspace
           path: /tmp
       - run: tar -zxf /tmp/vivid-env.tar.gz
-      - run: yarn karma start --browsers=${{ matrix.browser }}
+      - run: yarn karma start --coverage --browsers=${{ matrix.browser }}
       - uses: coverallsapp/github-action@master
         with:
           parallel: true
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ github.token }}
           path-to-lcov: /coverage/report-lcov/lcov.info
           flag-name: Tested on ${{ matrix.os }}/${{ matrix.browser_name }}
   verify_package_integrity:
