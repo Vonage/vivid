@@ -29,7 +29,7 @@ jobs:
           path: /tmp/vivid-env.tar.gz
   test:
     needs: build
-    name: Test
+    name: Test (${{ matrix.browser_name }})
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -47,6 +47,13 @@ jobs:
             browser: FirefoxHeadless
           - os: macos-latest
             browser: ChromeHeadless
+        include:
+          - browser: SafariNative
+            browser_name: Safari
+          - browser: FirefoxHeadless
+            browser_name: Firefox
+          - browser: ChromeHeadless
+            browser_name: Chrome
     steps:
       - uses: actions/download-artifact@v2
         with:
@@ -54,6 +61,12 @@ jobs:
           path: /tmp
       - run: tar -zxf /tmp/vivid-env.tar.gz
       - run: yarn karma start --browsers=${{ matrix.browser }}
+      - uses: coverallsapp/github-action@master
+        with:
+          parallel: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: /coverage/report-lcov/lcov.info
+          flag-name: Tested on ${{ matrix.os }}/${{ matrix.browser_name }}
   verify_package_integrity:
     needs: build
     name: Verify Package Integrity
