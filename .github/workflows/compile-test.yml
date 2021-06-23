@@ -3,7 +3,7 @@ name: Code Integrity
 on: push
 
 concurrency:
-  group: ci-${{ github.ref }}
+  group: ci-code-integrity-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
