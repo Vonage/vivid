@@ -1,7 +1,6 @@
 import '../vwc-calendar.js';
 import {
 	isolatedElementsCreation,
-	waitNextTask,
 	textToDomToParent
 } from '../../../test/test-helpers.js';
 import { chaiA11yAxe } from 'chai-a11y-axe';
