@@ -21,20 +21,27 @@ describe('calendar a11y', () => {
 		return actualElement;
 	};
 
+	const extractCalendarElements = (actualElement) => {
+		const { shadowRoot } = actualElement;
+		return {
+			actualElement,
+			shadowRoot,
+			grid: shadowRoot.querySelector('[role="grid"i]')
+		};
+	};
+
+	const createKEvent = key => new KeyboardEvent('keydown', { key });
+
 	it('should pass accessibility test', async () => {
-		const el = await addCalendarElement();
-		await expect(el).shadowDom.to.be.accessible();
+		const { actualElement } = extractCalendarElements(await addCalendarElement());
+		await expect(actualElement).shadowDom.to.be.accessible();
 	});
 
 	describe('keyboard events', () => {
-		it('should init focus on arrow down', async () => {
-			const el = await addCalendarElement();
+		it('should focus on initial keyboard interaction', async () => {
+			const { shadowRoot, grid } = extractCalendarElements(await addCalendarElement());
 
-			const { shadowRoot } = el;
-			const grid = shadowRoot.querySelector('[role="grid"i]');
-
-			const event = new KeyboardEvent('keydown', { key: 'ArrowDown' });
-			grid.dispatchEvent(event);
+			grid.dispatchEvent(createKEvent('ArrowDown'));
 
 			const defaultFocusElement = grid.querySelector('[role="columnheader"i]');
 
@@ -42,15 +49,11 @@ describe('calendar a11y', () => {
 		});
 
 		it('should focus to the right', async () => {
-			const el = await addCalendarElement();
-
-			const { shadowRoot } = el;
-			const grid = shadowRoot.querySelector('[role="grid"i]');
+			const { shadowRoot, grid } = extractCalendarElements(await addCalendarElement());
 
 			grid.querySelector('[role="columnheader"i]:nth-child(3)').focus();
 
-			const event = new KeyboardEvent('keydown', { key: 'ArrowRight' });
-			grid.dispatchEvent(event);
+			grid.dispatchEvent(createKEvent('ArrowRight'));
 
 			expect(shadowRoot.activeElement).to.equal(
 				grid.querySelector('[role="columnheader"i]:nth-child(4)')
@@ -58,15 +61,11 @@ describe('calendar a11y', () => {
 		});
 
 		it('should focus to down', async () => {
-			const el = await addCalendarElement();
-
-			const { shadowRoot } = el;
-			const grid = shadowRoot.querySelector('[role="grid"i]');
+			const { shadowRoot, grid } = extractCalendarElements(await addCalendarElement());
 
 			grid.querySelector('[role="columnheader"i]:nth-child(3)').focus();
 
-			const event = new KeyboardEvent('keydown', { key: 'ArrowDown' });
-			grid.dispatchEvent(event);
+			grid.dispatchEvent(createKEvent('ArrowDown'));
 
 			expect(shadowRoot.activeElement).to.equal(
 				grid.querySelector('[role="gridcell"i]:nth-child(3)')
@@ -75,17 +74,16 @@ describe('calendar a11y', () => {
 
 		it('should move focus from calendar event to containing column', async () => {
 			const eventComponent = 'vwc-calendar-event';
-			const el = await addCalendarElement(`<${eventComponent} slot="day-2" start="4" duration="5"></${eventComponent}>`);
 
-			const { shadowRoot } = el;
-			const grid = shadowRoot.querySelector('[role="grid"i]');
+			const { actualElement, shadowRoot, grid } = extractCalendarElements(await addCalendarElement(
+				`<${eventComponent} slot="day-2" start="4" duration="5"></${eventComponent}>`
+			));
 
 			actualElement.querySelector(eventComponent)
 				.shadowRoot.querySelector('section')
 				.focus();
 
-			const event = new KeyboardEvent('keydown', { key: 'ArrowUp' });
-			grid.dispatchEvent(event);
+			grid.dispatchEvent(createKEvent('ArrowUp'));
 
 			expect(shadowRoot.activeElement).to.equal(
 				grid.querySelector('[role="gridcell"i]:nth-child(3)')
