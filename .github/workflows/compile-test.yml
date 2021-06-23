@@ -87,7 +87,7 @@ jobs:
           name: workspace
           path: /tmp
       - run: tar -zxf /tmp/vivid-env.tar.gz
-      - run: yarn add playwright -D -W --force && yarn playwright install-deps
+      - run: yarn rebuild playwright && yarn playwright install-deps
         env:
           yarn_always_auth: true
           yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
@@ -100,13 +100,22 @@ jobs:
 
   verify_package_integrity:
     needs: build
-    name: Verify Package Integrity
+    name: ${{ matrix.script_name }}
     runs-on: ubuntu-20.04
+    strategy:
+      matrix:
+        script:
+          - dep-check
+          - lint
+        include:
+          - script: dep-check
+            script_name: Test package dependencies
+          - script: lint
+            script_name: Test Lint rules
     steps:
       - uses: actions/download-artifact@v2
         with:
           name: workspace
           path: /tmp
       - run: tar -zxf /tmp/vivid-env.tar.gz
-      - run: yarn dep-check
-      - run: yarn lint
+      - run: yarn ${{ matrix.script }}
