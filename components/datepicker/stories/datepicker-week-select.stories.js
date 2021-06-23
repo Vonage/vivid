@@ -1,4 +1,5 @@
 import '@vonage/vwc-datepicker';
+import '@vonage/vwc-note';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 
@@ -7,10 +8,14 @@ const Template = args => html`
     html, body {
       height: 100%;
     }
+		vwc-note {
+			margin-bottom: 1rem;
+		}
   </style>
-
+	<vwc-note header="This component is being deprecated!" open icon="warning-solid" connotation="warning">
+		We're working on a newer and better solution. Sorry for the inconvenience.
+	</vwc-note>
   <vwc-datepicker id="datepicker" ...=${spread(args)}></vwc-datepicker>
-
   <script>
     datepicker.onChange = () => {
       const weekNumber = datepicker.getSelectedDates()[0]
