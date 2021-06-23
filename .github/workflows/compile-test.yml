@@ -33,7 +33,7 @@ jobs:
           path: /tmp/vivid-env.tar.gz
   test:
     needs: build
-    name: "Test Unit on ${{ matrix.browser_name }}"
+    name: "Test Components on ${{ matrix.browser_name }}"
     runs-on: ${{ matrix.os }}
     strategy:
       max-parallel: 10
@@ -80,7 +80,7 @@ jobs:
 
   test_graphics:
     needs: build
-    name: Test Graphics
+    name: Test Components' Graphics
     runs-on: macos-latest
     steps:
       - uses: actions/download-artifact@v2
