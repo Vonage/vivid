@@ -34,6 +34,7 @@ jobs:
     needs: build
     runs-on: ${{ matrix.os }}
     strategy:
+      max-parallel: 10
       matrix:
         os:
           - ubuntu-20.04
