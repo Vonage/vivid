@@ -61,7 +61,7 @@ jobs:
         with:
           parallel: true
           github-token: ${{ github.token }}
-          path-to-lcov: /coverage/report-lcov/lcov.info
+          path-to-lcov: ./coverage/report-lcov/lcov.info
           flag-name: Tested on ${{ matrix.os }}/${{ matrix.browser }}
 
   report_coveralls_finish:
