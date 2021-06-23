@@ -50,3 +50,4 @@ jobs:
           path: /tmp
       - run: tar -zxf /tmp/vivid-env.tar.gz
       - run: yarn karma start --coverage --browsers=${{ matrix.browser }}
+
