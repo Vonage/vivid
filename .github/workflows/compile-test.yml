@@ -32,7 +32,6 @@ jobs:
           name: workspace
           path: /tmp/vivid-env.tar.gz
   test:
-    if: ${{ false }}
     needs: build
     name: "Test: ${{ matrix.browser_name }}"
     runs-on: ${{ matrix.os }}
