@@ -33,7 +33,7 @@ jobs:
           path: /tmp/vivid-env.tar.gz
   test:
     needs: build
-    name: "Test: ${{ matrix.browser_name }}"
+    name: "Test Unit on ${{ matrix.browser_name }}"
     runs-on: ${{ matrix.os }}
     strategy:
       max-parallel: 10
@@ -54,12 +54,14 @@ jobs:
             browser: ChromeHeadless
         include:
           - browser: ChromeHeadless
-          - browser_name: Chrome
+            browser_name: Chrome
             report_coverage: true
           - browser: FirefoxHeadless
             browser_name: Firefox
+            report_coverage: false
           - browser: SafariNative
             browser_name: Safari
+            report_coverage: false
     steps:
       - uses: actions/download-artifact@v2
         with:
