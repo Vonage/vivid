@@ -38,10 +38,10 @@ describe('calendar a11y', () => {
 	});
 
 	describe('keyboard events', () => {
-		it('should focus on initial keyboard interaction', async () => {
+		it('should focus to default on initial keyboard interaction', async () => {
 			const { shadowRoot, grid } = extractCalendarElements(await addCalendarElement());
 
-			grid.dispatchEvent(createKEvent('ArrowDown'));
+			grid.dispatchEvent(createKEvent('ArrowLeft'));
 
 			const defaultFocusElement = grid.querySelector('[role="columnheader"i]');
 

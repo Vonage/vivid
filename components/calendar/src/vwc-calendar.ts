@@ -98,6 +98,7 @@ export class VWCCalendar extends LitElement {
 		let focusNext: Element | null | undefined;
 
 		if (isValidActiveElement(activeElement)) {
+			// eslint-disable-next-line default-case
 			switch (event.key) {
 			case 'ArrowRight':
 				focusNext = activeElement.nextElementSibling || activeElement.parentNode?.firstElementChild;
@@ -112,8 +113,6 @@ export class VWCCalendar extends LitElement {
 				focusNext = this.shadowRoot?.querySelector(`${toggleRowQuery(activeElement as HTMLElement)}:nth-child(${i + 1})`);
 				break;
 			}
-			default:
-				break;
 			}
 		} else {
 			focusNext = this.getCalendarEventContainingCell(this.getFocusedCalendarEvent())
