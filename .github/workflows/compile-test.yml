@@ -32,6 +32,7 @@ jobs:
           path: /tmp/vivid-env.tar.gz
   test:
     needs: build
+    name: Test ${{ matrix.browser_name }}
     runs-on: ${{ matrix.os }}
     strategy:
       max-parallel: 10
@@ -52,7 +53,12 @@ jobs:
             browser: ChromeHeadless
         include:
           - browser: ChromeHeadless
+          - browser_name: Chrome
             report_coverage: true
+          - browser: FirefoxHeadless
+            browser_name: Firefox
+          - browser: SafariNative
+            browser_name: Safari
     steps:
       - uses: actions/download-artifact@v2
         with:
@@ -61,8 +67,9 @@ jobs:
       - run: tar -zxf /tmp/vivid-env.tar.gz
       - run: yarn karma start --coverage --browsers=${{ matrix.browser }}
       - uses: coverallsapp/github-action@master
+        name: Report coverage information to coveralls
+        if: ${{ matrix.report_coverage }}
         with:
-          if: ${{ matrix.report_coverage }}
           parallel: false
           github-token: ${{ github.token }}
           path-to-lcov: ./coverage/report-lcov/lcov.info
