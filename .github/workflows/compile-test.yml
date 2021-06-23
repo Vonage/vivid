@@ -43,13 +43,12 @@ jobs:
           - ChromeHeadless
           - FirefoxHeadless
         exclude:
-          - os: macos-latest
-            browser:
-              - FirefoxHeadless
-              - ChromeHeadless
           - os: ubuntu-20.04
-            browser:
-              - SafariNative
+            browser: SafariNative
+          - os: macos-latest
+            browser: FirefoxHeadless
+          - os: macos-latest
+            browser: ChromeHeadless
     steps:
       - uses: actions/download-artifact@v2
         with:
@@ -63,6 +62,7 @@ jobs:
           github-token: ${{ github.token }}
           path-to-lcov: /coverage/report-lcov/lcov.info
           flag-name: Tested on ${{ matrix.os }}/${{ matrix.browser }}
+
   report_coveralls_finish:
     name: Report Tests Finish to Coveralls
     needs: test
