@@ -54,3 +54,15 @@ jobs:
           path: /tmp
       - run: tar -zxf /tmp/vivid-env.tar.gz
       - run: yarn karma start --browsers=${{ matrix.browser }}
+  verify_package_integrity:
+    needs: build
+    name: Verify Package Integrity
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: workspace
+          path: /tmp
+      - run: tar -zxf /tmp/vivid-env.tar.gz
+      - run: yarn dep-check
+      - run: yarn lint
