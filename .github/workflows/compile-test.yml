@@ -41,12 +41,13 @@ jobs:
           - ChromeHeadless
           - FirefoxHeadless
         exclude:
+          - os: macos-latest
+            browser:
+              - FirefoxHeadless
+              - ChromeHeadless
           - os: ubuntu-20.04
-            browser: SafariNative
-          - os: macos-latest
-            browser: FirefoxHeadless
-          - os: macos-latest
-            browser: ChromeHeadless
+            browser:
+              - SafariNative
         include:
           - browser: SafariNative
             browser_name: Safari
