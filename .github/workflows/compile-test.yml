@@ -50,6 +50,9 @@ jobs:
             browser: FirefoxHeadless
           - os: macos-latest
             browser: ChromeHeadless
+        include:
+          - browser: ChromeHeadless
+            report_coverage: true
     steps:
       - uses: actions/download-artifact@v2
         with:
@@ -59,20 +62,21 @@ jobs:
       - run: yarn karma start --coverage --browsers=${{ matrix.browser }}
       - uses: coverallsapp/github-action@master
         with:
-          parallel: true
+          if: ${{ matrix.report_coverage }}
+          parallel: false
           github-token: ${{ github.token }}
           path-to-lcov: ./coverage/report-lcov/lcov.info
           flag-name: Tested on ${{ matrix.os }}/${{ matrix.browser }}
 
-  report_coveralls_finish:
-    name: Report Tests Finish to Coveralls
-    needs: test
-    runs-on: ubuntu-20.04
-    steps:
-    - uses: coverallsapp/github-action@master
-      with:
-        parallel-finished: true
-        github-token: ${{ github.token }}
+# report_coveralls_finish:
+#    name: Report Tests Finish to Coveralls
+#    needs: test
+#    runs-on: ubuntu-20.04
+#    steps:
+#    - uses: coverallsapp/github-action@master
+#      with:
+#        parallel-finished: true
+#        github-token: ${{ github.token }}
 
   verify_package_integrity:
     needs: build
