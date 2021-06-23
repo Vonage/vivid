@@ -65,7 +65,8 @@ jobs:
     needs: test
     runs-on: ubuntu-20.04
     steps:
-    - with:
+    - uses: coverallsapp/github-action@master
+      with:
         parallel-finished: true
         github-token: ${{ github.token }}
 
