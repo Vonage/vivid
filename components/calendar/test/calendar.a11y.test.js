@@ -48,7 +48,7 @@ describe('calendar a11y', () => {
 			expect(shadowRoot.activeElement).to.equal(defaultFocusElement);
 		});
 
-		it('should focus to the right', async () => {
+		it('should focus to the right / left', async () => {
 			const { shadowRoot, grid } = extractCalendarElements(await addCalendarElement());
 
 			grid.querySelector('[role="columnheader"i]:nth-child(3)').focus();
@@ -58,29 +58,29 @@ describe('calendar a11y', () => {
 			expect(shadowRoot.activeElement).to.equal(
 				grid.querySelector('[role="columnheader"i]:nth-child(4)')
 			);
-		});
-
-		it('should focus to the left', async () => {
-			const { shadowRoot, grid } = extractCalendarElements(await addCalendarElement());
-
-			grid.querySelector('[role="columnheader"i]:nth-child(3)').focus();
 
 			grid.dispatchEvent(createKEvent('ArrowLeft'));
 
 			expect(shadowRoot.activeElement).to.equal(
-				grid.querySelector('[role="columnheader"i]:nth-child(2)')
+				grid.querySelector('[role="columnheader"i]:nth-child(3)')
 			);
 		});
 
-		it('should focus to down', async () => {
+		it('should focus up / down', async () => {
 			const { shadowRoot, grid } = extractCalendarElements(await addCalendarElement());
 
 			grid.querySelector('[role="columnheader"i]:nth-child(3)').focus();
 
-			grid.dispatchEvent(createKEvent('ArrowDown'));
+			grid.dispatchEvent(createKEvent('ArrowUp'));
 
 			expect(shadowRoot.activeElement).to.equal(
 				grid.querySelector('[role="gridcell"i]:nth-child(3)')
+			);
+
+			grid.dispatchEvent(createKEvent('ArrowDown'));
+
+			expect(shadowRoot.activeElement).to.equal(
+				grid.querySelector('[role="columnheader"i]:nth-child(3)')
 			);
 		});
 
