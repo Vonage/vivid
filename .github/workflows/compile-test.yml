@@ -8,8 +8,6 @@ on:
 jobs:
   cache-yarn-and-build:
     runs-on: ubuntu-20.04
-    env:
-      ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
     steps:
       - name: Checkout
@@ -19,9 +17,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
-
-      - name: Install yarn
-        run: npm install -g yarn
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -34,10 +29,15 @@ jobs:
           path: |
             ${{ steps.yarn-cache-dir-path.outputs.dir }}
             **/node_modules
+            ~/.cache/ms-playwright
           key: vivid-cache-yarn-${{ hashFiles('**/package.json') }}
 
       - name: Install packages
         if: steps.yarn-cache.outputs.cache-hit != 'true'
+        env:
+          yarn_always_auth: true,
+          yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+          yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
         run: yarn install
 
       - name: Build components
@@ -55,8 +55,6 @@ jobs:
   test-safari:
     needs: cache-yarn-and-build
     runs-on: macos-latest
-    env:
-      ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
     steps:
       - name: Checkout
@@ -66,9 +64,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
-
-      - name: Install yarn
-        run: npm install -g yarn
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -85,6 +80,10 @@ jobs:
 
       - name: Install packages
         if: steps.yarn-cache.outputs.cache-hit != 'true'
+        env:
+          yarn_always_auth: true,
+          yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+          yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
         run: yarn install
 
       - name: Cache build
@@ -112,8 +111,6 @@ jobs:
   test-firefox:
     needs: cache-yarn-and-build
     runs-on: ubuntu-20.04
-    env:
-      ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
     steps:
       - name: Checkout
@@ -123,9 +120,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
-
-      - name: Install yarn
-        run: npm install -g yarn
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -142,6 +136,10 @@ jobs:
 
       - name: Install packages
         if: steps.yarn-cache.outputs.cache-hit != 'true'
+        env:
+          yarn_always_auth: true,
+          yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+          yarn_registry": "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
         run: yarn install
 
       - name: Cache build
@@ -169,8 +167,6 @@ jobs:
   test-chrome:
     needs: cache-yarn-and-build
     runs-on: ubuntu-20.04
-    env:
-      ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
     steps:
       - name: Checkout
@@ -180,9 +176,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
-
-      - name: Install yarn
-        run: npm install -g yarn
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -199,6 +192,10 @@ jobs:
 
       - name: Install packages
         if: steps.yarn-cache.outputs.cache-hit != 'true'
+        env:
+          yarn_always_auth: true,
+          yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+          yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
         run: yarn install
 
       - name: Cache build
@@ -232,8 +229,6 @@ jobs:
   test-UI:
     needs: cache-yarn-and-build
     runs-on: macos-latest
-    env:
-      ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
     steps:
       - name: Checkout
@@ -243,9 +238,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
-
-      - name: Install yarn
-        run: npm install -g yarn
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -260,11 +252,29 @@ jobs:
             **/node_modules
           key: vivid-cache-yarn-${{ hashFiles('**/package.json') }}
 
+      - name: Cache playwright binaries
+        uses: actions/cache@v2
+        id: playwright-cache
+        with:
+          path: |
+            ~/Library/Caches/ms-playwright
+            **/node_modules/playwright
+          key: vivid-cache-playwright-macos
+          
       - name: Install packages
         if: steps.yarn-cache.outputs.cache-hit != 'true'
+        env:
+          yarn_always_auth: true,
+          yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+          yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
         run: yarn install
 
       - name: Install playwright deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+        env:
+          yarn_always_auth: true,
+          yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+          yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
         run: yarn add playwright -D -W && yarn playwright install-deps
 
       - name: Cache build
@@ -293,8 +303,6 @@ jobs:
   code-standards:
     needs: cache-yarn-and-build
     runs-on: ubuntu-20.04
-    env:
-      ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
     steps:
       - name: Checkout
@@ -304,9 +312,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
-
-      - name: Install yarn
-        run: npm install -g yarn
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
@@ -323,6 +328,10 @@ jobs:
 
       - name: Install packages
         if: steps.yarn-cache.outputs.cache-hit != 'true'
+        env:
+          yarn_always_auth: true,
+          yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+          yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
         run: yarn install
 
       - name: Cache build
