@@ -1,5 +1,5 @@
-@use '@vonage/vvd-design-tokens/build/scss/schemes/light/main.scss';
-@use '@vonage/vvd-design-tokens/build/scss/schemes/light/alternate.scss';
+@use '@vonage/vvd-design-tokens/build/scss/schemes/light/main.scss' as main;
+@use '@vonage/vvd-design-tokens/build/scss/schemes/light/alternate.scss' as alternate;
 @use 'partials/scheme-mixins' as mixins;
 @use 'partials/scheme-variables' as variables;
 
