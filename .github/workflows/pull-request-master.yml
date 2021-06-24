@@ -1,4 +1,4 @@
-name: Pull request tests
+name: Master Pull Request
 
 on:
   pull_request:
@@ -82,7 +82,7 @@ jobs:
           parallel: false
           github-token: ${{ github.token }}
           path-to-lcov: ./coverage/report-lcov/lcov.info
-          flag-name: Tested on ${{ matrix.os }}/${{ matrix.browser }}
+          flag-name: Tested on ${{ matrix.os }} / ${{ matrix.browser }}
 
   test_graphics:
     needs: build
