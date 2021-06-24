@@ -1,11 +1,12 @@
 import '@vonage/vwc-datepicker';
 import '@vonage/vwc-textfield';
+import '@vonage/vwc-banner';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Components/Datepicker',
+	title: 'Alpha/Components/Datepicker',
 	component: 'vwc-datepicker',
 	argTypes
 };
@@ -15,9 +16,14 @@ const Template = args => html`
     html, body {
       height: 100%;
     }
+		vwc-note {
+			margin-bottom: 1rem;
+		}
     vwc-textfield { width: 260px; }
   </style>
-
+	<vwc-note header="This component is being deprecated!" open icon="warning-solid" connotation="warning">
+		We're working on a newer and better solution. Sorry for the inconvenience.
+	</vwc-note>
   <vwc-datepicker ...=${spread(args)}>
     <vwc-textfield dense icon='calendar' placeholder='Datepicker'></vwc-textfield>
   </vwc-datepicker>
@@ -41,7 +47,17 @@ DateTime.args = { enableTime: '', dateFormat: 'Y-m-d H:i' };
 export const Time = Template.bind({});
 Time.args = { enableTime: '', noCalendar: '', dateFormat: 'H:i' };
 
-const InlineTemplate = args => html`<vwc-datepicker ...=${spread(args)}></vwc-datepicker>`;
+const InlineTemplate = args => html`
+	<style>
+		vwc-note {
+			margin-bottom: 1rem;
+		}
+	</style>
+	<vwc-note header="This component is being deprecated!" open icon="warning-solid" connotation="warning">
+		We're working on a newer and better solution. Sorry for the inconvenience.
+	</vwc-note>
+	<vwc-datepicker ...=${spread(args)}></vwc-datepicker>
+`;
 
 export const Inline = InlineTemplate.bind({});
 Inline.args = { inline: '' };
