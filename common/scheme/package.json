@@ -15,8 +15,8 @@
 	"scripts": {
 		"build": "yarn run build:styles && yarn run build:typescript",
 		"test": "echo \"Error: run tests from root\" && exit 1",
-		"build:typescript": "tsc -b",
-		"build:styles": "umbrella-style-modules"
+		"build:styles": "umbrella-style-modules --path=\"./src\"",
+		"build:typescript": "tsc -b"
 	},
 	"bugs": {
 		"url": "https://github.com/Vonage/vivid/issues"
