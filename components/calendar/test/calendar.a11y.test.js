@@ -48,7 +48,7 @@ describe('calendar a11y', () => {
 			expect(shadowRoot.activeElement).to.equal(defaultFocusElement);
 		});
 
-		it('should focus to the right / left', async () => {
+		it('should change focus on keyboard arrow interactions', async () => {
 			const { shadowRoot, grid } = extractCalendarElements(await addCalendarElement());
 
 			grid.querySelector('[role="columnheader"i]:nth-child(3)').focus();
@@ -64,12 +64,6 @@ describe('calendar a11y', () => {
 			expect(shadowRoot.activeElement).to.equal(
 				grid.querySelector('[role="columnheader"i]:nth-child(3)')
 			);
-		});
-
-		it('should focus up / down', async () => {
-			const { shadowRoot, grid } = extractCalendarElements(await addCalendarElement());
-
-			grid.querySelector('[role="columnheader"i]:nth-child(3)').focus();
 
 			grid.dispatchEvent(createKEvent('ArrowUp'));
 
