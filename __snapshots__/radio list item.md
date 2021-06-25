@@ -5,12 +5,12 @@
 ####   `should have internal contents`
 
 ```html
-<span class="mdc-list-item__text">
+<span class="mdc-deprecated-list-item__text">
   <slot>
   </slot>
 </span>
 <mwc-radio
-  class="mdc-list-item__meta"
+  class="mdc-deprecated-list-item__meta"
   global=""
   tabindex="-1"
 >

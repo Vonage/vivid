@@ -1,15 +1,15 @@
 name: Prepare Vivid for release
 
 on:
-  push:
-    tags:
-      - release
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to bump to'
+        required: false
 
 jobs:
   prepare-verify:
     runs-on: ubuntu-latest
-    env:
-      ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
     steps:
       - name: Checkout
@@ -18,9 +18,6 @@ jobs:
           fetch-depth: 0
           ref: master
           token: ${{ secrets.CI_AT }}
-
-      - name: Delete temporary trigger tag
-        run: git push origin --delete release
 
       - name: Use Node.js 14
         uses: actions/setup-node@v2
@@ -31,13 +28,18 @@ jobs:
         run: npm install -g yarn
 
       - name: Install dependencies
+        env:
+          yarn_always_auth: true,
+          yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+          yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
         run: yarn install
 
       # Update to a new version
       - name: Extract release version manually set
-        run: echo "RELEASE_VERSION=$(echo ${GITHUB_REF##*/release-})" >> $GITHUB_ENV
+        if: ${{ github.event.inputs.version }}
+        run: echo "RELEASE_VERSION=${{ github.event.inputs.version }}" >> $GITHUB_ENV
       - name: Obtain release version if not manually set
-        if: ${{ env.RELEASE_VERSION }} == ''
+        if: ${{ !(env.RELEASE_VERSION) }}
         run: echo "RELEASE_VERSION=$(node ./scripts/suggest-bump.mjs)" >> $GITHUB_ENV
 
       - name: Bump version to ${{ env.RELEASE_VERSION }}

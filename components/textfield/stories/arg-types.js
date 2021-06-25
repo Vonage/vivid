@@ -2,7 +2,7 @@ import { Shape } from '@vonage/vvd-foundation/constants';
 
 const BOOLEAN_DEFAULT_SETUP = {
 	control: {
-		type: 'inline-radio',
+		type: 'radio',
 		options: { true: '', false: undefined }
 	}
 };

@@ -1,3 +1,53 @@
+# [2.12.0](https://github.com/vonage/vivid/compare/v2.11.0...v2.12.0) (2021-06-14)
+
+
+
+# [2.11.0](https://github.com/vonage/vivid/compare/v2.10.0...v2.11.0) (2021-06-07)
+
+
+
+# [2.10.0](https://github.com/vonage/vivid/compare/v2.9.1...v2.10.0) (2021-06-04)
+
+
+### Features
+
+* **vwc-textfield:** support multiple interactive icon buttons ([#837](https://github.com/vonage/vivid/issues/837)) ([464a725](https://github.com/vonage/vivid/commit/464a7250592f5920d75f5add6e3d1393ab2642e6))
+
+
+
+## [2.9.1](https://github.com/vonage/vivid/compare/v2.9.0...v2.9.1) (2021-05-27)
+
+
+
+# [2.9.0](https://github.com/vonage/vivid/compare/v2.8.0...v2.9.0) (2021-05-24)
+
+
+
+# [2.8.0](https://github.com/vonage/vivid/compare/v2.7.0...v2.8.0) (2021-05-20)
+
+
+
+# [2.7.0](https://github.com/vonage/vivid/compare/v2.6.2...v2.7.0) (2021-05-17)
+
+
+
+## [2.6.2](https://github.com/vonage/vivid/compare/v2.6.1...v2.6.2) (2021-05-05)
+
+
+
+## [2.6.1](https://github.com/vonage/vivid/compare/v2.6.0...v2.6.1) (2021-05-04)
+
+
+
+# [2.6.0](https://github.com/vonage/vivid/compare/v2.5.0...v2.6.0) (2021-05-03)
+
+
+### Bug Fixes
+
+* **textfield:** value is not vertically centered when hint is not def… ([#763](https://github.com/vonage/vivid/issues/763)) ([594470a](https://github.com/vonage/vivid/commit/594470a7d06c7f8447525d2d640880b1657c317d))
+
+
+
 # [2.5.0](https://github.com/vonage/vivid/compare/v2.4.1...v2.5.0) (2021-04-22)
 
 

@@ -4,13 +4,19 @@ export const argTypes = {
 			type: 'text'
 		}
 	},
-	chevronToggle: {
+	indicatorIconSet: {
+		control: {
+			type: 'select',
+			options: ['chevron', 'binary'],
+		}
+	},
+	dense: {
 		control: {
 			type: 'inline-radio',
 			options: { 'true': '', 'false': undefined }
 		}
 	},
-	trailingToggle: {
+	leadingToggle: {
 		control: {
 			type: 'inline-radio',
 			options: { 'true': '', 'false': undefined }
@@ -19,6 +25,12 @@ export const argTypes = {
 	icon: {
 		control: {
 			type: 'text'
+		}
+	},
+	noRipple: {
+		control: {
+			type: 'inline-radio',
+			options: { 'true': '', 'false': undefined }
 		}
 	},
 	open: {
@@ -30,5 +42,6 @@ export const argTypes = {
 	styles: { table: { disable: true } },
 	closeOnSelect: { table: { disable: true } },
 	headerListItemIcon: { table: { disable: true } },
-	trailingIcon: { table: { disable: true } }
+	trailingIcon: { table: { disable: true } },
+	ripple: { table: { disable: true } }
 }

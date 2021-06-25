@@ -63,7 +63,7 @@ export class VWCIconButton extends MWCIconButton {
 	protected render(): TemplateResult {
 		return html`<button
 			class="mdc-icon-button"
-			aria-label="${this.label || this.icon}"
+			aria-label="${this.ariaLabel || this.icon}"
 			?disabled="${this.disabled}"
 			@focus="${this.handleRippleFocus}"
 			@blur="${this.handleRippleBlur}"
@@ -74,19 +74,16 @@ export class VWCIconButton extends MWCIconButton {
 			@touchend="${this.handleRippleDeactivate}"
 			@touchcancel="${this.handleRippleDeactivate}"
 		>
-			${this.renderRipple()} ${this.renderIcon()}
-			<span class="default-slot-container">
+			${this.renderRipple()}
+			${this.renderIcon()}
+			<span>
 				<slot></slot>
 			</span>
 		</button>`;
 	}
 
 	protected renderIcon(): TemplateResult {
-		return html`<vwc-icon
-			class="vvd-icon"
-			size="small"
-			type="${this.icon}"
-		></vwc-icon>`;
+		return html`<vwc-icon	type="${this.icon}"></vwc-icon>`;
 	}
 
 	renderRipple(): TemplateResult | '' {

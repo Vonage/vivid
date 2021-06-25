@@ -4,7 +4,6 @@
 
 ```html
 <div
-  aria-label=""
   aria-valuemax="1"
   aria-valuemin="0"
   aria-valuenow="0"

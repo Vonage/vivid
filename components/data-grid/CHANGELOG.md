@@ -1,3 +1,63 @@
+# [2.12.0](https://github.com/vonage/vivid/compare/v2.11.0...v2.12.0) (2021-06-14)
+
+
+### Bug Fixes
+
+* **data-grid:** fix the data provider documentation ([#882](https://github.com/vonage/vivid/issues/882)) ([fd231ee](https://github.com/vonage/vivid/commit/fd231ee149b57ebb2527de905fb09b72e58c20f2))
+
+
+
+# [2.11.0](https://github.com/vonage/vivid/compare/v2.10.0...v2.11.0) (2021-06-07)
+
+
+### Features
+
+* **vwc-data-grid events:** viv-577 iss-875 initial implementation of grid events ([#876](https://github.com/vonage/vivid/issues/876)) ([d538d75](https://github.com/vonage/vivid/commit/d538d75945018f711bc9026ac00d1e7ff27c4684)), closes [#875](https://github.com/vonage/vivid/issues/875) [#875](https://github.com/vonage/vivid/issues/875) [#875](https://github.com/vonage/vivid/issues/875) [#875](https://github.com/vonage/vivid/issues/875) [#875](https://github.com/vonage/vivid/issues/875)
+
+
+
+# [2.10.0](https://github.com/vonage/vivid/compare/v2.9.1...v2.10.0) (2021-06-04)
+
+
+
+## [2.9.1](https://github.com/vonage/vivid/compare/v2.9.0...v2.9.1) (2021-05-27)
+
+
+
+# [2.9.0](https://github.com/vonage/vivid/compare/v2.8.0...v2.9.0) (2021-05-24)
+
+
+### Bug Fixes
+
+* **vwc-data-grid:** viv 565 issue 827 fixing the grid engine height ([#852](https://github.com/vonage/vivid/issues/852)) ([25bdacd](https://github.com/vonage/vivid/commit/25bdacd8473dd2e5e6d225444da03cb4eaa56d68)), closes [#827](https://github.com/vonage/vivid/issues/827)
+
+
+
+# [2.8.0](https://github.com/vonage/vivid/compare/v2.7.0...v2.8.0) (2021-05-20)
+
+
+
+# [2.7.0](https://github.com/vonage/vivid/compare/v2.6.2...v2.7.0) (2021-05-17)
+
+
+
+## [2.6.2](https://github.com/vonage/vivid/compare/v2.6.1...v2.6.2) (2021-05-05)
+
+
+
+## [2.6.1](https://github.com/vonage/vivid/compare/v2.6.0...v2.6.1) (2021-05-04)
+
+
+
+# [2.6.0](https://github.com/vonage/vivid/compare/v2.5.0...v2.6.0) (2021-05-03)
+
+
+### Bug Fixes
+
+* **vwc-data-grid:** expanded rows renderer API adjustment and story fix ([#782](https://github.com/vonage/vivid/issues/782)) ([6bfaa60](https://github.com/vonage/vivid/commit/6bfaa6075c86b29495fb10b2129bf20376a9a60e)), closes [#771](https://github.com/vonage/vivid/issues/771) [#771](https://github.com/vonage/vivid/issues/771) [#771](https://github.com/vonage/vivid/issues/771)
+
+
+
 # [2.5.0](https://github.com/vonage/vivid/compare/v2.4.1...v2.5.0) (2021-04-22)
 
 

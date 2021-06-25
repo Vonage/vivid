@@ -87,21 +87,19 @@ Vivid is aligned with this approach, hence a list of steps to help you to set up
 
 ##### Configure `.npmrc`
 
-`.npmrc` file should be located in the same folder the `package.json` resides and it's content should include the following:
+In order for the project to install correctly, you need to include your own `.npmrc` file. It should be created in the same folder where `package.json` resides and its content should include the following:
 
 ```
 ca = null
 always-auth = true
 
 registry = https://vonagecc.jfrog.io/vonagecc/api/npm/npm/
-_auth = ${ARTIFACTORY_AUTH_TOKEN}
+_auth = [Your Artifactory auth token]
 ```
 
 Here we defined 2 primary things:
-* NPM should pull the package from that registry (Vonage's artifactory) rather than from generic public one
-* Since the artifactory is protected, it should use the specified **authentication token**
-
-Obviously, authentication token better NOT to be hard-coded in your sources, but read from environment (_secrets_), meaning that all local dev machines and CI should have it set a priory.
+* NPM should pull packages from Vonage's private registry, rather than from generic public one.
+* Since the artifactory is protected, it should use the specified **authentication token**.  
 
 > You may read more info about `.npmrc` configuration [here](https://docs.npmjs.com/cli/v6/configuring-npm/npmrc).
 
@@ -111,7 +109,7 @@ Each developer in a team that does `npm install` will need to get her/his access
 Additionally, team is advised to obtain one more token for automation.
 
 The steps to follow are:
-* for each user reach out to CloudOps team and ask for access to JFrog artifactory (welcome to copy this exact wording to the Jira ticket :) ) - this may take a few days
+* for each user reach out to the IAM team and ask for access to JFrog artifactory (welcome to copy this exact wording to the Jira ticket :) ) - this may take a few days
 * once allowed, do login into the **JFrog** portal (application will appear in your Vonage app page), navigate to **User Profile** and copy your **API Key**
 * run on your local machine the following
   
@@ -120,6 +118,6 @@ The steps to follow are:
 	```
 	
 	while replacing 'username' and 'api_key' with your JFrog username and the just copied API Key correspondingly
-* in the response you'll see a `_auth` value - this is the token to be exported as `ARTIFACTORY_AUTH_TOKEN` per our example above (in your case the variable name may differ, your choice)
+* in the response you'll see a `_auth` value - this is the token to be exported as `_auth` in your `.npmrc`.
 
 Done!

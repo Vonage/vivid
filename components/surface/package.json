@@ -1,0 +1,39 @@
+{
+	"name": "@vonage/vwc-surface",
+	"version": "2.12.0",
+	"description": "Surface component",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/surface#readme",
+	"license": "ISC",
+	"main": "vwc-surface.js",
+	"module": "vwc-surface.js",
+	"files": [
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/vonage/vivid.git",
+		"directory": "components/surface"
+	},
+	"scripts": {
+		"test": "echo \"Error: run tests from root\" && exit 1",
+		"build:typescript": "tsc -b",
+		"build:styles": "umbrella-style-modules",
+		"build": "yarn run build:styles && yarn run build:typescript"
+	},
+	"bugs": {
+		"url": "https://github.com/Vonage/vivid/issues"
+	},
+	"dependencies": {
+		"@material/mwc-menu": "^0.21.0",
+		"@vonage/vvd-core": "2.12.0",
+		"lit-element": "^2.4.0",
+		"tslib": "^2.3.0"
+	},
+	"devDependencies": {
+		"@vonage/vvd-design-tokens": "2.12.0",
+		"@vonage/vvd-umbrella": "2.12.0",
+		"typescript": "^4.3.2"
+	}
+}

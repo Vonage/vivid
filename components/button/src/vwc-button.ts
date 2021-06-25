@@ -44,6 +44,9 @@ type ButtonShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
 @customElement('vwc-button')
 export class VWCButton extends MWCButton {
 	@property({ type: Boolean, reflect: true })
+	dense = false;
+
+	@property({ type: Boolean, reflect: true })
 	enlarged = false;
 
 	@property({ type: String, reflect: true })
@@ -138,11 +141,7 @@ export class VWCButton extends MWCButton {
 	}
 
 	protected renderIcon(): TemplateResult {
-		return html`<vwc-icon
-			class="vvd-icon"
-			size="small"
-			type="${this.icon}"
-		></vwc-icon>`;
+		return html`<vwc-icon	type="${this.icon}"></vwc-icon>`;
 	}
 
 	static createHiddenButton(): HTMLButtonElement {

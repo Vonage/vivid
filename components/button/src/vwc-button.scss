@@ -1,4 +1,7 @@
+
 @forward './vwc-button-coupling';
+@use './vwc-button-variables' as button-variables;
+@use '@vonage/vwc-icon/src/vwc-icon-variables' as icon-variables;
 @use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation with (
@@ -8,13 +11,15 @@
 	$variable-name: --vvd-button-shape
 );
 
+
 @mixin size($type, $unit) {
 	:host([#{$type}]) & {
-		height: $unit * 8px;
+		--button-block-size: #{$unit * 8px};
 
-		.vvd-icon {
-			--icon-size: #{$unit * 4px};
+		vwc-icon {
+			#{icon-variables.$icon-size-variable-name}: var(#{button-variables.$button-icon-size-variable-name}, #{$unit * 4px});
 		}
+
 		@content;
 	}
 }
@@ -22,12 +27,14 @@
 @include color-connotation.connotations-main;
 @include color-connotation.connotations-main-default(primary);
 
+
 :host {
 	--mdc-button-disabled-ink-color: var(#{vvd-formfield.$formfield-disabled-ink});
 	--mdc-button-disabled-fill-color: var(#{scheme-variables.$vvd-color-neutral-30});
 	--mdc-button-disabled-outline-color: var(#{vvd-formfield.$formfield-disabled-ink});
 	--mdc-button-outline-color: var(--mdc-theme-primary);
 	--mdc-button-horizontal-padding: 14px;
+	--button-block-size: 40px;
 
 	@include vvd-formfield.coupling;
 }
@@ -45,15 +52,15 @@
 /////////////////////////////////////////////////////////////////////////////
 .mdc-button {
 	$gutter: 8px;
-	height: 40px;
+	height: var(--vvd-button-block-size, var(--button-block-size));
 	border-radius: var(--vvd-button-shape);
 	// ! this was supposed to be set by MDC
 	font-stretch: var(--mdc-typography-button-font-stretch);
 	letter-spacing: normal;
 
 	&:not(.mdc-button--dense) {
-		.vvd-icon {
-			--icon-size: 20px;
+		vwc-icon {
+			#{icon-variables.$icon-size-variable-name}: var(#{button-variables.$button-icon-size-variable-name}, 20px);
 		}
 	}
 
@@ -63,13 +70,13 @@
 	}
 
 	> .trailing-icon {
-		.vvd-icon {
+		vwc-icon {
 			margin-inline-start: $gutter;
 		}
 	}
 
 	> .leading-icon {
-		.vvd-icon {
+		vwc-icon {
 			margin-inline-end: $gutter;
 		}
 	}
@@ -80,13 +87,13 @@
 		$gutter: 10px;
 
 		> .trailing-icon {
-			.vvd-icon {
+			vwc-icon {
 				margin-inline-start: $gutter;
 			}
 		}
 
 		> .leading-icon {
-			.vvd-icon {
+			vwc-icon {
 				margin-inline-end: $gutter;
 			}
 		}

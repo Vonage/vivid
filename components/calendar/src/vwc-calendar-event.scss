@@ -1,15 +1,52 @@
+@use '@vonage/vvd-typography/scss/typography';
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+@use 'partials/vwc-calendar-variables' as calendar-variables;
+
 :host {
 	display: contents;
 }
 
 section {
-	--indent: calc(var(--overlap-count, 0) * 8px);
-	margin: 1px 1px 1px calc(1px + var(--indent));
-	background-color: var(--event-color);
-	border-radius: 3.64752px;
-	grid-column: var(--event-day);
-	grid-row: var(--event-row);
+	$gutter: 4px;
+	$unit-indent: 8px;
+
+	$indent-calc: min(var(#{calendar-variables.$indent}), #{$unit-indent * 4} /* 4 as the indentation limit*/);
+	$dividers-block-size: calc(#{calendar-variables.$gap} /* per cell divider */* (var(#{calendar-variables.$duration}) - 1));
+	$dividers-top-size: calc(#{calendar-variables.$gap} /* per cell divider */* var(#{calendar-variables.$start}));
+	$top: calc(var(#{calendar-variables.$start}) * (100% - #{calendar-variables.$total-rows - 1}px) / #{calendar-variables.$total-rows} + #{$dividers-top-size});
+	$hour-block-size: calc((100% - #{calendar-variables.$total-rows - 1}px) / #{calendar-variables.$total-rows});
+
+	#{calendar-variables.$indent}: calc(0px + var(#{calendar-variables.$overlap-count}, 0) * #{$unit-indent});
+	position: absolute;
+	z-index: var(#{calendar-variables.$overlap-count});
+	top: $top;
+	overflow: hidden;
+	box-sizing: border-box;
+	padding: $gutter $gutter*2;
+	margin: 0 #{$unit-indent} 0 #{$indent-calc};
+	background-color: var(#{calendar-variables.$color}, var(#{scheme-variables.$vvd-color-neutral-40}));
+	block-size: calc(var(#{calendar-variables.$duration}) * #{$hour-block-size} + #{$dividers-block-size});
+	border-radius: var(#{calendar-variables.$calendar-shape});
+	color: var(#{scheme-variables.$vvd-color-on-primary});
+	contain: strict;
+	inline-size: calc(100% - #{$unit-indent} - #{$indent-calc});
+	max-block-size: calc(100% - #{$top});
 	&:focus {
-		z-index: 1;
+		z-index: 2000;
+		box-shadow: 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 12%), 0 3px 5px -1px rgb(0 0 0 / 20%);
+		outline: none;
 	}
+}
+
+h2 {
+	@include typography.typography-cat-shorthand('caption-bold');
+	margin: 0;
+	> strong {
+		font: inherit;
+	}
+}
+
+p {
+	@include typography.typography-cat-shorthand('caption');
+	margin: 0;
 }

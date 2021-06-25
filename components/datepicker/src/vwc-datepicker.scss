@@ -92,7 +92,8 @@ vwc-menu {
 			}
 
 			&:nth-child(7n) {
-				&.flatpickr-day.inRange {
+				&.flatpickr-day.inRange,
+				&.flatpickr-day.week {
 					border-bottom-right-radius: 15px;
 					border-top-right-radius: 15px;
 					box-shadow: -5px 0 0 var(#{scheme-variables.$vvd-color-neutral-20});
@@ -100,7 +101,8 @@ vwc-menu {
 			}
 
 			&:nth-child(7n + 1) {
-				&.flatpickr-day.inRange {
+				&.flatpickr-day.inRange,
+				&.flatpickr-day.week {
 					border-bottom-left-radius: 15px;
 					border-top-left-radius: 15px;
 					box-shadow: 5px 0 0 var(#{scheme-variables.$vvd-color-neutral-20});
@@ -120,15 +122,11 @@ vwc-menu {
 			}
 
 			&.prevMonthDay,
+			&.nextMonthDay,
 			&.flatpickr-disabled {
 				color: var(#{scheme-variables.$vvd-color-neutral-50});
 				cursor: default;
 				pointer-events: none;
-			}
-
-			&.nextMonthDay {
-				height: 0;
-				visibility: hidden;
 			}
 
 			&:hover,
@@ -146,18 +144,11 @@ vwc-menu {
 				}
 			}
 
-			&.selected:not(.startRange):not(.endRange) {
+			&.selected:not(.startRange):not(.endRange):not(.week) {
 				&::before {
 					background-color: var(#{scheme-variables.$vvd-color-announcement});
 				}
 			}
-
-			// &.selected {
-			//   &::before {
-			//       animation-name: none;
-			//       background-color: $black;
-			//   }
-			// }
 
 			&.startRange + .inRange,
 			&.endRange {
@@ -181,7 +172,8 @@ vwc-menu {
 			}
 
 			&.inRange,
-			&.inRange.today {
+			&.inRange.today,
+			&.week.selected {
 				border-color: var(#{scheme-variables.$vvd-color-neutral-20});
 				background-color: var(#{scheme-variables.$vvd-color-neutral-20});
 				box-shadow: -5px 0 0 var(#{scheme-variables.$vvd-color-neutral-20}),
@@ -204,6 +196,122 @@ vwc-menu {
 	.flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n + 1)),
 	.flatpickr-day.startRange + .selected.endRange:not(:nth-child(7n + 1)) {
 		box-shadow: none;
+	}
+
+	&.inline {
+		position: relative;
+		width: 288px;
+		padding: 0;
+		border: 0;
+		background: none;
+
+		.vvd-datepicker-header {
+			padding: 0;
+		}
+
+		.flatpickr-innerContainer {
+			padding: 16px 0 0;
+		}
+
+		.flatpickr-rContainer,
+		.flatpickr-days,
+		.dayContainer {
+			width: 100%;
+			min-width: initial;
+		}
+
+		.flatpickr-weekdaycontainer {
+			justify-content: space-between;
+
+			.flatpickr-weekday {
+				flex: initial;
+				flex-basis: 30px;
+			}
+		}
+
+		.flatpickr-days {
+			.dayContainer {
+				.flatpickr-day {
+					flex-basis: 30px;
+					margin-right: 4.166%;
+
+					&:nth-child(7n) {
+						margin-right: 0;
+					}
+				}
+			}
+		}
+
+		&.vvd-datepicker-month-view {
+			min-height: initial;
+
+			.vvd-datepicker-months {
+				position: relative;
+				top: 0;
+				padding: 40px 0 0;
+				background: none;
+			}
+		}
+	}
+}
+
+
+//------------
+// week select
+//------------
+:host([weekSelect]) {
+	.flatpickr-calendar.vvd-datepicker .flatpickr-day {
+		&.inRange {
+			font-weight: normal;
+
+			&:hover,
+			&.today:hover {
+				z-index: 0;
+				color: var(#{scheme-variables.$vvd-color-on-primary});
+
+				&::before {
+					background-color: var(#{scheme-variables.$vvd-color-primary});
+				}
+			}
+		}
+
+		&.selected {
+			&::before {
+				background-color: transparent;
+			}
+
+			&.week {
+				color: var(#{scheme-variables.$vvd-color-on-base});
+				font-weight: normal;
+
+				&:hover {
+					color: var(#{scheme-variables.$vvd-color-on-primary});
+				}
+			}
+
+			&.vvd-selected-week-day {
+				z-index: 0;
+				color: var(#{scheme-variables.$vvd-color-on-announcement});
+
+				&::before {
+					background-color: var(#{scheme-variables.$vvd-color-announcement});
+				}
+			}
+		}
+
+		&.today {
+			z-index: 0;
+		}
+	}
+
+	.inline {
+		.flatpickr-day {
+			&.inRange,
+			&.week.selected:not(:nth-child(7n)):not(:nth-child(7n + 1)) {
+				box-shadow: -10px 0 0 var(#{scheme-variables.$vvd-color-neutral-20}),
+					10px 0 0 var(#{scheme-variables.$vvd-color-neutral-20});
+			}
+		}
 	}
 }
 
@@ -309,8 +417,12 @@ vwc-menu {
 // custom footer
 //--------------
 .vvd-datepicker-footer {
-	padding: 0 16px;
+	padding: 8px 16px 0;
 	text-align: right;
+
+	vwc-button:last-child {
+		margin-left: 8px;
+	}
 }
 
 //--------------------

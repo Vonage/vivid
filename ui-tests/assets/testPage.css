@@ -1,0 +1,8 @@
+body {
+	font-family: arial;
+}
+
+#main>div,
+#main>div>div {
+	display: inline-grid;
+}

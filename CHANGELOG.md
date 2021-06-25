@@ -3,6 +3,153 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.12.0](https://github.com/Vonage/vivid/compare/v2.11.0...v2.12.0) (2021-06-14)
+
+
+### Bug Fixes
+
+* **data-grid:** fix the data provider documentation ([#882](https://github.com/Vonage/vivid/issues/882)) ([fd231ee](https://github.com/Vonage/vivid/commit/fd231ee149b57ebb2527de905fb09b72e58c20f2))
+* **vwc-button:** dense prop should reflect to attr ([#892](https://github.com/Vonage/vivid/issues/892)) ([9078b3d](https://github.com/Vonage/vivid/commit/9078b3d004c04a4e1475929a0a6eca1c5955d648))
+
+
+### Features
+
+* **button-toggle-group:** Get button-toggle-group to GA ([#891](https://github.com/Vonage/vivid/issues/891)) ([abb170c](https://github.com/Vonage/vivid/commit/abb170c8eca9a30841e3c868976673db2537de14))
+* **ci:** visual tests auto discovery and documenation ([#885](https://github.com/Vonage/vivid/issues/885)) ([771c849](https://github.com/Vonage/vivid/commit/771c84907f831e3be307e6754573cbf07fc3b184))
+
+
+
+
+
+# [2.11.0](https://github.com/Vonage/vivid/compare/v2.10.0...v2.11.0) (2021-06-07)
+
+
+### Features
+
+* **vwc-data-grid events:** viv-577 iss-875 initial implementation of grid events ([#876](https://github.com/Vonage/vivid/issues/876)) ([d538d75](https://github.com/Vonage/vivid/commit/d538d75945018f711bc9026ac00d1e7ff27c4684)), closes [#875](https://github.com/Vonage/vivid/issues/875) [#875](https://github.com/Vonage/vivid/issues/875) [#875](https://github.com/Vonage/vivid/issues/875) [#875](https://github.com/Vonage/vivid/issues/875) [#875](https://github.com/Vonage/vivid/issues/875)
+
+
+
+
+
+# [2.10.0](https://github.com/Vonage/vivid/compare/v2.9.1...v2.10.0) (2021-06-04)
+
+
+### Bug Fixes
+
+* **banner:** height changes when dismissible ([#841](https://github.com/Vonage/vivid/issues/841)) ([e7df184](https://github.com/Vonage/vivid/commit/e7df1844d790fd6b122999d0f0c32422881df88a))
+* **vwc-snackbar:** viv 573 issue 864 visual redesign ([#866](https://github.com/Vonage/vivid/issues/866)) ([f6932fa](https://github.com/Vonage/vivid/commit/f6932fad7386087292a25435c4d0580ad2d3c3f7)), closes [#864](https://github.com/Vonage/vivid/issues/864) [#864](https://github.com/Vonage/vivid/issues/864) [#864](https://github.com/Vonage/vivid/issues/864) [#864](https://github.com/Vonage/vivid/issues/864)
+
+
+### Features
+
+* **vwc-surface:** viv-510 iss-859 complex menu surface ([#863](https://github.com/Vonage/vivid/issues/863)) ([1520570](https://github.com/Vonage/vivid/commit/1520570b3bf0a5dc97074ee5f0de393edc953ec6)), closes [#859](https://github.com/Vonage/vivid/issues/859) [#859](https://github.com/Vonage/vivid/issues/859) [#859](https://github.com/Vonage/vivid/issues/859) [#859](https://github.com/Vonage/vivid/issues/859) [#859](https://github.com/Vonage/vivid/issues/859) [#859](https://github.com/Vonage/vivid/issues/859) [#859](https://github.com/Vonage/vivid/issues/859) [#859](https://github.com/Vonage/vivid/issues/859) [#859](https://github.com/Vonage/vivid/issues/859) [#859](https://github.com/Vonage/vivid/issues/859) [#859](https://github.com/Vonage/vivid/issues/859) [#859](https://github.com/Vonage/vivid/issues/859) [#859](https://github.com/Vonage/vivid/issues/859) [#859](https://github.com/Vonage/vivid/issues/859) [#859](https://github.com/Vonage/vivid/issues/859) [#859](https://github.com/Vonage/vivid/issues/859)
+* **vwc-textfield:** support multiple interactive icon buttons ([#837](https://github.com/Vonage/vivid/issues/837)) ([464a725](https://github.com/Vonage/vivid/commit/464a7250592f5920d75f5add6e3d1393ab2642e6))
+
+
+
+
+
+## [2.9.1](https://github.com/Vonage/vivid/compare/v2.9.0...v2.9.1) (2021-05-27)
+
+
+### Bug Fixes
+
+* **vwc-calendar:** cells wrong grid columns ([#862](https://github.com/Vonage/vivid/issues/862)) ([1f77e91](https://github.com/Vonage/vivid/commit/1f77e91c873f17263265b27e9add0ed1d9c89b48))
+
+
+
+
+
+# [2.9.0](https://github.com/Vonage/vivid/compare/v2.8.0...v2.9.0) (2021-05-24)
+
+
+### Bug Fixes
+
+* **vwc-data-grid:** viv 565 issue 827 fixing the grid engine height ([#852](https://github.com/Vonage/vivid/issues/852)) ([25bdacd](https://github.com/Vonage/vivid/commit/25bdacd8473dd2e5e6d225444da03cb4eaa56d68)), closes [#827](https://github.com/Vonage/vivid/issues/827)
+* **vwc-list-item:** issue 838 fixing list items bugs ([#854](https://github.com/Vonage/vivid/issues/854)) ([e8ed53b](https://github.com/Vonage/vivid/commit/e8ed53b762308a466b40cafa0f5a780f5d35537a)), closes [#838](https://github.com/Vonage/vivid/issues/838) [#838](https://github.com/Vonage/vivid/issues/838)
+
+
+### Features
+
+* **vwc-accordion:** viv-388 accordion ([#683](https://github.com/Vonage/vivid/issues/683)) ([8b597ab](https://github.com/Vonage/vivid/commit/8b597ab2f800b4d9c954e829b62e52d667012cee))
+
+
+
+
+
+# [2.8.0](https://github.com/Vonage/vivid/compare/v2.7.0...v2.8.0) (2021-05-20)
+
+
+### Features
+
+* **dialog:** dialog dismiss button ([#849](https://github.com/Vonage/vivid/issues/849)) ([1920c67](https://github.com/Vonage/vivid/commit/1920c67959648e3ee361537795fbbfd717e5cf3b))
+* **toggle-button-group:** add disabled to children for a11y ([#843](https://github.com/Vonage/vivid/issues/843)) ([d66e385](https://github.com/Vonage/vivid/commit/d66e385011c8531d9514af260625f89e29f45dc1))
+* **vwd-file-picker:** issue 844 added option to hide counter badge permanently ([#845](https://github.com/Vonage/vivid/issues/845)) ([3e17512](https://github.com/Vonage/vivid/commit/3e1751204feb9e2ff3d6ff493b2a4531e7b30f10)), closes [#844](https://github.com/Vonage/vivid/issues/844) [#844](https://github.com/Vonage/vivid/issues/844)
+
+
+
+
+
+# [2.7.0](https://github.com/Vonage/vivid/compare/v2.6.2...v2.7.0) (2021-05-17)
+
+
+### Bug Fixes
+
+* **docs:** viv-375 added init flow and core dependencies ([#821](https://github.com/Vonage/vivid/issues/821)) ([903c1f6](https://github.com/Vonage/vivid/commit/903c1f643f50f249c94b9d82aca3b55d6164bc04))
+* **toggle-button-group:** reduce content mutataion in toggle button group ([#825](https://github.com/Vonage/vivid/issues/825)) ([5de57a1](https://github.com/Vonage/vivid/commit/5de57a1f3751ebbd6c3983b8a6d6dc9db3f52e52))
+* **vwc-check-list-item:** fixing the layout of the radio and checkbox elements ([#839](https://github.com/Vonage/vivid/issues/839)) ([a8eea1e](https://github.com/Vonage/vivid/commit/a8eea1ed55523a237f56c9b0ac50b3d0627ab158))
+
+
+### Features
+
+* **banner:** new banner component ([#796](https://github.com/Vonage/vivid/issues/796)) ([2407cf2](https://github.com/Vonage/vivid/commit/2407cf245f2650ef01597ca91e70087a3b86c88c))
+* **datepicker:** add week select support ([#806](https://github.com/Vonage/vivid/issues/806)) ([a3ac951](https://github.com/Vonage/vivid/commit/a3ac95155867101102a8302d1dc29db518c9627b))
+* **snackbar:** iss 783 viv 402 snackbar ([#808](https://github.com/Vonage/vivid/issues/808)) ([25c750e](https://github.com/Vonage/vivid/commit/25c750e99253a4f00e9765b30a288c65978a9b68)), closes [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783) [#783](https://github.com/Vonage/vivid/issues/783)
+
+
+
+
+
+## [2.6.2](https://github.com/Vonage/vivid/compare/v2.6.1...v2.6.2) (2021-05-05)
+
+**Note:** Version bump only for package @vivid/root
+
+
+
+
+
+## [2.6.1](https://github.com/Vonage/vivid/compare/v2.8.0...v2.6.1) (2021-05-04)
+
+**Note:** Version bump only for package @vivid/root
+
+
+
+
+
+
+
+# [2.6.0](https://github.com/Vonage/vivid/compare/v2.5.0...v2.6.0) (2021-05-03)
+
+
+### Bug Fixes
+
+* issue [#800](https://github.com/Vonage/vivid/issues/800) fixing the menu multi being closed by click ([#802](https://github.com/Vonage/vivid/issues/802)) ([fea9d90](https://github.com/Vonage/vivid/commit/fea9d903c27dfe23cad38c8c7ed005a1d54956ad))
+* **dialog:** fix backdrop and content scheme color ([#797](https://github.com/Vonage/vivid/issues/797)) ([6d10df8](https://github.com/Vonage/vivid/commit/6d10df8b8d6811116aa39459bc7409fe4d3101fe))
+* **textfield:** value is not vertically centered when hint is not def… ([#763](https://github.com/Vonage/vivid/issues/763)) ([594470a](https://github.com/Vonage/vivid/commit/594470a7d06c7f8447525d2d640880b1657c317d))
+* **vwc-data-grid:** expanded rows renderer API adjustment and story fix ([#782](https://github.com/Vonage/vivid/issues/782)) ([6bfaa60](https://github.com/Vonage/vivid/commit/6bfaa6075c86b29495fb10b2129bf20376a9a60e)), closes [#771](https://github.com/Vonage/vivid/issues/771) [#771](https://github.com/Vonage/vivid/issues/771) [#771](https://github.com/Vonage/vivid/issues/771)
+
+
+### Features
+
+* **toggle-button-group:** force defaults and add sizeson toggle button group ([#798](https://github.com/Vonage/vivid/issues/798)) ([67ff4e0](https://github.com/Vonage/vivid/commit/67ff4e015c74d50f8eb2532cb927555c581b3db2))
+* **toggle-buttons-group:** adds toggle buttons group ([#753](https://github.com/Vonage/vivid/issues/753)) ([3352688](https://github.com/Vonage/vivid/commit/3352688fc90d27b59dd850991fdfe2c26510693d))
+* **vwc-calendar:** api support for datetime of week ([#807](https://github.com/Vonage/vivid/issues/807)) ([394a6da](https://github.com/Vonage/vivid/commit/394a6dabee5b6300ed3b59e2bfb263dd8c64b13c))
+
+
+
+
+
 # [2.5.0](https://github.com/Vonage/vivid/compare/v2.4.1...v2.5.0) (2021-04-22)
 
 

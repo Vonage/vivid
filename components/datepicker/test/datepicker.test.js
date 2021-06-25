@@ -21,14 +21,6 @@ describe('datepicker', () => {
 		);
 	});
 
-	// it('should have internal contents', async () => {
-	// 	const [actualElement] = addElement(
-	// 		textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-	// 	);
-	// 	await actualElement.onReady;
-	// 	expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
-	// });
-
 	it('should have lit-flatpickr instance in DOM', async () => {
 		const [actualElement] = addElement(
 			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
@@ -75,7 +67,8 @@ describe('datepicker', () => {
 		await waitNextTask();
 
 		const vwcMenu = actualElement.shadowRoot.querySelector('vwc-menu');
-		const mwcMenuSurface = vwcMenu.shadowRoot.querySelector('mwc-menu-surface');
+		console.log(vwcMenu.shadowRoot);
+		const mwcMenuSurface = vwcMenu.shadowRoot.querySelector('vwc-surface');
 		const menuSurface = mwcMenuSurface.shadowRoot.querySelector('.mdc-menu-surface');
 
 		assertComputedStyle(menuSurface, { position: 'fixed' });
@@ -145,5 +138,37 @@ describe('datepicker', () => {
 			const customFooter = actualElement.shadowRoot.querySelector('.vvd-datepicker-footer');
 			expect(customFooter).to.not.exist;
 		});
+
+		it('should not have footer when mode set to closeOnSelect', async () => {
+			const [actualElement] = addElement(
+				textToDomToParent(`
+					<${COMPONENT_NAME} closeOnSelect></${COMPONENT_NAME}>
+				`)
+			);
+			await actualElement.onReady;
+			await waitNextTask();
+
+			const customFooter = actualElement.shadowRoot.querySelector('.vvd-datepicker-footer');
+			expect(customFooter).to.not.exist;
+		});
+	});
+
+	it('should highlight selected week day when set to weekSelect', async () => {
+		const [actualElement] = addElement(
+			textToDomToParent(`
+				<${COMPONENT_NAME} inline weekSelect></${COMPONENT_NAME}>
+			`)
+		);
+		await actualElement.onReady;
+		await waitNextTask();
+
+		actualElement.defaultDate = 'today';
+		await waitNextTask();
+
+		actualElement.highlightSelectedWeekDay();
+
+		const selectedWeekDay = actualElement._instance.selectedDateElem;
+		expect(selectedWeekDay).to.exist;
+		expect(selectedWeekDay.classList.contains('vvd-selected-week-day')).true;
 	});
 });

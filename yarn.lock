@@ -107,6 +107,15 @@
     jsesc "^2.5.1"
     source-map "^0.5.0"
 
+"@babel/generator@^7.14.0":
+  version "7.14.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@babel/generator/-/generator-7.14.1.tgz#1f99331babd65700183628da186f36f63d615c93"
+  integrity sha1-H5kzG6vWVwAYNijaGG829j1hXJM=
+  dependencies:
+    "@babel/types" "^7.14.1"
+    jsesc "^2.5.1"
+    source-map "^0.5.0"
+
 "@babel/helper-annotate-as-pure@^7.10.4", "@babel/helper-annotate-as-pure@^7.12.13":
   version "7.12.13"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@babel/helper-annotate-as-pure/-/helper-annotate-as-pure-7.12.13.tgz#0f58e86dfc4bb3b1fcd7db806570e177d439b6ab"
@@ -342,6 +351,11 @@
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@babel/helper-validator-identifier/-/helper-validator-identifier-7.12.11.tgz#c9a1f021917dcb5ccf0d4e453e399022981fc9ed"
   integrity sha1-yaHwIZF9y1zPDU5FPjmQIpgfye0=
 
+"@babel/helper-validator-identifier@^7.14.0":
+  version "7.14.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@babel/helper-validator-identifier/-/helper-validator-identifier-7.14.0.tgz#d26cad8a47c65286b15df1547319a5d0bcf27288"
+  integrity sha1-0mytikfGUoaxXfFUcxml0Lzycog=
+
 "@babel/helper-validator-option@^7.12.17":
   version "7.12.17"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@babel/helper-validator-option/-/helper-validator-option-7.12.17.tgz#d1fbf012e1a79b7eebbfdc6d270baaf8d9eb9831"
@@ -375,10 +389,15 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
-"@babel/parser@^7.1.0", "@babel/parser@^7.10.4", "@babel/parser@^7.12.11", "@babel/parser@^7.12.13", "@babel/parser@^7.12.7", "@babel/parser@^7.13.0", "@babel/parser@^7.13.10", "@babel/parser@^7.4.3":
+"@babel/parser@^7.1.0", "@babel/parser@^7.12.11", "@babel/parser@^7.12.13", "@babel/parser@^7.12.7", "@babel/parser@^7.13.0", "@babel/parser@^7.13.10", "@babel/parser@^7.4.3":
   version "7.13.10"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@babel/parser/-/parser-7.13.10.tgz#8f8f9bf7b3afa3eabd061f7a5bcdf4fec3c48409"
   integrity sha1-j4+b97Ovo+q9Bh96W830/sPEhAk=
+
+"@babel/parser@^7.12.0", "@babel/parser@^7.12.5", "@babel/parser@^7.13.9", "@babel/parser@^7.14.0":
+  version "7.14.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@babel/parser/-/parser-7.14.1.tgz#1bd644b5db3f5797c4479d89ec1817fe02b84c47"
+  integrity sha1-G9ZEtds/V5fER52J7BgX/gK4TEc=
 
 "@babel/parser@^7.13.13":
   version "7.13.13"
@@ -1204,7 +1223,21 @@
     "@babel/parser" "^7.12.13"
     "@babel/types" "^7.12.13"
 
-"@babel/traverse@^7.10.4", "@babel/traverse@^7.12.9", "@babel/traverse@^7.13.0", "@babel/traverse@^7.4.3":
+"@babel/traverse@^7.12.5":
+  version "7.14.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@babel/traverse/-/traverse-7.14.0.tgz#cea0dc8ae7e2b1dec65f512f39f3483e8cc95aef"
+  integrity sha1-zqDciufisd7GX1EvOfNIPozJWu8=
+  dependencies:
+    "@babel/code-frame" "^7.12.13"
+    "@babel/generator" "^7.14.0"
+    "@babel/helper-function-name" "^7.12.13"
+    "@babel/helper-split-export-declaration" "^7.12.13"
+    "@babel/parser" "^7.14.0"
+    "@babel/types" "^7.14.0"
+    debug "^4.1.0"
+    globals "^11.1.0"
+
+"@babel/traverse@^7.12.9", "@babel/traverse@^7.13.0", "@babel/traverse@^7.4.3":
   version "7.13.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@babel/traverse/-/traverse-7.13.0.tgz#6d95752475f86ee7ded06536de309a65fc8966cc"
   integrity sha1-bZV1JHX4bufe0GU23jCaZfyJZsw=
@@ -1242,6 +1275,14 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
+"@babel/types@^7.12.0", "@babel/types@^7.14.0", "@babel/types@^7.14.1":
+  version "7.14.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@babel/types/-/types-7.14.1.tgz#095bd12f1c08ab63eff6e8f7745fa7c9cc15a9db"
+  integrity sha1-CVvRLxwIq2Pv9uj3dF+nycwVqds=
+  dependencies:
+    "@babel/helper-validator-identifier" "^7.14.0"
+    to-fast-properties "^2.0.0"
+
 "@babel/types@^7.13.12", "@babel/types@^7.13.13", "@babel/types@^7.13.14":
   version "7.13.14"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@babel/types/-/types-7.13.14.tgz#c35a4abb15c7cd45a2746d78ab328e362cbace0d"
@@ -1275,6 +1316,11 @@
     node-bitmap "0.0.1"
     omggif "^1.0.10"
     pngjs "^5.0.0"
+
+"@discoveryjs/json-ext@^0.5.0":
+  version "0.5.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@discoveryjs/json-ext/-/json-ext-0.5.2.tgz#8f03a22a04de437254e8ce8cc84ba39689288752"
+  integrity sha1-jwOiKgTeQ3JU6M6MyEujlokoh1I=
 
 "@emotion/cache@^10.0.27":
   version "10.0.29"
@@ -1519,6 +1565,296 @@
     "@types/node" "*"
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
+
+"@jimp/bmp@^0.16.1":
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@jimp/bmp/-/bmp-0.16.1.tgz#6e2da655b2ba22e721df0795423f34e92ef13768"
+  integrity sha1-bi2mVbK6Iuch3weVQj806S7xN2g=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@jimp/utils" "^0.16.1"
+    bmp-js "^0.1.0"
+
+"@jimp/core@^0.16.1":
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@jimp/core/-/core-0.16.1.tgz#68c4288f6ef7f31a0f6b859ba3fb28dae930d39d"
+  integrity sha1-aMQoj2738xoPa4Wbo/so2ukw050=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@jimp/utils" "^0.16.1"
+    any-base "^1.1.0"
+    buffer "^5.2.0"
+    exif-parser "^0.1.12"
+    file-type "^9.0.0"
+    load-bmfont "^1.3.1"
+    mkdirp "^0.5.1"
+    phin "^2.9.1"
+    pixelmatch "^4.0.2"
+    tinycolor2 "^1.4.1"
+
+"@jimp/custom@^0.16.1":
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@jimp/custom/-/custom-0.16.1.tgz#28b659c59e20a1d75a0c46067bd3f4bd302cf9c5"
+  integrity sha1-KLZZxZ4goddaDEYGe9P0vTAs+cU=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@jimp/core" "^0.16.1"
+
+"@jimp/gif@^0.16.1":
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@jimp/gif/-/gif-0.16.1.tgz#d1f7c3a58f4666482750933af8b8f4666414f3ca"
+  integrity sha1-0ffDpY9GZkgnUJM6+Lj0ZmQU88o=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@jimp/utils" "^0.16.1"
+    gifwrap "^0.9.2"
+    omggif "^1.0.9"
+
+"@jimp/jpeg@^0.16.1":
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@jimp/jpeg/-/jpeg-0.16.1.tgz#3b7bb08a4173f2f6d81f3049b251df3ee2ac8175"
+  integrity sha1-O3uwikFz8vbYHzBJslHfPuKsgXU=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@jimp/utils" "^0.16.1"
+    jpeg-js "0.4.2"
+
+"@jimp/plugin-blit@^0.16.1":
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@jimp/plugin-blit/-/plugin-blit-0.16.1.tgz#09ea919f9d326de3b9c2826fe4155da37dde8edb"
+  integrity sha1-CeqRn50ybeO5woJv5BVdo33ejts=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@jimp/utils" "^0.16.1"
+
+"@jimp/plugin-blur@^0.16.1":
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@jimp/plugin-blur/-/plugin-blur-0.16.1.tgz#e614fa002797dcd662e705d4cea376e7db968bf5"
+  integrity sha1-5hT6ACeX3NZi5wXUzqN259uWi/U=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@jimp/utils" "^0.16.1"
+
+"@jimp/plugin-circle@^0.16.1":
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@jimp/plugin-circle/-/plugin-circle-0.16.1.tgz#20e3194a67ca29740aba2630fd4d0a89afa27491"
+  integrity sha1-IOMZSmfKKXQKuiYw/U0Kia+idJE=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@jimp/utils" "^0.16.1"
+
+"@jimp/plugin-color@^0.16.1":
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@jimp/plugin-color/-/plugin-color-0.16.1.tgz#0f298ba74dee818b663834cd80d53e56f3755233"
+  integrity sha1-DymLp03ugYtmODTNgNU+VvN1UjM=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@jimp/utils" "^0.16.1"
+    tinycolor2 "^1.4.1"
+
+"@jimp/plugin-contain@^0.16.1":
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@jimp/plugin-contain/-/plugin-contain-0.16.1.tgz#3c5f5c495fd9bb08a970739d83694934f58123f2"
+  integrity sha1-PF9cSV/ZuwipcHOdg2lJNPWBI/I=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@jimp/utils" "^0.16.1"
+
+"@jimp/plugin-cover@^0.16.1":
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@jimp/plugin-cover/-/plugin-cover-0.16.1.tgz#0e8caec16a40abe15b1b32e5383a603a3306dc41"
+  integrity sha1-DoyuwWpAq+FbGzLlODpgOjMG3EE=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@jimp/utils" "^0.16.1"
+
+"@jimp/plugin-crop@^0.16.1":
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@jimp/plugin-crop/-/plugin-crop-0.16.1.tgz#b362497c873043fe47ba881ab08604bf7226f50f"
+  integrity sha1-s2JJfIcwQ/5HuogasIYEv3Im9Q8=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@jimp/utils" "^0.16.1"
+
+"@jimp/plugin-displace@^0.16.1":
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@jimp/plugin-displace/-/plugin-displace-0.16.1.tgz#4dd9db518c3e78de9d723f86a234bf98922afe8d"
+  integrity sha1-TdnbUYw+eN6dcj+GojS/mJIq/o0=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@jimp/utils" "^0.16.1"
+
+"@jimp/plugin-dither@^0.16.1":
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@jimp/plugin-dither/-/plugin-dither-0.16.1.tgz#b47de2c0bb09608bed228b41c3cd01a85ec2d45b"
+  integrity sha1-tH3iwLsJYIvtIotBw80BqF7C1Fs=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@jimp/utils" "^0.16.1"
+
+"@jimp/plugin-fisheye@^0.16.1":
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@jimp/plugin-fisheye/-/plugin-fisheye-0.16.1.tgz#f625047b6cdbe1b83b89e9030fd025ab19cdb1a4"
+  integrity sha1-9iUEe2zb4bg7iekDD9AlqxnNsaQ=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@jimp/utils" "^0.16.1"
+
+"@jimp/plugin-flip@^0.16.1":
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@jimp/plugin-flip/-/plugin-flip-0.16.1.tgz#7a99ea22bde802641017ed0f2615870c144329bb"
+  integrity sha1-epnqIr3oAmQQF+0PJhWHDBRDKbs=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@jimp/utils" "^0.16.1"
+
+"@jimp/plugin-gaussian@^0.16.1":
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@jimp/plugin-gaussian/-/plugin-gaussian-0.16.1.tgz#0845e314085ccd52e34fad9a83949bc0d81a68e8"
+  integrity sha1-CEXjFAhczVLjT62ag5SbwNgaaOg=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@jimp/utils" "^0.16.1"
+
+"@jimp/plugin-invert@^0.16.1":
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@jimp/plugin-invert/-/plugin-invert-0.16.1.tgz#7e6f5a15707256f3778d06921675bbcf18545c97"
+  integrity sha1-fm9aFXByVvN3jQaSFnW7zxhUXJc=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@jimp/utils" "^0.16.1"
+
+"@jimp/plugin-mask@^0.16.1":
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@jimp/plugin-mask/-/plugin-mask-0.16.1.tgz#e7f2460e05c3cda7af5e76f33ccb0579f66f90df"
+  integrity sha1-5/JGDgXDzaevXnbzPMsFefZvkN8=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@jimp/utils" "^0.16.1"
+
+"@jimp/plugin-normalize@^0.16.1":
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@jimp/plugin-normalize/-/plugin-normalize-0.16.1.tgz#032dfd88eefbc4dedc8b1b2d243832e4f3af30c8"
+  integrity sha1-Ay39iO77xN7cixstJDgy5POvMMg=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@jimp/utils" "^0.16.1"
+
+"@jimp/plugin-print@^0.16.1":
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@jimp/plugin-print/-/plugin-print-0.16.1.tgz#66b803563f9d109825970714466e6ab9ae639ff6"
+  integrity sha1-ZrgDVj+dEJgllwcURm5qua5jn/Y=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@jimp/utils" "^0.16.1"
+    load-bmfont "^1.4.0"
+
+"@jimp/plugin-resize@^0.16.1":
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@jimp/plugin-resize/-/plugin-resize-0.16.1.tgz#65e39d848ed13ba2d6c6faf81d5d590396571d10"
+  integrity sha1-ZeOdhI7RO6LWxvr4HV1ZA5ZXHRA=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@jimp/utils" "^0.16.1"
+
+"@jimp/plugin-rotate@^0.16.1":
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@jimp/plugin-rotate/-/plugin-rotate-0.16.1.tgz#53fb5d51a4b3d05af9c91c2a8fffe5d7a1a47c8c"
+  integrity sha1-U/tdUaSz0Fr5yRwqj//l16GkfIw=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@jimp/utils" "^0.16.1"
+
+"@jimp/plugin-scale@^0.16.1":
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@jimp/plugin-scale/-/plugin-scale-0.16.1.tgz#89f6ba59feed3429847ed226aebda33a240cc647"
+  integrity sha1-ifa6Wf7tNCmEftImrr2jOiQMxkc=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@jimp/utils" "^0.16.1"
+
+"@jimp/plugin-shadow@^0.16.1":
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@jimp/plugin-shadow/-/plugin-shadow-0.16.1.tgz#a7af892a740febf41211e10a5467c3c5c521a04c"
+  integrity sha1-p6+JKnQP6/QSEeEKVGfDxcUhoEw=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@jimp/utils" "^0.16.1"
+
+"@jimp/plugin-threshold@^0.16.1":
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@jimp/plugin-threshold/-/plugin-threshold-0.16.1.tgz#34f3078f9965145b7ae26c53a32ad74b1195bbf5"
+  integrity sha1-NPMHj5llFFt64mxToyrXSxGVu/U=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@jimp/utils" "^0.16.1"
+
+"@jimp/plugins@^0.16.1":
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@jimp/plugins/-/plugins-0.16.1.tgz#9f08544c97226d6460a16ced79f57e85bec3257b"
+  integrity sha1-nwhUTJcibWRgoWztefV+hb7DJXs=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@jimp/plugin-blit" "^0.16.1"
+    "@jimp/plugin-blur" "^0.16.1"
+    "@jimp/plugin-circle" "^0.16.1"
+    "@jimp/plugin-color" "^0.16.1"
+    "@jimp/plugin-contain" "^0.16.1"
+    "@jimp/plugin-cover" "^0.16.1"
+    "@jimp/plugin-crop" "^0.16.1"
+    "@jimp/plugin-displace" "^0.16.1"
+    "@jimp/plugin-dither" "^0.16.1"
+    "@jimp/plugin-fisheye" "^0.16.1"
+    "@jimp/plugin-flip" "^0.16.1"
+    "@jimp/plugin-gaussian" "^0.16.1"
+    "@jimp/plugin-invert" "^0.16.1"
+    "@jimp/plugin-mask" "^0.16.1"
+    "@jimp/plugin-normalize" "^0.16.1"
+    "@jimp/plugin-print" "^0.16.1"
+    "@jimp/plugin-resize" "^0.16.1"
+    "@jimp/plugin-rotate" "^0.16.1"
+    "@jimp/plugin-scale" "^0.16.1"
+    "@jimp/plugin-shadow" "^0.16.1"
+    "@jimp/plugin-threshold" "^0.16.1"
+    timm "^1.6.1"
+
+"@jimp/png@^0.16.1":
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@jimp/png/-/png-0.16.1.tgz#f24cfc31529900b13a2dd9d4fdb4460c1e4d814e"
+  integrity sha1-8kz8MVKZALE6LdnU/bRGDB5NgU4=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@jimp/utils" "^0.16.1"
+    pngjs "^3.3.3"
+
+"@jimp/tiff@^0.16.1":
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@jimp/tiff/-/tiff-0.16.1.tgz#0e8756695687d7574b6bc73efab0acd4260b7a12"
+  integrity sha1-DodWaVaH11dLa8c++rCs1CYLehI=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    utif "^2.0.1"
+
+"@jimp/types@^0.16.1":
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@jimp/types/-/types-0.16.1.tgz#0dbab37b3202315c91010f16c31766d35a2322cc"
+  integrity sha1-DbqzezICMVyRAQ8Wwxdm01ojIsw=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@jimp/bmp" "^0.16.1"
+    "@jimp/gif" "^0.16.1"
+    "@jimp/jpeg" "^0.16.1"
+    "@jimp/png" "^0.16.1"
+    "@jimp/tiff" "^0.16.1"
+    timm "^1.6.1"
+
+"@jimp/utils@^0.16.1":
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@jimp/utils/-/utils-0.16.1.tgz#2f51e6f14ff8307c4aa83d5e1a277da14a9fe3f7"
+  integrity sha1-L1Hm8U/4MHxKqD1eGid9oUqf4/c=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    regenerator-runtime "^0.13.3"
 
 "@koa/cors@^3.1.0":
   version "3.1.0"
@@ -2212,6 +2548,13 @@
     npmlog "^4.1.2"
     write-file-atomic "^2.3.0"
 
+"@material/animation@12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/animation/-/animation-12.0.0-canary.197f64fa2.0.tgz#c0ca581618320b52ab002c4c93020058d3b36a7b"
+  integrity sha1-wMpYFhgyC1KrACxMkwIAWNOzans=
+  dependencies:
+    tslib "^2.1.0"
+
 "@material/animation@8.0.0-canary.01db89053.0":
   version "8.0.0-canary.01db89053.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/animation/-/animation-8.0.0-canary.01db89053.0.tgz#cc841b3778a027a4882ed2198e92a2c22f79bc9b"
@@ -2226,6 +2569,13 @@
   dependencies:
     tslib "^1.9.3"
 
+"@material/base@12.0.0-canary.197f64fa2.0", "@material/base@=12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/base/-/base-12.0.0-canary.197f64fa2.0.tgz#142c079b72005419d5aa0b499b4acd35c2c564e3"
+  integrity sha1-FCwHm3IAVBnVqgtJm0rNNcLFZOM=
+  dependencies:
+    tslib "^2.1.0"
+
 "@material/base@8.0.0-canary.01db89053.0":
   version "8.0.0-canary.01db89053.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/base/-/base-8.0.0-canary.01db89053.0.tgz#9a3dce5f93c0ab23d5306b6d351bc6f544b9f2e3"
@@ -2233,27 +2583,29 @@
   dependencies:
     tslib "^1.9.3"
 
-"@material/base@9.0.0-canary.1c156d69d.0", "@material/base@=9.0.0-canary.1c156d69d.0":
+"@material/base@9.0.0-canary.1c156d69d.0":
   version "9.0.0-canary.1c156d69d.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/base/-/base-9.0.0-canary.1c156d69d.0.tgz#84f365077dfae12a31a32bfc7f9ba673fe56b2db"
   integrity sha1-hPNlB3364Soxoyv8f5umc/5Wsts=
   dependencies:
     tslib "^1.9.3"
 
-"@material/button@9.0.0-canary.1c156d69d.0":
-  version "9.0.0-canary.1c156d69d.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/button/-/button-9.0.0-canary.1c156d69d.0.tgz#b35540ed085006d65562ed56fe2b5540d6712712"
-  integrity sha1-s1VA7QhQBtZVYu1W/itVQNZxJxI=
+"@material/button@12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/button/-/button-12.0.0-canary.197f64fa2.0.tgz#6e1bdc0cbaa1a6466d8f4e4e1b81046c6bd398c3"
+  integrity sha1-bhvcDLqhpkZtj05OG4EEbGvTmMM=
   dependencies:
-    "@material/density" "9.0.0-canary.1c156d69d.0"
-    "@material/elevation" "9.0.0-canary.1c156d69d.0"
-    "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
-    "@material/ripple" "9.0.0-canary.1c156d69d.0"
-    "@material/rtl" "9.0.0-canary.1c156d69d.0"
-    "@material/shape" "9.0.0-canary.1c156d69d.0"
-    "@material/theme" "9.0.0-canary.1c156d69d.0"
-    "@material/touch-target" "9.0.0-canary.1c156d69d.0"
-    "@material/typography" "9.0.0-canary.1c156d69d.0"
+    "@material/density" "12.0.0-canary.197f64fa2.0"
+    "@material/dom" "12.0.0-canary.197f64fa2.0"
+    "@material/elevation" "12.0.0-canary.197f64fa2.0"
+    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    "@material/ripple" "12.0.0-canary.197f64fa2.0"
+    "@material/rtl" "12.0.0-canary.197f64fa2.0"
+    "@material/shape" "12.0.0-canary.197f64fa2.0"
+    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    "@material/touch-target" "12.0.0-canary.197f64fa2.0"
+    "@material/typography" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
 
 "@material/checkbox@9.0.0-canary.1c156d69d.0":
   version "9.0.0-canary.1c156d69d.0"
@@ -2290,41 +2642,57 @@
     "@material/typography" "9.0.0-canary.1c156d69d.0"
     tslib "^1.9.3"
 
-"@material/circular-progress@=9.0.0-canary.1c156d69d.0":
-  version "9.0.0-canary.1c156d69d.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/circular-progress/-/circular-progress-9.0.0-canary.1c156d69d.0.tgz#df6a6b13cbe65e6e90e81ce0149d472a3de2463c"
-  integrity sha1-32prE8vmXm6Q6BzgFJ1HKj3iRjw=
+"@material/circular-progress@=12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/circular-progress/-/circular-progress-12.0.0-canary.197f64fa2.0.tgz#f9621416213242fc66d995756676f022b577e9f2"
+  integrity sha1-+WIUFiEyQvxm2ZV1ZnbwIrV36fI=
   dependencies:
-    "@material/animation" "9.0.0-canary.1c156d69d.0"
-    "@material/base" "9.0.0-canary.1c156d69d.0"
-    "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
-    "@material/progress-indicator" "9.0.0-canary.1c156d69d.0"
-    "@material/theme" "9.0.0-canary.1c156d69d.0"
-    tslib "^1.9.3"
+    "@material/animation" "12.0.0-canary.197f64fa2.0"
+    "@material/base" "12.0.0-canary.197f64fa2.0"
+    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    "@material/progress-indicator" "12.0.0-canary.197f64fa2.0"
+    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
+
+"@material/density@12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/density/-/density-12.0.0-canary.197f64fa2.0.tgz#3b9263cd45f3eb793a077847b96af7489620e554"
+  integrity sha1-O5JjzUXz63k6B3hHuWr3SJYg5VQ=
+  dependencies:
+    tslib "^2.1.0"
 
 "@material/density@9.0.0-canary.1c156d69d.0":
   version "9.0.0-canary.1c156d69d.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/density/-/density-9.0.0-canary.1c156d69d.0.tgz#ca2a2a5f4ea31520d717a41a6343c104acee3005"
   integrity sha1-yioqX06jFSDXF6QaY0PBBKzuMAU=
 
-"@material/dialog@=9.0.0-canary.1c156d69d.0":
-  version "9.0.0-canary.1c156d69d.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/dialog/-/dialog-9.0.0-canary.1c156d69d.0.tgz#15a0c38d322679f3fcf372eabd21a9c70061f788"
-  integrity sha1-FaDDjTImefP883LqvSGpxwBh94g=
+"@material/dialog@=12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/dialog/-/dialog-12.0.0-canary.197f64fa2.0.tgz#38d338dea1f0785f9b0f88ab4008441b0aed3b84"
+  integrity sha1-ONM43qHweF+bD4irQAhEGwrtO4Q=
   dependencies:
-    "@material/animation" "9.0.0-canary.1c156d69d.0"
-    "@material/base" "9.0.0-canary.1c156d69d.0"
-    "@material/button" "9.0.0-canary.1c156d69d.0"
-    "@material/dom" "9.0.0-canary.1c156d69d.0"
-    "@material/elevation" "9.0.0-canary.1c156d69d.0"
-    "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
-    "@material/ripple" "9.0.0-canary.1c156d69d.0"
-    "@material/rtl" "9.0.0-canary.1c156d69d.0"
-    "@material/shape" "9.0.0-canary.1c156d69d.0"
-    "@material/theme" "9.0.0-canary.1c156d69d.0"
-    "@material/touch-target" "9.0.0-canary.1c156d69d.0"
-    "@material/typography" "9.0.0-canary.1c156d69d.0"
-    tslib "^1.9.3"
+    "@material/animation" "12.0.0-canary.197f64fa2.0"
+    "@material/base" "12.0.0-canary.197f64fa2.0"
+    "@material/button" "12.0.0-canary.197f64fa2.0"
+    "@material/dom" "12.0.0-canary.197f64fa2.0"
+    "@material/elevation" "12.0.0-canary.197f64fa2.0"
+    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    "@material/icon-button" "12.0.0-canary.197f64fa2.0"
+    "@material/ripple" "12.0.0-canary.197f64fa2.0"
+    "@material/rtl" "12.0.0-canary.197f64fa2.0"
+    "@material/shape" "12.0.0-canary.197f64fa2.0"
+    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    "@material/touch-target" "12.0.0-canary.197f64fa2.0"
+    "@material/typography" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
+
+"@material/dom@12.0.0-canary.197f64fa2.0", "@material/dom@=12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/dom/-/dom-12.0.0-canary.197f64fa2.0.tgz#857fcc3646a6ca6cde0ed8f4c0ba12c1bce96da5"
+  integrity sha1-hX/MNkamymzeDtj0wLoSwbzpbaU=
+  dependencies:
+    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
 
 "@material/dom@8.0.0-canary.01db89053.0":
   version "8.0.0-canary.01db89053.0"
@@ -2334,7 +2702,7 @@
     "@material/feature-targeting" "8.0.0-canary.01db89053.0"
     tslib "^1.9.3"
 
-"@material/dom@9.0.0-canary.1c156d69d.0", "@material/dom@=9.0.0-canary.1c156d69d.0":
+"@material/dom@9.0.0-canary.1c156d69d.0":
   version "9.0.0-canary.1c156d69d.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/dom/-/dom-9.0.0-canary.1c156d69d.0.tgz#ffba86848f77cdce5ac2cfe494a97cb82af5c714"
   integrity sha1-/7qGhI93zc5aws/klKl8uCr1xxQ=
@@ -2342,23 +2710,34 @@
     "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
     tslib "^1.9.3"
 
-"@material/drawer@=9.0.0-canary.1c156d69d.0":
-  version "9.0.0-canary.1c156d69d.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/drawer/-/drawer-9.0.0-canary.1c156d69d.0.tgz#674e5b3fb3dee4ee86eb348f601f2d54576c8c7d"
-  integrity sha1-Z05bP7Pe5O6G6zSPYB8tVFdsjH0=
+"@material/drawer@=12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/drawer/-/drawer-12.0.0-canary.197f64fa2.0.tgz#9d95e6242446b05463ab026a28a2e3d4b08a3fdf"
+  integrity sha1-nZXmJCRGsFRjqwJqKKLj1LCKP98=
   dependencies:
-    "@material/animation" "9.0.0-canary.1c156d69d.0"
-    "@material/base" "9.0.0-canary.1c156d69d.0"
-    "@material/dom" "9.0.0-canary.1c156d69d.0"
-    "@material/elevation" "9.0.0-canary.1c156d69d.0"
-    "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
-    "@material/list" "9.0.0-canary.1c156d69d.0"
-    "@material/ripple" "9.0.0-canary.1c156d69d.0"
-    "@material/rtl" "9.0.0-canary.1c156d69d.0"
-    "@material/shape" "9.0.0-canary.1c156d69d.0"
-    "@material/theme" "9.0.0-canary.1c156d69d.0"
-    "@material/typography" "9.0.0-canary.1c156d69d.0"
-    tslib "^1.9.3"
+    "@material/animation" "12.0.0-canary.197f64fa2.0"
+    "@material/base" "12.0.0-canary.197f64fa2.0"
+    "@material/dom" "12.0.0-canary.197f64fa2.0"
+    "@material/elevation" "12.0.0-canary.197f64fa2.0"
+    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    "@material/list" "12.0.0-canary.197f64fa2.0"
+    "@material/ripple" "12.0.0-canary.197f64fa2.0"
+    "@material/rtl" "12.0.0-canary.197f64fa2.0"
+    "@material/shape" "12.0.0-canary.197f64fa2.0"
+    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    "@material/typography" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
+
+"@material/elevation@12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/elevation/-/elevation-12.0.0-canary.197f64fa2.0.tgz#ed4b96c453c702731f8116dbf22d2e3d83dd6b38"
+  integrity sha1-7UuWxFPHAnMfgRbb8i0uPYPdazg=
+  dependencies:
+    "@material/animation" "12.0.0-canary.197f64fa2.0"
+    "@material/base" "12.0.0-canary.197f64fa2.0"
+    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
 
 "@material/elevation@9.0.0-canary.1c156d69d.0":
   version "9.0.0-canary.1c156d69d.0"
@@ -2370,6 +2749,13 @@
     "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
     "@material/theme" "9.0.0-canary.1c156d69d.0"
 
+"@material/feature-targeting@12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/feature-targeting/-/feature-targeting-12.0.0-canary.197f64fa2.0.tgz#4e55c1664ee8319d352ec98ef2365d7990747f9f"
+  integrity sha1-TlXBZk7oMZ01LsmO8jZdeZB0f58=
+  dependencies:
+    tslib "^2.1.0"
+
 "@material/feature-targeting@8.0.0-canary.01db89053.0":
   version "8.0.0-canary.01db89053.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/feature-targeting/-/feature-targeting-8.0.0-canary.01db89053.0.tgz#1d69daaa9e5d6a54d91e7a4ab38086ab605236b6"
@@ -2380,508 +2766,522 @@
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/feature-targeting/-/feature-targeting-9.0.0-canary.1c156d69d.0.tgz#feaf37af156811a088958e653e6c08e66f567d2a"
   integrity sha1-/q83rxVoEaCIlY5lPmwI5m9WfSo=
 
-"@material/floating-label@9.0.0-canary.1c156d69d.0", "@material/floating-label@=9.0.0-canary.1c156d69d.0":
-  version "9.0.0-canary.1c156d69d.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/floating-label/-/floating-label-9.0.0-canary.1c156d69d.0.tgz#055fdd9729b030e45c4bc8089daf24c716c76126"
-  integrity sha1-BV/dlymwMORcS8gIna8kxxbHYSY=
+"@material/floating-label@12.0.0-canary.197f64fa2.0", "@material/floating-label@=12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/floating-label/-/floating-label-12.0.0-canary.197f64fa2.0.tgz#9dc76765754143add1eae1a0900dda37406ce0f8"
+  integrity sha1-ncdnZXVBQ63R6uGgkA3aN0Bs4Pg=
   dependencies:
-    "@material/animation" "9.0.0-canary.1c156d69d.0"
-    "@material/base" "9.0.0-canary.1c156d69d.0"
-    "@material/dom" "9.0.0-canary.1c156d69d.0"
-    "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
-    "@material/rtl" "9.0.0-canary.1c156d69d.0"
-    "@material/theme" "9.0.0-canary.1c156d69d.0"
-    "@material/typography" "9.0.0-canary.1c156d69d.0"
-    tslib "^1.9.3"
+    "@material/animation" "12.0.0-canary.197f64fa2.0"
+    "@material/base" "12.0.0-canary.197f64fa2.0"
+    "@material/dom" "12.0.0-canary.197f64fa2.0"
+    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    "@material/rtl" "12.0.0-canary.197f64fa2.0"
+    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    "@material/typography" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
 
-"@material/form-field@=9.0.0-canary.1c156d69d.0":
-  version "9.0.0-canary.1c156d69d.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/form-field/-/form-field-9.0.0-canary.1c156d69d.0.tgz#2f44c9704c8a4aef54376819573f835983686e89"
-  integrity sha1-L0TJcEyKSu9UN2gZVz+DWYNobok=
+"@material/form-field@=12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/form-field/-/form-field-12.0.0-canary.197f64fa2.0.tgz#eb553965532bed5077d12e0e79401757afbe79c0"
+  integrity sha1-61U5ZVMr7VB30S4OeUAXV6++ecA=
   dependencies:
-    "@material/base" "9.0.0-canary.1c156d69d.0"
-    "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
-    "@material/ripple" "9.0.0-canary.1c156d69d.0"
-    "@material/rtl" "9.0.0-canary.1c156d69d.0"
-    "@material/theme" "9.0.0-canary.1c156d69d.0"
-    "@material/typography" "9.0.0-canary.1c156d69d.0"
-    tslib "^1.9.3"
+    "@material/base" "12.0.0-canary.197f64fa2.0"
+    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    "@material/ripple" "12.0.0-canary.197f64fa2.0"
+    "@material/rtl" "12.0.0-canary.197f64fa2.0"
+    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    "@material/typography" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
 
-"@material/icon-button@=9.0.0-canary.1c156d69d.0":
-  version "9.0.0-canary.1c156d69d.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/icon-button/-/icon-button-9.0.0-canary.1c156d69d.0.tgz#076205e1fa563f946c65429a58b7553e2e50b68d"
-  integrity sha1-B2IF4fpWP5RsZUKaWLdVPi5Qto0=
+"@material/icon-button@12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/icon-button/-/icon-button-12.0.0-canary.197f64fa2.0.tgz#7b0f141096690a3332f2c024cc9fa95cc75503e8"
+  integrity sha1-ew8UEJZpCjMy8sAkzJ+pXMdVA+g=
   dependencies:
-    "@material/base" "9.0.0-canary.1c156d69d.0"
-    "@material/density" "9.0.0-canary.1c156d69d.0"
-    "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
-    "@material/ripple" "9.0.0-canary.1c156d69d.0"
-    "@material/rtl" "9.0.0-canary.1c156d69d.0"
-    "@material/theme" "9.0.0-canary.1c156d69d.0"
-    tslib "^1.9.3"
+    "@material/base" "12.0.0-canary.197f64fa2.0"
+    "@material/density" "12.0.0-canary.197f64fa2.0"
+    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    "@material/ripple" "12.0.0-canary.197f64fa2.0"
+    "@material/rtl" "12.0.0-canary.197f64fa2.0"
+    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
 
-"@material/line-ripple@9.0.0-canary.1c156d69d.0", "@material/line-ripple@=9.0.0-canary.1c156d69d.0":
-  version "9.0.0-canary.1c156d69d.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/line-ripple/-/line-ripple-9.0.0-canary.1c156d69d.0.tgz#a0b275edbd9a039a1143ec4d8789a29e903c90af"
-  integrity sha1-oLJ17b2aA5oRQ+xNh4minpA8kK8=
+"@material/line-ripple@12.0.0-canary.197f64fa2.0", "@material/line-ripple@=12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/line-ripple/-/line-ripple-12.0.0-canary.197f64fa2.0.tgz#290d568b22669c3dcb94cebe08420cfccceab98c"
+  integrity sha1-KQ1WiyJmnD3LlM6+CEIM/MzquYw=
   dependencies:
-    "@material/animation" "9.0.0-canary.1c156d69d.0"
-    "@material/base" "9.0.0-canary.1c156d69d.0"
-    "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
-    "@material/theme" "9.0.0-canary.1c156d69d.0"
-    tslib "^1.9.3"
+    "@material/animation" "12.0.0-canary.197f64fa2.0"
+    "@material/base" "12.0.0-canary.197f64fa2.0"
+    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
 
-"@material/linear-progress@=9.0.0-canary.1c156d69d.0":
-  version "9.0.0-canary.1c156d69d.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/linear-progress/-/linear-progress-9.0.0-canary.1c156d69d.0.tgz#51325bd7c474aa9a610a552b45bb1332530f065b"
-  integrity sha1-UTJb18R0qpphClUrRbsTMlMPBls=
+"@material/linear-progress@=12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/linear-progress/-/linear-progress-12.0.0-canary.197f64fa2.0.tgz#e10619004130f622d72655bbedd3a3256c69f5d5"
+  integrity sha1-4QYZAEEw9iLXJlW77dOjJWxp9dU=
   dependencies:
-    "@material/animation" "9.0.0-canary.1c156d69d.0"
-    "@material/base" "9.0.0-canary.1c156d69d.0"
-    "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
-    "@material/progress-indicator" "9.0.0-canary.1c156d69d.0"
-    "@material/theme" "9.0.0-canary.1c156d69d.0"
-    tslib "^1.9.3"
+    "@material/animation" "12.0.0-canary.197f64fa2.0"
+    "@material/base" "12.0.0-canary.197f64fa2.0"
+    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    "@material/progress-indicator" "12.0.0-canary.197f64fa2.0"
+    "@material/rtl" "12.0.0-canary.197f64fa2.0"
+    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
 
-"@material/list@9.0.0-canary.1c156d69d.0", "@material/list@=9.0.0-canary.1c156d69d.0":
-  version "9.0.0-canary.1c156d69d.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/list/-/list-9.0.0-canary.1c156d69d.0.tgz#d4a7b1354e4d00a843de19f3dbde188ca2e1e429"
-  integrity sha1-1KexNU5NAKhD3hnz294YjKLh5Ck=
+"@material/list@12.0.0-canary.197f64fa2.0", "@material/list@=12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/list/-/list-12.0.0-canary.197f64fa2.0.tgz#d50efdfd6048f480be79d3e98b18a34a3bcec7f5"
+  integrity sha1-1Q79/WBI9IC+edPpixijSjvOx/U=
   dependencies:
-    "@material/base" "9.0.0-canary.1c156d69d.0"
-    "@material/density" "9.0.0-canary.1c156d69d.0"
-    "@material/dom" "9.0.0-canary.1c156d69d.0"
-    "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
-    "@material/ripple" "9.0.0-canary.1c156d69d.0"
-    "@material/rtl" "9.0.0-canary.1c156d69d.0"
-    "@material/shape" "9.0.0-canary.1c156d69d.0"
-    "@material/theme" "9.0.0-canary.1c156d69d.0"
-    "@material/typography" "9.0.0-canary.1c156d69d.0"
-    tslib "^1.9.3"
+    "@material/base" "12.0.0-canary.197f64fa2.0"
+    "@material/density" "12.0.0-canary.197f64fa2.0"
+    "@material/dom" "12.0.0-canary.197f64fa2.0"
+    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    "@material/ripple" "12.0.0-canary.197f64fa2.0"
+    "@material/rtl" "12.0.0-canary.197f64fa2.0"
+    "@material/shape" "12.0.0-canary.197f64fa2.0"
+    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    "@material/typography" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
 
-"@material/menu-surface@9.0.0-canary.1c156d69d.0", "@material/menu-surface@=9.0.0-canary.1c156d69d.0":
-  version "9.0.0-canary.1c156d69d.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/menu-surface/-/menu-surface-9.0.0-canary.1c156d69d.0.tgz#6200a17a4895d99f604f96d87b65243ae3b98d5e"
-  integrity sha1-YgChekiV2Z9gT5bYe2UkOuO5jV4=
+"@material/menu-surface@12.0.0-canary.197f64fa2.0", "@material/menu-surface@=12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/menu-surface/-/menu-surface-12.0.0-canary.197f64fa2.0.tgz#e9a83f0fd5117425fa749d964462b7e1fef8cded"
+  integrity sha1-6ag/D9URdCX6dJ2WRGK34f74ze0=
   dependencies:
-    "@material/animation" "9.0.0-canary.1c156d69d.0"
-    "@material/base" "9.0.0-canary.1c156d69d.0"
-    "@material/elevation" "9.0.0-canary.1c156d69d.0"
-    "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
-    "@material/rtl" "9.0.0-canary.1c156d69d.0"
-    "@material/shape" "9.0.0-canary.1c156d69d.0"
-    "@material/theme" "9.0.0-canary.1c156d69d.0"
-    tslib "^1.9.3"
+    "@material/animation" "12.0.0-canary.197f64fa2.0"
+    "@material/base" "12.0.0-canary.197f64fa2.0"
+    "@material/elevation" "12.0.0-canary.197f64fa2.0"
+    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    "@material/rtl" "12.0.0-canary.197f64fa2.0"
+    "@material/shape" "12.0.0-canary.197f64fa2.0"
+    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
 
-"@material/menu@9.0.0-canary.1c156d69d.0", "@material/menu@=9.0.0-canary.1c156d69d.0":
-  version "9.0.0-canary.1c156d69d.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/menu/-/menu-9.0.0-canary.1c156d69d.0.tgz#641c020acaa1a92a254f8366e6a5762137483757"
-  integrity sha1-ZBwCCsqhqSolT4Nm5qV2ITdIN1c=
+"@material/menu@12.0.0-canary.197f64fa2.0", "@material/menu@=12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/menu/-/menu-12.0.0-canary.197f64fa2.0.tgz#4790ffc199b5686c16d052b064bb00c9268eb5f9"
+  integrity sha1-R5D/wZm1aGwW0FKwZLsAySaOtfk=
   dependencies:
-    "@material/base" "9.0.0-canary.1c156d69d.0"
-    "@material/dom" "9.0.0-canary.1c156d69d.0"
-    "@material/elevation" "9.0.0-canary.1c156d69d.0"
-    "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
-    "@material/list" "9.0.0-canary.1c156d69d.0"
-    "@material/menu-surface" "9.0.0-canary.1c156d69d.0"
-    "@material/ripple" "9.0.0-canary.1c156d69d.0"
-    "@material/rtl" "9.0.0-canary.1c156d69d.0"
-    "@material/theme" "9.0.0-canary.1c156d69d.0"
-    tslib "^1.9.3"
+    "@material/base" "12.0.0-canary.197f64fa2.0"
+    "@material/dom" "12.0.0-canary.197f64fa2.0"
+    "@material/elevation" "12.0.0-canary.197f64fa2.0"
+    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    "@material/list" "12.0.0-canary.197f64fa2.0"
+    "@material/menu-surface" "12.0.0-canary.197f64fa2.0"
+    "@material/ripple" "12.0.0-canary.197f64fa2.0"
+    "@material/rtl" "12.0.0-canary.197f64fa2.0"
+    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
 
-"@material/mwc-base@^0.20.0":
-  version "0.20.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-base/-/mwc-base-0.20.0.tgz#9753d357ea3fb9010985487a4d582bf273de1aaf"
-  integrity sha1-l1PTV+o/uQEJhUh6TVgr8nPeGq8=
+"@material/mwc-base@^0.21.0":
+  version "0.21.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-base/-/mwc-base-0.21.0.tgz#8e80884cbfc4c5dc1b8d460bb4037dfdbac84aff"
+  integrity sha1-joCITL/ExdwbjUYLtAN9/brISv8=
   dependencies:
-    "@material/base" "=9.0.0-canary.1c156d69d.0"
-    "@material/dom" "=9.0.0-canary.1c156d69d.0"
-    lit-element "^2.3.0"
+    "@material/base" "=12.0.0-canary.197f64fa2.0"
+    "@material/dom" "=12.0.0-canary.197f64fa2.0"
+    lit-element "~2.4.0"
     tslib "^2.0.1"
 
-"@material/mwc-button@^0.20.0":
-  version "0.20.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-button/-/mwc-button-0.20.0.tgz#2942edb504f4cee4d8f55b667b8538f27084b772"
-  integrity sha1-KULttQT0zuTY9Vtme4U48nCEt3I=
+"@material/mwc-button@^0.21.0":
+  version "0.21.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-button/-/mwc-button-0.21.0.tgz#e7bfdfcd1a55c33e3a8d41b3caad82f53c802c06"
+  integrity sha1-57/fzRpVwz46jUGzyq2C9TyALAY=
   dependencies:
-    "@material/mwc-icon" "^0.20.0"
-    "@material/mwc-ripple" "^0.20.0"
-    lit-element "^2.3.0"
+    "@material/mwc-icon" "^0.21.0"
+    "@material/mwc-ripple" "^0.21.0"
+    lit-element "~2.4.0"
     lit-html "^1.1.2"
     tslib "^2.0.1"
 
-"@material/mwc-checkbox@^0.20.0":
-  version "0.20.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-checkbox/-/mwc-checkbox-0.20.0.tgz#fff9d41cd8a72b39a3c883d1b01230e1a3e462fd"
-  integrity sha1-//nUHNinKzmjyIPRsBIw4aPkYv0=
+"@material/mwc-checkbox@^0.21.0":
+  version "0.21.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-checkbox/-/mwc-checkbox-0.21.0.tgz#9063635d10e07647c389bc28acf0f3809f310e63"
+  integrity sha1-kGNjXRDgdkfDibworPDzgJ8xDmM=
   dependencies:
-    "@material/mwc-base" "^0.20.0"
-    "@material/mwc-ripple" "^0.20.0"
-    lit-element "^2.3.0"
+    "@material/mwc-base" "^0.21.0"
+    "@material/mwc-ripple" "^0.21.0"
+    lit-element "~2.4.0"
     lit-html "^1.1.2"
     tslib "^2.0.1"
 
-"@material/mwc-circular-progress@^0.20.0":
-  version "0.20.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-circular-progress/-/mwc-circular-progress-0.20.0.tgz#db27d4862be4afa3b68f4d9bd06533171869ce37"
-  integrity sha1-2yfUhivkr6O2j02b0GUzFxhpzjc=
+"@material/mwc-circular-progress@^0.21.0":
+  version "0.21.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-circular-progress/-/mwc-circular-progress-0.21.0.tgz#f888a755a210a2613a86fc07bc828045064bbff4"
+  integrity sha1-+IinVaIQomE6hvwHvIKARQZLv/Q=
   dependencies:
-    "@material/circular-progress" "=9.0.0-canary.1c156d69d.0"
-    "@material/mwc-base" "^0.20.0"
-    "@material/theme" "=9.0.0-canary.1c156d69d.0"
-    lit-element "^2.3.0"
+    "@material/circular-progress" "=12.0.0-canary.197f64fa2.0"
+    "@material/mwc-base" "^0.21.0"
+    "@material/theme" "=12.0.0-canary.197f64fa2.0"
+    lit-element "~2.4.0"
     lit-html "^1.1.2"
     tslib "^2.0.1"
 
-"@material/mwc-dialog@^0.20.0":
-  version "0.20.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-dialog/-/mwc-dialog-0.20.0.tgz#3169f71a049c61cfd53d16b761b8313645bdba01"
-  integrity sha1-MWn3GgScYc/VPRa3YbgxNkW9ugE=
+"@material/mwc-dialog@^0.21.0":
+  version "0.21.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-dialog/-/mwc-dialog-0.21.0.tgz#b6649609ddf5cdebd66351ad9af94bc7a3225dd6"
+  integrity sha1-tmSWCd31zevWY1GtmvlLx6MiXdY=
   dependencies:
-    "@material/dialog" "=9.0.0-canary.1c156d69d.0"
-    "@material/dom" "=9.0.0-canary.1c156d69d.0"
-    "@material/mwc-base" "^0.20.0"
-    "@material/mwc-button" "^0.20.0"
+    "@material/dialog" "=12.0.0-canary.197f64fa2.0"
+    "@material/dom" "=12.0.0-canary.197f64fa2.0"
+    "@material/mwc-base" "^0.21.0"
+    "@material/mwc-button" "^0.21.0"
     blocking-elements "^0.1.0"
-    lit-element "^2.3.0"
+    lit-element "~2.4.0"
     lit-html "^1.1.2"
     tslib "^2.0.1"
     wicg-inert "^3.0.0"
 
-"@material/mwc-drawer@^0.20.0":
-  version "0.20.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-drawer/-/mwc-drawer-0.20.0.tgz#55dd7673fc4a9907e656c64ffc99180b19d81274"
-  integrity sha1-Vd12c/xKmQfmVsZP/JkYCxnYEnQ=
+"@material/mwc-drawer@^0.21.0":
+  version "0.21.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-drawer/-/mwc-drawer-0.21.0.tgz#a67a76702fbdb8ae93e6d3f322920bd74296dfa7"
+  integrity sha1-pnp2cC+9uK6T5tPzIpIL10KW36c=
   dependencies:
-    "@material/drawer" "=9.0.0-canary.1c156d69d.0"
-    "@material/mwc-base" "^0.20.0"
+    "@material/drawer" "=12.0.0-canary.197f64fa2.0"
+    "@material/mwc-base" "^0.21.0"
     blocking-elements "^0.1.0"
-    lit-element "^2.3.0"
+    lit-element "~2.4.0"
     lit-html "^1.1.2"
     tslib "^2.0.1"
     wicg-inert "^3.0.0"
 
-"@material/mwc-fab@^0.20.0":
-  version "0.20.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-fab/-/mwc-fab-0.20.0.tgz#bcd77bd9a6e06855b174944f0267e2b5512fab45"
-  integrity sha1-vNd72abgaFWxdJRPAmfitVEvq0U=
+"@material/mwc-fab@^0.21.0":
+  version "0.21.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-fab/-/mwc-fab-0.21.0.tgz#b3b228d257597363b8f4a491e0687930d23ce56b"
+  integrity sha1-s7Io0ldZc2O49KSR4Gh5MNI85Ws=
   dependencies:
-    "@material/mwc-ripple" "^0.20.0"
-    lit-element "^2.3.0"
+    "@material/mwc-ripple" "^0.21.0"
+    lit-element "~2.4.0"
     lit-html "^1.1.2"
     tslib "^2.0.1"
 
-"@material/mwc-floating-label@^0.20.0":
-  version "0.20.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-floating-label/-/mwc-floating-label-0.20.0.tgz#da7b77491c0e204ec6322a4bc311090b59ccdd3c"
-  integrity sha1-2nt3SRwOIE7GMipLwxEJC1nM3Tw=
+"@material/mwc-floating-label@^0.21.0":
+  version "0.21.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-floating-label/-/mwc-floating-label-0.21.0.tgz#9ae8912680ac932f5d1987c8ec01da3c1fd37432"
+  integrity sha1-muiRJoCsky9dGYfI7AHaPB/TdDI=
   dependencies:
-    "@material/floating-label" "=9.0.0-canary.1c156d69d.0"
+    "@material/floating-label" "=12.0.0-canary.197f64fa2.0"
+    lit-element "~2.4.0"
     lit-html "^1.1.2"
     tslib "^2.0.1"
 
-"@material/mwc-formfield@^0.20.0":
-  version "0.20.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-formfield/-/mwc-formfield-0.20.0.tgz#dd3e25778aad624a0d13f5b8a33c95bf1aa3883f"
-  integrity sha1-3T4ld4qtYkoNE/W4ozyVvxqjiD8=
+"@material/mwc-formfield@^0.21.0":
+  version "0.21.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-formfield/-/mwc-formfield-0.21.0.tgz#d5441d61de567fabb844ca639426d11b2b77cd2b"
+  integrity sha1-1UQdYd5Wf6u4RMpjlCbRGyt3zSs=
   dependencies:
-    "@material/form-field" "=9.0.0-canary.1c156d69d.0"
-    "@material/mwc-base" "^0.20.0"
-    lit-element "^2.3.0"
+    "@material/form-field" "=12.0.0-canary.197f64fa2.0"
+    "@material/mwc-base" "^0.21.0"
+    lit-element "~2.4.0"
     lit-html "^1.1.2"
     tslib "^2.0.1"
 
-"@material/mwc-icon-button-toggle@^0.20.0":
-  version "0.20.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-icon-button-toggle/-/mwc-icon-button-toggle-0.20.0.tgz#8ed5775eb045ff9ec87e197b3d8c3df5e54b4840"
-  integrity sha1-jtV3XrBF/57Ifhl7PYw99eVLSEA=
+"@material/mwc-icon-button@^0.21.0":
+  version "0.21.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-icon-button/-/mwc-icon-button-0.21.0.tgz#ab4612e80bd8576cc0079a3cc7c16b8ab9468870"
+  integrity sha1-q0YS6AvYV2zAB5o8x8FrirlGiHA=
   dependencies:
-    "@material/icon-button" "=9.0.0-canary.1c156d69d.0"
-    "@material/mwc-base" "^0.20.0"
-    "@material/mwc-icon-button" "^0.20.0"
-    "@material/mwc-ripple" "^0.20.0"
-    lit-element "^2.3.0"
+    "@material/mwc-ripple" "^0.21.0"
+    lit-element "~2.4.0"
     tslib "^2.0.1"
 
-"@material/mwc-icon-button@^0.20.0":
-  version "0.20.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-icon-button/-/mwc-icon-button-0.20.0.tgz#1a2d22f5d351b6a61f0dd41cb516a6fe21b6bcc5"
-  integrity sha1-Gi0i9dNRtqYfDdQctRam/iG2vMU=
+"@material/mwc-icon@^0.21.0":
+  version "0.21.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-icon/-/mwc-icon-0.21.0.tgz#e98ade595a7efc687a79383d01cdf0c02fcbb2db"
+  integrity sha1-6YreWVp+/Gh6eTg9Ac3wwC/Lsts=
   dependencies:
-    "@material/mwc-ripple" "^0.20.0"
-    lit-element "^2.3.0"
+    lit-element "~2.4.0"
     tslib "^2.0.1"
 
-"@material/mwc-icon@^0.20.0":
-  version "0.20.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-icon/-/mwc-icon-0.20.0.tgz#c2c42bca9145d4a75f63b4ce1567270b41986b47"
-  integrity sha1-wsQrypFF1KdfY7TOFWcnC0GYa0c=
+"@material/mwc-line-ripple@^0.21.0":
+  version "0.21.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-line-ripple/-/mwc-line-ripple-0.21.0.tgz#3ef9401a7d5b04a52c227c6e6057d0271128163a"
+  integrity sha1-PvlAGn1bBKUsInxuYFfQJxEoFjo=
   dependencies:
-    lit-element "^2.3.0"
-    tslib "^2.0.1"
-
-"@material/mwc-line-ripple@^0.20.0":
-  version "0.20.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-line-ripple/-/mwc-line-ripple-0.20.0.tgz#29020954765f6ce0e50943482652038dd5ed7b89"
-  integrity sha1-KQIJVHZfbODlCUNIJlIDjdXte4k=
-  dependencies:
-    "@material/line-ripple" "=9.0.0-canary.1c156d69d.0"
+    "@material/line-ripple" "=12.0.0-canary.197f64fa2.0"
+    lit-element "~2.4.0"
     lit-html "^1.1.2"
     tslib "^2.0.1"
 
-"@material/mwc-linear-progress@^0.20.0":
-  version "0.20.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-linear-progress/-/mwc-linear-progress-0.20.0.tgz#d98adb09fe0d90ff5a56e9750236865b2a00dfaf"
-  integrity sha1-2YrbCf4NkP9aVul1AjaGWyoA368=
+"@material/mwc-linear-progress@^0.21.0":
+  version "0.21.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-linear-progress/-/mwc-linear-progress-0.21.0.tgz#c1cf891e677f5f65804ba3e8bc3c650bc6570455"
+  integrity sha1-wc+JHmd/X2WAS6PovDxlC8ZXBFU=
   dependencies:
-    "@material/linear-progress" "=9.0.0-canary.1c156d69d.0"
-    "@material/theme" "=9.0.0-canary.1c156d69d.0"
-    "@types/resize-observer-browser" "^0.1.3"
-    lit-element "^2.3.0"
+    "@material/linear-progress" "=12.0.0-canary.197f64fa2.0"
+    "@material/theme" "=12.0.0-canary.197f64fa2.0"
+    lit-element "~2.4.0"
     lit-html "^1.1.2"
     tslib "^2.0.1"
 
-"@material/mwc-list@^0.20.0":
-  version "0.20.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-list/-/mwc-list-0.20.0.tgz#44b0bcd3653b46c7493614741fc7a11cee8abca4"
-  integrity sha1-RLC802U7RsdJNhR0H8ehHO6KvKQ=
+"@material/mwc-list@^0.21.0":
+  version "0.21.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-list/-/mwc-list-0.21.0.tgz#7e3180cd9400e753c8429a19d1a1cb050ec51635"
+  integrity sha1-fjGAzZQA51PIQpoZ0aHLBQ7FFjU=
   dependencies:
-    "@material/base" "=9.0.0-canary.1c156d69d.0"
-    "@material/dom" "=9.0.0-canary.1c156d69d.0"
-    "@material/list" "=9.0.0-canary.1c156d69d.0"
-    "@material/mwc-base" "^0.20.0"
-    "@material/mwc-checkbox" "^0.20.0"
-    "@material/mwc-radio" "^0.20.0"
-    "@material/mwc-ripple" "^0.20.0"
-    lit-element "^2.3.0"
+    "@material/base" "=12.0.0-canary.197f64fa2.0"
+    "@material/dom" "=12.0.0-canary.197f64fa2.0"
+    "@material/list" "=12.0.0-canary.197f64fa2.0"
+    "@material/mwc-base" "^0.21.0"
+    "@material/mwc-checkbox" "^0.21.0"
+    "@material/mwc-radio" "^0.21.0"
+    "@material/mwc-ripple" "^0.21.0"
+    lit-element "~2.4.0"
     lit-html "^1.1.2"
     tslib "^2.0.1"
 
-"@material/mwc-menu@^0.20.0":
-  version "0.20.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-menu/-/mwc-menu-0.20.0.tgz#672d6a4b40975b8101029be3b526aa014a252957"
-  integrity sha1-Zy1qS0CXW4EBApvjtSaqAUolKVc=
+"@material/mwc-menu@^0.21.0":
+  version "0.21.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-menu/-/mwc-menu-0.21.0.tgz#a71d11aea5760f123af0a2a62fa305b1149e9fd6"
+  integrity sha1-px0RrqV2DxI68KKmL6MFsRSen9Y=
   dependencies:
-    "@material/menu" "=9.0.0-canary.1c156d69d.0"
-    "@material/menu-surface" "=9.0.0-canary.1c156d69d.0"
-    "@material/mwc-base" "^0.20.0"
-    "@material/mwc-list" "^0.20.0"
-    "@material/shape" "=9.0.0-canary.1c156d69d.0"
-    "@material/theme" "=9.0.0-canary.1c156d69d.0"
-    lit-element "^2.3.0"
+    "@material/menu" "=12.0.0-canary.197f64fa2.0"
+    "@material/menu-surface" "=12.0.0-canary.197f64fa2.0"
+    "@material/mwc-base" "^0.21.0"
+    "@material/mwc-list" "^0.21.0"
+    "@material/shape" "=12.0.0-canary.197f64fa2.0"
+    "@material/theme" "=12.0.0-canary.197f64fa2.0"
+    lit-element "~2.4.0"
     lit-html "^1.1.2"
     tslib "^2.0.1"
 
-"@material/mwc-notched-outline@^0.20.0":
-  version "0.20.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-notched-outline/-/mwc-notched-outline-0.20.0.tgz#853018c83b41ee45f8802f02f79b9af290b1d9a3"
-  integrity sha1-hTAYyDtB7kX4gC8C95ua8pCx2aM=
+"@material/mwc-notched-outline@^0.21.0":
+  version "0.21.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-notched-outline/-/mwc-notched-outline-0.21.0.tgz#d2999f42955191f181e9a8d0d026d3ed6c9fa30f"
+  integrity sha1-0pmfQpVRkfGB6ajQ0CbT7Wyfow8=
   dependencies:
-    "@material/mwc-base" "^0.20.0"
-    "@material/notched-outline" "=9.0.0-canary.1c156d69d.0"
-    lit-element "^2.3.0"
+    "@material/mwc-base" "^0.21.0"
+    "@material/notched-outline" "=12.0.0-canary.197f64fa2.0"
+    lit-element "~2.4.0"
     lit-html "^1.1.2"
     tslib "^2.0.1"
 
-"@material/mwc-radio@^0.20.0":
-  version "0.20.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-radio/-/mwc-radio-0.20.0.tgz#bf282fe5bd3f0f8e6c3eeb0b781eea6bc06f1743"
-  integrity sha1-vygv5b0/D45sPusLeB7qa8BvF0M=
+"@material/mwc-radio@^0.21.0":
+  version "0.21.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-radio/-/mwc-radio-0.21.0.tgz#1a5daa3a8dea3b81c8b833bfa5151d49c012e388"
+  integrity sha1-Gl2qOo3qO4HIuDO/pRUdScAS44g=
   dependencies:
-    "@material/mwc-base" "^0.20.0"
-    "@material/mwc-ripple" "^0.20.0"
-    "@material/radio" "=9.0.0-canary.1c156d69d.0"
-    lit-element "^2.3.0"
+    "@material/mwc-base" "^0.21.0"
+    "@material/mwc-ripple" "^0.21.0"
+    "@material/radio" "=12.0.0-canary.197f64fa2.0"
+    lit-element "~2.4.0"
     tslib "^2.0.1"
 
-"@material/mwc-ripple@0.20.0", "@material/mwc-ripple@^0.20.0":
-  version "0.20.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-ripple/-/mwc-ripple-0.20.0.tgz#ac83eda314b712c2fba293d2732f550dd1c6023b"
-  integrity sha1-rIPtoxS3EsL7opPScy9VDdHGAjs=
+"@material/mwc-ripple@^0.21.0":
+  version "0.21.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-ripple/-/mwc-ripple-0.21.0.tgz#f58290cd9e40e2fcd1c54fce1d766df19fec73d5"
+  integrity sha1-9YKQzZ5A4vzRxU/OHXZt8Z/sc9U=
   dependencies:
-    "@material/dom" "=9.0.0-canary.1c156d69d.0"
-    "@material/mwc-base" "^0.20.0"
-    "@material/ripple" "=9.0.0-canary.1c156d69d.0"
-    lit-element "^2.3.0"
+    "@material/dom" "=12.0.0-canary.197f64fa2.0"
+    "@material/mwc-base" "^0.21.0"
+    "@material/ripple" "=12.0.0-canary.197f64fa2.0"
+    lit-element "~2.4.0"
     lit-html "^1.1.2"
     tslib "^2.0.1"
 
-"@material/mwc-select@^0.20.0":
-  version "0.20.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-select/-/mwc-select-0.20.0.tgz#7da6aeea6ac873e621c9e48e2eea92e785e5e04c"
-  integrity sha1-faau6mrIc+YhyeSOLuqS54Xl4Ew=
+
+"@material/mwc-select@^0.21.0":
+  version "0.21.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-select/-/mwc-select-0.21.0.tgz#876d0fd8ba64d5b5912f549321424fb849b2e299"
+  integrity sha1-h20P2Lpk1bWRL1STIUJPuEmy4pk=
   dependencies:
-    "@material/dom" "=9.0.0-canary.1c156d69d.0"
-    "@material/floating-label" "=9.0.0-canary.1c156d69d.0"
-    "@material/line-ripple" "=9.0.0-canary.1c156d69d.0"
-    "@material/list" "=9.0.0-canary.1c156d69d.0"
-    "@material/mwc-base" "^0.20.0"
-    "@material/mwc-floating-label" "^0.20.0"
-    "@material/mwc-icon" "^0.20.0"
-    "@material/mwc-line-ripple" "^0.20.0"
-    "@material/mwc-list" "^0.20.0"
-    "@material/mwc-menu" "^0.20.0"
-    "@material/mwc-notched-outline" "^0.20.0"
-    "@material/select" "=9.0.0-canary.1c156d69d.0"
-    lit-element "^2.3.0"
+    "@material/dom" "=12.0.0-canary.197f64fa2.0"
+    "@material/floating-label" "=12.0.0-canary.197f64fa2.0"
+    "@material/line-ripple" "=12.0.0-canary.197f64fa2.0"
+    "@material/list" "=12.0.0-canary.197f64fa2.0"
+    "@material/mwc-base" "^0.21.0"
+    "@material/mwc-floating-label" "^0.21.0"
+    "@material/mwc-icon" "^0.21.0"
+    "@material/mwc-line-ripple" "^0.21.0"
+    "@material/mwc-list" "^0.21.0"
+    "@material/mwc-menu" "^0.21.0"
+    "@material/mwc-notched-outline" "^0.21.0"
+    "@material/select" "=12.0.0-canary.197f64fa2.0"
+    lit-element "~2.4.0"
     lit-html "^1.1.2"
     tslib "^2.0.1"
 
-"@material/mwc-slider@^0.20.0":
-  version "0.20.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-slider/-/mwc-slider-0.20.0.tgz#8a842f5aa13cd0e416b16aecd441e2236b890f4d"
-  integrity sha1-ioQvWqE80OQWsWrs1EHiI2uJD00=
+"@material/mwc-slider@^0.21.0":
+  version "0.21.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-slider/-/mwc-slider-0.21.0.tgz#5c267b8e49df832308e5a26507922adf982b1b39"
+  integrity sha1-XCZ7jknfgyMI5aJlB5Iq35grGzk=
   dependencies:
-    "@material/dom" "=9.0.0-canary.1c156d69d.0"
-    "@material/mwc-base" "^0.20.0"
+    "@material/dom" "=12.0.0-canary.197f64fa2.0"
+    "@material/mwc-base" "^0.21.0"
     "@material/slider" "=8.0.0-canary.01db89053.0"
-    lit-element "^2.3.0"
+    lit-element "~2.4.0"
     lit-html "^1.1.2"
     tslib "^2.0.1"
 
-"@material/mwc-switch@^0.20.0":
-  version "0.20.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-switch/-/mwc-switch-0.20.0.tgz#e4b3c3f512e7c2c497f07828795aa543320e81f9"
-  integrity sha1-5LPD9RLnwsSX8HgoeVqlQzIOgfk=
+"@material/mwc-snackbar@^0.21.0":
+  version "0.21.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-snackbar/-/mwc-snackbar-0.21.0.tgz#0d0132c7538409d1d0e32ba16b79fcf85ea1d400"
+  integrity sha1-DQEyx1OECdHQ4yuha3n8+F6h1AA=
   dependencies:
-    "@material/mwc-base" "^0.20.0"
-    "@material/mwc-ripple" "^0.20.0"
-    "@material/switch" "=9.0.0-canary.1c156d69d.0"
-    lit-element "^2.3.0"
-    tslib "^2.0.1"
-
-"@material/mwc-tab-bar@^0.20.0":
-  version "0.20.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-tab-bar/-/mwc-tab-bar-0.20.0.tgz#02cecdc1bdf20feeb85085c8138d0f6d933411b2"
-  integrity sha1-As7Nwb3yD+64UIXIE40PbZM0EbI=
-  dependencies:
-    "@material/mwc-base" "^0.20.0"
-    "@material/mwc-tab" "^0.20.0"
-    "@material/mwc-tab-scroller" "^0.20.0"
-    "@material/tab" "=9.0.0-canary.1c156d69d.0"
-    "@material/tab-bar" "=9.0.0-canary.1c156d69d.0"
-    lit-element "^2.3.0"
-    tslib "^2.0.1"
-
-"@material/mwc-tab-indicator@^0.20.0":
-  version "0.20.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-tab-indicator/-/mwc-tab-indicator-0.20.0.tgz#a25e981517d46689aae5214798cbc083780569e3"
-  integrity sha1-ol6YFRfUZomq5SFHmMvAg3gFaeM=
-  dependencies:
-    "@material/mwc-base" "^0.20.0"
-    "@material/tab-indicator" "=9.0.0-canary.1c156d69d.0"
-    lit-element "^2.3.0"
+    "@material/mwc-base" "^0.21.0"
+    "@material/snackbar" "=12.0.0-canary.197f64fa2.0"
+    lit-element "~2.4.0"
     lit-html "^1.1.2"
     tslib "^2.0.1"
 
-"@material/mwc-tab-scroller@^0.20.0":
-  version "0.20.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-tab-scroller/-/mwc-tab-scroller-0.20.0.tgz#5f4ed139a322eef1047a03c3f79aa5df78f7b04e"
-  integrity sha1-X07ROaMi7vEEegPD95ql33j3sE4=
+"@material/mwc-switch@^0.21.0":
+  version "0.21.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-switch/-/mwc-switch-0.21.0.tgz#35c764cf822084fa7f627a67e4cfc2863fd02951"
+  integrity sha1-Ncdkz4IghPp/Ynpn5M/Chj/QKVE=
   dependencies:
-    "@material/dom" "=9.0.0-canary.1c156d69d.0"
-    "@material/mwc-base" "^0.20.0"
-    "@material/tab-scroller" "=9.0.0-canary.1c156d69d.0"
-    lit-element "^2.3.0"
+    "@material/mwc-base" "^0.21.0"
+    "@material/mwc-ripple" "^0.21.0"
+    "@material/switch" "=12.0.0-canary.197f64fa2.0"
+    lit-element "~2.4.0"
     tslib "^2.0.1"
 
-"@material/mwc-tab@^0.20.0":
-  version "0.20.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-tab/-/mwc-tab-0.20.0.tgz#a3445601dab27880e568dc5706738a6517082838"
-  integrity sha1-o0RWAdqyeIDlaNxXBnOKZRcIKDg=
+"@material/mwc-tab-bar@^0.21.0":
+  version "0.21.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-tab-bar/-/mwc-tab-bar-0.21.0.tgz#7a6f6c868fb898edb434a64be5504effe93f1986"
+  integrity sha1-em9sho+4mO20NKZL5VBO/+k/GYY=
   dependencies:
-    "@material/mwc-base" "^0.20.0"
-    "@material/mwc-ripple" "^0.20.0"
-    "@material/mwc-tab-indicator" "^0.20.0"
-    "@material/tab" "=9.0.0-canary.1c156d69d.0"
-    lit-element "^2.3.0"
+    "@material/mwc-base" "^0.21.0"
+    "@material/mwc-tab" "^0.21.0"
+    "@material/mwc-tab-scroller" "^0.21.0"
+    "@material/tab" "=12.0.0-canary.197f64fa2.0"
+    "@material/tab-bar" "=12.0.0-canary.197f64fa2.0"
+    lit-element "~2.4.0"
+    tslib "^2.0.1"
+
+"@material/mwc-tab-indicator@^0.21.0":
+  version "0.21.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-tab-indicator/-/mwc-tab-indicator-0.21.0.tgz#863d956db8151e7e100043a4b08b3d9d80fdcb9f"
+  integrity sha1-hj2VbbgVHn4QAEOksIs9nYD9y58=
+  dependencies:
+    "@material/mwc-base" "^0.21.0"
+    "@material/tab-indicator" "=12.0.0-canary.197f64fa2.0"
+    lit-element "~2.4.0"
     lit-html "^1.1.2"
     tslib "^2.0.1"
 
-"@material/mwc-textarea@^0.20.0":
-  version "0.20.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-textarea/-/mwc-textarea-0.20.0.tgz#529896903c4d03920a73e0f8616133db656c5194"
-  integrity sha1-UpiWkDxNA5IKc+D4YWEz22VsUZQ=
+"@material/mwc-tab-scroller@^0.21.0":
+  version "0.21.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-tab-scroller/-/mwc-tab-scroller-0.21.0.tgz#b0e1d40a4696d087238f0311f91b525df198eb05"
+  integrity sha1-sOHUCkaW0IcjjwMR+RtSXfGY6wU=
   dependencies:
-    "@material/mwc-base" "^0.20.0"
-    "@material/mwc-textfield" "^0.20.0"
-    lit-element "^2.3.0"
+    "@material/dom" "=12.0.0-canary.197f64fa2.0"
+    "@material/mwc-base" "^0.21.0"
+    "@material/tab-scroller" "=12.0.0-canary.197f64fa2.0"
+    lit-element "~2.4.0"
+    tslib "^2.0.1"
+
+"@material/mwc-tab@^0.21.0":
+  version "0.21.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-tab/-/mwc-tab-0.21.0.tgz#1201017f2e8967d3fd577238f5d055f6d4118681"
+  integrity sha1-EgEBfy6JZ9P9V3I49dBV9tQRhoE=
+  dependencies:
+    "@material/mwc-base" "^0.21.0"
+    "@material/mwc-ripple" "^0.21.0"
+    "@material/mwc-tab-indicator" "^0.21.0"
+    "@material/tab" "=12.0.0-canary.197f64fa2.0"
+    lit-element "~2.4.0"
     lit-html "^1.1.2"
     tslib "^2.0.1"
 
-"@material/mwc-textfield@^0.20.0":
-  version "0.20.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-textfield/-/mwc-textfield-0.20.0.tgz#a6f1e90e5e4fd001cf74f7e4ddac4410b3730455"
-  integrity sha1-pvHpDl5P0AHPdPfk3axEELNzBFU=
+"@material/mwc-textarea@^0.21.0":
+  version "0.21.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-textarea/-/mwc-textarea-0.21.0.tgz#db7cd18f738cf0a6e0b6e42c13d0b13cd902e87a"
+  integrity sha1-23zRj3OM8KbgtuQsE9CxPNkC6Ho=
   dependencies:
-    "@material/floating-label" "=9.0.0-canary.1c156d69d.0"
-    "@material/line-ripple" "=9.0.0-canary.1c156d69d.0"
-    "@material/mwc-base" "^0.20.0"
-    "@material/mwc-floating-label" "^0.20.0"
-    "@material/mwc-line-ripple" "^0.20.0"
-    "@material/mwc-notched-outline" "^0.20.0"
-    "@material/textfield" "=9.0.0-canary.1c156d69d.0"
-    lit-element "^2.3.0"
+    "@material/mwc-base" "^0.21.0"
+    "@material/mwc-textfield" "^0.21.0"
+    lit-element "~2.4.0"
     lit-html "^1.1.2"
     tslib "^2.0.1"
 
-"@material/mwc-top-app-bar-fixed@^0.20.0":
-  version "0.20.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-top-app-bar-fixed/-/mwc-top-app-bar-fixed-0.20.0.tgz#6d7790f204c5ccc6d8ac54538a85bb623c909061"
-  integrity sha1-bXeQ8gTFzMbYrFRTioW7YjyQkGE=
+"@material/mwc-textfield@^0.21.0":
+  version "0.21.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-textfield/-/mwc-textfield-0.21.0.tgz#ef67961869044735c97d76b2779fad039568b45c"
+  integrity sha1-72eWGGkERzXJfXayd5+tA5VotFw=
   dependencies:
-    "@material/mwc-top-app-bar" "^0.20.0"
-    "@material/top-app-bar" "=9.0.0-canary.1c156d69d.0"
-    lit-element "^2.3.0"
-    tslib "^2.0.1"
-
-"@material/mwc-top-app-bar@^0.20.0":
-  version "0.20.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-top-app-bar/-/mwc-top-app-bar-0.20.0.tgz#09273a3d06aae7bc974ca471bc1c6fe7fb928789"
-  integrity sha1-CSc6PQaq57yXTKRxvBxv5/uSh4k=
-  dependencies:
-    "@material/mwc-base" "^0.20.0"
-    "@material/top-app-bar" "=9.0.0-canary.1c156d69d.0"
-    lit-element "^2.3.0"
+    "@material/floating-label" "=12.0.0-canary.197f64fa2.0"
+    "@material/line-ripple" "=12.0.0-canary.197f64fa2.0"
+    "@material/mwc-base" "^0.21.0"
+    "@material/mwc-floating-label" "^0.21.0"
+    "@material/mwc-line-ripple" "^0.21.0"
+    "@material/mwc-notched-outline" "^0.21.0"
+    "@material/textfield" "=12.0.0-canary.197f64fa2.0"
+    lit-element "~2.4.0"
     lit-html "^1.1.2"
     tslib "^2.0.1"
 
-"@material/notched-outline@9.0.0-canary.1c156d69d.0", "@material/notched-outline@=9.0.0-canary.1c156d69d.0":
-  version "9.0.0-canary.1c156d69d.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/notched-outline/-/notched-outline-9.0.0-canary.1c156d69d.0.tgz#a3821fee8afa689167d9ab951206dc1c45c2d8b4"
-  integrity sha1-o4If7or6aJFn2auVEgbcHEXC2LQ=
+"@material/mwc-top-app-bar-fixed@^0.21.0":
+  version "0.21.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-top-app-bar-fixed/-/mwc-top-app-bar-fixed-0.21.0.tgz#dbc65ce5ba6b1a78740e765bf27c54fd8b5fa69c"
+  integrity sha1-28Zc5bprGnh0DnZb8nxU/Ytfppw=
   dependencies:
-    "@material/base" "9.0.0-canary.1c156d69d.0"
-    "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
-    "@material/floating-label" "9.0.0-canary.1c156d69d.0"
-    "@material/rtl" "9.0.0-canary.1c156d69d.0"
-    "@material/shape" "9.0.0-canary.1c156d69d.0"
-    "@material/theme" "9.0.0-canary.1c156d69d.0"
-    tslib "^1.9.3"
+    "@material/mwc-top-app-bar" "^0.21.0"
+    "@material/top-app-bar" "=12.0.0-canary.197f64fa2.0"
+    lit-element "~2.4.0"
+    tslib "^2.0.1"
 
-"@material/progress-indicator@9.0.0-canary.1c156d69d.0":
-  version "9.0.0-canary.1c156d69d.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/progress-indicator/-/progress-indicator-9.0.0-canary.1c156d69d.0.tgz#2a43d2c1442909874c5990b7ae893aced071a83d"
-  integrity sha1-KkPSwUQpCYdMWZC3rok6ztBxqD0=
+"@material/mwc-top-app-bar@^0.21.0":
+  version "0.21.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-top-app-bar/-/mwc-top-app-bar-0.21.0.tgz#75689d5a1e38ace928a479ca712b97adc8465f43"
+  integrity sha1-dWidWh44rOkopHnKcSuXrchGX0M=
   dependencies:
-    tslib "^1.9.3"
+    "@material/mwc-base" "^0.21.0"
+    "@material/top-app-bar" "=12.0.0-canary.197f64fa2.0"
+    lit-element "~2.4.0"
+    lit-html "^1.1.2"
+    tslib "^2.0.1"
 
-"@material/radio@=9.0.0-canary.1c156d69d.0":
-  version "9.0.0-canary.1c156d69d.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/radio/-/radio-9.0.0-canary.1c156d69d.0.tgz#f0db2c1da9106a7a3888ed382da31b16fe78d1fc"
-  integrity sha1-8NssHakQano4iO04LaMbFv540fw=
+"@material/notched-outline@12.0.0-canary.197f64fa2.0", "@material/notched-outline@=12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/notched-outline/-/notched-outline-12.0.0-canary.197f64fa2.0.tgz#c2292652107fbbe806234172ee419028d96805fe"
+  integrity sha1-wikmUhB/u+gGI0Fy7kGQKNloBf4=
   dependencies:
-    "@material/animation" "9.0.0-canary.1c156d69d.0"
-    "@material/base" "9.0.0-canary.1c156d69d.0"
-    "@material/density" "9.0.0-canary.1c156d69d.0"
-    "@material/dom" "9.0.0-canary.1c156d69d.0"
-    "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
-    "@material/ripple" "9.0.0-canary.1c156d69d.0"
-    "@material/theme" "9.0.0-canary.1c156d69d.0"
-    "@material/touch-target" "9.0.0-canary.1c156d69d.0"
-    tslib "^1.9.3"
+    "@material/base" "12.0.0-canary.197f64fa2.0"
+    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    "@material/floating-label" "12.0.0-canary.197f64fa2.0"
+    "@material/rtl" "12.0.0-canary.197f64fa2.0"
+    "@material/shape" "12.0.0-canary.197f64fa2.0"
+    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
 
-"@material/ripple@9.0.0-canary.1c156d69d.0", "@material/ripple@=9.0.0-canary.1c156d69d.0":
+"@material/progress-indicator@12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/progress-indicator/-/progress-indicator-12.0.0-canary.197f64fa2.0.tgz#b4964a462c48623c26e650eae3abacf757dc955c"
+  integrity sha1-tJZKRixIYjwm5lDq46us91fclVw=
+  dependencies:
+    tslib "^2.1.0"
+
+"@material/radio@=12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/radio/-/radio-12.0.0-canary.197f64fa2.0.tgz#dda3ee55e0f901bcd0c5b9af46bf3cbe52fc59ea"
+  integrity sha1-3aPuVeD5AbzQxbmvRr88vlL8Weo=
+  dependencies:
+    "@material/animation" "12.0.0-canary.197f64fa2.0"
+    "@material/base" "12.0.0-canary.197f64fa2.0"
+    "@material/density" "12.0.0-canary.197f64fa2.0"
+    "@material/dom" "12.0.0-canary.197f64fa2.0"
+    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    "@material/ripple" "12.0.0-canary.197f64fa2.0"
+    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    "@material/touch-target" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
+
+"@material/ripple@12.0.0-canary.197f64fa2.0", "@material/ripple@=12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/ripple/-/ripple-12.0.0-canary.197f64fa2.0.tgz#c3e96d42404111b12ea04eb72e20c39a3c162613"
+  integrity sha1-w+ltQkBBEbEuoE63LiDDmjwWJhM=
+  dependencies:
+    "@material/animation" "12.0.0-canary.197f64fa2.0"
+    "@material/base" "12.0.0-canary.197f64fa2.0"
+    "@material/dom" "12.0.0-canary.197f64fa2.0"
+    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
+
+"@material/ripple@9.0.0-canary.1c156d69d.0":
   version "9.0.0-canary.1c156d69d.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/ripple/-/ripple-9.0.0-canary.1c156d69d.0.tgz#1cbfec1c94640140f6c1c0f43a3582a82dbc7671"
   integrity sha1-HL/sHJRkAUD2wcD0OjWCqC28dnE=
@@ -2892,6 +3292,14 @@
     "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
     "@material/theme" "9.0.0-canary.1c156d69d.0"
     tslib "^1.9.3"
+
+"@material/rtl@12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/rtl/-/rtl-12.0.0-canary.197f64fa2.0.tgz#4d4d8b54867a7fd9eb6f0cc002d25bd2750ba0bc"
+  integrity sha1-TU2LVIZ6f9nrbwzAAtJb0nULoLw=
+  dependencies:
+    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
 
 "@material/rtl@8.0.0-canary.01db89053.0":
   version "8.0.0-canary.01db89053.0"
@@ -2907,30 +3315,40 @@
   dependencies:
     "@material/theme" "9.0.0-canary.1c156d69d.0"
 
-"@material/select@=9.0.0-canary.1c156d69d.0":
-  version "9.0.0-canary.1c156d69d.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/select/-/select-9.0.0-canary.1c156d69d.0.tgz#45dfeb584dfb1cbb980cd5ebd05e96b0164e647b"
-  integrity sha1-Rd/rWE37HLuYDNXr0F6WsBZOZHs=
+"@material/select@=12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/select/-/select-12.0.0-canary.197f64fa2.0.tgz#2432a671940da7f9a7cb86d5ad25024233c600e9"
+  integrity sha1-JDKmcZQNp/mny4bVrSUCQjPGAOk=
   dependencies:
-    "@material/animation" "9.0.0-canary.1c156d69d.0"
-    "@material/base" "9.0.0-canary.1c156d69d.0"
-    "@material/density" "9.0.0-canary.1c156d69d.0"
-    "@material/dom" "9.0.0-canary.1c156d69d.0"
-    "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
-    "@material/floating-label" "9.0.0-canary.1c156d69d.0"
-    "@material/line-ripple" "9.0.0-canary.1c156d69d.0"
-    "@material/list" "9.0.0-canary.1c156d69d.0"
-    "@material/menu" "9.0.0-canary.1c156d69d.0"
-    "@material/menu-surface" "9.0.0-canary.1c156d69d.0"
-    "@material/notched-outline" "9.0.0-canary.1c156d69d.0"
-    "@material/ripple" "9.0.0-canary.1c156d69d.0"
-    "@material/rtl" "9.0.0-canary.1c156d69d.0"
-    "@material/shape" "9.0.0-canary.1c156d69d.0"
-    "@material/theme" "9.0.0-canary.1c156d69d.0"
-    "@material/typography" "9.0.0-canary.1c156d69d.0"
-    tslib "^1.9.3"
+    "@material/animation" "12.0.0-canary.197f64fa2.0"
+    "@material/base" "12.0.0-canary.197f64fa2.0"
+    "@material/density" "12.0.0-canary.197f64fa2.0"
+    "@material/dom" "12.0.0-canary.197f64fa2.0"
+    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    "@material/floating-label" "12.0.0-canary.197f64fa2.0"
+    "@material/line-ripple" "12.0.0-canary.197f64fa2.0"
+    "@material/list" "12.0.0-canary.197f64fa2.0"
+    "@material/menu" "12.0.0-canary.197f64fa2.0"
+    "@material/menu-surface" "12.0.0-canary.197f64fa2.0"
+    "@material/notched-outline" "12.0.0-canary.197f64fa2.0"
+    "@material/ripple" "12.0.0-canary.197f64fa2.0"
+    "@material/rtl" "12.0.0-canary.197f64fa2.0"
+    "@material/shape" "12.0.0-canary.197f64fa2.0"
+    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    "@material/typography" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
 
-"@material/shape@9.0.0-canary.1c156d69d.0", "@material/shape@=9.0.0-canary.1c156d69d.0":
+"@material/shape@12.0.0-canary.197f64fa2.0", "@material/shape@=12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/shape/-/shape-12.0.0-canary.197f64fa2.0.tgz#76b01b497e478ec8f115681abef8dd6acc3f8891"
+  integrity sha1-drAbSX5HjsjxFWgavvjdasw/iJE=
+  dependencies:
+    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    "@material/rtl" "12.0.0-canary.197f64fa2.0"
+    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
+
+"@material/shape@9.0.0-canary.1c156d69d.0":
   version "9.0.0-canary.1c156d69d.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/shape/-/shape-9.0.0-canary.1c156d69d.0.tgz#6d42d7004ed09b4493abf3f732bb855d3c3996ed"
   integrity sha1-bULXAE7Qm0STq/P3MruFXTw5lu0=
@@ -2953,91 +3371,118 @@
     "@material/typography" "8.0.0-canary.01db89053.0"
     tslib "^1.9.3"
 
-"@material/switch@=9.0.0-canary.1c156d69d.0":
-  version "9.0.0-canary.1c156d69d.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/switch/-/switch-9.0.0-canary.1c156d69d.0.tgz#e76b4ec213a7fc449a82534289f016ae60002465"
-  integrity sha1-52tOwhOn/ESaglNCifAWrmAAJGU=
+"@material/snackbar@=12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/snackbar/-/snackbar-12.0.0-canary.197f64fa2.0.tgz#61d0942e29f29213f8daa6ad78c21f94fe0d001d"
+  integrity sha1-YdCULinykhP42qateMIflP4NAB0=
   dependencies:
-    "@material/animation" "9.0.0-canary.1c156d69d.0"
-    "@material/base" "9.0.0-canary.1c156d69d.0"
-    "@material/density" "9.0.0-canary.1c156d69d.0"
-    "@material/dom" "9.0.0-canary.1c156d69d.0"
-    "@material/elevation" "9.0.0-canary.1c156d69d.0"
-    "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
-    "@material/ripple" "9.0.0-canary.1c156d69d.0"
-    "@material/rtl" "9.0.0-canary.1c156d69d.0"
-    "@material/theme" "9.0.0-canary.1c156d69d.0"
-    tslib "^1.9.3"
+    "@material/animation" "12.0.0-canary.197f64fa2.0"
+    "@material/base" "12.0.0-canary.197f64fa2.0"
+    "@material/button" "12.0.0-canary.197f64fa2.0"
+    "@material/dom" "12.0.0-canary.197f64fa2.0"
+    "@material/elevation" "12.0.0-canary.197f64fa2.0"
+    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    "@material/icon-button" "12.0.0-canary.197f64fa2.0"
+    "@material/ripple" "12.0.0-canary.197f64fa2.0"
+    "@material/rtl" "12.0.0-canary.197f64fa2.0"
+    "@material/shape" "12.0.0-canary.197f64fa2.0"
+    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    "@material/typography" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
 
-"@material/tab-bar@=9.0.0-canary.1c156d69d.0":
-  version "9.0.0-canary.1c156d69d.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/tab-bar/-/tab-bar-9.0.0-canary.1c156d69d.0.tgz#d3dc2ea7317410c4fb054b32d88dbbbdf9c34bb3"
-  integrity sha1-09wupzF0EMT7BUsy2I27vfnDS7M=
+"@material/switch@=12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/switch/-/switch-12.0.0-canary.197f64fa2.0.tgz#ac5f2835f480604199a5a6a4f0790b0de578f236"
+  integrity sha1-rF8oNfSAYEGZpaak8HkLDeV48jY=
   dependencies:
-    "@material/animation" "9.0.0-canary.1c156d69d.0"
-    "@material/base" "9.0.0-canary.1c156d69d.0"
-    "@material/density" "9.0.0-canary.1c156d69d.0"
-    "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
-    "@material/tab" "9.0.0-canary.1c156d69d.0"
-    "@material/tab-scroller" "9.0.0-canary.1c156d69d.0"
-    tslib "^1.9.3"
+    "@material/animation" "12.0.0-canary.197f64fa2.0"
+    "@material/base" "12.0.0-canary.197f64fa2.0"
+    "@material/density" "12.0.0-canary.197f64fa2.0"
+    "@material/dom" "12.0.0-canary.197f64fa2.0"
+    "@material/elevation" "12.0.0-canary.197f64fa2.0"
+    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    "@material/ripple" "12.0.0-canary.197f64fa2.0"
+    "@material/rtl" "12.0.0-canary.197f64fa2.0"
+    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
 
-"@material/tab-indicator@9.0.0-canary.1c156d69d.0", "@material/tab-indicator@=9.0.0-canary.1c156d69d.0":
-  version "9.0.0-canary.1c156d69d.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/tab-indicator/-/tab-indicator-9.0.0-canary.1c156d69d.0.tgz#428b53a25cf09de65e1f602f3784b6202844ad48"
-  integrity sha1-QotTolzwneZeH2AvN4S2IChErUg=
+"@material/tab-bar@=12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/tab-bar/-/tab-bar-12.0.0-canary.197f64fa2.0.tgz#5fc963513115ba7166b134fafecae19fa20f2276"
+  integrity sha1-X8ljUTEVunFmsTT6/srhn6IPInY=
   dependencies:
-    "@material/animation" "9.0.0-canary.1c156d69d.0"
-    "@material/base" "9.0.0-canary.1c156d69d.0"
-    "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
-    "@material/theme" "9.0.0-canary.1c156d69d.0"
-    tslib "^1.9.3"
+    "@material/animation" "12.0.0-canary.197f64fa2.0"
+    "@material/base" "12.0.0-canary.197f64fa2.0"
+    "@material/density" "12.0.0-canary.197f64fa2.0"
+    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    "@material/tab" "12.0.0-canary.197f64fa2.0"
+    "@material/tab-scroller" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
 
-"@material/tab-scroller@9.0.0-canary.1c156d69d.0", "@material/tab-scroller@=9.0.0-canary.1c156d69d.0":
-  version "9.0.0-canary.1c156d69d.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/tab-scroller/-/tab-scroller-9.0.0-canary.1c156d69d.0.tgz#f65267f3af811af3e7b1a7716a4b4a3cd64571ae"
-  integrity sha1-9lJn86+BGvPnsadxaktKPNZFca4=
+"@material/tab-indicator@12.0.0-canary.197f64fa2.0", "@material/tab-indicator@=12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/tab-indicator/-/tab-indicator-12.0.0-canary.197f64fa2.0.tgz#c598d39037ced3a54213bb8fe193d23e09977f29"
+  integrity sha1-xZjTkDfO06VCE7uP4ZPSPgmXfyk=
   dependencies:
-    "@material/animation" "9.0.0-canary.1c156d69d.0"
-    "@material/base" "9.0.0-canary.1c156d69d.0"
-    "@material/dom" "9.0.0-canary.1c156d69d.0"
-    "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
-    "@material/tab" "9.0.0-canary.1c156d69d.0"
-    tslib "^1.9.3"
+    "@material/animation" "12.0.0-canary.197f64fa2.0"
+    "@material/base" "12.0.0-canary.197f64fa2.0"
+    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
 
-"@material/tab@9.0.0-canary.1c156d69d.0", "@material/tab@=9.0.0-canary.1c156d69d.0":
-  version "9.0.0-canary.1c156d69d.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/tab/-/tab-9.0.0-canary.1c156d69d.0.tgz#eef68160458a4d55b28e96f14b0077a6dd69e88d"
-  integrity sha1-7vaBYEWKTVWyjpbxSwB3pt1p6I0=
+"@material/tab-scroller@12.0.0-canary.197f64fa2.0", "@material/tab-scroller@=12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/tab-scroller/-/tab-scroller-12.0.0-canary.197f64fa2.0.tgz#0c04dbe974e7f21cde81259e5aa2e96457710254"
+  integrity sha1-DATb6XTn8hzegSWeWqLpZFdxAlQ=
   dependencies:
-    "@material/base" "9.0.0-canary.1c156d69d.0"
-    "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
-    "@material/ripple" "9.0.0-canary.1c156d69d.0"
-    "@material/rtl" "9.0.0-canary.1c156d69d.0"
-    "@material/tab-indicator" "9.0.0-canary.1c156d69d.0"
-    "@material/theme" "9.0.0-canary.1c156d69d.0"
-    "@material/typography" "9.0.0-canary.1c156d69d.0"
-    tslib "^1.9.3"
+    "@material/animation" "12.0.0-canary.197f64fa2.0"
+    "@material/base" "12.0.0-canary.197f64fa2.0"
+    "@material/dom" "12.0.0-canary.197f64fa2.0"
+    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    "@material/tab" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
 
-"@material/textfield@=9.0.0-canary.1c156d69d.0":
-  version "9.0.0-canary.1c156d69d.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/textfield/-/textfield-9.0.0-canary.1c156d69d.0.tgz#2126dc03a0e830d4ff541b150d1bb26db61a074a"
-  integrity sha1-ISbcA6DoMNT/VBsVDRuybbYaB0o=
+"@material/tab@12.0.0-canary.197f64fa2.0", "@material/tab@=12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/tab/-/tab-12.0.0-canary.197f64fa2.0.tgz#3f55326a25f4172bdc195ecc2bfeeac311ab5f61"
+  integrity sha1-P1UyaiX0FyvcGV7MK/7qwxGrX2E=
   dependencies:
-    "@material/animation" "9.0.0-canary.1c156d69d.0"
-    "@material/base" "9.0.0-canary.1c156d69d.0"
-    "@material/density" "9.0.0-canary.1c156d69d.0"
-    "@material/dom" "9.0.0-canary.1c156d69d.0"
-    "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
-    "@material/floating-label" "9.0.0-canary.1c156d69d.0"
-    "@material/line-ripple" "9.0.0-canary.1c156d69d.0"
-    "@material/notched-outline" "9.0.0-canary.1c156d69d.0"
-    "@material/ripple" "9.0.0-canary.1c156d69d.0"
-    "@material/rtl" "9.0.0-canary.1c156d69d.0"
-    "@material/shape" "9.0.0-canary.1c156d69d.0"
-    "@material/theme" "9.0.0-canary.1c156d69d.0"
-    "@material/typography" "9.0.0-canary.1c156d69d.0"
-    tslib "^1.9.3"
+    "@material/base" "12.0.0-canary.197f64fa2.0"
+    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    "@material/ripple" "12.0.0-canary.197f64fa2.0"
+    "@material/rtl" "12.0.0-canary.197f64fa2.0"
+    "@material/tab-indicator" "12.0.0-canary.197f64fa2.0"
+    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    "@material/typography" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
+
+"@material/textfield@=12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/textfield/-/textfield-12.0.0-canary.197f64fa2.0.tgz#dc8cef3a8bd219ae90956b67e9727acbce1fc042"
+  integrity sha1-3IzvOovSGa6QlWtn6XJ6y84fwEI=
+  dependencies:
+    "@material/animation" "12.0.0-canary.197f64fa2.0"
+    "@material/base" "12.0.0-canary.197f64fa2.0"
+    "@material/density" "12.0.0-canary.197f64fa2.0"
+    "@material/dom" "12.0.0-canary.197f64fa2.0"
+    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    "@material/floating-label" "12.0.0-canary.197f64fa2.0"
+    "@material/line-ripple" "12.0.0-canary.197f64fa2.0"
+    "@material/notched-outline" "12.0.0-canary.197f64fa2.0"
+    "@material/ripple" "12.0.0-canary.197f64fa2.0"
+    "@material/rtl" "12.0.0-canary.197f64fa2.0"
+    "@material/shape" "12.0.0-canary.197f64fa2.0"
+    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    "@material/typography" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
+
+"@material/theme@12.0.0-canary.197f64fa2.0", "@material/theme@=12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/theme/-/theme-12.0.0-canary.197f64fa2.0.tgz#2443874251a0cd827a8829e55eb792a366400508"
+  integrity sha1-JEOHQlGgzYJ6iCnlXreSo2ZABQg=
+  dependencies:
+    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
 
 "@material/theme@8.0.0-canary.01db89053.0":
   version "8.0.0-canary.01db89053.0"
@@ -3046,27 +3491,36 @@
   dependencies:
     "@material/feature-targeting" "8.0.0-canary.01db89053.0"
 
-"@material/theme@9.0.0-canary.1c156d69d.0", "@material/theme@=9.0.0-canary.1c156d69d.0":
+"@material/theme@9.0.0-canary.1c156d69d.0":
   version "9.0.0-canary.1c156d69d.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/theme/-/theme-9.0.0-canary.1c156d69d.0.tgz#2d733dea8f762cc8e35969915dfb3b7359147d1e"
   integrity sha1-LXM96o92LMjjWWmRXfs7c1kUfR4=
   dependencies:
     "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
 
-"@material/top-app-bar@=9.0.0-canary.1c156d69d.0":
-  version "9.0.0-canary.1c156d69d.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/top-app-bar/-/top-app-bar-9.0.0-canary.1c156d69d.0.tgz#6b5c76a9cfd2abae35f45b74eb17c917db74d70d"
-  integrity sha1-a1x2qc/Sq6419Ft06xfJF9t01w0=
+"@material/top-app-bar@=12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/top-app-bar/-/top-app-bar-12.0.0-canary.197f64fa2.0.tgz#abe150940f54e497954b18f8c4caebcb68c60304"
+  integrity sha1-q+FQlA9U5JeVSxj4xMrry2jGAwQ=
   dependencies:
-    "@material/animation" "9.0.0-canary.1c156d69d.0"
-    "@material/base" "9.0.0-canary.1c156d69d.0"
-    "@material/elevation" "9.0.0-canary.1c156d69d.0"
-    "@material/ripple" "9.0.0-canary.1c156d69d.0"
-    "@material/rtl" "9.0.0-canary.1c156d69d.0"
-    "@material/shape" "9.0.0-canary.1c156d69d.0"
-    "@material/theme" "9.0.0-canary.1c156d69d.0"
-    "@material/typography" "9.0.0-canary.1c156d69d.0"
-    tslib "^1.9.3"
+    "@material/animation" "12.0.0-canary.197f64fa2.0"
+    "@material/base" "12.0.0-canary.197f64fa2.0"
+    "@material/elevation" "12.0.0-canary.197f64fa2.0"
+    "@material/ripple" "12.0.0-canary.197f64fa2.0"
+    "@material/rtl" "12.0.0-canary.197f64fa2.0"
+    "@material/shape" "12.0.0-canary.197f64fa2.0"
+    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    "@material/typography" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
+
+"@material/touch-target@12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/touch-target/-/touch-target-12.0.0-canary.197f64fa2.0.tgz#e44ad9e238449e82af2a66d1926c92bc9b227587"
+  integrity sha1-5ErZ4jhEnoKvKmbRkmySvJsidYc=
+  dependencies:
+    "@material/base" "12.0.0-canary.197f64fa2.0"
+    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
 
 "@material/touch-target@9.0.0-canary.1c156d69d.0":
   version "9.0.0-canary.1c156d69d.0"
@@ -3075,6 +3529,15 @@
   dependencies:
     "@material/base" "9.0.0-canary.1c156d69d.0"
     "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
+
+"@material/typography@12.0.0-canary.197f64fa2.0":
+  version "12.0.0-canary.197f64fa2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/typography/-/typography-12.0.0-canary.197f64fa2.0.tgz#54e6d412a6b55f7d2db2999f2fe6b3850939defe"
+  integrity sha1-VObUEqa1X30tspmfL+azhQk53v4=
+  dependencies:
+    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    tslib "^2.1.0"
 
 "@material/typography@8.0.0-canary.01db89053.0":
   version "8.0.0-canary.01db89053.0"
@@ -3331,6 +3794,11 @@
     whatwg-fetch "^3.0.0"
     whatwg-url "^7.0.0"
 
+"@open-wc/dedupe-mixin@^1.3.0":
+  version "1.3.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@open-wc/dedupe-mixin/-/dedupe-mixin-1.3.0.tgz#0df5d438285fc3482838786ee81895318f0ff778"
+  integrity sha1-DfXUOChfw0goOHhu6BiVMY8P93g=
+
 "@open-wc/eslint-config@^3.0.0":
   version "3.0.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@open-wc/eslint-config/-/eslint-config-3.0.0.tgz#28f430baffdb88248a9751c87ceb2c368b72de7a"
@@ -3365,12 +3833,29 @@
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@open-wc/lit-helpers/-/lit-helpers-0.3.12.tgz#11bf0731185a88ca50ed740908e91fd4436ba69d"
   integrity sha1-Eb8HMRhaiMpQ7XQJCOkf1ENrpp0=
 
+"@open-wc/scoped-elements@^1.2.4":
+  version "1.3.3"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@open-wc/scoped-elements/-/scoped-elements-1.3.3.tgz#fe008aef4d74fb00c553c900602960638fc1c7b0"
+  integrity sha1-/gCK7010+wDFU8kAYClgY4/Bx7A=
+  dependencies:
+    "@open-wc/dedupe-mixin" "^1.3.0"
+    lit-html "^1.0.0"
+
 "@open-wc/semantic-dom-diff@^0.19.0":
   version "0.19.4"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@open-wc/semantic-dom-diff/-/semantic-dom-diff-0.19.4.tgz#d6c880224cce52d14a8f8a116ec76611426463aa"
   integrity sha1-1siAIkzOUtFKj4oRbsdmEUJkY6o=
   dependencies:
     "@types/chai" "^4.2.11"
+
+"@open-wc/testing-helpers@^1.8.12":
+  version "1.8.12"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@open-wc/testing-helpers/-/testing-helpers-1.8.12.tgz#449865689b0283c117326c1e0975834406bb0855"
+  integrity sha1-RJhlaJsCg8EXMmweCXWDRAa7CFU=
+  dependencies:
+    "@open-wc/scoped-elements" "^1.2.4"
+    lit-element "^2.2.1"
+    lit-html "^1.0.0"
 
 "@open-wc/testing-karma@^4.0.9":
   version "4.0.9"
@@ -4813,11 +5298,6 @@
   dependencies:
     "@types/react" "*"
 
-"@types/resize-observer-browser@^0.1.3":
-  version "0.1.5"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@types/resize-observer-browser/0.1.5/7dc62792b42d8966098ec1f10f28207156caed923fd811226cb518d01bbc7e3e#36d897708172ac2380cd486da7a3daf1161c1e23"
-  integrity sha1-NtiXcIFyrCOAzUhtp6Pa8RYcHiM=
-
 "@types/resolve@0.0.8":
   version "0.0.8"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@types/resolve/0.0.8/4392977643564cf1c55f77bd2a6223a663c6350bb72953be8ab3d5bd95c4de9e#fa60ec4abb061e306154cb8619c567ee23c3dcde"
@@ -4928,6 +5408,13 @@
   integrity sha1-NPf+yLOJ1/PB/QgCaldj4HLTxtw=
   dependencies:
     "@types/yargs-parser" "*"
+
+"@types/yauzl@^2.9.1":
+  version "2.9.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@types/yauzl/2.9.1/b9ad2a4e25d3388889924d451c55c1dfd0cd24a0a3d91aa18cf99d7241319fc9#0042ab522d4c9be0b4b7db17d1b26c3f8797b9ae"
+  integrity sha1-AEKrUi1Mm+C0t9sX0bJsP4eXua4=
+  dependencies:
+    "@types/node" "*"
 
 "@typescript-eslint/eslint-plugin@^4.14.2":
   version "4.17.0"
@@ -5095,10 +5582,10 @@
   dependencies:
     "@vaadin/vaadin-development-mode-detector" "^2.0.0"
 
-"@vonage/monowatch@^0.0.4":
-  version "0.0.4"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@vonage/monowatch/0.0.4/2fada9e4edae034bc6304120685e59701fb64030dc5329de8e0dffe65b2c2ada#b59e23129765233151e16f245d8b6f360f78106f"
-  integrity sha1-tZ4jEpdlIzFR4W8kXYtvNg94EG8=
+"@vonage/monowatch@^0.0.5":
+  version "0.0.5"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@vonage/monowatch/0.0.5/c7e27827dc6d056eec448713fc2f9050eb01f660f37a1f0182518a7727810d5f#cfac0426d9a5824b75a62700caae51272b9187e3"
+  integrity sha1-z6wEJtmlgkt1picAyq5RJyuRh+M=
   dependencies:
     chokidar "^3.5.1"
     concat-stream "^2.0.0"
@@ -5113,6 +5600,60 @@
   version "0.6.3"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@vonage/vvd-design-tokens-properties/0.6.3/aa1b6819bb0488432ce336f75d11d96cbe0434c0124543db96f163df7d0a8b38#20ec38c8e30653c793f0f15bcde3d0cc86babcce"
   integrity sha1-IOw4yOMGU8eT8PFbzePQzIa6vM4=
+
+"@vue/compiler-core@3.0.11":
+  version "3.0.11"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@vue/compiler-core/-/compiler-core-3.0.11.tgz#5ef579e46d7b336b8735228758d1c2c505aae69a"
+  integrity sha1-XvV55G17M2uHNSKHWNHCxQWq5po=
+  dependencies:
+    "@babel/parser" "^7.12.0"
+    "@babel/types" "^7.12.0"
+    "@vue/shared" "3.0.11"
+    estree-walker "^2.0.1"
+    source-map "^0.6.1"
+
+"@vue/compiler-dom@3.0.11":
+  version "3.0.11"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@vue/compiler-dom/-/compiler-dom-3.0.11.tgz#b15fc1c909371fd671746020ba55b5dab4a730ee"
+  integrity sha1-sV/ByQk3H9ZxdGAgulW12rSnMO4=
+  dependencies:
+    "@vue/compiler-core" "3.0.11"
+    "@vue/shared" "3.0.11"
+
+"@vue/compiler-sfc@^3.0.5":
+  version "3.0.11"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@vue/compiler-sfc/-/compiler-sfc-3.0.11.tgz#cd8ca2154b88967b521f5ad3b10f5f8b6b665679"
+  integrity sha1-zYyiFUuIlntSH1rTsQ9fi2tmVnk=
+  dependencies:
+    "@babel/parser" "^7.13.9"
+    "@babel/types" "^7.13.0"
+    "@vue/compiler-core" "3.0.11"
+    "@vue/compiler-dom" "3.0.11"
+    "@vue/compiler-ssr" "3.0.11"
+    "@vue/shared" "3.0.11"
+    consolidate "^0.16.0"
+    estree-walker "^2.0.1"
+    hash-sum "^2.0.0"
+    lru-cache "^5.1.1"
+    magic-string "^0.25.7"
+    merge-source-map "^1.1.0"
+    postcss "^8.1.10"
+    postcss-modules "^4.0.0"
+    postcss-selector-parser "^6.0.4"
+    source-map "^0.6.1"
+
+"@vue/compiler-ssr@3.0.11":
+  version "3.0.11"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@vue/compiler-ssr/-/compiler-ssr-3.0.11.tgz#ac5a05fd1257412fa66079c823d8203b6a889a13"
+  integrity sha1-rFoF/RJXQS+mYHnII9ggO2qImhM=
+  dependencies:
+    "@vue/compiler-dom" "3.0.11"
+    "@vue/shared" "3.0.11"
+
+"@vue/shared@3.0.11":
+  version "3.0.11"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@vue/shared/-/shared-3.0.11.tgz#20d22dd0da7d358bb21c17f9bde8628152642c77"
+  integrity sha1-INIt0Np9NYuyHBf5vehigVJkLHc=
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
@@ -5269,6 +5810,23 @@
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@webcomponents/webcomponentsjs/-/webcomponentsjs-2.5.0.tgz#61b27785a6ad5bfd68fa018201fe418b118cb38d"
   integrity sha1-YbJ3haatW/1o+gGCAf5BixGMs40=
 
+"@webpack-cli/configtest@^1.0.3":
+  version "1.0.3"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@webpack-cli/configtest/-/configtest-1.0.3.tgz#204bcff87cda3ea4810881f7ea96e5f5321b87b9"
+  integrity sha1-IEvP+HzaPqSBCIH36pbl9TIbh7k=
+
+"@webpack-cli/info@^1.2.4":
+  version "1.2.4"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@webpack-cli/info/-/info-1.2.4.tgz#7381fd41c9577b2d8f6c2594fad397ef49ad5573"
+  integrity sha1-c4H9QclXey2PbCWU+tOX70mtVXM=
+  dependencies:
+    envinfo "^7.7.3"
+
+"@webpack-cli/serve@^1.4.0":
+  version "1.4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@webpack-cli/serve/-/serve-1.4.0.tgz#f84fd07bcacefe56ce762925798871092f0f228e"
+  integrity sha1-+E/Qe8rO/lbOdikleYhxCS8PIo4=
+
 "@whitespace/storybook-addon-html@^4.2.0":
   version "4.2.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@whitespace/storybook-addon-html/-/storybook-addon-html-4.2.0.tgz#d91512b2959fa9d8c137c6daa910460cc2c30e09"
@@ -5290,6 +5848,11 @@
   version "4.2.2"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@xtuc/long/-/long-4.2.2.tgz#d291c6a4e97989b5c61d9acf396ae4fe133a718d"
   integrity sha1-0pHGpOl5ibXGHZrPOWrk/hM6cY0=
+
+"@zeit/schemas@2.6.0":
+  version "2.6.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@zeit/schemas/-/schemas-2.6.0.tgz#004e8e553b4cd53d538bd38eac7bcbf58a867fe3"
+  integrity sha1-AE6OVTtM1T1Ti9OOrHvL9YqGf+M=
 
 "@zkochan/cmd-shim@^3.1.0":
   version "3.1.0"
@@ -5318,7 +5881,7 @@ abortcontroller-polyfill@^1.4.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/abortcontroller-polyfill/-/abortcontroller-polyfill-1.7.1.tgz#27084bac87d78a7224c8ee78135d05df430c2d2f"
   integrity sha1-JwhLrIfXinIkyO54E10F30MMLS8=
 
-accepts@^1.3.5, accepts@~1.3.4, accepts@~1.3.7:
+accepts@^1.3.5, accepts@~1.3.4, accepts@~1.3.5, accepts@~1.3.7:
   version "1.3.7"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/accepts/-/accepts-1.3.7.tgz#531bc726517a3b2b41f850021c6cc15eaab507cd"
   integrity sha1-UxvHJlF6OytB+FACHGzBXqq1B80=
@@ -5372,6 +5935,13 @@ agent-base@5:
   version "5.1.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/agent-base/-/agent-base-5.1.1.tgz#e8fb3f242959db44d63be665db7a8e739537a32c"
   integrity sha1-6Ps/JClZ20TWO+Zl23qOc5U3oyw=
+
+agent-base@6:
+  version "6.0.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/agent-base/-/agent-base-6.0.2.tgz#49fff58577cfee3f37176feab4c22e00f86d7f77"
+  integrity sha1-Sf/1hXfP7j83F2/qtMIuAPhtf3c=
+  dependencies:
+    debug "4"
 
 agent-base@~4.2.1:
   version "4.2.1"
@@ -5428,6 +5998,16 @@ ajv-keywords@^3.1.0, ajv-keywords@^3.4.1, ajv-keywords@^3.5.2:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ajv-keywords/-/ajv-keywords-3.5.2.tgz#31f29da5ab6e00d1c2d329acf7b5929614d5014d"
   integrity sha1-MfKdpatuANHC0yms97WSlhTVAU0=
 
+ajv@6.5.3:
+  version "6.5.3"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ajv/-/ajv-6.5.3.tgz#71a569d189ecf4f4f321224fecb166f071dd90f9"
+  integrity sha1-caVp0Yns9PTzISJP7LFm8HHdkPk=
+  dependencies:
+    fast-deep-equal "^2.0.1"
+    fast-json-stable-stringify "^2.0.0"
+    json-schema-traverse "^0.4.1"
+    uri-js "^4.2.2"
+
 ajv@^6.1.0, ajv@^6.10.0, ajv@^6.10.2, ajv@^6.12.2, ajv@^6.12.3, ajv@^6.12.4, ajv@^6.12.5:
   version "6.12.6"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ajv/-/ajv-6.12.6.tgz#baf5a62e802b07d977034586f8c3baf5adf26df4"
@@ -5447,6 +6027,13 @@ ajv@^7.0.2:
     json-schema-traverse "^1.0.0"
     require-from-string "^2.0.2"
     uri-js "^4.2.2"
+
+ansi-align@^2.0.0:
+  version "2.0.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ansi-align/-/ansi-align-2.0.0.tgz#c36aeccba563b89ceb556f3690f0b1d9e3547f7f"
+  integrity sha1-w2rsy6VjuJzrVW82kPCx2eNUf38=
+  dependencies:
+    string-width "^2.0.0"
 
 ansi-align@^3.0.0:
   version "3.0.0"
@@ -5533,6 +6120,11 @@ ansi-to-html@^0.6.11:
   dependencies:
     entities "^1.1.2"
 
+any-base@^1.1.0:
+  version "1.1.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/any-base/-/any-base-1.1.0.tgz#ae101a62bc08a597b4c9ab5b7089d456630549fe"
+  integrity sha1-rhAaYrwIpZe0yatbcInUVmMFSf4=
+
 any-promise@^1.0.0, any-promise@^1.1.0:
   version "1.3.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/any-promise/-/any-promise-1.3.0.tgz#abc6afeedcea52e809cdc0376aed3ce39635d17f"
@@ -5569,6 +6161,11 @@ aproba@^2.0.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/aproba/-/aproba-2.0.0.tgz#52520b8ae5b569215b354efc0caa3fe1e45a8adc"
   integrity sha1-UlILiuW1aSFbNU78DKo/4eRaitw=
 
+arch@^2.1.0:
+  version "2.2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/arch/-/arch-2.2.0.tgz#1bc47818f305764f23ab3306b0bfc086c5a29d11"
+  integrity sha1-G8R4GPMFdk8jqzMGsL/AhsWinRE=
+
 are-we-there-yet@~1.1.2:
   version "1.1.5"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/are-we-there-yet/-/are-we-there-yet-1.1.5.tgz#4b35c2944f062a8bfcda66410760350fe9ddfc21"
@@ -5576,6 +6173,16 @@ are-we-there-yet@~1.1.2:
   dependencies:
     delegates "^1.0.0"
     readable-stream "^2.0.6"
+
+arg@2.0.0:
+  version "2.0.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/arg/-/arg-2.0.0.tgz#c06e7ff69ab05b3a4a03ebe0407fac4cba657545"
+  integrity sha1-wG5/9pqwWzpKA+vgQH+sTLpldUU=
+
+arg@^4.1.0:
+  version "4.1.3"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/arg/-/arg-4.1.3.tgz#269fc7ad5b8e42cb63c896d5666017261c144089"
+  integrity sha1-Jp/HrVuOQstjyJbVZmAXJhwUQIk=
 
 argparse@^1.0.7:
   version "1.0.10"
@@ -5658,7 +6265,7 @@ array-includes@^3.0.3, array-includes@^3.1.1:
     get-intrinsic "^1.1.1"
     is-string "^1.0.5"
 
-array-union@^1.0.2:
+array-union@^1.0.1, array-union@^1.0.2:
   version "1.0.2"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/array-union/-/array-union-1.0.2.tgz#9a34410e4f4e3da23dea375be5be70f24778ec39"
   integrity sha1-mjRBDk9OPaI96jdb5b5w8kd47Dk=
@@ -6111,10 +6718,15 @@ blocking-elements@^0.1.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/blocking-elements/-/blocking-elements-0.1.1.tgz#6acddbe2714a029a1774e9219bcf38736e07ded3"
   integrity sha1-as3b4nFKApoXdOkhm884c24H3tM=
 
-bluebird@^3.3.5, bluebird@^3.5.1, bluebird@^3.5.3, bluebird@^3.5.5:
+bluebird@^3.3.5, bluebird@^3.5.1, bluebird@^3.5.3, bluebird@^3.5.5, bluebird@^3.7.2:
   version "3.7.2"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/bluebird/-/bluebird-3.7.2.tgz#9f229c15be272454ffa973ace0dbee79a1b0c36f"
   integrity sha1-nyKcFb4nJFT/qXOs4NvueaGww28=
+
+bmp-js@^0.1.0:
+  version "0.1.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/bmp-js/-/bmp-js-0.1.0.tgz#e05a63f796a6c1ff25f4771ec7adadc148c07233"
+  integrity sha1-4Fpj95amwf8l9Hcex62twUjAcjM=
 
 bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.11.9:
   version "4.12.0"
@@ -6146,6 +6758,19 @@ boolbase@^1.0.0, boolbase@~1.0.0:
   version "1.0.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
+
+boxen@1.3.0:
+  version "1.3.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/boxen/-/boxen-1.3.0.tgz#55c6c39a8ba58d9c61ad22cd877532deb665a20b"
+  integrity sha1-VcbDmouljZxhrSLNh3Uy3rZlogs=
+  dependencies:
+    ansi-align "^2.0.0"
+    camelcase "^4.0.0"
+    chalk "^2.0.1"
+    cli-boxes "^1.0.0"
+    string-width "^2.0.0"
+    term-size "^1.2.0"
+    widest-line "^2.0.0"
 
 boxen@^4.2.0:
   version "4.2.0"
@@ -6322,6 +6947,16 @@ btoa-lite@^1.0.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/btoa-lite/-/btoa-lite-1.0.0.tgz#337766da15801210fdd956c22e9c6891ab9d0337"
   integrity sha1-M3dm2hWAEhD92VbCLpxokaudAzc=
 
+buffer-crc32@~0.2.3:
+  version "0.2.13"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/buffer-crc32/-/buffer-crc32-0.2.13.tgz#0d333e3f00eac50aa1454abd30ef8c2a5d9a7242"
+  integrity sha1-DTM+PwDqxQqhRUq9MO+MKl2ackI=
+
+buffer-equal@0.0.1:
+  version "0.0.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/buffer-equal/-/buffer-equal-0.0.1.tgz#91bc74b11ea405bc916bc6aa908faafa5b4aac4b"
+  integrity sha1-kbx0sR6kBbyRa8aqkI+q+ltKrEs=
+
 buffer-from@^1.0.0:
   version "1.1.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/buffer-from/-/buffer-from-1.1.1.tgz#32713bc028f75c02fdb710d7c7bcec1f2c6070ef"
@@ -6341,7 +6976,7 @@ buffer@^4.3.0:
     ieee754 "^1.1.4"
     isarray "^1.0.0"
 
-buffer@^5.5.0:
+buffer@^5.2.0, buffer@^5.5.0:
   version "5.7.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/buffer/-/buffer-5.7.1.tgz#ba62e7c13133053582197160851a8f648e99eed0"
   integrity sha1-umLnwTEzBTWCGXFghRqPZI6Z7tA=
@@ -6373,6 +7008,11 @@ byte-size@^5.0.1:
   version "5.0.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/byte-size/-/byte-size-5.0.1.tgz#4b651039a5ecd96767e71a3d7ed380e48bed4191"
   integrity sha1-S2UQOaXs2Wdn5xo9ftOA5IvtQZE=
+
+bytes@3.0.0:
+  version "3.0.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/bytes/-/bytes-3.0.0.tgz#d32815404d689699f85a4ea4fa8755dd13a96048"
+  integrity sha1-0ygVQE1olpn4Wk6k+odV3ROpYEg=
 
 bytes@3.1.0, bytes@^3.0.0:
   version "3.1.0"
@@ -6501,7 +7141,7 @@ callsites@^3.0.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/callsites/-/callsites-3.1.0.tgz#b3630abd8943432f54b3f0519238e33cd7df2f73"
   integrity sha1-s2MKvYlDQy9Us/BRkjjjPNffL3M=
 
-camel-case@^4.1.1:
+camel-case@^4.1.1, camel-case@^4.1.2:
   version "4.1.2"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/camel-case/-/camel-case-4.1.2.tgz#9728072a954f805228225a6deea6b38461e1bd5a"
   integrity sha1-lygHKpVPgFIoIlpt7qazhGHhvVo=
@@ -6545,7 +7185,7 @@ camelcase@^2.0.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/camelcase/-/camelcase-2.1.1.tgz#7c1d16d679a1bbe59ca02cacecfb011e201f5a1f"
   integrity sha1-fB0W1nmhu+WcoCys7PsBHiAfWh8=
 
-camelcase@^4.1.0:
+camelcase@^4.0.0, camelcase@^4.1.0:
   version "4.1.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/camelcase/-/camelcase-4.1.0.tgz#d545635be1e33c542649c69173e5de6acfae34dd"
   integrity sha1-1UVjW+HjPFQmScaRc+Xeas+uNN0=
@@ -6555,7 +7195,7 @@ camelcase@^5.0.0, camelcase@^5.3.1:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/camelcase/-/camelcase-5.3.1.tgz#e3c9b31569e106811df242f715725a1f4c494320"
   integrity sha1-48mzFWnhBoEd8kL3FXJaH0xJQyA=
 
-camelcase@^6.0.0:
+camelcase@^6.0.0, camelcase@^6.2.0:
   version "6.2.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/camelcase/-/camelcase-6.2.0.tgz#924af881c9d525ac9d87f40d964e5cea982a1809"
   integrity sha1-kkr4gcnVJaydh/QNlk5c6pgqGAk=
@@ -6574,6 +7214,15 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001033, caniuse-lite@^1.0.30001109, can
   version "1.0.30001198"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/caniuse-lite/-/caniuse-lite-1.0.30001198.tgz#ed2d9b5f060322ba2efa42afdc56dee3255473f4"
   integrity sha1-7S2bXwYDIrou+kKv3Fbe4yVUc/Q=
+
+capital-case@^1.0.4:
+  version "1.0.4"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/capital-case/-/capital-case-1.0.4.tgz#9d130292353c9249f6b00fa5852bee38a717e669"
+  integrity sha1-nRMCkjU8kkn2sA+lhSvuOKcX5mk=
+  dependencies:
+    no-case "^3.0.4"
+    tslib "^2.0.3"
+    upper-case-first "^2.0.2"
 
 capture-exit@^2.0.0:
   version "2.0.0"
@@ -6604,6 +7253,11 @@ chai-a11y-axe@^1.3.1:
   dependencies:
     axe-core "^4.0.2"
 
+chai-dom@^1.9.0:
+  version "1.9.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/chai-dom/-/chai-dom-1.9.0.tgz#40c1b957b60c677b0d06ca320ee8f1e276d9ea04"
+  integrity sha1-QMG5V7YMZ3sNBsoyDujx4nbZ6gQ=
+
 chai-karma-snapshot@^0.8.0:
   version "0.8.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/chai-karma-snapshot/-/chai-karma-snapshot-0.8.0.tgz#265b2667252c8d5359654a9777d12caa50ab45a2"
@@ -6611,6 +7265,11 @@ chai-karma-snapshot@^0.8.0:
   dependencies:
     babel-runtime "^6.23.0"
     pretty-format "^22.4.3"
+
+chai-spies@^1.0.0:
+  version "1.0.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/chai-spies/-/chai-spies-1.0.0.tgz#d16b39336fb316d03abf8c375feb23c0c8bb163d"
+  integrity sha1-0Ws5M2+zFtA6v4w3X+sjwMi7Fj0=
 
 chai@^4.2.0:
   version "4.3.3"
@@ -6623,6 +7282,15 @@ chai@^4.2.0:
     get-func-name "^2.0.0"
     pathval "^1.1.1"
     type-detect "^4.0.5"
+
+chalk@2.4.1:
+  version "2.4.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/chalk/-/chalk-2.4.1.tgz#18c49ab16a037b6eb0152cc83e3471338215b66e"
+  integrity sha1-GMSasWoDe26wFSzIPjRxM4IVtm4=
+  dependencies:
+    ansi-styles "^3.2.1"
+    escape-string-regexp "^1.0.5"
+    supports-color "^5.3.0"
 
 chalk@2.4.2, chalk@^2.0.0, chalk@^2.0.1, chalk@^2.1.0, chalk@^2.3.1, chalk@^2.4.1, chalk@^2.4.2:
   version "2.4.2"
@@ -6660,6 +7328,24 @@ chalk@^4.0.0, chalk@^4.1.0:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
+change-case@^4.1.2:
+  version "4.1.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/change-case/-/change-case-4.1.2.tgz#fedfc5f136045e2398c0410ee441f95704641e12"
+  integrity sha1-/t/F8TYEXiOYwEEO5EH5VwRkHhI=
+  dependencies:
+    camel-case "^4.1.2"
+    capital-case "^1.0.4"
+    constant-case "^3.0.4"
+    dot-case "^3.0.4"
+    header-case "^2.0.4"
+    no-case "^3.0.4"
+    param-case "^3.0.4"
+    pascal-case "^3.1.2"
+    path-case "^3.0.4"
+    sentence-case "^3.0.4"
+    snake-case "^3.0.4"
+    tslib "^2.0.3"
+
 change-emitter@^0.1.2:
   version "0.1.6"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/change-emitter/-/change-emitter-0.1.6.tgz#e8b2fe3d7f1ab7d69a32199aff91ea6931409515"
@@ -6690,7 +7376,7 @@ check-error@^1.0.2:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/check-error/-/check-error-1.0.2.tgz#574d312edd88bb5dd8912e9286dd6c0aed4aac82"
   integrity sha1-V00xLt2Iu13YkS6Sht1sCu1KrII=
 
-chokidar@3.5.1, "chokidar@>=2.0.0 <4.0.0", chokidar@^3.0.0, chokidar@^3.4.0, chokidar@^3.4.1, chokidar@^3.4.2, chokidar@^3.5.1:
+chokidar@3.5.1, "chokidar@>=2.0.0 <4.0.0", "chokidar@>=3.0.0 <4.0.0", chokidar@^3.0.0, chokidar@^3.4.0, chokidar@^3.4.1, chokidar@^3.4.2, chokidar@^3.5.1:
   version "3.5.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/chokidar/-/chokidar-3.5.1.tgz#ee9ce7bbebd2b79f49f304799d5468e31e14e68a"
   integrity sha1-7pznu+vSt59J8wR5nVRo4x4U5oo=
@@ -6793,6 +7479,18 @@ clean-stack@^2.0.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/clean-stack/-/clean-stack-2.2.0.tgz#ee8472dbb129e727b31e8a10a427dee9dfe4008b"
   integrity sha1-7oRy27Ep5yezHooQpCfe6d/kAIs=
 
+clean-webpack-plugin@^4.0.0-alpha.0:
+  version "4.0.0-alpha.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/clean-webpack-plugin/-/clean-webpack-plugin-4.0.0-alpha.0.tgz#2aef48dfe7565360d128f5caa0904097d969d053"
+  integrity sha1-Ku9I3+dWU2DRKPXKoJBAl9lp0FM=
+  dependencies:
+    del "^4.1.1"
+
+cli-boxes@^1.0.0:
+  version "1.0.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/cli-boxes/-/cli-boxes-1.0.0.tgz#4fa917c3e59c94a004cd61f8ee509da651687143"
+  integrity sha1-T6kXw+WclKAEzWH47lCdplFocUM=
+
 cli-boxes@^2.2.0:
   version "2.2.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/cli-boxes/-/cli-boxes-2.2.1.tgz#ddd5035d25094fce220e9cab40a45840a440318f"
@@ -6843,6 +7541,14 @@ clipboard@^2.0.0:
     good-listener "^1.2.2"
     select "^1.1.2"
     tiny-emitter "^2.0.0"
+
+clipboardy@1.2.3:
+  version "1.2.3"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/clipboardy/-/clipboardy-1.2.3.tgz#0526361bf78724c1f20be248d428e365433c07ef"
+  integrity sha1-BSY2G/eHJMHyC+JI1CjjZUM8B+8=
+  dependencies:
+    arch "^2.1.0"
+    execa "^0.8.0"
 
 cliui@^5.0.0:
   version "5.0.0"
@@ -7016,10 +7722,15 @@ commander@^5.1.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/commander/-/commander-5.1.0.tgz#46abbd1652f8e059bddaef99bbdcb2ad9cf179ae"
   integrity sha1-Rqu9FlL44Fm92u+Zu9yyrZzxea4=
 
-commander@^6.2.0, commander@^6.2.1:
+commander@^6.1.0, commander@^6.2.0, commander@^6.2.1:
   version "6.2.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/commander/-/commander-6.2.1.tgz#0792eb682dfbc325999bb2b84fddddba110ac73c"
   integrity sha1-B5LraC37wyWZm7K4T93duhEKxzw=
+
+commander@^7.0.0:
+  version "7.2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/commander/-/commander-7.2.0.tgz#a36cb57d0b501ce108e4d20559a150a391d97ab7"
+  integrity sha1-o2y1fQtQHOEI5NIFWaFQo5HZerc=
 
 commondir@^1.0.1:
   version "1.0.1"
@@ -7054,12 +7765,25 @@ component-inherit@0.0.3:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/component-inherit/-/component-inherit-0.0.3.tgz#645fc4adf58b72b649d5cae65135619db26ff143"
   integrity sha1-ZF/ErfWLcrZJ1crmUTVhnbJv8UM=
 
-compressible@^2.0.0:
+compressible@^2.0.0, compressible@~2.0.14:
   version "2.0.18"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/compressible/-/compressible-2.0.18.tgz#af53cca6b070d4c3c0750fbd77286a6d7cc46fba"
   integrity sha1-r1PMprBw1MPAdQ+9dyhqbXzEb7o=
   dependencies:
     mime-db ">= 1.43.0 < 2"
+
+compression@1.7.3:
+  version "1.7.3"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/compression/-/compression-1.7.3.tgz#27e0e176aaf260f7f2c2813c3e440adb9f1993db"
+  integrity sha1-J+DhdqryYPfywoE8PkQK258Zk9s=
+  dependencies:
+    accepts "~1.3.5"
+    bytes "3.0.0"
+    compressible "~2.0.14"
+    debug "2.6.9"
+    on-headers "~1.0.1"
+    safe-buffer "5.1.2"
+    vary "~1.1.2"
 
 compute-scroll-into-view@^1.0.17:
   version "1.0.17"
@@ -7139,6 +7863,22 @@ console-control-strings@^1.0.0, console-control-strings@~1.1.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/console-control-strings/-/console-control-strings-1.1.0.tgz#3d7cf4464db6446ea644bf4b39507f9851008e8e"
   integrity sha1-PXz0Rk22RG6mRL9LOVB/mFEAjo4=
 
+consolidate@^0.16.0:
+  version "0.16.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/consolidate/-/consolidate-0.16.0.tgz#a11864768930f2f19431660a65906668f5fbdc16"
+  integrity sha1-oRhkdokw8vGUMWYKZZBmaPX73BY=
+  dependencies:
+    bluebird "^3.7.2"
+
+constant-case@^3.0.4:
+  version "3.0.4"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/constant-case/-/constant-case-3.0.4.tgz#3b84a9aeaf4cf31ec45e6bf5de91bdfb0589faf1"
+  integrity sha1-O4Sprq9M8x7EXmv13pG9+wWJ+vE=
+  dependencies:
+    no-case "^3.0.4"
+    tslib "^2.0.3"
+    upper-case "^2.0.2"
+
 constants-browserify@^1.0.0:
   version "1.0.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/constants-browserify/-/constants-browserify-1.0.0.tgz#c20b96d8c617748aaf1c16021760cd27fcb8cb75"
@@ -7148,6 +7888,11 @@ contains-path@^0.1.0:
   version "0.1.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/contains-path/-/contains-path-0.1.0.tgz#fe8cf184ff6670b6baef01a9d4861a5cbec4120a"
   integrity sha1-/ozxhP9mcLa67wGp1IYaXL7EEgo=
+
+content-disposition@0.5.2:
+  version "0.5.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/content-disposition/-/content-disposition-0.5.2.tgz#0cf68bb9ddf5f2be7961c3a85178cb85dba78cb4"
+  integrity sha1-DPaLud318r55YcOoUXjLhdunjLQ=
 
 content-disposition@0.5.3, content-disposition@~0.5.2:
   version "0.5.3"
@@ -7559,6 +8304,11 @@ create-react-context@0.3.0:
     gud "^1.0.0"
     warning "^4.0.3"
 
+create-require@^1.1.0:
+  version "1.1.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/create-require/-/create-require-1.1.1.tgz#c1d7e8f1e5f6cfc9ff65f9cd352d37348756c333"
+  integrity sha1-wdfo8eX2z8n/ZfnNNS03NIdWwzM=
+
 cross-env@^6.0.3:
   version "6.0.3"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/cross-env/-/cross-env-6.0.3.tgz#4256b71e49b3a40637a0ce70768a6ef5c72ae941"
@@ -7566,7 +8316,7 @@ cross-env@^6.0.3:
   dependencies:
     cross-spawn "^7.0.0"
 
-cross-spawn@7.0.3, cross-spawn@^7.0.0, cross-spawn@^7.0.2:
+cross-spawn@7.0.3, cross-spawn@^7.0.0, cross-spawn@^7.0.2, cross-spawn@^7.0.3:
   version "7.0.3"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/cross-spawn/-/cross-spawn-7.0.3.tgz#f73a85b9d5d41d045551c177e2882d4ac85728a6"
   integrity sha1-9zqFudXUHQRVUcF34ogtSshXKKY=
@@ -7574,6 +8324,15 @@ cross-spawn@7.0.3, cross-spawn@^7.0.0, cross-spawn@^7.0.2:
     path-key "^3.1.0"
     shebang-command "^2.0.0"
     which "^2.0.1"
+
+cross-spawn@^5.0.1:
+  version "5.1.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/cross-spawn/-/cross-spawn-5.1.0.tgz#e8bd0efee58fcff6f8f94510a0a554bbfa235449"
+  integrity sha1-6L0O/uWPz/b4+UUQoKVUu/ojVEk=
+  dependencies:
+    lru-cache "^4.0.1"
+    shebang-command "^1.2.0"
+    which "^1.2.9"
 
 cross-spawn@^6.0.0:
   version "6.0.5"
@@ -7733,11 +8492,6 @@ dateformat@^3.0.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/dateformat/-/dateformat-3.0.3.tgz#a6e37499a4d9a9cf85ef5872044d62901c9889ae"
   integrity sha1-puN0maTZqc+F71hyBE1ikByYia4=
 
-de-indent@^1.0.2:
-  version "1.0.2"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/de-indent/-/de-indent-1.0.2.tgz#b2038e846dc33baa5796128d0804b455b8c1e21d"
-  integrity sha1-sgOOhG3DO6pXlhKNCAS0VbjB4h0=
-
 debounce@^1.2.0:
   version "1.2.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/debounce/-/debounce-1.2.1.tgz#38881d8f4166a5c5848020c11827b834bcb3e0a5"
@@ -7837,7 +8591,7 @@ deep-equal@~1.0.1:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/deep-equal/-/deep-equal-1.0.1.tgz#f5d260292b660e084eff4cdbc9f08ad3247448b5"
   integrity sha1-9dJgKStmDghO/0zbyfCK0yR0SLU=
 
-deep-extend@~0.6.0:
+deep-extend@^0.6.0, deep-extend@~0.6.0:
   version "0.6.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/deep-extend/-/deep-extend-0.6.0.tgz#c4fa7c95404a17a9c3e8ca7e1537312b736330ac"
   integrity sha1-xPp8lUBKF6nD6Mp+FTcxK3NjMKw=
@@ -7898,6 +8652,19 @@ define-property@^2.0.2:
     is-descriptor "^1.0.2"
     isobject "^3.0.1"
 
+del@^4.1.1:
+  version "4.1.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/del/-/del-4.1.1.tgz#9e8f117222ea44a31ff3a156c049b99052a9f0b4"
+  integrity sha1-no8RciLqRKMf86FWwEm5kFKp8LQ=
+  dependencies:
+    "@types/glob" "^7.1.1"
+    globby "^6.1.0"
+    is-path-cwd "^2.0.0"
+    is-path-in-cwd "^2.0.0"
+    p-map "^2.0.0"
+    pify "^4.0.1"
+    rimraf "^2.6.3"
+
 delayed-stream@~1.0.0:
   version "1.0.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/delayed-stream/-/delayed-stream-1.0.0.tgz#df3ae199acadfb7d440aaae0b29e2272b24ec619"
@@ -7913,30 +8680,34 @@ delegates@^1.0.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/delegates/-/delegates-1.0.0.tgz#84c6e159b81904fdca59a0ef44cd870d31250f9a"
   integrity sha1-hMbhWbgZBP3KWaDvRM2HDTElD5o=
 
-depcheck@YonatanKra/depcheck#vivid-version:
-  version "0.0.1"
-  resolved "https://codeload.github.com/YonatanKra/depcheck/tar.gz/efdd151983d56b23ff400ae04bfba1e9b57c5864"
+depcheck@^1.4.0:
+  version "1.4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/depcheck/-/depcheck-1.4.0.tgz#1b49e0da4ce32f2e372da9be7ba25b139b7b9a00"
+  integrity sha1-G0ng2kzjLy43Lam+e6JbE5t7mgA=
   dependencies:
-    "@babel/parser" "^7.10.4"
-    "@babel/traverse" "^7.10.4"
+    "@babel/parser" "^7.12.5"
+    "@babel/traverse" "^7.12.5"
+    "@vue/compiler-sfc" "^3.0.5"
     builtin-modules "^3.1.0"
-    camelcase "^6.0.0"
-    cosmiconfig "^6.0.0"
-    debug "^4.1.1"
+    camelcase "^6.2.0"
+    cosmiconfig "^7.0.0"
+    debug "^4.2.0"
     deps-regex "^0.1.4"
     ignore "^5.1.8"
     js-yaml "^3.14.0"
     json5 "^2.1.3"
-    lodash "^4.17.19"
+    lodash "^4.17.20"
     minimatch "^3.0.4"
-    multimatch "^4.0.0"
+    multimatch "^5.0.0"
     please-upgrade-node "^3.2.0"
-    readdirp "^3.4.0"
+    query-ast "^1.0.3"
+    readdirp "^3.5.0"
     require-package-name "^2.0.1"
-    resolve "^1.17.0"
-    sass "^1.26.10"
-    vue-template-compiler "^2.6.11"
-    yargs "^15.4.0"
+    resolve "^1.18.1"
+    sass "^1.29.0"
+    scss-parser "^1.0.4"
+    semver "^7.3.2"
+    yargs "^16.1.0"
 
 depd@^2.0.0, depd@~2.0.0:
   version "2.0.0"
@@ -8045,6 +8816,11 @@ diff@5.0.0:
   version "5.0.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/diff/-/diff-5.0.0.tgz#7ed6ad76d859d030787ec35855f5b1daf31d852b"
   integrity sha1-ftatdthZ0DB4fsNYVfWx2vMdhSs=
+
+diff@^4.0.1:
+  version "4.0.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/diff/-/diff-4.0.2.tgz#60f3aecb89d5fae520c11aa19efc2bb982aade7d"
+  integrity sha1-YPOuy4nV+uUgwRqhnvwruYKq3n0=
 
 diffie-hellman@^5.0.0:
   version "5.0.3"
@@ -8460,6 +9236,14 @@ enhanced-resolve@^4.5.0:
     memory-fs "^0.5.0"
     tapable "^1.0.0"
 
+enhanced-resolve@^5.0.0:
+  version "5.8.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/enhanced-resolve/-/enhanced-resolve-5.8.0.tgz#d9deae58f9d3773b6a111a5a46831da5be5c9ac0"
+  integrity sha1-2d6uWPnTdztqERpaRoMdpb5cmsA=
+  dependencies:
+    graceful-fs "^4.2.4"
+    tapable "^2.2.0"
+
 enquirer@^2.3.5, enquirer@^2.3.6:
   version "2.3.6"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/enquirer/-/enquirer-2.3.6.tgz#2a7fe5dd634a1e4125a975ec994ff5456dc3734d"
@@ -8491,6 +9275,11 @@ envinfo@^7.3.1:
   version "7.7.4"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/envinfo/-/envinfo-7.7.4.tgz#c6311cdd38a0e86808c1c9343f667e4267c4a320"
   integrity sha1-xjEc3Tig6GgIwck0P2Z+QmfEoyA=
+
+envinfo@^7.7.3:
+  version "7.8.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/envinfo/-/envinfo-7.8.1.tgz#06377e3e5f4d379fea7ac592d5ad8927e0c4d475"
+  integrity sha1-Bjd+Pl9NN5/qesWS1a2JJ+DE1HU=
 
 err-code@^1.0.0:
   version "1.1.2"
@@ -8686,7 +9475,7 @@ escape-string-regexp@1.0.5, escape-string-regexp@^1.0.2, escape-string-regexp@^1
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/escape-string-regexp/-/escape-string-regexp-1.0.5.tgz#1b61c0562190a8dff6ae3bb2cf0200ca130b86d4"
   integrity sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=
 
-escape-string-regexp@2.0.0:
+escape-string-regexp@2.0.0, escape-string-regexp@^2.0.0:
   version "2.0.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/escape-string-regexp/-/escape-string-regexp-2.0.0.tgz#a30304e99daa32e23b2fd20f51babd07cffca344"
   integrity sha1-owME6Z2qMuI7L9IPUbq9B8/8o0Q=
@@ -8944,6 +9733,11 @@ estree-walker@^1.0.1:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/estree-walker/-/estree-walker-1.0.1.tgz#31bc5d612c96b704106b477e6dd5d8aa138cb700"
   integrity sha1-MbxdYSyWtwQQa0d+bdXYqhOMtwA=
 
+estree-walker@^2.0.1:
+  version "2.0.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/estree-walker/-/estree-walker-2.0.2.tgz#52f010178c2a4c117a7757cfe942adb7d2da4cac"
+  integrity sha1-UvAQF4wqTBF6d1fP6UKtt9LaTKw=
+
 esutils@^2.0.2:
   version "2.0.3"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/esutils/-/esutils-2.0.3.tgz#74d2eb4de0b8da1293711910d50775b9b710ef64"
@@ -8995,6 +9789,32 @@ exec-sh@^0.3.2:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/exec-sh/-/exec-sh-0.3.4.tgz#3a018ceb526cc6f6df2bb504b2bfe8e3a4934ec5"
   integrity sha1-OgGM61JsxvbfK7UEsr/o46STTsU=
 
+execa@^0.7.0:
+  version "0.7.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/execa/-/execa-0.7.0.tgz#944becd34cc41ee32a63a9faf27ad5a65fc59777"
+  integrity sha1-lEvs00zEHuMqY6n68nrVpl/Fl3c=
+  dependencies:
+    cross-spawn "^5.0.1"
+    get-stream "^3.0.0"
+    is-stream "^1.1.0"
+    npm-run-path "^2.0.0"
+    p-finally "^1.0.0"
+    signal-exit "^3.0.0"
+    strip-eof "^1.0.0"
+
+execa@^0.8.0:
+  version "0.8.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/execa/-/execa-0.8.0.tgz#d8d76bbc1b55217ed190fd6dd49d3c774ecfc8da"
+  integrity sha1-2NdrvBtVIX7RkP1t1J08d07PyNo=
+  dependencies:
+    cross-spawn "^5.0.1"
+    get-stream "^3.0.0"
+    is-stream "^1.1.0"
+    npm-run-path "^2.0.0"
+    p-finally "^1.0.0"
+    signal-exit "^3.0.0"
+    strip-eof "^1.0.0"
+
 execa@^1.0.0:
   version "1.0.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/execa/-/execa-1.0.0.tgz#c6236a5bb4df6d6f15e88e7f017798216749ddd8"
@@ -9023,12 +9843,32 @@ execa@^4.1.0:
     signal-exit "^3.0.2"
     strip-final-newline "^2.0.0"
 
+execa@^5.0.0:
+  version "5.0.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/execa/-/execa-5.0.0.tgz#4029b0007998a841fbd1032e5f4de86a3c1e3376"
+  integrity sha1-QCmwAHmYqEH70QMuX03oajweM3Y=
+  dependencies:
+    cross-spawn "^7.0.3"
+    get-stream "^6.0.0"
+    human-signals "^2.1.0"
+    is-stream "^2.0.0"
+    merge-stream "^2.0.0"
+    npm-run-path "^4.0.1"
+    onetime "^5.1.2"
+    signal-exit "^3.0.3"
+    strip-final-newline "^2.0.0"
+
 execall@^2.0.0:
   version "2.0.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/execall/-/execall-2.0.0.tgz#16a06b5fe5099df7d00be5d9c06eecded1663b45"
   integrity sha1-FqBrX+UJnffQC+XZwG7s3tFmO0U=
   dependencies:
     clone-regexp "^2.1.0"
+
+exif-parser@^0.1.12:
+  version "0.1.12"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/exif-parser/-/exif-parser-0.1.12.tgz#58a9d2d72c02c1f6f02a0ef4a9166272b7760922"
+  integrity sha1-WKnS1ywCwfbwKg70qRZicrd2CSI=
 
 expand-brackets@^2.1.4:
   version "2.1.4"
@@ -9122,6 +9962,17 @@ extglob@^2.0.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.1"
 
+extract-zip@^2.0.1:
+  version "2.0.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/extract-zip/-/extract-zip-2.0.1.tgz#663dca56fe46df890d5f131ef4a06d22bb8ba13a"
+  integrity sha1-Zj3KVv5G34kNXxMe9KBtIruLoTo=
+  dependencies:
+    debug "^4.1.1"
+    get-stream "^5.1.0"
+    yauzl "^2.10.0"
+  optionalDependencies:
+    "@types/yauzl" "^2.9.1"
+
 extsprintf@1.3.0:
   version "1.3.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/extsprintf/-/extsprintf-1.3.0.tgz#96918440e3041a7a414f8c52e3c574eb3c3e1e05"
@@ -9131,6 +9982,11 @@ extsprintf@^1.2.0:
   version "1.4.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/extsprintf/-/extsprintf-1.4.0.tgz#e2689f8f356fad62cca65a3a91c5df5f9551692f"
   integrity sha1-4mifjzVvrWLMplo6kcXfX5VRaS8=
+
+fast-deep-equal@^2.0.1:
+  version "2.0.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/fast-deep-equal/-/fast-deep-equal-2.0.1.tgz#7b05218ddf9667bf7f370bf7fdb2cb15fdd0aa49"
+  integrity sha1-ewUhjd+WZ79/Nwv3/bLLFf3Qqkk=
 
 fast-deep-equal@^3.1.1, fast-deep-equal@^3.1.3:
   version "3.1.3"
@@ -9176,6 +10032,13 @@ fast-levenshtein@^2.0.6, fast-levenshtein@~2.0.6:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=
 
+fast-url-parser@1.1.3:
+  version "1.1.3"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/fast-url-parser/-/fast-url-parser-1.1.3.tgz#f4af3ea9f34d8a271cf58ad2b3759f431f0b318d"
+  integrity sha1-9K8+qfNNiicc9YrSs3WfQx8LMY0=
+  dependencies:
+    punycode "^1.3.2"
+
 fastest-levenshtein@^1.0.12:
   version "1.0.12"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/fastest-levenshtein/-/fastest-levenshtein-1.0.12.tgz#9990f7d3a88cc5a9ffd1f1745745251700d497e2"
@@ -9214,6 +10077,13 @@ fbjs@^0.8.1:
     promise "^7.1.1"
     setimmediate "^1.0.5"
     ua-parser-js "^0.7.18"
+
+fd-slicer@~1.1.0:
+  version "1.1.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/fd-slicer/-/fd-slicer-1.1.0.tgz#25c7c89cb1f9077f8891bbe61d8f390eae256f1e"
+  integrity sha1-JcfInLH5B3+IkbvmHY85Dq4lbx4=
+  dependencies:
+    pend "~1.2.0"
 
 fibers@^5.0.0:
   version "5.0.0"
@@ -9264,6 +10134,11 @@ file-system-cache@^1.0.5:
     bluebird "^3.3.5"
     fs-extra "^0.30.0"
     ramda "^0.21.0"
+
+file-type@^9.0.0:
+  version "9.0.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/file-type/-/file-type-9.0.0.tgz#a68d5ad07f486414dfb2c8866f73161946714a18"
+  integrity sha1-po1a0H9IZBTfssiGb3MWGUZxShg=
 
 file-uri-to-path@1.0.0:
   version "1.0.0"
@@ -9662,6 +10537,13 @@ gauge@~2.7.3:
     strip-ansi "^3.0.1"
     wide-align "^1.1.0"
 
+generic-names@^2.0.1:
+  version "2.0.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/generic-names/-/generic-names-2.0.1.tgz#f8a378ead2ccaa7a34f0317b05554832ae41b872"
+  integrity sha1-+KN46tLMqno08DF7BVVIMq5BuHI=
+  dependencies:
+    loader-utils "^1.1.0"
+
 genfun@^5.0.0:
   version "5.0.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/genfun/-/genfun-5.0.0.tgz#9dd9710a06900a5c4a5bf57aca5da4e52fe76537"
@@ -9727,6 +10609,11 @@ get-stdin@^8.0.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/get-stdin/-/get-stdin-8.0.0.tgz#cbad6a73feb75f6eeb22ba9e01f89aa28aa97a53"
   integrity sha1-y61qc/63X27rIrqeAfiaooqpelM=
 
+get-stream@^3.0.0:
+  version "3.0.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/get-stream/-/get-stream-3.0.0.tgz#8e943d1358dc37555054ecbe2edb05aa174ede14"
+  integrity sha1-jpQ9E1jcN1VQVOy+LtsFqhdO3hQ=
+
 get-stream@^4.0.0, get-stream@^4.1.0:
   version "4.1.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/get-stream/-/get-stream-4.1.0.tgz#c1b255575f3dc21d59bfc79cd3d2b46b1c3a54b5"
@@ -9740,6 +10627,11 @@ get-stream@^5.0.0, get-stream@^5.1.0:
   integrity sha1-SWaheV7lrOZecGxLe+txJX1uItM=
   dependencies:
     pump "^3.0.0"
+
+get-stream@^6.0.0:
+  version "6.0.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/get-stream/-/get-stream-6.0.1.tgz#a262d8eef67aced57c2852ad6167526a43cbf7b7"
+  integrity sha1-omLY7vZ6ztV8KFKtYWdSakPL97c=
 
 get-value@^2.0.3, get-value@^2.0.6:
   version "2.0.6"
@@ -9759,6 +10651,14 @@ getroot@^1.0.0:
   integrity sha1-rEY1xfpAN3Qdbq1hzMFjZ0Oe/L4=
   dependencies:
     tslib "^1.7.1"
+
+gifwrap@^0.9.2:
+  version "0.9.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/gifwrap/-/gifwrap-0.9.2.tgz#348e286e67d7cf57942172e1e6f05a71cee78489"
+  integrity sha1-NI4obmfXz1eUIXLh5vBacc7nhIk=
+  dependencies:
+    image-q "^1.1.1"
+    omggif "^1.0.10"
 
 git-raw-commits@2.0.0:
   version "2.0.0"
@@ -9889,7 +10789,7 @@ glob@7.1.3:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-glob@7.1.6, glob@^7.0.0, glob@^7.0.5, glob@^7.1.1, glob@^7.1.2, glob@^7.1.3, glob@^7.1.4, glob@^7.1.6:
+glob@7.1.6, glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@^7.1.1, glob@^7.1.2, glob@^7.1.3, glob@^7.1.4, glob@^7.1.6:
   version "7.1.6"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/glob/-/glob-7.1.6.tgz#141f33b81a7c2492e125594307480c46679278a6"
   integrity sha1-FB8zuBp8JJLhJVlDB0gMRmeSeKY=
@@ -9917,7 +10817,7 @@ global-prefix@^3.0.0:
     kind-of "^6.0.2"
     which "^1.3.1"
 
-global@^4.3.2, global@^4.4.0:
+global@^4.3.2, global@^4.4.0, global@~4.4.0:
   version "4.4.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/global/-/global-4.4.0.tgz#3e7b105179006a323ed71aafca3e9c57a5cc6406"
   integrity sha1-PnsQUXkAajI+1xqvyj6cV6XMZAY=
@@ -9967,6 +10867,17 @@ globby@^11.0.1, globby@^11.0.2:
     ignore "^5.1.4"
     merge2 "^1.3.0"
     slash "^3.0.0"
+
+globby@^6.1.0:
+  version "6.1.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/globby/-/globby-6.1.0.tgz#f5a6d70e8395e21c858fb0489d64df02424d506c"
+  integrity sha1-9abXDoOV4hyFj7BInWTfAkJNUGw=
+  dependencies:
+    array-union "^1.0.1"
+    glob "^7.0.3"
+    object-assign "^4.0.1"
+    pify "^2.0.0"
+    pinkie-promise "^2.0.0"
 
 globby@^9.2.0:
   version "9.2.0"
@@ -10169,6 +11080,11 @@ hash-base@^3.0.0:
     readable-stream "^3.6.0"
     safe-buffer "^5.2.0"
 
+hash-sum@^2.0.0:
+  version "2.0.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/hash-sum/-/hash-sum-2.0.0.tgz#81d01bb5de8ea4a214ad5d6ead1b523460b0b45a"
+  integrity sha1-gdAbtd6OpKIUrV1urRtSNGCwtFo=
+
 hash.js@^1.0.0, hash.js@^1.0.3:
   version "1.1.7"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/hash.js/-/hash.js-1.1.7.tgz#0babca538e8d4ee4a0f8988d68866537a003cf42"
@@ -10245,10 +11161,18 @@ hastscript@^6.0.0:
     property-information "^5.0.0"
     space-separated-tokens "^1.0.0"
 
-he@1.2.0, he@^1.1.0, he@^1.2.0:
+he@1.2.0, he@^1.2.0:
   version "1.2.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
   integrity sha1-hK5l+n6vsWX922FWauFLrwVmTw8=
+
+header-case@^2.0.4:
+  version "2.0.4"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/header-case/-/header-case-2.0.4.tgz#5a42e63b55177349cf405beb8d775acabb92c063"
+  integrity sha1-WkLmO1UXc0nPQFvrjXdayruSwGM=
+  dependencies:
+    capital-case "^1.0.4"
+    tslib "^2.0.3"
 
 highlight.js@^10.1.1, highlight.js@^10.4.0, highlight.js@^10.4.1, highlight.js@~10.6.0:
   version "10.6.0"
@@ -10474,10 +11398,23 @@ https-proxy-agent@^4.0.0:
     agent-base "5"
     debug "4"
 
+https-proxy-agent@^5.0.0:
+  version "5.0.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/https-proxy-agent/-/https-proxy-agent-5.0.0.tgz#e2a90542abb68a762e0a0850f6c9edadfd8506b2"
+  integrity sha1-4qkFQqu2inYuCghQ9sntrf2FBrI=
+  dependencies:
+    agent-base "6"
+    debug "4"
+
 human-signals@^1.1.1:
   version "1.1.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/human-signals/-/human-signals-1.1.1.tgz#c5b1cd14f50aeae09ab6c59fe63ba3395fe4dfa3"
   integrity sha1-xbHNFPUK6uCatsWf5jujOV/k36M=
+
+human-signals@^2.1.0:
+  version "2.1.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/human-signals/-/human-signals-2.1.0.tgz#dc91fcba42e4d06e4abaed33b3e7a3c02f514ea0"
+  integrity sha1-3JH8ukLk0G5Kuu0zs+ejwC9RTqA=
 
 humanize-ms@^1.2.1:
   version "1.2.1"
@@ -10513,12 +11450,22 @@ iconv-lite@^0.6.2:
   dependencies:
     safer-buffer ">= 2.1.2 < 3.0.0"
 
+icss-replace-symbols@^1.1.0:
+  version "1.1.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/icss-replace-symbols/-/icss-replace-symbols-1.1.0.tgz#06ea6f83679a7749e386cfe1fe812ae5db223ded"
+  integrity sha1-Bupvg2ead0njhs/h/oEq5dsiPe0=
+
 icss-utils@^4.0.0, icss-utils@^4.1.1:
   version "4.1.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/icss-utils/-/icss-utils-4.1.1.tgz#21170b53789ee27447c2f47dd683081403f9a467"
   integrity sha1-IRcLU3ie4nRHwvR91oMIFAP5pGc=
   dependencies:
     postcss "^7.0.14"
+
+icss-utils@^5.0.0:
+  version "5.1.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/icss-utils/-/icss-utils-5.1.0.tgz#c6be6858abd013d768e98366ae47e25d5887b1ae"
+  integrity sha1-xr5oWKvQE9do6YNmrkfiXViHsa4=
 
 ieee754@^1.1.13, ieee754@^1.1.4:
   version "1.2.1"
@@ -10546,6 +11493,11 @@ ignore@^5.1.4, ignore@^5.1.8:
   version "5.1.8"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ignore/-/ignore-5.1.8.tgz#f150a8b50a34289b33e22f5889abd4d8016f0e57"
   integrity sha1-8VCotQo0KJsz4i9YiavU2AFvDlc=
+
+image-q@^1.1.1:
+  version "1.1.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/image-q/-/image-q-1.1.1.tgz#fc84099664460b90ca862d9300b6bfbbbfbf8056"
+  integrity sha1-/IQJlmRGC5DKhi2TALa/u7+/gFY=
 
 immer@8.0.1, immer@^8.0.1:
   version "8.0.1"
@@ -10580,6 +11532,14 @@ import-local@^2.0.0:
   dependencies:
     pkg-dir "^3.0.0"
     resolve-cwd "^2.0.0"
+
+import-local@^3.0.2:
+  version "3.0.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/import-local/-/import-local-3.0.2.tgz#a8cfd0431d1de4a2199703d003e3e62364fa6db6"
+  integrity sha1-qM/QQx0d5KIZlwPQA+PmI2T6bbY=
+  dependencies:
+    pkg-dir "^4.2.0"
+    resolve-cwd "^3.0.0"
 
 imurmurhash@^0.1.4:
   version "0.1.4"
@@ -10641,7 +11601,7 @@ inherits@2.0.3:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
   integrity sha1-Yzwsg+PaQqUC9SRmAiSA9CCCYd4=
 
-ini@^1.3.2, ini@^1.3.4, ini@^1.3.5, ini@^1.3.6:
+ini@^1.3.2, ini@^1.3.4, ini@^1.3.5, ini@^1.3.6, ini@~1.3.0:
   version "1.3.8"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ini/-/ini-1.3.8.tgz#a29da425b48806f34767a4efce397269af28432c"
   integrity sha1-op2kJbSIBvNHZ6Tvzjlyaa8oQyw=
@@ -10713,7 +11673,14 @@ intl-list-format@^1.0.3:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/intl-list-format/-/intl-list-format-1.0.3.tgz#f9b3c3d69b4647d63218f49aae5d3816c6e55b5b"
   integrity sha1-+bPD1ptGR9YyGPSarl04FsblW1s=
 
-invariant@^2.2.3, invariant@^2.2.4:
+invariant@2.2.2:
+  version "2.2.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/invariant/-/invariant-2.2.2.tgz#9e1f56ac0acdb6bf303306f338be3b204ae60360"
+  integrity sha1-nh9WrArNtr8wMwbzOL47IErmA2A=
+  dependencies:
+    loose-envify "^1.0.0"
+
+invariant@2.2.4, invariant@^2.2.3, invariant@^2.2.4:
   version "2.2.4"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   integrity sha1-YQ88ksk1nOHbYW5TgAjSP/NRWOY=
@@ -10938,7 +11905,7 @@ is-fullwidth-code-point@^3.0.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/is-fullwidth-code-point/-/is-fullwidth-code-point-3.0.0.tgz#f116f8064fe90b3f7844a38997c0b75051269f1d"
   integrity sha1-8Rb4Bk/pCz94RKOJl8C3UFEmnx0=
 
-is-function@^1.0.2:
+is-function@^1.0.1, is-function@^1.0.2:
   version "1.0.2"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/is-function/-/is-function-1.0.2.tgz#4f097f30abf6efadac9833b17ca5dc03f8144e08"
   integrity sha1-Twl/MKv2762smDOxfKXcA/gUTgg=
@@ -11020,6 +11987,25 @@ is-object@^1.0.1:
   version "1.0.2"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/is-object/-/is-object-1.0.2.tgz#a56552e1c665c9e950b4a025461da87e72f86fcf"
   integrity sha1-pWVS4cZlyelQtKAlRh2ofnL4b88=
+
+is-path-cwd@^2.0.0:
+  version "2.2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/is-path-cwd/-/is-path-cwd-2.2.0.tgz#67d43b82664a7b5191fd9119127eb300048a9fdb"
+  integrity sha1-Z9Q7gmZKe1GR/ZEZEn6zAASKn9s=
+
+is-path-in-cwd@^2.0.0:
+  version "2.1.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/is-path-in-cwd/-/is-path-in-cwd-2.1.0.tgz#bfe2dca26c69f397265a4009963602935a053acb"
+  integrity sha1-v+Lcomxp85cmWkAJljYCk1oFOss=
+  dependencies:
+    is-path-inside "^2.1.0"
+
+is-path-inside@^2.1.0:
+  version "2.1.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/is-path-inside/-/is-path-inside-2.1.0.tgz#7c9810587d659a40d27bcdb4d5616eab059494b2"
+  integrity sha1-fJgQWH1lmkDSe8201WFuqwWUlLI=
+  dependencies:
+    path-is-inside "^1.0.2"
 
 is-plain-obj@^1.0.0, is-plain-obj@^1.1.0:
   version "1.1.0"
@@ -11362,7 +12348,23 @@ jest-worker@^26.2.1, jest-worker@^26.6.2:
     merge-stream "^2.0.0"
     supports-color "^7.0.0"
 
-jpeg-js@^0.4.1:
+jimp@^0.16.1:
+  version "0.16.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/jimp/-/jimp-0.16.1.tgz#192f851a30e5ca11112a3d0aa53137659a78ca7a"
+  integrity sha1-GS+FGjDlyhERKj0KpTE3ZZp4yno=
+  dependencies:
+    "@babel/runtime" "^7.7.2"
+    "@jimp/custom" "^0.16.1"
+    "@jimp/plugins" "^0.16.1"
+    "@jimp/types" "^0.16.1"
+    regenerator-runtime "^0.13.3"
+
+jpeg-js@0.4.2:
+  version "0.4.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/jpeg-js/-/jpeg-js-0.4.2.tgz#8b345b1ae4abde64c2da2fe67ea216a114ac279d"
+  integrity sha1-izRbGuSr3mTC2i/mfqIWoRSsJ50=
+
+jpeg-js@^0.4.1, jpeg-js@^0.4.2:
   version "0.4.3"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/jpeg-js/-/jpeg-js-0.4.3.tgz#6158e09f1983ad773813704be80680550eff977b"
   integrity sha1-YVjgnxmDrXc4E3BL6AaAVQ7/l3s=
@@ -11937,17 +12939,17 @@ lit-analyzer@^1.2.1:
     vscode-html-languageservice "3.1.0"
     web-component-analyzer "~1.1.1"
 
-lit-element@2.3.0:
-  version "2.3.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/lit-element/-/lit-element-2.3.0.tgz#a78d98e3c17afdfcfa3ab8335e839ac69f5c204e"
-  integrity sha1-p42Y48F6/fz6OrgzXoOaxp9cIE4=
-  dependencies:
-    lit-html "^1.1.1"
-
-lit-element@^2.0.0, lit-element@^2.2.1, lit-element@^2.3.0, lit-element@^2.4.0:
+lit-element@^2.0.0, lit-element@^2.2.1, lit-element@^2.4.0, lit-element@~2.4.0:
   version "2.4.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/lit-element/-/lit-element-2.4.0.tgz#b22607a037a8fc08f5a80736dddf7f3f5d401452"
   integrity sha1-siYHoDeo/Aj1qAc23d9/P11AFFI=
+  dependencies:
+    lit-html "^1.1.1"
+
+lit-element@^2.3.0:
+  version "2.5.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/lit-element/-/lit-element-2.5.1.tgz#3fa74b121a6cd22902409ae3859b7847d01aa6b6"
+  integrity sha1-P6dLEhps0ikCQJrjhZt4R9AaprY=
   dependencies:
     lit-html "^1.1.1"
 
@@ -11961,10 +12963,24 @@ lit-flatpickr@^0.2.5:
     lit-html "^1.1.2"
     tslib "^1.11.0"
 
-lit-html@1.3.0, lit-html@^1.1.1, lit-html@^1.1.2, lit-html@^1.3.0:
+lit-html@^1.0.0, lit-html@^1.1.1, lit-html@^1.1.2, lit-html@^1.3.0:
   version "1.3.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/lit-html/-/lit-html-1.3.0.tgz#c80f3cc5793a6dea6c07172be90a70ab20e56034"
   integrity sha1-yA88xXk6bepsBxcr6QpwqyDlYDQ=
+
+load-bmfont@^1.3.1, load-bmfont@^1.4.0:
+  version "1.4.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/load-bmfont/-/load-bmfont-1.4.1.tgz#c0f5f4711a1e2ccff725a7b6078087ccfcddd3e9"
+  integrity sha1-wPX0cRoeLM/3Jae2B4CHzPzd0+k=
+  dependencies:
+    buffer-equal "0.0.1"
+    mime "^1.3.4"
+    parse-bmfont-ascii "^1.0.3"
+    parse-bmfont-binary "^1.0.5"
+    parse-bmfont-xml "^1.1.4"
+    phin "^2.9.1"
+    xhr "^2.0.1"
+    xtend "^4.0.0"
 
 load-json-file@^1.0.0:
   version "1.1.0"
@@ -12022,7 +13038,7 @@ loader-utils@2.0.0, loader-utils@^2.0.0:
     emojis-list "^3.0.0"
     json5 "^2.1.2"
 
-loader-utils@^1.2.3, loader-utils@^1.4.0:
+loader-utils@^1.1.0, loader-utils@^1.2.3, loader-utils@^1.4.0:
   version "1.4.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/loader-utils/-/loader-utils-1.4.0.tgz#c579b5e34cb34b1a74edc6c1fb36bfa371d5a613"
   integrity sha1-xXm140yzSxp07cbB+za/o3HVphM=
@@ -12136,7 +13152,7 @@ lodash.uniq@4.5.0, lodash.uniq@^4.5.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
-lodash@^4.0.1, lodash@^4.17.12, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.2.1:
+lodash@^4.0.1, lodash@^4.17.12, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21, lodash@^4.17.4, lodash@^4.2.1:
   version "4.17.21"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha1-Z5WRxWTDv/quhFTPCz3zcMPWkRw=
@@ -12234,7 +13250,7 @@ lowlight@^1.14.0, lowlight@^1.17.0:
     fault "^1.0.0"
     highlight.js "~10.6.0"
 
-lru-cache@4.1.x:
+lru-cache@4.1.x, lru-cache@^4.0.1:
   version "4.1.5"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/lru-cache/-/lru-cache-4.1.5.tgz#8bbe50ea85bed59bc9e33dcab8235ee9bcf443cd"
   integrity sha1-i75Q6oW+1ZvJ4z3KuCNe6bz0Q80=
@@ -12261,6 +13277,13 @@ macos-release@^2.2.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/macos-release/-/macos-release-2.4.1.tgz#64033d0ec6a5e6375155a74b1a1eba8e509820ac"
   integrity sha1-ZAM9Dsal5jdRVadLGh66jlCYIKw=
 
+magic-string@^0.25.7:
+  version "0.25.7"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/magic-string/-/magic-string-0.25.7.tgz#3f497d6fd34c669c6798dcb821f2ef31f5445051"
+  integrity sha1-P0l9b9NMZpxnmNy4IfLvMfVEUFE=
+  dependencies:
+    sourcemap-codec "^1.4.4"
+
 make-dir@^1.0.0:
   version "1.3.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/make-dir/-/make-dir-1.3.0.tgz#79c1033b80515bd6d24ec9933e860ca75ee27f0c"
@@ -12282,6 +13305,11 @@ make-dir@^3.0.0, make-dir@^3.0.2, make-dir@^3.1.0:
   integrity sha1-QV6WcEazp/HRhSd9hKpYIDcmoT8=
   dependencies:
     semver "^6.0.0"
+
+make-error@^1.1.1:
+  version "1.3.6"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/make-error/-/make-error-1.3.6.tgz#2eb2e37ea9b67c4891f684a1394799af484cf7a2"
+  integrity sha1-LrLjfqm2fEiR9oShOUeZr0hM96I=
 
 make-fetch-happen@^5.0.0:
   version "5.0.2"
@@ -12553,6 +13581,13 @@ merge-descriptors@1.0.1:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/merge-descriptors/-/merge-descriptors-1.0.1.tgz#b00aaa556dd8b44568150ec9d1b953f3f90cbb61"
   integrity sha1-sAqqVW3YtEVoFQ7J0blT8/kMu2E=
 
+merge-source-map@^1.1.0:
+  version "1.1.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/merge-source-map/-/merge-source-map-1.1.0.tgz#2fdde7e6020939f70906a68f2d7ae685e4c8c646"
+  integrity sha1-L93n5gIJOfcJBqaPLXrmheTIxkY=
+  dependencies:
+    source-map "^0.6.1"
+
 merge-stream@^2.0.0:
   version "2.0.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/merge-stream/-/merge-stream-2.0.0.tgz#52823629a14dd00c9770fb6ad47dc6310f2c1f60"
@@ -12600,6 +13635,14 @@ micromatch@^3.1.10, micromatch@^3.1.4:
     snapdragon "^0.8.1"
     to-regex "^3.0.2"
 
+micromatch@^4.0.0:
+  version "4.0.4"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/micromatch/-/micromatch-4.0.4.tgz#896d519dfe9db25fce94ceb7a500919bf881ebf9"
+  integrity sha1-iW1Rnf6dsl/OlM63pQCRm/iB6/k=
+  dependencies:
+    braces "^3.0.1"
+    picomatch "^2.2.3"
+
 micromatch@^4.0.2:
   version "4.0.2"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/micromatch/-/micromatch-4.0.2.tgz#4fcb0999bf9fbc2fcbdd212f6d629b9a56c39259"
@@ -12621,6 +13664,18 @@ mime-db@1.46.0, "mime-db@>= 1.43.0 < 2":
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/mime-db/-/mime-db-1.46.0.tgz#6267748a7f799594de3cbc8cde91def349661cee"
   integrity sha1-Ymd0in95lZTePLyM3pHe80lmHO4=
 
+mime-db@~1.33.0:
+  version "1.33.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/mime-db/-/mime-db-1.33.0.tgz#a3492050a5cb9b63450541e39d9788d2272783db"
+  integrity sha1-o0kgUKXLm2NFBUHjnZeI0icng9s=
+
+mime-types@2.1.18:
+  version "2.1.18"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/mime-types/-/mime-types-2.1.18.tgz#6f323f60a83d11146f831ff11fd66e2fe5503bb8"
+  integrity sha1-bzI/YKg9ERRvgx/xH9ZuL+VQO7g=
+  dependencies:
+    mime-db "~1.33.0"
+
 mime-types@^2.1.12, mime-types@^2.1.18, mime-types@^2.1.27, mime-types@~2.1.19, mime-types@~2.1.24:
   version "2.1.29"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/mime-types/-/mime-types-2.1.29.tgz#1d4ab77da64b91f5f72489df29236563754bb1b2"
@@ -12628,12 +13683,12 @@ mime-types@^2.1.12, mime-types@^2.1.18, mime-types@^2.1.27, mime-types@~2.1.19, 
   dependencies:
     mime-db "1.46.0"
 
-mime@1.6.0:
+mime@1.6.0, mime@^1.3.4:
   version "1.6.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/mime/-/mime-1.6.0.tgz#32cd9e5c64553bd58d19a568af452acff04981b1"
   integrity sha1-Ms2eXGRVO9WNGaVor0Uqz/BJgbE=
 
-mime@^2.4.4, mime@^2.4.5:
+mime@^2.4.4, mime@^2.4.5, mime@^2.4.6:
   version "2.5.2"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/mime/-/mime-2.5.2.tgz#6e3dc6cc2b9510643830e5f19d5cb753da5eeabe"
   integrity sha1-bj3GzCuVEGQ4MOXxnVy3U9pe6r4=
@@ -12922,17 +13977,6 @@ multimatch@^3.0.0:
     arrify "^1.0.1"
     minimatch "^3.0.4"
 
-multimatch@^4.0.0:
-  version "4.0.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/multimatch/-/multimatch-4.0.0.tgz#8c3c0f6e3e8449ada0af3dd29efb491a375191b3"
-  integrity sha1-jDwPbj6ESa2grz3SnvtJGjdRkbM=
-  dependencies:
-    "@types/minimatch" "^3.0.3"
-    array-differ "^3.0.0"
-    array-union "^2.1.0"
-    arrify "^2.0.1"
-    minimatch "^3.0.4"
-
 multimatch@^5.0.0:
   version "5.0.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/multimatch/-/multimatch-5.0.0.tgz#932b800963cea7a31a033328fa1e0c3a1874dbe6"
@@ -12977,6 +14021,11 @@ nanoid@^2.0.3, nanoid@^2.1.5:
   version "2.1.11"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/nanoid/-/nanoid-2.1.11.tgz#ec24b8a758d591561531b4176a01e3ab4f0f0280"
   integrity sha1-7CS4p1jVkVYVMbQXagHjq08PAoA=
+
+nanoid@^3.1.22:
+  version "3.1.22"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/nanoid/-/nanoid-3.1.22.tgz#b35f8fb7d151990a8aebd5aa5015c03cf726f844"
+  integrity sha1-s1+Pt9FRmQqK69WqUBXAPPcm+EQ=
 
 nanomatch@^1.2.9:
   version "1.2.13"
@@ -13280,7 +14329,7 @@ npm-run-path@^2.0.0:
   dependencies:
     path-key "^2.0.0"
 
-npm-run-path@^4.0.0:
+npm-run-path@^4.0.0, npm-run-path@^4.0.1:
   version "4.0.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/npm-run-path/-/npm-run-path-4.0.1.tgz#b7ecd1e5ed53da8e37a55e1c2269e0b97ed748ea"
   integrity sha1-t+zR5e1T2o43pV4cImnguX7XSOo=
@@ -13431,7 +14480,7 @@ octokit-pagination-methods@^1.1.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/octokit-pagination-methods/-/octokit-pagination-methods-1.1.0.tgz#cf472edc9d551055f9ef73f6e42b4dbb4c80bea4"
   integrity sha1-z0cu3J1VEFX573P25CtNu0yAvqQ=
 
-omggif@^1.0.10:
+omggif@^1.0.10, omggif@^1.0.9:
   version "1.0.10"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/omggif/-/omggif-1.0.10.tgz#ddaaf90d4a42f532e9e7cb3a95ecdd47f17c7b19"
   integrity sha1-3ar5DUpC9TLp58s6lezdR/F8exk=
@@ -13442,6 +14491,11 @@ on-finished@^2.3.0, on-finished@~2.3.0:
   integrity sha1-IPEzZIGwg811M3mSoWlxqi2QaUc=
   dependencies:
     ee-first "1.1.1"
+
+on-headers@~1.0.1:
+  version "1.0.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/on-headers/-/on-headers-1.0.2.tgz#772b0ae6aaa525c399e489adfad90c403eb3c28f"
+  integrity sha1-dysK5qqlJcOZ5Imt+tkMQD6zwo8=
 
 once@^1.3.0, once@^1.3.1, once@^1.4.0:
   version "1.4.0"
@@ -13457,7 +14511,7 @@ onetime@^2.0.0:
   dependencies:
     mimic-fn "^1.0.0"
 
-onetime@^5.1.0:
+onetime@^5.1.0, onetime@^5.1.2:
   version "5.1.2"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/onetime/-/onetime-5.1.2.tgz#d0e96ebb56b07476df1dd9c4806e5237985ca45e"
   integrity sha1-0Oluu1awdHbfHdnEgG5SN5hcpF4=
@@ -13689,7 +14743,7 @@ package-options@^0.1.1:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/package-options/-/package-options-0.1.4.tgz#83b55d2787f3cadaeb1682b74e13d3930b2197fa"
   integrity sha1-g7VdJ4fzytrrFoK3ThPTkwshl/o=
 
-pako@~1.0.5:
+pako@^1.0.5, pako@~1.0.5:
   version "1.0.11"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/pako/-/pako-1.0.11.tgz#6c9599d340d54dfd3946380252a35705a6b992bf"
   integrity sha1-bJWZ00DVTf05RjgCUqNXBaa5kr8=
@@ -13703,7 +14757,7 @@ parallel-transform@^1.1.0:
     inherits "^2.0.3"
     readable-stream "^2.1.5"
 
-param-case@^3.0.3:
+param-case@^3.0.3, param-case@^3.0.4:
   version "3.0.4"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/param-case/-/param-case-3.0.4.tgz#7d17fe4aa12bde34d4a77d91acfb6219caad01c5"
   integrity sha1-fRf+SqEr3jTUp32RrPtiGcqtAcU=
@@ -13728,6 +14782,24 @@ parse-asn1@^5.0.0, parse-asn1@^5.1.5:
     evp_bytestokey "^1.0.0"
     pbkdf2 "^3.0.3"
     safe-buffer "^5.1.1"
+
+parse-bmfont-ascii@^1.0.3:
+  version "1.0.6"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/parse-bmfont-ascii/-/parse-bmfont-ascii-1.0.6.tgz#11ac3c3ff58f7c2020ab22769079108d4dfa0285"
+  integrity sha1-Eaw8P/WPfCAgqyJ2kHkQjU36AoU=
+
+parse-bmfont-binary@^1.0.5:
+  version "1.0.6"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/parse-bmfont-binary/-/parse-bmfont-binary-1.0.6.tgz#d038b476d3e9dd9db1e11a0b0e53a22792b69006"
+  integrity sha1-0Di0dtPp3Z2x4RoLDlOiJ5K2kAY=
+
+parse-bmfont-xml@^1.1.4:
+  version "1.1.4"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/parse-bmfont-xml/-/parse-bmfont-xml-1.1.4.tgz#015319797e3e12f9e739c4d513872cd2fa35f389"
+  integrity sha1-AVMZeX4+EvnnOcTVE4cs0vo184k=
+  dependencies:
+    xml-parse-from-string "^1.0.0"
+    xml2js "^0.4.5"
 
 parse-entities@^1.0.2:
   version "1.2.2"
@@ -13757,6 +14829,11 @@ parse-github-repo-url@^1.3.0:
   version "1.4.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/parse-github-repo-url/-/parse-github-repo-url-1.4.1.tgz#9e7d8bb252a6cb6ba42595060b7bf6df3dbc1f50"
   integrity sha1-nn2LslKmy2ukJZUGC3v23z28H1A=
+
+parse-headers@^2.0.0:
+  version "2.0.3"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/parse-headers/-/parse-headers-2.0.3.tgz#5e8e7512383d140ba02f0c7aa9f49b4399c92515"
+  integrity sha1-Xo51Ejg9FAugLwx6qfSbQ5nJJRU=
 
 parse-json@^2.2.0:
   version "2.2.0"
@@ -13863,6 +14940,14 @@ path-browserify@0.0.1:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/path-browserify/-/path-browserify-0.0.1.tgz#e6c4ddd7ed3aa27c68a20cc4e50e1a4ee83bbc4a"
   integrity sha1-5sTd1+06onxoogzE5Q4aTug7vEo=
 
+path-case@^3.0.4:
+  version "3.0.4"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/path-case/-/path-case-3.0.4.tgz#9168645334eb942658375c56f80b4c0cb5f82c6f"
+  integrity sha1-kWhkUzTrlCZYN1xW+AtMDLX4LG8=
+  dependencies:
+    dot-case "^3.0.4"
+    tslib "^2.0.3"
+
 path-dirname@^1.0.0:
   version "1.0.2"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/path-dirname/-/path-dirname-1.0.2.tgz#cc33d24d525e099a5388c0336c6e32b9160609e0"
@@ -13890,7 +14975,7 @@ path-is-absolute@1.0.1, path-is-absolute@^1.0.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/path-is-absolute/-/path-is-absolute-1.0.1.tgz#174b9268735534ffbc7ace6bf53a5a9e1b5c5f5f"
   integrity sha1-F0uSaHNVNP+8es5r9TpanhtcX18=
 
-path-is-inside@^1.0.2:
+path-is-inside@1.0.2, path-is-inside@^1.0.2:
   version "1.0.2"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/path-is-inside/-/path-is-inside-1.0.2.tgz#365417dede44430d1c11af61027facf074bdfc53"
   integrity sha1-NlQX3t5EQw0cEa9hAn+s8HS9/FM=
@@ -13914,6 +14999,11 @@ path-to-regexp@0.1.7:
   version "0.1.7"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/path-to-regexp/-/path-to-regexp-0.1.7.tgz#df604178005f522f15eb4490e7247a1bfaa67f8c"
   integrity sha1-32BBeABfUi8V60SQ5yR6G/qmf4w=
+
+path-to-regexp@2.2.1:
+  version "2.2.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/path-to-regexp/-/path-to-regexp-2.2.1.tgz#90b617025a16381a879bc82a38d4e8bdeb2bcf45"
+  integrity sha1-kLYXAloWOBqHm8gqONTovesrz0U=
 
 path-type@^1.0.0:
   version "1.1.0"
@@ -13966,15 +15056,30 @@ pbkdf2@^3.0.3:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
+pend@~1.2.0:
+  version "1.2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/pend/-/pend-1.2.0.tgz#7a57eb550a6783f9115331fcf4663d5c8e007a50"
+  integrity sha1-elfrVQpng/kRUzH89GY9XI4AelA=
+
 performance-now@^2.1.0:
   version "2.1.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
   integrity sha1-Ywn04OX6kT7BxpMHrjZLSzd8nns=
 
+phin@^2.9.1:
+  version "2.9.3"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/phin/-/phin-2.9.3.tgz#f9b6ac10a035636fb65dfc576aaaa17b8743125c"
+  integrity sha1-+basEKA1Y2+2XfxXaqqhe4dDElw=
+
 picomatch@^2.0.4, picomatch@^2.0.5, picomatch@^2.2.1, picomatch@^2.2.2:
   version "2.2.2"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/picomatch/-/picomatch-2.2.2.tgz#21f333e9b6b8eaff02468f5146ea406d345f4dad"
   integrity sha1-IfMz6ba46v8CRo9RRupAbTRfTa0=
+
+picomatch@^2.2.3:
+  version "2.2.3"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/picomatch/-/picomatch-2.2.3.tgz#465547f359ccc206d3c48e46a1bcb89bf7ee619d"
+  integrity sha1-RlVH81nMwgbTxI5Goby4m/fuYZ0=
 
 pify@^2.0.0, pify@^2.3.0:
   version "2.3.0"
@@ -14010,6 +15115,13 @@ pirates@^4.0.0, pirates@^4.0.1:
   dependencies:
     node-modules-regexp "^1.0.0"
 
+pixelmatch@^4.0.2:
+  version "4.0.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/pixelmatch/-/pixelmatch-4.0.2.tgz#8f47dcec5011b477b67db03c243bc1f3085e8854"
+  integrity sha1-j0fc7FARtHe2fbA8JDvB8wheiFQ=
+  dependencies:
+    pngjs "^3.0.0"
+
 pkg-dir@^2.0.0:
   version "2.0.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/pkg-dir/-/pkg-dir-2.0.0.tgz#f6d5d1109e19d63edf428e0bd57e12777615334b"
@@ -14024,7 +15136,7 @@ pkg-dir@^3.0.0:
   dependencies:
     find-up "^3.0.0"
 
-pkg-dir@^4.1.0:
+pkg-dir@^4.1.0, pkg-dir@^4.2.0:
   version "4.2.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/pkg-dir/-/pkg-dir-4.2.0.tgz#f099133df7ede422e81d1d8448270eeb3e4261f3"
   integrity sha1-8JkTPfft5CLoHR2ESCcO6z5CYfM=
@@ -14045,12 +15157,36 @@ pkg-up@3.1.0:
   dependencies:
     find-up "^3.0.0"
 
+playwright@^1.10.0:
+  version "1.10.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/playwright/-/playwright-1.10.0.tgz#a14d295f1ad886caf4cc5e674afe03ac832066bc"
+  integrity sha1-oU0pXxrYhsr0zF5nSv4DrIMgZrw=
+  dependencies:
+    commander "^6.1.0"
+    debug "^4.1.1"
+    extract-zip "^2.0.1"
+    https-proxy-agent "^5.0.0"
+    jpeg-js "^0.4.2"
+    mime "^2.4.6"
+    pngjs "^5.0.0"
+    progress "^2.0.3"
+    proper-lockfile "^4.1.1"
+    proxy-from-env "^1.1.0"
+    rimraf "^3.0.2"
+    stack-utils "^2.0.3"
+    ws "^7.3.1"
+
 please-upgrade-node@^3.2.0:
   version "3.2.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/please-upgrade-node/-/please-upgrade-node-3.2.0.tgz#aeddd3f994c933e4ad98b99d9a556efa0e2fe942"
   integrity sha1-rt3T+ZTJM+StmLmdmlVu+g4v6UI=
   dependencies:
     semver-compare "^1.0.0"
+
+pngjs@^3.0.0, pngjs@^3.3.3:
+  version "3.4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/pngjs/-/pngjs-3.4.0.tgz#99ca7d725965fb655814eaf65f38f12bbdbf555f"
+  integrity sha1-mcp9clll+2VYFOr2XzjxK72/VV8=
 
 pngjs@^5.0.0:
   version "5.0.0"
@@ -14157,6 +15293,11 @@ postcss-modules-extract-imports@^2.0.0:
   dependencies:
     postcss "^7.0.5"
 
+postcss-modules-extract-imports@^3.0.0:
+  version "3.0.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/postcss-modules-extract-imports/-/postcss-modules-extract-imports-3.0.0.tgz#cda1f047c0ae80c97dbe28c3e76a43b88025741d"
+  integrity sha1-zaHwR8CugMl9vijD52pDuIAldB0=
+
 postcss-modules-local-by-default@^3.0.2:
   version "3.0.3"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/postcss-modules-local-by-default/-/postcss-modules-local-by-default-3.0.3.tgz#bb14e0cc78279d504dbdcbfd7e0ca28993ffbbb0"
@@ -14164,6 +15305,15 @@ postcss-modules-local-by-default@^3.0.2:
   dependencies:
     icss-utils "^4.1.1"
     postcss "^7.0.32"
+    postcss-selector-parser "^6.0.2"
+    postcss-value-parser "^4.1.0"
+
+postcss-modules-local-by-default@^4.0.0:
+  version "4.0.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/postcss-modules-local-by-default/-/postcss-modules-local-by-default-4.0.0.tgz#ebbb54fae1598eecfdf691a02b3ff3b390a5a51c"
+  integrity sha1-67tU+uFZjuz99pGgKz/zs5ClpRw=
+  dependencies:
+    icss-utils "^5.0.0"
     postcss-selector-parser "^6.0.2"
     postcss-value-parser "^4.1.0"
 
@@ -14175,6 +15325,13 @@ postcss-modules-scope@^2.2.0:
     postcss "^7.0.6"
     postcss-selector-parser "^6.0.0"
 
+postcss-modules-scope@^3.0.0:
+  version "3.0.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/postcss-modules-scope/-/postcss-modules-scope-3.0.0.tgz#9ef3151456d3bbfa120ca44898dfca6f2fa01f06"
+  integrity sha1-nvMVFFbTu/oSDKRImN/Kby+gHwY=
+  dependencies:
+    postcss-selector-parser "^6.0.4"
+
 postcss-modules-values@^3.0.0:
   version "3.0.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/postcss-modules-values/-/postcss-modules-values-3.0.0.tgz#5b5000d6ebae29b4255301b4a3a54574423e7f10"
@@ -14182,6 +15339,27 @@ postcss-modules-values@^3.0.0:
   dependencies:
     icss-utils "^4.0.0"
     postcss "^7.0.6"
+
+postcss-modules-values@^4.0.0:
+  version "4.0.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/postcss-modules-values/-/postcss-modules-values-4.0.0.tgz#d7c5e7e68c3bb3c9b27cbf48ca0bb3ffb4602c9c"
+  integrity sha1-18Xn5ow7s8myfL9Iyguz/7RgLJw=
+  dependencies:
+    icss-utils "^5.0.0"
+
+postcss-modules@^4.0.0:
+  version "4.0.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/postcss-modules/-/postcss-modules-4.0.0.tgz#2bc7f276ab88f3f1b0fadf6cbd7772d43b5f3b9b"
+  integrity sha1-K8fydquI8/Gw+t9svXdy1DtfO5s=
+  dependencies:
+    generic-names "^2.0.1"
+    icss-replace-symbols "^1.1.0"
+    lodash.camelcase "^4.3.0"
+    postcss-modules-extract-imports "^3.0.0"
+    postcss-modules-local-by-default "^4.0.0"
+    postcss-modules-scope "^3.0.0"
+    postcss-modules-values "^4.0.0"
+    string-hash "^1.1.1"
 
 postcss-resolve-nested-selector@^0.1.1:
   version "0.1.1"
@@ -14246,6 +15424,15 @@ postcss@^7.0.14, postcss@^7.0.17, postcss@^7.0.2, postcss@^7.0.21, postcss@^7.0.
     chalk "^2.4.2"
     source-map "^0.6.1"
     supports-color "^6.1.0"
+
+postcss@^8.1.10:
+  version "8.2.13"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/postcss/-/postcss-8.2.13.tgz#dbe043e26e3c068e45113b1ed6375d2d37e2129f"
+  integrity sha1-2+BD4m48Bo5FETse1jddLTfiEp8=
+  dependencies:
+    colorette "^1.2.2"
+    nanoid "^3.1.22"
+    source-map "^0.6.1"
 
 postcss@^8.1.4, postcss@^8.2.4:
   version "8.2.8"
@@ -14329,7 +15516,7 @@ process@^0.11.10:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/process/-/process-0.11.10.tgz#7332300e840161bda3e69a1d1d91a7d4bc16f182"
   integrity sha1-czIwDoQBYb2j5podHZGn1LwW8YI=
 
-progress@^2.0.0:
+progress@^2.0.0, progress@^2.0.3:
   version "2.0.3"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha1-foz42PW48jnBvGi+tOt4Vn1XLvg=
@@ -14399,6 +15586,15 @@ prop-types@^15.0.0, prop-types@^15.5.10, prop-types@^15.6.0, prop-types@^15.6.1,
     object-assign "^4.1.1"
     react-is "^16.8.1"
 
+proper-lockfile@^4.1.1:
+  version "4.1.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/proper-lockfile/-/proper-lockfile-4.1.2.tgz#c8b9de2af6b2f1601067f98e01ac66baa223141f"
+  integrity sha1-yLneKvay8WAQZ/mOAaxmuqIjFB8=
+  dependencies:
+    graceful-fs "^4.2.4"
+    retry "^0.12.0"
+    signal-exit "^3.0.2"
+
 property-information@^5.0.0, property-information@^5.3.0:
   version "5.6.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/property-information/-/property-information-5.6.0.tgz#61675545fb23002f245c6540ec46077d4da3ed69"
@@ -14430,6 +15626,11 @@ proxy-addr@~2.0.5:
   dependencies:
     forwarded "~0.1.2"
     ipaddr.js "1.9.1"
+
+proxy-from-env@^1.1.0:
+  version "1.1.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/proxy-from-env/-/proxy-from-env-1.1.0.tgz#e102f16ca355424865755d2c9e8ea4f24d58c3e2"
+  integrity sha1-4QLxbKNVQkhldV0sno6k8k1Yw+I=
 
 prr@~1.0.1:
   version "1.0.1"
@@ -14495,7 +15696,7 @@ punycode@1.3.2:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/punycode/-/punycode-1.3.2.tgz#9653a036fb7c1ee42342f2325cceefea3926c48d"
   integrity sha1-llOgNvt8HuQjQvIyXM7v6jkmxI0=
 
-punycode@^1.2.4:
+punycode@^1.2.4, punycode@^1.3.2:
   version "1.4.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/punycode/-/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
   integrity sha1-wNWmOycYgArY4esPpSachN1BhF4=
@@ -14536,6 +15737,14 @@ qs@~6.5.2:
   version "6.5.2"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
   integrity sha1-yzroBuh0BERYTvFUzo7pjUA/PjY=
+
+query-ast@^1.0.3:
+  version "1.0.3"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/query-ast/-/query-ast-1.0.3.tgz#4a18374950fa80cbf9b03d7b945bbac8bb4250bf"
+  integrity sha1-Shg3SVD6gMv5sD17lFu6yLtCUL8=
+  dependencies:
+    invariant "2.2.2"
+    lodash "^4.17.15"
 
 query-string@^6.13.8:
   version "6.14.1"
@@ -14607,6 +15816,11 @@ randomfill@^1.0.3:
     randombytes "^2.0.5"
     safe-buffer "^5.1.0"
 
+range-parser@1.2.0:
+  version "1.2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/range-parser/-/range-parser-1.2.0.tgz#f49be6b487894ddc40dcc94a322f611092e00d5e"
+  integrity sha1-9JvmtIeJTdxA3MlKMi9hEJLgDV4=
+
 range-parser@^1.2.1, range-parser@~1.2.1:
   version "1.2.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
@@ -14629,6 +15843,16 @@ raw-loader@^4.0.2:
   dependencies:
     loader-utils "^2.0.0"
     schema-utils "^3.0.0"
+
+rc@^1.0.1, rc@^1.1.6:
+  version "1.2.8"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/rc/-/rc-1.2.8.tgz#cd924bf5200a075b83c188cd6b9e211b7fc0d3ed"
+  integrity sha1-zZJL9SAKB1uDwYjNa54hG3/A0+0=
+  dependencies:
+    deep-extend "^0.6.0"
+    ini "~1.3.0"
+    minimist "^1.2.0"
+    strip-json-comments "~2.0.1"
 
 react-color@^2.17.0:
   version "2.19.3"
@@ -15039,7 +16263,14 @@ readdirp@^2.2.1:
     micromatch "^3.1.10"
     readable-stream "^2.0.2"
 
-readdirp@^3.4.0, readdirp@~3.5.0:
+readdirp@^3.5.0:
+  version "3.6.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/readdirp/-/readdirp-3.6.0.tgz#74a370bd857116e245b29cc97340cd431a02a6c7"
+  integrity sha1-dKNwvYVxFuJFspzJc0DNQxoCpsc=
+  dependencies:
+    picomatch "^2.2.1"
+
+readdirp@~3.5.0:
   version "3.5.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/readdirp/-/readdirp-3.5.0.tgz#9ba74c019b15d365278d2e91bb8c48d7b4d42c9e"
   integrity sha1-m6dMAZsV02UnjS6Ru4xI17TULJ4=
@@ -15052,6 +16283,13 @@ rechoir@^0.6.2:
   integrity sha1-hSBLVNuoLVdC4oyWdW70OvUOM4Q=
   dependencies:
     resolve "^1.1.6"
+
+rechoir@^0.7.0:
+  version "0.7.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/rechoir/-/rechoir-0.7.0.tgz#32650fd52c21ab252aa5d65b19310441c7e03aca"
+  integrity sha1-MmUP1SwhqyUqpdZbGTEEQcfgOso=
+  dependencies:
+    resolve "^1.9.0"
 
 recompose@^0.22.0:
   version "0.22.0"
@@ -15169,6 +16407,21 @@ regexpu-core@^4.7.1:
     regjsparser "^0.6.4"
     unicode-match-property-ecmascript "^1.0.4"
     unicode-match-property-value-ecmascript "^1.2.0"
+
+registry-auth-token@3.3.2:
+  version "3.3.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/registry-auth-token/-/registry-auth-token-3.3.2.tgz#851fd49038eecb586911115af845260eec983f20"
+  integrity sha1-hR/UkDjuy1hpERFa+EUmDuyYPyA=
+  dependencies:
+    rc "^1.1.6"
+    safe-buffer "^5.0.1"
+
+registry-url@3.1.0:
+  version "3.1.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/registry-url/-/registry-url-3.1.0.tgz#3d4ef870f73dde1d77f0cf9a381432444e174942"
+  integrity sha1-PU74cPc93h138M+aOBQyRE4XSUI=
+  dependencies:
+    rc "^1.0.1"
 
 regjsgen@^0.5.1:
   version "0.5.2"
@@ -15450,7 +16703,7 @@ resolve-url@^0.2.1:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/resolve-url/-/resolve-url-0.2.1.tgz#2c637fe77c893afd2a663fe21aa9080068e2052a"
   integrity sha1-LGN/53yJOv0qZj/iGqkIAGjiBSo=
 
-resolve@^1.1.6, resolve@^1.10.0, resolve@^1.11.1, resolve@^1.12.0, resolve@^1.13.1, resolve@^1.14.2, resolve@^1.17.0, resolve@^1.19.0, resolve@^1.3.2:
+resolve@^1.1.6, resolve@^1.10.0, resolve@^1.11.1, resolve@^1.12.0, resolve@^1.13.1, resolve@^1.14.2, resolve@^1.17.0, resolve@^1.18.1, resolve@^1.19.0, resolve@^1.3.2, resolve@^1.9.0:
   version "1.20.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/resolve/-/resolve-1.20.0.tgz#629a013fb3f70755d6f0b7935cc1c2c5378b1975"
   integrity sha1-YpoBP7P3B1XW8LeTXMHCxTeLGXU=
@@ -15490,6 +16743,11 @@ retry@^0.10.0:
   version "0.10.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/retry/-/retry-0.10.1.tgz#e76388d217992c252750241d3d3956fed98d8ff4"
   integrity sha1-52OI0heZLCUnUCQdPTlW/tmNj/Q=
+
+retry@^0.12.0:
+  version "0.12.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/retry/-/retry-0.12.0.tgz#1b42a6266a21f07421d1b0b54b7dc167b01c013b"
+  integrity sha1-G0KmJmoh8HQh0bC1S33BZ7AcATs=
 
 reusify@^1.0.4:
   version "1.0.4"
@@ -15610,12 +16868,24 @@ sane@^4.0.3:
     minimist "^1.1.1"
     walker "~1.0.5"
 
-sass@^1.26.10, sass@^1.30.0, sass@^1.32.4:
+sass@^1.29.0:
+  version "1.32.12"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/sass/-/sass-1.32.12.tgz#a2a47ad0f1c168222db5206444a30c12457abb9f"
+  integrity sha1-oqR60PHBaCIttSBkRKMMEkV6u58=
+  dependencies:
+    chokidar ">=3.0.0 <4.0.0"
+
+sass@^1.30.0, sass@^1.32.4:
   version "1.32.8"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/sass/-/sass-1.32.8.tgz#f16a9abd8dc530add8834e506878a2808c037bdc"
   integrity sha1-8WqavY3FMK3Yg05QaHiigIwDe9w=
   dependencies:
     chokidar ">=2.0.0 <4.0.0"
+
+sax@>=0.6.0:
+  version "1.2.4"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
+  integrity sha1-KBYjTiN4vdxOU1T6tcqold9xANk=
 
 scheduler@^0.19.1:
   version "0.19.1"
@@ -15660,6 +16930,14 @@ schema-utils@^3.0.0:
     "@types/json-schema" "^7.0.6"
     ajv "^6.12.5"
     ajv-keywords "^3.5.2"
+
+scss-parser@^1.0.4:
+  version "1.0.4"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/scss-parser/-/scss-parser-1.0.4.tgz#61cdeb28701ffcb497954b9b05729c6d38eb8b9f"
+  integrity sha1-Yc3rKHAf/LSXlUubBXKcbTjri58=
+  dependencies:
+    invariant "2.2.4"
+    lodash "^4.17.4"
 
 select@^1.1.2:
   version "1.1.2"
@@ -15731,6 +17009,15 @@ send@0.17.1:
     range-parser "~1.2.1"
     statuses "~1.5.0"
 
+sentence-case@^3.0.4:
+  version "3.0.4"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/sentence-case/-/sentence-case-3.0.4.tgz#3645a7b8c117c787fde8702056225bb62a45131f"
+  integrity sha1-NkWnuMEXx4f96HAgViJbtipFEx8=
+  dependencies:
+    no-case "^3.0.4"
+    tslib "^2.0.3"
+    upper-case-first "^2.0.2"
+
 serialize-javascript@5.0.1:
   version "5.0.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/serialize-javascript/-/serialize-javascript-5.0.1.tgz#7886ec848049a462467a97d3d918ebb2aaf934f4"
@@ -15756,6 +17043,20 @@ serve-favicon@^2.5.0:
     parseurl "~1.3.2"
     safe-buffer "5.1.1"
 
+serve-handler@6.1.3:
+  version "6.1.3"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/serve-handler/-/serve-handler-6.1.3.tgz#1bf8c5ae138712af55c758477533b9117f6435e8"
+  integrity sha1-G/jFrhOHEq9Vx1hHdTO5EX9kNeg=
+  dependencies:
+    bytes "3.0.0"
+    content-disposition "0.5.2"
+    fast-url-parser "1.1.3"
+    mime-types "2.1.18"
+    minimatch "3.0.4"
+    path-is-inside "1.0.2"
+    path-to-regexp "2.2.1"
+    range-parser "1.2.0"
+
 serve-static@1.14.1:
   version "1.14.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/serve-static/-/serve-static-1.14.1.tgz#666e636dc4f010f7ef29970a88a674320898b2f9"
@@ -15765,6 +17066,21 @@ serve-static@1.14.1:
     escape-html "~1.0.3"
     parseurl "~1.3.3"
     send "0.17.1"
+
+serve@^11.3.2:
+  version "11.3.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/serve/-/serve-11.3.2.tgz#b905e980616feecd170e51c8f979a7b2374098f5"
+  integrity sha1-uQXpgGFv7s0XDlHI+XmnsjdAmPU=
+  dependencies:
+    "@zeit/schemas" "2.6.0"
+    ajv "6.5.3"
+    arg "2.0.0"
+    boxen "1.3.0"
+    chalk "2.4.1"
+    clipboardy "1.2.3"
+    compression "1.7.3"
+    serve-handler "6.1.3"
+    update-check "1.5.2"
 
 set-blocking@^2.0.0, set-blocking@~2.0.0:
   version "2.0.0"
@@ -15894,7 +17210,7 @@ side-channel@^1.0.4:
     get-intrinsic "^1.0.2"
     object-inspect "^1.9.0"
 
-signal-exit@^3.0.0, signal-exit@^3.0.2:
+signal-exit@^3.0.0, signal-exit@^3.0.2, signal-exit@^3.0.3:
   version "3.0.3"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/signal-exit/-/signal-exit-3.0.3.tgz#a1410c2edd8f077b08b4e253c8eacfcaf057461c"
   integrity sha1-oUEMLt2PB3sItOJTyOrPyvBXRhw=
@@ -15941,6 +17257,14 @@ smart-buffer@^4.1.0:
   version "4.1.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/smart-buffer/-/smart-buffer-4.1.0.tgz#91605c25d91652f4661ea69ccf45f1b331ca21ba"
   integrity sha1-kWBcJdkWUvRmHqacz0XxszHKIbo=
+
+snake-case@^3.0.4:
+  version "3.0.4"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/snake-case/-/snake-case-3.0.4.tgz#4f2bbd568e9935abdfd593f34c691dadb49c452c"
+  integrity sha1-Tyu9Vo6ZNavf1ZPzTGkdrbScRSw=
+  dependencies:
+    dot-case "^3.0.4"
+    tslib "^2.0.3"
 
 snapdragon-node@^2.0.1:
   version "2.1.1"
@@ -16063,7 +17387,7 @@ source-map-resolve@^0.5.0:
     source-map-url "^0.4.0"
     urix "^0.1.0"
 
-source-map-support@^0.5.16, source-map-support@^0.5.5, source-map-support@~0.5.12:
+source-map-support@^0.5.16, source-map-support@^0.5.17, source-map-support@^0.5.5, source-map-support@~0.5.12:
   version "0.5.19"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/source-map-support/-/source-map-support-0.5.19.tgz#a98b62f86dcaf4f67399648c085291ab9e8fed61"
   integrity sha1-qYti+G3K9PZzmWSMCFKRq56P7WE=
@@ -16090,6 +17414,11 @@ source-map@^0.7.3:
   version "0.7.3"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/source-map/-/source-map-0.7.3.tgz#5302f8169031735226544092e64981f751750383"
   integrity sha1-UwL4FpAxc1ImVECS5kmB91F1A4M=
+
+sourcemap-codec@^1.4.4:
+  version "1.4.8"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/sourcemap-codec/-/sourcemap-codec-1.4.8.tgz#ea804bd94857402e6992d05a38ef1ae35a9ab4c4"
+  integrity sha1-6oBL2UhXQC5pktBaOO8a41qatMQ=
 
 space-separated-tokens@^1.0.0:
   version "1.1.5"
@@ -16233,6 +17562,13 @@ stable@^0.1.8:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/stable/-/stable-0.1.8.tgz#836eb3c8382fe2936feaf544631017ce7d47a3cf"
   integrity sha1-g26zyDgv4pNv6vVEYxAXzn1Ho88=
 
+stack-utils@^2.0.3:
+  version "2.0.3"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/stack-utils/-/stack-utils-2.0.3.tgz#cd5f030126ff116b78ccb3c027fe302713b61277"
+  integrity sha1-zV8DASb/EWt4zLPAJ/4wJxO2Enc=
+  dependencies:
+    escape-string-regexp "^2.0.0"
+
 stackframe@^1.1.1:
   version "1.2.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/stackframe/-/stackframe-1.2.0.tgz#52429492d63c62eb989804c11552e3d22e779303"
@@ -16351,6 +17687,11 @@ string-argv@0.3.1:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/string-argv/-/string-argv-0.3.1.tgz#95e2fbec0427ae19184935f816d74aaa4c5c19da"
   integrity sha1-leL77AQnrhkYSTX4FtdKqkxcGdo=
 
+string-hash@^1.1.1:
+  version "1.1.3"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/string-hash/-/string-hash-1.1.3.tgz#e8aafc0ac1855b4666929ed7dd1275df5d6c811b"
+  integrity sha1-6Kr8CsGFW0Zmkp7X3RJ1311sgRs=
+
 string-kit@^0.12.0:
   version "0.12.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/string-kit/-/string-kit-0.12.1.tgz#6c42bfdbb2440c9cf4100d229fe56b62d24e8eef"
@@ -16365,7 +17706,7 @@ string-width@^1.0.1:
     is-fullwidth-code-point "^1.0.0"
     strip-ansi "^3.0.0"
 
-"string-width@^1.0.2 || 2", string-width@^2.1.0:
+"string-width@^1.0.2 || 2", string-width@^2.0.0, string-width@^2.1.0, string-width@^2.1.1:
   version "2.1.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/string-width/-/string-width-2.1.1.tgz#ab93f27a8dc13d28cac815c462143a6d9012ae9e"
   integrity sha1-q5Pyeo3BPSjKyBXEYhQ6bZASrp4=
@@ -16540,7 +17881,7 @@ strip-indent@^3.0.0:
   dependencies:
     min-indent "^1.0.0"
 
-strip-json-comments@2.0.1:
+strip-json-comments@2.0.1, strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
   integrity sha1-PFMZQukIwml8DsNEhYwobHygpgo=
@@ -16810,6 +18151,11 @@ tapable@^1.0.0, tapable@^1.1.3:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/tapable/-/tapable-1.1.3.tgz#a1fccc06b58db61fd7a45da2da44f5f3a3e67ba2"
   integrity sha1-ofzMBrWNth/XpF2i2kT186Pme6I=
 
+tapable@^2.2.0:
+  version "2.2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/tapable/-/tapable-2.2.0.tgz#5c373d281d9c672848213d0e037d1c4165ab426b"
+  integrity sha1-XDc9KB2cZyhIIT0OA30cQWWrQms=
+
 tar-stream@^2.1.4:
   version "2.2.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/tar-stream/-/tar-stream-2.2.0.tgz#acad84c284136b060dc3faa64474aa9aebd77287"
@@ -16896,6 +18242,13 @@ tempfile@^3.0.0:
   dependencies:
     temp-dir "^2.0.0"
     uuid "^3.3.2"
+
+term-size@^1.2.0:
+  version "1.2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/term-size/-/term-size-1.2.0.tgz#458b83887f288fc56d6fffbfad262e26638efa69"
+  integrity sha1-RYuDiH8oj8Vtb/+/rSYuJmOO+mk=
+  dependencies:
+    execa "^0.7.0"
 
 term-size@^2.1.0:
   version "2.2.1"
@@ -17045,6 +18398,11 @@ timers-browserify@^2.0.4:
   integrity sha1-RKRcEfv0B/NPl7zNFXfGUjYbAO4=
   dependencies:
     setimmediate "^1.0.4"
+
+timm@^1.6.1:
+  version "1.7.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/timm/-/timm-1.7.1.tgz#96bab60c7d45b5a10a8a4d0f0117c6b7e5aff76f"
+  integrity sha1-lrq2DH1FtaEKik0PARfGt+Wv928=
 
 tiny-emitter@^2.0.0:
   version "2.1.0"
@@ -17202,6 +18560,28 @@ ts-essentials@^2.0.3:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ts-essentials/-/ts-essentials-2.0.12.tgz#c9303f3d74f75fa7528c3d49b80e089ab09d8745"
   integrity sha1-yTA/PXT3X6dSjD1JuA4ImrCdh0U=
 
+ts-loader@^9.1.2:
+  version "9.1.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ts-loader/-/ts-loader-9.1.2.tgz#ba9b9abb05a514e8ff825791a3f6fcf793272728"
+  integrity sha1-upuauwWlFOj/gleRo/b895MnJyg=
+  dependencies:
+    chalk "^4.1.0"
+    enhanced-resolve "^5.0.0"
+    micromatch "^4.0.0"
+    semver "^7.3.4"
+
+ts-node@^9.1.1:
+  version "9.1.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ts-node/-/ts-node-9.1.1.tgz#51a9a450a3e959401bda5f004a72d54b936d376d"
+  integrity sha1-UamkUKPpWUAb2l8ASnLVS5NtN20=
+  dependencies:
+    arg "^4.1.0"
+    create-require "^1.1.0"
+    diff "^4.0.1"
+    make-error "^1.1.1"
+    source-map-support "^0.5.17"
+    yn "3.1.1"
+
 ts-pnp@^1.1.6:
   version "1.2.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ts-pnp/-/ts-pnp-1.2.0.tgz#a500ad084b0798f1c3071af391e65912c86bca92"
@@ -17227,20 +18607,25 @@ tsconfig-paths@^3.9.0:
     minimist "^1.2.0"
     strip-bom "^3.0.0"
 
-tslib@2.0.3:
-  version "2.0.3"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/tslib/-/tslib-2.0.3.tgz#8e0741ac45fc0c226e58a17bfc3e64b9bc6ca61c"
-  integrity sha1-jgdBrEX8DCJuWKF7/D5kubxsphw=
-
 tslib@^1.11.0, tslib@^1.11.1, tslib@^1.7.1, tslib@^1.8.1, tslib@^1.9.0, tslib@^1.9.3:
   version "1.14.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha1-zy04vcNKE0vK8QkcQfZhni9nLQA=
 
-tslib@^2.0.0, tslib@^2.0.1, tslib@^2.0.2, tslib@^2.0.3:
+tslib@^2.0.0, tslib@^2.0.1, tslib@^2.0.3:
   version "2.1.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/tslib/-/tslib-2.1.0.tgz#da60860f1c2ecaa5703ab7d39bc05b6bf988b97a"
   integrity sha1-2mCGDxwuyqVwOrfTm8Bba/mIuXo=
+
+tslib@^2.1.0:
+  version "2.2.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/tslib/-/tslib-2.2.0.tgz#fb2c475977e35e241311ede2693cee1ec6698f5c"
+  integrity sha1-+yxHWXfjXiQTEe3iaTzuHsZpj1w=
+
+tslib@^2.3.0:
+  version "2.3.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/tslib/-/tslib-2.3.0.tgz#803b8cdab3e12ba581a4ca41c8839bbb0dacb09e"
+  integrity sha1-gDuM2rPhK6WBpMpByIObuw2ssJ4=
 
 tsscmp@1.0.6:
   version "1.0.6"
@@ -17340,10 +18725,10 @@ typescript@^3.8.3:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/typescript/-/typescript-3.9.9.tgz#e69905c54bc0681d0518bd4d587cc6f2d0b1a674"
   integrity sha1-5pkFxUvAaB0FGL1NWHzG8tCxpnQ=
 
-typescript@^4.1.3:
-  version "4.2.3"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/typescript/-/typescript-4.2.3.tgz#39062d8019912d43726298f09493d598048c1ce3"
-  integrity sha1-OQYtgBmRLUNyYpjwlJPVmASMHOM=
+typescript@^4.3.2:
+  version "4.3.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/typescript/-/typescript-4.3.2.tgz#399ab18aac45802d6f2498de5054fcbbe716a805"
+  integrity sha1-OZqxiqxFgC1vJJjeUFT8u+cWqAU=
 
 typical@^4.0.0:
   version "4.0.0"
@@ -17639,6 +19024,28 @@ upath@^1.1.1, upath@^1.2.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/upath/-/upath-1.2.0.tgz#8f66dbcd55a883acdae4408af8b035a5044c1894"
   integrity sha1-j2bbzVWog6za5ECK+LA1pQRMGJQ=
 
+update-check@1.5.2:
+  version "1.5.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/update-check/-/update-check-1.5.2.tgz#2fe09f725c543440b3d7dabe8971f2d5caaedc28"
+  integrity sha1-L+CfclxUNECz19q+iXHy1cqu3Cg=
+  dependencies:
+    registry-auth-token "3.3.2"
+    registry-url "3.1.0"
+
+upper-case-first@^2.0.2:
+  version "2.0.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/upper-case-first/-/upper-case-first-2.0.2.tgz#992c3273f882abd19d1e02894cc147117f844324"
+  integrity sha1-mSwyc/iCq9GdHgKJTMFHEX+EQyQ=
+  dependencies:
+    tslib "^2.0.3"
+
+upper-case@^2.0.2:
+  version "2.0.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/upper-case/-/upper-case-2.0.2.tgz#d89810823faab1df1549b7d97a76f8662bae6f7a"
+  integrity sha1-2JgQgj+qsd8VSbfZenb4Ziuub3o=
+  dependencies:
+    tslib "^2.0.3"
+
 uri-js@^4.2.2:
   version "4.4.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/uri-js/-/uri-js-4.4.1.tgz#9b1a52595225859e55f669d928f88c6c57f2a77e"
@@ -17700,6 +19107,13 @@ useragent@^2.3.0:
     lru-cache "4.1.x"
     tmp "0.0.x"
 
+utif@^2.0.1:
+  version "2.0.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/utif/-/utif-2.0.1.tgz#9e1582d9bbd20011a6588548ed3266298e711759"
+  integrity sha1-nhWC2bvSABGmWIVI7TJmKY5xF1k=
+  dependencies:
+    pako "^1.0.5"
+
 util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   version "1.0.2"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
@@ -17754,7 +19168,7 @@ uuid@^3.0.1, uuid@^3.3.2:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
   integrity sha1-sj5DWK+oogL+ehAK8fX4g/AgB+4=
 
-uuid@^8.3.1:
+uuid@^8.3.2:
   version "8.3.2"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
   integrity sha1-gNW1ztJxu5r2xEXyGhoExgbO++I=
@@ -17902,14 +19316,6 @@ vscode-uri@^2.1.2:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/vscode-uri/-/vscode-uri-2.1.2.tgz#c8d40de93eb57af31f3c715dd650e2ca2c096f1c"
   integrity sha1-yNQN6T61evMfPHFd1lDiyiwJbxw=
 
-vue-template-compiler@^2.6.11:
-  version "2.6.12"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/vue-template-compiler/-/vue-template-compiler-2.6.12.tgz#947ed7196744c8a5285ebe1233fe960437fcc57e"
-  integrity sha1-lH7XGWdEyKUoXr4SM/6WBDf8xX4=
-  dependencies:
-    de-indent "^1.0.2"
-    he "^1.1.0"
-
 walker@^1.0.7, walker@~1.0.5:
   version "1.0.7"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/walker/-/walker-1.0.7.tgz#2f7f9b8fd10d677262b18a884e28d19618e028fb"
@@ -17969,6 +19375,25 @@ webidl-conversions@^4.0.2:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/webidl-conversions/-/webidl-conversions-4.0.2.tgz#a855980b1f0b6b359ba1d5d9fb39ae941faa63ad"
   integrity sha1-qFWYCx8LazWbodXZ+zmulB+qY60=
 
+webpack-cli@^4.7.0:
+  version "4.7.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/webpack-cli/-/webpack-cli-4.7.0.tgz#3195a777f1f802ecda732f6c95d24c0004bc5a35"
+  integrity sha1-MZWnd/H4Auzacy9sldJMAAS8WjU=
+  dependencies:
+    "@discoveryjs/json-ext" "^0.5.0"
+    "@webpack-cli/configtest" "^1.0.3"
+    "@webpack-cli/info" "^1.2.4"
+    "@webpack-cli/serve" "^1.4.0"
+    colorette "^1.2.1"
+    commander "^7.0.0"
+    execa "^5.0.0"
+    fastest-levenshtein "^1.0.12"
+    import-local "^3.0.2"
+    interpret "^2.2.0"
+    rechoir "^0.7.0"
+    v8-compile-cache "^2.2.0"
+    webpack-merge "^5.7.3"
+
 webpack-dev-middleware@^3.7.3:
   version "3.7.3"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/webpack-dev-middleware/-/webpack-dev-middleware-3.7.3.tgz#0639372b143262e2b84ab95d3b91a7597061c2c5"
@@ -18002,6 +19427,14 @@ webpack-log@^2.0.0:
   dependencies:
     ansi-colors "^3.0.0"
     uuid "^3.3.2"
+
+webpack-merge@^5.7.3:
+  version "5.7.3"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/webpack-merge/-/webpack-merge-5.7.3.tgz#2a0754e1877a25a8bbab3d2475ca70a052708213"
+  integrity sha1-KgdU4Yd6Jai7qz0kdcpwoFJwghM=
+  dependencies:
+    clone-deep "^4.0.1"
+    wildcard "^2.0.0"
 
 webpack-sources@^1.4.0, webpack-sources@^1.4.1, webpack-sources@^1.4.3:
   version "1.4.3"
@@ -18103,12 +19536,24 @@ wide-align@1.1.3, wide-align@^1.1.0:
   dependencies:
     string-width "^1.0.2 || 2"
 
+widest-line@^2.0.0:
+  version "2.0.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/widest-line/-/widest-line-2.0.1.tgz#7438764730ec7ef4381ce4df82fb98a53142a3fc"
+  integrity sha1-dDh2RzDsfvQ4HOTfgvuYpTFCo/w=
+  dependencies:
+    string-width "^2.1.1"
+
 widest-line@^3.1.0:
   version "3.1.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/widest-line/-/widest-line-3.1.0.tgz#8292333bbf66cb45ff0de1603b136b7ae1496eca"
   integrity sha1-gpIzO79my0X/DeFgOxNreuFJbso=
   dependencies:
     string-width "^4.0.0"
+
+wildcard@^2.0.0:
+  version "2.0.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/wildcard/-/wildcard-2.0.0.tgz#a77d20e5200c6faaac979e4b3aadc7b3dd7f8fec"
+  integrity sha1-p30g5SAMb6qsl55LOq3Hs91/j+w=
 
 windows-release@^3.1.0:
   version "3.3.3"
@@ -18237,6 +19682,11 @@ write-pkg@^3.1.0:
     sort-keys "^2.0.0"
     write-json-file "^2.2.0"
 
+ws@^7.3.1:
+  version "7.4.5"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ws/-/ws-7.4.5.tgz#a484dd851e9beb6fdb420027e3885e8ce48986c1"
+  integrity sha1-pITdhR6b62/bQgAn44hejOSJhsE=
+
 ws@~7.4.2:
   version "7.4.4"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ws/-/ws-7.4.4.tgz#383bc9742cb202292c9077ceab6f6047b17f2d59"
@@ -18246,6 +19696,39 @@ x-is-string@^0.1.0:
   version "0.1.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/x-is-string/-/x-is-string-0.1.0.tgz#474b50865af3a49a9c4657f05acd145458f77d82"
   integrity sha1-R0tQhlrzpJqcRlfwWs0UVFj3fYI=
+
+xhr@^2.0.1:
+  version "2.6.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/xhr/-/xhr-2.6.0.tgz#b69d4395e792b4173d6b7df077f0fc5e4e2b249d"
+  integrity sha1-tp1DleeStBc9a33wd/D8Xk4rJJ0=
+  dependencies:
+    global "~4.4.0"
+    is-function "^1.0.1"
+    parse-headers "^2.0.0"
+    xtend "^4.0.0"
+
+xml-parse-from-string@^1.0.0:
+  version "1.0.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/xml-parse-from-string/-/xml-parse-from-string-1.0.1.tgz#a9029e929d3dbcded169f3c6e28238d95a5d5a28"
+  integrity sha1-qQKekp09vN7RafPG4oI42VpdWig=
+
+xml2js@^0.4.5:
+  version "0.4.23"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/xml2js/-/xml2js-0.4.23.tgz#a0c69516752421eb2ac758ee4d4ccf58843eac66"
+  integrity sha1-oMaVFnUkIesqx1juTUzPWIQ+rGY=
+  dependencies:
+    sax ">=0.6.0"
+    xmlbuilder "~11.0.0"
+
+xmlbuilder@~11.0.0:
+  version "11.0.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/xmlbuilder/-/xmlbuilder-11.0.1.tgz#be9bae1c8a046e76b31127726347d0ad7002beb3"
+  integrity sha1-vpuuHIoEbnazESdyY0fQrXACvrM=
+
+xmlhttprequest-ssl@^1.6.2:
+  version "1.6.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/xmlhttprequest-ssl/-/xmlhttprequest-ssl-1.6.2.tgz#dd6899bfbcf684b554e393c30b13b9f3b001a7ee"
+  integrity sha1-3WiZv7z2hLVU45PDCxO587ABp+4=
 
 xmlhttprequest-ssl@~1.5.4:
   version "1.5.5"
@@ -18356,7 +19839,7 @@ yargs@13.3.2, yargs@^13.3.0:
     y18n "^4.0.0"
     yargs-parser "^13.1.2"
 
-yargs@16.2.0, yargs@^16.0.0, yargs@^16.2.0:
+yargs@16.2.0, yargs@^16.0.0, yargs@^16.1.0, yargs@^16.2.0:
   version "16.2.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/yargs/-/yargs-16.2.0.tgz#1c82bf0f6b6a66eafce7ef30e376f49a12477f66"
   integrity sha1-HIK/D2tqZur85+8w43b0mhJHf2Y=
@@ -18386,7 +19869,7 @@ yargs@^14.2, yargs@^14.2.2:
     y18n "^4.0.0"
     yargs-parser "^15.0.1"
 
-yargs@^15.3.1, yargs@^15.4.0:
+yargs@^15.3.1:
   version "15.4.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/yargs/-/yargs-15.4.1.tgz#0d87a16de01aee9d8bec2bfbf74f67851730f4f8"
   integrity sha1-DYehbeAa7p2L7Cv7909nhRcw9Pg=
@@ -18403,6 +19886,14 @@ yargs@^15.3.1, yargs@^15.4.0:
     y18n "^4.0.0"
     yargs-parser "^18.1.2"
 
+yauzl@^2.10.0:
+  version "2.10.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/yauzl/-/yauzl-2.10.0.tgz#c7eb17c93e112cb1086fa6d8e51fb0667b79a5f9"
+  integrity sha1-x+sXyT4RLLEIb6bY5R+wZnt5pfk=
+  dependencies:
+    buffer-crc32 "~0.2.3"
+    fd-slicer "~1.1.0"
+
 yeast@0.1.2:
   version "0.1.2"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/yeast/-/yeast-0.1.2.tgz#008e06d8094320c372dbc2f8ed76a0ca6c8ac419"
@@ -18412,6 +19903,11 @@ ylru@^1.2.0:
   version "1.2.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ylru/-/ylru-1.2.1.tgz#f576b63341547989c1de7ba288760923b27fe84f"
   integrity sha1-9Xa2M0FUeYnB3nuiiHYJI7J/6E8=
+
+yn@3.1.1:
+  version "3.1.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/yn/-/yn-3.1.1.tgz#1e87401a09d767c1d5eab26a6e4c185182d2eb50"
+  integrity sha1-HodAGgnXZ8HV6rJqbkwYUYLS61A=
 
 yocto-queue@^0.1.0:
   version "0.1.0"

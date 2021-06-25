@@ -1,9 +1,10 @@
+@use './vwc-expansion-panel-variables' as expansion-panel-variables;
+@use '@vonage/vwc-icon/src/vwc-icon-variables' as icon-variables;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-typography/scss/typography';
 
-// Todo - spacing vars
-
 :host {
+	--mdc-ripple-color: var(#{scheme-variables.$vvd-color-on-base});
 	display: flex;
 	flex-direction: column;
 }
@@ -27,36 +28,33 @@
 
 .expansion-panel {
 	border-bottom: 1px solid var(#{scheme-variables.$vvd-color-neutral-30});
-
-	&:hover {
-		background-color: var(#{scheme-variables.$vvd-color-neutral-20});
-	}
 }
 
 .expansion-panel-header {
 	@include typography.typography-cat-shorthand('subtitle-2');
+	position: relative;
 	display: flex;
 	align-items: center;
-	padding: 12px 16px;
+	padding: 16px;
 	cursor: pointer;
 
 	.leading-icon,
 	.trailing-icon {
 		display: flex;
 
-		.vvd-icon {
-			--icon-size: 20px;
+		vwc-icon {
+			#{icon-variables.$icon-size-variable-name}: var(#{expansion-panel-variables.$expansion-panel-icon-size-variable-name}, 16px);
 		}
 	}
 
-	.leading-icon .vvd-icon {
+	.leading-icon vwc-icon {
 		margin-inline-end: 16px;
 	}
 
 	.trailing-icon {
 		margin-left: auto;
 
-		.vvd-icon {
+		vwc-icon {
 			margin-inline-start: 16px;
 		}
 	}
@@ -64,11 +62,24 @@
 
 .expansion-panel-body {
 	@include typography.typography-cat-shorthand('body-2');
-	padding: 0 16px 24px 56px;
+	padding: 8px 32px 24px 16px;
 }
 
-:host([icon=''][trailingToggle]) {
+:host(:not([icon=''])),
+:host([leadingToggle]) {
 	.expansion-panel-body {
-		padding: 0 16px 24px;
+		padding-left: 48px;
+	}
+}
+
+:host([leadingToggle]) {
+	.expansion-panel-body {
+		padding-right: 16px;
+	}
+}
+
+:host([dense]) {
+	.expansion-panel-header {
+		@include typography.typography-cat-shorthand('body-2-bold');
 	}
 }

@@ -6,13 +6,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
     steps:
       - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.ref }}
 
       - name: WhiteSource CI integration
         uses: Idancc/WhiteSource-CI-Integration@v2.6
