@@ -64,7 +64,7 @@ export class VWCCalendar extends LitElement {
 	 * @public
 	 * */
 	@property({
-		reflect: false,
+		reflect: true,
 		type: String
 	})
 	locales?: string | string[] | undefined;
