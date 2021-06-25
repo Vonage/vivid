@@ -65,19 +65,9 @@ export class VWCCalendar extends LitElement {
 	 * */
 	@property({
 		reflect: false,
-		converter: {
-			toAttribute(v) {
-				// console.log(Array.isArray(v));
-				console.log(v);
-				return v;
-			},
-			fromAttribute(v) {
-				console.log(v);
-				return v;
-			}
-		}
+		type: String
 	})
-	locales = 'en-US';
+	locales?: string | string[] | undefined;
 
 	#daysLength = 7;
 	#hours = (Array.from({ length: 23 }) as Date[])
@@ -124,13 +114,13 @@ export class VWCCalendar extends LitElement {
 				${this.getDaysArr([getFirstDateOfTheWeek(this.datetime)]).map(date => html`
 				<div role="columnheader" tabindex="-1">
 					<time datetime=${getValidDateString(date)} aria-readonly="true"
-						aria-label=${new Intl.DateTimeFormat('en-US', { weekday: 'long', month: 'long', day: 'numeric' }).format(date)}>
+						aria-label=${new Intl.DateTimeFormat(this.locales, { weekday: 'long', month: 'long', day: 'numeric' }).format(date)}>
 						<h2>
 							<em>
-								${new Intl.DateTimeFormat('en-US', { day: '2-digit' }).format(date)}
+								${new Intl.DateTimeFormat(this.locales, { day: '2-digit' }).format(date)}
 							</em>
 							<small>
-								${new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(date)}
+								${new Intl.DateTimeFormat(this.locales, { weekday: 'short' }).format(date)}
 							</small>
 						</h2>
 					</time>
@@ -146,8 +136,8 @@ export class VWCCalendar extends LitElement {
 		return html`
 			<div class="row-headers" role="presentation">
 				${this.#hours.map(h => html`<span role="rowheader">
-					<time datetime="${new Intl.DateTimeFormat('en-US', { hour: 'numeric', minute: 'numeric', hour12: false }).format(h)}">
-						${new Intl.DateTimeFormat('en-US', { hour: 'numeric', hour12: true }).format(h)}
+					<time datetime="${new Intl.DateTimeFormat(this.locales, { hour: 'numeric', minute: 'numeric', hour12: false }).format(h)}">
+						${new Intl.DateTimeFormat(this.locales, { hour: 'numeric', hour12: true }).format(h)}
 					</time>
 				</span>`)}
 			</div>`;
