@@ -69,60 +69,44 @@ describe('calendar', () => {
 		.map(h2 => Array.from(h2.children)
 			.reduce((acc, curr) => acc.textContent.trim() + curr.textContent.trim()));
 
+	const getWeekdays = el => extractDaysTextFromHeaders(el.shadowRoot.querySelector('.column-headers'));
+
 	describe('API', () => {
 		it('should reflect weekdays as set by property', async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
-			await waitNextTask();
+
 			actualElement.datetime = '2021-01-01';
 			await actualElement.updateComplete;
 
-			const { shadowRoot } = actualElement;
-			const columnHeaders = shadowRoot.querySelector('.column-headers');
-
-			const reflectedDates = extractDaysTextFromHeaders(columnHeaders);
-
-			const expectedDates = ['27Sun', '28Mon', '29Tue', '30Wed', '31Thu', '01Fri', '02Sat'];
-
-			expect(reflectedDates.join()).to.equal(expectedDates.join());
+			expect(getWeekdays(actualElement).join())
+				.to.equal('27Sun,28Mon,29Tue,30Wed,31Thu,01Fri,02Sat');
 		});
 
 		it('should reflect weekdays as set by attribute', async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
-			await waitNextTask();
+
 			actualElement.setAttribute('datetime', '2021-01-01');
 			await actualElement.updateComplete;
 
-			const { shadowRoot } = actualElement;
-			const columnHeaders = shadowRoot.querySelector('.column-headers');
-
-			const reflectedDates = extractDaysTextFromHeaders(columnHeaders);
-
-			const expectedDates = ['27Sun', '28Mon', '29Tue', '30Wed', '31Thu', '01Fri', '02Sat'];
-
-			expect(reflectedDates.join()).to.equal(expectedDates.join());
+			expect(getWeekdays(actualElement).join())
+				.to.equal('27Sun,28Mon,29Tue,30Wed,31Thu,01Fri,02Sat');
 		});
 
 		it('should reflect weekdays and hours as set by locales', async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
-			await waitNextTask();
-			actualElement.setAttribute('datetime', '2021-01-01');
-			actualElement.setAttribute('locales', 'zh-cn');
+
+			actualElement.datetime = '2021-01-01';
+			actualElement.locales = 'zh-cn';
 			await actualElement.updateComplete;
 
-			const { shadowRoot } = actualElement;
-			const columnHeaders = shadowRoot.querySelector('.column-headers');
-
-			const reflectedDates = extractDaysTextFromHeaders(columnHeaders);
-
-			const expectedDates = ['27日周日', '28日周一', '29日周二', '30日周三', '31日周四', '01日周五', '02日周六'];
-
-			expect(reflectedDates.join()).to.equal(expectedDates.join());
+			expect(getWeekdays(actualElement).join())
+				.to.equal('27日周日,28日周一,29日周二,30日周三,31日周四,01日周五,02日周六');
 		});
 
 		it('should delegate attributes to custom properties', async () => {
