@@ -1,15 +1,14 @@
-@use '@vonage/vvd-design-tokens/build/scss/schemes/light/main.scss';
-@use '@vonage/vvd-design-tokens/build/scss/schemes/light/alternate.scss';
-@use '_scheme-mixins';
+@use '@vonage/vvd-design-tokens/build/scss/schemes/light/main.scss' as main;
+@use '@vonage/vvd-design-tokens/build/scss/schemes/light/alternate.scss' as alternate;
+@use 'partials/scheme-mixins' as mixins;
+@use 'partials/scheme-variables' as variables;
 
-:root {
-	color-scheme: light;
-}
 
-@include scheme-mixins.scheme-context-variables {
+
+#{variables.$scheme-main-selector} {
 	@include main.variables;
 }
 
-@include scheme-mixins.scheme-alternate-variables {
+#{variables.$scheme-alternate-selector} {
 	@include alternate.variables;
 }

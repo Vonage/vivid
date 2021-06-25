@@ -1,16 +1,11 @@
 $scheme-main: vvd-scheme-main;
 $scheme-alternate: vvd-scheme-alternate;
 
-@mixin base {
-	background-color: var(--vvd-color-base);
-	color: var(--vvd-color-on-base);
-}
 
 @mixin scheme-context-variables {
 	body,
 	.#{$scheme-main},
 	::part(#{$scheme-main}) {
-		@include base;
 		@content;
 	}
 }
@@ -18,7 +13,6 @@ $scheme-alternate: vvd-scheme-alternate;
 @mixin scheme-alternate-variables {
 	.#{$scheme-alternate},
 	::part(#{$scheme-alternate}) {
-		@include base;
 		@content;
 	}
 }

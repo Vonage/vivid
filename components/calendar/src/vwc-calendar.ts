@@ -5,8 +5,11 @@ import {
 import { style } from './vwc-calendar.css';
 import {
 	assertIsValidDateStringRepresentation,
-	getValidDateString
+	getValidDateString,
+	getFirstDateOfTheWeek
 } from './vwc-calendar-date-functions';
+import {	DirectiveFn } from 'lit-html';
+import { repeat } from 'lit-html/directives/repeat';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -81,28 +84,6 @@ export class VWCCalendar extends LitElement {
 		.fill(new Date(new Date().setHours(0, 0, 0)))
 		.map((d, i) => new Date(d.setHours(++i)))
 
-	/**
-	 * generate dates array of days of the week by given date
-	 *
-	 * @param dateOrDateString - js date object
-	 * @internal
-	 * */
-	// private getWeekdaysByDate(date: Date = new Date()): Date[] {
-	// 	let firstDateOfTheWeek = date.getDate() - date.getDay();
-	// 	console.log('firstDateOfTheWeek', firstDateOfTheWeek);
-	// 	return Array.from(
-	// 		{ length: this.#daysLength },
-	// 		() => new Date(date.setDate(firstDateOfTheWeek++))
-	// 	);
-	// }
-
-	private getFirstDateOfTheWeek(dateOrDateString: Date | string = new Date()): Date {
-		if (typeof dateOrDateString === 'string') {
-			dateOrDateString = new Date(dateOrDateString);
-		}
-		return new Date(dateOrDateString.setDate(dateOrDateString.getDate() - dateOrDateString.getDay()));
-	}
-
 	private getDaysArr(dateArr: Date[]): Date[] {
 		if (dateArr.length == this.#daysLength) { return dateArr; }
 		const lastDate = new Date(dateArr[dateArr.length - 1]);
@@ -111,37 +92,26 @@ export class VWCCalendar extends LitElement {
 		return this.getDaysArr(concatenatedDateArr);
 	}
 
-	/**
-	 * Date formatter
-	 *
-	 * @remarks
-	 * Uses IntlDateTimeFormat API
-	 *
-	 * @param date - js date object
-	 * @param options - Intl.DateTimeFormatOptions
-	 *
-	 * @internal
-	 * */
-	private formatDate(date: Date, options: Intl.DateTimeFormatOptions) {
-		return new Intl.DateTimeFormat(this.locale, options).format(date);
+	protected renderTimeRows(): DirectiveFn {
+		const length = this.#hours.length + 1;
+
+		return repeat(
+			Array.from({ length }),
+			() => html`<div role="listitem"></div>`
+		);
 	}
 
-	protected renderTimeRows(): TemplateResult[] {
-		const templates = [];
-		for (let i = 0; i < (this.#hours.length + 1); i++) {
-			templates.push(html`<div role="listitem"></div>`);
-		}
-		return templates;
-	}
+	protected renderColumns(): DirectiveFn {
+		const length = this.#daysLength;
 
-	protected renderColumns(): TemplateResult[] {
-		const templates = [];
-		for (let i = 0; i < this.#daysLength; i++) {
-			templates.push(html`<div role="gridcell" tabindex="-1">
-				<slot name="day-${i}"></slot>
-			</div>`);
-		}
-		return templates;
+		return repeat(
+			Array.from({ length }),
+			(_, i) => html`
+				<div role="gridcell" tabindex="-1">
+					<slot name="day-${i}"></slot>
+				</div>
+			`
+		);
 	}
 
 	/**
@@ -151,15 +121,16 @@ export class VWCCalendar extends LitElement {
 	protected renderDays(): TemplateResult {
 		return html`
 			<div class="column-headers" role="row">
-				${this.getDaysArr([this.getFirstDateOfTheWeek(this.datetime)]).map(date => html`
+				${this.getDaysArr([getFirstDateOfTheWeek(this.datetime)]).map(date => html`
 				<div role="columnheader" tabindex="-1">
-					<time datetime=${getValidDateString(date)} aria-readonly="true" aria-label=${this.formatDate(date, {	weekday: 'long', month: 'long', day: 'numeric' })}>
+					<time datetime=${getValidDateString(date)} aria-readonly="true"
+						aria-label=${new Intl.DateTimeFormat('en-US', { weekday: 'long', month: 'long', day: 'numeric' }).format(date)}>
 						<h2>
 							<em>
-								${this.formatDate(date, { day: '2-digit' })}
+								${new Intl.DateTimeFormat('en-US', { day: '2-digit' }).format(date)}
 							</em>
 							<small>
-								${this.formatDate(date, {	weekday: 'short' })}
+								${new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(date)}
 							</small>
 						</h2>
 					</time>
@@ -175,8 +146,8 @@ export class VWCCalendar extends LitElement {
 		return html`
 			<div class="row-headers" role="presentation">
 				${this.#hours.map(h => html`<span role="rowheader">
-					<time datetime="${this.formatDate(h, { hour: 'numeric', minute: 'numeric', hour12: false })}">
-						${this.formatDate(h, { hour: 'numeric', hour12: true })}
+					<time datetime="${new Intl.DateTimeFormat('en-US', { hour: 'numeric', minute: 'numeric', hour12: false }).format(h)}">
+						${new Intl.DateTimeFormat('en-US', { hour: 'numeric', hour12: true }).format(h)}
 					</time>
 				</span>`)}
 			</div>`;

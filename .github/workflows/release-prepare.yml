@@ -10,8 +10,6 @@ on:
 jobs:
   prepare-verify:
     runs-on: ubuntu-latest
-    env:
-      ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
     steps:
       - name: Checkout
@@ -30,6 +28,10 @@ jobs:
         run: npm install -g yarn
 
       - name: Install dependencies
+        env:
+          yarn_always_auth: true,
+          yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+          yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
         run: yarn install
 
       # Update to a new version
