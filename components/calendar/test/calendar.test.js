@@ -106,6 +106,25 @@ describe('calendar', () => {
 			expect(reflectedDates.join()).to.equal(expectedDates.join());
 		});
 
+		it('should reflect weekdays and hours as set by locales', async () => {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+			);
+			await waitNextTask();
+			actualElement.setAttribute('datetime', '2021-01-01');
+			actualElement.setAttribute('locales', 'zh-cn');
+			await actualElement.updateComplete;
+
+			const { shadowRoot } = actualElement;
+			const columnHeaders = shadowRoot.querySelector('.column-headers');
+
+			const reflectedDates = extractDaysTextFromHeaders(columnHeaders);
+
+			const expectedDates = ['27日周日', '28日周一', '29日周二', '30日周三', '31日周四', '01日周五', '02日周六'];
+
+			expect(reflectedDates.join()).to.equal(expectedDates.join());
+		});
+
 		it('should delegate attributes to custom properties', async () => {
 			const eventComponent = 'vwc-calendar-event';
 			const [actualElement] = addElement(

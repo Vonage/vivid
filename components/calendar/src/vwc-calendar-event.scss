@@ -23,13 +23,14 @@ section {
 	overflow: hidden;
 	box-sizing: border-box;
 	padding: $gutter $gutter*2;
-	margin: 0 #{$unit-indent} 0 #{$indent-calc};
 	background-color: var(#{calendar-variables.$color}, var(#{scheme-variables.$vvd-color-neutral-40}));
 	block-size: calc(var(#{calendar-variables.$duration}) * #{$hour-block-size} + #{$dividers-block-size});
 	border-radius: var(#{calendar-variables.$calendar-shape});
 	color: var(#{scheme-variables.$vvd-color-on-primary});
 	contain: strict;
 	inline-size: calc(100% - #{$unit-indent} - #{$indent-calc});
+	margin-inline-end: #{$unit-indent};
+	margin-inline-start: #{$indent-calc};
 	max-block-size: calc(100% - #{$top});
 	&:focus {
 		z-index: 2000;
