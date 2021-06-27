@@ -2,6 +2,10 @@ name: Master Pull Request
 
 on:
   pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
     branches:
       - master
 
