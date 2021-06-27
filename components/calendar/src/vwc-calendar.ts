@@ -88,7 +88,7 @@ export class VWCCalendar extends LitElement {
 			: '[role="columnheader"i]');
 
 		const activeElement = this.shadowRoot?.activeElement;
-		const isValidActiveElement = (el: unknown): el is HTMLElement => el instanceof HTMLElement
+		const isCellOrHeader = (el: unknown): el is HTMLElement => el instanceof HTMLElement
 			&& (
 				el.matches('[role="gridcell"i]')
 				|| el.matches('[role="columnheader"i]')
@@ -97,7 +97,7 @@ export class VWCCalendar extends LitElement {
 
 		let focusNext: Element | null | undefined;
 
-		if (isValidActiveElement(activeElement)) {
+		if (isCellOrHeader(activeElement)) {
 			// eslint-disable-next-line default-case
 			switch (event.key) {
 			case 'ArrowRight':
@@ -114,10 +114,13 @@ export class VWCCalendar extends LitElement {
 				break;
 			}
 			}
+		} else if (this.getFocusedCalendarEvent()) {
+			focusNext = this.getCalendarEventContainingCell(this.getFocusedCalendarEvent());
+		} else if (activeElement?.match('em[role="button"i]')) {
+
 		} else {
-			focusNext = this.getCalendarEventContainingCell(this.getFocusedCalendarEvent())
 			// default first selectable element
-			|| this.shadowRoot?.querySelector('[role="columnheader"i]');
+			focusNext = this.shadowRoot?.querySelector('[role="columnheader"i]');
 		}
 
 		this.moveTo(focusNext as HTMLElement);
