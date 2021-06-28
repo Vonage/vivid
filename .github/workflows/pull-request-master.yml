@@ -141,7 +141,7 @@ jobs:
   deploy_storybook:
     needs: build
     name: Deploy Storybook
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-18.04
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_VIVID_DEMO_PRS_ACCESS }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_VIVID_DEMO_PRS_SECRET }}
