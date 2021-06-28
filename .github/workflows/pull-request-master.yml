@@ -25,8 +25,8 @@ jobs:
       - uses: actions/cache@v2
         with:
           path: "**/node_modules"
-          key: ${{ hashFiles('yarn.lock') }}
-      - run: yarn
+          key: lock-${{ hashFiles('yarn.lock') }}
+      - run: yarn install --pure-lockfile
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
           yarn_always_auth: true
