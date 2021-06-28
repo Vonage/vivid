@@ -32,6 +32,7 @@ function nextCellOrHeader(this: VWCCalendar, key: string, activeElement: HTMLEle
 	const toggleRowQuery = (f: HTMLElement) => (f.matches('[role="columnheader"i]')
 		? '[role="gridcell"i]'
 		: '[role="columnheader"i]');
+
 	switch (key) {
 	case 'ArrowRight':
 		return activeElement.nextElementSibling || activeElement.parentNode?.firstElementChild;
