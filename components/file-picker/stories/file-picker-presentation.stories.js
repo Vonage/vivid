@@ -21,7 +21,7 @@ Basic.args = {
 
 export const CustomSize = TemplateA.bind({});
 CustomSize.args = {
-	self: { style: '--vvd-file-picker-min-height: 60px; min-inline-size: 200px;' }
+	self: { style: '--vvd-file-picker-min-height: 60px; --vvd-file-picker-min-width: 200px;' }
 };
 
 export const WithLabel = TemplateA.bind({});

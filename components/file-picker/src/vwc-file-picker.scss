@@ -1,14 +1,10 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
 @use '@vonage/vvd-typography/scss/typography' as typography;
-@use 'vwc-file-picker-variables' as variables;
+@use 'partials/vwc-file-picker-variables' as variables;
 
 :host {
 	@include vvd-formfield.coupling;
-
-	display: inline-block;
-	max-inline-size: 100%;
-	min-inline-size: 320px;
 }
 
 .input-file-slot::slotted(*) {
@@ -21,9 +17,12 @@
 
 .wrapper {
 	$min-height-default: 140px;
-	display: flex;
+	$min-width-default: 320px;
+	display: inline-flex;
 	flex-direction: column;
+	max-inline-size: 100%;
 	min-block-size: var(#{variables.$file-picker-min-height}, #{$min-height-default});
+	min-inline-size: var(#{variables.$file-picker-min-width}, #{$min-width-default});
 }
 
 .part {

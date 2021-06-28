@@ -82,3 +82,4 @@ Moreover, consumer will use this, his own provided input, in order to listen to 
 | Name                           | Default | Description                       |
 | ------------------------------ | ------- | --------------------------------- |
 | `--vvd-file-picker-min-height` | `140px` | minimum height of the file picker |
+| `--vvd-file-picker-min-width`  | `320px` | minimum width of the file picker  |
