@@ -7,6 +7,7 @@
 }
 
 section {
+	$margin-block: 2px;
 	$gutter: 4px;
 	$unit-indent: 8px;
 
@@ -24,14 +25,15 @@ section {
 	box-sizing: border-box;
 	padding: $gutter $gutter*2;
 	background-color: var(#{calendar-variables.$color}, var(#{scheme-variables.$vvd-color-neutral-40}));
-	block-size: calc(var(#{calendar-variables.$duration}) * #{$hour-block-size} + #{$dividers-block-size});
+	block-size: calc(var(#{calendar-variables.$duration}) * #{$hour-block-size} + #{$dividers-block-size} - #{$margin-block * 2});
 	border-radius: var(#{calendar-variables.$calendar-shape});
 	color: var(#{scheme-variables.$vvd-color-on-primary});
 	contain: strict;
 	inline-size: calc(100% - #{$unit-indent} - #{$indent-calc});
+	margin-block-start: #{$margin-block};
 	margin-inline-end: #{$unit-indent};
 	margin-inline-start: #{$indent-calc};
-	max-block-size: calc(100% - #{$top});
+	max-block-size: calc(100% - #{$top} - #{$margin-block * 2});
 	&:focus {
 		z-index: 2000;
 		box-shadow: 0 6px 10px 0 rgb(0 0 0 / 14%), 0 1px 18px 0 rgb(0 0 0 / 12%), 0 3px 5px -1px rgb(0 0 0 / 20%);
