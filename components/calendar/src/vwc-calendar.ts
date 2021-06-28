@@ -16,6 +16,12 @@ import {
 } from './vwc-calendar-date-functions';
 import { VWCCalendarEvent } from './vwc-calendar-event';
 
+
+const ARROW_UP = 'ArrowUp';
+const ARROW_RIGHT = 'ArrowRight';
+const ARROW_DOWN = 'ArrowDown';
+const ARROW_LEFT = 'ArrowLeft';
+
 const isCellOrHeader = (el: unknown): el is HTMLElement => el instanceof HTMLElement
 	&& (
 		el.matches('[role="gridcell"i]')
@@ -104,9 +110,6 @@ export class VWCCalendar extends LitElement {
 
 	private arrowKeysInteractions(event: KeyboardEvent) {
 		const activeElement = this.shadowRoot?.activeElement;
-
-
-
 		let focusNext: Element | null | undefined;
 
 		if (isCellOrHeader(activeElement)) {
@@ -114,7 +117,7 @@ export class VWCCalendar extends LitElement {
 		} else if (this.focusedCalendarEvent) {
 			focusNext = this.getCalendarEventContainingCell(this.focusedCalendarEvent);
 		} else {
-			// default first selectable element
+			// default selectable element (first header)
 			focusNext = this.shadowRoot?.querySelector('[role="columnheader"i]');
 		}
 
@@ -132,7 +135,7 @@ export class VWCCalendar extends LitElement {
 	}
 
 	private onKeydown(event: KeyboardEvent) {
-		const isArrow = ['ArrowUp', 'ArrowRight', 'ArrowDown', 'ArrowLeft'].includes(event.key);
+		const isArrow = [ARROW_UP, ARROW_RIGHT, ARROW_DOWN, ARROW_LEFT].includes(event.key);
 		isArrow
 			&& this?.arrowKeysInteractions
 			&& this.arrowKeysInteractions(event);
