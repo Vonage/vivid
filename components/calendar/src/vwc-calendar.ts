@@ -16,6 +16,31 @@ import {
 } from './vwc-calendar-date-functions';
 import { VWCCalendarEvent } from './vwc-calendar-event';
 
+const isCellOrHeader = (el: unknown): el is HTMLElement => el instanceof HTMLElement
+	&& (
+		el.matches('[role="gridcell"i]')
+		|| el.matches('[role="columnheader"i]')
+	);
+
+function nextCellOrHeader(this: VWCCalendar, key: string, activeElement: HTMLElement) {
+	const toggleRowQuery = (f: HTMLElement) => (f.matches('[role="columnheader"i]')
+		? '[role="gridcell"i]'
+		: '[role="columnheader"i]');
+	switch (key) {
+	case 'ArrowRight':
+		return activeElement.nextElementSibling || activeElement.parentNode?.firstElementChild;
+	case 'ArrowLeft':
+		return activeElement.previousElementSibling || activeElement.parentElement?.lastElementChild;
+	case 'ArrowUp':
+	case 'ArrowDown': {
+		const { children } = activeElement?.parentElement as HTMLElement;
+		const i = Array.from(children).indexOf(activeElement);
+		return this.shadowRoot?.querySelector(`${toggleRowQuery(activeElement as HTMLElement)}:nth-child(${i + 1})`);
+	}
+	default:
+		return null;
+	}
+}
 declare global {
 	interface HTMLElementTagNameMap {
 		'vwc-calendar': VWCCalendar;
@@ -24,7 +49,6 @@ declare global {
 
 /**
  * Represents a calendar custom element.
- * @alpha
  */
 @customElement('vwc-calendar')
 export class VWCCalendar extends LitElement {
@@ -36,10 +60,7 @@ export class VWCCalendar extends LitElement {
 
 	/**
 	 * The date within a week of choice.
-	 * Accepts any valid date string representation
-	 * @example
-	 * 2021-01-01
-	 * @public
+	 * Accepts any valid date string representation e.g. _2021-01-01_
 	 * */
 	@property({
 		reflect: true,
@@ -71,53 +92,30 @@ export class VWCCalendar extends LitElement {
 		return this.getDaysArr(concatenatedDateArr);
 	}
 
-	private getFocusedCalendarEvent(): VWCCalendarEvent | null {
+	private get focusedCalendarEvent(): VWCCalendarEvent | null {
 		return (document.activeElement?.matches('vwc-calendar-event') && document.activeElement as VWCCalendarEvent) || null;
 	}
 
-	private getCalendarEventContainingCell(calendarEvent: VWCCalendarEvent | null) {
-		if (!calendarEvent) { return;}
+	private getCalendarEventContainingCell(calendarEvent: VWCCalendarEvent) {
 		const daySlot = calendarEvent.getAttribute('slot');
 		const slot = this.shadowRoot?.querySelector(`slot[name="${daySlot}"i]`);
 		return slot?.parentElement;
 	}
 
 	private arrowKeysInteractions(event: KeyboardEvent) {
-		const toggleRowQuery = (f: HTMLElement) => (f.matches('[role="columnheader"i]')
-			? '[role="gridcell"i]'
-			: '[role="columnheader"i]');
-
 		const activeElement = this.shadowRoot?.activeElement;
-		const isValidActiveElement = (el: unknown): el is HTMLElement => el instanceof HTMLElement
-			&& (
-				el.matches('[role="gridcell"i]')
-				|| el.matches('[role="columnheader"i]')
-			);
+
 
 
 		let focusNext: Element | null | undefined;
 
-		if (isValidActiveElement(activeElement)) {
-			// eslint-disable-next-line default-case
-			switch (event.key) {
-			case 'ArrowRight':
-				focusNext = activeElement.nextElementSibling || activeElement.parentNode?.firstElementChild;
-				break;
-			case 'ArrowLeft':
-				focusNext = activeElement.previousElementSibling || activeElement.parentElement?.lastElementChild;
-				break;
-			case 'ArrowUp':
-			case 'ArrowDown': {
-				const { children } = activeElement?.parentElement as HTMLElement;
-				const i = Array.from(children).indexOf(activeElement);
-				focusNext = this.shadowRoot?.querySelector(`${toggleRowQuery(activeElement as HTMLElement)}:nth-child(${i + 1})`);
-				break;
-			}
-			}
+		if (isCellOrHeader(activeElement)) {
+			focusNext = nextCellOrHeader.call(this, event.key, activeElement);
+		} else if (this.focusedCalendarEvent) {
+			focusNext = this.getCalendarEventContainingCell(this.focusedCalendarEvent);
 		} else {
-			focusNext = this.getCalendarEventContainingCell(this.getFocusedCalendarEvent())
 			// default first selectable element
-			|| this.shadowRoot?.querySelector('[role="columnheader"i]');
+			focusNext = this.shadowRoot?.querySelector('[role="columnheader"i]');
 		}
 
 		this.moveTo(focusNext as HTMLElement);
