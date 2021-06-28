@@ -51,7 +51,7 @@ export class ChipBase extends BaseElement {
 
 	set selected(selected: boolean) {
 		this._selected = selected;
-		this.mdcFoundation.setSelected(selected);
+		this.mdcFoundation?.setSelected(selected);
 	}
 
 	private _selected = false;

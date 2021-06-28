@@ -8,8 +8,6 @@ on:
 jobs:
   build-publish:
     runs-on: ubuntu-latest
-    env:
-      ARTIFACTORY_AUTH_TOKEN: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
 
     steps:
       - name: Checkout
@@ -41,6 +39,10 @@ jobs:
 
       - name: Install dependencies
         if: steps.yarn-cache.outputs.cache-hit != 'true'
+        env:
+          yarn_always_auth: true,
+          yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+          yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
         run: yarn install
 
       - name: Build components
