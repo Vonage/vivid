@@ -52,15 +52,15 @@ In addition to those major variations, there are the label and the helper messag
 
 #### Properties
 
-| Property            | Attribute           | Type      | Default | Description |
-|---------------------|---------------------|-----------|---------|-------------|
-| `label`             | `label`             | `string`  | `''` | label text, if any |
-| `helper`            | `helper`            | `string`  | `''` | text to be shown in helper message in normal (non-errorneous) state |
-|                     | `drop-zone`         | `boolean` | `true` | attribute controlling whether the drop zone should be rendered or not |
-|                     | `no-counter`        | `boolean` | `false` | attribute controlling whether counter badge should be always hidden |
-| `validationMessage` | `validationmessage` | `string`  | `''` | text to be shown in helper message when component is in erroneous state, when empty, the component falls back to the default messages as below |
-| `notAFileError`     | `notafileerror`     | `string`  | `'only file/s drop allowed'` | text to be shown specifically when drag'n'drop of not-a-file attempted |
-| `tooManyFilesError` | `toomanyfileserror` | `string`  | `'only one file allowed'` | text to be shown specifically when multiple files droped while slotted input has no `multiple` attribute defined |
+| Property            | Attribute           | Type      | Default                      | Description                                                                                                                                    |
+| ------------------- | ------------------- | --------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `label`             | `label`             | `string`  | `''`                         | label text, if any                                                                                                                             |
+| `helper`            | `helper`            | `string`  | `''`                         | text to be shown in helper message in normal (non-errorneous) state                                                                            |
+|                     | `drop-zone`         | `boolean` | `true`                       | attribute controlling whether the drop zone should be rendered or not                                                                          |
+|                     | `no-counter`        | `boolean` | `false`                      | attribute controlling whether counter badge should be always hidden                                                                            |
+| `validationMessage` | `validationmessage` | `string`  | `''`                         | text to be shown in helper message when component is in erroneous state, when empty, the component falls back to the default messages as below |
+| `notAFileError`     | `notafileerror`     | `string`  | `'only file/s drop allowed'` | text to be shown specifically when drag'n'drop of not-a-file attempted                                                                         |
+| `tooManyFilesError` | `toomanyfileserror` | `string`  | `'only one file allowed'`    | text to be shown specifically when multiple files droped while slotted input has no `multiple` attribute defined                               |
 
 #### Slots
 
@@ -71,8 +71,14 @@ This element MUST have `type="file"`.
 This element MAY have `name`, `multiple` and `accept` attributes, all as specced out [here](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file).
 Moreover, consumer will use this, his own provided input, in order to listen to `change` events and/or take the file/s when needed.
 
-| Name              | Required | Description |
-|-------------------|----------|-------------|
-| `dd-hint`         |          | textual hint for the drag'n'drop component |
-| `button`          |          | button component to add to the components structure |
+| Name              | Required | Description                                                                 |
+| ----------------- | -------- | --------------------------------------------------------------------------- |
+| `dd-hint`         |          | textual hint for the drag'n'drop component                                  |
+| `button`          |          | button component to add to the components structure                         |
 | `input-file-slot` | yes      | input element of type `file` that will be actually used as a file collector |
+
+### CSS Custom Propertis
+
+| Name                           | Default | Description                       |
+| ------------------------------ | ------- | --------------------------------- |
+| `--vvd-file-picker-min-height` | `140px` | minimum height of the file picker |

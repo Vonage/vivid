@@ -1,6 +1,7 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
 @use '@vonage/vvd-typography/scss/typography' as typography;
+@use 'vwc-file-picker-variables' as variables;
 
 :host {
 	@include vvd-formfield.coupling;
@@ -21,6 +22,7 @@
 .wrapper {
 	display: flex;
 	flex-direction: column;
+	min-block-size: var(#{variables.$file-picker-min-height}, 140px);
 }
 
 .part {
@@ -32,8 +34,9 @@
 .content {
 	position: relative;
 	box-sizing: border-box;
-	flex-basis: 100px;
+	flex-grow: 1;
 	justify-content: center;
+	padding: 16px;
 	border: 1px dashed #ccc;
 	background-color: var(#{scheme-variables.$vvd-color-base});
 	border-radius: 6px;
