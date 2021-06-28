@@ -20,9 +20,10 @@
 }
 
 .wrapper {
+	$min-height-default: 140px;
 	display: flex;
 	flex-direction: column;
-	min-block-size: var(#{variables.$file-picker-min-height}, 140px);
+	min-block-size: var(#{variables.$file-picker-min-height}, #{$min-height-default});
 }
 
 .part {
