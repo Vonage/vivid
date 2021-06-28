@@ -136,9 +136,7 @@ export class VWCCalendar extends LitElement {
 
 	private onKeydown(event: KeyboardEvent) {
 		const isArrow = [ARROW_UP, ARROW_RIGHT, ARROW_DOWN, ARROW_LEFT].includes(event.key);
-		isArrow
-			&& this?.arrowKeysInteractions
-			&& this.arrowKeysInteractions(event);
+		isArrow	&& this.arrowKeysInteractions(event);
 	}
 
 	protected renderTimeRows(): DirectiveFn {
