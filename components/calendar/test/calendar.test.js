@@ -152,12 +152,12 @@ describe('calendar', () => {
 				return hourInPx * hours + (hours - 1 /* duration less 1 grid gap */);
 			};
 
-			expect(getHoursCalculatedBlockSize(duration), 'wrong duration').to.equal(section.offsetHeight);
+			expect(getHoursCalculatedBlockSize(duration) - 4 /* block margins */, 'wrong duration').to.equal(section.offsetHeight);
 
 			const { y: columnY } = column.getBoundingClientRect();
 			const { y: sectionY } = section.getBoundingClientRect();
 
-			expect(sectionY - columnY, 'wrong start position').to.equal(getHoursCalculatedBlockSize(start) + 1);
+			expect(sectionY - columnY - 2 /* block-start margin */, 'wrong start position').to.equal(getHoursCalculatedBlockSize(start) + 1);
 		});
 
 		it('should not exceed column block size', async () => {
@@ -176,7 +176,7 @@ describe('calendar', () => {
 
 			const hour = (column.offsetHeight - 23 /* 23 grid gaps */) / 24;
 			const maxDuration = 18;
-			expect(hour * maxDuration + (maxDuration - 1) /* hours less 1 grid gap */).to.equal(section.offsetHeight);
+			expect(hour * maxDuration + (maxDuration - 1) /* hours less 1 grid gap */ - 4 /* block margins */).to.equal(section.offsetHeight);
 		});
 
 		it('should set event in correct column slot', async () => {
