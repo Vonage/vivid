@@ -6,7 +6,7 @@ const CENTER_Y = 8,
 	TRACK_X = 40,
 	TRACK_X_MARGIN = 5,
 	BUTTON_X = 6,
-	PERCENTAGE_TOLERANCE = 2,
+	PERCENTAGE_TOLERANCE = 5,
 	RESPONSE_TIMEOUT = 200; //ms
 
 const setStyle = (el, style = {}) => {
@@ -170,6 +170,7 @@ describe('vwc-media-controller', function () {
 										))
 										.ignoreValues(),
 								])
+								.spy()
 								.take(1)
 								.takeErrors(1);
 						})
