@@ -56,6 +56,8 @@ declare global {
 
 /**
  * Represents a calendar custom element.
+ *
+ * @cssprop [--vvd-calendar-shape=6px] defines the calendar and its events shape (border radius)
  */
 @customElement('vwc-calendar')
 export class VWCCalendar extends LitElement {
@@ -91,8 +93,7 @@ export class VWCCalendar extends LitElement {
 	 * If you include more than one locale string, list them in descending order of priority so that the first entry is the preferred locale.
 	 * If you omit this parameter, the default locale of the JavaScript runtime is used.
 	 * This parameter must conform to BCP 47 standards; see the Intl.Collator object for details.
-	 * @example
-	 * en-US | en-US, he-IL
+	 * e.g. en-US | en-US, he-IL
 	 *
 	 * @public
 	 * */

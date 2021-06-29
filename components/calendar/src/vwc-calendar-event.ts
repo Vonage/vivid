@@ -12,15 +12,10 @@ declare global {
 }
 
 /**
- * Represents a calendar custom element.
- * @alpha
+ * Represents a calendar event custom element.
  */
 @customElement('vwc-calendar-event')
 export class VWCCalendarEvent extends LitElement {
-	/**
-	 * assign styles
-	 * @internal
-	 * */
 	static styles = [style];
 
 	/**
