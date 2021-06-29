@@ -69,41 +69,44 @@ describe('calendar', () => {
 		.map(h2 => Array.from(h2.children)
 			.reduce((acc, curr) => acc.textContent.trim() + curr.textContent.trim()));
 
+	const getWeekdays = el => extractDaysTextFromHeaders(el.shadowRoot.querySelector('.column-headers'));
+
 	describe('API', () => {
 		it('should reflect weekdays as set by property', async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
-			await waitNextTask();
+
 			actualElement.datetime = '2021-01-01';
 			await actualElement.updateComplete;
 
-			const { shadowRoot } = actualElement;
-			const columnHeaders = shadowRoot.querySelector('.column-headers');
-
-			const reflectedDates = extractDaysTextFromHeaders(columnHeaders);
-
-			const expectedDates = ['27Sun', '28Mon', '29Tue', '30Wed', '31Thu', '01Fri', '02Sat'];
-
-			expect(reflectedDates.join()).to.equal(expectedDates.join());
+			expect(getWeekdays(actualElement).join())
+				.to.equal('27Sun,28Mon,29Tue,30Wed,31Thu,01Fri,02Sat');
 		});
 
 		it('should reflect weekdays as set by attribute', async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
-			await waitNextTask();
+
 			actualElement.setAttribute('datetime', '2021-01-01');
 			await actualElement.updateComplete;
 
-			const { shadowRoot } = actualElement;
-			const columnHeaders = shadowRoot.querySelector('.column-headers');
+			expect(getWeekdays(actualElement).join())
+				.to.equal('27Sun,28Mon,29Tue,30Wed,31Thu,01Fri,02Sat');
+		});
 
-			const reflectedDates = extractDaysTextFromHeaders(columnHeaders);
+		it('should reflect weekdays and hours as set by locales', async () => {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+			);
 
-			const expectedDates = ['27Sun', '28Mon', '29Tue', '30Wed', '31Thu', '01Fri', '02Sat'];
+			actualElement.datetime = '2021-01-01';
+			actualElement.locales = 'zh-cn';
+			await actualElement.updateComplete;
 
-			expect(reflectedDates.join()).to.equal(expectedDates.join());
+			expect(getWeekdays(actualElement).join())
+				.to.equal('27日周日,28日周一,29日周二,30日周三,31日周四,01日周五,02日周六');
 		});
 
 		it('should delegate attributes to custom properties', async () => {
@@ -149,12 +152,12 @@ describe('calendar', () => {
 				return hourInPx * hours + (hours - 1 /* duration less 1 grid gap */);
 			};
 
-			expect(getHoursCalculatedBlockSize(duration), 'wrong duration').to.equal(section.offsetHeight);
+			expect(getHoursCalculatedBlockSize(duration) - 4 /* block margins */, 'wrong duration').to.equal(section.offsetHeight);
 
 			const { y: columnY } = column.getBoundingClientRect();
 			const { y: sectionY } = section.getBoundingClientRect();
 
-			expect(sectionY - columnY, 'wrong start position').to.equal(getHoursCalculatedBlockSize(start) + 1);
+			expect(sectionY - columnY - 2 /* block-start margin */, 'wrong start position').to.equal(getHoursCalculatedBlockSize(start) + 1);
 		});
 
 		it('should not exceed column block size', async () => {
@@ -173,7 +176,7 @@ describe('calendar', () => {
 
 			const hour = (column.offsetHeight - 23 /* 23 grid gaps */) / 24;
 			const maxDuration = 18;
-			expect(hour * maxDuration + (maxDuration - 1) /* hours less 1 grid gap */).to.equal(section.offsetHeight);
+			expect(hour * maxDuration + (maxDuration - 1) /* hours less 1 grid gap */ - 4 /* block margins */).to.equal(section.offsetHeight);
 		});
 
 		it('should set event in correct column slot', async () => {
