@@ -58,6 +58,8 @@ declare global {
  * Represents a calendar custom element.
  *
  * @cssprop [--vvd-calendar-shape=6px] defines the calendar and its events shape (border radius)
+ *
+ * @alpha
  */
 @customElement('vwc-calendar')
 export class VWCCalendar extends LitElement {
@@ -70,6 +72,7 @@ export class VWCCalendar extends LitElement {
 	/**
 	 * The date within a week of choice.
 	 * Accepts any valid date string representation e.g. _2021-01-01_
+	 * @public
 	 * */
 	@property({
 		reflect: true,
