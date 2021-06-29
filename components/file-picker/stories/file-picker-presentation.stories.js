@@ -8,7 +8,7 @@ export default {
 	title: 'Components/File Picker/Presentation',
 	component: 'vwc-file-picker',
 	argTypes
-}
+};
 
 const TemplateA = args => html`
 	<vwc-file-picker ...=${spread(args.self)}><input type="file" name="fi-name" ...=${spread(args.input)}/></vwc-file-picker>
@@ -17,6 +17,11 @@ const TemplateA = args => html`
 export const Basic = TemplateA.bind({});
 Basic.args = {
 	input: { name: 'some-file' }
+};
+
+export const CustomSize = TemplateA.bind({});
+CustomSize.args = {
+	self: { style: '--vvd-file-picker-min-height: 60px; --vvd-file-picker-min-width: 200px;' }
 };
 
 export const WithLabel = TemplateA.bind({});
