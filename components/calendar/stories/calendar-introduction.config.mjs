@@ -1,5 +1,5 @@
 export default {
-	sourcePath: '../readme/vwc-calendar.md',
+	sourcePath: '../readme.md',
 	outputName: 'calendar-introduction',
 	story: {
 		title: 'Alpha/Components/Calendar/Introduction',
