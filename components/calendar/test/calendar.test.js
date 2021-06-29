@@ -1,7 +1,7 @@
 import '../vwc-calendar.js';
+import '../vwc-calendar-event.js';
 import {
 	waitNextTask,
-	waitInterval,
 	textToDomToParent,
 	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
@@ -24,7 +24,7 @@ describe('calendar', () => {
 		);
 		await waitNextTask();
 		actualElement.datetime = '2021-01-01';
-		await waitInterval(100);
+		await actualElement.updateComplete;
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
@@ -43,43 +43,156 @@ describe('calendar', () => {
 		expect(isCorrectColumns).to.equal(true);
 	});
 
+	it('should set correct size proportions', async () => {
+		const [actualElement] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+		);
+		await waitNextTask();
+
+		const { shadowRoot } = actualElement;
+
+		const grid = shadowRoot.querySelector('.calendar-grid-presentation');
+		const cells = shadowRoot.querySelectorAll('[role="gridcell"i]');
+		const rowHeaders = shadowRoot.querySelector('.row-headers');
+		const columnHeaders = shadowRoot.querySelector('.column-headers');
+
+		const cellsStylesMatch = Array.from(cells).every(cell => getComputedStyle(cell).blockSize == getComputedStyle(grid).blockSize);
+		const rowHeadersStylesMatch = getComputedStyle(rowHeaders).blockSize == getComputedStyle(grid).blockSize;
+		const columnHeadersStylesMatch = getComputedStyle(columnHeaders).inlineSize == getComputedStyle(grid).inlineSize;
+
+		expect(cellsStylesMatch).to.equal(true);
+		expect(rowHeadersStylesMatch).to.equal(true);
+		expect(columnHeadersStylesMatch).to.equal(true);
+	});
+
+	const extractDaysTextFromHeaders = columnHeaders => Array.from(columnHeaders.querySelectorAll('h2'))
+		.map(h2 => Array.from(h2.children)
+			.reduce((acc, curr) => acc.textContent.trim() + curr.textContent.trim()));
+
+	const getWeekdays = el => extractDaysTextFromHeaders(el.shadowRoot.querySelector('.column-headers'));
+
 	describe('API', () => {
 		it('should reflect weekdays as set by property', async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
-			await waitNextTask();
+
 			actualElement.datetime = '2021-01-01';
-			await waitInterval(100);
+			await actualElement.updateComplete;
 
-			const { shadowRoot } = actualElement;
-			const headline = shadowRoot.querySelector('.headline');
-
-			const reflectedDates = Array.from(headline.children)
-				.map(child => child.textContent.trim());
-
-			const expectedDates = ['27 Sun', '28 Mon', '29 Tue', '30 Wed', '31 Thu', '01 Fri', '02 Sat'];
-
-			expect(reflectedDates.join()).to.equal(expectedDates.join());
+			expect(getWeekdays(actualElement).join())
+				.to.equal('27Sun,28Mon,29Tue,30Wed,31Thu,01Fri,02Sat');
 		});
 
 		it('should reflect weekdays as set by attribute', async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
-			await waitNextTask();
+
 			actualElement.setAttribute('datetime', '2021-01-01');
-			await waitInterval(100);
+			await actualElement.updateComplete;
+
+			expect(getWeekdays(actualElement).join())
+				.to.equal('27Sun,28Mon,29Tue,30Wed,31Thu,01Fri,02Sat');
+		});
+
+		it('should reflect weekdays and hours as set by locales', async () => {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+			);
+
+			actualElement.datetime = '2021-01-01';
+			actualElement.locales = 'zh-cn';
+			await actualElement.updateComplete;
+
+			expect(getWeekdays(actualElement).join())
+				.to.equal('27日周日,28日周一,29日周二,30日周三,31日周四,01日周五,02日周六');
+		});
+
+		it('should delegate attributes to custom properties', async () => {
+			const eventComponent = 'vwc-calendar-event';
+			const [actualElement] = addElement(
+				textToDomToParent(`<${eventComponent}
+					color="rgb(43, 158, 250)"
+					start="18.5"
+					duration="7.5"
+					overlap-count="1">
+				</${eventComponent}>`)
+			);
+
+			await actualElement.updateComplete;
+			const section = actualElement.shadowRoot.querySelector('section');
+
+			const getValue = prop => getComputedStyle(section).getPropertyValue(`--vvd-calendar-event--${prop}`);
+
+			expect(getValue('primary-color'), 'wrong color').to.equal('rgb(43, 158, 250)');
+			expect(getValue('start'), 'wrong start').to.equal('18.5');
+			expect(getValue('duration'), 'wrong duration').to.equal('7.5');
+			expect(getValue('overlap-count'), 'wrong indentation').to.equal('1');
+		});
+
+		it('should set correct styles of start & duration', async () => {
+			const eventComponent = 'vwc-calendar-event';
+			const start = 4;
+			const duration = 5;
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}>
+					<${eventComponent} slot="day-3" start="${start}" duration="${duration}"></${eventComponent}>
+				</${COMPONENT_NAME}>`)
+			);
+			await actualElement.updateComplete;
 
 			const { shadowRoot } = actualElement;
-			const headline = shadowRoot.querySelector('.headline');
+			const column = shadowRoot.querySelector('[role=gridcell]:nth-child(4)');
+			const event = actualElement.querySelector(eventComponent);
+			const section = event.shadowRoot.querySelector('section');
 
-			const reflectedDates = Array.from(headline.children)
-				.map(child => child.textContent.trim());
+			const getHoursCalculatedBlockSize = (hours) => {
+				const hourInPx = (column.offsetHeight - 23 /* 23 grid gaps */) / 24/* total hours in calendar */;
+				return hourInPx * hours + (hours - 1 /* duration less 1 grid gap */);
+			};
 
-			const expectedDates = ['27 Sun', '28 Mon', '29 Tue', '30 Wed', '31 Thu', '01 Fri', '02 Sat'];
+			expect(getHoursCalculatedBlockSize(duration) - 4 /* block margins */, 'wrong duration').to.equal(section.offsetHeight);
 
-			expect(reflectedDates.join()).to.equal(expectedDates.join());
+			const { y: columnY } = column.getBoundingClientRect();
+			const { y: sectionY } = section.getBoundingClientRect();
+
+			expect(sectionY - columnY - 2 /* block-start margin */, 'wrong start position').to.equal(getHoursCalculatedBlockSize(start) + 1);
+		});
+
+		it('should not exceed column block size', async () => {
+			const eventComponent = 'vwc-calendar-event';
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}>
+					<${eventComponent} slot="day-3" start="6" duration="25"></${eventComponent}>
+				</${COMPONENT_NAME}>`)
+			);
+			await actualElement.updateComplete;
+
+			const { shadowRoot } = actualElement;
+			const column = shadowRoot.querySelector('[role=gridcell]:nth-child(4)');
+			const event = actualElement.querySelector(eventComponent);
+			const section = event.shadowRoot.querySelector('section');
+
+			const hour = (column.offsetHeight - 23 /* 23 grid gaps */) / 24;
+			const maxDuration = 18;
+			expect(hour * maxDuration + (maxDuration - 1) /* hours less 1 grid gap */ - 4 /* block margins */).to.equal(section.offsetHeight);
+		});
+
+		it('should set event in correct column slot', async () => {
+			const eventComponent = 'vwc-calendar-event';
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}>
+					<${eventComponent} slot="day-3"></${eventComponent}>
+				</${COMPONENT_NAME}>`)
+			);
+			await actualElement.updateComplete;
+
+			const { shadowRoot } = actualElement;
+			const slot = shadowRoot.querySelector('[role=gridcell]:nth-child(4) > slot');
+			const [assignedNode] = Array.from(slot.assignedNodes());
+
+			expect(assignedNode).to.equal(actualElement.querySelector(eventComponent));
 		});
 	});
 });

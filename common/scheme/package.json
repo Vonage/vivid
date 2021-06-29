@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vvd-scheme",
-	"version": "2.11.0",
+	"version": "2.12.0",
 	"description": "Vivid scheme management service",
 	"author": "yinonov <yinon@hotmail.com>",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/scheme#readme",
@@ -15,20 +15,20 @@
 	"scripts": {
 		"build": "yarn run build:styles && yarn run build:typescript",
 		"test": "echo \"Error: run tests from root\" && exit 1",
-		"build:typescript": "tsc -b",
-		"build:styles": "umbrella-style-modules"
+		"build:styles": "umbrella-style-modules --path=\"./src\"",
+		"build:typescript": "tsc -b"
 	},
 	"bugs": {
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@vonage/vvd-foundation": "2.11.0",
-		"tslib": "^2.0.3"
+		"@vonage/vvd-foundation": "2.12.0",
+		"tslib": "^2.3.0"
 	},
 	"devDependencies": {
-		"@vonage/vvd-design-tokens": "2.11.0",
-		"@vonage/vvd-umbrella": "2.11.0",
+		"@vonage/vvd-design-tokens": "2.12.0",
+		"@vonage/vvd-umbrella": "2.12.0",
 		"lit-element": "^2.4.0",
-		"typescript": "^4.1.3"
+		"typescript": "^4.3.2"
 	}
 }

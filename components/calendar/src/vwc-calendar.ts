@@ -5,8 +5,11 @@ import {
 import { style } from './vwc-calendar.css';
 import {
 	assertIsValidDateStringRepresentation,
-	getValidDateString
+	getValidDateString,
+	getFirstDateOfTheWeek
 } from './vwc-calendar-date-functions';
+import {	DirectiveFn } from 'lit-html';
+import { repeat } from 'lit-html/directives/repeat';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -50,32 +53,26 @@ export class VWCCalendar extends LitElement {
 	})
 	datetime?: Date;
 
+	/**
+	 * A locale string or array of locale strings that contain one or more language or locale tags.
+	 * If you include more than one locale string, list them in descending order of priority so that the first entry is the preferred locale.
+	 * If you omit this parameter, the default locale of the JavaScript runtime is used.
+	 * This parameter must conform to BCP 47 standards; see the Intl.Collator object for details.
+	 * @example
+	 * en-US | en-US, he-IL
+	 *
+	 * @public
+	 * */
+	@property({
+		reflect: true,
+		type: String
+	})
+	locales?: string | string[] | undefined;
+
 	#daysLength = 7;
 	#hours = (Array.from({ length: 23 }) as Date[])
 		.fill(new Date(new Date().setHours(0, 0, 0)))
 		.map((d, i) => new Date(d.setHours(++i)))
-
-	/**
-	 * generate dates array of days of the week by given date
-	 *
-	 * @param dateOrDateString - js date object
-	 * @internal
-	 * */
-	// private getWeekdaysByDate(date: Date = new Date()): Date[] {
-	// 	let firstDateOfTheWeek = date.getDate() - date.getDay();
-	// 	console.log('firstDateOfTheWeek', firstDateOfTheWeek);
-	// 	return Array.from(
-	// 		{ length: this.#daysLength },
-	// 		() => new Date(date.setDate(firstDateOfTheWeek++))
-	// 	);
-	// }
-
-	private getFirstDateOfTheWeek(dateOrDateString: Date | string = new Date()): Date {
-		if (typeof dateOrDateString === 'string') {
-			dateOrDateString = new Date(dateOrDateString);
-		}
-		return new Date(dateOrDateString.setDate(dateOrDateString.getDate() - dateOrDateString.getDay()));
-	}
 
 	private getDaysArr(dateArr: Date[]): Date[] {
 		if (dateArr.length == this.#daysLength) { return dateArr; }
@@ -85,27 +82,26 @@ export class VWCCalendar extends LitElement {
 		return this.getDaysArr(concatenatedDateArr);
 	}
 
-	/**
-	 * Date formatter
-	 *
-	 * @remarks
-	 * Uses IntlDateTimeFormat API
-	 *
-	 * @param date - js date object
-	 * @param options - Intl.DateTimeFormatOptions
-	 *
-	 * @internal
-	 * */
-	private formatDate(date: Date, options: Intl.DateTimeFormatOptions) {
-		return new Intl.DateTimeFormat('en-US', options).format(date);
+	protected renderTimeRows(): DirectiveFn {
+		const length = this.#hours.length + 1;
+
+		return repeat(
+			Array.from({ length }),
+			() => html`<div role="listitem"></div>`
+		);
 	}
 
-	protected renderTimeCells(): TemplateResult[] {
-		const templates = [];
-		for (let i = 0; i < (this.#hours.length + 1) * this.#daysLength; i++) {
-			templates.push(html`<div role="listitem" tabindex="0"></div>`);
-		}
-		return templates;
+	protected renderColumns(): DirectiveFn {
+		const length = this.#daysLength;
+
+		return repeat(
+			Array.from({ length }),
+			(_, i) => html`
+				<div role="gridcell" tabindex="-1">
+					<slot name="day-${i}"></slot>
+				</div>
+			`
+		);
 	}
 
 	/**
@@ -114,14 +110,22 @@ export class VWCCalendar extends LitElement {
 	 * */
 	protected renderDays(): TemplateResult {
 		return html`
-			<ol class="headline">
-					${this.getDaysArr([this.getFirstDateOfTheWeek(this.datetime)]).map(date => html`
-					<li>
-						<time datetime=${getValidDateString(date)}>
-							${this.formatDate(date, {	day: '2-digit',	weekday: 'short' })}
-						</time>
-					</li>`)}
-			</ol>`;
+			<div class="column-headers" role="row">
+				${this.getDaysArr([getFirstDateOfTheWeek(this.datetime)]).map(date => html`
+				<div role="columnheader" tabindex="-1">
+					<time datetime=${getValidDateString(date)} aria-readonly="true"
+						aria-label=${new Intl.DateTimeFormat(this.locales, { weekday: 'long', month: 'long', day: 'numeric' }).format(date)}>
+						<h2>
+							<em>
+								${new Intl.DateTimeFormat(this.locales, { day: '2-digit' }).format(date)}
+							</em>
+							<small>
+								${new Intl.DateTimeFormat(this.locales, { weekday: 'short' }).format(date)}
+							</small>
+						</h2>
+					</time>
+				</div>`)}
+			</div>`;
 	}
 
 	/**
@@ -130,15 +134,13 @@ export class VWCCalendar extends LitElement {
 	 * */
 	protected renderHours(): TemplateResult {
 		return html`
-			<ol class="time">
-				<!-- TODO: align to convention of generation from first hour in day and a length of hours. -->
-				<!-- TODO: get styled hour and datetime value -->
-				${this.#hours.map(h => html`<li>
-					<time datetime="${this.formatDate(h, { hour: 'numeric', minute: 'numeric', hour12: false })}">
-						${this.formatDate(h, { hour: 'numeric', hour12: true })}
+			<div class="row-headers" role="presentation">
+				${this.#hours.map(h => html`<span role="rowheader">
+					<time datetime="${new Intl.DateTimeFormat(this.locales, { hour: 'numeric', minute: 'numeric', hour12: false }).format(h)}">
+						${new Intl.DateTimeFormat(this.locales, { hour: 'numeric', hour12: true }).format(h)}
 					</time>
-				</li>`)}
-			</ol>`;
+				</span>`)}
+			</div>`;
 	}
 
 	/**
@@ -147,13 +149,17 @@ export class VWCCalendar extends LitElement {
 	 * */
 	protected render(): TemplateResult {
 		return html`
-			<div class="container">
+			<div role="grid">
 				${this.renderDays()}
-				${this.renderHours()}
-				<div class="calendar" role="list">
-					${this.renderTimeCells()}
-					<!-- TODO: should be presented as a custom element. then could look for siblings and indent by js  -->
-					<div role="presentation">
+				<div class="calendar-row" role="row">
+					${this.renderHours()}
+					<div class="calendar-grid-presentation" role="presentation">
+						<div class="hours" role="list">
+							${this.renderTimeRows()}
+						</div>
+						<div class="columns" role="presentation">
+							${this.renderColumns()}
+						</div>
 						<slot></slot>
 					</div>
 				</div>

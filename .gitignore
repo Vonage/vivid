@@ -6,6 +6,7 @@
 .DS_Store
 
 ## npm
+.npmrc
 node_modules
 npm-debug.log
 package-lock.json
@@ -62,3 +63,4 @@ custom-elements.json
 
 /ui-tests/diff.png
 /ui-tests/tmpScreenshot.png
+/ui-tests/testPage.js

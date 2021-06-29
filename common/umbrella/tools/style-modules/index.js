@@ -8,7 +8,13 @@ const
 	{ join: joinPath, extname: getExtension, basename: getBase, dirname: getDir } = require('path'),
 	{ render: renderSass } = require('sass');
 
-const { path:basePath = "." } = parseArgs(process.argv.slice(2));
+const DEFAULT_PATH = "./src/**/";
+const DEFAULT_SOURCE = "*.s[ac]ss";
+
+const {
+	path: basePath = DEFAULT_PATH,
+	source: sourcePattern = DEFAULT_SOURCE
+} = parseArgs(process.argv.slice(2));
 
 console.time('Total');
 
@@ -22,7 +28,7 @@ const
 	prefixWith = (path)=> (pre)=> joinPath(...[getDir(path), [pre, getBase(path)].join('')]),
 	suffixWith = (path)=> (suf)=> joinPath(...[getDir(path), [getBase(path), suf].filter(Boolean).join('.')]);
 
-fileStreamFromGlob(joinPath(process.cwd(), basePath, './src/**/*.s[ac]ss'))
+fileStreamFromGlob(joinPath(process.cwd(), basePath, sourcePattern))
 	.flatMapConcat((sassFile)=> {
 		return kefir.fromNodeCallback((cb)=>
 			renderSass({
