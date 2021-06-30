@@ -8,7 +8,7 @@ export default {
 	component: 'vwc-calendar'
 };
 
-const Calendar = args => html`<vwc-calendar ...=${spread(args)}>
+const Calendar = args => html`<vwc-calendar ...=${spread(args)} @click="${onClick}">
 	<vwc-calendar-event slot="day-0" start="0" duration="1" color="rgb(43, 158, 250)" heading="Pool party" description="2pm"></vwc-calendar-event>
 	<vwc-calendar-event slot="day-0" start="14" duration="2.25" heading="Summer time" description="All Day"></vwc-calendar-event>
 	<vwc-calendar-event slot="day-2" start="4" duration="4" color="rgb(214, 33, 156)" heading="Team meeting" description="11am - 13pm"></vwc-calendar-event>
@@ -24,3 +24,7 @@ Basic.args = { datetime: '2021-01-01' };
 
 export const Locale = Calendar.bind({});
 Locale.args = { datetime: '2021-01-01', locales: ['he-IL'], style: 'direction: rtl' };
+
+function onClick(e) {
+	console.log(e.target.getEventContext(e));
+}

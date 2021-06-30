@@ -15,51 +15,18 @@ import {
 	getFirstDateOfTheWeek
 } from './vwc-calendar-date-functions';
 import { VWCCalendarEvent } from './vwc-calendar-event';
+import {
+	ARROW_DOWN,
+	ARROW_LEFT,
+	ARROW_RIGHT,
+	ARROW_UP,
+	getEventContext,
+	getSameBlockGridCell,
+	isCellOrHeader,
+	nextCellOrHeader
+} from './vwc-calendar-utils';
 
 
-const ARROW_UP = 'ArrowUp';
-const ARROW_RIGHT = 'ArrowRight';
-const ARROW_DOWN = 'ArrowDown';
-const ARROW_LEFT = 'ArrowLeft';
-
-function isCellOrHeader(el: unknown): el is HTMLElement {
-	return el instanceof HTMLElement
-	&& (
-		el.matches('[role="gridcell"i]')
-		|| el.matches('[role="columnheader"i]')
-	);
-}
-
-function nextCellOrHeader(this: VWCCalendar, key: string, activeElement: HTMLElement) {
-	const toggleRowQuery = (f: HTMLElement) => (f.matches('[role="columnheader"i]')
-		? '[role="gridcell"i]'
-		: '[role="columnheader"i]');
-
-	switch (key) {
-	case 'ArrowRight':
-		return activeElement.nextElementSibling || activeElement.parentNode?.firstElementChild;
-	case 'ArrowLeft':
-		return activeElement.previousElementSibling || activeElement.parentElement?.lastElementChild;
-	case 'ArrowUp':
-	case 'ArrowDown': {
-		const { children } = activeElement?.parentElement as HTMLElement;
-		const i = Array.from(children).indexOf(activeElement);
-		return this.shadowRoot?.querySelector(`${toggleRowQuery(activeElement as HTMLElement)}:nth-child(${i + 1})`);
-	}
-	default:
-		return null;
-	}
-}
-
-function getSameBlockGridCell(this: VWCCalendar, key: string, activeElement: HTMLElement) {
-	if (key === ARROW_DOWN) {
-		const header = activeElement.closest('[role="columnheader"i]');
-		const columnHeaders = this.shadowRoot?.querySelectorAll('[role="columnheader"i]');
-		const i = (columnHeaders && header && Array.from(columnHeaders).indexOf(header)) || 0;
-		return this.shadowRoot?.querySelector(`[role="gridcell"i]:nth-child(${i + 1})`);
-	}
-	return undefined;
-}
 declare global {
 	interface HTMLElementTagNameMap {
 		'vwc-calendar': VWCCalendar;
@@ -118,6 +85,8 @@ export class VWCCalendar extends LitElement {
 	#hours = (Array.from({ length: 23 }) as Date[])
 		.fill(new Date(new Date().setHours(0, 0, 0)))
 		.map((d, i) => new Date(d.setHours(++i)))
+
+	getEventContext = getEventContext.bind(this);
 
 	private getDaysArr(dateArr: Date[]): Date[] {
 		if (dateArr.length == this.#daysLength) { return dateArr; }
@@ -203,7 +172,6 @@ export class VWCCalendar extends LitElement {
 				<div role="columnheader" tabindex="-1">
 					<time datetime=${getValidDateString(date)} aria-readonly="true">
 						<h2>
-							<!-- TODO add click event with detail -->
 							<!-- TODO add to column aria-labelledby or describedby to count events and related day e.g. "3 events, Sunday, March 8" -->
 							<em tabindex="0" role="button" aria-label=${new Intl.DateTimeFormat(this.locales, { weekday: 'long', month: 'long', day: 'numeric' }).format(date)}>
 								${new Intl.DateTimeFormat(this.locales, { day: '2-digit' }).format(date)}
