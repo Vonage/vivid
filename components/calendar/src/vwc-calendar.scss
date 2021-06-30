@@ -146,3 +146,31 @@ ol {
 	grid-auto-flow: column;
 	// grid-template-rows: repeat(calendar-variables.$total-rows * calendar-variables.$fraction, 1fr);
 }
+
+[role="gridcell"i],
+[role="columnheader"i],
+[role="columnheader"i] [role="button"i] {
+	position: relative;
+	&::before {
+		position: absolute;
+		z-index: -1;
+		background-color: var(#{scheme-variables.$vvd-color-info-10});
+		content: '';
+		// opacity: 0.5;
+		@supports (inset: 0) {
+			inset: 0;
+		}
+		@supports not (inset: 0) {
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+		}
+	}
+	&:focus {
+		outline: none;
+	}
+	&:not(:focus)::before {
+		display: none;
+	}
+}

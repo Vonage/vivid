@@ -55,8 +55,8 @@ function getSameBlockGridCell(this: VWCCalendar, key: string, activeElement: HTM
 	if (key === ARROW_DOWN) {
 		const header = activeElement.closest('[role="columnheader"i]');
 		const columnHeaders = this.shadowRoot?.querySelectorAll('[role="columnheader"i]');
-		const i = columnHeaders && header && Array.from(columnHeaders).indexOf(header);
-		return this.shadowRoot?.querySelector(`[role="gridcell"i]:nth-child(${i})`);
+		const i = (columnHeaders && header && Array.from(columnHeaders).indexOf(header)) || 0;
+		return this.shadowRoot?.querySelector(`[role="gridcell"i]:nth-child(${i + 1})`);
 	}
 	return undefined;
 }
@@ -206,11 +206,11 @@ export class VWCCalendar extends LitElement {
 							<!-- TODO add click event with detail -->
 							<!-- TODO move focus from tabbed head to relevant direction -->
 							<!-- TODO add to column aria-labelledby or describedby to count events and related day e.g. "3 events, Sunday, March 8" -->
-							<em tabindex="0" role="button" aria-label=${new Intl.DateTimeFormat('en-US', { weekday: 'long', month: 'long', day: 'numeric' }).format(date)}>
-								${new Intl.DateTimeFormat('en-US', { day: '2-digit' }).format(date)}
+							<em tabindex="0" role="button" aria-label=${new Intl.DateTimeFormat(this.locales, { weekday: 'long', month: 'long', day: 'numeric' }).format(date)}>
+								${new Intl.DateTimeFormat(this.locales, { day: '2-digit' }).format(date)}
 							</em>
 							<small aria-hidden="true">
-								${new Intl.DateTimeFormat('en-US', { weekday: 'short' }).format(date)}
+								${new Intl.DateTimeFormat(this.locales, { weekday: 'short' }).format(date)}
 							</small>
 						</h2>
 					</time>

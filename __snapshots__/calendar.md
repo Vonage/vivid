@@ -13,15 +13,18 @@
       tabindex="-1"
     >
       <time
-        aria-label="Sunday, December 27"
         aria-readonly="true"
         datetime="2020-12-27"
       >
         <h2>
-          <em>
+          <em
+            aria-label="Sunday, December 27"
+            role="button"
+            tabindex="0"
+          >
             27
           </em>
-          <small>
+          <small aria-hidden="true">
             Sun
           </small>
         </h2>
@@ -32,15 +35,18 @@
       tabindex="-1"
     >
       <time
-        aria-label="Monday, December 28"
         aria-readonly="true"
         datetime="2020-12-28"
       >
         <h2>
-          <em>
+          <em
+            aria-label="Monday, December 28"
+            role="button"
+            tabindex="0"
+          >
             28
           </em>
-          <small>
+          <small aria-hidden="true">
             Mon
           </small>
         </h2>
@@ -51,15 +57,18 @@
       tabindex="-1"
     >
       <time
-        aria-label="Tuesday, December 29"
         aria-readonly="true"
         datetime="2020-12-29"
       >
         <h2>
-          <em>
+          <em
+            aria-label="Tuesday, December 29"
+            role="button"
+            tabindex="0"
+          >
             29
           </em>
-          <small>
+          <small aria-hidden="true">
             Tue
           </small>
         </h2>
@@ -70,15 +79,18 @@
       tabindex="-1"
     >
       <time
-        aria-label="Wednesday, December 30"
         aria-readonly="true"
         datetime="2020-12-30"
       >
         <h2>
-          <em>
+          <em
+            aria-label="Wednesday, December 30"
+            role="button"
+            tabindex="0"
+          >
             30
           </em>
-          <small>
+          <small aria-hidden="true">
             Wed
           </small>
         </h2>
@@ -89,15 +101,18 @@
       tabindex="-1"
     >
       <time
-        aria-label="Thursday, December 31"
         aria-readonly="true"
         datetime="2020-12-31"
       >
         <h2>
-          <em>
+          <em
+            aria-label="Thursday, December 31"
+            role="button"
+            tabindex="0"
+          >
             31
           </em>
-          <small>
+          <small aria-hidden="true">
             Thu
           </small>
         </h2>
@@ -108,15 +123,18 @@
       tabindex="-1"
     >
       <time
-        aria-label="Friday, January 1"
         aria-readonly="true"
         datetime="2021-01-01"
       >
         <h2>
-          <em>
+          <em
+            aria-label="Friday, January 1"
+            role="button"
+            tabindex="0"
+          >
             01
           </em>
-          <small>
+          <small aria-hidden="true">
             Fri
           </small>
         </h2>
@@ -127,15 +145,18 @@
       tabindex="-1"
     >
       <time
-        aria-label="Saturday, January 2"
         aria-readonly="true"
         datetime="2021-01-02"
       >
         <h2>
-          <em>
+          <em
+            aria-label="Saturday, January 2"
+            role="button"
+            tabindex="0"
+          >
             02
           </em>
-          <small>
+          <small aria-hidden="true">
             Sat
           </small>
         </h2>
