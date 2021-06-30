@@ -8,7 +8,7 @@ export default {
 	component: 'vwc-calendar'
 };
 
-const Template = args => html`<vwc-calendar ...=${spread(args)}>
+const Calendar = args => html`<vwc-calendar ...=${spread(args)}>
 	<vwc-calendar-event slot="day-0" start="0" duration="1" color="rgb(43, 158, 250)" heading="Pool party" description="2pm"></vwc-calendar-event>
 	<vwc-calendar-event slot="day-0" start="14" duration="2.25" heading="Summer time" description="All Day"></vwc-calendar-event>
 	<vwc-calendar-event slot="day-2" start="4" duration="4" color="rgb(214, 33, 156)" heading="Team meeting" description="11am - 13pm"></vwc-calendar-event>
@@ -19,5 +19,8 @@ const Template = args => html`<vwc-calendar ...=${spread(args)}>
 	<vwc-calendar-event slot="day-6" start="20" duration="5" color="rgb(50, 175, 76)" heading="Summer time" description="18pm"></vwc-calendar-event>
 </vwc-calendar>`;
 
-export const Basic = Template.bind({});
+export const Basic = Calendar.bind({});
 Basic.args = { datetime: '2021-01-01' };
+
+export const Locale = Calendar.bind({});
+Locale.args = { datetime: '2021-01-01', locales: ['he-IL'], style: 'direction: rtl' };

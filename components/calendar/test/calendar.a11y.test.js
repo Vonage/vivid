@@ -53,29 +53,21 @@ describe('calendar a11y', () => {
 
 			grid.querySelector('[role="columnheader"i]:nth-child(3)').focus();
 
-			grid.dispatchEvent(createKEvent('ArrowRight'));
+			const getRole = (role, i) => grid.querySelector(`[role="${role}"i]:nth-child(${i})`);
+			const moveToElement = (key) => {
+				grid.dispatchEvent(createKEvent(key));
+				return shadowRoot.activeElement;
+			};
 
-			expect(shadowRoot.activeElement).to.equal(
-				grid.querySelector('[role="columnheader"i]:nth-child(4)')
-			);
+			const focusedElementAfterMovingRight = moveToElement('ArrowRight');
+			const focusedElementAfterMovingLeft = moveToElement('ArrowLeft');
+			const focusedElementAfterMovingUp = moveToElement('ArrowUp');
+			const focusedElementAfterMovingDown = moveToElement('ArrowDown');
 
-			grid.dispatchEvent(createKEvent('ArrowLeft'));
-
-			expect(shadowRoot.activeElement).to.equal(
-				grid.querySelector('[role="columnheader"i]:nth-child(3)')
-			);
-
-			grid.dispatchEvent(createKEvent('ArrowUp'));
-
-			expect(shadowRoot.activeElement).to.equal(
-				grid.querySelector('[role="gridcell"i]:nth-child(3)')
-			);
-
-			grid.dispatchEvent(createKEvent('ArrowDown'));
-
-			expect(shadowRoot.activeElement).to.equal(
-				grid.querySelector('[role="columnheader"i]:nth-child(3)')
-			);
+			expect(focusedElementAfterMovingRight).to.equal(getRole('columnheader', 4));
+			expect(focusedElementAfterMovingLeft).to.equal(getRole('columnheader', 3));
+			expect(focusedElementAfterMovingUp).to.equal(getRole('gridcell', 3));
+			expect(focusedElementAfterMovingDown).to.equal(getRole('columnheader', 3));
 		});
 
 		it('should move focus from calendar event to containing column', async () => {

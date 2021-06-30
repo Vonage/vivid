@@ -59,9 +59,13 @@ ol {
 			text-align: center;
 			> em {
 				position: absolute;
-				left: 0;
 				font: inherit;
-				inset-inline-start: 0;
+				@supports (inset: 0) {
+					inset-inline-start: 0;
+				}
+				@supports not (inset: 0) {
+					left: 0;
+				}
 			}
 			> small {
 				@include typography.typography-cat-shorthand('caption');

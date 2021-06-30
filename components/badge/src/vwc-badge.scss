@@ -1,17 +1,17 @@
-@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
-@use '@vonage/vvd-typography/scss/typography';
+$namespace: vvd-badge;
+
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
+@use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation with (
 	$connotations-set: primary cta success alert warning info
 );
 
-$namespace: vvd-badge;
-
-@use '@vonage/vvd-foundation/scss/mixins/shape-mixins' with (
+@use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
 	$variable-name: --#{$namespace}-shape
 );
-@use '@vonage/vvd-foundation/scss/mixins/layout-mixins' with (
+@use '@vonage/vvd-foundation/scss/mixins/layout-mixins' as layout-mixins with (
 	$layouts: filled	outlined	soft,
-	$variables-scope-prefix: 'vvd-badge'
+	$variables-scope-prefix: #{$namespace}
 );
 
 $vvd-badge-block-size: --#{$namespace}-block-size;
