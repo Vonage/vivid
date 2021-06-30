@@ -22,11 +22,13 @@ const ARROW_RIGHT = 'ArrowRight';
 const ARROW_DOWN = 'ArrowDown';
 const ARROW_LEFT = 'ArrowLeft';
 
-const isCellOrHeader = (el: unknown): el is HTMLElement => el instanceof HTMLElement
+function isCellOrHeader(el: unknown): el is HTMLElement {
+	return el instanceof HTMLElement
 	&& (
 		el.matches('[role="gridcell"i]')
 		|| el.matches('[role="columnheader"i]')
 	);
+}
 
 function nextCellOrHeader(this: VWCCalendar, key: string, activeElement: HTMLElement) {
 	const toggleRowQuery = (f: HTMLElement) => (f.matches('[role="columnheader"i]')
@@ -47,6 +49,16 @@ function nextCellOrHeader(this: VWCCalendar, key: string, activeElement: HTMLEle
 	default:
 		return null;
 	}
+}
+
+function getSameBlockGridCell(this: VWCCalendar, key: string, activeElement: HTMLElement) {
+	if (key === ARROW_DOWN) {
+		const header = activeElement.closest('[role="columnheader"i]');
+		const columnHeaders = this.shadowRoot?.querySelectorAll('[role="columnheader"i]');
+		const i = columnHeaders && header && Array.from(columnHeaders).indexOf(header);
+		return this.shadowRoot?.querySelector(`[role="gridcell"i]:nth-child(${i})`);
+	}
+	return undefined;
 }
 declare global {
 	interface HTMLElementTagNameMap {
@@ -134,7 +146,7 @@ export class VWCCalendar extends LitElement {
 		} else if (this.focusedCalendarEvent) {
 			focusNext = this.getCalendarEventContainingCell(this.focusedCalendarEvent);
 		} else if (activeElement?.matches('em[role="button"i]')) {
-			console.log('fix me!!');
+			focusNext = getSameBlockGridCell.call(this, event.key, activeElement as HTMLElement);
 		} else {
 			// default selectable element (first header)
 			focusNext = this.shadowRoot?.querySelector('[role="columnheader"i]');
