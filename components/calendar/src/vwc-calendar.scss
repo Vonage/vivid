@@ -156,7 +156,6 @@ ol {
 		z-index: -1;
 		background-color: var(#{scheme-variables.$vvd-color-info-10});
 		content: '';
-		// opacity: 0.5;
 		@supports (inset: 0) {
 			inset: 0;
 		}

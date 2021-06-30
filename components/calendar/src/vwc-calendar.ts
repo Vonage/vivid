@@ -204,7 +204,6 @@ export class VWCCalendar extends LitElement {
 					<time datetime=${getValidDateString(date)} aria-readonly="true">
 						<h2>
 							<!-- TODO add click event with detail -->
-							<!-- TODO move focus from tabbed head to relevant direction -->
 							<!-- TODO add to column aria-labelledby or describedby to count events and related day e.g. "3 events, Sunday, March 8" -->
 							<em tabindex="0" role="button" aria-label=${new Intl.DateTimeFormat(this.locales, { weekday: 'long', month: 'long', day: 'numeric' }).format(date)}>
 								${new Intl.DateTimeFormat(this.locales, { day: '2-digit' }).format(date)}
