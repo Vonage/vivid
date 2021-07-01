@@ -10,6 +10,12 @@ Represents a calendar custom element.
 
 | `locales`  | `locales`  | `string \| string[] \| undefined` | A locale string or array of locale strings that contain one or more language or locale tags. If you include more than one locale string, list them in descending order of priority so that the first entry is the preferred locale. If you omit this parameter, the default locale of the JavaScript runtime is used. This parameter must conform to BCP 47 standards; see the Intl.Collator object for details. e.g. en-US \| en-US, he-IL |
 
+## Methods
+
+| Method                                                       | Description                                                                            |
+| ------------------------------------------------------------ | -------------------------------------------------------------------------------------- |
+| `getEventContext() => { day: number, hour: number } \| null` | Accepts event reference and returns an object containing *day* & *hour*  if applicable |
+
 ## CSS Custom Properties
 
 | Property               | Default | Description                                               |
