@@ -15156,10 +15156,10 @@ pkg-up@3.1.0:
   dependencies:
     find-up "^3.0.0"
 
-playwright@^1.10.0:
-  version "1.10.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/playwright/-/playwright-1.10.0.tgz#a14d295f1ad886caf4cc5e674afe03ac832066bc"
-  integrity sha1-oU0pXxrYhsr0zF5nSv4DrIMgZrw=
+playwright@^1.12.2:
+  version "1.12.3"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/playwright/-/playwright-1.12.3.tgz#113afa2cba10fb56e9a5b307377343e32a155a99"
+  integrity sha1-ETr6LLoQ+1bppbMHN3ND4yoVWpk=
   dependencies:
     commander "^6.1.0"
     debug "^4.1.1"
@@ -15173,7 +15173,8 @@ playwright@^1.10.0:
     proxy-from-env "^1.1.0"
     rimraf "^3.0.2"
     stack-utils "^2.0.3"
-    ws "^7.3.1"
+    ws "^7.4.6"
+    yazl "^2.5.1"
 
 please-upgrade-node@^3.2.0:
   version "3.2.0"
@@ -19672,10 +19673,10 @@ write-pkg@^3.1.0:
     sort-keys "^2.0.0"
     write-json-file "^2.2.0"
 
-ws@^7.3.1:
-  version "7.4.5"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ws/-/ws-7.4.5.tgz#a484dd851e9beb6fdb420027e3885e8ce48986c1"
-  integrity sha1-pITdhR6b62/bQgAn44hejOSJhsE=
+ws@^7.4.6:
+  version "7.5.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ws/-/ws-7.5.1.tgz#44fc000d87edb1d9c53e51fbc69a0ac1f6871d66"
+  integrity sha1-RPwADYftsdnFPlH7xpoKwfaHHWY=
 
 ws@~7.4.2:
   version "7.4.4"
@@ -19883,6 +19884,13 @@ yauzl@^2.10.0:
   dependencies:
     buffer-crc32 "~0.2.3"
     fd-slicer "~1.1.0"
+
+yazl@^2.5.1:
+  version "2.5.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/yazl/-/yazl-2.5.1.tgz#a3d65d3dd659a5b0937850e8609f22fffa2b5c35"
+  integrity sha1-o9ZdPdZZpbCTeFDoYJ8i//orXDU=
+  dependencies:
+    buffer-crc32 "~0.2.3"
 
 yeast@0.1.2:
   version "0.1.2"
