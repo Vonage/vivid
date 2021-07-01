@@ -130,7 +130,7 @@ export class VWCAudio extends LitElement {
 						type="${this._isPlaying ? 'pause-solid' : 'play-solid'}"
 				></vwc-icon>
 				</button>
-				${this.timestamp ? html`<div class="playhead-position"><span>${formatTime(this._playheadPosition)}</span><span>/</span><span>${formatTime(this._duration)}</span></div>` : nothing}
+				${this.timestamp ? html`<div class="playhead-position">${formatTime(this._playheadPosition)} / ${formatTime(this._duration)}</div>` : nothing}
 				${!this.noseek ? html`<vwc-scrub-bar @userScrubRequest="${({ detail }: { detail: number }) => this.currentTime = detail * this._duration}" class="scrubber"></vwc-scrub-bar>` : nothing}
 			</div>
 		`;
