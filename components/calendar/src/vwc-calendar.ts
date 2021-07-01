@@ -20,13 +20,13 @@ import {
 	ARROW_LEFT,
 	ARROW_RIGHT,
 	ARROW_UP,
-	getEventContext,
 	getSameBlockGridCell,
 	isCellOrHeader,
 	nextCellOrHeader,
-	TotalHours
-} from './vwc-calendar-utils';
+} from './vwc-calendar-keyboard-interactions.js';
+import { getEventContext } from './vwc-calendar-event-context.js';
 
+export const TotalHours = 24;
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -91,7 +91,14 @@ export class VWCCalendar extends LitElement {
 		.fill(new Date(new Date().setHours(0, 0, 0)))
 		.map((d, i) => new Date(d.setHours(++i)))
 
+	/**
+   * Fire an event
+   * @param {string} event        - event name
+   * @param {Object} [detail={}]  - optional event detail object
+   * @returns {boolean}           - return true
+   */
 	getEventContext = getEventContext.bind(this);
+
 
 	private getDaysArr(dateArr: Date[]): Date[] {
 		if (dateArr.length == this.#daysLength) { return dateArr; }
