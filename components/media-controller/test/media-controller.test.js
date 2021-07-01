@@ -170,7 +170,6 @@ describe('vwc-media-controller', function () {
 										))
 										.ignoreValues(),
 								])
-								.spy()
 								.take(1)
 								.takeErrors(1);
 						})
