@@ -1,6 +1,8 @@
 import { VWCCalendar } from './vwc-calendar';
 
 
+export const TotalHours = 24;
+
 export const ARROW_UP = 'ArrowUp';
 export const ARROW_RIGHT = 'ArrowRight';
 export const ARROW_DOWN = 'ArrowDown';
@@ -46,20 +48,68 @@ export function getSameBlockGridCell(this: VWCCalendar, key: string, activeEleme
 }
 
 interface CalendarEventContext {
-	day: number;
-	time: number;
+	day?: number;
+	hour?: number;
 }
 
-export function getEventContext(e: Event): CalendarEventContext {
+function getDay(e: Event): number | undefined {
 	const path = e.composedPath();
-	const [firstEl] = path;
-	if (firstEl instanceof HTMLElement) {
-		const cellOrHeader = firstEl.closest('[role="gridcell"i]') || firstEl.closest('[role="columnheader"i]');
-		console.log(cellOrHeader);
+	const [el] = path;
+	if (!(el instanceof HTMLElement)) {
+		return undefined;
 	}
 
-	return {
-		day: 2,
-		time: 3
+	const query = {
+		cell: '[role="gridcell"i]',
+		header: '[role="columnheader"i]',
 	};
+
+	const cellOrHeader = el.closest(query.cell) || el.closest(query.header);
+	if (cellOrHeader?.matches(query.cell) || cellOrHeader?.matches(query.header)) {
+		const { parentElement } = cellOrHeader;
+		return parentElement?.children && Array.from(parentElement.children).indexOf(cellOrHeader);
+	}
+
+	return undefined;
+}
+
+function getHour(e: Event): number | undefined {
+	if (!(e instanceof MouseEvent)) {
+		return undefined;
+	}
+
+	const path = e.composedPath();
+	const [el] = path;
+
+	if (!(el instanceof HTMLElement)) {
+		return undefined;
+	}
+
+	const rowHeaderOrCell = el.closest('.row-headers') || el.closest('[role="gridcell"i]');
+	const boundingClientRect = rowHeaderOrCell?.getBoundingClientRect();
+
+	if (!boundingClientRect?.y) {
+		return undefined;
+	}
+
+	const offsetY = e.clientY - boundingClientRect.y;
+	const hourHeight = boundingClientRect.height / TotalHours;
+	const hour = offsetY / hourHeight;
+
+	return Math.round((hour + Number.EPSILON) * 100) / 100;
+}
+
+const isEmptyObject = (obj: Record<string, unknown>): obj is Record<string, never> => Object.keys(obj).length === 0 && obj.constructor === Object;
+
+export function getEventContext(e: Event): CalendarEventContext | null {
+	const day = getDay(e);
+	const hour = getHour(e);
+
+
+	const context = {
+		...(day != undefined && { day }),
+		...(hour != undefined && { hour }),
+	};
+
+	return (!isEmptyObject(context) && context) || null;
 }

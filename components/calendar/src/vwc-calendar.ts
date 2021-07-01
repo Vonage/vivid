@@ -23,7 +23,8 @@ import {
 	getEventContext,
 	getSameBlockGridCell,
 	isCellOrHeader,
-	nextCellOrHeader
+	nextCellOrHeader,
+	TotalHours
 } from './vwc-calendar-utils';
 
 
@@ -82,7 +83,7 @@ export class VWCCalendar extends LitElement {
 	locales?: string | string[] | undefined;
 
 	#daysLength = 7;
-	#hours = (Array.from({ length: 23 }) as Date[])
+	#hours = (Array.from({ length: TotalHours - 1 }) as Date[])
 		.fill(new Date(new Date().setHours(0, 0, 0)))
 		.map((d, i) => new Date(d.setHours(++i)))
 
