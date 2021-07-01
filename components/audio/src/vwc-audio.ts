@@ -24,7 +24,7 @@ const HOUR = 60 * MINUTE;
 [VWCScrubBar];
 
 const setEvents = function (eventSource: HTMLElement, handlersMap: Record<string, ()=> unknown>) {
-	return (<any>pipe)(...Object
+	return (pipe as any)(...Object
 		.entries(handlersMap)
 		.map(([eventName, eventHandler]) => {
 			eventSource.addEventListener(eventName, eventHandler);
