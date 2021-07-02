@@ -95,8 +95,6 @@ describe('calendar a11y', () => {
 			columnHeader.querySelector('[role="button"i]').focus();
 
 			grid.dispatchEvent(createKEvent('ArrowDown'));
-			console.log(shadowRoot.activeElement);
-			console.log(grid.querySelector('[role="gridcell"i]:nth-child(3)'));
 
 			expect(shadowRoot.activeElement).to.equal(
 				grid.querySelector('[role="gridcell"i]:nth-child(3)')

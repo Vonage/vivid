@@ -194,5 +194,33 @@ describe('calendar', () => {
 
 			expect(assignedNode).to.equal(actualElement.querySelector(eventComponent));
 		});
+
+		describe('Event Context', () => {
+			it('should return correct day and hour from click mouse event', async () => {
+				const [actualElement] = addElement(
+					textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+				);
+
+				actualElement.style.top = 0;
+				actualElement.style.height = '1200px';
+				actualElement.style.position = 'fixed';
+
+				await actualElement.updateComplete;
+
+				const { shadowRoot } = actualElement;
+
+				const gridCell = shadowRoot.querySelector('[role="gridcell"i]:nth-child(3)');
+				let context;
+				actualElement.addEventListener('click', e => context = actualElement.getEventContext(e));
+				gridCell.dispatchEvent(new MouseEvent('click', { composed: true, clientX: 20, clientY: 54 }));
+
+				expect(context.day).to.equal(2);
+				expect(context.hour).to.equal(0.53);
+			});
+
+			// it('should return day and hour from keyboard \'enter\' & \'space\'', async () => {
+
+			// });
+		});
 	});
 });
