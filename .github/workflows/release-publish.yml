@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-18.04
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_VIVID_DEMO_PROD_ACCESS }}
-      AWS_SECRET_ACCESS_KEY: 1${{ secrets.AWS_VIVID_DEMO_PROD_SECRET }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_VIVID_DEMO_PROD_SECRET }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       NPM_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
     steps:
@@ -49,21 +49,18 @@ jobs:
 
       # Build and publish
       - run: yarn compile
-
       - run: echo registry=https://npm.pkg.github.com/ > .npmrc
       - run: echo //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN} >> .npmrc
-      - run: yarn lerna publish from-package --no-git-reset --registry https://npm.pkg.github.com --loglevel verbose
-        continue-on-error: true
-      #- run: npm publish $(node ./scripts/vivid-all-package-generator)
+      - run: yarn lerna publish from-package --no-git-reset --registry https://npm.pkg.github.com --loglevel --yes verbose
+      - run: npm publish $(node ./scripts/vivid-all-package-generator)
       - run: echo registry=https://registry.npmjs.org/ > .npmrc
       - run: echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} >> .npmrc
-      - run: yarn lerna publish from-package --no-git-reset --registry https://registry.npmjs.org --loglevel verbose
-        continue-on-error: true
-      #- run: npm publish $(node ./scripts/vivid-all-package-generator)
+      - run: yarn lerna publish from-package --no-git-reset --registry https://registry.npmjs.org --loglevel --yes verbose
+      - run: npm publish $(node ./scripts/vivid-all-package-generator)
 
       # Notify community
       - name: Notify slack
-        run: git log --format=oneline --decorate=short | node ./scripts/release_announcer --slackHookUrl="1${{ secrets.SLACK_WEBHOOK }}"
+        run: git log --format=oneline --decorate=short | node ./scripts/release_announcer --slackHookUrl="${{ secrets.SLACK_WEBHOOK }}"
 
       # Build and deploy showcase
       - name: Build storybook
