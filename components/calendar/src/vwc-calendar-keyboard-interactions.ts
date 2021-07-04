@@ -36,7 +36,7 @@ export function getNextFocusableGridElement(this: VWCCalendar, key: string, acti
 	}
 }
 
-export function getHeaderGridCell(this: VWCCalendar, key: string, activeElement: HTMLElement): Element | null | undefined {
+export function getHeaderDescendantGridCell(this: VWCCalendar, key: string, activeElement: HTMLElement): Element | null | undefined {
 	if (key === ARROW_DOWN) {
 		const header = activeElement.closest('[role="columnheader"i]');
 		const columnHeaders = this.shadowRoot?.querySelectorAll('[role="columnheader"i]');
