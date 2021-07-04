@@ -1,3 +1,12 @@
+# [2.13.0](https://github.com/vonage/vivid/compare/v2.12.0...v2.13.0) (2021-07-04)
+
+
+### Features
+
+* **vwc-datepicker:** viv-574 datepicker design modifications ([#888](https://github.com/vonage/vivid/issues/888)) ([3c03255](https://github.com/vonage/vivid/commit/3c03255faf363a6d6552e06c002cdd9fec2c41d9))
+
+
+
 # [2.12.0](https://github.com/vonage/vivid/compare/v2.11.0...v2.12.0) (2021-06-14)
 
 

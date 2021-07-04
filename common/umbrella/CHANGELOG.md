@@ -1,3 +1,12 @@
+# [2.13.0](https://github.com/Vonage/vivid/compare/v2.12.0...v2.13.0) (2021-07-04)
+
+
+### Features
+
+* **packages:** redundant configuration ([#909](https://github.com/Vonage/vivid/issues/909)) ([ff4c45d](https://github.com/Vonage/vivid/commit/ff4c45dd7da29592b4f3e61e6e1234258e2a0886))
+
+
+
 # [2.12.0](https://github.com/Vonage/vivid/compare/v2.11.0...v2.12.0) (2021-06-14)
 
 
