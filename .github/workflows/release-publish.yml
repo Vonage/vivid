@@ -9,7 +9,7 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_VIVID_DEMO_PROD_ACCESS }}
       AWS_SECRET_ACCESS_KEY: 1${{ secrets.AWS_VIVID_DEMO_PROD_SECRET }}
-      GITHUB_TOKEN: 1${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       NPM_TOKEN: 1${{ secrets.NPM_AUTH_TOKEN }}
     steps:
       - name: Checkout
