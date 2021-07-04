@@ -26,7 +26,7 @@ jobs:
         with:
           path: "**/node_modules"
           key: ${{ hashFiles('yarn.lock') }}
-      - run: yarn
+      - run: yarn install --frozen-lockfile
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
           yarn_always_auth: true
