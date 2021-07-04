@@ -54,7 +54,7 @@ jobs:
         run: |
           echo registry=https://npm.pkg.github.com/ > .npmrc
           echo //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN} >> .npmrc
-        #  yarn lerna publish from-package --registry https://npm.pkg.github.com --no-git-tag-version --no-push --yes
+        # yarn lerna publish from-package --registry https://npm.pkg.github.com --no-git-tag-version --no-push --yes
           yarn lerna publish from-package --registry https://localhost --loglevel verbose
           npm publish $(node ./scripts/vivid-all-package-generator)
         env:
