@@ -53,11 +53,13 @@ jobs:
       - run: echo //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN} >> .npmrc
       - run: yarn lerna publish from-package --no-git-reset --registry https://npm.pkg.github.com --yes --no-push --loglevel verbose
       - run: npm publish $(node ./scripts/vivid-all-package-generator)
+        continue-on-error: true
       - run: git status
       - run: echo registry=https://registry.npmjs.org/ > .npmrc
       - run: echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} >> .npmrc
       - run: yarn lerna publish from-package --no-git-reset --registry https://registry.npmjs.org --yes --no-push --loglevel verbose
       - run: npm publish $(node ./scripts/vivid-all-package-generator)
+        continue-on-error: true
 
       # Notify community
       - name: Notify slack
