@@ -49,13 +49,17 @@ jobs:
 
       # Build and publish
       - run: yarn compile
+
       - run: echo registry=https://npm.pkg.github.com/ > .npmrc
       - run: echo //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN} >> .npmrc
       - run: yarn lerna publish from-package --no-git-reset --registry https://npm.pkg.github.com --loglevel verbose
-      - run: npm publish $(node ./scripts/vivid-all-package-generator)
+        continue-on-error: true
+      #- run: npm publish $(node ./scripts/vivid-all-package-generator)
       - run: echo registry=https://registry.npmjs.org/ > .npmrc
       - run: echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} >> .npmrc
       - run: yarn lerna publish from-package --no-git-reset --registry https://registry.npmjs.org --loglevel verbose
+        continue-on-error: true
+      #- run: npm publish $(node ./scripts/vivid-all-package-generator)
 
       # yarn lerna publish from-package --registry https://npm.pkg.github.com --no-git-tag-version --no-push --yes
 
