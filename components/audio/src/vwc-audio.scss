@@ -1,4 +1,5 @@
-@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
+@use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation with (
 	$connotations-set: cta primary
 );
@@ -6,17 +7,8 @@
 @include color-connotation.connotations-main;
 @include color-connotation.connotations-main-default(cta);
 
-:host([noseek]) {
-	.main {
-		> .scrubber {
-			display: none;
-		}
-	}
-}
-
 :host {
 
-	$button-size: 16px;
 	*:focus:not(:focus-visible) {
 		outline: none;
 	}
@@ -25,27 +17,38 @@
 		outline: var(#{scheme-variables.$vvd-color-on-base}) solid 2px;
 	}
 
-	.main {
+	.root {
+		@include typography.typography-cat-shorthand('caption');
 		display: flex;
+		flex-wrap: nowrap;
 		align-items: center;
 		justify-content: flex-start;
 
-		> .control-button {
+		> .scrubber {
+			min-width: 200px;
+			flex: 1 0;
+		}
 
+		> .control-button {
+			flex: 0 0 auto;
 			border: 0;
 			background-color: transparent;
 			cursor: pointer;
 
-
 			> .icon {
 				color: var(--vvd-color-connotation);
 			}
-
 		}
 
-		> .scrubber {
-			flex: 1 0;
-			margin-inline-start: 4px;
+		> .playhead-position {
+			overflow: hidden;
+			width: 90px;
+			box-sizing: border-box;
+			justify-content: center;
+			font-variant-numeric: tabular-nums;
+			text-align: center;
+			text-overflow: ellipsis;
+			white-space: pre;
 		}
 	}
 }
