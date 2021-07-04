@@ -1,176 +1,138 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-nocheck
+import '@vonage/vvd-core';
 import '@vonage/vwc-media-controller';
-import kefir from 'kefir';
+import { ifDefined } from 'lit-html/directives/if-defined';
+import { pipe } from 'ramda';
+import { VWCScrubBar } from '@vonage/vwc-media-controller/vwc-scrub-bar';
+import { style as AudioStyle } from './vwc-audio.css';
+import '@vonage/vwc-icon';
+import {
+	LitElement,
+	TemplateResult,
+	customElement,
+	html,
+	PropertyValues,
+} from 'lit-element';
 
-const SYMBOL_TRIGGER = Symbol('trigger'),
-	SYMBOL_AUDIO_EL = Symbol('audio_el');
+import { nothing } from 'lit-html';
+import { classMap } from 'lit-html/directives/class-map';
+import { internalProperty, property, query } from 'lit-element/lib/decorators';
 
-const filterByValue = (filterValue: string) => (value: string) => value === filterValue,
-	// eslint-disable-next-line
-	createConnectedProperty = (ingestStream: any) => {
-		return kefir
-			.merge([
-				ingestStream.filter(filterByValue('connected')).map(() => true),
-				ingestStream.filter(filterByValue('disconnected')).map(() => false),
-			])
-			.toProperty(() => false);
-	};
+const SECOND = 1;
+const MINUTE = 60 * SECOND;
+const HOUR = 60 * MINUTE;
 
-/**
- * Basic audio player
- *
- * @element vwc-audio
- *
- */
-class VWCAudio extends HTMLElement {
-	constructor() {
-		super();
+[VWCScrubBar];
 
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-ignore
-		const audioEl = (this[SYMBOL_AUDIO_EL] = new Audio());
-		const controllerEl = document.createElement('vwc-media-controller');
+const setEvents = function (eventSource: HTMLElement, handlersMap: Record<string, ()=> unknown>) {
+	return (pipe as any)(...Object
+		.entries(handlersMap)
+		.map(([eventName, eventHandler]) => {
+			eventSource.addEventListener(eventName, eventHandler);
+			return () => eventSource.removeEventListener(eventName, eventHandler);
+		}));
+};
 
-		audioEl.controls = true;
+/* istanbul ignore next */
+const formatTime = (seconds:number) => {
+	const outputTime:Array<number> = [];
+	[HOUR, MINUTE, SECOND].reduce((ac:number, divider:number) => {
+		outputTime.push(~~(ac / divider));
+		return ac % divider;
+	}, seconds);
+	return outputTime
+		.filter((segment:number, index:number, arr:number[]) => segment > 0 || index > arr.length - 3)
+		.map((segment:number, index:number) => segment.toString().padStart(index === 0 ? 1 : 2, '0'))
+		.join(':');
+};
 
-		const ingestStream = kefir.stream(({ emit }) => {
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				// @ts-ignore
-				this[SYMBOL_TRIGGER] = emit;
-			}),
-			connectedProperty = ingestStream.thru(createConnectedProperty);
+@customElement('vwc-audio')
+export class VWCAudio extends LitElement {
+	static styles = [AudioStyle];
 
-		connectedProperty
-			.filter(Boolean)
-			.take(1)
-			.onValue(() => {
-				// eslint-disable-next-line
-				const sourceUrl = this.getAttribute('src');
-				sourceUrl && (this.src = sourceUrl);
-				// eslint-disable-next-line
-				this.hasAttribute('noseek') && controllerEl.setAttribute('noseek', '');
-				// eslint-disable-next-line
-				this.appendChild(controllerEl);
-			});
+	@query('.audio')
+	_audio!:HTMLAudioElement;
 
-		const userPlayRequestStream = kefir.fromEvents(
-				controllerEl,
-				'userPlayPauseRequest'
-			),
-			userScrubRequestStream = kefir
-				.fromEvents(controllerEl, 'userScrubRequest')
-				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-				// @ts-ignore
-				// eslint-disable-next-line
-				.map(({ detail }): any => detail),
-			playerTimeUpdatedProperty = kefir
-				.fromEvents(audioEl, 'timeupdate')
-				.map(() => audioEl.currentTime)
-				.toProperty(),
-			playerAudioLoadedProperty = kefir
-				.merge([
-					kefir.fromEvents(audioEl, 'loadstart').map(() => false),
-					kefir.fromEvents(audioEl, 'canplay').map(() => true),
-				])
-				.toProperty(),
-			playerIsPlayingProperty = kefir
-				.merge([
-					kefir.fromEvents(audioEl, 'play').map(() => true),
-					kefir
-						.merge([
-							kefir.fromEvents(audioEl, 'pause'),
-							playerAudioLoadedProperty.filter(loaded => !loaded),
-						])
-						.map(() => false),
-				])
-				.toProperty();
+	@query('.scrubber')
+	_scrubber!:VWCScrubBar;
 
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-ignore
-		playerTimeUpdatedProperty.onValue(() => controllerEl.setPosition(
-			audioEl.currentTime === 0 ? 0 : audioEl.currentTime / audioEl.duration
-		));
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-ignore
-		playerIsPlayingProperty.onValue(controllerEl.setPlayState.bind(controllerEl));
-		userPlayRequestStream
-			.filterBy(playerAudioLoadedProperty)
-			.onValue(() => audioEl[audioEl.paused ? 'play' : 'pause']());
-		// eslint-disable-next-line
-		userScrubRequestStream
-			.filterBy(playerAudioLoadedProperty)
-			.onValue(
-				(position: number) => (audioEl.currentTime = audioEl.duration * position)
-			);
-		connectedProperty
-			.filter(connected => !connected)
-			.onValue(() => audioEl.pause());
+	@property({ type: String, reflect: true })
+	src?:string;
+
+	@property({ type: Boolean, reflect: true })
+	noseek = false;
+
+	@property({ type: Boolean, reflect: true })
+	timestamp = false;
+
+	@internalProperty()
+	private _duration = 0;
+
+	@internalProperty()
+	private _isPlaying = false;
+
+	@internalProperty()
+	private _loading = true;
+
+	@internalProperty()
+	private _playheadPosition = 0;
+
+	protected firstUpdated(_changedProperties: PropertyValues):void {
+		super.firstUpdated(_changedProperties);
+		setEvents(this._audio, {
+			/* istanbul ignore next */
+			loadedmetadata: () => this._duration = this._audio.duration,
+			/* istanbul ignore next */
+			timeupdate: () => this._playheadPosition = this._audio.currentTime,
+			/* istanbul ignore next */
+			loadstart: () => this._loading = true,
+			/* istanbul ignore next */
+			canplay: () => this._loading = false,
+			/* istanbul ignore next */
+			play: () => this._isPlaying = true,
+			/* istanbul ignore next */
+			pause: () => this._isPlaying = false
+		});
 	}
 
-	// ts-ignore
-	connectedCallback(): void {
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-ignore
-		this[SYMBOL_TRIGGER]('connected');
+	play(): void {
+		this._audio.play();
 	}
 
-	disconnectedCallback(): void {
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-ignore
-		this[SYMBOL_TRIGGER]('disconnected');
+	pause(): void {
+		this._audio.pause();
 	}
 
-	/**
-	 * Gets/Sets the playhead position
-	 * @param {number} time - The timestamp (in seconds) to jump to
-	 **/
 	get currentTime(): number {
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-ignore
-		return this[SYMBOL_AUDIO_EL].currentTime;
+		return this._audio.currentTime;
 	}
 
 	set currentTime(time: number) {
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-ignore
-		this[SYMBOL_AUDIO_EL].currentTime = time;
+		this._audio.currentTime = time;
 	}
 
-	/**
-	 * Gets/Sets the audio source
-	 * @param {string} source - The media source file to play
-	 **/
-	get src(): string {
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-ignore
-		return this[SYMBOL_AUDIO_EL].src;
+	update(_changedProperties: PropertyValues):void {
+		this._scrubber?.setPosition(this._playheadPosition / this._duration);
+		super.update(_changedProperties);
 	}
 
-	set src(source: string) {
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-ignore
-		this[SYMBOL_AUDIO_EL].src = source;
-	}
-
-	/**
-	 * Starts playback
-	 **/
-	play(): void {
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-ignore
-		this[SYMBOL_AUDIO_EL].play();
-	}
-
-	/**
-	 * Pauses playback
-	 **/
-	pause(): void {
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-ignore
-		this[SYMBOL_AUDIO_EL].pause();
+	render():TemplateResult {
+		return html`
+			<audio class='audio' src='${ifDefined(this.src)}'></audio>
+			<div class="${classMap({ root: true, loading: this._loading })}">
+				<button
+					aria-label="Play/Pause"
+					class="control-button"
+					@click="${() => (this._isPlaying ? this.pause : this.play).call(this)}"
+				>
+				<vwc-icon
+						class="icon"
+						size="small"
+						type="${this._isPlaying ? 'pause-solid' : 'play-solid'}"
+				></vwc-icon>
+				</button>
+				${this.timestamp ? html`<div class="playhead-position">${formatTime(this._playheadPosition)} / ${formatTime(this._duration)}</div>` : nothing}
+				${!this.noseek ? html`<vwc-scrub-bar @userScrubRequest="${({ detail }: { detail: number }) => this.currentTime = detail * this._duration}" class="scrubber"></vwc-scrub-bar>` : nothing}
+			</div>
+		`;
 	}
 }
-
-export { VWCAudio };
-customElements.define('vwc-audio', VWCAudio);

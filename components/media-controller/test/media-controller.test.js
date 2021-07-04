@@ -1,13 +1,13 @@
 import '../vwc-media-controller';
 import kefir from 'kefir';
-import { textToDomToParent } from '../../../test/test-helpers';
+import { textToDomToParent, waitInterval } from '../../../test/test-helpers';
 
 const CENTER_Y = 8,
-	TRACK_X = 37,
+	TRACK_X = 40,
 	TRACK_X_MARGIN = 5,
 	BUTTON_X = 6,
-	PERCENTAGE_TOLERANCE = 2,
-	RESPONSE_TIMEOUT = 100; //ms
+	PERCENTAGE_TOLERANCE = 5,
+	RESPONSE_TIMEOUT = 200; //ms
 
 const setStyle = (el, style = {}) => {
 	// eslint-disable-next-line
@@ -18,18 +18,45 @@ const setStyle = (el, style = {}) => {
 };
 
 const simulateMouseFactory = ({ x: baseX = 0, y: baseY = 0 }) => {
-	let findTarget = (root = document, x, y) => {
-		let target = root.elementFromPoint(x, y);
-		return target && target.shadowRoot
-			? findTarget(target.shadowRoot, x, y)
-			: target || root;
+	const getParentCount = (target, parentCount = 1) => {
+		return target.parentElement
+			? getParentCount(target.parentElement, parentCount + 1)
+			: parentCount;
+	};
+
+	const findTarget = function (x, y) {
+		const
+			depths = new WeakMap(),
+			scannedRoots = new Set(),
+			scannedEls = new Set(),
+			gatherEls = (root, depth = 0) => {
+				scannedRoots.add(root);
+				const els = [...root.elementsFromPoint(x, y)];
+
+				els.forEach((el) => {
+					depths.set(el, depth);
+					scannedEls.add(el);
+				});
+
+				els
+					.filter(el => el.shadowRoot && !scannedRoots.has(el.shadowRoot))
+					.forEach(el => gatherEls(el.shadowRoot, depth + 1));
+			};
+
+		gatherEls(document);
+
+
+		return [...scannedEls.values()]
+			.filter(el => !el.shadowRoot)
+			.sort((el1, el2) => depths.get(el1) * getParentCount(el1) - depths.get(el2) * getParentCount(el2))
+			.reverse()[0];
 	};
 
 	return (x, y, eventType, options = { bubbles: true, composed: true }) => {
 		let targetX = baseX + x,
 			targetY = baseY + y;
 
-		findTarget(document, targetX, targetY).dispatchEvent(
+		findTarget(targetX, targetY).dispatchEvent(
 			new MouseEvent(eventType, {
 				clientX: targetX,
 				clientY: targetY,
@@ -59,17 +86,18 @@ describe('vwc-media-controller', function () {
 			componentWidth,
 			simulateMouse;
 
-		beforeEach(function () {
+		beforeEach(async function () {
 			addedElements = textToDomToParent(
 				'<vwc-media-controller></vwc-media-controller>'
 			);
 			controllerEl = addedElements[0];
 			setStyle(controllerEl, {
-				top: 0,
+				bottom: 0,
 				left: 0,
 				width: '200px',
 				position: 'fixed',
 			});
+			await waitInterval(RESPONSE_TIMEOUT);
 			const rect = controllerEl.getBoundingClientRect();
 			componentX = rect.x;
 			componentY = rect.y;
@@ -93,6 +121,11 @@ describe('vwc-media-controller', function () {
 					)
 				);
 			});
+		});
+
+		it('Should set position and playstate', function () {
+			controllerEl.setPosition(0);
+			controllerEl.setPlayState(true);
 		});
 
 		it('Should report userScrubRequest events when clicking the trackbar', function () {
