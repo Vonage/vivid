@@ -1,5 +1,7 @@
 const path = require('path');
-require('./utils/testPageGenerator.js')(require('./excludedTests'));
+const pageGenerator = require('./utils/testPageGenerator.js');
+const componentsExcludeList = require('./excludedTests');
+pageGenerator.generateTestPage(componentsExcludeList);
 
 // require our plugins
 const HtmlWebpackPlugin = require('html-webpack-plugin');

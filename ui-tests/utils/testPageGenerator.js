@@ -1,9 +1,12 @@
-const fs = require('fs');
-const path = require('path');
-const { getTestFolders, saveFile } = require('./files-utils');
+const {
+	getTestFolders,
+	saveFile,
+	readFile
+} = require('./files-utils');
 const { pascalCase } = require('pascal-case');
 
-const template = fs.readFileSync(path.join(__dirname, '../assets/testPage.js.tmpl')).toString();
+const template = readFile('../assets/testPage.js.tmpl')
+	.toString();
 
 function generateComponentImport(testName) {
 	return `import { createElementVariations as ${pascalCase(testName)} } from './tests/${testName}';`;
@@ -25,7 +28,8 @@ function generateTestPageFileContents(testsImports, testsCalls) {
 }
 
 function generateTestPage(excludeList = []) {
-	const testsNames = getTestFolders(path.join(__dirname, '../tests')).filter(testName => !excludeList.includes(testName));
+	const testsNames = getTestFolders()
+		.filter(testName => !excludeList.includes(testName));
 	const testsImports = testsNames.reduce((result, testName) => {
 		return `${result}${generateComponentImport(testName)}
 	`;
@@ -39,7 +43,18 @@ function generateTestPage(excludeList = []) {
 	saveFile('../testPage.js', fileContents);
 }
 
+function generateComponentTestPage(componentName) {
+	const testsImports = generateComponentImport(componentName);
 
-module.exports = generateTestPage;
+	const testsCalls = generateComponentContentFunction(componentName);
+	const fileContents = generateTestPageFileContents(testsImports, testsCalls);
+	saveFile(`../tmp/${componentName}/index.js`, fileContents);
+}
+
+
+module.exports = {
+	generateTestPage,
+	generateComponentTestPage
+};
 
 generateTestPage();
