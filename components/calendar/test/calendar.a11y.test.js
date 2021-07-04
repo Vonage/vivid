@@ -70,7 +70,7 @@ describe('calendar a11y', () => {
 			expect(focusedElementAfterMovingDown).to.equal(getRole('columnheader', 3));
 		});
 
-		it('should move focus from calendar event to containing gridcell', async () => {
+		it('should move focus from calendar event to containing gridcell on arrow up', async () => {
 			const eventComponent = 'vwc-calendar-event';
 
 			const { actualElement, shadowRoot, grid } = extractCalendarElements(await addCalendarElement(
