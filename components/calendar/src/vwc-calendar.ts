@@ -20,9 +20,9 @@ import {
 	ARROW_LEFT,
 	ARROW_RIGHT,
 	ARROW_UP,
-	getSameBlockGridCell,
+	getHeaderGridCell,
 	isCellOrHeader,
-	nextCellOrHeader,
+	getNextFocusableGridElement,
 } from './vwc-calendar-keyboard-interactions.js';
 import { getEventContext } from './vwc-calendar-event-context.js';
 
@@ -123,11 +123,11 @@ export class VWCCalendar extends LitElement {
 		let focusNext: Element | null | undefined;
 
 		if (isCellOrHeader(activeElement)) {
-			focusNext = nextCellOrHeader.call(this, event.key, activeElement);
+			focusNext = getNextFocusableGridElement.call(this, event.key, activeElement);
 		} else if (this.focusedCalendarEvent) {
 			focusNext = this.getCalendarEventContainingCell(this.focusedCalendarEvent);
 		} else if (activeElement?.matches('em[role="button"i]')) {
-			focusNext = getSameBlockGridCell.call(this, event.key, activeElement as HTMLElement);
+			focusNext = getHeaderGridCell.call(this, event.key, activeElement as HTMLElement);
 		} else {
 			// default selectable element (first header)
 			focusNext = this.shadowRoot?.querySelector('[role="columnheader"i]');

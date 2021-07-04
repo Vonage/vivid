@@ -15,11 +15,11 @@ export function isCellOrHeader(el: unknown): el is HTMLElement {
 	);
 }
 
-export function nextCellOrHeader(this: VWCCalendar, key: string, activeElement: HTMLElement): Element | null | undefined {
-	const toggleRowQuery = (f: HTMLElement) => (f.matches('[role="columnheader"i]')
-		? '[role="gridcell"i]'
-		: '[role="columnheader"i]');
+const getCellOrHeader = (f: HTMLElement) => (f.matches('[role="columnheader"i]')
+	? '[role="gridcell"i]'
+	: '[role="columnheader"i]');
 
+export function getNextFocusableGridElement(this: VWCCalendar, key: string, activeElement: HTMLElement): Element | null | undefined {
 	switch (key) {
 	case ARROW_RIGHT:
 		return activeElement.nextElementSibling || activeElement.parentNode?.firstElementChild;
@@ -29,14 +29,14 @@ export function nextCellOrHeader(this: VWCCalendar, key: string, activeElement: 
 	case ARROW_DOWN: {
 		const { children } = activeElement?.parentElement as HTMLElement;
 		const i = Array.from(children).indexOf(activeElement);
-		return this.shadowRoot?.querySelector(`${toggleRowQuery(activeElement as HTMLElement)}:nth-child(${i + 1})`);
+		return this.shadowRoot?.querySelector(`${getCellOrHeader(activeElement as HTMLElement)}:nth-child(${i + 1})`);
 	}
 	default:
 		return null;
 	}
 }
 
-export function getSameBlockGridCell(this: VWCCalendar, key: string, activeElement: HTMLElement): Element | null | undefined {
+export function getHeaderGridCell(this: VWCCalendar, key: string, activeElement: HTMLElement): Element | null | undefined {
 	if (key === ARROW_DOWN) {
 		const header = activeElement.closest('[role="columnheader"i]');
 		const columnHeaders = this.shadowRoot?.querySelectorAll('[role="columnheader"i]');
