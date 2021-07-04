@@ -1,3 +1,12 @@
+# [2.13.0](https://github.com/vonage/vivid/compare/v2.12.0...v2.13.0) (2021-07-04)
+
+
+### Bug Fixes
+
+* **chip:** mitigated NPE during setting an attribute after element disposal ([#913](https://github.com/vonage/vivid/issues/913)) ([4cd3661](https://github.com/vonage/vivid/commit/4cd3661b8fd21e0f12fa412e507f01d6adf9120a))
+
+
+
 # [2.12.0](https://github.com/vonage/vivid/compare/v2.11.0...v2.12.0) (2021-06-14)
 
 
