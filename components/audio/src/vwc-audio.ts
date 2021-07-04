@@ -1,5 +1,6 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-media-controller';
+import { delegateAttributes } from '@vonage/vvd-foundation/decorators';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import { pipe } from 'ramda';
 import { VWCScrubBar } from '@vonage/vwc-media-controller/vwc-scrub-bar';
@@ -46,6 +47,7 @@ const formatTime = (seconds:number) => {
 };
 
 @customElement('vwc-audio')
+@delegateAttributes({ 'aria-controls': '.root' })
 export class VWCAudio extends LitElement {
 	static styles = [AudioStyle];
 
