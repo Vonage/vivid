@@ -61,7 +61,7 @@ jobs:
 
       # Notify community
       - name: Notify slack
-        run: git log --format=oneline --decorate=short | node ./scripts/release_announcer --slackHookUrl="${{ secrets.SLACK_WEBHOOK }}"
+        run: git log --format=oneline --decorate=short | node ./scripts/release_announcer --slackHookUrl="1${{ secrets.SLACK_WEBHOOK }}"
 
       # Build and deploy showcase
       - name: Build storybook
