@@ -1,17 +1,7 @@
 const fs = require('fs');
 const path = require('path');
+const { getTestFolders, saveFile } = require('./files-utils');
 const { pascalCase } = require('pascal-case');
-
-function getTestFolders(workingFolder) {
-	const testFolders = [];
-	fs.readdirSync(workingFolder).forEach((testFolder) => {
-		const absolutePath = path.join(workingFolder, testFolder);
-		if (fs.statSync(absolutePath).isDirectory()) {
-			testFolders.push(testFolder);
-		}
-	});
-	return testFolders;
-}
 
 const template = fs.readFileSync(path.join(__dirname, '../assets/testPage.js.tmpl')).toString();
 
@@ -31,7 +21,7 @@ function generateTestPage(excludeList = []) {
 		`;
 	}, '');
 	const fileContents = (template.replace('${testImports}', testsImports)).replace('${testCalls}', testsCalls);
-	fs.writeFileSync(path.join(__dirname, '../testPage.js'), fileContents);
+	saveFile('../testPage.js', fileContents);
 }
 
 
