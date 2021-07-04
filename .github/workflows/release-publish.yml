@@ -1,9 +1,7 @@
 name: Release Vivid (GitHub)
 
 on:
-  push:
-    tags:
-      - v*
+  push
 
 jobs:
   build-publish:
