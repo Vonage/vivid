@@ -70,7 +70,7 @@ describe('calendar a11y', () => {
 			expect(focusedElementAfterMovingDown).to.equal(getRole('columnheader', 3));
 		});
 
-		it('should move focus from calendar event to containing gridcell', async () => {
+		it('should move focus from calendar event to containing gridcell on \'arrowUp\'', async () => {
 			const eventComponent = 'vwc-calendar-event';
 
 			const { actualElement, shadowRoot, grid } = extractCalendarElements(await addCalendarElement(
@@ -88,15 +88,13 @@ describe('calendar a11y', () => {
 			);
 		});
 
-		it('should move focus from column header button to gridcell of same block', async () => {
+		it('should move focus from column header button to gridcell of same block on \'arrowDown\'', async () => {
 			const { actualElement, shadowRoot, grid } = extractCalendarElements(await addCalendarElement());
 
 			const columnHeader = actualElement.shadowRoot.querySelector('[role="columnheader"i]:nth-child(3)');
 			columnHeader.querySelector('[role="button"i]').focus();
 
 			grid.dispatchEvent(createKEvent('ArrowDown'));
-			console.log(shadowRoot.activeElement);
-			console.log(grid.querySelector('[role="gridcell"i]:nth-child(3)'));
 
 			expect(shadowRoot.activeElement).to.equal(
 				grid.querySelector('[role="gridcell"i]:nth-child(3)')
