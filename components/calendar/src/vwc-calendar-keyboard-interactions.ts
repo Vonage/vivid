@@ -21,12 +21,12 @@ export function nextCellOrHeader(this: VWCCalendar, key: string, activeElement: 
 		: '[role="columnheader"i]');
 
 	switch (key) {
-	case 'ArrowRight':
+	case ARROW_RIGHT:
 		return activeElement.nextElementSibling || activeElement.parentNode?.firstElementChild;
-	case 'ArrowLeft':
+	case ARROW_LEFT:
 		return activeElement.previousElementSibling || activeElement.parentElement?.lastElementChild;
-	case 'ArrowUp':
-	case 'ArrowDown': {
+	case ARROW_UP:
+	case ARROW_DOWN: {
 		const { children } = activeElement?.parentElement as HTMLElement;
 		const i = Array.from(children).indexOf(activeElement);
 		return this.shadowRoot?.querySelector(`${toggleRowQuery(activeElement as HTMLElement)}:nth-child(${i + 1})`);
