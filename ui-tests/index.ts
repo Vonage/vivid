@@ -54,6 +54,7 @@ async function compareImages(img1Path, img2Path): Promise<ComparisonResult> {
 async function takeSnapshot(page, snapshotPath) {
 	return page.screenshot({
 		path: snapshotPath,
+		fullPage: true
 	});
 }
 
