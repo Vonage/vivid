@@ -60,7 +60,7 @@ jobs:
             token: NPM_TOKEN
             host: registry.npmjs.org
     steps:
-      - run: echo "registry=https://${{ matrix.host }}/\n//${{ matrix.host }}/:_authToken=${{ secrets[matrix.token] }}" > .npmrc
+      - run: printf "registry=https://${{ matrix.host }}/\n//${{ matrix.host }}/:_authToken=${{ secrets[matrix.token] }}" > .npmrc
       - run: npm info @vonage/vwc-button --verbose
 
 
