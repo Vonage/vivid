@@ -54,10 +54,10 @@ jobs:
           - npm
         include:
           - registry: github
-            token: ${{ secrets.GITHUB_TOKEN }}
+            token: ${{ secret.GITHUB_TOKEN }}
             host: npm.pkg.github.com
           - registry: npm
-            token: ${{ secrets.NPM_AUTH_TOKEN }}
+            token: ${{ secret.NPM_AUTH_TOKEN }}
             host: registry.npmjs.org
     steps:
       - env:
