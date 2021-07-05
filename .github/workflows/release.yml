@@ -35,6 +35,7 @@ jobs:
     runs-on: ubuntu-18.04
     name: Publishing to ${{ matrix.registry }}
     strategy:
+      fail-fast: false
       matrix:
         registry:
           - github
@@ -53,10 +54,13 @@ jobs:
           name: workspace
           path: /tmp
       - run: tar -zxf /tmp/vivid-env.tar.gz
+
       - name: Creating ".npmrc"
         run: printf "always-auth=true\nregistry=https://${{ matrix.host }}/\n//${{ matrix.host }}/:_authToken=${{ secrets[matrix.token_secret] }}" > .npmrc
+
       - name: Publishing packages
         run: yarn lerna publish from-package --registry=https://${{ matrix.host }} --no-git-reset --loglevel verbose --yes
+
       - name: Publishing "@vonage/vivid" package
         run: npm publish $(node ./scripts/vivid-all-package-generator)
 
