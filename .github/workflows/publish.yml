@@ -72,7 +72,7 @@ jobs:
       - name: Testing access
         run: ls -al && npm info @vonage/vwc-button
       - name: Publishing packages
-        run: yarn lerna publish from-package --no-git-reset --loglevel verbose --yes
+        run: yarn lerna publish from-package --registry=https://${{ matrix.host }} --no-git-reset --loglevel verbose --yes
       - name: Publishing "@vonage/vivid" package
         run: npm publish $(node ./scripts/vivid-all-package-generator)
 
