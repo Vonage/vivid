@@ -7,6 +7,7 @@ import * as http from 'http';
 import * as fs from 'fs';
 import * as jimp from 'jimp';
 import { getFilteredTestFolders } from './utils/files-utils';
+import { pascalCase } from 'pascal-case';
 
 interface ComparisonResult {
 	image: any;
@@ -27,11 +28,9 @@ const server = http.createServer((request, response) => {
 async function compareToSnapshot(page: Page, snapshotPath: string) {
 	const componentName = snapshotPath.substring(snapshotPath.lastIndexOf('/') + 1, snapshotPath.lastIndexOf('.'));
 	const tmpScreenshotPath = snapshotPath.replace(componentName, `${componentName}-snapshot`);
-	console.log(tmpScreenshotPath);
 	await takeSnapshot(page, tmpScreenshotPath);
 	const comparisonResult = await compareImages(snapshotPath, tmpScreenshotPath);
 
-	console.log(snapshotPath.replace(componentName, `${componentName}-diff`));
 	await comparisonResult.image.writeAsync(snapshotPath.replace(componentName, `${componentName}-diff`));
 
 	return comparisonResult;
@@ -52,7 +51,14 @@ async function compareImages(img1Path, img2Path): Promise<ComparisonResult> {
 }
 
 async function takeSnapshot(page, snapshotPath) {
-	return page.screenshot({
+	const componentName = snapshotPath.substring(snapshotPath.lastIndexOf('/') + 1, snapshotPath.lastIndexOf('.'));
+	const elementId = `#${pascalCase(componentName).replace('Snapshot', '')}`;
+	const element = await page.$(elementId);
+	let screenShotHandler = element;
+	if (element.getAttribute('testWholePage')) {
+		screenShotHandler = page;
+	}
+	return screenShotHandler.screenshot({
 		path: snapshotPath,
 		fullPage: true
 	});
