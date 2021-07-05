@@ -64,3 +64,5 @@ custom-elements.json
 /ui-tests/diff.png
 /ui-tests/tmpScreenshot.png
 /ui-tests/testPage.js
+/ui-tests/tmp
+/ui-tests/dist

@@ -15,12 +15,45 @@ function getTestFolders(workingFolder = '../tests') {
 	return testFolders;
 }
 
-function saveFile(relativeFilePath, fileContents) {
-	fs.writeFileSync(path.join(__dirname, relativeFilePath), fileContents);
+async function saveFile(relativeFilePath, fileContents) {
+	const savedFolder = path.join(__dirname, relativeFilePath);
+	await ensureExists(savedFolder);
+	fs.writeFileSync(savedFolder, fileContents);
 }
 
 function readFile(relativePath) {
 	return fs.readFileSync(path.join(__dirname, relativePath));
+}
+
+function ensureExists(folderPath, mask = 0o777) {
+	const folders = folderPath.split('/');
+	folders.splice(-1, 1);
+	let rebuiltFolderPath = '';
+	const ensureFolderExists = ensureFolderExistsFactory(mask);
+	return Promise.all(folders.map((folderName) => {
+		if (!folderName) return;
+		rebuiltFolderPath += `/${folderName}`;
+		return ensureFolderExists(rebuiltFolderPath);
+	}));
+}
+
+function ensureFolderExistsFactory(mask) {
+	return function (folderPath) {
+		return new Promise((res, rej) => {
+			const resolveFolderPath = path.resolve(folderPath);
+			fs.mkdir(resolveFolderPath, mask, function (err) {
+				if (err) {
+					if (err.code == 'EEXIST') {
+						res(null);
+					} else {
+						rej(err);
+					}
+				} else {
+					res(null);
+				}
+			});
+		});
+	};
 }
 
 module.exports = {

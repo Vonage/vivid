@@ -89,6 +89,10 @@ function finalizeTest() {
 server.listen(3000, async () => {
 	console.log('Running at http://localhost:3000');
 
+	if (process.argv.includes('-s')) {
+		return;
+	}
+
 	try {
 		await runImageComparison();
 	} catch (e) {
