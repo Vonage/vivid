@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.13.0](https://github.com/Vonage/vivid/compare/v2.12.0...v2.13.0) (2021-07-04)
+
+
+### Bug Fixes
+
+* **chip:** mitigated NPE during setting an attribute after element disposal ([#913](https://github.com/Vonage/vivid/issues/913)) ([4cd3661](https://github.com/Vonage/vivid/commit/4cd3661b8fd21e0f12fa412e507f01d6adf9120a))
+
+
+### Features
+
+* **audio:** add time indicator to audio component ([#922](https://github.com/Vonage/vivid/issues/922)) ([3ee3f67](https://github.com/Vonage/vivid/commit/3ee3f67975b49fcd6d32b2b955ab05b37ab10b43))
+* **packages:** redundant configuration ([#909](https://github.com/Vonage/vivid/issues/909)) ([ff4c45d](https://github.com/Vonage/vivid/commit/ff4c45dd7da29592b4f3e61e6e1234258e2a0886))
+* **vwc-calendar:** add event context api ([#924](https://github.com/Vonage/vivid/issues/924)) ([f921502](https://github.com/Vonage/vivid/commit/f92150254c7f5e6d13bd87c394e9b6674dadfae8))
+* **vwc-datepicker:** viv-574 datepicker design modifications ([#888](https://github.com/Vonage/vivid/issues/888)) ([3c03255](https://github.com/Vonage/vivid/commit/3c03255faf363a6d6552e06c002cdd9fec2c41d9))
+* **vwc-file-picker:** expose minimum height customization ([#917](https://github.com/Vonage/vivid/issues/917)) ([1bf826e](https://github.com/Vonage/vivid/commit/1bf826ea103762c122a8bcf5210b91e8cfacf671))
+
+
+
+
+
 # [2.12.0](https://github.com/Vonage/vivid/compare/v2.11.0...v2.12.0) (2021-06-14)
 
 

@@ -15,39 +15,19 @@ import {
 	getFirstDateOfTheWeek
 } from './vwc-calendar-date-functions';
 import { VWCCalendarEvent } from './vwc-calendar-event';
+import {
+	ARROW_DOWN,
+	ARROW_LEFT,
+	ARROW_RIGHT,
+	ARROW_UP,
+	getHeaderDescendantGridCell,
+	isCellOrHeader,
+	getNextFocusableGridElement,
+} from './vwc-calendar-keyboard-interactions.js';
+import { getEventContext } from './vwc-calendar-event-context.js';
 
+export const TotalHours = 24;
 
-const ARROW_UP = 'ArrowUp';
-const ARROW_RIGHT = 'ArrowRight';
-const ARROW_DOWN = 'ArrowDown';
-const ARROW_LEFT = 'ArrowLeft';
-
-const isCellOrHeader = (el: unknown): el is HTMLElement => el instanceof HTMLElement
-	&& (
-		el.matches('[role="gridcell"i]')
-		|| el.matches('[role="columnheader"i]')
-	);
-
-function nextCellOrHeader(this: VWCCalendar, key: string, activeElement: HTMLElement) {
-	const toggleRowQuery = (f: HTMLElement) => (f.matches('[role="columnheader"i]')
-		? '[role="gridcell"i]'
-		: '[role="columnheader"i]');
-
-	switch (key) {
-	case 'ArrowRight':
-		return activeElement.nextElementSibling || activeElement.parentNode?.firstElementChild;
-	case 'ArrowLeft':
-		return activeElement.previousElementSibling || activeElement.parentElement?.lastElementChild;
-	case 'ArrowUp':
-	case 'ArrowDown': {
-		const { children } = activeElement?.parentElement as HTMLElement;
-		const i = Array.from(children).indexOf(activeElement);
-		return this.shadowRoot?.querySelector(`${toggleRowQuery(activeElement as HTMLElement)}:nth-child(${i + 1})`);
-	}
-	default:
-		return null;
-	}
-}
 declare global {
 	interface HTMLElementTagNameMap {
 		'vwc-calendar': VWCCalendar;
@@ -107,9 +87,18 @@ export class VWCCalendar extends LitElement {
 	locales?: string | string[] | undefined;
 
 	#daysLength = 7;
-	#hours = (Array.from({ length: 23 }) as Date[])
+	#hours = (Array.from({ length: TotalHours - 1 }) as Date[])
 		.fill(new Date(new Date().setHours(0, 0, 0)))
 		.map((d, i) => new Date(d.setHours(++i)))
+
+	/**
+   * Fire an event
+   * @param {string} event        - event name
+   * @param {Object} [detail={}]  - optional event detail object
+   * @returns {boolean}           - return true
+   */
+	getEventContext = getEventContext.bind(this);
+
 
 	private getDaysArr(dateArr: Date[]): Date[] {
 		if (dateArr.length == this.#daysLength) { return dateArr; }
@@ -134,9 +123,11 @@ export class VWCCalendar extends LitElement {
 		let focusNext: Element | null | undefined;
 
 		if (isCellOrHeader(activeElement)) {
-			focusNext = nextCellOrHeader.call(this, event.key, activeElement);
+			focusNext = getNextFocusableGridElement.call(this, event.key, activeElement);
 		} else if (this.focusedCalendarEvent) {
 			focusNext = this.getCalendarEventContainingCell(this.focusedCalendarEvent);
+		} else if (activeElement?.matches('em[role="button"i]')) {
+			focusNext = getHeaderDescendantGridCell.call(this, event.key, activeElement as HTMLElement);
 		} else {
 			// default selectable element (first header)
 			focusNext = this.shadowRoot?.querySelector('[role="columnheader"i]');
@@ -191,13 +182,13 @@ export class VWCCalendar extends LitElement {
 			<div class="column-headers" role="row">
 				${this.getDaysArr([getFirstDateOfTheWeek(this.datetime)]).map(date => html`
 				<div role="columnheader" tabindex="-1">
-					<time datetime=${getValidDateString(date)} aria-readonly="true"
-						aria-label=${new Intl.DateTimeFormat(this.locales, { weekday: 'long', month: 'long', day: 'numeric' }).format(date)}>
+					<time datetime=${getValidDateString(date)} aria-readonly="true">
 						<h2>
-							<em>
+							<!-- TODO add to column aria-labelledby or describedby to count events and related day e.g. "3 events, Sunday, March 8" -->
+							<em tabindex="0" role="button" aria-label=${new Intl.DateTimeFormat(this.locales, { weekday: 'long', month: 'long', day: 'numeric' }).format(date)}>
 								${new Intl.DateTimeFormat(this.locales, { day: '2-digit' }).format(date)}
 							</em>
-							<small>
+							<small aria-hidden="true">
 								${new Intl.DateTimeFormat(this.locales, { weekday: 'short' }).format(date)}
 							</small>
 						</h2>
