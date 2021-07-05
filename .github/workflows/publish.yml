@@ -29,22 +29,22 @@ jobs:
             ${{ steps.yarn-cache-dir-path.outputs.dir }}
             **/node_modules
           key: vivid-cache-yarn-${{ hashFiles('**/package.json') }}
-      - name: Install dependencies
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
-        env:
-          yarn_always_auth: true,
-          yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
-          yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
-        run: yarn install
-      - run: yarn compile
-      - uses: 'actions/upload-artifact@v2'
+      #- name: Install dependencies
+      #  if: steps.yarn-cache.outputs.cache-hit != 'true'
+      #  env:
+      #    yarn_always_auth: true,
+      #    yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+      #    yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
+      #  run: yarn install
+      #- run: yarn compile
+      - run: tar -zcf /tmp/vivid-env.tar.gz .
+      - uses: actions/upload-artifact@v2
         with:
-          name: vivid-release-candidate-${{ github.sha }}
-          path: ${{ github.workspace }}
+          name: workspace
+          path: /tmp/vivid-env.tar.gz
 
   publish:
     needs: build
-    if: ${{ true }}
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_VIVID_DEMO_PROD_ACCESS }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_VIVID_DEMO_PROD_SECRET }}
@@ -63,11 +63,12 @@ jobs:
             token_secret: NPM_TOKEN
             host: registry.npmjs.org
     steps:
-      - uses: 'actions/upload-artifact@v2'
-        name: Staging project
+      - uses: actions/setup-node@v2
+      - uses: actions/download-artifact@v2
         with:
-          name: vivid-release-candidate-${{ github.sha }}
-          path: ${{ github.workspace }}
+          name: workspace
+          path: /tmp
+      - run: tar -zxf /tmp/vivid-env.tar.gz
       - name: Creating ".npmrc"
         run: printf "registry=https://${{ matrix.host }}/\n//${{ matrix.host }}/:_authToken=${{ secrets[matrix.token_secret] }}" > .npmrc
       - name: Testing access
@@ -76,6 +77,13 @@ jobs:
       #  run: yarn lerna publish from-package --no-git-reset --loglevel verbose --yes
       #- name: Publishing "@vonage/vivid" package
       #  run: npm publish $(node ./scripts/vivid-all-package-generator)
+
+  post_publish:
+    needs: publish
+    runs-on: ubuntu-18.04
+    steps:
+      - run: echo "Hello"
+
 
 #      # Notify community
 #      - name: Notify slack
