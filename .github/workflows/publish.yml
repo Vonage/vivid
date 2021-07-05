@@ -47,6 +47,7 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_VIVID_DEMO_PROD_SECRET }}
     runs-on: ubuntu-18.04
     concurrency: ${{ github.workflow }}
+    name: Publishing to ${{ matrix.registry }}
     strategy:
       matrix:
         registry:
@@ -54,27 +55,26 @@ jobs:
           - npm
         include:
           - registry: github
-            token: GITHUB_TOKEN
+            token_secret: GITHUB_TOKEN
             host: npm.pkg.github.com
           - registry: npm
-            token: NPM_TOKEN
+            token_secret: NPM_TOKEN
             host: registry.npmjs.org
     steps:
-      - run: printf "registry=https://${{ matrix.host }}/\n//${{ matrix.host }}/:_authToken=${{ secrets[matrix.token] }}" > .npmrc
-      - run: npm info @vonage/vwc-button --verbose
-#
+      - uses: 'actions/upload-artifact@v2'
+        name: Staging project
+        with:
+          name: vivid-release-candidate-${{ github.sha }}
+          path: ${{ github.workspace }}
+      - name: Creating ".npmrc"
+        run: printf "registry=https://${{ matrix.host }}/\n//${{ matrix.host }}/:_authToken=${{ secrets[matrix.token_secret] }}" > .npmrc
+      - name: Testing access
+        run: ls -al && npm info @vonage/vwc-button
+      #- name: Publishing packages
+      #  run: yarn lerna publish from-package --no-git-reset --loglevel verbose --yes
+      #- name: Publishing "@vonage/vivid" package
+      #  run: npm publish $(node ./scripts/vivid-all-package-generator)
 
-#      - run: echo registry=https://npm.pkg.github.com/ > .npmrc
-#      - run: echo //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN} >> .npmrc
-#      - run: yarn lerna publish from-package --no-git-reset --registry https://npm.pkg.github.com --yes --no-push --loglevel verbose
-#      - run: npm publish $(node ./scripts/vivid-all-package-generator)
-#        continue-on-error: true
-#      - run: echo registry=https://registry.npmjs.org/ > .npmrc
-#      - run: echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} >> .npmrc
-#      - run: yarn lerna publish from-package --no-git-reset --registry https://registry.npmjs.org --yes --no-push --loglevel verbose
-#      - run: npm publish $(node ./scripts/vivid-all-package-generator)
-#        continue-on-error: true
-#
 #      # Notify community
 #      - name: Notify slack
 #        run: git log --format=oneline --decorate=short | node ./scripts/release_announcer --slackHookUrl="${{ secrets.SLACK_WEBHOOK }}"
