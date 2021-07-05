@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    if: ${{ false }}
+    if: ${{ true }}
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout
