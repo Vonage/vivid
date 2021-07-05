@@ -41,6 +41,7 @@ jobs:
           path: ${{ github.workspace }}
 
   publish:
+    needs: build
     if: ${{ true }}
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_VIVID_DEMO_PROD_ACCESS }}
