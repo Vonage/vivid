@@ -57,10 +57,9 @@ jobs:
             token: GITHUB_TOKEN
             host: npm.pkg.github.com
           - registry: npm
-            token: NPM_AUTH_TOKEN
+            token: NPM_TOKEN
             host: registry.npmjs.org
     steps:
-      - run: echo "${{ secrets.NPM_AUTH_TOKEN }}" | base64 | base64
       - env:
           NPM_CONFIG_REGISTRY: https://:${{ secrets[matrix.token] }}@${{ matrix.host }}
         run: npm info @vonage/vwc-button --verbose
