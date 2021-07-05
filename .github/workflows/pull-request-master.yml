@@ -110,7 +110,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: snapshot
-          path: ./ui-tests/*.png
+          path: ./ui-tests/snapshots/*.png
 
   test_static:
     needs: build

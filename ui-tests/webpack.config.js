@@ -30,8 +30,8 @@ module.exports = {
 		new CleanWebpackPlugin(), // use the clean plugin to delete the dist folder before a build
 		...htmlGenerators,
 		{
-			apply: (compiler) => {
-				compiler.hooks.beforeRun.tap('MyPlugin_compile', buildTests);
+			apply: async (compiler) => {
+				compiler.hooks.beforeRun.tap('MyPlugin_compile', async () => await buildTests());
 			},
 		},
 	],
