@@ -1,5 +1,11 @@
 const fs = require('fs');
 const path = require('path');
+const componentsExcludeList = require('../excludedTests');
+
+function getFilteredTestFolders(workingFolder = '../tests') {
+	return getTestFolders()
+		.filter(testName => !componentsExcludeList.includes(testName));
+}
 
 function getTestFolders(workingFolder = '../tests') {
 	const testFolders = [];
@@ -59,5 +65,6 @@ function ensureFolderExistsFactory(mask) {
 module.exports = {
 	getTestFolders,
 	saveFile,
-	readFile
+	readFile,
+	getFilteredTestFolders
 };
