@@ -8,6 +8,12 @@ import * as fs from 'fs';
 import * as jimp from 'jimp';
 import { getFilteredTestFolders } from './utils/files-utils';
 
+interface ComparisonResult {
+	image: any;
+	percent: number;
+	distance: number;
+}
+
 const PORT = process.env.PORT || 3000;
 const SERVER_URL = `http://localhost:${PORT}`;
 const SNAPSHOT_PATH = './ui-tests/snapshots';
@@ -19,20 +25,25 @@ const server = http.createServer((request, response) => {
 });
 
 async function compareToSnapshot(page: Page, snapshotPath: string) {
-	// TODO::get the snapshot folder and save the comparison and diff in the correct folder
-	const tmpScreenshotPath = './ui-tests/tmpScreenshot.png';
+	const componentName = snapshotPath.substring(snapshotPath.lastIndexOf('/') + 1, snapshotPath.lastIndexOf('.'));
+	const tmpScreenshotPath = snapshotPath.replace(componentName, `${componentName}-snapshot`);
+	console.log(tmpScreenshotPath);
 	await takeSnapshot(page, tmpScreenshotPath);
-	return compareImages(snapshotPath, tmpScreenshotPath);
+	const comparisonResult = await compareImages(snapshotPath, tmpScreenshotPath);
+
+	console.log(snapshotPath.replace(componentName, `${componentName}-diff`));
+	await comparisonResult.image.writeAsync(snapshotPath.replace(componentName, `${componentName}-diff`));
+
+	return comparisonResult;
 }
 
-async function compareImages(img1Path, img2Path) {
+async function compareImages(img1Path, img2Path): Promise<ComparisonResult> {
 	const img1 = await jimp.read(fs.readFileSync(img1Path));
 	const img2 = await jimp.read(fs.readFileSync(img2Path));
 
 	const diff = jimp.diff(img1, img2, 0.1);
 
 	const distance = jimp.distance(img1, img2);
-	await diff.image.writeAsync('./ui-tests/diff.png');
 
 	return {
 		...diff,
@@ -52,7 +63,6 @@ function resultsMessage(diff) {
 
 async function runImageComparison() {
 	const testedComponents = getFilteredTestFolders();
-	console.log(testedComponents);
 	const browser = await webkit.launch();
 
 	for (const i in testedComponents) {
