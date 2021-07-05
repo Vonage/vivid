@@ -62,7 +62,7 @@ jobs:
     steps:
       - run: printf "registry=https://${{ matrix.host }}/\n//${{ matrix.host }}/:_authToken=${{ secrets[matrix.token] }}" > .npmrc
       - run: npm info @vonage/vwc-button --verbose
-
+#
 
 #      - run: echo registry=https://npm.pkg.github.com/ > .npmrc
 #      - run: echo //npm.pkg.github.com/:_authToken=${GITHUB_TOKEN} >> .npmrc
