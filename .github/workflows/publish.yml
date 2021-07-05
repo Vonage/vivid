@@ -64,17 +64,23 @@ jobs:
             host: registry.npmjs.org
     steps:
       - uses: actions/setup-node@v2
-      - uses: ./.github/actions/download_workspace
+      - uses: actions/download-artifact@v2
+        with:
+          name: workspace
+          path: /tmp
+      - run: tar -zxf /tmp/vivid-env.tar.gz
       - name: Creating ".npmrc"
         run: printf "registry=https://${{ matrix.host }}/\n//${{ matrix.host }}/:_authToken=${{ secrets[matrix.token_secret] }}" > .npmrc
       - name: Testing access
         run: ls -al && npm info @vonage/vwc-button
-      #- name: Publishing packages
-      #  run: yarn lerna publish from-package --no-git-reset --loglevel verbose --yes
-      #- name: Publishing "@vonage/vivid" package
-      #  run: npm publish $(node ./scripts/vivid-all-package-generator)
+      - name: Publishing packages
+        run: yarn lerna publish from-package --no-git-reset --loglevel verbose --yes
+      - name: Publishing "@vonage/vivid" package
+        run: npm publish $(node ./scripts/vivid-all-package-generator)
+
 
   post_publish:
+    if: ${{ true }}
     needs: publish
     runs-on: ubuntu-18.04
     steps:
@@ -84,7 +90,6 @@ jobs:
           name: workspace
           path: /tmp
       - run: tar -zxf /tmp/vivid-env.tar.gz
-      - run: echo "Hello"
 
 
 #      # Notify community
