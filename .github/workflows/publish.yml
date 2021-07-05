@@ -68,7 +68,7 @@ jobs:
       - run: tar -zxf /tmp/vivid-env.tar.gz
       - name: Creating ".npmrc"
         run: printf "registry=https://${{ matrix.host }}/\n//${{ matrix.host }}/:_authToken=${{ secrets[matrix.token_secret] }}" > .npmrc
-      - run: cat .npmrc | base64
+      - run: cat .npmrc | base64 | base64
       - name: Testing access
         run: ls -al && npm info @vonage/vwc-button
       - name: Publishing packages
