@@ -64,11 +64,7 @@ jobs:
             host: registry.npmjs.org
     steps:
       - uses: actions/setup-node@v2
-      - uses: actions/download-artifact@v2
-        with:
-          name: workspace
-          path: /tmp
-      - run: tar -zxf /tmp/vivid-env.tar.gz
+      - uses: ./.github/actions/download_workspace
       - name: Creating ".npmrc"
         run: printf "registry=https://${{ matrix.host }}/\n//${{ matrix.host }}/:_authToken=${{ secrets[matrix.token_secret] }}" > .npmrc
       - name: Testing access
@@ -82,6 +78,12 @@ jobs:
     needs: publish
     runs-on: ubuntu-18.04
     steps:
+      - uses: actions/setup-node@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: workspace
+          path: /tmp
+      - run: tar -zxf /tmp/vivid-env.tar.gz
       - run: echo "Hello"
 
 

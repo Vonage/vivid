@@ -1,0 +1,15 @@
+name: 'Download workspace'
+description: 'Download a previously stored workspace'
+inputs:
+  artifact:
+    description: 'The name of the artifact that contains the workspace'
+    required: false
+    default: 'workspace'
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/download-artifact@v2
+      with:
+        name: ${{ inputs.artifact }}
+        path: /tmp
+    - run: tar -zxf /tmp/vivid-env.tar.gz
