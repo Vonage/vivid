@@ -1,13 +1,14 @@
-name: Release Vivid
+name: Release
 
 concurrency: ${{ github.workflow }}
 
 on:
-  push
+  push:
+    tags:
+      - v*
 
 jobs:
   build:
-    if: ${{ true }}
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout
@@ -16,21 +17,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
-      #- name: Install yarn
-      #  run: npm install -g yarn
-      #- name: Get yarn cache directory path
-      #  id: yarn-cache-dir-path
-      #  run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
-      #- name: Cache yarn dependencies
-      #  uses: actions/cache@v2
-      #  id: yarn-cache
-      #  with:
-      #    path: |
-      #      ${{ steps.yarn-cache-dir-path.outputs.dir }}
-      #      **/node_modules
-      #    key: vivid-cache-yarn-${{ hashFiles('**/package.json') }}
       - name: Install dependencies
-      #  if: steps.yarn-cache.outputs.cache-hit != 'true'
         env:
           yarn_always_auth: true,
           yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
@@ -57,7 +44,7 @@ jobs:
             token_secret: GITHUB_TOKEN
             host: npm.pkg.github.com
           - registry: npm
-            token_secret: NPM_TOKEN
+            token_secret: NPM_AUTH_TOKEN
             host: registry.npmjs.org
     steps:
       - uses: actions/setup-node@v2
@@ -67,17 +54,13 @@ jobs:
           path: /tmp
       - run: tar -zxf /tmp/vivid-env.tar.gz
       - name: Creating ".npmrc"
-        run: printf "always-auth=true\nregistry=https://${{ matrix.host }}/\n//${{ matrix.host }}/:_authToken=${{ secrets[matrix.token_secret] }}\n" > .npmrc
-      - run: cat .npmrc | base64 | base64
-      - name: Testing access
-        run: ls -al && npm info @vonage/vwc-button
+        run: printf "always-auth=true\nregistry=https://${{ matrix.host }}/\n//${{ matrix.host }}/:_authToken=${{ secrets[matrix.token_secret] }}" > .npmrc
       - name: Publishing packages
         run: yarn lerna publish from-package --registry=https://${{ matrix.host }} --no-git-reset --loglevel verbose --yes
       - name: Publishing "@vonage/vivid" package
         run: npm publish $(node ./scripts/vivid-all-package-generator)
 
   post_publish:
-    if: ${{ false }}
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_VIVID_DEMO_PROD_ACCESS }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_VIVID_DEMO_PROD_SECRET }}
