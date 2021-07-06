@@ -31,7 +31,9 @@ module.exports = {
 		...htmlGenerators,
 		{
 			apply: async (compiler) => {
-				compiler.hooks.beforeRun.tap('MyPlugin_compile', async () => await buildTests());
+				compiler.hooks.beforeRun.tapPromise('MyPlugin_compile', async () => {
+					return buildTests();
+				});
 			},
 		},
 	],

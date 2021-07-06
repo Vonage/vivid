@@ -31,16 +31,17 @@ function readFile(relativePath) {
 	return fs.readFileSync(path.join(__dirname, relativePath));
 }
 
-function ensureExists(folderPath, mask = 0o777) {
+async function ensureExists(folderPath, mask = 0o777) {
 	const folders = folderPath.split('/');
 	folders.splice(-1, 1);
 	let rebuiltFolderPath = '';
 	const ensureFolderExists = ensureFolderExistsFactory(mask);
-	return Promise.all(folders.map((folderName) => {
-		if (!folderName) return;
+	for (let i = 0; i < folders.length; i++) {
+		const folderName = folders[i];
+		if (!folderName) continue;
 		rebuiltFolderPath += `/${folderName}`;
-		return ensureFolderExists(rebuiltFolderPath);
-	}));
+		await ensureFolderExists(rebuiltFolderPath);
+	}
 }
 
 function ensureFolderExistsFactory(mask) {
