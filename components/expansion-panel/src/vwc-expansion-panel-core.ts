@@ -1,10 +1,10 @@
 import { LitElement, property } from 'lit-element';
 import { observer } from '@material/mwc-base/observer';
 
-export abstract class VWCExpansionPanelCore extends LitElement {
+export abstract class VWCExpansionPanel extends LitElement {
 	@property({ type: Boolean, reflect: true })
 	@observer(function (
-		this: VWCExpansionPanelCore,
+		this: VWCExpansionPanel,
 		isOpen: boolean,
 		wasOpen: boolean
 	) {
