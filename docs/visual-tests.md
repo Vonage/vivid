@@ -98,3 +98,20 @@ Notice that the script imports all the stories from `text` and then uses `storie
 ### Excluding Tests
 
 You can exclude certain tests from running in the Visual Sanity test by adding them to the `excludedTests.json` array.
+
+### Take Whole Screen Snapshots
+
+The systems takes snapshots of only the components' wrappers. Sometimes, you's like to take a full page screenshot. For instance, in the case of a dialog or snackbar.
+For this case, you should use the `snapshotTheWholePage` function:
+```javascript
+import { snapshotTheWholePage } from '../../utils/testPageUtils';
+
+export async function createElementVariations(wrapper) {
+	snapshotTheWholePage(wrapper);
+}
+```
+
+### Run the Test Pages
+
+Sometimes you'd like to see the test pages in the browser. For this, run the tests with the flag `-s`.  Then browse to `http://localhost:3000` and select the `html` file to watch.
+You could also browse directly to the component's page you want: `http://localhost:3000/vwc-badge`.
