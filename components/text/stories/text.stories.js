@@ -9,7 +9,9 @@ export default {
 	argTypes
 };
 
-const Template = args => html`<vwc-text ...=${spread(args)}></vwc-text>`;
+const Template = args => html`<vwc-text ...=${spread(args)}>
+	Lorem	ipsum dolor sit amet, consectetur adipiscing el
+</vwc-text>`;
 
 export const Basic = Template.bind({});
 Basic.args = { fontFace: 'headline' };
