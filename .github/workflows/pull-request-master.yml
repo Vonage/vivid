@@ -111,7 +111,7 @@ jobs:
         if: ${{ always() }}
         with:
           name: snapshot
-          path: ./ui-tests/*.png
+          path: ./ui-tests/snapshots/*.png
 
   test_static:
     needs: build
