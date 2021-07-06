@@ -124,7 +124,7 @@ vwc-menu {
 			&.prevMonthDay,
 			&.nextMonthDay,
 			&.flatpickr-disabled {
-				color: var(#{scheme-variables.$vvd-color-neutral-50});
+				color: var(#{scheme-variables.$vvd-color-neutral-50}) !important;
 				cursor: default;
 				pointer-events: none;
 			}
