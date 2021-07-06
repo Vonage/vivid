@@ -60,13 +60,13 @@ jobs:
           - os: macos-latest
             browser: ChromeHeadless
         include:
-          - browser: ChromeHeadless
+          - browser: chrome
             browser_name: Chrome
             report_coverage: true
-          - browser: FirefoxHeadless
+          - browser: firefox
             browser_name: Firefox
             report_coverage: false
-          - browser: SafariNative
+          - browser: safari
             browser_name: Safari
             report_coverage: false
     steps:
@@ -78,7 +78,7 @@ jobs:
           name: workspace
           path: /tmp
       - run: tar -zxf /tmp/vivid-env.tar.gz
-      - run: yarn karma start --coverage --browsers=${{ matrix.browser }}
+      - run: yarn test:${{ matrix.browser }}
       - uses: coverallsapp/github-action@master
         name: Report coverage information to coveralls
         if: ${{ matrix.report_coverage }}
@@ -87,6 +87,34 @@ jobs:
           github-token: ${{ github.token }}
           path-to-lcov: ./coverage/report-lcov/lcov.info
           flag-name: Tested on ${{ matrix.os }} / ${{ matrix.browser }}
+
+  test_safari_a_few_times:
+    needs: build
+    name: Test Safari a Few Times
+    runs-on: macos-latest
+    steps:
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - uses: actions/download-artifact@v2
+        with:
+          name: workspace
+          path: /tmp
+      - run: tar -zxf /tmp/vivid-env.tar.gz
+      - run: yarn test:safari
+      - run: yarn test:safari
+      - run: yarn test:safari
+      - run: yarn test:safari
+      - run: yarn test:safari
+      - run: yarn test:safari
+      - run: yarn test:safari
+      - run: yarn test:safari
+      - run: yarn test:safari
+      - run: yarn test:safari
+      - run: yarn test:safari
+      - run: yarn test:safari
+      - run: yarn test:safari
+      - run: yarn test:safari
 
   test_for_visual_regression:
     needs: build
