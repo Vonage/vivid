@@ -55,7 +55,7 @@ async function takeSnapshot(page, snapshotPath) {
 	const elementId = `#${pascalCase(componentName).replace('Snapshot', '')}`;
 	const element = await page.$(elementId);
 	let screenShotHandler = element;
-	if (element.getAttribute('testWholePage')) {
+	if (await element.getAttribute('testWholePage')) {
 		screenShotHandler = page;
 	}
 	return screenShotHandler.screenshot({

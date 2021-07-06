@@ -39,7 +39,6 @@ function ensureExists(folderPath, mask = 0o777) {
 	return Promise.all(folders.map((folderName) => {
 		if (!folderName) return;
 		rebuiltFolderPath += `/${folderName}`;
-		console.log(rebuiltFolderPath);
 		return ensureFolderExists(rebuiltFolderPath);
 	}));
 }
@@ -51,7 +50,6 @@ function ensureFolderExistsFactory(mask) {
 			fs.mkdir(resolveFolderPath, mask, function (err) {
 				if (err) {
 					if (err.code == 'EEXIST') {
-						console.log(resolveFolderPath);
 						res(null);
 					} else {
 						rej(err);
