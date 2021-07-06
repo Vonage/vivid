@@ -14,7 +14,7 @@ export async function shapeRoundedTestCases(COMPONENT_NAME) {
 	let formElement,
 		actualElement;
 
-	before(async () => {
+	beforeEach(async () => {
 		const addedElements = addElement(
 			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 		);
@@ -36,10 +36,11 @@ export async function shapeRoundedTestCases(COMPONENT_NAME) {
 
 export async function shapePillTestCases(COMPONENT_NAME, assertDense = true) {
 	const addElement = isolatedElementsCreation();
-	let actualElement;
+	let actualElement,
+		e;
 
-	before(async () => {
-		const [e] = addElement(
+	beforeEach(async () => {
+		[e] = addElement(
 			textToDomToParent(`<${COMPONENT_NAME} shape="pill"></${COMPONENT_NAME}>`)
 		);
 		await waitNextTask();
@@ -63,7 +64,7 @@ export async function shapeCircledTestCases(COMPONENT_NAME) {
 	let formElement,
 		actualElement;
 
-	before(async () => {
+	beforeEach(async () => {
 		const addedElements = addElement(
 			textToDomToParent(`<${COMPONENT_NAME} shape="circled"></${COMPONENT_NAME}>`)
 		);
