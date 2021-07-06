@@ -1,11 +1,11 @@
 import { LitElement, property } from 'lit-element';
-import { VWCExpansionPanelBase } from '@vonage/vwc-expansion-panel/vwc-expansion-panel-base';
+import { VWCExpansionPanelCore } from '@vonage/vwc-expansion-panel';
 
 export abstract class VWCAccordionBase extends LitElement {
 	@property({ type: Boolean, reflect: true })
 	multi = false;
 
-	private expansionPanels: HTMLCollectionOf<VWCExpansionPanelBase> | undefined = undefined;
+	private expansionPanels: HTMLCollectionOf<VWCExpansionPanelCore> | undefined = undefined;
 
 	constructor() {
 		super();
@@ -14,7 +14,7 @@ export abstract class VWCAccordionBase extends LitElement {
 
 	connectedCallback(): void {
 		super.connectedCallback();
-		this.expansionPanels = this.children as HTMLCollectionOf<VWCExpansionPanelBase>;
+		this.expansionPanels = this.children as HTMLCollectionOf<VWCExpansionPanelCore>;
 	}
 
 	handleOpened(e: Event): any {
@@ -25,7 +25,7 @@ export abstract class VWCAccordionBase extends LitElement {
 		}
 	}
 
-	getOpened(): Array<VWCExpansionPanelBase> {
+	getOpened(): Array<VWCExpansionPanelCore> {
 		const opened = [];
 
 		if (this.expansionPanels) {

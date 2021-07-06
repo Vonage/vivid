@@ -1,4 +1,4 @@
-@use './vwc-expansion-panel-variables' as expansion-panel-variables;
+@use 'partials/vwc-accordion-item-variables' as accordion-item-variables;
 @use '@vonage/vwc-icon/src/vwc-icon-variables' as icon-variables;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-typography/scss/typography';
@@ -39,7 +39,7 @@
 		display: flex;
 
 		vwc-icon {
-			#{icon-variables.$icon-size-variable-name}: var(#{expansion-panel-variables.$expansion-panel-icon-size-variable-name}, 16px);
+			#{icon-variables.$icon-size-variable-name}: var(#{accordion-item-variables.$expansion-panel-icon-size-variable-name}, 16px);
 		}
 	}
 
