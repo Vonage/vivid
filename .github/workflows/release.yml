@@ -92,3 +92,4 @@ jobs:
 
       - name: Invalidate CloudFront distribution root object's cache
         run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_VIVID_DEMO_PROD_DISTRIBUTION }} --paths "/"
+
