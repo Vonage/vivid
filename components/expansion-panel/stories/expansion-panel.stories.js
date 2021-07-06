@@ -5,8 +5,8 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Alpha/Components/Expansion Panel',
-	component: 'vwc-expansion-panel',
+	title: 'Alpha/Components/Accordion/Accordion Item',
+	component: 'vwc-accordion-item',
 	argTypes
 };
 
