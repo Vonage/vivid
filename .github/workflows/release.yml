@@ -25,7 +25,7 @@ jobs:
           yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
         run: yarn install
       - run: yarn compile
-      - uses: Vonage/beame@v1
+      - uses: Vonage/beame@concurrency_test
 
   publish:
     needs: build
@@ -46,7 +46,7 @@ jobs:
             host: registry.npmjs.org
     steps:
       - uses: actions/setup-node@v2
-      - uses: Vonage/beame@v1
+      - uses: Vonage/beame@concurrency_test
         with:
           direction: "down"
 
