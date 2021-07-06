@@ -47,6 +47,8 @@ jobs:
     steps:
       - uses: actions/setup-node@v2
       - uses: Vonage/beame@v1
+        with:
+          direction: "down"
 
       - name: Creating ".npmrc"
         run: printf "always-auth=true\nregistry=https://${{ matrix.host }}/\n//${{ matrix.host }}/:_authToken=${{ secrets[matrix.token_secret] }}" > .npmrc
