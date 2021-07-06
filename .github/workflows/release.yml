@@ -24,7 +24,7 @@ jobs:
           yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
           yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
         run: yarn install
-      - run: yarn compile
+      #- run: yarn compile
       - uses: Vonage/beame@concurrency_test
 
   publish:
