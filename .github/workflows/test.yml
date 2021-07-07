@@ -8,4 +8,6 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - run: yarn install
       - uses: Vonage/beame@concurrency_test
