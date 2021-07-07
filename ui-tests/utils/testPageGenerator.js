@@ -1,40 +1,57 @@
-const fs = require('fs');
-const path = require('path');
+const {
+	getTestFolders,
+	saveFile,
+	readFile
+} = require('./files-utils');
 const { pascalCase } = require('pascal-case');
 
-function getTestFolders(workingFolder) {
-	const testFolders = [];
-	fs.readdirSync(workingFolder).forEach((testFolder) => {
-		const absolutePath = path.join(workingFolder, testFolder);
-		if (fs.statSync(absolutePath).isDirectory()) {
-			testFolders.push(testFolder);
-		}
-	});
-	return testFolders;
+const template = readFile('../assets/testPage.js.tmpl')
+	.toString();
+
+function generateComponentImport(testName) {
+	return `import { createElementVariations as ${pascalCase(testName)} } from '../../tests/${testName}';`;
 }
 
-const template = fs.readFileSync(path.join(__dirname, '../assets/testPage.js.tmpl')).toString();
-
-function generateTestPage(excludeList = []) {
-	const testsNames = getTestFolders(path.join(__dirname, '../tests')).filter(testName => !excludeList.includes(testName));
-	const testsImports = testsNames.reduce((result, testName) => {
-		return `${result}import { createElementVariations as ${pascalCase(testName)} } from './tests/${testName}';
-	`;
-	}, '');
-	const testsCalls = testsNames.reduce((result, testName) => {
-		return `${result}(() => {
+function generateComponentContentFunction(testName) {
+	return `(() => {
 			const wrapperElement = document.createElement('div');
 			wrapperElement.id = "${pascalCase(testName)}";
 			wrapper.appendChild(wrapperElement);
 			return ${pascalCase(testName)}(wrapperElement);
 		})(),
-		`;
-	}, '');
-	const fileContents = (template.replace('${testImports}', testsImports)).replace('${testCalls}', testsCalls);
-	fs.writeFileSync(path.join(__dirname, '../testPage.js'), fileContents);
+	`;
 }
 
+function generateTestPageFileContents(testsImports, testsCalls) {
+	const fileContents = (template.replace('${testImports}', testsImports)).replace('${testCalls}', testsCalls);
+	return fileContents;
+}
 
-module.exports = generateTestPage;
+async function generateTestPage(excludeList = []) {
+	const testsNames = getTestFolders()
+		.filter(testName => !excludeList.includes(testName));
+	const testsImports = testsNames.reduce((result, testName) => {
+		return `${result}${generateComponentImport(testName)}
+	`;
+	}, '');
 
-generateTestPage();
+	const testsCalls = testsNames.reduce((result, testName) => {
+		return `${result}${generateComponentContentFunction(testName)}
+		`;
+	}, '');
+	const fileContents = generateTestPageFileContents(testsImports, testsCalls);
+	await saveFile('../tmp/testPage/testPage.js', fileContents);
+}
+
+async function generateComponentTestPage(componentName) {
+	const testsImports = generateComponentImport(componentName);
+
+	const testsCalls = generateComponentContentFunction(componentName);
+	const fileContents = generateTestPageFileContents(testsImports, testsCalls);
+	await saveFile(`../tmp/${componentName}/index.js`, fileContents);
+}
+
+module.exports = {
+	generateTestPage,
+	generateComponentTestPage
+};

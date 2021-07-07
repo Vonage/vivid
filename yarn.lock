@@ -5046,13 +5046,6 @@
     "@types/node" "*"
     log4js "^4.0.0"
 
-"@types/kefir@^3.8.5":
-  version "3.8.5"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@types/kefir/3.8.5/a872a34cad4b52f8fff24e499a7c89cf4929b1bd64933f8de1a8d23632781cd3#dea5421b93f1c7b0547605c753fc24441a38362b"
-  integrity sha1-3qVCG5Pxx7BUdgXHU/wkRBo4Nis=
-  dependencies:
-    "@types/node" "*"
-
 "@types/keygrip@*":
   version "1.0.2"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@types/keygrip/1.0.2/bb2ae235d783e1fe5b82d8ce128ab904acadc9d7584612f5fdaebc8932fff6f2#513abfd256d7ad0bf1ee1873606317b33b1b2a72"
@@ -19679,9 +19672,9 @@ ws@^7.4.6:
   integrity sha1-RPwADYftsdnFPlH7xpoKwfaHHWY=
 
 ws@~7.4.2:
-  version "7.4.4"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ws/-/ws-7.4.4.tgz#383bc9742cb202292c9077ceab6f6047b17f2d59"
-  integrity sha1-ODvJdCyyAikskHfOq29gR7F/LVk=
+  version "7.4.6"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ws/-/ws-7.4.6.tgz#5654ca8ecdeee47c33a9a4bf6d28e2be2980377c"
+  integrity sha512-YmhHDO4MzaDLB+M9ym/mDA5z0naX8j7SIlT8f8z+I0VtzsRbekxEutHSme7NPS2qE8StCYQNUnfWdXta/Yu85A==
 
 x-is-string@^0.1.0:
   version "0.1.0"

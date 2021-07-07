@@ -26,10 +26,6 @@
 	}
 }
 
-.expansion-panel {
-	border-bottom: 1px solid var(#{scheme-variables.$vvd-color-neutral-30});
-}
-
 .expansion-panel-header {
 	@include typography.typography-cat-shorthand('subtitle-2');
 	position: relative;
