@@ -4,7 +4,7 @@ on:
   push
 
 jobs:
-  test:
+  up:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
@@ -16,5 +16,11 @@ jobs:
           yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
           yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
       - uses: Vonage/beame@v0.1
+  down:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: Vonage/beame@v0.1
+        with:
+          direction: down
 
-###
+####
