@@ -18,9 +18,10 @@ jobs:
       - uses: Vonage/beame@v0.1
   down:
     runs-on: ubuntu-18.04
+    needs: up
     steps:
       - uses: Vonage/beame@v0.1
         with:
           direction: down
 
-####
+
