@@ -71,7 +71,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	}
 
 	protected render(): TemplateResult {
-		return html`<div class="expansion-panel">
+		return html`
 			<div class="expansion-panel-header"
 				@mousedown="${this.handleRippleActivate}"
 				@mouseenter="${this.handleRippleMouseEnter}"
@@ -95,8 +95,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 			</div>
 			<div class="expansion-panel-body">
 				<slot></slot>
-			</div>
-		</div>`;
+			</div>`;
 	}
 
 	protected renderIconOrToggle(): TemplateResult | string {
