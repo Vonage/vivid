@@ -3,10 +3,9 @@ name: Release
 concurrency: ${{ github.workflow }}
 
 on:
-  push
-#  push:
-#    tags:
-#      - v*
+  push:
+    tags:
+      - v*
 
 jobs:
   build:
@@ -25,7 +24,11 @@ jobs:
           yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
         run: yarn install
       - run: yarn compile
-      - uses: Vonage/beame@v1
+      - run: tar -zcf /tmp/vivid-env.tar.gz .
+      - uses: actions/upload-artifact@v2
+        with:
+          name: workspace
+          path: /tmp/vivid-env.tar.gz
 
   publish:
     needs: build
@@ -46,9 +49,11 @@ jobs:
             host: registry.npmjs.org
     steps:
       - uses: actions/setup-node@v2
-      - uses: Vonage/beame@v1
+      - uses: actions/download-artifact@v2
         with:
-          direction: "down"
+          name: workspace
+          path: /tmp
+      - run: tar -zxf /tmp/vivid-env.tar.gz
 
       - name: Creating ".npmrc"
         run: printf "always-auth=true\nregistry=https://${{ matrix.host }}/\n//${{ matrix.host }}/:_authToken=${{ secrets[matrix.token_secret] }}" > .npmrc
