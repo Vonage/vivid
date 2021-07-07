@@ -1,6 +1,7 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
 import '@vonage/vwc-icon-button';
+import { ariaProperty } from '@material/mwc-base/aria-property';
 import { style as BannerStyle } from './vwc-banner.css';
 import {
 	customElement, html, LitElement, property, PropertyValues
@@ -61,6 +62,13 @@ export class VWCBanner extends LitElement {
 	@property({ type: Boolean, reflect: true })
 	open = false;
 
+	@ariaProperty
+	@property({
+		attribute: 'aria-live',
+		type: String,
+	})
+	ariaLive?:string;
+
 	private clickCloseHandler() {
 		this.open = false;
 	}
@@ -93,7 +101,7 @@ export class VWCBanner extends LitElement {
 
 	render() {
 		return html`
-			<div class="container">
+			<div class="container" aria-live="${this.ariaLive || 'assertive'}">
 				<header class="header">
 					<span class="user-content">
 						<vwc-icon class="icon" type="${this.icon ?? connotationToIconType(this.connotation)}"></vwc-icon>
