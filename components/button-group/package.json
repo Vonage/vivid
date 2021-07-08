@@ -1,0 +1,36 @@
+{
+	"name": "@vonage/vwc-button-group",
+	"version": "2.13.0",
+	"description": "button-group component",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/button-group#readme",
+	"license": "ISC",
+	"main": "vwc-button-group.js",
+	"module": "vwc-button-group.js",
+	"files": [
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/vonage/vivid.git",
+		"directory": "components/button-group"
+	},
+	"scripts": {
+		"build:typescript": "tsc -b",
+		"build:styles": "umbrella-style-modules",
+		"build": "yarn run build:styles && yarn run build:typescript"
+	},
+	"bugs": {
+		"url": "https://github.com/Vonage/vivid/issues"
+	},
+	"dependencies": {
+		"@vonage/vvd-foundation": "^2.13.0",
+		"@vonage/vvd-umbrella": "^2.13.0",
+		"lit-element": "^2.4.0",
+		"tslib": "^2.0.2"
+	},
+	"devDependencies": {
+
+	}
+}
