@@ -10,7 +10,7 @@ import { createTimeline, createUpdatableStory } from '@vonage/vvd-umbrella/libs/
 const REOPEN_BANNER_DELAY = 1500;
 
 export default {
-	title: 'Alpha/Components/Banner',
+	title: 'Components/Banner',
 	component: 'vwc-banner',
 	argTypes
 };
@@ -73,7 +73,7 @@ export const Basic = (function () {
 		};
 		updateStory();
 	});
-})();
+}());
 
 Basic.args = {
 	connotation: "info",
