@@ -1,6 +1,5 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon-button';
-import { ariaProperty } from '@material/mwc-base/aria-property';
 import { Connotation, Position } from '@vonage/vvd-foundation/constants';
 import {
 	customElement,
@@ -72,13 +71,6 @@ export class VWCSnackbar extends MWCSnackbarBase {
 	@property({ type: Boolean, reflect: true })
 	dismissible?: boolean;
 
-	@ariaProperty
-	@property({
-		attribute: 'aria-live',
-		type: String,
-	})
-	ariaLive?:string;
-
 	connectedCallback() {
 		super.connectedCallback();
 		this.setupEventListeners();
@@ -88,7 +80,7 @@ export class VWCSnackbar extends MWCSnackbarBase {
 	render() {
 		const position = VWCSnackbar.preprocessPositionConfig(this.position);
 		return html`
-			<div class="mdc-snackbar" position="${position}" aria-live="${this.ariaLive || 'assertive'}">
+			<div class="mdc-snackbar" position="${position}">
 				<div class="mdc-snackbar__surface">
 					${this.legacy ? this.renderUiLegacy() : this.renderUiDefault()}
 				</div>
