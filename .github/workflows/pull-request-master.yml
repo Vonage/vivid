@@ -92,6 +92,18 @@ jobs:
     needs: build
     name: Test Safari a Few Times
     runs-on: macos-latest
+    strategy:
+      max-parallel: 10
+      matrix:
+        os:
+          - ubuntu-20.04
+          - macos-latest
+          - watnot
+        browser:
+          - SafariNative
+          - ChromeHeadless
+          - FirefoxHeadless
+        
     steps:
       - uses: actions/setup-node@v2
         with:
@@ -101,19 +113,6 @@ jobs:
           name: workspace
           path: /tmp
       - run: tar -zxf /tmp/vivid-env.tar.gz
-      - run: yarn test:safari
-      - run: yarn test:safari
-      - run: yarn test:safari
-      - run: yarn test:safari
-      - run: yarn test:safari
-      - run: yarn test:safari
-      - run: yarn test:safari
-      - run: yarn test:safari
-      - run: yarn test:safari
-      - run: yarn test:safari
-      - run: yarn test:safari
-      - run: yarn test:safari
-      - run: yarn test:safari
       - run: yarn test:safari
 
   test_for_visual_regression:
