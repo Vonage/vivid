@@ -26,7 +26,7 @@ describe.only('Button-group', () => {
 		);
 		const actualElement = addedElements[0];
 		await waitNextTask();
-		// expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
+		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
 	it(`should set layout filled for all child buttons`, async function () {
@@ -45,9 +45,44 @@ describe.only('Button-group', () => {
 			.equal('filled'));
 	});
 
+	describe(`raised`, function () {
+		it(`should set each child as raised when raised is set`, async function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} raised>
+					<vwc-button>Button</vwc-button>
+					<vwc-button>Button</vwc-button>
+					<vwc-button>Button</vwc-button>
+				</${COMPONENT_NAME}>`)
+			);
+			await actualElement.updateComplete;
+			await waitNextTask();
+			[...actualElement.children].forEach((childNode, i) => expect(childNode.hasAttribute('raised'), `Failed to test raised index ${i}`)
+				.to
+				.equal(true));
+		});
+
+		it(`should set each child as raised when raised is set dynamically`, async function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}>
+					<vwc-button>Button</vwc-button>
+					<vwc-button>Button</vwc-button>
+					<vwc-button>Button</vwc-button>
+				</${COMPONENT_NAME}>`)
+			);
+			await actualElement.updateComplete;
+			await waitNextTask();
+
+			actualElement.raised = true;
+			await actualElement.updateComplete;
+			[...actualElement.children].forEach((childNode, i) => expect(childNode.hasAttribute('raised'), `Failed to test raised index ${i}`)
+				.to
+				.equal(true));
+		});
+	});
+
 	describe(`size`, function () {
 		async function createElement(sizeProperty, childrenSizeProps = ['', '', '']) {
-			const [actualElement] = (
+			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} ${sizeProperty}>
 <vwc-button ${childrenSizeProps[0]}>BUTTON</vwc-button>
 <vwc-button ${childrenSizeProps[1]}>BUTTON</vwc-button>
