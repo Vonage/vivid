@@ -46,21 +46,24 @@ export class VWCButtonGroup extends LitElement {
 
 	protected firstUpdated(_changedProperties: PropertyValues) {
 		super.firstUpdated(_changedProperties);
-		const slot = this.shadowRoot?.querySelector('slot');
-		const nodes = slot?.assignedElements();
-		nodes?.forEach((buttonElement) => {
-			buttonElement.setAttribute('layout', 'filled');
-			buttonElement.toggleAttribute('raised', this.hasAttribute('raised'));
-		});
+		this.updateChildrenAttributes();
 	}
 
 	protected updated(changes: Map<string, boolean>): void {
 		if (changes.has('dense') || changes.has('enlarged')) {
-			if (this.dense && this.enlarged) {
-				this[changes.has('dense') ? 'enlarged' : 'dense'] = false;
-			}
-			this.updateComplete.then(this.setChildrenSizes());
+			this.updateChildrenSizes(changes.has('dense'));
 		}
+		this.updateChildrenAttributes();
+	}
+
+	private updateChildrenSizes(denseChanged: boolean) {
+		if (this.dense && this.enlarged) {
+			this[denseChanged ? 'enlarged' : 'dense'] = false;
+		}
+		this.updateComplete.then(this.setChildrenSizes());
+	}
+
+	private updateChildrenAttributes() {
 		const slot = this.shadowRoot?.querySelector('slot');
 		const nodes = slot?.assignedElements();
 		nodes?.forEach((buttonElement: Element) => {
