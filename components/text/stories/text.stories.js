@@ -1,7 +1,8 @@
-import '@vonage/vwc-text';
+import '@vonage/vwc-text/vwc-text.js';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
+import { VVDFontFace } from '@vonage/vvd-design-tokens/build/types/font-faces';
 
 export default {
 	title: 'Alpha/Components/Text',
@@ -10,8 +11,8 @@ export default {
 };
 
 const Template = args => html`<vwc-text ...=${spread(args)}>
-	Lorem	ipsum dolor sit amet, consectetur adipiscing el
+	lorem ipsum dolor sit amet, consectetur adipiscing elit
 </vwc-text>`;
 
 export const Basic = Template.bind({});
-Basic.args = { fontFace: 'headline' };
+Basic.args = { 'font-face': VVDFontFace.Headline1 };

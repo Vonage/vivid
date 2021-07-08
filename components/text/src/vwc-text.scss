@@ -2,7 +2,10 @@
 @use '@vonage/vvd-design-tokens/build/scss/typography-variables/web' as typography-scale;
 
 @each $key, $value in typography-scale.$typography-category-list {
-	:host[font-face="#{$key}"i] {
+	:host {
+		@include typography.typography-cat-shorthand('body-1');
+	}
+	:host([font-face="#{$key}"i]) {
 		@include typography.typography-cat-shorthand($key);
 	}
 }
