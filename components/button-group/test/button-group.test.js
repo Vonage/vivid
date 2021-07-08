@@ -5,7 +5,6 @@ import {
 	isolatedElementsCreation
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
-import { VALID_BUTTON_ELEMENTS } from '@vonage/vwc-button-toggle-group';
 
 chai.use(chaiDomDiff);
 
@@ -43,41 +42,6 @@ describe.only('Button-group', () => {
 		[...actualElement.children].forEach(childNode => expect(childNode.getAttribute('layout'))
 			.to
 			.equal('filled'));
-	});
-
-	describe(`raised`, function () {
-		it(`should set each child as raised when raised is set`, async function () {
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} raised>
-					<vwc-button>Button</vwc-button>
-					<vwc-button>Button</vwc-button>
-					<vwc-button>Button</vwc-button>
-				</${COMPONENT_NAME}>`)
-			);
-			await actualElement.updateComplete;
-			await waitNextTask();
-			[...actualElement.children].forEach((childNode, i) => expect(childNode.hasAttribute('raised'), `Failed to test raised index ${i}`)
-				.to
-				.equal(true));
-		});
-
-		it(`should set each child as raised when raised is set dynamically`, async function () {
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME}>
-					<vwc-button>Button</vwc-button>
-					<vwc-button>Button</vwc-button>
-					<vwc-button>Button</vwc-button>
-				</${COMPONENT_NAME}>`)
-			);
-			await actualElement.updateComplete;
-			await waitNextTask();
-
-			actualElement.raised = true;
-			await actualElement.updateComplete;
-			[...actualElement.children].forEach((childNode, i) => expect(childNode.hasAttribute('raised'), `Failed to test raised index ${i}`)
-				.to
-				.equal(true));
-		});
 	});
 
 	describe(`size`, function () {

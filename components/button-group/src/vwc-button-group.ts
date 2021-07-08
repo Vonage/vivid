@@ -68,7 +68,6 @@ export class VWCButtonGroup extends LitElement {
 		const nodes = slot?.assignedElements();
 		nodes?.forEach((buttonElement: Element) => {
 			buttonElement.setAttribute('layout', 'filled');
-			buttonElement.toggleAttribute('raised', this.hasAttribute('raised'));
 		});
 	}
 
