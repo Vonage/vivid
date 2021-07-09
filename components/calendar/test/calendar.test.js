@@ -194,5 +194,69 @@ describe('calendar', () => {
 
 			expect(assignedNode).to.equal(actualElement.querySelector(eventComponent));
 		});
+
+		describe('Event Context', () => {
+			const addStyledCalendar = async () => {
+				const [el] = addElement(
+					textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+				);
+				await el.updateComplete;
+
+				el.style.top = 0;
+				el.style.height = '1200px';
+				el.style.position = 'fixed';
+
+				const { shadowRoot } = el;
+				const gridCell = shadowRoot.querySelector('[role="gridcell"i]:nth-child(3)');
+
+				return {
+					el,
+					gridCell
+				};
+			};
+
+			it('should return correct day and hour from click mouse event', async () => {
+				const { el, gridCell } = await addStyledCalendar();
+
+				let context;
+
+				el.addEventListener('click', e => context = el.getEventContext(e));
+
+				gridCell.dispatchEvent(new MouseEvent('click', { composed: true, clientX: 20, clientY: 54 }));
+
+				expect(context.day).to.equal(2);
+				expect(context.hour).to.equal(0.53);
+			});
+
+			it('should return day and hour from keyboard \'space\'', async () => {
+				const { el, gridCell } = await addStyledCalendar();
+
+				await el.updateComplete;
+
+				let context;
+
+				el.addEventListener('keydown', e => context = el.getEventContext(e));
+
+				gridCell.dispatchEvent(new KeyboardEvent('keydown', { composed: true, keyCode: 13 }));
+
+				expect(context.day).to.equal(2);
+				expect(context.hour).to.equal(undefined);
+			});
+
+			it('should return day and hour from keyboard \'enter\'', async () => {
+				const { el, gridCell } = await addStyledCalendar();
+
+				await el.updateComplete;
+
+				let context;
+
+				el.addEventListener('keydown', e => context = el.getEventContext(e));
+
+				gridCell.dispatchEvent(new KeyboardEvent('keydown', { composed: true, keyCode: 32 }));
+
+				expect(context.day).to.equal(2);
+				expect(context.hour).to.equal(undefined);
+			});
+		});
 	});
 });
