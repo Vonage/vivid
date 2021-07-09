@@ -11,7 +11,7 @@ export default {
 };
 
 const Template = args => html`<vwc-text ...=${spread(args)}>
-	lorem ipsum dolor sit amet, consectetur adipiscing elit
+	The quick brown fox jumps over the lazy dog
 </vwc-text>`;
 
 export const Basic = Template.bind({});
