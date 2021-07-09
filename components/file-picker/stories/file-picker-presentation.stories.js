@@ -35,7 +35,7 @@ WithLabelAndHelper.args = {
 	self: { label: 'Pick up your image', helper: 'some useful text here' }
 };
 
-const TemplateIcon = args => html`
+const WithLeadingIcon = args => html`
 	<vwc-file-picker ...=${spread(args)}>
 		<input type="file" name="fi-name"/>
 		<span slot="dd-hint">
@@ -46,7 +46,6 @@ const TemplateIcon = args => html`
 	</vwc-file-picker>
 `;
 
-export const WithLeadingIcon = TemplateIcon.bind({});
 WithLeadingIcon.args = {	label: 'Pick up your image' };
 
 const TemplateB = args => html`
