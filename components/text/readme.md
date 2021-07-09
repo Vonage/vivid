@@ -15,7 +15,7 @@ The following will generate a `headline-1` styled font face
 ### Semantic usage
 
 HTML semantics indicates authoring intent and is important for accessibility, search engine optimizations and clear code.
-Therefore you'd probably need to nest html tags that apply different styling and may affect the font face appearance provided by the `vwc-text` element.
+Therefore, you'd probably need to nest html tags that apply different styling and may affect the font face appearance provided by the `vwc-text` element.
 This component takes care of overriding the direct nested child within the component to `inherit` applied font face (if not over specified by the application styles).
 
 custom elements (not extending a built-in native element with the is="" attribute) have a [transparent content model](https://html.spec.whatwg.org/multipage/dom.html#transparent-content-models).
