@@ -13,7 +13,7 @@ chai.use(chaiDomDiff);
 
 const VWC_TEXT = 'vwc-text';
 
-describe('text', () => {
+describe('vwc-text', () => {
 	const addElement = isolatedElementsCreation();
 
 	it(`${VWC_TEXT} is defined as a custom element`, async () => {

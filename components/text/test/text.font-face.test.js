@@ -1,19 +1,36 @@
 import '../vwc-text.js';
 import {
-	waitNextTask,
 	textToDomToParent,
 	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
-import {
-	assertConnotationAttribute,
-	assertConnotationProperty,
-} from '@vonage/vvd-foundation/test/connotation.test.js';
-import { VVDFontFace } from '@vonage/vvd-design-tokens/build/types/font-faces';
+
 
 const VWC_TEXT = 'vwc-text';
-const FONT_FACES_SUPPORTED = Object.values(VVDFontFace);
+const FONT_FACES_SUPPORTED = [
+	'body-1',
+	'body-1-bold',
+	'body-1-code',
+	'body-1-link',
+	'body-2',
+	'body-2-bold',
+	'body-2-code',
+	'body-2-link',
+	'button',
+	'button-dense',
+	'button-enlarge',
+	'caption',
+	'caption-bold',
+	'caption-code',
+	'caption-link',
+	'headline-1',
+	'headline-2',
+	'subtitle-1',
+	'subtitle-2',
+	'title-1',
+	'title-2'
+];
 
-describe('text font face', () => {
+describe(`${VWC_TEXT} font face`, () => {
 	const addElement = isolatedElementsCreation();
 
 	it(`should sync text property 'fontFace' and html attribute 'font-face'`, async function () {
@@ -44,28 +61,4 @@ describe('text font face', () => {
 			'Attribute change did not apply to property'
 		).to.equal(true);
 	});
-
-	for (const fontFace of FONT_FACES_SUPPORTED) {
-		it(`should reflect '${fontFace}' font face (attribute) visually`, async () => {
-			const [text] = addElement(
-				textToDomToParent(`<${VWC_TEXT}>Lorem ipsum</${VWC_TEXT}>`)
-			);
-			await assertConnotationAttribute({
-				element: text,
-				fontFace,
-				stylesAffected: ['font'],
-			});
-		});
-
-		it(`should reflect '${fontFace}' font face (property) visually`, async () => {
-			const [text] = addElement(
-				textToDomToParent(`<${VWC_TEXT}>Lorem ipsum</${VWC_TEXT}>`)
-			);
-			await assertConnotationProperty({
-				element: text,
-				fontFace,
-				stylesAffected: ['font'],
-			});
-		});
-	}
 });
