@@ -1,10 +1,17 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-design-tokens/build/scss/typography-variables/web' as typography-scale;
 
+
+:host {
+	@include typography.typography-cat-shorthand('body-1');
+	display: contents;
+}
+
+::slotted(*) {
+	font: inherit;
+}
+
 @each $key, $value in typography-scale.$typography-category-list {
-	:host {
-		@include typography.typography-cat-shorthand('body-1');
-	}
 	:host([font-face="#{$key}"i]) {
 		@include typography.typography-cat-shorthand($key);
 	}
