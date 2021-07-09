@@ -99,9 +99,10 @@ describe('snackbar layout', () => {
 
 		for (const [position, expectations] of Object.entries(positions)) {
 			it(`should have snackbar positioned correctly for '${position}'`, async () => {
-				const [snackbar] = addElement(
-					textToDomToParent(`<${COMPONENT_NAME} position="${position}"></${COMPONENT_NAME}>`)
+				const [snackbarWrapper] = addElement(
+					textToDomToParent(`<div style="position: fixed; top: 0; left: 0;"><${COMPONENT_NAME} position="${position}"></${COMPONENT_NAME}></div>`)
 				);
+				const snackbar = snackbarWrapper.querySelector(COMPONENT_NAME);
 				await snackbar.updateComplete;
 				const snackbarSurface = snackbar.shadowRoot.querySelector('.mdc-snackbar__surface');
 
