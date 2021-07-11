@@ -4,7 +4,6 @@ import { Dialog as MWCDialog } from '@material/mwc-dialog';
 import { style as mwcDialogStyle } from '@material/mwc-dialog/mwc-dialog-css';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 import '@vonage/vvd-core';
-import { ariaProperty } from '@material/mwc-base/aria-property';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -31,13 +30,6 @@ export class VWCDialog extends MWCDialog {
 		reflect: true
 	})
 	closeButton?: boolean;
-
-	@ariaProperty
-	@property({
-		attribute: 'aria-live',
-		type: String,
-	})
-	ariaLive?:string;
 
 	protected firstUpdated() {
 		super.firstUpdated();
