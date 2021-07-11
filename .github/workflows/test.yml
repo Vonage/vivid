@@ -15,6 +15,7 @@ jobs:
           yarn_always_auth: true
           yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
           yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
+      - run: du -sh
       - uses: Vonage/beame@v0.1
   down:
     runs-on: ubuntu-18.04
@@ -23,5 +24,5 @@ jobs:
       - uses: Vonage/beame@v0.1
         with:
           direction: down
-      - run: ls -al
-###
+      - run: du -sh
+
