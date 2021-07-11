@@ -1,5 +1,6 @@
 import '@vonage/vwc-file-picker';
 import '@vonage/vwc-button';
+import '@vonage/vwc-icon';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
@@ -33,6 +34,19 @@ export const WithLabelAndHelper = TemplateA.bind({});
 WithLabelAndHelper.args = {
 	self: { label: 'Pick up your image', helper: 'some useful text here' }
 };
+
+export const WithLeadingIcon = args => html`
+	<vwc-file-picker ...=${spread(args)}>
+		<input type="file" name="fi-name"/>
+		<span slot="dd-hint">
+			<vwc-icon type="upload"></vwc-icon>
+			&nbsp;
+			Drag & Drop files here
+		</span>
+	</vwc-file-picker>
+`;
+
+WithLeadingIcon.args = {	label: 'Pick up your image' };
 
 const TemplateB = args => html`
 	<vwc-file-picker ...=${spread(args.self)}>
