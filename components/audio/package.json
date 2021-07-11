@@ -27,6 +27,7 @@
 	"dependencies": {
 		"lit-element": "^2.4.0",
 		"lit-html": "^1.1.1",
+		"@material/mwc-base": "^0.21.0",
 		"@vonage/vvd-core": "2.13.0",
 		"@vonage/vwc-media-controller": "2.13.0",
 		"@vonage/vvd-foundation": "2.13.0",

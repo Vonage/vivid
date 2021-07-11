@@ -1,10 +1,10 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-media-controller';
-import { delegateAttributes } from '@vonage/vvd-foundation/decorators';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import { pipe } from 'ramda';
 import { VWCScrubBar } from '@vonage/vwc-media-controller/vwc-scrub-bar';
 import { style as AudioStyle } from './vwc-audio.css';
+import { ariaProperty } from '@material/mwc-base/aria-property';
 import '@vonage/vwc-icon';
 import {
 	LitElement,
@@ -47,7 +47,6 @@ const formatTime = (seconds:number) => {
 };
 
 @customElement('vwc-audio')
-@delegateAttributes({ 'aria-controls': '.root' })
 export class VWCAudio extends LitElement {
 	static styles = [AudioStyle];
 
@@ -56,6 +55,10 @@ export class VWCAudio extends LitElement {
 
 	@query('.scrubber')
 	_scrubber!:VWCScrubBar;
+
+	@ariaProperty
+	@property({ attribute: 'aria-controls', type: String })
+	ariaControls?:string;
 
 	@property({ type: String, reflect: true })
 	src?:string;
@@ -120,7 +123,7 @@ export class VWCAudio extends LitElement {
 	render():TemplateResult {
 		return html`
 			<audio class='audio' src='${ifDefined(this.src)}'></audio>
-			<div class="${classMap({ root: true, loading: this._loading })}">
+			<div class="${classMap({ root: true, loading: this._loading })}" aria-controls="${ifDefined(this.ariaControls)}">
 				<button
 					aria-label="Play/Pause"
 					class="control-button"
