@@ -4,7 +4,7 @@ import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 
 export default {
-	title: 'Alpha/Components/Calendar',
+	title: 'Components/Calendar',
 	component: 'vwc-calendar'
 };
 
