@@ -1,5 +1,6 @@
 import '@vonage/vwc-file-picker';
 import '@vonage/vwc-button';
+import '@vonage/vwc-icon';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
@@ -8,7 +9,7 @@ export default {
 	title: 'Components/File Picker/Presentation',
 	component: 'vwc-file-picker',
 	argTypes
-}
+};
 
 const TemplateA = args => html`
 	<vwc-file-picker ...=${spread(args.self)}><input type="file" name="fi-name" ...=${spread(args.input)}/></vwc-file-picker>
@@ -17,6 +18,11 @@ const TemplateA = args => html`
 export const Basic = TemplateA.bind({});
 Basic.args = {
 	input: { name: 'some-file' }
+};
+
+export const CustomSize = TemplateA.bind({});
+CustomSize.args = {
+	self: { style: '--vvd-file-picker-min-height: 60px; --vvd-file-picker-min-width: 200px;' }
 };
 
 export const WithLabel = TemplateA.bind({});
@@ -28,6 +34,19 @@ export const WithLabelAndHelper = TemplateA.bind({});
 WithLabelAndHelper.args = {
 	self: { label: 'Pick up your image', helper: 'some useful text here' }
 };
+
+export const WithLeadingIcon = args => html`
+	<vwc-file-picker ...=${spread(args)}>
+		<input type="file" name="fi-name"/>
+		<span slot="dd-hint">
+			<vwc-icon type="upload"></vwc-icon>
+			&nbsp;
+			Drag & Drop files here
+		</span>
+	</vwc-file-picker>
+`;
+
+WithLeadingIcon.args = {	label: 'Pick up your image' };
 
 const TemplateB = args => html`
 	<vwc-file-picker ...=${spread(args.self)}>

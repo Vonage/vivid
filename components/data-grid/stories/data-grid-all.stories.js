@@ -1,10 +1,10 @@
 import { argTypes } from './arg-types';
 
 export default {
-	title: 'Alpha/Components/DataGrid',
+	title: 'Components/DataGrid',
 	component: 'vwc-data-grid',
 	argTypes
-}
+};
 
 export { BasicHTML } from './data-grid-basic-html';
 export { BasicJS } from './data-grid-basic-js';

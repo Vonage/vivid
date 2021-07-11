@@ -1,3 +1,12 @@
+# [2.13.0](https://github.com/vonage/vivid/compare/v2.12.0...v2.13.0) (2021-07-04)
+
+
+### Features
+
+* **vwc-calendar:** add event context api ([#924](https://github.com/vonage/vivid/issues/924)) ([f921502](https://github.com/vonage/vivid/commit/f92150254c7f5e6d13bd87c394e9b6674dadfae8))
+
+
+
 # [2.12.0](https://github.com/vonage/vivid/compare/v2.11.0...v2.12.0) (2021-06-14)
 
 

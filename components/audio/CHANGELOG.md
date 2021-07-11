@@ -1,3 +1,12 @@
+# [2.13.0](https://github.com/vonage/vivid/compare/v2.12.0...v2.13.0) (2021-07-04)
+
+
+### Features
+
+* **audio:** add time indicator to audio component ([#922](https://github.com/vonage/vivid/issues/922)) ([3ee3f67](https://github.com/vonage/vivid/commit/3ee3f67975b49fcd6d32b2b955ab05b37ab10b43))
+
+
+
 # [2.12.0](https://github.com/vonage/vivid/compare/v2.11.0...v2.12.0) (2021-06-14)
 
 
