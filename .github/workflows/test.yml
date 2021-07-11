@@ -23,5 +23,3 @@ jobs:
       - uses: Vonage/beame@v0.1
         with:
           direction: down
-
-#
