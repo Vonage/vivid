@@ -23,7 +23,7 @@ The Vivid Design Variables system (ViDeV), is a way to translate css properties 
   <tr>
    <td>
 
-![Vivid Figma Color Pallet](./assets/images/Vivid Figma Color Pallet.svg)
+![Vivid Figma Color Pallet](./assets/images/Vivid%20Figma%20Color%20Pallet.svg)
    </td>
   </tr>
   <tr>
@@ -42,7 +42,7 @@ On this page,
   <tr>
    <td>
 
-![Vivid Figma Color Pallet](./assets/images/Vivid Figma Color Pallet for Real.svg)
+![Vivid Figma Color Pallet](./assets/images/Vivid%20Figma%20Color%20Pallet%20for%20Real.svg)
 
    </td>
   </tr>
