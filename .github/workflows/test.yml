@@ -16,14 +16,15 @@ jobs:
           yarn_always_auth: true
           yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
           yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
+      - run: yarn compile
       #- run: wget http://ipv4.download.thinkbroadband.com/100MB.zip
       - run: du -sh
-      - uses: Vonage/beame@v1
+      - uses: Vonage/beame@v1.1
   down:
     runs-on: ubuntu-18.04
     needs: up
     steps:
-      - uses: Vonage/beame@v1
+      - uses: Vonage/beame@v1.1
         with:
           direction: down
       - run: du -sh
