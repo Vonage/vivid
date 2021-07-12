@@ -1,27 +1,27 @@
-import fonts from '../vvd-fonts.js';
+import { init as initFonts } from '../vvd-fonts.js';
 import { cleanFrame, getFrameLoadedInjected } from '../../../test/test-helpers';
 
 const FONTS_SETUP_HTML_TAG = 'fontsSetupTest';
 
 describe('vvd-fonts service', () => {
 	it('should provide basic fonts API', async () => {
-		assert.isObject(fonts, 'imported "fonts" is object');
-		assert.isNotNull(fonts, 'imported "fonts" not null');
-		assert.isFrozen(fonts, 'imported "fonts" object should be frozen');
-		assert.isFunction(fonts.init, 'fonts has "init" method');
+		//assert.isObject(fonts, 'imported "fonts" is object');
+		//assert.isNotNull(fonts, 'imported "fonts" not null');
+		//assert.isFrozen(fonts, 'imported "fonts" object should be frozen');
+		assert.isFunction(initFonts, 'fonts has "init" method');
 	});
 
 	it('should affect the actual font', async () => {
 		const [testElement, baseElement] = setupTestElements(document);
-		await fonts.init();
+		await initFonts();
 		assertTestElementAndClean(testElement, baseElement);
 	});
 
 	it('should provide the same Promise each new time after the initial run', async () => {
 		const [r1, r2, r3] = await Promise.all([
-			await fonts.init(),
-			await fonts.init(),
-			await (await import('../vvd-fonts.js')).default.init(),
+			await initFonts(),
+			await initFonts(),
+			await (await import('../vvd-fonts.js')).init(),
 		]);
 		expect(r2).equal(r1);
 		expect(r3).equal(r2);
