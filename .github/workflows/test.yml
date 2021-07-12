@@ -18,12 +18,12 @@ jobs:
           yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
       #- run: wget http://ipv4.download.thinkbroadband.com/100MB.zip
       - run: du -sh
-      - uses: Vonage/beame@v0.1
+      - uses: Vonage/beame@v1
   down:
     runs-on: ubuntu-18.04
     needs: up
     steps:
-      - uses: Vonage/beame@v0.1
+      - uses: Vonage/beame@v1
         with:
           direction: down
       - run: du -sh
