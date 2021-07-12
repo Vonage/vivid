@@ -4,7 +4,7 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Alpha/Components/Button-group',
+	title: 'Alpha/Components/Button group',
 	component: 'vwc-button-group',
 	argTypes
 };
