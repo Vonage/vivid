@@ -12,6 +12,8 @@ The following will generate a `headline-1` styled font face
 </vwc-text>
 ```
 
+![headline-1 font face image](assets/images/headline-1.jpg)
+
 ### Semantic usage
 
 HTML semantics indicates authoring intent and is important for accessibility, search engine optimizations and clear code.
@@ -31,6 +33,8 @@ The following will generate a `caption` styled font face even though it's wrappe
 	</h1>
 </vwc-text>
 ```
+
+![caption font face image](assets/images/caption.jpg)
 
 ## Properties
 
