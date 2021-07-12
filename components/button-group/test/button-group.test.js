@@ -110,4 +110,6 @@ describe.only('Button-group', () => {
 			checkSizeProperty(actualElement, 'dense', true);
 		});
 	});
+
+	// TODO::set disabled state
 });
