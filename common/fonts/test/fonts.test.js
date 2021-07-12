@@ -5,9 +5,6 @@ const FONTS_SETUP_HTML_TAG = 'fontsSetupTest';
 
 describe('vvd-fonts service', () => {
 	it('should provide basic fonts API', async () => {
-		//assert.isObject(fonts, 'imported "fonts" is object');
-		//assert.isNotNull(fonts, 'imported "fonts" not null');
-		//assert.isFrozen(fonts, 'imported "fonts" object should be frozen');
 		assert.isFunction(initFonts, 'fonts has "init" method');
 	});
 
