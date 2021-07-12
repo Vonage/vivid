@@ -10,7 +10,7 @@ chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-button-group';
 
-describe.only('Button-group', () => {
+describe('Button-group', () => {
 	let addElement = isolatedElementsCreation();
 
 	it(`${COMPONENT_NAME} is defined as a custom element`, async () => {
