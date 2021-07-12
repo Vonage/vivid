@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
       - run: lscpu
-      - run: yarn install
+      # - run: yarn install
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
           yarn_always_auth: true
