@@ -19,12 +19,12 @@ jobs:
       - run: yarn compile
       #- run: wget http://ipv4.download.thinkbroadband.com/100MB.zip
       - run: du -sh
-      - uses: Vonage/beame@v0.2
+      - uses: Vonage/beame@main
   down:
     runs-on: ubuntu-18.04
     needs: up
     steps:
-      - uses: Vonage/beame@v0.2
+      - uses: Vonage/beame@main
         with:
           direction: down
       - run: du -sh
