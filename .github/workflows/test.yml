@@ -17,7 +17,7 @@ jobs:
           yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
           yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
       - run: yarn compile
-      - run: wget http://ipv4.download.thinkbroadband.com/100MB.zip
+      #- run: wget http://ipv4.download.thinkbroadband.com/100MB.zip
       - run: du -sh
       - uses: Vonage/beame@v0.2
   down:
@@ -28,3 +28,5 @@ jobs:
         with:
           direction: down
       - run: du -sh
+      - uses: actions/setup-node@v2
+      - run: yarn storybook:build
