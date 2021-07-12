@@ -34,6 +34,12 @@ export class VWCButtonGroup extends LitElement {
 	})
 	raised = false;
 
+	@property({
+		type: Boolean,
+		reflect: true
+	})
+	disabled = false;
+
 	constructor() {
 		super();
 
@@ -68,6 +74,7 @@ export class VWCButtonGroup extends LitElement {
 		const nodes = slot?.assignedElements();
 		nodes?.forEach((buttonElement: Element) => {
 			buttonElement.setAttribute('layout', 'filled');
+			buttonElement.toggleAttribute('disabled', this.disabled);
 		});
 	}
 

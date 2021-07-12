@@ -51,6 +51,7 @@ $sizes: (
 
 :host([disabled]) ::slotted(#{vwc-button}),
 :host([disabled]) ::slotted(#{vwc-button}[selected]) {
+	--mdc-button-disabled-fill-color: var(#{scheme-variables.$vvd-color-base});
 	--mdc-theme-on-primary: var(#{scheme-variables.$vvd-color-neutral-50});
 	pointer-events: none;
 }
@@ -97,6 +98,8 @@ $sizes: (
 
 	:host([disabled]) ::slotted(vwc-#{$scope}) {
 		--vvd-#{$scope}-background-color: var(#{scheme-variables.$vvd-color-base});
+		--vvd-#{$scope}-disabled-background-color: var(#{scheme-variables.$vvd-color-base}); //TODO::fix in 485 - add this to button and icon button and remove the next hack
+		--vvd-color-neutral-30: var(#{scheme-variables.$vvd-color-base});
 		--vvd-#{$scope}-color: var(#{scheme-variables.$vvd-color-neutral-50});
 		pointer-events: none;
 	}

@@ -111,5 +111,42 @@ describe.only('Button-group', () => {
 		});
 	});
 
-	// TODO::set disabled state
+	describe(`disabled`, function () {
+		it(`should set disabled state to every child`, async function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`
+			<${COMPONENT_NAME} disabled>
+				<vwc-button>BUTTON</vwc-button>
+				<vwc-button>BUTTON</vwc-button>
+				<vwc-button>BUTTON</vwc-button>
+				<vwc-icon-button>BUTTON</vwc-icon-button>
+			</${COMPONENT_NAME}>`)
+			);
+
+			await actualElement.updateComplete;
+			[...actualElement.children].forEach(childNode => expect(childNode.hasAttribute('disabled'))
+				.to
+				.equal(true));
+		});
+
+		it(`should set disabled state to every child dynamically`, async function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`
+			<${COMPONENT_NAME}>
+				<vwc-button>BUTTON</vwc-button>
+				<vwc-button>BUTTON</vwc-button>
+				<vwc-button>BUTTON</vwc-button>
+				<vwc-icon-button>BUTTON</vwc-icon-button>
+			</${COMPONENT_NAME}>`)
+			);
+
+			await actualElement.updateComplete;
+			actualElement.disabled = true;
+			await actualElement.updateComplete;
+
+			[...actualElement.children].forEach(childNode => expect(childNode.hasAttribute('disabled'))
+				.to
+				.equal(true));
+		});
+	});
 });
