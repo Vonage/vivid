@@ -51,7 +51,7 @@ $sizes: (
 
 :host([disabled]) ::slotted(#{vwc-button}),
 :host([disabled]) ::slotted(#{vwc-button}[selected]) {
-	--mdc-theme-on-primary: var(#{scheme-variables.$vvd-color-neutral-20});
+	--mdc-theme-on-primary: var(#{scheme-variables.$vvd-color-neutral-50});
 	pointer-events: none;
 }
 
@@ -59,17 +59,18 @@ $sizes: (
 
 @each $scope in $scopes {
 	::slotted(vwc-#{$scope}) {
-		--vvd-#{$scope}-background-color: var(#{scheme-variables.$vvd-color-neutral-30});
+		--vvd-#{$scope}-background-color: var(#{scheme-variables.$vvd-color-base});
 		--vvd-#{$scope}-color: var(#{scheme-variables.$vvd-color-on-base});
 		--vvd-#{$scope}-shape: var(#{$vvd-button-group-shape});
+		--mdc-ripple-focus-opacity: 0;
 	}
 
 	::slotted(vwc-#{$scope}[selected]) {
-		--vvd-#{$scope}-background-color: var(#{scheme-variables.$vvd-color-neutral-50});
+		--vvd-#{$scope}-background-color: var(#{scheme-variables.$vvd-color-neutral-30});
 	}
 
 	::slotted(vwc-#{$scope}:hover:not([selected])) {
-		--vvd-#{$scope}-background-color: var(#{scheme-variables.$vvd-color-neutral-40});
+		--vvd-#{$scope}-background-color: var(#{scheme-variables.$vvd-color-neutral-20});
 	}
 
 	::slotted(vwc-#{$scope}:not(:first-child):not(:last-child)) {
@@ -89,13 +90,13 @@ $sizes: (
 		padding-right: var(--vwc-#{$scope}-vertical-padding, 0);
 		border-radius: 0 var(#{$vvd-button-group-shape}) var(#{$vvd-button-group-shape}) 0;
 
-		:host(:not([accent])) & {
+		:host & {
 			--vvd-#{$scope}-shape: 0 var(#{$vvd-button-group-shape}) var(#{$vvd-button-group-shape}) 0;
 		}
 	}
 
-	:host([disabled]) ::slotted(vwc-#{$scope}), :host([disabled][accent]) ::slotted(vwc-#{$scope}[selected]) {
-		--vvd-#{$scope}-background-color: var(#{scheme-variables.$vvd-color-neutral-30});
+	:host([disabled]) ::slotted(vwc-#{$scope}) {
+		--vvd-#{$scope}-background-color: var(#{scheme-variables.$vvd-color-base});
 		--vvd-#{$scope}-color: var(#{scheme-variables.$vvd-color-neutral-50});
 		pointer-events: none;
 	}

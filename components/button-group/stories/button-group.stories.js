@@ -4,16 +4,24 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Atoms/Button-group',
+	title: 'Alpha/Components/Button-group',
 	component: 'vwc-button-group',
 	argTypes
 };
 
 const Template = args => html`<vwc-button-group ...=${spread(args)}>
+	<vwc-icon-button icon="home"></vwc-icon-button>
 	<vwc-button>Test button 1</vwc-button>
 	<vwc-button>Test button 2</vwc-button>
 	<vwc-button>Test button 3</vwc-button>
 	<vwc-button>Test button 4</vwc-button>
+</vwc-button-group>`;
+
+const IconsTemplate = args => html`<vwc-button-group ...=${spread(args)}>
+	<vwc-icon-button icon="home"></vwc-icon-button>
+	<vwc-icon-button icon="home"></vwc-icon-button>
+	<vwc-icon-button icon="home"></vwc-icon-button>
+	<vwc-icon-button icon="home"></vwc-icon-button>
 </vwc-button-group>`;
 
 export const Basic = Template.bind({});
@@ -30,3 +38,6 @@ Pill.args = { label: 'Pill', shape: 'pill', raised: 'true' };
 
 export const Disabled = Template.bind({});
 Disabled.args = { label: 'Disabled', disabled: 'true' };
+
+export const Icons = IconsTemplate.bind({});
+Icons.args = { label: 'Icons', raised: 'true' };
