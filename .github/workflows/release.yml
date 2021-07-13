@@ -65,7 +65,7 @@ jobs:
         run: npm publish $(node ./scripts/vivid-all-package-generator)
 
   post_publish:
-    name: Post publish routine
+    name: Post publish
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_VIVID_DEMO_PROD_ACCESS }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_VIVID_DEMO_PROD_SECRET }}
