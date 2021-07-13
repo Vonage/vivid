@@ -20,13 +20,4 @@ describe(`${COMPONENT_NAME} a11y`, () => {
 
 		await expect(actualElement).shadowDom.to.be.accessible();
 	});
-
-	it('should have 0 accessibility violations nested in semantic tag', async () => {
-		const [actualElement] = addElement(
-			textToDomToParent(`<h1><${COMPONENT_NAME}>Lorem ipsum dolor sit amet</${COMPONENT_NAME}></h1>`)
-		);
-		await actualElement.updateComplete;
-
-		await expect(actualElement).shadowDom.to.be.accessible();
-	});
 });
