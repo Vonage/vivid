@@ -26,6 +26,8 @@ describe(`${COMPONENT_NAME} a11y`, () => {
 			textToDomToParent(`<h1><${COMPONENT_NAME}>Lorem ipsum dolor sit amet</${COMPONENT_NAME}></h1>`)
 		);
 		await actualElement.updateComplete;
+		// fails unless occurs twice
+		await actualElement.updateComplete;
 
 		await expect(actualElement).shadowDom.to.be.accessible();
 	});
