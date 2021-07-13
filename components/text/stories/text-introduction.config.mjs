@@ -17,8 +17,7 @@ export default {
 	},
 	htmlPostProcess: (htmlText) => {
 		return relocateStaticResources(htmlText, [
-			'assets/images/headline-1.jpg',
-			'assets/images/caption.jpg'
+			'assets/images/type-ramp.jpeg'
 		], 'components/text');
 	},
 };

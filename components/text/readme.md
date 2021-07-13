@@ -3,6 +3,9 @@
 Represents a text custom element.
 The component provisions the Vivid typography font faces and connotations supported by our design system.
 
+##### typography scale
+![typography font faces scale image](assets/images/type-ramp.jpeg)
+
 ### Basic usage
 
 The following will generate a `headline-1` styled font face
@@ -11,8 +14,6 @@ The following will generate a `headline-1` styled font face
 	lorem ipsum dolor sit amet
 </vwc-text>
 ```
-
-![headline-1 font face image](assets/images/headline-1.jpg)
 
 ### Semantic usage
 
