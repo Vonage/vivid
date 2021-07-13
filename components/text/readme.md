@@ -26,7 +26,7 @@ This means they can be ignored when a parent is validating its own content model
 
 note that web component cannot style or access any descendent greater than a direct child.
 
-The following will generate a `caption` styled font face even though it's wrapped by an `h1` tag
+The following will generate a `caption` styled font face even though it's wrapped by an `h1` tag -
 ```html
 <vwc-text font-face="caption">
 	<h1>
@@ -35,7 +35,15 @@ The following will generate a `caption` styled font face even though it's wrappe
 </vwc-text>
 ```
 
-![caption font face image](assets/images/caption.jpg)
+On the other hand, 'vwc-text' can nest within semantic tags instead -
+
+```html
+<h1>
+	<vwc-text font-face="caption">
+		lorem ipsum dolor sit amet, consectetur adipiscing elit
+	</vwc-text>
+</h1>
+```
 
 ## Properties
 
