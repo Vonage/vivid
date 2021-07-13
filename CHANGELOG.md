@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.14.0](https://github.com/Vonage/vivid/compare/v2.13.0...v2.14.0) (2021-07-13)
+
+
+### Bug Fixes
+
+* **vwc-datepicker:** next and prev month selected weeks text color ([603614c](https://github.com/Vonage/vivid/commit/603614c8c0dd5232296c0f6c6db6d7cb34fe93e9))
+
+
+### Features
+
+* **vwc-text:** 1st draft to support font faces ([#942](https://github.com/Vonage/vivid/issues/942)) ([5f69fc8](https://github.com/Vonage/vivid/commit/5f69fc86be9787696e988b85481097bb67e6495a))
+* **workspace:** publishing workflow ([#936](https://github.com/Vonage/vivid/issues/936)) ([ad74473](https://github.com/Vonage/vivid/commit/ad7447389a8cb6d24f25193cb03ec6eb2c06cad3))
+
+
+
+
+
 # [2.13.0](https://github.com/Vonage/vivid/compare/v2.12.0...v2.13.0) (2021-07-04)
 
 
