@@ -10,14 +10,14 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
       - run: lscpu
-      #- run: yarn install
-      #  env:
-      #    PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
-      #    yarn_always_auth: true
-      #    yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
-      #    yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
-      #- run: yarn compile
-      #- run: wget http://ipv4.download.thinkbroadband.com/100MB.zip
+      - run: yarn install
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+          yarn_always_auth: true
+          yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
+          yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
+      - run: yarn compile
+      - run: wget http://ipv4.download.thinkbroadband.com/100MB.zip
       - run: du -sh
       - uses: Vonage/beame@main
   down:
