@@ -3,7 +3,7 @@ import {
 	customElement, property, html, TemplateResult
 } from 'lit-element';
 import { Fab as MWCFab } from '@material/mwc-fab';
-import { style as mwcFabStyle } from '@material/mwc-fab/mwc-fab-css.js';
+import { styles as mwcFabStyles } from '@material/mwc-fab/mwc-fab.css.js';
 import { style as vwcFabStyle } from './vwc-fab.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 import '@vonage/vwc-icon';
@@ -16,7 +16,7 @@ declare global {
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-MWCFab.styles = [mwcFabStyle, vwcFabStyle, styleCoupling];
+MWCFab.styles = [mwcFabStyles, vwcFabStyle, styleCoupling];
 
 const connotations = ['regular', 'cta'] as const;
 export type FabConnotation = typeof connotations;

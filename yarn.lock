@@ -2465,10 +2465,10 @@
     npmlog "^4.1.2"
     write-file-atomic "^3.0.3"
 
-"@material/animation@12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/animation/-/animation-12.0.0-canary.197f64fa2.0.tgz#c0ca581618320b52ab002c4c93020058d3b36a7b"
-  integrity sha1-wMpYFhgyC1KrACxMkwIAWNOzans=
+"@material/animation@12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/animation/-/animation-12.0.0-canary.22d29cbb4.0.tgz#662314409f968aa14156a87284d1f49a098880be"
+  integrity sha1-ZiMUQJ+WiqFBVqhyhNH0mgmIgL4=
   dependencies:
     tslib "^2.1.0"
 
@@ -2486,10 +2486,10 @@
   dependencies:
     tslib "^1.9.3"
 
-"@material/base@12.0.0-canary.197f64fa2.0", "@material/base@=12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/base/-/base-12.0.0-canary.197f64fa2.0.tgz#142c079b72005419d5aa0b499b4acd35c2c564e3"
-  integrity sha1-FCwHm3IAVBnVqgtJm0rNNcLFZOM=
+"@material/base@12.0.0-canary.22d29cbb4.0", "@material/base@=12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/base/-/base-12.0.0-canary.22d29cbb4.0.tgz#a1d54c0605278ce68a323e60f097f0a0a66e6a88"
+  integrity sha1-odVMBgUnjOaKMj5g8JfwoKZuaog=
   dependencies:
     tslib "^2.1.0"
 
@@ -2507,21 +2507,21 @@
   dependencies:
     tslib "^1.9.3"
 
-"@material/button@12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/button/-/button-12.0.0-canary.197f64fa2.0.tgz#6e1bdc0cbaa1a6466d8f4e4e1b81046c6bd398c3"
-  integrity sha1-bhvcDLqhpkZtj05OG4EEbGvTmMM=
+"@material/button@12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/button/-/button-12.0.0-canary.22d29cbb4.0.tgz#cdaa5d3a9e29ff663ecd2aef4bb221bea1c16d53"
+  integrity sha1-zapdOp4p/2Y+zSrvS7IhvqHBbVM=
   dependencies:
-    "@material/density" "12.0.0-canary.197f64fa2.0"
-    "@material/dom" "12.0.0-canary.197f64fa2.0"
-    "@material/elevation" "12.0.0-canary.197f64fa2.0"
-    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
-    "@material/ripple" "12.0.0-canary.197f64fa2.0"
-    "@material/rtl" "12.0.0-canary.197f64fa2.0"
-    "@material/shape" "12.0.0-canary.197f64fa2.0"
-    "@material/theme" "12.0.0-canary.197f64fa2.0"
-    "@material/touch-target" "12.0.0-canary.197f64fa2.0"
-    "@material/typography" "12.0.0-canary.197f64fa2.0"
+    "@material/density" "12.0.0-canary.22d29cbb4.0"
+    "@material/dom" "12.0.0-canary.22d29cbb4.0"
+    "@material/elevation" "12.0.0-canary.22d29cbb4.0"
+    "@material/feature-targeting" "12.0.0-canary.22d29cbb4.0"
+    "@material/ripple" "12.0.0-canary.22d29cbb4.0"
+    "@material/rtl" "12.0.0-canary.22d29cbb4.0"
+    "@material/shape" "12.0.0-canary.22d29cbb4.0"
+    "@material/theme" "12.0.0-canary.22d29cbb4.0"
+    "@material/touch-target" "12.0.0-canary.22d29cbb4.0"
+    "@material/typography" "12.0.0-canary.22d29cbb4.0"
     tslib "^2.1.0"
 
 "@material/checkbox@9.0.0-canary.1c156d69d.0":
@@ -2559,22 +2559,22 @@
     "@material/typography" "9.0.0-canary.1c156d69d.0"
     tslib "^1.9.3"
 
-"@material/circular-progress@=12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/circular-progress/-/circular-progress-12.0.0-canary.197f64fa2.0.tgz#f9621416213242fc66d995756676f022b577e9f2"
-  integrity sha1-+WIUFiEyQvxm2ZV1ZnbwIrV36fI=
+"@material/circular-progress@=12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/circular-progress/-/circular-progress-12.0.0-canary.22d29cbb4.0.tgz#2ad065c04c8bee4986b4961b28e4e1a4a02eea42"
+  integrity sha1-KtBlwEyL7kmGtJYbKOThpKAu6kI=
   dependencies:
-    "@material/animation" "12.0.0-canary.197f64fa2.0"
-    "@material/base" "12.0.0-canary.197f64fa2.0"
-    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
-    "@material/progress-indicator" "12.0.0-canary.197f64fa2.0"
-    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    "@material/animation" "12.0.0-canary.22d29cbb4.0"
+    "@material/base" "12.0.0-canary.22d29cbb4.0"
+    "@material/feature-targeting" "12.0.0-canary.22d29cbb4.0"
+    "@material/progress-indicator" "12.0.0-canary.22d29cbb4.0"
+    "@material/theme" "12.0.0-canary.22d29cbb4.0"
     tslib "^2.1.0"
 
-"@material/density@12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/density/-/density-12.0.0-canary.197f64fa2.0.tgz#3b9263cd45f3eb793a077847b96af7489620e554"
-  integrity sha1-O5JjzUXz63k6B3hHuWr3SJYg5VQ=
+"@material/density@12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/density/-/density-12.0.0-canary.22d29cbb4.0.tgz#2fce30a88ad93ddf4376e7a9bb481119c954965d"
+  integrity sha1-L84wqIrZPd9Dduepu0gRGclUll0=
   dependencies:
     tslib "^2.1.0"
 
@@ -2583,32 +2583,32 @@
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/density/-/density-9.0.0-canary.1c156d69d.0.tgz#ca2a2a5f4ea31520d717a41a6343c104acee3005"
   integrity sha1-yioqX06jFSDXF6QaY0PBBKzuMAU=
 
-"@material/dialog@=12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/dialog/-/dialog-12.0.0-canary.197f64fa2.0.tgz#38d338dea1f0785f9b0f88ab4008441b0aed3b84"
-  integrity sha1-ONM43qHweF+bD4irQAhEGwrtO4Q=
+"@material/dialog@=12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/dialog/-/dialog-12.0.0-canary.22d29cbb4.0.tgz#309e10b96654a73627bbe1e1c9a5d102a5cda93b"
+  integrity sha1-MJ4QuWZUpzYnu+HhyaXRAqXNqTs=
   dependencies:
-    "@material/animation" "12.0.0-canary.197f64fa2.0"
-    "@material/base" "12.0.0-canary.197f64fa2.0"
-    "@material/button" "12.0.0-canary.197f64fa2.0"
-    "@material/dom" "12.0.0-canary.197f64fa2.0"
-    "@material/elevation" "12.0.0-canary.197f64fa2.0"
-    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
-    "@material/icon-button" "12.0.0-canary.197f64fa2.0"
-    "@material/ripple" "12.0.0-canary.197f64fa2.0"
-    "@material/rtl" "12.0.0-canary.197f64fa2.0"
-    "@material/shape" "12.0.0-canary.197f64fa2.0"
-    "@material/theme" "12.0.0-canary.197f64fa2.0"
-    "@material/touch-target" "12.0.0-canary.197f64fa2.0"
-    "@material/typography" "12.0.0-canary.197f64fa2.0"
+    "@material/animation" "12.0.0-canary.22d29cbb4.0"
+    "@material/base" "12.0.0-canary.22d29cbb4.0"
+    "@material/button" "12.0.0-canary.22d29cbb4.0"
+    "@material/dom" "12.0.0-canary.22d29cbb4.0"
+    "@material/elevation" "12.0.0-canary.22d29cbb4.0"
+    "@material/feature-targeting" "12.0.0-canary.22d29cbb4.0"
+    "@material/icon-button" "12.0.0-canary.22d29cbb4.0"
+    "@material/ripple" "12.0.0-canary.22d29cbb4.0"
+    "@material/rtl" "12.0.0-canary.22d29cbb4.0"
+    "@material/shape" "12.0.0-canary.22d29cbb4.0"
+    "@material/theme" "12.0.0-canary.22d29cbb4.0"
+    "@material/touch-target" "12.0.0-canary.22d29cbb4.0"
+    "@material/typography" "12.0.0-canary.22d29cbb4.0"
     tslib "^2.1.0"
 
-"@material/dom@12.0.0-canary.197f64fa2.0", "@material/dom@=12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/dom/-/dom-12.0.0-canary.197f64fa2.0.tgz#857fcc3646a6ca6cde0ed8f4c0ba12c1bce96da5"
-  integrity sha1-hX/MNkamymzeDtj0wLoSwbzpbaU=
+"@material/dom@12.0.0-canary.22d29cbb4.0", "@material/dom@=12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/dom/-/dom-12.0.0-canary.22d29cbb4.0.tgz#c9926d9fbeb5c165142dcadee934e228726412b1"
+  integrity sha1-yZJtn761wWUULcre6TTiKHJkErE=
   dependencies:
-    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    "@material/feature-targeting" "12.0.0-canary.22d29cbb4.0"
     tslib "^2.1.0"
 
 "@material/dom@8.0.0-canary.01db89053.0":
@@ -2627,33 +2627,33 @@
     "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
     tslib "^1.9.3"
 
-"@material/drawer@=12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/drawer/-/drawer-12.0.0-canary.197f64fa2.0.tgz#9d95e6242446b05463ab026a28a2e3d4b08a3fdf"
-  integrity sha1-nZXmJCRGsFRjqwJqKKLj1LCKP98=
+"@material/drawer@=12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/drawer/-/drawer-12.0.0-canary.22d29cbb4.0.tgz#c50f99259f7460dc2f07ccf5d73e6c33a46e3a14"
+  integrity sha1-xQ+ZJZ90YNwvB8z11z5sM6RuOhQ=
   dependencies:
-    "@material/animation" "12.0.0-canary.197f64fa2.0"
-    "@material/base" "12.0.0-canary.197f64fa2.0"
-    "@material/dom" "12.0.0-canary.197f64fa2.0"
-    "@material/elevation" "12.0.0-canary.197f64fa2.0"
-    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
-    "@material/list" "12.0.0-canary.197f64fa2.0"
-    "@material/ripple" "12.0.0-canary.197f64fa2.0"
-    "@material/rtl" "12.0.0-canary.197f64fa2.0"
-    "@material/shape" "12.0.0-canary.197f64fa2.0"
-    "@material/theme" "12.0.0-canary.197f64fa2.0"
-    "@material/typography" "12.0.0-canary.197f64fa2.0"
+    "@material/animation" "12.0.0-canary.22d29cbb4.0"
+    "@material/base" "12.0.0-canary.22d29cbb4.0"
+    "@material/dom" "12.0.0-canary.22d29cbb4.0"
+    "@material/elevation" "12.0.0-canary.22d29cbb4.0"
+    "@material/feature-targeting" "12.0.0-canary.22d29cbb4.0"
+    "@material/list" "12.0.0-canary.22d29cbb4.0"
+    "@material/ripple" "12.0.0-canary.22d29cbb4.0"
+    "@material/rtl" "12.0.0-canary.22d29cbb4.0"
+    "@material/shape" "12.0.0-canary.22d29cbb4.0"
+    "@material/theme" "12.0.0-canary.22d29cbb4.0"
+    "@material/typography" "12.0.0-canary.22d29cbb4.0"
     tslib "^2.1.0"
 
-"@material/elevation@12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/elevation/-/elevation-12.0.0-canary.197f64fa2.0.tgz#ed4b96c453c702731f8116dbf22d2e3d83dd6b38"
-  integrity sha1-7UuWxFPHAnMfgRbb8i0uPYPdazg=
+"@material/elevation@12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/elevation/-/elevation-12.0.0-canary.22d29cbb4.0.tgz#40c8757e9c40ae2cb8df227786cc877017ee17a0"
+  integrity sha1-QMh1fpxAriy43yJ3hsyHcBfuF6A=
   dependencies:
-    "@material/animation" "12.0.0-canary.197f64fa2.0"
-    "@material/base" "12.0.0-canary.197f64fa2.0"
-    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
-    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    "@material/animation" "12.0.0-canary.22d29cbb4.0"
+    "@material/base" "12.0.0-canary.22d29cbb4.0"
+    "@material/feature-targeting" "12.0.0-canary.22d29cbb4.0"
+    "@material/theme" "12.0.0-canary.22d29cbb4.0"
     tslib "^2.1.0"
 
 "@material/elevation@9.0.0-canary.1c156d69d.0":
@@ -2666,10 +2666,10 @@
     "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
     "@material/theme" "9.0.0-canary.1c156d69d.0"
 
-"@material/feature-targeting@12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/feature-targeting/-/feature-targeting-12.0.0-canary.197f64fa2.0.tgz#4e55c1664ee8319d352ec98ef2365d7990747f9f"
-  integrity sha1-TlXBZk7oMZ01LsmO8jZdeZB0f58=
+"@material/feature-targeting@12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/feature-targeting/-/feature-targeting-12.0.0-canary.22d29cbb4.0.tgz#68db5b8a16b673a1eb0c4c74de4954caab334e2e"
+  integrity sha1-aNtbiha2c6HrDEx03klUyqszTi4=
   dependencies:
     tslib "^2.1.0"
 
@@ -2683,518 +2683,520 @@
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/feature-targeting/-/feature-targeting-9.0.0-canary.1c156d69d.0.tgz#feaf37af156811a088958e653e6c08e66f567d2a"
   integrity sha1-/q83rxVoEaCIlY5lPmwI5m9WfSo=
 
-"@material/floating-label@12.0.0-canary.197f64fa2.0", "@material/floating-label@=12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/floating-label/-/floating-label-12.0.0-canary.197f64fa2.0.tgz#9dc76765754143add1eae1a0900dda37406ce0f8"
-  integrity sha1-ncdnZXVBQ63R6uGgkA3aN0Bs4Pg=
+"@material/floating-label@12.0.0-canary.22d29cbb4.0", "@material/floating-label@=12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/floating-label/-/floating-label-12.0.0-canary.22d29cbb4.0.tgz#ae70c99c3c636d6b06f660c9e1e01a566c72c0be"
+  integrity sha1-rnDJnDxjbWsG9mDJ4eAaVmxywL4=
   dependencies:
-    "@material/animation" "12.0.0-canary.197f64fa2.0"
-    "@material/base" "12.0.0-canary.197f64fa2.0"
-    "@material/dom" "12.0.0-canary.197f64fa2.0"
-    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
-    "@material/rtl" "12.0.0-canary.197f64fa2.0"
-    "@material/theme" "12.0.0-canary.197f64fa2.0"
-    "@material/typography" "12.0.0-canary.197f64fa2.0"
+    "@material/animation" "12.0.0-canary.22d29cbb4.0"
+    "@material/base" "12.0.0-canary.22d29cbb4.0"
+    "@material/dom" "12.0.0-canary.22d29cbb4.0"
+    "@material/feature-targeting" "12.0.0-canary.22d29cbb4.0"
+    "@material/rtl" "12.0.0-canary.22d29cbb4.0"
+    "@material/theme" "12.0.0-canary.22d29cbb4.0"
+    "@material/typography" "12.0.0-canary.22d29cbb4.0"
     tslib "^2.1.0"
 
-"@material/form-field@=12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/form-field/-/form-field-12.0.0-canary.197f64fa2.0.tgz#eb553965532bed5077d12e0e79401757afbe79c0"
-  integrity sha1-61U5ZVMr7VB30S4OeUAXV6++ecA=
+"@material/form-field@=12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/form-field/-/form-field-12.0.0-canary.22d29cbb4.0.tgz#f5e6a24de83f84af8e64db5dd84f21d1d2327ee3"
+  integrity sha1-9eaiTeg/hK+OZNtd2E8h0dIyfuM=
   dependencies:
-    "@material/base" "12.0.0-canary.197f64fa2.0"
-    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
-    "@material/ripple" "12.0.0-canary.197f64fa2.0"
-    "@material/rtl" "12.0.0-canary.197f64fa2.0"
-    "@material/theme" "12.0.0-canary.197f64fa2.0"
-    "@material/typography" "12.0.0-canary.197f64fa2.0"
+    "@material/base" "12.0.0-canary.22d29cbb4.0"
+    "@material/feature-targeting" "12.0.0-canary.22d29cbb4.0"
+    "@material/ripple" "12.0.0-canary.22d29cbb4.0"
+    "@material/rtl" "12.0.0-canary.22d29cbb4.0"
+    "@material/theme" "12.0.0-canary.22d29cbb4.0"
+    "@material/typography" "12.0.0-canary.22d29cbb4.0"
     tslib "^2.1.0"
 
-"@material/icon-button@12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/icon-button/-/icon-button-12.0.0-canary.197f64fa2.0.tgz#7b0f141096690a3332f2c024cc9fa95cc75503e8"
-  integrity sha1-ew8UEJZpCjMy8sAkzJ+pXMdVA+g=
+"@material/icon-button@12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/icon-button/-/icon-button-12.0.0-canary.22d29cbb4.0.tgz#3697ef049e4f24cf44214c40f3d728c94264eae2"
+  integrity sha1-NpfvBJ5PJM9EIUxA89coyUJk6uI=
   dependencies:
-    "@material/base" "12.0.0-canary.197f64fa2.0"
-    "@material/density" "12.0.0-canary.197f64fa2.0"
-    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
-    "@material/ripple" "12.0.0-canary.197f64fa2.0"
-    "@material/rtl" "12.0.0-canary.197f64fa2.0"
-    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    "@material/base" "12.0.0-canary.22d29cbb4.0"
+    "@material/density" "12.0.0-canary.22d29cbb4.0"
+    "@material/feature-targeting" "12.0.0-canary.22d29cbb4.0"
+    "@material/ripple" "12.0.0-canary.22d29cbb4.0"
+    "@material/rtl" "12.0.0-canary.22d29cbb4.0"
+    "@material/theme" "12.0.0-canary.22d29cbb4.0"
+    "@material/touch-target" "12.0.0-canary.22d29cbb4.0"
     tslib "^2.1.0"
 
-"@material/line-ripple@12.0.0-canary.197f64fa2.0", "@material/line-ripple@=12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/line-ripple/-/line-ripple-12.0.0-canary.197f64fa2.0.tgz#290d568b22669c3dcb94cebe08420cfccceab98c"
-  integrity sha1-KQ1WiyJmnD3LlM6+CEIM/MzquYw=
+"@material/line-ripple@12.0.0-canary.22d29cbb4.0", "@material/line-ripple@=12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/line-ripple/-/line-ripple-12.0.0-canary.22d29cbb4.0.tgz#0d406dafd0d4a728d7833da52d2b89b116333361"
+  integrity sha1-DUBtr9DUpyjXgz2lLSuJsRYzM2E=
   dependencies:
-    "@material/animation" "12.0.0-canary.197f64fa2.0"
-    "@material/base" "12.0.0-canary.197f64fa2.0"
-    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
-    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    "@material/animation" "12.0.0-canary.22d29cbb4.0"
+    "@material/base" "12.0.0-canary.22d29cbb4.0"
+    "@material/feature-targeting" "12.0.0-canary.22d29cbb4.0"
+    "@material/theme" "12.0.0-canary.22d29cbb4.0"
     tslib "^2.1.0"
 
-"@material/linear-progress@=12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/linear-progress/-/linear-progress-12.0.0-canary.197f64fa2.0.tgz#e10619004130f622d72655bbedd3a3256c69f5d5"
-  integrity sha1-4QYZAEEw9iLXJlW77dOjJWxp9dU=
+"@material/linear-progress@=12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/linear-progress/-/linear-progress-12.0.0-canary.22d29cbb4.0.tgz#71f700f57e8bab11c82a65908d3274d0138bb7c8"
+  integrity sha1-cfcA9X6LqxHIKmWQjTJ00BOLt8g=
   dependencies:
-    "@material/animation" "12.0.0-canary.197f64fa2.0"
-    "@material/base" "12.0.0-canary.197f64fa2.0"
-    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
-    "@material/progress-indicator" "12.0.0-canary.197f64fa2.0"
-    "@material/rtl" "12.0.0-canary.197f64fa2.0"
-    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    "@material/animation" "12.0.0-canary.22d29cbb4.0"
+    "@material/base" "12.0.0-canary.22d29cbb4.0"
+    "@material/feature-targeting" "12.0.0-canary.22d29cbb4.0"
+    "@material/progress-indicator" "12.0.0-canary.22d29cbb4.0"
+    "@material/rtl" "12.0.0-canary.22d29cbb4.0"
+    "@material/theme" "12.0.0-canary.22d29cbb4.0"
     tslib "^2.1.0"
 
-"@material/list@12.0.0-canary.197f64fa2.0", "@material/list@=12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/list/-/list-12.0.0-canary.197f64fa2.0.tgz#d50efdfd6048f480be79d3e98b18a34a3bcec7f5"
-  integrity sha1-1Q79/WBI9IC+edPpixijSjvOx/U=
+"@material/list@12.0.0-canary.22d29cbb4.0", "@material/list@=12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/list/-/list-12.0.0-canary.22d29cbb4.0.tgz#3faa131d5bf5555af235ab8332382d45ed65ce8c"
+  integrity sha1-P6oTHVv1VVryNauDMjgtRe1lzow=
   dependencies:
-    "@material/base" "12.0.0-canary.197f64fa2.0"
-    "@material/density" "12.0.0-canary.197f64fa2.0"
-    "@material/dom" "12.0.0-canary.197f64fa2.0"
-    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
-    "@material/ripple" "12.0.0-canary.197f64fa2.0"
-    "@material/rtl" "12.0.0-canary.197f64fa2.0"
-    "@material/shape" "12.0.0-canary.197f64fa2.0"
-    "@material/theme" "12.0.0-canary.197f64fa2.0"
-    "@material/typography" "12.0.0-canary.197f64fa2.0"
+    "@material/base" "12.0.0-canary.22d29cbb4.0"
+    "@material/density" "12.0.0-canary.22d29cbb4.0"
+    "@material/dom" "12.0.0-canary.22d29cbb4.0"
+    "@material/feature-targeting" "12.0.0-canary.22d29cbb4.0"
+    "@material/ripple" "12.0.0-canary.22d29cbb4.0"
+    "@material/rtl" "12.0.0-canary.22d29cbb4.0"
+    "@material/shape" "12.0.0-canary.22d29cbb4.0"
+    "@material/theme" "12.0.0-canary.22d29cbb4.0"
+    "@material/typography" "12.0.0-canary.22d29cbb4.0"
     tslib "^2.1.0"
 
-"@material/menu-surface@12.0.0-canary.197f64fa2.0", "@material/menu-surface@=12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/menu-surface/-/menu-surface-12.0.0-canary.197f64fa2.0.tgz#e9a83f0fd5117425fa749d964462b7e1fef8cded"
-  integrity sha1-6ag/D9URdCX6dJ2WRGK34f74ze0=
+"@material/menu-surface@12.0.0-canary.22d29cbb4.0", "@material/menu-surface@=12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/menu-surface/-/menu-surface-12.0.0-canary.22d29cbb4.0.tgz#dce6f845b351842e30cec5d63ee703a855573a7b"
+  integrity sha1-3Ob4RbNRhC4wzsXWPucDqFVXOns=
   dependencies:
-    "@material/animation" "12.0.0-canary.197f64fa2.0"
-    "@material/base" "12.0.0-canary.197f64fa2.0"
-    "@material/elevation" "12.0.0-canary.197f64fa2.0"
-    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
-    "@material/rtl" "12.0.0-canary.197f64fa2.0"
-    "@material/shape" "12.0.0-canary.197f64fa2.0"
-    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    "@material/animation" "12.0.0-canary.22d29cbb4.0"
+    "@material/base" "12.0.0-canary.22d29cbb4.0"
+    "@material/elevation" "12.0.0-canary.22d29cbb4.0"
+    "@material/feature-targeting" "12.0.0-canary.22d29cbb4.0"
+    "@material/rtl" "12.0.0-canary.22d29cbb4.0"
+    "@material/shape" "12.0.0-canary.22d29cbb4.0"
+    "@material/theme" "12.0.0-canary.22d29cbb4.0"
     tslib "^2.1.0"
 
-"@material/menu@12.0.0-canary.197f64fa2.0", "@material/menu@=12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/menu/-/menu-12.0.0-canary.197f64fa2.0.tgz#4790ffc199b5686c16d052b064bb00c9268eb5f9"
-  integrity sha1-R5D/wZm1aGwW0FKwZLsAySaOtfk=
+"@material/menu@12.0.0-canary.22d29cbb4.0", "@material/menu@=12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/menu/-/menu-12.0.0-canary.22d29cbb4.0.tgz#11ed0a22ae8e0a7e5e08d3ad5335c634da9a3399"
+  integrity sha1-Ee0KIq6OCn5eCNOtUzXGNNqaM5k=
   dependencies:
-    "@material/base" "12.0.0-canary.197f64fa2.0"
-    "@material/dom" "12.0.0-canary.197f64fa2.0"
-    "@material/elevation" "12.0.0-canary.197f64fa2.0"
-    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
-    "@material/list" "12.0.0-canary.197f64fa2.0"
-    "@material/menu-surface" "12.0.0-canary.197f64fa2.0"
-    "@material/ripple" "12.0.0-canary.197f64fa2.0"
-    "@material/rtl" "12.0.0-canary.197f64fa2.0"
-    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    "@material/base" "12.0.0-canary.22d29cbb4.0"
+    "@material/dom" "12.0.0-canary.22d29cbb4.0"
+    "@material/elevation" "12.0.0-canary.22d29cbb4.0"
+    "@material/feature-targeting" "12.0.0-canary.22d29cbb4.0"
+    "@material/list" "12.0.0-canary.22d29cbb4.0"
+    "@material/menu-surface" "12.0.0-canary.22d29cbb4.0"
+    "@material/ripple" "12.0.0-canary.22d29cbb4.0"
+    "@material/rtl" "12.0.0-canary.22d29cbb4.0"
+    "@material/theme" "12.0.0-canary.22d29cbb4.0"
     tslib "^2.1.0"
 
-"@material/mwc-base@^0.21.0":
-  version "0.21.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-base/-/mwc-base-0.21.0.tgz#8e80884cbfc4c5dc1b8d460bb4037dfdbac84aff"
-  integrity sha1-joCITL/ExdwbjUYLtAN9/brISv8=
+"@material/mwc-base@^0.22.1":
+  version "0.22.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-base/-/mwc-base-0.22.1.tgz#43766226f5d13279b1baf370fa7bfa76bbe13b6f"
+  integrity sha1-Q3ZiJvXRMnmxuvNw+nv6drvhO28=
   dependencies:
-    "@material/base" "=12.0.0-canary.197f64fa2.0"
-    "@material/dom" "=12.0.0-canary.197f64fa2.0"
-    lit-element "~2.4.0"
+    "@material/base" "=12.0.0-canary.22d29cbb4.0"
+    "@material/dom" "=12.0.0-canary.22d29cbb4.0"
+    lit-element "^2.5.1"
     tslib "^2.0.1"
 
-"@material/mwc-button@^0.21.0":
-  version "0.21.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-button/-/mwc-button-0.21.0.tgz#e7bfdfcd1a55c33e3a8d41b3caad82f53c802c06"
-  integrity sha1-57/fzRpVwz46jUGzyq2C9TyALAY=
+"@material/mwc-button@^0.22.1":
+  version "0.22.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-button/-/mwc-button-0.22.1.tgz#a62ba8eeef5587a2082aae118a14baa3cebbbf58"
+  integrity sha1-piuo7u9Vh6IIKq4RihS6o867v1g=
   dependencies:
-    "@material/mwc-icon" "^0.21.0"
-    "@material/mwc-ripple" "^0.21.0"
-    lit-element "~2.4.0"
-    lit-html "^1.1.2"
+    "@material/mwc-icon" "^0.22.1"
+    "@material/mwc-ripple" "^0.22.1"
+    lit-element "^2.5.1"
+    lit-html "^1.4.1"
     tslib "^2.0.1"
 
-"@material/mwc-checkbox@^0.21.0":
-  version "0.21.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-checkbox/-/mwc-checkbox-0.21.0.tgz#9063635d10e07647c389bc28acf0f3809f310e63"
-  integrity sha1-kGNjXRDgdkfDibworPDzgJ8xDmM=
+"@material/mwc-checkbox@^0.22.1":
+  version "0.22.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-checkbox/-/mwc-checkbox-0.22.1.tgz#a349710db458d8e8ed76a377fcdc3debe32764f1"
+  integrity sha1-o0lxDbRY2OjtdqN3/Nw96+MnZPE=
   dependencies:
-    "@material/mwc-base" "^0.21.0"
-    "@material/mwc-ripple" "^0.21.0"
-    lit-element "~2.4.0"
-    lit-html "^1.1.2"
+    "@material/mwc-base" "^0.22.1"
+    "@material/mwc-ripple" "^0.22.1"
+    lit-element "^2.5.1"
+    lit-html "^1.4.1"
     tslib "^2.0.1"
 
-"@material/mwc-circular-progress@^0.21.0":
-  version "0.21.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-circular-progress/-/mwc-circular-progress-0.21.0.tgz#f888a755a210a2613a86fc07bc828045064bbff4"
-  integrity sha1-+IinVaIQomE6hvwHvIKARQZLv/Q=
+"@material/mwc-circular-progress@^0.22.1":
+  version "0.22.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-circular-progress/-/mwc-circular-progress-0.22.1.tgz#4d771bda168c73ccbb090ae5af75d64aac9382ab"
+  integrity sha1-TXcb2haMc8y7CQrlr3XWSqyTgqs=
   dependencies:
-    "@material/circular-progress" "=12.0.0-canary.197f64fa2.0"
-    "@material/mwc-base" "^0.21.0"
-    "@material/theme" "=12.0.0-canary.197f64fa2.0"
-    lit-element "~2.4.0"
-    lit-html "^1.1.2"
+    "@material/circular-progress" "=12.0.0-canary.22d29cbb4.0"
+    "@material/mwc-base" "^0.22.1"
+    "@material/theme" "=12.0.0-canary.22d29cbb4.0"
+    lit-element "^2.5.1"
+    lit-html "^1.4.1"
     tslib "^2.0.1"
 
-"@material/mwc-dialog@^0.21.0":
-  version "0.21.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-dialog/-/mwc-dialog-0.21.0.tgz#b6649609ddf5cdebd66351ad9af94bc7a3225dd6"
-  integrity sha1-tmSWCd31zevWY1GtmvlLx6MiXdY=
+"@material/mwc-dialog@^0.22.1":
+  version "0.22.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-dialog/-/mwc-dialog-0.22.1.tgz#cae750ae4bf7e7ad0510c03def335daba14a3152"
+  integrity sha1-yudQrkv3560FEMA97zNdq6FKMVI=
   dependencies:
-    "@material/dialog" "=12.0.0-canary.197f64fa2.0"
-    "@material/dom" "=12.0.0-canary.197f64fa2.0"
-    "@material/mwc-base" "^0.21.0"
-    "@material/mwc-button" "^0.21.0"
+    "@material/dialog" "=12.0.0-canary.22d29cbb4.0"
+    "@material/dom" "=12.0.0-canary.22d29cbb4.0"
+    "@material/mwc-base" "^0.22.1"
+    "@material/mwc-button" "^0.22.1"
     blocking-elements "^0.1.0"
-    lit-element "~2.4.0"
-    lit-html "^1.1.2"
+    lit-element "^2.5.1"
+    lit-html "^1.4.1"
     tslib "^2.0.1"
     wicg-inert "^3.0.0"
 
-"@material/mwc-drawer@^0.21.0":
-  version "0.21.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-drawer/-/mwc-drawer-0.21.0.tgz#a67a76702fbdb8ae93e6d3f322920bd74296dfa7"
-  integrity sha1-pnp2cC+9uK6T5tPzIpIL10KW36c=
+"@material/mwc-drawer@^0.22.1":
+  version "0.22.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-drawer/-/mwc-drawer-0.22.1.tgz#a9a8018d99feaed9d71f4abc510688ddbbcdebf4"
+  integrity sha1-qagBjZn+rtnXH0q8UQaI3bvN6/Q=
   dependencies:
-    "@material/drawer" "=12.0.0-canary.197f64fa2.0"
-    "@material/mwc-base" "^0.21.0"
+    "@material/drawer" "=12.0.0-canary.22d29cbb4.0"
+    "@material/mwc-base" "^0.22.1"
     blocking-elements "^0.1.0"
-    lit-element "~2.4.0"
-    lit-html "^1.1.2"
+    lit-element "^2.5.1"
+    lit-html "^1.4.1"
     tslib "^2.0.1"
     wicg-inert "^3.0.0"
 
-"@material/mwc-fab@^0.21.0":
-  version "0.21.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-fab/-/mwc-fab-0.21.0.tgz#b3b228d257597363b8f4a491e0687930d23ce56b"
-  integrity sha1-s7Io0ldZc2O49KSR4Gh5MNI85Ws=
+"@material/mwc-fab@^0.22.1":
+  version "0.22.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-fab/-/mwc-fab-0.22.1.tgz#4b657617e568c7bf7aa4505e7864b9132d969a2c"
+  integrity sha1-S2V2F+Vox796pFBeeGS5Ey2Wmiw=
   dependencies:
-    "@material/mwc-ripple" "^0.21.0"
-    lit-element "~2.4.0"
-    lit-html "^1.1.2"
+    "@material/mwc-ripple" "^0.22.1"
+    lit-element "^2.5.1"
+    lit-html "^1.4.1"
     tslib "^2.0.1"
 
-"@material/mwc-floating-label@^0.21.0":
-  version "0.21.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-floating-label/-/mwc-floating-label-0.21.0.tgz#9ae8912680ac932f5d1987c8ec01da3c1fd37432"
-  integrity sha1-muiRJoCsky9dGYfI7AHaPB/TdDI=
+"@material/mwc-floating-label@^0.22.1":
+  version "0.22.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-floating-label/-/mwc-floating-label-0.22.1.tgz#c7848c2f6e5b69171c91d08fabc2e9e7d570a6fa"
+  integrity sha1-x4SML25baRcckdCPq8Lp59Vwpvo=
   dependencies:
-    "@material/floating-label" "=12.0.0-canary.197f64fa2.0"
-    lit-element "~2.4.0"
-    lit-html "^1.1.2"
+    "@material/floating-label" "=12.0.0-canary.22d29cbb4.0"
+    lit-element "^2.5.1"
+    lit-html "^1.4.1"
     tslib "^2.0.1"
 
-"@material/mwc-formfield@^0.21.0":
-  version "0.21.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-formfield/-/mwc-formfield-0.21.0.tgz#d5441d61de567fabb844ca639426d11b2b77cd2b"
-  integrity sha1-1UQdYd5Wf6u4RMpjlCbRGyt3zSs=
+"@material/mwc-formfield@^0.22.1":
+  version "0.22.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-formfield/-/mwc-formfield-0.22.1.tgz#aea95e45086d680ff7175a68cf87d9abba755a42"
+  integrity sha1-rqleRQhtaA/3F1poz4fZq7p1WkI=
   dependencies:
-    "@material/form-field" "=12.0.0-canary.197f64fa2.0"
-    "@material/mwc-base" "^0.21.0"
-    lit-element "~2.4.0"
-    lit-html "^1.1.2"
+    "@material/form-field" "=12.0.0-canary.22d29cbb4.0"
+    "@material/mwc-base" "^0.22.1"
+    lit-element "^2.5.1"
+    lit-html "^1.4.1"
     tslib "^2.0.1"
 
-"@material/mwc-icon-button@^0.21.0":
-  version "0.21.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-icon-button/-/mwc-icon-button-0.21.0.tgz#ab4612e80bd8576cc0079a3cc7c16b8ab9468870"
-  integrity sha1-q0YS6AvYV2zAB5o8x8FrirlGiHA=
+"@material/mwc-icon-button@^0.22.1":
+  version "0.22.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-icon-button/-/mwc-icon-button-0.22.1.tgz#8263bce748a07123ad03ecf09c2a4f0b288f069f"
+  integrity sha1-gmO850igcSOtA+zwnCpPCyiPBp8=
   dependencies:
-    "@material/mwc-ripple" "^0.21.0"
-    lit-element "~2.4.0"
+    "@material/mwc-ripple" "^0.22.1"
+    lit-element "^2.5.1"
     tslib "^2.0.1"
 
-"@material/mwc-icon@^0.21.0":
-  version "0.21.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-icon/-/mwc-icon-0.21.0.tgz#e98ade595a7efc687a79383d01cdf0c02fcbb2db"
-  integrity sha1-6YreWVp+/Gh6eTg9Ac3wwC/Lsts=
+"@material/mwc-icon@^0.22.1":
+  version "0.22.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-icon/-/mwc-icon-0.22.1.tgz#a2ab2e903d1677c773d5635c9bc81c5ce231d7e6"
+  integrity sha1-oqsukD0Wd8dz1WNcm8gcXOIx1+Y=
   dependencies:
-    lit-element "~2.4.0"
+    lit-element "^2.5.1"
     tslib "^2.0.1"
 
-"@material/mwc-line-ripple@^0.21.0":
-  version "0.21.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-line-ripple/-/mwc-line-ripple-0.21.0.tgz#3ef9401a7d5b04a52c227c6e6057d0271128163a"
-  integrity sha1-PvlAGn1bBKUsInxuYFfQJxEoFjo=
+"@material/mwc-line-ripple@^0.22.1":
+  version "0.22.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-line-ripple/-/mwc-line-ripple-0.22.1.tgz#c8c7582881edc1cdc1da9084631bf7b899b8536a"
+  integrity sha1-yMdYKIHtwc3B2pCEYxv3uJm4U2o=
   dependencies:
-    "@material/line-ripple" "=12.0.0-canary.197f64fa2.0"
-    lit-element "~2.4.0"
-    lit-html "^1.1.2"
+    "@material/line-ripple" "=12.0.0-canary.22d29cbb4.0"
+    lit-element "^2.5.1"
+    lit-html "^1.4.1"
     tslib "^2.0.1"
 
-"@material/mwc-linear-progress@^0.21.0":
-  version "0.21.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-linear-progress/-/mwc-linear-progress-0.21.0.tgz#c1cf891e677f5f65804ba3e8bc3c650bc6570455"
-  integrity sha1-wc+JHmd/X2WAS6PovDxlC8ZXBFU=
+"@material/mwc-linear-progress@^0.22.1":
+  version "0.22.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-linear-progress/-/mwc-linear-progress-0.22.1.tgz#d0ba72ea02ac44ca3f5d646f27eaf66fd4b67e51"
+  integrity sha1-0Lpy6gKsRMo/XWRvJ+r2b9S2flE=
   dependencies:
-    "@material/linear-progress" "=12.0.0-canary.197f64fa2.0"
-    "@material/theme" "=12.0.0-canary.197f64fa2.0"
-    lit-element "~2.4.0"
-    lit-html "^1.1.2"
+    "@material/linear-progress" "=12.0.0-canary.22d29cbb4.0"
+    "@material/mwc-base" "^0.22.1"
+    "@material/theme" "=12.0.0-canary.22d29cbb4.0"
+    lit-element "^2.5.1"
+    lit-html "^1.4.1"
     tslib "^2.0.1"
 
-"@material/mwc-list@^0.21.0":
-  version "0.21.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-list/-/mwc-list-0.21.0.tgz#7e3180cd9400e753c8429a19d1a1cb050ec51635"
-  integrity sha1-fjGAzZQA51PIQpoZ0aHLBQ7FFjU=
+"@material/mwc-list@^0.22.1":
+  version "0.22.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-list/-/mwc-list-0.22.1.tgz#05ce340db5b966984cce87dd6f87a3dce6e5450d"
+  integrity sha1-Bc40DbW5ZphMzofdb4ej3OblRQ0=
   dependencies:
-    "@material/base" "=12.0.0-canary.197f64fa2.0"
-    "@material/dom" "=12.0.0-canary.197f64fa2.0"
-    "@material/list" "=12.0.0-canary.197f64fa2.0"
-    "@material/mwc-base" "^0.21.0"
-    "@material/mwc-checkbox" "^0.21.0"
-    "@material/mwc-radio" "^0.21.0"
-    "@material/mwc-ripple" "^0.21.0"
-    lit-element "~2.4.0"
-    lit-html "^1.1.2"
+    "@material/base" "=12.0.0-canary.22d29cbb4.0"
+    "@material/dom" "=12.0.0-canary.22d29cbb4.0"
+    "@material/list" "=12.0.0-canary.22d29cbb4.0"
+    "@material/mwc-base" "^0.22.1"
+    "@material/mwc-checkbox" "^0.22.1"
+    "@material/mwc-radio" "^0.22.1"
+    "@material/mwc-ripple" "^0.22.1"
+    lit-element "^2.5.1"
+    lit-html "^1.4.1"
     tslib "^2.0.1"
 
-"@material/mwc-menu@^0.21.0":
-  version "0.21.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-menu/-/mwc-menu-0.21.0.tgz#a71d11aea5760f123af0a2a62fa305b1149e9fd6"
-  integrity sha1-px0RrqV2DxI68KKmL6MFsRSen9Y=
+"@material/mwc-menu@^0.22.1":
+  version "0.22.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-menu/-/mwc-menu-0.22.1.tgz#1a45b6443d31809a9a968174fc5594e881c6b0c5"
+  integrity sha1-GkW2RD0xgJqaloF0/FWU6IHGsMU=
   dependencies:
-    "@material/menu" "=12.0.0-canary.197f64fa2.0"
-    "@material/menu-surface" "=12.0.0-canary.197f64fa2.0"
-    "@material/mwc-base" "^0.21.0"
-    "@material/mwc-list" "^0.21.0"
-    "@material/shape" "=12.0.0-canary.197f64fa2.0"
-    "@material/theme" "=12.0.0-canary.197f64fa2.0"
-    lit-element "~2.4.0"
-    lit-html "^1.1.2"
+    "@material/menu" "=12.0.0-canary.22d29cbb4.0"
+    "@material/menu-surface" "=12.0.0-canary.22d29cbb4.0"
+    "@material/mwc-base" "^0.22.1"
+    "@material/mwc-list" "^0.22.1"
+    "@material/shape" "=12.0.0-canary.22d29cbb4.0"
+    "@material/theme" "=12.0.0-canary.22d29cbb4.0"
+    lit-element "^2.5.1"
+    lit-html "^1.4.1"
     tslib "^2.0.1"
 
-"@material/mwc-notched-outline@^0.21.0":
-  version "0.21.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-notched-outline/-/mwc-notched-outline-0.21.0.tgz#d2999f42955191f181e9a8d0d026d3ed6c9fa30f"
-  integrity sha1-0pmfQpVRkfGB6ajQ0CbT7Wyfow8=
+"@material/mwc-notched-outline@^0.22.1":
+  version "0.22.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-notched-outline/-/mwc-notched-outline-0.22.1.tgz#e19adc6e1aa58d5798e0a833f018612ffbb374cb"
+  integrity sha1-4ZrcbhqljVeY4Kgz8BhhL/uzdMs=
   dependencies:
-    "@material/mwc-base" "^0.21.0"
-    "@material/notched-outline" "=12.0.0-canary.197f64fa2.0"
-    lit-element "~2.4.0"
-    lit-html "^1.1.2"
+    "@material/mwc-base" "^0.22.1"
+    "@material/notched-outline" "=12.0.0-canary.22d29cbb4.0"
+    lit-element "^2.5.1"
+    lit-html "^1.4.1"
     tslib "^2.0.1"
 
-"@material/mwc-radio@^0.21.0":
-  version "0.21.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-radio/-/mwc-radio-0.21.0.tgz#1a5daa3a8dea3b81c8b833bfa5151d49c012e388"
-  integrity sha1-Gl2qOo3qO4HIuDO/pRUdScAS44g=
+"@material/mwc-radio@^0.22.1":
+  version "0.22.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-radio/-/mwc-radio-0.22.1.tgz#8ce674b9686a68673486a46b5a90a101f8195a31"
+  integrity sha1-jOZ0uWhqaGc0hqRrWpChAfgZWjE=
   dependencies:
-    "@material/mwc-base" "^0.21.0"
-    "@material/mwc-ripple" "^0.21.0"
-    "@material/radio" "=12.0.0-canary.197f64fa2.0"
-    lit-element "~2.4.0"
+    "@material/mwc-base" "^0.22.1"
+    "@material/mwc-ripple" "^0.22.1"
+    "@material/radio" "=12.0.0-canary.22d29cbb4.0"
+    lit-element "^2.5.1"
     tslib "^2.0.1"
 
-"@material/mwc-ripple@^0.21.0":
-  version "0.21.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-ripple/-/mwc-ripple-0.21.0.tgz#f58290cd9e40e2fcd1c54fce1d766df19fec73d5"
-  integrity sha1-9YKQzZ5A4vzRxU/OHXZt8Z/sc9U=
+"@material/mwc-ripple@^0.22.1":
+  version "0.22.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-ripple/-/mwc-ripple-0.22.1.tgz#53f29e303f9043c0763ec0c88cb7a6968da2e39b"
+  integrity sha1-U/KeMD+QQ8B2PsDIjLemlo2i45s=
   dependencies:
-    "@material/dom" "=12.0.0-canary.197f64fa2.0"
-    "@material/mwc-base" "^0.21.0"
-    "@material/ripple" "=12.0.0-canary.197f64fa2.0"
-    lit-element "~2.4.0"
-    lit-html "^1.1.2"
+    "@material/dom" "=12.0.0-canary.22d29cbb4.0"
+    "@material/mwc-base" "^0.22.1"
+    "@material/ripple" "=12.0.0-canary.22d29cbb4.0"
+    lit-element "^2.5.1"
+    lit-html "^1.4.1"
     tslib "^2.0.1"
 
-"@material/mwc-select@^0.21.0":
-  version "0.21.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-select/-/mwc-select-0.21.0.tgz#876d0fd8ba64d5b5912f549321424fb849b2e299"
-  integrity sha1-h20P2Lpk1bWRL1STIUJPuEmy4pk=
+"@material/mwc-select@^0.22.1":
+  version "0.22.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-select/-/mwc-select-0.22.1.tgz#00dd6142637a1a201471ab0ea9f8a78a378ac974"
+  integrity sha1-AN1hQmN6GiAUcasOqfinijeKyXQ=
   dependencies:
-    "@material/dom" "=12.0.0-canary.197f64fa2.0"
-    "@material/floating-label" "=12.0.0-canary.197f64fa2.0"
-    "@material/line-ripple" "=12.0.0-canary.197f64fa2.0"
-    "@material/list" "=12.0.0-canary.197f64fa2.0"
-    "@material/mwc-base" "^0.21.0"
-    "@material/mwc-floating-label" "^0.21.0"
-    "@material/mwc-icon" "^0.21.0"
-    "@material/mwc-line-ripple" "^0.21.0"
-    "@material/mwc-list" "^0.21.0"
-    "@material/mwc-menu" "^0.21.0"
-    "@material/mwc-notched-outline" "^0.21.0"
-    "@material/select" "=12.0.0-canary.197f64fa2.0"
-    lit-element "~2.4.0"
-    lit-html "^1.1.2"
+    "@material/dom" "=12.0.0-canary.22d29cbb4.0"
+    "@material/floating-label" "=12.0.0-canary.22d29cbb4.0"
+    "@material/line-ripple" "=12.0.0-canary.22d29cbb4.0"
+    "@material/list" "=12.0.0-canary.22d29cbb4.0"
+    "@material/mwc-base" "^0.22.1"
+    "@material/mwc-floating-label" "^0.22.1"
+    "@material/mwc-icon" "^0.22.1"
+    "@material/mwc-line-ripple" "^0.22.1"
+    "@material/mwc-list" "^0.22.1"
+    "@material/mwc-menu" "^0.22.1"
+    "@material/mwc-notched-outline" "^0.22.1"
+    "@material/select" "=12.0.0-canary.22d29cbb4.0"
+    lit-element "^2.5.1"
+    lit-html "^1.4.1"
     tslib "^2.0.1"
 
-"@material/mwc-slider@^0.21.0":
-  version "0.21.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-slider/-/mwc-slider-0.21.0.tgz#5c267b8e49df832308e5a26507922adf982b1b39"
-  integrity sha1-XCZ7jknfgyMI5aJlB5Iq35grGzk=
+"@material/mwc-slider@^0.22.1":
+  version "0.22.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-slider/-/mwc-slider-0.22.1.tgz#865bad07bc31d75b1abcecd3d66010d401cb6dea"
+  integrity sha1-hlutB7wx11savOzT1mAQ1AHLbeo=
   dependencies:
-    "@material/dom" "=12.0.0-canary.197f64fa2.0"
-    "@material/mwc-base" "^0.21.0"
+    "@material/dom" "=12.0.0-canary.22d29cbb4.0"
+    "@material/mwc-base" "^0.22.1"
     "@material/slider" "=8.0.0-canary.01db89053.0"
-    lit-element "~2.4.0"
-    lit-html "^1.1.2"
+    lit-element "^2.5.1"
+    lit-html "^1.4.1"
     tslib "^2.0.1"
 
-"@material/mwc-snackbar@^0.21.0":
-  version "0.21.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-snackbar/-/mwc-snackbar-0.21.0.tgz#0d0132c7538409d1d0e32ba16b79fcf85ea1d400"
-  integrity sha1-DQEyx1OECdHQ4yuha3n8+F6h1AA=
+"@material/mwc-snackbar@^0.22.1":
+  version "0.22.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-snackbar/-/mwc-snackbar-0.22.1.tgz#720bab865b0448f98ac42124044a4f5dbfa25d89"
+  integrity sha1-cgurhlsESPmKxCEkBEpPXb+iXYk=
   dependencies:
-    "@material/mwc-base" "^0.21.0"
-    "@material/snackbar" "=12.0.0-canary.197f64fa2.0"
-    lit-element "~2.4.0"
-    lit-html "^1.1.2"
+    "@material/mwc-base" "^0.22.1"
+    "@material/snackbar" "=12.0.0-canary.22d29cbb4.0"
+    lit-element "^2.5.1"
+    lit-html "^1.4.1"
     tslib "^2.0.1"
 
-"@material/mwc-switch@^0.21.0":
-  version "0.21.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-switch/-/mwc-switch-0.21.0.tgz#35c764cf822084fa7f627a67e4cfc2863fd02951"
-  integrity sha1-Ncdkz4IghPp/Ynpn5M/Chj/QKVE=
+"@material/mwc-switch@^0.22.1":
+  version "0.22.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-switch/-/mwc-switch-0.22.1.tgz#f66f50091a02bf488e74e9a449da82b23d9ba96b"
+  integrity sha1-9m9QCRoCv0iOdOmkSdqCsj2bqWs=
   dependencies:
-    "@material/mwc-base" "^0.21.0"
-    "@material/mwc-ripple" "^0.21.0"
-    "@material/switch" "=12.0.0-canary.197f64fa2.0"
-    lit-element "~2.4.0"
+    "@material/mwc-base" "^0.22.1"
+    "@material/mwc-ripple" "^0.22.1"
+    "@material/switch" "=12.0.0-canary.22d29cbb4.0"
+    lit-element "^2.5.1"
     tslib "^2.0.1"
 
-"@material/mwc-tab-bar@^0.21.0":
-  version "0.21.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-tab-bar/-/mwc-tab-bar-0.21.0.tgz#7a6f6c868fb898edb434a64be5504effe93f1986"
-  integrity sha1-em9sho+4mO20NKZL5VBO/+k/GYY=
+"@material/mwc-tab-bar@^0.22.1":
+  version "0.22.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-tab-bar/-/mwc-tab-bar-0.22.1.tgz#69a9b0124620db60b5b9f7b43dc40daf736e329d"
+  integrity sha1-aamwEkYg22C1ufe0PcQNr3NuMp0=
   dependencies:
-    "@material/mwc-base" "^0.21.0"
-    "@material/mwc-tab" "^0.21.0"
-    "@material/mwc-tab-scroller" "^0.21.0"
-    "@material/tab" "=12.0.0-canary.197f64fa2.0"
-    "@material/tab-bar" "=12.0.0-canary.197f64fa2.0"
-    lit-element "~2.4.0"
+    "@material/mwc-base" "^0.22.1"
+    "@material/mwc-tab" "^0.22.1"
+    "@material/mwc-tab-scroller" "^0.22.1"
+    "@material/tab" "=12.0.0-canary.22d29cbb4.0"
+    "@material/tab-bar" "=12.0.0-canary.22d29cbb4.0"
+    lit-element "^2.5.1"
     tslib "^2.0.1"
 
-"@material/mwc-tab-indicator@^0.21.0":
-  version "0.21.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-tab-indicator/-/mwc-tab-indicator-0.21.0.tgz#863d956db8151e7e100043a4b08b3d9d80fdcb9f"
-  integrity sha1-hj2VbbgVHn4QAEOksIs9nYD9y58=
+"@material/mwc-tab-indicator@^0.22.1":
+  version "0.22.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-tab-indicator/-/mwc-tab-indicator-0.22.1.tgz#81f098d1a2bf61d1015cbdafa79a1f7feb429324"
+  integrity sha1-gfCY0aK/YdEBXL2vp5off+tCkyQ=
   dependencies:
-    "@material/mwc-base" "^0.21.0"
-    "@material/tab-indicator" "=12.0.0-canary.197f64fa2.0"
-    lit-element "~2.4.0"
-    lit-html "^1.1.2"
+    "@material/mwc-base" "^0.22.1"
+    "@material/tab-indicator" "=12.0.0-canary.22d29cbb4.0"
+    lit-element "^2.5.1"
+    lit-html "^1.4.1"
     tslib "^2.0.1"
 
-"@material/mwc-tab-scroller@^0.21.0":
-  version "0.21.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-tab-scroller/-/mwc-tab-scroller-0.21.0.tgz#b0e1d40a4696d087238f0311f91b525df198eb05"
-  integrity sha1-sOHUCkaW0IcjjwMR+RtSXfGY6wU=
+"@material/mwc-tab-scroller@^0.22.1":
+  version "0.22.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-tab-scroller/-/mwc-tab-scroller-0.22.1.tgz#3f8873a0cd65ae591ed7c0eb5cf9aeeb5ad2c157"
+  integrity sha1-P4hzoM1lrlke18DrXPmu61rSwVc=
   dependencies:
-    "@material/dom" "=12.0.0-canary.197f64fa2.0"
-    "@material/mwc-base" "^0.21.0"
-    "@material/tab-scroller" "=12.0.0-canary.197f64fa2.0"
-    lit-element "~2.4.0"
+    "@material/dom" "=12.0.0-canary.22d29cbb4.0"
+    "@material/mwc-base" "^0.22.1"
+    "@material/tab-scroller" "=12.0.0-canary.22d29cbb4.0"
+    lit-element "^2.5.1"
     tslib "^2.0.1"
 
-"@material/mwc-tab@^0.21.0":
-  version "0.21.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-tab/-/mwc-tab-0.21.0.tgz#1201017f2e8967d3fd577238f5d055f6d4118681"
-  integrity sha1-EgEBfy6JZ9P9V3I49dBV9tQRhoE=
+"@material/mwc-tab@^0.22.1":
+  version "0.22.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-tab/-/mwc-tab-0.22.1.tgz#45c692cfbdaaab272b3ba8ed417b9fbd38c7ecc0"
+  integrity sha1-RcaSz72qqycrO6jtQXufvTjH7MA=
   dependencies:
-    "@material/mwc-base" "^0.21.0"
-    "@material/mwc-ripple" "^0.21.0"
-    "@material/mwc-tab-indicator" "^0.21.0"
-    "@material/tab" "=12.0.0-canary.197f64fa2.0"
-    lit-element "~2.4.0"
-    lit-html "^1.1.2"
+    "@material/mwc-base" "^0.22.1"
+    "@material/mwc-ripple" "^0.22.1"
+    "@material/mwc-tab-indicator" "^0.22.1"
+    "@material/tab" "=12.0.0-canary.22d29cbb4.0"
+    lit-element "^2.5.1"
+    lit-html "^1.4.1"
     tslib "^2.0.1"
 
-"@material/mwc-textarea@^0.21.0":
-  version "0.21.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-textarea/-/mwc-textarea-0.21.0.tgz#db7cd18f738cf0a6e0b6e42c13d0b13cd902e87a"
-  integrity sha1-23zRj3OM8KbgtuQsE9CxPNkC6Ho=
+"@material/mwc-textarea@^0.22.1":
+  version "0.22.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-textarea/-/mwc-textarea-0.22.1.tgz#b169ab026b4805fb0b508064cba0990ea3a01fef"
+  integrity sha1-sWmrAmtIBfsLUIBky6CZDqOgH+8=
   dependencies:
-    "@material/mwc-base" "^0.21.0"
-    "@material/mwc-textfield" "^0.21.0"
-    lit-element "~2.4.0"
-    lit-html "^1.1.2"
+    "@material/mwc-base" "^0.22.1"
+    "@material/mwc-textfield" "^0.22.1"
+    lit-element "^2.5.1"
+    lit-html "^1.4.1"
     tslib "^2.0.1"
 
-"@material/mwc-textfield@^0.21.0":
-  version "0.21.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-textfield/-/mwc-textfield-0.21.0.tgz#ef67961869044735c97d76b2779fad039568b45c"
-  integrity sha1-72eWGGkERzXJfXayd5+tA5VotFw=
+"@material/mwc-textfield@^0.22.1":
+  version "0.22.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-textfield/-/mwc-textfield-0.22.1.tgz#ee9268cca825f1272eed242b6a12ae6585d4111a"
+  integrity sha1-7pJozKgl8Scu7SQrahKuZYXUERo=
   dependencies:
-    "@material/floating-label" "=12.0.0-canary.197f64fa2.0"
-    "@material/line-ripple" "=12.0.0-canary.197f64fa2.0"
-    "@material/mwc-base" "^0.21.0"
-    "@material/mwc-floating-label" "^0.21.0"
-    "@material/mwc-line-ripple" "^0.21.0"
-    "@material/mwc-notched-outline" "^0.21.0"
-    "@material/textfield" "=12.0.0-canary.197f64fa2.0"
-    lit-element "~2.4.0"
-    lit-html "^1.1.2"
+    "@material/floating-label" "=12.0.0-canary.22d29cbb4.0"
+    "@material/line-ripple" "=12.0.0-canary.22d29cbb4.0"
+    "@material/mwc-base" "^0.22.1"
+    "@material/mwc-floating-label" "^0.22.1"
+    "@material/mwc-line-ripple" "^0.22.1"
+    "@material/mwc-notched-outline" "^0.22.1"
+    "@material/textfield" "=12.0.0-canary.22d29cbb4.0"
+    lit-element "^2.5.1"
+    lit-html "^1.4.1"
     tslib "^2.0.1"
 
-"@material/mwc-top-app-bar-fixed@^0.21.0":
-  version "0.21.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-top-app-bar-fixed/-/mwc-top-app-bar-fixed-0.21.0.tgz#dbc65ce5ba6b1a78740e765bf27c54fd8b5fa69c"
-  integrity sha1-28Zc5bprGnh0DnZb8nxU/Ytfppw=
+"@material/mwc-top-app-bar-fixed@^0.22.1":
+  version "0.22.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-top-app-bar-fixed/-/mwc-top-app-bar-fixed-0.22.1.tgz#179c4c0edfc74aa0d4829d73e962409dbc50c754"
+  integrity sha1-F5xMDt/HSqDUgp1z6WJAnbxQx1Q=
   dependencies:
-    "@material/mwc-top-app-bar" "^0.21.0"
-    "@material/top-app-bar" "=12.0.0-canary.197f64fa2.0"
-    lit-element "~2.4.0"
+    "@material/mwc-top-app-bar" "^0.22.1"
+    "@material/top-app-bar" "=12.0.0-canary.22d29cbb4.0"
+    lit-element "^2.5.1"
     tslib "^2.0.1"
 
-"@material/mwc-top-app-bar@^0.21.0":
-  version "0.21.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-top-app-bar/-/mwc-top-app-bar-0.21.0.tgz#75689d5a1e38ace928a479ca712b97adc8465f43"
-  integrity sha1-dWidWh44rOkopHnKcSuXrchGX0M=
+"@material/mwc-top-app-bar@^0.22.1":
+  version "0.22.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/mwc-top-app-bar/-/mwc-top-app-bar-0.22.1.tgz#bebabd70376e617a90997a928e27ebb0002e4aaf"
+  integrity sha1-vrq9cDduYXqQmXqSjifrsAAuSq8=
   dependencies:
-    "@material/mwc-base" "^0.21.0"
-    "@material/top-app-bar" "=12.0.0-canary.197f64fa2.0"
-    lit-element "~2.4.0"
-    lit-html "^1.1.2"
+    "@material/mwc-base" "^0.22.1"
+    "@material/top-app-bar" "=12.0.0-canary.22d29cbb4.0"
+    lit-element "^2.5.1"
+    lit-html "^1.4.1"
     tslib "^2.0.1"
 
-"@material/notched-outline@12.0.0-canary.197f64fa2.0", "@material/notched-outline@=12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/notched-outline/-/notched-outline-12.0.0-canary.197f64fa2.0.tgz#c2292652107fbbe806234172ee419028d96805fe"
-  integrity sha1-wikmUhB/u+gGI0Fy7kGQKNloBf4=
+"@material/notched-outline@12.0.0-canary.22d29cbb4.0", "@material/notched-outline@=12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/notched-outline/-/notched-outline-12.0.0-canary.22d29cbb4.0.tgz#b01a1d05893e65a5a2c0a12fe6d9e7ac5c99f6c4"
+  integrity sha1-sBodBYk+ZaWiwKEv5tnnrFyZ9sQ=
   dependencies:
-    "@material/base" "12.0.0-canary.197f64fa2.0"
-    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
-    "@material/floating-label" "12.0.0-canary.197f64fa2.0"
-    "@material/rtl" "12.0.0-canary.197f64fa2.0"
-    "@material/shape" "12.0.0-canary.197f64fa2.0"
-    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    "@material/base" "12.0.0-canary.22d29cbb4.0"
+    "@material/feature-targeting" "12.0.0-canary.22d29cbb4.0"
+    "@material/floating-label" "12.0.0-canary.22d29cbb4.0"
+    "@material/rtl" "12.0.0-canary.22d29cbb4.0"
+    "@material/shape" "12.0.0-canary.22d29cbb4.0"
+    "@material/theme" "12.0.0-canary.22d29cbb4.0"
     tslib "^2.1.0"
 
-"@material/progress-indicator@12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/progress-indicator/-/progress-indicator-12.0.0-canary.197f64fa2.0.tgz#b4964a462c48623c26e650eae3abacf757dc955c"
-  integrity sha1-tJZKRixIYjwm5lDq46us91fclVw=
+"@material/progress-indicator@12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/progress-indicator/-/progress-indicator-12.0.0-canary.22d29cbb4.0.tgz#96f51006995f22f8bd89a69f744f20210a5c6adb"
+  integrity sha1-lvUQBplfIvi9iaafdE8gIQpcats=
   dependencies:
     tslib "^2.1.0"
 
-"@material/radio@=12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/radio/-/radio-12.0.0-canary.197f64fa2.0.tgz#dda3ee55e0f901bcd0c5b9af46bf3cbe52fc59ea"
-  integrity sha1-3aPuVeD5AbzQxbmvRr88vlL8Weo=
+"@material/radio@=12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/radio/-/radio-12.0.0-canary.22d29cbb4.0.tgz#7466a2caad601edd26c532a1507ebf8b556b1d6e"
+  integrity sha1-dGaiyq1gHt0mxTKhUH6/i1VrHW4=
   dependencies:
-    "@material/animation" "12.0.0-canary.197f64fa2.0"
-    "@material/base" "12.0.0-canary.197f64fa2.0"
-    "@material/density" "12.0.0-canary.197f64fa2.0"
-    "@material/dom" "12.0.0-canary.197f64fa2.0"
-    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
-    "@material/ripple" "12.0.0-canary.197f64fa2.0"
-    "@material/theme" "12.0.0-canary.197f64fa2.0"
-    "@material/touch-target" "12.0.0-canary.197f64fa2.0"
+    "@material/animation" "12.0.0-canary.22d29cbb4.0"
+    "@material/base" "12.0.0-canary.22d29cbb4.0"
+    "@material/density" "12.0.0-canary.22d29cbb4.0"
+    "@material/dom" "12.0.0-canary.22d29cbb4.0"
+    "@material/feature-targeting" "12.0.0-canary.22d29cbb4.0"
+    "@material/ripple" "12.0.0-canary.22d29cbb4.0"
+    "@material/theme" "12.0.0-canary.22d29cbb4.0"
+    "@material/touch-target" "12.0.0-canary.22d29cbb4.0"
     tslib "^2.1.0"
 
-"@material/ripple@12.0.0-canary.197f64fa2.0", "@material/ripple@=12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/ripple/-/ripple-12.0.0-canary.197f64fa2.0.tgz#c3e96d42404111b12ea04eb72e20c39a3c162613"
-  integrity sha1-w+ltQkBBEbEuoE63LiDDmjwWJhM=
+"@material/ripple@12.0.0-canary.22d29cbb4.0", "@material/ripple@=12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/ripple/-/ripple-12.0.0-canary.22d29cbb4.0.tgz#9cc50929c66841691e35ac603168a83ef176af6e"
+  integrity sha1-nMUJKcZoQWkeNaxgMWioPvF2r24=
   dependencies:
-    "@material/animation" "12.0.0-canary.197f64fa2.0"
-    "@material/base" "12.0.0-canary.197f64fa2.0"
-    "@material/dom" "12.0.0-canary.197f64fa2.0"
-    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
-    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    "@material/animation" "12.0.0-canary.22d29cbb4.0"
+    "@material/base" "12.0.0-canary.22d29cbb4.0"
+    "@material/dom" "12.0.0-canary.22d29cbb4.0"
+    "@material/feature-targeting" "12.0.0-canary.22d29cbb4.0"
+    "@material/theme" "12.0.0-canary.22d29cbb4.0"
     tslib "^2.1.0"
 
 "@material/ripple@9.0.0-canary.1c156d69d.0":
@@ -3209,12 +3211,12 @@
     "@material/theme" "9.0.0-canary.1c156d69d.0"
     tslib "^1.9.3"
 
-"@material/rtl@12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/rtl/-/rtl-12.0.0-canary.197f64fa2.0.tgz#4d4d8b54867a7fd9eb6f0cc002d25bd2750ba0bc"
-  integrity sha1-TU2LVIZ6f9nrbwzAAtJb0nULoLw=
+"@material/rtl@12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/rtl/-/rtl-12.0.0-canary.22d29cbb4.0.tgz#589593c59ca384caf2ac16892d55a9e19d7759ea"
+  integrity sha1-WJWTxZyjhMryrBaJLVWp4Z13Weo=
   dependencies:
-    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    "@material/theme" "12.0.0-canary.22d29cbb4.0"
     tslib "^2.1.0"
 
 "@material/rtl@8.0.0-canary.01db89053.0":
@@ -3231,37 +3233,37 @@
   dependencies:
     "@material/theme" "9.0.0-canary.1c156d69d.0"
 
-"@material/select@=12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/select/-/select-12.0.0-canary.197f64fa2.0.tgz#2432a671940da7f9a7cb86d5ad25024233c600e9"
-  integrity sha1-JDKmcZQNp/mny4bVrSUCQjPGAOk=
+"@material/select@=12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/select/-/select-12.0.0-canary.22d29cbb4.0.tgz#bb8a0c846e0b648ecf15b8def0a365a275f08c02"
+  integrity sha1-u4oMhG4LZI7PFbje8KNlonXwjAI=
   dependencies:
-    "@material/animation" "12.0.0-canary.197f64fa2.0"
-    "@material/base" "12.0.0-canary.197f64fa2.0"
-    "@material/density" "12.0.0-canary.197f64fa2.0"
-    "@material/dom" "12.0.0-canary.197f64fa2.0"
-    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
-    "@material/floating-label" "12.0.0-canary.197f64fa2.0"
-    "@material/line-ripple" "12.0.0-canary.197f64fa2.0"
-    "@material/list" "12.0.0-canary.197f64fa2.0"
-    "@material/menu" "12.0.0-canary.197f64fa2.0"
-    "@material/menu-surface" "12.0.0-canary.197f64fa2.0"
-    "@material/notched-outline" "12.0.0-canary.197f64fa2.0"
-    "@material/ripple" "12.0.0-canary.197f64fa2.0"
-    "@material/rtl" "12.0.0-canary.197f64fa2.0"
-    "@material/shape" "12.0.0-canary.197f64fa2.0"
-    "@material/theme" "12.0.0-canary.197f64fa2.0"
-    "@material/typography" "12.0.0-canary.197f64fa2.0"
+    "@material/animation" "12.0.0-canary.22d29cbb4.0"
+    "@material/base" "12.0.0-canary.22d29cbb4.0"
+    "@material/density" "12.0.0-canary.22d29cbb4.0"
+    "@material/dom" "12.0.0-canary.22d29cbb4.0"
+    "@material/feature-targeting" "12.0.0-canary.22d29cbb4.0"
+    "@material/floating-label" "12.0.0-canary.22d29cbb4.0"
+    "@material/line-ripple" "12.0.0-canary.22d29cbb4.0"
+    "@material/list" "12.0.0-canary.22d29cbb4.0"
+    "@material/menu" "12.0.0-canary.22d29cbb4.0"
+    "@material/menu-surface" "12.0.0-canary.22d29cbb4.0"
+    "@material/notched-outline" "12.0.0-canary.22d29cbb4.0"
+    "@material/ripple" "12.0.0-canary.22d29cbb4.0"
+    "@material/rtl" "12.0.0-canary.22d29cbb4.0"
+    "@material/shape" "12.0.0-canary.22d29cbb4.0"
+    "@material/theme" "12.0.0-canary.22d29cbb4.0"
+    "@material/typography" "12.0.0-canary.22d29cbb4.0"
     tslib "^2.1.0"
 
-"@material/shape@12.0.0-canary.197f64fa2.0", "@material/shape@=12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/shape/-/shape-12.0.0-canary.197f64fa2.0.tgz#76b01b497e478ec8f115681abef8dd6acc3f8891"
-  integrity sha1-drAbSX5HjsjxFWgavvjdasw/iJE=
+"@material/shape@12.0.0-canary.22d29cbb4.0", "@material/shape@=12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/shape/-/shape-12.0.0-canary.22d29cbb4.0.tgz#30bcae4b99b17414293c5b21707d46a614b96451"
+  integrity sha1-MLyuS5mxdBQpPFshcH1GphS5ZFE=
   dependencies:
-    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
-    "@material/rtl" "12.0.0-canary.197f64fa2.0"
-    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    "@material/feature-targeting" "12.0.0-canary.22d29cbb4.0"
+    "@material/rtl" "12.0.0-canary.22d29cbb4.0"
+    "@material/theme" "12.0.0-canary.22d29cbb4.0"
     tslib "^2.1.0"
 
 "@material/shape@9.0.0-canary.1c156d69d.0":
@@ -3287,117 +3289,123 @@
     "@material/typography" "8.0.0-canary.01db89053.0"
     tslib "^1.9.3"
 
-"@material/snackbar@=12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/snackbar/-/snackbar-12.0.0-canary.197f64fa2.0.tgz#61d0942e29f29213f8daa6ad78c21f94fe0d001d"
-  integrity sha1-YdCULinykhP42qateMIflP4NAB0=
+"@material/snackbar@=12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/snackbar/-/snackbar-12.0.0-canary.22d29cbb4.0.tgz#def6cf22a8fb55132ee8940f702404046b7c13a7"
+  integrity sha1-3vbPIqj7VRMu6JQPcCQEBGt8E6c=
   dependencies:
-    "@material/animation" "12.0.0-canary.197f64fa2.0"
-    "@material/base" "12.0.0-canary.197f64fa2.0"
-    "@material/button" "12.0.0-canary.197f64fa2.0"
-    "@material/dom" "12.0.0-canary.197f64fa2.0"
-    "@material/elevation" "12.0.0-canary.197f64fa2.0"
-    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
-    "@material/icon-button" "12.0.0-canary.197f64fa2.0"
-    "@material/ripple" "12.0.0-canary.197f64fa2.0"
-    "@material/rtl" "12.0.0-canary.197f64fa2.0"
-    "@material/shape" "12.0.0-canary.197f64fa2.0"
-    "@material/theme" "12.0.0-canary.197f64fa2.0"
-    "@material/typography" "12.0.0-canary.197f64fa2.0"
+    "@material/animation" "12.0.0-canary.22d29cbb4.0"
+    "@material/base" "12.0.0-canary.22d29cbb4.0"
+    "@material/button" "12.0.0-canary.22d29cbb4.0"
+    "@material/dom" "12.0.0-canary.22d29cbb4.0"
+    "@material/elevation" "12.0.0-canary.22d29cbb4.0"
+    "@material/feature-targeting" "12.0.0-canary.22d29cbb4.0"
+    "@material/icon-button" "12.0.0-canary.22d29cbb4.0"
+    "@material/ripple" "12.0.0-canary.22d29cbb4.0"
+    "@material/rtl" "12.0.0-canary.22d29cbb4.0"
+    "@material/shape" "12.0.0-canary.22d29cbb4.0"
+    "@material/theme" "12.0.0-canary.22d29cbb4.0"
+    "@material/typography" "12.0.0-canary.22d29cbb4.0"
     tslib "^2.1.0"
 
-"@material/switch@=12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/switch/-/switch-12.0.0-canary.197f64fa2.0.tgz#ac5f2835f480604199a5a6a4f0790b0de578f236"
-  integrity sha1-rF8oNfSAYEGZpaak8HkLDeV48jY=
+"@material/switch@=12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/switch/-/switch-12.0.0-canary.22d29cbb4.0.tgz#70865a62c4ebb86080c1bb5429c5e9ed5c047b09"
+  integrity sha1-cIZaYsTruGCAwbtUKcXp7VwEewk=
   dependencies:
-    "@material/animation" "12.0.0-canary.197f64fa2.0"
-    "@material/base" "12.0.0-canary.197f64fa2.0"
-    "@material/density" "12.0.0-canary.197f64fa2.0"
-    "@material/dom" "12.0.0-canary.197f64fa2.0"
-    "@material/elevation" "12.0.0-canary.197f64fa2.0"
-    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
-    "@material/ripple" "12.0.0-canary.197f64fa2.0"
-    "@material/rtl" "12.0.0-canary.197f64fa2.0"
-    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    "@material/animation" "12.0.0-canary.22d29cbb4.0"
+    "@material/base" "12.0.0-canary.22d29cbb4.0"
+    "@material/density" "12.0.0-canary.22d29cbb4.0"
+    "@material/dom" "12.0.0-canary.22d29cbb4.0"
+    "@material/elevation" "12.0.0-canary.22d29cbb4.0"
+    "@material/feature-targeting" "12.0.0-canary.22d29cbb4.0"
+    "@material/ripple" "12.0.0-canary.22d29cbb4.0"
+    "@material/rtl" "12.0.0-canary.22d29cbb4.0"
+    "@material/shape" "12.0.0-canary.22d29cbb4.0"
+    "@material/theme" "12.0.0-canary.22d29cbb4.0"
     tslib "^2.1.0"
 
-"@material/tab-bar@=12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/tab-bar/-/tab-bar-12.0.0-canary.197f64fa2.0.tgz#5fc963513115ba7166b134fafecae19fa20f2276"
-  integrity sha1-X8ljUTEVunFmsTT6/srhn6IPInY=
+"@material/tab-bar@=12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/tab-bar/-/tab-bar-12.0.0-canary.22d29cbb4.0.tgz#294a67f387e80cccade1700ab15ae79d9faee394"
+  integrity sha1-KUpn84foDMyt4XAKsVrnnZ+u45Q=
   dependencies:
-    "@material/animation" "12.0.0-canary.197f64fa2.0"
-    "@material/base" "12.0.0-canary.197f64fa2.0"
-    "@material/density" "12.0.0-canary.197f64fa2.0"
-    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
-    "@material/tab" "12.0.0-canary.197f64fa2.0"
-    "@material/tab-scroller" "12.0.0-canary.197f64fa2.0"
+    "@material/animation" "12.0.0-canary.22d29cbb4.0"
+    "@material/base" "12.0.0-canary.22d29cbb4.0"
+    "@material/density" "12.0.0-canary.22d29cbb4.0"
+    "@material/elevation" "12.0.0-canary.22d29cbb4.0"
+    "@material/feature-targeting" "12.0.0-canary.22d29cbb4.0"
+    "@material/tab" "12.0.0-canary.22d29cbb4.0"
+    "@material/tab-indicator" "12.0.0-canary.22d29cbb4.0"
+    "@material/tab-scroller" "12.0.0-canary.22d29cbb4.0"
+    "@material/theme" "12.0.0-canary.22d29cbb4.0"
+    "@material/typography" "12.0.0-canary.22d29cbb4.0"
     tslib "^2.1.0"
 
-"@material/tab-indicator@12.0.0-canary.197f64fa2.0", "@material/tab-indicator@=12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/tab-indicator/-/tab-indicator-12.0.0-canary.197f64fa2.0.tgz#c598d39037ced3a54213bb8fe193d23e09977f29"
-  integrity sha1-xZjTkDfO06VCE7uP4ZPSPgmXfyk=
+"@material/tab-indicator@12.0.0-canary.22d29cbb4.0", "@material/tab-indicator@=12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/tab-indicator/-/tab-indicator-12.0.0-canary.22d29cbb4.0.tgz#a068a64f5ebc4fa7b4fb036aec0a24b47b7c406d"
+  integrity sha1-oGimT168T6e0+wNq7AoktHt8QG0=
   dependencies:
-    "@material/animation" "12.0.0-canary.197f64fa2.0"
-    "@material/base" "12.0.0-canary.197f64fa2.0"
-    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
-    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    "@material/animation" "12.0.0-canary.22d29cbb4.0"
+    "@material/base" "12.0.0-canary.22d29cbb4.0"
+    "@material/feature-targeting" "12.0.0-canary.22d29cbb4.0"
+    "@material/theme" "12.0.0-canary.22d29cbb4.0"
     tslib "^2.1.0"
 
-"@material/tab-scroller@12.0.0-canary.197f64fa2.0", "@material/tab-scroller@=12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/tab-scroller/-/tab-scroller-12.0.0-canary.197f64fa2.0.tgz#0c04dbe974e7f21cde81259e5aa2e96457710254"
-  integrity sha1-DATb6XTn8hzegSWeWqLpZFdxAlQ=
+"@material/tab-scroller@12.0.0-canary.22d29cbb4.0", "@material/tab-scroller@=12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/tab-scroller/-/tab-scroller-12.0.0-canary.22d29cbb4.0.tgz#44d9c07300dc5c7468523d950d45daf2164ff3e5"
+  integrity sha1-RNnAcwDcXHRoUj2VDUXa8hZP8+U=
   dependencies:
-    "@material/animation" "12.0.0-canary.197f64fa2.0"
-    "@material/base" "12.0.0-canary.197f64fa2.0"
-    "@material/dom" "12.0.0-canary.197f64fa2.0"
-    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
-    "@material/tab" "12.0.0-canary.197f64fa2.0"
+    "@material/animation" "12.0.0-canary.22d29cbb4.0"
+    "@material/base" "12.0.0-canary.22d29cbb4.0"
+    "@material/dom" "12.0.0-canary.22d29cbb4.0"
+    "@material/feature-targeting" "12.0.0-canary.22d29cbb4.0"
+    "@material/tab" "12.0.0-canary.22d29cbb4.0"
     tslib "^2.1.0"
 
-"@material/tab@12.0.0-canary.197f64fa2.0", "@material/tab@=12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/tab/-/tab-12.0.0-canary.197f64fa2.0.tgz#3f55326a25f4172bdc195ecc2bfeeac311ab5f61"
-  integrity sha1-P1UyaiX0FyvcGV7MK/7qwxGrX2E=
+"@material/tab@12.0.0-canary.22d29cbb4.0", "@material/tab@=12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/tab/-/tab-12.0.0-canary.22d29cbb4.0.tgz#3eea5275d9b85a1e37e4a25dc159327e45e7af9e"
+  integrity sha1-PupSddm4Wh435KJdwVkyfkXnr54=
   dependencies:
-    "@material/base" "12.0.0-canary.197f64fa2.0"
-    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
-    "@material/ripple" "12.0.0-canary.197f64fa2.0"
-    "@material/rtl" "12.0.0-canary.197f64fa2.0"
-    "@material/tab-indicator" "12.0.0-canary.197f64fa2.0"
-    "@material/theme" "12.0.0-canary.197f64fa2.0"
-    "@material/typography" "12.0.0-canary.197f64fa2.0"
+    "@material/base" "12.0.0-canary.22d29cbb4.0"
+    "@material/elevation" "12.0.0-canary.22d29cbb4.0"
+    "@material/feature-targeting" "12.0.0-canary.22d29cbb4.0"
+    "@material/ripple" "12.0.0-canary.22d29cbb4.0"
+    "@material/rtl" "12.0.0-canary.22d29cbb4.0"
+    "@material/tab-indicator" "12.0.0-canary.22d29cbb4.0"
+    "@material/theme" "12.0.0-canary.22d29cbb4.0"
+    "@material/typography" "12.0.0-canary.22d29cbb4.0"
     tslib "^2.1.0"
 
-"@material/textfield@=12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/textfield/-/textfield-12.0.0-canary.197f64fa2.0.tgz#dc8cef3a8bd219ae90956b67e9727acbce1fc042"
-  integrity sha1-3IzvOovSGa6QlWtn6XJ6y84fwEI=
+"@material/textfield@=12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/textfield/-/textfield-12.0.0-canary.22d29cbb4.0.tgz#e95ee633f6faebc695c90f21eb414e07254c0ddc"
+  integrity sha1-6V7mM/b668aVyQ8h60FOByVMDdw=
   dependencies:
-    "@material/animation" "12.0.0-canary.197f64fa2.0"
-    "@material/base" "12.0.0-canary.197f64fa2.0"
-    "@material/density" "12.0.0-canary.197f64fa2.0"
-    "@material/dom" "12.0.0-canary.197f64fa2.0"
-    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
-    "@material/floating-label" "12.0.0-canary.197f64fa2.0"
-    "@material/line-ripple" "12.0.0-canary.197f64fa2.0"
-    "@material/notched-outline" "12.0.0-canary.197f64fa2.0"
-    "@material/ripple" "12.0.0-canary.197f64fa2.0"
-    "@material/rtl" "12.0.0-canary.197f64fa2.0"
-    "@material/shape" "12.0.0-canary.197f64fa2.0"
-    "@material/theme" "12.0.0-canary.197f64fa2.0"
-    "@material/typography" "12.0.0-canary.197f64fa2.0"
+    "@material/animation" "12.0.0-canary.22d29cbb4.0"
+    "@material/base" "12.0.0-canary.22d29cbb4.0"
+    "@material/density" "12.0.0-canary.22d29cbb4.0"
+    "@material/dom" "12.0.0-canary.22d29cbb4.0"
+    "@material/feature-targeting" "12.0.0-canary.22d29cbb4.0"
+    "@material/floating-label" "12.0.0-canary.22d29cbb4.0"
+    "@material/line-ripple" "12.0.0-canary.22d29cbb4.0"
+    "@material/notched-outline" "12.0.0-canary.22d29cbb4.0"
+    "@material/ripple" "12.0.0-canary.22d29cbb4.0"
+    "@material/rtl" "12.0.0-canary.22d29cbb4.0"
+    "@material/shape" "12.0.0-canary.22d29cbb4.0"
+    "@material/theme" "12.0.0-canary.22d29cbb4.0"
+    "@material/typography" "12.0.0-canary.22d29cbb4.0"
     tslib "^2.1.0"
 
-"@material/theme@12.0.0-canary.197f64fa2.0", "@material/theme@=12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/theme/-/theme-12.0.0-canary.197f64fa2.0.tgz#2443874251a0cd827a8829e55eb792a366400508"
-  integrity sha1-JEOHQlGgzYJ6iCnlXreSo2ZABQg=
+"@material/theme@12.0.0-canary.22d29cbb4.0", "@material/theme@=12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/theme/-/theme-12.0.0-canary.22d29cbb4.0.tgz#a99ff4e33ffb72ec1ac616de31533da02881d278"
+  integrity sha1-qZ/04z/7cuwaxhbeMVM9oCiB0ng=
   dependencies:
-    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    "@material/feature-targeting" "12.0.0-canary.22d29cbb4.0"
     tslib "^2.1.0"
 
 "@material/theme@8.0.0-canary.01db89053.0":
@@ -3414,28 +3422,28 @@
   dependencies:
     "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
 
-"@material/top-app-bar@=12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/top-app-bar/-/top-app-bar-12.0.0-canary.197f64fa2.0.tgz#abe150940f54e497954b18f8c4caebcb68c60304"
-  integrity sha1-q+FQlA9U5JeVSxj4xMrry2jGAwQ=
+"@material/top-app-bar@=12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/top-app-bar/-/top-app-bar-12.0.0-canary.22d29cbb4.0.tgz#7aa2fa79ec9a701501cbad87c685f082ed3dc759"
+  integrity sha1-eqL6eeyacBUBy62HxoXwgu09x1k=
   dependencies:
-    "@material/animation" "12.0.0-canary.197f64fa2.0"
-    "@material/base" "12.0.0-canary.197f64fa2.0"
-    "@material/elevation" "12.0.0-canary.197f64fa2.0"
-    "@material/ripple" "12.0.0-canary.197f64fa2.0"
-    "@material/rtl" "12.0.0-canary.197f64fa2.0"
-    "@material/shape" "12.0.0-canary.197f64fa2.0"
-    "@material/theme" "12.0.0-canary.197f64fa2.0"
-    "@material/typography" "12.0.0-canary.197f64fa2.0"
+    "@material/animation" "12.0.0-canary.22d29cbb4.0"
+    "@material/base" "12.0.0-canary.22d29cbb4.0"
+    "@material/elevation" "12.0.0-canary.22d29cbb4.0"
+    "@material/ripple" "12.0.0-canary.22d29cbb4.0"
+    "@material/rtl" "12.0.0-canary.22d29cbb4.0"
+    "@material/shape" "12.0.0-canary.22d29cbb4.0"
+    "@material/theme" "12.0.0-canary.22d29cbb4.0"
+    "@material/typography" "12.0.0-canary.22d29cbb4.0"
     tslib "^2.1.0"
 
-"@material/touch-target@12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/touch-target/-/touch-target-12.0.0-canary.197f64fa2.0.tgz#e44ad9e238449e82af2a66d1926c92bc9b227587"
-  integrity sha1-5ErZ4jhEnoKvKmbRkmySvJsidYc=
+"@material/touch-target@12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/touch-target/-/touch-target-12.0.0-canary.22d29cbb4.0.tgz#01b8141ef7f3af406ab62bee073b1e6e2c977c91"
+  integrity sha1-AbgUHvfzr0BqtivuBzsebiyXfJE=
   dependencies:
-    "@material/base" "12.0.0-canary.197f64fa2.0"
-    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
+    "@material/base" "12.0.0-canary.22d29cbb4.0"
+    "@material/feature-targeting" "12.0.0-canary.22d29cbb4.0"
     tslib "^2.1.0"
 
 "@material/touch-target@9.0.0-canary.1c156d69d.0":
@@ -3446,13 +3454,13 @@
     "@material/base" "9.0.0-canary.1c156d69d.0"
     "@material/feature-targeting" "9.0.0-canary.1c156d69d.0"
 
-"@material/typography@12.0.0-canary.197f64fa2.0":
-  version "12.0.0-canary.197f64fa2.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/typography/-/typography-12.0.0-canary.197f64fa2.0.tgz#54e6d412a6b55f7d2db2999f2fe6b3850939defe"
-  integrity sha1-VObUEqa1X30tspmfL+azhQk53v4=
+"@material/typography@12.0.0-canary.22d29cbb4.0":
+  version "12.0.0-canary.22d29cbb4.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/@material/typography/-/typography-12.0.0-canary.22d29cbb4.0.tgz#cb858a4cca6dcb12111f9e77a3f6711b30f3a4d3"
+  integrity sha1-y4WKTMptyxIRH553o/ZxGzDzpNM=
   dependencies:
-    "@material/feature-targeting" "12.0.0-canary.197f64fa2.0"
-    "@material/theme" "12.0.0-canary.197f64fa2.0"
+    "@material/feature-targeting" "12.0.0-canary.22d29cbb4.0"
+    "@material/theme" "12.0.0-canary.22d29cbb4.0"
     tslib "^2.1.0"
 
 "@material/typography@8.0.0-canary.01db89053.0":
@@ -12832,14 +12840,14 @@ lit-analyzer@^1.2.1:
     vscode-html-languageservice "3.1.0"
     web-component-analyzer "~1.1.1"
 
-lit-element@^2.0.0, lit-element@^2.2.1, lit-element@^2.4.0, lit-element@~2.4.0:
+lit-element@^2.0.0, lit-element@^2.2.1, lit-element@^2.4.0:
   version "2.4.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/lit-element/-/lit-element-2.4.0.tgz#b22607a037a8fc08f5a80736dddf7f3f5d401452"
   integrity sha1-siYHoDeo/Aj1qAc23d9/P11AFFI=
   dependencies:
     lit-html "^1.1.1"
 
-lit-element@^2.3.0:
+lit-element@^2.3.0, lit-element@^2.5.1:
   version "2.5.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/lit-element/-/lit-element-2.5.1.tgz#3fa74b121a6cd22902409ae3859b7847d01aa6b6"
   integrity sha1-P6dLEhps0ikCQJrjhZt4R9AaprY=
@@ -12860,6 +12868,11 @@ lit-html@^1.0.0, lit-html@^1.1.1, lit-html@^1.1.2, lit-html@^1.3.0:
   version "1.3.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/lit-html/-/lit-html-1.3.0.tgz#c80f3cc5793a6dea6c07172be90a70ab20e56034"
   integrity sha1-yA88xXk6bepsBxcr6QpwqyDlYDQ=
+
+lit-html@^1.4.1:
+  version "1.4.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/lit-html/-/lit-html-1.4.1.tgz#0c6f3ee4ad4eb610a49831787f0478ad8e9ae5e0"
+  integrity sha1-DG8+5K1OthCkmDF4fwR4rY6a5eA=
 
 load-bmfont@^1.3.1, load-bmfont@^1.4.0:
   version "1.4.1"

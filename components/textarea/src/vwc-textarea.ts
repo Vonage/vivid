@@ -7,8 +7,8 @@ import {
 import { TextArea as MWCTextArea } from '@material/mwc-textarea';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 import { style as vwcTextareaStyle } from './vwc-textarea.css';
-import { style as mwcTextareaStyle } from '@material/mwc-textarea/mwc-textarea-css.js';
-import { style as mwcTextfieldStyle } from '@material/mwc-textfield/mwc-textfield-css.js';
+import { styles as mwcTextareaStyles } from '@material/mwc-textarea/mwc-textarea.css.js';
+import { styles as mwcTextfieldStyles } from '@material/mwc-textfield/mwc-textfield.css.js';
 import { associateWithForm } from '@vonage/vvd-foundation/form-association';
 import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
 
@@ -22,8 +22,8 @@ declare global {
 // @ts-ignore
 MWCTextArea.styles = [
 	styleCoupling,
-	mwcTextareaStyle,
-	mwcTextfieldStyle,
+	mwcTextareaStyles,
+	mwcTextfieldStyles,
 	vwcTextareaStyle,
 ];
 

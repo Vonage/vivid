@@ -18,7 +18,7 @@ import { classMap } from 'lit-html/directives/class-map';
 import { TextField as MWCTextField } from '@material/mwc-textfield';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 import { style as vwcTextFieldStyle } from './vwc-textfield.css';
-import { style as mwcTextFieldStyle } from '@material/mwc-textfield/mwc-textfield-css.js';
+import { styles as mwcTextFieldStyles } from '@material/mwc-textfield/mwc-textfield.css.js';
 import { Shape } from '@vonage/vvd-foundation/constants';
 import { debounced, handleAutofocus } from '@vonage/vvd-foundation/general-utils';
 
@@ -37,7 +37,7 @@ type TextfieldShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-MWCTextField.styles = [styleCoupling, mwcTextFieldStyle, vwcTextFieldStyle];
+MWCTextField.styles = [styleCoupling, mwcTextFieldStyles, vwcTextFieldStyle];
 
 const INPUT_ELEMENT_SLOT_NAME = 'formInputElement';
 const INPUT_ELEMENT_CLASS_NAME = 'vivid-input-internal';

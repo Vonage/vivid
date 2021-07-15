@@ -2,7 +2,7 @@ import '@vonage/vvd-core';
 import { customElement, property } from 'lit-element';
 import { Button as MWCButton } from '@material/mwc-button';
 import { style as vwcButtonStyle } from './vwc-button.css';
-import { style as mwcButtonStyle } from '@material/mwc-button/styles-css.js';
+import { styles as mwcButtonStyles } from '@material/mwc-button/styles.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 import { Connotation, Shape } from '@vonage/vvd-foundation/constants';
 import { html, TemplateResult } from 'lit-element';
@@ -17,7 +17,7 @@ declare global {
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-MWCButton.styles = [styleCoupling, mwcButtonStyle, vwcButtonStyle];
+MWCButton.styles = [styleCoupling, mwcButtonStyles, vwcButtonStyle];
 
 const layouts = ['text', 'outlined', 'filled'];
 export type ButtonLayout = typeof layouts;
