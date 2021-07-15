@@ -1,4 +1,4 @@
-import { IconSize } from '@vonage/vvd-foundation/constants';
+import { IconSize, Connotation } from '@vonage/vvd-foundation/constants';
 import '@vonage/vvd-core';
 import {
 	LitElement,
@@ -38,11 +38,24 @@ const resolveIcon = memoizeWith(identity as () => string, (iconId = '') => (icon
 
 const setSvgAttribute = (name: string, value: string) => (svgText = '') => svgText.replace(/<svg[^>]*>/, tagText => tagText.replace(/<svg[^>]+/, attributesText => attributesText.split(' ').concat([name, value].filter(Boolean).join('=')).join(' ')));
 
+type IconConnotation = Extract<
+	Connotation,
+	| Connotation.Primary
+	| Connotation.CTA
+	| Connotation.Announcement
+	| Connotation.Success
+	| Connotation.Alert
+	| Connotation.Info
+	>;
+
 @customElement('vwc-icon')
 export class VWCIcon extends LitElement {
 	static get styles(): CSSResult {
 		return style;
 	}
+
+	@property({ type: String, reflect: true })
+	connotation?: IconConnotation;
 
 	@property({
 		attribute: true,

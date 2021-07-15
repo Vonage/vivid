@@ -1,4 +1,10 @@
-@use './vwc-icon-variables' as icon-variables;
+@use 'partials/vwc-icon-variables' as icon-variables;
+
+@use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation with (
+	$connotations-set: primary cta announcement success alert info
+);
+
+@include color-connotation.connotations-main;
 
 :host([size='small']) {
 	#{icon-variables.$icon-size-variable-name}: 16px;
@@ -34,7 +40,7 @@
 
 		> svg {
 			block-size: 100%;
-			fill: currentColor;
+			fill: var(#{color-connotation.$vvd-color-connotation}, currentColor);
 			inline-size: 100%;
 			vertical-align: super;
 		}

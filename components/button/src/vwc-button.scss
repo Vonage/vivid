@@ -1,7 +1,7 @@
 
 @forward './vwc-button-coupling';
 @use './vwc-button-variables' as button-variables;
-@use '@vonage/vwc-icon/src/vwc-icon-variables' as icon-variables;
+@use '@vonage/vwc-icon/src/partials/vwc-icon-variables' as icon-variables;
 @use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation with (
