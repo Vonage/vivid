@@ -225,6 +225,7 @@ vwc-notched-outline {
 
 .mdc-text-field--with-leading-icon.mdc-text-field--outlined
 .mdc-floating-label--float-above {
+	font-size: var(--mdc-typography-subtitle1-font-size);
 	transform: translateY(-18px);
 }
 .mdc-text-field--with-leading-icon.mdc-text-field--outlined
