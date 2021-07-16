@@ -3,7 +3,7 @@
 
 [![Compile & Test Sanity](https://github.com/Vonage/vivid/actions/workflows/compile-test-sanity.yml/badge.svg)](https://github.com/Vonage/vivid/actions/workflows/compile-test-sanity.yml)
 
-# Meet VIVID,
+# Meet VIVID, Test
 
 ### Vonage's design system
 
