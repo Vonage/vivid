@@ -1,13 +1,14 @@
 import { IconSize, Connotation } from '@vonage/vvd-foundation/constants';
 
+const iconConnotations = Object.values(Connotation).filter(c => [
+	Connotation.Primary, Connotation.CTA, Connotation.Announcement, Connotation.Success, Connotation.Alert, Connotation.Info
+].includes(c));
 
 export const argTypes = {
 	connotation: {
 		control: {
 			type: 'select',
-			options: Object.values(Connotation).filter(c => [
-				Connotation.Primary, Connotation.CTA, Connotation.Announcement, Connotation.Success, Connotation.Alert, Connotation.Info
-			].includes(c)),
+			options: [undefined, ...iconConnotations],
 		}
 	},
 	size: {
