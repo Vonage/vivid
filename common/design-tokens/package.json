@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vvd-design-tokens",
-	"version": "2.13.0",
+	"version": "2.14.0",
 	"description": "Vivid Design Tokens Builder",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/common/design-tokens#readme",
 	"license": "ISC",
@@ -27,6 +27,6 @@
 		"@vonage/vvd-design-tokens-properties": "0.6.3",
 		"lodash": "^4.17.21",
 		"ramda": "^0.27.1",
-		"style-dictionary": "^2.10.3"
+		"style-dictionary": "^3.0.1"
 	}
 }

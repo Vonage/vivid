@@ -1,0 +1,42 @@
+<%
+    // for backward compatibility we need to have the user explicitly hide it
+    const showFileHeader = (this.options && this.options.hasOwnProperty('showFileHeader')) ? this.options.showFileHeader : true;
+    if(showFileHeader) {
+        let header = '';
+        header += "/*\n  Do not edit directly";
+        header += "\n  Generated on " + new Date().toUTCString();
+        header += "\n*/\n";
+        print(header);
+				print('\n');
+    }
+
+		const types = allProperties.map(({ attributes: { type } }) => type);
+
+		const typesSet = new Set(types);
+
+    print(`export enum ${this.mapName||'tokens'} {`);
+
+		function toKebab(str) {
+			return str.replace(/[_\s]+/g, '-')
+		}
+
+		function toTitle(str) {
+			return toKebab(str)
+				.split('-')
+				.map(word => {
+					return word.slice(0, 1).toUpperCase() + word.slice(1)
+				})
+				.join('')
+		}
+
+		var indent = '	';
+
+		print(
+			Array.from(typesSet).map(type =>
+				`\n${indent}${toTitle(type)} = '${type}'`
+			)
+		);
+
+
+    print(`\n}`);
+%>

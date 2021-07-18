@@ -1,4 +1,4 @@
-import fonts from '@vonage/vvd-fonts/vvd-fonts.js';
+import { init as initFonts } from '@vonage/vvd-fonts/vvd-fonts.js';
 import schemeService, { SchemeOption } from '@vonage/vvd-scheme';
 
 const VVD_CONTEXT_ATTRIBUTE = 'data-vvd-context',
@@ -39,7 +39,7 @@ async function _applyConfiguration(
 	configuration: Partial<Configuration>
 ): Promise<Record<string, unknown>> {
 	const allResults = await Promise.all([
-		fonts.init(),
+		initFonts(),
 		schemeService.set(configuration.scheme),
 	]);
 	return Object.freeze({

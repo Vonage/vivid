@@ -1,3 +1,12 @@
+# [2.14.0](https://github.com/vonage/vivid/compare/v2.13.0...v2.14.0) (2021-07-13)
+
+
+### Bug Fixes
+
+* **vwc-datepicker:** next and prev month selected weeks text color ([603614c](https://github.com/vonage/vivid/commit/603614c8c0dd5232296c0f6c6db6d7cb34fe93e9))
+
+
+
 # [2.13.0](https://github.com/vonage/vivid/compare/v2.12.0...v2.13.0) (2021-07-04)
 
 
