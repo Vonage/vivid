@@ -101,10 +101,16 @@ async function doTest(page) {
 		.splice(-1, 1)[0];
 	const snapshotPath = `${SNAPSHOT_PATH}/${componentName}.png`;
 	await page.waitForLoadState('networkidle');
-	if (process.argv.includes('-u') || !fs.existsSync(snapshotPath)) {
+	if (process.argv.includes('-u')) {
 		console.log('Updating snapshot...');
+		await (new Promise(res => setTimeout(res, 200)));
 		await takeSnapshot(page, snapshotPath);
 	} else {
+		if (!fs.existsSync(snapshotPath)) {
+			console.error(`Missing snapshot for ${componentName}`);
+			process.exitCode = 1;
+			return;
+		}
 		const diff = await compareToSnapshot(page, snapshotPath);
 		if (diff.percent === 0) {
 			console.log('Visual Diff Passed!');
