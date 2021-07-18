@@ -44,7 +44,7 @@ LeadingToggle.args = { header: 'Campaign Details', leadingToggle: '' };
 export const Icon = Template.bind({});
 Icon.args = { header: 'Campaign Details', icon: 'chat-solid' };
 
-const SlottedIconTemplate = args => html`
+const SlottedIconsTemplate = args => html`
   <vwc-expansion-panel ...=${spread(args)}>
 		<vwc-icon type="thumbs-up-line" slot="icon"></vwc-icon>
 		<vwc-icon type="thumbs-down-line" slot="trailingIcon"></vwc-icon>
@@ -53,5 +53,5 @@ const SlottedIconTemplate = args => html`
   </vwc-expansion-panel>
 `;
 
-export const SlottedIcon = SlottedIconTemplate.bind({});
-SlottedIcon.args = { header: 'Campaign Details' };
+export const SlottedIcons = SlottedIconsTemplate.bind({});
+SlottedIcons.args = { header: 'Campaign Details' };
