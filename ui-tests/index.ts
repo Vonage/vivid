@@ -85,7 +85,7 @@ async function runImageComparison() {
 async function runTestOnComponent(browser, componentName) {
 	const page = await browser.newPage();
 	const testUrl = `${SERVER_URL}/${componentName}`;
-	await page.goto(testUrl);
+	page.goto(testUrl);
 	return new Promise((res) => {
 		page.context()
 			.exposeBinding('doTest', async ({ page }) => {
