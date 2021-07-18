@@ -16,6 +16,13 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 @include color-connotation.connotations-main;
 @include color-connotation.connotations-main-default(primary);
 
+@include shape-mixins.shape(
+	$shapes: (
+		rounded: 6px,
+	),
+	$default: ''
+);
+
 :host {
 	--mdc-list-side-padding: var(#{$vvd-list-item-side-padding});
 	--mdc-list-item-graphic-margin: var(#{$vvd-list-item-graphic-margin});
@@ -108,9 +115,6 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 	display: flex;
 }
 
-@include shape-mixins.shape(
-	$shapes: (
-		rounded: 6px,
-	),
-	$default: ''
-);
+.mdc-deprecated-list ::slotted([divider]) {
+	border-bottom-color: var(#{scheme-variables.$vvd-color-neutral-30});
+}

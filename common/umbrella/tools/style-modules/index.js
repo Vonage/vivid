@@ -41,7 +41,7 @@ fileStreamFromGlob(joinPath(process.cwd(), basePath, sourcePattern))
 									.map(prefixWith(path))
 									.flatMap((basePath)=> ["", "scss", "sass"].map(suffixWith(basePath)))
 							].map((probePath)=> kefir.fromNodeCallback((cb) => {
-								const res = fp.attempt(() => require.resolve(probePath));
+								const res = fp.attempt(() => require.resolve(probePath, { paths: [process.cwd()] }));
 								cb(fp.isError(res) && res, res);
 							}))
 						)
