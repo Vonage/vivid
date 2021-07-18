@@ -27,9 +27,9 @@ jobs:
       - uses: Vonage/beame@main
         with:
           direction: down
-      - run: ls -al ./node_modules/bin
+      - run: ls -al ./node_modules/.bin
       #- uses: actions/setup-node@v2
-      #- run: yarn lerna bootstrap
-      #- run: du -sh
-      #- run: yarn storybook:build
+      - run: yarn lerna bootstrap
+      - run: du -sh
+      - run: yarn storybook:build
 ##
