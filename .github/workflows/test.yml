@@ -16,6 +16,7 @@ jobs:
           yarn_always_auth: true
           yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
           yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
+      - run: yarn lerna bootstrap
       - run: yarn compile
       - run: du -sh
       - uses: Vonage/beame@main
@@ -26,5 +27,6 @@ jobs:
       - uses: Vonage/beame@main
         with:
           direction: down
+      - run: yarn lerna link
       - run: yarn storybook:build
 ##
