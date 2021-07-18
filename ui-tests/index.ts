@@ -52,7 +52,8 @@ async function compareImages(img1Path, img2Path): Promise<ComparisonResult> {
 
 async function takeSnapshot(page, snapshotPath) {
 	const componentName = snapshotPath.substring(snapshotPath.lastIndexOf('/') + 1, snapshotPath.lastIndexOf('.'));
-	const elementId = `#${pascalCase(componentName).replace('Snapshot', '')}`;
+	const elementId = `#${pascalCase(componentName)
+		.replace('Snapshot', '')}`;
 	const element = await page.$(elementId);
 	let screenShotHandler = element;
 	if (await element.getAttribute('testWholePage')) {
