@@ -1,9 +1,14 @@
+$icon-color-connotation: --vvd-icon-color-connotation;
+$icon-color-on-connotation: --vvd-icon-color-on-connotation;
+
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation with (
-	$connotations-set: primary cta announcement success alert info
+	$connotations-set: primary cta announcement success alert info,
+	$connotation-variable: #{$icon-color-connotation},
+	$on-connotation-variable: #{$icon-color-on-connotation}
 );
 
 @include color-connotation.connotations-main;
 
 :host {
-	color: var(#{color-connotation.$vvd-color-connotation}, currentColor);
+	color: var(#{$icon-color-connotation}, currentColor);
 }
