@@ -102,7 +102,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 		if (this.leadingToggle) {
 			return this.renderToggle();
 		} else if (this.icon) {
-			return html`<vwc-icon type="${this.icon}"></vwc-icon>`;
+			return html`<vwc-icon type="${this.icon}" size="medium"></vwc-icon>`;
 		} else {
 			return '';
 		}

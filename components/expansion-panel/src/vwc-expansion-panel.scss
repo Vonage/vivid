@@ -39,18 +39,26 @@
 		display: flex;
 
 		vwc-icon {
-			#{icon-variables.$icon-size-variable-name}: var(#{expansion-panel-variables.$expansion-panel-icon-size-variable-name}, 16px);
+			#{icon-variables.$icon-size-variable-name}: var(#{expansion-panel-variables.$expansion-panel-icon-size-variable-name}, 20px);
 		}
 	}
 
-	.leading-icon vwc-icon {
-		margin-inline-end: 16px;
+	.leading-icon {
+		/* stylelint-disable selector-no-qualifying-type */
+		vwc-icon,
+		slot[name="icon"i]::slotted(vwc-icon) {
+			/* stylelint-enable selector-no-qualifying-type */
+			margin-inline-end: 16px;
+		}
 	}
 
 	.trailing-icon {
-		margin-left: auto;
+		margin-inline-start: auto;
 
-		vwc-icon {
+		/* stylelint-disable selector-no-qualifying-type */
+		vwc-icon,
+		slot[name="trailingIcon"i]::slotted(vwc-icon) {
+			/* stylelint-enable selector-no-qualifying-type */
 			margin-inline-start: 16px;
 		}
 	}
