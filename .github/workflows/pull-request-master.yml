@@ -121,7 +121,6 @@ jobs:
       max-parallel: 10
       matrix:
         script:
-          - dep-check
           - lint
         include:
           - script: lint
