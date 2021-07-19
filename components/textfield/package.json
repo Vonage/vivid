@@ -39,6 +39,7 @@
 		"tslib": "^2.3.0"
 	},
 	"devDependencies": {
+		"@vonage/vwc-icon-button": "2.14.0",
 		"@vonage/vvd-design-tokens": "2.14.0",
 		"@vonage/vvd-typography": "2.14.0",
 		"@vonage/vvd-umbrella": "2.14.0",
