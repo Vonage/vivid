@@ -12,6 +12,7 @@
 $vvd-list-item-block-size: --vvd-list-item-block-size;
 $vvd-list-item-side-padding: --vvd-list-item-side-padding;
 $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
+$vvd-list-item-bottom-border-color: --vvd-list-item-bottom-border-color;
 
 @include color-connotation.connotations-main;
 @include color-connotation.connotations-main-default(primary);
@@ -83,7 +84,7 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 		bottom: 0;
 		left: var(#{$vvd-list-item-side-padding});
 		height: 1px;
-		border-bottom: 1px solid var(#{scheme-variables.$vvd-color-neutral-30});
+		border-bottom: 1px solid var(#{$vvd-list-item-bottom-border-color}, var(#{scheme-variables.$vvd-color-neutral-30}));
 		content: '';
 	}
 
