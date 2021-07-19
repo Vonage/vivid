@@ -92,7 +92,7 @@ $vvd-list-divider: --vvd-list-divider;
 		bottom: 0;
 		left: var(#{$vvd-list-item-side-padding});
 		height: 1px;
-		border-bottom: 1px solid var(#{$vvd-list-color-divider});
+		border-bottom: 1px solid var(#{variables.$vvd-list-color-divider});
 		content: '';
 	}
 
