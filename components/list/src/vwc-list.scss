@@ -1,5 +1,7 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
-@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
+
+@use './partials/vwc-list-variables' as variables;
 
 :host {
 	--mdc-menu-item-height: 40px;
@@ -12,7 +14,13 @@
 		#{scheme-variables.$vvd-color-neutral-70}
 	);
 
+	#{$vvd-list-color-divider}: var(#{scheme-variables.$vvd-color-neutral-30});
+
 	.mdc-deprecated-list {
 		@include typography.typography-cat-shorthand('body-2');
+	}
+
+	.mdc-deprecated-list ::slotted([divider]) {
+		border-bottom-color: var(#{$vvd-list-color-divider});
 	}
 }

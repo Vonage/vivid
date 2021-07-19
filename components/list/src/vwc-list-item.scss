@@ -8,11 +8,12 @@
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' with (
 	$variable-name: --vvd-list-item-shape
 );
+@use './partials/vwc-list-variables' as variables;
 
 $vvd-list-item-block-size: --vvd-list-item-block-size;
 $vvd-list-item-side-padding: --vvd-list-item-side-padding;
 $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
-$vvd-list-item-bottom-border-color: --vvd-list-item-bottom-border-color;
+$vvd-list-divider: --vvd-list-divider;
 
 @include color-connotation.connotations-main;
 @include color-connotation.connotations-main-default(primary);
@@ -91,7 +92,7 @@ $vvd-list-item-bottom-border-color: --vvd-list-item-bottom-border-color;
 		bottom: 0;
 		left: var(#{$vvd-list-item-side-padding});
 		height: 1px;
-		border-bottom: 1px solid var(#{$vvd-list-item-bottom-border-color}, var(#{scheme-variables.$vvd-color-neutral-30}));
+		border-bottom: 1px solid var(#{$vvd-list-color-divider});
 		content: '';
 	}
 
@@ -110,8 +111,4 @@ $vvd-list-item-bottom-border-color: --vvd-list-item-bottom-border-color;
 
 .mdc-deprecated-list-item__meta {
 	display: flex;
-}
-
-.mdc-deprecated-list ::slotted([divider]) {
-	border-bottom-color: var(#{$vvd-list-item-bottom-border-color}, var(#{scheme-variables.$vvd-color-neutral-30}));
 }
