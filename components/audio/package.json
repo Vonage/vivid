@@ -35,6 +35,9 @@
 		"ramda": "^0.27.1"
 	},
 	"devDependencies": {
+		"@vonage/vvd-foundation": "2.14.0",
+		"@vonage/vvd-typography": "2.14.0",
+		"@vonage/vvd-design-tokens": "2.14.0",
 		"@vonage/vvd-umbrella": "2.14.0",
 		"typescript": "^4.3.2"
 	}

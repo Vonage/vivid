@@ -124,8 +124,6 @@ jobs:
           - dep-check
           - lint
         include:
-          - script: dep-check
-            script_name: Test package dependencies
           - script: lint
             script_name: Test Lint rules
     steps:
