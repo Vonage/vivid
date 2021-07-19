@@ -113,5 +113,5 @@ $vvd-list-item-bottom-border-color: --vvd-list-item-bottom-border-color;
 }
 
 .mdc-deprecated-list ::slotted([divider]) {
-	border-bottom-color: var(#{scheme-variables.$vvd-color-neutral-30});
+	border-bottom-color: var(#{$vvd-list-item-bottom-border-color}, var(#{scheme-variables.$vvd-color-neutral-30}));
 }
