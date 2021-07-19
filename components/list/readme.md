@@ -152,3 +152,9 @@ This component is an extension of [<mwc-radio-list-item>](https://github.com/mat
 | -------------------- | ----------------------- |
 | `list-item-rendered` |                         |
 | `request-selected`   | `RequestSelectedDetail` |
+
+## CSS Variables
+
+| Variable           | Host Element | Comments                      |
+| ------------------ | --------- | ------------------------- |
+| `--vvd-list-color-divider`        |           | `boolean`                 |
