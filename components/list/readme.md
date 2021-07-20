@@ -1,4 +1,6 @@
-This component is an extension of [<mwc-check-list-item>](https://github.com/material-components/material-components-web-components/tree/master/packages/list)
+# vwc-list
+
+This component is an extension of [<mwc-check-list>](https://github.com/material-components/material-components-web-components/tree/master/packages/list)
 
 ## Properties
 
@@ -45,12 +47,14 @@ This component support expand-collapse list
 | `close`       | `(): void`                |                                                                                                                                                                              |
 | `notifyClose` | `(): void`                |                                                                                                                                                                              |
 | `notifyOpen`  | `(): void`                |                                                                                                                                                                              |
-| `openChanged` | `(isOpen: boolean): void` | Invoked when the element open state is updated.<br /><br />Expressions inside this method will trigger upon open state change<br /><br />**\_isOpen**: Boolean of open state |
+| `openChanged` | `(isOpen: boolean): void` | Invoked when the element open state is updated.<br /><br />Expressions inside this method will trigger upon open state change<br /><br />**
+\_isOpen**: Boolean of open state |
 | `show`        | `(): void`                |                                                                                                                                                                              |
 
 # vwc-list-item
 
-This component is an extension of [<mwc-list-item>](https://github.com/material-components/material-components-web-components/tree/master/packages/list)
+This component is an extension
+of [<mwc-list-item>](https://github.com/material-components/material-components-web-components/tree/master/packages/list)
 
 ## Properties
 
@@ -79,7 +83,8 @@ This component is an extension of [<mwc-list-item>](https://github.com/material-
 
 # vwc-list
 
-This component is an extension of [<mwc-list>](https://github.com/material-components/material-components-web-components/tree/master/packages/list)
+This component is an extension
+of [<mwc-list>](https://github.com/material-components/material-components-web-components/tree/master/packages/list)
 
 ## Properties
 
@@ -125,7 +130,8 @@ This component is an extension of [<mwc-list>](https://github.com/material-compo
 
 # vwc-radio-list-item
 
-This component is an extension of [<mwc-radio-list-item>](https://github.com/material-components/material-components-web-components/tree/master/packages/list)
+This component is an extension
+of [<mwc-radio-list-item>](https://github.com/material-components/material-components-web-components/tree/master/packages/list)
 
 ## Properties
 
@@ -152,3 +158,9 @@ This component is an extension of [<mwc-radio-list-item>](https://github.com/mat
 | -------------------- | ----------------------- |
 | `list-item-rendered` |                         |
 | `request-selected`   | `RequestSelectedDetail` |
+
+## CSS Variables
+
+| Variable           | Host Element | Comments                      |
+| ------------------ | --------- | ------------------------- |
+| `--vvd-list-color-divider`        |     vwc-list      | `boolean`                 |

@@ -1,7 +1,7 @@
 @forward './vwc-list-text-parts.scss';
 
 :host {
-	--mdc-list-side-padding: 24px;
+	--mdc-list-side-padding: 16px;
 }
 
 :host(:not([twoline])) {

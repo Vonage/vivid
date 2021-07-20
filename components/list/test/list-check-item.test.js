@@ -69,7 +69,7 @@ describe('check list item', () => {
 			const listItem = await prepareConfiguredItem(false, false);
 			const checkbox = listItem.shadowRoot.querySelector('mwc-checkbox');
 			assertComputedStyle(checkbox, { width: '22px', height: '22px' });
-			assertDistancePixels(listItem, checkbox, 'right', 24);
+			assertDistancePixels(listItem, checkbox, 'right', 16);
 			assertDistancePixels(listItem, checkbox, 'top', 9);
 		});
 
@@ -77,7 +77,7 @@ describe('check list item', () => {
 			const listItem = await prepareConfiguredItem(true, false);
 			const checkbox = listItem.shadowRoot.querySelector('mwc-checkbox');
 			assertComputedStyle(checkbox, { width: '22px', height: '22px' });
-			assertDistancePixels(listItem, checkbox, 'left', 24);
+			assertDistancePixels(listItem, checkbox, 'left', 16);
 			assertDistancePixels(listItem, checkbox, 'top', 9);
 		});
 
@@ -85,7 +85,7 @@ describe('check list item', () => {
 			const listItem = await prepareConfiguredItem(false, true);
 			const checkbox = listItem.shadowRoot.querySelector('mwc-checkbox');
 			assertComputedStyle(checkbox, { width: '22px', height: '22px' });
-			assertDistancePixels(listItem, checkbox, 'right', 24);
+			assertDistancePixels(listItem, checkbox, 'right', 16);
 			assertDistancePixels(listItem, checkbox, 'top', 25);
 		});
 
@@ -93,7 +93,7 @@ describe('check list item', () => {
 			const listItem = await prepareConfiguredItem(true, true);
 			const checkbox = listItem.shadowRoot.querySelector('mwc-checkbox');
 			assertComputedStyle(checkbox, { width: '22px', height: '22px' });
-			assertDistancePixels(listItem, checkbox, 'left', 24);
+			assertDistancePixels(listItem, checkbox, 'left', 16);
 			assertDistancePixels(listItem, checkbox, 'top', 25);
 		});
 	});
