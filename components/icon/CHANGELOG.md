@@ -1,3 +1,12 @@
+# [2.15.0](https://github.com/Vonage/vivid/compare/v2.14.0...v2.15.0) (2021-07-20)
+
+
+### Features
+
+* **vwc-icon:** connotation support ([#957](https://github.com/Vonage/vivid/issues/957)) ([c7bbfac](https://github.com/Vonage/vivid/commit/c7bbfac08f9cbd39ebcaabd7c9f24a45758f1f2f))
+
+
+
 # [2.14.0](https://github.com/Vonage/vivid/compare/v2.13.0...v2.14.0) (2021-07-13)
 
 

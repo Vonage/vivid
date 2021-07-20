@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.15.0](https://github.com/Vonage/vivid/compare/v2.14.0...v2.15.0) (2021-07-20)
+
+
+### Bug Fixes
+
+* dropdown padding ([#971](https://github.com/Vonage/vivid/issues/971)) ([b6f12d6](https://github.com/Vonage/vivid/commit/b6f12d6d60c3ea713bad31d188c1b46f7fbca550))
+* **expansion-panel:** add styles to slotted icons ([#960](https://github.com/Vonage/vivid/issues/960)) ([d67ac15](https://github.com/Vonage/vivid/commit/d67ac15593bfc364ef092a392b17e7e2c1b8efdc))
+* **textfield:** patched constructed stylesheet for textfield ([#954](https://github.com/Vonage/vivid/issues/954)) ([3010349](https://github.com/Vonage/vivid/commit/301034986d29b6a75d11b4503697989f436829d3))
+* **vwc-list:** list item divider color as token ([#955](https://github.com/Vonage/vivid/issues/955)) ([e535527](https://github.com/Vonage/vivid/commit/e535527dcaa5d8fabbe8eb4d7f3ac530fbc51e36))
+
+
+### Features
+
+* **list:** new divider color api ([#968](https://github.com/Vonage/vivid/issues/968)) ([1371016](https://github.com/Vonage/vivid/commit/13710161030725a5de77e49cd22723356abd6417))
+* **vwc-icon:** connotation support ([#957](https://github.com/Vonage/vivid/issues/957)) ([c7bbfac](https://github.com/Vonage/vivid/commit/c7bbfac08f9cbd39ebcaabd7c9f24a45758f1f2f))
+
+
+
+
+
 # [2.14.0](https://github.com/Vonage/vivid/compare/v2.13.0...v2.14.0) (2021-07-13)
 
 
