@@ -69,7 +69,7 @@ describe('check list item', () => {
 			const listItem = await prepareConfiguredItem(false, false);
 			const checkbox = listItem.shadowRoot.querySelector('mwc-checkbox');
 			assertComputedStyle(checkbox, { width: '22px', height: '22px' });
-			assertDistancePixels(listItem, checkbox, 'right', 24);
+			assertDistancePixels(listItem, checkbox, 'right', 16);
 			assertDistancePixels(listItem, checkbox, 'top', 9);
 		});
 
