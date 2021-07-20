@@ -5,7 +5,7 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types-list-item.js';
 
 export default {
-	title: 'Components/List (list item)',
+	title: 'Components/List/list item',
 	component: 'vwc-list-item',
 	argTypes
 };
