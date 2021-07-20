@@ -4,7 +4,6 @@ on:
 jobs:
   post_publish:
     name: Post publish
-    needs: publish
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout
