@@ -1,0 +1,15 @@
+name: Release
+on:
+  push
+jobs:
+  notify_slack:
+    needs: publish
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/setup-node@v2
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Send slack notification
+        run: git log --format=oneline --decorate=short | node ./scripts/release_announcer --slackHookUrl="${{ secrets.SLACK_WEBHOOK }}"
