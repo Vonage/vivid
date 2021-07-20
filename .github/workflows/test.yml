@@ -10,5 +10,6 @@ jobs:
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: Send slack notification
+      - run: npm ci
+      - name: Send Slack notification
         run: git log --format=oneline --decorate=short | node ./scripts/release_announcer --slackHookUrl="${{ secrets.SLACK_WEBHOOK }}"
