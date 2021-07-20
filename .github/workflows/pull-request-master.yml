@@ -15,6 +15,7 @@ concurrency:
 
 jobs:
   build:
+    if: github.event.pull_request.draft == false
     name: Build
     runs-on: ubuntu-20.04
     steps:
@@ -39,6 +40,7 @@ jobs:
           name: workspace
           path: /tmp/vivid-env.tar.gz
   test:
+    if: github.event.pull_request.draft == false
     needs: build
     name: "Test Components on ${{ matrix.browser_name }}"
     runs-on: ${{ matrix.os }}
@@ -89,6 +91,7 @@ jobs:
           flag-name: Tested on ${{ matrix.os }} / ${{ matrix.browser }}
 
   test_for_visual_regression:
+    if: github.event.pull_request.draft == false
     needs: build
     name: Test Components' Graphics
     runs-on: macos-latest
@@ -114,6 +117,7 @@ jobs:
           path: ./ui-tests/snapshots/*.png
 
   test_static:
+    if: github.event.pull_request.draft == false
     needs: build
     name: ${{ matrix.script_name }}
     runs-on: ubuntu-20.04
