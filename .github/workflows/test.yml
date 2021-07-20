@@ -2,14 +2,20 @@ name: Release
 on:
   push
 jobs:
-  notify_slack:
+  post_publish:
+    name: Post publish
+    needs: publish
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/setup-node@v2
       - name: Checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - run: npm ci
-      - name: Send Slack notification
+      - uses: actions/setup-node@v2
+
+      ### REMOVE
+      - run: npm install lodash split minimist kefir semver-diff
+
+      # Notify community
+      - name: Notify slack
         run: git log --format=oneline --decorate=short | node ./scripts/release_announcer --slackHookUrl="${{ secrets.SLACK_WEBHOOK }}"
