@@ -4848,6 +4848,11 @@
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@types/command-line-usage/5.0.1/319af49ff143a2db2f574b4b29c6de4cce2e66329c246fa268963fc6ce5db056#c148eb5c625b1eaebff2ae7b9524dd94910f6f39"
   integrity sha1-wUjrXGJbHq6/8q57lSTdlJEPbzk=
 
+"@types/component-emitter@^1.2.10":
+  version "1.2.10"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@types/component-emitter/1.2.10/851d989deeedb3ac8bc62141d164fe745d254206d6e3614a96598cf94894d662#ef5b1589b9f16544642e473db5ea5639107ef3ea"
+  integrity sha1-71sVibnxZURkLkc9tepWORB+8+o=
+
 "@types/connect@*":
   version "3.4.34"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@types/connect/3.4.34/87432aedd4cb1e11f1308cece9120fe7f9fbc17a7c13cd510a616e741cb1d34c#170a40223a6d666006d93ca128af2beb1d9b1901"
@@ -4860,6 +4865,11 @@
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@types/content-disposition/0.5.3/6d5178ffc07a6e75b763ca4d8a4b6269f8ea2c55863dbb66f3a445a0e62266bc#0aa116701955c2faa0717fc69cd1596095e49d96"
   integrity sha1-CqEWcBlVwvqgcX/GnNFZYJXknZY=
 
+"@types/cookie@^0.4.0":
+  version "0.4.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@types/cookie/0.4.1/6c1197fa72c21905bf02ae581d72935750e88c848ded54b44fe02eb32e9ab063#bfd02c1f2224567676c1545199f87c3a861d878d"
+  integrity sha1-v9AsHyIkVnZ2wVRRmfh8OoYdh40=
+
 "@types/cookies@*":
   version "0.7.6"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@types/cookies/0.7.6/98ff86f15db6e435bcb5519604b9f1d75e185a8c9a77bf1e729ae00918b6ff24#71212c5391a976d3bae57d4b09fac20fc6bda504"
@@ -4869,6 +4879,11 @@
     "@types/express" "*"
     "@types/keygrip" "*"
     "@types/node" "*"
+
+"@types/cors@^2.8.8":
+  version "2.8.12"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@types/cors/2.8.12/6ccf3c36a503b4a1cf04baf0e246ae83701a021c95f0b579a69fd74dd9c0fb0b#6b2c510a7ad7039e98e7b8d3d6598f4359e5c080"
+  integrity sha1-ayxRCnrXA56Y57jT1lmPQ1nlwIA=
 
 "@types/debounce@^1.2.0":
   version "1.2.0"
@@ -5151,6 +5166,11 @@
   version "14.14.33"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@types/node/14.14.33/803fd999a315521616d472129762b2dad8d39f14e486f3d56a379006e1f85b78#9e4f8c64345522e4e8ce77b334a8aaa64e2b6c78"
   integrity sha1-nk+MZDRVIuToznezNKiqpk4rbHg=
+
+"@types/node@>=10.0.0":
+  version "16.3.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/download/@types/node/16.3.2/4fdfff3cd688533e835717a8962d77acbfdfd47c445ae2a8c6790ab7bbbca2a2#655432817f83b51ac869c2d51dd8305fb8342e16"
+  integrity sha1-ZVQygX+DtRrIacLVHdgwX7g0LhY=
 
 "@types/node@^14.0.10":
   version "14.14.37"
@@ -6581,7 +6601,7 @@ base64-js@^1.0.2, base64-js@^1.3.1:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/base64-js/-/base64-js-1.5.1.tgz#1b1b440160a5bf7ad40b650f095963481903930a"
   integrity sha1-GxtEAWClv3rUC2UPCVljSBkDkwo=
 
-base64id@2.0.0:
+base64id@2.0.0, base64id@~2.0.0:
   version "2.0.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/base64id/-/base64id-2.0.0.tgz#2770ac6bc47d312af97a8bf9a634342e0cd25cb6"
   integrity sha1-J3Csa8R9MSr5eov5pjQ0LgzSXLY=
@@ -8146,6 +8166,14 @@ core-util-is@1.0.2, core-util-is@~1.0.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
   integrity sha1-tf1UIgqivFq1eqtxQMlAdUUDwac=
 
+cors@~2.8.5:
+  version "2.8.5"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/cors/-/cors-2.8.5.tgz#eac11da51592dd86b9f06f6e7ac293b3df875d29"
+  integrity sha1-6sEdpRWS3Ya58G9uesKTs9+HXSk=
+  dependencies:
+    object-assign "^4"
+    vary "^1"
+
 cosmiconfig@^6.0.0:
   version "6.0.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/cosmiconfig/-/cosmiconfig-6.0.0.tgz#da4fee853c52f6b1e6935f41c1a2fc50bd4a9982"
@@ -8459,6 +8487,13 @@ debug@~4.1.0:
   integrity sha1-O3ImAlUQnGtYnO4FDx1RYTlmR5E=
   dependencies:
     ms "^2.1.1"
+
+debug@~4.3.1:
+  version "4.3.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/debug/-/debug-4.3.2.tgz#f0a49c18ac8779e31d4a0c6029dfb76873c7428b"
+  integrity sha1-8KScGKyHeeMdSgxgKd+3aHPHQos=
+  dependencies:
+    ms "2.1.2"
 
 debuglog@^1.0.1:
   version "1.0.1"
@@ -9136,6 +9171,13 @@ engine.io-parser@~2.2.0:
     blob "0.0.5"
     has-binary2 "~1.0.2"
 
+engine.io-parser@~4.0.0:
+  version "4.0.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/engine.io-parser/-/engine.io-parser-4.0.2.tgz#e41d0b3fb66f7bf4a3671d2038a154024edb501e"
+  integrity sha1-5B0LP7Zve/SjZx0gOKFUAk7bUB4=
+  dependencies:
+    base64-arraybuffer "0.1.4"
+
 engine.io@~3.5.0:
   version "3.5.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/engine.io/-/engine.io-3.5.0.tgz#9d6b985c8a39b1fe87cd91eb014de0552259821b"
@@ -9146,6 +9188,19 @@ engine.io@~3.5.0:
     cookie "~0.4.1"
     debug "~4.1.0"
     engine.io-parser "~2.2.0"
+    ws "~7.4.2"
+
+engine.io@~4.1.0:
+  version "4.1.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/engine.io/-/engine.io-4.1.1.tgz#9a8f8a5ac5a5ea316183c489bf7f5b6cf91ace5b"
+  integrity sha1-mo+KWsWl6jFhg8SJv39bbPkazls=
+  dependencies:
+    accepts "~1.3.4"
+    base64id "2.0.0"
+    cookie "~0.4.1"
+    cors "~2.8.5"
+    debug "~4.3.1"
+    engine.io-parser "~4.0.0"
     ws "~7.4.2"
 
 enhanced-resolve@^4.5.0:
@@ -10691,6 +10746,18 @@ glob@7.1.6, glob@^7.0.0, glob@^7.0.3, glob@^7.0.5, glob@^7.1.1, glob@^7.1.2, glo
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
+glob@^7.1.7:
+  version "7.1.7"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/glob/-/glob-7.1.7.tgz#3b193e9233f01d42d0b3f78294bbeeb418f94a90"
+  integrity sha1-Oxk+kjPwHULQs/eClLvutBj5SpA=
+  dependencies:
+    fs.realpath "^1.0.0"
+    inflight "^1.0.4"
+    inherits "2"
+    minimatch "^3.0.4"
+    once "^1.3.0"
+    path-is-absolute "^1.0.0"
+
 global-modules@2.0.0, global-modules@^2.0.0:
   version "2.0.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/global-modules/-/global-modules-2.0.0.tgz#997605ad2345f27f51539bea26574421215c7780"
@@ -10819,7 +10886,7 @@ got@^11.8.1:
     p-cancelable "^2.0.0"
     responselike "^2.0.0"
 
-graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.1.9, graceful-fs@^4.2.0, graceful-fs@^4.2.2, graceful-fs@^4.2.3, graceful-fs@^4.2.4:
+graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.1.9, graceful-fs@^4.2.0, graceful-fs@^4.2.2, graceful-fs@^4.2.3, graceful-fs@^4.2.4, graceful-fs@^4.2.6:
   version "4.2.6"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/graceful-fs/-/graceful-fs-4.2.6.tgz#ff040b2b0853b23c3d31027523706f1885d76bee"
   integrity sha1-/wQLKwhTsjw9MQJ1I3BvGIXXa+4=
@@ -12047,6 +12114,11 @@ isbinaryfile@^4.0.2, isbinaryfile@^4.0.6:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/isbinaryfile/-/isbinaryfile-4.0.6.tgz#edcb62b224e2b4710830b67498c8e4e5a4d2610b"
   integrity sha1-7ctisiTitHEIMLZ0mMjk5aTSYQs=
 
+isbinaryfile@^4.0.8:
+  version "4.0.8"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/isbinaryfile/-/isbinaryfile-4.0.8.tgz#5d34b94865bd4946633ecc78a026fc76c5b11fcf"
+  integrity sha1-XTS5SGW9SUZjPsx4oCb8dsWxH88=
+
 isexe@^2.0.0:
   version "2.0.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
@@ -12504,7 +12576,7 @@ karma-source-map-support@^1.3.0:
   dependencies:
     source-map-support "^0.5.5"
 
-karma@^5.1.1, karma@^5.2.3:
+karma@^5.1.1:
   version "5.2.3"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/karma/-/karma-5.2.3.tgz#3264024219bad2728e92542e0058a2492d7a46e4"
   integrity sha1-MmQCQhm60nKOklQuAFiiSS16RuQ=
@@ -12532,6 +12604,35 @@ karma@^5.1.1, karma@^5.2.3:
     tmp "0.2.1"
     ua-parser-js "0.7.22"
     yargs "^15.3.1"
+
+karma@^6.3.4:
+  version "6.3.4"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/karma/-/karma-6.3.4.tgz#359899d3aab3d6b918ea0f57046fd2a6b68565e6"
+  integrity sha1-NZiZ06qz1rkY6g9XBG/SpraFZeY=
+  dependencies:
+    body-parser "^1.19.0"
+    braces "^3.0.2"
+    chokidar "^3.5.1"
+    colors "^1.4.0"
+    connect "^3.7.0"
+    di "^0.0.1"
+    dom-serialize "^2.2.1"
+    glob "^7.1.7"
+    graceful-fs "^4.2.6"
+    http-proxy "^1.18.1"
+    isbinaryfile "^4.0.8"
+    lodash "^4.17.21"
+    log4js "^6.3.0"
+    mime "^2.5.2"
+    minimatch "^3.0.4"
+    qjobs "^1.2.0"
+    range-parser "^1.2.1"
+    rimraf "^3.0.2"
+    socket.io "^3.1.0"
+    source-map "^0.6.1"
+    tmp "^0.2.1"
+    ua-parser-js "^0.7.28"
+    yargs "^16.1.1"
 
 kefir@^3.8.7, kefir@^3.8.8:
   version "3.8.8"
@@ -13076,7 +13177,7 @@ log4js@^4.0.0:
     rfdc "^1.1.4"
     streamroller "^1.0.6"
 
-log4js@^6.2.1:
+log4js@^6.2.1, log4js@^6.3.0:
   version "6.3.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/log4js/-/log4js-6.3.0.tgz#10dfafbb434351a3e30277a00b9879446f715bcb"
   integrity sha1-EN+vu0NDUaPjAnegC5h5RG9xW8s=
@@ -13576,7 +13677,7 @@ mime@1.6.0, mime@^1.3.4:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/mime/-/mime-1.6.0.tgz#32cd9e5c64553bd58d19a568af452acff04981b1"
   integrity sha1-Ms2eXGRVO9WNGaVor0Uqz/BJgbE=
 
-mime@^2.4.4, mime@^2.4.5, mime@^2.4.6:
+mime@^2.4.4, mime@^2.4.5, mime@^2.4.6, mime@^2.5.2:
   version "2.5.2"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/mime/-/mime-2.5.2.tgz#6e3dc6cc2b9510643830e5f19d5cb753da5eeabe"
   integrity sha1-bj3GzCuVEGQ4MOXxnVy3U9pe6r4=
@@ -14319,7 +14420,7 @@ oauth-sign@~0.9.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/oauth-sign/-/oauth-sign-0.9.0.tgz#47a7b016baa68b5fa0ecf3dee08a85c679ac6455"
   integrity sha1-R6ewFrqmi1+g7PPe4IqFxnmsZFU=
 
-object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
+object-assign@^4, object-assign@^4.0.1, object-assign@^4.1.0, object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
   integrity sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=
@@ -17226,6 +17327,11 @@ socket.io-adapter@~1.1.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/socket.io-adapter/-/socket.io-adapter-1.1.2.tgz#ab3f0d6f66b8fc7fca3959ab5991f82221789be9"
   integrity sha1-qz8Nb2a4/H/KOVmrWZH4IiF4m+k=
 
+socket.io-adapter@~2.1.0:
+  version "2.1.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/socket.io-adapter/-/socket.io-adapter-2.1.0.tgz#edc5dc36602f2985918d631c1399215e97a1b527"
+  integrity sha1-7cXcNmAvKYWRjWMcE5khXpehtSc=
+
 socket.io-client@2.4.0:
   version "2.4.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/socket.io-client/-/socket.io-client-2.4.0.tgz#aafb5d594a3c55a34355562fc8aea22ed9119a35"
@@ -17261,6 +17367,15 @@ socket.io-parser@~3.4.0:
     debug "~4.1.0"
     isarray "2.0.1"
 
+socket.io-parser@~4.0.3:
+  version "4.0.4"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/socket.io-parser/-/socket.io-parser-4.0.4.tgz#9ea21b0d61508d18196ef04a2c6b9ab630f4c2b0"
+  integrity sha1-nqIbDWFQjRgZbvBKLGuatjD0wrA=
+  dependencies:
+    "@types/component-emitter" "^1.2.10"
+    component-emitter "~1.3.0"
+    debug "~4.3.1"
+
 socket.io@^2.3.0:
   version "2.4.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/socket.io/-/socket.io-2.4.1.tgz#95ad861c9a52369d7f1a68acf0d4a1b16da451d2"
@@ -17272,6 +17387,21 @@ socket.io@^2.3.0:
     socket.io-adapter "~1.1.0"
     socket.io-client "2.4.0"
     socket.io-parser "~3.4.0"
+
+socket.io@^3.1.0:
+  version "3.1.2"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/socket.io/-/socket.io-3.1.2.tgz#06e27caa1c4fc9617547acfbb5da9bc1747da39a"
+  integrity sha1-BuJ8qhxPyWF1R6z7tdqbwXR9o5o=
+  dependencies:
+    "@types/cookie" "^0.4.0"
+    "@types/cors" "^2.8.8"
+    "@types/node" ">=10.0.0"
+    accepts "~1.3.4"
+    base64id "~2.0.0"
+    debug "~4.3.1"
+    engine.io "~4.1.0"
+    socket.io-adapter "~2.1.0"
+    socket.io-parser "~4.0.3"
 
 socks-proxy-agent@^5.0.0:
   version "5.0.1"
@@ -18338,7 +18468,7 @@ tmp@0.0.x, tmp@^0.0.33:
   dependencies:
     os-tmpdir "~1.0.2"
 
-tmp@0.2.1:
+tmp@0.2.1, tmp@^0.2.1:
   version "0.2.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/tmp/-/tmp-0.2.1.tgz#8457fc3037dcf4719c251367a1af6500ee1ccf14"
   integrity sha1-hFf8MDfc9HGcJRNnoa9lAO4czxQ=
@@ -18536,15 +18666,15 @@ tslib@^2.0.0, tslib@^2.0.1, tslib@^2.0.3:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/tslib/-/tslib-2.1.0.tgz#da60860f1c2ecaa5703ab7d39bc05b6bf988b97a"
   integrity sha1-2mCGDxwuyqVwOrfTm8Bba/mIuXo=
 
+tslib@^2.0.2, tslib@^2.3.0:
+  version "2.3.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/tslib/-/tslib-2.3.0.tgz#803b8cdab3e12ba581a4ca41c8839bbb0dacb09e"
+  integrity sha1-gDuM2rPhK6WBpMpByIObuw2ssJ4=
+
 tslib@^2.1.0:
   version "2.2.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/tslib/-/tslib-2.2.0.tgz#fb2c475977e35e241311ede2693cee1ec6698f5c"
   integrity sha1-+yxHWXfjXiQTEe3iaTzuHsZpj1w=
-
-tslib@^2.3.0:
-  version "2.3.0"
-  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/tslib/-/tslib-2.3.0.tgz#803b8cdab3e12ba581a4ca41c8839bbb0dacb09e"
-  integrity sha1-gDuM2rPhK6WBpMpByIObuw2ssJ4=
 
 tsscmp@1.0.6:
   version "1.0.6"
@@ -18678,6 +18808,11 @@ ua-parser-js@^0.7.18:
   version "0.7.24"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ua-parser-js/-/ua-parser-js-0.7.24.tgz#8d3ecea46ed4f1f1d63ec25f17d8568105dc027c"
   integrity sha1-jT7OpG7U8fHWPsJfF9hWgQXcAnw=
+
+ua-parser-js@^0.7.28:
+  version "0.7.28"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/ua-parser-js/-/ua-parser-js-0.7.28.tgz#8ba04e653f35ce210239c64661685bf9121dec31"
+  integrity sha1-i6BOZT81ziECOcZGYWhb+RId7DE=
 
 uglify-js@^3.1.4:
   version "3.13.0"
@@ -19134,7 +19269,7 @@ validate-npm-package-name@^3.0.0:
   dependencies:
     builtins "^1.0.3"
 
-vary@^1.1.2, vary@~1.1.2:
+vary@^1, vary@^1.1.2, vary@~1.1.2:
   version "1.1.2"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha1-IpnwLG3tMNSllhsLn3RSShj2NPw=
@@ -19774,7 +19909,7 @@ yargs@13.3.2, yargs@^13.3.0:
     y18n "^4.0.0"
     yargs-parser "^13.1.2"
 
-yargs@16.2.0, yargs@^16.0.0, yargs@^16.1.0, yargs@^16.2.0:
+yargs@16.2.0, yargs@^16.0.0, yargs@^16.1.0, yargs@^16.1.1, yargs@^16.2.0:
   version "16.2.0"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/yargs/-/yargs-16.2.0.tgz#1c82bf0f6b6a66eafce7ef30e376f49a12477f66"
   integrity sha1-HIK/D2tqZur85+8w43b0mhJHf2Y=
