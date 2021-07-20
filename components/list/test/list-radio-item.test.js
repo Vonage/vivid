@@ -69,7 +69,7 @@ describe('radio list item', () => {
 			const listItem = await prepareConfiguredItem(false, false);
 			const radio = listItem.shadowRoot.querySelector('mwc-radio');
 			assertComputedStyle(radio, { width: '22px', height: '22px' });
-			assertDistancePixels(listItem, radio, 'right', 24);
+			assertDistancePixels(listItem, radio, 'right', 16);
 			assertDistancePixels(listItem, radio, 'top', 9);
 		});
 
@@ -77,7 +77,7 @@ describe('radio list item', () => {
 			const listItem = await prepareConfiguredItem(true, false);
 			const radio = listItem.shadowRoot.querySelector('mwc-radio');
 			assertComputedStyle(radio, { width: '22px', height: '22px' });
-			assertDistancePixels(listItem, radio, 'left', 24);
+			assertDistancePixels(listItem, radio, 'left', 16);
 			assertDistancePixels(listItem, radio, 'top', 9);
 		});
 
@@ -85,7 +85,7 @@ describe('radio list item', () => {
 			const listItem = await prepareConfiguredItem(false, true);
 			const radio = listItem.shadowRoot.querySelector('mwc-radio');
 			assertComputedStyle(radio, { width: '22px', height: '22px' });
-			assertDistancePixels(listItem, radio, 'right', 24);
+			assertDistancePixels(listItem, radio, 'right', 16);
 			assertDistancePixels(listItem, radio, 'top', 25);
 		});
 
@@ -93,7 +93,7 @@ describe('radio list item', () => {
 			const listItem = await prepareConfiguredItem(true, true);
 			const radio = listItem.shadowRoot.querySelector('mwc-radio');
 			assertComputedStyle(radio, { width: '22px', height: '22px' });
-			assertDistancePixels(listItem, radio, 'left', 24);
+			assertDistancePixels(listItem, radio, 'left', 16);
 			assertDistancePixels(listItem, radio, 'top', 25);
 		});
 	});
