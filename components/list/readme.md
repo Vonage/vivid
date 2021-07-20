@@ -1,5 +1,6 @@
-This component is an extension
-of [<mwc-check-list-item>](https://github.com/material-components/material-components-web-components/tree/master/packages/list)
+# vwc-list
+
+This component is an extension of [<mwc-check-list>](https://github.com/material-components/material-components-web-components/tree/master/packages/list)
 
 ## Properties
 
