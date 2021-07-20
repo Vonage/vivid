@@ -3,9 +3,9 @@ import '@vonage/vwc-list/vwc-radio-list-item.js';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Components/List (radio list item)',
+	title: 'Components/List/Radio List Item',
 	component: 'vwc-radio-list-item'
-}
+};
 
 export const RadioList = () => html`
 	<style>
