@@ -94,7 +94,7 @@ jobs:
   test_for_visual_regression:
     if: github.event.pull_request.draft == false
     needs: build
-    name: Test Components' Graphics
+    name: Test Components Graphics
     runs-on: macos-latest
     steps:
       - uses: actions/setup-node@v2
