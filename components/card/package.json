@@ -1,0 +1,36 @@
+{
+	"name": "@vonage/vwc-card",
+	"version": "2.14.0",
+	"description": "card component",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/card#readme",
+	"license": "ISC",
+	"main": "vwc-card.js",
+	"module": "vwc-card.js",
+	"files": [
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/vonage/vivid.git",
+		"directory": "components/card"
+	},
+	"scripts": {
+		"build:typescript": "tsc -b",
+		"build:styles": "umbrella-style-modules",
+		"build": "yarn run build:styles && yarn run build:typescript"
+	},
+	"bugs": {
+		"url": "https://github.com/Vonage/vivid/issues"
+	},
+	"dependencies": {
+		"@vonage/vvd-foundation": "^2.14.0",
+		"@vonage/vvd-umbrella": "^2.14.0",
+		"lit-element": "^2.4.0",
+		"tslib": "^2.0.2"
+	},
+	"devDependencies": {
+
+	}
+}
