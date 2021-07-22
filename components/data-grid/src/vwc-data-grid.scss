@@ -1,14 +1,18 @@
 @use '@vonage/vvd-typography/scss/typography';
 
 :host {
-	--vwc-data-grid-min-width: 200px;
-	--vwc-data-grid-min-height: 320px;
+	--vvd-data-grid-min-width: 200px;
+	--vvd-data-grid-width: 100%;
+	--vvd-data-grid-min-height: 320px;
+	--vvd-data-grid-height: 100%;
 }
 
 .vvd-grid-engine-root {
 	display: flex;
-	min-width: var(--vwc-data-grid-min-width);
-	min-height: var(--vwc-data-grid-min-height);
+	width: var(--vvd-data-grid-width);
+	min-width: var(--vvd-data-grid-min-width);
+	height: var(--vvd-data-grid-height);
+	min-height: var(--vvd-data-grid-min-height);
 }
 
 .vvd-grid-footer {
