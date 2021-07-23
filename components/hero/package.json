@@ -1,11 +1,11 @@
 {
-	"name": "@vonage/vwc-figure",
+	"name": "@vonage/vwc-hero",
 	"version": "2.15.0",
-	"description": "figure component",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/figure#readme",
+	"description": "hero component",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/hero#readme",
 	"license": "ISC",
-	"main": "vwc-figure.js",
-	"module": "vwc-figure.js",
+	"main": "vwc-hero.js",
+	"module": "vwc-hero.js",
 	"files": [
 		"*.js",
 		"*.ts",
@@ -14,7 +14,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/figure"
+		"directory": "components/hero"
 	},
 	"scripts": {
 		"build:typescript": "tsc -b",

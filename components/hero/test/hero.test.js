@@ -1,4 +1,4 @@
-import '../vwc-figure.js';
+import '../vwc-hero.js';
 import {
 	waitNextTask,
 	textToDomToParent,
@@ -8,9 +8,9 @@ import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
 
-const COMPONENT_NAME = 'vwc-figure';
+const COMPONENT_NAME = 'vwc-hero';
 
-describe('Figure', () => {
+describe('Hero', () => {
 	let addElement = isolatedElementsCreation();
 
 	it(`${COMPONENT_NAME} is defined as a custom element`, async () => {

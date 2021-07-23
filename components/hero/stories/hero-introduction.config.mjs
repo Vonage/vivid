@@ -1,8 +1,8 @@
 export default {
 	sourcePath: '../readme.md',
-	outputName: 'figure-introduction',
+	outputName: 'hero-introduction',
 	story: {
-		title: 'Alpha/Components/Figure',
+		title: 'Alpha/Components/⭐️ Hero',
 		name: 'Introduction',
 		parameters: {
 			options: {
