@@ -14,7 +14,7 @@ import { footerRendererProvider } from './vwc-renderer-provider-footer-vaadin';
 import { cellRendererProvider } from './vwc-renderer-provider-cell-vaadin';
 import { rowDetailsRendererProvider } from './vwc-renderer-provider-row-details-vaadin';
 import { style as vwcDataGridStyleVaadin } from './vwc-data-grid-adapter-vaadin.css';
-import { CSSResult, html, TemplateResult } from 'lit-element';
+import { CSSResult, html, PropertyValues, TemplateResult } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
 
 export {
@@ -71,6 +71,15 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 				${this.#vwcGrid.columns.map(cc => this.renderColumnDef(cc))}
 			</vaadin-grid>
 		`;
+	}
+
+	elementUpdated(grid: DataGrid, changedProperties: PropertyValues): void {
+		if (changedProperties.has('heightByRows')) {
+			const iGrid = this.getImplementationOrThrow();
+			iGrid.heightByRows = grid.heightByRows;
+			grid.style.setProperty('height', iGrid.heightByRows ? 'auto' : null);
+			grid.style.setProperty('min-height', iGrid.heightByRows ? 'fit-content' : '150px');
+		}
 	}
 
 	openItemDetails(item: unknown): void {

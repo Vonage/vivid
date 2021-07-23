@@ -104,6 +104,7 @@ In those cases attribute and property may be used interchangeably.
 
 | Property             | Attribute    | Type                 | Default     | Description |
 |----------------------|--------------|----------------------|-------------|------------|
+| `heightByRows`       |              | `boolean`            | `false`     | calculate grid height dynamically by rows count |
 | `multiSort`          | `multi-sort` | `boolean`            | `false`     | sorting by multiple columns |
 | `reordering`         | `reordering` | `boolean`            | `false`     | columns reordering via UI (drag'n'drop') |
 | `columns`            |              | `DataGridColumn[]`   | `[]`        | columns definitions, the majority of grid configuration, see below more |
