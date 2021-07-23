@@ -14,7 +14,9 @@ import { footerRendererProvider } from './vwc-renderer-provider-footer-vaadin';
 import { cellRendererProvider } from './vwc-renderer-provider-cell-vaadin';
 import { rowDetailsRendererProvider } from './vwc-renderer-provider-row-details-vaadin';
 import { style as vwcDataGridStyleVaadin } from './vwc-data-grid-adapter-vaadin.css';
-import { CSSResult, html, PropertyValues, TemplateResult } from 'lit-element';
+import {
+	CSSResult, html, PropertyValues, TemplateResult
+} from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
 
 export {
