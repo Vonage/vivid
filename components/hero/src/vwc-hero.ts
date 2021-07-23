@@ -1,3 +1,5 @@
+import '@vonage/vvd-core';
+import '@vonage/vwc-icon';
 import { customElement } from 'lit-element';
 import { VWCHeroBase } from './vwc-hero-base.js';
 import { style } from './vwc-hero.css.js';
