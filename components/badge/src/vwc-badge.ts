@@ -1,5 +1,5 @@
 import '@vonage/vvd-core';
-import '@vonage/vvd-icon';
+import '@vonage/vwc-icon';
 import { customElement } from 'lit-element';
 
 import { VWCBadgeBase } from './vwc-badge-base.js';
