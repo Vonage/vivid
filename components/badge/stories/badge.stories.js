@@ -12,24 +12,24 @@ export default {
 const Template = args => html`<vwc-badge ...=${spread(args)}></vwc-badge>`;
 
 export const Basic = Template.bind({});
-Basic.args = { connotation: 'cta', layout: 'filled', text: 'badge text goes here' };
+Basic.args = { connotation: 'cta', layout: 'filled', text: 'badge' };
 
 export const WithIcon = Template.bind({});
 WithIcon.args = {
-	connotation: 'cta', layout: 'filled', text: 'badge text goes here', icon: 'check-line'
+	connotation: 'cta', layout: 'filled', text: 'badge', icon: 'check-line'
 };
 
 export const Soft = Template.bind({});
-Soft.args = { connotation: 'cta', layout: 'soft' };
+Soft.args = { connotation: 'cta', layout: 'soft', text: 'badge' };
 
 export const Outlined = Template.bind({});
-Outlined.args = { layout: 'outlined' };
+Outlined.args = { layout: 'outlined', text: 'badge' };
 
 export const PillShape = Template.bind({});
-PillShape.args = { layout: 'filled', shape: 'pill' };
+PillShape.args = { layout: 'filled', shape: 'pill', text: 'badge' };
 
 export const Dense = Template.bind({});
-Dense.args = { layout: 'filled', dense: '' };
+Dense.args = { layout: 'filled', dense: '', text: 'badge' };
 
 export const Enlarged = Template.bind({});
-Enlarged.args = { layout: 'filled', enlarged: '' };
+Enlarged.args = { layout: 'filled', enlarged: '', text: 'badge' };

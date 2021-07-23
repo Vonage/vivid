@@ -49,7 +49,7 @@ export class VWCBadgeBase extends LitElement {
 	icon?: string;
 
 	protected renderIcon(): TemplateResult {
-		return html`<vwc-icon	type="${ifDefined(this.icon)}"></vwc-icon>`;
+		return html`&nbsp;<vwc-icon	inline type="${ifDefined(this.icon)}"></vwc-icon>`;
 	}
 
 	protected updated(changes: Map<string, boolean>): void {
