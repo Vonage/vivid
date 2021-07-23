@@ -1,0 +1,39 @@
+@use '@vonage/vvd-typography/scss/typography' as typography;
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+
+vwc-icon {
+	--icon-size: 60px;
+}
+
+section {
+	text-align: center;
+}
+
+.illustration {
+	position: relative;
+	display: inline-block;
+
+	&::before {
+		position: absolute;
+		z-index: -1;
+		top: 50%;
+		left: 50%;
+		width: inherit;
+		height: inherit;
+		padding: inherit;
+		background-color: var(#{scheme-variables.$vvd-color-neutral-20});
+		block-size: inherit;
+		border-radius: 50%;
+		content: '';
+		inline-size: inherit;
+		transform: translate(-50%, -50%);
+	}
+}
+
+h3 {
+	@include typography.typography-cat-shorthand('body-1-bold');
+}
+
+p {
+	@include typography.typography-cat-shorthand('body-2');
+}
