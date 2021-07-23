@@ -7,12 +7,17 @@ export default {
 	title: 'Components/Badge',
 	component: 'vwc-badge',
 	argTypes
-}
+};
 
-const Template = args => html`<vwc-badge ...=${spread(args)}>I'm a badge</vwc-badge>`;
+const Template = args => html`<vwc-badge ...=${spread(args)}></vwc-badge>`;
 
 export const Basic = Template.bind({});
-Basic.args = { connotation: 'cta', layout: 'filled' };
+Basic.args = { connotation: 'cta', layout: 'filled', text: 'badge text goes here' };
+
+export const WithIcon = Template.bind({});
+WithIcon.args = {
+	connotation: 'cta', layout: 'filled', text: 'badge text goes here', icon: 'check-line'
+};
 
 export const Soft = Template.bind({});
 Soft.args = { connotation: 'cta', layout: 'soft' };

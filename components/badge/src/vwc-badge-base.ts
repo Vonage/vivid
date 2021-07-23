@@ -1,6 +1,8 @@
 import {
 	html, LitElement, property, TemplateResult
 } from 'lit-element';
+import { nothing } from 'lit-html';
+import { ifDefined } from 'lit-html/directives/if-defined';
 import { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
 import { handleMultipleDenseProps } from '@vonage/vvd-foundation/general-utils';
 
@@ -21,6 +23,9 @@ type BadgeLayout = Extract<
 
 type BadgeShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
 
+/**
+ * @slot - This is a default/unnamed slot to assign text content. *deprecated* please use {@link text} instead
+ */
 export class VWCBadgeBase extends LitElement {
 	@property({ type: String, reflect: true })
 	connotation?: BadgeConnotation;
@@ -37,11 +42,24 @@ export class VWCBadgeBase extends LitElement {
 	@property({ type: Boolean, reflect: true })
 	enlarged = false;
 
+	@property({ type: String, reflect: true })
+	text?: string;
+
+	@property({ type: String, reflect: true })
+	icon?: string;
+
+	protected renderIcon(): TemplateResult {
+		return html`<vwc-icon	type="${ifDefined(this.icon)}"></vwc-icon>`;
+	}
+
 	protected updated(changes: Map<string, boolean>): void {
 		handleMultipleDenseProps(this, changes);
 	}
 
 	protected render(): TemplateResult {
-		return html`<slot></slot>`;
+		return html`<slot>
+			${this.text || nothing}
+		</slot>
+		${this.icon ? this.renderIcon() : nothing}`;
 	}
 }
