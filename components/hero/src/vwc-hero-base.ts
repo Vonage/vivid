@@ -12,25 +12,25 @@ export class VWCHeroBase extends LitElement {
 	heading?: string;
 
 	@property({ type: String, reflect: true })
-	subheading?: string;
+	body?: string;
 
 	protected renderIcon(): TemplateResult {
 		return html`<vwc-icon class="illustration"	type="${ifDefined(this.icon)}"></vwc-icon>`;
 	}
 
 	protected renderHeading(): TemplateResult {
-		return html`<h3>${this.heading}</h3>`;
+		return html`<h3 class="heading">${this.heading}</h3>`;
 	}
 
-	protected renderSubheading(): TemplateResult {
-		return html`<p>${this.subheading}</p>`;
+	protected renderBody(): TemplateResult {
+		return html`<p class="body">${this.body}</p>`;
 	}
 
 	protected render(): TemplateResult {
 		return html`<section>
 			${this.icon ? this.renderIcon() : nothing}
 			${this.heading ? this.renderHeading() : nothing}
-			${this.subheading ? this.renderSubheading() : nothing}
+			${this.body ? this.renderBody() : nothing}
 		</section>`;
 	}
 }

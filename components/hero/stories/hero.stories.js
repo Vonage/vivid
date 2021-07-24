@@ -12,4 +12,4 @@ export default {
 const Template = args => html`<vwc-hero ...=${spread(args)}></vwc-hero>`;
 
 export const Basic = Template.bind({});
-Basic.args = { icon: 'chat-line', heading: 'Empty State Title', subheading: 'Empty state body for more information' };
+Basic.args = { icon: 'chat-line', heading: 'Empty State Title', body: 'Empty state body for more information' };

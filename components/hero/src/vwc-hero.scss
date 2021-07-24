@@ -12,6 +12,7 @@ section {
 .illustration {
 	position: relative;
 	display: inline-block;
+	padding: 30px;
 
 	&::before {
 		position: absolute;
@@ -36,4 +37,12 @@ h3 {
 
 p {
 	@include typography.typography-cat-shorthand('body-2');
+}
+
+.illustration + h3 {
+	margin-block-start: 24px;
+}
+
+h3 + p {
+	margin-block-start: 12px;
 }
