@@ -19,12 +19,19 @@ describe('Hero', () => {
 		);
 	});
 
-	it('should internal contents', async () => {
-		const addedElements = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}>`)
+	it('should match internal contents', async () => {
+		const [actualElement] = addElement(
+			textToDomToParent(`
+				<${COMPONENT_NAME}
+					icon="chat-line"
+					heading="Empty State Title"
+					body="Empty state body for more information"
+				>
+				</${COMPONENT_NAME}>
+			`)
 		);
-		const actualElement = addedElements[0];
-		await waitNextTask();
+		await actualElement.updateComplete;
+
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 });
