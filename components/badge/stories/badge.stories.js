@@ -14,9 +14,9 @@ const Template = args => html`<vwc-badge ...=${spread(args)}></vwc-badge>`;
 export const Basic = Template.bind({});
 Basic.args = { connotation: 'cta', layout: 'filled', text: 'badge' };
 
-export const WithIcon = Template.bind({});
-WithIcon.args = {
-	connotation: 'cta', layout: 'filled', text: 'badge', icon: 'check-line'
+export const WithIcons = Template.bind({});
+WithIcons.args = {
+	connotation: 'cta', layout: 'filled', text: 'badge', icon: 'check-line', iconTrailing: 'check-line'
 };
 
 export const Soft = Template.bind({});

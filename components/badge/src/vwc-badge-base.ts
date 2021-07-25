@@ -2,7 +2,8 @@ import {
 	html, LitElement, property, TemplateResult
 } from 'lit-element';
 import { nothing } from 'lit-html';
-import { ifDefined } from 'lit-html/directives/if-defined';
+import { classMap } from 'lit-html/directives/class-map';
+
 import { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
 import { handleMultipleDenseProps } from '@vonage/vvd-foundation/general-utils';
 
@@ -51,12 +52,15 @@ export class VWCBadgeBase extends LitElement {
 	@property({ type: String })
 	iconTrailing?: string;
 
-	protected renderTrailingIcon(): TemplateResult|string {
-		return this.iconTrailing ? this.renderIcon(this.iconTrailing, true) : '';
-	}
+	protected renderIcon(type?: string, isTrailingIcon = false): TemplateResult | typeof nothing {
+		const classes = {
+			'icon--leading': !isTrailingIcon,
+			'icon--trailing': isTrailingIcon
+		};
 
-	protected renderIcon(): TemplateResult {
-  	return html`<vwc-icon	inline type="${ifDefined(this.icon)}"></vwc-icon>`;
+		return type ?
+			html`<vwc-icon class="icon ${classMap(classes)}" .type="${type}"></vwc-icon>`
+			: nothing;
 	}
 
 	protected updated(changes: Map<string, boolean>): void {
@@ -64,9 +68,13 @@ export class VWCBadgeBase extends LitElement {
 	}
 
 	protected render(): TemplateResult {
-  	return html`<slot>
-			${this.text || nothing}
-		</slot>
-		${this.icon ? this.renderIcon() : nothing}`;
+		return html`
+			<span class="vwc-badge">
+				${this.renderIcon(this.icon)}
+				<slot>
+					${this.text || nothing}
+				</slot>
+				${this.renderIcon(this.iconTrailing, true)}
+			</span>`;
 	}
 }
