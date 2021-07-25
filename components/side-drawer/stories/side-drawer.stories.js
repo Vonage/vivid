@@ -9,9 +9,9 @@ import { argTypes } from './arg-types.js';
 
 
 export default {
-  title: 'Alpha/Components/Side Drawer',
-  component: 'vwc-side-drawer',
-  argTypes
+	title: 'Alpha/Components/Side Drawer',
+	component: 'vwc-side-drawer',
+	argTypes
 };
 
 const Template = args => html`
@@ -50,7 +50,7 @@ const Template = args => html`
     <vwc-text font-face="title-3">
       SECTION TITLE
     </vwc-text>
-  
+
 		<vwc-list-expansion-panel>
 			<vwc-list-item slot="header" shape="rounded" graphic="icon">
 				<vwc-icon slot="graphic" type="chat-line"></vwc-icon>
@@ -72,7 +72,7 @@ const Template = args => html`
 			</vwc-list-expansion-panel>
 		</vwc-list-expansion-panel>
 
-   </vwc-side-drawer> 
+   </vwc-side-drawer>
 `;
 
 export const Basic = Template.bind({});
