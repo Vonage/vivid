@@ -3,11 +3,7 @@
 #### `should match internal contents`
 
 ```html
-<span class="vwc-badge">
-  <slot>
-    badge
-  </slot>
-</span>
+
 ```
 
 #### `should match internal contents (legacy)`
@@ -39,6 +35,7 @@
   >
   </vwc-icon>
 </span>
+
 ```
 
 ####   `should have icons added when icons are set dynamically (property)`
@@ -58,6 +55,7 @@
   >
   </vwc-icon>
 </span>
+
 ```
 
 ####   `should have icons added when icons are set dynamically (attribute)`
@@ -77,6 +75,7 @@
   >
   </vwc-icon>
 </span>
+
 ```
 
 ####   `should have icons removed when icons are unset (property)`
@@ -86,6 +85,7 @@
   <slot>
   </slot>
 </span>
+
 ```
 
 ####   `should have icon removed when icon is unset (attribute)`
@@ -95,5 +95,6 @@
   <slot>
   </slot>
 </span>
+
 ```
 

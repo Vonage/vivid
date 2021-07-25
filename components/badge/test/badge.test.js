@@ -1,6 +1,5 @@
 import '../vwc-badge.js';
 import {
-	waitNextTask,
 	textToDomToParent,
 	assertComputedStyle,
 	isolatedElementsCreation,
@@ -43,55 +42,56 @@ describe('badge', () => {
 				textToDomToParent(`<${VWC_BADGE} text="badge"></${VWC_BADGE}>`)
 			);
 			await badge.updateComplete;
-			expect(badge).to.exist;
-			assertComputedStyle(badge, { ...(await getTypographyStyle('caption-bold')), lineHeight: '24px' });
+			const container = badge.shadowRoot.querySelector('.vwc-badge');
+			assertComputedStyle(container, { ...(await getTypographyStyle('caption-bold')), lineHeight: '24px' });
 		});
 	});
 
 	describe('sizing', () => {
 		it('should have normal size by default', async () => {
-			const addedElements = addElement(
-				textToDomToParent(`<${VWC_BADGE}>I'm a badge</${VWC_BADGE}>`)
+			const [badge] = addElement(
+				textToDomToParent(`<${VWC_BADGE} text="badge"></${VWC_BADGE}>`)
 			);
-			const badge = addedElements[0];
 			await badge.updateComplete;
-			assertComputedStyle(badge, { height: '24px' });
+			const container = badge.shadowRoot.querySelector('.vwc-badge');
+			assertComputedStyle(container, { height: '24px' });
 		});
 
 		it('should have dense size when dense', async () => {
-			const addedElements = addElement(
-				textToDomToParent(`<${VWC_BADGE} dense>I'm a badge</${VWC_BADGE}>`)
+			const [badge] = addElement(
+				textToDomToParent(`<${VWC_BADGE} dense text="badge"></${VWC_BADGE}>`)
 			);
-			const badge = addedElements[0];
 			await badge.updateComplete;
-			assertComputedStyle(badge, { height: '20px' });
+			const container = badge.shadowRoot.querySelector('.vwc-badge');
+			assertComputedStyle(container, { height: '20px' });
 		});
 
 		it('should have enlarged size when enlarged', async () => {
-			const addedElements = addElement(
-				textToDomToParent(`<${VWC_BADGE} enlarged>I'm a badge</${VWC_BADGE}>`)
+			const [badge] = addElement(
+				textToDomToParent(`<${VWC_BADGE} enlarged text="badge"></${VWC_BADGE}>`)
 			);
-			const badge = addedElements[0];
 			await badge.updateComplete;
-			assertComputedStyle(badge, { height: '28px' });
+			const container = badge.shadowRoot.querySelector('.vwc-badge');
+			assertComputedStyle(container, { height: '28px' });
 		});
 	});
 
 	describe('shape', () => {
 		let badge;
 		beforeEach(async () => {
-			const addedElements = addElement(
+			const [el] = addElement(
 				textToDomToParent(
-					`<${VWC_BADGE} layout="filled">I'm a badge</${VWC_BADGE}>`
+					`<${VWC_BADGE} layout="filled" text="badge"></${VWC_BADGE}>`
 				)
 			);
-			await badge.updateComplete;
-			badge = addedElements[0];
+			await el.updateComplete;
+			badge = el;
 		});
 
 		it('should have rounded shape by default', async () => {
+			const container = badge.shadowRoot.querySelector('.vwc-badge');
 			assertComputedStyle(
-				badge,
+				container,
 				shapeStyles('rounded', 'badge')
 			);
 		});
@@ -99,8 +99,10 @@ describe('badge', () => {
 		it('should have rounded shape when shape set to rounded', async () => {
 			badge.shape = 'rounded';
 			await badge.updateComplete;
+
+			const container = badge.shadowRoot.querySelector('.vwc-badge');
 			assertComputedStyle(
-				badge,
+				container,
 				shapeStyles('rounded', 'badge')
 			);
 		});
@@ -108,7 +110,10 @@ describe('badge', () => {
 		it('should have pill shape when shape set to pill', async () => {
 			badge.shape = 'pill';
 			await badge.updateComplete;
-			assertComputedStyle(badge, shapeStyles('pill', 'badge'));
+
+			const container = badge.shadowRoot.querySelector('.vwc-badge');
+			assertComputedStyle(container,
+				shapeStyles('pill', 'badge'));
 		});
 	});
 
