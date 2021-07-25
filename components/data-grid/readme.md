@@ -327,7 +327,3 @@ const cellRenderer = (container, column, data) {
 
 Pay attention, how the columns data structure is not maintained in JS anymore.
 Moreover, attributes like `sortable`, `auto-width` etc can be bound to some data structure managed by data-binding framework, thus removing the whole customization part out of the scripting scope.
-
-## Styling API
-
-The grid's height and width are taken from the parent's dimensions.  You can set the wrapper of `vwc-data-grid` to have a width/height or set the `vwc-data-grid`'s width and height if its display is block.
