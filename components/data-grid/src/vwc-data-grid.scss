@@ -6,11 +6,7 @@
 }
 
 .vvd-grid-engine-root {
-	display: flex;
-	width: var(--vvd-data-grid-width);
-	min-width: var(--vvd-data-grid-min-width);
-	height: var(--vvd-data-grid-height);
-	min-height: var(--vvd-data-grid-min-height);
+	height: 100%;
 }
 
 .vvd-grid-footer {
