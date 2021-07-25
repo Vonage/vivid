@@ -1,10 +1,8 @@
 @use '@vonage/vvd-typography/scss/typography';
 
 :host {
-	--vvd-data-grid-min-width: 200px;
-	--vvd-data-grid-width: 100%;
-	--vvd-data-grid-min-height: 320px;
-	--vvd-data-grid-height: 100%;
+	  display: block;
+    height: 320px;
 }
 
 .vvd-grid-engine-root {
