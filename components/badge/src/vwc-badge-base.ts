@@ -48,16 +48,23 @@ export class VWCBadgeBase extends LitElement {
 	@property({ type: String, reflect: true })
 	icon?: string;
 
+	@property({ type: String })
+	iconTrailing?: string;
+
+	protected renderTrailingIcon(): TemplateResult|string {
+		return this.iconTrailing ? this.renderIcon(this.iconTrailing, true) : '';
+	}
+
 	protected renderIcon(): TemplateResult {
-		return html`&nbsp;<vwc-icon	inline type="${ifDefined(this.icon)}"></vwc-icon>`;
+  	return html`<vwc-icon	inline type="${ifDefined(this.icon)}"></vwc-icon>`;
 	}
 
 	protected updated(changes: Map<string, boolean>): void {
-		handleMultipleDenseProps(this, changes);
+  	handleMultipleDenseProps(this, changes);
 	}
 
 	protected render(): TemplateResult {
-		return html`<slot>
+  	return html`<slot>
 			${this.text || nothing}
 		</slot>
 		${this.icon ? this.renderIcon() : nothing}`;
