@@ -330,11 +330,4 @@ Moreover, attributes like `sortable`, `auto-width` etc can be bound to some data
 
 ## Styling API
 
-You can use the following CSS Variables in order to stylize the grid:
-
-| Variable        | Description    |
-|------------------|--------------|
-| `--vvd-data-grid-min-height` | The minimum height of the grid. Should be valid CSS height value. |
-| `--vvd-data-grid-min-width` | The minimum width of the grid. Should be valid CSS width value. |
-| `--vvd-data-grid-height` | A set width of the grid. Should be valid CSS width value. |
-| `--vvd-data-grid-width` | The minimum width of the grid. Should be valid CSS height value. |
+The grid's height and width are taken from the parent's dimensions.  You can set the wrapper of `vwc-data-grid` to have a width/height or set the `vwc-data-grid`'s width and height if its display is block.
