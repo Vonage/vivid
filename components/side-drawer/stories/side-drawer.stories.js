@@ -1,12 +1,10 @@
 import '@vonage/vwc-side-drawer/vwc-side-drawer.js';
 import '@vonage/vwc-expansion-panel/vwc-expansion-panel.js';
 import '@vonage/vwc-text/vwc-text.js';
-
+import { styleMap } from 'lit-html/directives/style-map';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
-
-
 
 export default {
 	title: 'Alpha/Components/Side Drawer',
@@ -14,17 +12,20 @@ export default {
 	argTypes
 };
 
+const titleStyles = {
+	color: '#C0C0C0',
+	fontWeight: 'bold'
+}
+
 const Template = args => html`
    <vwc-side-drawer ...=${spread(args)}>
 
-    <vwc-list-item shape="rounded" graphic="icon">
+    <vwc-list-item activated="" shape="rounded" graphic="icon">
       <vwc-icon slot="graphic" type="home-line"></vwc-icon>
       1st level item
     </vwc-list-item>
 
-    <vwc-text font-face="title-3">
-      SECTION TITLE
-    </vwc-text>
+	<p style=${styleMap(titleStyles)}>SECTION TITLE</p>
 
     <vwc-list-item shape="rounded" graphic="icon">
       <vwc-icon slot="graphic" type="chat-line"></vwc-icon>
@@ -47,9 +48,7 @@ const Template = args => html`
 			</vwc-list-item>
 		</vwc-list-expansion-panel>
 
-    <vwc-text font-face="title-3">
-      SECTION TITLE
-    </vwc-text>
+	<p style=${styleMap(titleStyles)}>SECTION TITLE</p>
 
 		<vwc-list-expansion-panel>
 			<vwc-list-item slot="header" shape="rounded" graphic="icon">
