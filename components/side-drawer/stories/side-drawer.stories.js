@@ -20,57 +20,43 @@ const titleStyles = {
 const Template = args => html`
    <vwc-side-drawer ...=${spread(args)}>
 
-    <vwc-list-item slot="navigation" activated="" shape="rounded" graphic="icon">
-			<vwc-icon slot="graphic" type="home-line"></vwc-icon>
-      1st level item
-    </vwc-list-item>
+		<vwc-list-item slot="navigation" activated="" shape="rounded" graphic="icon">
+				<vwc-icon slot="graphic" type="home-line"></vwc-icon>1st level item
+		</vwc-list-item>
 
 		<p slot="navigation" style=${styleMap(titleStyles)}>SECTION TITLE</p>
 
-    <vwc-list-item slot="navigation" shape="rounded" graphic="icon">
-			<vwc-icon slot="graphic" type="chat-line"></vwc-icon>
-      1st level item
-    </vwc-list-item>
+		<vwc-list-item slot="navigation" shape="rounded" graphic="icon">
+				<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
+		</vwc-list-item>
 
 		<li slot="navigation" divider role="separator" padded></li>
 
-    <vwc-list-item slot="navigation" shape="rounded" graphic="icon">
-      <vwc-icon slot="graphic" type="chat-line"></vwc-icon>
-      1st level item
-    </vwc-list-item>
-		<vwc-list-expansion-panel open>
+		<vwc-list-item slot="navigation" shape="rounded" graphic="icon">
+			<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
+		</vwc-list-item>
+
+		<li slot="navigation" divider role="separator" padded></li>
+
+		<vwc-list-expansion-panel open slot="navigation">
 			<vwc-list-item slot="header" shape="rounded" graphic="icon">
-				<vwc-icon slot="graphic" type="chat-line"></vwc-icon>
-				1st level item
+				<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
 			</vwc-list-item>
-			<vwc-list-item shape="rounded">
-        2nd level item
-			</vwc-list-item>
-			<vwc-list-item shape="rounded">
-        2nd level item
-			</vwc-list-item>
+			<vwc-list-item shape="rounded">2nd level item</vwc-list-item>
+			<vwc-list-item shape="rounded">2nd level item</vwc-list-item>
 		</vwc-list-expansion-panel>
 
-	<p style=${styleMap(titleStyles)}>SECTION TITLE</p>
+		<p slot="navigation" style=${styleMap(titleStyles)}>SECTION TITLE</p>
 
-		<vwc-list-expansion-panel>
+		<vwc-list-expansion-panel slot="navigation">
 			<vwc-list-item slot="header" shape="rounded" graphic="icon">
-				<vwc-icon slot="graphic" type="chat-line"></vwc-icon>
-				1st level item
+				<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
 			</vwc-list-item>
-			<vwc-list-item shape="rounded">
-      2nd level item
-			</vwc-list-item>
+			<vwc-list-item shape="rounded">2nd level item</vwc-list-item>
 			<vwc-list-expansion-panel>
-				<vwc-list-item slot="header" shape="rounded">
-        2nd level item
-				</vwc-list-item>
-				<vwc-list-item shape="rounded">
-        3rd level item
-				</vwc-list-item>
-				<vwc-list-item shape="rounded">
-        3rd level item
-				</vwc-list-item>
+				<vwc-list-item slot="header" shape="rounded" >2nd level item</vwc-list-item>
+				<vwc-list-item shape="rounded">3rd level item</vwc-list-item>
+				<vwc-list-item shape="rounded">3rd level item</vwc-list-item>
 			</vwc-list-expansion-panel>
 		</vwc-list-expansion-panel>
 
