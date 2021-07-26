@@ -84,8 +84,7 @@ import '@vonage/vwc-list/vwc-list-item.js';
 
 #### Notice
 
-Using the menu's `fixed` and `absolute` properties will position the menu relative to the window or ancestor element (respectively). 
+Using the menu's `fixed` or `absolute` properties will position the menu relative to the window or ancestor element (respectively). 
 
 If the menu doesn't show up in the right position, make sure that an ancestor element exists and positioned correctly, or try to use the "anchor" property. For more information, please refer to [MWC's documentation](https://github.com/material-components/material-components-web-components/tree/master/packages/menu).   
-
 
