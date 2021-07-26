@@ -7,6 +7,10 @@
 }
 
 .side-drawer {
+	top: 0;
+	left: 0;
+	display: fixed;
+	height: 100vh;
 	background-color: var(--vvd-color-base);
 	color: var(--vvd-color-on-base);
 	inline-size: inherit;

@@ -12,6 +12,7 @@ export default {
 }
 
 const Template = (args) => html`
+
 	<vwc-top-app-bar-fixed ...=${spread(args)}>
 		<vwc-icon-button slot="navigationIcon" icon="menu-line" layout="filled"></vwc-icon-button>
 		<span slot="title">Top App Bar</span>

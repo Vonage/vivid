@@ -61,6 +61,7 @@ const Template = args => html`
 		</vwc-list-expansion-panel>
 
    </vwc-side-drawer>
+
 `;
 
 export const Basic = Template.bind({});
