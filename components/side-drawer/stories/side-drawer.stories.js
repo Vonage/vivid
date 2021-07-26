@@ -78,3 +78,7 @@ const Template = args => html`
 `;
 
 export const Basic = Template.bind({});
+Basic.args = { };
+
+export const Alternate = Template.bind({});
+Alternate.args = { alternate: true };
