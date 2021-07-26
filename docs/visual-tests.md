@@ -95,6 +95,13 @@ export async function createElementVariations(wrapper) {
 ```
 Notice that the script imports all the stories from `text` and then uses `storiesToElement` to create a new element with the stories inside. It then appends the element to the wrapper and blurs all the components inside.
 
+### Running Specific Tests
+
+You can run specific tests by stating them in the command line:
+```shell
+yarn ui-tests vwc-button vwc-data-grid
+```
+The command above will run `vwc-button` and `vwc-data-grid` tests only.
 ### Excluding Tests
 
 You can exclude certain tests from running in the Visual Sanity test by adding them to the `excludedTests.json` array.
