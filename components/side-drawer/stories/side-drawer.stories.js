@@ -19,19 +19,19 @@ const titleStyles = {
 
 const Template = args => html`
    <vwc-side-drawer ...=${spread(args)}>
-
-    <vwc-list-item activated="" shape="rounded" graphic="icon">
+	<div slot="navigation" divider role="separator"></div>
+    <vwc-list-item slot="navigation" activated="" shape="rounded" graphic="icon">
       <vwc-icon slot="graphic" type="home-line"></vwc-icon>
       1st level item
     </vwc-list-item>
 
-	<p style=${styleMap(titleStyles)}>SECTION TITLE</p>
+	<p slot="navigation" style=${styleMap(titleStyles)}>SECTION TITLE</p>
 
-    <vwc-list-item shape="rounded" graphic="icon">
+    <vwc-list-item slot="navigation" shape="rounded" graphic="icon">
       <vwc-icon slot="graphic" type="chat-line"></vwc-icon>
       1st level item
     </vwc-list-item>
-    <vwc-list-item shape="rounded" graphic="icon">
+    <vwc-list-item slot="navigation" shape="rounded" graphic="icon">
       <vwc-icon slot="graphic" type="chat-line"></vwc-icon>
       1st level item
     </vwc-list-item>
