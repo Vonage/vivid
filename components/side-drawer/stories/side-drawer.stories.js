@@ -15,22 +15,25 @@ export default {
 const titleStyles = {
 	color: '#C0C0C0',
 	fontWeight: 'bold'
-}
+};
 
 const Template = args => html`
    <vwc-side-drawer ...=${spread(args)}>
-	<div slot="navigation" divider role="separator"></div>
+
     <vwc-list-item slot="navigation" activated="" shape="rounded" graphic="icon">
-      <vwc-icon slot="graphic" type="home-line"></vwc-icon>
+			<vwc-icon slot="graphic" type="home-line"></vwc-icon>
       1st level item
     </vwc-list-item>
 
-	<p slot="navigation" style=${styleMap(titleStyles)}>SECTION TITLE</p>
+		<p slot="navigation" style=${styleMap(titleStyles)}>SECTION TITLE</p>
 
     <vwc-list-item slot="navigation" shape="rounded" graphic="icon">
-      <vwc-icon slot="graphic" type="chat-line"></vwc-icon>
+			<vwc-icon slot="graphic" type="chat-line"></vwc-icon>
       1st level item
     </vwc-list-item>
+
+		<li slot="navigation" divider role="separator" padded></li>
+
     <vwc-list-item slot="navigation" shape="rounded" graphic="icon">
       <vwc-icon slot="graphic" type="chat-line"></vwc-icon>
       1st level item
