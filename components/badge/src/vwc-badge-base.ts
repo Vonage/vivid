@@ -49,7 +49,7 @@ export class VWCBadgeBase extends LitElement {
 	@property({ type: String, reflect: true })
 	icon?: string;
 
-	@property({ type: String })
+	@property({ type: String, reflect: true })
 	iconTrailing?: string;
 
 	protected renderIcon(type?: string, isTrailingIcon = false): TemplateResult | typeof nothing {
