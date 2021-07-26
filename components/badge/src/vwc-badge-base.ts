@@ -25,7 +25,7 @@ type BadgeLayout = Extract<
 type BadgeShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
 
 /**
- * @slot - This is a default/unnamed slot to assign text content. *deprecated* please use {@link text} instead
+ * @slot - This is a default/unnamed slot to assign text content. *deprecated* please use _text_ property instead
  */
 export class VWCBadgeBase extends LitElement {
 	@property({ type: String, reflect: true })
