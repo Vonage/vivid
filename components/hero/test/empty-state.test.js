@@ -1,4 +1,4 @@
-import '../vwc-hero.js';
+import '../vwc-empty-state.js';
 import {
 	waitNextTask,
 	textToDomToParent,
@@ -8,9 +8,9 @@ import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
 
-const COMPONENT_NAME = 'vwc-hero';
+const COMPONENT_NAME = 'vwc-empty-state';
 
-describe('Hero', () => {
+describe('Empty State', () => {
 	let addElement = isolatedElementsCreation();
 
 	it(`${COMPONENT_NAME} is defined as a custom element`, async () => {

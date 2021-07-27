@@ -1,13 +1,13 @@
 import vvdCore from '@vonage/vvd-core';
-import '@vonage/vwc-hero';
+import '@vonage/vwc-empty-state';
 
 
 export async function createElementVariations(wrapper) {
-	const heroElementWrapper = document.createElement('div');
-	heroElementWrapper.innerHTML = `
-		<vwc-hero icon="chat-line" heading="Empty State Title" body="Empty state body for more information"></vwc-hero>
+	const emptyStateElementWrapper = document.createElement('div');
+	emptyStateElementWrapper.innerHTML = `
+		<vwc-empty-state icon="chat-line" heading="Empty State Title" body="Empty state body for more information"></vwc-empty-state>
 	`;
-	wrapper.appendChild(heroElementWrapper);
+	wrapper.appendChild(emptyStateElementWrapper);
 
 	await vvdCore.settled;
 }

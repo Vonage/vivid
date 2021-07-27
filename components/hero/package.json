@@ -1,11 +1,11 @@
 {
-	"name": "@vonage/vwc-hero",
+	"name": "@vonage/vwc-empty-state",
 	"version": "2.15.0",
-	"description": "hero component",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/hero#readme",
+	"description": "empty-state component",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/empty-state#readme",
 	"license": "ISC",
-	"main": "vwc-hero.js",
-	"module": "vwc-hero.js",
+	"main": "vwc-empty-state.js",
+	"module": "vwc-empty-state.js",
 	"files": [
 		"*.js",
 		"*.ts",
@@ -14,7 +14,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/hero"
+		"directory": "components/empty-state"
 	},
 	"scripts": {
 		"build:typescript": "tsc -b",

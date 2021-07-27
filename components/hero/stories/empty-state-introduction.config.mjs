@@ -1,8 +1,8 @@
 export default {
 	sourcePath: '../readme.md',
-	outputName: 'hero-introduction',
+	outputName: 'empty-state-introduction',
 	story: {
-		title: 'Alpha/Components/⭐️ Hero',
+		title: 'Alpha/Components/⭐️ Empty State',
 		name: 'Introduction',
 		parameters: {
 			options: {
