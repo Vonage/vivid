@@ -55,7 +55,7 @@ export class VWCDataGrid extends LitElement implements DataGrid {
 
 	@property({ type: Boolean, reflect: true, attribute: 'multi-sort' })
 	multiSort = false;
-	@property({ type: Boolean, reflect: true })
+	@property({ type: Boolean, reflect: true, attribute: 'height-by-rows' })
 	heightByRows = false;
 	@property({ type: Boolean, reflect: true })
 	reordering = false;
