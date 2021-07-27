@@ -126,6 +126,7 @@ describe('badge', () => {
 			);
 
 			await badge.updateComplete;
+			await badge.updateComplete;
 			expect(badge.shadowRoot.innerHTML).to.equalSnapshot();
 		});
 
