@@ -139,6 +139,7 @@ describe('badge', () => {
 			badge.icon = 'thumbs-down-line';
 			badge.iconTrailing = 'thumbs-down-line';
 			await badge.updateComplete;
+			await badge.updateComplete;
 			expect(badge.shadowRoot.innerHTML).to.equalSnapshot();
 		});
 
