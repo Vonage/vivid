@@ -20,4 +20,4 @@ badge is a label that holds small amounts of information. A badge can be used to
 
 | Name | Description                                                                                            |
 | ---- | ------------------------------------------------------------------------------------------------------ |
-|      | This is a default/unnamed slot to assign text content. *deprecated* please use _text_ property instead |
+|  _default_  | This is a default/unnamed slot to assign text content. *deprecated* please use _text_ property instead |
