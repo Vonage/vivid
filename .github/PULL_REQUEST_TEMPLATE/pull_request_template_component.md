@@ -21,6 +21,7 @@
 * [ ] Test for Aria [matching roles](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles)
 * [ ] [Check the markup](https://validator.w3.org/)
 * [ ] [Custom Control Accessible Development Checklist](https://w3c.github.io/using-aria/#checklist)
+* [ ] Check unused/missing dependencies
 
 ## Screenshots (if appropriate):
 
