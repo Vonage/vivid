@@ -102,29 +102,29 @@ Some of the properties of grid are also reflected via attributes.
 All those cases explicitly mention the attribute name in the table below.
 In those cases attribute and property may be used interchangeably.
 
-| Property             | Attribute    | Type                 | Default     | Description |
-|----------------------|--------------|----------------------|-------------|------------|
-| `heightByRows`       |              | `boolean`            | `false`     | calculate grid height dynamically by rows count |
-| `multiSort`          | `multi-sort` | `boolean`            | `false`     | sorting by multiple columns |
-| `reordering`         | `reordering` | `boolean`            | `false`     | columns reordering via UI (drag'n'drop') |
-| `columns`            |              | `DataGridColumn[]`   | `[]`        | columns definitions, the majority of grid configuration, see below more |
-| `rowDetailsRenderer` |              | `RowDetailsRenderer` | `undefined` | when provided, will handle an expanded / detailed row part rendering; see more details on `RowDetailsRenderer` below |
-| `items`              |              | `unknown[]`          | `undefined` | see Data API above |
-| `dataProvider`       |              | `(params: { page: number, pageSize: number }, callback: (pageItems: unknown[], treeLevelSize: number) => void): void` | `undefined` | see Data API above |
-| `selectedItems`      |              | `unknown[]`          | `[]`        | see Data API above |
+| Property             | Attribute    | Type                                                                                                                  | Default     | Description                                                                                                          |
+| -------------------- | ------------ | --------------------------------------------------------------------------------------------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------------- |
+| `heightByRows`       |              | `boolean`                                                                                                             | `false`     | sets grid inline-size to its total rows inline-size                                                                  |
+| `multiSort`          | `multi-sort` | `boolean`                                                                                                             | `false`     | sorting by multiple columns                                                                                          |
+| `reordering`         | `reordering` | `boolean`                                                                                                             | `false`     | columns reordering via UI (drag'n'drop')                                                                             |
+| `columns`            |              | `DataGridColumn[]`                                                                                                    | `[]`        | columns definitions, the majority of grid configuration, see below more                                              |
+| `rowDetailsRenderer` |              | `RowDetailsRenderer`                                                                                                  | `undefined` | when provided, will handle an expanded / detailed row part rendering; see more details on `RowDetailsRenderer` below |
+| `items`              |              | `unknown[]`                                                                                                           | `undefined` | see Data API above                                                                                                   |
+| `dataProvider`       |              | `(params: { page: number, pageSize: number }, callback: (pageItems: unknown[], treeLevelSize: number) => void): void` | `undefined` | see Data API above                                                                                                   |
+| `selectedItems`      |              | `unknown[]`                                                                                                           | `[]`        | see Data API above                                                                                                   |
 
 These are the methods available on grid component:
 
-| Method                 | Signature               | Description |
-|------------------------|-------------------------|-------------|
-| `refreshConfiguration` | `(): void`              | refreshes configuration on demand, if needed; use when performing changes directly on the `columns` object (if the array reference remains the same) |
-| `openItemDetails`      | `(item: unknown): void` | marks the row metadata as `expanded` and triggers `rowDetailsRenderer`, if available (see above) |
-| `closeItemDetails`     | `(item: unknown): void` | unmarks the row as `expanded` and collapses the additional visual space provided for the details |
-| `refreshData`          | `(): void`              | triggers visible data refresh; useful when undetectable data changes happen ('deep' changs in `items` or `dataProvider` internal logical conditions) |
-| `selectItem`           | `(item: unknown, singleSelectMode: boolean = false): void` | selects a given item, adding it to the `selectedItems` array; when `singleSelectMode` is `true` all previously selected items will be unselected |
-| `deselectItem`         | `(item: unknown): void` | unselects a given item |
-| `selectAll`            | `(): void`              | select __all__ items; this method will __throw__ when the data provisioning is set to work with `dataProvider` |
-| `deselectAll`          | `(): void`              | unselects __all__ selected items |
+| Method                 | Signature                                                  | Description                                                                                                                                          |
+| ---------------------- | ---------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `refreshConfiguration` | `(): void`                                                 | refreshes configuration on demand, if needed; use when performing changes directly on the `columns` object (if the array reference remains the same) |
+| `openItemDetails`      | `(item: unknown): void`                                    | marks the row metadata as `expanded` and triggers `rowDetailsRenderer`, if available (see above)                                                     |
+| `closeItemDetails`     | `(item: unknown): void`                                    | unmarks the row as `expanded` and collapses the additional visual space provided for the details                                                     |
+| `refreshData`          | `(): void`                                                 | triggers visible data refresh; useful when undetectable data changes happen ('deep' changs in `items` or `dataProvider` internal logical conditions) |
+| `selectItem`           | `(item: unknown, singleSelectMode: boolean = false): void` | selects a given item, adding it to the `selectedItems` array; when `singleSelectMode` is `true` all previously selected items will be unselected     |
+| `deselectItem`         | `(item: unknown): void`                                    | unselects a given item                                                                                                                               |
+| `selectAll`            | `(): void`                                                 | select __all__ items; this method will __throw__ when the data provisioning is set to work with `dataProvider`                                       |
+| `deselectAll`          | `(): void`                                                 | unselects __all__ selected items                                                                                                                     |
 
 ##### `DataGridColumn`
 
@@ -144,22 +144,22 @@ There are 2 ways to configure grid's columns:
 
  `vwc-data-grid-column` component adheres to the `DataGridColumn` interface, therefore effectively there is a single API definition regardless of which configuration flavor used.
 
- | Property        | Attribute    | Type           | Default     | Description |
-|------------------|--------------|----------------|-------------|------------|
-| `path`           | `path`       | `string`       | `''`        | path into the item to get the data for this column's cells |
-| `tree`           | `tree`       | `boolean`      | `false`     | makes column to behave as tree-able (open/close control, shifted value rendering etc) |
-| `hidden`         | `hidden`     | `boolean`      | `false`     | show/hide column |
-| `frozen`         | `frozen`     | `boolean`      | `false`     | freeze/unfreeze column (horizontal scroll pinning) |
-| `sortable`       | `sortable`   | `boolean`      | `false`     | shows sorting UI and provides OOTB sorting support |
-| `resizable`      | `resizable`  | `boolean`      | `false`     | controls column resizeability support (UI) |
-| `selector`       | `selector`   | `string: 'single' | 'multi'` | `undefined` | column designated as `selector` will provide and OOTB header (checkbox) and cells (checkbox) to manage / reflect selection; see 'Selection API' above  |
-| `autoWidth`      | `auto-width` | `boolean`      | `false`     | should the column to auto calculate and set it's own width (based on currently rendered content) |
-| `width`          | `width`      | `string`       | `undefined` | sets static column width (width CSS value) |
-| `header`         | `header`     | `string`       | `''`        | header label |
-| `headerRenderer` |              | `MetaRenderer` | `undefined` | custom header rendering; see `MetaRenderer` details below |
-| `footer`         | `footer`     | `string`       | `''`        | footer text |
-| `footerRenderer` |              | `MetaRenderer` | `undefined` | custom footer rendering; see `MetaRenderer` details below |
-| `cellRenderer`   |              | `DataRenderer` | `undefined` | custom cell rendering; see `DataRenderer` details below   |
+ | Property         | Attribute    | Type                         | Default     | Description                                                                                                                                           |
+ | ---------------- | ------------ | ---------------------------- | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+ | `path`           | `path`       | `string`                     | `''`        | path into the item to get the data for this column's cells                                                                                            |
+ | `tree`           | `tree`       | `boolean`                    | `false`     | makes column to behave as tree-able (open/close control, shifted value rendering etc)                                                                 |
+ | `hidden`         | `hidden`     | `boolean`                    | `false`     | show/hide column                                                                                                                                      |
+ | `frozen`         | `frozen`     | `boolean`                    | `false`     | freeze/unfreeze column (horizontal scroll pinning)                                                                                                    |
+ | `sortable`       | `sortable`   | `boolean`                    | `false`     | shows sorting UI and provides OOTB sorting support                                                                                                    |
+ | `resizable`      | `resizable`  | `boolean`                    | `false`     | controls column resizeability support (UI)                                                                                                            |
+ | `selector`       | `selector`   | `string: 'single' | 'multi'` | `undefined` | column designated as `selector` will provide and OOTB header (checkbox) and cells (checkbox) to manage / reflect selection; see 'Selection API' above |
+ | `autoWidth`      | `auto-width` | `boolean`                    | `false`     | should the column to auto calculate and set it's own width (based on currently rendered content)                                                      |
+ | `width`          | `width`      | `string`                     | `undefined` | sets static column width (width CSS value)                                                                                                            |
+ | `header`         | `header`     | `string`                     | `''`        | header label                                                                                                                                          |
+ | `headerRenderer` |              | `MetaRenderer`               | `undefined` | custom header rendering; see `MetaRenderer` details below                                                                                             |
+ | `footer`         | `footer`     | `string`                     | `''`        | footer text                                                                                                                                           |
+ | `footerRenderer` |              | `MetaRenderer`               | `undefined` | custom footer rendering; see `MetaRenderer` details below                                                                                             |
+ | `cellRenderer`   |              | `DataRenderer`               | `undefined` | custom cell rendering; see `DataRenderer` details below                                                                                               |
 
 ##### `MetaRenderer`
 
