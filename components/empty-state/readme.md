@@ -4,6 +4,8 @@
 
 [Material Design](https://material.io/design/communication/empty-states.html#content)
 
+more on [empty state accessibility, by carbon](https://www.carbondesignsystem.com/patterns/empty-states-pattern/#accessibility) design pattern
+
 ## Properties
 
 | Property  | Attribute | Type                  |

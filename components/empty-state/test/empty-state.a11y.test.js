@@ -9,7 +9,7 @@ chai.use(chaiA11yAxe);
 
 const COMPONENT_NAME = 'vwc-empty-state';
 
-describe('empty-state a11y', () => {
+describe('empty state a11y', () => {
 	const addElement = isolatedElementsCreation();
 
 	it('should have 0 accessibility violations', async () => {
