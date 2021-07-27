@@ -9,6 +9,7 @@ const Template = args => html`
 	<vwc-button layout="outlined" @click="${add}">Add item</vwc-button>
 	<vwc-button layout="outlined" @click="${remove}">Remove item</vwc-button>
 	<br>
+	<br>
 	<vwc-data-grid
 		class="vvd-scheme-alternate"
 		.heightByRows="${true}"
