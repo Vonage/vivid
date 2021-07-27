@@ -15,8 +15,18 @@ export class VWCSideDrawerBase extends LitElement {
 		return html`
 			<div class="side-drawer" part="${ifDefined(this.alternateValue)}">
 				<vwc-list innerRole="navigation" innerAriaLabel="Primary navigation" itemRoles="link">
-					<slot name="navigation"></slot>
+					<slot name="navigation"></slot>	
 				</vwc-list>
-			</div>`;
+			</div>
+			<slot name="appContent"></slot>
+			<vwc-button unelevated @click="${this.handleClick}">Toggle</vwc-button>
+			`;
+	}
+
+	protected handleClick():void {
+		const sideDrawer = this.shadowRoot?.querySelector('.side-drawer');
+		if (sideDrawer) {
+			sideDrawer.classList.contains('close') ? sideDrawer.classList.remove('close') : sideDrawer.classList.add('close');
+		}
 	}
 }

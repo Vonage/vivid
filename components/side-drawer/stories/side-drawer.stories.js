@@ -1,4 +1,5 @@
 import '@vonage/vwc-side-drawer/vwc-side-drawer.js';
+import '@vonage/vwc-button/vwc-button.js';
 import '@vonage/vwc-expansion-panel/vwc-expansion-panel.js';
 import '@vonage/vwc-text/vwc-text.js';
 import { styleMap } from 'lit-html/directives/style-map';
@@ -18,7 +19,7 @@ const titleStyles = {
 };
 
 const Template = args => html`
-   <vwc-side-drawer ...=${spread(args)}>
+   <vwc-side-drawer class="close" id="side-drawer" ...=${spread(args)}>
 
 		<vwc-list-item slot="navigation" activated="" shape="rounded" graphic="icon">
 				<vwc-icon slot="graphic" type="home-line"></vwc-icon>1st level item
@@ -60,8 +61,24 @@ const Template = args => html`
 			</vwc-list-expansion-panel>
 		</vwc-list-expansion-panel>
 
-   </vwc-side-drawer>
+		<div slot="appContent">
+			<div>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum
+            dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat. Duis aute irure dolor in reprehenderit in
+            voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+			</div>
+		</div>
 
+   </vwc-side-drawer>
 `;
 
 export const Basic = Template.bind({});
@@ -69,3 +86,5 @@ Basic.args = { };
 
 export const Alternate = Template.bind({});
 Alternate.args = { alternate: true };
+
+

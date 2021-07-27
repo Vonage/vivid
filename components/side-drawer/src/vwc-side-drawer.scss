@@ -3,17 +3,21 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 
 :host {
-	inline-size: 260px;
+	display: flex;
+	inline-size: 100%;
 }
 
 .side-drawer {
 	top: 0;
 	left: 0;
-	display: fixed;
-	height: 100vh;
 	background-color: var(--vvd-color-base);
+	block-size: 100vh;
 	color: var(--vvd-color-on-base);
 	inline-size: inherit;
+}
+
+.side-drawer.close {
+	display: none;
 }
 
 vwc-list {

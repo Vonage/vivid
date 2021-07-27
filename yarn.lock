@@ -9580,6 +9580,14 @@ eslint-plugin-wc@^1.2.0:
     js-levenshtein-esm "^1.2.0"
     validate-element-name "^2.1.1"
 
+eslint-plugin-wc@^1.3.1:
+  version "1.3.1"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/eslint-plugin-wc/-/eslint-plugin-wc-1.3.1.tgz#108058ff54c8d888ea577924e7b6e982734c343e"
+  integrity sha1-EIBY/1TI2IjqV3kk57bpgnNMND4=
+  dependencies:
+    is-valid-element-name "^1.0.0"
+    js-levenshtein-esm "^1.2.0"
+
 eslint-rule-extender@0.0.1:
   version "0.0.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/eslint-rule-extender/-/eslint-rule-extender-0.0.1.tgz#ae9faf15d1e651a714d579af0961fd80456f3b16"
@@ -12056,6 +12064,13 @@ is-utf8@^0.2.0:
   version "0.2.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/is-utf8/-/is-utf8-0.2.1.tgz#4b0da1442104d1b336340e80797e865cf39f7d72"
   integrity sha1-Sw2hRCEE0bM2NA6AeX6GXPOffXI=
+
+is-valid-element-name@^1.0.0:
+  version "1.0.0"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/is-valid-element-name/-/is-valid-element-name-1.0.0.tgz#26ef3fd76cdf1f122d105406e32d35b0de005981"
+  integrity sha1-Ju8/12zfHxItEFQG4y01sN4AWYE=
+  dependencies:
+    is-potential-custom-element-name "^1.0.0"
 
 is-whitespace-character@^1.0.0:
   version "1.0.4"
@@ -18310,7 +18325,7 @@ term-size@^2.1.0:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/term-size/-/term-size-2.2.1.tgz#2a6a54840432c2fb6320fea0f415531e90189f54"
   integrity sha1-KmpUhAQywvtjIP6g9BVTHpAYn1Q=
 
-terminal-kit@^2.0.5:
+terminal-kit@2.0.7, terminal-kit@^2.0.5:
   version "2.0.7"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/terminal-kit/-/terminal-kit-2.0.7.tgz#7076707fb9ae31b4cdb1ec0f4e21d9feb027c718"
   integrity sha1-cHZwf7muMbTNsewPTiHZ/rAnxxg=
