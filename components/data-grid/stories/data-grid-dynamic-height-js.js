@@ -8,11 +8,12 @@ let count = 2;
 const Template = args => html`
 	<vwc-button layout="outlined" @click="${add}">Add item</vwc-button>
 	<vwc-button layout="outlined" @click="${remove}">Remove item</vwc-button>
-
+	<br>
 	<vwc-data-grid
-	.heightByRows="${true}"
-	.columns="${args.columns}" 
-	.items="${args.items}">
+		class="vvd-scheme-alternate"
+		.heightByRows="${true}"
+		.columns="${args.columns}"
+		.items="${args.items}">
 	</vwc-data-grid>
 `;
 
@@ -30,7 +31,7 @@ const getGrid = () => document.querySelector('vwc-data-grid');
 const updateGrid = () => {
 	getGrid().heightByRows = count <= 5;
 	getGrid().items = sequentalData({ fname: 'A-{i}', lname: 'B-{i}' }, count);
-}
+};
 
 function add() {
 	count++;

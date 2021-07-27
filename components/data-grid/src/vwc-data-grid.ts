@@ -23,7 +23,6 @@ import {
 	property,
 	LitElement,
 	TemplateResult,
-	PropertyValues,
 } from 'lit-element';
 import { DataGridAdapter } from './adapters/vwc-data-grid-adapter-api';
 
@@ -55,17 +54,22 @@ export class VWCDataGrid extends LitElement implements DataGrid {
 
 	@property({ type: Boolean, reflect: true, attribute: 'multi-sort' })
 	multiSort = false;
+
 	@property({ type: Boolean, reflect: true, attribute: 'height-by-rows' })
 	heightByRows = false;
+
 	@property({ type: Boolean, reflect: true })
 	reordering = false;
+
 	@property({ type: Array, reflect: false })
 	columns: DataGridColumn[] = [];
+
 	@property({ reflect: false, attribute: false })
 	rowDetailsRenderer?: RowDetailsRenderer | undefined = undefined;
 
 	@property({ type: Array, reflect: false })
 	items: unknown[] | undefined = undefined;
+
 	@property({ reflect: false, attribute: false })
 	dataProvider: ((params: unknown, callback: (pageItems: unknown[], treeLevelSize: number) => void) => void) | undefined = undefined;
 
@@ -118,11 +122,6 @@ export class VWCDataGrid extends LitElement implements DataGrid {
 
 	protected render(): TemplateResult {
 		return this.#gridAdapter.render();
-	}
-
-	protected updated(changedProperties: PropertyValues): void {
-		super.updated(changedProperties);
-		this.#gridAdapter.elementUpdated(this, changedProperties);
 	}
 
 	protected firstUpdated(): void {

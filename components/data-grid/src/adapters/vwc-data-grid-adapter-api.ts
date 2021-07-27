@@ -1,5 +1,5 @@
-import { PropertyValues, TemplateResult } from 'lit-element';
-import { DataGrid, EventContext } from '../vwc-data-grid-api';
+import { TemplateResult } from 'lit-element';
+import { EventContext } from '../vwc-data-grid-api';
 
 export {
 	DataGridAdapter
@@ -26,5 +26,4 @@ interface DataGridAdapter {
 
 	//	interop
 	getEventContext(event: Event): EventContext | null;
-	elementUpdated(grid: DataGrid, changedProperties: PropertyValues): void;
 }
