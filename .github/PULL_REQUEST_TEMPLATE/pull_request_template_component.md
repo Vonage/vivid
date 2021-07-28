@@ -16,7 +16,7 @@
 <!--- Include details of your testing environment, and the tests you ran to -->
 <!--- see how your change affects other areas of the code, etc. -->
 * [ ] A11y tests
-* [ ] Ui tests 
+* [ ] Ui tests
 * [ ] Unit and coverage
 * [ ] Test for Aria [matching roles](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles)
 * [ ] [Check the markup](https://validator.w3.org/)
