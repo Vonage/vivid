@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.16.0](https://github.com/Vonage/vivid/compare/v2.15.0...v2.16.0) (2021-07-28)
+
+
+### Bug Fixes
+
+* **banner:** bug story ;) ([#988](https://github.com/Vonage/vivid/issues/988)) ([0df1325](https://github.com/Vonage/vivid/commit/0df13257a9fa04240e5f825494065e80fd526a63))
+
+
+### Features
+
+* **button:** refactor button styles to use and expose variables ([#989](https://github.com/Vonage/vivid/issues/989)) ([45fe21d](https://github.com/Vonage/vivid/commit/45fe21dba357100f35626d316089a0cf3173bc85))
+* **data-grid:** allow data-grid to set height according to container ([#983](https://github.com/Vonage/vivid/issues/983)) ([2dcae4d](https://github.com/Vonage/vivid/commit/2dcae4d2bdf0e384f267c72571e33c580f0f48c0))
+* **data-grid:** expose `heightByRows` field to control grid height d… ([#985](https://github.com/Vonage/vivid/issues/985)) ([abeb481](https://github.com/Vonage/vivid/commit/abeb4815901fcf444446311b4e48f546b201ed70)), closes [#983](https://github.com/Vonage/vivid/issues/983)
+* **icon:** upgraded to v4.0.15 ([#982](https://github.com/Vonage/vivid/issues/982)) ([4643118](https://github.com/Vonage/vivid/commit/4643118523c801b11776b94eb276e2b7a0877aba))
+* **vwc-badge:** deprecates slot in favor of props ([#986](https://github.com/Vonage/vivid/issues/986)) ([3513345](https://github.com/Vonage/vivid/commit/3513345183cc521e2665c588b17a2195d821ae59))
+* **vwc-empty-state:** 1st draft ([#984](https://github.com/Vonage/vivid/issues/984)) ([5d37d03](https://github.com/Vonage/vivid/commit/5d37d03994bc33904dbbf01783740a02e4b17c97))
+
+
+
+
+
 # [2.15.0](https://github.com/Vonage/vivid/compare/v2.14.0...v2.15.0) (2021-07-20)
 
 
