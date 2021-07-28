@@ -36,19 +36,29 @@ const sanitizeSlackText = (function(filters){
     (text)=> text.replace(/>/g, '&gt;')
 ]);
 
+const bolden = (text)=> text && `*${text}*`;
+
 exports.releaseTemplate = ({ version, log_lines: rawLogLines })=>{
 
 	const formatLogLine = (icon = "•")=> ({ comment, sha })=> [
 		"",
 		icon,
-		_.truncate(sanitizeSlackText(_.capitalize(comment.replace(/^[\s\S]+:\s*/, ''))), { length: 60 }),
+		_.truncate(
+				(([component, comment])=> [
+					_(component).chain().kebabCase().thru(bolden).value(),
+					_(comment).chain().capitalize(comment).value()
+				].filter(Boolean).map(sanitizeSlackText).join(': '))(fp.at(["groups.component", "groups.comment"], comment.match(/^.+?(\((?<component>.+?)\))?\s*:\s*(?<comment>.*)$/)))
+			, { length: 220 }
+		),
 		`(<${[COMMIT_BASE_URL, sha].join('/')}|${sha.substr(0, 7)}>)`
 	].join(' ');
 
 	const
 		validLog = rawLogLines.filter(({ comment })=> !/(branch)|(pull request)/i.test(comment)),
-		bugs = validLog.filter(({ comment })=> /^fix(e[ds])?.*?:/i.test(comment)).map(formatLogLine(':beetle:')),
+		bugs = validLog.filter(({ comment })=> /^fix(e[ds])?.*?:/i.test(comment)).concat({ comment: "feat(bug):hello", sha: "sdfsdf" }).map(formatLogLine(':beetle:')),
 		features = validLog.filter(({ comment })=> /^feat(ures?)?.*?:/i.test(comment)).map(formatLogLine(':star:'));
+
+	console.log(validLog);
 
 	return {
 		"blocks": [
