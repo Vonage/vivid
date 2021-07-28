@@ -52,7 +52,8 @@ async function compareImages(img1Path, img2Path): Promise<ComparisonResult> {
 
 async function takeSnapshot(page, snapshotPath) {
 	const componentName = snapshotPath.substring(snapshotPath.lastIndexOf('/') + 1, snapshotPath.lastIndexOf('.'));
-	const elementId = `#${pascalCase(componentName).replace('Snapshot', '')}`;
+	const elementId = `#${pascalCase(componentName)
+		.replace('Snapshot', '')}`;
 	const element = await page.$(elementId);
 	let screenShotHandler = element;
 	if (await element.getAttribute('testWholePage')) {
@@ -83,11 +84,11 @@ async function runImageComparison() {
 }
 
 async function runTestOnComponent(browser, componentName) {
-	const page = await browser.newPage();
+	const pageInstance = await browser.newPage();
 	const testUrl = `${SERVER_URL}/${componentName}`;
-	await page.goto(testUrl);
+	pageInstance.goto(testUrl);
 	return new Promise((res) => {
-		page.context()
+		pageInstance.context()
 			.exposeBinding('doTest', async ({ page }) => {
 				await doTest(page);
 				res(true);
@@ -101,10 +102,16 @@ async function doTest(page) {
 		.splice(-1, 1)[0];
 	const snapshotPath = `${SNAPSHOT_PATH}/${componentName}.png`;
 	await page.waitForLoadState('networkidle');
-	if (process.argv.includes('-u') || !fs.existsSync(snapshotPath)) {
+	if (process.argv.includes('-u')) {
 		console.log('Updating snapshot...');
+		await (new Promise(res => setTimeout(res, 200)));
 		await takeSnapshot(page, snapshotPath);
 	} else {
+		if (!fs.existsSync(snapshotPath)) {
+			console.error(`Missing snapshot for ${componentName}`);
+			process.exitCode = 1;
+			return;
+		}
 		const diff = await compareToSnapshot(page, snapshotPath);
 		if (diff.percent === 0) {
 			console.log('Visual Diff Passed!');

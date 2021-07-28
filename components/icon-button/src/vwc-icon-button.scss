@@ -4,7 +4,7 @@ $icon-button-icon-size-variable-name: --vvd-icon-button-icon-size;
 
 @use 'sass:map';
 @use './vwc-icon-button-variables' as icon-button-variables;
-@use '@vonage/vwc-icon/src/vwc-icon-variables' as icon-variables;
+@use '@vonage/vwc-icon/src/partials/vwc-icon-variables' as icon-variables;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (

@@ -4,7 +4,6 @@ import '@vonage/vwc-button-toggle-group';
 import '@vonage/vwc-button';
 import { storiesToElement } from '../../utils/storiesToElement';
 
-
 export async function createElementVariations(wrapper) {
 	wrapper.appendChild(storiesToElement(stories));
 

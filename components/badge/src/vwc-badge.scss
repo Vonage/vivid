@@ -31,6 +31,17 @@ $vvd-badge-block-size: --#{$namespace}-block-size;
 
 :host {
 	#{$vvd-badge-block-size}: 24px;
+}
+
+:host([dense]) {
+	#{$vvd-badge-block-size}: 20px;
+}
+
+:host([enlarged]) {
+	#{$vvd-badge-block-size}: 28px;
+}
+
+.vwc-badge {
 	@include typography.typography-cat-shorthand('caption-bold');
 	display: inline-block;
 	padding: 0 10px;
@@ -39,24 +50,24 @@ $vvd-badge-block-size: --#{$namespace}-block-size;
 	border-radius: var(--#{$namespace}-shape);
 	color: var(--#{$namespace}-color);
 	line-height: var(#{$vvd-badge-block-size});
+
+	:host([dense]) & {
+		padding: 0 8px;
+	}
+
+	:host([enlarged]) & {
+		padding: 0 12px;
+	}
 }
 
-:host([layout="outlined"i]) {
-	--color: var(#{scheme-variables.$vvd-color-on-base});
-}
+.icon {
+	--icon-size: 12px;
+	$margin: 8px;
 
-:host([disabled]) {
-	background-color: var(#{scheme-variables.$vvd-color-neutral-30});
-	color: var(#{scheme-variables.$vvd-color-neutral-50});
+	&.icon--leading {
+		margin-inline-end: $margin;
+	}
+	&.icon--trailing {
+		margin-inline-start: $margin;
+	}
 }
-
-:host([dense]) {
-	#{$vvd-badge-block-size}: 20px;
-	padding: 0 8px;
-}
-
-:host([enlarged]) {
-	#{$vvd-badge-block-size}: 28px;
-	padding: 0 12px;
-}
-

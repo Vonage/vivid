@@ -1,3 +1,12 @@
+# [2.15.0](https://github.com/vonage/vivid/compare/v2.14.0...v2.15.0) (2021-07-20)
+
+
+### Bug Fixes
+
+* dropdown padding ([#971](https://github.com/vonage/vivid/issues/971)) ([b6f12d6](https://github.com/vonage/vivid/commit/b6f12d6d60c3ea713bad31d188c1b46f7fbca550))
+
+
+
 # [2.14.0](https://github.com/vonage/vivid/compare/v2.13.0...v2.14.0) (2021-07-13)
 
 

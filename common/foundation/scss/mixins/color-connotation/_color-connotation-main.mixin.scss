@@ -19,6 +19,9 @@ $_connotations-definition: (
 $connotations-set: predefined-connotations.$connotations-set !default;
 $selector: variables.$selector !default;
 
+$connotation-variable: #{variables.$vvd-color-connotation} !default;
+$on-connotation-variable: #{variables.$vvd-on-color-connotation} !default;
+
 // selector can be altered by relevance
 @mixin connotations-main {
 	@each $name in functions.pick-list($connotations-set, $_connotations-definition) {
@@ -51,6 +54,6 @@ $selector: variables.$selector !default;
 }
 
 @mixin connotation-main-variables($name) {
-	#{variables.$vvd-color-connotation}: var(--vvd-color-#{$name});
-	#{variables.$vvd-color-on-connotation}: var(--vvd-color-on-#{$name});
+	#{$connotation-variable}: var(--vvd-color-#{$name});
+	#{$on-connotation-variable}: var(--vvd-color-on-#{$name});
 }

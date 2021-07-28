@@ -1,3 +1,17 @@
+# [2.15.0](https://github.com/vonage/vivid/compare/v2.14.0...v2.15.0) (2021-07-20)
+
+
+### Bug Fixes
+
+* **expansion-panel:** add styles to slotted icons ([#960](https://github.com/vonage/vivid/issues/960)) ([d67ac15](https://github.com/vonage/vivid/commit/d67ac15593bfc364ef092a392b17e7e2c1b8efdc))
+
+
+### Features
+
+* **vwc-icon:** connotation support ([#957](https://github.com/vonage/vivid/issues/957)) ([c7bbfac](https://github.com/vonage/vivid/commit/c7bbfac08f9cbd39ebcaabd7c9f24a45758f1f2f))
+
+
+
 # [2.14.0](https://github.com/vonage/vivid/compare/v2.13.0...v2.14.0) (2021-07-13)
 
 
