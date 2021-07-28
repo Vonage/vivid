@@ -46,7 +46,7 @@ exports.releaseTemplate = ({ version, log_lines: rawLogLines })=>{
 		_.truncate(
 				(([component, comment])=> [
 					_(component).chain().kebabCase().thru(bolden).value(),
-					_(comment).chain().capitalize(comment).value()
+					_(comment).chain().capitalize().value()
 				].filter(Boolean).map(sanitizeSlackText).join(': '))(fp.at(["groups.component", "groups.comment"], comment.match(/^.+?(\((?<component>.+?)\))?\s*:\s*(?<comment>.*)$/)))
 			, { length: 220 }
 		),
