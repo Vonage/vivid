@@ -1,7 +1,5 @@
 import '@vonage/vwc-side-drawer/vwc-side-drawer.js';
-import '@vonage/vwc-button/vwc-button.js';
 import '@vonage/vwc-expansion-panel/vwc-expansion-panel.js';
-import '@vonage/vwc-text/vwc-text.js';
 import { styleMap } from 'lit-html/directives/style-map';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
@@ -13,15 +11,43 @@ export default {
 	argTypes
 };
 
+const headerStyles = {
+	fontWeight: 'bold'
+};
+
 const titleStyles = {
 	color: '#C0C0C0',
 	fontWeight: 'bold'
 };
 
 const Template = args => html`
-   <vwc-side-drawer class="close" id="side-drawer" ...=${spread(args)}>
+<style>
+	div#demo {
+		display: flex;
+		width: 960px;
+		height: 540px;
+		background-color:#EEE;
+	}
+	vwc-side-drawer#side-drawer {
+		flex: 0 0 auto;
+		height: 100%;
+	}
+	div#default {
+		padding: 20px;
+		width: 960px;
+		background-image: url("data:image/svg+xml,%3Csvg width='782' height='754' viewBox='0 0 782 754' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='782' height='754' fill='%23F2F2F2'/%3E%3Crect x='23' y='80' width='733' height='248' rx='6' fill='white'/%3E%3Crect x='393' y='198' width='324' height='12' fill='%23B3B3B3'/%3E%3Crect x='393' y='230' width='324' height='12' fill='%23B3B3B3'/%3E%3Crect x='393' y='262' width='324' height='12' fill='%23B3B3B3'/%3E%3Crect x='393' y='134' width='142' height='12' fill='%23B3B3B3'/%3E%3Crect x='393' y='166' width='324' height='12' fill='%23B3B3B3'/%3E%3Crect x='53' y='120' width='290' height='168' rx='6' fill='%23CCCCCC'/%3E%3Crect width='782' height='59' fill='%23E1E1E1'/%3E%3Crect x='23' y='16' width='500' height='28' rx='3' fill='%23C4C4C4'/%3E%3Ccircle cx='646' cy='30' r='14' fill='%23C4C4C4'/%3E%3Ccircle cx='694' cy='30' r='14' fill='%23C4C4C4'/%3E%3Ccircle cx='742' cy='30' r='14' fill='%23C4C4C4'/%3E%3Crect x='23' y='348' width='733' height='240' rx='6' fill='white'/%3E%3Crect x='90' y='513' width='141' height='12' fill='%23B3B3B3'/%3E%3Crect x='90' y='539' width='141' height='12' fill='%23B3B3B3'/%3E%3Crect x='319' y='513' width='141' height='12' fill='%23B3B3B3'/%3E%3Crect x='319' y='539' width='141' height='12' fill='%23B3B3B3'/%3E%3Crect x='548' y='513' width='141' height='12' fill='%23B3B3B3'/%3E%3Crect x='548' y='539' width='141' height='12' fill='%23B3B3B3'/%3E%3Crect x='70' y='388' width='182.667' height='94' rx='6' fill='%23CCCCCC'/%3E%3Crect x='298.667' y='388' width='182.667' height='94' rx='6' fill='%23CCCCCC'/%3E%3Crect x='527.333' y='388' width='182.667' height='94' rx='6' fill='%23CCCCCC'/%3E%3Crect x='23' y='608' width='733' height='125' rx='6' fill='white'/%3E%3Crect x='81' y='651' width='618' height='12' fill='%23B3B3B3'/%3E%3Crect x='81' y='683' width='618' height='12' fill='%23B3B3B3'/%3E%3C/svg%3E%0A");
+		background-size: cover;	
+	}
+</style>
 
-		<vwc-list-item slot="navigation" activated="" shape="rounded" graphic="icon">
+<div id="demo">
+   <vwc-side-drawer id="side-drawer" ...=${spread(args)}>
+
+		<div slot="header" style=${styleMap(headerStyles)}>
+			<vwc-icon slot="graphic" type="vonage-mono"></vwc-icon> VONAGE
+		</div>
+
+		<vwc-list-item slot="navigation" shape="rounded" graphic="icon">
 				<vwc-icon slot="graphic" type="home-line"></vwc-icon>1st level item
 		</vwc-list-item>
 
@@ -60,25 +86,10 @@ const Template = args => html`
 				<vwc-list-item shape="rounded">3rd level item</vwc-list-item>
 			</vwc-list-expansion-panel>
 		</vwc-list-expansion-panel>
-
-		<div slot="appContent">
-			<div>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat. Duis aute irure dolor in reprehenderit in
-            voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-			</div>
-		</div>
-
    </vwc-side-drawer>
+
+	<div id="default"></div>
+</div>
 `;
 
 export const Basic = Template.bind({});
@@ -86,5 +97,8 @@ Basic.args = { };
 
 export const Alternate = Template.bind({});
 Alternate.args = { alternate: true };
+
+export const Header = Template.bind({});
+Header.args = { hasHeader: true };
 
 

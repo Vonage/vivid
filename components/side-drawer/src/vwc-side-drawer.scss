@@ -2,24 +2,18 @@
 @use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
 @use '@vonage/vvd-typography/scss/typography' as typography;
 
-:host {
-	display: flex;
-	inline-size: 100%;
+aside {
+	height: 100%;
+	box-sizing: border-box;
+	padding: 10px;
+	margin: 0;
+	background-color: var(--vvd-color-base);
 }
 
 .side-drawer {
-	top: 0;
-	left: 0;
+	position: relative;
+	height: 100%;
+	margin: 0;
 	background-color: var(--vvd-color-base);
-	block-size: 100vh;
 	color: var(--vvd-color-on-base);
-	inline-size: inherit;
-}
-
-.side-drawer.close {
-	display: none;
-}
-
-vwc-list {
-	margin: 10px;
 }
