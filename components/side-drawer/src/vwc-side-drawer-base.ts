@@ -6,7 +6,7 @@ import { ifDefined } from 'lit-html/directives/if-defined';
 
 export class VWCSideDrawerBase extends LitElement {
 	/**
-	 * alternate - applies scheme alternate region
+	 * @prop alternate - applies scheme alternate region
 	 * Adds ::part=”vvd-scheme-alternate”
 	 * Accepts boolean value
 	 * @public
@@ -15,7 +15,7 @@ export class VWCSideDrawerBase extends LitElement {
 	alternate?: boolean;
 
 	/**
-	 * hasHeader - adds header to the side drawer
+	 * @prop hasHeader - adds header to the side drawer
 	 * Accepts boolean value
 	 * @public
 	 * */
