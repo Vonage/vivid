@@ -1,15 +1,11 @@
 # vwc-side-drawer
 
-Add a description of vwc-side-drawer.
+Represents a side drawer custom element.
 
 ## Properties
 
-| Property                  | Type                                      |
-|---------------------------|-------------------------------------------|
-| `prop         `           | `propType`                                |
-
-## Methods
-
-| Method  | Type       |
-|---------|------------|
-| `method`| `(): void` |
+| Property         | Attribute   | Modifiers | Type                   |
+|------------------|-------------|-----------|------------------------|
+| `alternate`      | `alternate` |           | `boolean \| undefined` |
+| `alternateValue` |             | readonly  | `string \| undefined`  |
+| `hasHeader`      | `hasHeader` |           | `boolean \| undefined` |
