@@ -1,0 +1,36 @@
+{
+	"name": "@vonage/vwc-chip",
+	"version": "2.15.0",
+	"description": "chip component",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/chip#readme",
+	"license": "ISC",
+	"main": "vwc-chip.js",
+	"module": "vwc-chip.js",
+	"files": [
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/vonage/vivid.git",
+		"directory": "components/chip"
+	},
+	"scripts": {
+		"build:typescript": "tsc -b",
+		"build:styles": "umbrella-style-modules",
+		"build": "yarn run build:styles && yarn run build:typescript"
+	},
+	"bugs": {
+		"url": "https://github.com/Vonage/vivid/issues"
+	},
+	"dependencies": {
+		"@vonage/vvd-foundation": "^2.15.0",
+		"@vonage/vvd-typography": "^2.15.0",
+		"lit-element": "^2.4.0",
+		"tslib": "^2.0.2"
+	},
+	"devDependencies": {
+		"@vonage/vvd-umbrella": "^2.15.0"
+	}
+}

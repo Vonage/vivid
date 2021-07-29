@@ -1,0 +1,33 @@
+$namespace: vvd-chip;
+
+@use '@vonage/vvd-typography/scss/typography' as typography;
+
+@use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation with (
+	$connotations-set: primary cta success alert warning info
+);
+
+@use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
+	$variable-name: --#{$namespace}-shape
+);
+
+@include shape-mixins.shape(
+	$shapes: (
+		rounded: 4px,
+		pill: 14px,
+	),
+	$default: rounded
+);
+
+@include color-connotation.connotations-shades;
+@include color-connotation.connotations-main;
+@include color-connotation.connotations-main-default(primary);
+
+:host {
+	> div {
+		@include typography.typography-cat-shorthand(caption-bold);
+		display: inline-block;
+		background-color: var(--vvd-color-connotation);
+		border-radius: var(--vvd-chip-shape);
+		color: var(--vvd-color-on-connotation);
+	}
+}
