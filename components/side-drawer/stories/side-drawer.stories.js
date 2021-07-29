@@ -11,6 +11,8 @@ export default {
 	argTypes
 };
 
+var prevActivatedItem;
+
 const headerStyles = {
 	fontWeight: 'bold'
 };
@@ -46,7 +48,7 @@ const Template = args => html`
 </style>
 
 <div id="demo">
-   <vwc-side-drawer id="side-drawer" ...=${spread(args)}>
+   <vwc-side-drawer id="side-drawer" ...=${spread(args)} @click="${onClick}">
 
 		<div slot="header" style=${styleMap(headerStyles)}>
 			<vwc-icon slot="graphic" type="vonage-mono"></vwc-icon> VONAGE
@@ -96,6 +98,14 @@ const Template = args => html`
 	<div id="default"></div>
 </div>
 `;
+
+function onClick(e) {
+	if(typeof prevActivatedItem !== 'undefined'){
+		prevActivatedItem.activated = false;
+	}
+	prevActivatedItem = e.target ;
+	prevActivatedItem.activated = true;
+}
 
 export const Basic = Template.bind({});
 Basic.args = { };
