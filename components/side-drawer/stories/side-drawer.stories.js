@@ -26,7 +26,12 @@ const Template = args => html`
 		display: flex;
 		width: 960px;
 		height: 540px;
-		background-color:#EEE;
+		margin: auto;
+		background-color: #eee;
+		border-radius: 10px;
+		overflow: hidden;
+		box-shadow: 0 0 3px 2px rgba(0,0,0,0.1);
+		border: solid 1px #ccc;
 	}
 	vwc-side-drawer#side-drawer {
 		flex: 0 0 auto;
