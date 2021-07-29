@@ -13,10 +13,6 @@ export default {
 
 var prevActivatedItem;
 
-const headerStyles = {
-	fontWeight: 'bold'
-};
-
 const titleStyles = {
 	color: '#C0C0C0',
 	fontWeight: 'bold'
@@ -24,6 +20,9 @@ const titleStyles = {
 
 const Template = args => html`
 <style>
+	div#header {
+		font-weight: bold;
+	}
 	div#demo {
 		display: flex;
 		width: 960px;
@@ -50,7 +49,7 @@ const Template = args => html`
 <div id="demo">
    <vwc-side-drawer id="side-drawer" ...=${spread(args)} @click="${onClick}">
 
-		<div slot="header" style=${styleMap(headerStyles)}>
+		<div slot="header" id="header">
 			<vwc-icon slot="graphic" type="vonage-mono"></vwc-icon> VONAGE
 		</div>
 
