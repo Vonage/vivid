@@ -26,12 +26,16 @@ export type IndicatorIconSets = typeof iconSets;
 @customElement('vwc-expansion-panel')
 export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	static styles = style;
+
 	/**
-	 * @deprecated use {@link VWCExpansionPanel.heading} instead [heading]
+	 * @deprecated use {@link VWCExpansionPanel.heading} instead
 	 */
 	@property({ type: String, reflect: true })
 	header = '';
 
+	/**
+	 * The heading of the expanded panel
+	 */
 	@property({ type: String, reflect: true })
 	heading = '';
 
