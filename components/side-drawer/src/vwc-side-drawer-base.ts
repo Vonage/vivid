@@ -4,11 +4,17 @@ import {
 import { nothing } from 'lit-html';
 import { ifDefined } from 'lit-html/directives/if-defined';
 
+/**
+ * @slot header - The content of the header.
+ * @slot navigation - For vwc-list-item, vwc-list-expansion-panel, paragraph etc.
+ *
+ * @summary This is MyElement
+ *
+ */
 export class VWCSideDrawerBase extends LitElement {
 	/**
-	 * @prop alternate - applies scheme alternate region
-	 * Adds ::part=”vvd-scheme-alternate”
-	 * Accepts boolean value
+	 * @prop alternate - [Applies scheme alternate region](../../common/scheme/readme.md)
+	 * accepts boolean value
 	 * @public
 	 * */
 	@property({ type: Boolean, reflect: true })
@@ -16,13 +22,13 @@ export class VWCSideDrawerBase extends LitElement {
 
 	/**
 	 * @prop hasHeader - adds header to the side drawer
-	 * Accepts boolean value
+	 * accepts boolean value
 	 * @public
 	 * */
 	@property({ type: Boolean, reflect: true })
 	hasHeader?: boolean;
 
-	get alternateValue():string | undefined {
+	get alternateValue(): string | undefined {
 		return this.alternate ? 'vvd-scheme-alternate' : undefined;
 	}
 
@@ -32,14 +38,18 @@ export class VWCSideDrawerBase extends LitElement {
 	 * */
 	protected render(): TemplateResult {
 		return html`
-		<aside part="${ifDefined(this.alternateValue)}">
-			<div class="side-drawer" part="${ifDefined(this.alternateValue)}">
-				${this.hasHeader ? html`<slot name="header"></slot>` : nothing}
-				<vwc-list innerRole="navigation" innerAriaLabel="Primary navigation" itemRoles="link">
-					<slot name="navigation"></slot>	
-				</vwc-list>
-			</div>
-		</aside>
+			<aside part="${ifDefined(this.alternateValue)}">
+				<div class="side-drawer" part="${ifDefined(this.alternateValue)}">
+					${this.hasHeader ? html`<slot name="header"></slot>` : nothing}
+					<vwc-list
+						innerRole="navigation"
+						innerAriaLabel="Primary navigation"
+						itemRoles="link"
+					>
+						<slot name="navigation"></slot>
+					</vwc-list>
+				</div>
+			</aside>
 		`;
 	}
 }
