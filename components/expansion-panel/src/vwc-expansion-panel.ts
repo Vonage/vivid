@@ -26,11 +26,6 @@ export type IndicatorIconSets = typeof iconSets;
 @customElement('vwc-expansion-panel')
 export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	static styles = style;
-	/**
-	 * @deprecated use {@link VWCExpansionPanel.heading} instead [heading]
-	 */
-	@property({ type: String, reflect: true })
-	header = '';
 
 	@property({ type: String, reflect: true })
 	heading = '';
@@ -91,7 +86,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 						${this.renderIconOrToggle()}
 					</slot>
 				</span>
-				${this.heading || this.header}
+				${this.heading}
 				<span class="trailing-icon">
 					<slot name="trailingIcon">
 						${!this.leadingToggle ? this.renderToggle() : ''}
