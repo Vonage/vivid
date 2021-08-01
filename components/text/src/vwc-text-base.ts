@@ -16,7 +16,7 @@ type TextConnotation = Extract<
 	>;
 
 export class VWCTextBase extends LitElement {
-	@property({ type: String, reflect: true })
+	@property({ type: String, reflect: true, attribute: 'font-face' })
 	fontFace?: VVDFontFace;
 
 	@property({ type: String, reflect: true })
