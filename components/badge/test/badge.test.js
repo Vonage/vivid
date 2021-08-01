@@ -126,6 +126,7 @@ describe('badge', () => {
 			);
 
 			await badge.updateComplete;
+			await badge.updateComplete;
 			expect(badge.shadowRoot.innerHTML).to.equalSnapshot();
 		});
 
@@ -139,6 +140,7 @@ describe('badge', () => {
 			badge.icon = 'thumbs-down-line';
 			badge.iconTrailing = 'thumbs-down-line';
 			await badge.updateComplete;
+			await badge.updateComplete;
 			expect(badge.shadowRoot.innerHTML).to.equalSnapshot();
 		});
 
@@ -151,6 +153,7 @@ describe('badge', () => {
 
 			badge.setAttribute('icon', 'thumbs-down-line');
 			badge.setAttribute('iconTrailing', 'thumbs-up-line');
+			await badge.updateComplete;
 			await badge.updateComplete;
 			expect(badge.shadowRoot.innerHTML).to.equalSnapshot();
 		});
