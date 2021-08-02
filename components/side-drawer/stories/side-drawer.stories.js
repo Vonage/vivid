@@ -18,11 +18,8 @@ const titleStyles = {
 	fontWeight: "bold",
 };
 
-const Template = (args) => html`
+const Template = args => html`
 	<style>
-		div#header {
-			font-weight: bold;
-		}
 		div#demo {
 			display: flex;
 			width: 960px;
@@ -48,45 +45,52 @@ const Template = (args) => html`
 
 	<div id="demo">
 		<vwc-side-drawer id="side-drawer" ...=${spread(args)} @click="${onClick}">
-			<div slot="header" id="header">
-				<vwc-icon slot="graphic" type="vonage-mono"></vwc-icon> VONAGE
-			</div>
+			<span slot="top-bar">
+				<vwc-icon type="vonage-mono"></vwc-icon> VONAGE
+			</span>
 
-			<vwc-list-item slot="navigation" shape="rounded" graphic="icon">
-				<vwc-icon slot="graphic" type="home-line"></vwc-icon>1st level item
-			</vwc-list-item>
 
-			<p slot="navigation" style=${styleMap(titleStyles)}>SECTION TITLE</p>
+			<vwc-list
+					innerRole="navigation"
+					innerAriaLabel="Primary navigation"
+					itemRoles="link"
+				>
+				<vwc-list-item shape="rounded" graphic="icon">
+					<vwc-icon slot="graphic" type="home-line"></vwc-icon>1st level item
+				</vwc-list-item>
 
-			<vwc-list-item slot="navigation" shape="rounded" graphic="icon">
-				<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
-			</vwc-list-item>
+				<p style=${styleMap(titleStyles)}>SECTION TITLE</p>
 
-			<!-- <li slot="navigation" divider role="separator" padded></li> -->
-
-			<vwc-list-expansion-panel open slot="navigation">
-				<vwc-list-item slot="header" shape="rounded" graphic="icon">
+				<vwc-list-item shape="rounded" graphic="icon">
 					<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
 				</vwc-list-item>
+
+				<!-- <li divider role="separator" padded></li> -->
+
 				<vwc-list-expansion-panel open>
-					<vwc-list-item slot="header" shape="rounded"
-						>2nd level item</vwc-list-item
-					>
-					<vwc-list-item shape="rounded">3rd level item</vwc-list-item>
-					<vwc-list-item shape="rounded">3rd level item</vwc-list-item>
+					<vwc-list-item slot="header" shape="rounded" graphic="icon">
+						<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
+					</vwc-list-item>
+					<vwc-list-expansion-panel open>
+						<vwc-list-item slot="header" shape="rounded"
+							>2nd level item</vwc-list-item
+						>
+						<vwc-list-item shape="rounded">3rd level item</vwc-list-item>
+						<vwc-list-item shape="rounded">3rd level item</vwc-list-item>
+					</vwc-list-expansion-panel>
 				</vwc-list-expansion-panel>
-			</vwc-list-expansion-panel>
 
-			<p slot="navigation" style=${styleMap(titleStyles)}>SECTION TITLE</p>
+				<p style=${styleMap(titleStyles)}>SECTION TITLE</p>
 
-			<vwc-list-expansion-panel  slot="navigation">
-				<vwc-list-item slot="header" shape="rounded" graphic="icon">
-					<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
-				</vwc-list-item>
-				<vwc-list-item shape="rounded">2nd level item</vwc-list-item>
-				<vwc-list-item shape="rounded">2nd level item</vwc-list-item>
-			</vwc-list-expansion-panel>
-	
+				<vwc-list-expansion-panel >
+					<vwc-list-item slot="header" shape="rounded" graphic="icon">
+						<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
+					</vwc-list-item>
+					<vwc-list-item shape="rounded">2nd level item</vwc-list-item>
+					<vwc-list-item shape="rounded">2nd level item</vwc-list-item>
+				</vwc-list-expansion-panel>
+			</vwc-list>
+
 		</vwc-side-drawer>
 
 		<div id="default"></div>
@@ -95,16 +99,16 @@ const Template = (args) => html`
 
 function onClick(e) {
 	// only list items can be activated
-	if(e.target.localName !== "vwc-list-item"){ 
+	if (e.target.localName !== "vwc-list-item") {
 		return;
 	}
-	if(e.target.slot === "header"){
+	if (e.target.slot === "header") {
 		return;
 	}
-	if(typeof prevActivatedItem !== 'undefined'){
+	if (typeof prevActivatedItem !== 'undefined') {
 		prevActivatedItem.activated = false;
 	}
-	prevActivatedItem = e.target ;
+	prevActivatedItem = e.target;
 	prevActivatedItem.activated = true;
 }
 
@@ -114,7 +118,5 @@ Basic.args = { };
 export const Alternate = Template.bind({});
 Alternate.args = { alternate: true };
 
-export const Header = Template.bind({});
-Header.args = { hasHeader: true };
-
-
+export const TopBar = Template.bind({});
+TopBar.args = { hasTopBar: true };

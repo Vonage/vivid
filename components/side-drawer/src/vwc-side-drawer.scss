@@ -1,12 +1,20 @@
+$vvd-side-drawer--padding: --vvd-side-drawer--padding;
+
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-typography/scss/typography' as typography;
 
+:host {
+	--vvd-side-drawer--padding: 16px;
+	display: flex;
+	min-inline-size: 280px;
+}
 
 .side-drawer {
-	height: 100%;
-	box-sizing: border-box;
-	padding: 10px;
-	margin: 0;
+	block-size: 100%;
+	inline-size: 100%;
+	// box-sizing: border-box;
+	// padding: 10px;
+	// margin: 0;
 	&:not(.vvd-side-drawer--alternate):not(.vvd-side-drawer--modal) {
 		background-color: var(#{scheme-variables.$vvd-color-neutral-10});
 	}
@@ -14,4 +22,17 @@
 	&.vvd-side-drawer--modal {
 		background-color: var(#{scheme-variables.$vvd-color-base});
 	}
+}
+
+.vvd-side-drawer--top-bar {
+	display: flex;
+	align-items: center;
+	block-size: 64px;
+	padding-inline-end: var(#{$vvd-side-drawer--padding}--top-bar, var(#{$vvd-side-drawer--padding}));
+	padding-inline-start: var(#{$vvd-side-drawer--padding}--top-bar, var(#{$vvd-side-drawer--padding}));
+}
+
+.vvd-side-drawer--content {
+	padding-inline-end: var(#{$vvd-side-drawer--padding}--content, var(#{$vvd-side-drawer--padding}));
+	padding-inline-start: var(#{$vvd-side-drawer--padding}--content, var(#{$vvd-side-drawer--padding}));
 }

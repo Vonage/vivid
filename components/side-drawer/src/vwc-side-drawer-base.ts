@@ -22,13 +22,18 @@ export class VWCSideDrawerBase extends LitElement {
 	alternate = false;
 
 	/**
-	 * @prop hasHeader - adds header to the side drawer
+	 * @prop hasTopBar - adds top bar to the side drawer
 	 * accepts boolean value
 	 * @public
 	 * */
 	@property({ type: Boolean, reflect: true })
-	hasHeader?: boolean;
+	hasTopBar?: boolean;
 
+	private renderTopBar(): TemplateResult {
+		return html`<div class="vvd-side-drawer--top-bar">
+			<slot name="top-bar"></slot>
+		</div>`;
+	}
 
 	/**
 	 * the html markup
@@ -44,14 +49,13 @@ export class VWCSideDrawerBase extends LitElement {
 				part="${ifDefined((this.alternate && 'vvd-scheme-alternate') || undefined)}"
 				class="side-drawer ${classMap(classes)}"
 			>
-				${this.hasHeader ? html`<slot name="header"></slot>` : nothing}
-				<vwc-list
-					innerRole="navigation"
-					innerAriaLabel="Primary navigation"
-					itemRoles="link"
-				>
-					<slot name="navigation"></slot>
-				</vwc-list>
+
+				${this.hasTopBar ? this.renderTopBar() : nothing}
+
+				<div class="vvd-side-drawer--content">
+					<slot></slot>
+				</div>
+
 			</aside>
 		`;
 	}
