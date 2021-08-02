@@ -1,3 +1,16 @@
+## [2.16.1](https://github.com/Vonage/vivid/compare/v2.16.0...v2.16.1) (2021-07-29)
+
+
+
+# [2.16.0](https://github.com/Vonage/vivid/compare/v2.15.0...v2.16.0) (2021-07-28)
+
+
+### Features
+
+* **icon:** upgraded to v4.0.15 ([#982](https://github.com/Vonage/vivid/issues/982)) ([4643118](https://github.com/Vonage/vivid/commit/4643118523c801b11776b94eb276e2b7a0877aba))
+
+
+
 # [2.15.0](https://github.com/Vonage/vivid/compare/v2.14.0...v2.15.0) (2021-07-20)
 
 
