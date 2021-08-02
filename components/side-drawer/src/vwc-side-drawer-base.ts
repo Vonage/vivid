@@ -3,6 +3,7 @@ import {
 } from 'lit-element';
 import { nothing } from 'lit-html';
 import { ifDefined } from 'lit-html/directives/if-defined';
+import { classMap } from 'lit-html/directives/class-map';
 
 /**
  * @slot header - The content of the header.
@@ -18,7 +19,7 @@ export class VWCSideDrawerBase extends LitElement {
 	 * @public
 	 * */
 	@property({ type: Boolean, reflect: true })
-	alternate?: boolean;
+	alternate = false;
 
 	/**
 	 * @prop hasHeader - adds header to the side drawer
@@ -28,27 +29,29 @@ export class VWCSideDrawerBase extends LitElement {
 	@property({ type: Boolean, reflect: true })
 	hasHeader?: boolean;
 
-	get alternateValue(): string | undefined {
-		return this.alternate ? 'vvd-scheme-alternate' : undefined;
-	}
 
 	/**
 	 * the html markup
 	 * @internal
 	 * */
 	protected render(): TemplateResult {
+		const classes = {
+			'vvd-side-drawer--alternate': this.alternate,
+			// 'vvd-side-drawer--modal': this.modal, // !@rinaok use with modal
+		};
 		return html`
-			<aside part="${ifDefined(this.alternateValue)}">
-				<div class="side-drawer" part="${ifDefined(this.alternateValue)}">
-					${this.hasHeader ? html`<slot name="header"></slot>` : nothing}
-					<vwc-list
-						innerRole="navigation"
-						innerAriaLabel="Primary navigation"
-						itemRoles="link"
-					>
-						<slot name="navigation"></slot>
-					</vwc-list>
-				</div>
+			<aside
+				part="${ifDefined((this.alternate && 'vvd-scheme-alternate') || undefined)}"
+				class="side-drawer ${classMap(classes)}"
+			>
+				${this.hasHeader ? html`<slot name="header"></slot>` : nothing}
+				<vwc-list
+					innerRole="navigation"
+					innerAriaLabel="Primary navigation"
+					itemRoles="link"
+				>
+					<slot name="navigation"></slot>
+				</vwc-list>
 			</aside>
 		`;
 	}

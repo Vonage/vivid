@@ -1,20 +1,17 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
-@use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
 @use '@vonage/vvd-typography/scss/typography' as typography;
 
-aside {
+
+.side-drawer {
 	height: 100%;
 	box-sizing: border-box;
 	padding: 10px;
 	margin: 0;
-	background-color: var(--vvd-color-base);
-}
-
-.side-drawer {
-	position: relative;
-	width: 240px;
-	height: 100%;
-	margin: 0;
-	background-color: var(--vvd-color-base);
-	color: var(--vvd-color-on-base);
+	&:not(.vvd-side-drawer--alternate):not(.vvd-side-drawer--modal) {
+		background-color: var(#{scheme-variables.$vvd-color-neutral-10});
+	}
+	&.vvd-side-drawer--alternate,
+	&.vvd-side-drawer--modal {
+		background-color: var(#{scheme-variables.$vvd-color-base});
+	}
 }
