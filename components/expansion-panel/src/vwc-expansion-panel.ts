@@ -86,7 +86,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 				@touchend="${this.handleRippleDeactivate}"
 				@touchcancel="${this.handleRippleDeactivate}"
 				@click=${() => this.toggleOpen()}
-				.aria-expanded=${this.open}
+				?aria-expanded=${this.open}
 				aria-controls="content"
 			>
 				${this.renderRipple()}
