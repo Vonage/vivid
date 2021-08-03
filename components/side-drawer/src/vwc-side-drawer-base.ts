@@ -40,17 +40,26 @@ export class VWCSideDrawerBase extends LitElement {
 	 * @internal
 	 * */
 	protected render(): TemplateResult {
+		const topBar = this.hasTopBar
+			? this.renderTopBar()
+			: nothing;
+
+		const alternate = this.alternate
+			? 'vvd-scheme-alternate'
+			: undefined;
+
 		const classes = {
 			'vvd-side-drawer--alternate': this.alternate,
 			// 'vvd-side-drawer--modal': this.modal, // !@rinaok use with modal
 		};
+
 		return html`
 			<aside
-				part="${ifDefined((this.alternate && 'vvd-scheme-alternate') || undefined)}"
+				part="${ifDefined(alternate)}"
 				class="side-drawer ${classMap(classes)}"
 			>
 
-				${this.hasTopBar ? this.renderTopBar() : nothing}
+				${topBar}
 
 				<div class="vvd-side-drawer--content">
 					<slot></slot>
