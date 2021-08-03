@@ -77,11 +77,9 @@ export class VWCSideDrawerBase extends LitElement {
 	 * */
 	 protected render(): TemplateResult {
 	 	return html`
-			<slot name="navigation">
-				<vwc-surface fixed x="0" y="0" class="mdc-menu mdc-menu-surface">
-					${this.renderSideDrawer()}
-				</vwc-surface>
-			</slot>
+			<vwc-surface fixed x="0" y="0" class="mdc-menu mdc-menu-surface">
+				${this.renderSideDrawer()}
+			</vwc-surface>
 		`;
 	 }
 }
