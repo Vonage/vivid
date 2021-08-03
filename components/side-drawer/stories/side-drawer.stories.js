@@ -122,5 +122,8 @@ Alternate.args = { alternate: true };
 export const TopBar = Template.bind({});
 TopBar.args = { hasTopBar: true };
 
+export const Dismissible = Template.bind({});
+Dismissible.args = { type: 'dismissible', open: true };
+
 export const Modal = Template.bind({});
-Modal.args = { modal: true, open: true };
+Modal.args = { type: 'modal', open: true };
