@@ -1,4 +1,4 @@
-import '@vonage/vwc-side-drawer';
+import '@vonage/vwc-side-drawer/vwc-side-drawer.js';
 import '@vonage/vwc-list/vwc-list-expansion-panel.js';
 import { styleMap } from 'lit-html/directives/style-map';
 import { html } from 'lit-element';
