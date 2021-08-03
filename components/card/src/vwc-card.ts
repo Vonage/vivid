@@ -1,4 +1,6 @@
-import { customElement, html, LitElement } from 'lit-element';
+import {
+	customElement, html, LitElement,
+} from 'lit-element';
 import { style } from './vwc-card.css';
 import { property } from 'lit-element/lib/decorators';
 
@@ -36,6 +38,12 @@ export class VWCCard extends LitElement {
 	})
 	badgeContent: string | null = null;
 
+	private headerIconSlottedItems?: Node[];
+
+	private get headerContentExists(): boolean {
+		return Boolean(this.heading || this.badgeContent || this.headerIcon || this.headerIconSlottedItems?.length);
+	}
+
 	protected render(): unknown {
 		return html`
 			<div class="vwc-card">
@@ -43,32 +51,52 @@ export class VWCCard extends LitElement {
 					<slot name="media"></slot>
 				</div>
 				<div class="vwc-card-info">
-					<header>
-						<div class="vwc-card-header">
-							<slot name="header-icon">
-								<vwc-icon type="${this.headerIcon}"></vwc-icon>
-							</slot>
-							<div class="vwc-card-header-text">
-								${this.heading}
-							</div>
-						</div>
-						${this.renderBadge()}
-					</header>
+					${this.renderHeader()}
 					<div class="vwc-card-content">
 						<slot></slot>
 					</div>
 					<div class="vwc-card-actions">
-					<slot name="actions">
-					</slot>
-				</div>
+						<slot name="actions">
+						</slot>
+					</div>
 				</div>
 			</div>
 		`;
+	}
+
+	private renderHeader() {
+		return html`
+			<header class="${this.headerClass}">
+				<div class="vwc-card-header">
+					<slot name="header-icon" @slotchange="${this.headerIconSlotChanged}">
+						<vwc-icon type="${this.headerIcon}"></vwc-icon>
+					</slot>
+					<div class="vwc-card-header-text">
+						${this.heading}
+					</div>
+				</div>
+				${this.renderBadge()}
+			</header>`;
+	}
+
+	private get headerClass(): string {
+		return (this.headerContentExists) ? '' : 'no-header-content';
 	}
 
 	private renderBadge() {
 		return (!this.badgeContent) ? '' :
 			html`
 				<vwc-badge shape="pill">${this.badgeContent}</vwc-badge>`;
+	}
+
+	private headerIconSlotChanged() {
+		const headerElement = this.shadowRoot?.querySelector('header');
+		const slot = headerElement?.querySelector('slot[name="header-icon"]') as HTMLSlotElement;
+		this.headerIconSlottedItems = slot.assignedNodes();
+		if (this.headerContentExists) {
+			headerElement?.classList.remove('no-header-content');
+		} else {
+			headerElement?.classList.add('no-header-content');
+		}
 	}
 }

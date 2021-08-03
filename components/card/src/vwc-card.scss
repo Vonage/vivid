@@ -28,6 +28,10 @@ header {
 	align-content: space-between;
 }
 
+header.no-header-content {
+	display: none;
+}
+
 .vwc-card-header {
 	display: inline-flex;
 	flex: 1;

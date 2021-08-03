@@ -31,6 +31,29 @@ describe.only('Card', () => {
 	describe(`heading`, function () {
 		const headingText = 'This is the heading';
 
+		it(`should not be displayed if heading, icon and badge are missing`, async function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}>Content</${COMPONENT_NAME}>`)
+			);
+
+			await actualElement.updateComplete;
+
+			const headerElement = actualElement.shadowRoot.querySelector('header');
+
+			expect(headerElement.classList.contains('no-header-content')).to.equal(true);
+		});
+
+		it(`should be displayed if slotted content exists even without heading, icon and badge`, async function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}>Content<div slot="header-icon"></div></${COMPONENT_NAME}>`)
+			);
+
+			await actualElement.updateComplete;
+
+			const headerElement = actualElement.shadowRoot.querySelector('header');
+
+			expect(headerElement.classList.contains('no-header-content')).to.equal(false);
+		});
 		it(`should set the heading according to the attribute`, async function () {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} heading="${headingText}">Content</${COMPONENT_NAME}>`)
