@@ -1,15 +1,20 @@
 export const argTypes = {
-	connotation: {
+	layout: {
 		control: {
 			type: 'select',
-			options: ['primary', 'cta', 'success', 'error', 'info', 'announcement'],
+			options: ['large', 'basic'],
 		}
 	},
-	disabled: {
+	icon: {
 		control: {
-			type: 'inline-radio',
-			options: { 'true': '', 'false': undefined }
+			type: 'input',
+		}
+	},
+	'badge-content': {
+		control: {
+			type: 'input'
 		}
 	},
 	styles: { table: { disable: true } },
-}
+};
+
