@@ -117,4 +117,6 @@ Alternate.args = { alternate: true };
 export const Header = Template.bind({});
 Header.args = { hasHeader: true };
 
+export const Modal = Template.bind({});
+Modal.args = { modal: true };
 

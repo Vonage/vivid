@@ -28,16 +28,20 @@ export class VWCSideDrawerBase extends LitElement {
 	@property({ type: Boolean, reflect: true })
 	hasHeader?: boolean;
 
-	get alternateValue(): string | undefined {
-		return this.alternate ? 'vvd-scheme-alternate' : undefined;
-	}
-
 	/**
-	 * the html markup
-	 * @internal
+	 * @prop modal
+	 * accepts boolean value
+	 * @public
 	 * */
-	protected render(): TemplateResult {
-		return html`
+	 @property({ type: Boolean, reflect: true })
+	 modal?: boolean;
+
+	 get alternateValue(): string | undefined {
+	 	return this.alternate ? 'vvd-scheme-alternate' : undefined;
+	 }
+
+	 protected renderAside(): TemplateResult {
+	 	return html`
 			<aside part="${ifDefined(this.alternateValue)}">
 				<div class="side-drawer" part="${ifDefined(this.alternateValue)}">
 					${this.hasHeader ? html`<slot name="header"></slot>` : nothing}
@@ -51,5 +55,22 @@ export class VWCSideDrawerBase extends LitElement {
 				</div>
 			</aside>
 		`;
-	}
+	 }
+
+	 // ${this.modal ? html`<vwc-surface>${this.renderAside()}</vwc-surface>` : this.renderAside()}
+
+
+	 /**
+	 * the html markup
+	 * @internal
+	 * */
+	 protected render(): TemplateResult {
+	 	return html`
+		<slot name="navigation">
+			<vwc-surface fixed x="0" y="0" class="mdc-menu mdc-menu-surface">
+				${this.renderAside()}
+			</vwc-surface>
+		</slot>
+		`;
+	 }
 }
