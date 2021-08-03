@@ -127,4 +127,67 @@ describe('Card', () => {
 			expect(actualElement.headerIcon).to.equal(differentIconName);
 		});
 	});
+
+	describe(`badge-content`, function () {
+		const badgeText = 'home';
+
+		it(`should set the badge according to the attribute`, async function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} badge-content="${badgeText}">Content</${COMPONENT_NAME}>`)
+			);
+
+			await actualElement.updateComplete;
+
+			const headerBadgeElement = actualElement.shadowRoot.querySelector('header vwc-badge');
+
+			expect(headerBadgeElement.innerText).to.equal(badgeText);
+		});
+
+		it(`should set the badge according to the property`, async function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}>Content</${COMPONENT_NAME}>`)
+			);
+
+			actualElement.badgeContent = badgeText;
+
+			await actualElement.updateComplete;
+
+			const headerBadgeElement = actualElement.shadowRoot.querySelector('header vwc-badge');
+
+			expect(headerBadgeElement.innerText).to.equal(badgeText);
+		});
+
+		it(`should reflect the badge property and attribute`, async function () {
+			const differentBadgeText = 'share';
+
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}>Content</${COMPONENT_NAME}>`)
+			);
+
+			actualElement.headerIcon = badgeText;
+
+			await actualElement.updateComplete;
+
+			const attributeValue = actualElement.getAttribute('header-icon');
+
+			actualElement.setAttribute('badge-content', differentBadgeText);
+
+			await actualElement.updateComplete;
+
+			expect(attributeValue).to.equal(badgeText);
+			expect(actualElement.badgeContent).to.equal(differentBadgeText);
+		});
+
+		it(`should show no badge if badge-content is falsy or empty`, async function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}>Content</${COMPONENT_NAME}>`)
+			);
+
+			await actualElement.updateComplete;
+
+			const headerBadgeElement = actualElement.shadowRoot.querySelector('header vwc-badge');
+
+			expect(headerBadgeElement).to.equal(null);
+		});
+	});
 });

@@ -29,6 +29,13 @@ export class VWCCard extends LitElement {
 	})
 	headerIcon: string | null = null;
 
+	@property({
+		reflect: true,
+		attribute: 'badge-content',
+		type: String
+	})
+	badgeContent: string | null = null;
+
 	protected render(): unknown {
 		return html`
 			<div>
@@ -39,7 +46,7 @@ export class VWCCard extends LitElement {
 					<slot name="header-icon">
 						<vwc-icon type="${this.headerIcon}"></vwc-icon>
 					</slot>
-					<vwc-badge></vwc-badge>
+					${this.renderBadge()}
 					<div class="vwc-card-header">
 						${this.heading}
 					</div>
@@ -53,5 +60,10 @@ export class VWCCard extends LitElement {
 				</div>
 			</div>
 		`;
+	}
+
+	private renderBadge() {
+		return (!this.badgeContent) ? '' :
+			html`<vwc-badge>${this.badgeContent}</vwc-badge>`;
 	}
 }
