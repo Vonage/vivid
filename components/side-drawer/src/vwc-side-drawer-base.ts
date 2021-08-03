@@ -3,6 +3,7 @@ import {
 } from 'lit-element';
 import { nothing } from 'lit-html';
 import { ifDefined } from 'lit-html/directives/if-defined';
+import { classMap } from 'lit-html/directives/class-map';
 
 /**
  * @slot header - The content of the header.
@@ -18,15 +19,15 @@ export class VWCSideDrawerBase extends LitElement {
 	 * @public
 	 * */
 	@property({ type: Boolean, reflect: true })
-	alternate?: boolean;
+	alternate = false;
 
 	/**
-	 * @prop hasHeader - adds header to the side drawer
+	 * @prop hasTopBar - adds top bar to the side drawer
 	 * accepts boolean value
 	 * @public
 	 * */
 	@property({ type: Boolean, reflect: true })
-	hasHeader?: boolean;
+	hasTopBar?: boolean;
 
 	/**
 	 * @prop modal
@@ -36,22 +37,33 @@ export class VWCSideDrawerBase extends LitElement {
 	 @property({ type: Boolean, reflect: true })
 	 modal?: boolean;
 
-	 get alternateValue(): string | undefined {
-	 	return this.alternate ? 'vvd-scheme-alternate' : undefined;
+	 private renderTopBar(): TemplateResult {
+	 	return html`<div class="vvd-side-drawer--top-bar">
+			<slot name="top-bar"></slot>
+		</div>`;
 	 }
 
-	 protected renderAside(): TemplateResult {
+	 /**
+	 * @prop modal
+	 * accepts boolean value
+	 * @public
+	 * */
+	 protected renderSideDrawer(): TemplateResult {
+	 	const classes = {
+	 		'vvd-side-drawer--alternate': this.alternate,
+	 		//'vvd-side-drawer--modal': this.modal, // !@rinaok use with modal
+	 	};
 	 	return html`
-			<aside part="${ifDefined(this.alternateValue)}">
-				<div class="side-drawer" part="${ifDefined(this.alternateValue)}">
-					${this.hasHeader ? html`<slot name="header"></slot>` : nothing}
-					<vwc-list
-						innerRole="navigation"
-						innerAriaLabel="Primary navigation"
-						itemRoles="link"
-					>
-						<slot name="navigation"></slot>
-					</vwc-list>
+			<aside
+				part="${ifDefined(
+		(this.alternate && 'vvd-scheme-alternate') || undefined
+	)}"
+				class="side-drawer ${classMap(classes)}"
+			>
+				${this.hasTopBar ? this.renderTopBar() : nothing}
+
+				<div class="vvd-side-drawer--content">
+					<slot></slot>
 				</div>
 			</aside>
 		`;
@@ -59,18 +71,17 @@ export class VWCSideDrawerBase extends LitElement {
 
 	 // ${this.modal ? html`<vwc-surface>${this.renderAside()}</vwc-surface>` : this.renderAside()}
 
-
 	 /**
 	 * the html markup
 	 * @internal
 	 * */
 	 protected render(): TemplateResult {
 	 	return html`
-		<slot name="navigation">
-			<vwc-surface fixed x="0" y="0" class="mdc-menu mdc-menu-surface">
-				${this.renderAside()}
-			</vwc-surface>
-		</slot>
+			<slot name="navigation">
+				<vwc-surface fixed x="0" y="0" class="mdc-menu mdc-menu-surface">
+					${this.renderSideDrawer()}
+				</vwc-surface>
+			</slot>
 		`;
 	 }
 }
