@@ -1,8 +1,16 @@
+const booleanControl = {
+	type: 'inline-radio',
+	options: { true: '', false: undefined }
+};
+
 export const argTypes = {
 	alternate: {
-		control: {
-			type: 'inline-radio',
-			options: { true: '', false: undefined }
-		}
+		control: booleanControl
+	},
+	modal: {
+		control: booleanControl
+	},
+	open: {
+		control: booleanControl
 	},
 };

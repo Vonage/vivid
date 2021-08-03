@@ -21,6 +21,7 @@ const titleStyles = {
 const Template = args => html`
 	<style>
 		div#demo {
+			position: relative;
 			display: flex;
 			width: 960px;
 			height: 540px;

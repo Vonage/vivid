@@ -83,9 +83,10 @@ export class VWCSideDrawerBase extends LitElement {
 	 	return html`
 			<vwc-surface
 				class="vwc-surface"
-				fixed
+				absolute
 				x="0"
 				y="0"
+				quick
 				?open=${this.open}
 			>
 				${drawer}
