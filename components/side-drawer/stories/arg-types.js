@@ -7,10 +7,13 @@ export const argTypes = {
 	alternate: {
 		control: booleanControl
 	},
-	modal: {
-		control: booleanControl
-	},
 	open: {
 		control: booleanControl
+	},
+	type: {
+		control: {
+			type: 'select',
+			options: ['', 'modal', 'dismissible'],
+		}
 	},
 };
