@@ -1,5 +1,5 @@
 import '@vonage/vwc-side-drawer/vwc-side-drawer.js';
-import '@vonage/vwc-expansion-panel/vwc-expansion-panel.js';
+import '@vonage/vwc-list/vwc-list-expansion-panel.js';
 import { styleMap } from 'lit-html/directives/style-map';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
@@ -11,7 +11,7 @@ export default {
 	argTypes
 };
 
-var prevActivatedItem;
+let prevActivatedItem;
 
 const titleStyles = {
 	color: "#C0C0C0",

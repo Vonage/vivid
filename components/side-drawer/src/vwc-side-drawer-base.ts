@@ -76,6 +76,17 @@ export class VWCSideDrawerBase extends LitElement {
 		`;
 	 }
 
+	 private renderModalDrawer(drawer: TemplateResult) {
+	 	return html`
+			<vwc-surface
+				fixed
+				x="0"
+				y="0"
+				class="mdc-menu mdc-menu-surface"
+			>
+				${drawer}
+			</vwc-surface>`;
+	 }
 	 // ${this.modal ? html`<vwc-surface>${this.renderAside()}</vwc-surface>` : this.renderAside()}
 
 	 /**
@@ -83,10 +94,9 @@ export class VWCSideDrawerBase extends LitElement {
 	 * @internal
 	 * */
 	 protected render(): TemplateResult {
-	 	return html`
-			<!-- <vwc-surface fixed x="0" y="0" class="mdc-menu mdc-menu-surface"> -->
-				${this.renderSideDrawer()}
-			<!-- </vwc-surface> -->
-		`;
+	 	const drawer = this.renderSideDrawer();
+	 	return this.modal
+	 		? this.renderModalDrawer(drawer)
+	 		: drawer;
 	 }
 }
