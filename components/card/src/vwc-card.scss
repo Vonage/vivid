@@ -1,0 +1,49 @@
+:host {
+	--vvd-card-width: 300px;
+	--vvd-card-info-padding: 24px;
+}
+
+.vwc-card {
+	display: flex;
+	overflow: hidden;
+	width: var(--vvd-card-width);
+	flex-flow: column;
+	border-radius: 6px;
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05), 0 8px 8px rgba(0, 0, 0, 0.05), 0 2px 16px rgba(0, 0, 0, 0.1);
+}
+
+.vwc-card-media {
+	width: var(--vvd-card-width);
+}
+
+.vwc-card-info {
+	display: flex;
+	width: calc(var(--vvd-card-width) - 2 * var(--vvd-card-info-padding));
+	flex-flow: column;
+	padding: var(--vvd-card-info-padding);
+}
+
+header {
+	display: inline-flex;
+	align-content: space-between;
+}
+
+.vwc-card-header {
+	display: inline-flex;
+	flex: 1;
+}
+
+.vwc-card-header-text {
+	margin: auto 0 auto 12px;
+}
+
+.vwc-card-content {
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+
+.vwc-card-actions {
+	display: inline-flex;
+	flex-direction: column;
+	align-items: flex-end;
+}

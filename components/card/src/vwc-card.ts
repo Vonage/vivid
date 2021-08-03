@@ -38,25 +38,29 @@ export class VWCCard extends LitElement {
 
 	protected render(): unknown {
 		return html`
-			<div>
+			<div class="vwc-card">
 				<div class="vwc-card-media">
 					<slot name="media"></slot>
 				</div>
-				<header>
-					<slot name="header-icon">
-						<vwc-icon type="${this.headerIcon}"></vwc-icon>
-					</slot>
-					${this.renderBadge()}
-					<div class="vwc-card-header">
-						${this.heading}
+				<div class="vwc-card-info">
+					<header>
+						<div class="vwc-card-header">
+							<slot name="header-icon">
+								<vwc-icon type="${this.headerIcon}"></vwc-icon>
+							</slot>
+							<div class="vwc-card-header-text">
+								${this.heading}
+							</div>
+						</div>
+						${this.renderBadge()}
+					</header>
+					<div class="vwc-card-content">
+						<slot></slot>
 					</div>
-				</header>
-				<div class="vwc-card-content">
-					<slot></slot>
-				</div>
-				<div class="vwc-card-actions">
+					<div class="vwc-card-actions">
 					<slot name="actions">
 					</slot>
+				</div>
 				</div>
 			</div>
 		`;
@@ -64,6 +68,7 @@ export class VWCCard extends LitElement {
 
 	private renderBadge() {
 		return (!this.badgeContent) ? '' :
-			html`<vwc-badge>${this.badgeContent}</vwc-badge>`;
+			html`
+				<vwc-badge shape="pill">${this.badgeContent}</vwc-badge>`;
 	}
 }
