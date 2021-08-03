@@ -13,6 +13,9 @@ import { classMap } from 'lit-html/directives/class-map';
  *
  */
 export class VWCSideDrawerBase extends LitElement {
+	@property({ type: Boolean, reflect: true })
+	open = false;
+
 	/**
 	 * @prop alternate - [Applies scheme alternate region](../../common/scheme/readme.md)
 	 * accepts boolean value
@@ -79,10 +82,11 @@ export class VWCSideDrawerBase extends LitElement {
 	 private renderModalDrawer(drawer: TemplateResult) {
 	 	return html`
 			<vwc-surface
+				class="vwc-surface"
 				fixed
 				x="0"
 				y="0"
-				class="mdc-menu mdc-menu-surface"
+				?open=${this.open}
 			>
 				${drawer}
 			</vwc-surface>`;

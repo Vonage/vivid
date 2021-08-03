@@ -1,4 +1,4 @@
-import '@vonage/vwc-side-drawer/vwc-side-drawer.js';
+import '@vonage/vwc-side-drawer';
 import '@vonage/vwc-list/vwc-list-expansion-panel.js';
 import { styleMap } from 'lit-html/directives/style-map';
 import { html } from 'lit-element';
@@ -122,4 +122,4 @@ export const TopBar = Template.bind({});
 TopBar.args = { hasTopBar: true };
 
 export const Modal = Template.bind({});
-Modal.args = { modal: true };
+Modal.args = { modal: true, open: true };
