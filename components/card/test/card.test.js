@@ -21,12 +21,14 @@ describe('Card', () => {
 	});
 
 	it('should internal contents', async () => {
-		const addedElements = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}>`)
+		const [actualElement] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}>Content</${COMPONENT_NAME}>`)
 		);
-		const actualElement = addedElements[0];
 		await waitNextTask();
-		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
+		expect(actualElement.shadowRoot.innerHTML)
+			.to
+			.equalSnapshot();
+	});
 
 	describe(`heading`, function () {
 		const headingText = 'This is the heading';
@@ -164,11 +166,11 @@ describe('Card', () => {
 				textToDomToParent(`<${COMPONENT_NAME}>Content</${COMPONENT_NAME}>`)
 			);
 
-			actualElement.headerIcon = badgeText;
+			actualElement.badgeContent = badgeText;
 
 			await actualElement.updateComplete;
 
-			const attributeValue = actualElement.getAttribute('header-icon');
+			const attributeValue = actualElement.getAttribute('badge-content');
 
 			actualElement.setAttribute('badge-content', differentBadgeText);
 
