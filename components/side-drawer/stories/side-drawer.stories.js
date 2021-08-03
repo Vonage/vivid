@@ -126,4 +126,4 @@ export const Dismissible = Template.bind({});
 Dismissible.args = { type: 'dismissible', open: true };
 
 export const Modal = Template.bind({});
-Modal.args = { type: 'modal', open: true };
+Modal.args = { type: 'modal', isOpen: true };

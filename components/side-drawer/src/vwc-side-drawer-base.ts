@@ -13,7 +13,7 @@ import { classMap } from 'lit-html/directives/class-map';
  */
 export class VWCSideDrawerBase extends LitElement {
 	@property({ type: Boolean, reflect: true })
-	open = false;
+	isOpen = true;
 
 	/**
 	 * @prop alternate - [Applies scheme alternate region](../../common/scheme/readme.md)
@@ -40,8 +40,10 @@ export class VWCSideDrawerBase extends LitElement {
 	@property({ type: String, reflect: true })
 	type = '';
 
-	#handleScrimClick(): void {
-	 	console.log('do something');
+	#toggleDrawer(): void {
+		const sideDrawer = this.shadowRoot?.querySelector('.side-drawer');
+		if (sideDrawer) sideDrawer.classList.toggle('open');
+		this.isOpen = !this.isOpen;
 	 }
 
 	 private renderTopBar(): TemplateResult {
@@ -52,10 +54,12 @@ export class VWCSideDrawerBase extends LitElement {
 
 	 private renderScrim(): TemplateResult {
 		 // eslint-disable-next-line lit-a11y/click-events-have-key-events
-		 return html`<div class="vvd-side-drawer--scrim" @click="${this.#handleScrimClick}"></div>`;
+		 return html`<div class="vvd-side-drawer--scrim" @click="${this.#toggleDrawer}"></div>`;
 	 }
 
-	 // ${this.modal ? html`<vwc-surface>${this.renderAside()}</vwc-surface>` : this.renderAside()}
+	 private renderToggleButton():TemplateResult {
+		return html`<vwc-button @click="${this.#toggleDrawer}">Open Drawer</vwc-button>`;
+	}
 
 	 /**
 	 * the html markup
@@ -65,19 +69,22 @@ export class VWCSideDrawerBase extends LitElement {
 	 	const dismissible = this.type === 'dismissible' || this.type === 'modal';
 	 	const modal = this.type === 'modal';
 	 	const topBar = this.hasTopBar	? this.renderTopBar()	: '';
-	 	const scrim = this.type === 'modal' ? this.renderScrim() : '';
+		const toggleButton = (this.type === 'modal' && this.isOpen) ? this.renderToggleButton() : '';
+	 	const scrim = (this.type === 'modal' && !this.isOpen) ? this.renderScrim() : '';
 	 	const alternate = this.alternate ? 'vvd-scheme-alternate'	: undefined;
+		const isOpen = this.isOpen ? 'open' : '';
 
 	 	const classes = {
 	 		'vvd-side-drawer--alternate': this.alternate,
 	 		'vvd-side-drawer--dismissible': dismissible,
 	 		'vvd-side-drawer--modal': modal,
+			open: isOpen
 	 	};
 
 	 	return html`
 			<aside
 				part="${ifDefined(alternate)}"
-				class="side-drawer ${classMap(classes)}"
+				class="side-drawer ${classMap(classes)}" 
 			>
 				${topBar}
 
@@ -87,6 +94,7 @@ export class VWCSideDrawerBase extends LitElement {
 			</aside>
 
 			${scrim}
+			${toggleButton}
 		`;
 	 }
 }

@@ -25,6 +25,14 @@ $min-width: 280px;
 	&.vvd-side-drawer--modal {
 		background-color: var(#{scheme-variables.$vvd-color-base});
 	}
+
+	&.open {
+		transform: translateX(-100%);
+	}
+	&:not(.open) { 	
+		transform: translateX(0%);
+	}
+
 }
 
 .vvd-side-drawer--top-bar {
@@ -47,6 +55,7 @@ $min-width: 280px;
 	bottom: 0;
 	left: 0;
 }
+
 .vvd-side-drawer--scrim {
 	@include scrim-mixins.scrim-variables;
 	position: fixed;
@@ -58,3 +67,4 @@ $min-width: 280px;
 	background-color: var(#{scrim-mixins.$vvd-scrim--background-color});
 	opacity: var(#{scrim-mixins.$vvd-scrim--opacity});
 }
+
