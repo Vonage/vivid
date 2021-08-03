@@ -31,6 +31,18 @@ describe.only('Card', () => {
 	describe(`heading`, function () {
 		const headingText = 'This is the heading';
 
+		it(`should not render the icon if no icon is present`, async function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}>Content</${COMPONENT_NAME}>`)
+			);
+
+			await actualElement.updateComplete;
+
+			const headerIconElement = actualElement.shadowRoot.querySelector('header slot vwc-icon');
+
+			expect(headerIconElement).to.equal(null);
+		});
+
 		it(`should not be displayed if heading, icon and badge are missing`, async function () {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}>Content</${COMPONENT_NAME}>`)

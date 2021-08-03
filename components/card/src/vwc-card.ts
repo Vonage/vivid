@@ -44,6 +44,10 @@ export class VWCCard extends LitElement {
 		return Boolean(this.heading || this.badgeContent || this.headerIcon || this.headerIconSlottedItems?.length);
 	}
 
+	private get headerClass(): string {
+		return (this.headerContentExists) ? '' : 'no-header-content';
+	}
+
 	protected render(): unknown {
 		return html`
 			<div class="vwc-card">
@@ -69,7 +73,7 @@ export class VWCCard extends LitElement {
 			<header class="${this.headerClass}">
 				<div class="vwc-card-header">
 					<slot name="header-icon" @slotchange="${this.headerIconSlotChanged}">
-						<vwc-icon type="${this.headerIcon}"></vwc-icon>
+						${this.renderHeaderIcon()}
 					</slot>
 					<div class="vwc-card-header-text">
 						${this.heading}
@@ -79,8 +83,9 @@ export class VWCCard extends LitElement {
 			</header>`;
 	}
 
-	private get headerClass(): string {
-		return (this.headerContentExists) ? '' : 'no-header-content';
+	private renderHeaderIcon() {
+		return (this.headerIcon || this.headerIconSlottedItems?.length) ? html`
+			<vwc-icon type="${this.headerIcon}"></vwc-icon>` : '';
 	}
 
 	private renderBadge() {

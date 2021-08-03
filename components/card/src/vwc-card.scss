@@ -26,6 +26,7 @@
 header {
 	display: inline-flex;
 	align-content: space-between;
+	margin-bottom: 8px;
 }
 
 header.no-header-content {
@@ -38,16 +39,16 @@ header.no-header-content {
 }
 
 .vwc-card-header-text {
-	margin: auto 0 auto 12px;
+	margin: auto 0;
 }
 
-.vwc-card-content {
-	margin-top: 8px;
-	margin-bottom: 8px;
+header slot vwc-icon {
+	margin-right: 12px;
 }
 
 .vwc-card-actions {
 	display: inline-flex;
 	flex-direction: column;
 	align-items: flex-end;
+	margin-top: 8px;
 }
