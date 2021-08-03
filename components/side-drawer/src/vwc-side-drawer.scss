@@ -1,6 +1,8 @@
 $vvd-side-drawer--padding: --vvd-side-drawer--padding;
 $vvd-side-drawer--min-inline-size: --vvd-side-drawer--min-inline-size;
+$vvd-side-drawer--z-index: --vvd-side-drawer--z-index;
 
+$z-index-default: var(#{$vvd-side-drawer--z-index}, 6);
 $padding-default: var(#{$vvd-side-drawer--padding}, 16px);
 $min-width: 280px;
 
@@ -14,8 +16,8 @@ $min-width: 280px;
 }
 
 .side-drawer {
+	z-index: #{$z-index-default};
 	min-inline-size: var(#{$vvd-side-drawer--min-inline-size}, $min-width);
-
 	&:not(.vvd-side-drawer--alternate):not(.vvd-side-drawer--modal) {
 		background-color: var(#{scheme-variables.$vvd-color-neutral-10});
 	}
@@ -48,7 +50,7 @@ $min-width: 280px;
 .vvd-side-drawer--scrim {
 	@include scrim-mixins.scrim-variables;
 	position: fixed;
-	z-index: -1;
+	z-index: calc(#{$z-index-default} - 1);
 	top: 0;
 	right: 0;
 	bottom: 0;
