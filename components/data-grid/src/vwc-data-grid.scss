@@ -1,14 +1,9 @@
 @use '@vonage/vvd-typography/scss/typography';
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 
-:host {
+:host(:not([height-by-rows])) {
 	display: flex;
-	min-width: 200px;
-	height: 320px;
-	min-height: 150px;
-}
-
-.vvd-grid-engine-root {
-	height: auto;
+	block-size: 320px;
 }
 
 .vvd-grid-footer {
@@ -18,4 +13,25 @@
 .vvd-all-selector,
 .vvd-row-selector {
 	vertical-align: middle;
+}
+
+// VAADIN STYLES
+.vvd-grid-engine-root {
+	background-color: var(#{scheme-variables.$vvd-color-base});
+	color: var(#{scheme-variables.$vvd-color-on-base});
+	// background-color: transparent;
+	// color: currentColor;
+	&:not([height-by-rows]) {
+		height: initial;
+	}
+}
+
+::part(toggle) {
+	color: var(#{scheme-variables.$vvd-color-neutral-70});
+}
+
+@media (hover: hover) {
+	vaadin-grid-tree-toggle:hover::part(toggle) {
+		color: var(#{scheme-variables.$vvd-color-neutral-90});
+	}
 }
