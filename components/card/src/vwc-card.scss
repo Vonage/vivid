@@ -40,9 +40,17 @@ header.no-header-content {
 	flex: 1;
 }
 
+header vwc-badge {
+	margin: auto 0;
+}
+
 .vwc-card-header-text {
 	@include typography.typography-cat-shorthand('subtitle-2');
 	margin: auto 0;
+}
+
+:host([layout='large']) .vwc-card-header-text {
+	@include typography.typography-cat-shorthand('subtitle-1');
 }
 
 header slot vwc-icon {

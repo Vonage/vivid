@@ -38,7 +38,15 @@ export class VWCCard extends LitElement {
 	})
 	badgeContent: string | null = null;
 
+	@property({
+		reflect: true,
+		attribute: 'layout',
+		type: String
+	})
+	layout?: string;
+
 	private headerIconSlottedItems?: Node[];
+
 
 	private get headerContentExists(): boolean {
 		return Boolean(this.heading || this.badgeContent || this.headerIcon || this.headerIconSlottedItems?.length);
@@ -85,7 +93,7 @@ export class VWCCard extends LitElement {
 
 	private renderHeaderIcon() {
 		return (this.headerIcon || this.headerIconSlottedItems?.length) ? html`
-			<vwc-icon type="${this.headerIcon}"></vwc-icon>` : '';
+			<vwc-icon size="${this.layout}" type="${this.headerIcon}"></vwc-icon>` : '';
 	}
 
 	private renderBadge() {
