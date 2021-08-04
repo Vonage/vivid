@@ -25,12 +25,15 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@vonage/vvd-foundation": "^2.14.0",
-		"@vonage/vvd-umbrella": "^2.14.0",
+		"@vonage/vwc-badge": "^2.14.0",
+		"@vonage/vwc-button": "^2.14.0",
+		"@vonage/vwc-icon": "^2.14.0",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.0.2"
 	},
 	"devDependencies": {
-
+		"@vonage/vvd-foundation": "^2.14.0",
+		"@vonage/vvd-typography": "^2.14.0",
+		"@vonage/vvd-umbrella": "^2.14.0"
 	}
 }

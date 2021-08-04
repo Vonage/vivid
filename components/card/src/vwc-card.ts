@@ -3,6 +3,9 @@ import {
 } from 'lit-element';
 import { style } from './vwc-card.css';
 import { property } from 'lit-element/lib/decorators';
+import '@vonage/vwc-badge';
+import '@vonage/vwc-button';
+import '@vonage/vwc-icon';
 
 declare global {
 	interface HTMLElementTagNameMap {
