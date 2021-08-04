@@ -40,9 +40,7 @@ export class VWCSideDrawerBase extends LitElement {
 	@property({ type: String, reflect: true })
 	type = '';
 
-	#toggleDrawer(): void {
-		const sideDrawer = this.shadowRoot?.querySelector('.side-drawer');
-		if (sideDrawer) sideDrawer.classList.toggle('open');
+	#handleScrimClick(): void {
 		this.open = !this.open;
 	 }
 
@@ -54,12 +52,8 @@ export class VWCSideDrawerBase extends LitElement {
 
 	 private renderScrim(): TemplateResult {
 		 // eslint-disable-next-line lit-a11y/click-events-have-key-events
-		 return html`<div class="vvd-side-drawer--scrim" @click="${this.#toggleDrawer}"></div>`;
+		 return html`<div class="vvd-side-drawer--scrim" @click="${this.#handleScrimClick}"></div>`;
 	 }
-
-	 private renderToggleButton():TemplateResult {
-		return html`<vwc-button @click="${this.#toggleDrawer}">Open Drawer</vwc-button>`;
-	}
 
 	 /**
 	 * the html markup
@@ -69,7 +63,6 @@ export class VWCSideDrawerBase extends LitElement {
 	 	const dismissible = this.type === 'dismissible' || this.type === 'modal';
 	 	const modal = this.type === 'modal';
 	 	const topBar = this.hasTopBar	? this.renderTopBar()	: '';
-		const toggleButton = (this.type === 'modal' && this.open) ? this.renderToggleButton() : '';
 	 	const scrim = (this.type === 'modal' && !this.open) ? this.renderScrim() : '';
 	 	const alternate = this.alternate ? 'vvd-scheme-alternate'	: undefined;
 		const open = this.open ? 'open' : '';
@@ -94,7 +87,6 @@ export class VWCSideDrawerBase extends LitElement {
 			</aside>
 
 			${scrim}
-			${toggleButton}
 		`;
 	 }
 }
