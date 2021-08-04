@@ -10352,7 +10352,7 @@ fs-extra@^9.0.0, fs-extra@^9.0.1, fs-extra@^9.1.0:
 
 fs-minipass@^1.2.5:
   version "1.2.7"
-  resolved "https://https://vonagecc.jfrog.io/vonagecc/api/npm/npm/fs-minipass/-/fs-minipass-1.2.7.tgz#ccff8570841e7fe4265693da88936c55aed7f7c7"
+  resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/fs-minipass/-/fs-minipass-1.2.7.tgz#ccff8570841e7fe4265693da88936c55aed7f7c7"
   integrity sha512-GWSSJGFy4e9GUeCcbIkED+bgAoFyj7XF1mV8rma3QW4NIqX9Kyx79N/PF61H5udOV3aY1IaMLs6pGbH71nlCTA==
   dependencies:
     minipass "^2.6.0"
