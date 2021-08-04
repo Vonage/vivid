@@ -45,6 +45,8 @@ jobs:
     needs: build
     name: "Test Components on ${{ matrix.browser_name }}"
     runs-on: ${{ matrix.os }}
+    env:
+      GITHUB_TOKEN: ${{ secrets.TAL_PAT_DO_NOT_USE }}
     strategy:
       max-parallel: 10
       matrix:
@@ -96,6 +98,8 @@ jobs:
     needs: build
     name: Test Components Graphics
     runs-on: macos-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.TAL_PAT_DO_NOT_USE }}
     steps:
       - uses: actions/setup-node@v2
         with:
@@ -120,6 +124,8 @@ jobs:
     needs: build
     name: ${{ matrix.script_name }}
     runs-on: ubuntu-20.04
+    env:
+      GITHUB_TOKEN: ${{ secrets.TAL_PAT_DO_NOT_USE }}
     strategy:
       max-parallel: 10
       matrix:
