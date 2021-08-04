@@ -68,7 +68,7 @@ export class VWCSideDrawerBase extends LitElement {
 	 	const dismissible = this.type === 'dismissible' || this.type === 'modal';
 	 	const modal = this.type === 'modal';
 	 	const topBar = this.hasTopBar	? this.renderTopBar()	: '';
-	 	const scrim = (this.type === 'modal' && !this.open) ? this.renderScrim() : '';
+	 	const scrim = (this.type === 'modal' && this.open) ? this.renderScrim() : '';
 	 	const alternate = this.alternate ? 'vvd-scheme-alternate'	: undefined;
 
 	 	const classes = {

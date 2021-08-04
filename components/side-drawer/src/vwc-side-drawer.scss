@@ -28,10 +28,10 @@ $min-width: 280px;
 		background-color: var(#{scheme-variables.$vvd-color-base});
 
 		&.vvd-side-drawer--open {
-			transform: translateX(-100%);
+			transform: translateX(0%);
 		}
 		&:not(.vvd-side-drawer--open) {
-			transform: translateX(0%);
+			transform: translateX(-100%);
 		}
 	}
 }
