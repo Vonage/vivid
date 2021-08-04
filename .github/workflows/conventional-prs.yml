@@ -15,6 +15,8 @@ jobs:
 
       - name: Checkout and install dependencies
         run: npm install @actions/core @actions/github @commitlint/config-conventional @commitlint/lint @commitlint/load
+        env:
+          GITHUB_TOKEN: ${{ secrets.TAL_PAT_DO_NOT_USE }}
 
       - name: Checks the PR title
         run: node ./scripts/pr-lint
