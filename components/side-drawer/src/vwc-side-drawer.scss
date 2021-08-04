@@ -25,10 +25,10 @@ $min-width: 280px;
 	&.vvd-side-drawer--modal {
 		background-color: var(#{scheme-variables.$vvd-color-base});
 
-		&.open {
+		&.vvd-side-drawer--open {
 			transform: translateX(-100%);
 		}
-		&:not(.open) { 	
+		&:not(.vvd-side-drawer--open) {
 			transform: translateX(0%);
 		}
 	}

@@ -13,7 +13,7 @@ import { classMap } from 'lit-html/directives/class-map';
  */
 export class VWCSideDrawerBase extends LitElement {
 	@property({ type: Boolean, reflect: true })
-	isOpen = true;
+	open = true;
 
 	/**
 	 * @prop alternate - [Applies scheme alternate region](../../common/scheme/readme.md)
@@ -43,7 +43,7 @@ export class VWCSideDrawerBase extends LitElement {
 	#toggleDrawer(): void {
 		const sideDrawer = this.shadowRoot?.querySelector('.side-drawer');
 		if (sideDrawer) sideDrawer.classList.toggle('open');
-		this.isOpen = !this.isOpen;
+		this.open = !this.open;
 	 }
 
 	 private renderTopBar(): TemplateResult {
@@ -69,22 +69,22 @@ export class VWCSideDrawerBase extends LitElement {
 	 	const dismissible = this.type === 'dismissible' || this.type === 'modal';
 	 	const modal = this.type === 'modal';
 	 	const topBar = this.hasTopBar	? this.renderTopBar()	: '';
-		const toggleButton = (this.type === 'modal' && this.isOpen) ? this.renderToggleButton() : '';
-	 	const scrim = (this.type === 'modal' && !this.isOpen) ? this.renderScrim() : '';
+		const toggleButton = (this.type === 'modal' && this.open) ? this.renderToggleButton() : '';
+	 	const scrim = (this.type === 'modal' && !this.open) ? this.renderScrim() : '';
 	 	const alternate = this.alternate ? 'vvd-scheme-alternate'	: undefined;
-		const isOpen = this.isOpen ? 'open' : '';
+		const open = this.open ? 'open' : '';
 
 	 	const classes = {
 	 		'vvd-side-drawer--alternate': this.alternate,
 	 		'vvd-side-drawer--dismissible': dismissible,
 	 		'vvd-side-drawer--modal': modal,
-			open: isOpen
+			'vvd-side-drawer--open': open
 	 	};
 
 	 	return html`
 			<aside
 				part="${ifDefined(alternate)}"
-				class="side-drawer ${classMap(classes)}" 
+				class="side-drawer ${classMap(classes)}"
 			>
 				${topBar}
 
