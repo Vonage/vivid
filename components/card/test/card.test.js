@@ -11,7 +11,7 @@ chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-card';
 
-describe.only('Card', () => {
+describe('Card', () => {
 	let addElement = isolatedElementsCreation();
 
 	it(`${COMPONENT_NAME} is defined as a custom element`, async () => {
@@ -25,7 +25,7 @@ describe.only('Card', () => {
 			textToDomToParent(`<${COMPONENT_NAME}>Content</${COMPONENT_NAME}>`)
 		);
 		await actualElement.updateComplete;
-		// expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
+		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
 	describe(`heading`, function () {
@@ -66,6 +66,7 @@ describe.only('Card', () => {
 
 			expect(headerElement.classList.contains('no-header-content')).to.equal(false);
 		});
+
 		it(`should set the heading according to the attribute`, async function () {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} heading="${headingText}">Content</${COMPONENT_NAME}>`)
