@@ -41,8 +41,13 @@ export class VWCSideDrawerBase extends LitElement {
 	type = '';
 
 	#handleScrimClick(): void {
-		this.open = !this.open;
-	 }
+		this.#close();
+	}
+
+	#close(): void {
+		this.open = false;
+		// TODO add notifyClose (dispatch event) // add @fires jsdoc
+	}
 
 	 private renderTopBar(): TemplateResult {
 	 	return html`<div class="vvd-side-drawer--top-bar">
@@ -65,13 +70,12 @@ export class VWCSideDrawerBase extends LitElement {
 	 	const topBar = this.hasTopBar	? this.renderTopBar()	: '';
 	 	const scrim = (this.type === 'modal' && !this.open) ? this.renderScrim() : '';
 	 	const alternate = this.alternate ? 'vvd-scheme-alternate'	: undefined;
-		const open = this.open ? 'open' : '';
 
 	 	const classes = {
 	 		'vvd-side-drawer--alternate': this.alternate,
 	 		'vvd-side-drawer--dismissible': dismissible,
 	 		'vvd-side-drawer--modal': modal,
-			'vvd-side-drawer--open': open
+			'vvd-side-drawer--open': this.open
 	 	};
 
 	 	return html`
