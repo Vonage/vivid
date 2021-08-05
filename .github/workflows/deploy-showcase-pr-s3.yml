@@ -25,6 +25,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - run: echo "registry=https://npm.pkg.github.com/Vonage\n_authToken=${GITHUB_TOKEN}\n//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}\nalways-auth=true" > .npmrc
+
       - name: Setup NodeJS 14
         uses: actions/setup-node@v2
         with:
@@ -48,10 +50,6 @@ jobs:
 
       - name: Install dependencies
         if: steps.yarn-cache.outputs.cache-hit != 'true'
-        env:
-          yarn_always_auth: true,
-          yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
-          yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
         run: yarn install
 
       - name: Build storybook
