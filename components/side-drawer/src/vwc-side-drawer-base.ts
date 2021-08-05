@@ -3,6 +3,7 @@ import {
 } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import { classMap } from 'lit-html/directives/class-map';
+import { observer } from '@material/mwc-base/observer';
 
 /**
  * @slot header - The content of the header.
@@ -13,8 +14,55 @@ import { classMap } from 'lit-html/directives/class-map';
  */
 export class VWCSideDrawerBase extends LitElement {
 	@property({ type: Boolean, reflect: true })
-
+	@observer(function (
+		this: VWCSideDrawerBase,
+		isOpen: boolean,
+		wasOpen: boolean
+	) {
+		if (isOpen) {
+			this.show();
+			// wasOpen helps with first render (when it is `undefined`) perf
+		} else if (wasOpen !== undefined) {
+			this.close();
+		}
+		this.openChanged(isOpen);
+	})
 	open = true;
+	/**
+	 * Invoked when the element open state is updated.
+	 *
+	 * Expressions inside this method will trigger upon open state change
+	 *
+	 * @param _isOpen Boolean of open state
+	 */ openChanged(
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
+		_isOpen: boolean
+		// eslint-disable-next-line @typescript-eslint/no-empty-function
+	): void {}
+
+	close(): void {
+		this.open = false;
+		this.notifyClose();
+	}
+
+	show(): void {
+		this.open = true;
+		this.notifyOpen();
+	}
+
+	notifyClose(): void {
+		const init: CustomEventInit = { bubbles: true, composed: true };
+		const ev = new CustomEvent('closed', init);
+		this.open = false;
+		this.dispatchEvent(ev);
+	}
+
+	notifyOpen(): void {
+		const init: CustomEventInit = { bubbles: true, composed: true };
+		const ev = new CustomEvent('opened', init);
+		this.open = true;
+		this.dispatchEvent(ev);
+	}
 
 	/**
 	 * @prop alternate - [Applies scheme alternate region](../../common/scheme/readme.md)
@@ -42,19 +90,16 @@ export class VWCSideDrawerBase extends LitElement {
 	type = '';
 
 	#handleScrimClick(): void {
-		this.#close();
+		if (this.type === 'modal' && this.open) {
+			this.close();
+		}
 	}
 
 	#onKeydown({ key }: KeyboardEvent): void {
 		console.log(this.type, this.open, key);
 		if (this.type === 'modal' && this.open && key === 'Escape') {
-			this.#close();
+			this.close();
 		}
-	}
-
-	#close(): void {
-		this.open = false;
-		// TODO add notifyClose (dispatch event) // add @fires jsdoc
 	}
 
 	private renderTopBar(): TemplateResult {
@@ -65,28 +110,31 @@ export class VWCSideDrawerBase extends LitElement {
 
 	private renderScrim(): TemplateResult {
 		// eslint-disable-next-line lit-a11y/click-events-have-key-events
-		return html`<div class="vvd-side-drawer--scrim" @click="${this.#handleScrimClick}"></div>`;
+		return html`<div
+			class="vvd-side-drawer--scrim"
+			@click="${this.#handleScrimClick}"
+		></div>`;
 	}
 
 	/**
 	 * the html markup
 	 * @internal
 	 * */
-	 protected render(): TemplateResult {
-	 	const dismissible = this.type === 'dismissible' || this.type === 'modal';
-	 	const modal = this.type === 'modal';
-	 	const topBar = this.hasTopBar	? this.renderTopBar()	: '';
-	 	const scrim = (this.type === 'modal' && this.open) ? this.renderScrim() : '';
-	 	const alternate = this.alternate ? 'vvd-scheme-alternate'	: undefined;
+	protected render(): TemplateResult {
+		const dismissible = this.type === 'dismissible' || this.type === 'modal';
+		const modal = this.type === 'modal';
+		const topBar = this.hasTopBar ? this.renderTopBar() : '';
+		const scrim = this.type === 'modal' && this.open ? this.renderScrim() : '';
+		const alternate = this.alternate ? 'vvd-scheme-alternate' : undefined;
 
-	 	const classes = {
-	 		'vvd-side-drawer--alternate': this.alternate,
-	 		'vvd-side-drawer--dismissible': dismissible,
-	 		'vvd-side-drawer--modal': modal,
-			'vvd-side-drawer--open': this.open
-	 	};
+		const classes = {
+			'vvd-side-drawer--alternate': this.alternate,
+			'vvd-side-drawer--dismissible': dismissible,
+			'vvd-side-drawer--modal': modal,
+			'vvd-side-drawer--open': this.open,
+		};
 
-		 return html`
+		return html`
 			<aside
 				part="${ifDefined(alternate)}"
 				class="side-drawer ${classMap(classes)}"
@@ -101,5 +149,5 @@ export class VWCSideDrawerBase extends LitElement {
 
 			${scrim}
 		`;
-	 }
+	}
 }
