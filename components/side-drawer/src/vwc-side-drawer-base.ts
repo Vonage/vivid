@@ -59,7 +59,8 @@ export class VWCSideDrawerBase extends LitElement {
 		this.#close();
 	}
 
-	disconnectedCallback() {
+	disconnectedCallback(): void {
+		super.disconnectedCallback();
 		document.removeEventListener('keydown', this.#onKeydown);
 	}
 
@@ -112,7 +113,7 @@ export class VWCSideDrawerBase extends LitElement {
 			'vvd-side-drawer--open': this.open
 	 	};
 
-	 	return html`
+		 return html`
 			<aside
 				part="${ifDefined(alternate)}"
 				class="side-drawer ${classMap(classes)}"
