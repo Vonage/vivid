@@ -13,7 +13,7 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.TAL_PAT_DO_NOT_USE }}
     steps:
       - uses: actions/checkout@v2
-      - run: echo "registry=https://npm.pkg.github.com/Vonage\n_authToken=\${GITHUB_TOKEN}\n//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}\nalways-auth=true"
+      - run: echo "registry=https://npm.pkg.github.com/Vonage\n_authToken=\${GITHUB_TOKEN}\n//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}\nalways-auth=true" > .npmrc
       - name: Checkout and install dependencies
         run: npm install @actions/core @actions/github @commitlint/config-conventional @commitlint/lint @commitlint/load
       - name: Checks the PR title
