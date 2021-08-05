@@ -24,7 +24,8 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.TAL_PAT_DO_NOT_USE }}
     steps:
       - uses: actions/checkout@v2
-      - run: echo "registry=https://npm.pkg.github.com/Vonage\\n_authToken=\\${GITHUB_TOKEN}\\n//npm.pkg.github.com/:_authToken=\\${GITHUB_TOKEN}\\nalways-auth=true" > .npmrc
+      - run: printf "registry=https://npm.pkg.github.com/Vonage\n_authToken=\${GITHUB_TOKEN}\n//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}\nalways-auth=true" > .npmrc
+      #- run: printf "always-auth=true\nregistry=https://${{ matrix.host }}/\n//${{ matrix.host }}/:_authToken=${{ secrets[matrix.token_secret] }}" > .npmrc
       - uses: actions/setup-node@v2
         with:
           node-version: 14
