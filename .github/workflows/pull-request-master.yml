@@ -101,7 +101,7 @@ jobs:
     name: Test Components Graphics
     runs-on: macos-latest
     env:
-      GITHUB_TOKEN: ${{ secrets.TAL_PAT_DO_NOT_USE }}
+      GITHUB_TOKEN: ${{ secrets.VNG_VIVID_PAT }}
     steps:
       - uses: actions/setup-node@v2
         with:
