@@ -113,7 +113,7 @@ jobs:
       - run: tar -zxf /tmp/vivid-env.tar.gz
       - run: npm rebuild playwright && yarn playwright install-deps
         env:
-          GITHUB_TOKEN: ${{ secrets.TAL_PAT_DO_NOT_USE }}
+          GITHUB_TOKEN: ${{ secrets.VNG_VIVID_PAT }}
       - run: yarn ui-tests
       - uses: actions/upload-artifact@v2
         if: ${{ always() }}
