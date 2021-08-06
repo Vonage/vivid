@@ -48,7 +48,7 @@ jobs:
     name: "Test Components on ${{ matrix.browser_name }}"
     runs-on: ${{ matrix.os }}
     env:
-      GITHUB_TOKEN: ${{ secrets.TAL_PAT_DO_NOT_USE }}
+      GITHUB_TOKEN: ${{ secrets.VNG_VIVID_PAT }}
     strategy:
       max-parallel: 10
       matrix:
