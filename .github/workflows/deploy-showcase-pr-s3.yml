@@ -10,7 +10,7 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_VIVID_DEMO_PRS_ACCESS }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_VIVID_DEMO_PRS_SECRET }}
-      GITHUB_TOKEN: ${{ secrets.TAL_PAT_DO_NOT_USE }}
+      GITHUB_TOKEN: ${{ secrets.VNG_VIVID_PAT }}
 
     steps:
       - name: Add PR deploy URL comment
