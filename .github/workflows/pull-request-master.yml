@@ -127,7 +127,7 @@ jobs:
     name: ${{ matrix.script_name }}
     runs-on: ubuntu-20.04
     env:
-      GITHUB_TOKEN: ${{ secrets.TAL_PAT_DO_NOT_USE }}
+      GITHUB_TOKEN: ${{ secrets.VNG_VIVID_PAT }}
     strategy:
       max-parallel: 10
       matrix:
