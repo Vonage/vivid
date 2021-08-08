@@ -37,7 +37,6 @@ jobs:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
       - run: yarn lerna run build --stream --concurrency=15 --include-dependencies
       - run: tar -zcf /tmp/vivid-env.tar.gz .
-      - run: ls -la /tmp/vivid-env.tar.gz
       - uses: actions/upload-artifact@v2
         with:
           name: workspace
@@ -146,4 +145,3 @@ jobs:
           path: /tmp
       - run: tar -zxf /tmp/vivid-env.tar.gz
       - run: yarn ${{ matrix.script }}
-
