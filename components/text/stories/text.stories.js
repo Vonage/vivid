@@ -15,4 +15,15 @@ const Template = args => html`<vwc-text ...=${spread(args)}>
 </vwc-text>`;
 
 export const Basic = Template.bind({});
-Basic.args = { 'font-face': VVDFontFace.Headline1 };
+Basic.args = { 'font-face': VVDFontFace.Headline2 };
+
+export const Connotation = Template.bind({});
+Connotation.args = { 'font-face': VVDFontFace.Headline2, connotation: 'cta' };
+
+const TemplateWithNestedElements = args => html`<p>
+		<vwc-text font-face="body-1">
+			Press <kbd><vwc-text font-face="body-1-code">Ctrl</vwc-text></kbd> + <kbd><vwc-text font-face="body-1-code">C</vwc-text></kbd> to copy text (Windows).
+		</vwc-text>
+	</p>`;
+
+export const WithNestedElements = TemplateWithNestedElements.bind({});
