@@ -36,12 +36,20 @@ const sanitizeSlackText = (function(filters){
     (text)=> text.replace(/>/g, '&gt;')
 ]);
 
+const bolden = (text)=> text && `*${text}*`;
+
 exports.releaseTemplate = ({ version, log_lines: rawLogLines })=>{
 
 	const formatLogLine = (icon = "•")=> ({ comment, sha })=> [
 		"",
 		icon,
-		_.truncate(sanitizeSlackText(_.capitalize(comment.replace(/^[\s\S]+:\s*/, ''))), { length: 60 }),
+		_.truncate(
+				(([component, comment])=> [
+					_(component).chain().kebabCase().thru(bolden).value(),
+					_(comment).chain().capitalize().value()
+				].filter(Boolean).map(sanitizeSlackText).join(': '))(fp.at(["groups.component", "groups.comment"], comment.match(/^.+?(\((?<component>.+?)\))?\s*:\s*(?<comment>.*)$/)))
+			, { length: 220 }
+		),
 		`(<${[COMMIT_BASE_URL, sha].join('/')}|${sha.substr(0, 7)}>)`
 	].join(' ');
 
