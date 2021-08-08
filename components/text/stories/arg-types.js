@@ -8,5 +8,11 @@ export const argTypes = {
 			options: Object.values(VVDFontFace),
 		}
 	},
+	connotation: {
+		control: {
+			type: 'select',
+			options: ['primary', 'cta', 'announcement', 'info', 'success', 'alert'],
+		}
+	},
 	styles: { table: { disable: true } },
 };
