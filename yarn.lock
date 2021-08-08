@@ -6659,7 +6659,7 @@ blob@0.0.5:
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/blob/-/blob-0.0.5.tgz#d680eeef25f8cd91ad533f5b01eed48e64caf683"
   integrity sha1-1oDu7yX4zZGtUz9bAe7UjmTK9oM=
 
-blocking-elements@^0.1.0:
+blocking-elements@^0.1.0, blocking-elements@^0.1.1:
   version "0.1.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/blocking-elements/-/blocking-elements-0.1.1.tgz#6acddbe2714a029a1774e9219bcf38736e07ded3"
   integrity sha1-as3b4nFKApoXdOkhm884c24H3tM=
@@ -19465,7 +19465,7 @@ which@2.0.2, which@^2.0.1, which@^2.0.2:
   dependencies:
     isexe "^2.0.0"
 
-wicg-inert@^3.0.0:
+wicg-inert@^3.0.0, wicg-inert@^3.1.1:
   version "3.1.1"
   resolved "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/wicg-inert/-/wicg-inert-3.1.1.tgz#b033fd4fbfb9e3fd709e5d84becbdf2e06e5c229"
   integrity sha1-sDP9T7+54/1wnl2EvsvfLgblwik=

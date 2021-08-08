@@ -1,9 +1,16 @@
+import 'blocking-elements';
+import 'wicg-inert';
+
 import {
 	html, LitElement, TemplateResult, property,
 } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import { classMap } from 'lit-html/directives/class-map';
 import { observer } from '@material/mwc-base/observer';
+import { DocumentWithBlockingElements } from 'blocking-elements';
+
+const blockingElements =
+	(document as DocumentWithBlockingElements).$blockingElements;
 
 /**
  * @slot header - The content of the header.
@@ -40,14 +47,32 @@ export class VWCSideDrawerBase extends LitElement {
 		// eslint-disable-next-line @typescript-eslint/no-empty-function
 	): void {}
 
+	disconnectedCallback(): void {
+		super.disconnectedCallback();
+		this.releaseFocus();
+	}
+
 	close(): void {
 		this.open = false;
 		this.notifyClose();
+		this.releaseFocus();
 	}
 
 	show(): void {
 		this.open = true;
 		this.notifyOpen();
+
+		if (this.type === 'modal') {
+			this.trapFocus();
+		}
+	}
+
+	trapFocus(): void {
+		blockingElements.push(this);
+	}
+
+	releaseFocus(): void {
+		blockingElements.remove(this);
 	}
 
 	notifyClose(): void {
