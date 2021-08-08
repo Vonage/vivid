@@ -88,14 +88,14 @@ export class VWCSideDrawerBase extends LitElement {
 	/**
 	 * Side drawer finished open animation.
 	 */
-	opened(): void {
+	#opened(): void {
 		this.trapFocus();
 	}
 
 	/**
 	 * Side drawer finished close animation.
 	 */
-	closed(): void {
+	#closed(): void {
 		this.releaseFocus();
 	}
 
@@ -129,10 +129,10 @@ export class VWCSideDrawerBase extends LitElement {
 		if (this.type === 'modal') {
 			// when side drawer finishes open animation
 			if (this.open) {
-				this.opened();
+				this.#opened();
 			} else {
 				// when side drawer finishes close animation
-				this.closed();
+				this.#closed();
 			}
 		}
 	}
