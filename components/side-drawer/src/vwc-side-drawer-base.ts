@@ -98,6 +98,7 @@ export class VWCSideDrawerBase extends LitElement {
 	 */
 	#opened(): void {
 		this.trapFocus();
+		this.notifyOpen();
 	}
 
 	/**
@@ -105,6 +106,21 @@ export class VWCSideDrawerBase extends LitElement {
 	 */
 	#closed(): void {
 		this.releaseFocus();
+		this.notifyClose();
+	}
+
+	notifyClose(): void {
+		const init: CustomEventInit = { bubbles: true, composed: true };
+		const ev = new CustomEvent('closed', init);
+		this.open = false;
+		this.dispatchEvent(ev);
+	}
+
+	notifyOpen(): void {
+		const init: CustomEventInit = { bubbles: true, composed: true };
+		const ev = new CustomEvent('opened', init);
+		this.open = true;
+		this.dispatchEvent(ev);
 	}
 
 	disconnectedCallback(): void {
