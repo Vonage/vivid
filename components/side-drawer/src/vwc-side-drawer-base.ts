@@ -20,6 +20,30 @@ const blockingElements =
  *
  */
 export class VWCSideDrawerBase extends LitElement {
+	/**
+	 * @prop alternate - [Applies scheme alternate region](../../common/scheme/readme.md)
+	 * accepts boolean value
+	 * @public
+	 * */
+	@property({ type: Boolean, reflect: true })
+	alternate = false;
+
+	/**
+	 * @prop hasTopBar - adds top bar to the side drawer
+	 * accepts boolean value
+	 * @public
+	 * */
+	@property({ type: Boolean, reflect: true })
+	hasTopBar?: boolean;
+
+	/**
+	 * @prop type - can be modal, dismissible or empty
+	 * accepts String value
+	 * @public
+	 * */
+	@property({ type: String, reflect: true })
+	type = '';
+
 	@property({ type: Boolean, reflect: true })
 	@observer(function (
 		this: VWCSideDrawerBase,
@@ -47,24 +71,37 @@ export class VWCSideDrawerBase extends LitElement {
 		// eslint-disable-next-line @typescript-eslint/no-empty-function
 	): void {}
 
+	/**
+	 * Opens the drawer from the closed state.
+	 */
+	show(): void {
+		this.open = true;
+	}
+
+	/**
+	 * Closes the drawer from the open state.
+	 */
+	close(): void {
+		this.open = false;
+	}
+
+	/**
+	 * Side drawer finished open animation.
+	 */
+	#opened(): void {
+		this.trapFocus();
+	}
+
+	/**
+	 * Side drawer finished close animation.
+	 */
+	#closed(): void {
+		this.releaseFocus();
+	}
+
 	disconnectedCallback(): void {
 		super.disconnectedCallback();
 		this.releaseFocus();
-	}
-
-	close(): void {
-		this.open = false;
-		this.notifyClose();
-		this.releaseFocus();
-	}
-
-	show(): void {
-		this.open = true;
-		this.notifyOpen();
-
-		if (this.type === 'modal') {
-			this.trapFocus();
-		}
 	}
 
 	trapFocus(): void {
@@ -74,45 +111,6 @@ export class VWCSideDrawerBase extends LitElement {
 	releaseFocus(): void {
 		blockingElements.remove(this);
 	}
-
-	notifyClose(): void {
-		const init: CustomEventInit = { bubbles: true, composed: true };
-		const ev = new CustomEvent('closed', init);
-		this.open = false;
-		this.dispatchEvent(ev);
-	}
-
-	notifyOpen(): void {
-		const init: CustomEventInit = { bubbles: true, composed: true };
-		const ev = new CustomEvent('opened', init);
-		this.open = true;
-		this.dispatchEvent(ev);
-	}
-
-	/**
-	 * @prop alternate - [Applies scheme alternate region](../../common/scheme/readme.md)
-	 * accepts boolean value
-	 * @public
-	 * */
-	@property({ type: Boolean, reflect: true })
-	alternate = false;
-
-	/**
-	 * @prop hasTopBar - adds top bar to the side drawer
-	 * accepts boolean value
-	 * @public
-	 * */
-	@property({ type: Boolean, reflect: true })
-	hasTopBar?: boolean;
-
-	// TODO still focus and trap focus on modal open
-	/**
-	 * @prop modal
-	 * accepts boolean value
-	 * @public
-	 * */
-	@property({ type: String, reflect: true })
-	type = '';
 
 	#handleScrimClick(): void {
 		if (this.type === 'modal' && this.open) {
@@ -124,6 +122,18 @@ export class VWCSideDrawerBase extends LitElement {
 		console.log(this.type, this.open, key);
 		if (this.type === 'modal' && this.open && key === 'Escape') {
 			this.close();
+		}
+	}
+
+	#onTransitionEnd(): void {
+		if (this.type === 'modal') {
+			// when side drawer finishes open animation
+			if (this.open) {
+				this.#opened();
+			} else {
+				// when side drawer finishes close animation
+				this.#closed();
+			}
 		}
 	}
 
@@ -164,6 +174,7 @@ export class VWCSideDrawerBase extends LitElement {
 				part="${ifDefined(alternate)}"
 				class="side-drawer ${classMap(classes)}"
 				@keydown=${this.#onKeydown}
+				@transitionend=${this.#onTransitionEnd}
 			>
 				${topBar}
 
