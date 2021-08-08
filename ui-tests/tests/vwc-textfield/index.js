@@ -15,6 +15,9 @@ export async function createElementVariations(wrapper) {
 		});
 		res();
 	}, 0));
+	// temporary delay to prevent test failure due to floating label initial transition
+	// should be handled in textfield refactoring
+	await new Promise(resolve => setTimeout(resolve, 500));
 }
 
 
