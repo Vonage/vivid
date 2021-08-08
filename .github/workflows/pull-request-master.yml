@@ -17,6 +17,7 @@ concurrency:
 
 jobs:
   build:
+    timeout-minutes: 15
     if: github.event.pull_request.draft == false
     name: Build
     runs-on: ubuntu-20.04
