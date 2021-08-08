@@ -63,7 +63,7 @@ $min-width: 280px;
 }
 
 .vvd-side-drawer--modal {
-	position: fixed;
+	position: absolute;
 	top: 0;
 	right: initial;
 	bottom: 0;
@@ -72,7 +72,7 @@ $min-width: 280px;
 
 .vvd-side-drawer--scrim {
 	@include scrim-mixins.scrim-variables;
-	position: fixed;
+	position: absolute;
 	z-index: calc(#{$z-index-default} - 1);
 	top: 0;
 	right: 0;
