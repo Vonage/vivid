@@ -16,4 +16,7 @@ export const argTypes = {
 			options: ['', 'modal', 'dismissible'],
 		}
 	},
+	absolute: {
+		control: booleanControl
+	}
 };

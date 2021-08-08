@@ -66,8 +66,6 @@ const Template = args => html`
 					<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
 				</vwc-list-item>
 
-				<!-- <li divider role="separator" padded></li> -->
-
 				<vwc-list-expansion-panel open>
 					<vwc-list-item slot="header" shape="rounded" graphic="icon">
 						<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item

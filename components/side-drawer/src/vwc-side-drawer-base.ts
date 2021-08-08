@@ -44,6 +44,14 @@ export class VWCSideDrawerBase extends LitElement {
 	@property({ type: String, reflect: true })
 	type = '';
 
+	/**
+	 * @prop absolute - the modal can be fixed or absolute
+	 * accepts Boolean value
+	 * @public
+	 * */
+	@property({ type: Boolean, reflect: true })
+	absolute = false;
+
 	@property({ type: Boolean, reflect: true })
 	@observer(function (
 		this: VWCSideDrawerBase,
@@ -146,7 +154,9 @@ export class VWCSideDrawerBase extends LitElement {
 	private renderScrim(): TemplateResult {
 		// eslint-disable-next-line lit-a11y/click-events-have-key-events
 		return html`<div
-			class="vvd-side-drawer--scrim"
+			class="vvd-side-drawer--scrim ${this.absolute
+		? 'vvd-side-drawer--absolute'
+		: ''}"
 			@click="${this.#handleScrimClick}"
 		></div>`;
 	}
@@ -161,12 +171,14 @@ export class VWCSideDrawerBase extends LitElement {
 		const topBar = this.hasTopBar ? this.renderTopBar() : '';
 		const scrim = this.type === 'modal' && this.open ? this.renderScrim() : '';
 		const alternate = this.alternate ? 'vvd-scheme-alternate' : undefined;
+		const absolute = this.type === 'modal' && this.absolute;
 
 		const classes = {
 			'vvd-side-drawer--alternate': this.alternate,
 			'vvd-side-drawer--dismissible': dismissible,
 			'vvd-side-drawer--modal': modal,
 			'vvd-side-drawer--open': this.open,
+			'vvd-side-drawer--absolute': absolute,
 		};
 
 		return html`

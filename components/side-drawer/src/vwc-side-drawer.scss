@@ -63,16 +63,21 @@ $min-width: 280px;
 }
 
 .vvd-side-drawer--modal {
-	position: absolute;
 	top: 0;
 	right: initial;
 	bottom: 0;
 	left: 0;
+	
+	&.vvd-side-drawer--absolute {
+		position: absolute;
+	}
+	&:not(.vvd-side-drawer--absolute) {
+		position: fixed;
+	}
 }
 
 .vvd-side-drawer--scrim {
 	@include scrim-mixins.scrim-variables;
-	position: absolute;
 	z-index: calc(#{$z-index-default} - 1);
 	top: 0;
 	right: 0;
@@ -80,6 +85,13 @@ $min-width: 280px;
 	left: 0;
 	background-color: var(#{scrim-mixins.$vvd-scrim--background-color});
 	opacity: var(#{scrim-mixins.$vvd-scrim--opacity});
+
+	&.vvd-side-drawer--absolute {
+		position: absolute;
+	}
+	&:not(.vvd-side-drawer--absolute) {
+		position: fixed;
+	}
 }
 
 
