@@ -1,8 +1,8 @@
 export default {
 	sourcePath: '../readme.md',
-	outputName: 'badge-introduction',
+	outputName: 'side-drawer-introduction',
 	story: {
-		title: 'Components/Badge/Introduction',
+		title: 'Alpha/Components/Side Drawer',
 		name: 'Introduction',
 		parameters: {
 			options: {
