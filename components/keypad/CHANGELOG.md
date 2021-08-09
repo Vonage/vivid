@@ -1,3 +1,7 @@
+# [2.17.0](https://github.com/vonage/vivid/compare/v2.16.1...v2.17.0) (2021-08-09)
+
+
+
 ## [2.16.1](https://github.com/vonage/vivid/compare/v2.16.0...v2.16.1) (2021-07-29)
 
 
@@ -255,8 +259,8 @@
 
 ### Bug Fixes
 
-* **vwc-keypad:** keypad should maintain a cursor/caret position ([52e3f46](https://github.com/vonage/vivid/commit/52e3f468983551d863250a8ac2bcc49ff009f45c))
 * to pass the PR linter ([24b76aa](https://github.com/vonage/vivid/commit/24b76aa16aabc86f2f92f7f8f295b1bd4d6b0f08))
+* **vwc-keypad:** keypad should maintain a cursor/caret position ([52e3f46](https://github.com/vonage/vivid/commit/52e3f468983551d863250a8ac2bcc49ff009f45c))
 
 
 
