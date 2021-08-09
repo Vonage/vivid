@@ -10,6 +10,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-18.04
+    env:
+      GITHUB_TOKEN: ${{ secrets.VNG_VIVID_PAT }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -17,12 +20,13 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
+
+      - name: Writing .npmrc
+        run: printf "registry=https://npm.pkg.github.com/Vonage\n_authToken=\${GITHUB_TOKEN}\n//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}\nalways-auth=true" > .npmrc
+
       - name: Install dependencies
-        env:
-          yarn_always_auth: true,
-          yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
-          yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
         run: yarn install
+
       - run: yarn compile
       - run: tar -zcf /tmp/vivid-env.tar.gz .
       - uses: actions/upload-artifact@v2
