@@ -134,7 +134,7 @@ describe('Card', () => {
 
 				await actualElement.updateComplete;
 			}
-			const [actualElement] = (
+			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}>Content<div slot="actions"></div></${COMPONENT_NAME}>`)
 			);
 
@@ -201,7 +201,7 @@ describe('Card', () => {
 		const badgeText = 'home';
 
 		it(`should set the badge according to the attribute`, async function () {
-			const [actualElement] = (
+			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} badge-content="${badgeText}">Content</${COMPONENT_NAME}>`)
 			);
 

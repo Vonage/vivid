@@ -30,7 +30,7 @@
 		"@vonage/vwc-icon": "^2.14.0",
 		"lit-element": "^2.4.0",
 		"lit-html": "^1.1.1",
-		"tslib": "^2.0.2"
+		"tslib": "^2.3.0"
 	},
 	"devDependencies": {
 		"@vonage/vvd-foundation": "^2.14.0",
