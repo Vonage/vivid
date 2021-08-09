@@ -4,6 +4,7 @@ import {
 import { style } from './vwc-card.css';
 import { property } from 'lit-element/lib/decorators';
 import { classMap } from 'lit-html/directives/class-map.js';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
 import '@vonage/vwc-badge';
 import '@vonage/vwc-button';
 import '@vonage/vwc-icon';
@@ -99,7 +100,7 @@ export class VWCCard extends LitElement {
 
 	private renderHeaderIcon() {
 		return (this.headerIcon || this.headerIconSlottedItems?.length) ? html`
-			<vwc-icon size="${this.layout === 'large' ? 'large' : 'medium'}" type="${this.headerIcon}"></vwc-icon>` : '';
+			<vwc-icon size="${this.layout === 'large' ? 'large' : 'medium'}" type="${ifDefined(this.headerIcon ? this.headerIcon : undefined)}"></vwc-icon>` : '';
 	}
 
 	private renderBadge() {
