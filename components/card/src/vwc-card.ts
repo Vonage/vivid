@@ -3,6 +3,7 @@ import {
 } from 'lit-element';
 import { style } from './vwc-card.css';
 import { property } from 'lit-element/lib/decorators';
+import { classMap } from 'lit-html/directives/class-map.js';
 import '@vonage/vwc-badge';
 import '@vonage/vwc-button';
 import '@vonage/vwc-icon';
@@ -46,10 +47,10 @@ export class VWCCard extends LitElement {
 		attribute: 'layout',
 		type: String
 	})
-	layout?: string;
+	layout = 'basic';
 
 	private headerIconSlottedItems?: Node[];
-
+	private shouldShowActionsSlot: boolean | undefined;
 
 	private get headerContentExists(): boolean {
 		return Boolean(this.heading || this.badgeContent || this.headerIcon || this.headerIconSlottedItems?.length);
@@ -60,6 +61,9 @@ export class VWCCard extends LitElement {
 	}
 
 	protected render(): unknown {
+		const actionsClassMap = {
+			'no-actions-content': !(this.shouldShowActionsSlot)
+		};
 		return html`
 			<div class="vwc-card">
 				<div class="vwc-card-media">
@@ -70,9 +74,8 @@ export class VWCCard extends LitElement {
 					<div class="vwc-card-content">
 						<slot></slot>
 					</div>
-					<div class="vwc-card-actions">
-						<slot name="actions">
-						</slot>
+					<div class="vwc-card-actions ${classMap(actionsClassMap)}">
+							<slot name="actions" @slotchange="${this.actionsSlotChanged}"></slot>
 					</div>
 				</div>
 			</div>
@@ -96,7 +99,7 @@ export class VWCCard extends LitElement {
 
 	private renderHeaderIcon() {
 		return (this.headerIcon || this.headerIconSlottedItems?.length) ? html`
-			<vwc-icon size="${this.layout}" type="${this.headerIcon}"></vwc-icon>` : '';
+			<vwc-icon size="${this.layout === 'large' ? 'large' : 'medium'}" type="${this.headerIcon}"></vwc-icon>` : '';
 	}
 
 	private renderBadge() {
@@ -114,5 +117,11 @@ export class VWCCard extends LitElement {
 		} else {
 			headerElement?.classList.add('no-header-content');
 		}
+	}
+
+	private actionsSlotChanged(): void {
+		const slot = this.shadowRoot?.querySelector('slot[name="actions"]') as HTMLSlotElement;
+		this.shouldShowActionsSlot = Boolean(slot.assignedNodes().length);
+		this.requestUpdate();
 	}
 }

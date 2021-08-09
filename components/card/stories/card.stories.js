@@ -33,13 +33,15 @@ const IconTemplate = args => html`
 	</vwc-card>`;
 export const Icon = IconTemplate.bind({});
 Icon.args = {
-	label: 'Heading',
+	label: 'Icon',
+	heading: 'Icon Example',
 	'header-icon': 'chat-line'
 };
 
 export const Badge = Template.bind({});
 Badge.args = {
 	label: 'Badge',
+	heading: 'Badge Example',
 	'badge-content': 'New'
 };
 
@@ -53,6 +55,7 @@ export const Media = MediaTemplate.bind({});
 Media.args = {
 	label: 'Media',
 	heading: 'Media',
+	'header-icon': 'home',
 	'badge-content': 'New'
 };
 
@@ -69,10 +72,11 @@ Actions.args = {
 };
 
 
-export const Large = Template.bind({});
+export const Large = ActionsTemplate.bind({});
 Large.args = {
 	label: 'Large',
-	heading: 'Card title',
+	heading: 'Large card title',
 	'header-icon': 'chat-line',
-	'badge-content': 'New'
+	'badge-content': 'New',
+	layout: 'large'
 };

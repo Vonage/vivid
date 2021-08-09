@@ -5,7 +5,6 @@ import {
 	isolatedElementsCreation
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
-import { LitElement } from 'lit-element';
 
 chai.use(chaiDomDiff);
 
@@ -110,6 +109,40 @@ describe('Card', () => {
 
 			expect(attributeValue).to.equal(headingText);
 			expect(actualElement.heading).to.equal(differentText);
+		});
+	});
+
+	describe(`actions`, function () {
+		const headingText = 'This is the heading';
+
+		it(`should not be displayed if actions slot is empty`, async function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}>Content</${COMPONENT_NAME}>`)
+			);
+
+			await actualElement.updateComplete;
+
+			const actionsElement = actualElement.shadowRoot.querySelector('.vwc-card-actions');
+
+
+			expect(actionsElement.classList.contains('no-actions-content')).to.equal(true);
+		});
+
+		it(`should be displayed if slotted actions exist`, async function () {
+			async function waitForSlotChangeUpdate() {
+				await waitNextTask();
+
+				await actualElement.updateComplete;
+			}
+			const [actualElement] = (
+				textToDomToParent(`<${COMPONENT_NAME}>Content<div slot="actions"></div></${COMPONENT_NAME}>`)
+			);
+
+			await waitForSlotChangeUpdate();
+
+			const actionsElement = actualElement.shadowRoot.querySelector('.vwc-card-actions');
+
+			expect(actionsElement.classList.contains('no-actions-content')).to.equal(false);
 		});
 	});
 

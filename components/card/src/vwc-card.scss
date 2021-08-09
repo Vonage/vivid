@@ -31,17 +31,14 @@ header {
 	margin-bottom: 8px;
 }
 
-header.no-header-content {
-	display: none;
-}
-
 .vwc-card-header {
 	display: inline-flex;
 	flex: 1;
 }
 
-header vwc-badge {
-	margin: auto 0;
+:host([layout='large']) .vwc-card-header {
+	flex-wrap: wrap;
+	row-gap: 16px;
 }
 
 .vwc-card-header-text {
@@ -65,5 +62,11 @@ header slot vwc-icon {
 	display: inline-flex;
 	flex-direction: column;
 	align-items: flex-end;
-	margin-top: 8px;
+	margin-top: 16px;
+}
+
+
+.no-header-content,
+.vwc-card-actions.no-actions-content {
+	display: none;
 }

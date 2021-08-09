@@ -21,7 +21,7 @@
       <slot>
       </slot>
     </div>
-    <div class="vwc-card-actions">
+    <div class="no-actions-content vwc-card-actions">
       <slot name="actions">
       </slot>
     </div>
