@@ -201,7 +201,7 @@ describe('Card', () => {
 		const badgeText = 'home';
 
 		it(`should set the badge according to the attribute`, async function () {
-			const [actualElement] = addElement(
+			const [actualElement] = (
 				textToDomToParent(`<${COMPONENT_NAME} badge-content="${badgeText}">Content</${COMPONENT_NAME}>`)
 			);
 
@@ -209,7 +209,7 @@ describe('Card', () => {
 
 			const headerBadgeElement = actualElement.shadowRoot.querySelector('header vwc-badge');
 
-			expect(headerBadgeElement.innerText).to.equal(badgeText);
+			expect(headerBadgeElement.textContent).to.equal(badgeText);
 		});
 
 		it(`should set the badge according to the property`, async function () {
@@ -223,7 +223,7 @@ describe('Card', () => {
 
 			const headerBadgeElement = actualElement.shadowRoot.querySelector('header vwc-badge');
 
-			expect(headerBadgeElement.innerText).to.equal(badgeText);
+			expect(headerBadgeElement.textContent).to.equal(badgeText);
 		});
 
 		it(`should reflect the badge property and attribute`, async function () {
