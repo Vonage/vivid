@@ -17,6 +17,7 @@ $min-width: 280px;
 
 .side-drawer {
 	z-index: #{$z-index-default};
+	color: var(#{scheme-variables.$vvd-color-on-base});
 	min-inline-size: var(#{$vvd-side-drawer--min-inline-size}, $min-width);
 	&:not(.vvd-side-drawer--alternate):not(.vvd-side-drawer--modal) {
 		background-color: var(#{scheme-variables.$vvd-color-neutral-10});
@@ -67,7 +68,7 @@ $min-width: 280px;
 	right: initial;
 	bottom: 0;
 	left: 0;
-	
+
 	&.vvd-side-drawer--absolute {
 		position: absolute;
 	}
