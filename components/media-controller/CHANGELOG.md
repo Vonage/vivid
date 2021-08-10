@@ -1,3 +1,15 @@
+# [2.17.0](https://github.com/vonage/vivid/compare/v2.16.1...v2.17.0) (2021-08-09)
+
+
+
+## [2.16.1](https://github.com/vonage/vivid/compare/v2.16.0...v2.16.1) (2021-07-29)
+
+
+
+# [2.16.0](https://github.com/vonage/vivid/compare/v2.15.0...v2.16.0) (2021-07-28)
+
+
+
 # [2.15.0](https://github.com/vonage/vivid/compare/v2.14.0...v2.15.0) (2021-07-20)
 
 
@@ -272,15 +284,15 @@
 
 ### Bug Fixes
 
-* removed debug message ([f42a7de](https://github.com/vonage/vivid/commit/f42a7de1da7ea46c9865113f12dc32468befc254))
 * **media-controller:** solved linting problems ([45be447](https://github.com/vonage/vivid/commit/45be4478eb9af1a4373da316cfe669b4f9e6bef6))
 * **media-controller:** wrong ramda version ([089ff40](https://github.com/vonage/vivid/commit/089ff405c64e97cfd23cc21e2b2c22d694a9d390))
+* removed debug message ([f42a7de](https://github.com/vonage/vivid/commit/f42a7de1da7ea46c9865113f12dc32468befc254))
 
 
 ### Features
 
-* **media-controller:** added focus circle around knob + refactored code + added tests ([d393640](https://github.com/vonage/vivid/commit/d393640f4fc299962f5830a31df167c4581f7922))
 * changed default display to "block" ([7f0afa8](https://github.com/vonage/vivid/commit/7f0afa85b44720b390ea8ff1bb2edc9255c3156c))
+* **media-controller:** added focus circle around knob + refactored code + added tests ([d393640](https://github.com/vonage/vivid/commit/d393640f4fc299962f5830a31df167c4581f7922))
 * **media-controller:** added vwc-media-controller component ([7e1ac09](https://github.com/vonage/vivid/commit/7e1ac095f2a2aa9203d584b8a860871fbc512c8b))
 
 

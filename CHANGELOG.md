@@ -3,6 +3,52 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.17.0](https://github.com/Vonage/vivid/compare/v2.16.1...v2.17.0) (2021-08-09)
+
+
+### Bug Fixes
+
+* **vwc-snackbar:** style bug caused by scheme alternate ([#994](https://github.com/Vonage/vivid/issues/994)) ([fd0a8fd](https://github.com/Vonage/vivid/commit/fd0a8fd35ccaa66c95cec85ee39e17080accefb9))
+
+
+### Features
+
+* **vwc-side-drawer:** 1st draft ([#978](https://github.com/Vonage/vivid/issues/978)) ([e1d6393](https://github.com/Vonage/vivid/commit/e1d6393b6a4ce0cda5078211326fb84c7330639a))
+* **workspace:** added component captions to slack release announcer ([#993](https://github.com/Vonage/vivid/issues/993)) ([b03dcc3](https://github.com/Vonage/vivid/commit/b03dcc346a6f54dd5acad92d2fff8b09812b5729))
+
+
+
+
+
+## [2.16.1](https://github.com/Vonage/vivid/compare/v2.16.0...v2.16.1) (2021-07-29)
+
+**Note:** Version bump only for package @vivid/root
+
+
+
+
+
+# [2.16.0](https://github.com/Vonage/vivid/compare/v2.15.0...v2.16.0) (2021-07-28)
+
+
+### Bug Fixes
+
+* **banner:** bug story ;) ([#988](https://github.com/Vonage/vivid/issues/988)) ([0df1325](https://github.com/Vonage/vivid/commit/0df13257a9fa04240e5f825494065e80fd526a63))
+
+
+### Features
+
+* **button:** refactor button styles to use and expose variables ([#989](https://github.com/Vonage/vivid/issues/989)) ([45fe21d](https://github.com/Vonage/vivid/commit/45fe21dba357100f35626d316089a0cf3173bc85))
+* **data-grid:** allow data-grid to set height according to container ([#983](https://github.com/Vonage/vivid/issues/983)) ([2dcae4d](https://github.com/Vonage/vivid/commit/2dcae4d2bdf0e384f267c72571e33c580f0f48c0))
+* **data-grid:** expose `heightByRows` field to control grid height d… ([#985](https://github.com/Vonage/vivid/issues/985)) ([abeb481](https://github.com/Vonage/vivid/commit/abeb4815901fcf444446311b4e48f546b201ed70)), closes [#983](https://github.com/Vonage/vivid/issues/983)
+* **icon:** upgraded to v4.0.15 ([#982](https://github.com/Vonage/vivid/issues/982)) ([4643118](https://github.com/Vonage/vivid/commit/4643118523c801b11776b94eb276e2b7a0877aba))
+* **vwc-badge:** deprecates slot in favor of props ([#986](https://github.com/Vonage/vivid/issues/986)) ([3513345](https://github.com/Vonage/vivid/commit/3513345183cc521e2665c588b17a2195d821ae59))
+* **vwc-empty-state:** 1st draft ([#984](https://github.com/Vonage/vivid/issues/984)) ([5d37d03](https://github.com/Vonage/vivid/commit/5d37d03994bc33904dbbf01783740a02e4b17c97))
+
+
+
+
+
 # [2.15.0](https://github.com/Vonage/vivid/compare/v2.14.0...v2.15.0) (2021-07-20)
 
 

@@ -1,3 +1,20 @@
+# [2.17.0](https://github.com/vonage/vivid/compare/v2.16.1...v2.17.0) (2021-08-09)
+
+
+
+## [2.16.1](https://github.com/vonage/vivid/compare/v2.16.0...v2.16.1) (2021-07-29)
+
+
+
+# [2.16.0](https://github.com/vonage/vivid/compare/v2.15.0...v2.16.0) (2021-07-28)
+
+
+### Bug Fixes
+
+* **banner:** bug story ;) ([#988](https://github.com/vonage/vivid/issues/988)) ([0df1325](https://github.com/vonage/vivid/commit/0df13257a9fa04240e5f825494065e80fd526a63))
+
+
+
 # [2.15.0](https://github.com/vonage/vivid/compare/v2.14.0...v2.15.0) (2021-07-20)
 
 

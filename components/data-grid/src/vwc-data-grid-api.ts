@@ -20,8 +20,9 @@ const GRID_COMPONENT = 'vwc-data-grid',
  * API definition of the Vivid data grid, component
  * - this is the definitions of the top level APIs relevant to the grid as a whole
  */
-interface DataGrid extends EventTarget {
+interface DataGrid extends HTMLElement {
 	multiSort: boolean;
+	heightByRows: boolean;
 	reordering: boolean;
 	columns: DataGridColumn[];
 	refreshConfiguration(): void;

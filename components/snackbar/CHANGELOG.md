@@ -1,3 +1,20 @@
+# [2.17.0](https://github.com/vonage/vivid/compare/v2.16.1...v2.17.0) (2021-08-09)
+
+
+### Bug Fixes
+
+* **vwc-snackbar:** style bug caused by scheme alternate ([#994](https://github.com/vonage/vivid/issues/994)) ([fd0a8fd](https://github.com/vonage/vivid/commit/fd0a8fd35ccaa66c95cec85ee39e17080accefb9))
+
+
+
+## [2.16.1](https://github.com/vonage/vivid/compare/v2.16.0...v2.16.1) (2021-07-29)
+
+
+
+# [2.16.0](https://github.com/vonage/vivid/compare/v2.15.0...v2.16.0) (2021-07-28)
+
+
+
 # [2.15.0](https://github.com/vonage/vivid/compare/v2.14.0...v2.15.0) (2021-07-20)
 
 
