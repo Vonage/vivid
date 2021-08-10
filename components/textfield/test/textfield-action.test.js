@@ -2,7 +2,7 @@ import { VALID_BUTTON_ELEMENTS } from '../vwc-textfield.js';
 
 import {
 	waitNextTask,
-	textToDomToParent,
+	textToDomToParent, isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
@@ -12,10 +12,15 @@ chai.use(chaiDomDiff);
 const COMPONENT_NAME = 'vwc-textfield';
 
 describe('textfield action', () => {
+	const addElement = isolatedElementsCreation();
 	const [iconButton] = VALID_BUTTON_ELEMENTS;
 
+	function getInternalButtons(element) {
+		return Array.from(element.querySelectorAll(iconButton));
+	}
+
 	async function createElement() {
-		const [actualElement] = (
+		const [actualElement] = addElement(
 			textToDomToParent(`
 				<${COMPONENT_NAME}>
 					<${iconButton} slot="action"></${iconButton}>
@@ -130,5 +135,79 @@ describe('textfield action', () => {
 		actualElement.dense = false;
 		await waitNextTask();
 		expect(newIconButton.dense).to.equal(false);
+	});
+
+	describe(`noActionsSync`, function () {
+		function getButtonsHTML(actualElement) {
+			const buttons = getInternalButtons(actualElement);
+			const expectedButtonsHTML = buttons.reduce((html, button) => {
+				html += button.outerHTML;
+				return html;
+			}, '');
+			return expectedButtonsHTML;
+		}
+
+		function setElementAttributes(actualElement) {
+			actualElement.disabled = true;
+			actualElement.shape = 'pill';
+			actualElement.toggleAttribute('dense', true);
+		}
+
+		function createElementWithIconButtons() {
+			const [actualElement] = addElement(
+				textToDomToParent(`
+				<${COMPONENT_NAME}>
+					<${iconButton} slot="action" disabled shape="circled"></${iconButton}>
+					<${iconButton} slot="action" shape="pilled" dense></${iconButton}>
+					<${iconButton} slot="action" disabled enlarged></${iconButton}>
+				</${COMPONENT_NAME}>
+			`)
+			);
+			return actualElement;
+		}
+
+		let actualElement;
+
+		beforeEach(async function () {
+			actualElement = createElementWithIconButtons();
+			actualElement.noActionsSync = true;
+		});
+
+		it(`should not enforce attributes on child nodes`, async function () {
+			const expectedButtonsHTML = getButtonsHTML(actualElement);
+			setElementAttributes(actualElement);
+			await waitNextTask();
+			await actualElement.updateComplete;
+
+			const eventualButtonsHTML = getButtonsHTML(actualElement);
+			expect(expectedButtonsHTML).to.equal(eventualButtonsHTML);
+		});
+
+		it(`should not dynamically enforce attributes on child nodes`, async function () {
+			function generateNewButton() {
+				const newButtonWrapper = document.createElement('div');
+				newButtonWrapper.innerHTML = `<${iconButton} slot="action" shape="circled" enlarged></${iconButton}>`;
+				const newButton = newButtonWrapper.firstChild;
+				const expectedButtonHTML = newButton.outerHTML;
+				return [newButton, expectedButtonHTML];
+			}
+
+			const [newButton, expectedButtonHTML] = generateNewButton();
+
+			const expectedButtonsHTML = getButtonsHTML(actualElement);
+
+			setElementAttributes(actualElement);
+			await waitNextTask();
+			await actualElement.updateComplete;
+
+			actualElement.appendChild(newButton);
+
+			const eventualButtonsHTML = getInternalButtons(actualElement).reduce((html, button) => {
+				html += button.outerHTML;
+				return html;
+			}, '');
+
+			expect(expectedButtonsHTML + expectedButtonHTML).to.equal(eventualButtonsHTML);
+		});
 	});
 });
