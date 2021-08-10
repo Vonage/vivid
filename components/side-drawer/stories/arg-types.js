@@ -16,6 +16,9 @@ export const argTypes = {
 			options: ['', 'modal', 'dismissible'],
 		}
 	},
+	hasTopBar: {
+		control: booleanControl
+	},
 	absolute: {
 		control: booleanControl
 	}

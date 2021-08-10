@@ -50,7 +50,6 @@ const Template = args => html`
 				<vwc-icon type="vonage-mono"></vwc-icon> VONAGE
 			</span>
 
-
 			<vwc-list
 					innerRole="navigation"
 					innerAriaLabel="Primary navigation"
