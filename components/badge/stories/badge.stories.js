@@ -12,7 +12,7 @@ export default {
 const Template = args => html`<vwc-badge ...=${spread(args)}></vwc-badge>`;
 
 export const Basic = Template.bind({});
-Basic.args = { connotation: 'cta', layout: 'filled', text: 'badge' };
+Basic.args = { text: 'badge', layout: 'soft' };
 
 export const WithIcons = Template.bind({});
 WithIcons.args = {

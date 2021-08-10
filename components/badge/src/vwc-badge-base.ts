@@ -35,7 +35,7 @@ export class VWCBadgeBase extends LitElement {
 	shape?: BadgeShape;
 
 	@property({ type: String, reflect: true })
-	layout: BadgeLayout = Layout.Filled;
+	layout?: BadgeLayout;
 
 	@property({ type: Boolean, reflect: true })
 	dense = false;
