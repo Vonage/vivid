@@ -56,7 +56,7 @@ describe('Card', () => {
 
 		it(`should be displayed if slotted content exists even without heading, icon and badge`, async function () {
 			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME}>Content<div slot="header-icon"></div></${COMPONENT_NAME}>`)
+				textToDomToParent(`<${COMPONENT_NAME}>Content<div slot="graphics"></div></${COMPONENT_NAME}>`)
 			);
 
 			await actualElement.updateComplete;
@@ -194,69 +194,6 @@ describe('Card', () => {
 
 			expect(attributeValue).to.equal(iconName);
 			expect(actualElement.headerIcon).to.equal(differentIconName);
-		});
-	});
-
-	describe(`badge-content`, function () {
-		const badgeText = 'home';
-
-		it(`should set the badge according to the attribute`, async function () {
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} badge-content="${badgeText}">Content</${COMPONENT_NAME}>`)
-			);
-
-			await actualElement.updateComplete;
-
-			const headerBadgeElement = actualElement.shadowRoot.querySelector('header vwc-badge');
-
-			expect(headerBadgeElement.textContent).to.equal(badgeText);
-		});
-
-		it(`should set the badge according to the property`, async function () {
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME}>Content</${COMPONENT_NAME}>`)
-			);
-
-			actualElement.badgeContent = badgeText;
-
-			await actualElement.updateComplete;
-
-			const headerBadgeElement = actualElement.shadowRoot.querySelector('header vwc-badge');
-
-			expect(headerBadgeElement.textContent).to.equal(badgeText);
-		});
-
-		it(`should reflect the badge property and attribute`, async function () {
-			const differentBadgeText = 'share';
-
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME}>Content</${COMPONENT_NAME}>`)
-			);
-
-			actualElement.badgeContent = badgeText;
-
-			await actualElement.updateComplete;
-
-			const attributeValue = actualElement.getAttribute('badge-content');
-
-			actualElement.setAttribute('badge-content', differentBadgeText);
-
-			await actualElement.updateComplete;
-
-			expect(attributeValue).to.equal(badgeText);
-			expect(actualElement.badgeContent).to.equal(differentBadgeText);
-		});
-
-		it(`should show no badge if badge-content is falsy or empty`, async function () {
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME}>Content</${COMPONENT_NAME}>`)
-			);
-
-			await actualElement.updateComplete;
-
-			const headerBadgeElement = actualElement.shadowRoot.querySelector('header vwc-badge');
-
-			expect(headerBadgeElement).to.equal(null);
 		});
 	});
 });

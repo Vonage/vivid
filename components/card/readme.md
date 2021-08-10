@@ -33,7 +33,7 @@ Cards contain content and actions about a single subject.
 |name|description|
 |--- |--- |
 |`default`|The main card’s content|
-|`header-icon`|Content to show in the icon section. If exists, overrides the `icon` attribute’s definition|
+|`graphics`|Content to show in the header icon section. If exists, overrides the `icon` attribute’s definition|
 |`actions`|Content to show in the actions section. If exists, overrides the `action-icon` and `action-text` attributes definitions|
 |`media`|Slot to add anything inside the `media` area|
 

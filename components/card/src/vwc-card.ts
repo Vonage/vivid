@@ -5,7 +5,6 @@ import { style } from './vwc-card.css';
 import { property } from 'lit-element/lib/decorators';
 import { classMap } from 'lit-html/directives/class-map.js';
 import { ifDefined } from 'lit-html/directives/if-defined.js';
-import '@vonage/vwc-badge';
 import '@vonage/vwc-button';
 import '@vonage/vwc-icon';
 
@@ -37,22 +36,16 @@ export class VWCCard extends LitElement {
 
 	@property({
 		reflect: true,
-		attribute: 'badge-content',
+		attribute: 'supporting-text',
 		type: String
 	})
-	badgeContent: string | null = null;
-
-	@property({
-		reflect: true,
-		type: String
-	})
-	layout = 'basic';
+	supportingText: string | null = null;
 
 	private headerIconSlottedItems?: Node[];
 	private shouldShowActionsSlot: boolean | undefined;
 
 	private get headerContentExists(): boolean {
-		return Boolean(this.heading || this.badgeContent || this.headerIcon || this.headerIconSlottedItems?.length);
+		return Boolean(this.heading || this.headerIcon || this.headerIconSlottedItems?.length);
 	}
 
 	private get headerClass(): string {
@@ -71,7 +64,7 @@ export class VWCCard extends LitElement {
 				<div class="vwc-card-info">
 					${this.renderHeader()}
 					<div class="vwc-card-content">
-						<slot></slot>
+						${this.supportingText ? this.supportingText : ''}
 					</div>
 					<div class="vwc-card-actions ${classMap(actionsClassMap)}">
 							<slot name="actions" @slotchange="${this.actionsSlotChanged}"></slot>
@@ -85,31 +78,24 @@ export class VWCCard extends LitElement {
 		return html`
 			<header class="${this.headerClass}">
 				<div class="vwc-card-header">
-					<slot name="header-icon" @slotchange="${this.headerIconSlotChanged}">
+					<slot name="graphics" @slotchange="${this.headerIconSlotChanged}">
 						${this.renderHeaderIcon()}
 					</slot>
 					<div class="vwc-card-header-text">
 						${this.heading}
 					</div>
 				</div>
-				${this.renderBadge()}
 			</header>`;
 	}
 
 	private renderHeaderIcon() {
 		return (this.headerIcon || this.headerIconSlottedItems?.length) ? html`
-			<vwc-icon size="${this.layout === 'large' ? 'large' : 'medium'}" type="${ifDefined(this.headerIcon ? this.headerIcon : undefined)}"></vwc-icon>` : '';
-	}
-
-	private renderBadge() {
-		return (!this.badgeContent) ? '' :
-			html`
-				<vwc-badge shape="pill">${this.badgeContent}</vwc-badge>`;
+			<vwc-icon size="medium" type="${ifDefined(this.headerIcon ? this.headerIcon : undefined)}"></vwc-icon>` : '';
 	}
 
 	private headerIconSlotChanged() {
 		const headerElement = this.shadowRoot?.querySelector('header');
-		const slot = headerElement?.querySelector('slot[name="header-icon"]') as HTMLSlotElement;
+		const slot = headerElement?.querySelector('slot[name="graphics"]') as HTMLSlotElement;
 		this.headerIconSlottedItems = slot.assignedNodes();
 		if (this.headerContentExists) {
 			headerElement?.classList.remove('no-header-content');
