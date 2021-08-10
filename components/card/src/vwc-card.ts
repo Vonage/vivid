@@ -24,7 +24,6 @@ export class VWCCard extends LitElement {
 
 	@property({
 		reflect: true,
-		attribute: 'heading',
 		type: String
 	})
 	heading = '';
@@ -45,7 +44,6 @@ export class VWCCard extends LitElement {
 
 	@property({
 		reflect: true,
-		attribute: 'layout',
 		type: String
 	})
 	layout = 'basic';
