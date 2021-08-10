@@ -25,13 +25,13 @@ export class VWCCard extends LitElement {
 		reflect: true,
 		type: String
 	})
-	heading = '';
+	heading: string | undefined;
 
 	@property({
 		reflect: true,
 		type: String
 	})
-	subtitle = '';
+	subtitle: string | undefined ;
 
 	@property({
 		reflect: true,
@@ -45,13 +45,13 @@ export class VWCCard extends LitElement {
 		attribute: 'supporting-text',
 		type: String
 	})
-	supportingText: string | null = null;
+	supportingText: string | undefined;
 
 	private headerIconSlottedItems?: Node[];
 	private shouldShowActionsSlot: boolean | undefined;
 
 	private get headerContentExists(): boolean {
-		return Boolean(this.heading || this.headerIcon || this.headerIconSlottedItems?.length);
+		return Boolean(this.heading || this.subtitle || this.headerIcon || this.headerIconSlottedItems?.length);
 	}
 
 	private get headerClass(): string {

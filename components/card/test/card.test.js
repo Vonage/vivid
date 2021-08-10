@@ -28,7 +28,7 @@ describe('Card', () => {
 	});
 
 	describe(`header`, function () {
-		it(`should not be displayed if heading, icon and badge are missing`, async function () {
+		it(`should not be displayed if heading, icon and subtitle are missing`, async function () {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}>Content</${COMPONENT_NAME}>`)
 			);
@@ -42,7 +42,7 @@ describe('Card', () => {
 				.equal(true);
 		});
 
-		it(`should be displayed if slotted content exists even without heading, icon and badge`, async function () {
+		it(`should be displayed if slotted icon exists even without heading, icon and subtitle`, async function () {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}>Content<div slot="graphics"></div></${COMPONENT_NAME}>`)
 			);
@@ -240,6 +240,64 @@ describe('Card', () => {
 				.to
 				.equal(subtitleText);
 			expect(actualElement.subtitle)
+				.to
+				.equal(differentText);
+		});
+	});
+
+	describe(`supportingText`, function () {
+		const supportingText = 'This is the supporting text';
+
+		it(`should set the supporting according to the attribute`, async function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} supporting-text="${supportingText}">Content</${COMPONENT_NAME}>`)
+			);
+
+			await actualElement.updateComplete;
+
+			const supportingElement = actualElement.shadowRoot.querySelector('.vwc-card-content');
+
+
+			expect(supportingElement.innerText)
+				.to
+				.equal(supportingText);
+		});
+
+		it(`should set the supporting according to the property`, async function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}>Content</${COMPONENT_NAME}>`)
+			);
+
+			actualElement.supportingText = supportingText;
+
+			await actualElement.updateComplete;
+
+			const supportingTextElement = actualElement.shadowRoot.querySelector('.vwc-card-content');
+
+			expect(supportingTextElement.innerText)
+				.to
+				.equal(supportingText);
+		});
+
+		it(`should reflect the supporting property and attribute`, async function () {
+			const differentText = 'Diff';
+
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}>Content</${COMPONENT_NAME}>`)
+			);
+
+			actualElement.supportingText = supportingText;
+
+			await actualElement.updateComplete;
+
+			const attributeValue = actualElement.getAttribute('supporting-text');
+
+			actualElement.setAttribute('supporting-text', differentText);
+
+			expect(attributeValue)
+				.to
+				.equal(supportingText);
+			expect(actualElement.supportingText)
 				.to
 				.equal(differentText);
 		});

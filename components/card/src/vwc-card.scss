@@ -29,6 +29,9 @@ header {
 	display: inline-flex;
 	flex-direction: column;
 	align-content: space-between;
+}
+
+:host([supporting-text]) header {
 	margin-bottom: 8px;
 }
 
@@ -42,6 +45,7 @@ header {
 	margin: auto 0;
 }
 
+header slot::slotted(*),
 header slot vwc-icon {
 	margin-right: 12px;
 }

@@ -9,34 +9,29 @@ export async function createElementVariations(wrapper) {
 			}
 		</style>
 		<vwc-card label="Basic">
-			<div>Default Content</div>
 		</vwc-card>
-	<vwc-card label="Heading" heading="Card title">
-		<div>Default Content</div>
-	</vwc-card>
+		<vwc-card label="Heading" heading="Card title" supporting-text="Supporting Text">
+		</vwc-card>
 	<div>
-		<vwc-card label="Icon" header-icon="chat-line" heading="">
-			<div>Using the icon attribute</div>
+		<vwc-card label="Icon" header-icon="chat-line" heading="Using the header-icon attribute" supporting-text="Supporting Text">
 		</vwc-card>
-		<vwc-card label="Slotted Icon" header-icon="chat-line" heading="">
-			<vwc-icon type="home" slot="header-icon"></vwc-icon>
-			<div>Using a slotted icon</div>
+		<vwc-card label="Slotted Icon" header-icon="chat-line" heading="Using a slotted icon">
+			<vwc-icon type="home" slot="graphics"></vwc-icon>
 		</vwc-card>
 	</div>
-	<vwc-card label="Badge" badge-content="New" heading="">
-		<div>Default Content</div>
+	<vwc-card label="Subtitle" subtitle="Subtitle">
 	</vwc-card>
-	<vwc-card label="Media" heading="Media" badge-content="New">
+	<vwc-card label="Media" heading="Media" subtitle="Showing media using the 'media' slot.">
 		<div style="height: 150px; width: 100%; background-color: red;" slot="media"></div>
-		<div>Showing media using the 'media' slot.</div>
 	</vwc-card>
-	<vwc-card label="Actions" heading="Actions">
-		<div>Use the 'actions' slot in order to add actionable items.</div>
+	<vwc-card label="Actions" heading="Actions" subtitle="Use the 'actions' slot in order to add actionable items.">
 		<vwc-button slot="actions" shape="pill" layout="outlined" icon="info" type="submit" outlined="">Click
 		</vwc-button>
 	</vwc-card>
-	<vwc-card label="Large" heading="Card title" header-icon="chat-line" badge-content="New">
-		<div>Default Content</div>
+	<vwc-card label="All" heading="Card title" subtitle="Subtitle" header-icon="chat-line" support-text="Support Text">
+		<div style="height: 150px; width: 100%; background-color: red;" slot="media"></div>
+		<vwc-button slot="actions" shape="pill" layout="outlined" icon="info" type="submit" outlined="">Click
+		</vwc-button>
 	</vwc-card>
 		`;
 	wrapper.appendChild(elementWrapper);
