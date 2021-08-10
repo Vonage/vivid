@@ -153,7 +153,7 @@ describe('textfield action', () => {
 			actualElement.toggleAttribute('dense', true);
 		}
 
-		function createElementWithIconButtons() {
+		async function createElementWithIconButtons() {
 			const [actualElement] = addElement(
 				textToDomToParent(`
 				<${COMPONENT_NAME}>
@@ -163,13 +163,14 @@ describe('textfield action', () => {
 				</${COMPONENT_NAME}>
 			`)
 			);
+			await actualElement.updateComplete;
 			return actualElement;
 		}
 
 		let actualElement;
 
 		beforeEach(async function () {
-			actualElement = createElementWithIconButtons();
+			actualElement = await createElementWithIconButtons();
 			actualElement.noActionsSync = true;
 		});
 
