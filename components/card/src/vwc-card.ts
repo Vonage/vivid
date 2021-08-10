@@ -29,6 +29,12 @@ export class VWCCard extends LitElement {
 
 	@property({
 		reflect: true,
+		type: String
+	})
+	subtitle = '';
+
+	@property({
+		reflect: true,
 		attribute: 'header-icon',
 		type: String
 	})
@@ -85,6 +91,7 @@ export class VWCCard extends LitElement {
 						${this.heading}
 					</div>
 				</div>
+				<div class="vwc-card-subtitle">${this.subtitle}</div>
 			</header>`;
 	}
 

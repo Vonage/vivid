@@ -27,6 +27,7 @@
 
 header {
 	display: inline-flex;
+	flex-direction: column;
 	align-content: space-between;
 	margin-bottom: 8px;
 }
@@ -36,25 +37,17 @@ header {
 	flex: 1;
 }
 
-:host([layout='large']) .vwc-card-header {
-	flex-wrap: wrap;
-	row-gap: 16px;
-}
-
 .vwc-card-header-text {
 	@include typography.typography-cat-shorthand('subtitle-2');
 	margin: auto 0;
-}
-
-:host([layout='large']) .vwc-card-header-text {
-	@include typography.typography-cat-shorthand('subtitle-1');
 }
 
 header slot vwc-icon {
 	margin-right: 12px;
 }
 
-.vwc-card-content {
+.vwc-card-content,
+.vwc-card.subtitle {
 	@include typography.typography-cat-shorthand('body-2');
 }
 
@@ -64,7 +57,6 @@ header slot vwc-icon {
 	align-items: flex-end;
 	margin-top: 16px;
 }
-
 
 .no-header-content,
 .vwc-card-actions.no-actions-content {

@@ -11,16 +11,21 @@ export default {
 
 const Template = args => html`
 	<vwc-card ...=${spread(args)}>
-		<div>Default Content</div>
 	</vwc-card>`;
 
 export const Basic = Template.bind({});
-Basic.args = { label: 'Basic' };
+Basic.args = {
+	label: 'Basic',
+	heading: "Title",
+	'supporting-text': 'Supporting Text'
+};
 
-export const Heading = Template.bind({});
-Heading.args = {
-	label: 'Heading',
-	heading: 'Card title'
+export const Subtitle = Template.bind({});
+Subtitle.args = {
+	label: 'Subtitle',
+	heading: "Title",
+	subtitle: "Subtitle",
+	'supporting-text': 'Supporting Text'
 };
 
 const IconTemplate = args => html`
@@ -35,19 +40,15 @@ export const Icon = IconTemplate.bind({});
 Icon.args = {
 	label: 'Icon',
 	heading: 'Icon Example',
-	'header-icon': 'chat-line'
+	'header-icon': 'chat-line',
+	subtitle: "Subtitle",
+	'supporting-text': 'Supporting Text'
 };
 
-export const Badge = Template.bind({});
-Badge.args = {
-	label: 'Badge',
-	heading: 'Badge Example',
-	'badge-content': 'New'
-};
 
 const MediaTemplate = args => html`
 	<vwc-card ...=${spread(args)}>
-		<img alt="test" src="https://www.w3schools.com/tags/img_girl.jpg" slot="media"/>
+		<img style="width: 100%;" alt="test" src="https://www.w3schools.com/tags/img_girl.jpg" slot="media"/>
 		<div>Showing media using the 'media' slot.</div>
 	</vwc-card>
 `;
@@ -56,27 +57,32 @@ Media.args = {
 	label: 'Media',
 	heading: 'Media',
 	'header-icon': 'home',
-	'badge-content': 'New'
+	subtitle: 'Subtitle',
+	'supporting-text': 'Supporting Text'
 };
 
 const ActionsTemplate = args => html`
 	<vwc-card ...=${spread(args)}>
-		<div>Use the 'actions' slot in order to add actionable items.</div>
 		<vwc-button slot="actions" shape="pill" layout="outlined" icon="info">Click</vwc-button>
 	</vwc-card>`;
 
 export const Actions = ActionsTemplate.bind({});
 Actions.args = {
 	label: 'Actions',
-	heading: 'Actions'
+	heading: 'Actions',
+	'supporting-text': 'Use the \'actions\' slot in order to add actionable items.'
 };
 
-
-export const Large = ActionsTemplate.bind({});
-Large.args = {
-	label: 'Large',
-	heading: 'Large card title',
+const AllTemplate = args => html`
+	<vwc-card ...=${spread(args)}>
+		<div style="height: 150px; width: 100%; background-color: #871EFF;" slot="media"></div>
+		<vwc-button slot="actions" shape="pill" layout="outlined" icon="info">Click</vwc-button>
+	</vwc-card>`;
+export const AllOptions = AllTemplate.bind({});
+AllOptions.args = {
+	label: 'All Options',
+	heading: 'All Options on Deck',
 	'header-icon': 'chat-line',
-	'badge-content': 'New',
-	layout: 'large'
+	subtitle: 'Subtitle',
+	'supporting-text': 'Use the \'actions\' slot in order to add actionable items.'
 };
