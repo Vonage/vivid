@@ -110,20 +110,57 @@ describe('Side-drawer', () => {
 		});
 	});
 
-	describe('Side drawer events', () => {
-		it('should fire open event', async () => {
-			let transitionEnd = false;
+	describe('Modal side drawer events', () => {
+		const waitForEvent = (el, ev) => new Promise((res) => {
+			el.addEventListener(ev, res, { once: true });
+		});
 
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} type="modal" open></${COMPONENT_NAME}>`)
+		it('opened/closed events are fired', async () => {
+			const [element] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} type="modal"></${COMPONENT_NAME}>`)
 			);
 
-			await actualElement.updateComplete;
+			await element.updateComplete;
 
-			actualElement.addEventListener("opened", () => (transitionEnd = true));
-			actualElement.onTransitionEnd();
+			const drawer = element.shadowRoot.querySelector('.side-drawer');
 
-			expect(transitionEnd).to.equal(true);
+			let openedFired = false;
+			let closedFired = false;
+			element.addEventListener('opened', () => {
+				openedFired = true;
+			});
+			element.addEventListener('closed', () => {
+				closedFired = true;
+			});
+			element.show();
+			await waitForEvent(drawer, 'transitionend');
+			expect(openedFired).toEqual(true);
+			element.close();
+
+			await waitForEvent(drawer, 'transitionend');
+			expect(closedFired).toEqual(true);
+		});
+
+		it('should fire opened event', async () => {
+			const onOpened = chai.spy();
+			// const sideDrawerEl = await fixture(html`<vwc-side-drawer type="modal"></vwc-side-drawer>`);
+			const [sideDrawerEl] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} type="modal"></${COMPONENT_NAME}>`)
+			);
+			await sideDrawerEl.updateComplete;
+
+			sideDrawerEl.addEventListener('opened', onOpened);
+			sideDrawerEl.show();
+			// sideDrawerEl.show();
+
+			// await new Promise((resolve) => {
+			// 	drawer.addEventListener('transitionend', resolve);
+			// });
+			await new Promise((resolve) => {
+				setTimeout(resolve, 1200);
+			});
+
+			onOpened.should.have.been.called();
 		});
 
 		it('should fire close event', async () => {
