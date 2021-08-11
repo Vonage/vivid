@@ -42,6 +42,7 @@ This component is an extension of [\<mwc-textfield\>](https://github.com/materia
 | `validityTransform`       |           | `((value: string, nativeValidity: ValidityState) => Partial<ValidityState>) \| null` |                                                  |
 | `value`                   |           | `string`                                         |                                                  |
 | `willValidate`            | readonly  | `boolean`                                        |                                                  |
+| `noActionsSync`            |   | `boolean`                                        |            Prevents auto sync between textfield attributes and action icon buttons attributes                                      |
 
 #### Methods
 
