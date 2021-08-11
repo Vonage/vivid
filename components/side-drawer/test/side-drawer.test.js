@@ -111,27 +111,35 @@ describe('Side-drawer', () => {
 	});
 
 	describe('Side drawer events', () => {
-		it('should close the side drawer', async () => {
-			const closedHandler = chai.spy();
-			const [actualElement] = (
-				textToDomToParent(`<${COMPONENT_NAME} open></${COMPONENT_NAME}>`)
+		it('should fire open event', async () => {
+			let transitionEnd = false;
+
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} type="modal" open></${COMPONENT_NAME}>`)
 			);
 
-			actualElement.addEventListener('closed', closedHandler);
+			await actualElement.updateComplete;
 
-			actualElement.close();
-			await closedHandler.should.have.been.called();
+			actualElement.addEventListener("opened", () => (transitionEnd = true));
+			actualElement.onTransitionEnd();
+
+			expect(transitionEnd).to.equal(true);
 		});
 
-		it('should open the side drawer', async () => {
-			const openHandler = chai.spy();
-			const [actualElement] = (
-				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-			);
-			actualElement.addEventListener('opened', openHandler);
+		it('should fire close event', async () => {
+			let openTransitionEnd = false;
 
-			actualElement.show();
-			await openHandler.should.have.been.called();
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} type="modal"></${COMPONENT_NAME}>`)
+			);
+
+			await actualElement.updateComplete;
+			actualElement.open = false;
+
+			actualElement.addEventListener("closed", () => (openTransitionEnd = true));
+			actualElement.onTransitionEnd();
+
+			expect(openTransitionEnd).to.equal(true);
 		});
 	});
 });

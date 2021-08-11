@@ -66,7 +66,7 @@ export class VWCSideDrawerBase extends LitElement {
 		}
 		this.openChanged(isOpen);
 	})
-	open = true;
+	open = false;
 	/**
 	 * Invoked when the element open state is updated.
 	 *
@@ -149,7 +149,7 @@ export class VWCSideDrawerBase extends LitElement {
 		}
 	}
 
-	#onTransitionEnd(): void {
+	onTransitionEnd(): void {
 		if (this.type === 'modal') {
 			// when side drawer finishes open animation
 			if (this.open) {
@@ -202,7 +202,7 @@ export class VWCSideDrawerBase extends LitElement {
 				part="${ifDefined(alternate)}"
 				class="side-drawer ${classMap(classes)}"
 				@keydown=${this.#onKeydown}
-				@transitionend=${this.#onTransitionEnd}
+				@transitionend=${this.onTransitionEnd}
 			>
 				${topBar}
 
