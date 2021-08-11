@@ -40,7 +40,6 @@
         class="dismiss-button"
         dense=""
         icon="close-line"
-        layout="ghost"
       >
       </vwc-icon-button>
     </div>
