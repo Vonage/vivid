@@ -43,4 +43,5 @@ Cards contain content and actions about a single subject.
 |name|description|
 |--- |--- |
 |`--vvd-card-width`|Sets the width of the card. Default is 300px.|
+|`--vvd-card-padding`|Sets the padding of the card. Default is 24px.|
 

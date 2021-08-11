@@ -3,7 +3,7 @@
 
 :host {
 	--vvd-card-width: 300px;
-	--vvd-card-info-padding: 24px;
+	--vvd-card-padding: 24px;
 }
 
 .vwc-card {
@@ -23,9 +23,9 @@
 
 .vwc-card-info {
 	display: flex;
-	width: calc(var(--vvd-card-width) - 2 * var(--vvd-card-info-padding));
+	width: calc(var(--vvd-card-width) - 2 * var(--vvd-card-padding));
 	flex-flow: column;
-	padding: var(--vvd-card-info-padding);
+	padding: var(--vvd-card-padding);
 }
 
 header {
