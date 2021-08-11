@@ -2,10 +2,6 @@ $namespace: vvd-chip;
 
 @use '@vonage/vvd-typography/scss/typography' as typography;
 
-@use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation with (
-	$connotations-set: primary cta
-);
-
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
 	$variable-name: --#{$namespace}-shape
 );
@@ -17,27 +13,22 @@ $namespace: vvd-chip;
 	),
 	$default: rounded
 );
-@include color-connotation.connotations-shades;
-@include color-connotation.connotations-shades-default(primary);
 
 // Base
 :host {
 	> div {
 		@include typography.typography-cat-shorthand(body-2-bold);
 		@include typography.typography-set-variables(body-2-bold);
-
 		display: inline-flex;
 		box-sizing: border-box;
 		flex-wrap: nowrap;
 		align-items: center;
 		padding: 2px 4px;
-		background-color: var(--vvd-color-connotation-soft);
+		//background-color: var(--vvd-color-connotation-soft);
 		border-radius: var(--vvd-chip-shape);
-		color: var(--vvd-color-connotation-contrast);
+		color: var(--vvd-color-neutral-90, #333);
 
-		&:hover {
-			background-color: var(--vvd-color-connotation-soft);
-		}
+		cursor: pointer;
 
 		> span {
 			flex: 1 0;
@@ -58,14 +49,10 @@ $namespace: vvd-chip;
 		border-width: 1px;
 		border-style: solid;
 		border-color: var(--vvd-color-on-connotation-soft);
-	}
-}
-
-// Selected
-:host([selected]) {
-	> div {
-		background-color: #000;
-		color: #fff;
+		background-color: var(--vvd-color-base, #fff);
+		&:hover {
+			background-color: var(--vvd-color-neutral-20, #ccc);
+		}
 	}
 }
 
@@ -79,7 +66,6 @@ $namespace: vvd-chip;
 			margin: 0 8px;
 		}
 	}
-
 }
 
 :host([dense]) {
@@ -93,3 +79,42 @@ $namespace: vvd-chip;
 		}
 	}
 }
+
+:host([layout='filled']),
+:host(:not([layout])) {
+	> div {
+		background-color: var(--vvd-color-neutral-20, #e6e6e6);
+		&:hover {
+			background-color: var(--vvd-color-neutral-30, #ccc);
+		}
+	}
+}
+
+:host([selected]) {
+	> div {
+		background-color: var(--vvd-color-neutral-40, #b3b3b3);
+		&:hover {
+			background-color: var(--vvd-color-neutral-40, #b3b3b3);
+		}
+	}
+}
+
+:host([connotation="cta"i][selected]) {
+	> div {
+		background-color: var(--vvd-color-cta-20, #ece2fa);
+		color: var(--vvd-color-cta-90, #440291);
+
+		&:hover {
+			background-color: var(--vvd-color-cta-20, #ece2fa);
+		}
+	}
+}
+
+// Primary Filled Normal --vvd-color-neutral-20: rgb(51,51,51);
+// Primary Filled Hover --vvd-color-neutral-30: rgb(51,51,51);
+// Primary Filled Selected --vvd-color-neutral-90: rgb(51,51,51);
+// CTA Filled Selected --vvd-color-cta-20: rgb(236,226,250);
+// Primary Outlined Normal --vvd-color-base
+// Primary Outlined Hover --vvd-color-neutral-20: rgb(51,51,51);
+// Primary Outlined Selected --vvd-color-neutral-30: rgb(51,51,51);
+// CTA Outlined Selected --vvd-color-cta-20: rgb(236,226,250);

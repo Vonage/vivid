@@ -6,12 +6,21 @@ import {
 import { nothing } from 'lit-html';
 import { defaultTo } from 'ramda';
 import { style } from './vwc-chip.css';
+import { Connotation, Shape } from '@vonage/vvd-foundation/constants';
 
 declare global {
 	interface HTMLElementTagNameMap {
 		'vwc-chip': VWCChip;
 	}
 }
+
+type ChipConnotation = Extract<
+	Connotation,
+	| Connotation.Primary
+	| Connotation.CTA
+	>;
+
+type ChipShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
 
 const defaultToNothing = defaultTo(nothing);
 
@@ -34,10 +43,10 @@ export class VWCChip extends LitElement {
 	enlarged?: boolean;
 
 	@property({ type: String, reflect: true })
-	connotation?: boolean;
+	connotation?: ChipConnotation;
 
 	@property({ type: String, reflect: true })
-	shape?: string;
+	shape?: ChipShape;
 
 	@property({ type: String, reflect: true })
 	layout?: string;
