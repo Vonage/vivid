@@ -1,9 +1,5 @@
-/* VARIABLES */
-$icon-button-icon-size-variable-name: --vvd-icon-button-icon-size;
-/*************/
-
 @use 'sass:map';
-@use './vwc-icon-button-variables' as icon-button-variables;
+@use 'partials/vwc-icon-button-variables' as icon-button-variables;
 @use '@vonage/vwc-icon/src/partials/vwc-icon-variables' as icon-variables;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
@@ -15,7 +11,7 @@ $icon-button-icon-size-variable-name: --vvd-icon-button-icon-size;
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout-mixins' with (
 	$layouts: filled outlined ghost,
-	$variables-scope-prefix: 'vvd-icon-button'
+	$variable-prefix: icon-button-variables.$vvd-icon-button-layout
 );
 
 @include shape-mixins.shape(
@@ -26,6 +22,7 @@ $icon-button-icon-size-variable-name: --vvd-icon-button-icon-size;
 );
 
 @include layout-mixins.layout();
+@include layout-mixins.layout-default(ghost);
 
 @include color-connotation.connotations-main;
 @include color-connotation.connotations-main-default(primary);
@@ -38,7 +35,6 @@ $block-sizes: (
 
 
 :host {
-
 	// sizing
 	--mdc-icon-button-size: var(#{icon-button-variables.$icon-button-block-size}, #{map.get($block-sizes, 'normal')});
 	@include vvd-formfield.coupling;
@@ -48,10 +44,10 @@ $block-sizes: (
 		overflow: hidden;
 		align-items: center;
 		justify-content: center;
-		border: var(--vvd-icon-button-border);
-		background-color: var(--vvd-icon-button-background-color);
+		border: var(#{icon-button-variables.$vvd-icon-button-layout}--outline);
+		background-color: var(#{icon-button-variables.$vvd-icon-button-layout}--fill);
 		border-radius: var(#{icon-button-variables.$icon-button-shape});
-		color: var(--vvd-icon-button-color);
+		color: var(#{icon-button-variables.$vvd-icon-button-layout}--text);
 		font-size: inherit;
 		&:disabled {
 			color: var(#{vvd-formfield.$formfield-disabled-ink});
