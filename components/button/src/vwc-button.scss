@@ -1,7 +1,7 @@
 
 @forward './vwc-button-coupling';
 @use './vwc-button-variables' as button-variables;
-@use '@vonage/vwc-icon/src/vwc-icon-variables' as icon-variables;
+@use '@vonage/vwc-icon/src/partials/vwc-icon-variables' as icon-variables;
 @use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation with (
@@ -41,19 +41,19 @@
 
 :host([raised]),
 :host([unelevated]) {
-	--mdc-ripple-color: var(#{color-connotation.$vvd-color-on-connotation});
+	--mdc-ripple-color: var(#{button-variables.$vvd-button-color}, var(#{color-connotation.$vvd-color-on-connotation}));
 }
 
 :host([unelevated]),
 :host([outlined]) {
-	--mdc-theme-primary: var(#{color-connotation.$vvd-color-connotation});
-	--mdc-theme-on-primary: var(#{color-connotation.$vvd-color-on-connotation});
+	--mdc-theme-primary: var(#{button-variables.$vvd-button-background-color}, var(#{color-connotation.$vvd-color-connotation}));
+	--mdc-theme-on-primary: var(#{button-variables.$vvd-button-color}, var(#{color-connotation.$vvd-color-on-connotation}));
 }
 /////////////////////////////////////////////////////////////////////////////
 .mdc-button {
 	$gutter: 8px;
 	height: var(--vvd-button-block-size, var(--button-block-size));
-	border-radius: var(--vvd-button-shape);
+	border-radius: var(#{button-variables.$vvd-button-shape});
 	// ! this was supposed to be set by MDC
 	font-stretch: var(--mdc-typography-button-font-stretch);
 	letter-spacing: normal;

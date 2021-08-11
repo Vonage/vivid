@@ -1,3 +1,32 @@
+# [2.17.0](https://github.com/vonage/vivid/compare/v2.16.1...v2.17.0) (2021-08-09)
+
+
+
+## [2.16.1](https://github.com/vonage/vivid/compare/v2.16.0...v2.16.1) (2021-07-29)
+
+
+
+# [2.16.0](https://github.com/vonage/vivid/compare/v2.15.0...v2.16.0) (2021-07-28)
+
+
+
+# [2.15.0](https://github.com/vonage/vivid/compare/v2.14.0...v2.15.0) (2021-07-20)
+
+
+
+# [2.14.0](https://github.com/vonage/vivid/compare/v2.13.0...v2.14.0) (2021-07-13)
+
+
+
+# [2.13.0](https://github.com/vonage/vivid/compare/v2.12.0...v2.13.0) (2021-07-04)
+
+
+### Features
+
+* **vwc-file-picker:** expose minimum height customization ([#917](https://github.com/vonage/vivid/issues/917)) ([1bf826e](https://github.com/vonage/vivid/commit/1bf826ea103762c122a8bcf5210b91e8cfacf671))
+
+
+
 # [2.12.0](https://github.com/vonage/vivid/compare/v2.11.0...v2.12.0) (2021-06-14)
 
 

@@ -3,6 +3,109 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.17.0](https://github.com/Vonage/vivid/compare/v2.16.1...v2.17.0) (2021-08-09)
+
+
+### Bug Fixes
+
+* **vwc-snackbar:** style bug caused by scheme alternate ([#994](https://github.com/Vonage/vivid/issues/994)) ([fd0a8fd](https://github.com/Vonage/vivid/commit/fd0a8fd35ccaa66c95cec85ee39e17080accefb9))
+
+
+### Features
+
+* **vwc-side-drawer:** 1st draft ([#978](https://github.com/Vonage/vivid/issues/978)) ([e1d6393](https://github.com/Vonage/vivid/commit/e1d6393b6a4ce0cda5078211326fb84c7330639a))
+* **workspace:** added component captions to slack release announcer ([#993](https://github.com/Vonage/vivid/issues/993)) ([b03dcc3](https://github.com/Vonage/vivid/commit/b03dcc346a6f54dd5acad92d2fff8b09812b5729))
+
+
+
+
+
+## [2.16.1](https://github.com/Vonage/vivid/compare/v2.16.0...v2.16.1) (2021-07-29)
+
+**Note:** Version bump only for package @vivid/root
+
+
+
+
+
+# [2.16.0](https://github.com/Vonage/vivid/compare/v2.15.0...v2.16.0) (2021-07-28)
+
+
+### Bug Fixes
+
+* **banner:** bug story ;) ([#988](https://github.com/Vonage/vivid/issues/988)) ([0df1325](https://github.com/Vonage/vivid/commit/0df13257a9fa04240e5f825494065e80fd526a63))
+
+
+### Features
+
+* **button:** refactor button styles to use and expose variables ([#989](https://github.com/Vonage/vivid/issues/989)) ([45fe21d](https://github.com/Vonage/vivid/commit/45fe21dba357100f35626d316089a0cf3173bc85))
+* **data-grid:** allow data-grid to set height according to container ([#983](https://github.com/Vonage/vivid/issues/983)) ([2dcae4d](https://github.com/Vonage/vivid/commit/2dcae4d2bdf0e384f267c72571e33c580f0f48c0))
+* **data-grid:** expose `heightByRows` field to control grid height d… ([#985](https://github.com/Vonage/vivid/issues/985)) ([abeb481](https://github.com/Vonage/vivid/commit/abeb4815901fcf444446311b4e48f546b201ed70)), closes [#983](https://github.com/Vonage/vivid/issues/983)
+* **icon:** upgraded to v4.0.15 ([#982](https://github.com/Vonage/vivid/issues/982)) ([4643118](https://github.com/Vonage/vivid/commit/4643118523c801b11776b94eb276e2b7a0877aba))
+* **vwc-badge:** deprecates slot in favor of props ([#986](https://github.com/Vonage/vivid/issues/986)) ([3513345](https://github.com/Vonage/vivid/commit/3513345183cc521e2665c588b17a2195d821ae59))
+* **vwc-empty-state:** 1st draft ([#984](https://github.com/Vonage/vivid/issues/984)) ([5d37d03](https://github.com/Vonage/vivid/commit/5d37d03994bc33904dbbf01783740a02e4b17c97))
+
+
+
+
+
+# [2.15.0](https://github.com/Vonage/vivid/compare/v2.14.0...v2.15.0) (2021-07-20)
+
+
+### Bug Fixes
+
+* dropdown padding ([#971](https://github.com/Vonage/vivid/issues/971)) ([b6f12d6](https://github.com/Vonage/vivid/commit/b6f12d6d60c3ea713bad31d188c1b46f7fbca550))
+* **expansion-panel:** add styles to slotted icons ([#960](https://github.com/Vonage/vivid/issues/960)) ([d67ac15](https://github.com/Vonage/vivid/commit/d67ac15593bfc364ef092a392b17e7e2c1b8efdc))
+* **textfield:** patched constructed stylesheet for textfield ([#954](https://github.com/Vonage/vivid/issues/954)) ([3010349](https://github.com/Vonage/vivid/commit/301034986d29b6a75d11b4503697989f436829d3))
+* **vwc-list:** list item divider color as token ([#955](https://github.com/Vonage/vivid/issues/955)) ([e535527](https://github.com/Vonage/vivid/commit/e535527dcaa5d8fabbe8eb4d7f3ac530fbc51e36))
+
+
+### Features
+
+* **list:** new divider color api ([#968](https://github.com/Vonage/vivid/issues/968)) ([1371016](https://github.com/Vonage/vivid/commit/13710161030725a5de77e49cd22723356abd6417))
+* **vwc-icon:** connotation support ([#957](https://github.com/Vonage/vivid/issues/957)) ([c7bbfac](https://github.com/Vonage/vivid/commit/c7bbfac08f9cbd39ebcaabd7c9f24a45758f1f2f))
+
+
+
+
+
+# [2.14.0](https://github.com/Vonage/vivid/compare/v2.13.0...v2.14.0) (2021-07-13)
+
+
+### Bug Fixes
+
+* **vwc-datepicker:** next and prev month selected weeks text color ([603614c](https://github.com/Vonage/vivid/commit/603614c8c0dd5232296c0f6c6db6d7cb34fe93e9))
+
+
+### Features
+
+* **vwc-text:** 1st draft to support font faces ([#942](https://github.com/Vonage/vivid/issues/942)) ([5f69fc8](https://github.com/Vonage/vivid/commit/5f69fc86be9787696e988b85481097bb67e6495a))
+* **workspace:** publishing workflow ([#936](https://github.com/Vonage/vivid/issues/936)) ([ad74473](https://github.com/Vonage/vivid/commit/ad7447389a8cb6d24f25193cb03ec6eb2c06cad3))
+
+
+
+
+
+# [2.13.0](https://github.com/Vonage/vivid/compare/v2.12.0...v2.13.0) (2021-07-04)
+
+
+### Bug Fixes
+
+* **chip:** mitigated NPE during setting an attribute after element disposal ([#913](https://github.com/Vonage/vivid/issues/913)) ([4cd3661](https://github.com/Vonage/vivid/commit/4cd3661b8fd21e0f12fa412e507f01d6adf9120a))
+
+
+### Features
+
+* **audio:** add time indicator to audio component ([#922](https://github.com/Vonage/vivid/issues/922)) ([3ee3f67](https://github.com/Vonage/vivid/commit/3ee3f67975b49fcd6d32b2b955ab05b37ab10b43))
+* **packages:** redundant configuration ([#909](https://github.com/Vonage/vivid/issues/909)) ([ff4c45d](https://github.com/Vonage/vivid/commit/ff4c45dd7da29592b4f3e61e6e1234258e2a0886))
+* **vwc-calendar:** add event context api ([#924](https://github.com/Vonage/vivid/issues/924)) ([f921502](https://github.com/Vonage/vivid/commit/f92150254c7f5e6d13bd87c394e9b6674dadfae8))
+* **vwc-datepicker:** viv-574 datepicker design modifications ([#888](https://github.com/Vonage/vivid/issues/888)) ([3c03255](https://github.com/Vonage/vivid/commit/3c03255faf363a6d6552e06c002cdd9fec2c41d9))
+* **vwc-file-picker:** expose minimum height customization ([#917](https://github.com/Vonage/vivid/issues/917)) ([1bf826e](https://github.com/Vonage/vivid/commit/1bf826ea103762c122a8bcf5210b91e8cfacf671))
+
+
+
+
+
 # [2.12.0](https://github.com/Vonage/vivid/compare/v2.11.0...v2.12.0) (2021-06-14)
 
 

@@ -3,9 +3,9 @@ import '@vonage/vwc-list/vwc-check-list-item.js';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Components/List (check list item)',
+	title: 'Components/List/Check list item',
 	component: 'vwc-check-list-item'
-}
+};
 
 export const CheckList = () => html`
 	<style>

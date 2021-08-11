@@ -13,9 +13,9 @@ Fonts service is automatically initialized (fonts pulled and installed into the 
 The only case when one needs to perform a proactive fonts service initialization, is when one used Vivid Fonts solely.
 In this case do:
 ```javascript
-import fonts from '@vonage/vvd-fonts';
+import { init } from '@vonage/vvd-fonts';
 ...
-fonts.init().then(() =>
+init().then(() =>
 	//	do post init stuff here
 );
 ```

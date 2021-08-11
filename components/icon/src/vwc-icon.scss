@@ -1,4 +1,6 @@
-@use './vwc-icon-variables' as icon-variables;
+@use 'partials/vwc-icon-variables' as icon-variables;
+@forward 'partials/vwc-icon-connotation';
+
 
 :host([size='small']) {
 	#{icon-variables.$icon-size-variable-name}: 16px;

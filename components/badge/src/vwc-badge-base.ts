@@ -1,6 +1,9 @@
 import {
 	html, LitElement, property, TemplateResult
 } from 'lit-element';
+import { nothing } from 'lit-html';
+import { classMap } from 'lit-html/directives/class-map';
+
 import { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
 import { handleMultipleDenseProps } from '@vonage/vvd-foundation/general-utils';
 
@@ -21,6 +24,9 @@ type BadgeLayout = Extract<
 
 type BadgeShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
 
+/**
+ * @slot - This is a default/unnamed slot to assign text content. *deprecated* please use _text_ property instead
+ */
 export class VWCBadgeBase extends LitElement {
 	@property({ type: String, reflect: true })
 	connotation?: BadgeConnotation;
@@ -29,7 +35,7 @@ export class VWCBadgeBase extends LitElement {
 	shape?: BadgeShape;
 
 	@property({ type: String, reflect: true })
-	layout: BadgeLayout = Layout.Filled;
+	layout?: BadgeLayout;
 
 	@property({ type: Boolean, reflect: true })
 	dense = false;
@@ -37,11 +43,38 @@ export class VWCBadgeBase extends LitElement {
 	@property({ type: Boolean, reflect: true })
 	enlarged = false;
 
+	@property({ type: String, reflect: true })
+	text?: string;
+
+	@property({ type: String, reflect: true })
+	icon?: string;
+
+	@property({ type: String, reflect: true })
+	iconTrailing?: string;
+
+	protected renderIcon(type?: string, isTrailingIcon = false): TemplateResult | typeof nothing {
+		const classes = {
+			'icon--leading': !isTrailingIcon,
+			'icon--trailing': isTrailingIcon
+		};
+
+		return type ?
+			html`<vwc-icon class="icon ${classMap(classes)}" .type="${type}"></vwc-icon>`
+			: nothing;
+	}
+
 	protected updated(changes: Map<string, boolean>): void {
-		handleMultipleDenseProps(this, changes);
+  	handleMultipleDenseProps(this, changes);
 	}
 
 	protected render(): TemplateResult {
-		return html`<slot></slot>`;
+		return html`
+			<span class="vwc-badge">
+				${this.renderIcon(this.icon)}
+				<slot>
+					${this.text || nothing}
+				</slot>
+				${this.renderIcon(this.iconTrailing, true)}
+			</span>`;
 	}
 }

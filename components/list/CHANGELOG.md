@@ -1,3 +1,37 @@
+# [2.17.0](https://github.com/vonage/vivid/compare/v2.16.1...v2.17.0) (2021-08-09)
+
+
+
+## [2.16.1](https://github.com/vonage/vivid/compare/v2.16.0...v2.16.1) (2021-07-29)
+
+
+
+# [2.16.0](https://github.com/vonage/vivid/compare/v2.15.0...v2.16.0) (2021-07-28)
+
+
+
+# [2.15.0](https://github.com/vonage/vivid/compare/v2.14.0...v2.15.0) (2021-07-20)
+
+
+### Bug Fixes
+
+* **vwc-list:** list item divider color as token ([#955](https://github.com/vonage/vivid/issues/955)) ([e535527](https://github.com/vonage/vivid/commit/e535527dcaa5d8fabbe8eb4d7f3ac530fbc51e36))
+
+
+### Features
+
+* **list:** new divider color api ([#968](https://github.com/vonage/vivid/issues/968)) ([1371016](https://github.com/vonage/vivid/commit/13710161030725a5de77e49cd22723356abd6417))
+
+
+
+# [2.14.0](https://github.com/vonage/vivid/compare/v2.13.0...v2.14.0) (2021-07-13)
+
+
+
+# [2.13.0](https://github.com/vonage/vivid/compare/v2.12.0...v2.13.0) (2021-07-04)
+
+
+
 # [2.12.0](https://github.com/vonage/vivid/compare/v2.11.0...v2.12.0) (2021-06-14)
 
 

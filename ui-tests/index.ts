@@ -6,10 +6,18 @@ import * as http from 'http';
 
 import * as fs from 'fs';
 import * as jimp from 'jimp';
+import { getFilteredTestFolders } from './utils/files-utils';
+import { pascalCase } from 'pascal-case';
 
-const PORT = 3000;
+interface ComparisonResult {
+	image: any;
+	percent: number;
+	distance: number;
+}
+
+const PORT = process.env.PORT || 3000;
 const SERVER_URL = `http://localhost:${PORT}`;
-const SNAPSHOT_PATH = './ui-tests/snapshot.png';
+const SNAPSHOT_PATH = './ui-tests/snapshots';
 
 const server = http.createServer((request, response) => {
 	return handler(request, response, {
@@ -18,19 +26,23 @@ const server = http.createServer((request, response) => {
 });
 
 async function compareToSnapshot(page: Page, snapshotPath: string) {
-	const tmpScreenshotPath = './ui-tests/tmpScreenshot.png';
+	const componentName = snapshotPath.substring(snapshotPath.lastIndexOf('/') + 1, snapshotPath.lastIndexOf('.'));
+	const tmpScreenshotPath = snapshotPath.replace(componentName, `${componentName}-snapshot`);
 	await takeSnapshot(page, tmpScreenshotPath);
-	return compareImages(snapshotPath, tmpScreenshotPath);
+	const comparisonResult = await compareImages(snapshotPath, tmpScreenshotPath);
+
+	await comparisonResult.image.writeAsync(snapshotPath.replace(componentName, `${componentName}-diff`));
+
+	return comparisonResult;
 }
 
-async function compareImages(img1Path, img2Path) {
+async function compareImages(img1Path, img2Path): Promise<ComparisonResult> {
 	const img1 = await jimp.read(fs.readFileSync(img1Path));
 	const img2 = await jimp.read(fs.readFileSync(img2Path));
 
 	const diff = jimp.diff(img1, img2, 0.1);
 
 	const distance = jimp.distance(img1, img2);
-	await diff.image.writeAsync('./ui-tests/diff.png');
 
 	return {
 		...diff,
@@ -39,7 +51,15 @@ async function compareImages(img1Path, img2Path) {
 }
 
 async function takeSnapshot(page, snapshotPath) {
-	return page.screenshot({
+	const componentName = snapshotPath.substring(snapshotPath.lastIndexOf('/') + 1, snapshotPath.lastIndexOf('.'));
+	const elementId = `#${pascalCase(componentName)
+		.replace('Snapshot', '')}`;
+	const element = await page.$(elementId);
+	let screenShotHandler = element;
+	if (await element.getAttribute('testWholePage')) {
+		screenShotHandler = page;
+	}
+	return screenShotHandler.screenshot({
 		path: snapshotPath,
 		fullPage: true
 	});
@@ -50,27 +70,49 @@ function resultsMessage(diff) {
 }
 
 async function runImageComparison() {
+	const testedComponents = getFilteredTestFolders();
 	const browser = await webkit.launch();
-	const page = await browser.newPage();
 
-	//	setup callback
-	page.context().exposeBinding('doTest', async ({ page }) => {
-		await doTest(page);
-		await browser.close();
-		finalizeTest();
+	for (const i in testedComponents) {
+		console.log(`Testing ${testedComponents[i]}`);
+		await runTestOnComponent(browser, testedComponents[i]);
+	}
+
+	console.log('Visual tests completed!');
+	await browser.close();
+	finalizeTest();
+}
+
+async function runTestOnComponent(browser, componentName) {
+	const pageInstance = await browser.newPage();
+	const testUrl = `${SERVER_URL}/${componentName}`;
+	pageInstance.goto(testUrl);
+	return new Promise((res) => {
+		pageInstance.context()
+			.exposeBinding('doTest', async ({ page }) => {
+				await doTest(page);
+				res(true);
+			});
 	});
-
-	//	navigate to page
-	await page.goto(SERVER_URL);
 }
 
 async function doTest(page) {
+	const componentName = page.url()
+		.split('/')
+		.splice(-1, 1)[0];
+	const snapshotPath = `${SNAPSHOT_PATH}/${componentName}.png`;
 	await page.waitForLoadState('networkidle');
-	if (process.argv.includes('-u') || !fs.existsSync(SNAPSHOT_PATH)) {
+	if (process.argv.includes('-u')) {
 		console.log('Updating snapshot...');
-		await takeSnapshot(page, SNAPSHOT_PATH);
+		await (new Promise(res => setTimeout(res, 200)));
+		await takeSnapshot(page, snapshotPath);
 	} else {
-		const diff = await compareToSnapshot(page, SNAPSHOT_PATH);
+		if (!fs.existsSync(snapshotPath)) {
+			console.error(`Missing snapshot for ${componentName}`);
+			process.exitCode = 1;
+			return;
+		}
+		const diff = await compareToSnapshot(page, snapshotPath);
 		if (diff.percent === 0) {
 			console.log('Visual Diff Passed!');
 			console.log(resultsMessage(diff));
@@ -86,11 +128,13 @@ function finalizeTest() {
 	server.close();
 }
 
-server.listen(3000, async () => {
-	console.log('Running at http://localhost:3000');
+server.listen(PORT, async () => {
+	console.log('Running at ', SERVER_URL);
 
 	try {
-		await runImageComparison();
+		if (!process.argv.includes('-s')) {
+			await runImageComparison();
+		}
 	} catch (e) {
 		console.error(e);
 		process.exitCode = 1;

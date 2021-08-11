@@ -12,7 +12,7 @@ declare global {
 }
 
 /**
- * Represents a calendar custom element.
+ * Represents a calendar event custom element.
  * @alpha
  */
 @customElement('vwc-calendar-event')

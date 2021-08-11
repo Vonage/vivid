@@ -1,3 +1,37 @@
+# [2.17.0](https://github.com/vonage/vivid/compare/v2.16.1...v2.17.0) (2021-08-09)
+
+
+
+## [2.16.1](https://github.com/vonage/vivid/compare/v2.16.0...v2.16.1) (2021-07-29)
+
+
+
+# [2.16.0](https://github.com/vonage/vivid/compare/v2.15.0...v2.16.0) (2021-07-28)
+
+
+
+# [2.15.0](https://github.com/vonage/vivid/compare/v2.14.0...v2.15.0) (2021-07-20)
+
+
+
+# [2.14.0](https://github.com/vonage/vivid/compare/v2.13.0...v2.14.0) (2021-07-13)
+
+
+### Bug Fixes
+
+* **vwc-datepicker:** next and prev month selected weeks text color ([603614c](https://github.com/vonage/vivid/commit/603614c8c0dd5232296c0f6c6db6d7cb34fe93e9))
+
+
+
+# [2.13.0](https://github.com/vonage/vivid/compare/v2.12.0...v2.13.0) (2021-07-04)
+
+
+### Features
+
+* **vwc-datepicker:** viv-574 datepicker design modifications ([#888](https://github.com/vonage/vivid/issues/888)) ([3c03255](https://github.com/vonage/vivid/commit/3c03255faf363a6d6552e06c002cdd9fec2c41d9))
+
+
+
 # [2.12.0](https://github.com/vonage/vivid/compare/v2.11.0...v2.12.0) (2021-06-14)
 
 

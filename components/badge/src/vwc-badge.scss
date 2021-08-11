@@ -1,4 +1,6 @@
-$namespace: vvd-badge;
+$namespace: --vvd-badge;
+$namespace-layout: #{$namespace}-layout;
+$namespace-shape: #{$namespace}-shape;
 
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-typography/scss/typography' as typography;
@@ -7,14 +9,14 @@ $namespace: vvd-badge;
 );
 
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
-	$variable-name: --#{$namespace}-shape
+	$variable-name: #{$namespace-shape}
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout-mixins' as layout-mixins with (
 	$layouts: filled	outlined	soft,
-	$variables-scope-prefix: #{$namespace}
+	$variable-prefix: #{$namespace-layout}
 );
 
-$vvd-badge-block-size: --#{$namespace}-block-size;
+$vvd-badge--block-size: --#{$namespace}--block-size;
 
 @include color-connotation.connotations-shades;
 @include color-connotation.connotations-main;
@@ -28,35 +30,47 @@ $vvd-badge-block-size: --#{$namespace}-block-size;
 );
 
 @include layout-mixins.layout();
+@include layout-mixins.layout-default(filled);
 
 :host {
-	#{$vvd-badge-block-size}: 24px;
-	@include typography.typography-cat-shorthand('caption-bold');
-	display: inline-block;
-	padding: 0 10px;
-	border: var(--#{$namespace}-border);
-	background-color: var(--#{$namespace}-background-color);
-	border-radius: var(--#{$namespace}-shape);
-	color: var(--#{$namespace}-color);
-	line-height: var(#{$vvd-badge-block-size});
-}
-
-:host([layout="outlined"i]) {
-	--color: var(#{scheme-variables.$vvd-color-on-base});
-}
-
-:host([disabled]) {
-	background-color: var(#{scheme-variables.$vvd-color-neutral-30});
-	color: var(#{scheme-variables.$vvd-color-neutral-50});
+	#{$vvd-badge--block-size}: 24px;
 }
 
 :host([dense]) {
-	#{$vvd-badge-block-size}: 20px;
-	padding: 0 8px;
+	#{$vvd-badge--block-size}: 20px;
 }
 
 :host([enlarged]) {
-	#{$vvd-badge-block-size}: 28px;
-	padding: 0 12px;
+	#{$vvd-badge--block-size}: 28px;
 }
 
+.vwc-badge {
+	@include typography.typography-cat-shorthand('caption-bold');
+	display: inline-block;
+	padding: 0 10px;
+	border: var(#{$namespace-layout}--outline);
+	background-color: var(#{$namespace-layout}--fill);
+	border-radius: var(#{$namespace-shape});
+	color: var(#{$namespace-layout}--text);
+	line-height: var(#{$vvd-badge--block-size});
+
+	:host([dense]) & {
+		padding: 0 8px;
+	}
+
+	:host([enlarged]) & {
+		padding: 0 12px;
+	}
+}
+
+.icon {
+	--icon-size: 12px;
+	$margin: 8px;
+
+	&.icon--leading {
+		margin-inline-end: $margin;
+	}
+	&.icon--trailing {
+		margin-inline-start: $margin;
+	}
+}

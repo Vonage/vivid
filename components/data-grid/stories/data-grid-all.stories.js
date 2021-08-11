@@ -1,13 +1,14 @@
 import { argTypes } from './arg-types';
 
 export default {
-	title: 'Alpha/Components/DataGrid',
+	title: 'Components/DataGrid',
 	component: 'vwc-data-grid',
 	argTypes
-}
+};
 
 export { BasicHTML } from './data-grid-basic-html';
 export { BasicJS } from './data-grid-basic-js';
+export { HeightByRows } from './data-grid-dynamic-height-js';
 export { ColumnsCustomizationHTML } from './data-grid-columns-html';
 export { ColumnsCustomizationJS } from './data-grid-columns-js';
 export { DataStreamJS } from './data-grid-data-stream-js';

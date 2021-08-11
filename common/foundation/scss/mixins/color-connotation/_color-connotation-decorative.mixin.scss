@@ -12,6 +12,8 @@ $_connotations-definition: (
 $connotations-decorative-set: predefined-connotations.$connotations-decorative-set !default;
 $selector: variables.$selector !default;
 
+$connotation-variable: #{variables.$vvd-color-connotation} !default;
+
 @mixin connotations-decorative {
 	@each $name, $value in functions.pick-map($connotations-decorative-set, $_connotations-definition) {
 		$compound: '[connotation="#{$name}" i]';
@@ -23,7 +25,7 @@ $selector: variables.$selector !default;
 		);
 
 		#{$local-selector} {
-			#{variables.$vvd-color-connotation}: $value;
+			#{$connotation-variable}: $value;
 		}
 	}
 }

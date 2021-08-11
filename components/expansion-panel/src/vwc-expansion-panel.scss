@@ -1,5 +1,5 @@
 @use './vwc-expansion-panel-variables' as expansion-panel-variables;
-@use '@vonage/vwc-icon/src/vwc-icon-variables' as icon-variables;
+@use '@vonage/vwc-icon/src/partials/vwc-icon-variables' as icon-variables;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-typography/scss/typography';
 
@@ -26,10 +26,6 @@
 	}
 }
 
-.expansion-panel {
-	border-bottom: 1px solid var(#{scheme-variables.$vvd-color-neutral-30});
-}
-
 .expansion-panel-header {
 	@include typography.typography-cat-shorthand('subtitle-2');
 	position: relative;
@@ -43,18 +39,26 @@
 		display: flex;
 
 		vwc-icon {
-			#{icon-variables.$icon-size-variable-name}: var(#{expansion-panel-variables.$expansion-panel-icon-size-variable-name}, 16px);
+			#{icon-variables.$icon-size-variable-name}: var(#{expansion-panel-variables.$expansion-panel-icon-size-variable-name}, 20px);
 		}
 	}
 
-	.leading-icon vwc-icon {
-		margin-inline-end: 16px;
+	.leading-icon {
+		/* stylelint-disable selector-no-qualifying-type */
+		vwc-icon,
+		slot[name="icon"i]::slotted(vwc-icon) {
+			/* stylelint-enable selector-no-qualifying-type */
+			margin-inline-end: 16px;
+		}
 	}
 
 	.trailing-icon {
-		margin-left: auto;
+		margin-inline-start: auto;
 
-		vwc-icon {
+		/* stylelint-disable selector-no-qualifying-type */
+		vwc-icon,
+		slot[name="trailingIcon"i]::slotted(vwc-icon) {
+			/* stylelint-enable selector-no-qualifying-type */
 			margin-inline-start: 16px;
 		}
 	}

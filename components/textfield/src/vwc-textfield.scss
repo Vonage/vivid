@@ -3,7 +3,7 @@
 @forward './vwc-textfield-input';
 @forward './vwc-textfield-action';
 @use './vwc-textfield-variables' as textfield-variables;
-@use '@vonage/vwc-icon/src/vwc-icon-variables' as icon-variables;
+@use '@vonage/vwc-icon/src/partials/vwc-icon-variables' as icon-variables;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
@@ -225,6 +225,7 @@ vwc-notched-outline {
 
 .mdc-text-field--with-leading-icon.mdc-text-field--outlined
 .mdc-floating-label--float-above {
+	font-size: var(--mdc-typography-subtitle1-font-size);
 	transform: translateY(-18px);
 }
 .mdc-text-field--with-leading-icon.mdc-text-field--outlined

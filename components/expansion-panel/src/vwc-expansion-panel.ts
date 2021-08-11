@@ -71,7 +71,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	}
 
 	protected render(): TemplateResult {
-		return html`<div class="expansion-panel">
+		return html`
 			<div class="expansion-panel-header"
 				@mousedown="${this.handleRippleActivate}"
 				@mouseenter="${this.handleRippleMouseEnter}"
@@ -95,15 +95,14 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 			</div>
 			<div class="expansion-panel-body">
 				<slot></slot>
-			</div>
-		</div>`;
+			</div>`;
 	}
 
 	protected renderIconOrToggle(): TemplateResult | string {
 		if (this.leadingToggle) {
 			return this.renderToggle();
 		} else if (this.icon) {
-			return html`<vwc-icon type="${this.icon}"></vwc-icon>`;
+			return html`<vwc-icon type="${this.icon}" size="medium"></vwc-icon>`;
 		} else {
 			return '';
 		}
