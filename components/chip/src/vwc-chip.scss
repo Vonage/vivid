@@ -17,8 +17,6 @@ $namespace: vvd-chip;
 	),
 	$default: rounded
 );
-@include color-connotation.connotations-main;
-@include color-connotation.connotations-main-default(primary);
 @include color-connotation.connotations-shades;
 @include color-connotation.connotations-shades-default(primary);
 
@@ -75,12 +73,23 @@ $namespace: vvd-chip;
 	> div {
 		@include typography.typography-cat-shorthand(body-1-bold);
 		@include typography.typography-set-variables(body-1-bold);
+		> span {
+			flex: 1 0;
+			padding: 0;
+			margin: 0 8px;
+		}
 	}
+
 }
 
 :host([dense]) {
 	> div {
 		@include typography.typography-cat-shorthand(caption-bold);
 		@include typography.typography-set-variables(caption-bold);
+		> span {
+			flex: 1 0;
+			padding: 0;
+			margin: 0 4px;
+		}
 	}
 }
