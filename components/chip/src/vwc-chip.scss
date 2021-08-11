@@ -3,7 +3,7 @@ $namespace: vvd-chip;
 @use '@vonage/vvd-typography/scss/typography' as typography;
 
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation with (
-	$connotations-set: primary cta success alert warning info
+	$connotations-set: primary cta
 );
 
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
@@ -12,22 +12,75 @@ $namespace: vvd-chip;
 
 @include shape-mixins.shape(
 	$shapes: (
-		rounded: 4px,
-		pill: 14px,
+		rounded: 6px,
+		pill: 24px
 	),
 	$default: rounded
 );
-
-@include color-connotation.connotations-shades;
 @include color-connotation.connotations-main;
 @include color-connotation.connotations-main-default(primary);
+@include color-connotation.connotations-shades;
+@include color-connotation.connotations-shades-default(primary);
 
+// Base
 :host {
 	> div {
-		@include typography.typography-cat-shorthand(caption-bold);
-		display: inline-block;
-		background-color: var(--vvd-color-connotation);
+		@include typography.typography-cat-shorthand(body-2-bold);
+		@include typography.typography-set-variables(body-2-bold);
+
+		display: inline-flex;
+		box-sizing: border-box;
+		flex-wrap: nowrap;
+		align-items: center;
+		padding: 2px 4px;
+		background-color: var(--vvd-color-connotation-soft);
 		border-radius: var(--vvd-chip-shape);
-		color: var(--vvd-color-on-connotation);
+		color: var(--vvd-color-connotation-contrast);
+
+		&:hover {
+			background-color: var(--vvd-color-connotation-soft);
+		}
+
+		> span {
+			flex: 1 0;
+			padding: 0;
+			margin: 0 6px;
+		}
+
+		.icon {
+			--icon-size: calc(var(--vvd-typography-line-height) - 4px);
+			flex: 0 0 auto;
+		}
+	}
+}
+
+// Layouts
+:host([layout="outlined"i]) {
+	> div {
+		border-width: 1px;
+		border-style: solid;
+		border-color: var(--vvd-color-on-connotation-soft);
+	}
+}
+
+// Selected
+:host([selected]) {
+	> div {
+		background-color: #000;
+		color: #fff;
+	}
+}
+
+:host([enlarged]) {
+	> div {
+		@include typography.typography-cat-shorthand(body-1-bold);
+		@include typography.typography-set-variables(body-1-bold);
+	}
+}
+
+:host([dense]) {
+	> div {
+		@include typography.typography-cat-shorthand(caption-bold);
+		@include typography.typography-set-variables(caption-bold);
 	}
 }
