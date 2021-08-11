@@ -32,16 +32,7 @@ Cards contain content and actions about a single subject.
 
 |name|description|
 |--- |--- |
-|`default`|The main card’s content|
 |`graphics`|Content to show in the header icon section. If exists, overrides the `icon` attribute’s definition|
 |`actions`|Content to show in the actions section. If exists, overrides the `action-icon` and `action-text` attributes definitions|
 |`media`|Slot to add anything inside the `media` area|
-
-### CSS Variables
-
-
-|name|description|
-|--- |--- |
-|`--vvd-card-width`|Sets the width of the card. Default is 300px.|
-|`--vvd-card-padding`|Sets the padding of the card. Default is 24px.|
 

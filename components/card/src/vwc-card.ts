@@ -14,14 +14,6 @@ declare global {
 	}
 }
 
-/**
- * Represents a card custom element.
- *
- * @cssprop [--vvd-card-width=300px] defines the card's width
- * @cssprop [--vvd-card-padding=24px] defines the card's padding
- *
- * @alpha
- */
 @customElement('vwc-card')
 export class VWCCard extends LitElement {
 	/**

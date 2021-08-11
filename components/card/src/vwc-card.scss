@@ -1,15 +1,9 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 
-:host {
-	--vvd-card-width: 300px;
-	--vvd-card-padding: 24px;
-}
-
 .vwc-card {
 	display: flex;
 	overflow: hidden;
-	width: var(--vvd-card-width);
 	flex-flow: column;
 	background-color: var(#{scheme-variables.$vvd-color-base});
 	border-radius: 6px;
@@ -17,15 +11,10 @@
 	color: var(#{scheme-variables.$vvd-color-on-base});
 }
 
-.vwc-card-media {
-	width: var(--vvd-card-width);
-}
-
 .vwc-card-info {
 	display: flex;
-	width: calc(var(--vvd-card-width) - 2 * var(--vvd-card-padding));
 	flex-flow: column;
-	padding: var(--vvd-card-padding);
+	padding: 24px;
 }
 
 header {

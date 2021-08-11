@@ -13,6 +13,7 @@ export async function createElementVariations(wrapper) {
   		}
 			vwc-card {
 				margin: 5px;
+				width: 300px;
 			}
 		</style>
 		<vwc-card label="Basic">
