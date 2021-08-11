@@ -118,8 +118,6 @@ export class VWCTextField extends MWCTextField {
 		await super.firstUpdated();
 		this.shadowRoot
 			?.querySelector('.mdc-notched-outline')
-			?.shadowRoot
-			?.querySelector('.mdc-notched-outline')
 			?.classList
 			.add('vvd-notch');
 		this.floatLabel();
