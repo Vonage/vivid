@@ -1,3 +1,7 @@
+# [2.17.0](https://github.com/Vonage/vivid/compare/v2.16.1...v2.17.0) (2021-08-09)
+
+
+
 ## [2.16.1](https://github.com/Vonage/vivid/compare/v2.16.0...v2.16.1) (2021-07-29)
 
 
@@ -325,13 +329,13 @@
 
 ### Features
 
-* **general:** moved icon generation script call into local icon package ([6754322](https://github.com/Vonage/vivid/commit/6754322ffc1219cb967e7fa33da7c1bcc13f1fe4))
-* **icon:** widened icon panes ([3bec0fe](https://github.com/Vonage/vivid/commit/3bec0fe76b4b37479ff64e45613bde784e3b5317))
 * added flag icons (VIV-148) ([7577bb9](https://github.com/Vonage/vivid/commit/7577bb9936f0ef46aba5de7227d3673218316e0b))
-* revised icon story's design ([3b8b755](https://github.com/Vonage/vivid/commit/3b8b7558268a1ecaf880d9d90fe03117863fd36c))
-* touchup ([02903b4](https://github.com/Vonage/vivid/commit/02903b4d87d96892bf7659fc6cd196dc823f1dd0))
+* **general:** moved icon generation script call into local icon package ([6754322](https://github.com/Vonage/vivid/commit/6754322ffc1219cb967e7fa33da7c1bcc13f1fe4))
 * **icon:** Added 104 new brand icons ([6e503ca](https://github.com/Vonage/vivid/commit/6e503cab0666241ae31208fd607f25d7366c0006))
 * **icon:** added add-full and add-outline icons ([3b2f915](https://github.com/Vonage/vivid/commit/3b2f915606e576dea0b62cf4724098da5afc4b1d))
+* **icon:** widened icon panes ([3bec0fe](https://github.com/Vonage/vivid/commit/3bec0fe76b4b37479ff64e45613bde784e3b5317))
+* revised icon story's design ([3b8b755](https://github.com/Vonage/vivid/commit/3b8b7558268a1ecaf880d9d90fe03117863fd36c))
+* touchup ([02903b4](https://github.com/Vonage/vivid/commit/02903b4d87d96892bf7659fc6cd196dc823f1dd0))
 
 
 
