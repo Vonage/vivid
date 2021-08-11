@@ -1,4 +1,5 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 
 :host {
 	--vvd-card-width: 300px;
@@ -10,8 +11,10 @@
 	overflow: hidden;
 	width: var(--vvd-card-width);
 	flex-flow: column;
+	background-color: var(#{scheme-variables.$vvd-color-base});
 	border-radius: 6px;
 	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05), 0 8px 8px rgba(0, 0, 0, 0.05), 0 2px 16px rgba(0, 0, 0, 0.1);
+	color: var(#{scheme-variables.$vvd-color-on-base});
 }
 
 .vwc-card-media {

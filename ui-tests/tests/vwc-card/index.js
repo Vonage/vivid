@@ -2,8 +2,15 @@ import '@vonage/vwc-card';
 
 export async function createElementVariations(wrapper) {
 	const elementWrapper = document.createElement('div');
+	elementWrapper.id = 'card-wrapper';
 	elementWrapper.innerHTML = `
 		<style>
+			#card-wrapper {
+				display: grid;
+				grid-template-columns: auto auto auto;
+				background-color: gray;
+				padding: 10px;
+  		}
 			vwc-card {
 				margin: 5px;
 			}
@@ -12,13 +19,13 @@ export async function createElementVariations(wrapper) {
 		</vwc-card>
 		<vwc-card label="Heading" heading="Card title" supporting-text="Supporting Text">
 		</vwc-card>
-	<div>
+
 		<vwc-card label="Icon" header-icon="chat-line" heading="Using the header-icon attribute" supporting-text="Supporting Text">
 		</vwc-card>
 		<vwc-card label="Slotted Icon" header-icon="chat-line" heading="Using a slotted icon">
 			<vwc-icon type="home" slot="graphics"></vwc-icon>
 		</vwc-card>
-	</div>
+
 	<vwc-card label="Subtitle" subtitle="Subtitle">
 	</vwc-card>
 	<vwc-card label="Media" heading="Media" subtitle="Showing media using the 'media' slot.">
