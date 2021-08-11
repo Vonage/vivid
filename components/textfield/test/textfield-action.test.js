@@ -104,7 +104,9 @@ describe('textfield action', () => {
 
 		actualElement.disabled = true;
 		await waitNextTask();
-		expect(newIconButton.disabled).to.equal(true);
+		expect(newIconButton.disabled)
+			.to
+			.equal(true);
 	});
 
 	it(`should shape dynamically added child node's`, async function () {
@@ -115,11 +117,15 @@ describe('textfield action', () => {
 
 		actualElement.shape = 'rounded';
 		await waitNextTask();
-		expect(newIconButton.shape).to.equal('rounded');
+		expect(newIconButton.shape)
+			.to
+			.equal('rounded');
 
 		actualElement.shape = 'pill';
 		await waitNextTask();
-		expect(newIconButton.shape).to.equal('circled');
+		expect(newIconButton.shape)
+			.to
+			.equal('circled');
 	});
 
 	it(`should set density dynamically to added child node's`, async function () {
@@ -130,21 +136,21 @@ describe('textfield action', () => {
 
 		actualElement.dense = true;
 		await waitNextTask();
-		expect(newIconButton.dense).to.equal(true);
+		expect(newIconButton.dense)
+			.to
+			.equal(true);
 
 		actualElement.dense = false;
 		await waitNextTask();
-		expect(newIconButton.dense).to.equal(false);
+		expect(newIconButton.dense)
+			.to
+			.equal(false);
 	});
 
 	describe(`noActionsSync`, function () {
-		function getButtonsHTML(actualElement) {
+		function getButtonsDisabledStates(actualElement) {
 			const buttons = getInternalButtons(actualElement);
-			const expectedButtonsHTML = buttons.reduce((html, button) => {
-				html += button.outerHTML;
-				return html;
-			}, '');
-			return expectedButtonsHTML;
+			return buttons.map(button => button.disabled);
 		}
 
 		function setElementAttributes(actualElement) {
@@ -153,7 +159,7 @@ describe('textfield action', () => {
 			actualElement.toggleAttribute('dense', true);
 		}
 
-		async function createElementWithIconButtons() {
+		function createElementWithIconButtons() {
 			const [actualElement] = addElement(
 				textToDomToParent(`
 				<${COMPONENT_NAME}>
@@ -163,52 +169,62 @@ describe('textfield action', () => {
 				</${COMPONENT_NAME}>
 			`)
 			);
-			await actualElement.updateComplete;
 			return actualElement;
 		}
 
 		let actualElement;
 
 		beforeEach(async function () {
-			actualElement = await createElementWithIconButtons();
+			actualElement = createElementWithIconButtons();
 			actualElement.noActionsSync = true;
+			await waitNextTask();
+			await actualElement.updateComplete;
 		});
 
-		it(`should not enforce attributes on child nodes`, async function () {
-			const expectedButtonsHTML = getButtonsHTML(actualElement);
-			setElementAttributes(actualElement);
+		it(`should not enforce disabled on child nodes`, async function () {
+			const expectedButtonsDisabled = [true, false, true];
+			const buttonsDisabledBefore = getButtonsDisabledStates(actualElement);
+			actualElement.disabled = true;
+
 			await waitNextTask();
 			await actualElement.updateComplete;
 
-			const eventualButtonsHTML = getButtonsHTML(actualElement);
-			expect(expectedButtonsHTML).to.equal(eventualButtonsHTML);
+			const buttonsDisabledAfter = getButtonsDisabledStates(actualElement);
+
+			expectedButtonsDisabled.forEach((val, index) => {
+				expect(val)
+					.to
+					.equal(buttonsDisabledBefore[index]);
+				expect(val)
+					.to
+					.equal(buttonsDisabledAfter[index]);
+			});
 		});
 
-		it(`should not dynamically enforce attributes on child nodes`, async function () {
+		it(`should not dynamically enforce disabled on child nodes`, async function () {
 			function generateNewButton() {
 				const newButtonWrapper = document.createElement('div');
 				newButtonWrapper.innerHTML = `<${iconButton} slot="action" shape="circled" enlarged></${iconButton}>`;
-				const newButton = newButtonWrapper.firstChild;
-				const expectedButtonHTML = newButton.outerHTML;
-				return [newButton, expectedButtonHTML];
+				return newButtonWrapper.firstChild;
 			}
 
-			const [newButton, expectedButtonHTML] = generateNewButton();
+			const newButton = generateNewButton();
 
-			const expectedButtonsHTML = getButtonsHTML(actualElement);
+			const expectedButtonsDisabled = [true, false, true, false];
 
-			setElementAttributes(actualElement);
+			actualElement.disabled = true;
+			actualElement.appendChild(newButton);
+
 			await waitNextTask();
 			await actualElement.updateComplete;
 
-			actualElement.appendChild(newButton);
+			const buttonsDisabledAfter = getButtonsDisabledStates(actualElement);
 
-			const eventualButtonsHTML = getInternalButtons(actualElement).reduce((html, button) => {
-				html += button.outerHTML;
-				return html;
-			}, '');
-
-			expect(expectedButtonsHTML + expectedButtonHTML).to.equal(eventualButtonsHTML);
+			expectedButtonsDisabled.forEach((val, index) => {
+				expect(val)
+					.to
+					.equal(buttonsDisabledAfter[index]);
+			});
 		});
 	});
 });

@@ -252,13 +252,12 @@ export class VWCTextField extends MWCTextField {
 	}
 
 	protected enforcePropsOnActionNodes(): void {
-		if (this.noActionsSync) {
-			return;
-		}
 		const buttons = Array.from(this.actionButtons || []);
 
 		buttons.forEach((button) => {
-			button.toggleAttribute('disabled', this.disabled);
+			if (!this.noActionsSync) {
+				button.toggleAttribute('disabled', this.disabled);
+			}
 			button.toggleAttribute('dense', this.dense);
 
 			const buttonShape = this.shape == 'pill'
