@@ -20,7 +20,6 @@ Cards contain content and actions about a single subject.
 
 ### Properties/Attributes
 
-
 |name|attr/prop/reflected|type|description|
 |--- |--- |--- |--- |
 |`heading`|reflected|string|The heading text|
@@ -35,4 +34,27 @@ Cards contain content and actions about a single subject.
 |`graphics`|Content to show in the header icon section. If exists, overrides the `icon` attribute’s definition|
 |`actions`|Content to show in the actions section. If exists, overrides the `action-icon` and `action-text` attributes definitions|
 |`media`|Slot to add anything inside the `media` area|
+
+## Styling tips
+
+### Setting card's width
+
+The width of the card is set via its wrapper's width.  Hence, if you wrap a card like this:
+
+```html
+<div class="card-wrapper">
+	<vwc-card></vwc-card>
+</div>
+```
+
+Then your style should have: 
+```css
+.card-wrapper {
+	width: 300px;
+}
+```
+
+### Using the cards in a grid
+
+Please see this example: [Grid Example](https://vivid.vonage.com?path=/story/alpha-components-card--in-a-grid)
 
