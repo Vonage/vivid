@@ -26,7 +26,9 @@ describe('Side-drawer', () => {
 		);
 		const actualElement = addedElements[0];
 		await waitNextTask();
-		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
+		expect(actualElement.shadowRoot.innerHTML)
+			.to
+			.equalSnapshot();
 	});
 
 	describe('Side drawer default init', () => {
@@ -37,10 +39,18 @@ describe('Side-drawer', () => {
 
 			await actualElement.updateComplete;
 
-			expect(actualElement.alternate, 'alternate should be false').to.equal(false);
-			expect(actualElement.open, 'open should be true').to.equal(true);
-			expect(actualElement.hasTopBar, 'hasTopBar should be false').to.equal(undefined);
-			expect(actualElement.absolute, 'absolute should be false').to.equal(false);
+			expect(actualElement.alternate, 'alternate should be false')
+				.to
+				.equal(false);
+			expect(actualElement.open, 'open should be true')
+				.to
+				.equal(true);
+			expect(actualElement.hasTopBar, 'hasTopBar should be false')
+				.to
+				.equal(undefined);
+			expect(actualElement.absolute, 'absolute should be false')
+				.to
+				.equal(false);
 		});
 	});
 
@@ -52,7 +62,9 @@ describe('Side-drawer', () => {
 
 			await actualElement.updateComplete;
 
-			expect(actualElement.open).to.equal(true);
+			expect(actualElement.open)
+				.to
+				.equal(true);
 		});
 		it('should reflect (alternate) from attribute to property', async () => {
 			const [actualElement] = addElement(
@@ -61,7 +73,9 @@ describe('Side-drawer', () => {
 
 			await actualElement.updateComplete;
 
-			expect(actualElement.alternate).to.equal(true);
+			expect(actualElement.alternate)
+				.to
+				.equal(true);
 		});
 		it('should reflect (hasTopBar) from attribute to property', async () => {
 			const [actualElement] = addElement(
@@ -70,7 +84,9 @@ describe('Side-drawer', () => {
 
 			await actualElement.updateComplete;
 
-			expect(actualElement.hasTopBar).to.equal(true);
+			expect(actualElement.hasTopBar)
+				.to
+				.equal(true);
 		});
 		it('should reflect (type) from attribute to property', async () => {
 			const [actualElement] = addElement(
@@ -79,7 +95,9 @@ describe('Side-drawer', () => {
 
 			await actualElement.updateComplete;
 
-			expect(actualElement.type).to.equal("");
+			expect(actualElement.type)
+				.to
+				.equal('');
 		});
 		it('should reflect (dismissible) from attribute to property', async () => {
 			const [actualElement] = addElement(
@@ -88,7 +106,9 @@ describe('Side-drawer', () => {
 
 			await actualElement.updateComplete;
 
-			expect(actualElement.type).to.equal("dismissible");
+			expect(actualElement.type)
+				.to
+				.equal('dismissible');
 		});
 		it('should reflect (modal) from attribute to property', async () => {
 			const [actualElement] = addElement(
@@ -97,7 +117,9 @@ describe('Side-drawer', () => {
 
 			await actualElement.updateComplete;
 
-			expect(actualElement.type).to.equal("modal");
+			expect(actualElement.type)
+				.to
+				.equal('modal');
 		});
 		it('should reflect (absolute) from attribute to property', async () => {
 			const [actualElement] = addElement(
@@ -106,7 +128,9 @@ describe('Side-drawer', () => {
 
 			await actualElement.updateComplete;
 
-			expect(actualElement.absolute).to.equal(true);
+			expect(actualElement.absolute)
+				.to
+				.equal(true);
 		});
 	});
 
@@ -115,33 +139,7 @@ describe('Side-drawer', () => {
 			el.addEventListener(ev, res, { once: true });
 		});
 
-		it('opened/closed events are fired', async () => {
-			const [element] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} type="modal"></${COMPONENT_NAME}>`)
-			);
-
-			await element.updateComplete;
-
-			const drawer = element.shadowRoot.querySelector('.side-drawer');
-
-			let openedFired = false;
-			let closedFired = false;
-			element.addEventListener('opened', () => {
-				openedFired = true;
-			});
-			element.addEventListener('closed', () => {
-				closedFired = true;
-			});
-			element.show();
-			await waitForEvent(drawer, 'transitionend');
-			expect(openedFired).toEqual(true);
-			element.close();
-
-			await waitForEvent(drawer, 'transitionend');
-			expect(closedFired).toEqual(true);
-		});
-
-		it('should fire opened event', async () => {
+		it('should fire opened event after changing from closed to open', async () => {
 			const onOpened = chai.spy();
 			// const sideDrawerEl = await fixture(html`<vwc-side-drawer type="modal"></vwc-side-drawer>`);
 			const [sideDrawerEl] = addElement(
@@ -149,17 +147,19 @@ describe('Side-drawer', () => {
 			);
 			await sideDrawerEl.updateComplete;
 
-			sideDrawerEl.addEventListener('opened', onOpened);
-			sideDrawerEl.show();
-			// sideDrawerEl.show();
-
-			// await new Promise((resolve) => {
-			// 	drawer.addEventListener('transitionend', resolve);
-			// });
-			await new Promise((resolve) => {
-				setTimeout(resolve, 1200);
+			const eventListenerPromise = new Promise((res) => {
+				sideDrawerEl.addEventListener('opened', () => {
+					console.log('Test');
+					onOpened();
+					res();
+				});
 			});
 
+			sideDrawerEl.show();
+			const event = new Event('transitionend');
+			sideDrawerEl.dispatchEvent(event);
+
+			await eventListenerPromise;
 			onOpened.should.have.been.called();
 		});
 
@@ -173,10 +173,12 @@ describe('Side-drawer', () => {
 			await actualElement.updateComplete;
 			actualElement.open = false;
 
-			actualElement.addEventListener("closed", () => (openTransitionEnd = true));
+			actualElement.addEventListener('closed', () => (openTransitionEnd = true));
 			actualElement.onTransitionEnd();
 
-			expect(openTransitionEnd).to.equal(true);
+			expect(openTransitionEnd)
+				.to
+				.equal(true);
 		});
 	});
 });

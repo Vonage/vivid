@@ -79,6 +79,10 @@ export class VWCSideDrawerBase extends LitElement {
 		// eslint-disable-next-line @typescript-eslint/no-empty-function
 	): void {}
 
+	constructor() {
+		super();
+		this.addEventListener('transitionend', () => this.onTransitionEnd());
+	}
 	/**
 	 * Opens the drawer from the closed state.
 	 */
@@ -202,7 +206,6 @@ export class VWCSideDrawerBase extends LitElement {
 				part="${ifDefined(alternate)}"
 				class="side-drawer ${classMap(classes)}"
 				@keydown=${this.#onKeydown}
-				@transitionend=${this.onTransitionEnd}
 			>
 				${topBar}
 
