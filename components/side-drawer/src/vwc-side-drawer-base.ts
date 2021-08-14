@@ -81,7 +81,7 @@ export class VWCSideDrawerBase extends LitElement {
 
 	constructor() {
 		super();
-		this.addEventListener('transitionend', () => this.onTransitionEnd());
+		this.addEventListener('transitionend', () => this.#onTransitionEnd());
 	}
 	/**
 	 * Opens the drawer from the closed state.
@@ -153,7 +153,7 @@ export class VWCSideDrawerBase extends LitElement {
 		}
 	}
 
-	onTransitionEnd(): void {
+	#onTransitionEnd(): void {
 		if (this.type === 'modal') {
 			// when side drawer finishes open animation
 			if (this.open) {

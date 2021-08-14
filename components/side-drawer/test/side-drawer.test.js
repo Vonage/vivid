@@ -135,13 +135,8 @@ describe('Side-drawer', () => {
 	});
 
 	describe('Modal side drawer events', () => {
-		const waitForEvent = (el, ev) => new Promise((res) => {
-			el.addEventListener(ev, res, { once: true });
-		});
-
-		it('should fire opened event after changing from closed to open', async () => {
+		it('should fire opened event after changing from close to open', async () => {
 			const onOpened = chai.spy();
-			// const sideDrawerEl = await fixture(html`<vwc-side-drawer type="modal"></vwc-side-drawer>`);
 			const [sideDrawerEl] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} type="modal"></${COMPONENT_NAME}>`)
 			);
@@ -149,7 +144,6 @@ describe('Side-drawer', () => {
 
 			const eventListenerPromise = new Promise((res) => {
 				sideDrawerEl.addEventListener('opened', () => {
-					console.log('Test');
 					onOpened();
 					res();
 				});
@@ -163,22 +157,50 @@ describe('Side-drawer', () => {
 			onOpened.should.have.been.called();
 		});
 
-		it('should fire close event', async () => {
-			let openTransitionEnd = false;
-
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} type="modal"></${COMPONENT_NAME}>`)
+		it('should fire closed event after changing from open to close', async () => {
+			const onClosed = chai.spy();
+			const [sideDrawerEl] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} type="modal" open></${COMPONENT_NAME}>`)
 			);
+			await sideDrawerEl.updateComplete;
 
-			await actualElement.updateComplete;
-			actualElement.open = false;
+			const eventListenerPromise = new Promise((res) => {
+				sideDrawerEl.addEventListener('closed', () => {
+					onClosed();
+					res();
+				});
+			});
 
-			actualElement.addEventListener('closed', () => (openTransitionEnd = true));
-			actualElement.onTransitionEnd();
+			sideDrawerEl.close();
+			const event = new Event('transitionend');
+			sideDrawerEl.dispatchEvent(event);
 
-			expect(openTransitionEnd)
-				.to
-				.equal(true);
+			await eventListenerPromise;
+			onClosed.should.have.been.called();
+		});
+
+		it('should fire closed event after clicking on scrim', async () => {
+			const onClosed = chai.spy();
+			const [sideDrawerEl] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} type="modal" open></${COMPONENT_NAME}>`)
+			);
+			await sideDrawerEl.updateComplete;
+			const scrim = sideDrawerEl.shadowRoot.querySelector('.vvd-side-drawer--scrim');
+
+
+			const eventListenerPromise = new Promise((res) => {
+				sideDrawerEl.addEventListener('closed', () => {
+					onClosed();
+					res();
+				});
+			});
+
+			scrim?.click();
+			const event = new Event('transitionend');
+			sideDrawerEl.dispatchEvent(event);
+
+			await eventListenerPromise;
+			onClosed.should.have.been.called();
 		});
 	});
 });
