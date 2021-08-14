@@ -23,10 +23,10 @@
 
 :host {
 	display: inline-block;
-	width: var(--icon-size, var(#{icon-variables.$icon-size-variable-name}))/* --icon-size for backwards compatability */;
-	height: var(--icon-size, var(#{icon-variables.$icon-size-variable-name}))/* --icon-size for backwards compatability */;
-	block-size: var(--icon-size, var(#{icon-variables.$icon-size-variable-name}))/* --icon-size for backwards compatability */;
-	inline-size: var(--icon-size, var(#{icon-variables.$icon-size-variable-name}))/* --icon-size for backwards compatability */;
+	width: var(#{icon-variables.$icon-size-variable-name});
+	height: var(#{icon-variables.$icon-size-variable-name});
+	block-size: var(#{icon-variables.$icon-size-variable-name});
+	inline-size: var(#{icon-variables.$icon-size-variable-name});
 	line-height: 1;
 	vertical-align: middle;
 
