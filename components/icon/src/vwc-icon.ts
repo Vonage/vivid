@@ -48,6 +48,11 @@ type IconConnotation = Extract<
 	| Connotation.Info
 	>;
 
+/*
+ * @cssprop --vvd-icon-color - the color of the icon
+ * @cssprop --vvd-icon-size - the size of the icon
+ *
+ */
 @customElement('vwc-icon')
 export class VWCIcon extends LitElement {
 	static get styles(): CSSResult {
