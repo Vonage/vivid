@@ -202,5 +202,73 @@ describe('Side-drawer', () => {
 			await eventListenerPromise;
 			onClosed.should.have.been.called();
 		});
+
+		it('should fire Focus trap removed event after clicking on scrim', async () => {
+			const onClosed = chai.spy();
+			const [sideDrawerEl] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} type="modal" open></${COMPONENT_NAME}>`)
+			);
+			await sideDrawerEl.updateComplete;
+			const scrim = sideDrawerEl.shadowRoot.querySelector('.vvd-side-drawer--scrim');
+
+
+			const eventListenerPromise = new Promise((res) => {
+				sideDrawerEl.addEventListener('closed', () => {
+					onClosed();
+					res();
+				});
+			});
+
+			scrim?.click();
+			const event = new Event('transitionend');
+			sideDrawerEl.dispatchEvent(event);
+
+			await eventListenerPromise;
+			onClosed.should.have.been.called();
+		});
+
+		it('should fire trapFocus event after changing from close to open', async () => {
+			const onFocusTrapped = chai.spy();
+			const [sideDrawerEl] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} type="modal"></${COMPONENT_NAME}>`)
+			);
+			await sideDrawerEl.updateComplete;
+
+			const eventListenerPromise = new Promise((res) => {
+				sideDrawerEl.addEventListener('trapFocus', () => {
+					onFocusTrapped();
+					res();
+				});
+			});
+
+			sideDrawerEl.show();
+			const event = new Event('transitionend');
+			sideDrawerEl.dispatchEvent(event);
+
+			await eventListenerPromise;
+			onFocusTrapped.should.have.been.called();
+		});
+
+		it('should fire releaseFocus event after changing from open to close', async () => {
+			const onFocusReleased = chai.spy();
+			const [sideDrawerEl] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} type="modal" open></${COMPONENT_NAME}>`)
+			);
+			await sideDrawerEl.updateComplete;
+
+			const eventListenerPromise = new Promise((res) => {
+				sideDrawerEl.addEventListener('releaseFocus', () => {
+					onFocusReleased();
+					res();
+				});
+			});
+
+			sideDrawerEl.close();
+			const event = new Event('transitionend');
+			sideDrawerEl.dispatchEvent(event);
+
+			await eventListenerPromise;
+			onFocusReleased.should.have.been.called();
+		});
 	});
 });

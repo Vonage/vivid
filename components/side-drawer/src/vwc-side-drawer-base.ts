@@ -101,43 +101,45 @@ export class VWCSideDrawerBase extends LitElement {
 	 * Side drawer finished open animation.
 	 */
 	#opened(): void {
-		this.trapFocus();
-		this.notifyOpen();
+		this.#trapFocus();
+		this.#notifyOpen();
 	}
 
 	/**
 	 * Side drawer finished close animation.
 	 */
 	#closed(): void {
-		this.releaseFocus();
-		this.notifyClose();
+		this.#releaseFocus();
+		this.#notifyClose();
 	}
 
-	notifyClose(): void {
+	#createDispatchEvent(eventName : string) {
 		const init: CustomEventInit = { bubbles: true, composed: true };
-		const ev = new CustomEvent('closed', init);
-		this.open = false;
+		const ev = new CustomEvent(eventName, init);
 		this.dispatchEvent(ev);
 	}
 
-	notifyOpen(): void {
-		const init: CustomEventInit = { bubbles: true, composed: true };
-		const ev = new CustomEvent('opened', init);
-		this.open = true;
-		this.dispatchEvent(ev);
+	#notifyClose(): void {
+		this.#createDispatchEvent('closed');
+	}
+
+	#notifyOpen(): void {
+		this.#createDispatchEvent('opened');
 	}
 
 	disconnectedCallback(): void {
 		super.disconnectedCallback();
-		this.releaseFocus();
+		this.#releaseFocus();
 	}
 
-	trapFocus(): void {
+	#trapFocus(): void {
 		blockingElements.push(this);
+		this.#createDispatchEvent('trapFocus');
 	}
 
-	releaseFocus(): void {
+	#releaseFocus(): void {
 		blockingElements.remove(this);
+		this.#createDispatchEvent('releaseFocus');
 	}
 
 	#handleScrimClick(): void {
