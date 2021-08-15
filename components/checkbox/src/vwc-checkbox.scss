@@ -2,8 +2,8 @@
 
 :host {
 	--mdc-checkbox-ink-color: var(#{scheme-variables.$vvd-color-neutral-10});
-	--mdc-checkbox-checked-color: var(#{scheme-variables.$vvd-color-on-base});
-	--mdc-checkbox-unchecked-color: var(#{scheme-variables.$vvd-color-on-base});
+	--mdc-checkbox-checked-color: var(#{scheme-variables.$vvd-color-on-canvas});
+	--mdc-checkbox-unchecked-color: var(#{scheme-variables.$vvd-color-on-canvas});
 	--mdc-checkbox-disabled-color: var(
 		#{scheme-variables.$vvd-color-neutral-30}
 	);
