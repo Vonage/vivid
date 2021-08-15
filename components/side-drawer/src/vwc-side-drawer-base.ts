@@ -106,16 +106,26 @@ export class VWCSideDrawerBase extends LitElement {
 		this.#notifyClose();
 	}
 
-	#createDispatchEvent(eventName : string) {
+	#createDispatchEvent(eventName: string) {
 		const init: CustomEventInit = { bubbles: true, composed: true };
 		const ev = new CustomEvent(eventName, init);
 		this.dispatchEvent(ev);
 	}
 
+	/**
+	 * Notify close
+	 *
+	 * @fires SideDrawer#closed
+	 */
 	#notifyClose(): void {
 		this.#createDispatchEvent('closed');
 	}
 
+	/**
+	 * Notify open
+	 *
+	 * @fires SideDrawer#opened
+	 */
 	#notifyOpen(): void {
 		this.#createDispatchEvent('opened');
 	}
@@ -126,11 +136,21 @@ export class VWCSideDrawerBase extends LitElement {
 		this.removeEventListener('transitionend', () => this.#onTransitionEnd());
 	}
 
+	/**
+	 * Notify trap focus
+	 *
+	 * @fires SideDrawer#trapFocus
+	 */
 	#trapFocus(): void {
 		blockingElements.push(this);
 		this.#createDispatchEvent('trapFocus');
 	}
 
+	/**
+	 * Notify release focus
+	 *
+	 * @fires SideDrawer#releaseFocus
+	 */
 	#releaseFocus(): void {
 		blockingElements.remove(this);
 		this.#createDispatchEvent('releaseFocus');
