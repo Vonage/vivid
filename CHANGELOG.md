@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.17.0](https://github.com/Vonage/vivid/compare/v2.16.1...v2.17.0) (2021-08-09)
+
+
+### Bug Fixes
+
+* **vwc-snackbar:** style bug caused by scheme alternate ([#994](https://github.com/Vonage/vivid/issues/994)) ([fd0a8fd](https://github.com/Vonage/vivid/commit/fd0a8fd35ccaa66c95cec85ee39e17080accefb9))
+
+
+### Features
+
+* **vwc-side-drawer:** 1st draft ([#978](https://github.com/Vonage/vivid/issues/978)) ([e1d6393](https://github.com/Vonage/vivid/commit/e1d6393b6a4ce0cda5078211326fb84c7330639a))
+* **workspace:** added component captions to slack release announcer ([#993](https://github.com/Vonage/vivid/issues/993)) ([b03dcc3](https://github.com/Vonage/vivid/commit/b03dcc346a6f54dd5acad92d2fff8b09812b5729))
+
+
+
+
+
 ## [2.16.1](https://github.com/Vonage/vivid/compare/v2.16.0...v2.16.1) (2021-07-29)
 
 **Note:** Version bump only for package @vivid/root

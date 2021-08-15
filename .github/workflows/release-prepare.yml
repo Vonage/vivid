@@ -10,7 +10,8 @@ on:
 jobs:
   prepare-verify:
     runs-on: ubuntu-latest
-
+    env:
+      GITHUB_TOKEN: ${{ secrets.VNG_VIVID_PAT }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -18,6 +19,9 @@ jobs:
           fetch-depth: 0
           ref: master
           token: ${{ secrets.CI_AT }}
+
+      - name: Writing .npmrc
+        run: printf "registry=https://npm.pkg.github.com/Vonage\n_authToken=\${GITHUB_TOKEN}\n//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}\nalways-auth=true" > .npmrc
 
       - name: Use Node.js 14
         uses: actions/setup-node@v2
@@ -28,10 +32,6 @@ jobs:
         run: npm install -g yarn
 
       - name: Install dependencies
-        env:
-          yarn_always_auth: true,
-          yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
-          yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
         run: yarn install
 
       # Update to a new version
