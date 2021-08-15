@@ -19,9 +19,11 @@ $namespace-shape: #{$namespace}-shape;
 
 $vvd-badge--block-size: --#{$namespace}--block-size;
 
-@include color-connotation.connotations-shades;
-@include color-connotation.connotations-main;
 @include color-connotation.connotations-main-default(primary);
+@include color-connotation.connotations-main;
+
+@include color-connotation.connotations-shades-default(primary);
+@include color-connotation.connotations-shades;
 
 @include shape-mixins.shape(
 	$shapes: (
