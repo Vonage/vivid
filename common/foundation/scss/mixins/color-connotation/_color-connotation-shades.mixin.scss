@@ -8,11 +8,11 @@
 $_connotations-definition: (
 	primary: (contrast: neutral-90, soft: neutral-20, accent: neutral-30),
 	cta: (contrast: cta-90, soft: cta-20, accent: cta-60),
-	success: (contrast: neutral-90, soft: success-20, accent: success-60),
-	alert: (contrast: neutral-90, soft: alert-20, accent: alert-60),
-	warning: (contrast: neutral-90, soft: warning-20, accent: warning-60),
-	info: (contrast: neutral-90, soft: info-20, accent: info-60),
-	announcement: (contrast: neutral-90, soft: announcement-20, accent: announcement-60)
+	success: (contrast: success-90, soft: success-20, accent: success-60),
+	alert: (contrast: alert-90, soft: alert-20, accent: alert-60),
+	warning: (contrast: warning-90, soft: warning-20, accent: warning-60),
+	info: (contrast: info-90, soft: info-20, accent: info-60),
+	announcement: (contrast: announcement-90, soft: announcement-20, accent: announcement-60)
 );
 
 // override to apply relevance

@@ -61,9 +61,20 @@ $vvd-chip--block-size: --#{$namespace}--block-size;
 
 	// &:active {
 	// }
-	// &.chip--selected {
+	:host([layout="outlined"i]) & {
+		#{$namespace-layout}--outline: 1px solid var(#{scheme-variables.$vvd-color-neutral-50});
+	}
 
-	// }
+	&:not(.chip--selected) {
+		#{$namespace-layout}--text: var(#{scheme-variables.$vvd-color-neutral-90});
+
+		:host(:not([layout])) &,
+		:host([layout="soft"i]) & {
+			#{$namespace-layout}--fill: var(#{scheme-variables.$vvd-color-neutral-20});
+		}
+
+
+	}
 
 	:host(:not([dense]):not([enlarged])) & {
 		padding: 0 10px;
