@@ -49,10 +49,14 @@
 	--mdc-ripple-color: var(#{button-variables.$vvd-button-layout}--text, var(#{color-connotation.$vvd-color-on-connotation}));
 }
 
-:host([unelevated]),
-:host([outlined]) {
+:host([unelevated]) {
 	--mdc-theme-primary: var(#{button-variables.$vvd-button-layout}--fill, var(#{color-connotation.$vvd-color-connotation}));
 	--mdc-theme-on-primary: var(#{button-variables.$vvd-button-layout}--text, var(#{color-connotation.$vvd-color-on-connotation}));
+}
+
+:host([outlined]) {
+	--mdc-theme-primary: var(#{button-variables.$vvd-button-layout}--text, var(#{color-connotation.$vvd-color-on-connotation}));
+	--mdc-theme-on-primary: var(#{button-variables.$vvd-button-layout}--fill, var(#{color-connotation.$vvd-color-connotation}));
 }
 /////////////////////////////////////////////////////////////////////////////
 .mdc-button {
