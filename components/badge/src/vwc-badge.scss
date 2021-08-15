@@ -2,6 +2,7 @@ $namespace: --vvd-badge;
 $namespace-layout: #{$namespace}-layout;
 $namespace-shape: #{$namespace}-shape;
 
+@use '@vonage/vwc-icon/src/partials/vwc-icon-variables' as icon-variables;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation with (
@@ -32,7 +33,7 @@ $vvd-badge--block-size: --#{$namespace}--block-size;
 @include layout-mixins.layout();
 @include layout-mixins.layout-default(filled);
 
-:host {
+:host(:not([dense]):not([enlarged])) {
 	#{$vvd-badge--block-size}: 24px;
 }
 
@@ -46,7 +47,8 @@ $vvd-badge--block-size: --#{$namespace}--block-size;
 
 .vwc-badge {
 	@include typography.typography-cat-shorthand('caption-bold');
-	display: inline-block;
+	display: inline-flex;
+	align-items: center;
 	padding: 0 10px;
 	border: var(#{$namespace-layout}--outline);
 	background-color: var(#{$namespace-layout}--fill);
@@ -64,7 +66,7 @@ $vvd-badge--block-size: --#{$namespace}--block-size;
 }
 
 .icon {
-	--icon-size: 12px;
+	#{icon-variables.$icon-size-variable-name}: 12px;
 	$margin: 8px;
 
 	&.icon--leading {

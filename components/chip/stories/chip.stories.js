@@ -9,7 +9,7 @@ export default {
 	argTypes
 };
 
-const createStory = (args) => Object.assign(args => html`<vwc-chip ...=${spread(args)}></vwc-chip>`, { args });
+const createStory = args => Object.assign(args => html`<vwc-chip ...=${spread(args)}></vwc-chip>`, { args });
 
 export const Basic = createStory({
 	text: "Basic"
@@ -37,5 +37,5 @@ export const WithIcon = createStory({
 
 export const WithTrailingIcon = createStory({
 	text: "With Trailing Icon",
-	trailingIcon: "close-small-line"
+	iconTrailing: "close-small-line"
 });

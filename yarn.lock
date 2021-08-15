@@ -5277,10 +5277,10 @@
     terminal-kit "^2.0.5"
     yargs-parser "^20.2.7"
 
-"@vonage/vvd-design-tokens-properties@0.7.2":
-  version "0.7.2"
-  resolved "https://npm.pkg.github.com/download/@vonage/vvd-design-tokens-properties/0.7.2/5b791a62c1841f220747f8c740b2b24a4023ba8755f0f59a6c8297c453ac1808#3128a7976640916e2cf00917cf0a7e0ebe80e3ae"
-  integrity sha512-qjNjZWi6qPpO7pLqMharQkrGWoXZlNoUokk6vnmEMkXN2tioSf4OuZIE+coce64f8g5roDiIEIoXzcTv6wqQnQ==
+"@vonage/vvd-design-tokens-properties@0.7.3":
+  version "0.7.3"
+  resolved "https://npm.pkg.github.com/download/@vonage/vvd-design-tokens-properties/0.7.3/21005d4a694ee6afe0b4cf47e4833c185fed4e70d7a65041b0ff921d9abaaf60#8027419f2607a5a073e6f756751150eb76182d0e"
+  integrity sha512-0pQsknxpeYaWNAd7zqKo5AGpoC+qZ1OIEkSXNABZzFXXfnbcNGrX1ybKBWQsPJhwhVNNIcPZQZSpqsYNvDzyMA==
 
 "@vue/compiler-core@3.1.5":
   version "3.1.5"
@@ -17935,6 +17935,11 @@ tslib@^2.0.0, tslib@^2.0.1, tslib@^2.0.3, tslib@^2.1.0, tslib@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.0.tgz#803b8cdab3e12ba581a4ca41c8839bbb0dacb09e"
   integrity sha512-N82ooyxVNm6h1riLCoyS9e3fuJ3AMG2zIZs2Gd1ATcSFjSA23Q0fzjjZeh0jbJvWVDZ0cJT8yaNNaaXHzueNjg==
+
+tslib@^2.0.2:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
+  integrity sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==
 
 tsscmp@1.0.6:
   version "1.0.6"

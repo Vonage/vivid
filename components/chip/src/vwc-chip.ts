@@ -4,9 +4,9 @@ import {
 	customElement, LitElement, html, property, TemplateResult
 } from 'lit-element';
 import { nothing } from 'lit-html';
-import { defaultTo } from 'ramda';
 import { style } from './vwc-chip.css';
 import { Connotation, Shape } from '@vonage/vvd-foundation/constants';
+import { classMap } from 'lit-html/directives/class-map';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -22,8 +22,6 @@ type ChipConnotation = Extract<
 
 type ChipShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
 
-const defaultToNothing = defaultTo(nothing);
-
 @customElement('vwc-chip')
 export class VWCChip extends LitElement {
 	static styles = style;
@@ -34,7 +32,7 @@ export class VWCChip extends LitElement {
 	icon?: string;
 
 	@property({ type: Boolean, reflect: true })
-	selected?: boolean;
+	selected = false;
 
 	@property({ type: Boolean, reflect: true })
 	dense?: boolean;
@@ -52,13 +50,28 @@ export class VWCChip extends LitElement {
 	layout?: string;
 
 	@property({ type: String, reflect: true })
-	trailingIcon?: string;
+	iconTrailing?: string;
 
-	render():TemplateResult {
-		return html`<div>
-			${defaultToNothing(this.icon && html`<vwc-icon class='icon' type='${this.icon}'></vwc-icon>`)}
-			<span>${this.text}</span>
-			${defaultToNothing(this.trailingIcon && html`<vwc-icon class='icon' type='${this.trailingIcon}'></vwc-icon>`)}
-		</div>`;
+	protected renderIcon(type?: string, isTrailingIcon = false): TemplateResult | typeof nothing {
+		const classes = {
+			'icon--leading': !isTrailingIcon,
+			'icon--trailing': isTrailingIcon
+		};
+
+		return type ?
+			html`<vwc-icon class="icon ${classMap(classes)}" .type="${type}"></vwc-icon>`
+			: nothing;
+	}
+
+	render(): TemplateResult {
+		const classes = {
+			'chip--selected': this.selected
+		};
+
+		return html`<span class="vwc-chip ${classMap(classes)}">
+			${this.renderIcon(this.icon)}
+			${this.text}
+			${this.renderIcon(this.iconTrailing, true)}
+		</span>`;
 	}
 }
