@@ -29,8 +29,8 @@ $all-layouts: (
 }
 
 %soft {
-	#{$variable-prefix}--fill: var(#{color-connotation.$vvd-color-connotation}-soft);
-	#{$variable-prefix}--text: var(#{scheme-variables.$vvd-color-on-canvas});
+	#{$variable-prefix}--fill: var(#{color-connotation.$vvd-color-connotation}--soft);
+	#{$variable-prefix}--text: var(#{color-connotation.$vvd-color-connotation}--contrast);
 }
 
 %text,

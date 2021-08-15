@@ -23,7 +23,7 @@ $connotation-variable: #{variables.$vvd-color-connotation} !default;
 
 @mixin parse-connotation-shades($connotation-shades-list) {
 	@each $name, $value in $connotation-shades-list {
-		#{$connotation-variable}-#{$name}: var(--vvd-color-#{$value});
+		#{$connotation-variable}--#{$name}: var(--vvd-color-#{$value});
 	}
 }
 

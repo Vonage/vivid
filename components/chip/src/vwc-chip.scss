@@ -54,17 +54,16 @@ $vvd-chip--block-size: --#{$namespace}--block-size;
 	display: inline-flex;
 	align-items: center;
 	border: var(#{$namespace-layout}--outline);
-	background-color: rgb(107, 65, 65);
+	background-color: var(#{$namespace-layout}--fill);
 	border-radius: var(#{$namespace-shape});
 	color: var(#{$namespace-layout}--text);
 	line-height: var(#{$vvd-chip--block-size});
 
-	&:active {
-		background-color: var(#{$namespace-layout}--fill);
-	}
-	&.chip--selected {
-		background-color: var(#{$namespace-layout}--fill);
-	}
+	// &:active {
+	// }
+	// &.chip--selected {
+
+	// }
 
 	:host(:not([dense]):not([enlarged])) & {
 		padding: 0 10px;
