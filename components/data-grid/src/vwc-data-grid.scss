@@ -17,8 +17,8 @@
 
 // VAADIN STYLES
 .vvd-grid-engine-root {
-	background-color: var(#{scheme-variables.$vvd-color-base});
-	color: var(#{scheme-variables.$vvd-color-on-base});
+	background-color: var(#{scheme-variables.$vvd-color-canvas});
+	color: var(#{scheme-variables.$vvd-color-on-canvas});
 	// background-color: transparent;
 	// color: currentColor;
 	&:not([height-by-rows]) {
