@@ -12,13 +12,6 @@ import { DocumentWithBlockingElements } from 'blocking-elements';
 const blockingElements =
 	(document as DocumentWithBlockingElements).$blockingElements;
 
-/**
- * @slot header - The content of the header.
- * @slot navigation - For vwc-list-item, vwc-list-expansion-panel, paragraph etc.
- *
- * @summary This is MyElement
- *
- */
 export class VWCSideDrawerBase extends LitElement {
 	/**
 	 * @prop alternate - [Applies scheme alternate region](../../common/scheme/readme.md)
