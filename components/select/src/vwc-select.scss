@@ -11,8 +11,8 @@ $icon-size: 20px;
 $vvd-select-size-block: --vvd-select-size-block;
 
 :host {
-	--mdc-select-fill-color: var(#{scheme-variables.$vvd-color-base});
-	--mdc-select-ink-color: var(#{scheme-variables.$vvd-color-on-base});
+	--mdc-select-fill-color: var(#{scheme-variables.$vvd-color-canvas});
+	--mdc-select-ink-color: var(#{scheme-variables.$vvd-color-on-canvas});
 	--mdc-select-label-ink-color: var(#{vvd-formfield.$formfield-label-idle-ink});
 	--mdc-select-disabled-ink-color: var(
 		#{vvd-formfield.$formfield-disabled-ink}
@@ -110,8 +110,8 @@ $vvd-select-size-block: --vvd-select-size-block;
 
 	.mdc-select {
 		.mdc-floating-label {
-			--mdc-select-label-ink-color: var(#{scheme-variables.$vvd-color-on-base});
-			--mdc-select-error-color: var(#{scheme-variables.$vvd-color-on-base});
+			--mdc-select-label-ink-color: var(#{scheme-variables.$vvd-color-on-canvas});
+			--mdc-select-error-color: var(#{scheme-variables.$vvd-color-on-canvas});
 			top: -24px;
 			left: -12px;
 			transform: none;
