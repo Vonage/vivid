@@ -23,6 +23,18 @@ describe('expansion panel', () => {
 	it('should have internal contents', async () => {
 		const [actualElement] = addElement(
 			textToDomToParent(`
+				<${COMPONENT_NAME} heading="click me">
+					content
+				</${COMPONENT_NAME}>
+			`)
+		);
+		await waitNextTask();
+		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
+	});
+
+	it('should have internal contents (deprecated \'header\')', async () => {
+		const [actualElement] = addElement(
+			textToDomToParent(`
 				<${COMPONENT_NAME} header="click me">
 					content
 				</${COMPONENT_NAME}>
@@ -48,14 +60,24 @@ describe('expansion panel', () => {
 		expect(actualElement.open).to.equal(true);
 	});
 
-	it('should have header text when header is set', async () => {
+	it('should have heading text when heading is set', async () => {
+		const headerText = 'Click me';
+		const [actualElement] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME} heading="${headerText}"></${COMPONENT_NAME}>`)
+		);
+		await waitNextTask();
+		const headerEl = actualElement.shadowRoot.querySelector('.expansion-panel-header');
+		expect(headerEl.textContent.trim()).to.equal(headerText);
+	});
+
+	it('should have header (deprecated) text when header is set', async () => {
 		const headerText = 'Click me';
 		const [actualElement] = addElement(
 			textToDomToParent(`<${COMPONENT_NAME} header="${headerText}"></${COMPONENT_NAME}>`)
 		);
 		await waitNextTask();
-		const header = actualElement.shadowRoot.querySelector('.expansion-panel-header');
-		expect(header.textContent.trim()).to.equal(headerText);
+		const headerEl = actualElement.shadowRoot.querySelector('.expansion-panel-header');
+		expect(headerEl.textContent.trim()).to.equal(headerText);
 	});
 
 	describe('toggle icons', () => {
@@ -186,8 +208,8 @@ describe('expansion panel', () => {
 			);
 			await waitNextTask();
 
-			const header = actualElement.shadowRoot.querySelector('.expansion-panel-header');
-			assertComputedStyle(header, { fontSize: '20px' });
+			const headerEl = actualElement.shadowRoot.querySelector('.expansion-panel-header');
+			assertComputedStyle(headerEl, { fontSize: '20px' });
 		});
 
 		it('should have dense size when dense', async () => {
@@ -196,8 +218,8 @@ describe('expansion panel', () => {
 			);
 			await waitNextTask();
 
-			const header = actualElement.shadowRoot.querySelector('.expansion-panel-header');
-			assertComputedStyle(header, { fontSize: '14px' });
+			const headerEl = actualElement.shadowRoot.querySelector('.expansion-panel-header');
+			assertComputedStyle(headerEl, { fontSize: '14px' });
 		});
 	});
 });
