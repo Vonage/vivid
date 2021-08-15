@@ -77,14 +77,16 @@ export class VWCSideDrawerBase extends LitElement {
 		this.addEventListener('transitionend', () => this.#onTransitionEnd());
 	}
 	/**
-	 * Opens the drawer from the closed state.
+	 * Opens the side drawer from the closed state.
+	 * @public
 	 */
 	show(): void {
 		this.open = true;
 	}
 
 	/**
-	 * Closes the drawer from the open state.
+	 * Closes the side drawer from the open state.
+	 * @public
 	 */
 	close(): void {
 		this.open = false;
@@ -106,6 +108,10 @@ export class VWCSideDrawerBase extends LitElement {
 		this.#notifyClose();
 	}
 
+	/**
+	 *
+	 * @param eventName
+	 */
 	#createDispatchEvent(eventName: string) {
 		const init: CustomEventInit = { bubbles: true, composed: true };
 		const ev = new CustomEvent(eventName, init);
@@ -181,12 +187,21 @@ export class VWCSideDrawerBase extends LitElement {
 		}
 	}
 
+	/**
+	 * renderTopBar
+	 * @slot top-bar
+	 * @returns TemplateResult
+	 */
 	private renderTopBar(): TemplateResult {
 		return html`<div class="vvd-side-drawer--top-bar">
 			<slot name="top-bar"></slot>
 		</div>`;
 	}
 
+	/**
+	 * renderScrim
+	 * @returns TemplateResult
+	 */
 	private renderScrim(): TemplateResult {
 		// eslint-disable-next-line lit-a11y/click-events-have-key-events
 		return html`<div
