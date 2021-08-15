@@ -10,6 +10,9 @@ import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-side-drawer';
+const COMPONENT_PROPERTIES = ['open', 'alternate', 'hasTopBar', 'absolute'];
+const COMPONENT_TYPES = ['', 'dismissible', 'modal'];
+
 
 describe('Side-drawer', () => {
 	let addElement = isolatedElementsCreation();
@@ -42,10 +45,10 @@ describe('Side-drawer', () => {
 			expect(actualElement.alternate, 'alternate should be false')
 				.to
 				.equal(false);
-			expect(actualElement.open, 'open should be true')
+			expect(actualElement.open, 'open should be false')
 				.to
-				.equal(true);
-			expect(actualElement.hasTopBar, 'hasTopBar should be false')
+				.equal(false);
+			expect(actualElement.hasTopBar, 'hasTopBar should be undefined')
 				.to
 				.equal(undefined);
 			expect(actualElement.absolute, 'absolute should be false')
@@ -55,82 +58,24 @@ describe('Side-drawer', () => {
 	});
 
 	describe('Side drawer attributes', () => {
-		it('should reflect from (open) attribute to property', async () => {
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} open></${COMPONENT_NAME}>`)
-			);
-
-			await actualElement.updateComplete;
-
-			expect(actualElement.open)
-				.to
-				.equal(true);
+		it('should reflect from attribute to property', async () => {
+			for await (const property of COMPONENT_PROPERTIES) {
+				const [actualElement] = addElement(
+					textToDomToParent(`<${COMPONENT_NAME} ${property}></${COMPONENT_NAME}>`)
+				);
+				await actualElement.updateComplete;
+				expect(actualElement[property]).to.equal(true);
+			}
 		});
-		it('should reflect (alternate) from attribute to property', async () => {
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} alternate></${COMPONENT_NAME}>`)
-			);
 
-			await actualElement.updateComplete;
-
-			expect(actualElement.alternate)
-				.to
-				.equal(true);
-		});
-		it('should reflect (hasTopBar) from attribute to property', async () => {
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} hasTopBar></${COMPONENT_NAME}>`)
-			);
-
-			await actualElement.updateComplete;
-
-			expect(actualElement.hasTopBar)
-				.to
-				.equal(true);
-		});
 		it('should reflect (type) from attribute to property', async () => {
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} type=""></${COMPONENT_NAME}>`)
-			);
-
-			await actualElement.updateComplete;
-
-			expect(actualElement.type)
-				.to
-				.equal('');
-		});
-		it('should reflect (dismissible) from attribute to property', async () => {
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} type="dismissible"></${COMPONENT_NAME}>`)
-			);
-
-			await actualElement.updateComplete;
-
-			expect(actualElement.type)
-				.to
-				.equal('dismissible');
-		});
-		it('should reflect (modal) from attribute to property', async () => {
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} type="modal"></${COMPONENT_NAME}>`)
-			);
-
-			await actualElement.updateComplete;
-
-			expect(actualElement.type)
-				.to
-				.equal('modal');
-		});
-		it('should reflect (absolute) from attribute to property', async () => {
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} absolute></${COMPONENT_NAME}>`)
-			);
-
-			await actualElement.updateComplete;
-
-			expect(actualElement.absolute)
-				.to
-				.equal(true);
+			for await (const type of COMPONENT_TYPES) {
+				const [actualElement] = addElement(
+					textToDomToParent(`<${COMPONENT_NAME} type=${type}></${COMPONENT_NAME}>`)
+				);
+				await actualElement.updateComplete;
+				expect(actualElement.type).to.equal(type);
+			}
 		});
 	});
 
