@@ -130,6 +130,7 @@ export class VWCSideDrawerBase extends LitElement {
 	disconnectedCallback(): void {
 		super.disconnectedCallback();
 		this.#releaseFocus();
+		this.removeEventListener('transitionend', () => this.#onTransitionEnd());
 	}
 
 	#trapFocus(): void {
