@@ -48,7 +48,7 @@ $all-layouts: (
 }
 
 @mixin layout-default($name) {
-	#{':host'} {
+	:host(:not([layout])) {
 		@extend %#{$name};
 	}
 }

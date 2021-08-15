@@ -16,7 +16,7 @@ $on-connotation-variable: variables.$vvd-color-on-connotation !default;
 	$on-connotation-variable: $on-connotation-variable
 );
 
-@forward 'color-connotation-shades.mixin' show connotations-shades with (
+@forward 'color-connotation-shades.mixin' show connotations-shades, connotations-shades-default with (
 	$connotations-set: $connotations-set,
 	$selector: $selector,
 	$connotation-variable: $connotation-variable,
