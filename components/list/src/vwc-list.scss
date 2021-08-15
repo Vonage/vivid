@@ -6,7 +6,7 @@
 :host {
 	--mdc-menu-item-height: 40px;
 	--mdc-list-item-meta-size: 16px;
-	--mdc-ripple-color: var(#{scheme-variables.$vvd-color-on-base});
+	--mdc-ripple-color: var(#{scheme-variables.$vvd-color-on-canvas});
 	--mdc-theme-text-hint-on-background: var(
 		#{scheme-variables.$vvd-color-neutral-70}
 	);

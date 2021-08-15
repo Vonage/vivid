@@ -17,12 +17,12 @@
 	@include typography.typography-cat-shorthand('subtitle-2');
 	padding-bottom: 0;
 	margin-bottom: 8px;
-	color: var(#{scheme-variables.$vvd-color-on-base});
+	color: var(#{scheme-variables.$vvd-color-on-canvas});
 }
 
 #content {
 	@include typography.typography-cat-shorthand('body-2');
-	color: var(#{scheme-variables.$vvd-color-on-base});
+	color: var(#{scheme-variables.$vvd-color-on-canvas});
 }
 
 #actions {
