@@ -17,16 +17,16 @@ $min-width: 280px;
 
 .side-drawer {
 	z-index: #{$z-index-default};
-	color: var(#{scheme-variables.$vvd-color-on-base});
+	color: var(#{scheme-variables.$vvd-color-on-canvas});
 	min-inline-size: var(#{$vvd-side-drawer--min-inline-size}, $min-width);
 	&:not(.vvd-side-drawer--alternate):not(.vvd-side-drawer--modal) {
 		background-color: var(#{scheme-variables.$vvd-color-neutral-10});
 	}
 	&.vvd-side-drawer--alternate {
-		background-color: var(#{scheme-variables.$vvd-color-base});
+		background-color: var(#{scheme-variables.$vvd-color-canvas});
 	}
 	&.vvd-side-drawer--modal {
-		background-color: var(#{scheme-variables.$vvd-color-base});
+		background-color: var(#{scheme-variables.$vvd-color-canvas});
 		@media screen and (prefers-reduced-motion: reduce) {
 			&.vvd-side-drawer--open {
 				transform: translateX(0%);
