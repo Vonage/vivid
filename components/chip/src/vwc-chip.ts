@@ -3,7 +3,7 @@ import '@vonage/vwc-icon';
 import {
 	customElement, LitElement, html, property, TemplateResult
 } from 'lit-element';
-import { nothing } from 'lit-html';
+
 import { style } from './vwc-chip.css';
 import { Connotation, Shape } from '@vonage/vvd-foundation/constants';
 import { classMap } from 'lit-html/directives/class-map';
@@ -49,13 +49,8 @@ export class VWCChip extends LitElement {
 	@property({ type: Boolean, reflect: true })
 	filter = false;
 
-	protected renderIcon(type?: string, isTrailingIcon = false): TemplateResult | typeof nothing {
-		const classes = {
-			'icon--leading': !isTrailingIcon,
-			'icon--trailing': isTrailingIcon
-		};
-
-		return html`<vwc-icon class="icon ${classMap(classes)}" .type="${type}"></vwc-icon>`;
+	protected renderIcon(type?: string): TemplateResult {
+		return html`<vwc-icon class="vwc-chip__icon" .type="${type}"></vwc-icon>`;
 	}
 
 	protected renderChipFilter(): TemplateResult {
