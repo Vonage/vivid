@@ -161,6 +161,32 @@ describe('Side-drawer', () => {
 			await eventListenerPromise;
 			onClosed.should.have.been.called();
 		});
+
+		it('should fire closed event after pressing escape on the drawer', async () => {
+			const onClosed = chai.spy();
+
+			const [sideDrawerEl] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} type="modal" open></${COMPONENT_NAME}>`)
+			);
+			await sideDrawerEl.updateComplete;
+
+
+			const eventListenerPromise = new Promise((res) => {
+				sideDrawerEl.addEventListener('closed', () => {
+					onClosed();
+					res();
+				});
+			});
+
+			const keyboardEvent = new KeyboardEvent('keydown', { key: 'Escape' });
+			sideDrawerEl.dispatchEvent(keyboardEvent);
+
+			const event = new Event('transitionend');
+			sideDrawerEl.dispatchEvent(event);
+
+			await eventListenerPromise;
+			onClosed.should.have.been.called();
+		});
 	});
 
 	describe(`show`, function () {
