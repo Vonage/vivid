@@ -31,7 +31,7 @@
 		"@vonage/vvd-core": "2.17.0",
 		"@vonage/vwc-list": "2.17.0",
 		"@vonage/vwc-surface": "2.17.0",
-		"lit-element": "^2.4.0",
+		"lit-element": "~2.4.0",
 		"tslib": "^2.3.0"
 	},
 	"devDependencies": {
