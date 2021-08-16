@@ -63,7 +63,7 @@ export class VWCSideDrawerBase extends LitElement {
 	/**
 	 * Invoked when the element open state is updated.
 	 *
-	 * Expressions inside this method will trigger upon open state change
+	 * Expressions inside this method will trigger upon open state change.
 	 *
 	 * @param _isOpen Boolean of open state
 	 */ openChanged(
@@ -74,7 +74,7 @@ export class VWCSideDrawerBase extends LitElement {
 
 	constructor() {
 		super();
-		this.addEventListener('transitionend', () => this.#onTransitionEnd());
+		this.addEventListener('transitionend', () => this.onTransitionEnd());
 	}
 	/**
 	 * Opens the side drawer from the closed state.
@@ -109,7 +109,7 @@ export class VWCSideDrawerBase extends LitElement {
 	}
 
 	/**
-	 *
+	 * DispatchEvent creator.
 	 * @param eventName
 	 */
 	#createDispatchEvent(eventName: string) {
@@ -119,7 +119,7 @@ export class VWCSideDrawerBase extends LitElement {
 	}
 
 	/**
-	 * Notify close
+	 * Notify close.
 	 *
 	 * @fires SideDrawer#closed
 	 */
@@ -128,7 +128,7 @@ export class VWCSideDrawerBase extends LitElement {
 	}
 
 	/**
-	 * Notify open
+	 * Notify open.
 	 *
 	 * @fires SideDrawer#opened
 	 */
@@ -139,12 +139,13 @@ export class VWCSideDrawerBase extends LitElement {
 	disconnectedCallback(): void {
 		super.disconnectedCallback();
 		this.#releaseFocus();
-		this.removeEventListener('transitionend', () => this.#onTransitionEnd());
+		this.removeEventListener('transitionend', () => this.onTransitionEnd());
 	}
 
 	/**
-	 * Notify trap focus
+	 * Traps focus on root element and focuses the active navigation element.
 	 *
+	 * Notify trap focus.
 	 * @fires SideDrawer#trapFocus
 	 */
 	#trapFocus(): void {
@@ -153,8 +154,9 @@ export class VWCSideDrawerBase extends LitElement {
 	}
 
 	/**
-	 * Notify release focus
+	 * Releases focus trap from root element which was set by `trapFocus`.
 	 *
+	 * Notify release focus.
 	 * @fires SideDrawer#releaseFocus
 	 */
 	#releaseFocus(): void {
@@ -162,20 +164,29 @@ export class VWCSideDrawerBase extends LitElement {
 		this.#createDispatchEvent('releaseFocus');
 	}
 
-	#handleScrimClick(): void {
+	/**
+	 * Click handler to close side drawer when scrim is clicked.
+	 */
+	handleScrimClick(): void {
 		if (this.type === 'modal' && this.open) {
 			this.close();
 		}
 	}
 
-	#onKeydown({ key }: KeyboardEvent): void {
+	/**
+	 * Keydown handler to close side drawer when key is escape.
+	 */
+	onKeydown({ key }: KeyboardEvent): void {
 		console.log(this.type, this.open, key);
 		if (this.type === 'modal' && this.open && key === 'Escape') {
 			this.close();
 		}
 	}
 
-	#onTransitionEnd(): void {
+	/**
+	 * Handles the `transitionend` event when the side drawer finishes opening/closing.
+	 */
+	onTransitionEnd(): void {
 		if (this.type === 'modal') {
 			// when side drawer finishes open animation
 			if (this.open) {
@@ -208,7 +219,7 @@ export class VWCSideDrawerBase extends LitElement {
 			class="vvd-side-drawer--scrim ${this.absolute
 		? 'vvd-side-drawer--absolute'
 		: ''}"
-			@click="${this.#handleScrimClick}"
+			@click="${this.handleScrimClick}"
 		></div>`;
 	}
 
@@ -236,7 +247,7 @@ export class VWCSideDrawerBase extends LitElement {
 			<aside
 				part="${ifDefined(alternate)}"
 				class="side-drawer ${classMap(classes)}"
-				@keydown=${this.#onKeydown}
+				@keydown=${this.onKeydown}
 			>
 				${topBar}
 
