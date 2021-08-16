@@ -16,7 +16,7 @@ function animateModal(drawerElement) {
 	drawerElement.dispatchEvent(event);
 }
 
-describe.only('Side-drawer', () => {
+describe('Side-drawer', () => {
 	let addElement = isolatedElementsCreation();
 
 	it(`${COMPONENT_NAME} is defined as a custom element`, async () => {
