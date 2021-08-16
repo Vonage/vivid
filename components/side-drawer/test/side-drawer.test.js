@@ -10,8 +10,6 @@ import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-side-drawer';
-const COMPONENT_PROPERTIES = ['open', 'alternate', 'hasTopBar', 'absolute'];
-const COMPONENT_TYPES = ['', 'dismissible', 'modal'];
 
 
 describe('Side-drawer', () => {
@@ -59,6 +57,7 @@ describe('Side-drawer', () => {
 
 	describe('Side drawer attributes', () => {
 		it('should reflect from attribute to property', async () => {
+			const COMPONENT_PROPERTIES = ['open', 'alternate', 'hasTopBar', 'absolute'];
 			for await (const property of COMPONENT_PROPERTIES) {
 				const [actualElement] = addElement(
 					textToDomToParent(`<${COMPONENT_NAME} ${property}></${COMPONENT_NAME}>`)
@@ -69,6 +68,7 @@ describe('Side-drawer', () => {
 		});
 
 		it('should reflect (type) from attribute to property', async () => {
+			const COMPONENT_TYPES = ['', 'dismissible', 'modal'];
 			for await (const type of COMPONENT_TYPES) {
 				const [actualElement] = addElement(
 					textToDomToParent(`<${COMPONENT_NAME} type=${type}></${COMPONENT_NAME}>`)
