@@ -68,7 +68,6 @@ export class VWCSideDrawerBase extends LitElement {
 	) {
 		if (isOpen) {
 			this.show();
-			// wasOpen helps with first render (when it is `undefined`) perf
 		} else if (wasOpen !== undefined) {
 			this.hide();
 		}
@@ -117,27 +116,18 @@ export class VWCSideDrawerBase extends LitElement {
 		this.removeEventListener('transitionend', () => this.onTransitionEnd());
 	}
 
-	/**
-	 * Click handler to hide side drawer when scrim is clicked.
-	 */
 	handleScrimClick(): void {
 		if (this.type === 'modal' && this.open) {
 			this.hide();
 		}
 	}
 
-	/**
-	 * Keydown handler to hide side drawer when key is escape.
-	 */
 	onKeydown({ key }: KeyboardEvent): void {
 		if (this.type === 'modal' && this.open && key === 'Escape') {
 			this.hide();
 		}
 	}
 
-	/**
-	 * Handles the `transitionend` event when the side drawer finishes opening/closing.
-	 */
 	onTransitionEnd(): void {
 		if (this.type === 'modal') {
 			// when side drawer finishes open animation
@@ -150,10 +140,6 @@ export class VWCSideDrawerBase extends LitElement {
 		}
 	}
 
-	/**
-	 * the html markup
-	 * @internal
-	 * */
 	protected render(): TemplateResult {
 		const dismissible = this.type === 'dismissible' || this.type === 'modal';
 		const modal = this.type === 'modal';
@@ -187,26 +173,16 @@ export class VWCSideDrawerBase extends LitElement {
 		`;
 	}
 
-	/**
-	 * Side drawer finished open animation.
-	 */
 	#opened(): void {
 		this.#trapFocus();
 		this.#notifyOpen();
 	}
 
-	/**
-	 * Side drawer finished close animation.
-	 */
 	#closed(): void {
 		this.#releaseFocus();
 		this.#notifyClose();
 	}
 
-	/**
-	 * DispatchEvent creator.
-	 * @param eventName
-	 */
 	#createDispatchEvent(eventName: string) {
 		const init: CustomEventInit = {
 			bubbles: true,
@@ -216,51 +192,24 @@ export class VWCSideDrawerBase extends LitElement {
 		this.dispatchEvent(ev);
 	}
 
-	/**
-	 * Notify close.
-	 *
-	 * @fires SideDrawer#closed
-	 */
 	#notifyClose(): void {
 		this.#createDispatchEvent('closed');
 	}
 
-	/**
-	 * Notify open.
-	 *
-	 * @fires SideDrawer#opened
-	 */
 	#notifyOpen(): void {
 		this.#createDispatchEvent('opened');
 	}
 
-	/**
-	 * Traps focus on root element and focuses the active navigation element.
-	 *
-	 * Notify trap focus.
-	 * @fires SideDrawer#trapFocus
-	 */
 	#trapFocus(): void {
 		blockingElements.push(this);
 		this.#createDispatchEvent('trapFocus');
 	}
 
-	/**
-	 * Releases focus trap from root element which was set by `trapFocus`.
-	 *
-	 * Notify release focus.
-	 * @fires SideDrawer#releaseFocus
-	 */
 	#releaseFocus(): void {
 		blockingElements.remove(this);
 		this.#createDispatchEvent('releaseFocus');
 	}
 
-	/**
-	 * renderTopBar
-	 * @slot top-bar
-	 * @returns TemplateResult
-	 */
 	private renderTopBar(): TemplateResult {
 		return html`
 			<div class="vvd-side-drawer--top-bar">
@@ -268,12 +217,7 @@ export class VWCSideDrawerBase extends LitElement {
 			</div>`;
 	}
 
-	/**
-	 * renderScrim
-	 * @returns TemplateResult
-	 */
 	private renderScrim(): TemplateResult {
-		// eslint-disable-next-line lit-a11y/click-events-have-key-events
 		return html`
 			<div
 				class="vvd-side-drawer--scrim ${this.absolute

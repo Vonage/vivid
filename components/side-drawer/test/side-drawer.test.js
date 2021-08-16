@@ -11,7 +11,6 @@ chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-side-drawer';
 
-
 describe('Side-drawer', () => {
 	let addElement = isolatedElementsCreation();
 
