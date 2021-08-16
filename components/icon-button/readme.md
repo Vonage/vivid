@@ -20,9 +20,3 @@ This component is an extension of [<mwc-icon-button>](https://github.com/materia
 |----------------|----------------------------|
 | `blur`         | `(): void`                 |
 | `focus`        | `(): void`                 |
-
-## CSS Variables
-
-| CSS Variable      | Description     | 
-|---------------|---------------|
-| `--vvd-icon-color`   | `the color of the icon` - `Internal and might change - for coloring use connotoation attributes!` | 
