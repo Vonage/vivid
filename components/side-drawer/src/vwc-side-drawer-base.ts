@@ -71,27 +71,12 @@ export class VWCSideDrawerBase extends LitElement {
 		} else if (wasOpen !== undefined) {
 			this.hide();
 		}
-		this.openChanged(isOpen);
 	})
 	open = false;
 
 	constructor() {
 		super();
 		this.addEventListener('transitionend', () => this.onTransitionEnd());
-	}
-
-	/**
-	 * Invoked when the element open state is updated.
-	 *
-	 * Expressions inside this method will trigger upon open state change.
-	 *
-	 * @param _isOpen Boolean of open state
-	 */
-	openChanged(
-		// eslint-disable-next-line @typescript-eslint/no-unused-vars
-		_isOpen: boolean
-		// eslint-disable-next-line @typescript-eslint/no-empty-function
-	): void {
 	}
 
 	/**
