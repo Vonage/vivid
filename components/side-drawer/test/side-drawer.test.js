@@ -11,7 +11,12 @@ chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-side-drawer';
 
-describe('Side-drawer', () => {
+function animateModal(drawerElement) {
+	const event = new Event('transitionend');
+	drawerElement.dispatchEvent(event);
+}
+
+describe.only('Side-drawer', () => {
 	let addElement = isolatedElementsCreation();
 
 	it(`${COMPONENT_NAME} is defined as a custom element`, async () => {
@@ -83,13 +88,17 @@ describe('Side-drawer', () => {
 	});
 
 	describe('Modal side drawer events', () => {
+		let sideDrawerEl;
+
+		beforeEach(function () {
+			[sideDrawerEl] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} type="modal"></${COMPONENT_NAME}>`)
+			);
+		});
 		it('should fire opened event after animation completes and open is true', async () => {
 			const onOpened = chai.spy();
 			const onFocusTrapped = chai.spy();
 
-			const [sideDrawerEl] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} type="modal"></${COMPONENT_NAME}>`)
-			);
 			await sideDrawerEl.updateComplete;
 
 			const eventListenerPromise = new Promise((res) => {
@@ -104,8 +113,7 @@ describe('Side-drawer', () => {
 			});
 
 			sideDrawerEl.open = true;
-			const event = new Event('transitionend');
-			sideDrawerEl.dispatchEvent(event);
+			animateModal(sideDrawerEl);
 
 			await eventListenerPromise;
 			onOpened.should.have.been.called();
@@ -116,9 +124,7 @@ describe('Side-drawer', () => {
 			const onClosed = chai.spy();
 			const onFocusReleased = chai.spy();
 
-			const [sideDrawerEl] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} type="modal" open></${COMPONENT_NAME}>`)
-			);
+			sideDrawerEl.open = true;
 			await sideDrawerEl.updateComplete;
 
 			const eventListenerPromise = new Promise((res) => {
@@ -133,8 +139,7 @@ describe('Side-drawer', () => {
 			});
 
 			sideDrawerEl.open = false;
-			const event = new Event('transitionend');
-			sideDrawerEl.dispatchEvent(event);
+			animateModal(sideDrawerEl);
 
 			await eventListenerPromise;
 			onClosed.should.have.been.called();
@@ -144,9 +149,7 @@ describe('Side-drawer', () => {
 		it('should fire closed event after clicking on scrim', async () => {
 			const onClosed = chai.spy();
 
-			const [sideDrawerEl] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} type="modal" open></${COMPONENT_NAME}>`)
-			);
+			sideDrawerEl.open = true;
 			await sideDrawerEl.updateComplete;
 			const scrim = sideDrawerEl.shadowRoot.querySelector('.vvd-side-drawer--scrim');
 
@@ -159,8 +162,7 @@ describe('Side-drawer', () => {
 			});
 
 			scrim?.click();
-			const event = new Event('transitionend');
-			sideDrawerEl.dispatchEvent(event);
+			animateModal(sideDrawerEl);
 
 			await eventListenerPromise;
 			onClosed.should.have.been.called();
@@ -169,9 +171,7 @@ describe('Side-drawer', () => {
 		it('should fire closed event after pressing escape on the drawer', async () => {
 			const onClosed = chai.spy();
 
-			const [sideDrawerEl] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} type="modal" open></${COMPONENT_NAME}>`)
-			);
+			sideDrawerEl.open = true;
 			await sideDrawerEl.updateComplete;
 
 
@@ -185,8 +185,7 @@ describe('Side-drawer', () => {
 			const keyboardEvent = new KeyboardEvent('keydown', { key: 'Escape' });
 			sideDrawerEl.dispatchEvent(keyboardEvent);
 
-			const event = new Event('transitionend');
-			sideDrawerEl.dispatchEvent(event);
+			animateModal(sideDrawerEl);
 
 			await eventListenerPromise;
 			onClosed.should.have.been.called();
