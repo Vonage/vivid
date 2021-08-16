@@ -25,6 +25,7 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
+		"@material/mwc-ripple": "^0.21.0",
 		"@vonage/vvd-foundation": "2.17.0",
 		"@vonage/vvd-typography": "2.17.0",
 		"@vonage/vwc-icon": "2.17.0",

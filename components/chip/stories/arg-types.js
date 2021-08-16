@@ -23,6 +23,18 @@ export const argTypes = {
 			options: { true: '', false: undefined }
 		}
 	},
+	selected: {
+		control: {
+			type: 'inline-radio',
+			options: { true: '', false: undefined }
+		}
+	},
+	filter: {
+		control: {
+			type: 'inline-radio',
+			options: { true: '', false: undefined }
+		}
+	},
 	enlarged: {
 		control: {
 			type: 'inline-radio',

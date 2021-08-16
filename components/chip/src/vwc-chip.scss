@@ -65,7 +65,7 @@ $vvd-chip--block-size: --#{$namespace}--block-size;
 		#{$namespace-layout}--outline: 1px solid var(#{scheme-variables.$vvd-color-neutral-50});
 	}
 
-	&:not(.chip--selected) {
+	&:not(.vwc-chip--selected) {
 		#{$namespace-layout}--text: var(#{scheme-variables.$vvd-color-neutral-90});
 
 		:host(:not([layout])) &,
@@ -109,8 +109,20 @@ $vvd-chip--block-size: --#{$namespace}--block-size;
 	}
 }
 
+.vwc-chip__checkmark {
+	block-size: var(#{icon-variables.$icon-size-variable-name});
+	inline-size: var(#{icon-variables.$icon-size-variable-name});
+	@media (prefers-reduced-motion: no-preference) {
+		transition: width 0.2s;
+	}
+	.vwc-chip:not(.vwc-chip--selected) & {
+		display: none;
+		inline-size: 0;
+	}
+}
+
 // disable connotation if not selected
-// .vwc-chip:not(.chip--selected) {
+// .vwc-chip:not(.vwc-chip--selected) {
 // 	:host([connotation="cta"i]) & {
 // 		--vvd-color-connotation: unset;
 // 		--vvd-color-on-connotation: unset;

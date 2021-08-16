@@ -28,9 +28,6 @@ export class VWCChip extends LitElement {
 	@property({ type: String, reflect: true })
 	text?: string;
 
-	@property({ type: String, reflect: true })
-	icon?: string;
-
 	@property({ type: Boolean, reflect: true })
 	selected = false;
 
@@ -49,8 +46,8 @@ export class VWCChip extends LitElement {
 	@property({ type: String, reflect: true })
 	layout?: string;
 
-	@property({ type: String, reflect: true })
-	iconTrailing?: string;
+	@property({ type: Boolean, reflect: true })
+	filter = false;
 
 	protected renderIcon(type?: string, isTrailingIcon = false): TemplateResult | typeof nothing {
 		const classes = {
@@ -58,20 +55,29 @@ export class VWCChip extends LitElement {
 			'icon--trailing': isTrailingIcon
 		};
 
-		return type ?
-			html`<vwc-icon class="icon ${classMap(classes)}" .type="${type}"></vwc-icon>`
-			: nothing;
+		return html`<vwc-icon class="icon ${classMap(classes)}" .type="${type}"></vwc-icon>`;
+	}
+
+	protected renderChipFilter(): TemplateResult {
+		const classes = {
+			'vwc-chip--selected': this.selected,
+		};
+
+		return html`<button
+			@click="${() => this.selected = !this.selected}"
+			class="vwc-chip ${classMap(classes)}">
+			<span class="vwc-chip__checkmark">
+				${this.renderIcon('check-circle-solid')}
+			</span>
+			${this.text}
+		</button>`;
 	}
 
 	render(): TemplateResult {
-		const classes = {
-			'chip--selected': this.selected
-		};
-
-		return html`<span class="vwc-chip ${classMap(classes)}">
-			${this.renderIcon(this.icon)}
+		return this.filter
+			? this.renderChipFilter()
+			: html`<span class="vwc-chip">
 			${this.text}
-			${this.renderIcon(this.iconTrailing, true)}
 		</span>`;
 	}
 }

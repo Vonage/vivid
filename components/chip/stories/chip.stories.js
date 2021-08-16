@@ -30,9 +30,10 @@ export const Outlined = createStory({
 	layout: "outlined"
 });
 
-export const WithIcon = createStory({
-	text: "With Icon",
-	icon: "check-circle-solid"
+export const Selected = createStory({
+	text: "selected",
+	filter: true,
+	selected: true
 });
 
 export const WithTrailingIcon = createStory({
