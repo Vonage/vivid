@@ -6,7 +6,6 @@ import {
 } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import { classMap } from 'lit-html/directives/class-map';
-import { observer } from '@material/mwc-base/observer';
 import { DocumentWithBlockingElements } from 'blocking-elements';
 
 const blockingElements =
@@ -61,22 +60,7 @@ export class VWCSideDrawerBase extends LitElement {
 		type: Boolean,
 		reflect: true
 	})
-	@observer(function (
-		this: VWCSideDrawerBase,
-		isOpen: boolean,
-		wasOpen: boolean
-	) {
-		if (isOpen) {
-			this.show();
-		} else if (wasOpen !== undefined) {
-			this.hide();
-		}
-	})
 	open = false;
-
-	constructor() {
-		super();
-	}
 
 	/**
 	 * Opens the side drawer from the closed state.
