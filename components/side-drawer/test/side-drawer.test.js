@@ -33,7 +33,7 @@ describe('Side-drawer', () => {
 
 	describe('Side drawer default init', () => {
 		it('should reflect from attribute to property', async () => {
-			const [actualElement] = (
+			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
 
@@ -195,7 +195,7 @@ describe('Side-drawer', () => {
 
 	describe(`show`, function () {
 		it(`should set "open" to true`, function () {
-			const [actualElement] = (
+			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
 			actualElement.open = false;
@@ -208,7 +208,7 @@ describe('Side-drawer', () => {
 
 	describe(`hide`, function () {
 		it(`should set "open" to false`, function () {
-			const [actualElement] = (
+			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
 			actualElement.open = true;
