@@ -1,17 +1,17 @@
+import 'blocking-elements';
+import 'wicg-inert';
+
 import {
 	html, LitElement, TemplateResult, property,
 } from 'lit-element';
-import { nothing } from 'lit-html';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import { classMap } from 'lit-html/directives/class-map';
+import { observer } from '@material/mwc-base/observer';
+import { DocumentWithBlockingElements } from 'blocking-elements';
 
-/**
- * @slot header - The content of the header.
- * @slot navigation - For vwc-list-item, vwc-list-expansion-panel, paragraph etc.
- *
- * @summary This is MyElement
- *
- */
+const blockingElements =
+	(document as DocumentWithBlockingElements).$blockingElements;
+
 export class VWCSideDrawerBase extends LitElement {
 	/**
 	 * @prop alternate - [Applies scheme alternate region](../../common/scheme/readme.md)
@@ -29,6 +29,180 @@ export class VWCSideDrawerBase extends LitElement {
 	@property({ type: Boolean, reflect: true })
 	hasTopBar?: boolean;
 
+	/**
+	 * @prop type - can be modal, dismissible or empty
+	 * accepts String value
+	 * @public
+	 * */
+	@property({ type: String, reflect: true })
+	type = '';
+
+	/**
+	 * @prop absolute - the modal can be fixed or absolute
+	 * accepts Boolean value
+	 * @public
+	 * */
+	@property({ type: Boolean, reflect: true })
+	absolute = false;
+
+	@property({ type: Boolean, reflect: true })
+	@observer(function (
+		this: VWCSideDrawerBase,
+		isOpen: boolean,
+		wasOpen: boolean
+	) {
+		if (isOpen) {
+			this.show();
+			// wasOpen helps with first render (when it is `undefined`) perf
+		} else if (wasOpen !== undefined) {
+			this.close();
+		}
+		this.openChanged(isOpen);
+	})
+	open = false;
+	/**
+	 * Invoked when the element open state is updated.
+	 *
+	 * Expressions inside this method will trigger upon open state change.
+	 *
+	 * @param _isOpen Boolean of open state
+	 */ openChanged(
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
+		_isOpen: boolean
+		// eslint-disable-next-line @typescript-eslint/no-empty-function
+	): void {}
+
+	constructor() {
+		super();
+		this.addEventListener('transitionend', () => this.onTransitionEnd());
+	}
+	/**
+	 * Opens the side drawer from the closed state.
+	 * @public
+	 */
+	show(): void {
+		this.open = true;
+	}
+
+	/**
+	 * Closes the side drawer from the open state.
+	 * @public
+	 */
+	close(): void {
+		this.open = false;
+	}
+
+	/**
+	 * Side drawer finished open animation.
+	 */
+	#opened(): void {
+		this.#trapFocus();
+		this.#notifyOpen();
+	}
+
+	/**
+	 * Side drawer finished close animation.
+	 */
+	#closed(): void {
+		this.#releaseFocus();
+		this.#notifyClose();
+	}
+
+	/**
+	 * DispatchEvent creator.
+	 * @param eventName
+	 */
+	#createDispatchEvent(eventName: string) {
+		const init: CustomEventInit = { bubbles: true, composed: true };
+		const ev = new CustomEvent(eventName, init);
+		this.dispatchEvent(ev);
+	}
+
+	/**
+	 * Notify close.
+	 *
+	 * @fires SideDrawer#closed
+	 */
+	#notifyClose(): void {
+		this.#createDispatchEvent('closed');
+	}
+
+	/**
+	 * Notify open.
+	 *
+	 * @fires SideDrawer#opened
+	 */
+	#notifyOpen(): void {
+		this.#createDispatchEvent('opened');
+	}
+
+	disconnectedCallback(): void {
+		super.disconnectedCallback();
+		this.#releaseFocus();
+		this.removeEventListener('transitionend', () => this.onTransitionEnd());
+	}
+
+	/**
+	 * Traps focus on root element and focuses the active navigation element.
+	 *
+	 * Notify trap focus.
+	 * @fires SideDrawer#trapFocus
+	 */
+	#trapFocus(): void {
+		blockingElements.push(this);
+		this.#createDispatchEvent('trapFocus');
+	}
+
+	/**
+	 * Releases focus trap from root element which was set by `trapFocus`.
+	 *
+	 * Notify release focus.
+	 * @fires SideDrawer#releaseFocus
+	 */
+	#releaseFocus(): void {
+		blockingElements.remove(this);
+		this.#createDispatchEvent('releaseFocus');
+	}
+
+	/**
+	 * Click handler to close side drawer when scrim is clicked.
+	 */
+	handleScrimClick(): void {
+		if (this.type === 'modal' && this.open) {
+			this.close();
+		}
+	}
+
+	/**
+	 * Keydown handler to close side drawer when key is escape.
+	 */
+	onKeydown({ key }: KeyboardEvent): void {
+		console.log(this.type, this.open, key);
+		if (this.type === 'modal' && this.open && key === 'Escape') {
+			this.close();
+		}
+	}
+
+	/**
+	 * Handles the `transitionend` event when the side drawer finishes opening/closing.
+	 */
+	onTransitionEnd(): void {
+		if (this.type === 'modal') {
+			// when side drawer finishes open animation
+			if (this.open) {
+				this.#opened();
+			} else {
+				// when side drawer finishes close animation
+				this.#closed();
+			}
+		}
+	}
+
+	/**
+	 * renderTopBar
+	 * @slot top-bar
+	 * @returns TemplateResult
+	 */
 	private renderTopBar(): TemplateResult {
 		return html`<div class="vvd-side-drawer--top-bar">
 			<slot name="top-bar"></slot>
@@ -36,36 +210,53 @@ export class VWCSideDrawerBase extends LitElement {
 	}
 
 	/**
+	 * renderScrim
+	 * @returns TemplateResult
+	 */
+	private renderScrim(): TemplateResult {
+		// eslint-disable-next-line lit-a11y/click-events-have-key-events
+		return html`<div
+			class="vvd-side-drawer--scrim ${this.absolute
+		? 'vvd-side-drawer--absolute'
+		: ''}"
+			@click="${this.handleScrimClick}"
+		></div>`;
+	}
+
+	/**
 	 * the html markup
 	 * @internal
 	 * */
 	protected render(): TemplateResult {
-		const topBar = this.hasTopBar
-			? this.renderTopBar()
-			: nothing;
-
-		const alternate = this.alternate
-			? 'vvd-scheme-alternate'
-			: undefined;
+		const dismissible = this.type === 'dismissible' || this.type === 'modal';
+		const modal = this.type === 'modal';
+		const topBar = this.hasTopBar ? this.renderTopBar() : '';
+		const scrim = this.type === 'modal' && this.open ? this.renderScrim() : '';
+		const alternate = this.alternate ? 'vvd-scheme-alternate' : undefined;
+		const absolute = this.type === 'modal' && this.absolute;
 
 		const classes = {
 			'vvd-side-drawer--alternate': this.alternate,
-			// 'vvd-side-drawer--modal': this.modal, // !@rinaok use with modal
+			'vvd-side-drawer--dismissible': dismissible,
+			'vvd-side-drawer--modal': modal,
+			'vvd-side-drawer--open': this.open,
+			'vvd-side-drawer--absolute': absolute,
 		};
 
 		return html`
 			<aside
 				part="${ifDefined(alternate)}"
 				class="side-drawer ${classMap(classes)}"
+				@keydown=${this.onKeydown}
 			>
-
 				${topBar}
 
 				<div class="vvd-side-drawer--content">
 					<slot></slot>
 				</div>
-
 			</aside>
+
+			${scrim}
 		`;
 	}
 }
