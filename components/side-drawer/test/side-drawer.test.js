@@ -163,4 +163,26 @@ describe('Side-drawer', () => {
 			onClosed.should.have.been.called();
 		});
 	});
+
+	describe(`show`, function () {
+		it(`should set "open" to true`, function () {
+			const [actualElement] = (
+				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+			);
+			actualElement.open = false;
+			actualElement.show();
+			expect(actualElement.open).to.equal(true);
+		});
+	});
+
+	describe(`hide`, function () {
+		it(`should set "open" to false`, function () {
+			const [actualElement] = (
+				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+			);
+			actualElement.open = true;
+			actualElement.hide();
+			expect(actualElement.open).to.equal(false);
+		});
+	});
 });
