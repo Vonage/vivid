@@ -80,7 +80,7 @@ describe('Side-drawer', () => {
 	});
 
 	describe('Modal side drawer events', () => {
-		it('should fire opened event after changing from close to open', async () => {
+		it('should fire opened event after animation completes and open is true', async () => {
 			const onOpened = chai.spy();
 			const onFocusTrapped = chai.spy();
 
@@ -100,7 +100,7 @@ describe('Side-drawer', () => {
 				});
 			});
 
-			sideDrawerEl.show();
+			sideDrawerEl.open = true;
 			const event = new Event('transitionend');
 			sideDrawerEl.dispatchEvent(event);
 
@@ -109,7 +109,7 @@ describe('Side-drawer', () => {
 			onFocusTrapped.should.have.been.called();
 		});
 
-		it('should fire closed event after changing from open to close', async () => {
+		it('should fire closed event after animation completes and open is false', async () => {
 			const onClosed = chai.spy();
 			const onFocusReleased = chai.spy();
 
@@ -129,7 +129,7 @@ describe('Side-drawer', () => {
 				});
 			});
 
-			sideDrawerEl.close();
+			sideDrawerEl.open = false;
 			const event = new Event('transitionend');
 			sideDrawerEl.dispatchEvent(event);
 
