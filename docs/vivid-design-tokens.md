@@ -81,7 +81,7 @@ $vvd-color-warning-20
 
 #### Theme Support
 
-Vivid has theme support via CSS variables.  For instance, we have `on-base` as well as `base` colors along with `primary and `on-primary` colors.  This allows developers to set the style once, and just by using a theme, have the colors change accordingly.
+Vivid has theme support via CSS variables.  For instance, we have `on-canvas` as well as `canvas` colors along with `primary and `on-primary` colors.  This allows developers to set the style once, and just by using a theme, have the colors change accordingly.
 
 
 #### Usage of the Variables
@@ -92,8 +92,8 @@ In the following example, the css variables are being used in order to set the c
 ```
 ::slotted(#{vwc-button}) {
 	--mdc-theme-primary: var(#{scheme-variables.$vvd-color-neutral-30});
-	--mdc-theme-on-primary: var(#{scheme-variables.$vvd-color-on-base});
-	--mdc-ripple-color: var(#{scheme-variables.$vvd-color-on-base});
+	--mdc-theme-on-primary: var(#{scheme-variables.$vvd-color-on-canvas});
+	--mdc-ripple-color: var(#{scheme-variables.$vvd-color-on-canvas});
 	--mdc-ripple-focus-opacity: 0;
 }
 
@@ -110,7 +110,7 @@ In the following example, the css variables are being used in order to set the c
 ```
 
 
-In the example above, we set the colors of a slotted  `vwc-button` to be of color `neutral-30`.  The on color is set using the `$vvd-color-on-base`.  That means that the color will change when we change the theme.
+In the example above, we set the colors of a slotted  `vwc-button` to be of color `neutral-30`.  The on color is set using the `$vvd-color-on-canvas`.  That means that the color will change when we change the theme.
 
 In the `accent` part, we set a different background color using the `primary` color variable. When changing the theme, it will automatically take the `inverse` color.
 
@@ -146,14 +146,14 @@ Now that we understand how to select the right variable, using it in our compone
 @include color-connotation.connotations-shades-default(primary);
 
 ::slotted([group-button]) {
-  --mdc-theme-on-primary: var(#{scheme-variables.$vvd-color-on-base});
+  --mdc-theme-on-primary: var(#{scheme-variables.$vvd-color-on-canvas});
   --mdc-theme-primary: var(#{color-connotation.$vvd-color-connotation-soft});
 }
 
 ```
 
 
-Notice the @use and @include calls which expose the variables we need. Then the usage as `color-connotation.$vvd-color-connontation-soft` and `scheme-variables.$vvd-color-on-base`.
+Notice the @use and @include calls which expose the variables we need. Then the usage as `color-connotation.$vvd-color-connontation-soft` and `scheme-variables.$vvd-color-on-canvas`.
 
 
 ### Use the correct variable in a component
@@ -175,7 +175,7 @@ $scopes: button icon-button; // define the states
 @each $scope in $scopes {
   ::slotted(vwc-#{$scope}) {
    --vvd-#{$scope}-background-color: var(#{color-connotation.$vvd-color-connotation-soft});
-   --vvd-#{$scope}-color: var(#{scheme-variables.$vvd-color-on-base});
+   --vvd-#{$scope}-color: var(#{scheme-variables.$vvd-color-on-canvas});
    --vvd-#{$scope}-shape: var(#{$vvd-button-toggle-group-shape});
   }
 }

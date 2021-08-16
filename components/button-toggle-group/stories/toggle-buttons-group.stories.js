@@ -57,8 +57,8 @@ Accent.args = { };
 const MultiTemplate = args => html`<vwc-button-toggle-group multi>
 	<vwc-button label="Standard"></vwc-button>
 	<vwc-button label="Hybrid"></vwc-button>
-	<vwc-icon-button icon="home"></vwc-icon-button>
-	<vwc-button label="Satellite"></vwc-button>
+	<vwc-icon-button icon="home" selected></vwc-icon-button>
+	<vwc-button label="Satellite" selected></vwc-button>
 </vwc-button-toggle-group>`;
 
 export const Multi = MultiTemplate.bind({});

@@ -1,5 +1,4 @@
 @use 'sass:selector';
-
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '../../functions';
 @use 'predefined-connotations';
@@ -27,13 +26,7 @@ $on-connotation-variable: #{variables.$vvd-on-color-connotation} !default;
 	@each $name in functions.pick-list($connotations-set, $_connotations-definition) {
 		$compound: '[connotation="#{$name}" i]';
 
-		$local-selector: selector.replace(
-			#{$selector},
-			#{variables.$compound-placeholder},
-			#{$compound}
-		);
-
-		#{$local-selector} {
+		#{functions.get-local-selector($selector, variables.$compound-placeholder, $compound)} {
 			@include connotation-main-variables($name);
 		}
 	}
@@ -42,13 +35,7 @@ $on-connotation-variable: #{variables.$vvd-on-color-connotation} !default;
 @mixin connotations-main-default($name) {
 	$compound: ':not([connotation])';
 
-	$local-selector: selector.replace(
-		#{$selector},
-		#{variables.$compound-placeholder},
-		#{$compound}
-	);
-
-	#{$local-selector} {
+	#{functions.get-local-selector($selector, variables.$compound-placeholder, $compound)} {
 		@include connotation-main-variables($name);
 	}
 }
