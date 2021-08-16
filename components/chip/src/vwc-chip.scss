@@ -1,6 +1,8 @@
 $namespace: --vvd-chip;
-$namespace-layout: #{$namespace}-layout;
-$namespace-shape: #{$namespace}-shape;
+$namespace-layout: #{$namespace}--layout;
+$namespace-shape: #{$namespace}--shape;
+$namespace-block-size: #{$namespace}--block-size;
+$namespace-icon-size: #{$namespace}__icon--size;
 
 @use '@vonage/vwc-icon/src/partials/vwc-icon-variables' as icon-variables;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
@@ -17,7 +19,6 @@ $namespace-shape: #{$namespace}-shape;
 	$variable-prefix: #{$namespace-layout}
 );
 
-$vvd-chip--block-size: --#{$namespace}--block-size;
 
 @include color-connotation.connotations-shades;
 @include color-connotation.connotations-shades-default(primary);
@@ -37,17 +38,20 @@ $vvd-chip--block-size: --#{$namespace}--block-size;
 
 :host(:not([dense]):not([enlarged])) {
 	@include typography.typography-cat-shorthand('body-2-bold');
-	#{$vvd-chip--block-size}: 24px;
+	#{$namespace-block-size}: 24px;
+	#{$namespace-icon-size}: 16px;
 }
 
 :host([dense]) {
 	@include typography.typography-cat-shorthand('caption-bold');
-	#{$vvd-chip--block-size}: 20px;
+	#{$namespace-block-size}: 20px;
+	#{$namespace-icon-size}: 12px;
 }
 
 :host([enlarged]) {
 	@include typography.typography-cat-shorthand('body-1-bold');
-	#{$vvd-chip--block-size}: 28px;
+	#{$namespace-block-size}: 28px;
+	#{$namespace-icon-size}: 20px;
 }
 
 .vwc-chip {
@@ -57,7 +61,7 @@ $vvd-chip--block-size: --#{$namespace}--block-size;
 	background-color: var(#{$namespace-layout}--fill);
 	border-radius: var(#{$namespace-shape});
 	color: var(#{$namespace-layout}--text);
-	line-height: var(#{$vvd-chip--block-size});
+	line-height: var(#{$namespace-block-size});
 
 	// &:active {
 	// }
@@ -90,6 +94,7 @@ $vvd-chip--block-size: --#{$namespace}--block-size;
 
 .icon {
 	$margin: 8px;
+	#{icon-variables.$icon-size-variable-name}: var(#{$namespace-icon-size});
 
 	&.icon--leading {
 		margin-inline-end: $margin;
@@ -97,23 +102,14 @@ $vvd-chip--block-size: --#{$namespace}--block-size;
 	&.icon--trailing {
 		margin-inline-start: $margin;
 	}
-
-	:host(:not([dense]):not([enlarged])) & {
-		#{icon-variables.$icon-size-variable-name}: 16px;
-	}
-	:host([dense]) & {
-		#{icon-variables.$icon-size-variable-name}: 12px;
-	}
-	:host([enlarged]) & {
-		#{icon-variables.$icon-size-variable-name}: 20px;
-	}
 }
 
 .vwc-chip__checkmark {
-	block-size: var(#{icon-variables.$icon-size-variable-name});
-	inline-size: var(#{icon-variables.$icon-size-variable-name});
+	overflow: hidden;
+	block-size: var(#{$namespace-icon-size});
+	inline-size: var(#{$namespace-icon-size});
 	@media (prefers-reduced-motion: no-preference) {
-		transition: width 0.2s;
+		transition: inline-size 0.2s;
 	}
 	.vwc-chip:not(.vwc-chip--selected) & {
 		display: none;
