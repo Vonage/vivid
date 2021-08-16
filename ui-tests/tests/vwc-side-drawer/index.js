@@ -1,31 +1,21 @@
-import '@vonage/vwc-side-drawer/vwc-side-drawer.js';
+import '@vonage/vwc-side-drawer';
 import '@vonage/vwc-list/vwc-list-expansion-panel.js';
-import { styleMap } from 'lit-html/directives/style-map';
-import { html } from 'lit-element';
-import { spread } from '@open-wc/lit-helpers';
-import { argTypes } from './arg-types.js';
+import '@vonage/vwc-list/vwc-list.js';
+import '@vonage/vwc-list/vwc-list-item.js';
+import '@vonage/vwc-icon/vwc-icon.js';
+import { snapshotTheWholePage } from '../../utils/testPageUtils';
 
-export default {
-	title: 'Alpha/Components/Side Drawer',
-	component: 'vwc-side-drawer',
-	argTypes
-};
-
-let prevActivatedItem;
-
-const titleStyles = {
-	color: "#C0C0C0",
-	fontWeight: "bold",
-};
-
-const Template = args => html`
+export async function createElementVariations(wrapper) {
+	snapshotTheWholePage(wrapper);
+	const elementWrapper = document.createElement('div');
+	elementWrapper.innerHTML = `
 	<style>
 		div#demo {
 			position: relative;
 			display: flex;
 			width: 960px;
-			height: 540px;
-			margin: auto;
+			height: 400px;
+			margin: 10px;
 			background-color: #eee;
 			border-radius: 10px;
 			overflow: hidden;
@@ -44,8 +34,11 @@ const Template = args => html`
 		}
 	</style>
 
+
+	<div>
+
 	<div id="demo">
-		<vwc-side-drawer id="side-drawer" ...=${spread(args)} @click="${onClick}">
+		<vwc-side-drawer id="side-drawer" alternate>
 			<span slot="top-bar">
 				<vwc-icon type="vonage-mono"></vwc-icon> VONAGE
 			</span>
@@ -59,7 +52,7 @@ const Template = args => html`
 					<vwc-icon slot="graphic" type="home-line"></vwc-icon>1st level item
 				</vwc-list-item>
 
-				<p style=${styleMap(titleStyles)}>SECTION TITLE</p>
+				<p>SECTION TITLE</p>
 
 				<vwc-list-item shape="rounded" graphic="icon">
 					<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
@@ -77,10 +70,32 @@ const Template = args => html`
 						<vwc-list-item shape="rounded">3rd level item</vwc-list-item>
 					</vwc-list-expansion-panel>
 				</vwc-list-expansion-panel>
+			</vwc-list>
 
-				<p style=${styleMap(titleStyles)}>SECTION TITLE</p>
+		</vwc-side-drawer>
 
-				<vwc-list-expansion-panel >
+		<div id="default"></div>
+	</div>
+
+
+	<div id="demo">
+		<vwc-side-drawer id="side-drawer" hasTopBar type="modal" absolute open>
+			<span slot="top-bar">
+				<vwc-icon type="vonage-mono"></vwc-icon> VONAGE
+			</span>
+
+			<vwc-list
+					innerRole="navigation"
+					innerAriaLabel="Primary navigation"
+					itemRoles="link"
+				>
+				<vwc-list-item shape="rounded" graphic="icon">
+					<vwc-icon slot="graphic" type="home-line"></vwc-icon>1st level item
+				</vwc-list-item>
+
+				<p>SECTION TITLE</p>
+
+				<vwc-list-expansion-panel open>
 					<vwc-list-item slot="header" shape="rounded" graphic="icon">
 						<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
 					</vwc-list-item>
@@ -93,34 +108,10 @@ const Template = args => html`
 
 		<div id="default"></div>
 	</div>
-`;
 
-function onClick(e) {
-	// only list items can be activated
-	if (e.target.localName !== "vwc-list-item") {
-		return;
-	}
-	if (e.target.slot === "header") {
-		return;
-	}
-	if (typeof prevActivatedItem !== 'undefined') {
-		prevActivatedItem.activated = false;
-	}
-	prevActivatedItem = e.target;
-	prevActivatedItem.activated = true;
+	</div>
+`;
+wrapper.appendChild(elementWrapper);
 }
 
-export const Basic = Template.bind({});
-Basic.args = { };
 
-export const Alternate = Template.bind({});
-Alternate.args = { alternate: true };
-
-export const TopBar = Template.bind({});
-TopBar.args = { hasTopBar: true };
-
-export const Dismissible = Template.bind({});
-Dismissible.args = { type: 'dismissible', open: true };
-
-export const Modal = Template.bind({});
-Modal.args = { type: 'modal', open: true };
