@@ -34,13 +34,13 @@ $sizes: (
 
 @each $scope in $scopes {
 	::slotted(vwc-#{$scope}) {
-		--vvd-#{$scope}-background-color: var(#{scheme-variables.$vvd-color-neutral-30});
-		--vvd-#{$scope}-color: var(#{scheme-variables.$vvd-color-on-canvas});
+		--vvd-#{$scope}-layout--fill: var(#{scheme-variables.$vvd-color-neutral-30});
+		--vvd-#{$scope}-layout--text: var(#{scheme-variables.$vvd-color-on-canvas});
 		--vvd-#{$scope}-shape: var(#{$vvd-toggle-button-group-shape});
 	}
 
 	::slotted(vwc-#{$scope}[selected]) {
-		--vvd-#{$scope}-background-color: var(#{scheme-variables.$vvd-color-neutral-50});
+		--vvd-#{$scope}-layout--fill: var(#{scheme-variables.$vvd-color-neutral-50});
 	}
 
 	:host([accent]) {
@@ -59,12 +59,12 @@ $sizes: (
 		}
 
 		::slotted(vwc-#{$scope}[selected]) {
-			--vvd-#{$scope}-background-color: var(#{scheme-variables.$vvd-color-primary});
-			--vvd-#{$scope}-color: var(#{scheme-variables.$vvd-color-on-primary});
+			--vvd-#{$scope}-layout--fill: var(#{scheme-variables.$vvd-color-primary});
+			--vvd-#{$scope}-layout--text: var(#{scheme-variables.$vvd-color-on-primary});
 		}
 
 		::slotted(vwc-#{$scope}:hover:not([selected])) {
-			--vvd-#{$scope}-background-color: var(#{scheme-variables.$vvd-color-neutral-50});
+			--vvd-#{$scope}-layout--fill: var(#{scheme-variables.$vvd-color-neutral-50});
 		}
 	}
 
@@ -77,7 +77,7 @@ $sizes: (
 	}
 
 	::slotted(vwc-#{$scope}:hover:not([selected])) {
-		--vvd-#{$scope}-background-color: var(#{scheme-variables.$vvd-color-neutral-40});
+		--vvd-#{$scope}-layout--fill: var(#{scheme-variables.$vvd-color-neutral-40});
 	}
 
 	::slotted(vwc-#{$scope}:not(:first-child):not(:last-child)) {
@@ -105,8 +105,8 @@ $sizes: (
 	}
 
 	:host([disabled]) ::slotted(vwc-#{$scope}), :host([disabled][accent]) ::slotted(vwc-#{$scope}[selected]) {
-		--vvd-#{$scope}-background-color: var(#{scheme-variables.$vvd-color-neutral-30});
-		--vvd-#{$scope}-color: var(#{scheme-variables.$vvd-color-neutral-50});
+		--vvd-#{$scope}-layout--fill: var(#{scheme-variables.$vvd-color-neutral-30});
+		--vvd-#{$scope}-layout--text: var(#{scheme-variables.$vvd-color-neutral-50});
 		pointer-events: none;
 	}
 
