@@ -76,7 +76,7 @@ export class VWCSideDrawerBase extends LitElement {
 
 	constructor() {
 		super();
-		this.addEventListener('transitionend', () => this.onTransitionEnd());
+		this.addEventListener('transitionend', () => this.#onTransitionEnd());
 	}
 
 	/**
@@ -98,31 +98,7 @@ export class VWCSideDrawerBase extends LitElement {
 	disconnectedCallback(): void {
 		super.disconnectedCallback();
 		this.#releaseFocus();
-		this.removeEventListener('transitionend', () => this.onTransitionEnd());
-	}
-
-	handleScrimClick(): void {
-		if (this.type === 'modal' && this.open) {
-			this.hide();
-		}
-	}
-
-	onKeydown({ key }: KeyboardEvent): void {
-		if (this.type === 'modal' && this.open && key === 'Escape') {
-			this.hide();
-		}
-	}
-
-	onTransitionEnd(): void {
-		if (this.type === 'modal') {
-			// when side drawer finishes open animation
-			if (this.open) {
-				this.#opened();
-			} else {
-				// when side drawer finishes hide animation
-				this.#closed();
-			}
-		}
+		this.removeEventListener('transitionend', () => this.#onTransitionEnd());
 	}
 
 	protected render(): TemplateResult {
@@ -145,7 +121,7 @@ export class VWCSideDrawerBase extends LitElement {
 			<aside
 				part="${ifDefined(alternate)}"
 				class="side-drawer ${classMap(classes)}"
-				@keydown=${this.onKeydown}
+				@keydown=${this.#onKeydown}
 			>
 				${topBar}
 
@@ -156,6 +132,47 @@ export class VWCSideDrawerBase extends LitElement {
 
 			${scrim}
 		`;
+	}
+
+	private renderTopBar(): TemplateResult {
+		return html`
+			<div class="vvd-side-drawer--top-bar">
+				<slot name="top-bar"></slot>
+			</div>`;
+	}
+
+	private renderScrim(): TemplateResult {
+		return html`
+			<div
+				class="vvd-side-drawer--scrim ${this.absolute
+		? 'vvd-side-drawer--absolute'
+		: ''}"
+				@click="${this.#handleScrimClick}"
+			></div>`;
+	}
+
+	#handleScrimClick(): void {
+		if (this.type === 'modal' && this.open) {
+			this.hide();
+		}
+	}
+
+	#onKeydown({ key }: KeyboardEvent): void {
+		if (this.type === 'modal' && this.open && key === 'Escape') {
+			this.hide();
+		}
+	}
+
+	#onTransitionEnd(): void {
+		if (this.type === 'modal') {
+			// when side drawer finishes open animation
+			if (this.open) {
+				this.#opened();
+			} else {
+				// when side drawer finishes hide animation
+				this.#closed();
+			}
+		}
 	}
 
 	#opened(): void {
@@ -193,22 +210,5 @@ export class VWCSideDrawerBase extends LitElement {
 	#releaseFocus(): void {
 		blockingElements.remove(this);
 		this.#createDispatchEvent('releaseFocus');
-	}
-
-	private renderTopBar(): TemplateResult {
-		return html`
-			<div class="vvd-side-drawer--top-bar">
-				<slot name="top-bar"></slot>
-			</div>`;
-	}
-
-	private renderScrim(): TemplateResult {
-		return html`
-			<div
-				class="vvd-side-drawer--scrim ${this.absolute
-		? 'vvd-side-drawer--absolute'
-		: ''}"
-				@click="${this.handleScrimClick}"
-			></div>`;
 	}
 }
