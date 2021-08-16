@@ -130,7 +130,6 @@ export class VWCSideDrawerBase extends LitElement {
 	 * Keydown handler to hide side drawer when key is escape.
 	 */
 	onKeydown({ key }: KeyboardEvent): void {
-		console.log(this.type, this.open, key);
 		if (this.type === 'modal' && this.open && key === 'Escape') {
 			this.hide();
 		}
