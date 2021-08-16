@@ -1,0 +1,9 @@
+$vvd-scrim--background-color: --vvd-scrim--background-color;
+$vvd-scrim--opacity: --vvd-scrim--opacity;
+
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
+
+@mixin scrim-variables {
+	#{$vvd-scrim--background-color}: var(#{scheme-variables.$vvd-color-neutral});
+	#{$vvd-scrim--opacity}: 0.32;
+}
