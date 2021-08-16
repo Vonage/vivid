@@ -5,7 +5,7 @@ $surface-border-radius: --vvd-surface-border-radius;
 
 :host {
 	.mdc-menu-surface {
-		background-color: var(#{scheme-variables.$vvd-color-base});
+		background-color: var(#{scheme-variables.$vvd-color-canvas});
 		border-radius: var(#{$surface-border-radius}, $default-surface-border-radius);
 		box-shadow: 0 6px 8px rgba(0, 0, 0, 0.05), 0 12px 16px rgba(0, 0, 0, 0.05), 0 4px 24px rgba(0, 0, 0, 0.1);
 	}

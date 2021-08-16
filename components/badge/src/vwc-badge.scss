@@ -1,4 +1,6 @@
-$namespace: vvd-badge;
+$namespace: --vvd-badge;
+$namespace-layout: #{$namespace}-layout;
+$namespace-shape: #{$namespace}-shape;
 
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-typography/scss/typography' as typography;
@@ -7,18 +9,20 @@ $namespace: vvd-badge;
 );
 
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
-	$variable-name: --#{$namespace}-shape
+	$variable-name: #{$namespace-shape}
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout-mixins' as layout-mixins with (
 	$layouts: filled	outlined	soft,
-	$variables-scope-prefix: #{$namespace}
+	$variable-prefix: #{$namespace-layout}
 );
 
-$vvd-badge-block-size: --#{$namespace}-block-size;
+$vvd-badge--block-size: --#{$namespace}--block-size;
 
-@include color-connotation.connotations-shades;
-@include color-connotation.connotations-main;
 @include color-connotation.connotations-main-default(primary);
+@include color-connotation.connotations-main;
+
+@include color-connotation.connotations-shades-default(primary);
+@include color-connotation.connotations-shades;
 
 @include shape-mixins.shape(
 	$shapes: (
@@ -28,28 +32,29 @@ $vvd-badge-block-size: --#{$namespace}-block-size;
 );
 
 @include layout-mixins.layout();
+@include layout-mixins.layout-default(filled);
 
 :host {
-	#{$vvd-badge-block-size}: 24px;
+	#{$vvd-badge--block-size}: 24px;
 }
 
 :host([dense]) {
-	#{$vvd-badge-block-size}: 20px;
+	#{$vvd-badge--block-size}: 20px;
 }
 
 :host([enlarged]) {
-	#{$vvd-badge-block-size}: 28px;
+	#{$vvd-badge--block-size}: 28px;
 }
 
 .vwc-badge {
 	@include typography.typography-cat-shorthand('caption-bold');
 	display: inline-block;
 	padding: 0 10px;
-	border: var(--#{$namespace}-border);
-	background-color: var(--#{$namespace}-background-color);
-	border-radius: var(--#{$namespace}-shape);
-	color: var(--#{$namespace}-color);
-	line-height: var(#{$vvd-badge-block-size});
+	border: var(#{$namespace-layout}--outline);
+	background-color: var(#{$namespace-layout}--fill);
+	border-radius: var(#{$namespace-shape});
+	color: var(#{$namespace-layout}--text);
+	line-height: var(#{$vvd-badge--block-size});
 
 	:host([dense]) & {
 		padding: 0 8px;

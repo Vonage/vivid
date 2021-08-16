@@ -2,8 +2,8 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 
 ::part(cell) {
-	background-color: var(#{scheme-variables.$vvd-color-base});
-	color: var(#{scheme-variables.$vvd-color-on-base});
+	background-color: var(#{scheme-variables.$vvd-color-canvas});
+	color: var(#{scheme-variables.$vvd-color-on-canvas});
 	min-block-size: 44px;
 }
 
@@ -13,5 +13,5 @@
 }
 
 ::part(header-cell) {
-	border-bottom: 1px solid var(#{scheme-variables.$vvd-color-on-base});
+	border-bottom: 1px solid var(#{scheme-variables.$vvd-color-on-canvas});
 }

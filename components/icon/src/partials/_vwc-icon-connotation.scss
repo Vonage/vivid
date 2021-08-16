@@ -1,14 +1,12 @@
-$icon-color: --vvd-icon-color;
-// $icon-color-on-connotation: --vvd-icon-color-on-connotation;
-
+@use 'vwc-icon-variables' as icon-variables;
 @use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation with (
 	$connotations-set: primary cta announcement success alert info,
-	$connotation-variable: #{$icon-color},
+	$connotation-variable: #{icon-variables.$icon-color-variable-name},
 	// $on-connotation-variable: #{$icon-color-on-connotation}
 );
 
 @include color-connotation.connotations-main;
 
 :host {
-	color: var(#{$icon-color}, currentColor);
+	color: var(#{icon-variables.$icon-color-variable-name}, currentColor);
 }
