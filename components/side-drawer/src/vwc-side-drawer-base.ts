@@ -55,7 +55,7 @@ export class VWCSideDrawerBase extends LitElement {
 			this.show();
 			// wasOpen helps with first render (when it is `undefined`) perf
 		} else if (wasOpen !== undefined) {
-			this.close();
+			this.hide();
 		}
 		this.openChanged(isOpen);
 	})
@@ -88,7 +88,7 @@ export class VWCSideDrawerBase extends LitElement {
 	 * Closes the side drawer from the open state.
 	 * @public
 	 */
-	close(): void {
+	hide(): void {
 		this.open = false;
 	}
 
