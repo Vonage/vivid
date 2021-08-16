@@ -18,7 +18,7 @@
 		}
 
 		&-active {
-			background-color: var(#{scheme-variables.$vvd-color-on-base});
+			background-color: var(#{scheme-variables.$vvd-color-on-canvas});
 		}
 	}
 }
@@ -40,6 +40,6 @@
 	}
 
 	&-active {
-		background-color: var(#{scheme-variables.$vvd-color-on-base});
+		background-color: var(#{scheme-variables.$vvd-color-on-canvas});
 	}
 }

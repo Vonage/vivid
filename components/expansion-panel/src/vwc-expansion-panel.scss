@@ -4,7 +4,7 @@
 @use '@vonage/vvd-typography/scss/typography';
 
 :host {
-	--mdc-ripple-color: var(#{scheme-variables.$vvd-color-on-base});
+	--mdc-ripple-color: var(#{scheme-variables.$vvd-color-on-canvas});
 	display: flex;
 	flex-direction: column;
 }
@@ -32,6 +32,8 @@
 	display: flex;
 	align-items: center;
 	padding: 16px;
+	border: 0 none;
+	background: transparent;
 	cursor: pointer;
 
 	.leading-icon,

@@ -2,7 +2,7 @@ import { VALID_BUTTON_ELEMENTS } from '../vwc-textfield.js';
 
 import {
 	waitNextTask,
-	textToDomToParent,
+	textToDomToParent, isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
@@ -12,10 +12,15 @@ chai.use(chaiDomDiff);
 const COMPONENT_NAME = 'vwc-textfield';
 
 describe('textfield action', () => {
+	const addElement = isolatedElementsCreation();
 	const [iconButton] = VALID_BUTTON_ELEMENTS;
 
+	function getInternalButtons(element) {
+		return Array.from(element.querySelectorAll(iconButton));
+	}
+
 	async function createElement() {
-		const [actualElement] = (
+		const [actualElement] = addElement(
 			textToDomToParent(`
 				<${COMPONENT_NAME}>
 					<${iconButton} slot="action"></${iconButton}>
@@ -99,7 +104,9 @@ describe('textfield action', () => {
 
 		actualElement.disabled = true;
 		await waitNextTask();
-		expect(newIconButton.disabled).to.equal(true);
+		expect(newIconButton.disabled)
+			.to
+			.equal(true);
 	});
 
 	it(`should shape dynamically added child node's`, async function () {
@@ -110,11 +117,15 @@ describe('textfield action', () => {
 
 		actualElement.shape = 'rounded';
 		await waitNextTask();
-		expect(newIconButton.shape).to.equal('rounded');
+		expect(newIconButton.shape)
+			.to
+			.equal('rounded');
 
 		actualElement.shape = 'pill';
 		await waitNextTask();
-		expect(newIconButton.shape).to.equal('circled');
+		expect(newIconButton.shape)
+			.to
+			.equal('circled');
 	});
 
 	it(`should set density dynamically to added child node's`, async function () {
@@ -125,10 +136,95 @@ describe('textfield action', () => {
 
 		actualElement.dense = true;
 		await waitNextTask();
-		expect(newIconButton.dense).to.equal(true);
+		expect(newIconButton.dense)
+			.to
+			.equal(true);
 
 		actualElement.dense = false;
 		await waitNextTask();
-		expect(newIconButton.dense).to.equal(false);
+		expect(newIconButton.dense)
+			.to
+			.equal(false);
+	});
+
+	describe(`noActionsSync`, function () {
+		function getButtonsDisabledStates(actualElement) {
+			const buttons = getInternalButtons(actualElement);
+			return buttons.map(button => button.disabled);
+		}
+
+		function setElementAttributes(actualElement) {
+			actualElement.disabled = true;
+			actualElement.shape = 'pill';
+			actualElement.toggleAttribute('dense', true);
+		}
+
+		function createElementWithIconButtons() {
+			const [actualElement] = addElement(
+				textToDomToParent(`
+				<${COMPONENT_NAME}>
+					<${iconButton} slot="action" disabled shape="circled"></${iconButton}>
+					<${iconButton} slot="action" shape="pilled" dense></${iconButton}>
+					<${iconButton} slot="action" disabled enlarged></${iconButton}>
+				</${COMPONENT_NAME}>
+			`)
+			);
+			return actualElement;
+		}
+
+		let actualElement;
+
+		beforeEach(async function () {
+			actualElement = createElementWithIconButtons();
+			actualElement.noActionsSync = true;
+			await waitNextTask();
+			await actualElement.updateComplete;
+		});
+
+		it(`should not enforce disabled on child nodes`, async function () {
+			const expectedButtonsDisabled = [true, false, true];
+			const buttonsDisabledBefore = getButtonsDisabledStates(actualElement);
+			actualElement.disabled = true;
+
+			await waitNextTask();
+			await actualElement.updateComplete;
+
+			const buttonsDisabledAfter = getButtonsDisabledStates(actualElement);
+
+			expectedButtonsDisabled.forEach((val, index) => {
+				expect(val)
+					.to
+					.equal(buttonsDisabledBefore[index]);
+				expect(val)
+					.to
+					.equal(buttonsDisabledAfter[index]);
+			});
+		});
+
+		it(`should not dynamically enforce disabled on child nodes`, async function () {
+			function generateNewButton() {
+				const newButtonWrapper = document.createElement('div');
+				newButtonWrapper.innerHTML = `<${iconButton} slot="action" shape="circled" enlarged></${iconButton}>`;
+				return newButtonWrapper.firstChild;
+			}
+
+			const newButton = generateNewButton();
+
+			const expectedButtonsDisabled = [true, false, true, false];
+
+			actualElement.disabled = true;
+			actualElement.appendChild(newButton);
+
+			await waitNextTask();
+			await actualElement.updateComplete;
+
+			const buttonsDisabledAfter = getButtonsDisabledStates(actualElement);
+
+			expectedButtonsDisabled.forEach((val, index) => {
+				expect(val)
+					.to
+					.equal(buttonsDisabledAfter[index]);
+			});
+		});
 	});
 });

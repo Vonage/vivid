@@ -42,7 +42,7 @@ type IconButtonConnotation = Extract<
 @customElement('vwc-icon-button')
 export class VWCIconButton extends MWCIconButton {
 	@property({ type: String, reflect: true })
-	layout: IconButtonLayout = Layout.Ghost;
+	layout?: IconButtonLayout;
 
 	@property({ type: String, reflect: true })
 	connotation?: IconButtonConnotation;

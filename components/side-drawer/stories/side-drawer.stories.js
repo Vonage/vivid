@@ -11,7 +11,7 @@ export default {
 	argTypes
 };
 
-var prevActivatedItem;
+let prevActivatedItem;
 
 const titleStyles = {
 	color: "#C0C0C0",
@@ -21,6 +21,7 @@ const titleStyles = {
 const Template = args => html`
 	<style>
 		div#demo {
+			position: relative;
 			display: flex;
 			width: 960px;
 			height: 540px;
@@ -49,7 +50,6 @@ const Template = args => html`
 				<vwc-icon type="vonage-mono"></vwc-icon> VONAGE
 			</span>
 
-
 			<vwc-list
 					innerRole="navigation"
 					innerAriaLabel="Primary navigation"
@@ -64,8 +64,6 @@ const Template = args => html`
 				<vwc-list-item shape="rounded" graphic="icon">
 					<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
 				</vwc-list-item>
-
-				<!-- <li divider role="separator" padded></li> -->
 
 				<vwc-list-expansion-panel open>
 					<vwc-list-item slot="header" shape="rounded" graphic="icon">
@@ -120,3 +118,9 @@ Alternate.args = { alternate: true };
 
 export const TopBar = Template.bind({});
 TopBar.args = { hasTopBar: true };
+
+export const Dismissible = Template.bind({});
+Dismissible.args = { type: 'dismissible', open: true };
+
+export const Modal = Template.bind({});
+Modal.args = { type: 'modal', open: true };
