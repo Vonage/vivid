@@ -62,7 +62,9 @@ describe('Side-drawer', () => {
 					textToDomToParent(`<${COMPONENT_NAME} ${property}></${COMPONENT_NAME}>`)
 				);
 				await actualElement.updateComplete;
-				expect(actualElement[property]).to.equal(true);
+				expect(actualElement[property])
+					.to
+					.equal(true);
 			}
 		});
 
@@ -73,7 +75,9 @@ describe('Side-drawer', () => {
 					textToDomToParent(`<${COMPONENT_NAME} type=${type}></${COMPONENT_NAME}>`)
 				);
 				await actualElement.updateComplete;
-				expect(actualElement.type).to.equal(type);
+				expect(actualElement.type)
+					.to
+					.equal(type);
 			}
 		});
 	});
@@ -196,7 +200,9 @@ describe('Side-drawer', () => {
 			);
 			actualElement.open = false;
 			actualElement.show();
-			expect(actualElement.open).to.equal(true);
+			expect(actualElement.open)
+				.to
+				.equal(true);
 		});
 	});
 
@@ -207,7 +213,9 @@ describe('Side-drawer', () => {
 			);
 			actualElement.open = true;
 			actualElement.hide();
-			expect(actualElement.open).to.equal(false);
+			expect(actualElement.open)
+				.to
+				.equal(false);
 		});
 	});
 });
