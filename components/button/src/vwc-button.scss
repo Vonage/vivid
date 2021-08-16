@@ -10,7 +10,10 @@
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' with(
 	$variable-name: --vvd-button-shape
 );
-
+@use '@vonage/vvd-foundation/scss/mixins/layout-mixins' with (
+	$layouts: filled outlined ghost,
+	$variable-prefix: button-variables.$vvd-button-layout
+);
 
 @mixin size($type, $unit) {
 	:host([#{$type}]) & {
@@ -24,15 +27,17 @@
 	}
 }
 
+@include layout-mixins.layout();
+@include layout-mixins.layout-default(ghost);
+
 @include color-connotation.connotations-main;
 @include color-connotation.connotations-main-default(primary);
-
 
 :host {
 	--mdc-button-disabled-ink-color: var(#{vvd-formfield.$formfield-disabled-ink});
 	--mdc-button-disabled-fill-color: var(#{scheme-variables.$vvd-color-neutral-30});
 	--mdc-button-disabled-outline-color: var(#{vvd-formfield.$formfield-disabled-ink});
-	--mdc-button-outline-color: var(--mdc-theme-primary);
+	--mdc-button-outline-color: var(#{button-variables.$vvd-button-layout}--outline, var(--mdc-theme-primary));
 	--mdc-button-horizontal-padding: 14px;
 	--button-block-size: 40px;
 
@@ -41,13 +46,17 @@
 
 :host([raised]),
 :host([unelevated]) {
-	--mdc-ripple-color: var(#{button-variables.$vvd-button-color}, var(#{color-connotation.$vvd-color-on-connotation}));
+	--mdc-ripple-color: var(#{button-variables.$vvd-button-layout}--text, var(#{color-connotation.$vvd-color-on-connotation}));
 }
 
-:host([unelevated]),
+:host([unelevated]) {
+	--mdc-theme-primary: var(#{button-variables.$vvd-button-layout}--fill, var(#{color-connotation.$vvd-color-connotation}));
+	--mdc-theme-on-primary: var(#{button-variables.$vvd-button-layout}--text, var(#{color-connotation.$vvd-color-on-connotation}));
+}
+
 :host([outlined]) {
-	--mdc-theme-primary: var(#{button-variables.$vvd-button-background-color}, var(#{color-connotation.$vvd-color-connotation}));
-	--mdc-theme-on-primary: var(#{button-variables.$vvd-button-color}, var(#{color-connotation.$vvd-color-on-connotation}));
+	--mdc-theme-primary: var(#{button-variables.$vvd-button-layout}--text, var(#{color-connotation.$vvd-color-on-connotation}));
+	--mdc-theme-on-primary: var(#{button-variables.$vvd-button-layout}--fill, var(#{color-connotation.$vvd-color-connotation}));
 }
 /////////////////////////////////////////////////////////////////////////////
 .mdc-button {
