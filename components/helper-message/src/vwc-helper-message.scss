@@ -27,7 +27,7 @@
 }
 
 :host([is-error]) {
-	color: var(#{scheme-variables.$vvd-color-on-base});
+	color: var(#{scheme-variables.$vvd-color-on-canvas});
 
 	.helper-icon {
 		display: flex;

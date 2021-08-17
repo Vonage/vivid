@@ -27,6 +27,9 @@ export type IndicatorIconSets = typeof iconSets;
 export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	static styles = style;
 
+	/**
+	 * The heading of the expanded panel
+	 */
 	@property({ type: String, reflect: true })
 	heading = '';
 
@@ -77,7 +80,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 				@touchend="${this.handleRippleDeactivate}"
 				@touchcancel="${this.handleRippleDeactivate}"
 				@click=${() => this.toggleOpen()}
-				.aria-expanded=${this.open}
+				?aria-expanded=${this.open}
 				aria-controls="content"
 			>
 				${this.renderRipple()}

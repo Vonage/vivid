@@ -1,5 +1,6 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
+@use '@vonage/vvd-foundation/scss/mixins/scrim' as scrim-mixins;
 
 #title,
 #content,
@@ -17,12 +18,12 @@
 	@include typography.typography-cat-shorthand('subtitle-2');
 	padding-bottom: 0;
 	margin-bottom: 8px;
-	color: var(#{scheme-variables.$vvd-color-on-base});
+	color: var(#{scheme-variables.$vvd-color-on-canvas});
 }
 
 #content {
 	@include typography.typography-cat-shorthand('body-2');
-	color: var(#{scheme-variables.$vvd-color-on-base});
+	color: var(#{scheme-variables.$vvd-color-on-canvas});
 }
 
 #actions {
@@ -47,8 +48,9 @@
 }
 
 .mdc-dialog .mdc-dialog__scrim {
-	--mdc-dialog-scrim-color: var(#{scheme-variables.$vvd-color-neutral});
-	opacity: 0.32;
+	--mdc-dialog-scrim-color: var(#{scrim-mixins.$vvd-scrim--background-color});
+	@include scrim-mixins.scrim-variables;
+	opacity: var(#{scrim-mixins.$vvd-scrim--opacity});
 }
 
 .dismiss-button {
