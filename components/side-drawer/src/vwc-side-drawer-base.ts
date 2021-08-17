@@ -80,15 +80,15 @@ export class VWCSideDrawerBase extends LitElement {
 
 	connectedCallback(): void {
 		super.connectedCallback();
-		this.addEventListener('transitionend', this.#onTransitionEnd);
-		this.addEventListener('keydown', this.#onKeydown);
+		this.addEventListener('transitionend', this.#handleTransitionEnd);
+		this.addEventListener('keydown', this.#handleKeydown);
 	}
 
 	disconnectedCallback(): void {
 		super.disconnectedCallback();
 		this.#releaseFocus();
-		this.removeEventListener('transitionend', this.#onTransitionEnd);
-		this.removeEventListener('keydown', this.#onKeydown);
+		this.removeEventListener('transitionend', this.#handleTransitionEnd);
+		this.removeEventListener('keydown', this.#handleKeydown);
 	}
 
 	protected render(): TemplateResult {
@@ -145,13 +145,13 @@ export class VWCSideDrawerBase extends LitElement {
 		}
 	}
 
-	#onKeydown = ({ key }: KeyboardEvent): void => {
+	#handleKeydown = ({ key }: KeyboardEvent): void => {
 		if (this.type === 'modal' && this.open && key === 'Escape') {
 			this.hide();
 		}
 	};
 
-	#onTransitionEnd = (): void => {
+	#handleTransitionEnd = (): void => {
 		if (this.type === 'modal') {
 			// when side drawer finishes open animation
 			if (this.open) {
