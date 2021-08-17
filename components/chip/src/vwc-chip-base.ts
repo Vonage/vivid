@@ -1,0 +1,67 @@
+import { Connotation, Shape } from '@vonage/vvd-foundation/constants';
+import { classMap } from 'lit-html/directives/class-map';
+import {
+	 LitElement, html, property, TemplateResult
+} from 'lit-element';
+
+
+type ChipConnotation = Extract<
+	Connotation,
+	| Connotation.Primary
+	| Connotation.CTA
+	>;
+
+type ChipShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
+
+export class VWCChipBase extends LitElement {
+	@property({ type: String, reflect: true })
+	text?: string;
+
+	@property({ type: Boolean, reflect: true })
+	selected = false;
+
+	@property({ type: Boolean, reflect: true })
+	dense?: boolean;
+
+	@property({ type: Boolean, reflect: true })
+	enlarged?: boolean;
+
+	@property({ type: String, reflect: true })
+	connotation?: ChipConnotation;
+
+	@property({ type: String, reflect: true })
+	shape?: ChipShape;
+
+	@property({ type: String, reflect: true })
+	layout?: string;
+
+	@property({ type: Boolean, reflect: true })
+	filter = false;
+
+	protected renderIcon(type?: string): TemplateResult {
+		return html`<vwc-icon class="vwc-chip__icon" .type="${type}"></vwc-icon>`;
+	}
+
+	protected renderChipFilter(): TemplateResult {
+		const classes = {
+			'vwc-chip--selected': this.selected,
+		};
+
+		return html`<button
+			@click="${() => this.selected = !this.selected}"
+			class="vwc-chip vwc-chip-button ${classMap(classes)}">
+			<span class="vwc-chip__checkmark">
+				${this.renderIcon('check-circle-solid')}
+			</span>
+			${this.text}
+		</button>`;
+	}
+
+	render(): TemplateResult {
+		return this.filter
+			? this.renderChipFilter()
+			: html`<span class="vwc-chip">
+			${this.text}
+		</span>`;
+	}
+}
