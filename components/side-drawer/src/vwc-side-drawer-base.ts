@@ -78,7 +78,7 @@ export class VWCSideDrawerBase extends LitElement {
 		this.open = false;
 	}
 
-	connectedCallback() {
+	connectedCallback(): void {
 		super.connectedCallback();
 		this.addEventListener('transitionend', this.#onTransitionEnd);
 		this.addEventListener('keydown', this.#onKeydown);
@@ -133,11 +133,9 @@ export class VWCSideDrawerBase extends LitElement {
 	private renderScrim(): TemplateResult {
 		return html`
 			<div
-				class="vvd-side-drawer--scrim ${this.absolute
-		? 'vvd-side-drawer--absolute'
-		: ''}"
+				class="vvd-side-drawer--scrim ${this.absolute ? 'vvd-side-drawer--absolute' : ''}"
 				@click="${this.#handleScrimClick}"
-				@onKeydown="${this.#handleScrimClick}"
+				@keydown="${this.#handleScrimClick}"
 			></div>`;
 	}
 
@@ -175,7 +173,7 @@ export class VWCSideDrawerBase extends LitElement {
 		this.#notifyClose();
 	}
 
-	#createDispatchEvent(eventName: string) {
+	#createDispatchEvent(eventName: string): void {
 		const init: CustomEventInit = {
 			bubbles: true,
 			composed: true
