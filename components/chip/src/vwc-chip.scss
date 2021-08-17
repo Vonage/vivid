@@ -33,32 +33,30 @@
 
 
 .vwc-chip {
+	z-index: 0;
 	display: inline-flex;
 	align-items: center;
 	padding: 0 var(#{chip-variables.$namespace-padding-inline});
 	border: var(#{chip-variables.$namespace-layout}--outline);
-	background-color: var(#{chip-variables.$namespace-layout}--fill);
+	background-color: var(#{scheme-variables.$vvd-color-neutral-20});
 	block-size: var(#{chip-variables.$namespace-block-size});
 	border-radius: var(#{chip-variables.$namespace-shape});
 	color: var(#{chip-variables.$namespace-layout}--text);
 
-	&.vwc-chip-button {
-		cursor: pointer;
+	&:not(.vwc-chip--selected) {
+		#{chip-variables.$namespace-layout}--text: var(#{scheme-variables.$vvd-color-neutral-90});
+
+		// :host(:not([layout])) &,
+		// :host([layout="soft"i]) & {
+		// 	#{chip-variables.$namespace-layout}--fill: var(#{scheme-variables.$vvd-color-neutral-20});
+		// }
 	}
-	// &:active {
-	// }
+
 	:host([layout="outlined"i]) & {
 		#{chip-variables.$namespace-layout}--outline: 1px solid var(#{scheme-variables.$vvd-color-neutral-50});
 	}
 
-	// &:not(.vwc-chip--selected) {
-	// 	#{chip-variables.$namespace-layout}--text: var(#{scheme-variables.$vvd-color-neutral-90});
 
-	// 	:host(:not([layout])) &,
-	// 	:host([layout="soft"i]) & {
-	// 		#{chip-variables.$namespace-layout}--fill: var(#{scheme-variables.$vvd-color-neutral-20});
-	// 	}
-	// }
 
 	:host(:not([dense]):not([enlarged])) & {
 		@include typography.typography-cat-shorthand('body-2-bold');
@@ -85,15 +83,30 @@
 	}
 }
 
-.icon {
-	$margin: 8px;
-	#{icon-variables.$icon-size-variable-name}: var(#{chip-variables.$namespace-icon-checkmark--size});
-
-	&.icon--leading {
-		margin-inline-end: $margin;
+.vwc-chip-button {
+	position: relative;
+	cursor: pointer;
+	@supports (contain: content) {
+		contain: content;
 	}
-	&.icon--trailing {
-		margin-inline-start: $margin;
+	@supports not (contain: content) {
+		overflow: hidden;
+	}
+
+	.ripple {
+		--mdc-ripple-color: currentColor;
+	}
+
+	&.vwc-chip--selected {
+		.ripple {
+			// --mdc-ripple-activated-opacity: 1;
+			@at-root :host([connotation='cta'i]) & {
+				--mdc-ripple-color: var(#{chip-variables.$namespace-layout}--fill);
+			}
+			@at-root :host(:not([connotation='cta'i])) & {
+				--mdc-ripple-color: var(#{scheme-variables.$vvd-color-neutral-40});
+			}
+		}
 	}
 }
 
