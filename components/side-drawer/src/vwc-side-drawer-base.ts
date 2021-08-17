@@ -137,6 +137,7 @@ export class VWCSideDrawerBase extends LitElement {
 		? 'vvd-side-drawer--absolute'
 		: ''}"
 				@click="${this.#handleScrimClick}"
+				@onKeydown="${this.#handleScrimClick}"
 			></div>`;
 	}
 
