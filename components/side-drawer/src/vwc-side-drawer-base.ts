@@ -132,13 +132,11 @@ export class VWCSideDrawerBase extends LitElement {
 
 	private renderScrim(): TemplateResult {
 		return html`
-			<div
-				class="vvd-side-drawer--scrim ${this.absolute
-		? 'vvd-side-drawer--absolute'
-		: ''}"
-				@click="${this.#handleScrimClick}"
-				@onKeydown="${this.#handleScrimClick}"
-			></div>`;
+				<div
+						class="vvd-side-drawer--scrim ${this.absolute ? 'vvd-side-drawer--absolute' : ''}"
+						@click="${this.#handleScrimClick}"
+						@keydown="${this.#handleScrimClick}"
+				></div>`;
 	}
 
 	#handleScrimClick(): void {
