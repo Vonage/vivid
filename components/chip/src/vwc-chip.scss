@@ -115,7 +115,7 @@
 	margin-inline-end: 0;
 	margin-inline-start: 0;
 	@media (prefers-reduced-motion: no-preference) {
-		transition-duration: 0.2s;
+		transition-duration: 0.15s;
 		transition-property: margin-inline-start, margin-inline-end;
 	}
 	.vwc-chip.vwc-chip--selected & {
@@ -129,7 +129,7 @@
 		inline-size: var(#{chip-variables.$namespace-icon-checkmark--size});
 		line-height: unset;
 		@media (prefers-reduced-motion: no-preference) {
-			transition: inline-size 0.2s;
+			transition: inline-size 0.15s;
 		}
 
 		.vwc-chip:not(.vwc-chip--selected) & {
