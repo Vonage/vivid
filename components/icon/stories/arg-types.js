@@ -1,4 +1,4 @@
-const ICON_CONNOTATIONS = ['primary', 'cta', 'announcement', 'success', 'alert', 'warning', 'info'];
+const ICON_CONNOTATIONS = ['primary', 'cta', 'announcement', 'success', 'alert', 'info'];
 const ICON_SIZES = ['small', 'medium', 'large'];
 
 export const argTypes = {

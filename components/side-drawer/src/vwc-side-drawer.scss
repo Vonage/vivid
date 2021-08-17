@@ -1,26 +1,52 @@
 $vvd-side-drawer--padding: --vvd-side-drawer--padding;
+$vvd-side-drawer--min-inline-size: --vvd-side-drawer--min-inline-size;
+$vvd-side-drawer--z-index: --vvd-side-drawer--z-index;
+
+$z-index-default: var(#{$vvd-side-drawer--z-index}, 6);
+$padding-default: var(#{$vvd-side-drawer--padding}, 16px);
+$min-width: 280px;
 
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-typography/scss/typography' as typography;
+@use '@vonage/vvd-foundation/scss/mixins/scrim' as scrim-mixins;
 
 :host {
-	--vvd-side-drawer--padding: 16px;
 	display: flex;
-	min-inline-size: 280px;
+	block-size: 100%;
 }
 
 .side-drawer {
-	block-size: 100%;
-	inline-size: 100%;
-	// box-sizing: border-box;
-	// padding: 10px;
-	// margin: 0;
+	z-index: #{$z-index-default};
+	color: var(#{scheme-variables.$vvd-color-on-canvas});
+	min-inline-size: var(#{$vvd-side-drawer--min-inline-size}, $min-width);
 	&:not(.vvd-side-drawer--alternate):not(.vvd-side-drawer--modal) {
 		background-color: var(#{scheme-variables.$vvd-color-neutral-10});
 	}
-	&.vvd-side-drawer--alternate,
+	&.vvd-side-drawer--alternate {
+		background-color: var(#{scheme-variables.$vvd-color-canvas});
+	}
 	&.vvd-side-drawer--modal {
-		background-color: var(#{scheme-variables.$vvd-color-base});
+		background-color: var(#{scheme-variables.$vvd-color-canvas});
+		@media screen and (prefers-reduced-motion: reduce) {
+			&.vvd-side-drawer--open {
+				transform: translateX(0%);
+				transition: none;
+			}
+		}
+
+		&.vvd-side-drawer--open {
+			transform: translateX(0%);
+			transition: transform 0.5s linear;
+		}@media screen and (prefers-reduced-motion: reduce) {
+			&:not(.vvd-side-drawer--open) {
+				transform: translateX(-100%);
+				transition: none;
+			}
+		}
+		&:not(.vvd-side-drawer--open) {
+			transform: translateX(-100%);
+			transition: transform 0.5s linear;
+		}
 	}
 }
 
@@ -28,11 +54,46 @@ $vvd-side-drawer--padding: --vvd-side-drawer--padding;
 	display: flex;
 	align-items: center;
 	block-size: 64px;
-	padding-inline-end: var(#{$vvd-side-drawer--padding}--top-bar, var(#{$vvd-side-drawer--padding}));
-	padding-inline-start: var(#{$vvd-side-drawer--padding}--top-bar, var(#{$vvd-side-drawer--padding}));
+	padding-inline-end: var(#{$vvd-side-drawer--padding}--top-bar, #{$padding-default});
+	padding-inline-start: var(#{$vvd-side-drawer--padding}--top-bar, #{$padding-default});
 }
 
 .vvd-side-drawer--content {
-	padding-inline-end: var(#{$vvd-side-drawer--padding}--content, var(#{$vvd-side-drawer--padding}));
-	padding-inline-start: var(#{$vvd-side-drawer--padding}--content, var(#{$vvd-side-drawer--padding}));
+	padding-inline-end: var(#{$vvd-side-drawer--padding}--content, #{$padding-default});
+	padding-inline-start: var(#{$vvd-side-drawer--padding}--content, #{$padding-default});
 }
+
+.vvd-side-drawer--modal {
+	top: 0;
+	right: initial;
+	bottom: 0;
+	left: 0;
+
+	&.vvd-side-drawer--absolute {
+		position: absolute;
+	}
+	&:not(.vvd-side-drawer--absolute) {
+		position: fixed;
+	}
+}
+
+.vvd-side-drawer--scrim {
+	@include scrim-mixins.scrim-variables;
+	z-index: calc(#{$z-index-default} - 1);
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: var(#{scrim-mixins.$vvd-scrim--background-color});
+	opacity: var(#{scrim-mixins.$vvd-scrim--opacity});
+
+	&.vvd-side-drawer--absolute {
+		position: absolute;
+	}
+	&:not(.vvd-side-drawer--absolute) {
+		position: fixed;
+	}
+}
+
+
+
