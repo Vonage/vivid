@@ -97,7 +97,7 @@ export class VWCSideDrawerBase extends LitElement {
 		const topBar = this.hasTopBar ? this.renderTopBar() : '';
 		const scrim = (this.type === 'modal' && this.open) ? this.renderScrim() : '';
 		const alternate = this.alternate ? 'vvd-scheme-alternate' : undefined;
-		const absolute = (this.type === 'modal' || this.type === 'dismissible') && this.absolute;
+		const absolute = this.type === 'modal' && this.absolute;
 
 		const classes = {
 			'vvd-side-drawer--alternate': this.alternate,
@@ -151,7 +151,7 @@ export class VWCSideDrawerBase extends LitElement {
 	}
 
 	#handleScrimClick(): void {
-		if ((this.type === 'modal' || this.type === 'dismissible') && this.open) {
+		if (this.type === 'modal' && this.open) {
 			this.hide();
 		}
 	}
@@ -175,12 +175,16 @@ export class VWCSideDrawerBase extends LitElement {
 	};
 
 	#opened(): void {
-		this.#trapFocus();
+		if (this.type === 'modal') {
+			this.#trapFocus();
+		}
 		this.#notifyOpen();
 	}
 
 	#closed(): void {
-		this.#releaseFocus();
+		if (this.type === 'modal') {
+			this.#releaseFocus();
+		}
 		this.#notifyClose();
 	}
 
