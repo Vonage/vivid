@@ -84,6 +84,7 @@ export class VWCChipBase extends LitElement {
 
   	return html`<button
 			id="button"
+			type="button"
 			class="vwc-chip vwc-chip-button ${classMap(classes)}"
 			@focus="${this.handleRippleFocus}"
 			@blur="${this.handleRippleBlur}"
