@@ -81,14 +81,14 @@ export class VWCSideDrawerBase extends LitElement {
 	connectedCallback(): void {
 		super.connectedCallback();
 		this.addEventListener('transitionend', this.#handleTransitionEnd);
-		this.addEventListener('keydown', this.#handleKeydown);
+		document.addEventListener('keydown', this.#handleKeydown);
 	}
 
 	disconnectedCallback(): void {
 		super.disconnectedCallback();
 		this.#releaseFocus();
 		this.removeEventListener('transitionend', this.#handleTransitionEnd);
-		this.removeEventListener('keydown', this.#handleKeydown);
+		document.removeEventListener('keydown', this.#handleKeydown);
 	}
 
 	protected render(): TemplateResult {
