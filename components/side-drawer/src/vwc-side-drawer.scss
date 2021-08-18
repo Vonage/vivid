@@ -102,6 +102,7 @@ $min-width: 280px;
 }
 
 .aside-container {
+	display: flex;
 	&:not(&--open) {width: 0;}
 }
 
