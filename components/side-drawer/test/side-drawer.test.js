@@ -11,7 +11,7 @@ chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-side-drawer';
 
-function animateModal(drawerElement) {
+function animateDrawer(drawerElement) {
 	const event = new Event('transitionend');
 	drawerElement.dispatchEvent(event);
 }
@@ -95,7 +95,7 @@ describe('Side-drawer', () => {
 				textToDomToParent(`<${COMPONENT_NAME} type="modal"></${COMPONENT_NAME}>`)
 			);
 		});
-		it('should fire opened event after animation completes and open is true', async () => {
+		it('should fire opened and trapFocus events after animation completes and open is true', async () => {
 			const onOpened = chai.spy();
 			const onFocusTrapped = chai.spy();
 
@@ -113,14 +113,14 @@ describe('Side-drawer', () => {
 			});
 
 			sideDrawerEl.open = true;
-			animateModal(sideDrawerEl);
+			animateDrawer(sideDrawerEl);
 
 			await eventListenerPromise;
 			onOpened.should.have.been.called();
 			onFocusTrapped.should.have.been.called();
 		});
 
-		it('should fire closed event after animation completes and open is false', async () => {
+		it('should fire closed and releaseFocus events after animation completes and open is false', async () => {
 			const onClosed = chai.spy();
 			const onFocusReleased = chai.spy();
 
@@ -139,7 +139,7 @@ describe('Side-drawer', () => {
 			});
 
 			sideDrawerEl.open = false;
-			animateModal(sideDrawerEl);
+			animateDrawer(sideDrawerEl);
 
 			await eventListenerPromise;
 			onClosed.should.have.been.called();
@@ -153,7 +153,6 @@ describe('Side-drawer', () => {
 			await sideDrawerEl.updateComplete;
 			const scrim = sideDrawerEl.shadowRoot.querySelector('.vvd-side-drawer--scrim');
 
-
 			const eventListenerPromise = new Promise((res) => {
 				sideDrawerEl.addEventListener('closed', () => {
 					onClosed();
@@ -162,7 +161,7 @@ describe('Side-drawer', () => {
 			});
 
 			scrim?.click();
-			animateModal(sideDrawerEl);
+			animateDrawer(sideDrawerEl);
 
 			await eventListenerPromise;
 			onClosed.should.have.been.called();
@@ -174,7 +173,6 @@ describe('Side-drawer', () => {
 			sideDrawerEl.open = true;
 			await sideDrawerEl.updateComplete;
 
-
 			const eventListenerPromise = new Promise((res) => {
 				sideDrawerEl.addEventListener('closed', () => {
 					onClosed();
@@ -185,7 +183,55 @@ describe('Side-drawer', () => {
 			const keyboardEvent = new KeyboardEvent('keydown', { key: 'Escape' });
 			sideDrawerEl.dispatchEvent(keyboardEvent);
 
-			animateModal(sideDrawerEl);
+			animateDrawer(sideDrawerEl);
+
+			await eventListenerPromise;
+			onClosed.should.have.been.called();
+		});
+	});
+
+	describe('Dismissible side drawer events', () => {
+		let sideDrawerEl;
+
+		beforeEach(function () {
+			[sideDrawerEl] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} type="dismissible"></${COMPONENT_NAME}>`)
+			);
+		});
+		it('should fire opened event after animation completes and open is true', async () => {
+			const onOpened = chai.spy();
+
+			await sideDrawerEl.updateComplete;
+
+			const eventListenerPromise = new Promise((res) => {
+				sideDrawerEl.addEventListener('opened', () => {
+					onOpened();
+					res();
+				});
+			});
+
+			sideDrawerEl.open = true;
+			animateDrawer(sideDrawerEl);
+
+			await eventListenerPromise;
+			onOpened.should.have.been.called();
+		});
+
+		it('should fire closed event after animation completes and open is false', async () => {
+			const onClosed = chai.spy();
+
+			sideDrawerEl.open = true;
+			await sideDrawerEl.updateComplete;
+
+			const eventListenerPromise = new Promise((res) => {
+				sideDrawerEl.addEventListener('closed', () => {
+					onClosed();
+					res();
+				});
+			});
+
+			sideDrawerEl.open = false;
+			animateDrawer(sideDrawerEl);
 
 			await eventListenerPromise;
 			onClosed.should.have.been.called();
@@ -197,7 +243,6 @@ describe('Side-drawer', () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
-			actualElement.open = false;
 			actualElement.show();
 			expect(actualElement.open)
 				.to
@@ -208,9 +253,8 @@ describe('Side-drawer', () => {
 	describe(`hide`, function () {
 		it(`should set "open" to false`, function () {
 			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+				textToDomToParent(`<${COMPONENT_NAME} open></${COMPONENT_NAME}>`)
 			);
-			actualElement.open = true;
 			actualElement.hide();
 			expect(actualElement.open)
 				.to
