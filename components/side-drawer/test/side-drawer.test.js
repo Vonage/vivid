@@ -55,7 +55,7 @@ describe('Side-drawer', () => {
 				.equal(undefined);
 			expect(actualElement.absolute, 'absolute should be false')
 				.to
-				.equal(false);
+				.equal(true);
 		});
 	});
 
