@@ -54,7 +54,7 @@ export class VWCSideDrawerBase extends LitElement {
 		type: Boolean,
 		reflect: true
 	})
-	absolute = false;
+	absolute = true;
 
 	@property({
 		type: Boolean,
