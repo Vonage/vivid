@@ -46,7 +46,7 @@ export class VWCSideDrawerBase extends LitElement {
 	type = '';
 
 	/**
-	 * @prop absolute - the modal can be fixed or absolute
+	 * @prop absolute - the modal and dismissible can be fixed or absolute
 	 * accepts Boolean value
 	 * @public
 	 * */
@@ -92,12 +92,12 @@ export class VWCSideDrawerBase extends LitElement {
 	}
 
 	protected render(): TemplateResult {
-		const dismissible = this.type === 'dismissible' || this.type === 'modal';
+		const dismissible = this.type === 'dismissible';
 		const modal = this.type === 'modal';
 		const topBar = this.hasTopBar ? this.renderTopBar() : '';
-		const scrim = this.type === 'modal' && this.open ? this.renderScrim() : '';
+		const scrim = (this.type === 'modal' && this.open) ? this.renderScrim() : '';
 		const alternate = this.alternate ? 'vvd-scheme-alternate' : undefined;
-		const absolute = this.type === 'modal' && this.absolute;
+		const absolute = (this.type === 'modal' || this.type === 'dismissible') && this.absolute;
 
 		const classes = {
 			'vvd-side-drawer--alternate': this.alternate,
@@ -107,20 +107,31 @@ export class VWCSideDrawerBase extends LitElement {
 			'vvd-side-drawer--absolute': absolute,
 		};
 
+		const aside = html`<aside
+							part="${ifDefined(alternate)}"
+							class="side-drawer ${classMap(classes)}">
+							${topBar}
+
+							<div class="vvd-side-drawer--content">
+								<slot></slot>
+							</div>
+						</aside>`;
+
 		return html`
-			<aside
-				part="${ifDefined(alternate)}"
-				class="side-drawer ${classMap(classes)}"
-			>
-				${topBar}
-
-				<div class="vvd-side-drawer--content">
-					<slot></slot>
-				</div>
-			</aside>
-
+			${dismissible ? this.renderDismissible(aside) : aside}
 			${scrim}
 		`;
+	}
+
+	private renderDismissible(template: TemplateResult): TemplateResult {
+		const classes = {
+			'aside-container--open': this.open,
+		};
+
+		return html`
+			<div class="aside-container ${classMap(classes)}">
+				${template}
+			</div>`;
 	}
 
 	private renderTopBar(): TemplateResult {
@@ -140,19 +151,19 @@ export class VWCSideDrawerBase extends LitElement {
 	}
 
 	#handleScrimClick(): void {
-		if (this.type === 'modal' && this.open) {
+		if ((this.type === 'modal' || this.type === 'dismissible') && this.open) {
 			this.hide();
 		}
 	}
 
 	#handleKeydown = ({ key }: KeyboardEvent): void => {
-		if (this.type === 'modal' && this.open && key === 'Escape') {
+		if ((this.type === 'modal' || this.type === 'dismissible') && this.open && key === 'Escape') {
 			this.hide();
 		}
 	};
 
 	#handleTransitionEnd = (): void => {
-		if (this.type === 'modal') {
+		if (this.type === 'modal' || this.type === 'dismissible') {
 			// when side drawer finishes open animation
 			if (this.open) {
 				this.#opened();
