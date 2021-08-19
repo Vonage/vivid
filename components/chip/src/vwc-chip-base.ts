@@ -68,6 +68,13 @@ export class VWCChipBase extends LitElement {
   		buttonElement.blur();
   	}
   }
+
+  protected firstUpdated(): void {
+  	if (this.selected) {
+  		this.handleRippleActivate();
+  	}
+  }
+
   protected renderRipple(): TemplateResult | string {
   	return this.shouldRenderRipple ?
   		html`<mwc-ripple class="ripple" .activated=${this.selected}></mwc-ripple>` : '';
@@ -86,6 +93,8 @@ export class VWCChipBase extends LitElement {
 			id="button"
 			type="button"
 			class="vwc-chip vwc-chip-button ${classMap(classes)}"
+			role="option"
+			aria-selected="${this.selected}"
 			@focus="${this.handleRippleFocus}"
 			@blur="${this.handleRippleBlur}"
 			@mousedown="${this.handleRippleActivate}"

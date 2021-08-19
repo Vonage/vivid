@@ -46,14 +46,20 @@
 	&:not(.vwc-chip--selected) {
 		#{chip-variables.$namespace-layout}--text: var(#{scheme-variables.$vvd-color-neutral-90});
 
-		// :host(:not([layout])) &,
-		// :host([layout="soft"i]) & {
-		// 	#{chip-variables.$namespace-layout}--fill: var(#{scheme-variables.$vvd-color-neutral-20});
+		:host([layout="outlined"i]) & {
+			background-color: transparent;
+		}
+	}
+	
+	&.vwc-chip--selected {
+		// :host([layout="outlined"i]) & {
+		// 	#{chip-variables.$namespace-layout}--fill: rgb(87, 87, 182);
 		// }
 	}
-
+	
 	:host([layout="outlined"i]) & {
-		#{chip-variables.$namespace-layout}--outline: 1px solid var(#{scheme-variables.$vvd-color-neutral-50});
+		// #{chip-variables.$namespace-layout}--outline: 1px solid var(#{scheme-variables.$vvd-color-neutral-50});
+		border: 1px solid var(#{scheme-variables.$vvd-color-neutral-50});
 	}
 
 
@@ -99,7 +105,8 @@
 
 	&.vwc-chip--selected {
 		.ripple {
-			// --mdc-ripple-activated-opacity: 1;
+			--mdc-ripple-activated-opacity: 1;
+			--mdc-ripple-z-index: -1;
 			@at-root :host([connotation='cta'i]) & {
 				--mdc-ripple-color: var(#{chip-variables.$namespace-layout}--fill);
 			}

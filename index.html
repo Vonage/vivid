@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script type="module" src="node_modules/@vonage/vwc-chip/vwc-chip.js"></script>
+</head>
+<body>
+	<dl>
+		<dt>
+			unselected
+		</dt>
+			<dd>
+				<vwc-chip text="unselected" filter></vwc-chip>
+				<vwc-chip text="unselected" layout="outlined" filter connotation="cta"></vwc-chip>
+				<vwc-chip text="unselected" layout="soft" filter connotation="cta"></vwc-chip>
+				<vwc-chip text="unselected" layout="filled" filter></vwc-chip>
+				<vwc-chip text="unselected" layout="filled" filter connotation="cta"></vwc-chip>
+			</dd>
+		<dt>
+			selected
+		</dt>
+			<dd>
+				<vwc-chip text="selected" filter selected></vwc-chip>
+				<vwc-chip text="selected" layout="outlined" filter selected connotation="cta"></vwc-chip>
+				<vwc-chip text="selected" layout="soft" filter selected connotation="cta"></vwc-chip>
+				<vwc-chip text="selected" layout="filled" filter selected></vwc-chip>
+				<vwc-chip text="selected" layout="filled" filter selected connotation="cta"></vwc-chip>
+			</dd>
+	</dl>
+</body>
+</html>
