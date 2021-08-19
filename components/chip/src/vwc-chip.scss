@@ -10,7 +10,7 @@
 	$variable-name: #{chip-variables.$namespace-shape}
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout-mixins' as layout-mixins with (
-	$layouts: outlined soft,
+	$layouts: outlined-duotone soft,
 	$variable-prefix: #{chip-variables.$namespace-layout}
 );
 
@@ -38,31 +38,25 @@
 	align-items: center;
 	padding: 0 var(#{chip-variables.$namespace-padding-inline});
 	border: var(#{chip-variables.$namespace-layout}--outline);
-	background-color: var(#{scheme-variables.$vvd-color-neutral-20});
+	background-color: var(#{chip-variables.$namespace-layout}--fill);
 	block-size: var(#{chip-variables.$namespace-block-size});
 	border-radius: var(#{chip-variables.$namespace-shape});
 	color: var(#{chip-variables.$namespace-layout}--text);
 
 	&:not(.vwc-chip--selected) {
 		#{chip-variables.$namespace-layout}--text: var(#{scheme-variables.$vvd-color-neutral-90});
+	}
 
-		:host([layout="outlined"i]) & {
-			background-color: transparent;
+	&.vwc-chip--selected {
+		:host([layout="outlined-duotone"i]) & {
+			background-color: var(--vvd-color-connotation--soft);
 		}
 	}
-	
-	&.vwc-chip--selected {
-		// :host([layout="outlined"i]) & {
-		// 	#{chip-variables.$namespace-layout}--fill: rgb(87, 87, 182);
-		// }
-	}
-	
-	:host([layout="outlined"i]) & {
+
+	:host([layout="outlined-duotone"i]) & {
 		// #{chip-variables.$namespace-layout}--outline: 1px solid var(#{scheme-variables.$vvd-color-neutral-50});
 		border: 1px solid var(#{scheme-variables.$vvd-color-neutral-50});
 	}
-
-
 
 	:host(:not([dense]):not([enlarged])) & {
 		@include typography.typography-cat-shorthand('body-2-bold');
@@ -103,18 +97,18 @@
 		--mdc-ripple-color: currentColor;
 	}
 
-	&.vwc-chip--selected {
-		.ripple {
-			--mdc-ripple-activated-opacity: 1;
-			--mdc-ripple-z-index: -1;
-			@at-root :host([connotation='cta'i]) & {
-				--mdc-ripple-color: var(#{chip-variables.$namespace-layout}--fill);
-			}
-			@at-root :host(:not([connotation='cta'i])) & {
-				--mdc-ripple-color: var(#{scheme-variables.$vvd-color-neutral-40});
-			}
-		}
-	}
+	// &.vwc-chip--selected {
+	// 	.ripple {
+	// 		--mdc-ripple-activated-opacity: 1;
+	// 		--mdc-ripple-z-index: -1;
+	// 		@at-root :host([connotation='cta'i]) & {
+	// 			--mdc-ripple-color: var(#{chip-variables.$namespace-layout}--fill);
+	// 		}
+	// 		@at-root :host(:not([connotation='cta'i])) & {
+	// 			--mdc-ripple-color: var(#{scheme-variables.$vvd-color-neutral-40});
+	// 		}
+	// 	}
+	// }
 }
 
 .vwc-chip__checkmark {

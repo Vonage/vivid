@@ -31,6 +31,7 @@ export enum Layout {
 	Text = 'text',
 	Filled = 'filled',
 	Outlined = 'outlined',
+	Outlined_Duotone = 'outlined-duotone',
 	Soft = 'soft',
 	Ghost = 'ghost',
 }

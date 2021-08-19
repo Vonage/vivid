@@ -2,7 +2,7 @@ import '@material/mwc-ripple/mwc-ripple';
 import { Ripple } from '@material/mwc-ripple/mwc-ripple';
 import { RippleHandlers } from '@material/mwc-ripple/ripple-handlers';
 
-import { Connotation, Shape } from '@vonage/vvd-foundation/constants';
+import { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
 import { classMap } from 'lit-html/directives/class-map';
 import {
 	 LitElement, html, property, TemplateResult, queryAsync, state, query, eventOptions
@@ -17,6 +17,9 @@ type ChipConnotation = Extract<
 
 type ChipShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
 
+type ChipLayout = Extract<
+	Layout, Layout.Outlined_Duotone | Layout.Soft
+>;
 export class VWCChipBase extends LitElement {
   @queryAsync('mwc-ripple') ripple!: Promise<Ripple|null>;
 
@@ -41,7 +44,7 @@ export class VWCChipBase extends LitElement {
 	shape?: ChipShape;
 
 	@property({ type: String, reflect: true })
-	layout?: string;
+	layout?: ChipLayout;
 
 	@property({ type: Boolean, reflect: true })
 	filter = false;
@@ -69,15 +72,15 @@ export class VWCChipBase extends LitElement {
   	}
   }
 
-  protected firstUpdated(): void {
-  	if (this.selected) {
-  		this.handleRippleActivate();
-  	}
-  }
+  // protected firstUpdated(): void {
+  // 	if (this.selected) {
+  // 		this.handleRippleActivate();
+  // 	}
+  // }
 
   protected renderRipple(): TemplateResult | string {
   	return this.shouldRenderRipple ?
-  		html`<mwc-ripple class="ripple" .activated=${this.selected}></mwc-ripple>` : '';
+  		html`<mwc-ripple class="ripple"></mwc-ripple>` : '';
   }
 
   protected renderIcon(type?: string): TemplateResult {
@@ -89,12 +92,13 @@ export class VWCChipBase extends LitElement {
   		'vwc-chip--selected': this.selected,
   	};
 
-  	return html`<button
+  	return html`<div
 			id="button"
 			type="button"
 			class="vwc-chip vwc-chip-button ${classMap(classes)}"
 			role="option"
 			aria-selected="${this.selected}"
+			tabindex="-1"
 			@focus="${this.handleRippleFocus}"
 			@blur="${this.handleRippleBlur}"
 			@mousedown="${this.handleRippleActivate}"
@@ -103,7 +107,8 @@ export class VWCChipBase extends LitElement {
 			@touchstart="${this.handleRippleActivate}"
 			@touchend="${this.handleRippleDeactivate}"
 			@touchcancel="${this.handleRippleDeactivate}"
-			@click="${() => this.selected = !this.selected}">
+			@click="${() => this.selected = !this.selected}"
+			@keydown="${this.handleKeydown}">
 			${this.renderRipple()}
 			<span class="vwc-chip__checkmark">
 				${this.renderIcon('check-circle-solid')}
@@ -111,7 +116,7 @@ export class VWCChipBase extends LitElement {
 			<span class="text">
 				${this.text}
 			</span>
-		</button>`;
+		</div>`;
   }
 
   render(): TemplateResult {
@@ -120,6 +125,12 @@ export class VWCChipBase extends LitElement {
   		: html`<span class="vwc-chip">
 			${this.text}
 		</span>`;
+  }
+
+  handleKeydown({ key }: KeyboardEvent): void {
+  	if (key === ' '/* spacebar */) {
+  		this.selected = !this.selected;
+  	}
   }
 
 	@eventOptions({ passive: true })

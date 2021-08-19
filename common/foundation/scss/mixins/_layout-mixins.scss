@@ -2,7 +2,7 @@
 @use '../functions' as functions;
 
 // override to apply relevance
-$layouts: filled outlined soft text ghost !default;
+$layouts: filled outlined outlined-duotone soft text ghost !default;
 
 $variable-prefix: --layout !default;
 
@@ -11,6 +11,7 @@ $variable-prefix: --layout !default;
 $all-layouts: (
 	filled: 'filled',
 	outlined: 'outlined',
+	outlined-duotone: 'outlined-duotone',
 	soft: 'soft',
 	text: 'text',
 	ghost: 'ghost',
@@ -25,6 +26,12 @@ $all-layouts: (
 	#{$variable-prefix}--fill: transparent;
 	#{$variable-prefix}--outline: 1px solid var(#{color-connotation.$vvd-color-connotation});
 	#{$variable-prefix}--text: var(#{color-connotation.$vvd-color-connotation});
+}
+
+%outlined-duotone {
+	#{$variable-prefix}--fill: transparent;
+	#{$variable-prefix}--outline: 1px solid var(#{color-connotation.$vvd-color-connotation});
+	#{$variable-prefix}--text: var(#{color-connotation.$vvd-color-connotation}--contrast);
 }
 
 %soft {
