@@ -23,20 +23,24 @@ $on-connotation-variable: #{variables.$vvd-on-color-connotation} !default;
 
 // selector can be altered by relevance
 @mixin connotations-main {
-	@each $name in functions.pick-list($connotations-set, $_connotations-definition) {
-		$compound: '[connotation="#{$name}" i]';
+	@each $connotation in functions.pick-list($connotations-set, $_connotations-definition) {
+		$compound: '[connotation="#{$connotation}" i]';
 
 		#{functions.get-local-selector($selector, variables.$compound-placeholder, $compound)} {
-			@include connotation-main-variables($name);
+			@include connotation-main-variables($connotation);
 		}
 	}
 }
 
 @mixin connotations-main-default($name) {
-	$compound: ':not([connotation])';
-
-	#{functions.get-local-selector($selector, variables.$compound-placeholder, $compound)} {
-		@include connotation-main-variables($name);
+	@each $connotation in functions.pick-list($connotations-set, $_connotations-definition) {
+		@if $name != $connotation {
+			$compound: ':not([connotation="#{$connotation}"i])';
+		
+			#{functions.get-local-selector($selector, variables.$compound-placeholder, $compound)} {
+				@include connotation-main-variables($name);
+			}
+		}
 	}
 }
 
