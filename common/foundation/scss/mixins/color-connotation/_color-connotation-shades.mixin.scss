@@ -37,7 +37,7 @@ $connotation-variable: #{variables.$vvd-color-connotation} !default;
 }
 
 @mixin connotations-shades-default($name) {
-	@each $connotation in functions.pick-map($connotations-set, $_connotations-definition) {
+	@each $connotation, $_ in functions.pick-map($connotations-set, $_connotations-definition) {
 		@if $name != $connotation {
 			$compound: ':not([connotation="#{$connotation}"i])';
 		
