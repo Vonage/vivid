@@ -9,7 +9,8 @@ export default {
 	argTypes
 };
 
-const createStory = args => Object.assign(args => html`<vwc-chip ...=${spread(args)}></vwc-chip>`, { args });
+const Template = args => html`<vwc-chip ...=${spread(args)}></vwc-chip>`;
+const createStory = args => Object.assign(Template, { args });
 
 export const Basic = createStory({
 	text: "Basic"
