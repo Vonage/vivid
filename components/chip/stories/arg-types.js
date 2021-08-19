@@ -41,11 +41,5 @@ export const argTypes = {
 			options: { true: '', false: undefined }
 		}
 	},
-	selected: {
-		control: {
-			type: 'inline-radio',
-			options: { true: '', false: undefined }
-		}
-	},
 	styles: { table: { disable: true } },
 };
