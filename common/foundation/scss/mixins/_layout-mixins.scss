@@ -54,11 +54,15 @@ $all-layouts: (
 }
 
 @mixin layout-default($name) {
+	$coumpund: '';
+
 	@each $layout in functions.pick-list($layouts, $all-layouts) {
 		@if $name != $layout {
-			:host(:not([layout="#{$layout}"i])) {
-				@extend %#{$name};
-			}
+			$coumpund: $coumpund + ':not([layout="#{$layout}"i])';
 		}
+	}
+
+	:host($coumpund) {
+		@extend %#{$name};
 	}
 }
