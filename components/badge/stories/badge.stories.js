@@ -23,7 +23,7 @@ export const Soft = Template.bind({});
 Soft.args = { connotation: 'cta', layout: 'soft', text: 'badge' };
 
 export const Outlined = Template.bind({});
-Outlined.args = { layout: 'outlined', text: 'badge' };
+Outlined.args = { layout: 'outlined-duotone', text: 'badge' };
 
 export const PillShape = Template.bind({});
 PillShape.args = { layout: 'filled', shape: 'pill', text: 'badge' };
