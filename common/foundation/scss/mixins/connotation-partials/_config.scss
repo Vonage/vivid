@@ -1,7 +1,11 @@
+@use 'sass:map';
 @use 'variables';
 
 // config
 // override to apply relevance
 $connotations-set: primary cta success alert warning info announcement !default;
-$options: (base: true, shades: (), default: false) !default;
+$options: () !default;
 $selector: ':host(#{variables.$compound-placeholder})' !default;
+
+$default-options: (base: true, shades: (), default: false);
+$options: map.merge($default-options, $options);

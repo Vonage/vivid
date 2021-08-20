@@ -12,5 +12,5 @@
 		}
 	}
 
-	@return functions.get-local-selector($selector, $compound-placeholder, $compound);
+	@return functions.get-local-selector(config.$selector, variables.$compound-placeholder, $compound);
 }

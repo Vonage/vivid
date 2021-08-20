@@ -25,7 +25,7 @@
 		$local-selector: functions.get-local-selector(config.$selector, variables.$compound-placeholder, $compound);
 
 		@if map.get(config.$options, default) == $connotation {
-			$default-selector: connotation-functions.connotations-default-selector(map.get($config, default));
+			$default-selector: connotation-functions.connotations-default-selector(map.get(config.$options, default));
 			$local-selector: $local-selector,	$default-selector;
 		}
 

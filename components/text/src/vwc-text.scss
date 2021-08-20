@@ -2,7 +2,10 @@ $vwc-text--color: --vwc-text--color;
 
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-design-tokens/build/scss/typography-variables/web' as typography-scale;
-@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
+@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation with(
+	$connotations-set: primary cta announcement info success alert,
+	$options: (default: primary)
+);
 
 @include connotation.connotation;
 
