@@ -4,12 +4,12 @@
 @use 'variables';
 
 @mixin parse-connotation-base($connotation) {
-	#{variables.$vvd-color-connotation}: var(#{variables.$vvd-color}-#{$connotation});
-	#{variables.$vvd-color-on-connotation}: var(#{variables.$vvd-color-on}-#{$connotation});
+	#{config.$connotation-variable}: var(#{variables.$vvd-color}-#{$connotation});
+	#{config.$on-connotation-variable}: var(#{variables.$vvd-color-on}-#{$connotation});
 }
 
 @mixin parse-connotation-shade($name, $value) {
-	#{variables.$vvd-color-connotation}-#{$name}: var(#{variables.$vvd-color}-#{$value});
+	#{config.$connotation-variable}-#{$name}: var(#{variables.$vvd-color}-#{$value});
 }
 
 @mixin connotation {

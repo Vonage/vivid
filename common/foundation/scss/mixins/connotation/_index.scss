@@ -1,0 +1,22 @@
+@use 'variables';
+
+$base: true !default;
+$default: false !default;
+$shades: () !default;
+$connotations-set: primary cta success alert warning info announcement !default;
+$selector: ':host(#{variables.$compound-placeholder})' !default;
+$connotation-variable: '' !default;
+$on-connotation-variable: '' !default;
+
+@forward 'config' with (
+	$base: $base,
+	$default: $default,
+	$shades: $shades,
+	$connotations-set: $connotations-set,
+	$selector: $selector,
+	$connotation-variable: variables.$vvd-color-connotation,
+	$on-connotation-variable: variables.$vvd-color-on-connotation
+);
+
+@forward 'mixins' show connotation;
+@forward 'variables' show $vvd-color-connotation, $vvd-color-on-connotation;
