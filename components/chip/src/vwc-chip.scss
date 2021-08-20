@@ -47,7 +47,7 @@
 
 	&.vwc-chip--selected {
 		:host([layout="outlined-duotone"i]) & {
-			background-color: var(--vvd-color-connotation--soft);
+			background-color: var(#{connotation.$vvd-color-connotation}--soft);
 		}
 	}
 
