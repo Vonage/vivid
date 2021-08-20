@@ -1,0 +1,14 @@
+@use 'connotation-partials/variables';
+
+$connotations-set: primary cta success alert warning info announcement !default;
+$options: (base: true, shades: (), default: false) !default;
+$selector: ':host(#{variables.$compound-placeholder})' !default;
+
+@forward 'connotation-partials/config' with (
+	$connotations-set: $connotations-set,
+	$options: $options,
+	$selector: $selector
+);
+
+@forward 'connotation-partials/mixins' show connotation;
+@forward 'connotation-partials/variables' show $vvd-color-connotation, $vvd-color-on-connotation;

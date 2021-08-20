@@ -1,0 +1,43 @@
+@use 'sass:map';
+
+// @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+// @use 'predefined-connotations';
+// @use 'variables';
+
+@use '../../functions';
+@use 'functions' as connotation-functions;
+@use 'config';
+@use 'variables';
+
+@mixin parse-connotation-base($connotation) {
+	#{variables.$vvd-color-connotation}: var(#{variables.$vvd-color}-#{$connotation});
+	#{variables.$vvd-color-on-connotation}: var(#{variables.$vvd-color-on}-#{$connotation});
+}
+
+@mixin parse-connotation-shade($name, $value) {
+	#{variables.$vvd-color-connotation}-#{$name}: var(#{variables.$vvd-color}-#{$value});
+}
+
+@mixin connotation {
+	@each $connotation, $mapping in functions.pick-map(config.$connotations-set, variables.$connotations-mapping) {
+		$compound: '[connotation="#{$connotation}" i]';
+
+		$local-selector: functions.get-local-selector(config.$selector, variables.$compound-placeholder, $compound);
+
+		@if map.get(config.$options, default) == $connotation {
+			$default-selector: connotation-functions.connotations-default-selector(map.get($config, default));
+			$local-selector: $local-selector,	$default-selector;
+		}
+
+		#{$local-selector} {
+			@if map.get(config.$options, base) {
+				@include parse-connotation-base($connotation);
+			}
+
+			$shades: map.get(config.$options, shades);
+			@each $name, $value in functions.pick-map($shades, $mapping) {
+				@include parse-connotation-shade($name, $value);
+			}
+		}
+	}
+}

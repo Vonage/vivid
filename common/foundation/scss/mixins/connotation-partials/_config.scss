@@ -1,0 +1,7 @@
+@use 'variables';
+
+// config
+// override to apply relevance
+$connotations-set: primary cta success alert warning info announcement !default;
+$options: (base: true, shades: (), default: false) !default;
+$selector: ':host(#{variables.$compound-placeholder})' !default;

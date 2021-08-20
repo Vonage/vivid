@@ -1,0 +1,16 @@
+@use '../../functions';
+@use 'variables';
+@use 'config';
+
+
+@function connotations-default-selector($name) {
+	$compound: '';
+
+	@each $connotation, $_ in functions.pick-map(config.$connotations-set, variables.$connotations-mapping) {
+		@if $name != $connotation {
+			$compound: $compound + ':not([connotation="#{$connotation}"i])';
+		}
+	}
+
+	@return functions.get-local-selector($selector, $compound-placeholder, $compound);
+}
