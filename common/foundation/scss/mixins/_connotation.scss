@@ -1,12 +1,16 @@
 @use 'connotation-partials/variables';
 
+$base: true !default;
+$default: false !default;
+$shades: () !default;
 $connotations-set: primary cta success alert warning info announcement !default;
-$options: (base: true, shades: (), default: false) !default;
 $selector: ':host(#{variables.$compound-placeholder})' !default;
 
 @forward 'connotation-partials/config' with (
+	$base: $base,
+	$default: $default,
+	$shades: $shades,
 	$connotations-set: $connotations-set,
-	$options: $options,
 	$selector: $selector
 );
 

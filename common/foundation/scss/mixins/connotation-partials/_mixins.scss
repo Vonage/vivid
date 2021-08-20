@@ -1,9 +1,3 @@
-@use 'sass:map';
-
-// @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
-// @use 'predefined-connotations';
-// @use 'variables';
-
 @use '../../functions';
 @use 'functions' as connotation-functions;
 @use 'config';
@@ -24,18 +18,17 @@
 
 		$local-selector: functions.get-local-selector(config.$selector, variables.$compound-placeholder, $compound);
 
-		@if map.get(config.$options, default) == $connotation {
-			$default-selector: connotation-functions.connotations-default-selector(map.get(config.$options, default));
+		@if config.$default == $connotation {
+			$default-selector: connotation-functions.connotations-default-selector(config.$default);
 			$local-selector: $local-selector,	$default-selector;
 		}
 
 		#{$local-selector} {
-			@if map.get(config.$options, base) {
+			@if config.$base {
 				@include parse-connotation-base($connotation);
 			}
 
-			$shades: map.get(config.$options, shades);
-			@each $name, $value in functions.pick-map($shades, $mapping) {
+			@each $name, $value in functions.pick-map(config.$shades, $mapping) {
 				@include parse-connotation-shade($name, $value);
 			}
 		}
