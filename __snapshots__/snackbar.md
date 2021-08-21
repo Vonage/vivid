@@ -12,7 +12,7 @@
       class="vivid-snackbar"
       part="vvd-scheme-alternate"
     >
-      <vwc-note class="note">
+      <vwc-note class="vwc-note">
       </vwc-note>
       <div class="actions-container">
         <div class="action-container">
@@ -38,7 +38,7 @@
       class="vivid-snackbar"
       part="vvd-scheme-alternate"
     >
-      <vwc-note class="note">
+      <vwc-note class="vwc-note">
       </vwc-note>
       <div class="actions-container">
         <div class="action-container">
@@ -64,7 +64,7 @@
       class="vivid-snackbar"
       part="vvd-scheme-alternate"
     >
-      <vwc-note class="note">
+      <vwc-note class="vwc-note">
         Message
       </vwc-note>
       <div class="actions-container">
@@ -92,7 +92,7 @@
       part="vvd-scheme-alternate"
     >
       <vwc-note
-        class="note"
+        class="vwc-note"
         icon="home"
       >
       </vwc-note>
@@ -120,7 +120,7 @@
       class="vivid-snackbar"
       part="vvd-scheme-alternate"
     >
-      <vwc-note class="note">
+      <vwc-note class="vwc-note">
       </vwc-note>
       <div class="actions-container">
         <div class="action-container">
@@ -155,7 +155,7 @@
       class="vivid-snackbar"
       part="vvd-scheme-alternate"
     >
-      <vwc-note class="note">
+      <vwc-note class="vwc-note">
       </vwc-note>
       <div class="actions-container">
         <div class="action-container">
@@ -178,7 +178,7 @@
 >
   <div class="mdc-snackbar__surface">
     <div class="vivid-snackbar">
-      <vwc-note>
+      <vwc-note class="vwc-note">
         <div class="snackbar-content">
           <div>
             <div class="action-container">
@@ -203,7 +203,10 @@
 >
   <div class="mdc-snackbar__surface">
     <div class="vivid-snackbar">
-      <vwc-note header="Header">
+      <vwc-note
+        class="vwc-note"
+        header="Header"
+      >
         <div class="snackbar-content">
           <div>
             <div class="action-container">
@@ -228,7 +231,7 @@
 >
   <div class="mdc-snackbar__surface">
     <div class="vivid-snackbar">
-      <vwc-note>
+      <vwc-note class="vwc-note">
         <div class="snackbar-content">
           <div>
             Message
@@ -254,7 +257,10 @@
 >
   <div class="mdc-snackbar__surface">
     <div class="vivid-snackbar">
-      <vwc-note icon="home">
+      <vwc-note
+        class="vwc-note"
+        icon="home"
+      >
         <div class="snackbar-content">
           <div>
             <div class="action-container">
@@ -279,7 +285,7 @@
 >
   <div class="mdc-snackbar__surface">
     <div class="vivid-snackbar">
-      <vwc-note>
+      <vwc-note class="vwc-note">
         <div class="snackbar-content">
           <div>
             <div class="action-container">
@@ -313,7 +319,7 @@
 >
   <div class="mdc-snackbar__surface">
     <div class="vivid-snackbar">
-      <vwc-note>
+      <vwc-note class="vwc-note">
         <div class="snackbar-content">
           <div>
             <div class="action-container">
