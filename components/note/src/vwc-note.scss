@@ -5,7 +5,7 @@
 	$default: announcement
 );
 
-$border-value: 8px solid var(#{color-connotation.$vvd-color-connotation});
+$border-value: 8px solid var(#{connotation.$vvd-color-connotation});
 
 @include connotation.connotation;
 

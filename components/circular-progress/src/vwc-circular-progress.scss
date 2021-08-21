@@ -8,5 +8,5 @@
 @include connotation.connotation;
 
 :host {
-	--mdc-theme-primary: var(#{color-connotation.$vvd-color-connotation});
+	--mdc-theme-primary: var(#{connotation.$vvd-color-connotation});
 }
