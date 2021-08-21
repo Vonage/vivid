@@ -10,34 +10,18 @@ export default {
 };
 
 const Template = args => html`<vwc-chip ...=${spread(args)}></vwc-chip>`;
-const createStory = args => Object.assign(Template, { args });
 
-export const Basic = createStory({
-	text: "Basic"
-});
+export const Basic = Template.bind({});
+Basic.args = { text: 'Basic' };
 
-export const Enlarged = createStory({
-	text: "Enlarged",
-	enlarged: true
-});
+export const Enlarged = Template.bind({});
+Enlarged.args = { text: 'Enlarged',	enlarged: true };
 
-export const Dense = createStory({
-	text: "Dense",
-	dense: true
-});
+export const Dense = Template.bind({});
+Dense.args = { text: 'Dense',	dense: true };
 
-export const Outlined = createStory({
-	text: "Outlined",
-	layout: "outlined"
-});
+export const Outlined = Template.bind({});
+Outlined.args = { text: 'Outlined',	layout: 'outlined' };
 
-export const Selected = createStory({
-	text: "selected",
-	filter: true,
-	selected: true
-});
-
-export const WithTrailingIcon = createStory({
-	text: "With Trailing Icon",
-	iconTrailing: "close-small-line"
-});
+export const Selected = Template.bind({});
+Selected.args = { text: 'Selected', filter: true, selected: true };
