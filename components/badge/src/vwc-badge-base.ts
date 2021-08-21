@@ -19,7 +19,7 @@ type BadgeConnotation = Extract<
 
 type BadgeLayout = Extract<
 	Layout,
-	Layout.Filled | Layout.Outlined | Layout.Outlined_Duotone | Layout.Soft
+	Layout.Filled | Layout.Outlined | Layout.Soft
 >;
 
 type BadgeShape = Extract<Shape, Shape.Rounded | Shape.Pill>;

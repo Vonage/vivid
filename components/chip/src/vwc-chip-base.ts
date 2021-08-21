@@ -18,7 +18,7 @@ type ChipConnotation = Extract<
 type ChipShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
 
 type ChipLayout = Extract<
-	Layout, Layout.Outlined_Duotone | Layout.Soft
+	Layout, Layout.Outlined | Layout.Soft
 >;
 export class VWCChipBase extends LitElement {
   @queryAsync('mwc-ripple') ripple!: Promise<Ripple|null>;

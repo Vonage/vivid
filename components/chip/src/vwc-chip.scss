@@ -10,7 +10,7 @@
 	$variable-name: #{chip-variables.$namespace-shape}
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout-mixins' as layout-mixins with (
-	$layouts: outlined-duotone soft,
+	$layouts: outlined soft,
 	$variable-prefix: #{chip-variables.$namespace-layout}
 );
 
@@ -48,12 +48,12 @@
 	}
 
 	&.vwc-chip--selected {
-		:host([layout="outlined-duotone"i]) & {
+		:host([layout="outlined"i]) & {
 			background-color: var(--vvd-color-connotation--soft);
 		}
 	}
 
-	:host([layout="outlined-duotone"i]) & {
+	:host([layout="outlined"i]) & {
 		// #{chip-variables.$namespace-layout}--outline: 1px solid var(#{scheme-variables.$vvd-color-neutral-50});
 		border: 1px solid var(#{scheme-variables.$vvd-color-neutral-50});
 	}

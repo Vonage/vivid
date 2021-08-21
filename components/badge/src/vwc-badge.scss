@@ -13,7 +13,7 @@ $namespace-shape: #{$namespace}-shape;
 	$variable-name: #{$namespace-shape}
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout-mixins' as layout-mixins with (
-	$layouts: filled outlined outlined-duotone soft,
+	$layouts: filled outlined soft,
 	$variable-prefix: #{$namespace-layout}
 );
 
