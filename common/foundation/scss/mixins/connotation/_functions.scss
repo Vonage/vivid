@@ -1,0 +1,18 @@
+@use 'variables';
+
+
+@function connotation-default-compound-selector($name, $all-connotations) {
+	$compound: '';
+
+	@each $connotation, $_ in $all-connotations {
+		@if $name != $connotation {
+			$compound: $compound + ':not([connotation="#{$connotation}"i])';
+		}
+	}
+
+	@return $compound;
+}
+
+@function connotation-decorative-gradient($start, $end) {
+	@return linear-gradient(to right, $start, $end);
+}

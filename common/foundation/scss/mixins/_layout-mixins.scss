@@ -1,4 +1,4 @@
-@use './color-connotation' as color-connotation;
+@use './connotation' as connotation;
 @use '../functions' as functions;
 
 // override to apply relevance
@@ -17,8 +17,8 @@ $all-layouts: (
 );
 
 %filled {
-	#{$variable-prefix}--fill: var(#{color-connotation.$vvd-color-connotation});
-	#{$variable-prefix}--text: var(#{color-connotation.$vvd-color-on-connotation});
+	#{$variable-prefix}--fill: var(#{connotation.$vvd-color-connotation});
+	#{$variable-prefix}--text: var(#{connotation.$vvd-color-on-connotation});
 }
 
 %outlined {
@@ -35,7 +35,7 @@ $all-layouts: (
 %text,
 %ghost {
 	#{$variable-prefix}--fill: transparent;
-	#{$variable-prefix}--text: var(#{color-connotation.$vvd-color-connotation});
+	#{$variable-prefix}--text: var(#{connotation.$vvd-color-connotation});
 }
 
 @mixin layout() {
