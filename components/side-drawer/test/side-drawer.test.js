@@ -53,15 +53,12 @@ describe('Side-drawer', () => {
 			expect(actualElement.hasTopBar, 'hasTopBar should be undefined')
 				.to
 				.equal(undefined);
-			expect(actualElement.absolute, 'absolute should be false')
-				.to
-				.equal(false);
 		});
 	});
 
 	describe('Side drawer attributes', () => {
 		it('should reflect from attribute to property', async () => {
-			const COMPONENT_PROPERTIES = ['open', 'alternate', 'hasTopBar', 'absolute'];
+			const COMPONENT_PROPERTIES = ['open', 'alternate', 'hasTopBar'];
 			for await (const property of COMPONENT_PROPERTIES) {
 				const [actualElement] = addElement(
 					textToDomToParent(`<${COMPONENT_NAME} ${property}></${COMPONENT_NAME}>`)
