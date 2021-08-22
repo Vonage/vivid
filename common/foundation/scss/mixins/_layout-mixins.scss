@@ -23,13 +23,13 @@ $all-layouts: (
 
 %outlined {
 	#{$variable-prefix}--fill: transparent;
-	#{$variable-prefix}--outline: 1px solid var(#{color-connotation.$vvd-color-connotation});
-	#{$variable-prefix}--text: var(#{color-connotation.$vvd-color-connotation}--contrast);
+	#{$variable-prefix}--outline: 1px solid var(#{connotation.$vvd-color-connotation});
+	#{$variable-prefix}--text: var(#{connotation.$vvd-color-connotation}-contrast);
 }
 
 %soft {
-	#{$variable-prefix}--fill: var(#{color-connotation.$vvd-color-connotation}--soft);
-	#{$variable-prefix}--text: var(#{color-connotation.$vvd-color-connotation}--contrast);
+	#{$variable-prefix}--fill: var(#{connotation.$vvd-color-connotation}-soft);
+	#{$variable-prefix}--text: var(#{connotation.$vvd-color-connotation}-contrast);
 }
 
 %text,
