@@ -70,21 +70,21 @@ export class VWCSideDrawerBase extends LitElement {
 	connectedCallback(): void {
 		super.connectedCallback();
 		this.addEventListener('transitionend', this.#handleTransitionEnd);
-		this.addEventListener('keydown', this.#handleKeydown);
+		document.addEventListener('keydown', this.#handleKeydown);
 	}
 
 	disconnectedCallback(): void {
 		super.disconnectedCallback();
 		this.#releaseFocus();
 		this.removeEventListener('transitionend', this.#handleTransitionEnd);
-		this.removeEventListener('keydown', this.#handleKeydown);
+		document.removeEventListener('keydown', this.#handleKeydown);
 	}
 
 	protected render(): TemplateResult {
-		const dismissible = this.type === 'dismissible' || this.type === 'modal';
+		const dismissible = this.type === 'dismissible';
 		const modal = this.type === 'modal';
 		const topBar = this.hasTopBar ? this.renderTopBar() : '';
-		const scrim = this.type === 'modal' && this.open ? this.renderScrim() : '';
+		const scrim = (this.type === 'modal' && this.open) ? this.renderScrim() : '';
 		const alternate = this.alternate ? 'vvd-scheme-alternate' : undefined;
 
 		const classes = {
@@ -94,20 +94,31 @@ export class VWCSideDrawerBase extends LitElement {
 			'vvd-side-drawer--open': this.open,
 		};
 
+		const aside = html`<aside
+							part="${ifDefined(alternate)}"
+							class="side-drawer ${classMap(classes)}">
+							${topBar}
+
+							<div class="vvd-side-drawer--content">
+								<slot></slot>
+							</div>
+						</aside>`;
+
 		return html`
-			<aside
-				part="${ifDefined(alternate)}"
-				class="side-drawer ${classMap(classes)}"
-			>
-				${topBar}
-
-				<div class="vvd-side-drawer--content">
-					<slot></slot>
-				</div>
-			</aside>
-
+			${dismissible ? this.renderDismissible(aside) : aside}
 			${scrim}
 		`;
+	}
+
+	private renderDismissible(template: TemplateResult): TemplateResult {
+		const classes = {
+			'aside-container--open': this.open,
+		};
+
+		return html`
+			<div class="aside-container ${classMap(classes)}">
+				${template}
+			</div>`;
 	}
 
 	private renderTopBar(): TemplateResult {
@@ -133,13 +144,13 @@ export class VWCSideDrawerBase extends LitElement {
 	}
 
 	#handleKeydown = ({ key }: KeyboardEvent): void => {
-		if (this.type === 'modal' && this.open && key === 'Escape') {
+		if ((this.type === 'modal' || this.type === 'dismissible') && this.open && key === 'Escape') {
 			this.hide();
 		}
 	};
 
 	#handleTransitionEnd = (): void => {
-		if (this.type === 'modal') {
+		if (this.type === 'modal' || this.type === 'dismissible') {
 			// when side drawer finishes open animation
 			if (this.open) {
 				this.#opened();
@@ -151,12 +162,16 @@ export class VWCSideDrawerBase extends LitElement {
 	};
 
 	#opened(): void {
-		this.#trapFocus();
+		if (this.type === 'modal') {
+			this.#trapFocus();
+		}
 		this.#notifyOpen();
 	}
 
 	#closed(): void {
-		this.#releaseFocus();
+		if (this.type === 'modal') {
+			this.#releaseFocus();
+		}
 		this.#notifyClose();
 	}
 
