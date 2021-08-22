@@ -13,8 +13,8 @@
 :host {
 	--mdc-shape-small: var(#{textfield-variables.$vvd-textfield-shape});
 	--mdc-theme-error: #{vvd-formfield.$formfield-label-error-ink};
-	--mdc-text-field-fill-color: var(#{scheme-variables.$vvd-color-base});
-	--mdc-text-field-ink-color: var(#{scheme-variables.$vvd-color-on-base});
+	--mdc-text-field-fill-color: var(#{scheme-variables.$vvd-color-canvas});
+	--mdc-text-field-ink-color: var(#{scheme-variables.$vvd-color-on-canvas});
 	--mdc-text-field-label-ink-color: var(#{vvd-formfield.$formfield-label-idle-ink});
 	--mdc-text-field-disabled-ink-color: var(
 		#{vvd-formfield.$formfield-disabled-ink}

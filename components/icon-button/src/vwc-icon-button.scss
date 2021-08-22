@@ -55,13 +55,13 @@ $block-sizes: (
 	}
 }
 
-:host([layout=filled]) {
+:host([layout="filled"i]) {
 	.mdc-icon-button:disabled {
 		background-color: var(#{scheme-variables.$vvd-color-neutral-30});
 	}
 }
 
-:host([layout=outlined]) {
+:host([layout="outlined"i]) {
 	.mdc-icon-button:disabled {
 		border-color: var(#{vvd-formfield.$formfield-disabled-ink});
 	}

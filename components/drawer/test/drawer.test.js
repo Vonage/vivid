@@ -130,19 +130,19 @@ describe('Drawer', () => {
 
 				const surfaceBackgroundBody = getComputedStyle(
 					iframeWindow.document.body
-				).getPropertyValue('--vvd-color-base');
+				).getPropertyValue('--vvd-color-canvas');
 				const surfaceBackgroundDrawer = getComputedStyle(
 					shadowDrawer
-				).getPropertyValue('--vvd-color-base');
+				).getPropertyValue('--vvd-color-canvas');
 
 				expect(surfaceBackgroundBody).to.equal(surfaceBackgroundDrawer);
 
 				const surfaceForegroundBody = getComputedStyle(
 					iframeWindow.document.body
-				).getPropertyValue('--vvd-color-on-base');
+				).getPropertyValue('--vvd-color-on-canvas');
 				const surfaceForegroundDrawer = getComputedStyle(
 					shadowDrawer
-				).getPropertyValue('--vvd-color-on-base');
+				).getPropertyValue('--vvd-color-on-canvas');
 				expect(surfaceForegroundBody).to.equal(surfaceForegroundDrawer);
 			});
 		});

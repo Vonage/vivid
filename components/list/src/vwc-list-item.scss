@@ -30,10 +30,10 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 	--mdc-list-item-graphic-size: 20px;
 	--mdc-list-item-meta-size: 20px;
 	--mdc-theme-text-icon-on-background: var(
-		#{scheme-variables.$vvd-color-on-base}
+		#{scheme-variables.$vvd-color-on-canvas}
 	);
 	--mdc-theme-text-hint-on-background: var(
-		#{scheme-variables.$vvd-color-on-base}
+		#{scheme-variables.$vvd-color-on-canvas}
 	);
 
 	@include typography.typography-cat-shorthand('body-2');

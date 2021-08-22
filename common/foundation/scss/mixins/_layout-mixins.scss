@@ -30,7 +30,7 @@ $all-layouts: (
 
 %soft {
 	#{$variable-prefix}--fill: var(#{color-connotation.$vvd-color-connotation}-soft);
-	#{$variable-prefix}--text: var(#{scheme-variables.$vvd-color-on-base});
+	#{$variable-prefix}--text: var(#{scheme-variables.$vvd-color-on-canvas});
 }
 
 %text,
@@ -48,7 +48,7 @@ $all-layouts: (
 }
 
 @mixin layout-default($name) {
-	#{':host'} {
+	:host(:not([layout])) {
 		@extend %#{$name};
 	}
 }
