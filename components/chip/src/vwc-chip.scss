@@ -2,8 +2,10 @@
 @use '@vonage/vwc-icon/src/partials/vwc-icon-variables' as icon-variables;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-typography/scss/typography' as typography;
-@use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation with (
-	$connotations-set: primary cta
+@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation with (
+	$connotations-set: primary cta,
+	$shades: contrast soft,
+	$default: primary
 );
 
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
@@ -15,10 +17,7 @@
 );
 
 
-@include color-connotation.connotations-shades;
-@include color-connotation.connotations-shades-default(primary);
-@include color-connotation.connotations-main;
-@include color-connotation.connotations-main-default(primary);
+@include connotation.connotation;
 
 @include shape-mixins.shape(
 	$shapes: (
@@ -49,7 +48,7 @@
 
 	&.vwc-chip--selected {
 		:host([layout="outlined"i]) & {
-			background-color: var(--vvd-color-connotation--soft);
+			background-color: var(--vvd-color-connotation-soft);
 		}
 	}
 
