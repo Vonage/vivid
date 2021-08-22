@@ -5,21 +5,21 @@
 @use 'variables';
 
 @mixin connotation-base($type) {
-	#{config.$connotation-variable}: var(#{variables.$vvd-color}-#{$type});
-	#{config.$on-connotation-variable}: var(#{variables.$vvd-color-on}-#{$type});
+	#{variables.$vvd-color-connotation}: var(#{variables.$vvd-color}-#{$type});
+	#{variables.$vvd-color-on-connotation}: var(#{variables.$vvd-color-on}-#{$type});
 }
 
 @mixin connotation-shades($mapping) {
 	$shades: functions.pick-map(config.$shades, $mapping);
 	@each $name, $value in $shades {
-		#{config.$connotation-variable}-#{$name}: var(#{$value});
+		#{variables.$vvd-color-connotation}-#{$name}: var(#{$value});
 	}
 }
 
 @mixin connotation-decorative($mapping) {
 	$start: map.get($mapping, start);
 	$end: map.get($mapping, end);
-	#{config.$connotation-variable}: local-functions.connotation-decorative-gradient($start, $end);
+	#{variables.$vvd-color-connotation}: local-functions.connotation-decorative-gradient($start, $end);
 }
 
 @mixin selectors($types...) {

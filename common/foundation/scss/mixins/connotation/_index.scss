@@ -6,8 +6,6 @@ $shades: () !default;
 $decoratives: () !default;
 $connotations-set: primary cta success alert warning info announcement !default;
 $selector: ':host(#{variables.$compound-placeholder})' !default;
-$connotation-variable: '' !default;
-$on-connotation-variable: '' !default;
 
 @forward 'config' with (
 	$base: $base,
@@ -16,8 +14,6 @@ $on-connotation-variable: '' !default;
 	$decoratives: $decoratives,
 	$connotations-set: $connotations-set,
 	$selector: $selector,
-	$connotation-variable: variables.$vvd-color-connotation,
-	$on-connotation-variable: variables.$vvd-color-on-connotation
 );
 
 @forward 'mixins' show connotation;
