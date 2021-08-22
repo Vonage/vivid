@@ -167,7 +167,7 @@ describe('Side-drawer', () => {
 			onClosed.should.have.been.called();
 		});
 
-		it('should fire closed event after pressing escape on the drawer', async () => {
+		it('should fire closed event after pressing escape on the document', async () => {
 			const onClosed = chai.spy();
 
 			sideDrawerEl.open = true;
@@ -181,7 +181,7 @@ describe('Side-drawer', () => {
 			});
 
 			const keyboardEvent = new KeyboardEvent('keydown', { key: 'Escape' });
-			sideDrawerEl.dispatchEvent(keyboardEvent);
+			document.dispatchEvent(keyboardEvent);
 
 			animateDrawer(sideDrawerEl);
 
