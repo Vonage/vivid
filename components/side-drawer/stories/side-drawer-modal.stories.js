@@ -8,7 +8,7 @@ import { unsafeSVG } from 'lit-html/directives/unsafe-svg';
 import { pageContentMock } from '../../../scripts/storybook/svg_templates';
 
 export default {
-	title: 'Alpha/Components/Side Drawer',
+	title: 'Alpha/Components/Side Drawer/Modal',
 	component: 'vwc-side-drawer',
 	argTypes
 };
@@ -23,25 +23,9 @@ const titleStyles = {
 const Template = args => html`
 	<style>
 		div#demo {
-			position: relative;
-			display: flex;
-			width: 960px;
-			height: 540px;
-			margin: auto;
-			background-color: #eee;
-			border-radius: 10px;
-			overflow: hidden;
-			box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.1);
-			border: solid 1px #ccc;
+			top: 0px;
+			position: fixed;
 		}
-		vwc-side-drawer#side-drawer {
-			flex: 0 0 auto;
-			height: 100%;
-		}
-		div#default > svg {
-						width: 100%;
-						height: 100%;
-					}
 	</style>
 
 	<div id="demo">
@@ -112,14 +96,5 @@ function onClick(e) {
 	prevActivatedItem.activated = true;
 }
 
-export const Basic = Template.bind({});
-Basic.args = { };
-
-export const Alternate = Template.bind({});
-Alternate.args = { alternate: true };
-
-export const TopBar = Template.bind({});
-TopBar.args = { hasTopBar: true };
-
-export const Dismissible = Template.bind({});
-Dismissible.args = { type: 'dismissible', open: true };
+export const Modal = Template.bind({});
+Modal.args = { type: 'modal', open: true };
