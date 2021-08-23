@@ -39,9 +39,9 @@ const Template = args => html`
 			height: 100%;
 		}
 		div#default > svg {
-						width: 100%;
-						height: 100%;
-					}
+			width: 100%;
+			height: 100%;
+		}
 	</style>
 
 	<div id="demo">

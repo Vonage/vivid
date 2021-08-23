@@ -25,6 +25,9 @@ const Template = args => html`
 		div#demo {
 			top: 0px;
 			position: fixed;
+			display: flex;
+			width: 100%;
+			height: 100%;
 		}
 	</style>
 
@@ -76,7 +79,7 @@ const Template = args => html`
 		</vwc-side-drawer>
 
 		<div id="default"></div>
-		${unsafeSVG(pageContentMock())}
+		${unsafeSVG(pageContentMock('100%', '100%', 'xMinYMin slice'))}
 
 	</div>
 `;
