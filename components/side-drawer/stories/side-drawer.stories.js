@@ -13,8 +13,6 @@ export default {
 	argTypes
 };
 
-let prevActivatedItem;
-
 const titleStyles = {
 	color: "#C0C0C0",
 	fontWeight: "bold",
@@ -43,8 +41,13 @@ const Template = args => html`
 			height: 100%;
 		}
 	</style>
-
 	<div id="demo">
+		${Basic(args)}
+		<div id="default"></div>
+		${unsafeSVG(pageContentMock())}
+	</div>`;
+
+const SideDrawerTemplate = args => html`
 		<vwc-side-drawer id="side-drawer" ...=${spread(args)} @click="${onClick}">
 			<span slot="top-bar">
 				<vwc-icon type="vonage-mono"></vwc-icon> VONAGE
@@ -88,15 +91,21 @@ const Template = args => html`
 					<vwc-list-item shape="rounded">2nd level item</vwc-list-item>
 				</vwc-list-expansion-panel>
 			</vwc-list>
+		</vwc-side-drawer>`;
 
-		</vwc-side-drawer>
+export const Basic = SideDrawerTemplate.bind({});
+Basic.args = { };
 
-		<div id="default"></div>
-		${unsafeSVG(pageContentMock())}
+export const Alternate = Template.bind({});
+Alternate.args = { alternate: true };
 
-	</div>
-`;
+export const TopBar = Template.bind({});
+TopBar.args = { hasTopBar: true };
 
+export const Dismissible = Template.bind({});
+Dismissible.args = { type: 'dismissible', open: true };
+
+let prevActivatedItem;
 function onClick(e) {
 	// only list items can be activated
 	if (e.target.localName !== "vwc-list-item") {
@@ -111,15 +120,3 @@ function onClick(e) {
 	prevActivatedItem = e.target;
 	prevActivatedItem.activated = true;
 }
-
-export const Basic = Template.bind({});
-Basic.args = { };
-
-export const Alternate = Template.bind({});
-Alternate.args = { alternate: true };
-
-export const TopBar = Template.bind({});
-TopBar.args = { hasTopBar: true };
-
-export const Dismissible = Template.bind({});
-Dismissible.args = { type: 'dismissible', open: true };
