@@ -12,68 +12,17 @@ export async function createElementVariations(wrapper) {
 	elementWrapper.innerHTML = `
 	<style>
 		div#demo {
-			position: relative;
+			top: 0px;
+			position: fixed;
 			display: flex;
-			width: 960px;
-			height: 400px;
-			margin: 10px;
-			background-color: #eee;
-			border-radius: 10px;
-			overflow: hidden;
-			box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.1);
-			border: solid 1px #ccc;
-		}
-		vwc-side-drawer#side-drawer {
-			flex: 0 0 auto;
-			height: 100%;
-		}
-		div#default > svg {
 			width: 100%;
 			height: 100%;
 		}
 	</style>
 
-
 	<div>
 		<div id="demo">
-			<vwc-side-drawer id="side-drawer">
-				<span slot="top-bar">
-					<vwc-icon type="vonage-mono"></vwc-icon> VONAGE
-				</span>
-
-				<vwc-list
-						innerRole="navigation"
-						innerAriaLabel="Primary navigation"
-						itemRoles="link"
-					>
-					<vwc-list-item shape="rounded" graphic="icon">
-						<vwc-icon slot="graphic" type="home-line"></vwc-icon>1st level item
-					</vwc-list-item>
-
-					<p>SECTION TITLE</p>
-
-					<vwc-list-expansion-panel open>
-						<vwc-list-item slot="header" shape="rounded" graphic="icon">
-							<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
-						</vwc-list-item>
-						<vwc-list-item shape="rounded">2nd level item</vwc-list-item>
-						<vwc-list-item shape="rounded">2nd level item</vwc-list-item>
-					</vwc-list-expansion-panel>
-
-					<vwc-list-item shape="rounded" graphic="icon">
-						<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
-					</vwc-list-item>
-					
-				</vwc-list>
-
-			</vwc-side-drawer>
-
-			<div id="default"></div>
-			${pageContentMock()}
-		</div>
-
-		<div id="demo">
-			<vwc-side-drawer id="side-drawer" type="dismissble" alternate hasTopBar open>
+			<vwc-side-drawer id="side-drawer" type="modal" hasTopBar open>
 				<span slot="top-bar">
 					<vwc-icon type="vonage-mono"></vwc-icon> VONAGE
 				</span>
@@ -110,7 +59,8 @@ export async function createElementVariations(wrapper) {
 			</vwc-side-drawer>
 
 			<div id="default"></div>
-			${pageContentMock()}
+			${pageContentMock('100%', '100%', 'xMinYMin slice')}
+
 		</div>
 	</div>
 `;
