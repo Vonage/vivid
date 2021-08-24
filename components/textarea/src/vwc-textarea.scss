@@ -6,6 +6,9 @@
 	display: inline-flex;
 	flex-direction: column;
 	outline: none;
+	.mdc-text-field__input {
+		pointer-events: all;
+	}
 }
 
 :host([dense][label]:not([label=''])) {
