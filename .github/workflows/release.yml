@@ -25,7 +25,7 @@ jobs:
         run: printf "registry=https://npm.pkg.github.com/Vonage\n_authToken=\${GITHUB_TOKEN}\n//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}\nalways-auth=true" > .npmrc
 
       - name: Install dependencies
-        run: yarn install
+        run: yarn install --network-timeout 100000
 
       - run: yarn compile
       - run: tar -zcf /tmp/vivid-env.tar.gz .
