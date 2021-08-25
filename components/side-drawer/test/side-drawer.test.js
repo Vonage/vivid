@@ -10,9 +10,11 @@ import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-side-drawer';
-const COMPONENT_PROPERTIES = ['open', 'alternate', 'hasTopBar', 'absolute'];
-const COMPONENT_TYPES = ['', 'dismissible', 'modal'];
 
+function animateDrawer(drawerElement) {
+	const event = new Event('transitionend');
+	drawerElement.dispatchEvent(event);
+}
 
 describe('Side-drawer', () => {
 	let addElement = isolatedElementsCreation();
@@ -36,7 +38,7 @@ describe('Side-drawer', () => {
 
 	describe('Side drawer default init', () => {
 		it('should reflect from attribute to property', async () => {
-			const [actualElement] = (
+			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
 
@@ -53,40 +55,50 @@ describe('Side-drawer', () => {
 				.equal(undefined);
 			expect(actualElement.absolute, 'absolute should be false')
 				.to
-				.equal(false);
+				.equal(true);
 		});
 	});
 
 	describe('Side drawer attributes', () => {
 		it('should reflect from attribute to property', async () => {
+			const COMPONENT_PROPERTIES = ['open', 'alternate', 'hasTopBar', 'absolute'];
 			for await (const property of COMPONENT_PROPERTIES) {
 				const [actualElement] = addElement(
 					textToDomToParent(`<${COMPONENT_NAME} ${property}></${COMPONENT_NAME}>`)
 				);
 				await actualElement.updateComplete;
-				expect(actualElement[property]).to.equal(true);
+				expect(actualElement[property])
+					.to
+					.equal(true);
 			}
 		});
 
 		it('should reflect (type) from attribute to property', async () => {
+			const COMPONENT_TYPES = ['', 'dismissible', 'modal'];
 			for await (const type of COMPONENT_TYPES) {
 				const [actualElement] = addElement(
 					textToDomToParent(`<${COMPONENT_NAME} type=${type}></${COMPONENT_NAME}>`)
 				);
 				await actualElement.updateComplete;
-				expect(actualElement.type).to.equal(type);
+				expect(actualElement.type)
+					.to
+					.equal(type);
 			}
 		});
 	});
 
 	describe('Modal side drawer events', () => {
-		it('should fire opened event after changing from close to open', async () => {
+		let sideDrawerEl;
+
+		beforeEach(function () {
+			[sideDrawerEl] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} type="modal"></${COMPONENT_NAME}>`)
+			);
+		});
+		it('should fire opened and trapFocus events after animation completes and open is true', async () => {
 			const onOpened = chai.spy();
 			const onFocusTrapped = chai.spy();
 
-			const [sideDrawerEl] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} type="modal"></${COMPONENT_NAME}>`)
-			);
 			await sideDrawerEl.updateComplete;
 
 			const eventListenerPromise = new Promise((res) => {
@@ -100,22 +112,19 @@ describe('Side-drawer', () => {
 				});
 			});
 
-			sideDrawerEl.show();
-			const event = new Event('transitionend');
-			sideDrawerEl.dispatchEvent(event);
+			sideDrawerEl.open = true;
+			animateDrawer(sideDrawerEl);
 
 			await eventListenerPromise;
 			onOpened.should.have.been.called();
 			onFocusTrapped.should.have.been.called();
 		});
 
-		it('should fire closed event after changing from open to close', async () => {
+		it('should fire closed and releaseFocus events after animation completes and open is false', async () => {
 			const onClosed = chai.spy();
 			const onFocusReleased = chai.spy();
 
-			const [sideDrawerEl] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} type="modal" open></${COMPONENT_NAME}>`)
-			);
+			sideDrawerEl.open = true;
 			await sideDrawerEl.updateComplete;
 
 			const eventListenerPromise = new Promise((res) => {
@@ -129,9 +138,8 @@ describe('Side-drawer', () => {
 				});
 			});
 
-			sideDrawerEl.close();
-			const event = new Event('transitionend');
-			sideDrawerEl.dispatchEvent(event);
+			sideDrawerEl.open = false;
+			animateDrawer(sideDrawerEl);
 
 			await eventListenerPromise;
 			onClosed.should.have.been.called();
@@ -141,12 +149,9 @@ describe('Side-drawer', () => {
 		it('should fire closed event after clicking on scrim', async () => {
 			const onClosed = chai.spy();
 
-			const [sideDrawerEl] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} type="modal" open></${COMPONENT_NAME}>`)
-			);
+			sideDrawerEl.open = true;
 			await sideDrawerEl.updateComplete;
 			const scrim = sideDrawerEl.shadowRoot.querySelector('.vvd-side-drawer--scrim');
-
 
 			const eventListenerPromise = new Promise((res) => {
 				sideDrawerEl.addEventListener('closed', () => {
@@ -156,11 +161,104 @@ describe('Side-drawer', () => {
 			});
 
 			scrim?.click();
-			const event = new Event('transitionend');
-			sideDrawerEl.dispatchEvent(event);
+			animateDrawer(sideDrawerEl);
 
 			await eventListenerPromise;
 			onClosed.should.have.been.called();
+		});
+
+		it('should fire closed event after pressing escape on the document', async () => {
+			const onClosed = chai.spy();
+
+			sideDrawerEl.open = true;
+			await sideDrawerEl.updateComplete;
+
+			const eventListenerPromise = new Promise((res) => {
+				sideDrawerEl.addEventListener('closed', () => {
+					onClosed();
+					res();
+				});
+			});
+
+			const keyboardEvent = new KeyboardEvent('keydown', { key: 'Escape' });
+			document.dispatchEvent(keyboardEvent);
+
+			animateDrawer(sideDrawerEl);
+
+			await eventListenerPromise;
+			onClosed.should.have.been.called();
+		});
+	});
+
+	describe('Dismissible side drawer events', () => {
+		let sideDrawerEl;
+
+		beforeEach(function () {
+			[sideDrawerEl] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} type="dismissible"></${COMPONENT_NAME}>`)
+			);
+		});
+		it('should fire opened event after animation completes and open is true', async () => {
+			const onOpened = chai.spy();
+
+			await sideDrawerEl.updateComplete;
+
+			const eventListenerPromise = new Promise((res) => {
+				sideDrawerEl.addEventListener('opened', () => {
+					onOpened();
+					res();
+				});
+			});
+
+			sideDrawerEl.open = true;
+			animateDrawer(sideDrawerEl);
+
+			await eventListenerPromise;
+			onOpened.should.have.been.called();
+		});
+
+		it('should fire closed event after animation completes and open is false', async () => {
+			const onClosed = chai.spy();
+
+			sideDrawerEl.open = true;
+			await sideDrawerEl.updateComplete;
+
+			const eventListenerPromise = new Promise((res) => {
+				sideDrawerEl.addEventListener('closed', () => {
+					onClosed();
+					res();
+				});
+			});
+
+			sideDrawerEl.open = false;
+			animateDrawer(sideDrawerEl);
+
+			await eventListenerPromise;
+			onClosed.should.have.been.called();
+		});
+	});
+
+	describe(`show`, function () {
+		it(`should set "open" to true`, function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+			);
+			actualElement.show();
+			expect(actualElement.open)
+				.to
+				.equal(true);
+		});
+	});
+
+	describe(`hide`, function () {
+		it(`should set "open" to false`, function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} open></${COMPONENT_NAME}>`)
+			);
+			actualElement.hide();
+			expect(actualElement.open)
+				.to
+				.equal(false);
 		});
 	});
 });

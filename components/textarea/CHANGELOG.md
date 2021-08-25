@@ -1,3 +1,12 @@
+# [2.18.0](https://github.com/vonage/vivid/compare/v2.17.0...v2.18.0) (2021-08-24)
+
+
+### Bug Fixes
+
+* **textarea:** textarea scroll now working ([#1030](https://github.com/vonage/vivid/issues/1030)) ([86ae56e](https://github.com/vonage/vivid/commit/86ae56ed40a3548e9e7ea88f11830f602baa7e42))
+
+
+
 # [2.17.0](https://github.com/vonage/vivid/compare/v2.16.1...v2.17.0) (2021-08-09)
 
 
