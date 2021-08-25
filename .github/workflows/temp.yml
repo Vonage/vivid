@@ -1,0 +1,22 @@
+name: Testing removal of PATs
+
+on:
+  push
+
+jobs:
+  prepare-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          ref: master
+
+      - run: echo "Hello World" > test.txt
+
+      - run: git checkout -b this_is_a_test_branch_please_delete_me
+
+      - run: git commit -ma "Testing push to master without the use of PATs"
+
+      - run: git push
