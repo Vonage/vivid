@@ -12,6 +12,10 @@ export default {
 
 const Template = args => html`
 	<style>
+		body {
+			padding: 0 !important;
+		}
+
 		div#demo {
 			top: 0px;
 			position: fixed;

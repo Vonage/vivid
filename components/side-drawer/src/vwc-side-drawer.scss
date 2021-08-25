@@ -17,59 +17,22 @@ $min-width: 280px;
 
 .side-drawer {
 	z-index: #{$z-index-default};
+	background-color: var(#{scheme-variables.$vvd-color-canvas});
 	color: var(#{scheme-variables.$vvd-color-on-canvas});
 	min-inline-size: var(#{$vvd-side-drawer--min-inline-size}, $min-width);
+
 	&:not(.vvd-side-drawer--alternate):not(.vvd-side-drawer--modal) {
 		background-color: var(#{scheme-variables.$vvd-color-neutral-10});
 	}
-	&.vvd-side-drawer--alternate {
-		background-color: var(#{scheme-variables.$vvd-color-canvas});
-	}
-	&.vvd-side-drawer--modal {
-		background-color: var(#{scheme-variables.$vvd-color-canvas});
-		@media screen and (prefers-reduced-motion: reduce) {
-			&.vvd-side-drawer--open {
-				transform: translateX(0%);
-				transition: none;
-			}
-		}
 
-		&.vvd-side-drawer--open {
-			transform: translateX(0%);
-			transition: transform 0.5s linear;
-		}@media screen and (prefers-reduced-motion: reduce) {
-			&:not(.vvd-side-drawer--open) {
-				transform: translateX(-100%);
-				transition: none;
-			}
-		}
-		&:not(.vvd-side-drawer--open) {
-			transform: translateX(-100%);
-			transition: transform 0.5s linear;
-		}
-	}
-
+	&.vvd-side-drawer--modal,
 	&.vvd-side-drawer--dismissible {
-		background-color: var(#{scheme-variables.$vvd-color-canvas});
-		@media screen and (prefers-reduced-motion: reduce) {
-			&.vvd-side-drawer--open {
-				transform: translateX(0%);
-				transition: none;
-			}
+		@media (prefers-reduced-motion: no-preference) {
+			transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 		}
 
-		&.vvd-side-drawer--open {
-			transform: translateX(0%);
-			transition: transform 0.5s linear;
-		}@media screen and (prefers-reduced-motion: reduce) {
-			&:not(.vvd-side-drawer--open) {
-				transform: translateX(-100%);
-				transition: none;
-			}
-		}
 		&:not(.vvd-side-drawer--open) {
 			transform: translateX(-100%);
-			transition: transform 0.5s linear;
 		}
 	}
 }
