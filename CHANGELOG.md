@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.18.1](https://github.com/Vonage/vivid/compare/v2.18.0...v2.18.1) (2021-08-25)
+
+
+### Features
+
+* **vwc-side-drawer:** remove absolute support ([#1029](https://github.com/Vonage/vivid/issues/1029)) ([b00ded7](https://github.com/Vonage/vivid/commit/b00ded72111a63958d4370609943c160782cf1a2))
+
+
+
+
+
 # [2.18.0](https://github.com/Vonage/vivid/compare/v2.17.0...v2.18.0) (2021-08-24)
 
 
