@@ -6,7 +6,34 @@ export default {
 };
 
 export const Template = () => html`
-  <div>
+  <style>
+    	div#demo {
+        width: 100%;
+        height: 100%;
+        display: flex;
+		  }
+      form {
+        display: grid;
+        gap: 20px;
+        margin: auto;
+      }
+      .controls {
+        display: flex;
+        justify-content: start;
+        gap: 10px;
+      }
+      #password {
+        display: flex;
+      }
+      #remember {
+        flex: 1 0;
+      }
+      #forgot {
+        flex: 0 0 50vw;
+        padding-top: 20px;
+      }
+	</style>
+  <div id="demo">
     <form>
       <p><vwc-text font-face="title-2">Welcome back!</vwc-text></p>
       <p><vwc-text font-face="body-2">Don't have an account? <a href="">Sign Up</a></vwc-text></p>
@@ -44,10 +71,10 @@ export const Template = () => html`
           placeholder=" "
         />
       </vwc-textfield>
-      <vwc-formfield label="Remember me">
-        <vwc-checkbox></vwc-checkbox>
-      </vwc-formfield>
-      <p><vwc-text font-face="body-2"><a href="">Forgot password?</a></vwc-text></p>
+      <div id="password">
+        <vwc-formfield id="remember" label="Remember me"><vwc-checkbox></vwc-checkbox></vwc-formfield>
+        <vwc-text id="forgot" font-face="body-2"><a href="">Forgot password?</a></vwc-text>
+      </div>
       </div>
       <div class="controls">
         <vwc-button layout="filled" type="submit" unelevated="">
