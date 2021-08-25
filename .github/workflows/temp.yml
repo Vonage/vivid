@@ -6,9 +6,6 @@ on:
 jobs:
   prepare-verify:
     runs-on: ubuntu-latest
-    env:
-      GIT_AUTHOR_EMAIL: vivid@vonage.com
-      GIT_AUTHOR_NAME: Vividbot
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -17,13 +14,10 @@ jobs:
           ref: master
           token: ${{ secrets.VIVID_TOKEN }}
 
-
-      - run: echo "Hello World" > test.txt
+      - run: rm test.txt
       - run: git add test.txt
       - run: git config user.email "vivid@vonage.com"
       - run: git config user.name "Vivid"
-
-      #- run: git checkout -b this_is_a_test_branch_please_delete_me
 
       - run: git commit -a -m "Testing push to master without the use of PATs" --author="Vivid <vivid@vonage.com>"
 
