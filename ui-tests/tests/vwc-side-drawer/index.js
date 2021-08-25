@@ -35,116 +35,83 @@ export async function createElementVariations(wrapper) {
 
 
 	<div>
+		<div id="demo">
+			<vwc-side-drawer id="side-drawer">
+				<span slot="top-bar">
+					<vwc-icon type="vonage-mono"></vwc-icon> VONAGE
+				</span>
 
-	<div id="demo">
-		<vwc-side-drawer id="side-drawer" alternate>
-			<span slot="top-bar">
-				<vwc-icon type="vonage-mono"></vwc-icon> VONAGE
-			</span>
-
-			<vwc-list
-					innerRole="navigation"
-					innerAriaLabel="Primary navigation"
-					itemRoles="link"
-				>
-				<vwc-list-item shape="rounded" graphic="icon">
-					<vwc-icon slot="graphic" type="home-line"></vwc-icon>1st level item
-				</vwc-list-item>
-
-				<p>SECTION TITLE</p>
-
-				<vwc-list-item shape="rounded" graphic="icon">
-					<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
-				</vwc-list-item>
-
-				<vwc-list-expansion-panel open>
-					<vwc-list-item slot="header" shape="rounded" graphic="icon">
-						<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
+				<vwc-list
+						innerRole="navigation"
+						innerAriaLabel="Primary navigation"
+						itemRoles="link"
+					>
+					<vwc-list-item shape="rounded" graphic="icon">
+						<vwc-icon slot="graphic" type="home-line"></vwc-icon>1st level item
 					</vwc-list-item>
+
+					<p>SECTION TITLE</p>
+
 					<vwc-list-expansion-panel open>
-						<vwc-list-item slot="header" shape="rounded"
-							>2nd level item</vwc-list-item
-						>
-						<vwc-list-item shape="rounded">3rd level item</vwc-list-item>
-						<vwc-list-item shape="rounded">3rd level item</vwc-list-item>
+						<vwc-list-item slot="header" shape="rounded" graphic="icon">
+							<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
+						</vwc-list-item>
+						<vwc-list-item shape="rounded">2nd level item</vwc-list-item>
+						<vwc-list-item shape="rounded">2nd level item</vwc-list-item>
 					</vwc-list-expansion-panel>
-				</vwc-list-expansion-panel>
-			</vwc-list>
 
-		</vwc-side-drawer>
-
-		<div id="default"></div>
-		${pageContentMock()}
-
-	</div>
-
-
-	<div id="demo">
-		<vwc-side-drawer id="side-drawer" hasTopBar type="modal" absolute open>
-			<span slot="top-bar">
-				<vwc-icon type="vonage-mono"></vwc-icon> VONAGE
-			</span>
-
-			<vwc-list
-					innerRole="navigation"
-					innerAriaLabel="Primary navigation"
-					itemRoles="link"
-				>
-				<vwc-list-item shape="rounded" graphic="icon">
-					<vwc-icon slot="graphic" type="home-line"></vwc-icon>1st level item
-				</vwc-list-item>
-
-				<p>SECTION TITLE</p>
-
-				<vwc-list-expansion-panel open>
-					<vwc-list-item slot="header" shape="rounded" graphic="icon">
+					<vwc-list-item shape="rounded" graphic="icon">
 						<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
 					</vwc-list-item>
-					<vwc-list-item shape="rounded">2nd level item</vwc-list-item>
-					<vwc-list-item shape="rounded">2nd level item</vwc-list-item>
-				</vwc-list-expansion-panel>
-			</vwc-list>
+					
+				</vwc-list>
 
-		</vwc-side-drawer>
+			</vwc-side-drawer>
 
-		<div id="default"></div>
-		${pageContentMock()}
+			<div id="default"></div>
+			${pageContentMock()}
+		</div>
 
-	</div>
+		<div id="demo">
+			<vwc-side-drawer id="side-drawer" type="dismissble" alternate hasTopBar open>
+				<span slot="top-bar">
+					<vwc-icon type="vonage-mono"></vwc-icon> VONAGE
+				</span>
 
-	<div id="demo">
-	<vwc-side-drawer id="side-drawer" hasTopBar type="dismissble" absolute open>
-		<span slot="top-bar">
-			<vwc-icon type="vonage-mono"></vwc-icon> VONAGE
-		</span>
+				<vwc-list
+						innerRole="navigation"
+						innerAriaLabel="Primary navigation"
+						itemRoles="link"
+					>
+					<vwc-list-item shape="rounded" graphic="icon">
+						<vwc-icon slot="graphic" type="home-line"></vwc-icon>1st level item
+					</vwc-list-item>
 
-		<vwc-list
-				innerRole="navigation"
-				innerAriaLabel="Primary navigation"
-				itemRoles="link"
-			>
-			<vwc-list-item shape="rounded" graphic="icon">
-				<vwc-icon slot="graphic" type="home-line"></vwc-icon>1st level item
-			</vwc-list-item>
+					<p>SECTION TITLE</p>
 
-			<p>SECTION TITLE</p>
+					<vwc-list-item shape="rounded" graphic="icon">
+						<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
+					</vwc-list-item>
 
-			<vwc-list-expansion-panel open>
-				<vwc-list-item slot="header" shape="rounded" graphic="icon">
-					<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
-				</vwc-list-item>
-				<vwc-list-item shape="rounded">2nd level item</vwc-list-item>
-				<vwc-list-item shape="rounded">2nd level item</vwc-list-item>
-			</vwc-list-expansion-panel>
-		</vwc-list>
+					<vwc-list-expansion-panel open>
+						<vwc-list-item slot="header" shape="rounded" graphic="icon">
+							<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
+						</vwc-list-item>
+						<vwc-list-expansion-panel open>
+							<vwc-list-item slot="header" shape="rounded"
+								>2nd level item</vwc-list-item
+							>
+							<vwc-list-item shape="rounded">3rd level item</vwc-list-item>
+							<vwc-list-item shape="rounded">3rd level item</vwc-list-item>
+						</vwc-list-expansion-panel>
+					</vwc-list-expansion-panel>
+				</vwc-list>
 
-	</vwc-side-drawer>
+			</vwc-side-drawer>
 
-	<div id="default"></div>
-	${pageContentMock()}
-
-</div>
-
+			<div id="default"></div>
+			${pageContentMock()}
+		</div>
 	</div>
 `;
 wrapper.appendChild(elementWrapper);
