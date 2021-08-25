@@ -6,6 +6,9 @@ on:
 jobs:
   prepare-verify:
     runs-on: ubuntu-latest
+    env:
+      GIT_AUTHOR_EMAIL: vivid@vonage.com
+      GIT_AUTHOR_NAME: Vividbot
     steps:
       - name: Checkout
         uses: actions/checkout@v2
