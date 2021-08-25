@@ -17,6 +17,7 @@ jobs:
           ref: master
 
       - run: echo "Hello World" > test.txt
+      - run: git add test.txt
       - run: git config --global user.email "vivid@vonage.com"
       - run: git config --global user.name "Vivid"
 
