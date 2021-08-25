@@ -1,0 +1,14 @@
+@use 'variables';
+
+
+@function get-connotation-rule-out-compound-selector($name, $all-connotations) {
+	$compound: '';
+
+	@each $connotation, $_ in $all-connotations {
+		@if $name != $connotation {
+			$compound: $compound + ':not([connotation="#{$connotation}"i])';
+		}
+	}
+
+	@return $compound;
+}
