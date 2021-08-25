@@ -20,6 +20,6 @@ jobs:
 
       - run: git checkout -b this_is_a_test_branch_please_delete_me
 
-      - run: git commit -a -m "Testing push to master without the use of PATs"
+      - run: git commit -a -m "Testing push to master without the use of PATs" --author="Vivid <vivid@vonage.com>"
 
       - run: git push
