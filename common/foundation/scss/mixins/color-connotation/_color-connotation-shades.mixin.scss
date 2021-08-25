@@ -1,4 +1,5 @@
 @use 'sass:selector';
+@use 'sass:map';
 @use '../../functions';
 @use 'predefined-connotations';
 @use 'variables';
@@ -17,21 +18,28 @@ $_connotations-definition: (
 $connotations-set: predefined-connotations.$connotations-set !default;
 $selector: variables.$selector !default;
 
+$connotation-variable: #{variables.$vvd-color-connotation} !default;
+
+@mixin parse-connotation-shades($connotation-shades-list) {
+	@each $name, $value in $connotation-shades-list {
+		#{$connotation-variable}-#{$name}: var(--vvd-color-#{$value});
+	}
+}
+
 @mixin connotations-shades {
-	@each $c_name, $value in functions.pick-map($connotations-set, $_connotations-definition) {
-		$compound: '[connotation="#{$c_name}" i]';
+	@each $connotation-name, $connotation-shades-list in functions.pick-map($connotations-set, $_connotations-definition) {
+		$compound: '[connotation="#{$connotation-name}" i]';
 
-		$local-selector: selector.replace(
-			#{$selector},
-			#{variables.$compound-placeholder},
-			#{$compound}
-		);
-
-		#{$local-selector} {
-			@each $s_name, $s_value in $value {
-				#{variables.$vvd-color-connotation}-#{$s_name}: var(--vvd-color-#{$s_value});
-			}
+		#{functions.get-local-selector($selector, variables.$compound-placeholder, $compound)} {
+			@include parse-connotation-shades($connotation-shades-list);
 		}
 	}
 }
 
+@mixin connotations-shades-default($name) {
+	$compound: ':not([connotation])';
+
+	#{functions.get-local-selector($selector, variables.$compound-placeholder, $compound)} {
+		@include parse-connotation-shades(map.get($_connotations-definition, $name));
+	}
+}

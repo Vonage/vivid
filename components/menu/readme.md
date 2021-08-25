@@ -81,3 +81,12 @@ import '@vonage/vwc-list/vwc-list-item.js';
 | `items-updated` |                  |
 | `opened`        |                  |
 | `selected`      | {SelectedDetail} |
+
+#### Notice
+
+Using the menu's `fixed` or `absolute` properties will position the menu relative to the window or ancestor (absolute/relative) element respectively. 
+
+If the menu doesn't show up in the right position, make sure that an ancestor element exists and positioned correctly, and that an `anchor` property is defined, along with `corner` and `menuCorner`. For more information, please refer to [MWC's documentation](https://github.com/material-components/material-components-web-components/tree/master/packages/menu) where you can find a live [demo](https://material-components.github.io/material-components-web-components/demos/menu/).   
+
+
+

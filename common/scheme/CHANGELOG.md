@@ -1,3 +1,27 @@
+## [2.18.1](https://github.com/vonage/vivid/compare/v2.18.0...v2.18.1) (2021-08-25)
+
+
+
+# [2.18.0](https://github.com/vonage/vivid/compare/v2.17.0...v2.18.0) (2021-08-24)
+
+
+
+# [2.17.0](https://github.com/vonage/vivid/compare/v2.16.1...v2.17.0) (2021-08-09)
+
+
+
+## [2.16.1](https://github.com/vonage/vivid/compare/v2.16.0...v2.16.1) (2021-07-29)
+
+
+
+# [2.16.0](https://github.com/vonage/vivid/compare/v2.15.0...v2.16.0) (2021-07-28)
+
+
+
+# [2.15.0](https://github.com/vonage/vivid/compare/v2.14.0...v2.15.0) (2021-07-20)
+
+
+
 # [2.14.0](https://github.com/vonage/vivid/compare/v2.13.0...v2.14.0) (2021-07-13)
 
 
@@ -215,8 +239,8 @@
 
 ### Bug Fixes
 
-* **scheme:** renamed scheme class names ([c68198f](https://github.com/vonage/vivid/commit/c68198f1d737289bb12cb9017ffb39dc079ead19))
 * issue [#419](https://github.com/vonage/vivid/issues/419) / VIV-243 - fixing scheme duplicate styles load ([#420](https://github.com/vonage/vivid/issues/420)) ([564724f](https://github.com/vonage/vivid/commit/564724fdded5ec33abfa4ab35b94ae5e49747381))
+* **scheme:** renamed scheme class names ([c68198f](https://github.com/vonage/vivid/commit/c68198f1d737289bb12cb9017ffb39dc079ead19))
 
 
 
@@ -229,8 +253,8 @@
 
 ### Bug Fixes
 
-* **scheme:** Scheme default to light mode ([539cade](https://github.com/vonage/vivid/commit/539cade5d1a3b95c235b536f7cda3252fdb151db))
 * **scheme tests:** aligned tests with PR Tests temporarly modified to match a 'light' scheme defult BREAKING CHANGE: scheme now serves 'light' scheme by default instead of os settings ([51460c1](https://github.com/vonage/vivid/commit/51460c1ee189876739de4b39be6db492be7c9ac2))
+* **scheme:** Scheme default to light mode ([539cade](https://github.com/vonage/vivid/commit/539cade5d1a3b95c235b536f7cda3252fdb151db))
 
 
 

@@ -36,6 +36,8 @@
 	.vivid-snackbar {
 		display: flex;
 		flex: 1;
+		background-color: var(#{scheme-variables.$vvd-color-canvas});
+		color: var(#{scheme-variables.$vvd-color-on-canvas});
 	}
 
 	.note {

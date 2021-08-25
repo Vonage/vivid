@@ -1,3 +1,27 @@
+## [2.18.1](https://github.com/vonage/vivid/compare/v2.18.0...v2.18.1) (2021-08-25)
+
+
+
+# [2.18.0](https://github.com/vonage/vivid/compare/v2.17.0...v2.18.0) (2021-08-24)
+
+
+
+# [2.17.0](https://github.com/vonage/vivid/compare/v2.16.1...v2.17.0) (2021-08-09)
+
+
+
+## [2.16.1](https://github.com/vonage/vivid/compare/v2.16.0...v2.16.1) (2021-07-29)
+
+
+
+# [2.16.0](https://github.com/vonage/vivid/compare/v2.15.0...v2.16.0) (2021-07-28)
+
+
+
+# [2.15.0](https://github.com/vonage/vivid/compare/v2.14.0...v2.15.0) (2021-07-20)
+
+
+
 # [2.14.0](https://github.com/vonage/vivid/compare/v2.13.0...v2.14.0) (2021-07-13)
 
 
@@ -102,8 +126,8 @@
 
 ### Bug Fixes
 
-* **vwc-select:** update styles to correct references ([#701](https://github.com/vonage/vivid/issues/701)) ([1fe2bee](https://github.com/vonage/vivid/commit/1fe2bee7ecb53938831709f85b91c41b297ad069))
 * select list-item border-radius ([#700](https://github.com/vonage/vivid/issues/700)) ([4b4a058](https://github.com/vonage/vivid/commit/4b4a058bc132781cacb0f78aebf03e79b5da436c))
+* **vwc-select:** update styles to correct references ([#701](https://github.com/vonage/vivid/issues/701)) ([1fe2bee](https://github.com/vonage/vivid/commit/1fe2bee7ecb53938831709f85b91c41b297ad069))
 
 
 

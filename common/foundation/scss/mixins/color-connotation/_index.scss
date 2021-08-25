@@ -2,22 +2,30 @@
 @use 'variables';
 
 $selector: variables.$selector !default;
+
 $connotations-set: predefined-connotations.$connotations-set !default;
 $connotations-decorative-set: predefined-connotations.$connotations-decorative-set !default;
 
+$connotation-variable: variables.$vvd-color-connotation !default;
+$on-connotation-variable: variables.$vvd-color-on-connotation !default;
+
 @forward 'color-connotation-main.mixin' show connotations-main, connotations-main-default with (
 	$connotations-set: $connotations-set,
-	$selector: $selector
+	$selector: $selector,
+	$connotation-variable: $connotation-variable,
+	$on-connotation-variable: $on-connotation-variable
 );
 
-@forward 'color-connotation-shades.mixin' show connotations-shades with (
+@forward 'color-connotation-shades.mixin' show connotations-shades, connotations-shades-default with (
 	$connotations-set: $connotations-set,
-	$selector: $selector
+	$selector: $selector,
+	$connotation-variable: $connotation-variable,
 );
 
 @forward 'color-connotation-decorative.mixin' show connotations-decorative with (
 	$connotations-decorative-set: $connotations-decorative-set,
-	$selector: $selector
+	$selector: $selector,
+	$connotation-variable: $connotation-variable,
 );
 
 @forward 'variables' show $vvd-color-connotation, $vvd-color-on-connotation;

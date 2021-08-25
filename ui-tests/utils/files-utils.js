@@ -2,9 +2,18 @@ const fs = require('fs');
 const path = require('path');
 const componentsExcludeList = require('../excludedTests');
 
+const componentsIncludList = process.argv.reduce((includedList, itemToInclude) => {
+	if (itemToInclude.substr(0, 4) === 'vwc-') {
+		includedList.push(itemToInclude);
+	}
+	return includedList;
+}, []);
+
 function getFilteredTestFolders(workingFolder = '../tests') {
-	return getTestFolders()
-		.filter(testName => !componentsExcludeList.includes(testName));
+	return getTestFolders(workingFolder)
+		.filter((testName) => {
+			return componentsIncludList.length ? componentsIncludList.includes(testName) : !componentsExcludeList.includes(testName);
+		});
 }
 
 function getTestFolders(workingFolder = '../tests') {

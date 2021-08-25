@@ -66,6 +66,7 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 				?column-reordering-allowed="${this.#vwcGrid.reordering}"
 				.rowDetailsRenderer="${this.adaptRowDetailsRenderer(rowDetailsRendererProvider, this.#vwcGrid)}"
 				.items="${_items}"
+				.heightByRows="${this.#vwcGrid.heightByRows}"
 				.dataProvider="${_dataProvider}"
 			>
 				${this.#vwcGrid.columns.map(cc => this.renderColumnDef(cc))}
