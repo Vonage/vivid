@@ -29,6 +29,7 @@ async function run() {
 					'Design System',
 					['Introduction'],
 					'Core',
+					'Templates',
 					['Context', 'Fonts', 'Typography'],
 					'Components',
 					['Components List', 'Alpha', 'Composite'],
