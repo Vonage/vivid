@@ -1,3 +1,12 @@
+# [2.18.0](https://github.com/vonage/vivid/compare/v2.17.0...v2.18.0) (2021-08-24)
+
+
+### Features
+
+* **textfield:** add the no-actions-sync attribute ([#1013](https://github.com/vonage/vivid/issues/1013)) ([850297f](https://github.com/vonage/vivid/commit/850297ffb224b1badf6b17b144c7b75e7bffcf61))
+
+
+
 # [2.17.0](https://github.com/vonage/vivid/compare/v2.16.1...v2.17.0) (2021-08-09)
 
 
