@@ -13,9 +13,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          persist-credentials: false
           fetch-depth: 0
           ref: master
+          token: ${{ github.token }}
+
 
       - run: echo "Hello World" > test.txt
       - run: git add test.txt
