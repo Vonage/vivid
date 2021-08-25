@@ -9,7 +9,7 @@
 >
   <div class="mdc-snackbar__surface">
     <div
-      class="vivid-snackbar"
+      class="vvd-snackbar"
       part="vvd-scheme-alternate"
     >
       <vwc-note class="vwc-note">
@@ -35,7 +35,7 @@
 >
   <div class="mdc-snackbar__surface">
     <div
-      class="vivid-snackbar"
+      class="vvd-snackbar"
       part="vvd-scheme-alternate"
     >
       <vwc-note class="vwc-note">
@@ -61,7 +61,7 @@
 >
   <div class="mdc-snackbar__surface">
     <div
-      class="vivid-snackbar"
+      class="vvd-snackbar"
       part="vvd-scheme-alternate"
     >
       <vwc-note class="vwc-note">
@@ -88,7 +88,7 @@
 >
   <div class="mdc-snackbar__surface">
     <div
-      class="vivid-snackbar"
+      class="vvd-snackbar"
       part="vvd-scheme-alternate"
     >
       <vwc-note
@@ -117,7 +117,7 @@
 >
   <div class="mdc-snackbar__surface">
     <div
-      class="vivid-snackbar"
+      class="vvd-snackbar"
       part="vvd-scheme-alternate"
     >
       <vwc-note class="vwc-note">
@@ -152,7 +152,7 @@
 >
   <div class="mdc-snackbar__surface">
     <div
-      class="vivid-snackbar"
+      class="vvd-snackbar"
       part="vvd-scheme-alternate"
     >
       <vwc-note class="vwc-note">
@@ -177,7 +177,7 @@
   position="BOTTOM-CENTER"
 >
   <div class="mdc-snackbar__surface">
-    <div class="vivid-snackbar">
+    <div class="vvd-snackbar">
       <vwc-note class="vwc-note">
         <div class="snackbar-content">
           <div>
@@ -202,7 +202,7 @@
   position="BOTTOM-CENTER"
 >
   <div class="mdc-snackbar__surface">
-    <div class="vivid-snackbar">
+    <div class="vvd-snackbar">
       <vwc-note
         class="vwc-note"
         header="Header"
@@ -230,7 +230,7 @@
   position="BOTTOM-CENTER"
 >
   <div class="mdc-snackbar__surface">
-    <div class="vivid-snackbar">
+    <div class="vvd-snackbar">
       <vwc-note class="vwc-note">
         <div class="snackbar-content">
           <div>
@@ -256,7 +256,7 @@
   position="BOTTOM-CENTER"
 >
   <div class="mdc-snackbar__surface">
-    <div class="vivid-snackbar">
+    <div class="vvd-snackbar">
       <vwc-note
         class="vwc-note"
         icon="home"
@@ -284,7 +284,7 @@
   position="BOTTOM-CENTER"
 >
   <div class="mdc-snackbar__surface">
-    <div class="vivid-snackbar">
+    <div class="vvd-snackbar">
       <vwc-note class="vwc-note">
         <div class="snackbar-content">
           <div>
@@ -318,7 +318,7 @@
   position="BOTTOM-CENTER"
 >
   <div class="mdc-snackbar__surface">
-    <div class="vivid-snackbar">
+    <div class="vvd-snackbar">
       <vwc-note class="vwc-note">
         <div class="snackbar-content">
           <div>

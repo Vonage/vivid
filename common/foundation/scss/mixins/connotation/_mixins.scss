@@ -19,7 +19,7 @@
 @mixin connotation-decorative($mapping) {
 	$start: map.get($mapping, start);
 	$end: map.get($mapping, end);
-	#{variables.$vvd-color-connotation}: local-functions.connotation-decorative-gradient($start, $end);
+	#{variables.$vvd-color-connotation}: linear-gradient(to right, $start, $end);
 }
 
 @mixin selectors($types...) {
@@ -36,7 +36,7 @@
 		);
 
 		@if $type == config.$default {
-			$default-compound-selector: local-functions.connotation-default-compound-selector(config.$default, $all-connotation-types);
+			$default-compound-selector: local-functions.get-connotation-rule-out-compound-selector(config.$default, $all-connotation-types);
 			$default-selector: functions.get-local-selector(config.$selector, variables.$compound-placeholder, $default-compound-selector);
 			$local-selector: $local-selector,	$default-selector;
 		}
@@ -51,9 +51,9 @@
 @mixin connotation {
 	$mapping-shades: functions.pick-map(config.$connotations-set, variables.$connotation-mapping);
 	$mapping-decoratives: functions.pick-map(config.$decoratives, variables.$connotation-mapping-decoratives);
-	
+
 	$all-connotation-types: map.keys(map.merge($mapping-shades, $mapping-decoratives));
-	
+
 	@include selectors(map.keys($mapping-shades)...) using ($connotation-type) {
 		@include connotation-base($connotation-type);
 		@include connotation-shades(map.get($mapping-shades, $connotation-type));
