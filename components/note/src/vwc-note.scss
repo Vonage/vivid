@@ -1,13 +1,14 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-typography/scss/typography';
-@use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation with (
-	$connotations-set: success alert warning info announcement
+@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation with(
+	$connotations-set: success alert warning info announcement,
+	$default: announcement
 );
 
-$border-value: 8px solid var(#{color-connotation.$vvd-color-connotation});
+$border-value: 8px solid var(#{connotation.$vvd-color-connotation});
 
-@include color-connotation.connotations-main;
-@include color-connotation.connotations-main-default(announcement);
+@include connotation.connotation;
+
 
 :host {
 	display: flex;

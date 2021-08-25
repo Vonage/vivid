@@ -5277,10 +5277,10 @@
     terminal-kit "^2.0.5"
     yargs-parser "^20.2.7"
 
-"@vonage/vvd-design-tokens-properties@0.7.2":
-  version "0.7.2"
-  resolved "https://npm.pkg.github.com/download/@vonage/vvd-design-tokens-properties/0.7.2/5b791a62c1841f220747f8c740b2b24a4023ba8755f0f59a6c8297c453ac1808#3128a7976640916e2cf00917cf0a7e0ebe80e3ae"
-  integrity sha512-qjNjZWi6qPpO7pLqMharQkrGWoXZlNoUokk6vnmEMkXN2tioSf4OuZIE+coce64f8g5roDiIEIoXzcTv6wqQnQ==
+"@vonage/vvd-design-tokens-properties@0.7.3":
+  version "0.7.3"
+  resolved "https://npm.pkg.github.com/download/@vonage/vvd-design-tokens-properties/0.7.3/21005d4a694ee6afe0b4cf47e4833c185fed4e70d7a65041b0ff921d9abaaf60#8027419f2607a5a073e6f756751150eb76182d0e"
+  integrity sha512-0pQsknxpeYaWNAd7zqKo5AGpoC+qZ1OIEkSXNABZzFXXfnbcNGrX1ybKBWQsPJhwhVNNIcPZQZSpqsYNvDzyMA==
 
 "@vue/compiler-core@3.1.5":
   version "3.1.5"

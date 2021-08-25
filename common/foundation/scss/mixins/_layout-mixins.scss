@@ -1,5 +1,5 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
-@use './color-connotation' as color-connotation;
+@use './connotation' as connotation;
 @use '../functions' as functions;
 
 // override to apply relevance
@@ -18,25 +18,25 @@ $all-layouts: (
 );
 
 %filled {
-	#{$variable-prefix}--fill: var(#{color-connotation.$vvd-color-connotation});
-	#{$variable-prefix}--text: var(#{color-connotation.$vvd-color-on-connotation});
+	#{$variable-prefix}--fill: var(#{connotation.$vvd-color-connotation});
+	#{$variable-prefix}--text: var(#{connotation.$vvd-color-on-connotation});
 }
 
 %outlined {
 	#{$variable-prefix}--fill: transparent;
-	#{$variable-prefix}--outline: 1px solid var(#{color-connotation.$vvd-color-connotation});
-	#{$variable-prefix}--text: var(#{color-connotation.$vvd-color-connotation});
+	#{$variable-prefix}--outline: 1px solid var(#{connotation.$vvd-color-connotation});
+	#{$variable-prefix}--text: var(#{connotation.$vvd-color-connotation});
 }
 
 %soft {
-	#{$variable-prefix}--fill: var(#{color-connotation.$vvd-color-connotation}-soft);
+	#{$variable-prefix}--fill: var(#{connotation.$vvd-color-connotation}-soft);
 	#{$variable-prefix}--text: var(#{scheme-variables.$vvd-color-on-canvas});
 }
 
 %text,
 %ghost {
 	#{$variable-prefix}--fill: transparent;
-	#{$variable-prefix}--text: var(#{color-connotation.$vvd-color-connotation});
+	#{$variable-prefix}--text: var(#{connotation.$vvd-color-connotation});
 }
 
 @mixin layout() {
