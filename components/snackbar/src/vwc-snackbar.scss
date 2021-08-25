@@ -1,8 +1,10 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
+@use '@vonage/vvd-foundation/scss/mixins/connotation/variables' as connotation-variables;
 @use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation with(
 	$connotations-set: success alert warning info announcement,
-	$default: announcement
+	$default: announcement,
+	$selector: ':host(#{connotation-variables.$compound-placeholder}) .vvd-snackbar'
 );
 
 @include connotation.connotation;
@@ -39,7 +41,7 @@
 }
 // default flavor
 :host(:not([legacy])) {
-	.vivid-snackbar {
+	.vvd-snackbar {
 		display: flex;
 		flex: 1;
 		background-color: var(#{scheme-variables.$vvd-color-canvas});
@@ -89,7 +91,7 @@
 
 //	legacy flavor
 :host([legacy]) {
-	.vivid-snackbar {
+	.vvd-snackbar {
 		width: 100%;
 	}
 

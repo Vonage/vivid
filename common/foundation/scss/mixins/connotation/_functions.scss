@@ -1,7 +1,7 @@
 @use 'variables';
 
 
-@function connotation-default-compound-selector($name, $all-connotations) {
+@function get-connotation-rule-out-compound-selector($name, $all-connotations) {
 	$compound: '';
 
 	@each $connotation, $_ in $all-connotations {
@@ -11,8 +11,4 @@
 	}
 
 	@return $compound;
-}
-
-@function connotation-decorative-gradient($start, $end) {
-	@return linear-gradient(to right, $start, $end);
 }
