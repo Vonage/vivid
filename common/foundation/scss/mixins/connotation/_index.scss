@@ -7,7 +7,7 @@ $decoratives: () !default;
 $connotations-set: primary cta success alert warning info announcement !default;
 $selector: ':host(#{variables.$compound-placeholder})' !default;
 
-@forward 'config' with (
+@use 'config' with (
 	$base: $base,
 	$default: $default,
 	$shades: $shades,
