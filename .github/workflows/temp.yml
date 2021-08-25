@@ -15,7 +15,7 @@ jobs:
         with:
           fetch-depth: 0
           ref: master
-          token: ${{ github.token }}
+          token: ${{ secrets.VIVID_TOKEN }}
 
 
       - run: echo "Hello World" > test.txt
