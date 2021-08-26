@@ -1,0 +1,57 @@
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
+@use '../connotation' as connotation;
+@use '../../functions' as functions;
+@use 'variables' as variables;
+@use 'config' as config;
+
+
+////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+$all-layouts: (
+	filled: 'filled',
+	outlined: 'outlined',
+	soft: 'soft',
+	text: 'text',
+	ghost: 'ghost',
+);
+
+%filled {
+	#{variables.$vvd-layout--fill}: var(#{connotation.$vvd-color-connotation});
+	#{variables.$vvd-layout--text}: var(#{connotation.$vvd-color-on-connotation});
+}
+
+%outlined {
+	#{variables.$vvd-layout--fill}: transparent;
+	#{variables.$vvd-layout--outline}: 1px solid var(#{connotation.$vvd-color-connotation});
+	#{variables.$vvd-layout--text}: var(#{connotation.$vvd-color-connotation});
+}
+
+%soft {
+	#{variables.$vvd-layout--fill}: var(#{connotation.$vvd-color-connotation}-soft);
+	#{variables.$vvd-layout--text}: var(#{scheme-variables.$vvd-color-on-canvas});
+}
+
+%text,
+%ghost {
+	#{variables.$vvd-layout--fill}: transparent;
+	#{variables.$vvd-layout--text}: var(#{connotation.$vvd-color-connotation});
+}
+
+@mixin layout() {
+	@each $type in functions.pick-list(config.$layout-set, variables.$predefined-layout-set) {
+		$compound: '[layout="#{$type}" i]';
+
+		$local-selector: functions.get-local-selector(config.$selector, variables.$compound-placeholder, $compound);
+
+		// @if $type == config.$default {
+		// 	$default-compound-selector: local-functions.get-connotation-rule-out-compound-selector(config.$default, $all-connotation-types);
+		// 	$default-selector: functions.get-local-selector(config.$selector, variables.$compound-placeholder, $default-compound-selector);
+		// 	$local-selector: $local-selector,	$default-selector;
+		// }
+
+		#{$local-selector} {
+			@extend %#{$type};
+		}
+	}
+}
+

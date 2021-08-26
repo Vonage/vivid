@@ -1,0 +1,5 @@
+@use 'variables';
+
+$default: false !default;
+$layout-set: variables.$predefined-layout-set !default;
+$selector: ':host(#{variables.$compound-placeholder})' !default;

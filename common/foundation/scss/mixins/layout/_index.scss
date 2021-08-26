@@ -1,0 +1,4 @@
+@forward 'variables' show $vvd-layout--fill, $vvd-layout--text, $vvd-layout--outline;
+@use 'mixins';
+
+@include mixins.layout;

@@ -13,10 +13,13 @@ $namespace-shape: #{$namespace}-shape;
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
 	$variable-name: #{$namespace-shape}
 );
-@use '@vonage/vvd-foundation/scss/mixins/layout-mixins' as layout-mixins with (
-	$layouts: filled	outlined	soft,
-	$variable-prefix: #{$namespace-layout}
+@use '@vonage/vvd-foundation/scss/mixins/layout/variables' as layout-variables;
+@use '@vonage/vvd-foundation/scss/mixins/layout/config' with (
+	$layout-set: filled outlined soft,
+	$default: filled,
+	$selector: ':host(#{layout-variables.$compound-placeholder})'
 );
+@use '@vonage/vvd-foundation/scss/mixins/layout';
 
 $vvd-badge--block-size: --#{$namespace}--block-size;
 
@@ -29,8 +32,6 @@ $vvd-badge--block-size: --#{$namespace}--block-size;
 	)
 );
 
-@include layout-mixins.layout();
-@include layout-mixins.layout-default(filled);
 
 :host {
 	#{$vvd-badge--block-size}: 24px;

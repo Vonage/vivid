@@ -1,16 +1,18 @@
 @use 'sass:list';
 @use 'sass:map';
 
-@function pick-list($list, $map) {
-	$result: ();
-	@each $key in $list {
-		@if map.has-key($map, $key) {
-			$result: list.append($result, map.get($map, $key));
+@function pick-list($list, $predefined-list) {
+	$new-list: ();
+	@each $item in $list {
+		$n: #{list.index($predefined-list, $item)};
+		@if $n != '' {
+			$new-item: #{list.nth($predefined-list, $item)};
+			// list.join($new-list, $new-item);
 		} @else {
-			@error 'ERROR: Specified index does not exist in the mapping';
+			@error 'ERROR: Specified item #{$item} does not exist';
 		}
 	}
-	@return $result;
+	@return $new-list;
 }
 
 @function pick-map($list, $map) {
