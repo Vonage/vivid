@@ -18,7 +18,7 @@ jobs:
         with:
           fetch-depth: 0
           ref: master
-          token: ${{ secrets.CI_AT }}
+          token: ${{ secrets.VIVID_TOKEN }}
 
       - name: Writing .npmrc
         run: printf "registry=https://npm.pkg.github.com/Vonage\n_authToken=\${GITHUB_TOKEN}\n//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}\nalways-auth=true" > .npmrc
@@ -61,8 +61,8 @@ jobs:
       - name: Push changes
         run: |
           git fetch
-          git config user.email "vivid.ci@vonage.com"
-          git config user.name "Vivid CI"
+          git config user.email "vivid@vonage.com"
+          git config user.name "Vivid"
           git add --all
           git commit -m "update versions to ${{ env.RELEASE_VERSION }}"
           git push
