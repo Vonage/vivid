@@ -9,18 +9,18 @@ import {
 } from 'lit-element';
 
 
-type ChipConnotation = Extract<
+type TagConnotation = Extract<
 	Connotation,
 	| Connotation.Primary
 	| Connotation.CTA
 	>;
 
-type ChipShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
+type TagShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
 
-type ChipLayout = Extract<
+type TagLayout = Extract<
 	Layout, Layout.Outlined | Layout.Soft
 >;
-export class VWCChipBase extends LitElement {
+export class VWCTagBase extends LitElement {
   @queryAsync('mwc-ripple') ripple!: Promise<Ripple|null>;
 
 	@query('#button') buttonElement!: HTMLElement;
@@ -38,16 +38,16 @@ export class VWCChipBase extends LitElement {
 	enlarged?: boolean;
 
 	@property({ type: String, reflect: true })
-	connotation?: ChipConnotation;
+	connotation?: TagConnotation;
 
 	@property({ type: String, reflect: true })
-	shape?: ChipShape;
+	shape?: TagShape;
 
 	@property({ type: String, reflect: true })
-	layout?: ChipLayout;
+	layout?: TagLayout;
 
 	@property({ type: Boolean, reflect: true })
-	filter = false;
+	selectable = false;
 
   @state() protected shouldRenderRipple = false;
 
@@ -56,7 +56,7 @@ export class VWCChipBase extends LitElement {
   	return this.ripple;
   });
 
-  focus() {
+  focus(): void {
   	const buttonElement = this.buttonElement;
   	if (buttonElement) {
   		this.rippleHandlers.startFocus();
@@ -64,7 +64,7 @@ export class VWCChipBase extends LitElement {
   	}
   }
 
-  blur() {
+  blur(): void {
   	const buttonElement = this.buttonElement;
   	if (buttonElement) {
   		this.rippleHandlers.endFocus();
@@ -84,18 +84,18 @@ export class VWCChipBase extends LitElement {
   }
 
   protected renderIcon(type?: string): TemplateResult {
-  	return html`<vwc-icon class="vwc-chip__icon" .type="${type}"></vwc-icon>`;
+  	return html`<vwc-icon class="vwc-tag__icon" .type="${type}"></vwc-icon>`;
   }
 
-  protected renderChipFilter(): TemplateResult {
+  protected renderTagSelectable(): TemplateResult {
   	const classes = {
-  		'vwc-chip--selected': this.selected,
+  		'vwc-tag--selected': this.selected,
   	};
 
   	return html`<div
 			id="button"
 			type="button"
-			class="vwc-chip vwc-chip-button ${classMap(classes)}"
+			class="vwc-tag vwc-tag-button ${classMap(classes)}"
 			role="option"
 			aria-selected="${this.selected}"
 			tabindex="-1"
@@ -110,7 +110,7 @@ export class VWCChipBase extends LitElement {
 			@click="${() => this.selected = !this.selected}"
 			@keydown="${this.handleKeydown}">
 			${this.renderRipple()}
-			<span class="vwc-chip__checkmark">
+			<span class="vwc-tag__checkmark">
 				${this.renderIcon('check-circle-solid')}
 			</span>
 			<span class="text">
@@ -120,9 +120,9 @@ export class VWCChipBase extends LitElement {
   }
 
   render(): TemplateResult {
-  	return this.filter
-  		? this.renderChipFilter()
-  		: html`<span class="vwc-chip">
+  	return this.selectable
+  		? this.renderTagSelectable()
+  		: html`<span class="vwc-tag">
 			${this.text}
 		</span>`;
   }

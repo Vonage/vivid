@@ -1,0 +1,135 @@
+@use 'partials/vwc-tag-variables' as tag-variables;
+@use '@vonage/vwc-icon/src/partials/vwc-icon-variables' as icon-variables;
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
+@use '@vonage/vvd-typography/scss/typography' as typography;
+@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation with (
+	$connotations-set: primary cta,
+	$shades: contrast soft,
+	$default: primary
+);
+
+@use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
+	$variable-name: #{tag-variables.$namespace-shape}
+);
+@use '@vonage/vvd-foundation/scss/mixins/layout-mixins' as layout-mixins with (
+	$layouts: outlined soft,
+	$variable-prefix: #{tag-variables.$namespace-layout}
+);
+
+
+@include connotation.connotation;
+
+@include shape-mixins.shape(
+	$shapes: (
+		rounded: 4px,
+		pill: 14px,
+	),
+	$default: pill
+);
+
+@include layout-mixins.layout();
+@include layout-mixins.layout-default(soft);
+
+
+.vwc-tag {
+	z-index: 0;
+	display: inline-flex;
+	align-items: center;
+	padding: 0 var(#{tag-variables.$namespace-padding-inline});
+	border: var(#{tag-variables.$namespace-layout}--outline);
+	background-color: var(#{tag-variables.$namespace-layout}--fill);
+	block-size: var(#{tag-variables.$namespace-block-size});
+	border-radius: var(#{tag-variables.$namespace-shape});
+	color: var(#{tag-variables.$namespace-layout}--text);
+
+	:host([layout="outlined"i]) & {
+		// #{tag-variables.$namespace-layout}--outline: 1px solid var(#{scheme-variables.$vvd-color-neutral-50});
+		border: 1px solid var(#{scheme-variables.$vvd-color-neutral-50});
+	}
+
+	:host(:not([dense]):not([enlarged])) & {
+		@include typography.typography-cat-shorthand('body-2-bold');
+		#{tag-variables.$namespace-padding-inline}: 10px;
+		#{tag-variables.$namespace-icon-checkmark--padding-inline-end}: 6px;
+		#{tag-variables.$namespace-block-size}: 24px;
+		#{tag-variables.$namespace-icon-checkmark--size}: 16px;
+	}
+
+	:host([dense]) & {
+		@include typography.typography-cat-shorthand('caption-bold');
+		#{tag-variables.$namespace-padding-inline}: 8px;
+		#{tag-variables.$namespace-icon-checkmark--padding-inline-end}: 4px;
+		#{tag-variables.$namespace-block-size}: 20px;
+		#{tag-variables.$namespace-icon-checkmark--size}: 12px;
+	}
+
+	:host([enlarged]) & {
+		@include typography.typography-cat-shorthand('body-1-bold');
+		#{tag-variables.$namespace-padding-inline}: 12px;
+		#{tag-variables.$namespace-icon-checkmark--padding-inline-end}: 8px;
+		#{tag-variables.$namespace-block-size}: 28px;
+		#{tag-variables.$namespace-icon-checkmark--size}: 20px;
+	}
+}
+
+.vwc-tag-button {
+	position: relative;
+	cursor: pointer;
+	@supports (contain: content) {
+		contain: content;
+	}
+	@supports not (contain: content) {
+		overflow: hidden;
+	}
+
+	.ripple {
+		--mdc-ripple-color: currentColor;
+	}
+
+	&:not(.vwc-tag--selected) {
+		#{tag-variables.$namespace-layout}--text: var(#{scheme-variables.$vvd-color-neutral-90});
+	}
+
+	&.vwc-tag--selected {
+		:host([layout="outlined"i]) & {
+			background-color: var(--vvd-color-connotation-soft);
+		}
+	}
+}
+
+.vwc-tag__checkmark {
+	block-size: var(#{tag-variables.$namespace-icon-checkmark--size});
+	margin-inline-end: 0;
+	margin-inline-start: 0;
+	@media (prefers-reduced-motion: no-preference) {
+		transition-duration: 0.15s;
+		transition-property: margin-inline-start, margin-inline-end;
+	}
+	.vwc-tag.vwc-tag--selected & {
+		margin-inline-end: var(#{tag-variables.$namespace-icon-checkmark--padding-inline-end});
+		margin-inline-start: calc(4px - var(#{tag-variables.$namespace-padding-inline}));
+	}
+
+	> .vwc-tag__icon {
+		display: block;
+		block-size: var(#{tag-variables.$namespace-icon-checkmark--size});
+		inline-size: var(#{tag-variables.$namespace-icon-checkmark--size});
+		line-height: unset;
+		@media (prefers-reduced-motion: no-preference) {
+			transition: inline-size 0.15s;
+		}
+
+		.vwc-tag:not(.vwc-tag--selected) & {
+			inline-size: 0;
+		}
+	}
+}
+
+// disable connotation if not selected
+// .vwc-tag:not(.vwc-tag--selected) {
+// 	:host([connotation="cta"i]) & {
+// 		--vvd-color-connotation: unset;
+// 		--vvd-color-on-connotation: unset;
+// 	}
+// }
+

@@ -1,11 +1,11 @@
 {
-	"name": "@vonage/vwc-chip",
+	"name": "@vonage/vwc-tags",
 	"version": "2.18.1",
-	"description": "chip component",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/chip#readme",
+	"description": "tags component",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/tags#readme",
 	"license": "ISC",
-	"main": "vwc-chip.js",
-	"module": "vwc-chip.js",
+	"main": "vwc-tags.js",
+	"module": "vwc-tags.js",
 	"files": [
 		"*.js",
 		"*.ts",
@@ -14,7 +14,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/chip"
+		"directory": "components/tags"
 	},
 	"scripts": {
 		"build:typescript": "tsc -b",

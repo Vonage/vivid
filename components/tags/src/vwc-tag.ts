@@ -1,16 +1,16 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
-import { VWCChipBase } from './vwc-chip-base';
+import { VWCTagBase } from './vwc-tag-base';
 import { customElement } from 'lit-element';
-import { style } from './vwc-chip.css';
+import { style } from './vwc-tag.css';
 
 declare global {
 	interface HTMLElementTagNameMap {
-		'vwc-chip': VWCChip;
+		'vwc-tag': VWCTag;
 	}
 }
 
-@customElement('vwc-chip')
-export class VWCChip extends VWCChipBase {
+@customElement('vwc-tag')
+export class VWCTag extends VWCTagBase {
 	static styles = style;
 }
