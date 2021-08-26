@@ -10,10 +10,13 @@
 	$connotations-set: primary cta success alert info announcement,
 	$default: primary
 );
-@use '@vonage/vvd-foundation/scss/mixins/layout-mixins' with (
-	$layouts: filled outlined ghost,
-	$variable-prefix: icon-button-variables.$vvd-icon-button-layout
+@use '@vonage/vvd-foundation/scss/mixins/layout/variables' as layout-variables;
+@use '@vonage/vvd-foundation/scss/mixins/layout/config' with (
+	$layout-set: filled outlined ghost,
+	$default: ghost,
+	$selector: ':host(#{layout-variables.$compound-placeholder}) .mdc-icon-button'
 );
+@use '@vonage/vvd-foundation/scss/mixins/layout' as layout;
 
 @include shape-mixins.shape(
 	$shapes: (
@@ -21,9 +24,6 @@
 		circled: 50%,
 	)
 );
-
-@include layout-mixins.layout();
-@include layout-mixins.layout-default(ghost);
 
 @include connotation.connotation;
 
@@ -44,10 +44,10 @@ $block-sizes: (
 		overflow: hidden;
 		align-items: center;
 		justify-content: center;
-		border: var(#{icon-button-variables.$vvd-icon-button-layout}--outline);
-		background-color: var(#{icon-button-variables.$vvd-icon-button-layout}--fill);
+		border: var(#{layout.$vvd-layout--outline});
+		background-color: var(#{layout.$vvd-layout--fill});
 		border-radius: var(#{icon-button-variables.$icon-button-shape});
-		color: var(#{icon-button-variables.$vvd-icon-button-layout}--text);
+		color: var(#{layout.$vvd-layout--text});
 		font-size: inherit;
 		&:disabled {
 			color: var(#{vvd-formfield.$formfield-disabled-ink});

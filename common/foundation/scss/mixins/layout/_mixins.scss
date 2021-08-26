@@ -45,7 +45,7 @@ $all-layouts: (
 		$local-selector: functions.get-local-selector(config.$selector, variables.$compound-placeholder, $compound);
 
 		@if $type == config.$default {
-			$default-compound-selector: functions.get-attribute-rule-out-compound-selector(config.$default, $list);
+			$default-compound-selector: functions.get-attribute-rule-out-compound-selector(layout, config.$default, $list);
 			$default-selector: functions.get-local-selector(config.$selector, variables.$compound-placeholder, $default-compound-selector);
 			$local-selector: $local-selector,	$default-selector;
 		}

@@ -8,12 +8,12 @@
 	);
 }
 
-@function get-attribute-rule-out-compound-selector($selected-attribute, $attributes) {
+@function get-attribute-rule-out-compound-selector($key, $selected-value, $all-values) {
 	$compound: '';
 
-	@each $attribute, $_ in $attributes {
-		@if $attribute != $selected-attribute {
-			$compound: $compound + ':not([attribute="#{$attribute}"i])';
+	@each $value, $_ in $all-values {
+		@if $value != $selected-value {
+			$compound: $compound + ':not([#{$key}="#{$value}"i])';
 		}
 	}
 
