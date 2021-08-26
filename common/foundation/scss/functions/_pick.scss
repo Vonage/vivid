@@ -1,13 +1,13 @@
 @use 'sass:list';
 @use 'sass:map';
 
-@function pick-list($list, $predefined-list) {
+@function pick-list($subset, $list) {
 	$new-list: ();
-	@each $item in $list {
-		$n: #{list.index($predefined-list, $item)};
-		@if $n != '' {
-			$new-item: #{list.nth($predefined-list, $item)};
-			// list.join($new-list, $new-item);
+	@each $item in $subset {
+		$n: list.index($list, $item);
+		@if $n != null {
+			$new-item: list.nth($list, $n);
+			$new-list: list.append($new-list, $new-item);
 		} @else {
 			@error 'ERROR: Specified item #{$item} does not exist';
 		}

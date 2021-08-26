@@ -1,6 +1,5 @@
 @use 'sass:map';
 @use '../../functions';
-@use 'functions' as local-functions;
 @use 'config';
 @use 'variables';
 
@@ -36,7 +35,7 @@
 		);
 
 		@if $type == config.$default {
-			$default-compound-selector: local-functions.get-connotation-rule-out-compound-selector(config.$default, $all-connotation-types);
+			$default-compound-selector: functions.get-attribute-rule-out-compound-selector(config.$default, $all-connotation-types);
 			$default-selector: functions.get-local-selector(config.$selector, variables.$compound-placeholder, $default-compound-selector);
 			$local-selector: $local-selector,	$default-selector;
 		}

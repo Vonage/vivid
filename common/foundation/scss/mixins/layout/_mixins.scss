@@ -38,20 +38,20 @@ $all-layouts: (
 }
 
 @mixin layout() {
-	@each $type in functions.pick-list(config.$layout-set, variables.$predefined-layout-set) {
-		$compound: '[layout="#{$type}" i]';
+	$list: functions.pick-list(config.$layout-set, variables.$predefined-layout-set);
 
+	@each $type in $list {
+		$compound: '[layout="#{$type}" i]';
 		$local-selector: functions.get-local-selector(config.$selector, variables.$compound-placeholder, $compound);
 
-		// @if $type == config.$default {
-		// 	$default-compound-selector: local-functions.get-connotation-rule-out-compound-selector(config.$default, $all-connotation-types);
-		// 	$default-selector: functions.get-local-selector(config.$selector, variables.$compound-placeholder, $default-compound-selector);
-		// 	$local-selector: $local-selector,	$default-selector;
-		// }
+		@if $type == config.$default {
+			$default-compound-selector: functions.get-attribute-rule-out-compound-selector(config.$default, $list);
+			$default-selector: functions.get-local-selector(config.$selector, variables.$compound-placeholder, $default-compound-selector);
+			$local-selector: $local-selector,	$default-selector;
+		}
 
 		#{$local-selector} {
 			@extend %#{$type};
 		}
 	}
 }
-
