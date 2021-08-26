@@ -1,13 +1,13 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-foundation/scss/mixins/connotation/variables' as connotation-variables;
-@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation with(
+@use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
 	$connotations-set: success alert warning info announcement,
 	$default: announcement,
 	$selector: ':host(#{connotation-variables.$compound-placeholder}) .vvd-snackbar'
 );
+@use '@vonage/vvd-foundation/scss/mixins/connotation';
 
-@include connotation.connotation;
 
 :host {
 	@include typography.typography-cat-shorthand('caption');

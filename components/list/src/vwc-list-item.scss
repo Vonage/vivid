@@ -2,10 +2,11 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
-@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation with(
+@use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
 	$connotations-set: primary cta,
 	$default: primary
 );
+@use '@vonage/vvd-foundation/scss/mixins/connotation';
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' with (
 	$variable-name: --vvd-list-item-shape
 );
@@ -15,7 +16,6 @@ $vvd-list-item-block-size: --vvd-list-item-block-size;
 $vvd-list-item-side-padding: --vvd-list-item-side-padding;
 $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 
-@include connotation.connotation;
 
 @include shape-mixins.shape(
 	$shapes: (
