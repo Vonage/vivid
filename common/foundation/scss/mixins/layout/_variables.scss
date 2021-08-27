@@ -2,14 +2,13 @@
 
 $prefix: null;
 @if config.$scope {
-	$prefix: --vvd-#{config.$scope}-layout;
+	$prefix: --vvd-#{config.$scope}--layout;
 } else {
 	$prefix: --vvd-layout;
 }
 
-$vvd-layout--fill: #{$prefix}--fill;
-$vvd-layout--text: #{$prefix}--text;
-$vvd-layout--outline: #{$prefix}--outline;
+$vvd-layout-color-fill: #{$prefix}-color-fill;
+$vvd-layout-color-text: #{$prefix}-color-text;
+$vvd-layout-color-outline: #{$prefix}-color-outline;
 
-$compound-placeholder: '[compound]'; // will be replaced by actual compound
-$selector: ':host(#{$compound-placeholder})';
+$compound-placeholder: '--placeholder--'; // will be replaced by actual compound

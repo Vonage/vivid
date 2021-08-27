@@ -15,7 +15,7 @@ $namespace-shape: #{$namespace}-shape;
 @use '@vonage/vvd-foundation/scss/mixins/layout/config' with (
 	$layout-set: filled outlined soft,
 	$default: filled,
-	$scope: badge
+	$scope: badge,
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout' as layout;
 
@@ -48,10 +48,10 @@ $vvd-badge--block-size: --#{$namespace}--block-size;
 	@include layout.layout;
 	display: inline-block;
 	padding: 0 10px;
-	border: var(#{layout.$vvd-layout--outline});
-	background-color: var(#{layout.$vvd-layout--fill});
+	border: var(#{layout.$vvd-layout-color-outline});
+	background-color: var(#{layout.$vvd-layout-color-fill});
 	border-radius: var(#{$namespace-shape});
-	color: var(#{layout.$vvd-layout--text});
+	color: var(#{layout.$vvd-layout-color-text});
 	line-height: var(#{$vvd-badge--block-size});
 
 	:host([dense]) & {

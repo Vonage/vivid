@@ -17,46 +17,43 @@ $all-layouts: (
 );
 
 %filled {
-	#{variables.$vvd-layout--fill}: var(#{connotation.$vvd-color-connotation});
-	#{variables.$vvd-layout--text}: var(#{connotation.$vvd-color-on-connotation});
+	#{variables.$vvd-layout-color-fill}: var(#{connotation.$vvd-color-connotation});
+	#{variables.$vvd-layout-color-text}: var(#{connotation.$vvd-color-on-connotation});
 }
 
 %outlined {
-	#{variables.$vvd-layout--fill}: transparent;
-	#{variables.$vvd-layout--outline}: 1px solid var(#{connotation.$vvd-color-connotation});
-	#{variables.$vvd-layout--text}: var(#{connotation.$vvd-color-connotation});
+	#{variables.$vvd-layout-color-fill}: transparent;
+	#{variables.$vvd-layout-color-outline}: 1px solid var(#{connotation.$vvd-color-connotation});
+	#{variables.$vvd-layout-color-text}: var(#{connotation.$vvd-color-connotation});
 }
 
 %soft {
-	#{variables.$vvd-layout--fill}: var(#{connotation.$vvd-color-connotation}-soft);
-	#{variables.$vvd-layout--text}: var(#{scheme-variables.$vvd-color-on-canvas});
+	#{variables.$vvd-layout-color-fill}: var(#{connotation.$vvd-color-connotation}-soft);
+	#{variables.$vvd-layout-color-text}: var(#{scheme-variables.$vvd-color-on-canvas});
 }
 
 %text,
 %ghost {
-	#{variables.$vvd-layout--fill}: transparent;
-	#{variables.$vvd-layout--text}: var(#{connotation.$vvd-color-connotation});
+	#{variables.$vvd-layout-color-fill}: transparent;
+	#{variables.$vvd-layout-color-text}: var(#{connotation.$vvd-color-connotation});
 }
 
 @mixin layout {
 	$set: functions.pick-list(config.$layout-set, config.$predefined-layout-set);
 
 	@each $type in $set {
-		$compound: '[layout="#{$type}" i]';
-		$local-selector: functions.get-local-selector(variables.$selector, variables.$compound-placeholder, $compound);
+		$compound: '.#{variables.$prefix}-#{$type}';
+		// $local-selector: functions.get-local-selector(variables.$selector, variables.$compound-placeholder, $compound);
+		$selector: selector.unify(&, $compound);
 
 		@if $type == config.$default {
-			$default-compound-selector: functions.get-attribute-rule-out-compound-selector(layout, config.$default, $set);
-			$default-selector: functions.get-local-selector(variables.$selector, variables.$compound-placeholder, $default-compound-selector);
-			$local-selector: selector.parse(#{$local-selector, $default-selector});
+			$rule-out-selector: functions.get-attribute-rule-out-compound-selector(layout, config.$default, $set);
+			$rule-out-selector: selector.unify(&, $rule-out-selector);
+			// $default-selector: functionsselector(variables.$selector, variables.$compound-placeholder, $default-compound-selector);
+			$selector: selector.parse(#{$selector, $rule-out-selector});
 		}
 
-		// if mixin included within a selector context append that selector as well
-		@if & {
-			$local-selector: selector.nest($local-selector, &);
-		}
-
-		@at-root #{$local-selector} {
+		@at-root #{$selector} {
 			@extend %#{$type};
 		}
 	}

@@ -32,25 +32,26 @@ $block-sizes: (
 	'enlarged': 48px
 );
 
+.mdc-icon-button {
+	@include layout.layout;
+	:host & {
+		// sizing
+		--mdc-icon-button-size: var(#{icon-button-variables.$icon-button-block-size}, #{map.get($block-sizes, 'normal')});
+		@include vvd-formfield.coupling;
 
-:host {
-	// sizing
-	--mdc-icon-button-size: var(#{icon-button-variables.$icon-button-block-size}, #{map.get($block-sizes, 'normal')});
-	@include vvd-formfield.coupling;
-
-	.mdc-icon-button {
-		@include layout.layout;
-		display: inline-flex;
-		overflow: hidden;
-		align-items: center;
-		justify-content: center;
-		border: var(#{layout.$vvd-layout--outline});
-		background-color: var(#{layout.$vvd-layout--fill});
-		border-radius: var(#{icon-button-variables.$icon-button-shape});
-		color: var(#{layout.$vvd-layout--text});
-		font-size: inherit;
-		&:disabled {
-			color: var(#{vvd-formfield.$formfield-disabled-ink});
+		.mdc-icon-button {
+			display: inline-flex;
+			overflow: hidden;
+			align-items: center;
+			justify-content: center;
+			border: var(#{layout.$vvd-layout--outline});
+			background-color: var(#{layout.$vvd-layout--fill});
+			border-radius: var(#{icon-button-variables.$icon-button-shape});
+			color: var(#{layout.$vvd-layout--text});
+			font-size: inherit;
+			&:disabled {
+				color: var(#{vvd-formfield.$formfield-disabled-ink});
+			}
 		}
 	}
 }

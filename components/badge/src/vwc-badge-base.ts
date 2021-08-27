@@ -3,6 +3,7 @@ import {
 } from 'lit-element';
 import { nothing } from 'lit-html';
 import { classMap } from 'lit-html/directives/class-map';
+import { ifDefined } from 'lit-html/directives/if-defined';
 
 import { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
 import { handleMultipleDenseProps } from '@vonage/vvd-foundation/general-utils';
@@ -67,9 +68,13 @@ export class VWCBadgeBase extends LitElement {
   	handleMultipleDenseProps(this, changes);
 	}
 
+	get #renderLayoutClass(): string {
+		return ifDefined(this.layout) && `vvd-badge--layout-${this.layout}`;
+	}
+
 	protected render(): TemplateResult {
 		return html`
-			<span class="vwc-badge">
+			<span class="vwc-badge ${this.#renderLayoutClass}">
 				${this.renderIcon(this.icon)}
 				<slot>
 					${this.text || nothing}

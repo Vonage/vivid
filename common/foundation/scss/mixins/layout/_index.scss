@@ -1,4 +1,2 @@
-@forward 'variables' show $vvd-layout--fill, $vvd-layout--text, $vvd-layout--outline;
-@use 'mixins';
-
+@forward 'variables' show $vvd-layout-color-fill, $vvd-layout-color-text, $vvd-layout-color-outline;
 @forward 'mixins' show layout;
