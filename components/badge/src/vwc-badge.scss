@@ -12,11 +12,10 @@ $namespace-shape: #{$namespace}-shape;
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
 	$variable-name: #{$namespace-shape}
 );
-@use '@vonage/vvd-foundation/scss/mixins/layout/variables' as layout-variables;
 @use '@vonage/vvd-foundation/scss/mixins/layout/config' with (
 	$layout-set: filled outlined soft,
 	$default: filled,
-	$selector: ':host(#{layout-variables.$compound-placeholder}) .vwc-badge'
+	$scope: badge
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout' as layout;
 
@@ -46,6 +45,7 @@ $vvd-badge--block-size: --#{$namespace}--block-size;
 
 .vwc-badge {
 	@include typography.typography-cat-shorthand('caption-bold');
+	@include layout.layout;
 	display: inline-block;
 	padding: 0 10px;
 	border: var(#{layout.$vvd-layout--outline});

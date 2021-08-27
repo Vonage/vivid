@@ -14,6 +14,7 @@
 @use '@vonage/vvd-foundation/scss/mixins/layout/config' with (
 	$layout-set: filled outlined ghost,
 	$default: ghost,
+	$scope: button
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout' as layout;
 
@@ -32,6 +33,14 @@
 
 @include connotation.connotation;
 
+// ! it's kind of an anti pattern to expose
+// ! implementation details to the consumer region
+// ! the following mixin will set layout custom properties
+// ! on the host and can be overriden,
+// ! but these are not customizable
+// ! preferably a refactor will allow better nesting and
+// ! hiding these props
+@include layout.layout;
 
 :host {
 	--mdc-button-disabled-ink-color: var(#{vvd-formfield.$formfield-disabled-ink});

@@ -10,11 +10,10 @@
 	$connotations-set: primary cta success alert info announcement,
 	$default: primary
 );
-@use '@vonage/vvd-foundation/scss/mixins/layout/variables' as layout-variables;
 @use '@vonage/vvd-foundation/scss/mixins/layout/config' with (
 	$layout-set: filled outlined ghost,
 	$default: ghost,
-	$selector: ':host(#{layout-variables.$compound-placeholder}) .mdc-icon-button'
+	$scope: icon-badge
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout' as layout;
 
@@ -40,6 +39,7 @@ $block-sizes: (
 	@include vvd-formfield.coupling;
 
 	.mdc-icon-button {
+		@include layout.layout;
 		display: inline-flex;
 		overflow: hidden;
 		align-items: center;
