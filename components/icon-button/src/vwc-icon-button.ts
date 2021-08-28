@@ -8,6 +8,7 @@ import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupl
 import { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
 import { handleMultipleDenseProps } from '@vonage/vvd-foundation/general-utils';
 import { html, TemplateResult } from 'lit-element';
+import { ifDefined } from 'lit-html/directives/if-defined';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -60,9 +61,13 @@ export class VWCIconButton extends MWCIconButton {
 		handleMultipleDenseProps(this, changes);
 	}
 
+	get #renderLayoutClass(): string {
+		return ifDefined(this.layout) && `vwc-badge--layout-${this.layout}`;
+	}
+
 	protected render(): TemplateResult {
 		return html`<button
-			class="mdc-icon-button"
+			class="mdc-icon-button ${this.#renderLayoutClass}"
 			aria-label="${this.ariaLabel || this.icon}"
 			?disabled="${this.disabled}"
 			@focus="${this.handleRippleFocus}"
