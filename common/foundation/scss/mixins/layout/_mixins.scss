@@ -4,6 +4,7 @@
 @use 'variables' as variables;
 @use 'config' as config;
 @use 'sass:selector';
+@use 'sass:list';
 
 
 ////////////////////////////////////////////////////////////////////////////
@@ -38,19 +39,26 @@ $all-layouts: (
 	#{variables.$vvd-layout-color-text}: var(#{connotation.$vvd-color-connotation});
 }
 
+@function get-pseudo($type) {
+	@return '.#{config.$scope}-#{$type}';
+}
+
 @mixin layout {
 	$set: functions.pick-list(config.$layout-set, config.$predefined-layout-set);
 
 	@each $type in $set {
-		$compound: '.#{variables.$prefix}-#{$type}';
-		// $local-selector: functions.get-local-selector(variables.$selector, variables.$compound-placeholder, $compound);
-		$selector: selector.unify(&, $compound);
+		$pseudo: get-pseudo($type);
 
-		@if $type == config.$default {
-			$rule-out-selector: functions.get-attribute-rule-out-compound-selector(layout, config.$default, $set);
-			$rule-out-selector: selector.unify(&, $rule-out-selector);
-			// $default-selector: functionsselector(variables.$selector, variables.$compound-placeholder, $default-compound-selector);
-			$selector: selector.parse(#{$selector, $rule-out-selector});
+		$selector: selector.unify(&, $pseudo);
+
+		@if $type == config.$default and list.length($set) > 1 {
+			$rule-out-pseudo: &;
+			@each $rule-out-type in $set {
+				@if $rule-out-type != config.$default {
+					$rule-out-pseudo: '#{$rule-out-pseudo}:not(#{get-pseudo($rule-out-type)})';
+				}
+			}
+			$selector: selector.parse(#{$selector, $rule-out-pseudo});
 		}
 
 		@at-root #{$selector} {

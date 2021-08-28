@@ -69,7 +69,7 @@ export class VWCBadgeBase extends LitElement {
 	}
 
 	get #renderLayoutClass(): string {
-		return ifDefined(this.layout) && `vvd-badge--layout-${this.layout}`;
+		return ifDefined(this.layout) && `vwc-badge--layout-${this.layout}`;
 	}
 
 	protected render(): TemplateResult {

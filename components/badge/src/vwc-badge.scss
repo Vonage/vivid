@@ -15,7 +15,7 @@ $namespace-shape: #{$namespace}-shape;
 @use '@vonage/vvd-foundation/scss/mixins/layout/config' with (
 	$layout-set: filled outlined soft,
 	$default: filled,
-	$scope: badge,
+	$scope: vwc-badge--layout,
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout' as layout;
 
