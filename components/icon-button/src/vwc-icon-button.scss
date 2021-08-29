@@ -44,10 +44,10 @@ $block-sizes: (
 			overflow: hidden;
 			align-items: center;
 			justify-content: center;
-			border: var(#{layout.$vvd-layout--outline});
-			background-color: var(#{layout.$vvd-layout--fill});
+			border: var(#{layout.$vvd-layout-color-outline});
+			background-color: var(#{layout.$vvd-layout-color-fill});
 			border-radius: var(#{icon-button-variables.$icon-button-shape});
-			color: var(#{layout.$vvd-layout--text});
+			color: var(#{layout.$vvd-layout-color-text});
 			font-size: inherit;
 			&:disabled {
 				color: var(#{vvd-formfield.$formfield-disabled-ink});
