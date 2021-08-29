@@ -20,6 +20,9 @@ export const Template = () => html`
       #password {
         text-align: end;
       }
+      vwc-inline.sign-in-helper {
+	      align-items: center;
+      }
 	</style>
     <form>
       <p><vwc-text font-face="title-2">Welcome back!</vwc-text></p>
@@ -57,7 +60,7 @@ export const Template = () => html`
           placeholder=" "
         />
       </vwc-textfield>
-      <vwc-inline>
+      <vwc-inline class="sign-in-helper">
         <vwc-formfield label="Remember me"><vwc-checkbox></vwc-checkbox></vwc-formfield>
         <vwc-text id="password" font-face="body-2"><a href="#">Forgot password?</a></vwc-text>
       </vwc-inline>
