@@ -1,4 +1,3 @@
-/* eslint-disable lit-a11y/anchor-is-valid */
 import { html } from 'lit-element';
 
 export default {
@@ -39,7 +38,7 @@ export const Template = () => html`
   <div id="demo">
     <form>
       <p><vwc-text font-face="title-2">Welcome back!</vwc-text></p>
-      <p><vwc-text font-face="body-2">Don't have an account? <a href="">Sign Up</a></vwc-text></p>
+      <p><vwc-text font-face="body-2">Don't have an account? <a href="#">Sign Up</a></vwc-text></p>
       <div>
       <vwc-textfield
         name="username"
@@ -76,7 +75,7 @@ export const Template = () => html`
       </vwc-textfield>
       <div id="password">
         <vwc-formfield id="remember" label="Remember me"><vwc-checkbox></vwc-checkbox></vwc-formfield>
-        <vwc-text id="forgot" font-face="body-2"><a href="">Forgot password?</a></vwc-text>
+        <vwc-text id="forgot" font-face="body-2"><a href="#">Forgot password?</a></vwc-text>
       </div>
       </div>
       <div class="controls">
