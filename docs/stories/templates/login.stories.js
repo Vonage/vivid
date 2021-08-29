@@ -8,9 +8,13 @@ export const Template = () => html`
   <style>
       form {
         display: grid;
-        gap: 20px;
+        gap: 24px;
         margin: auto;
         width: 800px;
+      }
+      p {
+          margin: 0;
+          padding: 0;
       }
       .controls {
         display: flex;
