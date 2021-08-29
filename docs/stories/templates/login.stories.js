@@ -17,6 +17,9 @@ export const Template = () => html`
         gap: 20px;
         margin: auto;
       }
+      a {
+        margin: auto;
+      }
       .controls {
         display: flex;
         justify-content: start;
