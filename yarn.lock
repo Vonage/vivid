@@ -2715,6 +2715,17 @@
     lit-html "^1.1.2"
     tslib "^2.0.1"
 
+"@material/mwc-icon-button-toggle@^0.21.0":
+  version "0.21.0"
+  resolved "https://registry.yarnpkg.com/@material/mwc-icon-button-toggle/-/mwc-icon-button-toggle-0.21.0.tgz#853e2f00c6be6e65655910e5c9a23897495f6ea3"
+  integrity sha512-GuefRdk7G1S4SedcI6Kqqu2Av0HlVhgJXJ4fxI1A7RwO/fv9kk0tKV2yzMw6kN5fCgbn8C6yqejDSGJSIVIwDQ==
+  dependencies:
+    "@material/mwc-base" "^0.21.0"
+    "@material/mwc-icon-button" "^0.21.0"
+    "@material/mwc-ripple" "^0.21.0"
+    lit-element "~2.4.0"
+    tslib "^2.0.1"
+
 "@material/mwc-icon-button@^0.21.0":
   version "0.21.0"
   resolved "https://registry.yarnpkg.com/@material/mwc-icon-button/-/mwc-icon-button-0.21.0.tgz#ab4612e80bd8576cc0079a3cc7c16b8ab9468870"

@@ -12,10 +12,10 @@ export async function createElementVariations(wrapper) {
 		<vwc-icon-button-toggle onicon="home" officon="bookmark" on enlarged></vwc-icon-button-toggle>
 		<vwc-icon-button-toggle onicon="home" officon="bookmark" disabled></vwc-icon-button-toggle>
 		<vwc-icon-button-toggle onicon="home" officon="bookmark" on disabled></vwc-icon-button-toggle>
-		<vwc-icon-button-toggle onicon="home" officon="bookmark" layout="filled" connoctation="cta"></vwc-icon-button-toggle>
-		<vwc-icon-button-toggle onicon="home" officon="bookmark" layout="filled" connoctation="cta" on></vwc-icon-button-toggle>
-		<vwc-icon-button-toggle onicon="home" officon="bookmark" layout="outlined" connoctation="cta"></vwc-icon-button-toggle>
-		<vwc-icon-button-toggle onicon="home" officon="bookmark" layout="outlined" connoctation="cta" on></vwc-icon-button-toggle>
+		<vwc-icon-button-toggle onicon="home" officon="bookmark" layout="filled" connotation="cta"></vwc-icon-button-toggle>
+		<vwc-icon-button-toggle onicon="home" officon="bookmark" layout="filled" connotation="cta" on></vwc-icon-button-toggle>
+		<vwc-icon-button-toggle onicon="home" officon="bookmark" layout="outlined" connotation="cta"></vwc-icon-button-toggle>
+		<vwc-icon-button-toggle onicon="home" officon="bookmark" layout="outlined" connotation="cta" on></vwc-icon-button-toggle>
 	`;
 	wrapper.appendChild(textElementWrapper);
 }
