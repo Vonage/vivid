@@ -6,12 +6,12 @@
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
 	$variable-name: #{icon-button-variables.$icon-button-shape}
 );
-@use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
+@use '@vonage/vvd-foundation/scss/mixins/connotation/config' as connotation-config with (
 	$connotations-set: primary cta success alert info announcement,
 	$default: primary
 );
 @use '@vonage/vvd-foundation/scss/mixins/connotation';
-@use '@vonage/vvd-foundation/scss/mixins/layout/config' with (
+@use '@vonage/vvd-foundation/scss/mixins/layout/config' as layout-config with (
 	$layout-set: filled outlined ghost,
 	$default: ghost,
 	$scope: vwc-icon-button--layout

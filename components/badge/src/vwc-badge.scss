@@ -3,17 +3,16 @@ $namespace-shape: #{$namespace}-shape;
 
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-typography/scss/typography' as typography;
-@use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
+@use '@vonage/vvd-foundation/scss/mixins/connotation/config' as connotation-config with (
 	$connotations-set: primary cta success alert warning info,
 	$shades: (soft, contrast),
 	$default: primary
 );
 @use '@vonage/vvd-foundation/scss/mixins/connotation';
-
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
 	$variable-name: #{$namespace-shape}
 );
-@use '@vonage/vvd-foundation/scss/mixins/layout/config' with (
+@use '@vonage/vvd-foundation/scss/mixins/layout/config' as layout-config with (
 	$layout-set: filled outlined soft,
 	$default: filled,
 	$scope: vwc-badge--layout,
