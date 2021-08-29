@@ -33,7 +33,7 @@ jobs:
         with:
           path: "**/node_modules"
           key: ${{ hashFiles('yarn.lock') }}
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --frozen-lockfile --network-timeout 100000
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
       - run: yarn lerna run build --stream --concurrency=15 --include-dependencies
