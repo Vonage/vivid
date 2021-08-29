@@ -1,13 +1,14 @@
 import { render } from 'lit-html';
 
 export function storiesToElement(stories) {
+	console.log('StORIES!!!');
 	const textElementWrapper = document.createElement('div');
 	textElementWrapper.innerHTML = Object.keys(stories)
 		.reduce((htmlString, currStory) => {
 			const tmpWrapper = document.createElement('div');
 			const currStoryGenerator = stories[currStory];
 
-			if (currStory === 'default' || typeof currStoryGenerator !== 'function') return;
+			if (currStory === 'default' || typeof currStoryGenerator !== 'function') return htmlString;
 
 			const currStoryContent = currStoryGenerator(currStoryGenerator.args);
 			render(currStoryContent, tmpWrapper);
@@ -17,6 +18,5 @@ export function storiesToElement(stories) {
 
 			return `${formerString} ${tmpWrapper.innerHTML}`;
 		}, '');
-
 	return textElementWrapper;
 }

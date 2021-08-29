@@ -1,6 +1,6 @@
 import { Page, webkit } from 'playwright';
 
-import * as handler from 'serve-handler';
+import handler from 'serve-handler';
 
 import * as http from 'http';
 
@@ -8,6 +8,10 @@ import * as fs from 'fs';
 import * as jimp from 'jimp';
 import { getFilteredTestFolders } from './utils/files-utils';
 import { pascalCase } from 'pascal-case';
+
+import Webpack from 'webpack';
+import WebpackDevServer from 'webpack-dev-server';
+import webpackConfig from './webpack.config';
 
 interface ComparisonResult {
 	image: any;
@@ -134,6 +138,15 @@ server.listen(PORT, async () => {
 	try {
 		if (!process.argv.includes('-s')) {
 			await runImageComparison();
+		} else {
+			console.log('Starting stuff');
+			const compiler = Webpack({ ...webpackConfig, mode: 'development' });
+			const devServerOptions = { ...webpackConfig.devServer, open: true };
+			const devServer = new WebpackDevServer(devServerOptions, compiler);
+
+			devServer.listen(webpackConfig.devServer.port, '127.0.0.1', () => {
+				console.log(`Starting server on http://localhost:${webpackConfig.devServer.port}`);
+			});
 		}
 	} catch (e) {
 		console.error(e);
