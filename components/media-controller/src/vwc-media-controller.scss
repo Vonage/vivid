@@ -1,10 +1,10 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
-@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation with(
+@use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
 	$connotations-set: primary cta,
 	$default: cta
 );
+@use '@vonage/vvd-foundation/scss/mixins/connotation';
 
-@include connotation.connotation;
 
 :host([noseek]) {
 	.main {
