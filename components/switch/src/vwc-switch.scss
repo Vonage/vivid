@@ -1,17 +1,18 @@
 @use 'sass:selector';
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
-@use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation with (
-	$connotations-set: primary cta success alert
+@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation with(
+	$connotations-set: primary cta success alert,
+	$default: primary
 );
 
-@include color-connotation.connotations-main;
-@include color-connotation.connotations-main-default(primary);
+@include connotation.connotation;
+
 
 // sizing parts only
 :host {
 	// colors/shadowing
 	--mdc-theme-secondary: var(
-		#{color-connotation.$vvd-color-connotation}
+		#{connotation.$vvd-color-connotation}
 	);
 
 	--vvd-switch-unchecked-background: var(
