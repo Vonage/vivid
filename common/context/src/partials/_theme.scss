@@ -1,12 +1,15 @@
 @use 'variables';
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-foundation/scss/variable-names/color-base-variable-names' as color-base;
+
 @use '@vonage/vvd-foundation/scss/mixins/connotation/variables' as connotation-variables;
-@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation with(
+@use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
 	$connotations-set: success alert warning info announcement,
 	$default: info,
 	$selector: 'blockquote#{connotation-variables.$compound-placeholder}'
 );
+@use '@vonage/vvd-foundation/scss/mixins/connotation';
+
 
 body {
 	background-color: var(#{scheme-variables.$vvd-color-canvas});
@@ -15,7 +18,6 @@ body {
 
 #{variables.$vivid-scope-selector} {
 
-	@include connotation.connotation;
 
 	a {
 		color: var(
