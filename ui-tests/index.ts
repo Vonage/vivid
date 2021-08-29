@@ -132,6 +132,16 @@ function finalizeTest() {
 	server.close();
 }
 
+function setDevServer() {
+	const compiler = Webpack({ ...webpackConfig, mode: 'development' });
+	const devServerOptions = { ...webpackConfig.devServer, open: true };
+	const devServer = new WebpackDevServer(devServerOptions, compiler);
+
+	devServer.listen(webpackConfig.devServer.port, '127.0.0.1', () => {
+		console.log(`Starting server on http://localhost:${webpackConfig.devServer.port}`);
+	});
+}
+
 server.listen(PORT, async () => {
 	console.log('Running at ', SERVER_URL);
 
@@ -139,14 +149,7 @@ server.listen(PORT, async () => {
 		if (!process.argv.includes('-s')) {
 			await runImageComparison();
 		} else {
-			console.log('Starting stuff');
-			const compiler = Webpack({ ...webpackConfig, mode: 'development' });
-			const devServerOptions = { ...webpackConfig.devServer, open: true };
-			const devServer = new WebpackDevServer(devServerOptions, compiler);
-
-			devServer.listen(webpackConfig.devServer.port, '127.0.0.1', () => {
-				console.log(`Starting server on http://localhost:${webpackConfig.devServer.port}`);
-			});
+			setDevServer();
 		}
 	} catch (e) {
 		console.error(e);

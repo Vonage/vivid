@@ -1,7 +1,6 @@
 import { render } from 'lit-html';
 
 export function storiesToElement(stories) {
-	console.log('StORIES!!!');
 	const textElementWrapper = document.createElement('div');
 	textElementWrapper.innerHTML = Object.keys(stories)
 		.reduce((htmlString, currStory) => {

@@ -43,9 +43,6 @@ const config = {
 					await buildMainPage();
 					return buildTests();
 				});
-				compiler.hooks.done.tapPromise('MyPlugin_done', async () => {
-					return true;
-				});
 			},
 		}
 	],
@@ -90,6 +87,7 @@ const config = {
 		},
 		compress: true,
 		port: 3001,
+		writeToDisk: true
 	}
 };
 
