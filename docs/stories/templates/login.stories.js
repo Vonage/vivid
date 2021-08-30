@@ -28,7 +28,7 @@ export const LogIn = () => html`
       }
       #side-drawer {
         flex: 1 0;
-        --vvd-side-drawer--background-color: var(--vvd-color-on-primary);
+        --vvd-side-drawer--background-color: var(--vvd-color-canvas);
         --vvd-side-drawer--min-inline-size: 100%;
       }
 	</style>
