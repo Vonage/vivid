@@ -14,6 +14,8 @@ figure {
     flex: 0 0 50vw;
     background-color: var(--vvd-color-neutral-20);
     position: relative;
+    margin: 0;
+    padding: 0;
 }
 #content {
     position: absolute;
