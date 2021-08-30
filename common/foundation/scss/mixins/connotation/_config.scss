@@ -1,8 +1,12 @@
-@use 'variables';
+$predefined-connotation-set: primary cta success alert warning info announcement;
 
 $base: true !default;
 $default: false !default;
 $shades: () !default;
 $decoratives: () !default;
-$connotations-set: primary cta success alert warning info announcement !default;
-$selector: ':host(#{variables.$compound-placeholder})' !default;
+$connotations-set: $predefined-connotation-set !default;
+// it is recommended to define a dedicated scope
+// from including scope to prevent too general
+// custom properties from delegating and inccidently
+// affect deeper scopes
+$scope: connotation !default;

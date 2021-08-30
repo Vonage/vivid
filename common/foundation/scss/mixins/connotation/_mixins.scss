@@ -1,12 +1,14 @@
 @use 'sass:map';
-@use '../../functions';
-@use 'functions' as local-functions;
-@use 'config';
-@use 'variables';
+@use 'sass:list';
+@use 'sass:selector';
+@use '../../functions' as functions;
+@use 'config' as config;
+@use 'variables' as variables;
+
 
 @mixin connotation-base($type) {
-	#{variables.$vvd-color-connotation}: var(#{variables.$vvd-color}-#{$type});
-	#{variables.$vvd-color-on-connotation}: var(#{variables.$vvd-color-on}-#{$type});
+	#{variables.$vvd-color-connotation}: var(--vvd-color-#{$type});
+	#{variables.$vvd-color-on-connotation}: var(--vvd-color-#{$type});
 }
 
 @mixin connotation-shades($mapping) {
@@ -22,11 +24,15 @@
 	#{variables.$vvd-color-connotation}: linear-gradient(to right, $start, $end);
 }
 
+@function get-pseudo($type) {
+	@return '.#{config.$scope}-#{$type}';
+}
+
 @mixin selectors($types...) {
 	@each $type in $types {
-		$compound: '[connotation="#{$type}" i]';
+		$pseudo: get-pseudo($type);
 
-		$local-selector: functions.get-local-selector(config.$selector, variables.$compound-placeholder, $compound);
+		$selector: selector.unify(&, $pseudo);
 
 		$all-connotation-types: map.keys(
 			map.merge(
@@ -35,18 +41,21 @@
 			)
 		);
 
-		@if $type == config.$default {
-			$default-compound-selector: local-functions.get-connotation-rule-out-compound-selector(config.$default, $all-connotation-types);
-			$default-selector: functions.get-local-selector(config.$selector, variables.$compound-placeholder, $default-compound-selector);
-			$local-selector: $local-selector,	$default-selector;
+		@if $type == config.$default and list.length($types) > 1 {
+			$rule-out-pseudo: &;
+			@each $rule-out-type in $types {
+				@if $rule-out-type != config.$default {
+					$rule-out-pseudo: '#{$rule-out-pseudo}:not(#{get-pseudo($rule-out-type)})';
+				}
+			}
+			$selector: selector.parse(#{$selector, $rule-out-pseudo});
 		}
 
-		#{$local-selector} {
+		@at-root #{$selector} {
 			@content($type);
 		}
 	}
 }
-
 
 @mixin connotation {
 	$mapping-shades: functions.pick-map(config.$connotations-set, variables.$connotation-mapping);

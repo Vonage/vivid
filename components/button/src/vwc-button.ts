@@ -1,5 +1,6 @@
 import '@vonage/vvd-core';
 import { customElement, property } from 'lit-element';
+import { classMap } from 'lit-html/directives/class-map';
 import { Button as MWCButton } from '@material/mwc-button';
 import { style as vwcButtonStyle } from './vwc-button.css';
 import { style as mwcButtonStyle } from '@material/mwc-button/styles-css.js';
@@ -142,6 +143,21 @@ export class VWCButton extends MWCButton {
 
 	protected renderIcon(): TemplateResult {
 		return html`<vwc-icon	type="${this.icon}"></vwc-icon>`;
+	}
+
+	protected getRenderClasses() {
+		return classMap({
+			'mdc-button--raised': this.raised,
+			'mdc-button--unelevated': this.unelevated,
+			'mdc-button--outlined': this.outlined,
+			'mdc-button--dense': this.dense,
+			'vwc-button--connotation-primary': this.connotation == 'primary',
+			'vwc-button--connotation-cta': this.connotation == 'cta',
+			'vwc-button--connotation-success': this.connotation == 'success',
+			'vwc-button--connotation-alert': this.connotation == 'alert',
+			'vwc-button--connotation-info': this.connotation == 'info',
+			'vwc-button--connotation-announcement': this.connotation == 'announcement',
+		});
 	}
 
 	static createHiddenButton(): HTMLButtonElement {

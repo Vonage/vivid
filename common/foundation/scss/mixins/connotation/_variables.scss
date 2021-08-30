@@ -1,9 +1,8 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+@use 'config' as config;
 
-$vvd-color: --vvd-color;
-$vvd-color-on: #{$vvd-color}-on;
-$vvd-color-connotation: #{$vvd-color}-connotation;
-$vvd-color-on-connotation: #{$vvd-color}-on-connotation;
+$vvd-color-connotation: --#{config.$scope}-canvas;
+$vvd-color-on-connotation: --#{config.$scope}-on-canvas;
 
 $compound-placeholder: '[compound]'; // will be replaced by actual compound
 

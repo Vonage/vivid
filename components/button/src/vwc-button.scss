@@ -6,9 +6,10 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
 	$connotations-set: primary cta success alert info announcement,
-	$default: primary
+	$default: primary,
+	$scope: vwc-button--connotation,
 );
-@use '@vonage/vvd-foundation/scss/mixins/connotation';
+@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' with(
 	$variable-name: --vvd-button-shape
 );
@@ -61,6 +62,7 @@
 /////////////////////////////////////////////////////////////////////////////
 .mdc-button {
 	$gutter: 8px;
+	@include connotation.connotation;
 	height: var(--vvd-button-block-size, var(--button-block-size));
 	border-radius: var(#{button-variables.$vvd-button-shape});
 	// ! this was supposed to be set by MDC
