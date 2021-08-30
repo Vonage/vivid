@@ -9,10 +9,10 @@ export const LogIn = () => html`
       form {
         display: grid;
         gap: 24px;
-        min-width: 600px;
       }
       section {
         margin: 50px;
+        min-width: 600px;
       }
       .vivid-scope h3, p{
           margin: 0;
