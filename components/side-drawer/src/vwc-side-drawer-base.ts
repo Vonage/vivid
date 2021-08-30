@@ -10,7 +10,15 @@ import { DocumentWithBlockingElements } from 'blocking-elements';
 
 const blockingElements =
 	(document as DocumentWithBlockingElements).$blockingElements;
-
+/**
+ * @cssprop --vvd-side-drawer--background-color - Controls the background of the side drawer
+ * @cssprop --vvd-side-drawer--min-inline-size - Controls the size of the side drawer
+ * @cssprop --vvd-side-drawer--min-inline-size-default - Controls the default min-inline-size of the side drawer
+ * @cssprop --vvd-side-drawer--padding - Controls the padding of the side drawer
+ * @cssprop --vvd-side-drawer--padding-default - Controls the default padding of the side drawer
+ * @cssprop --vvd-side-drawer--z-index - Controls the z-index of the side drawer
+ * @cssprop --vvd-side-drawer--z-index-default - Controls the default z-index of the side drawer
+ */
 export class VWCSideDrawerBase extends LitElement {
 	/**
 	 * @prop alternate - [Applies scheme alternate region](../../common/scheme/readme.md)
