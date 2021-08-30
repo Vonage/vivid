@@ -4,7 +4,7 @@
 @use '@vonage/vwc-icon/src/partials/vwc-icon-variables' as icon-variables;
 @use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
-@use '@vonage/vvd-foundation/scss/mixins/connotation/config' as connotation-config with (
+@use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
 	$connotations-set: primary cta success alert info announcement,
 	$default: primary,
 	$scope: vwc-button,
@@ -16,7 +16,7 @@
 @use '@vonage/vvd-foundation/scss/mixins/layout/config' as layout-config with (
 	$layout-set: filled outlined ghost,
 	$default: ghost,
-	$scope: vwc-button--layout
+	$scope: vwc-button
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout' as layout;
 
