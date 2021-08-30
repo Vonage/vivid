@@ -8,7 +8,8 @@
 );
 @use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
 	$connotations-set: primary cta success alert info announcement,
-	$default: primary
+	$default: primary,
+	$scope: vwc-icon-button
 );
 @use '@vonage/vvd-foundation/scss/mixins/connotation';
 @use '@vonage/vvd-foundation/scss/mixins/layout/config' as layout-config with (
@@ -38,6 +39,7 @@ $block-sizes: (
 .mdc-icon-button {
 	@include vvd-formfield.coupling;
 	@include layout.layout;
+	@include connotation.connotation;
 	display: inline-flex;
 	overflow: hidden;
 	align-items: center;

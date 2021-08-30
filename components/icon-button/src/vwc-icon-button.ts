@@ -66,6 +66,12 @@ export class VWCIconButton extends MWCIconButton {
 			'vwc-icon-button--layout-filled': this.layout == 'filled',
 			'vwc-icon-button--layout-outlined': this.layout == 'outlined',
 			'vwc-icon-button--layout-ghost': this.layout == 'ghost',
+			'vwc-icon-button--connotation-primary': this.connotation == 'primary',
+			'vwc-icon-button--connotation-cta': this.connotation == 'cta',
+			'vwc-icon-button--connotation-success': this.connotation == 'success',
+			'vwc-icon-button--connotation-alert': this.connotation == 'alert',
+			'vwc-icon-button--connotation-info': this.connotation == 'info',
+			'vwc-icon-button--connotation-announcement': this.connotation == 'announcement',
 		};
 	}
 
