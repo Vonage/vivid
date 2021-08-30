@@ -14,7 +14,7 @@
 @use '@vonage/vvd-foundation/scss/mixins/layout/config' as layout-config with (
 	$layout-set: filled outlined ghost,
 	$default: ghost,
-	$scope: vwc-icon-button--layout
+	$scope: vwc-icon-button
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout' as layout;
 
