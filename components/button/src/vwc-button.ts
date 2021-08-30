@@ -1,4 +1,5 @@
 import '@vonage/vvd-core';
+import '@vonage/vwc-icon';
 import { customElement, property } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
 import { Button as MWCButton } from '@material/mwc-button';
@@ -7,7 +8,6 @@ import { style as mwcButtonStyle } from '@material/mwc-button/styles-css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 import { Connotation, Shape } from '@vonage/vvd-foundation/constants';
 import { html, TemplateResult } from 'lit-element';
-import '@vonage/vwc-icon';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
 declare global {
@@ -157,6 +157,9 @@ export class VWCButton extends MWCButton {
 			'vwc-button--connotation-alert': this.connotation == 'alert',
 			'vwc-button--connotation-info': this.connotation == 'info',
 			'vwc-button--connotation-announcement': this.connotation == 'announcement',
+			'vwc-button--layout-filled': this.layout == 'filled',
+			'vwc-button--layout-outlined': this.layout == 'outlined',
+			'vwc-button--layout-ghost': this.layout == 'ghost',
 		});
 	}
 
