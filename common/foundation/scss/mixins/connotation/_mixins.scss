@@ -8,7 +8,7 @@
 
 @mixin connotation-base($type) {
 	#{variables.$vvd-color-connotation}: var(--vvd-color-#{$type});
-	#{variables.$vvd-color-on-connotation}: var(--vvd-color-#{$type});
+	#{variables.$vvd-color-on-connotation}: var(--vvd-color-on-#{$type});
 }
 
 @mixin connotation-shades($mapping) {
@@ -25,7 +25,7 @@
 }
 
 @function get-pseudo($type) {
-	@return '.#{config.$scope}-#{$type}';
+	@return '.#{config.$scope}--color-connotation-#{$type}';
 }
 
 @mixin selectors($types...) {
