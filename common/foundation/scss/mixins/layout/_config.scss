@@ -7,4 +7,4 @@ $layout-set: $predefined-layout-set !default;
 // from including scope to prevent too general
 // custom properties from delegating and inccidently
 // affect deeper scopes
-$scope: layout !default;
+$scope: component !default;
