@@ -12,10 +12,10 @@ const blockingElements =
 	(document as DocumentWithBlockingElements).$blockingElements;
 
 /**
- * @cssprop --vvd-side-drawer--background-color - Controls the background of the side drawer
- * @cssprop --vvd-side-drawer--min-inline-size - Controls the size of the side drawer
- * @cssprop --vvd-side-drawer--padding - Controls the padding of the side drawer
- * @cssprop --vvd-side-drawer--z-index - Controls the z-index of the side drawer
+ * @cssprop [--vvd-side-drawer--background-color = vvd-color-canvas] - Controls the background of the side drawer
+ * @cssprop [--vvd-side-drawer--min-inline-size = 280px] - Controls the size of the side drawer
+ * @cssprop [--vvd-side-drawer--padding = 16px] - Controls the padding of the side drawer
+ * @cssprop [--vvd-side-drawer--z-index = 6] - Controls the z-index of the side drawer
  * */
 export class VWCSideDrawerBase extends LitElement {
 	/**
