@@ -6,7 +6,6 @@ Represents a side drawer custom element.
 
 | Property    | Attribute   | Type                   | Default |
 |-------------|-------------|------------------------|---------|
-| `absolute`  | `absolute`  | `boolean`              | false   |
 | `alternate` | `alternate` | `boolean`              | false   |
 | `hasTopBar` | `hasTopBar` | `boolean \| undefined` |         |
 | `open`      | `open`      | `boolean`              | false   |

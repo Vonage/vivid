@@ -1,7 +1,7 @@
 module.exports = {
-	pageContentMock: function (width = 782, height = 754) {
+	pageContentMock: function (width = '782', height = '754', preserveAspectRatio = 'xMidYMin') {
 		return `
-		<svg width='${width}' height='${height}' viewBox='0 0 ${width} ${height}' preserveAspectRatio='xMidYMin' fill='none' xmlns='http://www.w3.org/2000/svg'>
+		<svg width=${width} height=${height} viewBox='0 0 782 754' preserveAspectRatio='${preserveAspectRatio}' fill='none' xmlns='http://www.w3.org/2000/svg'>
 \t<style>
 \t\t.scheme_1 {
 \t\t\tfill: var(--vvd-color-neutral-10, #eee);

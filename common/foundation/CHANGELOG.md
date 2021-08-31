@@ -1,3 +1,16 @@
+## [2.18.1](https://github.com/vonage/vivid/compare/v2.18.0...v2.18.1) (2021-08-25)
+
+
+
+# [2.18.0](https://github.com/vonage/vivid/compare/v2.17.0...v2.18.0) (2021-08-24)
+
+
+### Features
+
+* **vwc-side-drawer:** add modal support ([#1002](https://github.com/vonage/vivid/issues/1002)) ([02e2782](https://github.com/vonage/vivid/commit/02e278210a9d5f9a612dd8b7f9ae5f462a0fd477))
+
+
+
 # [2.17.0](https://github.com/vonage/vivid/compare/v2.16.1...v2.17.0) (2021-08-09)
 
 
