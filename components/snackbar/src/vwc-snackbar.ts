@@ -9,6 +9,7 @@ import {
 	property,
 	TemplateResult,
 } from 'lit-element';
+import { ClassInfo, classMap } from 'lit-html/directives/class-map';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import { SnackbarBase as MWCSnackbarBase } from '@material/mwc-snackbar/mwc-snackbar-base';
 import { style as vwcSnackbarStyle } from './vwc-snackbar.css';
@@ -114,8 +115,18 @@ export class VWCSnackbar extends MWCSnackbarBase {
 		this.mdcFoundation.handleActionIconClick(event);
 	}
 
+	protected getRenderClasses(): ClassInfo {
+		return {
+			'vwc-badge--connotation-success': this.connotation == 'success',
+			'vwc-badge--connotation-alert': this.connotation == 'alert',
+			'vwc-badge--connotation-warning': this.connotation == 'warning',
+			'vwc-badge--connotation-info': this.connotation == 'info',
+			'vwc-badge--connotation-announcement': this.connotation == 'announcement',
+		};
+	}
+
 	private renderUiDefault(): TemplateResult {
-		return html`<div class="vvd-snackbar" part="vvd-scheme-alternate">
+		return html`<div class="vvd-snackbar ${classMap(this.getRenderClasses())}" part="vvd-scheme-alternate">
 				<vwc-note
 					class="vwc-note"
 					icon="${ifDefined(this.icon)}"
@@ -131,7 +142,7 @@ export class VWCSnackbar extends MWCSnackbarBase {
 	}
 
 	private renderUiLegacy(): TemplateResult {
-		return html`<div class="vvd-snackbar">
+		return html`<div class="vvd-snackbar ${classMap(this.getRenderClasses())}">
 				<vwc-note
 					class="vwc-note"
 					icon="${ifDefined(this.icon)}"
