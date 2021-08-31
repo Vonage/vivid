@@ -3,6 +3,7 @@ import '@vonage/vwc-icon';
 import {
 	customElement, property, LitElement, CSSResult
 } from 'lit-element';
+import { ClassInfo, classMap } from 'lit-html/directives/class-map';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import { style as vwcNoteStyle } from './vwc-note.css';
 import { Connotation } from '@vonage/vvd-foundation/constants';
@@ -43,11 +44,23 @@ export class VWCNote extends LitElement {
 	@property({ type: String, reflect: true })
 	header?: string;
 
+	protected getRenderClasses(): ClassInfo {
+		return {
+			'vwc-note--connotation-success': this.connotation == 'success',
+			'vwc-note--connotation-alert': this.connotation == 'alert',
+			'vwc-note--connotation-warning': this.connotation == 'warning',
+			'vwc-note--connotation-info': this.connotation == 'info',
+			'vwc-note--connotation-announcement': this.connotation == 'announcement',
+		};
+	}
+
 	protected render(): TemplateResult {
 		return html`
-			${this.icon ? this.renderIcon() : ''}
-			<div class="note-text">
-				${this.header ? this.renderHeader() : ''} ${this.renderMessage()}
+			<div class="vwc-note ${classMap(this.getRenderClasses())}">
+				${this.icon ? this.renderIcon() : ''}
+				<div class="note-text">
+					${this.header ? this.renderHeader() : ''} ${this.renderMessage()}
+				</div>
 			</div>
 		`;
 	}
