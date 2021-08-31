@@ -5,7 +5,6 @@ import {
 } from 'lit-element';
 import { ClassInfo, classMap } from 'lit-html/directives/class-map';
 import { Connotation } from '@vonage/vvd-foundation/constants';
-import { renderPropertyToClass as renderClassFromProperty } from '@vonage/vvd-foundation/decorators';
 
 type TextConnotation = Extract<
 	Connotation,
@@ -32,7 +31,6 @@ export class VWCTextBase extends LitElement {
 		return this.connotation ? { [`vwc-text--connotation-${this.connotation}`]: true }	: {};
 	}
 
-	@renderClassFromProperty('this.connotation')
 	protected getRenderClasses(): ClassInfo {
 		return {
 			...this.getRenderClassesFontFace(),
