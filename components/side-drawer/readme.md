@@ -18,3 +18,13 @@ Represents a side drawer custom element.
 |------------------------|-----------------------------|----------------------------------------------|
 | `hide`                 | `(): void`                  | Closes the side drawer from the open state.  |
 | `show`                 | `(): void`                  | Opens the side drawer from the closed state. |
+
+
+## CSS Custom Properties
+
+| Property                              | Description                                |
+|---------------------------------------|--------------------------------------------|
+| `--vvd-side-drawer--background-color` | Controls the background of the side drawer |
+| `--vvd-side-drawer--min-inline-size`  | Controls the size of the side drawer       |
+| `--vvd-side-drawer--padding`          | Controls the padding of the side drawer    |
+| `--vvd-side-drawer--z-index`          | Controls the z-index of the side drawer    |
