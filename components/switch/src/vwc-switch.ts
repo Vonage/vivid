@@ -2,6 +2,7 @@ import '@vonage/vvd-core';
 import {
 	customElement, property, html, TemplateResult
 } from 'lit-element';
+import { ClassInfo, classMap } from 'lit-html/directives/class-map';
 import { Switch as MWCSwitch } from '@material/mwc-switch';
 import { style as vwcSwitchStyle } from './vwc-switch.css';
 import { style as mwcSwitchStyle } from '@material/mwc-switch/mwc-switch-css.js';
@@ -34,6 +35,17 @@ export class VWCSwitch extends MWCSwitch {
 
 	@property({ type: Boolean, reflect: true })
 	enlarged = false;
+
+	protected getRenderClassesConnotation(): ClassInfo {
+		return this.connotation ? { [`vwc-switch--connotation-${this.connotation}`]: true }	: {};
+	}
+
+	// protected override getRenderClasses(): ClassInfo {
+	// 	return {
+	// 		...super.getRenderClasses(),
+	// 		...this.getRenderClassesConnotation(),
+	// 	};
+	// }
 
 	async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
