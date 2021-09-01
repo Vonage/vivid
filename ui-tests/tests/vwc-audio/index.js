@@ -2,12 +2,13 @@ import vvdCore from '@vonage/vvd-core';
 import '@vonage/vwc-audio';
 
 export async function createElementVariations(wrapper) {
-	const audioElementWrapper = document.createElement('div');
-	audioElementWrapper.innerHTML =
+	const testWrapper = document.createElement('div');
+	testWrapper.classList.add('grid');
+	testWrapper.innerHTML =
 		`
 <vwc-audio></vwc-audio>
 <vwc-audio noseek="true"></vwc-audio>`;
-	wrapper.appendChild(audioElementWrapper);
+	wrapper.appendChild(testWrapper);
 
 	await vvdCore.settled;
 }

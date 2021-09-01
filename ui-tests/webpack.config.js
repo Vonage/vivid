@@ -87,7 +87,16 @@ const config = {
 		},
 		compress: true,
 		port: 3001,
-		writeToDisk: true
+		historyApiFallback: {
+			rewrites: [
+				{
+					from: /.*\/.html/,
+					to: function (context) {
+						return `${context.parsedUrl.pathname}.html`;
+					}
+				}
+			]
+		}
 	}
 };
 
