@@ -6,16 +6,21 @@ export default {
 
 export const ApplicationTemplate = () => html`
 <style>
-  #div{
+  #div {
     position: relative;
-  	display: flex;
+		display: flex;
   }
-    vwc-side-drawer#side-drawer {
-      flex: 0 0 auto;
-  	  height: 100%;
-    }
-    vwc-top-app-bar#top-app-bar {
-    }
+  vwc-side-drawer#side-drawer {
+    flex: 0 0 auto;
+    height: 100%;
+    display: flex;
+    position: fixed;
+    top:0;
+    z-index: 4;
+  }
+  vwc-top-app-bar#top-app-bar {
+    width:50%;
+  }
 </style>
 <div id="demo">
 
@@ -42,13 +47,13 @@ export const ApplicationTemplate = () => html`
           </vwc-list-expansion-panel>
         </vwc-list-expansion-panel>
     </vwc-list>
-
-    <vwc-top-app-bar id="top-app-bar" dense>
-      <vwc-icon-button slot="actionItems" icon="search-line" layout="filled"></vwc-icon-button>
-      <vwc-icon-button slot="actionItems" icon="info-line" layout="filled"></vwc-icon-button>
-      <vwc-icon-button slot="actionItems" icon="upload-line" layout="filled"></vwc-icon-button>
-    </vwc-top-app-bar>
   </vwc-side-drawer>
+
+  <vwc-top-app-bar id="top-app-bar" dense>
+    <vwc-icon-button slot="actionItems" icon="search-line" layout="filled"></vwc-icon-button>
+    <vwc-icon-button slot="actionItems" icon="info-line" layout="filled"></vwc-icon-button>
+    <vwc-icon-button slot="actionItems" icon="upload-line" layout="filled"></vwc-icon-button>
+  </vwc-top-app-bar>
 </div>
 `;
 
