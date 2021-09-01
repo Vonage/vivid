@@ -1,5 +1,7 @@
 import '@vonage/vvd-core';
+import '@vonage/vwc-note';
 import '@vonage/vwc-icon-button';
+
 import { Connotation, Position } from '@vonage/vvd-foundation/constants';
 import {
 	customElement,
@@ -113,12 +115,12 @@ export class VWCSnackbar extends MWCSnackbarBase {
 	}
 
 	private renderUiDefault(): TemplateResult {
-		return html`<div class="vivid-snackbar" part="vvd-scheme-alternate">
+		return html`<div class="vvd-snackbar" part="vvd-scheme-alternate">
 				<vwc-note
-					class="note"
+					class="vwc-note"
 					icon="${ifDefined(this.icon)}"
-					connotation="${ifDefined(this.connotation)}"
-				>${this.message}</vwc-note>
+				>${this.message}
+				</vwc-note>
 				<div class="actions-container">
 					<div class="action-container">
 						<slot name="action" @click="${this.handleActionClick}"></slot>
@@ -129,10 +131,10 @@ export class VWCSnackbar extends MWCSnackbarBase {
 	}
 
 	private renderUiLegacy(): TemplateResult {
-		return html`<div class="vivid-snackbar">
+		return html`<div class="vvd-snackbar">
 				<vwc-note
+					class="vwc-note"
 					icon="${ifDefined(this.icon)}"
-					connotation="${ifDefined(this.connotation)}"
 					header="${ifDefined(this.header)}"
 				>
 					<div class="snackbar-content">

@@ -1,6 +1,6 @@
 import { Page, webkit } from 'playwright';
 
-import * as handler from 'serve-handler';
+import handler from 'serve-handler';
 
 import * as http from 'http';
 
@@ -8,6 +8,10 @@ import * as fs from 'fs';
 import * as jimp from 'jimp';
 import { getFilteredTestFolders } from './utils/files-utils';
 import { pascalCase } from 'pascal-case';
+
+import Webpack from 'webpack';
+import WebpackDevServer from 'webpack-dev-server';
+import webpackConfig from './webpack.config';
 
 interface ComparisonResult {
 	image: any;
@@ -52,7 +56,8 @@ async function compareImages(img1Path, img2Path): Promise<ComparisonResult> {
 
 async function takeSnapshot(page, snapshotPath) {
 	const componentName = snapshotPath.substring(snapshotPath.lastIndexOf('/') + 1, snapshotPath.lastIndexOf('.'));
-	const elementId = `#${pascalCase(componentName).replace('Snapshot', '')}`;
+	const elementId = `#${pascalCase(componentName)
+		.replace('Snapshot', '')}`;
 	const element = await page.$(elementId);
 	let screenShotHandler = element;
 	if (await element.getAttribute('testWholePage')) {
@@ -83,11 +88,11 @@ async function runImageComparison() {
 }
 
 async function runTestOnComponent(browser, componentName) {
-	const page = await browser.newPage();
+	const pageInstance = await browser.newPage();
 	const testUrl = `${SERVER_URL}/${componentName}`;
-	await page.goto(testUrl);
+	pageInstance.goto(testUrl);
 	return new Promise((res) => {
-		page.context()
+		pageInstance.context()
 			.exposeBinding('doTest', async ({ page }) => {
 				await doTest(page);
 				res(true);
@@ -101,10 +106,16 @@ async function doTest(page) {
 		.splice(-1, 1)[0];
 	const snapshotPath = `${SNAPSHOT_PATH}/${componentName}.png`;
 	await page.waitForLoadState('networkidle');
-	if (process.argv.includes('-u') || !fs.existsSync(snapshotPath)) {
+	if (process.argv.includes('-u')) {
 		console.log('Updating snapshot...');
+		await (new Promise(res => setTimeout(res, 200)));
 		await takeSnapshot(page, snapshotPath);
 	} else {
+		if (!fs.existsSync(snapshotPath)) {
+			console.error(`Missing snapshot for ${componentName}`);
+			process.exitCode = 1;
+			return;
+		}
 		const diff = await compareToSnapshot(page, snapshotPath);
 		if (diff.percent === 0) {
 			console.log('Visual Diff Passed!');
@@ -121,12 +132,24 @@ function finalizeTest() {
 	server.close();
 }
 
+function setDevServer() {
+	const compiler = Webpack({ ...webpackConfig, mode: 'development' });
+	const devServerOptions = { ...webpackConfig.devServer, open: true };
+	const devServer = new WebpackDevServer(devServerOptions, compiler);
+
+	devServer.listen(webpackConfig.devServer.port, '127.0.0.1', () => {
+		console.log(`Starting server on http://localhost:${webpackConfig.devServer.port}`);
+	});
+}
+
 server.listen(PORT, async () => {
 	console.log('Running at ', SERVER_URL);
 
 	try {
 		if (!process.argv.includes('-s')) {
 			await runImageComparison();
+		} else {
+			setDevServer();
 		}
 	} catch (e) {
 		console.error(e);

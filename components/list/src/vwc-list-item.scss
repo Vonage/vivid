@@ -2,19 +2,27 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
-@use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation with (
-	$connotations-set: primary cta
+@use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
+	$connotations-set: primary cta,
+	$default: primary
 );
+@use '@vonage/vvd-foundation/scss/mixins/connotation';
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' with (
 	$variable-name: --vvd-list-item-shape
 );
+@use './partials/vwc-list-variables' as variables;
 
 $vvd-list-item-block-size: --vvd-list-item-block-size;
 $vvd-list-item-side-padding: --vvd-list-item-side-padding;
 $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 
-@include color-connotation.connotations-main;
-@include color-connotation.connotations-main-default(primary);
+
+@include shape-mixins.shape(
+	$shapes: (
+		rounded: 6px,
+	),
+	$default: ''
+);
 
 :host {
 	--mdc-list-side-padding: var(#{$vvd-list-item-side-padding});
@@ -22,10 +30,10 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 	--mdc-list-item-graphic-size: 20px;
 	--mdc-list-item-meta-size: 20px;
 	--mdc-theme-text-icon-on-background: var(
-		#{scheme-variables.$vvd-color-on-base}
+		#{scheme-variables.$vvd-color-on-canvas}
 	);
 	--mdc-theme-text-hint-on-background: var(
-		#{scheme-variables.$vvd-color-on-base}
+		#{scheme-variables.$vvd-color-on-canvas}
 	);
 
 	@include typography.typography-cat-shorthand('body-2');
@@ -36,22 +44,22 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 	border-radius: var(--vvd-list-item-shape);
 
 	#{$vvd-list-item-block-size}: 40px;
-	#{$vvd-list-item-side-padding}: 24px;
+	#{$vvd-list-item-side-padding}: 16px;
 	#{$vvd-list-item-graphic-margin}: 16px;
 }
 
 :host([activated]) {
 	--mdc-theme-text-icon-on-background: var(
-		#{color-connotation.$vvd-color-on-connotation}
+		#{connotation.$vvd-color-on-connotation}
 	);
 	--mdc-theme-text-hint-on-background: var(
-		#{color-connotation.$vvd-color-on-connotation}
+		#{connotation.$vvd-color-on-connotation}
 	);
-	--mdc-ripple-color: var(#{color-connotation.$vvd-color-on-connotation});
+	--mdc-ripple-color: var(#{connotation.$vvd-color-on-connotation});
 
 	@include typography.typography-cat-shorthand('body-2-bold');
 	z-index: 0;
-	color: var(#{color-connotation.$vvd-color-on-connotation});
+	color: var(#{connotation.$vvd-color-on-connotation});
 
 	mwc-ripple,
 	.fake-activated-ripple {
@@ -60,12 +68,12 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 
 	.fake-activated-ripple {
 		--mdc-ripple-activated-opacity: 1;
-		--mdc-ripple-color: var(#{color-connotation.$vvd-color-connotation});
+		--mdc-ripple-color: var(#{connotation.$vvd-color-connotation});
 	}
 
 	mwc-ripple {
 		--mdc-ripple-activated-opacity: 0;
-		background-color: var(#{color-connotation.$vvd-color-connotation});
+		background-color: var(#{connotation.$vvd-color-connotation});
 	}
 }
 
@@ -83,12 +91,8 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 		bottom: 0;
 		left: var(#{$vvd-list-item-side-padding});
 		height: 1px;
-		border-bottom: 1px solid var(#{scheme-variables.$vvd-color-neutral-30});
+		border-bottom: 1px solid var(#{variables.$vvd-list-divider--color});
 		content: '';
-	}
-
-	.mdc-deprecated-list-item__graphic {
-		margin-block-start: 10px;
 	}
 
 	.mdc-deprecated-list-item__meta {
@@ -107,10 +111,3 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 .mdc-deprecated-list-item__meta {
 	display: flex;
 }
-
-@include shape-mixins.shape(
-	$shapes: (
-		rounded: 6px,
-	),
-	$default: ''
-);

@@ -4,32 +4,18 @@
 
 ```html
 <button
-  aria-label=""
+  aria-pressed="false"
   class="mdc-icon-button"
 >
-  <vwc-icon type="">
-  </vwc-icon>
-  <span>
-    <slot>
+  <span class="mdc-icon-button__icon">
+    <slot name="offIcon">
+    </slot>
+  </span>
+  <span class="mdc-icon-button__icon mdc-icon-button__icon--on">
+    <slot name="onIcon">
     </slot>
   </span>
 </button>
 
-```
-
-#### `should internal contents`
-
-```html
-<button
-  aria-label=""
-  class="mdc-icon-button"
->
-  <vwc-icon type="">
-  </vwc-icon>
-  <span>
-    <slot>
-    </slot>
-  </span>
-</button>
 ```
 

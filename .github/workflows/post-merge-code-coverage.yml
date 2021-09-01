@@ -43,7 +43,7 @@ jobs:
           yarn_always_auth: true,
           yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
           yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
-        run: yarn install
+        run: yarn install --network-timeout 100000
 
       - name: Build components
         run: yarn compile

@@ -21,7 +21,7 @@ $formfield-label-error-ink: --vvd-formfield-label-error-ink;
 	#{$formfield-label-idle-ink}: var(#{scheme-variables.$vvd-color-neutral-70});
 
 	#{$formfield-border-idle}: var(#{scheme-variables.$vvd-color-neutral-50});
-	#{$formfield-border-hover}: var(#{scheme-variables.$vvd-color-on-base});
+	#{$formfield-border-hover}: var(#{scheme-variables.$vvd-color-on-canvas});
 	#{$formfield-border-disabled}: var(#{scheme-variables.$vvd-color-neutral-50});
 
 	#{$formfield-error-fill}: var(#{scheme-variables.$vvd-color-alert-20});

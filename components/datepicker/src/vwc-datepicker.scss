@@ -24,10 +24,10 @@ vwc-menu {
 	overflow: hidden;
 	width: 320px;
 	border: 1px solid var(#{scheme-variables.$vvd-color-neutral-20});
-	background: var(#{scheme-variables.$vvd-color-base});
+	background: var(#{scheme-variables.$vvd-color-canvas});
 	border-radius: 6px;
 	box-shadow: none;
-	color: var(#{scheme-variables.$vvd-color-on-base});
+	color: var(#{scheme-variables.$vvd-color-on-canvas});
 
 	&::before,
 	&::after {
@@ -67,7 +67,7 @@ vwc-menu {
 
 		&-weekday {
 			background: none;
-			color: var(#{scheme-variables.$vvd-color-on-base});
+			color: var(#{scheme-variables.$vvd-color-on-canvas});
 			font-size: 12px;
 			font-weight: 600;
 		}
@@ -76,7 +76,7 @@ vwc-menu {
 			height: 30px;
 			border: 0;
 			margin-top: 4px;
-			color: var(#{scheme-variables.$vvd-color-on-base});
+			color: var(#{scheme-variables.$vvd-color-on-canvas});
 			line-height: 30px;
 
 			&::before {
@@ -281,7 +281,7 @@ vwc-menu {
 			}
 
 			&.week {
-				color: var(#{scheme-variables.$vvd-color-on-base});
+				color: var(#{scheme-variables.$vvd-color-on-canvas});
 				font-weight: normal;
 
 				&:hover {
@@ -457,7 +457,7 @@ vwc-menu {
 	left: 0;
 	display: none;
 	padding: 40px 16px 0;
-	background-color: var(#{scheme-variables.$vvd-color-base});
+	background-color: var(#{scheme-variables.$vvd-color-canvas});
 
 	.vvd-month {
 		position: relative;

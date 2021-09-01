@@ -7,7 +7,7 @@
 
 	display: inline-flex;
 	align-items: center;
-	color: var(#{scheme-variables.$vvd-color-on-base});
+	color: var(#{scheme-variables.$vvd-color-on-canvas});
 }
 
 .sorters {
@@ -25,6 +25,6 @@
 :host([direction='asc']),
 :host([direction='desc']) {
 	.asc {
-		color: var(#{scheme-variables.$vvd-color-on-base});
+		color: var(#{scheme-variables.$vvd-color-on-canvas});
 	}
 }

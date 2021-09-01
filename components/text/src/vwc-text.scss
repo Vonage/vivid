@@ -1,13 +1,23 @@
+$vwc-text--color: --vwc-text--color;
+
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-design-tokens/build/scss/typography-variables/web' as typography-scale;
+@use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
+	$connotations-set: primary cta announcement info success alert,
+	$default: primary
+);
+@use '@vonage/vvd-foundation/scss/mixins/connotation';
 
 
 :host {
+	--vwc-text--color: var(#{connotation.$vvd-color-connotation});
 	@include typography.typography-cat-shorthand('body-1');
 	display: contents;
+	color: var(#{$vwc-text--color});
 }
 
 ::slotted(*) {
+	color: inherit;
 	font: inherit;
 }
 

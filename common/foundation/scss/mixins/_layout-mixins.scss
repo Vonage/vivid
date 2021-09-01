@@ -1,12 +1,12 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
-@use './color-connotation' as color-connotation;
+@use './connotation' as connotation;
 @use '../functions' as functions;
 
 // override to apply relevance
 $layouts: filled outlined soft text ghost !default;
 
-$variables-scope-prefix: false !default;
-$_prefix: if($variables-scope-prefix, '--#{$variables-scope-prefix}-', '--');
+$variable-prefix: --layout !default;
+
 ////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
 $all-layouts: (
@@ -18,31 +18,37 @@ $all-layouts: (
 );
 
 %filled {
-	#{$_prefix}background-color: var(#{color-connotation.$vvd-color-connotation});
-	#{$_prefix}color: var(#{color-connotation.$vvd-color-on-connotation});
+	#{$variable-prefix}--fill: var(#{connotation.$vvd-color-connotation});
+	#{$variable-prefix}--text: var(#{connotation.$vvd-color-on-connotation});
 }
 
 %outlined {
-	#{$_prefix}background-color: transparent;
-	#{$_prefix}border: 1px solid var(#{color-connotation.$vvd-color-connotation});
-	#{$_prefix}color: var(#{color-connotation.$vvd-color-connotation});
+	#{$variable-prefix}--fill: transparent;
+	#{$variable-prefix}--outline: 1px solid var(#{connotation.$vvd-color-connotation});
+	#{$variable-prefix}--text: var(#{connotation.$vvd-color-connotation});
 }
 
 %soft {
-	#{$_prefix}background-color: var(#{color-connotation.$vvd-color-connotation}-soft);
-	#{$_prefix}color: var(#{scheme-variables.$vvd-color-on-base});
+	#{$variable-prefix}--fill: var(#{connotation.$vvd-color-connotation}-soft);
+	#{$variable-prefix}--text: var(#{scheme-variables.$vvd-color-on-canvas});
 }
 
 %text,
 %ghost {
-	#{$_prefix}background-color: transparent;
-	#{$_prefix}color: var(#{scheme-variables.$vvd-color-on-base});
+	#{$variable-prefix}--fill: transparent;
+	#{$variable-prefix}--text: var(#{connotation.$vvd-color-connotation});
 }
 
 @mixin layout() {
 	@each $layout in functions.pick-list($layouts, $all-layouts) {
-		#{':host([layout="#{$layout}"])'} {
+		#{':host([layout="#{$layout}"i])'} {
 			@extend %#{$layout};
 		}
+	}
+}
+
+@mixin layout-default($name) {
+	:host(:not([layout])) {
+		@extend %#{$name};
 	}
 }

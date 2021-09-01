@@ -36,30 +36,3 @@ export const Basic = args => html`
 		${renderList(args)}
 	</div>
 `;
-
-export const metaIcon = args => html`
-	<style>
-		vwc-list {
-			width: 240px;
-		}
-	</style>
-
-	<vwc-list ...=${spread(args)}>
-		<vwc-list-item hasMeta>
-			<span>Item A</span>
-			<vwc-icon slot="meta" type="info" size="small"></vwc-icon>
-		</vwc-list-item>
-		<vwc-list-item hasMeta>
-			<span>Item B</span>
-			<vwc-icon slot="meta" type="info" size="small"></vwc-icon>
-		</vwc-list-item>
-		<vwc-list-item hasMeta>
-			<span>Item C</span>
-			<vwc-icon slot="meta" type="info" size="small"></vwc-icon>
-		</vwc-list-item>
-		<vwc-list-item hasMeta>
-			<span>Item D</span>
-			<vwc-icon slot="meta" type="info" size="small"></vwc-icon>
-		</vwc-list-item>
-	</vwc-list>
-`;
