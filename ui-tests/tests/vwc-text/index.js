@@ -1,6 +1,5 @@
 import '@vonage/vwc-text';
 
-
 export async function createElementVariations(wrapper) {
 	const textElementWrapper = document.createElement('div');
 	textElementWrapper.innerHTML = `
