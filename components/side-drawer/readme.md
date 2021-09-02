@@ -21,9 +21,9 @@ Represents a side drawer custom element.
 
 ## CSS Custom Properties
 
-| Property                               | Default             | Description                                |
-|----------------------------------------|---------------------|--------------------------------------------|
-| `--vvd-side-drawer--background-color ` | " vvd-color-canvas" | Controls the background of the side drawer |
-| `--vvd-side-drawer--min-inline-size `  | " 280px"            | Controls the size of the side drawer       |
-| `--vvd-side-drawer--padding `          | " 16px"             | Controls the padding of the side drawer    |
-| `--vvd-side-drawer--z-index `          | 6                   | Controls the z-index of the side drawer    |
+| Property                              | Default                                         | Description                                |
+|---------------------------------------|-------------------------------------------------|--------------------------------------------|
+| `--vvd-side-drawer--background-color` | "The current theme's canvas (background) color" | Controls the background of the side drawer |
+| `--vvd-side-drawer--min-inline-size`  | "280px"                                         | Controls the size of the side drawer       |
+| `--vvd-side-drawer--padding`          | "16px"                                          | Controls the padding of the side drawer    |
+| `--vvd-side-drawer--z-index`          | 6                                               | Controls the z-index of the side drawer    |
