@@ -73,10 +73,11 @@ export class VWCBanner extends LitElement {
 	protected firstUpdated() {
 		(this.shadowRoot?.querySelector('.container') as HTMLElement).style.setProperty('--transition-delay', `${ANIMATION_DURATION}ms`);
 	}
-
 	connectedCallback() {
 		super.connectedCallback();
-		const handler = (ev:KeyboardEvent) => { if (ev.key === KEY_ESCAPE) this.open = false; };
+		const handler = (ev: KeyboardEvent) => {
+			if (ev.key === KEY_ESCAPE) this.open = false;
+		};
 		escapeHandlers.set(this, handler);
 		window?.addEventListener('keydown', handler);
 	}
@@ -84,7 +85,6 @@ export class VWCBanner extends LitElement {
 		window?.removeEventListener('keydown', escapeHandlers.get(this) as ()=>any);
 		super.disconnectedCallback();
 	}
-
 	updated(changedProperties:PropertyValues) {
 		if (changedProperties.has('open')) {
 			clearTimeout(this.#transitionTimer);
@@ -94,7 +94,6 @@ export class VWCBanner extends LitElement {
 			}, ANIMATION_DURATION);
 		}
 	}
-
 	renderDismissButton() {
 		return this.dismissible
 			? html`<vwc-icon-button
@@ -104,7 +103,6 @@ export class VWCBanner extends LitElement {
 								dense></vwc-icon-button>`
 			: nothing;
 	}
-
 	render() {
 		return html`
 			<div class="container">
