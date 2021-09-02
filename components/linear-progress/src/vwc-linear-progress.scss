@@ -1,14 +1,15 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
-@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation with(
+@use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
 	$connotations-set: primary cta success alert,
 	$default: primary,
 	$decoratives: (pacific)
 );
+@use '@vonage/vvd-foundation/scss/mixins/connotation';
+
 
 $block-size: 6px;
 $shape-variable: --vvd-linear-progress-shape;
 
-@include connotation.connotation;
 
 :host {
 	--mdc-theme-primary: var(#{connotation.$vvd-color-connotation});
