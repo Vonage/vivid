@@ -9,6 +9,7 @@ import { nothing } from 'lit-html';
 import { Connotation } from '@vonage/vvd-foundation/constants';
 
 const ANIMATION_DURATION = 100;
+const KEY_ESCAPE = 'Escape';
 
 type BannerConnotation =
 	Connotation.Info |
@@ -42,6 +43,8 @@ const createCustomEvent = function (eventName:string, props = {}):CustomEvent {
 	});
 };
 
+const escapeHandlers:WeakMap<VWCBanner, (this:Window, ev:KeyboardEvent)=> any> = new WeakMap();
+
 @customElement('vwc-banner')
 export class VWCBanner extends LitElement {
 	static styles = [BannerStyle];
@@ -69,6 +72,17 @@ export class VWCBanner extends LitElement {
 
 	protected firstUpdated() {
 		(this.shadowRoot?.querySelector('.container') as HTMLElement).style.setProperty('--transition-delay', `${ANIMATION_DURATION}ms`);
+	}
+
+	connectedCallback() {
+		super.connectedCallback();
+		const handler = ((ev:KeyboardEvent) => ((ev.key === KEY_ESCAPE) && (this.open = false)));
+		escapeHandlers.set(this, handler);
+		window.addEventListener('keydown', handler);
+	}
+	disconnectedCallback() {
+		window.removeEventListener('keydown', escapeHandlers.get(this) as ()=>any);
+		super.disconnectedCallback();
 	}
 
 	updated(changedProperties:PropertyValues) {
