@@ -66,15 +66,6 @@ export class VWCButton extends MWCButton {
 
 	#_hiddenButton: HTMLButtonElement = VWCButton.createHiddenButton();
 
-	createRenderRoot(): ShadowRoot {
-		if (HTMLFormElement.prototype.requestSubmit) {
-			return super.createRenderRoot();
-		}
-		// don't set delegatesFocus: true due to https://bugs.webkit.org/show_bug.cgi?id=215732
-		/* eslint-disable wc/attach-shadow-constructor */
-		return this.attachShadow({ mode: 'open' });
-	}
-
 	protected updateFormAndButton(): void {
 		const formId = this.getAttribute('form');
 		if (formId !== null) {
