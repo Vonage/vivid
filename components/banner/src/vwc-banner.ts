@@ -78,10 +78,10 @@ export class VWCBanner extends LitElement {
 		super.connectedCallback();
 		const handler = ((ev:KeyboardEvent) => ((ev.key === KEY_ESCAPE) && (this.open = false)));
 		escapeHandlers.set(this, handler);
-		window.addEventListener('keydown', handler);
+		window?.addEventListener('keydown', handler);
 	}
 	disconnectedCallback() {
-		window.removeEventListener('keydown', escapeHandlers.get(this) as ()=>any);
+		window?.removeEventListener('keydown', escapeHandlers.get(this) as ()=>any);
 		super.disconnectedCallback();
 	}
 
