@@ -44,16 +44,16 @@ $all-layouts: (
 }
 
 @mixin layout {
-	$set: functions.pick-list(config.$layout-set, config.$predefined-layout-set);
+	$layout-set: functions.pick-list(config.$layout-set, config.$predefined-layout-set);
 
-	@each $type in $set {
+	@each $type in $layout-set {
 		$pseudo: get-pseudo($type);
 
 		$selector: selector.unify(&, $pseudo);
 
-		@if $type == config.$default and list.length($set) > 1 {
+		@if $type == config.$default and list.length($layout-set) > 1 {
 			$rule-out-pseudo: &;
-			@each $rule-out-type in $set {
+			@each $rule-out-type in $layout-set {
 				@if $rule-out-type != config.$default {
 					$rule-out-pseudo: '#{$rule-out-pseudo}:not(#{get-pseudo($rule-out-type)})';
 				}
