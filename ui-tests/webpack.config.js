@@ -1,15 +1,17 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { buildTests } = require('./utils/preBundle');
+const { buildTests, buildMainPage } = require('./utils/preBundle');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { getTestFolders } = require('./utils/files-utils');
 const componentsExcludeList = require('./excludedTests');
 
 const listOfComponents = getTestFolders().filter(component => !componentsExcludeList.includes(component));
 const entry = listOfComponents.reduce((entries, componentName) => {
-	entries[componentName] = `./ui-tests/tmp/${componentName}/index.js`;
+	entries[componentName] = path.join(__dirname, `tmp/${componentName}/index.js`);
 	return entries;
 }, {});
+
+entry.mainPage = (path.join(__dirname, 'assets/main.js'));
 
 const htmlGenerators = listOfComponents.reduce((entries, componentName) => {
 	entries.push(new HtmlWebpackPlugin({
@@ -20,7 +22,13 @@ const htmlGenerators = listOfComponents.reduce((entries, componentName) => {
 	return entries;
 }, []);
 
-module.exports = {
+htmlGenerators.push(new HtmlWebpackPlugin({
+	inject: false,
+	chunks: ['mainPage'],
+	filename: 'index.html',
+	template: path.join(__dirname, 'tmp/index.html.tmpl')
+}));
+const config = {
 	entry,
 	output: {
 		filename: '[name].bundle.js', // the file name would be my entry's name with a ".bundle.js" suffix
@@ -32,10 +40,11 @@ module.exports = {
 		{
 			apply: async (compiler) => {
 				compiler.hooks.beforeRun.tapPromise('MyPlugin_compile', async () => {
+					await buildMainPage();
 					return buildTests();
 				});
 			},
-		},
+		}
 	],
 	module: {
 		rules: [
@@ -68,5 +77,18 @@ module.exports = {
 				]
 			}
 		]
+	},
+	devServer: {
+		client: {
+			progress: true,
+		},
+		static: {
+			publicPath: path.join(__dirname, 'dist')
+		},
+		compress: true,
+		port: 3001,
+		writeToDisk: true
 	}
 };
+
+module.exports = config;

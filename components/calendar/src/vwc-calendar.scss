@@ -84,6 +84,7 @@ ol {
 .calendar-grid-presentation {
 	display: grid;
 	overflow: hidden;
+	background-color: var(#{scheme-variables.$vvd-color-canvas});
 	border-radius: var(#{calendar-variables.$calendar-shape});
 	box-shadow: 0 0 3.64752px rgba(0, 0, 0, 0.15);
 	counter-reset: listing;

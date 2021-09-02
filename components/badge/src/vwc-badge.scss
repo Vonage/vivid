@@ -4,9 +4,12 @@ $namespace-shape: #{$namespace}-shape;
 
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-typography/scss/typography' as typography;
-@use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation with (
-	$connotations-set: primary cta success alert warning info
+@use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
+	$connotations-set: primary cta success alert warning info,
+	$shades: (soft, contrast),
+	$default: primary
 );
+@use '@vonage/vvd-foundation/scss/mixins/connotation';
 
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
 	$variable-name: #{$namespace-shape}
@@ -18,11 +21,6 @@ $namespace-shape: #{$namespace}-shape;
 
 $vvd-badge--block-size: --#{$namespace}--block-size;
 
-@include color-connotation.connotations-main-default(primary);
-@include color-connotation.connotations-main;
-
-@include color-connotation.connotations-shades-default(primary);
-@include color-connotation.connotations-shades;
 
 @include shape-mixins.shape(
 	$shapes: (

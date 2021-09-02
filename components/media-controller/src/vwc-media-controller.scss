@@ -1,10 +1,10 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
-@use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation with (
-	$connotations-set: cta primary
+@use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
+	$connotations-set: primary cta,
+	$default: cta
 );
+@use '@vonage/vvd-foundation/scss/mixins/connotation';
 
-@include color-connotation.connotations-main;
-@include color-connotation.connotations-main-default(cta);
 
 :host([noseek]) {
 	.main {
@@ -38,7 +38,7 @@
 
 
 			> .icon {
-				color: var(--vvd-color-connotation);
+				color: var(#{connotation.$vvd-color-connotation});
 			}
 
 		}

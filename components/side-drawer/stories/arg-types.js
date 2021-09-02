@@ -19,7 +19,4 @@ export const argTypes = {
 	hasTopBar: {
 		control: booleanControl
 	},
-	absolute: {
-		control: booleanControl
-	}
 };

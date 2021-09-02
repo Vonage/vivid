@@ -6,9 +6,11 @@
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
 	$variable-name: #{icon-button-variables.$icon-button-shape}
 );
-@use '@vonage/vvd-foundation/scss/mixins/color-connotation' with (
-	$connotations-set: primary cta success alert info announcement
+@use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
+	$connotations-set: primary cta success alert info announcement,
+	$default: primary
 );
+@use '@vonage/vvd-foundation/scss/mixins/connotation';
 @use '@vonage/vvd-foundation/scss/mixins/layout-mixins' with (
 	$layouts: filled outlined ghost,
 	$variable-prefix: icon-button-variables.$vvd-icon-button-layout
@@ -24,8 +26,6 @@
 @include layout-mixins.layout();
 @include layout-mixins.layout-default(ghost);
 
-@include color-connotation.connotations-main;
-@include color-connotation.connotations-main-default(primary);
 
 $block-sizes: (
 	'dense': 32px,

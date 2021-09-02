@@ -1,13 +1,14 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-foundation/scss/variable-names/font-variable-names' as font-var-names;
-@use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation with (
-	$connotations-set: success info alert announcement warning
-);
 @use '@vonage/vvd-typography/scss/typography';
 @use './vwc-banner-variables.scss' as banner-variables;
 
-@include color-connotation.connotations-main;
-@include color-connotation.connotations-main-default(info);
+@use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
+	$connotations-set: success info alert announcement warning,
+	$default: info
+);
+@use '@vonage/vvd-foundation/scss/mixins/connotation';
+
 
 :host {
 	/* stylelint-disable */
@@ -23,8 +24,8 @@
 			min-height: 60px;
 			align-items: center;
 			justify-content: flex-start;
-			background-color: var(#{color-connotation.$vvd-color-connotation});
-			color: var(#{color-connotation.$vvd-color-on-connotation});
+			background-color: var(#{connotation.$vvd-color-connotation});
+			color: var(#{connotation.$vvd-color-on-connotation});
 
 			> .user-content {
 				display: flex;
