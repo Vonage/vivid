@@ -1,12 +1,13 @@
 import '@vonage/vvd-core';
+import '@vonage/vwc-icon';
 import { customElement, property } from 'lit-element';
+import { classMap } from 'lit-html/directives/class-map';
 import { Button as MWCButton } from '@material/mwc-button';
 import { style as vwcButtonStyle } from './vwc-button.css';
 import { styles as mwcButtonStyles } from '@material/mwc-button/styles.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 import { Connotation, Shape } from '@vonage/vvd-foundation/constants';
 import { html, TemplateResult } from 'lit-element';
-import '@vonage/vwc-icon';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
 declare global {
@@ -133,6 +134,18 @@ export class VWCButton extends MWCButton {
 
 	protected renderIcon(): TemplateResult {
 		return html`<vwc-icon	type="${this.icon}"></vwc-icon>`;
+	}
+
+	protected getRenderClasses() {
+		return classMap({
+			'mdc-button--raised': this.raised,
+			'mdc-button--unelevated': this.unelevated,
+			'mdc-button--outlined': this.outlined,
+			'mdc-button--dense': this.dense,
+			'vwc-button--layout-filled': this.layout == 'filled',
+			'vwc-button--layout-outlined': this.layout == 'outlined',
+			'vwc-button--layout-ghost': this.layout == 'ghost',
+		});
 	}
 
 	static createHiddenButton(): HTMLButtonElement {
