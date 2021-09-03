@@ -4,7 +4,7 @@ import { customElement, property } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
 import { Button as MWCButton } from '@material/mwc-button';
 import { style as vwcButtonStyle } from './vwc-button.css';
-import { style as mwcButtonStyle } from '@material/mwc-button/styles-css.js';
+import { styles as mwcButtonStyles } from '@material/mwc-button/styles.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 import { Connotation, Shape } from '@vonage/vvd-foundation/constants';
 import { html, TemplateResult } from 'lit-element';
@@ -18,7 +18,7 @@ declare global {
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-MWCButton.styles = [styleCoupling, mwcButtonStyle, vwcButtonStyle];
+MWCButton.styles = [styleCoupling, mwcButtonStyles, vwcButtonStyle];
 
 const layouts = ['text', 'outlined', 'filled'];
 export type ButtonLayout = typeof layouts;
@@ -66,15 +66,6 @@ export class VWCButton extends MWCButton {
 	formId: string | null = null;
 
 	#_hiddenButton: HTMLButtonElement = VWCButton.createHiddenButton();
-
-	createRenderRoot(): ShadowRoot {
-		if (HTMLFormElement.prototype.requestSubmit) {
-			return super.createRenderRoot();
-		}
-		// don't set delegatesFocus: true due to https://bugs.webkit.org/show_bug.cgi?id=215732
-		/* eslint-disable wc/attach-shadow-constructor */
-		return this.attachShadow({ mode: 'open' });
-	}
 
 	protected updateFormAndButton(): void {
 		const formId = this.getAttribute('form');

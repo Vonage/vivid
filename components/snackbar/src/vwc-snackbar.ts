@@ -13,7 +13,7 @@ import { ClassInfo, classMap } from 'lit-html/directives/class-map';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import { SnackbarBase as MWCSnackbarBase } from '@material/mwc-snackbar/mwc-snackbar-base';
 import { style as vwcSnackbarStyle } from './vwc-snackbar.css';
-import { style as mwcSnackbarStyle } from '@material/mwc-snackbar/mwc-snackbar-css';
+import { styles as mwcSnackbarStyles } from '@material/mwc-snackbar/mwc-snackbar.css.js';
 
 export const COMPONENT_NAME = 'vwc-snackbar';
 export const OPENING_EVENT = 'opening';
@@ -29,7 +29,7 @@ declare global {
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-MWCSnackbarBase.styles = [mwcSnackbarStyle, vwcSnackbarStyle];
+MWCSnackbarBase.styles = [mwcSnackbarStyles, vwcSnackbarStyle];
 
 type SnackbarConnotation = Extract<
 	Connotation,
