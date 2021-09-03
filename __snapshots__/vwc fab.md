@@ -24,7 +24,11 @@
 >
   <span class="material-icons mdc-fab__icon">
     <slot name="icon">
-      info
+      <vwc-icon
+        size="medium"
+        type="info"
+      >
+      </vwc-icon>
     </slot>
   </span>
 </button>
@@ -40,7 +44,11 @@
 >
   <span class="material-icons mdc-fab__icon">
     <slot name="icon">
-      info
+      <vwc-icon
+        size="small"
+        type="info"
+      >
+      </vwc-icon>
     </slot>
   </span>
   <div class="mdc-fab__touch">
