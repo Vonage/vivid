@@ -43,11 +43,11 @@ export class VWCSwitch extends MWCSwitch {
 
 	protected override render() {
 		return html`
-      <div class="mdc-switch">
+      <div class="mdc-switch ${classMap(this.getRenderClassesConnotation())}">
         <div class="mdc-switch__track"></div>
         <div class="mdc-switch__thumb-underlay">
           ${this.renderRipple()}
-          <div class="mdc-switch__thumb ${classMap(this.getRenderClassesConnotation())}">
+          <div class="mdc-switch__thumb">
             <input
               type="checkbox"
               id="basic-switch"
