@@ -7,7 +7,6 @@
   <span class="mdc-text-field__ripple">
   </span>
   <textarea
-    aria-labelledby="label"
     class="mdc-text-field__input"
     cols="20"
     placeholder=""
