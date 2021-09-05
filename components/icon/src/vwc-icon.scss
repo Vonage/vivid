@@ -21,7 +21,11 @@
 	vertical-align: middle;
 }
 
-:host {
+figure {
+	margin: unset;
+}
+
+.icon {
 	display: inline-block;
 	width: var(--icon-size, var(#{icon-variables.$icon-size-variable-name}))/* --icon-size for backwards compatability */;
 	height: var(--icon-size, var(#{icon-variables.$icon-size-variable-name}))/* --icon-size for backwards compatability */;
@@ -30,15 +34,10 @@
 	line-height: 1;
 	vertical-align: middle;
 
-	figure {
-
-		display: contents;
-
-		> svg {
-			block-size: 100%;
-			fill: currentColor;
-			inline-size: 100%;
-			vertical-align: super;
-		}
+	> svg {
+		block-size: 100%;
+		fill: currentColor;
+		inline-size: 100%;
+		vertical-align: super;
 	}
 }

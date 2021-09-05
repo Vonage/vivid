@@ -1,13 +1,10 @@
 import { IconSize, Connotation } from '@vonage/vvd-foundation/constants';
 import '@vonage/vvd-core';
 import {
-	LitElement,
-	html,
-	property,
-	customElement,
-	CSSResult,
-	TemplateResult,
+	LitElement,	html,	property,	customElement,	CSSResult,	TemplateResult,
 } from 'lit-element';
+import { ClassInfo, classMap } from 'lit-html/directives/class-map';
+
 import { unsafeSVG } from 'lit-html/directives/unsafe-svg';
 import { until } from 'lit-html/directives/until.js';
 import { ifDefined } from 'lit-html/directives/if-defined';
@@ -85,8 +82,18 @@ export class VWCIcon extends LitElement {
 	})
 	ariaLabel?:string;
 
+	protected getRenderClassesConnotation(): ClassInfo {
+		return this.connotation ? { [`icon--connotation-${this.connotation}`]: true }	: {};
+	}
+
+	protected getRenderClasses(): ClassInfo {
+		return {
+			...this.getRenderClassesConnotation(),
+		};
+	}
+
 	render(): TemplateResult {
-		return html`<figure aria-label="${ifDefined(this.ariaLabel)}">${until(
+		return html`<figure class="icon ${classMap(this.getRenderClasses())}" aria-label="${ifDefined(this.ariaLabel)}">${until(
 			resolveIcon(this.type)
 				.then(setSvgAttribute('aria-hidden', 'true'))
 				.then(unsafeSVG),
