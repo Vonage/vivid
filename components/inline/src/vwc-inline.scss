@@ -60,7 +60,6 @@ $items-spacings: (
 :host([gridTemplate="rows"i]) {
 	grid-template-columns: none;
 	grid-template-rows: repeat(
-		var(#{$inline-template}),
 		minmax(
 			var(
 				#{$items-min-inline-size-v-name},
