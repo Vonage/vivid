@@ -14,7 +14,7 @@ $is-host: false !default; // backwards compatability on components aren't yet st
 
 @function get-scope-prefix() {
 	@if $scope != null {
-		@return $scope-;
+		@return '#{$scope}-';
 	} @else {
 		@return '';
 	}
