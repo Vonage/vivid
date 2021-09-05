@@ -90,12 +90,10 @@ export class VWCBanner extends LitElement {
 			: nothing;
 	}
 
-	protected getRenderClassesConnotation(): ClassInfo {
-		return this.connotation ? { [`banner--connotation-${this.connotation}`]: true }	: {};
-	}
-
 	protected getRenderClasses(): ClassInfo {
-		return { ...this.getRenderClassesConnotation() };
+		return {
+			[`connotation-${this.connotation}`]: !!this.connotation
+		};
 	}
 
 	protected renderIcon(): TemplateResult {

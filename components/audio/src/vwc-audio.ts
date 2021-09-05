@@ -128,18 +128,14 @@ export class VWCAudio extends LitElement {
 		super.update(_changedProperties);
 	}
 
-	protected getRenderClassesConnotation(): ClassInfo {
-		return this.connotation ? { [`audio--connotation-${this.connotation}`]: true }	: {};
-	}
-
 	protected getRenderClasses(): ClassInfo {
 		return {
-			...this.getRenderClassesConnotation(),
+			[`connotation-${this.connotation}`]: !!this.connotation,
 			loading: this._loading
 		};
 	}
 
-	render():TemplateResult {
+	render(): TemplateResult {
 		return html`
 			<audio class='audio-tag' src='${ifDefined(this.src)}'></audio>
 			<div class="audio ${classMap(this.getRenderClasses())}" aria-controls="${ifDefined(this.ariaControls)}">

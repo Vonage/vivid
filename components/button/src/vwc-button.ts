@@ -142,15 +142,8 @@ export class VWCButton extends MWCButton {
 			'mdc-button--unelevated': this.unelevated,
 			'mdc-button--outlined': this.outlined,
 			'mdc-button--dense': this.dense,
-			'vwc-button--connotation-primary': this.connotation == 'primary',
-			'vwc-button--connotation-cta': this.connotation == 'cta',
-			'vwc-button--connotation-success': this.connotation == 'success',
-			'vwc-button--connotation-alert': this.connotation == 'alert',
-			'vwc-button--connotation-info': this.connotation == 'info',
-			'vwc-button--connotation-announcement': this.connotation == 'announcement',
-			'vwc-button--layout-filled': this.layout == 'filled',
-			'vwc-button--layout-outlined': this.layout == 'outlined',
-			'vwc-button--layout-ghost': this.layout == 'ghost',
+			[`connotation-${this.connotation}`]: !!this.connotation,
+			[`layout-${this.layout}`]: !!this.layout
 		});
 	}
 

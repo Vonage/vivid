@@ -66,18 +66,10 @@ export class VWCBadgeBase extends LitElement {
   	handleMultipleDenseProps(this, changes);
 	}
 
-	protected getRenderClassesConnotation(): ClassInfo {
-		return { [`connotation-${this.connotation}`]: Boolean(this.connotation) };
-	}
-
-	protected getRenderClassesLayout(): ClassInfo {
-		return { [`layout-${this.layout}`]: Boolean(this.layout) };
-	}
-
 	protected getRenderClasses(): ClassInfo {
 		return {
-			...this.getRenderClassesConnotation(),
-			...this.getRenderClassesLayout(),
+			[`connotation-${this.connotation}`]: !!this.connotation,
+			[`layout-${this.layout}`]: !!this.layout
 		};
 	}
 

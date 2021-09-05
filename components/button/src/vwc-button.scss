@@ -7,7 +7,6 @@
 @use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
 	$connotations-set: primary cta success alert info announcement,
 	$default: primary,
-	$scope: vwc-button,
 );
 @use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' with(
@@ -16,7 +15,6 @@
 @use '@vonage/vvd-foundation/scss/mixins/layout/config' as layout-config with (
 	$layout-set: filled outlined ghost,
 	$default: ghost,
-	$scope: vwc-button
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout' as layout;
 
