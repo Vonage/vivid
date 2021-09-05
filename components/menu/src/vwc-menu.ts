@@ -4,7 +4,7 @@ import '@vonage/vwc-list';
 import { MenuBase as MWCMenuBase } from '@material/mwc-menu/mwc-menu-base';
 import { MDCMenuAdapter } from '@material/menu';
 import { customElement, html } from 'lit-element';
-import { style as mwcMenuStyle } from '@material/mwc-menu/mwc-menu-css.js';
+import { styles as mwcMenuStyles } from '@material/mwc-menu/mwc-menu.css.js';
 import { style as vwcMenuStyle } from './vwc-menu.css';
 import { VWCList } from '@vonage/vwc-list';
 
@@ -19,7 +19,7 @@ declare global {
  */
 @customElement('vwc-menu')
 export class VWCMenu extends MWCMenuBase {
-	static styles = [mwcMenuStyle, vwcMenuStyle];
+	static styles = [mwcMenuStyles, vwcMenuStyle];
 
 	get listElement(): VWCList | null {
 		if (!this.listElement_) {
