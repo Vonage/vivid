@@ -7,7 +7,7 @@ import {
 } from 'lit-element';
 import { ClassInfo, classMap } from 'lit-html/directives/class-map';
 import { nothing, TemplateResult } from 'lit-html';
-import { Connotation } from '@vonage/vvd-foundation/constants';
+import { Connotation } from '@vonage/vvd-foundation/constants.js';
 
 const ANIMATION_DURATION = 100;
 
@@ -54,7 +54,7 @@ export class VWCBanner extends LitElement {
 	dismissible?:boolean;
 
 	@property({ type: String, reflect: true })
-	connotation:BannerConnotation;
+	connotation?: BannerConnotation;
 
 	@property({ type: String, reflect: true })
 	icon?:string;
