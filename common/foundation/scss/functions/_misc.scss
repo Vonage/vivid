@@ -7,3 +7,15 @@
 		#{$compound}
 	);
 }
+
+@function get-attribute-rule-out-compound-selector($key, $selected-value, $all-values) {
+	$compound: '';
+
+	@each $value, $_ in $all-values {
+		@if $value != $selected-value {
+			$compound: $compound + ':not([#{$key}="#{$value}"i])';
+		}
+	}
+
+	@return $compound;
+}

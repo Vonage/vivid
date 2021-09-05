@@ -18,6 +18,9 @@ export async function createElementVariations(wrapper) {
 	});
 
 	wrapper.appendChild(elementWrapper);
+
+	wrapper.classList.add('grid');
+	elementWrapper.classList.add('grid');
 }
 
 
