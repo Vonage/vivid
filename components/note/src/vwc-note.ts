@@ -46,11 +46,7 @@ export class VWCNote extends LitElement {
 
 	protected getRenderClasses(): ClassInfo {
 		return {
-			'vwc-note--connotation-success': this.connotation == 'success',
-			'vwc-note--connotation-alert': this.connotation == 'alert',
-			'vwc-note--connotation-warning': this.connotation == 'warning',
-			'vwc-note--connotation-info': this.connotation == 'info',
-			'vwc-note--connotation-announcement': this.connotation == 'announcement',
+			[`connotation-${this.connotation}`]: !!this.connotation,
 		};
 	}
 

@@ -3,7 +3,6 @@
 @use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
 	$connotations-set: success alert warning info announcement,
 	$default: announcement,
-	$scope: vwc-note
 );
 @use '@vonage/vvd-foundation/scss/mixins/connotation';
 
@@ -31,6 +30,7 @@ $border-value: 8px solid var(#{connotation.$vvd-color-connotation});
 }
 
 .note-icon {
+	#{connotation.$vvd-color-connotation}: currentColor;
 	margin-inline-end: 16px;
 }
 
