@@ -7,7 +7,6 @@ $namespace-shape: #{$namespace}-shape;
 	$connotations-set: primary cta success alert warning info,
 	$shades: (soft, contrast),
 	$default: primary,
-	$scope: vwc-badge,
 );
 @use '@vonage/vvd-foundation/scss/mixins/connotation';
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (

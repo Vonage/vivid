@@ -2,7 +2,6 @@
 @use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
 	$connotations-set: primary cta success alert,
 	$default: primary,
-	$scope: circular-progress
 );
 @use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
 

@@ -11,6 +11,14 @@ import { Connotation } from '@vonage/vvd-foundation/constants.js';
 
 const ANIMATION_DURATION = 100;
 
+const connotationIconMap = new Map([
+	[Connotation.Info, 'info-solid'],
+	[Connotation.Announcement, 'megaphone-solid'],
+	[Connotation.Success, 'check-circle-solid'],
+	[Connotation.Warning, 'warning-solid'],
+	[Connotation.Alert, 'error-solid']
+]);
+
 type BannerConnotation =
 	Connotation.Info |
 	Connotation.Announcement |
@@ -23,16 +31,6 @@ declare global {
 		'vwc-banner': VWCBanner;
 	}
 }
-
-const connotationToIconType = function (connotation:BannerConnotation):string {
-	return ({
-		[Connotation.Info]: 'info-solid',
-		[Connotation.Announcement]: 'megaphone-solid',
-		[Connotation.Success]: 'check-circle-solid',
-		[Connotation.Warning]: 'warning-solid',
-		[Connotation.Alert]: 'error-solid'
-	})[connotation];
-};
 
 const createCustomEvent = function (eventName:string, props = {}):CustomEvent {
 	return new CustomEvent(eventName, {
@@ -100,12 +98,19 @@ export class VWCBanner extends LitElement {
 		return { ...this.getRenderClassesConnotation() };
 	}
 
+	protected renderIcon(): TemplateResult {
+		const connotation = this.connotation || Connotation.Info;
+		const type = connotationIconMap.get(connotation);
+
+		return html`<vwc-icon class="icon" .type="${type}"></vwc-icon>`;
+	}
+
 	protected render(): TemplateResult {
 		return html`
 			<div class="banner ${classMap(this.getRenderClasses())}">
 				<header class="header">
 					<span class="user-content">
-						<vwc-icon class="icon" type="${this.icon ?? connotationToIconType(this.connotation)}"></vwc-icon>
+						${this.renderIcon()}
 						<div role="alert" class="message">${this.message}</div>
 						<slot class="action-items" name="actionItems"></slot>
 					</span>

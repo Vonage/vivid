@@ -3,7 +3,6 @@
 @use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
 	$connotations-set: primary cta,
 	$default: cta,
-	$scope: audio
 );
 @use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
 @use '@vonage/vwc-media-controller/src/partials/vwc-media-controller-variables' as media-controls-variables;

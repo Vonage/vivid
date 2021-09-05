@@ -9,5 +9,5 @@ $connotations-set: $predefined-connotation-set !default;
 // from including scope to prevent too general
 // custom properties from delegating and inccidently
 // affect deeper scopes
-$scope: component !default;
+$scope: null !default;
 $is-host: false !default; // backwards compatability on components aren't yet structured with base wrapper
