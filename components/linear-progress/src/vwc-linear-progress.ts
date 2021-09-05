@@ -1,6 +1,7 @@
 // eslint-disable-next-line max-classes-per-file
 import '@vonage/vvd-core';
 import { customElement, property, query } from 'lit-element';
+import { observer } from '@material/mwc-base/observer';
 import { LinearProgress as MWCLinearProgress } from '@material/mwc-linear-progress';
 import { style as vwcLinearProgressStyle } from './vwc-linear-progress.css';
 import { styles as mwcLinearProgressStyles } from '@material/mwc-linear-progress/mwc-linear-progress.css.js';
@@ -38,6 +39,13 @@ export class VWCLinearProgress extends MWCLinearProgress {
 	@query('.mdc-linear-progress') protected mdcLinearProgress!: HTMLElement;
 
 	@property({ type: String, reflect: true })
+	@observer(function (this: VWCLinearProgress, newVal: LinearProgressConnotation, oldVal: LinearProgressConnotation) {
+		console.log('I ran on init');
+		this.rootEl.classList.remove(`linear-progress--connotation-${oldVal}`);
+		if (newVal) {
+			this.rootEl.classList.add(`linear-progress--connotation-${newVal}`);
+		}
+	})
 	connotation?: LinearProgressConnotation;
 
 	protected updated(changes: Map<string, boolean>): void {

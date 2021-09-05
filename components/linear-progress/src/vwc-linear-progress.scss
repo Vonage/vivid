@@ -2,23 +2,22 @@
 @use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
 	$connotations-set: primary cta success alert,
 	$default: primary,
-	$decoratives: (pacific)
+	$decoratives: (pacific),
+	$scope: linear-progress
 );
-@use '@vonage/vvd-foundation/scss/mixins/connotation';
+@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
 
 
 $block-size: 6px;
 $shape-variable: --vvd-linear-progress-shape;
 
 
-:host {
+.mdc-linear-progress {
 	--mdc-theme-primary: var(#{connotation.$vvd-color-connotation});
 	--mdc-linear-progress-buffer-color: var(#{scheme-variables.$vvd-color-neutral-30});
 	--mdc-linear-progress-buffering-dots-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' enable-background='new 0 0 5 2' xml:space='preserve' viewBox='0 0 5 2' preserveAspectRatio='none slice'%3E%3Ccircle cx='1' cy='1' r='1' fill='%23616266'/%3E%3C/svg%3E");
 	#{$shape-variable}: 10px;
-}
-
-.mdc-linear-progress {
+	@include connotation.connotation;
 	height: $block-size;
 	block-size: $block-size;
 	border-radius: var(#{$shape-variable});
@@ -29,7 +28,7 @@ $shape-variable: --vvd-linear-progress-shape;
 	border-top-style: solid;
 	border-top-color: var(--mdc-theme-primary);
 	border-radius: calc(var(#{$shape-variable}) / var(--linear-progress-progress)) / calc(var(#{$shape-variable}) / 1);
-	:host([connotation="pacific"i]) & {
+	.linear-progress--connotation-pacific & {
 		height: $block-size;
 		border-top-width: 0;
 		border-top-style: none;

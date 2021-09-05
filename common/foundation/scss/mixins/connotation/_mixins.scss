@@ -50,14 +50,15 @@
 			)
 		);
 
-		@if $type == config.$default and list.length($types) > 1 {
+		@if $type == config.$default and list.length($all-connotation-types) > 1 {
 			$rule-out-pseudo: '';
 			// backwards compatability on components aren't yet structured with base wrapper
-			@if config.$is-host { $rule-out-pseudo: ':host(';
+			@if config.$is-host {
+				$rule-out-pseudo: ':host(';
 			} @else {
 				$rule-out-pseudo: &;
 			}
-			@each $rule-out-type in $types {
+			@each $rule-out-type in $all-connotation-types {
 				@if $rule-out-type != config.$default {
 					$rule-out-pseudo: '#{$rule-out-pseudo}:not(#{get-pseudo($rule-out-type)})';
 				}

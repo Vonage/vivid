@@ -5,6 +5,7 @@ import { style as BannerStyle } from './vwc-banner.css';
 import {
 	customElement, html, LitElement, property, PropertyValues
 } from 'lit-element';
+import { ClassInfo, classMap } from 'lit-html/directives/class-map';
 import { nothing } from 'lit-html';
 import { Connotation } from '@vonage/vvd-foundation/constants';
 
@@ -91,9 +92,16 @@ export class VWCBanner extends LitElement {
 			: nothing;
 	}
 
+	protected getRenderClassesConnotation(): ClassInfo {
+		return this.connotation ? { [`banner--connotation-${this.connotation}`]: true }	: {};
+	}
+
+	protected getRenderClasses(): ClassInfo {
+		return { ...this.getRenderClassesConnotation() };
+	}
 	render() {
 		return html`
-			<div class="container">
+			<div class="banner ${classMap(this.getRenderClasses())}">
 				<header class="header">
 					<span class="user-content">
 						<vwc-icon class="icon" type="${this.icon ?? connotationToIconType(this.connotation)}"></vwc-icon>
