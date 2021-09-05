@@ -6,7 +6,7 @@ import {
 	customElement, html, LitElement, property, PropertyValues
 } from 'lit-element';
 import { ClassInfo, classMap } from 'lit-html/directives/class-map';
-import { nothing } from 'lit-html';
+import { nothing, TemplateResult } from 'lit-html';
 import { Connotation } from '@vonage/vvd-foundation/constants';
 
 const ANIMATION_DURATION = 100;
@@ -54,7 +54,7 @@ export class VWCBanner extends LitElement {
 	dismissible?:boolean;
 
 	@property({ type: String, reflect: true })
-	connotation:BannerConnotation = Connotation.Info;
+	connotation:BannerConnotation;
 
 	@property({ type: String, reflect: true })
 	icon?:string;
@@ -99,7 +99,8 @@ export class VWCBanner extends LitElement {
 	protected getRenderClasses(): ClassInfo {
 		return { ...this.getRenderClassesConnotation() };
 	}
-	render() {
+
+	protected render(): TemplateResult {
 		return html`
 			<div class="banner ${classMap(this.getRenderClasses())}">
 				<header class="header">

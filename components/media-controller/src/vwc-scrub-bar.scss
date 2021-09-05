@@ -1,4 +1,5 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+@use 'partials/vwc-media-controller-variables' as variables;
 
 :host {
 	$button-size: 16px;
@@ -38,7 +39,7 @@
 					height: $scrub-size;
 					padding: 0;
 					border: 0 none;
-					background-color: var(--vvd-color-connotation, $basic);
+					background-color: var(#{variables.$vwc-media-controls-scrubber-color}, $basic);
 					border-radius: $scrub-size/2;
 					box-shadow: 0 0 0 0 #0000;
 					cursor: pointer;
@@ -57,7 +58,7 @@
 				height: $scrub-size;
 				padding: 0;
 				border: 0 none;
-				background-color: var(--vvd-color-connotation, $basic);
+				background-color: var(#{variables.$vwc-media-controls-scrubber-color}, $basic);
 				border-radius: $scrub-size/2;
 				box-shadow: 0 0 0 0 #0000;
 				cursor: pointer;
