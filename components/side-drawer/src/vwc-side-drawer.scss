@@ -18,14 +18,10 @@ $min-inline-size-default: 280px;
 
 .side-drawer {
 	z-index: var(#{$vvd-side-drawer--z-index}, #{$z-index-default});
-	background-color: var(#{scheme-variables.$vvd-color-canvas});
+	background-color: var(#{$vvd-side-drawer--background-color}, var(#{scheme-variables.$vvd-color-canvas}));
 	color: var(#{scheme-variables.$vvd-color-on-canvas});
 	min-inline-size: var(#{$vvd-side-drawer--min-inline-size}, #{$min-inline-size-default});
-
-	&:not(.vvd-side-drawer--alternate):not(.vvd-side-drawer--modal) {
-		background-color: var(#{$vvd-side-drawer--background-color}, #{scheme-variables.$vvd-color-neutral-10});
-	}
-
+	
 	&.vvd-side-drawer--modal,
 	&.vvd-side-drawer--dismissible {
 		@media (prefers-reduced-motion: no-preference) {
