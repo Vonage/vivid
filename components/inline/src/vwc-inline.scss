@@ -4,6 +4,7 @@ $items-min-inline-size-v-name: --items-min-inline-size;
 $items-spacing-v-name: --items-spacing;
 
 $inline-template: --inline-template;
+$grid-template: --grid-template;
 
 /* #region SIZE */
 $items-min-inline-sizes: (
@@ -38,6 +39,11 @@ $items-spacings: (
 	width: 100%;
 	gap: var(#{$items-spacing-v-name}, #{map.get($items-spacings, md)});
 	grid-auto-rows: min-content;
+	inline-size: 100%;
+}
+
+:host(:not(gridTemplate)),
+:host([gridTemplate="columns"i]) {
 	grid-template-columns: repeat(
 		var(#{$inline-template}),
 		minmax(
@@ -48,14 +54,28 @@ $items-spacings: (
 			1fr
 		)
 	);
-	inline-size: 100%;
+	grid-template-rows: none;
 }
 
-:host(:not(template)),
-:host([template="fit"i]) {
+:host([gridTemplate="rows"i]) {
+	grid-template-columns: none;
+	grid-template-rows: repeat(
+		var(#{$inline-template}),
+		minmax(
+			var(
+				#{$items-min-inline-size-v-name},
+				#{map.get($items-min-inline-sizes, lg)}
+			),
+			1fr
+		)
+	);
+}
+
+:host(:not(inlineTemplate)),
+:host([inlineTemplate="fit"i]) {
 	#{$inline-template}: auto-fit;
 }
 
-:host([template="fill"i]) {
+:host([inlineTemplate="fill"i]) {
 	#{$inline-template}: auto-fill;
 }

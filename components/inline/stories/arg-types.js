@@ -1,9 +1,15 @@
 import { Size } from '@vonage/vvd-foundation/constants';
 import { InlineTemplate } from '../vwc-inline';
-
+import { GridTemplate } from '../vwc-inline';
 
 export const argTypes = {
-	template: {
+	gridTemplate: {
+		control: {
+			type: 'select',
+			options: Object.values(GridTemplate),
+		}
+	},
+	inlineTemplate: {
 		control: {
 			type: 'select',
 			options: Object.values(InlineTemplate),
