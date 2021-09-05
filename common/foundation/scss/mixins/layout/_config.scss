@@ -7,4 +7,12 @@ $layout-set: $predefined-layout-set !default;
 // from including scope to prevent too general
 // custom properties from delegating and inccidently
 // affect deeper scopes
-$scope: component !default;
+$scope: null !default;
+
+@function get-scope-prefix() {
+	@if $scope != null {
+		@return '#{$scope}-';
+	} @else {
+		@return '';
+	}
+}

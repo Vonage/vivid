@@ -40,7 +40,7 @@ $all-layouts: (
 }
 
 @function get-pseudo($type) {
-	@return '.#{config.$scope}--layout-#{$type}';
+	@return '.#{config.get-scope-prefix()}-layout-#{$type}';
 }
 
 @mixin layout {

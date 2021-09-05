@@ -66,17 +66,18 @@ export class VWCBadgeBase extends LitElement {
   	handleMultipleDenseProps(this, changes);
 	}
 
+	protected getRenderClassesConnotation(): ClassInfo {
+		return { [`connotation-${this.connotation}`]: Boolean(this.connotation) };
+	}
+
+	protected getRenderClassesLayout(): ClassInfo {
+		return { [`layout-${this.layout}`]: Boolean(this.layout) };
+	}
+
 	protected getRenderClasses(): ClassInfo {
 		return {
-			'vwc-badge--layout-filled': this.layout == 'filled',
-			'vwc-badge--layout-outlined': this.layout == 'outlined',
-			'vwc-badge--layout-soft': this.layout == 'soft',
-			'vwc-badge--connotation-primary': this.connotation == 'primary',
-			'vwc-badge--connotation-cta': this.connotation == 'cta',
-			'vwc-badge--connotation-success': this.connotation == 'success',
-			'vwc-badge--connotation-alert': this.connotation == 'alert',
-			'vwc-badge--connotation-warning': this.connotation == 'warning',
-			'vwc-badge--connotation-info': this.connotation == 'info',
+			...this.getRenderClassesConnotation(),
+			...this.getRenderClassesLayout(),
 		};
 	}
 
