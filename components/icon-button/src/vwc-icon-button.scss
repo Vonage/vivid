@@ -73,6 +73,7 @@ $block-sizes: (
 }
 
 vwc-icon {
+	#{connotation.$vvd-color-connotation}: var(#{layout.$vvd-layout-color-text});
 	:host & {
 		#{icon-variables.$icon-size-variable-name}: var(#{icon-button-variables.$icon-button-icon-size-variable-name}, 20px);
 	}

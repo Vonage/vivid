@@ -82,13 +82,9 @@ export class VWCIcon extends LitElement {
 	})
 	ariaLabel?:string;
 
-	protected getRenderClassesConnotation(): ClassInfo {
-		return this.connotation ? { [`icon--connotation-${this.connotation}`]: true }	: {};
-	}
-
 	protected getRenderClasses(): ClassInfo {
 		return {
-			...this.getRenderClassesConnotation(),
+			[`connotation-${this.connotation}`]: !!this.connotation,
 		};
 	}
 

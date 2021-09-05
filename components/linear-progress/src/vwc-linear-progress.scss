@@ -3,7 +3,6 @@
 	$connotations-set: primary cta success alert,
 	$default: primary,
 	$decoratives: (pacific),
-	$scope: linear-progress
 );
 @use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
 
@@ -28,7 +27,7 @@ $shape-variable: --vvd-linear-progress-shape;
 	border-top-style: solid;
 	border-top-color: var(--mdc-theme-primary);
 	border-radius: calc(var(#{$shape-variable}) / var(--linear-progress-progress)) / calc(var(#{$shape-variable}) / 1);
-	.linear-progress--connotation-pacific & {
+	.connotation-pacific & {
 		height: $block-size;
 		border-top-width: 0;
 		border-top-style: none;

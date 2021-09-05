@@ -40,9 +40,9 @@ export class VWCLinearProgress extends MWCLinearProgress {
 
 	@property({ type: String, reflect: true })
 	@observer(function (this: VWCLinearProgress, newVal: LinearProgressConnotation, oldVal: LinearProgressConnotation) {
-		this.rootEl.classList.remove(`linear-progress--connotation-${oldVal}`);
+		this.rootEl.classList.remove(`connotation-${oldVal}`);
 		if (newVal) {
-			this.rootEl.classList.add(`linear-progress--connotation-${newVal}`);
+			this.rootEl.classList.add(`connotation-${newVal}`);
 		}
 	})
 	connotation?: LinearProgressConnotation;
