@@ -25,14 +25,23 @@
 }
 
 @function get-pseudo($type) {
-	@return '.#{config.$scope}--connotation-#{$type}';
+	@if config.$is-host {
+		@return '[connotation="#{$type}"i]';
+	} @else {
+		@return '.#{config.$scope}--connotation-#{$type}';
+	}
 }
 
 @mixin selectors($types...) {
 	@each $type in $types {
 		$pseudo: get-pseudo($type);
-
-		$selector: selector.unify(&, $pseudo);
+		$selector: '';
+		// backwards compatability on components aren't yet structured with base wrapper
+		@if config.$is-host {
+			$selector: selector.parse('#{&}(#{$pseudo})');
+		} @else {
+			$selector: selector.unify(&, $pseudo);
+		}
 
 		$all-connotation-types: map.keys(
 			map.merge(
@@ -42,12 +51,19 @@
 		);
 
 		@if $type == config.$default and list.length($types) > 1 {
-			$rule-out-pseudo: &;
+			$rule-out-pseudo: '';
+			// backwards compatability on components aren't yet structured with base wrapper
+			@if config.$is-host { $rule-out-pseudo: ':host(';
+			} @else {
+				$rule-out-pseudo: &;
+			}
 			@each $rule-out-type in $types {
 				@if $rule-out-type != config.$default {
 					$rule-out-pseudo: '#{$rule-out-pseudo}:not(#{get-pseudo($rule-out-type)})';
 				}
 			}
+			// backwards compatability on components aren't yet structured with base wrapper
+			@if config.$is-host { $rule-out-pseudo: $rule-out-pseudo ')'; }
 			$selector: selector.parse(#{$selector, $rule-out-pseudo});
 		}
 

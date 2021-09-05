@@ -10,3 +10,4 @@ $connotations-set: $predefined-connotation-set !default;
 // custom properties from delegating and inccidently
 // affect deeper scopes
 $scope: component !default;
+$is-host: false !default; // backwards compatability on components aren't yet structured with base wrapper
