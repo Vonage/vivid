@@ -23,18 +23,10 @@ export class VWCTextBase extends LitElement {
 	@property({ type: String, reflect: true })
 	connotation?: TextConnotation;
 
-	protected getRenderClassesFontFace(): ClassInfo {
-		return this.fontFace ? { [`vwc-text--font-face-${this.fontFace}`]: true }	: {};
-	}
-
-	protected getRenderClassesConnotation(): ClassInfo {
-		return this.connotation ? { [`vwc-text--connotation-${this.connotation}`]: true }	: {};
-	}
-
 	protected getRenderClasses(): ClassInfo {
 		return {
-			...this.getRenderClassesFontFace(),
-			...this.getRenderClassesConnotation(),
+			[`connotation-${this.connotation}`]: !!this.connotation,
+			[`font-face-${this.fontFace}`]: !!this.fontFace,
 		};
 	}
 

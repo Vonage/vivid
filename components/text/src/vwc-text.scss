@@ -3,7 +3,6 @@
 @use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
 	$connotations-set: primary cta announcement info success alert,
 	$default: primary,
-	$scope: vwc-text
 );
 @use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
 
@@ -14,7 +13,7 @@
 	color: var(#{connotation.$vvd-color-connotation});
 
 	@each $key, $value in typography-scale.$typography-category-list {
-		&.vwc-text--font-face-#{$key} {
+		&.font-face-#{$key} {
 			@include typography.typography-cat-shorthand($key);
 		}
 	}

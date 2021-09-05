@@ -3,7 +3,6 @@
 @use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
 	$connotations-set: success alert warning info announcement,
 	$default: announcement,
-	$scope: vwc-snackbar
 );
 @use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
 

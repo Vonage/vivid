@@ -117,11 +117,7 @@ export class VWCSnackbar extends MWCSnackbarBase {
 
 	protected getRenderClasses(): ClassInfo {
 		return {
-			'vwc-badge--connotation-success': this.connotation == 'success',
-			'vwc-badge--connotation-alert': this.connotation == 'alert',
-			'vwc-badge--connotation-warning': this.connotation == 'warning',
-			'vwc-badge--connotation-info': this.connotation == 'info',
-			'vwc-badge--connotation-announcement': this.connotation == 'announcement',
+			[`connotation-${this.connotation}`]: !!this.connotation,
 		};
 	}
 

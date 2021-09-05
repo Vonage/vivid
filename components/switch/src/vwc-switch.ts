@@ -37,13 +37,15 @@ export class VWCSwitch extends MWCSwitch {
 	@property({ type: Boolean, reflect: true })
 	enlarged = false;
 
-	protected getRenderClassesConnotation(): ClassInfo {
-		return this.connotation ? { [`vwc-switch--connotation-${this.connotation}`]: true }	: {};
+	protected getRenderClasses(): ClassInfo {
+		return {
+			[`connotation-${this.connotation}`]: !!this.connotation,
+		};
 	}
 
 	protected override render() {
 		return html`
-      <div class="mdc-switch ${classMap(this.getRenderClassesConnotation())}">
+      <div class="mdc-switch ${classMap(this.getRenderClasses())}">
         <div class="mdc-switch__track"></div>
         <div class="mdc-switch__thumb-underlay">
           ${this.renderRipple()}
