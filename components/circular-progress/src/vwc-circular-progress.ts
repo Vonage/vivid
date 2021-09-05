@@ -31,9 +31,9 @@ export class VWCCircularProgress extends MWCCircularProgress {
 
 	@property({ type: String, reflect: true })
 	@observer(function (this: VWCCircularProgress, newVal: CircularProgressConnotation, oldVal: CircularProgressConnotation) {
-		this.rootEl.classList.remove(`circular-progress--connotation-${oldVal}`);
+		this.rootEl.classList.remove(`connotation-${oldVal}`);
 		if (newVal) {
-			this.rootEl.classList.add(`circular-progress--connotation-${newVal}`);
+			this.rootEl.classList.add(`connotation-${newVal}`);
 		}
 	})
 	connotation?: CircularProgressConnotation;

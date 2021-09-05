@@ -1,16 +1,9 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use 'config' as config;
 
-@function get-custom-property-prefix() {
-	@if #{config.$scope} {
-		@return '--#{config.$scope}-';
-	} @else {
-		@return '--';
-	}
-}
 
-$vvd-color-connotation: #{get-custom-property-prefix()}connotation;
-$vvd-color-on-connotation: #{get-custom-property-prefix()}on-connotation;
+$vvd-color-connotation: --#{config.get-scope-prefix()}connotation;
+$vvd-color-on-connotation: --#{config.get-scope-prefix()}on-connotation;
 
 $compound-placeholder: '[compound]'; // will be replaced by actual compound
 

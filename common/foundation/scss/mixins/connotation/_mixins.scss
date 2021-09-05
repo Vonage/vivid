@@ -28,7 +28,7 @@
 	@if config.$is-host {
 		@return '[connotation="#{$type}"i]';
 	} @else {
-		@return '.#{config.$scope}-connotation-#{$type}';
+		@return '.#{config.get-scope-prefix()}connotation-#{$type}';
 	}
 }
 

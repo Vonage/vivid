@@ -11,3 +11,11 @@ $connotations-set: $predefined-connotation-set !default;
 // affect deeper scopes
 $scope: null !default;
 $is-host: false !default; // backwards compatability on components aren't yet structured with base wrapper
+
+@function get-scope-prefix() {
+	@if $scope != null {
+		@return $scope-;
+	} @else {
+		@return '';
+	}
+}
