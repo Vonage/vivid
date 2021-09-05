@@ -23,7 +23,7 @@ export const LogIn = () => html`
   <vwc-side-drawer id="side-drawer" hasTopBar>
     <span slot="top-bar"><vwc-icon type="vonage-mono"></vwc-icon><vwc-text font-face="body-1-bold"> VONAGE</vwc-text></span>
     <form>
-      <vwc-inline size="sm" spacing="sm" template="" grid-template="rows">
+      <vwc-inline size="sm" spacing="sm" gridTemplate="rows">
         <section>
             <vwc-text font-face="title-2">Welcome back!</vwc-text>
         </section>
@@ -31,7 +31,7 @@ export const LogIn = () => html`
             <vwc-text font-face="body-2">Don't have an account? <a href="#">Sign Up</a></vwc-text>
         </section>
         <section>
-          <vwc-inline>
+          <vwc-inline size="sm" spacing="sm" gridTemplate="rows">
             <vwc-textfield name="username" label="username" icon="user" placeholder=" " outlined="">
               <input value="" slot="formInputElement" class="vivid-input-internal" name="username" type="text" placeholder=" "/>
             </vwc-textfield>
@@ -41,7 +41,7 @@ export const LogIn = () => html`
           </vwc-inline>
         </section>
         <section>
-          <vwc-inline class="sign-in-helper" size="sm" spacing="sm" template="fit" grid-template="columns">
+          <vwc-inline class="sign-in-helper" size="sm" spacing="sm" inlineTemplate="fit" gridTemplate="columns">
             <vwc-formfield label="Remember me"><vwc-checkbox></vwc-checkbox></vwc-formfield>
             <vwc-text class="password" font-face="body-2"><a href="#">Forgot password?</a></vwc-text>
           </vwc-inline>
