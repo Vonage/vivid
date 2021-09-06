@@ -1,3 +1,5 @@
+$spacing: 16px;
+
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
@@ -33,7 +35,7 @@
 
 .mdc-snackbar__label {
 	@include typography.typography-cat-shorthand('body-2');
-	padding: 22px 16px;
+	padding: 22px $spacing;
 	-webkit-font-smoothing: initial;
 	-moz-osx-font-smoothing: initial;
 }
@@ -41,25 +43,25 @@
 .icon {
 	margin-block-end: auto;
 	margin-block-start: 20px;
-	margin-inline-start: 16px;
+	margin-inline-start: $spacing;
 }
 
 .dismiss-container {
 	display: flex;
 	align-items: center;
 	align-self: stretch;
-	margin-inline-end: 16px;
+	margin-inline-end: $spacing;
 
 	&::before {
 		align-self: stretch;
 		border-left: 1px solid var(#{scheme-variables.$vvd-color-neutral-30});
 		content: '';
-		margin-inline-end: 16px;
+		margin-inline-end: $spacing;
 	}
 }
 
 ::slotted([slot='action']:last-child) {
-	margin-inline-end: 16px;
+	margin-inline-end: $spacing;
 }
 
 // :host(:not([legacy])) {
@@ -70,7 +72,7 @@
 
 // 	.actions-container {
 // 		display: flex;
-// 		padding: 16px 0;
+// 		padding: $spacing 0;
 // 	}
 
 // 	.action-container {
@@ -80,7 +82,7 @@
 // 	}
 
 // 	.action-container ::slotted(*) {
-// 		margin-inline-end: 16px;
+// 		margin-inline-end: $spacing;
 // 	}
 
 
@@ -102,7 +104,7 @@
 // 		display: flex;
 
 // 		::slotted(*) {
-// 			margin-block-start: 16px;
+// 			margin-block-start: $spacing;
 // 		}
 // 	}
 
