@@ -5,7 +5,7 @@ import {
 import { classMap } from 'lit-html/directives/class-map';
 import { Tab as MWCTab } from '@material/mwc-tab';
 import { style as vwcTabStyle } from './vwc-tab.css';
-import { style as mwcTabStyle } from '@material/mwc-tab/mwc-tab-css.js';
+import { styles as mwcTabStyles } from '@material/mwc-tab/mwc-tab.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 
 declare global {
@@ -16,7 +16,7 @@ declare global {
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-MWCTab.styles = [styleCoupling, mwcTabStyle, vwcTabStyle];
+MWCTab.styles = [styleCoupling, mwcTabStyles, vwcTabStyle];
 
 @customElement('vwc-tab')
 export class VWCTab extends MWCTab {
