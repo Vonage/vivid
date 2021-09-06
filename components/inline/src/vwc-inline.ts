@@ -34,7 +34,7 @@ export class Inline extends LitElement {
 	spacing: SizeSpacing = Size.Small;
 
 	@property({ type: String, reflect: true })
-	inline?: InlineTemplate;
+	inlineTemplate?: InlineTemplate;
 
 	@property({ type: String, reflect: true })
 	gridTemplate?: GridTemplate;

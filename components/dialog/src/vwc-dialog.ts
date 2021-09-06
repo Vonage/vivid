@@ -1,7 +1,7 @@
 import { customElement, property, PropertyValues } from 'lit-element';
 import { style } from './vwc-dialog.css';
 import { Dialog as MWCDialog } from '@material/mwc-dialog';
-import { style as mwcDialogStyle } from '@material/mwc-dialog/mwc-dialog-css';
+import { styles as mwcDialogStyles } from '@material/mwc-dialog/mwc-dialog.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 import '@vonage/vvd-core';
 
@@ -20,7 +20,7 @@ iconTemplate.innerHTML = `
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-MWCDialog.styles = [styleCoupling, mwcDialogStyle, style];
+MWCDialog.styles = [styleCoupling, mwcDialogStyles, style];
 
 @customElement('vwc-dialog')
 export class VWCDialog extends MWCDialog {
