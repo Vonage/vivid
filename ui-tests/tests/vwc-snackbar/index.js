@@ -9,7 +9,7 @@ export async function createElementVariations(wrapper) {
 	snapshotTheWholePage(wrapper);
 	wrapper.innerHTML = `
 		<vwc-snackbar dismissible connotation="info" icon="megaphone-solid" message="${message}">
-			<vwc-button slot="action">Action</vwc-button>
+			<vwc-button layout="outlined" shape="pill" slot="action">Action</vwc-button>
 		</vwc-snackbar>
 	`;
 

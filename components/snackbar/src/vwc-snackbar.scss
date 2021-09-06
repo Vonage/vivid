@@ -24,6 +24,7 @@
 }
 
 .mdc-snackbar__surface {
+	padding-right: initial;
 	background-color: var(#{scheme-variables.$vvd-color-canvas});
 	border-radius: 6px;
 	box-shadow: 0 6px 8px rgba(0, 0, 0, 0.05), 0 12px 16px rgba(0, 0, 0, 0.05), 0 4px 24px rgba(0, 0, 0, 0.1);
@@ -33,88 +34,85 @@
 .mdc-snackbar__label {
 	@include typography.typography-cat-shorthand('body-2');
 	padding: 22px 16px;
+	-webkit-font-smoothing: initial;
+	-moz-osx-font-smoothing: initial;
 }
 
 .icon {
-	padding-inline-start: 16px;
+	margin-block-end: auto;
+	margin-block-start: 20px;
+	margin-inline-start: 16px;
 }
 
-// default flavor
-:host(:not([legacy])) {
-	.vvd-snackbar {
-		display: flex;
-		flex: 1;
-	}
+.dismiss-container {
+	display: flex;
+	align-items: center;
+	align-self: stretch;
+	margin-inline-end: 16px;
 
-	// .vwc-note {
-	// 	flex: 1;
-	// 	align-self: center;
-	// 	padding: 16px;
-	// 	border: 0;
-	// 	box-shadow: none;
-	// }
-	// ::part(icon) {
-	// 	color: var(#{connotation.$vvd-color-connotation});
-	// }
-
-	.actions-container {
-		display: flex;
-		padding: 16px 0;
-	}
-
-	.action-container {
-		display: flex;
-		flex: 1 0 auto;
-		align-items: center;
-	}
-
-	.action-container ::slotted(*) {
-		margin-inline-end: 16px;
-	}
-
-	.dismiss-container {
-		display: flex;
-		align-items: center;
+	&::before {
 		align-self: stretch;
+		border-left: 1px solid var(#{scheme-variables.$vvd-color-neutral-30});
+		content: '';
 		margin-inline-end: 16px;
-
-		&::before {
-			align-self: stretch;
-			border-left: 1px solid var(#{scheme-variables.$vvd-color-neutral-30});
-			content: ' ';
-			margin-inline-end: 16px;
-		}
 	}
 }
 
-//	legacy flavor
-:host([legacy]) {
-	.vvd-snackbar {
-		width: 100%;
-	}
-
-	.snackbar-content {
-		display: flex;
-		flex-direction: row;
-		align-items: flex-start;
-		justify-content: space-between;
-	}
-
-	.action-container {
-		display: flex;
-
-		::slotted(*) {
-			margin-block-start: 16px;
-		}
-	}
-
-	.dismiss-container .dismiss-button {
-		transform: translate(4px, -4px);
-	}
-
-	[header] {
-		.dismiss-container .dismiss-button {
-			transform: translate(4px, -28px);
-		}
-	}
+::slotted([slot='action']:last-child) {
+	margin-inline-end: 16px;
 }
+
+// :host(:not([legacy])) {
+// 	.vvd-snackbar {
+// 		display: flex;
+// 		flex: 1;
+// 	}
+
+// 	.actions-container {
+// 		display: flex;
+// 		padding: 16px 0;
+// 	}
+
+// 	.action-container {
+// 		display: flex;
+// 		flex: 1 0 auto;
+// 		align-items: center;
+// 	}
+
+// 	.action-container ::slotted(*) {
+// 		margin-inline-end: 16px;
+// 	}
+
+
+// }
+
+// :host([legacy]) {
+// 	.vvd-snackbar {
+// 		width: 100%;
+// 	}
+
+// 	.snackbar-content {
+// 		display: flex;
+// 		flex-direction: row;
+// 		align-items: flex-start;
+// 		justify-content: space-between;
+// 	}
+
+// 	.action-container {
+// 		display: flex;
+
+// 		::slotted(*) {
+// 			margin-block-start: 16px;
+// 		}
+// 	}
+
+// 	.dismiss-container .dismiss-button {
+// 		transform: translate(4px, -4px);
+// 	}
+
+// 	[header] {
+// 		.dismiss-container .dismiss-button {
+// 			transform: translate(4px, -28px);
+// 		}
+// 	}
+// }
