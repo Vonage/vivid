@@ -5,16 +5,15 @@
 	$default: announcement,
 );
 @use '@vonage/vvd-foundation/scss/mixins/connotation';
+@use 'partials/vwc-note-variables.scss' as variables;
 
-
-$border-value: 8px solid var(#{connotation.$vvd-color-connotation});
 
 .vwc-note {
 	@include connotation.connotation;
 	display: flex;
 	align-items: stretch;
 	padding: 20px;
-	border-left: $border-value;
+	border-left: 8px solid var(#{connotation.$vvd-color-connotation});
 	background-color: var(#{scheme-variables.$vvd-color-canvas});
 	border-radius: 6px;
 	box-shadow: inset 0 1px 0 0 var(#{scheme-variables.$vvd-color-neutral-40}),

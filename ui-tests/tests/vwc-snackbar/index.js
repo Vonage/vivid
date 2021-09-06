@@ -16,6 +16,7 @@ export async function createElementVariations(wrapper) {
 	await new Promise((resolve) => {
 		const snackbar = wrapper.querySelector('vwc-snackbar');
 		snackbar.addEventListener('opened', resolve);
+		snackbar.timeoutMs = -1;
 		snackbar.show();
 	});
 }

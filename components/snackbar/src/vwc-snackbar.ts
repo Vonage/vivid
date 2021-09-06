@@ -1,5 +1,5 @@
 import '@vonage/vvd-core';
-import '@vonage/vwc-note';
+import '@vonage/vwc-icon';
 import '@vonage/vwc-icon-button';
 
 import { Connotation, Position } from '@vonage/vvd-foundation/constants';
@@ -14,6 +14,7 @@ import { ifDefined } from 'lit-html/directives/if-defined';
 import { SnackbarBase as MWCSnackbarBase } from '@material/mwc-snackbar/mwc-snackbar-base';
 import { style as vwcSnackbarStyle } from './vwc-snackbar.css';
 import { styles as mwcSnackbarStyles } from '@material/mwc-snackbar/mwc-snackbar.css.js';
+import { accessibleSnackbarLabel } from '@material/mwc-snackbar/accessible-snackbar-label-directive.js';
 
 export const COMPONENT_NAME = 'vwc-snackbar';
 export const OPENING_EVENT = 'opening';
@@ -56,7 +57,7 @@ export class VWCSnackbar extends MWCSnackbarBase {
 	@property({ type: Boolean, reflect: true })
 	legacy = false;
 
-	@property({ reflect: true })
+	@property({ reflect: false })
 	position: PositionPair = DEFAULT_POSITION;
 
 	@property({ type: String, reflect: true })
@@ -69,107 +70,90 @@ export class VWCSnackbar extends MWCSnackbarBase {
 	header?: string;
 
 	@property({ type: String, reflect: true })
-	message?: string;
+	message = '';
 
 	@property({ type: Boolean, reflect: true })
 	dismissible?: boolean;
 
 	connectedCallback() {
-		super.connectedCallback();
-		this.setupEventListeners();
+  	super.connectedCallback();
+  	this.setupEventListeners();
+	}
+
+	private setupEventListeners(): void {
+  	const MDCEventPrefix = 'MDCSnackbar';
+  	for (const eventName of [OPENING_EVENT, OPENED_EVENT, CLOSING_EVENT, CLOSED_EVENT]) {
+  		this.addEventListener(`${MDCEventPrefix}:${eventName}`, this.getEventHandler(eventName));
+  	}
+	}
+
+	private getEventHandler(eventName: string): (event: Event) => void {
+  	return (e) => {
+  		const event = eventName;
+  		const originalDetail = (e as CustomEvent).detail;
+  		const detail = originalDetail ? Object.assign({}, originalDetail) : null;
+  		const forwardedEvent = new CustomEvent(event, { bubbles: true, composed: true, detail: detail });
+  		this.dispatchEvent(forwardedEvent);
+  	};
+	}
+
+	protected getRenderClasses(): ClassInfo {
+  	return {
+  		[`connotation-${this.connotation}`]: !!this.connotation,
+  		'vwc-snackbar-legacy': this.legacy
+  	};
 	}
 
 	/* eslint-disable lit-a11y/click-events-have-key-events */
-	render() {
-		const position = VWCSnackbar.preprocessPositionConfig(this.position);
-		return html`
-			<div class="mdc-snackbar" position="${position}">
+	render(): TemplateResult {
+  	const position = VWCSnackbar.preprocessPositionConfig(this.position);
+  	const alternate = !this.legacy ? 'vvd-scheme-alternate' : undefined;
+
+  	return html`
+			<div
+				class="mdc-snackbar ${classMap(this.getRenderClasses())}"
+				position="${position}"
+				part="${ifDefined(alternate)}"
+				@keydown="${this._handleKeydown}">
 				<div class="mdc-snackbar__surface">
-					${this.legacy ? this.renderUiLegacy() : this.renderUiDefault()}
+					${this.icon ? this.renderIcon() : ''}
+          ${accessibleSnackbarLabel(this.message, this.open)}
+					${this.legacy && this.header ? this.renderHeading() : ''}
+					<div class="mdc-snackbar__actions">
+            <slot name="action" @click="${this._handleActionClick}"></slot>
+						${this.renderDismissAction()}
+          </div>
 				</div>
 			</div>
 		`;
 	}
+	/* eslint-enable lit-a11y/click-events-have-key-events */
 
-	private setupEventListeners(): void {
-		const MDCEventPrefix = 'MDCSnackbar';
-		for (const eventName of [OPENING_EVENT, OPENED_EVENT, CLOSING_EVENT, CLOSED_EVENT]) {
-			this.addEventListener(`${MDCEventPrefix}:${eventName}`, this.getEventHandler(eventName));
-		}
+	private renderHeading(): TemplateResult | string {
+  	return html`
+			<h3 class="heading">
+				${this.header}
+			</h3>`;
 	}
 
-	private getEventHandler(eventName: string): (event: Event) => void {
-		return (e) => {
-			const event = eventName;
-			const originalDetail = (e as CustomEvent).detail;
-			const detail = originalDetail ? Object.assign({}, originalDetail) : null;
-			const forwardedEvent = new CustomEvent(event, { bubbles: true, composed: true, detail: detail });
-			this.dispatchEvent(forwardedEvent);
-		};
-	}
-
-	private handleActionClick(event: MouseEvent): void {
-		this.mdcFoundation.handleActionButtonClick(event);
-	}
-	private handleDismissClick(event: MouseEvent): void {
-		this.mdcFoundation.handleActionIconClick(event);
-	}
-
-	protected getRenderClasses(): ClassInfo {
-		return {
-			[`connotation-${this.connotation}`]: !!this.connotation,
-		};
-	}
-
-	private renderUiDefault(): TemplateResult {
-		return html`<div class="vvd-snackbar ${classMap(this.getRenderClasses())}" part="vvd-scheme-alternate">
-				<vwc-note
-					class="vwc-note"
-					icon="${ifDefined(this.icon)}"
-				>${this.message}
-				</vwc-note>
-				<div class="actions-container">
-					<div class="action-container">
-						<slot name="action" @click="${this.handleActionClick}"></slot>
-					</div>
-					${this.renderDismissAction()}
-				</div>
-			</div>`;
-	}
-
-	private renderUiLegacy(): TemplateResult {
-		return html`<div class="vvd-snackbar ${classMap(this.getRenderClasses())}">
-				<vwc-note
-					class="vwc-note"
-					icon="${ifDefined(this.icon)}"
-					header="${ifDefined(this.header)}"
-				>
-					<div class="snackbar-content">
-						<div>
-							${this.message}
-							<div class="action-container">
-								<slot name="action" @click="${this.handleActionClick}"></slot>
-							</div>
-						</div>
-						${this.renderDismissAction()}
-					</div>
-				</vwc-note>
-			</div>`;
+	protected renderIcon(): TemplateResult {
+  	return html`
+    <vwc-icon class="icon" type="${this.icon}"></vwc-icon>`;
 	}
 
 	private renderDismissAction(): TemplateResult | string {
-		if (!this.dismissible) {
-			return '';
-		}
+  	if (!this.dismissible) {
+  		return '';
+  	}
 
-		return html`
+  	return html`
 			<div class="dismiss-container">
 				<vwc-icon-button
 					class="dismiss-button"
 					icon="close-line"
 					layout="ghost"
 					dense
-					@click="${this.handleDismissClick}"
+					@click="${this._handleDismissClick}"
 				>
 				</vwc-icon-button>
 			</div>
@@ -177,12 +161,12 @@ export class VWCSnackbar extends MWCSnackbarBase {
 	}
 
 	private static preprocessPositionConfig(input: PositionPair | undefined): PositionPair {
-		let result = DEFAULT_POSITION;
+  	let result = DEFAULT_POSITION;
 
-		if (typeof input === 'string' && POSITION_VALIDATOR.test(input)) {
-			result = input;
-		}
+  	if (typeof input === 'string' && POSITION_VALIDATOR.test(input)) {
+  		result = input;
+  	}
 
-		return result;
+  	return result;
 	}
 }
