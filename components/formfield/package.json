@@ -27,7 +27,7 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@material/mwc-formfield": "^0.21.0",
+		"@material/mwc-formfield": "^0.22.1",
 		"@vonage/vvd-core": "2.18.1",
 		"@vonage/vvd-style-coupling": "2.18.1",
 		"lit-element": "^2.4.0",
