@@ -67,7 +67,7 @@ describe('inline', () => {
 			const assignedElements = slot.assignedElements();
 			const [childEl] = assignedElements;
 			await waitNextTask();
-			expect(childEl.clientHeight).to.equal(18);
+			expect(childEl.clientHeight).to.equal(18 || 19);
 		});
 	});
 });
