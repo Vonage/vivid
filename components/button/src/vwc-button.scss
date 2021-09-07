@@ -59,6 +59,8 @@
 
 	.leading-icon,
 	.trailing-icon {
+		// TODO remove next line when VIV-704 resolved
+		#{connotation.$vvd-color-connotation}: initial;
 		display: flex;
 	}
 
@@ -94,17 +96,17 @@
 
 	:host([raised]) &,
 	:host([unelevated]) & {
-		--mdc-ripple-color: var(#{layout.$vvd-layout-color-text}, var(#{connotation.$vvd-color-on-connotation}));
+		--mdc-ripple-color: var(#{button-variables.$vvd-button-on-color}, var(#{layout.$vvd-layout-color-text}));
 	}
 
 	:host([unelevated]) & {
-		--mdc-theme-primary: var(#{layout.$vvd-layout-color-fill}, var(#{connotation.$vvd-color-connotation}));
-		--mdc-theme-on-primary: var(#{layout.$vvd-layout-color-text}, var(#{connotation.$vvd-color-on-connotation}));
+		--mdc-theme-primary: var(#{button-variables.$vvd-button-color}, var(#{layout.$vvd-layout-color-fill}));
+		--mdc-theme-on-primary: var(#{button-variables.$vvd-button-on-color}, var(#{layout.$vvd-layout-color-text}));
 	}
 
 	:host([outlined]) & {
-		--mdc-theme-primary: var(#{layout.$vvd-layout-color-text}, var(#{connotation.$vvd-color-on-connotation}));
-		--mdc-theme-on-primary: var(#{layout.$vvd-layout-color-fill}, var(#{connotation.$vvd-color-connotation}));
+		--mdc-theme-primary: var(#{button-variables.$vvd-button-color}, var(#{layout.$vvd-layout-color-text}));
+		--mdc-theme-on-primary: var(#{button-variables.$vvd-button-on-color}, var(#{layout.$vvd-layout-color-fill}));
 	}
 
 	:host([dense]) & {
