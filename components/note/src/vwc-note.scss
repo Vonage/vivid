@@ -5,7 +5,6 @@
 	$default: announcement,
 );
 @use '@vonage/vvd-foundation/scss/mixins/connotation';
-@use 'partials/vwc-note-variables.scss' as variables;
 
 
 .vwc-note {
