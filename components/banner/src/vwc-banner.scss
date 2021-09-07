@@ -36,6 +36,8 @@
 				padding-inline: 16px;
 
 				> .icon {
+					// TODO remove next line when VIV-704 resolved
+					#{connotation.$vvd-color-connotation}: initial;
 					--icon-size: var(#{banner-variables.$banner-icon-size}, 20px);
 					flex: 0 0 auto;
 					padding-inline-end: 15px;

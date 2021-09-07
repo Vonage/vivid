@@ -63,6 +63,7 @@ $vvd-badge--block-size: #{$namespace}--block-size;
 }
 
 .icon {
+	// TODO remove next line when VIV-704 resolved
 	#{connotation.$vvd-color-connotation}: initial;
 	--icon-size: 12px;
 	$margin: 8px;
