@@ -8,7 +8,7 @@ $namespace-shape: #{$namespace}-shape;
 	$shades: (soft, contrast),
 	$default: primary,
 );
-@use '@vonage/vvd-foundation/scss/mixins/connotation';
+@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
 	$variable-name: #{$namespace-shape}
 );
@@ -63,6 +63,7 @@ $vvd-badge--block-size: #{$namespace}--block-size;
 }
 
 .icon {
+	#{connotation.$vvd-color-connotation}: initial;
 	--icon-size: 12px;
 	$margin: 8px;
 
