@@ -117,10 +117,9 @@ export class VWCSnackbar extends MWCSnackbarBase {
 				@keydown="${this._handleKeydown}">
 				<div class="mdc-snackbar__surface">
 					${this.icon ? this.renderIcon() : ''}
-          ${accessibleSnackbarLabel(this.message, this.open)}
-					${this.legacy && this.header ? this.renderHeading() : ''}
+					${this.legacy ? this.renderLegacyUi() : accessibleSnackbarLabel(this.message, this.open)}
 					<div class="mdc-snackbar__actions">
-            <slot name="action" @click="${this._handleActionClick}"></slot>
+            ${!this.legacy ? html`<slot name="action" @click="${this._handleActionClick}"></slot>` : ''}
 						${this.renderDismissAction()}
           </div>
 				</div>
@@ -130,11 +129,23 @@ export class VWCSnackbar extends MWCSnackbarBase {
 	/* eslint-enable lit-a11y/click-events-have-key-events */
 
 	private renderHeading(): TemplateResult | string {
-  	return html`
-			<h3 class="heading">
-				${this.header}
-			</h3>`;
+		return html`<h3 class="heading" aria-hidden="true">
+					${this.header}
+				</h3>`;
 	}
+
+	/* eslint-disable lit-a11y/click-events-have-key-events */
+	// this is a legacy ui obligation which doesn't fit in the snackbar practice
+	// TODO depreacte on the 1st chance
+	private renderLegacyUi(): TemplateResult | string {
+		return html`
+			<div class="header-and-label">
+				${this.header ? this.renderHeading() : ''}
+				${accessibleSnackbarLabel(this.message, this.open)}
+				<slot name="action" @click="${this._handleActionClick}"></slot>
+			</div>`;
+	}
+	/* eslint-enable lit-a11y/click-events-have-key-events */
 
 	protected renderIcon(): TemplateResult {
   	return html`

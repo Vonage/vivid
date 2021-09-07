@@ -30,12 +30,12 @@ $spacing: 16px;
 	background-color: var(#{scheme-variables.$vvd-color-canvas});
 	border-radius: 6px;
 	box-shadow: 0 6px 8px rgba(0, 0, 0, 0.05), 0 12px 16px rgba(0, 0, 0, 0.05), 0 4px 24px rgba(0, 0, 0, 0.1);
-	color: var(#{scheme-variables.$vvd-color-on-canvas});
 }
 
 .mdc-snackbar__label {
 	@include typography.typography-cat-shorthand('body-2');
 	padding: 22px $spacing;
+	color: var(#{scheme-variables.$vvd-color-on-canvas});
 	-webkit-font-smoothing: initial;
 	-moz-osx-font-smoothing: initial;
 }
@@ -44,12 +44,16 @@ $spacing: 16px;
 	margin-block-end: auto;
 	margin-block-start: 20px;
 	margin-inline-start: $spacing;
+	.vwc-snackbar-legacy & {
+		#{connotation.$vvd-color-connotation}: initial;
+		color: var(#{scheme-variables.$vvd-color-on-canvas});
+	}
 }
 
-.dismiss-button {
-	margin-inline-end: -$spacing / 2;
-	margin-inline-start: -$spacing / 2;
-}
+// .dismiss-button {
+// 	margin-inline-end: -$spacing / 2;
+// 	margin-inline-start: -$spacing / 2;
+// }
 
 .dismiss-container {
 	display: flex;
@@ -65,61 +69,38 @@ $spacing: 16px;
 	}
 }
 
-::slotted([slot='action']:last-child) {
-	margin-inline-end: $spacing;
+::slotted([slot='action']) {
+	.vwc-snackbar-legacy & {
+		margin-block-start: $spacing;
+	}
 }
 
-// :host(:not([legacy])) {
-// 	.vvd-snackbar {
-// 		display: flex;
-// 		flex: 1;
-// 	}
+::slotted([slot='action']:last-child) {
+	:not(.vwc-snackbar-legacy) & {
+		margin-inline-end: $spacing;
+	}
+}
 
-// 	.actions-container {
-// 		display: flex;
-// 		padding: $spacing 0;
-// 	}
+// TODO depreacte on the 1st chance
+.vwc-snackbar-legacy .header-and-label {
+	padding: 22px $spacing;
 
-// 	.action-container {
-// 		display: flex;
-// 		flex: 1 0 auto;
-// 		align-items: center;
-// 	}
+	> .heading {
+		@include typography.typography-cat-shorthand('body-2-bold');
+		color: var(#{scheme-variables.$vvd-color-on-canvas});
+		margin-block-end: 4px;
+		margin-block-start: 0;
+	}
+	> .mdc-snackbar__label {
+		padding: 0;
+	}
+}
 
-// 	.action-container ::slotted(*) {
-// 		margin-inline-end: $spacing;
-// 	}
-
-
-// }
-
-// :host([legacy]) {
-// 	.vvd-snackbar {
-// 		width: 100%;
-// 	}
-
-// 	.snackbar-content {
-// 		display: flex;
-// 		flex-direction: row;
-// 		align-items: flex-start;
-// 		justify-content: space-between;
-// 	}
-
-// 	.action-container {
-// 		display: flex;
-
-// 		::slotted(*) {
-// 			margin-block-start: $spacing;
-// 		}
-// 	}
-
-// 	.dismiss-container .dismiss-button {
-// 		transform: translate(4px, -4px);
-// 	}
-
-// 	[header] {
-// 		.dismiss-container .dismiss-button {
-// 			transform: translate(4px, -28px);
-// 		}
-// 	}
-// }
+.vwc-snackbar-legacy  .mdc-snackbar__actions {
+	align-items: baseline;
+	margin-block-end: auto;
+	margin-block-start: 20px;
+	.dismiss-container::before {
+		content: initial;
+	}
+}
