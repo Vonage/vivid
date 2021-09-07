@@ -82,6 +82,16 @@ $spacing: 16px;
 }
 
 // TODO depreacte on the 1st chance
+.vwc-snackbar-legacy {
+	.mdc-snackbar__surface {
+		padding-inline-start: 8px;
+		&::before {
+			border: 1px solid var(#{scheme-variables.$vvd-color-neutral-40});
+			border-inline-start: 8px solid var(#{connotation.$vvd-color-connotation});
+		}
+	}
+}
+
 .vwc-snackbar-legacy .header-and-label {
 	padding: 22px $spacing;
 

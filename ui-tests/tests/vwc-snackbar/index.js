@@ -8,7 +8,7 @@ const message = 'Pascal argues that a rational person should live as though God 
 export async function createElementVariations(wrapper) {
 	snapshotTheWholePage(wrapper);
 	wrapper.innerHTML = `
-		<vwc-snackbar dismissible connotation="info" icon="megaphone-solid" message="${message}" header="New version available!">
+		<vwc-snackbar legacy dismissible connotation="info" icon="megaphone-solid" message="${message}" header="New version available!">
 			<vwc-button layout="outlined" shape="pill" slot="action">Action</vwc-button>
 		</vwc-snackbar>
 	`;
