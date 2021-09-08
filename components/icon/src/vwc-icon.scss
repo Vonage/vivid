@@ -1,6 +1,9 @@
 @use 'partials/vwc-icon-variables' as icon-variables;
 @forward 'partials/vwc-icon-connotation';
 
+:host {
+	display: inline-block;
+}
 
 :host([size='small']) {
 	#{icon-variables.$icon-size-variable-name}: 16px;
@@ -26,12 +29,17 @@ figure {
 }
 
 .icon {
-	display: inline-block;
-	width: var(--icon-size, var(#{icon-variables.$icon-size-variable-name}))/* --icon-size for backwards compatability */;
-	height: var(--icon-size, var(#{icon-variables.$icon-size-variable-name}))/* --icon-size for backwards compatability */;
-	block-size: var(--icon-size, var(#{icon-variables.$icon-size-variable-name}))/* --icon-size for backwards compatability */;
-	inline-size: var(--icon-size, var(#{icon-variables.$icon-size-variable-name}))/* --icon-size for backwards compatability */;
+	$size: var(--icon-size, var(#{icon-variables.$icon-size-variable-name}));/* --icon-size for backwards compatability */
+	display: inline-flex;
+	width: #{$size};
+	max-width: 100%;
+	height: #{$size};
+	max-height: 100%;
+	block-size: #{$size};
+	inline-size: #{$size};
 	line-height: 1;
+	max-block-size: 100%;
+	max-inline-size: 100%;
 	vertical-align: middle;
 
 	> svg {
