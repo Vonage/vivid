@@ -8,6 +8,10 @@ async function buildTests() {
 	await listOfComponents.forEach(pageGenerator.generateComponentTestPage);
 }
 
+async function buildMainPage() {
+	await pageGenerator.generateMainPage(componentsExcludeList);
+}
 module.exports = {
+	buildMainPage,
 	buildTests
 };

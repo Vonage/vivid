@@ -7,7 +7,7 @@
   aria-label=""
   class="mdc-fab"
 >
-  <span class="icon-slot-container">
+  <span class="material-icons mdc-fab__icon">
     <slot name="icon">
     </slot>
   </span>
@@ -22,7 +22,7 @@
   aria-label="info"
   class="mdc-fab"
 >
-  <span class="icon-slot-container">
+  <span class="material-icons mdc-fab__icon">
     <slot name="icon">
       <vwc-icon
         size="medium"
@@ -42,7 +42,7 @@
   aria-label="info"
   class="mdc-fab mdc-fab--mini mdc-fab--touch"
 >
-  <span class="icon-slot-container">
+  <span class="material-icons mdc-fab__icon">
     <slot name="icon">
       <vwc-icon
         size="small"

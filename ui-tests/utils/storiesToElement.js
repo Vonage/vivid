@@ -7,7 +7,7 @@ export function storiesToElement(stories) {
 			const tmpWrapper = document.createElement('div');
 			const currStoryGenerator = stories[currStory];
 
-			if (currStory === 'default' || typeof currStoryGenerator !== 'function') return;
+			if (currStory === 'default' || typeof currStoryGenerator !== 'function') return htmlString;
 
 			const currStoryContent = currStoryGenerator(currStoryGenerator.args);
 			render(currStoryContent, tmpWrapper);
@@ -17,6 +17,5 @@ export function storiesToElement(stories) {
 
 			return `${formerString} ${tmpWrapper.innerHTML}`;
 		}, '');
-
 	return textElementWrapper;
 }
