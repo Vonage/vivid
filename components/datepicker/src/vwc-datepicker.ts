@@ -8,7 +8,7 @@ import { LitFlatpickr } from 'lit-flatpickr';
 import * as weekSelectPlugin from 'flatpickr/dist/plugins/weekSelect/weekSelect';
 import { Options } from 'flatpickr/dist/types/options';
 import { style as vwcDatepickerStyles } from './vwc-datepicker.css.js';
-import { VWCButton } from '@vonage/vwc-button';
+import { VWCButton, ButtonLayout } from '@vonage/vwc-button';
 import { VWCIconButton } from '@vonage/vwc-icon-button';
 import { Shape } from '@vonage/vvd-foundation/constants';
 
@@ -307,7 +307,7 @@ export class VWCDatepicker extends LitFlatpickr {
 
 			const confirmButton: VWCButton = document.createElement('vwc-button');
 			confirmButton.label = 'Confirm';
-			confirmButton.layout = 'outlined';
+			confirmButton.layout = ButtonLayout.Outlined;
 			confirmButton.dense = true;
 
 			clearButton.addEventListener('click', (e: MouseEvent) => this.clearSelection(e));
