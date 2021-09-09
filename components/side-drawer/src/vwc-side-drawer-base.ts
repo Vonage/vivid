@@ -12,10 +12,10 @@ const blockingElements =
 	(document as DocumentWithBlockingElements).$blockingElements;
 
 /**
- * @cssprop [--vvd-side-drawer--background-color=The current theme's canvas (background) color] - Controls the background of the side drawer
- * @cssprop [--vvd-side-drawer--min-inline-size=280px] - Controls the size of the side drawer
- * @cssprop [--vvd-side-drawer--padding=16px] - Controls the padding of the side drawer
- * @cssprop [--vvd-side-drawer--z-index=6] - Controls the z-index of the side drawer
+ * @cssprop [side-drawer--background-color=The current theme's canvas (background) color] - Controls the background of the side drawer
+ * @cssprop [side-drawer--min-inline-size=280px] - Controls the size of the side drawer
+ * @cssprop [side-drawer--padding=16px] - Controls the padding of the side drawer
+ * @cssprop [side-drawer--z-index=6] - Controls the z-index of the side drawer
  * */
 export class VWCSideDrawerBase extends LitElement {
 	/**
@@ -94,10 +94,10 @@ export class VWCSideDrawerBase extends LitElement {
 		const alternate = this.alternate ? 'vvd-scheme-alternate' : undefined;
 
 		const classes = {
-			'vvd-side-drawer--alternate': this.alternate,
-			'vvd-side-drawer--dismissible': dismissible,
-			'vvd-side-drawer--modal': modal,
-			'vvd-side-drawer--open': this.open,
+			'side-drawer--alternate': this.alternate,
+			'side-drawer--dismissible': dismissible,
+			'side-drawer--modal': modal,
+			'side-drawer--open': this.open,
 		};
 
 		const aside = html`<aside
@@ -105,7 +105,7 @@ export class VWCSideDrawerBase extends LitElement {
 							class="side-drawer ${classMap(classes)}">
 							${topBar}
 
-							<div class="vvd-side-drawer--content">
+							<div class="side-drawer--content">
 								<slot></slot>
 							</div>
 						</aside>`;
@@ -129,7 +129,7 @@ export class VWCSideDrawerBase extends LitElement {
 
 	private renderTopBar(): TemplateResult {
 		return html`
-			<div class="vvd-side-drawer--top-bar">
+			<div class="side-drawer--top-bar">
 				<slot name="top-bar"></slot>
 			</div>`;
 	}
@@ -137,7 +137,7 @@ export class VWCSideDrawerBase extends LitElement {
 	private renderScrim(): TemplateResult {
 		return html`
 			<div
-				class="vvd-side-drawer--scrim"
+				class="side-drawer--scrim"
 				@click="${this.#handleScrimClick}"
 				@keydown="${this.#handleScrimClick}"
 			></div>`;
