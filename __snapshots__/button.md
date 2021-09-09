@@ -5,7 +5,7 @@
 ```html
 <button
   aria-label=""
-  class="mdc-button"
+  class="layout-text mdc-button"
   id="button"
 >
   <span class="leading-icon">
