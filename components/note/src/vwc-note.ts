@@ -4,7 +4,6 @@ import {
 	customElement, property, LitElement, CSSResult
 } from 'lit-element';
 import { ClassInfo, classMap } from 'lit-html/directives/class-map';
-import { ifDefined } from 'lit-html/directives/if-defined';
 import { style as vwcNoteStyle } from './vwc-note.css';
 import { Connotation } from '@vonage/vvd-foundation/constants';
 import { html, TemplateResult } from 'lit-element';
@@ -62,7 +61,7 @@ export class VWCNote extends LitElement {
 	}
 
 	private renderIcon(): TemplateResult {
-		return html`<vwc-icon class="note-icon" type="${ifDefined(this.icon)}" part="icon"></vwc-icon>`;
+		return html`<vwc-icon class="note-icon" type="${this.icon}" part="icon"></vwc-icon>`;
 	}
 
 	private renderHeader(): TemplateResult {
