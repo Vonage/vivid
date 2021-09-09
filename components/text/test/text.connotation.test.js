@@ -27,6 +27,7 @@ describe('text connotation', () => {
 			const [note] = addElement(textToDomToParent(`<${VWC_TEXT}></${VWC_TEXT}>`));
 			await assertConnotationAttribute({
 				element: note,
+				childrenAffected: ['.vwc-text'],
 				connotation: connotation,
 				stylesAffected: ['borderInlineStartColor'],
 			});
@@ -36,6 +37,7 @@ describe('text connotation', () => {
 			const [note] = addElement(textToDomToParent(`<${VWC_TEXT}></${VWC_TEXT}>`));
 			await assertConnotationProperty({
 				element: note,
+				childrenAffected: ['.vwc-text'],
 				connotation: connotation,
 				stylesAffected: ['borderInlineStartColor'],
 			});
