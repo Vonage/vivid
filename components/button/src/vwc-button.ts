@@ -20,7 +20,7 @@ declare global {
 // @ts-ignore
 MWCButton.styles = [styleCoupling, mwcButtonStyles, vwcButtonStyle];
 
-type ButtonLayout = Extract<
+export type ButtonLayout = Extract<
 	Layout,
 	Layout.Filled | Layout.Outlined | Layout.Ghost
 	>;
