@@ -97,9 +97,13 @@ export class VWCBanner extends LitElement {
 		};
 	}
 
-	protected renderIcon(): TemplateResult {
-		const connotation = this.connotation || Connotation.Info;
-		const type = connotationIconMap.get(connotation);
+	protected renderIcon(type?: string): TemplateResult {
+		if (!type) {
+			const connotation = this.connotation || Connotation.Info;
+			// logical assignment not yet supported in all...
+			// type ||= connotationIconMap.get(connotation);
+			type = connotationIconMap.get(connotation);
+		}
 
 		return html`<vwc-icon class="icon" .type="${type}"></vwc-icon>`;
 	}
@@ -109,7 +113,7 @@ export class VWCBanner extends LitElement {
 			<div class="banner ${classMap(this.getRenderClasses())}">
 				<header class="header">
 					<span class="user-content">
-						${this.renderIcon()}
+						${this.renderIcon(this.icon)}
 						<div role="alert" class="message">${this.message}</div>
 						<slot class="action-items" name="actionItems"></slot>
 					</span>
