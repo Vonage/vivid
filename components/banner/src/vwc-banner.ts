@@ -67,7 +67,8 @@ export class VWCBanner extends LitElement {
 	#transitionTimer?:number;
 
 	protected firstUpdated() {
-		(this.shadowRoot?.querySelector('.container') as HTMLElement).style.setProperty('--transition-delay', `${ANIMATION_DURATION}ms`);
+		// refactor to query decorator
+		(this.shadowRoot?.querySelector('.banner') as HTMLElement).style.setProperty('--transition-delay', `${ANIMATION_DURATION}ms`);
 	}
 
 	updated(changedProperties:PropertyValues) {
