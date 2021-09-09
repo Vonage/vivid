@@ -307,7 +307,7 @@ export class VWCDatepicker extends LitFlatpickr {
 
 			const confirmButton: VWCButton = document.createElement('vwc-button');
 			confirmButton.label = 'Confirm';
-			confirmButton.layout = ButtonLayout.Outlined;
+			confirmButton.layout = 'outlined' as ButtonLayout;
 			confirmButton.dense = true;
 
 			clearButton.addEventListener('click', (e: MouseEvent) => this.clearSelection(e));
