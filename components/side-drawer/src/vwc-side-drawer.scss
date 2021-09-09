@@ -1,11 +1,10 @@
 $vvd-side-drawer--padding: --vvd-side-drawer--padding;
 $vvd-side-drawer--min-inline-size: --vvd-side-drawer--min-inline-size;
 $vvd-side-drawer--z-index: --vvd-side-drawer--z-index;
-$vvd-side-drawer--background-color: --vvd-side-drawer--background-color;
 
-$z-index-default: 6;
-$padding-default: 16px;
-$min-inline-size-default: 280px;
+$z-index-default: var(#{$vvd-side-drawer--z-index}, 6);
+$padding-default: var(#{$vvd-side-drawer--padding}, 16px);
+$min-width: 280px;
 
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-typography/scss/typography' as typography;
@@ -17,13 +16,13 @@ $min-inline-size-default: 280px;
 }
 
 .side-drawer {
-	z-index: var(#{$vvd-side-drawer--z-index}, #{$z-index-default});
+	z-index: #{$z-index-default};
 	background-color: var(#{scheme-variables.$vvd-color-canvas});
 	color: var(#{scheme-variables.$vvd-color-on-canvas});
-	min-inline-size: var(#{$vvd-side-drawer--min-inline-size}, #{$min-inline-size-default});
+	min-inline-size: var(#{$vvd-side-drawer--min-inline-size}, $min-width);
 
 	&:not(.vvd-side-drawer--alternate):not(.vvd-side-drawer--modal) {
-		background-color: var(#{$vvd-side-drawer--background-color}, #{scheme-variables.$vvd-color-neutral-10});
+		background-color: var(#{scheme-variables.$vvd-color-neutral-10});
 	}
 
 	&.vvd-side-drawer--modal,
@@ -75,3 +74,6 @@ $min-inline-size-default: 280px;
 	background-color: var(#{scrim-mixins.$vvd-scrim--background-color});
 	opacity: var(#{scrim-mixins.$vvd-scrim--opacity});
 }
+
+
+
