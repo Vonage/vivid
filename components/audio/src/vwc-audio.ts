@@ -58,7 +58,7 @@ export class VWCAudio extends LitElement {
 	@property({ type: String, reflect: true })
 	connotation?: AudioConnotation;
 
-	@query('.audio-tag')
+	@query('.audio-el')
 	_audio!:HTMLAudioElement;
 
 	@query('.scrubber')
@@ -137,7 +137,7 @@ export class VWCAudio extends LitElement {
 
 	render(): TemplateResult {
 		return html`
-			<audio class='audio-tag' src='${ifDefined(this.src)}'></audio>
+			<audio class='audio-el' src='${ifDefined(this.src)}'></audio>
 			<div class="audio ${classMap(this.getRenderClasses())}" aria-controls="${ifDefined(this.ariaControls)}">
 				<button
 					aria-label="Play/Pause"
