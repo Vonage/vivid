@@ -39,7 +39,7 @@ $all-layouts: (
 	#{variables.$vvd-layout-color-text}: var(#{connotation.$vvd-color-connotation});
 }
 
-@function get-pseudo($type) {
+@function get-typed-selector($type) {
 	@return '.#{config.get-scope-prefix()}layout-#{$type}';
 }
 
@@ -47,18 +47,18 @@ $all-layouts: (
 	$layout-set: functions.pick-list(config.$layout-set, config.$predefined-layout-set);
 
 	@each $type in $layout-set {
-		$pseudo: get-pseudo($type);
+		$typed-selector: get-typed-selector($type);
 
-		$selector: selector.unify(&, $pseudo);
+		$selector: selector.unify(&, $typed-selector);
 
 		@if $type == config.$default and list.length($layout-set) > 1 {
-			$rule-out-pseudo: &;
+			$rule-out-typed-selector: &;
 			@each $rule-out-type in $layout-set {
 				@if $rule-out-type != config.$default {
-					$rule-out-pseudo: '#{$rule-out-pseudo}:not(#{get-pseudo($rule-out-type)})';
+					$rule-out-typed-selector: '#{$rule-out-typed-selector}:not(#{get-typed-selector($rule-out-type)})';
 				}
 			}
-			$selector: selector.parse(#{$selector, $rule-out-pseudo});
+			$selector: selector.parse(#{$selector, $rule-out-typed-selector});
 		}
 
 		@at-root #{$selector} {

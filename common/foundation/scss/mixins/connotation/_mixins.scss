@@ -24,7 +24,7 @@
 	#{variables.$vvd-color-connotation}: linear-gradient(to right, $start, $end);
 }
 
-@function get-pseudo($type) {
+@function get-typed-selector($type) {
 	@if config.$is-host {
 		@return '[connotation="#{$type}"i]';
 	} @else {
@@ -34,13 +34,13 @@
 
 @mixin selectors($types...) {
 	@each $type in $types {
-		$pseudo: get-pseudo($type);
+		$typed-selector: get-typed-selector($type);
 		$selector: '';
 		// backwards compatability on components aren't yet structured with base wrapper
 		@if config.$is-host {
-			$selector: selector.parse('#{&}(#{$pseudo})');
+			$selector: selector.parse('#{&}(#{$typed-selector})');
 		} @else {
-			$selector: selector.unify(&, $pseudo);
+			$selector: selector.unify(&, $typed-selector);
 		}
 
 		$all-connotation-types: map.keys(
@@ -51,21 +51,21 @@
 		);
 
 		@if $type == config.$default and list.length($all-connotation-types) > 1 {
-			$rule-out-pseudo: '';
+			$rule-out-typed-selector: '';
 			// backwards compatability on components aren't yet structured with base wrapper
 			@if config.$is-host {
-				$rule-out-pseudo: ':host(';
+				$rule-out-typed-selector: ':host(';
 			} @else {
-				$rule-out-pseudo: &;
+				$rule-out-typed-selector: &;
 			}
 			@each $rule-out-type in $all-connotation-types {
 				@if $rule-out-type != config.$default {
-					$rule-out-pseudo: '#{$rule-out-pseudo}:not(#{get-pseudo($rule-out-type)})';
+					$rule-out-typed-selector: '#{$rule-out-typed-selector}:not(#{get-typed-selector($rule-out-type)})';
 				}
 			}
 			// backwards compatability on components aren't yet structured with base wrapper
-			@if config.$is-host { $rule-out-pseudo: $rule-out-pseudo ')'; }
-			$selector: selector.parse(#{$selector, $rule-out-pseudo});
+			@if config.$is-host { $rule-out-typed-selector: $rule-out-typed-selector ')'; }
+			$selector: selector.parse(#{$selector, $rule-out-typed-selector});
 		}
 
 		@at-root #{$selector} {
