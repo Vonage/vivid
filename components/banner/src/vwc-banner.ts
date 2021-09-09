@@ -100,8 +100,6 @@ export class VWCBanner extends LitElement {
 	protected renderIcon(type?: string): TemplateResult {
 		if (!type) {
 			const connotation = this.connotation || Connotation.Info;
-			// logical assignment not yet supported in all browsers
-			// type ||= connotationIconMap.get(connotation);
 			type = connotationIconMap.get(connotation);
 		}
 
