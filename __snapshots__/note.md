@@ -3,9 +3,11 @@
 #### `should have internal contents`
 
 ```html
-<div class="note-text">
-  <slot class="note-message">
-  </slot>
+<div class="vwc-note">
+  <div class="note-text">
+    <slot class="note-message">
+    </slot>
+  </div>
 </div>
 
 ```
@@ -13,18 +15,20 @@
 #### `should have internal contents (full layout)`
 
 ```html
-<vwc-icon
-  class="note-icon"
-  part="icon"
-  type="home"
->
-</vwc-icon>
-<div class="note-text">
-  <div class="note-header">
-    Title
+<div class="connotation-cta vwc-note">
+  <vwc-icon
+    class="note-icon"
+    part="icon"
+    type="home"
+  >
+  </vwc-icon>
+  <div class="note-text">
+    <div class="note-header">
+      Title
+    </div>
+    <slot class="note-message">
+    </slot>
   </div>
-  <slot class="note-message">
-  </slot>
 </div>
 
 ```
@@ -34,12 +38,14 @@
 ####   `should have header when header is set`
 
 ```html
-<div class="note-text">
-  <div class="note-header">
-    Title
+<div class="vwc-note">
+  <div class="note-text">
+    <div class="note-header">
+      Title
+    </div>
+    <slot class="note-message">
+    </slot>
   </div>
-  <slot class="note-message">
-  </slot>
 </div>
 
 ```
@@ -47,12 +53,14 @@
 ####   `should have header added when header is set dynamically (property)`
 
 ```html
-<div class="note-text">
-  <div class="note-header">
-    Title
+<div class="vwc-note">
+  <div class="note-text">
+    <div class="note-header">
+      Title
+    </div>
+    <slot class="note-message">
+    </slot>
   </div>
-  <slot class="note-message">
-  </slot>
 </div>
 
 ```
@@ -60,12 +68,14 @@
 ####   `should have header added when header is set dynamically (attribute)`
 
 ```html
-<div class="note-text">
-  <div class="note-header">
-    Title
+<div class="vwc-note">
+  <div class="note-text">
+    <div class="note-header">
+      Title
+    </div>
+    <slot class="note-message">
+    </slot>
   </div>
-  <slot class="note-message">
-  </slot>
 </div>
 
 ```
@@ -73,9 +83,11 @@
 ####   `should have header removed when header is unset (property)`
 
 ```html
-<div class="note-text">
-  <slot class="note-message">
-  </slot>
+<div class="vwc-note">
+  <div class="note-text">
+    <slot class="note-message">
+    </slot>
+  </div>
 </div>
 
 ```
@@ -83,9 +95,11 @@
 ####   `should have header removed when header is unset (attribute)`
 
 ```html
-<div class="note-text">
-  <slot class="note-message">
-  </slot>
+<div class="vwc-note">
+  <div class="note-text">
+    <slot class="note-message">
+    </slot>
+  </div>
 </div>
 
 ```
@@ -95,15 +109,17 @@
 ####   `should have icon when icon is set`
 
 ```html
-<vwc-icon
-  class="note-icon"
-  part="icon"
-  type="home"
->
-</vwc-icon>
-<div class="note-text">
-  <slot class="note-message">
-  </slot>
+<div class="vwc-note">
+  <vwc-icon
+    class="note-icon"
+    part="icon"
+    type="home"
+  >
+  </vwc-icon>
+  <div class="note-text">
+    <slot class="note-message">
+    </slot>
+  </div>
 </div>
 
 ```
@@ -111,15 +127,17 @@
 ####   `should have icon added when icon is set dynamically (property)`
 
 ```html
-<vwc-icon
-  class="note-icon"
-  part="icon"
-  type="home"
->
-</vwc-icon>
-<div class="note-text">
-  <slot class="note-message">
-  </slot>
+<div class="vwc-note">
+  <vwc-icon
+    class="note-icon"
+    part="icon"
+    type="home"
+  >
+  </vwc-icon>
+  <div class="note-text">
+    <slot class="note-message">
+    </slot>
+  </div>
 </div>
 
 ```
@@ -127,15 +145,17 @@
 ####   `should have icon added when icon is set dynamically (attribute)`
 
 ```html
-<vwc-icon
-  class="note-icon"
-  part="icon"
-  type="home"
->
-</vwc-icon>
-<div class="note-text">
-  <slot class="note-message">
-  </slot>
+<div class="vwc-note">
+  <vwc-icon
+    class="note-icon"
+    part="icon"
+    type="home"
+  >
+  </vwc-icon>
+  <div class="note-text">
+    <slot class="note-message">
+    </slot>
+  </div>
 </div>
 
 ```
@@ -143,9 +163,11 @@
 ####   `should have icon removed when icon is unset (property)`
 
 ```html
-<div class="note-text">
-  <slot class="note-message">
-  </slot>
+<div class="vwc-note">
+  <div class="note-text">
+    <slot class="note-message">
+    </slot>
+  </div>
 </div>
 
 ```
@@ -153,9 +175,11 @@
 ####   `should have icon removed when icon is unset (attribute)`
 
 ```html
-<div class="note-text">
-  <slot class="note-message">
-  </slot>
+<div class="vwc-note">
+  <div class="note-text">
+    <slot class="note-message">
+    </slot>
+  </div>
 </div>
 
 ```
