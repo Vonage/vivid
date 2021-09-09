@@ -61,13 +61,13 @@ describe('inline', () => {
 		it(`should set grid template`, async () => {
 			const actualElement = getNewElement();
 			actualElement.gridTemplate = "rows";
-			actualElement.style.width = "1300px";
+			actualElement.style.height = "1300px";
 			await waitNextTask();
 			const { shadowRoot: { firstElementChild: slot } } = actualElement;
 			const assignedElements = slot.assignedElements();
 			const [childEl] = assignedElements;
 			await waitNextTask();
-			expect(childEl.clientHeight).to.equal(18 || 19);
+			expect(childEl.clientHeight).to.be.within(18, 19);
 		});
 	});
 });
