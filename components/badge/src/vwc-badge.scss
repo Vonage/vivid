@@ -48,7 +48,7 @@ $vvd-badge--block-size: #{$namespace}--block-size;
 	@include connotation.connotation;
 	display: inline-block;
 	padding: 0 10px;
-	border: var(#{layout.$vvd-layout-color-outline});
+	border: 1px solid var(#{layout.$vvd-layout-color-outline});
 	background-color: var(#{layout.$vvd-layout-color-fill});
 	border-radius: var(#{$namespace-shape});
 	color: var(#{layout.$vvd-layout-color-text});

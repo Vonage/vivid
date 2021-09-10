@@ -2,22 +2,21 @@
 @use '@vonage/vwc-icon/src/partials/vwc-icon-variables' as icon-variables;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-typography/scss/typography' as typography;
-@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation with (
+@use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
 	$connotations-set: primary cta,
-	$shades: contrast soft,
-	$default: primary
+	$shades: soft contrast,
+	$default: primary,
 );
-
+@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
 	$variable-name: #{tag-variables.$namespace-shape}
 );
-@use '@vonage/vvd-foundation/scss/mixins/layout-mixins' as layout-mixins with (
-	$layouts: outlined soft,
-	$variable-prefix: #{tag-variables.$namespace-layout}
+@use '@vonage/vvd-foundation/scss/mixins/layout/config' as layout-config with (
+	$layout-set: outlined soft,
+	$default: soft
 );
+@use '@vonage/vvd-foundation/scss/mixins/layout' as layout;
 
-
-@include connotation.connotation;
 
 @include shape-mixins.shape(
 	$shapes: (
@@ -27,24 +26,21 @@
 	$default: pill
 );
 
-@include layout-mixins.layout();
-@include layout-mixins.layout-default(soft);
-
-
 .vwc-tag {
+	@include connotation.connotation;
+	@include layout.layout;
 	z-index: 0;
 	display: inline-flex;
 	align-items: center;
 	padding: 0 var(#{tag-variables.$namespace-padding-inline});
-	border: var(#{tag-variables.$namespace-layout}--outline);
-	background-color: var(#{tag-variables.$namespace-layout}--fill);
+	border: 1px solid var(#{layout.$vvd-layout-color-outline});
+	background-color: var(#{layout.$vvd-layout-color-fill});
 	block-size: var(#{tag-variables.$namespace-block-size});
 	border-radius: var(#{tag-variables.$namespace-shape});
-	color: var(#{tag-variables.$namespace-layout}--text);
+	color: var(#{layout.$vvd-layout-color-text});
 
-	:host([layout="outlined"i]) & {
-		// #{tag-variables.$namespace-layout}--outline: 1px solid var(#{scheme-variables.$vvd-color-neutral-50});
-		border: 1px solid var(#{scheme-variables.$vvd-color-neutral-50});
+	&.layout-outlined {
+		#{layout.$vvd-layout-color-outline}: var(#{scheme-variables.$vvd-color-neutral-50});
 	}
 
 	:host(:not([dense]):not([enlarged])) & {
@@ -87,12 +83,17 @@
 	}
 
 	&:not(.vwc-tag--selected) {
-		#{tag-variables.$namespace-layout}--text: var(#{scheme-variables.$vvd-color-neutral-90});
+		#{layout.$vvd-layout-color-text}: var(#{scheme-variables.$vvd-color-neutral-90});
+		&.layout-filled,
+		&:not(.layout-filled):not(.layout-outlined) {
+			background-color: var(#{scheme-variables.$vvd-color-neutral-20});
+		}
 	}
 
 	&.vwc-tag--selected {
-		:host([layout="outlined"i]) & {
-			background-color: var(--vvd-color-connotation-soft);
+		&.layout-outlined {
+			background-color: var(#{connotation.$vvd-color-connotation}-soft);
+			color: var(#{connotation.$vvd-color-connotation}-contrast);
 		}
 	}
 }

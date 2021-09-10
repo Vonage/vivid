@@ -24,13 +24,15 @@ $all-layouts: (
 
 %outlined {
 	#{variables.$vvd-layout-color-fill}: transparent;
-	#{variables.$vvd-layout-color-outline}: 1px solid var(#{connotation.$vvd-color-connotation});
-	#{variables.$vvd-layout-color-text}: var(#{connotation.$vvd-color-connotation});
+	#{variables.$vvd-layout-color-outline}: var(#{connotation.$vvd-color-connotation});
+	//! advise @jshenkman whether which should be the correct value
+	// #{variables.$vvd-layout-color-text}: var(#{scheme-variables.$vvd-color-on-canvas});
+	#{variables.$vvd-layout-color-text}: var(#{connotation.$vvd-color-connotation}-contrast);
 }
 
 %soft {
 	#{variables.$vvd-layout-color-fill}: var(#{connotation.$vvd-color-connotation}-soft);
-	#{variables.$vvd-layout-color-text}: var(#{scheme-variables.$vvd-color-on-canvas});
+	#{variables.$vvd-layout-color-text}: var(#{connotation.$vvd-color-connotation}-contrast);
 }
 
 %text,

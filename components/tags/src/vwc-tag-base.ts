@@ -90,6 +90,8 @@ export class VWCTagBase extends LitElement {
   protected renderTagSelectable(): TemplateResult {
   	const classes = {
   		'vwc-tag--selected': this.selected,
+  		[`connotation-${this.connotation}`]: !!this.connotation,
+  		[`layout-${this.layout}`]: !!this.layout
   	};
 
   	return html`<div
