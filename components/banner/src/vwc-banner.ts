@@ -43,7 +43,7 @@ const createCustomEvent = function (eventName:string, props = {}):CustomEvent {
 	});
 };
 
-const escapeHandlers:WeakMap<VWCBanner, (this:Window, ev:KeyboardEvent)=> any> = new WeakMap();
+//const escapeHandlers:WeakMap<VWCBanner, (this:Window, ev:KeyboardEvent)=> any> = new WeakMap();
 
 @customElement('vwc-banner')
 export class VWCBanner extends LitElement {
@@ -73,18 +73,7 @@ export class VWCBanner extends LitElement {
 	protected firstUpdated() {
 		(this.shadowRoot?.querySelector('.container') as HTMLElement).style.setProperty('--transition-delay', `${ANIMATION_DURATION}ms`);
 	}
-	connectedCallback() {
-		super.connectedCallback();
-		const handler = (ev: KeyboardEvent) => {
-			if (ev.key === KEY_ESCAPE) this.open = false;
-		};
-		escapeHandlers.set(this, handler);
-		window?.addEventListener('keydown', handler);
-	}
-	disconnectedCallback() {
-		window?.removeEventListener('keydown', escapeHandlers.get(this) as ()=>any);
-		super.disconnectedCallback();
-	}
+
 	updated(changedProperties:PropertyValues) {
 		if (changedProperties.has('open')) {
 			clearTimeout(this.#transitionTimer);
@@ -105,7 +94,7 @@ export class VWCBanner extends LitElement {
 	}
 	render() {
 		return html`
-			<div class="container">
+			<div tabindex="0" @keydown="${(e:KeyboardEvent) => this.open = !(e.key === KEY_ESCAPE && this.dismissible)}" class="container">
 				<header class="header">
 					<span class="user-content">
 						<vwc-icon class="icon" type="${this.icon ?? connotationToIconType(this.connotation)}"></vwc-icon>
