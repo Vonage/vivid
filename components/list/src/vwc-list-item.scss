@@ -3,7 +3,7 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
 @use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
-	$connotations-set: primary cta,
+	$connotations-set: primary cta info,
 	$default: primary,
 	$scope: list-item,
 	$is-host: true

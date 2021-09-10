@@ -26,7 +26,7 @@
 
 @function get-typed-selector($type) {
 	@if config.$is-host {
-		@return '[connotation="#{$type}"i]';
+		@return ':host([connotation="#{$type}"i])';
 	} @else {
 		@return '.#{config.get-scope-prefix()}connotation-#{$type}';
 	}
@@ -36,9 +36,9 @@
 	@each $type in $types {
 		$typed-selector: get-typed-selector($type);
 		$selector: '';
-		// backwards compatability on components aren't yet structured with base wrapper
+		// for backwards compatability on components that aren't yet structured with base wrapper
 		@if config.$is-host {
-			$selector: selector.parse('#{&}(#{$typed-selector})');
+			$selector: selector.parse('#{&}#{$typed-selector}');
 		} @else {
 			$selector: selector.unify(&, $typed-selector);
 		}
@@ -52,7 +52,7 @@
 
 		@if $type == config.$default and list.length($all-connotation-types) > 1 {
 			$rule-out-typed-selector: '';
-			// backwards compatability on components aren't yet structured with base wrapper
+			// for backwards compatability on components that aren't yet structured with base wrapper
 			@if config.$is-host {
 				$rule-out-typed-selector: ':host(';
 			} @else {
@@ -63,7 +63,7 @@
 					$rule-out-typed-selector: '#{$rule-out-typed-selector}:not(#{get-typed-selector($rule-out-type)})';
 				}
 			}
-			// backwards compatability on components aren't yet structured with base wrapper
+			// for backwards compatability on components that aren't yet structured with base wrapper
 			@if config.$is-host { $rule-out-typed-selector: $rule-out-typed-selector ')'; }
 			$selector: selector.parse(#{$selector, $rule-out-typed-selector});
 		}
