@@ -2,8 +2,7 @@ import {
 	html, LitElement, property, TemplateResult
 } from 'lit-element';
 import { nothing } from 'lit-html';
-import { classMap } from 'lit-html/directives/class-map';
-
+import { ClassInfo, classMap } from 'lit-html/directives/class-map';
 import { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
 import { handleMultipleDenseProps } from '@vonage/vvd-foundation/general-utils';
 
@@ -67,9 +66,16 @@ export class VWCBadgeBase extends LitElement {
   	handleMultipleDenseProps(this, changes);
 	}
 
+	protected getRenderClasses(): ClassInfo {
+		return {
+			[`connotation-${this.connotation}`]: !!this.connotation,
+			[`layout-${this.layout}`]: !!this.layout
+		};
+	}
+
 	protected render(): TemplateResult {
 		return html`
-			<span class="vwc-badge">
+			<span class="vwc-badge ${classMap(this.getRenderClasses())}">
 				${this.renderIcon(this.icon)}
 				<slot>
 					${this.text || nothing}

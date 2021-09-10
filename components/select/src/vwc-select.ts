@@ -12,7 +12,7 @@ import {
 import { Select as MWCSelect } from '@material/mwc-select';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 import { style as vwcSelectStyle } from './vwc-select.css';
-import { style as mwcSelectStyle } from '@material/mwc-select/mwc-select-css.js';
+import { styles as mwcSelectStyles } from '@material/mwc-select/mwc-select.css.js';
 import { associateWithForm } from '@vonage/vvd-foundation/form-association';
 import { Shape } from '@vonage/vvd-foundation/constants';
 import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
@@ -27,7 +27,7 @@ const DROPDOWN_ICON_CLASS = 'vvd-select-dropdown-icon';
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-MWCSelect.styles = [styleCoupling, mwcSelectStyle, vwcSelectStyle];
+MWCSelect.styles = [styleCoupling, mwcSelectStyles, vwcSelectStyle];
 
 type SelectShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
 

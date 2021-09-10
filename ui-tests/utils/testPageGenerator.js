@@ -51,7 +51,21 @@ async function generateComponentTestPage(componentName) {
 	await saveFile(`../tmp/${componentName}/index.js`, fileContents);
 }
 
+async function generateMainPage(excludeList = []) {
+	console.log('Generating main page');
+	const testsNames = getTestFolders()
+		.filter(testName => !excludeList.includes(testName));
+
+	const fileContents = testsNames.reduce((htmlString, testName) => {
+		htmlString += `<h2><a href="./${testName}.html">${testName}</a></h2>`;
+		return htmlString;
+	}, '');
+
+	await saveFile('../tmp/index.html.tmpl', fileContents);
+}
+
 module.exports = {
+	generateMainPage,
 	generateTestPage,
 	generateComponentTestPage
 };

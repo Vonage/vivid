@@ -1,5 +1,4 @@
 $namespace: --vvd-badge;
-$namespace-layout: #{$namespace}-layout;
 $namespace-shape: #{$namespace}-shape;
 
 @use '@vonage/vwc-icon/src/partials/vwc-icon-variables' as icon-variables;
@@ -8,19 +7,19 @@ $namespace-shape: #{$namespace}-shape;
 @use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
 	$connotations-set: primary cta success alert warning info,
 	$shades: (soft, contrast),
-	$default: primary
+	$default: primary,
 );
-@use '@vonage/vvd-foundation/scss/mixins/connotation';
-
+@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
 	$variable-name: #{$namespace-shape}
 );
-@use '@vonage/vvd-foundation/scss/mixins/layout-mixins' as layout-mixins with (
-	$layouts: filled outlined soft,
-	$variable-prefix: #{$namespace-layout}
+@use '@vonage/vvd-foundation/scss/mixins/layout/config' as layout-config with (
+	$layout-set: filled outlined soft,
+	$default: filled,
 );
+@use '@vonage/vvd-foundation/scss/mixins/layout' as layout;
 
-$vvd-badge--block-size: --#{$namespace}--block-size;
+$vvd-badge--block-size: #{$namespace}--block-size;
 
 
 @include shape-mixins.shape(
@@ -30,8 +29,6 @@ $vvd-badge--block-size: --#{$namespace}--block-size;
 	)
 );
 
-@include layout-mixins.layout();
-@include layout-mixins.layout-default(filled);
 
 :host(:not([dense]):not([enlarged])) {
 	#{$vvd-badge--block-size}: 24px;
@@ -47,13 +44,14 @@ $vvd-badge--block-size: --#{$namespace}--block-size;
 
 .vwc-badge {
 	@include typography.typography-cat-shorthand('caption-bold');
-	display: inline-flex;
-	align-items: center;
+	@include layout.layout;
+	@include connotation.connotation;
+	display: inline-block;
 	padding: 0 10px;
-	border: var(#{$namespace-layout}--outline);
-	background-color: var(#{$namespace-layout}--fill);
+	border: var(#{layout.$vvd-layout-color-outline});
+	background-color: var(#{layout.$vvd-layout-color-fill});
 	border-radius: var(#{$namespace-shape});
-	color: var(#{$namespace-layout}--text);
+	color: var(#{layout.$vvd-layout-color-text});
 	line-height: var(#{$vvd-badge--block-size});
 
 	:host([dense]) & {
@@ -66,7 +64,9 @@ $vvd-badge--block-size: --#{$namespace}--block-size;
 }
 
 .icon {
-	#{icon-variables.$icon-size-variable-name}: 12px;
+	// TODO remove next line when VIV-704 resolved
+	#{connotation.$vvd-color-connotation}: initial;
+	--icon-size: 12px;
 	$margin: 8px;
 
 	&.icon--leading {

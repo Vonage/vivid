@@ -1,7 +1,7 @@
 import '@vonage/vvd-core';
 import { customElement } from 'lit-element';
-import { MenuSurfaceBase } from '@material/mwc-menu/mwc-menu-surface-base';
-import { style as mwcSurfaceStyle } from '@material/mwc-menu/mwc-menu-surface-css';
+import { MenuSurfaceBase } from '@material/mwc-menu/mwc-menu-surface-base.js';
+import { styles as mwcSurfaceStyles } from '@material/mwc-menu/mwc-menu-surface.css.js';
 import { style as vwcSurfaceStyle } from './vwc-surface.css';
 
 export const COMPONENT_NAME = 'vwc-surface';
@@ -14,5 +14,5 @@ declare global {
 
 @customElement('vwc-surface')
 export class VWCSurface extends MenuSurfaceBase {
-	static styles = [mwcSurfaceStyle, vwcSurfaceStyle];
+	static styles = [mwcSurfaceStyles, vwcSurfaceStyle];
 }
