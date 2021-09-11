@@ -3,12 +3,15 @@ import { storiesToElement } from '../../utils/storiesToElement';
 import * as stories from '@vonage/vwc-textarea/stories/textarea.stories';
 
 export async function createElementVariations(wrapper) {
-	const textElementWrapper = storiesToElement(stories);
+	const elementWrapper = storiesToElement(stories);
 
-	wrapper.appendChild(textElementWrapper);
+	wrapper.appendChild(elementWrapper);
+
+	wrapper.classList.add('grid');
+	elementWrapper.classList.add('grid');
 
 	await new Promise(res => setTimeout(() => {
-		[...textElementWrapper.querySelectorAll('vwc-textfield')].forEach((child) => {
+		[...elementWrapper.querySelectorAll('vwc-textfield')].forEach((child) => {
 			child.reportValidity();
 			child.firstElementChild.blur();
 		});

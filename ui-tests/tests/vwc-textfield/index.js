@@ -4,19 +4,19 @@ import { storiesToElement } from '../../utils/storiesToElement';
 
 
 export async function createElementVariations(wrapper) {
-	const textElementWrapper = storiesToElement(stories);
-
-	wrapper.appendChild(textElementWrapper);
+	const testWrapper = storiesToElement(stories);
+	wrapper.classList.add('grid');
+	testWrapper.classList.add('grid');
+	wrapper.appendChild(testWrapper);
 
 	await new Promise(res => setTimeout(() => {
-		[...textElementWrapper.querySelectorAll('vwc-textfield')].forEach((child) => {
+		[...testWrapper.querySelectorAll('vwc-textfield')].forEach((child) => {
 			child.reportValidity();
 			child.firstElementChild.blur();
 		});
 		res();
 	}, 0));
-	// temporary delay to prevent test failure due to floating label initial transition
-	// should be handled in textfield refactoring
+
 	await new Promise(resolve => setTimeout(resolve, 500));
 }
 
