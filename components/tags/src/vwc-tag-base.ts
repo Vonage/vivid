@@ -94,9 +94,8 @@ export class VWCTagBase extends LitElement {
   		[`layout-${this.layout}`]: !!this.layout
   	};
 
-  	return html`<div
+  	return html`<span
 			id="button"
-			type="button"
 			class="vwc-tag vwc-tag-button ${classMap(classes)}"
 			role="option"
 			aria-selected="${this.selected}"
@@ -118,7 +117,7 @@ export class VWCTagBase extends LitElement {
 			<span class="text">
 				${this.text}
 			</span>
-		</div>`;
+		</span>`;
   }
 
   render(): TemplateResult {

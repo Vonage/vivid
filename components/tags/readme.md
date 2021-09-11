@@ -31,3 +31,6 @@ Web Component Analyzer analyzing 9 files...
 | `text`         | `string \| undefined`                                 |
 | `trailingIcon` | `string \| undefined`                                 |
 
+## Accessibility
+
+Authors MUST ensure tags default to role _option_ are contained in, or owned by, a tags set which default to the *listbox* role. Options not associated with a listbox might not be correctly mapped to an accessibility API
