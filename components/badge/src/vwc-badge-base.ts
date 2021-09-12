@@ -68,9 +68,8 @@ export class VWCBadgeBase extends LitElement {
 
 	protected getRenderClasses(): ClassInfo {
 		return {
-			'vwc-badge--layout-filled': this.layout == 'filled',
-			'vwc-badge--layout-outlined': this.layout == 'outlined',
-			'vwc-badge--layout-soft': this.layout == 'soft',
+			[`connotation-${this.connotation}`]: !!this.connotation,
+			[`layout-${this.layout}`]: !!this.layout
 		};
 	}
 
