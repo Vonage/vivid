@@ -65,13 +65,9 @@
 
 .vwc-tag-selectable {
 	position: relative;
+	overflow: hidden;
 	cursor: pointer;
-	@supports (contain: content) {
-		contain: content;
-	}
-	@supports not (contain: content) {
-		overflow: hidden;
-	}
+
 	.ripple {
 		--mdc-ripple-color: currentColor;
 	}
@@ -94,8 +90,10 @@
 
 .vwc-tag__checkmark {
 	block-size: var(#{tags-variables.$namespace-icon-checkmark--size});
+	line-height: 1;
 	margin-inline-end: 0;
 	margin-inline-start: 0;
+
 	@media (prefers-reduced-motion: no-preference) {
 		transition-duration: 0.1s;
 		transition-property: margin-inline-start, margin-inline-end;
@@ -106,7 +104,6 @@
 	}
 
 	> .vwc-tag__icon {
-		display: block;
 		block-size: var(#{tags-variables.$namespace-icon-checkmark--size});
 		inline-size: var(#{tags-variables.$namespace-icon-checkmark--size});
 		@media (prefers-reduced-motion: no-preference) {
