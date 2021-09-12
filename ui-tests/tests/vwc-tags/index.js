@@ -13,6 +13,7 @@ export async function createElementVariations(wrapper) {
 			<vwc-tag text="Tag 7" layout="outlined" connotation="primary" selectable selected></vwc-tag>
 			<vwc-tag text="Tag 8" layout="outlined" connotation="cta" selectable selected></vwc-tag>
 		</div>
+		<br>
 
 		<vwc-tags>
 			<vwc-tag text="Python" selectable></vwc-tag>

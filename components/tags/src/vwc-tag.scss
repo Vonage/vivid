@@ -46,6 +46,7 @@
 	block-size: var(#{tags-variables.$namespace-block-size});
 	border-radius: var(#{tags-variables.$namespace-shape});
 	color: var(#{layout.$vvd-layout-color-text});
+	vertical-align: top;
 
 	&.layout-outlined {
 		box-sizing: border-box;
@@ -106,6 +107,7 @@
 	> .vwc-tag__icon {
 		block-size: var(#{tags-variables.$namespace-icon-checkmark--size});
 		inline-size: var(#{tags-variables.$namespace-icon-checkmark--size});
+
 		@media (prefers-reduced-motion: no-preference) {
 			transition: inline-size 0.1s;
 		}
