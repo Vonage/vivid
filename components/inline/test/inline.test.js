@@ -34,10 +34,9 @@ describe('inline', () => {
 	});
 
 	describe('API', () => {
-		it(`should set inline template fit`, async () => {
+		it(`should set template fit`, async () => {
 			const actualElement = getNewElement();
-			actualElement.gridTemplate = "columns";
-			actualElement.inlineTemplate = "fit";
+			actualElement.template = "fit";
 			actualElement.style.width = "1300px";
 			await waitNextTask();
 			const { shadowRoot: { firstElementChild: slot } } = actualElement;
@@ -46,10 +45,9 @@ describe('inline', () => {
 			await waitNextTask();
 			expect(childEl.clientWidth).to.equal(307);
 		});
-		it(`should set inline template fill`, async () => {
+		it(`should set template fill`, async () => {
 			const actualElement = getNewElement();
-			actualElement.gridTemplate = "columns";
-			actualElement.inlineTemplate = "fill";
+			actualElement.template = "fill";
 			actualElement.style.width = "1300px";
 			await waitNextTask();
 			const { shadowRoot: { firstElementChild: slot } } = actualElement;
@@ -58,16 +56,16 @@ describe('inline', () => {
 			await waitNextTask();
 			expect(childEl.clientWidth).to.equal(165);
 		});
-		it(`should set grid template`, async () => {
+		it(`should set size block`, async () => {
 			const actualElement = getNewElement();
-			actualElement.gridTemplate = "rows";
-			actualElement.style.height = "1300px";
+			actualElement.size = "block";
+			actualElement.style.width = "1300px";
 			await waitNextTask();
 			const { shadowRoot: { firstElementChild: slot } } = actualElement;
 			const assignedElements = slot.assignedElements();
 			const [childEl] = assignedElements;
 			await waitNextTask();
-			expect(childEl.clientHeight).to.be.within(18, 19);
+			expect(childEl.clientWidth).to.equal(1300);
 		});
 	});
 });

@@ -17,12 +17,6 @@ export enum InlineTemplate {
 	Fill = 'fill',
 }
 
-// eslint-disable-next-line no-shadow
-export enum GridTemplate {
-	Columns = 'columns',
-	Rows = 'rows',
-}
-
 @customElement('vwc-inline')
 export class Inline extends LitElement {
 	static styles = style;
@@ -34,10 +28,7 @@ export class Inline extends LitElement {
 	spacing: SizeSpacing = Size.Small;
 
 	@property({ type: String, reflect: true })
-	inlineTemplate?: InlineTemplate;
-
-	@property({ type: String, reflect: true })
-	gridTemplate?: GridTemplate;
+	template?: InlineTemplate;
 
 	protected render(): TemplateResult {
 		return html`<slot></slot>`;
