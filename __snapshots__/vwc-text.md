@@ -3,7 +3,7 @@
 #### `should internal contents`
 
 ```html
-<slot>
+<slot class="vwc-text">
 </slot>
 
 ```
