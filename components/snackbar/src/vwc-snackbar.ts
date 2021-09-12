@@ -57,7 +57,7 @@ export class VWCSnackbar extends MWCSnackbarBase {
 	@property({ type: Boolean, reflect: true })
 	legacy = false;
 
-	@property({ reflect: false })
+	@property({ reflect: true })
 	position: PositionPair = DEFAULT_POSITION;
 
 	@property({ type: String, reflect: true })
