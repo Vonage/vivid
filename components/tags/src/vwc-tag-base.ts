@@ -99,7 +99,6 @@ export class VWCTagBase extends LitElement {
 			class="vwc-tag vwc-tag-button ${classMap(classes)}"
 			role="option"
 			aria-selected="${this.selected}"
-			tabindex="-1"
 			@focus="${this.handleRippleFocus}"
 			@blur="${this.handleRippleBlur}"
 			@mousedown="${this.handleRippleActivate}"

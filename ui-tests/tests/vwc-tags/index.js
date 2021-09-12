@@ -1,4 +1,4 @@
-import '@vonage/vwc-tags/vwc-tag.js';
+import '@vonage/vwc-tags';
 
 export async function createElementVariations(wrapper) {
 	const tagElementWrapper = document.createElement('div');
@@ -11,6 +11,12 @@ export async function createElementVariations(wrapper) {
 		<vwc-tag text="my tag" layout="outlined" connotation="cta"></vwc-tag>
 		<vwc-tag text="my tag" layout="outlined" connotation="primary" selectable selected></vwc-tag>
 		<vwc-tag text="my tag" layout="outlined" connotation="cta" selectable selected></vwc-tag>
+		<br>
+		<vwc-tags>
+			<vwc-tag text="my tag" selectable></vwc-tag>
+			<vwc-tag text="my tag" selectable></vwc-tag>
+			<vwc-tag text="my tag" selectable></vwc-tag>
+		</vwc-tags>
 	`;
 	wrapper.appendChild(tagElementWrapper);
 }
