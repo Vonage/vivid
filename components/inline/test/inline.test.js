@@ -56,5 +56,16 @@ describe('inline', () => {
 			await waitNextTask();
 			expect(childEl.clientWidth).to.equal(165);
 		});
+		it(`should set size block`, async () => {
+			const actualElement = getNewElement();
+			actualElement.size = "block";
+			actualElement.style.width = "1300px";
+			await waitNextTask();
+			const { shadowRoot: { firstElementChild: slot } } = actualElement;
+			const assignedElements = slot.assignedElements();
+			const [childEl] = assignedElements;
+			await waitNextTask();
+			expect(childEl.clientWidth).to.equal(1300);
+		});
 	});
 });

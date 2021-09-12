@@ -10,6 +10,7 @@ $items-min-inline-sizes: (
 	'sm': 10rem,
 	'md': 20rem,
 	'lg': 30rem,
+	'block': 1fr
 );
 
 @each $key, $value in $items-min-inline-sizes {
@@ -49,6 +50,10 @@ $items-spacings: (
 		)
 	);
 	inline-size: 100%;
+}
+
+:host([size="block"i]) {
+	grid-template-columns: 1fr;
 }
 
 :host(:not(template)),

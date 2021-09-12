@@ -1,7 +1,6 @@
 import { Size } from '@vonage/vvd-foundation/constants';
 import { InlineTemplate } from '../vwc-inline';
 
-
 export const argTypes = {
 	template: {
 		control: {
