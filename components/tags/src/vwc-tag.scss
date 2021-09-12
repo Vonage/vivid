@@ -13,6 +13,7 @@
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout/config' as layout-config with (
 	$layout-set: outlined soft,
+	$outline-duotone: true,
 	$default: soft
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout' as layout;
