@@ -5,22 +5,32 @@ export default {
 };
 
 export const LogIn = () => html`
-  <style>
-      vwc-inline.sign-in-helper {
-	      align-items: center;
-      }
-      form {
-        margin: 50px;
-      }
-      .password {
-        text-align: end;
-      }
-      #side-drawer {
-        --vvd-side-drawer-min-inline-size: 100%;
-        --side-drawer-background-color: var(--vvd-color-neutral-10);
-      }
-	</style>
+<style>
+    div#login {
+      display: flex;
+    }
+    vwc-inline.sign-in-helper {
+      align-items: center;
+    }
+    form {
+      margin: 50px;
+    }
+    .password {
+      text-align: end;
+    }
+    main {
+      width: 100%;
+      position: relative;
+      background-color: var(--vvd-color-neutral-20);
+    }
+    #content {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+    }
+</style>
 
+<div id="login">
   <vwc-side-drawer id="side-drawer" hasTopBar>
     <span slot="top-bar"><vwc-icon type="vonage-mono"></vwc-icon><vwc-text font-face="body-1-bold"> VONAGE</vwc-text></span>
     <form>
@@ -53,6 +63,15 @@ export const LogIn = () => html`
       </vwc-inline>
     </form>
   </vwc-side-drawer>
+
+  <main>
+      <vwc-inline id="content" size="block">
+          <section><vwc-text font-face="subtitle-1">Lorem ipsum</vwc-text></section>
+          <section><vwc-text font-face="body-1">Lorem ipsum lorem ipsum lorem ipsum lorem ipsum</vwc-text></section>
+          <section><vwc-button label="Apply Now →" layout="outlined" type="submit" outlined=""></vwc-button></section>
+      </vwc-inline>
+  </main>
+</div>
 `;
 
 LogIn.parameters = {
