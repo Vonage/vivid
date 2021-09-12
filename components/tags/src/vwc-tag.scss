@@ -34,11 +34,13 @@
 	#{tag-variables.$namespace-icon-checkmark--padding-inline-end}: 6px;
 	#{tag-variables.$namespace-block-size}: 24px;
 	#{tag-variables.$namespace-icon-checkmark--size}: 16px;
+	#{layout.$vvd-layout-color-outline}: var(#{scheme-variables.$vvd-color-neutral-50});
 	z-index: 0;
 	display: inline-flex;
 	align-items: center;
 	padding: 0 var(#{tag-variables.$namespace-padding-inline});
-	border: 1px solid var(#{layout.$vvd-layout-color-outline});
+	// ignore layout outline color for this component
+	border-color: var(#{scheme-variables.$vvd-color-neutral-50});
 	background-color: var(#{layout.$vvd-layout-color-fill});
 	block-size: var(#{tag-variables.$namespace-block-size});
 	border-radius: var(#{tag-variables.$namespace-shape});
@@ -46,9 +48,18 @@
 
 	&.layout-outlined {
 		box-sizing: border-box;
-		#{layout.$vvd-layout-color-text}: var(#{scheme-variables.$vvd-color-neutral-90});
-		#{layout.$vvd-layout-color-outline}: var(#{scheme-variables.$vvd-color-neutral-50});
+		border-width: 1px;
+		border-style: solid;
 	}
+
+	&:not(&-selectable) {
+		#{layout.$vvd-layout-color-text}: var(#{scheme-variables.$vvd-color-neutral-90});
+		&.layout-filled,
+		&:not(.layout-filled):not(.layout-outlined) {
+			#{layout.$vvd-layout-color-fill}: var(#{scheme-variables.$vvd-color-neutral-20});
+		}
+	}
+
 }
 
 .vwc-tag-selectable {
