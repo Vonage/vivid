@@ -11,12 +11,16 @@ export const LogIn = () => html`
     }
     vwc-inline.sign-in-helper {
       align-items: center;
-    }
+    } 
     form {
       margin: 50px;
     }
     .password {
       text-align: end;
+    }
+    vwc-side-drawer#side-drawer {
+  	  flex: 0 0 auto;
+      --side-drawer-min-inline-size: 600px;
     }
     main {
       width: 100%;
