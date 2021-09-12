@@ -15,7 +15,6 @@ $namespace-shape: #{$namespace}-shape;
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout/config' as layout-config with (
 	$layout-set: filled outlined soft,
-	$outline-duotone: true,
 	$default: filled,
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout' as layout;
