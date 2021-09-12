@@ -4,32 +4,58 @@ export default {
 	title: 'Templates/Log In',
 };
 
-export const Login = () => html`
+export const LogIn = () => html`
   <style>
-    html {
-      block-size: 100%;
-    }
-    body {
-      min-block-size: 100%;
-      padding: 0;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      justify-content: center;
-      grid-auto-flow: dense;
-    }
-  </style>
-  <vwc-side-drawer>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti voluptate rem velit accusantium quasi, aliquid natus, aperiam officiis repellendus reprehenderit sapiente commodi cum deserunt quae illo blanditiis. Quasi, ullam totam.</p>
+      vwc-inline.sign-in-helper {
+	      align-items: center;
+      }
+      form {
+        margin: 50px;
+      }
+      .password {
+        text-align: end;
+      }
+      #side-drawer {
+        --vvd-side-drawer-min-inline-size: 100%;
+        --side-drawer-background-color: var(--vvd-color-neutral-10);
+      }
+	</style>
+
+  <vwc-side-drawer id="side-drawer" hasTopBar>
+    <span slot="top-bar"><vwc-icon type="vonage-mono"></vwc-icon><vwc-text font-face="body-1-bold"> VONAGE</vwc-text></span>
+    <form>
+      <vwc-inline size="block">
+        <section>
+            <vwc-text font-face="title-2">Welcome back!</vwc-text>
+        </section>
+        <section>
+            <vwc-text font-face="body-2">Don't have an account? <a href="#">Sign Up</a></vwc-text>
+        </section>
+        <section>
+          <vwc-inline size="block">
+            <vwc-textfield name="username" label="username" icon="user" placeholder=" " outlined="">
+              <input value="" slot="formInputElement" class="vivid-input-internal" name="username" type="text" placeholder=" "/>
+            </vwc-textfield>
+            <vwc-textfield name="password" label="password" icon="lock" type="password" placeholder=" " outlined="">
+              <input value="" slot="formInputElement" class="vivid-input-internal" name="password" type="password" placeholder=" "/>
+            </vwc-textfield>
+          </vwc-inline>
+        </section>
+        <section>
+          <vwc-inline class="sign-in-helper">
+            <vwc-formfield label="Remember me"><vwc-checkbox></vwc-checkbox></vwc-formfield>
+            <vwc-text class="password" font-face="body-2"><a href="#">Forgot password?</a></vwc-text>
+          </vwc-inline>
+        </section>
+        <section>
+            <vwc-button layout="filled">Log in</vwc-button>
+        </section>
+      </vwc-inline>
+    </form>
   </vwc-side-drawer>
-  <main>
-    <h2>Main</h2>
-    <p>
-      This demonstrates basic support for application with <code>vwc-side-drawer</code>.
-    </p>
-  </main>
 `;
 
-Login.parameters = {
+LogIn.parameters = {
 	options: {
 		showPanel: false,
 		isToolshown: false
