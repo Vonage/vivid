@@ -3,7 +3,7 @@ import { Ripple } from '@material/mwc-ripple/mwc-ripple';
 import { RippleHandlers } from '@material/mwc-ripple/ripple-handlers';
 
 import { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
-import { classMap } from 'lit-html/directives/class-map';
+import { ClassInfo, classMap } from 'lit-html/directives/class-map';
 import {
 	 LitElement, html, property, TemplateResult, queryAsync, state, query, eventOptions
 } from 'lit-element';
@@ -23,19 +23,13 @@ type TagLayout = Extract<
 export class VWCTagBase extends LitElement {
   @queryAsync('mwc-ripple') ripple!: Promise<Ripple|null>;
 
-	@query('#button') buttonElement!: HTMLElement;
+	@query('#selectable') selectableElement!: HTMLElement;
 
 	@property({ type: String, reflect: true })
 	text?: string;
 
 	@property({ type: Boolean, reflect: true })
 	selected = false;
-
-	@property({ type: Boolean, reflect: true })
-	dense?: boolean;
-
-	@property({ type: Boolean, reflect: true })
-	enlarged?: boolean;
 
 	@property({ type: String, reflect: true })
 	connotation?: TagConnotation;
@@ -57,18 +51,18 @@ export class VWCTagBase extends LitElement {
   });
 
   focus(): void {
-  	const buttonElement = this.buttonElement;
-  	if (buttonElement) {
+  	const selectableElement = this.selectableElement;
+  	if (selectableElement) {
   		this.rippleHandlers.startFocus();
-  		buttonElement.focus();
+  		selectableElement.focus();
   	}
   }
 
   blur(): void {
-  	const buttonElement = this.buttonElement;
-  	if (buttonElement) {
+  	const selectableElement = this.selectableElement;
+  	if (selectableElement) {
   		this.rippleHandlers.endFocus();
-  		buttonElement.blur();
+  		selectableElement.blur();
   	}
   }
 
@@ -87,16 +81,22 @@ export class VWCTagBase extends LitElement {
   	return html`<vwc-icon class="vwc-tag__icon" .type="${type}"></vwc-icon>`;
   }
 
-  protected renderTagSelectable(): TemplateResult {
-  	const classes = {
-  		'vwc-tag--selected': this.selected,
+  protected getRenderClasses(): ClassInfo {
+  	return {
   		[`connotation-${this.connotation}`]: !!this.connotation,
   		[`layout-${this.layout}`]: !!this.layout
   	};
+  }
+
+  protected renderTagSelectable(): TemplateResult {
+  	const classes = {
+  		'vwc-tag--selected': this.selected,
+  		...this.getRenderClasses()
+  	};
 
   	return html`<span
-			id="button"
-			class="vwc-tag vwc-tag-button ${classMap(classes)}"
+			id="selectable"
+			class="vwc-tag vwc-tag-selectable ${classMap(classes)}"
 			role="option"
 			aria-selected="${this.selected}"
 			@focus="${this.handleRippleFocus}"
@@ -122,7 +122,7 @@ export class VWCTagBase extends LitElement {
   render(): TemplateResult {
   	return this.selectable
   		? this.renderTagSelectable()
-  		: html`<span class="vwc-tag">
+  		: html`<span class="vwc-tag ${classMap(this.getRenderClasses())}">
 			${this.text}
 		</span>`;
   }

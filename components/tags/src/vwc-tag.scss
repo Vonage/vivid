@@ -27,8 +27,13 @@
 );
 
 .vwc-tag {
+	@include typography.typography-cat-shorthand('body-2-bold');
 	@include connotation.connotation;
 	@include layout.layout;
+	#{tag-variables.$namespace-padding-inline}: 10px;
+	#{tag-variables.$namespace-icon-checkmark--padding-inline-end}: 6px;
+	#{tag-variables.$namespace-block-size}: 24px;
+	#{tag-variables.$namespace-icon-checkmark--size}: 16px;
 	z-index: 0;
 	display: inline-flex;
 	align-items: center;
@@ -40,35 +45,13 @@
 	color: var(#{layout.$vvd-layout-color-text});
 
 	&.layout-outlined {
+		box-sizing: border-box;
+		#{layout.$vvd-layout-color-text}: var(#{scheme-variables.$vvd-color-neutral-90});
 		#{layout.$vvd-layout-color-outline}: var(#{scheme-variables.$vvd-color-neutral-50});
-	}
-
-	:host(:not([dense]):not([enlarged])) & {
-		@include typography.typography-cat-shorthand('body-2-bold');
-		#{tag-variables.$namespace-padding-inline}: 10px;
-		#{tag-variables.$namespace-icon-checkmark--padding-inline-end}: 6px;
-		#{tag-variables.$namespace-block-size}: 24px;
-		#{tag-variables.$namespace-icon-checkmark--size}: 16px;
-	}
-
-	:host([dense]) & {
-		@include typography.typography-cat-shorthand('caption-bold');
-		#{tag-variables.$namespace-padding-inline}: 8px;
-		#{tag-variables.$namespace-icon-checkmark--padding-inline-end}: 4px;
-		#{tag-variables.$namespace-block-size}: 20px;
-		#{tag-variables.$namespace-icon-checkmark--size}: 12px;
-	}
-
-	:host([enlarged]) & {
-		@include typography.typography-cat-shorthand('body-1-bold');
-		#{tag-variables.$namespace-padding-inline}: 12px;
-		#{tag-variables.$namespace-icon-checkmark--padding-inline-end}: 8px;
-		#{tag-variables.$namespace-block-size}: 28px;
-		#{tag-variables.$namespace-icon-checkmark--size}: 20px;
 	}
 }
 
-.vwc-tag-button {
+.vwc-tag-selectable {
 	position: relative;
 	cursor: pointer;
 	@supports (contain: content) {
@@ -77,7 +60,6 @@
 	@supports not (contain: content) {
 		overflow: hidden;
 	}
-
 	.ripple {
 		--mdc-ripple-color: currentColor;
 	}
@@ -103,7 +85,7 @@
 	margin-inline-end: 0;
 	margin-inline-start: 0;
 	@media (prefers-reduced-motion: no-preference) {
-		transition-duration: 0.15s;
+		transition-duration: 0.1s;
 		transition-property: margin-inline-start, margin-inline-end;
 	}
 	.vwc-tag.vwc-tag--selected & {
@@ -115,9 +97,8 @@
 		display: block;
 		block-size: var(#{tag-variables.$namespace-icon-checkmark--size});
 		inline-size: var(#{tag-variables.$namespace-icon-checkmark--size});
-		line-height: unset;
 		@media (prefers-reduced-motion: no-preference) {
-			transition: inline-size 0.15s;
+			transition: inline-size 0.1s;
 		}
 
 		.vwc-tag:not(.vwc-tag--selected) & {
