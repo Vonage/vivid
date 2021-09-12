@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vvd-context",
-	"version": "2.14.0",
+	"version": "2.18.1",
 	"description": "> TODO: description",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/context#readme",
 	"license": "ISC",
@@ -28,15 +28,15 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@vonage/vvd-core": "2.14.0",
+		"@vonage/vvd-core": "2.18.1",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.3.0"
 	},
 	"devDependencies": {
-		"@vonage/vvd-design-tokens": "2.14.0",
-		"@vonage/vvd-foundation": "2.14.0",
-		"@vonage/vvd-typography": "2.14.0",
-		"@vonage/vvd-umbrella": "2.14.0",
+		"@vonage/vvd-design-tokens": "2.18.1",
+		"@vonage/vvd-foundation": "2.18.1",
+		"@vonage/vvd-typography": "2.18.1",
+		"@vonage/vvd-umbrella": "2.18.1",
 		"typescript": "^4.3.2"
 	}
 }

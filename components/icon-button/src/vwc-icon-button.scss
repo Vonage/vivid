@@ -1,22 +1,21 @@
-/* VARIABLES */
-$icon-button-icon-size-variable-name: --vvd-icon-button-icon-size;
-/*************/
-
 @use 'sass:map';
-@use './vwc-icon-button-variables' as icon-button-variables;
-@use '@vonage/vwc-icon/src/vwc-icon-variables' as icon-variables;
+@use 'partials/vwc-icon-button-variables' as icon-button-variables;
+@use '@vonage/vwc-icon/src/partials/vwc-icon-variables' as icon-variables;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
 	$variable-name: #{icon-button-variables.$icon-button-shape}
 );
-@use '@vonage/vvd-foundation/scss/mixins/color-connotation' with (
-	$connotations-set: primary cta success alert info announcement
+@use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
+	$connotations-set: primary cta success alert info announcement,
+	$default: primary,
 );
-@use '@vonage/vvd-foundation/scss/mixins/layout-mixins' with (
-	$layouts: filled outlined ghost,
-	$variables-scope-prefix: 'vvd-icon-button'
+@use '@vonage/vvd-foundation/scss/mixins/connotation';
+@use '@vonage/vvd-foundation/scss/mixins/layout/config' as layout-config with (
+	$layout-set: filled outlined ghost,
+	$default: ghost,
 );
+@use '@vonage/vvd-foundation/scss/mixins/layout' as layout;
 
 @include shape-mixins.shape(
 	$shapes: (
@@ -25,47 +24,41 @@ $icon-button-icon-size-variable-name: --vvd-icon-button-icon-size;
 	)
 );
 
-@include layout-mixins.layout();
-
-@include color-connotation.connotations-main;
-@include color-connotation.connotations-main-default(primary);
-
 $block-sizes: (
 	'dense': 32px,
 	'normal': 40px,
 	'enlarged': 48px
 );
 
-
 :host {
-
-	// sizing
 	--mdc-icon-button-size: var(#{icon-button-variables.$icon-button-block-size}, #{map.get($block-sizes, 'normal')});
-	@include vvd-formfield.coupling;
+}
 
-	.mdc-icon-button {
-		display: inline-flex;
-		overflow: hidden;
-		align-items: center;
-		justify-content: center;
-		border: var(--vvd-icon-button-border);
-		background-color: var(--vvd-icon-button-background-color);
-		border-radius: var(#{icon-button-variables.$icon-button-shape});
-		color: var(--vvd-icon-button-color);
-		font-size: inherit;
-		&:disabled {
-			color: var(#{vvd-formfield.$formfield-disabled-ink});
-		}
+.mdc-icon-button {
+	@include vvd-formfield.coupling;
+	@include layout.layout;
+	@include connotation.connotation;
+	display: inline-flex;
+	overflow: hidden;
+	align-items: center;
+	justify-content: center;
+	border: var(#{layout.$vvd-layout-color-outline});
+	background-color: var(#{icon-button-variables.$vvd-icon-button-color}, var(#{layout.$vvd-layout-color-fill}));
+	border-radius: var(#{icon-button-variables.$icon-button-shape});
+	color: var(#{icon-button-variables.$vvd-icon-button-on-color}, var(#{layout.$vvd-layout-color-text}));
+	font-size: inherit;
+	&:disabled {
+		color: var(#{vvd-formfield.$formfield-disabled-ink});
 	}
 }
 
-:host([layout=filled]) {
+:host([layout="filled"i]) {
 	.mdc-icon-button:disabled {
 		background-color: var(#{scheme-variables.$vvd-color-neutral-30});
 	}
 }
 
-:host([layout=outlined]) {
+:host([layout="outlined"i]) {
 	.mdc-icon-button:disabled {
 		border-color: var(#{vvd-formfield.$formfield-disabled-ink});
 	}
@@ -80,6 +73,8 @@ $block-sizes: (
 }
 
 vwc-icon {
+	// TODO remove next line when VIV-704 resolved
+	#{connotation.$vvd-color-connotation}: initial;
 	:host & {
 		#{icon-variables.$icon-size-variable-name}: var(#{icon-button-variables.$icon-button-icon-size-variable-name}, 20px);
 	}

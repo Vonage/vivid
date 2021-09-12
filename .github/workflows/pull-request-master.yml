@@ -6,19 +6,26 @@ on:
       - opened
       - synchronize
       - reopened
+      - ready_for_review
+      - converted_to_draft
     branches:
       - master
 
 concurrency:
-  group: ci-tests-${{ github.ref }}
+  group: ci-tests-${{ github.ref }}-1
   cancel-in-progress: true
 
 jobs:
   build:
+    timeout-minutes: 15
+    if: github.event.pull_request.draft == false
     name: Build
     runs-on: ubuntu-20.04
+    env:
+      GITHUB_TOKEN: ${{ secrets.VNG_VIVID_PAT }}
     steps:
       - uses: actions/checkout@v2
+      - run: printf "registry=https://npm.pkg.github.com/Vonage\n_authToken=\${GITHUB_TOKEN}\n//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}\nalways-auth=true" > .npmrc
       - uses: actions/setup-node@v2
         with:
           node-version: 14
@@ -26,12 +33,9 @@ jobs:
         with:
           path: "**/node_modules"
           key: ${{ hashFiles('yarn.lock') }}
-      - run: yarn install --frozen-lockfile
+      - run: yarn install --frozen-lockfile --network-timeout 100000
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
-          yarn_always_auth: true
-          yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
-          yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
       - run: yarn lerna run build --stream --concurrency=15 --include-dependencies
       - run: tar -zcf /tmp/vivid-env.tar.gz .
       - uses: actions/upload-artifact@v2
@@ -39,9 +43,12 @@ jobs:
           name: workspace
           path: /tmp/vivid-env.tar.gz
   test:
+    if: github.event.pull_request.draft == false
     needs: build
     name: "Test Components on ${{ matrix.browser_name }}"
     runs-on: ${{ matrix.os }}
+    env:
+      GITHUB_TOKEN: ${{ secrets.VNG_VIVID_PAT }}
     strategy:
       max-parallel: 10
       matrix:
@@ -89,9 +96,12 @@ jobs:
           flag-name: Tested on ${{ matrix.os }} / ${{ matrix.browser }}
 
   test_for_visual_regression:
+    if: github.event.pull_request.draft == false
     needs: build
-    name: Test Components' Graphics
+    name: Test Components Graphics
     runs-on: macos-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.VNG_VIVID_PAT }}
     steps:
       - uses: actions/setup-node@v2
         with:
@@ -103,9 +113,7 @@ jobs:
       - run: tar -zxf /tmp/vivid-env.tar.gz
       - run: npm rebuild playwright && yarn playwright install-deps
         env:
-          yarn_always_auth: true
-          yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
-          yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
+          GITHUB_TOKEN: ${{ secrets.VNG_VIVID_PAT }}
       - run: yarn ui-tests
       - uses: actions/upload-artifact@v2
         if: ${{ always() }}
@@ -114,18 +122,18 @@ jobs:
           path: ./ui-tests/snapshots/*.png
 
   test_static:
+    if: github.event.pull_request.draft == false
     needs: build
     name: ${{ matrix.script_name }}
     runs-on: ubuntu-20.04
+    env:
+      GITHUB_TOKEN: ${{ secrets.VNG_VIVID_PAT }}
     strategy:
       max-parallel: 10
       matrix:
         script:
-          - dep-check
           - lint
         include:
-          - script: dep-check
-            script_name: Test package dependencies
           - script: lint
             script_name: Test Lint rules
     steps:
@@ -138,3 +146,4 @@ jobs:
           path: /tmp
       - run: tar -zxf /tmp/vivid-env.tar.gz
       - run: yarn ${{ matrix.script }}
+

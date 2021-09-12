@@ -5,21 +5,13 @@
 ```html
 <div
   class="mdc-snackbar"
+  part="vvd-scheme-alternate"
   position="BOTTOM-CENTER"
 >
   <div class="mdc-snackbar__surface">
-    <div
-      class="vivid-snackbar"
-      part="vvd-scheme-alternate"
-    >
-      <vwc-note class="note">
-      </vwc-note>
-      <div class="actions-container">
-        <div class="action-container">
-          <slot name="action">
-          </slot>
-        </div>
-      </div>
+    <div class="mdc-snackbar__actions">
+      <slot name="action">
+      </slot>
     </div>
   </div>
 </div>
@@ -31,21 +23,13 @@
 ```html
 <div
   class="mdc-snackbar"
+  part="vvd-scheme-alternate"
   position="BOTTOM-CENTER"
 >
   <div class="mdc-snackbar__surface">
-    <div
-      class="vivid-snackbar"
-      part="vvd-scheme-alternate"
-    >
-      <vwc-note class="note">
-      </vwc-note>
-      <div class="actions-container">
-        <div class="action-container">
-          <slot name="action">
-          </slot>
-        </div>
-      </div>
+    <div class="mdc-snackbar__actions">
+      <slot name="action">
+      </slot>
     </div>
   </div>
 </div>
@@ -57,22 +41,13 @@
 ```html
 <div
   class="mdc-snackbar"
+  part="vvd-scheme-alternate"
   position="BOTTOM-CENTER"
 >
   <div class="mdc-snackbar__surface">
-    <div
-      class="vivid-snackbar"
-      part="vvd-scheme-alternate"
-    >
-      <vwc-note class="note">
-        Message
-      </vwc-note>
-      <div class="actions-container">
-        <div class="action-container">
-          <slot name="action">
-          </slot>
-        </div>
-      </div>
+    <div class="mdc-snackbar__actions">
+      <slot name="action">
+      </slot>
     </div>
   </div>
 </div>
@@ -84,24 +59,18 @@
 ```html
 <div
   class="mdc-snackbar"
+  part="vvd-scheme-alternate"
   position="BOTTOM-CENTER"
 >
   <div class="mdc-snackbar__surface">
-    <div
-      class="vivid-snackbar"
-      part="vvd-scheme-alternate"
+    <vwc-icon
+      class="icon"
+      type="home"
     >
-      <vwc-note
-        class="note"
-        icon="home"
-      >
-      </vwc-note>
-      <div class="actions-container">
-        <div class="action-container">
-          <slot name="action">
-          </slot>
-        </div>
-      </div>
+    </vwc-icon>
+    <div class="mdc-snackbar__actions">
+      <slot name="action">
+      </slot>
     </div>
   </div>
 </div>
@@ -113,29 +82,21 @@
 ```html
 <div
   class="mdc-snackbar"
+  part="vvd-scheme-alternate"
   position="BOTTOM-CENTER"
 >
   <div class="mdc-snackbar__surface">
-    <div
-      class="vivid-snackbar"
-      part="vvd-scheme-alternate"
-    >
-      <vwc-note class="note">
-      </vwc-note>
-      <div class="actions-container">
-        <div class="action-container">
-          <slot name="action">
-          </slot>
-        </div>
-        <div class="dismiss-container">
-          <vwc-icon-button
-            class="dismiss-button"
-            dense=""
-            icon="close-line"
-            layout="ghost"
-          >
-          </vwc-icon-button>
-        </div>
+    <div class="mdc-snackbar__actions">
+      <slot name="action">
+      </slot>
+      <div class="dismiss-container">
+        <vwc-icon-button
+          class="dismiss-button"
+          dense=""
+          icon="close-line"
+          layout="ghost"
+        >
+        </vwc-icon-button>
       </div>
     </div>
   </div>
@@ -148,21 +109,13 @@
 ```html
 <div
   class="mdc-snackbar"
+  part="vvd-scheme-alternate"
   position="BOTTOM-CENTER"
 >
   <div class="mdc-snackbar__surface">
-    <div
-      class="vivid-snackbar"
-      part="vvd-scheme-alternate"
-    >
-      <vwc-note class="note">
-      </vwc-note>
-      <div class="actions-container">
-        <div class="action-container">
-          <slot name="action">
-          </slot>
-        </div>
-      </div>
+    <div class="mdc-snackbar__actions">
+      <slot name="action">
+      </slot>
     </div>
   </div>
 </div>
@@ -173,21 +126,15 @@
 
 ```html
 <div
-  class="mdc-snackbar"
+  class="mdc-snackbar vwc-snackbar-legacy"
   position="BOTTOM-CENTER"
 >
   <div class="mdc-snackbar__surface">
-    <div class="vivid-snackbar">
-      <vwc-note>
-        <div class="snackbar-content">
-          <div>
-            <div class="action-container">
-              <slot name="action">
-              </slot>
-            </div>
-          </div>
-        </div>
-      </vwc-note>
+    <div class="header-and-label">
+      <slot name="action">
+      </slot>
+    </div>
+    <div class="mdc-snackbar__actions">
     </div>
   </div>
 </div>
@@ -198,21 +145,21 @@
 
 ```html
 <div
-  class="mdc-snackbar"
+  class="mdc-snackbar vwc-snackbar-legacy"
   position="BOTTOM-CENTER"
 >
   <div class="mdc-snackbar__surface">
-    <div class="vivid-snackbar">
-      <vwc-note header="Header">
-        <div class="snackbar-content">
-          <div>
-            <div class="action-container">
-              <slot name="action">
-              </slot>
-            </div>
-          </div>
-        </div>
-      </vwc-note>
+    <div class="header-and-label">
+      <h3
+        aria-hidden="true"
+        class="heading"
+      >
+        Header
+      </h3>
+      <slot name="action">
+      </slot>
+    </div>
+    <div class="mdc-snackbar__actions">
     </div>
   </div>
 </div>
@@ -223,22 +170,15 @@
 
 ```html
 <div
-  class="mdc-snackbar"
+  class="mdc-snackbar vwc-snackbar-legacy"
   position="BOTTOM-CENTER"
 >
   <div class="mdc-snackbar__surface">
-    <div class="vivid-snackbar">
-      <vwc-note>
-        <div class="snackbar-content">
-          <div>
-            Message
-            <div class="action-container">
-              <slot name="action">
-              </slot>
-            </div>
-          </div>
-        </div>
-      </vwc-note>
+    <div class="header-and-label">
+      <slot name="action">
+      </slot>
+    </div>
+    <div class="mdc-snackbar__actions">
     </div>
   </div>
 </div>
@@ -249,21 +189,20 @@
 
 ```html
 <div
-  class="mdc-snackbar"
+  class="mdc-snackbar vwc-snackbar-legacy"
   position="BOTTOM-CENTER"
 >
   <div class="mdc-snackbar__surface">
-    <div class="vivid-snackbar">
-      <vwc-note icon="home">
-        <div class="snackbar-content">
-          <div>
-            <div class="action-container">
-              <slot name="action">
-              </slot>
-            </div>
-          </div>
-        </div>
-      </vwc-note>
+    <vwc-icon
+      class="icon"
+      type="home"
+    >
+    </vwc-icon>
+    <div class="header-and-label">
+      <slot name="action">
+      </slot>
+    </div>
+    <div class="mdc-snackbar__actions">
     </div>
   </div>
 </div>
@@ -274,30 +213,24 @@
 
 ```html
 <div
-  class="mdc-snackbar"
+  class="mdc-snackbar vwc-snackbar-legacy"
   position="BOTTOM-CENTER"
 >
   <div class="mdc-snackbar__surface">
-    <div class="vivid-snackbar">
-      <vwc-note>
-        <div class="snackbar-content">
-          <div>
-            <div class="action-container">
-              <slot name="action">
-              </slot>
-            </div>
-          </div>
-          <div class="dismiss-container">
-            <vwc-icon-button
-              class="dismiss-button"
-              dense=""
-              icon="close-line"
-              layout="ghost"
-            >
-            </vwc-icon-button>
-          </div>
-        </div>
-      </vwc-note>
+    <div class="header-and-label">
+      <slot name="action">
+      </slot>
+    </div>
+    <div class="mdc-snackbar__actions">
+      <div class="dismiss-container">
+        <vwc-icon-button
+          class="dismiss-button"
+          dense=""
+          icon="close-line"
+          layout="ghost"
+        >
+        </vwc-icon-button>
+      </div>
     </div>
   </div>
 </div>
@@ -308,21 +241,15 @@
 
 ```html
 <div
-  class="mdc-snackbar"
+  class="mdc-snackbar vwc-snackbar-legacy"
   position="BOTTOM-CENTER"
 >
   <div class="mdc-snackbar__surface">
-    <div class="vivid-snackbar">
-      <vwc-note>
-        <div class="snackbar-content">
-          <div>
-            <div class="action-container">
-              <slot name="action">
-              </slot>
-            </div>
-          </div>
-        </div>
-      </vwc-note>
+    <div class="header-and-label">
+      <slot name="action">
+      </slot>
+    </div>
+    <div class="mdc-snackbar__actions">
     </div>
   </div>
 </div>

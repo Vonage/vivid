@@ -6,7 +6,7 @@
 .mdc-chip {
 	@include chips.fill-color(var(#{scheme-variables.$vvd-color-neutral-40}));
 	@include chips.trailing-icon-color(
-		var(#{scheme-variables.$vvd-color-on-base}),
+		var(#{scheme-variables.$vvd-color-on-canvas}),
 		variables.$trailing-icon-opacity,
 		variables.$trailing-icon-opacity-hover
 	);
@@ -18,7 +18,7 @@
 	@include chips.trailing-icon-margin(variables.$trailing-icon-margin-left);
 	@include chips.trailing-icon-size(variables.$trailing-icon-size);
 	@include typography.typography-cat-shorthand('body-2-bold');
-	color: var(#{scheme-variables.$vvd-color-on-base});
+	color: var(#{scheme-variables.$vvd-color-on-canvas});
 
 	cursor: auto;
 	font-size: map-get(variables.$font-size, default);

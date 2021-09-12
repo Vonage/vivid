@@ -1,0 +1,77 @@
+$side-drawer-padding: --side-drawer-padding;
+$side-drawer-min-inline-size: --side-drawer-min-inline-size;
+$side-drawer-z-index: --side-drawer-z-index;
+$side-drawer-background-color: --side-drawer-background-color;
+
+$z-index-default: 6;
+$padding-default: 16px;
+$min-inline-size-default: 280px;
+
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
+@use '@vonage/vvd-typography/scss/typography' as typography;
+@use '@vonage/vvd-foundation/scss/mixins/scrim' as scrim-mixins;
+
+:host {
+	display: flex;
+	block-size: 100%;
+}
+
+.side-drawer {
+	z-index: var(#{$side-drawer-z-index}, #{$z-index-default});
+	background-color: var(#{$side-drawer-background-color}, var(#{scheme-variables.$vvd-color-canvas}));
+	color: var(#{scheme-variables.$vvd-color-on-canvas});
+	min-inline-size: var(#{$side-drawer-min-inline-size}, #{$min-inline-size-default});
+
+	&.side-drawer--alternate {
+		background-color: var(#{scheme-variables.$vvd-color-canvas});
+	}
+
+	&.side-drawer--modal,
+	&.side-drawer--dismissible {
+		@media (prefers-reduced-motion: no-preference) {
+			transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+		}
+
+		&:not(.side-drawer--open) {
+			transform: translateX(-100%);
+		}
+	}
+}
+
+.side-drawer--top-bar {
+	display: flex;
+	align-items: center;
+	block-size: 64px;
+	padding-inline-end: var(#{$side-drawer-padding}--top-bar, #{$padding-default});
+	padding-inline-start: var(#{$side-drawer-padding}--top-bar, #{$padding-default});
+}
+
+.side-drawer--content {
+	padding-inline-end: var(#{$side-drawer-padding}--content, #{$padding-default});
+	padding-inline-start: var(#{$side-drawer-padding}--content, #{$padding-default});
+}
+
+.side-drawer--modal {
+	position: fixed;
+	top: 0;
+	right: initial;
+	bottom: 0;
+	left: 0;
+}
+
+.aside-container {
+	display: flex;
+	&:not(&--open) {width: 0;}
+}
+
+.side-drawer--scrim {
+	@include scrim-mixins.scrim-variables;
+	position: fixed;
+	z-index: calc(#{$z-index-default} - 1);
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: var(#{scrim-mixins.$vvd-scrim--background-color});
+	opacity: var(#{scrim-mixins.$vvd-scrim--opacity});
+}

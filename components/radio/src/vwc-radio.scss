@@ -1,7 +1,7 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/_scheme-variables' as scheme-variables;
 
 :host {
-	--mdc-radio-unchecked-color: var(#{scheme-variables.$vvd-color-on-base});
+	--mdc-radio-unchecked-color: var(#{scheme-variables.$vvd-color-on-canvas});
 	--mdc-radio-disabled-color: var(#{scheme-variables.$vvd-color-neutral-30});
 }
 

@@ -1,0 +1,6 @@
+@use 'config';
+
+
+$vvd-layout-color-fill: --#{config.get-scope-prefix()}layout-color-fill;
+$vvd-layout-color-text: --#{config.get-scope-prefix()}layout-color-text;
+$vvd-layout-color-outline: --#{config.get-scope-prefix()}layout-color-outline;

@@ -10,6 +10,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-18.04
+    env:
+      GITHUB_TOKEN: ${{ secrets.VNG_VIVID_PAT }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -17,12 +20,13 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
+
+      - name: Writing .npmrc
+        run: printf "registry=https://npm.pkg.github.com/Vonage\n_authToken=\${GITHUB_TOKEN}\n//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}\nalways-auth=true" > .npmrc
+
       - name: Install dependencies
-        env:
-          yarn_always_auth: true,
-          yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
-          yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
-        run: yarn install
+        run: yarn install --network-timeout 100000
+
       - run: yarn compile
       - run: tar -zcf /tmp/vivid-env.tar.gz .
       - uses: actions/upload-artifact@v2
@@ -64,23 +68,25 @@ jobs:
       - name: Publishing "@vonage/vivid" package
         run: npm publish $(node ./scripts/vivid-all-package-generator)
 
-  post_publish:
+  deploy_storybook:
+    name: Deploy "vivid.vonage.com" (Storybook)
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_VIVID_DEMO_PROD_ACCESS }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_VIVID_DEMO_PROD_SECRET }}
+      GITHUB_TOKEN: ${{ secrets.VNG_VIVID_PAT }}
     needs: publish
     runs-on: ubuntu-18.04
     steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v2
       - uses: actions/download-artifact@v2
         with:
           name: workspace
           path: /tmp
       - run: tar -zxf /tmp/vivid-env.tar.gz
-
-      # Notify community
-      - name: Notify slack
-        run: git log --format=oneline --decorate=short | node ./scripts/release_announcer --slackHookUrl="${{ secrets.SLACK_WEBHOOK }}"
 
       # Build and deploy showcase
       - name: Build storybook
@@ -97,3 +103,16 @@ jobs:
 
       - name: Invalidate CloudFront distribution root object's cache
         run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_VIVID_DEMO_PROD_DISTRIBUTION }} --paths "/"
+
+  announcements:
+    name: Announcements
+    needs: publish
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout Project
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - run: npm i lodash split kefir minimist semver-diff
+      - name: Send message to Slack's "Vivid Engineering" channel
+        run: git log --format=oneline --decorate=short | node ./scripts/release_announcer --slackHookUrl="${{ secrets.SLACK_WEBHOOK }}"

@@ -27,8 +27,17 @@ export type IndicatorIconSets = typeof iconSets;
 export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	static styles = style;
 
+	/**
+	 * @deprecated use {@link VWCExpansionPanel.heading} instead
+	 */
 	@property({ type: String, reflect: true })
 	header = '';
+
+	/**
+	 * The heading of the expanded panel
+	 */
+	@property({ type: String, reflect: true })
+	heading = '';
 
 	@property({ type: String, reflect: true })
 	icon = '';
@@ -51,12 +60,6 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 		return this.ripple;
 	});
 
-	protected firstUpdated(): void {
-		const header = this.shadowRoot?.querySelector('.expansion-panel-header');
-		header?.addEventListener('click', this.toggleOpen.bind(this));
-		header?.addEventListener('touchstart', this.toggleOpen.bind(this));
-	}
-
 	protected toggleOpen(): void {
 		this.open = !this.open;
 	}
@@ -72,13 +75,19 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 
 	protected render(): TemplateResult {
 		return html`
-			<div class="expansion-panel-header"
+			<button class="expansion-panel-header"
 				@mousedown="${this.handleRippleActivate}"
 				@mouseenter="${this.handleRippleMouseEnter}"
 				@mouseleave="${this.handleRippleMouseLeave}"
-				@touchstart="${this.handleRippleActivate}"
+				@touchstart="${() => {
+		this.toggleOpen();
+		this.handleRippleActivate;
+	}}"
 				@touchend="${this.handleRippleDeactivate}"
 				@touchcancel="${this.handleRippleDeactivate}"
+				@click=${() => this.toggleOpen()}
+				?aria-expanded=${this.open}
+				aria-controls="content"
 			>
 				${this.renderRipple()}
 				<span class="leading-icon">
@@ -86,14 +95,14 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 						${this.renderIconOrToggle()}
 					</slot>
 				</span>
-				${this.header}
+				${this.heading || this.header}
 				<span class="trailing-icon">
 					<slot name="trailingIcon">
 						${!this.leadingToggle ? this.renderToggle() : ''}
 					</slot>
 				</span>
-			</div>
-			<div class="expansion-panel-body">
+			</button>
+			<div id="content" class="expansion-panel-body">
 				<slot></slot>
 			</div>`;
 	}
@@ -102,7 +111,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 		if (this.leadingToggle) {
 			return this.renderToggle();
 		} else if (this.icon) {
-			return html`<vwc-icon type="${this.icon}"></vwc-icon>`;
+			return html`<vwc-icon type="${this.icon}" size="medium"></vwc-icon>`;
 		} else {
 			return '';
 		}
