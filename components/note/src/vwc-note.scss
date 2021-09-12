@@ -2,30 +2,33 @@
 @use '@vonage/vvd-typography/scss/typography';
 @use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
 	$connotations-set: success alert warning info announcement,
-	$default: announcement
+	$default: announcement,
 );
 @use '@vonage/vvd-foundation/scss/mixins/connotation';
 
 
-$border-value: 8px solid var(#{connotation.$vvd-color-connotation});
-
-
-:host {
+.vwc-note {
+	@include connotation.connotation;
 	display: flex;
-	overflow: hidden;
 	align-items: stretch;
 	padding: 20px;
-	border-left: $border-value;
+	border-left: 8px solid var(#{connotation.$vvd-color-connotation});
 	background-color: var(#{scheme-variables.$vvd-color-canvas});
 	border-radius: 6px;
 	box-shadow: inset 0 1px 0 0 var(#{scheme-variables.$vvd-color-neutral-40}),
 		inset -1px 0 0 0 var(#{scheme-variables.$vvd-color-neutral-40}),
 		inset 0 -1px 0 0 var(#{scheme-variables.$vvd-color-neutral-40});
 	color: var(#{scheme-variables.$vvd-color-on-canvas});
-	contain: content;
+	@supports(contain: content) {
+		contain: content;
+	}
+	@supports not (contain: content) {
+		overflow: hidden;
+	}
 }
 
 .note-icon {
+	#{connotation.$vvd-color-connotation}: currentColor;
 	margin-inline-end: 16px;
 }
 
