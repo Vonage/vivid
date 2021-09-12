@@ -25,9 +25,11 @@ $all-layouts: (
 %outlined {
 	#{variables.$vvd-layout-color-fill}: transparent;
 	#{variables.$vvd-layout-color-outline}: var(#{connotation.$vvd-color-connotation});
-	//! advise @jshenkman whether which should be the correct value
-	// #{variables.$vvd-layout-color-text}: var(#{scheme-variables.$vvd-color-on-canvas});
-	#{variables.$vvd-layout-color-text}: var(#{connotation.$vvd-color-connotation}-contrast);
+	@if config.$outline-duotone {
+		#{variables.$vvd-layout-color-text}: var(#{connotation.$vvd-color-connotation}-contrast);
+	} @else {
+		#{variables.$vvd-layout-color-text}: var(#{scheme-variables.$vvd-color-on-canvas});
+	}
 }
 
 %soft {
