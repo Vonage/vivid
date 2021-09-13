@@ -107,7 +107,7 @@
 
 	:host([outlined]) & {
 		--mdc-theme-primary: var(#{button-variables.$vvd-button-color}, var(#{layout.$vvd-layout-color-text}));
-		--mdc-theme-on-primary: var(#{button-variables.$vvd-button-on-color}, var(#{layout.$vvd-layout-color-fill}));
+		--mdc-theme-on-primary: var(#{button-variables.$vvd-button-on-color}, var(#{scheme-variables.$vvd-color-on-canvas}));
 	}
 
 	:host([dense]) & {

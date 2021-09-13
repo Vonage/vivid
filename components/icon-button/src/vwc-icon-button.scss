@@ -46,7 +46,7 @@ $block-sizes: (
 	border: 1px solid var(#{layout.$vvd-layout-color-outline});
 	background-color: var(#{icon-button-variables.$vvd-icon-button-color}, var(#{layout.$vvd-layout-color-fill}));
 	border-radius: var(#{icon-button-variables.$icon-button-shape});
-	color: var(#{icon-button-variables.$vvd-icon-button-on-color}, var(#{layout.$vvd-layout-color-text}));
+	color: var(#{icon-button-variables.$vvd-icon-button-on-color}, var(#{scheme-variables.$vvd-color-on-canvas}));
 	font-size: inherit;
 	&:disabled {
 		color: var(#{vvd-formfield.$formfield-disabled-ink});

@@ -1,4 +1,3 @@
-@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '../connotation' as connotation;
 @use '../../functions' as functions;
 @use 'variables' as variables;
@@ -25,11 +24,7 @@ $all-layouts: (
 %outlined {
 	#{variables.$vvd-layout-color-fill}: transparent;
 	#{variables.$vvd-layout-color-outline}: var(#{connotation.$vvd-color-connotation});
-	@if config.$outline-duotone {
-		#{variables.$vvd-layout-color-text}: var(#{connotation.$vvd-color-connotation}-contrast);
-	} @else {
-		#{variables.$vvd-layout-color-text}: var(#{scheme-variables.$vvd-color-on-canvas});
-	}
+	#{variables.$vvd-layout-color-text}: var(#{connotation.$vvd-color-connotation}-contrast);
 }
 
 %soft {
