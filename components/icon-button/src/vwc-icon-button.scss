@@ -46,12 +46,17 @@ $block-sizes: (
 	border: 1px solid var(#{layout.$vvd-layout-color-outline});
 	background-color: var(#{icon-button-variables.$vvd-icon-button-color}, var(#{layout.$vvd-layout-color-fill}));
 	border-radius: var(#{icon-button-variables.$icon-button-shape});
-	color: var(#{icon-button-variables.$vvd-icon-button-on-color}, var(#{scheme-variables.$vvd-color-on-canvas}));
+	color: var(#{icon-button-variables.$vvd-icon-button-on-color}, var(#{layout.$vvd-layout-color-text}));
 	font-size: inherit;
 	&:disabled {
 		color: var(#{vvd-formfield.$formfield-disabled-ink});
 	}
+
+	&.layout-outlined {
+		#{layout.$vvd-layout-color-text}: var(#{scheme-variables.$vvd-color-on-canvas});
+	}
 }
+
 
 :host([layout="filled"i]) {
 	.mdc-icon-button:disabled {
