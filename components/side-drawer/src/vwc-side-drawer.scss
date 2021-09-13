@@ -39,16 +39,22 @@ $min-inline-size-default: 280px;
 }
 
 .side-drawer--top-bar {
+	$gutter: var(#{$side-drawer-padding}--top-bar, #{$padding-default});
 	display: flex;
 	align-items: center;
 	block-size: 64px;
-	padding-inline-end: var(#{$side-drawer-padding}--top-bar, #{$padding-default});
-	padding-inline-start: var(#{$side-drawer-padding}--top-bar, #{$padding-default});
+	padding-inline-end: #{$gutter};
+	padding-inline-start: #{$gutter};
 }
 
 .side-drawer--content {
-	padding-inline-end: var(#{$side-drawer-padding}--content, #{$padding-default});
-	padding-inline-start: var(#{$side-drawer-padding}--content, #{$padding-default});
+	$gutter: var(#{$side-drawer-padding}--content, #{$padding-default});
+	padding-inline-end: #{$gutter};
+	padding-inline-start: #{$gutter};
+	.side-drawer--pin & {
+		position: sticky;
+		top: 0;
+	}
 }
 
 .side-drawer--modal {

@@ -30,6 +30,17 @@ export class VWCSideDrawerBase extends LitElement {
 	alternate = false;
 
 	/**
+	 * @prop pin - disables scrolling and pins side drawer's content in place
+	 * accepts boolean value
+	 * @public
+	 * */
+	@property({
+		type: Boolean,
+		reflect: true
+	})
+	pin = false;
+
+	/**
 	 * @prop hasTopBar - adds top bar to the side drawer
 	 * accepts boolean value
 	 * @public
@@ -41,15 +52,15 @@ export class VWCSideDrawerBase extends LitElement {
 	hasTopBar?: boolean;
 
 	/**
-	 * @prop type - can be modal, dismissible or empty
-	 * accepts String value
+	 * @prop type - sets the type of the side drawer's layout
+	 * accepts "modal" | "dismissible"
 	 * @public
 	 * */
 	@property({
 		type: String,
 		reflect: true
 	})
-	type = '';
+	type?: 'modal' | 'dismissible';
 
 	@property({
 		type: Boolean,
@@ -98,6 +109,7 @@ export class VWCSideDrawerBase extends LitElement {
 			'side-drawer--dismissible': dismissible,
 			'side-drawer--modal': modal,
 			'side-drawer--open': this.open,
+			'side-drawer--pin': this.pin,
 		};
 
 		const aside = html`<aside
@@ -113,6 +125,7 @@ export class VWCSideDrawerBase extends LitElement {
 		return html`
 			${dismissible ? this.renderDismissible(aside) : aside}
 			${scrim}
+			<slot name="app"></slot>
 		`;
 	}
 
