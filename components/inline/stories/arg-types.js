@@ -1,7 +1,7 @@
 import { Size } from '@vonage/vvd-foundation/constants';
 import { InlineTemplate } from '../vwc-inline';
 // Example use:
-const INLINE_SIZE = { ...Size, Block: 'block' };
+const SIZE = { ...Size, Block: 'block' };
 export const argTypes = {
 	template: {
 		control: {
@@ -9,10 +9,10 @@ export const argTypes = {
 			options: Object.values(InlineTemplate),
 		}
 	},
-	inlineSize: {
+	columnBasis: {
 		control: {
 			type: 'select',
-			options: Object.values(INLINE_SIZE).filter(s => ([INLINE_SIZE.Small, INLINE_SIZE.Medium, INLINE_SIZE.Large, INLINE_SIZE.Block].includes(s))),
+			options: Object.values(SIZE).filter(s => ([SIZE.Small, SIZE.Medium, SIZE.Large, SIZE.Block].includes(s))),
 		}
 	},
 	columnSpacing: {

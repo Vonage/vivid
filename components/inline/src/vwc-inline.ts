@@ -22,12 +22,24 @@ type ColumnBasis = Extract<Size, Size.Small | Size.Medium | Size.Large> | 'block
 export class Inline extends LitElement {
 	static styles = style;
 
+	/**
+	 * @prop columnBasis - sets the initial preferred measure of a column from predefined available options
+	 * @public
+	 * */
 	@property({ type: String, reflect: true, attribute: 'column-basis' })
 	columnBasis: ColumnBasis = Size.Small;
 
+	/**
+	 * @prop columnSpacing - sets the initial preferred spacing of a column from predefined available options
+	 * @public
+	 * */
 	@property({ type: String, reflect: true, attribute: 'column-spacing' })
 	columnSpacing: ColumnSpacing = Size.Medium;
 
+	/**
+	 * @prop template - sets the initial preferred template from predefined available options
+	 * @public
+	 * */
 	@property({ type: String, reflect: true })
 	template?: InlineTemplate;
 

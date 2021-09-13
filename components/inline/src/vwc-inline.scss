@@ -13,7 +13,7 @@ $items-min-inline-sizes: (
 );
 
 @each $key, $value in $items-min-inline-sizes {
-	:host([inlineSize='#{$key}'i]) {
+	:host([columnBasis='#{$key}'i]) {
 		#{$items-min-inline-size-v-name}: $value;
 	}
 }
@@ -51,7 +51,7 @@ $items-spacings: (
 	inline-size: 100%;
 }
 
-:host([inlineSize="block"i]) {
+:host([columnBasis="block"i]) {
 	grid-template-columns: 1fr;
 }
 
