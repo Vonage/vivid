@@ -8,8 +8,6 @@ import {
 import { Size } from '@vonage/vvd-foundation/constants';
 import { style } from './vwc-inline.css.js';
 
-// eslint-disable-next-line no-shadow
-export enum BlockSize { Block = 'block'}
 
 // eslint-disable-next-line no-shadow
 export enum InlineTemplate {
@@ -18,16 +16,16 @@ export enum InlineTemplate {
 }
 
 type ColumnSpacing = Extract<Size, Size.Small | Size.Medium>;
-type InlineSize = Extract<Size | BlockSize, Size.Small | Size.Medium | Size.Large | BlockSize.Block>;
+type ColumnBasis = Extract<Size, Size.Small | Size.Medium | Size.Large> | 'block';
 
 @customElement('vwc-inline')
 export class Inline extends LitElement {
 	static styles = style;
 
-	@property({ type: String, reflect: true })
-	inlineSize: InlineSize = Size.Small;
+	@property({ type: String, reflect: true, attribute: 'column-basis' })
+	columnBasis: ColumnBasis = Size.Small;
 
-	@property({ type: String, reflect: true })
+	@property({ type: String, reflect: true, attribute: 'column-spacing' })
 	columnSpacing: ColumnSpacing = Size.Medium;
 
 	@property({ type: String, reflect: true })
