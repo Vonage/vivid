@@ -4,12 +4,40 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-  title: 'Alpha/Components/Elevation',
-  component: 'vwc-elevation',
-  argTypes
+	title: 'Alpha/Components/Elevation',
+	component: 'vwc-elevation',
+	argTypes
 };
 
-const Template = args => html`<vwc-elevation ...=${spread(args)}></vwc-elevation>`;
+const dpLevels = [2, 4, 8, 12, 16, 24];
+const styles = () => html`
+	<style>
+		.card {
+			height: 20px;
+			width: 90px;
+			padding: 20px;
+			text-align: center;
+		}
+	</style>
+`;
+const elevations = () => dpLevels.map(dpLevel => html`
+		<vwc-elevation dp="${dpLevel}"><div class="card">DP ${dpLevel}</div></vwc-elevation>
+	`);
 
-export const Basic = Template.bind({});
-Basic.args = { label: 'Basic', disabled: 'false' };
+const BasicTemplate = args => html`
+	${styles()}
+	${elevations()}
+`;
+
+const Template = args => html`
+	${styles()}
+	<vwc-elevation ...=${spread(args)}><div class="card"></div></vwc-elevation>
+`;
+export const Basic = BasicTemplate.bind({});
+Basic.args = { label: 'Basic' };
+
+export const BackgroundColor = Template.bind({});
+BackgroundColor.args = { label: 'Background Color', 'background-color': 'lightblue', dp: 8 };
+
+export const BorderRadius = Template.bind({});
+BorderRadius.args = { label: 'Border Radius', 'border-radius': '16px', dp: 24 };
