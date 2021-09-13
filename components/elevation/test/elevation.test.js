@@ -1,6 +1,5 @@
 import '../vwc-elevation.js';
 import {
-	waitNextTask,
 	textToDomToParent,
 	isolatedElementsCreation
 } from '../../../test/test-helpers.js';
