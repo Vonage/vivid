@@ -10,7 +10,7 @@ chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-elevation';
 
-describe.only('Elevation', () => {
+describe('Elevation', () => {
 	let addElement = isolatedElementsCreation();
 
 	function createElement(props) {
