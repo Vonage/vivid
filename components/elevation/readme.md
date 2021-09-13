@@ -28,7 +28,7 @@ Note that this component is responsible for the perceived elevation alone and no
 
 # Example:
 
-![image](./vwc-elevation.svg)
+![image](assets/images/vwc-elevation.svg)
 
 Example’s code:
 
