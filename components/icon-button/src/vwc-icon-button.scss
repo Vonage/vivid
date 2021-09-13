@@ -8,13 +8,12 @@
 );
 @use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
 	$connotations-set: primary cta success alert info announcement,
-	$default: primary
+	$default: primary,
 );
 @use '@vonage/vvd-foundation/scss/mixins/connotation';
 @use '@vonage/vvd-foundation/scss/mixins/layout/config' as layout-config with (
 	$layout-set: filled outlined ghost,
 	$default: ghost,
-	$scope: vwc-icon-button
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout' as layout;
 
@@ -38,14 +37,15 @@ $block-sizes: (
 .mdc-icon-button {
 	@include vvd-formfield.coupling;
 	@include layout.layout;
+	@include connotation.connotation;
 	display: inline-flex;
 	overflow: hidden;
 	align-items: center;
 	justify-content: center;
 	border: var(#{layout.$vvd-layout-color-outline});
-	background-color: var(#{layout.$vvd-layout-color-fill});
+	background-color: var(#{icon-button-variables.$vvd-icon-button-color}, var(#{layout.$vvd-layout-color-fill}));
 	border-radius: var(#{icon-button-variables.$icon-button-shape});
-	color: var(#{layout.$vvd-layout-color-text});
+	color: var(#{icon-button-variables.$vvd-icon-button-on-color}, var(#{layout.$vvd-layout-color-text}));
 	font-size: inherit;
 	&:disabled {
 		color: var(#{vvd-formfield.$formfield-disabled-ink});
@@ -73,6 +73,8 @@ $block-sizes: (
 }
 
 vwc-icon {
+	// TODO remove next line when VIV-704 resolved
+	#{connotation.$vvd-color-connotation}: initial;
 	:host & {
 		#{icon-variables.$icon-size-variable-name}: var(#{icon-button-variables.$icon-button-icon-size-variable-name}, 20px);
 	}

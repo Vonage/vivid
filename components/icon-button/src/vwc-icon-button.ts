@@ -63,9 +63,8 @@ export class VWCIconButton extends MWCIconButton {
 
 	protected getRenderClasses(): ClassInfo {
 		return {
-			'vwc-icon-button--layout-filled': this.layout == 'filled',
-			'vwc-icon-button--layout-outlined': this.layout == 'outlined',
-			'vwc-icon-button--layout-ghost': this.layout == 'ghost',
+			[`connotation-${this.connotation}`]: !!this.connotation,
+			[`layout-${this.layout}`]: !!this.layout
 		};
 	}
 

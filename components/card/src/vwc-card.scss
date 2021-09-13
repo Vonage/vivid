@@ -28,8 +28,7 @@ header {
 }
 
 .vwc-card-header {
-	display: inline-flex;
-	flex: 1;
+	display: flex;
 }
 
 .vwc-card-header-text {
@@ -37,8 +36,9 @@ header {
 	margin: auto 0;
 }
 
-header slot::slotted(*),
-header slot vwc-icon {
+::slotted([slot="graphics"i]),
+.header-icon {
+	flex-shrink: 0;
 	margin-right: 12px;
 }
 
