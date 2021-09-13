@@ -58,13 +58,13 @@ describe('inline', () => {
 		});
 		it(`should set size to block`, async () => {
 			const actualElement = getNewElement();
-			actualElement.inlineSize = "block";
+			actualElement.columnBasis = "block";
 			actualElement.style.width = "1300px";
-			await waitNextTask();
+			await actualElement.updateComplete;
 			const { shadowRoot: { firstElementChild: slot } } = actualElement;
 			const assignedElements = slot.assignedElements();
 			const [childEl] = assignedElements;
-			await waitNextTask();
+			await actualElement.updateComplete;
 			expect(childEl.clientWidth).to.equal(1300);
 		});
 	});
