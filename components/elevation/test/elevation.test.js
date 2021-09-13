@@ -57,34 +57,22 @@ describe.only('Elevation', () => {
 				.to
 				.equal(4);
 		});
-	});
 
-	describe(`background-color`, function () {
-		const defaultValue = null;
-		it(`should default to ${defaultValue}`, async function () {
-			const actualElement = createElement();
-			await actualElement.updateComplete;
-			expect(actualElement.backgroundColor)
-				.to
-				.equal(defaultValue);
-		});
-
-		it(`should change the property when the attribute changes`, async function () {
-			const startingBackgroundColor = 'black';
-			const nextBackgroundColor = 'blue';
-			const actualElement = createElement({ 'background-color': startingBackgroundColor });
+		it(`should set the dp class on the wrapper element`, async function () {
+			const startingDP = 8;
+			const nextDP = 24;
+			const classPrefix = 'vwc-elevation-dp-';
+			const actualElement = createElement({ dp: startingDP });
 			await actualElement.updateComplete;
 
-			const propertyValueBeforeChange = actualElement.backgroundColor;
+			const wrapperElement = actualElement.shadowRoot.querySelector('#vwc-elevation-wrapper');
+			const startingDPClassExists = wrapperElement.classList.contains(`${classPrefix}${startingDP}`);
 
-			actualElement.setAttribute('background-color', nextBackgroundColor);
-
-			expect(propertyValueBeforeChange)
-				.to
-				.equal(startingBackgroundColor);
-			expect(actualElement.backgroundColor)
-				.to
-				.equal(nextBackgroundColor);
+			actualElement.setAttribute('dp', nextDP);
+			await actualElement.updateComplete;
+			const nextDPClassExists = wrapperElement.classList.contains(`${classPrefix}${nextDP}`);
+			expect(startingDPClassExists).to.equal(true);
+			expect(nextDPClassExists).to.equal(true);
 		});
 	});
 
@@ -114,6 +102,21 @@ describe.only('Elevation', () => {
 			expect(actualElement.backgroundColor)
 				.to
 				.equal(nextBackgroundColor);
+		});
+
+		it(`should set the background-color property on the wrapper`, async function () {
+			const actualElement = createElement();
+			await actualElement.updateComplete;
+
+			const wrapperElement = actualElement.shadowRoot.querySelector('#vwc-elevation-wrapper');
+			const initialEmptyBackgroundColor = wrapperElement.style.backgroundColor;
+
+			actualElement.backgroundColor = 'black';
+			await actualElement.updateComplete;
+
+			const blackBackgroundColor = wrapperElement.style.backgroundColor;
+			expect(initialEmptyBackgroundColor).to.equal('');
+			expect(blackBackgroundColor).to.equal('black');
 		});
 	});
 
@@ -143,6 +146,21 @@ describe.only('Elevation', () => {
 			expect(actualElement.borderRadius)
 				.to
 				.equal(nextBackgroundColor);
+		});
+
+		it(`should set the border-radius property on the wrapper`, async function () {
+			const actualElement = createElement();
+			await actualElement.updateComplete;
+
+			const wrapperElement = actualElement.shadowRoot.querySelector('#vwc-elevation-wrapper');
+			const initialEmptyBorderRadius = wrapperElement.style.borderRadius;
+
+			actualElement.borderRadius = '16px';
+			await actualElement.updateComplete;
+
+			const borderRadiusAfterChange = wrapperElement.style.borderRadius;
+			expect(initialEmptyBorderRadius).to.equal('');
+			expect(borderRadiusAfterChange).to.equal('16px');
 		});
 	});
 
