@@ -56,9 +56,9 @@ describe('inline', () => {
 			await waitNextTask();
 			expect(childEl.clientWidth).to.equal(165);
 		});
-		it(`should set size block`, async () => {
+		it(`should set size to block`, async () => {
 			const actualElement = getNewElement();
-			actualElement.size = "block";
+			actualElement.inlineSize = "block";
 			actualElement.style.width = "1300px";
 			await waitNextTask();
 			const { shadowRoot: { firstElementChild: slot } } = actualElement;
