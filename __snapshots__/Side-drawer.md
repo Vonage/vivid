@@ -4,7 +4,7 @@
 
 ```html
 <aside class="side-drawer">
-  <div class="vvd-side-drawer--content">
+  <div class="side-drawer--content">
     <slot>
     </slot>
   </div>

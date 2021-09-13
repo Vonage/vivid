@@ -6,20 +6,19 @@ $namespace-shape: #{$namespace}-shape;
 @use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
 	$connotations-set: primary cta success alert warning info,
 	$shades: (soft, contrast),
-	$default: primary
+	$default: primary,
 );
-@use '@vonage/vvd-foundation/scss/mixins/connotation';
+@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
 	$variable-name: #{$namespace-shape}
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout/config' as layout-config with (
 	$layout-set: filled outlined soft,
 	$default: filled,
-	$scope: vwc-badge,
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout' as layout;
 
-$vvd-badge--block-size: --#{$namespace}--block-size;
+$vvd-badge--block-size: #{$namespace}--block-size;
 
 
 @include shape-mixins.shape(
@@ -45,6 +44,7 @@ $vvd-badge--block-size: --#{$namespace}--block-size;
 .vwc-badge {
 	@include typography.typography-cat-shorthand('caption-bold');
 	@include layout.layout;
+	@include connotation.connotation;
 	display: inline-block;
 	padding: 0 10px;
 	border: var(#{layout.$vvd-layout-color-outline});
@@ -63,6 +63,8 @@ $vvd-badge--block-size: --#{$namespace}--block-size;
 }
 
 .icon {
+	// TODO remove next line when VIV-704 resolved
+	#{connotation.$vvd-color-connotation}: initial;
 	--icon-size: 12px;
 	$margin: 8px;
 

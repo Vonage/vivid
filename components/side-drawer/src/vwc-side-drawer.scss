@@ -1,10 +1,11 @@
-$vvd-side-drawer--padding: --vvd-side-drawer--padding;
-$vvd-side-drawer--min-inline-size: --vvd-side-drawer--min-inline-size;
-$vvd-side-drawer--z-index: --vvd-side-drawer--z-index;
+$side-drawer-padding: --side-drawer-padding;
+$side-drawer-min-inline-size: --side-drawer-min-inline-size;
+$side-drawer-z-index: --side-drawer-z-index;
+$side-drawer-background-color: --side-drawer-background-color;
 
-$z-index-default: var(#{$vvd-side-drawer--z-index}, 6);
-$padding-default: var(#{$vvd-side-drawer--padding}, 16px);
-$min-width: 280px;
+$z-index-default: 6;
+$padding-default: 16px;
+$min-inline-size-default: 280px;
 
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-typography/scss/typography' as typography;
@@ -16,41 +17,41 @@ $min-width: 280px;
 }
 
 .side-drawer {
-	z-index: #{$z-index-default};
-	background-color: var(#{scheme-variables.$vvd-color-canvas});
+	z-index: var(#{$side-drawer-z-index}, #{$z-index-default});
+	background-color: var(#{$side-drawer-background-color}, var(#{scheme-variables.$vvd-color-canvas}));
 	color: var(#{scheme-variables.$vvd-color-on-canvas});
-	min-inline-size: var(#{$vvd-side-drawer--min-inline-size}, $min-width);
+	min-inline-size: var(#{$side-drawer-min-inline-size}, #{$min-inline-size-default});
 
-	&:not(.vvd-side-drawer--alternate):not(.vvd-side-drawer--modal) {
-		background-color: var(#{scheme-variables.$vvd-color-neutral-10});
+	&.side-drawer--alternate {
+		background-color: var(#{scheme-variables.$vvd-color-canvas});
 	}
 
-	&.vvd-side-drawer--modal,
-	&.vvd-side-drawer--dismissible {
+	&.side-drawer--modal,
+	&.side-drawer--dismissible {
 		@media (prefers-reduced-motion: no-preference) {
 			transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 		}
 
-		&:not(.vvd-side-drawer--open) {
+		&:not(.side-drawer--open) {
 			transform: translateX(-100%);
 		}
 	}
 }
 
-.vvd-side-drawer--top-bar {
+.side-drawer--top-bar {
 	display: flex;
 	align-items: center;
 	block-size: 64px;
-	padding-inline-end: var(#{$vvd-side-drawer--padding}--top-bar, #{$padding-default});
-	padding-inline-start: var(#{$vvd-side-drawer--padding}--top-bar, #{$padding-default});
+	padding-inline-end: var(#{$side-drawer-padding}--top-bar, #{$padding-default});
+	padding-inline-start: var(#{$side-drawer-padding}--top-bar, #{$padding-default});
 }
 
-.vvd-side-drawer--content {
-	padding-inline-end: var(#{$vvd-side-drawer--padding}--content, #{$padding-default});
-	padding-inline-start: var(#{$vvd-side-drawer--padding}--content, #{$padding-default});
+.side-drawer--content {
+	padding-inline-end: var(#{$side-drawer-padding}--content, #{$padding-default});
+	padding-inline-start: var(#{$side-drawer-padding}--content, #{$padding-default});
 }
 
-.vvd-side-drawer--modal {
+.side-drawer--modal {
 	position: fixed;
 	top: 0;
 	right: initial;
@@ -63,7 +64,7 @@ $min-width: 280px;
 	&:not(&--open) {width: 0;}
 }
 
-.vvd-side-drawer--scrim {
+.side-drawer--scrim {
 	@include scrim-mixins.scrim-variables;
 	position: fixed;
 	z-index: calc(#{$z-index-default} - 1);
@@ -74,6 +75,3 @@ $min-width: 280px;
 	background-color: var(#{scrim-mixins.$vvd-scrim--background-color});
 	opacity: var(#{scrim-mixins.$vvd-scrim--opacity});
 }
-
-
-

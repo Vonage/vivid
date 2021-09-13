@@ -6,16 +6,15 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
 	$connotations-set: primary cta success alert info announcement,
-	$default: primary
+	$default: primary,
 );
-@use '@vonage/vvd-foundation/scss/mixins/connotation';
+@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' with(
 	$variable-name: --vvd-button-shape
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout/config' as layout-config with (
 	$layout-set: filled outlined ghost,
 	$default: ghost,
-	$scope: vwc-button
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout' as layout;
 
@@ -43,6 +42,7 @@
 	$gutter: 8px;
 
 	@include vvd-formfield.coupling;
+	@include connotation.connotation;
 	@include layout.layout;
 
 	height: var(--vvd-button-block-size, var(--button-block-size));
@@ -59,6 +59,8 @@
 
 	.leading-icon,
 	.trailing-icon {
+		// TODO remove next line when VIV-704 resolved
+		#{connotation.$vvd-color-connotation}: initial;
 		display: flex;
 	}
 
@@ -94,17 +96,17 @@
 
 	:host([raised]) &,
 	:host([unelevated]) & {
-		--mdc-ripple-color: var(#{layout.$vvd-layout-color-text}, var(#{connotation.$vvd-color-on-connotation}));
+		--mdc-ripple-color: var(#{button-variables.$vvd-button-on-color}, var(#{layout.$vvd-layout-color-text}));
 	}
 
 	:host([unelevated]) & {
-		--mdc-theme-primary: var(#{layout.$vvd-layout-color-fill}, var(#{connotation.$vvd-color-connotation}));
-		--mdc-theme-on-primary: var(#{layout.$vvd-layout-color-text}, var(#{connotation.$vvd-color-on-connotation}));
+		--mdc-theme-primary: var(#{button-variables.$vvd-button-color}, var(#{layout.$vvd-layout-color-fill}));
+		--mdc-theme-on-primary: var(#{button-variables.$vvd-button-on-color}, var(#{layout.$vvd-layout-color-text}));
 	}
 
 	:host([outlined]) & {
-		--mdc-theme-primary: var(#{layout.$vvd-layout-color-text}, var(#{connotation.$vvd-color-on-connotation}));
-		--mdc-theme-on-primary: var(#{layout.$vvd-layout-color-fill}, var(#{connotation.$vvd-color-connotation}));
+		--mdc-theme-primary: var(#{button-variables.$vvd-button-color}, var(#{layout.$vvd-layout-color-text}));
+		--mdc-theme-on-primary: var(#{button-variables.$vvd-button-on-color}, var(#{layout.$vvd-layout-color-fill}));
 	}
 
 	:host([dense]) & {
