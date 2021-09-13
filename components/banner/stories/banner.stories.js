@@ -71,7 +71,7 @@ export const Basic = (function () {
 		};
 		updateStory();
 	});
-})();
+}());
 
 Basic.args = {
 	connotation: "info",

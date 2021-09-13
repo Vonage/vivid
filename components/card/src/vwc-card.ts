@@ -4,7 +4,6 @@ import {
 import { style } from './vwc-card.css';
 import { property } from 'lit-element/lib/decorators';
 import { classMap } from 'lit-html/directives/class-map.js';
-import { ifDefined } from 'lit-html/directives/if-defined.js';
 import '@vonage/vwc-button';
 import '@vonage/vwc-icon';
 
@@ -84,8 +83,8 @@ export class VWCCard extends LitElement {
 		return html`
 			<header class="${this.headerClass}">
 				<div class="vwc-card-header">
-					<slot name="graphics" @slotchange="${this.headerIconSlotChanged}">
-						${this.renderHeaderIcon()}
+					<slot name="graphics" @slotchange="${this.graphicsSlotChanged}">
+						${this.headerIcon ? this.renderIcon() : ''}
 					</slot>
 					<div class="vwc-card-header-text">
 						${this.heading}
@@ -95,12 +94,11 @@ export class VWCCard extends LitElement {
 			</header>`;
 	}
 
-	private renderHeaderIcon() {
-		return (this.headerIcon || this.headerIconSlottedItems?.length) ? html`
-			<vwc-icon size="medium" type="${ifDefined(this.headerIcon ? this.headerIcon : undefined)}"></vwc-icon>` : '';
+	private renderIcon() {
+		return html`<vwc-icon class="header-icon" size="medium" type="${this.headerIcon}"></vwc-icon>`;
 	}
 
-	private headerIconSlotChanged() {
+	private graphicsSlotChanged() {
 		const headerElement = this.shadowRoot?.querySelector('header');
 		const slot = headerElement?.querySelector('slot[name="graphics"]') as HTMLSlotElement;
 		this.headerIconSlottedItems = slot.assignedNodes();
