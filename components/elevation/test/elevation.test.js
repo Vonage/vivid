@@ -10,7 +10,7 @@ chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-elevation';
 
-describe('Elevation', () => {
+describe.only('Elevation', () => {
 	let addElement = isolatedElementsCreation();
 
 	function createElement(props) {
@@ -164,12 +164,11 @@ describe('Elevation', () => {
 		});
 	});
 
-	it('should internal contents', async () => {
-		const addedElements = addElement(
+	it('should have a slot', async () => {
+		const [actualElement] = addElement(
 			textToDomToParent(`<${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}>`)
 		);
-		const actualElement = addedElements[0];
-		await waitNextTask();
-		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
+		await actualElement.updateComplete;
+		expect(Boolean(actualElement.shadowRoot.querySelector('slot'))).to.equal(true);
 	});
 });
