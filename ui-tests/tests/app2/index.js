@@ -10,6 +10,7 @@ export async function createElementVariations(wrapper) {
 	}
 	body {
 		min-block-size: 100%;
+		margin: 0;
 		padding: 0;
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
