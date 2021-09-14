@@ -37,7 +37,7 @@ export const Basic = BasicTemplate.bind({});
 Basic.args = { label: 'Basic' };
 
 export const BackgroundColor = Template.bind({});
-BackgroundColor.args = { label: 'Background Color', 'background-color': 'lightblue', dp: 8 };
+BackgroundColor.args = { label: 'Background Color', style: '--vvd-elevation-background-color: lightblue', dp: 8 };
 
 export const BorderRadius = Template.bind({});
-BorderRadius.args = { label: 'Border Radius', 'border-radius': '16px', dp: 24 };
+BorderRadius.args = { label: 'Border Radius', style: '--vvd-elevation-border-radius: 16px', dp: 24 };

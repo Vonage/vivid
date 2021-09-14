@@ -20,7 +20,7 @@ export async function createElementVariations(wrapper) {
 					text-align: center;
 				}
 			</style>
-		  <vwc-elevation border-radius="16px" background-color="lightblue">
+		  <vwc-elevation style="--vvd-elevation-border-radius: 16px; --vvd-elevation-background-color:lightblue;">
 		  	<div class="card">
 					This is the content inside the elevation with background and radius
 				</div>

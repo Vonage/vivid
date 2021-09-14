@@ -1,12 +1,15 @@
 $dps: 2 4 8 12 16 24;
+$vvd-elevation-background-color: --vvd-elevation-background-color;
+$vvd-elevation-border-radius: --vvd-elevation-border-radius;
 
 @each $dp in $dps {
 	.vwc-elevation-dp-#{$dp} {
-		background-color: var(--vvd-scheme-elevation-dp-#{$dp}-canvas);
+		background-color: var(#{$vvd-elevation-background-color}, var(--vvd-scheme-elevation-dp-#{$dp}-canvas));
 		box-shadow: var(--vvd-scheme-elevation-dp-#{$dp}-box-shadow);
 	}
 }
 
 #vwc-elevation-wrapper {
 	display: inline-block;
+	border-radius: var(#{$vvd-elevation-border-radius}, 0);
 }
