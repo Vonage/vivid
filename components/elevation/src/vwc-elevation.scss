@@ -1,9 +1,25 @@
+@use 'sass:list';
+
 $dps: 2 4 8 12 16 24;
 $vvd-elevation-background-color: --vvd-elevation-background-color;
 $vvd-elevation-border-radius: --vvd-elevation-border-radius;
 
+@function get-default-selector($list, $default) {
+	@if list.length($list) == 1 {
+		@return '.vwc-elevation-dp-#{$default}';
+	}
+
+	$compound: '';
+	@each $key, $_ in $list {
+		@if $key != $default {
+			$compound: $compound + ':not(.vwc-elevation-dp-#{$key})';
+		}
+	}
+	@return '.vwc-elevation-dp-#{$default}#{$compound}';
+}
+
 @each $dp in $dps {
-	.vwc-elevation-dp-#{$dp} {
+	#{get-default-selector($dps, $dp)} {
 		background-color: var(#{$vvd-elevation-background-color}, var(--vvd-scheme-elevation-dp-#{$dp}-canvas));
 		box-shadow: var(--vvd-scheme-elevation-dp-#{$dp}-box-shadow);
 	}
