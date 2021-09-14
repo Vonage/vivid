@@ -8,7 +8,7 @@
 );
 @use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
 	$connotations-set: primary cta success alert info announcement,
-	$shades: contrast,
+	$shades: diverse,
 	$default: primary,
 );
 @use '@vonage/vvd-foundation/scss/mixins/connotation';
@@ -50,10 +50,6 @@ $block-sizes: (
 	font-size: inherit;
 	&:disabled {
 		color: var(#{vvd-formfield.$formfield-disabled-ink});
-	}
-
-	&.layout-outlined {
-		#{layout.$vvd-layout-color-text}: var(#{scheme-variables.$vvd-color-on-canvas});
 	}
 }
 

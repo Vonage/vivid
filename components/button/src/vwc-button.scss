@@ -6,7 +6,7 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
 	$connotations-set: primary cta success alert info announcement,
-	$shades: contrast,
+	$shades: diverse,
 	$default: primary,
 );
 @use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
@@ -105,9 +105,9 @@
 		--mdc-theme-on-primary: var(#{button-variables.$vvd-button-on-color}, var(#{layout.$vvd-layout-color-text}));
 	}
 
-	.layout-outlined {
+	&.layout-outlined {
 		--mdc-theme-primary: var(#{button-variables.$vvd-button-color}, var(#{layout.$vvd-layout-color-text}));
-		--mdc-theme-on-primary: var(#{button-variables.$vvd-button-on-color}, var(#{scheme-variables.$vvd-color-on-canvas}));
+		--mdc-theme-on-primary: var(#{button-variables.$vvd-button-on-color}, var(#{layout.$vvd-layout-color-fill}));
 	}
 
 	:host([dense]) & {
