@@ -4,11 +4,34 @@
 @use 'partials/scheme-variables' as variables;
 
 
-
 #{variables.$scheme-main-selector} {
+	--vvd-scheme-elevation-dp-2-box-shadow: 0 2px 1px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.05), 0 1px 4px rgba(0, 0, 0, 0.1);
+	--vvd-scheme-elevation-dp-2-canvas: #fff;
+	--vvd-scheme-elevation-dp-4-box-shadow: 0 4px 2px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.05), 0 2px 8px rgba(0, 0, 0, 0.1);
+	--vvd-scheme-elevation-dp-4-canvas: #fff;
+	--vvd-scheme-elevation-dp-8-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05), 0 8px 8px rgba(0, 0, 0, 0.05), 0 2px 16px rgba(0, 0, 0, 0.1);
+	--vvd-scheme-elevation-dp-8-canvas: #fff;
+	--vvd-scheme-elevation-dp-12-box-shadow: 0 6px 8px rgba(0, 0, 0, 0.05), 0 12px 16px rgba(0, 0, 0, 0.05), 0 4px 24px rgba(0, 0, 0, 0.1);
+	--vvd-scheme-elevation-dp-12-canvas: #fff;
+	--vvd-scheme-elevation-dp-16-box-shadow: 0 8px 12px rgba(0, 0, 0, 0.05), 0 16px 24px rgba(0, 0, 0, 0.05), 0 6px 32px rgba(0, 0, 0, 0.1);
+	--vvd-scheme-elevation-dp-16-canvas: #fff;
+	--vvd-scheme-elevation-dp-24-box-shadow: 0 12px 16px rgba(0, 0, 0, 0.05), 0 24px 32px rgba(0, 0, 0, 0.05), 0 12px 48px rgba(0, 0, 0, 0.2);
+	--vvd-scheme-elevation-dp-24-canvas: #fff;
 	@include main.variables;
 }
 
 #{variables.$scheme-alternate-selector} {
+	--vvd-scheme-elevation-dp-2-box-shadow: 0 2px 1px 1px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px 4px rgba(0, 0, 0, 0.25);
+	--vvd-scheme-elevation-dp-2-canvas: #1c1c1c;
+	--vvd-scheme-elevation-dp-4-box-shadow: 0 4px 4px 2px rgba(0, 0, 0, 0.25), 0 2px 4px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.25);
+	--vvd-scheme-elevation-dp-4-canvas: #202020;
+	--vvd-scheme-elevation-dp-8-box-shadow: 0 4px 4px 1px rgba(0, 0, 0, 0.25), 0 8px 8px rgba(19, 20, 21, 0.25), 0 2px 16px rgba(19, 20, 21, 0.25);
+	--vvd-scheme-elevation-dp-8-canvas: #252525;
+	--vvd-scheme-elevation-dp-12-box-shadow: 0 6px 8px 2px rgba(0, 0, 0, 0.25), 0 12px 16px rgba(0, 0, 0, 0.25), 0 4px 24px rgba(0, 0, 0, 0.25);
+	--vvd-scheme-elevation-dp-12-canvas: #2a2a2a;
+	--vvd-scheme-elevation-dp-16-box-shadow: 0 8px 12px 4px rgba(0, 0, 0, 0.25), 0 16px 24px rgba(0, 0, 0, 0.25), 0 6px 32px rgba(0, 0, 0, 0.25);
+	--vvd-scheme-elevation-dp-16-canvas: #2f2f2f;
+	--vvd-scheme-elevation-dp-24-box-shadow: 0 12px 16px 4px rgba(0, 0, 0, 0.25), 0 24px 32px rgba(0, 0, 0, 0.25), 0 12px 48px rgba(0, 0, 0, 0.25);
+	--vvd-scheme-elevation-dp-24-canvas: #343434;
 	@include alternate.variables;
 }
