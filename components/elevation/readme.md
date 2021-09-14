@@ -41,7 +41,7 @@ Example’s code:
    </vwc-button-toggle-group>
 </vwc-elevation>
 
-<vwc-button-toggle-group>
+<vwc-button-toggle-group border-radius="16">
    <vwc-button label="Standard" layout="filled" type="submit" unelevated=""></vwc-button>
    <vwc-button label="Hybrid" layout="filled" type="submit" unelevated=""></vwc-button>
    <vwc-button label="Satellite" layout="filled" type="submit" unelevated="" selected="true"></vwc-button>

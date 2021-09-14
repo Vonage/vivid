@@ -40,19 +40,19 @@ export async function createElementVariations(wrapper) {
 
 			<vwc-elevation dp="8">
 		  	<div class="card">
-					This is the content inside the elevation with DP 4
+					This is the content inside the elevation with DP 8
 				</div>
 			</vwc-elevation>
 
 			<vwc-elevation dp="12">
 		  	<div class="card">
-					This is the content inside the elevation with DP 4
+					This is the content inside the elevation with DP 12
 				</div>
 			</vwc-elevation>
 
 			<vwc-elevation dp="16">
 		  	<div class="card">
-					This is the content inside the elevation with DP 4
+					This is the content inside the elevation with DP 16
 				</div>
 			</vwc-elevation>
 

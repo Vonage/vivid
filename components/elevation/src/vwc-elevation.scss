@@ -1,25 +1,10 @@
-.vwc-elevation-dp-2 {
-	box-shadow: 0 2px 1px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.05), 0 1px 4px rgba(0, 0, 0, 0.1);
-}
+$dps: 2 4 8 12 16 24;
 
-.vwc-elevation-dp-4 {
-	box-shadow: 0 4px 2px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.05), 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.vwc-elevation-dp-8 {
-	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05), 0 8px 8px rgba(0, 0, 0, 0.05), 0 2px 16px rgba(0, 0, 0, 0.1);
-}
-
-.vwc-elevation-dp-12 {
-	box-shadow: 0 6px 8px rgba(0, 0, 0, 0.05), 0 12px 16px rgba(0, 0, 0, 0.05), 0 4px 24px rgba(0, 0, 0, 0.1);
-}
-
-.vwc-elevation-dp-16 {
-	box-shadow: 0 8px 12px rgba(0, 0, 0, 0.05), 0 16px 24px rgba(0, 0, 0, 0.05), 0 6px 32px rgba(0, 0, 0, 0.1);
-}
-
-.vwc-elevation-dp-24 {
-	box-shadow: 0 12px 16px rgba(0, 0, 0, 0.05), 0 24px 32px rgba(0, 0, 0, 0.05), 0 12px 48px rgba(0, 0, 0, 0.2);
+@each $dp in $dps {
+	.vwc-elevation-dp-#{$dp} {
+		background-color: var(--vvd-scheme-elevation-dp-#{$dp}-canvas);
+		box-shadow: var(--vvd-scheme-elevation-dp-#{$dp}-box-shadow);
+	}
 }
 
 #vwc-elevation-wrapper {
