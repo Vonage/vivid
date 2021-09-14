@@ -9,7 +9,6 @@ $vvd-elevation-border-radius: --vvd-elevation-border-radius;
 	}
 }
 
-#vwc-elevation-wrapper {
-	display: inline-block;
+.vwc-elevation {
 	border-radius: var(#{$vvd-elevation-border-radius}, 0);
 }

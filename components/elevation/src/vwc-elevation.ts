@@ -25,7 +25,7 @@ export class VWCElevation extends LitElement {
 		};
 
 		return html`
-			<div id="vwc-elevation-wrapper" class="${classMap(classList)}">
+			<div class="vwc-elevation ${classMap(classList)}">
 				<slot></slot>
 			</div>
 		`;

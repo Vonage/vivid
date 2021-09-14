@@ -64,7 +64,7 @@ describe('Elevation', () => {
 			const actualElement = createElement({ dp: startingDP });
 			await actualElement.updateComplete;
 
-			const wrapperElement = actualElement.shadowRoot.querySelector('#vwc-elevation-wrapper');
+			const wrapperElement = actualElement.shadowRoot.querySelector('.vwc-elevation');
 			const startingDPClassExists = wrapperElement.classList.contains(`${classPrefix}${startingDP}`);
 
 			actualElement.setAttribute('dp', nextDP);
