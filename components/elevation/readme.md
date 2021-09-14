@@ -38,19 +38,35 @@ Note that this component is responsible for the perceived elevation alone and no
 Example’s code:
 
 ```
-<vwc-elevation dp="24" border-radius="16">
-   <vwc-button-toggle-group>
-       <vwc-button label="Standard" layout="filled" type="submit" unelevated=""></vwc-button>
-       <vwc-button label="Hybrid" layout="filled" type="submit" unelevated=""></vwc-button>
-       <vwc-button label="Satellite" layout="filled" type="submit" unelevated="" selected="true"></vwc-button>
-   </vwc-button-toggle-group>
-</vwc-elevation>
+<style>
+	#VwcElevation {
+		display: inline-block;
+	}
 
-<vwc-button-toggle-group border-radius="16">
-   <vwc-button label="Standard" layout="filled" type="submit" unelevated=""></vwc-button>
-   <vwc-button label="Hybrid" layout="filled" type="submit" unelevated=""></vwc-button>
-   <vwc-button label="Satellite" layout="filled" type="submit" unelevated="" selected="true"></vwc-button>
-</vwc-button-toggle-group>
+	vwc-elevation {
+		margin: 5px;
+		display: block;
+	}
+	.card {
+		width: 300px;
+		height: 30px;
+		padding: 20px;
+		text-align: center;
+	}
+</style>
+<div>
+	<vwc-elevation dp="0">
+		<div class="card">
+			This is the content inside the elevation with DP 0
+		</div>
+	</vwc-elevation>
+
+	<vwc-elevation dp="24">
+		<div class="card">
+			This is the content inside the elevation with DP 24
+		</div>
+	</vwc-elevation>
+</div>
 ```
 
 
