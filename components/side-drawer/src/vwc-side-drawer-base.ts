@@ -30,7 +30,7 @@ export class VWCSideDrawerBase extends LitElement {
 	alternate = false;
 
 	/**
-	 * @prop pin - disables scrolling and pins side drawer's content in place
+	 * @prop unpin - enable side drawer's content scrolling along with main content
 	 * accepts boolean value
 	 * @public
 	 * */
@@ -38,7 +38,7 @@ export class VWCSideDrawerBase extends LitElement {
 		type: Boolean,
 		reflect: true
 	})
-	pin = false;
+	unpin = false;
 
 	/**
 	 * @prop hasTopBar - adds top bar to the side drawer
@@ -109,7 +109,7 @@ export class VWCSideDrawerBase extends LitElement {
 			'side-drawer--dismissible': dismissible,
 			'side-drawer--modal': modal,
 			'side-drawer--open': this.open,
-			'side-drawer--pin': this.pin,
+			'side-drawer--unpin': this.unpin,
 		};
 
 		const aside = html`<aside

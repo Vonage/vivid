@@ -19,7 +19,7 @@ export async function createElementVariations(wrapper) {
 			}
 		</style>
 
-		<vwc-side-drawer pin>
+		<vwc-side-drawer>
 			side drawer content
 			<vwc-top-app-bar-fixed slot="app" class="vvd-scheme-alternate">
 			  <span slot="title">Top bar fixed</span>

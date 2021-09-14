@@ -1,5 +1,5 @@
 import '@vonage/vwc-side-drawer';
-import '@vonage/vwc-top-app-bar';
+import '@vonage/vwc-top-app-bar-fixed';
 
 export async function createElementVariations(wrapper) {
 	const elementWrapper = document.createElement('div');
@@ -11,18 +11,17 @@ export async function createElementVariations(wrapper) {
 			}
 			vwc-side-drawer {
 				--side-drawer-background-color: var(--vvd-color-neutral-10);
-				min-block-size: 100vh;
 			}
-			vwc-top-app-bar {
+			vwc-top-app-bar-fixed {
 				--mdc-theme-primary: var(--vvd-color-neutral-10);
 				--mdc-theme-on-primary: var(--vvd-color-on-canvas);
 			}
 		</style>
 
-		<vwc-side-drawer pin>
+		<vwc-top-app-bar-fixed>
+		<span slot="title">Top bar fixed</span>
+		<vwc-side-drawer>
 			side drawer content
-			<vwc-top-app-bar slot="app" class="vvd-scheme-alternate">
-			  <span slot="title">Top bar fixed</span>
 				<main>
 					<p>
 						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
@@ -43,8 +42,8 @@ export async function createElementVariations(wrapper) {
 						Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 					</p>
 				</main>
-			</vwc-top-app-bar>
-		</vwc-side-drawer>
+				</vwc-side-drawer>
+				</vwc-top-app-bar-fixed>
 	`;
 	wrapper.appendChild(elementWrapper);
 }
