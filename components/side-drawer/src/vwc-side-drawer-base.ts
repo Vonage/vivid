@@ -13,7 +13,8 @@ const blockingElements =
 
 /**
  * @cssprop [side-drawer-background-color=The current theme's canvas (background) color] - Controls the background of the side drawer
- * @cssprop [side-drawer-min-inline-size=280px] - Controls the size of the side drawer
+ * @cssprop [side-drawer-max-inline-size=280px] - Controls the maximum inline size of the side drawer
+ * @cssprop [side-drawer-min-inline-size=280px] - Controls the minimum inline size of the side drawer
  * @cssprop [side-drawer-padding-top-bar=16px] - Controls the padding of the side drawer's top bar
  * @cssprop [side-drawer-padding-body=16px] - Controls the padding of the side drawer's body
  * @cssprop [side-drawer-z-index=6] - Controls the z-index of the side drawer
@@ -29,17 +30,6 @@ export class VWCSideDrawerBase extends LitElement {
 		reflect: true
 	})
 	alternate = false;
-
-	/**
-	 * @prop unpin - enable side drawer's content scrolling along with main content
-	 * accepts boolean value
-	 * @public
-	 * */
-	@property({
-		type: Boolean,
-		reflect: true
-	})
-	unpin = false;
 
 	/**
 	 * @prop hasTopBar - adds top bar to the side drawer
@@ -110,18 +100,15 @@ export class VWCSideDrawerBase extends LitElement {
 			'side-drawer--dismissible': dismissible,
 			'side-drawer--modal': modal,
 			'side-drawer--open': this.open,
-			'side-drawer--unpin': this.unpin,
 		};
 
 		const aside = html`<aside
 							part="${ifDefined(alternate)}"
 							class="side-drawer ${classMap(classes)}">
-							<div class="side-drawer--content">
-								${topBar}
+							${topBar}
 
-								<div class="side-drawer--body">
-									<slot></slot>
-								</div>
+							<div class="side-drawer--content">
+								<slot></slot>
 							</div>
 						</aside>`;
 

@@ -1,11 +1,11 @@
 $side-drawer-padding: --side-drawer-padding;
-$side-drawer-min-inline-size: --side-drawer-min-inline-size;
+$side-drawer-inline-size: --side-drawer-inline-size;
 $side-drawer-z-index: --side-drawer-z-index;
 $side-drawer-background-color: --side-drawer-background-color;
 
 $z-index-default: 6;
 $padding-default: 16px;
-$min-inline-size-default: 280px;
+$inline-size-default: 280px;
 
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-typography/scss/typography' as typography;
@@ -18,9 +18,10 @@ $min-inline-size-default: 280px;
 
 .side-drawer {
 	z-index: var(#{$side-drawer-z-index}, #{$z-index-default});
+	flex-shrink: 0;
 	background-color: var(#{$side-drawer-background-color}, var(#{scheme-variables.$vvd-color-canvas}));
 	color: var(#{scheme-variables.$vvd-color-on-canvas});
-	min-inline-size: var(#{$side-drawer-min-inline-size}, #{$min-inline-size-default});
+	inline-size: var(#{$side-drawer-inline-size}, #{$inline-size-default});
 
 	&.side-drawer--alternate {
 		background-color: var(#{scheme-variables.$vvd-color-canvas});
@@ -38,26 +39,39 @@ $min-inline-size-default: 280px;
 	}
 }
 
-.side-drawer--content {
-	:not(.side-drawer--unpin) & {
-		position: sticky;
-		top: 0;
-	}
-}
+// .side-drawer--content {
+// 	:not(.side-drawer--unpin) & {
+// 		position: fixed;
+// 		max-inline-size: inherit;
+// 		min-inline-size: inherit;
+// 	}
+// }
 
 .side-drawer--top-bar {
 	$gutter: var(#{$side-drawer-padding}-top-bar, #{$padding-default});
+	position: fixed;
 	display: flex;
+	box-sizing: border-box;
 	align-items: center;
 	block-size: 64px;
+	inline-size: inherit;
 	padding-inline-end: #{$gutter};
 	padding-inline-start: #{$gutter};
 }
 
-.side-drawer--body {
+.side-drawer--content {
 	$gutter: var(#{$side-drawer-padding}-body, #{$padding-default});
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	box-sizing: border-box;
+	inline-size: inherit;
+	overflow-y: auto;
 	padding-inline-end: #{$gutter};
 	padding-inline-start: #{$gutter};
+	.side-drawer--top-bar + & {
+		top: 64px;
+	}
 }
 
 .side-drawer--modal {
