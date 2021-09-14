@@ -13,7 +13,7 @@ $items-min-inline-sizes: (
 );
 
 @each $key, $value in $items-min-inline-sizes {
-	:host([columnBasis='#{$key}'i]) {
+	:host([column-basis='#{$key}'i]) {
 		#{$items-min-inline-size-v-name}: $value;
 	}
 }
@@ -27,7 +27,7 @@ $items-spacings: (
 );
 
 @each $key, $value in $items-spacings {
-	:host([columnSpacing='#{$key}'i]) {
+	:host([column-spacing='#{$key}'i]) {
 		#{$items-spacing-v-name}: $value;
 	}
 }
@@ -51,7 +51,7 @@ $items-spacings: (
 	inline-size: 100%;
 }
 
-:host([columnBasis="block"i]) {
+:host([column-basis="block"i]) {
 	grid-template-columns: 1fr;
 }
 

@@ -15,7 +15,7 @@ export enum InlineTemplate {
 	Fill = 'fill',
 }
 
-type ColumnSpacing = Extract<Size, Size.Small | Size.Medium>;
+type ColumnSpacing = Extract<Size, Size.Medium | Size.x_Large>;
 type ColumnBasis = Extract<Size, Size.Small | Size.Medium | Size.Large> | 'block';
 
 @customElement('vwc-inline')

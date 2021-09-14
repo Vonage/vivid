@@ -9,13 +9,13 @@ export const argTypes = {
 			options: Object.values(InlineTemplate),
 		}
 	},
-	columnBasis: {
+	'column-basis': {
 		control: {
 			type: 'select',
 			options: Object.values(SIZE).filter(s => ([SIZE.Small, SIZE.Medium, SIZE.Large, SIZE.Block].includes(s))),
 		}
 	},
-	columnSpacing: {
+	'column-spacing': {
 		control: {
 			type: 'select',
 			options: Object.values(Size).filter(s => [Size.Medium, Size.x_Large].includes(s)),
