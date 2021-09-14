@@ -14,7 +14,8 @@ const blockingElements =
 /**
  * @cssprop [side-drawer-background-color=The current theme's canvas (background) color] - Controls the background of the side drawer
  * @cssprop [side-drawer-min-inline-size=280px] - Controls the size of the side drawer
- * @cssprop [side-drawer-padding=16px] - Controls the padding of the side drawer
+ * @cssprop [side-drawer-padding-top-bar=16px] - Controls the padding of the side drawer's top bar
+ * @cssprop [side-drawer-padding-body=16px] - Controls the padding of the side drawer's body
  * @cssprop [side-drawer-z-index=6] - Controls the z-index of the side drawer
  * */
 export class VWCSideDrawerBase extends LitElement {
@@ -115,17 +116,19 @@ export class VWCSideDrawerBase extends LitElement {
 		const aside = html`<aside
 							part="${ifDefined(alternate)}"
 							class="side-drawer ${classMap(classes)}">
-							${topBar}
-
 							<div class="side-drawer--content">
-								<slot></slot>
+								${topBar}
+
+								<div class="side-drawer--body">
+									<slot></slot>
+								</div>
 							</div>
 						</aside>`;
 
 		return html`
 			${dismissible ? this.renderDismissible(aside) : aside}
 			${scrim}
-			<slot name="app"></slot>
+			<slot name="app-content"></slot>
 		`;
 	}
 

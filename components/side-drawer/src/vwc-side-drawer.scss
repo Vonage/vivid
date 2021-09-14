@@ -38,8 +38,15 @@ $min-inline-size-default: 280px;
 	}
 }
 
+.side-drawer--content {
+	:not(.side-drawer--unpin) & {
+		position: sticky;
+		top: 0;
+	}
+}
+
 .side-drawer--top-bar {
-	$gutter: var(#{$side-drawer-padding}--top-bar, #{$padding-default});
+	$gutter: var(#{$side-drawer-padding}-top-bar, #{$padding-default});
 	display: flex;
 	align-items: center;
 	block-size: 64px;
@@ -47,14 +54,10 @@ $min-inline-size-default: 280px;
 	padding-inline-start: #{$gutter};
 }
 
-.side-drawer--content {
-	$gutter: var(#{$side-drawer-padding}--content, #{$padding-default});
+.side-drawer--body {
+	$gutter: var(#{$side-drawer-padding}-body, #{$padding-default});
 	padding-inline-end: #{$gutter};
 	padding-inline-start: #{$gutter};
-	:not(.side-drawer--unpin) & {
-		position: sticky;
-		top: 0;
-	}
 }
 
 .side-drawer--modal {
