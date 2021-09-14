@@ -1,6 +1,7 @@
 $namespace: --vvd-badge;
 $namespace-shape: #{$namespace}-shape;
 
+@use '@vonage/vwc-icon/src/partials/vwc-icon-variables' as icon-variables;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
@@ -14,6 +15,7 @@ $namespace-shape: #{$namespace}-shape;
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout/config' as layout-config with (
 	$layout-set: filled outlined soft,
+	$outline-duotone: true,
 	$default: filled,
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout' as layout;
@@ -29,7 +31,7 @@ $vvd-badge--block-size: #{$namespace}--block-size;
 );
 
 
-:host {
+:host(:not([dense]):not([enlarged])) {
 	#{$vvd-badge--block-size}: 24px;
 }
 
@@ -47,7 +49,7 @@ $vvd-badge--block-size: #{$namespace}--block-size;
 	@include connotation.connotation;
 	display: inline-block;
 	padding: 0 10px;
-	border: var(#{layout.$vvd-layout-color-outline});
+	border: 1px solid var(#{layout.$vvd-layout-color-outline});
 	background-color: var(#{layout.$vvd-layout-color-fill});
 	border-radius: var(#{$namespace-shape});
 	color: var(#{layout.$vvd-layout-color-text});
