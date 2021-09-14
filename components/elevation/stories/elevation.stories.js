@@ -18,6 +18,10 @@ const styles = () => html`
 			padding: 20px;
 			text-align: center;
 		}
+
+		vwc-elevation {
+			display: inline-block;
+		}
 	</style>
 `;
 const elevations = () => dpLevels.map(dpLevel => html`
