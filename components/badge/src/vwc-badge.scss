@@ -47,7 +47,10 @@ $vvd-badge--block-size: #{$namespace}--block-size;
 	@include typography.typography-cat-shorthand('caption-bold');
 	@include layout.layout;
 	@include connotation.connotation;
-	display: inline-block;
+	display: inline-flex;
+	height: var(#{$vvd-badge--block-size});
+	box-sizing: border-box;
+	align-items: center;
 	padding: 0 10px;
 	border: 1px solid var(#{layout.$vvd-layout-color-outline});
 	background-color: var(#{layout.$vvd-layout-color-fill});
@@ -65,10 +68,16 @@ $vvd-badge--block-size: #{$namespace}--block-size;
 }
 
 .icon {
-	// TODO remove next line when VIV-704 resolved
-	#{connotation.$vvd-color-connotation}: initial;
-	--icon-size: 12px;
 	$margin: 8px;
+	block-size: 12px;
+	line-height: 1;
+
+	> vwc-icon {
+		--icon-size: 12px;
+		// TODO remove next line when VIV-704 resolved
+		#{connotation.$vvd-color-connotation}: initial;
+		vertical-align: top;
+	}
 
 	&.icon--leading {
 		margin-inline-end: $margin;

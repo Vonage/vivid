@@ -22,18 +22,16 @@
 
 ```html
 <span class="vwc-badge">
-  <vwc-icon
-    class="icon icon--leading"
-    type="thumbs-down-line"
-  >
-  </vwc-icon>
+  <div class="icon icon--leading">
+    <vwc-icon type="thumbs-down-line">
+    </vwc-icon>
+  </div>
   <slot>
   </slot>
-  <vwc-icon
-    class="icon icon--trailing"
-    type="thumbs-up-line"
-  >
-  </vwc-icon>
+  <div class="icon icon--trailing">
+    <vwc-icon type="thumbs-up-line">
+    </vwc-icon>
+  </div>
 </span>
 
 ```
@@ -42,18 +40,16 @@
 
 ```html
 <span class="vwc-badge">
-  <vwc-icon
-    class="icon icon--leading"
-    type="thumbs-down-line"
-  >
-  </vwc-icon>
+  <div class="icon icon--leading">
+    <vwc-icon type="thumbs-down-line">
+    </vwc-icon>
+  </div>
   <slot>
   </slot>
-  <vwc-icon
-    class="icon icon--trailing"
-    type="thumbs-down-line"
-  >
-  </vwc-icon>
+  <div class="icon icon--trailing">
+    <vwc-icon type="thumbs-down-line">
+    </vwc-icon>
+  </div>
 </span>
 
 ```
@@ -62,18 +58,16 @@
 
 ```html
 <span class="vwc-badge">
-  <vwc-icon
-    class="icon icon--leading"
-    type="thumbs-down-line"
-  >
-  </vwc-icon>
+  <div class="icon icon--leading">
+    <vwc-icon type="thumbs-down-line">
+    </vwc-icon>
+  </div>
   <slot>
   </slot>
-  <vwc-icon
-    class="icon icon--trailing"
-    type="thumbs-up-line"
-  >
-  </vwc-icon>
+  <div class="icon icon--trailing">
+    <vwc-icon type="thumbs-up-line">
+    </vwc-icon>
+  </div>
 </span>
 
 ```

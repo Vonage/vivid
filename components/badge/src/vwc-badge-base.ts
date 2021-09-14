@@ -58,7 +58,9 @@ export class VWCBadgeBase extends LitElement {
 		};
 
 		return type ?
-			html`<vwc-icon class="icon ${classMap(classes)}" .type="${type}"></vwc-icon>`
+			html`<div class="icon ${classMap(classes)}">
+					<vwc-icon .type="${type}"></vwc-icon>
+				</div>`
 			: nothing;
 	}
 
