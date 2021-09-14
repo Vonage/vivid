@@ -16,7 +16,7 @@ export class VWCElevation extends LitElement {
 	 */
 	static styles = style;
 
-	@property({ type: Number })
+	@property({ type: Number, reflect: false })
 	dp = 2;
 
 	protected render(): unknown {
