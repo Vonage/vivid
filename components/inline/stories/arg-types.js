@@ -18,7 +18,7 @@ export const argTypes = {
 	'column-spacing': {
 		control: {
 			type: 'select',
-			options: Object.values(Size).filter(s => [Size.Medium, Size.x_Large].includes(s)),
+			options: Object.values(Size).filter(s => [Size.x_Small, Size.Medium, Size.x_Large].includes(s)),
 		}
 	}
 };

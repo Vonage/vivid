@@ -22,8 +22,9 @@ $items-min-inline-sizes: (
 /* #region SPACING */
 $items-spacings: (
 	// ! hardcoded values should be defined and auto-generated to, and by, design tokens
+	'xs': 16px,
 	'md': 24px,
-	'xl': 32px
+	'xl': 32px,
 );
 
 @each $key, $value in $items-spacings {
