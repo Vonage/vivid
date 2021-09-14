@@ -2,6 +2,7 @@
 
 $items-min-inline-size-v-name: --items-min-inline-size;
 $items-spacing-v-name: --items-spacing;
+$inline-gutters-v-name: --inline-gutters;
 
 $inline-template: --inline-template;
 
@@ -34,9 +35,24 @@ $items-spacings: (
 }
 /* #endregion */
 
+/* #region GUTTERS */
+$items-gutters: (
+	// ! hardcoded values should be defined and auto-generated to, and by, design tokens
+	'xs': 16px,
+	'md': 24px,
+	'xl': 32px,
+);
+
+@each $key, $value in $items-gutters {
+	:host([inline-gutters='#{$key}'i]) {
+		#{$inline-gutters-v-name}: $value;
+	}
+}
+/* #endregion */
+
 :host {
 	display: grid;
-	width: 100%;
+	margin: var(#{$inline-gutters-v-name}, #{map.get($items-gutters, md)});
 	gap: var(#{$items-spacing-v-name}, #{map.get($items-spacings, md)});
 	grid-auto-rows: min-content;
 	grid-template-columns: repeat(
@@ -49,7 +65,6 @@ $items-spacings: (
 			1fr
 		)
 	);
-	inline-size: 100%;
 }
 
 :host([column-basis="block"i]) {

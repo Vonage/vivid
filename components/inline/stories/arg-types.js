@@ -20,5 +20,11 @@ export const argTypes = {
 			type: 'select',
 			options: Object.values(Size).filter(s => [Size.x_Small, Size.Medium, Size.x_Large].includes(s)),
 		}
+	},
+	'inline-gutters': {
+		control: {
+			type: 'select',
+			options: Object.values(Size).filter(s => [Size.x_Small, Size.Medium, Size.x_Large].includes(s)),
+		}
 	}
 };
