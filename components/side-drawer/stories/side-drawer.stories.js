@@ -26,7 +26,6 @@ const Template = args => html`
 			width: 960px;
 			height: 540px;
 			margin: auto;
-			background-color: #eee;
 			border-radius: 10px;
 			overflow: hidden;
 			box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.1);
@@ -35,6 +34,7 @@ const Template = args => html`
 		vwc-side-drawer#side-drawer {
 			flex: 0 0 auto;
 			height: 100%;
+			--side-drawer-background-color: var(--vvd-color-neutral-10);
 		}
 		div#default > svg {
 			width: 100%;

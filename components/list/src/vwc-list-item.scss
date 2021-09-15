@@ -4,7 +4,9 @@
 @use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
 @use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
 	$connotations-set: primary cta,
-	$default: primary
+	$default: primary,
+	$scope: list-item,
+	$is-host: true
 );
 @use '@vonage/vvd-foundation/scss/mixins/connotation';
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' with (
@@ -38,6 +40,7 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 
 	@include typography.typography-cat-shorthand('body-2');
 	@include vvd-formfield.coupling;
+	@include connotation.connotation;
 
 	position: relative;
 	height: var(#{$vvd-list-item-block-size});
