@@ -52,7 +52,7 @@ export class Inline extends LitElement {
 	template?: InlineTemplate;
 
 	protected render(): TemplateResult {
-		return html`<slot></slot>`;
+		return html`<div class="layout"><slot></slot></div>`;
 	}
 }
 

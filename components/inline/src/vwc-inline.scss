@@ -14,68 +14,76 @@ $items-min-inline-sizes: (
 );
 
 @each $key, $value in $items-min-inline-sizes {
-	:host([column-basis='#{$key}'i]) {
-		#{$items-min-inline-size-v-name}: $value;
+	:host([column-basis="#{$key}"i]) {
+		.layout {
+			#{$items-min-inline-size-v-name}: $value;
+		}
 	}
 }
 /* #endregion */
 
 /* #region SPACING */
 $items-spacings: (
-	// ! hardcoded values should be defined and auto-generated to, and by, design tokens
+	
 	'xs': 16px,
 	'md': 24px,
-	'xl': 32px,
+	'xl': 32px
 );
 
 @each $key, $value in $items-spacings {
-	:host([column-spacing='#{$key}'i]) {
-		#{$items-spacing-v-name}: $value;
+	:host([column-spacing="#{$key}"i]) {
+		.layout {
+			#{$items-spacing-v-name}: $value;
+		}
 	}
 }
 /* #endregion */
 
 /* #region GUTTERS */
 $items-gutters: (
-	// ! hardcoded values should be defined and auto-generated to, and by, design tokens
+	
 	'xs': 16px,
 	'md': 24px,
-	'xl': 32px,
+	'xl': 32px
 );
 
 @each $key, $value in $items-gutters {
-	:host([inline-gutters='#{$key}'i]) {
-		#{$inline-gutters-v-name}: $value;
+	:host([inline-gutters="#{$key}"i]) {
+		.layout {
+			#{$inline-gutters-v-name}: $value;
+		}
 	}
 }
 /* #endregion */
 
 :host {
-	display: grid;
-	margin: var(#{$inline-gutters-v-name}, #{map.get($items-gutters, md)});
-	gap: var(#{$items-spacing-v-name}, #{map.get($items-spacings, md)});
-	grid-auto-rows: min-content;
-	grid-template-columns: repeat(
-		var(#{$inline-template}),
-		minmax(
-			var(
-				#{$items-min-inline-size-v-name},
-				#{map.get($items-min-inline-sizes, lg)}
-			),
-			1fr
-		)
-	);
+	.layout {
+		display: grid;
+		margin: var(#{$inline-gutters-v-name}, #{map.get($items-gutters, md)});
+		gap: var(#{$items-spacing-v-name}, #{map.get($items-spacings, md)});
+		grid-auto-rows: min-content;
+		grid-template-columns: repeat(
+			var(#{$inline-template}),
+			minmax(var(#{$items-min-inline-size-v-name}, #{map.get($items-min-inline-sizes, lg)}), 1fr)
+		);
+	}
 }
 
 :host([column-basis="block"i]) {
-	grid-template-columns: 1fr;
+	.layout {
+		grid-template-columns: 1fr;
+	}
 }
 
 :host(:not(template)),
 :host([template="fit"i]) {
-	#{$inline-template}: auto-fit;
+	.layout {
+		#{$inline-template}: auto-fit;
+	}
 }
 
 :host([template="fill"i]) {
-	#{$inline-template}: auto-fill;
+	.layout {
+		#{$inline-template}: auto-fill;
+	}
 }
