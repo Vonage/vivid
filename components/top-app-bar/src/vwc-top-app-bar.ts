@@ -3,7 +3,6 @@ import { customElement } from 'lit-element';
 import { TopAppBar as MWCTopAppBar } from '@material/mwc-top-app-bar';
 import { styles as MWCTopAppBarStyles } from '@material/mwc-top-app-bar/mwc-top-app-bar.css.js';
 import { style as VWCTopAppBarStyle } from './vwc-top-app-bar.css.js';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -13,7 +12,7 @@ declare global {
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-MWCTopAppBar.styles = [styleCoupling, MWCTopAppBarStyles, VWCTopAppBarStyle];
+MWCTopAppBar.styles = [MWCTopAppBarStyles, VWCTopAppBarStyle];
 
 /**
  * This component is an extension of [<mwc-top-app-bar>](https://github.com/material-components/material-components-web-components/tree/master/packages/top-app-bar)

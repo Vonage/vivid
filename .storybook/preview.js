@@ -30,6 +30,7 @@ async function run() {
 					['Introduction'],
 					'Core',
 					['Context', 'Fonts', 'Typography'],
+					'Templates',
 					'Components',
 					['Components List', 'Alpha', 'Composite'],
 				],

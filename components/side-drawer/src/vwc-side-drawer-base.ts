@@ -12,7 +12,8 @@ const blockingElements =
 	(document as DocumentWithBlockingElements).$blockingElements;
 
 /**
- * @cssprop [side-drawer-background-color=The current theme's canvas (background) color] - Controls the background of the side drawer
+ * @cssprop [side-drawer-background-color=Current theme's canvas (background) color] - Controls the background of the side drawer
+ * @cssprop [side-drawer-color=Current theme's on-canvas (text) color] - Controls the color of the side drawer
  * @cssprop [side-drawer-max-inline-size=280px] - Controls the maximum inline size of the side drawer
  * @cssprop [side-drawer-min-inline-size=280px] - Controls the minimum inline size of the side drawer
  * @cssprop [side-drawer-padding-top-bar=16px] - Controls the padding of the side drawer's top bar
@@ -105,17 +106,21 @@ export class VWCSideDrawerBase extends LitElement {
 		const aside = html`<aside
 							part="${ifDefined(alternate)}"
 							class="side-drawer ${classMap(classes)}">
+
 							${topBar}
 
 							<div class="side-drawer--content">
 								<slot></slot>
 							</div>
+
 						</aside>`;
 
 		return html`
 			${dismissible ? this.renderDismissible(aside) : aside}
 			${scrim}
-			<slot name="app-content"></slot>
+			<div class="side-drawer--app-content">
+				<slot name="app-content"></slot>
+			</div>
 		`;
 	}
 

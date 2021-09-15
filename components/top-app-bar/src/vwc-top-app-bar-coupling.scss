@@ -1,5 +1,10 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 
-:host {
+
+.mdc-top-app-bar {
+	--mdc-theme-primary: var(#{scheme-variables.$vvd-color-canvas});
+	--mdc-theme-on-primary: var(#{scheme-variables.$vvd-color-on-canvas});
 	@include typography.typography-mdc-coupling('headline6', 'subtitle-2');
+	border-bottom: 2px solid #ccc;
 }
