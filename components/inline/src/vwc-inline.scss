@@ -66,6 +66,7 @@ $items-gutters: (
 			var(#{$inline-template}),
 			minmax(var(#{$items-min-inline-size-v-name}, #{map.get($items-min-inline-sizes, lg)}), 1fr)
 		);
+		inline-size: 100%;
 	}
 }
 
