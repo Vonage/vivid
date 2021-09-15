@@ -8,6 +8,7 @@
 );
 @use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
 	$connotations-set: primary cta success alert info announcement,
+	$shades: diverse,
 	$default: primary,
 );
 @use '@vonage/vvd-foundation/scss/mixins/connotation';
@@ -42,7 +43,7 @@ $block-sizes: (
 	overflow: hidden;
 	align-items: center;
 	justify-content: center;
-	border: var(#{layout.$vvd-layout-color-outline});
+	border: 1px solid var(#{layout.$vvd-layout-color-outline});
 	background-color: var(#{icon-button-variables.$vvd-icon-button-color}, var(#{layout.$vvd-layout-color-fill}));
 	border-radius: var(#{icon-button-variables.$icon-button-shape});
 	color: var(#{icon-button-variables.$vvd-icon-button-on-color}, var(#{layout.$vvd-layout-color-text}));
@@ -51,6 +52,7 @@ $block-sizes: (
 		color: var(#{vvd-formfield.$formfield-disabled-ink});
 	}
 }
+
 
 :host([layout="filled"i]) {
 	.mdc-icon-button:disabled {
