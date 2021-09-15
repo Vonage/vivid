@@ -29,7 +29,7 @@ describe('inline', () => {
 		it('should have internal contents', async () => {
 			const actualElement = getNewElement();
 			await waitNextTask();
-			expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
+			expect(actualElement.shadowRoot.firstElementChild.innerHTML).to.equalSnapshot();
 		});
 	});
 
@@ -39,33 +39,33 @@ describe('inline', () => {
 			actualElement.template = "fit";
 			actualElement.style.width = "1300px";
 			await waitNextTask();
-			const { shadowRoot: { firstElementChild: slot } } = actualElement;
-			const assignedElements = slot.assignedElements();
+			const { shadowRoot: { firstElementChild: div } } = actualElement;
+			const assignedElements = div.firstElementChild.assignedElements();
 			const [childEl] = assignedElements;
 			await waitNextTask();
-			expect(childEl.clientWidth).to.equal(307);
+			expect(childEl.clientWidth).to.equal(282);
 		});
 		it(`should set template fill`, async () => {
 			const actualElement = getNewElement();
 			actualElement.template = "fill";
 			actualElement.style.width = "1300px";
 			await waitNextTask();
-			const { shadowRoot: { firstElementChild: slot } } = actualElement;
-			const assignedElements = slot.assignedElements();
+			const { shadowRoot: { firstElementChild: div } } = actualElement;
+			const assignedElements = div.firstElementChild.assignedElements();
 			const [childEl] = assignedElements;
 			await waitNextTask();
-			expect(childEl.clientWidth).to.equal(165);
+			expect(childEl.clientWidth).to.equal(180);
 		});
 		it(`should set size to block`, async () => {
 			const actualElement = getNewElement();
 			actualElement.columnBasis = "block";
 			actualElement.style.width = "1300px";
 			await actualElement.updateComplete;
-			const { shadowRoot: { firstElementChild: slot } } = actualElement;
-			const assignedElements = slot.assignedElements();
+			const { shadowRoot: { firstElementChild: div } } = actualElement;
+			const assignedElements = div.firstElementChild.assignedElements();
 			const [childEl] = assignedElements;
 			await actualElement.updateComplete;
-			expect(childEl.clientWidth).to.equal(1300);
+			expect(childEl.clientWidth).to.equal(1200);
 		});
 	});
 });
