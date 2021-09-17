@@ -1,4 +1,2 @@
-@use 'mixins' as mixins;
 @forward 'variables' show $vvd-color-connotation, $vvd-color-on-connotation;
-
-@include mixins.connotation;
+@forward 'mixins' show connotation;

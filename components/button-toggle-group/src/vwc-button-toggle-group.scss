@@ -35,13 +35,13 @@ $sizes: (
 
 @each $scope in $scopes {
 	::slotted(vwc-#{$scope}) {
-		#{connotation.$vvd-color-connotation}: var(#{scheme-variables.$vvd-color-neutral-30});
-		#{connotation.$vvd-color-on-connotation}: var(#{scheme-variables.$vvd-color-on-canvas});
+		--vvd-#{$scope}-color: var(#{scheme-variables.$vvd-color-neutral-30});
+		--vvd-#{$scope}-on-color: var(#{scheme-variables.$vvd-color-on-canvas});
 		--vvd-#{$scope}-shape: var(#{$vvd-toggle-button-group-shape});
 	}
 
 	::slotted(vwc-#{$scope}[selected]) {
-		#{connotation.$vvd-color-connotation}: var(#{scheme-variables.$vvd-color-neutral-50});
+		--vvd-#{$scope}-color: var(#{scheme-variables.$vvd-color-neutral-50});
 	}
 
 	:host([accent]) {
@@ -60,8 +60,8 @@ $sizes: (
 		}
 
 		::slotted(vwc-#{$scope}[selected]) {
-			#{connotation.$vvd-color-connotation}: var(#{scheme-variables.$vvd-color-primary});
-			#{connotation.$vvd-color-on-connotation}: var(#{scheme-variables.$vvd-color-on-primary});
+			--vvd-#{$scope}-color: var(#{scheme-variables.$vvd-color-primary});
+			--vvd-#{$scope}-on-color: var(#{scheme-variables.$vvd-color-on-primary});
 		}
 
 		::slotted(vwc-#{$scope}:hover:not([selected])) {
