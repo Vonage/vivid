@@ -7,17 +7,17 @@ $side-drawer-color: --side-drawer-color;
 
 $z-index-default: 6;
 $padding-default: 16px;
-$inline-size-default: 280px;
-$block-size-default: 100vh;
+$inline-size: var(#{$side-drawer-inline-size}, 280px);
+$block-size: var(#{$side-drawer-block-size}, 100vh);
 
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-foundation/scss/mixins/scrim' as scrim-mixins;
 
-:host {
-	display: flex;
-	block-size: 100%;
-}
+// :host {
+// 	display: flex;
+// 	block-size: 100%;
+// }
 
 .side-drawer {
 	position: fixed;
@@ -27,9 +27,9 @@ $block-size-default: 100vh;
 	flex-direction: column;
 	flex-shrink: 0;
 	background-color: var(#{$side-drawer-background-color}, var(#{scheme-variables.$vvd-color-canvas}));
-	block-size: var(#{$side-drawer-block-size}, #{$block-size-default});
+	block-size: #{$block-size};
 	color: var(#{$side-drawer-color}, var(#{scheme-variables.$vvd-color-on-canvas}));
-	inline-size: var(#{$side-drawer-inline-size}, #{$inline-size-default});
+	inline-size: #{$inline-size};
 
 	&.side-drawer--alternate {
 		background-color: var(#{scheme-variables.$vvd-color-canvas});
@@ -66,6 +66,7 @@ $block-size-default: 100vh;
 
 .side-drawer--content {
 	$gutter: var(#{$side-drawer-padding}-body, #{$padding-default});
+	background-color: inherit;
 	overflow-y: auto;
 	padding-inline-end: #{$gutter};
 	padding-inline-start: #{$gutter};
@@ -97,5 +98,10 @@ $block-size-default: 100vh;
 }
 
 .side-drawer--app-content {
-	margin-inline-start: var(#{$side-drawer-inline-size}, #{$inline-size-default});;
+	margin-inline-start: #{$inline-size};
+}
+
+vwc-top-app-bar,
+vwc-top-app-bar-fixed {
+	--mdc-top-app-bar-width: calc(100% - #{$inline-size});
 }

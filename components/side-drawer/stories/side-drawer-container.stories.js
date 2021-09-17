@@ -1,5 +1,6 @@
 import '@vonage/vwc-side-drawer';
 import '@vonage/vwc-top-app-bar';
+import '@vonage/vwc-top-app-bar-fixed';
 import { html } from 'lit-element';
 
 export default {
@@ -15,10 +16,6 @@ const loremIpsum = () => html`
 const content = () => Array(8).fill().map(loremIpsum);
 
 export const WithTopAppBar = () => html`
-	<style>
-		margin: 0;
-		padding: 0;
-	</style>
 	<vwc-side-drawer alternate hastopbar>
 			<span slot="top-bar">Side drawer top bar</span>
 			Should top bar font face differ from body?
@@ -30,5 +27,21 @@ export const WithTopAppBar = () => html`
 					${content()}
 				</main>
 			</vwc-top-app-bar>
+		</vwc-side-drawer>
+`;
+
+export const WithTopAppBarFixed = () => html`
+	<vwc-side-drawer alternate hastopbar>
+			<span slot="top-bar">Side drawer top bar</span>
+			Should top bar font face differ from body?
+			${content()}
+
+			<vwc-top-app-bar-fixed slot="app-content">
+				<vwc-theme-switch slot="actionItems"></vwc-theme-switch>
+			  <span slot="title">Main top bar</span>
+				<main>
+					${content()}
+				</main>
+			</vwc-top-app-bar-fixed>
 		</vwc-side-drawer>
 `;

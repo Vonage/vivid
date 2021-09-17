@@ -1,1 +1,13 @@
-@forward './vwc-top-app-bar-coupling';
+@use '@vonage/vvd-typography/scss/typography' as typography;
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
+
+
+.mdc-top-app-bar {
+	--mdc-theme-primary: var(#{scheme-variables.$vvd-color-canvas});
+	--mdc-theme-on-primary: var(#{scheme-variables.$vvd-color-on-canvas});
+	@include typography.typography-mdc-coupling('headline6', 'subtitle-2');
+}
+.mdc-top-app-bar--fixed {
+	// TODO when ready - @include from mixin or avoid magic string and refer to sass variable
+	--mdc-top-app-bar-fixed-box-shadow: var(--vvd-scheme-elevation-dp-4-box-shadow);
+}
