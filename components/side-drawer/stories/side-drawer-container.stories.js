@@ -3,8 +3,29 @@ import '@vonage/vwc-top-app-bar';
 import '@vonage/vwc-top-app-bar-fixed';
 import { html } from 'lit-element';
 
+
 export default {
 	title: 'Templates/Side Drawer',
+	// argTypes: {
+	// 	alternate: {
+	// 		control: {
+	// 			type: 'inline-radio',
+	// 			options: { true: '', false: undefined }
+	// 		}
+	// 	},
+	// 	open: {
+	// 		control: {
+	// 			type: 'inline-radio',
+	// 			options: { true: '', false: undefined }
+	// 		}
+	// 	},
+	// 	type: {
+	// 		control: {
+	// 			type: 'select',
+	// 			options: ['', 'modal', 'dismissible'],
+	// 		}
+	// 	},
+	// }
 };
 
 const loremIpsum = () => html`
@@ -15,6 +36,13 @@ const loremIpsum = () => html`
 
 const content = () => Array(8).fill().map(loremIpsum);
 
+const topAppBarContent = html`
+	<vwc-theme-switch slot="actionItems"></vwc-theme-switch>
+	<span slot="title">Main top bar</span>
+	<main>
+		${content()}
+	</main>
+`;
 export const WithTopAppBar = () => html`
 	<vwc-side-drawer alternate hastopbar>
 			<span slot="top-bar">Side drawer top bar</span>
@@ -22,10 +50,7 @@ export const WithTopAppBar = () => html`
 			${content()}
 
 			<vwc-top-app-bar slot="app-content">
-			  <span slot="title">Main top bar</span>
-				<main>
-					${content()}
-				</main>
+				${topAppBarContent}
 			</vwc-top-app-bar>
 		</vwc-side-drawer>
 `;
@@ -37,11 +62,7 @@ export const WithTopAppBarFixed = () => html`
 			${content()}
 
 			<vwc-top-app-bar-fixed slot="app-content">
-				<vwc-theme-switch slot="actionItems"></vwc-theme-switch>
-			  <span slot="title">Main top bar</span>
-				<main>
-					${content()}
-				</main>
+				${topAppBarContent}
 			</vwc-top-app-bar-fixed>
 		</vwc-side-drawer>
 `;

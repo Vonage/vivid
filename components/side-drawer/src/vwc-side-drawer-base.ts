@@ -103,36 +103,25 @@ export class VWCSideDrawerBase extends LitElement {
 			'side-drawer--open': this.open,
 		};
 
-		const aside = html`<aside
-							part="${ifDefined(alternate)}"
-							class="side-drawer ${classMap(classes)}">
-
-							${topBar}
-
-							<div class="side-drawer--content">
-								<slot></slot>
-							</div>
-
-						</aside>`;
-
 		return html`
-			${dismissible ? this.renderDismissible(aside) : aside}
-			${scrim}
+			<aside
+				part="${ifDefined(alternate)}"
+				class="side-drawer ${classMap(classes)}">
+
+				${topBar}
+
+				<div class="side-drawer--content">
+					<slot></slot>
+				</div>
+
+			</aside>
+
 			<div class="side-drawer--app-content">
-				<slot name="app-content"></slot>
+			<slot name="app-content"></slot>
 			</div>
+
+			${scrim}
 		`;
-	}
-
-	private renderDismissible(template: TemplateResult): TemplateResult {
-		const classes = {
-			'aside-container--open': this.open,
-		};
-
-		return html`
-			<div class="aside-container ${classMap(classes)}">
-				${template}
-			</div>`;
 	}
 
 	private renderTopBar(): TemplateResult {
