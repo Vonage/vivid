@@ -2,7 +2,7 @@ import 'blocking-elements';
 import 'wicg-inert';
 
 import {
-	html, LitElement, TemplateResult, property,
+	html, LitElement, TemplateResult, property, query
 } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import { classMap } from 'lit-html/directives/class-map';
@@ -20,6 +20,8 @@ const blockingElements =
  * @cssprop [side-drawer-z-index=6] - Controls the z-index of the side drawer
  * */
 export class VWCSideDrawerBase extends LitElement {
+  @query('.side-drawer') protected rootEl!: HTMLElement;
+
 	/**
 	 * @prop alternate - [Applies scheme alternate region](../../common/scheme/readme.md)
 	 * accepts boolean value
@@ -77,14 +79,12 @@ export class VWCSideDrawerBase extends LitElement {
 
 	connectedCallback(): void {
 		super.connectedCallback();
-		this.addEventListener('transitionend', this.#handleTransitionEnd);
 		document.addEventListener('keydown', this.#handleKeydown);
 	}
 
 	disconnectedCallback(): void {
 		super.disconnectedCallback();
-		this.#releaseFocus();
-		this.removeEventListener('transitionend', this.#handleTransitionEnd);
+		this.#releaseFocusTrap();
 		document.removeEventListener('keydown', this.#handleKeydown);
 	}
 
@@ -105,7 +105,8 @@ export class VWCSideDrawerBase extends LitElement {
 		return html`
 			<aside
 				part="${ifDefined(alternate)}"
-				class="side-drawer ${classMap(classes)}">
+				class="side-drawer ${classMap(classes)}"
+				@transitionend=${this.#handleTransitionEnd}>
 
 				${topBar}
 
@@ -172,12 +173,12 @@ export class VWCSideDrawerBase extends LitElement {
 
 	#closed(): void {
 		if (this.type === 'modal') {
-			this.#releaseFocus();
+			this.#releaseFocusTrap();
 		}
 		this.#notifyClose();
 	}
 
-	#createDispatchEvent(eventName: string): void {
+	#createAndDispatchEvent(eventName: string): void {
 		const init: CustomEventInit = {
 			bubbles: true,
 			composed: true
@@ -187,20 +188,22 @@ export class VWCSideDrawerBase extends LitElement {
 	}
 
 	#notifyClose(): void {
-		this.#createDispatchEvent('closed');
+		this.#createAndDispatchEvent('closed');
 	}
 
 	#notifyOpen(): void {
-		this.#createDispatchEvent('opened');
+		this.#createAndDispatchEvent('opened');
 	}
 
 	#trapFocus(): void {
-		blockingElements.push(this);
-		this.#createDispatchEvent('trapFocus');
+		blockingElements.push(this.rootEl);
+		// TODO: @rinaok what is the reason for the next line event?
+		// this.#createAndDispatchEvent('trapFocus');
 	}
 
-	#releaseFocus(): void {
-		blockingElements.remove(this);
-		this.#createDispatchEvent('releaseFocus');
+	#releaseFocusTrap(): void {
+		blockingElements.remove(this.rootEl);
+		// TODO: @rinaok what is the reason for the next line event?
+		// this.#createAndDispatchEvent('releaseFocus');
 	}
 }

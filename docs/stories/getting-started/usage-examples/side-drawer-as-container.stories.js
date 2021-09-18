@@ -2,30 +2,31 @@ import '@vonage/vwc-side-drawer';
 import '@vonage/vwc-top-app-bar';
 import '@vonage/vwc-top-app-bar-fixed';
 import { html } from 'lit-element';
+import { spread } from '@open-wc/lit-helpers';
 
 
 export default {
 	title: 'Getting Started/Usage Examples/Side Drawer',
-	// argTypes: {
-	// 	alternate: {
-	// 		control: {
-	// 			type: 'inline-radio',
-	// 			options: { true: '', false: undefined }
-	// 		}
-	// 	},
-	// 	open: {
-	// 		control: {
-	// 			type: 'inline-radio',
-	// 			options: { true: '', false: undefined }
-	// 		}
-	// 	},
-	// 	type: {
-	// 		control: {
-	// 			type: 'select',
-	// 			options: ['', 'modal', 'dismissible'],
-	// 		}
-	// 	},
-	// }
+	argTypes: {
+		alternate: {
+			control: {
+				type: 'inline-radio',
+				options: { true: '', false: undefined }
+			}
+		},
+		open: {
+			control: {
+				type: 'inline-radio',
+				options: { true: '', false: undefined }
+			}
+		},
+		type: {
+			control: {
+				type: 'select',
+				options: ['', 'modal', 'dismissible'],
+			}
+		},
+	}
 };
 
 const loremIpsum = () => html`
@@ -43,8 +44,9 @@ const topAppBarContent = html`
 		${content()}
 	</main>
 `;
-export const WithTopAppBar = () => html`
-	<vwc-side-drawer alternate hastopbar>
+
+const WithTopAppBarTemplate = args => html`
+	<vwc-side-drawer alternate hastopbar ...=${spread(args)}>
 			<span slot="top-bar">Side drawer top bar</span>
 			Should top bar font face differ from body?
 			${content()}
@@ -55,8 +57,11 @@ export const WithTopAppBar = () => html`
 		</vwc-side-drawer>
 `;
 
-export const WithTopAppBarFixed = () => html`
-	<vwc-side-drawer alternate hastopbar>
+export const WithTopAppBar = WithTopAppBarTemplate.bind({});
+WithTopAppBar.args = { };
+
+const WithTopAppBarFixedTemplate = args => html`
+	<vwc-side-drawer alternate hastopbar ...=${spread(args)}>
 			<span slot="top-bar">Side drawer top bar</span>
 			Should top bar font face differ from body?
 			${content()}
@@ -66,3 +71,6 @@ export const WithTopAppBarFixed = () => html`
 			</vwc-top-app-bar-fixed>
 		</vwc-side-drawer>
 `;
+
+export const WithTopAppBarFixed = WithTopAppBarFixedTemplate.bind({});
+WithTopAppBarFixed.args = { };
