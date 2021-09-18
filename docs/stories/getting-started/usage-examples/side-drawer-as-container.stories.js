@@ -45,6 +45,21 @@ const topAppBarContent = html`
 	</main>
 `;
 
+const WithAppContentTemplate = args => html`
+	<vwc-side-drawer alternate hastopbar ...=${spread(args)}>
+			<span slot="top-bar">Side drawer top bar</span>
+			Should top bar font face differ from body?
+			${content()}
+
+			<main slot="app-content">
+				${content()}
+			</main>
+		</vwc-side-drawer>
+`;
+
+export const WithAppContent = WithAppContentTemplate.bind({});
+WithAppContent.args = {};
+
 const WithTopAppBarTemplate = args => html`
 	<vwc-side-drawer alternate hastopbar ...=${spread(args)}>
 			<span slot="top-bar">Side drawer top bar</span>
