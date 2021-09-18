@@ -5,7 +5,7 @@ import { html } from 'lit-element';
 
 
 export default {
-	title: 'Templates/Side Drawer',
+	title: 'Getting Started/Usage Examples/Side Drawer',
 	// argTypes: {
 	// 	alternate: {
 	// 		control: {
