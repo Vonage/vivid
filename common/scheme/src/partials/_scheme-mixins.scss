@@ -16,3 +16,9 @@ $scheme-alternate: vvd-scheme-alternate;
 		@content;
 	}
 }
+
+@mixin color-scheme($type) {
+	@supports (color-scheme: $type) {
+		color-scheme: $type;
+	}
+}
