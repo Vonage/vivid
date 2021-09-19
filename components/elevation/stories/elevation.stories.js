@@ -17,6 +17,8 @@ const styles = () => html`
 			width: 90px;
 			padding: 20px;
 			text-align: center;
+			border: 2px solid black;
+			border-radius: var(--vvd-elevation-border-radius, 0);
 		}
 
 		vwc-elevation {
@@ -35,7 +37,7 @@ const BasicTemplate = args => html`
 
 const Template = args => html`
 	${styles()}
-	<vwc-elevation ...=${spread(args)}><div class="card"></div></vwc-elevation>
+	<vwc-elevation ...=${spread(args)}><div class="card"</div></vwc-elevation>
 `;
 
 export const Basic = BasicTemplate.bind({});
@@ -52,7 +54,7 @@ const HoverEffectExampleTemplate = args => html`
 	<vwc-elevation ...=${spread(args)}
 								 @mouseenter="${onMouseEnter}"
 								 @mouseleave="${onMouseLeave}">
-		<div class="card" style="width: 120px">Hover me!</div>
+		<div class="card" style="width: 120px;">Hover me!</div>
 	</vwc-elevation>
 `;
 
