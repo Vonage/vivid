@@ -110,7 +110,7 @@ export class VWCBanner extends LitElement {
 
 	protected render(): TemplateResult {
 		return html`
-      <div class="banner ${classMap(this.getRenderClasses())} tabindex="0" @keydown="${(e:KeyboardEvent) => this.open = !(e.key === KEY_ESCAPE && this.dismissible)}">
+      <div class="banner ${classMap(this.getRenderClasses())}" tabindex="0" @keydown="${(e:KeyboardEvent) => this.open = !(e.key === KEY_ESCAPE && this.dismissible)}">
 				<header class="header">
 					<span class="user-content">
 						${this.renderIcon(this.icon)}
