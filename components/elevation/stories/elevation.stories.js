@@ -37,6 +37,7 @@ const Template = args => html`
 	${styles()}
 	<vwc-elevation ...=${spread(args)}><div class="card"></div></vwc-elevation>
 `;
+
 export const Basic = BasicTemplate.bind({});
 Basic.args = { label: 'Basic' };
 
@@ -45,3 +46,25 @@ BackgroundColor.args = { label: 'Background Color', style: '--vvd-elevation-back
 
 export const BorderRadius = Template.bind({});
 BorderRadius.args = { label: 'Border Radius', style: '--vvd-elevation-border-radius: 16px', dp: 24 };
+
+const HoverEffectExampleTemplate = args => html`
+	${styles()}
+	<vwc-elevation ...=${spread(args)}
+								 @mouseenter="${onMouseEnter}"
+								 @mouseleave="${onMouseLeave}">
+		<div class="card" style="width: 120px">Hover me!</div>
+	</vwc-elevation>
+`;
+
+export const HoverEffectExample = HoverEffectExampleTemplate.bind({});
+HoverEffectExample.args = { label: 'Border Radius', style: '--vvd-elevation-border-radius: 16px', dp: 24 };
+
+function onMouseEnter(e) {
+	e.target.setAttribute('dp', '24');
+	e.target.querySelector('div').innerText = 'Get OFF of me!';
+}
+
+function onMouseLeave(e) {
+	e.target.setAttribute('dp', '2');
+	e.target.querySelector('div').innerText = 'Hover me!';
+}
