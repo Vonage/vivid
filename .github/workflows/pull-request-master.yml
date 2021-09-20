@@ -97,7 +97,7 @@ jobs:
           path-to-lcov: ./coverage/report-lcov/lcov.info
           flag-name: Tested on ${{ matrix.os }} / ${{ matrix.browser }}
       - run: exit 0
-        if: ${{ steps.test.outcome === 'success' }}
+        if: ${{ steps.test.outcome == 'success' }}
 
   test_for_visual_regression:
     if: github.event.pull_request.draft == false
