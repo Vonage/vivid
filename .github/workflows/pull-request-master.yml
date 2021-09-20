@@ -89,11 +89,13 @@ jobs:
       - uses: coverallsapp/github-action@master
         name: Report coverage information to coveralls
         if: ${{ matrix.report_coverage }}
+        continue-on-error: true
         with:
           parallel: false
           github-token: ${{ github.token }}
           path-to-lcov: ./coverage/report-lcov/lcov.info
           flag-name: Tested on ${{ matrix.os }} / ${{ matrix.browser }}
+      - run: exit 0
 
   test_for_visual_regression:
     if: github.event.pull_request.draft == false
