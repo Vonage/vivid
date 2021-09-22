@@ -27,7 +27,6 @@ const LAYOUTS_AFFECTED = [
 		layout: 'outlined',
 		childrenAffected: ['button'],
 		stylesAffected: [
-			'color',
 			'borderTopColor',
 			'borderRightColor',
 			'borderBottomColor',

@@ -8,6 +8,7 @@ export async function createElementVariations(wrapper) {
 	testWrapper.innerHTML =
 		`
 <vwc-audio></vwc-audio>
+<vwc-audio connotation="primary"></vwc-audio>
 <vwc-audio noseek="true"></vwc-audio>`;
 	wrapper.appendChild(testWrapper);
 

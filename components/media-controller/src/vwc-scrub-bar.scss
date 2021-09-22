@@ -1,4 +1,5 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+@use 'partials/vwc-media-controller-variables' as variables;
 
 :host {
 	$button-size: 16px;
@@ -29,25 +30,6 @@
 			box-sizing: border-box;
 			cursor: pointer;
 			user-select: none;
-			@media screen and (prefers-reduced-motion: reduce) {
-				> button {
-					position: absolute;
-					top: 50%;
-					left: 0;
-					width: $scrub-size;
-					height: $scrub-size;
-					padding: 0;
-					border: 0 none;
-					background-color: var(--vvd-color-connotation, $basic);
-					border-radius: $scrub-size/2;
-					box-shadow: 0 0 0 0 #0000;
-					cursor: pointer;
-					-webkit-tap-highlight-color: transparent;
-					transform: translate(-50%, -50%);
-					transform-origin: center;
-					transition: none;
-				}
-			}
 
 			> button {
 				position: absolute;
@@ -57,14 +39,18 @@
 				height: $scrub-size;
 				padding: 0;
 				border: 0 none;
-				background-color: var(--vvd-color-connotation, $basic);
+				background-color: var(#{variables.$vwc-media-controls-scrubber-color}, $basic);
 				border-radius: $scrub-size/2;
 				box-shadow: 0 0 0 0 #0000;
 				cursor: pointer;
-				-webkit-tap-highlight-color: transparent;
 				transform: translate(-50%, -50%);
 				transform-origin: center;
-				transition: background-color 0.2s, box-shadow 200ms, border-radius 0.2s;
+				@media screen and (prefers-reduced-motion: no-preference) {
+					transition: background-color 0.2s, box-shadow 200ms, border-radius 0.2s;
+				}
+				@supports (-webkit-tap-highlight-color: transparent) {
+					-webkit-tap-highlight-color: transparent;
+				}
 			}
 		}
 	}
