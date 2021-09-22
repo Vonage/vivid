@@ -12,6 +12,7 @@ document.body.classList.add('vivid-scope');
 async function run() {
 	setCustomElements(customElements);
 	addParameters({
+		layout: 'fullscreen',
 		controls: {
 			expanded: true
 		},
