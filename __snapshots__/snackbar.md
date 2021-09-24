@@ -4,7 +4,6 @@
 
 ```html
 <div
-  aria-live="assertive"
   class="mdc-snackbar"
   position="BOTTOM-CENTER"
 >
@@ -31,7 +30,6 @@
 
 ```html
 <div
-  aria-live="assertive"
   class="mdc-snackbar"
   position="BOTTOM-CENTER"
 >
@@ -58,7 +56,6 @@
 
 ```html
 <div
-  aria-live="assertive"
   class="mdc-snackbar"
   position="BOTTOM-CENTER"
 >
@@ -86,7 +83,6 @@
 
 ```html
 <div
-  aria-live="assertive"
   class="mdc-snackbar"
   position="BOTTOM-CENTER"
 >
@@ -116,7 +112,6 @@
 
 ```html
 <div
-  aria-live="assertive"
   class="mdc-snackbar"
   position="BOTTOM-CENTER"
 >
@@ -152,7 +147,6 @@
 
 ```html
 <div
-  aria-live="assertive"
   class="mdc-snackbar"
   position="BOTTOM-CENTER"
 >
@@ -179,7 +173,6 @@
 
 ```html
 <div
-  aria-live="assertive"
   class="mdc-snackbar"
   position="BOTTOM-CENTER"
 >
@@ -205,7 +198,6 @@
 
 ```html
 <div
-  aria-live="assertive"
   class="mdc-snackbar"
   position="BOTTOM-CENTER"
 >
@@ -231,7 +223,6 @@
 
 ```html
 <div
-  aria-live="assertive"
   class="mdc-snackbar"
   position="BOTTOM-CENTER"
 >
@@ -258,7 +249,6 @@
 
 ```html
 <div
-  aria-live="assertive"
   class="mdc-snackbar"
   position="BOTTOM-CENTER"
 >
@@ -284,7 +274,6 @@
 
 ```html
 <div
-  aria-live="assertive"
   class="mdc-snackbar"
   position="BOTTOM-CENTER"
 >
@@ -319,7 +308,6 @@
 
 ```html
 <div
-  aria-live="assertive"
   class="mdc-snackbar"
   position="BOTTOM-CENTER"
 >
