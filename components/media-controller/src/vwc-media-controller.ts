@@ -7,9 +7,10 @@ import {
 	html,
 	customElement,
 	LitElement,
-	TemplateResult
+	TemplateResult,
+	query,
+	state
 } from 'lit-element';
-import { query, internalProperty } from 'lit-element/lib/decorators.js';
 
 /**
  * Displays controllers for media playback. Includes play/pause button and a scrub bar
@@ -28,7 +29,7 @@ export class VwcMediaController extends LitElement {
 	@query('.scrubber')
 	private _scrubber!:VWCScrubBar
 
-	@internalProperty()
+	@state()
 	private _playState = false;
 
 	render():TemplateResult {
