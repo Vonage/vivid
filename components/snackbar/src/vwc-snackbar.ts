@@ -105,7 +105,7 @@ export class VWCSnackbar extends MWCSnackbarBase {
 	}
 
 	/* eslint-disable lit-a11y/click-events-have-key-events */
-	render(): TemplateResult {
+	render() {
   	const position = VWCSnackbar.preprocessPositionConfig(this.position);
   	const alternate = !this.legacy ? 'vvd-scheme-alternate' : undefined;
 
