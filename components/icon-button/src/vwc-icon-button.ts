@@ -4,7 +4,7 @@ import { customElement, property } from 'lit-element';
 import { ClassInfo, classMap } from 'lit-html/directives/class-map';
 import { IconButton as MWCIconButton } from '@material/mwc-icon-button';
 import { style as vwcButtonStyle } from './vwc-icon-button.css';
-import { style as mwcIconButtonStyle } from '@material/mwc-icon-button/mwc-icon-button-css.js';
+import { styles as mwcIconButtonStyles } from '@material/mwc-icon-button/mwc-icon-button.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 import { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
 import { handleMultipleDenseProps } from '@vonage/vvd-foundation/general-utils';
@@ -18,7 +18,7 @@ declare global {
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-MWCIconButton.styles = [styleCoupling, mwcIconButtonStyle, vwcButtonStyle];
+MWCIconButton.styles = [styleCoupling, mwcIconButtonStyles, vwcButtonStyle];
 
 type IconButtonLayout = Extract<
 	Layout,
@@ -63,9 +63,8 @@ export class VWCIconButton extends MWCIconButton {
 
 	protected getRenderClasses(): ClassInfo {
 		return {
-			'vwc-icon-button--layout-filled': this.layout == 'filled',
-			'vwc-icon-button--layout-outlined': this.layout == 'outlined',
-			'vwc-icon-button--layout-ghost': this.layout == 'ghost',
+			[`connotation-${this.connotation}`]: !!this.connotation,
+			[`layout-${this.layout}`]: !!this.layout
 		};
 	}
 

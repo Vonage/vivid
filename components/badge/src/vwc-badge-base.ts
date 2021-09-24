@@ -58,7 +58,9 @@ export class VWCBadgeBase extends LitElement {
 		};
 
 		return type ?
-			html`<vwc-icon class="icon ${classMap(classes)}" .type="${type}"></vwc-icon>`
+			html`<div class="icon ${classMap(classes)}">
+					<vwc-icon .type="${type}"></vwc-icon>
+				</div>`
 			: nothing;
 	}
 
@@ -68,9 +70,8 @@ export class VWCBadgeBase extends LitElement {
 
 	protected getRenderClasses(): ClassInfo {
 		return {
-			'vwc-badge--layout-filled': this.layout == 'filled',
-			'vwc-badge--layout-outlined': this.layout == 'outlined',
-			'vwc-badge--layout-soft': this.layout == 'soft',
+			[`connotation-${this.connotation}`]: !!this.connotation,
+			[`layout-${this.layout}`]: !!this.layout
 		};
 	}
 

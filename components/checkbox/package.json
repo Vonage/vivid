@@ -27,7 +27,7 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@material/mwc-checkbox": "^0.21.0",
+		"@material/mwc-checkbox": "^0.22.1",
 		"@vonage/vvd-core": "2.18.1",
 		"@vonage/vvd-foundation": "2.18.1",
 		"@vonage/vvd-style-coupling": "2.18.1",

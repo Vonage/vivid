@@ -23,12 +23,6 @@ const PORT = process.env.PORT || 3000;
 const SERVER_URL = `http://localhost:${PORT}`;
 const SNAPSHOT_PATH = './ui-tests/snapshots';
 
-const server = http.createServer((request, response) => {
-	return handler(request, response, {
-		public: 'ui-tests/dist'
-	});
-});
-
 async function compareToSnapshot(page: Page, snapshotPath: string) {
 	const componentName = snapshotPath.substring(snapshotPath.lastIndexOf('/') + 1, snapshotPath.lastIndexOf('.'));
 	const tmpScreenshotPath = snapshotPath.replace(componentName, `${componentName}-snapshot`);
@@ -84,7 +78,6 @@ async function runImageComparison() {
 
 	console.log('Visual tests completed!');
 	await browser.close();
-	finalizeTest();
 }
 
 async function runTestOnComponent(browser, componentName) {
@@ -127,14 +120,20 @@ async function doTest(page) {
 	}
 }
 
-function finalizeTest() {
+function finalizeTest(testsServer) {
 	//	decide process exit code
-	server.close();
+	testsServer.close();
 }
 
 function setDevServer() {
-	const compiler = Webpack({ ...webpackConfig, mode: 'development' });
-	const devServerOptions = { ...webpackConfig.devServer, open: true };
+	const compiler = Webpack({
+		...webpackConfig,
+		mode: 'development'
+	});
+	const devServerOptions = {
+		...webpackConfig.devServer,
+		open: true
+	};
 	const devServer = new WebpackDevServer(devServerOptions, compiler);
 
 	devServer.listen(webpackConfig.devServer.port, '127.0.0.1', () => {
@@ -142,18 +141,35 @@ function setDevServer() {
 	});
 }
 
-server.listen(PORT, async () => {
-	console.log('Running at ', SERVER_URL);
+function runTests(port = PORT) {
+	const server = http.createServer((request, response) => {
+		return handler(request, response, {
+			public: 'ui-tests/dist'
+		});
+	});
 
-	try {
-		if (!process.argv.includes('-s')) {
-			await runImageComparison();
-		} else {
-			setDevServer();
-		}
-	} catch (e) {
-		console.error(e);
-		process.exitCode = 1;
-		server.close();
-	}
-});
+	return new Promise((res, rej) => {
+		server.listen(port, async () => {
+			console.log('Running at ', `http://localhost:${port}`);
+
+			try {
+				await runImageComparison();
+			} catch (e) {
+				console.error(e);
+				process.exitCode = 1;
+				server.close();
+			}
+
+			res(server);
+		});
+	});
+}
+
+if (!process.argv.includes('-s')) {
+	runTests()
+		.then(finalizeTest);
+} else {
+	setDevServer();
+}
+
+

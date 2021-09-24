@@ -4,9 +4,9 @@ import { customElement, property } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
 import { Button as MWCButton } from '@material/mwc-button';
 import { style as vwcButtonStyle } from './vwc-button.css';
-import { style as mwcButtonStyle } from '@material/mwc-button/styles-css.js';
+import { styles as mwcButtonStyles } from '@material/mwc-button/styles.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
-import { Connotation, Shape } from '@vonage/vvd-foundation/constants';
+import { Connotation, Layout, Shape } from '@vonage/vvd-foundation/constants';
 import { html, TemplateResult } from 'lit-element';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
@@ -18,10 +18,12 @@ declare global {
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-MWCButton.styles = [styleCoupling, mwcButtonStyle, vwcButtonStyle];
+MWCButton.styles = [styleCoupling, mwcButtonStyles, vwcButtonStyle];
 
-const layouts = ['text', 'outlined', 'filled'];
-export type ButtonLayout = typeof layouts;
+export type ButtonLayout = Extract<
+	Layout,
+	Layout.Filled | Layout.Outlined | Layout.Ghost
+	>;
 
 const types = ['submit', 'reset', 'button'];
 export type ButtonType = typeof types;
@@ -51,7 +53,7 @@ export class VWCButton extends MWCButton {
 	enlarged = false;
 
 	@property({ type: String, reflect: true })
-	layout: ButtonLayout[number] = 'text';
+	layout?: ButtonLayout;
 
 	@property({ type: String, reflect: true })
 	connotation?: ButtonConnotation;
@@ -66,15 +68,6 @@ export class VWCButton extends MWCButton {
 	formId: string | null = null;
 
 	#_hiddenButton: HTMLButtonElement = VWCButton.createHiddenButton();
-
-	createRenderRoot(): ShadowRoot {
-		if (HTMLFormElement.prototype.requestSubmit) {
-			return super.createRenderRoot();
-		}
-		// don't set delegatesFocus: true due to https://bugs.webkit.org/show_bug.cgi?id=215732
-		/* eslint-disable wc/attach-shadow-constructor */
-		return this.attachShadow({ mode: 'open' });
-	}
 
 	protected updateFormAndButton(): void {
 		const formId = this.getAttribute('form');
@@ -100,9 +93,8 @@ export class VWCButton extends MWCButton {
 			this.#_hiddenButton?.setAttribute('type', this.getAttribute('type') ?? '');
 		}
 
-		const layout: ButtonLayout[number] = this.layout;
-		this.toggleAttribute('outlined', layout === 'outlined');
-		this.toggleAttribute('unelevated', layout === 'filled');
+		this.toggleAttribute('outlined', this.layout === 'outlined');
+		this.toggleAttribute('unelevated', this.layout === 'filled');
 
 		if (changes.has('dense')) {
 			if (this.dense && this.enlarged) {
@@ -151,9 +143,8 @@ export class VWCButton extends MWCButton {
 			'mdc-button--unelevated': this.unelevated,
 			'mdc-button--outlined': this.outlined,
 			'mdc-button--dense': this.dense,
-			'vwc-button--layout-filled': this.layout == 'filled',
-			'vwc-button--layout-outlined': this.layout == 'outlined',
-			'vwc-button--layout-ghost': this.layout == 'ghost',
+			[`connotation-${this.connotation}`]: !!this.connotation,
+			[`layout-${this.layout}`]: !!this.layout
 		});
 	}
 

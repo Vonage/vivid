@@ -7,7 +7,7 @@ import { ClassInfo, classMap } from 'lit-html/directives/class-map';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import { nothing } from 'lit-html';
 import { IconButtonToggleBase } from '@material/mwc-icon-button-toggle/mwc-icon-button-toggle-base.js';
-import { style as MWCIconButtonStyle } from '@material/mwc-icon-button/mwc-icon-button-css.js';
+import { styles as MWCIconButtonStyles } from '@material/mwc-icon-button/mwc-icon-button.css.js';
 import { style as VWCIconButtonStyle } from '@vonage/vwc-icon-button/vwc-icon-button.css.js';
 import { handleMultipleDenseProps } from '@vonage/vvd-foundation/general-utils';
 import { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
@@ -40,7 +40,7 @@ type IconButtonToggleConnotation = Extract<
  */
 @customElement('vwc-icon-button-toggle')
 export class VWCIconButtonToggle extends IconButtonToggleBase {
-	static override styles: CSSResult[] = [MWCIconButtonStyle, VWCIconButtonStyle];
+	static override styles: CSSResult[] = [MWCIconButtonStyles, VWCIconButtonStyle];
 
 	@property({ type: String, reflect: true })
 	layout?: IconButtonToggleLayout;
@@ -71,9 +71,8 @@ export class VWCIconButtonToggle extends IconButtonToggleBase {
 	protected getRenderClasses(): ClassInfo {
 		return {
 			'mdc-icon-button--on': this.on,
-			'vwc-icon-button--layout-filled': this.layout == 'filled',
-			'vwc-icon-button--layout-outlined': this.layout == 'outlined',
-			'vwc-icon-button--layout-ghost': this.layout == 'ghost',
+			[`connotation-${this.connotation}`]: !!this.connotation,
+			[`layout-${this.layout}`]: !!this.layout
 		};
 	}
 
