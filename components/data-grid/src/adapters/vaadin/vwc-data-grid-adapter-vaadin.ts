@@ -122,7 +122,7 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 	}
 
 	getEventContext(event: Event): EventContext | null {
-		let result = null;
+		let result: EventContext | null = null;
 		const iGrid = this.getImplementationOrThrow();
 		const vContext = iGrid.getEventContext(event) as GridEventContext;
 		if (vContext && typeof vContext.index === 'number') {

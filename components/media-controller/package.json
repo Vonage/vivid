@@ -28,7 +28,7 @@
 		"@vonage/vvd-core": "2.18.1",
 		"@vonage/vwc-icon": "2.18.1",
 		"kefir": "^3.8.7",
-		"lit-element": "^2.4.0",
+		"lit-element": "^3.0.0",
 		"ramda": "^0.27.1"
 	},
 	"devDependencies": {

@@ -1,6 +1,6 @@
 import { customElement, html, LitElement } from 'lit-element';
 import { style } from './vwc-elevation.css';
-import { property } from 'lit-element/lib/decorators';
+import { property } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
 
 declare global {

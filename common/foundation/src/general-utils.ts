@@ -39,7 +39,7 @@ export function assert(condition: unknown, msg?: string): asserts condition {
 }
 
 export function debounced(waitInMS = 50) {
-	let timeoutId: number;
+	let timeoutId: NodeJS.Timeout;
 	return function (target: any, propertyKey: string) {
 		const result = function (...args: []) {
 			globalThis.clearTimeout(timeoutId);

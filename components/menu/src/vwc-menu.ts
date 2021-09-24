@@ -19,7 +19,7 @@ declare global {
  */
 @customElement('vwc-menu')
 export class VWCMenu extends MWCMenuBase {
-	static styles = [mwcMenuStyles, vwcMenuStyle];
+	static override styles = [mwcMenuStyles, vwcMenuStyle];
 
 	get listElement(): VWCList | null {
 		if (!this.listElement_) {

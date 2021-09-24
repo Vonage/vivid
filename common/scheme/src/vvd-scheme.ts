@@ -62,7 +62,7 @@ function setSyncModeIfRelevant(scheme: SchemeOption): PredefinedScheme {
 	return result;
 }
 
-let setPromise: Promise<Record<string, unknown>> | null = null;
+let setPromise: Promise<Record<string, unknown>>;
 
 async function set(
 	schemeOption: SchemeOption | null = null

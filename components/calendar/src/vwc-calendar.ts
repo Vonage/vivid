@@ -6,8 +6,6 @@ import {
 	property,
 	TemplateResult
 } from 'lit-element';
-import { DirectiveFn } from 'lit-html';
-import { repeat } from 'lit-html/directives/repeat';
 import { style } from './vwc-calendar.css';
 import {
 	assertIsValidDateStringRepresentation,
@@ -151,20 +149,18 @@ export class VWCCalendar extends LitElement {
 		isArrow	&& this.arrowKeysInteractions(event);
 	}
 
-	protected renderTimeRows(): DirectiveFn {
+	protected renderTimeRows(): TemplateResult<1>[] {
 		const length = this.#hours.length + 1;
 
-		return repeat(
-			Array.from({ length }),
+		return Array.from({ length }).map(
 			() => html`<div role="listitem"></div>`
 		);
 	}
 
-	protected renderColumns(): DirectiveFn {
+	protected renderColumns(): TemplateResult<1>[] {
 		const length = this.#daysLength;
 
-		return repeat(
-			Array.from({ length }),
+		return Array.from({ length }).map(
 			(_, i) => html`
 				<div role="gridcell" tabindex="-1">
 					<slot name="day-${i}"></slot>

@@ -2,11 +2,10 @@ import '@vonage/vvd-core';
 import {
 	customElement, property, html, TemplateResult
 } from 'lit-element';
-import { ClassInfo, classMap } from 'lit-html/directives/class-map';
-import { ifDefined } from 'lit-html/directives/if-defined';
+import { ClassInfo } from 'lit-html/directives/class-map';
 import { Switch as MWCSwitch } from '@material/mwc-switch';
 import { style as vwcSwitchStyle } from './vwc-switch.css';
-import { styles as mwcSwitchStyles } from '@material/mwc-switch/mwc-switch.css.js';
+import { styles as mwcSwitchStyles } from '@material/mwc-switch/styles.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
 import { Connotation } from '@vonage/vvd-foundation/constants';
@@ -16,10 +15,6 @@ declare global {
 		'vwc-switch': VWCSwitch;
 	}
 }
-
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-// @ts-ignore
-MWCSwitch.styles = [styleCoupling, mwcSwitchStyles, vwcSwitchStyle];
 
 type SwitchConnotation = Extract<
 	Connotation,
@@ -31,45 +26,18 @@ type SwitchConnotation = Extract<
  */
 @customElement('vwc-switch')
 export class VWCSwitch extends MWCSwitch {
+	static override styles = [styleCoupling, mwcSwitchStyles, vwcSwitchStyle];
 	@property({ type: String, reflect: true })
 	connotation?: SwitchConnotation;
 
 	@property({ type: Boolean, reflect: true })
 	enlarged = false;
 
-	protected getRenderClasses(): ClassInfo {
+	protected override getRenderClasses(): ClassInfo {
 		return {
+			...super.getRenderClasses(),
 			[`connotation-${this.connotation}`]: !!this.connotation,
 		};
-	}
-
-	protected override render() {
-		return html`
-      <div class="mdc-switch ${classMap(this.getRenderClasses())}">
-        <div class="mdc-switch__track"></div>
-        <div class="mdc-switch__thumb-underlay">
-          ${this.renderRipple()}
-          <div class="mdc-switch__thumb">
-            <input
-              type="checkbox"
-              id="basic-switch"
-              class="mdc-switch__native-control"
-              role="switch"
-              aria-label="${ifDefined(this.ariaLabel)}"
-							aria-checked="${this.checked}"
-              aria-labelledby="${ifDefined(this.ariaLabelledBy)}"
-              @change="${this.changeHandler}"
-              @focus="${this.handleRippleFocus}"
-              @blur="${this.handleRippleBlur}"
-              @mousedown="${this.handleRippleMouseDown}"
-              @mouseenter="${this.handleRippleMouseEnter}"
-              @mouseleave="${this.handleRippleMouseLeave}"
-              @touchstart="${this.handleRippleTouchStart}"
-              @touchend="${this.handleRippleDeactivate}"
-              @touchcancel="${this.handleRippleDeactivate}">
-          </div>
-        </div>
-      </div>`;
 	}
 
 	async firstUpdated(): Promise<void> {
