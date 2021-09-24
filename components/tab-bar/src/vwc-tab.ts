@@ -3,10 +3,9 @@ import {
 	customElement, property, html, TemplateResult
 } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
-import { Tab as MWCTab } from '@material/mwc-tab';
+import { TabBase as MWCTabBase } from '@material/mwc-tab/mwc-tab-base.js';
 import { style as vwcTabStyle } from './vwc-tab.css';
 import { styles as mwcTabStyles } from '@material/mwc-tab/mwc-tab.css.js';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -14,12 +13,10 @@ declare global {
 	}
 }
 
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-// @ts-ignore
-MWCTab.styles = [styleCoupling, mwcTabStyles, vwcTabStyle];
-
 @customElement('vwc-tab')
-export class VWCTab extends MWCTab {
+export class VWCTab extends MWCTabBase {
+	static override styles = [mwcTabStyles, vwcTabStyle];
+
 	@property({ type: Boolean, reflect: true })
 	disabled = false;
 
@@ -35,7 +32,7 @@ export class VWCTab extends MWCTab {
 
 	// ! copy & paste code from original mwc tab
 	// ! to replace icon handling
-	render(): TemplateResult {
+	protected override render() {
 		const classes = {
 			'mdc-tab--min-width': this.minWidth,
 			'mdc-tab--stacked': this.stacked,
