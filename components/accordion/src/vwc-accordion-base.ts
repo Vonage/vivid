@@ -26,7 +26,7 @@ export abstract class VWCAccordionBase extends LitElement {
 	}
 
 	getOpened(): Array<VWCExpansionPanelBase> {
-		const opened = [];
+		const opened: VWCExpansionPanelBase[] = [];
 
 		if (this.expansionPanels) {
 			for (const expansionPanel of this.expansionPanels) {
