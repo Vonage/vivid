@@ -1,7 +1,9 @@
-import '@vaadin/vaadin-grid/vaadin-grid';
-import '@vaadin/vaadin-grid/vaadin-grid-column';
-import '@vaadin/vaadin-grid/vaadin-grid-tree-column';
-import { GridColumnElement, GridElement, GridEventContext } from '@vaadin/vaadin-grid/vaadin-grid';
+import '@vaadin/vaadin-grid/src/vaadin-grid';
+import '@vaadin/vaadin-grid/src/vaadin-grid-column';
+import '@vaadin/vaadin-grid/src/vaadin-grid-tree-column';
+import { GridElement } from '@vaadin/vaadin-grid/src/vaadin-grid';
+import { GridColumnElement } from '@vaadin/vaadin-grid/src/vaadin-grid-column';
+import { GridEventContext } from '@vaadin/vaadin-grid/src/interfaces';
 import '../../headers/vwc-data-grid-header';
 import {
 	DataGrid, EventContext, GRID_COMPONENT, GRID_ENGINE_ROOT_CLASS
@@ -59,6 +61,16 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 			_items = undefined;
 		}
 		return html`
+			<dom-module id="my-grid-styles" theme-for="vaadin-grid">
+				<template>
+					<style>
+						[part~="cell"] ::slotted(vaadin-grid-cell-content) {
+							padding: 4px 16px;
+						}
+					</style>
+				</template>
+			</dom-module>
+
 			<vaadin-grid
 				class="${GRID_ENGINE_ROOT_CLASS}"
 				theme="no-border"
