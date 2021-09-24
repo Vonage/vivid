@@ -1,4 +1,6 @@
 $button-icon-size-variable-name: --vvd-button-icon-size;
 $vvd-button-shape: --vvd-button-shape;
-$vvd-button-layout: --vvd-button-layout;
-
+// TODO connotation variable currently needed for button-toggle-group
+// ! should deprecate once button-toggle-group couples its own child buttons
+$vvd-button-color: --vvd-button-color;
+$vvd-button-on-color: --vvd-button-on-color;

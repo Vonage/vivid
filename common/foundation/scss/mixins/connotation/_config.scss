@@ -1,0 +1,17 @@
+$predefined-connotation-set: primary cta success alert warning info announcement;
+
+$base: true !default;
+$default: false !default;
+$shades: () !default;
+$decoratives: () !default;
+$connotations-set: $predefined-connotation-set !default;
+$scope: null !default;
+$is-host: false !default; // for backwards compatability on components that aren't yet structured with base wrapper
+
+@function get-scope-prefix() {
+	@if $scope != null {
+		@return '#{$scope}-';
+	} @else {
+		@return '';
+	}
+}

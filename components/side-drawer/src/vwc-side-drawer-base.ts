@@ -11,6 +11,12 @@ import { DocumentWithBlockingElements } from 'blocking-elements';
 const blockingElements =
 	(document as DocumentWithBlockingElements).$blockingElements;
 
+/**
+ * @cssprop [side-drawer-background-color=The current theme's canvas (background) color] - Controls the background of the side drawer
+ * @cssprop [side-drawer-min-inline-size=280px] - Controls the size of the side drawer
+ * @cssprop [side-drawer-padding=16px] - Controls the padding of the side drawer
+ * @cssprop [side-drawer-z-index=6] - Controls the z-index of the side drawer
+ * */
 export class VWCSideDrawerBase extends LitElement {
 	/**
 	 * @prop alternate - [Applies scheme alternate region](../../common/scheme/readme.md)
@@ -45,17 +51,6 @@ export class VWCSideDrawerBase extends LitElement {
 	})
 	type = '';
 
-	/**
-	 * @prop absolute - the modal can be fixed or absolute
-	 * accepts Boolean value
-	 * @public
-	 * */
-	@property({
-		type: Boolean,
-		reflect: true
-	})
-	absolute = false;
-
 	@property({
 		type: Boolean,
 		reflect: true
@@ -78,65 +73,74 @@ export class VWCSideDrawerBase extends LitElement {
 		this.open = false;
 	}
 
-	connectedCallback() {
+	connectedCallback(): void {
 		super.connectedCallback();
-		this.addEventListener('transitionend', this.#onTransitionEnd);
-		this.addEventListener('keydown', this.#onKeydown);
+		this.addEventListener('transitionend', this.#handleTransitionEnd);
+		document.addEventListener('keydown', this.#handleKeydown);
 	}
 
 	disconnectedCallback(): void {
 		super.disconnectedCallback();
 		this.#releaseFocus();
-		this.removeEventListener('transitionend', this.#onTransitionEnd);
-		this.removeEventListener('keydown', this.#onKeydown);
+		this.removeEventListener('transitionend', this.#handleTransitionEnd);
+		document.removeEventListener('keydown', this.#handleKeydown);
 	}
 
 	protected render(): TemplateResult {
-		const dismissible = this.type === 'dismissible' || this.type === 'modal';
+		const dismissible = this.type === 'dismissible';
 		const modal = this.type === 'modal';
 		const topBar = this.hasTopBar ? this.renderTopBar() : '';
-		const scrim = this.type === 'modal' && this.open ? this.renderScrim() : '';
+		const scrim = (this.type === 'modal' && this.open) ? this.renderScrim() : '';
 		const alternate = this.alternate ? 'vvd-scheme-alternate' : undefined;
-		const absolute = this.type === 'modal' && this.absolute;
 
 		const classes = {
-			'vvd-side-drawer--alternate': this.alternate,
-			'vvd-side-drawer--dismissible': dismissible,
-			'vvd-side-drawer--modal': modal,
-			'vvd-side-drawer--open': this.open,
-			'vvd-side-drawer--absolute': absolute,
+			'side-drawer--alternate': this.alternate,
+			'side-drawer--dismissible': dismissible,
+			'side-drawer--modal': modal,
+			'side-drawer--open': this.open,
 		};
 
+		const aside = html`<aside
+							part="${ifDefined(alternate)}"
+							class="side-drawer ${classMap(classes)}">
+							${topBar}
+
+							<div class="side-drawer--content">
+								<slot></slot>
+							</div>
+						</aside>`;
+
 		return html`
-			<aside
-				part="${ifDefined(alternate)}"
-				class="side-drawer ${classMap(classes)}"
-			>
-				${topBar}
-
-				<div class="vvd-side-drawer--content">
-					<slot></slot>
-				</div>
-			</aside>
-
+			${dismissible ? this.renderDismissible(aside) : aside}
 			${scrim}
 		`;
 	}
 
+	private renderDismissible(template: TemplateResult): TemplateResult {
+		const classes = {
+			'aside-container--open': this.open,
+		};
+
+		return html`
+			<div class="aside-container ${classMap(classes)}">
+				${template}
+			</div>`;
+	}
+
 	private renderTopBar(): TemplateResult {
 		return html`
-			<div class="vvd-side-drawer--top-bar">
+			<div class="side-drawer--top-bar">
 				<slot name="top-bar"></slot>
 			</div>`;
 	}
 
 	private renderScrim(): TemplateResult {
 		return html`
-				<div
-						class="vvd-side-drawer--scrim ${this.absolute ? 'vvd-side-drawer--absolute' : ''}"
-						@click="${this.#handleScrimClick}"
-						@keydown="${this.#handleScrimClick}"
-				></div>`;
+			<div
+				class="side-drawer--scrim"
+				@click="${this.#handleScrimClick}"
+				@keydown="${this.#handleScrimClick}"
+			></div>`;
 	}
 
 	#handleScrimClick(): void {
@@ -145,14 +149,14 @@ export class VWCSideDrawerBase extends LitElement {
 		}
 	}
 
-	#onKeydown = ({ key }: KeyboardEvent): void => {
-		if (this.type === 'modal' && this.open && key === 'Escape') {
+	#handleKeydown = ({ key }: KeyboardEvent): void => {
+		if ((this.type === 'modal' || this.type === 'dismissible') && this.open && key === 'Escape') {
 			this.hide();
 		}
 	};
 
-	#onTransitionEnd = (): void => {
-		if (this.type === 'modal') {
+	#handleTransitionEnd = (): void => {
+		if (this.type === 'modal' || this.type === 'dismissible') {
 			// when side drawer finishes open animation
 			if (this.open) {
 				this.#opened();
@@ -164,16 +168,20 @@ export class VWCSideDrawerBase extends LitElement {
 	};
 
 	#opened(): void {
-		this.#trapFocus();
+		if (this.type === 'modal') {
+			this.#trapFocus();
+		}
 		this.#notifyOpen();
 	}
 
 	#closed(): void {
-		this.#releaseFocus();
+		if (this.type === 'modal') {
+			this.#releaseFocus();
+		}
 		this.#notifyClose();
 	}
 
-	#createDispatchEvent(eventName: string) {
+	#createDispatchEvent(eventName: string): void {
 		const init: CustomEventInit = {
 			bubbles: true,
 			composed: true

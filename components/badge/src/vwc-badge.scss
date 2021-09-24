@@ -1,28 +1,27 @@
 $namespace: --vvd-badge;
-$namespace-layout: #{$namespace}-layout;
 $namespace-shape: #{$namespace}-shape;
 
+@use '@vonage/vwc-icon/src/partials/vwc-icon-variables' as icon-variables;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-typography/scss/typography' as typography;
-@use '@vonage/vvd-foundation/scss/mixins/color-connotation' as color-connotation with (
-	$connotations-set: primary cta success alert warning info
+@use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
+	$connotations-set: primary cta success alert warning info,
+	$shades: (soft, contrast),
+	$default: primary,
 );
-
+@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
 	$variable-name: #{$namespace-shape}
 );
-@use '@vonage/vvd-foundation/scss/mixins/layout-mixins' as layout-mixins with (
-	$layouts: filled	outlined	soft,
-	$variable-prefix: #{$namespace-layout}
+@use '@vonage/vvd-foundation/scss/mixins/layout/config' as layout-config with (
+	$layout-set: filled outlined soft,
+	$outline-duotone: true,
+	$default: filled,
 );
+@use '@vonage/vvd-foundation/scss/mixins/layout' as layout;
 
-$vvd-badge--block-size: --#{$namespace}--block-size;
+$vvd-badge--block-size: #{$namespace}--block-size;
 
-@include color-connotation.connotations-main-default(primary);
-@include color-connotation.connotations-main;
-
-@include color-connotation.connotations-shades-default(primary);
-@include color-connotation.connotations-shades;
 
 @include shape-mixins.shape(
 	$shapes: (
@@ -31,10 +30,8 @@ $vvd-badge--block-size: --#{$namespace}--block-size;
 	)
 );
 
-@include layout-mixins.layout();
-@include layout-mixins.layout-default(filled);
 
-:host {
+:host(:not([dense]):not([enlarged])) {
 	#{$vvd-badge--block-size}: 24px;
 }
 
@@ -48,12 +45,17 @@ $vvd-badge--block-size: --#{$namespace}--block-size;
 
 .vwc-badge {
 	@include typography.typography-cat-shorthand('caption-bold');
-	display: inline-block;
+	@include layout.layout;
+	@include connotation.connotation;
+	display: inline-flex;
+	height: var(#{$vvd-badge--block-size});
+	box-sizing: border-box;
+	align-items: center;
 	padding: 0 10px;
-	border: var(#{$namespace-layout}--outline);
-	background-color: var(#{$namespace-layout}--fill);
+	border: 1px solid var(#{layout.$vvd-layout-color-outline});
+	background-color: var(#{layout.$vvd-layout-color-fill});
 	border-radius: var(#{$namespace-shape});
-	color: var(#{$namespace-layout}--text);
+	color: var(#{layout.$vvd-layout-color-text});
 	line-height: var(#{$vvd-badge--block-size});
 
 	:host([dense]) & {
@@ -66,8 +68,16 @@ $vvd-badge--block-size: --#{$namespace}--block-size;
 }
 
 .icon {
-	--icon-size: 12px;
 	$margin: 8px;
+	block-size: 12px;
+	line-height: 1;
+
+	> vwc-icon {
+		--icon-size: 12px;
+		// TODO remove next line when VIV-704 resolved
+		#{connotation.$vvd-color-connotation}: initial;
+		vertical-align: top;
+	}
 
 	&.icon--leading {
 		margin-inline-end: $margin;

@@ -31,7 +31,8 @@ describe('note connotation', () => {
 			const [note] = addElement(textToDomToParent(`<${VWC_NOTE}></${VWC_NOTE}>`));
 			await assertConnotationAttribute({
 				element: note,
-				connotation: connotation,
+				childrenAffected: ['.vwc-note'],
+				connotation,
 				stylesAffected: ['borderInlineStartColor'],
 			});
 		});
@@ -40,7 +41,8 @@ describe('note connotation', () => {
 			const [note] = addElement(textToDomToParent(`<${VWC_NOTE}></${VWC_NOTE}>`));
 			await assertConnotationProperty({
 				element: note,
-				connotation: connotation,
+				childrenAffected: ['.vwc-note'],
+				connotation,
 				stylesAffected: ['borderInlineStartColor'],
 			});
 		});

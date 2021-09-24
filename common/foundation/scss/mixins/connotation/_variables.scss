@@ -1,0 +1,54 @@
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
+@use 'config' as config;
+
+
+$vvd-color-connotation: --#{config.get-scope-prefix()}connotation;
+$vvd-color-on-connotation: --#{config.get-scope-prefix()}on-connotation;
+
+$compound-placeholder: '[compound]'; // will be replaced by actual compound
+
+$connotation-mapping: (
+	// should map to colors e.g. purple-60
+	primary: (
+		contrast: scheme-variables.$vvd-color-primary,
+		diverse: scheme-variables.$vvd-color-primary,
+		soft: scheme-variables.$vvd-color-neutral-20,
+	),
+	cta: (
+		contrast: scheme-variables.$vvd-color-cta-90,
+		diverse: scheme-variables.$vvd-color-cta-70,
+		soft: scheme-variables.$vvd-color-cta-20,
+	),
+	success: (
+		contrast: scheme-variables.$vvd-color-success-90,
+		diverse: scheme-variables.$vvd-color-success-70,
+		soft: scheme-variables.$vvd-color-success-20,
+	),
+	alert: (
+		contrast: scheme-variables.$vvd-color-alert-90,
+		diverse: scheme-variables.$vvd-color-alert-70,
+		soft: scheme-variables.$vvd-color-alert-20,
+	),
+	warning: (
+		contrast: scheme-variables.$vvd-color-warning-90,
+		diverse: scheme-variables.$vvd-color-warning-70,
+		soft: scheme-variables.$vvd-color-warning-20,
+	),
+	info: (
+		contrast: scheme-variables.$vvd-color-info-90,
+		diverse: scheme-variables.$vvd-color-info-70,
+		soft: scheme-variables.$vvd-color-info-20,
+	),
+	announcement: (
+		contrast: scheme-variables.$vvd-color-announcement-90,
+		diverse: scheme-variables.$vvd-color-announcement-70,
+		soft: scheme-variables.$vvd-color-announcement-20,
+	),
+);
+
+$connotation-mapping-decoratives: (
+	pacific: (
+		start: var(#{scheme-variables.$vvd-color-info-30}),
+		end: var(#{scheme-variables.$vvd-color-cta-70})
+	),
+);
