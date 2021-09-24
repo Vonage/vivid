@@ -3,6 +3,13 @@
 #### `should render expanded item when opened`
 
 ```html
+<dom-module
+  id="my-grid-styles"
+  theme-for="vaadin-grid"
+>
+  <template>
+  </template>
+</dom-module>
 <vaadin-grid
   class="vvd-grid-engine-root"
   style="touch-action: none;"
@@ -84,6 +91,13 @@
 ```
 
 ```html
+<dom-module
+  id="my-grid-styles"
+  theme-for="vaadin-grid"
+>
+  <template>
+  </template>
+</dom-module>
 <vaadin-grid
   class="vvd-grid-engine-root"
   style="touch-action: none;"
