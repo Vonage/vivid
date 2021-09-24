@@ -11,7 +11,7 @@ import {
 	PropertyValues,
 	queryAssignedNodes,
 	query,
-	internalProperty
+	state
 } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
 
@@ -77,7 +77,7 @@ export class VWCTextField extends MWCTextField {
 	})
 	placeholder = ' ';
 	@query('.mdc-text-field__input') protected inputElementWrapper!: HTMLInputElement;
-	@internalProperty()
+	@state()
 	private hasActionButtons = false;
 	@queryAssignedNodes('action', true, VALID_BUTTON_ELEMENTS.join(', '))
 	private actionButtons?: NodeListOf<HTMLElement>;
