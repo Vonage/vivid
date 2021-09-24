@@ -1,42 +1,28 @@
 @use 'sass:selector';
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
-@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation with(
+@use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
 	$connotations-set: primary cta success alert,
-	$default: primary
+	$default: primary,
 );
+@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
 
-@include connotation.connotation;
+.mdc-switch {
+	--mdc-theme-secondary: var(#{connotation.$vvd-color-connotation});
 
+	--vvd-switch-unchecked-background: var(#{scheme-variables.$vvd-color-neutral});
+	--vvd-switch-unchecked-background-hover: var(#{scheme-variables.$vvd-color-neutral});
+	--vvd-switch-unchecked-background-focus: var(#{scheme-variables.$vvd-color-neutral});
 
-// sizing parts only
-:host {
-	// colors/shadowing
-	--mdc-theme-secondary: var(
-		#{connotation.$vvd-color-connotation}
-	);
-
-	--vvd-switch-unchecked-background: var(
-		#{scheme-variables.$vvd-color-neutral}
-	);
-	--vvd-switch-unchecked-background-hover: var(
-		#{scheme-variables.$vvd-color-neutral}
-	);
-	--vvd-switch-unchecked-background-focus: var(
-		#{scheme-variables.$vvd-color-neutral}
-	);
-
-	--vvd-switch-disabled-background: var(
-		#{scheme-variables.$vvd-color-neutral-30}
-	);
+	--vvd-switch-disabled-background: var(#{scheme-variables.$vvd-color-neutral-30});
 	--vvd-switch-shadow-focus: 0, 0, 0, 0.5;
 
-	--mdc-theme-surface: var(
-		#{scheme-variables.$vvd-color-neutral-10}
-	); // unchecked thumb
-	--mdc-theme-on-surface: var(
-		--vvd-switch-unchecked-background
-	); // unchecked track
+	--mdc-theme-surface: var(#{scheme-variables.$vvd-color-neutral-10}); // unchecked thumb
+	--mdc-theme-on-surface: var(--vvd-switch-unchecked-background); // unchecked track
 
+	@include connotation.connotation;
+}
+
+:host {
 	border-radius: 16px;
 
 	.mdc-switch,

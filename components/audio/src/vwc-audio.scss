@@ -1,14 +1,14 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-typography/scss/typography' as typography;
-@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation with(
+@use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
 	$connotations-set: primary cta,
-	$default: cta
+	$default: cta,
 );
+@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
+@use '@vonage/vwc-media-controller/src/partials/vwc-media-controller-variables' as media-controls-variables;
 
-@include connotation.connotation;
 
 :host {
-
 	*:focus:not(:focus-visible) {
 		outline: none;
 	}
@@ -17,7 +17,8 @@
 		outline: var(#{scheme-variables.$vvd-color-on-canvas}) solid 2px;
 	}
 
-	.root {
+	.audio {
+		@include connotation.connotation;
 		@include typography.typography-cat-shorthand('caption');
 		display: flex;
 		flex-wrap: nowrap;
@@ -25,6 +26,7 @@
 		justify-content: flex-start;
 
 		> .scrubber {
+			#{media-controls-variables.$vwc-media-controls-scrubber-color}: var(#{connotation.$vvd-color-connotation});
 			min-width: 200px;
 			flex: 1 0;
 		}

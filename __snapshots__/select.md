@@ -45,7 +45,6 @@
     aria-expanded="false"
     aria-haspopup="listbox"
     aria-invalid="false"
-    aria-labelledby="label"
     aria-required="false"
     class="mdc-select__anchor"
     role="combobox"

@@ -1,19 +1,20 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-foundation/scss/variable-names/font-variable-names' as font-var-names;
-@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation with(
-	$connotations-set: success info alert announcement warning,
-	$default: info
-);
 @use '@vonage/vvd-typography/scss/typography';
-@use './vwc-banner-variables.scss' as banner-variables;
+@use 'vwc-banner-variables.scss' as banner-variables;
 
-@include connotation.connotation;
+@use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
+	$connotations-set: success info alert announcement warning,
+	$default: info,
+);
+@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
 
 
 :host {
 	/* stylelint-disable */
-	> .container {
+	> .banner {
 		/* stylelint-enable */
+		@include connotation.connotation;
 		overflow: hidden;
 		max-height: 0;
 		transition: max-height var(#{banner-variables.$banner-transition-delay}, 200ms);
@@ -35,6 +36,8 @@
 				padding-inline: 16px;
 
 				> .icon {
+					// TODO remove next line when VIV-704 resolved
+					#{connotation.$vvd-color-connotation}: initial;
 					--icon-size: var(#{banner-variables.$banner-icon-size}, 20px);
 					flex: 0 0 auto;
 					padding-inline-end: 15px;
@@ -61,7 +64,7 @@
 }
 
 :host([open]) {
-	> .container {
+	> .banner {
 		max-height: 10rem;
 	}
 }

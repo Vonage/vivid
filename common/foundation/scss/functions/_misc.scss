@@ -1,9 +1,0 @@
-@use 'sass:selector';
-
-@function get-local-selector($selector, $compound-placeholder, $compound) {
-	@return selector.replace(
-		#{$selector},
-		#{$compound-placeholder},
-		#{$compound}
-	);
-}

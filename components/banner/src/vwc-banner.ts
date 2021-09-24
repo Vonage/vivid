@@ -5,10 +5,19 @@ import { style as BannerStyle } from './vwc-banner.css';
 import {
 	customElement, html, LitElement, property, PropertyValues
 } from 'lit-element';
-import { nothing } from 'lit-html';
-import { Connotation } from '@vonage/vvd-foundation/constants';
+import { ClassInfo, classMap } from 'lit-html/directives/class-map';
+import { nothing, TemplateResult } from 'lit-html';
+import { Connotation } from '@vonage/vvd-foundation/constants.js';
 
 const ANIMATION_DURATION = 100;
+
+const connotationIconMap = new Map([
+	[Connotation.Info, 'info-solid'],
+	[Connotation.Announcement, 'megaphone-solid'],
+	[Connotation.Success, 'check-circle-solid'],
+	[Connotation.Warning, 'warning-solid'],
+	[Connotation.Alert, 'error-solid']
+]);
 
 type BannerConnotation =
 	Connotation.Info |
@@ -22,16 +31,6 @@ declare global {
 		'vwc-banner': VWCBanner;
 	}
 }
-
-const connotationToIconType = function (connotation:BannerConnotation):string {
-	return ({
-		[Connotation.Info]: 'info-solid',
-		[Connotation.Announcement]: 'megaphone-solid',
-		[Connotation.Success]: 'check-circle-solid',
-		[Connotation.Warning]: 'warning-solid',
-		[Connotation.Alert]: 'error-solid'
-	})[connotation];
-};
 
 const createCustomEvent = function (eventName:string, props = {}):CustomEvent {
 	return new CustomEvent(eventName, {
@@ -53,7 +52,7 @@ export class VWCBanner extends LitElement {
 	dismissible?:boolean;
 
 	@property({ type: String, reflect: true })
-	connotation:BannerConnotation = Connotation.Info;
+	connotation?: BannerConnotation;
 
 	@property({ type: String, reflect: true })
 	icon?:string;
@@ -68,7 +67,8 @@ export class VWCBanner extends LitElement {
 	#transitionTimer?:number;
 
 	protected firstUpdated() {
-		(this.shadowRoot?.querySelector('.container') as HTMLElement).style.setProperty('--transition-delay', `${ANIMATION_DURATION}ms`);
+		// refactor to query decorator
+		(this.shadowRoot?.querySelector('.banner') as HTMLElement).style.setProperty('--transition-delay', `${ANIMATION_DURATION}ms`);
 	}
 
 	updated(changedProperties:PropertyValues) {
@@ -91,12 +91,27 @@ export class VWCBanner extends LitElement {
 			: nothing;
 	}
 
-	render() {
+	protected getRenderClasses(): ClassInfo {
+		return {
+			[`connotation-${this.connotation}`]: !!this.connotation
+		};
+	}
+
+	protected renderIcon(type?: string): TemplateResult {
+		if (!type) {
+			const connotation = this.connotation || Connotation.Info;
+			type = connotationIconMap.get(connotation);
+		}
+
+		return html`<vwc-icon class="icon" .type="${type}"></vwc-icon>`;
+	}
+
+	protected render(): TemplateResult {
 		return html`
-			<div class="container">
+			<div class="banner ${classMap(this.getRenderClasses())}">
 				<header class="header">
 					<span class="user-content">
-						<vwc-icon class="icon" type="${this.icon ?? connotationToIconType(this.connotation)}"></vwc-icon>
+						${this.renderIcon(this.icon)}
 						<div role="alert" class="message">${this.message}</div>
 						<slot class="action-items" name="actionItems"></slot>
 					</span>

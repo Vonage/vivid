@@ -120,5 +120,9 @@ export async function createElementVariations(wrapper) {
 
 ### Run the Test Pages
 
-Sometimes you'd like to see the test pages in the browser. For this, run the tests with the flag `-s`.  Then browse to `http://localhost:3000` and select the `html` file to watch.
-You could also browse directly to the component's page you want: `http://localhost:3000/vwc-badge`.
+Sometimes you'd like to see the test pages in the browser. For this, run the tests with the flag `-s`.  Then browse to `http://localhost:3001` and select the component to watch.
+You could also browse directly to the component's page you want: `http://localhost:3001/vwc-badge.html`.
+
+### Updating snapshots
+There comes a time when you would like to update the snapshot. Just run the command with `-u` to do so.
+Example: `yarn ui-tests -u vwc-button vwc-icon-button` will update the snapshots for button and icon-button.

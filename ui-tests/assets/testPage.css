@@ -2,7 +2,6 @@ body {
 	font-family: arial;
 }
 
-#main>div,
-#main>div>div {
+.grid {
 	display: inline-grid;
 }

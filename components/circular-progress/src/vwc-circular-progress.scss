@@ -1,12 +1,12 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
-@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation with(
+@use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
 	$connotations-set: primary cta success alert,
-	$default: primary
+	$default: primary,
 );
+@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
 
 
-@include connotation.connotation;
-
-:host {
+.mdc-circular-progress {
 	--mdc-theme-primary: var(#{connotation.$vvd-color-connotation});
+	@include connotation.connotation;
 }

@@ -1,12 +1,14 @@
 @use 'sass:map';
-@use '../../functions';
-@use 'functions' as local-functions;
-@use 'config';
-@use 'variables';
+@use 'sass:list';
+@use 'sass:selector';
+@use '../../functions' as functions;
+@use 'config' as config;
+@use 'variables' as variables;
+
 
 @mixin connotation-base($type) {
-	#{variables.$vvd-color-connotation}: var(#{variables.$vvd-color}-#{$type});
-	#{variables.$vvd-color-on-connotation}: var(#{variables.$vvd-color-on}-#{$type});
+	#{variables.$vvd-color-connotation}: var(--vvd-color-#{$type});
+	#{variables.$vvd-color-on-connotation}: var(--vvd-color-on-#{$type});
 }
 
 @mixin connotation-shades($mapping) {
@@ -22,11 +24,24 @@
 	#{variables.$vvd-color-connotation}: linear-gradient(to right, $start, $end);
 }
 
+@function get-typed-selector($type) {
+	@if config.$is-host {
+		@return ':host([connotation="#{$type}"i])';
+	} @else {
+		@return '.#{config.get-scope-prefix()}connotation-#{$type}';
+	}
+}
+
 @mixin selectors($types...) {
 	@each $type in $types {
-		$compound: '[connotation="#{$type}" i]';
-
-		$local-selector: functions.get-local-selector(config.$selector, variables.$compound-placeholder, $compound);
+		$typed-selector: get-typed-selector($type);
+		$selector: '';
+		// for backwards compatability on components that aren't yet structured with base wrapper
+		@if config.$is-host {
+			$selector: selector.parse('#{&}#{$typed-selector}');
+		} @else {
+			$selector: selector.unify(&, $typed-selector);
+		}
 
 		$all-connotation-types: map.keys(
 			map.merge(
@@ -35,18 +50,29 @@
 			)
 		);
 
-		@if $type == config.$default {
-			$default-compound-selector: local-functions.get-connotation-rule-out-compound-selector(config.$default, $all-connotation-types);
-			$default-selector: functions.get-local-selector(config.$selector, variables.$compound-placeholder, $default-compound-selector);
-			$local-selector: $local-selector,	$default-selector;
+		@if $type == config.$default and list.length($all-connotation-types) > 1 {
+			$rule-out-typed-selector: '';
+			// for backwards compatability on components that aren't yet structured with base wrapper
+			@if config.$is-host {
+				$rule-out-typed-selector: ':host(';
+			} @else {
+				$rule-out-typed-selector: &;
+			}
+			@each $rule-out-type in $all-connotation-types {
+				@if $rule-out-type != config.$default {
+					$rule-out-typed-selector: '#{$rule-out-typed-selector}:not(#{get-typed-selector($rule-out-type)})';
+				}
+			}
+			// for backwards compatability on components that aren't yet structured with base wrapper
+			@if config.$is-host { $rule-out-typed-selector: $rule-out-typed-selector ')'; }
+			$selector: selector.parse(#{$selector, $rule-out-typed-selector});
 		}
 
-		#{$local-selector} {
+		@at-root #{$selector} {
 			@content($type);
 		}
 	}
 }
-
 
 @mixin connotation {
 	$mapping-shades: functions.pick-map(config.$connotations-set, variables.$connotation-mapping);

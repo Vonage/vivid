@@ -1,122 +1,111 @@
+$spacing: 16px;
+
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
-@use '@vonage/vvd-foundation/scss/mixins/connotation/variables' as connotation-variables;
-@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation with(
+@use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
 	$connotations-set: success alert warning info announcement,
 	$default: announcement,
-	$selector: ':host(#{connotation-variables.$compound-placeholder}) .vvd-snackbar'
 );
+@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
 
-@include connotation.connotation;
+.mdc-snackbar {
+	@include connotation.connotation;
 
-:host {
-	@include typography.typography-cat-shorthand('caption');
-
-	.mdc-snackbar {
-		&[position^=TOP] {
-			top: 0;
-			bottom: initial;
-		}
-
-		&[position$=START] {
-			justify-content: flex-start;
-		}
-
-		&[position$=END] {
-			justify-content: flex-end;
-		}
+	&[position^=TOP] {
+		top: 0;
+		bottom: initial;
 	}
 
-	.mdc-snackbar__surface {
-		overflow: hidden;
-		padding: 0;
-		background: none;
-		border-radius: 6px;
-		box-shadow: 0 6px 8px rgba(0, 0, 0, 0.05), 0 12px 16px rgba(0, 0, 0, 0.05), 0 4px 24px rgba(0, 0, 0, 0.1);
+	&[position$=START] {
+		justify-content: flex-start;
+	}
+
+	&[position$=END] {
+		justify-content: flex-end;
 	}
 }
 
-.vwc-note {
-	#{connotation.$vvd-color-connotation}: inherit;
+.mdc-snackbar__surface {
+	padding-right: initial;
+	background-color: var(#{scheme-variables.$vvd-color-canvas});
+	border-radius: 6px;
+	box-shadow: 0 6px 8px rgba(0, 0, 0, 0.05), 0 12px 16px rgba(0, 0, 0, 0.05), 0 4px 24px rgba(0, 0, 0, 0.1);
 }
-// default flavor
-:host(:not([legacy])) {
-	.vvd-snackbar {
-		display: flex;
-		flex: 1;
-		background-color: var(#{scheme-variables.$vvd-color-canvas});
+
+.mdc-snackbar__label {
+	@include typography.typography-cat-shorthand('body-2');
+	padding: 22px $spacing;
+	color: var(#{scheme-variables.$vvd-color-on-canvas});
+	-webkit-font-smoothing: initial;
+	-moz-osx-font-smoothing: initial;
+}
+
+.icon {
+	margin-block-end: auto;
+	margin-block-start: 20px;
+	margin-inline-start: $spacing;
+	.vwc-snackbar-legacy & {
+		#{connotation.$vvd-color-connotation}: initial;
 		color: var(#{scheme-variables.$vvd-color-on-canvas});
 	}
+}
 
-	.vwc-note {
-		flex: 1;
-		align-self: center;
-		padding: 16px;
-		border: 0;
-		box-shadow: none;
-	}
-	::part(icon) {
-		color: var(#{connotation.$vvd-color-connotation});
-	}
+.dismiss-container {
+	display: flex;
+	align-items: center;
+	align-self: stretch;
+	margin-inline-end: $spacing;
 
-	.actions-container {
-		display: flex;
-		padding: 16px 0;
-	}
-
-	.action-container {
-		display: flex;
-		flex: 1 0 auto;
-		align-items: center;
-	}
-
-	.action-container ::slotted(*) {
-		margin-inline-end: 16px;
-	}
-
-	.dismiss-container {
-		display: flex;
-		align-items: center;
+	&::before {
 		align-self: stretch;
-		margin-inline-end: 16px;
+		border-left: 1px solid var(#{scheme-variables.$vvd-color-neutral-30});
+		content: '';
+		margin-inline-end: $spacing;
+	}
+}
 
+::slotted([slot='action']) {
+	.vwc-snackbar-legacy & {
+		margin-block-start: $spacing;
+	}
+}
+
+::slotted([slot='action']:last-child) {
+	:not(.vwc-snackbar-legacy) & {
+		margin-inline-end: $spacing;
+	}
+}
+
+// TODO depreacte on the 1st chance
+.vwc-snackbar-legacy {
+	.mdc-snackbar__surface {
+		padding-inline-start: 8px;
 		&::before {
-			align-self: stretch;
-			border-left: 1px solid var(#{scheme-variables.$vvd-color-neutral-30});
-			content: ' ';
-			margin-inline-end: 16px;
+			border: 1px solid var(#{scheme-variables.$vvd-color-neutral-40});
+			border-inline-start: 8px solid var(#{connotation.$vvd-color-connotation});
 		}
 	}
 }
 
-//	legacy flavor
-:host([legacy]) {
-	.vvd-snackbar {
-		width: 100%;
+.vwc-snackbar-legacy .header-and-label {
+	padding: 22px $spacing;
+
+	> .heading {
+		@include typography.typography-cat-shorthand('body-2-bold');
+		color: var(#{scheme-variables.$vvd-color-on-canvas});
+		margin-block-end: 4px;
+		margin-block-start: 0;
 	}
-
-	.snackbar-content {
-		display: flex;
-		flex-direction: row;
-		align-items: flex-start;
-		justify-content: space-between;
+	> .mdc-snackbar__label {
+		padding: 0;
 	}
+}
 
-	.action-container {
-		display: flex;
-
-		::slotted(*) {
-			margin-block-start: 16px;
-		}
-	}
-
-	.dismiss-container .dismiss-button {
-		transform: translate(4px, -4px);
-	}
-
-	[header] {
-		.dismiss-container .dismiss-button {
-			transform: translate(4px, -28px);
-		}
+.vwc-snackbar-legacy  .mdc-snackbar__actions {
+	align-items: baseline;
+	margin-block-end: auto;
+	margin-block-start: 20px;
+	.dismiss-container::before {
+		content: initial;
 	}
 }

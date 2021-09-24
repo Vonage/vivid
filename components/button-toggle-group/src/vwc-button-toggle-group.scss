@@ -7,6 +7,7 @@ $scopes: button icon-button;
 $toggle-buttons-type-selectors: selector.append('vwc-', list.join($scopes, '', $separator: comma));
 
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
+@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
 @use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
 	$variable-name: #{$vvd-toggle-button-group-shape}
 );
@@ -34,13 +35,13 @@ $sizes: (
 
 @each $scope in $scopes {
 	::slotted(vwc-#{$scope}) {
-		--vvd-#{$scope}-layout--fill: var(#{scheme-variables.$vvd-color-neutral-30});
-		--vvd-#{$scope}-layout--text: var(#{scheme-variables.$vvd-color-on-canvas});
+		--vvd-#{$scope}-color: var(#{scheme-variables.$vvd-color-neutral-30});
+		--vvd-#{$scope}-on-color: var(#{scheme-variables.$vvd-color-on-canvas});
 		--vvd-#{$scope}-shape: var(#{$vvd-toggle-button-group-shape});
 	}
 
 	::slotted(vwc-#{$scope}[selected]) {
-		--vvd-#{$scope}-layout--fill: var(#{scheme-variables.$vvd-color-neutral-50});
+		--vvd-#{$scope}-color: var(#{scheme-variables.$vvd-color-neutral-50});
 	}
 
 	:host([accent]) {
@@ -59,12 +60,12 @@ $sizes: (
 		}
 
 		::slotted(vwc-#{$scope}[selected]) {
-			--vvd-#{$scope}-layout--fill: var(#{scheme-variables.$vvd-color-primary});
-			--vvd-#{$scope}-layout--text: var(#{scheme-variables.$vvd-color-on-primary});
+			--vvd-#{$scope}-color: var(#{scheme-variables.$vvd-color-primary});
+			--vvd-#{$scope}-on-color: var(#{scheme-variables.$vvd-color-on-primary});
 		}
 
 		::slotted(vwc-#{$scope}:hover:not([selected])) {
-			--vvd-#{$scope}-layout--fill: var(#{scheme-variables.$vvd-color-neutral-50});
+			// --vvd-#{$scope}-layout--fill: var(#{scheme-variables.$vvd-color-neutral-50});
 		}
 	}
 
@@ -77,7 +78,9 @@ $sizes: (
 	}
 
 	::slotted(vwc-#{$scope}:hover:not([selected])) {
-		--vvd-#{$scope}-layout--fill: var(#{scheme-variables.$vvd-color-neutral-40});
+		//! @yonatankra is this mandatory?
+		//! we are good with using ripple for elevation indication in other components
+		// --vvd-#{$scope}-layout--fill: var(#{scheme-variables.$vvd-color-neutral-40});
 	}
 
 	::slotted(vwc-#{$scope}:not(:first-child):not(:last-child)) {
@@ -105,8 +108,9 @@ $sizes: (
 	}
 
 	:host([disabled]) ::slotted(vwc-#{$scope}), :host([disabled][accent]) ::slotted(vwc-#{$scope}[selected]) {
-		--vvd-#{$scope}-layout--fill: var(#{scheme-variables.$vvd-color-neutral-30});
-		--vvd-#{$scope}-layout--text: var(#{scheme-variables.$vvd-color-neutral-50});
+		//! @yonatankra not sure the following variables are required
+		// --vvd-#{$scope}-layout--fill: var(#{scheme-variables.$vvd-color-neutral-30});
+		// --vvd-#{$scope}-layout--text: var(#{scheme-variables.$vvd-color-neutral-50});
 		pointer-events: none;
 	}
 

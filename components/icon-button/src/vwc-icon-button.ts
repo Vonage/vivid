@@ -1,9 +1,10 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
 import { customElement, property } from 'lit-element';
+import { ClassInfo, classMap } from 'lit-html/directives/class-map';
 import { IconButton as MWCIconButton } from '@material/mwc-icon-button';
 import { style as vwcButtonStyle } from './vwc-icon-button.css';
-import { style as mwcIconButtonStyle } from '@material/mwc-icon-button/mwc-icon-button-css.js';
+import { styles as mwcIconButtonStyles } from '@material/mwc-icon-button/mwc-icon-button.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 import { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
 import { handleMultipleDenseProps } from '@vonage/vvd-foundation/general-utils';
@@ -17,7 +18,7 @@ declare global {
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-MWCIconButton.styles = [styleCoupling, mwcIconButtonStyle, vwcButtonStyle];
+MWCIconButton.styles = [styleCoupling, mwcIconButtonStyles, vwcButtonStyle];
 
 type IconButtonLayout = Extract<
 	Layout,
@@ -60,9 +61,16 @@ export class VWCIconButton extends MWCIconButton {
 		handleMultipleDenseProps(this, changes);
 	}
 
+	protected getRenderClasses(): ClassInfo {
+		return {
+			[`connotation-${this.connotation}`]: !!this.connotation,
+			[`layout-${this.layout}`]: !!this.layout
+		};
+	}
+
 	protected render(): TemplateResult {
 		return html`<button
-			class="mdc-icon-button"
+			class="mdc-icon-button ${classMap(this.getRenderClasses())}"
 			aria-label="${this.ariaLabel || this.icon}"
 			?disabled="${this.disabled}"
 			@focus="${this.handleRippleFocus}"
