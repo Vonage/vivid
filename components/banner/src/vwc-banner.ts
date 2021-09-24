@@ -64,7 +64,7 @@ export class VWCBanner extends LitElement {
 		this.open = false;
 	}
 
-	#transitionTimer?:number;
+	#transitionTimer?: NodeJS.Timeout;
 
 	protected firstUpdated() {
 		// refactor to query decorator
@@ -73,7 +73,7 @@ export class VWCBanner extends LitElement {
 
 	updated(changedProperties:PropertyValues) {
 		if (changedProperties.has('open')) {
-			clearTimeout(this.#transitionTimer);
+			this.#transitionTimer && clearTimeout(this.#transitionTimer);
 			this.dispatchEvent(createCustomEvent(!this.open ? 'closing' : 'opening'));
 			this.#transitionTimer = setTimeout(() => {
 				this.dispatchEvent(createCustomEvent(this.open ? 'opened' : 'closed'));

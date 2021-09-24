@@ -6,8 +6,8 @@ import {
 	customElement,
 	property,
 	html,
-	TemplateResult,
 	PropertyValues,
+	nothing,
 } from 'lit-element';
 import { Select as MWCSelect } from '@material/mwc-select';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
@@ -45,9 +45,6 @@ export class VWCSelect extends MWCSelect {
 	@property({ type: String, reflect: true })
 	form: string | undefined;
 
-	@property({ type: String, reflect: true })
-	name: string | undefined;
-
 	connectedCallback(): void {
 		super.connectedCallback();
 		if (!this.hasAttribute('outlined')) {
@@ -80,9 +77,9 @@ export class VWCSelect extends MWCSelect {
 		}
 	}
 
-	protected renderHelperText(): TemplateResult | string {
+	protected override renderHelperText() {
 		if (!this.shouldRenderHelperText) {
-			return '';
+			return nothing;
 		}
 
 		const isError = this.validationMessage && !this.isUiValid;
@@ -97,16 +94,16 @@ export class VWCSelect extends MWCSelect {
 		>`;
 	}
 
-	protected renderLeadingIcon(): TemplateResult | string {
+	protected override renderLeadingIcon() {
 		if (!this.icon) {
-			return '';
+			return nothing;
 		}
 		return html`<vwc-icon class="vvd-select-icon" type="${this.icon}"></vwc-icon>`;
 	}
 
-	protected renderOutline(): TemplateResult | Record<string, unknown> {
+	protected override renderOutline() {
 		if (!this.outlined) {
-			return {};
+			return nothing;
 		}
 
 		return html`<vwc-notched-outline class="mdc-notched-outline vvd-notch">

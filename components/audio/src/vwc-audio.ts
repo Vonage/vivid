@@ -16,7 +16,7 @@ import {
 } from 'lit-element';
 
 import { nothing } from 'lit-html';
-import { internalProperty, property, query } from 'lit-element/lib/decorators';
+import { state, property, query } from 'lit-element';
 import { Connotation } from '@vonage/vvd-foundation/constants';
 
 const SECOND = 1;
@@ -77,16 +77,16 @@ export class VWCAudio extends LitElement {
 	@property({ type: Boolean, reflect: true })
 	timestamp = false;
 
-	@internalProperty()
+	@state()
 	private _duration = 0;
 
-	@internalProperty()
+	@state()
 	private _isPlaying = false;
 
-	@internalProperty()
+	@state()
 	private _loading = true;
 
-	@internalProperty()
+	@state()
 	private _playheadPosition = 0;
 
 	protected firstUpdated(_changedProperties: PropertyValues):void {
