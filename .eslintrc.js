@@ -5,6 +5,8 @@ module.exports = {
 	},
 	extends: [
 		'@open-wc/eslint-config',
+		'plugin:import/recommended',
+		'plugin:import/typescript',
 		'plugin:@typescript-eslint/eslint-recommended',
 		'plugin:@typescript-eslint/recommended',
 		'plugin:wc/recommended',
@@ -33,20 +35,19 @@ module.exports = {
 		'linebreak-style': ['error', 'unix'],
 		semi: ['error', 'always'],
 		'no-use-before-define': 'off', //! should remove after PR merge
-		'import/no-extraneous-dependencies': 'off', //! should remove after PR merge
 		'object-shorthand': 'off', //! should remove after PR merge
+		'import/no-extraneous-dependencies': 'off', //! should remove after PR merge
 		'import/order': 'off', //! should remove after PR merge
 		'import/newline-after-import': 'off', //! should remove after PR merge
 		'import/no-unresolved': 'off', //! should remove after PR merge
 		'import/no-named-default': 'off', //! should remove after PR merge
+		'import/no-duplicates': 'off', //! should remove after PR merge
 		'one-var': 'off', //! should remove after PR merge
 		'prefer-arrow-callback': 'off', //! should remove after PR merge
 		'func-names': 'off', //! should remove after PR merge
-		'import/extensions': 'off', //! should remove after PR merge
 		'spaced-comment': 'off', //! should remove after PR merge
 		'prefer-destructuring': 'off', //! should remove after PR merge
 		'arrow-body-style': 'off', //! should remove after PR merge
-		'import/no-duplicates': 'off', //! should remove after PR merge
 		'prefer-promise-reject-errors': 'off', //! should remove after PR merge
 		'no-console': 'off', //! should remove after PR merge
 		'no-param-reassign': 'off', //! should remove after PR merge
