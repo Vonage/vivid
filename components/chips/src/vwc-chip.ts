@@ -1,6 +1,6 @@
 import '@vonage/vvd-core';
 import { customElement, html } from 'lit-element';
-import { Chip as MWCChip } from './mwc-chips/mwc-chip';
+import { Chip as MWCChip } from './mwc-chips/mwc-chip.js';
 import { style as vwcChipStyle } from './vwc-chip.css';
 import { style as mwcChipStyle } from './mwc-chips/mwc-chip.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';

@@ -13,8 +13,8 @@ import {
 	assertIsValidDateStringRepresentation,
 	getValidDateString,
 	getFirstDateOfTheWeek
-} from './vwc-calendar-date-functions';
-import { VWCCalendarEvent } from './vwc-calendar-event';
+} from './vwc-calendar-date-functions.js';
+import { VWCCalendarEvent } from './vwc-calendar-event.js';
 import {
 	ARROW_DOWN,
 	ARROW_LEFT,
