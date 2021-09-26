@@ -2,8 +2,8 @@ import { COMPONENT_NAME } from '@vonage/vwc-snackbar';
 import '@vonage/vwc-button';
 import {
 	textToDomToParent,
+	isolatedElementsCreation
 } from '../../../test/test-helpers.js';
-import { isolatedElementsCreation } from '../../../test/test-helpers.js';
 import { openSnackbar, assertEventWithReason, getEventPromise } from './snackbar-utils.test.js';
 
 describe('snackbar API', () => {

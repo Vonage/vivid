@@ -4,6 +4,9 @@ import {
 	textToDomToParent,
 	assertDistancePixels,
 	assertComputedStyle,
+
+	isolatedElementsCreation,
+	randomAlpha,
 } from '../../../test/test-helpers.js';
 import {
 	sizingTestCases,
@@ -12,10 +15,6 @@ import {
 } from '../../../test/shared.js';
 import { connotationTestCases } from './button.connotation.test.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
-import {
-	isolatedElementsCreation,
-	randomAlpha,
-} from '../../../test/test-helpers.js';
 
 chai.use(chaiDomDiff);
 

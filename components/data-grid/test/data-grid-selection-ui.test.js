@@ -3,8 +3,8 @@ import { getColumns, getItems } from './helper-utils.test.js';
 import {
 	waitNextTask,
 	textToDomToParent,
+	isolatedElementsCreation
 } from '../../../test/test-helpers.js';
-import { isolatedElementsCreation } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);

@@ -3,8 +3,8 @@ import { getColumns, getItems } from './helper-utils.test.js';
 import {
 	waitNextTask,
 	textToDomToParent,
+	isolatedElementsCreation
 } from '../../../test/test-helpers.js';
-import { isolatedElementsCreation } from '../../../test/test-helpers.js';
 
 const COMPONENT_NAME = 'vwc-data-grid';
 

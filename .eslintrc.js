@@ -41,7 +41,6 @@ module.exports = {
 		'import/newline-after-import': 'off', //! should remove after PR merge
 		'import/no-unresolved': 'off', //! should remove after PR merge
 		'import/no-named-default': 'off', //! should remove after PR merge
-		'import/no-duplicates': 'off', //! should remove after PR merge
 		'one-var': 'off', //! should remove after PR merge
 		'prefer-arrow-callback': 'off', //! should remove after PR merge
 		'func-names': 'off', //! should remove after PR merge
