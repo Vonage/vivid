@@ -5,7 +5,7 @@ import {
 	assertDistancePixels,
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
-import { isolatedElementsCreation } from '../../../test/test-helpers';
+import { isolatedElementsCreation } from '../../../test/test-helpers.js';
 
 chai.use(chaiDomDiff);
 

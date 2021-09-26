@@ -1,9 +1,9 @@
 import { GRID_COMPONENT as COMPONENT_NAME } from '@vonage/vwc-data-grid';
-import { getColumns, getItems } from './helper-utils.test';
+import { getColumns, getItems } from './helper-utils.test.js';
 import {
 	textToDomToParent,
 } from '../../../test/test-helpers.js';
-import { isolatedElementsCreation } from '../../../test/test-helpers';
+import { isolatedElementsCreation } from '../../../test/test-helpers.js';
 
 const
 	DATA_AS_ITEMS = true,

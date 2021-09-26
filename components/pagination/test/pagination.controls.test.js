@@ -3,7 +3,7 @@ import {
 	waitNextTask,
 	textToDomToParent,
 } from '../../../test/test-helpers.js';
-import { isolatedElementsCreation } from '../../../test/test-helpers';
+import { isolatedElementsCreation } from '../../../test/test-helpers.js';
 
 describe('pagination controls', () => {
 	let addElement = isolatedElementsCreation();

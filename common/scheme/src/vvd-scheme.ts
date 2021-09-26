@@ -1,4 +1,4 @@
-import { applySchemeCSS } from './vvd-scheme-style-tag-handler';
+import { applySchemeCSS } from './vvd-scheme-style-tag-handler.js';
 import {
 	pcs,
 	getPreferedColorScheme,
@@ -9,7 +9,7 @@ import {
 	PredefinedScheme,
 	AutoScheme,
 	SchemeOption,
-} from './vvd-scheme-foundation';
+} from './vvd-scheme-foundation.js';
 import { Emitter } from '@vonage/vvd-foundation/general-utils';
 
 export {
@@ -17,7 +17,7 @@ export {
 	PredefinedScheme,
 	AutoScheme,
 	SchemeOption,
-} from './vvd-scheme-foundation';
+} from './vvd-scheme-foundation.js';
 
 const eventBus = new Emitter(); // !refactored due to lack of support of EventTarget as a constructor (new EventTarget()) in safari 12
 

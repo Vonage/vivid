@@ -3,8 +3,8 @@ import '@vonage/vwc-button';
 import {
 	textToDomToParent,
 } from '../../../test/test-helpers.js';
-import { isolatedElementsCreation } from '../../../test/test-helpers';
-import { openSnackbar, assertEventWithReason, getEventPromise } from './snackbar-utils.test';
+import { isolatedElementsCreation } from '../../../test/test-helpers.js';
+import { openSnackbar, assertEventWithReason, getEventPromise } from './snackbar-utils.test.js';
 
 describe('snackbar events', () => {
 	let addElement = isolatedElementsCreation();

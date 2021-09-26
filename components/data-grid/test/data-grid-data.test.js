@@ -1,12 +1,12 @@
 import '@vonage/vwc-data-grid';
-import { getColumns, getItems } from './helper-utils.test';
+import { getColumns, getItems } from './helper-utils.test.js';
 import {
 	waitNextTask,
 	waitInterval,
 	textToDomToParent,
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
-import { isolatedElementsCreation } from '../../../test/test-helpers';
+import { isolatedElementsCreation } from '../../../test/test-helpers.js';
 
 chai.use(chaiDomDiff);
 

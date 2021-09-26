@@ -9,10 +9,10 @@ import {
 	sizingTestCases,
 	shapeRoundedTestCases,
 	shapeCircledTestCases,
-} from '../../../test/shared';
+} from '../../../test/shared.js';
 import { connotationTestCases } from '../../button/test/button.connotation.test.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
-import { isolatedElementsCreation } from '../../../test/test-helpers';
+import { isolatedElementsCreation } from '../../../test/test-helpers.js';
 
 chai.use(chaiDomDiff);
 

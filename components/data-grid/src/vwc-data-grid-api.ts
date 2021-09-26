@@ -1,5 +1,5 @@
-import { DataGridColumn } from './vwc-data-grid-column-api';
-import { RowDetailsRenderer } from './vwc-data-grid-renderer-api';
+import { DataGridColumn } from './vwc-data-grid-column-api.js';
+import { RowDetailsRenderer } from './vwc-data-grid-renderer-api.js';
 
 export {
 	GRID_COMPONENT,

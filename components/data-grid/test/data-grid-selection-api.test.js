@@ -1,10 +1,10 @@
 import '@vonage/vwc-data-grid';
-import { getColumns, getItems } from './helper-utils.test';
+import { getColumns, getItems } from './helper-utils.test.js';
 import {
 	waitNextTask,
 	textToDomToParent,
 } from '../../../test/test-helpers.js';
-import { isolatedElementsCreation } from '../../../test/test-helpers';
+import { isolatedElementsCreation } from '../../../test/test-helpers.js';
 
 const COMPONENT_NAME = 'vwc-data-grid';
 

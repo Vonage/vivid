@@ -1,6 +1,6 @@
-import { DataGrid } from '../vwc-data-grid-api';
-import { DataGridColumn } from '../vwc-data-grid-column-api';
-import { MetaRenderer, DataRenderer, RowDetailsRenderer } from '../vwc-data-grid-renderer-api';
+import { DataGrid } from '../vwc-data-grid-api.js';
+import { DataGridColumn } from '../vwc-data-grid-column-api.js';
+import { MetaRenderer, DataRenderer, RowDetailsRenderer } from '../vwc-data-grid-renderer-api.js';
 
 export {
 	MetaRendererProvider,
