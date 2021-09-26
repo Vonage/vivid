@@ -13,15 +13,19 @@ chai.use(chaiDomDiff);
 const COMPONENT_NAME = 'vwc-data-grid';
 
 describe('data grid data API', () => {
-	let addElement = isolatedElementsCreation();
+	const addElement = isolatedElementsCreation();
+	const getRenderedElement = async () => {
+		const [el] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+		);
+		await el.updateComplete;
+		return el;
+	};
 
 	//	items
 	//
 	it('should have items as data provider', async () => {
-		const [g] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-		);
-		await waitNextTask();
+		const g = await getRenderedElement();
 		g.columns = getColumns();
 		g.items = getItems(3);
 
@@ -30,10 +34,7 @@ describe('data grid data API', () => {
 	});
 
 	it('should update items on reassign the whole array', async () => {
-		const [g] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-		);
-		await waitNextTask();
+		const g = await getRenderedElement();
 		g.columns = getColumns();
 		g.items = getItems(3);
 
@@ -43,10 +44,7 @@ describe('data grid data API', () => {
 	});
 
 	it('should update items internal change by refreshData', async () => {
-		const [g] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-		);
-		await waitNextTask();
+		const g = await getRenderedElement();
 		g.columns = getColumns();
 		g.items = getItems(3);
 
@@ -63,10 +61,7 @@ describe('data grid data API', () => {
 	//	dataProvider
 	//
 	it('should have dataProvider as data provider', async () => {
-		const [g] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-		);
-		await waitNextTask();
+		const g = await getRenderedElement();
 		g.columns = getColumns();
 		const d = getItems(3);
 		g.dataProvider = (_params, cb) => cb(d, d.length);
@@ -76,10 +71,7 @@ describe('data grid data API', () => {
 	});
 
 	it('should update dataProvider on reassign it as a new function', async () => {
-		const [g] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-		);
-		await waitNextTask();
+		const g = await getRenderedElement();
 		g.columns = getColumns();
 		const d = getItems(3);
 		g.dataProvider = (_params, cb) => cb(d, d.length);
@@ -90,10 +82,7 @@ describe('data grid data API', () => {
 	});
 
 	it('should update dataProvider internal change by refreshData', async () => {
-		const [g] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-		);
-		await waitNextTask();
+		const g = await getRenderedElement();
 		g.columns = getColumns();
 		const d = getItems(3);
 		g.dataProvider = (_params, cb) => cb(d, d.length);
