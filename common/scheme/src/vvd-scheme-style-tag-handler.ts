@@ -1,5 +1,5 @@
 import { CSSResult } from 'lit-element';
-import { PredefinedScheme } from './vvd-scheme-foundation';
+import { PredefinedScheme } from './vvd-scheme-foundation.js';
 
 type ModuleType =
 	| typeof import('./scheme.dark.css')
