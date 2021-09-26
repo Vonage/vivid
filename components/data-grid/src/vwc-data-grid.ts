@@ -1,5 +1,5 @@
 import '@vonage/vvd-core';
-import './vwc-data-grid-column.js';
+// import './vwc-data-grid-column.js';
 import {
 	GRID_COMPONENT,
 	GRID_ENGINE_ROOT_CLASS,

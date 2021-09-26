@@ -1,12 +1,11 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
 import {
-	customElement, property, LitElement, CSSResult
+	customElement, property, LitElement, CSSResult, html, TemplateResult
 } from 'lit-element';
 import { ClassInfo, classMap } from 'lit-html/directives/class-map';
 import { style as vwcNoteStyle } from './vwc-note.css';
 import { Connotation } from '@vonage/vvd-foundation/constants';
-import { html, TemplateResult } from 'lit-element';
 
 declare global {
 	interface HTMLElementTagNameMap {

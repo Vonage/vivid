@@ -1,12 +1,11 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
-import '@material/mwc-ripple';
+// import '@material/mwc-ripple';
 import { Ripple } from '@material/mwc-ripple';
 import {
-	customElement, property, LitElement, CSSResult, PropertyValues
+	customElement, property, LitElement, CSSResult, PropertyValues, html, TemplateResult
 } from 'lit-element';
 import { style } from './vwc-pagination.css';
-import { html, TemplateResult } from 'lit-element';
 
 export const COMPONENT_NAME = 'vwc-pagination';
 export const PREV_DISABLED_ATTR_NAME = 'prev-disabled';

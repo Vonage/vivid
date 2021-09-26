@@ -1,4 +1,4 @@
-import '@vaadin/vaadin-grid/vaadin-grid';
+// import '@vaadin/vaadin-grid/vaadin-grid';
 import '@vaadin/vaadin-grid/vaadin-grid-column';
 import '@vaadin/vaadin-grid/vaadin-grid-tree-column';
 import { GridColumnElement, GridElement, GridEventContext } from '@vaadin/vaadin-grid/vaadin-grid';

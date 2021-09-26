@@ -1,6 +1,6 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-surface';
-import '@vonage/vwc-list';
+// import '@vonage/vwc-list';
 import { MenuBase as MWCMenuBase } from '@material/mwc-menu/mwc-menu-base';
 import { MDCMenuAdapter } from '@material/menu';
 import { customElement, html } from 'lit-element';

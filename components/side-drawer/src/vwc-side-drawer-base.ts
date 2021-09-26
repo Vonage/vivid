@@ -1,4 +1,4 @@
-import 'blocking-elements';
+// import 'blocking-elements';
 import 'wicg-inert';
 
 import {
