@@ -1,6 +1,8 @@
 import '@vonage/vwc-side-drawer';
 import '@vonage/vwc-top-app-bar';
 import '@vonage/vwc-top-app-bar-fixed';
+import '@vonage/vwc-icon';
+
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 
@@ -75,9 +77,14 @@ const WithTopAppBarTemplate = args => html`
 export const WithTopAppBar = WithTopAppBarTemplate.bind({});
 WithTopAppBar.args = { };
 
+const Masthead = () => html`
+	<vwc-icon type="vonage-solid"></vwc-icon>
+	App Title
+`;
+
 const WithTopAppBarFixedTemplate = args => html`
 	<vwc-side-drawer alternate hastopbar ...=${spread(args)}>
-			<span slot="top-bar">Side drawer top bar</span>
+			<span slot="top-bar">${Masthead()}</span>
 			Should top bar font face differ from body?
 			${content()}
 
