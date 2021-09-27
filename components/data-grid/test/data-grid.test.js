@@ -1,5 +1,5 @@
 import '@vonage/vwc-data-grid';
-import { getColumns } from './helper-utils.test.js';
+import { getColumns } from './helper-utils.test';
 import {
 	waitNextTask,
 	waitInterval,

@@ -4,7 +4,7 @@ import {
 	isolatedElementsCreation,
 	textToDomToParent
 } from '../../../test/test-helpers.js';
-import { getColumns, getItems } from './helper-utils.test.js';
+import { getColumns, getItems } from './helper-utils.test';
 import { chaiA11yAxe } from 'chai-a11y-axe';
 
 chai.use(chaiA11yAxe);

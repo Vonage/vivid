@@ -1,5 +1,5 @@
 import { TemplateResult } from 'lit-element';
-import { EventContext } from '../vwc-data-grid-api.js';
+import { EventContext } from '../vwc-data-grid-api';
 
 export {
 	DataGridAdapter

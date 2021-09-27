@@ -4,7 +4,7 @@ import {
 	SELECTOR_SINGLE,
 	SELECTOR_MULTI,
 	DataGridColumn
-} from './vwc-data-grid-column-api.js';
+} from './vwc-data-grid-column-api';
 import {
 	customElement,
 	property,
