@@ -8,7 +8,6 @@ import { styles as mwcButtonStyles } from '@material/mwc-button/styles.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 import { Connotation, Layout, Shape } from '@vonage/vvd-foundation/constants';
 import { html, TemplateResult } from 'lit-element';
-import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -127,7 +126,7 @@ export class VWCButton extends MWCButton {
 			case 'button':
 				break;
 			default:
-				requestSubmit(this.form);
+				this.#_hiddenButton.click();
 				break;
 			}
 		}
