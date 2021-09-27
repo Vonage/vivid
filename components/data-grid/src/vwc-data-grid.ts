@@ -1,7 +1,5 @@
 import '@vonage/vvd-core';
-import {
-	VWCDataGridColumn
-} from './vwc-data-grid-column';
+import './vwc-data-grid-column';
 import {
 	GRID_COMPONENT,
 	GRID_ENGINE_ROOT_CLASS,
@@ -15,6 +13,9 @@ import {
 	DataGridColumn,
 } from './vwc-data-grid-column-api';
 import { RowDetailsRenderer } from './vwc-data-grid-renderer-api';
+import {
+	VWCDataGridColumn
+} from './vwc-data-grid-column';
 import { VWCDataGridAdapterVaadin } from './adapters/vaadin/vwc-data-grid-adapter-vaadin';
 import { style as vwcDataGridStyle } from './vwc-data-grid.css';
 import {

@@ -1,6 +1,7 @@
-import { GridColumnElement, GridElement, GridEventContext } from '@vaadin/vaadin-grid/vaadin-grid';
+import '@vaadin/vaadin-grid/vaadin-grid';
 import '@vaadin/vaadin-grid/vaadin-grid-column';
 import '@vaadin/vaadin-grid/vaadin-grid-tree-column';
+import { GridColumnElement, GridElement, GridEventContext } from '@vaadin/vaadin-grid/vaadin-grid';
 import '../../headers/vwc-data-grid-header';
 import {
 	DataGrid, EventContext, GRID_COMPONENT, GRID_ENGINE_ROOT_CLASS
