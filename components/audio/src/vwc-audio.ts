@@ -17,7 +17,7 @@ import {
 
 import { nothing } from 'lit-html';
 import { internalProperty, property, query } from 'lit-element/lib/decorators';
-import { Connotation } from '@vonage/vvd-foundation/constants';
+import type { Connotation } from '@vonage/vvd-foundation/constants';
 
 const SECOND = 1;
 const MINUTE = 60 * SECOND;

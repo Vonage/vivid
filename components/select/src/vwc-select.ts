@@ -14,7 +14,7 @@ import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupl
 import { style as vwcSelectStyle } from './vwc-select.css';
 import { styles as mwcSelectStyles } from '@material/mwc-select/mwc-select.css.js';
 import { associateWithForm } from '@vonage/vvd-foundation/form-association';
-import { Shape } from '@vonage/vvd-foundation/constants';
+import type { Shape } from '@vonage/vvd-foundation/constants';
 import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
 
 declare global {

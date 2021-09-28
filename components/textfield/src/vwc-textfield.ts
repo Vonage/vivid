@@ -19,7 +19,7 @@ import { TextField as MWCTextField } from '@material/mwc-textfield';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 import { style as vwcTextFieldStyle } from './vwc-textfield.css';
 import { styles as mwcTextFieldStyles } from '@material/mwc-textfield/mwc-textfield.css.js';
-import { Shape } from '@vonage/vvd-foundation/constants';
+import type { Shape } from '@vonage/vvd-foundation/constants';
 import { debounced, handleAutofocus } from '@vonage/vvd-foundation/general-utils';
 
 export { TextFieldType } from '@material/mwc-textfield';
