@@ -1,5 +1,5 @@
-import { IconSize, Connotation } from '@vonage/vvd-foundation/constants';
 import '@vonage/vvd-core';
+import type { IconSize, Connotation } from '@vonage/vvd-foundation/constants';
 import {
 	LitElement,	html,	property,	customElement,	CSSResult,	TemplateResult,
 } from 'lit-element';
