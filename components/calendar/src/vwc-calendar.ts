@@ -6,7 +6,7 @@ import {
 	property,
 	TemplateResult
 } from 'lit-element';
-import { DirectiveFn } from 'lit-html';
+import type { DirectiveFn } from 'lit-html';
 import { repeat } from 'lit-html/directives/repeat';
 import { style } from './vwc-calendar.css';
 import {
@@ -14,7 +14,7 @@ import {
 	getValidDateString,
 	getFirstDateOfTheWeek
 } from './vwc-calendar-date-functions.js';
-import { VWCCalendarEvent } from './vwc-calendar-event.js';
+import type { VWCCalendarEvent } from './vwc-calendar-event.js';
 import {
 	ARROW_DOWN,
 	ARROW_LEFT,

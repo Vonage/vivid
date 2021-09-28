@@ -1,4 +1,4 @@
-import { CSSResult } from 'lit-element';
+import type { CSSResult } from 'lit-element';
 import { PredefinedScheme } from './vvd-scheme-foundation.js';
 
 type ModuleType =

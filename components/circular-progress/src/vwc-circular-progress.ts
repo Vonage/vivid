@@ -5,7 +5,7 @@ import { CircularProgress as MWCCircularProgress } from '@material/mwc-circular-
 import { styles as mwcCircularProgressStyles } from '@material/mwc-circular-progress/mwc-circular-progress.css.js';
 import { style as vwcCircularProgressStyle } from './vwc-circular-progress.css';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
-import { Connotation } from '@vonage/vvd-foundation/constants';
+import type { Connotation } from '@vonage/vvd-foundation/constants';
 
 declare global {
 	interface HTMLElementTagNameMap {
