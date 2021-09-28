@@ -1,5 +1,5 @@
 import '@vonage/vvd-core';
-import '@vonage/vwc-icon';
+// import '@vonage/vwc-icon';
 import {
 	customElement, property, html, TemplateResult
 } from 'lit-element';
