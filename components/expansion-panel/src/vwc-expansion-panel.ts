@@ -9,7 +9,7 @@ import {
 	TemplateResult
 } from 'lit-element';
 // import '@material/mwc-ripple/mwc-ripple';
-import { Ripple } from '@material/mwc-ripple/mwc-ripple';
+import type { Ripple } from '@material/mwc-ripple/mwc-ripple';
 import { RippleHandlers } from '@material/mwc-ripple/ripple-handlers';
 import { VWCExpansionPanelBase } from './vwc-expansion-panel-base.js';
 import { style } from './vwc-expansion-panel.css.js';
