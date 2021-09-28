@@ -10,7 +10,7 @@ import { IconButtonToggleBase } from '@material/mwc-icon-button-toggle/mwc-icon-
 import { styles as MWCIconButtonStyles } from '@material/mwc-icon-button/mwc-icon-button.css.js';
 import { style as VWCIconButtonStyle } from '@vonage/vwc-icon-button/vwc-icon-button.css.js';
 import { handleMultipleDenseProps } from '@vonage/vvd-foundation/general-utils';
-import { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
+import type { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
 
 declare global {
 	interface HTMLElementTagNameMap {

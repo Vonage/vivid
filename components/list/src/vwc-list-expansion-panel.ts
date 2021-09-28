@@ -1,4 +1,4 @@
-import { VWCIcon } from '@vonage/vwc-icon';
+import type { VWCIcon } from '@vonage/vwc-icon';
 import {
 	customElement,
 	html,

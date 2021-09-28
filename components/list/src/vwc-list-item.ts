@@ -3,7 +3,7 @@ import { ListItem as MWCListItem } from '@material/mwc-list/mwc-list-item';
 import { style as vwcListItemStyle } from './vwc-list-item.css.js';
 import { styles as mwcListItemStyles } from '@material/mwc-list/mwc-list-item.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
-import { Connotation, Shape } from '@vonage/vvd-foundation/constants';
+import type { Connotation, Shape } from '@vonage/vvd-foundation/constants';
 
 declare global {
 	interface HTMLElementTagNameMap {
