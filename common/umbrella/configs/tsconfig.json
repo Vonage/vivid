@@ -30,14 +30,5 @@
 		// "esModuleInterop": true // would force consumers to enable this as well
 		"importsNotUsedAsValues": "error",
 		"removeComments": true,
-		"plugins": [
-			{
-				"name": "ts-lit-plugin",
-				"strict": true,
-				"rules": {
-					"no-missing-import": "error"
-				}
-			}
-		]
 	}
 }

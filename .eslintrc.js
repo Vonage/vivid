@@ -5,6 +5,7 @@ module.exports = {
 	},
 	extends: [
 		'@open-wc/eslint-config',
+		'plugin:wc/recommended',
 		'plugin:import/recommended',
 		'plugin:import/typescript',
 		'plugin:@typescript-eslint/eslint-recommended',
@@ -12,7 +13,6 @@ module.exports = {
 		'plugin:wc/recommended',
 		'@open-wc/eslint-config',
 		'plugin:compat/recommended',
-		'plugin:lit/recommended',
 		'plugin:lit-a11y/recommended',
 	],
 	parser: '@typescript-eslint/parser',
@@ -20,7 +20,13 @@ module.exports = {
 		ecmaVersion: 12,
 		sourceType: 'module',
 	},
-	plugins: ['@typescript-eslint', 'mocha', 'wc', 'no-only-tests', 'lit-a11y'],
+	plugins: [
+		'@typescript-eslint',
+		'mocha',
+		'wc',
+		'no-only-tests',
+		'lit-a11y'
+	],
 	settings: {
 		wc: {
 			elementBaseClasses: ['BaseElement', 'LitElement', 'FormElement'],
@@ -70,8 +76,6 @@ module.exports = {
 		'no-else-return': 'off', //! should remove after PR merge
 		'no-unused-vars': 'error',
 		'no-undef': 'off',
-		'lit/no-template-bind': 'off',
-		'lit/binding-positions': 'off',
 		'@typescript-eslint/no-extra-semi': 'off',
 		'@typescript-eslint/explicit-function-return-type': 'off',
 		'@typescript-eslint/indent': 'off',
