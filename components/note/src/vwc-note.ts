@@ -5,7 +5,7 @@ import {
 } from 'lit-element';
 import { ClassInfo, classMap } from 'lit-html/directives/class-map';
 import { style as vwcNoteStyle } from './vwc-note.css';
-import { Connotation } from '@vonage/vvd-foundation/constants';
+import type { Connotation } from '@vonage/vvd-foundation/constants';
 
 declare global {
 	interface HTMLElementTagNameMap {

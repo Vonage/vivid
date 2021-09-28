@@ -8,7 +8,7 @@ import { Button as MWCButton } from '@material/mwc-button';
 import { style as vwcButtonStyle } from './vwc-button.css';
 import { styles as mwcButtonStyles } from '@material/mwc-button/styles.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
-import { Connotation, Layout, Shape } from '@vonage/vvd-foundation/constants';
+import type { Connotation, Layout, Shape } from '@vonage/vvd-foundation/constants';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
 declare global {

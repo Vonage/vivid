@@ -1,7 +1,7 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
 // import '@material/mwc-ripple';
-import { Ripple } from '@material/mwc-ripple';
+import type { Ripple } from '@material/mwc-ripple';
 import {
 	customElement, property, LitElement, CSSResult, PropertyValues, html, TemplateResult
 } from 'lit-element';
