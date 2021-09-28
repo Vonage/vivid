@@ -28,7 +28,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	static styles = style;
 
 	/**
-	 * @deprecated use {@link VWCExpansionPanel.heading} instead
+	 * @deprecated use "heading" instead
 	 */
 	@property({ type: String, reflect: true })
 	header = '';
