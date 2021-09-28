@@ -2,11 +2,11 @@ import '@vonage/vvd-core';
 import '@vonage/vwc-surface';
 // import '@vonage/vwc-list';
 import { MenuBase as MWCMenuBase } from '@material/mwc-menu/mwc-menu-base';
-import { MDCMenuAdapter } from '@material/menu';
+import type { MDCMenuAdapter } from '@material/menu';
 import { customElement, html } from 'lit-element';
 import { styles as mwcMenuStyles } from '@material/mwc-menu/mwc-menu.css.js';
 import { style as vwcMenuStyle } from './vwc-menu.css';
-import { VWCList } from '@vonage/vwc-list';
+import type { VWCList } from '@vonage/vwc-list';
 
 declare global {
 	interface HTMLElementTagNameMap {
