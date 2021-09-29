@@ -100,3 +100,7 @@ const Template = args => html`
 
 export const Basic = Template.bind({});
 Basic.args = {};
+
+export const Block = Template.bind({});
+Block.args = { 'column-basis': 'block' };
+
