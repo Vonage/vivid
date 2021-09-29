@@ -38,7 +38,7 @@ export const LogIn = () => html`
   <vwc-side-drawer id="side-drawer" hasTopBar>
     <span slot="top-bar"><vwc-icon type="vonage-mono"></vwc-icon><vwc-text font-face="body-1-bold"> VONAGE</vwc-text></span>
     <form>
-      <vwc-inline size="block">
+      <vwc-inline column-basis="block">
         <section>
             <vwc-text font-face="title-2">Welcome back!</vwc-text>
         </section>
@@ -46,7 +46,7 @@ export const LogIn = () => html`
             <vwc-text font-face="body-2">Don't have an account? <a href="#">Sign Up</a></vwc-text>
         </section>
         <section>
-          <vwc-inline size="block">
+          <vwc-inline column-basis="block">
             <vwc-textfield name="username" label="username" icon="user" placeholder=" " outlined="">
               <input value="" slot="formInputElement" class="vivid-input-internal" name="username" type="text" placeholder=" "/>
             </vwc-textfield>
@@ -69,7 +69,7 @@ export const LogIn = () => html`
   </vwc-side-drawer>
 
   <main>
-      <vwc-inline id="content" size="block">
+      <vwc-inline id="content" column-basis="block">
           <section><vwc-text font-face="subtitle-1">Lorem ipsum</vwc-text></section>
           <section><vwc-text font-face="body-1">Lorem ipsum lorem ipsum lorem ipsum lorem ipsum</vwc-text></section>
           <section><vwc-button label="Apply Now →" layout="outlined" type="submit" outlined=""></vwc-button></section>
