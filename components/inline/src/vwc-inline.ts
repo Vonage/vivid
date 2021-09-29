@@ -15,7 +15,7 @@ export enum InlineTemplate {
 	Fill = 'fill',
 }
 
-type Gutters = Extract<Size, Size.x_Small | Size.Medium | Size.x_Large>;
+type InlineGutters = Extract<Size, Size.x_Small | Size.Medium | Size.x_Large>;
 type ColumnSpacing = Extract<Size, Size.x_Small | Size.Medium | Size.x_Large>;
 type ColumnBasis = Extract<Size, Size.Small | Size.Medium | Size.Large> | 'block';
 
@@ -27,8 +27,8 @@ export class Inline extends LitElement {
 	 * @prop inlineGutters - sets the initial preferred margin from predefined available options
 	 * @public
 	 * */
-	 @property({ type: String, reflect: true, attribute: 'inline-gutters' })
-	 inlineGutters: InlineGutters = Size.Medium;
+	@property({ type: String, reflect: true, attribute: 'inline-gutters' })
+	inlineGutters: InlineGutters = Size.Medium;
 
 	/**
 	 * @prop columnBasis - sets the initial preferred measure of a column from predefined available options
