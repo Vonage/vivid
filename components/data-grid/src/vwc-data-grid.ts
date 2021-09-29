@@ -1,7 +1,5 @@
 import '@vonage/vvd-core';
-import type {
-	VWCDataGridColumn
-} from './vwc-data-grid-column.js';
+import './vwc-data-grid-column.js';
 import {
 	GRID_COMPONENT,
 	GRID_ENGINE_ROOT_CLASS,
@@ -147,7 +145,7 @@ export class VWCDataGrid extends LitElement implements DataGrid {
 		//	transform
 		const columnDefs = [];
 		for (const ae of columnDefinitionElements) {
-			columnDefs.push((ae as VWCDataGridColumn).getColumnConfig());
+			columnDefs.push(ae.getColumnConfig());
 		}
 
 		//	apply
