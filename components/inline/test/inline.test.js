@@ -43,7 +43,7 @@ describe('inline', () => {
 			const assignedElements = div.firstElementChild.assignedElements();
 			const [childEl] = assignedElements;
 			await waitNextTask();
-			expect(childEl.clientWidth).to.equal(282);
+			expect(childEl.clientWidth).to.equal(270);
 		});
 		it(`should set template fill`, async () => {
 			const actualElement = getNewElement();
@@ -54,7 +54,7 @@ describe('inline', () => {
 			const assignedElements = div.firstElementChild.assignedElements();
 			const [childEl] = assignedElements;
 			await waitNextTask();
-			expect(childEl.clientWidth).to.equal(180);
+			expect(childEl.clientWidth).to.equal(172);
 		});
 		it(`should set size to block`, async () => {
 			const actualElement = getNewElement();
@@ -65,7 +65,7 @@ describe('inline', () => {
 			const assignedElements = div.firstElementChild.assignedElements();
 			const [childEl] = assignedElements;
 			await actualElement.updateComplete;
-			expect(childEl.clientWidth).to.equal(1200);
+			expect(childEl.clientWidth).to.equal(1152);
 		});
 	});
 });
