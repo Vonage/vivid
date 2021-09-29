@@ -3,7 +3,7 @@ import {
 } from 'lit-element';
 import { nothing } from 'lit-html';
 import { ClassInfo, classMap } from 'lit-html/directives/class-map';
-import { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
+import type { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
 import { handleMultipleDenseProps } from '@vonage/vvd-foundation/general-utils';
 
 type BadgeConnotation = Extract<

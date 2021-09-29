@@ -1,4 +1,4 @@
-import { VWCCalendar } from './vwc-calendar.js';
+import type { VWCCalendar } from './vwc-calendar.js';
 
 
 export const ARROW_UP = 'ArrowUp';

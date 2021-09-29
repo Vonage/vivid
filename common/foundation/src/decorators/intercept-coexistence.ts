@@ -1,4 +1,4 @@
-import { UpdatingElement } from 'lit-element';
+import type { UpdatingElement } from 'lit-element';
 
 export function interceptCoexistence(...properties: string[]) {
 	return <T extends { new (...args: any[]): UpdatingElement }>(constructor: T): any => class extends constructor {

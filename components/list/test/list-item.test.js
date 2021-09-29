@@ -6,7 +6,7 @@ import {
 	waitNextTask,
 	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
-import { borderRadiusStyles, shapeStyles } from '../../../test/style-utils';
+import { borderRadiusStyles, shapeStyles } from '../../../test/style-utils.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 import {
 	assertListItemDimensions,

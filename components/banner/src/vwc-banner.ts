@@ -1,7 +1,7 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
 import '@vonage/vwc-icon-button';
-import { style as BannerStyle } from './vwc-banner.css';
+import { style as BannerStyle } from './vwc-banner.css.js';
 import {
 	customElement, html, LitElement, property, PropertyValues
 } from 'lit-element';
