@@ -59,6 +59,7 @@ describe('inline', () => {
 		await waitNextTask();
 		const { shadowRoot: { firstElementChild: div } } = actualElement;
 		const assignedElements = div.firstElementChild.assignedElements();
+		await waitNextTask();
 		return assignedElements;
 	}
 });
