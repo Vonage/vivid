@@ -15,7 +15,7 @@ export enum InlineTemplate {
 	Fill = 'fill',
 }
 
-type InlineGutters = Extract<Size, Size.x_Small | Size.Medium | Size.x_Large>;
+type Gutters = Extract<Size, Size.x_Small | Size.Medium | Size.x_Large>;
 type ColumnSpacing = Extract<Size, Size.x_Small | Size.Medium | Size.x_Large>;
 type ColumnBasis = Extract<Size, Size.Small | Size.Medium | Size.Large> | 'block';
 
