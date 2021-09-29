@@ -1,6 +1,6 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-media-controller';
-import '@vonage/vwc-media-controller/vwc-scrub-bar';
+import '@vonage/vwc-media-controller/vwc-scrub-bar.js';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import { ClassInfo, classMap } from 'lit-html/directives/class-map';
 import { pipe } from 'ramda';

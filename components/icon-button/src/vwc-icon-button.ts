@@ -1,5 +1,7 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
+import '@material/mwc-ripple';
+
 import {
 	customElement, property, html, TemplateResult
 } from 'lit-element';
