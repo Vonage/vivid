@@ -1,0 +1,36 @@
+{
+	"name": "@vonage/vwc-elevation",
+	"version": "2.18.1",
+	"description": "elevation component",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/elevation#readme",
+	"license": "ISC",
+	"main": "vwc-elevation.js",
+	"module": "vwc-elevation.js",
+	"files": [
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/vonage/vivid.git",
+		"directory": "components/elevation"
+	},
+	"scripts": {
+		"build:typescript": "tsc -b",
+		"build:styles": "umbrella-style-modules",
+		"build": "yarn run build:styles && yarn run build:typescript"
+	},
+	"bugs": {
+		"url": "https://github.com/Vonage/vivid/issues"
+	},
+	"dependencies": {
+		"@vonage/vvd-foundation": "^2.18.1",
+		"@vonage/vvd-umbrella": "^2.18.1",
+		"lit-element": "^2.4.0",
+		"tslib": "^2.3.0"
+	},
+	"devDependencies": {
+
+	}
+}
