@@ -69,7 +69,7 @@ $items-gutters: (
 	}
 }
 
-:host(:not([inline-gutters])) {
+:host([inline-gutters='']) {
 	.layout {
 		margin: 0;
 	}
