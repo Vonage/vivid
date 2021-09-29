@@ -1,4 +1,4 @@
-import 'blocking-elements';
+// import 'blocking-elements';
 import 'wicg-inert';
 
 import {
@@ -6,7 +6,7 @@ import {
 } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import { classMap } from 'lit-html/directives/class-map';
-import { DocumentWithBlockingElements } from 'blocking-elements';
+import type { DocumentWithBlockingElements } from 'blocking-elements';
 
 const blockingElements =
 	(document as DocumentWithBlockingElements).$blockingElements;

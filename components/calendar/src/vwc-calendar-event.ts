@@ -2,7 +2,7 @@ import '@vonage/vvd-core';
 import {
 	customElement, html, LitElement, property, TemplateResult
 } from 'lit-element';
-import { style } from './vwc-calendar-event.css';
+import { style } from './vwc-calendar-event.css.js';
 import { styleMap } from 'lit-html/directives/style-map';
 
 declare global {
