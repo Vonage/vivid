@@ -8,11 +8,16 @@ import { styles as mwcButtonStyles } from '@material/mwc-button/styles.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 import { Connotation, Layout, Shape } from '@vonage/vvd-foundation/constants';
 import { html, TemplateResult } from 'lit-element';
+import type { PropertyValues } from 'lit-element';
 
 declare global {
 	interface HTMLElementTagNameMap {
 		'vwc-button': VWCButton;
 	}
+}
+
+interface GenericMap {
+	[key: string]: string
 }
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
@@ -45,6 +50,12 @@ type ButtonShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
  */
 @customElement('vwc-button')
 export class VWCButton extends MWCButton {
+	@property({ type: String, reflect: true })
+	name?:string
+
+	@property({ type: String, reflect: true })
+	value?:string
+
 	@property({ type: Boolean, reflect: true })
 	dense = false;
 
@@ -68,13 +79,6 @@ export class VWCButton extends MWCButton {
 
 	#_hiddenButton: HTMLButtonElement = VWCButton.createHiddenButton();
 
-	protected updateFormAndButton(): void {
-		const formId = this.getAttribute('form');
-		if (formId !== null) {
-			this.#_hiddenButton?.setAttribute('form', formId);
-		}
-	}
-
 	attributeChangedCallback(
 		name: string,
 		oldval: string | null,
@@ -85,6 +89,15 @@ export class VWCButton extends MWCButton {
 		} else {
 			super.attributeChangedCallback(name, oldval, newval);
 		}
+	}
+
+	protected override update(changes:PropertyValues):void {
+		super.update(changes);
+		[...changes.keys()]
+			.filter(attributeName => ['name', 'value'].includes(attributeName as string))
+			.forEach((attributeName) => {
+				this.#_hiddenButton.setAttribute(attributeName as string, (this as unknown as GenericMap)[attributeName as string]);
+			});
 	}
 
 	protected updated(changes: Map<string, boolean>): void {
