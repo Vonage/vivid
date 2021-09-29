@@ -86,14 +86,18 @@ jobs:
           path: /tmp
       - run: tar -zxf /tmp/vivid-env.tar.gz
       - run: yarn karma start --coverage --browsers=${{ matrix.browser }}
+        id: test
       - uses: coverallsapp/github-action@master
         name: Report coverage information to coveralls
         if: ${{ matrix.report_coverage }}
+        continue-on-error: true
         with:
           parallel: false
           github-token: ${{ github.token }}
           path-to-lcov: ./coverage/report-lcov/lcov.info
           flag-name: Tested on ${{ matrix.os }} / ${{ matrix.browser }}
+      - run: exit 0
+        if: ${{ steps.test.outcome == 'success' }}
 
   test_for_visual_regression:
     if: github.event.pull_request.draft == false
