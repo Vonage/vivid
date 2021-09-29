@@ -1,10 +1,10 @@
 import '@vonage/vvd-core';
-import { VVDFontFace } from '@vonage/vvd-design-tokens/build/types/font-faces';
+import type { VVDFontFace } from '@vonage/vvd-design-tokens/build/types/font-faces';
 import {
 	html, LitElement, property, TemplateResult
 } from 'lit-element';
 import { ClassInfo, classMap } from 'lit-html/directives/class-map';
-import { Connotation } from '@vonage/vvd-foundation/constants';
+import type { Connotation } from '@vonage/vvd-foundation/constants';
 
 type TextConnotation = Extract<
 	Connotation,

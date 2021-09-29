@@ -1,5 +1,5 @@
 import '@vonage/vvd-core';
-import { CSSResult } from 'lit-element';
+import type { CSSResult } from 'lit-element';
 
 export default {
 	mount,
