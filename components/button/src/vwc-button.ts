@@ -16,10 +16,6 @@ declare global {
 	}
 }
 
-/*interface GenericMap {
-	[key: string]: string
-}*/
-
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
 MWCButton.styles = [styleCoupling, mwcButtonStyles, vwcButtonStyle];
