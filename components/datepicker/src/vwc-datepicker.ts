@@ -6,10 +6,10 @@ import {
 } from 'lit-element';
 import { LitFlatpickr } from 'lit-flatpickr';
 import * as weekSelectPlugin from 'flatpickr/dist/plugins/weekSelect/weekSelect';
-import { Options } from 'flatpickr/dist/types/options';
+import type { Options } from 'flatpickr/dist/types/options';
 import { style as vwcDatepickerStyles } from './vwc-datepicker.css.js';
-import { VWCButton, ButtonLayout } from '@vonage/vwc-button';
-import { VWCIconButton } from '@vonage/vwc-icon-button';
+import type { VWCButton, ButtonLayout } from '@vonage/vwc-button';
+import type { VWCIconButton } from '@vonage/vwc-icon-button';
 import { Shape } from '@vonage/vvd-foundation/constants';
 
 declare global {

@@ -4,7 +4,7 @@ import { customElement } from 'lit-element';
 import { List as MWCList } from '@material/mwc-list/mwc-list';
 import { style as vwcListStyle } from './vwc-list.css.js';
 import { styles as mwcListStyles } from '@material/mwc-list/mwc-list.css.js';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
 
 declare global {
 	interface HTMLElementTagNameMap {

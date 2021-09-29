@@ -5,7 +5,7 @@ import {
 	textToDomToParent,
 	assertComputedStyle,
 	waitNextTask,
-} from '../../../test/test-helpers';
+} from '../../../test/test-helpers.js';
 import {
 	assertConnotationAttribute,
 	assertConnotationProperty,

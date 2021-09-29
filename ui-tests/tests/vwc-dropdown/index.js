@@ -1,6 +1,7 @@
 import { snapshotTheWholePage } from '../../utils/testPageUtils';
 import '@vonage/vwc-dropdown';
 import '@vonage/vwc-button';
+import '@vonage/vwc-list';
 import '@vonage/vwc-list/vwc-list-item.js';
 import '@vonage/vwc-list/vwc-check-list-item.js';
 

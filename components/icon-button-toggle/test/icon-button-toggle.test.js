@@ -1,8 +1,7 @@
 import '../vwc-icon-button-toggle.js';
-import { waitNextTask, textToDomToParent } from '../../../test/test-helpers.js';
+import { waitNextTask, textToDomToParent, isolatedElementsCreation } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
-import { isolatedElementsCreation } from '../../../test/test-helpers';
-import { shapeCircledTestCases, shapeRoundedTestCases, sizingTestCases } from '../../../test/shared';
+import { shapeCircledTestCases, shapeRoundedTestCases, sizingTestCases } from '../../../test/shared.js';
 
 chai.use(chaiDomDiff);
 
