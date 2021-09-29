@@ -4,7 +4,7 @@ import { customElement } from 'lit-element';
 import { Slider as MWCSlider } from '@material/mwc-slider';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 import { styles as mwcSliderStyles } from '@material/mwc-slider/mwc-slider.css.js';
-import { style as vwcSliderStyle } from './vwc-slider.css';
+import { style as vwcSliderStyle } from './vwc-slider.css.js';
 
 declare global {
 	interface HTMLElementTagNameMap {

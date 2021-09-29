@@ -3,7 +3,7 @@ import {
 	pcs,
 	getPreferedColorScheme,
 	// prefersColorSchemeSupported,
-} from './os-sync.utils';
+} from './os-sync.utils.js';
 import {
 	SelectedDetail,
 	PredefinedScheme,

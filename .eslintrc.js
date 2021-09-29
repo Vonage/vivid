@@ -5,15 +5,15 @@ module.exports = {
 	},
 	extends: [
 		'@open-wc/eslint-config',
-		'plugin:wc/recommended',
-		'plugin:import/recommended',
-		'plugin:import/typescript',
 		'plugin:@typescript-eslint/eslint-recommended',
 		'plugin:@typescript-eslint/recommended',
 		'plugin:wc/recommended',
 		'@open-wc/eslint-config',
 		'plugin:compat/recommended',
+		'plugin:lit/recommended',
 		'plugin:lit-a11y/recommended',
+		'plugin:import/recommended',
+		'plugin:import/typescript',
 	],
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
@@ -42,6 +42,7 @@ module.exports = {
 		semi: ['error', 'always'],
 		'no-use-before-define': 'off', //! should remove after PR merge
 		'object-shorthand': 'off', //! should remove after PR merge
+		'import/extensions': 'error',
 		'import/no-extraneous-dependencies': 'off', //! should remove after PR merge
 		'import/order': 'off', //! should remove after PR merge
 		'import/newline-after-import': 'off', //! should remove after PR merge

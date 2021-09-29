@@ -5,7 +5,7 @@ import type { Ripple } from '@material/mwc-ripple';
 import {
 	customElement, property, LitElement, CSSResult, PropertyValues, html, TemplateResult
 } from 'lit-element';
-import { style } from './vwc-pagination.css';
+import { style } from './vwc-pagination.css.js';
 
 export const COMPONENT_NAME = 'vwc-pagination';
 export const PREV_DISABLED_ATTR_NAME = 'prev-disabled';

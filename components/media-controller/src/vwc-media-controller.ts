@@ -1,7 +1,7 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon/vwc-icon';
 import type { VWCScrubBar } from './vwc-scrub-bar.js';
-import { style as vwcMediaControllerStyle } from './vwc-media-controller.css';
+import { style as vwcMediaControllerStyle } from './vwc-media-controller.css.js';
 import {
 	html,
 	customElement,

@@ -1,7 +1,7 @@
 import '@vonage/vvd-core';
 import { customElement } from 'lit-element';
 import { TabBar as MWCTabBar } from '@material/mwc-tab-bar';
-import { style as vwcTabBarStyle } from './vwc-tab-bar.css';
+import { style as vwcTabBarStyle } from './vwc-tab-bar.css.js';
 import { styles as mwcTabBarStyles } from '@material/mwc-tab-bar/mwc-tab-bar.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 

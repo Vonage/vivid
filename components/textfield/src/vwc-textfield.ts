@@ -16,8 +16,8 @@ import {
 import { classMap } from 'lit-html/directives/class-map';
 
 import { TextField as MWCTextField } from '@material/mwc-textfield';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
-import { style as vwcTextFieldStyle } from './vwc-textfield.css';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
+import { style as vwcTextFieldStyle } from './vwc-textfield.css.js';
 import { styles as mwcTextFieldStyles } from '@material/mwc-textfield/mwc-textfield.css.js';
 import type { Shape } from '@vonage/vvd-foundation/constants';
 import { debounced, handleAutofocus } from '@vonage/vvd-foundation/general-utils';

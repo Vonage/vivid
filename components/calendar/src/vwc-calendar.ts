@@ -8,7 +8,7 @@ import {
 } from 'lit-element';
 import type { DirectiveFn } from 'lit-html';
 import { repeat } from 'lit-html/directives/repeat';
-import { style } from './vwc-calendar.css';
+import { style } from './vwc-calendar.css.js';
 import {
 	assertIsValidDateStringRepresentation,
 	getValidDateString,

@@ -5,7 +5,7 @@ import { MenuBase as MWCMenuBase } from '@material/mwc-menu/mwc-menu-base';
 import type { MDCMenuAdapter } from '@material/menu';
 import { customElement, html } from 'lit-element';
 import { styles as mwcMenuStyles } from '@material/mwc-menu/mwc-menu.css.js';
-import { style as vwcMenuStyle } from './vwc-menu.css';
+import { style as vwcMenuStyle } from './vwc-menu.css.js';
 import type { VWCList } from '@vonage/vwc-list';
 
 declare global {

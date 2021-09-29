@@ -1,9 +1,9 @@
 import '@vonage/vvd-core';
 import { customElement, html } from 'lit-element';
 import { Chip as MWCChip } from './mwc-chips/mwc-chip.js';
-import { style as vwcChipStyle } from './vwc-chip.css';
+import { style as vwcChipStyle } from './vwc-chip.css.js';
 import { style as mwcChipStyle } from './mwc-chips/mwc-chip.css.js';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
 import '@vonage/vwc-icon';
 import { classMap } from 'lit-html/directives/class-map';
 import { ifDefined } from 'lit-html/directives/if-defined';

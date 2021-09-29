@@ -5,7 +5,7 @@ import {
 import { ClassInfo, classMap } from 'lit-html/directives/class-map';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import { Switch as MWCSwitch } from '@material/mwc-switch';
-import { style as vwcSwitchStyle } from './vwc-switch.css';
+import { style as vwcSwitchStyle } from './vwc-switch.css.js';
 import { styles as mwcSwitchStyles } from '@material/mwc-switch/mwc-switch.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';

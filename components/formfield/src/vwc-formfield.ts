@@ -1,7 +1,7 @@
 import '@vonage/vvd-core';
 import { customElement } from 'lit-element';
 import { Formfield as MWCFormfield } from '@material/mwc-formfield';
-import { style as vwcFormfieldStyle } from './vwc-formfield.css';
+import { style as vwcFormfieldStyle } from './vwc-formfield.css.js';
 import { styles as mwcFormfieldStyles } from '@material/mwc-formfield/mwc-formfield.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
 

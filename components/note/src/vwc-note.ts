@@ -4,7 +4,7 @@ import {
 	customElement, property, LitElement, CSSResult, html, TemplateResult
 } from 'lit-element';
 import { ClassInfo, classMap } from 'lit-html/directives/class-map';
-import { style as vwcNoteStyle } from './vwc-note.css';
+import { style as vwcNoteStyle } from './vwc-note.css.js';
 import type { Connotation } from '@vonage/vvd-foundation/constants';
 
 declare global {
