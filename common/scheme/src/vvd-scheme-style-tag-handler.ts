@@ -2,8 +2,8 @@ import type { CSSResult } from 'lit-element';
 import { PredefinedScheme } from './vvd-scheme-foundation.js';
 
 type ModuleType =
-	| typeof import('./scheme.dark.css')
-	| typeof import('./scheme.light.css');
+	| typeof import('./scheme.dark.css.js')
+	| typeof import('./scheme.light.css.js');
 
 const getSchemeModule: (scheme: PredefinedScheme) => Promise<ModuleType> = (
 	scheme: PredefinedScheme

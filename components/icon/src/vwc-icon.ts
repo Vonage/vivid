@@ -10,7 +10,7 @@ import { until } from 'lit-html/directives/until.js';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import { memoizeWith, identity, always } from 'ramda';
 import { ariaProperty } from '@material/mwc-base/aria-property';
-import { style } from './vwc-icon.css';
+import { style } from './vwc-icon.css.js';
 
 declare global {
 	interface HTMLElementTagNameMap {

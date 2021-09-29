@@ -5,7 +5,7 @@ import { observer } from '@material/mwc-base/observer';
 import { LinearProgress as MWCLinearProgress } from '@material/mwc-linear-progress';
 import { style as vwcLinearProgressStyle } from './vwc-linear-progress.css.js';
 import { styles as mwcLinearProgressStyles } from '@material/mwc-linear-progress/mwc-linear-progress.css.js';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
 import type { Connotation, ConnotationDecorative } from '@vonage/vvd-foundation/constants';
 
 declare global {

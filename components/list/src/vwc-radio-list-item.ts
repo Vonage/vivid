@@ -3,7 +3,7 @@ import { RadioListItem as MWCRadioListItem } from '@material/mwc-list/mwc-radio-
 import { styles as mwcListItemStyles } from '@material/mwc-list/mwc-list-item.css.js';
 import { styles as mwcControlListItemStyles } from '@material/mwc-list/mwc-control-list-item.css.js';
 import { style as vwcRadioListItemStyle } from './vwc-radio-list-item.css.js';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
 
 declare global {
 	interface HTMLElementTagNameMap {

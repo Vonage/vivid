@@ -7,7 +7,7 @@ import { classMap } from 'lit-html/directives/class-map';
 import { Button as MWCButton } from '@material/mwc-button';
 import { style as vwcButtonStyle } from './vwc-button.css.js';
 import { styles as mwcButtonStyles } from '@material/mwc-button/styles.css.js';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
 import type { Connotation, Layout, Shape } from '@vonage/vvd-foundation/constants';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 

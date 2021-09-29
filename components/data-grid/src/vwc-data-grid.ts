@@ -16,7 +16,7 @@ import {
 } from './vwc-data-grid-column-api.js';
 import type { RowDetailsRenderer } from './vwc-data-grid-renderer-api.js';
 import { VWCDataGridAdapterVaadin } from './adapters/vaadin/vwc-data-grid-adapter-vaadin.js';
-import { style as vwcDataGridStyle } from './vwc-data-grid.css';
+import { style as vwcDataGridStyle } from './vwc-data-grid.css.js';
 import {
 	customElement,
 	property,

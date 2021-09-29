@@ -1,5 +1,5 @@
 import { customElement, html, LitElement } from 'lit-element';
-import { style } from './vwc-elevation.css';
+import { style } from './vwc-elevation.css.js';
 import { property } from 'lit-element/lib/decorators';
 import { classMap } from 'lit-html/directives/class-map';
 

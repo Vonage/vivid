@@ -5,7 +5,7 @@ import {
 	customElement, html, property, TemplateResult
 } from 'lit-element';
 import { TextArea as MWCTextArea } from '@material/mwc-textarea';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
 import { style as vwcTextareaStyle } from './vwc-textarea.css.js';
 import { styles as mwcTextareaStyles } from '@material/mwc-textarea/mwc-textarea.css.js';
 import { styles as mwcTextfieldStyles } from '@material/mwc-textfield/mwc-textfield.css.js';

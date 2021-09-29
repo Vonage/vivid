@@ -13,7 +13,7 @@ import { headerRendererProvider } from './vwc-renderer-provider-header-vaadin.js
 import { footerRendererProvider } from './vwc-renderer-provider-footer-vaadin.js';
 import { cellRendererProvider } from './vwc-renderer-provider-cell-vaadin.js';
 import { rowDetailsRendererProvider } from './vwc-renderer-provider-row-details-vaadin.js';
-import { style as vwcDataGridStyleVaadin } from './vwc-data-grid-adapter-vaadin.css';
+import { style as vwcDataGridStyleVaadin } from './vwc-data-grid-adapter-vaadin.css.js';
 import { CSSResult, html, TemplateResult } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
 
