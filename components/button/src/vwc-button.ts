@@ -16,9 +16,9 @@ declare global {
 	}
 }
 
-interface GenericMap {
+/*interface GenericMap {
 	[key: string]: string
-}
+}*/
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
@@ -79,25 +79,11 @@ export class VWCButton extends MWCButton {
 
 	#_hiddenButton: HTMLButtonElement = VWCButton.createHiddenButton();
 
-	attributeChangedCallback(
-		name: string,
-		oldval: string | null,
-		newval: string | null
-	): void {
-		if (name === 'form' && newval && newval !== oldval) {
-			this.#_hiddenButton?.setAttribute('form', newval);
-		} else {
-			super.attributeChangedCallback(name, oldval, newval);
-		}
-	}
-
 	protected override update(changes:PropertyValues):void {
 		super.update(changes);
 		[...changes.keys()]
-			.filter(attributeName => ['name', 'value'].includes(attributeName as string))
-			.forEach((attributeName) => {
-				this.#_hiddenButton.setAttribute(attributeName as string, (this as unknown as GenericMap)[attributeName as string]);
-			});
+			.filter(attributeName => ['name', 'value', 'form'].includes(attributeName as string))
+			.forEach(attributeName => (this.#_hiddenButton as any)[attributeName as string] = (this as any)[attributeName as string]);
 	}
 
 	protected updated(changes: Map<string, boolean>): void {
