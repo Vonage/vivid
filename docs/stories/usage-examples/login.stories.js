@@ -1,7 +1,7 @@
 import { html } from 'lit-element';
 
 export default {
-	title: 'Templates/Log In',
+	title: 'Usage Examples/Log In',
 };
 
 export const LogIn = () => html`
@@ -9,17 +9,11 @@ export const LogIn = () => html`
     div#login {
       display: flex;
     }
-    vwc-inline.sign-in-helper {
-      align-items: center;
-    } 
-    form {
-      margin: 50px;
-    }
     .password {
       text-align: end;
+      padding: 8px 0px;
     }
     vwc-side-drawer#side-drawer {
-  	  flex: 0 0 auto;
       --side-drawer-min-inline-size: 600px;
     }
     main {
@@ -56,7 +50,7 @@ export const LogIn = () => html`
           </vwc-inline>
         </section>
         <section>
-          <vwc-inline class="sign-in-helper">
+          <vwc-inline>
             <vwc-formfield label="Remember me"><vwc-checkbox></vwc-checkbox></vwc-formfield>
             <vwc-text class="password" font-face="body-2"><a href="#">Forgot password?</a></vwc-text>
           </vwc-inline>
@@ -80,7 +74,7 @@ export const LogIn = () => html`
 
 LogIn.parameters = {
 	options: {
-		showPanel: false,
+		showPanel: true,
 		isToolshown: false
 	}
 };
