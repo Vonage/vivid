@@ -21,10 +21,15 @@ export enum Shape {
 }
 
 export enum Size {
+	xxx_Small = 'xxxs',
+	xx_Small = 'xxs',
+	x_Small = 'xs',
 	Small = 'sm',
 	Medium = 'md',
 	Large = 'lg',
-	Block = 'block'
+	x_Large = 'xl',
+	xx_Large = 'xxl',
+	xxx_Large = 'xxxl',
 }
 
 /* eslint-disable no-shadow */
