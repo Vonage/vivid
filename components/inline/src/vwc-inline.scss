@@ -69,6 +69,12 @@ $items-gutters: (
 	}
 }
 
+:host(:not([inline-gutters])) {
+	.layout {
+		margin: 0;
+	}
+}
+
 :host([column-basis="block"i]) {
 	.layout {
 		grid-template-columns: 1fr;
