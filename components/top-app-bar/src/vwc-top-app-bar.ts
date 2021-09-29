@@ -16,7 +16,7 @@ declare global {
  */
 @customElement('vwc-top-app-bar')
 export class VWCTopAppBar extends MWCTopAppBarBase {
-	@property({ type: String })
+	@property({ type: Boolean })
 	@observer(function (this: VWCTopAppBar, newVal: boolean) {
 		if (newVal) {
 			this.mdcRoot.setAttribute('part', 'vvd-scheme-alternate');

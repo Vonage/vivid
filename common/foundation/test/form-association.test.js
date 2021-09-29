@@ -2,14 +2,14 @@ import {
 	associateWithForm,
 	requestSubmit,
 	submitOnEnter,
-} from '../form-association';
+} from '../form-association.js';
 
 import {
 	textToDomToParent,
 	randomAlpha,
 	waitNextTask,
 	isolatedElementsCreation,
-} from '../../../test/test-helpers';
+} from '../../../test/test-helpers.js';
 
 function setInputElementAttributes(inputElement, attrs = {}) {
 	Object.keys(attrs).forEach((attr) => {

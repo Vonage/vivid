@@ -1,5 +1,5 @@
 import { init as initFonts } from '../vvd-fonts.js';
-import { cleanFrame, getFrameLoadedInjected } from '../../../test/test-helpers';
+import { cleanFrame, getFrameLoadedInjected } from '../../../test/test-helpers.js';
 
 const FONTS_SETUP_HTML_TAG = 'fontsSetupTest';
 
