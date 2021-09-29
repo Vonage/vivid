@@ -44,13 +44,13 @@ describe('inline', () => {
 			const actualElement = getNewElement();
 			actualElement.template = "fill";
 			const [childEl] = await assignElements(actualElement);
-			expect(childEl.clientWidth).to.equal(166);
+			expect(childEl.clientWidth).to.equal(309);
 		});
 		it(`should set size to block`, async () => {
 			const actualElement = getNewElement();
 			actualElement.columnBasis = "block";
 			const [childEl] = await assignElements(actualElement);
-			expect(childEl.clientWidth).to.equal(737);
+			expect(childEl.clientWidth).to.equal(1306);
 		});
 	});
 
