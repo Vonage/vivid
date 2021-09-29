@@ -27,8 +27,8 @@
 	},
 	"dependencies": {
 		"@material/mwc-top-app-bar": "^0.22.1",
+		"@material/mwc-base": "^0.22.1",
 		"@vonage/vvd-core": "2.18.1",
-		"@vonage/vvd-style-coupling": "2.18.1",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.3.0"
 	},
