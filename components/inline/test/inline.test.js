@@ -37,35 +37,29 @@ describe('inline', () => {
 		it(`should set template fit`, async () => {
 			const actualElement = getNewElement();
 			actualElement.template = "fit";
-			actualElement.style.width = "1300px";
-			await waitNextTask();
-			const { shadowRoot: { firstElementChild: div } } = actualElement;
-			const assignedElements = div.firstElementChild.assignedElements();
-			const [childEl] = assignedElements;
-			await waitNextTask();
+			const [childEl] = await assignElements(actualElement);
 			expect(childEl.clientWidth).to.equal(166);
 		});
 		it(`should set template fill`, async () => {
 			const actualElement = getNewElement();
 			actualElement.template = "fill";
-			actualElement.style.width = "1300px";
-			await waitNextTask();
-			const { shadowRoot: { firstElementChild: div } } = actualElement;
-			const assignedElements = div.firstElementChild.assignedElements();
-			const [childEl] = assignedElements;
-			await waitNextTask();
+			const [childEl] = await assignElements(actualElement);
 			expect(childEl.clientWidth).to.equal(166);
 		});
 		it(`should set size to block`, async () => {
 			const actualElement = getNewElement();
 			actualElement.columnBasis = "block";
-			actualElement.style.width = "1300px";
-			await actualElement.updateComplete;
-			const { shadowRoot: { firstElementChild: div } } = actualElement;
-			const assignedElements = div.firstElementChild.assignedElements();
-			const [childEl] = assignedElements;
-			await actualElement.updateComplete;
+			const [childEl] = await assignElements(actualElement);
 			expect(childEl.clientWidth).to.equal(737);
 		});
 	});
+
+	async function assignElements(actualElement) {
+		actualElement.style.width = "1300px";
+		await waitNextTask();
+		const { shadowRoot: { firstElementChild: div } } = actualElement;
+		const assignedElements = div.firstElementChild.assignedElements();
+		return assignedElements;
+	}
 });
+
