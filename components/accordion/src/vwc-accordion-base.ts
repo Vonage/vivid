@@ -1,5 +1,5 @@
 import { LitElement, property } from 'lit-element';
-import { VWCExpansionPanelBase } from '@vonage/vwc-expansion-panel/vwc-expansion-panel-base';
+import type { VWCExpansionPanelBase } from '@vonage/vwc-expansion-panel/vwc-expansion-panel-base';
 
 export abstract class VWCAccordionBase extends LitElement {
 	@property({ type: Boolean, reflect: true })

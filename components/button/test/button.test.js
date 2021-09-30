@@ -3,19 +3,18 @@ import {
 	waitNextTask,
 	textToDomToParent,
 	assertDistancePixels,
-	assertComputedStyle, waitInterval,
+	assertComputedStyle, 
+  waitInterval,
+	isolatedElementsCreation,
+	randomAlpha
 } from '../../../test/test-helpers.js';
 import {
 	sizingTestCases,
 	shapeRoundedTestCases,
 	shapePillTestCases,
-} from '../../../test/shared';
+} from '../../../test/shared.js';
 import { connotationTestCases } from './button.connotation.test.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
-import {
-	isolatedElementsCreation,
-	randomAlpha,
-} from '../../../test/test-helpers';
 
 chai.use(chaiDomDiff);
 

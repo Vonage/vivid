@@ -1,14 +1,17 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
-import { customElement, property } from 'lit-element';
+import '@material/mwc-ripple';
+
+import {
+	customElement, property, html, TemplateResult
+} from 'lit-element';
 import { ClassInfo, classMap } from 'lit-html/directives/class-map';
 import { IconButton as MWCIconButton } from '@material/mwc-icon-button';
-import { style as vwcButtonStyle } from './vwc-icon-button.css';
+import { style as vwcButtonStyle } from './vwc-icon-button.css.js';
 import { styles as mwcIconButtonStyles } from '@material/mwc-icon-button/mwc-icon-button.css.js';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
-import { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
+import type { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
 import { handleMultipleDenseProps } from '@vonage/vvd-foundation/general-utils';
-import { html, TemplateResult } from 'lit-element';
 
 declare global {
 	interface HTMLElementTagNameMap {

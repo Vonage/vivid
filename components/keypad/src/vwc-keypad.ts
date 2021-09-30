@@ -7,7 +7,7 @@ import {
 	TemplateResult,
 	query,
 } from 'lit-element';
-import { style as vwcKeypadStyle } from './vwc-keypad.css';
+import { style as vwcKeypadStyle } from './vwc-keypad.css.js';
 import '@vonage/vwc-button/vwc-button';
 import '@vonage/vwc-textfield/vwc-textfield';
 

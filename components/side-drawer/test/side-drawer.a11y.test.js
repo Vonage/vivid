@@ -1,4 +1,4 @@
-import '../vwc-side-drawer';
+import '../vwc-side-drawer.js';
 import {
 	isolatedElementsCreation,
 	textToDomToParent

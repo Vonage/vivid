@@ -1,5 +1,4 @@
-import '../vwc-button-toggle-group.js';
-import { VALID_BUTTON_ELEMENTS } from '../vwc-button-toggle-group';
+import { VALID_BUTTON_ELEMENTS } from '../vwc-button-toggle-group.js';
 
 import {
 	waitNextTask,

@@ -12,13 +12,21 @@ module.exports = {
 		'plugin:compat/recommended',
 		'plugin:lit/recommended',
 		'plugin:lit-a11y/recommended',
+		'plugin:import/recommended',
+		'plugin:import/typescript',
 	],
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
 		ecmaVersion: 12,
 		sourceType: 'module',
 	},
-	plugins: ['@typescript-eslint', 'mocha', 'wc', 'no-only-tests', 'lit-a11y'],
+	plugins: [
+		'@typescript-eslint',
+		'mocha',
+		'wc',
+		'no-only-tests',
+		'lit-a11y'
+	],
 	settings: {
 		wc: {
 			elementBaseClasses: ['BaseElement', 'LitElement', 'FormElement'],
@@ -33,8 +41,9 @@ module.exports = {
 		'linebreak-style': ['error', 'unix'],
 		semi: ['error', 'always'],
 		'no-use-before-define': 'off', //! should remove after PR merge
-		'import/no-extraneous-dependencies': 'off', //! should remove after PR merge
 		'object-shorthand': 'off', //! should remove after PR merge
+		'import/extensions': 'error',
+		'import/no-extraneous-dependencies': 'off', //! should remove after PR merge
 		'import/order': 'off', //! should remove after PR merge
 		'import/newline-after-import': 'off', //! should remove after PR merge
 		'import/no-unresolved': 'off', //! should remove after PR merge
@@ -42,11 +51,9 @@ module.exports = {
 		'one-var': 'off', //! should remove after PR merge
 		'prefer-arrow-callback': 'off', //! should remove after PR merge
 		'func-names': 'off', //! should remove after PR merge
-		'import/extensions': 'off', //! should remove after PR merge
 		'spaced-comment': 'off', //! should remove after PR merge
 		'prefer-destructuring': 'off', //! should remove after PR merge
 		'arrow-body-style': 'off', //! should remove after PR merge
-		'import/no-duplicates': 'off', //! should remove after PR merge
 		'prefer-promise-reject-errors': 'off', //! should remove after PR merge
 		'no-console': 'off', //! should remove after PR merge
 		'no-param-reassign': 'off', //! should remove after PR merge
@@ -70,8 +77,6 @@ module.exports = {
 		'no-else-return': 'off', //! should remove after PR merge
 		'no-unused-vars': 'error',
 		'no-undef': 'off',
-		'lit/no-template-bind': 'off',
-		'lit/binding-positions': 'off',
 		'@typescript-eslint/no-extra-semi': 'off',
 		'@typescript-eslint/explicit-function-return-type': 'off',
 		'@typescript-eslint/indent': 'off',
