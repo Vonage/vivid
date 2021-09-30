@@ -1,4 +1,4 @@
-import { handleMultipleDenseProps } from '../general-utils';
+import { handleMultipleDenseProps } from '../general-utils.js';
 
 class TestComponent extends HTMLElement {}
 
