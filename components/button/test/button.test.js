@@ -38,7 +38,7 @@ describe('button', () => {
 		expect(b.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
-	describe('Form Association', async function () {
+	describe('Form Association', function () {
 		function hiddenButtonExists(formElement) {
 			return formElement.querySelector('button') !== null;
 		}
