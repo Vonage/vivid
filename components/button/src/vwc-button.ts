@@ -95,6 +95,7 @@ export class VWCButton extends MWCButton {
 	}
 
 	protected override update(changes:PropertyValues):void {
+		super.update(changes);
 		[...changes.keys()]
 			.filter(attributeName => ['name', 'value'].includes(attributeName as string))
 			.forEach((attributeName) => {
