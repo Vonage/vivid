@@ -3,7 +3,7 @@ import {
 	waitNextTask,
 	textToDomToParent,
 	assertDistancePixels,
-	assertComputedStyle,
+	assertComputedStyle, waitInterval,
 } from '../../../test/test-helpers.js';
 import {
 	sizingTestCases,
@@ -38,7 +38,7 @@ describe('button', () => {
 		expect(b.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
-	describe('Form Association', function () {
+	describe('Form Association', async function () {
 		function hiddenButtonExists(formElement) {
 			return formElement.querySelector('button') !== null;
 		}
@@ -47,16 +47,20 @@ describe('button', () => {
 			let submitted = false;
 			const addedElements = addElement(
 				textToDomToParent(
-					`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}></form>`
+					`<form onsubmit="return false" id="testForm"><${COMPONENT_NAME} name="testForm" value="testValue">Button Text</${COMPONENT_NAME}></form>`
 				)
 			);
 			await waitNextTask();
 			const formElement = addedElements[0];
 			const actualElement = formElement.firstChild;
-			formElement.addEventListener('submit', () => (submitted = true));
+			formElement.addEventListener('submit', ({ submitter }) => {
+				submitted =
+					submitter.name === 'testForm' &&
+					submitter.value === 'testValue' &&
+					submitter.tagName === 'BUTTON';
+			});
 
 			actualElement.click();
-
 			expect(submitted).to.equal(true);
 		});
 
