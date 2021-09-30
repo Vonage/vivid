@@ -2,7 +2,7 @@ import '../vwc-inline.js';
 import {
 	waitNextTask,
 	textToDomToParent,
-	isolatedElementsCreation,
+	isolatedElementsCreation
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
@@ -19,6 +19,7 @@ const inlineHtmlStr = `<${VWC_INLINE}>
 const getNewElement = () => isolatedElementsCreation()(textToDomToParent(inlineHtmlStr))[0];
 
 describe('inline', () => {
+	let addElement = isolatedElementsCreation();
 	describe('basics', () => {
 		it(`${VWC_INLINE} is defined as a custom element`, async () => {
 			assert.exists(
@@ -33,34 +34,21 @@ describe('inline', () => {
 		});
 	});
 
-	describe('API', () => {
-		it(`should set template fit`, async () => {
-			const actualElement = getNewElement();
-			actualElement.template = "fit";
-			const [childEl] = await assignElements(actualElement);
-			expect(childEl.clientWidth).to.equal(166);
-		});
-		it(`should set template fill`, async () => {
-			const actualElement = getNewElement();
-			actualElement.template = "fill";
-			const [childEl] = await assignElements(actualElement);
-			expect(childEl.clientWidth).to.equal(166);
-		});
-		it(`should set size to block`, async () => {
-			const actualElement = getNewElement();
-			actualElement.columnBasis = "block";
-			const [childEl] = await assignElements(actualElement);
-			expect(childEl.clientWidth).to.equal(737);
+	describe('default values', () => {
+		it('should have the default values', async () => {
+			const COMPONENT_PROPERTIES = {
+				columnBasis: 'sm', columnSpacing: 'md', inlineGutters: 'md'
+			};
+			for await (const [key, value] of Object.entries(COMPONENT_PROPERTIES)) {
+				const [actualElement] = addElement(
+					textToDomToParent(`<${VWC_INLINE}></${VWC_INLINE}>`)
+				);
+				await actualElement.updateComplete;
+				expect(actualElement[key])
+					.to
+					.equal(value);
+			}
 		});
 	});
-
-	async function assignElements(actualElement) {
-		actualElement.style.width = "1300px";
-		await waitNextTask();
-		const { shadowRoot: { firstElementChild: div } } = actualElement;
-		const assignedElements = div.firstElementChild.assignedElements();
-		await waitNextTask();
-		return assignedElements;
-	}
 });
 
