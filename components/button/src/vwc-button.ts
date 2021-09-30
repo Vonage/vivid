@@ -1,13 +1,14 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
-import { customElement, property } from 'lit-element';
+import {
+	customElement, property, html, TemplateResult
+} from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
 import { Button as MWCButton } from '@material/mwc-button';
-import { style as vwcButtonStyle } from './vwc-button.css';
+import { style as vwcButtonStyle } from './vwc-button.css.js';
 import { styles as mwcButtonStyles } from '@material/mwc-button/styles.css.js';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
-import { Connotation, Layout, Shape } from '@vonage/vvd-foundation/constants';
-import { html, TemplateResult } from 'lit-element';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
+import type { Connotation, Layout, Shape } from '@vonage/vvd-foundation/constants';
 import { requestSubmit } from '@vonage/vvd-foundation/form-association';
 
 declare global {

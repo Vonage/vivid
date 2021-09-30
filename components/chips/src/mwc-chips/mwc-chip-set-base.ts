@@ -18,13 +18,13 @@ import { BaseElement } from '@material/mwc-base/base-element.js';
 import { observer } from '@material/mwc-base/observer.js';
 import { announce } from '@material/dom/announce';
 import { addHasRemoveClass } from '@material/mwc-base/utils.js';
-import {
+import type {
 	MDCChipInteractionEvent,
 	MDCChipSelectionEvent,
 	MDCChipRemovalEvent,
 	MDCChipNavigationEvent,
 } from '@material/chips/chip/types';
-import { MDCChipSetAdapter } from '@material/chips/chip-set/adapter.js';
+import type { MDCChipSetAdapter } from '@material/chips/chip-set/adapter.js';
 import { MDCChipSetFoundation } from '@material/chips/chip-set/foundation.js';
 import { html, property, query, TemplateResult } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
