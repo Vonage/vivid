@@ -633,6 +633,15 @@
   </vaadin-grid-cell-content>
   <vaadin-grid-cell-content slot="vaadin-grid-cell-content-17">
   </vaadin-grid-cell-content>
+  <vaadin-grid-cell-content slot="vaadin-grid-cell-content-18">
+    0
+  </vaadin-grid-cell-content>
+  <vaadin-grid-cell-content slot="vaadin-grid-cell-content-19">
+    text 0
+  </vaadin-grid-cell-content>
+  <vaadin-grid-cell-content slot="vaadin-grid-cell-content-20">
+    true
+  </vaadin-grid-cell-content>
 </vaadin-grid>
 
 ```
