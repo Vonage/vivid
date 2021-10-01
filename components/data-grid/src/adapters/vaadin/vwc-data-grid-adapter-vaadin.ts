@@ -61,16 +61,6 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 			_items = undefined;
 		}
 		return html`
-			<dom-module id="my-grid-styles" theme-for="vaadin-grid">
-				<template>
-					<style>
-						[part~="cell"] ::slotted(vaadin-grid-cell-content) {
-							padding: 4px 16px;
-						}
-					</style>
-				</template>
-			</dom-module>
-
 			<vaadin-grid
 				class="${GRID_ENGINE_ROOT_CLASS}"
 				theme="no-border"
@@ -81,6 +71,15 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 				.heightByRows="${this.#vwcGrid.heightByRows}"
 				.dataProvider="${_dataProvider}"
 			>
+				<dom-module id="my-grid-styles" theme-for="vaadin-grid">
+					<template>
+						<style>
+							[part~="cell"] ::slotted(vaadin-grid-cell-content) {
+								padding: 4px 16px;
+							}
+						</style>
+					</template>
+				</dom-module>
 				${this.#vwcGrid.columns.map(cc => this.renderColumnDef(cc))}
 			</vaadin-grid>
 		`;
