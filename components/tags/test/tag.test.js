@@ -27,4 +27,45 @@ describe('Tag', () => {
 		await waitNextTask();
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
+
+	describe('Tag attributes', () => {
+		it('should reflect default attributes', async () => {
+			const COMPONENT_PROPERTIES = ['connotation', 'layout', 'shape', 'text'];
+			for await (const property of COMPONENT_PROPERTIES) {
+				const [actualElement] = addElement(
+					textToDomToParent(`<${COMPONENT_NAME} ${property}></${COMPONENT_NAME}>`)
+				);
+				await actualElement.updateComplete;
+				expect(actualElement[property])
+					.to
+					.equal('');
+			}
+		});
+
+		it('should reflect true', async () => {
+			const COMPONENT_PROPERTIES = ['selectable', 'selected'];
+			for await (const property of COMPONENT_PROPERTIES) {
+				const [actualElement] = addElement(
+					textToDomToParent(`<${COMPONENT_NAME} ${property}></${COMPONENT_NAME}>`)
+				);
+				await actualElement.updateComplete;
+				expect(actualElement[property])
+					.to
+					.equal(true);
+			}
+		});
+
+		it('should reflect from attribute to property', async () => {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} layout=outlined connotation=cta></${COMPONENT_NAME}>`)
+			);
+			await actualElement.updateComplete;
+			expect(actualElement.layout)
+				.to
+				.equal('outlined');
+			expect(actualElement.connotation)
+				.to
+				.equal('cta');
+		});
+	});
 });
