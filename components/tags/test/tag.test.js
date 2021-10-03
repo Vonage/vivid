@@ -42,7 +42,7 @@ describe('Tag', () => {
 			}
 		});
 
-		it('should reflect true', async () => {
+		it('should set selected to true', async () => {
 			const COMPONENT_PROPERTIES = ['selectable', 'selected'];
 			for await (const property of COMPONENT_PROPERTIES) {
 				const [actualElement] = addElement(
