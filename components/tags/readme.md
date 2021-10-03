@@ -1,4 +1,3 @@
-Web Component Analyzer analyzing 9 files...
 # vwc-tags
 
 ## Properties

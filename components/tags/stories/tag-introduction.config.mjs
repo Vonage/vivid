@@ -1,8 +1,8 @@
 export default {
 	sourcePath: '../readme.md',
-	outputName: 'chip-introduction',
+	outputName: 'tag-introduction',
 	story: {
-		title: 'Alpha/Components/Chip',
+		title: 'Alpha/Components/Tag',
 		name: 'Introduction',
 		parameters: {
 			options: {

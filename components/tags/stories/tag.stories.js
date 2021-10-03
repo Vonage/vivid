@@ -1,15 +1,15 @@
-import '@vonage/vwc-chip/vwc-chip.js';
+import '@vonage/vwc-tags/vwc-tag.js';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Alpha/Components/Chip (NEW)',
-	component: 'vwc-chip',
+	title: 'Alpha/Components/Tag',
+	component: 'vwc-tag',
 	argTypes
 };
 
-const Template = args => html`<vwc-chip ...=${spread(args)}></vwc-chip>`;
+const Template = args => html`<vwc-tag ...=${spread(args)}></vwc-tag>`;
 
 export const Basic = Template.bind({});
 Basic.args = { text: 'Basic' };

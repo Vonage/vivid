@@ -1,4 +1,4 @@
-import '../vwc-chip.js';
+import '../vwc-tag.js';
 import {
 	waitNextTask,
 	textToDomToParent,
@@ -8,9 +8,9 @@ import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
 
-const COMPONENT_NAME = 'vwc-chip';
+const COMPONENT_NAME = 'vwc-tag';
 
-describe('Chip', () => {
+describe('Tag', () => {
 	const addElement = isolatedElementsCreation();
 
 	it(`${COMPONENT_NAME} is defined as a custom element`, async () => {
