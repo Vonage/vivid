@@ -2,7 +2,7 @@ import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
 import { VWCTagBase } from './vwc-tag-base.js';
 import { customElement } from 'lit-element';
-import { style } from './vwc-tag.css';
+import { style } from './vwc-tag.css.js';
 
 declare global {
 	interface HTMLElementTagNameMap {
