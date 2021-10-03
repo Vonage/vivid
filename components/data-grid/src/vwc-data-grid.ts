@@ -1,30 +1,27 @@
 import '@vonage/vvd-core';
-import './vwc-data-grid-column';
+import './vwc-data-grid-column.js';
 import {
 	GRID_COMPONENT,
 	GRID_ENGINE_ROOT_CLASS,
 	DataGrid,
 	DataGridHeader,
 	EventContext
-} from './vwc-data-grid-api';
+} from './vwc-data-grid-api.js';
 import {
 	COLUMN_DEFINITION_COMPONENT,
 	COLUMN_DEFINITION_UPDATE_EVENT,
 	DataGridColumn,
-} from './vwc-data-grid-column-api';
-import { RowDetailsRenderer } from './vwc-data-grid-renderer-api';
-import {
-	VWCDataGridColumn
-} from './vwc-data-grid-column';
-import { VWCDataGridAdapterVaadin } from './adapters/vaadin/vwc-data-grid-adapter-vaadin';
-import { style as vwcDataGridStyle } from './vwc-data-grid.css';
+} from './vwc-data-grid-column-api.js';
+import type { RowDetailsRenderer } from './vwc-data-grid-renderer-api.js';
+import { VWCDataGridAdapterVaadin } from './adapters/vaadin/vwc-data-grid-adapter-vaadin.js';
+import { style as vwcDataGridStyle } from './vwc-data-grid.css.js';
 import {
 	customElement,
 	property,
 	LitElement,
 	TemplateResult,
 } from 'lit-element';
-import { DataGridAdapter } from './adapters/vwc-data-grid-adapter-api';
+import type { DataGridAdapter } from './adapters/vwc-data-grid-adapter-api.js';
 
 export {
 	GRID_COMPONENT,
@@ -148,7 +145,7 @@ export class VWCDataGrid extends LitElement implements DataGrid {
 		//	transform
 		const columnDefs = [];
 		for (const ae of columnDefinitionElements) {
-			columnDefs.push((ae as VWCDataGridColumn).getColumnConfig());
+			columnDefs.push(ae.getColumnConfig());
 		}
 
 		//	apply

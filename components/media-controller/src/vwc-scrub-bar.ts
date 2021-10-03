@@ -5,7 +5,7 @@ import kefir from 'kefir';
 import {
 	pipe, partial, clamp, prop, always, not, identity, path
 } from 'ramda';
-import { style as vwcScrubBarStyle } from './vwc-scrub-bar.css';//
+import { style as vwcScrubBarStyle } from './vwc-scrub-bar.css.js';//
 
 const SIGNAL = Symbol('signal'),
 	TRACK_KNOB_HORIZONTAL_MARGIN = 5,

@@ -15,7 +15,7 @@ import {
 import {
 	shapeRoundedTestCases,
 	shapePillTestCases,
-} from '../../../test/shared';
+} from '../../../test/shared.js';
 import {
 	typographyTestCases,
 	assertDenseStyles,

@@ -1,1 +1,1 @@
-export * from './intercept-coexistence';
+export * from './intercept-coexistence.js';

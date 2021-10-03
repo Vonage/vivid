@@ -4,7 +4,7 @@ import {
 	isolatedElementsCreation,
 	textToDomToParent,
 	waitNextTask,
-} from '../../../test/test-helpers';
+} from '../../../test/test-helpers.js';
 import {
 	assertConnotationAttribute,
 	assertConnotationProperty,
