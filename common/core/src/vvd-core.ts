@@ -1,5 +1,6 @@
 import { init as initFonts } from '@vonage/vvd-fonts/vvd-fonts.js';
-import schemeService, { SchemeOption } from '@vonage/vvd-scheme';
+import schemeService from '@vonage/vvd-scheme';
+import type { SchemeOption } from '@vonage/vvd-scheme';
 
 const VVD_CONTEXT_ATTRIBUTE = 'data-vvd-context',
 	NONE_INIT_VALUE = 'none',
