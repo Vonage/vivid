@@ -21,4 +21,15 @@ describe('banner', function () {
 		closingHandler.should.have.been.called();
 		closedHandler.should.have.been.called();
 	});
+
+	it('should close banner upon "Escape" key', async function () {
+		const TRANSITION_TIME = 200;
+		const closingHandler = chai.spy();
+		const closedHandler = chai.spy();
+		const bannerEl = await fixture(html`<vwc-banner message="Hello" dismissible open @closed=${closedHandler} @closing=${closingHandler}></vwc-banner>`);
+		bannerEl.shadowRoot.querySelector('div:first-child').dispatchEvent(new KeyboardEvent('keydown', { key: "Escape" }));
+		await aTimeout(TRANSITION_TIME * 1.1); // additional 10% for good measure ;)
+		closingHandler.should.have.been.called();
+		closedHandler.should.have.been.called();
+	});
 });

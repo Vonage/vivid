@@ -8,7 +8,7 @@ import {
 	CSSResult,
 	TemplateResult,
 } from 'lit-element';
-import { style } from './vwc-carousel.css';
+import { style } from './vwc-carousel.css.js';
 import SwiperCore, {
 	Swiper, SwiperOptions, Autoplay, Keyboard, Mousewheel, Navigation
 } from 'swiper/core';
