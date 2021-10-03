@@ -31,12 +31,12 @@ $inline-size: var(#{variables.$side-drawer-inline-size}, 280px);
 
 	&.side-drawer--modal,
 	&.side-drawer--dismissible {
-		@media (prefers-reduced-motion: no-preference) {
-			transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-		}
 
 		&:not(.side-drawer--open) {
 			transform: translateX(-100%);
+		}
+		@media (prefers-reduced-motion: no-preference) {
+			transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 		}
 	}
 
@@ -62,6 +62,7 @@ $inline-size: var(#{variables.$side-drawer-inline-size}, 280px);
 
 .side-drawer--top-bar {
 	$gutter: var(#{variables.$side-drawer-padding-top-bar}, #{$padding-default});
+	display: flex;
 	flex-shrink: 0;
 	align-items: center;
 	block-size: 64px;
