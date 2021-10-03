@@ -197,13 +197,9 @@ export class VWCSideDrawerBase extends LitElement {
 
 	#trapFocus(): void {
 		blockingElements.push(this.rootEl);
-		// TODO: @rinaok what is the reason for the next line event?
-		// this.#createAndDispatchEvent('trapFocus');
 	}
 
 	#releaseFocusTrap(): void {
 		blockingElements.remove(this.rootEl);
-		// TODO: @rinaok what is the reason for the next line event?
-		// this.#createAndDispatchEvent('releaseFocus');
 	}
 }
