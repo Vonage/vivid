@@ -1,8 +1,8 @@
 import '@material/mwc-ripple/mwc-ripple';
-import { Ripple } from '@material/mwc-ripple/mwc-ripple';
+import type { Ripple } from '@material/mwc-ripple/mwc-ripple';
 import { RippleHandlers } from '@material/mwc-ripple/ripple-handlers';
 
-import { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
+import type { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
 import { ClassInfo, classMap } from 'lit-html/directives/class-map';
 import {
 	 LitElement, html, property, TemplateResult, queryAsync, state, query, eventOptions
