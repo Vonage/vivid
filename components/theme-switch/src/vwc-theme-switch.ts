@@ -7,7 +7,7 @@ import {
 	html,
 	TemplateResult,
 } from 'lit-element';
-import { style } from './vwc-theme-switch.css';
+import { style } from './vwc-theme-switch.css.js';
 import {
 	default as vvdScheme,
 	PredefinedScheme,

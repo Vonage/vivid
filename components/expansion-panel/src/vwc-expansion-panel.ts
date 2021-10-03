@@ -8,8 +8,8 @@ import {
 	queryAsync,
 	TemplateResult
 } from 'lit-element';
-import '@material/mwc-ripple/mwc-ripple';
-import { Ripple } from '@material/mwc-ripple/mwc-ripple';
+// import '@material/mwc-ripple/mwc-ripple';
+import type { Ripple } from '@material/mwc-ripple/mwc-ripple';
 import { RippleHandlers } from '@material/mwc-ripple/ripple-handlers';
 import { VWCExpansionPanelBase } from './vwc-expansion-panel-base.js';
 import { style } from './vwc-expansion-panel.css.js';
@@ -28,7 +28,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	static styles = style;
 
 	/**
-	 * @deprecated use {@link VWCExpansionPanel.heading} instead
+	 * @deprecated use "heading" instead
 	 */
 	@property({ type: String, reflect: true })
 	header = '';

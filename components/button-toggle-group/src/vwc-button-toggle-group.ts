@@ -1,7 +1,7 @@
 import {
 	customElement, html, LitElement, property, PropertyValues
 } from 'lit-element';
-import { style } from './vwc-button-toggle-group.css';
+import { style } from './vwc-button-toggle-group.css.js';
 
 declare global {
 	interface HTMLElementTagNameMap {

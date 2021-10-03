@@ -1,4 +1,4 @@
-import { PredefinedScheme } from './vvd-scheme-foundation';
+import { PredefinedScheme } from './vvd-scheme-foundation.js';
 
 export const pcs = window.matchMedia('(prefers-color-scheme: dark)');
 

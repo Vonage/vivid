@@ -6,7 +6,7 @@ import { classMap } from 'lit-html/directives/class-map';
 import { Fab as MWCFab } from '@material/mwc-fab';
 import { styles as mwcFabStyles } from '@material/mwc-fab/mwc-fab.css.js';
 import { style as vwcFabStyle } from './vwc-fab.css.js';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
 import '@vonage/vwc-icon';
 
 declare global {

@@ -26,7 +26,9 @@
 		"baseUrl": "./",
 		"composite": true,
 		"importHelpers": true,
-		"allowSyntheticDefaultImports": true
+		"allowSyntheticDefaultImports": true,
 		// "esModuleInterop": true // would force consumers to enable this as well
+		"importsNotUsedAsValues": "error",
+		"removeComments": true,
 	}
 }
