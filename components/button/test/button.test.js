@@ -4,7 +4,6 @@ import {
 	textToDomToParent,
 	assertDistancePixels,
 	assertComputedStyle,
-	waitInterval,
 	isolatedElementsCreation,
 	randomAlpha,
 } from '../../../test/test-helpers.js';
@@ -408,21 +407,19 @@ describe('button', () => {
 			textToDomToParent(
 				`<section>
 						<iframe name="testIframe"></iframe>
-						<form action="./test" target="testIframe" name="testForm" id="testForm">
+						<form action="./test" method="get" target="testIframe" name="testForm" id="testForm">
 							<${COMPONENT_NAME} form="testForm" name="button_name" value="button_value">Button Text</${COMPONENT_NAME}>
 						</form>
 					</section>`
 			)
 		);
 
-		const [formEl, buttonEl] = ["form", "button"].map(tagName => sectionEl.querySelector(tagName));
+		const [formEl, buttonEl, iframeEl] = ["form", "button", "iframe"].map(tagName => sectionEl.querySelector(tagName));
 		await waitNextTask();
-
 		return new Promise((resolve, reject) => {
-			formEl.addEventListener('formdata', ({ formData }) => {
-				(formData.get('button_name') === 'button_value' ? resolve : reject)(new Error('wrong value received for form field "button_name"'));
+			iframeEl.addEventListener('load', () => {
+				(/\bbutton_name=button_value\b/.test(iframeEl.contentWindow.location.search) ? resolve : reject)(new Error('wrong value received for form field "button_name"'));
 			}, { once: true });
-
 			buttonEl.click();
 		});
 	});
