@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.19.0](https://github.com/Vonage/vivid/compare/v2.18.1...v2.19.0) (2021-10-04)
+
+
+### Bug Fixes
+
+* **vwc-badge:** icons weren't vertically aligned ([#1056](https://github.com/Vonage/vivid/issues/1056)) ([3429711](https://github.com/Vonage/vivid/commit/342971112be5ebaaa3b4a775d417e74cce734375))
+* **vwc-button:** clicking a submit button results in generating a click on the first "submittable" ([#1074](https://github.com/Vonage/vivid/issues/1074)) ([95f9521](https://github.com/Vonage/vivid/commit/95f95219ad7c429bf1453259609735820c575376))
+* **vwc-data-grid:** set determined styles ([#1070](https://github.com/Vonage/vivid/issues/1070)) ([7339dcf](https://github.com/Vonage/vivid/commit/7339dcfd5af775c32cbf14da387dc2fe3bf0798e))
+* **vwc-side-drawer:** css vars ([#1045](https://github.com/Vonage/vivid/issues/1045)) ([717c558](https://github.com/Vonage/vivid/commit/717c5588d87ab4e450e44fe043ccfffc9f91fd0b))
+
+
+### Features
+
+* **elevation:** vwc elevation feature first draft ([#1058](https://github.com/Vonage/vivid/issues/1058)) ([276d795](https://github.com/Vonage/vivid/commit/276d7957abb4dc075cad69aefe2a0bdc3a39492a))
+* **vwc-tags:** 1st component draft ([#1016](https://github.com/Vonage/vivid/issues/1016)) ([8cb87e2](https://github.com/Vonage/vivid/commit/8cb87e2eb614d2b15faa480c514c1d99afc68ab2))
+
+
+
+
+
 ## [2.18.1](https://github.com/Vonage/vivid/compare/v2.18.0...v2.18.1) (2021-08-25)
 
 

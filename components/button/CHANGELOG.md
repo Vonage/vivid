@@ -1,3 +1,12 @@
+# [2.19.0](https://github.com/vonage/vivid/compare/v2.18.1...v2.19.0) (2021-10-04)
+
+
+### Bug Fixes
+
+* **vwc-button:** clicking a submit button results in generating a click on the first "submittable" ([#1074](https://github.com/vonage/vivid/issues/1074)) ([95f9521](https://github.com/vonage/vivid/commit/95f95219ad7c429bf1453259609735820c575376))
+
+
+
 ## [2.18.1](https://github.com/vonage/vivid/compare/v2.18.0...v2.18.1) (2021-08-25)
 
 
