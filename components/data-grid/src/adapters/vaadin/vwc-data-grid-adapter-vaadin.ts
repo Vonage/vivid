@@ -67,6 +67,9 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 						[part~="cell"] ::slotted(vaadin-grid-cell-content) {
 							padding: 4px 16px;
 						}
+						:host(:not([reordering])) [part~='row'][selected] [part~='body-cell']:not([part~='details-cell']) {
+							background-image: linear-gradient(var(--vvd-color-neutral-30), var(--vvd-color-neutral-30));
+						}
 					</style>
 				</template>
 			</dom-module>
