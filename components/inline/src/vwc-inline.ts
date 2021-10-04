@@ -10,7 +10,7 @@ import { style } from './vwc-inline.css.js';
 
 
 // eslint-disable-next-line no-shadow
-export enum InlineTemplate {
+export enum AutoSizing {
 	Fit = 'fit',
 	Fill = 'fill',
 }
@@ -45,11 +45,11 @@ export class Inline extends LitElement {
 	columnSpacing: ColumnSpacing = Size.Medium;
 
 	/**
-	 * @prop template - sets the initial preferred template from predefined available options
+	 * @prop auto-sizing - sets the initial preferred auto-sizing from predefined available options
 	 * @public
 	 * */
 	@property({ type: String, reflect: true })
-	template?: InlineTemplate;
+	autoSizing?: AutoSizing;
 
 	protected render(): TemplateResult {
 		return html`<div class="layout"><slot></slot></div>`;

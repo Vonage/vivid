@@ -4,7 +4,7 @@ $items-min-inline-size-v-name: --items-min-inline-size;
 $items-spacing-v-name: --items-spacing;
 $inline-gutters-v-name: --inline-gutters;
 
-$inline-template: --inline-template;
+$auto-sizing: --auto-sizing;
 
 /* #region SIZE */
 $items-min-inline-sizes: (
@@ -63,7 +63,7 @@ $items-gutters: (
 		gap: var(#{$items-spacing-v-name}, #{map.get($items-spacings, md)});
 		grid-auto-rows: min-content;
 		grid-template-columns: repeat(
-			var(#{$inline-template}),
+			var(#{$auto-sizing}),
 			minmax(var(#{$items-min-inline-size-v-name}, #{map.get($items-min-inline-sizes, lg)}), 1fr)
 		);
 	}
@@ -81,15 +81,15 @@ $items-gutters: (
 	}
 }
 
-:host(:not(template)),
-:host([template="fit"i]) {
+:host(:not(auto-sizing)),
+:host([auto-sizing="fit"i]) {
 	.layout {
-		#{$inline-template}: auto-fit;
+		#{$auto-sizing}: auto-fit;
 	}
 }
 
-:host([template="fill"i]) {
+:host([auto-sizing="fill"i]) {
 	.layout {
-		#{$inline-template}: auto-fill;
+		#{$auto-sizing}: auto-fill;
 	}
 }

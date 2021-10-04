@@ -23,7 +23,7 @@ export async function createElementVariations(wrapper) {
 	}
   </style>
   
-  <vwc-inline column-basis="sm" column-spacing="md" template="fit">
+  <vwc-inline column-basis="sm" column-spacing="md" auto-sizing="fit">
 	<section class="story">
 	  <article class="story-content">
 		<p>
@@ -71,7 +71,7 @@ export async function createElementVariations(wrapper) {
 	</article>
 	</section>
 	</vwc-inline>
-	<vwc-inline column-basis="md" column-spacing="xl" template="fill">
+	<vwc-inline column-basis="md" column-spacing="xl" auto-sizing="fill">
 	<section class="story">
 	  <article class="story-content">
 		<p>
