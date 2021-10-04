@@ -7,8 +7,6 @@
 	h4,
 	h5,
 	h6 {
-		@supports(margin: revert) {
-			margin: revert;
-		}
+		all: revert;
 	}
 }
