@@ -8,9 +8,9 @@ $auto-sizing: --auto-sizing;
 
 /* #region SIZE */
 $items-min-inline-sizes: (
-	'sm': 10rem,
-	'md': 20rem,
-	'lg': 30rem,
+	sm: 10rem,
+	md: 20rem,
+	lg: 30rem,
 );
 
 @each $key, $value in $items-min-inline-sizes {
@@ -24,10 +24,9 @@ $items-min-inline-sizes: (
 
 /* #region SPACING */
 $items-spacings: (
-	
-	'xs': 16px,
-	'md': 24px,
-	'xl': 32px
+	xs: 16px,
+	md: 24px,
+	xl: 32px
 );
 
 @each $key, $value in $items-spacings {
@@ -41,10 +40,9 @@ $items-spacings: (
 
 /* #region GUTTERS */
 $items-gutters: (
-	
-	'xs': 16px,
-	'md': 24px,
-	'xl': 32px
+	xs: 16px,
+	md: 24px,
+	xl: 32px
 );
 
 @each $key, $value in $items-gutters {
