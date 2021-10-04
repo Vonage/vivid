@@ -9,7 +9,7 @@ import { style as vwcButtonStyle } from './vwc-button.css.js';
 import { styles as mwcButtonStyles } from '@material/mwc-button/styles.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
 import type { Connotation, Layout, Shape } from '@vonage/vvd-foundation/constants';
-import { requestSubmit } from '@vonage/vvd-foundation/form-association';
+import type { PropertyValues } from 'lit-element';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -37,7 +37,7 @@ type ButtonConnotation = Extract<
 	| Connotation.Alert
 	| Connotation.Info
 	| Connotation.Announcement
->;
+	>;
 
 type ButtonShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
 
@@ -47,6 +47,12 @@ type ButtonShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
  */
 @customElement('vwc-button')
 export class VWCButton extends MWCButton {
+	@property({ type: String, reflect: true })
+	name?:string
+
+	@property({ type: String, reflect: true })
+	value?:string
+
 	@property({ type: Boolean, reflect: true })
 	dense = false;
 
@@ -89,6 +95,15 @@ export class VWCButton extends MWCButton {
 		}
 	}
 
+	protected override update(changes:PropertyValues):void {
+		super.update(changes);
+		[...changes.keys()]
+			.filter(attributeName => ['name', 'value'].includes(attributeName as string))
+			.forEach((attributeName) => {
+				this.#_hiddenButton.setAttribute(attributeName as string, (this as any)[attributeName as string]);
+			});
+	}
+
 	protected updated(changes: Map<string, boolean>): void {
 		if (changes.has('type')) {
 			this.#_hiddenButton?.setAttribute('type', this.getAttribute('type') ?? '');
@@ -128,7 +143,7 @@ export class VWCButton extends MWCButton {
 			case 'button':
 				break;
 			default:
-				requestSubmit(this.form);
+				this.#_hiddenButton.click();
 				break;
 			}
 		}
@@ -161,3 +176,4 @@ export class VWCButton extends MWCButton {
 		this.appendChild(this.#_hiddenButton);
 	}
 }
+
