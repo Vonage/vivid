@@ -3,19 +3,19 @@
 #### `should reflect/react on reordering property`
 
 ```html
+<dom-module
+  id="my-grid-styles"
+  theme-for="vaadin-grid"
+>
+  <template>
+  </template>
+</dom-module>
 <vaadin-grid
   class="vvd-grid-engine-root"
   column-reordering-allowed=""
   style="touch-action: none;"
   theme="no-border"
 >
-  <dom-module
-    id="my-grid-styles"
-    theme-for="vaadin-grid"
-  >
-    <template>
-    </template>
-  </dom-module>
 </vaadin-grid>
 
 ```
@@ -23,18 +23,18 @@
 #### `should reflect columns redefinition on refreshConfiguration (sortable, resizable)`
 
 ```html
+<dom-module
+  id="my-grid-styles"
+  theme-for="vaadin-grid"
+>
+  <template>
+  </template>
+</dom-module>
 <vaadin-grid
   class="vvd-grid-engine-root"
   style="touch-action: none;"
   theme="no-border"
 >
-  <dom-module
-    id="my-grid-styles"
-    theme-for="vaadin-grid"
-  >
-    <template>
-    </template>
-  </dom-module>
   <vaadin-grid-column path="x">
   </vaadin-grid-column>
   <vaadin-grid-column path="y">
@@ -76,18 +76,18 @@
 ```
 
 ```html
+<dom-module
+  id="my-grid-styles"
+  theme-for="vaadin-grid"
+>
+  <template>
+  </template>
+</dom-module>
 <vaadin-grid
   class="vvd-grid-engine-root"
   style="touch-action: none;"
   theme="no-border"
 >
-  <dom-module
-    id="my-grid-styles"
-    theme-for="vaadin-grid"
-  >
-    <template>
-    </template>
-  </dom-module>
   <vaadin-grid-column path="x">
   </vaadin-grid-column>
   <vaadin-grid-column path="y">
@@ -129,18 +129,18 @@
 ```
 
 ```html
+<dom-module
+  id="my-grid-styles"
+  theme-for="vaadin-grid"
+>
+  <template>
+  </template>
+</dom-module>
 <vaadin-grid
   class="vvd-grid-engine-root"
   style="touch-action: none;"
   theme="no-border"
 >
-  <dom-module
-    id="my-grid-styles"
-    theme-for="vaadin-grid"
-  >
-    <template>
-    </template>
-  </dom-module>
   <vaadin-grid-column path="x">
   </vaadin-grid-column>
   <vaadin-grid-column path="y">

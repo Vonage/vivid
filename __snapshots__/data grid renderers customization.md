@@ -3,18 +3,18 @@
 #### `should render header text by default`
 
 ```html
+<dom-module
+  id="my-grid-styles"
+  theme-for="vaadin-grid"
+>
+  <template>
+  </template>
+</dom-module>
 <vaadin-grid
   class="vvd-grid-engine-root"
   style="touch-action: none;"
   theme="no-border"
 >
-  <dom-module
-    id="my-grid-styles"
-    theme-for="vaadin-grid"
-  >
-    <template>
-    </template>
-  </dom-module>
   <vaadin-grid-column path="x">
   </vaadin-grid-column>
   <vaadin-grid-column path="y">
@@ -82,18 +82,18 @@
 #### `should render footer text by default`
 
 ```html
+<dom-module
+  id="my-grid-styles"
+  theme-for="vaadin-grid"
+>
+  <template>
+  </template>
+</dom-module>
 <vaadin-grid
   class="vvd-grid-engine-root"
   style="touch-action: none;"
   theme="no-border"
 >
-  <dom-module
-    id="my-grid-styles"
-    theme-for="vaadin-grid"
-  >
-    <template>
-    </template>
-  </dom-module>
   <vaadin-grid-column path="x">
   </vaadin-grid-column>
   <vaadin-grid-column path="y">
@@ -165,18 +165,18 @@
 #### `should render custom header when renderer provided`
 
 ```html
+<dom-module
+  id="my-grid-styles"
+  theme-for="vaadin-grid"
+>
+  <template>
+  </template>
+</dom-module>
 <vaadin-grid
   class="vvd-grid-engine-root"
   style="touch-action: none;"
   theme="no-border"
 >
-  <dom-module
-    id="my-grid-styles"
-    theme-for="vaadin-grid"
-  >
-    <template>
-    </template>
-  </dom-module>
   <vaadin-grid-column path="x">
   </vaadin-grid-column>
   <vaadin-grid-column path="y">
@@ -244,18 +244,18 @@
 #### `should render custom footer when renderer provided`
 
 ```html
+<dom-module
+  id="my-grid-styles"
+  theme-for="vaadin-grid"
+>
+  <template>
+  </template>
+</dom-module>
 <vaadin-grid
   class="vvd-grid-engine-root"
   style="touch-action: none;"
   theme="no-border"
 >
-  <dom-module
-    id="my-grid-styles"
-    theme-for="vaadin-grid"
-  >
-    <template>
-    </template>
-  </dom-module>
   <vaadin-grid-column path="x">
   </vaadin-grid-column>
   <vaadin-grid-column path="y">
@@ -326,18 +326,18 @@
 #### `should render custom cell when renderer provided`
 
 ```html
+<dom-module
+  id="my-grid-styles"
+  theme-for="vaadin-grid"
+>
+  <template>
+  </template>
+</dom-module>
 <vaadin-grid
   class="vvd-grid-engine-root"
   style="touch-action: none;"
   theme="no-border"
 >
-  <dom-module
-    id="my-grid-styles"
-    theme-for="vaadin-grid"
-  >
-    <template>
-    </template>
-  </dom-module>
   <vaadin-grid-column path="x">
   </vaadin-grid-column>
   <vaadin-grid-column path="y">

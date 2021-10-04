@@ -3,18 +3,18 @@
 #### `should sort ascending upon the first click on sorting header`
 
 ```html
+<dom-module
+  id="my-grid-styles"
+  theme-for="vaadin-grid"
+>
+  <template>
+  </template>
+</dom-module>
 <vaadin-grid
   class="vvd-grid-engine-root"
   style="touch-action: none;"
   theme="no-border"
 >
-  <dom-module
-    id="my-grid-styles"
-    theme-for="vaadin-grid"
-  >
-    <template>
-    </template>
-  </dom-module>
   <vaadin-grid-column path="x">
   </vaadin-grid-column>
   <vaadin-grid-column path="y">
@@ -83,18 +83,18 @@
 ```
 
 ```html
+<dom-module
+  id="my-grid-styles"
+  theme-for="vaadin-grid"
+>
+  <template>
+  </template>
+</dom-module>
 <vaadin-grid
   class="vvd-grid-engine-root"
   style="touch-action: none;"
   theme="no-border"
 >
-  <dom-module
-    id="my-grid-styles"
-    theme-for="vaadin-grid"
-  >
-    <template>
-    </template>
-  </dom-module>
   <vaadin-grid-column path="x">
   </vaadin-grid-column>
   <vaadin-grid-column path="y">
@@ -166,18 +166,18 @@
 #### `should sort descending upon the second click on sorting header`
 
 ```html
+<dom-module
+  id="my-grid-styles"
+  theme-for="vaadin-grid"
+>
+  <template>
+  </template>
+</dom-module>
 <vaadin-grid
   class="vvd-grid-engine-root"
   style="touch-action: none;"
   theme="no-border"
 >
-  <dom-module
-    id="my-grid-styles"
-    theme-for="vaadin-grid"
-  >
-    <template>
-    </template>
-  </dom-module>
   <vaadin-grid-column path="x">
   </vaadin-grid-column>
   <vaadin-grid-column path="y">
@@ -249,18 +249,18 @@
 #### `should disable sort upon the third click on sorting header`
 
 ```html
+<dom-module
+  id="my-grid-styles"
+  theme-for="vaadin-grid"
+>
+  <template>
+  </template>
+</dom-module>
 <vaadin-grid
   class="vvd-grid-engine-root"
   style="touch-action: none;"
   theme="no-border"
 >
-  <dom-module
-    id="my-grid-styles"
-    theme-for="vaadin-grid"
-  >
-    <template>
-    </template>
-  </dom-module>
   <vaadin-grid-column path="x">
   </vaadin-grid-column>
   <vaadin-grid-column path="y">
