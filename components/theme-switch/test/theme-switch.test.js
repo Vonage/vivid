@@ -4,7 +4,7 @@ import {
 	textToDomToParent,
 	waitNextTask,
 	waitInterval,
-} from '../../../test/test-helpers';
+} from '../../../test/test-helpers.js';
 import {
 	getBaseVarNames,
 	assertBaseVarsMatch,

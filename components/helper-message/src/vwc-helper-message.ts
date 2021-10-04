@@ -7,7 +7,7 @@ import {
 	TemplateResult,
 	LitElement,
 } from 'lit-element';
-import { style as vwcHelperMessageStyle } from './vwc-helper-message.css';
+import { style as vwcHelperMessageStyle } from './vwc-helper-message.css.js';
 
 declare global {
 	interface HTMLElementTagNameMap {

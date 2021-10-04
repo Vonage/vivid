@@ -1,10 +1,11 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-media-controller';
+import '@vonage/vwc-media-controller/vwc-scrub-bar.js';
 import { ifDefined } from 'lit-html/directives/if-defined';
-import { ClassInfo, classMap } from 'lit-html/directives/class-map';
+import { classMap } from 'lit-html/directives/class-map';
+import type { ClassInfo } from 'lit-html/directives/class-map';
 import { pipe } from 'ramda';
-import { VWCScrubBar } from '@vonage/vwc-media-controller/vwc-scrub-bar';
-import { style as AudioStyle } from './vwc-audio.css';
+import { style as AudioStyle } from './vwc-audio.css.js';
 import { ariaProperty } from '@material/mwc-base/aria-property';
 import '@vonage/vwc-icon';
 import {
@@ -12,18 +13,19 @@ import {
 	TemplateResult,
 	customElement,
 	html,
-	PropertyValues,
 } from 'lit-element';
+
+import type { PropertyValues } from 'lit-element';
 
 import { nothing } from 'lit-html';
 import { internalProperty, property, query } from 'lit-element/lib/decorators';
-import { Connotation } from '@vonage/vvd-foundation/constants';
+import type { VWCScrubBar } from '@vonage/vwc-media-controller/vwc-scrub-bar';
+import type { Connotation } from '@vonage/vvd-foundation/constants';
 
 const SECOND = 1;
 const MINUTE = 60 * SECOND;
 const HOUR = 60 * MINUTE;
 
-[VWCScrubBar];
 
 const setEvents = function (eventSource: HTMLElement, handlersMap: Record<string, ()=> unknown>) {
 	return (pipe as any)(...Object

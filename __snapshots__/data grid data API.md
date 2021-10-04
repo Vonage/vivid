@@ -3,6 +3,13 @@
 #### `should have items as data provider`
 
 ```html
+<dom-module
+  id="my-grid-styles"
+  theme-for="vaadin-grid"
+>
+  <template>
+  </template>
+</dom-module>
 <vaadin-grid
   class="vvd-grid-engine-root"
   style="touch-action: none;"
@@ -75,6 +82,13 @@
 #### `should update items on reassign the whole array`
 
 ```html
+<dom-module
+  id="my-grid-styles"
+  theme-for="vaadin-grid"
+>
+  <template>
+  </template>
+</dom-module>
 <vaadin-grid
   class="vvd-grid-engine-root"
   style="touch-action: none;"
@@ -147,6 +161,13 @@
 #### `should update items internal change by refreshData`
 
 ```html
+<dom-module
+  id="my-grid-styles"
+  theme-for="vaadin-grid"
+>
+  <template>
+  </template>
+</dom-module>
 <vaadin-grid
   class="vvd-grid-engine-root"
   style="touch-action: none;"
@@ -217,6 +238,13 @@
 ```
 
 ```html
+<dom-module
+  id="my-grid-styles"
+  theme-for="vaadin-grid"
+>
+  <template>
+  </template>
+</dom-module>
 <vaadin-grid
   class="vvd-grid-engine-root"
   style="touch-action: none;"
@@ -298,6 +326,13 @@
 #### `should have dataProvider as data provider`
 
 ```html
+<dom-module
+  id="my-grid-styles"
+  theme-for="vaadin-grid"
+>
+  <template>
+  </template>
+</dom-module>
 <vaadin-grid
   class="vvd-grid-engine-root"
   style="touch-action: none;"
@@ -370,6 +405,13 @@
 #### `should update dataProvider on reassign it as a new function`
 
 ```html
+<dom-module
+  id="my-grid-styles"
+  theme-for="vaadin-grid"
+>
+  <template>
+  </template>
+</dom-module>
 <vaadin-grid
   class="vvd-grid-engine-root"
   style="touch-action: none;"
@@ -442,6 +484,13 @@
 #### `should update dataProvider internal change by refreshData`
 
 ```html
+<dom-module
+  id="my-grid-styles"
+  theme-for="vaadin-grid"
+>
+  <template>
+  </template>
+</dom-module>
 <vaadin-grid
   class="vvd-grid-engine-root"
   style="touch-action: none;"
@@ -512,6 +561,13 @@
 ```
 
 ```html
+<dom-module
+  id="my-grid-styles"
+  theme-for="vaadin-grid"
+>
+  <template>
+  </template>
+</dom-module>
 <vaadin-grid
   class="vvd-grid-engine-root"
   style="touch-action: none;"

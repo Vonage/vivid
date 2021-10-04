@@ -1,30 +1,29 @@
 import '@vonage/vvd-core';
-import './vwc-data-grid-column';
+import './vwc-data-grid-column.js';
 import {
 	GRID_COMPONENT,
 	GRID_ENGINE_ROOT_CLASS,
 	DataGrid,
 	DataGridHeader,
 	EventContext
-} from './vwc-data-grid-api';
+} from './vwc-data-grid-api.js';
 import {
 	COLUMN_DEFINITION_COMPONENT,
 	COLUMN_DEFINITION_UPDATE_EVENT,
 	DataGridColumn,
-} from './vwc-data-grid-column-api';
-import { RowDetailsRenderer } from './vwc-data-grid-renderer-api';
-import {
-	VWCDataGridColumn
-} from './vwc-data-grid-column';
-import { VWCDataGridAdapterVaadin } from './adapters/vaadin/vwc-data-grid-adapter-vaadin';
-import { style as vwcDataGridStyle } from './vwc-data-grid.css';
+} from './vwc-data-grid-column-api.js';
+import type { RowDetailsRenderer } from './vwc-data-grid-renderer-api.js';
+import { VWCDataGridAdapterVaadin } from './adapters/vaadin/vwc-data-grid-adapter-vaadin.js';
+import { style as vwcDataGridStyle } from './vwc-data-grid.css.js';
 import {
 	customElement,
 	property,
 	LitElement,
 	TemplateResult,
+	query,
 } from 'lit-element';
-import { DataGridAdapter } from './adapters/vwc-data-grid-adapter-api';
+import type { DataGridAdapter } from './adapters/vwc-data-grid-adapter-api.js';
+import type { GridElement } from '@vaadin/vaadin-grid';
 
 export {
 	GRID_COMPONENT,
@@ -50,6 +49,9 @@ declare global {
 @customElement('vwc-data-grid')
 export class VWCDataGrid extends LitElement implements DataGrid {
 	static styles = [vwcDataGridStyle, ...VWCDataGridAdapterVaadin.getStylesOverlay()];
+
+	@query(`.${GRID_ENGINE_ROOT_CLASS}`) baseGrid!: GridElement;
+
 	#gridAdapter = new VWCDataGridAdapterVaadin(this) as DataGridAdapter;
 
 	@property({ type: Boolean, reflect: true, attribute: 'multi-sort' })
@@ -127,7 +129,7 @@ export class VWCDataGrid extends LitElement implements DataGrid {
 	protected firstUpdated(): void {
 		this.addEventListener(COLUMN_DEFINITION_UPDATE_EVENT, () => this.processColumnDefs());
 		this.processColumnDefs();
-		this.shadowRoot?.firstElementChild?.addEventListener('selected-items-changed', (e) => {
+		this.baseGrid?.addEventListener('selected-items-changed', (e) => {
 			//	this will happen twice: https://github.com/vaadin/vaadin-grid/issues/859, therefore treatment:
 			const ne = e as CustomEvent;
 			if (ne.detail && typeof ne.detail.path === 'string' && ne.detail.path.includes('length')) {
@@ -148,7 +150,7 @@ export class VWCDataGrid extends LitElement implements DataGrid {
 		//	transform
 		const columnDefs = [];
 		for (const ae of columnDefinitionElements) {
-			columnDefs.push((ae as VWCDataGridColumn).getColumnConfig());
+			columnDefs.push(ae.getColumnConfig());
 		}
 
 		//	apply

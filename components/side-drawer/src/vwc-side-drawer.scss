@@ -31,12 +31,12 @@ $inline-size: var(#{variables.$side-drawer-inline-size}, 280px);
 
 	&.side-drawer--modal,
 	&.side-drawer--dismissible {
-		@media (prefers-reduced-motion: no-preference) {
-			transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-		}
 
 		&:not(.side-drawer--open) {
 			transform: translateX(-100%);
+		}
+		@media (prefers-reduced-motion: no-preference) {
+			transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 		}
 	}
 
@@ -51,14 +51,6 @@ $inline-size: var(#{variables.$side-drawer-inline-size}, 280px);
 		}
 	}
 }
-
-// .side-drawer--content {
-// 	:not(.side-drawer--unpin) & {
-// 		position: fixed;
-// 		max-inline-size: inherit;
-// 		min-inline-size: inherit;
-// 	}
-// }
 
 .side-drawer--top-bar {
 	$gutter: var(#{variables.$side-drawer-padding-top-bar}, #{$padding-default});
@@ -86,11 +78,6 @@ $inline-size: var(#{variables.$side-drawer-inline-size}, 280px);
 	bottom: 0;
 	left: 0;
 }
-
-// .aside-container {
-// 	display: flex;
-// 	&:not(&--open) {width: 0;}
-// }
 
 .side-drawer--scrim {
 	@include scrim-mixins.scrim-variables;

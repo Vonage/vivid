@@ -1,4 +1,4 @@
-import 'blocking-elements';
+// import 'blocking-elements';
 import 'wicg-inert';
 
 import {
@@ -6,7 +6,7 @@ import {
 } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import { classMap } from 'lit-html/directives/class-map';
-import { DocumentWithBlockingElements } from 'blocking-elements';
+import type { DocumentWithBlockingElements } from 'blocking-elements';
 
 const blockingElements =
 	(document as DocumentWithBlockingElements).$blockingElements;
@@ -197,13 +197,9 @@ export class VWCSideDrawerBase extends LitElement {
 
 	#trapFocus(): void {
 		blockingElements.push(this.rootEl);
-		// TODO: @rinaok what is the reason for the next line event?
-		// this.#createAndDispatchEvent('trapFocus');
 	}
 
 	#releaseFocusTrap(): void {
 		blockingElements.remove(this.rootEl);
-		// TODO: @rinaok what is the reason for the next line event?
-		// this.#createAndDispatchEvent('releaseFocus');
 	}
 }

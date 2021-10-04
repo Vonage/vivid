@@ -1,4 +1,5 @@
-import { getFormByIdOrClosest, InputElement } from './common';
+import { getFormByIdOrClosest, } from './common.js';
+import type { InputElement } from './common.js';
 
 const types = ['checkbox', 'textarea', 'input'];
 export type HiddenInputType = typeof types;
