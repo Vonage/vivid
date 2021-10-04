@@ -11,9 +11,10 @@ chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-side-drawer';
 
-function animateDrawer(drawerElement) {
+function animateDrawer(sideDrawerEl) {
 	const event = new Event('transitionend');
-	drawerElement.dispatchEvent(event);
+	const aside = sideDrawerEl.shadowRoot.querySelector('aside');
+	aside.dispatchEvent(event);
 }
 
 describe('side-drawer', () => {
