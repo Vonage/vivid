@@ -80,12 +80,14 @@ export class VWCSideDrawerBase extends LitElement {
 	connectedCallback(): void {
 		super.connectedCallback();
 		document.addEventListener('keydown', this.#handleKeydown);
+		this.addEventListener('transitionend', this.#handleTransitionEnd);
 	}
 
 	disconnectedCallback(): void {
 		super.disconnectedCallback();
 		this.#releaseFocusTrap();
 		document.removeEventListener('keydown', this.#handleKeydown);
+		this.removeEventListener('transitionend', this.#handleTransitionEnd);
 	}
 
 	protected render(): TemplateResult {
@@ -105,8 +107,7 @@ export class VWCSideDrawerBase extends LitElement {
 		return html`
 			<aside
 				part="${ifDefined(alternate)}"
-				class="side-drawer ${classMap(classes)}"
-				@transitionend=${this.#handleTransitionEnd}>
+				class="side-drawer ${classMap(classes)}">
 
 				${topBar}
 

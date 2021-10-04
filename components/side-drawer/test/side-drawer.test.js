@@ -16,7 +16,7 @@ function animateDrawer(drawerElement) {
 	drawerElement.dispatchEvent(event);
 }
 
-describe('Side-drawer', () => {
+describe('side-drawer', () => {
 	let addElement = isolatedElementsCreation();
 
 	it(`${COMPONENT_NAME} is defined as a custom element`, async () => {
@@ -43,7 +43,6 @@ describe('Side-drawer', () => {
 			);
 
 			await actualElement.updateComplete;
-
 			expect(actualElement.alternate, 'alternate should be false')
 				.to
 				.equal(false);

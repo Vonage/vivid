@@ -1,4 +1,4 @@
-# `Side-drawer`
+# `side-drawer`
 
 #### `should internal contents`
 
