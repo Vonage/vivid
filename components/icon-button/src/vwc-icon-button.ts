@@ -5,7 +5,8 @@ import '@material/mwc-ripple';
 import {
 	customElement, property, html, TemplateResult
 } from 'lit-element';
-import { ClassInfo, classMap } from 'lit-html/directives/class-map';
+import { classMap } from 'lit-html/directives/class-map';
+import type { ClassInfo } from 'lit-html/directives/class-map';
 import { IconButton as MWCIconButton } from '@material/mwc-icon-button';
 import { style as vwcButtonStyle } from './vwc-icon-button.css.js';
 import { styles as mwcIconButtonStyles } from '@material/mwc-icon-button/mwc-icon-button.css.js';
