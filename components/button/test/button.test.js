@@ -4,7 +4,6 @@ import {
 	textToDomToParent,
 	assertDistancePixels,
 	assertComputedStyle,
-
 	isolatedElementsCreation,
 	randomAlpha,
 } from '../../../test/test-helpers.js';
@@ -12,7 +11,7 @@ import {
 	sizingTestCases,
 	shapeRoundedTestCases,
 	shapePillTestCases,
-} from '../../../test/shared.js';
+} from '../../../test/shared/index.js';
 import { connotationTestCases } from './button.connotation.test.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
@@ -400,6 +399,28 @@ describe('button', () => {
 				borderBottomColor: 'rgb(153,153,153)',
 				borderLeftColor: 'rgb(153,153,153)'
 			});
+		});
+	});
+
+	it(`should add name and value fields to FormData when present`, async function () {
+		const [sectionEl] = addElement(
+			textToDomToParent(
+				`<section>
+						<iframe name="testIframe"></iframe>
+						<form action="./test" method="get" target="testIframe" name="testForm" id="testForm">
+							<${COMPONENT_NAME} form="testForm" name="button_name" value="button_value">Button Text</${COMPONENT_NAME}>
+						</form>
+					</section>`
+			)
+		);
+
+		const [formEl, buttonEl, iframeEl] = ["form", "button", "iframe"].map(tagName => sectionEl.querySelector(tagName));
+		await waitNextTask();
+		return new Promise((resolve, reject) => {
+			iframeEl.addEventListener('load', () => {
+				(/\bbutton_name=button_value\b/.test(iframeEl.contentWindow.location.search) ? resolve : reject)(new Error('wrong value received for form field "button_name"'));
+			}, { once: true });
+			buttonEl.click();
 		});
 	});
 });

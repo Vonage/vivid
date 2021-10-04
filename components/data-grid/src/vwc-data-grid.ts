@@ -20,8 +20,10 @@ import {
 	property,
 	LitElement,
 	TemplateResult,
+	query,
 } from 'lit-element';
 import type { DataGridAdapter } from './adapters/vwc-data-grid-adapter-api.js';
+import type { GridElement } from '@vaadin/vaadin-grid';
 
 export {
 	GRID_COMPONENT,
@@ -47,6 +49,9 @@ declare global {
 @customElement('vwc-data-grid')
 export class VWCDataGrid extends LitElement implements DataGrid {
 	static styles = [vwcDataGridStyle, ...VWCDataGridAdapterVaadin.getStylesOverlay()];
+
+	@query(`.${GRID_ENGINE_ROOT_CLASS}`) baseGrid!: GridElement;
+
 	#gridAdapter = new VWCDataGridAdapterVaadin(this) as DataGridAdapter;
 
 	@property({ type: Boolean, reflect: true, attribute: 'multi-sort' })
@@ -124,7 +129,7 @@ export class VWCDataGrid extends LitElement implements DataGrid {
 	protected firstUpdated(): void {
 		this.addEventListener(COLUMN_DEFINITION_UPDATE_EVENT, () => this.processColumnDefs());
 		this.processColumnDefs();
-		this.shadowRoot?.firstElementChild?.addEventListener('selected-items-changed', (e) => {
+		this.baseGrid?.addEventListener('selected-items-changed', (e) => {
 			//	this will happen twice: https://github.com/vaadin/vaadin-grid/issues/859, therefore treatment:
 			const ne = e as CustomEvent;
 			if (ne.detail && typeof ne.detail.path === 'string' && ne.detail.path.includes('length')) {

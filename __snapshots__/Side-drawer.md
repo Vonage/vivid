@@ -1,4 +1,4 @@
-# `Side-drawer`
+# `side-drawer`
 
 #### `should internal contents`
 
@@ -9,6 +9,10 @@
     </slot>
   </div>
 </aside>
+<div class="side-drawer--app-content">
+  <slot name="app-content">
+  </slot>
+</div>
 
 ```
 
