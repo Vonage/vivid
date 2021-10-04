@@ -11,12 +11,13 @@ chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-side-drawer';
 
-function animateDrawer(drawerElement) {
+function animateDrawer(sideDrawerEl) {
 	const event = new Event('transitionend');
-	drawerElement.dispatchEvent(event);
+	const aside = sideDrawerEl.shadowRoot.querySelector('aside');
+	aside.dispatchEvent(event);
 }
 
-describe('Side-drawer', () => {
+describe('side-drawer', () => {
 	let addElement = isolatedElementsCreation();
 
 	it(`${COMPONENT_NAME} is defined as a custom element`, async () => {
@@ -43,7 +44,6 @@ describe('Side-drawer', () => {
 			);
 
 			await actualElement.updateComplete;
-
 			expect(actualElement.alternate, 'alternate should be false')
 				.to
 				.equal(false);
@@ -92,19 +92,13 @@ describe('Side-drawer', () => {
 				textToDomToParent(`<${COMPONENT_NAME} type="modal"></${COMPONENT_NAME}>`)
 			);
 		});
-		it('should fire opened and trapFocus events after animation completes and open is true', async () => {
+		it('should fire opened event after animation completes and open is true', async () => {
 			const onOpened = chai.spy();
-			const onFocusTrapped = chai.spy();
-
 			await sideDrawerEl.updateComplete;
 
 			const eventListenerPromise = new Promise((res) => {
 				sideDrawerEl.addEventListener('opened', () => {
 					onOpened();
-					res();
-				});
-				sideDrawerEl.addEventListener('trapFocus', () => {
-					onFocusTrapped();
 					res();
 				});
 			});
@@ -114,23 +108,16 @@ describe('Side-drawer', () => {
 
 			await eventListenerPromise;
 			onOpened.should.have.been.called();
-			onFocusTrapped.should.have.been.called();
 		});
 
-		it('should fire closed and releaseFocus events after animation completes and open is false', async () => {
+		it('should fire closed event after animation completes and open is false', async () => {
 			const onClosed = chai.spy();
-			const onFocusReleased = chai.spy();
-
 			sideDrawerEl.open = true;
 			await sideDrawerEl.updateComplete;
 
 			const eventListenerPromise = new Promise((res) => {
 				sideDrawerEl.addEventListener('closed', () => {
 					onClosed();
-					res();
-				});
-				sideDrawerEl.addEventListener('releaseFocus', () => {
-					onFocusReleased();
 					res();
 				});
 			});
@@ -140,7 +127,6 @@ describe('Side-drawer', () => {
 
 			await eventListenerPromise;
 			onClosed.should.have.been.called();
-			onFocusReleased.should.have.been.called();
 		});
 
 		it('should fire closed event after clicking on scrim', async () => {
