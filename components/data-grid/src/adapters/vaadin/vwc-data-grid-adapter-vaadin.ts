@@ -1,11 +1,13 @@
-import '@vaadin/vaadin-grid';
-import type { GridColumnElement, GridElement, GridEventContext } from '@vaadin/vaadin-grid';
-import '@vaadin/vaadin-grid/vaadin-grid-column';
-import '@vaadin/vaadin-grid/vaadin-grid-tree-column';
+import '@vaadin/vaadin-grid/src/vaadin-grid.js';
+import '@vaadin/vaadin-grid/src/vaadin-grid-column.js';
+import '@vaadin/vaadin-grid/src/vaadin-grid-tree-column.js';
 import '../../headers/vwc-data-grid-header.js';
 import {
 	DataGrid, EventContext, GRID_COMPONENT, GRID_ENGINE_ROOT_CLASS
 } from '../../vwc-data-grid-api.js';
+import type { GridElement } from '@vaadin/vaadin-grid/src/vaadin-grid.js';
+import type { GridColumnElement } from '@vaadin/vaadin-grid/src/vaadin-grid-column.js';
+import type { GridEventContext } from '@vaadin/vaadin-grid/src/interfaces.js';
 import type { DataGridColumn } from '../../vwc-data-grid-column-api.js';
 import type { DataGridAdapter } from '../vwc-data-grid-adapter-api.js';
 import type { MetaRendererProvider, DataRendererProvider, RowDetailsRendererProvider } from '../vwc-data-grid-render-provider-api.js';
@@ -59,6 +61,18 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 			_items = undefined;
 		}
 		return html`
+			<dom-module id="my-grid-styles" theme-for="vaadin-grid">
+				<template>
+					<style>
+						[part~="cell"] ::slotted(vaadin-grid-cell-content) {
+							padding: 4px 16px;
+						}
+						:host(:not([reordering])) [part~='row'][selected] [part~='body-cell']:not([part~='details-cell']) {
+							background-image: linear-gradient(var(--vvd-color-neutral-30), var(--vvd-color-neutral-30));
+						}
+					</style>
+				</template>
+			</dom-module>
 			<vaadin-grid
 				class="${GRID_ENGINE_ROOT_CLASS}"
 				theme="no-border"
@@ -69,6 +83,7 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 				.heightByRows="${this.#vwcGrid.heightByRows}"
 				.dataProvider="${_dataProvider}"
 			>
+
 				${this.#vwcGrid.columns.map(cc => this.renderColumnDef(cc))}
 			</vaadin-grid>
 		`;

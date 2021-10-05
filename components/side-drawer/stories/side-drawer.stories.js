@@ -33,7 +33,7 @@ const Template = args => html`
 		}
 		vwc-side-drawer#side-drawer {
 			flex: 0 0 auto;
-			height: 100%;
+			height: inherit;
 			--side-drawer-background-color: var(--vvd-color-neutral-10);
 		}
 		div#default > svg {
