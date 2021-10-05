@@ -16,7 +16,7 @@ $items-min-inline-sizes: (
 $items-spacings: (
 	xs: 16px,
 	md: 24px,
-	xl: 32px
+	xl: 32px,
 );
 
 @each $key, $value in $items-min-inline-sizes {
@@ -46,8 +46,8 @@ $items-spacings: (
 }
 /* #endregion */
 
-:host {
-	.layout {
+.layout {
+	:host & {
 		display: grid;
 		margin: var(#{$inline-gutters-v-name}, #{map.get($items-spacings, md)});
 		gap: var(#{$items-spacing-v-name}, #{map.get($items-spacings, md)});
@@ -57,29 +57,15 @@ $items-spacings: (
 			minmax(var(#{$items-min-inline-size-v-name}, #{map.get($items-min-inline-sizes, lg)}), 1fr)
 		);
 	}
-}
 
-:host([inline-gutters='']) {
-	.layout {
-		margin: 0;
-	}
-}
-
-:host([column-basis="block"i]) {
-	.layout {
-		grid-template-columns: 1fr;
-	}
-}
-
-:host(:not(auto-sizing)),
-:host([auto-sizing="fit"i]) {
-	.layout {
+	:host(:not(template)) &,
+	:host([template="fit"i]) & {
 		#{$auto-sizing}: auto-fit;
 	}
-}
-
-:host([auto-sizing="fill"i]) {
-	.layout {
+	:host([auto-sizing="fill"i]) & {
 		#{$auto-sizing}: auto-fill;
+	}
+	:host([column-basis="block"i]) & {
+		grid-template-columns: 1fr;
 	}
 }
