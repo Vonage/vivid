@@ -37,7 +37,7 @@ describe('inline', () => {
 	describe('default values', () => {
 		it('should have the default values', async () => {
 			const COMPONENT_PROPERTIES = {
-				columnBasis: 'sm', columnSpacing: 'md', inlineGutters: 'md'
+				columnBasis: 'sm', columnSpacing: 'md'
 			};
 			for await (const [key, value] of Object.entries(COMPONENT_PROPERTIES)) {
 				const [actualElement] = addElement(
