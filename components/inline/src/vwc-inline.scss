@@ -20,52 +20,39 @@ $items-spacings: (
 );
 
 @each $key, $value in $items-min-inline-sizes {
-	:host([column-basis="#{$key}"i]) {
-		.layout {
-			#{$items-min-inline-size-v-name}: $value;
-		}
+	.layout-column-basis-#{$key} {
+		#{$items-min-inline-size-v-name}: $value;
 	}
 }
-/* #endregion */
 
 @each $key, $value in $items-spacings {
-	:host([column-spacing="#{$key}"i]) {
-		.layout {
-			#{$items-spacing-v-name}: $value;
-		}
+	.layout-column-spacing-#{$key} {
+		#{$items-spacing-v-name}: $value;
+	}
+	.layout-inline-gutters-#{$key} {
+		#{$inline-gutters-v-name}: $value;
 	}
 }
-/* #endregion */
-
-@each $key, $value in $items-spacings {
-	:host([inline-gutters="#{$key}"i]) {
-		.layout {
-			#{$inline-gutters-v-name}: $value;
-		}
-	}
-}
-/* #endregion */
 
 .layout {
-	:host & {
-		display: grid;
-		margin: var(#{$inline-gutters-v-name}, #{map.get($items-spacings, md)});
-		gap: var(#{$items-spacing-v-name}, #{map.get($items-spacings, md)});
-		grid-auto-rows: min-content;
-		grid-template-columns: repeat(
-			var(#{$auto-sizing}),
-			minmax(var(#{$items-min-inline-size-v-name}, #{map.get($items-min-inline-sizes, lg)}), 1fr)
-		);
-	}
+	display: grid;
+	margin: var(#{$inline-gutters-v-name}, #{map.get($items-spacings, md)});
+	gap: var(#{$items-spacing-v-name}, #{map.get($items-spacings, md)});
+	grid-auto-rows: min-content;
+	grid-template-columns: repeat(
+		var(#{$auto-sizing}),
+		minmax(var(#{$items-min-inline-size-v-name}, #{map.get($items-min-inline-sizes, lg)}), 1fr)
+	);
 
-	:host(:not(template)) &,
-	:host([template="fit"i]) & {
+	&:not(.layout-auto-sizing-fill),
+	&.layout-auto-sizing-fit {
 		#{$auto-sizing}: auto-fit;
 	}
-	:host([auto-sizing="fill"i]) & {
+	&.layout-auto-sizing-fill {
 		#{$auto-sizing}: auto-fill;
 	}
-	:host([column-basis="block"i]) & {
+
+	&.layout-column-basis-block {
 		grid-template-columns: 1fr;
 	}
 }

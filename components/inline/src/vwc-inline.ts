@@ -5,6 +5,8 @@ import {
 	property,
 	TemplateResult,
 } from 'lit-element';
+import { classMap } from 'lit-html/directives/class-map';
+import type { ClassInfo } from 'lit-html/directives/class-map';
 import { Size } from '@vonage/vvd-foundation/constants';
 import { style } from './vwc-inline.css.js';
 
@@ -48,11 +50,22 @@ export class Inline extends LitElement {
 	 * @prop auto-sizing - sets the initial preferred auto-sizing from predefined available options
 	 * @public
 	 * */
-	@property({ type: String, reflect: true })
+	@property({ type: String, reflect: true, attribute: 'auto-sizing' })
 	autoSizing?: AutoSizing;
 
+	protected getRenderClasses(): ClassInfo {
+		return {
+			[`layout-column-basis-${this.columnBasis}`]: !!this.columnBasis,
+			[`layout-inline-gutters-${this.inlineGutters}`]: !!this.inlineGutters,
+			[`layout-column-spacing-${this.columnSpacing}`]: !!this.columnSpacing,
+			[`layout-auto-sizing-${this.autoSizing}`]: !!this.autoSizing,
+		};
+	}
+
 	protected render(): TemplateResult {
-		return html`<div class="layout"><slot></slot></div>`;
+		return html`<div class="layout ${classMap(this.getRenderClasses())}">
+			<slot></slot>
+		</div>`;
 	}
 }
 
