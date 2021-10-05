@@ -39,6 +39,14 @@ const loremIpsum = () => html`
 
 const content = () => Array(8).fill().map(loremIpsum);
 
+const style = html`
+	<style>
+		.sb-show-main.sb-main-padded {
+			padding: 0;
+		}
+	</style>
+`;
+
 const topAppBarContent = html`
 	<vwc-theme-switch slot="actionItems"></vwc-theme-switch>
 	<span slot="title">Main top bar</span>
@@ -48,6 +56,7 @@ const topAppBarContent = html`
 `;
 
 const WithAppContentTemplate = args => html`
+	${style}
 	<vwc-side-drawer alternate hastopbar ...=${spread(args)}>
 			<span slot="top-bar">Side drawer top bar</span>
 			Should top bar font face differ from body?
@@ -63,6 +72,7 @@ export const WithAppContent = WithAppContentTemplate.bind({});
 WithAppContent.args = {};
 
 const WithTopAppBarTemplate = args => html`
+	${style}
 	<vwc-side-drawer alternate hastopbar ...=${spread(args)}>
 			<span slot="top-bar">Side drawer top bar</span>
 			Should top bar font face differ from body?
@@ -83,6 +93,7 @@ const Masthead = () => html`
 `;
 
 const WithTopAppBarFixedTemplate = args => html`
+	${style}
 	<vwc-side-drawer alternate hastopbar ...=${spread(args)}>
 			<span slot="top-bar">${Masthead()}</span>
 			Should top bar font face differ from body?
