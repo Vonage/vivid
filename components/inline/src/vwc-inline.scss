@@ -3,7 +3,6 @@
 $items-min-inline-size-v-name: --items-min-inline-size;
 $items-spacing-v-name: --items-spacing;
 $inline-gutters-v-name: --inline-gutters;
-
 $auto-sizing: --auto-sizing;
 
 /* #region SIZE */
@@ -11,6 +10,13 @@ $items-min-inline-sizes: (
 	sm: 10rem,
 	md: 20rem,
 	lg: 30rem,
+);
+
+/* #region SPACEING */
+$items-spacings: (
+	xs: 16px,
+	md: 24px,
+	xl: 32px
 );
 
 @each $key, $value in $items-min-inline-sizes {
@@ -22,13 +28,6 @@ $items-min-inline-sizes: (
 }
 /* #endregion */
 
-/* #region SPACING */
-$items-spacings: (
-	xs: 16px,
-	md: 24px,
-	xl: 32px
-);
-
 @each $key, $value in $items-spacings {
 	:host([column-spacing="#{$key}"i]) {
 		.layout {
@@ -38,14 +37,7 @@ $items-spacings: (
 }
 /* #endregion */
 
-/* #region GUTTERS */
-$items-gutters: (
-	xs: 16px,
-	md: 24px,
-	xl: 32px
-);
-
-@each $key, $value in $items-gutters {
+@each $key, $value in $items-spacings {
 	:host([inline-gutters="#{$key}"i]) {
 		.layout {
 			#{$inline-gutters-v-name}: $value;
@@ -57,7 +49,7 @@ $items-gutters: (
 :host {
 	.layout {
 		display: grid;
-		margin: var(#{$inline-gutters-v-name}, #{map.get($items-gutters, md)});
+		margin: var(#{$inline-gutters-v-name}, #{map.get($items-spacings, md)});
 		gap: var(#{$items-spacing-v-name}, #{map.get($items-spacings, md)});
 		grid-auto-rows: min-content;
 		grid-template-columns: repeat(
