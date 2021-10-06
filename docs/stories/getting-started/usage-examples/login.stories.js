@@ -14,7 +14,7 @@ export const LogIn = () => html`
       padding: 8px 0px;
     }
     vwc-side-drawer#side-drawer {
-      --side-drawer-min-inline-size: 600px;
+      --side-drawer-inline-size: 600px;
     }
     main {
       width: 100%;
@@ -32,7 +32,7 @@ export const LogIn = () => html`
   <vwc-side-drawer id="side-drawer" hasTopBar>
     <span slot="top-bar"><vwc-icon type="vonage-mono"></vwc-icon><vwc-text font-face="body-1-bold"> VONAGE</vwc-text></span>
     <form>
-      <vwc-inline column-basis="block" inline-gutters="xl">
+      <vwc-layout column-basis="block" inline-gutters="xl">
         <section>
             <vwc-text font-face="title-2">Welcome back!</vwc-text>
         </section>
@@ -40,34 +40,34 @@ export const LogIn = () => html`
             <vwc-text font-face="body-2">Don't have an account? <a href="#">Sign Up</a></vwc-text>
         </section>
         <section>
-          <vwc-inline column-basis="block" inline-gutters="">
+          <vwc-layout column-basis="block">
             <vwc-textfield name="username" label="username" icon="user" placeholder=" " outlined="">
               <input value="" slot="formInputElement" class="vivid-input-internal" name="username" type="text" placeholder=" "/>
             </vwc-textfield>
             <vwc-textfield name="password" label="password" icon="lock" type="password" placeholder=" " outlined="">
               <input value="" slot="formInputElement" class="vivid-input-internal" name="password" type="password" placeholder=" "/>
             </vwc-textfield>
-          </vwc-inline>
+          </vwc-layout>
         </section>
         <section>
-          <vwc-inline inline-gutters="">
+          <vwc-layout>
             <vwc-formfield label="Remember me"><vwc-checkbox></vwc-checkbox></vwc-formfield>
             <vwc-text class="password" font-face="body-2"><a href="#">Forgot password?</a></vwc-text>
-          </vwc-inline>
+          </vwc-layout>
         </section>
         <section>
             <vwc-button layout="filled">Log in</vwc-button>
         </section>
-      </vwc-inline>
+      </vwc-layout>
     </form>
   </vwc-side-drawer>
 
   <main>
-      <vwc-inline id="content" column-basis="block">
+      <vwc-layout id="content" column-basis="block">
           <section><vwc-text font-face="subtitle-1">Lorem ipsum</vwc-text></section>
           <section><vwc-text font-face="body-1">Lorem ipsum lorem ipsum lorem ipsum lorem ipsum</vwc-text></section>
           <section><vwc-button label="Apply Now →" layout="outlined" type="submit" outlined=""></vwc-button></section>
-      </vwc-inline>
+      </vwc-layout>
   </main>
 </div>
 `;
