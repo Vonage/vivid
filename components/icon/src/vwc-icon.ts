@@ -47,7 +47,7 @@ type IconConnotation = Extract<
 
 @customElement('vwc-icon')
 export class VWCIcon extends LitElement {
-	static get styles(): CSSResult {
+	static override get styles(): CSSResult {
 		return style;
 	}
 
@@ -80,7 +80,7 @@ export class VWCIcon extends LitElement {
 		attribute: 'aria-label',
 		type: String,
 	})
-	ariaLabel?:string;
+	override ariaLabel = '';
 
 	protected getRenderClasses(): ClassInfo {
 		return {
@@ -88,7 +88,7 @@ export class VWCIcon extends LitElement {
 		};
 	}
 
-	render(): TemplateResult {
+	override render(): TemplateResult {
 		return html`<figure class="icon ${classMap(this.getRenderClasses())}" aria-label="${ifDefined(this.ariaLabel)}">${until(
 			resolveIcon(this.type)
 				.then(setSvgAttribute('aria-hidden', 'true'))
