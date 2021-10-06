@@ -64,7 +64,7 @@ export class VWCBadgeBase extends LitElement {
 			: nothing;
 	}
 
-	protected updated(changes: Map<string, boolean>): void {
+	protected override updated(changes: Map<string, boolean>): void {
   	handleMultipleDenseProps(this, changes);
 	}
 
@@ -75,7 +75,7 @@ export class VWCBadgeBase extends LitElement {
 		};
 	}
 
-	protected render(): TemplateResult {
+	protected override render(): TemplateResult {
 		return html`
 			<span class="vwc-badge ${classMap(this.getRenderClasses())}">
 				${this.renderIcon(this.icon)}

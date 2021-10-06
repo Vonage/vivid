@@ -14,7 +14,7 @@ export class VWCSideDrawer extends VWCSideDrawerBase {
 	 * assign styles
 	 * @internal
 	 * */
-	static styles = style;
+	static override styles = style;
 }
 
 declare global {
