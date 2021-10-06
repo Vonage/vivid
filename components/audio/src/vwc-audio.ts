@@ -55,7 +55,7 @@ type AudioConnotation =
 
 @customElement('vwc-audio')
 export class VWCAudio extends LitElement {
-	static styles = [AudioStyle];
+	static override styles = [AudioStyle];
 
 	@property({ type: String, reflect: true })
 	connotation?: AudioConnotation;
@@ -91,7 +91,7 @@ export class VWCAudio extends LitElement {
 	@internalProperty()
 	private _playheadPosition = 0;
 
-	protected firstUpdated(_changedProperties: PropertyValues):void {
+	protected override firstUpdated(_changedProperties: PropertyValues):void {
 		super.firstUpdated(_changedProperties);
 		setEvents(this._audio, {
 			/* istanbul ignore next */

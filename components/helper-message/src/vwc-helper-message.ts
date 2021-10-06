@@ -24,12 +24,12 @@ declare global {
  */
 @customElement('vwc-helper-message')
 export class VWCHelperMessage extends LitElement {
-	static styles = [vwcHelperMessageStyle];
+	static override styles = [vwcHelperMessageStyle];
 
 	@property({ attribute: 'is-error', type: Boolean, reflect: true })
 	isError = false;
 
-	protected render(): TemplateResult {
+	protected override render(): TemplateResult {
 		return html`
 			<vwc-icon class="helper-icon" type="info-negative" size="small"></vwc-icon>
 			<span class="helper-text"><slot></slot></span>
