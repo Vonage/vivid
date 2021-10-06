@@ -1,24 +1,30 @@
 import { Size } from '@vonage/vvd-foundation/constants';
-import { InlineTemplate } from '../vwc-inline';
-
-
+import { AutoSizing } from '../vwc-inline';
+// Example use:
+const SIZE = { ...Size, Block: 'block' };
 export const argTypes = {
-	template: {
+	'auto-sizing': {
 		control: {
 			type: 'select',
-			options: Object.values(InlineTemplate),
+			options: Object.values(AutoSizing),
 		}
 	},
-	size: {
+	'column-basis': {
 		control: {
 			type: 'select',
-			options: Object.values(Size),
+			options: Object.values(SIZE).filter(s => ([SIZE.Small, SIZE.Medium, SIZE.Large, SIZE.Block].includes(s))),
 		}
 	},
-	spacing: {
+	'column-spacing': {
 		control: {
 			type: 'select',
-			options: Object.values(Size).filter(s => [Size.Small, Size.Medium].includes(s)),
+			options: Object.values(Size).filter(s => [Size.x_Small, Size.Medium, Size.x_Large].includes(s)),
+		}
+	},
+	gutters: {
+		control: {
+			type: 'select',
+			options: Object.values(Size).filter(s => [Size.x_Small, Size.Medium, Size.x_Large].includes(s)),
 		}
 	}
 };
