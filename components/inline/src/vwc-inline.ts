@@ -29,8 +29,8 @@ export class Inline extends LitElement {
 	 * @prop inlineGutters - sets the initial preferred margin from predefined available options
 	 * @public
 	 * */
-	@property({ type: String, reflect: true, attribute: 'inline-gutters' })
-	inlineGutters: InlineGutters = Size.Medium;
+	@property({ type: String, reflect: true, attribute: 'gutters' })
+	inlineGutters?: InlineGutters;
 
 	/**
 	 * @prop columnBasis - sets the initial preferred measure of a column from predefined available options
@@ -56,7 +56,7 @@ export class Inline extends LitElement {
 	protected getRenderClasses(): ClassInfo {
 		return {
 			[`layout-column-basis-${this.columnBasis}`]: !!this.columnBasis,
-			[`layout-inline-gutters-${this.inlineGutters}`]: !!this.inlineGutters,
+			[`layout-gutters-${this.inlineGutters}`]: !!this.inlineGutters,
 			[`layout-column-spacing-${this.columnSpacing}`]: !!this.columnSpacing,
 			[`layout-auto-sizing-${this.autoSizing}`]: !!this.autoSizing,
 		};

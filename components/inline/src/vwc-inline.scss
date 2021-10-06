@@ -2,7 +2,7 @@
 
 $items-min-inline-size-v-name: --items-min-inline-size;
 $items-spacing-v-name: --items-spacing;
-$inline-gutters-v-name: --inline-gutters;
+$gutters-v-name: --gutters;
 $auto-sizing: --auto-sizing;
 
 /* #region SIZE */
@@ -29,14 +29,14 @@ $items-spacings: (
 	.layout-column-spacing-#{$key} {
 		#{$items-spacing-v-name}: $value;
 	}
-	.layout-inline-gutters-#{$key} {
-		#{$inline-gutters-v-name}: $value;
+	.layout-gutters-#{$key} {
+		#{$gutters-v-name}: $value;
 	}
 }
 
 .layout {
 	display: grid;
-	margin: var(#{$inline-gutters-v-name}, #{map.get($items-spacings, md)});
+	margin: var(#{$gutters-v-name}, #{map.get($items-spacings, 0)});
 	gap: var(#{$items-spacing-v-name}, #{map.get($items-spacings, md)});
 	grid-auto-rows: min-content;
 	grid-template-columns: repeat(

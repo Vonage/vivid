@@ -21,7 +21,7 @@ export const argTypes = {
 			options: Object.values(Size).filter(s => [Size.x_Small, Size.Medium, Size.x_Large].includes(s)),
 		}
 	},
-	'inline-gutters': {
+	gutters: {
 		control: {
 			type: 'select',
 			options: Object.values(Size).filter(s => [Size.x_Small, Size.Medium, Size.x_Large].includes(s)),

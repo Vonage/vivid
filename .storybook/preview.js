@@ -12,7 +12,6 @@ document.body.classList.add('vivid-scope');
 async function run() {
 	setCustomElements(customElements);
 	addParameters({
-		layout: 'fullscreen',
 		controls: {
 			expanded: true
 		},
@@ -25,8 +24,8 @@ async function run() {
 				order: [
 					'Introduction',
 					['Meet Vivid', 'Getting Started', 'Architecture', 'Roadmap', 'Contact Us'],
-					'Guides',
-					['Installation'],
+					'Getting Started',
+					['Installation', 'Usage Examples', 'Contribution', 'Volta To Vivid Migration'],
 					'Design System',
 					['Introduction'],
 					'Usage Examples',
