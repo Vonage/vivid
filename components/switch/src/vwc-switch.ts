@@ -43,7 +43,7 @@ export class VWCSwitch extends MWCSwitch {
 		};
 	}
 
-	protected override render() {
+	protected override render(): TemplateResult {
 		return html`
       <div class="mdc-switch ${classMap(this.getRenderClasses())}">
         <div class="mdc-switch__track"></div>
@@ -72,12 +72,12 @@ export class VWCSwitch extends MWCSwitch {
       </div>`;
 	}
 
-	async firstUpdated(): Promise<void> {
+	override async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
 		handleAutofocus(this);
 	}
 
-	protected renderRipple(): TemplateResult {
+	protected override renderRipple(): TemplateResult {
 		return html``;
 	}
 }
