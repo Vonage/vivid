@@ -4,7 +4,7 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Alpha/Components/Layout',
+	title: 'Components/Layout',
 	component: 'vwc-layout',
 	argTypes
 };
