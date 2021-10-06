@@ -208,14 +208,12 @@ describe('textfield action', () => {
 				return newButtonWrapper.firstChild;
 			}
 
-			const newButton = generateNewButton();
-
 			const expectedButtonsDisabled = [true, false, true, false];
 
 			actualElement.disabled = true;
-			actualElement.appendChild(newButton);
+			actualElement.appendChild(generateNewButton());
 
-			await waitNextTask();
+			await actualElement.updateComplete;
 			await actualElement.updateComplete;
 
 			const buttonsDisabledAfter = getButtonsDisabledStates(actualElement);
