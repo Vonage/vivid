@@ -1,5 +1,5 @@
 import { Size } from '@vonage/vvd-foundation/constants';
-import { AutoSizing } from '../vwc-inline';
+import { AutoSizing } from '../vwc-layout';
 // Example use:
 const SIZE = { ...Size, Block: 'block' };
 export const argTypes = {
