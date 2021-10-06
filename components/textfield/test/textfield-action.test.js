@@ -186,7 +186,7 @@ describe('textfield action', () => {
 			const buttonsDisabledBefore = getButtonsDisabledStates(actualElement);
 			actualElement.disabled = true;
 
-			await waitNextTask();
+			await actualElement.updateComplete;
 			await actualElement.updateComplete;
 
 			const buttonsDisabledAfter = getButtonsDisabledStates(actualElement);
