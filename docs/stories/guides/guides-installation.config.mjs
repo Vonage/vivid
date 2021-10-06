@@ -7,7 +7,7 @@ export default {
 	sourcePath: '../../installation.md',
 	outputName: 'guides-installation',
 	story: {
-		title: 'Guides/Installation',
+		title: 'Getting Started/Installation',
 		name: 'Installation',
 		parameters: {
 			options: {
@@ -17,7 +17,7 @@ export default {
 		},
 	},
 	htmlPostProcess: (htmlText) => {
-		let r = relocateStaticResources(
+		const r = relocateStaticResources(
 			htmlText,
 			['assets/images/installation.svg'],
 			'docs'

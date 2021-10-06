@@ -1,6 +1,6 @@
-import '../vwc-media-controller';
+import '../vwc-media-controller.js';
 import kefir from 'kefir';
-import { textToDomToParent, waitInterval } from '../../../test/test-helpers';
+import { textToDomToParent, waitInterval } from '../../../test/test-helpers.js';
 
 const CENTER_Y = 8,
 	TRACK_X = 40,

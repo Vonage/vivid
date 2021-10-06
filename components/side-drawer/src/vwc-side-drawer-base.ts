@@ -1,23 +1,27 @@
-import 'blocking-elements';
+// import 'blocking-elements';
 import 'wicg-inert';
 
 import {
-	html, LitElement, TemplateResult, property,
+	html, LitElement, TemplateResult, property, query
 } from 'lit-element';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import { classMap } from 'lit-html/directives/class-map';
-import { DocumentWithBlockingElements } from 'blocking-elements';
+import type { DocumentWithBlockingElements } from 'blocking-elements';
 
 const blockingElements =
 	(document as DocumentWithBlockingElements).$blockingElements;
 
 /**
- * @cssprop [side-drawer-background-color=The current theme's canvas (background) color] - Controls the background of the side drawer
- * @cssprop [side-drawer-min-inline-size=280px] - Controls the size of the side drawer
- * @cssprop [side-drawer-padding=16px] - Controls the padding of the side drawer
+ * @cssprop [side-drawer-background-color=Current theme's canvas (background) color] - Controls the background of the side drawer
+ * @cssprop [side-drawer-color=Current theme's on-canvas (text) color] - Controls the color of the side drawer
+ * @cssprop [side-drawer-inline-size=280px] - Controls the inline size of the side drawer
+ * @cssprop [side-drawer-padding-top-bar=16px] - Controls the padding of the side drawer's top bar
+ * @cssprop [side-drawer-padding-body=16px] - Controls the padding of the side drawer's body
  * @cssprop [side-drawer-z-index=6] - Controls the z-index of the side drawer
  * */
 export class VWCSideDrawerBase extends LitElement {
+  @query('.side-drawer') protected rootEl!: HTMLElement;
+
 	/**
 	 * @prop alternate - [Applies scheme alternate region](../../common/scheme/readme.md)
 	 * accepts boolean value
@@ -41,15 +45,15 @@ export class VWCSideDrawerBase extends LitElement {
 	hasTopBar?: boolean;
 
 	/**
-	 * @prop type - can be modal, dismissible or empty
-	 * accepts String value
+	 * @prop type - sets the type of the side drawer's layout
+	 * accepts "modal" | "dismissible"
 	 * @public
 	 * */
 	@property({
 		type: String,
 		reflect: true
 	})
-	type = '';
+	type?: 'modal' | 'dismissible';
 
 	@property({
 		type: Boolean,
@@ -75,14 +79,12 @@ export class VWCSideDrawerBase extends LitElement {
 
 	connectedCallback(): void {
 		super.connectedCallback();
-		this.addEventListener('transitionend', this.#handleTransitionEnd);
 		document.addEventListener('keydown', this.#handleKeydown);
 	}
 
 	disconnectedCallback(): void {
 		super.disconnectedCallback();
-		this.#releaseFocus();
-		this.removeEventListener('transitionend', this.#handleTransitionEnd);
+		this.#releaseFocusTrap();
 		document.removeEventListener('keydown', this.#handleKeydown);
 	}
 
@@ -100,31 +102,26 @@ export class VWCSideDrawerBase extends LitElement {
 			'side-drawer--open': this.open,
 		};
 
-		const aside = html`<aside
-							part="${ifDefined(alternate)}"
-							class="side-drawer ${classMap(classes)}">
-							${topBar}
-
-							<div class="side-drawer--content">
-								<slot></slot>
-							</div>
-						</aside>`;
-
 		return html`
-			${dismissible ? this.renderDismissible(aside) : aside}
+			<aside
+				part="${ifDefined(alternate)}"
+				class="side-drawer ${classMap(classes)}"
+				@transitionend=${this.#handleTransitionEnd}>
+
+				${topBar}
+
+				<div class="side-drawer--content">
+					<slot></slot>
+				</div>
+
+			</aside>
+
+			<div class="side-drawer--app-content">
+			<slot name="app-content"></slot>
+			</div>
+
 			${scrim}
 		`;
-	}
-
-	private renderDismissible(template: TemplateResult): TemplateResult {
-		const classes = {
-			'aside-container--open': this.open,
-		};
-
-		return html`
-			<div class="aside-container ${classMap(classes)}">
-				${template}
-			</div>`;
 	}
 
 	private renderTopBar(): TemplateResult {
@@ -176,12 +173,12 @@ export class VWCSideDrawerBase extends LitElement {
 
 	#closed(): void {
 		if (this.type === 'modal') {
-			this.#releaseFocus();
+			this.#releaseFocusTrap();
 		}
 		this.#notifyClose();
 	}
 
-	#createDispatchEvent(eventName: string): void {
+	#createAndDispatchEvent(eventName: string): void {
 		const init: CustomEventInit = {
 			bubbles: true,
 			composed: true
@@ -191,20 +188,18 @@ export class VWCSideDrawerBase extends LitElement {
 	}
 
 	#notifyClose(): void {
-		this.#createDispatchEvent('closed');
+		this.#createAndDispatchEvent('closed');
 	}
 
 	#notifyOpen(): void {
-		this.#createDispatchEvent('opened');
+		this.#createAndDispatchEvent('opened');
 	}
 
 	#trapFocus(): void {
-		blockingElements.push(this);
-		this.#createDispatchEvent('trapFocus');
+		blockingElements.push(this.rootEl);
 	}
 
-	#releaseFocus(): void {
-		blockingElements.remove(this);
-		this.#createDispatchEvent('releaseFocus');
+	#releaseFocusTrap(): void {
+		blockingElements.remove(this.rootEl);
 	}
 }

@@ -1,7 +1,6 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-badge';
-import '@vonage/vwc-button';
-import '@vonage/vwc-icon';
+import '@vonage/vwc-helper-message';
 import {
 	customElement,
 	html,
