@@ -58,10 +58,10 @@ export class VWCIconButtonToggle extends IconButtonToggleBase {
 	@property({ type: Boolean, reflect: true })
 	enlarged = false;
 
-	protected updated(changes: Map<string, boolean>): void {
+	protected override updated(changes: Map<string, boolean>): void {
 		handleMultipleDenseProps(this, changes);
 	}
-	protected renderRipple(): TemplateResult|string {
+	protected override renderRipple(): TemplateResult|string {
 		return this.shouldRenderRipple ? html`
             <mwc-ripple
                 .disabled="${this.disabled}">

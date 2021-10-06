@@ -24,7 +24,7 @@ declare global {
  */
 @customElement('vwc-pagination')
 export class VWCPagination extends LitElement {
-	static get styles(): CSSResult[] {
+	static override get styles(): CSSResult[] {
 		return [style];
 	}
 
@@ -34,13 +34,13 @@ export class VWCPagination extends LitElement {
 	@property({ type: Number, reflect: true, attribute: 'selected-index' })
 	selectedIndex = this.total - 1;
 
-	connectedCallback() {
+	override connectedCallback() {
 		super.connectedCallback();
 		this.setupPointerListeners();
 		this.reflectControlsState();
 	}
 
-	protected updated(changes: PropertyValues): void {
+	protected override updated(changes: PropertyValues): void {
 		//	validate and adjust total
 		let effectiveTotal = this.total;
 		if (typeof effectiveTotal !== 'number' || Number.isNaN(effectiveTotal) || effectiveTotal < 0) {
@@ -71,7 +71,7 @@ export class VWCPagination extends LitElement {
 		}
 	}
 
-	protected render(): TemplateResult {
+	protected override render(): TemplateResult {
 		return html`<div class="container all">
 			${this.renderPrev()}
 			<div class="container pages">

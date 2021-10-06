@@ -12,7 +12,7 @@ export abstract class VWCAccordionBase extends LitElement {
 		this.addEventListener('opened', this.handleOpened);
 	}
 
-	connectedCallback(): void {
+	override connectedCallback(): void {
 		super.connectedCallback();
 		this.expansionPanels = this.children as HTMLCollectionOf<VWCExpansionPanelBase>;
 	}
