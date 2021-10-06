@@ -2,7 +2,7 @@ import '../vwc-inline.js';
 import {
 	waitNextTask,
 	textToDomToParent,
-	isolatedElementsCreation,
+	isolatedElementsCreation
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
@@ -19,6 +19,7 @@ const inlineHtmlStr = `<${VWC_INLINE}>
 const getNewElement = () => isolatedElementsCreation()(textToDomToParent(inlineHtmlStr))[0];
 
 describe('inline', () => {
+	let addElement = isolatedElementsCreation();
 	describe('basics', () => {
 		it(`${VWC_INLINE} is defined as a custom element`, async () => {
 			assert.exists(
@@ -29,32 +30,25 @@ describe('inline', () => {
 		it('should have internal contents', async () => {
 			const actualElement = getNewElement();
 			await waitNextTask();
-			expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
+			expect(actualElement.shadowRoot.firstElementChild.innerHTML).to.equalSnapshot();
 		});
 	});
 
-	describe('API', () => {
-		it(`should set template fit`, async () => {
-			const actualElement = getNewElement();
-			actualElement.template = "fit";
-			actualElement.style.width = "1300px";
-			await waitNextTask();
-			const { shadowRoot: { firstElementChild: slot } } = actualElement;
-			const assignedElements = slot.assignedElements();
-			const [childEl] = assignedElements;
-			await waitNextTask();
-			expect(childEl.clientWidth).to.equal(307);
-		});
-		it(`should set template fill`, async () => {
-			const actualElement = getNewElement();
-			actualElement.template = "fill";
-			actualElement.style.width = "1300px";
-			await waitNextTask();
-			const { shadowRoot: { firstElementChild: slot } } = actualElement;
-			const assignedElements = slot.assignedElements();
-			const [childEl] = assignedElements;
-			await waitNextTask();
-			expect(childEl.clientWidth).to.equal(165);
+	describe('default values', () => {
+		it('should have the default values', async () => {
+			const COMPONENT_PROPERTIES = {
+				columnBasis: 'sm', columnSpacing: 'md'
+			};
+			for await (const [key, value] of Object.entries(COMPONENT_PROPERTIES)) {
+				const [actualElement] = addElement(
+					textToDomToParent(`<${VWC_INLINE}></${VWC_INLINE}>`)
+				);
+				await actualElement.updateComplete;
+				expect(actualElement[key])
+					.to
+					.equal(value);
+			}
 		});
 	});
 });
+
