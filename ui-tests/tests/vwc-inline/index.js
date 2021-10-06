@@ -1,4 +1,4 @@
-import '@vonage/vwc-inline';
+import '@vonage/vwc-layout';
 
 export async function createElementVariations(wrapper) {
 	const inlineElementWrapper = document.createElement('div');
@@ -23,7 +23,7 @@ export async function createElementVariations(wrapper) {
 	}
   </style>
   
-  <vwc-inline column-basis="sm" column-spacing="md" auto-sizing="fit">
+  <vwc-layout column-basis="sm" column-spacing="md" auto-sizing="fit">
 	<section class="story">
 	  <article class="story-content">
 		<p>
@@ -51,7 +51,7 @@ export async function createElementVariations(wrapper) {
 		</p>
 	  </article>
 	</section>
-	<vwc-inline column-basis="block" column-spacing="md">
+	<vwc-layout column-basis="block" column-spacing="md">
 	<section class="story">
 	<article class="story-content">
 	  <p>
@@ -70,8 +70,8 @@ export async function createElementVariations(wrapper) {
 		</p>
 	</article>
 	</section>
-	</vwc-inline>
-	<vwc-inline column-basis="md" column-spacing="xl" auto-sizing="fill">
+	</vwc-layout>
+	<vwc-layout column-basis="md" column-spacing="xl" auto-sizing="fill">
 	<section class="story">
 	  <article class="story-content">
 		<p>
@@ -90,8 +90,8 @@ export async function createElementVariations(wrapper) {
 		</p>
 	  </article>
 	</section>
-	</vwc-inline>
-  </vwc-inline>
+	</vwc-layout>
+  </vwc-layout>
 		`;
 	wrapper.appendChild(inlineElementWrapper);
 }
