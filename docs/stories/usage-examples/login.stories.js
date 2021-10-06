@@ -1,7 +1,7 @@
 import { html } from 'lit-element';
 
 export default {
-	title: 'Usage Examples/Log In',
+	title: 'Getting Started/Usage Examples/Log In',
 };
 
 export const LogIn = () => html`

@@ -28,7 +28,6 @@ async function run() {
 					['Installation', 'Usage Examples', 'Contribution', 'Volta To Vivid Migration'],
 					'Design System',
 					['Introduction'],
-					'Usage Examples',
 					'Core',
 					['Context', 'Fonts', 'Typography'],
 					'Components',
