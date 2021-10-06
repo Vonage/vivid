@@ -23,7 +23,7 @@ type ColumnBasis = Extract<Size, Size.Small | Size.Medium | Size.Large> | 'block
 
 @customElement('vwc-inline')
 export class Inline extends LitElement {
-	static styles = style;
+	static override styles = style;
 
 	/**
 	 * @prop inlineGutters - sets the initial preferred margin from predefined available options
@@ -62,7 +62,7 @@ export class Inline extends LitElement {
 		};
 	}
 
-	protected render(): TemplateResult {
+	protected override render(): TemplateResult {
 		return html`<div class="layout ${classMap(this.getRenderClasses())}">
 			<slot></slot>
 		</div>`;

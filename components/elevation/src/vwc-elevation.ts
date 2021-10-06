@@ -14,12 +14,12 @@ export class VWCElevation extends LitElement {
 	/**
 	 * @internal
 	 */
-	static styles = style;
+	static override styles = style;
 
 	@property({ type: Number, reflect: false })
 	dp = 2;
 
-	protected render(): unknown {
+	protected override render(): unknown {
 		const classList = {
 			[`vwc-elevation-dp-${this.dp}`]: true
 		};

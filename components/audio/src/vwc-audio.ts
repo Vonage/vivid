@@ -125,7 +125,7 @@ export class VWCAudio extends LitElement {
 		this._audio.currentTime = time;
 	}
 
-	update(_changedProperties: PropertyValues):void {
+	override update(_changedProperties: PropertyValues):void {
 		this._scrubber?.setPosition(this._playheadPosition / this._duration);
 		super.update(_changedProperties);
 	}
@@ -137,7 +137,7 @@ export class VWCAudio extends LitElement {
 		};
 	}
 
-	render(): TemplateResult {
+	override render(): TemplateResult {
 		return html`
 			<audio class='audio-el' src='${ifDefined(this.src)}'></audio>
 			<div class="audio ${classMap(this.getRenderClasses())}" aria-controls="${ifDefined(this.ariaControls)}">

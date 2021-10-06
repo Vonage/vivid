@@ -21,7 +21,7 @@ export class VWCCalendarEvent extends LitElement {
 	 * assign styles
 	 * @internal
 	 * */
-	static styles = [style];
+	static override styles = [style];
 
 	/**
 	 * @prop the heading of the event
@@ -69,7 +69,7 @@ export class VWCCalendarEvent extends LitElement {
 	 * the html markup
 	 * @internal
 	 * */
-	protected render(): TemplateResult {
+	protected override render(): TemplateResult {
 		const styles = {
 			...this.color && { '--vvd-calendar-event--primary-color': this.color },
 			...this.overlapCount && { '--vvd-calendar-event--overlap-count': this.overlapCount },
