@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-elevation",
-	"version": "2.19.0",
+	"version": "2.20.0",
 	"description": "elevation component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/elevation#readme",
 	"license": "ISC",
@@ -25,11 +25,11 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@vonage/vvd-foundation": "2.19.0",
+		"@vonage/vvd-foundation": "2.20.0",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.3.0"
 	},
 	"devDependencies": {
-		"@vonage/vvd-umbrella": "2.19.0"
+		"@vonage/vvd-umbrella": "2.20.0"
 	}
 }
