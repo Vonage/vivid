@@ -1,0 +1,16 @@
+$auto-sizing: --auto-sizing;
+
+/* #region SIZE */
+$bases: (
+	sm: 10rem,
+	md: 20rem,
+	lg: 30rem,
+	block: 1fr
+);
+
+/* #region SPACEING */
+$spaces: (
+	xs: 16px,
+	md: 24px,
+	xl: 32px,
+);
