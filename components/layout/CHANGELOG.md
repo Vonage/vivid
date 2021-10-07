@@ -100,7 +100,7 @@
 
 ### Features
 
-* **vwc-inline:** add support for auto-fill/fit variance ([#746](https://github.com/vonage/vivid/issues/746)) ([17732b3](https://github.com/vonage/vivid/commit/17732b372d14cbba7708e3cf9332e1899850d3cd))
+* **vwc-layout:** add support for auto-fill/fit variance ([#746](https://github.com/vonage/vivid/issues/746)) ([17732b3](https://github.com/vonage/vivid/commit/17732b372d14cbba7708e3cf9332e1899850d3cd))
 
 
 
@@ -214,7 +214,7 @@
 
 ### Features
 
-* **vwc-inline:** new component to handle inline layouts ([9b03d6b](https://github.com/vonage/vivid/commit/9b03d6b3171c891985a10c77edfc2f78b78be68d))
+* **vwc-layout:** new component to handle inline layouts ([9b03d6b](https://github.com/vonage/vivid/commit/9b03d6b3171c891985a10c77edfc2f78b78be68d))
 
 
 
