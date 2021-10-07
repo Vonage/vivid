@@ -140,7 +140,7 @@
 		"stylelint-a11y": "^1.2.3",
 		"stylelint-config-idiomatic-order": "^8.1.0",
 		"stylelint-config-sass-guidelines": "^8.0.0",
-		"stylelint-no-unsupported-browser-features": "^5.0.1",
+		"stylelint-no-unsupported-browser-features": "^5.0.2",
 		"tar-stream": "^2.1.4",
 		"ts-loader": "^9.1.2",
 		"ts-node": "^9.1.1",
