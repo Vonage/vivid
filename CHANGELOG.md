@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.20.0](https://github.com/Vonage/vivid/compare/v2.19.0...v2.20.0) (2021-10-07)
+
+
+### Features
+
+* **vwc-inline:** add more inline size options ([#1053](https://github.com/Vonage/vivid/issues/1053)) ([1b8020d](https://github.com/Vonage/vivid/commit/1b8020d4a0137801444bc5182d12949d902def86))
+
+
+
+
+
 # [2.19.0](https://github.com/Vonage/vivid/compare/v2.18.1...v2.19.0) (2021-10-04)
 
 
