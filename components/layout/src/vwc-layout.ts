@@ -23,7 +23,7 @@ type ColumnBasis = Extract<Size, Size.Small | Size.Medium | Size.Large> | 'block
 
 @customElement('vwc-layout')
 export class Layout extends LitElement {
-	static styles = style;
+	static override styles = style;
 
 	/**
 	 * @prop Gutters - sets the initial preferred margin from predefined available options
