@@ -149,38 +149,6 @@ describe('textfield action', () => {
 	});
 
 	describe(`noActionsSync`, function () {
-		// function getButtonsDisabledStates(actualElement) {
-		// 	const buttons = getInternalButtons(actualElement);
-		// 	return buttons.map(button => button.disabled);
-		// }
-
-		// function setElementAttributes(actualElement) {
-		// 	actualElement.disabled = true;
-		// 	actualElement.shape = 'pill';
-		// 	actualElement.toggleAttribute('dense', true);
-		// }
-
-		// function createElementWithIconButtons() {
-		// 	const [actualElement] = addElement(
-		// 		textToDomToParent(`
-		// 		<${COMPONENT_NAME}>
-		// 			<${iconButton} slot="action" disabled shape="circled"></${iconButton}>
-		// 			<${iconButton} slot="action" shape="pilled" dense></${iconButton}>
-		// 			<${iconButton} slot="action" disabled enlarged></${iconButton}>
-		// 		</${COMPONENT_NAME}>
-		// 	`)
-		// 	);
-		// 	return actualElement;
-		// }
-
-		// let actualElement;
-
-		// beforeEach(async function () {
-		// 	actualElement = createElementWithIconButtons();
-		// 	actualElement.noActionsSync = true;
-		// 	await waitNextTask();
-		// 	await actualElement.updateComplete;
-		// });
 		const actionButton = () => {
 			const button = document.createElement('vwc-icon-button');
 			button.setAttribute('slot', 'action');
