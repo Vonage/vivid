@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.20.0](https://github.com/Vonage/vivid/compare/v2.19.0...v2.20.0) (2021-10-07)
+
+
+### Features
+
+* **vwc-inline:** add more inline size options ([#1053](https://github.com/Vonage/vivid/issues/1053)) ([1b8020d](https://github.com/Vonage/vivid/commit/1b8020d4a0137801444bc5182d12949d902def86))
+
+
+
+
+
 # [2.19.0](https://github.com/Vonage/vivid/compare/v2.18.1...v2.19.0) (2021-10-04)
 
 
@@ -362,7 +373,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **vwc-inline:** add support for auto-fill/fit variance ([#746](https://github.com/Vonage/vivid/issues/746)) ([17732b3](https://github.com/Vonage/vivid/commit/17732b372d14cbba7708e3cf9332e1899850d3cd))
+* **vwc-layout:** add support for auto-fill/fit variance ([#746](https://github.com/Vonage/vivid/issues/746)) ([17732b3](https://github.com/Vonage/vivid/commit/17732b372d14cbba7708e3cf9332e1899850d3cd))
 
 
 
@@ -714,7 +725,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **icon:** added global memoization for previously resolved icons ([0ade404](https://github.com/Vonage/vivid/commit/0ade40416d5f854dd8bc95166b2a5fca82e37da7))
 * **infra:** define domain for icon resources ([1193aa0](https://github.com/Vonage/vivid/commit/1193aa023ef22ae5bb7397c587c20932fc692586))
 * **sass:** relocated template file [https://jira.vonage.com/browse/VIV-307] ([#487](https://github.com/Vonage/vivid/issues/487)) ([5058820](https://github.com/Vonage/vivid/commit/50588201a6d2cb3be3f4b8310187837a52a38b2e))
-* **vwc-inline:** new component to handle inline layouts ([9b03d6b](https://github.com/Vonage/vivid/commit/9b03d6b3171c891985a10c77edfc2f78b78be68d))
+* **vwc-layout:** new component to handle inline layouts ([9b03d6b](https://github.com/Vonage/vivid/commit/9b03d6b3171c891985a10c77edfc2f78b78be68d))
 
 
 
