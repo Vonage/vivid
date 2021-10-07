@@ -1,3 +1,7 @@
+## [2.20.1](https://github.com/vonage/vivid/compare/v2.20.0...v2.20.1) (2021-10-07)
+
+
+
 # [2.20.0](https://github.com/vonage/vivid/compare/v2.19.0...v2.20.0) (2021-10-07)
 
 
@@ -225,7 +229,7 @@
 ### Features
 
 * **connotation:** adding support for warning connotation ([#488](https://github.com/vonage/vivid/issues/488)) ([245a9b9](https://github.com/vonage/vivid/commit/245a9b9c095b2af4f3d9a088d0c6219370199c2d))
-* **vwc-layout:** new component to handle inline layouts ([9b03d6b](https://github.com/vonage/vivid/commit/9b03d6b3171c891985a10c77edfc2f78b78be68d))
+* **vwc-inline:** new component to handle inline layouts ([9b03d6b](https://github.com/vonage/vivid/commit/9b03d6b3171c891985a10c77edfc2f78b78be68d))
 
 
 
