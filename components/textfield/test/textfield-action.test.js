@@ -1,4 +1,5 @@
 import { VALID_BUTTON_ELEMENTS } from '../vwc-textfield.js';
+import '@vonage/vwc-icon-button';
 
 import {
 	waitNextTask,
@@ -148,83 +149,40 @@ describe('textfield action', () => {
 	});
 
 	describe(`noActionsSync`, function () {
-		function getButtonsDisabledStates(actualElement) {
-			const buttons = getInternalButtons(actualElement);
-			return buttons.map(button => button.disabled);
-		}
+		const actionButton = () => {
+			const button = document.createElement('vwc-icon-button');
+			button.setAttribute('slot', 'action');
+			return button;
+		};
 
-		function setElementAttributes(actualElement) {
-			actualElement.disabled = true;
-			actualElement.shape = 'pill';
-			actualElement.toggleAttribute('dense', true);
-		}
+		it(`should not enforce disabled on appended 'action' node`, async function () {
+			const button = actionButton();
+			const textfield = await createElement();
 
-		function createElementWithIconButtons() {
-			const [actualElement] = addElement(
-				textToDomToParent(`
-				<${COMPONENT_NAME}>
-					<${iconButton} slot="action" disabled shape="circled"></${iconButton}>
-					<${iconButton} slot="action" shape="pilled" dense></${iconButton}>
-					<${iconButton} slot="action" disabled enlarged></${iconButton}>
-				</${COMPONENT_NAME}>
-			`)
-			);
-			return actualElement;
-		}
+			textfield.noActionsSync = true;
 
-		let actualElement;
+			textfield.disabled = true;
 
-		beforeEach(async function () {
-			actualElement = createElementWithIconButtons();
-			actualElement.noActionsSync = true;
-			await waitNextTask();
-			await actualElement.updateComplete;
+			textfield.appendChild(button);
+
+			await textfield.updateComplete;
+
+			expect(button.disabled).to.equal(false);
 		});
 
-		it(`should not enforce disabled on child nodes`, async function () {
-			const expectedButtonsDisabled = [true, false, true];
-			const buttonsDisabledBefore = getButtonsDisabledStates(actualElement);
-			actualElement.disabled = true;
+		it(`should not dynamically enforce disabled on 'action' node`, async function () {
+			const button = actionButton();
+			const textfield = await createElement();
 
-			await waitNextTask();
-			await actualElement.updateComplete;
+			textfield.noActionsSync = true;
 
-			const buttonsDisabledAfter = getButtonsDisabledStates(actualElement);
+			textfield.appendChild(button);
 
-			expectedButtonsDisabled.forEach((val, index) => {
-				expect(val)
-					.to
-					.equal(buttonsDisabledBefore[index]);
-				expect(val)
-					.to
-					.equal(buttonsDisabledAfter[index]);
-			});
-		});
+			textfield.disabled = true;
 
-		it(`should not dynamically enforce disabled on child nodes`, async function () {
-			function generateNewButton() {
-				const newButtonWrapper = document.createElement('div');
-				newButtonWrapper.innerHTML = `<${iconButton} slot="action" shape="circled" enlarged></${iconButton}>`;
-				return newButtonWrapper.firstChild;
-			}
+			await textfield.updateComplete;
 
-			const newButton = generateNewButton();
-
-			const expectedButtonsDisabled = [true, false, true, false];
-
-			actualElement.disabled = true;
-			actualElement.appendChild(newButton);
-
-			await waitNextTask();
-			await actualElement.updateComplete;
-
-			const buttonsDisabledAfter = getButtonsDisabledStates(actualElement);
-
-			expectedButtonsDisabled.forEach((val, index) => {
-				expect(val)
-					.to
-					.equal(buttonsDisabledAfter[index]);
-			});
+			expect(button.disabled).to.equal(false);
 		});
 	});
 });
