@@ -12,7 +12,7 @@
 	@include mixins.measurement(map.keys(variables.$bases)...) using ($basis) {
 		#{functions.get-selector-with-default('.layout-column-basis', $basis, md, map.keys(variables.$bases))} {
 			grid-template-columns: repeat(
-				var(#{variables.$auto-sizing}),
+				var(#{variables.$layout-auto-sizing}),
 				minmax(map.get(variables.$bases, $basis), 1fr)
 			);
 		}
@@ -30,11 +30,9 @@
 		}
 	}
 
-	&:not(.layout-auto-sizing-fill),
-	&.layout-auto-sizing-fit {
-		#{variables.$auto-sizing}: auto-fit;
-	}
-	&.layout-auto-sizing-fill {
-		#{variables.$auto-sizing}: auto-fill;
+	@include mixins.measurement(map.keys(variables.$auto-sizes)...) using ($size) {
+		#{functions.get-selector-with-default('.layout-auto-sizing', $size, fit, map.keys(variables.$auto-sizes))} {
+			#{variables.$layout-auto-sizing}: map.get(variables.$auto-sizes, $size);
+		}
 	}
 }

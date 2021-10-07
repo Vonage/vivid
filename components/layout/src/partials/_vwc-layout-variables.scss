@@ -1,6 +1,12 @@
-$auto-sizing: --auto-sizing;
+$layout-auto-sizing: --layout-auto-sizing;
 
-/* #region SIZE */
+/* #region SIZEs */
+$auto-sizes: (
+	fill: auto-fill,
+	fit: auto-fit,
+);
+
+/* #region BASES */
 $bases: (
 	sm: 10rem,
 	md: 20rem,
@@ -8,7 +14,7 @@ $bases: (
 	block: 1fr
 );
 
-/* #region SPACEING */
+/* #region SPACES */
 $spaces: (
 	xs: 16px,
 	md: 24px,
