@@ -26,7 +26,7 @@ declare global {
  */
 @customElement(GRID_HEADER_COMPONENT)
 export class VWCDataGridHeader extends LitElement implements DataGridHeader {
-	static styles = [vwcDataGridHeaderStyle];
+	static override styles = [vwcDataGridHeaderStyle];
 
 	@property({ type: Boolean, reflect: true })
 	sortable = false;
@@ -37,7 +37,7 @@ export class VWCDataGridHeader extends LitElement implements DataGridHeader {
 	@property({ type: String, reflect: true })
 	path?: string = undefined;
 
-	protected updated(changes: PropertyValues): void {
+	protected override updated(changes: PropertyValues): void {
 		if (changes.has('sortable')) {
 			if (this.sortable) {
 				this.addEventListener('click', this.onClick);
@@ -50,7 +50,7 @@ export class VWCDataGridHeader extends LitElement implements DataGridHeader {
 		}
 	}
 
-	protected render(): TemplateResult {
+	protected override render(): TemplateResult {
 		return html`
 			${this.sortable ? this.renderSortControls() : ''}
 			<slot></slot>

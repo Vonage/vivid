@@ -75,7 +75,7 @@ export class VWCTextField extends MWCTextField {
 		reflect: true,
 		converter: v => v || ' '
 	})
-	placeholder = ' ';
+	override placeholder = ' ';
 	@query('.mdc-text-field__input') protected inputElementWrapper!: HTMLInputElement;
 	@internalProperty()
 	private hasActionButtons = false;
@@ -101,7 +101,7 @@ export class VWCTextField extends MWCTextField {
 		});
 	}
 
-	connectedCallback(): void {
+	override connectedCallback(): void {
 		super.connectedCallback();
 		if (!this.hasAttribute('outlined')) {
 			this.outlined = true;
@@ -114,7 +114,7 @@ export class VWCTextField extends MWCTextField {
 		this.floatLabel();
 	}
 
-	async firstUpdated(): Promise<void> {
+	override async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
 		this.shadowRoot
 			?.querySelector('.mdc-notched-outline')
@@ -125,12 +125,12 @@ export class VWCTextField extends MWCTextField {
 		this.observeInputSize();
 	}
 
-	disconnectedCallback(): void {
+	override disconnectedCallback(): void {
 		super.disconnectedCallback();
 		this.inputResizeObserver?.disconnect();
 	}
 
-	updated(changes: PropertyValues): void {
+	override updated(changes: PropertyValues): void {
 		super.updated(changes);
 		if (this.shape === 'pill') {
 			this.dense = true;
@@ -145,7 +145,7 @@ export class VWCTextField extends MWCTextField {
 	}
 
 	/** @soyTemplate */
-	render(): TemplateResult {
+	override render(): TemplateResult {
 		const shouldRenderCharCounter = this.charCounter && this.maxLength !== -1;
 		const shouldRenderHelperText =
 			!!this.helper || !!this.validationMessage || shouldRenderCharCounter;
@@ -186,7 +186,7 @@ export class VWCTextField extends MWCTextField {
 		this.inputResizeObserver.observe(this.inputElementWrapper);
 	}
 
-	protected renderInput(shouldRenderHelperText: boolean): TemplateResult {
+	protected override renderInput(shouldRenderHelperText: boolean): TemplateResult {
 		this.updateInputElement(shouldRenderHelperText);
 		return html`
 			<div class="mdc-text-field__input"></div>
@@ -194,7 +194,7 @@ export class VWCTextField extends MWCTextField {
 		`;
 	}
 
-	protected renderIcon(icon: string, isTrailingIcon = false): TemplateResult {
+	protected override renderIcon(icon: string, isTrailingIcon = false): TemplateResult {
 		const iconClass = isTrailingIcon
 			? 'mdc-text-field__icon--trailing'
 			: 'mdc-text-field__icon--leading';
@@ -206,7 +206,7 @@ export class VWCTextField extends MWCTextField {
 		`;
 	}
 
-	protected renderOutline(): TemplateResult | string {
+	protected override renderOutline(): TemplateResult | string {
 		return !this.outlined
 			? ''
 			: html`
@@ -215,7 +215,7 @@ export class VWCTextField extends MWCTextField {
 				</vwc-notched-outline>`;
 	}
 
-	protected renderHelperText(
+	protected override renderHelperText(
 		shouldRenderHelperText: boolean
 	): TemplateResult | string {
 		if (!shouldRenderHelperText) {
@@ -236,11 +236,11 @@ export class VWCTextField extends MWCTextField {
 			>`;
 	}
 
-	protected renderRipple(): TemplateResult {
+	protected override renderRipple(): TemplateResult {
 		return html``;
 	}
 
-	protected renderLineRipple(): TemplateResult {
+	protected override renderLineRipple(): TemplateResult {
 		return html``;
 	}
 

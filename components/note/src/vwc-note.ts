@@ -29,7 +29,7 @@ type NoteConnotation = Extract<
  */
 @customElement('vwc-note')
 export class VWCNote extends LitElement {
-	static get styles(): CSSResult[] {
+	static override get styles(): CSSResult[] {
 		return [vwcNoteStyle];
 	}
 
@@ -48,7 +48,7 @@ export class VWCNote extends LitElement {
 		};
 	}
 
-	protected render(): TemplateResult {
+	protected override render(): TemplateResult {
 		return html`
 			<div class="vwc-note ${classMap(this.getRenderClasses())}">
 				${this.icon ? this.renderIcon() : ''}

@@ -217,7 +217,7 @@ export class ChipBase extends BaseElement {
 		this.mdcFoundation.beginExit();
 	}
 
-	render(): TemplateResult {
+	override render(): TemplateResult {
 		const classes = {
 			'mdc-chip--selected': this.selected,
 			'mdc-chip--deletable': this.removable,

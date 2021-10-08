@@ -75,7 +75,7 @@ export class VWCSnackbar extends MWCSnackbarBase {
 	@property({ type: Boolean, reflect: true })
 	dismissible?: boolean;
 
-	connectedCallback() {
+	override connectedCallback() {
   	super.connectedCallback();
   	this.setupEventListeners();
 	}
@@ -105,7 +105,7 @@ export class VWCSnackbar extends MWCSnackbarBase {
 	}
 
 	/* eslint-disable lit-a11y/click-events-have-key-events */
-	render(): TemplateResult {
+	override render(): TemplateResult {
   	const position = VWCSnackbar.preprocessPositionConfig(this.position);
   	const alternate = !this.legacy ? 'vvd-scheme-alternate' : undefined;
 

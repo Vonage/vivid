@@ -31,12 +31,12 @@ export class VWCDialog extends MWCDialog {
 	})
 	closeButton?: boolean;
 
-	protected firstUpdated() {
+	protected override firstUpdated() {
 		super.firstUpdated();
 		this.addDismissButton();
 	}
 
-	protected updated(_changedProperties: PropertyValues): void {
+	protected override updated(_changedProperties: PropertyValues): void {
 		super.updated(_changedProperties);
 		if (!this.renderRoot.querySelector('#dialog_icon')) {
 			this.renderRoot

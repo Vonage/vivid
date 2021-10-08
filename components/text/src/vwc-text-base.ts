@@ -30,7 +30,7 @@ export class VWCTextBase extends LitElement {
 		};
 	}
 
-	protected render(): TemplateResult {
+	protected override render(): TemplateResult {
 		return html`<slot class="vwc-text ${classMap(this.getRenderClasses())}"></slot>`;
 	}
 }

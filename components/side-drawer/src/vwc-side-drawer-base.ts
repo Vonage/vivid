@@ -77,18 +77,18 @@ export class VWCSideDrawerBase extends LitElement {
 		this.open = false;
 	}
 
-	connectedCallback(): void {
+	override connectedCallback(): void {
 		super.connectedCallback();
 		document.addEventListener('keydown', this.#handleKeydown);
 	}
 
-	disconnectedCallback(): void {
+	override disconnectedCallback(): void {
 		super.disconnectedCallback();
 		this.#releaseFocusTrap();
 		document.removeEventListener('keydown', this.#handleKeydown);
 	}
 
-	protected render(): TemplateResult {
+	protected override render(): TemplateResult {
 		const dismissible = this.type === 'dismissible';
 		const modal = this.type === 'modal';
 		const topBar = this.hasTopBar ? this.renderTopBar() : '';

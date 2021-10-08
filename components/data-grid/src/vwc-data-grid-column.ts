@@ -31,7 +31,7 @@ export class VWCDataGridColumn extends LitElement implements DataGridColumn {
 	@property({ type: Boolean, reflect: true })
 	tree = false;
 	@property({ type: Boolean, reflect: true })
-	hidden = false;
+	override hidden = false;
 	@property({ type: Boolean, reflect: true })
 	frozen = false;
 	@property({ type: Boolean, reflect: true })
@@ -83,11 +83,11 @@ export class VWCDataGridColumn extends LitElement implements DataGridColumn {
 		};
 	}
 
-	protected createRenderRoot(): HTMLElement {
+	protected override createRenderRoot(): HTMLElement {
 		return this;
 	}
 
-	protected updated(): void {
+	protected override updated(): void {
 		//	TODO: after the limitations of co-existing definitions are clear - add more validations here
 		if (this.selector) {
 			this.verifySelectorViolations();

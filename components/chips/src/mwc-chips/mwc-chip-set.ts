@@ -21,7 +21,7 @@ import { style } from './mwc-chip-set.css.js'; // TODO: split chip-set and chip 
 
 @customElement('mwc-chip-set')
 export class ChipSet extends ChipSetBase {
-	static styles = style;
+	static override styles = style;
 }
 
 declare global {

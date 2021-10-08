@@ -11,7 +11,7 @@ import { style } from './vwc-badge.css.js';
  */
 @customElement('vwc-badge')
 export class VWCBadge extends VWCBadgeBase {
-	static styles = style;
+	static override styles = style;
 }
 
 declare global {

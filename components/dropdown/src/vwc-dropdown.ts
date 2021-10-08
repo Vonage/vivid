@@ -17,14 +17,14 @@ declare global {
  */
 @customElement('vwc-dropdown')
 export class VWCDropdown extends VWCMenu {
-	static styles = [vwcDropdownStyle];
+	static override styles = [vwcDropdownStyle];
 
 	constructor() {
 		super();
 		this.multi = true;
 	}
 
-	render() {
+	override render() {
 		return html`
 			<vwc-surface
 					?hidden=${!this.open}

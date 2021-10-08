@@ -25,7 +25,7 @@ export type IndicatorIconSets = typeof iconSets;
 
 @customElement('vwc-expansion-panel')
 export class VWCExpansionPanel extends VWCExpansionPanelBase {
-	static styles = style;
+	static override styles = style;
 
 	/**
 	 * @deprecated use "heading" instead
@@ -64,7 +64,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 		this.open = !this.open;
 	}
 
-	openChanged(isOpen: boolean): void {
+	override openChanged(isOpen: boolean): void {
 		super.openChanged(isOpen);
 		this.toggleAttribute('open', isOpen);
 	}
@@ -73,7 +73,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 		return !this.noRipple ? html`<mwc-ripple></mwc-ripple>` : '';
 	}
 
-	protected render(): TemplateResult {
+	protected override render(): TemplateResult {
 		return html`
 			<button class="expansion-panel-header"
 				@mousedown="${this.handleRippleActivate}"
