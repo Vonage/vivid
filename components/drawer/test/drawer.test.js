@@ -1,4 +1,4 @@
-import { VVD_SCHEME_ALTERNATE, DRAWER_ALTERNATE } from '../vwc-drawer';
+import { VVD_SCHEME_ALTERNATE, DRAWER_ALTERNATE } from '../vwc-drawer.js';
 import {
 	isolatedElementsCreation,
 	textToDomToParent,

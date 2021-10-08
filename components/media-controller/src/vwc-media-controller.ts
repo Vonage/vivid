@@ -1,8 +1,7 @@
 import '@vonage/vvd-core';
-import './vwc-scrub-bar';
-import { VWCScrubBar } from './vwc-scrub-bar';
 import '@vonage/vwc-icon/vwc-icon';
-import { style as vwcMediaControllerStyle } from './vwc-media-controller.css';
+import type { VWCScrubBar } from './vwc-scrub-bar.js';
+import { style as vwcMediaControllerStyle } from './vwc-media-controller.css.js';
 import {
 	html,
 	customElement,
@@ -24,7 +23,7 @@ import {
  */
 @customElement('vwc-media-controller')
 export class VwcMediaController extends LitElement {
-	static styles = [vwcMediaControllerStyle];
+	static override styles = [vwcMediaControllerStyle];
 
 	@query('.scrubber')
 	private _scrubber!:VWCScrubBar
@@ -32,7 +31,7 @@ export class VwcMediaController extends LitElement {
 	@state()
 	private _playState = false;
 
-	render():TemplateResult {
+	override render():TemplateResult {
 		return html`
 			<main class="main">
 				<button @click="${this.dispatchPlayControllerClickEvent}" aria-label="Play/Pause" class="control-button">

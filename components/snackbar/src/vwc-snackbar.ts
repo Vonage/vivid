@@ -12,7 +12,7 @@ import {
 import { ClassInfo, classMap } from 'lit-html/directives/class-map';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import { SnackbarBase as MWCSnackbarBase } from '@material/mwc-snackbar/mwc-snackbar-base';
-import { style as vwcSnackbarStyle } from './vwc-snackbar.css';
+import { style as vwcSnackbarStyle } from './vwc-snackbar.css.js';
 import { styles as mwcSnackbarStyles } from '@material/mwc-snackbar/mwc-snackbar.css.js';
 import { accessibleSnackbarLabel } from '@material/mwc-snackbar/accessible-snackbar-label-directive.js';
 
@@ -75,7 +75,7 @@ export class VWCSnackbar extends MWCSnackbarBase {
 	@property({ type: Boolean, reflect: true })
 	dismissible?: boolean;
 
-	connectedCallback() {
+	override connectedCallback() {
   	super.connectedCallback();
   	this.setupEventListeners();
 	}
@@ -105,7 +105,7 @@ export class VWCSnackbar extends MWCSnackbarBase {
 	}
 
 	/* eslint-disable lit-a11y/click-events-have-key-events */
-	render() {
+	override render() {
   	const position = VWCSnackbar.preprocessPositionConfig(this.position);
   	const alternate = !this.legacy ? 'vvd-scheme-alternate' : undefined;
 

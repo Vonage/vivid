@@ -1,7 +1,7 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
-import { DataGridHeader, GRID_HEADER_COMPONENT } from '../vwc-data-grid-api';
-import { style as vwcDataGridHeaderStyle } from './vwc-data-grid-header.css';
+import { DataGridHeader, GRID_HEADER_COMPONENT } from '../vwc-data-grid-api.js';
+import { style as vwcDataGridHeaderStyle } from './vwc-data-grid-header.css.js';
 import {
 	html,
 	customElement,
@@ -26,7 +26,7 @@ declare global {
  */
 @customElement(GRID_HEADER_COMPONENT)
 export class VWCDataGridHeader extends LitElement implements DataGridHeader {
-	static styles = [vwcDataGridHeaderStyle];
+	static override styles = [vwcDataGridHeaderStyle];
 
 	@property({ type: Boolean, reflect: true })
 	sortable = false;
@@ -37,7 +37,7 @@ export class VWCDataGridHeader extends LitElement implements DataGridHeader {
 	@property({ type: String, reflect: true })
 	path?: string = undefined;
 
-	protected updated(changes: PropertyValues): void {
+	protected override updated(changes: PropertyValues): void {
 		if (changes.has('sortable')) {
 			if (this.sortable) {
 				this.addEventListener('click', this.onClick);
@@ -50,7 +50,7 @@ export class VWCDataGridHeader extends LitElement implements DataGridHeader {
 		}
 	}
 
-	protected render(): TemplateResult {
+	protected override render(): TemplateResult {
 		return html`
 			${this.sortable ? this.renderSortControls() : ''}
 			<slot></slot>

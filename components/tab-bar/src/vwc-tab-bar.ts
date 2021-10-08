@@ -1,7 +1,7 @@
 import '@vonage/vvd-core';
 import { customElement } from 'lit-element';
 import { TabBarBase as MWCTabBarBase } from '@material/mwc-tab-bar/mwc-tab-bar-base.js';
-import { style as vwcTabBarStyle } from './vwc-tab-bar.css';
+import { style as vwcTabBarStyle } from './vwc-tab-bar.css.js';
 import { styles as mwcTabBarStyles } from '@material/mwc-tab-bar/mwc-tab-bar.css.js';
 
 declare global {

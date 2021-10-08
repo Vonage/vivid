@@ -1,4 +1,4 @@
-export * from './utils/emitter';
+export * from './utils/emitter.js';
 
 export function handleAutofocus(targetElement: HTMLElement): void {
 	if (!targetElement || !targetElement.hasAttribute) {

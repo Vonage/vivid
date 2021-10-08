@@ -3,6 +3,13 @@
 #### `should render selector column with header (multi select)`
 
 ```html
+<dom-module
+  id="my-grid-styles"
+  theme-for="vaadin-grid"
+>
+  <template>
+  </template>
+</dom-module>
 <vaadin-grid
   class="vvd-grid-engine-root"
   style="touch-action: none;"
@@ -80,6 +87,13 @@
 #### `should not render selector header when single mode`
 
 ```html
+<dom-module
+  id="my-grid-styles"
+  theme-for="vaadin-grid"
+>
+  <template>
+  </template>
+</dom-module>
 <vaadin-grid
   class="vvd-grid-engine-root"
   style="touch-action: none;"
@@ -155,6 +169,13 @@
 #### `should not render selector header when dataProvider used (even if multi mode)`
 
 ```html
+<dom-module
+  id="my-grid-styles"
+  theme-for="vaadin-grid"
+>
+  <template>
+  </template>
+</dom-module>
 <vaadin-grid
   class="vvd-grid-engine-root"
   style="touch-action: none;"
@@ -230,6 +251,13 @@
 #### `should hide header when switching from multi to single (items data provider)`
 
 ```html
+<dom-module
+  id="my-grid-styles"
+  theme-for="vaadin-grid"
+>
+  <template>
+  </template>
+</dom-module>
 <vaadin-grid
   class="vvd-grid-engine-root"
   style="touch-action: none;"

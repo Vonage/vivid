@@ -1,6 +1,7 @@
-import { customElement, html, LitElement } from 'lit-element';
-import { style } from './vwc-elevation.css';
-import { property } from 'lit-element';
+import {
+	customElement, html, LitElement, property
+} from 'lit-element';
+import { style } from './vwc-elevation.css.js';
 import { classMap } from 'lit-html/directives/class-map';
 
 declare global {
@@ -14,12 +15,12 @@ export class VWCElevation extends LitElement {
 	/**
 	 * @internal
 	 */
-	static styles = style;
+	static override styles = style;
 
 	@property({ type: Number, reflect: false })
 	dp = 2;
 
-	protected render(): unknown {
+	protected override render(): unknown {
 		const classList = {
 			[`vwc-elevation-dp-${this.dp}`]: true
 		};

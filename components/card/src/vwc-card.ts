@@ -1,7 +1,7 @@
 import {
 	customElement, html, LitElement, property
 } from 'lit-element';
-import { style } from './vwc-card.css';
+import { style } from './vwc-card.css.js';
 import { classMap } from 'lit-html/directives/class-map.js';
 import '@vonage/vwc-button';
 import '@vonage/vwc-icon';
@@ -17,7 +17,7 @@ export class VWCCard extends LitElement {
 	/**
 	 * @internal
 	 */
-	static styles = style;
+	static override styles = style;
 
 	@property({
 		reflect: true,
@@ -56,7 +56,7 @@ export class VWCCard extends LitElement {
 		return (this.headerContentExists) ? '' : 'no-header-content';
 	}
 
-	protected render(): unknown {
+	protected override render(): unknown {
 		const actionsClassMap = {
 			'no-actions-content': !(this.shouldShowActionsSlot)
 		};

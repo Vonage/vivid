@@ -1,7 +1,6 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-badge';
-import '@vonage/vwc-button';
-import '@vonage/vwc-icon';
+import '@vonage/vwc-helper-message';
 import {
 	customElement,
 	html,
@@ -22,7 +21,7 @@ const BUTTON_SLOT = 'button',
 
 @customElement('vwc-file-picker')
 export class VWCFilePicker extends LitElement {
-	static styles = [filePickerStyle];
+	static override styles = [filePickerStyle];
 	#container: HTMLElement | null = null;
 
 	@property({ type: Number, reflect: false })
@@ -56,7 +55,7 @@ export class VWCFilePicker extends LitElement {
 		);
 	}
 
-	protected firstUpdated(): void {
+	protected override firstUpdated(): void {
 		this.#container = this.shadowRoot?.querySelector('.wrapper') || null;
 		this.setupDragNDrop();
 		this.shadowRoot
@@ -70,7 +69,7 @@ export class VWCFilePicker extends LitElement {
 		});
 	}
 
-	protected render(): TemplateResult {
+	protected override render(): TemplateResult {
 		return html`
 			<label class="wrapper" aria-describedby="helper">
 				${this.renderHeader()}

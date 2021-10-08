@@ -1,10 +1,11 @@
 import '@vonage/vvd-core';
+import '@vonage/vwc-icon';
 import {
 	customElement, property, html, TemplateResult
 } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
 import { TabBase as MWCTabBase } from '@material/mwc-tab/mwc-tab-base.js';
-import { style as vwcTabStyle } from './vwc-tab.css';
+import { style as vwcTabStyle } from './vwc-tab.css.js';
 import { styles as mwcTabStyles } from '@material/mwc-tab/mwc-tab.css.js';
 
 declare global {

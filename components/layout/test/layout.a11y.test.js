@@ -1,4 +1,4 @@
-import '../vwc-inline.js';
+import '../vwc-layout.js';
 import {
 	isolatedElementsCreation,
 	waitNextTask,
@@ -8,9 +8,9 @@ import { chaiA11yAxe } from 'chai-a11y-axe';
 
 chai.use(chaiA11yAxe);
 
-const COMPONENT_NAME = 'vwc-inline';
+const COMPONENT_NAME = 'vwc-layout';
 
-describe('inline a11y', () => {
+describe('layout a11y', () => {
 	const addElement = isolatedElementsCreation();
 
 	it('should have 0 accessibility violations', async () => {

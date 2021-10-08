@@ -10,11 +10,11 @@ import {
 	nothing,
 } from 'lit-element';
 import { Select as MWCSelect } from '@material/mwc-select';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
-import { style as vwcSelectStyle } from './vwc-select.css';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
+import { style as vwcSelectStyle } from './vwc-select.css.js';
 import { styles as mwcSelectStyles } from '@material/mwc-select/mwc-select.css.js';
 import { associateWithForm } from '@vonage/vvd-foundation/form-association';
-import { Shape } from '@vonage/vvd-foundation/constants';
+import type { Shape } from '@vonage/vvd-foundation/constants';
 import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
 
 declare global {
@@ -45,28 +45,28 @@ export class VWCSelect extends MWCSelect {
 	@property({ type: String, reflect: true })
 	form: string | undefined;
 
-	connectedCallback(): void {
+	override connectedCallback(): void {
 		super.connectedCallback();
 		if (!this.hasAttribute('outlined')) {
 			this.outlined = true;
 		}
 	}
 
-	async firstUpdated(): Promise<void> {
+	override async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
 		this.replaceDropDownIcon();
 		associateWithForm(this, this.formElement);
 		handleAutofocus(this);
 	}
 
-	protected update(changedProperties: PropertyValues): void {
+	protected override update(changedProperties: PropertyValues): void {
 		super.update(changedProperties);
 		if (this.shape === 'pill') {
 			this.dense = true;
 		}
 	}
 
-	protected updated(changedProperties: PropertyValues): void {
+	protected override updated(changedProperties: PropertyValues): void {
 		super.updated(changedProperties);
 		const selectedText = this.shadowRoot?.querySelector(
 			'.mdc-select__selected-text'

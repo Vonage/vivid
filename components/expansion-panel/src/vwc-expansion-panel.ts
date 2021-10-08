@@ -8,8 +8,8 @@ import {
 	queryAsync,
 	TemplateResult
 } from 'lit-element';
-import '@material/mwc-ripple/mwc-ripple';
-import { Ripple } from '@material/mwc-ripple/mwc-ripple';
+// import '@material/mwc-ripple/mwc-ripple';
+import type { Ripple } from '@material/mwc-ripple/mwc-ripple';
 import { RippleHandlers } from '@material/mwc-ripple/ripple-handlers';
 import { VWCExpansionPanelBase } from './vwc-expansion-panel-base.js';
 import { style } from './vwc-expansion-panel.css.js';
@@ -25,10 +25,10 @@ export type IndicatorIconSets = typeof iconSets;
 
 @customElement('vwc-expansion-panel')
 export class VWCExpansionPanel extends VWCExpansionPanelBase {
-	static styles = style;
+	static override styles = style;
 
 	/**
-	 * @deprecated use {@link VWCExpansionPanel.heading} instead
+	 * @deprecated use "heading" instead
 	 */
 	@property({ type: String, reflect: true })
 	header = '';
@@ -64,7 +64,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 		this.open = !this.open;
 	}
 
-	openChanged(isOpen: boolean): void {
+	override openChanged(isOpen: boolean): void {
 		super.openChanged(isOpen);
 		this.toggleAttribute('open', isOpen);
 	}
@@ -73,7 +73,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 		return !this.noRipple ? html`<mwc-ripple></mwc-ripple>` : '';
 	}
 
-	protected render(): TemplateResult {
+	protected override render(): TemplateResult {
 		return html`
 			<button class="expansion-panel-header"
 				@mousedown="${this.handleRippleActivate}"

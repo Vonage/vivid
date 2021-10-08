@@ -2,13 +2,13 @@ import '@vonage/vvd-core';
 import {
 	customElement, property, html, TemplateResult
 } from 'lit-element';
-import { ClassInfo } from 'lit-html/directives/class-map';
+import type { ClassInfo } from 'lit-html/directives/class-map';
 import { Switch as MWCSwitch } from '@material/mwc-switch';
-import { style as vwcSwitchStyle } from './vwc-switch.css';
+import { style as vwcSwitchStyle } from './vwc-switch.css.js';
 import { styles as mwcSwitchStyles } from '@material/mwc-switch/styles.css.js';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
 import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
-import { Connotation } from '@vonage/vvd-foundation/constants';
+import type { Connotation } from '@vonage/vvd-foundation/constants';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -45,7 +45,8 @@ export class VWCSwitch extends MWCSwitch {
 		handleAutofocus(this);
 	}
 
-	protected renderRipple(): TemplateResult {
+	// TODO: check if ripple can be disabled by property
+	protected override renderRipple(): TemplateResult {
 		return html``;
 	}
 }

@@ -1,0 +1,128 @@
+@use 'partials/vwc-tags-variables' as tags-variables;
+@use '@vonage/vwc-icon/src/partials/vwc-icon-variables' as icon-variables;
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
+@use '@vonage/vvd-typography/scss/typography' as typography;
+@use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
+	$connotations-set: primary cta,
+	$shades: soft contrast,
+	$default: primary,
+);
+@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
+@use '@vonage/vvd-foundation/scss/mixins/shape-mixins' as shape-mixins with (
+	$variable-name: #{tags-variables.$namespace-shape}
+);
+@use '@vonage/vvd-foundation/scss/mixins/layout/config' as layout-config with (
+	$layout-set: outlined soft,
+	$outline-duotone: true,
+	$default: soft
+);
+@use '@vonage/vvd-foundation/scss/mixins/layout' as layout;
+
+
+@include shape-mixins.shape(
+	$shapes: (
+		rounded: 4px,
+		pill: 14px,
+	),
+	$default: pill
+);
+
+.vwc-tag {
+	@include typography.typography-cat-shorthand('body-2-bold');
+	@include connotation.connotation;
+	@include layout.layout;
+	#{tags-variables.$namespace-padding-inline}: 10px;
+	#{tags-variables.$namespace-icon-checkmark--padding-inline-end}: 6px;
+	#{tags-variables.$namespace-block-size}: 24px;
+	#{tags-variables.$namespace-icon-checkmark--size}: 16px;
+	#{layout.$vvd-layout-color-outline}: var(#{scheme-variables.$vvd-color-neutral-50});
+	z-index: 0;
+	display: inline-flex;
+	align-items: center;
+	padding: 0 var(#{tags-variables.$namespace-padding-inline});
+	// ignore layout outline color for this component
+	border-color: var(#{scheme-variables.$vvd-color-neutral-50});
+	background-color: var(#{layout.$vvd-layout-color-fill});
+	block-size: var(#{tags-variables.$namespace-block-size});
+	border-radius: var(#{tags-variables.$namespace-shape});
+	color: var(#{layout.$vvd-layout-color-text});
+	vertical-align: top;
+
+	&.layout-outlined {
+		box-sizing: border-box;
+		border-width: 1px;
+		border-style: solid;
+	}
+
+	&:not(&-selectable) {
+		#{layout.$vvd-layout-color-text}: var(#{scheme-variables.$vvd-color-neutral-90});
+		&.layout-filled,
+		&:not(.layout-filled):not(.layout-outlined) {
+			#{layout.$vvd-layout-color-fill}: var(#{scheme-variables.$vvd-color-neutral-20});
+		}
+	}
+
+}
+
+.vwc-tag-selectable {
+	position: relative;
+	overflow: hidden;
+	cursor: pointer;
+
+	.ripple {
+		--mdc-ripple-color: currentColor;
+	}
+
+	&:not(.vwc-tag--selected) {
+		#{layout.$vvd-layout-color-text}: var(#{scheme-variables.$vvd-color-neutral-90});
+		&.layout-filled,
+		&:not(.layout-filled):not(.layout-outlined) {
+			background-color: var(#{scheme-variables.$vvd-color-neutral-20});
+		}
+	}
+
+	&.vwc-tag--selected {
+		&.layout-outlined {
+			background-color: var(#{connotation.$vvd-color-connotation}-soft);
+			color: var(#{connotation.$vvd-color-connotation}-contrast);
+		}
+	}
+}
+
+.vwc-tag__checkmark {
+	block-size: var(#{tags-variables.$namespace-icon-checkmark--size});
+	line-height: 1;
+	margin-inline-end: 0;
+	margin-inline-start: 0;
+
+	@media (prefers-reduced-motion: no-preference) {
+		transition-duration: 0.1s;
+		transition-property: margin-inline-start, margin-inline-end;
+	}
+	.vwc-tag.vwc-tag--selected & {
+		margin-inline-end: var(#{tags-variables.$namespace-icon-checkmark--padding-inline-end});
+		margin-inline-start: calc(4px - var(#{tags-variables.$namespace-padding-inline}));
+	}
+
+	> .vwc-tag__icon {
+		block-size: var(#{tags-variables.$namespace-icon-checkmark--size});
+		inline-size: var(#{tags-variables.$namespace-icon-checkmark--size});
+
+		@media (prefers-reduced-motion: no-preference) {
+			transition: inline-size 0.1s;
+		}
+
+		.vwc-tag:not(.vwc-tag--selected) & {
+			inline-size: 0;
+		}
+	}
+}
+
+// disable connotation if not selected
+// .vwc-tag:not(.vwc-tag--selected) {
+// 	:host([connotation="cta"i]) & {
+// 		--vvd-color-connotation: unset;
+// 		--vvd-color-on-connotation: unset;
+// 	}
+// }
+
