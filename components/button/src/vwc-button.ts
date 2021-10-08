@@ -175,5 +175,10 @@ export class VWCButton extends MWCButton {
 		this.addEventListener('click', this._handleClick);
 		this.appendChild(this.#_hiddenButton);
 	}
+
+	override disconnectedCallback(): void {
+		super.disconnectedCallback();
+		this.removeEventListener('click', this._handleClick);
+	}
 }
 
