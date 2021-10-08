@@ -1,15 +1,18 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
 import '@vonage/vwc-icon-button';
-import { style as BannerStyle } from './vwc-banner.css';
+import { style as BannerStyle } from './vwc-banner.css.js';
 import {
-	customElement, html, LitElement, property, PropertyValues
+	customElement, html, LitElement, property
 } from 'lit-element';
-import { ClassInfo, classMap } from 'lit-html/directives/class-map';
+import type { PropertyValues } from 'lit-element';
+import { classMap } from 'lit-html/directives/class-map';
+import type { ClassInfo } from 'lit-html/directives/class-map';
 import { nothing, TemplateResult } from 'lit-html';
 import { Connotation } from '@vonage/vvd-foundation/constants.js';
 
 const ANIMATION_DURATION = 100;
+const KEY_ESCAPE = 'Escape';
 
 const connotationIconMap = new Map([
 	[Connotation.Info, 'info-solid'],
@@ -41,9 +44,11 @@ const createCustomEvent = function (eventName:string, props = {}):CustomEvent {
 	});
 };
 
+//const escapeHandlers:WeakMap<VWCBanner, (this:Window, ev:KeyboardEvent)=> any> = new WeakMap();
+
 @customElement('vwc-banner')
 export class VWCBanner extends LitElement {
-	static styles = [BannerStyle];
+	static override styles = [BannerStyle];
 
 	@property({ type: String, reflect: true })
 	message = '';
@@ -66,12 +71,12 @@ export class VWCBanner extends LitElement {
 
 	#transitionTimer?:number;
 
-	protected firstUpdated() {
+	protected override firstUpdated() {
 		// refactor to query decorator
 		(this.shadowRoot?.querySelector('.banner') as HTMLElement).style.setProperty('--transition-delay', `${ANIMATION_DURATION}ms`);
 	}
 
-	updated(changedProperties:PropertyValues) {
+	override updated(changedProperties:PropertyValues) {
 		if (changedProperties.has('open')) {
 			clearTimeout(this.#transitionTimer);
 			this.dispatchEvent(createCustomEvent(!this.open ? 'closing' : 'opening'));
@@ -80,7 +85,6 @@ export class VWCBanner extends LitElement {
 			}, ANIMATION_DURATION);
 		}
 	}
-
 	renderDismissButton() {
 		return this.dismissible
 			? html`<vwc-icon-button
@@ -106,9 +110,13 @@ export class VWCBanner extends LitElement {
 		return html`<vwc-icon class="icon" .type="${type}"></vwc-icon>`;
 	}
 
-	protected render(): TemplateResult {
+	private handleKeyDown(e: KeyboardEvent): void {
+		this.open = !(e.key === KEY_ESCAPE && this.dismissible);
+	}
+
+	protected override render(): TemplateResult {
 		return html`
-			<div class="banner ${classMap(this.getRenderClasses())}">
+      <div class="banner ${classMap(this.getRenderClasses())}" tabindex="0" @keydown=${this.handleKeyDown}>
 				<header class="header">
 					<span class="user-content">
 						${this.renderIcon(this.icon)}

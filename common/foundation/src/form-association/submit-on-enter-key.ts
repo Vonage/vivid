@@ -1,5 +1,5 @@
-import { requestSubmit } from '../form-association';
-import { getFormByIdOrClosest } from './common';
+import { requestSubmit } from '../form-association.js';
+import { getFormByIdOrClosest } from './common.js';
 
 export function submitOnEnter(element: HTMLInputElement): void {
 	element.addEventListener(

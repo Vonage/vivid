@@ -17,9 +17,9 @@ limitations under the License.
 import { BaseElement } from '@material/mwc-base/base-element.js';
 import { observer } from '@material/mwc-base/observer.js';
 import { addHasRemoveClass } from '@material/mwc-base/utils.js';
-import { MDCChipAdapter } from '@material/chips/chip/adapter.js';
+import type { MDCChipAdapter } from '@material/chips/chip/adapter.js';
 import { MDCChipFoundation } from '@material/chips/chip/foundation.js';
-import {
+import type {
 	MDCChipInteractionEventDetail,
 	MDCChipSelectionEventDetail,
 	MDCChipRemovalEventDetail,
@@ -217,7 +217,7 @@ export class ChipBase extends BaseElement {
 		this.mdcFoundation.beginExit();
 	}
 
-	render(): TemplateResult {
+	override render(): TemplateResult {
 		const classes = {
 			'mdc-chip--selected': this.selected,
 			'mdc-chip--deletable': this.removable,

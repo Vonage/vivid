@@ -2,7 +2,7 @@ import '@vonage/vvd-core';
 import '@vonage/vwc-surface';
 import { VWCMenu } from '@vonage/vwc-menu';
 import { customElement, html } from 'lit-element';
-import { style as vwcDropdownStyle } from './vwc-dropdown.css';
+import { style as vwcDropdownStyle } from './vwc-dropdown.css.js';
 
 export const COMPONENT_NAME = 'vwc-dropdown';
 
@@ -17,14 +17,14 @@ declare global {
  */
 @customElement('vwc-dropdown')
 export class VWCDropdown extends VWCMenu {
-	static styles = [vwcDropdownStyle];
+	static override styles = [vwcDropdownStyle];
 
 	constructor() {
 		super();
 		this.multi = true;
 	}
 
-	render() {
+	override render() {
 		return html`
 			<vwc-surface
 					?hidden=${!this.open}

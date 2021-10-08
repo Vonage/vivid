@@ -1,8 +1,8 @@
 import '@vonage/vvd-core';
 import { customElement, html, TemplateResult } from 'lit-element';
 import { Radio as MWCRadio } from '@material/mwc-radio';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
-import { style as vwcRadioStyle } from './vwc-radio.css';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
+import { style as vwcRadioStyle } from './vwc-radio.css.js';
 import { styles as mwcRadioStyles } from '@material/mwc-radio/mwc-radio.css.js';
 import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
 
@@ -21,12 +21,12 @@ MWCRadio.styles = [styleCoupling, mwcRadioStyles, vwcRadioStyle];
  */
 @customElement('vwc-radio')
 export class VWCRadio extends MWCRadio {
-	async firstUpdated(): Promise<void> {
+	override async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
 		handleAutofocus(this);
 	}
 
-	protected renderRipple(): TemplateResult {
+	protected override renderRipple(): TemplateResult {
 		return html``;
 	}
 }

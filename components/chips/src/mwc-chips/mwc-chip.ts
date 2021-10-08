@@ -21,7 +21,7 @@ import { style } from './mwc-chip.css.js';
 
 @customElement('mwc-chip')
 export class Chip extends ChipBase {
-	static styles = style;
+	static override styles = style;
 }
 
 declare global {

@@ -1,9 +1,9 @@
 import '@vonage/vvd-core';
 import { customElement, property } from 'lit-element';
 import { Drawer as MWCDrawer } from '@material/mwc-drawer';
-import { style as vwcDrawerStyle } from './vwc-drawer.css';
+import { style as vwcDrawerStyle } from './vwc-drawer.css.js';
 import { styles as mwcDrawerStyles } from '@material/mwc-drawer/mwc-drawer.css.js';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -26,7 +26,7 @@ export class VWCDrawer extends MWCDrawer {
 	@property({ type: Boolean, reflect: true, attribute: DRAWER_ALTERNATE })
 	drawerAlternate = false;
 
-	protected updated(changes: Map<string, boolean>): void {
+	protected override updated(changes: Map<string, boolean>): void {
 		super.updated(changes);
 		if (changes.has('drawerAlternate')) {
 			this.togglePart(this.drawerAlternate);

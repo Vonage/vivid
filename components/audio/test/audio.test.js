@@ -3,8 +3,8 @@ import {
 	isolatedElementsCreation,
 	textToDomToParent,
 	waitNextTask
-} from '../../../test/test-helpers';
-import { VWCAudio } from '../vwc-audio';
+} from '../../../test/test-helpers.js';
+import { VWCAudio } from '../vwc-audio.js';
 import 'chai-dom';
 
 describe('vwc-audio', () => {

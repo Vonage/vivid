@@ -1,14 +1,18 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
-import { customElement, property } from 'lit-element';
-import { ClassInfo, classMap } from 'lit-html/directives/class-map';
+import '@material/mwc-ripple';
+
+import {
+	customElement, property, html, TemplateResult
+} from 'lit-element';
+import { classMap } from 'lit-html/directives/class-map';
+import type { ClassInfo } from 'lit-html/directives/class-map';
 import { IconButton as MWCIconButton } from '@material/mwc-icon-button';
-import { style as vwcButtonStyle } from './vwc-icon-button.css';
+import { style as vwcButtonStyle } from './vwc-icon-button.css.js';
 import { styles as mwcIconButtonStyles } from '@material/mwc-icon-button/mwc-icon-button.css.js';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
-import { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
+import type { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
 import { handleMultipleDenseProps } from '@vonage/vvd-foundation/general-utils';
-import { html, TemplateResult } from 'lit-element';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -57,7 +61,7 @@ export class VWCIconButton extends MWCIconButton {
 	@property({ type: Boolean, reflect: true })
 	enlarged = false;
 
-	protected updated(changes: Map<string, boolean>): void {
+	protected override updated(changes: Map<string, boolean>): void {
 		handleMultipleDenseProps(this, changes);
 	}
 
@@ -68,7 +72,7 @@ export class VWCIconButton extends MWCIconButton {
 		};
 	}
 
-	protected render(): TemplateResult {
+	protected override render(): TemplateResult {
 		return html`<button
 			class="mdc-icon-button ${classMap(this.getRenderClasses())}"
 			aria-label="${this.ariaLabel || this.icon}"
@@ -94,7 +98,7 @@ export class VWCIconButton extends MWCIconButton {
 		return html`<vwc-icon	type="${this.icon}"></vwc-icon>`;
 	}
 
-	renderRipple(): TemplateResult | '' {
+	override renderRipple(): TemplateResult | '' {
 		return this.shouldRenderRipple
 			? html` <mwc-ripple .disabled="${this.disabled}"></mwc-ripple>`
 			: '';

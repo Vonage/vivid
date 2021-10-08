@@ -7,7 +7,7 @@ export default {
 	sourcePath: '../../contribution.md',
 	outputName: 'guides-contribution',
 	story: {
-		title: 'Guides/Contribution',
+		title: 'Getting Started/Contribution',
 		name: 'Contribution',
 		parameters: {
 			options: {
@@ -17,7 +17,7 @@ export default {
 		},
 	},
 	htmlPostProcess: (htmlText) => {
-		let r = relocateStaticResources(
+		const r = relocateStaticResources(
 			htmlText,
 			['assets/images/contribution.svg'],
 			'docs'

@@ -7,7 +7,7 @@ import {
 	TemplateResult,
 	query,
 } from 'lit-element';
-import { style as vwcKeypadStyle } from './vwc-keypad.css';
+import { style as vwcKeypadStyle } from './vwc-keypad.css.js';
 import '@vonage/vwc-button/vwc-button';
 import '@vonage/vwc-textfield/vwc-textfield';
 
@@ -19,7 +19,7 @@ declare global {
 
 @customElement('vwc-keypad')
 export class VWCKeypad extends LitElement {
-	static get styles(): CSSResult[] {
+	static override get styles(): CSSResult[] {
 		return [vwcKeypadStyle];
 	}
 
@@ -82,7 +82,7 @@ export class VWCKeypad extends LitElement {
 		this.actionStarted = false;
 	}
 
-	render(): TemplateResult {
+	override render(): TemplateResult {
 		return html`
 			<div id="container">
 				${this.noDisplay

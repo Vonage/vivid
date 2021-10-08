@@ -1,3 +1,20 @@
+## [2.20.1](https://github.com/vonage/vivid/compare/v2.20.0...v2.20.1) (2021-10-07)
+
+
+
+# [2.20.0](https://github.com/vonage/vivid/compare/v2.19.0...v2.20.0) (2021-10-07)
+
+
+
+# [2.19.0](https://github.com/vonage/vivid/compare/v2.18.1...v2.19.0) (2021-10-04)
+
+
+### Bug Fixes
+
+* **vwc-data-grid:** set determined styles ([#1070](https://github.com/vonage/vivid/issues/1070)) ([7339dcf](https://github.com/vonage/vivid/commit/7339dcfd5af775c32cbf14da387dc2fe3bf0798e))
+
+
+
 ## [2.18.1](https://github.com/vonage/vivid/compare/v2.18.0...v2.18.1) (2021-08-25)
 
 

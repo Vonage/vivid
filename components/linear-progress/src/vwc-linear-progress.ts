@@ -3,10 +3,10 @@ import '@vonage/vvd-core';
 import { customElement, property, query } from 'lit-element';
 import { observer } from '@material/mwc-base/observer';
 import { LinearProgress as MWCLinearProgress } from '@material/mwc-linear-progress';
-import { style as vwcLinearProgressStyle } from './vwc-linear-progress.css';
+import { style as vwcLinearProgressStyle } from './vwc-linear-progress.css.js';
 import { styles as mwcLinearProgressStyles } from '@material/mwc-linear-progress/mwc-linear-progress.css.js';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
-import { Connotation, ConnotationDecorative } from '@vonage/vvd-foundation/constants';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
+import type { Connotation, ConnotationDecorative } from '@vonage/vvd-foundation/constants';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -47,7 +47,7 @@ export class VWCLinearProgress extends MWCLinearProgress {
 	})
 	connotation?: LinearProgressConnotation;
 
-	protected updated(changes: Map<string, boolean>): void {
+	protected override updated(changes: Map<string, boolean>): void {
 		super.updated(changes);
 		if (changes.has('progress')) {
 			this.mdcLinearProgress.style.setProperty('--linear-progress-progress', this.progress.toString());
