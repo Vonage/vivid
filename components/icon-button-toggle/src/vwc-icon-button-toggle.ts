@@ -2,12 +2,12 @@ import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
 import '@material/mwc-ripple';
 import {
-	html,	customElement, property, TemplateResult, CSSResult
-} from 'lit-element';
+	html,	TemplateResult, CSSResult, nothing
+} from 'lit';
+import { customElement, property } from 'lit/decorators';
 import type { ClassInfo } from 'lit/directives/class-map.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { ifDefined } from 'lit-html/directives/if-defined';
-import { nothing } from 'lit-html';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { IconButtonToggleBase } from '@material/mwc-icon-button-toggle/mwc-icon-button-toggle-base.js';
 import { styles as MWCIconButtonStyles } from '@material/mwc-icon-button/mwc-icon-button.css.js';
 import { style as VWCIconButtonStyle } from '@vonage/vwc-icon-button/vwc-icon-button.css.js';

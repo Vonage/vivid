@@ -1,5 +1,5 @@
 import '@vonage/vvd-core';
-import { customElement, property } from 'lit-element';
+import { property, customElement } from 'lit/decorators';
 import { Drawer as MWCDrawer } from '@material/mwc-drawer';
 import { style as vwcDrawerStyle } from './vwc-drawer.css.js';
 import { styles as mwcDrawerStyles } from '@material/mwc-drawer/mwc-drawer.css.js';

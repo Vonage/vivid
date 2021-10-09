@@ -1,5 +1,5 @@
 import '@vonage/vvd-core';
-import { customElement } from 'lit-element';
+import { customElement } from 'lit/decorators';
 import { SliderBase as MWCSliderBase } from '@material/mwc-slider/slider-base';
 import { styles as mwcSliderStyles } from '@material/mwc-slider/mwc-slider.css.js';
 import { style as vwcSliderStyle } from './vwc-slider.css.js';

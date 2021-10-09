@@ -15,13 +15,8 @@ import {
 import type { RowDetailsRenderer } from './vwc-data-grid-renderer-api.js';
 import { VWCDataGridAdapterVaadin } from './adapters/vaadin/vwc-data-grid-adapter-vaadin.js';
 import { style as vwcDataGridStyle } from './vwc-data-grid.css.js';
-import {
-	customElement,
-	property,
-	LitElement,
-	TemplateResult,
-	query,
-} from 'lit-element';
+import { LitElement,	TemplateResult } from 'lit';
+import { customElement,	property } from 'lit/decorators';
 import type { DataGridAdapter } from './adapters/vwc-data-grid-adapter-api.js';
 import type { GridElement } from '@vaadin/vaadin-grid';
 

@@ -1,4 +1,4 @@
-import type { TemplateResult } from 'lit-element';
+import type { TemplateResult } from 'lit';
 import type { EventContext } from '../vwc-data-grid-api.js';
 
 export {

@@ -5,9 +5,10 @@ import { RippleHandlers } from '@material/mwc-ripple/ripple-handlers';
 import type { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
 import type { ClassInfo } from 'lit/directives/class-map.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { LitElement, html, TemplateResult } from 'lit';
 import {
-	 LitElement, html, property, TemplateResult, queryAsync, state, query, eventOptions
-} from 'lit-element';
+	property, queryAsync, state, query, eventOptions
+} from 'lit/decorators';
 
 
 type TagConnotation = Extract<

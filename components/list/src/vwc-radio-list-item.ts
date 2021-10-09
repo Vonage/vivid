@@ -1,4 +1,4 @@
-import { customElement } from 'lit-element';
+import { customElement } from 'lit/decorators';
 import { RadioListItem as MWCRadioListItem } from '@material/mwc-list/mwc-radio-list-item';
 import { styles as mwcListItemStyles } from '@material/mwc-list/mwc-list-item.css.js';
 import { styles as mwcControlListItemStyles } from '@material/mwc-list/mwc-control-list-item.css.js';

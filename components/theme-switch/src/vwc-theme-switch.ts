@@ -1,12 +1,7 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-switch';
-import {
-	customElement,
-	LitElement,
-	property,
-	html,
-	TemplateResult,
-} from 'lit-element';
+import { LitElement,	html,	TemplateResult } from 'lit';
+import { customElement,	property } from 'lit/decorators';
 import { style } from './vwc-theme-switch.css.js';
 import {
 	default as vvdScheme,

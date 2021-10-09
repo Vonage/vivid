@@ -1,6 +1,6 @@
 import { html } from 'lit';
 import { argTypes } from './arg-types.js';
-import { unsafeSVG } from 'lit-html/directives/unsafe-svg';
+import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
 import { pageContentMock } from '../../../scripts/storybook/svg_templates';
 import { Basic } from './side-drawer.stories.js';
 

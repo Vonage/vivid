@@ -1,5 +1,6 @@
 import '@vonage/vvd-core';
-import { customElement, html, TemplateResult } from 'lit-element';
+import { html, TemplateResult } from 'lit';
+import { customElement } from 'lit/decorators';
 import { Radio as MWCRadio } from '@material/mwc-radio';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
 import { style as vwcRadioStyle } from './vwc-radio.css.js';

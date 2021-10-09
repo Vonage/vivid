@@ -1,12 +1,7 @@
-import {
-	LitElement,
-	customElement,
-	html,
-	property,
-	TemplateResult,
-} from 'lit-element';
-import { classMap } from 'lit-html/directives/class-map';
-import type { ClassInfo } from 'lit-html/directives/class-map';
+import { LitElement, html, TemplateResult } from 'lit';
+import { property, customElement } from 'lit/decorators';
+import { classMap } from 'lit/directives/class-map.js';
+import type { ClassInfo } from 'lit/directives/class-map.js';
 import { Size } from '@vonage/vvd-foundation/constants';
 import { style } from './vwc-layout.css.js';
 

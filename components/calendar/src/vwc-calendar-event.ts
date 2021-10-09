@@ -1,9 +1,8 @@
 import '@vonage/vvd-core';
-import {
-	customElement, html, LitElement, property, TemplateResult
-} from 'lit-element';
+import { html, TemplateResult, LitElement } from 'lit';
+import { customElement,	property } from 'lit/decorators';
 import { style } from './vwc-calendar-event.css.js';
-import { styleMap } from 'lit-html/directives/style-map';
+import { styleMap } from 'lit/directives/style-map.js';
 
 declare global {
 	interface HTMLElementTagNameMap {

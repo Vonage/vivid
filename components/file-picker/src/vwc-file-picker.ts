@@ -1,13 +1,8 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-badge';
 import '@vonage/vwc-helper-message';
-import {
-	customElement,
-	html,
-	property,
-	LitElement,
-	TemplateResult,
-} from 'lit-element';
+import { html, LitElement, TemplateResult } from 'lit';
+import { property, customElement } from 'lit/decorators';
 import { style as filePickerStyle } from './vwc-file-picker.css.js';
 
 declare global {

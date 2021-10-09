@@ -1,12 +1,7 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
-import {
-	customElement,
-	property,
-	html,
-	TemplateResult,
-	LitElement,
-} from 'lit-element';
+import { html, TemplateResult, LitElement } from 'lit';
+import { property,	customElement } from 'lit/decorators';
 import { style as vwcHelperMessageStyle } from './vwc-helper-message.css.js';
 
 declare global {

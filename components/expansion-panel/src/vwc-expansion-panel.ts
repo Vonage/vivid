@@ -1,13 +1,10 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
+import { html, TemplateResult } from 'lit';
 import {
-	customElement,
-	eventOptions,
-	html,
-	property,
-	queryAsync,
-	TemplateResult
-} from 'lit-element';
+	property, customElement, eventOptions, queryAsync
+} from 'lit/decorators';
+
 // import '@material/mwc-ripple/mwc-ripple';
 import type { Ripple } from '@material/mwc-ripple/mwc-ripple';
 import { RippleHandlers } from '@material/mwc-ripple/ripple-handlers';

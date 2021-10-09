@@ -1,11 +1,6 @@
 import '@vonage/vvd-core';
-import {
-	customElement,
-	html,
-	LitElement,
-	property,
-	TemplateResult
-} from 'lit-element';
+import { html, TemplateResult, LitElement } from 'lit';
+import { customElement,	property } from 'lit/decorators';
 import { style } from './vwc-calendar.css.js';
 import {
 	assertIsValidDateStringRepresentation,

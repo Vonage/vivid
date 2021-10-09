@@ -1,7 +1,8 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-surface';
 import { VWCMenu } from '@vonage/vwc-menu';
-import { customElement, html } from 'lit-element';
+import { html } from 'lit';
+import { customElement } from 'lit/decorators';
 import { style as vwcDropdownStyle } from './vwc-dropdown.css.js';
 
 export const COMPONENT_NAME = 'vwc-dropdown';

@@ -1,5 +1,6 @@
 import '@vonage/vvd-core';
-import { customElement, html, TemplateResult } from 'lit-element';
+import { html, TemplateResult } from 'lit';
+import { customElement } from 'lit/decorators';
 import { Checkbox as MWCCheckbox } from '@material/mwc-checkbox';
 import { style as vwcCheckboxStyle } from './vwc-checkbox.css.js';
 import { styles as mwcCheckboxStyles } from '@material/mwc-checkbox/mwc-checkbox.css.js';

@@ -1,8 +1,7 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-button';
-import {
-	customElement, html, LitElement, TemplateResult
-} from 'lit-element';
+import { html, TemplateResult, LitElement } from 'lit';
+import { customElement } from 'lit/decorators';
 import vvdScheme, {
 	AutoScheme,
 	PredefinedScheme,

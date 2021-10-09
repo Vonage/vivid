@@ -1,15 +1,14 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
-import {
-	customElement, property, html, TemplateResult
-} from 'lit-element';
-import type { ClassInfo } from 'lit-html/directives/class-map';
+import { html, TemplateResult } from 'lit';
+import { property, customElement } from 'lit/decorators';
+import type { ClassInfo } from 'lit/directives/class-map.js';
 import { Button as MWCButton } from '@material/mwc-button';
 import { style as vwcButtonStyle } from './vwc-button.css.js';
 import { styles as mwcButtonStyles } from '@material/mwc-button/styles.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
 import type { Connotation, Layout, Shape } from '@vonage/vvd-foundation/constants';
-import type { PropertyValues } from 'lit-element';
+import type { PropertyValues } from 'lit';
 
 declare global {
 	interface HTMLElementTagNameMap {

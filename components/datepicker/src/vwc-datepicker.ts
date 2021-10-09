@@ -1,9 +1,8 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-menu';
 import '@vonage/vwc-textfield';
-import {
-	customElement, property, html, CSSResult, query
-} from 'lit-element';
+import { html, CSSResult } from 'lit';
+import { customElement,	property, query } from 'lit/decorators';
 import { LitFlatpickr } from 'lit-flatpickr';
 import * as weekSelectPlugin from 'flatpickr/dist/plugins/weekSelect/weekSelect';
 import type { Options } from 'flatpickr/dist/types/options';

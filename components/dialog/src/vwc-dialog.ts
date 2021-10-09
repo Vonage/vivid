@@ -1,4 +1,5 @@
-import { customElement, property, PropertyValues } from 'lit-element';
+import type { PropertyValues } from 'lit';
+import { customElement, property } from 'lit/decorators';
 import { style } from './vwc-dialog.css.js';
 import { Dialog as MWCDialog } from '@material/mwc-dialog';
 import { styles as mwcDialogStyles } from '@material/mwc-dialog/mwc-dialog.css.js';

@@ -1,13 +1,14 @@
 import '@vonage/vvd-core';
 import type { IconSize, Connotation } from '@vonage/vvd-foundation/constants';
 import {
-	LitElement,	html,	property,	customElement,	CSSResult,	TemplateResult,
-} from 'lit-element';
-import { classMap } from 'lit-html/directives/class-map';
-import type { ClassInfo } from 'lit-html/directives/class-map';
-import { unsafeSVG } from 'lit-html/directives/unsafe-svg';
-import { until } from 'lit-html/directives/until.js';
-import { ifDefined } from 'lit-html/directives/if-defined';
+	LitElement,	html,	CSSResult,	TemplateResult,
+} from 'lit';
+import { property,	customElement } from 'lit/decorators';
+import { classMap } from 'lit/directives/class-map.js';
+import type { ClassInfo } from 'lit/directives/class-map.js';
+import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
+import { until } from 'lit/directives/until.js';
+import { ifDefined } from 'lit/directives/if-defined';
 import { memoizeWith, identity, always } from 'ramda';
 import { ariaProperty } from '@material/mwc-base/aria-property';
 import { style } from './vwc-icon.css.js';

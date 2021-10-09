@@ -5,11 +5,8 @@ import {
 	SELECTOR_MULTI,
 	DataGridColumn
 } from './vwc-data-grid-column-api.js';
-import {
-	customElement,
-	property,
-	LitElement,
-} from 'lit-element';
+import { LitElement } from 'lit';
+import { customElement,	property } from 'lit/decorators';
 
 declare global {
 	interface HTMLElementTagNameMap {

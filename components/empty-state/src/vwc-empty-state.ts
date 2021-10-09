@@ -1,6 +1,6 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
-import { customElement } from 'lit-element';
+import { customElement } from 'lit/decorators';
 import { VWCEmptyStateBase } from './vwc-empty-state-base.js';
 import { style } from './vwc-empty-state.css.js';
 

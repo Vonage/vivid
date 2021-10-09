@@ -1,11 +1,6 @@
 import type { VWCIcon } from '@vonage/vwc-icon';
-import {
-	customElement,
-	html,
-	PropertyValues,
-	queryAssignedNodes,
-	TemplateResult,
-} from 'lit-element';
+import { html, PropertyValues, TemplateResult } from 'lit';
+import { customElement, queryAssignedNodes } from 'lit/decorators';
 import { style } from './vwc-list-expansion-panel.css.js';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 import { VWCExpansionPanelBase } from '@vonage/vwc-expansion-panel/vwc-expansion-panel-base';

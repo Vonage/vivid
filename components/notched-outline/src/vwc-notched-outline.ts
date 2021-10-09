@@ -1,4 +1,4 @@
-import { customElement } from 'lit-element';
+import { customElement } from 'lit/decorators';
 import { NotchedOutline as MWCNotchedOutline } from '@material/mwc-notched-outline';
 import { styles as mwcNotchedOutlineStyles } from '@material/mwc-notched-outline/mwc-notched-outline.css.js';
 

@@ -1,4 +1,5 @@
-import { LitElement, property } from 'lit-element';
+import { LitElement } from 'lit';
+import { property } from 'lit/decorators';
 import { observer } from '@material/mwc-base/observer';
 
 export abstract class VWCExpansionPanelBase extends LitElement {

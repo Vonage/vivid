@@ -1,8 +1,9 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
 import {
-	customElement, property, LitElement, CSSResult, html, TemplateResult
-} from 'lit-element';
+	LitElement, CSSResult, html, TemplateResult
+} from 'lit';
+import { property, customElement } from 'lit/decorators';
 import type { ClassInfo } from 'lit/directives/class-map.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { style as vwcNoteStyle } from './vwc-note.css.js';

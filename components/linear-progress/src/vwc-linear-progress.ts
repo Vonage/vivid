@@ -1,6 +1,6 @@
 // eslint-disable-next-line max-classes-per-file
 import '@vonage/vvd-core';
-import { customElement, property, query } from 'lit-element';
+import { customElement, property, query } from 'lit/decorators';
 import { observer } from '@material/mwc-base/observer';
 import { LinearProgressBase as MWCLinearProgressBase } from '@material/mwc-linear-progress/mwc-linear-progress-base.js';
 import { style as vwcLinearProgressStyle } from './vwc-linear-progress.css.js';

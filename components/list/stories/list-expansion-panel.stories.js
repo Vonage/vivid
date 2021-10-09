@@ -3,7 +3,7 @@ import '@vonage/vwc-list/vwc-list-expansion-panel.js';
 import '@vonage/vwc-icon';
 import { html } from 'lit';
 import { argTypes } from './arg-types-list-item.js';
-import { styleMap } from 'lit-html/directives/style-map';
+import { styleMap } from 'lit/directives/style-map.js';
 
 export default {
 	title: 'Components/List/Expansion panel',

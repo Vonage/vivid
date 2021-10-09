@@ -1,5 +1,5 @@
 import '@vonage/vvd-core';
-import { customElement } from 'lit-element';
+import { customElement } from 'lit/decorators';
 import { VWCSideDrawerBase } from './vwc-side-drawer-base.js';
 import { style } from './vwc-side-drawer.css.js';
 

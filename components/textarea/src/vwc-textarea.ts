@@ -1,9 +1,8 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-helper-message';
 import '@vonage/vwc-notched-outline';
-import {
-	customElement, html, property, TemplateResult
-} from 'lit-element';
+import { html, TemplateResult } from 'lit';
+import { customElement,	property } from 'lit/decorators';
 import { TextArea as MWCTextArea } from '@material/mwc-textarea';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
 import { style as vwcTextareaStyle } from './vwc-textarea.css.js';

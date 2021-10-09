@@ -1,5 +1,5 @@
 import '@vonage/vvd-core';
-import { customElement, property, query } from 'lit-element';
+import { customElement, property, query } from 'lit/decorators';
 import { observer } from '@material/mwc-base/observer';
 import { CircularProgress as MWCCircularProgress } from '@material/mwc-circular-progress';
 import { styles as mwcCircularProgressStyles } from '@material/mwc-circular-progress/mwc-circular-progress.css.js';

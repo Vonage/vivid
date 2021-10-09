@@ -1,12 +1,8 @@
 import {
-	html,
-	LitElement,
-	property,
-	customElement,
-	CSSResult,
-	TemplateResult,
-	query,
-} from 'lit-element';
+	html,	LitElement,	CSSResult, TemplateResult
+} from 'lit';
+import { property, query, customElement } from 'lit/decorators';
+
 import { style as vwcKeypadStyle } from './vwc-keypad.css.js';
 import '@vonage/vwc-button/vwc-button';
 import '@vonage/vwc-textfield/vwc-textfield';

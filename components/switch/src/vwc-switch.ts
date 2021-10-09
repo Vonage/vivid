@@ -1,8 +1,7 @@
 import '@vonage/vvd-core';
-import {
-	customElement, property, html, TemplateResult
-} from 'lit-element';
-import type { ClassInfo } from 'lit-html/directives/class-map';
+import { html, TemplateResult } from 'lit';
+import { customElement,	property } from 'lit/decorators';
+import type { ClassInfo } from 'lit/directives/class-map.js';
 import { Switch as MWCSwitch } from '@material/mwc-switch';
 import { style as vwcSwitchStyle } from './vwc-switch.css.js';
 import { styles as mwcSwitchStyles } from '@material/mwc-switch/styles.css.js';

@@ -1,4 +1,4 @@
-import { customElement, property } from 'lit-element';
+import { customElement,	property } from 'lit/decorators';
 import { ListItem as MWCListItem } from '@material/mwc-list/mwc-list-item';
 import { style as vwcListItemStyle } from './vwc-list-item.css.js';
 import { styles as mwcListItemStyles } from '@material/mwc-list/mwc-list-item.css.js';

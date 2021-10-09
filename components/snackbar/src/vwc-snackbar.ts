@@ -7,7 +7,7 @@ import { html, TemplateResult } from 'lit';
 import { customElement,	property } from 'lit/decorators';
 import type { ClassInfo } from 'lit/directives/class-map.js';
 import { classMap } from 'lit/directives/class-map.js';
-import { ifDefined } from 'lit-html/directives/if-defined';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import { SnackbarBase as MWCSnackbarBase } from '@material/mwc-snackbar/mwc-snackbar-base';
 import { style as vwcSnackbarStyle } from './vwc-snackbar.css.js';
 import { styles as mwcSnackbarStyles } from '@material/mwc-snackbar/mwc-snackbar.css.js';

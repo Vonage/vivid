@@ -3,12 +3,9 @@ import '@vonage/vwc-helper-message';
 import '@vonage/vwc-icon';
 import '@vonage/vwc-notched-outline';
 import {
-	customElement,
-	property,
-	html,
-	PropertyValues,
-	nothing,
-} from 'lit-element';
+	html, PropertyValues,	nothing,
+} from 'lit';
+import { customElement,	property } from 'lit/decorators';
 import { Select as MWCSelect } from '@material/mwc-select';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
 import { style as vwcSelectStyle } from './vwc-select.css.js';

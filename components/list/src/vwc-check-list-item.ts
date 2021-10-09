@@ -1,4 +1,4 @@
-import { customElement } from 'lit-element';
+import { customElement } from 'lit/decorators';
 import { CheckListItem as MWCCheckListItem } from '@material/mwc-list/mwc-check-list-item';
 import { styles as mwcListItemStyles } from '@material/mwc-list/mwc-list-item.css.js';
 import { styles as mwcControlListItemStyles } from '@material/mwc-list/mwc-control-list-item.css.js';

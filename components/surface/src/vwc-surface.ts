@@ -1,5 +1,5 @@
 import '@vonage/vvd-core';
-import { customElement } from 'lit-element';
+import { customElement } from 'lit/decorators';
 import { MenuSurfaceBase } from '@material/mwc-menu/mwc-menu-surface-base.js';
 import { styles as mwcSurfaceStyles } from '@material/mwc-menu/mwc-menu-surface.css.js';
 import { style as vwcSurfaceStyle } from './vwc-surface.css.js';

@@ -1,8 +1,7 @@
-import {
-	customElement, html, LitElement, property
-} from 'lit-element';
+import { html, LitElement } from 'lit';
+import { property, customElement } from 'lit/decorators';
 import { style } from './vwc-elevation.css.js';
-import { classMap } from 'lit-html/directives/class-map';
+import { classMap } from 'lit/directives/class-map.js';
 
 declare global {
 	interface HTMLElementTagNameMap {

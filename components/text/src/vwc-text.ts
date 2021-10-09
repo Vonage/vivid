@@ -1,5 +1,5 @@
 import '@vonage/vvd-core';
-import { customElement } from 'lit-element';
+import { customElement } from 'lit/decorators';
 
 import { VWCTextBase } from './vwc-text-base.js';
 import { style } from './vwc-text.css.js';

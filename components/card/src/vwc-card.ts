@@ -1,8 +1,7 @@
-import {
-	customElement, html, LitElement, property
-} from 'lit-element';
+import { html, LitElement } from 'lit';
+import { customElement,	property } from 'lit/decorators';
 import { style } from './vwc-card.css.js';
-import { classMap } from 'lit-html/directives/class-map.js';
+import { classMap } from 'lit/directives/class-map.js';
 import '@vonage/vwc-button';
 import '@vonage/vwc-icon';
 

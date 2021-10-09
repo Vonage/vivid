@@ -1,13 +1,8 @@
 import '@vonage/vvd-core';
 import {
-	customElement,
-	property,
-	query,
-	html,
-	LitElement,
-	CSSResult,
-	TemplateResult,
-} from 'lit-element';
+	html,	LitElement,	CSSResult,	TemplateResult
+} from 'lit';
+import { customElement,	property, query } from 'lit/decorators';
 import { style } from './vwc-carousel.css.js';
 import SwiperCore, {
 	Swiper, SwiperOptions, Autoplay, Keyboard, Mousewheel, Navigation
