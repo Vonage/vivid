@@ -1,21 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-/* eslint-disable no-case-declarations */
-/* eslint-disable no-continue */
-/* eslint-disable @typescript-eslint/ban-types */
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-/*
-Copyright 2020 Adobe. All rights reserved.
-This file is licensed to you under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License. You may obtain a copy
-of the License at http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software distributed under
-the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
-OF ANY KIND, either express or implied. See the License for the specific language
-governing permissions and limitations under the License.
-*/
-// eslint-disable-next-line max-classes-per-file
 import type { Part, ElementPart } from 'lit';
 import { nothing } from 'lit/html.js';
 import { directive, AsyncDirective } from 'lit/async-directive.js';
@@ -43,6 +25,7 @@ type EventListenerWithOptions = EventListenerOrEventListenerObject &
  *    );
  */
 class SpreadDirective extends AsyncDirective {
+    // eslint-disable-next-line @typescript-eslint/ban-types
     host!: EventTarget | object | Element;
     element!: Element;
     prevData: { [key: string]: unknown } = {};
@@ -50,7 +33,7 @@ class SpreadDirective extends AsyncDirective {
     render(_spreadData: { [key: string]: unknown }) {
     	return nothing;
     }
-    update(part: Part, [spreadData]: Parameters<this['render']>) {
+    override update(part: Part, [spreadData]: Parameters<this['render']>) {
     	if (this.element !== (part as ElementPart).element) {
     		this.element = (part as ElementPart).element;
     	}
@@ -66,11 +49,13 @@ class SpreadDirective extends AsyncDirective {
     	for (const key in data) {
     		const value = data[key];
     		if (value === prevData[key]) {
+    			// eslint-disable-next-line no-continue
     			continue;
     		}
     		const name = key.slice(1);
     		switch (key[0]) {
     		case '@': // event listener
+    			// eslint-disable-next-line no-case-declarations
     			const prevHandler = prevData[key];
     			if (prevHandler) {
     				element.removeEventListener(
@@ -86,6 +71,7 @@ class SpreadDirective extends AsyncDirective {
     			);
     			break;
     		case '.': // property
+    			// eslint-disable-next-line @typescript-eslint/ban-ts-comment
     			// @ts-ignore
     			element[name] = value;
     			break;
@@ -115,6 +101,7 @@ class SpreadDirective extends AsyncDirective {
     		if (!data || !(key in data)) {
     			switch (key[0]) {
     			case '@': // event listener
+    				// eslint-disable-next-line no-case-declarations
     				const value = prevData[key];
     				element.removeEventListener(
     					key.slice(1),
@@ -123,6 +110,7 @@ class SpreadDirective extends AsyncDirective {
     				);
     				break;
     			case '.': // property
+    				// eslint-disable-next-line @typescript-eslint/ban-ts-comment
     				// @ts-ignore
     				element[key.slice(1)] = undefined;
     				break;
@@ -139,19 +127,23 @@ class SpreadDirective extends AsyncDirective {
     }
 
     handleEvent(event: Event) {
+    	// eslint-disable-next-line @typescript-eslint/ban-types
     	const value: Function | EventListenerObject = this.prevData[
     		`@${event.type}`
+    	// eslint-disable-next-line @typescript-eslint/ban-types
     	] as Function | EventListenerObject;
     	if (typeof value === 'function') {
+    		// eslint-disable-next-line @typescript-eslint/ban-types
     		(value as Function).call(this.host, event);
     	} else {
     		(value as EventListenerObject).handleEvent(event);
     	}
     }
 
-    disconnected() {
+    override disconnected() {
     	const { prevData, element } = this;
     	for (const key in prevData) {
+    		// eslint-disable-next-line no-continue
     		if (key[0] !== '@') continue;
     		// event listener
     		const value = prevData[key];
@@ -163,9 +155,10 @@ class SpreadDirective extends AsyncDirective {
     	}
     }
 
-    reconnected() {
+    override reconnected() {
     	const { prevData, element } = this;
     	for (const key in prevData) {
+    		// eslint-disable-next-line no-continue
     		if (key[0] !== '@') continue;
     		// event listener
     		const value = prevData[key];
@@ -178,49 +171,4 @@ class SpreadDirective extends AsyncDirective {
     }
 }
 
-export const spread = directive(SpreadDirective);
-
-class SpreadPropsDirective extends AsyncDirective {
-    host!: EventTarget | object | Element;
-    element!: Element;
-    prevData: { [key: string]: unknown } = {};
-
-    render(_spreadData: { [key: string]: unknown }) {
-    	return nothing;
-    }
-    update(part: Part, [spreadData]: Parameters<this['render']>) {
-    	if (this.element !== (part as ElementPart).element) {
-    		this.element = (part as ElementPart).element;
-    	}
-    	this.host = part.options?.host || this.element;
-    	this.apply(spreadData);
-    	this.groom(spreadData);
-    	this.prevData = spreadData;
-    }
-
-    apply(data: { [key: string]: unknown }) {
-    	if (!data) return;
-    	const { prevData, element } = this;
-    	for (const key in data) {
-    		const value = data[key];
-    		if (value === prevData[key]) {
-    			continue;
-    		}
-    		// @ts-ignore
-    		element[key] = value;
-    	}
-    }
-
-    groom(data: { [key: string]: unknown }) {
-    	const { prevData, element } = this;
-    	if (!prevData) return;
-    	for (const key in prevData) {
-    		if (!data || !(key in data)) {
-    			// @ts-ignore
-    			element[key] = undefined;
-    		}
-    	}
-    }
-}
-
-export const spreadProps = directive(SpreadPropsDirective);
+export const spread: any = directive(SpreadDirective);
