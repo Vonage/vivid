@@ -40,7 +40,7 @@ export class VWCSwitch extends MWCSwitch {
 		};
 	}
 
-	async firstUpdated(): Promise<void> {
+	override async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
 		handleAutofocus(this);
 	}
