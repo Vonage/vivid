@@ -1,4 +1,4 @@
-import { render } from 'lit-html';
+import { render } from 'lit';
 
 export function storiesToElement(stories) {
 	const textElementWrapper = document.createElement('div');

@@ -1,7 +1,7 @@
 import vvdContext from '@vonage/vvd-context';
 import '@vonage/vwc-icon';
 import '@vonage/vwc-checkbox';
-import { html } from 'lit-element';
+import { html } from 'lit';
 
 export default {
 	title: 'Alpha/Core/Context/Table',

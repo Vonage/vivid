@@ -1,7 +1,7 @@
 import '@vonage/vwc-data-grid';
 import '@vonage/vwc-switch';
 import '@vonage/vwc-note';
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { sequentalData } from './data-grid-demo-data-provider';
 
 const Template = args => html`
@@ -12,7 +12,7 @@ const Template = args => html`
 export {
 	cellRenderer,
 	expandedRowRenderer
-}
+};
 
 export const BasicJS = Template.bind({});
 BasicJS.args = {
@@ -32,7 +32,7 @@ function cellRenderer(container, configuration, data) {
 		toggler.setAttribute('connotation', 'cta');
 		toggler.style.verticalAlign = 'middle';
 		container.appendChild(toggler);
-		toggler.addEventListener('change', e => {
+		toggler.addEventListener('change', (e) => {
 			if (e.target.checked) {
 				grid.openItemDetails(container.item);
 			} else {

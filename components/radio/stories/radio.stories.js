@@ -1,6 +1,6 @@
 import '@vonage/vwc-radio/vwc-radio.js';
 import '@vonage/vwc-formfield/vwc-formfield.js';
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
@@ -8,7 +8,7 @@ export default {
 	title: 'Components/Radio',
 	component: 'vwc-radio',
 	argTypes
-}
+};
 
 const Template = args => html`
 	<vwc-formfield label="London">

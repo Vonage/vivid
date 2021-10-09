@@ -1,7 +1,7 @@
 import '@vonage/vwc-select/vwc-select.js';
 import '@vonage/vwc-list/vwc-list-item.js';
 import '@vonage/vwc-button/vwc-button.js';
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
@@ -9,9 +9,9 @@ export default {
 	title: 'Components/Select',
 	component: 'vwc-select',
 	argTypes
-}
+};
 
-const Template = (args) => html`
+const Template = args => html`
 	<style>
 		html, body {
 			height: 100%;
@@ -44,7 +44,9 @@ export const Disabled = Template.bind({});
 Disabled.args = { disabled: '', label: 'VWC Select', helper: 'Helper Text' };
 
 export const Required = Template.bind({});
-Required.args = { required: '', label: 'VWC Select', helper: 'Select your preference', validationMessage: 'This Field is Required' };
+Required.args = {
+	required: '', label: 'VWC Select', helper: 'Select your preference', validationMessage: 'This Field is Required'
+};
 
 export const Autofocus = Template.bind({});
 Autofocus.args = { label: 'VWC Select', helper: 'Select your preference', autofocus: true };

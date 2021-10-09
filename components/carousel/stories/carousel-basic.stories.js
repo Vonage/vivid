@@ -1,5 +1,5 @@
 import '@vonage/vwc-carousel/vwc-carousel.js';
-import { html } from 'lit-element';
+import { html } from 'lit';
 
 export default {
 	title: 'Components/Carousel',

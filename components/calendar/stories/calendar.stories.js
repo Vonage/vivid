@@ -1,6 +1,6 @@
 import '@vonage/vwc-calendar/vwc-calendar.js';
 import '@vonage/vwc-calendar/vwc-calendar-event.js';
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { spread } from '@open-wc/lit-helpers';
 
 export default {

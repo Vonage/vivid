@@ -1,8 +1,9 @@
 import {
-	html, LitElement, property, TemplateResult
-} from 'lit-element';
-import { nothing } from 'lit-html';
-import { ClassInfo, classMap } from 'lit-html/directives/class-map';
+	html, LitElement, TemplateResult, nothing
+} from 'lit';
+import { property } from 'lit/decorators';
+import type { ClassInfo } from 'lit/directives/class-map.js';
+import { classMap } from 'lit/directives/class-map.js';
 import type { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
 import { handleMultipleDenseProps } from '@vonage/vvd-foundation/general-utils';
 

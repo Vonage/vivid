@@ -1,9 +1,9 @@
 import '@vonage/vwc-banner';
 import '@vonage/vwc-button';
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { argTypes } from './arg-types';
-import { unsafeSVG } from 'lit-html/directives/unsafe-svg';
-import { ifDefined } from 'lit-html/directives/if-defined';
+import { unsafeSVG } from 'lit/directives/unsafe-svg.js';
+import { ifDefined } from 'lit/directives/if-defined.js';
 import noop from 'lodash/fp/noop';
 import pipe from 'lodash/fp/pipe';
 import { createTimeline, createUpdatableStory } from '@vonage/vvd-umbrella/libs/storybook_tools';
@@ -71,7 +71,7 @@ export const Basic = (function () {
 		};
 		updateStory();
 	});
-})();
+}());
 
 Basic.args = {
 	connotation: "info",

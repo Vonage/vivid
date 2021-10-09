@@ -1,6 +1,6 @@
 import '@vonage/vwc-button/vwc-button.js';
 import '@vonage/vwc-circular-progress';
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 

@@ -1,5 +1,5 @@
 import '@vonage/vwc-helper-message';
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
@@ -7,7 +7,7 @@ export default {
 	title: 'Components/Helper Message',
 	component: 'vwc-helper-message',
 	argTypes
-}
+};
 
 const Template = args => html`
 	<style>

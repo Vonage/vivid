@@ -1,7 +1,7 @@
 import '@vonage/vwc-datepicker';
 import '@vonage/vwc-icon-button';
 import '@vonage/vwc-banner';
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { spread } from '@open-wc/lit-helpers';
 
 const Template = args => html`
@@ -42,5 +42,5 @@ export const Anchor = Template.bind({});
 Anchor.args = { closeOnSelect: '' };
 
 function handleOpenDatepicker() {
-  datepicker.open();
+	datepicker.open();
 }

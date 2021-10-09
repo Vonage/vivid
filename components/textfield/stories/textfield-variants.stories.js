@@ -1,10 +1,9 @@
 import '@vonage/vwc-textfield/vwc-textfield.js';
 import '@vonage/vwc-icon';
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { spread } from '@open-wc/lit-helpers';
 
-const Template = (args) =>
-	html`<vwc-textfield ...=${spread(args)} @keydown=${handleKeyDown} @change=${onChange} @input=${onInput}>`;
+const Template = args => html`<vwc-textfield ...=${spread(args)} @keydown=${handleKeyDown} @change=${onChange} @input=${onInput}>`;
 
 export const Default = Template.bind({});
 Default.args = { label: 'e.g. username', value: 'Initial value', placeholder: 'Placeholder' };
@@ -13,7 +12,9 @@ export const Dense = Template.bind({});
 Dense.args = { dense: '', label: 'VWC Textfield' };
 
 export const PillShape = Template.bind({});
-PillShape.args = { shape: 'pill', dense: '', label: 'VWC Textfield', helper: 'helper message' };
+PillShape.args = {
+	shape: 'pill', dense: '', label: 'VWC Textfield', helper: 'helper message'
+};
 
 export const Disabled = Template.bind({});
 Disabled.args = { disabled: '', label: 'Hint test', value: 'Text' };

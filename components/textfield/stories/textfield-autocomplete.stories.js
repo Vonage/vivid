@@ -2,10 +2,10 @@ import '@vonage/vwc-textfield';
 import '@vonage/vwc-list';
 import '@vonage/vwc-menu';
 import Kefir from 'kefir';
-import { asyncReplace } from 'lit-html/directives/async-replace.js';
-import { html } from 'lit-html';
-import { live } from 'lit-html/directives/live.js';
-import { repeat } from 'lit-html/directives/repeat.js';
+import { asyncReplace } from 'lit/directives/async-replace.js';
+import { html } from 'lit';
+import { live } from 'lit/directives/live.js';
+import { repeat } from 'lit/directives/repeat.js';
 import { spread } from '@open-wc/lit-helpers';
 import elementF from 'element-f';
 

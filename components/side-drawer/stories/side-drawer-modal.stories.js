@@ -1,4 +1,4 @@
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { argTypes } from './arg-types.js';
 import { unsafeSVG } from 'lit-html/directives/unsafe-svg';
 import { pageContentMock } from '../../../scripts/storybook/svg_templates';

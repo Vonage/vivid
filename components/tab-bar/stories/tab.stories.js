@@ -1,13 +1,13 @@
 import '@vonage/vwc-tab-bar/vwc-tab-bar.js';
 import '@vonage/vwc-tab-bar/vwc-tab.js';
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types-tab.js';
 
 export default {
-  title: 'Components/Tab',
-  component: 'vwc-tab',
-  argTypes
+	title: 'Components/Tab',
+	component: 'vwc-tab',
+	argTypes
 };
 
 const Template = args => html`
@@ -18,20 +18,20 @@ const Template = args => html`
   </vwc-tab-bar>`;
 
 export const Basic = Template.bind({});
-Basic.args = { label: 'Tab' }
+Basic.args = { label: 'Tab' };
 
 export const Block = Template.bind({});
-Block.args = { label: 'Tab', block: '' }
+Block.args = { label: 'Tab', block: '' };
 
 export const WithIcon = Template.bind({});
-WithIcon.args = { label: 'Tab', icon: 'chat' }
+WithIcon.args = { label: 'Tab', icon: 'chat' };
 
 export const IconOnly = Template.bind({});
-IconOnly.args = { icon: 'chat' }
+IconOnly.args = { icon: 'chat' };
 
 export const Disabled = Template.bind({});
-Disabled.args = { label: 'Tab', icon: 'chat', disabled: '' }
+Disabled.args = { label: 'Tab', icon: 'chat', disabled: '' };
 
 function handleInteraction() {
-  console.log('MDCTab:interacted event');
+	console.log('MDCTab:interacted event');
 }

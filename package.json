@@ -56,7 +56,6 @@
 	"devDependencies": {
 		"@open-wc/eslint-config": "^4.3.0",
 		"@open-wc/karma-esm": "^4.0.0",
-		"@open-wc/lit-helpers": "^0.3.12",
 		"@open-wc/semantic-dom-diff": "^0.19.4",
 		"@open-wc/testing-helpers": "^1.8.12",
 		"@open-wc/testing-karma": "^4.0.9",

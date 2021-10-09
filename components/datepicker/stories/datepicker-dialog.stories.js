@@ -3,7 +3,7 @@ import '@vonage/vwc-dialog';
 import '@vonage/vwc-button';
 import '@vonage/vwc-textfield';
 import '@vonage/vwc-banner';
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { spread } from '@open-wc/lit-helpers';
 
 const DialogTemplate = args => html`
@@ -44,8 +44,10 @@ const DialogTemplate = args => html`
 `;
 
 export const Dialog = DialogTemplate.bind({});
-Dialog.args = { fixedMenuPosition: '', dateFormat: 'Y-m-d', altInput: '', altFormat: 'F j, Y', closeOnSelect: '' };
+Dialog.args = {
+	fixedMenuPosition: '', dateFormat: 'Y-m-d', altInput: '', altFormat: 'F j, Y', closeOnSelect: ''
+};
 
 function handleOpenDialogClick(e) {
-  e.target.parentNode.querySelector('#dialog-a').show();
+	e.target.parentNode.querySelector('#dialog-a').show();
 }

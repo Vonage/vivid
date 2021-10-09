@@ -1,5 +1,5 @@
 import '@vonage/vwc-keypad/vwc-keypad.js';
-import { html } from 'lit-element';
+import { html } from 'lit';
 
 export default {
 	title: 'Alpha/Components/Keypad',

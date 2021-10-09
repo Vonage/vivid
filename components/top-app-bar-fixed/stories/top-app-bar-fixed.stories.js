@@ -1,7 +1,7 @@
 import '@vonage/vwc-top-app-bar-fixed';
 import '@vonage/vwc-icon-button';
 import '@vonage/vwc-theme-switch';
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
@@ -9,13 +9,13 @@ export default {
 	title: 'Components/Top App Bar Fixed',
 	component: 'vwc-top-app-bar-fixed',
 	argTypes
-}
+};
 
-const Template = (args) => html`
+const Template = args => html`
 	<vwc-top-app-bar-fixed ...=${spread(args)}>
 		<vwc-icon-button slot="navigationIcon" icon="menu-line" layout="filled"></vwc-icon-button>
 		<span slot="title">Top App Bar</span>
-		
+
 		<vwc-icon-button slot="actionItems" icon="twitter-mono" layout="filled"></vwc-icon-button>
 		<vwc-icon-button slot="actionItems" icon="facebook-mono" layout="filled"></vwc-icon-button>
 		<vwc-icon-button slot="actionItems" icon="heart-solid" layout="filled"></vwc-icon-button>

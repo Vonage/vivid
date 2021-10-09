@@ -1,6 +1,6 @@
 import '@vonage/vwc-list/vwc-list.js';
 import '@vonage/vwc-list/vwc-check-list-item.js';
-import { html } from 'lit-element';
+import { html } from 'lit';
 
 export default {
 	title: 'Components/List/Check list item',

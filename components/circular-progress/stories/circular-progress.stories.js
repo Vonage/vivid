@@ -1,5 +1,5 @@
 import '@vonage/vwc-circular-progress/vwc-circular-progress.js';
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
@@ -7,7 +7,7 @@ export default {
 	title: 'Components/Circular Progress',
 	component: 'vwc-circular-progress',
 	argTypes
-}
+};
 
 const Template = args => html`<vwc-circular-progress ...=${spread(args)}></vwc-circular-progress>`;
 

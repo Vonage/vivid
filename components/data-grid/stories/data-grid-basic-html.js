@@ -1,5 +1,5 @@
 import '@vonage/vwc-data-grid';
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { sequentalData } from './data-grid-demo-data-provider';
 import { cellRenderer, expandedRowRenderer } from './data-grid-basic-js';
 

@@ -1,7 +1,7 @@
 import '@vonage/vwc-list/vwc-list-item.js';
 import '@vonage/vwc-list/vwc-list-expansion-panel.js';
 import '@vonage/vwc-icon';
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { argTypes } from './arg-types-list-item.js';
 import { styleMap } from 'lit-html/directives/style-map';
 

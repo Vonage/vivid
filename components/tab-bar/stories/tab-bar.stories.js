@@ -1,13 +1,13 @@
 import '@vonage/vwc-tab-bar/vwc-tab-bar.js';
 import '@vonage/vwc-tab-bar/vwc-tab.js';
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { spread } from '@open-wc/lit-helpers';
 
 export default {
-  title: 'Components/Tab Bar',
-  component: 'vwc-tab-bar',
-  subcomponents: 'vwc-tab',
-  argTypes: { styles: { table: { disable: true } } }
+	title: 'Components/Tab Bar',
+	component: 'vwc-tab-bar',
+	subcomponents: 'vwc-tab',
+	argTypes: { styles: { table: { disable: true } } }
 };
 
 const Template = args => html`
@@ -23,5 +23,5 @@ export const ActiveIndex = Template.bind({});
 ActiveIndex.args = { activeIndex: '1' };
 
 function handleInteraction() {
-  console.log('MDCTab:interacted event');
+	console.log('MDCTab:interacted event');
 }

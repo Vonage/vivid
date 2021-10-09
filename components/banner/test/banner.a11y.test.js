@@ -1,5 +1,5 @@
 import 'chai-a11y-axe';
-import { html } from 'lit-html';
+import { html } from 'lit';
 import { fixture } from '@open-wc/testing-helpers';
 
 describe('banner a11y', function () {

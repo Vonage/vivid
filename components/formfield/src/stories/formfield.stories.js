@@ -2,7 +2,7 @@ import '@vonage/vwc-formfield';
 import '@vonage/vwc-checkbox';
 import '@vonage/vwc-switch';
 import '@vonage/vwc-radio';
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { argTypes } from './arg-types.js';
 
 export default {

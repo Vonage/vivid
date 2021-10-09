@@ -2,7 +2,7 @@ import '@vonage/vwc-drawer';
 import '@vonage/vwc-button';
 import '@vonage/vwc-list/vwc-list.js';
 import '@vonage/vwc-list/vwc-list-item.js';
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
@@ -10,7 +10,7 @@ export default {
 	title: 'Alpha/Components/Drawer',
 	component: 'vwc-drawer',
 	argTypes
-}
+};
 
 const Template = args => html`
 		<vwc-drawer id="drawer" @MDCDrawer:opened="${handleOpened}" @MDCDrawer:closed="${handleClosed}" ...=${spread(args)}>

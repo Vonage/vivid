@@ -1,6 +1,6 @@
 import '@vonage/vwc-banner';
 import 'chai-dom';
-import { html } from 'lit-html';
+import { html } from 'lit';
 import {
 	fixture, aTimeout
 } from '@open-wc/testing-helpers';

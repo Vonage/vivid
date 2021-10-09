@@ -1,24 +1,22 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-media-controller';
 import '@vonage/vwc-media-controller/vwc-scrub-bar.js';
-import { ifDefined } from 'lit-html/directives/if-defined';
-import { classMap } from 'lit-html/directives/class-map';
-import type { ClassInfo } from 'lit-html/directives/class-map';
+import { ifDefined } from 'lit/directives/if-defined.js';
+import { classMap } from 'lit/directives/class-map.js';
+import type { ClassInfo } from 'lit/directives/class-map.js';
 import { pipe } from 'ramda';
 import { style as AudioStyle } from './vwc-audio.css.js';
 import { ariaProperty } from '@material/mwc-base/aria-property';
 import '@vonage/vwc-icon';
 import {
-	LitElement,
-	TemplateResult,
-	customElement,
-	html,
-	state, property, query
-} from 'lit-element';
+	LitElement,	TemplateResult,	html, nothing
+} from 'lit';
+import {
+	customElement,	state, property, query
+} from 'lit/decorators';
 
-import type { PropertyValues } from 'lit-element';
+import type { PropertyValues } from 'lit';
 
-import { nothing } from 'lit-html';
 import type { VWCScrubBar } from '@vonage/vwc-media-controller/vwc-scrub-bar';
 import type { Connotation } from '@vonage/vvd-foundation/constants';
 

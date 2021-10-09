@@ -1,7 +1,7 @@
 import '@vonage/vwc-data-grid';
 import '@vonage/vwc-checkbox';
 import '@vonage/vwc-formfield';
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { sequentalData } from './data-grid-demo-data-provider';
 
 const Template = args => html`
@@ -16,7 +16,7 @@ export {
 	resizableToggle,
 	hiddenToggle,
 	frozenToggle
-}
+};
 
 export const ColumnsCustomizationJS = Template.bind({});
 ColumnsCustomizationJS.args = {

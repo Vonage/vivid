@@ -1,6 +1,6 @@
 import '@vonage/vwc-theme-switch';
 import '@vonage/vwc-top-app-bar';
-import { html } from 'lit-element';
+import { html } from 'lit';
 
 export default {
 	title: 'Components/Theme Switch',

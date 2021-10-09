@@ -1,5 +1,5 @@
 import '@vonage/vwc-empty-state/vwc-empty-state.js';
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 

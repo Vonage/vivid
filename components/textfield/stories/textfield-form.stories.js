@@ -1,7 +1,7 @@
 import '@vonage/vwc-button';
 import '@vonage/vwc-icon';
 import '@vonage/vwc-textfield';
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { spread } from '@open-wc/lit-helpers';
 
 const Template = args => html`
@@ -33,7 +33,9 @@ const Template = args => html`
 export const LoginForm = Template.bind({});
 LoginForm.args = {
 	username: { name: 'username', label: 'username', icon: 'user' },
-	password: { name: 'password', label: 'password', icon: 'lock', type: 'password' },
+	password: {
+		name: 'password', label: 'password', icon: 'lock', type: 'password'
+	},
 	model: {
 		username: '',
 		password: ''

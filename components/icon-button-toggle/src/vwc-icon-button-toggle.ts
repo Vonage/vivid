@@ -4,7 +4,8 @@ import '@material/mwc-ripple';
 import {
 	html,	customElement, property, TemplateResult, CSSResult
 } from 'lit-element';
-import { ClassInfo, classMap } from 'lit-html/directives/class-map';
+import type { ClassInfo } from 'lit/directives/class-map.js';
+import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import { nothing } from 'lit-html';
 import { IconButtonToggleBase } from '@material/mwc-icon-button-toggle/mwc-icon-button-toggle-base.js';

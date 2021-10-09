@@ -1,9 +1,6 @@
 import '@vonage/vvd-core';
-import {
-	customElement,
-	html,
-	TemplateResult
-} from 'lit-element';
+import {	html,	TemplateResult } from 'lit';
+import { customElement } from 'lit/decorators.js';
 import { VWCAccordionBase } from './vwc-accordion-base.js';
 import { style } from './vwc-accordion.css.js';
 

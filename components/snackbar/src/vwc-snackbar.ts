@@ -3,13 +3,10 @@ import '@vonage/vwc-icon';
 import '@vonage/vwc-icon-button';
 
 import { Connotation, Position } from '@vonage/vvd-foundation/constants';
-import {
-	customElement,
-	html,
-	property,
-	TemplateResult,
-} from 'lit-element';
-import { ClassInfo, classMap } from 'lit-html/directives/class-map';
+import { html, TemplateResult } from 'lit';
+import { customElement,	property } from 'lit/decorators';
+import type { ClassInfo } from 'lit/directives/class-map.js';
+import { classMap } from 'lit/directives/class-map.js';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import { SnackbarBase as MWCSnackbarBase } from '@material/mwc-snackbar/mwc-snackbar-base';
 import { style as vwcSnackbarStyle } from './vwc-snackbar.css.js';

@@ -1,4 +1,4 @@
-import { html } from 'lit-element';
+import { html } from 'lit';
 import '@vonage/vwc-button';
 import '@vonage/vwc-list/vwc-check-list-item';
 

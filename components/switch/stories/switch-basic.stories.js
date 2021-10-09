@@ -1,5 +1,5 @@
 import '@vonage/vwc-switch/vwc-switch.js';
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
@@ -7,7 +7,7 @@ export default {
 	title: 'Components/Switch',
 	component: 'vwc-switch',
 	argTypes
-}
+};
 
 const Template = args => html`<vwc-switch ...=${spread(args)}></vwc-switch>`;
 

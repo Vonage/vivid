@@ -1,6 +1,6 @@
 import '@vonage/vwc-textfield/vwc-textfield.js';
 import '@vonage/vwc-icon-button';
-import { html } from 'lit-element';
+import { html } from 'lit';
 
 export const Actions = () => html`
 		<style>

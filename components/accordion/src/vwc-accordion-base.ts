@@ -1,4 +1,5 @@
-import { LitElement, property } from 'lit-element';
+import { LitElement } from 'lit';
+import { property } from 'lit/decorators';
 import type { VWCExpansionPanelBase } from '@vonage/vwc-expansion-panel/vwc-expansion-panel-base';
 
 export abstract class VWCAccordionBase extends LitElement {

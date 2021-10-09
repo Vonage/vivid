@@ -1,5 +1,5 @@
 import '@vonage/vvd-core';
-import { customElement, property } from 'lit-element';
+import { customElement, property } from 'lit/decorators';
 import { observer } from '@material/mwc-base/observer';
 import { TopAppBarBase as MWCTopAppBarBase } from '@material/mwc-top-app-bar/mwc-top-app-bar-base.js';
 import { styles as MWCTopAppBarStyles } from '@material/mwc-top-app-bar/mwc-top-app-bar.css.js';

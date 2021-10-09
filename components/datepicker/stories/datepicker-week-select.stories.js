@@ -1,6 +1,6 @@
 import '@vonage/vwc-datepicker';
 import '@vonage/vwc-note';
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { spread } from '@open-wc/lit-helpers';
 
 const Template = args => html`

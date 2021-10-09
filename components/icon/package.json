@@ -27,11 +27,10 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@material/mwc-base": "=0.25.1",
+		"@material/mwc-base": "^0.26.0-canary.dfc00d60.0",
 		"@vonage/vvd-core": "2.20.1",
 		"@vonage/vvd-foundation": "2.20.1",
-		"lit-element": "^3.0.0",
-		"lit-html": "^2.0.0",
+		"lit": "^2.0.0",
 		"ramda": "^0.27.1"
 	},
 	"devDependencies": {

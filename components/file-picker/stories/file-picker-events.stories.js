@@ -1,6 +1,6 @@
 import '@vonage/vwc-file-picker';
 import '@vonage/vwc-button';
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
@@ -8,7 +8,7 @@ export default {
 	title: 'Components/File Picker/Events',
 	component: 'vwc-file-picker',
 	argTypes
-}
+};
 
 const Template = args => html`
 	<vwc-file-picker ...=${spread(args.self)} @change="${onChange}">

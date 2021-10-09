@@ -2,7 +2,7 @@ import '@vonage/vwc-dropdown';
 import '@vonage/vwc-button';
 import '@vonage/vwc-list/vwc-list-item.js';
 import '@vonage/vwc-list/vwc-check-list-item.js';
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { spread } from '@open-wc/lit-helpers';
 
 const Template = args => html`

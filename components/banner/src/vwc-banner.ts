@@ -3,12 +3,12 @@ import '@vonage/vwc-icon';
 import '@vonage/vwc-icon-button';
 import { style as BannerStyle } from './vwc-banner.css.js';
 import {
-	customElement, html, LitElement, property
-} from 'lit-element';
-import type { PropertyValues } from 'lit-element';
-import { classMap } from 'lit-html/directives/class-map';
-import type { ClassInfo } from 'lit-html/directives/class-map';
-import { nothing, TemplateResult } from 'lit-html';
+	html, LitElement, nothing, TemplateResult
+} from 'lit';
+import { customElement, property } from 'lit/decorators';
+import type { PropertyValues } from 'lit';
+import { classMap } from 'lit/directives/class-map.js';
+import type { ClassInfo } from 'lit/directives/class-map.js';
 import { Connotation } from '@vonage/vvd-foundation/constants.js';
 
 const ANIMATION_DURATION = 100;

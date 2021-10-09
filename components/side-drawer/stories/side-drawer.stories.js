@@ -1,7 +1,7 @@
 import '@vonage/vwc-side-drawer/vwc-side-drawer.js';
 import '@vonage/vwc-list/vwc-list-expansion-panel.js';
 import { styleMap } from 'lit-html/directives/style-map';
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 import { unsafeSVG } from 'lit-html/directives/unsafe-svg';

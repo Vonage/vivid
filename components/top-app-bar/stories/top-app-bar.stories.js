@@ -1,7 +1,7 @@
 import '@vonage/vwc-top-app-bar';
 import '@vonage/vwc-icon-button';
 import '@vonage/vwc-theme-switch';
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
@@ -9,9 +9,9 @@ export default {
 	title: 'Components/Top App Bar',
 	component: 'vwc-top-app-bar',
 	argTypes
-}
+};
 
-const Template = (args) => html`
+const Template = args => html`
 	<vwc-top-app-bar ...=${spread(args)}>
 		<vwc-icon-button slot="navigationIcon" icon="menu-line" layout="filled"></vwc-icon-button>
 		<span slot="title">Top App Bar</span>

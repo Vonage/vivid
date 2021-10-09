@@ -3,17 +3,11 @@ import '@vonage/vwc-helper-message';
 import '@vonage/vwc-icon';
 import '@vonage/vwc-notched-outline';
 
+import {	html,	TemplateResult,	PropertyValues } from 'lit';
 import {
-	customElement,
-	property,
-	html,
-	TemplateResult,
-	PropertyValues,
-	queryAssignedNodes,
-	query,
-	state
-} from 'lit-element';
-import { classMap } from 'lit-html/directives/class-map';
+	customElement, property,	queryAssignedNodes,	query, state
+} from 'lit/decorators.js';
+import { classMap } from 'lit/directives/class-map.js';
 
 import { TextField as MWCTextField } from '@material/mwc-textfield';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';

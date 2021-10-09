@@ -1,6 +1,6 @@
 import '@vonage/vwc-data-grid';
 import '@vonage/vwc-button';
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { sequentalData } from './data-grid-demo-data-provider';
 
 const Template = args => html`

@@ -3,7 +3,7 @@ import '@vonage/vwc-top-app-bar';
 import '@vonage/vwc-top-app-bar-fixed';
 import '@vonage/vwc-icon';
 
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { spread } from '@open-wc/lit-helpers';
 
 

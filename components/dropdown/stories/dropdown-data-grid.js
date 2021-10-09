@@ -1,7 +1,7 @@
 import '@vonage/vwc-dropdown';
 import '@vonage/vwc-button';
 import '@vonage/vwc-data-grid';
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { spread } from '@open-wc/lit-helpers';
 
 const Template = args => html`

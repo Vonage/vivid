@@ -1,5 +1,5 @@
 import '@vonage/vwc-fab/vwc-fab.js';
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
@@ -7,7 +7,7 @@ export default {
 	title: 'Alpha/Components/Fab',
 	component: 'vwc-fab',
 	argTypes
-}
+};
 
 const Template = args => html`<vwc-fab ...=${spread(args)} @click="${onClick}"></vwc-fab>`;
 

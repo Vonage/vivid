@@ -1,5 +1,5 @@
 import '@vonage/vwc-text/vwc-text.js';
-import { html } from 'lit-element';
+import { html } from 'lit';
 import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 import { VVDFontFace } from '@vonage/vvd-design-tokens/build/types/font-faces';
