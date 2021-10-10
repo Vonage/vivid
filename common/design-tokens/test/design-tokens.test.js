@@ -4,10 +4,29 @@ import {
 	PRINCIPAL_SCHEME_VARIABLES_FILTER,
 } from '../../../test/style-utils.js';
 
+import { render as elevationRender } from '../src/builders/elevation/render.js';
+
 const ALTERNATE = 'alternate',
 	MAIN = 'main';
 
-describe('design tokens service', () => {
+describe.only('design tokens service', () => {
+	describe(`elevations builder`, function () {
+		let configurations = [];
+		let ranBuildPlatformCount = 0;
+		const styleDictionaryMock = {
+			extend: function (config) {
+				configurations.push(config);
+				return () => {
+					ranBuildPlatformCount++;
+				};
+			}
+		};
+		elevationRender(styleDictionaryMock);
+
+		expect(ranBuildPlatformCount).to.equal(2);
+		expect(JSON.stringify(configurations)).to.equalSnapshot();
+	});
+
 	describe('scheme design tokens', () => {
 		it('should have scheme design tokens generated', async () => {
 			const EXPECTED_MATRIX = [
@@ -17,19 +36,23 @@ describe('design tokens service', () => {
 				`light/${MAIN}.scss`,
 			];
 			const schemeFiles = getSchemeFiles();
-			expect(Object.keys(schemeFiles).sort()).eql(EXPECTED_MATRIX);
-			Object.keys(schemeFiles).forEach((sf) => {
-				expect(schemeFiles[sf]).exist.and.not.empty;
-			});
+			expect(Object.keys(schemeFiles)
+				.sort())
+				.eql(EXPECTED_MATRIX);
+			Object.keys(schemeFiles)
+				.forEach((sf) => {
+					expect(schemeFiles[sf]).exist.and.not.empty;
+				});
 		});
 
-		it("should have symmetric variables number in each scheme's **base** variables", async () => {
+		it('should have symmetric variables number in each scheme\'s **base** variables', async () => {
 			const schemeVariables = getSchemeVariables();
 			Object.values(schemeVariables)
 				.map(schemeVars => Object.keys(schemeVars).length)
 				.reduce((result, schemeVarsLength) => {
 					if (result) {
-						expect(schemeVarsLength).equal(result);
+						expect(schemeVarsLength)
+							.equal(result);
 					} else {
 						return schemeVarsLength;
 					}
@@ -42,16 +65,20 @@ describe('design tokens service', () => {
 			Object.keys(schemeVariables)
 				.filter(schemeName => schemeName.includes(MAIN))
 				.forEach((schemeName) => {
-					Object.keys(schemeVariables[schemeName]).forEach((cssVarName) => {
-						const set = testSet[cssVarName] || (testSet[cssVarName] = new Set());
-						set.add(schemeName);
-					});
+					Object.keys(schemeVariables[schemeName])
+						.forEach((cssVarName) => {
+							const set = testSet[cssVarName] || (testSet[cssVarName] = new Set());
+							set.add(schemeName);
+						});
 				});
 
 			expect(Object.values(testSet)).not.empty;
 			const expectedCount = Object.values(testSet)[0].size;
-			expect(expectedCount).greaterThan(0);
-			Object.values(testSet).forEach(set => expect(set.size).equal(expectedCount));
+			expect(expectedCount)
+				.greaterThan(0);
+			Object.values(testSet)
+				.forEach(set => expect(set.size)
+					.equal(expectedCount));
 		});
 
 		//	we have a matrix of schemes and flavors: each scheme hase 2 flavors (main/alternate)
@@ -121,10 +148,11 @@ function assertListsOfDistinct(setOfLists) {
 		for (const item in list[0]) {
 			if (PRINCIPAL_SCHEME_VARIABLES_FILTER.test(item)) {
 				const checkSet = new Set(list.map(sf => sf[item]));
-				expect(checkSet.size).equal(
-					numOfItems,
-					`${item} distinctness is not as expected`
-				);
+				expect(checkSet.size)
+					.equal(
+						numOfItems,
+						`${item} distinctness is not as expected`
+					);
 			}
 		}
 	}

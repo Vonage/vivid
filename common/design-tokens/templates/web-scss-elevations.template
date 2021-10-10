@@ -1,0 +1,4 @@
+@mixin variables {
+<% _.each(allProperties, function(prop) {
+%>	--<%= prop.name %>: <%= prop.value %>;<% if (prop.comment) { %> // <%= prop.comment %><% } %>
+<% }); %>}
