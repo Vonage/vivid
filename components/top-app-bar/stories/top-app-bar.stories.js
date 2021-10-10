@@ -37,3 +37,6 @@ export const Default = Template.bind({});
 
 export const Dense = Template.bind({});
 Dense.args = { dense: '' };
+
+export const Alternate = Template.bind({});
+Alternate.args = { alternate: true };
