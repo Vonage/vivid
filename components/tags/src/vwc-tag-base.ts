@@ -50,7 +50,7 @@ export class VWCTagBase extends LitElement {
   	return this.ripple;
   });
 
-  focus(): void {
+  override focus(): void {
   	const selectableElement = this.selectableElement;
   	if (selectableElement) {
   		this.rippleHandlers.startFocus();
@@ -58,7 +58,7 @@ export class VWCTagBase extends LitElement {
   	}
   }
 
-  blur(): void {
+  override blur(): void {
   	const selectableElement = this.selectableElement;
   	if (selectableElement) {
   		this.rippleHandlers.endFocus();
@@ -119,7 +119,7 @@ export class VWCTagBase extends LitElement {
 		</span>`;
   }
 
-  render(): TemplateResult {
+  override render(): TemplateResult {
   	return this.selectable
   		? this.renderTagSelectable()
   		: html`<span class="vwc-tag ${classMap(this.getRenderClasses())}">

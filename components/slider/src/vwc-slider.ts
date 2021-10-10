@@ -26,29 +26,29 @@ export class VWCSlider extends MWCSlider {
 	/* eslint-disable compat/compat */
 	#resizeObserver = new ResizeObserver(() => this.layout());
 
-	connectedCallback() {
+	override connectedCallback() {
 		super.connectedCallback();
 		this.#resizeObserver.observe(this);
 	}
 
-	disconnectedCallback() {
+	override disconnectedCallback() {
 		super.disconnectedCallback();
 		this.#resizeObserver.unobserve(this);
 	}
 
-	async firstUpdated(): Promise<void> {
+	override async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
 		this.pinMarkerText = this.value?.toLocaleString();
 		handleAutofocus(this);
 	}
 
-	focus(): void {
+	override focus(): void {
 		super.focus();
 		this.formElement.focus();
 	}
 
 	@debounced()
-	layout() {
+	override layout() {
 		super.layout();
 	}
 }

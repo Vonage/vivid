@@ -47,7 +47,7 @@ export class VWCCalendar extends LitElement {
 	 * assign styles
 	 * @internal
 	 * */
-	static styles = [style];
+	static override styles = [style];
 
 	/**
 	 * The date within a week of choice.
@@ -216,7 +216,7 @@ export class VWCCalendar extends LitElement {
 	 * the html markup
 	 * @internal
 	 * */
-	protected render(): TemplateResult {
+	protected override render(): TemplateResult {
 		return html`
 			<div role="grid" @keydown=${this.onKeydown}>
 				${this.renderDays()}

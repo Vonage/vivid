@@ -22,7 +22,7 @@ import { query, internalProperty } from 'lit-element/lib/decorators.js';
  */
 @customElement('vwc-media-controller')
 export class VwcMediaController extends LitElement {
-	static styles = [vwcMediaControllerStyle];
+	static override styles = [vwcMediaControllerStyle];
 
 	@query('.scrubber')
 	private _scrubber!:VWCScrubBar
@@ -30,7 +30,7 @@ export class VwcMediaController extends LitElement {
 	@internalProperty()
 	private _playState = false;
 
-	render():TemplateResult {
+	override render():TemplateResult {
 		return html`
 			<main class="main">
 				<button @click="${this.dispatchPlayControllerClickEvent}" aria-label="Play/Pause" class="control-button">
