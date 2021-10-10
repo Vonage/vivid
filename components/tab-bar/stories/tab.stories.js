@@ -1,7 +1,7 @@
 import '@vonage/vwc-tab-bar/vwc-tab-bar.js';
 import '@vonage/vwc-tab-bar/vwc-tab.js';
 import { html } from 'lit';
-import { spread } from '@open-wc/lit-helpers';
+import { spread } from '@vonage/vvd-foundation/utils/lit-helpers/spread.js';
 import { argTypes } from './arg-types-tab.js';
 
 export default {

@@ -6,6 +6,7 @@ import { LinearProgressBase as MWCLinearProgressBase } from '@material/mwc-linea
 import { style as vwcLinearProgressStyle } from './vwc-linear-progress.css.js';
 import { styles as mwcLinearProgressStyles } from '@material/mwc-linear-progress/mwc-linear-progress.css.js';
 import type { Connotation, ConnotationDecorative } from '@vonage/vvd-foundation/constants';
+import { css } from 'lit';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -27,7 +28,7 @@ type LinearProgressConnotation = Extract<
 
 @customElement('vwc-linear-progress')
 export class VWCLinearProgress extends MWCLinearProgressBase {
-  static override styles = [mwcLinearProgressStyles, vwcLinearProgressStyle];
+  static override styles = [css``, mwcLinearProgressStyles, vwcLinearProgressStyle];
 
 	@query('.mdc-linear-progress') protected mdcLinearProgress!: HTMLElement;
 

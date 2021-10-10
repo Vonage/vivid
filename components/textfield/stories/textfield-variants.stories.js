@@ -1,7 +1,7 @@
 import '@vonage/vwc-textfield/vwc-textfield.js';
 import '@vonage/vwc-icon';
 import { html } from 'lit';
-import { spread } from '@open-wc/lit-helpers';
+import { spread } from '@vonage/vvd-foundation/utils/lit-helpers/spread.js';
 
 const Template = args => html`<vwc-textfield ...=${spread(args)} @keydown=${handleKeyDown} @change=${onChange} @input=${onInput}>`;
 

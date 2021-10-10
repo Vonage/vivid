@@ -1,7 +1,7 @@
 import '@vonage/vwc-list/vwc-list-item.js';
 import '@vonage/vwc-icon';
 import { html } from 'lit';
-import { spread } from '@open-wc/lit-helpers';
+import { spread } from '@vonage/vvd-foundation/utils/lit-helpers/spread.js';
 import { argTypes } from './arg-types-list-item.js';
 
 export default {

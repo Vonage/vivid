@@ -1,7 +1,7 @@
 import '@vonage/vwc-accordion/vwc-accordion.js';
 import '@vonage/vwc-expansion-panel/vwc-expansion-panel.js';
 import { html } from 'lit';
-import { spread } from '@open-wc/lit-helpers';
+import { spread } from '@vonage/vvd-foundation/utils/lit-helpers/spread.js';
 import { argTypes } from './arg-types.js';
 
 export default {

@@ -2,7 +2,7 @@ import '@vonage/vwc-datepicker';
 import '@vonage/vwc-textfield';
 import '@vonage/vwc-banner';
 import { html } from 'lit';
-import { spread } from '@open-wc/lit-helpers';
+import { spread } from '@vonage/vvd-foundation/utils/lit-helpers/spread.js';
 import { argTypes } from './arg-types.js';
 
 export default {

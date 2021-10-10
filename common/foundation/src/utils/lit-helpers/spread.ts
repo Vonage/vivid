@@ -8,7 +8,7 @@ type EventListenerWithOptions = EventListenerOrEventListenerObject &
 /**
  * Usage:
  *    import { html, render } from 'lit-html';
- *    import { spread } from '@open-wc/lit-helpers';
+ *    import { spread } from '@vonage/vvd-foundation/utils/lit-helpers/spread.js';
  *
  *    render(
  *      html`

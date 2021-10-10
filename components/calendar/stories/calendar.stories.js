@@ -1,7 +1,7 @@
 import '@vonage/vwc-calendar/vwc-calendar.js';
 import '@vonage/vwc-calendar/vwc-calendar-event.js';
 import { html } from 'lit';
-import { spread } from '@open-wc/lit-helpers';
+import { spread } from '@vonage/vvd-foundation/utils/lit-helpers/spread.js';
 
 export default {
 	title: 'Components/Calendar',

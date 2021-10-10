@@ -3,7 +3,7 @@ import '@vonage/vwc-button';
 import '@vonage/vwc-list/vwc-list-item.js';
 import '@vonage/vwc-list/vwc-check-list-item.js';
 import { html } from 'lit';
-import { spread } from '@open-wc/lit-helpers';
+import { spread } from '@vonage/vvd-foundation/utils/lit-helpers/spread.js';
 
 const Template = args => html`
 	<style>

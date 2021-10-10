@@ -6,7 +6,7 @@ import { asyncReplace } from 'lit/directives/async-replace.js';
 import { html } from 'lit';
 import { live } from 'lit/directives/live.js';
 import { repeat } from 'lit/directives/repeat.js';
-import { spread } from '@open-wc/lit-helpers';
+import { spread } from '@vonage/vvd-foundation/utils/lit-helpers/spread.js';
 import elementF from 'element-f';
 
 const NUMBER_OF_RESULTS = 5;

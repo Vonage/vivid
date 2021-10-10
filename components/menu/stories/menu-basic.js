@@ -1,5 +1,5 @@
 import { html } from 'lit';
-import { spread } from '@open-wc/lit-helpers';
+import { spread } from '@vonage/vvd-foundation/utils/lit-helpers/spread.js';
 
 const TemplateA = args => html`
 	<style>
