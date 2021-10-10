@@ -1,14 +1,26 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
 import '@vonage/vwc-icon-button';
-import { style as BannerStyle } from './vwc-banner.css';
+import { style as BannerStyle } from './vwc-banner.css.js';
 import {
-	customElement, html, LitElement, property, PropertyValues
+	customElement, html, LitElement, property
 } from 'lit-element';
-import { nothing } from 'lit-html';
-import { Connotation } from '@vonage/vvd-foundation/constants';
+import type { PropertyValues } from 'lit-element';
+import { classMap } from 'lit-html/directives/class-map';
+import type { ClassInfo } from 'lit-html/directives/class-map';
+import { nothing, TemplateResult } from 'lit-html';
+import { Connotation } from '@vonage/vvd-foundation/constants.js';
 
 const ANIMATION_DURATION = 100;
+const KEY_ESCAPE = 'Escape';
+
+const connotationIconMap = new Map([
+	[Connotation.Info, 'info-solid'],
+	[Connotation.Announcement, 'megaphone-solid'],
+	[Connotation.Success, 'check-circle-solid'],
+	[Connotation.Warning, 'warning-solid'],
+	[Connotation.Alert, 'error-solid']
+]);
 
 type BannerConnotation =
 	Connotation.Info |
@@ -23,16 +35,6 @@ declare global {
 	}
 }
 
-const connotationToIconType = function (connotation:BannerConnotation):string {
-	return ({
-		[Connotation.Info]: 'info-solid',
-		[Connotation.Announcement]: 'megaphone-solid',
-		[Connotation.Success]: 'check-circle-solid',
-		[Connotation.Warning]: 'warning-solid',
-		[Connotation.Alert]: 'error-solid'
-	})[connotation];
-};
-
 const createCustomEvent = function (eventName:string, props = {}):CustomEvent {
 	return new CustomEvent(eventName, {
 		bubbles: true,
@@ -42,9 +44,11 @@ const createCustomEvent = function (eventName:string, props = {}):CustomEvent {
 	});
 };
 
+//const escapeHandlers:WeakMap<VWCBanner, (this:Window, ev:KeyboardEvent)=> any> = new WeakMap();
+
 @customElement('vwc-banner')
 export class VWCBanner extends LitElement {
-	static styles = [BannerStyle];
+	static override styles = [BannerStyle];
 
 	@property({ type: String, reflect: true })
 	message = '';
@@ -53,7 +57,7 @@ export class VWCBanner extends LitElement {
 	dismissible?:boolean;
 
 	@property({ type: String, reflect: true })
-	connotation:BannerConnotation = Connotation.Info;
+	connotation?: BannerConnotation;
 
 	@property({ type: String, reflect: true })
 	icon?:string;
@@ -67,11 +71,12 @@ export class VWCBanner extends LitElement {
 
 	#transitionTimer?:number;
 
-	protected firstUpdated() {
-		(this.shadowRoot?.querySelector('.container') as HTMLElement).style.setProperty('--transition-delay', `${ANIMATION_DURATION}ms`);
+	protected override firstUpdated() {
+		// refactor to query decorator
+		(this.shadowRoot?.querySelector('.banner') as HTMLElement).style.setProperty('--transition-delay', `${ANIMATION_DURATION}ms`);
 	}
 
-	updated(changedProperties:PropertyValues) {
+	override updated(changedProperties:PropertyValues) {
 		if (changedProperties.has('open')) {
 			clearTimeout(this.#transitionTimer);
 			this.dispatchEvent(createCustomEvent(!this.open ? 'closing' : 'opening'));
@@ -80,7 +85,6 @@ export class VWCBanner extends LitElement {
 			}, ANIMATION_DURATION);
 		}
 	}
-
 	renderDismissButton() {
 		return this.dismissible
 			? html`<vwc-icon-button
@@ -91,12 +95,31 @@ export class VWCBanner extends LitElement {
 			: nothing;
 	}
 
-	render() {
+	protected getRenderClasses(): ClassInfo {
+		return {
+			[`connotation-${this.connotation}`]: !!this.connotation
+		};
+	}
+
+	protected renderIcon(type?: string): TemplateResult {
+		if (!type) {
+			const connotation = this.connotation || Connotation.Info;
+			type = connotationIconMap.get(connotation);
+		}
+
+		return html`<vwc-icon class="icon" .type="${type}"></vwc-icon>`;
+	}
+
+	private handleKeyDown(e: KeyboardEvent): void {
+		this.open = !(e.key === KEY_ESCAPE && this.dismissible);
+	}
+
+	protected override render(): TemplateResult {
 		return html`
-			<div class="container">
+      <div class="banner ${classMap(this.getRenderClasses())}" tabindex="0" @keydown=${this.handleKeyDown}>
 				<header class="header">
 					<span class="user-content">
-						<vwc-icon class="icon" type="${this.icon ?? connotationToIconType(this.connotation)}"></vwc-icon>
+						${this.renderIcon(this.icon)}
 						<div role="alert" class="message">${this.message}</div>
 						<slot class="action-items" name="actionItems"></slot>
 					</span>

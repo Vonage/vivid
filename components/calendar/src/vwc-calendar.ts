@@ -6,15 +6,15 @@ import {
 	property,
 	TemplateResult
 } from 'lit-element';
-import { DirectiveFn } from 'lit-html';
+import type { DirectiveFn } from 'lit-html';
 import { repeat } from 'lit-html/directives/repeat';
-import { style } from './vwc-calendar.css';
+import { style } from './vwc-calendar.css.js';
 import {
 	assertIsValidDateStringRepresentation,
 	getValidDateString,
 	getFirstDateOfTheWeek
-} from './vwc-calendar-date-functions';
-import { VWCCalendarEvent } from './vwc-calendar-event';
+} from './vwc-calendar-date-functions.js';
+import type { VWCCalendarEvent } from './vwc-calendar-event.js';
 import {
 	ARROW_DOWN,
 	ARROW_LEFT,
@@ -47,7 +47,7 @@ export class VWCCalendar extends LitElement {
 	 * assign styles
 	 * @internal
 	 * */
-	static styles = [style];
+	static override styles = [style];
 
 	/**
 	 * The date within a week of choice.
@@ -216,7 +216,7 @@ export class VWCCalendar extends LitElement {
 	 * the html markup
 	 * @internal
 	 * */
-	protected render(): TemplateResult {
+	protected override render(): TemplateResult {
 		return html`
 			<div role="grid" @keydown=${this.onKeydown}>
 				${this.renderDays()}

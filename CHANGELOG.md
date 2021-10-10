@@ -3,6 +3,143 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.20.1](https://github.com/Vonage/vivid/compare/v2.20.0...v2.20.1) (2021-10-07)
+
+**Note:** Version bump only for package @vivid/root
+
+
+
+
+
+# [2.20.0](https://github.com/Vonage/vivid/compare/v2.19.0...v2.20.0) (2021-10-07)
+
+
+### Features
+
+* **vwc-inline:** add more inline size options ([#1053](https://github.com/Vonage/vivid/issues/1053)) ([1b8020d](https://github.com/Vonage/vivid/commit/1b8020d4a0137801444bc5182d12949d902def86))
+
+
+
+
+
+# [2.19.0](https://github.com/Vonage/vivid/compare/v2.18.1...v2.19.0) (2021-10-04)
+
+
+### Bug Fixes
+
+* **vwc-badge:** icons weren't vertically aligned ([#1056](https://github.com/Vonage/vivid/issues/1056)) ([3429711](https://github.com/Vonage/vivid/commit/342971112be5ebaaa3b4a775d417e74cce734375))
+* **vwc-button:** clicking a submit button results in generating a click on the first "submittable" ([#1074](https://github.com/Vonage/vivid/issues/1074)) ([95f9521](https://github.com/Vonage/vivid/commit/95f95219ad7c429bf1453259609735820c575376))
+* **vwc-data-grid:** set determined styles ([#1070](https://github.com/Vonage/vivid/issues/1070)) ([7339dcf](https://github.com/Vonage/vivid/commit/7339dcfd5af775c32cbf14da387dc2fe3bf0798e))
+* **vwc-side-drawer:** css vars ([#1045](https://github.com/Vonage/vivid/issues/1045)) ([717c558](https://github.com/Vonage/vivid/commit/717c5588d87ab4e450e44fe043ccfffc9f91fd0b))
+
+
+### Features
+
+* **elevation:** vwc elevation feature first draft ([#1058](https://github.com/Vonage/vivid/issues/1058)) ([276d795](https://github.com/Vonage/vivid/commit/276d7957abb4dc075cad69aefe2a0bdc3a39492a))
+* **vwc-tags:** 1st component draft ([#1016](https://github.com/Vonage/vivid/issues/1016)) ([8cb87e2](https://github.com/Vonage/vivid/commit/8cb87e2eb614d2b15faa480c514c1d99afc68ab2))
+
+
+
+
+
+## [2.18.1](https://github.com/Vonage/vivid/compare/v2.18.0...v2.18.1) (2021-08-25)
+
+
+### Features
+
+* **vwc-side-drawer:** remove absolute support ([#1029](https://github.com/Vonage/vivid/issues/1029)) ([b00ded7](https://github.com/Vonage/vivid/commit/b00ded72111a63958d4370609943c160782cf1a2))
+
+
+
+
+
+# [2.18.0](https://github.com/Vonage/vivid/compare/v2.17.0...v2.18.0) (2021-08-24)
+
+
+### Bug Fixes
+
+* **side-drawer:** refactor side drawer ([#1022](https://github.com/Vonage/vivid/issues/1022)) ([2788c2b](https://github.com/Vonage/vivid/commit/2788c2bf91e2d753f515d950fb09bfcd0c68657d))
+* **textarea:** textarea scroll now working ([#1030](https://github.com/Vonage/vivid/issues/1030)) ([86ae56e](https://github.com/Vonage/vivid/commit/86ae56ed40a3548e9e7ea88f11830f602baa7e42))
+* **vwc-side-drawer:** handle scrim a11y violation ([#1024](https://github.com/Vonage/vivid/issues/1024)) ([518496e](https://github.com/Vonage/vivid/commit/518496e831d5ec3d16299c7a3bcfb3f8d9956a46))
+
+
+### Features
+
+* **card:** vwc card first draft ([#1001](https://github.com/Vonage/vivid/issues/1001)) ([1d41627](https://github.com/Vonage/vivid/commit/1d41627aea4dca84da6e39b73a435a13d3664769))
+* **textfield:** add the no-actions-sync attribute ([#1013](https://github.com/Vonage/vivid/issues/1013)) ([850297f](https://github.com/Vonage/vivid/commit/850297ffb224b1badf6b17b144c7b75e7bffcf61))
+* **vwc-side-drawer:** add dismissible support ([#1025](https://github.com/Vonage/vivid/issues/1025)) ([65c38d1](https://github.com/Vonage/vivid/commit/65c38d130dfdf8b9d2b1c985c498a8f3c7143627))
+* **vwc-side-drawer:** add modal support ([#1002](https://github.com/Vonage/vivid/issues/1002)) ([02e2782](https://github.com/Vonage/vivid/commit/02e278210a9d5f9a612dd8b7f9ae5f462a0fd477))
+
+
+
+
+
+# [2.17.0](https://github.com/Vonage/vivid/compare/v2.16.1...v2.17.0) (2021-08-09)
+
+
+### Bug Fixes
+
+* **vwc-snackbar:** style bug caused by scheme alternate ([#994](https://github.com/Vonage/vivid/issues/994)) ([fd0a8fd](https://github.com/Vonage/vivid/commit/fd0a8fd35ccaa66c95cec85ee39e17080accefb9))
+
+
+### Features
+
+* **vwc-side-drawer:** 1st draft ([#978](https://github.com/Vonage/vivid/issues/978)) ([e1d6393](https://github.com/Vonage/vivid/commit/e1d6393b6a4ce0cda5078211326fb84c7330639a))
+* **workspace:** added component captions to slack release announcer ([#993](https://github.com/Vonage/vivid/issues/993)) ([b03dcc3](https://github.com/Vonage/vivid/commit/b03dcc346a6f54dd5acad92d2fff8b09812b5729))
+
+
+
+
+
+## [2.16.1](https://github.com/Vonage/vivid/compare/v2.16.0...v2.16.1) (2021-07-29)
+
+**Note:** Version bump only for package @vivid/root
+
+
+
+
+
+# [2.16.0](https://github.com/Vonage/vivid/compare/v2.15.0...v2.16.0) (2021-07-28)
+
+
+### Bug Fixes
+
+* **banner:** bug story ;) ([#988](https://github.com/Vonage/vivid/issues/988)) ([0df1325](https://github.com/Vonage/vivid/commit/0df13257a9fa04240e5f825494065e80fd526a63))
+
+
+### Features
+
+* **button:** refactor button styles to use and expose variables ([#989](https://github.com/Vonage/vivid/issues/989)) ([45fe21d](https://github.com/Vonage/vivid/commit/45fe21dba357100f35626d316089a0cf3173bc85))
+* **data-grid:** allow data-grid to set height according to container ([#983](https://github.com/Vonage/vivid/issues/983)) ([2dcae4d](https://github.com/Vonage/vivid/commit/2dcae4d2bdf0e384f267c72571e33c580f0f48c0))
+* **data-grid:** expose `heightByRows` field to control grid height d… ([#985](https://github.com/Vonage/vivid/issues/985)) ([abeb481](https://github.com/Vonage/vivid/commit/abeb4815901fcf444446311b4e48f546b201ed70)), closes [#983](https://github.com/Vonage/vivid/issues/983)
+* **icon:** upgraded to v4.0.15 ([#982](https://github.com/Vonage/vivid/issues/982)) ([4643118](https://github.com/Vonage/vivid/commit/4643118523c801b11776b94eb276e2b7a0877aba))
+* **vwc-badge:** deprecates slot in favor of props ([#986](https://github.com/Vonage/vivid/issues/986)) ([3513345](https://github.com/Vonage/vivid/commit/3513345183cc521e2665c588b17a2195d821ae59))
+* **vwc-empty-state:** 1st draft ([#984](https://github.com/Vonage/vivid/issues/984)) ([5d37d03](https://github.com/Vonage/vivid/commit/5d37d03994bc33904dbbf01783740a02e4b17c97))
+
+
+
+
+
+# [2.15.0](https://github.com/Vonage/vivid/compare/v2.14.0...v2.15.0) (2021-07-20)
+
+
+### Bug Fixes
+
+* dropdown padding ([#971](https://github.com/Vonage/vivid/issues/971)) ([b6f12d6](https://github.com/Vonage/vivid/commit/b6f12d6d60c3ea713bad31d188c1b46f7fbca550))
+* **expansion-panel:** add styles to slotted icons ([#960](https://github.com/Vonage/vivid/issues/960)) ([d67ac15](https://github.com/Vonage/vivid/commit/d67ac15593bfc364ef092a392b17e7e2c1b8efdc))
+* **textfield:** patched constructed stylesheet for textfield ([#954](https://github.com/Vonage/vivid/issues/954)) ([3010349](https://github.com/Vonage/vivid/commit/301034986d29b6a75d11b4503697989f436829d3))
+* **vwc-list:** list item divider color as token ([#955](https://github.com/Vonage/vivid/issues/955)) ([e535527](https://github.com/Vonage/vivid/commit/e535527dcaa5d8fabbe8eb4d7f3ac530fbc51e36))
+
+
+### Features
+
+* **list:** new divider color api ([#968](https://github.com/Vonage/vivid/issues/968)) ([1371016](https://github.com/Vonage/vivid/commit/13710161030725a5de77e49cd22723356abd6417))
+* **vwc-icon:** connotation support ([#957](https://github.com/Vonage/vivid/issues/957)) ([c7bbfac](https://github.com/Vonage/vivid/commit/c7bbfac08f9cbd39ebcaabd7c9f24a45758f1f2f))
+
+
+
+
+
 # [2.14.0](https://github.com/Vonage/vivid/compare/v2.13.0...v2.14.0) (2021-07-13)
 
 
@@ -244,7 +381,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Features
 
-* **vwc-inline:** add support for auto-fill/fit variance ([#746](https://github.com/Vonage/vivid/issues/746)) ([17732b3](https://github.com/Vonage/vivid/commit/17732b372d14cbba7708e3cf9332e1899850d3cd))
+* **vwc-layout:** add support for auto-fill/fit variance ([#746](https://github.com/Vonage/vivid/issues/746)) ([17732b3](https://github.com/Vonage/vivid/commit/17732b372d14cbba7708e3cf9332e1899850d3cd))
 
 
 
@@ -596,7 +733,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 * **icon:** added global memoization for previously resolved icons ([0ade404](https://github.com/Vonage/vivid/commit/0ade40416d5f854dd8bc95166b2a5fca82e37da7))
 * **infra:** define domain for icon resources ([1193aa0](https://github.com/Vonage/vivid/commit/1193aa023ef22ae5bb7397c587c20932fc692586))
 * **sass:** relocated template file [https://jira.vonage.com/browse/VIV-307] ([#487](https://github.com/Vonage/vivid/issues/487)) ([5058820](https://github.com/Vonage/vivid/commit/50588201a6d2cb3be3f4b8310187837a52a38b2e))
-* **vwc-inline:** new component to handle inline layouts ([9b03d6b](https://github.com/Vonage/vivid/commit/9b03d6b3171c891985a10c77edfc2f78b78be68d))
+* **vwc-layout:** new component to handle inline layouts ([9b03d6b](https://github.com/Vonage/vivid/commit/9b03d6b3171c891985a10c77edfc2f78b78be68d))
 
 
 

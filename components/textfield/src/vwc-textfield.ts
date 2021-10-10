@@ -16,10 +16,10 @@ import {
 import { classMap } from 'lit-html/directives/class-map';
 
 import { TextField as MWCTextField } from '@material/mwc-textfield';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
-import { style as vwcTextFieldStyle } from './vwc-textfield.css';
-import { style as mwcTextFieldStyle } from '@material/mwc-textfield/mwc-textfield-css.js';
-import { Shape } from '@vonage/vvd-foundation/constants';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
+import { style as vwcTextFieldStyle } from './vwc-textfield.css.js';
+import { styles as mwcTextFieldStyles } from '@material/mwc-textfield/mwc-textfield.css.js';
+import type { Shape } from '@vonage/vvd-foundation/constants';
 import { debounced, handleAutofocus } from '@vonage/vvd-foundation/general-utils';
 
 export { TextFieldType } from '@material/mwc-textfield';
@@ -37,7 +37,7 @@ type TextfieldShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-MWCTextField.styles = [styleCoupling, mwcTextFieldStyle, vwcTextFieldStyle];
+MWCTextField.styles = [styleCoupling, mwcTextFieldStyles, vwcTextFieldStyle];
 
 const INPUT_ELEMENT_SLOT_NAME = 'formInputElement';
 const INPUT_ELEMENT_CLASS_NAME = 'vivid-input-internal';
@@ -45,23 +45,40 @@ const MDC_FLOAT_ABOVE_CLASS_NAME = 'mdc-floating-label--float-above';
 
 @customElement('vwc-textfield')
 export class VWCTextField extends MWCTextField {
-	@property({ type: Boolean, reflect: true })
+	@property({
+		type: Boolean,
+		reflect: true,
+		attribute: 'no-actions-sync'
+	})
+	noActionsSync = false;
+
+	@property({
+		type: Boolean,
+		reflect: true
+	})
 	dense = false;
 
-	@property({ type: String, reflect: true })
+	@property({
+		type: String,
+		reflect: true
+	})
 	shape?: TextfieldShape;
 
-	@property({ type: String, reflect: true })
+	@property({
+		type: String,
+		reflect: true
+	})
 	form: string | undefined;
 
-	@property({ type: String, reflect: true, converter: v => v || ' ' })
-	placeholder = ' ';
-
+	@property({
+		type: String,
+		reflect: true,
+		converter: v => v || ' '
+	})
+	override placeholder = ' ';
+	@query('.mdc-text-field__input') protected inputElementWrapper!: HTMLInputElement;
 	@internalProperty()
 	private hasActionButtons = false;
-
-  @query('.mdc-text-field__input') protected inputElementWrapper!: HTMLInputElement;
-
 	@queryAssignedNodes('action', true, VALID_BUTTON_ELEMENTS.join(', '))
 	private actionButtons?: NodeListOf<HTMLElement>;
 
@@ -84,7 +101,7 @@ export class VWCTextField extends MWCTextField {
 		});
 	}
 
-	connectedCallback(): void {
+	override connectedCallback(): void {
 		super.connectedCallback();
 		if (!this.hasAttribute('outlined')) {
 			this.outlined = true;
@@ -97,23 +114,23 @@ export class VWCTextField extends MWCTextField {
 		this.floatLabel();
 	}
 
-	async firstUpdated(): Promise<void> {
+	override async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
 		this.shadowRoot
 			?.querySelector('.mdc-notched-outline')
-			?.shadowRoot?.querySelector('.mdc-notched-outline')
-			?.classList.add('vvd-notch');
+			?.classList
+			.add('vvd-notch');
 		this.floatLabel();
 		handleAutofocus(this);
 		this.observeInputSize();
 	}
 
-	disconnectedCallback(): void {
+	override disconnectedCallback(): void {
 		super.disconnectedCallback();
 		this.inputResizeObserver?.disconnect();
 	}
 
-	updated(changes: PropertyValues): void {
+	override updated(changes: PropertyValues): void {
 		super.updated(changes);
 		if (this.shape === 'pill') {
 			this.dense = true;
@@ -127,16 +144,38 @@ export class VWCTextField extends MWCTextField {
 		}
 	}
 
-	@debounced(50)
-	private syncInputSize() {
-		const { width: hostWidth, left: hostLeft } = this.getBoundingClientRect();
-		const { width: wrapperWidth, left: wrapperLeft } = this.inputElementWrapper.getBoundingClientRect();
-		const paddingLeft = wrapperLeft - hostLeft;
-		const paddingRight = hostWidth - wrapperWidth - paddingLeft;
-		requestAnimationFrame(() => {
-			this.formElement.style.paddingLeft = `${paddingLeft}px`;
-			this.formElement.style.paddingRight = `${paddingRight}px`;
-		});
+	/** @soyTemplate */
+	override render(): TemplateResult {
+		const shouldRenderCharCounter = this.charCounter && this.maxLength !== -1;
+		const shouldRenderHelperText =
+			!!this.helper || !!this.validationMessage || shouldRenderCharCounter;
+
+		/** @classMap */
+		const classes = {
+			'mdc-text-field--disabled': this.disabled,
+			'mdc-text-field--no-label': !this.label,
+			'mdc-text-field--filled': !this.outlined,
+			'mdc-text-field--outlined': this.outlined,
+			'mdc-text-field--with-leading-icon': this.icon,
+			'mdc-text-field--with-trailing-icon': this.iconTrailing,
+			'mdc-text-field--end-aligned': this.endAligned,
+			'vvd-text-field--with-action': this.hasActionButtons,
+		};
+
+		return html`
+			<label class="mdc-text-field ${classMap(classes)}">
+				${this.renderRipple()}
+				${this.outlined ? this.renderOutline() : this.renderLabel()}
+				${this.renderLeadingIcon()}
+				${this.renderPrefix()}
+				${this.renderInput(shouldRenderHelperText)}
+				${this.renderSuffix()}
+				${this.renderTrailingIcon()}
+				<slot name="action" @slotchange="${this.onActionSlotChange}"></slot>
+				${this.renderLineRipple()}
+			</label>
+			${this.renderHelperText(shouldRenderHelperText)}
+		`;
 	}
 
 	protected observeInputSize(): void {
@@ -147,7 +186,7 @@ export class VWCTextField extends MWCTextField {
 		this.inputResizeObserver.observe(this.inputElementWrapper);
 	}
 
-	protected renderInput(shouldRenderHelperText: boolean): TemplateResult {
+	protected override renderInput(shouldRenderHelperText: boolean): TemplateResult {
 		this.updateInputElement(shouldRenderHelperText);
 		return html`
 			<div class="mdc-text-field__input"></div>
@@ -155,7 +194,7 @@ export class VWCTextField extends MWCTextField {
 		`;
 	}
 
-	protected renderIcon(icon: string, isTrailingIcon = false): TemplateResult {
+	protected override renderIcon(icon: string, isTrailingIcon = false): TemplateResult {
 		const iconClass = isTrailingIcon
 			? 'mdc-text-field__icon--trailing'
 			: 'mdc-text-field__icon--leading';
@@ -167,15 +206,16 @@ export class VWCTextField extends MWCTextField {
 		`;
 	}
 
-	protected renderOutline(): TemplateResult | string {
+	protected override renderOutline(): TemplateResult | string {
 		return !this.outlined
 			? ''
-			: html`<vwc-notched-outline class="mdc-notched-outline vvd-notch">
+			: html`
+				<vwc-notched-outline class="mdc-notched-outline vvd-notch">
 					${this.renderLabel()}
-			  </vwc-notched-outline>`;
+				</vwc-notched-outline>`;
 	}
 
-	protected renderHelperText(
+	protected override renderHelperText(
 		shouldRenderHelperText: boolean
 	): TemplateResult | string {
 		if (!shouldRenderHelperText) {
@@ -185,21 +225,66 @@ export class VWCTextField extends MWCTextField {
 		const isError = this.validationMessage && !this.isUiValid;
 		const text = isError ? this.validationMessage : this.helper;
 
-		return html`<vwc-helper-message
-			id="helper-text"
-			class="helper-message"
-			?disabled="${this.disabled}"
-			?is-error="${isError}"
-			>${text}</vwc-helper-message
-		>`;
+		return html`
+			<vwc-helper-message
+				id="helper-text"
+				class="helper-message"
+				?disabled="${this.disabled}"
+				?is-error="${isError}"
+			>${text}
+			</vwc-helper-message
+			>`;
 	}
 
-	protected renderRipple(): TemplateResult {
+	protected override renderRipple(): TemplateResult {
 		return html``;
 	}
 
-	protected renderLineRipple(): TemplateResult {
+	protected override renderLineRipple(): TemplateResult {
 		return html``;
+	}
+
+	protected onActionSlotChange(): void {
+		this.hasActionButtons = Boolean(this.actionButtons?.length);
+		this.enforcePropsOnActionNodes();
+	}
+
+	protected enforcePropsOnActionNodes(): void {
+		const buttons = Array.from(this.actionButtons || []);
+
+		buttons.forEach((button) => {
+			if (!this.noActionsSync) {
+				button.toggleAttribute('disabled', this.disabled);
+			}
+			button.toggleAttribute('dense', this.dense);
+
+			const buttonShape = this.shape == 'pill'
+				? 'circled'
+				: this.shape;
+			if (buttonShape) {
+				button.setAttribute('shape', buttonShape);
+			} else {
+				button.removeAttribute('shape');
+			}
+		});
+	}
+
+	@debounced(50)
+	private syncInputSize() {
+		const {
+			width: hostWidth,
+			left: hostLeft
+		} = this.getBoundingClientRect();
+		const {
+			width: wrapperWidth,
+			left: wrapperLeft
+		} = this.inputElementWrapper.getBoundingClientRect();
+		const paddingLeft = wrapperLeft - hostLeft;
+		const paddingRight = hostWidth - wrapperWidth - paddingLeft;
+		requestAnimationFrame(() => {
+			this.formElement.style.paddingLeft = `${paddingLeft}px`;
+			this.formElement.style.paddingRight = `${paddingRight}px`;
+		});
 	}
 
 	private createInputElement(): HTMLInputElement {
@@ -275,63 +360,6 @@ export class VWCTextField extends MWCTextField {
 			fle.classList.remove(MDC_FLOAT_ABOVE_CLASS_NAME);
 		}
 	}
-
-	protected onActionSlotChange(): void {
-		this.hasActionButtons = Boolean(this.actionButtons?.length);
-		this.enforcePropsOnActionNodes();
-	}
-
-	protected enforcePropsOnActionNodes(): void {
-		const buttons = Array.from(this.actionButtons || []);
-
-		buttons.forEach((button) => {
-			button.toggleAttribute('disabled', this.disabled);
-			button.toggleAttribute('dense', this.dense);
-
-			const buttonShape = this.shape == 'pill'
-				? 'circled'
-				: this.shape;
-			if (buttonShape) {
-				button.setAttribute('shape', buttonShape);
-			} else {
-				button.removeAttribute('shape');
-			}
-		});
-	}
-
-	/** @soyTemplate */
-	render(): TemplateResult {
-		const shouldRenderCharCounter = this.charCounter && this.maxLength !== -1;
-		const shouldRenderHelperText =
-				!!this.helper || !!this.validationMessage || shouldRenderCharCounter;
-
-		/** @classMap */
-		const classes = {
-			'mdc-text-field--disabled': this.disabled,
-			'mdc-text-field--no-label': !this.label,
-			'mdc-text-field--filled': !this.outlined,
-			'mdc-text-field--outlined': this.outlined,
-			'mdc-text-field--with-leading-icon': this.icon,
-			'mdc-text-field--with-trailing-icon': this.iconTrailing,
-			'mdc-text-field--end-aligned': this.endAligned,
-			'vvd-text-field--with-action': this.hasActionButtons,
-		};
-
-		return html`
-			<label class="mdc-text-field ${classMap(classes)}">
-				${this.renderRipple()}
-				${this.outlined ? this.renderOutline() : this.renderLabel()}
-				${this.renderLeadingIcon()}
-				${this.renderPrefix()}
-				${this.renderInput(shouldRenderHelperText)}
-				${this.renderSuffix()}
-				${this.renderTrailingIcon()}
-				<slot name="action" @slotchange="${this.onActionSlotChange}"></slot>
-				${this.renderLineRipple()}
-			</label>
-			${this.renderHelperText(shouldRenderHelperText)}
-		`;
-	}
 }
 
 const setAttributeByValue = (function () {
@@ -342,11 +370,13 @@ const setAttributeByValue = (function () {
 		target: HTMLInputElement,
 		asEmpty = false
 	): void {
-		const newValue:unknown = value
-			? (() => { return asEmpty ? '' : String(value); })()
+		const newValue: unknown = value
+			? (() => {
+				return asEmpty ? '' : String(value);
+			})()
 			: NOT_ASSIGNED;
 
-		const currentValue:unknown = target.hasAttribute(attributeName)
+		const currentValue: unknown = target.hasAttribute(attributeName)
 			? target.getAttribute(attributeName)
 			: NOT_ASSIGNED;
 

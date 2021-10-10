@@ -24,8 +24,8 @@ async function run() {
 				order: [
 					'Introduction',
 					['Meet Vivid', 'Getting Started', 'Architecture', 'Roadmap', 'Contact Us'],
-					'Guides',
-					['Installation'],
+					'Getting Started',
+					['Installation', 'Usage Examples', 'Contribution', 'Volta To Vivid Migration'],
 					'Design System',
 					['Introduction'],
 					'Core',

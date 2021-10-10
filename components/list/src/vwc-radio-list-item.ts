@@ -1,9 +1,9 @@
 import { customElement } from 'lit-element';
 import { RadioListItem as MWCRadioListItem } from '@material/mwc-list/mwc-radio-list-item';
-import { style as mwcListItemStyle } from '@material/mwc-list/mwc-list-item-css.js';
-import { style as mwcControlListItemStyle } from '@material/mwc-list/mwc-control-list-item-css.js';
-import { style as vwcRadioListItemStyle } from './vwc-radio-list-item.css';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
+import { styles as mwcListItemStyles } from '@material/mwc-list/mwc-list-item.css.js';
+import { styles as mwcControlListItemStyles } from '@material/mwc-list/mwc-control-list-item.css.js';
+import { style as vwcRadioListItemStyle } from './vwc-radio-list-item.css.js';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -15,8 +15,8 @@ declare global {
 // @ts-ignore
 MWCRadioListItem.styles = [
 	styleCoupling,
-	mwcListItemStyle,
-	mwcControlListItemStyle,
+	mwcListItemStyles,
+	mwcControlListItemStyles,
 	vwcRadioListItemStyle,
 ];
 

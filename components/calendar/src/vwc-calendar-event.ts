@@ -2,7 +2,7 @@ import '@vonage/vvd-core';
 import {
 	customElement, html, LitElement, property, TemplateResult
 } from 'lit-element';
-import { style } from './vwc-calendar-event.css';
+import { style } from './vwc-calendar-event.css.js';
 import { styleMap } from 'lit-html/directives/style-map';
 
 declare global {
@@ -21,7 +21,7 @@ export class VWCCalendarEvent extends LitElement {
 	 * assign styles
 	 * @internal
 	 * */
-	static styles = [style];
+	static override styles = [style];
 
 	/**
 	 * @prop the heading of the event
@@ -69,7 +69,7 @@ export class VWCCalendarEvent extends LitElement {
 	 * the html markup
 	 * @internal
 	 * */
-	protected render(): TemplateResult {
+	protected override render(): TemplateResult {
 		const styles = {
 			...this.color && { '--vvd-calendar-event--primary-color': this.color },
 			...this.overlapCount && { '--vvd-calendar-event--overlap-count': this.overlapCount },

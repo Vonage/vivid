@@ -2,10 +2,12 @@ import '@vonage/vwc-banner';
 import '@vonage/vwc-button';
 import { html } from 'lit-element';
 import { argTypes } from './arg-types';
+import { unsafeSVG } from 'lit-html/directives/unsafe-svg';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import noop from 'lodash/fp/noop';
 import pipe from 'lodash/fp/pipe';
 import { createTimeline, createUpdatableStory } from '@vonage/vvd-umbrella/libs/storybook_tools';
+import { pageContentMock } from '../../../scripts/storybook/svg_templates';
 
 const REOPEN_BANNER_DELAY = 1500;
 
@@ -43,20 +45,16 @@ export const Basic = (function () {
 						margin: auto;
 						width: 40rem;
 						height: 25rem;
-						background-color: #eee;
 						border-radius: 10px;
 						overflow: hidden;
 						box-shadow: 0 0 3px 2px rgba(0,0,0,0.1);
 						border: solid 1px #ccc;
 					}
 
-					div.content {
-
+					div.demo > svg {
 						width: 100%;
-						height: 100%;
-						background-image: url("data:image/svg+xml,%3Csvg width='782' height='754' viewBox='0 0 782 754' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='782' height='754' fill='%23F2F2F2'/%3E%3Crect x='23' y='80' width='733' height='248' rx='6' fill='white'/%3E%3Crect x='393' y='198' width='324' height='12' fill='%23B3B3B3'/%3E%3Crect x='393' y='230' width='324' height='12' fill='%23B3B3B3'/%3E%3Crect x='393' y='262' width='324' height='12' fill='%23B3B3B3'/%3E%3Crect x='393' y='134' width='142' height='12' fill='%23B3B3B3'/%3E%3Crect x='393' y='166' width='324' height='12' fill='%23B3B3B3'/%3E%3Crect x='53' y='120' width='290' height='168' rx='6' fill='%23CCCCCC'/%3E%3Crect width='782' height='59' fill='%23E1E1E1'/%3E%3Crect x='23' y='16' width='500' height='28' rx='3' fill='%23C4C4C4'/%3E%3Ccircle cx='646' cy='30' r='14' fill='%23C4C4C4'/%3E%3Ccircle cx='694' cy='30' r='14' fill='%23C4C4C4'/%3E%3Ccircle cx='742' cy='30' r='14' fill='%23C4C4C4'/%3E%3Crect x='23' y='348' width='733' height='240' rx='6' fill='white'/%3E%3Crect x='90' y='513' width='141' height='12' fill='%23B3B3B3'/%3E%3Crect x='90' y='539' width='141' height='12' fill='%23B3B3B3'/%3E%3Crect x='319' y='513' width='141' height='12' fill='%23B3B3B3'/%3E%3Crect x='319' y='539' width='141' height='12' fill='%23B3B3B3'/%3E%3Crect x='548' y='513' width='141' height='12' fill='%23B3B3B3'/%3E%3Crect x='548' y='539' width='141' height='12' fill='%23B3B3B3'/%3E%3Crect x='70' y='388' width='182.667' height='94' rx='6' fill='%23CCCCCC'/%3E%3Crect x='298.667' y='388' width='182.667' height='94' rx='6' fill='%23CCCCCC'/%3E%3Crect x='527.333' y='388' width='182.667' height='94' rx='6' fill='%23CCCCCC'/%3E%3Crect x='23' y='608' width='733' height='125' rx='6' fill='white'/%3E%3Crect x='81' y='651' width='618' height='12' fill='%23B3B3B3'/%3E%3Crect x='81' y='683' width='618' height='12' fill='%23B3B3B3'/%3E%3C/svg%3E%0A");
-						background-size: cover;
 					}
+
 				</style>
 				<div class="demo">
 				<vwc-banner
@@ -68,12 +66,12 @@ export const Basic = (function () {
 					message=${message}>
 					<vwc-button slot="actionItems" layout="filled" @click=${onClose} dense>Learn More</vwc-button>
 				</vwc-banner>
-				<div class="content"></div>
+				${unsafeSVG(pageContentMock())}
 			</div>`);
 		};
 		updateStory();
 	});
-}());
+})();
 
 Basic.args = {
 	connotation: "info",

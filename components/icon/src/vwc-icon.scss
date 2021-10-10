@@ -1,4 +1,6 @@
-@use './vwc-icon-variables' as icon-variables;
+@use 'partials/vwc-icon-variables' as icon-variables;
+@forward 'partials/vwc-icon-connotation';
+
 
 :host([size='small']) {
 	#{icon-variables.$icon-size-variable-name}: 16px;
@@ -20,23 +22,24 @@
 }
 
 :host {
+	// TODO deprecate --icon-size as size can actually be set by plain width/height properties (follow VIV-705)
+	$size: var(--icon-size, var(#{icon-variables.$icon-size-variable-name}));/* --icon-size for backwards compatability */
 	display: inline-block;
-	width: var(#{icon-variables.$icon-size-variable-name});
-	height: var(#{icon-variables.$icon-size-variable-name});
-	block-size: var(#{icon-variables.$icon-size-variable-name});
-	inline-size: var(#{icon-variables.$icon-size-variable-name});
+	width: #{$size};
+	height: #{$size};
+	block-size: #{$size};
+	inline-size: #{$size};
 	line-height: 1;
 	vertical-align: middle;
+}
 
-	figure {
+.icon {
+	display: contents;
 
-		display: contents;
-
-		> svg {
-			block-size: 100%;
-			fill: currentColor;
-			inline-size: 100%;
-			vertical-align: super;
-		}
+	> svg {
+		block-size: 100%;
+		fill: currentColor;
+		inline-size: 100%;
+		vertical-align: super;
 	}
 }

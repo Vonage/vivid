@@ -1,0 +1,60 @@
+@use '@vonage/vvd-typography/scss/typography' as typography;
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
+
+.vwc-card {
+	display: flex;
+	overflow: hidden;
+	flex-flow: column;
+	background-color: var(#{scheme-variables.$vvd-color-canvas});
+	border-radius: 6px;
+	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05), 0 8px 8px rgba(0, 0, 0, 0.05), 0 2px 16px rgba(0, 0, 0, 0.1);
+	color: var(#{scheme-variables.$vvd-color-on-canvas});
+}
+
+.vwc-card-info {
+	display: flex;
+	flex-flow: column;
+	padding: 24px;
+}
+
+header {
+	display: inline-flex;
+	flex-direction: column;
+	align-content: space-between;
+}
+
+:host([supporting-text]) header {
+	margin-bottom: 8px;
+}
+
+.vwc-card-header {
+	display: flex;
+}
+
+.vwc-card-header-text {
+	@include typography.typography-cat-shorthand('subtitle-2');
+	margin: auto 0;
+}
+
+::slotted([slot="graphics"i]),
+.header-icon {
+	flex-shrink: 0;
+	margin-right: 12px;
+}
+
+.vwc-card-content,
+.vwc-card.subtitle {
+	@include typography.typography-cat-shorthand('body-2');
+}
+
+.vwc-card-actions {
+	display: inline-flex;
+	flex-direction: column;
+	align-items: flex-end;
+	margin-top: 16px;
+}
+
+.no-header-content,
+.vwc-card-actions.no-actions-content {
+	display: none;
+}

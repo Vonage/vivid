@@ -10,6 +10,7 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_VIVID_DEMO_PRS_ACCESS }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_VIVID_DEMO_PRS_SECRET }}
+      GITHUB_TOKEN: ${{ secrets.VNG_VIVID_PAT }}
 
     steps:
       - name: Add PR deploy URL comment
@@ -23,6 +24,8 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v2
+
+      - run: printf "registry=https://npm.pkg.github.com/Vonage\n_authToken=\${GITHUB_TOKEN}\n//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}\nalways-auth=true" > .npmrc
 
       - name: Setup NodeJS 14
         uses: actions/setup-node@v2
@@ -47,11 +50,7 @@ jobs:
 
       - name: Install dependencies
         if: steps.yarn-cache.outputs.cache-hit != 'true'
-        env:
-          yarn_always_auth: true,
-          yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
-          yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
-        run: yarn install
+        run: yarn install --network-timeout 100000
 
       - name: Build storybook
         run: yarn storybook:build base-url=${{ github.event.number }}

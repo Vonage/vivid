@@ -1,3 +1,44 @@
+## [2.20.1](https://github.com/vonage/vivid/compare/v2.20.0...v2.20.1) (2021-10-07)
+
+
+
+# [2.20.0](https://github.com/vonage/vivid/compare/v2.19.0...v2.20.0) (2021-10-07)
+
+
+
+# [2.19.0](https://github.com/vonage/vivid/compare/v2.18.1...v2.19.0) (2021-10-04)
+
+
+### Features
+
+* **vwc-tags:** 1st component draft ([#1016](https://github.com/vonage/vivid/issues/1016)) ([8cb87e2](https://github.com/vonage/vivid/commit/8cb87e2eb614d2b15faa480c514c1d99afc68ab2))
+
+
+
+## [2.18.1](https://github.com/vonage/vivid/compare/v2.18.0...v2.18.1) (2021-08-25)
+
+
+
+# [2.18.0](https://github.com/vonage/vivid/compare/v2.17.0...v2.18.0) (2021-08-24)
+
+
+
+# [2.17.0](https://github.com/vonage/vivid/compare/v2.16.1...v2.17.0) (2021-08-09)
+
+
+
+## [2.16.1](https://github.com/vonage/vivid/compare/v2.16.0...v2.16.1) (2021-07-29)
+
+
+
+# [2.16.0](https://github.com/vonage/vivid/compare/v2.15.0...v2.16.0) (2021-07-28)
+
+
+
+# [2.15.0](https://github.com/vonage/vivid/compare/v2.14.0...v2.15.0) (2021-07-20)
+
+
+
 # [2.14.0](https://github.com/vonage/vivid/compare/v2.13.0...v2.14.0) (2021-07-13)
 
 
@@ -205,12 +246,12 @@
 
 ### Bug Fixes
 
-* issue [#419](https://github.com/vonage/vivid/issues/419) / VIV-243 - fixing scheme duplicate styles load ([#420](https://github.com/vonage/vivid/issues/420)) ([564724f](https://github.com/vonage/vivid/commit/564724fdded5ec33abfa4ab35b94ae5e49747381))
+* added test and ignore rule ([d790051](https://github.com/vonage/vivid/commit/d7900510793df0f6ef7ae8dcb1d656221bf5e4ca))
 * **audio:** reduce boilerplate code (pr comments) ([a7e7966](https://github.com/vonage/vivid/commit/a7e79665a334bbe40ce9c5b7046d496f3eaf9d81))
 * **audio:** refactoring following code-review ([c2af4ca](https://github.com/vonage/vivid/commit/c2af4ca97b703096ee3da8cc54662c172cf91f03))
 * **audio:** refactoring following code-review ([6f91d00](https://github.com/vonage/vivid/commit/6f91d00c6941124d294660937649ef304a603fbe))
 * **audio:** revised documentation ([e634279](https://github.com/vonage/vivid/commit/e634279302f5c52a935f00d54b996ec900c5a125))
-* added test and ignore rule ([d790051](https://github.com/vonage/vivid/commit/d7900510793df0f6ef7ae8dcb1d656221bf5e4ca))
+* issue [#419](https://github.com/vonage/vivid/issues/419) / VIV-243 - fixing scheme duplicate styles load ([#420](https://github.com/vonage/vivid/issues/420)) ([564724f](https://github.com/vonage/vivid/commit/564724fdded5ec33abfa4ab35b94ae5e49747381))
 
 
 ### Features

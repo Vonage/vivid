@@ -1,0 +1,14 @@
+$predefined-layout-set: filled outlined soft text ghost;
+
+$default: false !default;
+$layout-set: $predefined-layout-set !default;
+$scope: null !default;
+$outline-duotone: false !default;
+
+@function get-scope-prefix() {
+	@if $scope != null {
+		@return '#{$scope}-';
+	} @else {
+		@return '';
+	}
+}

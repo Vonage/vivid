@@ -1,8 +1,7 @@
 import '../vwc-icon-button-toggle.js';
-import { waitNextTask, textToDomToParent } from '../../../test/test-helpers.js';
+import { waitNextTask, textToDomToParent, isolatedElementsCreation } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
-import { isolatedElementsCreation } from '../../../test/test-helpers';
-import { shapeCircledTestCases, shapeRoundedTestCases, sizingTestCases } from '../../../test/shared';
+import { shapeCircledTestCases, shapeRoundedTestCases, sizingTestCases } from '../../../test/shared.js';
 
 chai.use(chaiDomDiff);
 
@@ -54,6 +53,8 @@ describe('icon button toggle', () => {
 				.to
 				.equal(false);
 
+			await actualElement.updateComplete;
+
 			expect(actualElement.hasAttribute('on'))
 				.to
 				.equal(true);
@@ -72,6 +73,8 @@ describe('icon button toggle', () => {
 			expect(hasOnOnStartup)
 				.to
 				.equal(true);
+
+			await actualElement.updateComplete;
 
 			expect(actualElement.hasAttribute('on'))
 				.to
@@ -107,36 +110,34 @@ describe('icon button toggle', () => {
 				.equal(true);
 		});
 
-		it(`should set onicon when state is "on"`, async function () {
+		const getIconDisplayValue = (icon, el) => {
+			const iconHome = el.shadowRoot.querySelector(`vwc-icon[type="${icon}"]`);
+			const iconHomeWrapper = iconHome.closest('.mdc-icon-button__icon');
+			const { display } = globalThis.getComputedStyle(iconHomeWrapper);
+			return display;
+		};
+
+		it(`should display onicon when state is "on"`, async function () {
 			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} onicon="home"></${COMPONENT_NAME}>`)
+				textToDomToParent(`<${COMPONENT_NAME} onicon="home-solid" officon="home-line"></${COMPONENT_NAME}>`)
 			);
-			await waitNextTask();
+			await actualElement.updateComplete;
 
 			actualElement.on = true;
-			await waitNextTask();
+			await actualElement.updateComplete;
 
-			expect(actualElement.getAttribute('icon'))
-				.to
-				.equal('home');
+			expect(getIconDisplayValue('home-solid', actualElement)).to.equal('block');
+			expect(getIconDisplayValue('home-line', actualElement)).to.equal('none');
 		});
 
 		it(`should set officon when state is "off"`, async function () {
 			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} onicon="home" officon="hotel" on></${COMPONENT_NAME}>`)
+				textToDomToParent(`<${COMPONENT_NAME} onicon="home-solid" officon="home-line"></${COMPONENT_NAME}>`)
 			);
-			await waitNextTask();
+			await actualElement.updateComplete;
 
-			expect(actualElement.getAttribute('icon'))
-				.to
-				.equal('home');
-
-			actualElement.on = false;
-			await waitNextTask();
-
-			expect(actualElement.getAttribute('icon'))
-				.to
-				.equal('hotel');
+			expect(getIconDisplayValue('home-solid', actualElement)).to.equal('none');
+			expect(getIconDisplayValue('home-line', actualElement)).to.equal('block');
 		});
 
 		it(`should emit an event with the right state`, async function () {

@@ -4,7 +4,7 @@ import {
 	isSafari,
 	textToDomToParent,
 	waitNextTask,
-} from '../../../test/test-helpers';
+} from '../../../test/test-helpers.js';
 import '@vonage/vwc-textarea';
 import '@vonage/vwc-textfield';
 

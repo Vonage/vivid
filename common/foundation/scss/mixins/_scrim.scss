@@ -1,0 +1,6 @@
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
+
+@mixin scrim-variables {
+	background-color: var(#{scheme-variables.$vvd-color-on-canvas});
+	opacity: 0.5;
+}

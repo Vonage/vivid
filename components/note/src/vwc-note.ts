@@ -1,12 +1,11 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
 import {
-	customElement, property, LitElement, CSSResult
+	customElement, property, LitElement, CSSResult, html, TemplateResult
 } from 'lit-element';
-import { ifDefined } from 'lit-html/directives/if-defined';
-import { style as vwcNoteStyle } from './vwc-note.css';
-import { Connotation } from '@vonage/vvd-foundation/constants';
-import { html, TemplateResult } from 'lit-element';
+import { ClassInfo, classMap } from 'lit-html/directives/class-map';
+import { style as vwcNoteStyle } from './vwc-note.css.js';
+import type { Connotation } from '@vonage/vvd-foundation/constants';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -30,7 +29,7 @@ type NoteConnotation = Extract<
  */
 @customElement('vwc-note')
 export class VWCNote extends LitElement {
-	static get styles(): CSSResult[] {
+	static override get styles(): CSSResult[] {
 		return [vwcNoteStyle];
 	}
 
@@ -43,17 +42,25 @@ export class VWCNote extends LitElement {
 	@property({ type: String, reflect: true })
 	header?: string;
 
-	protected render(): TemplateResult {
+	protected getRenderClasses(): ClassInfo {
+		return {
+			[`connotation-${this.connotation}`]: !!this.connotation,
+		};
+	}
+
+	protected override render(): TemplateResult {
 		return html`
-			${this.icon ? this.renderIcon() : ''}
-			<div class="note-text">
-				${this.header ? this.renderHeader() : ''} ${this.renderMessage()}
+			<div class="vwc-note ${classMap(this.getRenderClasses())}">
+				${this.icon ? this.renderIcon() : ''}
+				<div class="note-text">
+					${this.header ? this.renderHeader() : ''} ${this.renderMessage()}
+				</div>
 			</div>
 		`;
 	}
 
 	private renderIcon(): TemplateResult {
-		return html`<vwc-icon class="note-icon" type="${ifDefined(this.icon)}" part="icon"></vwc-icon>`;
+		return html`<vwc-icon class="note-icon" type="${this.icon}" part="icon"></vwc-icon>`;
 	}
 
 	private renderHeader(): TemplateResult {

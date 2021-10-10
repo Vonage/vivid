@@ -1,9 +1,9 @@
 import '@vonage/vvd-core';
 import { customElement, html } from 'lit-element';
-import { Chip as MWCChip } from './mwc-chips/mwc-chip';
-import { style as vwcChipStyle } from './vwc-chip.css';
+import { Chip as MWCChip } from './mwc-chips/mwc-chip.js';
+import { style as vwcChipStyle } from './vwc-chip.css.js';
 import { style as mwcChipStyle } from './mwc-chips/mwc-chip.css.js';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
 import '@vonage/vwc-icon';
 import { classMap } from 'lit-html/directives/class-map';
 import { ifDefined } from 'lit-html/directives/if-defined';
@@ -47,7 +47,7 @@ export class VWCChip extends MWCChip {
 	// 	/* eslint-disable wc/no-self-class */
 	// 	this.classList.add(...customClasses, ...filteredClasses);
 	// }
-	renderThumbnail(): TemplateResult {
+	override renderThumbnail(): TemplateResult {
 		if (this.icon) {
 			return html`<vwc-icon
 				size="small"
@@ -63,7 +63,7 @@ export class VWCChip extends MWCChip {
 		}
 	}
 
-	renderRemoveIcon(): TemplateResult {
+	override renderRemoveIcon(): TemplateResult {
 		const classes = {
 			'mdc-chip__trailing-action': this.removeIconFocusable,
 			[this.removeIconClass]: true,

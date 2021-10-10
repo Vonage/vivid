@@ -1,3 +1,54 @@
+## [2.20.1](https://github.com/vonage/vivid/compare/v2.20.0...v2.20.1) (2021-10-07)
+
+
+
+# [2.20.0](https://github.com/vonage/vivid/compare/v2.19.0...v2.20.0) (2021-10-07)
+
+
+
+# [2.19.0](https://github.com/vonage/vivid/compare/v2.18.1...v2.19.0) (2021-10-04)
+
+
+### Bug Fixes
+
+* **vwc-button:** clicking a submit button results in generating a click on the first "submittable" ([#1074](https://github.com/vonage/vivid/issues/1074)) ([95f9521](https://github.com/vonage/vivid/commit/95f95219ad7c429bf1453259609735820c575376))
+
+
+
+## [2.18.1](https://github.com/vonage/vivid/compare/v2.18.0...v2.18.1) (2021-08-25)
+
+
+
+# [2.18.0](https://github.com/vonage/vivid/compare/v2.17.0...v2.18.0) (2021-08-24)
+
+
+
+# [2.17.0](https://github.com/vonage/vivid/compare/v2.16.1...v2.17.0) (2021-08-09)
+
+
+
+## [2.16.1](https://github.com/vonage/vivid/compare/v2.16.0...v2.16.1) (2021-07-29)
+
+
+
+# [2.16.0](https://github.com/vonage/vivid/compare/v2.15.0...v2.16.0) (2021-07-28)
+
+
+### Features
+
+* **button:** refactor button styles to use and expose variables ([#989](https://github.com/vonage/vivid/issues/989)) ([45fe21d](https://github.com/vonage/vivid/commit/45fe21dba357100f35626d316089a0cf3173bc85))
+
+
+
+# [2.15.0](https://github.com/vonage/vivid/compare/v2.14.0...v2.15.0) (2021-07-20)
+
+
+### Features
+
+* **vwc-icon:** connotation support ([#957](https://github.com/vonage/vivid/issues/957)) ([c7bbfac](https://github.com/vonage/vivid/commit/c7bbfac08f9cbd39ebcaabd7c9f24a45758f1f2f))
+
+
+
 # [2.14.0](https://github.com/vonage/vivid/compare/v2.13.0...v2.14.0) (2021-07-13)
 
 

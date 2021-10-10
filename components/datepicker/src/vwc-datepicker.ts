@@ -6,10 +6,10 @@ import {
 } from 'lit-element';
 import { LitFlatpickr } from 'lit-flatpickr';
 import * as weekSelectPlugin from 'flatpickr/dist/plugins/weekSelect/weekSelect';
-import { Options } from 'flatpickr/dist/types/options';
+import type { Options } from 'flatpickr/dist/types/options';
 import { style as vwcDatepickerStyles } from './vwc-datepicker.css.js';
-import { VWCButton } from '@vonage/vwc-button';
-import { VWCIconButton } from '@vonage/vwc-icon-button';
+import type { VWCButton, ButtonLayout } from '@vonage/vwc-button';
+import type { VWCIconButton } from '@vonage/vwc-icon-button';
 import { Shape } from '@vonage/vvd-foundation/constants';
 
 declare global {
@@ -23,7 +23,7 @@ declare global {
  */
 @customElement('vwc-datepicker')
 export class VWCDatepicker extends LitFlatpickr {
-	static get styles(): CSSResult {
+	static override get styles(): CSSResult {
 		return vwcDatepickerStyles;
 	}
 
@@ -61,7 +61,7 @@ export class VWCDatepicker extends LitFlatpickr {
 		this.addEventListener('change', this.changeHandler);
 	}
 
-	firstUpdated(): void {
+	override firstUpdated(): void {
 		super.firstUpdated();
 
 		const input = this.querySelector('vwc-textfield');
@@ -79,7 +79,7 @@ export class VWCDatepicker extends LitFlatpickr {
 	}
 
 	// override lit-flatpicker
-	open(): void {
+	override open(): void {
 		const menu = this.shadowRoot?.querySelector('vwc-menu');
 		const datepicker = this.datepickerWrapper?.querySelector('.vvd-datepicker');
 
@@ -87,12 +87,12 @@ export class VWCDatepicker extends LitFlatpickr {
 		datepicker?.classList.add('open');
 	}
 
-	disconnectedCallback(): void {
+	override disconnectedCallback(): void {
 		super.disconnectedCallback();
 		this._instance?.destroy();
 	}
 
-	render() {
+	override render() {
 		return html`
 			${!this._hasSlottedElement ? html`<input class="lit-flatpickr flatpickr flatpickr-input" />` : html``}
 			<slot></slot>
@@ -110,7 +110,7 @@ export class VWCDatepicker extends LitFlatpickr {
 		`;
 	}
 
-	async init() {
+	override async init() {
 		this.appendTo = this.datepickerWrapper;
 		this.initializeComponent();
 		this.renderCustomParts();
@@ -307,7 +307,7 @@ export class VWCDatepicker extends LitFlatpickr {
 
 			const confirmButton: VWCButton = document.createElement('vwc-button');
 			confirmButton.label = 'Confirm';
-			confirmButton.layout = 'outlined';
+			confirmButton.layout = 'outlined' as ButtonLayout;
 			confirmButton.dense = true;
 
 			clearButton.addEventListener('click', (e: MouseEvent) => this.clearSelection(e));
@@ -466,7 +466,7 @@ export class VWCDatepicker extends LitFlatpickr {
 
 	// copied from lit-flatpickr
 	// add additional config options
-	getOptions(): Options {
+	override getOptions(): Options {
 		return {
 			altFormat: this.altFormat,
 			altInput: this.altInput,

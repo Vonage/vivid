@@ -1,3 +1,50 @@
+## [2.20.1](https://github.com/vonage/vivid/compare/v2.20.0...v2.20.1) (2021-10-07)
+
+
+
+# [2.20.0](https://github.com/vonage/vivid/compare/v2.19.0...v2.20.0) (2021-10-07)
+
+
+
+# [2.19.0](https://github.com/vonage/vivid/compare/v2.18.1...v2.19.0) (2021-10-04)
+
+
+### Bug Fixes
+
+* **vwc-data-grid:** set determined styles ([#1070](https://github.com/vonage/vivid/issues/1070)) ([7339dcf](https://github.com/vonage/vivid/commit/7339dcfd5af775c32cbf14da387dc2fe3bf0798e))
+
+
+
+## [2.18.1](https://github.com/vonage/vivid/compare/v2.18.0...v2.18.1) (2021-08-25)
+
+
+
+# [2.18.0](https://github.com/vonage/vivid/compare/v2.17.0...v2.18.0) (2021-08-24)
+
+
+
+# [2.17.0](https://github.com/vonage/vivid/compare/v2.16.1...v2.17.0) (2021-08-09)
+
+
+
+## [2.16.1](https://github.com/vonage/vivid/compare/v2.16.0...v2.16.1) (2021-07-29)
+
+
+
+# [2.16.0](https://github.com/vonage/vivid/compare/v2.15.0...v2.16.0) (2021-07-28)
+
+
+### Features
+
+* **data-grid:** allow data-grid to set height according to container ([#983](https://github.com/vonage/vivid/issues/983)) ([2dcae4d](https://github.com/vonage/vivid/commit/2dcae4d2bdf0e384f267c72571e33c580f0f48c0))
+* **data-grid:** expose `heightByRows` field to control grid height d… ([#985](https://github.com/vonage/vivid/issues/985)) ([abeb481](https://github.com/vonage/vivid/commit/abeb4815901fcf444446311b4e48f546b201ed70)), closes [#983](https://github.com/vonage/vivid/issues/983)
+
+
+
+# [2.15.0](https://github.com/vonage/vivid/compare/v2.14.0...v2.15.0) (2021-07-20)
+
+
+
 # [2.14.0](https://github.com/vonage/vivid/compare/v2.13.0...v2.14.0) (2021-07-13)
 
 

@@ -1,11 +1,12 @@
 // eslint-disable-next-line max-classes-per-file
 import '@vonage/vvd-core';
 import { customElement, property, query } from 'lit-element';
+import { observer } from '@material/mwc-base/observer';
 import { LinearProgress as MWCLinearProgress } from '@material/mwc-linear-progress';
-import { style as vwcLinearProgressStyle } from './vwc-linear-progress.css';
-import { style as mwcLinearProgressStyle } from '@material/mwc-linear-progress/mwc-linear-progress-css.js';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
-import { Connotation, ConnotationDecorative } from '@vonage/vvd-foundation/constants';
+import { style as vwcLinearProgressStyle } from './vwc-linear-progress.css.js';
+import { styles as mwcLinearProgressStyles } from '@material/mwc-linear-progress/mwc-linear-progress.css.js';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
+import type { Connotation, ConnotationDecorative } from '@vonage/vvd-foundation/constants';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -17,7 +18,7 @@ declare global {
 // @ts-ignore
 MWCLinearProgress.styles = [
 	styleCoupling,
-	mwcLinearProgressStyle,
+	mwcLinearProgressStyles,
 	vwcLinearProgressStyle,
 ];
 
@@ -38,9 +39,15 @@ export class VWCLinearProgress extends MWCLinearProgress {
 	@query('.mdc-linear-progress') protected mdcLinearProgress!: HTMLElement;
 
 	@property({ type: String, reflect: true })
+	@observer(function (this: VWCLinearProgress, newVal: LinearProgressConnotation, oldVal: LinearProgressConnotation) {
+		this.rootEl.classList.remove(`connotation-${oldVal}`);
+		if (newVal) {
+			this.rootEl.classList.add(`connotation-${newVal}`);
+		}
+	})
 	connotation?: LinearProgressConnotation;
 
-	protected updated(changes: Map<string, boolean>): void {
+	protected override updated(changes: Map<string, boolean>): void {
 		super.updated(changes);
 		if (changes.has('progress')) {
 			this.mdcLinearProgress.style.setProperty('--linear-progress-progress', this.progress.toString());

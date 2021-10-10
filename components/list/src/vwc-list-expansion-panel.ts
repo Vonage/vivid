@@ -1,4 +1,4 @@
-import { VWCIcon } from '@vonage/vwc-icon';
+import type { VWCIcon } from '@vonage/vwc-icon';
 import {
 	customElement,
 	html,
@@ -6,7 +6,7 @@ import {
 	queryAssignedNodes,
 	TemplateResult,
 } from 'lit-element';
-import { style } from './vwc-list-expansion-panel.css';
+import { style } from './vwc-list-expansion-panel.css.js';
 import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
 import { VWCExpansionPanelBase } from '@vonage/vwc-expansion-panel/vwc-expansion-panel-base';
 import { assert } from '@vonage/vvd-foundation/general-utils';
@@ -22,7 +22,7 @@ declare global {
  */
 @customElement('vwc-list-expansion-panel')
 export class VWCListExpansionPanel extends VWCExpansionPanelBase {
-	static styles = style;
+	static override styles = style;
 
 	headerListItemIcon?: VWCIcon;
 
@@ -31,7 +31,7 @@ export class VWCListExpansionPanel extends VWCExpansionPanelBase {
 	@queryAssignedNodes('header', true, 'vwc-list-item')
 	headerNodes?: HTMLElement[] | null;
 
-	firstUpdated(changedProperties: PropertyValues): void {
+	override firstUpdated(changedProperties: PropertyValues): void {
 		super.firstUpdated(changedProperties);
 		const headerListItem = getHeaderListItem(this.headerNodes);
 		this.headerListItemIcon = getHeaderListItemIcon(headerListItem);
@@ -41,7 +41,7 @@ export class VWCListExpansionPanel extends VWCExpansionPanelBase {
 		});
 	}
 
-	openChanged(isOpen: boolean): void {
+	override openChanged(isOpen: boolean): void {
 		super.openChanged(isOpen);
 		(this.headerListItemIcon as Element).setAttribute(
 			'type',
@@ -49,7 +49,7 @@ export class VWCListExpansionPanel extends VWCExpansionPanelBase {
 		);
 	}
 
-	render(): TemplateResult {
+	override render(): TemplateResult {
 		return html`<slot name="header"></slot>
 			<div class="body"><slot></slot></div>`;
 	}

@@ -1,12 +1,12 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-surface';
-import '@vonage/vwc-list';
+// import '@vonage/vwc-list';
 import { MenuBase as MWCMenuBase } from '@material/mwc-menu/mwc-menu-base';
-import { MDCMenuAdapter } from '@material/menu';
+import type { MDCMenuAdapter } from '@material/menu';
 import { customElement, html } from 'lit-element';
-import { style as mwcMenuStyle } from '@material/mwc-menu/mwc-menu-css.js';
-import { style as vwcMenuStyle } from './vwc-menu.css';
-import { VWCList } from '@vonage/vwc-list';
+import { styles as mwcMenuStyles } from '@material/mwc-menu/mwc-menu.css.js';
+import { style as vwcMenuStyle } from './vwc-menu.css.js';
+import type { VWCList } from '@vonage/vwc-list';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -19,9 +19,9 @@ declare global {
  */
 @customElement('vwc-menu')
 export class VWCMenu extends MWCMenuBase {
-	static styles = [mwcMenuStyle, vwcMenuStyle];
+	static override styles = [mwcMenuStyles, vwcMenuStyle];
 
-	get listElement(): VWCList | null {
+	override get listElement(): VWCList | null {
 		if (!this.listElement_) {
 			this.listElement_ = this.renderRoot.querySelector('.vwc-menu-list');
 			return this.listElement_;
@@ -29,7 +29,7 @@ export class VWCMenu extends MWCMenuBase {
 		return this.listElement_;
 	}
 
-	createAdapter(): MDCMenuAdapter {
+	override createAdapter(): MDCMenuAdapter {
 		const baseAdapter = super.createAdapter();
 		const baseCloseSurface = baseAdapter.closeSurface;
 		baseAdapter.closeSurface = () => {
@@ -40,7 +40,7 @@ export class VWCMenu extends MWCMenuBase {
 		return baseAdapter;
 	}
 
-	render() {
+	override render() {
 		const itemRoles = this.innerRole === 'menu' ? 'menuitem' : 'option';
 		return html`
 			<vwc-surface

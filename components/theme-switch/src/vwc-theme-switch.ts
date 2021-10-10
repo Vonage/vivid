@@ -7,7 +7,7 @@ import {
 	html,
 	TemplateResult,
 } from 'lit-element';
-import { style } from './vwc-theme-switch.css';
+import { style } from './vwc-theme-switch.css.js';
 import {
 	default as vvdScheme,
 	PredefinedScheme,
@@ -26,7 +26,7 @@ declare global {
 
 @customElement('vwc-theme-switch')
 export class VWCThemeSwitch extends LitElement {
-	static styles = style;
+	static override styles = style;
 	@property({ reflect: true })
 	scheme?: SchemeOption;
 
@@ -37,7 +37,7 @@ export class VWCThemeSwitch extends LitElement {
 		this[EVENT_LISTENER_KEY] = VWCThemeSwitch.updateScheme.bind(this);
 	}
 
-	connectedCallback(): void {
+	override connectedCallback(): void {
 		super.connectedCallback();
 		vvdScheme.eventBus.addEventListener(
 			'vvd-scheme-select',
@@ -47,7 +47,7 @@ export class VWCThemeSwitch extends LitElement {
 		this.scheme ??= vvdScheme.getSelectedScheme();
 	}
 
-	disconnectedCallback(): void {
+	override disconnectedCallback(): void {
 		super.disconnectedCallback();
 		vvdScheme.eventBus.removeEventListener(
 			VVD_SCHEME_SELECT,
@@ -72,7 +72,7 @@ export class VWCThemeSwitch extends LitElement {
 		);
 	}
 
-	render(): TemplateResult {
+	override render(): TemplateResult {
 		return html` <vwc-switch
 			class="switch"
 			connotation="primary"

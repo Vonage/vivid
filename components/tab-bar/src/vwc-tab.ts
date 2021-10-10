@@ -1,12 +1,13 @@
 import '@vonage/vvd-core';
+import '@vonage/vwc-icon';
 import {
 	customElement, property, html, TemplateResult
 } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
 import { Tab as MWCTab } from '@material/mwc-tab';
-import { style as vwcTabStyle } from './vwc-tab.css';
-import { style as mwcTabStyle } from '@material/mwc-tab/mwc-tab-css.js';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
+import { style as vwcTabStyle } from './vwc-tab.css.js';
+import { styles as mwcTabStyles } from '@material/mwc-tab/mwc-tab.css.js';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -16,7 +17,7 @@ declare global {
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-MWCTab.styles = [styleCoupling, mwcTabStyle, vwcTabStyle];
+MWCTab.styles = [styleCoupling, mwcTabStyles, vwcTabStyle];
 
 @customElement('vwc-tab')
 export class VWCTab extends MWCTab {
@@ -35,7 +36,7 @@ export class VWCTab extends MWCTab {
 
 	// ! copy & paste code from original mwc tab
 	// ! to replace icon handling
-	render(): TemplateResult {
+	override render(): TemplateResult {
 		const classes = {
 			'mdc-tab--min-width': this.minWidth,
 			'mdc-tab--stacked': this.stacked,

@@ -1,8 +1,8 @@
 import { customElement, property, PropertyValues } from 'lit-element';
-import { style } from './vwc-dialog.css';
+import { style } from './vwc-dialog.css.js';
 import { Dialog as MWCDialog } from '@material/mwc-dialog';
-import { style as mwcDialogStyle } from '@material/mwc-dialog/mwc-dialog-css';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
+import { styles as mwcDialogStyles } from '@material/mwc-dialog/mwc-dialog.css.js';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
 import '@vonage/vvd-core';
 
 declare global {
@@ -20,7 +20,7 @@ iconTemplate.innerHTML = `
 
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 // @ts-ignore
-MWCDialog.styles = [styleCoupling, mwcDialogStyle, style];
+MWCDialog.styles = [styleCoupling, mwcDialogStyles, style];
 
 @customElement('vwc-dialog')
 export class VWCDialog extends MWCDialog {
@@ -31,12 +31,12 @@ export class VWCDialog extends MWCDialog {
 	})
 	closeButton?: boolean;
 
-	protected firstUpdated() {
+	protected override firstUpdated() {
 		super.firstUpdated();
 		this.addDismissButton();
 	}
 
-	protected updated(_changedProperties: PropertyValues): void {
+	protected override updated(_changedProperties: PropertyValues): void {
 		super.updated(_changedProperties);
 		if (!this.renderRoot.querySelector('#dialog_icon')) {
 			this.renderRoot

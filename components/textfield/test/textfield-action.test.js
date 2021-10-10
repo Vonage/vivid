@@ -1,8 +1,9 @@
 import { VALID_BUTTON_ELEMENTS } from '../vwc-textfield.js';
+import '@vonage/vwc-icon-button';
 
 import {
 	waitNextTask,
-	textToDomToParent,
+	textToDomToParent, isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
@@ -12,10 +13,15 @@ chai.use(chaiDomDiff);
 const COMPONENT_NAME = 'vwc-textfield';
 
 describe('textfield action', () => {
+	const addElement = isolatedElementsCreation();
 	const [iconButton] = VALID_BUTTON_ELEMENTS;
 
+	function getInternalButtons(element) {
+		return Array.from(element.querySelectorAll(iconButton));
+	}
+
 	async function createElement() {
-		const [actualElement] = (
+		const [actualElement] = addElement(
 			textToDomToParent(`
 				<${COMPONENT_NAME}>
 					<${iconButton} slot="action"></${iconButton}>
@@ -99,7 +105,9 @@ describe('textfield action', () => {
 
 		actualElement.disabled = true;
 		await waitNextTask();
-		expect(newIconButton.disabled).to.equal(true);
+		expect(newIconButton.disabled)
+			.to
+			.equal(true);
 	});
 
 	it(`should shape dynamically added child node's`, async function () {
@@ -110,11 +118,15 @@ describe('textfield action', () => {
 
 		actualElement.shape = 'rounded';
 		await waitNextTask();
-		expect(newIconButton.shape).to.equal('rounded');
+		expect(newIconButton.shape)
+			.to
+			.equal('rounded');
 
 		actualElement.shape = 'pill';
 		await waitNextTask();
-		expect(newIconButton.shape).to.equal('circled');
+		expect(newIconButton.shape)
+			.to
+			.equal('circled');
 	});
 
 	it(`should set density dynamically to added child node's`, async function () {
@@ -125,10 +137,52 @@ describe('textfield action', () => {
 
 		actualElement.dense = true;
 		await waitNextTask();
-		expect(newIconButton.dense).to.equal(true);
+		expect(newIconButton.dense)
+			.to
+			.equal(true);
 
 		actualElement.dense = false;
 		await waitNextTask();
-		expect(newIconButton.dense).to.equal(false);
+		expect(newIconButton.dense)
+			.to
+			.equal(false);
+	});
+
+	describe(`noActionsSync`, function () {
+		const actionButton = () => {
+			const button = document.createElement('vwc-icon-button');
+			button.setAttribute('slot', 'action');
+			return button;
+		};
+
+		it(`should not enforce disabled on appended 'action' node`, async function () {
+			const button = actionButton();
+			const textfield = await createElement();
+
+			textfield.noActionsSync = true;
+
+			textfield.disabled = true;
+
+			textfield.appendChild(button);
+
+			await textfield.updateComplete;
+
+			expect(button.disabled).to.equal(false);
+		});
+
+		it(`should not dynamically enforce disabled on 'action' node`, async function () {
+			const button = actionButton();
+			const textfield = await createElement();
+
+			textfield.noActionsSync = true;
+
+			textfield.appendChild(button);
+
+			textfield.disabled = true;
+
+			await textfield.updateComplete;
+
+			expect(button.disabled).to.equal(false);
+		});
 	});
 });

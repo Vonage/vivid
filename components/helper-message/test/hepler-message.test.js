@@ -3,9 +3,9 @@ import {
 	waitNextTask,
 	textToDomToParent,
 	assertComputedStyle,
+	isolatedElementsCreation
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
-import { isolatedElementsCreation } from '../../../test/test-helpers';
 
 chai.use(chaiDomDiff);
 

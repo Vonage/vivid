@@ -3,9 +3,9 @@ import {
 	waitNextTask,
 	textToDomToParent,
 	assertComputedStyle,
+	isolatedElementsCreation
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
-import { isolatedElementsCreation } from '../../../test/test-helpers';
 
 chai.use(chaiDomDiff);
 
@@ -42,26 +42,29 @@ describe('note', () => {
 		const [note] = addElement(
 			textToDomToParent(`<${COMPONENT_NAME}>Internal contents</${COMPONENT_NAME}>`)
 		);
-		await waitNextTask();
-		assertComputedStyle(note, { borderInlineStartWidth: '8px' });
+		await note.updateComplete;
+		const base = note.shadowRoot.querySelector('.vwc-note');
+		assertComputedStyle(base, { borderInlineStartWidth: '8px' });
 	});
 
 	it('should have base sizing correct', async () => {
 		const [note] = addElement(
 			textToDomToParent(`<${COMPONENT_NAME}>Internal contents</${COMPONENT_NAME}>`)
 		);
-		await waitNextTask();
-		assertComputedStyle(note, { height: '24px' });
-		assertComputedStyle(note, { paddingBlockStart: '20px' });
-		assertComputedStyle(note, { paddingBlockEnd: '20px' });
+		await note.updateComplete;
+		const base = note.shadowRoot.querySelector('.vwc-note');
+		assertComputedStyle(base, { height: '24px' });
+		assertComputedStyle(base, { paddingBlockStart: '20px' });
+		assertComputedStyle(base, { paddingBlockEnd: '20px' });
 	});
 
 	it('should have border appearing correct', async () => {
 		const [note] = addElement(
 			textToDomToParent(`<${COMPONENT_NAME}>Internal contents</${COMPONENT_NAME}>`)
 		);
-		await waitNextTask();
-		assertComputedStyle(note, {
+		await note.updateComplete;
+		const base = note.shadowRoot.querySelector('.vwc-note');
+		assertComputedStyle(base, {
 			boxShadow:
 				'rgb(179, 179, 179) 0px 1px 0px 0px inset, rgb(179, 179, 179) -1px 0px 0px 0px inset, rgb(179, 179, 179) 0px -1px 0px 0px inset',
 		});

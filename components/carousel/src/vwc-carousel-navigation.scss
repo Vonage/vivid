@@ -8,9 +8,9 @@
 	align-items: center;
 	justify-content: center;
 	border: 1px solid var(#{scheme-variables.$vvd-color-neutral-50});
-	background-color: var(#{scheme-variables.$vvd-color-base});
+	background-color: var(#{scheme-variables.$vvd-color-canvas});
 	cursor: pointer;
-	fill: var(#{scheme-variables.$vvd-color-on-base});
+	fill: var(#{scheme-variables.$vvd-color-on-canvas});
 	outline: none;
 
 	@media (prefers-reduced-motion: no-preference) {

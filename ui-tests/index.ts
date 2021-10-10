@@ -1,6 +1,6 @@
 import { Page, webkit } from 'playwright';
 
-import * as handler from 'serve-handler';
+import handler from 'serve-handler';
 
 import * as http from 'http';
 
@@ -8,6 +8,10 @@ import * as fs from 'fs';
 import * as jimp from 'jimp';
 import { getFilteredTestFolders } from './utils/files-utils';
 import { pascalCase } from 'pascal-case';
+
+import Webpack from 'webpack';
+import WebpackDevServer from 'webpack-dev-server';
+import webpackConfig from './webpack.config';
 
 interface ComparisonResult {
 	image: any;
@@ -18,12 +22,6 @@ interface ComparisonResult {
 const PORT = process.env.PORT || 3000;
 const SERVER_URL = `http://localhost:${PORT}`;
 const SNAPSHOT_PATH = './ui-tests/snapshots';
-
-const server = http.createServer((request, response) => {
-	return handler(request, response, {
-		public: 'ui-tests/dist'
-	});
-});
 
 async function compareToSnapshot(page: Page, snapshotPath: string) {
 	const componentName = snapshotPath.substring(snapshotPath.lastIndexOf('/') + 1, snapshotPath.lastIndexOf('.'));
@@ -52,7 +50,8 @@ async function compareImages(img1Path, img2Path): Promise<ComparisonResult> {
 
 async function takeSnapshot(page, snapshotPath) {
 	const componentName = snapshotPath.substring(snapshotPath.lastIndexOf('/') + 1, snapshotPath.lastIndexOf('.'));
-	const elementId = `#${pascalCase(componentName).replace('Snapshot', '')}`;
+	const elementId = `#${pascalCase(componentName)
+		.replace('Snapshot', '')}`;
 	const element = await page.$(elementId);
 	let screenShotHandler = element;
 	if (await element.getAttribute('testWholePage')) {
@@ -79,15 +78,14 @@ async function runImageComparison() {
 
 	console.log('Visual tests completed!');
 	await browser.close();
-	finalizeTest();
 }
 
 async function runTestOnComponent(browser, componentName) {
-	const page = await browser.newPage();
+	const pageInstance = await browser.newPage();
 	const testUrl = `${SERVER_URL}/${componentName}`;
-	await page.goto(testUrl);
+	pageInstance.goto(testUrl);
 	return new Promise((res) => {
-		page.context()
+		pageInstance.context()
 			.exposeBinding('doTest', async ({ page }) => {
 				await doTest(page);
 				res(true);
@@ -101,10 +99,16 @@ async function doTest(page) {
 		.splice(-1, 1)[0];
 	const snapshotPath = `${SNAPSHOT_PATH}/${componentName}.png`;
 	await page.waitForLoadState('networkidle');
-	if (process.argv.includes('-u') || !fs.existsSync(snapshotPath)) {
+	if (process.argv.includes('-u')) {
 		console.log('Updating snapshot...');
+		await (new Promise(res => setTimeout(res, 200)));
 		await takeSnapshot(page, snapshotPath);
 	} else {
+		if (!fs.existsSync(snapshotPath)) {
+			console.error(`Missing snapshot for ${componentName}`);
+			process.exitCode = 1;
+			return;
+		}
 		const diff = await compareToSnapshot(page, snapshotPath);
 		if (diff.percent === 0) {
 			console.log('Visual Diff Passed!');
@@ -116,21 +120,56 @@ async function doTest(page) {
 	}
 }
 
-function finalizeTest() {
+function finalizeTest(testsServer) {
 	//	decide process exit code
-	server.close();
+	testsServer.close();
 }
 
-server.listen(PORT, async () => {
-	console.log('Running at ', SERVER_URL);
+function setDevServer() {
+	const compiler = Webpack({
+		...webpackConfig,
+		mode: 'development'
+	});
+	const devServerOptions = {
+		...webpackConfig.devServer,
+		open: true
+	};
+	const devServer = new WebpackDevServer(devServerOptions, compiler);
 
-	try {
-		if (!process.argv.includes('-s')) {
-			await runImageComparison();
-		}
-	} catch (e) {
-		console.error(e);
-		process.exitCode = 1;
-		server.close();
-	}
-});
+	devServer.listen(webpackConfig.devServer.port, '127.0.0.1', () => {
+		console.log(`Starting server on http://localhost:${webpackConfig.devServer.port}`);
+	});
+}
+
+function runTests(port = PORT) {
+	const server = http.createServer((request, response) => {
+		return handler(request, response, {
+			public: 'ui-tests/dist'
+		});
+	});
+
+	return new Promise((res, rej) => {
+		server.listen(port, async () => {
+			console.log('Running at ', `http://localhost:${port}`);
+
+			try {
+				await runImageComparison();
+			} catch (e) {
+				console.error(e);
+				process.exitCode = 1;
+				server.close();
+			}
+
+			res(server);
+		});
+	});
+}
+
+if (!process.argv.includes('-s')) {
+	runTests()
+		.then(finalizeTest);
+} else {
+	setDevServer();
+}
+
+

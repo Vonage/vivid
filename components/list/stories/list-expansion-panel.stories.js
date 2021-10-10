@@ -6,10 +6,10 @@ import { argTypes } from './arg-types-list-item.js';
 import { styleMap } from 'lit-html/directives/style-map';
 
 export default {
-	title: 'Components/List expansion panel',
+	title: 'Components/List/Expansion panel',
 	component: 'vwc-list-expansion-panel',
 	argTypes
-}
+};
 
 const listStyles = {
 	'inline-size': '240px',
