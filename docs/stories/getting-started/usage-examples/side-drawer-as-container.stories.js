@@ -6,7 +6,6 @@ import '@vonage/vwc-icon';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 
-
 export default {
 	title: 'Getting Started/Usage Examples/Side Drawer',
 	argTypes: {

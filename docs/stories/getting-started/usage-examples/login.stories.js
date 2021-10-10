@@ -1,3 +1,11 @@
+import '@vonage/vwc-side-drawer';
+import '@vonage/vwc-text';
+import '@vonage/vwc-icon';
+import '@vonage/vwc-layout';
+import '@vonage/vwc-button';
+import '@vonage/vwc-textfield';
+import '@vonage/vwc-checkbox';
+
 import { html } from 'lit-element';
 
 export default {
@@ -26,10 +34,13 @@ const style = html`
         bottom: 20px;
         left: 20px;
       }
+      .sb-show-main.sb-main-padded {
+			  padding: 0;
+		  }
   </style>
 `;
 
-export const sideDrawer = () => html`<vwc-side-drawer id="side-drawer" hasTopBar>
+const sideDrawer = () => html`<vwc-side-drawer id="side-drawer" hasTopBar>
   <span slot="top-bar">
     <vwc-icon type="vonage-mono"></vwc-icon>
     <vwc-text font-face="body-1-bold"> VONAGE</vwc-text>
@@ -69,7 +80,7 @@ export const sideDrawer = () => html`<vwc-side-drawer id="side-drawer" hasTopBar
   </form>
 </vwc-side-drawer>`;
 
-export const content = () => html`<vwc-layout id="content" column-basis="block">
+const content = () => html`<vwc-layout id="content" column-basis="block">
   <section>
     <vwc-text font-face="subtitle-1">Lorem ipsum</vwc-text>
   </section>
@@ -81,12 +92,12 @@ export const content = () => html`<vwc-layout id="content" column-basis="block">
   </section>
 </vwc-layout>`;
 
-export const WithLogInTemplate = () => html`
+const WithLogInTemplate = () => html`
   ${style}
   <div id="login">
-    ${sideDrawer}
+    ${sideDrawer()}
     <main>
-      ${content}
+      ${content()}
     </main>
   </div>
 `;
