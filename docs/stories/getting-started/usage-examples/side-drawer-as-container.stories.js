@@ -158,7 +158,7 @@ WithTopAppBar.args = {};
 
 const WithTopAppBarFixedTemplate = args => html`
 	${style}
-	<vwc-side-drawer hastopbar ...=${spread(args)}>
+	<vwc-side-drawer alternate hastopbar ...=${spread(args)}>
 		${sideDrawerContent}
 	
 		<vwc-top-app-bar-fixed alternate slot="app-content">
