@@ -3,6 +3,9 @@ import '@vonage/vwc-top-app-bar';
 import '@vonage/vwc-top-app-bar-fixed';
 import '@vonage/vwc-icon';
 import '@vonage/vwc-layout';
+import '@vonage/vwc-list';
+import '@vonage/vwc-list/vwc-list-item';
+import '@vonage/vwc-list/vwc-list-expansion-panel';
 
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
@@ -31,6 +34,21 @@ export default {
 	}
 };
 
+const style = html`
+	<style>
+		.sb-show-main.sb-main-padded {
+			padding: 0;
+		}
+		p {
+			color: "#C0C0C0";
+			font-weight: "bold";
+		}
+		vwc-side-drawer#side-drawer{
+			--side-drawer-background-color: var(--vvd-color-neutral-10);
+		}
+	</style>
+`;
+
 const loremIpsum = () => html`
 <vwc-layout gutters="xs">
 	<p>
@@ -46,29 +64,71 @@ const loremIpsum = () => html`
 
 const content = () => Array(8).fill().map(loremIpsum);
 
-const style = html`
-	<style>
-		.sb-show-main.sb-main-padded {
-			padding: 0;
-		}
-	</style>
-`;
+const sideDrawerContent = html`
+<span slot="top-bar">
+	<vwc-icon type="vonage-mono"></vwc-icon>
+	<vwc-text font-face="body-1-bold"> VONAGE</vwc-text>
+</span>
+<vwc-list innerRole="navigation" innerAriaLabel="Primary navigation" itemRoles="link">
+	<vwc-list-item shape="rounded" graphic="icon">
+		<vwc-icon slot="graphic" type="home-line"></vwc-icon>1st level item
+	</vwc-list-item>
+
+	<p>SECTION TITLE</p>
+
+	<vwc-list-item shape="rounded" graphic="icon">
+		<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
+	</vwc-list-item>
+
+	<vwc-list-expansion-panel open>
+		<vwc-list-item slot="header" shape="rounded" graphic="icon">
+			<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
+		</vwc-list-item>
+		<vwc-list-expansion-panel open>
+			<vwc-list-item slot="header" shape="rounded">2nd level item</vwc-list-item>
+			<vwc-list-item shape="rounded">3rd level item</vwc-list-item>
+			<vwc-list-item shape="rounded">3rd level item</vwc-list-item>
+		</vwc-list-expansion-panel>
+	</vwc-list-expansion-panel>
+
+	<p>SECTION TITLE</p>
+
+	<vwc-list-expansion-panel>
+		<vwc-list-item slot="header" shape="rounded" graphic="icon">
+			<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
+		</vwc-list-item>
+		<vwc-list-item shape="rounded">2nd level item</vwc-list-item>
+		<vwc-list-item shape="rounded">2nd level item</vwc-list-item>
+	</vwc-list-expansion-panel>
+</vwc-list>`;
 
 const topAppBarContent = html`
-	<vwc-theme-switch slot="actionItems"></vwc-theme-switch>
-	<span slot="title">Main top bar</span>
-	<main>
-		${content()}
-	</main>
+	<span slot="actionItems">
+		<vwc-icon-button icon="search-line"></vwc-icon-button>
+		<vwc-icon-button icon="info-line"></vwc-icon-button>
+		<vwc-icon-button icon="share-line"></vwc-icon-button>
+	</span>
+`;
+
+const topAppBarFixedContent = html`
+	<span slot="actionItems">
+		<vwc-button label="Action" layout="outlined" icon="search-line" type="submit">
+			<button type="submit" style="display: none;"></button>
+		</vwc-button>
+		<vwc-button label="Action" layout="outlined" icon="info-line" type="submit">
+			<button type="submit" style="display: none;"></button>
+		</vwc-button>
+		<vwc-button label="Action" layout="outlined" icon="share-line" type="submit">
+			<button type="submit" style="display: none;"></button>
+		</vwc-button>
+	</span>
 `;
 
 const WithAppContentTemplate = args => html`
 	${style}
-	<vwc-side-drawer alternate hastopbar ...=${spread(args)}>
-		<span slot="top-bar">Side drawer top bar</span>
-		Should top bar font face differ from body?
-		${content()}
-	
+	<vwc-side-drawer id="side-drawer" hastopbar ...=${spread(args)}>
+		${sideDrawerContent}
+
 		<main slot="app-content">
 			${content()}
 		</main>
@@ -81,12 +141,13 @@ WithAppContent.args = {};
 const WithTopAppBarTemplate = args => html`
 	${style}
 	<vwc-side-drawer alternate hastopbar ...=${spread(args)}>
-		<span slot="top-bar">Side drawer top bar</span>
-		Should top bar font face differ from body?
-		${content()}
+		${sideDrawerContent}
 	
 		<vwc-top-app-bar slot="app-content">
 			${topAppBarContent}
+			<main>
+				${content()}
+			</main>
 		</vwc-top-app-bar>
 	</vwc-side-drawer>
 `;
@@ -94,20 +155,17 @@ const WithTopAppBarTemplate = args => html`
 export const WithTopAppBar = WithTopAppBarTemplate.bind({});
 WithTopAppBar.args = {};
 
-const Masthead = () => html`
-	<vwc-icon type="vonage-solid"></vwc-icon>
-	App Title
-`;
 
 const WithTopAppBarFixedTemplate = args => html`
 	${style}
-	<vwc-side-drawer alternate hastopbar ...=${spread(args)}>
-		<span slot="top-bar">${Masthead()}</span>
-		Should top bar font face differ from body?
-		${content()}
+	<vwc-side-drawer hastopbar ...=${spread(args)}>
+		${sideDrawerContent}
 	
 		<vwc-top-app-bar-fixed alternate slot="app-content">
-			${topAppBarContent}
+			${topAppBarFixedContent}
+			<main>
+				${content()}
+			</main>
 		</vwc-top-app-bar-fixed>
 	</vwc-side-drawer>
 `;

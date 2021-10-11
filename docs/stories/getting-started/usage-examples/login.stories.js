@@ -9,7 +9,7 @@ import '@vonage/vwc-checkbox';
 import { html } from 'lit-element';
 
 export default {
-	title: 'Getting Started/Usage Examples/Side Drawer',
+  title: 'Getting Started/Usage Examples/Side Drawer',
 };
 
 const style = html`
@@ -40,11 +40,16 @@ const style = html`
   </style>
 `;
 
-const sideDrawer = () => html`<vwc-side-drawer id="side-drawer" hasTopBar>
+const Masthead = () => html`
   <span slot="top-bar">
     <vwc-icon type="vonage-mono"></vwc-icon>
     <vwc-text font-face="body-1-bold"> VONAGE</vwc-text>
   </span>
+`;
+
+const sideDrawer = () => html`
+<vwc-side-drawer id="side-drawer" hasTopBar>
+  ${Masthead()}
   <form>
     <vwc-layout column-basis="block" gutters="xl">
       <section>
