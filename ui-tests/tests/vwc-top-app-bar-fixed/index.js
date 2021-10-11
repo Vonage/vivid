@@ -4,7 +4,7 @@ import '@vonage/vwc-icon-button/vwc-icon-button.js';
 export async function createElementVariations(wrapper) {
 	const elementWrapper = document.createElement('div');
 	elementWrapper.innerHTML = `
-	<vwc-top-app-bar-fixed>
+	<vwc-top-app-bar-fixed alternate>
 		<vwc-icon-button slot="navigationIcon" icon="menu-line"></vwc-icon-button>
 		<span slot="title">Top App Bar</span>
 
