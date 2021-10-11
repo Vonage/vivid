@@ -1,58 +1,37 @@
 @use 'sass:map';
 
-$items-min-inline-size-v-name: --items-min-inline-size;
-$items-spacing-v-name: --items-spacing;
-$gutters-v-name: --gutters;
-$auto-sizing: --auto-sizing;
-
-/* #region SIZE */
-$items-min-inline-sizes: (
-	sm: 10rem,
-	md: 20rem,
-	lg: 30rem,
-);
-
-/* #region SPACEING */
-$items-spacings: (
-	xs: 16px,
-	md: 24px,
-	xl: 32px,
-);
-
-@each $key, $value in $items-min-inline-sizes {
-	.layout-column-basis-#{$key} {
-		#{$items-min-inline-size-v-name}: $value;
-	}
-}
-
-@each $key, $value in $items-spacings {
-	.layout-column-spacing-#{$key} {
-		#{$items-spacing-v-name}: $value;
-	}
-	.layout-gutters-#{$key} {
-		#{$gutters-v-name}: $value;
-	}
-}
+@use 'partials/vwc-layout-variables' as variables;
+@use 'partials/vwc-layout-mixins' as mixins;
+@use 'partials/vwc-layout-functions' as functions;
 
 .layout {
 	display: grid;
-	margin: var(#{$gutters-v-name}, 0);
-	gap: var(#{$items-spacing-v-name}, #{map.get($items-spacings, md)});
 	grid-auto-rows: min-content;
-	grid-template-columns: repeat(
-		var(#{$auto-sizing}),
-		minmax(var(#{$items-min-inline-size-v-name}, #{map.get($items-min-inline-sizes, lg)}), 1fr)
-	);
 
-	&:not(.layout-auto-sizing-fill),
-	&.layout-auto-sizing-fit {
-		#{$auto-sizing}: auto-fit;
-	}
-	&.layout-auto-sizing-fill {
-		#{$auto-sizing}: auto-fill;
+	@include mixins.measurement(map.keys(variables.$bases)...) using ($basis) {
+		#{functions.get-selector-with-default(".layout-column-basis", $basis, md, map.keys(variables.$bases))} {
+			grid-template-columns: repeat(
+				var(#{variables.$layout-auto-sizing}),
+				minmax(map.get(variables.$bases, $basis), 1fr)
+			);
+		}
 	}
 
-	&.layout-column-basis-block {
-		grid-template-columns: 1fr;
+	@include mixins.measurement(map.keys(variables.$spaces)...) using ($space) {
+		#{functions.get-selector-with-default(".layout-column-spacing", $space, md, map.keys(variables.$spaces))} {
+			gap: map.get(variables.$spaces, $space);
+		}
+	}
+
+	@include mixins.measurement(map.keys(variables.$spaces)...) using ($space) {
+		&.layout-gutters-#{$space} {
+			margin: map.get(variables.$spaces, $space);
+		}
+	}
+
+	@include mixins.measurement(map.keys(variables.$auto-sizes)...) using ($size) {
+		#{functions.get-selector-with-default(".layout-auto-sizing", $size, fit, map.keys(variables.$auto-sizes))} {
+			#{variables.$layout-auto-sizing}: map.get(variables.$auto-sizes, $size);
+		}
 	}
 }
