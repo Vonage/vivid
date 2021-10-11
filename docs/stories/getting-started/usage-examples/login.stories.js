@@ -9,7 +9,7 @@ import '@vonage/vwc-checkbox';
 import { html } from 'lit-element';
 
 export default {
-  title: 'Getting Started/Usage Examples/Side Drawer',
+	title: 'Getting Started/Usage Examples/Side Drawer',
 };
 
 const style = html`
