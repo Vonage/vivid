@@ -116,7 +116,7 @@ export class VWCBanner extends LitElement {
 
 	protected override render(): TemplateResult {
 		return html`
-      <div class="banner ${classMap(this.getRenderClasses())}" tabindex="0" @keydown=${this.handleKeyDown}>
+      <div class="banner ${classMap(this.getRenderClasses())}" tabindex="0" @keydown=${this.handleKeyDown} role="status" aria-live="polite">
 				<header class="header">
 					<span class="user-content">
 						${this.renderIcon(this.icon)}
