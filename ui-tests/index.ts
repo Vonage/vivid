@@ -114,6 +114,7 @@ async function doTest(page) {
 			console.log('Visual Diff Passed!');
 			console.log(resultsMessage(diff));
 		} else {
+			console.log('Visual Diff Failed!');
 			console.error(resultsMessage(diff));
 			process.exitCode = 1;
 		}
