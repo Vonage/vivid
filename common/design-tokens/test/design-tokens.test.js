@@ -4,33 +4,10 @@ import {
 	PRINCIPAL_SCHEME_VARIABLES_FILTER,
 } from '../../../test/style-utils.js';
 
-import { render as elevationRender } from '../src/builders/elevation/render.js';
-
 const ALTERNATE = 'alternate',
 	MAIN = 'main';
 
-describe.only('design tokens service', () => {
-	describe(`elevations builder`, function () {
-		let configurations = [];
-		let ranBuildPlatformCount = 0;
-		const styleDictionaryMock = {
-			extend: function (config) {
-				configurations.push(config);
-				return () => {
-					ranBuildPlatformCount++;
-				};
-			}
-		};
-		elevationRender(styleDictionaryMock);
-
-		expect(ranBuildPlatformCount)
-			.to
-			.equal(2);
-		expect(JSON.stringify(configurations))
-			.to
-			.equalSnapshot();
-	});
-
+describe('design tokens service', () => {
 	describe('scheme design tokens', () => {
 		it('should have scheme design tokens generated', async () => {
 			const EXPECTED_MATRIX = [

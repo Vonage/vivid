@@ -7,14 +7,21 @@ import R from 'ramda';
 
 const
 	propertiesPath = resolve('../../node_modules/@vonage/vvd-design-tokens-properties'),
-	CUSTOM_SCHEMES_FORMAT = 'custom/web/scss/elevations',
-	OUTPUT_FOLDER = 'build/scss/elevations';
+	CUSTOM_SCHEMES_FORMAT = 'custom/web/scss/elevation',
+	OUTPUT_FOLDER = 'build/scss/elevation';
 
 StyleDictionaryPackage.registerFormat({
 	name: CUSTOM_SCHEMES_FORMAT,
 	formatter: _.template(
 		fs.readFileSync(resolve('templates/web-scss-elevations.template'))
 	),
+});
+
+StyleDictionaryPackage.registerFilter({
+	name: 'filter-alias',
+	matcher: function (prop) {
+		return prop.attributes.category !== 'alias';
+	}
 });
 
 // HAVE THE STYLE DICTIONARY CONFIG DYNAMICALLY GENERATED
@@ -33,6 +40,7 @@ function getStyleDictionaryConfig(scheme, scope) {
 					{
 						destination: `${OUTPUT_FOLDER}/${scheme}/${scope}.scss`,
 						format: CUSTOM_SCHEMES_FORMAT,
+						filter: 'filter-alias'
 					}
 				]
 			}
