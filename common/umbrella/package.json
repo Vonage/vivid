@@ -12,7 +12,8 @@
 	"private": true,
 	"main": "",
 	"bin": {
-		"umbrella-style-modules": "./tools/style-modules/index.js"
+		"umbrella-style-modules": "./tools/style-modules/index.js",
+		"glob-spread": "./tools/glob-spread.js"
 	},
 	"author": "Tal Weinfeld <tal.weinfeld@vonage.com>",
 	"homepage": "https://github.com/Vonage/vivid#readme",
@@ -31,6 +32,7 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
+		"esbuild": "^0.13.3",
 		"glob": "^7.1.6",
 		"kefir": "^3.8.8",
 		"minimist": "^1.2.5",

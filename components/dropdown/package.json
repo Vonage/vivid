@@ -18,9 +18,11 @@
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1",
+		"build:typescript:ci": "esbuild $(glob-spread \"./src/**/*.ts\") --outdir=.",
 		"build:typescript": "tsc -b",
 		"build:styles": "umbrella-style-modules",
-		"build": "yarn run build:styles && yarn run build:typescript"
+		"build": "yarn run build:styles && yarn run build:typescript",
+		"build:ci": "yarn run build:styles && yarn run build:typescript:ci"
 	},
 	"bugs": {
 		"url": "https://github.com/Vonage/vivid/issues"
