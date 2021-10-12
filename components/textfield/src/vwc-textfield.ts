@@ -8,11 +8,11 @@ import {
 	property,
 	html,
 	TemplateResult,
-	PropertyValues,
 	queryAssignedNodes,
 	query,
 	internalProperty
 } from 'lit-element';
+import type { PropertyValues } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
 
 import { TextField as MWCTextField } from '@material/mwc-textfield';
@@ -22,7 +22,7 @@ import { styles as mwcTextFieldStyles } from '@material/mwc-textfield/mwc-textfi
 import type { Shape } from '@vonage/vvd-foundation/constants';
 import { debounced, handleAutofocus } from '@vonage/vvd-foundation/general-utils';
 
-export { TextFieldType } from '@material/mwc-textfield';
+export type { TextFieldType } from '@material/mwc-textfield';
 
 export const COMPONENT_NAME = 'vwc-textfield';
 export const VALID_BUTTON_ELEMENTS = ['vwc-icon-button'];
