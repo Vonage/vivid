@@ -116,11 +116,11 @@ export class VWCBanner extends LitElement {
 
 	protected override render(): TemplateResult {
 		return html`
-      <div class="banner ${classMap(this.getRenderClasses())}" tabindex="0" @keydown=${this.handleKeyDown} role="status" aria-live="polite">
+      <div class="banner ${classMap(this.getRenderClasses())}" tabindex="0" @keydown=${this.handleKeyDown}>
 				<header class="header">
 					<span class="user-content">
 						${this.renderIcon(this.icon)}
-						<div role="alert" class="message">${this.message}</div>
+						<div role="status" aria-live="polite" class="message">${this.message}</div>
 						<slot class="action-items" name="actionItems"></slot>
 					</span>
 					${this.renderDismissButton()}
