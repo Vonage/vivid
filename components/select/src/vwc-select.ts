@@ -6,9 +6,9 @@ import {
 	customElement,
 	property,
 	html,
-	TemplateResult,
-	PropertyValues,
+	TemplateResult
 } from 'lit-element';
+import type { PropertyValues } from 'lit-element';
 import { Select as MWCSelect } from '@material/mwc-select';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
 import { style as vwcSelectStyle } from './vwc-select.css.js';
