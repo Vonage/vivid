@@ -1,6 +1,7 @@
 import {
-	customElement, html, LitElement, property, PropertyValues
+	customElement, html, LitElement, property,
 } from 'lit-element';
+import type { PropertyValues } from 'lit-element';
 import { style } from './vwc-button-toggle-group.css.js';
 
 declare global {

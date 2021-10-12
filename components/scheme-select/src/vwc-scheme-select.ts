@@ -6,8 +6,8 @@ import {
 import vvdScheme, {
 	AutoScheme,
 	PredefinedScheme,
-	SchemeOption,
 } from '@vonage/vvd-scheme';
+import type { SchemeOption } from '@vonage/vvd-scheme';
 
 declare global {
 	interface HTMLElementTagNameMap {

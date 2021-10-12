@@ -7,7 +7,7 @@ import {
 } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
 import type { ClassInfo } from 'lit-html/directives/class-map';
-import { Size } from '@vonage/vvd-foundation/constants';
+import { Size } from '@vonage/vvd-foundation/constants.js';
 import { style } from './vwc-layout.css.js';
 
 
