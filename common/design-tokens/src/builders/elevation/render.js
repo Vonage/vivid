@@ -21,7 +21,8 @@ StyleDictionaryPackage.registerFormat({
 function getStyleDictionaryConfig(scheme, scope) {
 	return {
 		source: [
-			`${propertiesPath}/elevations/${scheme}/${scope}.json`,
+			`${propertiesPath}/dist/elevation/values/${scheme}/${scope}.json`,
+			`${propertiesPath}/dist/elevation/elevation.json`,
 		],
 		platforms: {
 			web: {
@@ -43,10 +44,6 @@ const curriedGetStyleDictionaryConfig = R.curry(getStyleDictionaryConfig);
 const baseConfig = curriedGetStyleDictionaryConfig(R.__, 'main');
 const alternateConfig = curriedGetStyleDictionaryConfig(R.__, 'alternate');
 
-
-// PROCESS THE DESIGN TOKENS FOR THE DIFFERENT SCHEMES AND PLATFORMS
-// TODO: [VIV-41] add accessible colors scheme
-// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const render = (styleDictionary = StyleDictionaryPackage) => {
 	fs.rmdirSync(OUTPUT_FOLDER, { recursive: true });
 

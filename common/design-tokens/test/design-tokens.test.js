@@ -23,8 +23,12 @@ describe.only('design tokens service', () => {
 		};
 		elevationRender(styleDictionaryMock);
 
-		expect(ranBuildPlatformCount).to.equal(2);
-		expect(JSON.stringify(configurations)).to.equalSnapshot();
+		expect(ranBuildPlatformCount)
+			.to
+			.equal(2);
+		expect(JSON.stringify(configurations))
+			.to
+			.equalSnapshot();
 	});
 
 	describe('scheme design tokens', () => {
@@ -81,10 +85,6 @@ describe.only('design tokens service', () => {
 					.equal(expectedCount));
 		});
 
-		//	we have a matrix of schemes and flavors: each scheme hase 2 flavors (main/alternate)
-		//	this test checks that schemes are distinct from each other while comparing the same flavor, eg:
-		//	- main: light != dark != ...
-		//	- alternate: light != dark != ...
 		it('should have differing values in different schemes (light/dark/...) per flavor', async () => {
 			const schemeVariables = getSchemeVariables();
 			const schemesListByFlavor = {};
@@ -97,37 +97,6 @@ describe.only('design tokens service', () => {
 			assertListsOfDistinct(schemesListByFlavor);
 		});
 
-		//	we have a matrix of schemes and flavors: each scheme hase 2 flavors (main/alternate)
-		//	this test checks that alternate flavor has ONLY a DISTINCT props from main
-		// it('should have differing values in different flavors (main/alternate) per scheme', async () => {
-		// 	const schemeVariables = getSchemeVariables();
-		// 	let totalAlternatesTested = 0;
-		// 	for (const key in schemeVariables) {
-		// 		const [scheme, flavor] = key.split('/');
-		// 		if (flavor === ALTERNATE) {
-		// 			totalAlternatesTested++;
-		// 			const altSet = schemeVariables[key];
-		// 			const baseSet = schemeVariables[`${scheme}/${MAIN}`];
-		// 			expect(altSet).exist;
-		// 			expect(baseSet).exist;
-		// 			const altKeys = Object.keys(altSet);
-		// 			expect(altKeys).not.empty;
-		// 			altKeys.forEach((altKey) => {
-		// 				expect(altKey in baseSet).true;
-		// 				expect(
-		// 					baseSet[altKey],
-		// 					`${altKey} NOT equal or not present in alt`
-		// 				).not.equal(altSet[altKey]);
-		// 			});
-		// 		}
-		// 	}
-		// 	expect(totalAlternatesTested).greaterThan(0);
-		// });
-
-		//	we have a matrix of schemes and flavors: each scheme hase 2 flavors (base/alternate)
-		//	this test checks that flavors are distinct withing each scheme, eg:
-		//	- light: base != alternate
-		//	- dark: base != alternate
 		it('should have differing values in different flavors (base/alternate) per scheme', async () => {
 			const schemeVariables = getSchemeVariables();
 			const flavorsListByScheme = {};
