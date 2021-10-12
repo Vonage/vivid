@@ -155,7 +155,8 @@ function runTests(port = PORT) {
 			try {
 				await runImageComparison();
 			} catch (e) {
-				console.error(e);
+				console.log('Failed for some reason: ', e);
+				console.error('Failed for some reason: ', e);
 				process.exitCode = 1;
 				server.close();
 			}
