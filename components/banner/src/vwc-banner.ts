@@ -71,12 +71,12 @@ export class VWCBanner extends LitElement {
 
 	#transitionTimer?:number;
 
-	protected override firstUpdated() {
+	protected override firstUpdated() :void {
 		// refactor to query decorator
 		(this.shadowRoot?.querySelector('.banner') as HTMLElement).style.setProperty('--transition-delay', `${ANIMATION_DURATION}ms`);
 	}
 
-	override updated(changedProperties:PropertyValues) {
+	override updated(changedProperties:PropertyValues) :void {
 		if (changedProperties.has('open')) {
 			clearTimeout(this.#transitionTimer);
 			this.dispatchEvent(createCustomEvent(!this.open ? 'closing' : 'opening'));
@@ -85,7 +85,8 @@ export class VWCBanner extends LitElement {
 			}, ANIMATION_DURATION);
 		}
 	}
-	renderDismissButton() {
+
+	renderDismissButton() :TemplateResult | unknown {
 		return this.dismissible
 			? html`<vwc-icon-button
 								class="dismiss-button"
@@ -110,6 +111,10 @@ export class VWCBanner extends LitElement {
 		return html`<vwc-icon class="icon" .type="${type}"></vwc-icon>`;
 	}
 
+	protected renderAriaLive(): string {
+		return this.open ? 'polite' : 'off';
+	}
+
 	private handleKeyDown(e: KeyboardEvent): void {
 		this.open = !(e.key === KEY_ESCAPE && this.dismissible);
 	}
@@ -120,7 +125,7 @@ export class VWCBanner extends LitElement {
 				<header class="header">
 					<span class="user-content">
 						${this.renderIcon(this.icon)}
-						<div role="status" aria-live="polite" class="message">${this.message}</div>
+						<div role='status' aria-live=${this.renderAriaLive()} class="message">${this.message}</div>
 						<slot class="action-items" name="actionItems"></slot>
 					</span>
 					${this.renderDismissButton()}
