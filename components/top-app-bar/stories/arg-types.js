@@ -5,16 +5,16 @@ const control = {
 
 export const argTypes = {
 	centerTitle: {
-		control: control
+		control
 	},
 	dense: {
-		control: control
+		control
 	},
 	alternate: {
-		control: control
+		control
 	},
 	prominent: {
-		control: control
+		control
 	},
 	styles: { table: { disable: true } },
 };
