@@ -3,8 +3,9 @@ import '@vonage/vwc-icon';
 // import '@material/mwc-ripple';
 import type { Ripple } from '@material/mwc-ripple';
 import {
-	customElement, property, LitElement, CSSResult, PropertyValues, html, TemplateResult
+	customElement, property, LitElement, CSSResult, html, TemplateResult
 } from 'lit-element';
+import type { PropertyValues } from 'lit-element';
 import { style } from './vwc-pagination.css.js';
 
 export const COMPONENT_NAME = 'vwc-pagination';

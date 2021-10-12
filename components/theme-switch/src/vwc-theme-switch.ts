@@ -11,9 +11,9 @@ import { style } from './vwc-theme-switch.css.js';
 import {
 	default as vvdScheme,
 	PredefinedScheme,
-	SchemeOption,
-	SelectedDetail,
 } from '@vonage/vvd-scheme/vvd-scheme.js';
+
+import type { SchemeOption, SelectedDetail } from '@vonage/vvd-scheme/vvd-scheme.js';
 
 const VVD_SCHEME_SELECT = 'vvd-scheme-select',
 	EVENT_LISTENER_KEY = Symbol('scheme.select.listener');
