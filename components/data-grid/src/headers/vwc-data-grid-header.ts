@@ -1,15 +1,16 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
-import { DataGridHeader, GRID_HEADER_COMPONENT } from '../vwc-data-grid-api.js';
+import { GRID_HEADER_COMPONENT } from '../vwc-data-grid-api.js';
+import type { DataGridHeader } from '../vwc-data-grid-api.js';
 import { style as vwcDataGridHeaderStyle } from './vwc-data-grid-header.css.js';
 import {
 	html,
 	customElement,
 	property,
 	LitElement,
-	PropertyValues,
 	TemplateResult,
 } from 'lit-element';
+import type { PropertyValues } from 'lit-element';
 
 declare global {
 	interface HTMLElementTagNameMap {
