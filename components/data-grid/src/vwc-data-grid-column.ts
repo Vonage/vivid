@@ -2,9 +2,9 @@ import {
 	COLUMN_DEFINITION_COMPONENT,
 	COLUMN_DEFINITION_UPDATE_EVENT,
 	SELECTOR_SINGLE,
-	SELECTOR_MULTI,
-	DataGridColumn
+	SELECTOR_MULTI
 } from './vwc-data-grid-column-api.js';
+import type { DataGridColumn } from './vwc-data-grid-column-api.js';
 import {
 	customElement,
 	property,
