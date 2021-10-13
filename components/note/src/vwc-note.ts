@@ -3,9 +3,10 @@ import '@vonage/vwc-icon';
 import {
 	customElement, property, LitElement, CSSResult, html, TemplateResult
 } from 'lit-element';
-import { ClassInfo, classMap } from 'lit-html/directives/class-map';
+import { classMap } from 'lit-html/directives/class-map';
+import type { ClassInfo } from 'lit-html/directives/class-map';
 import { style as vwcNoteStyle } from './vwc-note.css.js';
-import type { Connotation } from '@vonage/vvd-foundation/constants';
+import type { Connotation } from '@vonage/vvd-foundation/constants.js';
 
 declare global {
 	interface HTMLElementTagNameMap {
