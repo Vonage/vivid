@@ -17,9 +17,43 @@
 			@include typography.typography-cat-shorthand($key);
 		}
 	}
+
+	&.font-face {
+		&-headline-1,
+		&-headline-2 {
+			--font-face-margin: 2.5rem 0;
+		}
+
+		&-title-1,
+		&-title-2 {
+			--font-face-margin: 2rem 0;
+		}
+
+		&-subtitle-1,
+		&-subtitle-2 {
+			--font-face-margin: 1.5rem 0;
+		}
+
+		&-body-1,
+		&-body-2 {
+			--font-face-margin: 1rem 0;
+		}
+	}
+
+	&:where([class*=headline-], [class*=title-], .font-face-body-1, .font-face-body-2) {
+		display: block;
+		margin: var(--font-face-margin, 0);
+	}
+
 }
+
+::slotted(:where(h1, h2, h3, h4, h5, h6, p)) {
+	margin: 0;
+}
+
 
 ::slotted(*) {
 	color: inherit;
 	font: inherit;
 }
+
