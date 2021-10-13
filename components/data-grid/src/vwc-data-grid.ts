@@ -2,7 +2,9 @@ import '@vonage/vvd-core';
 import './vwc-data-grid-column.js';
 import {
 	GRID_COMPONENT,
-	GRID_ENGINE_ROOT_CLASS,
+	GRID_ENGINE_ROOT_CLASS
+} from './vwc-data-grid-api.js';
+import type {
 	DataGrid,
 	DataGridHeader,
 	EventContext
@@ -10,8 +12,8 @@ import {
 import {
 	COLUMN_DEFINITION_COMPONENT,
 	COLUMN_DEFINITION_UPDATE_EVENT,
-	DataGridColumn,
 } from './vwc-data-grid-column-api.js';
+import type { DataGridColumn } from './vwc-data-grid-column-api.js';
 import type { RowDetailsRenderer } from './vwc-data-grid-renderer-api.js';
 import { VWCDataGridAdapterVaadin } from './adapters/vaadin/vwc-data-grid-adapter-vaadin.js';
 import { style as vwcDataGridStyle } from './vwc-data-grid.css.js';
