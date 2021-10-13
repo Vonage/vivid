@@ -1,3 +1,16 @@
+# [2.20.0](https://github.com/vonage/vivid/compare/v2.19.0...v2.20.0) (2021-10-07)
+
+
+### Features
+
+* **vwc-inline:** add more inline size options ([#1053](https://github.com/vonage/vivid/issues/1053)) ([1b8020d](https://github.com/vonage/vivid/commit/1b8020d4a0137801444bc5182d12949d902def86))
+
+
+
+# [2.19.0](https://github.com/vonage/vivid/compare/v2.18.1...v2.19.0) (2021-10-04)
+
+
+
 ## [2.18.1](https://github.com/vonage/vivid/compare/v2.18.0...v2.18.1) (2021-08-25)
 
 
@@ -87,7 +100,7 @@
 
 ### Features
 
-* **vwc-inline:** add support for auto-fill/fit variance ([#746](https://github.com/vonage/vivid/issues/746)) ([17732b3](https://github.com/vonage/vivid/commit/17732b372d14cbba7708e3cf9332e1899850d3cd))
+* **vwc-layout:** add support for auto-fill/fit variance ([#746](https://github.com/vonage/vivid/issues/746)) ([17732b3](https://github.com/vonage/vivid/commit/17732b372d14cbba7708e3cf9332e1899850d3cd))
 
 
 
@@ -201,7 +214,7 @@
 
 ### Features
 
-* **vwc-inline:** new component to handle inline layouts ([9b03d6b](https://github.com/vonage/vivid/commit/9b03d6b3171c891985a10c77edfc2f78b78be68d))
+* **vwc-layout:** new component to handle inline layouts ([9b03d6b](https://github.com/vonage/vivid/commit/9b03d6b3171c891985a10c77edfc2f78b78be68d))
 
 
 

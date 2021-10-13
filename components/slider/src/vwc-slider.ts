@@ -1,11 +1,10 @@
 import '@vonage/vvd-core';
-import { debounced } from '@vonage/vvd-foundation/general-utils';
+import { debounced, handleAutofocus } from '@vonage/vvd-foundation/general-utils';
 import { customElement } from 'lit-element';
 import { Slider as MWCSlider } from '@material/mwc-slider';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
 import { styles as mwcSliderStyles } from '@material/mwc-slider/mwc-slider.css.js';
-import { style as vwcSliderStyle } from './vwc-slider.css';
-import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
+import { style as vwcSliderStyle } from './vwc-slider.css.js';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -27,29 +26,29 @@ export class VWCSlider extends MWCSlider {
 	/* eslint-disable compat/compat */
 	#resizeObserver = new ResizeObserver(() => this.layout());
 
-	connectedCallback() {
+	override connectedCallback() {
 		super.connectedCallback();
 		this.#resizeObserver.observe(this);
 	}
 
-	disconnectedCallback() {
+	override disconnectedCallback() {
 		super.disconnectedCallback();
 		this.#resizeObserver.unobserve(this);
 	}
 
-	async firstUpdated(): Promise<void> {
+	override async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
 		this.pinMarkerText = this.value?.toLocaleString();
 		handleAutofocus(this);
 	}
 
-	focus(): void {
+	override focus(): void {
 		super.focus();
 		this.formElement.focus();
 	}
 
 	@debounced()
-	layout() {
+	override layout() {
 		super.layout();
 	}
 }

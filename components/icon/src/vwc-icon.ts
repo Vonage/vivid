@@ -1,16 +1,16 @@
-import { IconSize, Connotation } from '@vonage/vvd-foundation/constants';
 import '@vonage/vvd-core';
+import type { IconSize, Connotation } from '@vonage/vvd-foundation/constants';
 import {
 	LitElement,	html,	property,	customElement,	CSSResult,	TemplateResult,
 } from 'lit-element';
-import { ClassInfo, classMap } from 'lit-html/directives/class-map';
-
+import { classMap } from 'lit-html/directives/class-map';
+import type { ClassInfo } from 'lit-html/directives/class-map';
 import { unsafeSVG } from 'lit-html/directives/unsafe-svg';
 import { until } from 'lit-html/directives/until.js';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import { memoizeWith, identity, always } from 'ramda';
 import { ariaProperty } from '@material/mwc-base/aria-property';
-import { style } from './vwc-icon.css';
+import { style } from './vwc-icon.css.js';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -47,7 +47,7 @@ type IconConnotation = Extract<
 
 @customElement('vwc-icon')
 export class VWCIcon extends LitElement {
-	static get styles(): CSSResult {
+	static override get styles(): CSSResult {
 		return style;
 	}
 
@@ -80,7 +80,7 @@ export class VWCIcon extends LitElement {
 		attribute: 'aria-label',
 		type: String,
 	})
-	ariaLabel?:string;
+	override ariaLabel = '';
 
 	protected getRenderClasses(): ClassInfo {
 		return {
@@ -88,7 +88,7 @@ export class VWCIcon extends LitElement {
 		};
 	}
 
-	render(): TemplateResult {
+	override render(): TemplateResult {
 		return html`<figure class="icon ${classMap(this.getRenderClasses())}" aria-label="${ifDefined(this.ariaLabel)}">${until(
 			resolveIcon(this.type)
 				.then(setSvgAttribute('aria-hidden', 'true'))

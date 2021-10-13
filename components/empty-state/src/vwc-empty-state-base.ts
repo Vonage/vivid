@@ -26,7 +26,7 @@ export class VWCEmptyStateBase extends LitElement {
 		return html`<p class="body">${this.body}</p>`;
 	}
 
-	protected render(): TemplateResult {
+	protected override render(): TemplateResult {
 		return html`<section>
 			${this.icon ? this.renderIcon() : nothing}
 			${this.heading ? this.renderHeading() : nothing}

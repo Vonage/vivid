@@ -5,8 +5,8 @@ import {
 	customElement, html, property, TemplateResult
 } from 'lit-element';
 import { TextArea as MWCTextArea } from '@material/mwc-textarea';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
-import { style as vwcTextareaStyle } from './vwc-textarea.css';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
+import { style as vwcTextareaStyle } from './vwc-textarea.css.js';
 import { styles as mwcTextareaStyles } from '@material/mwc-textarea/mwc-textarea.css.js';
 import { styles as mwcTextfieldStyles } from '@material/mwc-textfield/mwc-textfield.css.js';
 import { associateWithForm } from '@vonage/vvd-foundation/form-association';
@@ -41,13 +41,13 @@ export class VWCTextArea extends MWCTextArea {
 	@property({ type: String, reflect: true })
 	form: string | undefined;
 
-	async firstUpdated(): Promise<void> {
+	override async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
 		associateWithForm(this, this.formElement);
 		handleAutofocus(this);
 	}
 
-	protected renderOutline(): TemplateResult | string {
+	protected override renderOutline(): TemplateResult | string {
 		return !this.outlined
 			? ''
 			: html`<vwc-notched-outline class="mdc-notched-outline vvd-notch">
@@ -55,7 +55,7 @@ export class VWCTextArea extends MWCTextArea {
 			  </vwc-notched-outline>`;
 	}
 
-	renderHelperText(shouldRenderHelperText: boolean): TemplateResult | string {
+	override renderHelperText(shouldRenderHelperText: boolean): TemplateResult | string {
 		if (!shouldRenderHelperText) {
 			return '';
 		}

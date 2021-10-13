@@ -1,11 +1,11 @@
-import '@vonage/vwc-inline';
+import '@vonage/vwc-layout';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Alpha/Components/Inline',
-	component: 'vwc-inline',
+	title: 'Components/Layout',
+	component: 'vwc-layout',
 	argTypes
 };
 
@@ -38,7 +38,7 @@ const Template = args => html`
 	}
 </style>
 
-<vwc-inline ...=${spread(args)}>
+<vwc-layout ...=${spread(args)}>
 	<section class="story">
 		<figure style="--bg: url(https://picsum.photos/351/200)"></figure>
 		<article class="story-content">
@@ -96,7 +96,11 @@ const Template = args => html`
 		</article>
 	</section>
 
-</vwc-inline>`;
+</vwc-layout>`;
 
 export const Basic = Template.bind({});
 Basic.args = {};
+
+export const Block = Template.bind({});
+Block.args = { 'column-basis': 'block' };
+

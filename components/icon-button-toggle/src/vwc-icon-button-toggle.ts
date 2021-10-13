@@ -1,16 +1,18 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
+import '@material/mwc-ripple';
 import {
 	html,	customElement, property, TemplateResult, CSSResult
 } from 'lit-element';
-import { ClassInfo, classMap } from 'lit-html/directives/class-map';
+import { classMap } from 'lit-html/directives/class-map';
+import type { ClassInfo } from 'lit-html/directives/class-map';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import { nothing } from 'lit-html';
 import { IconButtonToggleBase } from '@material/mwc-icon-button-toggle/mwc-icon-button-toggle-base.js';
 import { styles as MWCIconButtonStyles } from '@material/mwc-icon-button/mwc-icon-button.css.js';
 import { style as VWCIconButtonStyle } from '@vonage/vwc-icon-button/vwc-icon-button.css.js';
 import { handleMultipleDenseProps } from '@vonage/vvd-foundation/general-utils';
-import { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
+import type { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -57,10 +59,10 @@ export class VWCIconButtonToggle extends IconButtonToggleBase {
 	@property({ type: Boolean, reflect: true })
 	enlarged = false;
 
-	protected updated(changes: Map<string, boolean>): void {
+	protected override updated(changes: Map<string, boolean>): void {
 		handleMultipleDenseProps(this, changes);
 	}
-	protected renderRipple(): TemplateResult|string {
+	protected override renderRipple(): TemplateResult|string {
 		return this.shouldRenderRipple ? html`
             <mwc-ripple
                 .disabled="${this.disabled}">

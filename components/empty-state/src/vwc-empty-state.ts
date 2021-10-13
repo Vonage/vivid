@@ -15,5 +15,5 @@ export class VWCEmptyState extends VWCEmptyStateBase {
 	/**
 	 * @internal
 	 */
-	static styles = style;
+	static override styles = style;
 }

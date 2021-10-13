@@ -2,8 +2,8 @@ import { COMPONENT_NAME } from '@vonage/vwc-pagination';
 import {
 	waitNextTask,
 	textToDomToParent,
+	isolatedElementsCreation
 } from '../../../test/test-helpers.js';
-import { isolatedElementsCreation } from '../../../test/test-helpers';
 
 describe('pagination controls', () => {
 	let addElement = isolatedElementsCreation();

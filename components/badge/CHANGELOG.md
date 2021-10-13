@@ -1,3 +1,20 @@
+## [2.20.1](https://github.com/vonage/vivid/compare/v2.20.0...v2.20.1) (2021-10-07)
+
+
+
+# [2.20.0](https://github.com/vonage/vivid/compare/v2.19.0...v2.20.0) (2021-10-07)
+
+
+
+# [2.19.0](https://github.com/vonage/vivid/compare/v2.18.1...v2.19.0) (2021-10-04)
+
+
+### Bug Fixes
+
+* **vwc-badge:** icons weren't vertically aligned ([#1056](https://github.com/vonage/vivid/issues/1056)) ([3429711](https://github.com/vonage/vivid/commit/342971112be5ebaaa3b4a775d417e74cce734375))
+
+
+
 ## [2.18.1](https://github.com/vonage/vivid/compare/v2.18.0...v2.18.1) (2021-08-25)
 
 
@@ -212,7 +229,7 @@
 ### Features
 
 * **connotation:** adding support for warning connotation ([#488](https://github.com/vonage/vivid/issues/488)) ([245a9b9](https://github.com/vonage/vivid/commit/245a9b9c095b2af4f3d9a088d0c6219370199c2d))
-* **vwc-inline:** new component to handle inline layouts ([9b03d6b](https://github.com/vonage/vivid/commit/9b03d6b3171c891985a10c77edfc2f78b78be68d))
+* **vwc-layout:** new component to handle inline layouts ([9b03d6b](https://github.com/vonage/vivid/commit/9b03d6b3171c891985a10c77edfc2f78b78be68d))
 
 
 

@@ -1,11 +1,14 @@
-import { DataGridColumn } from './vwc-data-grid-column-api';
-import { RowDetailsRenderer } from './vwc-data-grid-renderer-api';
+import type { DataGridColumn } from './vwc-data-grid-column-api.js';
+import type { RowDetailsRenderer } from './vwc-data-grid-renderer-api.js';
 
 export {
 	GRID_COMPONENT,
 	GRID_HEADER_COMPONENT,
 	GRID_SELECT_HEADER_COMPONENT,
 	GRID_ENGINE_ROOT_CLASS,
+};
+
+export type {
 	DataGrid,
 	DataGridHeader,
 	EventContext,

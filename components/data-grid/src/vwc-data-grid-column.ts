@@ -2,9 +2,9 @@ import {
 	COLUMN_DEFINITION_COMPONENT,
 	COLUMN_DEFINITION_UPDATE_EVENT,
 	SELECTOR_SINGLE,
-	SELECTOR_MULTI,
-	DataGridColumn
-} from './vwc-data-grid-column-api';
+	SELECTOR_MULTI
+} from './vwc-data-grid-column-api.js';
+import type { DataGridColumn } from './vwc-data-grid-column-api.js';
 import {
 	customElement,
 	property,
@@ -31,7 +31,7 @@ export class VWCDataGridColumn extends LitElement implements DataGridColumn {
 	@property({ type: Boolean, reflect: true })
 	tree = false;
 	@property({ type: Boolean, reflect: true })
-	hidden = false;
+	override hidden = false;
 	@property({ type: Boolean, reflect: true })
 	frozen = false;
 	@property({ type: Boolean, reflect: true })
@@ -83,11 +83,11 @@ export class VWCDataGridColumn extends LitElement implements DataGridColumn {
 		};
 	}
 
-	protected createRenderRoot(): HTMLElement {
+	protected override createRenderRoot(): HTMLElement {
 		return this;
 	}
 
-	protected updated(): void {
+	protected override updated(): void {
 		//	TODO: after the limitations of co-existing definitions are clear - add more validations here
 		if (this.selector) {
 			this.verifySelectorViolations();

@@ -1,14 +1,15 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
-import { customElement, property } from 'lit-element';
+import {
+	customElement, property, html, TemplateResult
+} from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map';
 import { Button as MWCButton } from '@material/mwc-button';
-import { style as vwcButtonStyle } from './vwc-button.css';
+import { style as vwcButtonStyle } from './vwc-button.css.js';
 import { styles as mwcButtonStyles } from '@material/mwc-button/styles.css.js';
-import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css';
-import { Connotation, Layout, Shape } from '@vonage/vvd-foundation/constants';
-import { html, TemplateResult } from 'lit-element';
-import { requestSubmit } from '@vonage/vvd-foundation/form-association';
+import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
+import type { Connotation, Layout, Shape } from '@vonage/vvd-foundation/constants';
+import type { PropertyValues } from 'lit-element';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -36,7 +37,7 @@ type ButtonConnotation = Extract<
 	| Connotation.Alert
 	| Connotation.Info
 	| Connotation.Announcement
->;
+	>;
 
 type ButtonShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
 
@@ -46,8 +47,14 @@ type ButtonShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
  */
 @customElement('vwc-button')
 export class VWCButton extends MWCButton {
+	@property({ type: String, reflect: true })
+	name?:string
+
+	@property({ type: String, reflect: true })
+	value?:string
+
 	@property({ type: Boolean, reflect: true })
-	dense = false;
+	override dense = false;
 
 	@property({ type: Boolean, reflect: true })
 	enlarged = false;
@@ -76,7 +83,7 @@ export class VWCButton extends MWCButton {
 		}
 	}
 
-	attributeChangedCallback(
+	override attributeChangedCallback(
 		name: string,
 		oldval: string | null,
 		newval: string | null
@@ -88,7 +95,16 @@ export class VWCButton extends MWCButton {
 		}
 	}
 
-	protected updated(changes: Map<string, boolean>): void {
+	protected override update(changes:PropertyValues):void {
+		super.update(changes);
+		[...changes.keys()]
+			.filter(attributeName => ['name', 'value'].includes(attributeName as string))
+			.forEach((attributeName) => {
+				this.#_hiddenButton.setAttribute(attributeName as string, (this as any)[attributeName as string]);
+			});
+	}
+
+	protected override updated(changes: Map<string, boolean>): void {
 		if (changes.has('type')) {
 			this.#_hiddenButton?.setAttribute('type', this.getAttribute('type') ?? '');
 		}
@@ -127,17 +143,17 @@ export class VWCButton extends MWCButton {
 			case 'button':
 				break;
 			default:
-				requestSubmit(this.form);
+				this.#_hiddenButton.click();
 				break;
 			}
 		}
 	}
 
-	protected renderIcon(): TemplateResult {
+	protected override renderIcon(): TemplateResult {
 		return html`<vwc-icon	type="${this.icon}"></vwc-icon>`;
 	}
 
-	protected getRenderClasses() {
+	protected override getRenderClasses() {
 		return classMap({
 			'mdc-button--raised': this.raised,
 			'mdc-button--unelevated': this.unelevated,
@@ -154,9 +170,15 @@ export class VWCButton extends MWCButton {
 		return button;
 	}
 
-	connectedCallback(): void {
+	override connectedCallback(): void {
 		super.connectedCallback();
 		this.addEventListener('click', this._handleClick);
 		this.appendChild(this.#_hiddenButton);
 	}
+
+	override disconnectedCallback(): void {
+		super.disconnectedCallback();
+		this.removeEventListener('click', this._handleClick);
+	}
 }
+

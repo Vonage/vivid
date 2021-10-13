@@ -8,10 +8,11 @@ import {
 	CSSResult,
 	TemplateResult,
 } from 'lit-element';
-import { style } from './vwc-carousel.css';
+import { style } from './vwc-carousel.css.js';
 import SwiperCore, {
-	Swiper, SwiperOptions, Autoplay, Keyboard, Mousewheel, Navigation
+	Swiper, Autoplay, Keyboard, Mousewheel, Navigation
 } from 'swiper/core';
+import type { SwiperOptions } from 'swiper/core';
 import '@vonage/vwc-icon';
 import './vwc-carousel-item.js';
 
@@ -45,7 +46,7 @@ export class VWCCarousel extends LitElement {
 	private swiper?: Swiper;
 	private slideRefs: Element[] = [];
 
-	static get styles(): CSSResult[] {
+	static override get styles(): CSSResult[] {
 		return [style];
 	}
 
@@ -73,13 +74,13 @@ export class VWCCarousel extends LitElement {
 		};
 	}
 
-	connectedCallback(): void {
+	override connectedCallback(): void {
 		super.connectedCallback();
 		this.ensureStyleApplied();
 		this.tabIndex = 0;
 	}
 
-	render(): TemplateResult {
+	override render(): TemplateResult {
 		const slides = Array.from(this.children);
 		slides.forEach((s) => {
 			if (s.nodeName.toLowerCase() === 'vwc-carousel-item') {
@@ -103,7 +104,7 @@ export class VWCCarousel extends LitElement {
 		`;
 	}
 
-	protected firstUpdated(): void {
+	protected override firstUpdated(): void {
 		this.swiper = new Swiper(
 			this.swiperContainer as HTMLElement,
 			this.swiperOptions
@@ -128,7 +129,7 @@ export class VWCCarousel extends LitElement {
 		}
 	}
 
-	protected createRenderRoot(): HTMLElement {
+	protected override createRenderRoot(): HTMLElement {
 		return this;
 	}
 
