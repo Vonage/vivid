@@ -31,11 +31,7 @@ function getStyleDictionaryConfig() {
 					{
 						destination: 'build/scss/semantic-variables/_scheme-variables.scss',
 						format: 'custom/format/css-to-scss',
-						filter: {
-							attributes: {
-								category: 'color'
-							}
-						}
+						filter: token => token.attributes.category !== 'alias'
 					}
 				]
 			}
