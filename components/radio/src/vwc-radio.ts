@@ -21,12 +21,12 @@ MWCRadio.styles = [styleCoupling, mwcRadioStyles, vwcRadioStyle];
  */
 @customElement('vwc-radio')
 export class VWCRadio extends MWCRadio {
-	async firstUpdated(): Promise<void> {
+	override async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
 		handleAutofocus(this);
 	}
 
-	protected renderRipple(): TemplateResult {
+	protected override renderRipple(): TemplateResult {
 		return html``;
 	}
 }

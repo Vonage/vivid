@@ -15,9 +15,9 @@ declare global {
 
 @customElement('vwc-accordion')
 export class VWCAccordion extends VWCAccordionBase {
-	static styles = style;
+	static override styles = style;
 
-	protected render(): TemplateResult {
+	protected override render(): TemplateResult {
 		return html`
 			<div class="accordion">
 				<slot></slot>

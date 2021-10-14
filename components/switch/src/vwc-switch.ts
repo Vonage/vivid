@@ -2,7 +2,8 @@ import '@vonage/vvd-core';
 import {
 	customElement, property, html, TemplateResult
 } from 'lit-element';
-import { ClassInfo, classMap } from 'lit-html/directives/class-map';
+import { classMap } from 'lit-html/directives/class-map';
+import type { ClassInfo } from 'lit-html/directives/class-map';
 import { ifDefined } from 'lit-html/directives/if-defined';
 import { Switch as MWCSwitch } from '@material/mwc-switch';
 import { style as vwcSwitchStyle } from './vwc-switch.css.js';
@@ -43,7 +44,7 @@ export class VWCSwitch extends MWCSwitch {
 		};
 	}
 
-	protected override render() {
+	protected override render(): TemplateResult {
 		return html`
       <div class="mdc-switch ${classMap(this.getRenderClasses())}">
         <div class="mdc-switch__track"></div>
@@ -72,12 +73,12 @@ export class VWCSwitch extends MWCSwitch {
       </div>`;
 	}
 
-	async firstUpdated(): Promise<void> {
+	override async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
 		handleAutofocus(this);
 	}
 
-	protected renderRipple(): TemplateResult {
+	protected override renderRipple(): TemplateResult {
 		return html``;
 	}
 }

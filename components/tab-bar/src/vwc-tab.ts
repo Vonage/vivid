@@ -36,7 +36,7 @@ export class VWCTab extends MWCTab {
 
 	// ! copy & paste code from original mwc tab
 	// ! to replace icon handling
-	render(): TemplateResult {
+	override render(): TemplateResult {
 		const classes = {
 			'mdc-tab--min-width': this.minWidth,
 			'mdc-tab--stacked': this.stacked,

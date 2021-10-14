@@ -6,6 +6,9 @@ export {
 	GRID_HEADER_COMPONENT,
 	GRID_SELECT_HEADER_COMPONENT,
 	GRID_ENGINE_ROOT_CLASS,
+};
+
+export type {
 	DataGrid,
 	DataGridHeader,
 	EventContext,

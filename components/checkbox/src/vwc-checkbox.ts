@@ -23,17 +23,17 @@ MWCCheckbox.styles = [styleCoupling, mwcCheckboxStyles, vwcCheckboxStyle];
  */
 @customElement('vwc-checkbox')
 export class VWCCheckbox extends MWCCheckbox {
-	async firstUpdated(): Promise<void> {
+	override async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
 		handleAutofocus(this);
 	}
 
-	focus(): void {
+	override focus(): void {
 		super.focus();
 		this.formElement.focus();
 	}
 
-	protected renderRipple(): TemplateResult {
+	protected override renderRipple(): TemplateResult {
 		return html``;
 	}
 }

@@ -19,9 +19,9 @@ declare global {
  */
 @customElement('vwc-menu')
 export class VWCMenu extends MWCMenuBase {
-	static styles = [mwcMenuStyles, vwcMenuStyle];
+	static override styles = [mwcMenuStyles, vwcMenuStyle];
 
-	get listElement(): VWCList | null {
+	override get listElement(): VWCList | null {
 		if (!this.listElement_) {
 			this.listElement_ = this.renderRoot.querySelector('.vwc-menu-list');
 			return this.listElement_;
@@ -29,7 +29,7 @@ export class VWCMenu extends MWCMenuBase {
 		return this.listElement_;
 	}
 
-	createAdapter(): MDCMenuAdapter {
+	override createAdapter(): MDCMenuAdapter {
 		const baseAdapter = super.createAdapter();
 		const baseCloseSurface = baseAdapter.closeSurface;
 		baseAdapter.closeSurface = () => {
@@ -40,7 +40,7 @@ export class VWCMenu extends MWCMenuBase {
 		return baseAdapter;
 	}
 
-	render() {
+	override render() {
 		const itemRoles = this.innerRole === 'menu' ? 'menuitem' : 'option';
 		return html`
 			<vwc-surface
