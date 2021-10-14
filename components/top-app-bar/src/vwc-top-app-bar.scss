@@ -10,5 +10,5 @@
 .mdc-top-app-bar--fixed {
 	// TODO when ready - @include from mixin or avoid magic string and refer to sass variable
 	--mdc-top-app-bar-fixed-box-shadow: 0;
-	filter: var(--vvd-elevation-shadow-dp-4-filter);
+	filter: var(----vvd-shadow-surface-4dp);
 }

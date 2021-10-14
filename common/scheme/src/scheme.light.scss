@@ -1,19 +1,15 @@
 @use '@vonage/vvd-design-tokens/build/scss/schemes/light/main.scss' as main;
 @use '@vonage/vvd-design-tokens/build/scss/schemes/light/alternate.scss' as alternate;
-@use '@vonage/vvd-design-tokens/build/scss/elevation/light/main.scss' as elevation-main;
-@use '@vonage/vvd-design-tokens/build/scss/elevation/light/alternate.scss' as elevation-alternate;
 @use 'partials/scheme-mixins' as mixins;
 @use 'partials/scheme-variables' as variables;
 
 
 #{variables.$scheme-main-selector} {
-	@include elevation-main.variables;
 	@include main.variables;
 	@include mixins.color-scheme(light);
 }
 
 #{variables.$scheme-alternate-selector} {
-	@include elevation-alternate.variables;
 	@include alternate.variables;
 	@include mixins.color-scheme(dark);
 }
