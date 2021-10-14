@@ -47,7 +47,7 @@ export class VWCChip extends MWCChip {
 	// 	/* eslint-disable wc/no-self-class */
 	// 	this.classList.add(...customClasses, ...filteredClasses);
 	// }
-	renderThumbnail(): TemplateResult {
+	override renderThumbnail(): TemplateResult {
 		if (this.icon) {
 			return html`<vwc-icon
 				size="small"
@@ -63,7 +63,7 @@ export class VWCChip extends MWCChip {
 		}
 	}
 
-	renderRemoveIcon(): TemplateResult {
+	override renderRemoveIcon(): TemplateResult {
 		const classes = {
 			'mdc-chip__trailing-action': this.removeIconFocusable,
 			[this.removeIconClass]: true,

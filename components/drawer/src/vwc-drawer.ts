@@ -26,7 +26,7 @@ export class VWCDrawer extends MWCDrawer {
 	@property({ type: Boolean, reflect: true, attribute: DRAWER_ALTERNATE })
 	drawerAlternate = false;
 
-	protected updated(changes: Map<string, boolean>): void {
+	protected override updated(changes: Map<string, boolean>): void {
 		super.updated(changes);
 		if (changes.has('drawerAlternate')) {
 			this.togglePart(this.drawerAlternate);

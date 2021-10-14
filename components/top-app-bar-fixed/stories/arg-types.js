@@ -1,21 +1,20 @@
+const control = {
+	type: 'inline-radio',
+	options: { true: '', false: undefined },
+};
+
 export const argTypes = {
-  centerTitle: {
-    control: {
-      type: 'inline-radio',
-      options: { true: '', false: undefined },
-    },
-  },
-  dense: {
-    control: {
-      type: 'inline-radio',
-      options: { true: '', false: undefined },
-    },
-  },
-  prominent: {
-    control: {
-      type: 'inline-radio',
-      options: { true: '', false: undefined },
-    },
-  },
-  styles: { table: { disable: true } },
+	centerTitle: {
+		control
+	},
+	dense: {
+		control
+	},
+	alternate: {
+		control
+	},
+	prominent: {
+		control
+	},
+	styles: { table: { disable: true } },
 };

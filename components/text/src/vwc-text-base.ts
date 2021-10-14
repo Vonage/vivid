@@ -3,7 +3,8 @@ import type { VVDFontFace } from '@vonage/vvd-design-tokens/build/types/font-fac
 import {
 	html, LitElement, property, TemplateResult
 } from 'lit-element';
-import { ClassInfo, classMap } from 'lit-html/directives/class-map';
+import { classMap } from 'lit-html/directives/class-map';
+import type { ClassInfo } from 'lit-html/directives/class-map';
 import type { Connotation } from '@vonage/vvd-foundation/constants';
 
 type TextConnotation = Extract<
@@ -30,7 +31,7 @@ export class VWCTextBase extends LitElement {
 		};
 	}
 
-	protected render(): TemplateResult {
+	protected override render(): TemplateResult {
 		return html`<slot class="vwc-text ${classMap(this.getRenderClasses())}"></slot>`;
 	}
 }

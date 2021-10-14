@@ -48,9 +48,7 @@
 }
 
 .mdc-dialog .mdc-dialog__scrim {
-	--mdc-dialog-scrim-color: var(#{scrim-mixins.$vvd-scrim--background-color});
 	@include scrim-mixins.scrim-variables;
-	opacity: var(#{scrim-mixins.$vvd-scrim--opacity});
 }
 
 .dismiss-button {

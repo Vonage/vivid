@@ -12,5 +12,5 @@ declare global {
 
 @customElement('vwc-tag')
 export class VWCTag extends VWCTagBase {
-	static styles = style;
+	static override styles = style;
 }

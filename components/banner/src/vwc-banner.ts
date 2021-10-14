@@ -48,7 +48,7 @@ const createCustomEvent = function (eventName:string, props = {}):CustomEvent {
 
 @customElement('vwc-banner')
 export class VWCBanner extends LitElement {
-	static styles = [BannerStyle];
+	static override styles = [BannerStyle];
 
 	@property({ type: String, reflect: true })
 	message = '';
@@ -71,12 +71,12 @@ export class VWCBanner extends LitElement {
 
 	#transitionTimer?:number;
 
-	protected firstUpdated() {
+	protected override firstUpdated() {
 		// refactor to query decorator
 		(this.shadowRoot?.querySelector('.banner') as HTMLElement).style.setProperty('--transition-delay', `${ANIMATION_DURATION}ms`);
 	}
 
-	updated(changedProperties:PropertyValues) {
+	override updated(changedProperties:PropertyValues) {
 		if (changedProperties.has('open')) {
 			clearTimeout(this.#transitionTimer);
 			this.dispatchEvent(createCustomEvent(!this.open ? 'closing' : 'opening'));
@@ -114,7 +114,7 @@ export class VWCBanner extends LitElement {
 		this.open = !(e.key === KEY_ESCAPE && this.dismissible);
 	}
 
-	protected render(): TemplateResult {
+	protected override render(): TemplateResult {
 		return html`
       <div class="banner ${classMap(this.getRenderClasses())}" tabindex="0" @keydown=${this.handleKeyDown}>
 				<header class="header">
