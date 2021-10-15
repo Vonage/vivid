@@ -6,7 +6,7 @@ import '@vonage/vwc-button';
 import '@vonage/vwc-textfield';
 import '@vonage/vwc-checkbox';
 
-import { html } from 'lit-element';
+import { html } from 'lit';
 
 export default {
 	title: 'Getting Started/Usage Examples/Side Drawer',
