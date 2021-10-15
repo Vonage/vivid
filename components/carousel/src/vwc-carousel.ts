@@ -5,8 +5,9 @@ import {
 import { customElement,	property, query } from 'lit/decorators';
 import { style } from './vwc-carousel.css.js';
 import SwiperCore, {
-	Swiper, SwiperOptions, Autoplay, Keyboard, Mousewheel, Navigation
+	Swiper, Autoplay, Keyboard, Mousewheel, Navigation
 } from 'swiper/core';
+import type { SwiperOptions } from 'swiper/core';
 import '@vonage/vwc-icon';
 import './vwc-carousel-item.js';
 

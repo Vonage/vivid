@@ -3,11 +3,12 @@ import '@vaadin/vaadin-grid/src/vaadin-grid-column.js';
 import '@vaadin/vaadin-grid/src/vaadin-grid-tree-column.js';
 import '../../headers/vwc-data-grid-header.js';
 import {
-	DataGrid, EventContext, GRID_COMPONENT, GRID_ENGINE_ROOT_CLASS
+	GRID_COMPONENT, GRID_ENGINE_ROOT_CLASS
 } from '../../vwc-data-grid-api.js';
 import type { GridElement } from '@vaadin/vaadin-grid/src/vaadin-grid.js';
 import type { GridColumnElement } from '@vaadin/vaadin-grid/src/vaadin-grid-column.js';
 import type { GridEventContext } from '@vaadin/vaadin-grid/src/interfaces.js';
+import type { EventContext, DataGrid } from '../../vwc-data-grid-api.js';
 import type { DataGridColumn } from '../../vwc-data-grid-column-api.js';
 import type { DataGridAdapter } from '../vwc-data-grid-adapter-api.js';
 import type { MetaRendererProvider, DataRendererProvider, RowDetailsRendererProvider } from '../vwc-data-grid-render-provider-api.js';

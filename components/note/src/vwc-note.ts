@@ -7,7 +7,7 @@ import { property, customElement } from 'lit/decorators';
 import type { ClassInfo } from 'lit/directives/class-map.js';
 import { classMap } from 'lit/directives/class-map.js';
 import { style as vwcNoteStyle } from './vwc-note.css.js';
-import type { Connotation } from '@vonage/vvd-foundation/constants';
+import type { Connotation } from '@vonage/vvd-foundation/constants.js';
 
 declare global {
 	interface HTMLElementTagNameMap {

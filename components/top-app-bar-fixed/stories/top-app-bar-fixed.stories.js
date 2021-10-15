@@ -13,12 +13,12 @@ export default {
 
 const Template = args => html`
 	<vwc-top-app-bar-fixed ...=${spread(args)}>
-		<vwc-icon-button slot="navigationIcon" icon="menu-line" layout="filled"></vwc-icon-button>
+		<vwc-icon-button slot="navigationIcon" icon="menu-line"></vwc-icon-button>
 		<span slot="title">Top App Bar</span>
 
-		<vwc-icon-button slot="actionItems" icon="twitter-mono" layout="filled"></vwc-icon-button>
-		<vwc-icon-button slot="actionItems" icon="facebook-mono" layout="filled"></vwc-icon-button>
-		<vwc-icon-button slot="actionItems" icon="heart-solid" layout="filled"></vwc-icon-button>
+		<vwc-icon-button slot="actionItems" icon="twitter-mono"></vwc-icon-button>
+		<vwc-icon-button slot="actionItems" icon="facebook-mono"></vwc-icon-button>
+		<vwc-icon-button slot="actionItems" icon="heart-solid"></vwc-icon-button>
 		<span slot="actionItems">Toggle theme:</span>
 		<vwc-theme-switch slot="actionItems"></vwc-theme-switch>
 
@@ -37,3 +37,6 @@ export const Default = Template.bind({});
 
 export const Dense = Template.bind({});
 Dense.args = { dense: '' };
+
+export const Alternate = Template.bind({});
+Alternate.args = { alternate: true };

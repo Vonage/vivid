@@ -16,7 +16,7 @@ import { styles as mwcTextFieldStyles } from '@material/mwc-textfield/mwc-textfi
 import type { Shape } from '@vonage/vvd-foundation/constants';
 import { debounced, handleAutofocus } from '@vonage/vvd-foundation/general-utils';
 
-export { TextFieldType } from '@material/mwc-textfield';
+export type { TextFieldType } from '@material/mwc-textfield';
 
 export const COMPONENT_NAME = 'vwc-textfield';
 export const VALID_BUTTON_ELEMENTS = ['vwc-icon-button'];
