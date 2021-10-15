@@ -2,8 +2,9 @@ import {
 	COLUMN_DEFINITION_COMPONENT,
 	COLUMN_DEFINITION_UPDATE_EVENT,
 	SELECTOR_SINGLE,
-	SELECTOR_MULTI
+	SELECTOR_MULTI,
 } from './vwc-data-grid-column-api.js';
+import type {	DataGridColumn } from './vwc-data-grid-column-api.js';
 import { LitElement } from 'lit';
 import { customElement,	property } from 'lit/decorators';
 
