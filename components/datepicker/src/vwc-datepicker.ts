@@ -1,16 +1,12 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-menu';
 import '@vonage/vwc-textfield';
-// component not yet migrated to lit 2
-// import { html, CSSResult } from 'lit';
-// import { customElement,	property, query } from 'lit/decorators';
-import {
-	customElement, property, html, CSSResult, query
-} from 'lit-element';
+import { html, CSSResult } from 'lit';
+import { customElement,	property, query } from 'lit/decorators';
 import { LitFlatpickr } from 'lit-flatpickr';
 import * as weekSelectPlugin from 'flatpickr/dist/plugins/weekSelect/weekSelect';
 import type { Options } from 'flatpickr/dist/types/options';
-import { style as vwcDatepickerStyles } from './vwc-datepicker.css.temp.js';
+import { style as vwcDatepickerStyles } from './vwc-datepicker.css.js';
 import type { VWCButton, ButtonLayout } from '@vonage/vwc-button';
 import type { VWCIconButton } from '@vonage/vwc-icon-button';
 import { Shape } from '@vonage/vvd-foundation/constants';
