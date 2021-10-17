@@ -40,7 +40,9 @@ const config = {
 		{
 			apply: async (compiler) => {
 				compiler.hooks.beforeRun.tapPromise('MyPlugin_compile', async () => {
-					await buildMainPage();
+					if (process.argv.includes('-s')) {
+						await buildMainPage();
+					}
 					return buildTests();
 				});
 			},
