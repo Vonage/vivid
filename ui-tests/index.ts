@@ -117,8 +117,8 @@ async function doTest(page) {
 			console.log('Visual Diff Passed!');
 			console.log(resultsMessage(diff));
 		} else {
-			console.debug(resultsMessage(diff, 10));
-			console.error(resultsMessage(diff));
+			console.error('Visual Diff Failed!');
+			console.error(resultsMessage(diff, 10));
 			process.exitCode = 1;
 		}
 	}
