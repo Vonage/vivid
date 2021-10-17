@@ -12,6 +12,6 @@
 }
 
 .mdc-top-app-bar--fixed-scrolled {
-	transition: filter 200ms linear 0s;
 	filter: var(--vvd-shadow-surface-4dp);
+	transition: filter 200ms linear 0s;
 }
