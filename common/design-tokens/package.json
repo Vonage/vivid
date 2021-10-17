@@ -18,6 +18,7 @@
 	},
 	"scripts": {
 		"build": "node src/index.js",
+		"build:ci": "yarn build",
 		"test": "echo \"Error: run tests from root\" && exit 1"
 	},
 	"bugs": {
