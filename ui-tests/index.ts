@@ -114,7 +114,6 @@ async function doTest(page) {
 			console.log('Visual Diff Passed!');
 			console.log(resultsMessage(diff));
 		} else {
-			console.log('Visual Diff Failed!');
 			console.error(resultsMessage(diff));
 			process.exitCode = 1;
 		}
@@ -156,8 +155,7 @@ function runTests(port = PORT) {
 			try {
 				await runImageComparison();
 			} catch (e) {
-				console.log('Failed for some reason: ', e);
-				console.error('Failed for some reason: ', e);
+				console.error(e);
 				process.exitCode = 1;
 				server.close();
 			}
