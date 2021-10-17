@@ -1,0 +1,253 @@
+{
+  "version": 2,
+  "projects": {
+    "@vonage/vvd-context": {
+      "root": "common/context",
+      "type": "library"
+    },
+    "@vonage/vvd-core": {
+      "root": "common/core",
+      "type": "library"
+    },
+    "@vonage/vvd-design-tokens": {
+      "root": "common/design-tokens",
+      "type": "library"
+    },
+    "@vonage/vvd-fonts": {
+      "root": "common/fonts",
+      "type": "library"
+    },
+    "@vonage/vvd-foundation": {
+      "root": "common/foundation",
+      "type": "library"
+    },
+    "@vonage/vvd-scheme": {
+      "root": "common/scheme",
+      "type": "library"
+    },
+    "@vonage/vvd-style-coupling": {
+      "root": "common/style-coupling",
+      "type": "library"
+    },
+    "@vonage/vvd-typography": {
+      "root": "common/typography",
+      "type": "library"
+    },
+    "@vonage/vvd-umbrella": {
+      "root": "common/umbrella",
+      "type": "library"
+    },
+    "@vonage/vwc-accordion": {
+      "root": "components/accordion",
+      "type": "library"
+    },
+    "@vonage/vwc-audio": {
+      "root": "components/audio",
+      "type": "library"
+    },
+    "@vonage/vwc-badge": {
+      "root": "components/badge",
+      "type": "library"
+    },
+    "@vonage/vwc-banner": {
+      "root": "components/banner",
+      "type": "library"
+    },
+    "@vonage/vwc-button": {
+      "root": "components/button",
+      "type": "library"
+    },
+    "@vonage/vwc-button-toggle-group": {
+      "root": "components/button-toggle-group",
+      "type": "library"
+    },
+    "@vonage/vwc-calendar": {
+      "root": "components/calendar",
+      "type": "library"
+    },
+    "@vonage/vwc-card": {
+      "root": "components/card",
+      "type": "library"
+    },
+    "@vonage/vwc-carousel": {
+      "root": "components/carousel",
+      "type": "library"
+    },
+    "@vonage/vwc-checkbox": {
+      "root": "components/checkbox",
+      "type": "library"
+    },
+    "@vonage/vwc-chips": {
+      "root": "components/chips",
+      "type": "library"
+    },
+    "@vonage/vwc-circular-progress": {
+      "root": "components/circular-progress",
+      "type": "library"
+    },
+    "@vonage/vwc-data-grid": {
+      "root": "components/data-grid",
+      "type": "library"
+    },
+    "@vonage/vwc-datepicker": {
+      "root": "components/datepicker",
+      "type": "library"
+    },
+    "@vonage/vwc-dialog": {
+      "root": "components/dialog",
+      "type": "library"
+    },
+    "@vonage/vwc-drawer": {
+      "root": "components/drawer",
+      "type": "library"
+    },
+    "@vonage/vwc-dropdown": {
+      "root": "components/dropdown",
+      "type": "library"
+    },
+    "@vonage/vwc-elevation": {
+      "root": "components/elevation",
+      "type": "library"
+    },
+    "@vonage/vwc-empty-state": {
+      "root": "components/empty-state",
+      "type": "library"
+    },
+    "@vonage/vwc-expansion-panel": {
+      "root": "components/expansion-panel",
+      "type": "library"
+    },
+    "@vonage/vwc-fab": {
+      "root": "components/fab",
+      "type": "library"
+    },
+    "@vonage/vwc-file-picker": {
+      "root": "components/file-picker",
+      "type": "library"
+    },
+    "@vonage/vwc-formfield": {
+      "root": "components/formfield",
+      "type": "library"
+    },
+    "@vonage/vwc-helper-message": {
+      "root": "components/helper-message",
+      "type": "library"
+    },
+    "@vonage/vwc-icon": {
+      "root": "components/icon",
+      "type": "library"
+    },
+    "@vonage/vwc-icon-button": {
+      "root": "components/icon-button",
+      "type": "library"
+    },
+    "@vonage/vwc-icon-button-toggle": {
+      "root": "components/icon-button-toggle",
+      "type": "library"
+    },
+    "@vonage/vwc-keypad": {
+      "root": "components/keypad",
+      "type": "library"
+    },
+    "@vonage/vwc-layout": {
+      "root": "components/layout",
+      "type": "library"
+    },
+    "@vonage/vwc-linear-progress": {
+      "root": "components/linear-progress",
+      "type": "library"
+    },
+    "@vonage/vwc-list": {
+      "root": "components/list",
+      "type": "library"
+    },
+    "@vonage/vwc-media-controller": {
+      "root": "components/media-controller",
+      "type": "library"
+    },
+    "@vonage/vwc-menu": {
+      "root": "components/menu",
+      "type": "library"
+    },
+    "@vonage/vwc-notched-outline": {
+      "root": "components/notched-outline",
+      "type": "library"
+    },
+    "@vonage/vwc-note": {
+      "root": "components/note",
+      "type": "library"
+    },
+    "@vonage/vwc-pagination": {
+      "root": "components/pagination",
+      "type": "library"
+    },
+    "@vonage/vwc-radio": {
+      "root": "components/radio",
+      "type": "library"
+    },
+    "@vonage/vwc-relative-time": {
+      "root": "components/relative-time",
+      "type": "library"
+    },
+    "@vonage/vwc-scheme-select": {
+      "root": "components/scheme-select",
+      "type": "library"
+    },
+    "@vonage/vwc-select": {
+      "root": "components/select",
+      "type": "library"
+    },
+    "@vonage/vwc-side-drawer": {
+      "root": "components/side-drawer",
+      "type": "library"
+    },
+    "@vonage/vwc-slider": {
+      "root": "components/slider",
+      "type": "library"
+    },
+    "@vonage/vwc-snackbar": {
+      "root": "components/snackbar",
+      "type": "library"
+    },
+    "@vonage/vwc-surface": {
+      "root": "components/surface",
+      "type": "library"
+    },
+    "@vonage/vwc-switch": {
+      "root": "components/switch",
+      "type": "library"
+    },
+    "@vonage/vwc-tab-bar": {
+      "root": "components/tab-bar",
+      "type": "library"
+    },
+    "@vonage/vwc-tags": {
+      "root": "components/tags",
+      "type": "library"
+    },
+    "@vonage/vwc-text": {
+      "root": "components/text",
+      "type": "library"
+    },
+    "@vonage/vwc-textarea": {
+      "root": "components/textarea",
+      "type": "library"
+    },
+    "@vonage/vwc-textfield": {
+      "root": "components/textfield",
+      "type": "library"
+    },
+    "@vonage/vwc-theme-switch": {
+      "root": "components/theme-switch",
+      "type": "library"
+    },
+    "@vonage/vwc-top-app-bar": {
+      "root": "components/top-app-bar",
+      "type": "library"
+    },
+    "@vonage/vwc-top-app-bar-fixed": {
+      "root": "components/top-app-bar-fixed",
+      "type": "library"
+    }
+  }
+}

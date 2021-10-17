@@ -1,0 +1,221 @@
+{
+  "npmScope": "vivid",
+  "implicitDependencies": {
+    "workspace.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "nx.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/nx-cloud",
+      "options": {
+        "cacheableOperations": [
+          "build",
+          "test",
+          "lint",
+          "package",
+          "prepare"
+        ],
+        "strictlyOrderedTargets": [
+          "build",
+          "package",
+          "prepare"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "@vonage/vvd-context": {
+      "implicitDependencies": []
+    },
+    "@vonage/vvd-core": {
+      "implicitDependencies": []
+    },
+    "@vonage/vvd-design-tokens": {
+      "implicitDependencies": []
+    },
+    "@vonage/vvd-fonts": {
+      "implicitDependencies": []
+    },
+    "@vonage/vvd-foundation": {
+      "implicitDependencies": []
+    },
+    "@vonage/vvd-scheme": {
+      "implicitDependencies": []
+    },
+    "@vonage/vvd-style-coupling": {
+      "implicitDependencies": []
+    },
+    "@vonage/vvd-typography": {
+      "implicitDependencies": []
+    },
+    "@vonage/vvd-umbrella": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-accordion": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-audio": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-badge": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-banner": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-button": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-button-toggle-group": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-calendar": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-card": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-carousel": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-checkbox": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-chips": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-circular-progress": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-data-grid": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-datepicker": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-dialog": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-drawer": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-dropdown": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-elevation": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-empty-state": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-expansion-panel": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-fab": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-file-picker": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-formfield": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-helper-message": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-icon": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-icon-button": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-icon-button-toggle": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-keypad": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-layout": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-linear-progress": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-list": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-media-controller": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-menu": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-notched-outline": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-note": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-pagination": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-radio": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-relative-time": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-scheme-select": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-select": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-side-drawer": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-slider": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-snackbar": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-surface": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-switch": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-tab-bar": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-tags": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-text": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-textarea": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-textfield": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-theme-switch": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-top-app-bar": {
+      "implicitDependencies": []
+    },
+    "@vonage/vwc-top-app-bar-fixed": {
+      "implicitDependencies": []
+    }
+  },
+  "affected": {
+    "defaultBase": "master"
+  }
+}
