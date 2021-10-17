@@ -7,8 +7,8 @@
 	--mdc-theme-on-primary: var(#{scheme-variables.$vvd-color-on-canvas});
 	@include typography.typography-mdc-coupling('headline6', 'subtitle-2');
 }
-.mdc-top-app-bar--fixed {
-	// TODO when ready - @include from mixin or avoid magic string and refer to sass variable
-	--mdc-top-app-bar-fixed-box-shadow: 0;
-	filter: var(--vvd-shadow-surface-4dp);
+
+.mdc-top-app-bar--fixed-scrolled {
+	box-shadow: unset;
+	filter: var(#{scheme-variables.$vvd-shadow-surface-4dp});
 }
