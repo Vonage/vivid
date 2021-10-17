@@ -22,12 +22,6 @@ const htmlGenerators = listOfComponents.reduce((entries, componentName) => {
 	return entries;
 }, []);
 
-htmlGenerators.push(new HtmlWebpackPlugin({
-	inject: false,
-	chunks: ['mainPage'],
-	filename: 'index.html',
-	template: path.join(__dirname, 'tmp/index.html.tmpl')
-}));
 const config = {
 	entry,
 	output: {
@@ -40,9 +34,6 @@ const config = {
 		{
 			apply: async (compiler) => {
 				compiler.hooks.beforeRun.tapPromise('MyPlugin_compile', async () => {
-					if (process.argv.includes('-s')) {
-						await buildMainPage();
-					}
 					return buildTests();
 				});
 			},

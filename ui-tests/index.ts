@@ -8,10 +8,13 @@ import * as fs from 'fs';
 import * as jimp from 'jimp';
 import { getFilteredTestFolders } from './utils/files-utils';
 import { pascalCase } from 'pascal-case';
-
 import Webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import webpackConfig from './webpack.config';
+import * as path from "path";
+
+const { buildMainPage } = require('./utils/preBundle');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 interface ComparisonResult {
 	image: any;
@@ -125,7 +128,15 @@ function finalizeTest(testsServer) {
 	testsServer.close();
 }
 
-function setDevServer() {
+async function setDevServer() {
+	await buildMainPage();
+	webpackConfig.plugins.push(new HtmlWebpackPlugin({
+		inject: false,
+		chunks: ['mainPage'],
+		filename: 'index.html',
+		template: path.join(__dirname, 'tmp/index.html.tmpl')
+	}));
+
 	const compiler = Webpack({
 		...webpackConfig,
 		mode: 'development'
@@ -165,11 +176,15 @@ function runTests(port = PORT) {
 	});
 }
 
-if (!process.argv.includes('-s')) {
-	runTests()
-		.then(finalizeTest);
-} else {
-	setDevServer();
+async function main() {
+	if (!process.argv.includes('-s')) {
+		runTests()
+			.then(finalizeTest);
+	} else {
+		await setDevServer();
+	}
 }
+
+main().then(r => {});
 
 
