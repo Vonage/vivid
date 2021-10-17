@@ -66,8 +66,8 @@ async function takeSnapshot(page, snapshotPath) {
 	});
 }
 
-function resultsMessage(diff) {
-	return `Distance: ${diff.distance} | Percent: ${(diff.percent * 100).toFixed(2)} %`;
+function resultsMessage(diff, fixed = 2) {
+	return `Distance: ${diff.distance} | Percent: ${(diff.percent * 100).toFixed(fixed)} %`;
 }
 
 async function runImageComparison() {
@@ -117,6 +117,7 @@ async function doTest(page) {
 			console.log('Visual Diff Passed!');
 			console.log(resultsMessage(diff));
 		} else {
+			console.debug(resultsMessage(diff, 10));
 			console.error(resultsMessage(diff));
 			process.exitCode = 1;
 		}
