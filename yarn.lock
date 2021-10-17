@@ -12673,17 +12673,16 @@ lit-element@^3.0.0:
     "@lit/reactive-element" "^1.0.0"
     lit-html "^2.0.0"
 
-lit-flatpickr@^0.2.9:
-  version "0.2.9"
-  resolved "https://registry.yarnpkg.com/lit-flatpickr/-/lit-flatpickr-0.2.9.tgz#2be4185030600504ff0b0534e1994d5999986271"
-  integrity sha512-E0reWYmdrm08hJGMqEuMSaPHjH5oVafsZukp1smqPIJW+fENHFnQvgdjxP6WUaqL/LGz/vZqBOmnFNvhxGIyjw==
+lit-flatpickr@^0.2.10:
+  version "0.2.10"
+  resolved "https://registry.yarnpkg.com/lit-flatpickr/-/lit-flatpickr-0.2.10.tgz#1ffcf516c1a1e0625d8bb7fee2cd7bf3988a171f"
+  integrity sha512-KK6uPtI34PVvTW/7F7mzb3uLZaU031T6zlFJLCtQqfmKhmQg5vGRSegPoAq/iDYXhUI9JzRfWCLMK3bNjTOagw==
   dependencies:
     flatpickr "^4.6.9"
-    lit-element "^2.2.1"
-    lit-html "^1.1.2"
+    lit "^2.0.0"
     tslib "^1.11.0"
 
-lit-html@^1.0.0, lit-html@^1.1.1, lit-html@^1.1.2:
+lit-html@^1.0.0, lit-html@^1.1.1:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-1.4.1.tgz#0c6f3ee4ad4eb610a49831787f0478ad8e9ae5e0"
   integrity sha512-B9btcSgPYb1q4oSOb/PrOT6Z/H+r6xuNzfH4lFli/AWhYwdtrgQkQWBbIc6mdnf6E2IL3gDXdkkqNktpU0OZQA==

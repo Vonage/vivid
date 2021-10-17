@@ -34,7 +34,7 @@
 		"@vonage/vwc-textfield": "2.20.1",
 		"flatpickr": "^4.6.9",
 		"lit": "^2.0.0",
-		"lit-flatpickr": "^0.2.9",
+		"lit-flatpickr": "^0.2.10",
 		"tslib": "^2.3.0"
 	},
 	"devDependencies": {
