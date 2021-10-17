@@ -8,6 +8,12 @@
 	@include typography.typography-mdc-coupling('headline6', 'subtitle-2');
 }
 
+/* stylelint-disable */
+.mdc-top-app-bar--fixed {
+	/* stylelint-enable */
+	transition: filter 200ms linear 0s;
+}
+
 .mdc-top-app-bar--fixed-scrolled {
 	box-shadow: unset;
 	filter: var(#{scheme-variables.$vvd-shadow-surface-4dp});
