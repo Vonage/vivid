@@ -69,7 +69,7 @@ export class VWCCalendar extends LitElement {
 			}
 		}
 	})
-	datetime?: Date;
+		datetime?: Date;
 
 	/**
 	 * A locale string or array of locale strings that contain one or more language or locale tags.
@@ -84,19 +84,19 @@ export class VWCCalendar extends LitElement {
 		reflect: true,
 		type: String
 	})
-	locales?: string | string[] | undefined;
+		locales?: string | string[] | undefined;
 
 	#daysLength = 7;
 	#hours = (Array.from({ length: TotalHours - 1 }) as Date[])
 		.fill(new Date(new Date().setHours(0, 0, 0)))
-		.map((d, i) => new Date(d.setHours(++i)))
+		.map((d, i) => new Date(d.setHours(++i)));
 
 	/**
-   * Fire an event
-   * @param {string} event        - event name
-   * @param {Object} [detail={}]  - optional event detail object
-   * @returns {boolean}           - return true
-   */
+	 * Fire an event
+	 * @param {string} event        - event name
+	 * @param {Object} [detail={}]  - optional event detail object
+	 * @returns {boolean}           - return true
+	 */
 	getEventContext = getEventContext.bind(this);
 
 
@@ -148,7 +148,7 @@ export class VWCCalendar extends LitElement {
 
 	private onKeydown(event: KeyboardEvent) {
 		const isArrow = [ARROW_UP, ARROW_RIGHT, ARROW_DOWN, ARROW_LEFT].includes(event.key);
-		isArrow	&& this.arrowKeysInteractions(event);
+		isArrow && this.arrowKeysInteractions(event);
 	}
 
 	protected renderTimeRows(): DirectiveFn {

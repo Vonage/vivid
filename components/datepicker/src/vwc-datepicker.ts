@@ -31,16 +31,16 @@ export class VWCDatepicker extends LitFlatpickr {
 	private datepickerWrapper?: HTMLElement;
 
 	@property({ type: Boolean, reflect: true })
-	monthPicker = false;
+		monthPicker = false;
 
 	@property({ type: Boolean, reflect: true })
-	weekSelect = false;
+		weekSelect = false;
 
 	@property({ type: Boolean, reflect: true })
-	closeOnSelect = false;
+		closeOnSelect = false;
 
 	@property({ type: Boolean, reflect: true })
-	fixedMenuPosition = false;
+		fixedMenuPosition = false;
 
 	anchor: HTMLElement | null = this;
 

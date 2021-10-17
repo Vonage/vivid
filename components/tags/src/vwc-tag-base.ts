@@ -6,7 +6,7 @@ import type { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constant
 import { classMap } from 'lit-html/directives/class-map';
 import type { ClassInfo } from 'lit-html/directives/class-map';
 import {
-	 LitElement, html, property, TemplateResult, queryAsync, state, query, eventOptions
+	LitElement, html, property, TemplateResult, queryAsync, state, query, eventOptions
 } from 'lit-element';
 
 
@@ -14,7 +14,7 @@ type TagConnotation = Extract<
 	Connotation,
 	| Connotation.Primary
 	| Connotation.CTA
-	>;
+>;
 
 type TagShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
 
@@ -22,80 +22,80 @@ type TagLayout = Extract<
 	Layout, Layout.Outlined | Layout.Soft
 >;
 export class VWCTagBase extends LitElement {
-  @queryAsync('mwc-ripple') ripple!: Promise<Ripple|null>;
+	@queryAsync('mwc-ripple') ripple!: Promise<Ripple | null>;
 
 	@query('#selectable') selectableElement!: HTMLElement;
 
 	@property({ type: String, reflect: true })
-	text?: string;
+		text?: string;
 
 	@property({ type: Boolean, reflect: true })
-	selected = false;
+		selected = false;
 
 	@property({ type: String, reflect: true })
-	connotation?: TagConnotation;
+		connotation?: TagConnotation;
 
 	@property({ type: String, reflect: true })
-	shape?: TagShape;
+		shape?: TagShape;
 
 	@property({ type: String, reflect: true })
-	layout?: TagLayout;
+		layout?: TagLayout;
 
 	@property({ type: Boolean, reflect: true })
-	selectable = false;
+		selectable = false;
 
-  @state() protected shouldRenderRipple = false;
+	@state() protected shouldRenderRipple = false;
 
-  protected rippleHandlers = new RippleHandlers(() => {
-  	this.shouldRenderRipple = true;
-  	return this.ripple;
-  });
+	protected rippleHandlers = new RippleHandlers(() => {
+		this.shouldRenderRipple = true;
+		return this.ripple;
+	});
 
-  override focus(): void {
-  	const selectableElement = this.selectableElement;
-  	if (selectableElement) {
-  		this.rippleHandlers.startFocus();
-  		selectableElement.focus();
-  	}
-  }
+	override focus(): void {
+		const selectableElement = this.selectableElement;
+		if (selectableElement) {
+			this.rippleHandlers.startFocus();
+			selectableElement.focus();
+		}
+	}
 
-  override blur(): void {
-  	const selectableElement = this.selectableElement;
-  	if (selectableElement) {
-  		this.rippleHandlers.endFocus();
-  		selectableElement.blur();
-  	}
-  }
+	override blur(): void {
+		const selectableElement = this.selectableElement;
+		if (selectableElement) {
+			this.rippleHandlers.endFocus();
+			selectableElement.blur();
+		}
+	}
 
-  // protected firstUpdated(): void {
-  // 	if (this.selected) {
-  // 		this.handleRippleActivate();
-  // 	}
-  // }
+	// protected firstUpdated(): void {
+	// 	if (this.selected) {
+	// 		this.handleRippleActivate();
+	// 	}
+	// }
 
-  protected renderRipple(): TemplateResult | string {
-  	return this.shouldRenderRipple ?
-  		html`<mwc-ripple class="ripple"></mwc-ripple>` : '';
-  }
+	protected renderRipple(): TemplateResult | string {
+		return this.shouldRenderRipple ?
+			html`<mwc-ripple class="ripple"></mwc-ripple>` : '';
+	}
 
-  protected renderIcon(type?: string): TemplateResult {
-  	return html`<vwc-icon class="vwc-tag__icon" .type="${type}"></vwc-icon>`;
-  }
+	protected renderIcon(type?: string): TemplateResult {
+		return html`<vwc-icon class="vwc-tag__icon" .type="${type}"></vwc-icon>`;
+	}
 
-  protected getRenderClasses(): ClassInfo {
-  	return {
-  		[`connotation-${this.connotation}`]: !!this.connotation,
-  		[`layout-${this.layout}`]: !!this.layout
-  	};
-  }
+	protected getRenderClasses(): ClassInfo {
+		return {
+			[`connotation-${this.connotation}`]: !!this.connotation,
+			[`layout-${this.layout}`]: !!this.layout
+		};
+	}
 
-  protected renderTagSelectable(): TemplateResult {
-  	const classes = {
-  		'vwc-tag--selected': this.selected,
-  		...this.getRenderClasses()
-  	};
+	protected renderTagSelectable(): TemplateResult {
+		const classes = {
+			'vwc-tag--selected': this.selected,
+			...this.getRenderClasses()
+		};
 
-  	return html`<span
+		return html`<span
 			id="selectable"
 			class="vwc-tag vwc-tag-selectable ${classMap(classes)}"
 			role="option"
@@ -118,51 +118,51 @@ export class VWCTagBase extends LitElement {
 				${this.text}
 			</span>
 		</span>`;
-  }
+	}
 
-  override render(): TemplateResult {
-  	return this.selectable
-  		? this.renderTagSelectable()
-  		: html`<span class="vwc-tag ${classMap(this.getRenderClasses())}">
+	override render(): TemplateResult {
+		return this.selectable
+			? this.renderTagSelectable()
+			: html`<span class="vwc-tag ${classMap(this.getRenderClasses())}">
 			${this.text}
 		</span>`;
-  }
+	}
 
-  handleKeydown({ key }: KeyboardEvent): void {
-  	if (key === ' '/* spacebar */) {
-  		this.selected = !this.selected;
-  	}
-  }
+	handleKeydown({ key }: KeyboardEvent): void {
+		if (key === ' '/* spacebar */) {
+			this.selected = !this.selected;
+		}
+	}
 
 	@eventOptions({ passive: true })
-  protected handleRippleActivate(evt?: Event): void {
-  	const onUp = () => {
-  		window.removeEventListener('mouseup', onUp);
+	protected handleRippleActivate(evt?: Event): void {
+		const onUp = () => {
+			window.removeEventListener('mouseup', onUp);
 
-  		this.handleRippleDeactivate();
-  	};
+			this.handleRippleDeactivate();
+		};
 
-  	window.addEventListener('mouseup', onUp);
-  	this.rippleHandlers.startPress(evt);
-  }
+		window.addEventListener('mouseup', onUp);
+		this.rippleHandlers.startPress(evt);
+	}
 
 	protected handleRippleDeactivate(): void {
-  	this.rippleHandlers.endPress();
+		this.rippleHandlers.endPress();
 	}
 
 	protected handleRippleMouseEnter(): void {
-  	this.rippleHandlers.startHover();
+		this.rippleHandlers.startHover();
 	}
 
 	protected handleRippleMouseLeave(): void {
-  	this.rippleHandlers.endHover();
+		this.rippleHandlers.endHover();
 	}
 
 	protected handleRippleFocus(): void {
-  	this.rippleHandlers.startFocus();
+		this.rippleHandlers.startFocus();
 	}
 
 	protected handleRippleBlur(): void {
-  	this.rippleHandlers.endFocus();
+		this.rippleHandlers.endFocus();
 	}
 }

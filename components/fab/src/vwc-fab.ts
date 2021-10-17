@@ -28,7 +28,7 @@ export type FabConnotation = typeof connotations;
 @customElement('vwc-fab')
 export class VWCFab extends MWCFab {
 	@property({ type: String, reflect: true })
-	connotation?: FabConnotation[number];
+		connotation?: FabConnotation[number];
 	//! note material-components/material-web#2496
 
 	protected override render(): TemplateResult {
@@ -45,9 +45,9 @@ export class VWCFab extends MWCFab {
 		const ariaLabel = this.label ? this.label : this.icon;
 
 		/*
-     * Some internal styling is sensitive to whitespace in this template, take
-     * care when modifying it.
-     */
+		 * Some internal styling is sensitive to whitespace in this template, take
+		 * care when modifying it.
+		 */
 		return html`<button
           class="mdc-fab ${classMap(classes)}"
           ?disabled="${this.disabled}"

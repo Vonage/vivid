@@ -17,7 +17,7 @@ export abstract class VWCExpansionPanelBase extends LitElement {
 
 		this.openChanged(isOpen);
 	})
-	open = false;
+		open = false;
 
 	/**
 	 * Invoked when the element open state is updated.
@@ -29,7 +29,7 @@ export abstract class VWCExpansionPanelBase extends LitElement {
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		_isOpen: boolean
 		// eslint-disable-next-line @typescript-eslint/no-empty-function
-	): void {}
+	): void { }
 
 	close(): void {
 		this.open = false;

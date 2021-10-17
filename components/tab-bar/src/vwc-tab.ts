@@ -22,13 +22,13 @@ MWCTab.styles = [styleCoupling, mwcTabStyles, vwcTabStyle];
 @customElement('vwc-tab')
 export class VWCTab extends MWCTab {
 	@property({ type: Boolean, reflect: true })
-	disabled = false;
+		disabled = false;
 
 	@property({ type: Boolean, reflect: true })
-	block = false;
+		block = false;
 
 	@property({ type: Boolean, reflect: true })
-	trailingIcon = false;
+		trailingIcon = false;
 
 	protected renderIcon(): TemplateResult {
 		return html`<vwc-icon type="${this.icon}"></vwc-icon>`;

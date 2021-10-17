@@ -15,14 +15,14 @@ type TextConnotation = Extract<
 	| Connotation.Info
 	| Connotation.Success
 	| Connotation.Alert
-	>;
+>;
 
 export class VWCTextBase extends LitElement {
 	@property({ type: String, reflect: true, attribute: 'font-face' })
-	fontFace?: VVDFontFace;
+		fontFace?: VVDFontFace;
 
 	@property({ type: String, reflect: true })
-	connotation?: TextConnotation;
+		connotation?: TextConnotation;
 
 	protected getRenderClasses(): ClassInfo {
 		return {

@@ -16,9 +16,9 @@ declare global {
 MWCListItem.styles = [styleCoupling, mwcListItemStyles, vwcListItemStyle];
 
 type ListItemConnotation = Extract<
-Connotation,
-| Connotation.Primary
-| Connotation.CTA
+	Connotation,
+	| Connotation.Primary
+	| Connotation.CTA
 >;
 
 type ListItemShape = Extract<Shape, Shape.Rounded>;
@@ -29,8 +29,8 @@ type ListItemShape = Extract<Shape, Shape.Rounded>;
 @customElement('vwc-list-item')
 export class VWCListItem extends MWCListItem {
 	@property({ type: String, reflect: true })
-	connotation?: ListItemConnotation;
+		connotation?: ListItemConnotation;
 
 	@property({ type: String, reflect: true })
-	shape?: ListItemShape;
+		shape?: ListItemShape;
 }

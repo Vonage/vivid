@@ -27,7 +27,7 @@ MWCCircularProgress.styles = [styleCoupling, mwcCircularProgressStyles, vwcCircu
 
 @customElement('vwc-circular-progress')
 export class VWCCircularProgress extends MWCCircularProgress {
-  @query('.mdc-circular-progress') protected rootEl!: HTMLElement;
+	@query('.mdc-circular-progress') protected rootEl!: HTMLElement;
 
 	@property({ type: String, reflect: true })
 	@observer(function (this: VWCCircularProgress, newVal: CircularProgressConnotation, oldVal: CircularProgressConnotation) {
@@ -36,5 +36,5 @@ export class VWCCircularProgress extends MWCCircularProgress {
 			this.rootEl.classList.add(`connotation-${newVal}`);
 		}
 	})
-	connotation?: CircularProgressConnotation;
+		connotation?: CircularProgressConnotation;
 }

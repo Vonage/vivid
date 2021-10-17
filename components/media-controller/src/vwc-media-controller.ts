@@ -25,12 +25,12 @@ export class VwcMediaController extends LitElement {
 	static override styles = [vwcMediaControllerStyle];
 
 	@query('.scrubber')
-	private _scrubber!:VWCScrubBar
+	private _scrubber!: VWCScrubBar;
 
 	@internalProperty()
 	private _playState = false;
 
-	override render():TemplateResult {
+	override render(): TemplateResult {
 		return html`
 			<main class="main">
 				<button @click="${this.dispatchPlayControllerClickEvent}" aria-label="Play/Pause" class="control-button">
@@ -45,15 +45,15 @@ export class VwcMediaController extends LitElement {
 		`;
 	}
 
-	dispatchPlayControllerClickEvent():void {
+	dispatchPlayControllerClickEvent(): void {
 		this.dispatchEvent(new CustomEvent('userPlayPauseRequest', { bubbles: true, composed: true }));
 	}
 
-	setPosition(percentage:number):void {
+	setPosition(percentage: number): void {
 		this._scrubber.setPosition(percentage);
 	}
 
-	setPlayState(playState:boolean):void {
+	setPlayState(playState: boolean): void {
 		this._playState = playState;
 	}
 }
