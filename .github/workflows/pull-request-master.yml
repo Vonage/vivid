@@ -23,6 +23,7 @@ jobs:
     runs-on: ubuntu-20.04
     env:
       GITHUB_TOKEN: ${{ secrets.VNG_VIVID_PAT }}
+      NX_CLOUD_AUTH_TOKEN: ${{ secrets.NX_CLOUD_AUTH_TOKEN }}
     steps:
       - uses: actions/checkout@v2
       - run: printf "registry=https://npm.pkg.github.com/Vonage\n_authToken=\${GITHUB_TOKEN}\n//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}\nalways-auth=true" > .npmrc
@@ -36,7 +37,7 @@ jobs:
       - run: yarn install --frozen-lockfile --network-timeout 100000
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
-      - run: yarn lerna run build --stream --concurrency=15 --include-dependencies
+      - run: yarn nx run-many --target=build --all --parallel --withDeps
       - run: tar -zcf /tmp/vivid-env.tar.gz .
       - uses: actions/upload-artifact@v2
         with:
