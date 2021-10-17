@@ -11,6 +11,8 @@ import type { ClassInfo } from 'lit-html/directives/class-map';
 import { nothing, TemplateResult } from 'lit-html';
 import { Connotation } from '@vonage/vvd-foundation/constants.js';
 
+import { accessibleBannerMessage } from './accessible-banner-directive.js';
+
 const ANIMATION_DURATION = 100;
 const KEY_ESCAPE = 'Escape';
 
@@ -111,10 +113,6 @@ export class VWCBanner extends LitElement {
 		return html`<vwc-icon class="icon" .type="${type}"></vwc-icon>`;
 	}
 
-	protected renderAriaLive(): string {
-		return this.open ? 'polite' : 'off';
-	}
-
 	private handleKeyDown(e: KeyboardEvent): void {
 		this.open = !(e.key === KEY_ESCAPE && this.dismissible);
 	}
@@ -125,7 +123,7 @@ export class VWCBanner extends LitElement {
 				<header class="header">
 					<span class="user-content">
 						${this.renderIcon(this.icon)}
-						<div role='status' aria-live=${this.renderAriaLive()} class="message">${this.message}</div>
+						${accessibleBannerMessage(this.message, this.open)}
 						<slot class="action-items" name="actionItems"></slot>
 					</span>
 					${this.renderDismissButton()}
