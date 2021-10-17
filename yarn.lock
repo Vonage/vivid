@@ -5782,7 +5782,7 @@
     terminal-kit "^2.0.5"
     yargs-parser "^20.2.7"
 
-"@vonage/vvd-design-tokens-properties@0.7.3":
+"@vonage/vvd-design-tokens-properties@0.7.3", "@vonage/vvd-design-tokens-properties@^0.7.3":
   version "0.7.3"
   resolved "https://npm.pkg.github.com/download/@vonage/vvd-design-tokens-properties/0.7.3/21005d4a694ee6afe0b4cf47e4833c185fed4e70d7a65041b0ff921d9abaaf60#8027419f2607a5a073e6f756751150eb76182d0e"
   integrity sha512-0pQsknxpeYaWNAd7zqKo5AGpoC+qZ1OIEkSXNABZzFXXfnbcNGrX1ybKBWQsPJhwhVNNIcPZQZSpqsYNvDzyMA==
