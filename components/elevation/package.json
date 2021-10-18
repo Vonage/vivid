@@ -27,6 +27,7 @@
 	"dependencies": {
 		"@vonage/vvd-foundation": "2.19.0",
 		"@vonage/vvd-umbrella": "2.19.0",
+		"@vonage/vvd-core": "2.19.0",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.3.0"
 	}
