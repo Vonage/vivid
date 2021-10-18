@@ -1,6 +1,5 @@
 import '@vonage/vwc-textfield';
 import {
- 	Autofocus,
 	Default,
 	Dense,
 	Disabled,
