@@ -6,13 +6,13 @@ import { ifDefined } from 'lit-html/directives/if-defined';
 
 export class VWCEmptyStateBase extends LitElement {
 	@property({ type: String, reflect: true })
-	icon?: string;
+		icon?: string;
 
 	@property({ type: String, reflect: true })
-	heading?: string;
+		heading?: string;
 
 	@property({ type: String, reflect: true })
-	body?: string;
+		body?: string;
 
 	protected renderIcon(): TemplateResult {
 		return html`<vwc-icon class="illustration"	type="${ifDefined(this.icon)}"></vwc-icon>`;

@@ -24,7 +24,7 @@ export class VWCTopAppBarFixed extends MWCTopAppBarFixedBase {
 			this.mdcRoot.removeAttribute('part');
 		}
 	})
-	alternate = false;
+		alternate = false;
 
 	static override styles = [MWCTopAppBarStyles, VWCTopAppBarStyle];
 }

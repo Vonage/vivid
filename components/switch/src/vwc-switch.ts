@@ -33,10 +33,10 @@ type SwitchConnotation = Extract<
 @customElement('vwc-switch')
 export class VWCSwitch extends MWCSwitch {
 	@property({ type: String, reflect: true })
-	connotation?: SwitchConnotation;
+		connotation?: SwitchConnotation;
 
 	@property({ type: Boolean, reflect: true })
-	enlarged = false;
+		enlarged = false;
 
 	protected getRenderClasses(): ClassInfo {
 		return {

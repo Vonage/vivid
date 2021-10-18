@@ -36,7 +36,7 @@ export class VWCCarousel extends LitElement {
 		reflect: true,
 		converter: v => !(v && v === 'false'),
 	})
-	autoplay = true;
+		autoplay = true;
 	@query('.swiper-container')
 	private swiperContainer?: HTMLElement;
 	@query('.swiper-wrapper')

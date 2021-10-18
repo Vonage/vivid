@@ -29,7 +29,7 @@ export class VWCListExpansionPanel extends VWCExpansionPanelBase {
 	// @property({ type: Boolean }) quick = false; // TODO add animation
 
 	@queryAssignedNodes('header', true, 'vwc-list-item')
-	headerNodes?: HTMLElement[] | null;
+		headerNodes?: HTMLElement[] | null;
 
 	override firstUpdated(changedProperties: PropertyValues): void {
 		super.firstUpdated(changedProperties);

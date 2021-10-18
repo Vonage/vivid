@@ -45,7 +45,7 @@ export class VWCLinearProgress extends MWCLinearProgress {
 			this.rootEl.classList.add(`connotation-${newVal}`);
 		}
 	})
-	connotation?: LinearProgressConnotation;
+		connotation?: LinearProgressConnotation;
 
 	protected override updated(changes: Map<string, boolean>): void {
 		super.updated(changes);

@@ -33,13 +33,13 @@ MWCTextArea.styles = [
 @customElement('vwc-textarea')
 export class VWCTextArea extends MWCTextArea {
 	@property({ type: Boolean, reflect: true })
-	dense = false;
+		dense = false;
 
 	@property({ type: Boolean, reflect: true })
-	resizable = false;
+		resizable = false;
 
 	@property({ type: String, reflect: true })
-	form: string | undefined;
+		form: string | undefined;
 
 	override async firstUpdated(): Promise<void> {
 		await super.firstUpdated();

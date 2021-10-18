@@ -32,23 +32,23 @@ export class VWCFab extends MWCFab {
 	//! note material-components/material-web#2496
 
 	protected override render(): TemplateResult {
-		const hasTouchTarget = this.mini && !this.reducedTouchTarget;
-		/** @classMap */
-		const classes = {
-			'mdc-fab--mini': this.mini,
-			'mdc-fab--touch': hasTouchTarget,
-			'mdc-fab--exited': this.exited,
-			'mdc-fab--extended': this.extended,
-			'icon-end': this.showIconAtEnd,
-		};
+	  const hasTouchTarget = this.mini && !this.reducedTouchTarget;
+	  /** @classMap */
+	  const classes = {
+	    'mdc-fab--mini': this.mini,
+	    'mdc-fab--touch': hasTouchTarget,
+	    'mdc-fab--exited': this.exited,
+	    'mdc-fab--extended': this.extended,
+	    'icon-end': this.showIconAtEnd,
+	  };
 
-		const ariaLabel = this.label ? this.label : this.icon;
+	  const ariaLabel = this.label ? this.label : this.icon;
 
-		/*
+	  /*
 		 * Some internal styling is sensitive to whitespace in this template, take
 		 * care when modifying it.
 		 */
-		return html`<button
+	  return html`<button
           class="mdc-fab ${classMap(classes)}"
           ?disabled="${this.disabled}"
           aria-label="${ariaLabel}"
@@ -72,11 +72,11 @@ export class VWCFab extends MWCFab {
 	}
 
 	protected override renderIcon(): TemplateResult {
-		return html`${this.icon
-			? html`<vwc-icon
+	  return html`${this.icon
+	    ? html`<vwc-icon
 					type="${this.icon}"
 					size="${this.mini ? 'small' : 'medium'}"
 			  ></vwc-icon>`
-			: ''}`;
+	    : ''}`;
 	}
 }

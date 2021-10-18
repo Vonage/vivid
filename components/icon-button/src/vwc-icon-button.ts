@@ -47,19 +47,19 @@ type IconButtonConnotation = Extract<
 @customElement('vwc-icon-button')
 export class VWCIconButton extends MWCIconButton {
 	@property({ type: String, reflect: true })
-	layout?: IconButtonLayout;
+		layout?: IconButtonLayout;
 
 	@property({ type: String, reflect: true })
-	connotation?: IconButtonConnotation;
+		connotation?: IconButtonConnotation;
 
 	@property({ type: String, reflect: true })
-	shape?: IconButtonShape;
+		shape?: IconButtonShape;
 
 	@property({ type: Boolean, reflect: true })
-	dense = false;
+		dense = false;
 
 	@property({ type: Boolean, reflect: true })
-	enlarged = false;
+		enlarged = false;
 
 	protected override updated(changes: Map<string, boolean>): void {
 		handleMultipleDenseProps(this, changes);

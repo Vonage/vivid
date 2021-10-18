@@ -37,16 +37,16 @@ type SelectShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
 @customElement('vwc-select')
 export class VWCSelect extends MWCSelect {
 	@property({ type: Boolean, reflect: true })
-	dense = false;
+		dense = false;
 
 	@property({ type: String, reflect: true })
-	shape?: SelectShape;
+		shape?: SelectShape;
 
 	@property({ type: String, reflect: true })
-	form: string | undefined;
+		form: string | undefined;
 
 	@property({ type: String, reflect: true })
-	name: string | undefined;
+		name: string | undefined;
 
 	override connectedCallback(): void {
 		super.connectedCallback();

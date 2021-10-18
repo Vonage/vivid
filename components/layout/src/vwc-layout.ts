@@ -30,28 +30,28 @@ export class Layout extends LitElement {
 	 * @public
 	 * */
 	@property({ type: String, reflect: true, attribute: 'gutters' })
-	gutters?: Gutters;
+		gutters?: Gutters;
 
 	/**
 	 * @prop columnBasis - sets the initial preferred measure of a column from predefined available options
 	 * @public
 	 * */
 	@property({ type: String, reflect: true, attribute: 'column-basis' })
-	columnBasis: ColumnBasis = Size.Small;
+		columnBasis: ColumnBasis = Size.Small;
 
 	/**
 	 * @prop columnSpacing - sets the initial preferred spacing of a column from predefined available options
 	 * @public
 	 * */
 	@property({ type: String, reflect: true, attribute: 'column-spacing' })
-	columnSpacing: ColumnSpacing = Size.Medium;
+		columnSpacing: ColumnSpacing = Size.Medium;
 
 	/**
 	 * @prop auto-sizing - sets the initial preferred auto-sizing from predefined available options
 	 * @public
 	 * */
 	@property({ type: String, reflect: true, attribute: 'auto-sizing' })
-	autoSizing?: AutoSizing;
+		autoSizing?: AutoSizing;
 
 	protected getRenderClasses(): ClassInfo {
 		return {

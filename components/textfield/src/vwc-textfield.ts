@@ -50,25 +50,25 @@ export class VWCTextField extends MWCTextField {
 		reflect: true,
 		attribute: 'no-actions-sync'
 	})
-	noActionsSync = false;
+		noActionsSync = false;
 
 	@property({
 		type: Boolean,
 		reflect: true
 	})
-	dense = false;
+		dense = false;
 
 	@property({
 		type: String,
 		reflect: true
 	})
-	shape?: TextfieldShape;
+		shape?: TextfieldShape;
 
 	@property({
 		type: String,
 		reflect: true
 	})
-	form: string | undefined;
+		form: string | undefined;
 
 	@property({
 		type: String,

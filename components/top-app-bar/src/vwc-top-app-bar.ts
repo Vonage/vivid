@@ -18,13 +18,13 @@ declare global {
 export class VWCTopAppBar extends MWCTopAppBarBase {
 	@property({ type: Boolean })
 	@observer(function (this: VWCTopAppBar, newVal: boolean) {
-		if (newVal) {
-			this.mdcRoot.setAttribute('part', 'vvd-scheme-alternate');
-		} else {
-			this.mdcRoot.removeAttribute('part');
-		}
+	  if (newVal) {
+	    this.mdcRoot.setAttribute('part', 'vvd-scheme-alternate');
+	  } else {
+	    this.mdcRoot.removeAttribute('part');
+	  }
 	})
-	alternate = false;
+	  alternate = false;
 
 	static override styles = [MWCTopAppBarStyles, VWCTopAppBarStyle];
 }
