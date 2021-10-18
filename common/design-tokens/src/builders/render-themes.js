@@ -6,7 +6,7 @@ import _ from 'lodash';
 import R from 'ramda';
 
 const
-	propertiesPath = resolve('../../node_modules/@vonage/vvd-design-tokens-properties'),
+	propertiesPath = resolve('../../node_modules/@vonage/vvd-design-tokens-properties/dist'),
 	CUSTOM_SCHEMES_FORMAT = 'custom/web/scss/schemes',
 	OUTPUT_FOLDER = 'build/scss/schemes';
 
@@ -21,8 +21,9 @@ StyleDictionaryPackage.registerFormat({
 function getStyleDictionaryConfig(scheme, scope) {
 	return {
 		source: [
-			`${propertiesPath}/globals/color/**/*.json`,
-			`${propertiesPath}/schemes/${scheme}/${scope}.json`,
+			`${propertiesPath}/color/**/*.json`,
+			`${propertiesPath}/shadow/**/*.json`,
+			`${propertiesPath}/themes/${scheme}/**/${scope}.json`,
 		],
 		platforms: {
 			web: {
@@ -33,11 +34,7 @@ function getStyleDictionaryConfig(scheme, scope) {
 					{
 						destination: `${OUTPUT_FOLDER}/${scheme}/${scope}.scss`,
 						format: CUSTOM_SCHEMES_FORMAT,
-						filter: {
-							attributes: {
-								category: 'color'
-							}
-						}
+						filter: token => token.attributes.category !== 'alias'
 					}
 				]
 			}

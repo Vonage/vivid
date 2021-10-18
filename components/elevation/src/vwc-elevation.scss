@@ -20,8 +20,8 @@ $vvd-elevation-border-radius: --vvd-elevation-border-radius;
 
 @each $dp in $dps {
 	#{get-default-selector($dps, $dp)} {
-		background-color: var(#{$vvd-elevation-background-color}, var(--vvd-scheme-elevation-dp-#{$dp}-canvas));
-		box-shadow: var(--vvd-scheme-elevation-dp-#{$dp}-box-shadow);
+		background-color: var(#{$vvd-elevation-background-color}, var(--vvd-color-surface-#{$dp}dp));
+		filter: var(--vvd-shadow-surface-#{$dp}dp);
 	}
 }
 

@@ -1,3 +1,4 @@
+import '@vonage/vvd-core';
 import { html, LitElement } from 'lit';
 import { property, customElement } from 'lit/decorators';
 import { style } from './vwc-elevation.css.js';
@@ -17,7 +18,7 @@ export class VWCElevation extends LitElement {
 	static override styles = style;
 
 	@property({ type: Number, reflect: false })
-	dp = 2;
+		dp = 2;
 
 	protected override render(): unknown {
 		const classList = {
