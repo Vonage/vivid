@@ -31,6 +31,7 @@ export async function createElementVariations(wrapper) {
 			<p>The quick brown fox <vwc-text font-face="body-1-link" connotation="info"><a>In a link</a></vwc-text> jumps over the lazy dog
 			<vwc-text font-face="body-1-code" connotation="announcement">css is awesome</vwc-text> jumps over the lazy dog</p>
 		</vwc-text>
+		<vwc-text font-face="subtitle-1" connotation="alert"><h3>The quick brown fox jumps over the lazy dog</h3></vwc-text>
 		`;
 	wrapper.appendChild(textElementWrapper);
 }

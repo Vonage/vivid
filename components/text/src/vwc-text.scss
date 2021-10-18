@@ -40,11 +40,10 @@
 		}
 	}
 
-	&:where([class*=headline-], [class*=title-], .font-face-body-1, .font-face-body-2) {
+	&:where(.font-face-headline-1, .font-face-headline-2, .font-face-title-1, .font-face-title-2, .font-face-subtitle-1, .font-face-subtitle-2, .font-face-body-1, .font-face-body-2) {
 		display: block;
 		margin: var(--font-face-margin, 0);
 	}
-
 }
 
 ::slotted(:where(h1, h2, h3, h4, h5, h6, p)) {
