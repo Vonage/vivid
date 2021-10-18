@@ -65,4 +65,3 @@ custom-elements.json
 /ui-tests/dist
 /ui-tests/**/*-diff.png
 /ui-tests/**/*-snapshot.png
-/**/*.file
