@@ -1,9 +1,10 @@
 import '@vonage/vwc-textarea';
-import { storiesToElement } from '../../utils/storiesToElement';
-import * as stories from '@vonage/vwc-textarea/stories/textarea.stories';
+import {storiesToElement} from '../../utils/storiesToElement';
+import {Default, Dense, Disabled, Required, Resizable} from '@vonage/vwc-textarea/stories/textarea.stories';
 
 export async function createElementVariations(wrapper) {
-	const elementWrapper = storiesToElement(stories);
+	const elementWrapper = storiesToElement([
+		Default, Dense, Disabled, Required, Resizable]);
 
 	wrapper.appendChild(elementWrapper);
 

@@ -1,3 +1,4 @@
+import '@vonage/vvd-core';
 import { customElement, html, LitElement } from 'lit-element';
 import { style } from './vwc-elevation.css.js';
 import { property } from 'lit-element/lib/decorators';
