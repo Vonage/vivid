@@ -113,7 +113,7 @@ async function doTest(page) {
 			return;
 		}
 		const diff = await compareToSnapshot(page, snapshotPath);
-		if (diff.percent === 0) {
+		if (diff.percent <= 0.001) {
 			console.log('Visual Diff Passed!');
 			console.log(resultsMessage(diff));
 		} else {

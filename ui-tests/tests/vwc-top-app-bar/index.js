@@ -7,5 +7,3 @@ export async function createElementVariations(wrapper) {
 
 	wrapper.appendChild(elementWrapper);
 }
-
-
