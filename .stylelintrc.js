@@ -23,6 +23,7 @@ module.exports = {
 		'no-duplicate-selectors': true,
 		'declaration-block-no-duplicate-properties': true,
 		'function-parentheses-space-inside': null,
-		'rule-empty-line-before': null
+		'rule-empty-line-before': null,
+		'a11y/media-prefers-reduced-motion': null
 	},
 };

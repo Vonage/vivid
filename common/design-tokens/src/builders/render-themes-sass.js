@@ -4,13 +4,13 @@ import StyleDictionaryPackage from 'style-dictionary';
 import fs from 'fs';
 import _ from 'lodash';
 
-const propertiesPath = resolve('../../node_modules/@vonage/vvd-design-tokens-properties');
+const propertiesPath = resolve('../../node_modules/@vonage/vvd-design-tokens-properties/dist');
 
 
 StyleDictionaryPackage.registerFormat({
 	name: 'custom/format/css-to-scss',
 	formatter: _.template(
-		fs.readFileSync(resolve('templates/web-scss-coupling.template'))
+		fs.readFileSync(resolve('templates/web-scss-variables.template'))
 	),
 });
 
@@ -18,8 +18,9 @@ StyleDictionaryPackage.registerFormat({
 function getStyleDictionaryConfig() {
 	return {
 		source: [
-			`${propertiesPath}/globals/color/**/*.json`,
-			`${propertiesPath}/schemes/light/main.json`,
+			`${propertiesPath}/color/**/*.json`,
+			`${propertiesPath}/shadow/**/*.json`,
+			`${propertiesPath}/themes/light/**/main.json`,
 		],
 		platforms: {
 			web: {
@@ -30,11 +31,7 @@ function getStyleDictionaryConfig() {
 					{
 						destination: 'build/scss/semantic-variables/_scheme-variables.scss',
 						format: 'custom/format/css-to-scss',
-						filter: {
-							attributes: {
-								category: 'color'
-							}
-						}
+						filter: token => token.attributes.category !== 'alias'
 					}
 				]
 			}
