@@ -37,7 +37,7 @@ jobs:
       - run: yarn install --frozen-lockfile --network-timeout 100000
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
-      - run: yarn nx run-many --target=build --all --parallel --withDeps
+      - run: yarn compile
       - run: tar -zcf /tmp/vivid-env.tar.gz .
       - uses: actions/upload-artifact@v2
         with:
