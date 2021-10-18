@@ -107,7 +107,7 @@ export class ChipSetBase extends BaseElement {
 		};
 	}
 
-	connectedCallback(): void {
+	override connectedCallback(): void {
 		super.connectedCallback();
 		this.chipsObserver.observe(this, {
 			childList: true,
@@ -117,12 +117,12 @@ export class ChipSetBase extends BaseElement {
 		this.syncChips();
 	}
 
-	disconnectedCallback(): void {
+	override disconnectedCallback(): void {
 		super.disconnectedCallback();
 		this.chipsObserver.disconnect();
 	}
 
-	render(): TemplateResult {
+	override render(): TemplateResult {
 		const classes = {
 			'mdc-ship-set--input': this.type === 'input',
 			'mdc-chip-set--choice': this.type === 'choice',

@@ -61,7 +61,7 @@ export class VWCIconButton extends MWCIconButton {
 	@property({ type: Boolean, reflect: true })
 	enlarged = false;
 
-	protected updated(changes: Map<string, boolean>): void {
+	protected override updated(changes: Map<string, boolean>): void {
 		handleMultipleDenseProps(this, changes);
 	}
 
@@ -72,7 +72,7 @@ export class VWCIconButton extends MWCIconButton {
 		};
 	}
 
-	protected render(): TemplateResult {
+	protected override render(): TemplateResult {
 		return html`<button
 			class="mdc-icon-button ${classMap(this.getRenderClasses())}"
 			aria-label="${this.ariaLabel || this.icon}"
@@ -98,7 +98,7 @@ export class VWCIconButton extends MWCIconButton {
 		return html`<vwc-icon	type="${this.icon}"></vwc-icon>`;
 	}
 
-	renderRipple(): TemplateResult | '' {
+	override renderRipple(): TemplateResult | '' {
 		return this.shouldRenderRipple
 			? html` <mwc-ripple .disabled="${this.disabled}"></mwc-ripple>`
 			: '';

@@ -47,7 +47,7 @@ export class VWCLinearProgress extends MWCLinearProgress {
 	})
 	connotation?: LinearProgressConnotation;
 
-	protected updated(changes: Map<string, boolean>): void {
+	protected override updated(changes: Map<string, boolean>): void {
 		super.updated(changes);
 		if (changes.has('progress')) {
 			this.mdcLinearProgress.style.setProperty('--linear-progress-progress', this.progress.toString());

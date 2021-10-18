@@ -1,4 +1,4 @@
-import '../vwc-inline.js';
+import '../vwc-layout.js';
 import {
 	waitNextTask,
 	textToDomToParent,
@@ -8,22 +8,22 @@ import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
 
-const VWC_INLINE = 'vwc-inline';
-const inlineHtmlStr = `<${VWC_INLINE}>
+const VWC_LAYOUT = 'vwc-layout';
+const layoutHtmlStr = `<${VWC_LAYOUT}>
 	<span>1</span>
 	<span>2</span>
 	<span>3</span>
 	<span>4</span>
-</${VWC_INLINE}>`;
+</${VWC_LAYOUT}>`;
 
-const getNewElement = () => isolatedElementsCreation()(textToDomToParent(inlineHtmlStr))[0];
+const getNewElement = () => isolatedElementsCreation()(textToDomToParent(layoutHtmlStr))[0];
 
-describe('inline', () => {
+describe('layout', () => {
 	let addElement = isolatedElementsCreation();
 	describe('basics', () => {
-		it(`${VWC_INLINE} is defined as a custom element`, async () => {
+		it(`${VWC_LAYOUT} is defined as a custom element`, async () => {
 			assert.exists(
-				customElements.get(VWC_INLINE, `${VWC_INLINE} element is not defined`)
+				customElements.get(VWC_LAYOUT, `${VWC_LAYOUT} element is not defined`)
 			);
 		});
 
@@ -41,7 +41,7 @@ describe('inline', () => {
 			};
 			for await (const [key, value] of Object.entries(COMPONENT_PROPERTIES)) {
 				const [actualElement] = addElement(
-					textToDomToParent(`<${VWC_INLINE}></${VWC_INLINE}>`)
+					textToDomToParent(`<${VWC_LAYOUT}></${VWC_LAYOUT}>`)
 				);
 				await actualElement.updateComplete;
 				expect(actualElement[key])

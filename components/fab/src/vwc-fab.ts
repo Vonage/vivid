@@ -71,7 +71,7 @@ export class VWCFab extends MWCFab {
       --></button>`;
 	}
 
-	protected renderIcon(): TemplateResult {
+	protected override renderIcon(): TemplateResult {
 		return html`${this.icon
 			? html`<vwc-icon
 					type="${this.icon}"

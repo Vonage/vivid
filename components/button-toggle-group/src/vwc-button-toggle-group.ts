@@ -1,6 +1,7 @@
 import {
-	customElement, html, LitElement, property, PropertyValues
+	customElement, html, LitElement, property,
 } from 'lit-element';
+import type { PropertyValues } from 'lit-element';
 import { style } from './vwc-button-toggle-group.css.js';
 
 declare global {
@@ -36,7 +37,7 @@ export class VWCButtonToggleGroup extends LitElement {
 	/**
 	 * @internal
 	 */
-	static styles = style;
+	static override styles = style;
 	@property({
 		attribute: MULTIPLE_ATTRIBUTE_NAME,
 		type: Boolean,
@@ -111,7 +112,7 @@ export class VWCButtonToggleGroup extends LitElement {
 		};
 	}
 
-	protected updated(changes: Map<string, boolean>): void {
+	protected override updated(changes: Map<string, boolean>): void {
 		if (changes.has('dense')) {
 			if (this.dense && this.enlarged) {
 				this.enlarged = false;
@@ -131,7 +132,7 @@ export class VWCButtonToggleGroup extends LitElement {
 		}
 	}
 
-	protected firstUpdated(_changedProperties: PropertyValues): void {
+	protected override firstUpdated(_changedProperties: PropertyValues): void {
 		super.firstUpdated(_changedProperties);
 		const slot = this.shadowRoot?.querySelector('slot') as HTMLSlotElement;
 		slot.addEventListener('slotchange', () => {
@@ -143,7 +144,7 @@ export class VWCButtonToggleGroup extends LitElement {
 		});
 	}
 
-	protected render(): unknown {
+	protected override render(): unknown {
 		return html`
 			<slot></slot>`;
 	}

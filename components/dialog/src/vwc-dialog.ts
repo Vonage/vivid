@@ -1,4 +1,5 @@
-import { customElement, property, PropertyValues } from 'lit-element';
+import { customElement, property } from 'lit-element';
+import type { PropertyValues } from 'lit-element';
 import { style } from './vwc-dialog.css.js';
 import { Dialog as MWCDialog } from '@material/mwc-dialog';
 import { styles as mwcDialogStyles } from '@material/mwc-dialog/mwc-dialog.css.js';
@@ -31,12 +32,12 @@ export class VWCDialog extends MWCDialog {
 	})
 	closeButton?: boolean;
 
-	protected firstUpdated() {
+	protected override firstUpdated() {
 		super.firstUpdated();
 		this.addDismissButton();
 	}
 
-	protected updated(_changedProperties: PropertyValues): void {
+	protected override updated(_changedProperties: PropertyValues): void {
 		super.updated(_changedProperties);
 		if (!this.renderRoot.querySelector('#dialog_icon')) {
 			this.renderRoot
