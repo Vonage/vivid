@@ -10,7 +10,7 @@ export async function createElementVariations(wrapper) {
 				}
 
 				vwc-elevation {
-					margin: 5px;
+					margin: 25px;
 					display: block;
 				}
 				.card {
