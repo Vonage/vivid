@@ -11,7 +11,7 @@ import type { ClassInfo } from 'lit-html/directives/class-map';
 import { nothing, TemplateResult } from 'lit-html';
 import { Connotation } from '@vonage/vvd-foundation/constants.js';
 
-import { accessibleBannerMessage } from './accessible-banner-directive.js';
+import { accessibleSnackbarLabel as accessibleBannerMessage } from '@material/mwc-snackbar/accessible-snackbar-label-directive';
 
 const ANIMATION_DURATION = 100;
 const KEY_ESCAPE = 'Escape';
