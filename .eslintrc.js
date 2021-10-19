@@ -3,48 +3,47 @@ module.exports = {
 		browser: true,
 		node: true,
 	},
+	parser: '@typescript-eslint/parser',
+	plugins: [
+		'mocha',
+		'no-only-tests',
+		'wc',
+		'lit',
+		'lit-a11y',
+		'@typescript-eslint'
+	],
 	extends: [
 		'eslint:recommended',
-		"plugin:mocha/recommended",
+		'plugin:mocha/recommended',
 		'plugin:compat/recommended',
 		'plugin:wc/recommended',
-		"plugin:wc/best-practice",
+		'plugin:wc/best-practice',
 		'plugin:lit/recommended',
 		'plugin:lit-a11y/recommended',
 		'plugin:import/recommended',
 		'plugin:import/typescript',
 		'plugin:@typescript-eslint/recommended',
-		"plugin:@typescript-eslint/recommended-requiring-type-checking"
 	],
-  "parser": "@typescript-eslint/parser",
 	parserOptions: {
 		ecmaVersion: 12,
 		sourceType: 'module',
 	},
-	plugins: [
-		'mocha',
-		'no-only-tests',
-		'wc',
-		    "lit",
-		'lit-a11y',
-		'@typescript-eslint'
-	],
 	settings: {
 		wc: {
 			elementBaseClasses: ['BaseElement', 'LitElement', 'FormElement'],
 		},
 	},
 	rules: {
-		// indent: ['error', 'tab'],
-		// 'no-tabs': 'off',
-		// 'no-shadow': 'error',
+		indent: ['error', 'tab'],
+		'no-tabs': 'off',
+		'no-shadow': 'error',
 		// 'no-mixed-spaces-and-tabs': 'off',
-		// 'compat/compat': 'error',
+		'compat/compat': 'error',
 		// 'linebreak-style': ['error', 'unix'],
-		// semi: ['error', 'always'],
+		semi: ['error', 'always'],
 		// 'no-use-before-define': 'off', //! should remove after PR merge
 		// 'object-shorthand': 'off', //! should remove after PR merge
-		// 'import/extensions': 'error',
+		'import/extensions': 'error',
 		// 'import/no-extraneous-dependencies': 'off', //! should remove after PR merge
 		// 'import/order': 'off', //! should remove after PR merge
 		// 'import/newline-after-import': 'off', //! should remove after PR merge
@@ -77,34 +76,34 @@ module.exports = {
 		// 'no-bitwise': 'off', //! should remove after PR merge
 		// radix: 'off', //! should remove after PR merge
 		// 'no-else-return': 'off', //! should remove after PR merge
-		// 'no-unused-vars': 'error',
+		'no-unused-vars': 'error',
 		// 'no-undef': 'off',
 		// '@typescript-eslint/no-extra-semi': 'off',
 		// '@typescript-eslint/explicit-function-return-type': 'off',
 		// '@typescript-eslint/indent': 'off',
-		// '@typescript-eslint/explicit-member-accessibility': [
-		// 	'error',
-		// 	{ accessibility: 'no-public' },
-		// ],
+		'@typescript-eslint/explicit-member-accessibility': [
+			'error',
+			{ accessibility: 'no-public' },
+		],
 		// 'no-multiple-empty-lines': 'off',
 		// 'operator-linebreak': 'off',
 		// 'max-len': 'off',
 		// 'block-spacing': 'off',
 		// 'no-new': 'warn',
-		// quotes: ['error', 'single', { avoidEscape: true }],
-		// 'no-var': 'error',
-		// curly: 'error',
-		// 'no-floating-decimal': 'error',
+		quotes: ['error', 'single', { avoidEscape: true }],
+		'no-var': 'error',
+		curly: 'error',
+		'no-floating-decimal': 'error',
 		// 'require-jsdoc': 'off',
 		// 'valid-jsdoc': 'off',
-		// 'prefer-const': 'error',
+		'prefer-const': 'error',
 		// 'comma-dangle': 'off',
-		// 'mocha/handle-done-callback': 'error',
-		// 'mocha/no-exclusive-tests': 'error',
-		// 'mocha/no-identical-title': 'error',
-		// 'mocha/no-nested-tests': 'error',
-		// 'mocha/no-pending-tests': 'error',
-		// 'mocha/no-skipped-tests': 'error',
+		'mocha/handle-done-callback': 'error',
+		'mocha/no-exclusive-tests': 'error',
+		'mocha/no-identical-title': 'error',
+		'mocha/no-nested-tests': 'error',
+		'mocha/no-pending-tests': 'error',
+		'mocha/no-skipped-tests': 'error',
 	},
 	// overrides: [
 	// 	{
