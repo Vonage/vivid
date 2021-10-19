@@ -88,6 +88,4 @@ $inline-size: var(#{variables.$side-drawer-inline-size}, 280px);
 	right: 0;
 	bottom: 0;
 	left: 0;
-	background-color: var(#{scrim-mixins.$vvd-scrim--background-color});
-	opacity: var(#{scrim-mixins.$vvd-scrim--opacity});
 }

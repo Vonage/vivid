@@ -380,7 +380,7 @@ describe('button', () => {
 			await waitNextTask();
 			const innerButton = b.shadowRoot.querySelector('.mdc-button.mdc-button--unelevated');
 			expect(innerButton).exist;
-			assertComputedStyle(innerButton, { color: 'rgb(153,153,153)', backgroundColor: 'rgb(204,204,204)' });
+			assertComputedStyle(innerButton, { color: 'rgb(146,146,146)', backgroundColor: 'rgb(204,204,204)' });
 		});
 
 		it('should style disabled state correctly (outlined)', async () => {
@@ -393,11 +393,11 @@ describe('button', () => {
 			const innerButton = b.shadowRoot.querySelector('.mdc-button.mdc-button--outlined');
 			expect(innerButton).exist;
 			assertComputedStyle(innerButton, {
-				color: 'rgb(153,153,153)',
-				borderTopColor: 'rgb(153,153,153)',
-				borderRightColor: 'rgb(153,153,153)',
-				borderBottomColor: 'rgb(153,153,153)',
-				borderLeftColor: 'rgb(153,153,153)'
+				color: 'rgb(146,146,146)',
+				borderTopColor: 'rgb(146,146,146)',
+				borderRightColor: 'rgb(146,146,146)',
+				borderBottomColor: 'rgb(146,146,146)',
+				borderLeftColor: 'rgb(146,146,146)'
 			});
 		});
 	});

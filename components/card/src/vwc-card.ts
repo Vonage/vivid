@@ -18,7 +18,7 @@ export class VWCCard extends LitElement {
 	/**
 	 * @internal
 	 */
-	static styles = style;
+	static override styles = style;
 
 	@property({
 		reflect: true,
@@ -57,7 +57,7 @@ export class VWCCard extends LitElement {
 		return (this.headerContentExists) ? '' : 'no-header-content';
 	}
 
-	protected render(): unknown {
+	protected override render(): unknown {
 		const actionsClassMap = {
 			'no-actions-content': !(this.shouldShowActionsSlot)
 		};

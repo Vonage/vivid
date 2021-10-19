@@ -9,17 +9,21 @@ export default {
 	title: 'Components/Top App Bar',
 	component: 'vwc-top-app-bar',
 	argTypes
-}
+};
 
-const Template = (args) => html`
+const Template = args => html`
+	<style>
+		.sb-show-main.sb-main-padded {
+			padding: 0;
+		}
+	</style>
 	<vwc-top-app-bar ...=${spread(args)}>
-		<vwc-icon-button slot="navigationIcon" icon="menu-line" layout="filled"></vwc-icon-button>
+		<vwc-icon-button slot="navigationIcon" icon="menu-line"></vwc-icon-button>
 		<span slot="title">Top App Bar</span>
 
-		<vwc-icon-button slot="actionItems" icon="twitter-mono" layout="filled"></vwc-icon-button>
-		<vwc-icon-button slot="actionItems" icon="facebook-mono" layout="filled"></vwc-icon-button>
-		<vwc-icon-button slot="actionItems" icon="heart-solid" layout="filled"></vwc-icon-button>
-		<span slot="actionItems">Toggle theme:</span>
+		<vwc-icon-button slot="actionItems" icon="twitter-mono"></vwc-icon-button>
+		<vwc-icon-button slot="actionItems" icon="facebook-mono"></vwc-icon-button>
+		<vwc-icon-button slot="actionItems" icon="heart-solid"></vwc-icon-button>
 		<vwc-theme-switch slot="actionItems"></vwc-theme-switch>
 
 		<div id="content">
@@ -37,3 +41,6 @@ export const Default = Template.bind({});
 
 export const Dense = Template.bind({});
 Dense.args = { dense: '' };
+
+export const Alternate = Template.bind({});
+Alternate.args = { alternate: true };

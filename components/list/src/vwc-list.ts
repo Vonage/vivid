@@ -22,7 +22,7 @@ MWCList.styles = [styleCoupling, mwcListStyles, vwcListStyle];
 @customElement('vwc-list')
 export class VWCList extends MWCList {
 	@debounced()
-	layout() {
+	override layout() {
 		super.layout();
 	}
 }

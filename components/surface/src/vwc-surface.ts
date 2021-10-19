@@ -14,5 +14,5 @@ declare global {
 
 @customElement('vwc-surface')
 export class VWCSurface extends MenuSurfaceBase {
-	static styles = [mwcSurfaceStyles, vwcSurfaceStyle];
+	static override styles = [mwcSurfaceStyles, vwcSurfaceStyle];
 }

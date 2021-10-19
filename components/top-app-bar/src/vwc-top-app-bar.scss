@@ -7,7 +7,14 @@
 	--mdc-theme-on-primary: var(#{scheme-variables.$vvd-color-on-canvas});
 	@include typography.typography-mdc-coupling('headline6', 'subtitle-2');
 }
+
+/* stylelint-disable */
 .mdc-top-app-bar--fixed {
-	// TODO when ready - @include from mixin or avoid magic string and refer to sass variable
-	--mdc-top-app-bar-fixed-box-shadow: var(--vvd-scheme-elevation-dp-4-box-shadow);
+	/* stylelint-enable */
+	transition: filter 200ms linear 0s;
+}
+
+.mdc-top-app-bar--fixed-scrolled {
+	box-shadow: unset;
+	filter: var(#{scheme-variables.$vvd-shadow-surface-4dp});
 }

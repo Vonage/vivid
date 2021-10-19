@@ -6,9 +6,9 @@ import {
 	customElement,
 	property,
 	html,
-	TemplateResult,
-	PropertyValues,
+	TemplateResult
 } from 'lit-element';
+import type { PropertyValues } from 'lit-element';
 import { Select as MWCSelect } from '@material/mwc-select';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
 import { style as vwcSelectStyle } from './vwc-select.css.js';
@@ -48,28 +48,28 @@ export class VWCSelect extends MWCSelect {
 	@property({ type: String, reflect: true })
 	name: string | undefined;
 
-	connectedCallback(): void {
+	override connectedCallback(): void {
 		super.connectedCallback();
 		if (!this.hasAttribute('outlined')) {
 			this.outlined = true;
 		}
 	}
 
-	async firstUpdated(): Promise<void> {
+	override async firstUpdated(): Promise<void> {
 		await super.firstUpdated();
 		this.replaceDropDownIcon();
 		associateWithForm(this, this.formElement);
 		handleAutofocus(this);
 	}
 
-	protected update(changedProperties: PropertyValues): void {
+	protected override update(changedProperties: PropertyValues): void {
 		super.update(changedProperties);
 		if (this.shape === 'pill') {
 			this.dense = true;
 		}
 	}
 
-	protected updated(changedProperties: PropertyValues): void {
+	protected override updated(changedProperties: PropertyValues): void {
 		super.updated(changedProperties);
 		const selectedText = this.shadowRoot?.querySelector(
 			'.mdc-select__selected-text'
@@ -80,7 +80,7 @@ export class VWCSelect extends MWCSelect {
 		}
 	}
 
-	protected renderHelperText(): TemplateResult | string {
+	protected override renderHelperText(): TemplateResult | string {
 		if (!this.shouldRenderHelperText) {
 			return '';
 		}
@@ -97,14 +97,14 @@ export class VWCSelect extends MWCSelect {
 		>`;
 	}
 
-	protected renderLeadingIcon(): TemplateResult | string {
+	protected override renderLeadingIcon(): TemplateResult | string {
 		if (!this.icon) {
 			return '';
 		}
 		return html`<vwc-icon class="vvd-select-icon" type="${this.icon}"></vwc-icon>`;
 	}
 
-	protected renderOutline(): TemplateResult | Record<string, unknown> {
+	protected override renderOutline(): TemplateResult | Record<string, unknown> {
 		if (!this.outlined) {
 			return {};
 		}

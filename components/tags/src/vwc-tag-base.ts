@@ -3,7 +3,8 @@ import type { Ripple } from '@material/mwc-ripple/mwc-ripple';
 import { RippleHandlers } from '@material/mwc-ripple/ripple-handlers';
 
 import type { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
-import { ClassInfo, classMap } from 'lit-html/directives/class-map';
+import { classMap } from 'lit-html/directives/class-map';
+import type { ClassInfo } from 'lit-html/directives/class-map';
 import {
 	 LitElement, html, property, TemplateResult, queryAsync, state, query, eventOptions
 } from 'lit-element';
@@ -50,7 +51,7 @@ export class VWCTagBase extends LitElement {
   	return this.ripple;
   });
 
-  focus(): void {
+  override focus(): void {
   	const selectableElement = this.selectableElement;
   	if (selectableElement) {
   		this.rippleHandlers.startFocus();
@@ -58,7 +59,7 @@ export class VWCTagBase extends LitElement {
   	}
   }
 
-  blur(): void {
+  override blur(): void {
   	const selectableElement = this.selectableElement;
   	if (selectableElement) {
   		this.rippleHandlers.endFocus();
@@ -119,7 +120,7 @@ export class VWCTagBase extends LitElement {
 		</span>`;
   }
 
-  render(): TemplateResult {
+  override render(): TemplateResult {
   	return this.selectable
   		? this.renderTagSelectable()
   		: html`<span class="vwc-tag ${classMap(this.getRenderClasses())}">

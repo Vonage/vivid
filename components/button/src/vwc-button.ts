@@ -54,7 +54,7 @@ export class VWCButton extends MWCButton {
 	value?:string
 
 	@property({ type: Boolean, reflect: true })
-	dense = false;
+	override dense = false;
 
 	@property({ type: Boolean, reflect: true })
 	enlarged = false;
@@ -83,7 +83,7 @@ export class VWCButton extends MWCButton {
 		}
 	}
 
-	attributeChangedCallback(
+	override attributeChangedCallback(
 		name: string,
 		oldval: string | null,
 		newval: string | null
@@ -104,7 +104,7 @@ export class VWCButton extends MWCButton {
 			});
 	}
 
-	protected updated(changes: Map<string, boolean>): void {
+	protected override updated(changes: Map<string, boolean>): void {
 		if (changes.has('type')) {
 			this.#_hiddenButton?.setAttribute('type', this.getAttribute('type') ?? '');
 		}
@@ -149,11 +149,11 @@ export class VWCButton extends MWCButton {
 		}
 	}
 
-	protected renderIcon(): TemplateResult {
+	protected override renderIcon(): TemplateResult {
 		return html`<vwc-icon	type="${this.icon}"></vwc-icon>`;
 	}
 
-	protected getRenderClasses() {
+	protected override getRenderClasses() {
 		return classMap({
 			'mdc-button--raised': this.raised,
 			'mdc-button--unelevated': this.unelevated,
@@ -170,10 +170,15 @@ export class VWCButton extends MWCButton {
 		return button;
 	}
 
-	connectedCallback(): void {
+	override connectedCallback(): void {
 		super.connectedCallback();
 		this.addEventListener('click', this._handleClick);
 		this.appendChild(this.#_hiddenButton);
+	}
+
+	override disconnectedCallback(): void {
+		super.disconnectedCallback();
+		this.removeEventListener('click', this._handleClick);
 	}
 }
 
