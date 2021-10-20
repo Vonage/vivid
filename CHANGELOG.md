@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.21.0](https://github.com/Vonage/vivid/compare/v2.20.1...v2.21.0) (2021-10-20)
+
+
+### Bug Fixes
+
+* **elevation:** missing vvd core ([#1097](https://github.com/Vonage/vivid/issues/1097)) ([4673fda](https://github.com/Vonage/vivid/commit/4673fda241b94e2745c309bcc9ebb07d4a02549a))
+* **vwc-button:** multiple click events generated on button ([#1101](https://github.com/Vonage/vivid/issues/1101)) ([ca298b3](https://github.com/Vonage/vivid/commit/ca298b30ac669a0bfee50e11e245eb469f1206f5))
+* **vwc-datepicker:** lit-html versions mismatch ([#1102](https://github.com/Vonage/vivid/issues/1102)) ([bed2166](https://github.com/Vonage/vivid/commit/bed21664486edfb3b0c128e115345eaedc38e86b)), closes [/github.com/Matsuuu/lit-flatpickr/commit/19f77f868eae66077b3f93ffde03071225b6fb58#diff-7ae45ad102eab3b6d7e7896acd08c427a9b25b346470d7bc6507b6481575d519](https://github.com//github.com/Matsuuu/lit-flatpickr/commit/19f77f868eae66077b3f93ffde03071225b6fb58/issues/diff-7ae45ad102eab3b6d7e7896acd08c427a9b25b346470d7bc6507b6481575d519)
+* **vwc-top-app-bar:** alternate ([#1087](https://github.com/Vonage/vivid/issues/1087)) ([9ecf5ed](https://github.com/Vonage/vivid/commit/9ecf5ede1a11634b49d9e7fa493131d3837bb3fe))
+* **workspace:** handling of unsupported css props ([#685](https://github.com/Vonage/vivid/issues/685)) ([207beb8](https://github.com/Vonage/vivid/commit/207beb85df50d822d2a8bd9eab503af8ec87a54a))
+
+
+### Features
+
+* **boilerplate application:** side drawer template ([#1088](https://github.com/Vonage/vivid/issues/1088)) ([29946b0](https://github.com/Vonage/vivid/commit/29946b0c7863e1ce34aa78378c8fcf599c88f087))
+* elevation tokens builder ([#1092](https://github.com/Vonage/vivid/issues/1092)) ([949105c](https://github.com/Vonage/vivid/commit/949105c883d92638084a7ff6a7ba9177471ce972))
+* **vivid templates:** add login template ([#1057](https://github.com/Vonage/vivid/issues/1057)) ([ccaebb9](https://github.com/Vonage/vivid/commit/ccaebb9cfed013fd0699924f81c1aa3c88a158a1))
+
+
+
+
+
 ## [2.20.1](https://github.com/Vonage/vivid/compare/v2.20.0...v2.20.1) (2021-10-07)
 
 **Note:** Version bump only for package @vivid/root

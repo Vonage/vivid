@@ -12846,7 +12846,7 @@ lit-element@~2.4.0:
   dependencies:
     lit-html "^1.1.1"
 
-lit-flatpickr@^0.2.5:
+lit-flatpickr@0.2.9:
   version "0.2.9"
   resolved "https://registry.yarnpkg.com/lit-flatpickr/-/lit-flatpickr-0.2.9.tgz#2be4185030600504ff0b0534e1994d5999986271"
   integrity sha512-E0reWYmdrm08hJGMqEuMSaPHjH5oVafsZukp1smqPIJW+fENHFnQvgdjxP6WUaqL/LGz/vZqBOmnFNvhxGIyjw==
