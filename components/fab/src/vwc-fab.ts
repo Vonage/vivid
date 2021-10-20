@@ -2,7 +2,7 @@ import '@vonage/vvd-core';
 import {
 	customElement, property, html, TemplateResult
 } from 'lit-element';
-import { classMap } from 'lit-html/directives/class-map';
+import { classMap } from 'lit-html/directives/class-map.js';
 import { Fab as MWCFab } from '@material/mwc-fab';
 import { styles as mwcFabStyles } from '@material/mwc-fab/mwc-fab.css.js';
 import { style as vwcFabStyle } from './vwc-fab.css.js';

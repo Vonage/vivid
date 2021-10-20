@@ -1,10 +1,10 @@
-import '@material/mwc-ripple/mwc-ripple';
-import type { Ripple } from '@material/mwc-ripple/mwc-ripple';
-import { RippleHandlers } from '@material/mwc-ripple/ripple-handlers';
+import '@material/mwc-ripple';
+import type { Ripple } from '@material/mwc-ripple';
+import { RippleHandlers } from '@material/mwc-ripple/ripple-handlers.js';
 
-import type { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
-import { classMap } from 'lit-html/directives/class-map';
-import type { ClassInfo } from 'lit-html/directives/class-map';
+import type { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants.js';
+import { classMap } from 'lit-html/directives/class-map.js';
+import type { ClassInfo } from 'lit-html/directives/class-map.js';
 import {
 	LitElement, html, property, TemplateResult, queryAsync, state, query, eventOptions
 } from 'lit-element';

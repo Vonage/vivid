@@ -5,8 +5,8 @@ import {
 	property,
 	TemplateResult,
 } from 'lit-element';
-import { classMap } from 'lit-html/directives/class-map';
-import type { ClassInfo } from 'lit-html/directives/class-map';
+import { classMap } from 'lit-html/directives/class-map.js';
+import type { ClassInfo } from 'lit-html/directives/class-map.js';
 import { Size } from '@vonage/vvd-foundation/constants.js';
 import { style } from './vwc-layout.css.js';
 

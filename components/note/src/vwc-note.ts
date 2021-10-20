@@ -3,8 +3,8 @@ import '@vonage/vwc-icon';
 import {
 	customElement, property, LitElement, CSSResult, html, TemplateResult
 } from 'lit-element';
-import { classMap } from 'lit-html/directives/class-map';
-import type { ClassInfo } from 'lit-html/directives/class-map';
+import { classMap } from 'lit-html/directives/class-map.js';
+import type { ClassInfo } from 'lit-html/directives/class-map.js';
 import { style as vwcNoteStyle } from './vwc-note.css.js';
 import type { Connotation } from '@vonage/vvd-foundation/constants.js';
 

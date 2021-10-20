@@ -3,12 +3,12 @@ import '@vonage/vwc-icon';
 import {
 	customElement, property, html, TemplateResult
 } from 'lit-element';
-import { classMap } from 'lit-html/directives/class-map';
+import { classMap } from 'lit-html/directives/class-map.js';
 import { Button as MWCButton } from '@material/mwc-button';
 import { style as vwcButtonStyle } from './vwc-button.css.js';
 import { styles as mwcButtonStyles } from '@material/mwc-button/styles.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
-import type { Connotation, Layout, Shape } from '@vonage/vvd-foundation/constants';
+import type { Connotation, Layout, Shape } from '@vonage/vvd-foundation/constants.js';
 import type { PropertyValues } from 'lit-element';
 
 declare global {

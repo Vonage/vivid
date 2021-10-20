@@ -2,10 +2,10 @@ import {
 	html, LitElement, property, TemplateResult
 } from 'lit-element';
 import { nothing } from 'lit-html';
-import { classMap } from 'lit-html/directives/class-map';
-import type { ClassInfo } from 'lit-html/directives/class-map';
-import type { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
-import { handleMultipleDenseProps } from '@vonage/vvd-foundation/general-utils';
+import { classMap } from 'lit-html/directives/class-map.js';
+import type { ClassInfo } from 'lit-html/directives/class-map.js';
+import type { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants.js';
+import { handleMultipleDenseProps } from '@vonage/vvd-foundation/general-utils.js';
 
 type BadgeConnotation = Extract<
 	Connotation,

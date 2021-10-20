@@ -1,5 +1,5 @@
 import { customElement } from 'lit-element';
-import { RadioListItem as MWCRadioListItem } from '@material/mwc-list/mwc-radio-list-item';
+import { RadioListItem as MWCRadioListItem } from '@material/mwc-list/mwc-radio-list-item.js';
 import { styles as mwcListItemStyles } from '@material/mwc-list/mwc-list-item.css.js';
 import { styles as mwcControlListItemStyles } from '@material/mwc-list/mwc-control-list-item.css.js';
 import { style as vwcRadioListItemStyle } from './vwc-radio-list-item.css.js';

@@ -3,7 +3,7 @@ import {
 	customElement, html, LitElement, property, TemplateResult
 } from 'lit-element';
 import { style } from './vwc-calendar-event.css.js';
-import { styleMap } from 'lit-html/directives/style-map';
+import { styleMap } from 'lit-html/directives/style-map.js';
 
 declare global {
 	interface HTMLElementTagNameMap {

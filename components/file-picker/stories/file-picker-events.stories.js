@@ -12,7 +12,7 @@ export default {
 
 const Template = args => html`
 	<vwc-file-picker ...=${spread(args.self)} @change="${onChange}">
-		<input type="file" name="file-input" ...=${spread(args.input)}/>
+		<input type="file" name="file-input" ...=${spread(args.input)} />
 		<vwc-button slot="button" type="button" layout="filled" icon="upload" trailingIcon>Add Files</vwc-button>
 	</vwc-file-picker>
 `;
@@ -42,7 +42,7 @@ const TemplateWithForm = args => html`
 		<hr>
 		<div>
 			<vwc-file-picker ...=${spread(args.self)}>
-				<input type="file" name="file-input" ...=${spread(args.input)}/>
+				<input type="file" name="file-input" ...=${spread(args.input)} />
 				<vwc-button slot="button" type="button" layout="filled" icon="upload" trailingIcon>Add Files</vwc-button>
 			</vwc-file-picker>
 		</div>

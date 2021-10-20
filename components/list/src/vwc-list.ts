@@ -1,7 +1,7 @@
 import '@vonage/vvd-core';
-import { debounced } from '@vonage/vvd-foundation/general-utils';
+import { debounced } from '@vonage/vvd-foundation/general-utils.js';
 import { customElement } from 'lit-element';
-import { List as MWCList } from '@material/mwc-list/mwc-list';
+import { List as MWCList } from '@material/mwc-list';
 import { style as vwcListStyle } from './vwc-list.css.js';
 import { styles as mwcListStyles } from '@material/mwc-list/mwc-list.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';

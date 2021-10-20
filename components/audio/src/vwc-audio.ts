@@ -1,12 +1,12 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-media-controller';
 import '@vonage/vwc-media-controller/vwc-scrub-bar.js';
-import { ifDefined } from 'lit-html/directives/if-defined';
-import { classMap } from 'lit-html/directives/class-map';
-import type { ClassInfo } from 'lit-html/directives/class-map';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
+import { classMap } from 'lit-html/directives/class-map.js';
+import type { ClassInfo } from 'lit-html/directives/class-map.js';
 import { pipe } from 'ramda';
 import { style as AudioStyle } from './vwc-audio.css.js';
-import { ariaProperty } from '@material/mwc-base/aria-property';
+import { ariaProperty } from '@material/mwc-base/aria-property.js';
 import '@vonage/vwc-icon';
 import {
 	LitElement,
@@ -18,9 +18,9 @@ import {
 import type { PropertyValues } from 'lit-element';
 
 import { nothing } from 'lit-html';
-import { internalProperty, property, query } from 'lit-element/lib/decorators';
-import type { VWCScrubBar } from '@vonage/vwc-media-controller/vwc-scrub-bar';
-import type { Connotation } from '@vonage/vvd-foundation/constants';
+import { internalProperty, property, query } from 'lit-element/lib/decorators.js';
+import type { VWCScrubBar } from '@vonage/vwc-media-controller/vwc-scrub-bar.js';
+import type { Connotation } from '@vonage/vvd-foundation/constants.js';
 
 const SECOND = 1;
 const MINUTE = 60 * SECOND;

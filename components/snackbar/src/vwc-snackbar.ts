@@ -2,17 +2,17 @@ import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
 import '@vonage/vwc-icon-button';
 
-import { Connotation, Position } from '@vonage/vvd-foundation/constants';
+import { Connotation, Position } from '@vonage/vvd-foundation/constants.js';
 import {
 	customElement,
 	html,
 	property,
 	TemplateResult,
 } from 'lit-element';
-import { classMap } from 'lit-html/directives/class-map';
-import type { ClassInfo } from 'lit-html/directives/class-map';
-import { ifDefined } from 'lit-html/directives/if-defined';
-import { SnackbarBase as MWCSnackbarBase } from '@material/mwc-snackbar/mwc-snackbar-base';
+import { classMap } from 'lit-html/directives/class-map.js';
+import type { ClassInfo } from 'lit-html/directives/class-map.js';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
+import { SnackbarBase as MWCSnackbarBase } from '@material/mwc-snackbar/mwc-snackbar-base.js';
 import { style as vwcSnackbarStyle } from './vwc-snackbar.css.js';
 import { styles as mwcSnackbarStyles } from '@material/mwc-snackbar/mwc-snackbar.css.js';
 import { accessibleSnackbarLabel } from '@material/mwc-snackbar/accessible-snackbar-label-directive.js';

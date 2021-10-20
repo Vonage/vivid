@@ -4,15 +4,15 @@ import '@material/mwc-ripple';
 import {
 	html, customElement, property, TemplateResult, CSSResult
 } from 'lit-element';
-import { classMap } from 'lit-html/directives/class-map';
-import type { ClassInfo } from 'lit-html/directives/class-map';
-import { ifDefined } from 'lit-html/directives/if-defined';
+import { classMap } from 'lit-html/directives/class-map.js';
+import type { ClassInfo } from 'lit-html/directives/class-map.js';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
 import { nothing } from 'lit-html';
 import { IconButtonToggleBase } from '@material/mwc-icon-button-toggle/mwc-icon-button-toggle-base.js';
 import { styles as MWCIconButtonStyles } from '@material/mwc-icon-button/mwc-icon-button.css.js';
 import { style as VWCIconButtonStyle } from '@vonage/vwc-icon-button/vwc-icon-button.css.js';
-import { handleMultipleDenseProps } from '@vonage/vvd-foundation/general-utils';
-import type { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
+import { handleMultipleDenseProps } from '@vonage/vvd-foundation/general-utils.js';
+import type { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants.js';
 
 declare global {
 	interface HTMLElementTagNameMap {

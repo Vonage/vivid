@@ -2,7 +2,7 @@ import {
 	LitElement, html, TemplateResult, property
 } from 'lit-element';
 import { nothing } from 'lit-html';
-import { ifDefined } from 'lit-html/directives/if-defined';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
 
 export class VWCEmptyStateBase extends LitElement {
 	@property({ type: String, reflect: true })

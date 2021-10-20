@@ -1,5 +1,5 @@
 import { LitElement, property } from 'lit-element';
-import { observer } from '@material/mwc-base/observer';
+import { observer } from '@material/mwc-base/observer.js';
 
 export abstract class VWCExpansionPanelBase extends LitElement {
 	@property({ type: Boolean, reflect: true })
