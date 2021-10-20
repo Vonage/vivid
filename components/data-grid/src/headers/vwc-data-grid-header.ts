@@ -30,13 +30,13 @@ export class VWCDataGridHeader extends LitElement implements DataGridHeader {
 	static override styles = [vwcDataGridHeaderStyle];
 
 	@property({ type: Boolean, reflect: true })
-	sortable = false;
+		sortable = false;
 
 	@property({ type: String, reflect: true })
-	direction: string | null = null;
+		direction: string | null = null;
 
 	@property({ type: String, reflect: true })
-	path?: string = undefined;
+		path?: string = undefined;
 
 	protected override updated(changes: PropertyValues): void {
 		if (changes.has('sortable')) {

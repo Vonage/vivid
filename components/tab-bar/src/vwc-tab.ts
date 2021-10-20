@@ -3,7 +3,7 @@ import '@vonage/vwc-icon';
 import {
 	customElement, property, html, TemplateResult
 } from 'lit-element';
-import { classMap } from 'lit-html/directives/class-map';
+import { classMap } from 'lit-html/directives/class-map.js';
 import { Tab as MWCTab } from '@material/mwc-tab';
 import { style as vwcTabStyle } from './vwc-tab.css.js';
 import { styles as mwcTabStyles } from '@material/mwc-tab/mwc-tab.css.js';
@@ -22,13 +22,13 @@ MWCTab.styles = [styleCoupling, mwcTabStyles, vwcTabStyle];
 @customElement('vwc-tab')
 export class VWCTab extends MWCTab {
 	@property({ type: Boolean, reflect: true })
-	disabled = false;
+		disabled = false;
 
 	@property({ type: Boolean, reflect: true })
-	block = false;
+		block = false;
 
 	@property({ type: Boolean, reflect: true })
-	trailingIcon = false;
+		trailingIcon = false;
 
 	protected renderIcon(): TemplateResult {
 		return html`<vwc-icon type="${this.icon}"></vwc-icon>`;

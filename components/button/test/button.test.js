@@ -75,6 +75,36 @@ describe('button', () => {
 			expect(submitted).to.equal(true);
 		});
 
+		it('should emit a click event only once when inside a form', async function () {
+			let clicked = 0;
+			const addedElements = addElement(
+				textToDomToParent(
+					`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} type="submit">Button Text</${COMPONENT_NAME}></form>`
+				)
+			);
+			await waitNextTask();
+			const formElement = addedElements[0];
+			const actualElement = formElement.firstChild;
+			actualElement.addEventListener('click', () => (clicked++));
+
+			actualElement.click();
+			expect(clicked).to.equal(1);
+		});
+
+		it('should emit a click event only once when outside a form', async function () {
+			let clicked = 0;
+			const [actualElement] = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} type="submit">Button Text</${COMPONENT_NAME}>`
+				)
+			);
+			await waitNextTask();
+			actualElement.addEventListener('click', () => (clicked++));
+
+			actualElement.click();
+			expect(clicked).to.equal(1);
+		});
+
 		it('should reset form when of type reset', async function () {
 			let submitted = false;
 			let reset = false;
@@ -380,7 +410,7 @@ describe('button', () => {
 			await waitNextTask();
 			const innerButton = b.shadowRoot.querySelector('.mdc-button.mdc-button--unelevated');
 			expect(innerButton).exist;
-			assertComputedStyle(innerButton, { color: 'rgb(153,153,153)', backgroundColor: 'rgb(204,204,204)' });
+			assertComputedStyle(innerButton, { color: 'rgb(146,146,146)', backgroundColor: 'rgb(204,204,204)' });
 		});
 
 		it('should style disabled state correctly (outlined)', async () => {
@@ -393,11 +423,11 @@ describe('button', () => {
 			const innerButton = b.shadowRoot.querySelector('.mdc-button.mdc-button--outlined');
 			expect(innerButton).exist;
 			assertComputedStyle(innerButton, {
-				color: 'rgb(153,153,153)',
-				borderTopColor: 'rgb(153,153,153)',
-				borderRightColor: 'rgb(153,153,153)',
-				borderBottomColor: 'rgb(153,153,153)',
-				borderLeftColor: 'rgb(153,153,153)'
+				color: 'rgb(146,146,146)',
+				borderTopColor: 'rgb(146,146,146)',
+				borderRightColor: 'rgb(146,146,146)',
+				borderBottomColor: 'rgb(146,146,146)',
+				borderLeftColor: 'rgb(146,146,146)'
 			});
 		});
 	});

@@ -1,11 +1,11 @@
 import '@vonage/vvd-core';
 import { customElement, property, query } from 'lit-element';
-import { observer } from '@material/mwc-base/observer';
+import { observer } from '@material/mwc-base/observer.js';
 import { CircularProgress as MWCCircularProgress } from '@material/mwc-circular-progress';
 import { styles as mwcCircularProgressStyles } from '@material/mwc-circular-progress/mwc-circular-progress.css.js';
 import { style as vwcCircularProgressStyle } from './vwc-circular-progress.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
-import type { Connotation } from '@vonage/vvd-foundation/constants';
+import type { Connotation } from '@vonage/vvd-foundation/constants.js';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -27,7 +27,7 @@ MWCCircularProgress.styles = [styleCoupling, mwcCircularProgressStyles, vwcCircu
 
 @customElement('vwc-circular-progress')
 export class VWCCircularProgress extends MWCCircularProgress {
-  @query('.mdc-circular-progress') protected rootEl!: HTMLElement;
+	@query('.mdc-circular-progress') protected rootEl!: HTMLElement;
 
 	@property({ type: String, reflect: true })
 	@observer(function (this: VWCCircularProgress, newVal: CircularProgressConnotation, oldVal: CircularProgressConnotation) {
@@ -36,5 +36,5 @@ export class VWCCircularProgress extends MWCCircularProgress {
 			this.rootEl.classList.add(`connotation-${newVal}`);
 		}
 	})
-	connotation?: CircularProgressConnotation;
+		connotation?: CircularProgressConnotation;
 }

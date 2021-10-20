@@ -17,19 +17,23 @@ describe('design tokens service', () => {
 				`light/${MAIN}.scss`,
 			];
 			const schemeFiles = getSchemeFiles();
-			expect(Object.keys(schemeFiles).sort()).eql(EXPECTED_MATRIX);
-			Object.keys(schemeFiles).forEach((sf) => {
-				expect(schemeFiles[sf]).exist.and.not.empty;
-			});
+			expect(Object.keys(schemeFiles)
+				.sort())
+				.eql(EXPECTED_MATRIX);
+			Object.keys(schemeFiles)
+				.forEach((sf) => {
+					expect(schemeFiles[sf]).exist.and.not.empty;
+				});
 		});
 
-		it("should have symmetric variables number in each scheme's **base** variables", async () => {
+		it('should have symmetric variables number in each scheme\'s **base** variables', async () => {
 			const schemeVariables = getSchemeVariables();
 			Object.values(schemeVariables)
 				.map(schemeVars => Object.keys(schemeVars).length)
 				.reduce((result, schemeVarsLength) => {
 					if (result) {
-						expect(schemeVarsLength).equal(result);
+						expect(schemeVarsLength)
+							.equal(result);
 					} else {
 						return schemeVarsLength;
 					}
@@ -42,22 +46,22 @@ describe('design tokens service', () => {
 			Object.keys(schemeVariables)
 				.filter(schemeName => schemeName.includes(MAIN))
 				.forEach((schemeName) => {
-					Object.keys(schemeVariables[schemeName]).forEach((cssVarName) => {
-						const set = testSet[cssVarName] || (testSet[cssVarName] = new Set());
-						set.add(schemeName);
-					});
+					Object.keys(schemeVariables[schemeName])
+						.forEach((cssVarName) => {
+							const set = testSet[cssVarName] || (testSet[cssVarName] = new Set());
+							set.add(schemeName);
+						});
 				});
 
 			expect(Object.values(testSet)).not.empty;
 			const expectedCount = Object.values(testSet)[0].size;
-			expect(expectedCount).greaterThan(0);
-			Object.values(testSet).forEach(set => expect(set.size).equal(expectedCount));
+			expect(expectedCount)
+				.greaterThan(0);
+			Object.values(testSet)
+				.forEach(set => expect(set.size)
+					.equal(expectedCount));
 		});
 
-		//	we have a matrix of schemes and flavors: each scheme hase 2 flavors (main/alternate)
-		//	this test checks that schemes are distinct from each other while comparing the same flavor, eg:
-		//	- main: light != dark != ...
-		//	- alternate: light != dark != ...
 		it('should have differing values in different schemes (light/dark/...) per flavor', async () => {
 			const schemeVariables = getSchemeVariables();
 			const schemesListByFlavor = {};
@@ -70,37 +74,6 @@ describe('design tokens service', () => {
 			assertListsOfDistinct(schemesListByFlavor);
 		});
 
-		//	we have a matrix of schemes and flavors: each scheme hase 2 flavors (main/alternate)
-		//	this test checks that alternate flavor has ONLY a DISTINCT props from main
-		// it('should have differing values in different flavors (main/alternate) per scheme', async () => {
-		// 	const schemeVariables = getSchemeVariables();
-		// 	let totalAlternatesTested = 0;
-		// 	for (const key in schemeVariables) {
-		// 		const [scheme, flavor] = key.split('/');
-		// 		if (flavor === ALTERNATE) {
-		// 			totalAlternatesTested++;
-		// 			const altSet = schemeVariables[key];
-		// 			const baseSet = schemeVariables[`${scheme}/${MAIN}`];
-		// 			expect(altSet).exist;
-		// 			expect(baseSet).exist;
-		// 			const altKeys = Object.keys(altSet);
-		// 			expect(altKeys).not.empty;
-		// 			altKeys.forEach((altKey) => {
-		// 				expect(altKey in baseSet).true;
-		// 				expect(
-		// 					baseSet[altKey],
-		// 					`${altKey} NOT equal or not present in alt`
-		// 				).not.equal(altSet[altKey]);
-		// 			});
-		// 		}
-		// 	}
-		// 	expect(totalAlternatesTested).greaterThan(0);
-		// });
-
-		//	we have a matrix of schemes and flavors: each scheme hase 2 flavors (base/alternate)
-		//	this test checks that flavors are distinct withing each scheme, eg:
-		//	- light: base != alternate
-		//	- dark: base != alternate
 		it('should have differing values in different flavors (base/alternate) per scheme', async () => {
 			const schemeVariables = getSchemeVariables();
 			const flavorsListByScheme = {};
@@ -121,10 +94,11 @@ function assertListsOfDistinct(setOfLists) {
 		for (const item in list[0]) {
 			if (PRINCIPAL_SCHEME_VARIABLES_FILTER.test(item)) {
 				const checkSet = new Set(list.map(sf => sf[item]));
-				expect(checkSet.size).equal(
-					numOfItems,
-					`${item} distinctness is not as expected`
-				);
+				expect(checkSet.size)
+					.equal(
+						numOfItems,
+						`${item} distinctness is not as expected`
+					);
 			}
 		}
 	}

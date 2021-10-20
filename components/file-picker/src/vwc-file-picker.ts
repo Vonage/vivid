@@ -28,25 +28,25 @@ export class VWCFilePicker extends LitElement {
 	private filesCount = 0;
 
 	@property({ type: String, reflect: true })
-	label = '';
+		label = '';
 
 	@property({ type: String, reflect: true })
-	helper = '';
+		helper = '';
 
 	@property({ type: String, reflect: false })
-	validationMessage = '';
+		validationMessage = '';
 
 	@property({ type: String, reflect: true })
-	notAFileError = 'only file/s drop allowed';
+		notAFileError = 'only file/s drop allowed';
 
 	@property({ type: String, reflect: true })
-	tooManyFilesError = 'only one file allowed';
+		tooManyFilesError = 'only one file allowed';
 
 	@property({ type: Boolean, reflect: true })
-	'drop-zone' = true;
+		'drop-zone' = true;
 
 	@property({ type: Boolean, reflect: true, attribute: 'no-counter' })
-	noCounter = false;
+		noCounter = false;
 
 	setCustomValidity(message: string): void {
 		this.validationMessage = String(message);
