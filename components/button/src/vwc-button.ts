@@ -134,7 +134,7 @@ export class VWCButton extends MWCButton {
 		// return nothing
 	}
 
-	protected _handleClick(): void {
+	protected _handleClick(event: MouseEvent): void {
 		if (this.form) {
 			switch (this.getAttribute('type')) {
 			case 'reset':
@@ -143,7 +143,11 @@ export class VWCButton extends MWCButton {
 			case 'button':
 				break;
 			default:
-				this.#_hiddenButton.click();
+				if (event.target === this) {
+					this.#_hiddenButton.click();
+				} else {
+					event.stopImmediatePropagation();
+				}
 				break;
 			}
 		}
