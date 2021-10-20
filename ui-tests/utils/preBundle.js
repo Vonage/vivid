@@ -5,6 +5,7 @@ const { getTestFolders } = require('./files-utils');
 const listOfComponents = getTestFolders().filter(component => !componentsExcludeList.includes(component));
 
 async function buildTests() {
+	console.info('Building Tests');
 	await listOfComponents.forEach(pageGenerator.generateComponentTestPage);
 }
 
