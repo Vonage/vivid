@@ -1,13 +1,23 @@
 import '@vonage/vwc-banner';
 import 'chai-dom';
-import { html } from 'lit';
-import {
-	fixture, aTimeout
-} from '@open-wc/testing-helpers';
+import { waitNextTask, waitInterval } from '../../../test/test-helpers.js';
 
-describe('banner', function () {
+describe('banner', async function () {
+	let bannerEl;
+
+	beforeEach(async function () {
+		bannerEl = document.createElement('vwc-banner');
+		document.body.appendChild(bannerEl);
+		await waitNextTask();
+	});
+
+	afterEach(function () {
+		document.body.removeChild(bannerEl);
+	});
+
 	it('should match icon', async function () {
-		const bannerEl = await fixture(html`<vwc-banner icon="ambulance"></vwc-banner>`);
+		bannerEl.icon = "ambulance";
+		await waitNextTask();
 		expect(bannerEl.shadowRoot.querySelector('vwc-icon:first-child')).to.have.attribute('type', 'ambulance');
 	});
 
@@ -15,9 +25,14 @@ describe('banner', function () {
 		const TRANSITION_TIME = 200; // 200ms
 		const closingHandler = chai.spy();
 		const closedHandler = chai.spy();
-		const bannerEl = await fixture(html`<vwc-banner message="Hello" open @closed=${closedHandler} @closing=${closingHandler} dismissible></vwc-banner>`);
+		bannerEl.addEventListener('closed', closedHandler);
+		bannerEl.addEventListener('closing', closingHandler);
+		bannerEl.setAttribute('dismissible', '');
+		bannerEl.setAttribute('message', 'Hello');
+		bannerEl.setAttribute('open', '');
+		await waitNextTask();
 		bannerEl.shadowRoot.querySelector('vwc-icon-button')?.click();
-		await aTimeout(TRANSITION_TIME * 1.1); // additional 10% for good measure ;)
+		await waitInterval(TRANSITION_TIME * 1.1); // additional 10% for good measure ;)
 		closingHandler.should.have.been.called();
 		closedHandler.should.have.been.called();
 	});
@@ -26,9 +41,14 @@ describe('banner', function () {
 		const TRANSITION_TIME = 200;
 		const closingHandler = chai.spy();
 		const closedHandler = chai.spy();
-		const bannerEl = await fixture(html`<vwc-banner message="Hello" dismissible open @closed=${closedHandler} @closing=${closingHandler}></vwc-banner>`);
+		bannerEl.addEventListener('closed', closedHandler);
+		bannerEl.addEventListener('closing', closingHandler);
+		bannerEl.addEventListener('closing', closingHandler);
+		bannerEl.setAttribute('dismissible', '');
+		bannerEl.setAttribute('message', 'Hello');
+		bannerEl.setAttribute('open', '');
 		bannerEl.shadowRoot.querySelector('div:first-child').dispatchEvent(new KeyboardEvent('keydown', { key: "Escape" }));
-		await aTimeout(TRANSITION_TIME * 1.1); // additional 10% for good measure ;)
+		await waitInterval(TRANSITION_TIME * 1.1); // additional 10% for good measure ;)
 		closingHandler.should.have.been.called();
 		closedHandler.should.have.been.called();
 	});

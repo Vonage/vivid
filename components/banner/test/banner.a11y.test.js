@@ -1,10 +1,17 @@
 import 'chai-a11y-axe';
-import { html } from 'lit';
-import { fixture } from '@open-wc/testing-helpers';
+import { waitNextTask } from '../../../test/test-helpers.js';
 
 describe('banner a11y', function () {
+	let testedElement;
+	before(() => {
+		testedElement = document.createElement('vwc-banner');
+		document.body.appendChild(testedElement);
+	});
+	after(function () {
+		document.body.removeChild(testedElement);
+	});
 	it('should adhere to accessibility guidelines', async function () {
-		const bannerEl = await fixture(html`<vwc-banner></vwc-banner>`);
-		await expect(bannerEl).shadowDom.to.be.accessible();
+		await waitNextTask();
+		await expect(testedElement).shadowDom.to.be.accessible();
 	});
 });
