@@ -85,7 +85,7 @@ module.exports = {
 		// curly: 'error', //! remove gradually
 		'no-floating-decimal': 'error',
 		'require-jsdoc': 'off',
-		'import/default': 'off',
+		'import/default': 'off', //! remove gradually
 		'valid-jsdoc': 'off',
 		'prefer-const': 'error',
 		'comma-dangle': 'off',
@@ -115,7 +115,7 @@ module.exports = {
 				'import/extensions': 'off', //! remove gradually
 				'prefer-const': 'off', //! remove gradually
 				'comma-dangle': 'off', //! remove gradually
-				'mocha/mocha/no-exports': 'off', //! remove gradually
+				'mocha/no-exports': 'off', //! remove gradually
 				'mocha/no-async-describe': 'off', //! remove gradually
 				'no-only-tests/no-only-tests': 'error',
 				'mocha/no-mocha-arrows': 'off',
@@ -147,6 +147,7 @@ module.exports = {
 				'no-unused-vars': 'off', //! remove gradually
 				'lit/no-invalid-html': 'off', //! remove gradually
 				indent: 'off', //! remove gradually
+				'lit-a11y/anchor-is-valid': 'off', //! remove gradually
 			}
 		}
 	],
