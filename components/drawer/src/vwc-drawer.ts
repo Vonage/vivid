@@ -24,7 +24,7 @@ MWCDrawer.styles = [styleCoupling, mwcDrawerStyles, vwcDrawerStyle];
 @customElement('vwc-drawer')
 export class VWCDrawer extends MWCDrawer {
 	@property({ type: Boolean, reflect: true, attribute: DRAWER_ALTERNATE })
-	drawerAlternate = false;
+		drawerAlternate = false;
 
 	protected override updated(changes: Map<string, boolean>): void {
 		super.updated(changes);

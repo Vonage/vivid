@@ -27,7 +27,7 @@ export class VWCHelperMessage extends LitElement {
 	static override styles = [vwcHelperMessageStyle];
 
 	@property({ attribute: 'is-error', type: Boolean, reflect: true })
-	isError = false;
+		isError = false;
 
 	protected override render(): TemplateResult {
 		return html`

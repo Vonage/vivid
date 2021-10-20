@@ -1,12 +1,12 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-media-controller';
 import '@vonage/vwc-media-controller/vwc-scrub-bar.js';
-import { ifDefined } from 'lit-html/directives/if-defined';
-import { classMap } from 'lit-html/directives/class-map';
-import type { ClassInfo } from 'lit-html/directives/class-map';
+import { ifDefined } from 'lit-html/directives/if-defined.js';
+import { classMap } from 'lit-html/directives/class-map.js';
+import type { ClassInfo } from 'lit-html/directives/class-map.js';
 import { pipe } from 'ramda';
 import { style as AudioStyle } from './vwc-audio.css.js';
-import { ariaProperty } from '@material/mwc-base/aria-property';
+import { ariaProperty } from '@material/mwc-base/aria-property.js';
 import '@vonage/vwc-icon';
 import {
 	LitElement,
@@ -18,16 +18,16 @@ import {
 import type { PropertyValues } from 'lit-element';
 
 import { nothing } from 'lit-html';
-import { internalProperty, property, query } from 'lit-element/lib/decorators';
-import type { VWCScrubBar } from '@vonage/vwc-media-controller/vwc-scrub-bar';
-import type { Connotation } from '@vonage/vvd-foundation/constants';
+import { internalProperty, property, query } from 'lit-element/lib/decorators.js';
+import type { VWCScrubBar } from '@vonage/vwc-media-controller/vwc-scrub-bar.js';
+import type { Connotation } from '@vonage/vvd-foundation/constants.js';
 
 const SECOND = 1;
 const MINUTE = 60 * SECOND;
 const HOUR = 60 * MINUTE;
 
 
-const setEvents = function (eventSource: HTMLElement, handlersMap: Record<string, ()=> unknown>) {
+const setEvents = function (eventSource: HTMLElement, handlersMap: Record<string, () => unknown>) {
 	return (pipe as any)(...Object
 		.entries(handlersMap)
 		.map(([eventName, eventHandler]) => {
@@ -37,15 +37,15 @@ const setEvents = function (eventSource: HTMLElement, handlersMap: Record<string
 };
 
 /* istanbul ignore next */
-const formatTime = (seconds:number) => {
-	const outputTime:Array<number> = [];
-	[HOUR, MINUTE, SECOND].reduce((ac:number, divider:number) => {
+const formatTime = (seconds: number) => {
+	const outputTime: Array<number> = [];
+	[HOUR, MINUTE, SECOND].reduce((ac: number, divider: number) => {
 		outputTime.push(~~(ac / divider));
 		return ac % divider;
 	}, seconds);
 	return outputTime
-		.filter((segment:number, index:number, arr:number[]) => segment > 0 || index > arr.length - 3)
-		.map((segment:number, index:number) => segment.toString().padStart(index === 0 ? 1 : 2, '0'))
+		.filter((segment: number, index: number, arr: number[]) => segment > 0 || index > arr.length - 3)
+		.map((segment: number, index: number) => segment.toString().padStart(index === 0 ? 1 : 2, '0'))
 		.join(':');
 };
 
@@ -58,26 +58,26 @@ export class VWCAudio extends LitElement {
 	static override styles = [AudioStyle];
 
 	@property({ type: String, reflect: true })
-	connotation?: AudioConnotation;
+		connotation?: AudioConnotation;
 
 	@query('.audio-el')
-	_audio!:HTMLAudioElement;
+		_audio!: HTMLAudioElement;
 
 	@query('.scrubber')
-	_scrubber!:VWCScrubBar;
+		_scrubber!: VWCScrubBar;
 
 	@ariaProperty
 	@property({ attribute: 'aria-controls', type: String })
-	ariaControls?:string;
+		ariaControls?: string;
 
 	@property({ type: String, reflect: true })
-	src?:string;
+		src?: string;
 
 	@property({ type: Boolean, reflect: true })
-	noseek = false;
+		noseek = false;
 
 	@property({ type: Boolean, reflect: true })
-	timestamp = false;
+		timestamp = false;
 
 	@internalProperty()
 	private _duration = 0;
@@ -91,7 +91,7 @@ export class VWCAudio extends LitElement {
 	@internalProperty()
 	private _playheadPosition = 0;
 
-	protected override firstUpdated(_changedProperties: PropertyValues):void {
+	protected override firstUpdated(_changedProperties: PropertyValues): void {
 		super.firstUpdated(_changedProperties);
 		setEvents(this._audio, {
 			/* istanbul ignore next */
@@ -125,7 +125,7 @@ export class VWCAudio extends LitElement {
 		this._audio.currentTime = time;
 	}
 
-	override update(_changedProperties: PropertyValues):void {
+	override update(_changedProperties: PropertyValues): void {
 		this._scrubber?.setPosition(this._playheadPosition / this._duration);
 		super.update(_changedProperties);
 	}

@@ -1,6 +1,6 @@
 import '@vonage/vvd-core';
 import { customElement, property } from 'lit-element';
-import { observer } from '@material/mwc-base/observer';
+import { observer } from '@material/mwc-base/observer.js';
 import { TopAppBarFixedBase as MWCTopAppBarFixedBase } from '@material/mwc-top-app-bar-fixed/mwc-top-app-bar-fixed-base.js';
 import { styles as MWCTopAppBarStyles } from '@material/mwc-top-app-bar/mwc-top-app-bar.css.js';
 import { style as VWCTopAppBarStyle } from '@vonage/vwc-top-app-bar/vwc-top-app-bar.css.js';
@@ -24,7 +24,7 @@ export class VWCTopAppBarFixed extends MWCTopAppBarFixedBase {
 			this.mdcRoot.removeAttribute('part');
 		}
 	})
-	alternate = false;
+		alternate = false;
 
 	static override styles = [MWCTopAppBarStyles, VWCTopAppBarStyle];
 }

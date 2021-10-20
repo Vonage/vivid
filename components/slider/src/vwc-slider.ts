@@ -1,5 +1,5 @@
 import '@vonage/vvd-core';
-import { debounced, handleAutofocus } from '@vonage/vvd-foundation/general-utils';
+import { debounced, handleAutofocus } from '@vonage/vvd-foundation/general-utils.js';
 import { customElement } from 'lit-element';
 import { Slider as MWCSlider } from '@material/mwc-slider';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
