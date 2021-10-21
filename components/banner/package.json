@@ -27,6 +27,7 @@
 	},
 	"dependencies": {
 		"@material/mwc-snackbar": "^0.22.1",
+		"@material/mwc-base": "^0.22.1",
 		"@vonage/vvd-core": "2.21.0",
 		"@vonage/vvd-foundation": "2.21.0",
 		"@vonage/vwc-icon": "2.21.0",
