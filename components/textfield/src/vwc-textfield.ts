@@ -8,13 +8,12 @@ import {
 	customElement, property,	queryAssignedNodes,	query, state
 } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
-
 import { TextField as MWCTextField } from '@material/mwc-textfield';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
 import { style as vwcTextFieldStyle } from './vwc-textfield.css.js';
 import { styles as mwcTextFieldStyles } from '@material/mwc-textfield/mwc-textfield.css.js';
-import type { Shape } from '@vonage/vvd-foundation/constants';
-import { debounced, handleAutofocus } from '@vonage/vvd-foundation/general-utils';
+import type { Shape } from '@vonage/vvd-foundation/constants.js';
+import { debounced, handleAutofocus } from '@vonage/vvd-foundation/general-utils.js';
 
 export type { TextFieldType } from '@material/mwc-textfield';
 
@@ -44,25 +43,25 @@ export class VWCTextField extends MWCTextField {
 		reflect: true,
 		attribute: 'no-actions-sync'
 	})
-	noActionsSync = false;
+		noActionsSync = false;
 
 	@property({
 		type: Boolean,
 		reflect: true
 	})
-	dense = false;
+		dense = false;
 
 	@property({
 		type: String,
 		reflect: true
 	})
-	shape?: TextfieldShape;
+		shape?: TextfieldShape;
 
 	@property({
 		type: String,
 		reflect: true
 	})
-	form: string | undefined;
+		form: string | undefined;
 
 	@property({
 		type: String,

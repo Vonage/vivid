@@ -75,6 +75,36 @@ describe('button', () => {
 			expect(submitted).to.equal(true);
 		});
 
+		it('should emit a click event only once when inside a form', async function () {
+			let clicked = 0;
+			const addedElements = addElement(
+				textToDomToParent(
+					`<form onsubmit="return false" name="testForm" id="testForm"><${COMPONENT_NAME} type="submit">Button Text</${COMPONENT_NAME}></form>`
+				)
+			);
+			await waitNextTask();
+			const formElement = addedElements[0];
+			const actualElement = formElement.firstChild;
+			actualElement.addEventListener('click', () => (clicked++));
+
+			actualElement.click();
+			expect(clicked).to.equal(1);
+		});
+
+		it('should emit a click event only once when outside a form', async function () {
+			let clicked = 0;
+			const [actualElement] = addElement(
+				textToDomToParent(
+					`<${COMPONENT_NAME} type="submit">Button Text</${COMPONENT_NAME}>`
+				)
+			);
+			await waitNextTask();
+			actualElement.addEventListener('click', () => (clicked++));
+
+			actualElement.click();
+			expect(clicked).to.equal(1);
+		});
+
 		it('should reset form when of type reset', async function () {
 			let submitted = false;
 			let reset = false;

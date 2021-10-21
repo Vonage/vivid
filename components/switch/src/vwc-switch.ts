@@ -6,8 +6,8 @@ import { Switch as MWCSwitch } from '@material/mwc-switch';
 import { style as vwcSwitchStyle } from './vwc-switch.css.js';
 import { styles as mwcSwitchStyles } from '@material/mwc-switch/styles.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
-import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
-import type { Connotation } from '@vonage/vvd-foundation/constants';
+import { handleAutofocus } from '@vonage/vvd-foundation/general-utils.js';
+import type { Connotation } from '@vonage/vvd-foundation/constants.js';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -27,10 +27,10 @@ type SwitchConnotation = Extract<
 export class VWCSwitch extends MWCSwitch {
 	static override styles = [styleCoupling, mwcSwitchStyles, vwcSwitchStyle];
 	@property({ type: String, reflect: true })
-	connotation?: SwitchConnotation;
+		connotation?: SwitchConnotation;
 
 	@property({ type: Boolean, reflect: true })
-	enlarged = false;
+		enlarged = false;
 
 	protected override getRenderClasses(): ClassInfo {
 		return {

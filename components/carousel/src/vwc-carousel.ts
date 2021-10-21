@@ -6,7 +6,9 @@ import { customElement,	property, query } from 'lit/decorators';
 import { style } from './vwc-carousel.css.js';
 import SwiperCore, {
 	Swiper, Autoplay, Keyboard, Mousewheel, Navigation
+// eslint-disable-next-line import/extensions
 } from 'swiper/core';
+// eslint-disable-next-line import/extensions
 import type { SwiperOptions } from 'swiper/core';
 import '@vonage/vwc-icon';
 import './vwc-carousel-item.js';
@@ -31,7 +33,7 @@ export class VWCCarousel extends LitElement {
 		reflect: true,
 		converter: v => !(v && v === 'false'),
 	})
-	autoplay = true;
+		autoplay = true;
 	@query('.swiper-container')
 	private swiperContainer?: HTMLElement;
 	@query('.swiper-wrapper')

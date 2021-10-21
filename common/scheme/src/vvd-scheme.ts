@@ -13,7 +13,7 @@ import type {
 	SchemeOption,
 	SelectedDetail
 } from './vvd-scheme-foundation.js';
-import { Emitter } from '@vonage/vvd-foundation/general-utils';
+import { Emitter } from '@vonage/vvd-foundation/general-utils.js';
 
 export {
 	PredefinedScheme,

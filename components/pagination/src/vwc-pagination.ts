@@ -30,10 +30,10 @@ export class VWCPagination extends LitElement {
 	}
 
 	@property({ type: Number, reflect: true })
-	total = 0;
+		total = 0;
 
 	@property({ type: Number, reflect: true, attribute: 'selected-index' })
-	selectedIndex = this.total - 1;
+		selectedIndex = this.total - 1;
 
 	override connectedCallback() {
 		super.connectedCallback();

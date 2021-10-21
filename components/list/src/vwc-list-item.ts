@@ -3,7 +3,7 @@ import { ListItem as MWCListItem } from '@material/mwc-list/mwc-list-item';
 import { style as vwcListItemStyle } from './vwc-list-item.css.js';
 import { styles as mwcListItemStyles } from '@material/mwc-list/mwc-list-item.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
-import type { Connotation, Shape } from '@vonage/vvd-foundation/constants';
+import type { Connotation, Shape } from '@vonage/vvd-foundation/constants.js';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -16,9 +16,9 @@ declare global {
 MWCListItem.styles = [styleCoupling, mwcListItemStyles, vwcListItemStyle];
 
 type ListItemConnotation = Extract<
-Connotation,
-| Connotation.Primary
-| Connotation.CTA
+	Connotation,
+	| Connotation.Primary
+	| Connotation.CTA
 >;
 
 type ListItemShape = Extract<Shape, Shape.Rounded>;
@@ -29,8 +29,8 @@ type ListItemShape = Extract<Shape, Shape.Rounded>;
 @customElement('vwc-list-item')
 export class VWCListItem extends MWCListItem {
 	@property({ type: String, reflect: true })
-	connotation?: ListItemConnotation;
+		connotation?: ListItemConnotation;
 
 	@property({ type: String, reflect: true })
-	shape?: ListItemShape;
+		shape?: ListItemShape;
 }

@@ -2,9 +2,9 @@ import type { VWCIcon } from '@vonage/vwc-icon';
 import { html, PropertyValues, TemplateResult } from 'lit';
 import { customElement, queryAssignedNodes } from 'lit/decorators';
 import { style } from './vwc-list-expansion-panel.css.js';
-import { ListItemBase } from '@material/mwc-list/mwc-list-item-base';
-import { VWCExpansionPanelBase } from '@vonage/vwc-expansion-panel/vwc-expansion-panel-base';
-import { assert } from '@vonage/vvd-foundation/general-utils';
+import { ListItemBase } from '@material/mwc-list/mwc-list-item-base.js';
+import { VWCExpansionPanelBase } from '@vonage/vwc-expansion-panel/vwc-expansion-panel-base.js';
+import { assert } from '@vonage/vvd-foundation/general-utils.js';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -24,7 +24,7 @@ export class VWCListExpansionPanel extends VWCExpansionPanelBase {
 	// @property({ type: Boolean }) quick = false; // TODO add animation
 
 	@queryAssignedNodes('header', true, 'vwc-list-item')
-	headerNodes?: HTMLElement[] | null;
+		headerNodes?: HTMLElement[] | null;
 
 	override firstUpdated(changedProperties: PropertyValues): void {
 		super.firstUpdated(changedProperties);

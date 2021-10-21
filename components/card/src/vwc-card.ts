@@ -22,27 +22,27 @@ export class VWCCard extends LitElement {
 		reflect: true,
 		type: String
 	})
-	heading: string | undefined;
+		heading: string | undefined;
 
 	@property({
 		reflect: true,
 		type: String
 	})
-	subtitle: string | undefined ;
+		subtitle: string | undefined;
 
 	@property({
 		reflect: true,
 		attribute: 'header-icon',
 		type: String
 	})
-	headerIcon: string | null = null;
+		headerIcon: string | null = null;
 
 	@property({
 		reflect: true,
 		attribute: 'supporting-text',
 		type: String
 	})
-	supportingText: string | undefined;
+		supportingText: string | undefined;
 
 	private headerIconSlottedItems?: Node[];
 	private shouldShowActionsSlot: boolean | undefined;

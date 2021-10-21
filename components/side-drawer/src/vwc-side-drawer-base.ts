@@ -19,7 +19,7 @@ const blockingElements =
  * @cssprop [side-drawer-z-index=6] - Controls the z-index of the side drawer
  * */
 export class VWCSideDrawerBase extends LitElement {
-  @query('.side-drawer') protected rootEl!: HTMLElement;
+	@query('.side-drawer') protected rootEl!: HTMLElement;
 
 	/**
 	 * @prop alternate - [Applies scheme alternate region](../../common/scheme/readme.md)
@@ -30,7 +30,7 @@ export class VWCSideDrawerBase extends LitElement {
 		type: Boolean,
 		reflect: true
 	})
-	alternate = false;
+		alternate = false;
 
 	/**
 	 * @prop hasTopBar - adds top bar to the side drawer
@@ -41,7 +41,7 @@ export class VWCSideDrawerBase extends LitElement {
 		type: Boolean,
 		reflect: true
 	})
-	hasTopBar?: boolean;
+		hasTopBar?: boolean;
 
 	/**
 	 * @prop type - sets the type of the side drawer's layout
@@ -52,13 +52,13 @@ export class VWCSideDrawerBase extends LitElement {
 		type: String,
 		reflect: true
 	})
-	type?: 'modal' | 'dismissible';
+		type?: 'modal' | 'dismissible';
 
 	@property({
 		type: Boolean,
 		reflect: true
 	})
-	open = false;
+		open = false;
 
 	/**
 	 * Opens the side drawer from the closed state.

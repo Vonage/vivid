@@ -36,13 +36,13 @@ export class VWCNote extends LitElement {
 	}
 
 	@property({ type: String, reflect: true })
-	connotation?: NoteConnotation;
+		connotation?: NoteConnotation;
 
 	@property({ type: String, reflect: true })
-	icon?: string;
+		icon?: string;
 
 	@property({ type: String, reflect: true })
-	header?: string;
+		header?: string;
 
 	protected getRenderClasses(): ClassInfo {
 		return {

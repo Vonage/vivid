@@ -7,7 +7,7 @@ import { Button as MWCButton } from '@material/mwc-button';
 import { style as vwcButtonStyle } from './vwc-button.css.js';
 import { styles as mwcButtonStyles } from '@material/mwc-button/styles.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
-import type { Connotation, Layout, Shape } from '@vonage/vvd-foundation/constants';
+import type { Connotation, Layout, Shape } from '@vonage/vvd-foundation/constants.js';
 import type { PropertyValues } from 'lit';
 
 declare global {
@@ -23,7 +23,7 @@ MWCButton.styles = [styleCoupling, mwcButtonStyles, vwcButtonStyle];
 export type ButtonLayout = Extract<
 	Layout,
 	Layout.Filled | Layout.Outlined | Layout.Ghost
-	>;
+>;
 
 const types = ['submit', 'reset', 'button'];
 export type ButtonType = typeof types;
@@ -36,7 +36,7 @@ type ButtonConnotation = Extract<
 	| Connotation.Alert
 	| Connotation.Info
 	| Connotation.Announcement
-	>;
+>;
 
 type ButtonShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
 
@@ -47,31 +47,31 @@ type ButtonShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
 @customElement('vwc-button')
 export class VWCButton extends MWCButton {
 	@property({ type: String, reflect: true })
-	name?:string
+		name?: string;
 
 	@property({ type: String, reflect: true })
-	value?:string
+		value?: string;
 
 	@property({ type: Boolean, reflect: true })
 	override dense = false;
 
 	@property({ type: Boolean, reflect: true })
-	enlarged = false;
+		enlarged = false;
 
 	@property({ type: String, reflect: true })
-	layout?: ButtonLayout;
+		layout?: ButtonLayout;
 
 	@property({ type: String, reflect: true })
-	connotation?: ButtonConnotation;
+		connotation?: ButtonConnotation;
 
 	@property({ type: String, reflect: true })
-	shape?: ButtonShape;
+		shape?: ButtonShape;
 
 	@property({ type: String, reflect: true })
-	type: ButtonType[number] = 'submit';
+		type: ButtonType[number] = 'submit';
 
 	@property({ attribute: 'form', reflect: true })
-	formId: string | null = null;
+		formId: string | null = null;
 
 	#_hiddenButton: HTMLButtonElement = VWCButton.createHiddenButton();
 
@@ -94,7 +94,7 @@ export class VWCButton extends MWCButton {
 		}
 	}
 
-	protected override update(changes:PropertyValues):void {
+	protected override update(changes: PropertyValues): void {
 		super.update(changes);
 		[...changes.keys()]
 			.filter(attributeName => ['name', 'value'].includes(attributeName as string))
@@ -133,7 +133,7 @@ export class VWCButton extends MWCButton {
 		// return nothing
 	}
 
-	protected _handleClick(): void {
+	protected _handleClick(event: MouseEvent): void {
 		if (this.form) {
 			switch (this.getAttribute('type')) {
 			case 'reset':
@@ -142,7 +142,11 @@ export class VWCButton extends MWCButton {
 			case 'button':
 				break;
 			default:
-				this.#_hiddenButton.click();
+				if (event.target === this) {
+					this.#_hiddenButton.click();
+				} else {
+					event.stopImmediatePropagation();
+				}
 				break;
 			}
 		}

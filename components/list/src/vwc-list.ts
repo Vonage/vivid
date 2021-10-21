@@ -1,5 +1,5 @@
 import '@vonage/vvd-core';
-import { debounced } from '@vonage/vvd-foundation/general-utils';
+import { debounced } from '@vonage/vvd-foundation/general-utils.js';
 import { customElement } from 'lit/decorators';
 import { List as MWCList } from '@material/mwc-list/mwc-list';
 import { style as vwcListStyle } from './vwc-list.css.js';

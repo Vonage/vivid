@@ -1,4 +1,4 @@
-import { Size } from '@vonage/vvd-foundation/constants';
+import { Size } from '@vonage/vvd-foundation/constants.js';
 import { AutoSizing } from '../vwc-layout';
 // Example use:
 const SIZE = { ...Size, Block: 'block' };

@@ -8,8 +8,8 @@ import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupl
 import { style as vwcTextareaStyle } from './vwc-textarea.css.js';
 import { styles as mwcTextareaStyles } from '@material/mwc-textarea/mwc-textarea.css.js';
 import { styles as mwcTextfieldStyles } from '@material/mwc-textfield/mwc-textfield.css.js';
-import { associateWithForm } from '@vonage/vvd-foundation/form-association';
-import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
+import { associateWithForm } from '@vonage/vvd-foundation/form-association.js';
+import { handleAutofocus } from '@vonage/vvd-foundation/general-utils.js';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -32,13 +32,13 @@ MWCTextArea.styles = [
 @customElement('vwc-textarea')
 export class VWCTextArea extends MWCTextArea {
 	@property({ type: Boolean, reflect: true })
-	dense = false;
+		dense = false;
 
 	@property({ type: Boolean, reflect: true })
-	resizable = false;
+		resizable = false;
 
 	@property({ type: String, reflect: true })
-	form: string | undefined;
+		form: string | undefined;
 
 	override async firstUpdated(): Promise<void> {
 		await super.firstUpdated();

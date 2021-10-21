@@ -10,7 +10,7 @@ import {
 	assertConnotationAttribute,
 	assertConnotationProperty,
 } from '@vonage/vvd-foundation/test/connotation.test.js';
-import { Connotation } from '@vonage/vvd-foundation/constants';
+import { Connotation } from '@vonage/vvd-foundation/constants.js';
 
 chai.use(chaiDomDiff);
 

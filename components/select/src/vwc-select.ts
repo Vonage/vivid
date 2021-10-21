@@ -10,9 +10,9 @@ import { Select as MWCSelect } from '@material/mwc-select';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
 import { style as vwcSelectStyle } from './vwc-select.css.js';
 import { styles as mwcSelectStyles } from '@material/mwc-select/mwc-select.css.js';
-import { associateWithForm } from '@vonage/vvd-foundation/form-association';
-import type { Shape } from '@vonage/vvd-foundation/constants';
-import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
+import { associateWithForm } from '@vonage/vvd-foundation/form-association.js';
+import type { Shape } from '@vonage/vvd-foundation/constants.js';
+import { handleAutofocus } from '@vonage/vvd-foundation/general-utils.js';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -34,13 +34,13 @@ type SelectShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
 @customElement('vwc-select')
 export class VWCSelect extends MWCSelect {
 	@property({ type: Boolean, reflect: true })
-	dense = false;
+		dense = false;
 
 	@property({ type: String, reflect: true })
-	shape?: SelectShape;
+		shape?: SelectShape;
 
 	@property({ type: String, reflect: true })
-	form: string | undefined;
+		form: string | undefined;
 
 	override connectedCallback(): void {
 		super.connectedCallback();

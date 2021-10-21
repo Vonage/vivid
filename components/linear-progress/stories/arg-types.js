@@ -1,4 +1,4 @@
-import { Connotation, ConnotationDecorative } from '@vonage/vvd-foundation/constants';
+import { Connotation, ConnotationDecorative } from '@vonage/vvd-foundation/constants.js';
 
 export const argTypes = {
 	connotation: {

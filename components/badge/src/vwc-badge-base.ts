@@ -4,8 +4,8 @@ import {
 import { property } from 'lit/decorators';
 import type { ClassInfo } from 'lit/directives/class-map.js';
 import { classMap } from 'lit/directives/class-map.js';
-import type { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
-import { handleMultipleDenseProps } from '@vonage/vvd-foundation/general-utils';
+import type { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants.js';
+import { handleMultipleDenseProps } from '@vonage/vvd-foundation/general-utils.js';
 
 type BadgeConnotation = Extract<
 	Connotation,
@@ -29,28 +29,28 @@ type BadgeShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
  */
 export class VWCBadgeBase extends LitElement {
 	@property({ type: String, reflect: true })
-	connotation?: BadgeConnotation;
+		connotation?: BadgeConnotation;
 
 	@property({ type: String, reflect: true })
-	shape?: BadgeShape;
+		shape?: BadgeShape;
 
 	@property({ type: String, reflect: true })
-	layout?: BadgeLayout;
+		layout?: BadgeLayout;
 
 	@property({ type: Boolean, reflect: true })
-	dense = false;
+		dense = false;
 
 	@property({ type: Boolean, reflect: true })
-	enlarged = false;
+		enlarged = false;
 
 	@property({ type: String, reflect: true })
-	text?: string;
+		text?: string;
 
 	@property({ type: String, reflect: true })
-	icon?: string;
+		icon?: string;
 
 	@property({ type: String, reflect: true })
-	iconTrailing?: string;
+		iconTrailing?: string;
 
 	protected renderIcon(type?: string, isTrailingIcon = false): TemplateResult | typeof nothing {
 		const classes = {
@@ -66,7 +66,7 @@ export class VWCBadgeBase extends LitElement {
 	}
 
 	protected override updated(changes: Map<string, boolean>): void {
-  	handleMultipleDenseProps(this, changes);
+		handleMultipleDenseProps(this, changes);
 	}
 
 	protected getRenderClasses(): ClassInfo {

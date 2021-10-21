@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-notched-outline",
-	"version": "2.20.1",
+	"version": "2.21.0",
 	"description": "notched-outline component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/notched-outline#readme",
 	"license": "ISC",
@@ -27,12 +27,12 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@material/mwc-notched-outline": "0.26.0-canary.406d6fe1.0",
+		"@material/mwc-notched-outline": "0.26.0-canary.d21acc8f.0",
 		"lit": "^2.0.0",
 		"tslib": "^2.3.0"
 	},
 	"devDependencies": {
-		"@vonage/vvd-umbrella": "2.20.1",
+		"@vonage/vvd-umbrella": "2.21.0",
 		"typescript": "^4.3.2"
 	}
 }

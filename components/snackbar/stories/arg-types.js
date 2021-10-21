@@ -1,4 +1,4 @@
-import { Connotation, Position } from '@vonage/vvd-foundation/constants';
+import { Connotation, Position } from '@vonage/vvd-foundation/constants.js';
 
 const DISABLED = Object.freeze({ table: { disable: true } });
 

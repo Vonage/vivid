@@ -1,4 +1,4 @@
-import { Connotation, Shape } from '@vonage/vvd-foundation/constants';
+import { Connotation, Shape } from '@vonage/vvd-foundation/constants.js';
 
 
 export const argTypes = {

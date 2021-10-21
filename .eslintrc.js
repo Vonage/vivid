@@ -3,87 +3,78 @@ module.exports = {
 		browser: true,
 		node: true,
 	},
+	plugins: [
+		'wc',
+		'lit',
+		'lit-a11y',
+		'@typescript-eslint'
+	],
+	parser: '@typescript-eslint/parser',
 	extends: [
-		'@open-wc/eslint-config',
-		'plugin:@typescript-eslint/eslint-recommended',
-		'plugin:@typescript-eslint/recommended',
-		'plugin:wc/recommended',
-		'@open-wc/eslint-config',
+		'eslint:recommended',
 		'plugin:compat/recommended',
+		'plugin:wc/recommended',
+		'plugin:wc/best-practice',
 		'plugin:lit/recommended',
 		'plugin:lit-a11y/recommended',
 		'plugin:import/recommended',
 		'plugin:import/typescript',
-	],
-	parser: '@typescript-eslint/parser',
-	parserOptions: {
-		ecmaVersion: 12,
-		sourceType: 'module',
-	},
-	plugins: [
-		'@typescript-eslint',
-		'mocha',
-		'wc',
-		'no-only-tests',
-		'lit-a11y'
+		'plugin:@typescript-eslint/recommended',
 	],
 	settings: {
 		wc: {
 			elementBaseClasses: ['BaseElement', 'LitElement', 'FormElement'],
 		},
 	},
+	parserOptions: {
+		ecmaVersion: 12,
+		sourceType: 'module',
+	},
 	rules: {
 		indent: ['error', 'tab'],
 		'no-tabs': 'off',
 		'no-shadow': 'error',
-		'no-mixed-spaces-and-tabs': 'off',
 		'compat/compat': 'error',
 		'linebreak-style': ['error', 'unix'],
 		semi: ['error', 'always'],
-		'no-use-before-define': 'off', //! should remove after PR merge
-		'object-shorthand': 'off', //! should remove after PR merge
-		'import/extensions': 'error',
-		'import/no-extraneous-dependencies': 'off', //! should remove after PR merge
-		'import/order': 'off', //! should remove after PR merge
-		'import/newline-after-import': 'off', //! should remove after PR merge
-		'import/no-unresolved': 'off', //! should remove after PR merge
-		'import/no-named-default': 'off', //! should remove after PR merge
-		'one-var': 'off', //! should remove after PR merge
-		'prefer-arrow-callback': 'off', //! should remove after PR merge
-		'func-names': 'off', //! should remove after PR merge
-		'spaced-comment': 'off', //! should remove after PR merge
-		'prefer-destructuring': 'off', //! should remove after PR merge
-		'arrow-body-style': 'off', //! should remove after PR merge
-		'prefer-promise-reject-errors': 'off', //! should remove after PR merge
-		'no-console': 'off', //! should remove after PR merge
-		'no-param-reassign': 'off', //! should remove after PR merge
-		'array-callback-return': 'off', //! should remove after PR merge
-		'consistent-return': 'off', //! should remove after PR merge
-		'no-restricted-syntax': 'off', //! should remove after PR merge
-		'guard-for-in': 'off', //! should remove after PR merge
-		'no-cond-assign': 'off', //! should remove after PR merge
-		camelcase: 'off', //! should remove after PR merge
-		'no-return-assign': 'off', //! should remove after PR merge
-		'no-plusplus': 'off', //! should remove after PR merge
-		'class-methods-use-this': 'off', //! should remove after PR merge
-		'lines-between-class-members': 'off', //! should remove after PR merge
-		'prefer-object-spread': 'off', //! should remove after PR merge
-		'no-multi-assign': 'off', //! should remove after PR merge
-		'no-unused-expressions': 'off', //! should remove after PR merge
-		eqeqeq: 'off', //! should remove after PR merge
-		'wc/guard-super-call': 'off', //! should remove after PR merge
-		'no-bitwise': 'off', //! should remove after PR merge
-		radix: 'off', //! should remove after PR merge
-		'no-else-return': 'off', //! should remove after PR merge
-		'no-unused-vars': 'error',
+		'no-mixed-spaces-and-tabs': 'off', //! remove gradually
+		'no-use-before-define': 'off', //! remove gradually
+		'object-shorthand': 'off', //! remove gradually
+		// 'import/extensions': ['error', 'always'], //! remove gradually
+		'import/no-extraneous-dependencies': 'off', //! remove gradually
+		'import/order': 'off', //! remove gradually
+		'import/newline-after-import': 'off', //! remove gradually
+		'import/no-unresolved': 'off', //! remove gradually
+		'import/no-named-default': 'off', //! remove gradually
+		'one-var': 'off', //! remove gradually
+		'prefer-arrow-callback': 'off', //! remove gradually
+		'func-names': 'off', //! remove gradually
+		'spaced-comment': 'off', //! remove gradually
+		'prefer-destructuring': 'off', //! remove gradually
+		'arrow-body-style': 'off', //! remove gradually
+		'prefer-promise-reject-errors': 'off', //! remove gradually
+		'no-console': 'off', //! remove gradually
+		'no-param-reassign': 'off', //! remove gradually
+		'array-callback-return': 'off', //! remove gradually
+		'consistent-return': 'off', //! remove gradually
+		'no-restricted-syntax': 'off', //! remove gradually
+		'guard-for-in': 'off', //! remove gradually
+		'no-cond-assign': 'off', //! remove gradually
+		camelcase: 'off', //! remove gradually
+		'no-return-assign': 'off', //! remove gradually
+		'no-plusplus': 'off', //! remove gradually
+		'class-methods-use-this': 'off', //! remove gradually
+		'lines-between-class-members': 'off', //! remove gradually
+		'prefer-object-spread': 'off', //! remove gradually
+		'no-multi-assign': 'off', //! remove gradually
+		'no-unused-expressions': 'off', //! remove gradually
+		eqeqeq: 'off', //! remove gradually
+		'wc/guard-super-call': 'off', //! remove gradually
+		'no-bitwise': 'off', //! remove gradually
+		radix: 'off', //! remove gradually
+		'no-else-return': 'off', //! remove gradually
+		// 'no-unused-vars': 'error', //! remove gradually
 		'no-undef': 'off',
-		'@typescript-eslint/no-extra-semi': 'off',
-		'@typescript-eslint/explicit-function-return-type': 'off',
-		'@typescript-eslint/indent': 'off',
-		'@typescript-eslint/explicit-member-accessibility': [
-			'error',
-			{ accessibility: 'no-public' },
-		],
 		'no-multiple-empty-lines': 'off',
 		'operator-linebreak': 'off',
 		'max-len': 'off',
@@ -91,41 +82,50 @@ module.exports = {
 		'no-new': 'warn',
 		quotes: ['error', 'single', { avoidEscape: true }],
 		'no-var': 'error',
-		curly: 'error',
+		// curly: 'error', //! remove gradually
 		'no-floating-decimal': 'error',
 		'require-jsdoc': 'off',
+		'import/default': 'off', //! remove gradually
 		'valid-jsdoc': 'off',
 		'prefer-const': 'error',
 		'comma-dangle': 'off',
-		'mocha/handle-done-callback': 'error',
-		'mocha/no-exclusive-tests': 'error',
-		'mocha/no-identical-title': 'error',
-		'mocha/no-nested-tests': 'error',
-		'mocha/no-pending-tests': 'error',
-		'mocha/no-skipped-tests': 'error',
+		'@typescript-eslint/no-extra-semi': 'off',
+		'@typescript-eslint/explicit-function-return-type': 'off',
+		'@typescript-eslint/indent': 'off',
+		'@typescript-eslint/explicit-member-accessibility': [
+			'error',
+			{ accessibility: 'no-public' },
+		],
 	},
 	overrides: [
 		{
-			files: ['{common,components}/**/*.ts'],
-			rules: {
-				'no-unused-vars': 'off',
-				'no-invalid-this': 'off',
-				'new-cap': 'off',
-			},
-		},
-		{
-			files: ['**/test/**/*.js', '**/stories/**/*.js'],
+			files: '**/test{,s}/**/*.js',
+			plugins: [
+				'mocha',
+				'no-only-tests'
+			],
+			extends: [
+				'plugin:mocha/recommended',
+			],
 			rules: {
 				'@typescript-eslint/explicit-module-boundary-types': 'off',
 				'@typescript-eslint/no-non-null-assertion': 'off',
+				quotes: 'off', //! remove gradually
+				'no-unused-vars': 'off', //! remove gradually
+				'import/extensions': 'off', //! remove gradually
+				'prefer-const': 'off', //! remove gradually
+				'comma-dangle': 'off', //! remove gradually
+				'mocha/no-exports': 'off', //! remove gradually
+				'mocha/no-async-describe': 'off', //! remove gradually
 				'no-only-tests/no-only-tests': 'error',
-				quotes: 'off',
-				'no-var': 'off',
-				curly: 'off',
-				'no-floating-decimal': 'off',
-				'no-unused-vars': 'off',
-				'prefer-const': 'off',
-				'comma-dangle': 'off',
+				'mocha/no-mocha-arrows': 'off',
+				'mocha/no-setup-in-describe': 'off',
+				'mocha/handle-done-callback': 'error',
+				'mocha/no-exclusive-tests': 'error',
+				'mocha/no-identical-title': 'error',
+				'mocha/no-nested-tests': 'error',
+				'mocha/no-pending-tests': 'error',
+				'mocha/no-skipped-tests': 'error',
 			},
 			globals: {
 				chai: false,
@@ -137,5 +137,18 @@ module.exports = {
 				beforeEach: false,
 			},
 		},
+		{
+			files: '**/stories/**/*.js',
+			rules: {
+				'import/extensions': 'off', //! remove gradually
+				'prefer-const': 'off', //! remove gradually
+				quotes: 'off', //! remove gradually
+				semi: 'off', //! remove gradually
+				'no-unused-vars': 'off', //! remove gradually
+				'lit/no-invalid-html': 'off', //! remove gradually
+				indent: 'off', //! remove gradually
+				'lit-a11y/anchor-is-valid': 'off', //! remove gradually
+			}
+		}
 	],
 };

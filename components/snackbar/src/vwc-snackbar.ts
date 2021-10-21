@@ -2,7 +2,7 @@ import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
 import '@vonage/vwc-icon-button';
 
-import { Connotation, Position } from '@vonage/vvd-foundation/constants';
+import { Connotation, Position } from '@vonage/vvd-foundation/constants.js';
 import { html, TemplateResult } from 'lit';
 import { customElement,	property } from 'lit/decorators';
 import type { ClassInfo } from 'lit/directives/class-map.js';
@@ -52,53 +52,53 @@ const POSITION_VALIDATOR = new RegExp(`^(${Position.Top}|${Position.Bottom})-(${
 @customElement('vwc-snackbar')
 export class VWCSnackbar extends MWCSnackbarBase {
 	@property({ type: Boolean, reflect: true })
-	legacy = false;
+		legacy = false;
 
 	@property({ reflect: true })
-	position: PositionPair = DEFAULT_POSITION;
+		position: PositionPair = DEFAULT_POSITION;
 
 	@property({ type: String, reflect: true })
-	connotation?: SnackbarConnotation;
+		connotation?: SnackbarConnotation;
 
 	@property({ type: String, reflect: true })
-	icon?: string;
+		icon?: string;
 
 	@property({ type: String, reflect: true })
-	header?: string;
+		header?: string;
 
 	@property({ type: String, reflect: true })
-	message = '';
+		message = '';
 
 	@property({ type: Boolean, reflect: true })
-	dismissible?: boolean;
+		dismissible?: boolean;
 
 	override connectedCallback() {
-  	super.connectedCallback();
-  	this.setupEventListeners();
+		super.connectedCallback();
+		this.setupEventListeners();
 	}
 
 	private setupEventListeners(): void {
-  	const MDCEventPrefix = 'MDCSnackbar';
-  	for (const eventName of [OPENING_EVENT, OPENED_EVENT, CLOSING_EVENT, CLOSED_EVENT]) {
-  		this.addEventListener(`${MDCEventPrefix}:${eventName}`, this.getEventHandler(eventName));
-  	}
+		const MDCEventPrefix = 'MDCSnackbar';
+		for (const eventName of [OPENING_EVENT, OPENED_EVENT, CLOSING_EVENT, CLOSED_EVENT]) {
+			this.addEventListener(`${MDCEventPrefix}:${eventName}`, this.getEventHandler(eventName));
+		}
 	}
 
 	private getEventHandler(eventName: string): (event: Event) => void {
-  	return (e) => {
-  		const event = eventName;
-  		const originalDetail = (e as CustomEvent).detail;
-  		const detail = originalDetail ? Object.assign({}, originalDetail) : null;
-  		const forwardedEvent = new CustomEvent(event, { bubbles: true, composed: true, detail: detail });
-  		this.dispatchEvent(forwardedEvent);
-  	};
+		return (e) => {
+			const event = eventName;
+			const originalDetail = (e as CustomEvent).detail;
+			const detail = originalDetail ? Object.assign({}, originalDetail) : null;
+			const forwardedEvent = new CustomEvent(event, { bubbles: true, composed: true, detail: detail });
+			this.dispatchEvent(forwardedEvent);
+		};
 	}
 
 	protected getRenderClasses(): ClassInfo {
-  	return {
-  		[`connotation-${this.connotation}`]: !!this.connotation,
-  		'vwc-snackbar-legacy': this.legacy
-  	};
+		return {
+			[`connotation-${this.connotation}`]: !!this.connotation,
+			'vwc-snackbar-legacy': this.legacy
+		};
 	}
 
 	/* eslint-disable lit-a11y/click-events-have-key-events */
@@ -106,7 +106,7 @@ export class VWCSnackbar extends MWCSnackbarBase {
   	const position = VWCSnackbar.preprocessPositionConfig(this.position);
   	const alternate = !this.legacy ? 'vvd-scheme-alternate' : undefined;
 
-  	return html`
+		return html`
 			<div
 				class="mdc-snackbar ${classMap(this.getRenderClasses())}"
 				position="${position}"
@@ -145,16 +145,16 @@ export class VWCSnackbar extends MWCSnackbarBase {
 	/* eslint-enable lit-a11y/click-events-have-key-events */
 
 	protected renderIcon(): TemplateResult {
-  	return html`
+		return html`
     <vwc-icon class="icon" type="${this.icon}"></vwc-icon>`;
 	}
 
 	private renderDismissAction(): TemplateResult | string {
-  	if (!this.dismissible) {
-  		return '';
-  	}
+		if (!this.dismissible) {
+			return '';
+		}
 
-  	return html`
+		return html`
 			<div class="dismiss-container">
 				<vwc-icon-button
 					class="dismiss-button"
@@ -169,12 +169,12 @@ export class VWCSnackbar extends MWCSnackbarBase {
 	}
 
 	private static preprocessPositionConfig(input: PositionPair | undefined): PositionPair {
-  	let result = DEFAULT_POSITION;
+		let result = DEFAULT_POSITION;
 
-  	if (typeof input === 'string' && POSITION_VALIDATOR.test(input)) {
-  		result = input;
-  	}
+		if (typeof input === 'string' && POSITION_VALIDATOR.test(input)) {
+			result = input;
+		}
 
-  	return result;
+		return result;
 	}
 }

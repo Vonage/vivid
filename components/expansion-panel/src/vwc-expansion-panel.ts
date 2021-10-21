@@ -6,8 +6,8 @@ import {
 } from 'lit/decorators';
 
 // import '@material/mwc-ripple/mwc-ripple';
-import type { Ripple } from '@material/mwc-ripple/mwc-ripple';
-import { RippleHandlers } from '@material/mwc-ripple/ripple-handlers';
+import type { Ripple } from '@material/mwc-ripple';
+import { RippleHandlers } from '@material/mwc-ripple/ripple-handlers.js';
 import { VWCExpansionPanelBase } from './vwc-expansion-panel-base.js';
 import { style } from './vwc-expansion-panel.css.js';
 
@@ -28,28 +28,28 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	 * @deprecated use "heading" instead
 	 */
 	@property({ type: String, reflect: true })
-	header = '';
+		header = '';
 
 	/**
 	 * The heading of the expanded panel
 	 */
 	@property({ type: String, reflect: true })
-	heading = '';
+		heading = '';
 
 	@property({ type: String, reflect: true })
-	icon = '';
+		icon = '';
 
 	@property({ type: String, reflect: true })
-	indicatorIconSet: IndicatorIconSets[number] = 'chevron';
+		indicatorIconSet: IndicatorIconSets[number] = 'chevron';
 
 	@property({ type: Boolean, reflect: true })
-	dense = false;
+		dense = false;
 
 	@property({ type: Boolean, reflect: true })
-	leadingToggle = false;
+		leadingToggle = false;
 
 	@property({ type: Boolean, reflect: true })
-	noRipple = false;
+		noRipple = false;
 
 	@queryAsync('mwc-ripple') ripple!: Promise<Ripple>;
 
@@ -66,7 +66,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 		this.toggleAttribute('open', isOpen);
 	}
 
-	protected renderRipple(): TemplateResult|string {
+	protected renderRipple(): TemplateResult | string {
 		return !this.noRipple ? html`<mwc-ripple></mwc-ripple>` : '';
 	}
 

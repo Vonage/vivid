@@ -30,7 +30,7 @@ export class VWCDialog extends MWCDialog {
 		type: Boolean,
 		reflect: true
 	})
-	closeButton?: boolean;
+		closeButton?: boolean;
 
 	protected override firstUpdated() {
 		super.firstUpdated();

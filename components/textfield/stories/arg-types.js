@@ -1,4 +1,4 @@
-import { Shape } from '@vonage/vvd-foundation/constants';
+import { Shape } from '@vonage/vvd-foundation/constants.js';
 
 const BOOLEAN_DEFAULT_SETUP = {
 	control: {

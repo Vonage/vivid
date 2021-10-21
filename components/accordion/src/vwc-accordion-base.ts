@@ -4,7 +4,7 @@ import type { VWCExpansionPanelBase } from '@vonage/vwc-expansion-panel/vwc-expa
 
 export abstract class VWCAccordionBase extends LitElement {
 	@property({ type: Boolean, reflect: true })
-	multi = false;
+		multi = false;
 
 	private expansionPanels: HTMLCollectionOf<VWCExpansionPanelBase> | undefined = undefined;
 

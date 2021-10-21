@@ -1,4 +1,4 @@
-import { Shape } from '@vonage/vvd-foundation/constants';
+import { Shape } from '@vonage/vvd-foundation/constants.js';
 
 
 export const argTypes = {

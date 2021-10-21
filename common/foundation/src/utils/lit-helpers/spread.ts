@@ -25,15 +25,15 @@ type EventListenerWithOptions = EventListenerOrEventListenerObject &
  *    );
  */
 class SpreadDirective extends AsyncDirective {
-    // eslint-disable-next-line @typescript-eslint/ban-types
-    host!: EventTarget | object | Element;
-    element!: Element;
-    prevData: { [key: string]: unknown } = {};
+	// eslint-disable-next-line @typescript-eslint/ban-types
+	host!: EventTarget | object | Element;
+	element!: Element;
+	prevData: { [key: string]: unknown } = {};
 
-    render(_spreadData: { [key: string]: unknown }) {
+	render(_spreadData: { [key: string]: unknown }) {
     	return nothing;
-    }
-    override update(part: Part, [spreadData]: Parameters<this['render']>) {
+	}
+	override update(part: Part, [spreadData]: Parameters<this['render']>) {
     	if (this.element !== (part as ElementPart).element) {
     		this.element = (part as ElementPart).element;
     	}
@@ -41,9 +41,9 @@ class SpreadDirective extends AsyncDirective {
     	this.apply(spreadData);
     	this.groom(spreadData);
     	this.prevData = spreadData;
-    }
+	}
 
-    apply(data: { [key: string]: unknown }) {
+	apply(data: { [key: string]: unknown }) {
     	if (!data) return;
     	const { prevData, element } = this;
     	for (const key in data) {
@@ -92,9 +92,9 @@ class SpreadDirective extends AsyncDirective {
     			break;
     		}
     	}
-    }
+	}
 
-    groom(data: { [key: string]: unknown }) {
+	groom(data: { [key: string]: unknown }) {
     	const { prevData, element } = this;
     	if (!prevData) return;
     	for (const key in prevData) {
@@ -124,9 +124,9 @@ class SpreadDirective extends AsyncDirective {
     			}
     		}
     	}
-    }
+	}
 
-    handleEvent(event: Event) {
+	handleEvent(event: Event) {
     	// eslint-disable-next-line @typescript-eslint/ban-types
     	const value: Function | EventListenerObject = this.prevData[
     		`@${event.type}`
@@ -138,9 +138,9 @@ class SpreadDirective extends AsyncDirective {
     	} else {
     		(value as EventListenerObject).handleEvent(event);
     	}
-    }
+	}
 
-    override disconnected() {
+	override disconnected() {
     	const { prevData, element } = this;
     	for (const key in prevData) {
     		// eslint-disable-next-line no-continue
@@ -153,9 +153,9 @@ class SpreadDirective extends AsyncDirective {
                 value as EventListenerWithOptions
     		);
     	}
-    }
+	}
 
-    override reconnected() {
+	override reconnected() {
     	const { prevData, element } = this;
     	for (const key in prevData) {
     		// eslint-disable-next-line no-continue
@@ -168,7 +168,7 @@ class SpreadDirective extends AsyncDirective {
                 value as EventListenerWithOptions
     		);
     	}
-    }
+	}
 }
 
 export const spread: any = directive(SpreadDirective);

@@ -11,8 +11,8 @@ import { ifDefined } from 'lit/directives/if-defined.js';
 import { IconButtonToggleBase } from '@material/mwc-icon-button-toggle/mwc-icon-button-toggle-base.js';
 import { styles as MWCIconButtonStyles } from '@material/mwc-icon-button/mwc-icon-button.css.js';
 import { style as VWCIconButtonStyle } from '@vonage/vwc-icon-button/vwc-icon-button.css.js';
-import { handleMultipleDenseProps } from '@vonage/vvd-foundation/general-utils';
-import type { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
+import { handleMultipleDenseProps } from '@vonage/vvd-foundation/general-utils.js';
+import type { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants.js';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -35,7 +35,7 @@ type IconButtonToggleConnotation = Extract<
 	| Connotation.Alert
 	| Connotation.Info
 	| Connotation.Announcement
-	>;
+>;
 
 /**
  * This component is an extension of [<mwc-icon-button-toggle>](https://github.com/material-components/material-components-web-components/tree/master/packages/icon-button-toggle)
@@ -45,24 +45,24 @@ export class VWCIconButtonToggle extends IconButtonToggleBase {
 	static override styles: CSSResult[] = [MWCIconButtonStyles, VWCIconButtonStyle];
 
 	@property({ type: String, reflect: true })
-	layout?: IconButtonToggleLayout;
+		layout?: IconButtonToggleLayout;
 
 	@property({ type: String, reflect: true })
-	connotation?: IconButtonToggleConnotation;
+		connotation?: IconButtonToggleConnotation;
 
 	@property({ type: String, reflect: true })
-	shape?: IconButtonToggleShape;
+		shape?: IconButtonToggleShape;
 
 	@property({ type: Boolean, reflect: true })
-	dense = false;
+		dense = false;
 
 	@property({ type: Boolean, reflect: true })
-	enlarged = false;
+		enlarged = false;
 
 	protected override updated(changes: Map<string, boolean>): void {
 		handleMultipleDenseProps(this, changes);
 	}
-	protected override renderRipple(): TemplateResult|string {
+	protected override renderRipple(): TemplateResult | string {
 		return this.shouldRenderRipple ? html`
             <mwc-ripple
                 .disabled="${this.disabled}">
@@ -80,7 +80,7 @@ export class VWCIconButtonToggle extends IconButtonToggleBase {
 
 	protected override render(): TemplateResult {
 		const hasToggledAriaLabel =
-        this.ariaLabelOn !== undefined && this.ariaLabelOff !== undefined;
+			this.ariaLabelOn !== undefined && this.ariaLabelOff !== undefined;
 		const ariaPressedValue = hasToggledAriaLabel ? undefined : this.on;
 		// eslint-disable-next-line no-nested-ternary
 		const ariaLabelValue = hasToggledAriaLabel ?

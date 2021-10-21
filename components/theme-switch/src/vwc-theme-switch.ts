@@ -23,7 +23,7 @@ declare global {
 export class VWCThemeSwitch extends LitElement {
 	static override styles = style;
 	@property({ reflect: true })
-	scheme?: SchemeOption;
+		scheme?: SchemeOption;
 
 	private [EVENT_LISTENER_KEY]: (e: CustomEvent<SelectedDetail>) => void;
 

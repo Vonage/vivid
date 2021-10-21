@@ -5,7 +5,7 @@ import { Radio as MWCRadio } from '@material/mwc-radio';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
 import { style as vwcRadioStyle } from './vwc-radio.css.js';
 import { styles as mwcRadioStyles } from '@material/mwc-radio/mwc-radio.css.js';
-import { handleAutofocus } from '@vonage/vvd-foundation/general-utils';
+import { handleAutofocus } from '@vonage/vvd-foundation/general-utils.js';
 
 declare global {
 	interface HTMLElementTagNameMap {

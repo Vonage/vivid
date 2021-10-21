@@ -6,7 +6,7 @@ import {
 	assertConnotationAttribute,
 	assertConnotationProperty,
 } from '@vonage/vvd-foundation/test/connotation.test.js';
-import { Connotation } from '@vonage/vvd-foundation/constants';
+import { Connotation } from '@vonage/vvd-foundation/constants.js';
 
 const CONNOTATIONS_SUPPORTED = Object.values(Connotation).filter(c => [
 	Connotation.Primary,

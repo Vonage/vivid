@@ -24,4 +24,4 @@ export const Outlined = Template.bind({});
 Outlined.args = { text: 'Outlined',	layout: 'outlined' };
 
 export const Selected = Template.bind({});
-Selected.args = { text: 'Selected', filter: true, selected: true };
+Selected.args = { text: 'Selected', selectable: true, selected: true };

@@ -35,7 +35,7 @@ declare global {
 	}
 }
 
-const createCustomEvent = function (eventName:string, props = {}):CustomEvent {
+const createCustomEvent = function (eventName: string, props = {}): CustomEvent {
 	return new CustomEvent(eventName, {
 		bubbles: true,
 		composed: true,
@@ -51,32 +51,32 @@ export class VWCBanner extends LitElement {
 	static override styles = [BannerStyle];
 
 	@property({ type: String, reflect: true })
-	message = '';
+		message = '';
 
 	@property({ type: Boolean, reflect: true })
-	dismissible?:boolean;
+		dismissible?: boolean;
 
 	@property({ type: String, reflect: true })
-	connotation?: BannerConnotation;
+		connotation?: BannerConnotation;
 
 	@property({ type: String, reflect: true })
-	icon?:string;
+		icon?: string;
 
 	@property({ type: Boolean, reflect: true })
-	open = false;
+		open = false;
 
 	private clickCloseHandler() {
 		this.open = false;
 	}
 
-	#transitionTimer?: NodeJS.Timeout;
+	#transitionTimer?: number;
 
 	protected override firstUpdated() {
 		// refactor to query decorator
 		(this.shadowRoot?.querySelector('.banner') as HTMLElement).style.setProperty('--transition-delay', `${ANIMATION_DURATION}ms`);
 	}
 
-	override updated(changedProperties:PropertyValues) {
+	override updated(changedProperties: PropertyValues) {
 		if (changedProperties.has('open')) {
 			this.#transitionTimer && clearTimeout(this.#transitionTimer);
 			this.dispatchEvent(createCustomEvent(!this.open ? 'closing' : 'opening'));

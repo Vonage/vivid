@@ -12,7 +12,7 @@ export default {
 };
 
 const TemplateA = args => html`
-	<vwc-file-picker ...=${spread(args.self)}><input type="file" name="fi-name" ...=${spread(args.input)}/></vwc-file-picker>
+	<vwc-file-picker ...=${spread(args.self)}><input type="file" name="fi-name" ...=${spread(args.input)} /></vwc-file-picker>
 `;
 
 export const Basic = TemplateA.bind({});
@@ -37,7 +37,7 @@ WithLabelAndHelper.args = {
 
 export const WithLeadingIcon = args => html`
 	<vwc-file-picker ...=${spread(args)}>
-		<input type="file" name="fi-name"/>
+		<input type="file" name="fi-name" />
 		<span slot="dd-hint">
 			<vwc-icon type="upload"></vwc-icon>
 			&nbsp;
@@ -50,7 +50,7 @@ WithLeadingIcon.args = {	label: 'Pick up your image' };
 
 const TemplateB = args => html`
 	<vwc-file-picker ...=${spread(args.self)}>
-		<input type="file" name="fi-name" ...=${spread(args.input)}/>
+		<input type="file" name="fi-name" ...=${spread(args.input)} />
 		<span slot="dd-hint">${args.ddContent}</span>
 	</vwc-file-picker>
 `;
@@ -69,7 +69,7 @@ CustomDragDropNoMessage.args = {
 
 const TemplateC = args => html`
 	<vwc-file-picker ...=${spread(args.self)}>
-		<input type="file" name="fi-name" ...=${spread(args.input)}/>
+		<input type="file" name="fi-name" ...=${spread(args.input)} />
 		<span slot="dd-hint"></span>
 		<vwc-button slot="button" type="button" layout="filled" icon="upload" trailingIcon>Select files</vwc-button>
 	</vwc-file-picker>
@@ -88,7 +88,7 @@ CustomButtonNoMessage.args = {
 
 const TemplateD = args => html`
 	<vwc-file-picker ...=${spread(args.self)}>
-		<input type="file" name="fi-name" ...=${spread(args.input)}/>
+		<input type="file" name="fi-name" ...=${spread(args.input)} />
 		<span slot="dd-hint"></span>
 		<span style="text-decoration: underline; cursor: pointer" slot="button">Click here to select files</span>
 	</vwc-file-picker>
@@ -101,7 +101,7 @@ CustomLinkClickNoMessage.args = {
 
 const TemplateE = args => html`
 	<vwc-file-picker ...=${spread(args.self)}>
-		<input type="file" name="fi-name" ...=${spread(args.input)}/>
+		<input type="file" name="fi-name" ...=${spread(args.input)} />
 		<span slot="dd-hint">${args.ddContent}</span>
 		<vwc-button slot="button" type="button" layout="filled" icon="upload" trailingIcon>Select Files</vwc-button>
 	</vwc-file-picker>

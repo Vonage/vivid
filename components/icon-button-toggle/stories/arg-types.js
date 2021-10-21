@@ -1,4 +1,4 @@
-import { Connotation, Layout, Shape } from '@vonage/vvd-foundation/constants';
+import { Connotation, Layout, Shape } from '@vonage/vvd-foundation/constants.js';
 
 export const argTypes = {
 	dense: {
