@@ -190,10 +190,10 @@ describe('carousel', () => {
 			const scheme = schemeService.getSelectedScheme();
 			const expectedStyle = {
 				fill: scheme === 'light' ? 'rgb(0, 0, 0)' : 'rgb(255, 255, 255)',
-				borderTopColor: 'rgb(153, 153, 153)',
-				borderLeftColor: 'rgb(153, 153, 153)',
-				borderRightColor: 'rgb(153, 153, 153)',
-				borderBottomColor: 'rgb(153, 153, 153)',
+				borderTopColor: 'rgb(146,146,146)',
+				borderLeftColor: 'rgb(146,146,146)',
+				borderRightColor: 'rgb(146,146,146)',
+				borderBottomColor: 'rgb(146,146,146)',
 			};
 
 			expect(navButtons.length).equal(2);

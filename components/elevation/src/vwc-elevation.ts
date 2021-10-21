@@ -1,7 +1,8 @@
+import '@vonage/vvd-core';
 import { customElement, html, LitElement } from 'lit-element';
 import { style } from './vwc-elevation.css.js';
-import { property } from 'lit-element/lib/decorators';
-import { classMap } from 'lit-html/directives/class-map';
+import { property } from 'lit-element/lib/decorators.js';
+import { classMap } from 'lit-html/directives/class-map.js';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -17,7 +18,7 @@ export class VWCElevation extends LitElement {
 	static override styles = style;
 
 	@property({ type: Number, reflect: false })
-	dp = 2;
+		dp = 2;
 
 	protected override render(): unknown {
 		const classList = {

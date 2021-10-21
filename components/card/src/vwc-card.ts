@@ -2,7 +2,7 @@ import {
 	customElement, html, LitElement,
 } from 'lit-element';
 import { style } from './vwc-card.css.js';
-import { property } from 'lit-element/lib/decorators';
+import { property } from 'lit-element/lib/decorators.js';
 import { classMap } from 'lit-html/directives/class-map.js';
 import '@vonage/vwc-button';
 import '@vonage/vwc-icon';
@@ -24,27 +24,27 @@ export class VWCCard extends LitElement {
 		reflect: true,
 		type: String
 	})
-	heading: string | undefined;
+		heading: string | undefined;
 
 	@property({
 		reflect: true,
 		type: String
 	})
-	subtitle: string | undefined ;
+		subtitle: string | undefined;
 
 	@property({
 		reflect: true,
 		attribute: 'header-icon',
 		type: String
 	})
-	headerIcon: string | null = null;
+		headerIcon: string | null = null;
 
 	@property({
 		reflect: true,
 		attribute: 'supporting-text',
 		type: String
 	})
-	supportingText: string | undefined;
+		supportingText: string | undefined;
 
 	private headerIconSlottedItems?: Node[];
 	private shouldShowActionsSlot: boolean | undefined;

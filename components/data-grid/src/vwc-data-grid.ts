@@ -57,25 +57,25 @@ export class VWCDataGrid extends LitElement implements DataGrid {
 	#gridAdapter = new VWCDataGridAdapterVaadin(this) as DataGridAdapter;
 
 	@property({ type: Boolean, reflect: true, attribute: 'multi-sort' })
-	multiSort = false;
+		multiSort = false;
 
 	@property({ type: Boolean, reflect: true, attribute: 'height-by-rows' })
-	heightByRows = false;
+		heightByRows = false;
 
 	@property({ type: Boolean, reflect: true })
-	reordering = false;
+		reordering = false;
 
 	@property({ type: Array, reflect: false })
-	columns: DataGridColumn[] = [];
+		columns: DataGridColumn[] = [];
 
 	@property({ reflect: false, attribute: false })
-	rowDetailsRenderer?: RowDetailsRenderer | undefined = undefined;
+		rowDetailsRenderer?: RowDetailsRenderer | undefined = undefined;
 
 	@property({ type: Array, reflect: false })
-	items: unknown[] | undefined = undefined;
+		items: unknown[] | undefined = undefined;
 
 	@property({ reflect: false, attribute: false })
-	dataProvider: ((params: unknown, callback: (pageItems: unknown[], treeLevelSize: number) => void) => void) | undefined = undefined;
+		dataProvider: ((params: unknown, callback: (pageItems: unknown[], treeLevelSize: number) => void) => void) | undefined = undefined;
 
 	refreshConfiguration(): void {
 		this.requestUpdate('columns');

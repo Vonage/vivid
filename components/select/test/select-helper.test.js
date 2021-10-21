@@ -58,7 +58,7 @@ describe('select helper', () => {
 
 		actualElement.disabled = true;
 		await waitNextTask();
-		assertComputedStyle(helperLine, { color: 'rgb(153, 153, 153)' });
+		assertComputedStyle(helperLine, { color: 'rgb(146,146,146)' });
 	});
 
 	it('should have the error message colored', async () => {

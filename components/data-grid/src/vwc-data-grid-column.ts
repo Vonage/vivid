@@ -26,40 +26,40 @@ declare global {
 @customElement(COLUMN_DEFINITION_COMPONENT)
 export class VWCDataGridColumn extends LitElement implements DataGridColumn {
 	@property({ type: String, reflect: true })
-	path?: string = undefined;
+		path?: string = undefined;
 
 	@property({ type: Boolean, reflect: true })
-	tree = false;
+		tree = false;
 	@property({ type: Boolean, reflect: true })
 	override hidden = false;
 	@property({ type: Boolean, reflect: true })
-	frozen = false;
+		frozen = false;
 	@property({ type: Boolean, reflect: true })
-	sortable = false;
+		sortable = false;
 	@property({ type: Boolean, reflect: true })
-	resizable = false;
+		resizable = false;
 	@property({
 		type: String,
 		reflect: true,
 		converter: v => (v === SELECTOR_SINGLE || v === SELECTOR_MULTI ? v : undefined)
 	})
-	selector?: string = undefined;
+		selector?: string = undefined;
 
 	@property({ type: Boolean, reflect: true, attribute: 'auto-width' })
-	autoWidth = false;
+		autoWidth = false;
 	@property({ type: String, reflect: true })
-	width?: string = undefined;
+		width?: string = undefined;
 
 	@property({ type: String, reflect: true })
-	header = '';
+		header = '';
 	@property({ reflect: false, attribute: false })
-	headerRenderer = undefined;
+		headerRenderer = undefined;
 	@property({ type: String, reflect: true })
-	footer = '';
+		footer = '';
 	@property({ reflect: false, attribute: false })
-	footerRenderer = undefined;
+		footerRenderer = undefined;
 	@property({ reflect: false, attribute: false })
-	cellRenderer = undefined;
+		cellRenderer = undefined;
 
 	getColumnConfig(): DataGridColumn {
 		return {

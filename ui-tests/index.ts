@@ -8,10 +8,13 @@ import * as fs from 'fs';
 import * as jimp from 'jimp';
 import { getFilteredTestFolders } from './utils/files-utils';
 import { pascalCase } from 'pascal-case';
-
 import Webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import webpackConfig from './webpack.config';
+import * as path from "path";
+
+const { buildMainPage } = require('./utils/preBundle');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 interface ComparisonResult {
 	image: any;
@@ -63,8 +66,8 @@ async function takeSnapshot(page, snapshotPath) {
 	});
 }
 
-function resultsMessage(diff) {
-	return `Distance: ${diff.distance} | Percent: ${(diff.percent * 100).toFixed(2)} %`;
+function resultsMessage(diff, fixed = 2) {
+	return `Distance: ${diff.distance} | Percent: ${(diff.percent * 100).toFixed(fixed)} %`;
 }
 
 async function runImageComparison() {
@@ -110,11 +113,12 @@ async function doTest(page) {
 			return;
 		}
 		const diff = await compareToSnapshot(page, snapshotPath);
-		if (diff.percent === 0) {
+		if (diff.percent <= 0.001) {
 			console.log('Visual Diff Passed!');
 			console.log(resultsMessage(diff));
 		} else {
-			console.error(resultsMessage(diff));
+			console.error('Visual Diff Failed!');
+			console.error(resultsMessage(diff, 10));
 			process.exitCode = 1;
 		}
 	}
@@ -125,7 +129,15 @@ function finalizeTest(testsServer) {
 	testsServer.close();
 }
 
-function setDevServer() {
+async function setDevServer() {
+	await buildMainPage();
+	webpackConfig.plugins.push(new HtmlWebpackPlugin({
+		inject: false,
+		chunks: ['mainPage'],
+		filename: 'index.html',
+		template: path.join(__dirname, 'tmp/index.html.tmpl')
+	}));
+
 	const compiler = Webpack({
 		...webpackConfig,
 		mode: 'development'
@@ -165,11 +177,15 @@ function runTests(port = PORT) {
 	});
 }
 
-if (!process.argv.includes('-s')) {
-	runTests()
-		.then(finalizeTest);
-} else {
-	setDevServer();
+async function main() {
+	if (!process.argv.includes('-s')) {
+		runTests()
+			.then(finalizeTest);
+	} else {
+		await setDevServer();
+	}
 }
+
+main().then(r => {});
 
 

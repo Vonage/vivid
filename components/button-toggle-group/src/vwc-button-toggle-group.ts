@@ -43,31 +43,31 @@ export class VWCButtonToggleGroup extends LitElement {
 		type: Boolean,
 		reflect: true
 	})
-	multi = false;
+		multi = false;
 
 	@property({
 		type: Boolean,
 		reflect: true
 	})
-	enlarged = false;
+		enlarged = false;
 
 	@property({
 		type: Boolean,
 		reflect: true
 	})
-	dense = false;
+		dense = false;
 
 	@property({
 		type: Boolean,
 		reflect: true
 	})
-	required = false;
+		required = false;
 
 	@property({
 		type: Boolean,
 		reflect: true
 	})
-	disabled = false;
+		disabled = false;
 
 	constructor() {
 		super();
