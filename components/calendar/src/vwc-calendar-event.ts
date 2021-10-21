@@ -3,7 +3,7 @@ import {
 	customElement, html, LitElement, property, TemplateResult
 } from 'lit-element';
 import { style } from './vwc-calendar-event.css.js';
-import { styleMap } from 'lit-html/directives/style-map';
+import { styleMap } from 'lit-html/directives/style-map.js';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -28,42 +28,42 @@ export class VWCCalendarEvent extends LitElement {
 	 * @public
 	 * */
 	@property({ type: String, reflect: false })
-	heading?: string;
+		heading?: string;
 
 	/**
 	 * @prop the description of the event
 	 * @public
 	 * */
 	@property({ type: String, reflect: false })
-	description?: string;
+		description?: string;
 
 	/**
 	 * @prop color - color of event card
 	 * @public
 	 * */
 	@property({ type: String, reflect: false })
-	color?: string;
+		color?: string;
 
 	/**
 	 * @prop sets card display precendence and indentation
 	 * @public
 	 * */
 	@property({ type: String, reflect: false, attribute: 'overlap-count' })
-	overlapCount?: string;
+		overlapCount?: string;
 
 	/**
 	 * @prop start - time of day event starts
 	 * @public
 	 * */
 	@property({ type: Number, reflect: false })
-	start = 0; // TODO should be converted to allowed range
+		start = 0; // TODO should be converted to allowed range
 
 	/**
 	 * @prop duration - event's time duration in hours
 	 * @public
 	 * */
 	@property({ type: Number, reflect: false })
-	duration = 1; // TODO should be converted to allowed range
+		duration = 1; // TODO should be converted to allowed range
 
 	/**
 	 * the html markup

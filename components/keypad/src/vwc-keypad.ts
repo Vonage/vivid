@@ -8,8 +8,8 @@ import {
 	query,
 } from 'lit-element';
 import { style as vwcKeypadStyle } from './vwc-keypad.css.js';
-import '@vonage/vwc-button/vwc-button';
-import '@vonage/vwc-textfield/vwc-textfield';
+import '@vonage/vwc-button/vwc-button.js';
+import '@vonage/vwc-textfield/vwc-textfield.js';
 
 declare global {
 	interface HTMLElementTagNameMap {

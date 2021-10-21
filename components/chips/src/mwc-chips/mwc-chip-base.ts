@@ -27,7 +27,7 @@ import type {
 } from '@material/chips/chip/types';
 import { html, property, query } from 'lit-element';
 import { nothing, TemplateResult } from 'lit-html';
-import { classMap } from 'lit-html/directives/class-map';
+import { classMap } from 'lit-html/directives/class-map.js';
 import { ifDefined } from 'lit-html/directives/if-defined';
 
 /* eslint-disable no-void */

@@ -5,14 +5,14 @@ import '@material/mwc-ripple';
 import {
 	customElement, property, html, TemplateResult
 } from 'lit-element';
-import { classMap } from 'lit-html/directives/class-map';
-import type { ClassInfo } from 'lit-html/directives/class-map';
+import { classMap } from 'lit-html/directives/class-map.js';
+import type { ClassInfo } from 'lit-html/directives/class-map.js';
 import { IconButton as MWCIconButton } from '@material/mwc-icon-button';
 import { style as vwcButtonStyle } from './vwc-icon-button.css.js';
 import { styles as mwcIconButtonStyles } from '@material/mwc-icon-button/mwc-icon-button.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
-import type { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants';
-import { handleMultipleDenseProps } from '@vonage/vvd-foundation/general-utils';
+import type { Connotation, Shape, Layout } from '@vonage/vvd-foundation/constants.js';
+import { handleMultipleDenseProps } from '@vonage/vvd-foundation/general-utils.js';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -47,19 +47,19 @@ type IconButtonConnotation = Extract<
 @customElement('vwc-icon-button')
 export class VWCIconButton extends MWCIconButton {
 	@property({ type: String, reflect: true })
-	layout?: IconButtonLayout;
+		layout?: IconButtonLayout;
 
 	@property({ type: String, reflect: true })
-	connotation?: IconButtonConnotation;
+		connotation?: IconButtonConnotation;
 
 	@property({ type: String, reflect: true })
-	shape?: IconButtonShape;
+		shape?: IconButtonShape;
 
 	@property({ type: Boolean, reflect: true })
-	dense = false;
+		dense = false;
 
 	@property({ type: Boolean, reflect: true })
-	enlarged = false;
+		enlarged = false;
 
 	protected override updated(changes: Map<string, boolean>): void {
 		handleMultipleDenseProps(this, changes);

@@ -6,12 +6,18 @@ import {
 	customElement, html, LitElement, property
 } from 'lit-element';
 import type { PropertyValues } from 'lit-element';
-import { classMap } from 'lit-html/directives/class-map';
-import type { ClassInfo } from 'lit-html/directives/class-map';
+import { classMap } from 'lit-html/directives/class-map.js';
+import type { ClassInfo } from 'lit-html/directives/class-map.js';
 import { nothing, TemplateResult } from 'lit-html';
 import { Connotation } from '@vonage/vvd-foundation/constants.js';
+import { ariaProperty} from '@material/mwc-base/aria-property.js';
+/**
+ * A value for the `aria-haspopup` ARIA attribute.
+ */
+export type BannerRole = 'status' | 'alert';
+export type BannerAriaLive = 'polite' | 'assertive';
 
-import { accessibleSnackbarLabel as accessibleBannerMessage } from '@material/mwc-snackbar/accessible-snackbar-label-directive';
+import { accessibleSnackbarLabel as accessibleBannerMessage } from '@material/mwc-snackbar/accessible-snackbar-label-directive.js';
 
 const ANIMATION_DURATION = 100;
 const KEY_ESCAPE = 'Escape';
@@ -37,7 +43,7 @@ declare global {
 	}
 }
 
-const createCustomEvent = function (eventName:string, props = {}):CustomEvent {
+const createCustomEvent = function (eventName: string, props = {}): CustomEvent {
 	return new CustomEvent(eventName, {
 		bubbles: true,
 		composed: true,
@@ -53,25 +59,33 @@ export class VWCBanner extends LitElement {
 	static override styles = [BannerStyle];
 
 	@property({ type: String, reflect: true })
-	message = '';
+		message = '';
 
 	@property({ type: Boolean, reflect: true })
-	dismissible?:boolean;
+		dismissible?: boolean;
 
 	@property({ type: String, reflect: true })
-	connotation?: BannerConnotation;
+		connotation?: BannerConnotation;
 
 	@property({ type: String, reflect: true })
-	icon?:string;
+		icon?: string;
 
 	@property({ type: Boolean, reflect: true })
-	open = false;
+		open = false;
+
+	@ariaProperty
+  @property({type: String})
+		role: BannerRole = 'status';
+
+	@ariaProperty
+  @property({type: String})
+	override ariaLive: BannerAriaLive = 'polite';
 
 	private clickCloseHandler() {
 		this.open = false;
 	}
 
-	#transitionTimer?:number;
+	#transitionTimer?: number;
 
 	protected override firstUpdated() :void {
 		// refactor to query decorator
