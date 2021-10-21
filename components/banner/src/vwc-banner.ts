@@ -11,13 +11,18 @@ import type { ClassInfo } from 'lit-html/directives/class-map.js';
 import { nothing, TemplateResult } from 'lit-html';
 import { Connotation } from '@vonage/vvd-foundation/constants.js';
 import { ariaProperty} from '@material/mwc-base/aria-property.js';
+import { accessibleBannerDirective } from './accessible-banner-directive.js';
+
 /**
- * A value for the `aria-haspopup` ARIA attribute.
+ * A value for the `role` ARIA attribute.
  */
 export type BannerRole = 'status' | 'alert';
+
+/**
+ * A value for the `aria-live` ARIA attribute.
+ */
 export type BannerAriaLive = 'polite' | 'assertive';
 
-import { accessibleSnackbarLabel as accessibleBannerMessage } from '@material/mwc-snackbar/accessible-snackbar-label-directive.js';
 
 const ANIMATION_DURATION = 100;
 const KEY_ESCAPE = 'Escape';
@@ -137,7 +142,7 @@ export class VWCBanner extends LitElement {
 				<header class="header">
 					<span class="user-content">
 						${this.renderIcon(this.icon)}
-						${accessibleBannerMessage(this.message, this.open)}
+						${accessibleBannerDirective(this.message, this.open)}
 						<slot class="action-items" name="actionItems"></slot>
 					</span>
 					${this.renderDismissButton()}
