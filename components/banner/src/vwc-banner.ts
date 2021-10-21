@@ -11,7 +11,7 @@ import type { ClassInfo } from 'lit-html/directives/class-map';
 import { nothing, TemplateResult } from 'lit-html';
 import { Connotation } from '@vonage/vvd-foundation/constants.js';
 
-import { accessibleSnackbarLabel as accessibleBannerMessage } from '@material/mwc-snackbar/accessible-snackbar-label-directive';
+import { accessibleBannerDirective } from './accessible-banner-directive.js';
 
 const ANIMATION_DURATION = 100;
 const KEY_ESCAPE = 'Escape';
@@ -66,6 +66,12 @@ export class VWCBanner extends LitElement {
 
 	@property({ type: Boolean, reflect: true })
 	open = false;
+
+	@property({ type: String, reflect: true, attribute: 'role' })
+	role?:string;
+
+	@property({ type: String, reflect: true, attribute: 'aria-live' })
+	override ariaLive = '';
 
 	private clickCloseHandler() {
 		this.open = false;
@@ -123,7 +129,7 @@ export class VWCBanner extends LitElement {
 				<header class="header">
 					<span class="user-content">
 						${this.renderIcon(this.icon)}
-						${accessibleBannerMessage(this.message, this.open)}
+						${accessibleBannerDirective(this.message, this.open)}
 						<slot class="action-items" name="actionItems"></slot>
 					</span>
 					${this.renderDismissButton()}
