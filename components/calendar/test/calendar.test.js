@@ -66,7 +66,7 @@ describe('calendar', () => {
 	});
 
 	describe('API', () => {
-		it('should match snapshot of weekdays set by property', async () => {
+		it('should match snapshot set by property', async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
@@ -77,7 +77,7 @@ describe('calendar', () => {
 			expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 		});
 
-		it('should match snapshot of weekdays set by attribute', async () => {
+		it('should match snapshot set by attribute', async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
@@ -88,19 +88,19 @@ describe('calendar', () => {
 			expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 		});
 
-		it('should match snapshot of locales weekdays', async () => {
+		it('should match snapshot of locales', async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
 
 			actualElement.datetime = '2021-01-01';
-			actualElement.locales = 'zh-cn';
+			actualElement.locales = 'pt-BR';
 			await actualElement.updateComplete;
 
 			expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 		});
 
-		it('should match snapshot of displayed timekeeping system (24h)', async () => {
+		it('should match snapshot of 24h timekeeping system', async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
@@ -160,7 +160,7 @@ describe('calendar', () => {
 			const { y: columnY } = column.getBoundingClientRect();
 			const { y: sectionY } = section.getBoundingClientRect();
 
-			expect(sectionY - columnY - 2 /* block-start margin */, 'wrong start position').to.equal(getHoursCalculatedBlockSize(start) + 1);
+			expect(Math.round(sectionY - columnY - 2) /* block-start margin */, 'wrong start position').to.equal(getHoursCalculatedBlockSize(start) + 1);
 		});
 
 		it('should not exceed column block size', async () => {
