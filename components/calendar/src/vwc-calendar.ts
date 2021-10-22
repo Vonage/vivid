@@ -86,6 +86,18 @@ export class VWCCalendar extends LitElement {
 	})
 		locales?: string | string[] | undefined;
 
+	/**
+	 * The convention of displayed time in which the day runs from midnight to midnight and is divided into 24 or 12 hours.
+	 * Unless provided, choice will be set according to local time preference (e.g. US = 12, IL = 24)
+	 *
+	 * @public
+	 * */
+	@property({
+		reflect: true,
+		type: Boolean
+	})
+		hour12?: boolean;
+
 	#daysLength = 7;
 	#hours = (Array.from({ length: TotalHours - 1 }) as Date[])
 		.fill(new Date(new Date().setHours(0, 0, 0)))
@@ -202,11 +214,15 @@ export class VWCCalendar extends LitElement {
 	 * @internal
 	 * */
 	protected renderHours(): TemplateResult {
+		const displayedFormatOptions: Intl.DateTimeFormatOptions = { hour: 'numeric', hour12: this.hour12 };
+
+		console.log(displayedFormatOptions);
+
 		return html`
 			<div class="row-headers" role="presentation">
 				${this.#hours.map(h => html`<span role="rowheader">
 					<time datetime="${new Intl.DateTimeFormat(this.locales, { hour: 'numeric', minute: 'numeric', hour12: false }).format(h)}">
-						${new Intl.DateTimeFormat(this.locales, { hour: 'numeric', hour12: true }).format(h)}
+						${new Intl.DateTimeFormat(this.locales, displayedFormatOptions).format(h)}
 					</time>
 				</span>`)}
 			</div>`;
