@@ -214,11 +214,15 @@ export class VWCCalendar extends LitElement {
 	 * @internal
 	 * */
 	protected renderHours(): TemplateResult {
+		const displayedFormatOptions: Intl.DateTimeFormatOptions = { hour: 'numeric', hour12: this.hour12 };
+
+		console.log(displayedFormatOptions);
+
 		return html`
 			<div class="row-headers" role="presentation">
 				${this.#hours.map(h => html`<span role="rowheader">
 					<time datetime="${new Intl.DateTimeFormat(this.locales, { hour: 'numeric', minute: 'numeric', hour12: false }).format(h)}">
-						${new Intl.DateTimeFormat(this.locales, { hour: 'numeric', hour12: this.hour12 }).format(h)}
+						${new Intl.DateTimeFormat(this.locales, displayedFormatOptions).format(h)}
 					</time>
 				</span>`)}
 			</div>`;
