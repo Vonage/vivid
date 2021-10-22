@@ -22,7 +22,7 @@ const calendarSample = (attributes = {}) => {
 export function createElementVariations(wrapper) {
 	[
 		calendarSample({ datetime: '2021-01-01' }),
-		calendarSample({ datetime: '2021-01-01', locales: ['he-IL'], style: 'direction: rtl', hour12: true }),
+		calendarSample({ datetime: '2021-01-01', locales: ['he-IL'], style: 'direction: rtl' }),
 	].forEach(el => wrapper.appendChild(el));
 	return new Promise((resolve => setTimeout(resolve, 0)));
 }
