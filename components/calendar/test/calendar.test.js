@@ -105,6 +105,7 @@ describe('calendar', () => {
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
 
+			actualElement.datetime = '2021-01-01';
 			actualElement.hour12 = false;
 			await actualElement.updateComplete;
 

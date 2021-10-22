@@ -403,6 +403,7 @@
     </div>
   </div>
 </div>
+
 ```
 
 ## `API`
@@ -1639,15 +1640,15 @@
     >
       <time
         aria-readonly="true"
-        datetime="2021-10-17"
+        datetime="2020-12-27"
       >
         <h2>
           <em
-            aria-label="Sunday, October 17"
+            aria-label="Sunday, December 27"
             role="button"
             tabindex="0"
           >
-            17
+            27
           </em>
           <small aria-hidden="true">
             Sun
@@ -1661,15 +1662,15 @@
     >
       <time
         aria-readonly="true"
-        datetime="2021-10-18"
+        datetime="2020-12-28"
       >
         <h2>
           <em
-            aria-label="Monday, October 18"
+            aria-label="Monday, December 28"
             role="button"
             tabindex="0"
           >
-            18
+            28
           </em>
           <small aria-hidden="true">
             Mon
@@ -1683,15 +1684,15 @@
     >
       <time
         aria-readonly="true"
-        datetime="2021-10-19"
+        datetime="2020-12-29"
       >
         <h2>
           <em
-            aria-label="Tuesday, October 19"
+            aria-label="Tuesday, December 29"
             role="button"
             tabindex="0"
           >
-            19
+            29
           </em>
           <small aria-hidden="true">
             Tue
@@ -1705,15 +1706,15 @@
     >
       <time
         aria-readonly="true"
-        datetime="2021-10-20"
+        datetime="2020-12-30"
       >
         <h2>
           <em
-            aria-label="Wednesday, October 20"
+            aria-label="Wednesday, December 30"
             role="button"
             tabindex="0"
           >
-            20
+            30
           </em>
           <small aria-hidden="true">
             Wed
@@ -1727,15 +1728,15 @@
     >
       <time
         aria-readonly="true"
-        datetime="2021-10-21"
+        datetime="2020-12-31"
       >
         <h2>
           <em
-            aria-label="Thursday, October 21"
+            aria-label="Thursday, December 31"
             role="button"
             tabindex="0"
           >
-            21
+            31
           </em>
           <small aria-hidden="true">
             Thu
@@ -1749,15 +1750,15 @@
     >
       <time
         aria-readonly="true"
-        datetime="2021-10-22"
+        datetime="2021-01-01"
       >
         <h2>
           <em
-            aria-label="Friday, October 22"
+            aria-label="Friday, January 1"
             role="button"
             tabindex="0"
           >
-            22
+            01
           </em>
           <small aria-hidden="true">
             Fri
@@ -1771,15 +1772,15 @@
     >
       <time
         aria-readonly="true"
-        datetime="2021-10-23"
+        datetime="2021-01-02"
       >
         <h2>
           <em
-            aria-label="Saturday, October 23"
+            aria-label="Saturday, January 2"
             role="button"
             tabindex="0"
           >
-            23
+            02
           </em>
           <small aria-hidden="true">
             Sat
@@ -2029,410 +2030,5 @@
   </div>
 </div>
 
-```
-
-####   `should display timekeeping system as 24 hours`
-
-```html
-<div role="grid">
-  <div
-    class="column-headers"
-    role="row"
-  >
-    <div
-      role="columnheader"
-      tabindex="-1"
-    >
-      <time
-        aria-readonly="true"
-        datetime="2021-10-17"
-      >
-        <h2>
-          <em
-            aria-label="Sunday, October 17"
-            role="button"
-            tabindex="0"
-          >
-            17
-          </em>
-          <small aria-hidden="true">
-            Sun
-          </small>
-        </h2>
-      </time>
-    </div>
-    <div
-      role="columnheader"
-      tabindex="-1"
-    >
-      <time
-        aria-readonly="true"
-        datetime="2021-10-18"
-      >
-        <h2>
-          <em
-            aria-label="Monday, October 18"
-            role="button"
-            tabindex="0"
-          >
-            18
-          </em>
-          <small aria-hidden="true">
-            Mon
-          </small>
-        </h2>
-      </time>
-    </div>
-    <div
-      role="columnheader"
-      tabindex="-1"
-    >
-      <time
-        aria-readonly="true"
-        datetime="2021-10-19"
-      >
-        <h2>
-          <em
-            aria-label="Tuesday, October 19"
-            role="button"
-            tabindex="0"
-          >
-            19
-          </em>
-          <small aria-hidden="true">
-            Tue
-          </small>
-        </h2>
-      </time>
-    </div>
-    <div
-      role="columnheader"
-      tabindex="-1"
-    >
-      <time
-        aria-readonly="true"
-        datetime="2021-10-20"
-      >
-        <h2>
-          <em
-            aria-label="Wednesday, October 20"
-            role="button"
-            tabindex="0"
-          >
-            20
-          </em>
-          <small aria-hidden="true">
-            Wed
-          </small>
-        </h2>
-      </time>
-    </div>
-    <div
-      role="columnheader"
-      tabindex="-1"
-    >
-      <time
-        aria-readonly="true"
-        datetime="2021-10-21"
-      >
-        <h2>
-          <em
-            aria-label="Thursday, October 21"
-            role="button"
-            tabindex="0"
-          >
-            21
-          </em>
-          <small aria-hidden="true">
-            Thu
-          </small>
-        </h2>
-      </time>
-    </div>
-    <div
-      role="columnheader"
-      tabindex="-1"
-    >
-      <time
-        aria-readonly="true"
-        datetime="2021-10-22"
-      >
-        <h2>
-          <em
-            aria-label="Friday, October 22"
-            role="button"
-            tabindex="0"
-          >
-            22
-          </em>
-          <small aria-hidden="true">
-            Fri
-          </small>
-        </h2>
-      </time>
-    </div>
-    <div
-      role="columnheader"
-      tabindex="-1"
-    >
-      <time
-        aria-readonly="true"
-        datetime="2021-10-23"
-      >
-        <h2>
-          <em
-            aria-label="Saturday, October 23"
-            role="button"
-            tabindex="0"
-          >
-            23
-          </em>
-          <small aria-hidden="true">
-            Sat
-          </small>
-        </h2>
-      </time>
-    </div>
-  </div>
-  <div
-    class="calendar-row"
-    role="row"
-  >
-    <div
-      class="row-headers"
-      role="presentation"
-    >
-      <span role="rowheader">
-        <time datetime="01:00">
-          01
-        </time>
-      </span>
-      <span role="rowheader">
-        <time datetime="02:00">
-          02
-        </time>
-      </span>
-      <span role="rowheader">
-        <time datetime="03:00">
-          03
-        </time>
-      </span>
-      <span role="rowheader">
-        <time datetime="04:00">
-          04
-        </time>
-      </span>
-      <span role="rowheader">
-        <time datetime="05:00">
-          05
-        </time>
-      </span>
-      <span role="rowheader">
-        <time datetime="06:00">
-          06
-        </time>
-      </span>
-      <span role="rowheader">
-        <time datetime="07:00">
-          07
-        </time>
-      </span>
-      <span role="rowheader">
-        <time datetime="08:00">
-          08
-        </time>
-      </span>
-      <span role="rowheader">
-        <time datetime="09:00">
-          09
-        </time>
-      </span>
-      <span role="rowheader">
-        <time datetime="10:00">
-          10
-        </time>
-      </span>
-      <span role="rowheader">
-        <time datetime="11:00">
-          11
-        </time>
-      </span>
-      <span role="rowheader">
-        <time datetime="12:00">
-          12
-        </time>
-      </span>
-      <span role="rowheader">
-        <time datetime="13:00">
-          13
-        </time>
-      </span>
-      <span role="rowheader">
-        <time datetime="14:00">
-          14
-        </time>
-      </span>
-      <span role="rowheader">
-        <time datetime="15:00">
-          15
-        </time>
-      </span>
-      <span role="rowheader">
-        <time datetime="16:00">
-          16
-        </time>
-      </span>
-      <span role="rowheader">
-        <time datetime="17:00">
-          17
-        </time>
-      </span>
-      <span role="rowheader">
-        <time datetime="18:00">
-          18
-        </time>
-      </span>
-      <span role="rowheader">
-        <time datetime="19:00">
-          19
-        </time>
-      </span>
-      <span role="rowheader">
-        <time datetime="20:00">
-          20
-        </time>
-      </span>
-      <span role="rowheader">
-        <time datetime="21:00">
-          21
-        </time>
-      </span>
-      <span role="rowheader">
-        <time datetime="22:00">
-          22
-        </time>
-      </span>
-      <span role="rowheader">
-        <time datetime="23:00">
-          23
-        </time>
-      </span>
-    </div>
-    <div
-      class="calendar-grid-presentation"
-      role="presentation"
-    >
-      <div
-        class="hours"
-        role="list"
-      >
-        <div role="listitem">
-        </div>
-        <div role="listitem">
-        </div>
-        <div role="listitem">
-        </div>
-        <div role="listitem">
-        </div>
-        <div role="listitem">
-        </div>
-        <div role="listitem">
-        </div>
-        <div role="listitem">
-        </div>
-        <div role="listitem">
-        </div>
-        <div role="listitem">
-        </div>
-        <div role="listitem">
-        </div>
-        <div role="listitem">
-        </div>
-        <div role="listitem">
-        </div>
-        <div role="listitem">
-        </div>
-        <div role="listitem">
-        </div>
-        <div role="listitem">
-        </div>
-        <div role="listitem">
-        </div>
-        <div role="listitem">
-        </div>
-        <div role="listitem">
-        </div>
-        <div role="listitem">
-        </div>
-        <div role="listitem">
-        </div>
-        <div role="listitem">
-        </div>
-        <div role="listitem">
-        </div>
-        <div role="listitem">
-        </div>
-        <div role="listitem">
-        </div>
-      </div>
-      <div
-        class="columns"
-        role="presentation"
-      >
-        <div
-          role="gridcell"
-          tabindex="-1"
-        >
-          <slot name="day-0">
-          </slot>
-        </div>
-        <div
-          role="gridcell"
-          tabindex="-1"
-        >
-          <slot name="day-1">
-          </slot>
-        </div>
-        <div
-          role="gridcell"
-          tabindex="-1"
-        >
-          <slot name="day-2">
-          </slot>
-        </div>
-        <div
-          role="gridcell"
-          tabindex="-1"
-        >
-          <slot name="day-3">
-          </slot>
-        </div>
-        <div
-          role="gridcell"
-          tabindex="-1"
-        >
-          <slot name="day-4">
-          </slot>
-        </div>
-        <div
-          role="gridcell"
-          tabindex="-1"
-        >
-          <slot name="day-5">
-          </slot>
-        </div>
-        <div
-          role="gridcell"
-          tabindex="-1"
-        >
-          <slot name="day-6">
-          </slot>
-        </div>
-      </div>
-      <slot>
-      </slot>
-    </div>
-  </div>
-</div>
 ```
 
