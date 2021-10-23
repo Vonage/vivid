@@ -408,7 +408,7 @@
 
 ## `API`
 
-####   `should match snapshot of weekdays set by property`
+####   `should match snapshot set by property`
 
 ```html
 <div role="grid">
@@ -814,7 +814,7 @@
 
 ```
 
-####   `should match snapshot of weekdays set by attribute`
+####   `should match snapshot set by attribute`
 
 ```html
 <div role="grid">
@@ -1220,7 +1220,7 @@
 
 ```
 
-####   `should match snapshot of locales weekdays`
+####   `should match snapshot of locales`
 
 ```html
 <div role="grid">
@@ -1238,14 +1238,14 @@
       >
         <h2>
           <em
-            aria-label="12月27日星期日"
+            aria-label="domingo, 27 de dezembro"
             role="button"
             tabindex="0"
           >
-            27日
+            27
           </em>
           <small aria-hidden="true">
-            周日
+            dom.
           </small>
         </h2>
       </time>
@@ -1260,14 +1260,14 @@
       >
         <h2>
           <em
-            aria-label="12月28日星期一"
+            aria-label="segunda-feira, 28 de dezembro"
             role="button"
             tabindex="0"
           >
-            28日
+            28
           </em>
           <small aria-hidden="true">
-            周一
+            seg.
           </small>
         </h2>
       </time>
@@ -1282,14 +1282,14 @@
       >
         <h2>
           <em
-            aria-label="12月29日星期二"
+            aria-label="terça-feira, 29 de dezembro"
             role="button"
             tabindex="0"
           >
-            29日
+            29
           </em>
           <small aria-hidden="true">
-            周二
+            ter.
           </small>
         </h2>
       </time>
@@ -1304,14 +1304,14 @@
       >
         <h2>
           <em
-            aria-label="12月30日星期三"
+            aria-label="quarta-feira, 30 de dezembro"
             role="button"
             tabindex="0"
           >
-            30日
+            30
           </em>
           <small aria-hidden="true">
-            周三
+            qua.
           </small>
         </h2>
       </time>
@@ -1326,14 +1326,14 @@
       >
         <h2>
           <em
-            aria-label="12月31日星期四"
+            aria-label="quinta-feira, 31 de dezembro"
             role="button"
             tabindex="0"
           >
-            31日
+            31
           </em>
           <small aria-hidden="true">
-            周四
+            qui.
           </small>
         </h2>
       </time>
@@ -1348,14 +1348,14 @@
       >
         <h2>
           <em
-            aria-label="1月1日星期五"
+            aria-label="sexta-feira, 1 de janeiro"
             role="button"
             tabindex="0"
           >
-            01日
+            01
           </em>
           <small aria-hidden="true">
-            周五
+            sex.
           </small>
         </h2>
       </time>
@@ -1370,14 +1370,14 @@
       >
         <h2>
           <em
-            aria-label="1月2日星期六"
+            aria-label="sábado, 2 de janeiro"
             role="button"
             tabindex="0"
           >
-            02日
+            02
           </em>
           <small aria-hidden="true">
-            周六
+            sáb.
           </small>
         </h2>
       </time>
@@ -1393,117 +1393,117 @@
     >
       <span role="rowheader">
         <time datetime="01:00">
-          上午1时
+          01
         </time>
       </span>
       <span role="rowheader">
         <time datetime="02:00">
-          上午2时
+          02
         </time>
       </span>
       <span role="rowheader">
         <time datetime="03:00">
-          上午3时
+          03
         </time>
       </span>
       <span role="rowheader">
         <time datetime="04:00">
-          上午4时
+          04
         </time>
       </span>
       <span role="rowheader">
         <time datetime="05:00">
-          上午5时
+          05
         </time>
       </span>
       <span role="rowheader">
         <time datetime="06:00">
-          上午6时
+          06
         </time>
       </span>
       <span role="rowheader">
         <time datetime="07:00">
-          上午7时
+          07
         </time>
       </span>
       <span role="rowheader">
         <time datetime="08:00">
-          上午8时
+          08
         </time>
       </span>
       <span role="rowheader">
         <time datetime="09:00">
-          上午9时
+          09
         </time>
       </span>
       <span role="rowheader">
         <time datetime="10:00">
-          上午10时
+          10
         </time>
       </span>
       <span role="rowheader">
         <time datetime="11:00">
-          上午11时
+          11
         </time>
       </span>
       <span role="rowheader">
         <time datetime="12:00">
-          下午12时
+          12
         </time>
       </span>
       <span role="rowheader">
         <time datetime="13:00">
-          下午1时
+          13
         </time>
       </span>
       <span role="rowheader">
         <time datetime="14:00">
-          下午2时
+          14
         </time>
       </span>
       <span role="rowheader">
         <time datetime="15:00">
-          下午3时
+          15
         </time>
       </span>
       <span role="rowheader">
         <time datetime="16:00">
-          下午4时
+          16
         </time>
       </span>
       <span role="rowheader">
         <time datetime="17:00">
-          下午5时
+          17
         </time>
       </span>
       <span role="rowheader">
         <time datetime="18:00">
-          下午6时
+          18
         </time>
       </span>
       <span role="rowheader">
         <time datetime="19:00">
-          下午7时
+          19
         </time>
       </span>
       <span role="rowheader">
         <time datetime="20:00">
-          下午8时
+          20
         </time>
       </span>
       <span role="rowheader">
         <time datetime="21:00">
-          下午9时
+          21
         </time>
       </span>
       <span role="rowheader">
         <time datetime="22:00">
-          下午10时
+          22
         </time>
       </span>
       <span role="rowheader">
         <time datetime="23:00">
-          下午11时
+          23
         </time>
       </span>
     </div>
@@ -1626,7 +1626,7 @@
 
 ```
 
-####   `should match snapshot of displayed timekeeping system (24h)`
+####   `should match snapshot of 24h timekeeping system`
 
 ```html
 <div role="grid">
