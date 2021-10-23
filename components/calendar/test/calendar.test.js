@@ -88,17 +88,19 @@ describe('calendar', () => {
 			expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 		});
 
-		it('should match snapshot of locales', async () => {
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-			);
+		// TODO: find solution for cross browser testing of
+		// locales as i18n strings vary across browsers
+		// it('should match snapshot of locales', async () => {
+		// 	const [actualElement] = addElement(
+		// 		textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+		// 	);
 
-			actualElement.datetime = '2021-01-01';
-			actualElement.locales = 'pt-BR';
-			await actualElement.updateComplete;
+		// 	actualElement.datetime = '2021-01-01';
+		// 	actualElement.locales = 'pt-BR';
+		// 	await actualElement.updateComplete;
 
-			expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
-		});
+		// 	expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
+		// });
 
 		it('should match snapshot of 24h timekeeping system', async () => {
 			const [actualElement] = addElement(
