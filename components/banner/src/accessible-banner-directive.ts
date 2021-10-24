@@ -19,7 +19,7 @@ class AccessibleBannerDirective extends AsyncDirective {
 	}
 
 	override update(part: ChildPart, [
-  	message, open
+  	message, open, role, ariaLive
 	]: DirectiveParameters<this>) {
   	if (!open) {
   		return;
@@ -28,7 +28,7 @@ class AccessibleBannerDirective extends AsyncDirective {
   	if (this.labelEl === null) {
   		const wrapperEl = document.createElement('div');
   		const messageTemplate =
-          html`<div class="message" role="status" aria-live="polite"></div>`;
+          html`<div class="message" role=${role} aria-live=${ariaLive}></div>`;
 
   		render(messageTemplate, wrapperEl);
 
@@ -58,7 +58,7 @@ class AccessibleBannerDirective extends AsyncDirective {
 
   	this.timerId = window.setTimeout(() => {
   		this.timerId = null;
-  		messageEl.setAttribute('aria-live', 'polite');
+  		messageEl.setAttribute('aria-live', ariaLive);
   		messageEl.removeAttribute('message-text');
   		messageEl.textContent = message;
   		this.setValue(this.labelEl);
@@ -67,13 +67,13 @@ class AccessibleBannerDirective extends AsyncDirective {
   	return messageEl;
 	}
 
-	render(message: string, isOpen: boolean): TemplateResult {
+	render(message: string, isOpen: boolean, role: string, ariaLive: string): TemplateResult {
   	if (!isOpen) {
   		return html``;
   	}
 
   	return html`
-	  <div class="message" role="status" aria-live="polite">${message}</div>`;
+	  <div class="message" role=${role} aria-live=${ariaLive}>${message}</div>`;
 	}
 }
 

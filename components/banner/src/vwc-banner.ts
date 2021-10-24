@@ -79,12 +79,12 @@ export class VWCBanner extends LitElement {
 		open = false;
 
 	@ariaProperty
-  @property({type: String})
+  @property({type: String, attribute: 'role'})
 		role: BannerRole = 'status';
 
 	@ariaProperty
-  @property({type: String})
-	override ariaLive: BannerAriaLive = 'polite';
+  @property({type: String, attribute: 'aria-live'})
+	 	ariaLive: BannerAriaLive = 'polite';
 
 	private clickCloseHandler() {
 		this.open = false;
@@ -142,7 +142,7 @@ export class VWCBanner extends LitElement {
 				<header class="header">
 					<span class="user-content">
 						${this.renderIcon(this.icon)}
-						${accessibleBannerDirective(this.message, this.open)}
+						${accessibleBannerDirective(this.message, this.open, this.role, this.ariaLive)}
 						<slot class="action-items" name="actionItems"></slot>
 					</span>
 					${this.renderDismissButton()}
