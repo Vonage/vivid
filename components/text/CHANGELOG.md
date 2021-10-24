@@ -1,3 +1,12 @@
+## [2.21.1](https://github.com/vonage/vivid/compare/v2.21.0...v2.21.1) (2021-10-21)
+
+
+### Bug Fixes
+
+* **text:** added spacing ([#1094](https://github.com/vonage/vivid/issues/1094)) ([07940ea](https://github.com/vonage/vivid/commit/07940ea85bdd39a355d843b821d4446969ad5c04))
+
+
+
 # [2.21.0](https://github.com/vonage/vivid/compare/v2.20.1...v2.21.0) (2021-10-20)
 
 

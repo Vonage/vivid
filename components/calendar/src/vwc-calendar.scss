@@ -84,10 +84,10 @@ ol {
 .calendar-grid-presentation {
 	display: grid;
 	overflow: hidden;
-	background-color: var(#{scheme-variables.$vvd-color-canvas});
+	background-color: var(#{scheme-variables.$vvd-color-surface-2dp});
 	border-radius: var(#{calendar-variables.$calendar-shape});
-	box-shadow: 0 0 3.64752px rgba(0, 0, 0, 0.15);
 	counter-reset: listing;
+	filter: var(#{scheme-variables.$vvd-shadow-surface-2dp});
 	gap: calendar-variables.$gap;
 	grid-area: calendar;
 	grid-auto-flow: column;

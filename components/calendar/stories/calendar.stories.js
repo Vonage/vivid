@@ -2,10 +2,12 @@ import '@vonage/vwc-calendar/vwc-calendar.js';
 import '@vonage/vwc-calendar/vwc-calendar-event.js';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
+import { argTypes } from './arg-types';
 
 export default {
 	title: 'Components/Calendar',
-	component: 'vwc-calendar'
+	component: 'vwc-calendar',
+	argTypes
 };
 
 const Calendar = args => html`<vwc-calendar ...=${spread(args)} @click=${onClick} @keydown=${onKeyDown}>
