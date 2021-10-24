@@ -41,6 +41,7 @@ class AccessibleBannerDirective extends AsyncDirective {
   	}
 
   	const messageEl = this.labelEl;
+		messageEl.setAttribute('role', '');
   	messageEl.setAttribute('aria-live', 'off');
   	messageEl.textContent = '';
 
@@ -58,6 +59,7 @@ class AccessibleBannerDirective extends AsyncDirective {
 
   	this.timerId = window.setTimeout(() => {
   		this.timerId = null;
+			messageEl.setAttribute('role', role);
   		messageEl.setAttribute('aria-live', ariaLive);
   		messageEl.removeAttribute('message-text');
   		messageEl.textContent = message;
