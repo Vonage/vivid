@@ -9,19 +9,19 @@ import type { PropertyValues } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map.js';
 import type { ClassInfo } from 'lit-html/directives/class-map.js';
 import { nothing, TemplateResult } from 'lit-html';
-import { Connotation } from '@vonage/vvd-foundation/constants.js';
+import { Connotation, Role, AriaLive } from '@vonage/vvd-foundation/constants.js';
 import { ariaProperty} from '@material/mwc-base/aria-property.js';
 import { accessibleBannerDirective } from './accessible-banner-directive.js';
 
 /**
  * A value for the `role` ARIA attribute.
  */
-export type BannerRole = 'status' | 'alert';
+type BannerRole = Role.Status |  Role.Alert;
 
 /**
  * A value for the `aria-live` ARIA attribute.
  */
-export type BannerAriaLive = 'polite' | 'assertive';
+type BannerAriaLive = AriaLive.Polite | AriaLive.Assertive;
 
 
 const ANIMATION_DURATION = 100;
@@ -79,11 +79,11 @@ export class VWCBanner extends LitElement {
 		open = false;
 
   @property({type: String, reflect: true, attribute: 'role'})
-  	role: BannerRole = 'status';
+  	role: BannerRole = Role.Status;
 
 	@ariaProperty
   @property({type: String, reflect: true, attribute: 'aria-live'})
-	 	ariaLive: BannerAriaLive = 'polite';
+	 	ariaLive: BannerAriaLive = AriaLive.Polite;
 
 	private clickCloseHandler() {
 		this.open = false;

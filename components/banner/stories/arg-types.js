@@ -1,5 +1,4 @@
-import { Connotation } from '@vonage/vvd-foundation/constants';
-
+import { Connotation, Role, AriaLive } from '@vonage/vvd-foundation/constants';
 
 export const argTypes = {
 	icon: {
@@ -15,20 +14,20 @@ export const argTypes = {
 	role: {
 		control: {
 			type: 'select',
-			defaultValue: 'status',
+			defaultValue: Role.Status,
 			options: [
-				'status',
-				'alert',
+				Role.Status,
+				Role.Alert,
 			]
 		}
 	},
 	ariaLive: {
 		control: {
 			type: 'select',
-			defaultValue: 'polite',
+			defaultValue: AriaLive.Polite,
 			options: [
-				'polite',
-				'assertive',
+				AriaLive.Polite,
+				AriaLive.Assertive,
 			]
 		}
 	},
