@@ -8,6 +8,8 @@
 | `columnBasis`   | `column-basis`   | `ColumnBasis`                                    | "sm"    |
 | `columnSpacing` | `column-spacing` | `Size.x_Small \| Size.Medium \| Size.x_Large`    | "md"    |
 | `gutters`       | `gutters`        | `Size.x_Small \| Size.Medium \| Size.x_Large \| undefined` |         |
+| `override`      |                  |                                                  |         |
+| `styles`        |                  | `CSSResult`                                      | "style" |
 
 ## CSS Custom Properties
 
