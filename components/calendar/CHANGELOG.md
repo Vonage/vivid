@@ -1,3 +1,17 @@
+# [2.22.0](https://github.com/vonage/vivid/compare/v2.21.1...v2.22.0) (2021-10-25)
+
+
+### Bug Fixes
+
+* **calendar:** harden test ([#1105](https://github.com/vonage/vivid/issues/1105)) ([e3c4778](https://github.com/vonage/vivid/commit/e3c4778a7eede841ace189197e5b8080dde89be3)), closes [#1078](https://github.com/vonage/vivid/issues/1078)
+
+
+### Features
+
+* **calendar:** support time format hour12 ([#1103](https://github.com/vonage/vivid/issues/1103)) ([662b8bf](https://github.com/vonage/vivid/commit/662b8bff7a8fbfb580e116931ce6278a3133facd))
+
+
+
 ## [2.21.1](https://github.com/vonage/vivid/compare/v2.21.0...v2.21.1) (2021-10-21)
 
 
