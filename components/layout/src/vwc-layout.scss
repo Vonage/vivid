@@ -11,7 +11,7 @@
 	@include mixins.measurement(map.keys(variables.$bases)...) using ($basis) {
 		#{functions.get-selector-with-default(".layout-column-basis", $basis, md, map.keys(variables.$bases))} {
 			grid-template-columns: var(
-				#{$vvd-layout-grid-template-columns},
+				#{$layout-grid-template-columns},
 				repeat(
 					var(#{variables.$layout-auto-sizing}),
 					minmax(map.get(variables.$bases, $basis), 1fr)
