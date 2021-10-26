@@ -15,6 +15,7 @@ describe('banner a11y', function () {
 	it('should be with reflected role and aria-live values', async function () {
 		const bannerEl = await fixture(html`<vwc-banner role="alert" aria-live="assertive"></vwc-banner>`);
 		expect(bannerEl).to.have.attribute('role', 'alert');
-		expect(bannerEl).to.have.attribute('aria-live', 'assertive');	});
+		expect(bannerEl).to.have.attribute('aria-live', 'assertive');	
+	});
 });
 
