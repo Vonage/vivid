@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-banner",
-	"version": "2.21.1",
+	"version": "2.22.0",
 	"description": "Displays a banner",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/banner#readme",
 	"license": "ISC",

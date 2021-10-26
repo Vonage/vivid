@@ -1,3 +1,12 @@
+# [2.22.0](https://github.com/vonage/vivid/compare/v2.21.1...v2.22.0) (2021-10-25)
+
+
+### Bug Fixes
+
+* **menu:** menu eager import list ([#1107](https://github.com/vonage/vivid/issues/1107)) ([deb0daa](https://github.com/vonage/vivid/commit/deb0daa2feab56d2efd571e11144e300205d3249))
+
+
+
 ## [2.21.1](https://github.com/vonage/vivid/compare/v2.21.0...v2.21.1) (2021-10-21)
 
 
