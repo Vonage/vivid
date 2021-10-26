@@ -1,3 +1,25 @@
+# [2.22.0](https://github.com/vonage/vivid/compare/v2.21.1...v2.22.0) (2021-10-25)
+
+
+
+## [2.21.1](https://github.com/vonage/vivid/compare/v2.21.0...v2.21.1) (2021-10-21)
+
+
+
+# [2.21.0](https://github.com/vonage/vivid/compare/v2.20.1...v2.21.0) (2021-10-20)
+
+
+### Bug Fixes
+
+* **vwc-top-app-bar:** alternate ([#1087](https://github.com/vonage/vivid/issues/1087)) ([9ecf5ed](https://github.com/vonage/vivid/commit/9ecf5ede1a11634b49d9e7fa493131d3837bb3fe))
+
+
+### Features
+
+* elevation tokens builder ([#1092](https://github.com/vonage/vivid/issues/1092)) ([949105c](https://github.com/vonage/vivid/commit/949105c883d92638084a7ff6a7ba9177471ce972))
+
+
+
 ## [2.20.1](https://github.com/vonage/vivid/compare/v2.20.0...v2.20.1) (2021-10-07)
 
 

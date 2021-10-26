@@ -7,7 +7,7 @@ import {
 	TemplateResult
 } from 'lit-element';
 import type { DirectiveFn } from 'lit-html';
-import { repeat } from 'lit-html/directives/repeat';
+import { repeat } from 'lit-html/directives/repeat.js';
 import { style } from './vwc-calendar.css.js';
 import {
 	assertIsValidDateStringRepresentation,
@@ -69,7 +69,7 @@ export class VWCCalendar extends LitElement {
 			}
 		}
 	})
-	datetime?: Date;
+		datetime?: Date;
 
 	/**
 	 * A locale string or array of locale strings that contain one or more language or locale tags.
@@ -84,19 +84,31 @@ export class VWCCalendar extends LitElement {
 		reflect: true,
 		type: String
 	})
-	locales?: string | string[] | undefined;
+		locales?: string | string[] | undefined;
+
+	/**
+	 * The convention of displayed time in which the day runs from midnight to midnight and is divided into 24 or 12 hours.
+	 * Unless provided, choice will be set according to local time preference (e.g. US = 12, IL = 24)
+	 *
+	 * @public
+	 * */
+	@property({
+		reflect: true,
+		type: Boolean
+	})
+		hour12?: boolean;
 
 	#daysLength = 7;
 	#hours = (Array.from({ length: TotalHours - 1 }) as Date[])
 		.fill(new Date(new Date().setHours(0, 0, 0)))
-		.map((d, i) => new Date(d.setHours(++i)))
+		.map((d, i) => new Date(d.setHours(++i)));
 
 	/**
-   * Fire an event
-   * @param {string} event        - event name
-   * @param {Object} [detail={}]  - optional event detail object
-   * @returns {boolean}           - return true
-   */
+	 * Fire an event
+	 * @param {string} event        - event name
+	 * @param {Object} [detail={}]  - optional event detail object
+	 * @returns {boolean}           - return true
+	 */
 	getEventContext = getEventContext.bind(this);
 
 
@@ -148,7 +160,7 @@ export class VWCCalendar extends LitElement {
 
 	private onKeydown(event: KeyboardEvent) {
 		const isArrow = [ARROW_UP, ARROW_RIGHT, ARROW_DOWN, ARROW_LEFT].includes(event.key);
-		isArrow	&& this.arrowKeysInteractions(event);
+		isArrow && this.arrowKeysInteractions(event);
 	}
 
 	protected renderTimeRows(): DirectiveFn {
@@ -206,7 +218,7 @@ export class VWCCalendar extends LitElement {
 			<div class="row-headers" role="presentation">
 				${this.#hours.map(h => html`<span role="rowheader">
 					<time datetime="${new Intl.DateTimeFormat(this.locales, { hour: 'numeric', minute: 'numeric', hour12: false }).format(h)}">
-						${new Intl.DateTimeFormat(this.locales, { hour: 'numeric', hour12: true }).format(h)}
+						${new Intl.DateTimeFormat(this.locales, { hour: 'numeric', hour12: this.hour12 }).format(h)}
 					</time>
 				</span>`)}
 			</div>`;

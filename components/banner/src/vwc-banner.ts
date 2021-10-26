@@ -6,8 +6,8 @@ import {
 	customElement, html, LitElement, property
 } from 'lit-element';
 import type { PropertyValues } from 'lit-element';
-import { classMap } from 'lit-html/directives/class-map';
-import type { ClassInfo } from 'lit-html/directives/class-map';
+import { classMap } from 'lit-html/directives/class-map.js';
+import type { ClassInfo } from 'lit-html/directives/class-map.js';
 import { nothing, TemplateResult } from 'lit-html';
 import { Connotation } from '@vonage/vvd-foundation/constants.js';
 
@@ -35,7 +35,7 @@ declare global {
 	}
 }
 
-const createCustomEvent = function (eventName:string, props = {}):CustomEvent {
+const createCustomEvent = function (eventName: string, props = {}): CustomEvent {
 	return new CustomEvent(eventName, {
 		bubbles: true,
 		composed: true,
@@ -51,32 +51,32 @@ export class VWCBanner extends LitElement {
 	static override styles = [BannerStyle];
 
 	@property({ type: String, reflect: true })
-	message = '';
+		message = '';
 
 	@property({ type: Boolean, reflect: true })
-	dismissible?:boolean;
+		dismissible?: boolean;
 
 	@property({ type: String, reflect: true })
-	connotation?: BannerConnotation;
+		connotation?: BannerConnotation;
 
 	@property({ type: String, reflect: true })
-	icon?:string;
+		icon?: string;
 
 	@property({ type: Boolean, reflect: true })
-	open = false;
+		open = false;
 
 	private clickCloseHandler() {
 		this.open = false;
 	}
 
-	#transitionTimer?:number;
+	#transitionTimer?: number;
 
 	protected override firstUpdated() {
 		// refactor to query decorator
 		(this.shadowRoot?.querySelector('.banner') as HTMLElement).style.setProperty('--transition-delay', `${ANIMATION_DURATION}ms`);
 	}
 
-	override updated(changedProperties:PropertyValues) {
+	override updated(changedProperties: PropertyValues) {
 		if (changedProperties.has('open')) {
 			clearTimeout(this.#transitionTimer);
 			this.dispatchEvent(createCustomEvent(!this.open ? 'closing' : 'opening'));

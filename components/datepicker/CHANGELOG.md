@@ -1,3 +1,20 @@
+# [2.22.0](https://github.com/vonage/vivid/compare/v2.21.1...v2.22.0) (2021-10-25)
+
+
+
+## [2.21.1](https://github.com/vonage/vivid/compare/v2.21.0...v2.21.1) (2021-10-21)
+
+
+
+# [2.21.0](https://github.com/vonage/vivid/compare/v2.20.1...v2.21.0) (2021-10-20)
+
+
+### Bug Fixes
+
+* **vwc-datepicker:** lit-html versions mismatch ([#1102](https://github.com/vonage/vivid/issues/1102)) ([bed2166](https://github.com/vonage/vivid/commit/bed21664486edfb3b0c128e115345eaedc38e86b)), closes [/github.com/Matsuuu/lit-flatpickr/commit/19f77f868eae66077b3f93ffde03071225b6fb58#diff-7ae45ad102eab3b6d7e7896acd08c427a9b25b346470d7bc6507b6481575d519](https://github.com//github.com/Matsuuu/lit-flatpickr/commit/19f77f868eae66077b3f93ffde03071225b6fb58/issues/diff-7ae45ad102eab3b6d7e7896acd08c427a9b25b346470d7bc6507b6481575d519)
+
+
+
 ## [2.20.1](https://github.com/vonage/vivid/compare/v2.20.0...v2.20.1) (2021-10-07)
 
 

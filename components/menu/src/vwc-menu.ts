@@ -1,7 +1,8 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-surface';
-// import '@vonage/vwc-list';
-import { MenuBase as MWCMenuBase } from '@material/mwc-menu/mwc-menu-base';
+import '@vonage/vwc-list';
+
+import { MenuBase as MWCMenuBase } from '@material/mwc-menu/mwc-menu-base.js';
 import type { MDCMenuAdapter } from '@material/menu';
 import { customElement, html } from 'lit-element';
 import { styles as mwcMenuStyles } from '@material/mwc-menu/mwc-menu.css.js';

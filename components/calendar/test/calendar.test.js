@@ -65,14 +65,8 @@ describe('calendar', () => {
 		expect(columnHeadersStylesMatch).to.equal(true);
 	});
 
-	const extractDaysTextFromHeaders = columnHeaders => Array.from(columnHeaders.querySelectorAll('h2'))
-		.map(h2 => Array.from(h2.children)
-			.reduce((acc, curr) => acc.textContent.trim() + curr.textContent.trim()));
-
-	const getWeekdays = el => extractDaysTextFromHeaders(el.shadowRoot.querySelector('.column-headers'));
-
 	describe('API', () => {
-		it('should reflect weekdays as set by property', async () => {
+		it('should match snapshot set by property', async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
@@ -80,11 +74,10 @@ describe('calendar', () => {
 			actualElement.datetime = '2021-01-01';
 			await actualElement.updateComplete;
 
-			expect(getWeekdays(actualElement).join())
-				.to.equal('27Sun,28Mon,29Tue,30Wed,31Thu,01Fri,02Sat');
+			expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 		});
 
-		it('should reflect weekdays as set by attribute', async () => {
+		it('should match snapshot set by attribute', async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
@@ -92,21 +85,33 @@ describe('calendar', () => {
 			actualElement.setAttribute('datetime', '2021-01-01');
 			await actualElement.updateComplete;
 
-			expect(getWeekdays(actualElement).join())
-				.to.equal('27Sun,28Mon,29Tue,30Wed,31Thu,01Fri,02Sat');
+			expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 		});
 
-		it('should reflect weekdays and hours as set by locales', async () => {
+		// TODO: find solution for cross browser testing of
+		// locales as i18n strings vary across browsers
+		// it('should match snapshot of locales', async () => {
+		// 	const [actualElement] = addElement(
+		// 		textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+		// 	);
+
+		// 	actualElement.datetime = '2021-01-01';
+		// 	actualElement.locales = 'pt-BR';
+		// 	await actualElement.updateComplete;
+
+		// 	expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
+		// });
+
+		it('should match snapshot of 24h timekeeping system', async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
 
 			actualElement.datetime = '2021-01-01';
-			actualElement.locales = 'zh-cn';
+			actualElement.hour12 = false;
 			await actualElement.updateComplete;
 
-			expect(getWeekdays(actualElement).join())
-				.to.equal('27日周日,28日周一,29日周二,30日周三,31日周四,01日周五,02日周六');
+			expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 		});
 
 		it('should delegate attributes to custom properties', async () => {
@@ -157,7 +162,7 @@ describe('calendar', () => {
 			const { y: columnY } = column.getBoundingClientRect();
 			const { y: sectionY } = section.getBoundingClientRect();
 
-			expect(sectionY - columnY - 2 /* block-start margin */, 'wrong start position').to.equal(getHoursCalculatedBlockSize(start) + 1);
+			expect(Math.round(sectionY - columnY - 2) /* block-start margin */, 'wrong start position').to.equal(getHoursCalculatedBlockSize(start) + 1);
 		});
 
 		it('should not exceed column block size', async () => {

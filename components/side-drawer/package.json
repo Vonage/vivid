@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-side-drawer",
-	"version": "2.20.1",
+	"version": "2.22.0",
 	"description": "side-drawer component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/side-drawer#readme",
 	"license": "ISC",
@@ -25,15 +25,15 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@vonage/vvd-core": "2.20.1",
-		"@vonage/vvd-foundation": "2.20.1",
+		"@vonage/vvd-core": "2.22.0",
+		"@vonage/vvd-foundation": "2.22.0",
 		"lit-element": "^2.4.0",
 		"lit-html": "^1.3.0",
 		"tslib": "^2.3.0"
 	},
 	"devDependencies": {
-		"@vonage/vvd-design-tokens": "2.20.1",
-		"@vonage/vvd-typography": "2.20.1",
-		"@vonage/vvd-umbrella": "2.20.1"
+		"@vonage/vvd-design-tokens": "2.22.0",
+		"@vonage/vvd-typography": "2.22.0",
+		"@vonage/vvd-umbrella": "2.22.0"
 	}
 }

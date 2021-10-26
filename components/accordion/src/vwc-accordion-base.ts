@@ -1,9 +1,9 @@
 import { LitElement, property } from 'lit-element';
-import type { VWCExpansionPanelBase } from '@vonage/vwc-expansion-panel/vwc-expansion-panel-base';
+import type { VWCExpansionPanelBase } from '@vonage/vwc-expansion-panel/vwc-expansion-panel-base.js';
 
 export abstract class VWCAccordionBase extends LitElement {
 	@property({ type: Boolean, reflect: true })
-	multi = false;
+		multi = false;
 
 	private expansionPanels: HTMLCollectionOf<VWCExpansionPanelBase> | undefined = undefined;
 

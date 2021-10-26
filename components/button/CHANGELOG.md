@@ -1,3 +1,25 @@
+# [2.22.0](https://github.com/vonage/vivid/compare/v2.21.1...v2.22.0) (2021-10-25)
+
+
+
+## [2.21.1](https://github.com/vonage/vivid/compare/v2.21.0...v2.21.1) (2021-10-21)
+
+
+
+# [2.21.0](https://github.com/vonage/vivid/compare/v2.20.1...v2.21.0) (2021-10-20)
+
+
+### Bug Fixes
+
+* **vwc-button:** multiple click events generated on button ([#1101](https://github.com/vonage/vivid/issues/1101)) ([ca298b3](https://github.com/vonage/vivid/commit/ca298b30ac669a0bfee50e11e245eb469f1206f5))
+
+
+### Features
+
+* elevation tokens builder ([#1092](https://github.com/vonage/vivid/issues/1092)) ([949105c](https://github.com/vonage/vivid/commit/949105c883d92638084a7ff6a7ba9177471ce972))
+
+
+
 ## [2.20.1](https://github.com/vonage/vivid/compare/v2.20.0...v2.20.1) (2021-10-07)
 
 

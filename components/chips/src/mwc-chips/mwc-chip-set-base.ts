@@ -27,7 +27,7 @@ import type {
 import type { MDCChipSetAdapter } from '@material/chips/chip-set/adapter.js';
 import { MDCChipSetFoundation } from '@material/chips/chip-set/foundation.js';
 import { html, property, query, TemplateResult } from 'lit-element';
-import { classMap } from 'lit-html/directives/class-map';
+import { classMap } from 'lit-html/directives/class-map.js';
 import { ChipBase, ChipType } from './mwc-chip-base.js';
 
 let chipIdCounter = 0;
