@@ -39,7 +39,7 @@
 	"devDependencies": {
 		"@vonage/vvd-design-tokens": "2.21.1",
 		"@vonage/vvd-typography": "2.21.1",
-		"@vonage/vvd-umbrella": "2.21.1",
+		"@vonage/vvd-umbrella": "2.22.0",
 		"typescript": "^4.3.2"
 	}
 }
