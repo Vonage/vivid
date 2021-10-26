@@ -28,7 +28,7 @@ class AccessibleBannerDirective extends AsyncDirective {
   	if (this.labelEl === null) {
   		const wrapperEl = document.createElement('div');
   		const messageTemplate =
-          html`<div class="message" role=${role} aria-live=${ariaLive}></div>`;
+          html`<div class="banner--message" role=${role} aria-live=${ariaLive}></div>`;
 
   		render(messageTemplate, wrapperEl);
 
@@ -75,7 +75,7 @@ class AccessibleBannerDirective extends AsyncDirective {
   	}
 
   	return html`
-	  <div class="message" role=${role} aria-live=${ariaLive}>${message}</div>`;
+	  <div class="banner--message" role=${role} aria-live=${ariaLive}>${message}</div>`;
 	}
 }
 
