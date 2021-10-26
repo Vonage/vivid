@@ -5281,87 +5281,10 @@
     terminal-kit "^2.0.5"
     yargs-parser "^20.2.7"
 
-"@vonage/vvd-core@2.21.1":
-  version "2.21.1"
-  resolved "https://npm.pkg.github.com/download/@vonage/vvd-core/2.21.1/9b861c0ec89e0ddf13d4857567dee2a6c188a6f615278715239ebd985b17f0e7#3f78c9aad22f22a0774e31380ee81baeb1fbb543"
-  integrity sha512-bch2RvX9bIRYMd6Z08P562tWWC6x1nOCwL6gSootXZfEcEkEgetaV361g70qcy6Pt3wfD7xMQSZEpA9UGsYjLQ==
-  dependencies:
-    "@vonage/vvd-fonts" "2.21.1"
-    "@vonage/vvd-scheme" "2.21.1"
-    tslib "^2.3.0"
-
 "@vonage/vvd-design-tokens-properties@0.8.3":
   version "0.8.3"
   resolved "https://npm.pkg.github.com/download/@vonage/vvd-design-tokens-properties/0.8.3/6d06634465864ab0b349aa5c8c65da673c3ffb357fb66a6fdea10e6d3e68e398#6326b4b2449a7e9a59fff3991c084ea00d75a7b8"
   integrity sha512-SwWeFlWDuIihuIu2dTpDWS6o+w6dNf/WiIZ9ROsUnTAI0K4AUFtrA673R7Bdx5DSM0xqlLl73GyGL4/ZQaatOw==
-
-"@vonage/vvd-design-tokens@2.21.1":
-  version "2.21.1"
-  resolved "https://npm.pkg.github.com/download/@vonage/vvd-design-tokens/2.21.1/d594fdb92c5a09e62db8a5d823ba5115eb55186445418b49a3d0d5c02a932bd0#5feedd39e7f1e60499e2110dc1f326c9e02925ad"
-  integrity sha512-1788osDIx/ftqr1uZAfZZxjLmtPPyhdGARAdj7SFM8WLC4lu6WT+OQx4JilIBvrjmbhZsxpPROdeeLIyCUYeAA==
-
-"@vonage/vvd-fonts@2.21.1":
-  version "2.21.1"
-  resolved "https://npm.pkg.github.com/download/@vonage/vvd-fonts/2.21.1/2e3ef320595d2c151fb4068ff0e6191a4f05c3a3d1004c8dc105c16129466496#a1be3f0b5ee61ef12aab8d437e17009097c69f97"
-  integrity sha512-h615DfrBVXFTjXpGuvWrz1oPP15gl7HW2travAsY31jNzLGKjoyEpjgz0CDWmYHqUk8AOHzdVaI72Ue4vRi24Q==
-  dependencies:
-    lit-element "^2.4.0"
-    ramda "^0.27.1"
-    tslib "^2.3.0"
-
-"@vonage/vvd-foundation@2.21.1":
-  version "2.21.1"
-  resolved "https://npm.pkg.github.com/download/@vonage/vvd-foundation/2.21.1/3a5b1de4d74d42aefb51420c86f2c019aa1d205cedc093261a6e92f86964ebce#29aae743c9ae21f0509800affb2cbc18fb50069f"
-  integrity sha512-MfxQQNRtTRt0iG2tp6vSIXB6bAW1njMhE2UFzrxjxx5O9l25vlZ08jYJqfagUBsRxq3fmhoXM0skR/20xy8HxA==
-  dependencies:
-    lit-element "^2.4.0"
-    tslib "^2.3.0"
-
-"@vonage/vvd-scheme@2.21.1":
-  version "2.21.1"
-  resolved "https://npm.pkg.github.com/download/@vonage/vvd-scheme/2.21.1/59c10ea945e7b6fb4e49ac385c138be83e3e9b79489b1c048b0bc362a39fa6d4#c867498493c79ce7fae0c2a5831b9ed92313d5e6"
-  integrity sha512-+R/MF/QICYrWj3T1TCPYBrCJA4SZgZgMKxyoGhfIxY3ikolhQvNqfJItHNH/Qzlu2IqGGoe9LBZP9lMwirMfmQ==
-  dependencies:
-    "@vonage/vvd-foundation" "2.21.1"
-    tslib "^2.3.0"
-
-"@vonage/vvd-style-coupling@2.21.1":
-  version "2.21.1"
-  resolved "https://npm.pkg.github.com/download/@vonage/vvd-style-coupling/2.21.1/77e656828a90c8df3e0da0e8f1a862f5b6ba9d126f6d83d77fc3362a3e41ccb7#8219084961c2bbe7f5470af6f9edf649317da5db"
-  integrity sha512-HcZOSRi4mqbHpgqRBjNfeGgIWWvN57O9lgYEEkpv8KjsT2aOxP63sjjo4mEiAoPrvZvTqwYxWvBMbTCTK8Phyw==
-  dependencies:
-    tslib "^2.3.0"
-
-"@vonage/vvd-typography@2.21.1":
-  version "2.21.1"
-  resolved "https://npm.pkg.github.com/download/@vonage/vvd-typography/2.21.1/1a29e691583a4b27e7f3fe4dc261a8e8373c2478f606b3586e44bbd52fe881fb#b4e52efb65d543023073eb53870b3651266a023a"
-  integrity sha512-003oj2sdgA5wv2bSMzfZjViKrxtu8ndfTMyYQ0oYAR8ZOhIrRzag6IpJ8dRIZCBpPlqzIUTECQo8AOMz+stSKw==
-
-"@vonage/vwc-icon-button@2.21.1":
-  version "2.21.1"
-  resolved "https://npm.pkg.github.com/download/@vonage/vwc-icon-button/2.21.1/be2b97836b3d0f18736e53aa9bec8ef935380cca124f2bda42ebd5e9be1b316d#71c17620d8272ed86930e3b1b494ddfa6f6e4c22"
-  integrity sha512-mgc0aw5wsffhPaFp3FMRST/CuIYmINmhF5SHqh6mMiEvLuqPimysRt/otZ3DSUPIiLd54T1LZGneINIfLvgbMA==
-  dependencies:
-    "@material/mwc-icon-button" "^0.22.1"
-    "@material/mwc-ripple" "^0.22.1"
-    "@vonage/vvd-core" "2.21.1"
-    "@vonage/vvd-foundation" "2.21.1"
-    "@vonage/vvd-style-coupling" "2.21.1"
-    "@vonage/vwc-icon" "2.21.1"
-    lit-element "^2.4.0"
-    tslib "^2.3.0"
-
-"@vonage/vwc-icon@2.21.1":
-  version "2.21.1"
-  resolved "https://npm.pkg.github.com/download/@vonage/vwc-icon/2.21.1/2acafbd4209c15d74e22a833a916898bc2b735fcbbf6d0dab6ae05e1457ba51f#2fc5ae2710c62bfd93668596846a41d6ac72e184"
-  integrity sha512-Rxem+5OW7luUBMA6U5Urpi6r2JrflZCILyq+dD7FWlkN72PcRtxFYHgsRYBjFA/oax0+GKdpYjcz74ghHHa56g==
-  dependencies:
-    "@material/mwc-base" "^0.22.1"
-    "@vonage/vvd-core" "2.21.1"
-    "@vonage/vvd-foundation" "2.21.1"
-    lit-element "^2.4.0"
-    lit-html "^1.3.0"
-    ramda "^0.27.1"
 
 "@vue/compiler-core@3.1.5":
   version "3.1.5"
