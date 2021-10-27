@@ -62,7 +62,7 @@ const loremIpsum = () => html`
 </vwc-layout>
 `;
 
-const content = () => Array(8).fill().map(loremIpsum);
+const content = () => Array(20).fill().map(loremIpsum);
 
 const sideDrawerContent = html`
 <span slot="top-bar">
@@ -102,15 +102,21 @@ const sideDrawerContent = html`
 	</vwc-list-expansion-panel>
 </vwc-list>`;
 
-const topAppBarContent = html`
-	<span slot="actionItems">
-		<vwc-icon-button icon="search-line"></vwc-icon-button>
-		<vwc-icon-button icon="info-line"></vwc-icon-button>
-		<vwc-icon-button icon="share-line"></vwc-icon-button>
-	</span>
+const WithAppContentTemplate = args => html`
+	${style}
+	<vwc-side-drawer id="side-drawer" hastopbar ...=${spread(args)}>
+		${sideDrawerContent}
+	
+		<main slot="app-content">
+			${content()}
+		</main>
+	</vwc-side-drawer>
 `;
 
-const topAppBarFixedContent = html`
+export const WithAppContent = WithAppContentTemplate.bind({});
+WithAppContent.args = {};
+
+const topAppBarContent = html`
 	<span slot="actionItems">
 		<vwc-button label="Action" layout="outlined" icon="search-line" type="submit">
 			<button type="submit" style="display: none;"></button>
@@ -123,20 +129,6 @@ const topAppBarFixedContent = html`
 		</vwc-button>
 	</span>
 `;
-
-const WithAppContentTemplate = args => html`
-	${style}
-	<vwc-side-drawer id="side-drawer" hastopbar ...=${spread(args)}>
-		${sideDrawerContent}
-
-		<main slot="app-content">
-			${content()}
-		</main>
-	</vwc-side-drawer>
-`;
-
-export const WithAppContent = WithAppContentTemplate.bind({});
-WithAppContent.args = {};
 
 const WithTopAppBarTemplate = args => html`
 	${style}
@@ -155,20 +147,27 @@ const WithTopAppBarTemplate = args => html`
 export const WithTopAppBar = WithTopAppBarTemplate.bind({});
 WithTopAppBar.args = {};
 
+const topAppBarFixedContent = html`
+	<vwc-icon-button slot="navigationIcon" icon="vonage-mono"></vwc-icon-button>
+	<span slot="title">VONAGE</span>
+	<span slot="actionItems">
+		<vwc-icon-button icon="search-line"></vwc-icon-button>
+		<vwc-icon-button icon="info-line"></vwc-icon-button>
+		<vwc-icon-button icon="share-line"></vwc-icon-button>
+	</span>
+`;
 
 const WithTopAppBarFixedTemplate = args => html`
 	${style}
-	<vwc-side-drawer alternate hastopbar ...=${spread(args)}>
-		${sideDrawerContent}
-	
-		<vwc-top-app-bar-fixed alternate slot="app-content">
-			${topAppBarFixedContent}
-			<main>
-				${content()}
-			</main>
-		</vwc-top-app-bar-fixed>
-	</vwc-side-drawer>
+	<vwc-top-app-bar-fixed alternate slot="app-content">
+		${topAppBarFixedContent}
+		<vwc-side-drawer ...=${spread(args)}>
+			${sideDrawerContent}
+			<main slot="app-content">${content()}</main>
+		</vwc-side-drawer>
+	</vwc-top-app-bar-fixed>
 `;
 
 export const WithTopAppBarFixed = WithTopAppBarFixedTemplate.bind({});
 WithTopAppBarFixed.args = {};
+
