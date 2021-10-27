@@ -1,8 +1,9 @@
 import 'chai-a11y-axe';
 import { html } from 'lit-html';
-import { fixture } from '@open-wc/testing-helpers';
+import { fixture, aTimeout } from '@open-wc/testing-helpers';
 
 describe('banner a11y', function () {
+	const TRANSITION_TIME = 200;
 	it('should adhere to accessibility guidelines', async function () {
 		const bannerEl = await fixture(html`<vwc-banner message="Hello" open></vwc-banner>`);
 		await expect(bannerEl).shadowDom.to.be.accessible();
@@ -17,8 +18,10 @@ describe('banner a11y', function () {
 		expect(bannerEl.shadowRoot.querySelector('.banner--message')).to.have.attribute('role', 'alert');
 		expect(bannerEl.shadowRoot.querySelector('.banner--message')).to.have.attribute('aria-live', 'assertive');
 		bannerEl.shadowRoot.querySelector('vwc-icon-button')?.click();
-		expect(bannerEl.shadowRoot.querySelector('.banner--message')).to.have.attribute('role', 'alert');
-		expect(bannerEl.shadowRoot.querySelector('.banner--message')).to.have.attribute('aria-live', 'assertive');
+		await aTimeout(TRANSITION_TIME * 1.1);
+		bannerEl.setAttribute('open', 'true');
+		expect(bannerEl.shadowRoot.querySelector('.banner--message')).to.equal(null);
+		expect(bannerEl.shadowRoot.querySelector('.banner--message')).to.equal(null);
 	});
 	it('should be without role and aria-live values when closed', async function () {
 		const bannerEl = await fixture(html`<vwc-banner message="Hello"></vwc-banner>`);
