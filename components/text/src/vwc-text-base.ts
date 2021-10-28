@@ -24,10 +24,14 @@ export class VWCTextBase extends LitElement {
 	@property({ type: String, reflect: true })
 		connotation?: TextConnotation;
 
+	@property({ type: Boolean, reflect: true })
+	tight = false;
+
 	protected getRenderClasses(): ClassInfo {
 		return {
 			[`connotation-${this.connotation}`]: !!this.connotation,
 			[`font-face-${this.fontFace}`]: !!this.fontFace,
+			['tight']: !!this.tight,
 		};
 	}
 

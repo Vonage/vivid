@@ -29,14 +29,21 @@ const style = html`
         position: relative;
         background-color: var(--vvd-color-neutral-20);
       }
-      #content {
-        position: absolute;
-        bottom: 20px;
-        left: 20px;
-      }
+
       .sb-show-main.sb-main-padded {
 			  padding: 0;
 		  }
+		.login{
+			justify-self: flex-start;
+		}
+		.main {
+			display: flex;
+			flex-direction: column;
+			padding: 0 60px 60px 60px
+		}
+		.side-content{
+			margin-top: auto;
+		}
   </style>
 `;
 
@@ -52,13 +59,9 @@ const sideDrawer = () => html`
   ${Masthead()}
   <form>
     <vwc-layout column-basis="block" gutters="xl">
-      <section>
-        <vwc-text font-face="title-2">Welcome back!</vwc-text>
-      </section>
-      <section>
-        <vwc-text font-face="body-2">Don't have an account? <a href="#">Sign Up</a></vwc-text>
-      </section>
-      <section>
+        <vwc-text font-face="title-2" tight>Welcome back!</vwc-text>
+        <vwc-text font-face="body-2" tight>Don't have an account? <a href="#">Sign Up</a></vwc-text>
+      <div>
         <vwc-layout column-basis="block">
           <vwc-textfield name="username" label="username" icon="user" placeholder=" " outlined="">
             <input value="" slot="formInputElement" class="vivid-input-internal" name="username" type="text"
@@ -69,39 +72,33 @@ const sideDrawer = () => html`
               placeholder=" " />
           </vwc-textfield>
         </vwc-layout>
-      </section>
-      <section>
+      </div>
+      <div>
         <vwc-layout>
           <vwc-formfield label="Remember me">
             <vwc-checkbox></vwc-checkbox>
           </vwc-formfield>
-          <vwc-text class="password" font-face="body-2"><a href="#">Forgot password?</a></vwc-text>
+          <vwc-text class="password" font-face="body-2" tight><a href="#">Forgot password?</a></vwc-text>
         </vwc-layout>
-      </section>
-      <section>
-        <vwc-button layout="filled">Log in</vwc-button>
-      </section>
+      </div>
+			<vwc-button layout="filled" enlarged class="login">Log in</vwc-button>
     </vwc-layout>
   </form>
 </vwc-side-drawer>`;
 
-const content = () => html`<vwc-layout id="content" column-basis="block">
-  <section>
-    <vwc-text font-face="subtitle-1">Lorem ipsum</vwc-text>
-  </section>
-  <section>
-    <vwc-text font-face="body-1">Lorem ipsum lorem ipsum lorem ipsum lorem ipsum</vwc-text>
-  </section>
-  <section>
-    <vwc-button label="Apply Now →" layout="outlined" type="submit" outlined=""></vwc-button>
-  </section>
-</vwc-layout>`;
+const content = () => html`<div class="side-content">
+	<vwc-layout column-basis="block" gutters="md">
+    <vwc-text font-face="subtitle-1" tight>Lorem ipsum</vwc-text>
+    <vwc-text font-face="body-1" tight>Lorem ipsum lorem ipsum lorem ipsum lorem ipsum</vwc-text>
+    <vwc-button label="Apply Now →" layout="outlined" type="submit" outlined="" class="login"></vwc-button>
+	</vwc-layout>
+	</div>`;
 
 const WithLogInTemplate = () => html`
   ${style}
   <div id="login">
     ${sideDrawer()}
-    <main>
+    <main class="main">
       ${content()}
     </main>
   </div>

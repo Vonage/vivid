@@ -14,5 +14,12 @@ export const argTypes = {
 			options: ['primary', 'cta', 'announcement', 'info', 'success', 'alert'],
 		}
 	},
+	tight: {
+		control: {
+			type: 'inline-radio',
+			options: { true: '', false: undefined },
+		}
+	},
+
 	styles: { table: { disable: true } },
 };
