@@ -9,7 +9,20 @@ import type { PropertyValues } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map.js';
 import type { ClassInfo } from 'lit-html/directives/class-map.js';
 import { nothing, TemplateResult } from 'lit-html';
-import { Connotation } from '@vonage/vvd-foundation/constants.js';
+import { Connotation, Role, AriaLive } from '@vonage/vvd-foundation/constants.js';
+import { ariaProperty} from '@material/mwc-base/aria-property.js';
+import { accessibleBannerDirective } from './accessible-banner-directive.js';
+
+/**
+ * A value for the `role` ARIA attribute.
+ */
+type BannerRole = Role.Status |  Role.Alert;
+
+/**
+ * A value for the `aria-live` ARIA attribute.
+ */
+type BannerAriaLive = AriaLive.Polite | AriaLive.Assertive;
+
 
 const ANIMATION_DURATION = 100;
 const KEY_ESCAPE = 'Escape';
@@ -65,18 +78,25 @@ export class VWCBanner extends LitElement {
 	@property({ type: Boolean, reflect: true })
 		open = false;
 
+  @property({type: String, reflect: true, attribute: 'role'})
+  	role: BannerRole = Role.Status;
+
+	@ariaProperty
+  @property({type: String, reflect: true, attribute: 'aria-live'})
+	 	ariaLive: BannerAriaLive = AriaLive.Polite;
+
 	private clickCloseHandler() {
 		this.open = false;
 	}
 
 	#transitionTimer?: number;
 
-	protected override firstUpdated() {
+	protected override firstUpdated() :void {
 		// refactor to query decorator
 		(this.shadowRoot?.querySelector('.banner') as HTMLElement).style.setProperty('--transition-delay', `${ANIMATION_DURATION}ms`);
 	}
 
-	override updated(changedProperties: PropertyValues) {
+	override updated(changedProperties:PropertyValues) :void {
 		if (changedProperties.has('open')) {
 			clearTimeout(this.#transitionTimer);
 			this.dispatchEvent(createCustomEvent(!this.open ? 'closing' : 'opening'));
@@ -85,7 +105,8 @@ export class VWCBanner extends LitElement {
 			}, ANIMATION_DURATION);
 		}
 	}
-	renderDismissButton() {
+
+	renderDismissButton() :TemplateResult | unknown {
 		return this.dismissible
 			? html`<vwc-icon-button
 								class="dismiss-button"
@@ -120,7 +141,7 @@ export class VWCBanner extends LitElement {
 				<header class="header">
 					<span class="user-content">
 						${this.renderIcon(this.icon)}
-						<div role="alert" class="message">${this.message}</div>
+						${accessibleBannerDirective(this.message, this.open, this.role, this.ariaLive)}
 						<slot class="action-items" name="actionItems"></slot>
 					</span>
 					${this.renderDismissButton()}
