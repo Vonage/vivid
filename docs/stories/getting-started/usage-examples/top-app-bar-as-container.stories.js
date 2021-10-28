@@ -6,32 +6,11 @@ import '@vonage/vwc-layout';
 import '@vonage/vwc-list';
 import '@vonage/vwc-list/vwc-list-item';
 import '@vonage/vwc-list/vwc-list-expansion-panel';
-
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 
 export default {
 	title: 'Getting Started/Usage Examples/Top App Bar',
-	argTypes: {
-		alternate: {
-			control: {
-				type: 'inline-radio',
-				options: { true: '', false: undefined }
-			}
-		},
-		open: {
-			control: {
-				type: 'inline-radio',
-				options: { true: '', false: undefined }
-			}
-		},
-		type: {
-			control: {
-				type: 'select',
-				options: ['', 'dismissible'],
-			}
-		},
-	}
 };
 
 const style = html`
