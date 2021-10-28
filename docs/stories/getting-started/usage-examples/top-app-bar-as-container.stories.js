@@ -88,7 +88,7 @@ const topAppBarFixedContent = html`
 	</span>
 `;
 
-const WithTopAppBarFixedTemplate = args => html`
+const WithSideDrawerTemplate = args => html`
 	${style}
 	<vwc-top-app-bar-fixed alternate slot=" app-content">
 		${topAppBarFixedContent}
@@ -99,6 +99,6 @@ const WithTopAppBarFixedTemplate = args => html`
 	</vwc-top-app-bar-fixed>
 `;
 
-export const WithTopAppBarFixed = WithTopAppBarFixedTemplate.bind({});
-WithTopAppBarFixed.args = {};
+export const WithSideDrawer = WithSideDrawerTemplate.bind({});
+WithSideDrawer.args = {};
 
