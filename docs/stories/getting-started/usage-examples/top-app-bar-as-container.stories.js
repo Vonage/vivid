@@ -28,7 +28,7 @@ export default {
 		type: {
 			control: {
 				type: 'select',
-				options: ['', 'modal', 'dismissible'],
+				options: ['', 'dismissible'],
 			}
 		},
 	}
@@ -65,22 +65,13 @@ const loremIpsum = () => html`
 
 const content = () => Array(20).fill().map(loremIpsum);
 
-const sideDrawerContent = html`
-<span slot="top-bar">
-	<vwc-icon type="vonage-mono"></vwc-icon>
-	<vwc-text font-face="body-1-bold"> VONAGE</vwc-text>
-</span>
-<vwc-list innerRole="navigation" innerAriaLabel="Primary navigation" itemRoles="link">
-	<vwc-list-item shape="rounded" graphic="icon">
-		<vwc-icon slot="graphic" type="home-line"></vwc-icon>1st level item
-	</vwc-list-item>
-
-	<p>SECTION TITLE</p>
-
+const listItems = () => html`
 	<vwc-list-item shape="rounded" graphic="icon">
 		<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
 	</vwc-list-item>
-
+	
+	<p>SECTION TITLE</p>
+	
 	<vwc-list-expansion-panel open>
 		<vwc-list-item slot="header" shape="rounded" graphic="icon">
 			<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
@@ -91,17 +82,21 @@ const sideDrawerContent = html`
 			<vwc-list-item shape="rounded">3rd level item</vwc-list-item>
 		</vwc-list-expansion-panel>
 	</vwc-list-expansion-panel>
+`;
 
-	<p>SECTION TITLE</p>
-
-	<vwc-list-expansion-panel>
-		<vwc-list-item slot="header" shape="rounded" graphic="icon">
-			<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
+const sideDrawerContent = html`
+	<span slot="top-bar">
+		<vwc-icon type="vonage-mono"></vwc-icon>
+		<vwc-text font-face="body-1-bold"> VONAGE</vwc-text>
+	</span>
+	<vwc-list innerRole="navigation" innerAriaLabel="Primary navigation" itemRoles="link">
+		<vwc-list-item shape="rounded" graphic="icon">
+			<vwc-icon slot="graphic" type="home-line"></vwc-icon>1st level item
 		</vwc-list-item>
-		<vwc-list-item shape="rounded">2nd level item</vwc-list-item>
-		<vwc-list-item shape="rounded">2nd level item</vwc-list-item>
-	</vwc-list-expansion-panel>
-</vwc-list>`;
+	
+		<p>SECTION TITLE</p>
+		${Array(8).fill().map(listItems)}
+	</vwc-list>`;
 
 const topAppBarFixedContent = html`
 	<vwc-button slot="navigationIcon" icon="vonage-mono" label="VONAGE" type="submit" unelevated="">
