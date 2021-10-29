@@ -90,3 +90,21 @@ vividCore
 Pay attention: `set` API is not limited to the init use case only, it may be used for any runtime (re-)configuration of the Vivid overlay.
 
 > Reminder: `settled` Promise of the __vivid core__ is immediately rejected when __none__ initialization flavor is used.
+
+## Optimize component rendering
+
+Core is a dependency shared by all Vivid components and is responsible of mounting critical resources such as font, theming tokens etc.
+By its esm nature Core might be discovered late in the page rendering process, therefore result in [FOUC](https://webkit.org/blog/66/the-fouc-problem/#:~:text=FOUC%20stands%20for%20Flash%20of,having%20any%20style%20information%20yet.&text=When%20a%20browser%20loads%20a,file%20from%20the%20Web%20site.).
+
+```html
+<link rel="preload" href="https://fonts.resources.vonage.com/fonts/v1/Spezia_Web_Complete_Upright.woff2" as="font" importance="high">
+<link rel="preload" href="[_...path-to-resource_]/scheme.light.css.js" as="script" importance="high"> // conditional to author preferred (could be dark scheme)
+```
+
+Now that resources are highly prioritized, core should be prioritized as well to have them mounted in the application.
+
+```html
+<link rel="preload" href="[_...path-to-resource_]/vvd-core.js" as="script" importance="high">
+```
+
+Note that not all browsers fully support [priority hints](https://web.dev/priority-hints) at the time of this writing, but adding them can significantly enhance the experience in browsers that do.
