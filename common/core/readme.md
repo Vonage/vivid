@@ -98,7 +98,7 @@ By its esm nature Core might be discovered late in the page rendering process, t
 
 ```html
 <link rel="preload" href="https://fonts.resources.vonage.com/fonts/v1/Spezia_Web_Complete_Upright.woff2" as="font" importance="high">
-<link rel="preload" href="[_...path-to-resource_]/scheme.light.css.js" as="script" importance="high"> // conditional to author preferred (could be dark scheme)
+<link rel="preload" href="[_...path-to-resource_]/scheme.light.css.js" as="script" importance="high"> // conditional to author/user preference (could be dark scheme)
 ```
 
 Now that resources are highly prioritized, core should be prioritized as well to have them mounted in the application.
