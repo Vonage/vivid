@@ -1,6 +1,5 @@
 import 'chai-a11y-axe';
-import { html } from 'lit-html';
-import { fixture, aTimeout } from '@open-wc/testing-helpers';
+import { aTimeout } from '@open-wc/testing-helpers';
 import {
 	isolatedElementsCreation,
 	textToDomToParent
