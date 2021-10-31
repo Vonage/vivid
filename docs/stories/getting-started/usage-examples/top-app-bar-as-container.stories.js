@@ -88,7 +88,21 @@ const topAppBarFixedContent = html`
 	</span>
 `;
 
-const WithSideDrawerTemplate = args => html`
+const WithSideDrawerAndTopAppBarTemplate = args => html`
+	${style}
+	<vwc-top-app-bar alternate slot=" app-content">
+		${topAppBarFixedContent}
+		<vwc-side-drawer id="side-drawer" ...=${spread(args)}>
+			${sideDrawerContent}
+			<main slot="app-content">${content()}</main>
+		</vwc-side-drawer>
+	</vwc-top-app-bar>
+`;
+
+export const WithSideDrawerAndTopAppBar = WithSideDrawerAndTopAppBarTemplate.bind({});
+WithSideDrawerAndTopAppBar.args = {};
+
+const WithSideDrawerAndTopAppBarFixedTemplate = args => html`
 	${style}
 	<vwc-top-app-bar-fixed alternate slot=" app-content">
 		${topAppBarFixedContent}
@@ -99,6 +113,6 @@ const WithSideDrawerTemplate = args => html`
 	</vwc-top-app-bar-fixed>
 `;
 
-export const WithSideDrawer = WithSideDrawerTemplate.bind({});
-WithSideDrawer.args = {};
+export const WithSideDrawerAndTopAppBarFixed = WithSideDrawerAndTopAppBarFixedTemplate.bind({});
+WithSideDrawerAndTopAppBarFixed.args = {};
 
