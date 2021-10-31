@@ -93,15 +93,17 @@ Pay attention: `set` API is not limited to the init use case only, it may be use
 
 ## Optimize component rendering
 
-Core is a dependency shared by all Vivid components and is responsible of mounting critical resources such as font, theming tokens etc.
-By its esm nature Core might be discovered late in the page rendering process, therefore result in [FOUC](https://webkit.org/blog/66/the-fouc-problem/#:~:text=FOUC%20stands%20for%20Flash%20of,having%20any%20style%20information%20yet.&text=When%20a%20browser%20loads%20a,file%20from%20the%20Web%20site.).
+`vvd-core` is a dependency shared by all Vivid components and is responsible of mounting critical resources such as font, theming tokens etc.
+By its esm nature `vvd-core` might be discovered late in the page rendering process, thus result in [FOUC](https://webkit.org/blog/66/the-fouc-problem/#:~:text=FOUC%20stands%20for%20Flash%20of,having%20any%20style%20information%20yet.&text=When%20a%20browser%20loads%20a,file%20from%20the%20Web%20site.).
+
+Adding preload link tags with high-priority hints for resources can help urging the essential resources components require to render correctly.
 
 ```html
 <link rel="preload" href="https://fonts.resources.vonage.com/fonts/v1/Spezia_Web_Complete_Upright.woff2" as="font" importance="high">
 <link rel="preload" href="[_...path-to-resource_]/scheme.light.css.js" as="script" importance="high"> // conditional to author/user preference (could be dark scheme)
 ```
 
-Now that resources are highly prioritized, core should be prioritized as well to have them mounted in the application.
+`vvd-core` itself, can be prioritized as well to quickly mount the resources in the application.
 
 ```html
 <link rel="preload" href="[_...path-to-resource_]/vvd-core.js" as="script" importance="high">
