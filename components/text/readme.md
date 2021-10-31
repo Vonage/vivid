@@ -55,9 +55,9 @@ On the other hand, 'vwc-text' can nest within semantic tags instead -
 | `noSpacing` | `noSpacing` | `boolian` |
 
 
-```html
+
 <details>
 <summary>More on custom elements transparent content model</summary>
 https://html.spec.whatwg.org/multipage/custom-elements.html#custom-elements-core-concepts
 </details>
-```
+
