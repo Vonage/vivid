@@ -54,3 +54,13 @@ export enum Position {
 	Center = 'CENTER',
 	End = 'END'
 }
+
+export enum Role {
+	Status = 'status',
+	Alert = 'alert',
+}
+
+export enum AriaLive {
+	Polite = 'polite',
+	Assertive = 'assertive',
+}
