@@ -44,11 +44,9 @@ const listItems = () => html`
 	<vwc-list-item shape="rounded" graphic="icon">
 		<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
 	</vwc-list-item>
-	
 	<p>
 		<vwc-text font-face="body-2-bold">SECTION TITLE</vwc-text>
 	</p>
-	
 	<vwc-list-expansion-panel open>
 		<vwc-list-item slot="header" shape="rounded" graphic="icon">
 			<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
@@ -70,7 +68,6 @@ const sideDrawerContent = html`
 		<vwc-list-item shape="rounded" graphic="icon">
 			<vwc-icon slot="graphic" type="home-line"></vwc-icon>1st level item
 		</vwc-list-item>
-	
 		<p>
 			<vwc-text font-face="body-2-bold">SECTION TITLE</vwc-text>
 		</p>

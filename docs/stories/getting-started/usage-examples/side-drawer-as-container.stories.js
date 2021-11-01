@@ -39,10 +39,6 @@ const style = html`
 		.sb-show-main.sb-main-padded {
 			padding: 0;
 		}
-		p {
-			color: "#C0C0C0";
-			font-weight: "bold";
-		}
 		vwc-side-drawer#side-drawer{
 			--side-drawer-background-color: var(--vvd-color-neutral-10);
 		}
@@ -73,9 +69,9 @@ const sideDrawerContent = html`
 	<vwc-list-item shape="rounded" graphic="icon">
 		<vwc-icon slot="graphic" type="home-line"></vwc-icon>1st level item
 	</vwc-list-item>
-
-	<p>SECTION TITLE</p>
-
+	<p>
+		<vwc-text font-face="body-2-bold">SECTION TITLE</vwc-text>
+	</p>
 	<vwc-list-item shape="rounded" graphic="icon">
 		<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
 	</vwc-list-item>
@@ -90,9 +86,9 @@ const sideDrawerContent = html`
 			<vwc-list-item shape="rounded">3rd level item</vwc-list-item>
 		</vwc-list-expansion-panel>
 	</vwc-list-expansion-panel>
-
-	<p>SECTION TITLE</p>
-
+	<p>
+		<vwc-text font-face="body-2-bold">SECTION TITLE</vwc-text>
+	</p>
 	<vwc-list-expansion-panel>
 		<vwc-list-item slot="header" shape="rounded" graphic="icon">
 			<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
@@ -103,7 +99,7 @@ const sideDrawerContent = html`
 </vwc-list>`;
 
 const topAppBarContent = html`
-	<span slot="actionItems">
+	<div slot="actionItems">
 		<vwc-button label="Action" layout="outlined" icon="search-line" type="submit">
 			<button type="submit" style="display: none;"></button>
 		</vwc-button>
@@ -113,15 +109,15 @@ const topAppBarContent = html`
 		<vwc-button label="Action" layout="outlined" icon="share-line" type="submit">
 			<button type="submit" style="display: none;"></button>
 		</vwc-button>
-	</span>
+	</div>
 `;
 
 const topAppBarFixedContent = html`
-	<span slot="actionItems">
+	<div slot="actionItems">
 		<vwc-icon-button icon="search-line"></vwc-icon-button>
 		<vwc-icon-button icon="info-line"></vwc-icon-button>
 		<vwc-icon-button icon="share-line"></vwc-icon-button>
-	</span>
+	</div>
 `;
 
 const WithAppContentTemplate = args => html`
