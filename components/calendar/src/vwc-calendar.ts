@@ -69,7 +69,7 @@ export class VWCCalendar extends LitElement {
 			}
 		}
 	})
-		datetime?: Date;
+	datetime?: Date;
 
 	/**
 	 * A locale string or array of locale strings that contain one or more language or locale tags.
@@ -84,7 +84,7 @@ export class VWCCalendar extends LitElement {
 		reflect: true,
 		type: String
 	})
-		locales?: string | string[] | undefined;
+	locales?: string | string[] | undefined;
 
 	/**
 	 * The convention of displayed time in which the day runs from midnight to midnight and is divided into 24 or 12 hours.
@@ -96,7 +96,7 @@ export class VWCCalendar extends LitElement {
 		reflect: true,
 		type: Boolean
 	})
-		hour12?: boolean;
+	hour12?: boolean;
 
 	#daysLength = 7;
 	#hours = (Array.from({ length: TotalHours - 1 }) as Date[])
@@ -112,8 +112,16 @@ export class VWCCalendar extends LitElement {
 	getEventContext = getEventContext.bind(this);
 
 
+	@property({
+		reflect: true,
+		type: Boolean
+	}) stickyHeader?: boolean;
+
+
 	private getDaysArr(dateArr: Date[]): Date[] {
-		if (dateArr.length == this.#daysLength) { return dateArr; }
+		if (dateArr.length == this.#daysLength) {
+			return dateArr;
+		}
 		const lastDate = new Date(dateArr[dateArr.length - 1]);
 		lastDate.setDate(lastDate.getDate() + 1);
 		const concatenatedDateArr = [...dateArr, lastDate];
@@ -158,6 +166,7 @@ export class VWCCalendar extends LitElement {
 		el?.focus();
 	}
 
+
 	private onKeydown(event: KeyboardEvent) {
 		const isArrow = [ARROW_UP, ARROW_RIGHT, ARROW_DOWN, ARROW_LEFT].includes(event.key);
 		isArrow && this.arrowKeysInteractions(event);
@@ -168,7 +177,8 @@ export class VWCCalendar extends LitElement {
 
 		return repeat(
 			Array.from({ length }),
-			() => html`<div role="listitem"></div>`
+			() => html`
+				<div role="listitem"></div>`
 		);
 	}
 
@@ -192,20 +202,25 @@ export class VWCCalendar extends LitElement {
 	protected renderDays(): TemplateResult {
 		return html`
 			<div class="column-headers" role="row">
-				${this.getDaysArr([getFirstDateOfTheWeek(this.datetime)]).map(date => html`
-				<div role="columnheader" tabindex="-1">
-					<time datetime=${getValidDateString(date)} aria-readonly="true">
-						<h2>
-							<!-- TODO add to column aria-labelledby or describedby to count events and related day e.g. "3 events, Sunday, March 8" -->
-							<em tabindex="0" role="button" aria-label=${new Intl.DateTimeFormat(this.locales, { weekday: 'long', month: 'long', day: 'numeric' }).format(date)}>
-								${new Intl.DateTimeFormat(this.locales, { day: '2-digit' }).format(date)}
-							</em>
-							<small aria-hidden="true">
-								${new Intl.DateTimeFormat(this.locales, { weekday: 'short' }).format(date)}
-							</small>
-						</h2>
-					</time>
-				</div>`)}
+				${this.getDaysArr([getFirstDateOfTheWeek(this.datetime)])
+					.map(date => html`
+						<div role="columnheader" tabindex="-1">
+							<h2>
+								<time datetime=${getValidDateString(date)} aria-readonly="true">
+									<!-- TODO add to column aria-labelledby or describedby to count events and related day e.g. "3 events, Sunday, March 8" -->
+									<em tabindex="0" role="button" aria-label=${new Intl.DateTimeFormat(this.locales, {
+										weekday: 'long',
+										month: 'long',
+										day: 'numeric'
+									}).format(date)}>
+										${new Intl.DateTimeFormat(this.locales, { day: '2-digit' }).format(date)}
+									</em>
+									<small aria-hidden="true">
+										${new Intl.DateTimeFormat(this.locales, { weekday: 'short' }).format(date)}
+									</small>
+								</time>
+							</h2>
+						</div>`)}
 			</div>`;
 	}
 
@@ -217,12 +232,20 @@ export class VWCCalendar extends LitElement {
 		return html`
 			<div class="row-headers" role="presentation">
 				${this.#hours.map(h => html`<span role="rowheader">
-					<time datetime="${new Intl.DateTimeFormat(this.locales, { hour: 'numeric', minute: 'numeric', hour12: false }).format(h)}">
-						${new Intl.DateTimeFormat(this.locales, { hour: 'numeric', hour12: this.hour12 }).format(h)}
+					<time datetime="${new Intl.DateTimeFormat(this.locales, {
+						hour: 'numeric',
+						minute: 'numeric',
+						hour12: false
+					}).format(h)}">
+						${new Intl.DateTimeFormat(this.locales, {
+							hour: 'numeric',
+							hour12: this.hour12
+						}).format(h)}
 					</time>
 				</span>`)}
 			</div>`;
 	}
+
 
 	/**
 	 * the html markup
@@ -232,7 +255,7 @@ export class VWCCalendar extends LitElement {
 		return html`
 			<div role="grid" @keydown=${this.onKeydown}>
 				${this.renderDays()}
-				<div class="calendar-row" role="row">
+				<div role="row" class="calendar-row">
 					${this.renderHours()}
 					<div class="calendar-grid-presentation" role="presentation">
 						<div class="hours" role="list">
