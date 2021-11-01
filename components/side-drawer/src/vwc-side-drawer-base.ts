@@ -117,7 +117,7 @@ export class VWCSideDrawerBase extends LitElement {
 			</aside>
 
 			<div class="side-drawer--app-content">
-			<slot name="app-content"></slot>
+				<slot name="app-content"></slot>
 			</div>
 
 			${scrim}
