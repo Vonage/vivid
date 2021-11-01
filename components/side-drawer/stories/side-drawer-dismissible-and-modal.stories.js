@@ -11,71 +11,55 @@ export default {
 	argTypes
 };
 
-const Template = args => html`
-	<style>
-		body {
-			padding: 0 !important;
-		}
-		div#demo {
-			top: 0px;
-			position: fixed;
-			display: flex;
-			width: 100%;
-			height: 100%;
-		}
-	</style>
-	
-	<div id="demo">
-		${SideDrawerTemplate(args)}
-	</div>`;
-
 const SideDrawerTemplate = args => html`
 <vwc-side-drawer id="side-drawer" ...=${spread(args)} @click="${onClick}">
 	<span slot="top-bar">
 		<vwc-icon type="vonage-mono"></vwc-icon>
 		<vwc-text font-face="body-1-bold"> VONAGE</vwc-text>
 	</span>
-	<vwc-list innerRole="navigation" innerAriaLabel="Primary navigation" itemRoles="link">
-		<vwc-list-item shape="rounded" graphic="icon">
-			<vwc-icon slot="graphic" type="home-line"></vwc-icon>1st level item
-		</vwc-list-item>
-		<p>
-			<vwc-text font-face="body-2-bold">SECTION TITLE</vwc-text>
-		</p>
-		<vwc-list-item shape="rounded" graphic="icon">
-			<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
-		</vwc-list-item>
-		<vwc-list-expansion-panel open>
-			<vwc-list-item slot="header" shape="rounded" graphic="icon">
+	<span>
+		<vwc-list innerRole="navigation" innerAriaLabel="Primary navigation" itemRoles="link">
+			<vwc-list-item shape="rounded" graphic="icon">
+				<vwc-icon slot="graphic" type="home-line"></vwc-icon>1st level item
+			</vwc-list-item>
+			<p>
+				<vwc-text font-face="body-2-bold">SECTION TITLE</vwc-text>
+			</p>
+			<vwc-list-item shape="rounded" graphic="icon">
 				<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
 			</vwc-list-item>
 			<vwc-list-expansion-panel open>
-				<vwc-list-item slot="header" shape="rounded">2nd level item</vwc-list-item>
-				<vwc-list-item shape="rounded">3rd level item</vwc-list-item>
-				<vwc-list-item shape="rounded">3rd level item</vwc-list-item>
+				<vwc-list-item slot="header" shape="rounded" graphic="icon">
+					<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
+				</vwc-list-item>
+				<vwc-list-expansion-panel open>
+					<vwc-list-item slot="header" shape="rounded">2nd level item</vwc-list-item>
+					<vwc-list-item shape="rounded">3rd level item</vwc-list-item>
+					<vwc-list-item shape="rounded">3rd level item</vwc-list-item>
+				</vwc-list-expansion-panel>
 			</vwc-list-expansion-panel>
-		</vwc-list-expansion-panel>
-		<p>
-			<vwc-text font-face="body-2-bold">SECTION TITLE</vwc-text>
-		</p>
-		<vwc-list-expansion-panel>
-			<vwc-list-item slot="header" shape="rounded" graphic="icon">
-				<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
-			</vwc-list-item>
-			<vwc-list-item shape="rounded">2nd level item</vwc-list-item>
-			<vwc-list-item shape="rounded">2nd level item</vwc-list-item>
-		</vwc-list-expansion-panel>
-	</vwc-list>
+			<p>
+				<vwc-text font-face="body-2-bold">SECTION TITLE</vwc-text>
+			</p>
+			<vwc-list-expansion-panel>
+				<vwc-list-item slot="header" shape="rounded" graphic="icon">
+					<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
+				</vwc-list-item>
+				<vwc-list-item shape="rounded">2nd level item</vwc-list-item>
+				<vwc-list-item shape="rounded">2nd level item</vwc-list-item>
+			</vwc-list-expansion-panel>
+		</vwc-list>
+	</span>
 	<span slot="app-content">
 		${content()}
 	</span>
 </vwc-side-drawer>`;
 
 
-export const Dismissible = Template.bind({});
+export const Dismissible = SideDrawerTemplate.bind({});
 Dismissible.args = { type: 'dismissible', open: true };
 
-export const Modal = Template.bind({});
+export const Modal = SideDrawerTemplate.bind({});
 Modal.args = { type: 'modal', open: true };
 
 let prevActivatedItem;
