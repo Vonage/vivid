@@ -25,7 +25,7 @@ export class VWCTextBase extends LitElement {
 		connotation?: TextConnotation;
 
 	@property({ type: Boolean, reflect: true })
-	tight = false;
+		tight = false;
 
 	protected getRenderClasses(): ClassInfo {
 		return {
