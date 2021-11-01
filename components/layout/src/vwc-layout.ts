@@ -21,6 +21,9 @@ type Gutters = Extract<Size, Size.x_Small | Size.Medium | Size.x_Large>;
 type ColumnSpacing = Extract<Size, Size.x_Small | Size.Medium | Size.x_Large>;
 type ColumnBasis = Extract<Size, Size.Small | Size.Medium | Size.Large> | 'block';
 
+/**
+ * @cssprop [layout-grid-template-columns=repeat([the `auto-sizing` mapped value],	minmax([the `column-basis` mapped value], 1fr))] - Controls the `grid-template-columns` of the layout
+ * */
 @customElement('vwc-layout')
 export class Layout extends LitElement {
 	static override styles = style;
