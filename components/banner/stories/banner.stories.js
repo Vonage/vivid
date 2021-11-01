@@ -105,9 +105,9 @@ const basicStory = function (text, {
 
 const extendStory = (text, args) => Object.assign(basicStory.bind(null, text), { args });
 
-export const Info = extendStory(`I'm here to give you advice (like, use the knobs on the right for options`, { connotation: "info" });
+export const Info = extendStory(`I'm here to give you advice (like, use the knobs on the right for options)`, { connotation: "info" });
 
-export const Announcement = extendStory(`I'm here to give you advice (like, use the knobs on the right for options`, { connotation: "announcement" });
+export const Announcement = extendStory(`I'm here to give you advice (like, use the knobs on the right for options)`, { connotation: "announcement" });
 
 export const Success = extendStory(`I'm here to give you good news (Thanks for giving us money!)`, { connotation: "success" });
 

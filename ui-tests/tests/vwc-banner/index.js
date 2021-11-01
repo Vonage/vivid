@@ -6,7 +6,7 @@ import {
 import { storiesToElement } from '../../utils/storiesToElement';
 
 export async function createElementVariations(wrapper) {
-	wrapper.style.width = '600px';
+	wrapper.style.width = '800px';
 	wrapper.appendChild(storiesToElement({
 		Info, Announcement, Success, Warning, Alert
 	}));
