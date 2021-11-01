@@ -18,11 +18,9 @@ const style = html`
 		.sb-show-main.sb-main-padded {
 			padding: 0;
 		}
-		p {
-			color: "#C0C0C0";
-			font-weight: "bold";
-		}
-		vwc-side-drawer#side-drawer{
+		vwc-side-drawer#side-drawer {
+			/* Initial side drawer height is 100vh, but once the top bar is added, 
+			the side drawer height will need to be reduced. */
 			height: calc(100vh - 64px);
 			--side-drawer-z-index:3;
 		}
@@ -30,16 +28,14 @@ const style = html`
 `;
 
 const loremIpsum = () => html`
-<vwc-layout gutters="md">
-	<div>
+	<vwc-text font-face="body-1">
 		Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
 		standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make
 		a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting,
 		remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing
 		Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions
 		of Lorem Ipsum.
-	</div>
-</vwc-layout>
+	</vwc-text>
 `;
 
 const content = () => Array(20).fill().map(loremIpsum);
@@ -49,7 +45,9 @@ const listItems = () => html`
 		<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
 	</vwc-list-item>
 	
-	<p>SECTION TITLE</p>
+	<p>
+		<vwc-text font-face="body-2-bold">SECTION TITLE</vwc-text>
+	</p>
 	
 	<vwc-list-expansion-panel open>
 		<vwc-list-item slot="header" shape="rounded" graphic="icon">
@@ -73,19 +71,19 @@ const sideDrawerContent = html`
 			<vwc-icon slot="graphic" type="home-line"></vwc-icon>1st level item
 		</vwc-list-item>
 	
-		<p>SECTION TITLE</p>
+		<p>
+			<vwc-text font-face="body-2-bold">SECTION TITLE</vwc-text>
+		</p>
 		${Array(8).fill().map(listItems)}
 	</vwc-list>`;
 
 const topAppBarFixedContent = html`
-	<vwc-button slot="navigationIcon" icon="vonage-mono" label="VONAGE" type="submit" unelevated="">
-		<button type="submit" style="display: none;"></button>
-	</vwc-button>
-	<span slot="actionItems">
+	<vwc-button slot="navigationIcon" icon="vonage-mono" label="VONAGE" type="submit" unelevated=""></vwc-button>
+	<div slot="actionItems">
 		<vwc-icon-button icon="search-line"></vwc-icon-button>
 		<vwc-icon-button icon="info-line"></vwc-icon-button>
 		<vwc-icon-button icon="share-line"></vwc-icon-button>
-	</span>
+	</div>
 `;
 
 const WithSideDrawerAndTopAppBarTemplate = args => html`
