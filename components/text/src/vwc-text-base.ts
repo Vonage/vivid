@@ -31,7 +31,7 @@ export class VWCTextBase extends LitElement {
 		return {
 			[`connotation-${this.connotation}`]: !!this.connotation,
 			[`font-face-${this.fontFace}`]: !!this.fontFace,
-			['tight']: !!this.tight,
+			tight: this.tight,
 		};
 	}
 
