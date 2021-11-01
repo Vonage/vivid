@@ -6,6 +6,7 @@ import '@vonage/vwc-layout';
 import '@vonage/vwc-list';
 import '@vonage/vwc-list/vwc-list-item';
 import '@vonage/vwc-list/vwc-list-expansion-panel';
+import '@vonage/vwc-text';
 
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
