@@ -54,7 +54,7 @@ In order to help Vivid to initialize itself to some specific state, consuming ap
 The below example will auto-initialize __vivid core__ with the dark theme.
 
 ```html
-<html data-vvd-context="dark">
+<html data-vvd-context="theme:dark">
 ...
 ```
 
