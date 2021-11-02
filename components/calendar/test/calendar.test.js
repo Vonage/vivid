@@ -226,11 +226,10 @@ describe('calendar', () => {
 				let context;
 
 				el.addEventListener('click', e => context = el.getEventContext(e));
-
 				gridCell.dispatchEvent(new MouseEvent('click', { composed: true, clientX: 20, clientY: 54 }));
 
 				expect(context.day).to.equal(2);
-				expect(context.hour).to.equal(0.53);
+				expect(context.hour).to.equal(0.2);
 			});
 
 			it('should return day and hour from keyboard \'space\'', async () => {
