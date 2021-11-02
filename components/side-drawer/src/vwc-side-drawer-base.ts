@@ -1,6 +1,6 @@
 // import 'blocking-elements';
 import 'wicg-inert';
-
+import '@vonage/vwc-top-app-bar-fixed';
 import {
 	html, LitElement, TemplateResult, property, query
 } from 'lit-element';
@@ -126,9 +126,9 @@ export class VWCSideDrawerBase extends LitElement {
 
 	private renderTopBar(): TemplateResult {
 		return html`
-			<div class="side-drawer--top-bar">
+			<vwc-app-top-bar-fixed class="side-drawer--top-bar">
 				<slot name="top-bar"></slot>
-			</div>`;
+			</vwc-app-top-bar-fixed>`;
 	}
 
 	private renderScrim(): TemplateResult {
