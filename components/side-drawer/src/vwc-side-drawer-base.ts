@@ -126,9 +126,9 @@ export class VWCSideDrawerBase extends LitElement {
 
 	private renderTopBar(): TemplateResult {
 		return html`
-			<vwc-app-top-bar-fixed class="side-drawer--top-bar">
+			<header class="side-drawer--top-bar">
 				<slot name="top-bar"></slot>
-			</vwc-app-top-bar-fixed>`;
+			</header>`;
 	}
 
 	private renderScrim(): TemplateResult {
