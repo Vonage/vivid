@@ -2,7 +2,6 @@ $namespace: --vvd-badge;
 $namespace-shape: #{$namespace}-shape;
 
 @use '@vonage/vwc-icon/src/partials/vwc-icon-variables' as icon-variables;
-@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
 	$connotations-set: primary cta success alert warning info,
