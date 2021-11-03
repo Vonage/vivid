@@ -1,6 +1,5 @@
 // import 'blocking-elements';
 import 'wicg-inert';
-import '@vonage/vwc-top-app-bar-fixed';
 import {
 	html, LitElement, TemplateResult, property, query
 } from 'lit-element';
