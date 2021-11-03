@@ -6,6 +6,7 @@ import '@vonage/vwc-layout';
 import '@vonage/vwc-list';
 import '@vonage/vwc-list/vwc-list-item';
 import '@vonage/vwc-list/vwc-list-expansion-panel';
+import '@vonage/vwc-text';
 
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
@@ -39,10 +40,6 @@ const style = html`
 		.sb-show-main.sb-main-padded {
 			padding: 0;
 		}
-		p {
-			color: "#C0C0C0";
-			font-weight: "bold";
-		}
 		vwc-side-drawer#side-drawer{
 			--side-drawer-background-color: var(--vvd-color-neutral-10);
 		}
@@ -62,7 +59,7 @@ const loremIpsum = () => html`
 </vwc-layout>
 `;
 
-const content = () => Array(8).fill().map(loremIpsum);
+const content = () => Array(20).fill().map(loremIpsum);
 
 const sideDrawerContent = html`
 <span slot="top-bar">
@@ -73,9 +70,9 @@ const sideDrawerContent = html`
 	<vwc-list-item shape="rounded" graphic="icon">
 		<vwc-icon slot="graphic" type="home-line"></vwc-icon>1st level item
 	</vwc-list-item>
-
-	<p>SECTION TITLE</p>
-
+	<p>
+		<vwc-text font-face="body-2-bold">SECTION TITLE</vwc-text>
+	</p>
 	<vwc-list-item shape="rounded" graphic="icon">
 		<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
 	</vwc-list-item>
@@ -90,9 +87,9 @@ const sideDrawerContent = html`
 			<vwc-list-item shape="rounded">3rd level item</vwc-list-item>
 		</vwc-list-expansion-panel>
 	</vwc-list-expansion-panel>
-
-	<p>SECTION TITLE</p>
-
+	<p>
+		<vwc-text font-face="body-2-bold">SECTION TITLE</vwc-text>
+	</p>
 	<vwc-list-expansion-panel>
 		<vwc-list-item slot="header" shape="rounded" graphic="icon">
 			<vwc-icon slot="graphic" type="chat-line"></vwc-icon>1st level item
@@ -103,15 +100,7 @@ const sideDrawerContent = html`
 </vwc-list>`;
 
 const topAppBarContent = html`
-	<span slot="actionItems">
-		<vwc-icon-button icon="search-line"></vwc-icon-button>
-		<vwc-icon-button icon="info-line"></vwc-icon-button>
-		<vwc-icon-button icon="share-line"></vwc-icon-button>
-	</span>
-`;
-
-const topAppBarFixedContent = html`
-	<span slot="actionItems">
+	<div slot="actionItems">
 		<vwc-button label="Action" layout="outlined" icon="search-line" type="submit">
 			<button type="submit" style="display: none;"></button>
 		</vwc-button>
@@ -121,7 +110,15 @@ const topAppBarFixedContent = html`
 		<vwc-button label="Action" layout="outlined" icon="share-line" type="submit">
 			<button type="submit" style="display: none;"></button>
 		</vwc-button>
-	</span>
+	</div>
+`;
+
+const topAppBarFixedContent = html`
+	<div slot="actionItems">
+		<vwc-icon-button icon="search-line"></vwc-icon-button>
+		<vwc-icon-button icon="info-line"></vwc-icon-button>
+		<vwc-icon-button icon="share-line"></vwc-icon-button>
+	</div>
 `;
 
 const WithAppContentTemplate = args => html`
@@ -155,13 +152,12 @@ const WithTopAppBarTemplate = args => html`
 export const WithTopAppBar = WithTopAppBarTemplate.bind({});
 WithTopAppBar.args = {};
 
-
 const WithTopAppBarFixedTemplate = args => html`
 	${style}
 	<vwc-side-drawer alternate hastopbar ...=${spread(args)}>
 		${sideDrawerContent}
 	
-		<vwc-top-app-bar-fixed alternate slot="app-content">
+		<vwc-top-app-bar-fixed slot="app-content">
 			${topAppBarFixedContent}
 			<main>
 				${content()}
