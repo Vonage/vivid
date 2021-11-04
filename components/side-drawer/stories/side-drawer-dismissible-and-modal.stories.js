@@ -1,9 +1,10 @@
+import '@vonage/vwc-side-drawer';
+import '@vonage/vwc-list/vwc-list-expansion-panel';
+import '@vonage/vwc-text';
+
 import { html } from 'lit-element';
 import { argTypes } from './arg-types.js';
 import { spread } from '@open-wc/lit-helpers';
-import '@vonage/vwc-side-drawer/vwc-side-drawer.js';
-import '@vonage/vwc-list/vwc-list-expansion-panel.js';
-import '@vonage/vwc-text/vwc-text.js';
 
 export default {
 	title: 'Alpha/Components/Side Drawer',
@@ -13,11 +14,11 @@ export default {
 
 const SideDrawerTemplate = args => html`
 <vwc-side-drawer id="side-drawer" ...=${spread(args)} @click="${onClick}">
-	<span slot="top-bar">
+	<div slot="top-bar">
 		<vwc-icon type="vonage-mono"></vwc-icon>
 		<vwc-text font-face="body-1-bold"> VONAGE</vwc-text>
-	</span>
-	<span>
+	</div>
+	<div>
 		<vwc-list innerRole="navigation" innerAriaLabel="Primary navigation" itemRoles="link">
 			<vwc-list-item shape="rounded" graphic="icon">
 				<vwc-icon slot="graphic" type="home-line"></vwc-icon>1st level item
@@ -49,10 +50,10 @@ const SideDrawerTemplate = args => html`
 				<vwc-list-item shape="rounded">2nd level item</vwc-list-item>
 			</vwc-list-expansion-panel>
 		</vwc-list>
-	</span>
-	<span slot="app-content">
+	</div>
+	<div slot="app-content">
 		${content()}
-	</span>
+	</div>
 </vwc-side-drawer>`;
 
 

@@ -1,4 +1,4 @@
-import '@vonage/vwc-text/vwc-text.js';
+import '@vonage/vwc-text';
 import { html } from 'lit-element';
 
 export default {
