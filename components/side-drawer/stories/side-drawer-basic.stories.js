@@ -16,6 +16,9 @@ export default {
 
 const Template = args => html`
 	<style>
+		.sb-show-main.sb-main-padded {
+			padding: 0;
+		}
 		div#demo {
 			position: relative;
 			display: flex;

@@ -13,7 +13,13 @@ export default {
 };
 
 const SideDrawerTemplate = args => html`
-<vwc-side-drawer id="side-drawer" ...=${spread(args)} @click="${onClick}">
+<style>
+	.sb-show-main.sb-main-padded {
+  		padding: 0;
+  	}
+</style>
+
+<vwc-side-drawer ...=${spread(args)} @click="${onClick}">
 	<div slot="top-bar">
 		<vwc-icon type="vonage-mono"></vwc-icon>
 		<vwc-text font-face="body-1-bold"> VONAGE</vwc-text>
