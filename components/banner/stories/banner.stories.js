@@ -1,116 +1,46 @@
 import '@vonage/vwc-banner';
 import '@vonage/vwc-button';
 import { html } from 'lit-element';
-import { argTypes } from './arg-types';
-import { unsafeSVG } from 'lit-html/directives/unsafe-svg';
-import { ifDefined } from 'lit-html/directives/if-defined';
-import noop from 'lodash/fp/noop';
-import pipe from 'lodash/fp/pipe';
-import { createTimeline, createUpdatableStory } from '@vonage/vvd-umbrella/libs/storybook_tools';
-import { pageContentMock } from '../../../scripts/storybook/svg_templates';
-
-const REOPEN_BANNER_DELAY = 1500;
+import { spread } from '@open-wc/lit-helpers';
 
 export default {
 	title: 'Components/Banner',
-	component: 'vwc-banner',
-	argTypes
 };
 
-export const Basic = (function () {
-	let cancelAnimations = noop;
-	return createUpdatableStory(function (
-		sendUpdate,
-		{
-			connotation,
-			dismissible,
-			icon,
-			message
-		}
-	) {
-		cancelAnimations();
-		let open = true;
+const Template = args => html`
+<vwc-banner ...=${spread(args)} connotation="info" message=${infoMessage}></vwc-banner>
+<vwc-banner ...=${spread(args)} connotation="announcement" message=${announcementMessage}></vwc-banner>
+<vwc-banner ...=${spread(args)} connotation="success" message=${successMessage}></vwc-banner>
+<vwc-banner ...=${spread(args)} connotation="warning" message=${warningMessage}></vwc-banner>
+<vwc-banner ...=${spread(args)} connotation="alert" message=${alertMessage}></vwc-banner>
+`;
 
-		const onClose = function () {
-			cancelAnimations = createTimeline([
-				{ frameFunc: pipe(() => open = false, updateStory), delay: 0 },
-				{ frameFunc: pipe(() => open = true, updateStory), delay: REOPEN_BANNER_DELAY }
-			]);
-		};
+const TemplateWithButton = args => html`
+<vwc-banner ...=${spread(args)} connotation="info" message=${infoMessage}>${learMoreButton}</vwc-banner>
+<vwc-banner ...=${spread(args)} connotation="announcement" message=${announcementMessage}>${learMoreButton}</vwc-banner>
+<vwc-banner ...=${spread(args)} connotation="success" message=${successMessage}>${learMoreButton}</vwc-banner>
+<vwc-banner ...=${spread(args)} connotation="warning" message=${warningMessage}>${learMoreButton}</vwc-banner>
+<vwc-banner ...=${spread(args)} connotation="alert" message=${alertMessage}>${learMoreButton}</vwc-banner>
+`;
 
-		const updateStory = () => {
-			sendUpdate(html`
-				<style>
-					div.demo {
-						margin: auto;
-						width: 40rem;
-						height: 25rem;
-						border-radius: 10px;
-						overflow: hidden;
-						box-shadow: 0 0 3px 2px rgba(0,0,0,0.1);
-						border: solid 1px #ccc;
-					}
 
-					div.demo > svg {
-						width: 100%;
-					}
+export const Default = Template.bind({});
+Default.args = { open: true };
 
-				</style>
-				<div class="demo">
-				<vwc-banner
-					@closing=${onClose}
-					?open=${open}
-					?dismissible=${dismissible}
-					icon=${ifDefined(icon)}
-					connotation=${connotation}
-					message=${message}>
-					<vwc-button slot="actionItems" layout="filled" @click=${onClose} dense>Learn More</vwc-button>
-				</vwc-banner>
-				${unsafeSVG(pageContentMock())}
-			</div>`);
-		};
-		updateStory();
-	});
-})();
+export const Button = TemplateWithButton.bind({});
+Button.args = { open: true };
 
-Basic.args = {
-	connotation: "info",
-	dismissible: true,
-	message: "Here's some information that you may find important!"
-};
-Basic.argTypes = {
-	open: {
-		control: {
-			type: null
-		}
-	}
-};
+export const Dismissible = Template.bind({});
+Dismissible.args = { open: true, dismissible: true };
 
-const basicStory = function (text, {
-	dismissible = false,
-	connotation = "info",
-	icon,
-	open = true,
-	onClose = noop
-}) {
-	return html`<vwc-banner
-		@closing=${onClose}
-		?open=${open}
-		?dismissible=${dismissible}
-		icon=${ifDefined(icon)}
-		connotation=${connotation}
-		message=${text}>
-	</vwc-banner>`;
-};
+export const Icon = Template.bind({});
+Icon.args = { open: true, icon: 'profile-line' };
 
-const extendStory = (text, args) => Object.assign(basicStory.bind(null, text), { args });
+const infoMessage = "I'm here to give you advice (Like, use the controls for options)";
+const announcementMessage = "I'm here to give you some info (Terms and Conditions changed... jk)";
+const successMessage = "I'm here to give you good news (Thanks for giving us money!)";
+const warningMessage = "I'm here to give you a warning (Your zip is down)";
+const alertMessage = "I'm here to tell you something's wrong (The horror, the horror)";
 
-export const Info = extendStory(`I'm here to give you advice (like, use the knobs on the right for options)`, { connotation: "info" });
+const learMoreButton = html`<vwc-button slot="actionItems" layout="filled" dense type="submit" unelevated>Learn More</vwc-button>`;
 
-export const Announcement = extendStory(`I'm here to give you advice (like, use the knobs on the right for options)`, { connotation: "announcement" });
-
-export const Success = extendStory(`I'm here to give you good news (Thanks for giving us money!)`, { connotation: "success" });
-
-export const Warning = extendStory(`I'm here to give you a warning (Your zip is down)`, { connotation: "warning" });
-
-export const Alert = extendStory(`I'm here to tell you something's wrong (The horror, the horror)`, { connotation: "alert" });
