@@ -1,3 +1,12 @@
+## [2.22.1](https://github.com/vonage/vivid/compare/v2.22.0...v2.22.1) (2021-11-05)
+
+
+### Features
+
+* **vwc-banner:** add aria live polite ([#1093](https://github.com/vonage/vivid/issues/1093)) ([4f34e7b](https://github.com/vonage/vivid/commit/4f34e7b3fbc997579c90ff3452a508401d7694a2))
+
+
+
 # [2.22.0](https://github.com/vonage/vivid/compare/v2.21.1...v2.22.0) (2021-10-25)
 
 

@@ -1,3 +1,12 @@
+## [2.22.1](https://github.com/vonage/vivid/compare/v2.22.0...v2.22.1) (2021-11-05)
+
+
+### Bug Fixes
+
+* **button:** ghost button connotation colors ([#1108](https://github.com/vonage/vivid/issues/1108)) ([515c987](https://github.com/vonage/vivid/commit/515c987212e789f9e017369357aef0e827ddeb46))
+
+
+
 # [2.22.0](https://github.com/vonage/vivid/compare/v2.21.1...v2.22.0) (2021-10-25)
 
 

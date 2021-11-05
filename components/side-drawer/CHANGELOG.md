@@ -1,3 +1,13 @@
+## [2.22.1](https://github.com/vonage/vivid/compare/v2.22.0...v2.22.1) (2021-11-05)
+
+
+### Bug Fixes
+
+* **side-drawer:** add font-face and refactor side-drawer story ([#1116](https://github.com/vonage/vivid/issues/1116)) ([057f054](https://github.com/vonage/vivid/commit/057f05464021ef446c4b481f93f9eee6eb84d740))
+* **side-drawer:** declare missing dependencies ([#1112](https://github.com/vonage/vivid/issues/1112)) ([8ff898a](https://github.com/vonage/vivid/commit/8ff898afe701a54611e4ad8290d1cb40776ad4b1))
+
+
+
 # [2.22.0](https://github.com/vonage/vivid/compare/v2.21.1...v2.22.0) (2021-10-25)
 
 
