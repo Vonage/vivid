@@ -38,7 +38,7 @@
 	--mdc-button-disabled-fill-color: var(#{scheme-variables.$vvd-color-neutral-30});
 	--mdc-button-disabled-outline-color: var(#{vvd-formfield.$formfield-disabled-ink});
 	--mdc-button-outline-color: var(#{layout.$vvd-layout-color-outline}, var(--mdc-theme-primary));
-	--mdc-button-horizontal-padding: 14px;
+	--mdc-button-horizontal-padding: 16px;
 	--button-block-size: 40px;
 	$gutter: 8px;
 
@@ -105,7 +105,7 @@
 		--mdc-theme-on-primary: var(#{button-variables.$vvd-button-on-color}, var(#{layout.$vvd-layout-color-text}));
 	}
 
-	&.layout-outlined {
+	&:not(.layout-filled) {
 		--mdc-theme-primary: var(#{button-variables.$vvd-button-color}, var(#{layout.$vvd-layout-color-text}));
 		--mdc-theme-on-primary: var(#{button-variables.$vvd-button-on-color}, var(#{layout.$vvd-layout-color-fill}));
 	}
@@ -115,7 +115,7 @@
 	}
 
 	:host([enlarged]) & {
-		--mdc-button-horizontal-padding: 24px;
+		--mdc-button-horizontal-padding: 20px;
 	}
 }
 
