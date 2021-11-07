@@ -37,7 +37,7 @@ describe('Card', () => {
 
 			const headerElement = actualElement.shadowRoot.querySelector('header');
 
-			expect(headerElement.classList.contains('no-header-content'))
+			expect(headerElement.classList.contains('no-content'))
 				.to
 				.equal(true);
 		});
@@ -51,7 +51,7 @@ describe('Card', () => {
 
 			const headerElement = actualElement.shadowRoot.querySelector('header');
 
-			expect(headerElement.classList.contains('no-header-content'))
+			expect(headerElement.classList.contains('no-content'))
 				.to
 				.equal(false);
 		});
@@ -140,7 +140,7 @@ describe('Card', () => {
 
 			await actualElement.updateComplete;
 
-			const headerElement = actualElement.shadowRoot.querySelector('.vwc-card-header-text');
+			const headerElement = actualElement.shadowRoot.querySelector('.vwc-card-title');
 
 			expect(headerElement.innerText)
 				.to
@@ -156,7 +156,7 @@ describe('Card', () => {
 
 			await actualElement.updateComplete;
 
-			const headerElement = actualElement.shadowRoot.querySelector('.vwc-card-header-text');
+			const headerElement = actualElement.shadowRoot.querySelector('.vwc-card-title');
 
 			expect(headerElement.innerText)
 				.to
@@ -255,7 +255,7 @@ describe('Card', () => {
 
 			await actualElement.updateComplete;
 
-			const supportingElement = actualElement.shadowRoot.querySelector('.vwc-card-content');
+			const supportingElement = actualElement.shadowRoot.querySelector('.vwc-card-supportText');
 
 
 			expect(supportingElement.innerText)
@@ -272,7 +272,7 @@ describe('Card', () => {
 
 			await actualElement.updateComplete;
 
-			const supportingTextElement = actualElement.shadowRoot.querySelector('.vwc-card-content');
+			const supportingTextElement = actualElement.shadowRoot.querySelector('.vwc-card-supportText');
 
 			expect(supportingTextElement.innerText)
 				.to
@@ -316,7 +316,7 @@ describe('Card', () => {
 			const actionsElement = actualElement.shadowRoot.querySelector('.vwc-card-actions');
 
 
-			expect(actionsElement.classList.contains('no-actions-content'))
+			expect(actionsElement.classList.contains('no-content'))
 				.to
 				.equal(true);
 		});
@@ -336,7 +336,7 @@ describe('Card', () => {
 
 			const actionsElement = actualElement.shadowRoot.querySelector('.vwc-card-actions');
 
-			expect(actionsElement.classList.contains('no-actions-content'))
+			expect(actionsElement.classList.contains('no-content'))
 				.to
 				.equal(false);
 		});
