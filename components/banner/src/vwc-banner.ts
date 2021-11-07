@@ -67,7 +67,7 @@ export class VWCBanner extends LitElement {
 		message = '';
 
 	@property({ type: Boolean, reflect: true })
-		dismissible?: boolean;
+		dismissible = false;
 
 	@property({ type: String, reflect: true })
 		connotation?: BannerConnotation;
