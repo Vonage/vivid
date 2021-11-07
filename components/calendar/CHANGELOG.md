@@ -1,3 +1,12 @@
+## [2.22.1](https://github.com/vonage/vivid/compare/v2.22.0...v2.22.1) (2021-11-05)
+
+
+### Bug Fixes
+
+* **calendar:** sticky header ([#1115](https://github.com/vonage/vivid/issues/1115)) ([4710d5d](https://github.com/vonage/vivid/commit/4710d5dcff6fbc74dec7a13421a6e0b08c031744))
+
+
+
 # [2.22.0](https://github.com/vonage/vivid/compare/v2.21.1...v2.22.0) (2021-10-25)
 
 

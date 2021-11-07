@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.22.1](https://github.com/Vonage/vivid/compare/v2.22.0...v2.22.1) (2021-11-05)
+
+
+### Bug Fixes
+
+* **button:** ghost button connotation colors ([#1108](https://github.com/Vonage/vivid/issues/1108)) ([515c987](https://github.com/Vonage/vivid/commit/515c987212e789f9e017369357aef0e827ddeb46))
+* **calendar:** sticky header ([#1115](https://github.com/Vonage/vivid/issues/1115)) ([4710d5d](https://github.com/Vonage/vivid/commit/4710d5dcff6fbc74dec7a13421a6e0b08c031744))
+* **empty-state:** base reset z-index ([#1121](https://github.com/Vonage/vivid/issues/1121)) ([5fb7e85](https://github.com/Vonage/vivid/commit/5fb7e85ed10739f68486536d07b9fefc9333a984))
+* **side-drawer:** add font-face and refactor side-drawer story ([#1116](https://github.com/Vonage/vivid/issues/1116)) ([057f054](https://github.com/Vonage/vivid/commit/057f05464021ef446c4b481f93f9eee6eb84d740))
+* **side-drawer:** declare missing dependencies ([#1112](https://github.com/Vonage/vivid/issues/1112)) ([8ff898a](https://github.com/Vonage/vivid/commit/8ff898afe701a54611e4ad8290d1cb40776ad4b1))
+
+
+### Features
+
+* **usage-examples:** add example with top bar fixed ([#1113](https://github.com/Vonage/vivid/issues/1113)) ([a74c0ee](https://github.com/Vonage/vivid/commit/a74c0eef6ef62276a971ee13a5200cb3c70e4c81))
+* **vwc-banner:** add aria live polite ([#1093](https://github.com/Vonage/vivid/issues/1093)) ([4f34e7b](https://github.com/Vonage/vivid/commit/4f34e7b3fbc997579c90ff3452a508401d7694a2))
+
+
+
+
+
 # [2.22.0](https://github.com/Vonage/vivid/compare/v2.21.1...v2.22.0) (2021-10-25)
 
 
