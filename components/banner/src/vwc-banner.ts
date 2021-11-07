@@ -118,7 +118,8 @@ export class VWCBanner extends LitElement {
 
 	protected getRenderClasses(): ClassInfo {
 		return {
-			[`connotation-${this.connotation}`]: !!this.connotation
+			[`connotation-${this.connotation}`]: !!this.connotation,
+			'banner-open': this.open
 		};
 	}
 
