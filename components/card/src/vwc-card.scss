@@ -22,10 +22,14 @@
 
 	&-title,
 	&-subtitle {
-		display: box;
+		/* stylelint-disable property-no-vendor-prefix */
+		/* stylelint-disable value-no-vendor-prefix */
+		display: -webkit-box;
 		overflow: hidden;
-		box-orient: vertical;
+		-webkit-box-orient: vertical;
 		-webkit-line-clamp: var(--line-trim);
+		/* stylelint-enable property-no-vendor-prefix */
+		/* stylelint-enable value-no-vendor-prefix */
 	}
 
 	&-title {
