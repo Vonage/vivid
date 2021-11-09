@@ -62,5 +62,5 @@ Please see this example: [Grid Example](https://vivid.vonage.com?path=/story/alp
 
 | Property                       | Default                                          | Description                                      |
 |--------------------------------|--------------------------------------------------|--------------------------------------------------|
-| `--title-line-number` | none | Controls the number of lines of the title that will be present before trim & ellipsis |
-| `--subtitle-line-number` | none | Controls the number of lines of the sub-title that will be present before trim & ellipsis |
+| `--title-line-trim` | none | Controls the number of lines of the title that will be present before trim & ellipsis |
+| `--subtitle-line-trim` | none | Controls the number of lines of the sub-title that will be present before trim & ellipsis |

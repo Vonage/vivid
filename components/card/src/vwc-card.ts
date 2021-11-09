@@ -15,8 +15,8 @@ declare global {
 }
 
 /**
- * @cssprop [--title-line-number] defines the number of lines presented before trim + ellipsis in the card title
- * @cssprop [--subtitle-line-number] defines the number of lines presented before trim + ellipsis in the card subtitle
+ * @cssprop [--title-line-trim] defines the number of lines presented before trim + ellipsis in the card title
+ * @cssprop [--subtitle-line-trim] defines the number of lines presented before trim + ellipsis in the card subtitle
  * */
 
 @customElement('vwc-card')

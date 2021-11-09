@@ -26,20 +26,19 @@
 		display: -webkit-box;
 		overflow: hidden;
 		-webkit-box-orient: vertical;
-		-webkit-line-clamp: var(--line-trim);
 		/* stylelint-enable property-no-vendor-prefix */
 		/* stylelint-enable value-no-vendor-prefix */
 	}
 
 	&-title {
-		--line-trim: var(--title-line-number);
 		//TODO: remove typography after viv-758 is merged.
 		@include typography.typography-cat-shorthand('subtitle-2');
 		margin-bottom: 4px;
+		-webkit-line-clamp: var(--title-line-trim);
 	}
 
 	&-subtitle {
-		--line-trim: var(--subtitle-line-number);
+		-webkit-line-clamp: var(--subtitle-line-trim);
 	}
 
 	&-subtitle,
