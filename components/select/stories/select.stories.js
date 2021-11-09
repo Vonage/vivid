@@ -1,6 +1,5 @@
 import '@vonage/vwc-select/vwc-select.js';
 import '@vonage/vwc-list/vwc-list-item.js';
-import '@vonage/vwc-button/vwc-button.js';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
@@ -23,9 +22,6 @@ const Template = (args) => html`
 		<vwc-list-item value="1">Item 1</vwc-list-item>
 		<vwc-list-item value="2">Item 2</vwc-list-item>
 		<vwc-list-item value="3">Item 3</vwc-list-item>
-		<vwc-list-item noninteractive>
-			<vwc-button unelevated style="cursor: inherit; pointer-events: auto;">Click me</vwc-button>
-		</vwc-list-item>
 	</vwc-select>`;
 
 export const Default = Template.bind({});

@@ -1,6 +1,5 @@
 // import 'blocking-elements';
 import 'wicg-inert';
-
 import {
 	html, LitElement, TemplateResult, property, query
 } from 'lit-element';
@@ -117,7 +116,7 @@ export class VWCSideDrawerBase extends LitElement {
 			</aside>
 
 			<div class="side-drawer--app-content">
-			<slot name="app-content"></slot>
+				<slot name="app-content"></slot>
 			</div>
 
 			${scrim}
@@ -126,9 +125,9 @@ export class VWCSideDrawerBase extends LitElement {
 
 	private renderTopBar(): TemplateResult {
 		return html`
-			<div class="side-drawer--top-bar">
+			<header class="side-drawer--top-bar">
 				<slot name="top-bar"></slot>
-			</div>`;
+			</header>`;
 	}
 
 	private renderScrim(): TemplateResult {
