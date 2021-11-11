@@ -13,8 +13,12 @@
       <div class="vwc-card-header">
         <slot name="graphics">
         </slot>
-        <div class="vwc-card-title">
-        </div>
+        <vwc-text
+          class="vwc-card-title"
+          font-face="subtitle-2"
+          tight=""
+        >
+        </vwc-text>
       </div>
       <div class="vwc-card-subtitle">
       </div>
