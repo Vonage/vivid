@@ -40,9 +40,11 @@
 		}
 	}
 
-	&:where(.font-face-headline-1, .font-face-headline-2, .font-face-title-1, .font-face-title-2, .font-face-subtitle-1, .font-face-subtitle-2, .font-face-body-1, .font-face-body-2) {
-		display: block;
-		margin: var(--font-face-margin, 0);
+	&:not(.tight) {
+		&:where(.font-face-headline-1, .font-face-headline-2, .font-face-title-1, .font-face-title-2, .font-face-subtitle-1, .font-face-subtitle-2, .font-face-body-1, .font-face-body-2) {
+			display: block;
+			margin: var(--font-face-margin, 0);
+		}
 	}
 }
 
