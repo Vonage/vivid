@@ -32,8 +32,6 @@
 	}
 
 	&-title {
-		//TODO: remove typography after viv-758 is merged.
-		@include typography.typography-cat-shorthand('subtitle-2');
 		margin-bottom: 4px;
 		-webkit-line-clamp: var(--title-line-trim);
 	}

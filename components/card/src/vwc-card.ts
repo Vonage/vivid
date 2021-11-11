@@ -92,9 +92,7 @@ export class VWCCard extends LitElement {
 					<slot name="graphics" @slotchange="${this.graphicsSlotChanged}">
 						${this.headerIcon ? this.renderIcon() : ''}
 					</slot>
-					<!--TODO: change div to vwc-text after viv-758 is merged.
-					<vwc-text font-face="subtitle-2" tight class="vwc-card-title"></vwc-text>-->
-					<div class="vwc-card-title">${this.heading}</div>
+					<vwc-text font-face="subtitle-2" tight class="vwc-card-title">${this.heading}</vwc-text>
 				</div>
 				<div class="vwc-card-subtitle">${this.subtitle}</div>
 			</header>`;
