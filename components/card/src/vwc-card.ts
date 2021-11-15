@@ -6,7 +6,6 @@ import { property } from 'lit-element/lib/decorators.js';
 import { classMap } from 'lit-html/directives/class-map.js';
 import '@vonage/vwc-button';
 import '@vonage/vwc-icon';
-import '@vonage/vwc-text';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -92,7 +91,7 @@ export class VWCCard extends LitElement {
 					<slot name="graphics" @slotchange="${this.graphicsSlotChanged}">
 						${this.headerIcon ? this.renderIcon() : ''}
 					</slot>
-					<vwc-text font-face="subtitle-2" tight class="vwc-card-title">${this.heading}</vwc-text>
+					<div class="vwc-card-title">${this.heading}</div>
 				</div>
 				<div class="vwc-card-subtitle">${this.subtitle}</div>
 			</header>`;

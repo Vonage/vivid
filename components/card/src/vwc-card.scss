@@ -32,6 +32,7 @@
 	}
 
 	&-title {
+		@include typography.typography-cat-shorthand('subtitle-2');
 		margin-bottom: 4px;
 		-webkit-line-clamp: var(--title-line-trim);
 	}
