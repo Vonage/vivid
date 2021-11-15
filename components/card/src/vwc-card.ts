@@ -13,6 +13,11 @@ declare global {
 	}
 }
 
+/**
+ * @cssprop [--title-line-clamp] defines the number of lines presented before trim + ellipsis in the card title
+ * @cssprop [--subtitle-line-clamp] defines the number of lines presented before trim + ellipsis in the card subtitle
+ * */
+
 @customElement('vwc-card')
 export class VWCCard extends LitElement {
 	/**
@@ -54,12 +59,12 @@ export class VWCCard extends LitElement {
 	}
 
 	private get headerClass(): string {
-		return (this.headerContentExists) ? '' : 'no-header-content';
+		return (this.headerContentExists) ? '' : 'no-content';
 	}
 
 	protected override render(): unknown {
 		const actionsClassMap = {
-			'no-actions-content': !(this.shouldShowActionsSlot)
+			'no-content': !(this.shouldShowActionsSlot)
 		};
 		return html`
 			<div class="vwc-card">
@@ -68,8 +73,8 @@ export class VWCCard extends LitElement {
 				</div>
 				<div class="vwc-card-info">
 					${this.renderHeader()}
-					<div class="vwc-card-content">
-						${this.supportingText ? this.supportingText : ''}
+					<div class="vwc-card-supportText">
+							${this.supportingText ? this.supportingText : ''}
 					</div>
 					<div class="vwc-card-actions ${classMap(actionsClassMap)}">
 							<slot name="actions" @slotchange="${this.actionsSlotChanged}"></slot>
@@ -86,16 +91,14 @@ export class VWCCard extends LitElement {
 					<slot name="graphics" @slotchange="${this.graphicsSlotChanged}">
 						${this.headerIcon ? this.renderIcon() : ''}
 					</slot>
-					<div class="vwc-card-header-text">
-						${this.heading}
-					</div>
+					<div class="vwc-card-title">${this.heading}</div>
 				</div>
 				<div class="vwc-card-subtitle">${this.subtitle}</div>
 			</header>`;
 	}
 
 	private renderIcon() {
-		return html`<vwc-icon class="header-icon" size="medium" type="${this.headerIcon}"></vwc-icon>`;
+		return html`<vwc-icon class="header-icon" inline type="${this.headerIcon}"></vwc-icon>`;
 	}
 
 	private graphicsSlotChanged() {
@@ -103,9 +106,9 @@ export class VWCCard extends LitElement {
 		const slot = headerElement?.querySelector('slot[name="graphics"]') as HTMLSlotElement;
 		this.headerIconSlottedItems = slot.assignedNodes();
 		if (this.headerContentExists) {
-			headerElement?.classList.remove('no-header-content');
+			headerElement?.classList.remove('no-content');
 		} else {
-			headerElement?.classList.add('no-header-content');
+			headerElement?.classList.add('no-content');
 		}
 	}
 
