@@ -23,7 +23,7 @@ export async function createElementVariations(wrapper) {
 		<vwc-card label="Heading" heading="Very Long Card title That spreads into two or three lines" subtitle="I'm a very long subtitle should I be trimmed?"  supporting-text="Lorem ipsum dolor sit amet, consectet adipiscing elit">
 		</vwc-card>
 
-		<vwc-card label="trimmed Heading" heading="Very Long Card title That spreads into two or three lines" subtitle="I'm a very long subtitle should I be trimmed?"  supporting-text="I'm a Supporting text, cant be line trimmed. Lorem ipsum dolor sit amet, consectet adipiscing elit" style="--title-line-trim :1; --subtitle-line-trim:1">
+		<vwc-card label="trimmed Heading" heading="Very Long Card title That spreads into two or three lines" subtitle="I'm a very long subtitle should I be trimmed?"  supporting-text="I'm a Supporting text, cant be line trimmed. Lorem ipsum dolor sit amet, consectet adipiscing elit" style="--title-line-clamp :1; --subtitle-line-clamp:1">
 		</vwc-card>
 
 		<vwc-card label="Icon" header-icon="chat-line" heading="Using the header-icon attribute" supporting-text="Supporting Text">

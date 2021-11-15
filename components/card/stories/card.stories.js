@@ -28,8 +28,8 @@ const Template = args => html`
 
 		vwc-card {
 			margin: 15px;
-			--title-line-trim :2;
-			--subtitle-line-trim:2
+			--title-line-clamp: 2;
+			--subtitle-line-clamp: 2
 		}
 	</style>
 	<vwc-card ...=${spread(args)}>
