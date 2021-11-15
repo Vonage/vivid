@@ -1,0 +1,40 @@
+{
+	"name": "@vonage/vwc-tooltip",
+	"version": "2.22.1",
+	"description": "tooltip component",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/tooltip#readme",
+	"license": "ISC",
+	"main": "vwc-tooltip.js",
+	"module": "vwc-tooltip.js",
+	"files": [
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/vonage/vivid.git",
+		"directory": "components/tooltip"
+	},
+	"scripts": {
+		"build:typescript": "tsc -b",
+		"build:styles": "umbrella-style-modules --path=\"./src\"",
+		"build": "yarn run build:styles && yarn run build:typescript"
+	},
+	"bugs": {
+		"url": "https://github.com/Vonage/vivid/issues"
+	},
+	"dependencies": {
+		"@vonage/vvd-core": "2.22.1",
+		"@vonage/vvd-foundation": "2.22.1",
+		"blocking-elements": "^0.1.0",
+		"lit-element": "^2.4.0",
+		"lit-html": "^1.3.0",
+		"tslib": "^2.3.0"
+	},
+	"devDependencies": {
+		"@vonage/vvd-design-tokens": "2.22.1",
+		"@vonage/vvd-typography": "2.22.1",
+		"@vonage/vvd-umbrella": "2.22.1"
+	}
+}

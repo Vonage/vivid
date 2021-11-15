@@ -1,0 +1,32 @@
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
+@use '@vonage/vvd-typography/scss/typography' as typography;
+
+@use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
+	$connotations-set: primary cta success alert warning info,
+	$shades: (soft, contrast),
+	$default: primary,
+);
+@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
+
+@use '@vonage/vvd-foundation/scss/mixins/layout/config' as layout-config with (
+	$layout-set: filled outlined soft,
+	$outline-duotone: true,
+	$default: filled,
+);
+@use '@vonage/vvd-foundation/scss/mixins/layout' as layout;
+
+.tooltip {
+	@include typography.typography-cat-shorthand('caption-bold');
+	@include layout.layout;
+	@include connotation.connotation;
+	display: inline-flex;
+	height: 28px;
+	box-sizing: border-box;
+	align-items: center;
+	padding: 0 10px;
+	border: 1px solid var(#{layout.$vvd-layout-color-outline});
+	background-color: var(#{layout.$vvd-layout-color-fill});
+	border-radius: 50px;
+	color: var(#{layout.$vvd-layout-color-text});
+	line-height: 28px;
+}
