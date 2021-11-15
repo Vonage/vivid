@@ -130,6 +130,43 @@ Actions.args = {
 	'supporting-text': 'Use the \'actions\' slot in order to add actionable items.'
 };
 
+const ActionWithLabelTemplate = args => html`
+	<style>
+		#root-inner {
+			width: 300px
+		}
+
+		vwc-card {
+			margin: 15px;
+		}
+
+		.actions{
+			display: flex;
+			align-items: center;
+			width: 100%;
+		}
+		.button-list{
+			margin-left: auto;
+		}
+	</style>
+	<vwc-card ...=${spread(args)}>
+		<div slot="actions" class="actions">
+			<vwc-badge connotation="success" layout="soft" shape="pill" text="Status" enlarged></vwc-badge>
+			<div class="button-list">
+				<vwc-icon-button icon="copy-2-solid"></vwc-icon-button>
+				<vwc-icon-button icon="open-solid"></vwc-icon-button>
+				<vwc-icon-button icon="more-vertical-solid"></vwc-icon-button>
+			</div>
+		</div>
+	</vwc-card>
+`;
+export const ActionWithLabel = ActionWithLabelTemplate.bind({});
+ActionWithLabel.args = {
+	label: 'Complex Action',
+	heading: 'Action',
+	subtitle: 'A card with label and some button icons',
+};
+
 const AllTemplate = args => html`
 	<style>
 		#root-inner {
