@@ -57,7 +57,7 @@ export class VWCTooltipBase extends LitElement {
 
 	renderDismissButton(): TemplateResult | unknown {
 		return this.dismissible
-			? html`<vwc-icon-button class="dismiss-button" icon="close-line" @click="${this.clickCloseHandler}" dense part="vvd-scheme-alternate"></vwc-icon-button>`
+			? html`<vwc-icon-button class="dismiss-button" icon="close-small-solid" @click="${this.clickCloseHandler}" dense part="vvd-scheme-alternate"></vwc-icon-button>`
 			: nothing;
 	}
 
