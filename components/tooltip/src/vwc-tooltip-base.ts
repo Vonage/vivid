@@ -30,7 +30,7 @@ export class VWCTooltipBase extends LitElement {
 		open = false;
 
 	@property({ type: Boolean, reflect: true })
-		dense = false;
+		dense = false; //TODO: change to - type: basic/extended
 
 	@property({ type: Boolean, reflect: true })
 		dismissible?: boolean;
