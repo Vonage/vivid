@@ -1,5 +1,6 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-typography/scss/typography' as typography;
+@use 'partials/vwc-tooltip-variables' as tooltip-variables;
 
 @use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
 	$connotations-set: primary cta success alert warning info,
@@ -16,17 +17,32 @@
 @use '@vonage/vvd-foundation/scss/mixins/layout' as layout;
 
 .tooltip {
-	@include typography.typography-cat-shorthand('caption-bold');
+	@include typography.typography-cat-shorthand('body-2');
 	@include layout.layout;
 	@include connotation.connotation;
 	display: inline-flex;
-	height: 28px;
+	max-width: var(#{tooltip-variables.$tooltip-max-width}, 320px);
 	box-sizing: border-box;
 	align-items: center;
-	padding: 0 10px;
-	border: 1px solid var(#{layout.$vvd-layout-color-outline});
+	padding: 1rem;
 	background-color: var(#{layout.$vvd-layout-color-fill});
-	border-radius: 50px;
+	border-radius: 6px;
 	color: var(#{layout.$vvd-layout-color-text});
-	line-height: 28px;
+	&-content {
+		display: flex;
+		flex-direction: column;
+		.normal & {
+			padding: 0.5rem;
+		}
+	}
+	&-title {
+		@include typography.typography-cat-shorthand('body-2-bold');
+	}
+	&.dense {
+		padding: 0.5rem;
+	}
+	&-close-button {
+		align-self: flex-start;
+	}
 }
+
