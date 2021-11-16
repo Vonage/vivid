@@ -1,10 +1,11 @@
 import {
-	html, LitElement, property, TemplateResult
+	html, LitElement, property
 } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map.js';
 import type { ClassInfo } from 'lit-html/directives/class-map.js';
 import type { Connotation, Layout } from '@vonage/vvd-foundation/constants.js';
 import '@vonage/vwc-button';
+import { nothing, TemplateResult } from 'lit-html';
 
 // import { Instance as PopperInstance, createPopper } from '@popperjs/core/dist/esm';
 
@@ -31,6 +32,9 @@ export class VWCTooltipBase extends LitElement {
 	@property({ type: Boolean, reflect: true })
 		dense = false;
 
+	@property({ type: Boolean, reflect: true })
+		dismissible = false;
+
 	/**
 	 * Opens the tooltip
 	 * @public
@@ -45,6 +49,16 @@ export class VWCTooltipBase extends LitElement {
 	 */
 	hide(): void {
 		this.open = false;
+	}
+
+	private clickCloseHandler() {
+		this.open = false;
+	}
+
+	renderDismissButton(): TemplateResult | unknown {
+		return this.dismissible
+			? html`<vwc-icon-button class="dismiss-button" icon="close-line" @click="${this.clickCloseHandler}" dense part="vvd-scheme-alternate"></vwc-icon-button>`
+			: nothing;
 	}
 
 	protected getRenderClasses(): ClassInfo {
@@ -68,15 +82,7 @@ export class VWCTooltipBase extends LitElement {
 						${this.position}
 					</slot>
 				</span>
-				<vwc-button
-					dense
-					label=""
-					layout="filled"
-					icon="close-small-solid"
-					type="submit"
-					unelevated=""
-					class="tooltip-close-button"
-				></vwc-button>
+				${this.renderDismissButton()}
 			</div>`;
 	}
 }

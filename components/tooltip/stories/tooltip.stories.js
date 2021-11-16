@@ -12,5 +12,5 @@ export default {
 const Template = args => html`<vwc-tooltip open ...=${spread(args)}></vwc-tooltip>`;
 
 export const Basic = Template.bind({});
-Basic.args = { text: 'lalalalalalalalalalalalalalalalalalalalalalalala' };
+Basic.args = { tooltipText: 'lalalalalalalalalalalal', dismissible: true};
 
