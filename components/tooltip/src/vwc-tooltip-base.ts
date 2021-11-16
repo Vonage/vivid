@@ -4,6 +4,7 @@ import {
 import { classMap } from 'lit-html/directives/class-map.js';
 import type { ClassInfo } from 'lit-html/directives/class-map.js';
 import type { Connotation, Layout } from '@vonage/vvd-foundation/constants.js';
+import '@vonage/vwc-button';
 
 // import { Instance as PopperInstance, createPopper } from '@popperjs/core/dist/esm';
 
@@ -16,13 +17,19 @@ export class VWCTooltipBase extends LitElement {
 		layout?: Layout;
 
 	@property({ type: String, reflect: true })
-		text?: string;
+		tooltipText?: string;
+
+	@property({ type: String, reflect: true })
+		tooltipTitle?: string;
 
 	@property({ type: String, reflect: true })
 		position?: string;
 
 	@property({ type: Boolean, reflect: true })
 		open = false;
+
+	@property({ type: Boolean, reflect: true })
+		dense = false;
 
 	/**
 	 * Opens the tooltip
@@ -44,17 +51,32 @@ export class VWCTooltipBase extends LitElement {
 		return {
 			[`connotation-${this.connotation}`]: !!this.connotation,
 			[`layout-${this.layout}`]: !!this.layout,
-			['open']: this.open,
+			'open': this.open,
+			//TODO: merge them into one :)
+			'dense': (this.dense),
+			'normal': !(this.dense),
 		};
 	}
 
 	protected override render(): TemplateResult {
 		return html`
-			<span class="tooltip ${classMap(this.getRenderClasses())}">
-				<slot>
-					${this.text}
-					${this.position}
-				</slot>
-			</span>`;
+			<div class="tooltip ${classMap(this.getRenderClasses())}">
+				<span class="tooltip-content">
+					<span class="tooltip-title">${this.tooltipTitle}</span>
+					<span class="tooltip-text">${this.tooltipText}</span>
+					<slot>
+						${this.position}
+					</slot>
+				</span>
+				<vwc-button
+					dense
+					label=""
+					layout="filled"
+					icon="close-small-solid"
+					type="submit"
+					unelevated=""
+					class="tooltip-close-button"
+				></vwc-button>
+			</div>`;
 	}
 }
