@@ -33,7 +33,7 @@ export class VWCTooltipBase extends LitElement {
 		dense = false;
 
 	@property({ type: Boolean, reflect: true })
-		dismissible = false;
+		dismissible?: boolean;
 
 	/**
 	 * Opens the tooltip
