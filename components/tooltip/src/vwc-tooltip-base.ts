@@ -3,20 +3,12 @@ import {
 } from 'lit-element';
 import { classMap } from 'lit-html/directives/class-map.js';
 import type { ClassInfo } from 'lit-html/directives/class-map.js';
-import type { Connotation, Layout } from '@vonage/vvd-foundation/constants.js';
 import '@vonage/vwc-button';
 import { nothing, TemplateResult } from 'lit-html';
 
 // import { Instance as PopperInstance, createPopper } from '@popperjs/core/dist/esm';
 
 export class VWCTooltipBase extends LitElement {
-
-	@property({ type: String, reflect: true })
-		connotation?: Connotation;
-
-	@property({ type: String, reflect: true })
-		layout?: Layout;
-
 	@property({ type: String, reflect: true })
 		tooltipText?: string;
 
@@ -63,12 +55,8 @@ export class VWCTooltipBase extends LitElement {
 
 	protected getRenderClasses(): ClassInfo {
 		return {
-			[`connotation-${this.connotation}`]: !!this.connotation,
-			[`layout-${this.layout}`]: !!this.layout,
 			'open': this.open,
-			//TODO: merge them into one :)
-			'dense': (this.dense),
-			'normal': !(this.dense),
+			'dense': this.dense
 		};
 	}
 
