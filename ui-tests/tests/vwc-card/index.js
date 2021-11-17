@@ -1,4 +1,6 @@
 import '@vonage/vwc-card';
+import '@vonage/vwc-icon-button';
+import '@vonage/vwc-icon-button-toggle';
 
 export async function createElementVariations(wrapper) {
 	const elementWrapper = document.createElement('div');
@@ -69,6 +71,17 @@ export async function createElementVariations(wrapper) {
 		<vwc-button slot="actions" shape="pill" layout="outlined" icon="info" type="submit" outlined="">Click
 		</vwc-button>
 	</vwc-card>
+
+	<vwc-card label="trimmed Heading" heading="Very Long Card title That spreads into two or three lines" subtitle="I'm a very long subtitle should I be trimmed?"  supporting-text="I'm a Supporting text, cant be line trimmed. Lorem ipsum dolor sit amet, consectet adipiscing elit" style="--title-line-clamp :1; --subtitle-line-clamp:1">
+			<vwc-icon-button-toggle onicon="bookmark-full" officon="bookmark" connotation="cta" slot="top-action"></vwc-icon-button-toggle>
+		</vwc-card>
+
+		<vwc-card label="trimmed Heading" heading="Very Long Card title That spreads into two or three lines" subtitle="I'm a very long subtitle should I be trimmed?"  supporting-text="I'm a Supporting text, cant be line trimmed. Lorem ipsum dolor sit amet, consectet adipiscing elit">
+			<vwc-icon-button icon="more-vertical-solid" slot="top-action"></vwc-icon-button>
+		</vwc-card>
+		<vwc-card label="trimmed Heading" heading="Very Long Card title That spreads into two or three lines" subtitle="I'm a very long subtitle should I be trimmed?"  supporting-text="I'm a Supporting text, cant be line trimmed. Lorem ipsum dolor sit amet, consectet adipiscing elit">
+			<vwc-icon-button icon="pin-2-solid" slot="top-action"></vwc-icon-button>
+		</vwc-card>
 		`;
 	wrapper.appendChild(elementWrapper);
 }

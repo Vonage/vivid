@@ -14,11 +14,19 @@
 	&-info {
 		display: flex;
 		flex-flow: column;
-		padding: 24px;
+		padding: 1rem 1rem 1.5rem 1.5rem;
 	}
 
 	&-header {
 		display: flex;
+		align-items: flex-start;
+		&-wrapper {
+			display: inline-flex;
+			flex-direction: column;
+			align-content: space-between;
+			padding-top: 0.5rem;
+			padding-right: 0.5rem;
+		}
 	}
 
 	&-title,
@@ -48,6 +56,10 @@
 		color: var(#{scheme-variables.$vvd-color-neutral-70});
 	}
 
+	&-supportText {
+		padding-right: 0.5rem;
+	}
+
 	&-actions {
 		display: inline-flex;
 		flex-direction: column;
@@ -57,9 +69,9 @@
 }
 
 header {
-	display: inline-flex;
-	flex-direction: column;
-	align-content: space-between;
+	display: flex;
+	align-items: flex-start;
+	gap: 0.5rem;
 
 	:host([supporting-text]) & {
 		margin-bottom: 12px;
@@ -76,6 +88,10 @@ header {
 .header-icon {
 	width: 20px;
 	height: 20px;
+}
+
+::slotted([slot="top-action"i]) {
+	margin-left: auto;
 }
 
 .no-content {

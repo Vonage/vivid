@@ -10,14 +10,18 @@
   </div>
   <div class="vwc-card-info">
     <header class="no-content">
-      <div class="vwc-card-header">
-        <slot name="graphics">
-        </slot>
-        <div class="vwc-card-title">
+      <div class="vwc-card-header-wrapper">
+        <div class="vwc-card-header">
+          <slot name="graphics">
+          </slot>
+          <div class="vwc-card-title">
+          </div>
+        </div>
+        <div class="vwc-card-subtitle">
         </div>
       </div>
-      <div class="vwc-card-subtitle">
-      </div>
+      <slot name="top-action">
+      </slot>
     </header>
     <div class="vwc-card-supportText">
     </div>

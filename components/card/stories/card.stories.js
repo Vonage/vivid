@@ -58,6 +58,25 @@ TrimmedTitles.args = {
 	'supporting-text': 'Supporting Text'
 };
 
+const TopActionTemplate = args => html`
+	<style>
+		#root-inner {
+			width: 400px
+		}
+	</style>
+	<vwc-card ...=${spread(args)} header-icon="chat-line">
+		<vwc-icon-button-toggle onicon="more-vertical-solid" officon="more-vertical-solid" slot="top-action"></vwc-icon-button-toggle>
+	</vwc-card>
+	`;
+export const TopAction = TopActionTemplate.bind({});
+TopAction.args = {
+	label: 'Top Action Example',
+	heading: 'A card with a long, very long card title',
+	subtitle: 'Long secondary text very long secondary text secondary text very long secondary text ',
+	'supporting-text': 'Lorem ipsum dolor sit amet, consectet adipiscing elit'
+};
+
+
 const IconTemplate = args => html`
 	<style>
 		#root-inner {
@@ -142,7 +161,10 @@ const AllTemplate = args => html`
 	</style>
 	<vwc-card ...=${spread(args)}>
 		<div style="height: 150px; width: 100%; background-color: #871EFF;" slot="media"></div>
-		<vwc-button slot="actions" shape="pill" layout="outlined" icon="info">Click</vwc-button>
+		<vwc-icon-button-toggle onicon="more-vertical-solid" officon="more-vertical-solid" slot="top-action"></vwc-icon-button-toggle>
+		<vwc-button slot="actions" shape="pill" layout="outlined" label="Action">
+			<vwc-icon type="arrow-bold-right-line" slot="trailingIcon"></vwc-icon>
+		</vwc-button>
 	</vwc-card>`;
 export const AllOptions = AllTemplate.bind({});
 AllOptions.args = {
