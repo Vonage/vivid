@@ -21,9 +21,11 @@ export class VWCTooltipBase extends LitElement {
 	@property({ type: Boolean, reflect: true })
 		open = false;
 
-	@property({ type: Boolean, reflect: true })
-		dense = false; //TODO: change to - type: basic/extended
-
+	/**
+	 * @prop dismissible - adds close button to the tooltip
+	 * accepts boolean value
+	 * @public
+	 * */
 	@property({ type: Boolean, reflect: true })
 		dismissible?: boolean;
 
@@ -49,14 +51,14 @@ export class VWCTooltipBase extends LitElement {
 
 	renderDismissButton(): TemplateResult | unknown {
 		return this.dismissible
-			? html`<vwc-icon-button class="dismiss-button" icon="close-small-solid" @click="${this.clickCloseHandler}" dense part="vvd-scheme-alternate"></vwc-icon-button>`
+			? html`<vwc-icon-button class="dismiss-button" icon="close-small-solid" @click="${this.clickCloseHandler}" dense
+	part="vvd-scheme-alternate"></vwc-icon-button>`
 			: nothing;
 	}
 
 	protected getRenderClasses(): ClassInfo {
 		return {
 			'open': this.open,
-			'dense': this.dense
 		};
 	}
 
