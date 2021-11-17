@@ -1,3 +1,4 @@
+@use 'partials/vwc-card-variables' as card-variables;
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 
@@ -9,52 +10,77 @@
 	border-radius: 6px;
 	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05), 0 8px 8px rgba(0, 0, 0, 0.05), 0 2px 16px rgba(0, 0, 0, 0.1);
 	color: var(#{scheme-variables.$vvd-color-on-canvas});
-}
 
-.vwc-card-info {
-	display: flex;
-	flex-flow: column;
-	padding: 24px;
+	&-info {
+		display: flex;
+		flex-flow: column;
+		padding: 24px;
+	}
+
+	&-header {
+		display: flex;
+	}
+
+	&-title,
+	&-subtitle {
+		/* stylelint-disable property-no-vendor-prefix */
+		/* stylelint-disable value-no-vendor-prefix */
+		display: -webkit-box;
+		overflow: hidden;
+		-webkit-box-orient: vertical;
+		/* stylelint-enable property-no-vendor-prefix */
+		/* stylelint-enable value-no-vendor-prefix */
+	}
+
+	&-title {
+		@include typography.typography-cat-shorthand('subtitle-2');
+		margin-bottom: 4px;
+		-webkit-line-clamp: var(#{card-variables.$title-line-clamp});
+	}
+
+	&-subtitle {
+		-webkit-line-clamp: var(#{card-variables.$subtitle-line-clamp});
+	}
+
+	&-subtitle,
+	&-supportText {
+		@include typography.typography-cat-shorthand('body-2');
+		color: var(#{scheme-variables.$vvd-color-neutral-70});
+	}
+
+	&-actions {
+		display: inline-flex;
+		flex-direction: column;
+		align-items: flex-end;
+		margin-top: 16px;
+	}
 }
 
 header {
 	display: inline-flex;
 	flex-direction: column;
 	align-content: space-between;
-}
 
-:host([supporting-text]) header {
-	margin-bottom: 8px;
-}
-
-.vwc-card-header {
-	display: flex;
-}
-
-.vwc-card-header-text {
-	@include typography.typography-cat-shorthand('subtitle-2');
-	margin: auto 0;
+	:host([supporting-text]) & {
+		margin-bottom: 12px;
+	}
 }
 
 ::slotted([slot="graphics"i]),
 .header-icon {
 	flex-shrink: 0;
-	margin-right: 12px;
+	align-self: baseline;
+	margin: 4px 10px 0 0;
 }
 
-.vwc-card-content,
-.vwc-card.subtitle {
-	@include typography.typography-cat-shorthand('body-2');
+.header-icon {
+	width: 20px;
+	height: 20px;
 }
 
-.vwc-card-actions {
-	display: inline-flex;
-	flex-direction: column;
-	align-items: flex-end;
-	margin-top: 16px;
-}
-
-.no-header-content,
-.vwc-card-actions.no-actions-content {
+.no-content {
 	display: none;
 }
+
+
+
