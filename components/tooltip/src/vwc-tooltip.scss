@@ -20,7 +20,7 @@
 	@include typography.typography-cat-shorthand('body-2');
 	@include layout.layout;
 	@include connotation.connotation;
-	display: inline-flex;
+	display: none;
 	max-width: var(#{tooltip-variables.$tooltip-max-width}, 320px);
 	box-sizing: border-box;
 	align-items: center;
@@ -28,6 +28,7 @@
 	background-color: var(#{layout.$vvd-layout-color-fill});
 	border-radius: 6px;
 	color: var(#{layout.$vvd-layout-color-text});
+	
 	&-content {
 		display: flex;
 		flex-direction: column;
@@ -35,14 +36,49 @@
 			padding: 0.5rem;
 		}
 	}
-	&-title {
+	&-text {
 		@include typography.typography-cat-shorthand('body-2-bold');
-	}
-	&.dense {
-		padding: 0.5rem;
 	}
 	&-dismiss-button {
 		align-self: flex-start;
 	}
 }
 
+.open {
+	display: block;
+}
+
+#arrow,
+#arrow::before {
+	position: absolute;
+	width: 8px;
+	height: 8px;
+	background: inherit;
+}
+
+#arrow {
+	visibility: hidden;
+}
+
+#arrow::before {
+	content: '';
+	transform: rotate(45deg);
+	visibility: visible;
+}
+
+
+.tooltip[data-popper-placement^='top'] > #arrow {
+	bottom: -4px;
+}
+
+.tooltip[data-popper-placement^='bottom'] > #arrow {
+	top: -4px;
+}
+
+.tooltip[data-popper-placement^='left'] > #arrow {
+	right: -4px;
+}
+
+.tooltip[data-popper-placement^='right'] > #arrow {
+	left: -4px;
+}
