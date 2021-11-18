@@ -29,7 +29,7 @@ const Template = args => html`
 	</div>`;
 
 export const Basic = Template.bind({});
-Basic.args = { tooltipText: 'This is a tooltip', dismissible: true };
+Basic.args = { content: 'This is a tooltip', dismissible: true };
 
 function onClick(e) {
 	document.querySelector("vwc-tooltip").show(document.querySelector("#button"));

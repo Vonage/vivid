@@ -10,8 +10,13 @@ export class VWCTooltipBase extends LitElement {
 	private popperInstance: any;
 	@query('.tooltip') protected popper!: HTMLElement;
 
+	/**
+	 * @prop content - the content of the tooltip
+	 * accepts string
+	 * @public
+	 * */
 	@property({ type: String, reflect: true })
-		tooltipText?: string;
+		content?: string;
 
 	/**
 	 * @prop placement - the placement of the tooltip
@@ -118,7 +123,7 @@ export class VWCTooltipBase extends LitElement {
 		return html`
 			<div class="tooltip ${classMap(this.getRenderClasses())}" role="tooltip">
 				<span class="tooltip-content">
-					<span class="tooltip-text">${this.tooltipText}</span>
+					<span class="tooltip-text">${this.content}</span>
 					<slot>
 					</slot>
 				</span>
