@@ -24,17 +24,28 @@ export class VWCTooltipBase extends LitElement {
 	 * @public
 	 * */
 	@property({ type: String, reflect: true })
-		placement: | 'top'
-		| 'right'
+		placement: | 'auto'
+		| 'auto-start'
+		| 'auto-end'
+		| 'top'
+		| 'top-start'
+		| 'top-end'
 		| 'bottom'
-		| 'left' = 'top';
+		| 'bottom-start'
+		| 'bottom-end'
+		| 'right'
+		| 'right-start'
+		| 'right-end'
+		| 'left'
+		| 'left-start'
+		| 'left-end' = 'auto';
 
 	/**
 	 * @prop open - indicates whether the tooltip is open
 	 * accepts boolean value
 	 * */
 	@property({ type: Boolean, reflect: true })
-		open = false;
+		open?: boolean;
 
 	/**
 	 * @prop dismissible - adds close button to the tooltip
@@ -52,13 +63,6 @@ export class VWCTooltipBase extends LitElement {
 	@property({ type: Number }) distance = 10;
 
 	/**
-	 * @prop skidding - the distance in pixels from which to offset the tooltip along its target.
-	 * accepts number value
-	 * @public
-	 * */
-	@property({ type: Number }) skidding = 0;
-
-	/**
 	 * Opens the tooltip
 	 * @public
 	 */
@@ -70,7 +74,7 @@ export class VWCTooltipBase extends LitElement {
 					{
 						name: 'offset',
 						options: {
-							offset: [this.skidding, this.distance],
+							offset: [0, this.distance],
 						},
 					},
 				],
@@ -92,13 +96,16 @@ export class VWCTooltipBase extends LitElement {
 	}
 
 	protected override updated(): void {
+		if (!this.popperInstance) {
+			return;
+		}
 		this.popperInstance.setOptions({
 			placement: this.placement,
 			modifiers: [
 				{
 					name: 'offset',
 					options: {
-						offset: [this.skidding, this.distance],
+						offset: [0, this.distance],
 					},
 				},
 			],
@@ -106,7 +113,7 @@ export class VWCTooltipBase extends LitElement {
 		this.popperInstance.update();
 	}
 
-	renderDismissButton(): TemplateResult | unknown {
+	#renderDismissButton(): TemplateResult | unknown {
 		return this.dismissible
 			? html`<vwc-icon-button class="dismiss-button" icon="close-small-solid" @click="${this.clickCloseHandler}" dense
 	part="vvd-scheme-alternate"></vwc-icon-button>`
@@ -127,7 +134,7 @@ export class VWCTooltipBase extends LitElement {
 					<slot>
 					</slot>
 				</span>
-				${this.renderDismissButton()}
+				${this.#renderDismissButton()}
 				<div id="arrow" data-popper-arrow></div>
 			</div>`;
 	}

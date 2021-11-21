@@ -24,7 +24,7 @@ const Template = args => html`
 		}
 	</style>
 	<div id="wrapper">
-		<vwc-button id="button" aria-describedby="tooltip" @click="${onClick}">Click to open tooltip</vwc-button>
+		<vwc-button id="button" layout="outlined" outlined aria-describedby="tooltip" @click="${onClick}">Click to open tooltip</vwc-button>
 		<vwc-tooltip ...=${spread(args)}></vwc-tooltip>
 	</div>`;
 

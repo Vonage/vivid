@@ -13,7 +13,23 @@ export const argTypes = {
 	placement: {
 		control: {
 			type: 'select',
-			options: ['top', 'bottom', 'right', 'left'],
+			defaultValue: 'auto',
+			options: ['auto'
+				, 'auto-start'
+				, 'auto-end'
+				, 'top'
+				, 'top-start'
+				, 'top-end'
+				, 'bottom'
+				, 'bottom-start'
+				, 'bottom-end'
+				, 'right'
+				, 'right-start'
+				, 'right-end'
+				, 'left'
+				, 'left-start'
+				, 'left-end']
+
 		}
 	},
 };
