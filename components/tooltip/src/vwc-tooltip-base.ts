@@ -128,7 +128,7 @@ export class VWCTooltipBase extends LitElement {
 
 	protected override render(): TemplateResult {
 		return html`
-			<div class="tooltip ${classMap(this.getRenderClasses())}" role="tooltip">
+			<div class="tooltip ${classMap(this.getRenderClasses())}" role="tooltip" aria-hidden=${this.open ? 'false' : 'true'}>
 				<span class="tooltip-content">
 					<span class="tooltip-text">${this.content}</span>
 					<slot>
