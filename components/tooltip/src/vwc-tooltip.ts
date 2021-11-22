@@ -1,6 +1,4 @@
 import '@vonage/vvd-core';
-import '@vonage/vwc-icon';
-import '@vonage/vwc-icon-button';
 import { customElement } from 'lit-element';
 
 import { VWCTooltipBase } from './vwc-tooltip-base.js';
