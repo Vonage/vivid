@@ -28,6 +28,8 @@ const Template = args => html`
 
 		vwc-card {
 			margin: 15px;
+			--title-line-clamp: 2;
+			--subtitle-line-clamp: 2
 		}
 	</style>
 	<vwc-card ...=${spread(args)}>
@@ -45,6 +47,14 @@ Subtitle.args = {
 	label: 'Subtitle',
 	heading: 'Title',
 	subtitle: 'Subtitle',
+	'supporting-text': 'Supporting Text'
+};
+
+export const TrimmedTitles = Template.bind({});
+TrimmedTitles.args = {
+	label: 'Trimmed titles',
+	heading: 'A Long Title that can get up to an infinite number of rows or you can set the number of rows that will be shown until they are trimmed',
+	subtitle: 'Subtitle that can get up to an infinite number of rows or you can set the number of rows that will be shown until they are trimmed',
 	'supporting-text': 'Supporting Text'
 };
 
@@ -158,14 +168,11 @@ const InAGridTemplate = args => html`
 	<style>
 		.card-wrapper {
 			display: grid;
-			grid-template-columns: auto auto auto;
-			padding: 10px;
+			grid-template-columns: repeat(3, 250px);
+			gap: 2rem;
+			padding: 1rem;
 		}
 
-		vwc-card {
-			width: 250px;
-			margin: 5px;
-		}
 	</style>
 	<div class="card-wrapper">
 		<vwc-card heading="Card 1" header-icon="chat-line" subtitle="Card no. 1"
