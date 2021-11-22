@@ -48,6 +48,9 @@ export class VWCSelect extends MWCSelect {
 	@property({ type: String, reflect: true })
 		name: string | undefined;
 
+	@property({ type: Boolean, reflect: true, attribute: 'ghost' })
+		ghost = false;
+
 	override connectedCallback(): void {
 		super.connectedCallback();
 		if (!this.hasAttribute('outlined')) {
@@ -65,6 +68,9 @@ export class VWCSelect extends MWCSelect {
 	protected override update(changedProperties: PropertyValues): void {
 		super.update(changedProperties);
 		if (this.shape === 'pill') {
+			this.dense = true;
+		}
+		if (this.ghost === true ) {
 			this.dense = true;
 		}
 	}

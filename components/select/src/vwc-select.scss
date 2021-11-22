@@ -204,3 +204,15 @@ vwc-notched-outline {
 		pill: 24px,
 	)
 );
+
+:host([ghost][dense]) {
+	.mdc-select .mdc-floating-label {
+		left: 0;
+	}
+	vwc-notched-outline {
+		--mdc-notched-outline-stroke-width: 0;
+	}
+	.mdc-select__anchor {
+		display: block;
+	}
+}
