@@ -72,6 +72,7 @@
 header {
 	display: flex;
 	align-items: flex-start;
+	justify-content: space-between;
 	gap: 0.5rem;
 
 	:host([supporting-text]) & {
@@ -89,10 +90,6 @@ header {
 .header-icon {
 	width: 20px;
 	height: 20px;
-}
-
-::slotted([slot="top-action"i]) {
-	margin-left: auto;
 }
 
 .no-content {
