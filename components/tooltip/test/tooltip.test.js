@@ -30,4 +30,28 @@ describe('tooltip', () => {
 			.to
 			.equalSnapshot();
 	});
+
+	describe('Tooltip default init', () => {
+		it('should reflect from attribute to property', async () => {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+			);
+			await actualElement.updateComplete;
+			expect(actualElement.open, 'open should be undefined')
+				.to
+				.equal(undefined);
+			expect(actualElement.dismissible, 'dismissible should be undefined')
+				.to
+				.equal(undefined);
+			expect(actualElement.content, 'content should be undefined')
+				.to
+				.equal(undefined);
+			expect(actualElement.placement, 'placement should be auto')
+				.to
+				.equal('auto');
+			expect(actualElement.distance, 'distance should be 10')
+				.to
+				.equal(10);
+		});
+	});
 });
