@@ -25,7 +25,7 @@ const Template = args => html`
 	</style>
 	<div id="wrapper">
 		<vwc-button id="button" layout="outlined" outlined aria-describedby="tooltip" @click="${onClick}">Click to open tooltip</vwc-button>
-		<vwc-tooltip ...=${spread(args)}></vwc-tooltip>
+		<vwc-tooltip id="tooltip" ...=${spread(args)}></vwc-tooltip>
 	</div>`;
 
 export const Basic = Template.bind({});
