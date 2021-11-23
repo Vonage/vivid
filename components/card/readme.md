@@ -34,7 +34,7 @@ Cards contain content and actions about a single subject.
 |`graphics`|Content to show in the header icon section. If exists, overrides the `icon` attribute’s definition|
 |`actions`|Content to show in the actions section. If exists, overrides the `action-icon` and `action-text` attributes definitions|
 |`media`|Slot to add anything inside the `media` area|
-|`top-action`|Slot to add an `icon` or `button-icon` or `toggle-button-icon` |
+|`top-action`|Slot for action content placed the card header |
 
 ## Styling tips
 
