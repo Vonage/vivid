@@ -4,7 +4,7 @@ import {
 import { nothing, TemplateResult } from 'lit-html';
 import { classMap } from 'lit-html/directives/class-map.js';
 import type { ClassInfo } from 'lit-html/directives/class-map.js';
-import { createPopper } from '@popperjs/core';
+import { createPopper, Placement } from '@popperjs/core';
 
 export class VWCTooltipBase extends LitElement {
 	private popperInstance: any;
@@ -20,25 +20,11 @@ export class VWCTooltipBase extends LitElement {
 
 	/**
 	 * @prop placement - the placement of the tooltip
-	 * accepts top, bottom, right, left
+	 * accepts auto, auto-start, auto-end, top, top-start, top-end, bottom, bottom-start, bottom-end, right, right-start, right-end, left, left-start, left-end
 	 * @public
 	 * */
 	@property({ type: String, reflect: true })
-		placement: | 'auto'
-		| 'auto-start'
-		| 'auto-end'
-		| 'top'
-		| 'top-start'
-		| 'top-end'
-		| 'bottom'
-		| 'bottom-start'
-		| 'bottom-end'
-		| 'right'
-		| 'right-start'
-		| 'right-end'
-		| 'left'
-		| 'left-start'
-		| 'left-end' = 'auto';
+		placement : Placement = 'auto';
 
 	/**
 	 * @prop open - indicates whether the tooltip is open

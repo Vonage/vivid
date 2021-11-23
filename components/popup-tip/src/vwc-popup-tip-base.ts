@@ -18,25 +18,11 @@ export class VWCPopupTipBase extends LitElement {
 
 	/**
 	 * @prop placement - the placement of the tooltip
-	 * accepts top, bottom, right, left
+	 * accepts auto, auto-start, auto-end, top, top-start, top-end, bottom, bottom-start, bottom-end, right, right-start, right-end, left, left-start, left-end
 	 * @public
 	 * */
-	@property({ type: String, reflect: true })
-		placement: | 'auto'
-		| 'auto-start'
-		| 'auto-end'
-		| 'top'
-		| 'top-start'
-		| 'top-end'
-		| 'bottom'
-		| 'bottom-start'
-		| 'bottom-end'
-		| 'right'
-		| 'right-start'
-		| 'right-end'
-		| 'left'
-		| 'left-start'
-		| 'left-end' = 'auto';
+	 @property({ type: String, reflect: true })
+	 placement = 'auto';
 
 	/**
 	 * @prop dismissible - adds close button to the tooltip
