@@ -18,3 +18,9 @@
 |------------------------|-------------------------------|--------------------|
 | `hide`                 | `(): void`                    | Closes the tooltip |
 | `show`                 | `(target: HTMLElement): void` | Opens the tooltip  |
+
+## CSS Custom Properties
+
+| Property                       | Default                                          | Description                                      |
+|--------------------------------|--------------------------------------------------|--------------------------------------------------|
+| `--tooltip-width` | 150px | Controls the the width of the tooltip  |

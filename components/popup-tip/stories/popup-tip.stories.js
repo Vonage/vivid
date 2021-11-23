@@ -9,22 +9,22 @@ export default {
 	argTypes
 }
 
-const Template = args => html`					
+const Template = args => html`
 	<style>
-		div#wrapper {
+		:root {
+			--tooltip-width: 350px;
+		}
+		.popup-tip-wrapper {
 			width:600px;
 			height:200px;
 			display: flex;
 			align-items: center;
 			justify-content: center;
 		}
-		vwc-popup-tip {
-			position:relative;
-		}
 	</style>
-	<div id="wrapper">
+	<div class="popup-tip-wrapper">
 		<vwc-popup-tip ...=${spread(args)}></vwc-popup-tip>
 	</div>`;
 
 export const Basic = Template.bind({});
-Basic.args = { content: 'This is a tooltip', dismissible: true };
+Basic.args = { content: 'This is a tooltip that has Paired element that has either ? or ! as button trigger', dismissible: true };

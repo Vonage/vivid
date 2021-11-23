@@ -66,7 +66,7 @@ export class VWCPopupTipBase extends LitElement {
 		return html`
 			<div class="popup-tip" aria-describedby="tooltip">
 				<vwc-icon-button class="iconButton" icon="info-line" shape="circled" @click="${this.clickHandler}"></vwc-icon-button>
-				<vwc-tooltip class="tooltip" content=${this.content} dismissible=${this.dismissible} placement=${this.placement}></vwc-tooltip>					
+				<vwc-tooltip class="tooltip" content=${this.content} dismissible=${this.dismissible} placement=${this.placement}  part="vvd-scheme-alternate"></vwc-tooltip>
 			</div>`;
 	}
 }

@@ -115,8 +115,7 @@ export class VWCTooltipBase extends LitElement {
 
 	#renderDismissButton(): TemplateResult | unknown {
 		return this.dismissible
-			? html`<vwc-icon-button class="dismiss-button" icon="close-small-solid" @click="${this.clickCloseHandler}" dense
-	part="vvd-scheme-alternate"></vwc-icon-button>`
+			? html`<vwc-icon-button class="dismiss-button" icon="close-small-solid" @click="${this.clickCloseHandler}" dense></vwc-icon-button>`
 			: nothing;
 	}
 
@@ -128,14 +127,14 @@ export class VWCTooltipBase extends LitElement {
 
 	protected override render(): TemplateResult {
 		return html`
-			<div class="tooltip ${classMap(this.getRenderClasses())}" role="tooltip" aria-hidden=${this.open ? 'false' : 'true' }>
-				<span class="tooltip-content">
+			<div class="tooltip ${classMap(this.getRenderClasses())}" role="tooltip" aria-hidden=${this.open ? 'false' : 'true' } part="vvd-scheme-alternate">
+				<div class="tooltip-content">
 					<span class="tooltip-text">${this.content}</span>
 					<slot>
 					</slot>
-				</span>
+				</div>
 				${this.#renderDismissButton()}
-				<div id="arrow" data-popper-arrow></div>
+				<div class="tooltip-tail" id="arrow" data-popper-arrow></div>
 			</div>`;
 	}
 }

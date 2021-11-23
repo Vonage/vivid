@@ -2,83 +2,66 @@
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use 'partials/vwc-tooltip-variables' as tooltip-variables;
 
-@use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
-	$connotations-set: primary cta success alert warning info,
-	$shades: (soft, contrast),
-	$default: primary,
-);
-@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
-
-@use '@vonage/vvd-foundation/scss/mixins/layout/config' as layout-config with (
-	$layout-set: filled outlined soft,
-	$outline-duotone: true,
-	$default: filled,
-);
-@use '@vonage/vvd-foundation/scss/mixins/layout' as layout;
-
 .tooltip {
 	@include typography.typography-cat-shorthand('body-2');
-	@include layout.layout;
-	@include connotation.connotation;
 	display: none;
-	max-width: var(#{tooltip-variables.$tooltip-max-width}, 320px);
-	box-sizing: border-box;
 	align-items: center;
-	padding: 1rem;
-	background-color: var(#{layout.$vvd-layout-color-fill});
+	justify-content: space-between;
+	background-color: var(#{scheme-variables.$vvd-color-canvas});
 	border-radius: 6px;
-	color: var(#{layout.$vvd-layout-color-text});
-	
+	color: var(#{scheme-variables.$vvd-color-on-canvas});
+	grid-template-columns: minmax(calc(var(#{tooltip-variables.$tooltip-width}, 150px) - 32px), 1fr) auto;
+
+	&.open {
+		display: grid;
+	}
+
 	&-content {
 		display: flex;
 		flex-direction: column;
-		.normal & {
-			padding: 0.5rem;
-		}
+		padding: 0.5rem 0.75rem;
 	}
 	&-text {
 		@include typography.typography-cat-shorthand('body-2-bold');
 	}
-	&-dismiss-button {
+
+	.dismiss-button {
 		align-self: flex-start;
+		margin: 0.125rem 0;
 	}
 }
 
-.open {
-	display: inline-flex;
+//tooltip-tail
+.tooltip-tail {
+	visibility: hidden;
+	&::before {
+		content: '';
+		transform: rotate(45deg);
+		visibility: visible;
+	}
 }
-
-#arrow,
-#arrow::before {
+.tooltip-tail,
+.tooltip-tail::before {
+	$tails-size: 8px;
 	position: absolute;
-	width: 8px;
-	height: 8px;
+	width: $tails-size;
+	height: $tails-size;
 	background: inherit;
 }
 
-#arrow {
-	visibility: hidden;
+$tail-position: (
+	top: bottom,
+	bottom: top,
+	left: right,
+	right: left,
+);
+
+@each $key, $value in $tail-position {
+	.tooltip[data-popper-placement^=#{$key}] {
+		.tooltip-tail {
+			#{$value}: -4px;
+		}
+	}
 }
 
-#arrow::before {
-	content: '';
-	transform: rotate(45deg);
-	visibility: visible;
-}
 
-
-.tooltip[data-popper-placement^='top'] > #arrow {
-	bottom: -4px;
-}
-
-.tooltip[data-popper-placement^='bottom'] > #arrow {
-	top: -4px;
-}
-
-.tooltip[data-popper-placement^='left'] > #arrow {
-	right: -4px;
-}
-
-.tooltip[data-popper-placement^='right'] > #arrow {
-	left: -4px;
-}
