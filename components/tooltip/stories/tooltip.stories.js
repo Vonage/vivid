@@ -12,18 +12,18 @@ export default {
 
 const Template = args => html`    
 	<style>
-		div#wrapper {
+		.tooltip-wrapper {
 			width:600px;
 			height:200px;
 			display: flex;
 			align-items: center;
 			justify-content: center;
 		}
-		button {
+		vwc-button {
 			position:relative;
 		}
 	</style>
-	<div id="wrapper">
+	<div class="tooltip-wrapper">
 		<vwc-button id="button" layout="outlined" outlined aria-describedby="tooltip" @click="${onClick}">Click to open tooltip</vwc-button>
 		<vwc-tooltip id="tooltip" ...=${spread(args)}></vwc-tooltip>
 	</div>`;
@@ -32,5 +32,11 @@ export const WithCustomButton = Template.bind({});
 WithCustomButton.args = { content: 'This is a tooltip', dismissible: true };
 
 function onClick(e) {
-	document.querySelector("vwc-tooltip").show(document.querySelector("#button"));
+	const tooltip = document.querySelector("vwc-tooltip");
+	const button = document.querySelector("#button");
+	if(tooltip.open){
+		tooltip.hide();
+	}else{
+		tooltip.show(button);
+	}
 }

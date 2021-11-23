@@ -11,7 +11,7 @@ export default {
 
 const Template = args => html`
 	<style>
-		:root {
+		vwc-tip {
 			--tooltip-width: 350px;
 		}
 		.tip-wrapper {
