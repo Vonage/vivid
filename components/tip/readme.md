@@ -1,4 +1,4 @@
-# vwc-popup-tip
+# vwc-tip
 
 ## Properties
 

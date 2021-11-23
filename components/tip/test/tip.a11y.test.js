@@ -1,4 +1,4 @@
-import '../vwc-popup-tip.js';
+import '../vwc-tip.js';
 import {
 	isolatedElementsCreation,
 	waitNextTask,
@@ -8,14 +8,14 @@ import { chaiA11yAxe } from 'chai-a11y-axe';
 
 chai.use(chaiA11yAxe);
 
-const COMPONENT_NAME = 'vwc-popup-tip';
+const COMPONENT_NAME = 'vwc-tip';
 
-describe('popup-tip a11y', () => {
+describe('tip a11y', () => {
 	const addElement = isolatedElementsCreation();
 
 	it('should have 0 accessibility violations', async () => {
 		const [actualElement] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}>popup-tip Text</${COMPONENT_NAME}>`)
+			textToDomToParent(`<${COMPONENT_NAME}>Tip Text</${COMPONENT_NAME}>`)
 		);
 		await waitNextTask();
 

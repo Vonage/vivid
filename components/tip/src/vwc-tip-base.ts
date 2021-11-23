@@ -4,7 +4,7 @@ import {
 import type { TemplateResult } from 'lit-html';
 import type { VWCTooltip } from '../../tooltip/vwc-tooltip.js';
 
-export class VWCPopupTipBase extends LitElement {
+export class VWCTipBase extends LitElement {
 	@query('.tooltip') protected tooltip!: VWCTooltip;
 	@query('.iconButton') protected iconButton!: HTMLElement;
 
@@ -59,7 +59,7 @@ export class VWCPopupTipBase extends LitElement {
 
 	protected override render(): TemplateResult {
 		return html`
-			<div class="popup-tip" aria-describedby="tooltip">
+			<div class="tip">
 				<vwc-icon-button class="iconButton" icon=${this.icon} shape="circled" aria-describedby="tooltip"
 					@click="${this.clickHandler}"></vwc-icon-button>
 				<vwc-tooltip id="tooltip" class="tooltip" content=${this.content} dismissible=${this.dismissible}

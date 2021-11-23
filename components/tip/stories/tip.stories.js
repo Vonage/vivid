@@ -1,11 +1,11 @@
-import '@vonage/vwc-popup-tip';
+import '@vonage/vwc-tip';
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
 	title: 'Alpha/Components/tooltip',
-	component: 'vwc-popup-tip',
+	component: 'vwc-tip',
 	argTypes
 }
 
@@ -14,7 +14,7 @@ const Template = args => html`
 		:root {
 			--tooltip-width: 350px;
 		}
-		.popup-tip-wrapper {
+		.tip-wrapper {
 			width:600px;
 			height:200px;
 			display: flex;
@@ -22,8 +22,8 @@ const Template = args => html`
 			justify-content: center;
 		}
 	</style>
-	<div class="popup-tip-wrapper">
-		<vwc-popup-tip ...=${spread(args)}></vwc-popup-tip>
+	<div class="tip-wrapper">
+		<vwc-tip ...=${spread(args)}></vwc-tip>
 	</div>`;
 
 export const Basic = Template.bind({});

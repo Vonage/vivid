@@ -1,11 +1,11 @@
 {
-	"name": "@vonage/vwc-popup-tip",
+	"name": "@vonage/vwc-tip",
 	"version": "2.22.1",
-	"description": "Displays a popup-tip",
-	"homepage": "https://github.com/Vonage/vivid/tree/master/components/popup-tip#readme",
+	"description": "Displays a tip",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/tip#readme",
 	"license": "ISC",
-	"main": "vwc-popup-tip.js",
-	"module": "vwc-popup-tip.js",
+	"main": "vwc-tip.js",
+	"module": "vwc-tip.js",
 	"files": [
 		"*.js",
 		"*.ts",
@@ -14,7 +14,7 @@
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/vonage/vivid.git",
-		"directory": "components/popup-tip"
+		"directory": "components/tip"
 	},
 	"scripts": {
 		"test": "echo \"Error: run tests from root\" && exit 1",
