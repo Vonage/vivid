@@ -67,7 +67,7 @@ export class VWCBanner extends LitElement {
 		message = '';
 
 	@property({ type: Boolean, reflect: true })
-		dismissible?: boolean;
+		dismissible = false;
 
 	@property({ type: String, reflect: true })
 		connotation?: BannerConnotation;
@@ -118,7 +118,8 @@ export class VWCBanner extends LitElement {
 
 	protected getRenderClasses(): ClassInfo {
 		return {
-			[`connotation-${this.connotation}`]: !!this.connotation
+			[`connotation-${this.connotation}`]: !!this.connotation,
+			'banner-open': this.open
 		};
 	}
 

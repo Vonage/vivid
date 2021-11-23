@@ -1,6 +1,11 @@
 import { Connotation, Role, AriaLive } from '@vonage/vvd-foundation/constants';
 
 export const argTypes = {
+	open: {
+		control: {
+			type: null
+		}
+	},
 	icon: {
 		control: {
 			type: 'text'
@@ -8,7 +13,7 @@ export const argTypes = {
 	},
 	dismissible: {
 		control: {
-			type: 'boolean',
+			type: null,
 		}
 	},
 	role: {
