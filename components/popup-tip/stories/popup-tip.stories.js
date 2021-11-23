@@ -4,7 +4,7 @@ import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
 
 export default {
-	title: 'Alpha/Components/popup-tip',
+	title: 'Alpha/Components/tooltip',
 	component: 'vwc-popup-tip',
 	argTypes
 }

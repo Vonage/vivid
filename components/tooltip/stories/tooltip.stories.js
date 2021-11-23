@@ -28,8 +28,8 @@ const Template = args => html`
 		<vwc-tooltip id="tooltip" ...=${spread(args)}></vwc-tooltip>
 	</div>`;
 
-export const Basic = Template.bind({});
-Basic.args = { content: 'This is a tooltip', dismissible: true };
+export const WithCustomButton = Template.bind({});
+WithCustomButton.args = { content: 'This is a tooltip', dismissible: true };
 
 function onClick(e) {
 	document.querySelector("vwc-tooltip").show(document.querySelector("#button"));
