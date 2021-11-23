@@ -27,4 +27,4 @@ const Template = args => html`
 	</div>`;
 
 export const Basic = Template.bind({});
-Basic.args = { content: 'This is a tooltip that has Paired element that has either ? or ! as button trigger', dismissible: true };
+Basic.args = { icon: 'info-line', content: 'This is a tooltip that has Paired element that has either ? or ! as button trigger', dismissible: true };

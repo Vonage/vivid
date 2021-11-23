@@ -7,6 +7,11 @@ export const argTypes = {
 	dismissible: {
 		control: booleanControl
 	},
+	icon: {
+		type: 'select',
+		defaultValue: 'info-line',
+		options: ['info-line', 'help-line']
+	},
 	placement: {
 		control: {
 			type: 'select',
