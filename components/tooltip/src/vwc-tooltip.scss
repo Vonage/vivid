@@ -13,7 +13,7 @@
 	grid-template-columns: minmax(calc(var(#{tooltip-variables.$tooltip-width}, 150px) - 36px), 1fr) auto;
 
 	&.open {
-		display: grid;
+		display: inline-grid;
 	}
 
 	&-content {
