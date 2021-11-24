@@ -113,14 +113,17 @@ export class VWCTooltipBase extends LitElement {
 
 	protected override render(): TemplateResult {
 		return html`
-			<div class="tooltip ${classMap(this.getRenderClasses())} vvd-scheme-alternate" role="tooltip" aria-hidden=${this.open ? 'false' : 'true' }>
-				<div class="tooltip-content">
-					<span class="tooltip-text">${this.content}</span>
-					<slot>
-					</slot>
+			<div class="tooltip-wrapper">
+				<div class="tooltip ${classMap(this.getRenderClasses())}" role="tooltip"
+						 aria-hidden=${this.open ? 'false' : 'true'} part="vvd-scheme-alternate">
+					<div class="tooltip-content">
+						<span class="tooltip-text">${this.content}</span>
+						<slot>
+						</slot>
+					</div>
+					${this.#renderDismissButton()}
+					<div class="tooltip-tail" id="arrow" data-popper-arrow></div>
 				</div>
-				${this.#renderDismissButton()}
-				<div class="tooltip-tail" id="arrow" data-popper-arrow></div>
 			</div>`;
 	}
 }

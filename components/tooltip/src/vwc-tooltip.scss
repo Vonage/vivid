@@ -7,9 +7,9 @@
 	display: none;
 	align-items: center;
 	justify-content: space-between;
-	background-color: var(#{scheme-variables.$vvd-color-on-canvas});
+	background-color: var(#{scheme-variables.$vvd-color-canvas});
 	border-radius: 6px;
-	color: var(#{scheme-variables.$vvd-color-canvas});
+	color: var(#{scheme-variables.$vvd-color-on-canvas});
 	grid-template-columns: minmax(calc(var(#{tooltip-variables.$tooltip-width}, 150px) - 36px), 1fr) auto;
 
 	&.open {
@@ -26,9 +26,12 @@
 	}
 
 	.dismiss-button {
-		--vvd-icon-button-on-color: var(#{scheme-variables.$vvd-color-canvas});
 		align-self: flex-start;
 		margin: 0.125rem;
+	}
+
+	&-wrapper {
+		filter: var(--vvd-shadow-surface-2dp);
 	}
 }
 
