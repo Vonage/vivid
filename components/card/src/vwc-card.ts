@@ -96,7 +96,7 @@ export class VWCCard extends LitElement {
 					</div>
 					<div class="vwc-card-subtitle">${this.subtitle}</div>
 				</div>
-				<slot name="top-action"></slot>
+				<slot name="actionItem"></slot>
 			</header>`;
 	}
 

@@ -32,9 +32,9 @@ Cards contain content and actions about a single subject.
 |name|description|
 |--- |--- |
 |`graphics`|Content to show in the header icon section. If exists, overrides the `icon` attribute’s definition|
-|`actions`|Content to show in the actions section. If exists, overrides the `action-icon` and `action-text` attributes definitions|
+|`actions`|Content to show in the actions section|
 |`media`|Slot to add anything inside the `media` area|
-|`top-action`|Slot for action content placed the card header |
+|`actionItem`|Slot for action content placed the card header |
 
 ## Styling tips
 

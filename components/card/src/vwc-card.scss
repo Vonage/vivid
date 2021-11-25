@@ -92,6 +92,12 @@ header {
 	height: 20px;
 }
 
+::slotted([slot="actionItem"i]) {
+	> * {
+		flex-shrink: 0;
+	}
+}
+
 .no-content {
 	display: none;
 }
