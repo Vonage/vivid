@@ -20,10 +20,15 @@
 	&-header {
 		display: flex;
 		align-items: flex-start;
-		&-wrapper {
+		justify-content: space-between;
+		gap: 0.5rem;
+
+		:host([supporting-text]) & {
+			margin-bottom: 12px;
+		}
+
+		&-content {
 			display: inline-flex;
-			flex-direction: column;
-			align-content: space-between;
 			padding-top: 0.5rem;
 			padding-right: 0.5rem;
 		}
@@ -42,7 +47,6 @@
 
 	&-title {
 		@include typography.typography-cat-shorthand('subtitle-2');
-		margin-bottom: 4px;
 		-webkit-line-clamp: var(#{card-variables.$title-line-clamp});
 	}
 
@@ -69,17 +73,6 @@
 	}
 }
 
-header {
-	display: flex;
-	align-items: flex-start;
-	justify-content: space-between;
-	gap: 0.5rem;
-
-	:host([supporting-text]) & {
-		margin-bottom: 12px;
-	}
-}
-
 ::slotted([slot="graphics"i]),
 .header-icon {
 	flex-shrink: 0;
@@ -93,9 +86,8 @@ header {
 }
 
 ::slotted([slot="actionItem"i]) {
-	> * {
-		flex-shrink: 0;
-	}
+	flex-shrink: 0;
+	align-self: flex-start;
 }
 
 .no-content {

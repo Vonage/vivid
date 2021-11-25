@@ -86,15 +86,15 @@ export class VWCCard extends LitElement {
 
 	private renderHeader() {
 		return html`
-			<header class="${this.headerClass}">
-				<div class="vwc-card-header-wrapper">
-					<div class="vwc-card-header">
+			<header class="vwc-card-header ${this.headerClass}">
+				<div class="vwc-card-header-content">
 						<slot name="graphics" @slotchange="${this.graphicsSlotChanged}">
 							${this.headerIcon ? this.renderIcon() : ''}
 						</slot>
-						<div class="vwc-card-title">${this.heading}</div>
-					</div>
-					<div class="vwc-card-subtitle">${this.subtitle}</div>
+						<div>
+							<div class="vwc-card-title">${this.heading}</div>
+							<div class="vwc-card-subtitle">${this.subtitle}</div>
+						</div>
 				</div>
 				<slot name="actionItem"></slot>
 			</header>`;
