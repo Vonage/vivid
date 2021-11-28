@@ -67,10 +67,7 @@ export class VWCSelect extends MWCSelect {
 
 	protected override update(changedProperties: PropertyValues): void {
 		super.update(changedProperties);
-		if (this.shape === 'pill') {
-			this.dense = true;
-		}
-		if (this.ghost === true ) {
+		if (this.shape === 'pill' || this.ghost) {
 			this.dense = true;
 		}
 	}
