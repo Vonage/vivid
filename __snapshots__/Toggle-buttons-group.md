@@ -3,8 +3,10 @@
 #### `should have internal contents`
 
 ```html
-<slot>
-</slot>
+<div class="button-group">
+  <slot>
+  </slot>
+</div>
 
 ```
 
