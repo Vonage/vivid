@@ -53,7 +53,8 @@ export class VWCTipBase extends LitElement {
 			this.tooltip.hide();
 		}
 		else {
-			this.tooltip.show(this.iconButton);
+			this.tooltip.anchor = this.iconButton;
+			this.tooltip.show();
 		}
 	}
 

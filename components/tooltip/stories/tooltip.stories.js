@@ -38,6 +38,7 @@ function onClick(e) {
 	if(tooltip.open){
 		tooltip.hide();
 	}else{
-		tooltip.show(button);
+		tooltip.anchor = button;
+		tooltip.show();
 	}
 }
