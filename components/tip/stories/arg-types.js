@@ -4,6 +4,9 @@ const booleanControl = {
 };
 
 export const argTypes = {
+	open: {
+		control: booleanControl
+	},
 	dismissible: {
 		control: booleanControl
 	},
