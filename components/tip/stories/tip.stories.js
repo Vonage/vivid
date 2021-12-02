@@ -15,11 +15,12 @@ const Template = args => html`
 			--tooltip-width: 350px;
 		}
 		.tip-wrapper {
-			width:600px;
-			height:200px;
+			width: 100%;
+			height: 200px;
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			background-color: var(--vvd-color-neutral-10);
 		}
 	</style>
 	<div class="tip-wrapper">

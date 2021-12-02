@@ -13,11 +13,12 @@ export default {
 const Template = args => html`    
 	<style>
 		.tooltip-wrapper {
-			width:600px;
-			height:200px;
+			width: 100%;
+			height: 200px;
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			background-color: var(--vvd-color-neutral-10);
 		}
 		vwc-button {
 			position:relative;
