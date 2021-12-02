@@ -11,22 +11,24 @@ The following will generate a trigger button with tip-popup:
 
 ## Properties
 
-| Property      | Attribute     | Type                                             | Default |
-|---------------|---------------|--------------------------------------------------|---------|
-| `content`     | `content`     | `string \| undefined`                            |         |
-| `dismissible` | `dismissible` | `boolean \| undefined`                           |         |
-| `distance`    | `distance`    | `number`                                         | 10      |
-| `open`        | `open`        | `boolean \| undefined`                           |         |
-| `override`    |               |                                                  |         |
-| `placement`   | `placement`   | `"auto" \| "auto-start" \| "auto-end" \| "top" \| "top-start" \| "top-end" \| "bottom" \| "bottom-start" \| "bottom-end" \| "right" \| "right-start" \| "right-end" \| "left" \| "left-start" \| "left-end"` | "auto"`  |
-| `styles`      |               | `CSSResult`                                      | "style" |
+| Property      | Attribute     | Type                       | Default |
+|---------------|---------------|----------------------------|---------|
+| `anchor`      | `anchor`      | `HTMLElement \| undefined` |         |
+| `content`     | `content`     | `string \| undefined`      |         |
+| `dismissible` | `dismissible` | `boolean \| undefined`     |         |
+| `distance`    | `distance`    | `number`                   | 10      |
+| `open`        | `open`        | `boolean`                  | false   |
+| `override`    |               |                            |         |
+| `placement`   | `placement`   | `Placement`                | "auto"  |
+| `styles`      |               | `CSSResult`                | "style" |
 
 ## Methods
 
-| Method                 | Type                          | Description        |
-|------------------------|-------------------------------|--------------------|
-| `hide`                 | `(): void`                    | Closes the tooltip |
-| `show`                 | `(target: HTMLElement): void` | Opens the tooltip  |
+| Method                 | Type          | Description        |
+|------------------------|---------------|--------------------|
+| `hide`                 | `(): void`    | Closes the tooltip |
+| `show`                 | `(): void`    | Opens the tooltip  |
+
 
 ## CSS Custom Properties
 
