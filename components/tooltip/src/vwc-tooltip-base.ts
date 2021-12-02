@@ -38,7 +38,7 @@ export class VWCTooltipBase extends LitElement {
 	 * accepts boolean value
 	 * */
 	@property({ type: Boolean, reflect: true })
-		open?: boolean;
+		open = false;
 
 	/**
 	 * @prop dismissible - adds close button to the tooltip
@@ -137,8 +137,7 @@ export class VWCTooltipBase extends LitElement {
 
 		return html`
 			<div class="tooltip-wrapper">
-				<div class="tooltip ${classMap(classes)}" role="tooltip" aria-hidden=${this.open ? 'false' : 'true'
-} part="vvd-scheme-alternate">
+				<div class="tooltip ${classMap(classes)}" role="tooltip" aria-hidden=${this.open ? 'false' : 'true'} part="vvd-scheme-alternate">
 					<div class="tooltip-content">
 						<span class="tooltip-text">${this.content}</span>
 						<slot>

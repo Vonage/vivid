@@ -41,12 +41,23 @@ export class VWCTipBase extends LitElement {
 		distance = 10;
 
 	/**
+	* @prop open - indicates whether the tip is open
+	* accepts boolean value
+	* */
+	@property({ type: Boolean, reflect: true })
+		open = false;
+
+	/**
 	 * @prop icon - can be info-line or help-line icon
 	 * accepts string value
 	 * @public
 	 * */
 	@property({ type: String, reflect: true })
 		icon: 'info-line' | 'help-line' = 'help-line';
+
+	protected override updated(): void {
+		this.tooltip.open = this.open;
+	}
 
 	private clickHandler() {
 		if (this.tooltip.open) {
@@ -63,8 +74,8 @@ export class VWCTipBase extends LitElement {
 			<div class="tip">
 				<vwc-icon-button class="iconButton" icon=${this.icon} shape="circled" aria-describedby="tooltip"
 					@click="${this.clickHandler}"></vwc-icon-button>
-				<vwc-tooltip id="tooltip" class="tooltip" content=${this.content} dismissible=${this.dismissible} exportparts="vvd-scheme-alternate"
-					placement=${this.placement}></vwc-tooltip>
+				<vwc-tooltip id="tooltip" class="tooltip" content=${this.content} dismissible=${this.dismissible}
+					exportparts="vvd-scheme-alternate" placement=${this.placement} ?open=${this.open}></vwc-tooltip>
 			</div>`;
 	}
 }
