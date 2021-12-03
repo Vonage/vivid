@@ -21,7 +21,7 @@ jobs:
       - name: 'Move issue to "Todo"'
         uses: leonsteinhaeuser/project-beta-automations@v1.0.2
         with:
-          gh_token: ${{ secrets.VNG_VIVID_PAT }}
+          gh_token: ${{ secrets.VIVID_TOKEN }}
           organization: vonage
           project_id: 3
           resource_node_id: ${{ github.event.issue.node_id }}
@@ -34,7 +34,7 @@ jobs:
       - name: 'Moved issue to "Done"'
         uses: leonsteinhaeuser/project-beta-automations@v1.0.2
         with:
-          gh_token: ${{ secrets.VNG_VIVID_PAT }}
+          gh_token: ${{ secrets.VIVID_TOKEN }}
           organization: vonage
           project_id: 3
           resource_node_id: ${{ github.event.issue.node_id }}
@@ -47,7 +47,7 @@ jobs:
       - name: 'Move PR to "In Progress"'
         uses: leonsteinhaeuser/project-beta-automations@v1.0.2
         with:
-          gh_token: ${{ secrets.VNG_VIVID_PAT }}
+          gh_token: ${{ secrets.VIVID_TOKEN }}
           organization: vonage
           project_id: 3
           resource_node_id: ${{ github.event.pull_request.node_id }}
@@ -60,7 +60,7 @@ jobs:
       - name: 'Move PR to "Needs Review"'
         uses: leonsteinhaeuser/project-beta-automations@v1.0.2
         with:
-          gh_token: ${{ secrets.VNG_VIVID_PAT }}
+          gh_token: ${{ secrets.VIVID_TOKEN }}
           organization: vonage
           project_id: 3
           resource_node_id: ${{ github.event.pull_request.node_id }}
@@ -73,7 +73,7 @@ jobs:
       - name: 'Move PR to "Done"'
         uses: leonsteinhaeuser/project-beta-automations@v1.0.2
         with:
-          gh_token: ${{ secrets.VNG_VIVID_PAT }}
+          gh_token: ${{ secrets.VIVID_TOKEN }}
           organization: vonage
           project_id: 3
           resource_node_id: ${{ github.event.pull_request.node_id }}
