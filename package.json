@@ -154,5 +154,12 @@
 	"vaadin": {
 		"disableUsageStatistics": true
 	},
-	"_void_cache": true
+	"_void_cache": true,
+	"dependencies": {
+		"@actions/core": "^1.6.0",
+		"@actions/github": "^5.0.0",
+		"@commitlint/config-conventional": "^15.0.0",
+		"@commitlint/lint": "^15.0.0",
+		"@commitlint/load": "^15.0.0"
+	}
 }
