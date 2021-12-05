@@ -1,20 +1,11 @@
-name: "Lint PR"
-on:
-  pull_request:
-    types:
-      - opened
-      - edited
-      - synchronize
+name: Lint Commit Messages
+on: [pull_request]
 
 jobs:
-  lint-pr:
+  commitlint:
     runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{ secrets.VNG_VIVID_PAT }}
     steps:
       - uses: actions/checkout@v2
-      - run: printf "registry=https://npm.pkg.github.com/Vonage\n_authToken=\${GITHUB_TOKEN}\n//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}\nalways-auth=true" > .npmrc
-      - name: Checkout and install dependencies
-        run: npm install @actions/core @actions/github @commitlint/config-conventional @commitlint/lint @commitlint/load
-      - name: Checks the PR title
-        run: node ./scripts/pr-lint
+        with:
+          fetch-depth: 0
+      - uses: wagoid/commitlint-github-action@v4
