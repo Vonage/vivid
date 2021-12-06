@@ -5,7 +5,7 @@ on:
     types: ['opened', 'edited', 'reopened', 'synchronize']
 
 jobs:
-  main:
+  lint-pr-title:
     runs-on: ubuntu-latest
     steps:
       - uses: dreampulse/action-lint-pull-request-title@master
