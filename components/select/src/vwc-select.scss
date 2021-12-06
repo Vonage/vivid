@@ -101,10 +101,6 @@ $vvd-select-size-block: --vvd-select-size-block;
 	}
 }
 
-:host([dense][label]:not([label=''])) {
-	padding-top: 24px;
-}
-
 :host([dense]) {
 	.mdc-select__selected-text {
 		padding: 0;
@@ -117,12 +113,9 @@ $vvd-select-size-block: --vvd-select-size-block;
 			top: -24px;
 			left: -12px;
 			transform: none;
-			//&::before {
-			//	content: "";
-			//	display: block;
-			//	padding-top: 24px;
-			//	width: 100%;
-			//}
+		}
+		&:not(.mdc-select--no-label) {
+			padding-top: 24px;
 		}
 	}
 	#{$vvd-select-size-block}: 40px;
