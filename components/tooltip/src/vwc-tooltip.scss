@@ -19,7 +19,11 @@
 	&-content {
 		display: flex;
 		flex-direction: column;
-		padding: 0.5rem 0.75rem;
+		padding: 0.5rem 0 0.5rem 0.75rem;
+
+		:host([dismissible='false']) & {
+			padding-right: 0.75rem;
+		}
 	}
 	&-text {
 		@include typography.typography-cat-shorthand('body-2-bold');
