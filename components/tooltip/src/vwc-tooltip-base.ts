@@ -136,7 +136,6 @@ export class VWCTooltipBase extends LitElement {
 		};
 
 		return html`
-			<div class="tooltip-wrapper">
 				<div class="tooltip ${classMap(classes)}" role="tooltip" aria-hidden=${this.open ? 'false' : 'true'} part="vvd-scheme-alternate">
 					<div class="tooltip-content">
 						<span class="tooltip-text">${this.content}</span>
@@ -145,7 +144,6 @@ export class VWCTooltipBase extends LitElement {
 					</div>
 					${this.#renderDismissButton()}
 					<div class="tooltip-tail" id="arrow" data-popper-arrow></div>
-				</div>
-			</div>`;
+				</div>`;
 	}
 }
