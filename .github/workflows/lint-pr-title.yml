@@ -5,14 +5,9 @@ on:
     types: ['opened', 'edited', 'reopened', 'synchronize']
 
 jobs:
-  lint:
+  main:
     runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{ secrets.VNG_VIVID_PAT }}
     steps:
-    - uses: actions/checkout@v2
-    - run: printf "registry=https://npm.pkg.github.com/Vonage\n_authToken=\${GITHUB_TOKEN}\n//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}\nalways-auth=true" > .npmrc
-    - name: Install Dependencies
-      run: yarn add -W @commitlint/config-conventional
-    - name: Check PR Title
-    - uses: JulienKode/pull-request-name-linter-action@v0.2.0
+      - uses: dreampulse/action-lint-pull-request-title@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
