@@ -14,5 +14,5 @@ jobs:
         node-version: '16'
 
     - name: Install Dependencies
-      run: npm install --no-save @commitlint/config-conventional
+      run: yarn add -W @commitlint/config-conventional
     - uses: JulienKode/pull-request-name-linter-action@v0.2.0
