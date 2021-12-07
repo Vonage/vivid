@@ -130,7 +130,6 @@ export class VWCTooltipBase extends LitElement {
 
 	protected override render(): TemplateResult {
 		const isOpen = (this.popperInstance && this.open) ? true : false;
-
 		const classes = {
 			'open': isOpen,
 		};

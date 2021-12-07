@@ -57,12 +57,7 @@ export class VWCTipBase extends LitElement {
 
 	protected override updated(): void {
 		this.tooltip.anchor = this.iconButton;
-		if(this.open){
-			this.tooltip.show();
-		}
-		else{ 
-			this.tooltip.hide();
-		}
+		this.tooltip.open = this.open;
 	}
 
 	private clickHandler() {
