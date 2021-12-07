@@ -2,6 +2,7 @@ import {
 	html, LitElement, property, query
 } from 'lit-element';
 import type { TemplateResult } from 'lit-html';
+import { classMap } from 'lit-html/directives/class-map.js';
 import type { VWCTooltip } from '../../tooltip/vwc-tooltip.js';
 
 export class VWCTipBase extends LitElement {
@@ -73,12 +74,17 @@ export class VWCTipBase extends LitElement {
 	}
 
 	protected override render(): TemplateResult {
+		const isOpen = this.open ? true : false;
+		const classes = {
+			'open': isOpen,
+		};
+
 		return html`
 			<div class="tip">
 				<vwc-icon-button class="iconButton" icon=${this.icon} shape="circled" aria-describedby="tooltip"
 					@click="${this.clickHandler}"></vwc-icon-button>
-				<vwc-tooltip id="tooltip" class="tooltip" content=${this.content} dismissible=${this.dismissible}
-					exportparts="vvd-scheme-alternate" placement=${this.placement} ?open=${this.open}></vwc-tooltip>
+				<vwc-tooltip id="tooltip" class="tooltip ${classMap(classes)}" content=${this.content} dismissible=${this.dismissible}
+					exportparts="vvd-scheme-alternate" placement=${this.placement}></vwc-tooltip>
 			</div>`;
 	}
 }
