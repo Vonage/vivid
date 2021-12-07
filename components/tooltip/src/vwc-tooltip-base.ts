@@ -2,7 +2,6 @@ import {
 	html, LitElement, property, query
 } from 'lit-element';
 import { nothing, TemplateResult } from 'lit-html';
-import { classMap } from 'lit-html/directives/class-map.js';
 import { createPopper, Placement } from '@popperjs/core';
 
 export class VWCTooltipBase extends LitElement {
@@ -129,14 +128,9 @@ export class VWCTooltipBase extends LitElement {
 	}
 
 	protected override render(): TemplateResult {
-		const isOpen = (this.popperInstance && this.open) ? true : false;
-		const classes = {
-			'open': isOpen,
-		};
-
 		return html`
 			<div class="tooltip-wrapper">
-				<div class="tooltip ${classMap(classes)}" role="tooltip" aria-hidden=${this.open ? 'false' : 'true'} part="vvd-scheme-alternate">
+				<div class="tooltip" role="tooltip" aria-hidden=${this.open ? 'false' : 'true'} part="vvd-scheme-alternate">
 					<div class="tooltip-content">
 						<span class="tooltip-text">${this.content}</span>
 						<slot>
