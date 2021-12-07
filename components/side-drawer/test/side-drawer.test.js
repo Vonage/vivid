@@ -53,6 +53,9 @@ describe('side-drawer', () => {
 			expect(actualElement.hasTopBar, 'hasTopBar should be undefined')
 				.to
 				.equal(undefined);
+			expect(actualElement.position, 'position should be start')
+				.to
+				.equal('start');
 		});
 	});
 
@@ -80,6 +83,19 @@ describe('side-drawer', () => {
 				expect(actualElement.type)
 					.to
 					.equal(type);
+			}
+		});
+
+		it('should reflect (position) from attribute to property', async () => {
+			const COMPONENT_POSITIONS = ['start', 'end'];
+			for await (const position of COMPONENT_POSITIONS) {
+				const [actualElement] = addElement(
+					textToDomToParent(`<${COMPONENT_NAME} position=${position}></${COMPONENT_NAME}>`)
+				);
+				await actualElement.updateComplete;
+				expect(actualElement.position)
+					.to
+					.equal(position);
 			}
 		});
 	});

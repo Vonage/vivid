@@ -36,7 +36,7 @@ export async function createElementVariations(wrapper) {
 
 	<div>
 		<div id="demo">
-			<vwc-side-drawer id="side-drawer">
+			<vwc-side-drawer id="side-drawer" position="end">
 				<span slot="top-bar">
 					<vwc-icon type="vonage-mono"></vwc-icon> VONAGE
 				</span>
