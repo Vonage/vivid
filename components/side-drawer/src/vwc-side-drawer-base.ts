@@ -66,14 +66,14 @@ export class VWCSideDrawerBase extends LitElement {
 
 	/**
 	 * @prop side - sets the side of the side drawer
-	 * accepts "left" | "right"
+	 * accepts "start" | "end"
 	 * @public
 	 * */
 	@property({
 		type: String,
 		reflect: true
 	})
-		side?: 'left' | 'right' = 'left';
+		position?: 'start' | 'end' = 'start';
 
 	/**
 	 * Opens the side drawer from the closed state.
@@ -108,21 +108,21 @@ export class VWCSideDrawerBase extends LitElement {
 		const topBar = this.hasTopBar ? this.renderTopBar() : '';
 		const scrim = (this.type === 'modal' && this.open) ? this.renderScrim() : '';
 		const alternate = this.alternate ? 'vvd-scheme-alternate' : undefined;
-		const left = this.side === 'left';
-		const right = this.side === 'right';
+		const start = this.position === 'start';
+		const end = this.position === 'end';
 
 		const classes = {
 			'side-drawer--alternate': this.alternate,
 			'side-drawer--dismissible': dismissible,
 			'side-drawer--modal': modal,
 			'side-drawer--open': this.open,
-			'side-drawer--left': left,
-			'side-drawer--right': right,
+			'side-drawer--start': start,
+			'side-drawer--end': end,
 		};
 
 		const contentClassed = {
-			'side-drawer--left': left,
-			'side-drawer--right': right,
+			'side-drawer--start': start,
+			'side-drawer--end': end,
 		};
 
 		return html`

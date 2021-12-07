@@ -10,11 +10,11 @@ export const argTypes = {
 	open: {
 		control: booleanControl
 	},
-	side: {
-		defaultValue: 'left',
+	position: {
+		defaultValue: 'start',
 		control: {
 			type: 'select',
-			options: ['left', 'right'],
+			options: ['start', 'end'],
 		}
 	},
 	type: {

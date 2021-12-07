@@ -14,7 +14,7 @@ $inline-size: var(#{variables.$side-drawer-inline-size}, 280px);
 	block-size: 100vh;
 }
 
-:host([side='right']) {
+:host([position='end']) {
 	flex-direction: row-reverse;
 }
 
@@ -38,10 +38,10 @@ $inline-size: var(#{variables.$side-drawer-inline-size}, 280px);
 	&.side-drawer--dismissible {
 		transform: translateX(0%);
 		&:not(.side-drawer--open) {
-			&.side-drawer--right {
+			&.side-drawer--end {
 				transform: translateX(100%);
 			}
-			&.side-drawer--left {
+			&:not(.side-drawer--end) {
 				transform: translateX(-100%);
 			}
 		}
@@ -55,7 +55,7 @@ $inline-size: var(#{variables.$side-drawer-inline-size}, 280px);
 		+ .side-drawer--app-content {
 			@include typography.typography-cat-shorthand(body-1);
 			margin-inline-start: #{$inline-size};
-			&.side-drawer--right {
+			&.side-drawer--end {
 				margin-inline-end: var(--side-drawer-inline-size, 280px);
 				margin-inline-start: 0;
 			}
@@ -88,13 +88,11 @@ $inline-size: var(#{variables.$side-drawer-inline-size}, 280px);
 
 .side-drawer--modal {
 	position: fixed;
-	top: 0;
-	right: initial;
-	bottom: 0;
-	left: 0;
-	&.side-drawer--right {
-		right: 0;
-		left: initial;
+	&:not(.side-drawer--end) {
+		inset-inline-start: 0;
+	}
+	&.side-drawer--end {
+		inset-inline-end: 0;
 	}
 }
 
