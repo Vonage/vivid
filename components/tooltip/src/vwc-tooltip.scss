@@ -5,12 +5,14 @@
 .tooltip {
 	@include typography.typography-cat-shorthand('body-2');
 	display: none;
+	min-width: var(#{tooltip-variables.$tooltip-min-inline-size}, 100px);
+	max-width: var(#{tooltip-variables.$tooltip-max-inline-size}, 350px);
 	align-items: center;
 	justify-content: space-between;
 	background-color: var(#{scheme-variables.$vvd-color-canvas});
 	border-radius: 6px;
 	color: var(#{scheme-variables.$vvd-color-on-canvas});
-	grid-template-columns: minmax(calc(var(#{tooltip-variables.$tooltip-width}, 150px) - 36px), 1fr) auto;
+	grid-template-columns: 1fr auto;
 
 	&.open {
 		display: inline-grid;

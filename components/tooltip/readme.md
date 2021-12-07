@@ -62,6 +62,9 @@ The following will generate a trigger button with tip-popup:
 
 ## CSS Custom Properties
 
-| Property                       | Default                                          | Description                                      |
-|--------------------------------|--------------------------------------------------|--------------------------------------------------|
-| `--tooltip-width` | 150px | Controls the the width of the tooltip  |
+| Property                    | Default | Description                                 |
+|-----------------------------|---------|---------------------------------------------|
+| `--tooltip-min-inline-size` | 100px   | Controls the the min-width of the tooltip   |
+| `--tooltip-max-inline-size` | 350px   | Controls the the max-width of the tooltip.  |
+
+For fixed width set the same value for `--tooltip-min-inline-size` and `--tooltip-max-inline-size`

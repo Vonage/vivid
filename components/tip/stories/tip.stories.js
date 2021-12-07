@@ -12,7 +12,8 @@ export default {
 const Template = args => html`
 	<style>
 		vwc-tip {
-			--tooltip-width: 350px;
+			--tooltip-max-inline-size: 120px;
+			--tooltip-min-inline-size: 60px;
 		}
 		.tip-wrapper {
 			width: 100%;
