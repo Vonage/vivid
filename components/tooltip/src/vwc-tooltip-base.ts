@@ -69,7 +69,7 @@ export class VWCTooltipBase extends LitElement {
 	 * @public
 	 */
 	show(): void {
-		if(this.popper === null || this.popper === undefined){
+		if(this.popper === null || this.popper === undefined){			
 			console.log('The .tooltip in not defined');
 			this.open = false;
 			return;

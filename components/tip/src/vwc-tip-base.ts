@@ -56,15 +56,23 @@ export class VWCTipBase extends LitElement {
 		icon: 'info-line' | 'help-line' = 'help-line';
 
 	protected override updated(): void {
-		this.tooltip.open = this.open;
+		this.tooltip.anchor = this.iconButton;
+		if(this.open){
+			this.tooltip.show();
+		}
+		else{ 
+			this.tooltip.hide();
+		}
 	}
 
 	private clickHandler() {
 		if (this.tooltip.open) {
+			this.open = false;
 			this.tooltip.hide();
 		}
 		else {
 			this.tooltip.anchor = this.iconButton;
+			this.open = true;
 			this.tooltip.show();
 		}
 	}
