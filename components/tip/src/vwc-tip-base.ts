@@ -56,8 +56,13 @@ export class VWCTipBase extends LitElement {
 		icon: 'info-line' | 'help-line' = 'help-line';
 
 	protected override updated(): void {
-		this.tooltip.anchor = this.iconButton;
-		this.tooltip.open = this.open;
+		if(this.open){
+			this.tooltip.anchor = this.iconButton;
+			this.tooltip.show();	
+		}
+		else{ 
+			this.tooltip.hide();	
+		}
 	}
 
 	private clickHandler() {
@@ -78,7 +83,7 @@ export class VWCTipBase extends LitElement {
 				<vwc-icon-button class="iconButton" icon=${this.icon} shape="circled" aria-describedby="tooltip"
 					@click="${this.clickHandler}"></vwc-icon-button>
 				<vwc-tooltip id="tooltip" class="tooltip" content=${this.content} dismissible=${this.dismissible}
-					exportparts="vvd-scheme-alternate" placement=${this.placement} open=${this.open}></vwc-tooltip>
+					exportparts="vvd-scheme-alternate" placement=${this.placement}></vwc-tooltip>
 			</div>`;
 	}
 }

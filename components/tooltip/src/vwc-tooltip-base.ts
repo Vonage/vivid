@@ -107,7 +107,6 @@ export class VWCTooltipBase extends LitElement {
 			});
 		}
 		this.open = true;
-		this.render();
 	}
 
 	/**
@@ -116,7 +115,6 @@ export class VWCTooltipBase extends LitElement {
 	 */
 	hide(): void {
 		this.open = false;
-		this.render();
 	}
 
 	private clickCloseHandler() {
@@ -135,7 +133,6 @@ export class VWCTooltipBase extends LitElement {
 		const classes = {
 			'open': isOpen,
 		};
-	
 		return html`
 			<div class="tooltip-wrapper">
 				<div class="tooltip ${classMap(classes)}" role="tooltip" aria-hidden=${this.open ? 'false' : 'true'} part="vvd-scheme-alternate">
