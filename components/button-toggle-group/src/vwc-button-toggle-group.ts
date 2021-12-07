@@ -146,7 +146,7 @@ export class VWCButtonToggleGroup extends LitElement {
 
 	protected override render(): unknown {
 		return html`
-			<div class="button-group"><slot></slot></div>`;
+			<div class="button-toggle-group"><slot></slot></div>`;
 	}
 
 	private toggleChildrenDisabledState() {
