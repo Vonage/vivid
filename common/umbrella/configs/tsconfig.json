@@ -21,7 +21,7 @@
 		"experimentalDecorators": true,
 		"stripInternal": true,
 		"forceConsistentCasingInFileNames": true,
-		"skipLibCheck": true, // would force consumers to enable this as well
+		// "skipLibCheck": true, // would force consumers to enable this as well
 		"strict": true,
 		"outDir": "./",
 		"baseUrl": "./",
