@@ -3,7 +3,7 @@
 #### `should have internal contents`
 
 ```html
-<div class="button-group">
+<div class="button-toggle-group">
   <slot>
   </slot>
 </div>
