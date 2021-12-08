@@ -4,6 +4,7 @@ import StyleDictionaryPackage from 'style-dictionary';
 import fs from 'fs';
 import _ from 'lodash';
 import R from 'ramda';
+import {removeFolderSafely} from './utils.js';
 
 const
 	propertiesPath = resolve('../../node_modules/@vonage/vvd-design-tokens-properties/dist'),
@@ -51,7 +52,7 @@ const alternateConfig = curriedGetStyleDictionaryConfig(R.__, 'alternate');
 // TODO: [VIV-41] add accessible colors scheme
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const render = () => {
-	fs.rmdirSync(OUTPUT_FOLDER, { recursive: true });
+	removeFolderSafely(OUTPUT_FOLDER);
 
 	['light', 'dark'].forEach(function (scheme) {
 		console.log(`\n🎨\x1b[2mProcessing: [\x1b[0m\x1b[36m${scheme}\x1b[0m\x1b[2m]\x1b[0m`);

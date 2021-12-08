@@ -3,6 +3,7 @@ import { resolve } from 'path';
 import StyleDictionaryPackage from 'style-dictionary';
 import fs from 'fs';
 import _ from 'lodash';
+import {removeFolderSafely} from '../utils.js';
 
 const
 	propertiesPath = resolve('../../node_modules/@vonage/vvd-design-tokens-properties/dist'),
@@ -42,7 +43,7 @@ function getStyleDictionaryConfig() {
 // PROCESS THE DESIGN TOKENS FOR THE DIFFERENT SCHEMES AND PLATFORMS
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export const render = () => {
-	fs.rmdirSync(OUTPUT_FOLDER, { recursive: true });
+	removeFolderSafely(OUTPUT_FOLDER);
 
 	//console.log(`\n🎨\x1b[2mProcessing: [\x1b[0m\x1b[36m\sizing\x1b[0m\x1b[2m]\x1b[0m`);
 
