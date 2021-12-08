@@ -80,7 +80,7 @@ export class VWCIcon extends LitElement {
 		attribute: 'aria-label',
 		type: String,
 	})
-	override ariaLabel = '';
+		ariaLabel = '';
 
 	protected getRenderClasses(): ClassInfo {
 		return {
