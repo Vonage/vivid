@@ -366,12 +366,12 @@ describe('Toggle-buttons-group', () => {
 
 	describe(`Mandatory Selection`, function () {
 		function generateTemplate(props = [], childrenProps = [[], [], [], []]) {
-			return textToDomToParent(`<${COMPONENT_NAME} ${props.join(' ')}>
+			return addElement(textToDomToParent(`<${COMPONENT_NAME} ${props.join(' ')}>
 <${VALID_BUTTON_ELEMENTS[0]} ${childrenProps[0].join(' ')} layout="filled">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 <${VALID_BUTTON_ELEMENTS[0]} ${childrenProps[1].join(' ')} layout="filled">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 <${VALID_BUTTON_ELEMENTS[0]} ${childrenProps[2].join(' ')} layout="filled">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 <${VALID_BUTTON_ELEMENTS[1]} ${childrenProps[3].join(' ')} layout="filled">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-</${COMPONENT_NAME}>`);
+</${COMPONENT_NAME}>`));
 		}
 
 		it(`should not cancel the last selection`, async function () {
@@ -444,7 +444,7 @@ describe('Toggle-buttons-group', () => {
 
 	describe(`a11y`, function () {
 		async function createDisabledElement() {
-			const [actualElement] = (
+			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} disabled>
 <${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 <${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
