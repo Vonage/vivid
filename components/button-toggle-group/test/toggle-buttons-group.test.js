@@ -89,19 +89,6 @@ describe('Toggle-buttons-group', () => {
 			.equal(1);
 	});
 
-	it(`should set layout filled for all child buttons`, function () {
-		const [actualElement] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}>
-<${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-</${COMPONENT_NAME}>`)
-		);
-
-		[...actualElement.children].forEach(childNode => expect(childNode.getAttribute('layout'))
-			.to
-			.equal('filled'));
-	});
 	describe(`selected`, function () {
 		let actualElement;
 
