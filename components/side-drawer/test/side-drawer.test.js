@@ -53,9 +53,9 @@ describe('side-drawer', () => {
 			expect(actualElement.hasTopBar, 'hasTopBar should be undefined')
 				.to
 				.equal(undefined);
-			expect(actualElement.position, 'position should be start')
+			expect(actualElement.position, 'position should be undefined')
 				.to
-				.equal('start');
+				.equal(undefined);
 		});
 	});
 
