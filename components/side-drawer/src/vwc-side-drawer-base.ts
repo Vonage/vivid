@@ -73,7 +73,7 @@ export class VWCSideDrawerBase extends LitElement {
 		type: String,
 		reflect: true
 	})
-		position?: 'start' | 'end' = 'start';
+		position?: 'start' | 'end';
 
 	/**
 	 * Opens the side drawer from the closed state.
@@ -108,7 +108,6 @@ export class VWCSideDrawerBase extends LitElement {
 		const topBar = this.hasTopBar ? this.renderTopBar() : '';
 		const scrim = (this.type === 'modal' && this.open) ? this.renderScrim() : '';
 		const alternate = this.alternate ? 'vvd-scheme-alternate' : undefined;
-		const start = this.position === 'start';
 		const end = this.position === 'end';
 
 		const classes = {
@@ -116,12 +115,10 @@ export class VWCSideDrawerBase extends LitElement {
 			'side-drawer--dismissible': dismissible,
 			'side-drawer--modal': modal,
 			'side-drawer--open': this.open,
-			'side-drawer--start': start,
 			'side-drawer--end': end,
 		};
 
 		const contentClassed = {
-			'side-drawer--start': start,
 			'side-drawer--end': end,
 		};
 
