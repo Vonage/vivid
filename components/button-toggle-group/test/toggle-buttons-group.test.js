@@ -102,7 +102,6 @@ describe('Toggle-buttons-group', () => {
 			.to
 			.equal('filled'));
 	});
-
 	describe(`selected`, function () {
 		let actualElement;
 
@@ -114,6 +113,15 @@ describe('Toggle-buttons-group', () => {
 <${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 </${COMPONENT_NAME}>`)
 			);
+		});
+
+		it(`should have the filled attribute`, async function () {
+			actualElement.children[1].click();
+			await actualElement.updateComplete;
+
+			expect(actualElement.children[0].getAttribute('layout'), 'non selected cannot be filled').not.to.equal('filled');
+			expect(actualElement.children[1].getAttribute('layout'), 'selected must be filled').to.equal('filled');
+			expect(actualElement.children[2].getAttribute('layout'), 'non selected cannot be filled').not.to.equal('filled');
 		});
 
 		it(`should return the an empty array if none is selected`, function () {
