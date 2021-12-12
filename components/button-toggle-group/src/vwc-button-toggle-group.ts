@@ -187,7 +187,6 @@ export class VWCButtonToggleGroup extends LitElement {
 	}
 
 	private setNodeAttributes(buttonElement: Element) {
-		buttonElement.setAttribute('layout', 'filled');
 		this.toggleChildDisabledState(buttonElement);
 	}
 
