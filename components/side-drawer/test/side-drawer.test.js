@@ -150,7 +150,7 @@ describe('side-drawer', () => {
 
 			sideDrawerEl.open = true;
 			await sideDrawerEl.updateComplete;
-			const scrim = sideDrawerEl.shadowRoot.querySelector('.side-drawer--scrim');
+			const scrim = sideDrawerEl.shadowRoot.querySelector('.side-drawer-scrim');
 
 			const eventListenerPromise = new Promise((res) => {
 				sideDrawerEl.addEventListener('closed', () => {
