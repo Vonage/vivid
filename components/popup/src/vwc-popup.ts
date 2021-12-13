@@ -1,8 +1,8 @@
 import '@vonage/vvd-core';
 import { customElement } from 'lit-element';
-
 import { VWCPopupBase } from './vwc-popup-base.js';
 import { style } from './vwc-popup.css.js';
+import '@vonage/vwc-icon-button';
 
 /**
  * Represents a badge custom element.

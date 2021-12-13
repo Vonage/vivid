@@ -1,8 +1,8 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use 'partials/vwc-popup-variables' as popup-variables;
 
-.vwc-popup {
-	display: inline-grid;
+.popup {
+	display: none;
 	min-width: var(#{popup-variables.$popup-min-inline-size}, 100px);
 	max-width: var(#{popup-variables.$popup-max-inline-size}, 350px);
 	background-color: var(#{scheme-variables.$vvd-color-canvas});
@@ -11,16 +11,18 @@
 	//TODO: (For Rachel) add elevation options
 	filter: var(--vvd-shadow-surface-2dp);
 
+	&.popup-open {
+		//z-index: 7 to overcome the 6 of the vwc-side-drawer
+		//TODO: to check z-index of vwc-top-app-bar and other components.
+		z-index: 7;
+		display: inline-grid;
+	}
+
 	&.popup-tail {/**/}
 
-	:host([dismissible]) & {
+	&.popup-dismissible {
 		align-content: start;
 		align-items: flex-start;
 		grid-template-columns: 1fr auto;
-	}
-
-	:host([open]) & {
-		//z-index: 7 to overcome the 6 of the side drawer
-		z-index: 7;
 	}
 }

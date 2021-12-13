@@ -1,8 +1,7 @@
 {
 	"name": "@vonage/vwc-popup",
 	"version": "2.22.1",
-	"description": "> TODO: description",
-	"author": "yinonov <yinon@hotmail.com>",
+	"description": "popup component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/popup#readme",
 	"license": "ISC",
 	"main": "vwc-popup.js",
