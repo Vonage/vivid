@@ -111,15 +111,15 @@ export class VWCSideDrawerBase extends LitElement {
 		const end = this.position === 'end';
 
 		const classes = {
-			'side-drawer--alternate': this.alternate,
-			'side-drawer--dismissible': dismissible,
-			'side-drawer--modal': modal,
-			'side-drawer--open': this.open,
-			'side-drawer--end': end,
+			'side-drawer-alternate': this.alternate,
+			'side-drawer-dismissible': dismissible,
+			'side-drawer-modal': modal,
+			'side-drawer-open': this.open,
+			'side-drawer-end': end,
 		};
 
-		const contentClassed = {
-			'side-drawer--end': end,
+		const contentClasses = {
+			'side-drawer-end': end,
 		};
 
 		return html`
@@ -128,12 +128,12 @@ export class VWCSideDrawerBase extends LitElement {
 			
 				${topBar}
 			
-				<div class="side-drawer--content">
+				<div class="side-drawer-content">
 					<slot></slot>
 				</div>
 			</aside>
 			
-			<div class="side-drawer--app-content ${classMap(contentClassed)}">
+			<div class="side-drawer-app-content ${classMap(contentClasses)}">
 				<slot name="app-content"></slot>
 			</div>
 			
@@ -143,14 +143,14 @@ export class VWCSideDrawerBase extends LitElement {
 
 	private renderTopBar(): TemplateResult {
 		return html`
-			<header class="side-drawer--top-bar">
+			<header class="side-drawer-top-bar">
 				<slot name="top-bar"></slot>
 			</header>`;
 	}
 
 	private renderScrim(): TemplateResult {
 		return html`
-			<div class="side-drawer--scrim" @click="${this.#handleScrimClick}" @keydown="${this.#handleScrimClick}"></div>`;
+			<div class="side-drawer-scrim" @click="${this.#handleScrimClick}" @keydown="${this.#handleScrimClick}"></div>`;
 	}
 
 	#handleScrimClick(): void {

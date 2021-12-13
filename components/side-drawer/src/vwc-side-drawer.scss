@@ -30,18 +30,18 @@ $inline-size: var(#{variables.$side-drawer-inline-size}, 280px);
 	color: var(#{variables.$side-drawer-color}, var(#{scheme-variables.$vvd-color-on-canvas}));
 	inline-size: #{$inline-size};
 
-	&.side-drawer--alternate {
+	&.side-drawer-alternate {
 		background-color: var(#{scheme-variables.$vvd-color-canvas});
 	}
 
-	&.side-drawer--modal,
-	&.side-drawer--dismissible {
+	&.side-drawer-modal,
+	&.side-drawer-dismissible {
 		transform: translateX(0%);
-		&:not(.side-drawer--open) {
-			&.side-drawer--end {
+		&:not(.side-drawer-open) {
+			&.side-drawer-end {
 				transform: translateX(100%);
 			}
-			&:not(.side-drawer--end) {
+			&:not(.side-drawer-end) {
 				transform: translateX(-100%);
 			}
 		}
@@ -50,12 +50,12 @@ $inline-size: var(#{variables.$side-drawer-inline-size}, 280px);
 		}
 	}
 
-	&.side-drawer--dismissible.side-drawer--open,
-	&:not(.side-drawer--dismissible):not(.side-drawer--modal) {
-		+ .side-drawer--app-content {
+	&.side-drawer-dismissible.side-drawer-open,
+	&:not(.side-drawer-dismissible):not(.side-drawer-modal) {
+		+ .side-drawer-app-content {
 			@include typography.typography-cat-shorthand(body-1);
 			margin-inline-start: #{$inline-size};
-			&.side-drawer--end {
+			&.side-drawer-end {
 				margin-inline-end: var(--side-drawer-inline-size, 280px);
 				margin-inline-start: 0;
 			}
@@ -67,7 +67,7 @@ $inline-size: var(#{variables.$side-drawer-inline-size}, 280px);
 	}
 }
 
-.side-drawer--top-bar {
+.side-drawer-top-bar {
 	$gutter: var(#{variables.$side-drawer-padding-top-bar}, #{$padding-default});
 	@include typography.typography-cat-shorthand(subtitle-1);
 	display: flex;
@@ -78,7 +78,7 @@ $inline-size: var(#{variables.$side-drawer-inline-size}, 280px);
 	padding-inline-start: #{$gutter};
 }
 
-.side-drawer--content {
+.side-drawer-content {
 	$gutter: var(#{variables.$side-drawer-padding-body}, #{$padding-default});
 	background-color: inherit;
 	overflow-y: auto;
@@ -86,17 +86,19 @@ $inline-size: var(#{variables.$side-drawer-inline-size}, 280px);
 	padding-inline-start: #{$gutter};
 }
 
-.side-drawer--modal {
+.side-drawer-modal {
 	position: fixed;
-	&:not(.side-drawer--end) {
+	top: 0;
+	bottom: 0;
+	&:not(.side-drawer-end) {
 		inset-inline-start: 0;
 	}
-	&.side-drawer--end {
+	&.side-drawer-end {
 		inset-inline-end: 0;
 	}
 }
 
-.side-drawer--scrim {
+.side-drawer-scrim {
 	@include scrim-mixins.scrim-variables;
 	position: fixed;
 	z-index: calc(#{$z-index-default} - 1);
