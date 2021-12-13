@@ -1,0 +1,153 @@
+name: Master Pull Request
+
+on:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - ready_for_review
+      - converted_to_draft
+    branches:
+      - master
+
+concurrency:
+  group: ci-tests-${{ github.ref }}-1
+  cancel-in-progress: true
+
+jobs:
+  build:
+    timeout-minutes: 15
+    if: github.event.pull_request.draft == false
+    name: Build
+    runs-on: ubuntu-20.04
+    env:
+      GITHUB_TOKEN: ${{ secrets.VNG_VIVID_PAT }}
+    steps:
+      - uses: actions/checkout@v2
+      - run: printf "registry=https://npm.pkg.github.com/Vonage\n_authToken=\${GITHUB_TOKEN}\n//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}\nalways-auth=true" > .npmrc
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - uses: actions/cache@v2
+        with:
+          path: "**/node_modules"
+          key: ${{ hashFiles('yarn.lock') }}
+      - run: yarn install --frozen-lockfile --network-timeout 100000
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+      - run: yarn lerna run build --stream --concurrency=15 --include-dependencies
+      - run: tar -zcf /tmp/vivid-env.tar.gz .
+      - uses: actions/upload-artifact@v2
+        with:
+          name: workspace
+          path: /tmp/vivid-env.tar.gz
+  test:
+    if: github.event.pull_request.draft == false
+    needs: build
+    name: "Test Components on ${{ matrix.browser_name }}"
+    runs-on: ${{ matrix.os }}
+    env:
+      GITHUB_TOKEN: ${{ secrets.VNG_VIVID_PAT }}
+    strategy:
+      max-parallel: 10
+      matrix:
+        os:
+          - ubuntu-20.04
+          - macos-latest
+        browser:
+          - SafariNative
+          - ChromeHeadless
+          - FirefoxHeadless
+        exclude:
+          - os: ubuntu-20.04
+            browser: SafariNative
+          - os: macos-latest
+            browser: FirefoxHeadless
+          - os: macos-latest
+            browser: ChromeHeadless
+        include:
+          - browser: ChromeHeadless
+            browser_name: Chrome
+            report_coverage: true
+          - browser: FirefoxHeadless
+            browser_name: Firefox
+            report_coverage: false
+          - browser: SafariNative
+            browser_name: Safari
+            report_coverage: false
+    steps:
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - uses: actions/download-artifact@v2
+        with:
+          name: workspace
+          path: /tmp
+      - run: tar -zxf /tmp/vivid-env.tar.gz
+      - run: yarn karma start --coverage --browsers=${{ matrix.browser }}
+        id: test
+      - uses: coverallsapp/github-action@master
+        name: Report coverage information to coveralls
+        if: ${{ matrix.report_coverage }}
+        continue-on-error: true
+        with:
+          parallel: false
+          github-token: ${{ github.token }}
+          path-to-lcov: ./coverage/report-lcov/lcov.info
+          flag-name: Tested on ${{ matrix.os }} / ${{ matrix.browser }}
+      - run: exit 0
+        if: ${{ steps.test.outcome == 'success' }}
+
+  test_for_visual_regression:
+    if: github.event.pull_request.draft == false
+    needs: build
+    name: Test Components Graphics
+    runs-on: macos-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.VNG_VIVID_PAT }}
+    steps:
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - uses: actions/download-artifact@v2
+        with:
+          name: workspace
+          path: /tmp
+      - run: tar -zxf /tmp/vivid-env.tar.gz
+      - run: npm rebuild playwright && yarn playwright install-deps
+        env:
+          GITHUB_TOKEN: ${{ secrets.VNG_VIVID_PAT }}
+      - run: yarn ui-tests
+      - uses: actions/upload-artifact@v2
+        if: ${{ always() }}
+        with:
+          name: snapshot
+          path: ./ui-tests/snapshots/*.png
+
+  test_static:
+    if: github.event.pull_request.draft == false
+    needs: build
+    name: ${{ matrix.script_name }}
+    runs-on: ubuntu-20.04
+    env:
+      GITHUB_TOKEN: ${{ secrets.VNG_VIVID_PAT }}
+    strategy:
+      max-parallel: 10
+      matrix:
+        script:
+          - lint
+        include:
+          - script: lint
+            script_name: Test Lint rules
+    steps:
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - uses: actions/download-artifact@v2
+        with:
+          name: workspace
+          path: /tmp
+      - run: tar -zxf /tmp/vivid-env.tar.gz
+      - run: yarn ${{ matrix.script }}
+
