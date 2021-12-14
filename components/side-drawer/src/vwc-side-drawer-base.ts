@@ -118,10 +118,6 @@ export class VWCSideDrawerBase extends LitElement {
 			'side-drawer-end': end,
 		};
 
-		const contentClasses = {
-			'side-drawer-end': end,
-		};
-
 		return html`
 			<aside part="${ifDefined(alternate)}" class="side-drawer ${classMap(classes)}"
 				@transitionend=${this.#handleTransitionEnd}>
@@ -133,7 +129,7 @@ export class VWCSideDrawerBase extends LitElement {
 				</div>
 			</aside>
 			
-			<div class="side-drawer-app-content ${classMap(contentClasses)}">
+			<div class="side-drawer-app-content">
 				<slot name="app-content"></slot>
 			</div>
 			

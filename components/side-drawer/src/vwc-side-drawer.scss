@@ -55,13 +55,15 @@ $inline-size: var(#{variables.$side-drawer-inline-size}, 280px);
 		+ .side-drawer-app-content {
 			@include typography.typography-cat-shorthand(body-1);
 			margin-inline-start: #{$inline-size};
-			&.side-drawer-end {
-				margin-inline-end: var(--side-drawer-inline-size, 280px);
-				margin-inline-start: 0;
-			}
 			::slotted(vwc-top-app-bar),
 			::slotted(vwc-top-app-bar-fixed) {
 				--mdc-top-app-bar-width: calc(100% - #{$inline-size});
+			}
+		}
+		&.side-drawer-end {
+			+ .side-drawer-app-content {
+				margin-inline-end: var(--side-drawer-inline-size, 280px);
+				margin-inline-start: 0;
 			}
 		}
 	}
