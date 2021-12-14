@@ -29,7 +29,7 @@ export async function createElementVariations(wrapper) {
 	</style>
 
 	<div id="demo">
-		<vwc-side-drawer id="side-drawer" position="end">
+		<vwc-side-drawer id="side-drawer">
 		<div>
 			<vwc-list innerRole="navigation" innerAriaLabel="Primary navigation" itemRoles="link">
 				<vwc-list-item shape="rounded" graphic="icon">
@@ -70,7 +70,7 @@ export async function createElementVariations(wrapper) {
 	</div>
 
 	<div id="demo">
-		<vwc-side-drawer id="side-drawer" alternate hasTopBar>
+		<vwc-side-drawer id="side-drawer" alternate hasTopBar position="end">
 		<div slot="top-bar">
 			<vwc-icon type="vonage-mono"></vwc-icon>
 			<vwc-text font-face="body-1-bold"> VONAGE</vwc-text>
