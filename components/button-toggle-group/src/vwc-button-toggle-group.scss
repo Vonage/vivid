@@ -44,8 +44,6 @@ $sizes: (
 
 @each $scope in $scopes {
 	::slotted(vwc-#{$scope}) {
-		//--vvd-#{$scope}-color: var(#{scheme-variables.$vvd-color-canvas});
-		//--vvd-#{$scope}-on-color: var(#{scheme-variables.$vvd-color-on-canvas});
 		--vvd-#{$scope}-shape: var(#{$vvd-toggle-button-group-shape});
 		margin: 0 2px;
 	}

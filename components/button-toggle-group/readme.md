@@ -36,7 +36,6 @@
 |values|property|[]string|The values of the selected items. Setting this property sets the state according to the items with the values in the array|
 |items|property|Element[]|A list of valid toggle elements|
 |shape|reflected|“pill”/”rounded”||
-|accent|reflected|boolean||
 |dense|reflected|boolean|Set the size of the buttons as dense|
 |enlarged|reflected|boolean|Set the size of the buttons as enlarged|
 |required|reflected|boolean|Prevents toggling off the last selection. Also does not send event of non toggled selection.|

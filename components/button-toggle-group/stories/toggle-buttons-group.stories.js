@@ -10,15 +10,16 @@ export default {
 };
 
 const Template = args => html`
-	<h3 style="margin-top: 0">Basic / Accent</h3>
+	<h3 style="margin-top: 0">Basic</h3>
+	<p><code>accent</code> is deprecated. <code>accent</code> has the basic style</p>
 	<vwc-button-toggle-group ...=${spread(args)}>
 	<vwc-button label="Standard"></vwc-button>
 	<vwc-button label="Hybrid"></vwc-button>
 	<vwc-button label="Satellite"></vwc-button>
 </vwc-button-toggle-group>`;
 
-export const BasicOrAccent = Template.bind({});
-BasicOrAccent.args = { };
+export const Basic = Template.bind({});
+Basic.args = { };
 
 const TemplatePilled = args => html`
 	<h3 style="margin-top: 0">Pill Shape</h3>
@@ -50,18 +51,6 @@ const TemplateIcons = args => html`
 export const Iconed = TemplateIcons.bind({});
 Iconed.args = { };
 
-const AccentTemplate = args => html`
-	<h3 style="margin-top: 0">Accent</h3>
-	<p>Deprecated - no need for adding <code>accent</code>. Basic has <code>accent</code> style</p>
-	<vwc-button-toggle-group accent ...=${spread(args)}>
-	<vwc-button label="Standard"></vwc-button>
-	<vwc-button label="Hybrid"></vwc-button>
-	<vwc-button label="Satellite"></vwc-button>
-</vwc-button-toggle-group>`;
-
-export const Accent = AccentTemplate.bind({});
-Accent.args = { };
-
 const DisabledTemplate = args => html`
 	<h3 style="margin-top: 0">Disabled</h3>
 	<vwc-button-toggle-group accent disabled ...=${spread(args)}>
@@ -72,7 +61,7 @@ const DisabledTemplate = args => html`
 </vwc-button-toggle-group>`;
 
 export const Disabled = DisabledTemplate.bind({});
-Accent.args = { };
+Disabled.args = { };
 
 const MultiTemplate = args => html`
 	<h3 style="margin-top: 0">Multi</h3>
