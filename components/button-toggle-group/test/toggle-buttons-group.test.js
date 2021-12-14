@@ -89,20 +89,6 @@ describe('Toggle-buttons-group', () => {
 			.equal(1);
 	});
 
-	it(`should set layout filled for all child buttons`, function () {
-		const [actualElement] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}>
-<${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-</${COMPONENT_NAME}>`)
-		);
-
-		[...actualElement.children].forEach(childNode => expect(childNode.getAttribute('layout'))
-			.to
-			.equal('filled'));
-	});
-
 	describe(`selected`, function () {
 		let actualElement;
 
@@ -114,6 +100,15 @@ describe('Toggle-buttons-group', () => {
 <${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 </${COMPONENT_NAME}>`)
 			);
+		});
+
+		it(`should have the filled attribute`, async function () {
+			actualElement.children[1].click();
+			await actualElement.updateComplete;
+
+			expect(actualElement.children[0].getAttribute('layout'), 'non selected cannot be filled').not.to.equal('filled');
+			expect(actualElement.children[1].getAttribute('layout'), 'selected must be filled').to.equal('filled');
+			expect(actualElement.children[2].getAttribute('layout'), 'non selected cannot be filled').not.to.equal('filled');
 		});
 
 		it(`should return the an empty array if none is selected`, function () {
@@ -275,10 +270,10 @@ describe('Toggle-buttons-group', () => {
 		beforeEach(async function () {
 			[actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} multi>
-<${VALID_BUTTON_ELEMENTS[0]} layout="filled" value="${buttonValues[0]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]} layout="filled" value="${buttonValues[1]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]} layout="filled" value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[1]} layout="filled" value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[0]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[1]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[1]} value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 </${COMPONENT_NAME}>`)
 			);
 
@@ -288,7 +283,6 @@ describe('Toggle-buttons-group', () => {
 		it(`should listen to click event of dynamically assigned valid element`, async function () {
 			const element = document.createElement(VALID_BUTTON_ELEMENTS[0]);
 			element.setAttribute('value', '22');
-			element.setAttribute('layout', 'filled');
 			actualElement.appendChild(element);
 			await waitForSlotChange();
 			element.click();
@@ -367,10 +361,10 @@ describe('Toggle-buttons-group', () => {
 	describe(`Mandatory Selection`, function () {
 		function generateTemplate(props = [], childrenProps = [[], [], [], []]) {
 			return addElement(textToDomToParent(`<${COMPONENT_NAME} ${props.join(' ')}>
-<${VALID_BUTTON_ELEMENTS[0]} ${childrenProps[0].join(' ')} layout="filled">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]} ${childrenProps[1].join(' ')} layout="filled">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]} ${childrenProps[2].join(' ')} layout="filled">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[1]} ${childrenProps[3].join(' ')} layout="filled">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} ${childrenProps[0].join(' ')}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} ${childrenProps[1].join(' ')}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} ${childrenProps[2].join(' ')}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[1]} ${childrenProps[3].join(' ')}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 </${COMPONENT_NAME}>`));
 		}
 

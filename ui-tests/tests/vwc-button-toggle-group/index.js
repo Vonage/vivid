@@ -108,6 +108,36 @@ export async function createElementVariations(wrapper) {
 			<vwc-icon-button icon="microphone-solid"></vwc-icon-button>
 		</vwc-button-toggle-group>
 	</div>
+	<div class="wrapper">
+		<vwc-button-toggle-group enlarged disabled>
+			<vwc-button label="Standard"></vwc-button>
+			<vwc-button label="Hybrid" selected></vwc-button>
+			<vwc-button label="Satellite"></vwc-button>
+		</vwc-button-toggle-group>
+	</div>
+		<div class="wrapper">
+		<vwc-button-toggle-group enlarged disabled>
+			<vwc-icon-button icon="video-solid"></vwc-icon-button>
+			<vwc-icon-button icon="call-solid"></vwc-icon-button>
+			<vwc-icon-button icon="chat-solid" selected></vwc-icon-button>
+			<vwc-icon-button icon="microphone-solid"></vwc-icon-button>
+		</vwc-button-toggle-group>
+	</div>
+	<div class="wrapper">
+		<vwc-button-toggle-group enlarged shape="pill" multi disabled>
+			<vwc-button label="Standard" selected></vwc-button>
+			<vwc-button label="Hybrid" selected></vwc-button>
+			<vwc-button label="Satellite"></vwc-button>
+		</vwc-button-toggle-group>
+	</div>
+		<div class="wrapper">
+		<vwc-button-toggle-group enlarged shape="pill" multi disabled>
+			<vwc-icon-button icon="video-solid" selected></vwc-icon-button>
+			<vwc-icon-button icon="call-solid"></vwc-icon-button>
+			<vwc-icon-button icon="chat-solid" selected></vwc-icon-button>
+			<vwc-icon-button icon="microphone-solid"></vwc-icon-button>
+		</vwc-button-toggle-group>
+	</div>
 	</div>
 
 	`;
