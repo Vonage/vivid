@@ -36,6 +36,9 @@ DenseNoLabel.args = { dense: '' };
 export const PillAutoDense = Template.bind({});
 PillAutoDense.args = { shape: 'pill', label: 'VWC Select' };
 
+export const GhostLayoutAutoDense = Template.bind({});
+GhostLayoutAutoDense.args = { ghost: '', label: 'VWC Select' };
+
 export const Disabled = Template.bind({});
 Disabled.args = { disabled: '', label: 'VWC Select', helper: 'Helper Text' };
 
