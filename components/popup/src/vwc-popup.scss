@@ -1,7 +1,14 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use 'partials/vwc-popup-variables' as popup-variables;
 
+:host {
+	//z-index: 7 to overcome the 6 of the vwc-side-drawer
+	//TODO: to check z-index of vwc-top-app-bar and other components.
+	z-index: 7;
+}
+
 .popup {
+	position: absolute;
 	display: none;
 	min-width: var(#{popup-variables.$popup-min-inline-size}, 100px);
 	max-width: var(#{popup-variables.$popup-max-inline-size}, 350px);
@@ -12,9 +19,6 @@
 	filter: var(--vvd-shadow-surface-2dp);
 
 	&.popup-open {
-		//z-index: 7 to overcome the 6 of the vwc-side-drawer
-		//TODO: to check z-index of vwc-top-app-bar and other components.
-		z-index: 7;
 		display: inline-grid;
 	}
 
