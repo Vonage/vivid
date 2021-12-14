@@ -28,6 +28,12 @@ export const argTypes = {
 			options: { true: '', false: undefined },
 		},
 	},
+	ghost: {
+		control: {
+			type: 'inline-radio',
+			options: { true: '', false: undefined },
+		},
+	},
 	form: { table: { disable: true } },
 	outlined: { table: { disable: true } },
 	outlineOpen: { table: { disable: true } },
