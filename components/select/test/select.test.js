@@ -15,7 +15,7 @@ import {
 import {
 	shapeRoundedTestCases,
 	shapePillTestCases,
-} from '../../../test/shared.js';
+} from '../../../test/shared/shape.test.js';
 import {
 	assertDenseStyles,
 	hasNotchedOutline,
@@ -466,6 +466,29 @@ describe('select', () => {
 			const endTime = performance.now();
 
 			expect(endTime - startTime).to.be.lessThan(50);
+		});
+	});
+
+	describe(`ghost`, function () {
+		it(`should set dense to true if ghost is set`, async function () {
+			const [select] = addElement(
+				textToDomToParent(`
+   <${COMPONENT_NAME}>
+    <vwc-list-item>Item 1</vwc-list-item>
+    <vwc-list-item>Item 2</vwc-list-item>
+   </${COMPONENT_NAME}>
+  `)
+			);
+			await select.updateComplete;
+
+			const denseValueBeforeGhost = select.dense;
+
+			select.ghost = true;
+			await select.updateComplete;
+			const denseValueAfterGhost = select.dense;
+
+			expect(denseValueBeforeGhost).to.equal(false);
+			expect(denseValueAfterGhost).to.equal(true);
 		});
 	});
 });
