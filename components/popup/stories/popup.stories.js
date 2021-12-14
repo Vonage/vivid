@@ -20,9 +20,6 @@ const Template = args => html`
 			justify-content: center;
 			background-color: var(--vvd-color-neutral-10);
 		}
-		vwc-button {
-			position:relative;
-		}
 	</style>
 	<div class="popup-wrapper">
 		<vwc-button id="button" layout="outlined" outlined aria-describedby="popup" @click="${onClick}">Click to open popup</vwc-button>

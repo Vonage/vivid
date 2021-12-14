@@ -8,8 +8,7 @@
 }
 
 .popup {
-	position: absolute;
-	display: none;
+	// display: none;
 	min-width: var(#{popup-variables.$popup-min-inline-size}, 100px);
 	max-width: var(#{popup-variables.$popup-max-inline-size}, 350px);
 	background-color: var(#{scheme-variables.$vvd-color-canvas});

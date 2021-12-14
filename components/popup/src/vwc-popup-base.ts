@@ -4,7 +4,7 @@ import {
 import { ClassInfo, classMap } from 'lit-html/directives/class-map.js';
 import { nothing } from 'lit-html';
 import { computePosition } from '@floating-ui/dom';
-
+import type { Placement } from '@floating-ui/core';
 export class VWCPopupBase extends LitElement {
 	@query('.popup') protected popup!: HTMLElement;
 
@@ -22,7 +22,7 @@ export class VWCPopupBase extends LitElement {
 	 * @public
 	 * */
 	@property({ type: Element, reflect: true })
-		anchor!: Element;
+		anchor?: Element;
 
 	/**
 	 * @prop dismissible - adds close button to the popup
@@ -31,6 +31,26 @@ export class VWCPopupBase extends LitElement {
 	 * */
 	@property({ type: Boolean, reflect: true })
 		dismissible?: false;
+
+	/**
+	 * @prop corner - the placement of the popup
+	 * accepts  | 'top'
+				| 'top-start'
+				| 'top-end'
+				| 'right'
+				| 'right-start'
+				| 'right-end'
+				| 'bottom'
+				| 'bottom-start'
+				| 'bottom-end'
+				| 'left'
+				| 'left-start'
+				| 'left-end';
+	 * @public
+	 * */
+
+	@property({ type: String, reflect: true })
+		corner: Placement = 'bottom';
 
 	/**
 	 * @prop arrow - adds small triangle to indicate the trigger element
@@ -46,7 +66,7 @@ export class VWCPopupBase extends LitElement {
 			if (this.open) {
 				this.show();
 			}
-			else{
+			else {
 				this.hide();
 			}
 		}
@@ -57,9 +77,11 @@ export class VWCPopupBase extends LitElement {
 	 * @public
 	 */
 	show(): void {
-		this.open = true;
 		const positionSucceeded = this.#positionPopup();
-		if (!positionSucceeded) {
+		if (positionSucceeded) {
+			this.open = true;
+		}
+		else{
 			this.hide();
 		}
 	}
@@ -76,7 +98,10 @@ export class VWCPopupBase extends LitElement {
 		let positionSucceeded = false;
 		if (this.anchor && this.popup) {
 			// Then position the popup
-			computePosition(this.anchor, this.popup).then(({ x, y }) => {
+			computePosition(this.anchor, this.popup, { 
+				placement: this.corner,
+				strategy: 'absolute', // 'absolute' by default
+			}).then(({ x, y }) => {
 				Object.assign(this.popup.style, {
 					left: `${x}px`,
 					top: `${y}px`,
@@ -106,7 +131,7 @@ export class VWCPopupBase extends LitElement {
 	protected override render(): TemplateResult {
 		return html`
 			<!-- TODO: role="?"-->
-			<div class="popup ${classMap(this.getRenderClasses())}" aria-hidden=${this.open ? 'false' : 'true'}>
+			<div class="popup ${classMap(this.getRenderClasses())}" aria-hidden=${this.open ? 'false' : 'true' }>
 				<slot></slot>
 				${this.#renderDismissButton()}
 			</div>
