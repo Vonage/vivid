@@ -1,3 +1,12 @@
+# [2.23.0](https://github.com/vonage/vivid/compare/v2.22.1...v2.23.0) (2021-12-14)
+
+
+### Bug Fixes
+
+* **text:** tight option ([#1110](https://github.com/vonage/vivid/issues/1110)) ([1dadbc4](https://github.com/vonage/vivid/commit/1dadbc4e7639858889ff26b73e63b4d7a5e147f4))
+
+
+
 ## [2.22.1](https://github.com/vonage/vivid/compare/v2.22.0...v2.22.1) (2021-11-05)
 
 

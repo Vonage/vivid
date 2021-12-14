@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.23.0](https://github.com/Vonage/vivid/compare/v2.22.1...v2.23.0) (2021-12-14)
+
+
+### Bug Fixes
+
+* **card:**  titles trim ([#1124](https://github.com/Vonage/vivid/issues/1124)) ([f69d051](https://github.com/Vonage/vivid/commit/f69d051b67d2aa3f5638af73adffffe48b3f638a))
+* **select:** unneeded top padding ([#1144](https://github.com/Vonage/vivid/issues/1144)) ([5ca233d](https://github.com/Vonage/vivid/commit/5ca233d191708f885502084b51fcd508ae6ecc25))
+* **text:** tight option ([#1110](https://github.com/Vonage/vivid/issues/1110)) ([1dadbc4](https://github.com/Vonage/vivid/commit/1dadbc4e7639858889ff26b73e63b4d7a5e147f4))
+* **vwc-banner:** add-examples and fix prop ([#1123](https://github.com/Vonage/vivid/issues/1123)) ([4bb3345](https://github.com/Vonage/vivid/commit/4bb334588114bdc256870da34cc0783f8362e2df))
+
+
+### Features
+
+* **select:** ghost select ([#1133](https://github.com/Vonage/vivid/issues/1133)) ([93426d1](https://github.com/Vonage/vivid/commit/93426d180d42257a477c05b261d7b1e9d8bc1850))
+* **side-drawer:** add end and start positions ([#1146](https://github.com/Vonage/vivid/issues/1146)) ([8d712da](https://github.com/Vonage/vivid/commit/8d712da4caec86d970aa317c33be2f2a44c5297d))
+
+
+
+
+
 ## [2.22.1](https://github.com/Vonage/vivid/compare/v2.22.0...v2.22.1) (2021-11-05)
 
 
