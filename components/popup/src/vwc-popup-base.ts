@@ -43,11 +43,11 @@ export class VWCPopupBase extends LitElement {
 	override firstUpdated(changedProperties: PropertyValues): void {
 		super.firstUpdated(changedProperties);
 		if (changedProperties.has('open')) {
-			if(this.open){
-				const positionSucceeded = this.#positionPopup();
-				if(!positionSucceeded){
-					this.hide();
-				}
+			if (this.open) {
+				this.show();
+			}
+			else{
+				this.hide();
 			}
 		}
 	}
@@ -58,6 +58,10 @@ export class VWCPopupBase extends LitElement {
 	 */
 	show(): void {
 		this.open = true;
+		const positionSucceeded = this.#positionPopup();
+		if (!positionSucceeded) {
+			this.hide();
+		}
 	}
 
 	/**
@@ -69,10 +73,10 @@ export class VWCPopupBase extends LitElement {
 	}
 
 	#positionPopup(): boolean {
-		let positionSucceeded  = false;
-		if(this.anchor && this.popup){
+		let positionSucceeded = false;
+		if (this.anchor && this.popup) {
 			// Then position the popup
-			computePosition(this.anchor, this.popup).then(({x, y}) => {
+			computePosition(this.anchor, this.popup).then(({ x, y }) => {
 				Object.assign(this.popup.style, {
 					left: `${x}px`,
 					top: `${y}px`,
@@ -80,7 +84,7 @@ export class VWCPopupBase extends LitElement {
 			});
 			positionSucceeded = true;
 		}
-		else{ 
+		else {
 			console.log('Please provide valid anchor and popup');
 		}
 		return positionSucceeded;
@@ -102,7 +106,7 @@ export class VWCPopupBase extends LitElement {
 	protected override render(): TemplateResult {
 		return html`
 			<!-- TODO: role="?"-->
-			<div class="popup ${classMap(this.getRenderClasses())}" aria-hidden=${this.open ? 'false' : 'true' }>
+			<div class="popup ${classMap(this.getRenderClasses())}" aria-hidden=${this.open ? 'false' : 'true'}>
 				<slot></slot>
 				${this.#renderDismissButton()}
 			</div>
