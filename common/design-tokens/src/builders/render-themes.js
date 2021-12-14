@@ -22,6 +22,7 @@ StyleDictionaryPackage.registerFormat({
 function getStyleDictionaryConfig(scheme, scope) {
 	return {
 		source: [
+			`${propertiesPath}/sizing/**/*.json`,
 			`${propertiesPath}/color/**/*.json`,
 			`${propertiesPath}/shadow/**/*.json`,
 			`${propertiesPath}/themes/${scheme}/**/${scope}.json`,

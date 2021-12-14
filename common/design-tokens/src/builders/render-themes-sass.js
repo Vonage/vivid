@@ -18,6 +18,7 @@ StyleDictionaryPackage.registerFormat({
 function getStyleDictionaryConfig() {
 	return {
 		source: [
+			`${propertiesPath}/sizing/**/*.json`,
 			`${propertiesPath}/color/**/*.json`,
 			`${propertiesPath}/shadow/**/*.json`,
 			`${propertiesPath}/themes/light/**/main.json`,
