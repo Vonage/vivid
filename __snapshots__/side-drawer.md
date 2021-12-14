@@ -4,12 +4,12 @@
 
 ```html
 <aside class="side-drawer">
-  <div class="side-drawer--content">
+  <div class="side-drawer-content">
     <slot>
     </slot>
   </div>
 </aside>
-<div class="side-drawer--app-content">
+<div class="side-drawer-app-content">
   <slot name="app-content">
   </slot>
 </div>
