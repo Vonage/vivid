@@ -313,15 +313,15 @@ describe('Card', () => {
 
 			await actualElement.updateComplete;
 
-			const actionsElement = actualElement.shadowRoot.querySelector('.vwc-card-actions');
+			const footerElement = actualElement.shadowRoot.querySelector('.vwc-card-footer');
 
 
-			expect(actionsElement.classList.contains('no-content'))
+			expect(footerElement.classList.contains('no-content'))
 				.to
 				.equal(true);
 		});
 
-		it(`should be displayed if slotted actions exist`, async function () {
+		it(`should be displayed if slotted footer exist`, async function () {
 			async function waitForSlotChangeUpdate() {
 				await waitNextTask();
 
@@ -329,14 +329,14 @@ describe('Card', () => {
 			}
 
 			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME}>Content<div slot="actions"></div></${COMPONENT_NAME}>`)
+				textToDomToParent(`<${COMPONENT_NAME}>Content<div slot="footer"></div></${COMPONENT_NAME}>`)
 			);
 
 			await waitForSlotChangeUpdate();
 
-			const actionsElement = actualElement.shadowRoot.querySelector('.vwc-card-actions');
+			const footerElement = actualElement.shadowRoot.querySelector('.vwc-card-footer');
 
-			expect(actionsElement.classList.contains('no-content'))
+			expect(footerElement.classList.contains('no-content'))
 				.to
 				.equal(false);
 		});

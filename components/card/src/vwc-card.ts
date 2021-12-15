@@ -52,7 +52,7 @@ export class VWCCard extends LitElement {
 		supportingText: string | undefined;
 
 	private headerIconSlottedItems?: Node[];
-	private shouldShowActionsSlot: boolean | undefined;
+	private shouldShowFooterSlot: boolean | undefined;
 
 	private get headerContentExists(): boolean {
 		return Boolean(this.heading || this.subtitle || this.headerIcon || this.headerIconSlottedItems?.length);
@@ -63,8 +63,8 @@ export class VWCCard extends LitElement {
 	}
 
 	protected override render(): unknown {
-		const actionsClassMap = {
-			'no-content': !(this.shouldShowActionsSlot)
+		const footerClassMap = {
+			'no-content': !(this.shouldShowFooterSlot)
 		};
 		return html`
 			<div class="vwc-card">
@@ -76,8 +76,8 @@ export class VWCCard extends LitElement {
 					<div class="vwc-card-supportText">
 							${this.supportingText ? this.supportingText : ''}
 					</div>
-					<div class="vwc-card-actions ${classMap(actionsClassMap)}">
-							<slot name="actions" @slotchange="${this.actionsSlotChanged}"></slot>
+					<div class="vwc-card-footer ${classMap(footerClassMap)}">
+							<slot name="footer" @slotchange="${this.footerSlotChanged}"></slot>
 					</div>
 				</div>
 			</div>
@@ -115,9 +115,9 @@ export class VWCCard extends LitElement {
 		}
 	}
 
-	private actionsSlotChanged(): void {
-		const slot = this.shadowRoot?.querySelector('slot[name="actions"]') as HTMLSlotElement;
-		this.shouldShowActionsSlot = Boolean(slot.assignedNodes().length);
+	private footerSlotChanged(): void {
+		const slot = this.shadowRoot?.querySelector('slot[name="footer"]') as HTMLSlotElement;
+		this.shouldShowFooterSlot = Boolean(slot.assignedNodes().length);
 		this.requestUpdate();
 	}
 }

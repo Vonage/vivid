@@ -56,19 +56,19 @@ export async function createElementVariations(wrapper) {
 
 
 
-	<vwc-card label="Actions" heading="Actions" subtitle="Use the 'actions' slot in order to add actionable items.">
-		<vwc-button slot="actions" shape="pill" layout="outlined" icon="info" type="submit" outlined="">Click
+	<vwc-card label="Footer" heading="Footer" subtitle="Use the 'footer' slot in order to add actionable items.">
+		<vwc-button slot="footer" shape="pill" layout="outlined" icon="info" type="submit" outlined="">Click
 		</vwc-button>
 	</vwc-card>
 
-		<vwc-card label="Actions">
-		<vwc-button slot="actions" shape="pill" layout="outlined" icon="info" type="submit" outlined="">Click
+		<vwc-card label="Footer">
+		<vwc-button slot="footer" shape="pill" layout="outlined" icon="info" type="submit" outlined="">Click
 		</vwc-button>
 	</vwc-card>
 
 	<vwc-card label="All" heading="Card title" subtitle="Subtitle" header-icon="chat-line" support-text="Support Text">
 		<div slot="media"><img src="https://doodleipsum.com/300x150/flat?bg=7463D9&i=60361756b0ad15f4b3c4bd691f647ba9" alt="Sitting on Floor by Gustavo Pedrosa" /><p style="padding: 0 1.5rem; margin:0; text-align: center">Illustration by <a href="https://blush.design/artists/JycqpHYvuwwN3HzxBNyr/gustavo-pedrosa">Gustavo Pedrosa</a></p></div>
-		<vwc-button slot="actions" shape="pill" layout="outlined" icon="info" type="submit" outlined="">Click
+		<vwc-button slot="footer" shape="pill" layout="outlined" icon="info" type="submit" outlined="">Click
 		</vwc-button>
 	</vwc-card>
 

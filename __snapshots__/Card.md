@@ -25,8 +25,8 @@
     </header>
     <div class="vwc-card-supportText">
     </div>
-    <div class="no-content vwc-card-actions">
-      <slot name="actions">
+    <div class="no-content vwc-card-footer">
+      <slot name="footer">
       </slot>
     </div>
   </div>
