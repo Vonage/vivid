@@ -52,7 +52,7 @@ export class VWCSideDrawerBase extends LitElement {
 		type: String,
 		reflect: true
 	})
-		type?: 'modal' | 'dismissible';
+		type?: 'dismissible' | 'modal' = 'dismissible';
 
 	/**
 	* @prop open - indicates whether the side drawer is open
