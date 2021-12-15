@@ -1,3 +1,12 @@
+# [2.23.0](https://github.com/vonage/vivid/compare/v2.22.1...v2.23.0) (2021-12-14)
+
+
+### Features
+
+* **side-drawer:** add end and start positions ([#1146](https://github.com/vonage/vivid/issues/1146)) ([8d712da](https://github.com/vonage/vivid/commit/8d712da4caec86d970aa317c33be2f2a44c5297d))
+
+
+
 ## [2.22.1](https://github.com/vonage/vivid/compare/v2.22.0...v2.22.1) (2021-11-05)
 
 
