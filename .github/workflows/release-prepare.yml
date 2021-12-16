@@ -18,7 +18,6 @@ jobs:
         with:
           fetch-depth: 0
           ref: master
-          token: ${{ secrets.VIVID_TOKEN }}
 
       - name: Writing .npmrc
         run: printf "registry=https://npm.pkg.github.com/Vonage\n_authToken=\${GITHUB_TOKEN}\n//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}\nalways-auth=true" > .npmrc
