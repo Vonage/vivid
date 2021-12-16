@@ -102,13 +102,25 @@ describe('Toggle-buttons-group', () => {
 			);
 		});
 
-		it(`should have the filled attribute`, async function () {
+		it(`should have the filled attribute when selected`, async function () {
 			actualElement.children[1].click();
 			await actualElement.updateComplete;
 
 			expect(actualElement.children[0].getAttribute('layout'), 'non selected cannot be filled').not.to.equal('filled');
 			expect(actualElement.children[1].getAttribute('layout'), 'selected must be filled').to.equal('filled');
 			expect(actualElement.children[2].getAttribute('layout'), 'non selected cannot be filled').not.to.equal('filled');
+		});
+
+		it(`should remove the filled attribute when unselected`, async function () {
+			actualElement.children[1].click();
+			await actualElement.updateComplete;
+
+			expect(actualElement.children[1].getAttribute('layout'), 'selected must be filled').to.equal('filled');
+
+			actualElement.children[1].click();
+			await actualElement.updateComplete;
+
+			expect(actualElement.children[1].getAttribute('layout'), 'unselected must not be filled').not.to.equal('filled');
 		});
 
 		it(`should return the an empty array if none is selected`, function () {
@@ -368,7 +380,7 @@ describe('Toggle-buttons-group', () => {
 </${COMPONENT_NAME}>`));
 		}
 
-		it(`should not cancel the last selection`, async function () {
+		it(`should not cancel the last selection on click`, async function () {
 			const [actualElement] = (generateTemplate(['required', 'multi']));
 
 			await actualElement.updateComplete;
@@ -392,7 +404,7 @@ describe('Toggle-buttons-group', () => {
 				.equal(selectedButton);
 		});
 
-		it(`should not cancel the last selection`, async function () {
+		it(`should not cancel the last selection when button preselected`, async function () {
 			const [actualElement] = addElement(generateTemplate(['required', 'multi'],
 				[['selected'], [], [], []]));
 
