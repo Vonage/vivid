@@ -115,12 +115,15 @@ describe('Toggle-buttons-group', () => {
 			actualElement.children[1].click();
 			await actualElement.updateComplete;
 
-			expect(actualElement.children[1].getAttribute('layout'), 'selected must be filled').to.equal('filled');
+			const filledBeforeUnselect = actualElement.children[1].getAttribute('layout') === 'filled';
 
 			actualElement.children[1].click();
 			await actualElement.updateComplete;
 
-			expect(actualElement.children[1].getAttribute('layout'), 'unselected must not be filled').not.to.equal('filled');
+			const filledAfterUnselect =  actualElement.children[1].hasAttribute('layout');
+
+			expect(filledBeforeUnselect).to.equal(true);
+			expect(filledAfterUnselect).to.equal(false);
 		});
 
 		it(`should return the an empty array if none is selected`, function () {
