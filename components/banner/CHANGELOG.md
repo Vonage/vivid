@@ -1,3 +1,12 @@
+# [2.23.0](https://github.com/vonage/vivid/compare/v2.22.1...v2.23.0) (2021-12-14)
+
+
+### Bug Fixes
+
+* **vwc-banner:** add-examples and fix prop ([#1123](https://github.com/vonage/vivid/issues/1123)) ([4bb3345](https://github.com/vonage/vivid/commit/4bb334588114bdc256870da34cc0783f8362e2df))
+
+
+
 ## [2.22.1](https://github.com/vonage/vivid/compare/v2.22.0...v2.22.1) (2021-11-05)
 
 

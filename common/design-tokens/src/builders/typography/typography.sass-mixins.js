@@ -2,6 +2,7 @@ import fs from 'fs';
 import { resolve } from 'path';
 import _ from 'lodash';
 import StyleDictionaryPackage from 'style-dictionary';
+import {removeFolderSafely} from '../utils.js';
 
 const TYPOGRAPHY_TYPES = ['web'],
 	CUSTOM_TYPOGRAPHY_FORMAT = 'custom/web/scss/typography',
@@ -46,7 +47,7 @@ function getStyleDictionaryConfig(type, defsFolder, dataFolder) {
 export const render = () => {
 	console.log('\n📖\x1b[2mProcessing typography variables\x1b[0m');
 
-	fs.rmdirSync(OUTPUT_FOLDER, { recursive: true });
+	removeFolderSafely(OUTPUT_FOLDER);
 	const propertiesFolder = resolve('../../node_modules/@vonage/vvd-design-tokens-properties');
 	const definitionsFolder = resolve(propertiesFolder, 'globals', 'typography');
 	const typographiesFolder = resolve(propertiesFolder, 'typography');

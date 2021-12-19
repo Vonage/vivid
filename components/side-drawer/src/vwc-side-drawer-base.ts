@@ -54,11 +54,26 @@ export class VWCSideDrawerBase extends LitElement {
 	})
 		type?: 'modal' | 'dismissible';
 
+	/**
+	* @prop open - indicates whether the side drawer is open
+	* accepts boolean value
+	* */
 	@property({
 		type: Boolean,
 		reflect: true
 	})
 		open = false;
+
+	/**
+	 * @prop side - sets the side of the side drawer
+	 * accepts "start" | "end"
+	 * @public
+	 * */
+	@property({
+		type: String,
+		reflect: true
+	})
+		position?: 'start' | 'end';
 
 	/**
 	 * Opens the side drawer from the closed state.
@@ -93,50 +108,45 @@ export class VWCSideDrawerBase extends LitElement {
 		const topBar = this.hasTopBar ? this.renderTopBar() : '';
 		const scrim = (this.type === 'modal' && this.open) ? this.renderScrim() : '';
 		const alternate = this.alternate ? 'vvd-scheme-alternate' : undefined;
+		const end = this.position === 'end';
 
 		const classes = {
-			'side-drawer--alternate': this.alternate,
-			'side-drawer--dismissible': dismissible,
-			'side-drawer--modal': modal,
-			'side-drawer--open': this.open,
+			'side-drawer-alternate': this.alternate,
+			'side-drawer-dismissible': dismissible,
+			'side-drawer-modal': modal,
+			'side-drawer-open': this.open,
+			'side-drawer-end': end,
 		};
 
 		return html`
-			<aside
-				part="${ifDefined(alternate)}"
-				class="side-drawer ${classMap(classes)}"
+			<aside part="${ifDefined(alternate)}" class="side-drawer ${classMap(classes)}"
 				@transitionend=${this.#handleTransitionEnd}>
-
+			
 				${topBar}
-
-				<div class="side-drawer--content">
+			
+				<div class="side-drawer-content">
 					<slot></slot>
 				</div>
-
 			</aside>
-
-			<div class="side-drawer--app-content">
+			
+			<div class="side-drawer-app-content">
 				<slot name="app-content"></slot>
 			</div>
-
+			
 			${scrim}
 		`;
 	}
 
 	private renderTopBar(): TemplateResult {
 		return html`
-			<header class="side-drawer--top-bar">
+			<header class="side-drawer-top-bar">
 				<slot name="top-bar"></slot>
 			</header>`;
 	}
 
 	private renderScrim(): TemplateResult {
 		return html`
-			<div
-				class="side-drawer--scrim"
-				@click="${this.#handleScrimClick}"
-				@keydown="${this.#handleScrimClick}"
-			></div>`;
+			<div class="side-drawer-scrim" @click="${this.#handleScrimClick}" @keydown="${this.#handleScrimClick}"></div>`;
 	}
 
 	#handleScrimClick(): void {

@@ -93,6 +93,9 @@ Alternate.args = { alternate: true };
 export const TopBar = Template.bind({});
 TopBar.args = { hasTopBar: true };
 
+export const PositionEnd = Template.bind({});
+PositionEnd.args = { position: 'end' };
+
 let prevActivatedItem;
 function onClick(e) {
 	// only list items can be activated
