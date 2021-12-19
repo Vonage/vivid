@@ -93,7 +93,7 @@ const SizesTemplate = args => html`
 	<style>
 		.grid-wrapper{
 			display: grid;
-			grid-template-columns: 70px repeat(2 , 380px 200px);
+			grid-template-columns: 70px repeat(2 , 420px 200px);
 			gap: 1rem;
 			align-items: center;
 		}
@@ -102,8 +102,8 @@ const SizesTemplate = args => html`
 	<div class="grid-wrapper">
 		<p style="margin: 0">Dense</p>
 		<vwc-button-toggle-group dense>
-			<vwc-icon-button icon="home" selected=""></vwc-icon-button>
-			<vwc-button label="Standard"></vwc-button>
+			<vwc-button label="home" selected=""></vwc-button>
+			<vwc-button label="Standard" ></vwc-button>
 			<vwc-button label="Hybrid"></vwc-button>
 			<vwc-button label="Satellite"></vwc-button>
 		</vwc-button-toggle-group>
@@ -114,7 +114,7 @@ const SizesTemplate = args => html`
 			<vwc-icon-button icon="microphone-solid"></vwc-icon-button>
 		</vwc-button-toggle-group>
 		<vwc-button-toggle-group dense shape="pill">
-			<vwc-icon-button icon="home" selected=""></vwc-icon-button>
+			<vwc-button label="home" selected=""></vwc-button>
 			<vwc-button label="Standard"></vwc-button>
 			<vwc-button label="Hybrid"></vwc-button>
 			<vwc-button label="Satellite"></vwc-button>
@@ -127,7 +127,7 @@ const SizesTemplate = args => html`
 		</vwc-button-toggle-group>
 		<p style="margin: 0">Normal</p>
 		<vwc-button-toggle-group>
-			<vwc-icon-button icon="home" selected=""></vwc-icon-button>
+			<vwc-button label="home" selected=""></vwc-button>
 			<vwc-button label="Standard"></vwc-button>
 			<vwc-button label="Hybrid"></vwc-button>
 			<vwc-button label="Satellite"></vwc-button>
@@ -139,7 +139,7 @@ const SizesTemplate = args => html`
 			<vwc-icon-button icon="microphone-solid"></vwc-icon-button>
 		</vwc-button-toggle-group>
 		<vwc-button-toggle-group shape="pill">
-			<vwc-icon-button icon="home" selected=""></vwc-icon-button>
+			<vwc-button label="home" selected=""></vwc-button>
 			<vwc-button label="Standard"></vwc-button>
 			<vwc-button label="Hybrid"></vwc-button>
 			<vwc-button label="Satellite"></vwc-button>
@@ -152,7 +152,7 @@ const SizesTemplate = args => html`
 		</vwc-button-toggle-group>
 		<p style="margin: 0">Enlarged</p>
 		<vwc-button-toggle-group enlarged>
-			<vwc-icon-button icon="home" selected=""></vwc-icon-button>
+			<vwc-button label="home" selected=""></vwc-button>
 			<vwc-button label="Standard"></vwc-button>
 			<vwc-button label="Hybrid"></vwc-button>
 			<vwc-button label="Satellite"></vwc-button>
@@ -164,7 +164,7 @@ const SizesTemplate = args => html`
 			<vwc-icon-button icon="microphone-solid"></vwc-icon-button>
 		</vwc-button-toggle-group>
 		<vwc-button-toggle-group enlarged shape="pill">
-			<vwc-icon-button icon="home" selected=""></vwc-icon-button>
+			<vwc-button label="home" selected=""></vwc-button>
 			<vwc-button label="Standard"></vwc-button>
 			<vwc-button label="Hybrid"></vwc-button>
 			<vwc-button label="Satellite"></vwc-button>
