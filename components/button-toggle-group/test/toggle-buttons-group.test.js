@@ -95,9 +95,9 @@ describe('Toggle-buttons-group', () => {
 		beforeEach(function () {
 			[actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}>
-<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[0]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} layout="filled" value="${buttonValues[0]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 <${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[1]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} layout="filled" value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 </${COMPONENT_NAME}>`)
 			);
 		});
@@ -112,18 +112,21 @@ describe('Toggle-buttons-group', () => {
 		});
 
 		it(`should remove the filled attribute when unselected`, async function () {
+			actualElement.children[0].click();
+			await actualElement.updateComplete;
+
+			const filledBeforeUnselect = actualElement.children[0].getAttribute('layout') === 'filled';
+
 			actualElement.children[1].click();
 			await actualElement.updateComplete;
 
-			const filledBeforeUnselect = actualElement.children[1].getAttribute('layout') === 'filled';
+			const filledAfterUnselect =  actualElement.children[0].hasAttribute('layout');
 
-			actualElement.children[1].click();
-			await actualElement.updateComplete;
-
-			const filledAfterUnselect =  actualElement.children[1].hasAttribute('layout');
+			const newSelectedFilled = actualElement.children[1].getAttribute('layout') === 'filled';
 
 			expect(filledBeforeUnselect).to.equal(true);
 			expect(filledAfterUnselect).to.equal(false);
+			expect(newSelectedFilled).to.equal(true);
 		});
 
 		it(`should return the an empty array if none is selected`, function () {
@@ -158,7 +161,6 @@ describe('Toggle-buttons-group', () => {
 
 	describe(`values`, function () {
 		let actualElement;
-
 
 		beforeEach(function () {
 			[actualElement] = addElement(

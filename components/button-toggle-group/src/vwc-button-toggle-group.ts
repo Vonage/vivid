@@ -213,7 +213,7 @@ export class VWCButtonToggleGroup extends LitElement {
 	private clearSelection(buttonElement?: Element) {
 		this.items.forEach((button) => {
 			if (button === buttonElement) return;
-			button.removeAttribute(SELECTED_ATTRIBUTE_NAME);
+			this.toggleButtonSelectedState(button, false);
 		});
 	}
 
