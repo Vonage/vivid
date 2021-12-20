@@ -24,14 +24,6 @@ function isButtonActive(buttonElement: Element) {
 	return buttonElement.hasAttribute(SELECTED_ATTRIBUTE_NAME);
 }
 
-function toggleButton(buttonElement: Element) {
-	if (isButtonActive(buttonElement)) {
-		buttonElement.removeAttribute(SELECTED_ATTRIBUTE_NAME);
-	} else {
-		buttonElement.setAttribute(SELECTED_ATTRIBUTE_NAME, 'true');
-	}
-}
-
 @customElement('vwc-button-toggle-group')
 export class VWCButtonToggleGroup extends LitElement {
 	/**
@@ -98,9 +90,7 @@ export class VWCButtonToggleGroup extends LitElement {
 			values = [values[0]];
 		}
 		this.items.forEach((child) => {
-			values.includes(child.getAttribute('value')) ?
-				child.setAttribute(SELECTED_ATTRIBUTE_NAME, '') :
-				child.removeAttribute(SELECTED_ATTRIBUTE_NAME);
+			this.toggleButtonSelectedState(child, values.includes(child.getAttribute('value')));
 		});
 	}
 
@@ -146,7 +136,7 @@ export class VWCButtonToggleGroup extends LitElement {
 
 	protected override render(): unknown {
 		return html`
-			<slot></slot>`;
+			<div class="button-toggle-group"><slot></slot></div>`;
 	}
 
 	private toggleChildrenDisabledState() {
@@ -181,14 +171,24 @@ export class VWCButtonToggleGroup extends LitElement {
 			this.clearSelection(buttonElement);
 		}
 		if (this.isButtonValidForToggle(buttonElement)) {
-			toggleButton(buttonElement);
+			this.toggleButtonSelectedState(buttonElement, !isButtonActive(buttonElement));
 			this.dispatchToggleEvent();
 		}
 	}
 
 	private setNodeAttributes(buttonElement: Element) {
-		buttonElement.setAttribute('layout', 'filled');
+		this.toggleButtonSelectedState(buttonElement, isButtonActive(buttonElement));
 		this.toggleChildDisabledState(buttonElement);
+	}
+
+	private toggleButtonSelectedState(buttonElement: Element, isSelected: boolean) {
+		if (isSelected) {
+			buttonElement.setAttribute('layout', 'filled');
+			buttonElement.setAttribute(SELECTED_ATTRIBUTE_NAME, '');
+		} else {
+			buttonElement.removeAttribute(SELECTED_ATTRIBUTE_NAME);
+			buttonElement.removeAttribute('layout');
+		}
 	}
 
 	private setVwcButtonSize(buttonElement: Element) {
@@ -213,7 +213,7 @@ export class VWCButtonToggleGroup extends LitElement {
 	private clearSelection(buttonElement?: Element) {
 		this.items.forEach((button) => {
 			if (button === buttonElement) return;
-			button.removeAttribute(SELECTED_ATTRIBUTE_NAME);
+			this.toggleButtonSelectedState(button, false);
 		});
 	}
 
