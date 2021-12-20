@@ -1,5 +1,6 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
+import '@material/mwc-ripple/mwc-ripple';
 import {
 	customElement,
 	eventOptions,
@@ -8,7 +9,6 @@ import {
 	queryAsync,
 	TemplateResult
 } from 'lit-element';
-// import '@material/mwc-ripple/mwc-ripple';
 import type { Ripple } from '@material/mwc-ripple';
 import { RippleHandlers } from '@material/mwc-ripple/ripple-handlers.js';
 import { VWCExpansionPanelBase } from './vwc-expansion-panel-base.js';
