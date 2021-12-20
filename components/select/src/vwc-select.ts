@@ -14,8 +14,9 @@ import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupl
 import { style as vwcSelectStyle } from './vwc-select.css.js';
 import { styles as mwcSelectStyles } from '@material/mwc-select/mwc-select.css.js';
 import { associateWithForm } from '@vonage/vvd-foundation/form-association.js';
-import type { Shape } from '@vonage/vvd-foundation/constants.js';
+import type { Shape, Appearance } from '@vonage/vvd-foundation/constants.js';
 import { handleAutofocus } from '@vonage/vvd-foundation/general-utils.js';
+//import {ClassInfo, classMap} from 'lit-html/directives/class-map';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -31,11 +32,14 @@ MWCSelect.styles = [styleCoupling, mwcSelectStyles, vwcSelectStyle];
 
 type SelectShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
 
+type SelectAppearance = Extract<Appearance, Appearance.Ghost | Appearance.Filled>;
+
 /**
  * This component is an extension of [<mwc-select>](https://github.com/material-components/material-components-web-components/tree/master/packages/select)
  */
 @customElement('vwc-select')
 export class VWCSelect extends MWCSelect {
+
 	@property({ type: Boolean, reflect: true })
 		dense = false;
 
@@ -50,6 +54,16 @@ export class VWCSelect extends MWCSelect {
 
 	@property({ type: Boolean, reflect: true, attribute: 'ghost' })
 		ghost = false;
+
+	@property({ type: String, reflect: true })
+		appearance?: SelectAppearance;
+
+	protected getRenderClasses() {
+		return {
+			[`appearance-${this.appearance}`]: !!this.appearance,
+		};
+	}
+
 
 	override connectedCallback(): void {
 		super.connectedCallback();
@@ -70,6 +84,7 @@ export class VWCSelect extends MWCSelect {
 		if (this.shape === 'pill' || this.ghost) {
 			this.dense = true;
 		}
+		//class = `layout-${this.appearance}`: !!this.appearance;
 	}
 
 	protected override updated(changedProperties: PropertyValues): void {

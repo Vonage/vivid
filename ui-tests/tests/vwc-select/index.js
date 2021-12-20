@@ -5,7 +5,7 @@ import '@vonage/vwc-list/vwc-list-item.js';
 export async function createElementVariations(wrapper) {
 	const textElementWrapper = document.createElement('div');
 	textElementWrapper.innerHTML = `
-	<vwc-select label="VWC Select with long text" helper="Helper Text" >
+	<vwc-select label="VWC Select with long text" helper="Helper Text" appearance="filled">
   <vwc-list-item
     mwc-list-item=""
     tabindex="0"

@@ -41,6 +41,14 @@ export enum Layout {
 	Ghost = 'ghost',
 }
 
+export enum Appearance {
+	Ghost = 'ghost',
+	Filled = 'filled',
+	Outlined = 'outlined',
+	FilledSoft = 'soft',
+}
+
+
 export enum IconSize {
 	Small = 'small',
 	Medium = 'medium',
