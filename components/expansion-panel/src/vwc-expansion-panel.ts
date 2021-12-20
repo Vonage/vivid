@@ -1,6 +1,6 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
-import '@material/mwc-ripple/mwc-ripple';
+import '@material/mwc-ripple/mwc-ripple.js';
 import {
 	customElement,
 	eventOptions,
