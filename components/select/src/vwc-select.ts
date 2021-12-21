@@ -16,7 +16,6 @@ import { styles as mwcSelectStyles } from '@material/mwc-select/mwc-select.css.j
 import { associateWithForm } from '@vonage/vvd-foundation/form-association.js';
 import type { Shape, Layout } from '@vonage/vvd-foundation/constants.js';
 import { handleAutofocus } from '@vonage/vvd-foundation/general-utils.js';
-//import {ClassInfo, classMap} from 'lit-html/directives/class-map';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -32,7 +31,7 @@ MWCSelect.styles = [styleCoupling, mwcSelectStyles, vwcSelectStyle];
 
 type SelectShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
 
-type SelectLayout = Extract<Layout, Layout.Ghost | Layout.Filled>;
+type SelectLayout = Extract<Layout, Layout.Ghost | Layout.Outlined>;
 
 /**
  * This component is an extension of [<mwc-select>](https://github.com/material-components/material-components-web-components/tree/master/packages/select)
@@ -52,17 +51,8 @@ export class VWCSelect extends MWCSelect {
 	@property({ type: String, reflect: true })
 		name: string | undefined;
 
-	@property({ type: Boolean, reflect: true, attribute: 'ghost' })
-		ghost = false;
-
 	@property({ type: String, reflect: true })
 		appearance?: SelectLayout;
-
-	protected getRenderClasses() {
-		return {
-			[`appearance-${this.appearance}`]: !!this.appearance,
-		};
-	}
 
 
 	override connectedCallback(): void {
@@ -81,10 +71,9 @@ export class VWCSelect extends MWCSelect {
 
 	protected override update(changedProperties: PropertyValues): void {
 		super.update(changedProperties);
-		if (this.shape === 'pill' || this.ghost) {
+		if (this.shape === 'pill' || this.appearance === 'ghost') {
 			this.dense = true;
 		}
-		//class = `layout-${this.appearance}`: !!this.appearance;
 	}
 
 	protected override updated(changedProperties: PropertyValues): void {

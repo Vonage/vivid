@@ -1,4 +1,5 @@
 import '../vwc-select.js';
+import '../vwc-select.js';
 import '@vonage/vwc-list/vwc-list-item.js';
 import {
 	textToDomToParent,
@@ -470,7 +471,7 @@ describe('select', () => {
 	});
 
 	describe(`ghost`, function () {
-		it(`should set dense to true if ghost is set`, async function () {
+		it(`should set dense to true if appearance is ghost`, async function () {
 			const [select] = addElement(
 				textToDomToParent(`
    <${COMPONENT_NAME}>
@@ -483,7 +484,7 @@ describe('select', () => {
 
 			const denseValueBeforeGhost = select.dense;
 
-			select.ghost = true;
+			select.appearance = 'ghost';
 			await select.updateComplete;
 			const denseValueAfterGhost = select.dense;
 

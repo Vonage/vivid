@@ -188,6 +188,7 @@ vwc-notched-outline {
 	--mdc-notched-outline-border-color: var(
 		--mdc-select-outlined-idle-border-color
 	);
+
 }
 
 :host(:not([disabled])) .mdc-select.mdc-select--focused vwc-notched-outline,
@@ -206,7 +207,7 @@ vwc-notched-outline {
 	)
 );
 
-:host([ghost][dense]) {
+:host([appearance='ghost'i][dense]) {
 	.mdc-select .mdc-floating-label {
 		left: 0;
 	}

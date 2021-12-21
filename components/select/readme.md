@@ -40,21 +40,22 @@ the text/content within the items is for **labeling** purposes only, should be c
 
 #### Properties
 
-| Property                  | Modifiers | Type                                             | Description                                      |
-|---------------------------|-----------|--------------------------------------------------|--------------------------------------------------|
-| `disabled`                |           | `boolean`                                        |                                                  |
-| `helper`                  |           | `string`                                         |                                                  |
-| `icon`                    |           | `string`                                         |                                                  |
-| `index`                   | readonly  | `number`                                         |                                                  |
-| `items`                   | readonly  | `ListItemBase[]`                                 |                                                  |
-| `label`                   |           | `string`                                         |                                                  |
-| `naturalMenuWidth`        |           | `boolean`                                        |                                                  |
-| `outlined`                |           | `boolean`                                        |                                                  |
-| `required`                |           | `boolean`                                        |                                                  |
-| `selected`                | readonly  | `ListItemBase \| null`                           |                                                  |
-| `validateOnInitialRender` |           | `boolean`                                        |                                                  |
-| `validationMessage`       |           | `string`                                         |                                                  |
-| `value`                   |           | `string`                                         |                                                  |
+| Property                  | Modifiers | Type             | Description     |
+|---------------------------|-----------|------------------|-----------------|
+| `disabled`                |           | `boolean`        |                 |
+| `helper`                  |           | `string`         |                 |
+| `icon`                    |           | `string`         |                 |
+| `index`                   | readonly  | `number`         |                 |
+| `items`                   | readonly  | `ListItemBase[]` |                 |
+| `label`                   |           | `string`         |                 |
+| `naturalMenuWidth`        |           | `boolean`        |                 |
+| `outlined`                |           | `boolean`        |                 |
+| `required`                |           | `boolean`        |                 |
+| `selected`                | readonly  | `ListItemBase \  | null`           |                                                  |
+| `validateOnInitialRender` |           | `boolean`        |                 |
+| `validationMessage`       |           | `string`         |                 |
+| `value`                   |           | `string`         |                 |
+| `appearance`              |           | `ghost`          | no input border |
 
 #### Methods
 
