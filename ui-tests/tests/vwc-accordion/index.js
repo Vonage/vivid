@@ -19,8 +19,13 @@ export async function createElementVariations(wrapper) {
 				Such as: sample messages, subscriber opt-in/out, and the associated numbers you will be sending with these messages.
 			</vwc-expansion-panel>
 
+			<vwc-expansion-panel header="Campaign Details" appearance="outlined">
+				A campaign describes a specific use case and details of the messages you will be sending through it.
+				Such as: sample messages, subscriber opt-in/out, and the associated numbers you will be sending with these messages.
+			</vwc-expansion-panel>
+
 			<vwc-accordion>
-				<vwc-expansion-panel open header="Item 1">lorem ipsum dolor amet</vwc-expansion-panel>
+				<vwc-expansion-panel open header="Item 1" appearance="outlined">lorem ipsum dolor amet</vwc-expansion-panel>
 				<vwc-expansion-panel header="Item 2">lorem ipsum dolor amet</vwc-expansion-panel>
 				<vwc-expansion-panel open header="Item 3">lorem ipsum dolor amet</vwc-expansion-panel>
 				<vwc-expansion-panel header="Item 4">lorem ipsum dolor amet</vwc-expansion-panel>

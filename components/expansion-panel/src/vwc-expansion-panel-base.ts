@@ -4,7 +4,7 @@ import type { Layout } from '@vonage/vvd-foundation/constants.js';
 
 type ExpantionPanelLayout = Extract<
 	Layout,
-	Layout.Filled | Layout.Outlined | Layout.Soft
+	Layout.Outlined
 	>;
 
 export abstract class VWCExpansionPanelBase extends LitElement {
