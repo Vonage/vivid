@@ -22,7 +22,7 @@ jobs:
     name: Build
     runs-on: ubuntu-20.04
     env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.VNG_VVD_PAT }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
