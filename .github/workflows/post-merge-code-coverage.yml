@@ -23,6 +23,8 @@ jobs:
         with:
           node-version: 14
 
+      - run: printf "registry=https://npm.pkg.github.com/Vonage\n_authToken=\${GITHUB_TOKEN}\n//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}\nalways-auth=true" > .npmrc
+
       - name: Install yarn
         run: npm install -g yarn
 
