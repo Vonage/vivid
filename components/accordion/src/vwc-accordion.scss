@@ -8,3 +8,9 @@
 ::slotted(vwc-expansion-panel:not(:only-of-type)) {
 	border-bottom: 1px solid var(#{scheme-variables.$vvd-color-neutral-30});
 }
+
+//disabling the outlined option in vwc-expansion-panel
+::slotted(vwc-expansion-panel) {
+	--border-width: 0;
+	--border-radius: 0;
+}

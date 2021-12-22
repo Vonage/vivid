@@ -1,8 +1,19 @@
 import { LitElement, property } from 'lit-element';
 import { observer } from '@material/mwc-base/observer.js';
+import type { Layout } from '@vonage/vvd-foundation/constants.js';
+
+type ExpantionPanelLayout = Extract<
+	Layout,
+	Layout.Filled | Layout.Outlined | Layout.Soft
+	>;
 
 export abstract class VWCExpansionPanelBase extends LitElement {
+	@property({ type: String, reflect: true })
+		Layout?: ExpantionPanelLayout;
+
 	@property({ type: Boolean, reflect: true })
+
+
 	@observer(function (
 		this: VWCExpansionPanelBase,
 		isOpen: boolean,
