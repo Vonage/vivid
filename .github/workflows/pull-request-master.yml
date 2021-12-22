@@ -30,7 +30,8 @@ jobs:
           node-version: 14
       - name: Push changes
         run: |
-          'fsdf' >> newFileToSave.json
+          echo 'fsdf' > newFileToSave.json
+          git checkout test-push-to-master
           git fetch
           git config user.email "vivid@vonage.com"
           git config user.name "Vivid"
