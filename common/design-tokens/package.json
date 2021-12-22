@@ -9,7 +9,8 @@
 		"*.js",
 		"*.d.ts",
 		"*.js.map",
-		"*.css"
+		"*.css",
+		"build/types"
 	],
 	"repository": {
 		"type": "git",
