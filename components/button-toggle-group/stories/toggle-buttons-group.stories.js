@@ -9,7 +9,10 @@ export default {
 	argTypes
 };
 
-const Template = args => html`<vwc-button-toggle-group ...=${spread(args)}>
+const Template = args => html`
+	<h3 style="margin-top: 0">Basic</h3>
+	<p><code>accent</code> is deprecated. <code>accent</code> has the basic style</p>
+	<vwc-button-toggle-group ...=${spread(args)}>
 	<vwc-button label="Standard"></vwc-button>
 	<vwc-button label="Hybrid"></vwc-button>
 	<vwc-button label="Satellite"></vwc-button>
@@ -18,33 +21,39 @@ const Template = args => html`<vwc-button-toggle-group ...=${spread(args)}>
 export const Basic = Template.bind({});
 Basic.args = { };
 
-const TemplatePilled = args => html`<vwc-button-toggle-group shape="pill" ...=${spread(args)}>
+const TemplatePilled = args => html`
+	<h3 style="margin-top: 0">Pill Shape</h3>
+	<vwc-button-toggle-group  ...=${spread(args)}>
 	<vwc-button label="Standard"></vwc-button>
 	<vwc-button label="Hybrid"></vwc-button>
 	<vwc-button label="Satellite"></vwc-button>
 </vwc-button-toggle-group>`;
 
 export const PillShape = TemplatePilled.bind({});
-PillShape.args = { };
+PillShape.args = {shape: 'pill' };
 
-const TemplateIcons = args => html`<vwc-button-toggle-group ...=${spread(args)}>
-	<vwc-icon-button icon="bullet-list-line"></vwc-icon-button>
-	<vwc-icon-button icon="list-numbered-line"></vwc-icon-button>
-</vwc-button-toggle-group>`;
+const TemplateIcons = args => html`
+	<h3 style="margin-top: 0">Iconed</h3>
+	<div style="display: flex;">
+		<div style="margin-right: 1rem">
+			<vwc-button-toggle-group ...=${spread(args)}>
+				<vwc-icon-button icon="bullet-list-line"></vwc-icon-button>
+				<vwc-icon-button icon="list-numbered-line"></vwc-icon-button>
+			</vwc-button-toggle-group>
+		</div>
+		<vwc-button-toggle-group ...=${spread(args)} shape="pill">
+			<vwc-icon-button icon="bullet-list-line"></vwc-icon-button>
+			<vwc-icon-button icon="list-numbered-line"></vwc-icon-button>
+		</vwc-button-toggle-group>
+	</div>
+	`;
 
 export const Iconed = TemplateIcons.bind({});
 Iconed.args = { };
 
-const AccentTemplate = args => html`<vwc-button-toggle-group accent ...=${spread(args)}>
-	<vwc-button label="Standard"></vwc-button>
-	<vwc-button label="Hybrid"></vwc-button>
-	<vwc-button label="Satellite"></vwc-button>
-</vwc-button-toggle-group>`;
-
-export const Accent = AccentTemplate.bind({});
-Accent.args = { };
-
-const DisabledTemplate = args => html`<vwc-button-toggle-group accent disabled ...=${spread(args)}>
+const DisabledTemplate = args => html`
+	<h3 style="margin-top: 0">Disabled</h3>
+	<vwc-button-toggle-group accent disabled ...=${spread(args)}>
 	<vwc-button selected label="Standard"></vwc-button>
 	<vwc-button label="Hybrid"></vwc-button>
 	<vwc-button label="Satellite"></vwc-button>
@@ -52,9 +61,12 @@ const DisabledTemplate = args => html`<vwc-button-toggle-group accent disabled .
 </vwc-button-toggle-group>`;
 
 export const Disabled = DisabledTemplate.bind({});
-Accent.args = { };
+Disabled.args = { };
 
-const MultiTemplate = args => html`<vwc-button-toggle-group multi>
+const MultiTemplate = args => html`
+	<h3 style="margin-top: 0">Multi</h3>
+	<p>multiple button can be selected</p>
+	<vwc-button-toggle-group multi>
 	<vwc-button label="Standard"></vwc-button>
 	<vwc-button label="Hybrid"></vwc-button>
 	<vwc-icon-button icon="home" selected></vwc-icon-button>
@@ -64,7 +76,10 @@ const MultiTemplate = args => html`<vwc-button-toggle-group multi>
 export const Multi = MultiTemplate.bind({});
 Multi.args = { };
 
-const MandatoryTemplate = args => html`<vwc-button-toggle-group required multi>
+const MandatoryTemplate = args => html`
+	<h3 style="margin-top: 0">Mandatory</h3>
+	<p>one button always selected</p>
+	<vwc-button-toggle-group required multi>
 	<vwc-button label="Standard" selected value="1"></vwc-button>
 	<vwc-button label="Hybrid" value="2"></vwc-button>
 	<vwc-icon-button icon="home" value="3"></vwc-icon-button>
@@ -75,63 +90,92 @@ export const Mandatory = MandatoryTemplate.bind({});
 Mandatory.args = { };
 
 const SizesTemplate = args => html`
-	<h5>Dense</h5>
-	<div style="float: left;"><label>Standard</label>
-	<vwc-button-toggle-group dense shape="pill">
-	<vwc-button label="Standard"></vwc-button>
-	<vwc-button label="Hybrid"></vwc-button>
-	<vwc-icon-button icon="home"></vwc-icon-button>
-	<vwc-button label="Satellite"></vwc-button>
-</vwc-button-toggle-group>
+	<style>
+		.grid-wrapper{
+			display: grid;
+			grid-template-columns: 70px repeat(2 , 420px 200px);
+			gap: 1rem;
+			align-items: center;
+		}
+	</style>
+	<h3 style="margin-top: 0">Sizes</h3>
+	<div class="grid-wrapper">
+		<p style="margin: 0">Dense</p>
+		<vwc-button-toggle-group dense>
+			<vwc-button label="home" selected=""></vwc-button>
+			<vwc-button label="Standard" ></vwc-button>
+			<vwc-button label="Hybrid"></vwc-button>
+			<vwc-button label="Satellite"></vwc-button>
+		</vwc-button-toggle-group>
+		<vwc-button-toggle-group dense >
+			<vwc-icon-button icon="video-solid" selected=""></vwc-icon-button>
+			<vwc-icon-button icon="call-solid"></vwc-icon-button>
+			<vwc-icon-button icon="chat-solid"></vwc-icon-button>
+			<vwc-icon-button icon="microphone-solid"></vwc-icon-button>
+		</vwc-button-toggle-group>
+		<vwc-button-toggle-group dense shape="pill">
+			<vwc-button label="home" selected=""></vwc-button>
+			<vwc-button label="Standard"></vwc-button>
+			<vwc-button label="Hybrid"></vwc-button>
+			<vwc-button label="Satellite"></vwc-button>
+		</vwc-button-toggle-group>
+		<vwc-button-toggle-group dense shape="pill">
+			<vwc-icon-button icon="video-solid" selected=""></vwc-icon-button>
+			<vwc-icon-button icon="call-solid"></vwc-icon-button>
+			<vwc-icon-button icon="chat-solid"></vwc-icon-button>
+			<vwc-icon-button icon="microphone-solid"></vwc-icon-button>
+		</vwc-button-toggle-group>
+		<p style="margin: 0">Normal</p>
+		<vwc-button-toggle-group>
+			<vwc-button label="home" selected=""></vwc-button>
+			<vwc-button label="Standard"></vwc-button>
+			<vwc-button label="Hybrid"></vwc-button>
+			<vwc-button label="Satellite"></vwc-button>
+		</vwc-button-toggle-group>
+		<vwc-button-toggle-group>
+			<vwc-icon-button icon="video-solid" selected=""></vwc-icon-button>
+			<vwc-icon-button icon="call-solid"></vwc-icon-button>
+			<vwc-icon-button icon="chat-solid"></vwc-icon-button>
+			<vwc-icon-button icon="microphone-solid"></vwc-icon-button>
+		</vwc-button-toggle-group>
+		<vwc-button-toggle-group shape="pill">
+			<vwc-button label="home" selected=""></vwc-button>
+			<vwc-button label="Standard"></vwc-button>
+			<vwc-button label="Hybrid"></vwc-button>
+			<vwc-button label="Satellite"></vwc-button>
+		</vwc-button-toggle-group>
+		<vwc-button-toggle-group shape="pill">
+			<vwc-icon-button icon="video-solid" selected=""></vwc-icon-button>
+			<vwc-icon-button icon="call-solid"></vwc-icon-button>
+			<vwc-icon-button icon="chat-solid"></vwc-icon-button>
+			<vwc-icon-button icon="microphone-solid"></vwc-icon-button>
+		</vwc-button-toggle-group>
+		<p style="margin: 0">Enlarged</p>
+		<vwc-button-toggle-group enlarged>
+			<vwc-button label="home" selected=""></vwc-button>
+			<vwc-button label="Standard"></vwc-button>
+			<vwc-button label="Hybrid"></vwc-button>
+			<vwc-button label="Satellite"></vwc-button>
+		</vwc-button-toggle-group>
+		<vwc-button-toggle-group enlarged>
+			<vwc-icon-button icon="video-solid" selected=""></vwc-icon-button>
+			<vwc-icon-button icon="call-solid"></vwc-icon-button>
+			<vwc-icon-button icon="chat-solid"></vwc-icon-button>
+			<vwc-icon-button icon="microphone-solid"></vwc-icon-button>
+		</vwc-button-toggle-group>
+		<vwc-button-toggle-group enlarged shape="pill">
+			<vwc-button label="home" selected=""></vwc-button>
+			<vwc-button label="Standard"></vwc-button>
+			<vwc-button label="Hybrid"></vwc-button>
+			<vwc-button label="Satellite"></vwc-button>
+		</vwc-button-toggle-group>
+		<vwc-button-toggle-group enlarged shape="pill">
+			<vwc-icon-button icon="video-solid" selected=""></vwc-icon-button>
+			<vwc-icon-button icon="call-solid"></vwc-icon-button>
+			<vwc-icon-button icon="chat-solid"></vwc-icon-button>
+			<vwc-icon-button icon="microphone-solid"></vwc-icon-button>
+		</vwc-button-toggle-group>
 	</div>
-	<br style="clear: both;"/>
-		<div style="float: left;"><label>Accent</label>
-	<vwc-button-toggle-group accent dense>
-		<vwc-button label="Standard"></vwc-button>
-		<vwc-button label="Hybrid"></vwc-button>
-		<vwc-icon-button icon="home"></vwc-icon-button>
-		<vwc-button label="Satellite"></vwc-button>
-	</vwc-button-toggle-group>
-		</div>
-	<br style="clear: both;"/>
-<h5>Normal</h5>
-	<div style="float: left;"><label>Standard</label>
-<vwc-button-toggle-group shape="pill">
-	<vwc-button label="Standard"></vwc-button>
-	<vwc-button label="Hybrid"></vwc-button>
-	<vwc-icon-button icon="home"></vwc-icon-button>
-	<vwc-button label="Satellite"></vwc-button>
-</vwc-button-toggle-group>
-	</div>
-	<br style="clear: both;"/>
-	<div style="float: left;"><label>Accent</label>
-	<vwc-button-toggle-group accent>
-		<vwc-button label="Standard"></vwc-button>
-		<vwc-button label="Hybrid"></vwc-button>
-		<vwc-icon-button icon="home"></vwc-icon-button>
-		<vwc-button label="Satellite"></vwc-button>
-	</vwc-button-toggle-group>
-	</div>
-	<br style="clear: both;"/>
-<h5>Enlarged</h5>
-	<div style="float: left;"><label>Standard</label>
-<vwc-button-toggle-group enlarged shape="pill">
-	<vwc-button label="Standard"></vwc-button>
-	<vwc-button label="Hybrid"></vwc-button>
-	<vwc-icon-button icon="home"></vwc-icon-button>
-	<vwc-button label="Satellite"></vwc-button>
-</vwc-button-toggle-group>
-	</div>
-	<br style="clear: both;"/>
-	<div style="float: left;"><label>Accent</label>
-	<vwc-button-toggle-group accent enlarged>
-		<vwc-button label="Standard"></vwc-button>
-		<vwc-button label="Hybrid"></vwc-button>
-		<vwc-icon-button icon="home"></vwc-icon-button>
-		<vwc-button label="Satellite"></vwc-button>
-	</vwc-button-toggle-group>
-	</div>
-	<br style="clear: both;"/>
 `;
 
 export const Sizes = SizesTemplate.bind({});
