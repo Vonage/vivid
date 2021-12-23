@@ -7,7 +7,7 @@ import { computePosition, offset, arrow } from '@floating-ui/dom';
 import type { Placement, Strategy } from '@floating-ui/core';
 export class VWCPopupBase extends LitElement {
 	@query('.popup') protected popupEl!: HTMLElement;
-	@query('.arrow') protected arrowEl!: HTMLElement;
+	@query('.popup-arrow') protected arrowEl!: HTMLElement;
 
 	/**
 	 * @prop open - indicates whether the popup is open
@@ -74,7 +74,7 @@ export class VWCPopupBase extends LitElement {
 	 * @public
 	 * */
 	@property({ type: Boolean, reflect: true })
-		arrow?: true;
+		arrow?: boolean = true;
 
 	protected override firstUpdated(changedProperties: PropertyValues): void {
 		super.firstUpdated(changedProperties);
@@ -110,23 +110,31 @@ export class VWCPopupBase extends LitElement {
 		if (!this.anchor) {
 			return false;
 		}
-		const { x, y } = await computePosition(this.anchor, this.popupEl, {
+		const positionData = await computePosition(this.anchor, this.popupEl, {
 			placement: this.corner,
 			strategy: this.strategy,
 			middleware: [
 				offset(this.distance),
-				arrow({element: this.arrowEl})
+				arrow({element: this.arrowEl}),
 			]
 		});
-		this.assignPosition(x, y);
+		this.assignPosition(positionData);
 		return true;
 	}
 
-	private assignPosition(x: any, y: any): void {
+	private assignPosition(data: any): void {
 		Object.assign(this.popupEl.style, {
-			left: `${x}px`,
-			top: `${y}px`,
+			left: `${data.x}px`,
+			top: `${data.y}px`,
 		});
+
+		if(this.arrow){
+			const {x, y} = data.middlewareData.arrow;
+			Object.assign(this.arrowEl.style, {
+			 		left: x != null ? `${x}px` : '',
+				top: y != null ? `${y}px` : '',
+			});
+		}
 	}
 
 	private renderDismissButton(): TemplateResult | unknown {
