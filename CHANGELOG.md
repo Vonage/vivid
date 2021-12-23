@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.24.0](https://github.com/Vonage/vivid/compare/v2.23.0...v2.24.0) (2021-12-22)
+
+
+### Bug Fixes
+
+* **expansion-panel:** side effect import ripple ([#1154](https://github.com/Vonage/vivid/issues/1154)) ([3e8777f](https://github.com/Vonage/vivid/commit/3e8777fdbaf5aa6fcb69cfa447ffed1c2e92860c))
+
+
+### Features
+
+* **toggle-buttons-group:** new-design ([#1141](https://github.com/Vonage/vivid/issues/1141)) ([9b2a75c](https://github.com/Vonage/vivid/commit/9b2a75c13deb00d4dc2378832b93634a68553f17))
+
+
+
+
+
 # [2.23.0](https://github.com/Vonage/vivid/compare/v2.22.1...v2.23.0) (2021-12-14)
 
 

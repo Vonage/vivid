@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-icon-button",
-	"version": "2.23.0",
+	"version": "2.24.0",
 	"description": "icon button component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/icon-button#readme",
 	"license": "ISC",
@@ -28,16 +28,16 @@
 	"dependencies": {
 		"@material/mwc-icon-button": "^0.22.1",
 		"@material/mwc-ripple": "^0.22.1",
-		"@vonage/vvd-core": "2.23.0",
-		"@vonage/vvd-foundation": "2.23.0",
-		"@vonage/vvd-style-coupling": "2.23.0",
-		"@vonage/vwc-icon": "2.23.0",
+		"@vonage/vvd-core": "2.24.0",
+		"@vonage/vvd-foundation": "2.24.0",
+		"@vonage/vvd-style-coupling": "2.24.0",
+		"@vonage/vwc-icon": "2.24.0",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.3.0"
 	},
 	"devDependencies": {
-		"@vonage/vvd-design-tokens": "2.23.0",
-		"@vonage/vvd-umbrella": "2.23.0",
+		"@vonage/vvd-design-tokens": "2.24.0",
+		"@vonage/vvd-umbrella": "2.24.0",
 		"typescript": "^4.3.2"
 	}
 }
