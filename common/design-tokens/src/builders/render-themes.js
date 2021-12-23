@@ -4,7 +4,7 @@ import StyleDictionaryPackage from 'style-dictionary';
 import fs from 'fs';
 import _ from 'lodash';
 import R from 'ramda';
-import { removeDirSync } from "remove-dir-safe";
+import { removeDirSync } from 'remove-dir-safe';
 
 const
 	propertiesPath = resolve('../../node_modules/@vonage/vvd-design-tokens-properties/dist'),
