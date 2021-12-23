@@ -13,8 +13,6 @@ export abstract class VWCExpansionPanelBase extends LitElement {
 		Layout?: ExpantionPanelLayout;
 
 	@property({ type: Boolean, reflect: true })
-
-
 	@observer(function (
 		this: VWCExpansionPanelBase,
 		isOpen: boolean,
