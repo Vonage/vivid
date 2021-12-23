@@ -37,6 +37,8 @@ jobs:
   publish:
     needs: build
     runs-on: ubuntu-18.04
+    env:
+      GITHUB_TOKEN: ${{ secrets.VNG_VVD_PAT }}
     name: Publishing to ${{ matrix.registry }}
     strategy:
       fail-fast: false

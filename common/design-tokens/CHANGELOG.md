@@ -1,3 +1,16 @@
+## [2.24.1](https://github.com/vonage/vivid/compare/v2.24.0...v2.24.1) (2021-12-23)
+
+
+### Bug Fixes
+
+* **docs:** fix storybook build ([#1166](https://github.com/vonage/vivid/issues/1166)) ([7a8ae89](https://github.com/vonage/vivid/commit/7a8ae89482252b23dcc9bf9a1148e7f568346a88))
+
+
+
+# [2.24.0](https://github.com/vonage/vivid/compare/v2.23.0...v2.24.0) (2021-12-22)
+
+
+
 # [2.23.0](https://github.com/vonage/vivid/compare/v2.22.1...v2.23.0) (2021-12-14)
 
 

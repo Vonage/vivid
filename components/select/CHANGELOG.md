@@ -1,3 +1,16 @@
+## [2.24.1](https://github.com/vonage/vivid/compare/v2.24.0...v2.24.1) (2021-12-23)
+
+
+### Bug Fixes
+
+* **select:** remove extended bg due to padding ([#1168](https://github.com/vonage/vivid/issues/1168)) ([0651e8f](https://github.com/vonage/vivid/commit/0651e8f68c823a045ce2fb1d4ae5b249239dac0d))
+
+
+
+# [2.24.0](https://github.com/vonage/vivid/compare/v2.23.0...v2.24.0) (2021-12-22)
+
+
+
 # [2.23.0](https://github.com/vonage/vivid/compare/v2.22.1...v2.23.0) (2021-12-14)
 
 
