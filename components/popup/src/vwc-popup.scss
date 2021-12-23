@@ -8,7 +8,8 @@
 }
 
 .popup {
-	// display: none;
+	position: absolute; // element must have position: absolute already applied before computePosition() is called, so that its dimensions are read correctly.
+	display: none;
 	min-width: var(#{popup-variables.$popup-min-inline-size}, 100px);
 	max-width: var(#{popup-variables.$popup-max-inline-size}, 350px);
 	background-color: var(#{scheme-variables.$vvd-color-canvas});
@@ -21,7 +22,14 @@
 		display: inline-grid;
 	}
 
-	&.popup-arrow {/**/}
+	&.popup-arrow {
+		//TODO: (For Rachel) update arrow design
+		$arrow-size: 8px;
+		position: absolute;
+		width: $arrow-size;
+		height: $arrow-size;
+		background: inherit;
+	}
 
 	&.popup-dismissible {
 		align-content: start;

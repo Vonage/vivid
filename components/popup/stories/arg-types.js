@@ -7,8 +7,23 @@ export const argTypes = {
     open: {
         control: booleanControl
     },
+    arrow: {
+        control: booleanControl
+    },
+    strategy: {
+        control: {
+            type: 'select',
+            defaultValue: 'absolute',
+            options: ['absolute', 'fixed']
+        }
+    },
     dismissible: {
         control: booleanControl
+    },
+    distance: {
+        control: {
+            type: 'number',
+        }
     },
     corner: {
         control: {

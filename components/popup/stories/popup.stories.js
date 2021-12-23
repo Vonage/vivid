@@ -1,5 +1,7 @@
 import '@vonage/vwc-popup';
 import '@vonage/vwc-button';
+import '@vonage/vwc-text';
+
 import { html } from 'lit-element';
 import { spread } from '@open-wc/lit-helpers';
 import { argTypes } from './arg-types.js';
@@ -23,11 +25,11 @@ const Template = args => html`
 	</style>
 	<div class="popup-wrapper">
 		<vwc-button id="button" layout="outlined" outlined aria-describedby="popup" @click="${onClick}">Click to open popup</vwc-button>
-		<vwc-popup id="popup" ...=${spread(args)}></vwc-popup>
+		<vwc-popup id="popup" ...=${spread(args)}><slot><vwc-text>I'm popup</vwc-text></slot></vwc-popup>
 	</div>`;
 
 export const Basic = Template.bind({});
-Basic.args = { content: 'This is a popup', dismissible: true };
+Basic.args = { open:false };
 
 function onClick() {
 	const popup = document.querySelector("vwc-popup");

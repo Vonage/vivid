@@ -3,10 +3,11 @@ import {
 } from 'lit-element';
 import { ClassInfo, classMap } from 'lit-html/directives/class-map.js';
 import { nothing } from 'lit-html';
-import { computePosition } from '@floating-ui/dom';
-import type { Placement } from '@floating-ui/core';
+import { computePosition, offset, arrow } from '@floating-ui/dom';
+import type { Placement, Strategy } from '@floating-ui/core';
 export class VWCPopupBase extends LitElement {
-	@query('.popup') protected popup!: HTMLElement;
+	@query('.popup') protected popupEl!: HTMLElement;
+	@query('.arrow') protected arrowEl!: HTMLElement;
 
 	/**
 	 * @prop open - indicates whether the popup is open
@@ -33,6 +34,14 @@ export class VWCPopupBase extends LitElement {
 		dismissible?: false;
 
 	/**
+	 * @prop distance - distance offset
+	 * accepts number
+	 * @public
+	 * */
+	 @property({ type: Number, reflect: true })
+	 distance = 10;
+
+	/**
 	 * @prop corner - the placement of the popup
 	 * accepts  | 'top'
 				| 'top-start'
@@ -48,9 +57,16 @@ export class VWCPopupBase extends LitElement {
 				| 'left-end';
 	 * @public
 	 * */
-
 	@property({ type: String, reflect: true })
-		corner: Placement = 'bottom';
+		corner: Placement = 'left';
+
+	/**
+	 * @prop strategy - the position of the popup
+	 * accepts 'absolute' | 'fixed';
+	* @public
+	* */
+	@property({ type: String, reflect: true })
+		strategy: Strategy = 'absolute';
 
 	/**
 	 * @prop arrow - adds small triangle to indicate the trigger element
@@ -58,32 +74,24 @@ export class VWCPopupBase extends LitElement {
 	 * @public
 	 * */
 	@property({ type: Boolean, reflect: true })
-		arrow?: false;
+		arrow?: true;
 
-	override firstUpdated(changedProperties: PropertyValues): void {
+	protected override firstUpdated(changedProperties: PropertyValues): void {
 		super.firstUpdated(changedProperties);
-		if (changedProperties.has('open')) {
-			if (this.open) {
-				this.show();
-			}
-			else {
-				this.hide();
-			}
-		}
+		this.open === true ? this.show() : this.hide();
+	}
+
+	protected override updated(changes: Map<string, boolean>): void {
+		super.updated(changes);
+		this.open === true ? this.show() : this.hide();
 	}
 
 	/**
 	 * Opens the popup
 	 * @public
 	 */
-	show(): void {
-		const positionSucceeded = this.#positionPopup();
-		if (positionSucceeded) {
-			this.open = true;
-		}
-		else{
-			this.hide();
-		}
+	async show(): Promise<void> {
+		await this.updatePosition() ? (this.open = true) : this.hide();
 	}
 
 	/**
@@ -94,36 +102,45 @@ export class VWCPopupBase extends LitElement {
 		this.open = false;
 	}
 
-	#positionPopup(): boolean {
-		let positionSucceeded = false;
-		if (this.anchor && this.popup) {
-			// Then position the popup
-			computePosition(this.anchor, this.popup, { 
-				placement: this.corner,
-				strategy: 'absolute', // 'absolute' by default
-			}).then(({ x, y }) => {
-				Object.assign(this.popup.style, {
-					left: `${x}px`,
-					top: `${y}px`,
-				});
-			});
-			positionSucceeded = true;
+	/**
+	 * Updates popup position, if succeeded returns - true, if not - false
+	 * @public
+	 */
+	async updatePosition() {
+		if (!this.anchor) {
+			return false;
 		}
-		else {
-			console.log('Please provide valid anchor and popup');
-		}
-		return positionSucceeded;
+		const { x, y } = await computePosition(this.anchor, this.popupEl, {
+			placement: this.corner,
+			strategy: this.strategy,
+			middleware: [
+				offset(this.distance),
+				arrow({element: this.arrowEl})
+			]
+		});
+		this.assignPosition(x, y);
+		return true;
 	}
 
-	#renderDismissButton(): TemplateResult | unknown {
+	private assignPosition(x: any, y: any): void {
+		Object.assign(this.popupEl.style, {
+			left: `${x}px`,
+			top: `${y}px`,
+		});
+	}
+
+	private renderDismissButton(): TemplateResult | unknown {
 		return this.dismissible
 			? html`<vwc-icon-button class="popup-dismissible" icon="close-small-solid" shape="circled" dense></vwc-icon-button>`
 			: nothing;
 	}
 
+	private renderArrow(): TemplateResult | unknown {
+		return this.arrow ? html`<div class="popup-arrow"></div>`: nothing;
+	}
+
 	protected getRenderClasses(): ClassInfo {
 		return {
-			['popup-arrow']: !!this.arrow,
 			['popup-open']: !!this.open
 		};
 	}
@@ -131,9 +148,10 @@ export class VWCPopupBase extends LitElement {
 	protected override render(): TemplateResult {
 		return html`
 			<!-- TODO: role="?"-->
-			<div class="popup ${classMap(this.getRenderClasses())}" aria-hidden=${this.open ? 'false' : 'true' }>
+			<div class="popup ${classMap(this.getRenderClasses())}" aria-hidden=${this.open ? 'false' : 'true'}>
 				<slot></slot>
-				${this.#renderDismissButton()}
+				${this.renderDismissButton()}
+				${this.renderArrow()}
 			</div>
 		`;
 	}
