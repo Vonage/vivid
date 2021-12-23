@@ -30,7 +30,6 @@ const DROPDOWN_ICON_CLASS = 'vvd-select-dropdown-icon';
 MWCSelect.styles = [styleCoupling, mwcSelectStyles, vwcSelectStyle];
 
 type SelectShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
-
 type SelectLayout = Extract<Layout, Layout.Ghost | Layout.Outlined>;
 
 /**
@@ -38,7 +37,6 @@ type SelectLayout = Extract<Layout, Layout.Ghost | Layout.Outlined>;
  */
 @customElement('vwc-select')
 export class VWCSelect extends MWCSelect {
-
 	@property({ type: Boolean, reflect: true })
 		dense = false;
 

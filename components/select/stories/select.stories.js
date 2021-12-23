@@ -45,18 +45,8 @@ const TemplateGhost = args => html`
 	<vwc-list-item value="3">Item 3</vwc-list-item>
 </vwc-select`;
 
-export const GhostLayoutAutoDense1 = TemplateGhost.bind({});
-GhostLayoutAutoDense1.args = { appearance: 'ghost', label: 'VWC Select' };
-
-
-export const GhostLayoutAutoDense = Template.bind({});
+export const GhostLayoutAutoDense = TemplateGhost.bind({});
 GhostLayoutAutoDense.args = { appearance: 'ghost', label: 'VWC Select' };
-
-
-
-
-
-
 
 export const Disabled = Template.bind({});
 Disabled.args = { disabled: '', label: 'VWC Select', helper: 'Helper Text' };
