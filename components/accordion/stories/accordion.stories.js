@@ -32,6 +32,18 @@ const TemplateOutlined = args => html`
 export const OutlinedExpansionPanel = TemplateOutlined.bind({});
 OutlinedExpansionPanel.args = {};
 
+const TemplateOutlinedBase = args => html`
+	<div style="width: 500px">
+		<vwc-elevation style="--vvd-elevation-border-radius: 6px">
+		<vwc-expansion-panel header="Expansion Panel inside elevation">
+			<div>This is a POC. We will fix the elevation tokens and then there will be a border expansion alternative</div>
+		</vwc-expansion-panel>
+		</vwc-elevation>
+	</div>
+`
+
+export const ElevatedExpansionPanel = TemplateOutlinedBase.bind({});
+ElevatedExpansionPanel.args = {};
 
 export const Basic = Template.bind({});
 
