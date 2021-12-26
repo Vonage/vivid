@@ -139,7 +139,7 @@ export class VWCPopupBase extends LitElement {
 
 	private renderDismissButton(): TemplateResult | unknown {
 		return this.dismissible
-			? html`<vwc-icon-button class="popup-dismissible" icon="close-small-solid" shape="circled" dense></vwc-icon-button>`
+			? html`<vwc-icon-button class="popup-dismissible-button" icon="close-small-solid" shape="circled" dense></vwc-icon-button>`
 			: nothing;
 	}
 
@@ -149,7 +149,8 @@ export class VWCPopupBase extends LitElement {
 
 	protected getRenderClasses(): ClassInfo {
 		return {
-			['popup-open']: !!this.open
+			['popup-open']: !!this.open,
+			['popup-dismissible']: !!this.dismissible
 		};
 	}
 
