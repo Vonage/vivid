@@ -53,6 +53,7 @@ export async function createElementVariations(wrapper) {
   </vwc-list-item>
 </vwc-select>
 <hr>
+<div style="background-color: rebeccapurple">
 	<vwc-select label="VWC Select" helper="Helper Text" dense>
   <vwc-list-item
     mwc-list-item=""
@@ -100,6 +101,7 @@ export async function createElementVariations(wrapper) {
     Item 3
   </vwc-list-item>
 </vwc-select de>
+</div>
 <hr>
 <div style="display: flex; align-items: flex-start;">
 <p style="margin: 0; padding-right: 1rem;">Dense-with label</p>

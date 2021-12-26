@@ -11,16 +11,17 @@ jobs:
   prepare-verify:
     runs-on: ubuntu-latest
     env:
-      GITHUB_TOKEN: ${{ secrets.VNG_VVD_PAT }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
           ref: master
+          token: ${{ secrets.VNG_VVD_PAT }}
 
-      - name: Writing .npmrc
-        run: printf "registry=https://npm.pkg.github.com/Vonage\n_authToken=\${GITHUB_TOKEN}\n//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}\nalways-auth=true" > .npmrc
+      - run: printf "registry=https://npm.pkg.github.com/Vonage\n_authToken=\${GITHUB_TOKEN}\n//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}\nalways-auth=true" > .npmrc
 
       - name: Use Node.js 14
         uses: actions/setup-node@v2

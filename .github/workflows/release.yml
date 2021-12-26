@@ -37,6 +37,8 @@ jobs:
   publish:
     needs: build
     runs-on: ubuntu-18.04
+    env:
+      GITHUB_TOKEN: ${{ secrets.VNG_VVD_PAT }}
     name: Publishing to ${{ matrix.registry }}
     strategy:
       fail-fast: false
@@ -103,16 +105,3 @@ jobs:
 
       - name: Invalidate CloudFront distribution root object's cache
         run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_VIVID_DEMO_PROD_DISTRIBUTION }} --paths "/"
-
-  announcements:
-    name: Announcements
-    needs: publish
-    runs-on: ubuntu-18.04
-    steps:
-      - name: Checkout Project
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-      - run: npm i lodash split kefir minimist semver-diff
-      - name: Send message to Slack's "Vivid Engineering" channel
-        run: git log --format=oneline --decorate=short | node ./scripts/release_announcer --slackHookUrl="${{ secrets.SLACK_WEBHOOK }}"

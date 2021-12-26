@@ -115,7 +115,7 @@ $vvd-select-size-block: --vvd-select-size-block;
 			transform: none;
 		}
 		&:not(.mdc-select--no-label) {
-			padding-top: 24px;
+			margin-top: 24px;
 		}
 	}
 	#{$vvd-select-size-block}: 40px;
