@@ -156,9 +156,13 @@ export class VWCPopupBase extends LitElement {
 		});
 	}
 
+	private handleClick():void {
+		this.hide();
+	}
+
 	private renderDismissButton(): TemplateResult | unknown {
 		return this.dismissible
-			? html`<vwc-icon-button class="popup-dismissible-button" icon="close-small-solid" shape="circled" dense></vwc-icon-button>`
+			? html`<vwc-icon-button @click=${this.handleClick} class="popup-dismissible-button" icon="close-small-solid" shape="circled" dense></vwc-icon-button>`
 			: nothing;
 	}
 
