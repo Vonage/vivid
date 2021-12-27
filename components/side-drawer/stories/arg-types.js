@@ -18,9 +18,10 @@ export const argTypes = {
 		}
 	},
 	type: {
+		defaultValue: 'dismissible',
 		control: {
 			type: 'select',
-			options: ['', 'modal', 'dismissible'],
+			options: ['dismissible', 'modal'],
 		}
 	},
 	hasTopBar: {

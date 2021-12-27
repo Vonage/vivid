@@ -12,7 +12,7 @@ export default {
 	argTypes
 };
 
-const SideDrawerTemplate = args => html`
+const Template = args => html`
 <style>
 	.sb-show-main.sb-main-padded {
   		padding: 0;
@@ -63,11 +63,20 @@ const SideDrawerTemplate = args => html`
 </vwc-side-drawer>`;
 
 
-export const Dismissible = SideDrawerTemplate.bind({});
+export const Dismissible = Template.bind({});
 Dismissible.args = { type: 'dismissible', open: true };
 
-export const Modal = SideDrawerTemplate.bind({});
+export const Modal = Template.bind({});
 Modal.args = { type: 'modal', open: true };
+
+export const Alternate = Template.bind({});
+Alternate.args = { alternate: true, open: true };
+
+export const TopBar = Template.bind({});
+TopBar.args = { hasTopBar: true, open: true };
+
+export const PositionEnd = Template.bind({});
+PositionEnd.args = { position: 'end', open: true };
 
 let prevActivatedItem;
 function onClick(e) {
