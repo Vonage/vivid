@@ -74,6 +74,9 @@ export class VWCButton extends MWCButton {
 	@property({ attribute: 'form', reflect: true })
 		formId: string | null = null;
 
+	@property({ type: Boolean, reflect: true })
+		stacked = false;
+
 	#_hiddenButton: HTMLButtonElement = VWCButton.createHiddenButton();
 
 	protected updateFormAndButton(): void {
@@ -164,7 +167,8 @@ export class VWCButton extends MWCButton {
 			'mdc-button--outlined': this.outlined,
 			'mdc-button--dense': this.dense,
 			[`connotation-${this.connotation}`]: !!this.connotation,
-			[`layout-${this.layout}`]: !!this.layout
+			[`layout-${this.layout}`]: !!this.layout,
+			'button-stacked': this.stacked,
 		});
 	}
 

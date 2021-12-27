@@ -125,3 +125,7 @@
 		pill: 24px,
 	)
 );
+
+.mdc-button.button-stacked {
+	flex-direction: column;
+}
