@@ -56,6 +56,9 @@ describe('side-drawer', () => {
 			expect(actualElement.position, 'position should be undefined')
 				.to
 				.equal(undefined);
+			expect(actualElement.type, 'type should be dismissible')
+				.to
+				.equal("dismissible");
 		});
 	});
 
@@ -74,7 +77,7 @@ describe('side-drawer', () => {
 		});
 
 		it('should reflect (type) from attribute to property', async () => {
-			const COMPONENT_TYPES = ['', 'dismissible', 'modal'];
+			const COMPONENT_TYPES = ['dismissible', 'modal'];
 			for await (const type of COMPONENT_TYPES) {
 				const [actualElement] = addElement(
 					textToDomToParent(`<${COMPONENT_NAME} type=${type}></${COMPONENT_NAME}>`)
