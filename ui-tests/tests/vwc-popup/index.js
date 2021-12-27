@@ -17,7 +17,7 @@ export async function createElementVariations(wrapper) {
 		</style>
 		<div class="popup-wrapper">
 			<vwc-button id="button" layout="outlined" outlined aria-describedby="popup">Click to open popup</vwc-button>
-			<vwc-popup id="popup" corner="right" arrow><slot><vwc-text>I'm popup</vwc-text></slot></vwc-popup>
+			<vwc-popup id="popup" corner="top" arrow dismissible><slot><vwc-text>I'm popup</vwc-text></slot></vwc-popup>
 		</div>`;
 
 	wrapper.appendChild(textElementWrapper);
