@@ -1,5 +1,6 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use 'partials/vwc-popup-variables' as popup-variables;
+@use '@vonage/vvd-typography/scss/typography' as typography;
 
 :host {
 	//z-index: 7 to overcome the 6 of the vwc-side-drawer
@@ -8,9 +9,12 @@
 }
 
 .popup {
-	position: absolute; // element must have position: absolute already applied before computePosition() is called, so that its dimensions are read correctly.
+	@include typography.typography-cat-shorthand(body-1);
+	position: absolute;
 	display: none;
-	background-color: var(#{scheme-variables.$vvd-color-canvas});
+	align-items: center;
+	padding: 5px;
+	background: var(#{scheme-variables.$vvd-color-canvas});
 	border-radius: 6px;
 	color: var(#{scheme-variables.$vvd-color-on-canvas});
 	contain: layout;
@@ -22,44 +26,17 @@
 
 	&-dismissible {
 		align-content: start;
-		align-items: flex-start;
 		grid-template-columns: 1fr auto;
 	}
 	&-dismissible-button {
 		align-self: flex-start;
-		margin: 0.125rem;
 	}
 }
-
 
 .popup-arrow {
-	visibility: hidden;
-	&::before {
-		z-index: -1;
-		content: '';
-		transform: rotate(45deg);
-		visibility: visible;
-
-	}
-}
-.popup-arrow,
-.popup-arrow::before {
-	$arrow-size: 8px;
 	position: absolute;
-	width: $arrow-size;
-	height: $arrow-size;
+	width: 8px;
+	height: 8px;
 	background: inherit;
-}
-
-$tail-position: (
-	top: bottom,
-	bottom: top,
-	left: right,
-	right: left,
-);
-
-@each $key, $value in $tail-position {
-	.popup-arrow[data-placement^=#{$key}] {
-		#{$value}: -4px;
-	}
+	transform: rotate(45deg);
 }

@@ -3,11 +3,12 @@ import {
 } from 'lit-element';
 import { ClassInfo, classMap } from 'lit-html/directives/class-map.js';
 import { nothing } from 'lit-html';
-import { computePosition, offset, arrow } from '@floating-ui/dom';
-import type { Placement, Strategy } from '@floating-ui/core';
+import { computePosition, offset, shift, flip, arrow } from '@floating-ui/dom';
+import type { Placement, Strategy, Padding } from '@floating-ui/core';
 export class VWCPopupBase extends LitElement {
 	@query('.popup') protected popupEl!: HTMLElement;
 	@query('.popup-arrow') protected arrowEl!: HTMLElement;
+	protected padding: Padding = 6;
 
 	/**
 	 * @prop open - indicates whether the popup is open
@@ -38,8 +39,8 @@ export class VWCPopupBase extends LitElement {
 	 * accepts number
 	 * @public
 	 * */
-	 @property({ type: Number, reflect: true })
-	 distance = 10;
+	@property({ type: Number, reflect: true })
+		distance = 10;
 
 	/**
 	 * @prop corner - the placement of the popup
@@ -114,27 +115,45 @@ export class VWCPopupBase extends LitElement {
 			placement: this.corner,
 			strategy: this.strategy,
 			middleware: [
+				flip(),
+				shift({ padding: this.padding }),
 				offset(this.distance),
-				arrow({element: this.arrowEl}),
+				arrow({
+					element: this.arrowEl,
+					padding: this.padding
+				}),
 			]
 		});
-		this.assignPosition(positionData);
+		this.assignPopupPosition(positionData);
+		if (this.arrow) {
+			this.assignArrowPosition(positionData.placement, positionData.middlewareData.arrow);
+		}
 		return true;
 	}
 
-	private assignPosition(data: any): void {
+	private assignPopupPosition(data: any): void {
 		Object.assign(this.popupEl.style, {
 			left: `${data.x}px`,
 			top: `${data.y}px`,
 		});
+	}
 
-		if(this.arrow){
-			const {x, y} = data.middlewareData.arrow;
-			Object.assign(this.arrowEl.style, {
-			 		left: x != null ? `${x}px` : '',
-				top: y != null ? `${y}px` : '',
-			});
-		}
+	private assignArrowPosition(placementData: any, arrowData: any): void {
+		const { x: arrowX, y: arrowY } = arrowData;
+		const staticSide: any = {
+			top: 'bottom',
+			right: 'left',
+			bottom: 'top',
+			left: 'right',
+		};
+		const side: string = staticSide[placementData.split('-')[0]];
+		Object.assign(this.arrowEl.style, {
+			left: arrowX != null ? `${arrowX}px` : '',
+			top: arrowY != null ? `${arrowY}px` : '',
+			right: '',
+			bottom: '',
+			[side]: '-4px',
+		});
 	}
 
 	private renderDismissButton(): TemplateResult | unknown {
@@ -144,7 +163,7 @@ export class VWCPopupBase extends LitElement {
 	}
 
 	private renderArrow(): TemplateResult | unknown {
-		return this.arrow ? html`<div class="popup-arrow"></div>`: nothing;
+		return this.arrow ? html`<div class="popup-arrow"></div>` : nothing;
 	}
 
 	protected getRenderClasses(): ClassInfo {

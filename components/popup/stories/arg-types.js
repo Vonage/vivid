@@ -28,11 +28,8 @@ export const argTypes = {
     corner: {
         control: {
             type: 'select',
-            defaultValue: 'auto',
-            options: ['auto'
-                , 'auto-start'
-                , 'auto-end'
-                , 'top'
+            defaultValue: 'right',
+            options: [ 'top'
                 , 'top-start'
                 , 'top-end'
                 , 'bottom'
