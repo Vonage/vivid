@@ -111,22 +111,27 @@ export class VWCPopupBase extends LitElement {
 		if (!this.anchor) {
 			return false;
 		}
-		const positionData = await computePosition(this.anchor, this.popupEl, {
-			placement: this.corner,
-			strategy: this.strategy,
-			middleware: [
-				flip(),
-				shift({ padding: this.padding }),
-				offset(this.distance),
-				arrow({
-					element: this.arrowEl,
-					padding: this.padding
-				}),
-			]
-		});
-		this.assignPopupPosition(positionData);
-		if (this.arrow) {
-			this.assignArrowPosition(positionData.placement, positionData.middlewareData.arrow);
+		try	{
+			const positionData = await computePosition(this.anchor, this.popupEl, {
+				placement: this.corner,
+				strategy: this.strategy,
+				middleware: [
+					flip(),
+					shift({ padding: this.padding }),
+					offset(this.distance),
+					arrow({
+						element: this.arrowEl,
+						padding: this.padding
+					}),
+				]
+			});
+			this.assignPopupPosition(positionData);
+			if (this.arrow) {
+				this.assignArrowPosition(positionData.placement, positionData.middlewareData.arrow);
+			}
+		}
+		catch(e){
+			return false;
 		}
 		return true;
 	}
