@@ -182,9 +182,8 @@ describe('side-drawer', () => {
 				});
 			});
 
-			const keyboardEvent = new KeyboardEvent('keydown', { key: 'Escape' });
-			document.dispatchEvent(keyboardEvent);
-
+			sideDrawerEl.hide();
+		
 			animateDrawer(sideDrawerEl);
 
 			await eventListenerPromise;

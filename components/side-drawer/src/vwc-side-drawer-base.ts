@@ -91,15 +91,9 @@ export class VWCSideDrawerBase extends LitElement {
 		this.open = false;
 	}
 
-	override connectedCallback(): void {
-		super.connectedCallback();
-		document.addEventListener('keydown', this.#handleKeydown);
-	}
-
 	override disconnectedCallback(): void {
 		super.disconnectedCallback();
 		this.#releaseFocusTrap();
-		document.removeEventListener('keydown', this.#handleKeydown);
 	}
 
 	protected override render(): TemplateResult {
@@ -120,7 +114,7 @@ export class VWCSideDrawerBase extends LitElement {
 
 		return html`
 			<aside part="${ifDefined(alternate)}" class="side-drawer ${classMap(classes)}"
-				@transitionend=${this.#handleTransitionEnd}>
+				@transitionend=${this.#handleTransitionEnd} @keydown=${this.#handleKeydown}>
 			
 				${topBar}
 			
