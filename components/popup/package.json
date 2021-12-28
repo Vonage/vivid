@@ -37,8 +37,9 @@
 		"@floating-ui/core": "^0.2.1"
 	},
 	"devDependencies": {
-		"@vonage/vvd-typography": "2.22.1",
-		"@vonage/vvd-umbrella": "2.22.1",
+		"@vonage/vvd-design-tokens": "2.24.1",
+		"@vonage/vvd-typography": "2.24.1",
+		"@vonage/vvd-umbrella": "2.24.1",
 		"typescript": "^4.3.2"
 	}
 }
