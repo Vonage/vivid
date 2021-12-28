@@ -26,7 +26,7 @@ $vvd-elevation-border-radius: --vvd-elevation-border-radius;
 }
 
 .vwc-elevation {
-	display: inline-block;
+	width: fit-content;
 	border-radius: var(#{$vvd-elevation-border-radius}, 0);
 	contain: content;
 }
