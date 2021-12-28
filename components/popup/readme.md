@@ -14,9 +14,7 @@ To trigger the Popup, it should be paired with an anchor (e.g., a button).
 | `dismissible` | `dismissible` | `false \| undefined`   |            |
 | `distance`    | `distance`    | `number`               | 10         |
 | `open`        | `open`        | `boolean`              | false      |
-| `override`    |               |                        |            |
 | `strategy`    | `strategy`    | `Strategy`             | "absolute" |
-| `styles`      |               | `CSSResult`            | "style"    |
 
 ## Methods
 
