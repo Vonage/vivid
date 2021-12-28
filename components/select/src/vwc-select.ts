@@ -14,7 +14,7 @@ import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupl
 import { style as vwcSelectStyle } from './vwc-select.css.js';
 import { styles as mwcSelectStyles } from '@material/mwc-select/mwc-select.css.js';
 import { associateWithForm } from '@vonage/vvd-foundation/form-association.js';
-import type { Shape } from '@vonage/vvd-foundation/constants.js';
+import type { Shape, Layout } from '@vonage/vvd-foundation/constants.js';
 import { handleAutofocus } from '@vonage/vvd-foundation/general-utils.js';
 
 declare global {
@@ -30,6 +30,7 @@ const DROPDOWN_ICON_CLASS = 'vvd-select-dropdown-icon';
 MWCSelect.styles = [styleCoupling, mwcSelectStyles, vwcSelectStyle];
 
 type SelectShape = Extract<Shape, Shape.Rounded | Shape.Pill>;
+type SelectLayout = Extract<Layout, Layout.Ghost | Layout.Outlined>;
 
 /**
  * This component is an extension of [<mwc-select>](https://github.com/material-components/material-components-web-components/tree/master/packages/select)
@@ -48,8 +49,9 @@ export class VWCSelect extends MWCSelect {
 	@property({ type: String, reflect: true })
 		name: string | undefined;
 
-	@property({ type: Boolean, reflect: true, attribute: 'ghost' })
-		ghost = false;
+	@property({ type: String, reflect: true })
+		appearance?: SelectLayout;
+
 
 	override connectedCallback(): void {
 		super.connectedCallback();
@@ -67,7 +69,7 @@ export class VWCSelect extends MWCSelect {
 
 	protected override update(changedProperties: PropertyValues): void {
 		super.update(changedProperties);
-		if (this.shape === 'pill' || this.ghost) {
+		if (this.shape === 'pill' || this.appearance === 'ghost') {
 			this.dense = true;
 		}
 	}
