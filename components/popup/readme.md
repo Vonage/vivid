@@ -1,33 +1,27 @@
 # vwc-popup
-`vwc-popup` are for elements that are displayed on top of all other web app UI such as action menus, form element suggestions, content pickers ext.
 
-## Accessibility
-
+Popup are used to display a message or notification to the user and are displayed on top of all other web page elements.
+Popup's goal is to provide additional, helpful content.   
+To trigger the Popup, it should be paired with an anchor (e.g., a button).
 
 ## Properties
 
-| Property      | Attribute     | Type                   | Default |
-| ------------- | ------------- | ---------------------- | ------- |
-| `dismissible` | `dismissible` | `boolean \| undefined` |         |
-| `distance`    | `distance`    | `number`               | 10      |
-| `open`        | `open`        | `boolean`              | false   |
-| `override`    |               |                        |         |
-| `corner`      | `corner`      | `corner`               | "auto"  |
-| `styles`      |               | `CSSResult`            | "style" |
+| Property      | Attribute     | Type                   | Default    |
+|---------------|---------------|------------------------|------------|
+| `anchor`      | `anchor`      | `Element \| undefined` |            |
+| `arrow`       | `arrow`       | `boolean \| undefined` | true       |
+| `corner`      | `corner`      | `Placement`            | "left"     |
+| `dismissible` | `dismissible` | `false \| undefined`   |            |
+| `distance`    | `distance`    | `number`               | 10         |
+| `open`        | `open`        | `boolean`              | false      |
+| `override`    |               |                        |            |
+| `strategy`    | `strategy`    | `Strategy`             | "absolute" |
+| `styles`      |               | `CSSResult`            | "style"    |
 
 ## Methods
 
-| Method | Type       | Description      |
-| ------ | ---------- | ---------------- |
-| `hide` | `(): void` | Closes the popup |
-| `show` | `(): void` | Opens the popup  |
-
-
-## CSS Custom Properties
-
-| Property                  | Default | Description                              |
-| ------------------------- | ------- | ---------------------------------------- |
-| `--popup-min-inline-size` | 100px   | Controls the the min-width of the popup  |
-| `--popup-max-inline-size` | 350px   | Controls the the max-width of the popup. |
-
-For fixed width set the same value for `--popup-min-inline-size` and `--popup-max-inline-size`
+| Method           | Type                   | Description                                      |
+|------------------|------------------------|--------------------------------------------------|
+| `hide`           | `(): void`             | Closes the popup                                 |
+| `show`           | `(): Promise<void>`    | Opens the popup                                  |
+| `updatePosition` | `(): Promise<boolean>` | Updates popup position, if succeeded returns - true, if not - false |

@@ -5,6 +5,7 @@ import { ClassInfo, classMap } from 'lit-html/directives/class-map.js';
 import { nothing } from 'lit-html';
 import { computePosition, offset, shift, flip, arrow } from '@floating-ui/dom';
 import type { Placement, Strategy, Padding } from '@floating-ui/core';
+
 export class VWCPopupBase extends LitElement {
 	@query('.popup') protected popupEl!: HTMLElement;
 	@query('.popup-arrow') protected arrowEl!: HTMLElement;
@@ -111,7 +112,7 @@ export class VWCPopupBase extends LitElement {
 		if (!this.anchor) {
 			return false;
 		}
-		try	{
+		try {
 			const positionData = await computePosition(this.anchor, this.popupEl, {
 				placement: this.corner,
 				strategy: this.strategy,
@@ -130,27 +131,23 @@ export class VWCPopupBase extends LitElement {
 				this.assignArrowPosition(positionData.placement, positionData.middlewareData.arrow);
 			}
 		}
-		catch(e){
+		catch (e) {
 			return false;
 		}
 		return true;
 	}
 
 	private assignPopupPosition(data: any): void {
+		const { x: popupX, y: popupY } = data;
 		Object.assign(this.popupEl.style, {
-			left: `${data.x}px`,
-			top: `${data.y}px`,
+			left: `${popupX}px`,
+			top: `${popupY}px`,
 		});
 	}
 
 	private assignArrowPosition(placementData: any, arrowData: any): void {
 		const { x: arrowX, y: arrowY } = arrowData;
-		const staticSide: any = {
-			top: 'bottom',
-			right: 'left',
-			bottom: 'top',
-			left: 'right',
-		};
+		const staticSide: any = { top: 'bottom', right: 'left', bottom: 'top', left: 'right' };
 		const side: string = staticSide[placementData.split('-')[0]];
 		Object.assign(this.arrowEl.style, {
 			left: arrowX != null ? `${arrowX}px` : '',
@@ -161,13 +158,14 @@ export class VWCPopupBase extends LitElement {
 		});
 	}
 
-	private handleDismissClick():void {
+	private handleDismissClick(): void {
 		this.hide();
 	}
 
 	private renderDismissButton(): TemplateResult | unknown {
 		return this.dismissible
-			? html`<vwc-icon-button @click=${this.handleDismissClick} class="popup-dismissible-button" icon="close-small-solid" shape="circled" dense></vwc-icon-button>`
+			? html`<vwc-icon-button @click=${this.handleDismissClick} class="popup-dismissible-button" icon="close-small-solid"
+	shape="circled" dense></vwc-icon-button>`
 			: nothing;
 	}
 
