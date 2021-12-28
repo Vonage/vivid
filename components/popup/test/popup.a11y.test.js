@@ -9,10 +9,10 @@ chai.use(chaiA11yAxe);
 
 const COMPONENT_NAME = 'vwc-popup';
 
-describe('side drawer a11y', () => {
+describe('popup a11y', () => {
 	const addElement = isolatedElementsCreation();
 
-	const addSideDrawerElement = async (content) => {
+	const addPopupElement = async (content) => {
 		const [actualElement] = addElement(
 			textToDomToParent(`<${COMPONENT_NAME}>${content || ''}</${COMPONENT_NAME}>`)
 		);
@@ -21,7 +21,7 @@ describe('side drawer a11y', () => {
 		return actualElement;
 	};
 
-	const extractSideDrawerElements = (actualElement) => {
+	const extractPopupElements = (actualElement) => {
 		const { shadowRoot } = actualElement;
 		return {
 			actualElement,
@@ -31,7 +31,7 @@ describe('side drawer a11y', () => {
 	};
 
 	it('should pass accessibility test', async () => {
-		const { actualElement } = extractSideDrawerElements(await addSideDrawerElement());
+		const { actualElement } = extractPopupElements(await addPopupElement());
 		await expect(actualElement).shadowDom.to.be.accessible();
 	});
 });
