@@ -20,98 +20,55 @@ $toggle-buttons-type-selectors: selector.append('vwc-', list.join($scopes, '', $
 );
 
 $sizes: (
-	'normal': 40px,
-	'enlarged': 48px,
-	'dense': 32px,
+	'normal': 32px,
+	'enlarged': 40px,
+	'dense': 24px,
 );
 
-:host {
-	display: flex;
-}
 
 ::slotted(#{vwc-button}) {
 	--mdc-ripple-focus-opacity: 0;
 }
 
+.button-toggle-group {
+	display: inline-flex;
+	align-items: center;
+	padding: 3px 2px;
+	border: 1px solid var(#{scheme-variables.$vvd-color-neutral-30});
+	border-radius: var(#{$vvd-toggle-button-group-shape});
+
+	:host([shape='pill']) & {
+		--vvd-shape: var(#{$vvd-toggle-button-group-shape});
+	}
+}
+
 @each $scope in $scopes {
 	::slotted(vwc-#{$scope}) {
-		--vvd-#{$scope}-color: var(#{scheme-variables.$vvd-color-neutral-30});
-		--vvd-#{$scope}-on-color: var(#{scheme-variables.$vvd-color-on-canvas});
 		--vvd-#{$scope}-shape: var(#{$vvd-toggle-button-group-shape});
+		margin: 0 2px;
 	}
 
 	::slotted(vwc-#{$scope}[selected]) {
-		--vvd-#{$scope}-color: var(#{scheme-variables.$vvd-color-neutral-50});
+		--vvd-#{$scope}-color: var(#{scheme-variables.$vvd-color-primary});
+		--vvd-#{$scope}-on-color: var(#{scheme-variables.$vvd-color-on-primary});
 	}
 
-	:host([accent]) {
-
-		--vwc-#{$scope}-vertical-padding: 2px;
-		--vwc-#{$scope}-horizontal-padding: 1px;
-		--vvd-#{$scope}-block-size: calc(#{map.get($sizes, 'normal')} - 2 * var(--vwc-#{$scope}-vertical-padding));
-
-		::slotted(vwc-#{$scope}) {
-			padding: var(--vwc-#{$scope}-vertical-padding, 0) var(--vwc-#{$scope}-horizontal-padding, 0);
-			background-color: var(#{scheme-variables.$vvd-color-neutral-30});
-		}
-
-		::slotted(vwc-#{$scope}[selected], vwc-#{$scope}:hover:not([selected])) {
-			--vvd-#{$scope}-shape: var(#{$vvd-toggle-button-group-shape});
-		}
-
-		::slotted(vwc-#{$scope}[selected]) {
-			--vvd-#{$scope}-color: var(#{scheme-variables.$vvd-color-primary});
-			--vvd-#{$scope}-on-color: var(#{scheme-variables.$vvd-color-on-primary});
-		}
-
-		::slotted(vwc-#{$scope}:hover:not([selected])) {
-			// --vvd-#{$scope}-layout--fill: var(#{scheme-variables.$vvd-color-neutral-50});
-		}
+	:host {
+		--vvd-#{$scope}-block-size: calc(#{map.get($sizes, 'normal')});
 	}
 
-	:host([accent][dense]) {
-		--vvd-#{$scope}-block-size: calc(#{map.get($sizes, 'dense')} - 2 * var(--vwc-#{$scope}-vertical-padding));
+	:host([dense]) {
+		--vvd-#{$scope}-block-size: calc(#{map.get($sizes, 'dense')});
 	}
 
-	:host([accent][enlarged]) {
-		--vvd-#{$scope}-block-size: calc(#{map.get($sizes, 'enlarged')} - 2 * var(--vwc-#{$scope}-vertical-padding));
+	:host([enlarged]) {
+		--vvd-#{$scope}-block-size: #{map.get($sizes, 'enlarged')};
 	}
 
-	::slotted(vwc-#{$scope}:hover:not([selected])) {
-		//! @yonatankra is this mandatory?
-		//! we are good with using ripple for elevation indication in other components
-		// --vvd-#{$scope}-layout--fill: var(#{scheme-variables.$vvd-color-neutral-40});
-	}
-
-	::slotted(vwc-#{$scope}:not(:first-child):not(:last-child)) {
-		:host(:not([accent])) & {
-			--vvd-#{$scope}-shape: 0;
-		}
-	}
-
-	::slotted(vwc-#{$scope}:first-child:not(:last-child)) {
-		padding-left: var(--vwc-#{$scope}-vertical-padding, 0);
-		border-radius: var(#{$vvd-toggle-button-group-shape}) 0 0 var(#{$vvd-toggle-button-group-shape});
-
-		:host(:not([accent])) & {
-			--vvd-#{$scope}-shape: var(#{$vvd-toggle-button-group-shape}) 0 0 var(#{$vvd-toggle-button-group-shape});
-		}
-	}
-
-	::slotted(vwc-#{$scope}:last-child:not(:first-child)) {
-		padding-right: var(--vwc-#{$scope}-vertical-padding, 0);
-		border-radius: 0 var(#{$vvd-toggle-button-group-shape}) var(#{$vvd-toggle-button-group-shape}) 0;
-
-		:host(:not([accent])) & {
-			--vvd-#{$scope}-shape: 0 var(#{$vvd-toggle-button-group-shape}) var(#{$vvd-toggle-button-group-shape}) 0;
-		}
-	}
-
-	:host([disabled]) ::slotted(vwc-#{$scope}), :host([disabled][accent]) ::slotted(vwc-#{$scope}[selected]) {
-		//! @yonatankra not sure the following variables are required
-		// --vvd-#{$scope}-layout--fill: var(#{scheme-variables.$vvd-color-neutral-30});
-		// --vvd-#{$scope}-layout--text: var(#{scheme-variables.$vvd-color-neutral-50});
+	:host([disabled]) ::slotted(vwc-#{$scope}),
+	:host([disabled]) ::slotted(vwc-#{$scope}[selected]) {
 		pointer-events: none;
 	}
-
 }
+
+

@@ -1,3 +1,20 @@
+## [2.24.1](https://github.com/vonage/vivid/compare/v2.24.0...v2.24.1) (2021-12-23)
+
+
+
+# [2.24.0](https://github.com/vonage/vivid/compare/v2.23.0...v2.24.0) (2021-12-22)
+
+
+### Bug Fixes
+
+* **expansion-panel:** side effect import ripple ([#1154](https://github.com/vonage/vivid/issues/1154)) ([3e8777f](https://github.com/vonage/vivid/commit/3e8777fdbaf5aa6fcb69cfa447ffed1c2e92860c))
+
+
+
+# [2.23.0](https://github.com/vonage/vivid/compare/v2.22.1...v2.23.0) (2021-12-14)
+
+
+
 ## [2.22.1](https://github.com/vonage/vivid/compare/v2.22.0...v2.22.1) (2021-11-05)
 
 

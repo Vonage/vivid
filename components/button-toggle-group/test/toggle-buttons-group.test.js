@@ -89,31 +89,44 @@ describe('Toggle-buttons-group', () => {
 			.equal(1);
 	});
 
-	it(`should set layout filled for all child buttons`, function () {
-		const [actualElement] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}>
-<${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-</${COMPONENT_NAME}>`)
-		);
-
-		[...actualElement.children].forEach(childNode => expect(childNode.getAttribute('layout'))
-			.to
-			.equal('filled'));
-	});
-
 	describe(`selected`, function () {
 		let actualElement;
 
 		beforeEach(function () {
 			[actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}>
-<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[0]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} layout="filled" value="${buttonValues[0]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 <${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[1]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} layout="filled" value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 </${COMPONENT_NAME}>`)
 			);
+		});
+
+		it(`should have the filled attribute when selected`, async function () {
+			actualElement.children[1].click();
+			await actualElement.updateComplete;
+
+			expect(actualElement.children[0].getAttribute('layout'), 'non selected cannot be filled').not.to.equal('filled');
+			expect(actualElement.children[1].getAttribute('layout'), 'selected must be filled').to.equal('filled');
+			expect(actualElement.children[2].getAttribute('layout'), 'non selected cannot be filled').not.to.equal('filled');
+		});
+
+		it(`should remove the filled attribute when unselected`, async function () {
+			actualElement.children[0].click();
+			await actualElement.updateComplete;
+
+			const filledBeforeUnselect = actualElement.children[0].getAttribute('layout') === 'filled';
+
+			actualElement.children[1].click();
+			await actualElement.updateComplete;
+
+			const filledAfterUnselect =  actualElement.children[0].hasAttribute('layout');
+
+			const newSelectedFilled = actualElement.children[1].getAttribute('layout') === 'filled';
+
+			expect(filledBeforeUnselect).to.equal(true);
+			expect(filledAfterUnselect).to.equal(false);
+			expect(newSelectedFilled).to.equal(true);
 		});
 
 		it(`should return the an empty array if none is selected`, function () {
@@ -148,7 +161,6 @@ describe('Toggle-buttons-group', () => {
 
 	describe(`values`, function () {
 		let actualElement;
-
 
 		beforeEach(function () {
 			[actualElement] = addElement(
@@ -275,10 +287,10 @@ describe('Toggle-buttons-group', () => {
 		beforeEach(async function () {
 			[actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} multi>
-<${VALID_BUTTON_ELEMENTS[0]} layout="filled" value="${buttonValues[0]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]} layout="filled" value="${buttonValues[1]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]} layout="filled" value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[1]} layout="filled" value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[0]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[1]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[1]} value="${buttonValues[2]}">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 </${COMPONENT_NAME}>`)
 			);
 
@@ -288,7 +300,6 @@ describe('Toggle-buttons-group', () => {
 		it(`should listen to click event of dynamically assigned valid element`, async function () {
 			const element = document.createElement(VALID_BUTTON_ELEMENTS[0]);
 			element.setAttribute('value', '22');
-			element.setAttribute('layout', 'filled');
 			actualElement.appendChild(element);
 			await waitForSlotChange();
 			element.click();
@@ -366,15 +377,15 @@ describe('Toggle-buttons-group', () => {
 
 	describe(`Mandatory Selection`, function () {
 		function generateTemplate(props = [], childrenProps = [[], [], [], []]) {
-			return textToDomToParent(`<${COMPONENT_NAME} ${props.join(' ')}>
-<${VALID_BUTTON_ELEMENTS[0]} ${childrenProps[0].join(' ')} layout="filled">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]} ${childrenProps[1].join(' ')} layout="filled">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[0]} ${childrenProps[2].join(' ')} layout="filled">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-<${VALID_BUTTON_ELEMENTS[1]} ${childrenProps[3].join(' ')} layout="filled">BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
-</${COMPONENT_NAME}>`);
+			return addElement(textToDomToParent(`<${COMPONENT_NAME} ${props.join(' ')}>
+<${VALID_BUTTON_ELEMENTS[0]} ${childrenProps[0].join(' ')}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} ${childrenProps[1].join(' ')}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[0]} ${childrenProps[2].join(' ')}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+<${VALID_BUTTON_ELEMENTS[1]} ${childrenProps[3].join(' ')}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
+</${COMPONENT_NAME}>`));
 		}
 
-		it(`should not cancel the last selection`, async function () {
+		it(`should not cancel the last selection on click`, async function () {
 			const [actualElement] = (generateTemplate(['required', 'multi']));
 
 			await actualElement.updateComplete;
@@ -398,7 +409,7 @@ describe('Toggle-buttons-group', () => {
 				.equal(selectedButton);
 		});
 
-		it(`should not cancel the last selection`, async function () {
+		it(`should not cancel the last selection when button preselected`, async function () {
 			const [actualElement] = addElement(generateTemplate(['required', 'multi'],
 				[['selected'], [], [], []]));
 
@@ -444,7 +455,7 @@ describe('Toggle-buttons-group', () => {
 
 	describe(`a11y`, function () {
 		async function createDisabledElement() {
-			const [actualElement] = (
+			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} disabled>
 <${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>
 <${VALID_BUTTON_ELEMENTS[0]}>BUTTON</${VALID_BUTTON_ELEMENTS[0]}>

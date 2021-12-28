@@ -10,6 +10,13 @@ export const argTypes = {
 	open: {
 		control: booleanControl
 	},
+	position: {
+		defaultValue: 'start',
+		control: {
+			type: 'select',
+			options: ['start', 'end'],
+		}
+	},
 	type: {
 		control: {
 			type: 'select',
