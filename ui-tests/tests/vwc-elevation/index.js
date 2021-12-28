@@ -68,9 +68,15 @@ export async function createElementVariations(wrapper) {
 				</div>
 			</vwc-elevation>
 
-			<vwc-elevation style="--vvd-elevation-border-radius: 6px;">
+			<vwc-elevation>
 		  	<div class="card" style="background-color: lightpink; height: auto;">
-					This is the content inside the elevation with radius and inside element with backgrund color
+					This is the content inside the elevation with radius and inside element with background color
+				</div>
+			</vwc-elevation>
+
+						<vwc-elevation style="--vvd-elevation-border-radius: 0;">
+		  	<div class="card" style="background-color: lightpink; height: auto;">
+					This is the content inside the elevation with no border-radius
 				</div>
 			</vwc-elevation>
 		`;
