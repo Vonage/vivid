@@ -1,5 +1,5 @@
 import '@vonage/vwc-accordion';
-import '@vonage/vwc-elevation';
+import '@vonage/vwc-accordion';
 import '@vonage/vwc-expansion-panel';
 
 
@@ -32,15 +32,6 @@ export async function createElementVariations(wrapper) {
 				<vwc-expansion-panel open header="Item 3">lorem ipsum dolor amet</vwc-expansion-panel>
 				<vwc-expansion-panel header="Item 4">lorem ipsum dolor amet</vwc-expansion-panel>
 			</vwc-accordion>
-
-			<vwc-accordion style="margin: 2rem 0;">
-			<vwc-elevation dp="0" style="--vvd-elevation-border-radius: 6px;">
-					<vwc-expansion-panel header="with elevation inside Accordion">lorem ipsum dolor amet</vwc-expansion-panel>
-				</vwc-elevation>
-			</vwc-accordion>
-			<vwc-elevation dp="0" style="--vvd-elevation-border-radius: 6px;">
-					<vwc-expansion-panel open header="with elevation only expansion panel">lorem ipsum dolor amet</vwc-expansion-panel>
-				</vwc-elevation>
 		`;
 	wrapper.appendChild(accordionElementWrapper);
 }

@@ -13,9 +13,6 @@ export default {
 
 const Template = args => html`
   <style>
-		vwc-expansion-panel {
-			width: 500px;
-		}
     form {
       display: grid;
       gap: 20px;
@@ -35,34 +32,6 @@ const Template = args => html`
 export const Basic = Template.bind({});
 Basic.args = { header: 'Campaign Details' };
 
-const OutlinedTemplate = args => html`
-	<style>
-		vwc-expansion-panel {
-			width: 500px;
-		}
-		form {
-			display: grid;
-			gap: 20px;
-		}
-	</style>
-	<div>
-	<p>expansion panel inside elevation component</p>
-	<vwc-elevation dp="0" style="--vvd-elevation-border-radius: 6px;">
-		<vwc-expansion-panel header="Item 1">
-			<form>
-				A campaign describes a specific use case and details of the messages you will be sending through it.
-				Such as: sample messages, subscriber opt-in/out, and the associated numbers you will be sending with these messages.
-
-				<vwc-textfield label="Selected Brand" value="Vonage Inc." dense readonly></vwc-textfield>
-				<vwc-textfield label="Description" dense></vwc-textfield>
-			</form>
-		</vwc-expansion-panel>
-	</vwc-elevation>
-</div>`;
-
-export const Outlined = OutlinedTemplate.bind({});
-Outlined.args = { header: 'Campaign Details' };
-
 export const IndicatorIconSet = Template.bind({});
 IndicatorIconSet.args = { header: 'Campaign Details', indicatorIconSet: 'binary' };
 
@@ -77,9 +46,6 @@ Icon.args = { header: 'Campaign Details', icon: 'chat-solid' };
 
 const SlottedIconsTemplate = args => html`
 	<style>
-		vwc-expansion-panel {
-			width: 500px;
-		}
 		vwc-icon {
 			--icon-size: 20px;
 		}
