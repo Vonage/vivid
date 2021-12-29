@@ -10,7 +10,7 @@ export default {
 	argTypes
 };
 
-const Template = args => html`<vwc-button ...=${spread(args)}></vwc-button>`;
+const Template = args => html`<vwc-button ...=${spread(args)}>`;
 
 export const Basic = Template.bind({});
 Basic.args = { label: 'Basic', layout: 'text' };
@@ -49,3 +49,25 @@ const TemplateState = args => html`<vwc-button ...=${spread(args)}>
 
 export const Pending = TemplateState.bind({});
 Pending.args = { label: 'Pending', layout: 'filled', disabled: '' };
+
+const TemplateSizes = args => html`
+	<style>
+		.wrapper {
+			display: grid;
+			grid-template-columns: repeat(2, 100px);
+			gap: 2rem;
+			justify-items: center;
+		}
+	</style>
+	<div class="wrapper">
+		<vwc-button label="Button" layout="filled" dense ...=${spread(args)}></vwc-button>
+		<vwc-button label="Button" layout="filled" icon="calendar-line" dense ...=${spread(args)}></vwc-button>
+		<vwc-button label="Button" layout="filled" ...=${spread(args)}></vwc-button>
+		<vwc-button label="Button" layout="filled" icon="calendar-line" ...=${spread(args)}></vwc-button>
+		<vwc-button label="Button" layout="filled" enlarged ...=${spread(args)}></vwc-button>
+		<vwc-button label="Button" layout="filled" icon="calendar-line" enlarged ...=${spread(args)}></vwc-button>
+	</div>
+	<vwc-button >
+</vwc-button>`;
+
+export const MixesSizes = TemplateSizes.bind({});
