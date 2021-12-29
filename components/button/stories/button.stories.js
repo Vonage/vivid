@@ -33,6 +33,9 @@ Enlarged.args = { label: 'Enlarged', layout: 'filled', enlarged: '' };
 export const Icon = Template.bind({});
 Icon.args = { label: 'Icon', layout: 'filled', icon: 'download' };
 
+export const Stacked = Template.bind({});
+Stacked.args = { label: 'Action', layout: 'filled', icon: 'compose-line', stacked: '' };
+
 export const Disabled = Template.bind({});
 Disabled.args = { label: 'Disabled', layout: 'filled', disabled: '' };
 

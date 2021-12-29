@@ -70,44 +70,71 @@ export async function createElementVariations(wrapper) {
 		<vwc-button connotation="primary" layout="" icon="calendar-line" enlarged>Button</vwc-button>
 		<hr>
 
+		<!--		sizes with trailing icons-->
+		<vwc-button connotation="primary" layout="filled" trailingIcon icon="download" dense>Button</vwc-button>
+		<vwc-button connotation="primary" layout="filled" trailingIcon icon="calendar-line" >Button</vwc-button>
+		<vwc-button connotation="primary" layout="filled" trailingIcon icon="calendar-line"  enlarged>Button</vwc-button>
+		<vwc-button connotation="primary" layout="filled" trailingIcon shape="pill" icon="calendar-line" dense>Button</vwc-button>
+		<vwc-button connotation="primary" layout="filled" trailingIcon shape="pill" icon="calendar-line" >Button</vwc-button>
+		<vwc-button connotation="primary" layout="filled" trailingIcon shape="pill" icon="calendar-line"  enlarged>Button</vwc-button>
+		<hr>
+		<vwc-button connotation="primary" layout="outlined" trailingIcon icon="calendar-line"  dense>Button</vwc-button>
+		<vwc-button connotation="primary" layout="outlined" trailingIcon icon="calendar-line" >Button</vwc-button>
+		<vwc-button connotation="primary" layout="outlined" trailingIcon icon="calendar-line"  enlarged>Button</vwc-button>
+		<vwc-button connotation="primary" layout="outlined" trailingIcon shape="pill" icon="calendar-line"  dense>Button</vwc-button>
+		<vwc-button connotation="primary" layout="outlined" trailingIcon shape="pill" icon="calendar-line" >Button</vwc-button>
+		<vwc-button connotation="primary" layout="outlined" trailingIcon shape="pill" icon="calendar-line"  enlarged>Button</vwc-button>
+		<hr>
+		<vwc-button connotation="primary" layout="" icon="calendar-line" trailingIcon dense>Button</vwc-button>
+		<vwc-button connotation="primary" layout="" icon="calendar-line" trailingIcon >Button</vwc-button>
+		<vwc-button connotation="primary" layout="" icon="calendar-line" trailingIcon enlarged>Button</vwc-button>
+		<hr>
+		<!--		sizes with stacked icons - using Label -->
+		<vwc-button connotation="primary" layout="filled" icon="compose-line" label="Action" dense stacked></vwc-button>
+		<vwc-button connotation="primary" layout="filled" icon="compose-line" label="Action"  stacked></vwc-button>
+		<vwc-button connotation="primary" layout="filled" icon="compose-line" label="Action"  enlarged stacked></vwc-button>
+		<vwc-button connotation="primary" layout="filled" icon="compose-line" label="Action" shape="pill" dense stacked></vwc-button>
+		<vwc-button connotation="primary" layout="filled" icon="compose-line" label="Action"  shape="pill" stacked></vwc-button>
+		<vwc-button connotation="primary" layout="filled" icon="compose-line" label="Action"  shape="pill" enlarged stacked></vwc-button>
+		<hr>
 		<!--		sizes with stacked icons-->
-		<vwc-button connotation="primary" layout="filled" icon="download" dense stacked>Button</vwc-button>
-		<vwc-button connotation="primary" layout="filled" icon="calendar-line"  stacked>Button</vwc-button>
-		<vwc-button connotation="primary" layout="filled" icon="calendar-line"  enlarged stacked>Button</vwc-button>
-		<vwc-button connotation="primary" layout="filled" icon="calendar-line" shape="pill" dense stacked>Button</vwc-button>
-		<vwc-button connotation="primary" layout="filled" icon="calendar-line"  shape="pill" stacked>Button</vwc-button>
-		<vwc-button connotation="primary" layout="filled" icon="calendar-line"  shape="pill" enlarged stacked>Button</vwc-button>
+		<vwc-button connotation="primary" layout="filled" icon="compose-line" dense stacked>Action</vwc-button>
+		<vwc-button connotation="primary" layout="filled" icon="compose-line"  stacked>Action</vwc-button>
+		<vwc-button connotation="primary" layout="filled" icon="compose-line"  enlarged stacked>Action</vwc-button>
+		<vwc-button connotation="primary" layout="filled" icon="compose-line" shape="pill" dense stacked>Action</vwc-button>
+		<vwc-button connotation="primary" layout="filled" icon="compose-line"  shape="pill" stacked>Action</vwc-button>
+		<vwc-button connotation="primary" layout="filled" icon="compose-line"  shape="pill" enlarged stacked>Action</vwc-button>
 		<hr>
-		<vwc-button connotation="primary" layout="outlined" icon="calendar-line" dense stacked>Button</vwc-button>
-		<vwc-button connotation="primary" layout="outlined" icon="calendar-line" stacked>Button</vwc-button>
-		<vwc-button connotation="primary" layout="outlined" icon="calendar-line" enlarged stacked>Button</vwc-button>
-		<vwc-button connotation="primary" layout="outlined" icon="calendar-line" shape="pill" dense stacked>Button</vwc-button>
-		<vwc-button connotation="primary" layout="outlined" icon="calendar-line" shape="pill" stacked>Button</vwc-button>
-		<vwc-button connotation="primary" layout="outlined" icon="calendar-line" shape="pill" enlarged stacked>Button</vwc-button>
+		<vwc-button connotation="primary" layout="outlined" icon="compose-line" dense stacked>Action</vwc-button>
+		<vwc-button connotation="primary" layout="outlined" icon="compose-line" stacked>Action</vwc-button>
+		<vwc-button connotation="primary" layout="outlined" icon="compose-line" enlarged stacked>Action</vwc-button>
+		<vwc-button connotation="primary" layout="outlined" icon="compose-line" shape="pill" dense stacked>Action</vwc-button>
+		<vwc-button connotation="primary" layout="outlined" icon="compose-line" shape="pill" stacked>Action</vwc-button>
+		<vwc-button connotation="primary" layout="outlined" icon="compose-line" shape="pill" enlarged stacked>Action</vwc-button>
 		<hr>
-		<vwc-button connotation="primary" layout="" icon="calendar-line" dense stacked>Button</vwc-button>
-		<vwc-button connotation="primary" layout="" icon="calendar-line"  stacked>Button</vwc-button>
-		<vwc-button connotation="primary" layout="" icon="calendar-line" enlarged stacked>Button</vwc-button>
+		<vwc-button connotation="primary" layout="" icon="compose-line" dense stacked>Action</vwc-button>
+		<vwc-button connotation="primary" layout="" icon="compose-line"  stacked>Action</vwc-button>
+		<vwc-button connotation="primary" layout="" icon="compose-line" enlarged stacked>Action</vwc-button>
 		<hr>
 				<!--		sizes with stacked icons - trailing icon-->
-		<vwc-button connotation="primary" layout="filled" icon="calendar-line" dense  trailingIcon stacked>Button</vwc-button>
-		<vwc-button connotation="primary" layout="filled" icon="calendar-line" trailingIcon stacked>Button</vwc-button>
-		<vwc-button connotation="primary" layout="filled" icon="calendar-line" trailingIcon enlarged stacked>Button</vwc-button>
-		<vwc-button connotation="primary" layout="filled" shape="pill" icon="calendar-line" dense  trailingIcon stacked>Button</vwc-button>
-		<vwc-button connotation="primary" layout="filled" shape="pill" icon="calendar-line" trailingIcon stacked>Button</vwc-button>
-		<vwc-button connotation="primary" layout="filled" shape="pill" icon="calendar-line" trailingIcon enlarged stacked>Button</vwc-button>
+		<vwc-button connotation="primary" layout="filled" icon="compose-line" dense  trailingIcon stacked>Action</vwc-button>
+		<vwc-button connotation="primary" layout="filled" icon="compose-line" trailingIcon stacked>Action</vwc-button>
+		<vwc-button connotation="primary" layout="filled" icon="compose-line" trailingIcon enlarged stacked>Action</vwc-button>
+		<vwc-button connotation="primary" layout="filled" shape="pill" icon="compose-line" dense  trailingIcon stacked>Action</vwc-button>
+		<vwc-button connotation="primary" layout="filled" shape="pill" icon="compose-line" trailingIcon stacked>Action</vwc-button>
+		<vwc-button connotation="primary" layout="filled" shape="pill" icon="compose-line" trailingIcon enlarged stacked>Action</vwc-button>
 		<hr>
-		<vwc-button connotation="primary" layout="outlined" icon="calendar-line" trailingIcon dense stacked>Button</vwc-button>
-		<vwc-button connotation="primary" layout="outlined" icon="calendar-line" trailingIcon stacked>Button</vwc-button>
-		<vwc-button connotation="primary" layout="outlined" icon="calendar-line" trailingIcon enlarged stacked>Button</vwc-button>
-		<vwc-button connotation="primary" layout="outlined" shape="pill" icon="calendar-line" trailingIcon dense stacked>Button</vwc-button>
-		<vwc-button connotation="primary" layout="outlined" shape="pill" icon="calendar-line" trailingIcon stacked>Button</vwc-button>
-		<vwc-button connotation="primary" layout="outlined" shape="pill" icon="calendar-line" trailingIcon enlarged stacked>Button</vwc-button>
+		<vwc-button connotation="primary" layout="outlined" icon="compose-line" trailingIcon dense stacked>Action</vwc-button>
+		<vwc-button connotation="primary" layout="outlined" icon="compose-line" trailingIcon stacked>Action</vwc-button>
+		<vwc-button connotation="primary" layout="outlined" icon="compose-line" trailingIcon enlarged stacked>Action</vwc-button>
+		<vwc-button connotation="primary" layout="outlined" shape="pill" icon="compose-line" trailingIcon dense stacked>Action</vwc-button>
+		<vwc-button connotation="primary" layout="outlined" shape="pill" icon="compose-line" trailingIcon stacked>Action</vwc-button>
+		<vwc-button connotation="primary" layout="outlined" shape="pill" icon="compose-line" trailingIcon enlarged stacked>Action</vwc-button>
 
 		<hr>
-		<vwc-button connotation="primary" layout="" icon="calendar-line" dense  trailingIcon stacked>Button</vwc-button>
-		<vwc-button connotation="primary" layout="" icon="calendar-line" trailingIcon stacked>Button</vwc-button>
-		<vwc-button connotation="primary" layout="" icon="calendar-line" enlarged trailingIcon stacked>Button</vwc-button>
+		<vwc-button connotation="primary" layout="" icon="compose-line" dense  trailingIcon stacked>Action</vwc-button>
+		<vwc-button connotation="primary" layout="" icon="compose-line" trailingIcon stacked>Action</vwc-button>
+		<vwc-button connotation="primary" layout="" icon="compose-line" enlarged trailingIcon stacked>Action</vwc-button>
 		<hr>
 
 		<vwc-button connotation="primary" layout="outlined" fullwidth>Button</vwc-button>
