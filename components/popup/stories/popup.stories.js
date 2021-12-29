@@ -33,7 +33,7 @@ const Template = args => html`
 		}
 	</style>
 	<div class="popup-wrapper">
-		<vwc-button id="button" layout="outlined" outlined aria-describedby="popup" @click=${onClick}>Click to open popup</vwc-button>
+		<vwc-button id="button" layout="outlined" outlined aria-haspopup="true" aria-describedby="popup" @click=${onClick}>Click to open popup</vwc-button>
 		<vwc-popup id="popup" ...=${spread(args)}>
 			<slot>
 				<div class="content">

@@ -177,7 +177,6 @@ export class VWCPopupBase extends LitElement {
 
 	protected override render(): TemplateResult {
 		return html`
-			<!-- TODO: role="?"-->
 			<div class="popup ${classMap(this.getRenderClasses())}" aria-hidden=${this.open ? 'false' : 'true' }>
 				<slot></slot>
 				${this.renderDismissButton()}
