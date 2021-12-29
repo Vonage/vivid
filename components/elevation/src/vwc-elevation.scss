@@ -1,6 +1,6 @@
 @use 'sass:list';
 
-$dps: 2 4 8 12 16 24;
+$dps: 0 2 4 8 12 16 24;
 $vvd-elevation-background-color: --vvd-elevation-background-color;
 $vvd-elevation-border-radius: --vvd-elevation-border-radius;
 
@@ -26,5 +26,7 @@ $vvd-elevation-border-radius: --vvd-elevation-border-radius;
 }
 
 .vwc-elevation {
-	border-radius: var(#{$vvd-elevation-border-radius}, 0);
+	width: fit-content;
+	border-radius: var(#{$vvd-elevation-border-radius}, 6px);
+	contain: content;
 }
