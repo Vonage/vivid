@@ -6,6 +6,7 @@
 	"license": "ISC",
 	"main": "vwc-card.js",
 	"module": "vwc-card.js",
+	"types": "vwc-card.d.ts",
 	"files": [
 		"*.js",
 		"*.ts",
@@ -25,6 +26,7 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
+		"@vonage/vvd-core": "2.24.1",
 		"@vonage/vwc-badge": "2.24.1",
 		"@vonage/vwc-button": "2.24.1",
 		"@vonage/vwc-icon": "2.24.1",
@@ -33,8 +35,10 @@
 		"tslib": "^2.3.0"
 	},
 	"devDependencies": {
+		"@vonage/vvd-design-tokens": "2.24.1",
 		"@vonage/vvd-foundation": "2.24.1",
 		"@vonage/vvd-typography": "2.24.1",
-		"@vonage/vvd-umbrella": "2.24.1"
+		"@vonage/vvd-umbrella": "2.24.1",
+		"typescript": "^4.3.2"
 	}
 }
