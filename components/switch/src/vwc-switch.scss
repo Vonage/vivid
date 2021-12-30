@@ -12,8 +12,7 @@
 	--translate: 16px;
 	--translate-natural: -16px;
 	--natural-50: #757575;
-	--natural-70: #4d4d4d;
-	--surface: #fff;
+	--surface: #f2f2f2;
 
 	contain: content;
 }
@@ -41,6 +40,14 @@
 		.mdc-switch__native-control {
 			transform: translateX(var(--translate-natural));
 		}
+
+		&:hover {
+			.mdc-switch__thumb,
+			.mdc-switch__track {
+				filter: brightness(90%);
+			}
+		}
+
 	}
 	//:(not) is needed to overide mdc style
 	&:not(.mdc-switch--checked) {
@@ -54,10 +61,10 @@
 
 		&:hover {
 			.mdc-switch__thumb {
-				background-color: var(--natural-70);
+				background-color: var(#{scheme-variables.$vvd-color-neutral-70});
 			}
 			.mdc-switch__track {
-				border-color: var(--natural-70);
+				border-color: var(#{scheme-variables.$vvd-color-neutral-70});
 			}
 		}
 	}
