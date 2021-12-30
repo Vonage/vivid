@@ -157,6 +157,7 @@ export async function createElementVariations(wrapper) {
 		<vwc-button connotation="primary" layout="filled" icon="calendar-line" stacked>Button</vwc-button>
 		<vwc-button connotation="primary" layout="outlined" icon="calendar-line" trailingIcon stacked>Button</vwc-button>
 		<vwc-button connotation="primary" layout="filled" icon="calendar-line" trailingIcon stacked>Button</vwc-button>
+		<hr>
 <!--		distorted buttons-->
 		<vwc-button connotation="primary" layout="outlined"  stacked>
 			<span>Button</span>
