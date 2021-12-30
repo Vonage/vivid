@@ -78,17 +78,15 @@
 		}
 	}
 
-	> .leading-icon {
-		vwc-icon {
+	vwc-icon {
+		> .leading-icon & {
 			margin-inline-end: var(--gutter);
 		}
-	}
-
-	> .trailing-icon {
-		vwc-icon {
+		> .trailing-icon & {
 			margin-inline-start: var(--gutter);
 		}
 	}
+
 
 	/* stylelint-disable-next-line order/order -- variants */
 	@include size(dense, 4);
