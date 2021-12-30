@@ -9,11 +9,8 @@
 	$default: primary,
 );
 @use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
-@use '@vonage/vvd-foundation/scss/mixins/shape-mixins'
-
-	with
-(
-$variable-name: --vvd-button-shape)
+@use '@vonage/vvd-foundation/scss/mixins/shape-mixins'with (
+	$variable-name: --vvd-button-shape)
 ;
 @use '@vonage/vvd-foundation/scss/mixins/layout/config' as layout-config with (
 	$layout-set: filled outlined ghost,
