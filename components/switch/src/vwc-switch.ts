@@ -24,7 +24,7 @@ MWCSwitch.styles = [styleCoupling, mwcSwitchStyles, vwcSwitchStyle];
 
 type SwitchConnotation = Extract<
 	Connotation,
-	Connotation.Primary | Connotation.CTA | Connotation.Success | Connotation.Alert
+	Connotation.Primary | Connotation.CTA |  Connotation.Alert
 >;
 
 /**
