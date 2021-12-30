@@ -9,7 +9,7 @@ export async function createElementVariations(wrapper) {
 	display: grid;
 	grid-template-columns: repeat(6, 60px);
 	gap: 1rem;
-	background-color: var(--vvd-color-neutral-10);
+	background-color: var(--vvd-color-canvas);
 	padding: 1rem;
 	margin-bottom: 2rem;
 	}
