@@ -45,14 +45,11 @@ const Template = args => html`
 export const Basic = Template.bind({});
 Basic.args = { label: 'Basic' };
 
+export const Sharp = Template.bind({});
+Sharp.args = { label: 'Sharp Corners' , shape: 'sharp', dp: '0' };
+
 export const AllElevations = AllTemplate.bind({});
 AllTemplate.args = { label: 'All' };
-
-export const BackgroundColor = Template.bind({});
-BackgroundColor.args = { label: 'Background Color', style: '--vvd-elevation-background-color: lightblue', dp: 8 };
-
-export const BorderRadius = Template.bind({});
-BorderRadius.args = { label: 'Border Radius', style: '--vvd-elevation-border-radius: 16px', dp: 24 };
 
 const HoverEffectExampleTemplate = args => html`
 	${styles()}
@@ -64,7 +61,7 @@ const HoverEffectExampleTemplate = args => html`
 `;
 
 export const HoverEffectExample = HoverEffectExampleTemplate.bind({});
-HoverEffectExample.args = { label: 'Border Radius', style: '--vvd-elevation-border-radius: 16px', dp: 24 };
+HoverEffectExample.args = { label: 'Border Radius', dp: 24 };
 
 function onMouseEnter(e) {
 	e.target.setAttribute('dp', '24');
