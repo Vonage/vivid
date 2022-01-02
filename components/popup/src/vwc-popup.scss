@@ -8,19 +8,26 @@
 }
 
 .popup {
-	@include typography.typography-cat-shorthand(body-1);
+	--border-size: 6px;
 	position: absolute;
 	display: none;
-	align-items: center;
-	padding: 5px;
-	background: var(#{scheme-variables.$vvd-color-canvas});
-	border-radius: 6px;
-	color: var(#{scheme-variables.$vvd-color-on-canvas});
+	background-color: var(#{scheme-variables.$vvd-color-surface-4dp});
+	border-radius: var(--border-size);
 	contain: layout;
-	filter: var(--vvd-shadow-surface-2dp);
+	filter: var(#{scheme-variables.$vvd-shadow-surface-4dp});
+
+	&-arrow {
+		position: absolute;
+		z-index: -1;
+		width: 8px;
+		height: 8px;
+		background-color: var(#{scheme-variables.$vvd-color-surface-4dp});
+		transform: rotate(45deg);
+	}
 
 	&-open {
 		display: inline-grid;
+		//contain: content;
 	}
 
 	&-dismissible {
@@ -29,13 +36,11 @@
 	}
 	&-dismissible-button {
 		align-self: flex-start;
+		margin-block-start: 0.25rem;
+		margin-inline-end: 0.25rem;
 	}
 }
 
-.popup-arrow {
-	position: absolute;
-	width: 8px;
-	height: 8px;
-	background: inherit;
-	transform: rotate(45deg);
+::slotted(*) {
+	border-radius: var(--border-size);
 }

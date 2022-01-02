@@ -12,7 +12,7 @@ export default {
 	argTypes
 }
 
-const Template = args => html`    
+const Template = args => html`
 	<style>
 		.popup-wrapper {
 			width: 100%;
@@ -25,6 +25,7 @@ const Template = args => html`
 		.content {
 			max-width: 200px;
 			text-align: left;
+			padding: 1rem;
 		}
 		.line {
 			margin: 5px 0 ;
@@ -35,13 +36,11 @@ const Template = args => html`
 	<div class="popup-wrapper">
 		<vwc-button id="button" layout="outlined" outlined aria-haspopup="true" aria-describedby="popup" @click=${onClick}>Click to open popup</vwc-button>
 		<vwc-popup id="popup" ...=${spread(args)}>
-			<slot>
-				<div class="content">
-					<vwc-text font-face="body-1-bold" tight>Popup title</vwc-text>
-					<div class="line"></div>
-					<vwc-text font-face="body-2" tight>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</vwc-text>
-				</div>
-			</slot>
+			<div class="content">
+				<vwc-text font-face="body-1-bold" tight>Popup title</vwc-text>
+				<div class="line"></div>
+				<vwc-text font-face="body-2" tight>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</vwc-text>
+			</div>
 		</vwc-popup>
 	</div>`;
 
