@@ -20,16 +20,16 @@ Note that this component is responsible for the perceived elevation alone and no
 
 ### Properties/Attributes
 
-|name|attr/prop/reflected|type|description|
-|--- |--- |--- |--- |
-|dp|property/attribute|string|Level in Density-Independent Pixels (DP). Possible values: `2`,`4`,`8`,`12`,`16`,`24`|
+|name|attr/prop/reflected|type| description                                                                               |
+|--- |--- |--- |-------------------------------------------------------------------------------------------|
+|dp|property/attribute|string| Level in Density-Independent Pixels (DP). Possible values: `0`,`2`,`4`,`8`,`12`,`16`,`24` |
 
 ### CSS Variables
 
-|name|description|
-|--- |--- |
-|`--vvd-elevation-background-color`|Color for the elevation surface background (defaults to theme’s surface background)|
-|`--vvd-elevation-border-radius`|Border radius of the elevation’s surface in pixels|
+|name|description|default|
+|--- |--- |--- |
+|`--vvd-elevation-background-color`|Color for the elevation surface background | defaults to theme’s surface background |
+|`--vvd-elevation-border-radius`|Border radius of the elevation’s surface in pixels| 6px |
 
 # Example:
 

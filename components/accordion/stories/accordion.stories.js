@@ -11,12 +11,19 @@ export default {
 };
 
 const Template = args => html`
-  <vwc-accordion ...=${spread(args)}>
-    <vwc-expansion-panel header="Item 1">Content</vwc-expansion-panel>
-    <vwc-expansion-panel header="Item 2">Content</vwc-expansion-panel>
-    <vwc-expansion-panel header="Item 3">Content</vwc-expansion-panel>
-    <vwc-expansion-panel header="Item 4">Content</vwc-expansion-panel>
-  </vwc-accordion>
+	<style>
+		.wrapper {
+			width: 500px;
+		}
+	</style>
+	<div class="wrapper">
+		<vwc-accordion ...=${spread(args)}>
+			<vwc-expansion-panel header="Item 1">Content</vwc-expansion-panel>
+			<vwc-expansion-panel header="Item 2">Content</vwc-expansion-panel>
+			<vwc-expansion-panel header="Item 3">Content</vwc-expansion-panel>
+			<vwc-expansion-panel header="Item 4">Content</vwc-expansion-panel>
+		</vwc-accordion>
+	</div>
 `;
 
 export const Basic = Template.bind({});

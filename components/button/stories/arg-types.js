@@ -24,6 +24,12 @@ export const argTypes = {
 			].includes(s)),
 		}
 	},
+	stacked: {
+		control: {
+			type: 'inline-radio',
+			options: { 'true': '', 'false': undefined }
+		}
+	},
 	dense: {
 		control: {
 			type: 'inline-radio',

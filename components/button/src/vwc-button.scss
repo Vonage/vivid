@@ -1,4 +1,3 @@
-
 @forward './vwc-button-coupling';
 @use './vwc-button-variables' as button-variables;
 @use '@vonage/vwc-icon/src/partials/vwc-icon-variables' as icon-variables;
@@ -10,7 +9,7 @@
 	$default: primary,
 );
 @use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
-@use '@vonage/vvd-foundation/scss/mixins/shape-mixins' with(
+@use '@vonage/vvd-foundation/scss/mixins/shape-mixins' with (
 	$variable-name: --vvd-button-shape
 );
 @use '@vonage/vvd-foundation/scss/mixins/layout/config' as layout-config with (
@@ -40,7 +39,6 @@
 	--mdc-button-outline-color: var(#{layout.$vvd-layout-color-outline}, var(--mdc-theme-primary));
 	--mdc-button-horizontal-padding: 16px;
 	--button-block-size: 40px;
-	$gutter: 8px;
 
 	@include vvd-formfield.coupling;
 	@include connotation.connotation;
@@ -65,35 +63,36 @@
 		display: flex;
 	}
 
+	> .trailing-icon,
+	> .leading-icon {
+		vwc-icon {
+			--gutter: 8px;
+
+			:host([enlarged]) & {
+				--gutter: 10px;
+			}
+
+			:host([stacked]) & {
+				--gutter: 0;
+			}
+		}
+	}
+
 	> .trailing-icon {
 		vwc-icon {
-			margin-inline-start: $gutter;
+			margin-inline-start: var(--gutter);
 		}
 	}
 
 	> .leading-icon {
 		vwc-icon {
-			margin-inline-end: $gutter;
+			margin-inline-end: var(--gutter);
 		}
 	}
 
 	/* stylelint-disable-next-line order/order -- variants */
 	@include size(dense, 4);
-	@include size(enlarged, 6) {
-		$gutter: 10px;
-
-		> .trailing-icon {
-			vwc-icon {
-				margin-inline-start: $gutter;
-			}
-		}
-
-		> .leading-icon {
-			vwc-icon {
-				margin-inline-end: $gutter;
-			}
-		}
-	}
+	@include size(enlarged, 6);
 
 	:host([raised]) &,
 	:host([unelevated]) & {
@@ -116,6 +115,36 @@
 
 	:host([enlarged]) & {
 		--mdc-button-horizontal-padding: 20px;
+	}
+
+	&.button-stacked {
+		--button-block-size: 68px;
+		flex-direction: column;
+		line-height: normal;
+
+		:host([enlarged]) & {
+			--button-block-size: 80px;
+		}
+
+		:host([dense]) & {
+			--button-block-size: 56px;
+		}
+
+		> .leading-icon vwc-icon,
+		.leading-icon ::slotted(*) {
+			margin-block-end: 0.5rem;
+		}
+
+		> .trailing-icon vwc-icon,
+		.trailing-icon ::slotted(*) {
+			margin-block-start: 0.5rem;
+		}
+
+		.trailing-icon ::slotted(*),
+		.leading-icon ::slotted(*) {
+			margin-inline-end: 0;
+			margin-inline-start: 0;
+		}
 	}
 }
 
