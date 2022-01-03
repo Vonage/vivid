@@ -1,7 +1,7 @@
 @use 'sass:selector';
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
-//'Connotation.Success' is  *deprecated*  and will be removed in vivid-3. Use any of the other connotation:
+//'Connotation.Success' is  *deprecated*  and will be removed in vivid-3. Use any of the other connotation predefined values:
 	$connotations-set: primary cta success alert,
 	$default: primary,
 );
