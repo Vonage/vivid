@@ -22,9 +22,12 @@ declare global {
 // @ts-ignore
 MWCSwitch.styles = [styleCoupling, mwcSwitchStyles, vwcSwitchStyle];
 
+/**
+ * 'Connotation.Success' is  *deprecated*  and will be removed in vivid-3. Use any of the other connotation
+ */
 type SwitchConnotation = Extract<
 	Connotation,
-	Connotation.Primary | Connotation.CTA |  Connotation.Alert
+	Connotation.Primary | Connotation.CTA | Connotation.Success | Connotation.Alert
 >;
 
 /**
