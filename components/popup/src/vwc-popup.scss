@@ -11,10 +11,11 @@
 	--border-size: 6px;
 	position: absolute;
 	display: none;
+	width: min-content;
 	background-color: var(#{scheme-variables.$vvd-color-surface-4dp});
 	border-radius: var(--border-size);
 	contain: layout;
-	filter: var(#{scheme-variables.$vvd-shadow-surface-4dp});
+	//filter: var(#{scheme-variables.$vvd-shadow-surface-4dp});
 
 	&-arrow {
 		position: absolute;

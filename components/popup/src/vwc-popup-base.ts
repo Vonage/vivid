@@ -5,6 +5,7 @@ import { ClassInfo, classMap } from 'lit-html/directives/class-map.js';
 import { nothing } from 'lit-html';
 import { computePosition, offset, shift, flip, arrow } from '@floating-ui/dom';
 import type { Placement, Strategy, Padding } from '@floating-ui/core';
+import '@vonage/vwc-elevation';
 
 export class VWCPopupBase extends LitElement {
 	@query('.popup') protected popupEl!: HTMLElement;
@@ -77,6 +78,14 @@ export class VWCPopupBase extends LitElement {
 	 * */
 	@property({ type: Boolean, reflect: true })
 		arrow?: boolean;
+
+	/**
+	 * @prop alternate - set the color-scheme to dark
+	 * accepts boolean value
+	 * @public
+	 * */
+	@property({ type: Boolean, reflect: true })
+		alternate?: boolean;
 
 	protected override firstUpdated(changedProperties: PropertyValues): void {
 		super.firstUpdated(changedProperties);
@@ -177,11 +186,13 @@ export class VWCPopupBase extends LitElement {
 
 	protected override render(): TemplateResult {
 		return html`
-			<div class="popup ${classMap(this.getRenderClasses())}" aria-hidden=${this.open ? 'false' : 'true' }>
-				<slot></slot>
-				${this.renderDismissButton()}
-				${this.renderArrow()}
-			</div>
+			<vwc-elevation dp="2">
+				<div class="popup ${classMap(this.getRenderClasses())}" aria-hidden=${this.open ? 'false' : 'true' } part=${this.alternate ? 'vvd-scheme-alternate' : ''} >
+						<slot></slot>
+						${this.renderDismissButton()}
+						${this.renderArrow()}
+				</div>
+			</vwc-elevation>
 		`;
 	}
 }
