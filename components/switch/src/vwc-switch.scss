@@ -9,11 +9,11 @@
 
 :host {
 	//css variables
-	--basic-nobe-size: 12px;
-	--translate: 16px;
-	--translate-natural: -16px;
+	--basic-knob-size: 12px;
+	--knob-translate: 16px;
+	--knob-translate-natural: -16px;
 	--natural-50: #757575;
-	--surface: #f2f2f2;
+	--switch-surface: #f2f2f2;
 
 	contain: content;
 }
@@ -31,15 +31,15 @@
 
 	&.mdc-switch--checked {
 		.mdc-switch__thumb {
-			--basic-nobe-size: 14px;
-			background-color: var(--surface);
+			--basic-knob-size: 14px;
+			background-color: var(--switch-surface);
 		}
 		.mdc-switch__thumb-underlay {
-			transform: translateX(var(--translate));
+			transform: translateX(var(--knob-translate));
 		}
 
 		.mdc-switch__native-control {
-			transform: translateX(var(--translate-natural));
+			transform: translateX(var(--knob-translate-natural));
 		}
 
 		&:hover {
@@ -132,7 +132,7 @@
 	height: 100%;
 
 	.mdc-switch__thumb {
-		--nobe-size: var(--basic-nobe-size);
+		--nobe-size: var(--basic-knob-size);
 		width: var(--nobe-size);
 		height: var(--nobe-size);
 		border: 0;
@@ -141,9 +141,9 @@
 }
 
 :host([enlarged]) {
-	--translate: 28px;
-	--translate-natural: -28px;
-	--basic-nobe-size: 24px;
+	--knob-translate: 28px;
+	--knob-translate-natural: -28px;
+	--basic-knob-size: 24px;
 	.mdc-switch,
 	.mdc-switch__native-control {
 		width: 60px;
@@ -156,7 +156,7 @@
 		}
 		&.mdc-switch--checked {
 			.mdc-switch__thumb {
-				--basic-nobe-size: 26px;
+				--basic-knob-size: 26px;
 			}
 		}
 	}

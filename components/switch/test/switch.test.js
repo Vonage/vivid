@@ -35,7 +35,7 @@ describe('switch', () => {
 			const actualElement = addedElements[0];
 			await waitNextTask();
 			const expectedStyles = {
-				width: '30px',
+				width: '36px',
 				height: '20px',
 			};
 			assertComputedStyle(actualElement, expectedStyles);
@@ -48,7 +48,7 @@ describe('switch', () => {
 			const actualElement = addedElements[0];
 			await waitNextTask();
 			const expectedStyles = {
-				width: '50px',
+				width: '60px',
 				height: '32px',
 			};
 			assertComputedStyle(actualElement, expectedStyles);
