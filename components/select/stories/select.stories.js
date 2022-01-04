@@ -36,6 +36,18 @@ DenseNoLabel.args = { dense: '' };
 export const PillAutoDense = Template.bind({});
 PillAutoDense.args = { shape: 'pill', label: 'VWC Select' };
 
+const TemplateGhost = args => html`
+	<vwc-select ...=${spread(args)} @selected=${onSelected}>
+	<vwc-list-item>Select one</vwc-list-item>
+	<vwc-list-item value="0">Item 0</vwc-list-item>
+	<vwc-list-item value="1">Item 1</vwc-list-item>
+	<vwc-list-item value="2">Item 2</vwc-list-item>
+	<vwc-list-item value="3">Item 3</vwc-list-item>
+</vwc-select`;
+
+export const GhostLayoutAutoDense = TemplateGhost.bind({});
+GhostLayoutAutoDense.args = { appearance: 'ghost', label: 'VWC Select' };
+
 export const Disabled = Template.bind({});
 Disabled.args = { disabled: '', label: 'VWC Select', helper: 'Helper Text' };
 

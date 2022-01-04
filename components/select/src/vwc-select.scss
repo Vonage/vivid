@@ -115,7 +115,7 @@ $vvd-select-size-block: --vvd-select-size-block;
 			transform: none;
 		}
 		&:not(.mdc-select--no-label) {
-			padding-top: 24px;
+			margin-top: 24px;
 		}
 	}
 	#{$vvd-select-size-block}: 40px;
@@ -188,6 +188,7 @@ vwc-notched-outline {
 	--mdc-notched-outline-border-color: var(
 		--mdc-select-outlined-idle-border-color
 	);
+
 }
 
 :host(:not([disabled])) .mdc-select.mdc-select--focused vwc-notched-outline,
@@ -205,3 +206,15 @@ vwc-notched-outline {
 		pill: 24px,
 	)
 );
+
+:host([appearance='ghost'i][dense]) {
+	.mdc-select .mdc-floating-label {
+		left: 0;
+	}
+	vwc-notched-outline {
+		--mdc-notched-outline-stroke-width: 0;
+	}
+	.mdc-select__anchor {
+		display: block;
+	}
+}
