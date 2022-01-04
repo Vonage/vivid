@@ -3,13 +3,16 @@
 #### `should internal contents`
 
 ```html
-<div
-  aria-hidden="true"
-  class="popup"
->
-  <slot>
-  </slot>
-</div>
+<vwc-elevation dp="2">
+  <div
+    aria-hidden="true"
+    class="popup"
+    part=""
+  >
+    <slot>
+    </slot>
+  </div>
+</vwc-elevation>
 
 ```
 
