@@ -142,10 +142,12 @@ async function setDevServer() {
 		...webpackConfig,
 		mode: 'development'
 	});
+
 	const devServerOptions = {
 		...webpackConfig.devServer,
 		open: true
 	};
+
 	const devServer = new WebpackDevServer(devServerOptions, compiler);
 
 	devServer.listen(webpackConfig.devServer.port, '127.0.0.1', () => {
