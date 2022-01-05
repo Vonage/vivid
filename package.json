@@ -154,5 +154,8 @@
 	"vaadin": {
 		"disableUsageStatistics": true
 	},
-	"_void_cache": true
+	"_void_cache": true,
+	"resolutions": {
+		"**/glob-parent": "^6.0.2"
+	}
 }
