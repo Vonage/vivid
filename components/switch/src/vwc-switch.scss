@@ -11,8 +11,7 @@
 :host {
 	// starting variables
 	#{switch-variables.$knob-size}: 12px;
-	#{switch-variables.$knob-translate}: 16px;
-	#{switch-variables.$knob-translate-natural}: -16px;
+	#{switch-variables.$knob-translate-x}: 16px;
 
 	contain: content;
 }
@@ -34,12 +33,11 @@
 			background-color: #{switch-variables.$switch-surface};
 		}
 		.mdc-switch__thumb-underlay {
-			transform: translateX(var(#{switch-variables.$knob-translate}));
+			transform: translateX(var(#{switch-variables.$knob-translate-x}));
 		}
 
 		.mdc-switch__native-control {
-			#{switch-variables.$knob-translate}: -16px;
-			transform: translateX(var(#{switch-variables.$knob-translate}));
+			transform: translateX(calc(var(#{switch-variables.$knob-translate-x}) * -1));
 		}
 
 		&:hover {
@@ -141,6 +139,7 @@
 
 :host([enlarged]) {
 	#{switch-variables.$knob-size}: 24px;
+	#{switch-variables.$knob-translate-x}: 28px;
 	.mdc-switch,
 	.mdc-switch__native-control {
 		width: 60px;
@@ -150,10 +149,6 @@
 	.mdc-switch {
 		&__thumb-underlay {
 			width: 32px;
-			#{switch-variables.$knob-translate}: 28px;
-		}
-		&__native-control {
-			#{switch-variables.$knob-translate}: -28px;
 		}
 
 		&.mdc-switch--checked {
@@ -161,7 +156,6 @@
 				#{switch-variables.$knob-size}: 26px;
 			}
 		}
-
 	}
 }
 
