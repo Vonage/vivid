@@ -3,7 +3,10 @@
 #### `should internal contents`
 
 ```html
-<aside class="side-drawer side-drawer-dismissible">
+<aside
+  aria-modal="false"
+  class="side-drawer side-drawer-dismissible"
+>
   <div class="side-drawer-content">
     <slot>
     </slot>
