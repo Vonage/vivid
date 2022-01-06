@@ -64,10 +64,10 @@ const Template = args => html`
 
 
 export const Dismissible = Template.bind({});
-Dismissible.args = { type: 'dismissible', open: true };
+Dismissible.args = { open: true };
 
 export const Modal = Template.bind({});
-Modal.args = { type: 'modal', open: true };
+Modal.args = { modal: true, open: true };
 
 export const Alternate = Template.bind({});
 Alternate.args = { alternate: true, open: true };

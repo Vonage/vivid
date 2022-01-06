@@ -17,12 +17,8 @@ export const argTypes = {
 			options: ['start', 'end'],
 		}
 	},
-	type: {
-		defaultValue: 'dismissible',
-		control: {
-			type: 'select',
-			options: ['dismissible', 'modal'],
-		}
+	modal: {
+		control: booleanControl
 	},
 	hasTopBar: {
 		control: booleanControl
