@@ -111,7 +111,7 @@ export class VWCSideDrawerBase extends LitElement {
 		};
 
 		return html`
-			<aside part="${ifDefined(alternate)}" class="side-drawer ${classMap(classes)}" aria-modal=${this.modal}
+			<aside part="${ifDefined(alternate)}" class="side-drawer ${classMap(classes)}" aria-modal="${this.modal}"
 				@transitionend=${this.#handleTransitionEnd} @keydown=${this.#handleKeydown}>
 		
 				${topBar}
