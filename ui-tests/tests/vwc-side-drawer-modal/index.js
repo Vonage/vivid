@@ -21,7 +21,7 @@ export async function createElementVariations(wrapper) {
 	snapshotTheWholePage(wrapper);
 	const elementWrapper = document.createElement('div');
 	elementWrapper.innerHTML = `
-	<vwc-side-drawer id="side-drawer" open type="modal" hasTopBar>
+	<vwc-side-drawer id="side-drawer" open modal hasTopBar>
 		<div slot="top-bar">
 			<vwc-icon type="vonage-mono"></vwc-icon>
 			<vwc-text font-face="body-1-bold"> VONAGE</vwc-text>
