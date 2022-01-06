@@ -9,10 +9,10 @@
 @use 'partials/vwc-switch-variables' as switch-variables;
 
 :host {
-	//css variables
-	--basic-knob-size: 12px;
-	--knob-translate: 16px;
-	--knob-translate-natural: -16px;
+	// starting variables
+	#{switch-variables.$knob-size}: 12px;
+	#{switch-variables.$knob-translate}: 16px;
+	#{switch-variables.$knob-translate-natural}: -16px;
 
 	contain: content;
 }
@@ -30,15 +30,15 @@
 
 	&.mdc-switch--checked {
 		.mdc-switch__thumb {
-			--basic-knob-size: 14px;
+			#{switch-variables.$knob-size}: 14px;
 			background-color: #{switch-variables.$switch-surface};
 		}
 		.mdc-switch__thumb-underlay {
-			transform: translateX(var(--knob-translate));
+			transform: translateX(var(#{switch-variables.$knob-translate}));
 		}
 
 		.mdc-switch__native-control {
-			transform: translateX(var(--knob-translate-natural));
+			transform: translateX(var(#{switch-variables.$knob-translate-natural}));
 		}
 
 		&:hover {
@@ -131,18 +131,17 @@
 	height: 100%;
 
 	.mdc-switch__thumb {
-		--knob-size: var(--basic-knob-size);
-		width: var(--knob-size);
-		height: var(--knob-size);
+		width: var(#{switch-variables.$knob-size});
+		height: var(#{switch-variables.$knob-size});
 		border: 0;
 		box-shadow: none;
 	}
 }
 
 :host([enlarged]) {
-	--knob-translate: 28px;
-	--knob-translate-natural: -28px;
-	--basic-knob-size: 24px;
+	#{switch-variables.$knob-translate}: 28px;
+	#{switch-variables.$knob-translate-natural}: -28px;
+	#{switch-variables.$knob-size}: 24px;
 	.mdc-switch,
 	.mdc-switch__native-control {
 		width: 60px;
@@ -155,7 +154,7 @@
 		}
 		&.mdc-switch--checked {
 			.mdc-switch__thumb {
-				--basic-knob-size: 26px;
+				#{switch-variables.$knob-size}: 26px;
 			}
 		}
 	}
