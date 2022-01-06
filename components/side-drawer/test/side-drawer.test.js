@@ -56,9 +56,9 @@ describe('side-drawer', () => {
 			expect(actualElement.position, 'position should be undefined')
 				.to
 				.equal(undefined);
-			expect(actualElement.type, 'type should be dismissible')
+			expect(actualElement.modal, 'modal should be false')
 				.to
-				.equal("dismissible");
+				.equal(false);
 		});
 	});
 
@@ -73,19 +73,6 @@ describe('side-drawer', () => {
 				expect(actualElement[property])
 					.to
 					.equal(true);
-			}
-		});
-
-		it('should reflect (type) from attribute to property', async () => {
-			const COMPONENT_TYPES = ['dismissible', 'modal'];
-			for await (const type of COMPONENT_TYPES) {
-				const [actualElement] = addElement(
-					textToDomToParent(`<${COMPONENT_NAME} type=${type}></${COMPONENT_NAME}>`)
-				);
-				await actualElement.updateComplete;
-				expect(actualElement.type)
-					.to
-					.equal(type);
 			}
 		});
 
@@ -108,7 +95,7 @@ describe('side-drawer', () => {
 
 		beforeEach(function () {
 			[sideDrawerEl] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} type="modal"></${COMPONENT_NAME}>`)
+				textToDomToParent(`<${COMPONENT_NAME} modal></${COMPONENT_NAME}>`)
 			);
 		});
 		it('should fire opened event after animation completes and open is true', async () => {
@@ -196,7 +183,7 @@ describe('side-drawer', () => {
 
 		beforeEach(function () {
 			[sideDrawerEl] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} type="dismissible"></${COMPONENT_NAME}>`)
+				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
 		});
 		it('should fire opened event after animation completes and open is true', async () => {
