@@ -38,7 +38,8 @@
 		}
 
 		.mdc-switch__native-control {
-			transform: translateX(var(#{switch-variables.$knob-translate-natural}));
+			#{switch-variables.$knob-translate}: -16px;
+			transform: translateX(var(#{switch-variables.$knob-translate}));
 		}
 
 		&:hover {
@@ -139,8 +140,6 @@
 }
 
 :host([enlarged]) {
-	#{switch-variables.$knob-translate}: 28px;
-	#{switch-variables.$knob-translate-natural}: -28px;
 	#{switch-variables.$knob-size}: 24px;
 	.mdc-switch,
 	.mdc-switch__native-control {
@@ -151,12 +150,18 @@
 	.mdc-switch {
 		&__thumb-underlay {
 			width: 32px;
+			#{switch-variables.$knob-translate}: 28px;
 		}
+		&__native-control {
+			#{switch-variables.$knob-translate}: -28px;
+		}
+
 		&.mdc-switch--checked {
 			.mdc-switch__thumb {
 				#{switch-variables.$knob-size}: 26px;
 			}
 		}
+
 	}
 }
 
