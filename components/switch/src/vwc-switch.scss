@@ -6,14 +6,13 @@
 	$default: primary,
 );
 @use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
+@use 'partials/vwc-switch-variables' as switch-variables;
 
 :host {
 	//css variables
 	--basic-knob-size: 12px;
 	--knob-translate: 16px;
 	--knob-translate-natural: -16px;
-	--natural-50: #757575;
-	--switch-surface: #f2f2f2;
 
 	contain: content;
 }
@@ -32,7 +31,7 @@
 	&.mdc-switch--checked {
 		.mdc-switch__thumb {
 			--basic-knob-size: 14px;
-			background-color: var(--switch-surface);
+			background-color: #{switch-variables.$switch-surface};
 		}
 		.mdc-switch__thumb-underlay {
 			transform: translateX(var(--knob-translate));
@@ -53,11 +52,11 @@
 	//:(not) is needed to overide mdc style
 	&:not(.mdc-switch--checked) {
 		.mdc-switch__track {
-			border: 1px solid var(--natural-50);
+			border: 1px solid #{switch-variables.$switch-default-color};
 		}
 
 		.mdc-switch__thumb {
-			background-color: var(--natural-50);
+			background-color: #{switch-variables.$switch-default-color};
 		}
 
 		&:hover {
@@ -132,9 +131,9 @@
 	height: 100%;
 
 	.mdc-switch__thumb {
-		--nobe-size: var(--basic-knob-size);
-		width: var(--nobe-size);
-		height: var(--nobe-size);
+		--knob-size: var(--basic-knob-size);
+		width: var(--knob-size);
+		height: var(--knob-size);
 		border: 0;
 		box-shadow: none;
 	}
