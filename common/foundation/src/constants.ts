@@ -15,7 +15,6 @@ export enum ConnotationDecorative {
 
 /* eslint-disable no-shadow */
 export enum Shape {
-	Sharp = 'sharp',
 	Rounded = 'rounded',
 	Pill = 'pill',
 	Circled = 'circled',

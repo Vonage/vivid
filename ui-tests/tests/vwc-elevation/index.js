@@ -20,17 +20,9 @@ export async function createElementVariations(wrapper) {
 					text-align: center;
 				}
 			</style>
-
-			<vwc-elevation shape="sharp" dp="0">
-		  	<div class="card">
-					This is the content inside the elevation with DP 0 and sharp edges
-				</div>
-			</vwc-elevation>
-
-
 			<vwc-elevation dp="0">
 		  	<div class="card">
-					This is the content inside the elevation with DP 2
+					This is the content inside the elevation with DP 0
 				</div>
 			</vwc-elevation>
 

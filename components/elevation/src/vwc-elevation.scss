@@ -1,6 +1,7 @@
 @use 'sass:list';
 
 $dps: 0 2 4 8 12 16 24;
+$elevation-border-radius: --elevation-border-radius;
 
 @function get-default-selector($list, $default) {
 	@if list.length($list) == 1 {
@@ -24,11 +25,7 @@ $dps: 0 2 4 8 12 16 24;
 }
 
 .vwc-elevation {
-	--border-radius-size: 6px;
+	--elevation-border-radius: 6px;
 	width: fit-content;
-	border-radius: var(--border-radius-size);
-
-	&-sharp {
-		--border-radius-size: 0;
-	}
+	border-radius: var(#{--elevation-border-radius});
 }
