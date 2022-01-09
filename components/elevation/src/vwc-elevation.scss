@@ -29,7 +29,3 @@ $vvd-elevation-border-radius: --vvd-elevation-border-radius;
 	width: fit-content;
 	border-radius: var(#{$vvd-elevation-border-radius}, 6px);
 }
-
-::slotted(*) {
-	border-radius: var(#{$vvd-elevation-border-radius}, 6px);
-}
