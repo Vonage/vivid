@@ -37,6 +37,10 @@ export async function createElementVariations(wrapper) {
 	wrapper.appendChild(textElementWrapper);
 	const button = document.getElementById("button");
 	button.addEventListener("click", onClick);
+	const popup = document.getElementById('popup');
+	await popup.updateComplete;
+	onClick();
+	return popup.updateComplete;
 }
 
 function onClick() {
