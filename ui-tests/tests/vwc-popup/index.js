@@ -26,7 +26,7 @@ export async function createElementVariations(wrapper) {
 		</style>
 		<div class="popup-wrapper">
 			<vwc-button id="button" layout="outlined" outlined aria-describedby="popup">Click to open popup</vwc-button>
-			<vwc-popup id="popup" corner="bottom" arrow dismissible >
+			<vwc-popup id="popup" corner="bottom" arrow dismissible>
 			<div class="content">
 			<vwc-text font-face="body-1-bold" tight><p class="line">Popup title</p></vwc-text>
 				<vwc-text font-face="body-2" tight>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</vwc-text>
