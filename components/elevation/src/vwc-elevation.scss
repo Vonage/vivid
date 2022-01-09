@@ -27,7 +27,6 @@ $dps: 0 2 4 8 12 16 24;
 	--border-radius-size: 6px;
 	width: fit-content;
 	border-radius: var(--border-radius-size);
-	contain: content;
 
 	&-sharp {
 		--border-radius-size: 0;
