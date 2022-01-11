@@ -1,3 +1,12 @@
+# [2.25.0](https://github.com/vonage/vivid/compare/v2.24.1...v2.25.0) (2022-01-11)
+
+
+### Features
+
+* **button:** stacked style flow support ([#1174](https://github.com/vonage/vivid/issues/1174)) ([d4d975d](https://github.com/vonage/vivid/commit/d4d975df779c5a6bcfe2490597a8f08671e30630))
+
+
+
 ## [2.24.1](https://github.com/vonage/vivid/compare/v2.24.0...v2.24.1) (2021-12-23)
 
 

@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.25.0](https://github.com/Vonage/vivid/compare/v2.24.1...v2.25.0) (2022-01-11)
+
+
+### Bug Fixes
+
+* **accordion:** accordion outlined with elevation wrap ([#1183](https://github.com/Vonage/vivid/issues/1183)) ([cb3e7d0](https://github.com/Vonage/vivid/commit/cb3e7d01293941c41ac575edf2715bd0617a3005))
+* **card:** declare missing dependencies ([#1173](https://github.com/Vonage/vivid/issues/1173)) ([a70020f](https://github.com/Vonage/vivid/commit/a70020f10e59c78496635f5b8f372ef1500f590b))
+* **checkbox & radiobutton:** border-color change ([#1187](https://github.com/Vonage/vivid/issues/1187)) ([f02fd7d](https://github.com/Vonage/vivid/commit/f02fd7df04fd61e619d2242fb4e3bb5290f75b2d))
+* **elevation:** new elevation dp ([#1177](https://github.com/Vonage/vivid/issues/1177)) ([ddc4c52](https://github.com/Vonage/vivid/commit/ddc4c5289111b8436388a0221142e925f6a05b80))
+* **elevation:** remove containment ([#1188](https://github.com/Vonage/vivid/issues/1188)) ([57e40b3](https://github.com/Vonage/vivid/commit/57e40b364b76761311a131b3ff4d0ed034d2df7d))
+
+
+### Features
+
+* **button:** stacked style flow support ([#1174](https://github.com/Vonage/vivid/issues/1174)) ([d4d975d](https://github.com/Vonage/vivid/commit/d4d975df779c5a6bcfe2490597a8f08671e30630))
+* **select:** add appearance-ghost option ([#1158](https://github.com/Vonage/vivid/issues/1158)) ([b3ddaaf](https://github.com/Vonage/vivid/commit/b3ddaafb59d81f70145af9cfa2fe371ba0ad99c6))
+* **switch:** new design ([#1184](https://github.com/Vonage/vivid/issues/1184)) ([b23d988](https://github.com/Vonage/vivid/commit/b23d988c2a843dc40daaa54c9601c1a3284ddbf8))
+
+
+
+
+
 ## [2.24.1](https://github.com/Vonage/vivid/compare/v2.24.0...v2.24.1) (2021-12-23)
 
 

@@ -1,3 +1,12 @@
+# [2.25.0](https://github.com/vonage/vivid/compare/v2.24.1...v2.25.0) (2022-01-11)
+
+
+### Bug Fixes
+
+* **checkbox & radiobutton:** border-color change ([#1187](https://github.com/vonage/vivid/issues/1187)) ([f02fd7d](https://github.com/vonage/vivid/commit/f02fd7df04fd61e619d2242fb4e3bb5290f75b2d))
+
+
+
 ## [2.24.1](https://github.com/vonage/vivid/compare/v2.24.0...v2.24.1) (2021-12-23)
 
 
