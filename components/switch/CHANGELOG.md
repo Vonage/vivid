@@ -1,3 +1,12 @@
+# [2.25.0](https://github.com/vonage/vivid/compare/v2.24.1...v2.25.0) (2022-01-11)
+
+
+### Features
+
+* **switch:** new design ([#1184](https://github.com/vonage/vivid/issues/1184)) ([b23d988](https://github.com/vonage/vivid/commit/b23d988c2a843dc40daaa54c9601c1a3284ddbf8))
+
+
+
 ## [2.24.1](https://github.com/vonage/vivid/compare/v2.24.0...v2.24.1) (2021-12-23)
 
 

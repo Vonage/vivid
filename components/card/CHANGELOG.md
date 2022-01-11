@@ -1,3 +1,12 @@
+# [2.25.0](https://github.com/vonage/vivid/compare/v2.24.1...v2.25.0) (2022-01-11)
+
+
+### Bug Fixes
+
+* **card:** declare missing dependencies ([#1173](https://github.com/vonage/vivid/issues/1173)) ([a70020f](https://github.com/vonage/vivid/commit/a70020f10e59c78496635f5b8f372ef1500f590b))
+
+
+
 ## [2.24.1](https://github.com/vonage/vivid/compare/v2.24.0...v2.24.1) (2021-12-23)
 
 
