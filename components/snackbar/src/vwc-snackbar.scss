@@ -87,17 +87,23 @@ $spacing: 16px;
 	}
 }
 
-.vwc-snackbar-legacy .header-and-label {
+.header-and-label {
 	padding: 22px $spacing;
 
 	> .heading {
-		@include typography.typography-cat-shorthand('body-2-bold');
+		@include typography.typography-cat-shorthand('body-1-bold');
 		color: var(#{scheme-variables.$vvd-color-on-canvas});
 		margin-block-end: 4px;
 		margin-block-start: 0;
 	}
 	> .mdc-snackbar__label {
 		padding: 0;
+	}
+}
+
+.vwc-snackbar-legacy .header-and-label {
+	> .heading {
+		@include typography.typography-cat-shorthand('body-2-bold');
 	}
 }
 
