@@ -42,7 +42,7 @@ $spacing: 16px;
 
 .icon {
 	margin-block-end: auto;
-	margin-block-start: 20px;
+	margin-block-start: 16px;
 	margin-inline-start: $spacing;
 	.vwc-snackbar-legacy & {
 		#{connotation.$vvd-color-connotation}: initial;
@@ -88,7 +88,7 @@ $spacing: 16px;
 }
 
 .header-and-label {
-	padding: 22px $spacing;
+	padding: 18px $spacing;
 
 	> .heading {
 		@include typography.typography-cat-shorthand('body-1-bold');

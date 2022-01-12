@@ -18,8 +18,8 @@ export async function createElementVariations(wrapper) {
 	snapshotTheWholePage(wrapper);
 	wrapper.innerHTML = `
 		${element`connotation="alert" position="TOP-START" icon="error-solid"`}
-		${element`connotation="announcement" position="TOP-CENTER" icon="megaphone-solid"`}
-		${element`connotation="info" position="TOP-END" dismissible icon="help-solid"`}
+		${element`connotation="info" position="TOP-CENTER" icon="help-solid"`}
+		${element`connotation="announcement" position="TOP-END" dismissible icon="megaphone-solid"`}
 		${element`connotation="success" position="BOTTOM-START" legacy icon="check-solid"`}
 		${element`connotation="warning" position="BOTTOM-CENTER" legacy dismissible icon="warning-solid"`}
 		${element`connotation="info" position="BOTTOM-END" legacy dismissible icon="megaphone-solid"`}
