@@ -1,3 +1,13 @@
+# [2.25.0](https://github.com/vonage/vivid/compare/v2.24.1...v2.25.0) (2022-01-11)
+
+
+### Bug Fixes
+
+* **elevation:** new elevation dp ([#1177](https://github.com/vonage/vivid/issues/1177)) ([ddc4c52](https://github.com/vonage/vivid/commit/ddc4c5289111b8436388a0221142e925f6a05b80))
+* **elevation:** remove containment ([#1188](https://github.com/vonage/vivid/issues/1188)) ([57e40b3](https://github.com/vonage/vivid/commit/57e40b364b76761311a131b3ff4d0ed034d2df7d))
+
+
+
 ## [2.24.1](https://github.com/vonage/vivid/compare/v2.24.0...v2.24.1) (2021-12-23)
 
 

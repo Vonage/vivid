@@ -1,3 +1,12 @@
+# [2.25.0](https://github.com/vonage/vivid/compare/v2.24.1...v2.25.0) (2022-01-11)
+
+
+### Features
+
+* **select:** add appearance-ghost option ([#1158](https://github.com/vonage/vivid/issues/1158)) ([b3ddaaf](https://github.com/vonage/vivid/commit/b3ddaafb59d81f70145af9cfa2fe371ba0ad99c6))
+
+
+
 ## [2.24.1](https://github.com/vonage/vivid/compare/v2.24.0...v2.24.1) (2021-12-23)
 
 
