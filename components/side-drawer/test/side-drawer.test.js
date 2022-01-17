@@ -64,7 +64,7 @@ describe('side-drawer', () => {
 
 	describe('Side drawer attributes', () => {
 		it('should reflect from attribute to property', async () => {
-			const COMPONENT_PROPERTIES = ['open', 'alternate', 'hasTopBar'];
+			const COMPONENT_PROPERTIES = ['open', 'alternate', 'hasTopBar', 'modal'];
 			for await (const property of COMPONENT_PROPERTIES) {
 				const [actualElement] = addElement(
 					textToDomToParent(`<${COMPONENT_NAME} ${property}></${COMPONENT_NAME}>`)
