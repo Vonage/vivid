@@ -55,9 +55,9 @@ describe('popup', () => {
 			expect(actualElement.distance, 'distance should be 10')
 				.to
 				.equal(10);
-			expect(actualElement.strategy, 'strategy should be absolute')
+			expect(actualElement.strategy, 'strategy should be fixed')
 				.to
-				.equal('absolute');
+				.equal('fixed');
 		});
 	});
 
