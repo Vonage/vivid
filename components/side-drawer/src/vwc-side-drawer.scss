@@ -46,9 +46,7 @@ $inline-size: var(#{variables.$side-drawer-inline-size}, 280px);
 		}
 	}
 
-	&.side-drawer-dismissible.side-drawer-open,
- 
-	&:not(.side-drawer-dismissible):not(.side-drawer-modal) {
+	.side-drawer:not(.side-drawer-modal).side-drawer-open {
 		+ .side-drawer-app-content {
 			@include typography.typography-cat-shorthand(body-1);
 			margin-inline-start: #{$inline-size};

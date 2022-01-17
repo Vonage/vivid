@@ -104,7 +104,6 @@ export class VWCSideDrawerBase extends LitElement {
 
 		const classes = {
 			'side-drawer-alternate': this.alternate,
-			'side-drawer-dismissible': !this.modal,
 			'side-drawer-modal': this.modal,
 			'side-drawer-open': this.open,
 			'side-drawer-end': end,
