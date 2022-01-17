@@ -27,7 +27,6 @@
 
 	&-open {
 		display: inline-grid;
-		//contain: content;
 	}
 
 	&-dismissible {
@@ -39,8 +38,4 @@
 		margin-block-start: 0.25rem;
 		margin-inline-end: 0.25rem;
 	}
-}
-
-::slotted(*) {
-	border-radius: var(--border-radius-size);
 }
