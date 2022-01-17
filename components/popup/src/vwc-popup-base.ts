@@ -18,7 +18,7 @@ export class VWCPopupBase extends LitElement {
 	 * @public
 	 * */
 	@property({ type: Boolean, reflect: true })
-		open?: boolean= false;
+		open = false;
 
 	/**
 	 * @prop anchor - the anchor of the popup
