@@ -1,138 +1,162 @@
 @use 'sass:selector';
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
+//'Connotation.Success' is  *deprecated*  and will be removed in vivid-3. Use any of the other connotation predefined values:
 	$connotations-set: primary cta success alert,
 	$default: primary,
 );
 @use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
+@use 'partials/vwc-switch-variables' as switch-variables;
+
+:host {
+	// starting variables
+	#{switch-variables.$knob-size}: 12px;
+	#{switch-variables.$knob-translate-x}: 16px;
+
+	contain: content;
+}
 
 .mdc-switch {
 	--mdc-theme-secondary: var(#{connotation.$vvd-color-connotation});
-
-	--vvd-switch-unchecked-background: var(#{scheme-variables.$vvd-color-neutral});
+	--vvd-switch-unchecked-background: trasparent;
 	--vvd-switch-unchecked-background-hover: var(#{scheme-variables.$vvd-color-neutral});
 	--vvd-switch-unchecked-background-focus: var(#{scheme-variables.$vvd-color-neutral});
-
 	--vvd-switch-disabled-background: var(#{scheme-variables.$vvd-color-neutral-30});
-	--vvd-switch-shadow-focus: 0, 0, 0, 0.5;
-
 	--mdc-theme-surface: var(#{scheme-variables.$vvd-color-neutral-10}); // unchecked thumb
 	--mdc-theme-on-surface: var(--vvd-switch-unchecked-background); // unchecked track
 
 	@include connotation.connotation;
-}
 
-:host {
-	border-radius: 16px;
-
-	.mdc-switch,
-	.mdc-switch__native-control {
-		width: 30px;
-		height: 20px;
-	}
-
-	.mdc-switch__track {
-		width: 100%;
-		height: 100%;
-		border-width: 0;
-		border-radius: 16px;
-	}
-
-	.mdc-switch__thumb-underlay {
-		top: 0;
-		left: 0;
-		width: 20px;
-		height: 100%;
-
+	&.mdc-switch--checked {
 		.mdc-switch__thumb {
-			width: 16px;
-			height: 16px;
-			border: 0 none;
+			#{switch-variables.$knob-size}: 14px;
+			background-color: #{switch-variables.$switch-surface};
 		}
-	}
-
-	.mdc-switch--checked {
 		.mdc-switch__thumb-underlay {
-			transform: translateX(10px);
+			transform: translateX(var(#{switch-variables.$knob-translate-x}));
 		}
 
 		.mdc-switch__native-control {
-			transform: translateX(-10px);
+			transform: translateX(calc(var(#{switch-variables.$knob-translate-x}) * -1));
+		}
+
+		&:hover {
+			.mdc-switch__thumb,
+			.mdc-switch__track {
+				filter: brightness(90%);
+			}
+		}
+
+	}
+	//:(not) is needed to overide mdc style
+	&:not(.mdc-switch--checked) {
+		.mdc-switch__track {
+			border: 1px solid #{switch-variables.$switch-default-color};
+		}
+
+		.mdc-switch__thumb {
+			background-color: #{switch-variables.$switch-default-color};
+		}
+
+		&:hover {
+			.mdc-switch__thumb {
+				background-color: var(#{scheme-variables.$vvd-color-neutral-70});
+			}
+			.mdc-switch__track {
+				border-color: var(#{scheme-variables.$vvd-color-neutral-70});
+			}
 		}
 	}
 
-	.mdc-switch {
-		.mdc-switch__thumb {
-			box-shadow: none;
+	&:not(.connotation-cta, .connotation-success, .connotation-alert, .mdc-switch--disabled) {
+		&.mdc-switch--checked {
+			.mdc-switch__thumb {
+				background-color: var(#{scheme-variables.$vvd-color-neutral-20});
+			}
 		}
+	}
 
-		&.mdc-switch--checked .mdc-switch__thumb {
-			background-color: var(#{scheme-variables.$vvd-color-neutral-10});
-		}
 
-		&:hover .mdc-switch__thumb {
-			opacity: 0.8;
-		}
+	.mdc-switch__track,
+	&.mdc-switch--checked .mdc-switch__track {
+		opacity: initial;
+	}
 
-		.mdc-switch__track,
-		&.mdc-switch--checked .mdc-switch__track {
+	&.mdc-switch--disabled {
+		opacity: initial;
+		.mdc-switch__track {
 			opacity: initial;
 		}
 
-		&:not(.mdc-switch--checked):hover .mdc-switch__track {
-			background-color: var(--vvd-switch-unchecked-background-hover);
-		}
-
-		&.mdc-switch--disabled {
-			opacity: initial;
-
+		&.mdc-switch--checked {
 			.mdc-switch__track {
 				background-color: var(--vvd-switch-disabled-background);
-				opacity: initial;
+			}
+			.mdc-switch__thumb {
+				background-color: var(#{scheme-variables.$vvd-color-neutral-20});
+			}
+		}
+
+		&:not(.mdc-switch--checked) {
+			.mdc-switch__track {
+				border-color: var(--vvd-switch-disabled-background);
+			}
+			.mdc-switch__thumb {
+				background-color: var(--vvd-switch-disabled-background);
 			}
 		}
 	}
 }
 
+
+
+.mdc-switch,
+.mdc-switch__native-control {
+	width: 36px;
+	height: 20px;
+}
+
+.mdc-switch__track {
+	width: 100%;
+	height: 100%;
+	border-width: 0;
+	border-radius: 16px;
+}
+
+.mdc-switch__thumb-underlay {
+	top: 0;
+	left: 0;
+	width: 20px;
+	height: 100%;
+
+	.mdc-switch__thumb {
+		width: var(#{switch-variables.$knob-size});
+		height: var(#{switch-variables.$knob-size});
+		border: 0;
+		box-shadow: none;
+	}
+}
+
 :host([enlarged]) {
+	#{switch-variables.$knob-size}: 24px;
+	#{switch-variables.$knob-translate-x}: 28px;
 	.mdc-switch,
 	.mdc-switch__native-control {
-		width: 50px;
+		width: 60px;
 		height: 32px;
 	}
 
-	.mdc-switch__thumb-underlay {
-		width: 32px;
-
-		.mdc-switch__thumb {
-			width: 24px;
-			height: 24px;
-		}
-	}
-
-	.mdc-switch--checked {
-		.mdc-switch__thumb-underlay {
-			transform: translateX(18px);
+	.mdc-switch {
+		&__thumb-underlay {
+			width: 32px;
 		}
 
-		.mdc-switch__native-control {
-			transform: translateX(-18px);
+		&.mdc-switch--checked {
+			.mdc-switch__thumb {
+				#{switch-variables.$knob-size}: 26px;
+			}
 		}
 	}
 }
 
-:host(:not([disabled]):focus-within) {
-	.mdc-switch__track {
-		box-shadow: 0 0 2px 1px rgba(var(--vvd-switch-shadow-focus));
-	}
 
-	.mdc-switch:not(.mdc-switch--checked) {
-		.mdc-switch__track {
-			background-color: var(--vvd-switch-unchecked-background-focus);
-		}
-
-		&:hover .mdc-switch__track {
-			background-color: var(--vvd-switch-unchecked-background-hover);
-		}
-	}
-}

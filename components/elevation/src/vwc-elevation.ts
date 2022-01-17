@@ -22,7 +22,7 @@ export class VWCElevation extends LitElement {
 
 	protected override render(): unknown {
 		const classList = {
-			[`vwc-elevation-dp-${this.dp}`]: true
+			[`vwc-elevation-dp-${this.dp}`]: true,
 		};
 
 		return html`

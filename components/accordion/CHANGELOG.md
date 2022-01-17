@@ -1,3 +1,12 @@
+# [2.25.0](https://github.com/vonage/vivid/compare/v2.24.1...v2.25.0) (2022-01-11)
+
+
+### Bug Fixes
+
+* **accordion:** accordion outlined with elevation wrap ([#1183](https://github.com/vonage/vivid/issues/1183)) ([cb3e7d0](https://github.com/vonage/vivid/commit/cb3e7d01293941c41ac575edf2715bd0617a3005))
+
+
+
 ## [2.24.1](https://github.com/vonage/vivid/compare/v2.24.0...v2.24.1) (2021-12-23)
 
 
