@@ -13,7 +13,7 @@ export const argTypes = {
     strategy: {
         control: {
             type: 'select',
-            defaultValue: 'absolute',
+            defaultValue: 'fixed',
             options: ['absolute', 'fixed']
         }
     },

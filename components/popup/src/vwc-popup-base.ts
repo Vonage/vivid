@@ -69,7 +69,7 @@ export class VWCPopupBase extends LitElement {
 	* @public
 	* */
 	@property({ type: String, reflect: true })
-		strategy: Strategy = 'absolute';
+		strategy: Strategy = 'fixed';
 
 	/**
 	 * @prop arrow - adds small triangle to indicate the trigger element
