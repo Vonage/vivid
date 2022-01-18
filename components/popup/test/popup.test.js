@@ -62,7 +62,7 @@ describe('popup', () => {
 	});
 
 	describe(`open`, function () {
-		it(`should be set to true`, function () {
+		it(`should set "open" to true`, function () {
 			const [anchorElement] = addElement(
 				textToDomToParent(`<vwc-button></vwc-button>`)
 			);
@@ -74,6 +74,28 @@ describe('popup', () => {
 				.to
 				.equal(true);
 		});
+
+		it(`should set "open" to false when anchor is null`, function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} anchor=${null}></${COMPONENT_NAME}>`)
+			);
+
+			actualElement.show();
+			expect(actualElement.open)
+				.to
+				.equal(false);
+		});
+
+		it(`should set "open" to false when no anchor`, function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+			);
+
+			actualElement.show();
+			expect(actualElement.open)
+				.to
+				.equal(false);
+		});
 	});
 
 	describe(`hide`, function () {
@@ -84,6 +106,28 @@ describe('popup', () => {
 			const anchorElement = addedElements[0];
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} open anchor=${anchorElement}></${COMPONENT_NAME}>`)
+			);
+
+			actualElement.hide();
+			expect(actualElement.open)
+				.to
+				.equal(false);
+		});
+
+		it(`should set "open" to false when anchor is null`, function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} open anchor=${null}></${COMPONENT_NAME}>`)
+			);
+
+			actualElement.hide();
+			expect(actualElement.open)
+				.to
+				.equal(false);
+		});
+
+		it(`should set "open" to false when no anchor`, function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
 
 			actualElement.hide();

@@ -25,7 +25,7 @@ export class VWCPopupBase extends LitElement {
 	 * @public
 	 * */
 	@property({ type: Element, reflect: true })
-		anchor?: Element;
+		anchor!: Element;
 
 	/**
 	 * @prop dismissible - adds close button to the popup
@@ -119,9 +119,6 @@ export class VWCPopupBase extends LitElement {
 	async updatePosition() {
 		const middleware = [flip(), shift({ padding: this.padding }), offset(this.distance)];
 		this.arrow ? middleware.push(arrow({element: this.arrowEl, padding: this.padding})) : nothing;
-		if (!this.anchor) {
-			return false;
-		}
 		try {
 			const positionData = await computePosition(this.anchor, this.popupEl, {
 				placement: this.corner,
