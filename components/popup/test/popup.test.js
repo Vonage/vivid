@@ -63,10 +63,9 @@ describe('popup', () => {
 
 	describe(`open`, function () {
 		it(`should be set to true`, function () {
-			const addedElements = addElement(
+			const [anchorElement] = addElement(
 				textToDomToParent(`<vwc-button></vwc-button>`)
 			);
-			const anchorElement = addedElements[0];
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} open anchor=${anchorElement}></${COMPONENT_NAME}>`)
 			);
