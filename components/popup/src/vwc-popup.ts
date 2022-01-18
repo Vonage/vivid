@@ -3,6 +3,7 @@ import { customElement } from 'lit-element';
 import { VWCPopupBase } from './vwc-popup-base.js';
 import { style } from './vwc-popup.css.js';
 import '@vonage/vwc-icon-button';
+import '@vonage/vwc-elevation';
 
 /**
  * Popup are used to display a message or notification to the user and are displayed on top of all other web page elements.

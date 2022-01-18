@@ -5,7 +5,6 @@ import { ClassInfo, classMap } from 'lit-html/directives/class-map.js';
 import { nothing } from 'lit-html';
 import { computePosition, offset, shift, flip, arrow } from '@floating-ui/dom';
 import type { Placement, Strategy, Padding } from '@floating-ui/core';
-import '@vonage/vwc-elevation';
 
 export class VWCPopupBase extends LitElement {
 	@query('.popup') protected popupEl!: HTMLElement;
