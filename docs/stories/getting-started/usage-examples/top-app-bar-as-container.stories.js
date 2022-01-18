@@ -90,7 +90,7 @@ const WithSideDrawerAndTopAppBarTemplate = args => html`
 	${style}
 	<vwc-top-app-bar alternate slot=" app-content">
 		${topAppBarFixedContent}
-		<vwc-side-drawer id="side-drawer" ...=${spread(args)}>
+		<vwc-side-drawer open id="side-drawer" ...=${spread(args)}>
 			${sideDrawerContent}
 			<main slot="app-content">${content()}</main>
 		</vwc-side-drawer>
@@ -104,7 +104,7 @@ const WithSideDrawerAndTopAppBarFixedTemplate = args => html`
 	${style}
 	<vwc-top-app-bar-fixed alternate slot=" app-content">
 		${topAppBarFixedContent}
-		<vwc-side-drawer id="side-drawer" ...=${spread(args)}>
+		<vwc-side-drawer open id="side-drawer" ...=${spread(args)}>
 			${sideDrawerContent}
 			<main slot="app-content">${content()}</main>
 		</vwc-side-drawer>
