@@ -86,6 +86,35 @@ export class VWCPopupBase extends LitElement {
 	@property({ type: Boolean, reflect: true })
 		alternate?: boolean;
 
+	/**
+	* Opens the popup
+	* @public
+	*/
+	show(): void {
+		this.open = true;
+		this.updatePosition();
+	}
+
+	/**
+	 * Closes the popup
+	 * @public
+	 */
+	hide(): void {
+		this.open = false;
+	}
+
+	override connectedCallback(): void {
+		super.connectedCallback();
+		document.addEventListener('scroll', this.updatePosition);
+		document.addEventListener('resize', this.updatePosition);
+	}
+
+	override disconnectedCallback(): void {
+		super.disconnectedCallback();
+		document.removeEventListener('scroll', this.updatePosition);
+		document.removeEventListener('resize', this.updatePosition);
+	}
+
 	protected override firstUpdated(changedProperties: PropertyValues): void {
 		super.firstUpdated(changedProperties);
 		this.open === true ? this.show() : this.hide();
@@ -97,28 +126,15 @@ export class VWCPopupBase extends LitElement {
 	}
 
 	/**
-	 * Opens the popup
-	 * @public
-	 */
-	async show(): Promise<void> {
-		await this.updatePosition() ? (this.open = true) : this.hide();
-	}
-
-	/**
-	 * Closes the popup
-	 * @public
-	 */
-	hide(): void {
-		this.open = false;
-	}
-
-	/**
 	 * Updates popup position, if succeeded returns - true, if not - false
 	 * @public
 	 */
 	async updatePosition() {
+		if (!this.open) {
+			return;
+		}
 		const middleware = [flip(), shift({ padding: this.padding }), offset(this.distance)];
-		this.arrow ? middleware.push(arrow({element: this.arrowEl, padding: this.padding})) : nothing;
+		this.arrow ? middleware.push(arrow({ element: this.arrowEl, padding: this.padding })) : nothing;
 		try {
 			const positionData = await computePosition(this.anchor, this.popupEl, {
 				placement: this.corner,
@@ -128,9 +144,9 @@ export class VWCPopupBase extends LitElement {
 			this.assignPopupPosition(positionData);
 		}
 		catch (e) {
-			return false;
+			this.open = false;
+			console.log(e);
 		}
-		return true;
 	}
 
 	private assignPopupPosition(data: any): void {
@@ -183,10 +199,11 @@ export class VWCPopupBase extends LitElement {
 	protected override render(): TemplateResult {
 		return html`
 			<vwc-elevation dp="2">
-				<div class="popup ${classMap(this.getRenderClasses())}" aria-hidden=${this.open ? 'false' : 'true' } part=${this.alternate ? 'vvd-scheme-alternate' : ''} >
-						<slot></slot>
-						${this.renderDismissButton()}
-						${this.renderArrow()}
+				<div class="popup ${classMap(this.getRenderClasses())}" aria-hidden=${this.open ? 'false' : 'true'}
+					part=${this.alternate ? 'vvd-scheme-alternate' : '' }>
+					<slot></slot>
+					${this.renderDismissButton()}
+					${this.renderArrow()}
 				</div>
 			</vwc-elevation>
 		`;
