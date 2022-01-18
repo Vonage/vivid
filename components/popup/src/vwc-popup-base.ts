@@ -133,6 +133,11 @@ export class VWCPopupBase extends LitElement {
 		if (!this.open) {
 			return;
 		}
+		if(!this.anchor){
+			this.open = false;
+			return;
+		}
+
 		const middleware = [flip(), shift({ padding: this.padding }), offset(this.distance)];
 		this.arrow ? middleware.push(arrow({ element: this.arrowEl, padding: this.padding })) : nothing;
 		try {
@@ -145,7 +150,7 @@ export class VWCPopupBase extends LitElement {
 		}
 		catch (e) {
 			this.open = false;
-			console.log(e);
+			console.log('popup error: ' + e);
 		}
 	}
 

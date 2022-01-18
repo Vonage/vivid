@@ -75,17 +75,6 @@ describe('popup', () => {
 				.equal(true);
 		});
 
-		it(`should set "open" to false when anchor is null`, function () {
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} anchor=${null}></${COMPONENT_NAME}>`)
-			);
-
-			actualElement.show();
-			expect(actualElement.open)
-				.to
-				.equal(false);
-		});
-
 		it(`should set "open" to false when no anchor`, function () {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
@@ -105,17 +94,6 @@ describe('popup', () => {
 			);
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} open anchor=${anchorElement}></${COMPONENT_NAME}>`)
-			);
-
-			actualElement.hide();
-			expect(actualElement.open)
-				.to
-				.equal(false);
-		});
-
-		it(`should set "open" to false when anchor is null`, function () {
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} open anchor=${null}></${COMPONENT_NAME}>`)
 			);
 
 			actualElement.hide();
