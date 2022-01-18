@@ -6,15 +6,15 @@ To trigger the Popup, it should be paired with an anchor (e.g., a button).
 
 ## Properties
 
-| Property      | Attribute     | Type                   | Default    |
-| ------------- | ------------- | ---------------------- | ---------- |
-| `anchor`      | `anchor`      | `Element \| undefined` |            |
-| `arrow`       | `arrow`       | `boolean \| undefined` | true       |
-| `corner`      | `corner`      | `Placement`            | "left"     |
-| `dismissible` | `dismissible` | `false \| undefined`   |            |
-| `distance`    | `distance`    | `number`               | 10         |
-| `open`        | `open`        | `boolean`              | false      |
-| `strategy`    | `strategy`    | `Strategy`             | "absolute" |
+| Property      | Attribute     | Type                                                                                                                                                                 | Default   |
+| ------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| `anchor`      | `anchor`      | `Element \| undefined`                                                                                                                                               |           |
+| `arrow`       | `arrow`       | `boolean \| undefined`                                                                                                                                               | `true`    |
+| `corner`      | `corner`      | ` "top" \| "top-start" \| "top-end" \| "right" \| "right-start" \| "right-end" \| "bottom" \| "bottom-start" \| "bottom-end" \| "left" \| "left-start" | "left-end"` | `"left"`  |
+| `dismissible` | `dismissible` | `boolean \| undefined`                                                                                                                                               | `true`    |
+| `distance`    | `distance`    | `number`                                                                                                                                                             | `10`      |
+| `open`        | `open`        | `boolean`                                                                                                                                                            | `false`   |
+| `strategy`    | `strategy`    | `"fixed" \| "absolute"`                                                                                                                                              | `"fixed"` |
 
 ## Methods
 
