@@ -4,18 +4,21 @@
 :host {
 	//z-index: 7 to overcome the 6 of the vwc-side-drawer
 	//TODO: to check z-index of vwc-top-app-bar and other components.
-	z-index: 7;
+	//z-index: 7;
 }
 
 .popup {
 	--border-radius-size: 6px;
-	position: absolute;
+	position: relative;
 	display: none;
 	width: min-content;
 	background-color: var(#{scheme-variables.$vvd-color-surface-4dp});
 	border-radius: var(--border-radius-size);
 	contain: layout;
 
+	&-wrapper {
+		position: absolute;
+	}
 	&-arrow {
 		position: absolute;
 		z-index: -1;

@@ -7,9 +7,9 @@ import { computePosition, offset, shift, flip, arrow } from '@floating-ui/dom';
 import type { Placement, Strategy, Padding } from '@floating-ui/core';
 
 export class VWCPopupBase extends LitElement {
-	@query('.popup') protected popupEl!: HTMLElement;
+	@query('.popup-wrapper') protected popupEl!: HTMLElement;
 	@query('.popup-arrow') protected arrowEl!: HTMLElement;
-	protected padding: Padding = 6;
+	protected padding: Padding = 0;
 
 	/**
 	 * @prop open - indicates whether the popup is open
@@ -203,14 +203,14 @@ export class VWCPopupBase extends LitElement {
 
 	protected override render(): TemplateResult {
 		return html`
-			<!-- <vwc-elevation dp="2"> -->
+			 <vwc-elevation dp="2" class="popup-wrapper">
 				<div class="popup ${classMap(this.getRenderClasses())}" aria-hidden=${this.open ? 'false' : 'true'}
 					part=${this.alternate ? 'vvd-scheme-alternate' : '' }>
 					<slot></slot>
 					${this.renderDismissButton()}
 					${this.renderArrow()}
 				</div>
-			<!-- </vwc-elevation> -->
+			 </vwc-elevation>
 		`;
 	}
 }
