@@ -4,21 +4,31 @@
 :host {
 	//z-index: 7 to overcome the 6 of the vwc-side-drawer
 	//TODO: to check z-index of vwc-top-app-bar and other components.
-	//z-index: 7;
+	z-index: 7;
 }
 
 .popup {
 	--border-radius-size: 6px;
-	position: relative;
-	display: none;
 	width: min-content;
 	background-color: var(#{scheme-variables.$vvd-color-surface-4dp});
 	border-radius: var(--border-radius-size);
 	contain: layout;
+	&:not(.popup-open) {
+		display: none;
+	}
 
 	&-wrapper {
 		position: absolute;
 	}
+
+	&-content {
+		display: grid;
+		.popup-dismissible & {
+			align-content: start;
+			grid-template-columns: 1fr auto;
+		}
+	}
+
 	&-arrow {
 		position: absolute;
 		z-index: -1;
@@ -28,14 +38,8 @@
 		transform: rotate(45deg);
 	}
 
-	&-open {
-		display: inline-grid;
-	}
 
-	&-dismissible {
-		align-content: start;
-		grid-template-columns: 1fr auto;
-	}
+
 	&-dismissible-button {
 		align-self: flex-start;
 		margin-block-start: 0.25rem;

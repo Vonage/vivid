@@ -206,13 +206,17 @@ export class VWCPopupBase extends LitElement {
 		const aria = this.open ? 'false' : 'true';
 
 		return html`
-			<vwc-elevation dp="2" class="popup-wrapper">
-				<div class="popup ${classMap(this.getRenderClasses())}" aria-hidden=${aria} part=${part}>
-					<slot></slot>
-					${this.renderDismissButton()}
-					${this.renderArrow()}
-				</div>
-			</vwc-elevation>
+			<div class="popup-wrapper">
+				<vwc-elevation dp="2" >
+					<div class="popup ${classMap(this.getRenderClasses())}" aria-hidden=${aria} part=${part}>
+						<div class="popup-content">
+							<slot></slot>
+							${this.renderDismissButton()}
+						</div>
+						${this.renderArrow()}
+					</div>
+				</vwc-elevation>
+			</div>
 		`;
 	}
 }
