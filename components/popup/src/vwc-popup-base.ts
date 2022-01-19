@@ -206,7 +206,7 @@ export class VWCPopupBase extends LitElement {
 		const aria = this.open ? 'false' : 'true';
 
 		return html`
-			<vwc-elevation dp="2" class="popup-wrapper" part=${part}>
+			<vwc-elevation dp="2" class="popup-wrapper">
 				<div class="popup ${classMap(this.getRenderClasses())}" aria-hidden=${aria} part=${part}>
 					<slot></slot>
 					${this.renderDismissButton()}
