@@ -52,9 +52,9 @@ describe('popup', () => {
 			expect(actualElement.dismissible, 'dismissible should be undefined')
 				.to
 				.equal(undefined);
-			expect(actualElement.distance, 'distance should be 10')
+			expect(actualElement.distance, 'distance should be 0')
 				.to
-				.equal(10);
+				.equal(0);
 			expect(actualElement.strategy, 'strategy should be fixed')
 				.to
 				.equal('fixed');
