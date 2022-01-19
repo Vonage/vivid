@@ -117,12 +117,12 @@ export class VWCPopupBase extends LitElement {
 
 	protected override firstUpdated(changedProperties: PropertyValues): void {
 		super.firstUpdated(changedProperties);
-		this.open === true ? this.show() : this.hide();
+		this.updatePosition();
 	}
 
 	protected override updated(changes: Map<string, boolean>): void {
 		super.updated(changes);
-		this.open === true ? this.show() : this.hide();
+		this.updatePosition();
 	}
 
 	/**
@@ -203,14 +203,14 @@ export class VWCPopupBase extends LitElement {
 
 	protected override render(): TemplateResult {
 		return html`
-			<vwc-elevation dp="2">
+			<!-- <vwc-elevation dp="2"> -->
 				<div class="popup ${classMap(this.getRenderClasses())}" aria-hidden=${this.open ? 'false' : 'true'}
 					part=${this.alternate ? 'vvd-scheme-alternate' : '' }>
 					<slot></slot>
 					${this.renderDismissButton()}
 					${this.renderArrow()}
 				</div>
-			</vwc-elevation>
+			<!-- </vwc-elevation> -->
 		`;
 	}
 }
