@@ -20,11 +20,6 @@ export const argTypes = {
     dismissible: {
         control: booleanControl
     },
-    distance: {
-        control: {
-            type: 'number',
-        }
-    },
     corner: {
         control: {
             type: 'select',

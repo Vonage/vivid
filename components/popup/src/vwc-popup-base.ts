@@ -10,6 +10,7 @@ export class VWCPopupBase extends LitElement {
 	@query('.popup-wrapper') protected popupEl!: HTMLElement;
 	@query('.popup-arrow') protected arrowEl!: HTMLElement;
 	protected padding: Padding = 0;
+	protected distance = 12;
 
 	/**
 	 * @prop open - indicates whether the popup is open
@@ -34,14 +35,6 @@ export class VWCPopupBase extends LitElement {
 	 * */
 	@property({ type: Boolean, reflect: true })
 		dismissible?: boolean;
-
-	/**
-	 * @prop distance - distance offset
-	 * accepts number
-	 * @public
-	 * */
-	@property({ type: Number, reflect: true })
-		distance = 0;
 
 	/**
 	 * @prop corner - the placement of the popup
@@ -138,8 +131,8 @@ export class VWCPopupBase extends LitElement {
 			return;
 		}
 
-		const middleware = [flip(), shift({ padding: this.padding }), offset(this.distance)];
-		this.arrow ? middleware.push(arrow({ element: this.arrowEl, padding: this.padding })) : nothing;
+		const middleware = [flip(), shift({ padding: this.padding })];
+		this.arrow ? middleware.push(arrow({ element: this.arrowEl, padding: this.padding }), offset(this.distance)) : nothing;
 		try {
 			const positionData = await computePosition(this.anchor, this.popupEl, {
 				placement: this.corner,
