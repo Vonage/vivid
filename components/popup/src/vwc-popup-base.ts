@@ -133,7 +133,7 @@ export class VWCPopupBase extends LitElement {
 		if (!this.open) {
 			return;
 		}
-		if(!this.anchor){
+		if (!this.anchor) {
 			this.open = false;
 			return;
 		}
@@ -202,15 +202,17 @@ export class VWCPopupBase extends LitElement {
 	}
 
 	protected override render(): TemplateResult {
+		const part = this.alternate ? 'vvd-scheme-alternate' : '';
+		const aria = this.open ? 'false' : 'true';
+
 		return html`
-			 <vwc-elevation dp="2" class="popup-wrapper">
-				<div class="popup ${classMap(this.getRenderClasses())}" aria-hidden=${this.open ? 'false' : 'true'}
-					part=${this.alternate ? 'vvd-scheme-alternate' : '' }>
+			<vwc-elevation dp="2" class="popup-wrapper" part=${part}>
+				<div class="popup ${classMap(this.getRenderClasses())}" aria-hidden=${aria} part=${part}>
 					<slot></slot>
 					${this.renderDismissButton()}
 					${this.renderArrow()}
 				</div>
-			 </vwc-elevation>
+			</vwc-elevation>
 		`;
 	}
 }
