@@ -16,7 +16,7 @@ const Template = args => html`
 	<style>
 		.popup-wrapper {
 			width: 100%;
-			height: 200px;
+			height: 400px;
 			display: flex;
 			align-items: center;
 			justify-content: center;
@@ -52,7 +52,7 @@ export const Alternate = Template.bind({});
 Alternate.args = { arrow: true, corner: "bottom", alternate: true };
 
 export const Dismissible = Template.bind({});
-Dismissible.args = { dismissible: true, corner: "bottom" };
+Dismissible.args = { dismissible: true, corner: "top" };
 
 function onClick() {
 	const popup = document.querySelector("vwc-popup");
