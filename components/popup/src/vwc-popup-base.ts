@@ -41,7 +41,7 @@ export class VWCPopupBase extends LitElement {
 	 * @public
 	 * */
 	@property({ type: Number, reflect: true })
-		distance = 10;
+		distance = 0;
 
 	/**
 	 * @prop corner - the placement of the popup
