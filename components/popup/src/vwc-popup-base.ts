@@ -98,8 +98,8 @@ export class VWCPopupBase extends LitElement {
 
 	override connectedCallback(): void {
 		super.connectedCallback();
-		document.addEventListener('scroll', this.updatePosition);
-		document.addEventListener('resize', this.updatePosition);
+		document.addEventListener('scroll', this.updatePosition.bind(this));
+		window.addEventListener('resize', this.updatePosition.bind(this));
 	}
 
 	override disconnectedCallback(): void {
