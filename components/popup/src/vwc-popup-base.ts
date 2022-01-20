@@ -85,7 +85,6 @@ export class VWCPopupBase extends LitElement {
 	*/
 	show(): void {
 		this.open = true;
-		this.updatePosition();
 	}
 
 	/**
@@ -123,28 +122,19 @@ export class VWCPopupBase extends LitElement {
 	 * @public
 	 */
 	async updatePosition() {
-		if (!this.open) {
-			return;
-		}
 		if (!this.anchor) {
-			this.open = false;
 			return;
 		}
 
 		const middleware = [flip(), shift({ padding: this.padding })];
 		this.arrow ? middleware.push(arrow({ element: this.arrowEl, padding: this.padding }), offset(this.distance)) : nothing;
-		try {
-			const positionData = await computePosition(this.anchor, this.popupEl, {
-				placement: this.corner,
-				strategy: this.strategy,
-				middleware: middleware
-			});
-			this.assignPopupPosition(positionData);
-		}
-		catch (e) {
-			this.open = false;
-			console.log('popup error: ' + e);
-		}
+		const positionData = await computePosition(this.anchor, this.popupEl, {
+			placement: this.corner,
+			strategy: this.strategy,
+			middleware: middleware
+		});
+		this.assignPopupPosition(positionData);
+		this.arrow ? this.assignArrowPosition(positionData) : nothing;
 	}
 
 	private assignPopupPosition(data: any): void {
@@ -153,16 +143,12 @@ export class VWCPopupBase extends LitElement {
 			left: `${popupX}px`,
 			top: `${popupY}px`,
 		});
-
-		if (this.arrow) {
-			this.assignArrowPosition(data.placement, data.middlewareData.arrow);
-		}
 	}
 
-	private assignArrowPosition(placementData: any, arrowData: any): void {
-		const { x: arrowX, y: arrowY } = arrowData;
+	private assignArrowPosition(data: any): void {
+		const { x: arrowX, y: arrowY } = data.middlewareData.arrow;
 		const staticSide: any = { top: 'bottom', right: 'left', bottom: 'top', left: 'right' };
-		const side: string = staticSide[placementData.split('-')[0]];
+		const side: string = staticSide[data.placement.split('-')[0]];
 		Object.assign(this.arrowEl.style, {
 			left: arrowX != null ? `${arrowX}px` : '',
 			top: arrowY != null ? `${arrowY}px` : '',
