@@ -105,7 +105,7 @@ export class VWCPopupBase extends LitElement {
 	override disconnectedCallback(): void {
 		super.disconnectedCallback();
 		document.removeEventListener('scroll', this.updatePosition);
-		document.removeEventListener('resize', this.updatePosition);
+		window.removeEventListener('resize', this.updatePosition);
 	}
 
 	protected override firstUpdated(changedProperties: PropertyValues): void {
