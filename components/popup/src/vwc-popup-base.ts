@@ -25,8 +25,8 @@ export class VWCPopupBase extends LitElement {
 	 * accepts Element
 	 * @public
 	 * */
-	@property({ type: Element, reflect: true })
-		anchor!: Element;
+	@property({ type: Object })
+		anchor: HTMLElement | null = null;
 
 	/**
 	 * @prop dismissible - adds close button to the popup
