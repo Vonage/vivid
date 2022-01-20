@@ -41,7 +41,12 @@ const Template = args => html`
 				<vwc-text font-face="body-2" tight>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</vwc-text>
 			</div>
 		</vwc-popup>
-	</div>`;
+	</div>
+
+	<script>
+		popup.anchor = button;
+	</script>
+	`;
 
 export const Basic = Template.bind({});
 
@@ -55,12 +60,5 @@ export const Dismissible = Template.bind({});
 Dismissible.args = { dismissible: true, corner: "top" };
 
 function onClick() {
-	const popup = document.querySelector("vwc-popup");
-	const button = document.querySelector("#button");
-	if (popup.open) {
-		popup.hide();
-	} else {
-		popup.anchor = button;
-		popup.show();
-	}
+	popup.open = !popup.open;
 }
