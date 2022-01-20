@@ -37,9 +37,9 @@ describe('popup', () => {
 			);
 
 			await actualElement.updateComplete;
-			expect(actualElement.anchor, 'anchor should be undefined')
+			expect(actualElement.anchor, 'anchor should be null')
 				.to
-				.equal(undefined);
+				.equal(null);
 			expect(actualElement.open, 'open should be false')
 				.to
 				.equal(false);
@@ -52,59 +52,33 @@ describe('popup', () => {
 			expect(actualElement.dismissible, 'dismissible should be undefined')
 				.to
 				.equal(undefined);
-			expect(actualElement.distance, 'distance should be 0')
-				.to
-				.equal(0);
 			expect(actualElement.strategy, 'strategy should be fixed')
 				.to
 				.equal('fixed');
 		});
 	});
 
-	describe(`open`, function () {
+	describe(`show`, function () {
 		it(`should set "open" to true`, function () {
 			const [anchorElement] = addElement(
 				textToDomToParent(`<vwc-button></vwc-button>`)
 			);
 			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} open anchor=${anchorElement}></${COMPONENT_NAME}>`)
+				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
+			actualElement.anchor = anchorElement;
+			actualElement.show();
 
 			expect(actualElement.open)
 				.to
 				.equal(true);
 		});
-
-		it(`should set "open" to false when no anchor`, function () {
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-			);
-
-			actualElement.show();
-			expect(actualElement.open)
-				.to
-				.equal(false);
-		});
 	});
 
 	describe(`hide`, function () {
 		it(`should set "open" to false`, function () {
-			const [anchorElement] = addElement(
-				textToDomToParent(`<vwc-button></vwc-button>`)
-			);
 			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} open anchor=${anchorElement}></${COMPONENT_NAME}>`)
-			);
-
-			actualElement.hide();
-			expect(actualElement.open)
-				.to
-				.equal(false);
-		});
-
-		it(`should set "open" to false when no anchor`, function () {
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+				textToDomToParent(`<${COMPONENT_NAME} open></${COMPONENT_NAME}>`)
 			);
 
 			actualElement.hide();
