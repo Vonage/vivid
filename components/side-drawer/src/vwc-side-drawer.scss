@@ -21,7 +21,7 @@ $inline-size: var(#{variables.$side-drawer-inline-size}, 280px);
 .side-drawer {
 	position: fixed;
 	z-index: var(#{variables.$side-drawer-z-index}, #{$z-index-default});
-	top: 0;
+	top: auto;
 	bottom: 0;
 	display: flex;
 	overflow: auto;
