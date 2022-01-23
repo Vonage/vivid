@@ -44,7 +44,7 @@ export class VWCSideDrawerBase extends LitElement {
 		hasTopBar?: boolean;
 
 	/**
-	 * @prop modal - if side drawer is modal
+	 * @prop modal - sets the type of the side drawer's to modal
 	 * accepts boolean value
 	 * @public
 	 * */
