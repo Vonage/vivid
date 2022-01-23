@@ -1,0 +1,48 @@
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
+@use '@vonage/vvd-typography/scss/typography' as typography;
+
+:host {
+	//z-index: 7 to overcome the 6 of the vwc-side-drawer
+	//TODO: to check z-index of vwc-top-app-bar and other components.
+	z-index: 7;
+}
+
+.popup {
+	--border-radius-size: 6px;
+	width: min-content;
+	background-color: var(#{scheme-variables.$vvd-color-surface-4dp});
+	border-radius: var(--border-radius-size);
+	contain: layout;
+	&:not(.popup-open) {
+		display: none;
+	}
+
+	&-wrapper {
+		position: absolute;
+	}
+
+	&-content {
+		display: grid;
+		.popup-dismissible & {
+			align-content: start;
+			grid-template-columns: 1fr auto;
+		}
+	}
+
+	&-arrow {
+		position: absolute;
+		z-index: -1;
+		width: 8px;
+		height: 8px;
+		background-color: var(#{scheme-variables.$vvd-color-surface-4dp});
+		transform: rotate(45deg);
+	}
+
+
+
+	&-dismissible-button {
+		align-self: flex-start;
+		margin-block-start: 0.25rem;
+		margin-inline-end: 0.25rem;
+	}
+}
