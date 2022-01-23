@@ -7,6 +7,7 @@ import { computePosition, offset, shift, flip, arrow } from '@floating-ui/dom';
 import type { Placement, Strategy, Padding } from '@floating-ui/core';
 
 export class VWCPopupBase extends LitElement {
+	private onResizeWindow = this.updatePosition.bind(this);
 	@query('.popup-wrapper') protected popupEl!: HTMLElement;
 	@query('.popup-arrow') protected arrowEl!: HTMLElement;
 	protected padding: Padding = 0;
@@ -97,14 +98,14 @@ export class VWCPopupBase extends LitElement {
 
 	override connectedCallback(): void {
 		super.connectedCallback();
-		document.addEventListener('scroll', this.updatePosition.bind(this));
-		window.addEventListener('resize', this.updatePosition.bind(this));
+		document.addEventListener('scroll', this.updatePosition);
+		window.addEventListener('resize', this.onResizeWindow);
 	}
 
 	override disconnectedCallback(): void {
 		super.disconnectedCallback();
 		document.removeEventListener('scroll', this.updatePosition);
-		window.removeEventListener('resize', this.updatePosition);
+		window.removeEventListener('resize', this.onResizeWindow);
 	}
 
 	protected override firstUpdated(changedProperties: PropertyValues): void {
@@ -122,7 +123,7 @@ export class VWCPopupBase extends LitElement {
 	 * @public
 	 */
 	async updatePosition() {
-		if (!this.anchor) {
+		if (!this.open || !this.anchor) {
 			return;
 		}
 
