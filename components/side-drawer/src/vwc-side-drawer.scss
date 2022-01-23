@@ -32,8 +32,6 @@ $inline-size: var(#{variables.$side-drawer-inline-size}, 280px);
 	color: var(#{variables.$side-drawer-color}, var(#{scheme-variables.$vvd-color-on-canvas}));
 	inline-size: #{$inline-size};
 
-	transform: translateX(0%);
-
 	&.side-drawer-alternate {
 		background-color: var(#{scheme-variables.$vvd-color-canvas});
 	}
