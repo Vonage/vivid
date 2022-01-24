@@ -4,13 +4,13 @@ Represents a side drawer custom element.
 
 ## Properties
 
-| Property    | Attribute   | Type                                    | Default | Description |
-| ----------- | ----------- | --------------------------------------- | ------- | ----------- |
-| `alternate` | `alternate` | `boolean`                               | false   |             |
-| `hasTopBar` | `hasTopBar` | `boolean \| undefined`                  |         |             |
-| `open`      | `open`      | `boolean`                               | false   |             |
-| `position`  | `position`  | `"start" \| "end" \| undefined`         | "start" |             |
-| `type`      | `type`      | `"modal" \| "dismissible" \| undefined` |         |             |
+| Property    | Attribute   | Type                            | Default |
+| ----------- | ----------- | ------------------------------- | ------- |
+| `alternate` | `alternate` | `boolean`                       | false   |
+| `hasTopBar` | `hasTopBar` | `boolean \| undefined`          |         |
+| `modal`     | `modal`     | `boolean`                       | false   |
+| `open`      | `open`      | `boolean`                       | false   |
+| `position`  | `position`  | `"start" \| "end" \| undefined` |         |
 
 ## Methods
 
