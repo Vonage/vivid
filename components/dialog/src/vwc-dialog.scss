@@ -63,4 +63,8 @@
 		right: 16px;
 		display: block;
 	}
+	.mdc-dialog__title,
+	.mdc-dialog__content {
+		width: calc(100% - 20px);
+	}
 }

@@ -56,12 +56,15 @@ describe('side-drawer', () => {
 			expect(actualElement.position, 'position should be undefined')
 				.to
 				.equal(undefined);
+			expect(actualElement.modal, 'modal should be false')
+				.to
+				.equal(false);
 		});
 	});
 
 	describe('Side drawer attributes', () => {
 		it('should reflect from attribute to property', async () => {
-			const COMPONENT_PROPERTIES = ['open', 'alternate', 'hasTopBar'];
+			const COMPONENT_PROPERTIES = ['open', 'alternate', 'hasTopBar', 'modal'];
 			for await (const property of COMPONENT_PROPERTIES) {
 				const [actualElement] = addElement(
 					textToDomToParent(`<${COMPONENT_NAME} ${property}></${COMPONENT_NAME}>`)
@@ -70,19 +73,6 @@ describe('side-drawer', () => {
 				expect(actualElement[property])
 					.to
 					.equal(true);
-			}
-		});
-
-		it('should reflect (type) from attribute to property', async () => {
-			const COMPONENT_TYPES = ['', 'dismissible', 'modal'];
-			for await (const type of COMPONENT_TYPES) {
-				const [actualElement] = addElement(
-					textToDomToParent(`<${COMPONENT_NAME} type=${type}></${COMPONENT_NAME}>`)
-				);
-				await actualElement.updateComplete;
-				expect(actualElement.type)
-					.to
-					.equal(type);
 			}
 		});
 
@@ -105,7 +95,7 @@ describe('side-drawer', () => {
 
 		beforeEach(function () {
 			[sideDrawerEl] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} type="modal"></${COMPONENT_NAME}>`)
+				textToDomToParent(`<${COMPONENT_NAME} modal></${COMPONENT_NAME}>`)
 			);
 		});
 		it('should fire opened event after animation completes and open is true', async () => {
@@ -179,9 +169,8 @@ describe('side-drawer', () => {
 				});
 			});
 
-			const keyboardEvent = new KeyboardEvent('keydown', { key: 'Escape' });
-			document.dispatchEvent(keyboardEvent);
-
+			sideDrawerEl.hide();
+		
 			animateDrawer(sideDrawerEl);
 
 			await eventListenerPromise;
@@ -194,7 +183,7 @@ describe('side-drawer', () => {
 
 		beforeEach(function () {
 			[sideDrawerEl] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} type="dismissible"></${COMPONENT_NAME}>`)
+				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
 		});
 		it('should fire opened event after animation completes and open is true', async () => {
