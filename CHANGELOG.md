@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.25.2](https://github.com/Vonage/vivid/compare/v2.25.1...v2.25.2) (2022-01-24)
+
+
+### Bug Fixes
+
+* **dialog:** header & content width ([#1209](https://github.com/Vonage/vivid/issues/1209)) ([a38e7df](https://github.com/Vonage/vivid/commit/a38e7df5c66d81f51bf7a3d79cb5c21bd18c972b))
+
+
+
+
+
 ## [2.25.1](https://github.com/Vonage/vivid/compare/v2.25.0...v2.25.1) (2022-01-23)
 
 
