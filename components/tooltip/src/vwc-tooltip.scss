@@ -1,0 +1,18 @@
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
+@use '@vonage/vvd-typography/scss/typography' as typography;
+@use 'partials/vwc-tooltip-variables' as tooltip-variables;
+
+.tooltip {
+	min-width: var(#{tooltip-variables.$tooltip-min-inline-size}, 100px);
+	max-width: var(#{tooltip-variables.$tooltip-max-inline-size}, 350px);
+	&-header {
+		display: flex;
+		justify-content: space-between;
+
+	}
+	&-title {
+		@include typography.typography-cat-shorthand('body-2-bold');
+		padding: 0.5rem 0.75rem;
+		color: var(#{scheme-variables.$vvd-color-primary});
+	}
+}
