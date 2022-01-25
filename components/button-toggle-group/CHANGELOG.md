@@ -1,4 +1,4 @@
-## [2.25.4](https://github.com/vonage/vivid/compare/v2.25.3...v2.25.4) (2022-01-25)
+## [2.25.5](https://github.com/vonage/vivid/compare/v2.25.3...v2.25.5) (2022-01-25)
 
 
 
