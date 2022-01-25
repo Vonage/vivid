@@ -1,3 +1,20 @@
+## [2.25.3](https://github.com/vonage/vivid/compare/v2.25.2...v2.25.3) (2022-01-24)
+
+
+### Bug Fixes
+
+* **layout:** correct connotation refs ([#1194](https://github.com/vonage/vivid/issues/1194)) ([a5c9d30](https://github.com/vonage/vivid/commit/a5c9d30830bf43c9460d2420cf4acb698e730485))
+
+
+
+## [2.25.2](https://github.com/vonage/vivid/compare/v2.25.1...v2.25.2) (2022-01-24)
+
+
+
+## [2.25.1](https://github.com/vonage/vivid/compare/v2.25.0...v2.25.1) (2022-01-23)
+
+
+
 # [2.25.0](https://github.com/vonage/vivid/compare/v2.24.1...v2.25.0) (2022-01-11)
 
 

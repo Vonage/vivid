@@ -1,3 +1,25 @@
+## [2.25.3](https://github.com/vonage/vivid/compare/v2.25.2...v2.25.3) (2022-01-24)
+
+
+### Bug Fixes
+
+* **dialog:** content width ([#1210](https://github.com/vonage/vivid/issues/1210)) ([7832f07](https://github.com/vonage/vivid/commit/7832f07ed23818027dd2a0c897b35a769598b25c))
+
+
+
+## [2.25.2](https://github.com/vonage/vivid/compare/v2.25.1...v2.25.2) (2022-01-24)
+
+
+### Bug Fixes
+
+* **dialog:** header & content width ([#1209](https://github.com/vonage/vivid/issues/1209)) ([a38e7df](https://github.com/vonage/vivid/commit/a38e7df5c66d81f51bf7a3d79cb5c21bd18c972b))
+
+
+
+## [2.25.1](https://github.com/vonage/vivid/compare/v2.25.0...v2.25.1) (2022-01-23)
+
+
+
 # [2.25.0](https://github.com/vonage/vivid/compare/v2.24.1...v2.25.0) (2022-01-11)
 
 
