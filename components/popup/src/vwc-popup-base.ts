@@ -10,6 +10,7 @@ export class VWCPopupBase extends LitElement {
 	private onResizeWindow = this.updatePosition.bind(this);
 	@query('.popup-wrapper') protected popupEl!: HTMLElement;
 	@query('.popup-arrow') protected arrowEl!: HTMLElement;
+	protected anchorEl: Element | null | undefined;
 	protected padding: Padding = 0;
 	protected distance = 12;
 
@@ -22,12 +23,12 @@ export class VWCPopupBase extends LitElement {
 		open = false;
 
 	/**
-	 * @prop anchor - the anchor of the popup
-	 * accepts Element
+	 * @prop anchor - the anchor of the popup, the id of anchor's element
+	 * accepts string
 	 * @public
 	 * */
-	@property({ type: Object })
-		anchor: HTMLElement | null = null;
+	@property({ type: String })
+		anchor = '';
 
 	/**
 	 * @prop dismissible - adds close button to the popup
@@ -110,26 +111,43 @@ export class VWCPopupBase extends LitElement {
 
 	protected override firstUpdated(changedProperties: PropertyValues): void {
 		super.firstUpdated(changedProperties);
-		this.updatePosition();
+		this.anchorEl = this.getAnchorById();
 	}
 
 	protected override updated(changes: Map<string, boolean>): void {
 		super.updated(changes);
-		this.updatePosition();
+		if (changes.has('anchor')) {
+			this.anchorEl = this.getAnchorById();
+		}
+		if (changes.has('open')) {
+			this.open ? this.updatePosition() : nothing;
+		}
 	}
+
+	/**
+   	* Gets the anchor element by id
+   	*/
+	private getAnchorById = (): HTMLElement | null => {
+		const rootNode = this.getRootNode();
+		if (rootNode instanceof ShadowRoot) {
+			return rootNode.getElementById(this.anchor);
+		}
+		return document.getElementById(this.anchor);
+	};
+
 
 	/**
 	 * Updates popup position, if succeeded returns - true, if not - false
 	 * @public
 	 */
 	async updatePosition() {
-		if (!this.open || !this.anchor) {
+		if (!this.open || !this.anchorEl) {
 			return;
 		}
 
 		const middleware = [flip(), shift({ padding: this.padding })];
 		this.arrow ? middleware.push(arrow({ element: this.arrowEl, padding: this.padding }), offset(this.distance)) : nothing;
-		const positionData = await computePosition(this.anchor, this.popupEl, {
+		const positionData = await computePosition(this.anchorEl, this.popupEl, {
 			placement: this.corner,
 			strategy: this.strategy,
 			middleware: middleware
@@ -187,7 +205,7 @@ export class VWCPopupBase extends LitElement {
 
 		return html`
 			<div class="popup-wrapper">
-				<vwc-elevation dp="2" >
+				<vwc-elevation dp="2">
 					<div class="popup ${classMap(this.getRenderClasses())}" aria-hidden=${aria} part=${part}>
 						<div class="popup-content">
 							<slot></slot>
