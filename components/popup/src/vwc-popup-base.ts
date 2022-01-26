@@ -23,7 +23,7 @@ export class VWCPopupBase extends LitElement {
 		open = false;
 
 	/**
-	 * @prop anchor - the anchor of the popup, the id of anchor's element
+	 * @prop anchor - ID reference to element in the popup’s owner document.
 	 * accepts string
 	 * @public
 	 * */
