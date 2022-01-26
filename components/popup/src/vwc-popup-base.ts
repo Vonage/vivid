@@ -119,10 +119,6 @@ export class VWCPopupBase extends LitElement {
 		window.removeEventListener('resize', this.onResizeWindow);
 	}
 
-	protected override firstUpdated(changedProperties: PropertyValues): void {
-		super.firstUpdated(changedProperties);
-	}
-
 	protected override updated(changes: Map<string, boolean>): void {
 		super.updated(changes);
 		if (changes.has('open')) {
