@@ -10,7 +10,6 @@ export class VWCPopupBase extends LitElement {
 	private onResizeWindow = this.updatePosition.bind(this);
 	@query('.popup-wrapper') protected popupEl!: HTMLElement;
 	@query('.popup-arrow') protected arrowEl!: HTMLElement;
-	protected anchorEl: Element | null | undefined;
 	protected padding: Padding = 0;
 	protected distance = 12;
 
@@ -82,6 +81,17 @@ export class VWCPopupBase extends LitElement {
 		alternate?: boolean;
 
 	/**
+	 * Gets the anchor element by id
+	 */
+	private get anchorEl(): HTMLElement | null {
+		const rootNode = this.getRootNode();
+		if (rootNode instanceof ShadowRoot) {
+			return rootNode.getElementById(this.anchor);
+		}
+		return document.getElementById(this.anchor);
+	};
+
+	/**
 	* Opens the popup
 	* @public
 	*/
@@ -111,30 +121,14 @@ export class VWCPopupBase extends LitElement {
 
 	protected override firstUpdated(changedProperties: PropertyValues): void {
 		super.firstUpdated(changedProperties);
-		this.anchorEl = this.getAnchorById();
 	}
 
 	protected override updated(changes: Map<string, boolean>): void {
 		super.updated(changes);
-		if (changes.has('anchor')) {
-			this.anchorEl = this.getAnchorById();
-		}
 		if (changes.has('open')) {
 			this.open ? this.updatePosition() : nothing;
 		}
 	}
-
-	/**
-   	* Gets the anchor element by id
-   	*/
-	private getAnchorById = (): HTMLElement | null => {
-		const rootNode = this.getRootNode();
-		if (rootNode instanceof ShadowRoot) {
-			return rootNode.getElementById(this.anchor);
-		}
-		return document.getElementById(this.anchor);
-	};
-
 
 	/**
 	 * Updates popup position, if succeeded returns - true, if not - false
