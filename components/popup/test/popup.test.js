@@ -37,9 +37,9 @@ describe('popup', () => {
 			);
 
 			await actualElement.updateComplete;
-			expect(actualElement.anchor, 'anchor should be null')
+			expect(actualElement.anchor, 'anchor should be ""')
 				.to
-				.equal(null);
+				.equal("");
 			expect(actualElement.open, 'open should be false')
 				.to
 				.equal(false);
