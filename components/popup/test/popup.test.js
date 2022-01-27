@@ -103,7 +103,7 @@ describe('popup', () => {
 			}, DELAY);
 		});
 
-		it(`should not find anchor element on open`, function () {
+		it(`should not open the popup if anchor does not exist`, function () {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} open></${COMPONENT_NAME}>`)
 			);
