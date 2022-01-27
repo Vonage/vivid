@@ -11,6 +11,7 @@ import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-popup';
+const DELAY = 300;
 
 describe('popup', () => {
 	let addElement = isolatedElementsCreation();
@@ -60,13 +61,13 @@ describe('popup', () => {
 
 	describe(`show`, function () {
 		it(`should set "open" to true`, function () {
-			const [anchorElement] = addElement(
-				textToDomToParent(`<vwc-button></vwc-button>`)
+			addElement(
+				textToDomToParent(`<vwc-button id="anchor"></vwc-button>`)
 			);
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
-			actualElement.anchor = anchorElement;
+			actualElement.anchor = "anchor";
 			actualElement.show();
 
 			expect(actualElement.open)
@@ -85,6 +86,33 @@ describe('popup', () => {
 			expect(actualElement.open)
 				.to
 				.equal(false);
+		});
+	});
+
+	describe(`anchor`, function () {
+		it(`should not find anchor element on show`, function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+			);
+			actualElement.anchor = "anchor";
+			actualElement.show();
+			setTimeout(() => {
+				expect(actualElement.open)
+					.to
+					.equal(false);
+			}, DELAY);
+		});
+
+		it(`should not find anchor element on open`, function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} open></${COMPONENT_NAME}>`)
+			);
+			actualElement.anchor = "anchor";
+			setTimeout(() => {
+				expect(actualElement.open)
+					.to
+					.equal(false);
+			}, DELAY);
 		});
 	});
 });

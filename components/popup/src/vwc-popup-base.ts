@@ -121,10 +121,6 @@ export class VWCPopupBase extends LitElement {
 
 	override connectedCallback(): void {
 		super.connectedCallback();
-		// Save the initial display state so that it can be restored when the positioning is complete
-		this.initialDisplayState = this.open;
-		this.hide();
-		this.anchorEl = this.getAnchorById();
 		window.addEventListener('scroll', this.updatePosition);
 		window.addEventListener('resize', this.onResizeWindow);
 	}
@@ -137,6 +133,10 @@ export class VWCPopupBase extends LitElement {
 
 	protected override firstUpdated(_changedProperties: PropertyValues): void {
 		super.firstUpdated(_changedProperties);
+		// Save the initial display state so that it can be restored when the positioning is complete
+		this.initialDisplayState = this.open;
+		this.hide();
+		this.anchorEl = this.getAnchorById();
 		// For proper positioning, show the popup after a delay when first updated
 		setTimeout(() => {
 			this.open = this.initialDisplayState;
@@ -157,7 +157,12 @@ export class VWCPopupBase extends LitElement {
 	 * @public
 	 */
 	async updatePosition() {
-		if (!this.open || !this.anchorEl) {
+		if (!this.open) {
+			return;
+		}
+		if (!this.anchorEl) {
+			this.hide();
+			console.error('Anchor is not defined');
 			return;
 		}
 		const positionData = await computePosition(this.anchorEl, this.popupEl, {
