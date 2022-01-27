@@ -96,10 +96,6 @@ export class VWCPopupBase extends LitElement {
 	 * Gets the anchor element by id
 	 */
 	private getAnchorById(): HTMLElement | null {
-		const rootNode = this.getRootNode();
-		if (rootNode instanceof ShadowRoot) {
-			return rootNode.getElementById(this.anchor);
-		}
 		return document.getElementById(this.anchor);
 	};
 
