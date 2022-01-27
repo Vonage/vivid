@@ -125,14 +125,12 @@ export class VWCPopupBase extends LitElement {
 		this.initialDisplayState = this.open;
 		this.hide();
 		this.anchorEl = this.getAnchorById();
-		this.anchorEl?.addEventListener('change', this.updatePosition);
 		window.addEventListener('scroll', this.updatePosition);
 		window.addEventListener('resize', this.onResizeWindow);
 	}
 
 	override disconnectedCallback(): void {
 		super.disconnectedCallback();
-		this.anchorEl?.removeEventListener('change', this.updatePosition);
 		window.removeEventListener('scroll', this.updatePosition);
 		window.removeEventListener('resize', this.onResizeWindow);
 	}
