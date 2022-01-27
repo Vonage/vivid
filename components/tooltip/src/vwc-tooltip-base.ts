@@ -1,12 +1,10 @@
 import {
-	html, LitElement, property, PropertyValues, query
+	html, LitElement, property
 } from 'lit-element';
 import type { TemplateResult } from 'lit-html';
-import type { VWCPopup } from  '@vonage/vwc-popup';
+import type { Placement } from '@floating-ui/core';
 
 export class VWCTooltipBase extends LitElement {
-	@query('.popup') protected popup!: VWCPopup;
-	@query('.iconButton') protected iconButton!: HTMLElement;
 
 	/**
 	 * @prop content - the content of the tooltip
@@ -14,15 +12,7 @@ export class VWCTooltipBase extends LitElement {
 	 * @public
 	 * */
 	@property({ type: String, reflect: true })
-		content?: string;
-
-	/**
-	 * @prop icon - can be info-line or help-line icon
-	 * accepts string value
-	 * @public
-	 * */
-	@property({ type: String, reflect: true })
-		icon: 'info-line' | 'help-line' = 'help-line';
+		text = '';
 
 	/**
 	 * @prop corner - the placement of the tooltip
@@ -30,7 +20,7 @@ export class VWCTooltipBase extends LitElement {
 	 * @public
 	 * */
 	@property({ type: String, reflect: true })
-		corner = 'top';
+		corner?: Placement;
 
 	/**
 	 * @prop open - indicates whether the tip is open
@@ -47,45 +37,29 @@ export class VWCTooltipBase extends LitElement {
 	@property({ type: Boolean, reflect: true })
 		dismissible?: boolean;
 
-
-	protected override firstUpdated(changedProperties: PropertyValues): void {
-		super.firstUpdated(changedProperties);
-		this.popup.anchor = this.iconButton;
+	/**
+	 * Opens the popup
+	 * @public
+	 */
+	show(): void {
+		this.open = true;
 	}
 
-	protected override updated(): void {
-		this.popup.open = this.open;
-		if (this.popup.open) {
-			this.popup.show();
-		} else {
-			this.popup.hide();
-		}
+	/**
+	 * Closes the popup
+	 * @public
+	 */
+	hide(): void {
+		this.open = false;
 	}
 
-	private clickHandler() {
-		this.popup.open = !this.popup.open;
-	}
-
-	private clickCloseHandler() {
-		this.popup.hide();
-	}
-
-
-	#renderDismissButton(): TemplateResult | unknown {
-		return this.dismissible
-			? html`<vwc-icon-button class="dismiss-button" icon="close-small-solid" shape="circled" dense
-				@click="${this.clickCloseHandler}"></vwc-icon-button>`
-			: 'nothing';
-	}
 
 	protected override render(): TemplateResult {
 		return html`
-				<vwc-icon-button icon=${this.icon} class="iconButton"  shape="circled" aria-describedby="tooltip" aria-haspopup="true" @click="${this.clickHandler}"></vwc-icon-button>
-					<vwc-popup arrow alternate="true" exportparts="vvd-scheme-alternate" corner=${this.corner} class="popup">
+					<vwc-popup .corner=${this.corner} .dismissible=${this.dismissible} .open=${this.open} arrow alternate="true" exportparts="vvd-scheme-alternate">
 						<div class="tooltip">
 							<header part="vvd-scheme-alternate" class="tooltip-header">
-								<div class="tooltip-title">${this.content}</div>
-								${this.#renderDismissButton()}
+								<div class="tooltip-title">${this.text}</div>
 							</header>
 						</div>
 					</vwc-popup>

@@ -1,4 +1,5 @@
 import '@vonage/vwc-tooltip';
+import '@vonage/vwc-button';
 
 export async function createElementVariations(wrapper) {
 	const textElementWrapper = document.createElement('div');
@@ -13,8 +14,27 @@ export async function createElementVariations(wrapper) {
 			}
 		</style>
 		<div class="tooltip-wrapper">
-			<vwc-tooltip icon="info-line" content="I'm the tooltip content" dismissible style="--tooltip-min-inline-size:200px; --tooltip-max-inline-size:200px"></vwc-tooltip>
+			<vwc-icon-button icon="info-line"  shape="circled" aria-describedby="tooltip" aria-haspopup="true" id="button" ></vwc-icon-button>
+			<vwc-tooltip icon="info-line" text="I'm the tooltip content" dismissible style="--tooltip-min-inline-size:300px; --tooltip-max-inline-size:300px" id="tooltip" corner="top"></vwc-tooltip>
 		</div>`;
 
 	wrapper.appendChild(textElementWrapper);
+	const button = document.getElementById("button");
+	button.addEventListener("click", onClick);
+	const tooltip = document.getElementById('tooltip');
+	await tooltip.updateComplete;
+	onClick();
+	return tooltip.updateComplete;
+}
+
+function onClick() {
+	const tooltip = document.querySelector('vwc-tooltip');
+	const button = document.querySelector("#button");
+	if (tooltip.open) {
+		tooltip.hide();
+	} else {
+		tooltip.anchor = button;
+		debugger;
+		tooltip.show();
+	}
 }

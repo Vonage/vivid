@@ -5,11 +5,7 @@
 .tooltip {
 	min-width: var(#{tooltip-variables.$tooltip-min-inline-size}, 100px);
 	max-width: var(#{tooltip-variables.$tooltip-max-inline-size}, 350px);
-	&-header {
-		display: flex;
-		justify-content: space-between;
 
-	}
 	&-title {
 		@include typography.typography-cat-shorthand('body-2-bold');
 		padding: 0.5rem 0.75rem;
