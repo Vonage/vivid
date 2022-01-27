@@ -11,6 +11,7 @@ import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-popup';
+const DELAY = 300;
 
 describe('popup', () => {
 	let addElement = isolatedElementsCreation();
@@ -37,9 +38,9 @@ describe('popup', () => {
 			);
 
 			await actualElement.updateComplete;
-			expect(actualElement.anchor, 'anchor should be null')
+			expect(actualElement.anchor, 'anchor should be ""')
 				.to
-				.equal(null);
+				.equal("");
 			expect(actualElement.open, 'open should be false')
 				.to
 				.equal(false);
@@ -60,13 +61,13 @@ describe('popup', () => {
 
 	describe(`show`, function () {
 		it(`should set "open" to true`, function () {
-			const [anchorElement] = addElement(
-				textToDomToParent(`<vwc-button></vwc-button>`)
+			addElement(
+				textToDomToParent(`<vwc-button id="anchor"></vwc-button>`)
 			);
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
-			actualElement.anchor = anchorElement;
+			actualElement.anchor = "anchor";
 			actualElement.show();
 
 			expect(actualElement.open)
@@ -85,6 +86,35 @@ describe('popup', () => {
 			expect(actualElement.open)
 				.to
 				.equal(false);
+		});
+	});
+
+	describe(`anchor`, function () {
+		it(`should not open the popup if anchor does not exist`, function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+			);
+			actualElement.anchor = "anchor";
+			actualElement.show();
+			// should delay first position by 300ms
+			setTimeout(() => {
+				expect(actualElement.open)
+					.to
+					.equal(false);
+			}, DELAY);
+		});
+
+		it(`should not open the popup if anchor does not exist`, function () {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} open></${COMPONENT_NAME}>`)
+			);
+			actualElement.anchor = "anchor";
+			// should delay first position by 300ms
+			setTimeout(() => {
+				expect(actualElement.open)
+					.to
+					.equal(false);
+			}, DELAY);
 		});
 	});
 });

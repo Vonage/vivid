@@ -1,5 +1,5 @@
 import {
-	PropertyValues, html, LitElement, property, query, TemplateResult
+	html, LitElement, property, query, TemplateResult, PropertyValues
 } from 'lit-element';
 import { ClassInfo, classMap } from 'lit-html/directives/class-map.js';
 import { nothing } from 'lit-html';
@@ -7,11 +7,23 @@ import { computePosition, offset, shift, flip, arrow } from '@floating-ui/dom';
 import type { Placement, Strategy, Padding } from '@floating-ui/core';
 
 export class VWCPopupBase extends LitElement {
+	private get PADDING(): Padding { return 0; };
+	private get DISTANCE(): number { return 12; };
+	private get DELAY(): number { return 300; };
+
 	private onResizeWindow = this.updatePosition.bind(this);
-	@query('.popup-wrapper') protected popupEl!: HTMLElement;
-	@query('.popup-arrow') protected arrowEl!: HTMLElement;
-	protected padding: Padding = 0;
-	protected distance = 12;
+	private anchorEl: Element | null | undefined;
+	@query('.popup-wrapper')
+	private popupEl!: HTMLElement;
+	@query('.popup-arrow')
+	private arrowEl!: HTMLElement;
+
+	private initialDisplayState = false;
+	private get middleware(): Array<any> {
+		return (
+			this.arrow ? [flip(), shift({ padding: this.PADDING }), arrow({ element: this.arrowEl, padding: this.PADDING }), offset(this.DISTANCE)]
+				: [flip(), shift({ padding: this.PADDING })]);
+	};
 
 	/**
 	 * @prop open - indicates whether the popup is open
@@ -22,12 +34,12 @@ export class VWCPopupBase extends LitElement {
 		open = false;
 
 	/**
-	 * @prop anchor - the anchor of the popup
-	 * accepts Element
+	 * @prop anchor - ID reference to element in the popup’s owner document.
+	 * accepts string
 	 * @public
 	 * */
-	@property({ type: Object })
-		anchor: HTMLElement | null = null;
+	@property({ type: String })
+		anchor = '';
 
 	/**
 	 * @prop dismissible - adds close button to the popup
@@ -81,6 +93,17 @@ export class VWCPopupBase extends LitElement {
 		alternate?: boolean;
 
 	/**
+	 * Gets the anchor element by id
+	 */
+	private getAnchorById(): HTMLElement | null {
+		const rootNode = this.getRootNode();
+		if (rootNode instanceof ShadowRoot) {
+			return rootNode.getElementById(this.anchor);
+		}
+		return document.getElementById(this.anchor);
+	};
+
+	/**
 	* Opens the popup
 	* @public
 	*/
@@ -98,23 +121,34 @@ export class VWCPopupBase extends LitElement {
 
 	override connectedCallback(): void {
 		super.connectedCallback();
-		document.addEventListener('scroll', this.updatePosition);
+		window.addEventListener('scroll', this.updatePosition);
 		window.addEventListener('resize', this.onResizeWindow);
 	}
 
 	override disconnectedCallback(): void {
 		super.disconnectedCallback();
-		document.removeEventListener('scroll', this.updatePosition);
+		window.removeEventListener('scroll', this.updatePosition);
 		window.removeEventListener('resize', this.onResizeWindow);
 	}
 
-	protected override firstUpdated(changedProperties: PropertyValues): void {
-		super.firstUpdated(changedProperties);
-		this.updatePosition();
+	protected override firstUpdated(_changedProperties: PropertyValues): void {
+		super.firstUpdated(_changedProperties);
+		// Save the initial display state so that it can be restored when the positioning is complete
+		this.initialDisplayState = this.open;
+		this.hide();
+		this.anchorEl = this.getAnchorById();
+		// For proper positioning, show the popup after a delay when first updated
+		setTimeout(() => {
+			this.open = this.initialDisplayState;
+			this.updatePosition();
+		}, this.DELAY);
 	}
 
 	protected override updated(changes: Map<string, boolean>): void {
 		super.updated(changes);
+		if (changes.has('anchor')) {
+			this.anchorEl = this.getAnchorById();
+		}
 		this.updatePosition();
 	}
 
@@ -123,19 +157,21 @@ export class VWCPopupBase extends LitElement {
 	 * @public
 	 */
 	async updatePosition() {
-		if (!this.open || !this.anchor) {
+		if (!this.open) {
 			return;
 		}
-
-		const middleware = [flip(), shift({ padding: this.padding })];
-		this.arrow ? middleware.push(arrow({ element: this.arrowEl, padding: this.padding }), offset(this.distance)) : nothing;
-		const positionData = await computePosition(this.anchor, this.popupEl, {
+		if (!this.anchorEl) {
+			this.hide();
+			console.error('Anchor is not defined');
+			return;
+		}
+		const positionData = await computePosition(this.anchorEl, this.popupEl, {
 			placement: this.corner,
 			strategy: this.strategy,
-			middleware: middleware
+			middleware: this.middleware
 		});
 		this.assignPopupPosition(positionData);
-		this.arrow ? this.assignArrowPosition(positionData) : nothing;
+		if (this.arrow) { this.assignArrowPosition(positionData); }
 	}
 
 	private assignPopupPosition(data: any): void {
@@ -187,7 +223,7 @@ export class VWCPopupBase extends LitElement {
 
 		return html`
 			<div class="popup-wrapper">
-				<vwc-elevation dp="2" >
+				<vwc-elevation dp="2">
 					<div class="popup ${classMap(this.getRenderClasses())}" aria-hidden=${aria} part=${part}>
 						<div class="popup-content">
 							<slot></slot>
