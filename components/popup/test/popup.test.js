@@ -96,6 +96,7 @@ describe('popup', () => {
 			);
 			actualElement.anchor = "anchor";
 			actualElement.show();
+			// should delay first position by 300ms
 			setTimeout(() => {
 				expect(actualElement.open)
 					.to
@@ -108,6 +109,7 @@ describe('popup', () => {
 				textToDomToParent(`<${COMPONENT_NAME} open></${COMPONENT_NAME}>`)
 			);
 			actualElement.anchor = "anchor";
+			// should delay first position by 300ms
 			setTimeout(() => {
 				expect(actualElement.open)
 					.to
