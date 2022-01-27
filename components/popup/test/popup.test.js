@@ -90,7 +90,7 @@ describe('popup', () => {
 	});
 
 	describe(`anchor`, function () {
-		it(`should not find anchor element on show`, function () {
+		it(`should not open the popup if anchor does not exist`, function () {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
