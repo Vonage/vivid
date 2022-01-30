@@ -12,13 +12,11 @@ export class VWCPopupBase extends LitElement {
 	private get DELAY(): number { return 300; };
 
 	private onResizeWindow = this.updatePosition.bind(this);
-	private anchorEl: Element | null | undefined;
 	@query('.popup-wrapper')
 	private popupEl!: HTMLElement;
 	@query('.popup-arrow')
 	private arrowEl!: HTMLElement;
 
-	private initialDisplayState = false;
 	private get middleware(): Array<any> {
 		return (
 			this.arrow ? [flip(), shift({ padding: this.PADDING }), arrow({ element: this.arrowEl, padding: this.PADDING }), offset(this.DISTANCE)]
@@ -38,8 +36,16 @@ export class VWCPopupBase extends LitElement {
 	 * accepts string
 	 * @public
 	 * */
-	@property({ type: String })
+	@property({ type: String, reflect: true })
 		anchor = '';
+
+	/**
+	 * @prop anchorEl - popup's anchor element
+	 * accepts Element
+	 * @private
+	 * */
+	@property({ type: Element, reflect: true })
+	private anchorEl: Element | null | undefined;
 
 	/**
 	 * @prop dismissible - adds close button to the popup
@@ -104,7 +110,9 @@ export class VWCPopupBase extends LitElement {
 	* @public
 	*/
 	show(): void {
-		this.open = true;
+		if(this.anchorEl){ // only if anchor element exists
+			this.open = true;
+		}
 	}
 
 	/**
@@ -129,13 +137,8 @@ export class VWCPopupBase extends LitElement {
 
 	protected override firstUpdated(_changedProperties: PropertyValues): void {
 		super.firstUpdated(_changedProperties);
-		// Save the initial display state so that it can be restored when the positioning is complete
-		this.initialDisplayState = this.open;
-		this.hide();
 		this.anchorEl = this.getAnchorById();
-		// For proper positioning, show the popup after a delay when first updated
 		setTimeout(() => {
-			this.open = this.initialDisplayState;
 			this.updatePosition();
 		}, this.DELAY);
 	}
