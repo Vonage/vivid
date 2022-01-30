@@ -33,7 +33,7 @@ $spacing: 16px;
 }
 
 .mdc-snackbar__label {
-	@include typography.typography-cat-shorthand('body-2');
+	@include typography.typography-cat-shorthand('body-1');
 	padding: 22px $spacing;
 	color: var(#{scheme-variables.$vvd-color-on-canvas});
 	-webkit-font-smoothing: initial;
@@ -41,6 +41,7 @@ $spacing: 16px;
 }
 
 .icon {
+	flex-shrink: 0;
 	margin-block-end: auto;
 	margin-block-start: 16px;
 	margin-inline-start: $spacing;
@@ -85,10 +86,19 @@ $spacing: 16px;
 			border-inline-start: 8px solid var(#{connotation.$vvd-color-connotation});
 		}
 	}
+	.header-and-label {
+		padding: 18px $spacing;
+		> .heading {
+			@include typography.typography-cat-shorthand('body-2-bold');
+		}
+	}
+	.mdc-snackbar__label {
+		@include typography.typography-cat-shorthand('body-2');
+	}
 }
 
 .header-and-label {
-	padding: 18px $spacing;
+	padding: 16px $spacing;
 
 	> .heading {
 		@include typography.typography-cat-shorthand('body-1-bold');
@@ -98,12 +108,6 @@ $spacing: 16px;
 	}
 	> .mdc-snackbar__label {
 		padding: 0;
-	}
-}
-
-.vwc-snackbar-legacy .header-and-label {
-	> .heading {
-		@include typography.typography-cat-shorthand('body-2-bold');
 	}
 }
 
