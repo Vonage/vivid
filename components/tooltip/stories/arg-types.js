@@ -7,9 +7,6 @@ export const argTypes = {
     open: {
         control: booleanControl
     },
-    dismissible: {
-        control: booleanControl
-    },
     corner: {
         control: {
             type: 'select',

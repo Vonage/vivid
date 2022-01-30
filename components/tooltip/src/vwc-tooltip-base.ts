@@ -30,14 +30,6 @@ export class VWCTooltipBase extends LitElement {
 		open = false;
 
 	/**
-	 * @prop dismissible - adds close button to the tooltip
-	 * accepts boolean value
-	 * @public
-	 * */
-	@property({ type: Boolean, reflect: true })
-		dismissible?: boolean;
-
-	/**
 	 * @prop anchor - ID reference to element in the popup’s owner document.
 	 * accepts string
 	 * @public
@@ -63,7 +55,7 @@ export class VWCTooltipBase extends LitElement {
 
 	protected override render(): TemplateResult {
 		return html`
-					<vwc-popup .corner=${this.corner} .dismissible=${this.dismissible} .open=${this.open} .anchor=${this.anchor} arrow alternate="true" exportparts="vvd-scheme-alternate">
+					<vwc-popup .corner=${this.corner} .open=${this.open} .anchor=${this.anchor} arrow alternate="true" exportparts="vvd-scheme-alternate">
 						<div class="tooltip">
 							<header part="vvd-scheme-alternate" class="tooltip-header">
 								<div class="tooltip-title">${this.text}</div>

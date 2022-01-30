@@ -3,8 +3,7 @@
 @use 'partials/vwc-tooltip-variables' as tooltip-variables;
 
 .tooltip {
-	min-width: var(#{tooltip-variables.$tooltip-min-inline-size}, 100px);
-	max-width: var(#{tooltip-variables.$tooltip-max-inline-size}, 350px);
+	width: var(#{tooltip-variables.$tooltip-inline-size}, 250px);
 
 	&-title {
 		@include typography.typography-cat-shorthand('body-2-bold');
