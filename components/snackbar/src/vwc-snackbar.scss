@@ -48,6 +48,7 @@ $spacing: 16px;
 	.vwc-snackbar-legacy & {
 		#{connotation.$vvd-color-connotation}: initial;
 		color: var(#{scheme-variables.$vvd-color-on-canvas});
+		margin-block-start: 20px;
 	}
 }
 
@@ -87,7 +88,7 @@ $spacing: 16px;
 		}
 	}
 	.header-and-label {
-		padding: 18px $spacing;
+		padding: 22px $spacing;
 		> .heading {
 			@include typography.typography-cat-shorthand('body-2-bold');
 		}
