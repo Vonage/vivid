@@ -30,19 +30,54 @@
 	@include typography.typography-cat-shorthand('subtitle-2');
 	position: relative;
 	display: flex;
-	align-items: center;
+	align-items: flex-end;
 	padding: 16px;
 	border: 0 none;
 	background: transparent;
 	cursor: pointer;
+	text-align: left;
 
 	.leading-icon,
 	.trailing-icon {
 		display: flex;
+		margin-bottom: 4px;
 
 		vwc-icon {
 			#{icon-variables.$icon-size-variable-name}: var(#{expansion-panel-variables.$expansion-panel-icon-size-variable-name}, 20px);
 		}
+	}
+	.header-text {
+		/* stylelint-disable property-no-vendor-prefix */
+		/* stylelint-disable value-no-vendor-prefix */
+		display: -webkit-box;
+		overflow: hidden;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		/* stylelint-enable property-no-vendor-prefix */
+		/* stylelint-enable value-no-vendor-prefix */
+	}
+	.header-wrapper {
+		display: flex;
+		flex: 1;
+		flex-direction: column;
+		margin-inline-end: auto;
+	}
+	.caption {
+		@include typography.typography-cat-shorthand('body-2');
+		color: var(--vvd-color-neutral-80);
+	}
+
+	.meta {
+		@include typography.typography-cat-shorthand('body-2-bold');
+		overflow: hidden;
+		max-width: 20%;
+		flex-shrink: 0;
+		color: var(--vvd-color-neutral-60);
+		margin-block-end: 4px;
+		margin-inline-start: 1rem;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+
 	}
 
 	.leading-icon {
@@ -55,7 +90,7 @@
 	}
 
 	.trailing-icon {
-		margin-inline-start: auto;
+		//margin-inline-start: auto;
 
 		/* stylelint-disable selector-no-qualifying-type */
 		vwc-icon,
@@ -87,5 +122,11 @@
 :host([dense]) {
 	.expansion-panel-header {
 		@include typography.typography-cat-shorthand('body-2-bold');
+	}
+	.caption {
+		@include typography.typography-cat-shorthand('caption');
+	}
+	.meta {
+		@include typography.typography-cat-shorthand('caption-bold');
 	}
 }

@@ -13,6 +13,7 @@ import type { Ripple } from '@material/mwc-ripple';
 import { RippleHandlers } from '@material/mwc-ripple/ripple-handlers.js';
 import { VWCExpansionPanelBase } from './vwc-expansion-panel-base.js';
 import { style } from './vwc-expansion-panel.css.js';
+import {nothing} from 'lit-html';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -45,6 +46,12 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	@property({ type: String, reflect: true })
 		indicatorIconSet: IndicatorIconSets[number] = 'chevron';
 
+	@property({ type: String, reflect: true })
+		caption = '';
+
+	@property({ type: String, reflect: true })
+		metaData = '';
+
 	@property({ type: Boolean, reflect: true })
 		dense = false;
 
@@ -73,6 +80,14 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 		return !this.noRipple ? html`<mwc-ripple></mwc-ripple>` : '';
 	}
 
+	private renderCaption(): TemplateResult | unknown {
+		return this.caption ? html`<span class="caption"></span>` : nothing;
+	}
+
+	private renderMetaData(): TemplateResult | unknown {
+		return this.metaData ? html`<span class="meta"></span>` : nothing;
+	}
+
 	protected override render(): TemplateResult {
 		return html`
 			<button class="expansion-panel-header"
@@ -88,6 +103,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 				@click=${() => this.toggleOpen()}
 				?aria-expanded=${this.open}
 				aria-controls="content"
+				id="expansion-panel"
 			>
 				${this.renderRipple()}
 				<span class="leading-icon">
@@ -95,14 +111,18 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 						${this.renderIconOrToggle()}
 					</slot>
 				</span>
-				${this.heading || this.header}
+				<span class="header-wrapper">
+					${this.renderCaption()}
+					<span class="header-text">${this.heading || this.header}</span>
+				</span>
+				${this.renderMetaData()}
 				<span class="trailing-icon">
 					<slot name="trailingIcon">
 						${!this.leadingToggle ? this.renderToggle() : ''}
 					</slot>
 				</span>
 			</button>
-			<div id="content" class="expansion-panel-body">
+			<div id="content" class="expansion-panel-body" role="region" aria-labelledby="expansion-panel">
 				<slot></slot>
 			</div>`;
 	}
