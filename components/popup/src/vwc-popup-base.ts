@@ -9,226 +9,237 @@ import type { Placement, Strategy, Padding } from '@floating-ui/core';
 export class VWCPopupBase extends LitElement {
 	private get PADDING(): Padding { return 0; };
 	private get DISTANCE(): number { return 12; };
-	private get DELAY(): number { return 300; };
 
 	private onResizeWindow = this.updatePosition.bind(this);
-	private anchorEl: Element | null | undefined;
-	@query('.popup-wrapper')
+    @query('.popup-wrapper')
 	private popupEl!: HTMLElement;
-	@query('.popup-arrow')
-	private arrowEl!: HTMLElement;
+    @query('.popup-arrow')
+    private arrowEl!: HTMLElement;
 
-	private initialDisplayState = false;
-	private get middleware(): Array<any> {
-		return (
-			this.arrow ? [flip(), shift({ padding: this.PADDING }), arrow({ element: this.arrowEl, padding: this.PADDING }), offset(this.DISTANCE)]
-				: [flip(), shift({ padding: this.PADDING })]);
-	};
+    private get middleware(): Array<any> {
+    	return (
+    		this.arrow ? [flip(), shift({ padding: this.PADDING }), arrow({ element: this.arrowEl, padding: this.PADDING }), offset(this.DISTANCE)]
+    			: [flip(), shift({ padding: this.PADDING })]);
+    };
 
-	/**
-	 * @prop open - indicates whether the popup is open
-	 * accepts boolean value
-	 * @public
-	 * */
-	@property({ type: Boolean, reflect: true })
-		open = false;
+    /**
+     * @prop open - indicates whether the popup is open
+     * accepts boolean value
+     * @public
+     * */
+    @property({ type: Boolean, reflect: true })
+    	open = false;
 
-	/**
-	 * @prop anchor - ID reference to element in the popup’s owner document.
-	 * accepts string
-	 * @public
-	 * */
-	@property({ type: String })
-		anchor = '';
+    /**
+     * @prop anchor - ID reference to element in the popup’s owner document.
+     * accepts string
+     * @public
+     * */
+    @property({ type: String, reflect: true })
+    	anchor = '';
 
-	/**
-	 * @prop dismissible - adds close button to the popup
-	 * accepts boolean value
-	 * @public
-	 * */
-	@property({ type: Boolean, reflect: true })
-		dismissible?: boolean;
+    /**
+     * @prop anchorEl - popup's anchor element
+     * accepts Element
+     * @private
+     * */
+    @property({ type: Element, reflect: true })
+    private anchorEl: Element | null | undefined;
 
-	/**
-	 * @prop corner - the placement of the popup
-	 * accepts  | 'top'
-				| 'top-start'
-				| 'top-end'
-				| 'right'
-				| 'right-start'
-				| 'right-end'
-				| 'bottom'
-				| 'bottom-start'
-				| 'bottom-end'
-				| 'left'
-				| 'left-start'
-				| 'left-end';
-	 * @public
-	 * */
-	@property({ type: String, reflect: true })
-		corner: Placement = 'left';
+    /**
+     * @prop dismissible - adds close button to the popup
+     * accepts boolean value
+     * @public
+     * */
+    @property({ type: Boolean, reflect: true })
+    	dismissible?: boolean;
 
-	/**
-	 * @prop strategy - the position of the popup
-	 * accepts 'absolute' | 'fixed';
-	* @public
-	* */
-	@property({ type: String, reflect: true })
-		strategy: Strategy = 'fixed';
+    /**
+     * @prop corner - the placement of the popup
+     * accepts  | 'top'
+                | 'top-start'
+                | 'top-end'
+                | 'right'
+                | 'right-start'
+                | 'right-end'
+                | 'bottom'
+                | 'bottom-start'
+                | 'bottom-end'
+                | 'left'
+                | 'left-start'
+                | 'left-end';
+     * @public
+     * */
+    @property({ type: String, reflect: true })
+    	corner: Placement = 'left';
 
-	/**
-	 * @prop arrow - adds small triangle to indicate the trigger element
-	 * accepts boolean value
-	 * @public
-	 * */
-	@property({ type: Boolean, reflect: true })
-		arrow?: boolean;
+    /**
+     * @prop strategy - the position of the popup
+     * accepts 'absolute' | 'fixed';
+    * @public
+    * */
+    @property({ type: String, reflect: true })
+    	strategy: Strategy = 'fixed';
 
-	/**
-	 * @prop alternate - set the color-scheme to dark
-	 * accepts boolean value
-	 * @public
-	 * */
-	@property({ type: Boolean, reflect: true })
-		alternate?: boolean;
+    /**
+     * @prop arrow - adds small triangle to indicate the trigger element
+     * accepts boolean value
+     * @public
+     * */
+    @property({ type: Boolean, reflect: true })
+    	arrow?: boolean;
 
-	/**
-	 * Gets the anchor element by id
-	 */
-	private getAnchorById(): HTMLElement | null {
-		return document.getElementById(this.anchor);
-	};
+    /**
+     * @prop alternate - set the color-scheme to dark
+     * accepts boolean value
+     * @public
+     * */
+    @property({ type: Boolean, reflect: true })
+    	alternate?: boolean;
 
-	/**
-	* Opens the popup
-	* @public
-	*/
-	show(): void {
-		this.open = true;
-	}
+    /**
+     * Gets the anchor element by id
+     */
+    private getAnchorById(): HTMLElement | null {
+    	return document.getElementById(this.anchor);
+    };
 
-	/**
-	 * Closes the popup
-	 * @public
-	 */
-	hide(): void {
-		this.open = false;
-	}
+    /**
+    * Opens the popup
+    * @public
+    */
+    show(): void {
+    	if (this.anchorEl) { // only if anchor element exists
+    		this.open = true;
+    	}
+    }
 
-	override connectedCallback(): void {
-		super.connectedCallback();
-		window.addEventListener('scroll', this.updatePosition);
-		window.addEventListener('resize', this.onResizeWindow);
-	}
+    /**
+     * Closes the popup
+     * @public
+     */
+    hide(): void {
+    	this.open = false;
+    }
 
-	override disconnectedCallback(): void {
-		super.disconnectedCallback();
-		window.removeEventListener('scroll', this.updatePosition);
-		window.removeEventListener('resize', this.onResizeWindow);
-	}
+    // new `IntersectionObserver` constructor
+    private observer = new IntersectionObserver((entries) => {
+    	for (const entry of entries) {
+    		const bounds = entry.boundingClientRect;
+    		console.log(bounds);
+    		requestAnimationFrame(() => this.updatePosition());
+    	}
+    });
 
-	protected override firstUpdated(_changedProperties: PropertyValues): void {
-		super.firstUpdated(_changedProperties);
-		// Save the initial display state so that it can be restored when the positioning is complete
-		this.initialDisplayState = this.open;
-		this.hide();
-		this.anchorEl = this.getAnchorById();
-		// For proper positioning, show the popup after a delay when first updated
-		setTimeout(() => {
-			this.open = this.initialDisplayState;
-			this.updatePosition();
-		}, this.DELAY);
-	}
+    override connectedCallback(): void {
+    	super.connectedCallback();
+    	window.addEventListener('scroll', this.updatePosition);
+    	window.addEventListener('resize', this.onResizeWindow);
+    }
 
-	protected override updated(changes: Map<string, boolean>): void {
-		super.updated(changes);
-		if (changes.has('anchor')) {
-			this.anchorEl = this.getAnchorById();
-		}
-		this.updatePosition();
-	}
+    override disconnectedCallback(): void {
+    	super.disconnectedCallback();
+    	window.removeEventListener('scroll', this.updatePosition);
+    	window.removeEventListener('resize', this.onResizeWindow);
+    	// Disconnect the observer to stop from running in the background
+    	this.observer.disconnect();
+    }
 
-	/**
-	 * Updates popup position, if succeeded returns - true, if not - false
-	 * @public
-	 */
-	async updatePosition() {
-		if (!this.open) {
-			return;
-		}
-		if (!this.anchorEl) {
-			this.hide();
-			console.error('Anchor is not defined');
-			return;
-		}
-		const positionData = await computePosition(this.anchorEl, this.popupEl, {
-			placement: this.corner,
-			strategy: this.strategy,
-			middleware: this.middleware
-		});
-		this.assignPopupPosition(positionData);
-		if (this.arrow) { this.assignArrowPosition(positionData); }
-	}
+    protected override firstUpdated(_changedProperties: PropertyValues): void {
+    	super.firstUpdated(_changedProperties);
+    	this.anchorEl = this.getAnchorById();
+    	if(this.anchorEl) this.observer.observe(this.anchorEl);
+    }
 
-	private assignPopupPosition(data: any): void {
-		const { x: popupX, y: popupY } = data;
-		Object.assign(this.popupEl.style, {
-			left: `${popupX}px`,
-			top: `${popupY}px`,
-		});
-	}
+    protected override updated(changes: Map<string, boolean>): void {
+    	super.updated(changes);
+    	if (changes.has('anchor')) {
+    		this.anchorEl = this.getAnchorById();
+    	}
+    	this.updatePosition();
+    }
 
-	private assignArrowPosition(data: any): void {
-		const { x: arrowX, y: arrowY } = data.middlewareData.arrow;
-		const staticSide: any = { top: 'bottom', right: 'left', bottom: 'top', left: 'right' };
-		const side: string = staticSide[data.placement.split('-')[0]];
-		Object.assign(this.arrowEl.style, {
-			left: arrowX != null ? `${arrowX}px` : '',
-			top: arrowY != null ? `${arrowY}px` : '',
-			right: '',
-			bottom: '',
-			[side]: '-4px',
-		});
-	}
+    /**
+     * Updates popup position, if succeeded returns - true, if not - false
+     * @public
+     */
+    async updatePosition() {
+    	if (!this.open) {
+    		return;
+    	}
+    	if (!this.anchorEl) {
+    		this.hide();
+    		console.error('Anchor is not defined');
+    		return;
+    	}
+    	const positionData = await computePosition(this.anchorEl, this.popupEl, {
+    		placement: this.corner,
+    		strategy: this.strategy,
+    		middleware: this.middleware
+    	});
+    	this.assignPopupPosition(positionData);
+    	if (this.arrow) { this.assignArrowPosition(positionData); }
+    }
 
-	private handleDismissClick(): void {
-		this.hide();
-	}
+    private assignPopupPosition(data: any): void {
+    	const { x: popupX, y: popupY } = data;
+    	Object.assign(this.popupEl.style, {
+    		left: `${popupX}px`,
+    		top: `${popupY}px`,
+    	});
+    }
 
-	private renderDismissButton(): TemplateResult | unknown {
-		return this.dismissible
-			? html`<vwc-icon-button @click=${this.handleDismissClick} class="popup-dismissible-button" icon="close-small-solid"
-	shape="circled" dense></vwc-icon-button>`
-			: nothing;
-	}
+    private assignArrowPosition(data: any): void {
+    	const { x: arrowX, y: arrowY } = data.middlewareData.arrow;
+    	const staticSide: any = { top: 'bottom', right: 'left', bottom: 'top', left: 'right' };
+    	const side: string = staticSide[data.placement.split('-')[0]];
+    	Object.assign(this.arrowEl.style, {
+    		left: arrowX != null ? `${arrowX}px` : '',
+    		top: arrowY != null ? `${arrowY}px` : '',
+    		right: '',
+    		bottom: '',
+    		[side]: '-4px',
+    	});
+    }
 
-	private renderArrow(): TemplateResult | unknown {
-		return this.arrow ? html`<div class="popup-arrow"></div>` : nothing;
-	}
+    private handleDismissClick(): void {
+    	this.hide();
+    }
 
-	protected getRenderClasses(): ClassInfo {
-		return {
-			['popup-open']: !!this.open,
-			['popup-dismissible']: !!this.dismissible
-		};
-	}
+    private renderDismissButton(): TemplateResult | unknown {
+    	return this.dismissible
+    		? html`<vwc-icon-button @click=${this.handleDismissClick} class="popup-dismissible-button" icon="close-small-solid"
+    shape="circled" dense></vwc-icon-button>`
+    		: nothing;
+    }
 
-	protected override render(): TemplateResult {
-		const part = this.alternate ? 'vvd-scheme-alternate' : '';
-		const aria = this.open ? 'false' : 'true';
+    private renderArrow(): TemplateResult | unknown {
+    	return this.arrow ? html`<div class="popup-arrow"></div>` : nothing;
+    }
 
-		return html`
-			<div class="popup-wrapper">
-				<vwc-elevation dp="2">
-					<div class="popup ${classMap(this.getRenderClasses())}" aria-hidden=${aria} part=${part}>
-						<div class="popup-content">
-							<slot></slot>
-							${this.renderDismissButton()}
-						</div>
-						${this.renderArrow()}
-					</div>
-				</vwc-elevation>
-			</div>
+    protected getRenderClasses(): ClassInfo {
+    	return {
+    		['popup-open']: !!this.open,
+    		['popup-dismissible']: !!this.dismissible
+    	};
+    }
+
+    protected override render(): TemplateResult {
+    	const part = this.alternate ? 'vvd-scheme-alternate' : '';
+    	const aria = this.open ? 'false' : 'true';
+
+    	return html`
+            <div class="popup-wrapper">
+                <vwc-elevation dp="2">
+                    <div class="popup ${classMap(this.getRenderClasses())}" aria-hidden=${aria} part=${part}>
+                        <div class="popup-content">
+                            <slot></slot>
+                            ${this.renderDismissButton()}
+                        </div>
+                        ${this.renderArrow()}
+                    </div>
+                </vwc-elevation>
+            </div>
 		`;
-	}
+    }
 }
