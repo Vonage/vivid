@@ -25,6 +25,7 @@ export class VWCTooltipBase extends LitElement {
 	/**
 	 * @prop open - indicates whether the tooltip is open
 	 * accepts boolean value
+	  * @public
 	 * */
 	@property({ type: Boolean, reflect: true })
 		open = false;
