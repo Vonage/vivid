@@ -37,5 +37,5 @@ be sure to add `aria-describedby="the vwc-tooltip ID name"` on the tooltip trigg
 
 | Property                | Default | Description                |
 |-------------------------|---------|----------------------------|
-| `--tooltip-inline-size` | 250px   | Controls the tooltip width |
+| `--tooltip-inline-size` | 240px   | Controls the tooltip width |
 
