@@ -47,7 +47,7 @@ export class VWCTooltipBase extends LitElement {
 	}
 
 	/**
-	 * Closes the popup
+	 * Closes the tooltip
 	 * @public
 	 */
 	hide(): void {
