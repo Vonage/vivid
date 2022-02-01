@@ -23,7 +23,7 @@ export class VWCTooltipBase extends LitElement {
 		corner?: Placement;
 
 	/**
-	 * @prop open - indicates whether the tip is open
+	 * @prop open - indicates whether the tooltip is open
 	 * accepts boolean value
 	 * */
 	@property({ type: Boolean, reflect: true })
