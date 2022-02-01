@@ -4,6 +4,16 @@ export const argTypes = {
 			type: 'text'
 		}
 	},
+	caption: {
+		control: {
+			type: 'text'
+		}
+	},
+	metaData: {
+		control: {
+			type: 'text'
+		}
+	},
 	indicatorIconSet: {
 		control: {
 			type: 'select',

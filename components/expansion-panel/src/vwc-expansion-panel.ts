@@ -81,15 +81,16 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	}
 
 	private renderCaption(): TemplateResult | unknown {
-		return this.caption ? html`<span class="caption"></span>` : nothing;
+		return this.caption ? html`<span class="caption">${this.caption}</span>` : nothing;
 	}
 
 	private renderMetaData(): TemplateResult | unknown {
-		return this.metaData ? html`<span class="meta"></span>` : nothing;
+		return this.metaData ? html`<span class="meta">${this.metaData}</span>` : nothing;
 	}
 
 	protected override render(): TemplateResult {
 		return html`
+			<h3 class="wrapper-headline" id="expansion-panel">
 			<button class="expansion-panel-header"
 				@mousedown="${this.handleRippleActivate}"
 				@mouseenter="${this.handleRippleMouseEnter}"
@@ -103,7 +104,6 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 				@click=${() => this.toggleOpen()}
 				?aria-expanded=${this.open}
 				aria-controls="content"
-				id="expansion-panel"
 			>
 				${this.renderRipple()}
 				<span class="leading-icon">
@@ -122,6 +122,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 					</slot>
 				</span>
 			</button>
+			</h3>
 			<div id="content" class="expansion-panel-body" role="region" aria-labelledby="expansion-panel">
 				<slot></slot>
 			</div>`;

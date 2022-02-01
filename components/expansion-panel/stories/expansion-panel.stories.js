@@ -72,6 +72,12 @@ Dense.args = { header: 'Campaign Details', dense: '' };
 export const LeadingToggle = Template.bind({});
 LeadingToggle.args = { header: 'Campaign Details', leadingToggle: '' };
 
+export const Caption = Template.bind({});
+Caption.args = { header: 'Campaign Details with caption', caption: 'item number' };
+
+export const MetaData = Template.bind({});
+MetaData.args = { header: 'Campaign Details', metaData: 'meta-data', icon: "chat-solid" };
+
 export const Icon = Template.bind({});
 Icon.args = { header: 'Campaign Details', icon: 'chat-solid' };
 
