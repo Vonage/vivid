@@ -39,7 +39,7 @@ export class VWCTooltipBase extends LitElement {
 		anchor = '';
 
 	/**
-	 * Opens the popup
+	 * Opens the tooltip
 	 * @public
 	 */
 	show(): void {
