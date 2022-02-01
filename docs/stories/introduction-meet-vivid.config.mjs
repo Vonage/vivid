@@ -39,11 +39,11 @@ export default {
 			],
 			[
 				'href="docs/installation.md"',
-				'?path=/story/guides-installation--installation',
+				'?path=/story/getting-started-installation--installation',
 			],
 			[
 				'href="docs/contribution.md"',
-				'?path=/story/guides-contribution--contribution',
+				'?path=/story/getting-started-contribution--contribution',
 			],
 		]);
 		return r;
