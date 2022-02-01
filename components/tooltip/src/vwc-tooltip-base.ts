@@ -7,7 +7,7 @@ import type { Placement } from '@floating-ui/core';
 export class VWCTooltipBase extends LitElement {
 
 	/**
-	 * @prop content - the content of the tooltip
+	 * @prop text - the text of the tooltip
 	 * accepts string
 	 * @public
 	 * */
