@@ -26,7 +26,9 @@ This component is an extension of [<mwc-dialog>](https://github.com/material-com
 | `defaultAction`         | `string`  | _Default: 'close'_ – Action to be emitted with the `closing` and `closed` events when `<mwc-dialog>.open` is toggled.
 | `actionAttribute`       | `string`  | _Default: 'dialogAction'_ – Attribute to read in light dom of dialog for closing action value.
 | `initialFocusAttribute` | `string`  | _Default: 'dialogInitialFocus'_ – Attribute to search for in light dom for initial focus on dialog open.
-| `closeButton`						| `boolean`	|	_Default: 'false'_ - show/hide the dismiss button
+| `closeButton`						     | `boolean`	|	_Default: 'false'_ - show/hide the dismiss button
+| `topPosition`	| `boolean`	|	_Default: 'false'_ - override the dialog centering to the screen and allow setting a unique top. Need to be used with defining value for `--dialog-top-position`
+
 
 ### Methods
 
@@ -55,3 +57,10 @@ This component is an extension of [<mwc-dialog>](https://github.com/material-com
 | `opened`   | `mwc-dialog` | `{}`               | Fired once the dialog is finished opening (after animation).
 | `closing`  | `mwc-dialog` | `{action: string}` | Fired when the dialog is is beginning to close. Detail is the action that closed the dialog.
 | `closed`   | `mwc-dialog` | `{action: string}` | Fired once the dialog is finished closing (after animation). Detail is the action that closed the dialog.
+
+## CSS Custom Properties
+
+| Property                       | Default | Description                                                                 |
+|--------------------------------|-------|-----------------------------------------------------------------------------|
+| `--dialog-top-position` | none  | Sets the dialog top position. Need to be used with the `topPosition` property |
+

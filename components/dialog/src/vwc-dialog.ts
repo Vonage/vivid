@@ -32,6 +32,13 @@ export class VWCDialog extends MWCDialog {
 	})
 		closeButton?: boolean;
 
+	@property({
+		attribute: 'topPosition',
+		type: Boolean,
+		reflect: true
+	})
+		topPosition?: boolean;
+
 	protected override firstUpdated() {
 		super.firstUpdated();
 		this.addDismissButton();

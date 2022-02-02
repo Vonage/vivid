@@ -71,3 +71,10 @@
 		width: 100%;
 	}
 }
+
+:host([topPosition]) {
+	.mdc-dialog {
+		top: var(--dialog-top-position);
+		height: auto;
+	}
+}

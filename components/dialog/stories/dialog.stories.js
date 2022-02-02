@@ -63,6 +63,9 @@ Modal.args = { heading: 'This is a modal window', scrimClickAction: '' };
 export const CloseButton = Template.bind({});
 CloseButton.args = { 'close-button': 'true', heading: 'This is a modal window with a close button' };
 
+export const topPosition = Template.bind({});
+topPosition.args = { heading: 'Hello Modal!', topPosition: true, style: '--dialog-top-position: 50px'};
+
 function handleOpenDialogClick(e) {
 	document.querySelector('vwc-dialog').show();
 }
