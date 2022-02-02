@@ -13,7 +13,7 @@ export default {
 const Template = args => html`
 	<vwc-button @click="${handleOpenDialogClick}" layout="outlined">Open dialog</vwc-button>
 	<vwc-dialog ...=${spread(args)}>
-		<div>This is the modal's content.</div>
+		<div>This is the modal's content. The content can be long but still will not be cut off by the close button</div>
 		<vwc-button
 			slot="primaryAction"
 			dialogAction="discard">
@@ -61,7 +61,7 @@ export const Modal = Template.bind({});
 Modal.args = { heading: 'This is a modal window', scrimClickAction: '' };
 
 export const CloseButton = Template.bind({});
-CloseButton.args = { 'close-button': 'true' };
+CloseButton.args = { 'close-button': 'true', heading: 'This is a modal window with a close button' };
 
 function handleOpenDialogClick(e) {
 	document.querySelector('vwc-dialog').show();
