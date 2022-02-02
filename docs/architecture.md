@@ -10,7 +10,7 @@
 
 ### What we deliver
 
-Vivid's approach is mostly relies on the [Open-WC](https://open-wc.org/guide/) guidelines. As a such, we provide our products as a **web-components**, namely: components defined as custom elements, featuring templating, shadow DOM etc.
+Vivid's approach is mostly relies on the [Open-WC](https://open-wc.org/guides) guidelines. As a such, we provide our products as a **web-components**, namely: components defined as custom elements, featuring templating, shadow DOM etc.
 
 Some of those components are rather generic, 'atomic' ones, like button or text input. Others are complex, business-logic oriented micro-frontends. Yet, the design principle apply to all of them alike.
 
