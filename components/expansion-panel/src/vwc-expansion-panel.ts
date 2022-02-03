@@ -95,7 +95,6 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 		};
 
 		return html`
-			<h3 class="wrapper-headline">
 			<button class="expansion-panel-header ${classMap(classes)}" id="expansion-panel"
 				@mousedown="${this.handleRippleActivate}"
 				@mouseenter="${this.handleRippleMouseEnter}"
@@ -124,7 +123,6 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 					</slot>
 				</span>
 			</button>
-			</h3>
 			<div id="content" class="expansion-panel-body" role="region" aria-labelledby="expansion-panel">
 				<slot></slot>
 			</div>`;
