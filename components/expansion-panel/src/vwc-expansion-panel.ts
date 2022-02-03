@@ -1,6 +1,7 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
 import '@material/mwc-ripple/mwc-ripple.js';
+import { classMap } from 'lit-html/directives/class-map.js';
 import {
 	customElement,
 	eventOptions,
@@ -89,9 +90,13 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	}
 
 	protected override render(): TemplateResult {
+		const classes = {
+			'with-meta': this.metaData,
+		};
+
 		return html`
-			<h3 class="wrapper-headline" id="expansion-panel">
-			<button class="expansion-panel-header"
+			<h3 class="wrapper-headline">
+			<button class="expansion-panel-header ${classMap(classes)}" id="expansion-panel"
 				@mousedown="${this.handleRippleActivate}"
 				@mouseenter="${this.handleRippleMouseEnter}"
 				@mouseleave="${this.handleRippleMouseLeave}"
@@ -111,10 +116,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 						${this.renderIconOrToggle()}
 					</slot>
 				</span>
-				<span class="header-wrapper">
-					${this.renderCaption()}
-					<span class="header-text">${this.heading || this.header}</span>
-				</span>
+				${this.renderCaption()}<span class="header-text">${this.heading || this.header}</span>
 				${this.renderMetaData()}
 				<span class="trailing-icon">
 					<slot name="trailingIcon">
