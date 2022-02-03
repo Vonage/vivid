@@ -3,13 +3,11 @@
 #### `should have internal contents`
 
 ```html
-<h3
-  class="wrapper-headline"
-  id="expansion-panel"
->
+<h3 class="wrapper-headline">
   <button
     aria-controls="content"
     class="expansion-panel-header"
+    id="expansion-panel"
   >
     <mwc-ripple>
     </mwc-ripple>
@@ -17,10 +15,8 @@
       <slot name="icon">
       </slot>
     </span>
-    <span class="header-wrapper">
-      <span class="header-text">
-        click me
-      </span>
+    <span class="header-text">
+      click me
     </span>
     <span class="trailing-icon">
       <slot name="trailingIcon">
@@ -53,13 +49,11 @@
 #### `should have internal contents (deprecated 'header')`
 
 ```html
-<h3
-  class="wrapper-headline"
-  id="expansion-panel"
->
+<h3 class="wrapper-headline">
   <button
     aria-controls="content"
     class="expansion-panel-header"
+    id="expansion-panel"
   >
     <mwc-ripple>
     </mwc-ripple>
@@ -67,10 +61,8 @@
       <slot name="icon">
       </slot>
     </span>
-    <span class="header-wrapper">
-      <span class="header-text">
-        click me
-      </span>
+    <span class="header-text">
+      click me
     </span>
     <span class="trailing-icon">
       <slot name="trailingIcon">
