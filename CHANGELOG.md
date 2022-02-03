@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.25.7](https://github.com/Vonage/vivid/compare/v2.25.6...v2.25.7) (2022-02-02)
+
+
+### Bug Fixes
+
+* **storybook:** fix broken links ([#1224](https://github.com/Vonage/vivid/issues/1224)) ([57d80e0](https://github.com/Vonage/vivid/commit/57d80e0a897ac36dbccd460d104e869e7fb0e240))
+
+
+
+
+
 ## [2.25.6](https://github.com/Vonage/vivid/compare/v2.25.5...v2.25.6) (2022-01-30)
 
 **Note:** Version bump only for package @vivid/root
