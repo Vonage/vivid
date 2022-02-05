@@ -1,3 +1,12 @@
+## [2.25.8](https://github.com/vonage/vivid/compare/v2.25.7...v2.25.8) (2022-02-05)
+
+
+### Bug Fixes
+
+* **top-app-bar-fixed:** missing dependency ([553005c](https://github.com/vonage/vivid/commit/553005cae751404f47df81f4386359c78a6ba3d1))
+
+
+
 ## [2.25.7](https://github.com/vonage/vivid/compare/v2.25.6...v2.25.7) (2022-02-02)
 
 
