@@ -42,7 +42,6 @@
 		"@vonage/vvd-design-tokens": "2.25.8",
 		"@vonage/vvd-typography": "2.25.8",
 		"@vonage/vvd-umbrella": "2.25.8",
-		"@vonage/vwc-icon-button": "2.25.8",
 		"typescript": "^4.3.2"
 	}
 }
