@@ -36,28 +36,28 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	 * @deprecated use "heading" instead
 	 */
 	@property({type: String, reflect: true})
-	header = '';
+		header = '';
 
 	/**
 	 * The heading of the expanded panel
 	 */
 	@property({type: String, reflect: true})
-	heading = '';
+		heading = '';
 
 	@property({type: String, reflect: true})
-	icon = '';
+		icon = '';
 
 	@property({type: String, reflect: true})
-	indicatorIconSet: IndicatorIconSets[number] = 'chevron';
+		indicatorIconSet: IndicatorIconSets[number] = 'chevron';
 
 	@property({type: Boolean, reflect: true})
-	dense = false;
+		dense = false;
 
 	@property({type: Boolean, reflect: true})
-	leadingToggle = false;
+		leadingToggle = false;
 
 	@property({type: Boolean, reflect: true})
-	noRipple = false;
+		noRipple = false;
 	@queryAsync('mwc-ripple') ripple!: Promise<Ripple>;
 	protected rippleHandlers = new RippleHandlers(() => {
 		return this.ripple;
@@ -86,9 +86,9 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 								@mouseenter="${this.handleRippleMouseEnter}"
 								@mouseleave="${this.handleRippleMouseLeave}"
 								@touchstart="${() => {
-									this.toggleOpen();
-									this.handleRippleActivate;
-								}}"
+		this.toggleOpen();
+		this.handleRippleActivate;
+	}}"
 								@touchend="${this.handleRippleDeactivate}"
 								@touchcancel="${this.handleRippleDeactivate}"
 								@click=${() => this.toggleOpen()}
@@ -112,7 +112,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	}
 
 	protected renderPanelHeader(): TemplateResult | string{
-		if (!isValidHeaderValue(this.headerLevel)) this.headerLevel = "3";
+		if (!isValidHeaderValue(this.headerLevel)) this.headerLevel = '3';
 		return eval(`html\`<h${this.headerLevel}>\${this.renderHeaderButton()}</h${this.headerLevel}>\``);
 	}
 
