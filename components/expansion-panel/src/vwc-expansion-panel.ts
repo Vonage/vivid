@@ -9,10 +9,10 @@ import {
 	queryAsync,
 	TemplateResult
 } from 'lit-element';
-import type { Ripple } from '@material/mwc-ripple';
-import { RippleHandlers } from '@material/mwc-ripple/ripple-handlers.js';
-import { VWCExpansionPanelBase } from './vwc-expansion-panel-base.js';
-import { style } from './vwc-expansion-panel.css.js';
+import type {Ripple} from '@material/mwc-ripple';
+import {RippleHandlers} from '@material/mwc-ripple/ripple-handlers.js';
+import {VWCExpansionPanelBase} from './vwc-expansion-panel-base.js';
+import {style} from './vwc-expansion-panel.css.js';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -23,6 +23,11 @@ declare global {
 const iconSets = ['chevron', 'binary'];
 export type IndicatorIconSets = typeof iconSets;
 
+const VALID_HEADER_VALUES = [2,3,4,5,6];
+function isValidHeaderValue(headerValue: string | number) {
+	return VALID_HEADER_VALUES.includes(Number(headerValue));
+}
+
 @customElement('vwc-expansion-panel')
 export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	static override styles = style;
@@ -30,78 +35,90 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	/**
 	 * @deprecated use "heading" instead
 	 */
-	@property({ type: String, reflect: true })
-		header = '';
+	@property({type: String, reflect: true})
+	header = '';
 
 	/**
 	 * The heading of the expanded panel
 	 */
-	@property({ type: String, reflect: true })
-		heading = '';
+	@property({type: String, reflect: true})
+	heading = '';
 
-	@property({ type: String, reflect: true })
-		icon = '';
+	@property({type: String, reflect: true})
+	icon = '';
 
-	@property({ type: String, reflect: true })
-		indicatorIconSet: IndicatorIconSets[number] = 'chevron';
+	@property({type: String, reflect: true})
+	indicatorIconSet: IndicatorIconSets[number] = 'chevron';
 
-	@property({ type: Boolean, reflect: true })
-		dense = false;
+	@property({type: Boolean, reflect: true})
+	dense = false;
 
-	@property({ type: Boolean, reflect: true })
-		leadingToggle = false;
+	@property({type: Boolean, reflect: true})
+	leadingToggle = false;
 
-	@property({ type: Boolean, reflect: true })
-		noRipple = false;
-
+	@property({type: Boolean, reflect: true})
+	noRipple = false;
 	@queryAsync('mwc-ripple') ripple!: Promise<Ripple>;
-
 	protected rippleHandlers = new RippleHandlers(() => {
 		return this.ripple;
 	});
-
-	protected toggleOpen(): void {
-		this.open = !this.open;
-	}
+	@property({type: String, reflect: true, attribute: 'header-level'})
+	private headerLevel = '3';
 
 	override openChanged(isOpen: boolean): void {
 		super.openChanged(isOpen);
 		this.toggleAttribute('open', isOpen);
 	}
 
-	protected renderRipple(): TemplateResult | string {
-		return !this.noRipple ? html`<mwc-ripple></mwc-ripple>` : '';
+	protected toggleOpen(): void {
+		this.open = !this.open;
 	}
 
-	protected override render(): TemplateResult {
+	protected renderRipple(): TemplateResult | string {
+		return !this.noRipple ? html`
+			<mwc-ripple></mwc-ripple>` : '';
+	}
+
+	protected renderHeaderButton(): TemplateResult {
 		return html`
-			<button class="expansion-panel-header"
-				@mousedown="${this.handleRippleActivate}"
-				@mouseenter="${this.handleRippleMouseEnter}"
-				@mouseleave="${this.handleRippleMouseLeave}"
-				@touchstart="${() => {
-		this.toggleOpen();
-		this.handleRippleActivate;
-	}}"
-				@touchend="${this.handleRippleDeactivate}"
-				@touchcancel="${this.handleRippleDeactivate}"
-				@click=${() => this.toggleOpen()}
-				?aria-expanded=${this.open}
-				aria-controls="content"
-			>
-				${this.renderRipple()}
-				<span class="leading-icon">
+		<button class="expansion-panel-header"
+								@mousedown="${this.handleRippleActivate}"
+								@mouseenter="${this.handleRippleMouseEnter}"
+								@mouseleave="${this.handleRippleMouseLeave}"
+								@touchstart="${() => {
+									this.toggleOpen();
+									this.handleRippleActivate;
+								}}"
+								@touchend="${this.handleRippleDeactivate}"
+								@touchcancel="${this.handleRippleDeactivate}"
+								@click=${() => this.toggleOpen()}
+								?aria-expanded=${this.open}
+								aria-controls="content"
+				>
+					${this.renderRipple()}
+					<span class="leading-icon">
 					<slot name="icon">
 						${this.renderIconOrToggle()}
 					</slot>
 				</span>
-				${this.heading || this.header}
-				<span class="trailing-icon">
+					${this.heading || this.header}
+					<span class="trailing-icon">
 					<slot name="trailingIcon">
 						${!this.leadingToggle ? this.renderToggle() : ''}
 					</slot>
 				</span>
-			</button>
+				</button>
+		`;
+	}
+
+	protected renderPanelHeader(): TemplateResult | string{
+		if (!isValidHeaderValue(this.headerLevel)) this.headerLevel = "3";
+		return eval(`html\`<h${this.headerLevel}>\${this.renderHeaderButton()}</h${this.headerLevel}>\``);
+	}
+
+	protected override render(): TemplateResult {
+		return html`
+			${this.renderPanelHeader()}
 			<div id="content" class="expansion-panel-body">
 				<slot></slot>
 			</div>`;
@@ -111,7 +128,8 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 		if (this.leadingToggle) {
 			return this.renderToggle();
 		} else if (this.icon) {
-			return html`<vwc-icon type="${this.icon}" size="medium"></vwc-icon>`;
+			return html`
+				<vwc-icon type="${this.icon}" size="medium"></vwc-icon>`;
 		} else {
 			return '';
 		}
@@ -132,7 +150,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 		`;
 	}
 
-	@eventOptions({ passive: true })
+	@eventOptions({passive: true})
 	private handleRippleActivate(evt?: Event) {
 		const onUp = () => {
 			window.removeEventListener('mouseup', onUp);
