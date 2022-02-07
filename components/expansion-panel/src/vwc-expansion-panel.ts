@@ -82,7 +82,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 
 	protected renderHeaderButton(): TemplateResult {
 		return html`
-		<button class="expansion-panel-header"
+		<button class="expansion-panel-button"
 								@mousedown="${this.handleRippleActivate}"
 								@mouseenter="${this.handleRippleMouseEnter}"
 								@mouseleave="${this.handleRippleMouseLeave}"
@@ -115,7 +115,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	protected renderPanelHeader(): TemplateResult | string{
 		if (!isValidHeaderValue(this.headerLevel)) this.headerLevel = '3';
 
-		return eval(`this.safeHtml\`<h${this.headerLevel}>\${this.renderHeaderButton()}</h${this.headerLevel}>\``);
+		return eval(`this.safeHtml\`<h${this.headerLevel} class="expansion-panel-header">\${this.renderHeaderButton()}</h${this.headerLevel}>\``);
 	}
 
 	protected override render(): TemplateResult {

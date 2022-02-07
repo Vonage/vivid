@@ -27,9 +27,15 @@
 }
 
 .expansion-panel-header {
+	padding: 0;
+	margin: 0;
+}
+
+.expansion-panel-button {
 	@include typography.typography-cat-shorthand('subtitle-2');
 	position: relative;
 	display: flex;
+	width: 100%;
 	align-items: center;
 	padding: 16px;
 	border: 0 none;
