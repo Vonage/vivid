@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.25.9](https://github.com/Vonage/vivid/compare/v2.25.8...v2.25.9) (2022-02-06)
+
+
+### Bug Fixes
+
+* **workspace:** resolve missing dependencies ([#1230](https://github.com/Vonage/vivid/issues/1230)) ([b52e418](https://github.com/Vonage/vivid/commit/b52e4180e7bcfbbb338db2c96b29f12d60ca241b))
+
+
+
+
+
 ## [2.25.8](https://github.com/Vonage/vivid/compare/v2.25.7...v2.25.8) (2022-02-05)
 
 
