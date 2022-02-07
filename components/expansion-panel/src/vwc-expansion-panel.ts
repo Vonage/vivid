@@ -87,9 +87,9 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 								@mouseenter="${this.handleRippleMouseEnter}"
 								@mouseleave="${this.handleRippleMouseLeave}"
 								@touchstart="${() => {
-		this.toggleOpen();
-		this.handleRippleActivate;
-	}}"
+									this.toggleOpen();
+									this.handleRippleActivate;
+								}}"
 								@touchend="${this.handleRippleDeactivate}"
 								@touchcancel="${this.handleRippleDeactivate}"
 								@click=${() => this.toggleOpen()}
@@ -114,7 +114,6 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 
 	protected renderPanelHeader(): TemplateResult | string{
 		if (!isValidHeaderValue(this.headerLevel)) this.headerLevel = '3';
-
 		return eval(`this.safeHtml\`<h${this.headerLevel} class="expansion-panel-header">\${this.renderHeaderButton()}</h${this.headerLevel}>\``);
 	}
 

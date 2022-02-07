@@ -3,10 +3,10 @@
 #### `should have internal contents`
 
 ```html
-<h3>
+<h3 class="expansion-panel-header">
   <button
     aria-controls="content"
-    class="expansion-panel-header"
+    class="expansion-panel-button"
   >
     <mwc-ripple>
     </mwc-ripple>
@@ -44,10 +44,10 @@
 #### `should have internal contents (deprecated 'header')`
 
 ```html
-<h3>
+<h3 class="expansion-panel-header">
   <button
     aria-controls="content"
-    class="expansion-panel-header"
+    class="expansion-panel-button"
   >
     <mwc-ripple>
     </mwc-ripple>

@@ -11,7 +11,11 @@ chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-expansion-panel';
 
-describe('expansion panel', () => {
+describe.only('expansion panel', () => {
+	function getHeaderButtonElement(actualElement) {
+		return actualElement.shadowRoot?.querySelector('.expansion-panel-button');
+	}
+
 	let addElement = isolatedElementsCreation();
 
 	it('should be defined as a custom element', () => {
@@ -66,7 +70,7 @@ describe('expansion panel', () => {
 			textToDomToParent(`<${COMPONENT_NAME} heading="${headerText}"></${COMPONENT_NAME}>`)
 		);
 		await waitNextTask();
-		const headerEl = actualElement.shadowRoot.querySelector('.expansion-panel-header');
+		const headerEl = getHeaderButtonElement(actualElement);
 		expect(headerEl.textContent.trim()).to.equal(headerText);
 	});
 
@@ -76,7 +80,7 @@ describe('expansion panel', () => {
 			textToDomToParent(`<${COMPONENT_NAME} header="${headerText}"></${COMPONENT_NAME}>`)
 		);
 		await waitNextTask();
-		const headerEl = actualElement.shadowRoot.querySelector('.expansion-panel-header');
+		const headerEl = getHeaderButtonElement(actualElement);
 		expect(headerEl.textContent.trim()).to.equal(headerText);
 	});
 
@@ -208,7 +212,7 @@ describe('expansion panel', () => {
 			);
 			await waitNextTask();
 
-			const headerEl = actualElement.shadowRoot.querySelector('.expansion-panel-header');
+			const headerEl = getHeaderButtonElement(actualElement);
 			assertComputedStyle(headerEl, { fontSize: '20px' });
 		});
 
@@ -218,12 +222,13 @@ describe('expansion panel', () => {
 			);
 			await waitNextTask();
 
-			const headerEl = actualElement.shadowRoot.querySelector('.expansion-panel-header');
+			const headerEl = getHeaderButtonElement(actualElement);
 			assertComputedStyle(headerEl, { fontSize: '14px' });
 		});
 	});
 
 	describe(`header level`, function () {
+
 		it(`should default to 3`, async function () {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
@@ -241,18 +246,18 @@ describe('expansion panel', () => {
 			);
 			await waitNextTask();
 
-			const headerButton = actualElement.shadowRoot?.querySelector('.expansion-panel-header');
+			const headerButton = getHeaderButtonElement(actualElement);
 			expect(headerButton.parentNode.tagName).to.equal('H3');
 			expect(actualElement.headerLevel).to.equal("3");
 			expect(actualElement.getAttribute('header-level')).to.equal("3");
 		});
 
 		it(`should set H3 around the button`, async function () {
-			const [actualElement] = addElement(
+			const [actualElement] = (
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
 			await waitNextTask();
-			const headerButton = actualElement.shadowRoot?.querySelector('.expansion-panel-header');
+			const headerButton = getHeaderButtonElement(actualElement);
 			expect(headerButton.parentNode.tagName).to.equal('H3');
 
 		});
@@ -263,7 +268,7 @@ describe('expansion panel', () => {
 				textToDomToParent(`<${COMPONENT_NAME} header-level="${headerLevel}"></${COMPONENT_NAME}>`)
 			);
 			await waitNextTask();
-			const headerButton = actualElement.shadowRoot?.querySelector('.expansion-panel-header');
+			const headerButton = getHeaderButtonElement(actualElement);
 			expect(headerButton.parentNode.tagName).to.equal(`H${headerLevel}`);
 		});
 
@@ -276,7 +281,7 @@ describe('expansion panel', () => {
 			actualElement.headerLevel = headerLevel;
 			await waitNextTask();
 			await actualElement.updateComplete;
-			const headerButton = actualElement.shadowRoot?.querySelector('.expansion-panel-header');
+			const headerButton = getHeaderButtonElement(actualElement);
 			expect(headerButton.parentNode.tagName).to.equal(`H${headerLevel}`);
 		});
 	});
