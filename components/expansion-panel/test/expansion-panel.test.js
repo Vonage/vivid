@@ -106,7 +106,7 @@ describe('expansion panel', () => {
 			textToDomToParent(`<${COMPONENT_NAME} metaData="${metaText}"></${COMPONENT_NAME}>`)
 		);
 		await waitNextTask();
-		expect(actualElement.shadowRoot.querySelector('.meta'));
+		expect(actualElement.shadowRoot.querySelector('.expansion-panel-header').classList.contains('meta')).to.equal(true);
 	});
 
 	describe('toggle icons', () => {
