@@ -35,7 +35,7 @@ const Template = args => html`
 	</style>
 	<div class="popup-wrapper">
 		<vwc-button id="buttonAnchor" layout="outlined" outlined aria-haspopup="true" aria-describedby="popup" @click=${onClick}>Click to open popup</vwc-button>
-		<vwc-popup id="popup" open anchor="buttonAnchor" ...=${spread(args)}>
+		<vwc-popup id="popup" anchor="buttonAnchor" ...=${spread(args)}>
 			<div class="content">
 				<vwc-text font-face="body-1-bold" tight><p class="line">Popup title</p></vwc-text>
 				<vwc-text font-face="body-2" tight>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</vwc-text>
