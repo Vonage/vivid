@@ -91,7 +91,7 @@
 }
 
 :host([dense]) {
-	.expansion-panel-header {
+	.expansion-panel-button {
 		@include typography.typography-cat-shorthand('body-2-bold');
 	}
 }
