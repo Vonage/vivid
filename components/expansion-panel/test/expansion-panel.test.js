@@ -80,6 +80,35 @@ describe('expansion panel', () => {
 		expect(headerEl.textContent.trim()).to.equal(headerText);
 	});
 
+	it('should have caption text when caption is set', async () => {
+		const captionText = 'Item caption';
+		const [actualElement] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME} caption="${captionText}"></${COMPONENT_NAME}>`)
+		);
+		await waitNextTask();
+		const caption = actualElement.shadowRoot.querySelector('.expansion-panel-header');
+		expect(caption.textContent.trim()).to.equal(captionText);
+	});
+
+	it('should have meat text when meta is set', async () => {
+		const metaText = 'meta-data';
+		const [actualElement] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME} metaData="${metaText}"></${COMPONENT_NAME}>`)
+		);
+		await waitNextTask();
+		const meta = actualElement.shadowRoot.querySelector('.expansion-panel-header');
+		expect(meta.textContent.trim()).to.equal(metaText);
+	});
+
+	it('expansion-panel-header should have meta class when meta is set', async () => {
+		const metaText = 'meta-data';
+		const [actualElement] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME} metaData="${metaText}"></${COMPONENT_NAME}>`)
+		);
+		await waitNextTask();
+		expect(actualElement.shadowRoot.querySelector('.meta'));
+	});
+
 	describe('toggle icons', () => {
 		let actualElement;
 		beforeEach(async () => {
