@@ -100,7 +100,7 @@ describe('expansion panel', () => {
 		expect(meta.textContent.trim()).to.equal(metaText);
 	});
 
-	it('expansion-panel-header should have meta class when meta is set', async () => {
+	it('should set meta class on expansion-panel-header when meta is set', async () => {
 		const metaText = 'meta-data';
 		const [actualElement] = addElement(
 			textToDomToParent(`<${COMPONENT_NAME} metaData="${metaText}"></${COMPONENT_NAME}>`)
