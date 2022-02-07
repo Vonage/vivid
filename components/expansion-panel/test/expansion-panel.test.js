@@ -90,7 +90,7 @@ describe('expansion panel', () => {
 		expect(caption.textContent.trim()).to.equal(captionText);
 	});
 
-	it('should have meat text when meta is set', async () => {
+	it('should have meta text when meta-data is set', async () => {
 		const metaText = 'meta-data';
 		const [actualElement] = addElement(
 			textToDomToParent(`<${COMPONENT_NAME} metaData="${metaText}"></${COMPONENT_NAME}>`)
