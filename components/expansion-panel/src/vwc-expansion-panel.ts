@@ -87,9 +87,9 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 								@mouseenter="${this.handleRippleMouseEnter}"
 								@mouseleave="${this.handleRippleMouseLeave}"
 								@touchstart="${() => {
-									this.toggleOpen();
-									this.handleRippleActivate;
-								}}"
+		this.toggleOpen();
+		this.handleRippleActivate;
+	}}"
 								@touchend="${this.handleRippleDeactivate}"
 								@touchcancel="${this.handleRippleDeactivate}"
 								@click=${() => this.toggleOpen()}
