@@ -7,7 +7,7 @@ import type { Placement } from '@floating-ui/core';
 export class VWCTooltipBase extends LitElement {
 
 	/**
-	 * @prop content - the content of the tooltip
+	 * @prop text - the text of the tooltip
 	 * accepts string
 	 * @public
 	 * */
@@ -23,8 +23,9 @@ export class VWCTooltipBase extends LitElement {
 		corner?: Placement;
 
 	/**
-	 * @prop open - indicates whether the tip is open
+	 * @prop open - indicates whether the tooltip is open
 	 * accepts boolean value
+	  * @public
 	 * */
 	@property({ type: Boolean, reflect: true })
 		open = false;
@@ -38,7 +39,7 @@ export class VWCTooltipBase extends LitElement {
 		anchor = '';
 
 	/**
-	 * Opens the popup
+	 * Opens the tooltip
 	 * @public
 	 */
 	show(): void {
@@ -46,7 +47,7 @@ export class VWCTooltipBase extends LitElement {
 	}
 
 	/**
-	 * Closes the popup
+	 * Closes the tooltip
 	 * @public
 	 */
 	hide(): void {
