@@ -5,13 +5,13 @@ import {
 	assertComputedStyle,
 	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
-import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
+import {chaiDomDiff} from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-expansion-panel';
 
-describe.only('expansion panel', () => {
+describe('expansion panel', () => {
 	function getHeaderButtonElement(actualElement) {
 		return actualElement.shadowRoot?.querySelector('.expansion-panel-button');
 	}
@@ -213,7 +213,7 @@ describe.only('expansion panel', () => {
 			await waitNextTask();
 
 			const headerEl = getHeaderButtonElement(actualElement);
-			assertComputedStyle(headerEl, { fontSize: '20px' });
+			assertComputedStyle(headerEl, {fontSize: '20px'});
 		});
 
 		it('should have dense size when dense', async () => {
@@ -223,7 +223,7 @@ describe.only('expansion panel', () => {
 			await waitNextTask();
 
 			const headerEl = getHeaderButtonElement(actualElement);
-			assertComputedStyle(headerEl, { fontSize: '14px' });
+			assertComputedStyle(headerEl, {fontSize: '14px'});
 		});
 	});
 
@@ -235,21 +235,21 @@ describe.only('expansion panel', () => {
 			);
 			await waitNextTask();
 
-			expect(actualElement.headerLevel).to.equal("3");
-			expect(actualElement.getAttribute('heading-level')).to.equal("3");
+			expect(actualElement.headerLevel).to.equal('3');
+			expect(actualElement.getAttribute('header-level')).to.equal('3');
 		});
 
 		it(`should revert to 3 if set with invalid property`, async function () {
 			const invalidHeaderLevel = 'johnny';
 			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} heading-level="${invalidHeaderLevel}"></${COMPONENT_NAME}>`)
+				textToDomToParent(`<${COMPONENT_NAME} header-level="${invalidHeaderLevel}"></${COMPONENT_NAME}>`)
 			);
 			await waitNextTask();
 
 			const headerButton = getHeaderButtonElement(actualElement);
 			expect(headerButton.parentNode.tagName).to.equal('H3');
-			expect(actualElement.headerLevel).to.equal("3");
-			expect(actualElement.getAttribute('heading-level')).to.equal("3");
+			expect(actualElement.headerLevel).to.equal('3');
+			expect(actualElement.getAttribute('header-level')).to.equal('3');
 		});
 
 		it(`should set H3 around the button`, async function () {
@@ -262,10 +262,10 @@ describe.only('expansion panel', () => {
 
 		});
 
-		it(`should set the H level according to heading-level attribute`, async function () {
+		it(`should set the H level according to header-level attribute`, async function () {
 			const headerLevel = 5;
 			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} heading-level="${headerLevel}"></${COMPONENT_NAME}>`)
+				textToDomToParent(`<${COMPONENT_NAME} header-level="${headerLevel}"></${COMPONENT_NAME}>`)
 			);
 			await waitNextTask();
 			const headerButton = getHeaderButtonElement(actualElement);
