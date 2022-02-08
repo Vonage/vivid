@@ -5,7 +5,7 @@ import {
 	assertComputedStyle,
 	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
-import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
+import {chaiDomDiff} from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
 
@@ -106,7 +106,7 @@ describe('expansion panel', () => {
 			textToDomToParent(`<${COMPONENT_NAME} metaData="${metaText}"></${COMPONENT_NAME}>`)
 		);
 		await waitNextTask();
-		expect(actualElement.shadowRoot.querySelector('.expansion-panel-header').classList.contains('meta')).to.equal(true);
+		expect(actualElement.shadowRoot.querySelector('.expansion-panel-header').classList.contains('with-meta')).to.equal(true);
 	});
 
 	describe('toggle icons', () => {
@@ -238,7 +238,7 @@ describe('expansion panel', () => {
 			await waitNextTask();
 
 			const headerEl = actualElement.shadowRoot.querySelector('.expansion-panel-header');
-			assertComputedStyle(headerEl, { fontSize: '20px' });
+			assertComputedStyle(headerEl, {fontSize: '20px'});
 		});
 
 		it('should have dense size when dense', async () => {
@@ -248,7 +248,7 @@ describe('expansion panel', () => {
 			await waitNextTask();
 
 			const headerEl = actualElement.shadowRoot.querySelector('.expansion-panel-header');
-			assertComputedStyle(headerEl, { fontSize: '14px' });
+			assertComputedStyle(headerEl, {fontSize: '14px'});
 		});
 	});
 });
