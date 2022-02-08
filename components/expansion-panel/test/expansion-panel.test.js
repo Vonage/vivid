@@ -93,12 +93,30 @@ describe('expansion panel', () => {
 	it('should have meta text when meta-data is set', async () => {
 		const metaText = 'meta-data';
 		const [actualElement] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME} metaData="${metaText}"></${COMPONENT_NAME}>`)
+			textToDomToParent(`<${COMPONENT_NAME} caption="string" metaData="${metaText}"></${COMPONENT_NAME}>`)
 		);
 		await waitNextTask();
 		const meta = actualElement.shadowRoot.querySelector('.expansion-panel-header');
 		expect(meta.textContent.trim()).to.equal(metaText);
 	});
+
+
+	it('should have header text and meta-data text and caption', async () => {
+		const headerText = 'Click me';
+		const metaText = 'meta-data';
+		const captionText = 'Item caption';
+		const [actualElement] = (
+			textToDomToParent(`<${COMPONENT_NAME} header="${headerText}" caption="${captionText}" metaData="${metaText}"></${COMPONENT_NAME}>`)
+		);
+		await waitNextTask();
+		const header = actualElement.shadowRoot.querySelector('.header-text');
+		const caption = actualElement.shadowRoot.querySelector('.caption');
+		const meta = actualElement.shadowRoot.querySelector('.meta');
+		expect(header.textContent.trim()).to.equal(headerText);
+		expect(caption.textContent.trim()).to.equal(captionText);
+		expect(meta.textContent.trim()).to.equal(metaText);
+	});
+
 
 	it('should set meta class on expansion-panel-header when meta is set', async () => {
 		const metaText = 'meta-data';
