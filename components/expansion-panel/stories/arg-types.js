@@ -4,6 +4,12 @@ export const argTypes = {
 			type: 'text'
 		}
 	},
+	'header-Level': {
+		control: {
+			type: 'select',
+			options: ['2', '3', '4', '5', '6'],
+		}
+	},
 	indicatorIconSet: {
 		control: {
 			type: 'select',
