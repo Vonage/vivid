@@ -52,8 +52,21 @@ describe('tooltip', () => {
 		});
 	});
 
+	describe(`hide`, () => {
+		it(`should hide tooltip`, async () => {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} open></${COMPONENT_NAME}>`)
+			);	
+			actualElement.hide();
+			await actualElement.updateComplete;
+			expect(actualElement.open)
+				.to
+				.equal(false);
+		});
+	});
+
 	describe(`show`, () => {
-		it(`should set "open" to true`, async () => {
+		it(`should show tooltip`, async () => {
 			addElement(
 				textToDomToParent(`<vwc-button id="anchor"></vwc-button>`)
 			);
@@ -62,28 +75,11 @@ describe('tooltip', () => {
 			);
 			actualElement.anchor = "anchor";
 			await actualElement.updateComplete;
-			
 			actualElement.show();
 			await actualElement.updateComplete;
-
 			expect(actualElement.open)
 				.to
 				.equal(true);
-		});
-	});
-
-	describe(`hide`, () => {
-		it(`should set "open" to false`, async () => {
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} open></${COMPONENT_NAME}>`)
-			);
-				
-			actualElement.hide();
-			await actualElement.updateComplete;
-
-			expect(actualElement.open)
-				.to
-				.equal(false);
 		});
 	});
 });
