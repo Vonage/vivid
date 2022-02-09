@@ -26,12 +26,13 @@ be sure to add `aria-describedby="the vwc-tooltip ID name"` on the tooltip trigg
 
 
 ## Properties
-| Property | Attribute     | Type                         | Default    |
-|----------|---------------|------------------------------|------------|
-| `text`   | `text`        | `string \| undefined` |             |
-| `open`   | `open`        | `boolean`                    | false      |
-| `corner` | `corner`   | `string`                     | "bottom"   |
-| `styles` |               | `CSSResult`                  | "style"    |
+| Property | Attribute     | Type                         | Default          |
+|----------|---------------|------------------------------|------------------|
+| `text`   | `text`        | `string \| undefined`       |             |
+| `open`   | `open`        | `boolean`                    | false            |
+| `anchor` | `anchor`   | `string`                     | trigger popup ID |
+| `corner` | `corner`   | `string`                     | "bottom"         |
+| `styles` |               | `CSSResult`                  | "style"          |
 
 ## CSS Custom Properties
 
