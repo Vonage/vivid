@@ -4,7 +4,7 @@ A tooltip displays non-interactive clarifying text related to a trigger element.
 
 Note that touch screen devices do not share the same pointer input events and may fail to show anything.
 
-Consider avoiding the use of tooltip as it may fail to produce the same UX for ALL users. if must, contemplate on practices such as `aria-describedby` to add alternative experience to users who aren't able to interact with a control in the same manner as sighted users.
+Consider avoiding the use of tooltip as it may fail to produce the same UX for ALL users. if must, contemplate on practices such as `aria-describedby` to add alternative experience to users who aren't able to interact with a control in the same manner sighted users do.
 
 
 ## Using the Tooltip right
