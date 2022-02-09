@@ -122,11 +122,12 @@ export class VWCPopupBase extends LitElement {
     	this.open = false;
     }
 
+    // TODO: Make the observer work on positioning for the first time
     // new `IntersectionObserver` constructor
     private observer = new IntersectionObserver((entries) => {
     	for (const entry of entries) {
     		const bounds = entry.boundingClientRect;
-    		console.log(bounds);
+    		console.log('anchor element bounds ', bounds);
     		requestAnimationFrame(() => this.updatePosition());
     	}
     });
