@@ -61,7 +61,7 @@ const InsideTExtTemplate = args => html`
 	</div>
 `;
 
-export const InText = InsideTExtTemplate.bind({});
+export const InText = InsideTextTemplate.bind({});
 InText.args = { corner: "top" };
 
 
