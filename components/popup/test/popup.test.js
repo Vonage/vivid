@@ -4,7 +4,7 @@ import 'chai-dom';
 import {
 	waitNextTask,
 	textToDomToParent,
-	isolatedElementsCreation
+	isolatedElementsCreation,
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
@@ -37,9 +37,9 @@ describe('popup', () => {
 			);
 
 			await actualElement.updateComplete;
-			expect(actualElement.anchor, 'anchor should be null')
+			expect(actualElement.anchor, 'anchor should be ""')
 				.to
-				.equal(null);
+				.equal("");
 			expect(actualElement.open, 'open should be false')
 				.to
 				.equal(false);
@@ -58,16 +58,19 @@ describe('popup', () => {
 		});
 	});
 
-	describe(`show`, function () {
-		it(`should set "open" to true`, function () {
-			const [anchorElement] = addElement(
-				textToDomToParent(`<vwc-button></vwc-button>`)
+	describe(`show`, () => {
+		it(`should set "open" to true`, async () => {
+			addElement(
+				textToDomToParent(`<vwc-button id="anchor"></vwc-button>`)
 			);
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
-			actualElement.anchor = anchorElement;
+			actualElement.anchor = "anchor";
+			await actualElement.updateComplete;
+
 			actualElement.show();
+			await actualElement.updateComplete;
 
 			expect(actualElement.open)
 				.to
@@ -75,13 +78,44 @@ describe('popup', () => {
 		});
 	});
 
-	describe(`hide`, function () {
-		it(`should set "open" to false`, function () {
+	describe(`hide`, () => {
+		it(`should set "open" to false`, async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} open></${COMPONENT_NAME}>`)
 			);
 
 			actualElement.hide();
+			await actualElement.updateComplete;
+
+			expect(actualElement.open)
+				.to
+				.equal(false);
+		});
+	});
+
+	describe(`anchor`, () => {
+		it(`should not open the popup if anchor does not exist`, async () => {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
+			);
+			actualElement.anchor = "anchor";
+			await actualElement.updateComplete;
+
+			actualElement.show();
+			await actualElement.updateComplete;
+
+			expect(actualElement.open)
+				.to
+				.equal(false);
+		});
+
+		it(`should not open the popup if anchor does not exist`, async () => {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} open></${COMPONENT_NAME}>`)
+			);
+			actualElement.anchor = "anchor";
+			await actualElement.updateComplete;
+
 			expect(actualElement.open)
 				.to
 				.equal(false);
