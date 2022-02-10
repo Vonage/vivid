@@ -27,7 +27,7 @@ const Template = args => html`
 export const Basic = Template.bind({});
 Basic.args = { corner: "top" };
 
-const AfterATitleTemplate = args => html`
+const AfterTitleTemplate = args => html`
 	<style>
 		.tooltip-wrapper {
 			margin-top: 4rem;
