@@ -43,7 +43,7 @@ const AfterATitleTemplate = args => html`
 	</div>
 `;
 
-export const InATitle = AfterATitleTemplate.bind({});
+export const InATitle = AfterTitleTemplate.bind({});
 InATitle.args = { corner: "top" };
 
 const InsideTExtTemplate = args => html`
