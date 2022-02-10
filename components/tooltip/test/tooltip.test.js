@@ -15,7 +15,7 @@ const COMPONENT_NAME = 'vwc-tooltip';
 describe('tooltip', () => {
 	let addElement = isolatedElementsCreation();
 
-	it(`${COMPONENT_NAME} is defined as a custom element`, async () => {
+	it(`${COMPONENT_NAME} defined as a custom element`, async () => {
 		assert.exists(
 			customElements.get(COMPONENT_NAME)
 		);
@@ -56,7 +56,7 @@ describe('tooltip', () => {
 		it(`should hide tooltip`, async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} open></${COMPONENT_NAME}>`)
-			);	
+			);
 			actualElement.hide();
 			await actualElement.updateComplete;
 			expect(actualElement.open)
@@ -66,14 +66,14 @@ describe('tooltip', () => {
 	});
 
 	describe(`show`, () => {
-		it(`should show tooltip`, async () => {
+		it(`should show the tooltip`, async () => {
 			addElement(
-				textToDomToParent(`<vwc-button id="anchor"></vwc-button>`)
+				textToDomToParent(`<vwc-button id="tooltip-anchor"></vwc-button>`)
 			);
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
-			actualElement.anchor = "anchor";
+			actualElement.anchor = "tooltip-anchor";
 			await actualElement.updateComplete;
 			actualElement.show();
 			await actualElement.updateComplete;
