@@ -24,13 +24,11 @@ export async function createElementVariations(wrapper) {
 	button.addEventListener("click", onClick);
 	const tooltip = document.getElementById('tooltip');
 	await tooltip.updateComplete;
-	//onClick();
 	return tooltip.updateComplete;
 }
 
 function onClick() {
 	const tooltip = document.querySelector('vwc-tooltip');
-	const button = document.querySelector("#button");
 	if (tooltip.open) {
 		tooltip.hide();
 	} else {
