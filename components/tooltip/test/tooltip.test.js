@@ -31,22 +31,22 @@ describe('tooltip', () => {
 	});
 
 	describe('tooltip default init', () => {
-		it('should reflect from attribute to property', async () => {
+		it('should reflect from attribute to tooltip property', async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
 
 			await actualElement.updateComplete;
-			expect(actualElement.anchor, 'anchor should be ""')
+			expect(actualElement.anchor, 'tooltip anchor should be ""')
 				.to
 				.equal("");
-			expect(actualElement.open, 'open should be false')
+			expect(actualElement.open, 'tooltip open should be false')
 				.to
 				.equal(false);
-			expect(actualElement.text, 'text should be empty')
+			expect(actualElement.text, 'tooltip text should be empty')
 				.to
 				.equal('');
-			expect(actualElement.corner, 'corner should be undefined')
+			expect(actualElement.corner, 'tooltip corner should be undefined')
 				.to
 				.equal(undefined);
 		});
