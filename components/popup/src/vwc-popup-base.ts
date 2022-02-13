@@ -122,15 +122,9 @@ export class VWCPopupBase extends LitElement {
     	this.open = false;
     }
 
-    // TODO: Make the observer work on positioning for the first time
-    // new `IntersectionObserver` constructor
-    private observer = new IntersectionObserver((entries) => {
-    	for (const entry of entries) {
-    		const bounds = entry.boundingClientRect;
-    		console.log('anchor element bounds ', bounds);
-    		requestAnimationFrame(() => this.updatePosition());
-    	}
-    });
+		private sizeObserver = new ResizeObserver(() => {
+			return this.updatePosition();
+		});
 
     override connectedCallback(): void {
     	super.connectedCallback();
@@ -143,19 +137,21 @@ export class VWCPopupBase extends LitElement {
     	window.removeEventListener('scroll', this.updatePosition);
     	window.removeEventListener('resize', this.onResizeWindow);
     	// Disconnect the observer to stop from running in the background
-    	this.observer.disconnect();
+    	this.sizeObserver.disconnect();
     }
 
     protected override firstUpdated(_changedProperties: PropertyValues): void {
     	super.firstUpdated(_changedProperties);
     	this.anchorEl = this.getAnchorById();
-    	if(this.anchorEl) this.observer.observe(this.anchorEl);
+    	if(this.anchorEl) this.sizeObserver.observe(this.anchorEl);
     }
 
     protected override updated(changes: Map<string, boolean>): void {
     	super.updated(changes);
     	if (changes.has('anchor')) {
+				this.sizeObserver.disconnect();
     		this.anchorEl = this.getAnchorById();
+				if(this.anchorEl) this.sizeObserver.observe(this.anchorEl);
     	}
     	this.updatePosition();
     }

@@ -4,7 +4,7 @@ import 'chai-dom';
 import {
 	waitNextTask,
 	textToDomToParent,
-	isolatedElementsCreation,
+	isolatedElementsCreation, waitInterval,
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
@@ -94,7 +94,7 @@ describe('popup', () => {
 	});
 
 	describe(`anchor`, () => {
-		it(`should not open the popup if anchor does not exist`, async () => {
+		it(`should not set popup open if anchor element does not exist`, async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
@@ -109,7 +109,7 @@ describe('popup', () => {
 				.equal(false);
 		});
 
-		it(`should not open the popup if anchor does not exist`, async () => {
+		it(`should init the popup as open if anchor element does not exist`, async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} open></${COMPONENT_NAME}>`)
 			);
@@ -119,6 +119,61 @@ describe('popup', () => {
 			expect(actualElement.open)
 				.to
 				.equal(false);
+		});
+
+		it(`should reposition when the anchor changes its size`, async function () {
+
+			const [anchorElement] = addElement(
+				textToDomToParent(`<vwc-button style="position: absolute; left: 100px;" layout="outlined" id="anchor">Button</vwc-button>`)
+			);
+			await waitNextTask();
+
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} arrow anchor="anchor" open><div>This is my popup</div></${COMPONENT_NAME}>`)
+			);
+
+			actualElement.updatePosition = function () {}
+
+			await actualElement.updateComplete;
+			await waitNextTask();
+
+			let updatePositionCallCount = 0;
+			actualElement.updatePosition = function () {
+				updatePositionCallCount++;
+			}
+
+			anchorElement.style.height = '20px';
+
+			await waitInterval(10);
+			expect(updatePositionCallCount).to.equal(1);
+		});
+
+		it(`should stop observing the anchor when changing an anchor`, async function () {
+			const [anchorElement] = addElement(
+				textToDomToParent(`<vwc-button style="position: absolute; left: 100px;" layout="outlined" id="anchor">Button</vwc-button>`)
+			);
+
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} arrow anchor="anchor" open><div>This is my popup</div></${COMPONENT_NAME}>`)
+			);
+
+			actualElement.updatePosition = function () {}
+			await actualElement.updateComplete;
+			await waitNextTask();
+
+			actualElement.anchor = '';
+			await waitNextTask();
+
+			let updatePositionCallCount = 0;
+			actualElement.updatePosition = function () {
+				updatePositionCallCount++;
+			}
+
+			anchorElement.style.height = '20px';
+
+			await waitNextTask();
+
+			expect(updatePositionCallCount).to.equal(0);
 		});
 	});
 });
