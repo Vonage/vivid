@@ -37,12 +37,12 @@ describe('tooltip', () => {
 			);
 
 			await actualElement.updateComplete;
-			expect(actualElement.anchor, 'tooltip anchor should be ""')
-				.to
-				.equal("");
 			expect(actualElement.open, 'tooltip open should be false')
 				.to
 				.equal(false);
+			expect(actualElement.anchor, 'tooltip anchor should be ""')
+				.to
+				.equal("");
 			expect(actualElement.text, 'tooltip text should be empty')
 				.to
 				.equal('');
