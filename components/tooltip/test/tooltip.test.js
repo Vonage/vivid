@@ -25,28 +25,28 @@ describe('tooltip', () => {
 		const addedElements = addElement(
 			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 		);
-		const actualElement = addedElements[0];
+		const actualEl = addedElements[0];
 		await waitNextTask();
-		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
+		expect(actualEl.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
 	describe('tooltip default init', () => {
 		it('should reflect from attribute to tooltip property', async () => {
-			const [actualElement] = addElement(
+			const [actualEl] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
 
-			await actualElement.updateComplete;
-			expect(actualElement.open, 'tooltip open should be false')
+			await actualEl.updateComplete;
+			expect(actualEl.open, 'tooltip open should be false')
 				.to
 				.equal(false);
-			expect(actualElement.anchor, 'tooltip anchor should be ""')
+			expect(actualEl.anchor, 'tooltip anchor should be ""')
 				.to
 				.equal("");
-			expect(actualElement.text, 'tooltip text should be empty')
+			expect(actualEl.text, 'tooltip text should be empty')
 				.to
 				.equal('');
-			expect(actualElement.corner, 'tooltip corner should be undefined')
+			expect(actualEl.corner, 'tooltip corner should be undefined')
 				.to
 				.equal(undefined);
 		});
@@ -54,12 +54,12 @@ describe('tooltip', () => {
 
 	describe(`hide`, () => {
 		it(`should hide tooltip`, async () => {
-			const [actualElement] = addElement(
+			const [actualEl] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} open></${COMPONENT_NAME}>`)
 			);
-			actualElement.hide();
-			await actualElement.updateComplete;
-			expect(actualElement.open)
+			actualEl.hide();
+			await actualEl.updateComplete;
+			expect(actualEl.open)
 				.to
 				.equal(false);
 		});
@@ -70,14 +70,14 @@ describe('tooltip', () => {
 			addElement(
 				textToDomToParent(`<vwc-button id="tooltip-anchor"></vwc-button>`)
 			);
-			const [actualElement] = addElement(
+			const [actualEl] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
-			actualElement.anchor = "tooltip-anchor";
-			await actualElement.updateComplete;
-			actualElement.show();
-			await actualElement.updateComplete;
-			expect(actualElement.open)
+			actualEl.anchor = "tooltip-anchor";
+			await actualEl.updateComplete;
+			actualEl.show();
+			await actualEl.updateComplete;
+			expect(actualEl.open)
 				.to
 				.equal(true);
 		});
