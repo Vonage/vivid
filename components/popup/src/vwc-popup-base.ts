@@ -122,9 +122,9 @@ export class VWCPopupBase extends LitElement {
     	this.open = false;
     }
 
-		private sizeObserver = new ResizeObserver(() => {
-			return this.updatePosition();
-		});
+    private sizeObserver = new ResizeObserver(() => {
+    	return this.updatePosition();
+    });
 
     override connectedCallback(): void {
     	super.connectedCallback();
@@ -149,9 +149,9 @@ export class VWCPopupBase extends LitElement {
     protected override updated(changes: Map<string, boolean>): void {
     	super.updated(changes);
     	if (changes.has('anchor')) {
-				this.sizeObserver.disconnect();
+    		this.sizeObserver.disconnect();
     		this.anchorEl = this.getAnchorById();
-				if(this.anchorEl) this.sizeObserver.observe(this.anchorEl);
+    		if(this.anchorEl) this.sizeObserver.observe(this.anchorEl);
     	}
     	this.updatePosition();
     }

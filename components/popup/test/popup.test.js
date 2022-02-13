@@ -132,7 +132,7 @@ describe('popup', () => {
 				textToDomToParent(`<${COMPONENT_NAME} arrow anchor="anchor" open><div>This is my popup</div></${COMPONENT_NAME}>`)
 			);
 
-			actualElement.updatePosition = function () {}
+			actualElement.updatePosition = function () {console.log('noop');};
 
 			await actualElement.updateComplete;
 			await waitNextTask();
@@ -140,11 +140,11 @@ describe('popup', () => {
 			let updatePositionCallCount = 0;
 			actualElement.updatePosition = function () {
 				updatePositionCallCount++;
-			}
+			};
 
 			anchorElement.style.height = '20px';
 
-			await waitInterval(10);
+			await waitNextTask();
 			expect(updatePositionCallCount).to.equal(1);
 		});
 
@@ -157,7 +157,7 @@ describe('popup', () => {
 				textToDomToParent(`<${COMPONENT_NAME} arrow anchor="anchor" open><div>This is my popup</div></${COMPONENT_NAME}>`)
 			);
 
-			actualElement.updatePosition = function () {}
+			actualElement.updatePosition = function () {console.log('noop');};
 			await actualElement.updateComplete;
 			await waitNextTask();
 
@@ -167,7 +167,7 @@ describe('popup', () => {
 			let updatePositionCallCount = 0;
 			actualElement.updatePosition = function () {
 				updatePositionCallCount++;
-			}
+			};
 
 			anchorElement.style.height = '20px';
 
