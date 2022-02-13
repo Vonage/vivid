@@ -6,7 +6,7 @@ import {
 	textToDomToParent,
 	isolatedElementsCreation, waitInterval, noop,
 } from '../../../test/test-helpers.js';
-import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
+import {chaiDomDiff} from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
 
@@ -39,7 +39,7 @@ describe('popup', () => {
 			await actualElement.updateComplete;
 			expect(actualElement.anchor, 'anchor should be ""')
 				.to
-				.equal("");
+				.equal('');
 			expect(actualElement.open, 'open should be false')
 				.to
 				.equal(false);
@@ -66,7 +66,7 @@ describe('popup', () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
-			actualElement.anchor = "anchor";
+			actualElement.anchor = 'anchor';
 			await actualElement.updateComplete;
 
 			actualElement.show();
@@ -94,11 +94,40 @@ describe('popup', () => {
 	});
 
 	describe(`anchor`, () => {
+		async function flushResizeEvents() {
+			await waitNextTask();
+		}
+
+		function triggerResize(element) {
+			element.style.height = '20px';
+		}
+
+		function expectASingleUpdatePositionCall(updatePositionCallCount, anchorElement) {
+			const observer = new ResizeObserver(async function () {
+				await waitNextTask();
+				expect(updatePositionCallCount).to.equal(1);
+			});
+
+			observer.observe(anchorElement);
+		}
+
+		async function setPopupAndAnchor() {
+			const [anchorElement] = addElement(
+				textToDomToParent(`<vwc-button style="position: absolute; left: 100px;" layout="outlined" id="anchor">Button</vwc-button>`)
+			);
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} arrow anchor="anchor" open><div>This is my popup</div></${COMPONENT_NAME}>`)
+			);
+			actualElement.updatePosition = noop;
+			await actualElement.updateComplete;
+			return {anchorElement, actualElement};
+		}
+
 		it(`should not set popup open if anchor element does not exist`, async () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
 			);
-			actualElement.anchor = "anchor";
+			actualElement.anchor = 'anchor';
 			await actualElement.updateComplete;
 
 			actualElement.show();
@@ -113,7 +142,7 @@ describe('popup', () => {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} open></${COMPONENT_NAME}>`)
 			);
-			actualElement.anchor = "anchor";
+			actualElement.anchor = 'anchor';
 			await actualElement.updateComplete;
 
 			expect(actualElement.open)
@@ -123,43 +152,24 @@ describe('popup', () => {
 
 		it(`should reposition when the anchor changes its size`, async function () {
 
-			const [anchorElement] = addElement(
-				textToDomToParent(`<vwc-button style="position: absolute; left: 100px;" layout="outlined" id="anchor">Button</vwc-button>`)
-			);
-			await waitNextTask();
+			const {anchorElement, actualElement} = await setPopupAndAnchor();
 
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} arrow anchor="anchor" open><div>This is my popup</div></${COMPONENT_NAME}>`)
-			);
-
-			actualElement.updatePosition = noop;
-
-			await actualElement.updateComplete;
-			await waitNextTask();
+			await flushResizeEvents();
 
 			let updatePositionCallCount = 0;
 			actualElement.updatePosition = function () {
 				updatePositionCallCount++;
 			};
 
-			anchorElement.style.height = '20px';
+			triggerResize(anchorElement);
 
-			await waitInterval(20);
-			expect(updatePositionCallCount).to.equal(1);
+			expectASingleUpdatePositionCall(updatePositionCallCount, anchorElement);
+
 		});
 
 		it(`should stop observing the anchor when changing an anchor`, async function () {
-			const [anchorElement] = addElement(
-				textToDomToParent(`<vwc-button style="position: absolute; left: 100px;" layout="outlined" id="anchor">Button</vwc-button>`)
-			);
-
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} arrow anchor="anchor" open><div>This is my popup</div></${COMPONENT_NAME}>`)
-			);
-
-			actualElement.updatePosition = noop();
-			await actualElement.updateComplete;
-			await waitNextTask();
+			const {anchorElement, actualElement} = await setPopupAndAnchor();
+			await flushResizeEvents();
 
 			actualElement.anchor = '';
 			await waitNextTask();
