@@ -144,7 +144,7 @@ describe('popup', () => {
 
 			anchorElement.style.height = '20px';
 
-			await waitNextTask();
+			await waitInterval(20);
 			expect(updatePositionCallCount).to.equal(1);
 		});
 
