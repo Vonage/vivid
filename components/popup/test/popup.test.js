@@ -4,7 +4,7 @@ import 'chai-dom';
 import {
 	waitNextTask,
 	textToDomToParent,
-	isolatedElementsCreation, waitInterval,
+	isolatedElementsCreation, waitInterval, noop,
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
@@ -132,7 +132,7 @@ describe('popup', () => {
 				textToDomToParent(`<${COMPONENT_NAME} arrow anchor="anchor" open><div>This is my popup</div></${COMPONENT_NAME}>`)
 			);
 
-			actualElement.updatePosition = function () {console.log('noop');};
+			actualElement.updatePosition = noop;
 
 			await actualElement.updateComplete;
 			await waitNextTask();
@@ -157,7 +157,7 @@ describe('popup', () => {
 				textToDomToParent(`<${COMPONENT_NAME} arrow anchor="anchor" open><div>This is my popup</div></${COMPONENT_NAME}>`)
 			);
 
-			actualElement.updatePosition = function () {console.log('noop');};
+			actualElement.updatePosition = noop();
 			await actualElement.updateComplete;
 			await waitNextTask();
 
