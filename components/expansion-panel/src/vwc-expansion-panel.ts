@@ -23,7 +23,8 @@ declare global {
 const iconSets = ['chevron', 'binary'];
 export type IndicatorIconSets = typeof iconSets;
 
-const VALID_HEADER_VALUES = [2,3,4,5,6];
+const VALID_HEADER_VALUES = [2, 3, 4, 5, 6];
+
 function isValidHeaderValue(headerValue: string | number) {
 	return VALID_HEADER_VALUES.includes(Number(headerValue));
 }
@@ -63,7 +64,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	protected rippleHandlers = new RippleHandlers(() => {
 		return this.ripple;
 	});
-@property({type: String, reflect: true, attribute: 'heading-Level'})
+	@property({type: String, reflect: true, attribute: 'heading-Level'})
 	private headerLevel = '3';
 
 	override openChanged(isOpen: boolean): void {
@@ -82,37 +83,37 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 
 	protected renderHeaderButton(): TemplateResult {
 		return html`
-		<button class="expansion-panel-button"
-								@mousedown="${this.handleRippleActivate}"
-								@mouseenter="${this.handleRippleMouseEnter}"
-								@mouseleave="${this.handleRippleMouseLeave}"
-								@touchstart="${() => {
+			<button class="expansion-panel-button"
+							@mousedown="${this.handleRippleActivate}"
+							@mouseenter="${this.handleRippleMouseEnter}"
+							@mouseleave="${this.handleRippleMouseLeave}"
+							@touchstart="${() => {
 		this.toggleOpen();
 		this.handleRippleActivate;
 	}}"
-								@touchend="${this.handleRippleDeactivate}"
-								@touchcancel="${this.handleRippleDeactivate}"
-								@click=${() => this.toggleOpen()}
-								?aria-expanded=${this.open}
-								aria-controls="content"
-				>
-					${this.renderRipple()}
-					<span class="leading-icon">
+							@touchend="${this.handleRippleDeactivate}"
+							@touchcancel="${this.handleRippleDeactivate}"
+							@click=${() => this.toggleOpen()}
+							?aria-expanded=${this.open}
+							aria-controls="content"
+			>
+				${this.renderRipple()}
+				<span class="leading-icon">
 					<slot name="icon">
 						${this.renderIconOrToggle()}
 					</slot>
 				</span>
-					${this.heading || this.header}
-					<span class="trailing-icon">
+				${this.heading || this.header}
+				<span class="trailing-icon">
 					<slot name="trailingIcon">
 						${!this.leadingToggle ? this.renderToggle() : ''}
 					</slot>
 				</span>
-				</button>
+			</button>
 		`;
 	}
 
-	protected renderPanelHeader(): TemplateResult | string{
+	protected renderPanelHeader(): TemplateResult | string {
 		if (!isValidHeaderValue(this.headerLevel)) this.headerLevel = '3';
 		return eval(`this.safeHtml\`<h${this.headerLevel} class="expansion-panel-header">\${this.renderHeaderButton()}</h${this.headerLevel}>\``);
 	}
