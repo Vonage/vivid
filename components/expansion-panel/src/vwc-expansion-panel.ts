@@ -64,7 +64,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	protected rippleHandlers = new RippleHandlers(() => {
 		return this.ripple;
 	});
-	@property({type: String, reflect: true, attribute: 'heading-Level'})
+	@property({type: String, reflect: true, attribute: 'heading-level'})
 	private headerLevel = '3';
 
 	override openChanged(isOpen: boolean): void {
