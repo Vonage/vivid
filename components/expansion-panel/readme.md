@@ -13,7 +13,7 @@
 | `noRipple`         | `noRipple`         | `boolean`         | false     |                                                                                                                                                  |
 | `open`             | `open`             | `boolean`         | false     |                                                                                                                                                  |
 | `ripple`           |                    | `Promise<Ripple>` |           |                                                                                                                                                  |
-| `heading-level`     | `3`                | `string` | "3"       | The expension panel `heading-level` default is `3` (meaning the button is wrapped with `H3` tag) but need to set according to the page hierarchy |
+| `headerLevel`     | `heading-level`                | `string` | "3"       | The expension panel `heading-level` default is `3` (meaning the button is wrapped with `H3` tag) but need to set according to the page hierarchy |
 
 ## Methods
 
