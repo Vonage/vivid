@@ -97,7 +97,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 		return this.metaData ? html`<span class="meta">${this.metaData}</span>` : nothing;
 	}
 
-	protected override render(): TemplateResult {
+	protected renderHeaderButton(): TemplateResult {
 		const classes = {
 			'with-meta': this.metaData,
 		};
@@ -132,12 +132,6 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 				</span>
 			</button>
 		`;
-
-		return html`
-			${this.renderPanelHeader()}
-			<div id="content" class="expansion-panel-body">
-				<slot></slot>
-			</div>`;
 	}
 
 	protected renderPanelHeader(): TemplateResult | string {
@@ -145,9 +139,14 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 		return eval(`this.safeHtml\`<h${this.headingLevel} class="expansion-panel-header">\${this.renderHeaderButton()}</h${this.headingLevel}>\``);
 	}
 
-	// protected override render(): TemplateResult {
-	//
-	// }
+	protected override render(): TemplateResult {
+		return html`
+			${this.renderPanelHeader()}
+			<div id="content" class="expansion-panel-body">
+				<slot></slot>
+			</div>`;
+
+	}
 
 	protected renderIconOrToggle(): TemplateResult | string {
 		if (this.leadingToggle) {
