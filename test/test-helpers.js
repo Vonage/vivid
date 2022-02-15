@@ -14,9 +14,14 @@ export {
 	isFirefox,
 	getFrameLoadedInjected,
 	cleanFrame,
-	getRandom
+	getRandom,
+	noop
 }
 
+const noop = () => {
+	const x = [];
+	x.push(5);
+};
 const tmpTemple = document.createElement('template');
 
 function listenToSubmission(formElement) {

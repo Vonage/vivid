@@ -27,6 +27,11 @@
 }
 
 .expansion-panel-header {
+	padding: 0;
+	margin: 0;
+}
+
+.expansion-panel-button {
 	@include typography.typography-cat-shorthand('subtitle-2');
 	position: relative;
 	display: grid;
@@ -123,7 +128,7 @@
 }
 
 :host([dense]) {
-	.expansion-panel-header {
+	.expansion-panel-button {
 		@include typography.typography-cat-shorthand('body-2-bold');
 	}
 	.caption {

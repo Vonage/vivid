@@ -3,35 +3,36 @@
 #### `should have internal contents`
 
 ```html
-<button
-  aria-controls="content"
-  class="expansion-panel-header"
-  id="expansion-panel"
->
-  <mwc-ripple>
-  </mwc-ripple>
-  <span class="leading-icon">
-    <slot name="icon">
-    </slot>
-  </span>
-  <span class="header-text">
+<h3 class="expansion-panel-header">
+  <button
+    aria-controls="content"
+    class="expansion-panel-button"
+  >
+    <mwc-ripple>
+    </mwc-ripple>
+    <span class="leading-icon">
+      <slot name="icon">
+      </slot>
+    </span>
+		<span class="header-text">
     click me
   </span>
-  <span class="trailing-icon">
-    <slot name="trailingIcon">
-      <vwc-icon
-        class="toggle-open"
-        type="chevron-down-solid"
-      >
-      </vwc-icon>
-      <vwc-icon
-        class="toggle-close"
-        type="chevron-up-solid"
-      >
-      </vwc-icon>
-    </slot>
-  </span>
-</button>
+    <span class="trailing-icon">
+      <slot name="trailingIcon">
+        <vwc-icon
+          class="toggle-open"
+          type="chevron-down-solid"
+        >
+        </vwc-icon>
+        <vwc-icon
+          class="toggle-close"
+          type="chevron-up-solid"
+        >
+        </vwc-icon>
+      </slot>
+    </span>
+  </button>
+</h3>
 <div
   aria-labelledby="expansion-panel"
   class="expansion-panel-body"
@@ -50,7 +51,6 @@
 <button
   aria-controls="content"
   class="expansion-panel-header"
-  id="expansion-panel"
 >
   <mwc-ripple>
   </mwc-ripple>
@@ -58,9 +58,7 @@
     <slot name="icon">
     </slot>
   </span>
-  <span class="header-text">
-    click me
-  </span>
+  click me
   <span class="trailing-icon">
     <slot name="trailingIcon">
       <vwc-icon

@@ -25,26 +25,33 @@ declare global {
 const iconSets = ['chevron', 'binary'];
 export type IndicatorIconSets = typeof iconSets;
 
+const VALID_HEADER_VALUES = [2, 3, 4, 5, 6];
+
+function isValidHeaderValue(headerValue: string | number) {
+	return VALID_HEADER_VALUES.includes(Number(headerValue));
+}
+
 @customElement('vwc-expansion-panel')
 export class VWCExpansionPanel extends VWCExpansionPanelBase {
+	safeHtml = html;
 	static override styles = style;
 
 	/**
 	 * @deprecated use "heading" instead
 	 */
-	@property({ type: String, reflect: true })
+	@property({type: String, reflect: true})
 		header = '';
 
 	/**
 	 * The heading of the expanded panel
 	 */
-	@property({ type: String, reflect: true })
+	@property({type: String, reflect: true})
 		heading = '';
 
-	@property({ type: String, reflect: true })
+	@property({type: String, reflect: true})
 		icon = '';
 
-	@property({ type: String, reflect: true })
+	@property({type: String, reflect: true})
 		indicatorIconSet: IndicatorIconSets[number] = 'chevron';
 
 	@property({ type: String, reflect: true })
@@ -56,29 +63,30 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	@property({ type: Boolean, reflect: true })
 		dense = false;
 
-	@property({ type: Boolean, reflect: true })
+	@property({type: Boolean, reflect: true})
 		leadingToggle = false;
 
-	@property({ type: Boolean, reflect: true })
+	@property({type: Boolean, reflect: true})
 		noRipple = false;
-
 	@queryAsync('mwc-ripple') ripple!: Promise<Ripple>;
-
 	protected rippleHandlers = new RippleHandlers(() => {
 		return this.ripple;
 	});
-
-	protected toggleOpen(): void {
-		this.open = !this.open;
-	}
+	@property({type: String, reflect: true, attribute: 'heading-level'})
+	private headingLevel = '3';
 
 	override openChanged(isOpen: boolean): void {
 		super.openChanged(isOpen);
 		this.toggleAttribute('open', isOpen);
 	}
 
+	protected toggleOpen(): void {
+		this.open = !this.open;
+	}
+
 	protected renderRipple(): TemplateResult | string {
-		return !this.noRipple ? html`<mwc-ripple></mwc-ripple>` : '';
+		return !this.noRipple ? html`
+			<mwc-ripple></mwc-ripple>` : '';
 	}
 
 	private renderCaption(): TemplateResult | unknown {
@@ -95,7 +103,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 		};
 
 		return html`
-			<button class="expansion-panel-header ${classMap(classes)}" id="expansion-panel"
+			<button class="expansion-panel-button ${classMap(classes)}" id="expansion-panel"
 				@mousedown="${this.handleRippleActivate}"
 				@mouseenter="${this.handleRippleMouseEnter}"
 				@mouseleave="${this.handleRippleMouseLeave}"
@@ -103,11 +111,11 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 		this.toggleOpen();
 		this.handleRippleActivate;
 	}}"
-				@touchend="${this.handleRippleDeactivate}"
-				@touchcancel="${this.handleRippleDeactivate}"
-				@click=${() => this.toggleOpen()}
-				?aria-expanded=${this.open}
-				aria-controls="content"
+							@touchend="${this.handleRippleDeactivate}"
+							@touchcancel="${this.handleRippleDeactivate}"
+							@click=${() => this.toggleOpen()}
+							?aria-expanded=${this.open}
+							aria-controls="content"
 			>
 				${this.renderRipple()}
 				<span class="leading-icon">
@@ -123,16 +131,30 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 					</slot>
 				</span>
 			</button>
-			<div id="content" class="expansion-panel-body" role="region" aria-labelledby="expansion-panel">
+		`;
+
+		return html`
+			${this.renderPanelHeader()}
+			<div id="content" class="expansion-panel-body">
 				<slot></slot>
 			</div>`;
 	}
+
+	protected renderPanelHeader(): TemplateResult | string {
+		if (!isValidHeaderValue(this.headingLevel)) this.headingLevel = '3';
+		return eval(`this.safeHtml\`<h${this.headingLevel} class="expansion-panel-header">\${this.renderHeaderButton()}</h${this.headingLevel}>\``);
+	}
+
+	// protected override render(): TemplateResult {
+	//
+	// }
 
 	protected renderIconOrToggle(): TemplateResult | string {
 		if (this.leadingToggle) {
 			return this.renderToggle();
 		} else if (this.icon) {
-			return html`<vwc-icon type="${this.icon}" size="medium"></vwc-icon>`;
+			return html`
+				<vwc-icon type="${this.icon}" size="medium"></vwc-icon>`;
 		} else {
 			return '';
 		}
@@ -153,7 +175,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 		`;
 	}
 
-	@eventOptions({ passive: true })
+	@eventOptions({passive: true})
 	private handleRippleActivate(evt?: Event) {
 		const onUp = () => {
 			window.removeEventListener('mouseup', onUp);
