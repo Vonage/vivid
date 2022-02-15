@@ -20,7 +20,7 @@ const Template = args => html`
 	</style>
 	<div class="tooltip-wrapper" >
 		<vwc-icon-button icon="info-line"  shape="circled" aria-describedby="tooltip" id="button" @click=${onClick}></vwc-icon-button>
-		<vwc-tooltip ...=${spread(args)} icon="info-line"  style="--tooltip-inline-size:180px;" id="tooltip" anchor="button" text="I'm the tooltip content", ></vwc-tooltip>
+		<vwc-tooltip ...=${spread(args)} open icon="info-line"  style="--tooltip-inline-size:180px;" id="tooltip" anchor="button" text="I'm the tooltip content", ></vwc-tooltip>
 	</div>
 	`;
 
@@ -39,14 +39,14 @@ const AfterTitleTemplate = args => html`
 			<vwc-text font-face="title-2" tight><p class="line" style="margin-right: 0.25rem">I'm a title - press the question mark</p></vwc-text>
 			<vwc-icon-button icon="info-line"  shape="circled" aria-describedby="tooltip" id="button" @click=${onClick}></vwc-icon-button>
 		 <div>
-		<vwc-tooltip ...=${spread(args)} icon="info-line"  style="--tooltip-inline-size:180px;" id="tooltip" anchor="button" text="I'm the tooltip content"></vwc-tooltip>
+		<vwc-tooltip ...=${spread(args)} open icon="info-line"  style="--tooltip-inline-size:180px;" id="tooltip" anchor="button" text="I'm the tooltip content"></vwc-tooltip>
 	</div>
 `;
 
-export const InATitle = AfterTitleTemplate.bind({});
-InATitle.args = { corner: "top" };
+export const InTitle = AfterTitleTemplate.bind({});
+InTitle.args = { corner: "top" };
 
-const InsideTExtTemplate = args => html`
+const InsideTextTemplate = args => html`
 	<style>
 		.tooltip-wrapper {
 			margin-top: 4rem;
@@ -57,7 +57,7 @@ const InsideTExtTemplate = args => html`
 			<vwc-text style="display: flex; align-items: center;" font-face="body-1" tight>text with tooltip - press the question mark
 			<vwc-icon-button style="margin: 0 0.125rem;" icon="info-line"  shape="circled" aria-describedby="tooltip" id="button" dense @click=${onClick}></vwc-icon-button>
 		 more text after tooltip</vwc-text>
-		<vwc-tooltip ...=${spread(args)} icon="info-line" style="--tooltip-inline-size:180px;" id="tooltip" anchor="button" text="I'm the tooltip content"></vwc-tooltip>
+		<vwc-tooltip ...=${spread(args)} open icon="info-line" style="--tooltip-inline-size:180px;" id="tooltip" anchor="button" text="I'm the tooltip content"></vwc-tooltip>
 	</div>
 `;
 
