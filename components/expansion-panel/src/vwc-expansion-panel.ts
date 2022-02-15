@@ -65,7 +65,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 		return this.ripple;
 	});
 	@property({type: String, reflect: true, attribute: 'heading-level'})
-	private headerLevel = '3';
+	private headingLevel = '3';
 
 	override openChanged(isOpen: boolean): void {
 		super.openChanged(isOpen);
@@ -114,8 +114,8 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	}
 
 	protected renderPanelHeader(): TemplateResult | string {
-		if (!isValidHeaderValue(this.headerLevel)) this.headerLevel = '3';
-		return eval(`this.safeHtml\`<h${this.headerLevel} class="expansion-panel-header">\${this.renderHeaderButton()}</h${this.headerLevel}>\``);
+		if (!isValidHeaderValue(this.headingLevel)) this.headingLevel = '3';
+		return eval(`this.safeHtml\`<h${this.headingLevel} class="expansion-panel-header">\${this.renderHeaderButton()}</h${this.headingLevel}>\``);
 	}
 
 	protected override render(): TemplateResult {

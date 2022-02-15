@@ -263,26 +263,26 @@ describe('expansion panel', () => {
 		});
 
 		it(`should set the H level according to heading-Level attribute`, async function () {
-			const headerLevel = 5;
+			const headingLevel = 5;
 			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} heading-Level="${headerLevel}"></${COMPONENT_NAME}>`)
+				textToDomToParent(`<${COMPONENT_NAME} heading-Level="${headingLevel}"></${COMPONENT_NAME}>`)
 			);
 			await waitNextTask();
 			const headerButton = getHeaderButtonElement(actualElement);
-			expect(headerButton.parentNode.tagName).to.equal(`H${headerLevel}`);
+			expect(headerButton.parentNode.tagName).to.equal(`H${headingLevel}`);
 		});
 
-		it(`should set the H level according to headerLevel property`, async function () {
-			const headerLevel = 5;
+		it(`should set the H level according to headingLevel property`, async function () {
+			const headingLevel = 5;
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} heading="Content"></${COMPONENT_NAME}>`)
 			);
 			await waitNextTask();
-			actualElement.headerLevel = headerLevel;
+			actualElement.headingLevel = headingLevel;
 			await waitNextTask();
 			await actualElement.updateComplete;
 			const headerButton = getHeaderButtonElement(actualElement);
-			expect(headerButton.parentNode.tagName).to.equal(`H${headerLevel}`);
+			expect(headerButton.parentNode.tagName).to.equal(`H${headingLevel}`);
 		});
 	});
 });

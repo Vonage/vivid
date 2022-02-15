@@ -4,7 +4,7 @@ export const argTypes = {
 			type: 'text'
 		}
 	},
-	'heading-level': {
+	headingLevel: {
 		control: {
 			type: 'select',
 			options: ['2', '3', '4', '5', '6'],

@@ -3,7 +3,7 @@
 ## Properties
 
 | Property           | Attribute          | Type              | Default   | Description                                                                                                                                      |
-| ------------------ |--------------------| ----------------- |-----------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+|--------------------|--------------------| ----------------- |-----------|--------------------------------------------------------------------------------------------------------------------------------------------------|
 | `dense`            | `dense`            | `boolean`         | false     |                                                                                                                                                  |
 | `header`           | `header`           | `string`          | ""        | The heading text of the expanded panel. *deprecated* please use _heading_ property instead                                                       |
 | `heading`          | `heading`          | `string`          | ""        | The heading text of the expanded panel                                                                                                           |
@@ -13,7 +13,7 @@
 | `noRipple`         | `noRipple`         | `boolean`         | false     |                                                                                                                                                  |
 | `open`             | `open`             | `boolean`         | false     |                                                                                                                                                  |
 | `ripple`           |                    | `Promise<Ripple>` |           |                                                                                                                                                  |
-| `headerLevel`     | `heading-level`                | `string` | "3"       | The expension panel `heading-level` default is `3` (meaning the button is wrapped with `H3` tag) but need to set according to the page hierarchy |
+| `headingLevel`    | `heading-level`                | `string` | "3"       | The expension panel `heading-level` default is `3` (meaning the button is wrapped with `H3` tag) but need to set according to the page hierarchy |
 
 ## Methods
 
