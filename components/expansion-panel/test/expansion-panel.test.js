@@ -227,7 +227,7 @@ describe('expansion panel', () => {
 		});
 	});
 
-	describe(`header level`, function () {
+	describe(`heading level`, function () {
 
 		it(`should default to 3`, async function () {
 			const [actualElement] = addElement(
@@ -235,7 +235,7 @@ describe('expansion panel', () => {
 			);
 			await waitNextTask();
 
-			expect(actualElement.headerLevel).to.equal('3');
+			expect(actualElement.headingLevel).to.equal('3');
 			expect(actualElement.getAttribute('heading-Level')).to.equal('3');
 		});
 
@@ -248,7 +248,7 @@ describe('expansion panel', () => {
 
 			const headerButton = getHeaderButtonElement(actualElement);
 			expect(headerButton.parentNode.tagName).to.equal('H3');
-			expect(actualElement.headerLevel).to.equal('3');
+			expect(actualElement.headingLevel).to.equal('3');
 			expect(actualElement.getAttribute('heading-Level')).to.equal('3');
 		});
 
