@@ -84,16 +84,6 @@ describe ('expansion panel', () => {
 		expect(headerEl.textContent.trim()).to.equal(headerText);
 	});
 
-	it('should have caption text when caption is set', async () => {
-		const captionText = 'Item caption';
-		const [actualElement] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME} caption="${captionText}"></${COMPONENT_NAME}>`)
-		);
-		await waitNextTask();
-		const caption = actualElement.shadowRoot.querySelector('.expansion-panel-button');
-		expect(caption.textContent.trim()).to.equal(captionText);
-	});
-
 	it('should have meta text when meta-data is set', async () => {
 		const metaText = 'meta-data';
 		const [actualElement] = addElement(
@@ -105,19 +95,16 @@ describe ('expansion panel', () => {
 	});
 
 
-	it('should have header text and meta-data text and caption', async () => {
+	it('should have header text and meta-data text', async () => {
 		const headerText = 'Click me';
 		const metaText = 'meta-data';
-		const captionText = 'Item caption';
 		const [actualElement] = (
-			textToDomToParent(`<${COMPONENT_NAME} header="${headerText}" caption="${captionText}" metaData="${metaText}"></${COMPONENT_NAME}>`)
+			textToDomToParent(`<${COMPONENT_NAME} header="${headerText}" metaData="${metaText}"></${COMPONENT_NAME}>`)
 		);
 		await waitNextTask();
 		const header = actualElement.shadowRoot.querySelector('.header-text');
-		const caption = actualElement.shadowRoot.querySelector('.caption');
 		const meta = actualElement.shadowRoot.querySelector('.meta');
 		expect(header.textContent.trim()).to.equal(headerText);
-		expect(caption.textContent.trim()).to.equal(captionText);
 		expect(meta.textContent.trim()).to.equal(metaText);
 	});
 

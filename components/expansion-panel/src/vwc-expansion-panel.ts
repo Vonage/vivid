@@ -55,9 +55,6 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 		indicatorIconSet: IndicatorIconSets[number] = 'chevron';
 
 	@property({ type: String, reflect: true })
-		caption = '';
-
-	@property({ type: String, reflect: true })
 		metaData = '';
 
 	@property({ type: Boolean, reflect: true })
@@ -87,10 +84,6 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	protected renderRipple(): TemplateResult | string {
 		return !this.noRipple ? html`
 			<mwc-ripple></mwc-ripple>` : '';
-	}
-
-	private renderCaption(): TemplateResult | unknown {
-		return this.caption ? html`<span class="caption">${this.caption}</span>` : nothing;
 	}
 
 	private renderMetaData(): TemplateResult | unknown {
@@ -123,7 +116,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 						${this.renderIconOrToggle()}
 					</slot>
 				</span>
-				${this.renderCaption()}<span class="header-text">${this.heading || this.header}</span>
+				<span class="header-text">${this.heading || this.header}</span>
 				${this.renderMetaData()}
 				<span class="trailing-icon">
 					<slot name="trailingIcon">
