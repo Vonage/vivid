@@ -1,7 +1,6 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
 import '@material/mwc-ripple/mwc-ripple.js';
-import { classMap } from 'lit-html/directives/class-map.js';
 import {
 	customElement,
 	eventOptions,
@@ -55,7 +54,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 		indicatorIconSet: IndicatorIconSets[number] = 'chevron';
 
 	@property({ type: String, reflect: true })
-		metaData = '';
+		meta = '';
 
 	@property({ type: Boolean, reflect: true })
 		dense = false;
@@ -86,17 +85,14 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 			<mwc-ripple></mwc-ripple>` : '';
 	}
 
-	private renderMetaData(): TemplateResult | unknown {
-		return this.metaData ? html`<span class="meta">${this.metaData}</span>` : nothing;
+	private renderMeta(): TemplateResult | unknown {
+		return this.meta ? html`<span class="meta">${this.meta}</span>` : nothing;
 	}
 
 	protected renderHeaderButton(): TemplateResult {
-		const classes = {
-			'with-meta': this.metaData,
-		};
 
 		return html`
-			<button class="expansion-panel-button ${classMap(classes)}" id="expansion-panel"
+			<button class="expansion-panel-button" id="expansion-panel"
 				@mousedown="${this.handleRippleActivate}"
 				@mouseenter="${this.handleRippleMouseEnter}"
 				@mouseleave="${this.handleRippleMouseLeave}"
@@ -117,7 +113,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 					</slot>
 				</span>
 				<span class="header-text">${this.heading || this.header}</span>
-				${this.renderMetaData()}
+				${this.renderMeta()}
 				<span class="trailing-icon">
 					<slot name="trailingIcon">
 						${!this.leadingToggle ? this.renderToggle() : ''}

@@ -10,7 +10,7 @@ export const argTypes = {
 			options: ['2', '3', '4', '5', '6'],
 		}
 	},
-	metaData: {
+	meta: {
 		control: {
 			type: 'text'
 		}

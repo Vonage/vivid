@@ -11,20 +11,20 @@ export async function createElementVariations(wrapper) {
 		  <vwc-expansion-panel header="Campaign Details" indicatorIconSet="binary"></vwc-expansion-panel>
 		  <vwc-expansion-panel header="Campaign Details" icon="chat-solid"></vwc-expansion-panel>
 		  <vwc-expansion-panel header="Campaign Details" leadingToggle></vwc-expansion-panel>
-		  <vwc-expansion-panel header="I'm an accordion header" metaData="meta-data"></vwc-expansion-panel>
-		  <vwc-expansion-panel header="I'm an accordion header" metaData="meta-data" icon="chat-solid"></vwc-expansion-panel>
-		  <vwc-expansion-panel header="I'm an accordion header" metaData="meta-data" leadingToggle></vwc-expansion-panel>
-		  <vwc-expansion-panel header="I'm an accordion header" metaData="meta-data" indicatorIconSet="binary"></vwc-expansion-panel>
+		  <vwc-expansion-panel header="I'm an accordion header" meta="meta-data"></vwc-expansion-panel>
+		  <vwc-expansion-panel header="I'm an accordion header" meta="meta-data" icon="chat-solid"></vwc-expansion-panel>
+		  <vwc-expansion-panel header="I'm an accordion header" meta="meta-data" leadingToggle></vwc-expansion-panel>
+		  <vwc-expansion-panel header="I'm an accordion header" meta="meta-data" indicatorIconSet="binary"></vwc-expansion-panel>
 			<hr>
 			<p>dense</p>
 			<vwc-expansion-panel header="Campaign Details" dense></vwc-expansion-panel>
 		  <vwc-expansion-panel header="Campaign Details" indicatorIconSet="binary" dense></vwc-expansion-panel>
 		  <vwc-expansion-panel header="Campaign Details" icon="chat-solid" dense></vwc-expansion-panel>
 		  <vwc-expansion-panel header="Campaign Details" leadingToggle dense></vwc-expansion-panel>
-		  <vwc-expansion-panel header="I'm an accordion header" metaData="meta-data" dense></vwc-expansion-panel>
-		  <vwc-expansion-panel header="I'm an accordion header" metaData="meta-data" icon="chat-solid" dense></vwc-expansion-panel>
-		  <vwc-expansion-panel header="I'm an accordion header" metaData="meta-data" leadingToggle dense></vwc-expansion-panel>
-		  <vwc-expansion-panel header="I'm an accordion header" metaData="meta-data" indicatorIconSet="binary" dense></vwc-expansion-panel>
+		  <vwc-expansion-panel header="I'm an accordion header" meta="meta-data" dense></vwc-expansion-panel>
+		  <vwc-expansion-panel header="I'm an accordion header" meta="meta-data" icon="chat-solid" dense></vwc-expansion-panel>
+		  <vwc-expansion-panel header="I'm an accordion header" meta="meta-data" leadingToggle dense></vwc-expansion-panel>
+		  <vwc-expansion-panel header="I'm an accordion header" meta="meta-data" indicatorIconSet="binary" dense></vwc-expansion-panel>
 
 		  <vwc-expansion-panel open header="Campaign Details">
 				A campaign describes a specific use case and details of the messages you will be sending through it.
