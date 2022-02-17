@@ -1,4 +1,4 @@
-// import 'blocking-elements';
+import 'blocking-elements';
 import 'wicg-inert';
 import {
 	html, LitElement, TemplateResult, property, query
@@ -112,18 +112,18 @@ export class VWCSideDrawerBase extends LitElement {
 		return html`
 			<aside part="${ifDefined(alternate)}" class="side-drawer ${classMap(classes)}"
 				@transitionend=${this.#handleTransitionEnd} @keydown=${this.#handleKeydown}>
-		
+
 				${topBar}
-			
+
 				<div class="side-drawer-content">
 					<slot></slot>
 				</div>
 			</aside>
-			
+
 			<div class="side-drawer-app-content">
 				<slot name="app-content"></slot>
 			</div>
-			
+
 			${scrim}
 		`;
 	}
