@@ -112,7 +112,7 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 						${this.renderIconOrToggle()}
 					</slot>
 				</span>
-				<span class="header-text">${this.heading || this.header}</span>
+				<span class="heading-text">${this.heading || this.header}</span>
 				${this.renderMeta()}
 				<span class="trailing-icon">
 					<slot name="trailingIcon">
