@@ -102,7 +102,7 @@ describe ('expansion panel', () => {
 			textToDomToParent(`<${COMPONENT_NAME} header="${headerText}" meta="${metaText}"></${COMPONENT_NAME}>`)
 		);
 		await waitNextTask();
-		const header = actualElement.shadowRoot.querySelector('.header-text');
+		const header = actualElement.shadowRoot.querySelector('.heading-text');
 		const meta = actualElement.shadowRoot.querySelector('.meta');
 		expect(header.textContent.trim()).to.equal(headerText);
 		expect(meta.textContent.trim()).to.equal(metaText);

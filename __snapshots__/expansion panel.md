@@ -15,7 +15,7 @@
       <slot name="icon">
       </slot>
     </span>
-    <span class="header-text">
+    <span class="heading-text">
       click me
     </span>
     <span class="trailing-icon">
@@ -59,7 +59,7 @@
       <slot name="icon">
       </slot>
     </span>
-    <span class="header-text">
+    <span class="heading-text">
       click me
     </span>
     <span class="trailing-icon">
