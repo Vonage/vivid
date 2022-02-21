@@ -72,9 +72,25 @@
 	}
 }
 
-:host([topPosition]) {
-	.mdc-dialog {
-		top: var(--dialog-top-position);
+.mdc-dialog {
+	$top-position: --_top-position;
+	:host([topPosition='small']) &,
+	:host([topPosition='medium']) &,
+	:host([topPosition*='large']) & {
+		top: var(#{$top-position});
 		height: auto;
+	}
+
+	:host([topPosition='small']) & {
+		--_top-position: 40px;
+	}
+	:host([topPosition='medium']) & {
+		--_top-position: 80px;
+	}
+	:host([topPosition='large']) & {
+		--_top-position: 120px;
+	}
+	:host([topPosition='xlarge']) & {
+		--_top-position: 160px;
 	}
 }

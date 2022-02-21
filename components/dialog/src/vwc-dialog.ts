@@ -4,6 +4,7 @@ import { style } from './vwc-dialog.css.js';
 import { Dialog as MWCDialog } from '@material/mwc-dialog';
 import { styles as mwcDialogStyles } from '@material/mwc-dialog/mwc-dialog.css.js';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
+import type { Size } from '@vonage/vvd-foundation/constants.js';
 import '@vonage/vvd-core';
 
 declare global {
@@ -11,6 +12,8 @@ declare global {
 		'vwc-dialog': VWCDialog;
 	}
 }
+
+type Position = Extract<Size, Size.Small | Size.Medium | Size.Large | Size.x_Large>;
 
 const iconTemplate = document.createElement('template');
 iconTemplate.innerHTML = `
@@ -32,17 +35,15 @@ export class VWCDialog extends MWCDialog {
 	})
 		closeButton?: boolean;
 
-	@property({
-		attribute: 'topPosition',
-		type: Boolean,
-		reflect: true
-	})
-		topPosition?: boolean;
+	@property({ type: String, reflect: true, attribute: 'topPosition' })
+		topPosition?: Position;
+
 
 	protected override firstUpdated() {
 		super.firstUpdated();
 		this.addDismissButton();
 	}
+
 
 	protected override updated(_changedProperties: PropertyValues): void {
 		super.updated(_changedProperties);
