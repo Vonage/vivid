@@ -38,7 +38,6 @@ export class VWCDialog extends MWCDialog {
 	@property({ type: String, reflect: true, attribute: 'topPosition' })
 		topPosition?: Position;
 
-
 	protected override firstUpdated() {
 		super.firstUpdated();
 		this.addDismissButton();
