@@ -82,15 +82,15 @@
 	}
 
 	:host([topPosition='small']) & {
-		--_top-position: 40px;
+		#{$top-position}: 40px;
 	}
 	:host([topPosition='medium']) & {
-		--_top-position: 80px;
+		#{$top-position}: 80px;
 	}
 	:host([topPosition='large']) & {
-		--_top-position: 120px;
+		#{$top-position}: 120px;
 	}
 	:host([topPosition='xlarge']) & {
-		--_top-position: 160px;
+		#{$top-position}: 160px;
 	}
 }
