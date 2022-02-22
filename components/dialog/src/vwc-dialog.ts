@@ -43,7 +43,6 @@ export class VWCDialog extends MWCDialog {
 		this.addDismissButton();
 	}
 
-
 	protected override updated(_changedProperties: PropertyValues): void {
 		super.updated(_changedProperties);
 		if (!this.renderRoot.querySelector('#dialog_icon')) {
