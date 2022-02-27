@@ -241,6 +241,6 @@ vwc-notched-outline {
 	@include typography.typography-cat-shorthand('body-2');
 	position: absolute;
 	top: -25px;
-	right: 12px;
+	right: 0;
 	color: var(#{scheme-variables.$vvd-color-neutral-70}) !important;
 }
