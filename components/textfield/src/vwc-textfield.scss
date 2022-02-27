@@ -238,8 +238,9 @@ vwc-notched-outline {
 }
 
 .mdc-text-field-character-counter {
-	@include typography.typography-mdc-coupling('caption', 'caption');
+	@include typography.typography-cat-shorthand('body-2');
 	position: absolute;
 	top: -25px;
 	right: 12px;
+	color: var(#{scheme-variables.$vvd-color-neutral-70}) !important;
 }
