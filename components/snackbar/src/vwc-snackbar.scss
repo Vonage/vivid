@@ -33,7 +33,7 @@ $spacing: 16px;
 }
 
 .mdc-snackbar__label {
-	@include typography.typography-cat-shorthand('body-2');
+	@include typography.typography-cat-shorthand('body-1');
 	padding: 22px $spacing;
 	color: var(#{scheme-variables.$vvd-color-on-canvas});
 	-webkit-font-smoothing: initial;
@@ -41,12 +41,14 @@ $spacing: 16px;
 }
 
 .icon {
+	flex-shrink: 0;
 	margin-block-end: auto;
-	margin-block-start: 20px;
+	margin-block-start: 16px;
 	margin-inline-start: $spacing;
 	.vwc-snackbar-legacy & {
 		#{connotation.$vvd-color-connotation}: initial;
 		color: var(#{scheme-variables.$vvd-color-on-canvas});
+		margin-block-start: 20px;
 	}
 }
 
@@ -85,13 +87,22 @@ $spacing: 16px;
 			border-inline-start: 8px solid var(#{connotation.$vvd-color-connotation});
 		}
 	}
+	.header-and-label {
+		padding: 22px $spacing;
+		> .heading {
+			@include typography.typography-cat-shorthand('body-2-bold');
+		}
+	}
+	.mdc-snackbar__label {
+		@include typography.typography-cat-shorthand('body-2');
+	}
 }
 
-.vwc-snackbar-legacy .header-and-label {
-	padding: 22px $spacing;
+.header-and-label {
+	padding: 16px $spacing;
 
 	> .heading {
-		@include typography.typography-cat-shorthand('body-2-bold');
+		@include typography.typography-cat-shorthand('body-1-bold');
 		color: var(#{scheme-variables.$vvd-color-on-canvas});
 		margin-block-end: 4px;
 		margin-block-start: 0;
