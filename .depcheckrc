@@ -1,2 +1,2 @@
-ignore-patterns: ["*.js", "*.d.ts"]
+ignore-patterns: ["*.js", "*.d.ts", "*.scss"]
 ignores: ["tslib", "@material/*", "@vonage/vvd-design-tokens-properties", "!@material/mwc-*", "sass", "key", "main", "alternate", "typography", "partials", "mdc-ripple-common", "@vonage/vvd-design-tokens", "@vonage/vvd-foundation", "@vonage/vvd-typography", "@vonage/vvd-style-coupling", "@vonage/vwc-textfield", "scheme-mixins"]

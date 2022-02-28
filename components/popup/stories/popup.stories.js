@@ -34,30 +34,27 @@ const Template = args => html`
 		}
 	</style>
 	<div class="popup-wrapper">
-		<vwc-button id="button" layout="outlined" outlined aria-haspopup="true" aria-describedby="popup" @click=${onClick}>Click to open popup</vwc-button>
-		<vwc-popup id="popup" ...=${spread(args)}>
+		<vwc-button id="buttonAnchor" layout="outlined" outlined aria-haspopup="true" aria-describedby="popup" @click=${onClick}>Click on me</vwc-button>
+		<vwc-popup id="popup" anchor="buttonAnchor" ...=${spread(args)}>
 			<div class="content">
 				<vwc-text font-face="body-1-bold" tight><p class="line">Popup title</p></vwc-text>
 				<vwc-text font-face="body-2" tight>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</vwc-text>
 			</div>
 		</vwc-popup>
 	</div>
-
-	<script>
-		popup.anchor = button;
-	</script>
 	`;
 
 export const Basic = Template.bind({});
+Basic.args = { open: true };
 
 export const WithArrow = Template.bind({});
-WithArrow.args = { arrow: true, corner: "right" };
+WithArrow.args = { open: true, arrow: true, corner: "right" };
 
 export const Alternate = Template.bind({});
-Alternate.args = { arrow: true, corner: "bottom", alternate: true };
+Alternate.args = { open: true, arrow: true, corner: "bottom", alternate: true };
 
 export const Dismissible = Template.bind({});
-Dismissible.args = { dismissible: true, corner: "top" };
+Dismissible.args = { open: true, dismissible: true, corner: "top" };
 
 function onClick() {
 	popup.open = !popup.open;
