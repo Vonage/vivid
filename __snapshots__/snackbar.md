@@ -9,6 +9,8 @@
   position="BOTTOM-CENTER"
 >
   <div class="mdc-snackbar__surface">
+    <div class="header-and-label">
+    </div>
     <div class="mdc-snackbar__actions">
       <slot name="action">
       </slot>
@@ -27,6 +29,14 @@
   position="BOTTOM-CENTER"
 >
   <div class="mdc-snackbar__surface">
+    <div class="header-and-label">
+      <h3
+        aria-hidden="true"
+        class="heading"
+      >
+        Header
+      </h3>
+    </div>
     <div class="mdc-snackbar__actions">
       <slot name="action">
       </slot>
@@ -45,6 +55,8 @@
   position="BOTTOM-CENTER"
 >
   <div class="mdc-snackbar__surface">
+    <div class="header-and-label">
+    </div>
     <div class="mdc-snackbar__actions">
       <slot name="action">
       </slot>
@@ -68,6 +80,8 @@
       type="home"
     >
     </vwc-icon>
+    <div class="header-and-label">
+    </div>
     <div class="mdc-snackbar__actions">
       <slot name="action">
       </slot>
@@ -86,6 +100,8 @@
   position="BOTTOM-CENTER"
 >
   <div class="mdc-snackbar__surface">
+    <div class="header-and-label">
+    </div>
     <div class="mdc-snackbar__actions">
       <slot name="action">
       </slot>
@@ -113,6 +129,8 @@
   position="BOTTOM-CENTER"
 >
   <div class="mdc-snackbar__surface">
+    <div class="header-and-label">
+    </div>
     <div class="mdc-snackbar__actions">
       <slot name="action">
       </slot>
@@ -138,7 +156,6 @@
     </div>
   </div>
 </div>
-
 ```
 
 #### `should have internal contents (header) - flavor = 'legacy'`
@@ -163,7 +180,6 @@
     </div>
   </div>
 </div>
-
 ```
 
 #### `should have internal contents (message) - flavor = 'legacy'`
@@ -182,7 +198,6 @@
     </div>
   </div>
 </div>
-
 ```
 
 #### `should have internal contents (icon) - flavor = 'legacy'`
@@ -206,7 +221,6 @@
     </div>
   </div>
 </div>
-
 ```
 
 #### `should have internal contents (dismissible) - flavor = 'legacy'`
@@ -234,7 +248,6 @@
     </div>
   </div>
 </div>
-
 ```
 
 #### `should have internal contents (slotted action) - flavor = 'legacy'`
@@ -253,6 +266,5 @@
     </div>
   </div>
 </div>
-
 ```
 
