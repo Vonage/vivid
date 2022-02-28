@@ -51,15 +51,7 @@
 		}
 	}
 	.heading-text {
-		/* stylelint-disable property-no-vendor-prefix */
-		/* stylelint-disable value-no-vendor-prefix */
-		display: -webkit-box;
-		overflow: hidden;
 		flex-grow: 1;
-		-webkit-box-orient: vertical;
-		-webkit-line-clamp: 2;
-		/* stylelint-enable property-no-vendor-prefix */
-		/* stylelint-enable value-no-vendor-prefix */
 		margin-inline-end: auto;
 		text-align: left;
 	}
