@@ -50,6 +50,23 @@
 			#{icon-variables.$icon-size-variable-name}: var(#{expansion-panel-variables.$expansion-panel-icon-size-variable-name}, 20px);
 		}
 	}
+	.heading-text {
+		flex-grow: 1;
+		margin-inline-end: auto;
+		text-align: left;
+	}
+
+	.meta {
+		@include typography.typography-cat-shorthand('body-2-bold');
+		overflow: hidden;
+		max-width: 20%;
+		flex-shrink: 0;
+		color: var(--vvd-color-neutral-70);
+		margin-inline-start: 1rem;
+		text-align: end;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
 
 	.leading-icon {
 		/* stylelint-disable selector-no-qualifying-type */
@@ -61,8 +78,6 @@
 	}
 
 	.trailing-icon {
-		margin-inline-start: auto;
-
 		/* stylelint-disable selector-no-qualifying-type */
 		vwc-icon,
 		slot[name="trailingIcon"i]::slotted(vwc-icon) {
@@ -93,5 +108,11 @@
 :host([dense]) {
 	.expansion-panel-button {
 		@include typography.typography-cat-shorthand('body-2-bold');
+	}
+	.meta {
+		@include typography.typography-cat-shorthand('caption-bold');
+	}
+	vwc-icon {
+		--vvd-expansion-panel-icon-size: 16px;
 	}
 }
