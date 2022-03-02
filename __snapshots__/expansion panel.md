@@ -7,6 +7,7 @@
   <button
     aria-controls="content"
     class="expansion-panel-button"
+    id="expansion-panel"
   >
     <mwc-ripple>
     </mwc-ripple>
@@ -14,7 +15,9 @@
       <slot name="icon">
       </slot>
     </span>
-    click me
+    <span class="heading-text">
+      click me
+    </span>
     <span class="trailing-icon">
       <slot name="trailingIcon">
         <vwc-icon
@@ -48,6 +51,7 @@
   <button
     aria-controls="content"
     class="expansion-panel-button"
+    id="expansion-panel"
   >
     <mwc-ripple>
     </mwc-ripple>
@@ -55,7 +59,9 @@
       <slot name="icon">
       </slot>
     </span>
-    click me
+    <span class="heading-text">
+      click me
+    </span>
     <span class="trailing-icon">
       <slot name="trailingIcon">
         <vwc-icon

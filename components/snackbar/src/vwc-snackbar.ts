@@ -118,7 +118,7 @@ export class VWCSnackbar extends MWCSnackbarBase {
 				@keydown="${this._handleKeydown}">
 				<div class="mdc-snackbar__surface">
 					${this.icon ? this.renderIcon() : ''}
-					${this.legacy ? this.renderLegacyUi() : accessibleSnackbarLabel(this.message, this.open)}
+					${this.legacy ? this.renderLegacyUi() : this.renderContent()}
 					<div class="mdc-snackbar__actions">
             ${!this.legacy ? html`<slot name="action" @click="${this._handleActionClick}"></slot>` : ''}
 						${this.renderDismissAction()}
@@ -147,6 +147,14 @@ export class VWCSnackbar extends MWCSnackbarBase {
 			</div>`;
 	}
 	/* eslint-enable lit-a11y/click-events-have-key-events */
+
+	private renderContent(): TemplateResult | string {
+		return html`
+			<div class="header-and-label">
+				${this.header ? this.renderHeading() : ''}
+				${accessibleSnackbarLabel(this.message, this.open)}
+			</div>`;
+	}
 
 	protected renderIcon(): TemplateResult {
 		return html`

@@ -37,7 +37,7 @@ const TemplateAction = args => html`
 		<vwc-button layout="filled" @click="${openSnackbar}">Show snackbar</vwc-button>
 	</div>
 	<vwc-snackbar ...=${spread(args)}>
-		<vwc-button slot="action" layout="outlined" shape="pill">Show more</vwc-button>
+		<vwc-button slot="action" layout="outlined" shape="pill" dense >Show more</vwc-button>
 	</vwc-snackbar>
 `;
 
