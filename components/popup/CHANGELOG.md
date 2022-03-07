@@ -1,3 +1,17 @@
+## [2.25.10](https://github.com/vonage/vivid/compare/v2.25.9...v2.25.10) (2022-03-07)
+
+
+### Bug Fixes
+
+* **popup:** now watching anchor size for position correctness ([#1236](https://github.com/vonage/vivid/issues/1236)) ([755c072](https://github.com/vonage/vivid/commit/755c072b9f8eae4f6df83f2d5cb6ec06588246a4)), closes [#1234](https://github.com/vonage/vivid/issues/1234)
+
+
+### Features
+
+* **vwc-popup:** change anchorEl to anchorId ([#1214](https://github.com/vonage/vivid/issues/1214)) ([c7640bd](https://github.com/vonage/vivid/commit/c7640bdfe20aa244533396c54fc16f3cd685ae32))
+
+
+
 ## [2.25.9](https://github.com/vonage/vivid/compare/v2.25.8...v2.25.9) (2022-02-06)
 
 
