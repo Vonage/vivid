@@ -1,3 +1,12 @@
+## [2.25.10](https://github.com/vonage/vivid/compare/v2.25.9...v2.25.10) (2022-03-07)
+
+
+### Bug Fixes
+
+* **side-drawer:** uncomment blocking elements import ([#1241](https://github.com/vonage/vivid/issues/1241)) ([6510ef0](https://github.com/vonage/vivid/commit/6510ef0aa88547705e1662f748f91bcda0584b13))
+
+
+
 ## [2.25.9](https://github.com/vonage/vivid/compare/v2.25.8...v2.25.9) (2022-02-06)
 
 
