@@ -101,26 +101,6 @@ export async function createElementVariations(wrapper) {
     Item 3
   </vwc-list-item>
 </vwc-select>
-	<vwc-select label="select with label" helper="select with label">
-  <vwc-list-item
-    mwc-list-item=""
-    tabindex="0"
-    aria-disabled="false"
-    role="option"
-    aria-selected="true"
-    selected="true"
-    activated=""
-  ></vwc-list-item>
-  <vwc-list-item
-    value="0"
-    mwc-list-item=""
-    tabindex="-1"
-    aria-disabled="false"
-    role="option"
-  >
-    Item 0
-  </vwc-list-item>
-</vwc-select>
 </div>
 <hr>
 <div style="background-color: rebeccapurple">
