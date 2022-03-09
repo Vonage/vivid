@@ -1,3 +1,71 @@
+## [2.25.10](https://github.com/vonage/vivid/compare/v2.25.9...v2.25.10) (2022-03-07)
+
+
+### Bug Fixes
+
+* **accordion:** add headline to wrap panel button ([#1231](https://github.com/vonage/vivid/issues/1231)) ([f05114d](https://github.com/vonage/vivid/commit/f05114d7584a7b262b20dd44c013e1ae32494874))
+
+
+### Features
+
+* **accordion:** add meta ([#1225](https://github.com/vonage/vivid/issues/1225)) ([2341999](https://github.com/vonage/vivid/commit/23419991d4fa1e33644ea460ef566aca4b37a1fa))
+
+
+
+## [2.25.9](https://github.com/vonage/vivid/compare/v2.25.8...v2.25.9) (2022-02-06)
+
+
+
+## [2.25.8](https://github.com/vonage/vivid/compare/v2.25.7...v2.25.8) (2022-02-05)
+
+
+
+## [2.25.7](https://github.com/vonage/vivid/compare/v2.25.6...v2.25.7) (2022-02-02)
+
+
+
+## [2.25.6](https://github.com/vonage/vivid/compare/v2.25.5...v2.25.6) (2022-01-30)
+
+
+
+## [2.25.5](https://github.com/vonage/vivid/compare/v2.25.3...v2.25.5) (2022-01-25)
+
+
+
+## [2.25.3](https://github.com/vonage/vivid/compare/v2.25.2...v2.25.3) (2022-01-24)
+
+
+
+## [2.25.2](https://github.com/vonage/vivid/compare/v2.25.1...v2.25.2) (2022-01-24)
+
+
+
+## [2.25.1](https://github.com/vonage/vivid/compare/v2.25.0...v2.25.1) (2022-01-23)
+
+
+
+# [2.25.0](https://github.com/vonage/vivid/compare/v2.24.1...v2.25.0) (2022-01-11)
+
+
+### Bug Fixes
+
+* **accordion:** accordion outlined with elevation wrap ([#1183](https://github.com/vonage/vivid/issues/1183)) ([cb3e7d0](https://github.com/vonage/vivid/commit/cb3e7d01293941c41ac575edf2715bd0617a3005))
+
+
+
+## [2.24.1](https://github.com/vonage/vivid/compare/v2.24.0...v2.24.1) (2021-12-23)
+
+
+
+# [2.24.0](https://github.com/vonage/vivid/compare/v2.23.0...v2.24.0) (2021-12-22)
+
+
+### Bug Fixes
+
+* **expansion-panel:** side effect import ripple ([#1154](https://github.com/vonage/vivid/issues/1154)) ([3e8777f](https://github.com/vonage/vivid/commit/3e8777fdbaf5aa6fcb69cfa447ffed1c2e92860c))
+
+
+
 # [2.23.0](https://github.com/vonage/vivid/compare/v2.22.1...v2.23.0) (2021-12-14)
 
 

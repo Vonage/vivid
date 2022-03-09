@@ -26,10 +26,10 @@ export default {
 				options: { true: '', false: undefined }
 			}
 		},
-		type: {
+		modal: {
 			control: {
-				type: 'select',
-				options: ['', 'modal', 'dismissible'],
+				type: 'inline-radio',
+				options: { true: '', false: undefined }
 			}
 		},
 	}
@@ -123,7 +123,7 @@ const topAppBarFixedContent = html`
 
 const WithAppContentTemplate = args => html`
 	${style}
-	<vwc-side-drawer id="side-drawer" hastopbar ...=${spread(args)}>
+	<vwc-side-drawer open id="side-drawer" hastopbar ...=${spread(args)}>
 		${sideDrawerContent}
 
 		<main slot="app-content">
@@ -137,7 +137,7 @@ WithAppContent.args = {};
 
 const WithTopAppBarTemplate = args => html`
 	${style}
-	<vwc-side-drawer alternate hastopbar ...=${spread(args)}>
+	<vwc-side-drawer open alternate hastopbar ...=${spread(args)}>
 		${sideDrawerContent}
 	
 		<vwc-top-app-bar slot="app-content">
@@ -154,9 +154,9 @@ WithTopAppBar.args = {};
 
 const WithTopAppBarFixedTemplate = args => html`
 	${style}
-	<vwc-side-drawer alternate hastopbar ...=${spread(args)}>
+	<vwc-side-drawer open alternate hastopbar ...=${spread(args)}>
 		${sideDrawerContent}
-	
+
 		<vwc-top-app-bar-fixed slot="app-content">
 			${topAppBarFixedContent}
 			<main>

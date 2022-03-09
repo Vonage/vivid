@@ -9,20 +9,20 @@ export default {
 	argTypes
 };
 
-const dpLevels = [2, 4, 8, 12, 16, 24];
+const dpLevels = [0, 2, 4, 8, 12, 16, 24];
 const styles = () => html`
 	<style>
+
+		.wrapper {
+			display: grid;
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
 		.card {
 			height: 20px;
-			width: 90px;
 			padding: 20px;
 			text-align: center;
-			border: 2px solid black;
-			border-radius: var(--vvd-elevation-border-radius, 0);
-		}
-
-		vwc-elevation {
-			display: inline-block;
+			width: 500px;
 		}
 	</style>
 `;
@@ -30,24 +30,23 @@ const elevations = () => dpLevels.map(dpLevel => html`
 		<vwc-elevation dp="${dpLevel}"><div class="card">DP ${dpLevel}</div></vwc-elevation>
 	`);
 
-const BasicTemplate = args => html`
-	${styles()}
-	${elevations()}
+const AllTemplate = args => html`
+	<div class="wrapper">
+		${styles()}
+		${elevations()}
+	</div>
 `;
 
 const Template = args => html`
 	${styles()}
-	<vwc-elevation ...=${spread(args)}><div class="card"</div></vwc-elevation>
+	<vwc-elevation ...=${spread(args)}><div class="card">elevation</div></vwc-elevation>
 `;
 
-export const Basic = BasicTemplate.bind({});
+export const Basic = Template.bind({});
 Basic.args = { label: 'Basic' };
 
-export const BackgroundColor = Template.bind({});
-BackgroundColor.args = { label: 'Background Color', style: '--vvd-elevation-background-color: lightblue', dp: 8 };
-
-export const BorderRadius = Template.bind({});
-BorderRadius.args = { label: 'Border Radius', style: '--vvd-elevation-border-radius: 16px', dp: 24 };
+export const AllElevations = AllTemplate.bind({});
+AllTemplate.args = { label: 'All' };
 
 const HoverEffectExampleTemplate = args => html`
 	${styles()}
@@ -59,7 +58,7 @@ const HoverEffectExampleTemplate = args => html`
 `;
 
 export const HoverEffectExample = HoverEffectExampleTemplate.bind({});
-HoverEffectExample.args = { label: 'Border Radius', style: '--vvd-elevation-border-radius: 16px', dp: 24 };
+HoverEffectExample.args = { label: 'Border Radius', dp: 24 };
 
 function onMouseEnter(e) {
 	e.target.setAttribute('dp', '24');

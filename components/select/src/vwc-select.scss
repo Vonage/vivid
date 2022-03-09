@@ -115,7 +115,7 @@ $vvd-select-size-block: --vvd-select-size-block;
 			transform: none;
 		}
 		&:not(.mdc-select--no-label) {
-			padding-top: 24px;
+			margin-top: 24px;
 		}
 	}
 	#{$vvd-select-size-block}: 40px;
@@ -188,6 +188,7 @@ vwc-notched-outline {
 	--mdc-notched-outline-border-color: var(
 		--mdc-select-outlined-idle-border-color
 	);
+
 }
 
 :host(:not([disabled])) .mdc-select.mdc-select--focused vwc-notched-outline,
@@ -206,7 +207,7 @@ vwc-notched-outline {
 	)
 );
 
-:host([ghost][dense]) {
+:host([appearance='ghost'i][dense]) {
 	.mdc-select .mdc-floating-label {
 		left: 0;
 	}
@@ -215,5 +216,13 @@ vwc-notched-outline {
 	}
 	.mdc-select__anchor {
 		display: block;
+	}
+}
+
+
+//no label default height
+:host(:not([dense])) {
+	.mdc-select--no-label .mdc-select__selected-text {
+		padding-top: 8px;
 	}
 }

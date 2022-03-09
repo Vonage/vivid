@@ -60,14 +60,12 @@ Requirements:
 Example for CCaaS _.npmrc_ for this configuration (using Artifactory):
 
 ```javascript
-ca=null
-always-auth=true
+ca = null
+always-auth = true
 
-; Artifactory (internal packages and public NPMJS.org)
-registry = https://vonagecc.jfrog.io/vonagecc/api/npm/npm/
-_auth = ${ARTIFACTORY_NPM_TOKEN}
-email = ${ARTIFACTORY_USER}
-
+@vonage:registry=https://npm.pkg.github.com/Vonage
+_authToken=${VIVID_GITHUB_TOKEN}
+//npm.pkg.github.com/:_authToken=${VIVID_GITHUB_TOKEN}
 ```
 
 ## Adjusting your GitHub personal access token

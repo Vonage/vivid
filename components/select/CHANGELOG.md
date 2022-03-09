@@ -1,3 +1,61 @@
+## [2.25.10](https://github.com/vonage/vivid/compare/v2.25.9...v2.25.10) (2022-03-07)
+
+
+
+## [2.25.9](https://github.com/vonage/vivid/compare/v2.25.8...v2.25.9) (2022-02-06)
+
+
+
+## [2.25.8](https://github.com/vonage/vivid/compare/v2.25.7...v2.25.8) (2022-02-05)
+
+
+
+## [2.25.7](https://github.com/vonage/vivid/compare/v2.25.6...v2.25.7) (2022-02-02)
+
+
+
+## [2.25.6](https://github.com/vonage/vivid/compare/v2.25.5...v2.25.6) (2022-01-30)
+
+
+
+## [2.25.5](https://github.com/vonage/vivid/compare/v2.25.3...v2.25.5) (2022-01-25)
+
+
+
+## [2.25.3](https://github.com/vonage/vivid/compare/v2.25.2...v2.25.3) (2022-01-24)
+
+
+
+## [2.25.2](https://github.com/vonage/vivid/compare/v2.25.1...v2.25.2) (2022-01-24)
+
+
+
+## [2.25.1](https://github.com/vonage/vivid/compare/v2.25.0...v2.25.1) (2022-01-23)
+
+
+
+# [2.25.0](https://github.com/vonage/vivid/compare/v2.24.1...v2.25.0) (2022-01-11)
+
+
+### Features
+
+* **select:** add appearance-ghost option ([#1158](https://github.com/vonage/vivid/issues/1158)) ([b3ddaaf](https://github.com/vonage/vivid/commit/b3ddaafb59d81f70145af9cfa2fe371ba0ad99c6))
+
+
+
+## [2.24.1](https://github.com/vonage/vivid/compare/v2.24.0...v2.24.1) (2021-12-23)
+
+
+### Bug Fixes
+
+* **select:** remove extended bg due to padding ([#1168](https://github.com/vonage/vivid/issues/1168)) ([0651e8f](https://github.com/vonage/vivid/commit/0651e8f68c823a045ce2fb1d4ae5b249239dac0d))
+
+
+
+# [2.24.0](https://github.com/vonage/vivid/compare/v2.23.0...v2.24.0) (2021-12-22)
+
+
+
 # [2.23.0](https://github.com/vonage/vivid/compare/v2.22.1...v2.23.0) (2021-12-14)
 
 

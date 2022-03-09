@@ -3,7 +3,7 @@
 :host {
 	--mdc-checkbox-ink-color: var(#{scheme-variables.$vvd-color-neutral-10});
 	--mdc-checkbox-checked-color: var(#{scheme-variables.$vvd-color-on-canvas});
-	--mdc-checkbox-unchecked-color: var(#{scheme-variables.$vvd-color-on-canvas});
+	--mdc-checkbox-unchecked-color: var(#{scheme-variables.$vvd-color-neutral-70});
 	--mdc-checkbox-disabled-color: var(
 		#{scheme-variables.$vvd-color-neutral-30}
 	);
@@ -54,8 +54,9 @@
 	.mdc-checkbox__native-control:enabled {
 		&:hover,
 		&:focus {
+
 			~ .mdc-checkbox__background {
-				box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+				--mdc-checkbox-unchecked-color: var(#{scheme-variables.$vvd-color-on-canvas});
 			}
 		}
 	}

@@ -1,4 +1,4 @@
-// import 'blocking-elements';
+import 'blocking-elements';
 import 'wicg-inert';
 import {
 	html, LitElement, TemplateResult, property, query
@@ -44,15 +44,15 @@ export class VWCSideDrawerBase extends LitElement {
 		hasTopBar?: boolean;
 
 	/**
-	 * @prop type - sets the type of the side drawer's layout
-	 * accepts "modal" | "dismissible"
+	 * @prop modal - sets the side drawer's type to modal
+	 * accepts boolean value
 	 * @public
 	 * */
 	@property({
-		type: String,
+		type: Boolean,
 		reflect: true
 	})
-		type?: 'modal' | 'dismissible';
+		modal = false;
 
 	/**
 	* @prop open - indicates whether the side drawer is open
@@ -91,48 +91,39 @@ export class VWCSideDrawerBase extends LitElement {
 		this.open = false;
 	}
 
-	override connectedCallback(): void {
-		super.connectedCallback();
-		document.addEventListener('keydown', this.#handleKeydown);
-	}
-
 	override disconnectedCallback(): void {
 		super.disconnectedCallback();
 		this.#releaseFocusTrap();
-		document.removeEventListener('keydown', this.#handleKeydown);
 	}
 
 	protected override render(): TemplateResult {
-		const dismissible = this.type === 'dismissible';
-		const modal = this.type === 'modal';
 		const topBar = this.hasTopBar ? this.renderTopBar() : '';
-		const scrim = (this.type === 'modal' && this.open) ? this.renderScrim() : '';
+		const scrim = (this.modal && this.open) ? this.renderScrim() : '';
 		const alternate = this.alternate ? 'vvd-scheme-alternate' : undefined;
 		const end = this.position === 'end';
 
 		const classes = {
 			'side-drawer-alternate': this.alternate,
-			'side-drawer-dismissible': dismissible,
-			'side-drawer-modal': modal,
+			'side-drawer-modal': this.modal,
 			'side-drawer-open': this.open,
 			'side-drawer-end': end,
 		};
 
 		return html`
 			<aside part="${ifDefined(alternate)}" class="side-drawer ${classMap(classes)}"
-				@transitionend=${this.#handleTransitionEnd}>
-			
+				@transitionend=${this.#handleTransitionEnd} @keydown=${this.#handleKeydown}>
+
 				${topBar}
-			
+
 				<div class="side-drawer-content">
 					<slot></slot>
 				</div>
 			</aside>
-			
+
 			<div class="side-drawer-app-content">
 				<slot name="app-content"></slot>
 			</div>
-			
+
 			${scrim}
 		`;
 	}
@@ -150,38 +141,36 @@ export class VWCSideDrawerBase extends LitElement {
 	}
 
 	#handleScrimClick(): void {
-		if (this.type === 'modal' && this.open) {
+		if (this.modal && this.open) {
 			this.hide();
 		}
 	}
 
 	#handleKeydown = ({ key }: KeyboardEvent): void => {
-		if ((this.type === 'modal' || this.type === 'dismissible') && this.open && key === 'Escape') {
+		if (this.open && key === 'Escape') {
 			this.hide();
 		}
 	};
 
 	#handleTransitionEnd = (): void => {
-		if (this.type === 'modal' || this.type === 'dismissible') {
-			// when side drawer finishes open animation
-			if (this.open) {
-				this.#opened();
-			} else {
-				// when side drawer finishes hide animation
-				this.#closed();
-			}
+		// when side drawer finishes open animation
+		if (this.open) {
+			this.#opened();
+		} else {
+			// when side drawer finishes hide animation
+			this.#closed();
 		}
 	};
 
 	#opened(): void {
-		if (this.type === 'modal') {
+		if (this.modal) {
 			this.#trapFocus();
 		}
 		this.#notifyOpen();
 	}
 
 	#closed(): void {
-		if (this.type === 'modal') {
+		if (this.modal) {
 			this.#releaseFocusTrap();
 		}
 		this.#notifyClose();

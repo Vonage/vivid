@@ -1,8 +1,7 @@
 @use 'sass:list';
 
-$dps: 2 4 8 12 16 24;
-$vvd-elevation-background-color: --vvd-elevation-background-color;
-$vvd-elevation-border-radius: --vvd-elevation-border-radius;
+$dps: 0 2 4 8 12 16 24;
+$elevation-border-radius: --elevation-border-radius;
 
 @function get-default-selector($list, $default) {
 	@if list.length($list) == 1 {
@@ -20,11 +19,13 @@ $vvd-elevation-border-radius: --vvd-elevation-border-radius;
 
 @each $dp in $dps {
 	#{get-default-selector($dps, $dp)} {
-		background-color: var(#{$vvd-elevation-background-color}, var(--vvd-color-surface-#{$dp}dp));
+		background-color: var(--vvd-color-surface-#{$dp}dp);
 		filter: var(--vvd-shadow-surface-#{$dp}dp);
 	}
 }
 
 .vwc-elevation {
-	border-radius: var(#{$vvd-elevation-border-radius}, 0);
+	--elevation-border-radius: 6px;
+	width: fit-content;
+	border-radius: var(#{--elevation-border-radius});
 }

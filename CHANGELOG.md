@@ -3,6 +3,168 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.25.10](https://github.com/Vonage/vivid/compare/v2.25.9...v2.25.10) (2022-03-07)
+
+
+### Bug Fixes
+
+* **accordion:** add headline to wrap panel button ([#1231](https://github.com/Vonage/vivid/issues/1231)) ([f05114d](https://github.com/Vonage/vivid/commit/f05114d7584a7b262b20dd44c013e1ae32494874))
+* **popup:** now watching anchor size for position correctness ([#1236](https://github.com/Vonage/vivid/issues/1236)) ([755c072](https://github.com/Vonage/vivid/commit/755c072b9f8eae4f6df83f2d5cb6ec06588246a4)), closes [#1234](https://github.com/Vonage/vivid/issues/1234)
+* **side-drawer:** uncomment blocking elements import ([#1241](https://github.com/Vonage/vivid/issues/1241)) ([6510ef0](https://github.com/Vonage/vivid/commit/6510ef0aa88547705e1662f748f91bcda0584b13))
+* **snackbar:** support heading in non legacy mode ([#1192](https://github.com/Vonage/vivid/issues/1192)) ([3d88e47](https://github.com/Vonage/vivid/commit/3d88e4725af3707d3eac9a83384344d2667a60aa))
+* **tooltip:** tooltip stories not shown ([#1238](https://github.com/Vonage/vivid/issues/1238)) ([83f40aa](https://github.com/Vonage/vivid/commit/83f40aa5bf57409b33fce14b5b6d519cbcb8da5b))
+
+
+### Features
+
+* **accordion:** add meta ([#1225](https://github.com/Vonage/vivid/issues/1225)) ([2341999](https://github.com/Vonage/vivid/commit/23419991d4fa1e33644ea460ef566aca4b37a1fa))
+* **vwc-popup:** change anchorEl to anchorId ([#1214](https://github.com/Vonage/vivid/issues/1214)) ([c7640bd](https://github.com/Vonage/vivid/commit/c7640bdfe20aa244533396c54fc16f3cd685ae32))
+
+
+
+
+
+## [2.25.9](https://github.com/Vonage/vivid/compare/v2.25.8...v2.25.9) (2022-02-06)
+
+
+### Bug Fixes
+
+* **workspace:** resolve missing dependencies ([#1230](https://github.com/Vonage/vivid/issues/1230)) ([b52e418](https://github.com/Vonage/vivid/commit/b52e4180e7bcfbbb338db2c96b29f12d60ca241b))
+
+
+
+
+
+## [2.25.8](https://github.com/Vonage/vivid/compare/v2.25.7...v2.25.8) (2022-02-05)
+
+
+### Bug Fixes
+
+* **top-app-bar-fixed:** missing dependency ([553005c](https://github.com/Vonage/vivid/commit/553005cae751404f47df81f4386359c78a6ba3d1))
+
+
+
+
+
+## [2.25.7](https://github.com/Vonage/vivid/compare/v2.25.6...v2.25.7) (2022-02-02)
+
+
+### Bug Fixes
+
+* **storybook:** fix broken links ([#1224](https://github.com/Vonage/vivid/issues/1224)) ([57d80e0](https://github.com/Vonage/vivid/commit/57d80e0a897ac36dbccd460d104e869e7fb0e240))
+
+
+
+
+
+## [2.25.6](https://github.com/Vonage/vivid/compare/v2.25.5...v2.25.6) (2022-01-30)
+
+**Note:** Version bump only for package @vivid/root
+
+
+
+
+
+## [2.25.5](https://github.com/Vonage/vivid/compare/v2.25.3...v2.25.5) (2022-01-25)
+
+**Note:** Version bump only for package @vivid/root
+
+
+
+
+
+## [2.25.4](https://github.com/Vonage/vivid/compare/v2.25.3...v2.25.4) (2022-01-25)
+
+**Note:** Version bump only for package @vivid/root
+
+
+
+
+
+## [2.25.3](https://github.com/Vonage/vivid/compare/v2.25.2...v2.25.3) (2022-01-24)
+
+
+### Bug Fixes
+
+* **dialog:** content width ([#1210](https://github.com/Vonage/vivid/issues/1210)) ([7832f07](https://github.com/Vonage/vivid/commit/7832f07ed23818027dd2a0c897b35a769598b25c))
+* **layout:** correct connotation refs ([#1194](https://github.com/Vonage/vivid/issues/1194)) ([a5c9d30](https://github.com/Vonage/vivid/commit/a5c9d30830bf43c9460d2420cf4acb698e730485))
+
+
+
+
+
+## [2.25.2](https://github.com/Vonage/vivid/compare/v2.25.1...v2.25.2) (2022-01-24)
+
+
+### Bug Fixes
+
+* **dialog:** header & content width ([#1209](https://github.com/Vonage/vivid/issues/1209)) ([a38e7df](https://github.com/Vonage/vivid/commit/a38e7df5c66d81f51bf7a3d79cb5c21bd18c972b))
+
+
+
+
+
+## [2.25.1](https://github.com/Vonage/vivid/compare/v2.25.0...v2.25.1) (2022-01-23)
+
+
+### Bug Fixes
+
+* **elevation:** sharp or rounded shape ([#1185](https://github.com/Vonage/vivid/issues/1185)) ([545c6b2](https://github.com/Vonage/vivid/commit/545c6b2a7ab1e38c29cba301ae063b6d9f2767b0))
+
+
+
+
+
+# [2.25.0](https://github.com/Vonage/vivid/compare/v2.24.1...v2.25.0) (2022-01-11)
+
+
+### Bug Fixes
+
+* **accordion:** accordion outlined with elevation wrap ([#1183](https://github.com/Vonage/vivid/issues/1183)) ([cb3e7d0](https://github.com/Vonage/vivid/commit/cb3e7d01293941c41ac575edf2715bd0617a3005))
+* **card:** declare missing dependencies ([#1173](https://github.com/Vonage/vivid/issues/1173)) ([a70020f](https://github.com/Vonage/vivid/commit/a70020f10e59c78496635f5b8f372ef1500f590b))
+* **checkbox & radiobutton:** border-color change ([#1187](https://github.com/Vonage/vivid/issues/1187)) ([f02fd7d](https://github.com/Vonage/vivid/commit/f02fd7df04fd61e619d2242fb4e3bb5290f75b2d))
+* **elevation:** new elevation dp ([#1177](https://github.com/Vonage/vivid/issues/1177)) ([ddc4c52](https://github.com/Vonage/vivid/commit/ddc4c5289111b8436388a0221142e925f6a05b80))
+* **elevation:** remove containment ([#1188](https://github.com/Vonage/vivid/issues/1188)) ([57e40b3](https://github.com/Vonage/vivid/commit/57e40b364b76761311a131b3ff4d0ed034d2df7d))
+
+
+### Features
+
+* **button:** stacked style flow support ([#1174](https://github.com/Vonage/vivid/issues/1174)) ([d4d975d](https://github.com/Vonage/vivid/commit/d4d975df779c5a6bcfe2490597a8f08671e30630))
+* **select:** add appearance-ghost option ([#1158](https://github.com/Vonage/vivid/issues/1158)) ([b3ddaaf](https://github.com/Vonage/vivid/commit/b3ddaafb59d81f70145af9cfa2fe371ba0ad99c6))
+* **switch:** new design ([#1184](https://github.com/Vonage/vivid/issues/1184)) ([b23d988](https://github.com/Vonage/vivid/commit/b23d988c2a843dc40daaa54c9601c1a3284ddbf8))
+
+
+
+
+
+## [2.24.1](https://github.com/Vonage/vivid/compare/v2.24.0...v2.24.1) (2021-12-23)
+
+
+### Bug Fixes
+
+* **docs:** fix storybook build ([#1166](https://github.com/Vonage/vivid/issues/1166)) ([7a8ae89](https://github.com/Vonage/vivid/commit/7a8ae89482252b23dcc9bf9a1148e7f568346a88))
+* **select:** remove extended bg due to padding ([#1168](https://github.com/Vonage/vivid/issues/1168)) ([0651e8f](https://github.com/Vonage/vivid/commit/0651e8f68c823a045ce2fb1d4ae5b249239dac0d))
+
+
+
+
+
+# [2.24.0](https://github.com/Vonage/vivid/compare/v2.23.0...v2.24.0) (2021-12-22)
+
+
+### Bug Fixes
+
+* **expansion-panel:** side effect import ripple ([#1154](https://github.com/Vonage/vivid/issues/1154)) ([3e8777f](https://github.com/Vonage/vivid/commit/3e8777fdbaf5aa6fcb69cfa447ffed1c2e92860c))
+
+
+### Features
+
+* **toggle-buttons-group:** new-design ([#1141](https://github.com/Vonage/vivid/issues/1141)) ([9b2a75c](https://github.com/Vonage/vivid/commit/9b2a75c13deb00d4dc2378832b93634a68553f17))
+
+
+
+
+
 # [2.23.0](https://github.com/Vonage/vivid/compare/v2.22.1...v2.23.0) (2021-12-14)
 
 

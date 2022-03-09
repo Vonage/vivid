@@ -8,18 +8,22 @@ on:
 jobs:
   build-test-release:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           ref: master
 
       - name: Setup NodeJS 14
         uses: actions/setup-node@v2
         with:
           node-version: 14
+
+      - run: printf "registry=https://npm.pkg.github.com/Vonage\n_authToken=\${GITHUB_TOKEN}\n//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}\nalways-auth=true" > .npmrc
 
       - name: Install yarn
         run: npm install -g yarn
@@ -39,10 +43,6 @@ jobs:
 
       - name: Install packages
         if: steps.yarn-cache.outputs.cache-hit != 'true'
-        env:
-          yarn_always_auth: true,
-          yarn__auth: ${{ secrets.ARTIFACTORY_AUTH_TOKEN }}
-          yarn_registry: "https://vonagecc.jfrog.io/vonagecc/api/npm/npm/"
         run: yarn install --network-timeout 100000
 
       - name: Build components

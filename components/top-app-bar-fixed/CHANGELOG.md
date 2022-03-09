@@ -1,3 +1,56 @@
+## [2.25.10](https://github.com/vonage/vivid/compare/v2.25.9...v2.25.10) (2022-03-07)
+
+
+
+## [2.25.9](https://github.com/vonage/vivid/compare/v2.25.8...v2.25.9) (2022-02-06)
+
+
+
+## [2.25.8](https://github.com/vonage/vivid/compare/v2.25.7...v2.25.8) (2022-02-05)
+
+
+### Bug Fixes
+
+* **top-app-bar-fixed:** missing dependency ([553005c](https://github.com/vonage/vivid/commit/553005cae751404f47df81f4386359c78a6ba3d1))
+
+
+
+## [2.25.7](https://github.com/vonage/vivid/compare/v2.25.6...v2.25.7) (2022-02-02)
+
+
+
+## [2.25.6](https://github.com/vonage/vivid/compare/v2.25.5...v2.25.6) (2022-01-30)
+
+
+
+## [2.25.5](https://github.com/vonage/vivid/compare/v2.25.3...v2.25.5) (2022-01-25)
+
+
+
+## [2.25.3](https://github.com/vonage/vivid/compare/v2.25.2...v2.25.3) (2022-01-24)
+
+
+
+## [2.25.2](https://github.com/vonage/vivid/compare/v2.25.1...v2.25.2) (2022-01-24)
+
+
+
+## [2.25.1](https://github.com/vonage/vivid/compare/v2.25.0...v2.25.1) (2022-01-23)
+
+
+
+# [2.25.0](https://github.com/vonage/vivid/compare/v2.24.1...v2.25.0) (2022-01-11)
+
+
+
+## [2.24.1](https://github.com/vonage/vivid/compare/v2.24.0...v2.24.1) (2021-12-23)
+
+
+
+# [2.24.0](https://github.com/vonage/vivid/compare/v2.23.0...v2.24.0) (2021-12-22)
+
+
+
 # [2.23.0](https://github.com/vonage/vivid/compare/v2.22.1...v2.23.0) (2021-12-14)
 
 
