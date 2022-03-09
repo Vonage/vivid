@@ -218,3 +218,11 @@ vwc-notched-outline {
 		display: block;
 	}
 }
+
+
+//no label default height
+:host(:not([dense])) {
+	.mdc-select--no-label .mdc-select__selected-text {
+		padding-top: 8px;
+	}
+}
