@@ -1,3 +1,12 @@
+## [2.25.10](https://github.com/vonage/vivid/compare/v2.25.9...v2.25.10) (2022-03-07)
+
+
+### Bug Fixes
+
+* **snackbar:** support heading in non legacy mode ([#1192](https://github.com/vonage/vivid/issues/1192)) ([3d88e47](https://github.com/vonage/vivid/commit/3d88e4725af3707d3eac9a83384344d2667a60aa))
+
+
+
 ## [2.25.9](https://github.com/vonage/vivid/compare/v2.25.8...v2.25.9) (2022-02-06)
 
 
