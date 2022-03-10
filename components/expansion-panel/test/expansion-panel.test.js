@@ -11,7 +11,7 @@ chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-expansion-panel';
 
-describe('expansion panel', () => {
+describe ('expansion panel', () => {
 	function getHeaderButtonElement(actualElement) {
 		return actualElement.shadowRoot?.querySelector('.expansion-panel-button');
 	}
@@ -82,6 +82,30 @@ describe('expansion panel', () => {
 		await waitNextTask();
 		const headerEl = getHeaderButtonElement(actualElement);
 		expect(headerEl.textContent.trim()).to.equal(headerText);
+	});
+
+	it('should have meta text when meta-data is set', async () => {
+		const metaText = 'meta-data';
+		const [actualElement] = addElement(
+			textToDomToParent(`<${COMPONENT_NAME} meta="${metaText}"></${COMPONENT_NAME}>`)
+		);
+		await waitNextTask();
+		const meta = actualElement.shadowRoot.querySelector('.expansion-panel-button');
+		expect(meta.textContent.trim()).to.equal(metaText);
+	});
+
+
+	it('should have header text and meta-data text', async () => {
+		const headerText = 'Click me';
+		const metaText = 'meta-data';
+		const [actualElement] = (
+			textToDomToParent(`<${COMPONENT_NAME} header="${headerText}" meta="${metaText}"></${COMPONENT_NAME}>`)
+		);
+		await waitNextTask();
+		const header = actualElement.shadowRoot.querySelector('.heading-text');
+		const meta = actualElement.shadowRoot.querySelector('.meta');
+		expect(header.textContent.trim()).to.equal(headerText);
+		expect(meta.textContent.trim()).to.equal(metaText);
 	});
 
 	describe('toggle icons', () => {

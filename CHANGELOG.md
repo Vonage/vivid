@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.25.10](https://github.com/Vonage/vivid/compare/v2.25.9...v2.25.10) (2022-03-07)
+
+
+### Bug Fixes
+
+* **accordion:** add headline to wrap panel button ([#1231](https://github.com/Vonage/vivid/issues/1231)) ([f05114d](https://github.com/Vonage/vivid/commit/f05114d7584a7b262b20dd44c013e1ae32494874))
+* **popup:** now watching anchor size for position correctness ([#1236](https://github.com/Vonage/vivid/issues/1236)) ([755c072](https://github.com/Vonage/vivid/commit/755c072b9f8eae4f6df83f2d5cb6ec06588246a4)), closes [#1234](https://github.com/Vonage/vivid/issues/1234)
+* **side-drawer:** uncomment blocking elements import ([#1241](https://github.com/Vonage/vivid/issues/1241)) ([6510ef0](https://github.com/Vonage/vivid/commit/6510ef0aa88547705e1662f748f91bcda0584b13))
+* **snackbar:** support heading in non legacy mode ([#1192](https://github.com/Vonage/vivid/issues/1192)) ([3d88e47](https://github.com/Vonage/vivid/commit/3d88e4725af3707d3eac9a83384344d2667a60aa))
+* **tooltip:** tooltip stories not shown ([#1238](https://github.com/Vonage/vivid/issues/1238)) ([83f40aa](https://github.com/Vonage/vivid/commit/83f40aa5bf57409b33fce14b5b6d519cbcb8da5b))
+
+
+### Features
+
+* **accordion:** add meta ([#1225](https://github.com/Vonage/vivid/issues/1225)) ([2341999](https://github.com/Vonage/vivid/commit/23419991d4fa1e33644ea460ef566aca4b37a1fa))
+* **vwc-popup:** change anchorEl to anchorId ([#1214](https://github.com/Vonage/vivid/issues/1214)) ([c7640bd](https://github.com/Vonage/vivid/commit/c7640bdfe20aa244533396c54fc16f3cd685ae32))
+
+
+
+
+
 ## [2.25.9](https://github.com/Vonage/vivid/compare/v2.25.8...v2.25.9) (2022-02-06)
 
 
