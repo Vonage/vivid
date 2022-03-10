@@ -14,6 +14,7 @@ export {
 export {
 	Autofocus,
 	Default,
+	CharCounter,
 	Dense,
 	Disabled,
 	Icon,

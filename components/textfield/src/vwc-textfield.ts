@@ -148,7 +148,7 @@ export class VWCTextField extends MWCTextField {
 	override render(): TemplateResult {
 		const shouldRenderCharCounter = this.charCounter && this.maxLength !== -1;
 		const shouldRenderHelperText =
-			!!this.helper || !!this.validationMessage || shouldRenderCharCounter;
+			!!this.helper || !!this.validationMessage;
 
 		/** @classMap */
 		const classes = {
@@ -166,6 +166,7 @@ export class VWCTextField extends MWCTextField {
 			<label class="mdc-text-field ${classMap(classes)}">
 				${this.renderRipple()}
 				${this.outlined ? this.renderOutline() : this.renderLabel()}
+				${this.renderCharCounter(shouldRenderCharCounter)}
 				${this.renderLeadingIcon()}
 				${this.renderPrefix()}
 				${this.renderInput(shouldRenderHelperText)}
