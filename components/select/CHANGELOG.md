@@ -1,3 +1,12 @@
+# [2.26.0](https://github.com/vonage/vivid/compare/v2.25.10...v2.26.0) (2022-03-13)
+
+
+### Bug Fixes
+
+* **select:** option position when no label is set ([#1251](https://github.com/vonage/vivid/issues/1251)) ([f3aee57](https://github.com/vonage/vivid/commit/f3aee57cc3c5fcb326a602203a6b8ad447b45a3d))
+
+
+
 ## [2.25.10](https://github.com/vonage/vivid/compare/v2.25.9...v2.25.10) (2022-03-07)
 
 

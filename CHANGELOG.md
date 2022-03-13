@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.26.0](https://github.com/Vonage/vivid/compare/v2.25.10...v2.26.0) (2022-03-13)
+
+
+### Bug Fixes
+
+* **select:** option position when no label is set ([#1251](https://github.com/Vonage/vivid/issues/1251)) ([f3aee57](https://github.com/Vonage/vivid/commit/f3aee57cc3c5fcb326a602203a6b8ad447b45a3d))
+
+
+### Features
+
+* **textfield:** support character count ([#1245](https://github.com/Vonage/vivid/issues/1245)) ([9666bde](https://github.com/Vonage/vivid/commit/9666bde2edd5192a0f13579d2e49c0f9ac2f08b6))
+
+
+
+
+
 ## [2.25.10](https://github.com/Vonage/vivid/compare/v2.25.9...v2.25.10) (2022-03-07)
 
 
