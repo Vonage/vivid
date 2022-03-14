@@ -1,3 +1,16 @@
+# [2.26.0](https://github.com/vonage/vivid/compare/v2.25.10...v2.26.0) (2022-03-13)
+
+
+### Features
+
+* **textfield:** support character count ([#1245](https://github.com/vonage/vivid/issues/1245)) ([9666bde](https://github.com/vonage/vivid/commit/9666bde2edd5192a0f13579d2e49c0f9ac2f08b6))
+
+
+
+## [2.25.10](https://github.com/vonage/vivid/compare/v2.25.9...v2.25.10) (2022-03-07)
+
+
+
 ## [2.25.9](https://github.com/vonage/vivid/compare/v2.25.8...v2.25.9) (2022-02-06)
 
 

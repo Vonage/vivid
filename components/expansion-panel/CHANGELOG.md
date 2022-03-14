@@ -1,3 +1,21 @@
+# [2.26.0](https://github.com/vonage/vivid/compare/v2.25.10...v2.26.0) (2022-03-13)
+
+
+
+## [2.25.10](https://github.com/vonage/vivid/compare/v2.25.9...v2.25.10) (2022-03-07)
+
+
+### Bug Fixes
+
+* **accordion:** add headline to wrap panel button ([#1231](https://github.com/vonage/vivid/issues/1231)) ([f05114d](https://github.com/vonage/vivid/commit/f05114d7584a7b262b20dd44c013e1ae32494874))
+
+
+### Features
+
+* **accordion:** add meta ([#1225](https://github.com/vonage/vivid/issues/1225)) ([2341999](https://github.com/vonage/vivid/commit/23419991d4fa1e33644ea460ef566aca4b37a1fa))
+
+
+
 ## [2.25.9](https://github.com/vonage/vivid/compare/v2.25.8...v2.25.9) (2022-02-06)
 
 
