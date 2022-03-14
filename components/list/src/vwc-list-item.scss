@@ -116,3 +116,10 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 .mdc-deprecated-list-item__meta {
 	display: flex;
 }
+
+::slotted(*) {
+	.mdc-deprecated-list-item__graphic &,
+	.mdc-deprecated-list-item__meta & {
+		color: var(#{scheme-variables.$vvd-color-neutral-70});
+	}
+}
