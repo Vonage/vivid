@@ -3,8 +3,7 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
 @use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
-	$connotations-set: primary cta,
-	$default: primary,
+	$connotations-set: primary,
 	$scope: list-item,
 	$is-host: true
 );
@@ -71,7 +70,10 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 
 	.fake-activated-ripple {
 		--mdc-ripple-activated-opacity: 1;
-		--mdc-ripple-color: var(#{connotation.$vvd-color-connotation});
+		--mdc-ripple-color: var(
+			#{connotation.$vvd-color-connotation},
+			#{scheme-variables.$vvd-color-neutral-30}
+		);
 	}
 
 	mwc-ripple {
