@@ -12,6 +12,9 @@ export default {
 const dpLevels = [0, 2, 4, 8, 12, 16, 24];
 const styles = () => html`
 	<style>
+		vwc-elevation {
+			display: inline-block;
+		}
 
 		.wrapper {
 			display: grid;
