@@ -5,6 +5,12 @@ export const argTypes = {
 			options: ['primary', 'cta', 'success', 'error', 'info', 'announcement'],
 		}
 	},
+	topPosition: {
+		control: {
+			type: 'select',
+			options: ['small', 'medium', 'large', 'xlarge'],
+		}
+	},
 	disabled: {
 		control: {
 			type: 'inline-radio',

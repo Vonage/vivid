@@ -71,3 +71,26 @@
 		width: 100%;
 	}
 }
+
+.mdc-dialog {
+	$top-position: --_top-position;
+	:host([topPosition='small']) &,
+	:host([topPosition='medium']) &,
+	:host([topPosition*='large']) & {
+		top: var(#{$top-position});
+		height: auto;
+	}
+
+	:host([topPosition='small']) & {
+		#{$top-position}: 40px;
+	}
+	:host([topPosition='medium']) & {
+		#{$top-position}: 80px;
+	}
+	:host([topPosition='large']) & {
+		#{$top-position}: 120px;
+	}
+	:host([topPosition='xlarge']) & {
+		#{$top-position}: 160px;
+	}
+}
