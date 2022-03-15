@@ -5,7 +5,8 @@ export const argTypes = {
 		control: {
 			type: 'select',
 			options: Object.values(Connotation).filter(c => [
-				Connotation.Primary, Connotation.CTA
+				undefined,
+				Connotation.Primary
 			].includes(c)),
 		}
 	},

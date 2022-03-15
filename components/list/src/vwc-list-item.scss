@@ -52,16 +52,24 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 
 :host([activated]) {
 	--mdc-theme-text-icon-on-background: var(
-		#{connotation.$vvd-color-on-connotation}
+		#{connotation.$vvd-color-on-connotation},
+		var(#{scheme-variables.$vvd-color-on-canvas})
 	);
 	--mdc-theme-text-hint-on-background: var(
-		#{connotation.$vvd-color-on-connotation}
+		#{connotation.$vvd-color-on-connotation},
+		var(#{scheme-variables.$vvd-color-on-canvas})
 	);
-	--mdc-ripple-color: var(#{connotation.$vvd-color-on-connotation});
+	--mdc-ripple-color: var(
+		#{connotation.$vvd-color-on-connotation},
+		var(#{scheme-variables.$vvd-color-on-canvas})
+	);
 
 	@include typography.typography-cat-shorthand('body-2-bold');
 	z-index: 0;
-	color: var(#{connotation.$vvd-color-on-connotation});
+	color: var(
+		#{connotation.$vvd-color-on-connotation},
+		var(#{scheme-variables.$vvd-color-on-canvas})
+	);
 
 	mwc-ripple,
 	.fake-activated-ripple {
@@ -72,13 +80,16 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 		--mdc-ripple-activated-opacity: 1;
 		--mdc-ripple-color: var(
 			#{connotation.$vvd-color-connotation},
-			#{scheme-variables.$vvd-color-neutral-30}
+			var(#{scheme-variables.$vvd-color-neutral-30})
 		);
 	}
 
 	mwc-ripple {
 		--mdc-ripple-activated-opacity: 0;
-		background-color: var(#{connotation.$vvd-color-connotation});
+		background-color: var(
+			#{connotation.$vvd-color-connotation},
+			var(#{scheme-variables.$vvd-color-neutral-30})
+		);
 	}
 }
 
@@ -117,9 +128,10 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 	display: flex;
 }
 
+
 ::slotted(*) {
-	.mdc-deprecated-list-item__graphic &,
-	.mdc-deprecated-list-item__meta & {
+	:host(:not([disabled])) .mdc-deprecated-list-item__graphic &,
+	:host(:not([disabled])) .mdc-deprecated-list-item__meta & {
 		color: var(#{scheme-variables.$vvd-color-neutral-70});
 	}
 }
