@@ -1,15 +1,26 @@
-# vwc-breadcrumb
+# breadcrumb
 
-Add a description of vwc-breadcrumb.
+In order to use `breadcrumb` you'll need to import both `breadcrumb` and `breadcrumb-item`:
+```js
+import '@vonage/vwc-breadcrumb-item/vwc-breadcrumb-item.js';
+import '@vonage/vwc-breadcrumb/vwc-breadcrumb.js';
+```
 
-## Properties
+## Common Usage
+```html preview
+<vwc-breadcrumb>
+  <vwc-breadcrumb-item href="#" text="breadcrumb"></vwc-breadcrumb-item>
+  <vwc-breadcrumb-item href="#" text="breadcrumb"></vwc-breadcrumb-item>
+  <vwc-breadcrumb-item href="#" text="breadcrumb"></vwc-breadcrumb-item>
+  <vwc-breadcrumb-item text="breadcrumb"></vwc-breadcrumb-item>
+</vwc-breadcrumb>
+```
 
-| Property                  | Type                                      |
-|---------------------------|-------------------------------------------|
-| `prop         `           | `propType`                                |
-
-## Methods
-
-| Method  | Type       |
-|---------|------------|
-| `method`| `(): void` |
+## Multiple hidden crumbs
+```html preview
+<vwc-breadcrumb>
+  <vwc-breadcrumb-item href="#" text="breadcrumb"></vwc-breadcrumb-item>
+  <vwc-breadcrumb-item text="..."></vwc-breadcrumb-item>
+  <vwc-breadcrumb-item href="#" text="breadcrumb"></vwc-breadcrumb-item>
+</vwc-breadcrumb>
+```
