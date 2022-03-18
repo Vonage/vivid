@@ -7,7 +7,8 @@ import '@vonage/vwc-breadcrumb/vwc-breadcrumb.js';
 ```
 
 ## Common Usage
-```html preview
+### Code
+```html
 <vwc-breadcrumb>
   <vwc-breadcrumb-item href="#" text="breadcrumb"></vwc-breadcrumb-item>
   <vwc-breadcrumb-item href="#" text="breadcrumb"></vwc-breadcrumb-item>
@@ -15,12 +16,24 @@ import '@vonage/vwc-breadcrumb/vwc-breadcrumb.js';
   <vwc-breadcrumb-item text="breadcrumb"></vwc-breadcrumb-item>
 </vwc-breadcrumb>
 ```
-
-## Multiple hidden crumbs
-```html preview
 <vwc-breadcrumb>
   <vwc-breadcrumb-item href="#" text="breadcrumb"></vwc-breadcrumb-item>
-  <vwc-breadcrumb-item text="..."></vwc-breadcrumb-item>
   <vwc-breadcrumb-item href="#" text="breadcrumb"></vwc-breadcrumb-item>
+  <vwc-breadcrumb-item href="#" text="breadcrumb"></vwc-breadcrumb-item>
+  <vwc-breadcrumb-item text="breadcrumb"></vwc-breadcrumb-item>
+</vwc-breadcrumb>
+
+## Multiple hidden crumbs
+### Code
+```html
+<vwc-breadcrumb>
+	<vwc-breadcrumb-item href="#" text="breadcrumb"></vwc-breadcrumb-item>
+	<vwc-breadcrumb-item text="..."></vwc-breadcrumb-item>
+	<vwc-breadcrumb-item href="#" text="breadcrumb"></vwc-breadcrumb-item>
 </vwc-breadcrumb>
 ```
+<vwc-breadcrumb>
+	<vwc-breadcrumb-item href="#" text="breadcrumb"></vwc-breadcrumb-item>
+	<vwc-breadcrumb-item text="..."></vwc-breadcrumb-item>
+	<vwc-breadcrumb-item href="#" text="breadcrumb"></vwc-breadcrumb-item>
+</vwc-breadcrumb>
