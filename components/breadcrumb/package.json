@@ -25,7 +25,7 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@vonage/vivid": "^3.0.0-next.2",
+		"@vonage/vivid": "^3.0.0-next.3",
 		"tslib": "^2.3.0"
 	},
 	"devDependencies": {
