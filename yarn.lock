@@ -5337,7 +5337,7 @@
     terminal-kit "^2.0.5"
     yargs-parser "^20.2.7"
 
-"@vonage/vivid@^3.0.0-next.2":
+"@vonage/vivid@^3.0.0-next.3":
   version "3.0.0-next.3"
   resolved "https://npm.pkg.github.com/download/@vonage/vivid/3.0.0-next.3/d279e01127bf77a20c5cd054a124ab9c750202ce6b94069e9a31665c7afcd11a#d8a5244865126d300445535cd9512042757a447b"
   integrity sha512-mtJNlWbRjDClylECF2F2b+LZZ7Iq0ykeEypQbYo+cFuT7kiTKUF+WbN65T16G4HkWJPJYd27a7YbCU9VuCuGrQ==
