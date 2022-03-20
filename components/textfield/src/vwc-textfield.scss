@@ -3,6 +3,7 @@
 @forward './vwc-textfield-input';
 @forward './vwc-textfield-action';
 @use './vwc-textfield-variables' as textfield-variables;
+@use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vwc-icon/src/partials/vwc-icon-variables' as icon-variables;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
@@ -87,8 +88,6 @@
 }
 
 :host([dense][label]:not([label=''])) {
-	padding-top: 24px;
-
 	.mdc-text-field {
 		.mdc-floating-label {
 			top: -25px;
@@ -104,6 +103,11 @@
 		.mdc-floating-label {
 			color: var(--mdc-text-field-ink-color);
 		}
+	}
+
+	@at-root :host([charcounter]), // also if charcounter is present. temporary fix
+	& {
+		padding-top: 24px;
 	}
 }
 
@@ -231,4 +235,12 @@ vwc-notched-outline {
 .mdc-text-field--with-leading-icon.mdc-text-field--outlined
 .mdc-floating-label {
 	left: 40px;
+}
+
+.mdc-text-field-character-counter {
+	@include typography.typography-cat-shorthand('body-2');
+	position: absolute;
+	top: -25px;
+	right: 0;
+	color: var(#{scheme-variables.$vvd-color-neutral-70}) !important;
 }

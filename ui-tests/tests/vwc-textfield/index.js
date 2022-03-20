@@ -1,6 +1,7 @@
 import '@vonage/vwc-textfield';
 import {
 	Default,
+	CharCounter,
 	Dense,
 	Disabled,
 	Icon,
@@ -16,6 +17,7 @@ import { storiesToElement } from '../../utils/storiesToElement';
 export async function createElementVariations(wrapper) {
 	const testWrapper = storiesToElement([
 		Default,
+		CharCounter,
 		Dense,
 		Disabled,
 		Icon,
