@@ -9,6 +9,9 @@ const Template = (args) =>
 export const Default = Template.bind({});
 Default.args = { label: 'e.g. username', value: 'Initial value', placeholder: 'Placeholder' };
 
+export const CharCounter = Template.bind({});
+CharCounter.args = { label: 'Limited value', dense: '', charCounter: '', maxLength: 18 };
+
 export const Dense = Template.bind({});
 Dense.args = { dense: '', label: 'VWC Textfield' };
 
