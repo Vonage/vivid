@@ -39,7 +39,8 @@ export class VWCFab extends MWCFab {
 	    'mdc-fab--touch': hasTouchTarget,
 	    'mdc-fab--exited': this.exited,
 	    'mdc-fab--extended': this.extended,
-	    'icon-end': this.showIconAtEnd,
+			'icon-end': this.showIconAtEnd,
+			[`connotation-${this.connotation}`]: !!this.connotation,
 	  };
 
 	  const ariaLabel = this.label ? this.label : this.icon;
