@@ -73,14 +73,32 @@ export async function createElementVariations(wrapper) {
 	</vwc-card>
 
 	<vwc-card label="trimmed Heading" heading="Very Long Card title That spreads into two or three lines" subtitle="I'm a very long subtitle should I be trimmed?"  supporting-text="I'm a Supporting text, cant be line trimmed. Lorem ipsum dolor sit amet, consectet adipiscing elit" style="--title-line-clamp :1; --subtitle-line-clamp:1">
-			<vwc-icon-button-toggle onicon="bookmark-full" officon="bookmark" connotation="cta" slot="actionItem"></vwc-icon-button-toggle>
+			<vwc-icon-button-toggle onicon="bookmark-full" officon="bookmark" connotation="cta" slot="meta"></vwc-icon-button-toggle>
 		</vwc-card>
 
 		<vwc-card label="trimmed Heading" heading="Very Long Card title That spreads into two or three lines" subtitle="I'm a very long subtitle should I be trimmed?"  supporting-text="I'm a Supporting text, cant be line trimmed. Lorem ipsum dolor sit amet, consectet adipiscing elit">
-			<vwc-icon-button icon="more-vertical-solid" slot="actionItem"></vwc-icon-button>
+			<vwc-icon-button icon="more-vertical-solid" slot="meta"></vwc-icon-button>
+		</vwc-card>
+		<vwc-card label="trimmed Heading" heading="Very Long Card title That spreads into two or three lines" subtitle="I'm a very long subtitle should I be trimmed?"  supporting-text="I'm a Supporting text, cant be line trimmed. Lorem ipsum dolor sit amet, consectet adipiscing elit" style="align-self: stretch; height: 100%">
+			<vwc-icon-button icon="pin-2-solid" slot="meta"></vwc-icon-button>
+			<vwc-button slot="footer" shape="pill" layout="outlined" icon="info" type="submit" outlined="">Click</vwc-button>
 		</vwc-card>
 		<vwc-card label="trimmed Heading" heading="Very Long Card title That spreads into two or three lines" subtitle="I'm a very long subtitle should I be trimmed?"  supporting-text="I'm a Supporting text, cant be line trimmed. Lorem ipsum dolor sit amet, consectet adipiscing elit">
-			<vwc-icon-button icon="pin-2-solid" slot="actionItem"></vwc-icon-button>
+			<vwc-icon-button icon="pin-2-solid" slot="meta"></vwc-icon-button>
+			<vwc-button slot="footer" shape="pill" layout="outlined" icon="info" type="submit" outlined="">Click</vwc-button>
+			<img slot="media" src="https://doodleipsum.com/300x150/flat?bg=EB765D&i=7d5ed3bc0c215d1359b2a63d03cf1540" alt="Sitting on Floor by Gustavo Pedrosa" />
+		</vwc-card>
+
+		<vwc-card label="trimmed Heading" heading="Very Long Card title That spreads into two or three lines" subtitle="I'm a very long subtitle should I be trimmed?"  supporting-text="I'm a Supporting text, cant be line trimmed. Lorem ipsum dolor sit amet, consectet adipiscing elit" style="align-self: stretch; height: 100%" >
+			<vwc-icon-button icon="pin-2-solid" slot="meta"></vwc-icon-button>
+			<vwc-button slot="footer" shape="pill" layout="outlined" icon="info" type="submit" outlined="">Click</vwc-button>
+			<img slot="media" src="https://doodleipsum.com/300x150/flat?bg=EB765D&i=7d5ed3bc0c215d1359b2a63d03cf1540" alt="Sitting on Floor by Gustavo Pedrosa" />
+			<img slot="graphics" src="https://doodleipsum.com/40x40/hand-drawn?bg=7463D9&amp;i=af462b28146d2ac91599602e083ddee5" alt="Sitting on Floor by Gustavo Pedrosa">
+			<div slot="content">I'm the card content that overrides the content from attributes. I have no text styles or any styles for that metter :) You can do whatever you want here</div>
+		</vwc-card>
+
+		<vwc-card >
+			<div slot="content">I'm the card content that overrides the content from attributes. I have no text styles or any styles for that matter :) You can do whatever you want here</div>
 		</vwc-card>
 		`;
 	wrapper.appendChild(elementWrapper);

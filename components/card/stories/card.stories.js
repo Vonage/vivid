@@ -65,7 +65,7 @@ const TopActionTemplate = args => html`
 		}
 	</style>
 	<vwc-card ...=${spread(args)} header-icon="chat-line">
-		<vwc-icon-button-toggle onicon="more-vertical-solid" officon="more-vertical-solid" slot="actionItem"></vwc-icon-button-toggle>
+		<vwc-icon-button-toggle onicon="more-vertical-solid" officon="more-vertical-solid" slot="meta"></vwc-icon-button-toggle>
 	</vwc-card>
 	`;
 export const TopAction = TopActionTemplate.bind({});
@@ -161,7 +161,7 @@ const AllTemplate = args => html`
 	</style>
 	<vwc-card ...=${spread(args)}>
 		<div style="height: 150px; width: 100%; background-color: #871EFF;" slot="media"></div>
-		<vwc-icon-button-toggle onicon="more-vertical-solid" officon="more-vertical-solid" slot="actionItem"></vwc-icon-button-toggle>
+		<vwc-icon-button-toggle onicon="more-vertical-solid" officon="more-vertical-solid" slot="meta"></vwc-icon-button-toggle>
 		<vwc-button slot="footer" shape="pill" layout="outlined" label="Action">
 			<vwc-icon type="arrow-bold-right-line" slot="trailingIcon"></vwc-icon>
 		</vwc-button>

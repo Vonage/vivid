@@ -71,14 +71,16 @@ export class VWCCard extends LitElement {
 				<div class="vwc-card-media">
 					<slot name="media"></slot>
 				</div>
-				<div class="vwc-card-info">
-					${this.renderHeader()}
-					<div class="vwc-card-supportText">
+				<div class="vwc-card-content">
+					<slot name="content">
+						${this.renderHeader()}
+						<div class="vwc-card-supportText">
 							${this.supportingText ? this.supportingText : ''}
-					</div>
-					<div class="vwc-card-footer ${classMap(footerClassMap)}">
-							<slot name="footer" @slotchange="${this.footerSlotChanged}"></slot>
-					</div>
+						</div>
+					</slot>
+				</div>
+				<div class="vwc-card-footer ${classMap(footerClassMap)}">
+					<slot name="footer" @slotchange="${this.footerSlotChanged}"></slot>
 				</div>
 			</div>
 		`;
@@ -96,7 +98,7 @@ export class VWCCard extends LitElement {
 							<div class="vwc-card-subtitle">${this.subtitle}</div>
 						</div>
 				</div>
-				<slot name="actionItem"></slot>
+				<slot name="meta"></slot>
 			</header>`;
 	}
 

@@ -8,27 +8,29 @@
     <slot name="media">
     </slot>
   </div>
-  <div class="vwc-card-info">
-    <header class="no-content vwc-card-header">
-      <div class="vwc-card-header-content">
-        <slot name="graphics">
-        </slot>
-        <div>
-          <div class="vwc-card-title">
-          </div>
-          <div class="vwc-card-subtitle">
+  <div class="vwc-card-content">
+    <slot name="content">
+      <header class="no-content vwc-card-header">
+        <div class="vwc-card-header-content">
+          <slot name="graphics">
+          </slot>
+          <div>
+            <div class="vwc-card-title">
+            </div>
+            <div class="vwc-card-subtitle">
+            </div>
           </div>
         </div>
+        <slot name="meta">
+        </slot>
+      </header>
+      <div class="vwc-card-supportText">
       </div>
-      <slot name="actionItem">
-      </slot>
-    </header>
-    <div class="vwc-card-supportText">
-    </div>
-    <div class="no-content vwc-card-footer">
-      <slot name="footer">
-      </slot>
-    </div>
+    </slot>
+  </div>
+  <div class="no-content vwc-card-footer">
+    <slot name="footer">
+    </slot>
   </div>
 </div>
 
