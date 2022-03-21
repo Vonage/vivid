@@ -46,7 +46,7 @@ export class VWCCard extends LitElement {
 
 	@property({
 		reflect: true,
-		attribute: 'supporting-text',
+		attribute: 'card-text',
 		type: String
 	})
 		supportingText: string | undefined;

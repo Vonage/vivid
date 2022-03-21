@@ -6,11 +6,8 @@ Cards contain content and actions about a single subject.
 
 ```
 <vwc-card heading="Hello Card!"
-         icon="home"
-         badge-content="This is the badge content"
-       >
+         icon="home">
    <div slot="media">Some media</div>
-   <div>This is my content</div>
    <vwc-button slot="actions">Action Button</vwc-button>
 </vwc-card>
 ```
@@ -20,22 +17,22 @@ Cards contain content and actions about a single subject.
 
 ### Properties/Attributes
 
-|name|attr/prop/reflected|type|description|
-|--- |--- |--- |--- |
-|`heading`|reflected|string|The heading text|
-|`header-icon`|reflected|string|A valid vivid icon type|
-|`badge-content`|reflected|string|A content to show in a badge (for info and CTA modes)|
-|`layout`|reflected|`large` | `basic`|Sets large or basic heading and header icon. Basic is the default.|
+|name|attr/prop/reflected|type| description          |
+|--- |--- |--- |----------------------|
+|`heading`|reflected|string| The heading text     |
+|`subtitle`|reflected|string| The sub-heading text |
+|`card-text`|reflected|string| The card text        |
+|`header-icon`|reflected|string| A valid vivid icon type |
 
 ### Slots
 
-|name|description|
-|--- |--- |
-|`graphics`|Content to show in the header icon section. If exists, overrides the `icon` attribute’s definition|
-|`actions`|Content to show in the actions section|
-|`media`|Slot to add anything inside the `media` area|
-|`actionItem`|Slot for action content placed the card header |
-
+| name       | description                                                                                        |
+|------------|----------------------------------------------------------------------------------------------------|
+| `graphics` | Content to show in the header icon section. If exists, overrides the `header-icon` attribute’s definition |
+| `meta`     | Slot for action content in the card header                                                         |
+| `media`    | Slot to add anything inside the `media` area                                                       |
+| `footer`   | Slot for action content placed the card footer                                                     |
+| `content`  | Slot for content of the card. If exist, overrides the `heading`, `subtitle`, `card-text` and `header-icon`
 ## Styling tips
 
 ### Setting card's width

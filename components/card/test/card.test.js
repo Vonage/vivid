@@ -250,7 +250,7 @@ describe('Card', () => {
 
 		it(`should set the supporting according to the attribute`, async function () {
 			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} supporting-text="${supportingText}">Content</${COMPONENT_NAME}>`)
+				textToDomToParent(`<${COMPONENT_NAME} card-text="${supportingText}">Content</${COMPONENT_NAME}>`)
 			);
 
 			await actualElement.updateComplete;
@@ -290,9 +290,9 @@ describe('Card', () => {
 
 			await actualElement.updateComplete;
 
-			const attributeValue = actualElement.getAttribute('supporting-text');
+			const attributeValue = actualElement.getAttribute('card-text');
 
-			actualElement.setAttribute('supporting-text', differentText);
+			actualElement.setAttribute('card-text', differentText);
 
 			expect(attributeValue)
 				.to
