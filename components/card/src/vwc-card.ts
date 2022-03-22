@@ -1,11 +1,13 @@
 import {
 	customElement, html, LitElement,
 } from 'lit-element';
+import { nothing } from 'lit-html';
 import { style } from './vwc-card.css.js';
 import { property } from 'lit-element/lib/decorators.js';
 import { classMap } from 'lit-html/directives/class-map.js';
 import '@vonage/vwc-button';
 import '@vonage/vwc-icon';
+
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -49,10 +51,10 @@ export class VWCCard extends LitElement {
 		attribute: 'card-text',
 		type: String
 	})
-		supportingText: string | undefined;
+		carText: string | undefined;
 
 	private headerIconSlottedItems?: Node[];
-	private shouldShowFooterSlot: boolean | undefined;
+	#shouldShowFooterSlot: boolean | undefined;
 
 	private get headerContentExists(): boolean {
 		return Boolean(this.heading || this.subtitle || this.headerIcon || this.headerIconSlottedItems?.length);
@@ -64,7 +66,7 @@ export class VWCCard extends LitElement {
 
 	protected override render(): unknown {
 		const footerClassMap = {
-			'no-content': !(this.shouldShowFooterSlot)
+			'no-content': !(this.#shouldShowFooterSlot)
 		};
 		return html`
 			<div class="vwc-card">
@@ -74,8 +76,8 @@ export class VWCCard extends LitElement {
 				<div class="vwc-card-content">
 					<slot name="content">
 						${this.renderHeader()}
-						<div class="vwc-card-supportText">
-							${this.supportingText ? this.supportingText : ''}
+						<div class="vwc-card-carText">
+							${this.carText ? this.carText : nothing}
 						</div>
 					</slot>
 				</div>
@@ -119,7 +121,7 @@ export class VWCCard extends LitElement {
 
 	private footerSlotChanged(): void {
 		const slot = this.shadowRoot?.querySelector('slot[name="footer"]') as HTMLSlotElement;
-		this.shouldShowFooterSlot = Boolean(slot.assignedNodes().length);
+		this.#shouldShowFooterSlot = Boolean(slot.assignedNodes().length);
 		this.requestUpdate();
 	}
 }

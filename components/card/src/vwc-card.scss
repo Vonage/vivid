@@ -54,12 +54,12 @@
 	}
 
 	&-subtitle,
-	&-supportText {
+	&-carText {
 		@include typography.typography-cat-shorthand('body-2');
 		color: var(#{scheme-variables.$vvd-color-neutral-70});
 	}
 
-	&-supportText {
+	&-carText {
 		padding-right: 0.5rem;
 	}
 
