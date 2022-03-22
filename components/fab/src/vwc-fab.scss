@@ -8,6 +8,11 @@
 
 :host {
 	.mdc-fab {
+
+		// prevent mdc's flash of green before tokens are applied
+		--mdc-theme-secondary: unset;
+		--mdc-theme-on-secondary: unset;
+
 		--mdc-fab-extended-label-padding: 20px;
 		--mdc-fab-extended-icon-padding: 0;
 		--mdc-fab-focus-outline-color: initial;
@@ -15,7 +20,7 @@
 
 		--mdc-theme-secondary: var(
 			#{connotation.$vvd-color-connotation},
-			var(#{scheme-variables.$vvd-color-canvas})
+			var(#{scheme-variables.$vvd-color-surface-4dp})
 		);
 		--mdc-theme-on-secondary: var(
 			#{connotation.$vvd-color-on-connotation},
@@ -27,7 +32,7 @@
 		box-shadow: 0 none;
 		filter: var(#{scheme-variables.$vvd-shadow-surface-4dp});
 
-		&--extended vwc-icon {
+		&--extended .mdc-fab__icon {
 			margin-inline-end: 12px;
 		}
 
