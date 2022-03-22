@@ -59,6 +59,16 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 	}
 }
 
+:host([connotation='primary']) {
+	.mdc-deprecated-list-item__secondary-text ::slotted(*) {
+		--mdc-theme-text-secondary-on-background: var(#{scheme-variables.$vvd-color-neutral-40});
+	}
+}
+
+:host([twoline][connotation='primary']:not([disabled]))::after {
+	#{variables.$vvd-list-divider--color}: var(#{scheme-variables.$vvd-color-neutral-80});
+}
+
 :host([activated]:not([disabled])) {
 	--mdc-theme-text-icon-on-background: var(
 		#{connotation.$vvd-color-on-connotation},

@@ -49,7 +49,8 @@ Connotation.args = {
 	connotation: 'primary',
 	activated: '',
 	shape: 'rounded',
-	graphic: 'icon'
+	graphic: 'icon',
+	twoline: ''
 };
 
 export const TwoLine = Template.bind({});
