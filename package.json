@@ -157,6 +157,7 @@
 	},
 	"_void_cache": true,
 	"resolutions": {
-		"**/glob-parent": "^6.0.2"
+		"**/glob-parent": "^6.0.2",
+		"**/minimist": "^1.2.6"
 	}
 }
