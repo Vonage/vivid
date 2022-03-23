@@ -14,7 +14,7 @@
 		--mdc-theme-on-secondary: unset;
 
 		--mdc-fab-extended-label-padding: 20px;
-		--mdc-fab-extended-icon-padding: 0px;
+		--mdc-fab-extended-icon-padding: 12px;
 		--mdc-fab-focus-outline-color: initial;
 		--mdc-fab-focus-outline-width: 0px;
 
@@ -27,25 +27,33 @@
 			var(#{scheme-variables.$vvd-color-on-canvas})
 		);
 		--mdc-ripple-color: currentcolor;
+		--mdc-fab-box-shadow: 0 none;
 		@include connotation.connotation;
 		@include typography.typography-cat-shorthand('body-2-bold');
 		box-shadow: 0 none;
 		filter: var(#{scheme-variables.$vvd-shadow-surface-4dp});
 
-		&--extended .mdc-fab__icon {
-			margin-inline-end: 12px;
+		&:not([disabled]) {
+			&.mdc-ripple-upgraded--background-focused,
+			&:not(.mdc-ripple-upgraded):focus {
+				box-shadow: 0 none;
+				filter: var(#{scheme-variables.$vvd-shadow-surface-8dp});
+			}
+
+			&:active,
+			&:focus:active {
+				box-shadow: 0 none;
+				filter: var(#{scheme-variables.$vvd-shadow-surface-12dp});
+			}
 		}
 
-		&.mdc-ripple-upgraded--background-focused,
-		&:not(.mdc-ripple-upgraded):focus {
-			box-shadow: 0 none;
-			filter: var(#{scheme-variables.$vvd-shadow-surface-8dp});
-		}
-
-		&:active,
-		&:focus:active {
-			box-shadow: 0 none;
-			filter: var(#{scheme-variables.$vvd-shadow-surface-12dp});
+		&[disabled] {
+			--mdc-theme-secondary: var(#{scheme-variables.$vvd-color-neutral-20});
+			--mdc-theme-on-secondary: var(#{scheme-variables.$vvd-color-neutral-50});
+			filter: var(#{scheme-variables.$vvd-shadow-surface-2dp});
+			.ripple {
+				display: none;
+			}
 		}
 	}
 

@@ -6,6 +6,8 @@ export async function createElementVariations(wrapper) {
 		<vwc-fab icon="store"></vwc-fab>
 		<vwc-fab icon="store" mini></vwc-fab>
 		<vwc-fab icon="wallet" label="Add to cart" extended></vwc-fab>
+		<vwc-fab icon="wallet" label="Add to cart" extended showIconAtEnd></vwc-fab>
+		<vwc-fab icon="wallet" label="Add to cart" extended disabled></vwc-fab>
 		<vwc-fab icon="store" connotation="primary"></vwc-fab>
 		<vwc-fab icon="store" connotation="cta"></vwc-fab>
 	`;
