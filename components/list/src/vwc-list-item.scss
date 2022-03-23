@@ -1,3 +1,5 @@
+@use 'sass:selector';
+
 @forward './vwc-list-text-parts.scss';
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
@@ -59,13 +61,13 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 	}
 }
 
-:host([connotation='primary']) {
+:host([activated][connotation='primary']) {
 	.mdc-deprecated-list-item__secondary-text ::slotted(*) {
 		--mdc-theme-text-secondary-on-background: var(#{scheme-variables.$vvd-color-neutral-40});
 	}
 }
 
-:host([twoline][connotation='primary']:not([disabled]))::after {
+:host([activated][twoline][connotation='primary']:not([disabled]))::after {
 	#{variables.$vvd-list-divider--color}: var(#{scheme-variables.$vvd-color-neutral-80});
 }
 
@@ -144,10 +146,12 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 	.mdc-deprecated-list-item__graphic,
 	.mdc-deprecated-list-item__meta {
 		::slotted(*) {
-			color: var(
-				#{connotation.$vvd-color-on-connotation},
-				var(#{scheme-variables.$vvd-color-neutral-70})
-			);
+
+			$selector: selector.append(":host([activated][connotation='primary'])", &);
+			color: var(#{scheme-variables.$vvd-color-neutral-70});
+			@at-root #{$selector} {
+				color: var(#{connotation.$vvd-color-on-connotation});
+			}
 		}
 	}
 }
