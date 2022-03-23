@@ -2,7 +2,7 @@ export const argTypes = {
 	connotation: {
 		control: {
 			type: 'select',
-			options: ['primary', 'cta'],
+			options: [undefined, 'primary', 'cta'],
 		}
 	},
 	mini: {
