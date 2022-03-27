@@ -4,9 +4,7 @@ export const argTypes = {
 	connotation: {
 		control: {
 			type: 'select',
-			options: Object.values(Connotation).filter(c => [
-				Connotation.Primary, Connotation.CTA
-			].includes(c)),
+			options: [undefined, Connotation.Primary],
 		}
 	},
 	shape: {

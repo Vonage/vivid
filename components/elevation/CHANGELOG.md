@@ -1,3 +1,12 @@
+# [2.27.0](https://github.com/vonage/vivid/compare/v2.26.0...v2.27.0) (2022-03-23)
+
+
+### Bug Fixes
+
+* **elevation:** remove un-needed width style ([#1257](https://github.com/vonage/vivid/issues/1257)) ([046c69f](https://github.com/vonage/vivid/commit/046c69f0ee72a14569e063baf0c75c4507ae3ec2))
+
+
+
 # [2.26.0](https://github.com/vonage/vivid/compare/v2.25.10...v2.26.0) (2022-03-13)
 
 

@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.27.0](https://github.com/Vonage/vivid/compare/v2.26.0...v2.27.0) (2022-03-23)
+
+
+### Bug Fixes
+
+* **elevation:** remove un-needed width style ([#1257](https://github.com/Vonage/vivid/issues/1257)) ([046c69f](https://github.com/Vonage/vivid/commit/046c69f0ee72a14569e063baf0c75c4507ae3ec2))
+* **list:** remove default connotation ([#1256](https://github.com/Vonage/vivid/issues/1256)) ([4ad1766](https://github.com/Vonage/vivid/commit/4ad17665082ed7efbe9c3fe1c183ee7e3128d9bb))
+
+
+### Features
+
+* **dialog:** custom top position ([#1226](https://github.com/Vonage/vivid/issues/1226)) ([ad95c7b](https://github.com/Vonage/vivid/commit/ad95c7bc932cf8b2cff83e92d19325861d584fc5))
+* **fab:** elevated undefined connotation ([#1261](https://github.com/Vonage/vivid/issues/1261)) ([7d155c1](https://github.com/Vonage/vivid/commit/7d155c1ea78971a05820893921bea3035f6825da))
+
+
+
+
+
 # [2.26.0](https://github.com/Vonage/vivid/compare/v2.25.10...v2.26.0) (2022-03-13)
 
 

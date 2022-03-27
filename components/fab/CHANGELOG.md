@@ -1,3 +1,12 @@
+# [2.27.0](https://github.com/vonage/vivid/compare/v2.26.0...v2.27.0) (2022-03-23)
+
+
+### Features
+
+* **fab:** elevated undefined connotation ([#1261](https://github.com/vonage/vivid/issues/1261)) ([7d155c1](https://github.com/vonage/vivid/commit/7d155c1ea78971a05820893921bea3035f6825da))
+
+
+
 # [2.26.0](https://github.com/vonage/vivid/compare/v2.25.10...v2.26.0) (2022-03-13)
 
 
