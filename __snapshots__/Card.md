@@ -24,7 +24,7 @@
         <slot name="meta">
         </slot>
       </header>
-      <div class="vwc-card-supportText">
+      <div class="vwc-card-text">
       </div>
     </slot>
   </div>
