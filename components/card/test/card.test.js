@@ -57,12 +57,12 @@ describe('Card', () => {
 		});
 	});
 
-	describe(`header-icon`, function () {
+	describe(`icon`, function () {
 		const iconName = 'home';
 
 		it(`should set the icon according to the attribute`, async function () {
 			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} header-icon="${iconName}">Content</${COMPONENT_NAME}>`)
+				textToDomToParent(`<${COMPONENT_NAME} icon="${iconName}">Content</${COMPONENT_NAME}>`)
 			);
 
 			await actualElement.updateComplete;
@@ -79,7 +79,7 @@ describe('Card', () => {
 				textToDomToParent(`<${COMPONENT_NAME}>Content</${COMPONENT_NAME}>`)
 			);
 
-			actualElement.headerIcon = iconName;
+			actualElement.icon = iconName;
 
 			await actualElement.updateComplete;
 
@@ -97,20 +97,20 @@ describe('Card', () => {
 				textToDomToParent(`<${COMPONENT_NAME}>Content</${COMPONENT_NAME}>`)
 			);
 
-			actualElement.headerIcon = iconName;
+			actualElement.icon = iconName;
 
 			await actualElement.updateComplete;
 
-			const attributeValue = actualElement.getAttribute('header-icon');
+			const attributeValue = actualElement.getAttribute('icon');
 
-			actualElement.setAttribute('header-icon', differentIconName);
+			actualElement.setAttribute('icon', differentIconName);
 
 			await actualElement.updateComplete;
 
 			expect(attributeValue)
 				.to
 				.equal(iconName);
-			expect(actualElement.headerIcon)
+			expect(actualElement.icon)
 				.to
 				.equal(differentIconName);
 		});
@@ -250,15 +250,15 @@ describe('Card', () => {
 
 		it(`should set the supporting according to the attribute`, async function () {
 			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} card-text="${supportingText}">Content</${COMPONENT_NAME}>`)
+				textToDomToParent(`<${COMPONENT_NAME} text="${supportingText}">Content</${COMPONENT_NAME}>`)
 			);
 
 			await actualElement.updateComplete;
 
-			const supportingElement = actualElement.shadowRoot.querySelector('.vwc-card-supportText');
+			const textElement = actualElement.shadowRoot.querySelector('.vwc-card-text');
 
 
-			expect(supportingElement.innerText)
+			expect(textElement.innerText)
 				.to
 				.equal(supportingText);
 		});
@@ -268,11 +268,11 @@ describe('Card', () => {
 				textToDomToParent(`<${COMPONENT_NAME}>Content</${COMPONENT_NAME}>`)
 			);
 
-			actualElement.supportingText = supportingText;
+			actualElement.text = supportingText;
 
 			await actualElement.updateComplete;
 
-			const supportingTextElement = actualElement.shadowRoot.querySelector('.vwc-card-supportText');
+			const supportingTextElement = actualElement.shadowRoot.querySelector('.vwc-card-text');
 
 			expect(supportingTextElement.innerText)
 				.to
@@ -286,18 +286,18 @@ describe('Card', () => {
 				textToDomToParent(`<${COMPONENT_NAME}>Content</${COMPONENT_NAME}>`)
 			);
 
-			actualElement.supportingText = supportingText;
+			actualElement.text = supportingText;
 
 			await actualElement.updateComplete;
 
-			const attributeValue = actualElement.getAttribute('card-text');
+			const attributeValue = actualElement.getAttribute('text');
 
-			actualElement.setAttribute('card-text', differentText);
+			actualElement.setAttribute('text', differentText);
 
 			expect(attributeValue)
 				.to
 				.equal(supportingText);
-			expect(actualElement.supportingText)
+			expect(actualElement.text)
 				.to
 				.equal(differentText);
 		});

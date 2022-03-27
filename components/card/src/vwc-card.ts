@@ -41,23 +41,23 @@ export class VWCCard extends LitElement {
 
 	@property({
 		reflect: true,
-		attribute: 'header-icon',
+		attribute: 'icon',
 		type: String
 	})
-		headerIcon: string | null = null;
+		icon: string | null = null;
 
 	@property({
 		reflect: true,
-		attribute: 'card-text',
+		attribute: 'text',
 		type: String
 	})
-		carText: string | undefined;
+		text: string | undefined;
 
-	private headerIconSlottedItems?: Node[];
+	private IconSlottedItems?: Node[];
 	#shouldShowFooterSlot: boolean | undefined;
 
 	private get headerContentExists(): boolean {
-		return Boolean(this.heading || this.subtitle || this.headerIcon || this.headerIconSlottedItems?.length);
+		return Boolean(this.heading || this.subtitle || this.icon || this.IconSlottedItems?.length);
 	}
 
 	private get headerClass(): string {
@@ -76,8 +76,8 @@ export class VWCCard extends LitElement {
 				<div class="vwc-card-content">
 					<slot name="content">
 						${this.renderHeader()}
-						<div class="vwc-card-carText">
-							${this.carText ? this.carText : nothing}
+						<div class="vwc-card-text">
+							${this.text ? this.text : nothing}
 						</div>
 					</slot>
 				</div>
@@ -93,7 +93,7 @@ export class VWCCard extends LitElement {
 			<header class="vwc-card-header ${this.headerClass}">
 				<div class="vwc-card-header-content">
 						<slot name="graphics" @slotchange="${this.graphicsSlotChanged}">
-							${this.headerIcon ? this.renderIcon() : ''}
+							${this.icon ? this.renderIcon() : ''}
 						</slot>
 						<div>
 							<div class="vwc-card-title">${this.heading}</div>
@@ -105,13 +105,13 @@ export class VWCCard extends LitElement {
 	}
 
 	private renderIcon() {
-		return html`<vwc-icon class="header-icon" inline type="${this.headerIcon}"></vwc-icon>`;
+		return html`<vwc-icon class="icon" inline type="${this.icon}"></vwc-icon>`;
 	}
 
 	private graphicsSlotChanged() {
 		const headerElement = this.shadowRoot?.querySelector('header');
 		const slot = headerElement?.querySelector('slot[name="graphics"]') as HTMLSlotElement;
-		this.headerIconSlottedItems = slot.assignedNodes();
+		this.IconSlottedItems = slot.assignedNodes();
 		if (this.headerContentExists) {
 			headerElement?.classList.remove('no-content');
 		} else {

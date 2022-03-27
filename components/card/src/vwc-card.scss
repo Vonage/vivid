@@ -24,7 +24,7 @@
 		justify-content: space-between;
 		gap: 0.5rem;
 
-		:host([card-text]) & {
+		:host([text]) & {
 			margin-bottom: 12px;
 		}
 
@@ -54,12 +54,12 @@
 	}
 
 	&-subtitle,
-	&-carText {
+	&-text {
 		@include typography.typography-cat-shorthand('body-2');
 		color: var(#{scheme-variables.$vvd-color-neutral-70});
 	}
 
-	&-carText {
+	&-text {
 		padding-right: 0.5rem;
 	}
 
@@ -74,13 +74,13 @@
 }
 
 ::slotted([slot="graphics"i]),
-.header-icon {
+.icon {
 	flex-shrink: 0;
 	align-self: baseline;
 	margin: 4px 10px 0 0;
 }
 
-.header-icon {
+.icon {
 	width: 20px;
 	height: 20px;
 }
