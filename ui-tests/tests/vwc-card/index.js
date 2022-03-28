@@ -31,15 +31,15 @@ export async function createElementVariations(wrapper) {
 		<vwc-card label="Icon" icon="chat-line" heading="Using the icon attribute" subtitle="I'm a very long subtitle should I be trimmed?" text="Lorem ipsum dolor sit amet, consectet adipiscing elit">
 		</vwc-card>
 		<vwc-card label="Slotted Icon" heading="Using a slotted icon">
-			<vwc-icon type="home" slot="graphics"></vwc-icon>
+			<vwc-icon type="home" slot="graphic"></vwc-icon>
 		</vwc-card>
 
 			<vwc-card label="Slotted Icon" heading="Using a slotted icon">
-			<div slot="graphics">RR</div>
+			<div slot="graphic">RR</div>
 		</vwc-card>
 
 		<vwc-card label="Slotted Icon" heading="Using a slotted image for icon">
-			<img slot="graphics"src="https://doodleipsum.com/40x40/hand-drawn?bg=7463D9&i=af462b28146d2ac91599602e083ddee5" alt="Sitting on Floor by Gustavo Pedrosa" />
+			<img slot="graphic"src="https://doodleipsum.com/40x40/hand-drawn?bg=7463D9&i=af462b28146d2ac91599602e083ddee5" alt="Sitting on Floor by Gustavo Pedrosa" />
 		</vwc-card>
 
 	<vwc-card label="Subtitle" subtitle="Subtitle">
@@ -93,7 +93,7 @@ export async function createElementVariations(wrapper) {
 			<vwc-icon-button icon="pin-2-solid" slot="meta"></vwc-icon-button>
 			<vwc-button slot="footer" shape="pill" layout="outlined" icon="info" type="submit" outlined="">Click</vwc-button>
 			<img slot="media" src="https://doodleipsum.com/300x150/flat?bg=EB765D&i=7d5ed3bc0c215d1359b2a63d03cf1540" alt="Sitting on Floor by Gustavo Pedrosa" />
-			<img slot="graphics" src="https://doodleipsum.com/40x40/hand-drawn?bg=7463D9&amp;i=af462b28146d2ac91599602e083ddee5" alt="Sitting on Floor by Gustavo Pedrosa">
+			<img slot="graphic" src="https://doodleipsum.com/40x40/hand-drawn?bg=7463D9&amp;i=af462b28146d2ac91599602e083ddee5" alt="Sitting on Floor by Gustavo Pedrosa">
 			<div slot="content">I'm the card content that overrides the content from attributes. I have no text styles or any styles for that metter :) You can do whatever you want here</div>
 		</vwc-card>
 

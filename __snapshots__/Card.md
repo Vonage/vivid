@@ -12,7 +12,7 @@
     <slot name="content">
       <header class="no-content vwc-card-header">
         <div class="vwc-card-header-content">
-          <slot name="graphics">
+          <slot name="graphic">
           </slot>
           <div>
             <div class="vwc-card-title">

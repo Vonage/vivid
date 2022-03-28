@@ -44,7 +44,7 @@ describe('Card', () => {
 
 		it(`should be displayed if slotted icon exists even without heading, icon and subtitle`, async function () {
 			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME}>Content<div slot="graphics"></div></${COMPONENT_NAME}>`)
+				textToDomToParent(`<${COMPONENT_NAME}>Content<div slot="graphic"></div></${COMPONENT_NAME}>`)
 			);
 
 			await actualElement.updateComplete;

@@ -92,7 +92,7 @@ export class VWCCard extends LitElement {
 		return html`
 			<header class="vwc-card-header ${this.headerClass}">
 				<div class="vwc-card-header-content">
-						<slot name="graphics" @slotchange="${this.graphicsSlotChanged}">
+						<slot name="graphic" @slotchange="${this.graphicSlotChanged}">
 							${this.icon ? this.renderIcon() : ''}
 						</slot>
 						<div>
@@ -108,9 +108,9 @@ export class VWCCard extends LitElement {
 		return html`<vwc-icon class="icon" inline type="${this.icon}"></vwc-icon>`;
 	}
 
-	private graphicsSlotChanged() {
+	private graphicSlotChanged() {
 		const headerElement = this.shadowRoot?.querySelector('header');
-		const slot = headerElement?.querySelector('slot[name="graphics"]') as HTMLSlotElement;
+		const slot = headerElement?.querySelector('slot[name="graphic"]') as HTMLSlotElement;
 		this.IconSlottedItems = slot.assignedNodes();
 		if (this.headerContentExists) {
 			headerElement?.classList.remove('no-content');
