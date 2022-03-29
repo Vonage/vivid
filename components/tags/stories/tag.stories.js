@@ -25,3 +25,6 @@ Outlined.args = { text: 'Outlined',	layout: 'outlined' };
 
 export const Selected = Template.bind({});
 Selected.args = { text: 'Selected', selectable: true, selected: true };
+
+export const Removable = Template.bind({});
+Removable.args = { text: 'Removable', Removable: true };

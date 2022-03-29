@@ -8,6 +8,7 @@ import type { ClassInfo } from 'lit-html/directives/class-map.js';
 import {
 	LitElement, html, property, TemplateResult, queryAsync, state, query, eventOptions
 } from 'lit-element';
+import { nothing } from 'lit-html';
 
 
 type TagConnotation = Extract<
@@ -43,6 +44,9 @@ export class VWCTagBase extends LitElement {
 
 	@property({ type: Boolean, reflect: true })
 		selectable = false;
+
+	@property({ type: Boolean, reflect: true })
+		removable = false;
 
 	@state() protected shouldRenderRipple = false;
 
@@ -120,11 +124,18 @@ export class VWCTagBase extends LitElement {
 		</span>`;
 	}
 
+	protected renderRemoveButton(): TemplateResult {
+		return html`<button class="remove-button" @click="${()=> this.remove()}">
+			${this.renderIcon('close-line')}
+		</button>`;
+	}
+
 	override render(): TemplateResult {
 		return this.selectable
 			? this.renderTagSelectable()
 			: html`<span class="vwc-tag ${classMap(this.getRenderClasses())}">
 			${this.text}
+			${this.removable ? this.renderRemoveButton() : nothing}
 		</span>`;
 	}
 
