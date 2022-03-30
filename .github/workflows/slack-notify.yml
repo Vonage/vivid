@@ -15,4 +15,5 @@ jobs:
         SLACK_MESSAGE: ':rocket: new release'
         SLACK_TITLE: Checkout [changelog](https://github.com/Vonage/vivid/blob/master/CHANGELOG.md)
         SLACK_USERNAME: Vivid
+        MSG_MINIMAL: true
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
