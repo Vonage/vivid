@@ -54,6 +54,7 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 
 :host([activated]) {
 	--mdc-ripple-focus-opacity: 0;
+	--mdc-ripple-hover-opacity: 0;
 	z-index: 0;
 	mwc-ripple,
 	.fake-activated-ripple {
