@@ -1,24 +1,63 @@
+@use 'sass:selector';
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables';
 @use '@vonage/vvd-typography/scss/typography' as typography;
-@use 'sass:selector';
+@use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
+	$connotations-set: primary cta
+);
+@use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
 
-.mdc-fab {
-	@include typography.typography-mdc-coupling('button', 'body-2-bold');
-	font-stretch: var(--mdc-typography-button-font-stretch); // ! this was supposed to be set by MDC
-	letter-spacing: initial;
-	text-transform: initial;
+:host {
+	.mdc-fab {
 
-	&--extended vwc-icon {
-		margin-inline-end: 12px;
+		// prevent mdc's flash of green before tokens are applied
+		--mdc-theme-secondary: unset;
+		--mdc-theme-on-secondary: unset;
+
+		--mdc-fab-extended-label-padding: 20px;
+		--mdc-fab-extended-icon-padding: 12px;
+		--mdc-fab-focus-outline-color: initial;
+		--mdc-fab-focus-outline-width: 0px;
+
+		--mdc-theme-secondary: var(
+			#{connotation.$vvd-color-connotation},
+			var(#{scheme-variables.$vvd-color-surface-4dp})
+		);
+		--mdc-theme-on-secondary: var(
+			#{connotation.$vvd-color-on-connotation},
+			var(#{scheme-variables.$vvd-color-on-canvas})
+		);
+		--mdc-ripple-color: currentcolor;
+		--mdc-fab-box-shadow: 0 none;
+		@include connotation.connotation;
+		@include typography.typography-cat-shorthand('body-2-bold');
+		box-shadow: 0 none;
+		filter: var(#{scheme-variables.$vvd-shadow-surface-4dp});
+
+		&:not([disabled]) {
+			&.mdc-ripple-upgraded--background-focused,
+			&:not(.mdc-ripple-upgraded):focus {
+				box-shadow: 0 none;
+				filter: var(#{scheme-variables.$vvd-shadow-surface-8dp});
+			}
+
+			&:active,
+			&:focus:active {
+				box-shadow: 0 none;
+				filter: var(#{scheme-variables.$vvd-shadow-surface-12dp});
+			}
+		}
+
+		&[disabled] {
+			--mdc-theme-secondary: var(#{scheme-variables.$vvd-color-neutral-20});
+			--mdc-theme-on-secondary: var(#{scheme-variables.$vvd-color-neutral-50});
+			filter: var(#{scheme-variables.$vvd-shadow-surface-2dp});
+			.ripple {
+				display: none;
+			}
+		}
 	}
-}
 
-:host([connotation='primary']) .mdc-fab {
-	--mdc-theme-secondary: var(#{scheme-variables.$vvd-color-primary});
-	--mdc-theme-on-secondary: var(#{scheme-variables.$vvd-color-on-primary});
-}
-
-:host([connotation='cta']) .mdc-fab {
-	--mdc-theme-secondary: var(#{scheme-variables.$vvd-color-cta});
-	--mdc-theme-on-secondary: var(#{scheme-variables.$vvd-color-on-cta});
+	.mdc-fab__icon {
+		--connotation: initial;
+	}
 }
