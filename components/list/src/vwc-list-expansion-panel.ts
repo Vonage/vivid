@@ -1,4 +1,3 @@
-import type { VWCIcon } from '@vonage/vwc-icon';
 import {
 	customElement,
 	html,
@@ -17,14 +16,15 @@ declare global {
 	}
 }
 
+
 /**
  * This component support expand-collapse list
  */
 @customElement('vwc-list-expansion-panel')
 export class VWCListExpansionPanel extends VWCExpansionPanelBase {
 	static override styles = style;
-
-	headerListItemIcon?: typeof VWCIcon;
+	// using "any" prior to deprecation
+	headerListItemIcon?: any;
 
 	// @property({ type: Boolean }) quick = false; // TODO add animation
 
@@ -43,7 +43,7 @@ export class VWCListExpansionPanel extends VWCExpansionPanelBase {
 
 	override openChanged(isOpen: boolean): void {
 		super.openChanged(isOpen);
-		(this.headerListItemIcon as unknown as Element).setAttribute(
+		(this.headerListItemIcon as Element).setAttribute(
 			'type',
 			isOpen ? 'up' : 'down'
 		);
@@ -72,14 +72,13 @@ function mountIcon(headerListItem: ListItemBase) {
 	icon.setAttribute('slot', 'meta');
 	headerListItem.appendChild(icon);
 	headerListItem.setAttribute('hasMeta', ''); // side effect setting attribute to match icon usage
-	return icon as unknown as typeof VWCIcon;
+	return icon as any;
 }
 
 function getHeaderListItemIcon(headerListItem: ListItemBase) {
-	let icon = headerListItem.querySelector('vwc-icon[slot="meta"]') as unknown as typeof VWCIcon;
+	let icon = headerListItem.querySelector('vwc-icon[slot="meta"]');
 	if (!icon) {
 		icon = mountIcon(headerListItem);
 	}
-	return icon;
+	return icon as any;
 }
-
