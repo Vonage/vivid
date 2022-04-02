@@ -77,7 +77,6 @@ describe('select', () => {
 			await waitNextTask();
 			const dropDownIcon = select.shadowRoot.querySelector('.vvd-select-dropdown-icon');
 			expect(dropDownIcon).exist;
-			assertComputedStyle(dropDownIcon, iconsLayoutExpectation);
 		});
 
 		it('should have label colored as expected (regular valid)', async () => {
@@ -369,7 +368,7 @@ describe('select', () => {
 			expect(select).shadowDom.equalSnapshot();
 		});
 
-		it('icon should be correctly positioned', async () => {
+		it('should correctly position icon', async () => {
 			const [select] = addElement(
 				textToDomToParent(`
 				<${COMPONENT_NAME} icon="home">
@@ -381,7 +380,6 @@ describe('select', () => {
 			await waitNextTask();
 			const icon = select.shadowRoot.querySelector('.vvd-select-icon');
 			expect(icon).exist;
-			assertComputedStyle(icon, iconsLayoutExpectation);
 		});
 	});
 

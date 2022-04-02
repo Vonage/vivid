@@ -20,11 +20,5 @@ describe('Breadcrumb', () => {
 	});
 
 	it('should internal contents', async () => {
-		const addedElements = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}>Button Text</${COMPONENT_NAME}>`)
-		);
-		const actualElement = addedElements[0];
-		await waitNextTask();
-		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 });
