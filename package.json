@@ -26,7 +26,7 @@
 		"test:dev": "yarn compile && concurrently -r \"yarn watch\" \"karma start karma.conf.spec.js\"",
 		"test:dev-no-build": "karma start karma.conf.spec.js",
 		"test:dev:ci": "yarn compile && concurrently -r \"yarn watch\" \"RUN=CI karma start karma.conf.spec.js\"",
-		"test:update-snapshots": "karma start --update-snapshots",
+		"test:update-snapshots": "karma start --update-snapshots --browsers=ChromeHeadless",
 		"test:prune-snapshots": "karma start --prune-snapshots",
 		"test:bs": "karma start --coverage",
 		"git:sync": "git submodule sync && git submodule update --init --recursive --remote",
