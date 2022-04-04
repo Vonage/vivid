@@ -248,7 +248,7 @@ describe('Card', () => {
 	describe(`supportingText`, function () {
 		const supportingText = 'This is the supporting text';
 
-		it(`should set the supporting according to the attribute`, async function () {
+		it(`should set the text according to the attribute`, async function () {
 			const [actualElement] = addElement(
 				textToDomToParent(`<${COMPONENT_NAME} text="${supportingText}">Content</${COMPONENT_NAME}>`)
 			);
