@@ -97,6 +97,12 @@
 
 vwc-elevation {
 	height: inherit;
+	&::part(base) {
+		height: inherit;
+		slot {
+			height: inherit;
+		}
+	}
 }
 
 
