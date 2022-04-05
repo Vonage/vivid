@@ -77,6 +77,16 @@ TopAction.args = {
 };
 
 
+
+export const Elevation = Template.bind({});
+Elevation.args = {
+	label: 'Top Action Example',
+	heading: 'A card with a higher elevation',
+	text: 'To emphasize its content',
+	dp: '16'
+};
+
+
 const IconTemplate = args => html`
 	<style>
 		#root-inner {
