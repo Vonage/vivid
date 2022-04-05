@@ -74,10 +74,6 @@ export class VWCCard extends LitElement {
 		return (this.headerContentExists) ? '' : 'no-content';
 	}
 
-	// private get elevationDp(): string {
-	// 	return (this.dp) ? '' : '4';
-	// }
-
 	protected override render(): unknown {
 		const footerClassMap = {
 			'no-content': !(this.#shouldShowFooterSlot)
