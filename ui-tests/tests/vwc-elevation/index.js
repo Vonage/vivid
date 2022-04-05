@@ -5,10 +5,6 @@ export async function createElementVariations(wrapper) {
 	elementWrapper.innerHTML =
 		`
 			<style>
-				#VwcElevation {
-					display: inline-block;
-				}
-
 				vwc-elevation {
 					margin: 25px;
 					display: block;
@@ -18,6 +14,7 @@ export async function createElementVariations(wrapper) {
 					height: 30px;
 					padding: 20px;
 					text-align: center;
+					border-radius: 6px;
 				}
 			</style>
 			<vwc-elevation dp="0">

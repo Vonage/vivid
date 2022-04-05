@@ -19,12 +19,18 @@ $elevation-border-radius: --elevation-border-radius;
 
 @each $dp in $dps {
 	#{get-default-selector($dps, $dp)} {
-		background-color: var(--vvd-color-surface-#{$dp}dp);
-		filter: var(--vvd-shadow-surface-#{$dp}dp);
+		::slotted(*) {
+			background-color: var(--vvd-color-surface-#{$dp}dp);
+			filter: var(--vvd-shadow-surface-#{$dp}dp);
+		}
 	}
 }
 
 .vwc-elevation {
-	--elevation-border-radius: 6px;
-	border-radius: var(#{--elevation-border-radius});
+	height: inherit;
+	slot {
+		height: inherit;
+	}
 }
+
+
