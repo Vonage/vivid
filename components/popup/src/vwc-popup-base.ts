@@ -211,7 +211,8 @@ export class VWCPopupBase extends LitElement {
     }
 
     private renderArrow(): TemplateResult | unknown {
-    	return this.arrow ? html`<div class="popup-arrow"></div>` : nothing;
+    	const part = this.alternate ? 'vvd-scheme-alternate' : '';
+    	return this.arrow ? html`<div class="popup-arrow" part="${part}"></div>` : nothing;
     }
 
     protected getRenderClasses(): ClassInfo {
@@ -228,8 +229,8 @@ export class VWCPopupBase extends LitElement {
     	return html`
             <div class="popup-wrapper">
                 <vwc-elevation dp="2">
-                    <div class="popup ${classMap(this.getRenderClasses())}" aria-hidden=${aria} part=${part}>
-                        <div class="popup-content">
+                    <div class="popup ${classMap(this.getRenderClasses())}" aria-hidden=${aria}>
+                        <div class="popup-content" part=${part}>
                             <slot></slot>
                             ${this.renderDismissButton()}
                         </div>
