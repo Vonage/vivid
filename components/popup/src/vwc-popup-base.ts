@@ -211,8 +211,7 @@ export class VWCPopupBase extends LitElement {
     }
 
     private renderArrow(): TemplateResult | unknown {
-    	const part = this.alternate ? 'vvd-scheme-alternate' : '';
-    	return this.arrow ? html`<div class="popup-arrow" part="${part}"></div>` : nothing;
+    	return this.arrow ? html`<div class="popup-arrow"></div>` : nothing;
     }
 
     protected getRenderClasses(): ClassInfo {
@@ -223,21 +222,23 @@ export class VWCPopupBase extends LitElement {
     }
 
     protected override render(): TemplateResult {
-    	const part = this.alternate ? 'vvd-scheme-alternate' : '';
+    	const alternate = this.alternate ? 'vvd-scheme-alternate' : '';
     	const aria = this.open ? 'false' : 'true';
 
     	return html`
-            <div class="popup-wrapper">
                 <vwc-elevation dp="2">
-                    <div class="popup ${classMap(this.getRenderClasses())}" aria-hidden=${aria}>
-                        <div class="popup-content" part=${part}>
+									<!--the popup-wrapper is needed for alternating the inside of the popup nd not its shadow-->
+									<div class="popup-wrapper">
+                    <div class="popup ${classMap(this.getRenderClasses())}" aria-hidden=${aria} part=${alternate}>
+                        <div class="popup-content" >
                             <slot></slot>
                             ${this.renderDismissButton()}
                         </div>
                         ${this.renderArrow()}
                     </div>
+									</div>
                 </vwc-elevation>
-            </div>
+
 		`;
     }
 }

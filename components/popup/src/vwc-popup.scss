@@ -7,12 +7,10 @@
 	z-index: 7;
 }
 
-$popup-border-radius: --_border-radius-size;
-
 .popup {
-	--_border-radius-size: 6px;
 	width: min-content;
-	border-radius: var(#{$popup-border-radius});
+	background-color: var(#{scheme-variables.$vvd-color-surface-4dp});
+	border-radius: inherit;
 	contain: layout;
 	&:not(.popup-open) {
 		display: none;
@@ -20,12 +18,11 @@ $popup-border-radius: --_border-radius-size;
 
 	&-wrapper {
 		position: absolute;
+		border-radius: 6px;
 	}
 
 	&-content {
 		display: grid;
-		background-color: var(#{scheme-variables.$vvd-color-surface-4dp});
-		border-radius: inherit;
 		.popup-dismissible & {
 			align-content: start;
 			grid-template-columns: 1fr auto;
