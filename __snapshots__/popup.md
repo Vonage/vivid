@@ -8,9 +8,11 @@
     <div
       aria-hidden="true"
       class="popup"
-      part=""
     >
-      <div class="popup-content">
+      <div
+        class="popup-content"
+        part=""
+      >
         <slot>
         </slot>
       </div>
