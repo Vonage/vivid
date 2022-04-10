@@ -5,9 +5,8 @@
 .vwc-card {
 	display: flex;
 	overflow: hidden;
-	height: inherit;
 	flex-flow: column;
-	block-size: inherit;
+	block-size: 100%;
 	border-radius: 6px;
 	color: var(#{scheme-variables.$vvd-color-on-canvas});
 
@@ -96,12 +95,9 @@
 }
 
 vwc-elevation {
-	height: inherit;
+	block-size: inherit;
 	&::part(base) {
-		height: inherit;
-		slot {
-			height: inherit;
-		}
+		block-size: inherit;
 	}
 }
 
