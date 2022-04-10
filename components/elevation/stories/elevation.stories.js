@@ -26,6 +26,7 @@ const styles = () => html`
 			padding: 20px;
 			text-align: center;
 			width: 500px;
+			border-radius: 6px;
 		}
 	</style>
 `;

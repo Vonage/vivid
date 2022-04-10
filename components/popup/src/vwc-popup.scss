@@ -8,10 +8,9 @@
 }
 
 .popup {
-	--border-radius-size: 6px;
 	width: min-content;
 	background-color: var(#{scheme-variables.$vvd-color-surface-4dp});
-	border-radius: var(--border-radius-size);
+	border-radius: inherit;
 	contain: layout;
 	&:not(.popup-open) {
 		display: none;
@@ -19,6 +18,7 @@
 
 	&-wrapper {
 		position: absolute;
+		border-radius: 6px;
 	}
 
 	&-content {
