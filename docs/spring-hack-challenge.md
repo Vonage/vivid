@@ -13,7 +13,7 @@ Projects will be scored by the following criterions
 - **Quality & semantics**
   - use components that clearly fit a purpose or role (e.g. [_Menu_](https://vivid.vonage.com/?path=/story/components-menu-introduction--introduction) to offer a list of actionable choices to the user), thus result in high quality UX
   - Build with accessibility in mind (use tools like [accessibility insights](https://accessibilityinsights.io/docs/en/web/overview/) or [WAVE](https://wave.webaim.org/extension/))
-- **Quantity** - amount of components used
+- **Variety** - use as many vivid components as you can stomache
 - **Interface only** - avoid the use of CSS and other practices to reshape UI elements. sticking to the public API is a best practice
 - **Use _alpha_ components** - help shaping the future of new components by _"field testing"_ & feedback
 
