@@ -2,13 +2,13 @@
 
 ###### 25/04/2022
 
-Charge your spring-hack project’s with **Vivid**’s unified UI, pre-configured a11y standards & industry best practices. oh and, **get REWARDED for it!** :trophy: 
+Charge your spring-hack project with **Vivid**’s unified UI, pre-configured a11y standards & industry best practices. oh and, **get REWARDED for it!** :trophy: 
 
 _"Be the best version of your-app"_
 
 ## How you’ll be judged? 
 
-Projects will be scored by the following criterions
+Projects will be scored by the following criteria:
 
 - **Quality & semantics**
   - use components that clearly fit a purpose or role (e.g. [_Menu_](https://vivid.vonage.com/?path=/story/components-menu-introduction--introduction) to offer a list of actionable choices to the user), thus result in high quality UX
