@@ -42,7 +42,7 @@ Here are a few tips to get you up and running:
 - [vwc-elevation](https://vonage.slack.com/archives/C013F0YKH99/p1649060648690219)
 - [vwc-tooltip](https://vonage.slack.com/archives/C013F0YKH99/p1649671238530569)
 
-Follow the [#ask-vivid channel](https://vonage.slack.com/archives/C013F0YKH99) for more weekly tips
+Follow the [#ask-vivid](https://vonage.slack.com/archives/C013F0YKH99) Slack channel for more weekly tips
 
 ### Walkthrough
 
