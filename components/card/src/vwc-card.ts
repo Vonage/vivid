@@ -1,11 +1,13 @@
 import {
 	customElement, html, LitElement,
 } from 'lit-element';
+import { nothing } from 'lit-html';
 import { style } from './vwc-card.css.js';
 import { property } from 'lit-element/lib/decorators.js';
 import { classMap } from 'lit-html/directives/class-map.js';
 import '@vonage/vwc-button';
 import '@vonage/vwc-icon';
+
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -39,23 +41,23 @@ export class VWCCard extends LitElement {
 
 	@property({
 		reflect: true,
-		attribute: 'header-icon',
+		attribute: 'icon',
 		type: String
 	})
-		headerIcon: string | null = null;
+		icon: string | null = null;
 
 	@property({
 		reflect: true,
-		attribute: 'supporting-text',
+		attribute: 'text',
 		type: String
 	})
-		supportingText: string | undefined;
+		text: string | undefined;
 
-	private headerIconSlottedItems?: Node[];
-	private shouldShowActionsSlot: boolean | undefined;
+	private IconSlottedItems?: Node[];
+	#shouldShowFooterSlot: boolean | undefined;
 
 	private get headerContentExists(): boolean {
-		return Boolean(this.heading || this.subtitle || this.headerIcon || this.headerIconSlottedItems?.length);
+		return Boolean(this.heading || this.subtitle || this.icon || this.IconSlottedItems?.length);
 	}
 
 	private get headerClass(): string {
@@ -63,22 +65,24 @@ export class VWCCard extends LitElement {
 	}
 
 	protected override render(): unknown {
-		const actionsClassMap = {
-			'no-content': !(this.shouldShowActionsSlot)
+		const footerClassMap = {
+			'no-content': !(this.#shouldShowFooterSlot)
 		};
 		return html`
 			<div class="vwc-card">
 				<div class="vwc-card-media">
 					<slot name="media"></slot>
 				</div>
-				<div class="vwc-card-info">
-					${this.renderHeader()}
-					<div class="vwc-card-supportText">
-							${this.supportingText ? this.supportingText : ''}
-					</div>
-					<div class="vwc-card-actions ${classMap(actionsClassMap)}">
-							<slot name="actions" @slotchange="${this.actionsSlotChanged}"></slot>
-					</div>
+				<div class="vwc-card-content">
+					<slot name="content">
+						${this.renderHeader()}
+						<div class="vwc-card-text">
+							${this.text ? this.text : nothing}
+						</div>
+					</slot>
+				</div>
+				<div class="vwc-card-footer ${classMap(footerClassMap)}">
+					<slot name="footer" @slotchange="${this.footerSlotChanged}"></slot>
 				</div>
 			</div>
 		`;
@@ -86,25 +90,28 @@ export class VWCCard extends LitElement {
 
 	private renderHeader() {
 		return html`
-			<header class="${this.headerClass}">
-				<div class="vwc-card-header">
-					<slot name="graphics" @slotchange="${this.graphicsSlotChanged}">
-						${this.headerIcon ? this.renderIcon() : ''}
-					</slot>
-					<div class="vwc-card-title">${this.heading}</div>
+			<header class="vwc-card-header ${this.headerClass}">
+				<div class="vwc-card-header-content">
+						<slot name="graphic" @slotchange="${this.graphicSlotChanged}">
+							${this.icon ? this.renderIcon() : ''}
+						</slot>
+						<div>
+							<div class="vwc-card-title">${this.heading}</div>
+							<div class="vwc-card-subtitle">${this.subtitle}</div>
+						</div>
 				</div>
-				<div class="vwc-card-subtitle">${this.subtitle}</div>
+				<slot name="meta"></slot>
 			</header>`;
 	}
 
 	private renderIcon() {
-		return html`<vwc-icon class="header-icon" inline type="${this.headerIcon}"></vwc-icon>`;
+		return html`<vwc-icon class="icon" inline type="${this.icon}"></vwc-icon>`;
 	}
 
-	private graphicsSlotChanged() {
+	private graphicSlotChanged() {
 		const headerElement = this.shadowRoot?.querySelector('header');
-		const slot = headerElement?.querySelector('slot[name="graphics"]') as HTMLSlotElement;
-		this.headerIconSlottedItems = slot.assignedNodes();
+		const slot = headerElement?.querySelector('slot[name="graphic"]') as HTMLSlotElement;
+		this.IconSlottedItems = slot.assignedNodes();
 		if (this.headerContentExists) {
 			headerElement?.classList.remove('no-content');
 		} else {
@@ -112,9 +119,9 @@ export class VWCCard extends LitElement {
 		}
 	}
 
-	private actionsSlotChanged(): void {
-		const slot = this.shadowRoot?.querySelector('slot[name="actions"]') as HTMLSlotElement;
-		this.shouldShowActionsSlot = Boolean(slot.assignedNodes().length);
+	private footerSlotChanged(): void {
+		const slot = this.shadowRoot?.querySelector('slot[name="footer"]') as HTMLSlotElement;
+		this.#shouldShowFooterSlot = Boolean(slot.assignedNodes().length);
 		this.requestUpdate();
 	}
 }
