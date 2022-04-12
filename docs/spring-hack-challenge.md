@@ -70,7 +70,9 @@ External validation is very important to us, hence, we try to make developer exp
 - [#ask-vivid](https://vonage.slack.com/archives/C013F0YKH99) Slack channel
 - Slack channel - Spring-hack
 
+<hr>
 
+Good luck! 🍀
 
 
 
