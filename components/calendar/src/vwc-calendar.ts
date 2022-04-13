@@ -205,8 +205,8 @@ export class VWCCalendar extends LitElement {
 				${this.getDaysArr([getFirstDateOfTheWeek(this.datetime)])
 		.map(date => html`
 						<div role="columnheader" tabindex="-1">
-							<h2>
-								<time datetime=${getValidDateString(date)} aria-readonly="true">
+							<time datetime=${getValidDateString(date)} aria-readonly="true">
+								<h2>
 									<!-- TODO add to column aria-labelledby or describedby to count events and related day e.g. "3 events, Sunday, March 8" -->
 									<em tabindex="0" role="button" aria-label=${new Intl.DateTimeFormat(this.locales, {
 		weekday: 'long',
@@ -218,8 +218,8 @@ export class VWCCalendar extends LitElement {
 									<small aria-hidden="true">
 										${new Intl.DateTimeFormat(this.locales, { weekday: 'short' }).format(date)}
 									</small>
-								</time>
-							</h2>
+								</h2>
+							</time>
 						</div>`)}
 			</div>`;
 	}
