@@ -32,13 +32,17 @@ Colors have assigned meanings and are used consistently throughout Vivid compone
 
 ![connotation](https://user-images.githubusercontent.com/67224525/162247250-1860087e-b154-4fb1-bcb6-b7c7ce3f7841.png)
 
-### Racheli’s tips of the week
+### Vivid’s tips of the week
 
-Here are a few tips to get you up and running
+Here are a few tips to get you up and running:
 
-(TODO add rachel's links to slack pinned posts)
+- [vwc-text](https://vonage.slack.com/archives/C013F0YKH99/p1647250051448129)
+- [vwc-accordion](https://vonage.slack.com/archives/C013F0YKH99/p1647849457477329)
+- [vwc-layout](https://vonage.slack.com/archives/C013F0YKH99/p1648458616961079)
+- [vwc-elevation](https://vonage.slack.com/archives/C013F0YKH99/p1649060648690219)
+- [vwc-tooltip](https://vonage.slack.com/archives/C013F0YKH99/p1649671238530569)
 
-Follow the channel for more weekly tips
+Follow the [#ask-vivid](https://vonage.slack.com/archives/C013F0YKH99) Slack channel for more weekly tips
 
 ### Walkthrough
 
@@ -66,7 +70,9 @@ External validation is very important to us, hence, we try to make developer exp
 - [#ask-vivid](https://vonage.slack.com/archives/C013F0YKH99) Slack channel
 - Slack channel - Spring-hack
 
+<hr>
 
+Good luck! 🍀
 
 
 
