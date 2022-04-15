@@ -24,6 +24,7 @@ module.exports = {
 		'declaration-block-no-duplicate-properties': true,
 		'function-parentheses-space-inside': null,
 		'rule-empty-line-before': null,
-		'a11y/media-prefers-reduced-motion': null
+		'a11y/media-prefers-reduced-motion': null,
+		'length-zero-no-unit': null
 	},
 };

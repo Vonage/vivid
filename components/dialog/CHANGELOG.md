@@ -1,3 +1,20 @@
+# [2.28.0](https://github.com/vonage/vivid/compare/v2.27.1...v2.28.0) (2022-04-13)
+
+
+
+## [2.27.1](https://github.com/vonage/vivid/compare/v2.27.0...v2.27.1) (2022-04-03)
+
+
+
+# [2.27.0](https://github.com/vonage/vivid/compare/v2.26.0...v2.27.0) (2022-03-23)
+
+
+### Features
+
+* **dialog:** custom top position ([#1226](https://github.com/vonage/vivid/issues/1226)) ([ad95c7b](https://github.com/vonage/vivid/commit/ad95c7bc932cf8b2cff83e92d19325861d584fc5))
+
+
+
 # [2.26.0](https://github.com/vonage/vivid/compare/v2.25.10...v2.26.0) (2022-03-13)
 
 

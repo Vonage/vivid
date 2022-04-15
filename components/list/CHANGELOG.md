@@ -1,3 +1,20 @@
+# [2.28.0](https://github.com/vonage/vivid/compare/v2.27.1...v2.28.0) (2022-04-13)
+
+
+
+## [2.27.1](https://github.com/vonage/vivid/compare/v2.27.0...v2.27.1) (2022-04-03)
+
+
+
+# [2.27.0](https://github.com/vonage/vivid/compare/v2.26.0...v2.27.0) (2022-03-23)
+
+
+### Bug Fixes
+
+* **list:** remove default connotation ([#1256](https://github.com/vonage/vivid/issues/1256)) ([4ad1766](https://github.com/vonage/vivid/commit/4ad17665082ed7efbe9c3fe1c183ee7e3128d9bb))
+
+
+
 # [2.26.0](https://github.com/vonage/vivid/compare/v2.25.10...v2.26.0) (2022-03-13)
 
 

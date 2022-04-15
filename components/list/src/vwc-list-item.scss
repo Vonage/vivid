@@ -1,10 +1,11 @@
+@use 'sass:selector';
+
 @forward './vwc-list-text-parts.scss';
 @use '@vonage/vvd-typography/scss/typography' as typography;
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 @use '@vonage/vvd-style-coupling/scss/vvd-formfield' as vvd-formfield;
 @use '@vonage/vvd-foundation/scss/mixins/connotation/config' with (
-	$connotations-set: primary cta,
-	$default: primary,
+	$connotations-set: primary,
 	$scope: list-item,
 	$is-host: true
 );
@@ -52,31 +53,58 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 }
 
 :host([activated]) {
-	--mdc-theme-text-icon-on-background: var(
-		#{connotation.$vvd-color-on-connotation}
-	);
-	--mdc-theme-text-hint-on-background: var(
-		#{connotation.$vvd-color-on-connotation}
-	);
-	--mdc-ripple-color: var(#{connotation.$vvd-color-on-connotation});
-
-	@include typography.typography-cat-shorthand('body-2-bold');
+	--mdc-ripple-focus-opacity: 0;
+	--mdc-ripple-hover-opacity: 0;
 	z-index: 0;
-	color: var(#{connotation.$vvd-color-on-connotation});
-
 	mwc-ripple,
 	.fake-activated-ripple {
+		--mdc-ripple-activated-opacity: 0;
 		z-index: -1;
 	}
+}
+
+:host([activated][connotation='primary']) {
+	.mdc-deprecated-list-item__secondary-text ::slotted(*) {
+		--mdc-theme-text-secondary-on-background: var(#{scheme-variables.$vvd-color-neutral-40});
+	}
+}
+
+:host([activated][twoline][connotation='primary']:not([disabled]))::after {
+	#{variables.$vvd-list-divider--color}: var(#{scheme-variables.$vvd-color-neutral-80});
+}
+
+:host([activated]:not([disabled])) {
+	--mdc-theme-text-icon-on-background: var(
+		#{connotation.$vvd-color-on-connotation},
+		var(#{scheme-variables.$vvd-color-on-canvas})
+	);
+	--mdc-theme-text-hint-on-background: var(
+		#{connotation.$vvd-color-on-connotation},
+		var(#{scheme-variables.$vvd-color-on-canvas})
+	);
+	--mdc-ripple-color: var(
+		#{connotation.$vvd-color-on-connotation},
+		var(#{scheme-variables.$vvd-color-on-canvas})
+	);
+
+	color: var(
+		#{connotation.$vvd-color-on-connotation},
+		var(#{scheme-variables.$vvd-color-on-canvas})
+	);
 
 	.fake-activated-ripple {
 		--mdc-ripple-activated-opacity: 1;
-		--mdc-ripple-color: var(#{connotation.$vvd-color-connotation});
+		--mdc-ripple-color: var(
+			#{connotation.$vvd-color-connotation},
+			var(#{scheme-variables.$vvd-color-neutral-30})
+		);
 	}
 
 	mwc-ripple {
-		--mdc-ripple-activated-opacity: 0;
-		background-color: var(#{connotation.$vvd-color-connotation});
+		background-color: var(
+			#{connotation.$vvd-color-connotation},
+			var(#{scheme-variables.$vvd-color-neutral-30})
+		);
 	}
 }
 
@@ -113,4 +141,19 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 
 .mdc-deprecated-list-item__meta {
 	display: flex;
+}
+
+
+:host(:not([disabled])) {
+	.mdc-deprecated-list-item__graphic,
+	.mdc-deprecated-list-item__meta {
+		::slotted(*) {
+
+			$selector: selector.append(":host([activated][connotation='primary'])", &);
+			color: var(#{scheme-variables.$vvd-color-neutral-70});
+			@at-root #{$selector} {
+				color: var(#{connotation.$vvd-color-on-connotation});
+			}
+		}
+	}
 }

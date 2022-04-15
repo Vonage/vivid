@@ -46,10 +46,11 @@ Shape.args = { shape: 'rounded' };
 
 export const Connotation = Template.bind({});
 Connotation.args = {
-	connotation: 'cta',
+	connotation: 'primary',
 	activated: '',
 	shape: 'rounded',
-	graphic: 'icon'
+	graphic: 'icon',
+	twoline: ''
 };
 
 export const TwoLine = Template.bind({});
@@ -76,7 +77,7 @@ const ActivatedTemplate = args => html`
 			Item A
 			<vwc-icon slot="graphic" type="chat" size="small"></vwc-icon>
 		</vwc-list-item>
-		<vwc-list-item ...=${spread(args)}>
+		<vwc-list-item ...=${spread(args)} graphic="icon">
 			Item B
 			<vwc-icon slot="graphic" type="chat" size="small"></vwc-icon>
 		</vwc-list-item>
