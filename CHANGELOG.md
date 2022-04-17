@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.28.0](https://github.com/Vonage/vivid/compare/v2.27.1...v2.28.0) (2022-04-13)
+
+
+### Bug Fixes
+
+* **calendar:** calendar focus interactions damaged ([#1271](https://github.com/Vonage/vivid/issues/1271)) ([c84bdac](https://github.com/Vonage/vivid/commit/c84bdacde3e1825d7b095519037e2bda9084a743))
+* **elevation:** style for card migration ([#1276](https://github.com/Vonage/vivid/issues/1276)) ([d186cca](https://github.com/Vonage/vivid/commit/d186ccaf929d3f573b15e7d280d174808ee497aa))
+
+
+### Features
+
+* **card:** redefine interface ([#1131](https://github.com/Vonage/vivid/issues/1131)) ([ec49b38](https://github.com/Vonage/vivid/commit/ec49b38709463e14e65056d707cd5549cadbe363))
+
+
+
+
+
 ## [2.27.1](https://github.com/Vonage/vivid/compare/v2.27.0...v2.27.1) (2022-04-03)
 
 **Note:** Version bump only for package @vivid/root
