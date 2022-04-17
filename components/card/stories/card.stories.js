@@ -58,7 +58,7 @@ TrimmedTitles.args = {
 	'text': 'Supporting Text'
 };
 
-const TopActionTemplate = args => html`
+const MetaTemplate = args => html`
 	<style>
 		#root-inner {
 			width: 400px
@@ -68,12 +68,11 @@ const TopActionTemplate = args => html`
 		<vwc-icon-button-toggle onicon="more-vertical-solid" officon="more-vertical-solid" slot="meta"></vwc-icon-button-toggle>
 	</vwc-card>
 	`;
-export const TopAction = TopActionTemplate.bind({});
-TopAction.args = {
-	label: 'Top Action Example',
-	heading: 'A card with a long, very long card title',
-	subtitle: 'Long secondary text very long secondary text secondary text very long secondary text ',
-	'text': 'Lorem ipsum dolor sit amet, consectet adipiscing elit'
+export const Meta = MetaTemplate.bind({});
+Meta.args = {
+	label: 'Meta Slot Example',
+	heading: 'Meta Slot Example',
+	text: 'Meta slot can be used fo extra date on the card like icon or a button icon'
 };
 
 
