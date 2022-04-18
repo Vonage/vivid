@@ -81,20 +81,24 @@ export class VWCCard extends LitElement {
 		};
 		return html`
 			<vwc-elevation .dp=${this.elevation}>
+			<!-- there are 2 wrapper due to a safari bug failing 'filter: drop-shadow'
+			from rendering shadow on an element with 'overflow: hidden' -->
 				<div class="vwc-card">
-					<div class="vwc-card-media">
-						<slot name="media"></slot>
-					</div>
-					<div class="vwc-card-content">
-						<slot name="content">
-							${this.renderHeader()}
-							<div class="vwc-card-text">
-								${this.text ? this.text : nothing}
-							</div>
-						</slot>
-					</div>
-					<div class="vwc-card-footer ${classMap(footerClassMap)}">
-						<slot name="footer" @slotchange="${this.footerSlotChanged}"></slot>
+					<div class="vwc-card-container">
+						<div class="vwc-card-media">
+							<slot name="media"></slot>
+						</div>
+						<div class="vwc-card-content">
+							<slot name="content">
+								${this.renderHeader()}
+								<div class="vwc-card-text">
+									${this.text ? this.text : nothing}
+								</div>
+							</slot>
+						</div>
+						<div class="vwc-card-footer ${classMap(footerClassMap)}">
+							<slot name="footer" @slotchange="${this.footerSlotChanged}"></slot>
+						</div>
 					</div>
 				</div>
 			</vwc-elevation>

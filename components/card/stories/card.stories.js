@@ -228,7 +228,7 @@ const InAGridTemplate = args => html`
 			height: 100%;
 		}
 	</style>
-	<vwc-layout column-basis="sm" column-spacing="md" gutters="xl" style="--layout-grid-template-columns: repeat(4, 250px)">
+	<vwc-layout column-basis="md" column-spacing="md" gutters="xl">
 		<vwc-card heading="Card 1" icon="chat-line" subtitle="Card no. 1"
 							text="This is the right card for you!">
 			<div style="height: 150px; width: 100%; background-color: #871EFF;" slot="media"></div>
