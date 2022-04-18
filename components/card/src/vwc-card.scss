@@ -4,11 +4,16 @@
 
 .vwc-card {
 	display: flex;
-	overflow: hidden;
 	flex-flow: column;
 	block-size: 100%;
 	border-radius: 6px;
 	color: var(#{scheme-variables.$vvd-color-on-canvas});
+	@supports(contain: content) {
+		contain: content;
+	}
+	@supports not (contain: content) {
+		overflow: hidden;
+	}
 
 	&-content {
 		display: flex;
