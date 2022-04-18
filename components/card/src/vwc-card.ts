@@ -58,10 +58,10 @@ export class VWCCard extends LitElement {
 
 	@property({
 		reflect: false,
-		attribute: 'dp',
+		attribute: 'elevation',
 		type: String
 	})
-		dp: IndicatorElevationSets[number] = '4';
+		elevation: IndicatorElevationSets[number] = '4';
 
 	private IconSlottedItems?: Node[];
 	#shouldShowFooterSlot: boolean | undefined;
@@ -74,12 +74,13 @@ export class VWCCard extends LitElement {
 		return (this.headerContentExists) ? '' : 'no-content';
 	}
 
+
 	protected override render(): unknown {
 		const footerClassMap = {
 			'no-content': !(this.#shouldShowFooterSlot)
 		};
 		return html`
-			<vwc-elevation .dp=${this.dp}>
+			<vwc-elevation .dp=${this.elevation}>
 				<div class="vwc-card">
 					<div class="vwc-card-media">
 						<slot name="media"></slot>
