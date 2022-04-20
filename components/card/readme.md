@@ -23,7 +23,7 @@ Cards contain content and actions about a single subject.
 | `subtitle`    |reflected|string| The sub-heading text          |
 | `card-text`   |reflected|string| The card text                 |
 | `header-icon` |reflected|string| A valid vivid icon type       |
-| `dp`          |reflected|string| control the card elevation dp |
+| `elevation`   |reflected|string| control the card elevation dp |
 
 ### Slots
 
