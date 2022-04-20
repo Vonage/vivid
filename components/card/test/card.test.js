@@ -10,7 +10,7 @@ chai.use(chaiDomDiff);
 
 const COMPONENT_NAME = 'vwc-card';
 
-describe.only('Card', () => {
+describe('Card', () => {
 	let addElement = isolatedElementsCreation();
 
 	it(`${COMPONENT_NAME} is defined as a custom element`, async () => {
