@@ -57,6 +57,9 @@ External validation is very important to us, hence, we try to make developer exp
 ### Templates
 
 - [Cards gallery](https://codesandbox.io/s/layout-card-tbgzpr?file=/sandbox.config.json)
+- [Angular Dashboard](https://codesandbox.io/s/vivid-spring-hack-angular-demo-vcnn9p)
+- [React Dashboard](https://codesandbox.io/s/vivid-spring-hack-react-example-c3x0tk)
+- [Vue Dashboard](https://codesandbox.io/s/vivid-spring-hack-vue-demo-2q6mqu)
 
 ### Useful links
 
