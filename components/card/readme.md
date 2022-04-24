@@ -17,23 +17,23 @@ Cards contain content and actions about a single subject.
 
 ### Properties/Attributes
 
-| name          |attr/prop/reflected|type| description                   |
-|---------------|--- |--- |-------------------------------|
-| `heading`     |reflected|string| The heading text              |
-| `subtitle`    |reflected|string| The sub-heading text          |
-| `card-text`   |reflected|string| The card text                 |
-| `header-icon` |reflected|string| A valid vivid icon type       |
-| `elevation`   |reflected|string| control the card elevation dp |
+| name   |attr/prop/reflected|type| description                   |
+|--------|--- |--- |-------------------------------|
+| `heading` |reflected|string| The heading text              |
+| `subtitle` |reflected|string| The sub-heading text          |
+| `text` |reflected|string| The card text                 |
+| `icon` |reflected|string| A valid vivid icon type       |
+| `elevation` |reflected|string| control the card elevation dp |
 
 ### Slots
 
-| name       | description                                                                                        |
-|------------|----------------------------------------------------------------------------------------------------|
-| `graphics` | Content to show in the header icon section. If exists, overrides the `header-icon` attribute’s definition |
-| `meta`     | Slot for action content in the card header                                                         |
-| `media`    | Slot to add anything inside the `media` area                                                       |
-| `footer`   | Slot for action content placed the card footer                                                     |
-| `content`  | Slot for content of the card. If exist, overrides the `heading`, `subtitle`, `card-text` and `header-icon`
+| name      | description                                                                                        |
+|-----------|----------------------------------------------------------------------------------------------------|
+| `graphic` | Content to show in the header icon section. If exists, overrides the `header-icon` attribute’s definition |
+| `meta`    | Slot for action content in the card header                                                         |
+| `media`   | Slot to add anything inside the `media` area                                                       |
+| `footer`  | Slot for action content placed the card footer                                                     |
+| `content` | Slot for content of the card. If exist, overrides the `heading`, `subtitle`, `card-text` and `header-icon`
 ## Styling tips
 
 ### Setting card's width
