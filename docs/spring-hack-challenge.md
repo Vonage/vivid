@@ -69,9 +69,7 @@ External validation is very important to us, hence, we try to make developer exp
 
 - [Vivid storybook](https://vivid.vonage.com)
 - [Icon gallery](https://icons.vivid.vonage.com)
-- Figma UI toolkit
 - [#ask-vivid](https://vonage.slack.com/archives/C013F0YKH99) Slack channel
-- Slack channel - Spring-hack
 
 <hr>
 
