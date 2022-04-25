@@ -71,6 +71,7 @@ export class VWCDataGridColumn extends LitElement implements DataGridColumn {
 			hidden: this.selector ? false : this.hidden,
 			frozen: this.frozen,
 			sortable: this.selector ? false : this.sortable,
+			filterable: this.selector ? false : this.filterable,
 			resizable: this.resizable,
 			selector: this.selector,
 
