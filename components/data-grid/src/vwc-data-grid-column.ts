@@ -37,6 +37,8 @@ export class VWCDataGridColumn extends LitElement implements DataGridColumn {
 	@property({ type: Boolean, reflect: true })
 		sortable = false;
 	@property({ type: Boolean, reflect: true })
+		filterable = false;
+	@property({ type: Boolean, reflect: true })
 		resizable = false;
 	@property({
 		type: String,
