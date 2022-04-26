@@ -246,6 +246,9 @@ describe('Card', () => {
 	});
 
 	describe(`supportingText`, function () {
+		function trimText(text) {
+			return text.replace(/(\t|\n)/gm, "");
+		}
 		const supportingText = 'This is the supporting text';
 
 		it(`should set the text according to the attribute`, async function () {
@@ -258,7 +261,7 @@ describe('Card', () => {
 			const textElement = actualElement.shadowRoot.querySelector('.vwc-card-text');
 
 
-			expect(textElement.innerText)
+			expect(trimText(textElement.textContent))
 				.to
 				.equal(supportingText);
 		});
@@ -274,7 +277,7 @@ describe('Card', () => {
 
 			const supportingTextElement = actualElement.shadowRoot.querySelector('.vwc-card-text');
 
-			expect(supportingTextElement.innerText)
+			expect(trimText(supportingTextElement.textContent))
 				.to
 				.equal(supportingText);
 		});

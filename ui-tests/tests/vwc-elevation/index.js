@@ -1,25 +1,24 @@
 import '@vonage/vwc-elevation';
+import '@vonage/vwc-layout';
+
 
 export async function createElementVariations(wrapper) {
 	const elementWrapper = document.createElement('div');
 	elementWrapper.innerHTML =
 		`
 			<style>
-				#VwcElevation {
-					display: inline-block;
-				}
-
-				vwc-elevation {
-					margin: 25px;
-					display: block;
-				}
 				.card {
-					width: 300px;
-					height: 30px;
 					padding: 20px;
 					text-align: center;
+					border-radius: 6px;
+				}
+				.wrapper {
+				 width: 380px;
+				 display: inline-block;
 				}
 			</style>
+			<div class="wrapper">
+			<vwc-layout column-basis="block" column-spacing="sm" gutters="md">
 			<vwc-elevation dp="0">
 		  	<div class="card">
 					This is the content inside the elevation with DP 0
@@ -61,6 +60,8 @@ export async function createElementVariations(wrapper) {
 					This is the content inside the elevation with DP 24
 				</div>
 			</vwc-elevation>
+			</<vwc-layout>
+			</div>
 		`;
 	wrapper.appendChild(elementWrapper);
 }

@@ -1,3 +1,16 @@
+## [2.28.1](https://github.com/vonage/vivid/compare/v2.28.0...v2.28.1) (2022-04-25)
+
+
+
+# [2.28.0](https://github.com/vonage/vivid/compare/v2.27.1...v2.28.0) (2022-04-13)
+
+
+### Bug Fixes
+
+* **elevation:** style for card migration ([#1276](https://github.com/vonage/vivid/issues/1276)) ([d186cca](https://github.com/vonage/vivid/commit/d186ccaf929d3f573b15e7d280d174808ee497aa))
+
+
+
 ## [2.27.1](https://github.com/vonage/vivid/compare/v2.27.0...v2.27.1) (2022-04-03)
 
 
