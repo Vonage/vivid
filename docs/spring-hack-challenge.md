@@ -65,17 +65,65 @@ External validation is very important to us, hence, we try to make developer exp
 
 ![useful links](https://user-images.githubusercontent.com/67224525/162243636-079264f5-9595-4a8d-836e-8d0d014acfe6.svg)
 
-**To help you start your journy**
+**To help you start your journey**
 
 - [Vivid storybook](https://vivid.vonage.com)
 - [Icon gallery](https://icons.vivid.vonage.com)
-- Figma UI toolkit
 - [#ask-vivid](https://vonage.slack.com/archives/C013F0YKH99) Slack channel
-- Slack channel - Spring-hack
 
 <hr>
 
 Good luck! 🍀
 
+<hr>
 
+## Grab & Code
+### toggle button group
+
+![image](https://user-images.githubusercontent.com/7512792/165079245-089f1c30-caae-46c9-b358-b86e896b366b.png)
+
+```
+<vwc-button-toggle-group enlarged shape="pill">
+  <vwc-button label="Home" selected enlarged layout="filled" type="submit"></vwc-button>
+  <vwc-button label="Standard"  enlarged layout="filled" type="submit"></vwc-button>
+  <vwc-button label="Hybrid"  enlarged layout="filled" type="submit"></vwc-button>
+  <vwc-button label="Satellite"  enlarged layout="filled" type="submit"></vwc-button>
+</vwc-button-toggle-group>
+```
+
+
+### Card
+![image](https://user-images.githubusercontent.com/7512792/165087799-6b548c79-ed2d-44c0-8af0-74bdffe39cc9.png)
+```
+<vwc-card heading="Card with all options" icon="chat-line" subtitle="Subtitle" text="Use the 'footer' slot in order to add actionable items.">
+  <img slot="media" src="https://doodleipsum.com/300x150/flat?bg=EB765D&amp;i=7d5ed3bc0c215d1359b2a63d03cf1540" alt="Sitting on Floor by Gustavo Pedrosa">
+  <vwc-icon-button-toggle onicon="more-vertical-solid" officon="more-vertical-solid" slot="meta"></vwc-icon-button-toggle>
+  <vwc-button slot="footer" shape="pill" layout="outlined" label="Action Button" type="submit" outlined=""></vwc-button>
+</vwc-card>
+```
+
+### Expansion-panel
+![image](https://user-images.githubusercontent.com/7512792/165090809-b03d5748-0914-4f8d-a76a-8bd9a138ed6e.png)
+```
+<vwc-expansion-panel header="Campaign Details" meta="meta-data" icon="chat-solid" open>
+  <div>you can insert here whatever you need :)</div>
+</vwc-expansion-panel>
+```
+
+### Fixed Top App Bar
+![image](https://user-images.githubusercontent.com/7512792/165092295-ecc431e4-9e1c-4ab9-a6d7-4b0013724ddc.png)
+```
+<vwc-top-app-bar-fixed alternate="true">
+  <vwc-icon-button slot="navigationIcon" icon="menu-line"></vwc-icon-button>
+  <span slot="title">Top App Bar</span>
+  <vwc-icon-button slot="actionItems" icon="twitter-mono"></vwc-icon-button>
+  <vwc-icon-button slot="actionItems" icon="facebook-mono"></vwc-icon-button>
+  <vwc-icon-button slot="actionItems" icon="heart-solid"></vwc-icon-button>
+  <vwc-theme-switch slot="actionItems"></vwc-theme-switch>
+</vwc-top-app-bar-fixed>
+```
+
+#### For more components see our docs: [Vivid storybook](https://vivid.vonage.com)
+
+#### Have a question or not sure how to use one or more component - contact us in [#ask-vivid](https://vonage.slack.com/archives/C013F0YKH99) Slack channel
 
