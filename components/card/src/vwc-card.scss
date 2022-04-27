@@ -21,19 +21,20 @@
 		padding: 1.5rem;
 	}
 
-	&-header {
+	&-wrapper {
 		display: flex;
-		align-items: flex-start;
-		justify-content: space-between;
-		gap: 0.5rem;
-
+		width: 100%;
+		column-gap: 0.5rem;
 		:host([text]) & {
 			margin-bottom: 12px;
 		}
+	}
 
-		&-content {
-			display: inline-flex;
-		}
+	&-header {
+		display: inline-flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		column-gap: 0.5rem;
 	}
 
 	&-title,
@@ -80,7 +81,7 @@
 .icon {
 	flex-shrink: 0;
 	align-self: baseline;
-	margin: 4px 10px 0 0;
+	margin: 4px 2px 0 0;
 }
 
 .icon {
@@ -93,6 +94,7 @@
 	align-self: flex-start;
 	margin-block-start: -0.5rem;
 	margin-inline-end: -0.5rem;
+	margin-inline-start: auto;
 }
 
 .no-content {
