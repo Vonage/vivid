@@ -12,8 +12,8 @@
       </div>
       <div class="vwc-card-content">
         <slot name="content">
-          <header class="no-content vwc-card-header">
-            <div class="vwc-card-header-content">
+          <div class="vwc-card-wrapper">
+            <header class="no-content vwc-card-header">
               <slot name="graphic">
               </slot>
               <div>
@@ -22,10 +22,10 @@
                 <div class="vwc-card-subtitle">
                 </div>
               </div>
-            </div>
+            </header>
             <slot name="meta">
             </slot>
-          </header>
+          </div>
           <div class="vwc-card-text">
           </div>
         </slot>
