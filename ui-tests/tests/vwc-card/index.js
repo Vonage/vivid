@@ -100,6 +100,10 @@ export async function createElementVariations(wrapper) {
 		<vwc-card elevation="24">
 			<div slot="content">I'm the card content that overrides the content from attributes. I have no text styles or any styles for that matter :) You can do whatever you want here</div>
 		</vwc-card>
+		
+		<vwc-card label="card with meta-no header" text="I'm a Supporting text, cant be line trimmed. Lorem ipsum dolor sit amet, consectet adipiscing elit">
+			<vwc-icon-button-toggle onicon="bookmark-full" officon="bookmark" connotation="cta" slot="meta"></vwc-icon-button-toggle>
+		</vwc-card>
 		`;
 	wrapper.appendChild(elementWrapper);
 }
