@@ -23,13 +23,13 @@
 ```html
 <span class="vwc-badge">
   <div class="icon icon--leading">
-    <vwc-icon>
+    <vwc-icon type="thumbs-down-line">
     </vwc-icon>
   </div>
   <slot>
   </slot>
   <div class="icon icon--trailing">
-    <vwc-icon>
+    <vwc-icon type="thumbs-up-line">
     </vwc-icon>
   </div>
 </span>
@@ -41,13 +41,13 @@
 ```html
 <span class="vwc-badge">
   <div class="icon icon--leading">
-    <vwc-icon>
+    <vwc-icon type="thumbs-down-line">
     </vwc-icon>
   </div>
   <slot>
   </slot>
   <div class="icon icon--trailing">
-    <vwc-icon>
+    <vwc-icon type="thumbs-down-line">
     </vwc-icon>
   </div>
 </span>
@@ -59,13 +59,13 @@
 ```html
 <span class="vwc-badge">
   <div class="icon icon--leading">
-    <vwc-icon>
+    <vwc-icon type="thumbs-down-line">
     </vwc-icon>
   </div>
   <slot>
   </slot>
   <div class="icon icon--trailing">
-    <vwc-icon>
+    <vwc-icon type="thumbs-up-line">
     </vwc-icon>
   </div>
 </span>
