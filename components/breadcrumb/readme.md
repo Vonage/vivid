@@ -16,12 +16,6 @@ import '@vonage/vwc-breadcrumb/vwc-breadcrumb.js';
   <vwc-breadcrumb-item text="breadcrumb"></vwc-breadcrumb-item>
 </vwc-breadcrumb>
 ```
-<vwc-breadcrumb>
-  <vwc-breadcrumb-item href="#" text="breadcrumb"></vwc-breadcrumb-item>
-  <vwc-breadcrumb-item href="#" text="breadcrumb"></vwc-breadcrumb-item>
-  <vwc-breadcrumb-item href="#" text="breadcrumb"></vwc-breadcrumb-item>
-  <vwc-breadcrumb-item text="breadcrumb"></vwc-breadcrumb-item>
-</vwc-breadcrumb>
 
 ## Multiple hidden crumbs
 ### Code
@@ -32,8 +26,3 @@ import '@vonage/vwc-breadcrumb/vwc-breadcrumb.js';
 	<vwc-breadcrumb-item href="#" text="breadcrumb"></vwc-breadcrumb-item>
 </vwc-breadcrumb>
 ```
-<vwc-breadcrumb>
-	<vwc-breadcrumb-item href="#" text="breadcrumb"></vwc-breadcrumb-item>
-	<vwc-breadcrumb-item text="..."></vwc-breadcrumb-item>
-	<vwc-breadcrumb-item href="#" text="breadcrumb"></vwc-breadcrumb-item>
-</vwc-breadcrumb>
