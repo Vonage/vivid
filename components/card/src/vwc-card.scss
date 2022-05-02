@@ -3,23 +3,38 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 
 .vwc-card {
-	display: flex;
-	overflow: hidden;
-	flex-flow: column;
-	background-color: var(#{scheme-variables.$vvd-color-canvas});
-	block-size: inherit;
+	block-size: 100%;
 	border-radius: 6px;
-	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05), 0 8px 8px rgba(0, 0, 0, 0.05), 0 2px 16px rgba(0, 0, 0, 0.1);
-	color: var(#{scheme-variables.$vvd-color-on-canvas});
 
-	&-info {
+	&-container {
+		display: flex;
+		overflow: hidden;
+		flex-flow: column;
+		block-size: inherit;
+		border-radius: inherit;
+		color: var(#{scheme-variables.$vvd-color-on-canvas});
+	}
+
+	&-content {
 		display: flex;
 		flex-flow: column;
-		padding: 24px;
+		padding: 1.5rem;
+	}
+
+	&-wrapper {
+		display: flex;
+		width: 100%;
+		column-gap: 0.5rem;
+		:host([text]) & {
+			margin-bottom: 12px;
+		}
 	}
 
 	&-header {
-		display: flex;
+		display: inline-flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		column-gap: 0.5rem;
 	}
 
 	&-title,
@@ -35,7 +50,6 @@
 
 	&-title {
 		@include typography.typography-cat-shorthand('subtitle-2');
-		margin-bottom: 4px;
 		-webkit-line-clamp: var(#{card-variables.$title-line-clamp});
 	}
 
@@ -44,44 +58,54 @@
 	}
 
 	&-subtitle,
-	&-supportText {
+	&-text {
 		@include typography.typography-cat-shorthand('body-2');
 		color: var(#{scheme-variables.$vvd-color-neutral-70});
 	}
 
-	&-actions {
+	&-text {
+		padding-right: 0.5rem;
+	}
+
+	&-footer {
 		display: inline-flex;
 		flex-direction: column;
 		align-items: flex-end;
-		margin-top: 16px;
+		padding-bottom: 1.5rem;
+		margin-top: auto;
+		padding-inline: 1.5rem;
 	}
 }
 
-header {
-	display: inline-flex;
-	flex-direction: column;
-	align-content: space-between;
-
-	:host([supporting-text]) & {
-		margin-bottom: 12px;
-	}
-}
-
-::slotted([slot="graphics"i]),
-.header-icon {
+::slotted([slot="graphic"i]),
+.icon {
 	flex-shrink: 0;
 	align-self: baseline;
-	margin: 4px 10px 0 0;
+	margin: 4px 2px 0 0;
 }
 
-.header-icon {
+.icon {
 	width: 20px;
 	height: 20px;
+}
+
+::slotted([slot="meta"i]) {
+	flex-shrink: 0;
+	align-self: flex-start;
+	margin-block-start: -0.5rem;
+	margin-inline-end: -0.5rem;
+	margin-inline-start: auto;
 }
 
 .no-content {
 	display: none;
 }
 
+vwc-elevation {
+	block-size: inherit;
+	&::part(base) {
+		block-size: inherit;
+	}
+}
 
 

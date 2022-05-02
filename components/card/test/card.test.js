@@ -44,7 +44,7 @@ describe('Card', () => {
 
 		it(`should be displayed if slotted icon exists even without heading, icon and subtitle`, async function () {
 			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME}>Content<div slot="graphics"></div></${COMPONENT_NAME}>`)
+				textToDomToParent(`<${COMPONENT_NAME}>Content<div slot="graphic"></div></${COMPONENT_NAME}>`)
 			);
 
 			await actualElement.updateComplete;
@@ -57,12 +57,12 @@ describe('Card', () => {
 		});
 	});
 
-	describe(`header-icon`, function () {
+	describe(`icon`, function () {
 		const iconName = 'home';
 
 		it(`should set the icon according to the attribute`, async function () {
 			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} header-icon="${iconName}">Content</${COMPONENT_NAME}>`)
+				textToDomToParent(`<${COMPONENT_NAME} icon="${iconName}">Content</${COMPONENT_NAME}>`)
 			);
 
 			await actualElement.updateComplete;
@@ -79,7 +79,7 @@ describe('Card', () => {
 				textToDomToParent(`<${COMPONENT_NAME}>Content</${COMPONENT_NAME}>`)
 			);
 
-			actualElement.headerIcon = iconName;
+			actualElement.icon = iconName;
 
 			await actualElement.updateComplete;
 
@@ -97,20 +97,20 @@ describe('Card', () => {
 				textToDomToParent(`<${COMPONENT_NAME}>Content</${COMPONENT_NAME}>`)
 			);
 
-			actualElement.headerIcon = iconName;
+			actualElement.icon = iconName;
 
 			await actualElement.updateComplete;
 
-			const attributeValue = actualElement.getAttribute('header-icon');
+			const attributeValue = actualElement.getAttribute('icon');
 
-			actualElement.setAttribute('header-icon', differentIconName);
+			actualElement.setAttribute('icon', differentIconName);
 
 			await actualElement.updateComplete;
 
 			expect(attributeValue)
 				.to
 				.equal(iconName);
-			expect(actualElement.headerIcon)
+			expect(actualElement.icon)
 				.to
 				.equal(differentIconName);
 		});
@@ -246,19 +246,22 @@ describe('Card', () => {
 	});
 
 	describe(`supportingText`, function () {
+		function trimText(text) {
+			return text.replace(/(\t|\n)/gm, "");
+		}
 		const supportingText = 'This is the supporting text';
 
-		it(`should set the supporting according to the attribute`, async function () {
+		it(`should set the text according to the attribute`, async function () {
 			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} supporting-text="${supportingText}">Content</${COMPONENT_NAME}>`)
+				textToDomToParent(`<${COMPONENT_NAME} text="${supportingText}">Content</${COMPONENT_NAME}>`)
 			);
 
 			await actualElement.updateComplete;
 
-			const supportingElement = actualElement.shadowRoot.querySelector('.vwc-card-supportText');
+			const textElement = actualElement.shadowRoot.querySelector('.vwc-card-text');
 
 
-			expect(supportingElement.innerText)
+			expect(trimText(textElement.textContent))
 				.to
 				.equal(supportingText);
 		});
@@ -268,13 +271,13 @@ describe('Card', () => {
 				textToDomToParent(`<${COMPONENT_NAME}>Content</${COMPONENT_NAME}>`)
 			);
 
-			actualElement.supportingText = supportingText;
+			actualElement.text = supportingText;
 
 			await actualElement.updateComplete;
 
-			const supportingTextElement = actualElement.shadowRoot.querySelector('.vwc-card-supportText');
+			const supportingTextElement = actualElement.shadowRoot.querySelector('.vwc-card-text');
 
-			expect(supportingTextElement.innerText)
+			expect(trimText(supportingTextElement.textContent))
 				.to
 				.equal(supportingText);
 		});
@@ -286,18 +289,18 @@ describe('Card', () => {
 				textToDomToParent(`<${COMPONENT_NAME}>Content</${COMPONENT_NAME}>`)
 			);
 
-			actualElement.supportingText = supportingText;
+			actualElement.text = supportingText;
 
 			await actualElement.updateComplete;
 
-			const attributeValue = actualElement.getAttribute('supporting-text');
+			const attributeValue = actualElement.getAttribute('text');
 
-			actualElement.setAttribute('supporting-text', differentText);
+			actualElement.setAttribute('text', differentText);
 
 			expect(attributeValue)
 				.to
 				.equal(supportingText);
-			expect(actualElement.supportingText)
+			expect(actualElement.text)
 				.to
 				.equal(differentText);
 		});
@@ -313,15 +316,15 @@ describe('Card', () => {
 
 			await actualElement.updateComplete;
 
-			const actionsElement = actualElement.shadowRoot.querySelector('.vwc-card-actions');
+			const footerElement = actualElement.shadowRoot.querySelector('.vwc-card-footer');
 
 
-			expect(actionsElement.classList.contains('no-content'))
+			expect(footerElement.classList.contains('no-content'))
 				.to
 				.equal(true);
 		});
 
-		it(`should be displayed if slotted actions exist`, async function () {
+		it(`should be displayed if slotted footer exist`, async function () {
 			async function waitForSlotChangeUpdate() {
 				await waitNextTask();
 
@@ -329,14 +332,14 @@ describe('Card', () => {
 			}
 
 			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME}>Content<div slot="actions"></div></${COMPONENT_NAME}>`)
+				textToDomToParent(`<${COMPONENT_NAME}>Content<div slot="footer"></div></${COMPONENT_NAME}>`)
 			);
 
 			await waitForSlotChangeUpdate();
 
-			const actionsElement = actualElement.shadowRoot.querySelector('.vwc-card-actions');
+			const footerElement = actualElement.shadowRoot.querySelector('.vwc-card-footer');
 
-			expect(actionsElement.classList.contains('no-content'))
+			expect(footerElement.classList.contains('no-content'))
 				.to
 				.equal(false);
 		});

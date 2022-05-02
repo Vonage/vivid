@@ -222,21 +222,25 @@ export class VWCPopupBase extends LitElement {
     }
 
     protected override render(): TemplateResult {
-    	const part = this.alternate ? 'vvd-scheme-alternate' : '';
+    	const alternate = this.alternate ? 'vvd-scheme-alternate' : '';
     	const aria = this.open ? 'false' : 'true';
 
     	return html`
-            <div class="popup-wrapper">
                 <vwc-elevation dp="2">
-                    <div class="popup ${classMap(this.getRenderClasses())}" aria-hidden=${aria} part=${part}>
-                        <div class="popup-content">
+									<!-- 'popup-wrapper' is selected by the wrapping elevation, thus required for shadow styling -->
+									<!-- the reason for not applying directly to its first-child 'popup' is to avoid scenario where popup is set to alternate scheme
+												and affect the shadow style surfacing contrast which should still in default scheme context -->
+									<div class="popup-wrapper">
+                    <div class="popup ${classMap(this.getRenderClasses())}" aria-hidden=${aria} part=${alternate}>
+                        <div class="popup-content" >
                             <slot></slot>
                             ${this.renderDismissButton()}
                         </div>
                         ${this.renderArrow()}
                     </div>
+									</div>
                 </vwc-elevation>
-            </div>
+
 		`;
     }
 }
