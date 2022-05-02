@@ -18,7 +18,4 @@ describe('Breadcrumb', () => {
 			customElements.get(COMPONENT_NAME)
 		);
 	});
-
-	it('should internal contents', async () => {
-	});
 });
