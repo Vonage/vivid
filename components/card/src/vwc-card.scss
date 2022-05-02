@@ -3,14 +3,17 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as scheme-variables;
 
 .vwc-card {
-	display: flex;
-	overflow: hidden;
-	flex-flow: column;
-	background-color: var(#{scheme-variables.$vvd-color-canvas});
-	block-size: inherit;
+	block-size: 100%;
 	border-radius: 6px;
-	box-shadow: 0 4px 4px rgba(0, 0, 0, 0.05), 0 8px 8px rgba(0, 0, 0, 0.05), 0 2px 16px rgba(0, 0, 0, 0.1);
-	color: var(#{scheme-variables.$vvd-color-on-canvas});
+
+	&-container {
+		display: flex;
+		overflow: hidden;
+		flex-flow: column;
+		block-size: inherit;
+		border-radius: inherit;
+		color: var(#{scheme-variables.$vvd-color-on-canvas});
+	}
 
 	&-content {
 		display: flex;
@@ -18,19 +21,20 @@
 		padding: 1.5rem;
 	}
 
-	&-header {
+	&-wrapper {
 		display: flex;
-		align-items: flex-start;
-		justify-content: space-between;
-		gap: 0.5rem;
-
+		width: 100%;
+		column-gap: 0.5rem;
 		:host([text]) & {
 			margin-bottom: 12px;
 		}
+	}
 
-		&-content {
-			display: inline-flex;
-		}
+	&-header {
+		display: inline-flex;
+		align-items: flex-start;
+		justify-content: space-between;
+		column-gap: 0.5rem;
 	}
 
 	&-title,
@@ -77,7 +81,7 @@
 .icon {
 	flex-shrink: 0;
 	align-self: baseline;
-	margin: 4px 10px 0 0;
+	margin: 4px 2px 0 0;
 }
 
 .icon {
@@ -90,11 +94,18 @@
 	align-self: flex-start;
 	margin-block-start: -0.5rem;
 	margin-inline-end: -0.5rem;
+	margin-inline-start: auto;
 }
 
 .no-content {
 	display: none;
 }
 
+vwc-elevation {
+	block-size: inherit;
+	&::part(base) {
+		block-size: inherit;
+	}
+}
 
 

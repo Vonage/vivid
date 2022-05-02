@@ -11,7 +11,7 @@ export async function createElementVariations(wrapper) {
 				display: grid;
 				grid-template-columns: repeat(3, 300px);
 				gap: 1rem;
-				background-color: gray;
+				background-color: lightgray;
 				padding: 1rem;
   		}
 		</style>
@@ -97,8 +97,12 @@ export async function createElementVariations(wrapper) {
 			<div slot="content">I'm the card content that overrides the content from attributes. I have no text styles or any styles for that metter :) You can do whatever you want here</div>
 		</vwc-card>
 
-		<vwc-card >
+		<vwc-card elevation="24">
 			<div slot="content">I'm the card content that overrides the content from attributes. I have no text styles or any styles for that matter :) You can do whatever you want here</div>
+		</vwc-card>
+		
+		<vwc-card label="card with meta-no header" text="I'm a Supporting text, cant be line trimmed. Lorem ipsum dolor sit amet, consectet adipiscing elit">
+			<vwc-icon-button-toggle onicon="bookmark-full" officon="bookmark" connotation="cta" slot="meta"></vwc-icon-button-toggle>
 		</vwc-card>
 		`;
 	wrapper.appendChild(elementWrapper);

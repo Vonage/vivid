@@ -58,7 +58,7 @@ TrimmedTitles.args = {
 	'text': 'Supporting Text'
 };
 
-const TopActionTemplate = args => html`
+const MetaTemplate = args => html`
 	<style>
 		#root-inner {
 			width: 400px
@@ -68,12 +68,21 @@ const TopActionTemplate = args => html`
 		<vwc-icon-button-toggle onicon="more-vertical-solid" officon="more-vertical-solid" slot="meta"></vwc-icon-button-toggle>
 	</vwc-card>
 	`;
-export const TopAction = TopActionTemplate.bind({});
-TopAction.args = {
+export const Meta = MetaTemplate.bind({});
+Meta.args = {
+	label: 'Meta Slot Example',
+	heading: 'Meta Slot Example',
+	text: 'Meta slot can be used fo extra date on the card like icon or a button icon'
+};
+
+
+
+export const Elevation = Template.bind({});
+Elevation.args = {
 	label: 'Top Action Example',
-	heading: 'A card with a long, very long card title',
-	subtitle: 'Long secondary text very long secondary text secondary text very long secondary text ',
-	'text': 'Lorem ipsum dolor sit amet, consectet adipiscing elit'
+	heading: 'A card with a higher elevation',
+	text: 'To emphasize its content',
+	elevation: '16'
 };
 
 
@@ -149,6 +158,33 @@ CardFooter.args = {
 	'text': 'Use the \'footer\' slot in order to add actionable items.'
 };
 
+
+const ContentSlotTemplate = args => html`
+	<style>
+		#root-inner {
+			width: 300px
+		}
+
+		vwc-card {
+			margin: 15px;
+		}
+	</style>
+	<vwc-card>
+		<img style="width: 100%;" alt="test" src="https://www.w3schools.com/tags/img_girl.jpg" slot="media"/>
+		<div slot="content">
+			<p>A card with no heading + Subtitle or text</p>
+			<p>Can contain whatever is needed.</p>
+			<p>Media slot and Footer Slot are still available if needed</p>
+		</div>
+		<vwc-button slot="footer" shape="pill" layout="outlined" icon="info">Click</vwc-button>
+	</vwc-card>`;
+
+export const ContentSlot = ContentSlotTemplate.bind({});
+ContentSlot.args = {
+	label: 'content Slot',
+};
+
+
 const AllTemplate = args => html`
 	<style>
 		#root-inner {
@@ -192,7 +228,7 @@ const InAGridTemplate = args => html`
 			height: 100%;
 		}
 	</style>
-	<vwc-layout column-basis="sm" column-spacing="md" gutters="xl" style="--layout-grid-template-columns: repeat(4, 250px)">
+	<vwc-layout column-basis="md" column-spacing="md" gutters="xl">
 		<vwc-card heading="Card 1" icon="chat-line" subtitle="Card no. 1"
 							text="This is the right card for you!">
 			<div style="height: 150px; width: 100%; background-color: #871EFF;" slot="media"></div>

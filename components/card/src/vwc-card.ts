@@ -7,13 +7,16 @@ import { property } from 'lit-element/lib/decorators.js';
 import { classMap } from 'lit-html/directives/class-map.js';
 import '@vonage/vwc-button';
 import '@vonage/vwc-icon';
-
+import '@vonage/vwc-elevation';
 
 declare global {
 	interface HTMLElementTagNameMap {
 		'vwc-card': VWCCard;
 	}
 }
+
+const elevationSets = ['0' , '2', '4', '8', '12' , '16' , '24'];
+export type IndicatorElevationSets = typeof elevationSets;
 
 /**
  * @cssprop [--title-line-clamp] defines the number of lines presented before trim + ellipsis in the card title
@@ -53,6 +56,13 @@ export class VWCCard extends LitElement {
 	})
 		text: string | undefined;
 
+	@property({
+		reflect: false,
+		attribute: 'elevation',
+		type: String
+	})
+		elevation: IndicatorElevationSets[number] = '4';
+
 	private IconSlottedItems?: Node[];
 	#shouldShowFooterSlot: boolean | undefined;
 
@@ -64,43 +74,50 @@ export class VWCCard extends LitElement {
 		return (this.headerContentExists) ? '' : 'no-content';
 	}
 
+
 	protected override render(): unknown {
 		const footerClassMap = {
 			'no-content': !(this.#shouldShowFooterSlot)
 		};
 		return html`
-			<div class="vwc-card">
-				<div class="vwc-card-media">
-					<slot name="media"></slot>
-				</div>
-				<div class="vwc-card-content">
-					<slot name="content">
-						${this.renderHeader()}
-						<div class="vwc-card-text">
-							${this.text ? this.text : nothing}
+			<vwc-elevation .dp=${this.elevation}>
+			<!-- there are 2 wrapper due to a safari bug failing 'filter: drop-shadow'
+			from rendering shadow on an element with 'overflow: hidden' -->
+				<div class="vwc-card">
+					<div class="vwc-card-container">
+						<div class="vwc-card-media">
+							<slot name="media"></slot>
 						</div>
-					</slot>
+						<div class="vwc-card-content">
+							<slot name="content">
+								<div class="vwc-card-wrapper">
+									${this.renderHeader()}
+									<slot name="meta"></slot>
+								</div>
+								<div class="vwc-card-text">
+									${this.text ? this.text : nothing}
+								</div>
+							</slot>
+						</div>
+						<div class="vwc-card-footer ${classMap(footerClassMap)}">
+							<slot name="footer" @slotchange="${this.footerSlotChanged}"></slot>
+						</div>
+					</div>
 				</div>
-				<div class="vwc-card-footer ${classMap(footerClassMap)}">
-					<slot name="footer" @slotchange="${this.footerSlotChanged}"></slot>
-				</div>
-			</div>
+			</vwc-elevation>
 		`;
 	}
 
 	private renderHeader() {
 		return html`
 			<header class="vwc-card-header ${this.headerClass}">
-				<div class="vwc-card-header-content">
-						<slot name="graphic" @slotchange="${this.graphicSlotChanged}">
-							${this.icon ? this.renderIcon() : ''}
-						</slot>
-						<div>
-							<div class="vwc-card-title">${this.heading}</div>
-							<div class="vwc-card-subtitle">${this.subtitle}</div>
-						</div>
+				<slot name="graphic" @slotchange="${this.graphicSlotChanged}">
+					${this.icon ? this.renderIcon() : ''}
+				</slot>
+				<div>
+					<div class="vwc-card-title">${this.heading}</div>
+					<div class="vwc-card-subtitle">${this.subtitle}</div>
 				</div>
-				<slot name="meta"></slot>
 			</header>`;
 	}
 
