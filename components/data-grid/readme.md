@@ -6,7 +6,7 @@ As in opposite to a simple HTML table, this component is performance oriented, c
 
 Highlights:
 - static (all upfront) and dynamic (chunks on demand) data provisioning
-- sorting
+- sorting / filtering
 - tree view (group view)
 - expanded row view
 - rows selection (one / all / partial)
@@ -151,6 +151,7 @@ There are 2 ways to configure grid's columns:
  | `hidden`         | `hidden`     | `boolean`                    | `false`     | show/hide column                                                                                                                                      |
  | `frozen`         | `frozen`     | `boolean`                    | `false`     | freeze/unfreeze column (horizontal scroll pinning)                                                                                                    |
  | `sortable`       | `sortable`   | `boolean`                    | `false`     | shows sorting UI and provides OOTB sorting support                                                                                                    |
+ | `filterable`     | `filterable` | `boolean`                    | `false`     | shows filtering UI and provides OOTB filtering support                                                                                                |
  | `resizable`      | `resizable`  | `boolean`                    | `false`     | controls column resizeability support (UI)                                                                                                            |
  | `selector`       | `selector`   | `string: 'single' | 'multi'` | `undefined` | column designated as `selector` will provide and OOTB header (checkbox) and cells (checkbox) to manage / reflect selection; see 'Selection API' above |
  | `autoWidth`      | `auto-width` | `boolean`                    | `false`     | should the column to auto calculate and set it's own width (based on currently rendered content)                                                      |

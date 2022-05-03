@@ -181,6 +181,19 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 				.renderer="${this.adaptDataRenderer(cellRendererProvider, cc, this.#vwcGrid)}"
 			>
 			</vaadin-grid-tree-column>`;
+		} else if (cc.filterable) {
+			return html`<vaadin-grid-filter-column
+				path="${ifDefined(cc.path)}"
+				?hidden="${cc.hidden}"
+				?frozen="${cc.frozen}"
+				?resizable="${cc.resizable}"
+				?auto-width="${cc.autoWidth}"
+				width="${ifDefined(cc.width)}"
+				.headerRenderer="${this.adaptMetaRenderer(headerRendererProvider, cc, this.#vwcGrid)}"
+				.footerRenderer="${this.adaptMetaRenderer(footerRendererProvider, cc, this.#vwcGrid)}"
+				.renderer="${this.adaptDataRenderer(cellRendererProvider, cc, this.#vwcGrid)}"
+			>
+			</vaadin-grid-filter-column>`;
 		} else {
 			return html`<vaadin-grid-column
 				path="${ifDefined(cc.path)}"
