@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.29.0](https://github.com/Vonage/vivid/compare/v2.28.2...v2.29.0) (2022-05-03)
+
+
+### Bug Fixes
+
+* **card:** extract meta from header ([#1288](https://github.com/Vonage/vivid/issues/1288)) ([41b4681](https://github.com/Vonage/vivid/commit/41b46818965f3b8adee73b8282698ee5cca403c8))
+
+
+### Features
+
+* **data-grid:** introduce support for `filterable` columns ([#1284](https://github.com/Vonage/vivid/issues/1284)) ([b39a7b4](https://github.com/Vonage/vivid/commit/b39a7b4f351cc5ebc4dbc88daaf5f3f53a97d302)), closes [#1273](https://github.com/Vonage/vivid/issues/1273)
+
+
+
+
+
 ## [2.28.2](https://github.com/Vonage/vivid/compare/v2.28.1...v2.28.2) (2022-04-26)
 
 
