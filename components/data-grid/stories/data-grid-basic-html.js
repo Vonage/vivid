@@ -5,7 +5,7 @@ import { cellRenderer, expandedRowRenderer } from './data-grid-basic-js';
 
 const Template = args => html`
 	<vwc-data-grid .items="${args.items}" .rowDetailsRenderer="${expandedRowRenderer}" @click="${onGridClick}">
-		<vwc-data-grid-column path="fname" header="First Name" sortable></vwc-data-grid-column>
+		<vwc-data-grid-column path="fname" header="First Name" sortable filterable></vwc-data-grid-column>
 		<vwc-data-grid-column path="lname" header="Last Name"></vwc-data-grid-column>
 		<vwc-data-grid-column header="Expand Row" .cellRenderer="${cellRenderer}"></vwc-data-grid-column>
 	</vwc-data-grid>
