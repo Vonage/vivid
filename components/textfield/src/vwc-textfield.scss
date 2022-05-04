@@ -244,3 +244,9 @@ vwc-notched-outline {
 	right: 0;
 	color: var(#{scheme-variables.$vvd-color-neutral-70}) !important;
 }
+
+:host([appearance='ghost'i]) {
+	vwc-notched-outline {
+		--mdc-notched-outline-stroke-width: 0;
+	}
+}
