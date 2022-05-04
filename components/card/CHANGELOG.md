@@ -1,3 +1,12 @@
+# [2.29.0](https://github.com/vonage/vivid/compare/v2.28.2...v2.29.0) (2022-05-03)
+
+
+### Bug Fixes
+
+* **card:** extract meta from header ([#1288](https://github.com/vonage/vivid/issues/1288)) ([41b4681](https://github.com/vonage/vivid/commit/41b46818965f3b8adee73b8282698ee5cca403c8))
+
+
+
 ## [2.28.2](https://github.com/vonage/vivid/compare/v2.28.1...v2.28.2) (2022-04-26)
 
 
