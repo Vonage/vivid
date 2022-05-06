@@ -226,3 +226,7 @@ vwc-notched-outline {
 		padding-top: 8px;
 	}
 }
+
+mwc-menu {
+	--mdc-theme-surface: var(#{scheme-variables.$vvd-color-surface-8dp});
+}
