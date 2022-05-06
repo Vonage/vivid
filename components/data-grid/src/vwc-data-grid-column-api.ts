@@ -43,9 +43,15 @@ interface DataGridColumn {
 
 	/**
 	 * turns the column into sortable and vice-versa
-	 * - when sortable and no custom header renderer, defaul sorting renderer will be shown and effective
+	 * - when sortable and no custom header renderer, default sorting renderer will be shown and effective
 	 */
 	sortable: boolean;
+
+	/**
+	 * turns the column into filterable
+	 * - when filterable and no custom header renderer, default filter renderer will be shown and effective
+	 */
+	 filterable: boolean;
 
 	/**
 	 * makes columns resizable an vice-versa

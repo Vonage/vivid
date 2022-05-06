@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-checkbox",
-	"version": "2.28.2",
+	"version": "2.29.0",
 	"description": "> TODO: description",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/checkbox#readme",
 	"license": "ISC",
@@ -28,15 +28,15 @@
 	},
 	"dependencies": {
 		"@material/mwc-checkbox": "^0.22.1",
-		"@vonage/vvd-core": "2.28.2",
-		"@vonage/vvd-foundation": "2.28.2",
-		"@vonage/vvd-style-coupling": "2.28.2",
+		"@vonage/vvd-core": "2.29.0",
+		"@vonage/vvd-foundation": "2.29.0",
+		"@vonage/vvd-style-coupling": "2.29.0",
 		"lit-element": "^2.4.0",
 		"tslib": "^2.3.0"
 	},
 	"devDependencies": {
-		"@vonage/vvd-design-tokens": "2.28.2",
-		"@vonage/vvd-umbrella": "2.28.2",
+		"@vonage/vvd-design-tokens": "2.29.0",
+		"@vonage/vvd-umbrella": "2.29.0",
 		"typescript": "^4.3.2"
 	}
 }
