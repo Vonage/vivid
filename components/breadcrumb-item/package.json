@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-breadcrumb-item",
-	"version": "2.26.0",
+	"version": "2.28.2",
 	"description": "breadcrumb-item component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/breadcrumb-item#readme",
 	"license": "ISC",
