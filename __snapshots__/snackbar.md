@@ -156,6 +156,7 @@
     </div>
   </div>
 </div>
+
 ```
 
 #### `should have internal contents (header) - flavor = 'legacy'`
@@ -180,6 +181,7 @@
     </div>
   </div>
 </div>
+
 ```
 
 #### `should have internal contents (message) - flavor = 'legacy'`
@@ -198,6 +200,7 @@
     </div>
   </div>
 </div>
+
 ```
 
 #### `should have internal contents (icon) - flavor = 'legacy'`
@@ -221,6 +224,7 @@
     </div>
   </div>
 </div>
+
 ```
 
 #### `should have internal contents (dismissible) - flavor = 'legacy'`
@@ -248,6 +252,7 @@
     </div>
   </div>
 </div>
+
 ```
 
 #### `should have internal contents (slotted action) - flavor = 'legacy'`
@@ -266,5 +271,6 @@
     </div>
   </div>
 </div>
+
 ```
 
