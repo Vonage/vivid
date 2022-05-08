@@ -2,9 +2,9 @@
 @use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as theme-consts;
 
 .breadcrumb-item {
+	--icon-size: 12px;
 	@include typography.typography-cat-shorthand('body-2');
 
-	--icon-size: 12px;
 	display: flex;
 	align-items: center;
 	color: var(#{theme-consts.$vvd-color-neutral-70});
