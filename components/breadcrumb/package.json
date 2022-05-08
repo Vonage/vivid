@@ -25,12 +25,14 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@vonage/vivid": "^3.0.0-next.10",
-		"@vonage/vvd-core": "2.28.2",
-		"@vonage/vwc-icon": "2.28.2",
+		"@microsoft/fast-element": "^1.10.1",
+		"@microsoft/fast-foundation": "^2.46.2",
+		"@vonage/vvd-core": "2.29.0",
+		"@vonage/vwc-icon": "2.29.0",
 		"tslib": "^2.3.0"
 	},
 	"devDependencies": {
+		"@vonage/vvd-umbrella": "2.29.0",
 		"typescript": "^4.3.2"
 	}
 }

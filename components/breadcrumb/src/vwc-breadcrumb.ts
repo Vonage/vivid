@@ -1,12 +1,28 @@
 import '@vonage/vvd-core';
 import '@vonage/vwc-icon';
-import '@vonage/vivid/breadcrumb/index.js';
+import type { FoundationElementDefinition } from '@microsoft/fast-foundation';
+import {breadcrumbTemplate as template, DesignSystem} from '@microsoft/fast-foundation';
+import { Breadcrumb as FoundationElement } from '@microsoft/fast-foundation';
+import {css} from '@microsoft/fast-element';
 
-const style = document.createElement('style');
-style.innerHTML = `
-	vwc-breadcrumb {
-		--icon-size: 12px;
+const styles = css`
+	.list {
+		display: flex;
 	}
 `;
-document.head.appendChild(style);
+/**
+ * Base class for breadcrumb
+ *
+ * @public
+ */
+export class Breadcrumb extends FoundationElement {
+
+}
+export const vividBreadcrumb = Breadcrumb.compose<FoundationElementDefinition>({
+	baseName: 'breadcrumb',
+	template,
+	styles,
+});
+
+DesignSystem.getOrCreate().withPrefix('vwc').register(vividBreadcrumb());
 

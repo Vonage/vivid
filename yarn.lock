@@ -1250,24 +1250,12 @@
   resolved "https://registry.npmjs.org/@floating-ui/core/-/core-0.3.1.tgz"
   integrity sha512-ensKY7Ub59u16qsVIFEo2hwTCqZ/r9oZZFh51ivcLGHfUwTn8l1Xzng8RJUe91H/UP8PeqeBronAGx0qmzwk2g==
 
-"@floating-ui/core@^0.6.2":
-  version "0.6.2"
-  resolved "https://registry.npmjs.org/@floating-ui/core/-/core-0.6.2.tgz"
-  integrity sha512-jktYRmZwmau63adUG3GKOAVCofBXkk55S/zQ94XOorAHhwqFIOFAy1rSp2N0Wp6/tGbe9V3u/ExlGZypyY17rg==
-
 "@floating-ui/dom@^0.1.7":
   version "0.1.10"
   resolved "https://registry.npmjs.org/@floating-ui/dom/-/dom-0.1.10.tgz"
   integrity sha512-4kAVoogvQm2N0XE0G6APQJuCNuErjOfPW8Ux7DFxh8+AfugWflwVJ5LDlHOwrwut7z/30NUvdtHzQ3zSip4EzQ==
   dependencies:
     "@floating-ui/core" "^0.3.0"
-
-"@floating-ui/dom@^0.4.0":
-  version "0.4.5"
-  resolved "https://registry.npmjs.org/@floating-ui/dom/-/dom-0.4.5.tgz"
-  integrity sha512-b+prvQgJt8pieaKYMSJBXHxX/DYwdLsAWxKYqnO5dO2V4oo/TYBZJAUQCVNjTWWsrs6o4VDrNcP9+E70HAhJdw==
-  dependencies:
-    "@floating-ui/core" "^0.6.2"
 
 "@humanwhocodes/config-array@^0.6.0":
   version "0.6.0"
@@ -3383,14 +3371,14 @@
   resolved "https://registry.npmjs.org/@mdx-js/util/-/util-1.6.22.tgz"
   integrity sha512-H1rQc1ZOHANWBvPcW+JpGwr+juXSxM8Q8YCkm3GhZd8REu1fHR3z99CErO1p9pkcfcxZnMdIZdIsXkOHY0NilA==
 
-"@microsoft/fast-element@^1.10.1", "@microsoft/fast-element@^1.9.0":
+"@microsoft/fast-element@^1.10.1":
   version "1.10.1"
-  resolved "https://registry.npmjs.org/@microsoft/fast-element/-/fast-element-1.10.1.tgz"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-1.10.1.tgz#2ca442a4a8d15f3fd796795a370e3a1bc9bd2738"
   integrity sha512-cq+vBBa8JCuAhsFEwHM9386YolYu9pNb1sBodp69RqWuaU56ElC60dC3aQWuOKqAMNoQqtCHPh0RQTvVBegSyw==
 
-"@microsoft/fast-foundation@^2.41.1":
+"@microsoft/fast-foundation@^2.46.2":
   version "2.46.2"
-  resolved "https://registry.npmjs.org/@microsoft/fast-foundation/-/fast-foundation-2.46.2.tgz"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-2.46.2.tgz#36e67aa4f7209d52a34fad9105fd991e7d428ac2"
   integrity sha512-tizGhBXhAnorGOpA9u0J8hd/6eMEu5ACB1DWVaCFS0qftyMANZ7lVKX6HIAJJc9TPenpKMWsKT/4/XCj7IxrGQ==
   dependencies:
     "@microsoft/fast-element" "^1.10.1"
@@ -3398,9 +3386,9 @@
     tabbable "^5.2.0"
     tslib "^1.13.0"
 
-"@microsoft/fast-web-utilities@^5.2.0", "@microsoft/fast-web-utilities@^5.4.1":
+"@microsoft/fast-web-utilities@^5.4.1":
   version "5.4.1"
-  resolved "https://registry.npmjs.org/@microsoft/fast-web-utilities/-/fast-web-utilities-5.4.1.tgz"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-web-utilities/-/fast-web-utilities-5.4.1.tgz#8e3082ee2ff2b5467f17e7cb1fb01b0e4906b71f"
   integrity sha512-ReWYncndjV3c8D8iq9tp7NcFNc1vbVHvcBFPME2nNFKNbS1XCesYZGlIlf3ot5EmuOXPlrzUHOWzQ2vFpIkqDg==
   dependencies:
     exenv-es6 "^1.1.1"
@@ -5348,17 +5336,6 @@
     split "^1.0.1"
     terminal-kit "^2.0.5"
     yargs-parser "^20.2.7"
-
-"@vonage/vivid@^3.0.0-next.10":
-  version "3.0.0-next.10"
-  resolved "https://registry.npmjs.org/@vonage/vivid/-/vivid-3.0.0-next.10.tgz"
-  integrity sha512-r7uq2QTBz4EOuHfB0D3Dvix1l2vHeOqCVTIAXNOlZcp6YlLKb5zz5ShYkM6bGwLPvNHCvW77zvNNL4mIsyfchg==
-  dependencies:
-    "@floating-ui/dom" "^0.4.0"
-    "@microsoft/fast-element" "^1.9.0"
-    "@microsoft/fast-foundation" "^2.41.1"
-    "@microsoft/fast-web-utilities" "^5.2.0"
-    ramda "^0.27.2"
 
 "@vonage/vvd-design-tokens-properties@0.9.0":
   version "0.9.0"
@@ -9744,7 +9721,7 @@ execall@^2.0.0:
 
 exenv-es6@^1.1.1:
   version "1.1.1"
-  resolved "https://registry.npmjs.org/exenv-es6/-/exenv-es6-1.1.1.tgz"
+  resolved "https://registry.yarnpkg.com/exenv-es6/-/exenv-es6-1.1.1.tgz#80b7a8c5af24d53331f755bac07e84abb1f6de67"
   integrity sha512-vlVu3N8d6yEMpMsEm+7sUBAI81aqYYuEvfK0jNqmdb/OPXzzH7QWDDnVjMvDSY47JdHEqx/dfC/q8WkfoTmpGQ==
 
 exif-parser@^0.1.12:
@@ -15802,7 +15779,7 @@ ramda@^0.21.0:
   resolved "https://registry.npmjs.org/ramda/-/ramda-0.21.0.tgz"
   integrity sha1-oAGr7bP/YQd9T/HVd9RN536NCjU=
 
-ramda@^0.27.1, ramda@^0.27.2:
+ramda@^0.27.1:
   version "0.27.2"
   resolved "https://registry.npmjs.org/ramda/-/ramda-0.27.2.tgz"
   integrity sha512-SbiLPU40JuJniHexQSAgad32hfwd+DRUdwF2PlVuI5RZD0/vahUco7R8vD86J/tcEKKF9vZrUVwgtmGCqlCKyA==
@@ -18039,9 +18016,9 @@ systemjs@^6.3.1, systemjs@^6.8.3:
   integrity sha512-PwaC0Z6Y1E6gFekY2u38EC5+5w2M65jYVrD1aAcOptpHVhCwPIwPFJvYJyryQKUyeuQ5bKKI3PBHWNjdE9aizg==
 
 tabbable@^5.2.0:
-  version "5.3.1"
-  resolved "https://registry.npmjs.org/tabbable/-/tabbable-5.3.1.tgz"
-  integrity sha512-NtO7I7eoAHR+JwwcNsi/PipamtAEebYDnur/k9wM6n238HHy/+1O4+7Zx7e/JaDAbKJPlIFYsfsV/6tPqTOQvg==
+  version "5.3.2"
+  resolved "https://registry.yarnpkg.com/tabbable/-/tabbable-5.3.2.tgz#66d6119ee8a533634c3f17deb0caa1c379e36ac7"
+  integrity sha512-6G/8EWRFx8CiSe2++/xHhXkmCRq2rHtDtZbQFHx34cvDfZzIBfvwG9zGUNTWMXWLCYvDj3aQqOzdl3oCxKuBkQ==
 
 table-layout@^1.0.1:
   version "1.0.2"
