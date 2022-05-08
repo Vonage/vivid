@@ -11,7 +11,7 @@ import { style as styles } from './vwc-breadcrumb-item.css.js';
  * @public
  */
 export class BreadcrumbItem extends FastBreadcrumbItem {
-	@attr({ mode: 'fromView' })	text: string = '';
+	@attr	text?: string;
 
 	constructor() {
 		super();
