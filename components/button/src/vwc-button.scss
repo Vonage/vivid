@@ -59,7 +59,7 @@
 	.leading-icon,
 	.trailing-icon {
 		// TODO remove next line when VIV-704 resolved
-		#{connotation.$vvd-color-connotation}: initial;
+		#{connotation.$vvd-color-connotation}: currentColor;
 		display: flex;
 	}
 
