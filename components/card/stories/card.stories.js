@@ -39,7 +39,7 @@ export const Basic = Template.bind({});
 Basic.args = {
 	label: 'Basic',
 	heading: 'Title',
-	'supporting-text': 'Supporting Text'
+	'text': 'Supporting Text'
 };
 
 export const Subtitle = Template.bind({});
@@ -47,7 +47,7 @@ Subtitle.args = {
 	label: 'Subtitle',
 	heading: 'Title',
 	subtitle: 'Subtitle',
-	'supporting-text': 'Supporting Text'
+	'text': 'Supporting Text'
 };
 
 export const TrimmedTitles = Template.bind({});
@@ -55,8 +55,36 @@ TrimmedTitles.args = {
 	label: 'Trimmed titles',
 	heading: 'A Long Title that can get up to an infinite number of rows or you can set the number of rows that will be shown until they are trimmed',
 	subtitle: 'Subtitle that can get up to an infinite number of rows or you can set the number of rows that will be shown until they are trimmed',
-	'supporting-text': 'Supporting Text'
+	'text': 'Supporting Text'
 };
+
+const MetaTemplate = args => html`
+	<style>
+		#root-inner {
+			width: 400px
+		}
+	</style>
+	<vwc-card ...=${spread(args)} icon="chat-line">
+		<vwc-icon-button-toggle onicon="more-vertical-solid" officon="more-vertical-solid" slot="meta"></vwc-icon-button-toggle>
+	</vwc-card>
+	`;
+export const Meta = MetaTemplate.bind({});
+Meta.args = {
+	label: 'Meta Slot Example',
+	heading: 'Meta Slot Example',
+	text: 'Meta slot can be used fo extra date on the card like icon or a button icon'
+};
+
+
+
+export const Elevation = Template.bind({});
+Elevation.args = {
+	label: 'Top Action Example',
+	heading: 'A card with a higher elevation',
+	text: 'To emphasize its content',
+	elevation: '16'
+};
+
 
 const IconTemplate = args => html`
 	<style>
@@ -72,16 +100,16 @@ const IconTemplate = args => html`
 		<div>Using the icon attribute</div>
 	</vwc-card>
 	<vwc-card ...=${spread(args)}>
-		<vwc-icon type="home" slot="header-icon"></vwc-icon>
+		<vwc-icon type="home" slot="icon"></vwc-icon>
 		<div>Using a slotted icon</div>
 	</vwc-card>`;
 export const Icon = IconTemplate.bind({});
 Icon.args = {
 	label: 'Icon',
 	heading: 'Icon Example',
-	'header-icon': 'chat-line',
+	'icon': 'chat-line',
 	subtitle: 'Subtitle',
-	'supporting-text': 'Supporting Text'
+	'text': 'Supporting Text'
 };
 
 
@@ -104,12 +132,12 @@ export const Media = MediaTemplate.bind({});
 Media.args = {
 	label: 'Media',
 	heading: 'Media',
-	'header-icon': 'home',
+	'icon': 'home',
 	subtitle: 'Subtitle',
-	'supporting-text': 'Supporting Text'
+	'text': 'Supporting Text'
 };
 
-const ActionsTemplate = args => html`
+const FooterTemplate = args => html`
 	<style>
 		#root-inner {
 			width: 300px
@@ -120,15 +148,42 @@ const ActionsTemplate = args => html`
 		}
 	</style>
 	<vwc-card ...=${spread(args)}>
-		<vwc-button slot="actions" shape="pill" layout="outlined" icon="info">Click</vwc-button>
+		<vwc-button slot="footer" shape="pill" layout="outlined" icon="info">Click</vwc-button>
 	</vwc-card>`;
 
-export const Actions = ActionsTemplate.bind({});
-Actions.args = {
-	label: 'Actions',
-	heading: 'Actions',
-	'supporting-text': 'Use the \'actions\' slot in order to add actionable items.'
+export const CardFooter = FooterTemplate.bind({});
+CardFooter.args = {
+	label: 'Footer',
+	heading: 'Footer',
+	'text': 'Use the \'footer\' slot in order to add actionable items.'
 };
+
+
+const ContentSlotTemplate = args => html`
+	<style>
+		#root-inner {
+			width: 300px
+		}
+
+		vwc-card {
+			margin: 15px;
+		}
+	</style>
+	<vwc-card>
+		<img style="width: 100%;" alt="test" src="https://www.w3schools.com/tags/img_girl.jpg" slot="media"/>
+		<div slot="content">
+			<p>A card with no heading + Subtitle or text</p>
+			<p>Can contain whatever is needed.</p>
+			<p>Media slot and Footer Slot are still available if needed</p>
+		</div>
+		<vwc-button slot="footer" shape="pill" layout="outlined" icon="info">Click</vwc-button>
+	</vwc-card>`;
+
+export const ContentSlot = ContentSlotTemplate.bind({});
+ContentSlot.args = {
+	label: 'content Slot',
+};
+
 
 const AllTemplate = args => html`
 	<style>
@@ -142,23 +197,26 @@ const AllTemplate = args => html`
 	</style>
 	<vwc-card ...=${spread(args)}>
 		<div style="height: 150px; width: 100%; background-color: #871EFF;" slot="media"></div>
-		<vwc-button slot="actions" shape="pill" layout="outlined" icon="info">Click</vwc-button>
+		<vwc-icon-button-toggle onicon="more-vertical-solid" officon="more-vertical-solid" slot="meta"></vwc-icon-button-toggle>
+		<vwc-button slot="footer" shape="pill" layout="outlined" label="Action">
+			<vwc-icon type="arrow-bold-right-line" slot="trailingIcon"></vwc-icon>
+		</vwc-button>
 	</vwc-card>`;
 export const AllOptions = AllTemplate.bind({});
 AllOptions.args = {
 	label: 'All Options',
 	heading: 'All Options on Deck',
-	'header-icon': 'chat-line',
+	'icon': 'chat-line',
 	subtitle: 'Subtitle',
-	'supporting-text': 'Use the \'actions\' slot in order to add actionable items.'
+	'text': 'Use the \'footer\' slot in order to add actionable items.'
 };
 
 const inAGridCards = new Array(9).fill(0)
 	.reduce((htmlString, val, index) => {
 		htmlString += `
-			<vwc-card heading="Card ${index + 1}" header-icon="chat-line" subtitle="Card no. ${index + 1}" supporting-text="This is the right card for you!">
+			<vwc-card heading="Card ${index + 1}" icon="chat-line" subtitle="Card no. ${index + 1}" text="This is the right card for you!">
 				<div style="height: 150px; width: 100%; background-color: #871EFF;" slot="media"></div>
-				<vwc-button slot="actions" shape="pill" layout="outlined" icon="info">Click</vwc-button>
+				<vwc-button slot="footer" shape="pill" layout="outlined" icon="info">Click</vwc-button>
 			</vwc-card>
 	`;
 		return htmlString;
@@ -166,60 +224,51 @@ const inAGridCards = new Array(9).fill(0)
 
 const InAGridTemplate = args => html`
 	<style>
-		.card-wrapper {
-			display: grid;
-			grid-template-columns: repeat(3, 250px);
-			gap: 2rem;
-			padding: 1rem;
+		vwc-card {
+			height: 100%;
 		}
-
 	</style>
-	<div class="card-wrapper">
-		<vwc-card heading="Card 1" header-icon="chat-line" subtitle="Card no. 1"
-							supporting-text="This is the right card for you!">
+	<vwc-layout column-basis="md" column-spacing="md" gutters="xl">
+		<vwc-card heading="Card 1" icon="chat-line" subtitle="Card no. 1"
+							text="This is the right card for you!">
 			<div style="height: 150px; width: 100%; background-color: #871EFF;" slot="media"></div>
-			<vwc-button slot="actions" shape="pill" layout="outlined" icon="info">Click</vwc-button>
+			<vwc-button slot="footer" shape="pill" layout="outlined" icon="info">Click</vwc-button>
 		</vwc-card>
-		<vwc-card heading="Card 2" header-icon="chat-line" subtitle="Card no. 2"
-							supporting-text="This is the right card for you!">
+		<vwc-card heading="Card 2" icon="chat-line" subtitle="Card no. 2"
+							text="To make all the cards at the same height in the layout component simly give the vwc-card height of 100%">
 			<div style="height: 150px; width: 100%; background-color: #871EFF;" slot="media"></div>
-			<vwc-button slot="actions" shape="pill" layout="outlined" icon="info">Click</vwc-button>
+			<vwc-button slot="footer" shape="pill" layout="outlined" icon="info">Click</vwc-button>
 		</vwc-card>
-		<vwc-card heading="Card 3" header-icon="chat-line" subtitle="Card no. 3"
-							supporting-text="This is the right card for you!">
+		<vwc-card heading="Card 3" icon="chat-line" subtitle="Card no. 3"
+							text="This is the right card for you!">
 			<div style="height: 150px; width: 100%; background-color: #871EFF;" slot="media"></div>
-			<vwc-button slot="actions" shape="pill" layout="outlined" icon="info">Click</vwc-button>
+			<vwc-button slot="footer" shape="pill" layout="outlined" icon="info">Click</vwc-button>
 		</vwc-card>
-		<vwc-card heading="Card 4" header-icon="chat-line" subtitle="Card no. 4"
-							supporting-text="This is the right card for you!">
+		<vwc-card heading="Card 4" icon="chat-line" subtitle="Card no. 4"
+							text="This is the right card for you!">
 			<div style="height: 150px; width: 100%; background-color: #871EFF;" slot="media"></div>
-			<vwc-button slot="actions" shape="pill" layout="outlined" icon="info">Click</vwc-button>
+			<vwc-button slot="footer" shape="pill" layout="outlined" icon="info">Click</vwc-button>
 		</vwc-card>
-		<vwc-card heading="Card 5" header-icon="chat-line" subtitle="Card no. 5"
-							supporting-text="This is the right card for you!">
+		<vwc-card heading="Card 5" icon="chat-line" subtitle="Card no. 5"
+							text="This is the right card for you!">
 			<div style="height: 150px; width: 100%; background-color: #871EFF;" slot="media"></div>
-			<vwc-button slot="actions" shape="pill" layout="outlined" icon="info">Click</vwc-button>
+			<vwc-button slot="footer" shape="pill" layout="outlined" icon="info">Click</vwc-button>
 		</vwc-card>
-		<vwc-card heading="Card 6" header-icon="chat-line" subtitle="Card no. 6"
-							supporting-text="This is the right card for you!">
+		<vwc-card heading="Card 6" icon="chat-line" subtitle="Card no. 6"
+							text="This is the right card for you!">
 			<div style="height: 150px; width: 100%; background-color: #871EFF;" slot="media"></div>
-			<vwc-button slot="actions" shape="pill" layout="outlined" icon="info">Click</vwc-button>
+			<vwc-button slot="footer" shape="pill" layout="outlined" icon="info">Click</vwc-button>
 		</vwc-card>
-		<vwc-card heading="Card 7" header-icon="chat-line" subtitle="Card no. 7"
-							supporting-text="This is the right card for you!">
+		<vwc-card heading="Card 7" icon="chat-line" subtitle="Card no. 7"
+							text="This is the right card for you!">
 			<div style="height: 150px; width: 100%; background-color: #871EFF;" slot="media"></div>
-			<vwc-button slot="actions" shape="pill" layout="outlined" icon="info">Click</vwc-button>
+			<vwc-button slot="footer" shape="pill" layout="outlined" icon="info">Click</vwc-button>
 		</vwc-card>
-		<vwc-card heading="Card 8" header-icon="chat-line" subtitle="Card no. 8"
-							supporting-text="This is the right card for you!">
+		<vwc-card heading="Card 8" icon="chat-line" subtitle="Card no. 8"
+							text="This is the right card for you!">
 			<div style="height: 150px; width: 100%; background-color: #871EFF;" slot="media"></div>
-			<vwc-button slot="actions" shape="pill" layout="outlined" icon="info">Click</vwc-button>
+			<vwc-button slot="footer" shape="pill" layout="outlined" icon="info">Click</vwc-button>
 		</vwc-card>
-		<vwc-card heading="Card 9" header-icon="chat-line" subtitle="Card no. 9"
-							supporting-text="This is the right card for you!">
-			<div style="height: 150px; width: 100%; background-color: #871EFF;" slot="media"></div>
-			<vwc-button slot="actions" shape="pill" layout="outlined" icon="info">Click</vwc-button>
-		</vwc-card>
-	</div>
+	</vwc-layout>
 `;
 export const InAGrid = InAGridTemplate.bind({});

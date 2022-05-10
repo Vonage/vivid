@@ -24,7 +24,7 @@ declare global {
 export class VWCListExpansionPanel extends VWCExpansionPanelBase {
 	static override styles = style;
 
-	headerListItemIcon?: VWCIcon;
+	headerListItemIcon?: typeof VWCIcon;
 
 	// @property({ type: Boolean }) quick = false; // TODO add animation
 
@@ -43,7 +43,7 @@ export class VWCListExpansionPanel extends VWCExpansionPanelBase {
 
 	override openChanged(isOpen: boolean): void {
 		super.openChanged(isOpen);
-		(this.headerListItemIcon as Element).setAttribute(
+		(this.headerListItemIcon as unknown as Element).setAttribute(
 			'type',
 			isOpen ? 'up' : 'down'
 		);
@@ -72,13 +72,14 @@ function mountIcon(headerListItem: ListItemBase) {
 	icon.setAttribute('slot', 'meta');
 	headerListItem.appendChild(icon);
 	headerListItem.setAttribute('hasMeta', ''); // side effect setting attribute to match icon usage
-	return icon as VWCIcon;
+	return icon as unknown as typeof VWCIcon;
 }
 
 function getHeaderListItemIcon(headerListItem: ListItemBase) {
-	let icon = headerListItem.querySelector('vwc-icon[slot="meta"]');
+	let icon = headerListItem.querySelector('vwc-icon[slot="meta"]') as unknown as typeof VWCIcon;
 	if (!icon) {
 		icon = mountIcon(headerListItem);
 	}
-	return icon as VWCIcon;
+	return icon;
 }
+

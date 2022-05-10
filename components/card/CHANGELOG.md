@@ -1,3 +1,42 @@
+# [2.30.0](https://github.com/vonage/vivid/compare/v2.29.0...v2.30.0) (2022-05-08)
+
+
+
+# [2.29.0](https://github.com/vonage/vivid/compare/v2.28.2...v2.29.0) (2022-05-03)
+
+
+### Bug Fixes
+
+* **card:** extract meta from header ([#1288](https://github.com/vonage/vivid/issues/1288)) ([41b4681](https://github.com/vonage/vivid/commit/41b46818965f3b8adee73b8282698ee5cca403c8))
+
+
+
+## [2.28.2](https://github.com/vonage/vivid/compare/v2.28.1...v2.28.2) (2022-04-26)
+
+
+
+## [2.28.1](https://github.com/vonage/vivid/compare/v2.28.0...v2.28.1) (2022-04-25)
+
+
+### Bug Fixes
+
+* **card:** integrate elevation ([#1273](https://github.com/vonage/vivid/issues/1273)) ([6bd7e09](https://github.com/vonage/vivid/commit/6bd7e095411e05b3b78857fc81812c99dc2ab489))
+
+
+
+# [2.28.0](https://github.com/vonage/vivid/compare/v2.27.1...v2.28.0) (2022-04-13)
+
+
+### Features
+
+* **card:** redefine interface ([#1131](https://github.com/vonage/vivid/issues/1131)) ([ec49b38](https://github.com/vonage/vivid/commit/ec49b38709463e14e65056d707cd5549cadbe363))
+
+
+
+## [2.27.1](https://github.com/vonage/vivid/compare/v2.27.0...v2.27.1) (2022-04-03)
+
+
+
 # [2.27.0](https://github.com/vonage/vivid/compare/v2.26.0...v2.27.0) (2022-03-23)
 
 

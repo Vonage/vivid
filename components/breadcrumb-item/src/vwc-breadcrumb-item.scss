@@ -1,0 +1,27 @@
+@use '@vonage/vvd-typography/scss/typography' as typography;
+@use '@vonage/vvd-design-tokens/build/scss/semantic-variables/scheme-variables' as theme-consts;
+
+.breadcrumb-item {
+	--icon-size: 12px;
+	@include typography.typography-cat-shorthand('body-2');
+
+	display: flex;
+	align-items: center;
+	color: var(#{theme-consts.$vvd-color-on-canvas});
+
+	a {
+		color: var(--vvd-color-cta-70);
+		font: inherit;
+		text-decoration: none;
+	}
+
+	a:hover {
+		text-decoration: underline;
+	}
+
+	vwc-icon {
+		margin: 0 16px;
+		color: var(#{theme-consts.$vvd-color-neutral-70});
+		font-size: 12px;
+	}
+}

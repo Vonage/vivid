@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-tooltip",
-	"version": "2.27.0",
+	"version": "2.30.0",
 	"description": "tooltip component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/tooltip#readme",
 	"license": "ISC",
@@ -27,18 +27,18 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@vonage/vvd-core": "2.27.0",
-		"@vonage/vvd-foundation": "2.27.0",
-		"@vonage/vwc-icon-button": "2.27.0",
-		"@vonage/vwc-popup": "2.27.0",
+		"@vonage/vvd-core": "2.30.0",
+		"@vonage/vvd-foundation": "2.30.0",
+		"@vonage/vwc-icon-button": "2.30.0",
+		"@vonage/vwc-popup": "2.30.0",
 		"lit-element": "^2.4.0",
 		"lit-html": "^1.3.0",
 		"tslib": "^2.3.0"
 	},
 	"devDependencies": {
-		"@vonage/vvd-design-tokens": "2.27.0",
-		"@vonage/vvd-typography": "2.27.0",
-		"@vonage/vvd-umbrella": "2.27.0",
+		"@vonage/vvd-design-tokens": "2.30.0",
+		"@vonage/vvd-typography": "2.30.0",
+		"@vonage/vvd-umbrella": "2.30.0",
 		"typescript": "^4.3.2"
 	}
 }
