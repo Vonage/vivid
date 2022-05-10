@@ -7,7 +7,7 @@ const Template = (args) =>
 	html`<vwc-textfield ...=${spread(args)} @keydown=${handleKeyDown} @change=${onChange} @input=${onInput}>`;
 
 export const Default = Template.bind({});
-Default.args = { label: 'e.g. username', value: 'Initial value', placeholder: 'Placeholder' };
+Default.args = { label: 'e.g. username',  placeholder: 'Placeholder' };
 
 export const CharCounter = Template.bind({});
 CharCounter.args = { label: 'Limited value', dense: '', charCounter: '', maxLength: 18 };
