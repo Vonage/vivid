@@ -83,6 +83,7 @@
 
 	&.vwc-tag--selected {
 		&.layout-outlined {
+			border-color: var(#{layout.$vvd-layout-color-outline});
 			background-color: var(#{connotation.$vvd-color-connotation}-soft);
 			color: var(#{connotation.$vvd-color-connotation}-contrast);
 		}
