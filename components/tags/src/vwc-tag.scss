@@ -106,6 +106,7 @@
 	}
 
 	> .vwc-tag__icon {
+		#{connotation.$vvd-color-connotation}: initial;
 		block-size: var(#{tags-variables.$namespace-icon-checkmark--size});
 		inline-size: var(#{tags-variables.$namespace-icon-checkmark--size});
 
