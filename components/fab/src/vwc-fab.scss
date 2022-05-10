@@ -30,8 +30,6 @@
 		--mdc-fab-box-shadow: 0 none;
 		@include connotation.connotation;
 		@include typography.typography-cat-shorthand('body-2-bold');
-		width: 40px;
-		height: 40px;
 		box-shadow: 0 none;
 		filter: var(#{scheme-variables.$vvd-shadow-surface-4dp});
 
