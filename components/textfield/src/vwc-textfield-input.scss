@@ -57,13 +57,13 @@
 	}
 
 	.mdc-text-field {
-		::slotted(.vivid-input-internal)::placeholder {
+		::slotted(#{textfield-variables.$vvd-input-selector}:placeholder-shown:not(:focus)) {
 			opacity: 0;
 		}
 
 		&.mdc-text-field--no-label,
 		&.mdc-text-field--label-floating {
-			::slotted(.vivid-input-internal)::placeholder {
+			::slotted(#{textfield-variables.$vvd-input-selector}:placeholder-shown:not(:focus)) {
 				opacity: 1;
 			}
 		}
