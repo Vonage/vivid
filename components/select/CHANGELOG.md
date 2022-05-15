@@ -1,3 +1,17 @@
+# [2.30.0](https://github.com/vonage/vivid/compare/v2.29.0...v2.30.0) (2022-05-08)
+
+
+### Bug Fixes
+
+* **menu:** background and shadow colors ([#1280](https://github.com/vonage/vivid/issues/1280)) ([40e02cd](https://github.com/vonage/vivid/commit/40e02cd681e256bea68fccdd717e1476968f1c2c))
+
+
+### Features
+
+* **breadcrumb:** add the breadcrumb component ([#1260](https://github.com/vonage/vivid/issues/1260)) ([bf0c5ed](https://github.com/vonage/vivid/commit/bf0c5edd1f95e57eabf814011eb57dd2b785ac5c))
+
+
+
 # [2.29.0](https://github.com/vonage/vivid/compare/v2.28.2...v2.29.0) (2022-05-03)
 
 

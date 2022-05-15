@@ -34,6 +34,24 @@
 		padding-inline-end: textfield-variables.$horizontal-gutter;
 
 		padding-inline-start: textfield-variables.$horizontal-gutter;
+
+		&::placeholder {
+			:host([dense]) & {
+				opacity: 1;
+			}
+		}
+	}
+
+
+	&:where(.mdc-text-field---label-floating) {
+		.mdc-text-field__input::placeholder {
+			opacity: 1;
+		}
+		&:not(.mdc-text-field--focused) {
+			.mdc-text-field__input::placeholder {
+				opacity: 0;
+			}
+		}
 	}
 
 	&.mdc-text-field--outlined {

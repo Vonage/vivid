@@ -1,3 +1,12 @@
+# [2.30.0](https://github.com/Vonage/vivid/compare/v2.29.0...v2.30.0) (2022-05-08)
+
+
+### Features
+
+* **breadcrumb:** add the breadcrumb component ([#1260](https://github.com/Vonage/vivid/issues/1260)) ([bf0c5ed](https://github.com/Vonage/vivid/commit/bf0c5edd1f95e57eabf814011eb57dd2b785ac5c))
+
+
+
 # [2.29.0](https://github.com/Vonage/vivid/compare/v2.28.2...v2.29.0) (2022-05-03)
 
 
