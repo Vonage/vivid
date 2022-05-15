@@ -1,4 +1,4 @@
-import { Shape } from '@vonage/vvd-foundation/constants';
+import { Shape, Layout } from '@vonage/vvd-foundation/constants';
 
 const BOOLEAN_DEFAULT_SETUP = {
 	control: {
@@ -22,6 +22,14 @@ export const argTypes = {
 			type: 'select',
 			options: Object.values(Shape).filter(s => [
 				Shape.Rounded, Shape.Pill
+			].includes(s)),
+		}
+	},
+	appearance: {
+		control: {
+			type: 'select',
+			options: Object.values(Layout).filter(s => [
+				Layout.Ghost, Layout.Outlined
 			].includes(s)),
 		}
 	},
