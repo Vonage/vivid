@@ -13,10 +13,10 @@ const Template = (args) =>
 	html`<vwc-textarea ...=${spread(args)} @keydown=${handleKeyDown}></vwc-textarea>`;
 
 export const Default = Template.bind({});
-Default.args = { outlined: '', label: 'VWC Textarea' };
+Default.args = { outlined: '', label: 'VWC Textarea', placeholder: 'placeHolder' };
 
 export const Dense = Template.bind({});
-Dense.args = { outlined: '', dense: '', label: 'VWC Textarea' };
+Dense.args = { outlined: '', dense: '', label: 'VWC Textarea', placeholder: 'placeHolder' };
 
 export const Resizable = Template.bind({});
 Resizable.args = { outlined: '', dense: '', label: 'VWC Textarea', resizable: '' };

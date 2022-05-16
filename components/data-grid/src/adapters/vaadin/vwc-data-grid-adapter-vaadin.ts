@@ -1,6 +1,4 @@
-import '@vaadin/vaadin-grid/src/vaadin-grid.js';
-import '@vaadin/vaadin-grid/src/vaadin-grid-column.js';
-import '@vaadin/vaadin-grid/src/vaadin-grid-tree-column.js';
+import '@vaadin/vaadin-grid/src/all-imports.js';
 import '../../headers/vwc-data-grid-header.js';
 import {
 	GRID_COMPONENT, GRID_ENGINE_ROOT_CLASS
@@ -189,7 +187,6 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 				?resizable="${cc.resizable}"
 				?auto-width="${cc.autoWidth}"
 				width="${ifDefined(cc.width)}"
-				.headerRenderer="${this.adaptMetaRenderer(headerRendererProvider, cc, this.#vwcGrid)}"
 				.footerRenderer="${this.adaptMetaRenderer(footerRendererProvider, cc, this.#vwcGrid)}"
 				.renderer="${this.adaptDataRenderer(cellRendererProvider, cc, this.#vwcGrid)}"
 			>
