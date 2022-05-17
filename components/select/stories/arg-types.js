@@ -1,4 +1,4 @@
-import { Shape } from '@vonage/vvd-foundation/constants';
+import {Layout, Shape} from '@vonage/vvd-foundation/constants';
 
 
 export const argTypes = {
@@ -22,13 +22,15 @@ export const argTypes = {
 			].includes(s)),
 		}
 	},
-	required: {
+	appearance: {
 		control: {
-			type: 'inline-radio',
-			options: { true: '', false: undefined },
-		},
+			type: 'select',
+			options: Object.values(Layout).filter(s => [
+				Layout.Outlined, Layout.Ghost
+			].includes(s)),
+		}
 	},
-	ghost: {
+	required: {
 		control: {
 			type: 'inline-radio',
 			options: { true: '', false: undefined },
