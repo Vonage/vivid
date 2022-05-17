@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.30.1](https://github.com/Vonage/vivid/compare/v2.30.0...v2.30.1) (2022-05-17)
+
+
+### Bug Fixes
+
+* **button:** icon color initialized to current color ([#1294](https://github.com/Vonage/vivid/issues/1294)) ([18e484e](https://github.com/Vonage/vivid/commit/18e484e2d09cbca6bb71d3776532c0c40e8170fb))
+* **textfield:** add ghost option ([#1293](https://github.com/Vonage/vivid/issues/1293)) ([d866845](https://github.com/Vonage/vivid/commit/d8668456a309c3626e8419fd319b0b5a540516d7))
+* **textfield:** present placeholder ([#1296](https://github.com/Vonage/vivid/issues/1296)) ([a76f222](https://github.com/Vonage/vivid/commit/a76f22258cbda438753b90f02fa05a681b18963d))
+
+
+
+
+
 # [2.30.0](https://github.com/Vonage/vivid/compare/v2.29.0...v2.30.0) (2022-05-08)
 
 
