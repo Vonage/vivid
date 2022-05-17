@@ -1,3 +1,12 @@
+## [2.30.1](https://github.com/vonage/vivid/compare/v2.30.0...v2.30.1) (2022-05-17)
+
+
+### Bug Fixes
+
+* **textfield:** present placeholder ([#1296](https://github.com/vonage/vivid/issues/1296)) ([a76f222](https://github.com/vonage/vivid/commit/a76f22258cbda438753b90f02fa05a681b18963d))
+
+
+
 # [2.30.0](https://github.com/vonage/vivid/compare/v2.29.0...v2.30.0) (2022-05-08)
 
 
