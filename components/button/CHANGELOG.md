@@ -1,3 +1,12 @@
+## [2.30.1](https://github.com/vonage/vivid/compare/v2.30.0...v2.30.1) (2022-05-17)
+
+
+### Bug Fixes
+
+* **button:** icon color initialized to current color ([#1294](https://github.com/vonage/vivid/issues/1294)) ([18e484e](https://github.com/vonage/vivid/commit/18e484e2d09cbca6bb71d3776532c0c40e8170fb))
+
+
+
 # [2.30.0](https://github.com/vonage/vivid/compare/v2.29.0...v2.30.0) (2022-05-08)
 
 
