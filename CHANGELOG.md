@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.30.2](https://github.com/Vonage/vivid/compare/v2.30.1...v2.30.2) (2022-05-24)
+
+
+### Bug Fixes
+
+* **select:** update story ([#1302](https://github.com/Vonage/vivid/issues/1302)) ([aad4069](https://github.com/Vonage/vivid/commit/aad406972103f14d6bae0b4b59994e7f223a7f7c))
+
+
+
+
+
 ## [2.30.1](https://github.com/Vonage/vivid/compare/v2.30.0...v2.30.1) (2022-05-17)
 
 
