@@ -300,6 +300,7 @@ export async function createElementVariations(wrapper) {
   </vwc-list-item>
 </vwc-select>
 <hr>
+<div style="background-color: lightsteelblue">
 	<vwc-select label="Appearance ghost" helper="Helper Text" appearance="ghost" >
   <vwc-list-item
     mwc-list-item=""
@@ -347,6 +348,55 @@ export async function createElementVariations(wrapper) {
     Item 3 is long
   </vwc-list-item>
 </vwc-select>
+	<vwc-select label="Appearance ghost" helper="Helper Text" appearance="ghost" disabled>
+  <vwc-list-item
+    mwc-list-item=""
+    tabindex="0"
+    aria-disabled="false"
+    role="option"
+    aria-selected="true"
+    selected=""
+    activated=""
+  >none</vwc-list-item>
+  <vwc-list-item
+    value="0"
+    mwc-list-item=""
+    tabindex="-1"
+    aria-disabled="false"
+    role="option"
+  >
+    Item 0
+  </vwc-list-item>
+  <vwc-list-item
+    value="1"
+    mwc-list-item=""
+    tabindex="-1"
+    aria-disabled="false"
+    role="option"
+  >
+    Item 1
+  </vwc-list-item>
+  <vwc-list-item
+    value="2"
+    mwc-list-item=""
+    tabindex="-1"
+    aria-disabled="false"
+    role="option"
+  >
+    Item 2
+  </vwc-list-item>
+  <vwc-list-item
+    value="3"
+    mwc-list-item=""
+    tabindex="-1"
+    aria-disabled="false"
+    role="option"
+  >
+    Item 3 is long
+  </vwc-list-item>
+</vwc-select>
+</div>
+
 		`;
 	wrapper.appendChild(textElementWrapper);
 }
