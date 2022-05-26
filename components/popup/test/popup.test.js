@@ -138,18 +138,6 @@ describe('popup', () => {
 				.equal(false);
 		});
 
-		it(`should init the popup as open if anchor element does not exist`, async () => {
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} open></${COMPONENT_NAME}>`)
-			);
-			actualElement.anchor = 'anchor';
-			await actualElement.updateComplete;
-
-			expect(actualElement.open)
-				.to
-				.equal(false);
-		});
-
 		it(`should reposition when the anchor changes its size`, async function () {
 
 			const {anchorElement, actualElement} = await setPopupAndAnchor();

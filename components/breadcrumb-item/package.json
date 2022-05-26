@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-breadcrumb-item",
-	"version": "2.30.1",
+	"version": "2.30.3",
 	"description": "breadcrumb-item component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/breadcrumb-item#readme",
 	"license": "ISC",
@@ -30,9 +30,9 @@
 		"tslib": "^2.3.0"
 	},
 	"devDependencies": {
-		"@vonage/vvd-design-tokens": "2.30.1",
-		"@vonage/vvd-typography": "2.30.1",
-		"@vonage/vvd-umbrella": "2.30.1",
+		"@vonage/vvd-design-tokens": "2.30.3",
+		"@vonage/vvd-typography": "2.30.3",
+		"@vonage/vvd-umbrella": "2.30.3",
 		"typescript": "^4.3.2"
 	}
 }
