@@ -1,3 +1,16 @@
+## [2.30.3](https://github.com/vonage/vivid/compare/v2.30.2...v2.30.3) (2022-05-26)
+
+
+
+## [2.30.2](https://github.com/vonage/vivid/compare/v2.30.1...v2.30.2) (2022-05-24)
+
+
+### Bug Fixes
+
+* **select:** update story ([#1302](https://github.com/vonage/vivid/issues/1302)) ([aad4069](https://github.com/vonage/vivid/commit/aad406972103f14d6bae0b4b59994e7f223a7f7c))
+
+
+
 ## [2.30.1](https://github.com/vonage/vivid/compare/v2.30.0...v2.30.1) (2022-05-17)
 
 
