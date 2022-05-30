@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.31.0](https://github.com/Vonage/vivid/compare/v2.30.3...v2.31.0) (2022-05-30)
+
+
+### Bug Fixes
+
+* **textfield:** transparent bg ([#1306](https://github.com/Vonage/vivid/issues/1306)) ([45f3063](https://github.com/Vonage/vivid/commit/45f3063868465265e548d41c0134e70df73963c6))
+
+
+### Features
+
+* **tags:** support removable ([#1266](https://github.com/Vonage/vivid/issues/1266)) ([5b3cd3c](https://github.com/Vonage/vivid/commit/5b3cd3c2c92f0ca2a7f0a1573c74583717d0f5ec))
+
+
+
+
+
 ## [2.30.3](https://github.com/Vonage/vivid/compare/v2.30.2...v2.30.3) (2022-05-26)
 
 **Note:** Version bump only for package @vivid/root
