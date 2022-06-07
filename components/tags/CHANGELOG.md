@@ -1,3 +1,12 @@
+# [2.31.0](https://github.com/vonage/vivid/compare/v2.30.3...v2.31.0) (2022-05-30)
+
+
+### Features
+
+* **tags:** support removable ([#1266](https://github.com/vonage/vivid/issues/1266)) ([5b3cd3c](https://github.com/vonage/vivid/commit/5b3cd3c2c92f0ca2a7f0a1573c74583717d0f5ec))
+
+
+
 ## [2.30.3](https://github.com/vonage/vivid/compare/v2.30.2...v2.30.3) (2022-05-26)
 
 

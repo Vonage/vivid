@@ -1,3 +1,12 @@
+# [2.31.0](https://github.com/vonage/vivid/compare/v2.30.3...v2.31.0) (2022-05-30)
+
+
+### Bug Fixes
+
+* **textfield:** transparent bg ([#1306](https://github.com/vonage/vivid/issues/1306)) ([45f3063](https://github.com/vonage/vivid/commit/45f3063868465265e548d41c0134e70df73963c6))
+
+
+
 ## [2.30.3](https://github.com/vonage/vivid/compare/v2.30.2...v2.30.3) (2022-05-26)
 
 
