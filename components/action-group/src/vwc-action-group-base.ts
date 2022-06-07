@@ -23,9 +23,6 @@ export class VWCActionGroupBase extends LitElement {
 	@property({ type: String, reflect: true })
 		layout?: ActionGroupLayout;
 
-	@property({ type: String, reflect: true })
-		text?: string;
-
 	@property({ type: Boolean, reflect: true })
 		tight = false;
 
