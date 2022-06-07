@@ -26,10 +26,14 @@ export class VWCActionGroupBase extends LitElement {
 	@property({ type: String, reflect: true })
 		text?: string;
 
+	@property({ type: Boolean, reflect: true })
+		tight = false;
+
 	protected getRenderClasses(): ClassInfo {
 		return {
 			[`shape-${this.shape}`]: !!this.shape,
-			[`layout-${this.layout}`]: !!this.layout
+			[`layout-${this.layout}`]: !!this.layout,
+			['tight']: !!this.tight,
 		};
 	}
 
