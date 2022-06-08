@@ -3,6 +3,7 @@ import {
 	isolatedElementsCreation, textToDomToParent
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
+import {VWCActionGroup} from '../vwc-action-group.js';
 
 chai.use(chaiDomDiff);
 
@@ -10,6 +11,14 @@ const COMPONENT_NAME = 'vwc-action-group';
 
 describe ('Action-Group', () => {
 	let addElement = isolatedElementsCreation();
+	let element;
+
+	beforeEach(async function () {
+		[element] = (
+			textToDomToParent(`<${COMPONENT_NAME}>Content</${COMPONENT_NAME}>`)
+		);
+		await element.updateComplete;
+	});
 
 	it(`${COMPONENT_NAME} is defined as a custom element`, async () => {
 		assert.exists(
@@ -18,16 +27,37 @@ describe ('Action-Group', () => {
 	});
 
 	it('should internal contents', async () => {
-		const [actualElement] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}>Content</${COMPONENT_NAME}>`)
-		);
-		await actualElement.updateComplete;
-		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
+		await element.updateComplete;
+		expect(element.shadowRoot.innerHTML).to.equalSnapshot();
 	});
 
-	describe(`shape`, function () {
-		it( `should have shape class to match the attribute`, async function () {
-			//
+	describe('basic', () => {
+		it('should be initialized as a vwc-action-group', async () => {
+			expect(element instanceof VWCActionGroup).to.equal(true);
+		});
+	});
+
+	describe('layout', function () {
+		it('should set the fieldset class on the base', async function () {
+			const control = element.shadowRoot?.querySelector('.vwc-action-group');
+			const layout = 'fieldset';
+			element.layout = layout;
+			await element.updateComplete;
+
+			expect(control?.classList.contains(`layout-${layout}`))
+				.to.equal(true);
+		});
+	});
+
+	describe('shape', function () {
+		it('should set the shape class on the base', async function () {
+			const control = element.shadowRoot?.querySelector('.vwc-action-group');
+			const shape = 'pill';
+			element.shape = shape;
+			await element.updateComplete;
+
+			expect(control?.classList.contains(`shape-${shape}`))
+				.to.equal(true);
 		});
 	});
 });
