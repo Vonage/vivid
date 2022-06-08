@@ -59,10 +59,14 @@ Separator.args = { layout: 'outlined' };
 const ActionGroupTightTemplate = args => html`
     <div style="display: flex; column-gap: 2px">
     <vwc-action-group ...=${spread(args)}>
-        <vwc-button icon="flag-uruguay">
-            <span>+1</span>
-            <span style="font-size: 14px; margin-left: 8px"><vwc-icon type="chevron-down-solid" inline></vwc-icon></span>
-        </vwc-button>
+        <vwc-action-group tight>
+            <vwc-icon type="flag-uruguay" style="margin-left: 8px;"></vwc-icon>
+            <vwc-select appearance="ghost" dense style="width: 90px;">
+                <vwc-list-item  mwc-list-item="" disabled selected>+1</vwc-list-item>
+                <vwc-list-item  mwc-list-item="" selected>+2</vwc-list-item>
+                <vwc-list-item  mwc-list-item="" selected>+3</vwc-list-item>
+            </vwc-select>
+        </vwc-action-group>
         <span role="separator"></span>
         <vwc-textfield icon="search" dense placeholder="Search" appearance="ghost">
         </vwc-textfield>
@@ -72,6 +76,26 @@ const ActionGroupTightTemplate = args => html`
 
 export const tight = ActionGroupTightTemplate.bind({});
 tight.args = { layout: 'outlined', tight };
+
+const ActionGroupSplitTemplate = args => html`
+    <div style="display: flex; flex-direction: column; gap: 16px">
+    <vwc-action-group layout="outlined" shape="pill">
+        <vwc-button label="Action" shape="pill"></vwc-button>
+        <span role="separator"></span>
+        <vwc-icon-button icon="chevron-down-solid" shape="circled"></vwc-icon-button>
+    </vwc-action-group>
+    <vwc-action-group>
+        <vwc-button icon="microphone-2-solid" label="Mute" stacked>
+        </vwc-button>
+        <span role="separator" style="align-self: center; height: 40px;"></span>
+        <vwc-icon-button icon="chevron-down-solid"></vwc-icon-button>
+    </vwc-action-group>
+</div>`;
+
+export const SplitButton = ActionGroupSplitTemplate.bind({});
+SplitButton.args = {  };
+
+
 
 
 
