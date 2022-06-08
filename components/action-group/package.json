@@ -1,0 +1,42 @@
+{
+	"name": "@vonage/vwc-action-group",
+	"version": "2.30.3",
+	"description": "action-group component",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/action-group#readme",
+	"license": "ISC",
+	"main": "vwc-action-group.js",
+	"module": "vwc-action-group.js",
+	"files": [
+		"src",
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/vonage/vivid.git",
+		"directory": "components/action-group"
+	},
+	"scripts": {
+		"test": "echo \"Error: run tests from root\" && exit 1",
+		"build:typescript": "tsc -b",
+		"build:styles": "umbrella-style-modules",
+		"build": "yarn run build:styles && yarn run build:typescript"
+	},
+	"bugs": {
+		"url": "https://github.com/Vonage/vivid/issues"
+	},
+	"dependencies": {
+		"@vonage/vvd-core": "2.31.0",
+		"@vonage/vvd-foundation": "2.31.0",
+		"lit-element": "^2.4.0",
+		"tslib": "^2.3.0"
+	},
+	"devDependencies": {
+		"@vonage/vvd-design-tokens": "2.31.0",
+		"@vonage/vvd-typography": "2.31.0",
+		"@vonage/vvd-umbrella": "2.31.0",
+		"lit-html": "^1.3.0",
+		"typescript": "^4.3.2"
+	}
+}
