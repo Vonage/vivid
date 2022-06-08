@@ -38,9 +38,9 @@ describe ('Action-Group', () => {
 	});
 
 	describe('layout', function () {
-		it('should set the fieldset class on the base', async function () {
+		it('should set the outline class on the base', async function () {
 			const control = element.shadowRoot?.querySelector('.vwc-action-group');
-			const layout = 'fieldset';
+			const layout = 'outlined';
 			element.layout = layout;
 			await element.updateComplete;
 
