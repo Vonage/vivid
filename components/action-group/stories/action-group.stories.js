@@ -60,11 +60,19 @@ const ActionGroupTightTemplate = args => html`
     <div style="display: flex; column-gap: 2px">
     <vwc-action-group ...=${spread(args)}>
         <vwc-action-group tight>
-            <vwc-icon type="flag-uruguay" style="margin-left: 8px;"></vwc-icon>
-            <vwc-select appearance="ghost" dense style="width: 90px;">
-                <vwc-list-item  mwc-list-item="" disabled selected>+1</vwc-list-item>
-                <vwc-list-item  mwc-list-item="" selected>+2</vwc-list-item>
-                <vwc-list-item  mwc-list-item="" selected>+3</vwc-list-item>
+            <vwc-select appearance="ghost" dense icon="flag-united-states" style="width: 130px;">
+                <vwc-list-item  mwc-list-item="" disabled selected graphic="icon">
+                    <vwc-icon slot="graphic" type="flag-united-states" size="small"></vwc-icon>
+                    +1
+                </vwc-list-item>
+                <vwc-list-item  graphic="icon">
+                    <vwc-icon slot="graphic" type="flag-uruguay" size="small"></vwc-icon>
+                    +2
+                </vwc-list-item>
+                <vwc-list-item  graphic="icon">
+                    <vwc-icon slot="graphic" type="flag-georgia" size="small"></vwc-icon>
+                    +3
+                </vwc-list-item>
             </vwc-select>
         </vwc-action-group>
         <span role="separator"></span>
