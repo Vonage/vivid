@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.32.0](https://github.com/Vonage/vivid/compare/v2.31.0...v2.32.0) (2022-06-08)
+
+
+### Features
+
+* **action-group:** new component ([#1308](https://github.com/Vonage/vivid/issues/1308)) ([27cada0](https://github.com/Vonage/vivid/commit/27cada08b4fa9bf893c95ea34eefee36b86524da))
+
+
+
+
+
 # [2.31.0](https://github.com/Vonage/vivid/compare/v2.30.3...v2.31.0) (2022-05-30)
 
 
