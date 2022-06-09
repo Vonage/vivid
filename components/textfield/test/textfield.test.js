@@ -172,7 +172,7 @@ describe('textfield', () => {
 			it('should set autocomplete on the internal input', async function () {
 				const [formElement] = addElement(createElementInForm(fieldName, fieldValue));
 				const inputElement = formElement
-					.querySelector(COMPONENT_NAME)
+					.querySelector(COMPONENT_NAME);
 				await inputElement.updateComplete;
 				const internalInput = inputElement.formElement;
 				const autoCompleteDefault = internalInput.getAttribute('autocomplete');
