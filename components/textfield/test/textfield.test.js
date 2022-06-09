@@ -28,24 +28,11 @@ function getHiddenInput(formElement, fieldName) {
 	return formElement.querySelector(`input[name="${fieldName}"]`);
 }
 
-describe.only('textfield', () => {
+describe('textfield', () => {
 	it('should be defined as a custom element', async () => {
 		expect(Boolean(customElements.get(COMPONENT_NAME))).to.equal(true);
 	});
 	const addElement = isolatedElementsCreation();
-
-	it('should be defined as a custom element', async () => {
-		expect(Boolean(customElements.get(COMPONENT_NAME))).to.equal(true);
-	});
-
-	it('should have internal contents', async () => {
-		const [e] = addElement(
-			textToDomToParent(`<${COMPONENT_NAME}></${COMPONENT_NAME}>`)
-		);
-		await waitNextTask();
-		expect(e).lightDom.equalSnapshot();
-		expect(e).shadowDom.equalSnapshot();
-	});
 
 	it('should have the MWC input class transparent for events', async () => {
 		const [e] = addElement(
@@ -197,14 +184,16 @@ describe.only('textfield', () => {
 
 			});
 
-			/*it('should reflect the name on the internal input', async function () {
+			it('should reflect the name on the internal input', async function () {
 				const [formElement] = addElement(createElementInForm(fieldName, fieldValue));
-				await waitNextTask();
-				const internalInput = formElement.shadowRoot?.querySelector('input');
-				formElement.name = 'off';
-				await formElement.updateComplete;
-				expect(internalInput.getAttribute('name')).to.equal('off');
-			});*/
+				const inputElement = formElement
+					.querySelector(COMPONENT_NAME);
+				await inputElement.updateComplete;
+				const internalInput = inputElement.formElement;
+				inputElement.name = 'name';
+				await inputElement.updateComplete;
+				expect(internalInput.getAttribute('name')).to.equal('name');
+			});
 		});
 
 		describe(`value binding`, function () {
