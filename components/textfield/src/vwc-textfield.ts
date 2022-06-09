@@ -70,6 +70,12 @@ export class VWCTextField extends MWCTextField {
 		type: String,
 		reflect: true
 	})
+	  autocomplete?: string;
+
+	@property({
+		type: String,
+		reflect: true
+	})
 		form: string | undefined;
 
 	@property({
@@ -331,6 +337,7 @@ export class VWCTextField extends MWCTextField {
 		setAttributeByValue('type', this.type, fe);
 		setAttributeByValue('form', this.form, fe);
 		setAttributeByValue('placeholder', this.placeholder, fe);
+		setAttributeByValue('autocomplete', this.autocomplete, fe);
 
 		setAttributeByValue('min', this.min, fe);
 		setAttributeByValue('max', this.max, fe);
