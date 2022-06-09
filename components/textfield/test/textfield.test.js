@@ -12,15 +12,11 @@ import {
 	listenToSubmission,
 	getRandom,
 } from '../../../test/test-helpers.js';
-import {
-	shapeRoundedTestCases,
-	shapePillTestCases,
-} from '../../../test/shared.js';
+
 import {
 	typographyTestCases,
 	assertDenseStyles,
 	hasNotchedOutline,
-	validateMultipleShadowLayers,
 	validateOnReset,
 } from '@vonage/vvd-foundation/test/input-utils.test.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
@@ -32,7 +28,10 @@ function getHiddenInput(formElement, fieldName) {
 	return formElement.querySelector(`input[name="${fieldName}"]`);
 }
 
-describe('textfield', () => {
+describe.only('textfield', () => {
+	it('should be defined as a custom element', async () => {
+		expect(Boolean(customElements.get(COMPONENT_NAME))).to.equal(true);
+	});
 	const addElement = isolatedElementsCreation();
 
 	it('should be defined as a custom element', async () => {
@@ -182,6 +181,32 @@ describe('textfield', () => {
 			expect([...externalForm.elements].includes(inputElement)).to.equal(true);
 		});
 
+		describe(`autocomplete`, function () {
+			it('should set autocomplete on the internal input', async function () {
+				const [formElement] = addElement(createElementInForm(fieldName, fieldValue));
+				const inputElement = formElement
+					.querySelector(COMPONENT_NAME)
+				await inputElement.updateComplete;
+				const internalInput = inputElement.formElement;
+				const autoCompleteDefault = internalInput.getAttribute('autocomplete');
+
+				inputElement.autocomplete = 'off';
+				await inputElement.updateComplete;
+				expect(autoCompleteDefault).to.equal(null);
+				expect(internalInput.getAttribute('autocomplete')).to.equal('off');
+
+			});
+
+			/*it('should reflect the name on the internal input', async function () {
+				const [formElement] = addElement(createElementInForm(fieldName, fieldValue));
+				await waitNextTask();
+				const internalInput = formElement.shadowRoot?.querySelector('input');
+				formElement.name = 'off';
+				await formElement.updateComplete;
+				expect(internalInput.getAttribute('name')).to.equal('off');
+			});*/
+		});
+
 		describe(`value binding`, function () {
 			it(`should reset the value of the custom element to default on form reset`, async function () {
 				const [formElement] = addElement(
@@ -249,10 +274,6 @@ describe('textfield', () => {
 				expect(formElement.checkValidity()).to.equal(false);
 				expect(submitted).to.equal(false);
 			});
-		});
-
-		it(`should work under multiple shadow layers`, async function () {
-			validateMultipleShadowLayers(COMPONENT_NAME, 'input');
 		});
 	});
 
@@ -334,11 +355,6 @@ describe('textfield', () => {
 				(inp.offsetHeight - icn.offsetHeight) / 2
 			);
 		});
-	});
-
-	describe('shape', () => {
-		shapeRoundedTestCases(COMPONENT_NAME);
-		shapePillTestCases(COMPONENT_NAME);
 	});
 
 	describe('label', () => {
