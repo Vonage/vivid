@@ -1,3 +1,12 @@
+# [2.33.0](https://github.com/vonage/vivid/compare/v2.32.0...v2.33.0) (2022-06-09)
+
+
+### Bug Fixes
+
+* **card:** rem units to px ([#1312](https://github.com/vonage/vivid/issues/1312)) ([5c10091](https://github.com/vonage/vivid/commit/5c100911fceddf6ba2875c3f11ba16e907c9e576))
+
+
+
 # [2.32.0](https://github.com/vonage/vivid/compare/v2.31.0...v2.32.0) (2022-06-08)
 
 
