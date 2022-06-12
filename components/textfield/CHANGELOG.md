@@ -1,3 +1,12 @@
+# [2.33.0](https://github.com/vonage/vivid/compare/v2.32.0...v2.33.0) (2022-06-09)
+
+
+### Features
+
+* **textfield:** textfield can now turn off auto complete ([#1315](https://github.com/vonage/vivid/issues/1315)) ([cfd7959](https://github.com/vonage/vivid/commit/cfd7959f9fb1029ffd96a49faa98234f86c87d36))
+
+
+
 # [2.32.0](https://github.com/vonage/vivid/compare/v2.31.0...v2.32.0) (2022-06-08)
 
 
