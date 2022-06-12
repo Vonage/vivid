@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.33.0](https://github.com/Vonage/vivid/compare/v2.32.0...v2.33.0) (2022-06-09)
+
+
+### Bug Fixes
+
+* **card:** rem units to px ([#1312](https://github.com/Vonage/vivid/issues/1312)) ([5c10091](https://github.com/Vonage/vivid/commit/5c100911fceddf6ba2875c3f11ba16e907c9e576))
+
+
+### Features
+
+* **textfield:** textfield can now turn off auto complete ([#1315](https://github.com/Vonage/vivid/issues/1315)) ([cfd7959](https://github.com/Vonage/vivid/commit/cfd7959f9fb1029ffd96a49faa98234f86c87d36))
+
+
+
+
+
 # [2.32.0](https://github.com/Vonage/vivid/compare/v2.31.0...v2.32.0) (2022-06-08)
 
 
