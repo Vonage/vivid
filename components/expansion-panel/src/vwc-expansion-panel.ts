@@ -32,7 +32,6 @@ function isValidHeaderValue(headerValue: string | number) {
 
 @customElement('vwc-expansion-panel')
 export class VWCExpansionPanel extends VWCExpansionPanelBase {
-	safeHtml = html;
 	static override styles = style;
 
 	/**
@@ -125,7 +124,18 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 
 	protected renderPanelHeader(): TemplateResult | string {
 		if (!isValidHeaderValue(this.headingLevel)) this.headingLevel = '3';
-		return eval(`this.safeHtml\`<h${this.headingLevel} class="expansion-panel-header">\${this.renderHeaderButton()}</h${this.headingLevel}>\``);
+		switch (this.headingLevel) {
+		case '2':
+			return html`<h2 class="expansion-panel-header">${this.renderHeaderButton()}</h2>`;
+		case '4':
+			return html`<h4 class="expansion-panel-header">${this.renderHeaderButton()}</h4>`;
+		case '5':
+			return html`<h5 class="expansion-panel-header">${this.renderHeaderButton()}</h5>`;
+		case '6':
+			return html`<h6 class="expansion-panel-header">${this.renderHeaderButton()}</h6>`;
+		default:
+			return html`<h3 class="expansion-panel-header">${this.renderHeaderButton()}</h3>`;
+		}
 	}
 
 	protected override render(): TemplateResult {
