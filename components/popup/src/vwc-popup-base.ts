@@ -134,6 +134,7 @@ export class VWCPopupBase extends LitElement {
     		this.anchorEl = this.getAnchorById();
     	}
     	if (this.anchorEl && this.popupEl) {
+    		this.cleanup?.();
     		this.cleanup = autoUpdate(this.anchorEl, this.popupEl, () => this.updatePosition());
     	}
     	else {
