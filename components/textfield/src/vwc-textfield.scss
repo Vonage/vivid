@@ -244,3 +244,18 @@ vwc-notched-outline {
 	right: 0;
 	color: var(#{scheme-variables.$vvd-color-neutral-70}) !important;
 }
+
+:host([appearance='ghost'i]) {
+	vwc-notched-outline {
+		--mdc-notched-outline-stroke-width: 0;
+	}
+	.mdc-text-field--outlined {
+		--mdc-text-field-fill-color: transparent;
+	}
+}
+
+:host([appearance='ghost'i][disabled]:not([dense])) {
+	.mdc-text-field {
+		--mdc-text-field-disabled-fill-color: transparent;
+	}
+}

@@ -1,3 +1,40 @@
+## [2.33.1](https://github.com/vonage/vivid/compare/v2.33.0...v2.33.1) (2022-06-13)
+
+
+
+# [2.33.0](https://github.com/vonage/vivid/compare/v2.32.0...v2.33.0) (2022-06-09)
+
+
+
+# [2.32.0](https://github.com/vonage/vivid/compare/v2.31.0...v2.32.0) (2022-06-08)
+
+
+
+# [2.31.0](https://github.com/vonage/vivid/compare/v2.30.3...v2.31.0) (2022-05-30)
+
+
+
+## [2.30.3](https://github.com/vonage/vivid/compare/v2.30.2...v2.30.3) (2022-05-26)
+
+
+
+## [2.30.2](https://github.com/vonage/vivid/compare/v2.30.1...v2.30.2) (2022-05-24)
+
+
+
+## [2.30.1](https://github.com/vonage/vivid/compare/v2.30.0...v2.30.1) (2022-05-17)
+
+
+
+# [2.30.0](https://github.com/vonage/vivid/compare/v2.29.0...v2.30.0) (2022-05-08)
+
+
+### Bug Fixes
+
+* **menu:** background and shadow colors ([#1280](https://github.com/vonage/vivid/issues/1280)) ([40e02cd](https://github.com/vonage/vivid/commit/40e02cd681e256bea68fccdd717e1476968f1c2c))
+
+
+
 # [2.29.0](https://github.com/vonage/vivid/compare/v2.28.2...v2.29.0) (2022-05-03)
 
 

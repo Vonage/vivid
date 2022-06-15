@@ -1,3 +1,40 @@
+## [2.33.1](https://github.com/vonage/vivid/compare/v2.33.0...v2.33.1) (2022-06-13)
+
+
+
+# [2.33.0](https://github.com/vonage/vivid/compare/v2.32.0...v2.33.0) (2022-06-09)
+
+
+### Bug Fixes
+
+* **card:** rem units to px ([#1312](https://github.com/vonage/vivid/issues/1312)) ([5c10091](https://github.com/vonage/vivid/commit/5c100911fceddf6ba2875c3f11ba16e907c9e576))
+
+
+
+# [2.32.0](https://github.com/vonage/vivid/compare/v2.31.0...v2.32.0) (2022-06-08)
+
+
+
+# [2.31.0](https://github.com/vonage/vivid/compare/v2.30.3...v2.31.0) (2022-05-30)
+
+
+
+## [2.30.3](https://github.com/vonage/vivid/compare/v2.30.2...v2.30.3) (2022-05-26)
+
+
+
+## [2.30.2](https://github.com/vonage/vivid/compare/v2.30.1...v2.30.2) (2022-05-24)
+
+
+
+## [2.30.1](https://github.com/vonage/vivid/compare/v2.30.0...v2.30.1) (2022-05-17)
+
+
+
+# [2.30.0](https://github.com/vonage/vivid/compare/v2.29.0...v2.30.0) (2022-05-08)
+
+
+
 # [2.29.0](https://github.com/vonage/vivid/compare/v2.28.2...v2.29.0) (2022-05-03)
 
 

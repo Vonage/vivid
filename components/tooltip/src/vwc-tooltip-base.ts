@@ -2,7 +2,7 @@ import {
 	html, LitElement, property
 } from 'lit-element';
 import type { TemplateResult } from 'lit-html';
-import type { Placement } from '@floating-ui/core';
+import type { Placement } from '@floating-ui/dom';
 
 export class VWCTooltipBase extends LitElement {
 

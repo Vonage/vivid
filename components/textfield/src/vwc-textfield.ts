@@ -19,7 +19,7 @@ import { TextField as MWCTextField } from '@material/mwc-textfield';
 import { style as styleCoupling } from '@vonage/vvd-style-coupling/mdc-vvd-coupling.css.js';
 import { style as vwcTextFieldStyle } from './vwc-textfield.css.js';
 import { styles as mwcTextFieldStyles } from '@material/mwc-textfield/mwc-textfield.css.js';
-import type { Shape } from '@vonage/vvd-foundation/constants.js';
+import type { Shape, Layout } from '@vonage/vvd-foundation/constants.js';
 import { debounced, handleAutofocus } from '@vonage/vvd-foundation/general-utils.js';
 
 export type { TextFieldType } from '@material/mwc-textfield';
@@ -42,6 +42,8 @@ MWCTextField.styles = [styleCoupling, mwcTextFieldStyles, vwcTextFieldStyle];
 const INPUT_ELEMENT_SLOT_NAME = 'formInputElement';
 const INPUT_ELEMENT_CLASS_NAME = 'vivid-input-internal';
 const MDC_FLOAT_ABOVE_CLASS_NAME = 'mdc-floating-label--float-above';
+
+type TextfieldLayout = Extract<Layout, Layout.Ghost | Layout.Outlined>;
 
 @customElement('vwc-textfield')
 export class VWCTextField extends MWCTextField {
@@ -68,6 +70,12 @@ export class VWCTextField extends MWCTextField {
 		type: String,
 		reflect: true
 	})
+	  autocomplete?: string;
+
+	@property({
+		type: String,
+		reflect: true
+	})
 		form: string | undefined;
 
 	@property({
@@ -75,6 +83,13 @@ export class VWCTextField extends MWCTextField {
 		reflect: true,
 		converter: v => v || ' '
 	})
+
+	@property({
+		type: String,
+		reflect: true
+	})
+		appearance?: TextfieldLayout;
+
 	override placeholder = ' ';
 	@query('.mdc-text-field__input') protected inputElementWrapper!: HTMLInputElement;
 	@internalProperty()
@@ -322,6 +337,7 @@ export class VWCTextField extends MWCTextField {
 		setAttributeByValue('type', this.type, fe);
 		setAttributeByValue('form', this.form, fe);
 		setAttributeByValue('placeholder', this.placeholder, fe);
+		setAttributeByValue('autocomplete', this.autocomplete, fe);
 
 		setAttributeByValue('min', this.min, fe);
 		setAttributeByValue('max', this.max, fe);

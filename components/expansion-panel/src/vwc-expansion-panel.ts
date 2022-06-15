@@ -9,10 +9,10 @@ import {
 	queryAsync,
 	TemplateResult
 } from 'lit-element';
-import type { Ripple } from '@material/mwc-ripple';
-import { RippleHandlers } from '@material/mwc-ripple/ripple-handlers.js';
-import { VWCExpansionPanelBase } from './vwc-expansion-panel-base.js';
-import { style } from './vwc-expansion-panel.css.js';
+import type {Ripple} from '@material/mwc-ripple';
+import {RippleHandlers} from '@material/mwc-ripple/ripple-handlers.js';
+import {VWCExpansionPanelBase} from './vwc-expansion-panel-base.js';
+import {style} from './vwc-expansion-panel.css.js';
 import {nothing} from 'lit-html';
 
 declare global {
@@ -32,7 +32,6 @@ function isValidHeaderValue(headerValue: string | number) {
 
 @customElement('vwc-expansion-panel')
 export class VWCExpansionPanel extends VWCExpansionPanelBase {
-	safeHtml = html;
 	static override styles = style;
 
 	/**
@@ -53,10 +52,10 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 	@property({type: String, reflect: true})
 		indicatorIconSet: IndicatorIconSets[number] = 'chevron';
 
-	@property({ type: String, reflect: true })
+	@property({type: String, reflect: true})
 		meta = '';
 
-	@property({ type: Boolean, reflect: true })
+	@property({type: Boolean, reflect: true})
 		dense = false;
 
 	@property({type: Boolean, reflect: true})
@@ -93,10 +92,10 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 
 		return html`
 			<button class="expansion-panel-button" id="expansion-panel"
-				@mousedown="${this.handleRippleActivate}"
-				@mouseenter="${this.handleRippleMouseEnter}"
-				@mouseleave="${this.handleRippleMouseLeave}"
-				@touchstart="${() => {
+							@mousedown="${this.handleRippleActivate}"
+							@mouseenter="${this.handleRippleMouseEnter}"
+							@mouseleave="${this.handleRippleMouseLeave}"
+							@touchstart="${() => {
 		this.toggleOpen();
 		this.handleRippleActivate;
 	}}"
@@ -125,7 +124,18 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 
 	protected renderPanelHeader(): TemplateResult | string {
 		if (!isValidHeaderValue(this.headingLevel)) this.headingLevel = '3';
-		return eval(`this.safeHtml\`<h${this.headingLevel} class="expansion-panel-header">\${this.renderHeaderButton()}</h${this.headingLevel}>\``);
+		switch (this.headingLevel.toString()) {
+		case '2':
+			return html`<h2 class="expansion-panel-header">${this.renderHeaderButton()}</h2>`;
+		case '4':
+			return html`<h4 class="expansion-panel-header">${this.renderHeaderButton()}</h4>`;
+		case '5':
+			return html`<h5 class="expansion-panel-header">${this.renderHeaderButton()}</h5>`;
+		case '6':
+			return html`<h6 class="expansion-panel-header">${this.renderHeaderButton()}</h6>`;
+		default:
+			return html`<h3 class="expansion-panel-header">${this.renderHeaderButton()}</h3>`;
+		}
 	}
 
 	protected override render(): TemplateResult {

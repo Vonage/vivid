@@ -217,6 +217,15 @@ vwc-notched-outline {
 	.mdc-select__anchor {
 		display: block;
 	}
+	.mdc-select--outlined {
+		--mdc-select-fill-color: transparent;
+	}
+}
+
+:host([appearance='ghost'i][dense][disabled]) {
+	.mdc-select.mdc-select--outlined {
+		background-color: transparent;
+	}
 }
 
 
@@ -225,4 +234,8 @@ vwc-notched-outline {
 	.mdc-select--no-label .mdc-select__selected-text {
 		padding-top: 8px;
 	}
+}
+
+mwc-menu {
+	--mdc-theme-surface: var(#{scheme-variables.$vvd-color-surface-8dp});
 }

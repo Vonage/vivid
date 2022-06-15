@@ -3,6 +3,105 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.33.1](https://github.com/Vonage/vivid/compare/v2.33.0...v2.33.1) (2022-06-13)
+
+**Note:** Version bump only for package @vivid/root
+
+
+
+
+
+# [2.33.0](https://github.com/Vonage/vivid/compare/v2.32.0...v2.33.0) (2022-06-09)
+
+
+### Bug Fixes
+
+* **card:** rem units to px ([#1312](https://github.com/Vonage/vivid/issues/1312)) ([5c10091](https://github.com/Vonage/vivid/commit/5c100911fceddf6ba2875c3f11ba16e907c9e576))
+
+
+### Features
+
+* **textfield:** textfield can now turn off auto complete ([#1315](https://github.com/Vonage/vivid/issues/1315)) ([cfd7959](https://github.com/Vonage/vivid/commit/cfd7959f9fb1029ffd96a49faa98234f86c87d36))
+
+
+
+
+
+# [2.32.0](https://github.com/Vonage/vivid/compare/v2.31.0...v2.32.0) (2022-06-08)
+
+
+### Features
+
+* **action-group:** new component ([#1308](https://github.com/Vonage/vivid/issues/1308)) ([27cada0](https://github.com/Vonage/vivid/commit/27cada08b4fa9bf893c95ea34eefee36b86524da))
+
+
+
+
+
+# [2.31.0](https://github.com/Vonage/vivid/compare/v2.30.3...v2.31.0) (2022-05-30)
+
+
+### Bug Fixes
+
+* **textfield:** transparent bg ([#1306](https://github.com/Vonage/vivid/issues/1306)) ([45f3063](https://github.com/Vonage/vivid/commit/45f3063868465265e548d41c0134e70df73963c6))
+
+
+### Features
+
+* **tags:** support removable ([#1266](https://github.com/Vonage/vivid/issues/1266)) ([5b3cd3c](https://github.com/Vonage/vivid/commit/5b3cd3c2c92f0ca2a7f0a1573c74583717d0f5ec))
+
+
+
+
+
+## [2.30.3](https://github.com/Vonage/vivid/compare/v2.30.2...v2.30.3) (2022-05-26)
+
+**Note:** Version bump only for package @vivid/root
+
+
+
+
+
+## [2.30.2](https://github.com/Vonage/vivid/compare/v2.30.1...v2.30.2) (2022-05-24)
+
+
+### Bug Fixes
+
+* **select:** update story ([#1302](https://github.com/Vonage/vivid/issues/1302)) ([aad4069](https://github.com/Vonage/vivid/commit/aad406972103f14d6bae0b4b59994e7f223a7f7c))
+
+
+
+
+
+## [2.30.1](https://github.com/Vonage/vivid/compare/v2.30.0...v2.30.1) (2022-05-17)
+
+
+### Bug Fixes
+
+* **button:** icon color initialized to current color ([#1294](https://github.com/Vonage/vivid/issues/1294)) ([18e484e](https://github.com/Vonage/vivid/commit/18e484e2d09cbca6bb71d3776532c0c40e8170fb))
+* **textfield:** add ghost option ([#1293](https://github.com/Vonage/vivid/issues/1293)) ([d866845](https://github.com/Vonage/vivid/commit/d8668456a309c3626e8419fd319b0b5a540516d7))
+* **textfield:** present placeholder ([#1296](https://github.com/Vonage/vivid/issues/1296)) ([a76f222](https://github.com/Vonage/vivid/commit/a76f22258cbda438753b90f02fa05a681b18963d))
+
+
+
+
+
+# [2.30.0](https://github.com/Vonage/vivid/compare/v2.29.0...v2.30.0) (2022-05-08)
+
+
+### Bug Fixes
+
+* **menu:** background and shadow colors ([#1280](https://github.com/Vonage/vivid/issues/1280)) ([40e02cd](https://github.com/Vonage/vivid/commit/40e02cd681e256bea68fccdd717e1476968f1c2c))
+
+
+### Features
+
+* **breadcrumb:** add the breadcrumb component ([#1260](https://github.com/Vonage/vivid/issues/1260)) ([bf0c5ed](https://github.com/Vonage/vivid/commit/bf0c5edd1f95e57eabf814011eb57dd2b785ac5c))
+
+
+
+
+
 # [2.29.0](https://github.com/Vonage/vivid/compare/v2.28.2...v2.29.0) (2022-05-03)
 
 

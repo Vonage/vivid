@@ -12,6 +12,7 @@ import {
 	Autocomplete
 } from '@vonage/vwc-textfield/stories/textfield-all.stories';
 import { storiesToElement } from '../../utils/storiesToElement';
+import {AppearanceGhost} from "@vonage/vwc-textfield/stories/textfield-variants.stories";
 
 
 export async function createElementVariations(wrapper) {
@@ -19,6 +20,7 @@ export async function createElementVariations(wrapper) {
 		Default,
 		CharCounter,
 		Dense,
+		AppearanceGhost,
 		Disabled,
 		Icon,
 		PillShape,
