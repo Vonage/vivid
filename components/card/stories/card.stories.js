@@ -170,13 +170,11 @@ const ContentSlotTemplate = args => html`
 		}
 	</style>
 	<vwc-card>
-		<img style="width: 100%;" alt="test" src="https://www.w3schools.com/tags/img_girl.jpg" slot="media"/>
 		<div slot="content">
 			<p>A card with no heading + Subtitle or text</p>
 			<p>Can contain whatever is needed.</p>
 			<p>Media slot and Footer Slot are still available if needed</p>
 		</div>
-		<vwc-button slot="footer" shape="pill" layout="outlined" icon="info">Click</vwc-button>
 	</vwc-card>`;
 
 export const ContentSlot = ContentSlotTemplate.bind({});
