@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-snackbar",
-	"version": "2.33.1",
+	"version": "2.34.0",
 	"description": "Snackbar component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/snackbar#readme",
 	"license": "ISC",
@@ -27,18 +27,18 @@
 	},
 	"dependencies": {
 		"@material/mwc-snackbar": "^0.22.1",
-		"@vonage/vvd-core": "2.33.1",
-		"@vonage/vvd-foundation": "2.33.1",
-		"@vonage/vwc-icon": "2.33.1",
-		"@vonage/vwc-icon-button": "2.33.1",
+		"@vonage/vvd-core": "2.34.0",
+		"@vonage/vvd-foundation": "2.34.0",
+		"@vonage/vwc-icon": "2.34.0",
+		"@vonage/vwc-icon-button": "2.34.0",
 		"lit-element": "^2.4.0",
 		"lit-html": "^1.3.0",
 		"tslib": "^2.3.0"
 	},
 	"devDependencies": {
-		"@vonage/vvd-design-tokens": "2.33.1",
-		"@vonage/vvd-typography": "2.33.1",
-		"@vonage/vvd-umbrella": "2.33.1",
+		"@vonage/vvd-design-tokens": "2.34.0",
+		"@vonage/vvd-typography": "2.34.0",
+		"@vonage/vvd-umbrella": "2.34.0",
 		"typescript": "^4.3.2"
 	}
 }

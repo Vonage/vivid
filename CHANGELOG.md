@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.34.0](https://github.com/Vonage/vivid/compare/v2.33.1...v2.34.0) (2022-06-19)
+
+
+### Bug Fixes
+
+* **action-group:** add story ([#1314](https://github.com/Vonage/vivid/issues/1314)) ([3b16eaf](https://github.com/Vonage/vivid/commit/3b16eaf244c401f2cfeeae06ba308f3637ecf984))
+* **style:** move from rem to px ([#1316](https://github.com/Vonage/vivid/issues/1316)) ([648bf19](https://github.com/Vonage/vivid/commit/648bf1941cee4a970965a534667e77ddb2536af9))
+
+
+### Features
+
+* **card:** omit elevation in favor of card ([#1278](https://github.com/Vonage/vivid/issues/1278)) ([9f1c4c6](https://github.com/Vonage/vivid/commit/9f1c4c66f48c87c29c9ca23d278e167f258ee64e))
+
+
+
+
+
 ## [2.33.1](https://github.com/Vonage/vivid/compare/v2.33.0...v2.33.1) (2022-06-13)
 
 **Note:** Version bump only for package @vivid/root

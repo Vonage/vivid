@@ -1,3 +1,12 @@
+# [2.34.0](https://github.com/vonage/vivid/compare/v2.33.1...v2.34.0) (2022-06-19)
+
+
+### Bug Fixes
+
+* **style:** move from rem to px ([#1316](https://github.com/vonage/vivid/issues/1316)) ([648bf19](https://github.com/vonage/vivid/commit/648bf1941cee4a970965a534667e77ddb2536af9))
+
+
+
 ## [2.33.1](https://github.com/vonage/vivid/compare/v2.33.0...v2.33.1) (2022-06-13)
 
 

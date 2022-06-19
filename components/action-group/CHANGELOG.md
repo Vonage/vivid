@@ -1,3 +1,12 @@
+# [2.34.0](https://github.com/vonage/vivid/compare/v2.33.1...v2.34.0) (2022-06-19)
+
+
+### Bug Fixes
+
+* **action-group:** add story ([#1314](https://github.com/vonage/vivid/issues/1314)) ([3b16eaf](https://github.com/vonage/vivid/commit/3b16eaf244c401f2cfeeae06ba308f3637ecf984))
+
+
+
 ## [2.33.1](https://github.com/vonage/vivid/compare/v2.33.0...v2.33.1) (2022-06-13)
 
 
