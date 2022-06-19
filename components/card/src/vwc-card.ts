@@ -88,7 +88,7 @@ export class VWCCard extends LitElement {
 						<div class="vwc-card-media">
 							<slot name="media"></slot>
 						</div>
-						<slot name="content">
+						<slot name="main">
 							<div class="vwc-card-content">
 								<div class="vwc-card-wrapper">
 									${this.renderHeader()}

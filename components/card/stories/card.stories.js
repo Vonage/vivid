@@ -159,7 +159,7 @@ CardFooter.args = {
 };
 
 
-const ContentSlotTemplate = args => html`
+const MainSlotTemplate = args => html`
 	<style>
 		#root-inner {
 			width: 300px
@@ -170,16 +170,16 @@ const ContentSlotTemplate = args => html`
 		}
 	</style>
 	<vwc-card>
-		<div slot="content">
+		<div slot="main">
 			<p>A card with no heading + Subtitle or text</p>
 			<p>Can contain whatever is needed.</p>
 			<p>Media slot and Footer Slot are still available if needed</p>
 		</div>
 	</vwc-card>`;
 
-export const ContentSlot = ContentSlotTemplate.bind({});
-ContentSlot.args = {
-	label: 'content Slot',
+export const MainSlot = MainSlotTemplate.bind({});
+MainSlot.args = {
+	label: 'Main Slot',
 };
 
 
