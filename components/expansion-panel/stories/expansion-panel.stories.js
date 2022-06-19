@@ -39,7 +39,9 @@ const OutlinedTemplate = args => html`
 	<style>
 		vwc-expansion-panel {
 			width: 500px;
+			display: block;
 			padding: 0.5rem;
+			border-radius: 6px;
 		}
 		form {
 			display: grid;

@@ -88,8 +88,8 @@ export class VWCCard extends LitElement {
 						<div class="vwc-card-media">
 							<slot name="media"></slot>
 						</div>
-						<div class="vwc-card-content">
-							<slot name="content">
+						<slot name="main">
+							<div class="vwc-card-content">
 								<div class="vwc-card-wrapper">
 									${this.renderHeader()}
 									<slot name="meta"></slot>
@@ -97,8 +97,8 @@ export class VWCCard extends LitElement {
 								<div class="vwc-card-text">
 									${this.text ? this.text : nothing}
 								</div>
-							</slot>
-						</div>
+							</div>
+						</slot>
 						<div class="vwc-card-footer ${classMap(footerClassMap)}">
 							<slot name="footer" @slotchange="${this.footerSlotChanged}"></slot>
 						</div>

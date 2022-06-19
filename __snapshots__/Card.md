@@ -10,8 +10,8 @@
         <slot name="media">
         </slot>
       </div>
-      <div class="vwc-card-content">
-        <slot name="content">
+      <slot name="main">
+        <div class="vwc-card-content">
           <div class="vwc-card-wrapper">
             <header class="no-content vwc-card-header">
               <slot name="graphic">
@@ -28,8 +28,8 @@
           </div>
           <div class="vwc-card-text">
           </div>
-        </slot>
-      </div>
+        </div>
+      </slot>
       <div class="no-content vwc-card-footer">
         <slot name="footer">
         </slot>

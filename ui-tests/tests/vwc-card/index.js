@@ -94,11 +94,11 @@ export async function createElementVariations(wrapper) {
 			<vwc-button slot="footer" shape="pill" layout="outlined" icon="info" type="submit" outlined="">Click</vwc-button>
 			<img slot="media" src="https://doodleipsum.com/300x150/flat?bg=EB765D&i=7d5ed3bc0c215d1359b2a63d03cf1540" alt="Sitting on Floor by Gustavo Pedrosa" />
 			<img slot="graphic" src="https://doodleipsum.com/40x40/hand-drawn?bg=7463D9&amp;i=af462b28146d2ac91599602e083ddee5" alt="Sitting on Floor by Gustavo Pedrosa">
-			<div slot="content">I'm the card content that overrides the content from attributes. I have no text styles or any styles for that metter :) You can do whatever you want here</div>
+			<div slot="main">I'm the card content that overrides the content from attributes. I have no text styles or any styles for that metter :) You can do whatever you want here</div>
 		</vwc-card>
 
 		<vwc-card elevation="24">
-			<div slot="content">I'm the card content that overrides the content from attributes. I have no text styles or any styles for that matter :) You can do whatever you want here</div>
+			<div slot="main">I'm the card content that overrides the content from attributes. I have no text styles or any styles for that matter :) You can do whatever you want here</div>
 		</vwc-card>
 		
 		<vwc-card label="card with meta-no header" text="I'm a Supporting text, cant be line trimmed. Lorem ipsum dolor sit amet, consectet adipiscing elit">
