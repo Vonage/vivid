@@ -85,14 +85,22 @@ export class VWCButtonToggleGroup extends LitElement {
 	}
 
 	set values(values: (string | false | null)[]) {
+		function isButtonSelectedWithoutValue(button: Element) {
+			return !button.hasAttribute('value') && button.hasAttribute(SELECTED_ATTRIBUTE_NAME);
+		}
+
+		function isButtonWithDefinedValue(button: Element) {
+			return button.hasAttribute('value') && values.includes(button.getAttribute('value'));
+		}
+
 		if (!this.multi) {
 			values = [values[0]];
 		}
 		this.#_values = values;
-		this.items.forEach((child) => {
-			this.toggleButtonSelectedState(child,
-				(!child.hasAttribute('value') && child.hasAttribute(SELECTED_ATTRIBUTE_NAME)) ||
-				(child.hasAttribute('value') && values.includes(child.getAttribute('value'))));
+
+		this.items.forEach((button) => {
+			this.toggleButtonSelectedState(button,
+				isButtonSelectedWithoutValue(button) || isButtonWithDefinedValue(button));
 		});
 	}
 
