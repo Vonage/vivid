@@ -146,7 +146,7 @@ describe('Toggle-buttons-group', () => {
 				.equal(actualElement.children[1]);
 		});
 
-		it(`should set the elements in the array of the last button that was clicked`, function () {
+		it(`should set the elements in the array as the last button that was clicked`, function () {
 			actualElement.children[1].click();
 			actualElement.children[2].click();
 
@@ -172,7 +172,7 @@ describe('Toggle-buttons-group', () => {
 			);
 		});
 
-		it(`should return the an empty array if none is selected`, function () {
+		it(`should return an empty array if none is selected`, function () {
 			expect(actualElement.values.length)
 				.to
 				.equal(0);
@@ -189,7 +189,7 @@ describe('Toggle-buttons-group', () => {
 				.equal(buttonValues[1]);
 		});
 
-		it(`should set the value in the array of the last button that was clicked`, function () {
+		it(`should set the last button that was clicked in the selected array`, function () {
 			actualElement.children[1].click();
 			actualElement.children[2].click();
 
