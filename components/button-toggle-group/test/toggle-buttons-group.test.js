@@ -146,7 +146,7 @@ describe('Toggle-buttons-group', () => {
 				.equal(actualElement.children[1]);
 		});
 
-		it(`should set the elements in the array of the last button that was clicked`, function () {
+		it(`should set the elements in the array as the last button that was clicked`, function () {
 			actualElement.children[1].click();
 			actualElement.children[2].click();
 
@@ -172,7 +172,7 @@ describe('Toggle-buttons-group', () => {
 			);
 		});
 
-		it(`should return the an empty array if none is selected`, function () {
+		it(`should return an empty array if none is selected`, function () {
 			expect(actualElement.values.length)
 				.to
 				.equal(0);
@@ -189,7 +189,7 @@ describe('Toggle-buttons-group', () => {
 				.equal(buttonValues[1]);
 		});
 
-		it(`should set the value in the array of the last button that was clicked`, function () {
+		it(`should set the last button that was clicked in the selected array`, function () {
 			actualElement.children[1].click();
 			actualElement.children[2].click();
 
@@ -201,19 +201,39 @@ describe('Toggle-buttons-group', () => {
 				.equal(buttonValues[2]);
 		});
 
-		it(`should set the group's state according to set values`, function () {
+		it(`should set the group's state according to set values`, async function () {
 			const oldValues = actualElement.values;
 			actualElement.values = [buttonValues[0], buttonValues[2]];
-			const newValues = actualElement.values;
+			await actualElement.updateComplete;
+			const newValues = actualElement.selected;
 			expect(oldValues.length)
 				.to
 				.equal(0);
 			expect(newValues.length)
 				.to
 				.equal(1);
-			expect(newValues[0])
+			expect(newValues[0].getAttribute('value'))
 				.to
 				.equal(buttonValues[0]);
+		});
+
+		it('should return empty values array when set to null', async function() {
+			actualElement.multi = true;
+			actualElement.values = [buttonValues[0], buttonValues[2]];
+			await actualElement.updateComplete;
+			actualElement.values = null;
+			await actualElement.updateComplete;
+			expect(actualElement.values.length).to.equal(0);
+			expect(actualElement.selected.length).to.equal(0);
+		});
+
+		it('should return empty values array when set to []', async function() {
+			actualElement.multi = true;
+			actualElement.values = [buttonValues[0], buttonValues[2]];
+			await actualElement.updateComplete;
+			actualElement.values = [];
+			expect(actualElement.values.length).to.equal(0);
+			expect(actualElement.selected.length).to.equal(0);
 		});
 	});
 
@@ -307,6 +327,15 @@ describe('Toggle-buttons-group', () => {
 				.to
 				.equal('22');
 		});
+
+		it(`should apply the right state to a dynamically added element`, async function () {
+			actualElement.values = ['22'];
+			const element = document.createElement(VALID_BUTTON_ELEMENTS[0]);
+			element.setAttribute('value', '22');
+			actualElement.appendChild(element);
+			await waitForSlotChange();
+			expect(actualElement.selected[0].getAttribute('value')).to.equal('22');
+		});
 	});
 
 	describe(`size`, function () {
@@ -385,7 +414,19 @@ describe('Toggle-buttons-group', () => {
 </${COMPONENT_NAME}>`));
 		}
 
-		it(`should not cancel the last selection on click`, async function () {
+		it(`should prepopulate the values according to set selected buttons`, async function () {
+			const [actualElement] = (generateTemplate(['multi'],
+				[
+					['selected', 'value="1"'],
+					[],
+					['selected', 'value="2"'],
+					['selected', 'value="3"']
+				]));
+
+			expect(JSON.stringify(actualElement.values)).to.equal(JSON.stringify(['1', '2', '3']));
+		});
+
+		it(`should leave last selection on click`, async function () {
 			const [actualElement] = (generateTemplate(['required', 'multi']));
 
 			await actualElement.updateComplete;
@@ -409,8 +450,22 @@ describe('Toggle-buttons-group', () => {
 				.equal(selectedButton);
 		});
 
-		it(`should not cancel the last selection when button preselected`, async function () {
-			const [actualElement] = addElement(generateTemplate(['required', 'multi'],
+		it(`should deselect an active element when clicked`, async function () {
+			const [actualElement] = (generateTemplate(['required', 'multi'],
+				[['selected'], [], [], []]));
+			await actualElement.updateComplete;
+			const selectedButton = actualElement.children[1];
+
+			selectedButton.click();
+			await actualElement.updateComplete;
+			selectedButton.click();
+			await actualElement.updateComplete;
+
+			expect(selectedButton.hasAttribute('selected')).to.equal(false);
+		});
+
+		it(`should leave the last selection when button preselected`, async function () {
+			const [actualElement] = (generateTemplate(['required', 'multi'],
 				[['selected'], [], [], []]));
 
 			await actualElement.updateComplete;
@@ -433,8 +488,8 @@ describe('Toggle-buttons-group', () => {
 				.equal(selectedButton);
 		});
 
-		it(`should not send an event if not canceling`, async function () {
-			const [actualElement] = addElement(generateTemplate(['required', 'multi'],
+		it(`should prevent event emit if unselect is not available`, async function () {
+			const [actualElement] = (generateTemplate(['required', 'multi', 'dense'],
 				[['selected'], [], [], []]));
 
 			await actualElement.updateComplete;
