@@ -90,7 +90,7 @@ export class VWCButtonToggleGroup extends LitElement {
 		}
 
 		function isButtonWithDefinedValue(button: Element) {
-			return button.hasAttribute('value') && values.includes(button.getAttribute('value'));
+			return button.hasAttribute('value') && values?.includes(button.getAttribute('value'));
 		}
 
 		if (!this.multi) {

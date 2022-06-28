@@ -217,6 +217,26 @@ describe('Toggle-buttons-group', () => {
 				.equal(buttonValues[0]);
 		});
 
+		it('should return empty values array when set to null', async function() {
+			const emptyValues = [];
+			actualElement.multi = true;
+			actualElement.values = [buttonValues[0], buttonValues[2]];
+			await actualElement.updateComplete;
+			actualElement.values = null;
+			await actualElement.updateComplete;
+			expect(actualElement.values.length).to.equal(0);
+			expect(actualElement.selected.length).to.equal(0);
+		});
+
+		it('should return empty values array when set to []', async function() {
+			const emptyValues = [];
+			actualElement.multi = true;
+			actualElement.values = [buttonValues[0], buttonValues[2]];
+			await actualElement.updateComplete;
+			actualElement.values = [];
+			expect(actualElement.values.length).to.equal(0);
+			expect(actualElement.selected.length).to.equal(0);
+		});
 	});
 
 	describe(`multi`, function () {
