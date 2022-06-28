@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.34.1](https://github.com/Vonage/vivid/compare/v2.34.0...v2.34.1) (2022-06-28)
+
+
+### Bug Fixes
+
+* **button-toggle-group:** fix race condition between values property and slotted buttons ([#1324](https://github.com/Vonage/vivid/issues/1324)) ([3477513](https://github.com/Vonage/vivid/commit/3477513f044e2afcf39237cf49f65aac274aeb2f))
+
+
+
+
+
 # [2.34.0](https://github.com/Vonage/vivid/compare/v2.33.1...v2.34.0) (2022-06-19)
 
 
