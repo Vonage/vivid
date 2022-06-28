@@ -218,7 +218,6 @@ describe('Toggle-buttons-group', () => {
 		});
 
 		it('should return empty values array when set to null', async function() {
-			const emptyValues = [];
 			actualElement.multi = true;
 			actualElement.values = [buttonValues[0], buttonValues[2]];
 			await actualElement.updateComplete;
@@ -229,7 +228,6 @@ describe('Toggle-buttons-group', () => {
 		});
 
 		it('should return empty values array when set to []', async function() {
-			const emptyValues = [];
 			actualElement.multi = true;
 			actualElement.values = [buttonValues[0], buttonValues[2]];
 			await actualElement.updateComplete;
