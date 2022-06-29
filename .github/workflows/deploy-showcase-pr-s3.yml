@@ -10,6 +10,9 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_VIVID_DEMO_PRS_ACCESS }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_VIVID_DEMO_PRS_SECRET }}
+      S3_BUCKET_NAME: ${{ secrets.secrets.AWS_VIVID_DEMO_PRS_BUCKET }}
+      AWS_DEFAULT_REGION: us-east-1
+      AWS_DEFAULT_OUTPUT: json
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
@@ -55,7 +58,7 @@ jobs:
         run: yarn storybook:build base-url=${{ github.event.number }}
 
       - name: Deploy showcase under PR ID (${{ github.event.number }})
-        run: aws s3 sync ./.out/ s3://${{ secrets.AWS_VIVID_DEMO_PRS_BUCKET }}/${{ github.event.number }}
+        run: aws s3 sync ./.out/ s3://$S3_BUCKET_NAME/${{ github.event.number }}
 
       - name: Invalidate CloudFront distribution root object's cache
         run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_VIVID_DEMO_PRS_DISTRIBUTION }} --paths "/${{ github.event.number }}/*"
