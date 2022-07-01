@@ -75,6 +75,7 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_VIVID_DEMO_PROD_ACCESS }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_VIVID_DEMO_PROD_SECRET }}
+      AWS_DEFAULT_REGION: eu-east-1
       GITHUB_TOKEN: ${{ secrets.VNG_VVD_PAT }}
     needs: publish
     runs-on: ubuntu-18.04
