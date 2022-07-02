@@ -10,11 +10,11 @@
   </slot>
 </span>
 <span class="mdc-deprecated-list-item__meta">
-  <mwc-checkbox
+  <vwc-checkbox
     reducedtouchtarget=""
     tabindex="-1"
   >
-  </mwc-checkbox>
+  </vwc-checkbox>
 </span>
 
 ```
