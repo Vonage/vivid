@@ -5,15 +5,13 @@ Cards contain content and actions about a single subject.
 ## Usage
 
 ```
-<vwc-card heading="Hello Card!"
-         icon="home">
+<vwc-card heading="Hello Card!" icon="home">
    <div slot="media">Some media</div>
-   <vwc-button slot="actions">Action Button</vwc-button>
+   <vwc-button slot="footer">Action Button</vwc-button>
 </vwc-card>
 ```
 
 ## API
-
 
 ### Properties/Attributes
 
@@ -34,6 +32,7 @@ Cards contain content and actions about a single subject.
 | `media`   | Slot to add anything inside the `media` area                                                       |
 | `footer`  | Slot for action content placed the card footer                                                     |
 | `content` | Slot for content of the card. If exist, overrides the `heading`, `subtitle`, `card-text` and `header-icon`
+
 ## Styling tips
 
 ### Setting card's width
@@ -42,14 +41,15 @@ The width of the card is set via its wrapper's width.  Hence, if you wrap a card
 
 ```html
 <div class="card-wrapper">
-	<vwc-card></vwc-card>
+ <vwc-card></vwc-card>
 </div>
 ```
 
-Then your style should have: 
+Then your style should have:
+
 ```css
 .card-wrapper {
-	width: 300px;
+ width: 300px;
 }
 ```
 
