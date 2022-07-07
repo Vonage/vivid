@@ -9,12 +9,12 @@
   <slot>
   </slot>
 </span>
-<mwc-radio
+<vwc-radio
   class="mdc-deprecated-list-item__meta"
   global=""
   tabindex="-1"
 >
-</mwc-radio>
+</vwc-radio>
 
 ```
 
