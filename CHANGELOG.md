@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.35.0](https://github.com/Vonage/vivid/compare/v2.34.1...v2.35.0) (2022-07-07)
+
+
+### Bug Fixes
+
+* **workspace:** fix dev and prod deploy ([#1327](https://github.com/Vonage/vivid/issues/1327)) ([3d69add](https://github.com/Vonage/vivid/commit/3d69add23a4b47ee6d1018f8af02bf14e511c091))
+* **workspace:** fix storybook deployment ([#1326](https://github.com/Vonage/vivid/issues/1326)) ([37534f4](https://github.com/Vonage/vivid/commit/37534f4608fa5139fb6900225ff551959cd706e9))
+
+
+### Features
+
+* **empty-state:** support graphic assigned node ([#1322](https://github.com/Vonage/vivid/issues/1322)) ([bde72fd](https://github.com/Vonage/vivid/commit/bde72fddb1f15fb054a811cf7df9980180ed362b)), closes [#1320](https://github.com/Vonage/vivid/issues/1320)
+
+
+
+
+
 ## [2.34.1](https://github.com/Vonage/vivid/compare/v2.34.0...v2.34.1) (2022-06-28)
 
 

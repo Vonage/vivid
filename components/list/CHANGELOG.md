@@ -1,3 +1,12 @@
+# [2.35.0](https://github.com/vonage/vivid/compare/v2.34.1...v2.35.0) (2022-07-07)
+
+
+### Features
+
+* **empty-state:** support graphic assigned node ([#1322](https://github.com/vonage/vivid/issues/1322)) ([bde72fd](https://github.com/vonage/vivid/commit/bde72fddb1f15fb054a811cf7df9980180ed362b)), closes [#1320](https://github.com/vonage/vivid/issues/1320)
+
+
+
 ## [2.34.1](https://github.com/vonage/vivid/compare/v2.34.0...v2.34.1) (2022-06-28)
 
 
