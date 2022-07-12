@@ -4,12 +4,17 @@ concurrency: ${{ github.workflow }}
 
 on:
   workflow_dispatch:
+    inputs:
+      only_deploy:
+        description: 'Only deploy?'
+        required: false
   push:
     tags:
       - v*
 
 jobs:
   build:
+    if: inputs.only_deploy != 'yes'
     runs-on: ubuntu-18.04
     env:
       GITHUB_TOKEN: ${{ secrets.VNG_VVD_PAT }}
@@ -36,6 +41,7 @@ jobs:
           path: /tmp/vivid-env.tar.gz
 
   publish:
+    if: inputs.only_deploy != 'yes'
     needs: build
     runs-on: ubuntu-18.04
     env:
