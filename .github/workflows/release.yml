@@ -3,6 +3,7 @@ name: Release
 concurrency: ${{ github.workflow }}
 
 on:
+  workflow_dispatch:
   push:
     tags:
       - v*
