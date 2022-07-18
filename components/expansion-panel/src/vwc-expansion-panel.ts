@@ -93,6 +93,8 @@ export class VWCExpansionPanel extends VWCExpansionPanelBase {
 		return html`
 			<button class="expansion-panel-button" id="expansion-panel"
 							@mousedown="${this.handleRippleActivate}"
+							@focus="${this.handleRippleMouseEnter}"
+							@focusout="${this.handleRippleMouseLeave}"
 							@mouseenter="${this.handleRippleMouseEnter}"
 							@mouseleave="${this.handleRippleMouseLeave}"
 							@touchstart="${() => {
