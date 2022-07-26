@@ -16,6 +16,7 @@ export class VWCPopupBase extends LitElement {
 	private popupEl!: HTMLElement;
     @query('.popup-arrow')
     private arrowEl!: HTMLElement;
+    private anchorEl: Element | null | undefined;
 
     private get middleware(): Array<any> {
     	const middleware = [flip(), hide(), inline()];
@@ -38,14 +39,6 @@ export class VWCPopupBase extends LitElement {
      * */
     @property({ type: String, reflect: true })
     	anchor = '';
-
-    /**
-     * @prop anchorEl - popup's anchor element
-     * accepts Element
-     * @private
-     * */
-    @property({ type: Element, reflect: true })
-    private anchorEl: Element | null | undefined;
 
     /**
      * @prop dismissible - adds close button to the popup
