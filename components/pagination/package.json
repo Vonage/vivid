@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-pagination",
-	"version": "2.35.0",
+	"version": "2.36.0",
 	"description": "Pagination component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/pagination#readme",
 	"license": "ISC",
@@ -27,15 +27,15 @@
 	},
 	"dependencies": {
 		"@material/mwc-ripple": "^0.22.1",
-		"@vonage/vvd-core": "2.35.0",
-		"@vonage/vwc-icon": "2.35.0",
+		"@vonage/vvd-core": "2.36.0",
+		"@vonage/vwc-icon": "2.36.0",
 		"lit-element": "^2.3.0",
 		"tslib": "^2.3.0"
 	},
 	"devDependencies": {
-		"@vonage/vvd-design-tokens": "2.35.0",
-		"@vonage/vvd-typography": "2.35.0",
-		"@vonage/vvd-umbrella": "2.35.0",
+		"@vonage/vvd-design-tokens": "2.36.0",
+		"@vonage/vvd-typography": "2.36.0",
+		"@vonage/vvd-umbrella": "2.36.0",
 		"typescript": "^4.3.2"
 	}
 }
