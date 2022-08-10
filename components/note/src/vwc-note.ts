@@ -6,7 +6,7 @@ import {
 import { classMap } from 'lit-html/directives/class-map.js';
 import type { ClassInfo } from 'lit-html/directives/class-map.js';
 import { style as vwcNoteStyle } from './vwc-note.css.js';
-import type { Connotation } from '@vonage/vvd-foundation/constants.js';
+import type { Connotation, Layout } from '@vonage/vvd-foundation/constants.js';
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -21,6 +21,8 @@ type NoteConnotation = Extract<
 	| Connotation.Info
 	| Connotation.Announcement
 >;
+
+type NoteLayout = Extract<Layout, Layout.Soft>;
 
 /**
  * `vwc-note` component is designated to layout connotated notification content
@@ -43,11 +45,17 @@ export class VWCNote extends LitElement {
 	@property({ type: String, reflect: true })
 		header?: string;
 
+	@property({ type: String, reflect: true })
+		layout?: NoteLayout;
+
+
 	protected getRenderClasses(): ClassInfo {
 		return {
 			[`connotation-${this.connotation}`]: !!this.connotation,
+			[`layout-${this.layout}`]: !!this.layout
 		};
 	}
+
 
 	protected override render(): TemplateResult {
 		return html`
@@ -61,7 +69,7 @@ export class VWCNote extends LitElement {
 	}
 
 	private renderIcon(): TemplateResult {
-		return html`<vwc-icon class="note-icon" type="${this.icon}" part="icon"></vwc-icon>`;
+		return html`<vwc-icon class="note-icon" type="${this.icon}" part="icon" connotation="${this.connotation}"></vwc-icon>`;
 	}
 
 	private renderHeader(): TemplateResult {
