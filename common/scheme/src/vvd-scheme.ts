@@ -59,10 +59,10 @@ async function syncWithOSSettings() {
 function setSyncModeIfRelevant(scheme: SchemeOption): PredefinedScheme {
 	let result: SchemeOption;
 	if (scheme === AutoScheme.SYNC_WITH_OS_SETTINGS) {
-		pcs.addListener(syncWithOSSettings);
+		pcs.addEventListener('change', syncWithOSSettings);
 		result = getPreferedColorScheme() as PredefinedScheme;
 	} else {
-		pcs.removeListener(syncWithOSSettings);
+		pcs.removeEventListener('change', syncWithOSSettings);
 		result = scheme;
 	}
 	return result;
