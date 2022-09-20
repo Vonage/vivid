@@ -20,11 +20,6 @@ describe('snackbar a11y', () => {
 		snackbar = s;
 	});
 
-
-	it('should have 0 accessibility violations (normal flavor)', async () => {
-		await expect(snackbar).shadowDom.accessible();
-	});
-
 	it('should have 0 accessibility violations (legacy flavor)', async () => {
 		await expect(snackbar).shadowDom.accessible();
 	});
