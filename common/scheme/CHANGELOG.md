@@ -1,3 +1,12 @@
+## [2.36.1](https://github.com/vonage/vivid/compare/v2.36.0...v2.36.1) (2022-09-20)
+
+
+### Bug Fixes
+
+* **scheme:** replace match media deprecated listener method ([#1342](https://github.com/vonage/vivid/issues/1342)) ([136bf45](https://github.com/vonage/vivid/commit/136bf450ea8e38945a1351fd17ff67de46e63171))
+
+
+
 # [2.36.0](https://github.com/vonage/vivid/compare/v2.35.0...v2.36.0) (2022-07-27)
 
 

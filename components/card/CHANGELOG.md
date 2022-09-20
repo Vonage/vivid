@@ -1,3 +1,12 @@
+## [2.36.1](https://github.com/vonage/vivid/compare/v2.36.0...v2.36.1) (2022-09-20)
+
+
+### Bug Fixes
+
+* **card:** documentation ([#1340](https://github.com/vonage/vivid/issues/1340)) ([d74a085](https://github.com/vonage/vivid/commit/d74a085d2700bb7dd583cef75747b7700fb1cfc1))
+
+
+
 # [2.36.0](https://github.com/vonage/vivid/compare/v2.35.0...v2.36.0) (2022-07-27)
 
 
