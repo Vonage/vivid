@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.36.1](https://github.com/Vonage/vivid/compare/v2.36.0...v2.36.1) (2022-09-20)
+
+
+### Bug Fixes
+
+* **card:** documentation ([#1340](https://github.com/Vonage/vivid/issues/1340)) ([d74a085](https://github.com/Vonage/vivid/commit/d74a085d2700bb7dd583cef75747b7700fb1cfc1))
+* **scheme:** replace match media deprecated listener method ([#1342](https://github.com/Vonage/vivid/issues/1342)) ([136bf45](https://github.com/Vonage/vivid/commit/136bf450ea8e38945a1351fd17ff67de46e63171))
+
+
+
+
+
 # [2.36.0](https://github.com/Vonage/vivid/compare/v2.35.0...v2.36.0) (2022-07-27)
 
 
