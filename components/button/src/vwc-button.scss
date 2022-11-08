@@ -49,7 +49,7 @@
 	// ! this was supposed to be set by MDC
 	font-stretch: var(--mdc-typography-button-font-stretch);
 	letter-spacing: normal;
-	line-height: 1;
+	line-height: 1.1;
 
 	&:not(.mdc-button--dense) {
 		vwc-icon {
