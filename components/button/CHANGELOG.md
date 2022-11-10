@@ -1,3 +1,12 @@
+## [2.36.2](https://github.com/vonage/vivid/compare/v2.36.1...v2.36.2) (2022-11-10)
+
+
+### Bug Fixes
+
+* **button:** apply line height through var ([#1354](https://github.com/vonage/vivid/issues/1354)) ([6b0c032](https://github.com/vonage/vivid/commit/6b0c0324caca74ed940ca3927577f65f266332db))
+
+
+
 ## [2.36.1](https://github.com/vonage/vivid/compare/v2.36.0...v2.36.1) (2022-09-20)
 
 
