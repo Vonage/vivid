@@ -12,9 +12,9 @@ const COMPONENT_NAME = 'vwc-button';
 describe('button typography', async () => {
 	let addElement = isolatedElementsCreation();
 	const SIZE_FLAVORS = {
-		default: await getTypographyStyle('button'),
-		dense: await getTypographyStyle('caption-bold'),
-		enlarged: await getTypographyStyle('body-1-bold'),
+		default: { ...await getTypographyStyle('button'), lineHeight: 1.1 },
+		dense: { ...await getTypographyStyle('caption-bold'), lineHeight: 1.1 },
+		enlarged: { ...await getTypographyStyle('body-1-bold'), lineHeight: 1.1 },
 	};
 
 	for (const flavor in SIZE_FLAVORS) {
