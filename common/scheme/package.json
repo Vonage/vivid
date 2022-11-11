@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vvd-scheme",
-	"version": "2.36.2",
+	"version": "2.36.3",
 	"description": "Vivid scheme management service",
 	"author": "yinonov <yinon@hotmail.com>",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/scheme#readme",
@@ -22,12 +22,12 @@
 		"url": "https://github.com/Vonage/vivid/issues"
 	},
 	"dependencies": {
-		"@vonage/vvd-foundation": "2.36.2",
+		"@vonage/vvd-foundation": "2.36.3",
 		"tslib": "^2.3.0"
 	},
 	"devDependencies": {
-		"@vonage/vvd-design-tokens": "2.36.2",
-		"@vonage/vvd-umbrella": "2.36.2",
+		"@vonage/vvd-design-tokens": "2.36.3",
+		"@vonage/vvd-umbrella": "2.36.3",
 		"lit-element": "^2.4.0",
 		"typescript": "^4.3.2"
 	}
