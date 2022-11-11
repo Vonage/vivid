@@ -31,10 +31,6 @@
 	}
 }
 
-:host {
-	--vvd-typography-line-height: 1.1;
-}
-
 .mdc-button {
 	--mdc-button-disabled-ink-color: var(#{vvd-formfield.$formfield-disabled-ink});
 	--mdc-button-disabled-fill-color: var(#{scheme-variables.$vvd-color-neutral-30});
@@ -52,6 +48,7 @@
 	// ! this was supposed to be set by MDC
 	font-stretch: var(--mdc-typography-button-font-stretch);
 	letter-spacing: normal;
+	line-height: normal;
 
 	&:not(.mdc-button--dense) {
 		vwc-icon {
@@ -123,7 +120,6 @@
 	&.button-stacked {
 		--button-block-size: 68px;
 		flex-direction: column;
-		line-height: normal;
 
 		:host([enlarged]) & {
 			--button-block-size: 80px;
