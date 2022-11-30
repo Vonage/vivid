@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.37.0](https://github.com/Vonage/vivid/compare/v2.36.3...v2.37.0) (2022-11-30)
+
+
+### Features
+
+* **tag:** add remove tag event ([#1361](https://github.com/Vonage/vivid/issues/1361)) ([73aa22f](https://github.com/Vonage/vivid/commit/73aa22f9115e83e7ade008d003981b60e286995f))
+
+
+
+
+
 ## [2.36.3](https://github.com/Vonage/vivid/compare/v2.36.2...v2.36.3) (2022-11-11)
 
 **Note:** Version bump only for package @vivid/root

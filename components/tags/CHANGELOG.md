@@ -1,3 +1,12 @@
+# [2.37.0](https://github.com/vonage/vivid/compare/v2.36.3...v2.37.0) (2022-11-30)
+
+
+### Features
+
+* **tag:** add remove tag event ([#1361](https://github.com/vonage/vivid/issues/1361)) ([73aa22f](https://github.com/vonage/vivid/commit/73aa22f9115e83e7ade008d003981b60e286995f))
+
+
+
 ## [2.36.3](https://github.com/vonage/vivid/compare/v2.36.2...v2.36.3) (2022-11-11)
 
 
