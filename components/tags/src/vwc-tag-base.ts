@@ -48,6 +48,9 @@ export class VWCTagBase extends LitElement {
 	@property({ type: Boolean, reflect: true })
 		removable = false;
 
+	@property({ type: Boolean, reflect: true })
+		removeEventOnly = false;
+
 	@state() protected shouldRenderRipple = false;
 
 	protected rippleHandlers = new RippleHandlers(() => {
@@ -124,8 +127,15 @@ export class VWCTagBase extends LitElement {
 		</span>`;
 	}
 
+	protected removeTag(): void {
+		this.dispatchEvent(new CustomEvent('remove-tag', {detail: this}));
+		if (!this.removeEventOnly) {
+			this.remove();
+		}
+	}
+
 	protected renderRemoveButton(): TemplateResult {
-		return html`<button class="remove-button" @click="${()=> this.remove()}">
+		return html`<button class="remove-button" @click="${()=> this.removeTag()}">
 			${this.renderIcon('close-line')}
 		</button>`;
 	}
