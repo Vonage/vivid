@@ -98,9 +98,9 @@ describe ('expansion panel', () => {
 	it('should have header text and meta-data text', async () => {
 		const headerText = 'Click me';
 		const metaText = 'meta-data';
-		const [actualElement] = (
+		const [actualElement] = addElement((
 			textToDomToParent(`<${COMPONENT_NAME} header="${headerText}" meta="${metaText}"></${COMPONENT_NAME}>`)
-		);
+		));
 		await waitNextTask();
 		const header = actualElement.shadowRoot.querySelector('.heading-text');
 		const meta = actualElement.shadowRoot.querySelector('.meta');

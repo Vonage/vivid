@@ -28,7 +28,9 @@ export class VWCEmptyStateBase extends LitElement {
 
 	protected override render(): TemplateResult {
 		return html`<section>
-			${this.icon ? this.renderIcon() : nothing}
+			<slot name="graphic">
+				${this.icon ? this.renderIcon() : nothing}
+			</slot>
 			${this.heading ? this.renderHeading() : nothing}
 			${this.body ? this.renderBody() : nothing}
 		</section>`;

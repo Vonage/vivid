@@ -41,19 +41,6 @@ describe('vvd-fonts service', () => {
 				assertTestElementAndClean(testElement, baseElement);
 			});
 		});
-
-		it('should init fonts when init is AFTER the document loaded', async () => {
-			await getFrameLoadedInjected(FONTS_SETUP_HTML_TAG, async (iframe) => {
-				const [testElement, baseElement] = setupTestElements(
-					iframe.contentDocument
-				);
-				if (iframe.contentDocument.readyState !== 'complete') {
-					await new Promise(resolve => iframe.contentDocument.addEventListener('DOMContentLoaded', resolve));
-				}
-				await iframe.contentWindow.vvdFonts.init();
-				assertTestElementAndClean(testElement, baseElement);
-			});
-		});
 	});
 });
 

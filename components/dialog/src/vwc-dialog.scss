@@ -28,6 +28,7 @@
 
 #actions {
 	@include typography.typography-cat-shorthand('body-2-bold');
+	padding-top: 24px;
 	padding-bottom: 0;
 }
 

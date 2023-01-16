@@ -1,8 +1,8 @@
 export default {
 	sourcePath: '../readme.md',
-	outputName: 'elevation-introduction',
+	outputName: 'breadcrumb-introduction',
 	story: {
-		title: 'Alpha/Components/Elevation',
+		title: 'Alpha/Components/Breadcrumb',
 		name: 'Introduction',
 		parameters: {
 			options: {

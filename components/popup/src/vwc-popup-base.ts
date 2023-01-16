@@ -1,26 +1,28 @@
 import {
-	html, LitElement, property, query, TemplateResult, PropertyValues
+	html, LitElement, property, query, TemplateResult
 } from 'lit-element';
 import { ClassInfo, classMap } from 'lit-html/directives/class-map.js';
 import { nothing } from 'lit-html';
-import { computePosition, offset, shift, flip, arrow } from '@floating-ui/dom';
-import type { Placement, Strategy, Padding } from '@floating-ui/core';
+import { arrow, autoUpdate, computePosition, flip, hide, inline, offset, Strategy } from '@floating-ui/dom';
+import type { Placement, Padding } from '@floating-ui/dom';
 
 export class VWCPopupBase extends LitElement {
 	private get PADDING(): Padding { return 0; };
 	private get DISTANCE(): number { return 12; };
+	private get arrowPosition(): any { return { top: 'bottom', right: 'left', bottom: 'top', left: 'right' }; }
+	private cleanup?: () => void; // cleans the autoupdate
 
-	private onResizeWindow = this.updatePosition.bind(this);
     @query('.popup-wrapper')
 	private popupEl!: HTMLElement;
     @query('.popup-arrow')
     private arrowEl!: HTMLElement;
+    private anchorEl: Element | null | undefined;
 
     private get middleware(): Array<any> {
-    	return (
-    		this.arrow ? [flip(), shift({ padding: this.PADDING }), arrow({ element: this.arrowEl, padding: this.PADDING }), offset(this.DISTANCE)]
-    			: [flip(), shift({ padding: this.PADDING })]);
-    };
+    	const middleware = [flip(), hide(), inline()];
+    	if (this.arrow) { middleware.push(arrow({ element: this.arrowEl, padding: this.PADDING }), offset(this.DISTANCE)); }
+    	return middleware;
+    }
 
     /**
      * @prop open - indicates whether the popup is open
@@ -37,14 +39,6 @@ export class VWCPopupBase extends LitElement {
      * */
     @property({ type: String, reflect: true })
     	anchor = '';
-
-    /**
-     * @prop anchorEl - popup's anchor element
-     * accepts Element
-     * @private
-     * */
-    @property({ type: Element, reflect: true })
-    private anchorEl: Element | null | undefined;
 
     /**
      * @prop dismissible - adds close button to the popup
@@ -122,38 +116,23 @@ export class VWCPopupBase extends LitElement {
     	this.open = false;
     }
 
-    private sizeObserver = new ResizeObserver(() => {
-    	return this.updatePosition();
-    });
-
-    override connectedCallback(): void {
-    	super.connectedCallback();
-    	window.addEventListener('scroll', this.updatePosition);
-    	window.addEventListener('resize', this.onResizeWindow);
-    }
-
     override disconnectedCallback(): void {
     	super.disconnectedCallback();
-    	window.removeEventListener('scroll', this.updatePosition);
-    	window.removeEventListener('resize', this.onResizeWindow);
-    	// Disconnect the observer to stop from running in the background
-    	this.sizeObserver.disconnect();
-    }
-
-    protected override firstUpdated(_changedProperties: PropertyValues): void {
-    	super.firstUpdated(_changedProperties);
-    	this.anchorEl = this.getAnchorById();
-    	if(this.anchorEl) this.sizeObserver.observe(this.anchorEl);
+    	this.cleanup?.();
     }
 
     protected override updated(changes: Map<string, boolean>): void {
     	super.updated(changes);
     	if (changes.has('anchor')) {
-    		this.sizeObserver.disconnect();
     		this.anchorEl = this.getAnchorById();
-    		if(this.anchorEl) this.sizeObserver.observe(this.anchorEl);
     	}
-    	this.updatePosition();
+    	if (this.anchorEl && this.popupEl) {
+    		this.cleanup?.();
+    		this.cleanup = autoUpdate(this.anchorEl, this.popupEl, () => this.updatePosition());
+    	}
+    	else {
+    		this.cleanup?.();
+    	}
     }
 
     /**
@@ -161,14 +140,10 @@ export class VWCPopupBase extends LitElement {
      * @public
      */
     async updatePosition() {
-    	if (!this.open) {
+    	if (!this.open || !this.anchorEl) {
     		return;
     	}
-    	if (!this.anchorEl) {
-    		this.hide();
-    		console.error('Anchor is not defined');
-    		return;
-    	}
+
     	const positionData = await computePosition(this.anchorEl, this.popupEl, {
     		placement: this.corner,
     		strategy: this.strategy,
@@ -180,19 +155,20 @@ export class VWCPopupBase extends LitElement {
 
     private assignPopupPosition(data: any): void {
     	const { x: popupX, y: popupY } = data;
+    	const { referenceHidden } = data.middlewareData.hide;
     	Object.assign(this.popupEl.style, {
     		left: `${popupX}px`,
     		top: `${popupY}px`,
+    		visibility: referenceHidden ? 'hidden' : 'visible',
     	});
     }
 
     private assignArrowPosition(data: any): void {
     	const { x: arrowX, y: arrowY } = data.middlewareData.arrow;
-    	const staticSide: any = { top: 'bottom', right: 'left', bottom: 'top', left: 'right' };
-    	const side: string = staticSide[data.placement.split('-')[0]];
+    	const side: string = this.arrowPosition[data.placement.split('-')[0]];
     	Object.assign(this.arrowEl.style, {
-    		left: arrowX != null ? `${arrowX}px` : '',
-    		top: arrowY != null ? `${arrowY}px` : '',
+    		left: `${arrowX}px`,
+    		top: `${arrowY}px`,
     		right: '',
     		bottom: '',
     		[side]: '-4px',
@@ -222,21 +198,25 @@ export class VWCPopupBase extends LitElement {
     }
 
     protected override render(): TemplateResult {
-    	const part = this.alternate ? 'vvd-scheme-alternate' : '';
+    	const alternate = this.alternate ? 'vvd-scheme-alternate' : '';
     	const aria = this.open ? 'false' : 'true';
 
     	return html`
-            <div class="popup-wrapper">
                 <vwc-elevation dp="2">
-                    <div class="popup ${classMap(this.getRenderClasses())}" aria-hidden=${aria} part=${part}>
-                        <div class="popup-content">
+									<!-- 'popup-wrapper' is selected by the wrapping elevation, thus required for shadow styling -->
+									<!-- the reason for not applying directly to its first-child 'popup' is to avoid scenario where popup is set to alternate scheme
+												and affect the shadow style surfacing contrast which should still in default scheme context -->
+									<div class="popup-wrapper">
+                    <div class="popup ${classMap(this.getRenderClasses())}" aria-hidden=${aria} part=${alternate}>
+                        <div class="popup-content" >
                             <slot></slot>
                             ${this.renderDismissButton()}
                         </div>
                         ${this.renderArrow()}
                     </div>
+									</div>
                 </vwc-elevation>
-            </div>
+
 		`;
     }
 }

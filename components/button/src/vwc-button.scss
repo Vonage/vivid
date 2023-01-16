@@ -31,7 +31,6 @@
 	}
 }
 
-
 .mdc-button {
 	--mdc-button-disabled-ink-color: var(#{vvd-formfield.$formfield-disabled-ink});
 	--mdc-button-disabled-fill-color: var(#{scheme-variables.$vvd-color-neutral-30});
@@ -49,6 +48,7 @@
 	// ! this was supposed to be set by MDC
 	font-stretch: var(--mdc-typography-button-font-stretch);
 	letter-spacing: normal;
+	line-height: normal;
 
 	&:not(.mdc-button--dense) {
 		vwc-icon {
@@ -59,7 +59,7 @@
 	.leading-icon,
 	.trailing-icon {
 		// TODO remove next line when VIV-704 resolved
-		#{connotation.$vvd-color-connotation}: initial;
+		#{connotation.$vvd-color-connotation}: currentColor;
 		display: flex;
 	}
 
@@ -120,7 +120,6 @@
 	&.button-stacked {
 		--button-block-size: 68px;
 		flex-direction: column;
-		line-height: normal;
 
 		:host([enlarged]) & {
 			--button-block-size: 80px;
@@ -132,12 +131,12 @@
 
 		> .leading-icon vwc-icon,
 		.leading-icon ::slotted(*) {
-			margin-block-end: 0.5rem;
+			margin-block-end: 8px;
 		}
 
 		> .trailing-icon vwc-icon,
 		.trailing-icon ::slotted(*) {
-			margin-block-start: 0.5rem;
+			margin-block-start: 8px;
 		}
 
 		.trailing-icon ::slotted(*),

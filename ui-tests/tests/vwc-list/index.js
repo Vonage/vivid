@@ -1,4 +1,9 @@
 import '@vonage/vwc-list';
+import '@vonage/vwc-list/vwc-list-item';
+import '@vonage/vwc-list/vwc-check-list-item';
+import '@vonage/vwc-list/vwc-radio-list-item';
+
+
 import { storiesToElement } from '../../utils/storiesToElement';
 import * as basicStories from '@vonage/vwc-list/stories/list-basic.stories';
 import * as checkStories from '@vonage/vwc-list/stories/list-check.stories';

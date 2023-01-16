@@ -1,0 +1,38 @@
+{
+	"name": "@vonage/vwc-breadcrumb",
+	"version": "2.37.0",
+	"description": "breadcrumb component",
+	"homepage": "https://github.com/Vonage/vivid/tree/master/components/breadcrumb#readme",
+	"license": "ISC",
+	"main": "vwc-breadcrumb.js",
+	"module": "vwc-breadcrumb.js",
+	"files": [
+		"*.js",
+		"*.ts",
+		"*.map"
+	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/vonage/vivid.git",
+		"directory": "components/breadcrumb"
+	},
+	"scripts": {
+		"build:typescript": "tsc -b",
+		"build:styles": "umbrella-style-modules",
+		"build": "yarn run build:styles && yarn run build:typescript"
+	},
+	"bugs": {
+		"url": "https://github.com/Vonage/vivid/issues"
+	},
+	"dependencies": {
+		"@microsoft/fast-element": "^1.10.1",
+		"@microsoft/fast-foundation": "^2.46.2",
+		"@vonage/vvd-core": "2.37.0",
+		"@vonage/vwc-icon": "2.37.0",
+		"tslib": "^2.3.0"
+	},
+	"devDependencies": {
+		"@vonage/vvd-umbrella": "2.37.0",
+		"typescript": "^4.3.2"
+	}
+}

@@ -1,20 +1,7 @@
 export const argTypes = {
-	layout: {
-		control: {
-			type: 'select',
-			options: ['large', 'basic'],
-		}
-	},
-	icon: {
-		control: {
-			type: 'input',
-		}
-	},
-	'badge-content': {
-		control: {
-			type: 'input'
-		}
-	},
-	styles: { table: { disable: true } },
+	elevation : {
+		type: 'select',
+		options: ['0', '2', '4', '8', '12', '16', '24'],
+	}
 };
 

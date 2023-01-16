@@ -18,6 +18,9 @@ Dense.args = { dense: '', label: 'VWC Textfield' };
 export const PillShape = Template.bind({});
 PillShape.args = { shape: 'pill', dense: '', label: 'VWC Textfield', helper: 'helper message' };
 
+export const AppearanceGhost = Template.bind({});
+AppearanceGhost.args = { shape: 'pill', label: 'Ghost Textfiled', placeholder: 'ghost message', appearance: 'ghost' };
+
 export const Disabled = Template.bind({});
 Disabled.args = { disabled: '', label: 'Hint test', value: 'Text' };
 

@@ -57,7 +57,7 @@ describe('Tag', () => {
 
 		it('should reflect from attribute to property', async () => {
 			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} layout=outlined connotation=cta></${COMPONENT_NAME}>`)
+				textToDomToParent(`<${COMPONENT_NAME} layout=outlined connotation="cta"></${COMPONENT_NAME}>`)
 			);
 			await actualElement.updateComplete;
 			expect(actualElement.layout)
@@ -66,6 +66,50 @@ describe('Tag', () => {
 			expect(actualElement.connotation)
 				.to
 				.equal('cta');
+		});
+	});
+
+	describe('removable', () => {
+		it('should remove the tag if remove button clicked', async () => {
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} layout=outlined connotation="cta"></${COMPONENT_NAME}>`)
+			);
+			actualElement.removable = true;
+			await actualElement.updateComplete;
+			const removeButton = actualElement.shadowRoot?.querySelector('.remove-button');
+			removeButton?.click();
+			expect(Array.from(document.body.children).includes(actualElement)).to.equal(false);
+		});
+
+		it('should fire an event remove tag with tag in detail', async () => {
+			let elementFromRemoveEvent = null;
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} layout=outlined connotation="cta"></${COMPONENT_NAME}>`)
+			);
+			actualElement.removable = true;
+			await actualElement.updateComplete;
+			const removeButton = actualElement.shadowRoot?.querySelector('.remove-button');
+			actualElement.addEventListener('remove-tag', (event) => {
+				elementFromRemoveEvent = event.detail;
+			});
+			removeButton?.click();
+			expect(elementFromRemoveEvent).to.equal(actualElement);
+		});
+
+		it('should fire an event remove-tag leaving the element in the dom with removeEventOnly true', async () => {
+			let elementFromRemoveEvent = null;
+			const [actualElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} layout=outlined connotation="cta"></${COMPONENT_NAME}>`)
+			);
+			actualElement.removable = true;
+			actualElement.removeEventOnly = true;
+			await actualElement.updateComplete;
+			const removeButton = actualElement.shadowRoot?.querySelector('.remove-button');
+			actualElement.addEventListener('remove-tag', (event) => {
+				elementFromRemoveEvent = event.detail;
+			});
+			removeButton?.click();
+			expect(Array.from(document.body.children).includes(elementFromRemoveEvent)).to.equal(true);
 		});
 	});
 });

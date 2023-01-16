@@ -1,6 +1,4 @@
-import '@vaadin/vaadin-grid/src/vaadin-grid.js';
-import '@vaadin/vaadin-grid/src/vaadin-grid-column.js';
-import '@vaadin/vaadin-grid/src/vaadin-grid-tree-column.js';
+import '@vaadin/vaadin-grid/src/all-imports.js';
 import '../../headers/vwc-data-grid-header.js';
 import {
 	GRID_COMPONENT, GRID_ENGINE_ROOT_CLASS
@@ -181,6 +179,18 @@ class VWCDataGridAdapterVaadin implements DataGridAdapter {
 				.renderer="${this.adaptDataRenderer(cellRendererProvider, cc, this.#vwcGrid)}"
 			>
 			</vaadin-grid-tree-column>`;
+		} else if (cc.filterable) {
+			return html`<vaadin-grid-filter-column
+				path="${ifDefined(cc.path)}"
+				?hidden="${cc.hidden}"
+				?frozen="${cc.frozen}"
+				?resizable="${cc.resizable}"
+				?auto-width="${cc.autoWidth}"
+				width="${ifDefined(cc.width)}"
+				.footerRenderer="${this.adaptMetaRenderer(footerRendererProvider, cc, this.#vwcGrid)}"
+				.renderer="${this.adaptDataRenderer(cellRendererProvider, cc, this.#vwcGrid)}"
+			>
+			</vaadin-grid-filter-column>`;
 		} else {
 			return html`<vaadin-grid-column
 				path="${ifDefined(cc.path)}"

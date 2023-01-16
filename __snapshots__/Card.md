@@ -3,30 +3,40 @@
 #### `should internal contents`
 
 ```html
-<div class="vwc-card">
-  <div class="vwc-card-media">
-    <slot name="media">
-    </slot>
-  </div>
-  <div class="vwc-card-info">
-    <header class="no-content">
-      <div class="vwc-card-header">
-        <slot name="graphics">
+<vwc-elevation>
+  <div class="vwc-card">
+    <div class="vwc-card-container">
+      <div class="vwc-card-media">
+        <slot name="media">
         </slot>
-        <div class="vwc-card-title">
+      </div>
+      <slot name="main">
+        <div class="vwc-card-content">
+          <div class="vwc-card-wrapper">
+            <header class="no-content vwc-card-header">
+              <slot name="graphic">
+              </slot>
+              <div>
+                <div class="vwc-card-title">
+                </div>
+                <div class="vwc-card-subtitle">
+                </div>
+              </div>
+            </header>
+            <slot name="meta">
+            </slot>
+          </div>
+          <div class="vwc-card-text">
+          </div>
         </div>
-      </div>
-      <div class="vwc-card-subtitle">
-      </div>
-    </header>
-    <div class="vwc-card-supportText">
-    </div>
-    <div class="no-content vwc-card-actions">
-      <slot name="actions">
       </slot>
+      <div class="no-content vwc-card-footer">
+        <slot name="footer">
+        </slot>
+      </div>
     </div>
   </div>
-</div>
+</vwc-elevation>
 
 ```
 

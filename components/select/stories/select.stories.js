@@ -17,7 +17,7 @@ const Template = (args) => html`
 		}
 	</style>
 	<vwc-select ...=${spread(args)} @selected=${onSelected}>
-		<vwc-list-item></vwc-list-item>
+		<vwc-list-item disabled selected value="Choose an item">Choose an item</vwc-list-item>
 		<vwc-list-item value="0">Item 0</vwc-list-item>
 		<vwc-list-item value="1">Item 1</vwc-list-item>
 		<vwc-list-item value="2">Item 2</vwc-list-item>

@@ -41,6 +41,7 @@
 	border: 0 none;
 	background: transparent;
 	cursor: pointer;
+	outline: transparent;
 
 	.leading-icon,
 	.trailing-icon {
@@ -62,7 +63,7 @@
 		max-width: 20%;
 		flex-shrink: 0;
 		color: var(--vvd-color-neutral-70);
-		margin-inline-start: 1rem;
+		margin-inline-start: 16px;
 		text-align: end;
 		text-overflow: ellipsis;
 		white-space: nowrap;

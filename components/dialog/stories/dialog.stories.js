@@ -33,8 +33,9 @@ const IconTemplate = args => html`
 		<div>This is the modal's content.</div>
 		<vwc-icon slot="icon" size="large" type="home"></vwc-icon>
 		<vwc-button
-			slot="primaryAction"
-			dialogAction="discard">
+		layout="filled"
+		slot="primaryAction"
+		dialogAction="discard">
 			Discard
 		</vwc-button>
 		<vwc-button

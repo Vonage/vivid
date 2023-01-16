@@ -3,6 +3,266 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.37.0](https://github.com/Vonage/vivid/compare/v2.36.3...v2.37.0) (2022-11-30)
+
+
+### Features
+
+* **tag:** add remove tag event ([#1361](https://github.com/Vonage/vivid/issues/1361)) ([73aa22f](https://github.com/Vonage/vivid/commit/73aa22f9115e83e7ade008d003981b60e286995f))
+
+
+
+
+
+## [2.36.3](https://github.com/Vonage/vivid/compare/v2.36.2...v2.36.3) (2022-11-11)
+
+**Note:** Version bump only for package @vivid/root
+
+
+
+
+
+## [2.36.2](https://github.com/Vonage/vivid/compare/v2.36.1...v2.36.2) (2022-11-10)
+
+
+### Bug Fixes
+
+* **button:** apply line height through var ([#1354](https://github.com/Vonage/vivid/issues/1354)) ([6b0c032](https://github.com/Vonage/vivid/commit/6b0c0324caca74ed940ca3927577f65f266332db))
+
+
+
+
+
+## [2.36.1](https://github.com/Vonage/vivid/compare/v2.36.0...v2.36.1) (2022-09-20)
+
+
+### Bug Fixes
+
+* **card:** documentation ([#1340](https://github.com/Vonage/vivid/issues/1340)) ([d74a085](https://github.com/Vonage/vivid/commit/d74a085d2700bb7dd583cef75747b7700fb1cfc1))
+* **scheme:** replace match media deprecated listener method ([#1342](https://github.com/Vonage/vivid/issues/1342)) ([136bf45](https://github.com/Vonage/vivid/commit/136bf450ea8e38945a1351fd17ff67de46e63171))
+
+
+
+
+
+# [2.36.0](https://github.com/Vonage/vivid/compare/v2.35.0...v2.36.0) (2022-07-27)
+
+
+### Features
+
+* **icon:** Update icon versions ([#1333](https://github.com/Vonage/vivid/issues/1333)) ([9059739](https://github.com/Vonage/vivid/commit/90597390b13078c099898ebdff00598df3875211))
+
+
+
+
+
+# [2.35.0](https://github.com/Vonage/vivid/compare/v2.34.1...v2.35.0) (2022-07-07)
+
+
+### Bug Fixes
+
+* **workspace:** fix dev and prod deploy ([#1327](https://github.com/Vonage/vivid/issues/1327)) ([3d69add](https://github.com/Vonage/vivid/commit/3d69add23a4b47ee6d1018f8af02bf14e511c091))
+* **workspace:** fix storybook deployment ([#1326](https://github.com/Vonage/vivid/issues/1326)) ([37534f4](https://github.com/Vonage/vivid/commit/37534f4608fa5139fb6900225ff551959cd706e9))
+
+
+### Features
+
+* **empty-state:** support graphic assigned node ([#1322](https://github.com/Vonage/vivid/issues/1322)) ([bde72fd](https://github.com/Vonage/vivid/commit/bde72fddb1f15fb054a811cf7df9980180ed362b)), closes [#1320](https://github.com/Vonage/vivid/issues/1320)
+
+
+
+
+
+## [2.34.1](https://github.com/Vonage/vivid/compare/v2.34.0...v2.34.1) (2022-06-28)
+
+
+### Bug Fixes
+
+* **button-toggle-group:** fix race condition between values property and slotted buttons ([#1324](https://github.com/Vonage/vivid/issues/1324)) ([3477513](https://github.com/Vonage/vivid/commit/3477513f044e2afcf39237cf49f65aac274aeb2f))
+
+
+
+
+
+# [2.34.0](https://github.com/Vonage/vivid/compare/v2.33.1...v2.34.0) (2022-06-19)
+
+
+### Bug Fixes
+
+* **action-group:** add story ([#1314](https://github.com/Vonage/vivid/issues/1314)) ([3b16eaf](https://github.com/Vonage/vivid/commit/3b16eaf244c401f2cfeeae06ba308f3637ecf984))
+* **style:** move from rem to px ([#1316](https://github.com/Vonage/vivid/issues/1316)) ([648bf19](https://github.com/Vonage/vivid/commit/648bf1941cee4a970965a534667e77ddb2536af9))
+
+
+### Features
+
+* **card:** omit elevation in favor of card ([#1278](https://github.com/Vonage/vivid/issues/1278)) ([9f1c4c6](https://github.com/Vonage/vivid/commit/9f1c4c66f48c87c29c9ca23d278e167f258ee64e))
+
+
+
+
+
+## [2.33.1](https://github.com/Vonage/vivid/compare/v2.33.0...v2.33.1) (2022-06-13)
+
+**Note:** Version bump only for package @vivid/root
+
+
+
+
+
+# [2.33.0](https://github.com/Vonage/vivid/compare/v2.32.0...v2.33.0) (2022-06-09)
+
+
+### Bug Fixes
+
+* **card:** rem units to px ([#1312](https://github.com/Vonage/vivid/issues/1312)) ([5c10091](https://github.com/Vonage/vivid/commit/5c100911fceddf6ba2875c3f11ba16e907c9e576))
+
+
+### Features
+
+* **textfield:** textfield can now turn off auto complete ([#1315](https://github.com/Vonage/vivid/issues/1315)) ([cfd7959](https://github.com/Vonage/vivid/commit/cfd7959f9fb1029ffd96a49faa98234f86c87d36))
+
+
+
+
+
+# [2.32.0](https://github.com/Vonage/vivid/compare/v2.31.0...v2.32.0) (2022-06-08)
+
+
+### Features
+
+* **action-group:** new component ([#1308](https://github.com/Vonage/vivid/issues/1308)) ([27cada0](https://github.com/Vonage/vivid/commit/27cada08b4fa9bf893c95ea34eefee36b86524da))
+
+
+
+
+
+# [2.31.0](https://github.com/Vonage/vivid/compare/v2.30.3...v2.31.0) (2022-05-30)
+
+
+### Bug Fixes
+
+* **textfield:** transparent bg ([#1306](https://github.com/Vonage/vivid/issues/1306)) ([45f3063](https://github.com/Vonage/vivid/commit/45f3063868465265e548d41c0134e70df73963c6))
+
+
+### Features
+
+* **tags:** support removable ([#1266](https://github.com/Vonage/vivid/issues/1266)) ([5b3cd3c](https://github.com/Vonage/vivid/commit/5b3cd3c2c92f0ca2a7f0a1573c74583717d0f5ec))
+
+
+
+
+
+## [2.30.3](https://github.com/Vonage/vivid/compare/v2.30.2...v2.30.3) (2022-05-26)
+
+**Note:** Version bump only for package @vivid/root
+
+
+
+
+
+## [2.30.2](https://github.com/Vonage/vivid/compare/v2.30.1...v2.30.2) (2022-05-24)
+
+
+### Bug Fixes
+
+* **select:** update story ([#1302](https://github.com/Vonage/vivid/issues/1302)) ([aad4069](https://github.com/Vonage/vivid/commit/aad406972103f14d6bae0b4b59994e7f223a7f7c))
+
+
+
+
+
+## [2.30.1](https://github.com/Vonage/vivid/compare/v2.30.0...v2.30.1) (2022-05-17)
+
+
+### Bug Fixes
+
+* **button:** icon color initialized to current color ([#1294](https://github.com/Vonage/vivid/issues/1294)) ([18e484e](https://github.com/Vonage/vivid/commit/18e484e2d09cbca6bb71d3776532c0c40e8170fb))
+* **textfield:** add ghost option ([#1293](https://github.com/Vonage/vivid/issues/1293)) ([d866845](https://github.com/Vonage/vivid/commit/d8668456a309c3626e8419fd319b0b5a540516d7))
+* **textfield:** present placeholder ([#1296](https://github.com/Vonage/vivid/issues/1296)) ([a76f222](https://github.com/Vonage/vivid/commit/a76f22258cbda438753b90f02fa05a681b18963d))
+
+
+
+
+
+# [2.30.0](https://github.com/Vonage/vivid/compare/v2.29.0...v2.30.0) (2022-05-08)
+
+
+### Bug Fixes
+
+* **menu:** background and shadow colors ([#1280](https://github.com/Vonage/vivid/issues/1280)) ([40e02cd](https://github.com/Vonage/vivid/commit/40e02cd681e256bea68fccdd717e1476968f1c2c))
+
+
+### Features
+
+* **breadcrumb:** add the breadcrumb component ([#1260](https://github.com/Vonage/vivid/issues/1260)) ([bf0c5ed](https://github.com/Vonage/vivid/commit/bf0c5edd1f95e57eabf814011eb57dd2b785ac5c))
+
+
+
+
+
+# [2.29.0](https://github.com/Vonage/vivid/compare/v2.28.2...v2.29.0) (2022-05-03)
+
+
+### Bug Fixes
+
+* **card:** extract meta from header ([#1288](https://github.com/Vonage/vivid/issues/1288)) ([41b4681](https://github.com/Vonage/vivid/commit/41b46818965f3b8adee73b8282698ee5cca403c8))
+
+
+### Features
+
+* **data-grid:** introduce support for `filterable` columns ([#1284](https://github.com/Vonage/vivid/issues/1284)) ([b39a7b4](https://github.com/Vonage/vivid/commit/b39a7b4f351cc5ebc4dbc88daaf5f3f53a97d302)), closes [#1273](https://github.com/Vonage/vivid/issues/1273)
+
+
+
+
+
+## [2.28.2](https://github.com/Vonage/vivid/compare/v2.28.1...v2.28.2) (2022-04-26)
+
+
+### Bug Fixes
+
+* **docs:** spring-hack code snippets ([#1286](https://github.com/Vonage/vivid/issues/1286)) ([813833d](https://github.com/Vonage/vivid/commit/813833dfa6edb5035f258151ca75d77d5efdd451))
+
+
+
+
+
+## [2.28.1](https://github.com/Vonage/vivid/compare/v2.28.0...v2.28.1) (2022-04-25)
+
+
+### Bug Fixes
+
+* **card:** integrate elevation ([#1273](https://github.com/Vonage/vivid/issues/1273)) ([6bd7e09](https://github.com/Vonage/vivid/commit/6bd7e095411e05b3b78857fc81812c99dc2ab489))
+
+
+
+
+
+# [2.28.0](https://github.com/Vonage/vivid/compare/v2.27.1...v2.28.0) (2022-04-13)
+
+
+### Bug Fixes
+
+* **calendar:** calendar focus interactions damaged ([#1271](https://github.com/Vonage/vivid/issues/1271)) ([c84bdac](https://github.com/Vonage/vivid/commit/c84bdacde3e1825d7b095519037e2bda9084a743))
+* **elevation:** style for card migration ([#1276](https://github.com/Vonage/vivid/issues/1276)) ([d186cca](https://github.com/Vonage/vivid/commit/d186ccaf929d3f573b15e7d280d174808ee497aa))
+
+
+### Features
+
+* **card:** redefine interface ([#1131](https://github.com/Vonage/vivid/issues/1131)) ([ec49b38](https://github.com/Vonage/vivid/commit/ec49b38709463e14e65056d707cd5549cadbe363))
+
+
+
+
+
+## [2.27.1](https://github.com/Vonage/vivid/compare/v2.27.0...v2.27.1) (2022-04-03)
+
+**Note:** Version bump only for package @vivid/root
+
+
+
+
+
 # [2.27.0](https://github.com/Vonage/vivid/compare/v2.26.0...v2.27.0) (2022-03-23)
 
 

@@ -1,3 +1,103 @@
+# [2.37.0](https://github.com/vonage/vivid/compare/v2.36.3...v2.37.0) (2022-11-30)
+
+
+
+## [2.36.3](https://github.com/vonage/vivid/compare/v2.36.2...v2.36.3) (2022-11-11)
+
+
+
+## [2.36.2](https://github.com/vonage/vivid/compare/v2.36.1...v2.36.2) (2022-11-10)
+
+
+
+## [2.36.1](https://github.com/vonage/vivid/compare/v2.36.0...v2.36.1) (2022-09-20)
+
+
+
+# [2.36.0](https://github.com/vonage/vivid/compare/v2.35.0...v2.36.0) (2022-07-27)
+
+
+
+# [2.35.0](https://github.com/vonage/vivid/compare/v2.34.1...v2.35.0) (2022-07-07)
+
+
+
+## [2.34.1](https://github.com/vonage/vivid/compare/v2.34.0...v2.34.1) (2022-06-28)
+
+
+
+# [2.34.0](https://github.com/vonage/vivid/compare/v2.33.1...v2.34.0) (2022-06-19)
+
+
+
+## [2.33.1](https://github.com/vonage/vivid/compare/v2.33.0...v2.33.1) (2022-06-13)
+
+
+
+# [2.33.0](https://github.com/vonage/vivid/compare/v2.32.0...v2.33.0) (2022-06-09)
+
+
+### Features
+
+* **textfield:** textfield can now turn off auto complete ([#1315](https://github.com/vonage/vivid/issues/1315)) ([cfd7959](https://github.com/vonage/vivid/commit/cfd7959f9fb1029ffd96a49faa98234f86c87d36))
+
+
+
+# [2.32.0](https://github.com/vonage/vivid/compare/v2.31.0...v2.32.0) (2022-06-08)
+
+
+
+# [2.31.0](https://github.com/vonage/vivid/compare/v2.30.3...v2.31.0) (2022-05-30)
+
+
+### Bug Fixes
+
+* **textfield:** transparent bg ([#1306](https://github.com/vonage/vivid/issues/1306)) ([45f3063](https://github.com/vonage/vivid/commit/45f3063868465265e548d41c0134e70df73963c6))
+
+
+
+## [2.30.3](https://github.com/vonage/vivid/compare/v2.30.2...v2.30.3) (2022-05-26)
+
+
+
+## [2.30.2](https://github.com/vonage/vivid/compare/v2.30.1...v2.30.2) (2022-05-24)
+
+
+
+## [2.30.1](https://github.com/vonage/vivid/compare/v2.30.0...v2.30.1) (2022-05-17)
+
+
+### Bug Fixes
+
+* **textfield:** add ghost option ([#1293](https://github.com/vonage/vivid/issues/1293)) ([d866845](https://github.com/vonage/vivid/commit/d8668456a309c3626e8419fd319b0b5a540516d7))
+* **textfield:** present placeholder ([#1296](https://github.com/vonage/vivid/issues/1296)) ([a76f222](https://github.com/vonage/vivid/commit/a76f22258cbda438753b90f02fa05a681b18963d))
+
+
+
+# [2.30.0](https://github.com/vonage/vivid/compare/v2.29.0...v2.30.0) (2022-05-08)
+
+
+
+# [2.29.0](https://github.com/vonage/vivid/compare/v2.28.2...v2.29.0) (2022-05-03)
+
+
+
+## [2.28.2](https://github.com/vonage/vivid/compare/v2.28.1...v2.28.2) (2022-04-26)
+
+
+
+## [2.28.1](https://github.com/vonage/vivid/compare/v2.28.0...v2.28.1) (2022-04-25)
+
+
+
+# [2.28.0](https://github.com/vonage/vivid/compare/v2.27.1...v2.28.0) (2022-04-13)
+
+
+
+## [2.27.1](https://github.com/vonage/vivid/compare/v2.27.0...v2.27.1) (2022-04-03)
+
+
+
 # [2.27.0](https://github.com/vonage/vivid/compare/v2.26.0...v2.27.0) (2022-03-23)
 
 

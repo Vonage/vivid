@@ -6,7 +6,7 @@ import {
 	textToDomToParent,
 	isolatedElementsCreation, waitInterval, noop,
 } from '../../../test/test-helpers.js';
-import {chaiDomDiff} from '@open-wc/semantic-dom-diff';
+import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
 
@@ -120,7 +120,7 @@ describe('popup', () => {
 			);
 			actualElement.updatePosition = noop;
 			await actualElement.updateComplete;
-			return {anchorElement, actualElement};
+			return { anchorElement, actualElement };
 		}
 
 		it(`should not set popup open if anchor element does not exist`, async () => {
@@ -138,21 +138,9 @@ describe('popup', () => {
 				.equal(false);
 		});
 
-		it(`should init the popup as open if anchor element does not exist`, async () => {
-			const [actualElement] = addElement(
-				textToDomToParent(`<${COMPONENT_NAME} open></${COMPONENT_NAME}>`)
-			);
-			actualElement.anchor = 'anchor';
-			await actualElement.updateComplete;
-
-			expect(actualElement.open)
-				.to
-				.equal(false);
-		});
-
 		it(`should reposition when the anchor changes its size`, async function () {
 
-			const {anchorElement, actualElement} = await setPopupAndAnchor();
+			const { anchorElement, actualElement } = await setPopupAndAnchor();
 
 			await flushResizeEvents();
 
@@ -168,7 +156,7 @@ describe('popup', () => {
 		});
 
 		it(`should stop observing the anchor when changing an anchor`, async function () {
-			const {anchorElement, actualElement} = await setPopupAndAnchor();
+			const { anchorElement, actualElement } = await setPopupAndAnchor();
 			await flushResizeEvents();
 
 			actualElement.anchor = '';

@@ -2,7 +2,7 @@ export default {
 	sourcePath: '../readme.md',
 	outputName: 'card-introduction',
 	story: {
-		title: 'Alpha/Components/Card',
+		title: 'Components/Card',
 		name: 'Introduction',
 		parameters: {
 			options: {
