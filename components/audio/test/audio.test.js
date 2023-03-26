@@ -32,7 +32,7 @@ describe('vwc-audio', () => {
 		expect(actualElement.src).to.eq(url);
 	});
 
-	it(`should not show scrub-bar is noseek is set`, async function () {
+	it(`should not show scrub-bar if noseek is set`, async function () {
 		const [vwcAudioEl] = addElements(textToDomToParent(`<vwc-audio noseek></vwc-audio>`));
 		await waitNextTask();
 		expect(vwcAudioEl.shadowRoot.querySelector('vwc-scrub-bar')).not.to.exist;
@@ -51,4 +51,24 @@ describe('vwc-audio', () => {
 		audioElement.pause();
 		audioElement.play();
 	});
+
+	describe('play', () => {
+		it('should return to stop mode when src changes', async function () {
+			Audio.prototype.play = function () {
+				this.dispatchEvent(new Event('play'));
+			};
+			const [audioElement] = (textToDomToParent(`<vwc-audio></vwc-audio>`));
+			await waitNextTask();
+			audioElement.src = 'https://download.samplelib.com/mp3/sample-9s.mp3';
+
+			await audioElement.updateComplete;
+			audioElement.play();
+			await audioElement.updateComplete;
+			audioElement.src = 'https://download.samplelib.com/mp3/sample-6s.mp3';
+			await audioElement.updateComplete;
+			await waitNextTask();
+			expect(audioElement.shadowRoot.querySelector('vwc-icon').type.includes('play')).to.equal(true);
+		});
+	});
+
 });

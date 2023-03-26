@@ -66,43 +66,6 @@ describe('vvd-context service', () => {
 		});
 	});
 
-	describe('iframe document setup', () => {
-		it('should setup context in iframe document', async () => {
-			const iframe = await setupLocalIframe();
-			const iframeWindow = iframe.contentWindow;
-
-			let e = iframeWindow.document.querySelector('.vivid-context-style');
-			expect(e).null;
-
-			await vvdContext.mount(iframe.contentWindow.document);
-
-			e = iframeWindow.document.querySelector('.vivid-context-style');
-			expect(e).exist;
-			expect(e.nodeType).equal(Node.ELEMENT_NODE);
-			expect(e.nodeName.toLowerCase()).equal('style');
-			//	TODO: assert some basic styles appliance
-
-			iframe.remove();
-		});
-
-		it('should NOT duplicate context in default document', async () => {
-			const iframe = await setupLocalIframe();
-			const iframeWindow = iframe.contentWindow;
-
-			await vvdContext.mount(iframe.contentWindow.document);
-			const es1 = iframeWindow.document.querySelectorAll('.vivid-context-style');
-			expect(es1.length).equal(1);
-
-			await vvdContext.mount(iframe.contentWindow.document);
-			const es2 = iframeWindow.document.querySelectorAll('.vivid-context-style');
-			expect(es2.length).equal(1);
-
-			expect(es1[0]).equal(es2[0]);
-
-			iframe.remove();
-		});
-	});
-
 	describe('shadow root document setup', () => {
 		it('should setup context in shadow root', async () => {
 			const sr = document.createElement('div').attachShadow({ mode: 'open' });

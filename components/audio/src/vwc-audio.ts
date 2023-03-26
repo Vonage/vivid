@@ -99,7 +99,7 @@ export class VWCAudio extends LitElement {
 			/* istanbul ignore next */
 			timeupdate: () => this._playheadPosition = this._audio.currentTime,
 			/* istanbul ignore next */
-			loadstart: () => this._loading = true,
+			loadstart: () => { this._isPlaying = false; this._loading = true; },
 			/* istanbul ignore next */
 			canplay: () => this._loading = false,
 			/* istanbul ignore next */
@@ -109,8 +109,8 @@ export class VWCAudio extends LitElement {
 		});
 	}
 
-	play(): void {
-		this._audio.play();
+	play(): Promise<void> {
+		return this._audio.play();
 	}
 
 	pause(): void {
