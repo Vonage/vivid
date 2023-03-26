@@ -1,3 +1,12 @@
+## [2.37.1](https://github.com/vonage/vivid/compare/v2.37.0...v2.37.1) (2023-03-26)
+
+
+### Bug Fixes
+
+* **vwc-audio:** can now change src while playing ([#1378](https://github.com/vonage/vivid/issues/1378)) ([979acd7](https://github.com/vonage/vivid/commit/979acd708ada82cf445466291fe945b451000318))
+
+
+
 # [2.37.0](https://github.com/vonage/vivid/compare/v2.36.3...v2.37.0) (2022-11-30)
 
 
