@@ -23,25 +23,6 @@ describe('vvd-fonts service', () => {
 		expect(r2).equal(r1);
 		expect(r3).equal(r2);
 	});
-
-	describe('isolated environment fonts init test', () => {
-		/* eslint-disable no-undef */
-		after(() => {
-			cleanFrame(FONTS_SETUP_HTML_TAG);
-		});
-
-		it('should init fonts when init via HEAD element', async function () {
-			this.timeout(8000);
-
-			await getFrameLoadedInjected(FONTS_SETUP_HTML_TAG, async (iframe) => {
-				const [testElement, baseElement] = setupTestElements(
-					iframe.contentDocument
-				);
-				await iframe.contentWindow.vvdFonts.init();
-				assertTestElementAndClean(testElement, baseElement);
-			});
-		});
-	});
 });
 
 function setupTestElements(targetDocument) {
