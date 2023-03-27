@@ -68,7 +68,7 @@ jobs:
         run: npm publish $(node ./scripts/vivid-all-package-generator) --tag vivid-2
 
       - name: Publishing packages
-        run: yarn lerna publish from-package --registry=https://${{ matrix.host }} --no-git-reset --loglevel verbose --yes
+        run: yarn lerna publish from-package --registry=https://${{ matrix.host }} --no-git-reset --loglevel verbose --yes --no-verify-access
 
   deploy_storybook:
     name: Deploy "vivid.vonage.com" (Storybook)
