@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.37.2](https://github.com/Vonage/vivid/compare/v2.37.1...v2.37.2) (2023-03-27)
+
+
+### Bug Fixes
+
+* **badge:** text-overflow ([#1377](https://github.com/Vonage/vivid/issues/1377)) ([f0e3bf6](https://github.com/Vonage/vivid/commit/f0e3bf660b61e09de59f681053e39b459e4cfc77))
+
+
+
+
+
 ## [2.37.1](https://github.com/Vonage/vivid/compare/v2.37.0...v2.37.1) (2023-03-26)
 
 

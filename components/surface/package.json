@@ -1,6 +1,6 @@
 {
 	"name": "@vonage/vwc-surface",
-	"version": "2.37.1",
+	"version": "2.37.2",
 	"description": "Surface component",
 	"homepage": "https://github.com/Vonage/vivid/tree/master/components/surface#readme",
 	"license": "ISC",
@@ -27,13 +27,13 @@
 	},
 	"dependencies": {
 		"@material/mwc-menu": "^0.22.1",
-		"@vonage/vvd-core": "2.37.1",
+		"@vonage/vvd-core": "2.37.2",
 		"lit-element": "~2.4.0",
 		"tslib": "^2.3.0"
 	},
 	"devDependencies": {
-		"@vonage/vvd-design-tokens": "2.37.1",
-		"@vonage/vvd-umbrella": "2.37.1",
+		"@vonage/vvd-design-tokens": "2.37.2",
+		"@vonage/vvd-umbrella": "2.37.2",
 		"typescript": "^4.3.2"
 	}
 }
