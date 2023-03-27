@@ -17,6 +17,7 @@ export async function createElementVariations(wrapper) {
 		<vwc-badge layout="filled" shape="pill" text="my badge" icon="thumbs-down-line" iconTrailing="thumbs-up-line"></vwc-badge>
 		<vwc-badge connotation="success" layout="soft" dense text="my badge" icon="thumbs-down-line" iconTrailing="thumbs-up-line"></vwc-badge>
 		<vwc-badge connotation="alert" layout="filled" enlarged text="my badge" icon="thumbs-down-line" iconTrailing="thumbs-up-line"></vwc-badge>
+		<vwc-badge connotation="cta" layout="filled" text="my badge is very long but has ellipsis" style="display: block; width: 150px;"></vwc-badge>
 	`;
 	wrapper.appendChild(badgeElementWrapper);
 

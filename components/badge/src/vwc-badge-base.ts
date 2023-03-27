@@ -80,7 +80,7 @@ export class VWCBadgeBase extends LitElement {
 		return html`
 			<span class="vwc-badge ${classMap(this.getRenderClasses())}">
 				${this.renderIcon(this.icon)}
-				<slot>
+				<slot class="text">
 					${this.text || nothing}
 				</slot>
 				${this.renderIcon(this.iconTrailing, true)}

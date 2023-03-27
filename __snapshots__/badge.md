@@ -10,7 +10,7 @@
 
 ```html
 <span class="vwc-badge">
-  <slot>
+  <slot class="text">
   </slot>
 </span>
 
@@ -26,7 +26,7 @@
     <vwc-icon type="thumbs-down-line">
     </vwc-icon>
   </div>
-  <slot>
+  <slot class="text">
   </slot>
   <div class="icon icon--trailing">
     <vwc-icon type="thumbs-up-line">
@@ -44,7 +44,7 @@
     <vwc-icon type="thumbs-down-line">
     </vwc-icon>
   </div>
-  <slot>
+  <slot class="text">
   </slot>
   <div class="icon icon--trailing">
     <vwc-icon type="thumbs-down-line">
@@ -62,7 +62,7 @@
     <vwc-icon type="thumbs-down-line">
     </vwc-icon>
   </div>
-  <slot>
+  <slot class="text">
   </slot>
   <div class="icon icon--trailing">
     <vwc-icon type="thumbs-up-line">
@@ -76,7 +76,7 @@
 
 ```html
 <span class="vwc-badge">
-  <slot>
+  <slot class="text">
   </slot>
 </span>
 
@@ -86,7 +86,7 @@
 
 ```html
 <span class="vwc-badge">
-  <slot>
+  <slot class="text">
   </slot>
 </span>
 
