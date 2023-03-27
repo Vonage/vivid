@@ -17588,9 +17588,9 @@ string-hash@^1.1.1:
   integrity sha1-6Kr8CsGFW0Zmkp7X3RJ1311sgRs=
 
 string-kit@^0.12.5:
-  version "0.12.5"
-  resolved "https://registry.npmjs.org/string-kit/-/string-kit-0.12.5.tgz"
-  integrity sha512-aB7yK0RgOx3SElEfQ6lZu2xS5hWr4ToJispiy+djJ4yh3f2zaTMCm44ZrHZnN1RiQQCLfpa5Btz2bishyBm8IQ==
+  version "0.12.8"
+  resolved "https://registry.yarnpkg.com/string-kit/-/string-kit-0.12.8.tgz#6b35b3d873105c4b194757ecd66b0723ffb914af"
+  integrity sha512-9UYXBbe/reAZI6cKiaNC7zEzdmA91Ih5/lVmbPGoMssSWZfqVcQvqAMlL0dTdMn+a7XCXBe8zV4BVopXlf+Aaw==
 
 string-width@^1.0.1:
   version "1.0.2"
