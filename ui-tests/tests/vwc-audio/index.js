@@ -7,7 +7,7 @@ export async function createElementVariations(wrapper) {
 	testWrapper.classList.add('grid');
 	testWrapper.innerHTML =
 		`
-<vwc-audio></vwc-audio>
+<vwc-audio timestamp></vwc-audio>
 <vwc-audio connotation="primary"></vwc-audio>
 <vwc-audio noseek="true"></vwc-audio>`;
 	wrapper.appendChild(testWrapper);
