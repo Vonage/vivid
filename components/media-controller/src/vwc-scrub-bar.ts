@@ -5,7 +5,7 @@ import kefir from 'kefir';
 import {
 	pipe, partial, clamp, prop, always, not, identity, path
 } from 'ramda';
-import { style as vwcScrubBarStyle } from './vwc-scrub-bar.css.js';//
+import { style as vwcScrubBarStyle } from './vwc-scrub-bar.css.js';
 
 const SIGNAL = Symbol('signal'),
 	TRACK_KNOB_HORIZONTAL_MARGIN = 5,
@@ -63,6 +63,13 @@ const byType = typeName => ({ type }) => type === typeName,
  * @fires userSkipBackwardsRequest - Fires when the user requests a skip backwards
  */
 class VWCScrubBar extends HTMLElement {
+	static get observedAttributes() { return ['noseek-button']; }
+
+	attributeChangedCallback(name, oldValue, newValue) {
+		if (name === 'noseek-button' && oldValue !== newValue) {
+			this.trackEl.querySelector('button')?.style.display = newValue !== null ? 'none' : 'block';
+		}
+	}
 	constructor() {
 		super();
 
@@ -111,7 +118,6 @@ class VWCScrubBar extends HTMLElement {
 				'resize',
 			].map(eventName => kefir.fromEvents(window, eventName)),
 			trackBarEnabledProperty = componentConnectedStream
-				.take(1)
 				.map(() => {
 					// eslint-disable-next-line
 					return !this.hasAttribute('noseek');
@@ -307,6 +313,8 @@ class VWCScrubBar extends HTMLElement {
 					[KEY_RIGHT]: 'userSkipForwardRequest'
 				})[keyCode]);
 			});
+
+		this.trackEl = trackEl;
 	}
 
 	/**

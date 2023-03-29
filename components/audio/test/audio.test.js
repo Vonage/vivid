@@ -32,17 +32,68 @@ describe('vwc-audio', () => {
 		expect(actualElement.src).to.eq(url);
 	});
 
-	it(`should not show scrub-bar if noseek is set`, async function () {
-		const [vwcAudioEl] = addElements(textToDomToParent(`<vwc-audio noseek></vwc-audio>`));
-		await waitNextTask();
-		expect(vwcAudioEl.shadowRoot.querySelector('vwc-scrub-bar')).not.to.exist;
+	describe('scrub-bar', function () {
+		it(`should not show scrub-bar if noseek is set`, async function () {
+			const [vwcAudioEl] = addElements(textToDomToParent(`<vwc-audio noseek></vwc-audio>`));
+			await waitNextTask();
+			expect(vwcAudioEl.shadowRoot.querySelector('vwc-scrub-bar')).not.to.exist;
+		});
+
+		it('should add noseek-button to the scrub-bar when duration is Infinity', async function () {
+			const [vwcAudioEl] = addElements(textToDomToParent(`<vwc-audio></vwc-audio>`));
+			await waitNextTask();
+			Object.defineProperty(vwcAudioEl._audio, 'duration', {
+				get: () => Infinity
+			});
+			vwcAudioEl._audio.dispatchEvent(new Event('loadedmetadata'));
+			await waitNextTask();
+			expect(vwcAudioEl.shadowRoot.querySelector('vwc-scrub-bar').hasAttribute('noseek-button'))
+				.to.equal(true);
+		});
 	});
 
-	it(`should show timestamp indicator when "timestamp" is set`, async function () {
-		const [vwcAudioEl] = addElements(textToDomToParent(`<vwc-audio timestamp></vwc-audio>`));
-		await waitNextTask();
-		expect(vwcAudioEl.shadowRoot.querySelector('.playhead-position')).to.exist;
+	describe('timestamp', function () {
+		it(`should show timestamp indicator when "timestamp" is set`, async function () {
+			const [vwcAudioEl] = addElements(textToDomToParent(`<vwc-audio timestamp></vwc-audio>`));
+			await waitNextTask();
+			expect(vwcAudioEl.shadowRoot.querySelector('.playhead-position')).to.exist;
+		});
+
+		it(`should hide timestamp indicator when "timestamp" is not set`, async function () {
+			const [vwcAudioEl] = addElements(textToDomToParent(`<vwc-audio></vwc-audio>`));
+			await waitNextTask();
+			expect(vwcAudioEl.shadowRoot.querySelector('.playhead-position')).not.to.exist;
+		});
+
+		it(`should show the end time correctly`, async function () {
+			const [vwcAudioEl] = addElements(textToDomToParent(`<vwc-audio timestamp></vwc-audio>`));
+			vwcAudioEl._duration = 500;
+			await waitNextTask();
+			expect(vwcAudioEl.shadowRoot.querySelector('.playhead-position').textContent).to.equal('0:00 / 8:20');
+		});
+
+		it(`should show the current time correctly`, async function () {
+			const [vwcAudioEl] = addElements(textToDomToParent(`<vwc-audio timestamp></vwc-audio>`));
+			await waitNextTask();
+			vwcAudioEl._duration = 500;
+			vwcAudioEl._audio.currentTime = 500;
+			vwcAudioEl._audio.dispatchEvent(new Event('timeupdate'));
+			await waitNextTask();
+			expect(vwcAudioEl.shadowRoot.querySelector('.playhead-position').textContent).to.equal('8:20 / 8:20');
+		});
+
+		it('should show null timestamp when duration is infinity', async function () {
+			const [vwcAudioEl] = addElements(textToDomToParent(`<vwc-audio timestamp></vwc-audio>`));
+			await waitNextTask();
+			Object.defineProperty(vwcAudioEl._audio, 'duration', {
+				get: () => Infinity
+			});
+			vwcAudioEl._audio.dispatchEvent(new Event('loadedmetadata'));
+			await waitNextTask();
+			expect(vwcAudioEl.shadowRoot.querySelector('.playhead-position').textContent).to.equal('__ / __');
+		});
 	});
+
 
 	describe('play', () => {
 		let originalPlay = Audio.prototype.play;
@@ -58,7 +109,7 @@ describe('vwc-audio', () => {
 
 		it('should return to stop mode when src changes', async function () {
 
-			const [audioElement] = (textToDomToParent(`<vwc-audio></vwc-audio>`));
+			const [audioElement] = addElements(textToDomToParent(`<vwc-audio></vwc-audio>`));
 			await waitNextTask();
 			audioElement.src = 'https://download.samplelib.com/mp3/sample-9s.mp3';
 			await audioElement.updateComplete;
