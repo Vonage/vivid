@@ -1,9 +1,7 @@
-### For Vivid@next please visit [Vivid-3](https://github.com/vonage/vivid-3)
+# For VIVID@3 please visit [vivid-3](https://github.com/vonage/vivid-3)
 
 [![Quality Status](https://github.com/Vonage/vivid/workflows/Compile%20&%20Test/badge.svg)](https://github.com/Vonage/vivid/actions?query=workflow%3A%22Compile+%26+Test%22)
 [![Coverage Status](https://coveralls.io/repos/github/Vonage/vivid/badge.svg?t=v9CrbP)](https://coveralls.io/github/Vonage/vivid)
-
-[![Compile & Test Sanity](https://github.com/Vonage/vivid/actions/workflows/compile-test-sanity.yml/badge.svg)](https://github.com/Vonage/vivid/actions/workflows/compile-test-sanity.yml)
 
 # Meet VIVID,
 
