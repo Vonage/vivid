@@ -76,7 +76,9 @@ describe('vwc-audio', () => {
 			const [vwcAudioEl] = addElements(textToDomToParent(`<vwc-audio timestamp></vwc-audio>`));
 			await waitNextTask();
 			vwcAudioEl._duration = 500;
-			vwcAudioEl._audio.currentTime = 500;
+			Object.defineProperty(vwcAudioEl._audio, 'currentTime', {
+				get: () => 500
+			});
 			vwcAudioEl._audio.dispatchEvent(new Event('timeupdate'));
 			await waitNextTask();
 			expect(vwcAudioEl.shadowRoot.querySelector('.playhead-position').textContent).to.equal('8:20 / 8:20');
