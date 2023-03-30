@@ -39,3 +39,5 @@ export const NoSeek = StoryShell({ noseek: true });
 export const TimeStamp = StoryShell({ timestamp: true });
 
 export const TimeStampNoSeek = StoryShell({ timestamp: true, noseek: true });
+
+export const Disabled = StoryShell({ disabled: true });

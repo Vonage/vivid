@@ -9,7 +9,10 @@ export async function createElementVariations(wrapper) {
 		`
 <vwc-audio></vwc-audio>
 <vwc-audio connotation="primary"></vwc-audio>
-<vwc-audio noseek="true"></vwc-audio>`;
+<vwc-audio noseek="true"></vwc-audio>
+<vwc-audio disabled connotation="primary"></vwc-audio>
+<vwc-audio disabled connotation="cta"></vwc-audio>
+`;
 	wrapper.appendChild(testWrapper);
 
 	await vvdCore.settled;

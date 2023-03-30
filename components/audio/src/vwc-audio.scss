@@ -8,6 +8,8 @@
 @use '@vonage/vwc-media-controller/src/partials/vwc-media-controller-variables' as media-controls-variables;
 
 
+$disabled: #{$disabled};
+
 :host {
 	*:focus:not(:focus-visible) {
 		outline: none;
@@ -38,7 +40,21 @@
 			cursor: pointer;
 
 			> .icon {
-				color: var(#{connotation.$vvd-color-connotation});
+				color: inherit;
+			}
+		}
+
+		&.disabled.connotation-cta,
+		&.disabled:not(.connotation-cta) {
+			> .scrubber {
+				#{media-controls-variables.$vwc-media-controls-scrubber-color}: #{$disabled};
+
+			}
+
+			> .control-button {
+				> .icon {
+					--connotation: #{$disabled};
+				}
 			}
 		}
 

@@ -79,6 +79,9 @@ export class VWCAudio extends LitElement {
 	@property({ type: Boolean, reflect: true })
 		timestamp = false;
 
+	@property({ type: Boolean, reflect: true })
+		disabled = false;
+
 	@internalProperty()
 	private _duration = 0;
 
@@ -133,6 +136,7 @@ export class VWCAudio extends LitElement {
 	protected getRenderClasses(): ClassInfo {
 		return {
 			[`connotation-${this.connotation}`]: !!this.connotation,
+			['disabled']: this.disabled,
 			loading: this._loading
 		};
 	}
@@ -144,6 +148,7 @@ export class VWCAudio extends LitElement {
 				<button
 					aria-label="Play/Pause"
 					class="control-button"
+					.disabled=${this.disabled}
 					@click="${() => (this._isPlaying ? this.pause : this.play).call(this)}"
 				>
 				<vwc-icon
