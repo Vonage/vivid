@@ -156,7 +156,7 @@ export class VWCAudio extends LitElement {
 						type="${this._isPlaying ? 'pause-solid' : 'play-solid'}"
 				></vwc-icon>
 				</button>
-				${this.timestamp ? html`<div class="playhead-position">${getTimeStampTemplate(this._playheadPosition, this._duration)}</div>` : nothing}
+				${this.timestamp ? getTimeStampTemplate(this._playheadPosition, this._duration) : nothing}
 				${!this.noseek ? html`<vwc-scrub-bar noseek-button=${ifDefined(this._duration === Infinity ? 'true' : undefined)} @userScrubRequest="${({ detail }: { detail: number }) => this.currentTime = detail * this._duration}" class="scrubber"></vwc-scrub-bar>` : nothing}
 			</div>
 		`;
