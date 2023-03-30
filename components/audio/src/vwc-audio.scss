@@ -7,7 +7,6 @@
 @use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
 @use '@vonage/vwc-media-controller/src/partials/vwc-media-controller-variables' as media-controls-variables;
 
-
 $disabled: #{$disabled};
 
 :host {
