@@ -9,9 +9,11 @@ export async function createElementVariations(wrapper) {
 		`
 <vwc-audio></vwc-audio>
 <vwc-audio connotation="primary"></vwc-audio>
+<vwc-audio timestamp></vwc-audio>
+<vwc-audio timestamp connotation="primary"></vwc-audio>
 <vwc-audio noseek="true"></vwc-audio>
 <vwc-audio disabled connotation="primary"></vwc-audio>
-<vwc-audio disabled connotation="cta"></vwc-audio>
+<vwc-audio disabled connotation="cta" timestamp></vwc-audio>
 `;
 	wrapper.appendChild(testWrapper);
 
