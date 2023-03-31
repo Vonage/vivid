@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.38.0](https://github.com/Vonage/vivid/compare/v2.37.2...v2.38.0) (2023-03-31)
+
+
+### Features
+
+* **vwc-audio:** audio infinity time handling (VIV-874) ([#1383](https://github.com/Vonage/vivid/issues/1383)) ([4cf82d8](https://github.com/Vonage/vivid/commit/4cf82d87e1a9e3d84d1b9a5153086645203e121b))
+* **vwc-icon:** update the icon version ([#1384](https://github.com/Vonage/vivid/issues/1384)) ([1d0bc55](https://github.com/Vonage/vivid/commit/1d0bc55455c09a8712cf743e7d67ad280919a27e))
+
+
+
+
+
 ## [2.37.2](https://github.com/Vonage/vivid/compare/v2.37.1...v2.37.2) (2023-03-27)
 
 

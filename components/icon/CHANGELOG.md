@@ -1,3 +1,12 @@
+# [2.38.0](https://github.com/Vonage/vivid/compare/v2.37.2...v2.38.0) (2023-03-31)
+
+
+### Features
+
+* **vwc-icon:** update the icon version ([#1384](https://github.com/Vonage/vivid/issues/1384)) ([1d0bc55](https://github.com/Vonage/vivid/commit/1d0bc55455c09a8712cf743e7d67ad280919a27e))
+
+
+
 ## [2.37.2](https://github.com/Vonage/vivid/compare/v2.37.1...v2.37.2) (2023-03-27)
 
 
