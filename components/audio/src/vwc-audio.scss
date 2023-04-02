@@ -47,7 +47,7 @@ $disabled: var(--vvd-color-neutral-50);
 		&.disabled:not(.connotation-cta) {
 			> .scrubber {
 				#{media-controls-variables.$vwc-media-controls-scrubber-color}: #{$disabled};
-
+				pointer-events: none
 			}
 			> .control-button {
 				> .icon {
