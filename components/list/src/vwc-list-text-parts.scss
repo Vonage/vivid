@@ -8,7 +8,9 @@
 :host,
 :host([twoline]) {
 	.mdc-deprecated-list-item__text {
+		flex-grow: 1;
 		align-self: center;
+		inline-size: 100%;
 		margin-inline-end: 4px;
 	}
 }
