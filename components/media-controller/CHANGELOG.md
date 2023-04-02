@@ -1,3 +1,12 @@
+# [2.38.0](https://github.com/vonage/vivid/compare/v2.37.2...v2.38.0) (2023-03-31)
+
+
+### Features
+
+* **vwc-audio:** audio infinity time handling (VIV-874) ([#1383](https://github.com/vonage/vivid/issues/1383)) ([4cf82d8](https://github.com/vonage/vivid/commit/4cf82d87e1a9e3d84d1b9a5153086645203e121b))
+
+
+
 ## [2.37.2](https://github.com/vonage/vivid/compare/v2.37.1...v2.37.2) (2023-03-27)
 
 

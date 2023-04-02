@@ -26,7 +26,6 @@ const SECOND = 1;
 const MINUTE = 60 * SECOND;
 const HOUR = 60 * MINUTE;
 
-
 const setEvents = function (eventSource: HTMLElement, handlersMap: Record<string, () => unknown>) {
 	return (pipe as any)(...Object
 		.entries(handlersMap)
@@ -36,7 +35,6 @@ const setEvents = function (eventSource: HTMLElement, handlersMap: Record<string
 		}));
 };
 
-/* istanbul ignore next */
 const formatTime = (seconds: number) => {
 	const outputTime: Array<number> = [];
 	[HOUR, MINUTE, SECOND].reduce((ac: number, divider: number) => {
@@ -48,6 +46,11 @@ const formatTime = (seconds: number) => {
 		.map((segment: number, index: number) => segment.toString().padStart(index === 0 ? 1 : 2, '0'))
 		.join(':');
 };
+
+function getTimeStampTemplate(_playheadPosition: number, _duration: number) {
+	const timeString = _duration === Infinity ? '__ / __' : `${formatTime(_playheadPosition)} / ${formatTime(_duration)}`;
+	return html`<div class="playhead-position">${timeString}</div>`;
+}
 
 type AudioConnotation =
 	Connotation.Primary |
@@ -142,6 +145,7 @@ export class VWCAudio extends LitElement {
 	}
 
 	override render(): TemplateResult {
+
 		return html`
 			<audio class='audio-el' src='${ifDefined(this.src)}'></audio>
 			<div class="audio ${classMap(this.getRenderClasses())}" aria-controls="${ifDefined(this.ariaControls)}">
@@ -157,8 +161,8 @@ export class VWCAudio extends LitElement {
 						type="${this._isPlaying ? 'pause-solid' : 'play-solid'}"
 				></vwc-icon>
 				</button>
-				${this.timestamp ? html`<div class="playhead-position">${formatTime(this._playheadPosition)} / ${formatTime(this._duration)}</div>` : nothing}
-				${!this.noseek ? html`<vwc-scrub-bar @userScrubRequest="${({ detail }: { detail: number }) => this.currentTime = detail * this._duration}" class="scrubber"></vwc-scrub-bar>` : nothing}
+				${this.timestamp ? getTimeStampTemplate(this._playheadPosition, this._duration) : nothing}
+				${!this.noseek ? html`<vwc-scrub-bar noseek-button=${ifDefined(this._duration === Infinity ? 'true' : undefined)} @userScrubRequest="${({ detail }: { detail: number }) => this.currentTime = detail * this._duration}" class="scrubber"></vwc-scrub-bar>` : nothing}
 			</div>
 		`;
 	}
