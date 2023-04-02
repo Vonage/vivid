@@ -32,6 +32,38 @@ describe('vwc-audio', () => {
 		expect(actualElement.src).to.eq(url);
 	});
 
+	describe('disabled', function () {
+		it('should init as false', function () {
+			const [audioElement] = addElements(textToDomToParent(`<vwc-audio></vwc-audio>`));
+			expect(audioElement.disabled).to.eq(false);
+		});
+
+		it('should reflect the attribute', async function () {
+			const [audioElement] = addElements(textToDomToParent(`<vwc-audio disabled></vwc-audio>`));
+			await audioElement.updateComplete;
+			expect(audioElement.disabled).to.eq(true);
+		});
+
+		it('should set the disabled attribute', async function () {
+			const [audioElement] = addElements(textToDomToParent(`<vwc-audio></vwc-audio>`));
+			audioElement.disabled = true;
+			await audioElement.updateComplete;
+			expect(audioElement.hasAttribute('disabled')).to.eq(true);
+		});
+
+		it('should remove the attribute', async function () {
+			const [audioElement] = addElements(textToDomToParent(`<vwc-audio disabled></vwc-audio>`));
+			audioElement.disabled = false;
+			await audioElement.updateComplete;
+			expect(audioElement.hasAttribute('disabled')).to.eq(false);
+		});
+
+		it('should set disabled class on the audio controls wrapper', async function () {
+			const [audioElement] = addElements(textToDomToParent(`<vwc-audio disabled></vwc-audio>`));
+			await audioElement.updateComplete;
+			expect(audioElement.shadowRoot.querySelector('.audio').classList.contains('disabled')).to.eq(true);
+		});
+	});
 	describe('scrub-bar', function () {
 		it(`should not show scrub-bar if noseek is set`, async function () {
 			const [vwcAudioEl] = addElements(textToDomToParent(`<vwc-audio noseek></vwc-audio>`));
