@@ -169,8 +169,7 @@ export class VWCPopupBase extends LitElement {
     	Object.assign(this.arrowEl.style, {
     		left: `${arrowX}px`,
     		top: `${arrowY}px`,
-    		right: '',
-    		bottom: '',
+    		[this.arrowPosition[side]]: '',
     		[side]: '-4px',
     	});
     }
