@@ -53,6 +53,7 @@ $disabled: var(--vvd-color-neutral-50);
 			> .control-button {
 				> .icon {
 					--connotation: #{$disabled};
+					cursor: not-allowed;
 				}
 			}
 			> .playhead-position {
