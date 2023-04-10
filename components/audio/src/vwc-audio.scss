@@ -48,6 +48,7 @@ $disabled: var(--vvd-color-neutral-50);
 			> .scrubber {
 				#{media-controls-variables.$vwc-media-controls-scrubber-color}: #{$disabled};
 				pointer-events: none;
+				cursor: not-allowed;
 			}
 			> .control-button {
 				> .icon {
