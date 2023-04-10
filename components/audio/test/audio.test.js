@@ -26,10 +26,22 @@ describe('vwc-audio', () => {
 		expect(audioElement instanceof VWCAudio).to.eq(true);
 	});
 
-	it(`should set the src property if src attribute is set`, async function () {
-		const url = 'https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_5MG.mp3';
-		const [actualElement] = addElements(textToDomToParent(`<vwc-audio src="${url}"></vwc-audio>`));
-		expect(actualElement.src).to.eq(url);
+
+	describe('src', function () {
+		it(`should set the src property if src attribute is set`, async function () {
+			const url = 'https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_5MG.mp3';
+			const [actualElement] = addElements(textToDomToParent(`<vwc-audio src="${url}"></vwc-audio>`));
+			expect(actualElement.src).to.eq(url);
+		});
+	});
+
+	describe('currentTime', function () {
+		it('should set and get currentTime', async function () {
+			const [audioElement] = addElements(textToDomToParent(`<vwc-audio></vwc-audio>`));
+			await audioElement.updateComplete;
+			audioElement.currentTime = 10;
+			expect(audioElement.currentTime).to.eq(10);
+		});
 	});
 
 	describe('disabled', function () {
@@ -64,6 +76,7 @@ describe('vwc-audio', () => {
 			expect(audioElement.shadowRoot.querySelector('.audio').classList.contains('disabled')).to.eq(true);
 		});
 	});
+
 	describe('scrub-bar', function () {
 		it(`should not show scrub-bar if noseek is set`, async function () {
 			const [vwcAudioEl] = addElements(textToDomToParent(`<vwc-audio noseek></vwc-audio>`));
