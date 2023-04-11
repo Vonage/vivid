@@ -141,6 +141,7 @@ $vvd-list-item-graphic-margin: --vvd-list-item-graphic-margin;
 
 .mdc-deprecated-list-item__meta {
 	display: flex;
+	flex-shrink: 0;
 }
 
 
