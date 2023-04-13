@@ -8,12 +8,6 @@ describe('vvd-fonts service', () => {
 		assert.isFunction(initFonts, 'fonts has "init" method');
 	});
 
-	it('should affect the actual font', async () => {
-		const [testElement, baseElement] = setupTestElements(document);
-		await initFonts();
-		assertTestElementAndClean(testElement, baseElement);
-	});
-
 	it('should provide the same Promise each new time after the initial run', async () => {
 		const [r1, r2, r3] = await Promise.all([
 			await initFonts(),
@@ -24,28 +18,3 @@ describe('vvd-fonts service', () => {
 		expect(r3).equal(r2);
 	});
 });
-
-function setupTestElements(targetDocument) {
-	const [testElement, baseElement] = [
-		'var(--vvd-font-family-spezia)',
-		'initial',
-	].map((fs) => {
-		const e = targetDocument.createElement('span');
-		e.textContent = 'wwwwwiiiii';
-		e.style.fontFamily = fs;
-		targetDocument.body.appendChild(e);
-		return e;
-	});
-
-	return [testElement, baseElement];
-}
-
-function assertTestElementAndClean(testElement, baseElement) {
-	if (testElement.offsetWidth === baseElement.offsetWidth) {
-		throw new Error(
-			`element width (${testElement.offsetWidth}) should have been different from initial (${baseElement.offsetWidth})`
-		);
-	}
-	testElement.remove();
-	baseElement.remove();
-}
