@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.VNG_VVD_PAT }}
 
@@ -36,7 +36,7 @@ jobs:
 
   publish:
     needs: build
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.VNG_VVD_PAT }}
     name: Publishing to ${{ matrix.registry }}
@@ -78,7 +78,7 @@ jobs:
       AWS_DEFAULT_REGION: us-east-1
       GITHUB_TOKEN: ${{ secrets.VNG_VVD_PAT }}
     needs: publish
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
