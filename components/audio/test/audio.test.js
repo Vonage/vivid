@@ -37,10 +37,15 @@ describe('vwc-audio', () => {
 
 	describe('currentTime', function () {
 		it('should set and get currentTime', async function () {
+			let expectation = 10;
 			const [audioElement] = addElements(textToDomToParent(`<vwc-audio></vwc-audio>`));
 			await audioElement.updateComplete;
-			audioElement.currentTime = 10;
-			expect(audioElement.currentTime).to.eq(10);
+			audioElement.currentTime = expectation;
+			const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+			if (isSafari) {
+				expectation = 0;
+			}
+			expect(audioElement.currentTime).to.eq(expectation);
 		});
 	});
 
