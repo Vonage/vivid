@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-deploy-demo-dev:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     if: github.event.pull_request.merged == true
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_B }}
