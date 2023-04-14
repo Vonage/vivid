@@ -26,10 +26,60 @@ describe('vwc-audio', () => {
 		expect(audioElement instanceof VWCAudio).to.eq(true);
 	});
 
-	it(`should set the src property if src attribute is set`, async function () {
-		const url = 'https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_5MG.mp3';
-		const [actualElement] = addElements(textToDomToParent(`<vwc-audio src="${url}"></vwc-audio>`));
-		expect(actualElement.src).to.eq(url);
+
+	describe('src', function () {
+		it(`should set the src property if src attribute is set`, async function () {
+			const url = 'https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_5MG.mp3';
+			const [actualElement] = addElements(textToDomToParent(`<vwc-audio src="${url}"></vwc-audio>`));
+			expect(actualElement.src).to.eq(url);
+		});
+	});
+
+	describe('currentTime', function () {
+		it('should set and get currentTime', async function () {
+			let expectation = 10;
+			const [audioElement] = addElements(textToDomToParent(`<vwc-audio></vwc-audio>`));
+			await audioElement.updateComplete;
+			audioElement.currentTime = expectation;
+			const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+			if (isSafari) {
+				expectation = 0;
+			}
+			expect(audioElement.currentTime).to.eq(expectation);
+		});
+	});
+
+	describe('disabled', function () {
+		it('should init as false', function () {
+			const [audioElement] = addElements(textToDomToParent(`<vwc-audio></vwc-audio>`));
+			expect(audioElement.disabled).to.eq(false);
+		});
+
+		it('should reflect the attribute', async function () {
+			const [audioElement] = addElements(textToDomToParent(`<vwc-audio disabled></vwc-audio>`));
+			await audioElement.updateComplete;
+			expect(audioElement.disabled).to.eq(true);
+		});
+
+		it('should set the disabled attribute', async function () {
+			const [audioElement] = addElements(textToDomToParent(`<vwc-audio></vwc-audio>`));
+			audioElement.disabled = true;
+			await audioElement.updateComplete;
+			expect(audioElement.hasAttribute('disabled')).to.eq(true);
+		});
+
+		it('should remove the attribute', async function () {
+			const [audioElement] = addElements(textToDomToParent(`<vwc-audio disabled></vwc-audio>`));
+			audioElement.disabled = false;
+			await audioElement.updateComplete;
+			expect(audioElement.hasAttribute('disabled')).to.eq(false);
+		});
+
+		it('should set disabled class on the audio controls wrapper', async function () {
+			const [audioElement] = addElements(textToDomToParent(`<vwc-audio disabled></vwc-audio>`));
+			await audioElement.updateComplete;
+			expect(audioElement.shadowRoot.querySelector('.audio').classList.contains('disabled')).to.eq(true);
+		});
 	});
 
 	describe('scrub-bar', function () {

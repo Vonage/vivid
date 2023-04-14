@@ -7,6 +7,7 @@
 @use '@vonage/vvd-foundation/scss/mixins/connotation' as connotation;
 @use '@vonage/vwc-media-controller/src/partials/vwc-media-controller-variables' as media-controls-variables;
 
+$disabled: var(--vvd-color-neutral-50);
 
 :host {
 	*:focus:not(:focus-visible) {
@@ -38,15 +39,36 @@
 			cursor: pointer;
 
 			> .icon {
-				color: var(#{connotation.$vvd-color-connotation});
+				color: inherit;
+			}
+		}
+
+		&.disabled.connotation-cta,
+		&.disabled:not(.connotation-cta) {
+			> .scrubber {
+				#{media-controls-variables.$vwc-media-controls-scrubber-color}: #{$disabled};
+				--disable-scrub: #{$disabled};
+				cursor: not-allowed;
+				pointer-events: none;
+			}
+			> .control-button {
+				> .icon {
+					--connotation: #{$disabled};
+					cursor: not-allowed;
+				}
+			}
+			> .playhead-position {
+				color: var(#{scheme-variables.$vvd-color-neutral-40});
 			}
 		}
 
 		> .playhead-position {
+
 			overflow: hidden;
 			width: 90px;
 			box-sizing: border-box;
 			justify-content: center;
+			color: var(#{scheme-variables.$vvd-color-on-canvas});
 			font-variant-numeric: tabular-nums;
 			text-align: center;
 			text-overflow: ellipsis;

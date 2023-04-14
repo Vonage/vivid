@@ -9,8 +9,21 @@ export async function createElementVariations(wrapper) {
 		`
 <vwc-audio timestamp></vwc-audio>
 <vwc-audio connotation="primary"></vwc-audio>
-<vwc-audio noseek="true"></vwc-audio>`;
+<vwc-audio id="infinity-duration" timestamp></vwc-audio>
+<vwc-audio timestamp connotation="primary"></vwc-audio>
+<vwc-audio noseek="true"></vwc-audio>
+<vwc-audio disabled connotation="primary"></vwc-audio>
+<vwc-audio disabled connotation="cta" timestamp></vwc-audio>
+`;
+
 	wrapper.appendChild(testWrapper);
+
+	const audio = document.querySelector('#infinity-duration');
+	await audio.updateComplete;
+	Object.defineProperty(audio._audio, 'duration', {value: Infinity});
+	audio._audio.dispatchEvent(new Event('loadedmetadata'));
+
+	await audio.updateComplete;
 
 	await vvdCore.settled;
 }
