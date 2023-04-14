@@ -1,3 +1,12 @@
+# [2.39.0](https://github.com/vonage/vivid/compare/v2.38.0...v2.39.0) (2023-04-14)
+
+
+### Features
+
+* **vwc-audio:** audio disabled state (VIV-873) ([#1386](https://github.com/vonage/vivid/issues/1386)) ([5d89a49](https://github.com/vonage/vivid/commit/5d89a4908f37776c4824edf867d4076267421576))
+
+
+
 # [2.38.0](https://github.com/vonage/vivid/compare/v2.37.2...v2.38.0) (2023-03-31)
 
 

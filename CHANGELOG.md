@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.39.0](https://github.com/Vonage/vivid/compare/v2.38.0...v2.39.0) (2023-04-14)
+
+
+### Bug Fixes
+
+* **popup:** arrow position (VIV-896) ([#1387](https://github.com/Vonage/vivid/issues/1387)) ([51dd1b2](https://github.com/Vonage/vivid/commit/51dd1b277dcd53797327354cc042986f34276cd8))
+* **vwc-list-item:** un-needed ellipsis in safari ([#1388](https://github.com/Vonage/vivid/issues/1388)) ([36ee6e0](https://github.com/Vonage/vivid/commit/36ee6e0bbe1a44c12db1d319038ae43cc7866f4f))
+
+
+### Features
+
+* **icon:** update icons set to version 4.1.0 ([#1390](https://github.com/Vonage/vivid/issues/1390)) ([6c9d719](https://github.com/Vonage/vivid/commit/6c9d719da1ae878c74c53a35a47e9549f646adc0))
+* **vwc-audio:** audio disabled state (VIV-873) ([#1386](https://github.com/Vonage/vivid/issues/1386)) ([5d89a49](https://github.com/Vonage/vivid/commit/5d89a4908f37776c4824edf867d4076267421576))
+
+
+
+
+
 # [2.38.0](https://github.com/Vonage/vivid/compare/v2.37.2...v2.38.0) (2023-03-31)
 
 

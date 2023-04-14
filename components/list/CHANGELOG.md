@@ -1,3 +1,12 @@
+# [2.39.0](https://github.com/vonage/vivid/compare/v2.38.0...v2.39.0) (2023-04-14)
+
+
+### Bug Fixes
+
+* **vwc-list-item:** un-needed ellipsis in safari ([#1388](https://github.com/vonage/vivid/issues/1388)) ([36ee6e0](https://github.com/vonage/vivid/commit/36ee6e0bbe1a44c12db1d319038ae43cc7866f4f))
+
+
+
 # [2.38.0](https://github.com/vonage/vivid/compare/v2.37.2...v2.38.0) (2023-03-31)
 
 

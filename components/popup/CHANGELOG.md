@@ -1,3 +1,12 @@
+# [2.39.0](https://github.com/vonage/vivid/compare/v2.38.0...v2.39.0) (2023-04-14)
+
+
+### Bug Fixes
+
+* **popup:** arrow position (VIV-896) ([#1387](https://github.com/vonage/vivid/issues/1387)) ([51dd1b2](https://github.com/vonage/vivid/commit/51dd1b277dcd53797327354cc042986f34276cd8))
+
+
+
 # [2.38.0](https://github.com/vonage/vivid/compare/v2.37.2...v2.38.0) (2023-03-31)
 
 
