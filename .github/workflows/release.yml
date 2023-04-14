@@ -80,6 +80,10 @@ jobs:
     needs: publish
     runs-on: ubuntu-latest
     steps:
+      - name: Setup NodeJS 14
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
       - name: Checkout
         uses: actions/checkout@v2
         with:
