@@ -1,3 +1,12 @@
+## [2.39.1](https://github.com/vonage/vivid/compare/v2.39.0...v2.39.1) (2023-04-16)
+
+
+### Bug Fixes
+
+* **audio:** add the draggable button back in infinity state (VIV-878) ([#1392](https://github.com/vonage/vivid/issues/1392)) ([59f3e5a](https://github.com/vonage/vivid/commit/59f3e5a88d04dc5c238ca63c90a8e9c5d60581f1))
+
+
+
 # [2.39.0](https://github.com/vonage/vivid/compare/v2.38.0...v2.39.0) (2023-04-14)
 
 

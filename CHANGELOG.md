@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.39.1](https://github.com/Vonage/vivid/compare/v2.39.0...v2.39.1) (2023-04-16)
+
+
+### Bug Fixes
+
+* **audio:** add the draggable button back in infinity state (VIV-878) ([#1392](https://github.com/Vonage/vivid/issues/1392)) ([59f3e5a](https://github.com/Vonage/vivid/commit/59f3e5a88d04dc5c238ca63c90a8e9c5d60581f1))
+
+
+
+
+
 # [2.39.0](https://github.com/Vonage/vivid/compare/v2.38.0...v2.39.0) (2023-04-14)
 
 
