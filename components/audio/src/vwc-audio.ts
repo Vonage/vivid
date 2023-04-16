@@ -162,7 +162,7 @@ export class VWCAudio extends LitElement {
 				></vwc-icon>
 				</button>
 				${this.timestamp ? getTimeStampTemplate(this._playheadPosition, this._duration) : nothing}
-				${!this.noseek ? html`<vwc-scrub-bar noseek-button=${ifDefined(this._duration === Infinity ? 'true' : undefined)} @userScrubRequest="${({ detail }: { detail: number }) => this.currentTime = detail * this._duration}" class="scrubber"></vwc-scrub-bar>` : nothing}
+				${!this.noseek ? html`<vwc-scrub-bar style=${ifDefined(this._duration === Infinity ? 'pointer-events: none;' : undefined)} @userScrubRequest="${({ detail }: { detail: number }) => this.currentTime = detail * this._duration}" class="scrubber"></vwc-scrub-bar>` : nothing}
 			</div>
 		`;
 	}
