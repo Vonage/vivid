@@ -89,7 +89,7 @@ describe('vwc-audio', () => {
 			expect(vwcAudioEl.shadowRoot.querySelector('vwc-scrub-bar')).not.to.exist;
 		});
 
-		it('should add noseek-button to the scrub-bar when duration is Infinity', async function () {
+		it('should disable the scrub-bar button when duration is Infinity', async function () {
 			const [vwcAudioEl] = addElements(textToDomToParent(`<vwc-audio></vwc-audio>`));
 			await waitNextTask();
 			Object.defineProperty(vwcAudioEl._audio, 'duration', {
@@ -97,8 +97,8 @@ describe('vwc-audio', () => {
 			});
 			vwcAudioEl._audio.dispatchEvent(new Event('loadedmetadata'));
 			await waitNextTask();
-			expect(vwcAudioEl.shadowRoot.querySelector('vwc-scrub-bar').hasAttribute('noseek-button'))
-				.to.equal(true);
+			const scrubbar = vwcAudioEl.shadowRoot.querySelector('vwc-scrub-bar');
+			expect(scrubbar.style['pointer-events']).to.equal('none');
 		});
 	});
 
