@@ -74,12 +74,6 @@ export class VWCTagBase extends LitElement {
 		}
 	}
 
-	// protected firstUpdated(): void {
-	// 	if (this.selected) {
-	// 		this.handleRippleActivate();
-	// 	}
-	// }
-
 	protected renderRipple(): TemplateResult | string {
 		return this.shouldRenderRipple ?
 			html`<mwc-ripple class="ripple"></mwc-ripple>` : '';

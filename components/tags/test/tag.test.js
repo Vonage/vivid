@@ -2,9 +2,10 @@ import '../vwc-tag.js';
 import {
 	waitNextTask,
 	textToDomToParent,
-	isolatedElementsCreation
+	isolatedElementsCreation, waitInterval
 } from '../../../test/test-helpers.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
+import awaiting from 'kefir/src/two-sources/awaiting';
 
 chai.use(chaiDomDiff);
 
@@ -111,5 +112,29 @@ describe('Tag', () => {
 			removeButton?.click();
 			expect(Array.from(document.body.children).includes(elementFromRemoveEvent)).to.equal(true);
 		});
+	});
+
+	describe('shouldRenderRipple', async function () {
+		const [actualElement] = (
+			textToDomToParent(`<${COMPONENT_NAME} selectable removable text="Tag Text">Button Text</${COMPONENT_NAME}>`)
+		);
+		actualElement.shouldRenderRipple = true;
+		actualElement.selectable = true;
+		actualElement.removable = true;
+		await actualElement.updateComplete;
+		await waitInterval(100);
+		const baseElement = actualElement.shadowRoot?.querySelector('.vwc-tag');
+		await baseElement?.updateComplete;
+		actualElement.focus();
+		actualElement.blur();
+		baseElement.focus();
+		await baseElement?.updateComplete;
+		baseElement.dispatchEvent(new MouseEvent('click'));
+		baseElement.dispatchEvent(new MouseEvent('mouseenter'));
+		baseElement.dispatchEvent(new MouseEvent('mouseleave'));
+		baseElement.dispatchEvent(new MouseEvent('mousedown'));
+		await waitInterval(10);
+		baseElement.dispatchEvent(new MouseEvent('mouseup'));
+		baseElement.dispatchEvent(new KeyboardEvent('keydown', { key: ' '}));
 	});
 });
