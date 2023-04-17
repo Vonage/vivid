@@ -118,7 +118,7 @@ export class VWCAudio extends LitElement {
 	}
 
 	private toggleDisableAccordingToSrcState() {
-		this.disabled = !(this.src && !this._audio?.error);
+		this.disabled = !this.src || this._audio?.error !== null;
 	}
 	play(): Promise<void> {
 		return this._audio.play();
