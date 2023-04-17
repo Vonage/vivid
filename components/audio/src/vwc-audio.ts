@@ -100,8 +100,9 @@ export class VWCAudio extends LitElement {
 	protected override firstUpdated(_changedProperties: PropertyValues): void {
 		super.firstUpdated(_changedProperties);
 		setEvents(this._audio, {
+			error: () => this.toggleDisableAccordingToSrcState(),
 			/* istanbul ignore next */
-			loadedmetadata: () => this._duration = this._audio.duration,
+			loadedmetadata: () => { this.toggleDisableAccordingToSrcState(); this._duration = this._audio.duration; },
 			/* istanbul ignore next */
 			timeupdate: () => this._playheadPosition = this._audio.currentTime,
 			/* istanbul ignore next */
