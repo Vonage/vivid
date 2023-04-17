@@ -7,7 +7,7 @@ import {
 import { VWCAudio } from '../vwc-audio.js';
 import 'chai-dom';
 
-describe.only('vwc-audio', () => {
+describe('vwc-audio', () => {
 	const addElements = isolatedElementsCreation();
 
 	it('should register as a custom element', async () => {
