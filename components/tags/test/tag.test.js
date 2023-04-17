@@ -115,7 +115,7 @@ describe('Tag', () => {
 	});
 
 	describe('shouldRenderRipple', async function () {
-		const [actualElement] = (
+		const [actualElement] = addElement(
 			textToDomToParent(`<${COMPONENT_NAME} selectable removable text="Tag Text">Button Text</${COMPONENT_NAME}>`)
 		);
 		actualElement.shouldRenderRipple = true;

@@ -113,8 +113,12 @@ export class VWCAudio extends LitElement {
 			/* istanbul ignore next */
 			pause: () => this._isPlaying = false
 		});
+		this.toggleDisableAccordingToSrcState();
 	}
 
+	private toggleDisableAccordingToSrcState() {
+		this.disabled = !(this.src && !this._audio?.error);
+	}
 	play(): Promise<void> {
 		return this._audio.play();
 	}
@@ -134,6 +138,7 @@ export class VWCAudio extends LitElement {
 	override update(_changedProperties: PropertyValues): void {
 		this._scrubber?.setPosition(this._playheadPosition / this._duration);
 		super.update(_changedProperties);
+		this.toggleDisableAccordingToSrcState();
 	}
 
 	protected getRenderClasses(): ClassInfo {

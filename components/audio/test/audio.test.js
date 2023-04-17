@@ -26,12 +26,48 @@ describe('vwc-audio', () => {
 		expect(audioElement instanceof VWCAudio).to.eq(true);
 	});
 
-
 	describe('src', function () {
 		it(`should set the src property if src attribute is set`, async function () {
 			const url = 'https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_5MG.mp3';
 			const [actualElement] = addElements(textToDomToParent(`<vwc-audio src="${url}"></vwc-audio>`));
 			expect(actualElement.src).to.eq(url);
+		});
+
+		it('should set disabled to true when src is empty', async function () {
+			const [actualElement] = addElements(textToDomToParent(`<vwc-audio></vwc-audio>`));
+			await actualElement.updateComplete;
+			expect(actualElement.disabled).to.eq(true);
+		});
+
+		it('should set disabled to false when src is set', async function () {
+			const url = 'https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_5MG.mp3';
+			const [actualElement] = addElements(textToDomToParent(`<vwc-audio src="${url}"></vwc-audio>`));
+			await actualElement.updateComplete;
+			expect(actualElement.disabled).to.eq(false);
+		});
+
+		it('should set disabled to true when src removed', async function () {
+			const url = 'https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_5MG.mp3';
+			const [actualElement] = addElements(textToDomToParent(`<vwc-audio src="${url}"></vwc-audio>`));
+			await actualElement.updateComplete;
+			actualElement.src = '';
+			await actualElement.updateComplete;
+			expect(actualElement.disabled).to.eq(true);
+		});
+
+		it('should set disabled to true when src is falty', async function () {
+			const originalAudio = Audio;
+			Object.defineProperty(Audio.prototype, 'error', {
+				get: function () {
+					return { code: 4 };
+				}
+			});
+			const url = 'faltySrc';
+			const [actualElement] = (textToDomToParent(`<vwc-audio src="${url}"></vwc-audio>`));
+			await actualElement.updateComplete;
+			expect(actualElement.disabled).to.eq(true);
+			// eslint-disable-next-line no-global-assign
+			Audio = originalAudio;
 		});
 	});
 
