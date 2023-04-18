@@ -120,6 +120,9 @@ export class VWCAudio extends LitElement {
 
 	private toggleFaultySrcState() {
 		this.#faultySrc = !this.src || this._audio?.error !== null;
+		if (this.hasUpdated) {
+			this.requestUpdate();
+		}
 	}
 	play(): Promise<void> {
 		return this._audio.play();
