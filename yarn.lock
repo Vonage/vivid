@@ -6925,9 +6925,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001033, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001125, caniuse-lite@^1.0.30001179, caniuse-lite@^1.0.30001248, caniuse-lite@^1.0.30001251:
-  version "1.0.30001480"
-  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001480.tgz"
-  integrity sha512-q7cpoPPvZYgtyC4VaBSN0Bt+PJ4c4EYRf0DrduInOz2SkFpHD5p3LnvEpqBp7UnJn+8x1Ogl1s38saUxe+ihQQ==
+  version "1.0.30001301"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001301.tgz"
+  integrity sha512-csfD/GpHMqgEL3V3uIgosvh+SVIQvCh43SNu9HRbP1lnxkKm1kjDG4f32PP571JplkLjfS+mg2p1gxR7MYrrIA==
 
 capital-case@^1.0.4:
   version "1.0.4"
@@ -15120,7 +15120,7 @@ playwright-core@1.32.3:
   resolved "https://registry.yarnpkg.com/playwright-core/-/playwright-core-1.32.3.tgz#e6dc7db0b49e9b6c0b8073c4a2d789a96f519c48"
   integrity sha512-SB+cdrnu74ZIn5Ogh/8278ngEh9NEEV0vR4sJFmK04h2iZpybfbqBY0bX6+BLYWVdV12JLLI+JEFtSnYgR+mWg==
 
-playwright@latest:
+playwright@^1.32.3:
   version "1.32.3"
   resolved "https://registry.yarnpkg.com/playwright/-/playwright-1.32.3.tgz#88583167880e42ca04fa8c4cc303680f4ff457d0"
   integrity sha512-h/ylpgoj6l/EjkfUDyx8cdOlfzC96itPpPe8BXacFkqpw/YsuxkpPyVbzEq4jw+bAJh5FLgh31Ljg2cR6HV3uw==
