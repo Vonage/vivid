@@ -19,6 +19,7 @@ export async function createElementVariations(wrapper) {
 <vwc-audio src="https://download.samplelib.com/mp3/sample-6s.mp3" timestamp></vwc-audio>
 <vwc-audio id="badSrc" timestamp></vwc-audio>
 <vwc-audio src="https://download.samplelib.com/mp3/sample-6s.mp3" connotation="primary"></vwc-audio>
+<vwc-audio src="https://download.samplelib.com/mp3/sample-6s.mp3" disabled connotation="primary"></vwc-audio>
 <vwc-audio id="infinity-duration" timestamp></vwc-audio>
 <vwc-audio src="https://download.samplelib.com/mp3/sample-6s.mp3" timestamp connotation="primary"></vwc-audio>
 <vwc-audio src="https://download.samplelib.com/mp3/sample-6s.mp3" noseek="true"></vwc-audio>

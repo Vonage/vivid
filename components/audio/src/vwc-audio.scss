@@ -26,6 +26,10 @@ $disabled: var(--vvd-color-neutral-50);
 		align-items: center;
 		justify-content: flex-start;
 
+		&.disabled {
+			pointer-events: none;
+		}
+
 		> .scrubber {
 			#{media-controls-variables.$vwc-media-controls-scrubber-color}: var(#{connotation.$vvd-color-connotation});
 			min-width: 200px;
@@ -49,7 +53,6 @@ $disabled: var(--vvd-color-neutral-50);
 				#{media-controls-variables.$vwc-media-controls-scrubber-color}: #{$disabled};
 				--disable-scrub: #{$disabled};
 				cursor: not-allowed;
-				pointer-events: none;
 			}
 			> .control-button {
 				> .icon {

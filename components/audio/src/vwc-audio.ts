@@ -96,13 +96,14 @@ export class VWCAudio extends LitElement {
 
 	@internalProperty()
 	private _playheadPosition = 0;
+	#faultySrc = true;
 
 	protected override firstUpdated(_changedProperties: PropertyValues): void {
 		super.firstUpdated(_changedProperties);
 		setEvents(this._audio, {
-			error: () => this.toggleDisableAccordingToSrcState(),
+			error: () => this.toggleFaultySrcState(),
 			/* istanbul ignore next */
-			loadedmetadata: () => { this.toggleDisableAccordingToSrcState(); this._duration = this._audio.duration; },
+			loadedmetadata: () => { this.toggleFaultySrcState(); this._duration = this._audio.duration; },
 			/* istanbul ignore next */
 			timeupdate: () => this._playheadPosition = this._audio.currentTime,
 			/* istanbul ignore next */
@@ -114,11 +115,11 @@ export class VWCAudio extends LitElement {
 			/* istanbul ignore next */
 			pause: () => this._isPlaying = false
 		});
-		this.toggleDisableAccordingToSrcState();
+		this.toggleFaultySrcState();
 	}
 
-	private toggleDisableAccordingToSrcState() {
-		this.disabled = !this.src || this._audio?.error !== null;
+	private toggleFaultySrcState() {
+		this.#faultySrc = !this.src || this._audio?.error !== null;
 	}
 	play(): Promise<void> {
 		return this._audio.play();
@@ -139,13 +140,15 @@ export class VWCAudio extends LitElement {
 	override update(_changedProperties: PropertyValues): void {
 		this._scrubber?.setPosition(this._playheadPosition / this._duration);
 		super.update(_changedProperties);
-		this.toggleDisableAccordingToSrcState();
+		if(_changedProperties.has('src')) {
+			this.toggleFaultySrcState();
+		}
 	}
 
 	protected getRenderClasses(): ClassInfo {
 		return {
 			[`connotation-${this.connotation}`]: !!this.connotation,
-			['disabled']: this.disabled,
+			['disabled']: this.disabled || this.#faultySrc,
 			loading: this._loading
 		};
 	}
