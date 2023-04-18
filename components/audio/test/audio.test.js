@@ -50,7 +50,7 @@ describe('vwc-audio', () => {
 
 		it('should set disabled class when src removed', async function () {
 			const url = 'https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_5MG.mp3';
-			const [actualElement] = (textToDomToParent(`<vwc-audio src="${url}"></vwc-audio>`));
+			const [actualElement] = addElements(textToDomToParent(`<vwc-audio src="${url}"></vwc-audio>`));
 			await actualElement.updateComplete;
 			actualElement.src = '';
 			await actualElement.updateComplete;
@@ -121,7 +121,7 @@ describe('vwc-audio', () => {
 		});
 
 		it('should set disabled true if set on the element', async function () {
-			const [audioElement] = (textToDomToParent(`<vwc-audio></vwc-audio>`));
+			const [audioElement] = addElements(textToDomToParent(`<vwc-audio></vwc-audio>`));
 			await audioElement.updateComplete;
 			audioElement.src = 'https://download.samplelib.com/mp3/sample-9s.mp3';
 			await audioElement.updateComplete;
