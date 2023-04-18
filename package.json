@@ -159,5 +159,6 @@
 	"resolutions": {
 		"**/glob-parent": "^6.0.2",
 		"**/minimist": "^1.2.6"
-	}
+	},
+	"dependencies": {}
 }
