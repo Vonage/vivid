@@ -28,7 +28,7 @@ const StoryShell = (
 
 			<div class="component-container">
 				${innerStory(args)}
-			</div>`, { args: { src: "https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3", ...defaultArgs } }
+			</div>`, { args: { src: "https://download.samplelib.com/mp3/sample-6s.mp3", ...defaultArgs } }
 	);
 };
 

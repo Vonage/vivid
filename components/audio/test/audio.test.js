@@ -26,12 +26,51 @@ describe('vwc-audio', () => {
 		expect(audioElement instanceof VWCAudio).to.eq(true);
 	});
 
-
 	describe('src', function () {
 		it(`should set the src property if src attribute is set`, async function () {
 			const url = 'https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_5MG.mp3';
 			const [actualElement] = addElements(textToDomToParent(`<vwc-audio src="${url}"></vwc-audio>`));
 			expect(actualElement.src).to.eq(url);
+		});
+
+		it('should set disabled class when src is empty', async function () {
+			const [actualElement] = addElements(textToDomToParent(`<vwc-audio></vwc-audio>`));
+			await actualElement.updateComplete;
+			expect(actualElement.shadowRoot?.querySelector('.audio').classList.contains('disabled')).to.eq(true);
+		});
+
+		it('should remove disabled class when src is set and no error', async function () {
+			const url = 'https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_5MG.mp3';
+			const [actualElement] = addElements(textToDomToParent(`<vwc-audio src="${url}"></vwc-audio>`));
+			await actualElement.updateComplete;
+			actualElement._audio.dispatchEvent(new Event('loadedmetadata'));
+			await actualElement.updateComplete;
+			expect(actualElement.shadowRoot?.querySelector('.audio').classList.contains('disabled')).to.eq(false);
+		});
+
+		it('should set disabled class when src removed', async function () {
+			const url = 'https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_5MG.mp3';
+			const [actualElement] = addElements(textToDomToParent(`<vwc-audio src="${url}"></vwc-audio>`));
+			await actualElement.updateComplete;
+			actualElement.src = '';
+			await actualElement.updateComplete;
+			await actualElement.updateComplete;
+			expect(actualElement.shadowRoot?.querySelector('.audio').classList.contains('disabled')).to.eq(true);
+		});
+
+		it('should set disabled class when src is falty', async function () {
+			const url = 'https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_5MG.mp3';
+			const [actualElement] = addElements(textToDomToParent(`<vwc-audio src="${url}"></vwc-audio>`));
+			await actualElement.updateComplete;
+			actualElement._audio.addEventListener('error', () => {
+				expect(actualElement.shadowRoot?.querySelector('.audio').classList.contains('disabled')).to.eq(true);
+			});
+			Object.defineProperty(actualElement._audio, 'error', {
+				get: () => {
+					return { code: 4 };
+				}
+			});
+			actualElement._audio.dispatchEvent(new Event('error'));
 		});
 	});
 
@@ -79,6 +118,16 @@ describe('vwc-audio', () => {
 			const [audioElement] = addElements(textToDomToParent(`<vwc-audio disabled></vwc-audio>`));
 			await audioElement.updateComplete;
 			expect(audioElement.shadowRoot.querySelector('.audio').classList.contains('disabled')).to.eq(true);
+		});
+
+		it('should set disabled true if set on the element', async function () {
+			const [audioElement] = addElements(textToDomToParent(`<vwc-audio></vwc-audio>`));
+			await audioElement.updateComplete;
+			audioElement.src = 'https://download.samplelib.com/mp3/sample-9s.mp3';
+			await audioElement.updateComplete;
+			audioElement.disabled = true;
+			await audioElement.updateComplete;
+			expect(audioElement.hasAttribute('disabled')).to.eq(true);
 		});
 	});
 

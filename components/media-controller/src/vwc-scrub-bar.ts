@@ -286,9 +286,9 @@ class VWCScrubBar extends HTMLElement {
 			.map(prop('value'))
 			.onValue(
 				percentage => (trackEl.style.backgroundImage = `linear-gradient(90deg, ${TRACK_ACTIVE_COLOR} 0%, ${TRACK_ACTIVE_COLOR} ${
-					percentage * 100
+					(!isNaN(percentage) ? percentage : 0) * 100
 				}%, ${TRACK_INACTIVE_COLOR} ${
-					percentage * 100
+					(!isNaN(percentage) ? percentage : 0) * 100
 				}%, ${TRACK_INACTIVE_COLOR} 100%)`)
 			);
 
