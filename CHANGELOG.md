@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.40.0](https://github.com/Vonage/vivid/compare/v2.39.1...v2.40.0) (2023-04-19)
+
+
+### Features
+
+* **audio:** auto disable audio when invalid src (VIV-877) ([#1394](https://github.com/Vonage/vivid/issues/1394)) ([c6827a1](https://github.com/Vonage/vivid/commit/c6827a1737b2695931c1a425e0aafb8d28d03b35))
+* **icon:** update icons set version to 4.1.1 ([#1396](https://github.com/Vonage/vivid/issues/1396)) ([b1ad8df](https://github.com/Vonage/vivid/commit/b1ad8df500c066a73ec26af1c8564c2506e6a8a4))
+
+
+
+
+
 ## [2.39.1](https://github.com/Vonage/vivid/compare/v2.39.0...v2.39.1) (2023-04-16)
 
 
