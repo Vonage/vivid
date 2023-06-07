@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.42.0](https://github.com/Vonage/vivid/compare/v2.41.0...v2.42.0) (2023-06-07)
+
+
+### Features
+
+* **icon:** update icons to 4.2.0 ([#1399](https://github.com/Vonage/vivid/issues/1399)) ([cc01819](https://github.com/Vonage/vivid/commit/cc0181927875092e4516688845c5e04ded5fe9dd))
+
+
+
+
+
 # [2.41.0](https://github.com/Vonage/vivid/compare/v2.40.0...v2.41.0) (2023-05-31)
 
 
