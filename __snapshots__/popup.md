@@ -4,7 +4,7 @@
 
 ```html
 <vwc-elevation dp="2">
-  <div class="popup-wrapper">
+  <div class="fixed popup-wrapper">
     <div
       aria-hidden="true"
       class="popup"
