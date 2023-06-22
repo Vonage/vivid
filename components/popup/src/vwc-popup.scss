@@ -17,8 +17,14 @@
 	}
 
 	&-wrapper {
-		position: absolute;
 		border-radius: 6px;
+
+		&:not(.absolute) {
+			position: fixed;
+		}
+		&.absolute {
+			position: absolute;
+		}
 	}
 
 	&-content {
