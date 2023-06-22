@@ -205,7 +205,7 @@ export class VWCPopupBase extends LitElement {
 									<!-- 'popup-wrapper' is selected by the wrapping elevation, thus required for shadow styling -->
 									<!-- the reason for not applying directly to its first-child 'popup' is to avoid scenario where popup is set to alternate scheme
 												and affect the shadow style surfacing contrast which should still in default scheme context -->
-									<div class="popup-wrapper">
+									<div class="popup-wrapper ${this.strategy}">
                     <div class="popup ${classMap(this.getRenderClasses())}" aria-hidden=${aria} part=${alternate}>
                         <div class="popup-content" >
                             <slot></slot>
@@ -219,3 +219,4 @@ export class VWCPopupBase extends LitElement {
 		`;
     }
 }
+
