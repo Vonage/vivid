@@ -174,4 +174,23 @@ describe('popup', () => {
 			expect(updatePositionCallCount).to.equal(0);
 		});
 	});
+
+	describe('strategy',  () => {
+		it('should set fixed class as default strategy', async () => {
+			const [popupElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} open></${COMPONENT_NAME}>`)
+			);
+			await popupElement.updateComplete;
+			expect(popupElement.shadowRoot.querySelector('.popup-wrapper').classList.contains('fixed')).to.eq(true);
+		});
+
+		it('should set absolute class as  strategy absolut is set', async () => {
+			const [popupElement] = addElement(
+				textToDomToParent(`<${COMPONENT_NAME} open></${COMPONENT_NAME}>`)
+			);
+			popupElement.strategy = 'absolute';
+			await popupElement.updateComplete;
+			expect(popupElement.shadowRoot.querySelector('.popup-wrapper').classList.contains('absolute')).to.eq(true);
+		});
+	});
 });
