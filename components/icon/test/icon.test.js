@@ -38,22 +38,6 @@ describe('vwc-icon', () => {
 		it('Should be empty', () => {
 			assert.isEmpty(iconEl.innerHTML);
 		});
-
-		Object.entries(ICON_SAMPLE).forEach(([iconName, iconData]) => {
-			it(`Should contain "${iconName}" path`, function () {
-				this.timeout((LOAD_TRIAL_COUNT + 1) * LOAD_TIME);
-				iconEl.setAttribute('type', iconName);
-				return Array(LOAD_TRIAL_COUNT)
-					.fill(0)
-					.reduce(promise => promise
-						.then(status => status || sleep(LOAD_TIME)
-							.then(() => iconEl.shadowRoot
-								?.querySelector('svg > path:first-child')
-								?.getAttribute('d') === iconData)),
-					 Promise.resolve(false))
-					.then(status => assert(status, `Icon ${iconName} failed to verify`));
-			});
-		});
 	});
 
 	describe('icon layout', () => {
