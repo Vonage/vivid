@@ -1,3 +1,12 @@
+# [2.43.0](https://github.com/vonage/vivid/compare/v2.42.0...v2.43.0) (2023-07-03)
+
+
+### Bug Fixes
+
+* **popup:** update css for absolute and fixed (VIV-1137) ([#1400](https://github.com/vonage/vivid/issues/1400)) ([5b9171f](https://github.com/vonage/vivid/commit/5b9171fda07d8c78442b0bda0f5dec2681902442))
+
+
+
 # [2.42.0](https://github.com/vonage/vivid/compare/v2.41.0...v2.42.0) (2023-06-07)
 
 

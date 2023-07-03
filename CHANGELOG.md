@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.43.0](https://github.com/Vonage/vivid/compare/v2.42.0...v2.43.0) (2023-07-03)
+
+
+### Bug Fixes
+
+* **popup:** update css for absolute and fixed (VIV-1137) ([#1400](https://github.com/Vonage/vivid/issues/1400)) ([5b9171f](https://github.com/Vonage/vivid/commit/5b9171fda07d8c78442b0bda0f5dec2681902442))
+
+
+### Features
+
+* **icon:** update icons set to 4.2.1 (VIV-1158) ([#1401](https://github.com/Vonage/vivid/issues/1401)) ([489c24a](https://github.com/Vonage/vivid/commit/489c24a4e3071d80b55936ff91bfaaaa10852709))
+
+
+
+
+
 # [2.42.0](https://github.com/Vonage/vivid/compare/v2.41.0...v2.42.0) (2023-06-07)
 
 
