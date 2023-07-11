@@ -132,7 +132,7 @@
 		"showdown-htmlescape": "^0.1.9",
 		"spech": "^0.2.1",
 		"standard-version": "^9.1.0",
-		"stylelint": "^13.13.1",
+		"stylelint": "^15.10.1",
 		"stylelint-a11y": "^1.2.3",
 		"stylelint-config-idiomatic-order": "^8.1.0",
 		"stylelint-config-sass-guidelines": "^8.0.0",
