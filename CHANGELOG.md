@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.43.1](https://github.com/Vonage/vivid/compare/v2.43.0...v2.43.1) (2023-07-11)
+
+**Note:** Version bump only for package @vivid/root
+
+
+
+
+
 # [2.43.0](https://github.com/Vonage/vivid/compare/v2.42.0...v2.43.0) (2023-07-03)
 
 
