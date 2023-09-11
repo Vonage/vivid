@@ -18352,9 +18352,9 @@ tree-kill@^1.2.2:
   integrity sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A==
 
 tree-kit@^0.7.0:
-  version "0.7.0"
-  resolved "https://registry.npmjs.org/tree-kit/-/tree-kit-0.7.0.tgz"
-  integrity sha512-MAqFo2oJJ39zmxq3xETx0nMAgZw2z6pnJPjIAehEcrDaeePDhBBTshAlyhCDtezMDTIu1Av+vGE501xN3Sh8VA==
+  version "0.7.5"
+  resolved "https://registry.yarnpkg.com/tree-kit/-/tree-kit-0.7.5.tgz#573ffe1ddcf1545ade67ec24f7478e6299fb608f"
+  integrity sha512-CmyY7d0OYE5W6UCmvij+SaocG7z+q4roF+Oj7BtU8B+KlpdiRZRMUwNyqfmWYcpYgsOcY1/dfIx/VsLmbAOLGg==
 
 trim-newlines@^3.0.0:
   version "3.0.1"
