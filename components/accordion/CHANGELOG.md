@@ -1,4 +1,8 @@
-## [2.43.2](https://github.com/vonage/vivid/compare/v2.43.1...v2.43.2) (2023-08-10)
+# [2.44.0](https://github.com/vonage/vivid/compare/v2.43.2...v2.44.0) (2023-09-11)
+
+
+
+## v2.43.2 (2023-08-10)
 
 
 

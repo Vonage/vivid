@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.44.0](https://github.com/Vonage/vivid/compare/vv2.43.2...v2.44.0) (2023-09-11)
+
+
+### Features
+
+* **icons:** update icons version to 4.4.0 (VIV-1301) ([#1423](https://github.com/Vonage/vivid/issues/1423)) ([d873f87](https://github.com/Vonage/vivid/commit/d873f87071c4c1c7ee1a7111be349941c2e93a21))
+* **icon:** update icons set version to 4.3.0 (VIV-1295) ([#1422](https://github.com/Vonage/vivid/issues/1422)) ([ea02975](https://github.com/Vonage/vivid/commit/ea0297564d91b0dbbd5919538716e468dee87fe5))
+
+
+
+
+
 ## [2.43.2](https://github.com/Vonage/vivid/compare/v2.43.1...v2.43.2) (2023-08-10)
 
 **Note:** Version bump only for package @vivid/root
