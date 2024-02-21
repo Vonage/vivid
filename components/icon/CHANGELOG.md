@@ -1,3 +1,12 @@
+# [2.45.0](https://github.com/Vonage/vivid/compare/v2.44.0...v2.45.0) (2024-02-21)
+
+
+### Features
+
+* **icon:** update icons set version to 4.5.0 ([595efb2](https://github.com/Vonage/vivid/commit/595efb2113ef4f6900a81d4b434daebcea442c45))
+
+
+
 # [2.44.0](https://github.com/Vonage/vivid/compare/v2.43.2...v2.44.0) (2023-09-11)
 
 
