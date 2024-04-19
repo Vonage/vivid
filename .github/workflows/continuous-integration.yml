@@ -1,0 +1,59 @@
+name: Continuous-Integration
+on:
+  workflow_run:
+    workflows:
+      - Semantic-Version-Bump
+    types:
+      - completed
+
+jobs:
+  continuous-integration-build:
+    name: Continuous Integration Build
+    runs-on: vcp-runner
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0 # Required due to the way Git works, without it this action won't be able to find any or the correct tags
+
+    - name: 'Get Current tag'
+      id: currenttag
+      uses: "WyriHaximus/github-action-get-previous-tag@v1"
+      with:
+        fallback: 0.1.0 # Optional fallback tag to use when no tag can be found
+        
+    - name: Docker Login
+      uses: docker/login-action@v2
+      with:
+        registry:  ${{ secrets.VCR_HOST }} 
+        username:  ${{ secrets.VCR_USERNAME }} 
+        password:  ${{ secrets.VCR_PASSWORD }} 
+        logout: "true"
+
+    - name: Pack the code
+      env:
+        REGISTRY:  ${{ secrets.VCR_HOST }} 
+        IMAGE_TAG:  ${{ steps.currenttag.outputs.tag }} 
+        CNB_CONFIG:  ${{ secrets.CNB_CONFIG }} 
+      run: |
+        builder="$REGISTRY/vonage/cnb-builder-frontend:20"
+        repoName=$(basename  ${{ github.repository }} )
+        tag=$(echo "$REGISTRY/vonage/$repoName:$IMAGE_TAG" | tr '[:upper:]' '[:lower:]')
+        pack build $tag \
+          -e TARGET_PROJECT_VERSION=$IMAGE_TAG \
+          -e CNB_CONFIG=$CNB_CONFIG \
+          --builder $builder \
+          --clear-cache
+
+        docker push $tag
+
+    - name: AutoRelease
+      id: autorelease
+      uses: vonage/arch-autorelease@1.4.1
+      with:
+        repository:  ${{ github.repository }} 
+        owner:  ${{ github.repository_owner }} 
+        version:  ${{ steps.currenttag.outputs.tag }} 
+        token:  ${{ secrets.GITHUB_TOKEN }} 
+        branch:  ${{ github.ref }} 
