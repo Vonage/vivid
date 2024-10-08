@@ -1,0 +1,6 @@
+{
+  "settingsInheritedFrom": "<GH Org>/whitesource-config@api-platform",
+  "remediateSettings": {
+    "timezone": "UTC"
+  }
+}
