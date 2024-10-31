@@ -80,7 +80,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 18
       - uses: actions/download-artifact@v4
         with:
           name: workspace
@@ -110,7 +110,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 18
       - uses: actions/download-artifact@v4
         with:
           name: workspace
