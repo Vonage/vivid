@@ -22,7 +22,7 @@ jobs:
           node-version: 14
 
       - name: Writing .npmrc
-        run: printf "registry=https://npm.pkg.github.com/Vonage\n_authToken=\${GITHUB_TOKEN}\n//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}\nalways-auth=true" > .npmrc
+        run: printf "registry=https://npm.pkg.github.com/Vonage\n//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}\nalways-auth=true" > .npmrc
 
       - name: Install dependencies
         run: yarn install --network-timeout 100000
