@@ -38,7 +38,7 @@ jobs:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
       - run: yarn lerna run build --stream --concurrency=15 --include-dependencies
       - run: tar -zcf /tmp/vivid-env.tar.gz .
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: workspace
           path: /tmp/vivid-env.tar.gz
@@ -81,7 +81,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 14
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4
         with:
           name: workspace
           path: /tmp
@@ -111,14 +111,14 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 14
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4
         with:
           name: workspace
           path: /tmp
       - run: tar -zxf /tmp/vivid-env.tar.gz
       - run: npm rebuild playwright && yarn playwright install-deps
       - run: yarn ui-tests
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         if: ${{ always() }}
         with:
           name: snapshot
@@ -143,7 +143,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 14
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v4
         with:
           name: workspace
           path: /tmp
