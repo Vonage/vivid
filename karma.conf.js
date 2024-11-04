@@ -55,7 +55,8 @@ module.exports = config => {
 				os_version: 'Catalina'
 			}
 		},
-		browsers: ['Safari_13_BS']
+		browsers: ['Safari_13_BS'],
+		listenAddress: '::', // See https://github.com/karma-runner/karma/issues/3730#issuecomment-1122075632
 	});
 
 	config.set(extendedDefaultConfig);
