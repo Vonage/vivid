@@ -1,5 +1,9 @@
 name: Master Code Coverage
 
+permissions:
+  contents: read
+  packages: read
+
 on:
   push:
     branches:
@@ -8,8 +12,6 @@ on:
 jobs:
   build-test-release:
     runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - name: Checkout
@@ -19,9 +21,10 @@ jobs:
           ref: master
 
       - name: Setup NodeJS 14
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: 14
+          registry-url: https://npm.pkg.github.com
 
       - run: printf "registry=https://npm.pkg.github.com/Vonage\n_authToken=\${GITHUB_TOKEN}\n//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}\nalways-auth=true" > .npmrc
 
@@ -44,6 +47,8 @@ jobs:
       - name: Install packages
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install --network-timeout 100000
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Build components
         run: yarn compile

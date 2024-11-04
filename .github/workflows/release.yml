@@ -1,5 +1,9 @@
 name: Release
 
+permissions:
+  contents: read
+  packages: read
+
 concurrency: ${{ github.workflow }}
 
 on:
@@ -10,22 +14,20 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{ secrets.VNG_VVD_PAT }}
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Setup NodeJS 14
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: 14
-
-      - name: Writing .npmrc
-        run: printf "registry=https://npm.pkg.github.com/Vonage\n//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}\nalways-auth=true" > .npmrc
+          registry-url: https://npm.pkg.github.com
 
       - name: Install dependencies
         run: yarn install --network-timeout 100000
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - run: yarn compile
       - run: tar -zcf /tmp/vivid-env.tar.gz .
@@ -76,7 +78,7 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_VIVID_DEMO_PROD_ACCESS }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_VIVID_DEMO_PROD_SECRET }}
       AWS_DEFAULT_REGION: us-east-1
-      GITHUB_TOKEN: ${{ secrets.VNG_VVD_PAT }}
+
     needs: publish
     runs-on: ubuntu-latest
     steps:
@@ -85,7 +87,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: Setup NodeJS 14
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: 14
       - uses: actions/download-artifact@v4
