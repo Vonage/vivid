@@ -1,5 +1,9 @@
 name: Master Pull Request
 
+permissions:
+  contents: read
+  packages: read
+
 on:
   pull_request:
     types:
@@ -21,14 +25,12 @@ jobs:
     if: github.event.pull_request.draft == false
     name: Build
     runs-on: ubuntu-20.04
-    env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v2
-      - run: printf "registry=https://npm.pkg.github.com/Vonage\n//npm.pkg.github.com/:_authToken=\${GITHUB_TOKEN}\nalways-auth=true" > .npmrc
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
         with:
           node-version: 14
+          registry-url: https://npm.pkg.github.com
       - uses: actions/cache@v2
         with:
           path: "**/node_modules"
@@ -36,6 +38,7 @@ jobs:
       - run: yarn install --frozen-lockfile --network-timeout 100000
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - run: yarn lerna run build --stream --concurrency=15 --include-dependencies
       - run: tar -zcf /tmp/vivid-env.tar.gz .
       - uses: actions/upload-artifact@v4
