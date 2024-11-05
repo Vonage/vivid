@@ -1,3 +1,12 @@
+# [2.46.0](https://github.com/Vonage/vivid/compare/v2.45.0...v2.46.0) (2024-11-05)
+
+
+### Features
+
+* **icons:** update icon set (VIV-1651) ([#1430](https://github.com/Vonage/vivid/issues/1430)) ([bfa8c54](https://github.com/Vonage/vivid/commit/bfa8c54f1ddabcfe60f3dd9a817d74d964910884))
+
+
+
 # [2.45.0](https://github.com/Vonage/vivid/compare/v2.44.0...v2.45.0) (2024-02-21)
 
 
