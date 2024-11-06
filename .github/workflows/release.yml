@@ -39,8 +39,6 @@ jobs:
   publish:
     needs: build
     runs-on: ubuntu-latest
-    env:
-      GITHUB_TOKEN: ${{ secrets.VNG_VVD_PAT }}
     name: Publishing to ${{ matrix.registry }}
     strategy:
       fail-fast: false
@@ -50,7 +48,7 @@ jobs:
           - npm
         include:
           - registry: github
-            token_secret: GITHUB_TOKEN
+            token_secret: VNG_VVD_PAT
             host: npm.pkg.github.com
           - registry: npm
             token_secret: NPM_AUTH_TOKEN
