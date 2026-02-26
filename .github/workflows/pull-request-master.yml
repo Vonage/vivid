@@ -24,14 +24,14 @@ jobs:
     timeout-minutes: 15
     if: github.event.pull_request.draft == false
     name: Build
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 14
+          node-version: 24
           registry-url: https://npm.pkg.github.com
-      - uses: actions/cache@v2
+      - uses: actions/cache@v4
         with:
           path: "**/node_modules"
           key: ${{ hashFiles('yarn.lock') }}
@@ -57,14 +57,14 @@ jobs:
       max-parallel: 10
       matrix:
         os:
-          - ubuntu-20.04
+          - ubuntu-latest
           - macos-latest
         browser:
           - SafariNative
           - ChromeHeadless
           - FirefoxHeadless
         exclude:
-          - os: ubuntu-20.04
+          - os: ubuntu-latest
             browser: SafariNative
           - os: macos-latest
             browser: FirefoxHeadless
@@ -81,9 +81,9 @@ jobs:
             browser_name: Safari
             report_coverage: false
     steps:
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 24
       - uses: actions/download-artifact@v4
         with:
           name: workspace
@@ -91,7 +91,7 @@ jobs:
       - run: tar -zxf /tmp/vivid-env.tar.gz
       - run: yarn karma start --coverage --browsers=${{ matrix.browser }}
         id: test
-      - uses: coverallsapp/github-action@master
+      - uses: coverallsapp/github-action@v2
         name: Report coverage information to coveralls
         if: ${{ matrix.report_coverage }}
         continue-on-error: true
@@ -111,9 +111,9 @@ jobs:
     env:
       GITHUB_TOKEN: ${{ secrets.VNG_VVD_PAT }}
     steps:
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 24
       - uses: actions/download-artifact@v4
         with:
           name: workspace
@@ -131,7 +131,7 @@ jobs:
     if: github.event.pull_request.draft == false
     needs: build
     name: ${{ matrix.script_name }}
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     env:
       GITHUB_TOKEN: ${{ secrets.VNG_VVD_PAT }}
     strategy:
@@ -143,13 +143,12 @@ jobs:
           - script: lint
             script_name: Test Lint rules
     steps:
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v4
         with:
-          node-version: 14
+          node-version: 24
       - uses: actions/download-artifact@v4
         with:
           name: workspace
           path: /tmp
       - run: tar -zxf /tmp/vivid-env.tar.gz
       - run: yarn ${{ matrix.script }}
-
