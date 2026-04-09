@@ -39,6 +39,7 @@ vwc-casousel:active {
 }
 
 .swiper-container {
+	@extend .swiper;
 	flex: 1;
 }
 

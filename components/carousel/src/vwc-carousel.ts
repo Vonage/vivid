@@ -9,14 +9,13 @@ import {
 	TemplateResult,
 } from 'lit-element';
 import { style } from './vwc-carousel.css.js';
-import SwiperCore, {
-	Swiper, Autoplay, Keyboard, Mousewheel, Navigation
-// eslint-disable-next-line import/extensions
-} from 'swiper/core';
-// eslint-disable-next-line import/extensions
-import type { SwiperOptions } from 'swiper/core';
+import Swiper from 'swiper';
+// @ts-ignore - swiper 12's module type defs use .d.ts import extensions unsupported by TS 4.x
+import { Autoplay, Keyboard, Mousewheel, Navigation, Manipulation } from 'swiper/modules';
 import '@vonage/vwc-icon';
 import './vwc-carousel-item.js';
+
+type SwiperOptions = ConstructorParameters<typeof Swiper>[1] & Record<string, unknown>;
 
 declare global {
 	interface HTMLElementTagNameMap {
@@ -25,8 +24,6 @@ declare global {
 }
 
 const CAROUSEL_STYLE_ID = 'vwc-carousel-style-id';
-
-SwiperCore.use([Autoplay, Keyboard, Mousewheel, Navigation]);
 
 /**
  * This component is a carousel
@@ -54,6 +51,7 @@ export class VWCCarousel extends LitElement {
 
 	private get swiperOptions(): SwiperOptions {
 		return {
+			modules: [Autoplay, Keyboard, Mousewheel, Navigation, Manipulation],
 			loop: false,
 			autoplay: this.autoplay
 				? {

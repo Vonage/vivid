@@ -158,9 +158,11 @@
 	"_void_cache": true,
 	"resolutions": {
 		"**/glob-parent": "^6.0.2",
-		"**/minimist": "^1.2.6"
+		"**/minimist": "^1.2.6",
+		"**/minimatch": "^3.1.5",
+		"**/brace-expansion": "^1.1.13"
 	},
 	"dependencies": {
-		"minimatch": "3.1.2"
+		"minimatch": "3.1.5"
 	}
 }

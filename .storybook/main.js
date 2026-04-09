@@ -22,6 +22,13 @@ module.exports = {
 				options: {}
 			}
 		});
+		config.module.rules.push({
+			test: /\.m?js$/,
+			include: /node_modules\/swiper/,
+			use: {
+				loader: 'babel-loader',
+			}
+		});
 		return config;
 	}
 };
