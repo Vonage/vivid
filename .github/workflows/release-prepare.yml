@@ -19,20 +19,17 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
           ref: master
           token: ${{ secrets.VNG_VVD_PAT }}
 
-      - name: Use Node.js 14
+      - name: Use Node.js 24
         uses: actions/setup-node@v4
         with:
-          node-version: 14
+          node-version: 24
           registry-url: https://npm.pkg.github.com
-
-      - name: Install yarn
-        run: npm install -g yarn
 
       - name: Install dependencies
         run: yarn install --network-timeout 100000

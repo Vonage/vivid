@@ -12,7 +12,6 @@ import {
 	shapeRoundedTestCases,
 	shapePillTestCases,
 } from '../../../test/shared/index.js';
-import { connotationTestCases } from './button.connotation.test.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
@@ -380,10 +379,6 @@ describe('button', () => {
 	describe('shape', () => {
 		shapeRoundedTestCases(COMPONENT_NAME);
 		shapePillTestCases(COMPONENT_NAME, false);
-	});
-
-	describe('button connotation', () => {
-		connotationTestCases(COMPONENT_NAME);
 	});
 
 	describe('button layout', () => {

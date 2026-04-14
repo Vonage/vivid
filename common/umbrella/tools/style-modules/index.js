@@ -4,7 +4,7 @@ const
 	glob = require('glob'),
 	kefir = require('kefir'),
 	parseArgs = require('minimist'),
-	{ writeFile } = require('fs'),
+	{ readFileSync, writeFile } = require('fs'),
 	{ join: joinPath, extname: getExtension, basename: getBase, dirname: getDir } = require('path'),
 	{ render: renderSass } = require('sass');
 
@@ -41,14 +41,17 @@ fileStreamFromGlob(joinPath(process.cwd(), basePath, sourcePattern))
 								[path, "_index.scss"].join('/'),
 								...["", "_"]
 									.map(prefixWith(path))
-									.flatMap((basePath)=> ["", "scss", "sass"].map(suffixWith(basePath)))
+									.flatMap((basePath)=> ["", "scss", "sass", "css"].map(suffixWith(basePath)))
 							].map((probePath)=> kefir.fromNodeCallback((cb) => {
 								const res = fp.attempt(() => require.resolve(probePath, { paths: [prev] }));
 								cb(fp.isError(res) && res, res);
 							}))
 						)
 						.ignoreErrors()
-						.map((outPath)=> ({ file: outPath }))
+						.map((outPath)=> outPath.endsWith('.css')
+							? { contents: readFileSync(outPath, 'utf8') }
+							: { file: outPath }
+						)
 						.beforeEnd(fp.noop)
 						.take(1)
 						.onValue(done);

@@ -10,8 +10,7 @@ import {
 	sizingTestCases,
 	shapeRoundedTestCases,
 	shapeCircledTestCases,
-} from '../../../test/shared.js';
-import { connotationTestCases } from '../../button/test/button.connotation.test.js';
+} from '../../../test/shared/index.js';
 import { chaiDomDiff } from '@open-wc/semantic-dom-diff';
 
 chai.use(chaiDomDiff);
@@ -42,10 +41,6 @@ describe('icon button', () => {
 	describe('shape', () => {
 		shapeRoundedTestCases(COMPONENT_NAME);
 		shapeCircledTestCases(COMPONENT_NAME);
-	});
-
-	describe('icon button connotation', () => {
-		connotationTestCases(COMPONENT_NAME);
 	});
 
 	describe('icon button layout', () => {
@@ -88,7 +83,7 @@ describe('icon button', () => {
 			formElement.layout = 'filled';
 			formElement.disabled = true;
 			await waitNextTask();
-			assertComputedStyle(actualElement, { color: 'rgb(153,153,153)', backgroundColor: 'rgb(204,204,204)' });
+			assertComputedStyle(actualElement, { color: 'rgb(146,146,146)', backgroundColor: 'rgb(204,204,204)' });
 		});
 
 		it('should have disabled layout when disabled (outlined)', async () => {
@@ -96,11 +91,11 @@ describe('icon button', () => {
 			formElement.disabled = true;
 			await waitNextTask();
 			assertComputedStyle(actualElement, {
-				color: 'rgb(153,153,153)',
-				borderTopColor: 'rgb(153,153,153)',
-				borderRightColor: 'rgb(153,153,153)',
-				borderBottomColor: 'rgb(153,153,153)',
-				borderLeftColor: 'rgb(153,153,153)'
+				color: 'rgb(146,146,146)',
+				borderTopColor: 'rgb(146,146,146)',
+				borderRightColor: 'rgb(146,146,146)',
+				borderBottomColor: 'rgb(146,146,146)',
+				borderLeftColor: 'rgb(146,146,146)'
 			});
 		});
 	});

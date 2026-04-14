@@ -24,6 +24,7 @@ describe('calendar', () => {
 		);
 		await waitNextTask();
 		actualElement.datetime = '2021-01-01';
+		actualElement.locales = 'en-US';
 		await actualElement.updateComplete;
 		expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
 	});
@@ -72,6 +73,7 @@ describe('calendar', () => {
 			);
 
 			actualElement.datetime = '2021-01-01';
+			actualElement.locales = 'en-US';
 			await actualElement.updateComplete;
 
 			expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
@@ -83,6 +85,7 @@ describe('calendar', () => {
 			);
 
 			actualElement.setAttribute('datetime', '2021-01-01');
+			actualElement.locales = 'en-US';
 			await actualElement.updateComplete;
 
 			expect(actualElement.shadowRoot.innerHTML).to.equalSnapshot();
@@ -108,6 +111,7 @@ describe('calendar', () => {
 			);
 
 			actualElement.datetime = '2021-01-01';
+			actualElement.locales = 'en-US';
 			actualElement.hour12 = false;
 			await actualElement.updateComplete;
 

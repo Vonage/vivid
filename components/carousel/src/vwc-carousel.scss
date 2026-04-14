@@ -39,7 +39,15 @@ vwc-casousel:active {
 }
 
 .swiper-container {
+	position: relative;
+	z-index: 1;
+	display: block;
+	overflow: hidden;
 	flex: 1;
+	padding: 0;
+	margin-right: auto;
+	margin-left: auto;
+	list-style: none;
 }
 
 .swiper-slide {
