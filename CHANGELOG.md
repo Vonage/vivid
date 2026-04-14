@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.46.2](https://github.com/Vonage/vivid/compare/v2.46.1...v2.46.2) (2026-04-14)
+
+
+### Bug Fixes
+
+* **deps:** update vulnerable dependencies (VIV-3145) ([#1457](https://github.com/Vonage/vivid/issues/1457)) ([e602725](https://github.com/Vonage/vivid/commit/e602725e64a2c3da1f944bbdfe97daf0e3b646d4))
+
+
+
+
+
 ## [2.46.1](https://github.com/Vonage/vivid/compare/v2.46.0...v2.46.1) (2024-11-06)
 
 **Note:** Version bump only for package @vivid/root
