@@ -10,8 +10,8 @@ import {
 } from 'lit-element';
 import { style } from './vwc-carousel.css.js';
 import Swiper from 'swiper';
-// @ts-expect-error - swiper 12's module type defs use .d.ts import extensions unsupported by TS 4.x
-import { Autoplay, Keyboard, Mousewheel, Navigation, Manipulation } from 'swiper/modules/index.mjs';
+// eslint-disable-next-line import/extensions
+import { Autoplay, Keyboard, Mousewheel, Navigation, Manipulation } from 'swiper/modules';
 import '@vonage/vwc-icon';
 import './vwc-carousel-item.js';
 
