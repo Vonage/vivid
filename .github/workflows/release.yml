@@ -2,7 +2,7 @@ name: Release
 
 permissions:
   contents: read
-  packages: read
+  packages: write
 
 concurrency: ${{ github.workflow }}
 
@@ -10,6 +10,7 @@ on:
   push:
     tags:
       - v*
+  workflow_dispatch:
 
 jobs:
   build:
@@ -48,7 +49,7 @@ jobs:
           - npm
         include:
           - registry: github
-            token_secret: VNG_VVD_PAT
+            token_secret: GITHUB_TOKEN
             host: npm.pkg.github.com
           - registry: npm
             token_secret: NPM_AUTH_TOKEN
