@@ -1,7 +1,7 @@
 name: Prepare Vivid for release
 
 permissions:
-  contents: read
+  contents: write
   packages: read
 
 on:
@@ -23,7 +23,7 @@ jobs:
         with:
           fetch-depth: 0
           ref: master
-          token: ${{ secrets.VNG_VVD_PAT }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Use Node.js 24
         uses: actions/setup-node@v4
