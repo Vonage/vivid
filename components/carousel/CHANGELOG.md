@@ -1,3 +1,12 @@
+## [2.46.3](https://github.com/vonage/vivid/compare/v2.46.2...v2.46.3) (2026-05-11)
+
+
+### Bug Fixes
+
+* **carousel:** fix swiper import (VIV-000) ([#1459](https://github.com/vonage/vivid/issues/1459)) ([0a55015](https://github.com/vonage/vivid/commit/0a550157bd0b266d8bf689c397fd84e780bb7feb))
+
+
+
 ## [2.46.2](https://github.com/vonage/vivid/compare/v2.46.1...v2.46.2) (2026-04-14)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.46.3](https://github.com/Vonage/vivid/compare/v2.46.2...v2.46.3) (2026-05-11)
+
+
+### Bug Fixes
+
+* **carousel:** fix swiper import (VIV-000) ([#1459](https://github.com/Vonage/vivid/issues/1459)) ([0a55015](https://github.com/Vonage/vivid/commit/0a550157bd0b266d8bf689c397fd84e780bb7feb))
+
+
+
+
+
 ## [2.46.2](https://github.com/Vonage/vivid/compare/v2.46.1...v2.46.2) (2026-04-14)
 
 
